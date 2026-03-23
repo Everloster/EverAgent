@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 论文下载中心</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f5f5f7; color: #1d1d1f; padding: 24px; }
+    h1 { font-size: 28px; font-weight: 700; margin-bottom: 6px; }
+    .subtitle { color: #6e6e73; margin-bottom: 28px; font-size: 15px; }
+    .tip { background: #fff3cd; border: 1px solid #ffc107; border-radius: 10px; padding: 12px 16px; margin-bottom: 24px; font-size: 14px; }
+    .tip strong { color: #856404; }
+    .section { margin-bottom: 32px; }
+    .section-title { font-size: 16px; font-weight: 600; color: #6e6e73; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #e0e0e0; }
+    .paper-list { display: flex; flex-direction: column; gap: 10px; }
+    .paper-card { background: white; border-radius: 12px; padding: 14px 18px; display: flex; align-items: center; gap: 14px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+    .paper-card:hover { box-shadow: 0 3px 12px rgba(0,0,0,0.12); }
+    .paper-num { font-size: 13px; color: #aaa; min-width: 28px; font-weight: 600; }
+    .paper-info { flex: 1; }
+    .paper-name { font-weight: 600; font-size: 15px; margin-bottom: 2px; }
+    .paper-meta { font-size: 13px; color: #888; }
+    .stars { margin-right: 6px; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; background: #0071e3; color: white; border: none; border-radius: 8px; padding: 8px 16px; font-size: 14px; font-weight: 500; cursor: pointer; text-decoration: none; white-space: nowrap; transition: background 0.15s; }
+    .btn:hover { background: #0077ed; }
+    .btn-all { background: #34c759; font-size: 15px; padding: 12px 24px; border-radius: 10px; margin-bottom: 24px; }
+    .btn-all:hover { background: #28a745; }
+    .btn-ref { background: #6e6e73; }
+    .btn-ref:hover { background: #555; }
+    .progress-bar { display: none; background: #e0e0e0; border-radius: 10px; height: 8px; margin: 12px 0; }
+    .progress-fill { height: 100%; border-radius: 10px; background: #34c759; width: 0; transition: width 0.3s; }
+    #status { font-size: 14px; color: #34c759; font-weight: 500; margin-top: 8px; display: none; }
+  </style>
+</head>
+<body>
+
+<h1>📄 AI 论文下载中心</h1>
+<p class="subtitle">ai-learning 项目 · 共 32 篇关键论文</p>
+
+<div class="tip">
+  <strong>💡 使用说明：</strong>点击单个下载按钮保存单篇论文；或点击「批量下载全部」按钮一次性下载所有 PDF（浏览器会依次触发，保存到默认下载目录，之后移动到 <code>ai-learning/papers/</code> 即可）。
+</div>
+
+<a class="btn btn-all" onclick="downloadAll()">⬇️ 批量下载全部论文</a>
+<div class="progress-bar" id="progressBar"><div class="progress-fill" id="progressFill"></div></div>
+<div id="status"></div>
+
+<!-- ===== 第一优先级 ===== -->
+<div class="section">
+  <div class="section-title">⭐⭐⭐ 第一优先级（必读精读）</div>
+  <div class="paper-list" id="tier1">
+
+    <div class="paper-card">
+      <div class="paper-num">01</div>
+      <div class="paper-info">
+        <div class="paper-name">Attention Is All You Need（Transformer）</div>
+        <div class="paper-meta">Vaswani et al. · Google Brain · 2017 · NeurIPS</div>
+      </div>
+      <a class="btn" href="https://arxiv.org/pdf/1706.03762" download="01_attention_is_all_you_need_2017.pdf" target="_blank">⬇ 下载</a>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-num">02</div>
+      <div class="paper-info">
+        <div class="paper-name">BERT: Pre-training of Deep Bidirectional Transformers</div>
+        <div class="paper-meta">Devlin et al. · Google · 2018 · NAACL</div>
+      </div>
+      <a class="btn" href="https://arxiv.org/pdf/1810.04805" download="02_bert_2018.pdf" target="_blank">⬇ 下载</a>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-num">03</div>
+      <div class="paper-info">
+        <div class="paper-name">Language Models are Few-Shot Learners（GPT-3）</div>
+        <div class="paper-meta">Brown et al. · OpenAI · 2020 · NeurIPS</div>
+      </div>
+      <a class="btn" href="https://arxiv.org/pdf/2005.14165" download="03_gpt3_2020.pdf" target="_blank">⬇ 下载</a>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-num">04</div>
+      <div class="paper-info">
+        <div class="paper-name">Training language models to follow instructions（InstructGPT / RLHF）</div>
+        <div class="paper-meta">Ouyang et al. · OpenAI · 2022</div>
+      </div>
+      <a class="btn" href="https://arxiv.org/pdf/2203.02155" download="04_instructgpt_rlhf_2022.pdf" target="_blank">⬇ 下载</a>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-num">05</div>
+      <div class="paper-info">
+        <div class="paper-name">Scaling Laws for Neural Language Models</div>
+        <div class="paper-meta">Kaplan et al. · OpenAI · 2020</div>
+      </div>
+      <a class="btn" href="https://arxiv.org/pdf/2001.08361" download="05_scaling_laws_2020.pdf" target="_blank">⬇ 下载</a>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-num">19</div>
+      <div class="paper-info">
+        <div class="paper-name">An Image is Worth 16x16 Words（ViT）</div>
+        <div class="paper-meta">Dosovitskiy et al. · Google Brain · 2020 · ICLR</div>
+      </div>
+      <a class="btn" href="https://arxiv.org/pdf/2010.11929" download="19_vit_2020.pdf" target="_blank">⬇ 下载</a>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-num">20</div>
+      <div class="paper-info">
+        <div class="paper-name">High-Resolution Image Synthesis with Latent Diffusion（Stable Diffusion）</div>
+        <div class="paper-meta">Rombach et al. · 海德堡大学 · 2021</div>
+      </div>
+      <a class="btn" href="https://arxiv.org/pdf/2112.10752" download="20_stable_diffusion_2021.pdf" target="_blank">⬇ 下载</a>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-num">21</div>
+      <div class="paper-info">
+        <div class="paper-name">Outrageously Large Neural Networks（MoE）</div>
+        <div class="paper-meta">Shazeer et al. · Google Brain · 2017 · ICLR</div>
+      </div>
+      <a class="btn" href="https://arxiv.org/pdf/1701.06538" download="21_moe_2017.pdf" target="_blank">⬇ 下载</a>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-num">22</div>
+      <div class="paper-info">
+        <div class="paper-name">The Bitter Lesson（Rich Sutton 博客文章）</div>
+        <div class="paper-meta">Rich Sutton · 2019 · 理解 AI 70年的元认知框架</div>
+      </div>
+      <a class="btn btn-ref" href="http://www.incompleteideas.net/IncIdeas/BitterLesson.html" target="_blank">🔗 在线阅读</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== 第二优先级 ===== -->
+<div class="section">
+  <div class="section-title">⭐⭐ 第二优先级（重点阅读）</div>
+  <div class="paper-list" id="tier2">
+
+    <div class="paper-card">
+      <div class="paper-num">06</div>
+      <div class="paper-info">
+        <div class="paper-name">ImageNet Classification with Deep CNNs（AlexNet）</div>
+        <div class="paper-meta">Krizhevsky, Sutskever, Hinton · 多伦多大学 · 2012 · NeurIPS</div>
+      </div>
+      <a class="btn" href="https://papers.nips.cc/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf" download="06_alexnet_2012.pdf" target="_blank">⬇ 下载</a>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-num">07</div>
+      <div class="paper-info">
+        <div class="paper-name">Deep Residual Learning for Image Recognition（ResNet）</div>
+        <div class="paper-meta">He, Zhang, Ren, Sun · 微软研究院 · 2015 · CVPR</div>
+      </div>
+      <a class="btn" href="https://arxiv.org/pdf/1512.03385" download="07_resnet_2015.pdf" target="_blank">⬇ 下载</a>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-num">08</div>
+      <div class="paper-info">
+        <div class="paper-name">Generative Adversarial Networks（GAN）</div>
+        <div class="paper-meta">Goodfellow et al. · 2014 · NeurIPS</div>
+      </div>
+      <a class="btn" href="https://arxiv.org/pdf/1406.2661" download="08_gan_2014.pdf" target="_blank">⬇ 下载</a>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-num">09</div>
+      <div class="paper-info">
+        <div class="paper-name">Denoising Diffusion Probabilistic Models（DDPM）</div>
+        <div class="paper-meta">Ho, Jain, Abbeel · UC Berkeley · 2020 · NeurIPS</div>
+      </div>
+      <a class="btn" href="https://arxiv.org/pdf/2006.11239" download="09_ddpm_2020.pdf" target="_blank">⬇ 下载</a>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-num">10</div>
+      <div class="paper-info">
+        <div class="paper-name">Chain-of-Thought Prompting Elicits Reasoning in LLMs</div>
+        <div class="paper-meta">Wei et al. · Google · 2022 · NeurIPS</div>
+      </div>
+      <a class="btn" href="https://arxiv.org/pdf/2201.11903" download="10_chain_of_thought_2022.pdf" target="_blank">⬇ 下载</a>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-num">11</div>
+      <div class="paper-info">
+        <div class="paper-name">Learning Transferable Visual Models from Natural Language（CLIP）</div>
+        <div class="paper-meta">Radford et al. · OpenAI · 2021 · ICML</div>
+      </div>
+      <a class="btn" href="https://arxiv.org/pdf/2103.00020" download="11_clip_2021.pdf" target="_blank">⬇ 下载</a>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-num">12</div>
+      <div class="paper-info">
+        <div class="paper-name">LLaMA: Open and Efficient Foundation Language Models</div>
+        <div class="paper-meta">Touvron et al. · Meta AI · 2023</div>
+      </div>
+      <a class="btn" href="https://arxiv.org/pdf/2302.13971" download="12_llama_2023.pdf" target="_blank">⬇ 下载</a>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-num">23</div>
+      <div class="paper-info">
+        <div class="paper-name">Distilling the Knowledge in a Neural Network（知识蒸馏）</div>
+        <div class="paper-meta">Hinton, Vinyals, Dean · Google · 2015</div>
+      </div>
+      <a class="btn" href="https://arxiv.org/pdf/1503.02531" download="23_distilling_2015.pdf" target="_blank">⬇ 下载</a>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-num">24</div>
+      <div class="paper-info">
+        <div class="paper-name">Mastering Go without Human Knowledge（AlphaGo Zero）</div>
+        <div class="paper-meta">Silver et al. · DeepMind · 2017 · Nature</div>
+      </div>
+      <a class="btn" href="https://arxiv.org/pdf/1712.01815" download="24_alphago_zero_2017.pdf" target="_blank">⬇ 下载</a>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-num">25</div>
+      <div class="paper-info">
+        <div class="paper-name">ZeRO: Memory Optimizations Toward Training Trillion Parameter Models</div>
+        <div class="paper-meta">Rajbhandari et al. · 微软 DeepSpeed · 2019</div>
+      </div>
+      <a class="btn" href="https://arxiv.org/pdf/1910.02054" download="25_zero_2019.pdf" target="_blank">⬇ 下载</a>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-num">26</div>
+      <div class="paper-info">
+        <div class="paper-name">Tulu 3: The Art and Science of Instruction Tuning at Scale</div>
+        <div class="paper-meta">Lambert et al. · Allen AI · 2024</div>
+      </div>
+      <a class="btn" href="https://arxiv.org/pdf/2411.15124" download="26_tulu3_2024.pdf" target="_blank">⬇ 下载</a>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-num">27</div>
+      <div class="paper-info">
+        <div class="paper-name">Scalable Diffusion Models with Transformers（DiT）</div>
+        <div class="paper-meta">Peebles, 谢赛宁 · NYU · 2022 · ICCV</div>
+      </div>
+      <a class="btn" href="https://arxiv.org/pdf/2212.09748" download="27_dit_2022.pdf" target="_blank">⬇ 下载</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== 第三优先级 ===== -->
+<div class="section">
+  <div class="section-title">⭐ 第三优先级（扩展阅读）</div>
+  <div class="paper-list" id="tier3">
+
+    <div class="paper-card">
+      <div class="paper-num">13</div>
+      <div class="paper-info">
+        <div class="paper-name">Efficient Estimation of Word Representations（Word2Vec）</div>
+        <div class="paper-meta">Mikolov et al. · Google · 2013</div>
+      </div>
+      <a class="btn" href="https://arxiv.org/pdf/1301.3781" download="13_word2vec_2013.pdf" target="_blank">⬇ 下载</a>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-num">14</div>
+      <div class="paper-info">
+        <div class="paper-name">Neural Machine Translation by Jointly Learning to Align（Bahdanau Attention）</div>
+        <div class="paper-meta">Bahdanau, Cho, Bengio · 2014 · ICLR</div>
+      </div>
+      <a class="btn" href="https://arxiv.org/pdf/1409.0473" download="14_bahdanau_attention_2014.pdf" target="_blank">⬇ 下载</a>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-num">15</div>
+      <div class="paper-info">
+        <div class="paper-name">LoRA: Low-Rank Adaptation of Large Language Models</div>
+        <div class="paper-meta">Hu et al. · 微软研究院 · 2021 · ICLR</div>
+      </div>
+      <a class="btn" href="https://arxiv.org/pdf/2106.09685" download="15_lora_2021.pdf" target="_blank">⬇ 下载</a>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-num">16</div>
+      <div class="paper-info">
+        <div class="paper-name">Retrieval-Augmented Generation for Knowledge-Intensive NLP（RAG）</div>
+        <div class="paper-meta">Lewis et al. · Facebook AI · 2020 · NeurIPS</div>
+      </div>
+      <a class="btn" href="https://arxiv.org/pdf/2005.11401" download="16_rag_2020.pdf" target="_blank">⬇ 下载</a>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-num">17</div>
+      <div class="paper-info">
+        <div class="paper-name">ReAct: Synergizing Reasoning and Acting in Language Models</div>
+        <div class="paper-meta">Yao et al. · Princeton · 2022 · ICLR</div>
+      </div>
+      <a class="btn" href="https://arxiv.org/pdf/2210.03629" download="17_react_2022.pdf" target="_blank">⬇ 下载</a>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-num">18</div>
+      <div class="paper-info">
+        <div class="paper-name">FlashAttention: Fast and Memory-Efficient Exact Attention</div>
+        <div class="paper-meta">Dao et al. · Stanford · 2022 · NeurIPS</div>
+      </div>
+      <a class="btn" href="https://arxiv.org/pdf/2205.14135" download="18_flashattention_2022.pdf" target="_blank">⬇ 下载</a>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-num">28</div>
+      <div class="paper-info">
+        <div class="paper-name">Brook for GPUs: Stream Computing（GPU 通用计算起源）</div>
+        <div class="paper-meta">Buck et al. · Stanford · 2004 · SIGGRAPH</div>
+      </div>
+      <a class="btn" href="https://arxiv.org/pdf/cs/0406040" download="28_brook_2004.pdf" target="_blank">⬇ 下载</a>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-num">29</div>
+      <div class="paper-info">
+        <div class="paper-name">LAION-5B: An Open Large-Scale Dataset</div>
+        <div class="paper-meta">Schuhmann et al. · LAION · 2022 · NeurIPS</div>
+      </div>
+      <a class="btn" href="https://arxiv.org/pdf/2210.08402" download="29_laion5b_2022.pdf" target="_blank">⬇ 下载</a>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-num">30</div>
+      <div class="paper-info">
+        <div class="paper-name">The RefinedWeb Dataset for Falcon LLM</div>
+        <div class="paper-meta">Penedo et al. · TII · 2023 · NeurIPS</div>
+      </div>
+      <a class="btn" href="https://arxiv.org/pdf/2306.01116" download="30_refinedweb_2023.pdf" target="_blank">⬇ 下载</a>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-num">31</div>
+      <div class="paper-info">
+        <div class="paper-name">MegaScale: Scaling LLM Training to More Than 10,000 GPUs</div>
+        <div class="paper-meta">Jiang et al. · 字节跳动 · 2024</div>
+      </div>
+      <a class="btn" href="https://arxiv.org/pdf/2402.15627" download="31_megascale_2024.pdf" target="_blank">⬇ 下载</a>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-num">32</div>
+      <div class="paper-info">
+        <div class="paper-name">Deep Unsupervised Learning using Nonequilibrium Thermodynamics（扩散模型原版）</div>
+        <div class="paper-meta">Sohl-Dickstein et al. · Stanford · 2015 · ICML</div>
+      </div>
+      <a class="btn" href="https://arxiv.org/pdf/1503.03585" download="32_diffusion_original_2015.pdf" target="_blank">⬇ 下载</a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  const papers = [
+    { url: "https://arxiv.org/pdf/1706.03762", filename: "01_attention_is_all_you_need_2017.pdf" },
+    { url: "https://arxiv.org/pdf/1810.04805", filename: "02_bert_2018.pdf" },
+    { url: "https://arxiv.org/pdf/2005.14165", filename: "03_gpt3_2020.pdf" },
+    { url: "https://arxiv.org/pdf/2203.02155", filename: "04_instructgpt_rlhf_2022.pdf" },
+    { url: "https://arxiv.org/pdf/2001.08361", filename: "05_scaling_laws_2020.pdf" },
+    { url: "https://papers.nips.cc/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf", filename: "06_alexnet_2012.pdf" },
+    { url: "https://arxiv.org/pdf/1512.03385", filename: "07_resnet_2015.pdf" },
+    { url: "https://arxiv.org/pdf/1406.2661", filename: "08_gan_2014.pdf" },
+    { url: "https://arxiv.org/pdf/2006.11239", filename: "09_ddpm_2020.pdf" },
+    { url: "https://arxiv.org/pdf/2201.11903", filename: "10_chain_of_thought_2022.pdf" },
+    { url: "https://arxiv.org/pdf/2103.00020", filename: "11_clip_2021.pdf" },
+    { url: "https://arxiv.org/pdf/2302.13971", filename: "12_llama_2023.pdf" },
+    { url: "https://arxiv.org/pdf/1301.3781", filename: "13_word2vec_2013.pdf" },
+    { url: "https://arxiv.org/pdf/1409.0473", filename: "14_bahdanau_attention_2014.pdf" },
+    { url: "https://arxiv.org/pdf/2106.09685", filename: "15_lora_2021.pdf" },
+    { url: "https://arxiv.org/pdf/2005.11401", filename: "16_rag_2020.pdf" },
+    { url: "https://arxiv.org/pdf/2210.03629", filename: "17_react_2022.pdf" },
+    { url: "https://arxiv.org/pdf/2205.14135", filename: "18_flashattention_2022.pdf" },
+    { url: "https://arxiv.org/pdf/2010.11929", filename: "19_vit_2020.pdf" },
+    { url: "https://arxiv.org/pdf/2112.10752", filename: "20_stable_diffusion_2021.pdf" },
+    { url: "https://arxiv.org/pdf/1701.06538", filename: "21_moe_2017.pdf" },
+    { url: "https://arxiv.org/pdf/1503.02531", filename: "23_distilling_2015.pdf" },
+    { url: "https://arxiv.org/pdf/1712.01815", filename: "24_alphago_zero_2017.pdf" },
+    { url: "https://arxiv.org/pdf/1910.02054", filename: "25_zero_2019.pdf" },
+    { url: "https://arxiv.org/pdf/2411.15124", filename: "26_tulu3_2024.pdf" },
+    { url: "https://arxiv.org/pdf/2212.09748", filename: "27_dit_2022.pdf" },
+    { url: "https://arxiv.org/pdf/cs/0406040", filename: "28_brook_2004.pdf" },
+    { url: "https://arxiv.org/pdf/2210.08402", filename: "29_laion5b_2022.pdf" },
+    { url: "https://arxiv.org/pdf/2306.01116", filename: "30_refinedweb_2023.pdf" },
+    { url: "https://arxiv.org/pdf/2402.15627", filename: "31_megascale_2024.pdf" },
+    { url: "https://arxiv.org/pdf/1503.03585", filename: "32_diffusion_original_2015.pdf" },
+  ];
+
+  async function downloadAll() {
+    const bar = document.getElementById('progressBar');
+    const fill = document.getElementById('progressFill');
+    const status = document.getElementById('status');
+    bar.style.display = 'block';
+    status.style.display = 'block';
+
+    for (let i = 0; i < papers.length; i++) {
+      const p = papers[i];
+      status.textContent = `正在触发下载 (${i+1}/${papers.length}): ${p.filename}`;
+      const a = document.createElement('a');
+      a.href = p.url;
+      a.download = p.filename;
+      a.target = '_blank';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      fill.style.width = ((i+1) / papers.length * 100) + '%';
+      // Wait a bit between downloads to avoid browser blocking
+      await new Promise(r => setTimeout(r, 1200));
+    }
+    status.textContent = `✅ 全部 ${papers.length} 篇论文下载已触发！请查看浏览器下载列表。`;
+  }
+</script>
+
+</body>
+</html>
