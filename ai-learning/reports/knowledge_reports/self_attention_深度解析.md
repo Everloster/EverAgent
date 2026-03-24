@@ -1,3 +1,10 @@
+---
+title: "self_attention_深度解析"
+domain: "ai-learning"
+report_type: "knowledge_report"
+status: "completed"
+updated_on: "2026-03-23"
+---
 # 知识深度解析：Self-Attention（自注意力机制）
 
 > 生成日期：2026-03-23 | 难度：⭐⭐⭐
@@ -269,3 +276,4 @@ class MultiHeadAttention(nn.Module):
 **动手实践**：
 - Andrej Karpathy [nanoGPT](https://github.com/karpathy/nanoGPT) — 200行实现GPT
 - [minGPT](https://github.com/karpathy/minGPT) — 更详细的教学版本
+

@@ -18,6 +18,11 @@ from typing import Dict, List, Optional
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
 
+try:
+    from bs4 import BeautifulSoup
+except ImportError:
+    BeautifulSoup = None
+
 
 def get_skill_dir() -> Path:
     """
@@ -87,20 +92,80 @@ def fetch_trending_page(since: str = "daily", language: str = "") -> str:
         return ""
 
 
-def parse_trending_repos(html: str) -> List[Dict]:
+def _parse_int(raw: Optional[str]) -> int:
+    """Parse an integer from noisy text like '1,234 stars today'."""
+    if not raw:
+        return 0
+    match = re.search(r"([\d,]+)", raw)
+    if not match:
+        return 0
+    return int(match.group(1).replace(",", ""))
+
+
+def _extract_today_stars(text: str) -> int:
     """
-    Parse trending repositories from HTML.
-    
-    Returns list of dicts with: owner, repo, url, description, language, stars, forks, today_stars
+    Extract period stars from trending text.
+    Handles 'stars today', 'stars this week', and 'stars this month'.
     """
+    patterns = [
+        r"([\d,]+)\s*stars?\s*today",
+        r"([\d,]+)\s*stars?\s*this\s*week",
+        r"([\d,]+)\s*stars?\s*this\s*month",
+    ]
+    for pattern in patterns:
+        match = re.search(pattern, text, re.IGNORECASE)
+        if match:
+            return _parse_int(match.group(1))
+    return 0
+
+
+def _parse_trending_with_bs4(html: str) -> List[Dict]:
+    """Parse trending repositories with BeautifulSoup."""
+    if BeautifulSoup is None:
+        return []
+
+    soup = BeautifulSoup(html, "html.parser")
     repos = []
-    
+    for article in soup.select("article.Box-row"):
+        heading_link = article.select_one("h2 a[href]")
+        if not heading_link:
+            continue
+
+        path = (heading_link.get("href") or "").strip().strip("/")
+        parts = path.split("/")
+        if len(parts) < 2:
+            continue
+        owner, repo = parts[0], parts[1]
+
+        desc_node = article.select_one("p")
+        language_node = article.select_one('span[itemprop="programmingLanguage"]')
+        stars_node = article.select_one(f'a[href="/{owner}/{repo}/stargazers"]')
+        forks_node = article.select_one(f'a[href="/{owner}/{repo}/forks"]')
+
+        text_blob = article.get_text(" ", strip=True)
+        repos.append({
+            "owner": owner,
+            "repo": repo,
+            "url": f"https://github.com/{owner}/{repo}",
+            "description": desc_node.get_text(" ", strip=True) if desc_node else "",
+            "language": language_node.get_text(" ", strip=True) if language_node else "Unknown",
+            "stars": _parse_int(stars_node.get_text(" ", strip=True) if stars_node else ""),
+            "forks": _parse_int(forks_node.get_text(" ", strip=True) if forks_node else ""),
+            "today_stars": _extract_today_stars(text_blob),
+        })
+
+    return repos
+
+
+def _parse_trending_with_regex(html: str) -> List[Dict]:
+    """Regex fallback parser for environments without BeautifulSoup."""
+    repos = []
     repo_pattern = r'<article[^>]*class="[^"]*Box-row[^"]*"[^>]*>(.*?)</article>'
     repo_matches = re.findall(repo_pattern, html, re.DOTALL)
-    
+
     for match in repo_matches:
         repo = {}
-        
+
         owner_repo_match = re.search(r'<h2[^>]*>.*?href="/([^"]+)"', match, re.DOTALL)
         if owner_repo_match:
             path = owner_repo_match.group(1).strip()
@@ -109,42 +174,42 @@ def parse_trending_repos(html: str) -> List[Dict]:
                 repo["owner"] = parts[0]
                 repo["repo"] = parts[1]
                 repo["url"] = f"https://github.com/{parts[0]}/{parts[1]}"
-        
+
         desc_match = re.search(r'<p[^>]*class="[^"]*col-9[^"]*"[^>]*>(.*?)</p>', match, re.DOTALL)
         if desc_match:
-            desc = re.sub(r'<[^>]+>', '', desc_match.group(1))
+            desc = re.sub(r"<[^>]+>", "", desc_match.group(1))
             repo["description"] = desc.strip()
         else:
             repo["description"] = ""
-        
+
         lang_match = re.search(r'<span[^>]*itemprop="programmingLanguage"[^>]*>([^<]+)</span>', match)
-        if lang_match:
-            repo["language"] = lang_match.group(1).strip()
-        else:
-            repo["language"] = "Unknown"
-        
+        repo["language"] = lang_match.group(1).strip() if lang_match else "Unknown"
+
         stars_match = re.search(r'href="/[^"]+/stargazers"[^>]*>.*?</svg>\s*([\d,]+)\s*</a>', match, re.DOTALL)
-        if stars_match:
-            repo["stars"] = int(stars_match.group(1).replace(",", ""))
-        else:
-            repo["stars"] = 0
-        
+        repo["stars"] = _parse_int(stars_match.group(1)) if stars_match else 0
+
         forks_match = re.search(r'href="/[^"]+/forks"[^>]*>.*?</svg>\s*([\d,]+)\s*</a>', match, re.DOTALL)
-        if forks_match:
-            repo["forks"] = int(forks_match.group(1).replace(",", ""))
-        else:
-            repo["forks"] = 0
-        
-        today_match = re.search(r'([\d,]+)\s*stars?\s*today', match)
-        if today_match:
-            repo["today_stars"] = int(today_match.group(1).replace(",", ""))
-        else:
-            repo["today_stars"] = 0
-        
+        repo["forks"] = _parse_int(forks_match.group(1)) if forks_match else 0
+
+        repo["today_stars"] = _extract_today_stars(match)
+
         if "owner" in repo and "repo" in repo:
             repos.append(repo)
-    
+
     return repos
+
+
+def parse_trending_repos(html: str) -> List[Dict]:
+    """
+    Parse trending repositories from HTML.
+
+    Returns list of dicts with: owner, repo, url, description, language, stars, forks, today_stars.
+    Prefer BeautifulSoup when available and fall back to regex.
+    """
+    repos = _parse_trending_with_bs4(html)
+    if repos:
+        return repos
+    return _parse_trending_with_regex(html)
 
 
 def fetch_trending_via_api(since: str = "daily", language: str = "") -> List[Dict]:
