@@ -147,6 +147,70 @@ def parse_trending_repos(html: str) -> List[Dict]:
     return repos
 
 
+def fetch_trending_via_api(since: str = "daily", language: str = "") -> List[Dict]:
+    """
+    Fetch trending repositories via GitHub Search API (fallback).
+
+    Args:
+        since: Time period - 'daily', 'weekly', or 'monthly'
+        language: Programming language filter (optional)
+
+    Returns:
+        List of repository dictionaries, or empty list on failure
+    """
+    days_map = {"daily": 1, "weekly": 7, "monthly": 30}
+    days = days_map.get(since, 1)
+
+    from datetime import timedelta
+    cutoff = (datetime.now() - timedelta(days=days)).strftime("%Y-%m-%d")
+
+    q = f"created:>{cutoff}"
+    if language:
+        q += f" language:{language}"
+
+    url = (
+        f"https://api.github.com/search/repositories"
+        f"?q={q}&sort=stars&order=desc&per_page=25"
+    )
+
+    headers = {
+        "Accept": "application/vnd.github.v3+json",
+        "User-Agent": get_user_agent(),
+    }
+    if os.environ.get("GITHUB_TOKEN"):
+        headers["Authorization"] = f"token {os.environ.get('GITHUB_TOKEN')}"
+
+    req = Request(url, headers=headers)
+    try:
+        with urlopen(req, timeout=30) as response:
+            data = json.loads(response.read().decode("utf-8"))
+    except (HTTPError, URLError) as e:
+        print(f"Error fetching from GitHub Search API: {e}", file=sys.stderr)
+        return []
+
+    repos = []
+    fetched_at = datetime.now().isoformat()
+    for item in data.get("items", []):
+        owner = item.get("owner", {}).get("login", "")
+        repo_name = item.get("name", "")
+        if not owner or not repo_name:
+            continue
+        repos.append({
+            "owner": owner,
+            "repo": repo_name,
+            "url": item.get("html_url", f"https://github.com/{owner}/{repo_name}"),
+            "description": item.get("description") or "",
+            "language": item.get("language") or "Unknown",
+            "stars": item.get("stargazers_count", 0),
+            "forks": item.get("forks_count", 0),
+            "today_stars": 0,
+            "period": since,
+            "fetched_at": fetched_at,
+            "source": "github_api",
+        })
+    return repos
+
+
 def get_trending(since: str = "daily", language: str = "") -> List[Dict]:
     """
     Get trending repositories.
@@ -159,15 +223,21 @@ def get_trending(since: str = "daily", language: str = "") -> List[Dict]:
         List of repository dictionaries
     """
     html = fetch_trending_page(since, language)
-    if not html:
-        return []
-    
-    repos = parse_trending_repos(html)
-    
+    repos = parse_trending_repos(html) if html else []
+
+    if not repos:
+        print(
+            "HTML scraping returned no results, falling back to GitHub Search API...",
+            file=sys.stderr,
+        )
+        return fetch_trending_via_api(since, language)
+
+    fetched_at = datetime.now().isoformat()
     for repo in repos:
         repo["period"] = since
-        repo["fetched_at"] = datetime.now().isoformat()
-    
+        repo["fetched_at"] = fetched_at
+        repo["source"] = "html_scrape"
+
     return repos
 
 
