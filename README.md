@@ -1,7 +1,7 @@
 # 🧠 EverAgent — 个人学习与研究工作台
 
-> 用 AI Agent 驱动的个人知识体系，覆盖 AI 技术、哲学思想与开源生态
-> 创建日期：2026-03-23 | 最后更新：2026-03-23
+> 用 AI Agent 驱动的个人知识体系，覆盖 AI 技术、哲学思想、心理学与开源生态
+> 创建日期：2026-03-23 | 最后更新：2026-03-24
 
 ---
 
@@ -9,12 +9,13 @@
 
 EverAgent 是一个以 AI Agent 为核心工具的个人知识库，通过系统化的学习路径、深度分析报告和自动化工具，将学习从"被动积累"变为"主动建构"。
 
-目前包含 **3 个子项目**：
+目前包含 **4 个子项目**：
 
 | 项目 | 领域 | 核心产出 | 状态 |
 |------|------|---------|------|
 | [🤖 AI Learning](./ai-learning/) | 人工智能技术 | 论文精读 · 技术深度报告 | 🟢 活跃中 |
 | [📚 Philosophy Learning](./philosophy-learning/) | 西方哲学史 | 经典文本分析 · 概念图谱 | 🟢 活跃中 |
+| [🧠 Psychology Learning](./psychology-learning/) | 心理学 | 经典实验精读 · 概念深度解析 | 🟢 活跃中 |
 | [📈 GitHub Trending Analyzer](./github-trending-analyzer/) | 开源生态 | 每日/周/月热点分析报告 | 🟢 活跃中 |
 
 ---
@@ -73,6 +74,22 @@ EverAgent 是一个以 AI Agent 为核心工具的个人知识库，通过系统
 
 ---
 
+### 🧠 Psychology Learning — 心理学系统学习
+
+**目标**：覆盖近150年心理学发展史、30篇经典实验/论文精读、25部必读书籍索引，持续积累深度分析报告。
+
+三个核心视角：**实验深度**（经典研究精读）× **历史叙事**（人物图谱、范式革命）× **当代相关性**（心理学如何照亮 AI、行为经济学、自我认知）
+
+当前进度：
+- ✅ 150年心理学发展时间线（构造主义→行为主义→认知革命→神经科学）
+- ✅ 心理学关键人物图谱（冯特到卡尼曼的思想传承与决裂史）
+- ✅ 系统学习路径 Phase 1–5 + 4个专题模块
+- 📄 30篇经典论文索引 + 25部必读书籍索引已就位
+
+→ [进入项目](./psychology-learning/)
+
+---
+
 ## 🛠️ 技能体系
 
 各子项目均内置专属 Skill，可被 AI Agent 直接调用：
@@ -83,6 +100,8 @@ EverAgent 是一个以 AI Agent 为核心工具的个人知识库，通过系统
 | `knowledge_deep_dive` | AI概念5层理解模型 | ai-learning |
 | `text_analysis` | 哲学文本深度分析法 | philosophy-learning |
 | `concept_deep_dive` | 哲学概念5层理解模型 | philosophy-learning |
+| `paper_analysis`（心理学版）| 实验/论文7步分析法 | psychology-learning |
+| `concept_deep_dive`（心理学版）| 心理学概念5层理解模型 | psychology-learning |
 | `github-trending-analyzer` | 热点项目趋势分析 | github-trending-analyzer |
 | `github-deep-research` | 单仓库多轮深度研究 | github-trending-analyzer |
 
@@ -90,13 +109,13 @@ EverAgent 是一个以 AI Agent 为核心工具的个人知识库，通过系统
 
 ## 🗺️ 整体学习理念
 
-三个项目看似独立，实则共享同一套底层方法论：
+四个项目看似独立，实则共享同一套底层方法论：
 
 ```
 提问  →  深度研究  →  结构化输出  →  持续迭代
 ```
 
-AI 技术的进化、哲学的历史追问、开源世界的涌现——都遵循相同的规律：**能随时间积累的深度，才是真正的竞争力。**
+AI 技术的进化、哲学的历史追问、心理学的实验发现、开源世界的涌现——都遵循相同的规律：**能随时间积累的深度，才是真正的竞争力。**
 
 ---
 
