@@ -1,7 +1,7 @@
 # 🧠 EverAgent — 个人学习与研究工作台
 
 > 用 AI Agent 驱动的个人知识体系，覆盖 AI 技术、计算机科学、哲学思想、心理学与开源生态
-> 创建日期：2026-03-23 | 最后更新：2026-03-24
+> 创建日期：2026-03-23 | 最后更新：2026-03-25
 
 ---
 
@@ -87,7 +87,7 @@ EverAgent 是一个以 AI Agent 为核心工具的个人知识库，通过系统
 - `browser-use`, `LightRAG`, `TradingAgents`, `deer-flow`, `BitNet` 等 40+ 项目深度报告
 - 每日 / 周 / 月趋势汇总报告
 
-→ [进入项目](./github-trending-analyzer/)
+→ [进入项目](./github-trending-analyzer/README.md)
 
 ---
 
@@ -128,9 +128,10 @@ EverAgent 是一个以 AI Agent 为核心工具的个人知识库，通过系统
 
 ## 📊 报告治理
 
-为实现跨项目可追踪管理，仓库已引入统一报告元数据与总览看板：
+为实现跨项目可追踪管理，仓库已引入统一报告元数据规范：
 
 - 元数据规范：[`docs/REPORT_METADATA.md`](./docs/REPORT_METADATA.md)
+- Trending 分析快速开始：[`github-trending-analyzer/README.md`](./github-trending-analyzer/README.md)
 
 ---
 
