@@ -1,0 +1,37 @@
+name: Trending Analyzer CI
+
+on:
+  push:
+    paths:
+      - "github-trending-analyzer/**"
+      - ".github/workflows/trending-analyzer-ci.yml"
+  pull_request:
+    paths:
+      - "github-trending-analyzer/**"
+      - ".github/workflows/trending-analyzer-ci.yml"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: github-trending-analyzer
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+
+      - name: Ruff
+        run: ruff check github-trending-analyzer github-deep-research/scripts tests
+
+      - name: Pytest
+        run: pytest -q
