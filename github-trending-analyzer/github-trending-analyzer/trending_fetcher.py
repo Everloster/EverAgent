@@ -171,26 +171,68 @@ def get_trending(since: str = "daily", language: str = "") -> List[Dict]:
     return repos
 
 
+def normalize_repo_name(name: str) -> str:
+    """
+    Normalize a repo/owner name for fuzzy matching.
+    Converts to lowercase and replaces hyphens with underscores.
+    Used only for comparison — never for generating actual file names.
+    """
+    return name.lower().replace("-", "_")
+
+
 def check_report_exists(base_dir: Path, owner: str, repo: str) -> Optional[Dict]:
     """
     Check if a report exists and when it was last updated.
-    
-    Returns None if doesn't exist, or dict with 'path' and 'age_days'.
+
+    First tries an exact match (preserving original case and hyphens).
+    If not found, falls back to a case/hyphen-insensitive scan of the directory
+    so that previously mis-named variants are detected and flagged rather than
+    silently spawning a duplicate with a different name.
+
+    Returns None if no match found, or a dict with:
+      - 'path'         : str path to the found file
+      - 'age_days'     : float days since last modification
+      - 'needs_update' : bool (True if older than 7 days)
+      - 'name_mismatch': bool (True when the found file name differs from the
+                         canonical name — signals a pre-existing naming error)
     """
-    report_path = base_dir / f"research_{owner}_{repo}.md"
-    
-    if not report_path.exists():
-        return None
-    
-    mtime = report_path.stat().st_mtime
-    age_seconds = time.time() - mtime
-    age_days = age_seconds / (24 * 60 * 60)
-    
-    return {
-        "path": str(report_path),
-        "age_days": age_days,
-        "needs_update": age_days > 7
-    }
+    canonical_name = f"research_{owner}_{repo}.md"
+    canonical_path = base_dir / canonical_name
+
+    # --- exact match (happy path) ---
+    if canonical_path.exists():
+        mtime = canonical_path.stat().st_mtime
+        age_days = (time.time() - mtime) / 86400
+        return {
+            "path": str(canonical_path),
+            "age_days": age_days,
+            "needs_update": age_days > 7,
+            "name_mismatch": False,
+        }
+
+    # --- fuzzy fallback: scan for case/hyphen variants ---
+    canonical_norm = normalize_repo_name(f"research_{owner}_{repo}")
+    if base_dir.exists():
+        for f in base_dir.iterdir():
+            if f.suffix != ".md":
+                continue
+            stem_norm = normalize_repo_name(f.stem)
+            if stem_norm == canonical_norm:
+                mtime = f.stat().st_mtime
+                age_days = (time.time() - mtime) / 86400
+                print(
+                    f"Warning: found '{f.name}' but canonical name should be "
+                    f"'{canonical_name}'. Consider renaming.",
+                    file=sys.stderr,
+                )
+                return {
+                    "path": str(f),
+                    "age_days": age_days,
+                    "needs_update": age_days > 7,
+                    "name_mismatch": True,
+                }
+
+    return None
 
 
 def main():
@@ -233,7 +275,8 @@ def main():
                 "exists": True,
                 "path": result["path"],
                 "age_days": round(result["age_days"], 1),
-                "needs_update": result["needs_update"]
+                "needs_update": result["needs_update"],
+                "name_mismatch": result.get("name_mismatch", False),
             }))
         else:
             print(json.dumps({"exists": False, "needs_update": True}))

@@ -264,6 +264,14 @@ github-trending-reports/
 | 汇总报告 | `all-{period}-summary-YYYY-MM-DD.md` | `all-daily-summary-2026-03-17.md` |
 | 项目研究 | `research_{owner}_{repo}.md` | `research_bytedance_deer-flow.md` |
 
+> **⚠️ 命名严格规则（必须遵守）**
+>
+> 1. **输出目录中只允许存在以上两种格式的文件**。禁止创建任何其他文件，包括 README、INDEX、SUMMARY、日志、临时文件等。
+> 2. **`{owner}` 和 `{repo}` 必须与 GitHub 原始名称完全一致**，包括大小写和连字符。禁止将连字符 `-` 替换为下划线 `_`，禁止将大写字母转为小写。
+>    - ✅ 正确：`research_hsliuping_TradingAgents-CN.md`
+>    - ❌ 错误：`research_hsliuping_tradingagents_cn.md`
+> 3. **报告内容中禁止出现任何运行时系统路径**（如 `/sessions/`、`/mnt/`、`/tmp/` 等）。文件间的相互引用一律使用相对路径，如 `./research_xxx.md`。
+
 ## 使用方法
 
 用户请求时，按以下步骤执行：
@@ -472,3 +480,6 @@ github-trending-reports/
 9. **Mermaid 图表规范**: 仅使用兼容的图表类型：`flowchart`、`sequenceDiagram`、`gantt`、`pie`。禁止使用 `mindmap`、`architecture-beta`、`xychart-beta`、`timeline`、`quadrantChart` 等不兼容类型（会导致乱码）。
 10. **跨平台兼容**: 所有 Python 脚本使用 `pathlib.Path` 处理路径，支持 macOS、Linux、Windows
 11. **跨 Agent 兼容**: 技能设计为跨 Agent 平台兼容，可根据平台能力灵活调整深度研究方法
+12. **禁止额外文件**: 输出目录只允许两种命名格式的文件（见"文件命名规则"）。子 Agent 或工具脚本不得在输出目录中创建任何格式以外的文件，包括索引、摘要、日志、README 等。
+13. **文件名忠实性**: `research_{owner}_{repo}.md` 中的 owner 和 repo 必须与 GitHub 页面完全一致，不做任何大小写转换或字符替换。生成前请用 `trending_fetcher.py check` 命令验证文件是否已存在，以防重复生成导致命名漂移。
+14. **路径安全**: 报告内容（包括正文、页脚、注释）中不得出现任何宿主机绝对路径。
