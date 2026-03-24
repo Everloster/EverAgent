@@ -132,6 +132,8 @@ Assign confidence based on source quality:
 
 Save report as: `research_{topic}_{YYYYMMDD}.md`
 
+> **When called by `github-trending-analyzer`**: use the caller's naming convention instead — `research_{owner}_{repo}.md` (no date suffix, owner/repo in original GitHub casing with hyphens preserved). The trending analyzer's `check` command relies on this exact format to detect existing reports and avoid duplicates.
+
 ### Formatting Rules
 
 - Chinese content: Use full-width punctuation（，。：；！？）

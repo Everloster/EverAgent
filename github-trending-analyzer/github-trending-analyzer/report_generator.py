@@ -47,15 +47,25 @@ def safe_format_number(value, default="N/A"):
     return default
 
 
-def generate_project_report(repo_data: Dict, analysis_data: Dict, output_path: Path) -> Path:
+def generate_project_report(
+    repo_data: Dict,
+    analysis_data: Dict,
+    output_path: Path,
+    research_method: str = "Web搜索 + GitHub页面分析",
+) -> Path:
     """
     Generate a single project report.
-    
+
     Args:
         repo_data: Basic repo info from trending fetcher
         analysis_data: Deep research analysis data
         output_path: Path to save the report
-    
+        research_method: Human-readable description of how research was done.
+            Passed by the caller so the footer accurately reflects the actual
+            method used (e.g. "github-deep-research 多轮深度研究" vs
+            "Web搜索 + GitHub页面分析"). Defaults to the web-search variant
+            which is the common case for non-Trae platforms.
+
     Returns:
         Path to the generated report
     """
@@ -147,7 +157,7 @@ def generate_project_report(repo_data: Dict, analysis_data: Dict, output_path: P
 
 ---
 *报告生成时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}*
-*研究方法: github-deep-research 多轮深度分析*
+*研究方法: {research_method}*
 """
     
     with open(output_path, "w", encoding="utf-8") as f:
@@ -249,18 +259,55 @@ def generate_summary(repo_data: Dict, analysis_data: Dict) -> str:
     return " ".join(parts)
 
 
-def generate_summary_report(period: str, repos: List[Dict], output_path: Path) -> Path:
+def _format_report_status(repos: List[Dict], missing_repos: List[str]) -> str:
+    """
+    Build the status block for the summary report footer.
+
+    Shows ✅ only when every individual report was successfully generated.
+    When some are missing, shows a ⚠️ list so readers know which projects
+    lack a full research write-up — rather than silently claiming completeness.
+    """
+    total = len(repos)
+    if not missing_repos:
+        return f"✅ 所有项目报告已完整生成，共 **{total}** 份深度研究报告。"
+
+    lines = [
+        f"⚠️ **以下 {len(missing_repos)} 个项目报告未生成或不完整**（共 {total} 个项目）：",
+        "",
+    ]
+    for r in missing_repos:
+        lines.append(f"- `{r}` — 报告缺失或内容不完整，建议手动补充")
+    complete = total - len(missing_repos)
+    lines.append(f"\n已完整生成 **{complete}** 份报告。")
+    return "\n".join(lines)
+
+
+def generate_summary_report(
+    period: str,
+    repos: List[Dict],
+    output_path: Path,
+    missing_repos: Optional[List[str]] = None,
+    research_method: str = "Web搜索 + GitHub页面分析",
+) -> Path:
     """
     Generate a summary report for all trending repos.
-    
+
     Args:
         period: 'daily', 'weekly', or 'monthly'
         repos: List of repo data with analysis
         output_path: Path to save the report
-    
+        missing_repos: List of 'owner/repo' strings whose individual research
+            reports could not be generated or were found incomplete. When
+            non-empty the status section shows a ⚠️ warning instead of ✅.
+            Pass an empty list (or omit) if all reports are complete.
+        research_method: Description of the research approach used, written
+            into the report footer for transparency.
+
     Returns:
         Path to the generated report
     """
+    if missing_repos is None:
+        missing_repos = []
     if isinstance(output_path, str):
         output_path = Path(output_path)
     
@@ -312,11 +359,11 @@ def generate_summary_report(period: str, repos: List[Dict], output_path: Path) -
 
 ## 报告状态说明
 
-✅ 所有项目报告已完整生成，共 {len(repos)} 份深度研究报告。
+{_format_report_status(repos, missing_repos)}
 
 ---
 *本报告由 GitHub Trending Analyzer 自动生成*
-*分析方法: github-deep-research 多轮深度研究*
+*分析方法: {research_method}*
 """
     
     with open(output_path, "w", encoding="utf-8") as f:
@@ -414,14 +461,19 @@ def main():
     
     elif command == "summary":
         if len(sys.argv) < 5:
-            print("Usage: python report_generator.py summary <period> <repos_json> <output_path>")
+            print(
+                "Usage: python report_generator.py summary <period> <repos_json>"
+                " <output_path> [missing_repos_json] [research_method]"
+            )
             sys.exit(1)
-        
+
         period = sys.argv[2]
         repos = json.loads(sys.argv[3])
         output_path = Path(sys.argv[4])
-        
-        result = generate_summary_report(period, repos, output_path)
+        missing_repos = json.loads(sys.argv[5]) if len(sys.argv) > 5 else []
+        research_method = sys.argv[6] if len(sys.argv) > 6 else "Web搜索 + GitHub页面分析"
+
+        result = generate_summary_report(period, repos, output_path, missing_repos, research_method)
         print(f"Summary report generated: {result}")
     
     elif command == "info":

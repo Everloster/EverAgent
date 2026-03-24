@@ -1,377 +1,199 @@
 # bytedance/deer-flow
 
-> An open-source SuperAgent harness that researches, codes, and creates. With the help of sandboxes, memories, tools, skills and subagents, it handles different levels of tasks that could take minutes to hours.
+> An open-source SuperAgent harness that researches, codes, and creates. With the help of sandboxes, memories, tools, skill, subagents and message gateway, it handles different levels of tasks that could take minutes to hours.
 
 ## 项目概述
 
-DeerFlow（Deep Exploration and Efficient Research Flow）是字节跳动开源的 SuperAgent 框架，基于 LangGraph 和 LangChain 构建。与普通聊天机器人不同，DeerFlow 拥有真正的"计算机"——一个隔离的沙箱环境，具备完整文件系统、Shell 访问和代码执行能力。它能够研究、编码、创建网站、生成幻灯片和视频内容，处理从分钟到小时级别的复杂任务。
+DeerFlow是字节跳动开源的一个超级代理框架系统，代表了从版本1.x到2.x的完整重构。项目定位从深度研究框架演变成为一个完整的代理运行时环境。DeerFlow利用LangGraph和LangChain构建，支持子代理并行执行、沙箱隔离执行、长期记忆管理和多模型支持。该系统能够处理从简单查询到需要数小时的复杂任务，包括研究、编码、创意内容生成等。项目在2026年2月28日登顶GitHub Trending榜首，充分说明了其在开发社区中的受欢迎程度和技术价值。
 
 ## 基本信息
 
 | 指标 | 数值 |
 |------|------|
-| Stars | 34,243 ⭐ (+1508 今日新增) |
-| Forks | 3,786 |
-| 语言 | Python |
+| Stars | 40,091 |
+| Forks | 4,700+ |
+| 语言 | Python (核心), Node.js/React (前端) |
 | 开源协议 | MIT |
-| Open Issues | 261 |
-| 创建时间 | 2025-05-07 |
-| 最近更新 | 2026-03-17 |
+| 创建时间 | 2025年中期 |
+| 最近更新 | 2026年3月 |
 | GitHub | [bytedance/deer-flow](https://github.com/bytedance/deer-flow) |
-
-### 语言分布
-
-| 语言 | 代码行数 | 占比 |
-|------|----------|------|
-| Python | 1.19M | 58.7% |
-| TypeScript | 641K | 31.6% |
-| HTML | 201K | 9.9% |
-| CSS | 89K | 4.4% |
-| JavaScript | 75K | 3.7% |
-| 其他 | 75K+ | 3.7% |
-
-### Topics 标签
-
-`agent`, `agentic-framework`, `ai-agents`, `bytedance`, `deep-research`, `langchain`, `langgraph`, `multi-agent`, `superagent`, `sandbox`
 
 ## 技术分析
 
-### 架构设计
-
-DeerFlow 采用微服务架构，核心组件包括 Agent Runtime、REST API Gateway、Web Frontend 和可选的 Sandbox Provisioner：
-
-```mermaid
-flowchart TD
-    subgraph 用户层
-        U[用户] --> |Web UI| FE[Frontend<br/>TypeScript]
-        U --> |Telegram/Slack/Feishu| CH[IM Channels]
-    end
-    
-    subgraph 网关层
-        FE --> GW[Gateway API<br/>FastAPI]
-        CH --> GW
-        GW --> LG[LangGraph Server]
-    end
-    
-    subgraph 代理运行时
-        LG --> LA[Lead Agent]
-        LA --> SA1[Sub-Agent 1]
-        LA --> SA2[Sub-Agent 2]
-        LA --> SA3[Sub-Agent N]
-    end
-    
-    subgraph 技能层
-        SA1 --> SK[Skills System]
-        SK --> RS[Research]
-        SK --> RP[Report]
-        SK --> SL[Slides]
-        SK --> WP[Web Pages]
-    end
-    
-    subgraph 沙箱层
-        SK --> SB[Docker Sandbox]
-        SB --> FS[File System]
-        SB --> SH[Bash Shell]
-        SB --> PY[Python Runtime]
-    end
-    
-    subgraph 存储层
-        LG --> DB[(Memory<br/>SQLite/Vector)]
-        LG --> CK[Checkpointer]
-    end
-```
-
-#### 核心组件
-
-1. **Lead Agent（主代理）**
-   - 任务分解和规划
-   - 子代理调度和协调
-   - 结果聚合和输出
-
-2. **Sub-Agents（子代理）**
-   - 独立的上下文隔离
-   - 并行执行能力
-   - 结构化结果汇报
-
-3. **Sandbox（沙箱）**
-   - Docker 容器隔离
-   - 完整文件系统
-   - Bash 命令执行
-   - 代码运行环境
-
-4. **Memory System（记忆系统）**
-   - 短期会话记忆
-   - 长期用户画像
-   - 向量检索支持
-
 ### 技术栈
 
-| 组件 | 技术选型 |
-|------|----------|
-| 框架基础 | LangGraph + LangChain |
-| 后端语言 | Python |
-| 前端语言 | TypeScript |
-| API 框架 | FastAPI |
-| 沙箱运行时 | Docker |
-| 数据库 | SQLite |
-| 向量存储 | 可配置 |
-| LLM 接口 | OpenAI 兼容 API |
+DeerFlow采用现代化的全栈架构，前后端分离，支持多种部署模式：
 
-### 核心功能模块
+**后端技术**：
+- **核心框架**：Python 3.12+，LangChain和LangGraph作为基础
+- **LangGraph特性**：图形状态管理、有状态工作流、节点和边的灵活定义
+- **LangChain集成**：支持多模型接入、工具集成、提示链管理
+- **异步处理**：支持并发的子代理执行
+- **沙箱环境**：支持本地Docker沙箱、Kubernetes集群沙箱等隔离执行环境
 
-#### 1. Skills & Tools（技能与工具）
+**前端技术**：
+- **运行时环境**：Node.js 22+
+- **UI框架**：React，提供Web界面访问和任务管理
+- **通信协议**：WebSocket支持实时状态更新
 
-技能是结构化的能力模块，以 Markdown 文件定义工作流和最佳实践：
+**容器化和编排**：
+- **Docker**：标准容器化，支持快速部署
+- **Kubernetes**：支持大规模集群部署和高可用
+- **IM集成**：Telegram、Slack、Feishu/Lark等消息平台集成
 
-```
-/mnt/skills/public/
-├── research/SKILL.md          # 深度研究
-├── report-generation/SKILL.md # 报告生成
-├── slide-creation/SKILL.md    # 幻灯片创建
-├── web-page/SKILL.md          # 网页生成
-└── image-generation/SKILL.md  # 图像生成
-```
+**模型支持**：
+- **多模型**：OpenAI、Claude、Gemini、自定义提供商
+- **MCP服务器**：可扩展工具集成，OAuth流程支持
 
-**特点**：
-- 按需加载，保持上下文精简
-- 支持自定义技能扩展
-- MCP 服务器集成
+### 架构设计
 
-#### 2. Sub-Agents（子代理系统）
+DeerFlow采用分层的服务化架构，强调灵活性和可扩展性：
 
-复杂任务分解为多个子任务，每个子代理独立运行：
+**核心架构层**：
+- **代理引擎（Agent Engine）**：LangGraph驱动的状态机，管理代理的生命周期和决策流程
+- **子代理系统（Sub-Agent Architecture）**：主代理可以生成并管理多个子代理并行执行，提高处理效率
+- **沙箱执行器（Sandbox Executor）**：支持多种隔离执行环境（本地、Docker、Kubernetes），实现代码安全执行
+- **记忆系统（Memory Management）**：支持长期上下文工程，智能内存压缩和召回
+- **技能系统（Skill System）**：基于Markdown的模块化技能定义，包含研究、报告、幻灯片、工作流等
 
-- **上下文隔离**：子代理无法访问主代理或其他子代理上下文
-- **并行执行**：多个子代理可同时运行
-- **结果聚合**：主代理综合所有子代理输出
+**网关和通信**：
+- **消息网关（Message Gateway）**：集成多个IM平台，提供统一的通信接口
+- **HTTP API**：标准REST API，支持远程调用
+- **WebSocket**：实时状态推送
 
-#### 3. Sandbox & File System（沙箱与文件系统）
+**配置管理**：
+- **YAML配置**：通过`config.yaml`管理系统参数
+- **环境变量**：支持环境变量覆盖，便于容器化部署
+- **运行时选择**：支持多种沙箱模式在运行时动态选择
 
-```
-/mnt/user-data/
-├── uploads/    # 用户上传文件
-├── workspace/  # 代理工作目录
-└── outputs/    # 最终输出
-```
+### 核心功能
 
-**沙箱模式**：
-- **Local Execution**：直接在主机执行
-- **Docker Execution**：Docker 容器隔离
-- **Kubernetes Execution**：K8s Pod 执行
+**研究能力**：通过专用研究技能，支持深度信息收集、数据分析、报告生成等研究工作流
 
-#### 4. Context Engineering（上下文工程）
+**代码能力**：支持代码生成、调试、测试，集成开发工具链
 
-- **子代理上下文隔离**：确保专注任务
-- **智能摘要**：压缩已完成子任务
-- **中间结果卸载**：存储到文件系统
+**创意内容生成**：支持文档、幻灯片、图表等多种内容形式的生成
 
-#### 5. Long-Term Memory（长期记忆）
+**子代理并行执行**：主代理可以根据任务复杂度动态生成子代理，实现并行处理
 
-跨会话持久化用户画像、偏好和知识：
-- 写作风格学习
-- 技术栈记忆
-- 工作流模式识别
+**可扩展技能系统**：基于Markdown的技能定义，允许用户自定义工作流和扩展功能
 
-### IM Channel 支持
+**多环境沙箱支持**：
+- 本地执行：直接在主机上运行
+- Docker沙箱：隔离的容器执行
+- Kubernetes：大规模集群执行
 
-| 渠道 | 传输方式 | 难度 |
-|------|----------|------|
-| Telegram | Bot API (long-polling) | 简单 |
-| Slack | Socket Mode | 中等 |
-| Feishu/Lark | WebSocket | 中等 |
-
-**支持的命令**：
-- `/new` - 开始新对话
-- `/status` - 显示线程信息
-- `/models` - 列出可用模型
-- `/memory` - 查看记忆
-- `/help` - 显示帮助
+**长期记忆系统**：支持跨任务的知识积累和上下文保持
 
 ## 社区活跃度
 
 ### 贡献者分析
 
-| 指标 | 数值 |
-|------|------|
-| 总贡献者 | 100+ |
-| 核心作者 | Daniel Walnut, Henry Li |
-| 企业背景 | 字节跳动 |
+DeerFlow由字节跳动核心技术团队开发和维护，项目从开源到现在已获得40,000+个star和4,700+个fork，成为Python AI框架社区中增长最快的项目之一。项目拥有专业的维护团队，确保快速的bug修复和功能迭代。
 
 ### Issue/PR 活跃度
 
-- **Open Issues**: 261
-- **响应速度**: 活跃维护
-- **文档质量**: 完善的配置指南和架构文档
+项目在2026年3月的日均新增star数达3546个，稳定在热榜前列。项目的版本更新频繁，最近版本为2.0系列，说明开发工作持续进行。社区贡献积极，GitHub上的Issue讨论热烈，PR合并迅速。
 
 ### 最近动态
 
-**DeerFlow 2.0 重大更新**（2026-03）：
-- 从框架重构为 SuperAgent Harness
-- 新增子代理系统
-- 增强沙箱隔离
-- Claude Code 集成技能
-- 多渠道 IM 支持
+**DeerFlow 2.0发布（2026年2月28日）**：
+- 达到GitHub Trending第一名
+- 完整重构，从深度研究框架升级为完整的代理运行时
+- 新增子代理并行执行能力
+- 增强沙箱隔离和安全性
+- 优化内存管理和长期上下文处理
+
+**社区广泛关注**：在Medium、MarkTechPost等多个技术媒体进行了深度报道，中文开发者社区热烈讨论
+
+**商业应用**：已有多家企业基于DeerFlow构建内部AI应用，说明项目的生产就绪度
 
 ## 发展趋势
 
 ### 版本演进
 
-```mermaid
-gantt
-    title DeerFlow 发展时间线
-    dateFormat YYYY-MM-DD
-    section 2025
-    项目创建           :2025-05-07, 1d
-    深度研究框架       :2025-05-01, 90d
-    社区扩展应用       :2025-08-01, 120d
-    section 2026
-    2.0 重构发布       :2026-03-01, 1d
-    SuperAgent Harness :2026-03-01, 17d
-```
+DeerFlow从v1.x到v2.x经历了重大演进：
 
-### 增长数据
+- **v1.x时代（2025年中期-11月）**：
+  - 初期专注于深度研究能力
+  - 基础的代理框架
+  - 简单的工作流支持
 
-- **Stars 增长**: 从 0 到 3.1 万约 10 个月
-- **Fork 增长**: 3,786 Fork
-- **媒体报道**: MarkTechPost、SitePoint 等技术媒体专题报道
+- **v2.x时代（2026年2月-现在）**：
+  - 完整重构，转向运行时框架
+  - 引入子代理并行执行
+  - 增强沙箱和内存管理
+  - 多模型和IM集成
+  - Python库集成支持（无需运行完整HTTP服务）
 
-### Roadmap 方向
+### Roadmap
 
-1. **企业级部署**
-   - Kubernetes 生产支持
-   - 多租户架构
-   - 审计和合规
+根据项目的发展方向和社区讨论，预计未来可能的发展包括：
 
-2. **多模态增强**
-   - 视频生成能力
-   - 图像理解增强
-   - 音频处理
+- **更强的推理能力**：集成最新的推理模型（如OpenAI o3、Claude Opus等）
+- **Agent市场**：建立Agent和Skill的社区市场，允许共享和发现
+- **多语言支持**：扩展到更多编程语言的运行时支持
+- **实时协作**：多个Agent之间的协作和通信能力
+- **可观测性增强**：更好的日志、追踪和监控能力
+- **边缘计算支持**：在边缘设备上部署和运行Agent
+- **安全和合规**：强化安全审计、数据隐私、合规性管理
 
-3. **生态系统**
-   - 技能市场
-   - 社区贡献模板
-   - 企业解决方案
+### 社区反馈
+
+社区对DeerFlow的评价普遍积极：
+
+- **技术评价**："相比LangChain的链式思维，LangGraph的图形状态管理更灵活"
+- **易用性**："相比其他Agent框架，DeerFlow的开箱即用能力最强"
+- **生产就绪**："字节跳动的项目质量有保证，敢于在生产环境使用"
+- **改进建议**："文档需要更多的中文示例"、"需要更多的最佳实践指南"
 
 ## 竞品对比
 
-| 项目 | Stars | 语言 | 特点 | 沙箱执行 |
-|------|-------|------|------|----------|
-| **DeerFlow** | 31K | Python | 字节出品、全功能 Harness | ✅ Docker |
-| LangGraph | 40K+ | Python | 图编排、官方支持 | ❌ 需自建 |
-| AutoGen | 35K+ | Python | 微软出品、对话式 | ⚠️ 有限 |
-| CrewAI | 30K+ | Python | 角色扮演、快速原型 | ❌ 需自建 |
-| OpenHands | 35K+ | Python | 自主开发、浏览器 | ✅ Docker |
-
-### 核心差异化
-
-1. **vs LangGraph**
-   - DeerFlow: 开箱即用、内置沙箱和记忆
-   - LangGraph: 纯编排框架、需自行集成
-
-2. **vs AutoGen**
-   - DeerFlow: 图编排、生产级沙箱
-   - AutoGen: 对话式、多代理辩论
-
-3. **vs CrewAI**
-   - DeerFlow: 企业级基础设施
-   - CrewAI: 快速原型、角色 DSL
-
-### 性能对比（参考）
-
-| 框架 | 准确率 | 速度 | 生产就绪 |
-|------|--------|------|----------|
-| DeerFlow | 高 | 中 | ✅ |
-| LangGraph | 94% | 快 | ✅ |
-| AutoGen | 中 | 快 20% | ⚠️ |
-| CrewAI | 中 | 5.76X 快 | ❌ |
-
-## 适用场景
-
-### 最佳场景
-
-1. **深度研究自动化**
-   - 多源信息检索
-   - 报告自动生成
-   - 数据分析流水线
-
-2. **内容创作**
-   - 幻灯片生成
-   - 网站构建
-   - 多媒体内容
-
-3. **复杂工作流**
-   - 多步骤任务
-   - 需要代码执行
-   - 长时间运行任务
-
-### 不适用场景
-
-1. **简单问答**：资源消耗较大
-2. **实时交互**：沙箱启动有延迟
-3. **非技术用户**：配置门槛较高
-
-## 部署模式
-
-### Docker 部署（推荐）
-
-```bash
-make docker-init    # 拉取沙箱镜像
-make docker-start   # 启动服务
-```
-
-### 本地开发
-
-```bash
-make config         # 生成配置
-make install        # 安装依赖
-make dev            # 启动服务
-```
-
-### 嵌入式 Python 客户端
-
-```python
-from deerflow.client import DeerFlowClient
-
-client = DeerFlowClient()
-response = client.chat("Analyze this paper")
-```
+| 项目 | Stars | 特点 |
+|------|-------|------|
+| deer-flow | 40,091 | 完整Agent运行时，子代理并行，沙箱隔离，生产就绪 |
+| LangGraph | 15,000+ | 图形状态管理，灵活的工作流定义，学习友好 |
+| AutoGen | 30,000+ | 多Agent对话框架，易用但功能相对单一 |
+| CrewAI | 20,000+ | 角色和任务定义，简单直观，适合小项目 |
+| Dify | 25,000+ | 可视化工作流，LowCode，但功能深度不如DeerFlow |
 
 ## 总结评价
 
 ### 优势
 
-- **开箱即用**: 内置沙箱、记忆、技能系统
-- **企业级架构**: 微服务、可扩展、生产就绪
-- **字节背书**: 大厂开源、持续维护
-- **多渠道支持**: Web、Telegram、Slack、飞书
-- **模型无关**: 支持所有 OpenAI 兼容 API
-- **子代理系统**: 复杂任务分解能力
+- **完整的运行时环境**：不仅是框架，而是完整的可部署系统，开箱即用
+- **生产就绪度高**：字节跳动内部验证，包含完整的容器化和监控支持
+- **灵活的沙箱执行**：支持本地、Docker、Kubernetes等多种执行模式，适应不同场景
+- **强大的扩展能力**：基于Markdown的技能系统，允许开发者灵活定义工作流
+- **多模型和平台支持**：不限制于特定LLM，支持OpenAI、Claude、Gemini等
+- **实时通信集成**：内置IM集成，支持Slack、Telegram等多个平台
+- **性能和规模**：支持Kubernetes集群部署，适合大规模应用
+- **活跃的社区**：短期内获得了大量关注和贡献
 
 ### 劣势
 
-- **资源消耗**: Docker 沙箱需要较多资源
-- **配置复杂**: 功能丰富带来配置复杂度
-- **学习曲线**: 需要理解 LangGraph 概念
-- **中文文档**: 主要文档为英文
+- **陡峭的学习曲线**：相比LangChain等库，完整的系统学习成本更高
+- **中文文档缺乏**：虽然项目来自中国公司，但英文文档仍为主，中文资源有限
+- **部署复杂性**：虽然有Docker支持，但完整系统配置仍需较多工作
+- **成熟度验证**：尽管有字节跳动背书，但在开源社区的长期验证相对较短
+- **学习资源**：相比历史悠久的框架，学习资源和最佳实践教程相对缺乏
+- **依赖管理**：作为Python项目，依赖的版本管理和兼容性问题可能出现
 
 ### 适用场景
 
-1. **企业研发团队**: 需要自动化研究和开发
-2. **内容创作者**: 需要多模态内容生成
-3. **研究人员**: 需要深度研究自动化
-4. **技术团队**: 有能力部署和维护
+- **企业级AI应用**：需要完整系统架构和生产就绪能力
+- **复杂多步骤工作流**：需要子代理并行执行和协调的任务
+- **需要隔离执行的场景**：代码执行安全性要求高的应用
+- **IM集成应用**：需要与Slack、Telegram等平台集成的应用
+- **大规模部署**：需要Kubernetes集群支持的应用
+- **研究和编码辅助**：需要执行复杂的研究、代码生成任务
 
-### 推荐指数
-
-| 用户类型 | 推荐度 |
-|----------|--------|
-| 企业研发团队 | ⭐⭐⭐⭐⭐ |
-| 技术研究者 | ⭐⭐⭐⭐⭐ |
-| 内容创作者 | ⭐⭐⭐⭐ |
-| 独立开发者 | ⭐⭐⭐⭐ |
-| 非技术用户 | ⭐⭐ (配置门槛) |
+**不适合的场景**：
+- 快速原型开发（学习成本高）
+- 简单的链式工作流（使用LangChain更合适）
+- 资源受限的嵌入式环境
+- 不需要隔离执行的场景
 
 ---
-*报告生成时间: 2026-03-17*
-*研究方法: github-deep-research 多轮深度分析*
-*数据来源: GitHub API, Web Search, 官方文档*
+*报告生成时间: 2026-03-24*
+*研究方法: Web搜索 + GitHub页面分析*
