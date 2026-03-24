@@ -1,3 +1,10 @@
+---
+title: "03_gettier_1963_分析报告"
+domain: "philosophy-learning"
+report_type: "paper_analysis"
+status: "completed"
+updated_on: "2026-03-24"
+---
 # 盖梯尔《有理由的真信念就是知识吗？》(1963) 深度分析报告
 
 > 文本：Edmund Gettier, "Is Justified True Belief Knowledge?" (1963), *Analysis*, Vol. 23, No. 6, pp. 121–123.
@@ -338,3 +345,4 @@ Q2（"要么琼斯拥有福特车，要么布朗在巴塞罗那"）是**真的**
 - *Williamson, T. Knowledge and Its Limits. Oxford University Press, 2000.*
 - *Zagzebski, L. Virtues of the Mind. Cambridge University Press, 1996.*
 - *Shope, R. The Analysis of Knowing. Princeton University Press, 1983.*
+

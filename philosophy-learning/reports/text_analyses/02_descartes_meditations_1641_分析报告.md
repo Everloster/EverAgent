@@ -1,3 +1,10 @@
+---
+title: "02_descartes_meditations_1641_分析报告"
+domain: "philosophy-learning"
+report_type: "text_analysis"
+status: "completed"
+updated_on: "2026-03-24"
+---
 # 笛卡尔《第一哲学沉思集》(1641) 深度分析报告
 
 > 文本：René Descartes, *Meditationes de Prima Philosophia* (1641)
@@ -320,3 +327,4 @@
 - *Williams, B. Descartes: The Project of Pure Enquiry. Penguin, 1978.*
 - *Cottingham, J. (ed.) The Cambridge Companion to Descartes. Cambridge University Press, 1992.*
 - *Frankfurt, H. Demons, Dreamers, and Madmen. Princeton University Press, 1970.*
+

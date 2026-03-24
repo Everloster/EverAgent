@@ -7,6 +7,17 @@ Uses requests for HTTP operations.
 import json
 import sys
 from typing import Any, Dict, List, Optional
+from urllib.parse import urlencode
+
+
+def encode_query_params(params: Dict) -> str:
+    """Encode query parameters safely, including spaces and special characters."""
+    return urlencode(params, doseq=True)
+
+
+class GitHubAPIError(Exception):
+    """Raised when GitHub API request fails."""
+
 
 try:
     import requests
@@ -34,7 +45,7 @@ except ImportError:
         @staticmethod
         def get(url: str, headers: dict = None, params: dict = None, timeout: int = 30):
             if params:
-                query = "&".join(f"{k}={v}" for k, v in params.items())
+                query = encode_query_params(params)
                 url = f"{url}?{query}"
 
             req = urllib.request.Request(url, headers=headers or {})
@@ -76,12 +87,23 @@ class GitHubAPI:
         if accept:
             headers["Accept"] = accept
 
-        resp = requests.get(url, headers=headers, params=params, timeout=30)
-        resp.raise_for_status()
+        try:
+            resp = requests.get(url, headers=headers, params=params, timeout=30)
+            resp.raise_for_status()
+        except Exception as e:
+            message = f"GitHub API request failed: GET {endpoint}"
+            if params:
+                message += f" params={params}"
+            raise GitHubAPIError(f"{message}: {e}") from e
 
         if "application/vnd.github.raw" in (accept or ""):
             return resp.text
-        return resp.json()
+        try:
+            return resp.json()
+        except Exception as e:
+            raise GitHubAPIError(
+                f"GitHub API returned non-JSON response for {endpoint}: {e}"
+            ) from e
 
     def get_repo_info(self, owner: str, repo: str) -> Dict:
         """Get basic repository information."""
@@ -260,11 +282,8 @@ class GitHubAPI:
 
         # Add contributor count
         try:
-            contributors = self.get_contributors(owner, repo, limit=1)
-            # GitHub returns Link header with total, but we approximate
-            summary["contributor_count"] = len(
-                self.get_contributors(owner, repo, limit=100)
-            )
+            # Approximate with first 100 contributors to avoid extra API calls.
+            summary["contributor_count"] = len(self.get_contributors(owner, repo, limit=100))
         except Exception:
             summary["contributor_count"] = "N/A"
 

@@ -1,3 +1,10 @@
+---
+title: "CS关键人物图谱"
+domain: "cs-learning"
+report_type: "knowledge_report"
+status: "completed"
+updated_on: "2026-03-24"
+---
 # CS 关键人物图谱
 
 > 计算机科学先驱的生涯轨迹、思想传承与技术影响
@@ -300,3 +307,4 @@ Google Research ─────────────── 分布式系统 + 
 ---
 
 *"The question of whether machines can think is about as relevant as the question of whether submarines can swim." — Edsger W. Dijkstra*
+

@@ -1,3 +1,10 @@
+---
+title: "02_milgram_obedience_1963_分析报告"
+domain: "psychology-learning"
+report_type: "paper_analysis"
+status: "completed"
+updated_on: "2026-03-24"
+---
 # 分析报告：Milgram (1963) — 服从权威实验
 
 > 报告版本：v1.0 | 创建日期：2026-03-24 | 分支：社会心理学
@@ -411,3 +418,4 @@ Milgram, S. (1974). *Obedience to Authority: An Experimental View*. Harper & Row
 *报告完成日期：2026-03-24*
 *分析深度：适合心理学入门至中级读者*
 *预计阅读时长：50–70 分钟*
+

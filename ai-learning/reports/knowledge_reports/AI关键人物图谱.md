@@ -1,3 +1,10 @@
+---
+title: "AI关键人物图谱"
+domain: "ai-learning"
+report_type: "knowledge_report"
+status: "completed"
+updated_on: "2026-03-23"
+---
 # AI 关键人物图谱：追踪那些改变世界的研究者
 
 > 技术史不只是算法的历史，更是人的历史。
@@ -258,3 +265,4 @@ Bengio ──► Mila ──► 大量加拿大 AI 人才输出
 > **学习建议**：了解这些人物背景，有助于理解论文背后的研究文化。
 > 当你读 InstructGPT 时，知道 Dario 两年后离开创立 Anthropic；
 > 当你读 ResNet 时，知道何恺明后来去了 Meta 又回到学术——这些不只是花边，而是理解 AI 生态的线索。
+

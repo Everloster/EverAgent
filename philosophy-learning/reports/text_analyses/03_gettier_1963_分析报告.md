@@ -1,3 +1,10 @@
+---
+title: "03_gettier_1963_分析报告"
+domain: "philosophy-learning"
+report_type: "text_analysis"
+status: "completed"
+updated_on: "2026-03-24"
+---
 # 分析报告：Is Justified True Belief Knowledge?
 
 ---
@@ -223,3 +230,4 @@ Williamson（2000）知识第一主义（拒绝分析路径）
 
 *生成日期：2026-03-24*
 *对应 PAPERS_INDEX.md 编号：03*
+

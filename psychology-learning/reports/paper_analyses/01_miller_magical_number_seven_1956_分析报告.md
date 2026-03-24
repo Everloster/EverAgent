@@ -1,3 +1,10 @@
+---
+title: "01_miller_magical_number_seven_1956_分析报告"
+domain: "psychology-learning"
+report_type: "paper_analysis"
+status: "completed"
+updated_on: "2026-03-24"
+---
 # 分析报告：Miller (1956) — 神奇的数字七
 
 > 报告版本：v1.0 | 创建日期：2026-03-24 | 分支：认知心理学
@@ -341,3 +348,4 @@ Miller, G. A. (1956). The magical number seven, plus or minus two: Some limits o
 *报告完成日期：2026-03-24*
 *分析深度：适合心理学入门至中级读者*
 *预计阅读时长：40–60 分钟*
+
