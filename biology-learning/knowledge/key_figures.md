@@ -1,3 +1,9 @@
+---
+topic: "生物学关键人物"
+related_papers: []
+last_updated: "2026-03-26"
+---
+
 # Key Contributors: Chronobiology & Sleep Science
 
 ## Till Roenneberg (Munich University, Chronobiology)

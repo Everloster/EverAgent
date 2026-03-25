@@ -1,3 +1,9 @@
+---
+topic: "分布式系统基石"
+related_papers: ["#10 MapReduce 2004", "#12 Bigtable 2006"]
+last_updated: "2026-03-26"
+---
+
 # 分布式系统基石：MapReduce编程模型
 
 ## 核心论文背景

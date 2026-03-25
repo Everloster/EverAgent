@@ -1,3 +1,11 @@
+---
+title: "Bigtable (2006) 论文精读"
+domain: "cs-learning"
+report_type: "paper_analysis"
+status: "completed"
+updated_on: "2026-03-25"
+---
+
 # Bigtable 论文深度分析报告
 
 ---

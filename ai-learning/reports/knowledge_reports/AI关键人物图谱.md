@@ -1,5 +1,5 @@
 ---
-title: "AI关键人物图谱"
+title: "AI 关键人物图谱"
 domain: "ai-learning"
 report_type: "knowledge_report"
 status: "completed"

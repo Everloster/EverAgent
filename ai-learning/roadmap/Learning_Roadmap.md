@@ -16,7 +16,7 @@ Phase 1          Phase 2          Phase 3          Phase 4
 
 ---
 
-## Phase 1：数学与机器学习基础（4-6 周）
+## Phase 1：数学与机器学习基础（4-6 周） — 📊 0%
 
 ### 目标
 建立扎实的数学基础，理解传统机器学习核心算法
@@ -40,7 +40,7 @@ Phase 1          Phase 2          Phase 3          Phase 4
 
 ---
 
-## Phase 2：深度学习核心（6-8 周）
+## Phase 2：深度学习核心（6-8 周） — 📊 33%
 
 ### 目标
 掌握深度学习核心架构，能读懂并实现主流模型
@@ -73,11 +73,11 @@ Phase 1          Phase 2          Phase 3          Phase 4
 ### 本阶段里程碑
 - [ ] 手写 Transformer（从零实现）
 - [ ] 用 PyTorch 训练图像分类模型
-- [ ] 读懂并能讲解 Attention Is All You Need
+- [x] 读懂并能讲解 Attention Is All You Need
 
 ---
 
-## Phase 3：大语言模型与 NLP（8-10 周）
+## Phase 3：大语言模型与 NLP（8-10 周） — 📊 0%
 
 ### 目标
 深入理解 LLM 全技术栈，从预训练到部署
@@ -163,7 +163,7 @@ Phase 1          Phase 2          Phase 3          Phase 4
 
 ---
 
-## Phase 4：前沿专题（持续进行）
+## Phase 4：前沿专题（持续进行） — 📊 进行中
 
 ### 4.1 多模态 AI
 - CLIP（文本-图像对齐）
@@ -220,6 +220,18 @@ Phase 1          Phase 2          Phase 3          Phase 4
 3. **LoRA 微调 LLaMA**
 4. **实现扩散模型生成图像**
 5. **搭建 AI Agent with Tool Use**
+
+---
+
+## 🎯 下一步行动（Next Actions）
+
+基于当前进度，推荐的下一步：
+
+1. **Phase 2 收尾**：完成 Transformer 从零实现（nanoGPT），标记 Phase 2 完成
+2. **Phase 3 启动**：开始 BERT/GPT-3 精读（报告已有），进入 HuggingFace 实践
+3. **补充 Phase 1**：用 sklearn 完成一个完整的 ML pipeline 实践
+
+> 上次更新：2026-03-26
 
 ---
 

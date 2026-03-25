@@ -1,3 +1,11 @@
+---
+title: "Chain-of-Thought (2022) 论文精读"
+domain: "ai-learning"
+report_type: "paper_analysis"
+status: "completed"
+updated_on: "2026-03-25"
+---
+
 # Chain-of-Thought Prompting 论文分析报告
 
 > 生成日期：2026-03-25 | 使用「论文7步分析框架」

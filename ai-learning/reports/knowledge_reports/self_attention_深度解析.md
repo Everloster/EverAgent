@@ -1,5 +1,5 @@
 ---
-title: "self_attention_深度解析"
+title: "Self-Attention 深度解析"
 domain: "ai-learning"
 report_type: "knowledge_report"
 status: "completed"

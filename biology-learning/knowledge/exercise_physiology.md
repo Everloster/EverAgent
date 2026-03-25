@@ -1,3 +1,9 @@
+---
+topic: "运动生理学"
+related_papers: []
+last_updated: "2026-03-26"
+---
+
 # Exercise Physiology: Timing, Body Temp, Performance
 
 ## Core Body Temperature (CBT) & Strength

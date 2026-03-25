@@ -1,3 +1,9 @@
+---
+topic: "计算理论基础"
+related_papers: ["#01 Turing 1950", "#02 Shannon 1948"]
+last_updated: "2026-03-26"
+---
+
 # 计算机科学基础：图灵与可计算性
 
 ## 核心人物：Alan Turing (1912-1954)

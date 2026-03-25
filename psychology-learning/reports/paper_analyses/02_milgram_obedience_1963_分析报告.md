@@ -1,5 +1,5 @@
 ---
-title: "02_milgram_obedience_1963_分析报告"
+title: "Milgram 服从实验 (1963) 精读"
 domain: "psychology-learning"
 report_type: "paper_analysis"
 status: "completed"

@@ -1,5 +1,5 @@
 ---
-title: "01_transformer_2017_分析报告"
+title: "Transformer (2017) 论文精读"
 domain: "ai-learning"
 report_type: "paper_analysis"
 status: "completed"

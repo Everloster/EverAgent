@@ -1,5 +1,5 @@
 ---
-title: "10_mapreduce_2004_分析报告"
+title: "MapReduce (2004) 论文精读"
 domain: "cs-learning"
 report_type: "paper_analysis"
 status: "completed"

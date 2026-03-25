@@ -11,14 +11,14 @@
 
 EverAgent 是以 AI Agent 为核心工具的个人知识库，通过系统化学习路径、深度分析报告和自动化工具，将学习从"被动积累"变为"主动建构"。目前包含 **6 个子项目**：
 
-| 项目 | 领域 | 状态 |
-|------|------|------|
-| [🤖 AI Learning](./ai-learning/README.md) | 人工智能技术·论文精读·技术深度报告 | 🟢 活跃 |
-| [💻 CS Learning](./cs-learning/README.md) | 计算机科学·系统·算法·分布式 | 🟢 活跃 |
-| [📚 Philosophy Learning](./philosophy-learning/README.md) | 西方哲学史·经典文本·概念辨析 | 🟢 活跃 |
-| [🧠 Psychology Learning](./psychology-learning/README.md) | 心理学·经典实验精读·行为经济学 | 🟢 活跃 |
-| [🧬 Biology Learning](./biology-learning/README.md) | 时间生物学·睡眠科学·运动生理学 | 🟢 活跃 |
-| [📈 GitHub Trending Analyzer](./github-trending-analyzer/README.md) | 开源热点追踪·Repo 深度研究 | 🟢 活跃 |
+| 项目 | 领域 | 内容量 | 状态 |
+|------|------|--------|------|
+| [🤖 AI Learning](./ai-learning/README.md) | 人工智能技术·论文精读·技术深度报告 | 10 篇精读 + 5 篇深度报告 | 🟢 活跃 |
+| [💻 CS Learning](./cs-learning/README.md) | 计算机科学·系统·算法·分布式 | 4 篇精读 + 1 篇人物图谱 | 🟡 建设中 |
+| [📚 Philosophy Learning](./philosophy-learning/README.md) | 西方哲学史·经典文本·概念辨析 | 2 篇文本分析 + 1 篇人物图谱 | 🟡 建设中 |
+| [🧠 Psychology Learning](./psychology-learning/README.md) | 心理学·经典实验精读·行为经济学 | 2 篇精读 + 1 篇人物图谱 | 🟡 建设中 |
+| [🧬 Biology Learning](./biology-learning/README.md) | 时间生物学·睡眠科学·运动生理学 | 1 篇概念报告 | 🔵 初始化 |
+| [📈 GitHub Trending Analyzer](./github-trending-analyzer/README.md) | 开源热点追踪·Repo 深度研究 | 57 篇 Repo 报告 + 7 篇汇总 | 🟢 活跃 |
 
 ---
 

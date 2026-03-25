@@ -1,3 +1,11 @@
+---
+title: "Scaling Laws 深度解析"
+domain: "ai-learning"
+report_type: "knowledge_report"
+status: "completed"
+updated_on: "2026-03-25"
+---
+
 # Scaling Laws 深度解析
 
 > 生成日期：2026-03-25 | 来源论文：Scaling Laws for Neural Language Models（Kaplan et al., 2020）

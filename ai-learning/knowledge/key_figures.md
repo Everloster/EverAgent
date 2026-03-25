@@ -1,3 +1,9 @@
+---
+topic: "AI 关键人物图谱"
+related_papers: []
+last_updated: "2026-03-26"
+---
+
 # AI 关键人物与机构演变
 
 ## Transformer 八位作者的命运

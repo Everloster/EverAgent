@@ -1,3 +1,11 @@
+---
+title: "Shannon (1948) 论文精读"
+domain: "cs-learning"
+report_type: "paper_analysis"
+status: "completed"
+updated_on: "2026-03-24"
+---
+
 # Shannon 信息论 论文分析报告
 
 > 生成日期：2026-03-25 | 使用「CS论文7步分析框架」

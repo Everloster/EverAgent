@@ -1,3 +1,11 @@
+---
+title: "Scaling Laws (2020) 论文精读"
+domain: "ai-learning"
+report_type: "paper_analysis"
+status: "completed"
+updated_on: "2026-03-25"
+---
+
 # 论文精读：Scaling Laws for Neural Language Models
 
 > 生成日期：2026-03-25 | 框架：论文7步分析法

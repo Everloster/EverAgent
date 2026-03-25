@@ -1,5 +1,5 @@
 ---
-title: "CS关键人物图谱"
+title: "CS 关键人物图谱"
 domain: "cs-learning"
 report_type: "knowledge_report"
 status: "completed"
