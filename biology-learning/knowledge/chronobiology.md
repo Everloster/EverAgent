@@ -1,3 +1,9 @@
+---
+topic: "时间生物学"
+related_papers: []
+last_updated: "2026-03-26"
+---
+
 # Chronobiology: Chronotypes & Circadian Phase
 
 ## Chronotype Definition

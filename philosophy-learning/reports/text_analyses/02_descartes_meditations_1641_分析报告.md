@@ -1,5 +1,5 @@
 ---
-title: "02_descartes_meditations_1641_分析报告"
+title: "笛卡尔《第一哲学沉思集》(1641) 文本分析"
 domain: "philosophy-learning"
 report_type: "text_analysis"
 status: "completed"

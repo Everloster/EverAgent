@@ -1,3 +1,11 @@
+---
+title: "LoRA 深度解析"
+domain: "ai-learning"
+report_type: "knowledge_report"
+status: "completed"
+updated_on: "2026-03-25"
+---
+
 # LoRA 深度解析：低秩适应微调
 
 > 生成日期：2026-03-25 | 来源论文：LoRA: Low-Rank Adaptation of Large Language Models（Hu et al., 2021）

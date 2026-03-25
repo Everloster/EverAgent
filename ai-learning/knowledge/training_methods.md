@@ -1,3 +1,9 @@
+---
+topic: "训练方法：RLHF·DPO·RLVR·SFT"
+related_papers: ["#04 InstructGPT 2022", "#26 Tulu3 2024"]
+last_updated: "2026-03-26"
+---
+
 # LLM 后训练方法深度解析
 
 ## RLHF 完整流程

@@ -1,5 +1,5 @@
 ---
-title: "01_miller_magical_number_seven_1956_分析报告"
+title: "Miller 魔力数字七 (1956) 精读"
 domain: "psychology-learning"
 report_type: "paper_analysis"
 status: "completed"

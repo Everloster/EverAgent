@@ -1,3 +1,9 @@
+---
+topic: "认知与社会心理学"
+related_papers: ["#01 Miller 1956", "#02 Milgram 1963"]
+last_updated: "2026-03-26"
+---
+
 # 心理学经典：认知与社会基石
 
 ## Miller的工作记忆容量限制（1956）

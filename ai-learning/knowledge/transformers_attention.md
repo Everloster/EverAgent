@@ -1,3 +1,9 @@
+---
+topic: "Transformer 架构与 Self-Attention"
+related_papers: ["#01 Transformer 2017", "#02 BERT 2018", "#14 Bahdanau Attention 2014", "#19 ViT 2020"]
+last_updated: "2026-03-26"
+---
+
 # Transformer 架构与 Self-Attention 机制
 
 ## 核心概念

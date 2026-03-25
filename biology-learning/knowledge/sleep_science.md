@@ -1,3 +1,9 @@
+---
+topic: "睡眠科学：SWS·GH·训练恢复"
+related_papers: []
+last_updated: "2026-03-26"
+---
+
 # Sleep Science: SWS, GH, Training Recovery
 
 ## SWS-GH Coupling (Born, Muth & Fehm, 1988)

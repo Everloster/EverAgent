@@ -1,5 +1,5 @@
 ---
-title: "03_gettier_1963_分析报告"
+title: "Gettier (1963) 文本分析"
 domain: "philosophy-learning"
 report_type: "text_analysis"
 status: "completed"

@@ -1,3 +1,9 @@
+---
+topic: "Scaling Laws 与大模型发展史"
+related_papers: ["#05 Scaling Laws 2020", "#22 Bitter Lesson 2019", "#31 MegaScale 2024"]
+last_updated: "2026-03-26"
+---
+
 # AI 发展史：从 Transformer 到现代大模型
 
 ## 2017-2024 核心时间线
