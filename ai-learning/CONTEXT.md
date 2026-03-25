@@ -9,6 +9,7 @@
 - `02_bert_2018` — 双向预训练语言模型
 - `03_gpt3_2020` — 大规模语言模型与 Few-shot 能力
 - `04_instructgpt_2022` — RLHF三阶段训练·ChatGPT前身·对齐税（2026-03-25）
+- `10_chain_of_thought_2022` — CoT Prompting·思维链激活推理·涌现现象（2026-03-25）
 - `26_tulu3_2024` — SFT→DPO→RLVR 后训练完整流程
 
 **知识深度解析** (`reports/knowledge_reports/`)
