@@ -1,3 +1,10 @@
+---
+title: "RLHF_深度解析"
+domain: "ai-learning"
+report_type: "knowledge_report"
+status: "completed"
+updated_on: "2026-03-23"
+---
 # 知识深度解析：RLHF（人类反馈强化学习）
 
 > 生成日期：2026-03-23 | 难度：⭐⭐⭐⭐
@@ -219,3 +226,4 @@ DeepSeek-R1 使用，进一步简化，不需要价值函数（Critic）：
 - [HuggingFace TRL 文档](https://huggingface.co/docs/trl)
 - [Lilian Weng: RLHF 综述](https://lilianweng.github.io/posts/2023-01-27-the-transformer-family-v2/)
 - Nathan Lambert [RLHF Book](https://rlhfbook.com/)
+
