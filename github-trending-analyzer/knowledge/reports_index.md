@@ -52,6 +52,7 @@
 - pbakaus/impeccable
 - promptfoo/promptfoo
 - ruvnet/RuView
+- ruvnet/ruflo
 - shareAI-lab/learn-claude-code
 - sickn33/antigravity-awesome-skills
 - systemd/systemd
