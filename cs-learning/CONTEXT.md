@@ -6,6 +6,7 @@
 ## 已有报告
 **论文精读** (`reports/paper_analyses/`)
 - `01_turing_1950` — Computing Machinery and Intelligence，图灵测试奠基
+- `02_shannon_1948` — A Mathematical Theory of Communication，信息熵·信道容量·Shannon极限（2026-03-25）
 - `10_mapreduce_2004` — MapReduce，大规模数据处理范式
 
 **知识深度解析** (`reports/knowledge_reports/`)
@@ -26,4 +27,5 @@
 ## ⚠️ 边界（防幻觉）
 以下内容**尚未研究**，禁止推测，须告知用户：
 - OS、网络、数据库、编译器等方向尚无独立精读报告
-- 论文索引中列出的 28 篇论文均**未精读**（仅有索引，无分析报告）
+- 论文索引中列出的大多数论文**未精读**（仅有索引，无分析报告）
+- #02 Shannon (1948) ✅ 已完成（02_shannon_1948）
