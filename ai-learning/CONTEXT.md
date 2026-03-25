@@ -8,12 +8,14 @@
 - `01_transformer_2017` — Attention Is All You Need，Self-Attention 机制奠基
 - `02_bert_2018` — 双向预训练语言模型
 - `03_gpt3_2020` — 大规模语言模型与 Few-shot 能力
+- `04_instructgpt_2022` — RLHF三阶段训练·ChatGPT前身·对齐税（2026-03-25）
 - `26_tulu3_2024` — SFT→DPO→RLVR 后训练完整流程
 
 **知识深度解析** (`reports/knowledge_reports/`)
 - `self_attention_深度解析` — 含代码实现
 - `RLHF_深度解析` — PPO/DPO 对比
 - `AI关键人物图谱` — Transformer 作者去向·OpenAI 分裂史
+- `Scaling_Laws_深度解析` — Kaplan 2020 幂律关系·Chinchilla 修正·涌现能力（2026-03-25）
 
 ## 离线知识库
 → [`knowledge/INDEX.md`](./knowledge/INDEX.md)（子话题菜单，离线模型从此进入）
@@ -29,5 +31,7 @@
 ## ⚠️ 边界（防幻觉）
 以下内容**尚未研究**，禁止推测，须告知用户：
 - GPT-4 / Claude / Gemini / LLaMA 系列的专项分析报告
-- Scaling Laws 独立深度报告（仅在 GPT-3 报告中有涉及）
-- 工程类报告（FlashAttention、KV Cache 等尚无独立精读）
+- 工程类报告（FlashAttention、KV Cache、ZeRO 等尚无独立精读）
+- InstructGPT / PPO 的论文级精读 ✅ 已完成（04_instructgpt_2022）
+- Scaling Laws 论文（Kaplan 2020）精读级分析（知识报告已有，论文7步分析尚缺）
+- 工程类论文精读（FlashAttention #18、ZeRO #25、MegaScale #31 等）
