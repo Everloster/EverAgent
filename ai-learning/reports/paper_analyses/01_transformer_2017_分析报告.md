@@ -1,3 +1,10 @@
+---
+title: "01_transformer_2017_分析报告"
+domain: "ai-learning"
+report_type: "paper_analysis"
+status: "completed"
+updated_on: "2026-03-23"
+---
 # 论文深度分析：Attention Is All You Need（Transformer）
 
 > 分析日期：2026-03-23 | 优先级：⭐⭐⭐ 必读精读
@@ -222,3 +229,4 @@ LSTM(1997) ──→ Bahdanau Attention(2014) ──→ Transformer(2017)
 3. `GPT-3 (2020)` — Transformer Decoder 的极限扩展
 4. `FlashAttention (2022)` — 解决注意力计算瓶颈
 5. Andrej Karpathy `makemore` / `nanoGPT` — 从零实现 Transformer
+
