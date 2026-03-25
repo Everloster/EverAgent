@@ -1,7 +1,7 @@
 # 🧠 EverAgent — 个人学习与研究工作台
 
-> 用 AI Agent 驱动的个人知识体系，覆盖 AI 技术、哲学思想、心理学与开源生态
-> 创建日期：2026-03-23 | 最后更新：2026-03-24
+> 用 AI Agent 驱动的个人知识体系，覆盖 AI 技术、哲学思想、心理学、生命科学与开源生态
+> 创建日期：2026-03-23 | 最后更新：2026-03-25
 
 ---
 
@@ -9,13 +9,15 @@
 
 EverAgent 是一个以 AI Agent 为核心工具的个人知识库，通过系统化的学习路径、深度分析报告和自动化工具，将学习从"被动积累"变为"主动建构"。
 
-目前包含 **4 个子项目**：
+目前包含 **6 个子项目**：
 
 | 项目 | 领域 | 核心产出 | 状态 |
 |------|------|---------|------|
 | [🤖 AI Learning](./ai-learning/) | 人工智能技术 | 论文精读 · 技术深度报告 | 🟢 活跃中 |
+| [💻 CS Learning](./cs-learning/) | 计算机科学 | 经典论文精读 · 系统设计 | 🟢 活跃中 |
 | [📚 Philosophy Learning](./philosophy-learning/) | 西方哲学史 | 经典文本分析 · 概念图谱 | 🟢 活跃中 |
 | [🧠 Psychology Learning](./psychology-learning/) | 心理学 | 经典实验精读 · 概念深度解析 | 🟢 活跃中 |
+| [🧬 Biology Learning](./biology-learning/) | 生命科学（时间生物学 · 睡眠科学 · 运动生理学） | 机制深度报告 · 论文精读 | 🟢 活跃中 |
 | [📈 GitHub Trending Analyzer](./github-trending-analyzer/) | 开源生态 | 每日/周/月热点分析报告 | 🟢 活跃中 |
 
 ---
@@ -37,6 +39,21 @@ EverAgent 是一个以 AI Agent 为核心工具的个人知识库，通过系统
 - 📄 30 篇核心论文 PDF 已就位
 
 → [进入项目](./ai-learning/README.md)
+
+---
+
+### 💻 CS Learning — 计算机科学系统学习
+
+**目标**：覆盖近80年 CS 发展史、经典理论与系统原理精读、持续积累深度分析报告。
+
+三个核心视角：**理论深度**（经典论文与教材精读）× **历史叙事**（人物图谱、技术演化）× **工程实践**（系统设计与代码实现）
+
+当前进度：
+- 📄 30 篇核心论文索引已就位
+- 📖 25 部经典教材索引已就位
+- ✅ 系统学习路径 Phase 1–6 + 专题模块
+
+→ [进入项目](./cs-learning/README.md)
 
 ---
 
@@ -90,6 +107,21 @@ EverAgent 是一个以 AI Agent 为核心工具的个人知识库，通过系统
 
 ---
 
+### 🧬 Biology Learning — 生命科学系统学习
+
+**目标**：覆盖时间生物学、睡眠科学、运动生理学与神经科学的核心机制，持续积累深度专题研究报告。
+
+三个核心视角：**机制深度**（生理机制精读）× **历史叙事**（人物图谱、范式演替）× **个体化应用**（生命科学如何指导健康优化与认知表现）
+
+当前进度：
+- ✅ 晚型人作息与力量训练深度研究报告（时间生物学 × 睡眠科学 × 运动生理学交叉研究）
+- 📄 28 篇核心论文索引（时间生物学 / 睡眠科学 / 运动生理学）已就位
+- 📖 25 部经典书籍索引已就位（含 Roenneberg、Walker、Foster、Sapolsky 等）
+
+→ [进入项目](./biology-learning/README.md)
+
+---
+
 ## 🛠️ 技能体系
 
 各子项目均内置专属 Skill，可被 AI Agent 直接调用：
@@ -102,6 +134,8 @@ EverAgent 是一个以 AI Agent 为核心工具的个人知识库，通过系统
 | `concept_deep_dive` | 哲学概念5层理解模型 | philosophy-learning |
 | `paper_analysis`（心理学版）| 实验/论文7步分析法 | psychology-learning |
 | `concept_deep_dive`（心理学版）| 心理学概念5层理解模型 | psychology-learning |
+| `paper_analysis`（生物学版）| 生物学论文7步分析法 | biology-learning |
+| `concept_deep_dive`（生物学版）| 生物学概念5层理解模型 | biology-learning |
 | `github-trending-analyzer` | 热点项目趋势分析 | github-trending-analyzer |
 | `github-deep-research` | 单仓库多轮深度研究 | github-trending-analyzer |
 
@@ -109,7 +143,7 @@ EverAgent 是一个以 AI Agent 为核心工具的个人知识库，通过系统
 
 ## 🗺️ 整体学习理念
 
-四个项目看似独立，实则共享同一套底层方法论：
+五个项目看似独立，实则共享同一套底层方法论：
 
 ```
 提问  →  深度研究  →  结构化输出  →  持续迭代
