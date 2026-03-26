@@ -12,6 +12,7 @@
 - `07_resnet_2015` — 残差连接·退化问题解决·深度视觉里程碑·催生Transformer残差（2026-03-25）
 - `08_gan_2014` — 生成对抗网络·博弈框架·无需MCMC·JS散度最小化·开创生成模型新范式（2026-03-25）
 - `09_ddpm_2020` — 扩散生成模型·前向加噪·反向去噪·预测噪声ε·FID 3.17超越GAN·Stable Diffusion基石（2026-03-26）
+- `06_alexnet_2012` — 深度CNN·GPU训练·ReLU激活·Dropout正则化·ILSVRC 2012碾压传统方法·深度学习复兴拐点（2026-03-26）
 - `05_scaling_laws_2020` — 幂律三变量·计算最优配置·Chinchilla对比（已有，待登记）
 - `10_chain_of_thought_2022` — CoT Prompting·思维链激活推理·涌现现象（2026-03-25）
 - `26_tulu3_2024` — SFT→DPO→RLVR 后训练完整流程
@@ -45,4 +46,5 @@
 - ResNet (#07) ✅ 已完成（07_resnet_2015）
 - GAN (#08) ✅ 已完成（08_gan_2014）
 - DDPM (#09) ✅ 已完成（09_ddpm_2020）
-- Phase 2 基础论文尚缺：AlexNet (#06，PDF未下载）、DDIM等后续扩散论文
+- AlexNet (#06) ✅ 已完成（06_alexnet_2012，基于论文知识分析）
+- Phase 2 尚缺：DDIM等后续扩散论文；VGGNet、Batch Normalization专项报告
