@@ -19,6 +19,7 @@
 - `13_paxos_2001` — Paxos Made Simple·Prepare/Promise/Accept两阶段·多数派共识·值延续性·Multi-Paxos→Raft先驱（2026-03-26）
 - `22_kafka_2011` — 分布式消息日志·追加写+零拷贝·Pull消费模型+Offset·Consumer Group·ISR副本·现代数据流基础设施（2026-03-26）
 - `04_unix_1974` — 一切皆文件·inode文件系统·fork/exec/wait进程模型·管道组合哲学·Shell即普通程序·Linux/macOS/容器50年精神祖先（2026-03-26）
+- `14_zookeeper_2010` — 分布式协调服务·ZAB原子广播·会话机制+临时顺序节点·HBase/Kafka早期控制平面基石（2026-03-26）
 
 **知识深度解析** (`reports/knowledge_reports/`)
 - `CS关键人物图谱` — 图灵→香农→Dijkstra→现代系统工程师的思想传承
@@ -49,4 +50,4 @@
 - Paxos Made Simple (#13) ✅ 已完成（13_paxos_2001）
 - Kafka (#22) ✅ 已完成（22_kafka_2011）
 - UNIX Time-Sharing System (#04) ✅ 已完成（04_unix_1974，一切皆文件·fork/exec·管道）
-- 下一步推荐：ZooKeeper/ZAB 协议、Chubby (#15)、A Fast File System for UNIX (#23)
+- 下一步推荐：Chubby (#15)、A Fast File System for UNIX (#23)、Byzantine Generals (#08)

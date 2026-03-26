@@ -206,7 +206,7 @@
 - **发表**：Groups, Leadership and Men (H. Guetzkow, Ed.), 177–190
 - **核心内容**：当一组同谋者都选择明显错误的线段时，约37%的被试会随从群体给出错误答案；揭示规范性从众的力量
 - **核心概念**：从众（Conformity）、规范性社会影响、信息性社会影响
-- **阅读状态**：⬜ 待读
+- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/14_asch_conformity_1951_分析报告.md`）
 
 ---
 

@@ -24,6 +24,7 @@
 - `16_llama_2023` — 开源大模型·推理最优策略·7B超越GPT-3·Pre-Norm+SwiGLU+RoPE·开源生态Linux时刻（2026-03-26）
 - `13_swin_transformer_2021` — 层次化视觉Transformer·移位窗口注意力·线性复杂度·多尺度特征图·ICCV2021最佳论文·统一分类检测分割（2026-03-26）
 - `17_mae_2022` — 掩码自编码器·75%高遮蔽率·不对称编解码器·像素重建·ImageNet ViT-H 86.9%·COCO检测超监督预训练·生成式自监督视觉范式（2026-03-26）
+- `18_mistral_7b_2023` — 小参数高性能开源LLM·GQA+SWA架构·7B级别推理效率与质量平衡里程碑（2026-03-26）
 
 **知识深度解析** (`reports/knowledge_reports/`)
 - `self_attention_深度解析` — 含代码实现
@@ -61,4 +62,4 @@
 - LLaMA (#16) ✅ 已完成（16_llama_2023）
 - Swin Transformer (#13) ✅ 已完成（13_swin_transformer_2021）
 - MAE (#17) ✅ 已完成（17_mae_2022，75%掩码率·ViT自监督预训练·CVPR 2022）
-- 下一步推荐：LLaMA 2、Mistral 7B、DINO v2、VideoMAE
+- 下一步推荐：LLaMA 2、DINO v2、VideoMAE、FlashAttention
