@@ -16,6 +16,7 @@
 - `21_spanner_2012` — Google全球分布式数据库·TrueTime(GPS+原子钟)·外部一致性·Commit Wait·SQL+ACID+水平扩展·NewSQL起点（2026-03-26）
 - `13_paxos_2001` — Paxos Made Simple·Prepare/Promise/Accept两阶段·多数派共识·值延续性·Multi-Paxos→Raft先驱（2026-03-26）
 - `22_kafka_2011` — 分布式消息日志·追加写+零拷贝·Pull消费模型+Offset·Consumer Group·ISR副本·现代数据流基础设施（2026-03-26）
+- `04_unix_1974` — 一切皆文件·inode文件系统·fork/exec/wait进程模型·管道组合哲学·Shell即普通程序·Linux/macOS/容器50年精神祖先（2026-03-26）
 
 **知识深度解析** (`reports/knowledge_reports/`)
 - `CS关键人物图谱` — 图灵→香农→Dijkstra→现代系统工程师的思想传承
@@ -34,7 +35,7 @@
 
 ## ⚠️ 边界（防幻觉）
 以下内容**尚未研究**，禁止推测，须告知用户：
-- OS、网络、编译器等方向尚无独立精读报告
+- OS 方向已有 UNIX (1974) 精读；网络、编译器等方向尚无独立精读报告
 - 论文索引中列出的大多数论文**未精读**（仅有索引，无分析报告）
 - #02 Shannon (1948) ✅ 已完成（02_shannon_1948）
 - #12 Bigtable (2006) ✅ 已完成（12_bigtable_2006）
@@ -45,4 +46,5 @@
 - #21 Spanner (2012) ✅ 已完成（21_spanner_2012）
 - Paxos Made Simple (#13) ✅ 已完成（13_paxos_2001）
 - Kafka (#22) ✅ 已完成（22_kafka_2011）
-- 下一步推荐：ZooKeeper/ZAB 协议、UNIX Time-Sharing System (#04)、Chubby (#15)
+- UNIX Time-Sharing System (#04) ✅ 已完成（04_unix_1974，一切皆文件·fork/exec·管道）
+- 下一步推荐：ZooKeeper/ZAB 协议、Chubby (#15)、A Fast File System for UNIX (#23)
