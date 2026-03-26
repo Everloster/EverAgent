@@ -1,5 +1,7 @@
 # github-trending-analyzer — Project Context
 
+> **Agent 协议**：操作本项目前须完成 [AGENTS.md](../AGENTS.md) §0 初始化。任务3（执行任务）完成后须按 §4 自动提交推送。
+
 **领域**：GitHub 开源热点追踪·Repo 深度研究·趋势洞察知识库
 **双重身份**：自动化分析工具 + 开源生态知识库
 

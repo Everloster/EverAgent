@@ -1,5 +1,7 @@
 # psychology-learning — Project Context
 
+> **Agent 协议**：操作本项目前须完成 [AGENTS.md](../AGENTS.md) §0 初始化。任务3（执行任务）完成后须按 §4 自动提交推送。
+
 **领域**：心理学·经典实验精读·概念深度解析
 **三维度**：实验深度 × 历史叙事 × 当代相关性
 
