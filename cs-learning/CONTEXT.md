@@ -12,6 +12,7 @@
 - `05_lamport_clocks_1978` — happens-before偏序·逻辑时钟·全序扩展·分布式互斥算法·向量时钟先驱（2026-03-26）
 - `09_gfs_2003` — Google文件系统·单Master+ChunkServer·64MB大块·Lease机制·追加写语义·Hadoop HDFS原型（2026-03-26）
 - `11_dynamo_2007` — Amazon高可用KV存储·一致性哈希·Sloppy Quorum·向量时钟·Gossip·Merkle Tree反熵·AP系统典范（2026-03-26）
+- `13_raft_2014` — 可理解性优先共识算法·强Leader+随机超时选举·日志复制两阶段·五大安全性质·etcd/TiKV/CockroachDB原型（2026-03-26）
 
 **知识深度解析** (`reports/knowledge_reports/`)
 - `CS关键人物图谱` — 图灵→香农→Dijkstra→现代系统工程师的思想传承
@@ -37,4 +38,5 @@
 - #05 Lamport Clocks (1978) ✅ 已完成（05_lamport_clocks_1978）
 - #09 GFS (2003) ✅ 已完成（09_gfs_2003）
 - #11 Dynamo (2007) ✅ 已完成（11_dynamo_2007）
-- 下一步推荐：Raft (#13)、Dynamo → Cassandra 对比、Spanner (#14)
+- #13 Raft (2014) ✅ 已完成（13_raft_2014）
+- 下一步推荐：Spanner (#14)、Zookeeper (Zab 协议)、Paxos Made Simple 对比
