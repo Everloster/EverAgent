@@ -13,8 +13,8 @@
 > ⚠️ **执行顺序铁律**：汇总报告（`all-*.md`）必须在榜单内所有 repo 的深度分析报告全部生成或确认缓存有效后才能生成。禁止先出汇总、再补深度分析。
 
 ## 知识库现状（`github-trending-reports/`）
-- **汇总报告**：daily ×4、weekly ×1、monthly ×2（共 7 篇）
-- **Repo 深度报告**：57 篇（AI/ML、DevTools、Infra、Agent 等类别）
+- **汇总报告**：daily ×5、weekly ×1、monthly ×2（共 8 篇）
+- **Repo 深度报告**：64 篇（AI/ML、DevTools、Infra、Agent 等类别）
 - 完整索引 → [`knowledge/reports_index.md`](./knowledge/reports_index.md)
 
 ## 离线知识库
