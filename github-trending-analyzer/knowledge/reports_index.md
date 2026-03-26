@@ -7,6 +7,7 @@
 | all-daily-summary-2026-03-17.md | Daily | 2026-03-17 |
 | all-daily-summary-2026-03-22.md | Daily | 2026-03-22 |
 | all-daily-summary-2026-03-24.md | Daily | 2026-03-24 |
+| all-daily-summary-2026-03-25.md | Daily | 2026-03-25 |
 | all-weekly-summary-2026-03-17.md | Weekly | 2026-03-17 |
 | all-monthly-summary-2026-03-17.md | Monthly | 2026-03-17 |
 | all-monthly-summary-2026-03-18.md | Monthly | 2026-03-18 |
@@ -67,3 +68,4 @@
 - Crosstalk-Solutions/project-nomad
 - abhigyanpatwari/GitNexus
 - affaan-m/everything-claude-code
+- BerriAI/litellm
