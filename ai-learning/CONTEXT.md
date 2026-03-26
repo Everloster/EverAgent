@@ -14,8 +14,9 @@
 - `09_ddpm_2020` — 扩散生成模型·前向加噪·反向去噪·预测噪声ε·FID 3.17超越GAN·Stable Diffusion基石（2026-03-26）
 - `06_alexnet_2012` — 深度CNN·GPU训练·ReLU激活·Dropout正则化·ILSVRC 2012碾压传统方法·深度学习复兴拐点（2026-03-26）
 - `11_vit_2020` — Vision Transformer·16×16 Patch·纯注意力图像分类·无归纳偏置·大数据超越CNN·多模态统一架构基础（2026-03-26）
-- `05_scaling_laws_2020` — 幂律三变量·计算最优配置·Chinchilla对比（已有，待登记）
+- `05_scaling_laws_2020` — 幂律三变量·计算最优配置·Chinchilla对比
 - `10_chain_of_thought_2022` — CoT Prompting·思维链激活推理·涌现现象（2026-03-25）
+- `15_lora_2021` — 低秩分解微调·零推理开销·0.01%参数·PEFT运动奠基（2026-03-26）
 - `26_tulu3_2024` — SFT→DPO→RLVR 后训练完整流程
 
 **知识深度解析** (`reports/knowledge_reports/`)
@@ -42,7 +43,7 @@
 - 工程类报告（FlashAttention、KV Cache、ZeRO 等尚无独立精读）
 - InstructGPT / PPO 的论文级精读 ✅ 已完成（04_instructgpt_2022）
 - Scaling Laws 论文（Kaplan 2020）精读级分析 ✅ 已完成（05_scaling_laws_2020）
-- LoRA 论文级精读（知识报告已有，论文7步分析尚缺）
+- LoRA 论文级精读 ✅ 已完成（15_lora_2021）
 - 工程类论文精读（FlashAttention #18、ZeRO #25、MegaScale #31 等）
 - ResNet (#07) ✅ 已完成（07_resnet_2015）
 - GAN (#08) ✅ 已完成（08_gan_2014）
