@@ -9,6 +9,7 @@
 | all-daily-summary-2026-03-24.md | Daily | 2026-03-24 |
 | all-daily-summary-2026-03-25.md | Daily | 2026-03-25 |
 | all-daily-summary-2026-03-26.md | Daily | 2026-03-26 |
+| all-daily-summary-2026-03-27.md | Daily | 2026-03-27 |
 | all-weekly-summary-2026-03-17.md | Weekly | 2026-03-17 |
 | all-monthly-summary-2026-03-17.md | Monthly | 2026-03-17 |
 | all-monthly-summary-2026-03-18.md | Monthly | 2026-03-18 |
