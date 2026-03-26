@@ -9,7 +9,7 @@
 
 | # | 论文 | 作者 | 年份 | 期刊 | 获取链接 | 状态 |
 |---|------|------|------|------|---------|------|
-| P01 | Social Jetlag and Obesity | Roenneberg et al. | 2012 | *Current Biology* | [Cell.com](https://www.cell.com/current-biology/fulltext/S0960-9822(12)00325-9) | ⬜ 待读 |
+| P01 | Social Jetlag and Obesity | Roenneberg et al. | 2012 | *Current Biology* | [Cell.com](https://www.cell.com/current-biology/fulltext/S0960-9822(12)00325-9) | ✅ 已完成 |
 | P02 | Life between clocks: daily temporal patterns of human chronotypes | Roenneberg et al. | 2003 | *J Biol Rhythms* | [PubMed](https://pubmed.ncbi.nlm.nih.gov/12568247/) | ⬜ 待读 |
 | P03 | Epidemiology of the human circadian clock | Roenneberg et al. | 2007 | *Sleep Med Rev* | [PubMed](https://pubmed.ncbi.nlm.nih.gov/17936039/) | ⬜ 待读 |
 | P04 | The circadian system, sleep, and the health/disease balance | Roenneberg & Merrow | 2022 | *J Sleep Research* | [Wiley](https://onlinelibrary.wiley.com/doi/10.1111/jsr.13621) | ⬜ 待读 |
@@ -23,7 +23,7 @@
 
 | # | 论文 | 作者 | 年份 | 期刊 | 获取链接 | 状态 |
 |---|------|------|------|------|---------|------|
-| P08 | The significance of sleep onset and slow wave sleep for nocturnal GH release | Born, Muth & Fehm | 1988 | *J Clin Endocrinol Metab* | [PubMed](https://pubmed.ncbi.nlm.nih.gov/3406323/) | ⬜ 待读 |
+| P08 | The significance of sleep onset and slow wave sleep for nocturnal GH release | Born, Muth & Fehm | 1988 | *J Clin Endocrinol Metab* | [PubMed](https://pubmed.ncbi.nlm.nih.gov/3406323/) | ✅ 已完成 |
 | P09 | Physiology of growth hormone secretion during sleep | Van Cauter et al. | 1996 | *J Pediatrics* | [PubMed](https://pubmed.ncbi.nlm.nih.gov/8627466/) | ⬜ 待读 |
 | P10 | Dose-response relationship between evening exercise and sleep | Stutz et al. | 2025 | *Nature Communications* | [Nature](https://www.nature.com/articles/s41467-025-58271-x) | ⬜ 待读 |
 | P11 | Effects of exercise timing and intensity on physiological circadian rhythm and sleep quality | Luo et al. | 2023 | *PMC Review* | [PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC10636512/) | ⬜ 待读 |
