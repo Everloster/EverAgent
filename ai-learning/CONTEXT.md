@@ -26,6 +26,7 @@
 - `17_mae_2022` — 掩码自编码器·75%高遮蔽率·不对称编解码器·像素重建·ImageNet ViT-H 86.9%·COCO检测超监督预训练·生成式自监督视觉范式（2026-03-26）
 - `33_mistral_7b_2023` — 小参数高性能开源LLM·GQA+SWA架构·7B级别推理效率与质量平衡里程碑（2026-03-26）
 - `18_flashattention_2022` — IO-aware精确Attention·在线Softmax·显存占用显著下降·长上下文训练提速关键内核（2026-03-26）
+- `34_llama2_2023` — 开源基础模型+Chat模型双路线·70B级别开放对话模型·安全微调进入开源主舞台（2026-03-26）
 
 **知识深度解析** (`reports/knowledge_reports/`)
 - `self_attention_深度解析` — 含代码实现
@@ -43,7 +44,7 @@
 
 ## 导航
 - 学习路径：`roadmap/Learning_Roadmap.md`
-- 论文索引：`papers/PAPERS_INDEX.md`（33 篇，含 PDF）
+- 论文索引：`papers/PAPERS_INDEX.md`（34 篇，含 PDF）
 
 ## ⚠️ 边界（防幻觉）
 以下内容**尚未研究**，禁止推测，须告知用户：
@@ -63,4 +64,4 @@
 - LLaMA (#16) ✅ 已完成（16_llama_2023）
 - Swin Transformer (#13) ✅ 已完成（13_swin_transformer_2021）
 - MAE (#17) ✅ 已完成（17_mae_2022，75%掩码率·ViT自监督预训练·CVPR 2022）
-- 下一步推荐：LLaMA 2、DINO v2、VideoMAE、ZeRO
+- 下一步推荐：DINO v2、VideoMAE、ZeRO、KV Cache
