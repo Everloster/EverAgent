@@ -47,11 +47,22 @@ def safe_format_number(value, default="N/A"):
     return default
 
 
+def get_growth_label(period: str) -> str:
+    """Return a human-readable star growth label for the selected period."""
+    labels = {
+        "daily": "今日增长",
+        "weekly": "本周增长",
+        "monthly": "本月增长",
+    }
+    return labels.get(period, "周期增长")
+
+
 def generate_project_report(
     repo_data: Dict,
     analysis_data: Dict,
     output_path: Path,
     research_method: str = "Web搜索 + GitHub页面分析",
+    period: str = "daily",
 ) -> Path:
     """
     Generate a single project report.
@@ -65,6 +76,7 @@ def generate_project_report(
             method used (e.g. "github-deep-research 多轮深度研究" vs
             "Web搜索 + GitHub页面分析"). Defaults to the web-search variant
             which is the common case for non-Trae platforms.
+        period: Ranking period used to interpret the star delta field.
 
     Returns:
         Path to the generated report
@@ -89,7 +101,7 @@ def generate_project_report(
 | Stars | {safe_format_number(repo_data.get('stars'))} |
 | Forks | {safe_format_number(repo_data.get('forks'))} |
 | 语言 | {repo_data.get('language', 'Unknown')} |
-| 今日增长 | {safe_format_number(repo_data.get('today_stars'))} ⭐ |
+| {get_growth_label(period)} | {safe_format_number(repo_data.get('today_stars'))} ⭐ |
 | 开源协议 | {analysis_data.get('license', 'N/A')} |
 | 创建时间 | {analysis_data.get('created_at', 'N/A')} |
 | 最近更新 | {analysis_data.get('updated_at', 'N/A')} |
@@ -337,7 +349,7 @@ def generate_summary_report(
 |--------|------|
 | 分析项目数 | {len(repos)} |
 | 总 Stars | {total_stars:,} |
-| 今日新增 Stars | {total_today:,} |
+| {get_growth_label(period)} Stars | {total_today:,} |
 
 ### 语言分布
 
@@ -345,7 +357,7 @@ def generate_summary_report(
 
 ## 项目列表
 
-| 排名 | 项目 | 语言 | Stars | 今日增长 | 描述 |
+| 排名 | 项目 | 语言 | Stars | {get_growth_label(period)} | 描述 |
 |------|------|------|-------|----------|------|
 {format_repo_table(repos, period)}
 
