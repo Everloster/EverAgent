@@ -28,8 +28,8 @@ git remote set-url origin https://${GITHUB_TOKEN}@github.com/Everloster/EverAgen
 # 3. 验权限（失败则降级只读）
 git ls-remote origin HEAD
 # 4. 设提交者
-git config user.name "Claude Opus 4.6"   # 按实际模型替换
-git config user.email "noreply@anthropic.com"
+git config user.name ""   #按实际模型、Agent名替换，例如Claude Opus 4.6
+git config user.email ""  #按实际模型、Agent名替换，例如noreply@anthropic.com
 ```
 
 ### §0.2 只读模式
