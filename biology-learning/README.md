@@ -1,7 +1,7 @@
 # 🧬 Biology Learning Project
 
 > 系统学习生命科学的个人知识库与学习项目
-> 创建日期：2026-03-25 | 最后更新：2026-03-25（v1）
+> 创建日期：2026-03-25 | 最后更新：2026-03-26（v2）
 
 ---
 
@@ -20,7 +20,7 @@ biology-learning/
 │
 ├── README.md                                         # 本文件，项目总览与导航
 │
-├── roadmap/                                          # 📍 学习路径规划
+├── roadmap/                                          # 📍 学习路径规划（已建立，内容持续补充）
 │   ├── Biology_Development_Timeline.md              # 生命科学关键节点时间线
 │   └── Learning_Roadmap.md                          # 系统学习路径（Phase 1-5）
 │
@@ -126,8 +126,6 @@ biology-learning/
 - [ ] 完善 `roadmap/Biology_Development_Timeline.md`（生命科学 200 年关键节点）
 - [ ] 完善 `papers/PAPERS_INDEX.md`（30篇核心论文索引）
 - [ ] 完善 `books/BOOKS_INDEX.md`（25部经典书籍索引）
-- [ ] 创建 `skills/paper_analysis/SKILL.md`（生物学论文分析模板）
-- [ ] 创建 `skills/concept_deep_dive/SKILL.md`（生物学概念深挖模板）
 - [ ] 精读 Roenneberg (2012) Social Jetlag and Obesity，生成论文分析报告
 - [ ] 精读 Walker (2017) 关于 SWS 与 GH 分泌的核心章节
 
