@@ -1,7 +1,7 @@
 # 🤖 AI Learning Project
 
 > 系统学习人工智能的个人知识库与学习项目
-> 创建日期：2026-03-23 | 最后更新：2026-03-26（v4）
+> 创建日期：2026-03-23 | 最后更新：2026-03-26（任务板校正 + 协作分发优化）
 
 ---
 
@@ -66,7 +66,7 @@ ai-learning/
 │
 ├── reports/                                     # 📊 分析报告
 │   ├── AI演义_笔记分析与项目整合报告.md          # 《AI演义》PDF 解析与项目改进建议
-│   ├── paper_analyses/                         # 论文精读报告（15 篇已完成）
+│   ├── paper_analyses/                         # 论文精读报告（17 篇已完成）
 │   │   ├── 01_transformer_2017_分析报告.md
 │   │   ├── 04_instructgpt_2022_分析报告.md
 │   │   ├── 12_clip_2021_分析报告.md
@@ -107,7 +107,7 @@ ai-learning/
 
 ### 第四步：阅读已有深度报告
 
-**论文精读报告（15 篇已完成）：**
+**论文精读报告（17 篇已完成）：**
 - [Transformer 论文分析](./reports/paper_analyses/01_transformer_2017_分析报告.md) ← **推荐第一篇读**
 - [BERT 论文分析](./reports/paper_analyses/02_bert_2018_分析报告.md) ← 双向预训练
 - [GPT-3 论文分析](./reports/paper_analyses/03_gpt3_2020_分析报告.md) ← Few-shot
@@ -120,8 +120,10 @@ ai-learning/
 - [Chain-of-Thought 论文分析](./reports/paper_analyses/10_chain_of_thought_2022_分析报告.md) ← 思维链
 - [ViT 论文分析](./reports/paper_analyses/11_vit_2020_分析报告.md) ← Vision Transformer
 - [CLIP 论文分析](./reports/paper_analyses/12_clip_2021_分析报告.md) ← 多模态表示学习
+- [Swin Transformer 论文分析](./reports/paper_analyses/13_swin_transformer_2021_分析报告.md) ← 层次化视觉 Transformer
 - [LoRA 论文分析](./reports/paper_analyses/15_lora_2021_分析报告.md) ← 低秩适应微调
 - [LLaMA 论文分析](./reports/paper_analyses/16_llama_2023_分析报告.md) ← 开源大模型
+- [MAE 论文分析](./reports/paper_analyses/17_mae_2022_分析报告.md) ← 自监督视觉预训练
 - [Tulu 3 后训练流程分析](./reports/paper_analyses/26_tulu3_2024_后训练分析报告.md) ← SFT→DPO→RLVR 完整解析
 
 **知识深度解析（5 篇）：**
@@ -154,6 +156,8 @@ ai-learning/
 | 10 | Chain-of-Thought | 2022 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/10_chain_of_thought_2022_分析报告.md) |
 | 11 | ViT | 2020 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/11_vit_2020_分析报告.md) |
 | 12 | CLIP | 2021 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/12_clip_2021_分析报告.md) |
+| 13 | Swin Transformer | 2021 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/13_swin_transformer_2021_分析报告.md) |
+| 17 | MAE | 2022 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/17_mae_2022_分析报告.md) |
 | 16 | LLaMA | 2023 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/16_llama_2023_分析报告.md) |
 | 15 | LoRA | 2021 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/15_lora_2021_分析报告.md) |
 | 20 | Stable Diffusion (LDM) | 2021 | ⭐⭐⭐ | ⬜ 待读 |
@@ -164,7 +168,7 @@ ai-learning/
 | 27 | DiT | 2022 | ⭐⭐ | ⬜ 待读 |
 
 > 完整32篇索引见 [PAPERS_INDEX.md](./papers/PAPERS_INDEX.md)
-> 当前已完成论文精读 15 篇，最新库存以 [CONTEXT.md](./CONTEXT.md) 为准。
+> 当前已完成论文精读 17 篇，最新库存以 [CONTEXT.md](./CONTEXT.md) 为准。
 
 ---
 
@@ -212,11 +216,10 @@ Week 15+:   选择感兴趣方向深入（推理模型 / Agent / 生成模型）
 
 ## 🛠️ 待办事项
 
-- [ ] 下载 AlexNet 论文（NeurIPS 官方链接需手动访问）
-- [x] 保存 The Bitter Lesson 博客为本地 Markdown（英中双语 + 核心提炼）
-- [x] 精读 BERT、GPT-3 并生成分析报告
-- [x] 精读 ViT 并分析与 CNN 架构的对比
-- [ ] 精读 ZeRO 并结合 Infra 模块实践
+- [ ] 精读 FlashAttention (2022) 并补齐 LLM 推理/训练工程专题
+- [ ] 精读 ZeRO (2019) 并结合 Infra 模块实践
+- [ ] 精读 Mistral 7B 或 LLaMA 2，补开源大模型第二阶段
+- [ ] 精读 DINO v2 或 VideoMAE，补自监督视觉后续脉络
 - [ ] 完成 Tulu 3 RLVR 代码复现实验
 
 ---
