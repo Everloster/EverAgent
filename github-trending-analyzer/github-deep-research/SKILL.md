@@ -3,71 +3,161 @@ name: github-deep-research
 description: Conduct multi-round deep research on any GitHub Repo. Use when users request comprehensive analysis, timeline reconstruction, competitive analysis, or in-depth investigation of GitHub. Produces structured markdown reports with executive summaries, chronological timelines, metrics analysis, and Mermaid diagrams. Triggers on Github repository URL or open source projects.
 ---
 
-# GitHub Deep Research
+# GitHub Deep Research Skill
 
-多轮深度研究技能，供**所有 Agent 平台**使用，结合 GitHub API + web_search + web_fetch 生成综合分析报告。
+Multi-round research combining GitHub API, web_search, web_fetch to produce comprehensive markdown reports.
 
-## 4 轮研究流程
+关键约束：当本技能被 `github-trending-analyzer` 调用时，必须遵守上层技能的输出路径、命名规则、图表限制和中文结构要求。
 
-| 轮次 | 方法 | 目标 |
-|------|------|------|
-| Round 1 | GitHub API | 仓库基础数据、README、代码树 |
-| Round 2 | 3-5 次 web_search | 项目概况、关键术语、主要竞品 |
-| Round 3 | 5-10 次 web_search + web_fetch | 技术架构、时间线、社区评价 |
-| Round 4 | 深度 API 分析 | commit 历史、Issue/PR 演进、贡献者活动 |
+## Research Workflow
 
-搜索策略：由宽到窄 — `"{topic} overview"` → `"{topic} architecture"` → `"{topic} vs alternatives"` → `"site:github.com {topic}"`
+- Round 1: GitHub API
+- Round 2: Discovery
+- Round 3: Deep Investigation
+- Round 4: Deep Dive
 
-信息源优先级（高→低）：官方文档/仓库 → 技术博客 → 新闻媒体 → 社区讨论(Reddit/HN) → 社交媒体
+## Core Methodology
 
-## GitHub API 工具
+### Query Strategy
 
-直接执行脚本（不要用 read_file()）：
+**Broad to Narrow**: Start with GitHub API, then general queries, refine based on findings.
 
-```bash
-python /path/to/skill/scripts/github_api.py <owner> <repo> <command>
+```
+Round 1: GitHub API
+Round 2: "{topic} overview"
+Round 3: "{topic} architecture", "{topic} vs alternatives"
+Round 4: "{topic} issues", "{topic} roadmap", "site:github.com {topic}"
 ```
 
-可用命令：`summary` `info` `readme` `tree` `languages` `contributors` `commits` `issues` `prs` `releases`
+**Source Prioritization**:
+1. Official docs/repos (highest weight)
+2. Technical blogs (Medium, Dev.to)
+3. News articles (verified outlets)
+4. Community discussions (Reddit, HN)
+5. Social media (lowest weight, for sentiment)
 
-## 报告结构
+### Research Rounds
 
-参考 `assets/report_template.md`，必须包含以下章节：
+**Round 1 - GitHub API**
+Directly execute `scripts/github_api.py` without `read_file()`:
+```bash
+python /path/to/skill/scripts/github_api.py <owner> <repo> summary
+python /path/to/skill/scripts/github_api.py <owner> <repo> readme
+python /path/to/skill/scripts/github_api.py <owner> <repo> tree
+```
 
-1. **Metadata** — 日期、置信度、研究主题
-2. **Executive Summary** — 2-3 句概述 + 关键指标
-3. **Chronological Timeline** — 分阶段时间线（含日期）
-4. **Key Analysis** — 技术架构、核心功能、使用场景
-5. **Metrics & Comparisons** — 数据表格、增长曲线
-6. **Strengths & Weaknesses** — 优劣势评估
-7. **Sources** — 分类参考来源
-8. **Confidence Assessment** — 按置信度分级的声明
-9. **Methodology** — 研究方法说明
+**Available commands (the last argument of `github_api.py`):**
+- summary
+- info
+- readme
+- tree
+- languages
+- contributors
+- commits
+- issues
+- prs
+- releases
 
-### 输出文件命名
+**Round 2 - Discovery (3-5 web_search)**
+- Get overview and identify key terms
+- Find official website/repo
+- Identify main players/competitors
 
-默认：`research_{topic}_{YYYYMMDD}.md`
+**Round 3 - Deep Investigation (5-10 web_search + web_fetch)**
+- Technical architecture details
+- Timeline of key events
+- Community sentiment
+- Use web_fetch on valuable URLs for full content
 
-> **被 `github-trending-analyzer` 调用时**：使用调用方的命名规范 — `research_{owner}_{repo}.md`（无日期后缀，owner/repo 保留 GitHub 原始大小写和连字符）。trending analyzer 的 `check` 命令依赖此格式检测已有报告，避免重复生成。
+**Round 4 - Deep Dive**
+- Analyze commit history for timeline
+- Review issues/PRs for feature evolution
+- Check contributor activity
 
-## 置信度评分
+## Report Structure
 
-| 置信度 | 适用条件 |
-|--------|---------|
-| High (90%+) | 官方文档、GitHub 数据、多源印证 |
-| Medium (70-89%) | 单一可靠来源、近期文章 |
-| Low (50-69%) | 社交媒体、未验证声明、过期信息 |
+Follow template in `assets/report_template.md`:
 
-## 格式规范
+1. **Metadata Block** - Date, confidence level, subject
+2. **Executive Summary** - 2-3 sentence overview with key metrics
+3. **Chronological Timeline** - Phased breakdown with dates
+4. **Key Analysis Sections** - Topic-specific deep dives
+5. **Metrics & Comparisons** - Tables, growth charts
+6. **Strengths & Weaknesses** - Balanced assessment
+7. **Sources** - Categorized references
+8. **Confidence Assessment** - Claims by confidence level
+9. **Methodology** - Research approach used
 
-- 中文内容用全角标点（，。：；！？）
-- Mermaid 图表仅用：`flowchart` `gantt` `sequenceDiagram` `pie`（禁用 mindmap / timeline 等不兼容类型）
-- 数据表格用于指标对比；代码块用于技术示例
-- 首次提及技术术语时附 Wiki/文档链接
-- 来源标注尽量贴近对应声明
+When invoked by `github-trending-analyzer`, the deep research result is an intermediate artifact. The final saved report must be converted into the parent skill's 7-section Chinese structure rather than storing the English template directly.
 
-## 核心原则
+### Mermaid Diagrams
 
-1. 从官方来源起步，用 commit/PR 时间戳验证日期（比文章可靠）
-2. 关键声明至少 2 个独立来源印证；如有矛盾信息，如实标注而非隐藏
-3. 区分事实与观点，主观判断明确标注"推测"或"社区反馈"
+Include diagrams where helpful:
+
+Allowed Mermaid types only: `flowchart`, `sequenceDiagram`, `gantt`, `pie`.
+Do not use `mindmap`, `timeline`, or any other unsupported Mermaid chart types.
+
+**Timeline (Gantt)**:
+```mermaid
+gantt
+    title Project Timeline
+    dateFormat YYYY-MM-DD
+    section Phase 1
+    Development    :2025-01-01, 2025-03-01
+    section Phase 2
+    Launch         :2025-03-01, 2025-04-01
+```
+
+**Architecture (Flowchart)**:
+```mermaid
+flowchart TD
+    A[User] --> B[Coordinator]
+    B --> C[Planner]
+    C --> D[Research Team]
+    D --> E[Reporter]
+```
+
+**Comparison (Pie)**:
+```mermaid
+pie title Market Share
+    "Project A" : 45
+    "Project B" : 30
+    "Others" : 25
+```
+
+## Confidence Scoring
+
+Assign confidence based on source quality:
+
+| Confidence | Criteria |
+|------------|----------|
+| High (90%+) | Official docs, GitHub data, multiple corroborating sources |
+| Medium (70-89%) | Single reliable source, recent articles |
+| Low (50-69%) | Social media, unverified claims, outdated info |
+
+## Output
+
+Default standalone naming: `research_{topic}_{YYYYMMDD}.md`
+
+When invoked by `github-trending-analyzer`, use the parent skill naming convention instead:
+- `research_{owner}_{repo}.md`
+- Preserve the original GitHub owner/repo casing and hyphenation exactly
+- Do not append a date suffix
+
+### Formatting Rules
+
+- Chinese content: Use full-width punctuation（，。：；！？）
+- Technical terms: Provide Wiki/doc URL on first mention
+- Tables: Use for metrics, comparisons
+- Code blocks: For technical examples
+- Mermaid: For architecture, timelines, flows
+
+## Best Practices
+
+1. **Start with official sources** - Repo, docs, company blog
+2. **Verify dates from commits/PRs** - More reliable than articles
+3. **Triangulate claims** - 2+ independent sources
+4. **Note conflicting info** - Don't hide contradictions
+5. **Distinguish fact vs opinion** - Label speculation clearly
+6. **Reference sources** - Add source references near claims where applicable
+7. **Update as you go** - Don't wait until end to synthesize
