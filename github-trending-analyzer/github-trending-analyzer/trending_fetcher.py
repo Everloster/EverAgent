@@ -12,7 +12,7 @@ import platform
 import re
 import sys
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Dict, List, Optional
 from urllib.request import Request, urlopen
@@ -226,7 +226,6 @@ def fetch_trending_via_api(since: str = "daily", language: str = "") -> List[Dic
     days_map = {"daily": 1, "weekly": 7, "monthly": 30}
     days = days_map.get(since, 1)
 
-    from datetime import timedelta
     cutoff = (datetime.now() - timedelta(days=days)).strftime("%Y-%m-%d")
 
     q = f"created:>{cutoff}"

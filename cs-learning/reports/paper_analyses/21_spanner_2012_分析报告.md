@@ -1,3 +1,11 @@
+---
+title: "Spanner — Google's Globally-Distributed Database (2012) 深度分析"
+domain: "cs-learning"
+report_type: "paper_analysis"
+status: "completed"
+updated_on: "2026-03-26"
+---
+
 # Spanner: Google's Globally-Distributed Database（2012）深度分析
 
 > **分析日期**：2026-03-26

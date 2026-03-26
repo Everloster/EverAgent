@@ -1,9 +1,38 @@
+# Obsidian
 .obsidian/workspace.json
 .obsidian/core-plugins.json
 .obsidian/appearance.json
 .obsidian/app.json
+
+# Claude
 .claude/settings.local.json
+
+# OS generated
 .DS_Store
-ai-learning/.DS_Store
+*/.DS_Store
+**/.DS_Store
+Thumbs.db
+
+# Environment & secrets
 .env
+.env.*
+
+# Archives
 *.zip
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+venv/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

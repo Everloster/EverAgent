@@ -451,14 +451,18 @@ def main():
         if len(sys.argv) < 5:
             print("Usage: python report_generator.py project <repo_json> <analysis_json> <output_path>")
             sys.exit(1)
-        
-        repo_data = json.loads(sys.argv[2])
-        analysis_data = json.loads(sys.argv[3])
+
+        try:
+            repo_data = json.loads(sys.argv[2])
+            analysis_data = json.loads(sys.argv[3])
+        except json.JSONDecodeError as e:
+            print(f"Error: invalid JSON argument — {e}", file=sys.stderr)
+            sys.exit(1)
         output_path = Path(sys.argv[4])
-        
+
         result = generate_project_report(repo_data, analysis_data, output_path)
         print(f"Report generated: {result}")
-    
+
     elif command == "summary":
         if len(sys.argv) < 5:
             print(
@@ -468,9 +472,17 @@ def main():
             sys.exit(1)
 
         period = sys.argv[2]
-        repos = json.loads(sys.argv[3])
+        try:
+            repos = json.loads(sys.argv[3])
+        except json.JSONDecodeError as e:
+            print(f"Error: invalid repos JSON — {e}", file=sys.stderr)
+            sys.exit(1)
         output_path = Path(sys.argv[4])
-        missing_repos = json.loads(sys.argv[5]) if len(sys.argv) > 5 else []
+        try:
+            missing_repos = json.loads(sys.argv[5]) if len(sys.argv) > 5 else []
+        except json.JSONDecodeError as e:
+            print(f"Error: invalid missing_repos JSON — {e}", file=sys.stderr)
+            sys.exit(1)
         research_method = sys.argv[6] if len(sys.argv) > 6 else "Web搜索 + GitHub页面分析"
 
         result = generate_summary_report(period, repos, output_path, missing_repos, research_method)

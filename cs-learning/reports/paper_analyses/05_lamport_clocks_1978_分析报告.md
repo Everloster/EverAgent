@@ -1,3 +1,11 @@
+---
+title: "Time, Clocks, and the Ordering of Events — Lamport (1978) 深度分析"
+domain: "cs-learning"
+report_type: "paper_analysis"
+status: "completed"
+updated_on: "2026-03-26"
+---
+
 # Lamport Clocks 论文深度分析报告
 
 ---

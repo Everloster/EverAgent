@@ -247,7 +247,7 @@ ai-learning/
 │   └── 01~32_*.pdf
 ├── skills/
 │   ├── paper_analysis/SKILL.md        # 论文7步分析法
-│   └── knowledge_deep_dive/SKILL.md   # 知识5层解析法
+│   └── concept_deep_dive/SKILL.md   # 知识5层解析法
 ├── reports/
 │   ├── AI演义_笔记分析与项目整合报告.md
 │   ├── paper_analyses/
