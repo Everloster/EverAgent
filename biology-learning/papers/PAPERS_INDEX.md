@@ -24,7 +24,7 @@
 | # | 论文 | 作者 | 年份 | 期刊 | 获取链接 | 状态 |
 |---|------|------|------|------|---------|------|
 | P08 | The significance of sleep onset and slow wave sleep for nocturnal GH release | Born, Muth & Fehm | 1988 | *J Clin Endocrinol Metab* | [PubMed](https://pubmed.ncbi.nlm.nih.gov/3406323/) | ✅ 已完成 |
-| P09 | Physiology of growth hormone secretion during sleep | Van Cauter et al. | 1996 | *J Pediatrics* | [PubMed](https://pubmed.ncbi.nlm.nih.gov/8627466/) | ⬜ 待读 |
+| P09 | Physiology of growth hormone secretion during sleep | Van Cauter et al. | 1996 | *J Pediatrics* | [PubMed](https://pubmed.ncbi.nlm.nih.gov/8627466/) | ✅ 已完成 |
 | P10 | Dose-response relationship between evening exercise and sleep | Stutz et al. | 2025 | *Nature Communications* | [Nature](https://www.nature.com/articles/s41467-025-58271-x) | ⬜ 待读 |
 | P11 | Effects of exercise timing and intensity on physiological circadian rhythm and sleep quality | Luo et al. | 2023 | *PMC Review* | [PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC10636512/) | ⬜ 待读 |
 | P12 | Effects of acute bouts of evening resistance or endurance exercises on sleep EEG and salivary cortisol | Tsai et al. | 2024 | *PMC* | [PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC10844443/) | ⬜ 待读 |
