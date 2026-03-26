@@ -2,7 +2,7 @@
 
 > 本文件列出30篇心理学史上最重要的论文与实验报告。
 > 涵盖认知、社会、发展、人格、临床与行为经济学各分支。
-> 更新日期：2026-03-24
+> 更新日期：2026-03-26
 
 ---
 
@@ -20,7 +20,7 @@
 - **核心概念**：工作记忆容量、组块（Chunking）、信息论
 - **所属流派**：认知心理学（认知革命奠基论文之一）
 - **字数/阅读时间**：约30页 / 约2-3小时
-- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/05_kahneman_tversky_prospect_theory_1979_分析报告.md`）
+- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/01_miller_magical_number_seven_1956_分析报告.md`）
 
 ---
 
@@ -37,7 +37,7 @@
 - **所属流派**：社会心理学
 - **字数/阅读时间**：约8页 / 约1.5小时
 - **伦理争议**：此实验后来推动了 APA 研究伦理准则的修订
-- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/03_festinger_carlsmith_cognitive_dissonance_1959_分析报告.md`）
+- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/02_milgram_obedience_1963_分析报告.md`）
 
 ---
 
@@ -51,7 +51,7 @@
 - **核心概念**：认知失调（Cognitive Dissonance）、自我辩护（Self-Justification）、态度改变
 - **所属流派**：社会心理学
 - **字数/阅读时间**：约8页 / 约1.5小时
-- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/06_seligman_maier_learned_helplessness_1967_分析报告.md`）
+- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/03_festinger_carlsmith_cognitive_dissonance_1959_分析报告.md`）
 
 ---
 
@@ -85,7 +85,7 @@
 - **所属流派**：行为经济学、认知心理学
 - **字数/阅读时间**：约29页（技术性较强）/ 约4小时
 - **重要性**：卡尼曼因此获2002年诺贝尔经济学奖
-- **阅读状态**：⬜ 待读
+- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/05_kahneman_tversky_prospect_theory_1979_分析报告.md`）
 
 ---
 
@@ -100,7 +100,7 @@
 - **所属流派**：行为主义→认知心理学→临床心理学
 - **字数/阅读时间**：约9页 / 约1.5小时
 - **影响**：习得性无助理论后来成为抑郁症认知模型的基础
-- **阅读状态**：⬜ 待读
+- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/06_seligman_maier_learned_helplessness_1967_分析报告.md`）
 
 ---
 
@@ -159,7 +159,7 @@
 - **获取**：DOI: 10.1037/h0025589
 - **核心内容**：旁观者越多，单个旁观者施救概率越低（责任扩散）；"旁观者效应"的首个实验证据——受基蒂·杰诺维斯案件启发
 - **核心概念**：旁观者效应（Bystander Effect）、责任扩散（Diffusion of Responsibility）、多数无知（Pluralistic Ignorance）
-- **阅读状态**：⬜ 待读
+- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/10_darley_latane_bystander_1968_分析报告.md`）
 
 ---
 

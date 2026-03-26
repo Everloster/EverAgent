@@ -24,7 +24,8 @@
 - `16_llama_2023` — 开源大模型·推理最优策略·7B超越GPT-3·Pre-Norm+SwiGLU+RoPE·开源生态Linux时刻（2026-03-26）
 - `13_swin_transformer_2021` — 层次化视觉Transformer·移位窗口注意力·线性复杂度·多尺度特征图·ICCV2021最佳论文·统一分类检测分割（2026-03-26）
 - `17_mae_2022` — 掩码自编码器·75%高遮蔽率·不对称编解码器·像素重建·ImageNet ViT-H 86.9%·COCO检测超监督预训练·生成式自监督视觉范式（2026-03-26）
-- `18_mistral_7b_2023` — 小参数高性能开源LLM·GQA+SWA架构·7B级别推理效率与质量平衡里程碑（2026-03-26）
+- `33_mistral_7b_2023` — 小参数高性能开源LLM·GQA+SWA架构·7B级别推理效率与质量平衡里程碑（2026-03-26）
+- `18_flashattention_2022` — IO-aware精确Attention·在线Softmax·显存占用显著下降·长上下文训练提速关键内核（2026-03-26）
 
 **知识深度解析** (`reports/knowledge_reports/`)
 - `self_attention_深度解析` — 含代码实现
@@ -42,16 +43,16 @@
 
 ## 导航
 - 学习路径：`roadmap/Learning_Roadmap.md`
-- 论文索引：`papers/PAPERS_INDEX.md`（32 篇，含 PDF）
+- 论文索引：`papers/PAPERS_INDEX.md`（33 篇，含 PDF）
 
 ## ⚠️ 边界（防幻觉）
 以下内容**尚未研究**，禁止推测，须告知用户：
 - GPT-4 / Claude / Gemini 系列的专项分析报告
-- 工程类报告（FlashAttention、KV Cache、ZeRO 等尚无独立精读）
+- 工程类报告（KV Cache、ZeRO 等尚无独立精读）
 - InstructGPT / PPO 的论文级精读 ✅ 已完成（04_instructgpt_2022）
 - Scaling Laws 论文（Kaplan 2020）精读级分析 ✅ 已完成（05_scaling_laws_2020）
 - LoRA 论文级精读 ✅ 已完成（15_lora_2021）
-- 工程类论文精读（FlashAttention #18、ZeRO #25、MegaScale #31 等）
+- 工程类论文精读（ZeRO #25、MegaScale #31 等）
 - ResNet (#07) ✅ 已完成（07_resnet_2015）
 - GAN (#08) ✅ 已完成（08_gan_2014）
 - DDPM (#09) ✅ 已完成（09_ddpm_2020）
@@ -62,4 +63,4 @@
 - LLaMA (#16) ✅ 已完成（16_llama_2023）
 - Swin Transformer (#13) ✅ 已完成（13_swin_transformer_2021）
 - MAE (#17) ✅ 已完成（17_mae_2022，75%掩码率·ViT自监督预训练·CVPR 2022）
-- 下一步推荐：LLaMA 2、DINO v2、VideoMAE、FlashAttention
+- 下一步推荐：LLaMA 2、DINO v2、VideoMAE、ZeRO
