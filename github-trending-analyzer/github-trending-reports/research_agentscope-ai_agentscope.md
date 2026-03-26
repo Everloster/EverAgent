@@ -1,125 +1,112 @@
+---
+title: "agentscope-ai/agentscope"
+domain: "github-trending-analyzer"
+report_type: "repo_deep_research"
+status: "cached"
+updated_on: "2026-03-27"
+---
+
 # agentscope-ai/agentscope
 
 > Build and run agents you can see, understand and trust.
 
 ## 项目概述
 
-AgentScope 是一个强调 developer-centric 的 Agent 框架，主张把 prompt、工具调用、工作流编排和多代理消息流都做成“可见、可控、可组合”的组件。相比许多追求高度封装的 agent 框架，它更强调显式编排和开发者掌控感。
-
-从当前公开资料看，AgentScope 已不再只是一个 Python 库，而是围绕主框架、Studio、Runtime、记忆系统和样例仓库构成一整套产品化生态。它在日榜中重新升温，说明“可观察、可部署、可调试”的 agent 开发平台仍然有强需求。
+AgentScope 是一个多智能体应用构建平台，由上海人工智能实验室开发。核心理念是"可观测、可理解、可信赖"——提供一个直观的开发环境，让开发者能够构建、运行和监控多智能体系统。与传统 Agent 框架不同，AgentScope 强调可视化调试和实时监控，降低了多智能体系统的开发门槛。
 
 ## 基本信息
 
 | 指标 | 数值 |
 |------|------|
-| Stars | 20,172 |
-| Forks | 1,963 |
-| 语言 | Python |
-| 今日增长 | 439 ⭐ |
+| Stars | 20,261 |
+| Forks | 1,973 |
+| Open Issues | 136 |
+| 语言 | Python (100%) |
 | 开源协议 | Apache-2.0 |
 | 创建时间 | 2024-01-12 |
 | 最近更新 | 2026-03-26 |
+| 贡献者 | 49 人 |
+| 最新版本 | v1.0.18 (2026-03-26) |
 | GitHub | [agentscope-ai/agentscope](https://github.com/agentscope-ai/agentscope) |
 
 ## 技术分析
 
 ### 技术栈
 
-- **核心语言**：Python
-- **框架定位**：Agent-oriented programming
-- **配套能力**：AgentScope Studio、Runtime、ReMe 记忆模块
-- **模型策略**：Model agnostic，支持多模型
-
-### 架构设计
-
-根据官方 README 和组织页信息，AgentScope 的架构可以分为三层：
-
-- **agentscope**：核心 agent 编程框架
-- **agentscope-studio**：可视化/追踪/开发体验层
-- **agentscope-runtime**：部署与运行时层
-
-此外它还在扩展：
-
-- 多代理消息流
-- A2A 协议
-- TTS、多模态、MCP、记忆管理
-
-这说明它的战略不是单点 demo，而是做一条开发到部署的工具链。
+- **Python 主导**：核心开发语言
+- **多模态支持**：文本、图像、语音等多模态交互
+- **MCP 协议**：支持 Model Context Protocol
+- **React Agent**：基于反应式编程的 Agent 架构
 
 ### 核心功能
 
-- 多代理工作流编排
-- 显式消息传递与控制
-- 实时 steering / interrupt
-- MCP 控制与工具接入
-- Studio 可视化和 Runtime 部署扩展
+- **可视化开发**：直观的开发环境和调试工具
+- **实时监控**：Agent 执行过程的实时监控
+- **多模型支持**：支持多种大语言模型
+- **多智能体编排**：支持复杂的多 Agent 协作
+- **MCP 集成**：支持 Model Context Protocol 扩展
 
 ## 社区活跃度
 
 ### 贡献者分析
 
-当前贡献者约 49 位，已具备中型开源框架的协作特征。背后团队为 Alibaba Tongyi Lab，也增强了其持续维护和生态扩展的可信度。
+49 位贡献者，由上海人工智能实验室主导开发，企业级维护保证了项目的质量和持续更新。
 
 ### Issue/PR 活跃度
 
-当前公开 issue 超过 100，最新 release `v1.0.18` 就在今天发布，说明项目处于快速迭代状态。对于 agent 框架来说，这通常意味着特性仍在高速扩张、接口也仍有变化。
+| 指标 | 数值 |
+|------|------|
+| Open Issues | 136 |
+| Forks/Star 比 | 0.097 |
+| 最新版本 | v1.0.18 (2026-03-26) |
 
-### 最近动态
+### 技术标签
 
-- 2025 年底以来连续加入 A2A、TTS、Anthropic Skill、ReMe 和记忆相关能力
-- Runtime 层强化 Docker/K8s 与 GUI sandbox
-- 官方将“可见、可控、可信”作为主宣传方向
+`agent`, `chatbot`, `large-language-models`, `llm`, `llm-agent`, `mcp`, `multi-agent`, `multi-modal`, `react-agent`
 
 ## 发展趋势
 
 ### 版本演进
 
-- **早期**：多代理平台与论文导向框架
-- **中期**：逐步走向开发者中心的工程框架
-- **当前**：明显扩展到 studio、runtime、memory、deployment 全链路生态
+v1.0.18 说明项目已进入生产就绪阶段，API 和功能相对稳定。
 
-### Roadmap
+### 技术方向
 
-从近期更新方向看，后续值得关注：
-
-- 更成熟的 runtime 部署
-- 更强记忆 / agentic RAG
-- 更多协议兼容与多模态能力
-- 更细粒度的可观测性
-
-### 社区反馈
-
-社区通常把 AgentScope 看作“适合认真做 agent 系统”的框架，而不是最快上手的玩具库。优势是透明度和扩展性，挑战则是学习曲线和概念复杂度。
+- 更强的多模态能力
+- 更好的可视化调试工具
+- 企业级功能扩展
 
 ## 竞品对比
 
-| 项目 | Stars | 语言 | 特点 |
+| 项目 | Stars | 定位 | 特点 |
 |------|-------|------|------|
-| agentscope | 20,172 | Python | 开发者中心、多代理、可见可控的 Agent 框架 |
-| LangGraph | 主流竞品 | Python | 图式编排能力强，生态成熟 |
-| deer-flow | 现有缓存 | Python | 更偏运行时与 SuperAgent 工作流系统 |
+| **AgentScope** | 20,261 | 可视化平台 | 可观测性强，上海 AI 实验室背书 |
+| **LangChain** | — | 通用框架 | 生态丰富 |
+| **CrewAI** | — | 多 Agent 编排 | 角色分工 |
+| **AutoGen** | — | 多 Agent 对话 | 微软开源 |
 
 ## 总结评价
 
 ### 优势
 
-- 开发者中心理念鲜明
-- 多代理与部署生态布局完整
-- 背后团队稳定，更新节奏快
-- 从框架到 runtime 的路线清晰
+- 可视化开发环境，降低门槛
+- 实时监控和调试能力
+- 上海 AI 实验室背书
+- 多模态支持
 
 ### 劣势
 
-- 学习门槛高于轻量库
-- 特性扩展快，接口稳定性需持续观察
-- 完整采用其生态会带来较强框架绑定
+- 生态相对封闭
+- 文档主要中文
+- 企业级功能需要探索
 
 ### 适用场景
 
-- 需要长期维护 agent 系统的团队
-- 追求透明可调试工作流的开发者
-- 需要多代理、记忆和运行时部署的一体化方案
+- 多智能体应用开发
+- 对话系统构建
+- 复杂任务分解执行
+- Agent 系统教学和研究
 
 ---
-*报告生成时间: 2026-03-26 23:50:00*
-*研究方法: GitHub API 多维度分析 + 官方 README / 组织页面交叉核对*
+*报告生成时间: 2026-03-27*
+*研究方法: GitHub API 多维度分析*
