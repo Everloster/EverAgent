@@ -20,6 +20,7 @@
 - `15_lora_2021` — 低秩分解微调·零推理开销·0.01%参数·PEFT运动奠基（2026-03-26）
 - `26_tulu3_2024` — SFT→DPO→RLVR 后训练完整流程
 - `16_llama_2023` — 开源大模型·推理最优策略·7B超越GPT-3·Pre-Norm+SwiGLU+RoPE·开源生态Linux时刻（2026-03-26）
+- `13_swin_transformer_2021` — 层次化视觉Transformer·移位窗口注意力·线性复杂度·多尺度特征图·ICCV2021最佳论文·统一分类检测分割（2026-03-26）
 
 **知识深度解析** (`reports/knowledge_reports/`)
 - `self_attention_深度解析` — 含代码实现
@@ -55,4 +56,5 @@
 - ViT (#11) ✅ 已完成（11_vit_2020）
 - CLIP (#12) ✅ 已完成（12_clip_2021）
 - LLaMA (#16) ✅ 已完成（16_llama_2023）
-- 下一步推荐：Swin Transformer、MAE（掩码自编码器）、LLaMA 2、Mistral 7B
+- Swin Transformer (#13) ✅ 已完成（13_swin_transformer_2021）
+- 下一步推荐：MAE（掩码自编码器）、LLaMA 2、Mistral 7B、DINO v2
