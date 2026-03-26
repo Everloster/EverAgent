@@ -1,7 +1,7 @@
 # 🧬 Biology Learning Project
 
 > 系统学习生命科学的个人知识库与学习项目
-> 创建日期：2026-03-25 | 最后更新：2026-03-26（v2）
+> 创建日期：2026-03-25 | 最后更新：2026-03-26（新增 Social Jetlag and Obesity 精读）
 
 ---
 
@@ -50,6 +50,9 @@ biology-learning/
 
 ### 第一步：已有深度报告（直接阅读）
 
+**论文精读报告：**
+- [Social Jetlag and Obesity (2012)](./reports/paper_analyses/P01_social_jetlag_obesity_2012_分析报告.md) ← 社会性时差与 BMI 的标志性论文
+
 **专题研究报告：**
 - [晚型人作息与力量训练深度研究](./reports/concept_reports/晚型人作息与力量训练_深度研究报告.md) ← **首篇报告，推荐入口**
   - 覆盖：昼夜节律类型 × 深夜训练的激素环境 × 睡眠质量与 GH 分泌 × 可操作建议
@@ -82,6 +85,12 @@ biology-learning/
 | # | 报告 | 涉及领域 | 关键人物 | 状态 |
 |---|------|---------|---------|------|
 | R01 | [晚型人作息与力量训练深度研究](./reports/concept_reports/晚型人作息与力量训练_深度研究报告.md) | 时间生物学 × 睡眠科学 × 运动生理学 | Roenneberg、Walker、Foster | ✅ 完成 |
+
+### 论文精读报告
+
+| # | 论文 | 涉及领域 | 关键人物 | 状态 |
+|---|------|---------|---------|------|
+| P01 | [Social Jetlag and Obesity](./reports/paper_analyses/P01_social_jetlag_obesity_2012_分析报告.md) | 时间生物学 × 代谢健康 | Roenneberg、Merrow、Vetter | ✅ 完成 |
 
 ### 待研究课题
 
@@ -126,7 +135,6 @@ biology-learning/
 - [ ] 完善 `roadmap/Biology_Development_Timeline.md`（生命科学 200 年关键节点）
 - [ ] 完善 `papers/PAPERS_INDEX.md`（30篇核心论文索引）
 - [ ] 完善 `books/BOOKS_INDEX.md`（25部经典书籍索引）
-- [ ] 精读 Roenneberg (2012) Social Jetlag and Obesity，生成论文分析报告
 - [ ] 精读 Walker (2017) 关于 SWS 与 GH 分泌的核心章节
 
 ---
