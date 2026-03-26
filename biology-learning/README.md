@@ -1,7 +1,7 @@
 # 🧬 Biology Learning Project
 
 > 系统学习生命科学的个人知识库与学习项目
-> 创建日期：2026-03-25 | 最后更新：2026-03-26（新增 Social Jetlag + SWS/GH 精读）
+> 创建日期：2026-03-25 | 最后更新：2026-03-26（新增 GH 睡眠生理综述精读）
 
 ---
 
@@ -53,6 +53,7 @@ biology-learning/
 **论文精读报告：**
 - [Social Jetlag and Obesity (2012)](./reports/paper_analyses/P01_social_jetlag_obesity_2012_分析报告.md) ← 社会性时差与 BMI 的标志性论文
 - [Sleep Onset, Slow Wave Sleep and GH Release (1988)](./reports/paper_analyses/P08_sleep_onset_sws_gh_1988_分析报告.md) ← 深睡与夜间生长激素释放的经典研究
+- [Physiology of Growth Hormone Secretion during Sleep (1996)](./reports/paper_analyses/P09_gh_sleep_physiology_1996_分析报告.md) ← GH、睡眠结构与年龄变化的整合性综述
 
 **专题研究报告：**
 - [晚型人作息与力量训练深度研究](./reports/concept_reports/晚型人作息与力量训练_深度研究报告.md) ← **首篇报告，推荐入口**
@@ -93,6 +94,7 @@ biology-learning/
 |---|------|---------|---------|------|
 | P01 | [Social Jetlag and Obesity](./reports/paper_analyses/P01_social_jetlag_obesity_2012_分析报告.md) | 时间生物学 × 代谢健康 | Roenneberg、Merrow、Vetter | ✅ 完成 |
 | P08 | [Sleep Onset, Slow Wave Sleep and GH Release](./reports/paper_analyses/P08_sleep_onset_sws_gh_1988_分析报告.md) | 睡眠科学 × 内分泌学 | Born、Muth、Fehm | ✅ 完成 |
+| P09 | [Physiology of Growth Hormone Secretion during Sleep](./reports/paper_analyses/P09_gh_sleep_physiology_1996_分析报告.md) | 睡眠科学 × 内分泌学 | Van Cauter 等 | ✅ 完成 |
 
 ### 待研究课题
 
@@ -137,7 +139,7 @@ biology-learning/
 - [ ] 完善 `roadmap/Biology_Development_Timeline.md`（生命科学 200 年关键节点）
 - [ ] 完善 `papers/PAPERS_INDEX.md`（30篇核心论文索引）
 - [ ] 完善 `books/BOOKS_INDEX.md`（25部经典书籍索引）
-- [ ] 精读 Walker (2017) 关于睡眠结构与恢复的综述性章节
+- [ ] 精读 Walker / Dattilo 等关于睡眠恢复与肌肉修复的综述性文献
 
 ---
 

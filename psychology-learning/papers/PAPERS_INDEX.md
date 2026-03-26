@@ -51,7 +51,7 @@
 - **核心概念**：认知失调（Cognitive Dissonance）、自我辩护（Self-Justification）、态度改变
 - **所属流派**：社会心理学
 - **字数/阅读时间**：约8页 / 约1.5小时
-- **阅读状态**：⬜ 待读
+- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/06_seligman_maier_learned_helplessness_1967_分析报告.md`）
 
 ---
 
