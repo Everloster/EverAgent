@@ -1,7 +1,7 @@
 # 🤖 AI Learning Project
 
 > 系统学习人工智能的个人知识库与学习项目
-> 创建日期：2026-03-23 | 最后更新：2026-03-23（v3）
+> 创建日期：2026-03-23 | 最后更新：2026-03-26（v4）
 
 ---
 
@@ -66,13 +66,15 @@ ai-learning/
 │
 ├── reports/                                     # 📊 分析报告
 │   ├── AI演义_笔记分析与项目整合报告.md          # 《AI演义》PDF 解析与项目改进建议
-│   ├── paper_analyses/                         # 论文精读报告
-│   │   ├── 01_transformer_2017_分析报告.md     # ✅ Transformer 精读（已完成）
-│   │   └── 26_tulu3_2024_后训练分析报告.md     # ✅ Tulu 3 后训练流程（SFT→DPO→RLVR）
-│   └── knowledge_reports/                      # 概念深度解析
-│       ├── self_attention_深度解析.md           # ✅ Self-Attention 5层解析 + 代码实现
-│       ├── RLHF_深度解析.md                    # ✅ RLHF 完整技术路径
-│       └── AI关键人物图谱.md                   # ✅ 研究者生涯轨迹与组织演化图谱
+│   ├── paper_analyses/                         # 论文精读报告（14 篇已完成）
+│   │   ├── 01_transformer_2017_分析报告.md
+│   │   ├── 04_instructgpt_2022_分析报告.md
+│   │   ├── 12_clip_2021_分析报告.md
+│   │   └── 26_tulu3_2024_后训练分析报告.md
+│   └── knowledge_reports/                      # 概念深度解析（5 篇）
+│       ├── self_attention_深度解析.md
+│       ├── RLHF_深度解析.md
+│       └── AI关键人物图谱.md
 │
 └── notes/                                       # 📝 个人学习笔记与参考资料
     └── 终版：AI演义，36篇论文开启你的探索之旅.pdf  # 参考PDF（已分析）
@@ -107,6 +109,10 @@ ai-learning/
 
 **论文精读报告：**
 - [Transformer 论文分析](./reports/paper_analyses/01_transformer_2017_分析报告.md) ← **推荐第一篇读**
+- [InstructGPT 论文分析](./reports/paper_analyses/04_instructgpt_2022_分析报告.md) ← RLHF 起点
+- [Scaling Laws 论文分析](./reports/paper_analyses/05_scaling_laws_2020_分析报告.md) ← 训练策略与算力配置
+- [ViT 论文分析](./reports/paper_analyses/11_vit_2020_分析报告.md) ← Vision Transformer
+- [CLIP 论文分析](./reports/paper_analyses/12_clip_2021_分析报告.md) ← 多模态表示学习
 - [Tulu 3 后训练流程分析](./reports/paper_analyses/26_tulu3_2024_后训练分析报告.md) ← SFT→DPO→RLVR 完整解析
 
 **知识深度解析：**
@@ -126,18 +132,19 @@ ai-learning/
 | # | 论文 | 年份 | 优先级 | 分析报告 |
 |---|------|------|--------|---------|
 | 01 | Attention Is All You Need (Transformer) | 2017 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/01_transformer_2017_分析报告.md) |
-| 02 | BERT | 2018 | ⭐⭐⭐ | ⬜ 待读 |
-| 03 | GPT-3 | 2020 | ⭐⭐⭐ | ⬜ 待读 |
-| 04 | InstructGPT (RLHF) | 2022 | ⭐⭐⭐ | ⬜ 待读（可结合 RLHF深度解析）|
-| 05 | Scaling Laws | 2020 | ⭐⭐⭐ | ⬜ 待读 |
-| 06 | AlexNet | 2012 | ⭐⭐ | ⚠️ PDF未下载（NeurIPS付费）|
-| 07 | ResNet | 2015 | ⭐⭐ | ⬜ 待读 |
-| 08 | GAN | 2014 | ⭐⭐ | ⬜ 待读 |
-| 09 | DDPM (Diffusion) | 2020 | ⭐⭐ | ⬜ 待读 |
-| 10 | Chain-of-Thought | 2022 | ⭐⭐ | ⬜ 待读 |
-| 11 | CLIP | 2021 | ⭐⭐ | ⬜ 待读 |
+| 02 | BERT | 2018 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/02_bert_2018_分析报告.md) |
+| 03 | GPT-3 | 2020 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/03_gpt3_2020_分析报告.md) |
+| 04 | InstructGPT (RLHF) | 2022 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/04_instructgpt_2022_分析报告.md) |
+| 05 | Scaling Laws | 2020 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/05_scaling_laws_2020_分析报告.md) |
+| 06 | AlexNet | 2012 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/06_alexnet_2012_分析报告.md) |
+| 07 | ResNet | 2015 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/07_resnet_2015_分析报告.md) |
+| 08 | GAN | 2014 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/08_gan_2014_分析报告.md) |
+| 09 | DDPM (Diffusion) | 2020 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/09_ddpm_2020_分析报告.md) |
+| 10 | Chain-of-Thought | 2022 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/10_chain_of_thought_2022_分析报告.md) |
+| 11 | ViT | 2020 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/11_vit_2020_分析报告.md) |
+| 12 | CLIP | 2021 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/12_clip_2021_分析报告.md) |
 | 12 | LLaMA | 2023 | ⭐⭐ | ⬜ 待读 |
-| 19 | ViT | 2020 | ⭐⭐⭐ | ⬜ 待读 |
+| 15 | LoRA | 2021 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/15_lora_2021_分析报告.md) |
 | 20 | Stable Diffusion (LDM) | 2021 | ⭐⭐⭐ | ⬜ 待读 |
 | 21 | MoE | 2017 | ⭐⭐⭐ | ⬜ 待读 |
 | 22 | The Bitter Lesson | 2019 | ⭐⭐⭐ | ✅ [已保存](./papers/22_bitter_lesson_2019.md)（英中双语）|
@@ -146,6 +153,7 @@ ai-learning/
 | 27 | DiT | 2022 | ⭐⭐ | ⬜ 待读 |
 
 > 完整32篇索引见 [PAPERS_INDEX.md](./papers/PAPERS_INDEX.md)
+> 当前已完成论文精读 14 篇，最新库存以 [CONTEXT.md](./CONTEXT.md) 为准。
 
 ---
 

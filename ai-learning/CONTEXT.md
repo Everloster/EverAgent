@@ -14,10 +14,12 @@
 - `09_ddpm_2020` — 扩散生成模型·前向加噪·反向去噪·预测噪声ε·FID 3.17超越GAN·Stable Diffusion基石（2026-03-26）
 - `06_alexnet_2012` — 深度CNN·GPU训练·ReLU激活·Dropout正则化·ILSVRC 2012碾压传统方法·深度学习复兴拐点（2026-03-26）
 - `11_vit_2020` — Vision Transformer·16×16 Patch·纯注意力图像分类·无归纳偏置·大数据超越CNN·多模态统一架构基础（2026-03-26）
+- `12_clip_2021` — 文本-图像对比学习·WIT-400M·零样本图像分类·双编码器·Prompt Engineering·DALL·E/SD/GPT-4V基础设施（2026-03-26）
 - `05_scaling_laws_2020` — 幂律三变量·计算最优配置·Chinchilla对比
 - `10_chain_of_thought_2022` — CoT Prompting·思维链激活推理·涌现现象（2026-03-25）
 - `15_lora_2021` — 低秩分解微调·零推理开销·0.01%参数·PEFT运动奠基（2026-03-26）
 - `26_tulu3_2024` — SFT→DPO→RLVR 后训练完整流程
+- `16_llama_2023` — 开源大模型·推理最优策略·7B超越GPT-3·Pre-Norm+SwiGLU+RoPE·开源生态Linux时刻（2026-03-26）
 
 **知识深度解析** (`reports/knowledge_reports/`)
 - `self_attention_深度解析` — 含代码实现
@@ -39,7 +41,7 @@
 
 ## ⚠️ 边界（防幻觉）
 以下内容**尚未研究**，禁止推测，须告知用户：
-- GPT-4 / Claude / Gemini / LLaMA 系列的专项分析报告
+- GPT-4 / Claude / Gemini 系列的专项分析报告
 - 工程类报告（FlashAttention、KV Cache、ZeRO 等尚无独立精读）
 - InstructGPT / PPO 的论文级精读 ✅ 已完成（04_instructgpt_2022）
 - Scaling Laws 论文（Kaplan 2020）精读级分析 ✅ 已完成（05_scaling_laws_2020）
@@ -51,4 +53,6 @@
 - AlexNet (#06) ✅ 已完成（06_alexnet_2012，基于论文知识分析）
 - Phase 2 尚缺：DDIM等后续扩散论文；VGGNet、Batch Normalization专项报告
 - ViT (#11) ✅ 已完成（11_vit_2020）
-- 下一步推荐：Swin Transformer、MAE（掩码自编码器）、CLIP（多模态对比学习）
+- CLIP (#12) ✅ 已完成（12_clip_2021）
+- LLaMA (#16) ✅ 已完成（16_llama_2023）
+- 下一步推荐：Swin Transformer、MAE（掩码自编码器）、LLaMA 2、Mistral 7B

@@ -13,6 +13,8 @@
 - `09_gfs_2003` — Google文件系统·单Master+ChunkServer·64MB大块·Lease机制·追加写语义·Hadoop HDFS原型（2026-03-26）
 - `11_dynamo_2007` — Amazon高可用KV存储·一致性哈希·Sloppy Quorum·向量时钟·Gossip·Merkle Tree反熵·AP系统典范（2026-03-26）
 - `13_raft_2014` — 可理解性优先共识算法·强Leader+随机超时选举·日志复制两阶段·五大安全性质·etcd/TiKV/CockroachDB原型（2026-03-26）
+- `21_spanner_2012` — Google全球分布式数据库·TrueTime(GPS+原子钟)·外部一致性·Commit Wait·SQL+ACID+水平扩展·NewSQL起点（2026-03-26）
+- `13_paxos_2001` — Paxos Made Simple·Prepare/Promise/Accept两阶段·多数派共识·值延续性·Multi-Paxos→Raft先驱（2026-03-26）
 
 **知识深度解析** (`reports/knowledge_reports/`)
 - `CS关键人物图谱` — 图灵→香农→Dijkstra→现代系统工程师的思想传承
@@ -39,4 +41,6 @@
 - #09 GFS (2003) ✅ 已完成（09_gfs_2003）
 - #11 Dynamo (2007) ✅ 已完成（11_dynamo_2007）
 - #13 Raft (2014) ✅ 已完成（13_raft_2014）
-- 下一步推荐：Spanner (#14)、Zookeeper (Zab 协议)、Paxos Made Simple 对比
+- #21 Spanner (2012) ✅ 已完成（21_spanner_2012）
+- Paxos Made Simple (#13) ✅ 已完成（13_paxos_2001）
+- 下一步推荐：ZooKeeper/ZAB 协议、Kafka (#22)、UNIX Time-Sharing System (#04)

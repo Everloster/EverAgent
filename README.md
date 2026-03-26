@@ -22,6 +22,21 @@ EverAgent 是以 AI Agent 为核心工具的个人知识库，通过系统化学
 
 ---
 
+## 工作区校验
+
+仓库已提供一个轻量级校验脚本，用来检查：
+
+- 学习型子项目报告的 YAML frontmatter 是否完整
+- `README.md` / `CONTEXT.md` 中的相对链接是否可达
+- 各项目 `skills` 是否回链到共享模板
+- 仓库里是否残留 `.DS_Store` 之类的卫生问题
+
+运行方式：
+
+```bash
+python3 scripts/validate_workspace.py
+```
+
 ## 整体学习理念
 
 六个项目共享同一套底层方法论：

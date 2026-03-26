@@ -21,7 +21,7 @@
 | github-trending-analyzer | [CONTEXT.md](./github-trending-analyzer/CONTEXT.md) | 开源热点分析工具·Repo 知识库 |
 
 ## 🚨 铁律
-1. **每次只加载一个项目的 CONTEXT.md**，禁止跨项目并发加载
+1. **每次只加载一个项目的 CONTEXT.md**，禁止跨项目并发加载，除非是对整体项目空间进行重构修改，目前只允许claude和chatgpt模型在整个项目空间工作。
 2. 本文件（AGENTS.md）是唯一全局入口，README.md 供人类阅读，AI 忽略
 3. 不确定去哪时：查上方表格 → 加载对应 CONTEXT.md → 按其指引操作
 4. **防幻觉规则**：未加载的文件内容禁止推测或虚构；CONTEXT.md 中未列出的报告，须明确告知用户"该内容尚未研究"，不得用模型自身训练数据填充
