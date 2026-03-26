@@ -1,3 +1,11 @@
+---
+title: "AlexNet (2012) 论文深度分析"
+domain: "ai-learning"
+report_type: "paper_analysis"
+status: "completed"
+updated_on: "2026-03-26"
+---
+
 # 06 | AlexNet 分析报告
 
 ---

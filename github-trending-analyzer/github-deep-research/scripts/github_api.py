@@ -125,7 +125,7 @@ class GitHubAPI:
         params = {"recursive": "1"} if recursive else {}
         try:
             return self._get(f"/repos/{owner}/{repo}/git/trees/{branch}", params)
-        except Exception:
+        except GitHubAPIError:
             # Try 'master' if 'main' fails
             if branch == "main":
                 return self._get(f"/repos/{owner}/{repo}/git/trees/master", params)
@@ -277,14 +277,16 @@ class GitHubAPI:
         # Add languages
         try:
             summary["languages"] = self.get_languages(owner, repo)
-        except Exception:
+        except (GitHubAPIError, Exception) as e:
+            print(f"Warning: failed to fetch languages for {owner}/{repo}: {e}", file=sys.stderr)
             summary["languages"] = {}
 
         # Add contributor count
         try:
             # Approximate with first 100 contributors to avoid extra API calls.
             summary["contributor_count"] = len(self.get_contributors(owner, repo, limit=100))
-        except Exception:
+        except (GitHubAPIError, Exception) as e:
+            print(f"Warning: failed to fetch contributors for {owner}/{repo}: {e}", file=sys.stderr)
             summary["contributor_count"] = "N/A"
 
         # Latest release
@@ -296,7 +298,8 @@ class GitHubAPI:
                     "name": releases[0].get("name"),
                     "date": releases[0].get("published_at"),
                 }
-        except Exception:
+        except (GitHubAPIError, Exception) as e:
+            print(f"Warning: failed to fetch releases for {owner}/{repo}: {e}", file=sys.stderr)
             summary["latest_release"] = None
 
         return summary

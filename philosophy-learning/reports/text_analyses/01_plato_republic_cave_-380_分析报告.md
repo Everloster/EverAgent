@@ -1,3 +1,11 @@
+---
+title: "柏拉图《理想国》第七卷·洞穴比喻 文本分析"
+domain: "philosophy-learning"
+report_type: "text_analysis"
+status: "completed"
+updated_on: "2026-03-26"
+---
+
 # 01 | 柏拉图《理想国》第七卷·洞穴比喻 文本分析报告
 
 ```

@@ -31,7 +31,7 @@
 
 ## 模板 B：概念/知识深度解析（5 层理解模型）
 
-适用于：所有子项目的 knowledge_deep_dive / concept_deep_dive 技能
+适用于：所有子项目的 concept_deep_dive 技能
 
 ### 通用层次
 

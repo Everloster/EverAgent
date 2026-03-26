@@ -61,12 +61,12 @@ ai-learning/
 ├── skills/                                      # 🛠️ 学习技能模板
 │   ├── paper_analysis/
 │   │   └── SKILL.md                            # 论文深度分析技能（7步分析法）
-│   └── knowledge_deep_dive/
+│   └── concept_deep_dive/
 │       └── SKILL.md                            # AI 知识深挖技能（5层理解模型）
 │
 ├── reports/                                     # 📊 分析报告
 │   ├── AI演义_笔记分析与项目整合报告.md          # 《AI演义》PDF 解析与项目改进建议
-│   ├── paper_analyses/                         # 论文精读报告（14 篇已完成）
+│   ├── paper_analyses/                         # 论文精读报告（15 篇已完成）
 │   │   ├── 01_transformer_2017_分析报告.md
 │   │   ├── 04_instructgpt_2022_分析报告.md
 │   │   ├── 12_clip_2021_分析报告.md
@@ -107,23 +107,34 @@ ai-learning/
 
 ### 第四步：阅读已有深度报告
 
-**论文精读报告：**
+**论文精读报告（15 篇已完成）：**
 - [Transformer 论文分析](./reports/paper_analyses/01_transformer_2017_分析报告.md) ← **推荐第一篇读**
+- [BERT 论文分析](./reports/paper_analyses/02_bert_2018_分析报告.md) ← 双向预训练
+- [GPT-3 论文分析](./reports/paper_analyses/03_gpt3_2020_分析报告.md) ← Few-shot
 - [InstructGPT 论文分析](./reports/paper_analyses/04_instructgpt_2022_分析报告.md) ← RLHF 起点
 - [Scaling Laws 论文分析](./reports/paper_analyses/05_scaling_laws_2020_分析报告.md) ← 训练策略与算力配置
+- [AlexNet 论文分析](./reports/paper_analyses/06_alexnet_2012_分析报告.md) ← 深度学习复兴拐点
+- [ResNet 论文分析](./reports/paper_analyses/07_resnet_2015_分析报告.md) ← 残差连接
+- [GAN 论文分析](./reports/paper_analyses/08_gan_2014_分析报告.md) ← 生成对抗网络
+- [DDPM 论文分析](./reports/paper_analyses/09_ddpm_2020_分析报告.md) ← 扩散模型
+- [Chain-of-Thought 论文分析](./reports/paper_analyses/10_chain_of_thought_2022_分析报告.md) ← 思维链
 - [ViT 论文分析](./reports/paper_analyses/11_vit_2020_分析报告.md) ← Vision Transformer
 - [CLIP 论文分析](./reports/paper_analyses/12_clip_2021_分析报告.md) ← 多模态表示学习
+- [LoRA 论文分析](./reports/paper_analyses/15_lora_2021_分析报告.md) ← 低秩适应微调
+- [LLaMA 论文分析](./reports/paper_analyses/16_llama_2023_分析报告.md) ← 开源大模型
 - [Tulu 3 后训练流程分析](./reports/paper_analyses/26_tulu3_2024_后训练分析报告.md) ← SFT→DPO→RLVR 完整解析
 
-**知识深度解析：**
+**知识深度解析（5 篇）：**
 - [Self-Attention 深度解析](./reports/knowledge_reports/self_attention_深度解析.md) — 含代码实现
 - [RLHF 深度解析](./reports/knowledge_reports/RLHF_深度解析.md) — PPO/DPO 对比
+- [Scaling Laws 深度解析](./reports/knowledge_reports/Scaling_Laws_深度解析.md) — Kaplan 幂律·Chinchilla 修正
+- [LoRA 深度解析](./reports/knowledge_reports/LoRA_深度解析.md) — 低秩适应·QLoRA·DoRA
 - [AI关键人物图谱](./reports/knowledge_reports/AI关键人物图谱.md) — 研究者生涯与机构演化
 
 ### 第五步：用技能模板生成新报告
 
 - 精读任意论文 → 使用 [论文分析技能](./skills/paper_analysis/SKILL.md)
-- 深入理解某概念 → 使用 [知识深挖技能](./skills/knowledge_deep_dive/SKILL.md)
+- 深入理解某概念 → 使用 [知识深挖技能](./skills/concept_deep_dive/SKILL.md)
 
 ---
 
@@ -143,7 +154,7 @@ ai-learning/
 | 10 | Chain-of-Thought | 2022 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/10_chain_of_thought_2022_分析报告.md) |
 | 11 | ViT | 2020 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/11_vit_2020_分析报告.md) |
 | 12 | CLIP | 2021 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/12_clip_2021_分析报告.md) |
-| 12 | LLaMA | 2023 | ⭐⭐ | ⬜ 待读 |
+| 16 | LLaMA | 2023 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/16_llama_2023_分析报告.md) |
 | 15 | LoRA | 2021 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/15_lora_2021_分析报告.md) |
 | 20 | Stable Diffusion (LDM) | 2021 | ⭐⭐⭐ | ⬜ 待读 |
 | 21 | MoE | 2017 | ⭐⭐⭐ | ⬜ 待读 |
@@ -153,7 +164,7 @@ ai-learning/
 | 27 | DiT | 2022 | ⭐⭐ | ⬜ 待读 |
 
 > 完整32篇索引见 [PAPERS_INDEX.md](./papers/PAPERS_INDEX.md)
-> 当前已完成论文精读 14 篇，最新库存以 [CONTEXT.md](./CONTEXT.md) 为准。
+> 当前已完成论文精读 15 篇，最新库存以 [CONTEXT.md](./CONTEXT.md) 为准。
 
 ---
 
@@ -203,8 +214,8 @@ Week 15+:   选择感兴趣方向深入（推理模型 / Agent / 生成模型）
 
 - [ ] 下载 AlexNet 论文（NeurIPS 官方链接需手动访问）
 - [x] 保存 The Bitter Lesson 博客为本地 Markdown（英中双语 + 核心提炼）
-- [ ] 精读 BERT、GPT-3 并生成分析报告
-- [ ] 精读 ViT 并分析与 CNN 架构的对比
+- [x] 精读 BERT、GPT-3 并生成分析报告
+- [x] 精读 ViT 并分析与 CNN 架构的对比
 - [ ] 精读 ZeRO 并结合 Infra 模块实践
 - [ ] 完成 Tulu 3 RLVR 代码复现实验
 

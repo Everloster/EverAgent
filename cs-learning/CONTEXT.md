@@ -24,7 +24,7 @@
 
 ## Skills
 - `skills/paper_analysis/SKILL.md` — CS 论文 7 步分析法
-- `skills/knowledge_deep_dive/SKILL.md` — CS 概念 5 层理解模型
+- `skills/concept_deep_dive/SKILL.md` — CS 概念 5 层理解模型
 
 ## 导航
 - 学习路径：`roadmap/Learning_Roadmap.md`
