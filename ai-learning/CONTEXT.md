@@ -27,6 +27,7 @@
 - `33_mistral_7b_2023` — 小参数高性能开源LLM·GQA+SWA架构·7B级别推理效率与质量平衡里程碑（2026-03-26）
 - `18_flashattention_2022` — IO-aware精确Attention·在线Softmax·显存占用显著下降·长上下文训练提速关键内核（2026-03-26）
 - `34_llama2_2023` — 开源基础模型+Chat模型双路线·70B级别开放对话模型·安全微调进入开源主舞台（2026-03-26）
+- `13_word2vec_2013` — CBOW与Skip-gram·层次化Softmax·负采样·词嵌入民主化·2023 NeurIPS时间检验奖（2026-03-28）
 
 **知识深度解析** (`reports/knowledge_reports/`)
 - `self_attention_深度解析` — 含代码实现
