@@ -54,7 +54,7 @@
 | # | 论文 | 作者 | 年份 | 期刊 | 获取链接 | 状态 |
 |---|------|------|------|------|---------|------|
 | P24 | Social jetlag, obesity and metabolic disorder | Roenneberg et al. | 2015 | *Int J Obesity* | [Nature](https://www.nature.com/articles/ijo2014201) | ⬜ 待读 |
-| P25 | The Association between Social Jetlag, the Metabolic Syndrome, and Type 2 Diabetes | Rutters et al. | 2017 | *PMC* | [PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC5564947/) | ⬜ 待读 |
+| P25 | The Association between Social Jetlag, the Metabolic Syndrome, and Type 2 Diabetes | Rutters et al. | 2017 | *PMC* | [PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC5564947/) | ✅ 已完成 |
 | P26 | Social Jetlag and Related Risks for Human Health: A Timely Review | Koopman et al. | 2021 | *PMC* | [PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC8707256/) | ⬜ 待读 |
 
 ---
