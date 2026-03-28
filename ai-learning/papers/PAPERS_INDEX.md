@@ -2,7 +2,7 @@
 
 > 本文件列出所有推荐下载的关键论文，包含 Arxiv 下载链接、作者、摘要要点。
 > 请手动点击链接下载 PDF 保存到本目录（papers/）。
-> 更新日期：2026-03-26（v5：补充 Mistral 7B 与 LLaMA 2）
+> 更新日期：2026-03-28（v6：补充 DINOv2）
 
 ## 📌 编号规则说明
 
@@ -319,6 +319,20 @@
 - **年份**：2023
 - **下载链接**：https://arxiv.org/pdf/2307.09288
 - **核心贡献**：系统性开放基础模型与 Chat 模型，推动开源对话模型、安全微调与私有化部署生态发展
+
+---
+
+### 35. DINOv2: Learning Robust Visual Features without Supervision
+- **文件名建议**：`35_dinov2_2023.pdf`
+- **作者**：Maxime Oquab 等（Meta AI Research）
+- **年份**：2023
+- **发表**：arXiv:2304.07193, TMLR 2024
+- **下载链接**：
+  - Arxiv PDF: https://arxiv.org/pdf/2304.07193
+  - Arxiv 页面: https://arxiv.org/abs/2304.07193
+- **核心贡献**：通过1.42亿精选图像的自监督预训练，首次证明纯自监督ViT在分类、分割、深度估计等全视觉任务上超越OpenCLIP；KoLeo正则化、知识蒸馏传承、CV基础模型范式
+- **关键概念**：自监督学习、知识蒸馏、KoLeo正则化、LVD-142M、视觉基础模型
+- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/35_dinov2_2023.md`）
 
 ---
 
