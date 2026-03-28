@@ -268,6 +268,7 @@
   - https://www.earlymoderntexts.com/assets/pdfs/kant1785.pdf（Bennett 简明英译）
 - **核心内容**：绝对命令的三个公式（普遍法则公式、人性公式、自律公式）及其推导
 - **字数/阅读时间**：约40页节选 / 约4小时
+- **阅读状态**：✅ 已完成（见 `reports/text_analyses/05_kant_groundwork_1785.md`）
 
 ---
 
