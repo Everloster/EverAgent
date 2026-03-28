@@ -16,6 +16,7 @@
 - `14_asch_conformity_1951` — 群体压力下的知觉从众·规范性社会影响·客观任务中仍出现系统性附和（2026-03-26）
 - `24_zimbardo_1971` — 斯坦福监狱实验·角色内化与制度情境力量·高争议经典案例·方法学批评同样重要（2026-03-26）
 - `04_rosenhan_sane_insane_places_1973` — On Being Sane in Insane Places·假病人实验·诊断标签效应·精神病诊断可靠性质疑（2026-03-27）
+- `07_tversky_kahneman_heuristics_1974` — 启发式与偏差·代表性·可得性·锚定·行为经济学奠基·Kahneman 2002诺贝尔奖（2026-03-28）
 
 **知识深度解析** (`reports/concept_reports/`)
 - `心理学关键人物图谱` — 冯特→卡尼曼思想传承与决裂史

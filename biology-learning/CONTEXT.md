@@ -10,6 +10,7 @@
 - `P01_social_jetlag_obesity_2012` — Social Jetlag and Obesity·社会性时差·工作日/自由日睡眠中点错位·与 BMI 增加相关（2026-03-26）
 - `P08_sleep_onset_sws_gh_1988` — 睡眠起始·慢波睡眠·夜间 GH 脉冲释放·睡眠结构与恢复的经典机制研究（2026-03-26）
 - `P09_gh_sleep_physiology_1996` — GH 夜间分泌生理学·睡眠结构·年龄变化·节律与恢复的整合性综述（2026-03-26）
+- `P25_social_jetlag_metabolic_syndrome_2017` — 社会性时差与代谢综合征及2型糖尿病·SJL>2h风险翻倍·年龄效应修饰·血糖+腰围驱动（2026-03-28）
 
 **专题研究** (`reports/concept_reports/`)
 - `晚型人作息与力量训练_深度研究报告` — 晚型节律×深夜训练×睡眠质量交叉研究，含 Roenneberg/Walker/Foster 关键人物及 5 项核心实验，附可操作建议
