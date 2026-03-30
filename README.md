@@ -1,7 +1,7 @@
 # 🧠 EverAgent — 个人学习与研究工作台
 
 > 用 AI Agent 驱动的个人知识体系，覆盖 AI 技术、计算机科学、哲学思想、心理学、生命科学与开源生态
-> 创建日期：2026-03-23 | 最后更新：2026-03-26（自动任务：Raft论文分析 + 柏拉图洞穴比喻文本分析）
+> 创建日期：2026-03-23 | 最后更新：2026-03-30（项目优化任务1：全量同步内容量 + 修复防幻觉边界漏洞）
 
 > **AI/Agent 使用本仓库？** → 请直接阅读 [AGENTS.md](./AGENTS.md)，本文件供人类阅读。
 
@@ -13,12 +13,12 @@ EverAgent 是以 AI Agent 为核心工具的个人知识库，通过系统化学
 
 | 项目 | 领域 | 内容量 | 状态 |
 |------|------|--------|------|
-| [🤖 AI Learning](./ai-learning/README.md) | 人工智能技术·论文精读·技术深度报告 | 15 篇精读 + 5 篇深度报告 | 🟢 活跃 |
-| [💻 CS Learning](./cs-learning/README.md) | 计算机科学·系统·算法·分布式 | 10 篇精读 + 1 篇人物图谱 | 🟡 建设中 |
-| [📚 Philosophy Learning](./philosophy-learning/README.md) | 西方哲学史·经典文本·概念辨析 | 3 篇文本分析 + 1 篇论文分析 + 1 篇人物图谱 | 🟡 建设中 |
-| [🧠 Psychology Learning](./psychology-learning/README.md) | 心理学·经典实验精读·行为经济学 | 2 篇精读 + 1 篇人物图谱 | 🟡 建设中 |
-| [🧬 Biology Learning](./biology-learning/README.md) | 时间生物学·睡眠科学·运动生理学 | 1 篇概念报告 | 🔵 初始化 |
-| [📈 GitHub Trending Analyzer](./github-trending-analyzer/README.md) | 开源热点追踪·Repo 深度研究 | 58 篇 Repo 报告 + 7 篇汇总 | 🟢 活跃 |
+| [🤖 AI Learning](./ai-learning/README.md) | 人工智能技术·论文精读·技术深度报告 | 23 篇精读 + 7 篇深度报告 | 🟢 活跃 |
+| [💻 CS Learning](./cs-learning/README.md) | 计算机科学·系统·算法·分布式 | 16 篇精读 + 1 篇人物图谱 | 🟢 活跃 |
+| [📚 Philosophy Learning](./philosophy-learning/README.md) | 西方哲学史·经典文本·概念辨析 | 6 篇文本分析 + 1 篇论文分析 + 2 篇概念报告 | 🟡 建设中 |
+| [🧠 Psychology Learning](./psychology-learning/README.md) | 心理学·经典实验精读·行为经济学 | 10 篇精读 + 1 篇人物图谱 | 🟢 活跃 |
+| [🧬 Biology Learning](./biology-learning/README.md) | 时间生物学·睡眠科学·运动生理学 | 4 篇论文精读 + 1 篇概念报告 | 🟡 建设中 |
+| [📈 GitHub Trending Analyzer](./github-trending-analyzer/README.md) | 开源热点追踪·Repo 深度研究 | 64 篇 Repo 报告 + 8 篇汇总 | 🟢 活跃 |
 
 ---
 
