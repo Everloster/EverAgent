@@ -23,6 +23,7 @@
 - `23_ffs_1984` — BSD Fast File System·cylinder group布局·fragment小块分配·空间局部性驱动文件系统性能革命（2026-03-26）
 - `08_byzantine_generals_1982` — 恶意节点一致性问题奠基·3f+1容错下界·BFT与区块链共识理论源头（2026-03-26）
 - `18_csp_1978` — Communicating Sequential Processes·通道通信·进程代数·Go语言并发模型理论基础（2026-03-26）
+- `28_chord_2001` — Chord P2P查找协议·一致哈希环·Finger Table·O(logN)路由·稳定化协议·DHT奠基（2026-03-30）
 
 **知识深度解析** (`reports/knowledge_reports/`)
 - `CS关键人物图谱` — 图灵→香农→Dijkstra→现代系统工程师的思想传承
