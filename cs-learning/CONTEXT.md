@@ -22,6 +22,7 @@
 - `14_zookeeper_2010` — 分布式协调服务·ZAB原子广播·会话机制+临时顺序节点·HBase/Kafka早期控制平面基石（2026-03-26）
 - `23_ffs_1984` — BSD Fast File System·cylinder group布局·fragment小块分配·空间局部性驱动文件系统性能革命（2026-03-26）
 - `08_byzantine_generals_1982` — 恶意节点一致性问题奠基·3f+1容错下界·BFT与区块链共识理论源头（2026-03-26）
+- `18_csp_1978` — Communicating Sequential Processes·通道通信·进程代数·Go语言并发模型理论基础（2026-03-26）
 
 **知识深度解析** (`reports/knowledge_reports/`)
 - `CS关键人物图谱` — 图灵→香农→Dijkstra→现代系统工程师的思想传承
@@ -53,4 +54,5 @@
 - Kafka (#22) ✅ 已完成（22_kafka_2011）
 - UNIX Time-Sharing System (#04) ✅ 已完成（04_unix_1974，一切皆文件·fork/exec·管道）
 - TCP/IP (#19) ✅ 已完成（19_tcpip_1974，网关·端到端论点·分层协议栈·Flag Day 1983）
-- 下一步推荐：Chubby、CSP (#18)
+- CSP (#18) ✅ 已完成（18_csp_1978，通道通信·进程代数·Go并发模型源头）
+- 下一步推荐：Chubby、DNS
