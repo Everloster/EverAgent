@@ -56,7 +56,8 @@
 - InstructGPT / PPO 的论文级精读 ✅ 已完成（04_instructgpt_2022）
 - Scaling Laws 论文（Kaplan 2020）精读级分析 ✅ 已完成（05_scaling_laws_2020）
 - LoRA 论文级精读 ✅ 已完成（15_lora_2021）
-- 工程类论文精读（ZeRO #25、MegaScale #31 等）
+- 工程类论文精读（MegaScale #31 等）
+- ZeRO (#25) ✅ 已完成（25_zero_2019）
 - ResNet (#07) ✅ 已完成（07_resnet_2015）
 - GAN (#08) ✅ 已完成（08_gan_2014）
 - DDPM (#09) ✅ 已完成（09_ddpm_2020）

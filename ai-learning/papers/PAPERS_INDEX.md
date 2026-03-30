@@ -253,6 +253,7 @@
 - **作者**：Rajbhandari 等（微软 DeepSpeed 团队）
 - **年份**：2019
 - **下载链接**：https://arxiv.org/pdf/1910.02054
+- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/25_zero_2019.md`）
 - **核心贡献**：通过切分优化器状态、梯度、参数，解决大模型训练的显存问题；DeepSpeed 的核心工作
 
 ---

@@ -276,6 +276,7 @@
 **为什么读**：P2P 和 DHT 的教科书级论文；理解 Dynamo、Cassandra 中一致性哈希的原理。
 **阅读难度**：⭐⭐⭐（算法证明较多）
 **链接**：https://dl.acm.org/doi/10.1145/383059.383071
+**阅读状态**：✅ 已完成（见 `reports/paper_analyses/28_chord_2001.md`）
 
 ---
 
