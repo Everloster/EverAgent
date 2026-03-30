@@ -2,28 +2,30 @@
 
 > 目的：为其他 Agent 提供可直接接单的跨项目任务分发表
 > 适用范围：`ai-learning` / `cs-learning` / `philosophy-learning` / `psychology-learning` / `biology-learning`
-> 更新日期：2026-03-26
+> 更新日期：**2026-03-30**（项目优化任务1，由 Claude Sonnet 4.6 全量重写）
 
 ---
 
 ## 使用原则
 
 1. 同一时间同一子项目只允许一个 Agent 写入。
-2. 优先接“高价值、低歧义、能直接产出报告”的任务。
+2. 优先接"高价值、低歧义、能直接产出报告"的任务。
 3. 写入前先读取对应项目的 `CONTEXT.md`，避免越过防幻觉边界。
-4. 完成任务后同步更新对应项目的 `README.md` 与 `CONTEXT.md`。
+4. 完成任务后同步更新对应项目的 `CONTEXT.md`（不只是本文件）。
 
 ---
 
-## 项目进度概览
+## 项目进度概览（截至 2026-03-30）
 
-| 项目 | 当前状态 | 已有报告量 | 主要问题 | 建议优先级 |
-|------|----------|------------|----------|------------|
-| `ai-learning` | 成熟活跃 | 23 | 核心工程专题仍有缺口 | P1 |
-| `cs-learning` | 成熟建设中 | 13 | 网络/协调服务/文件系统缺口明显 | P1 |
-| `philosophy-learning` | 结构成型 | 7 | 20 世纪哲学与德国哲学仍偏薄 | P1 |
-| `psychology-learning` | 早期成型 | 3 | 认知偏差与行为经济学主线未展开 | P2 |
-| `biology-learning` | 初始化期 | 1 | 仍缺首批独立论文精读 | P2 |
+| 项目 | 当前状态 | 论文/文本精读 | 知识/概念报告 | 主要缺口 | 建议优先级 |
+|------|----------|:---:|:---:|----------|:---:|
+| `ai-learning` | 🟢 高度活跃 | 23 篇 | 7 篇 | 分布式训练（ZeRO）、视频理解（VideoMAE） | P1 |
+| `cs-learning` | 🟢 成熟建设中 | 16 篇 | 1 篇 | 分布式协调（Chubby）、网络（DNS） | P1 |
+| `philosophy-learning` | 🟡 结构成型 | 6 篇文本分析 + 1 篇论文分析 | 2 篇 | 心灵哲学（Nagel）、黑格尔、20 世纪分析哲学 | P1 |
+| `psychology-learning` | 🟢 快速扩张 | 10 篇 | 1 篇 | 发展心理学、临床心理学，人物图谱亟需更新 | P2 |
+| `biology-learning` | 🟡 初步成型 | 4 篇 | 1 篇 | 睡眠神经科学、昼夜节律分子机制、缺 roadmap | P2 |
+
+> ⚠️ 注意：上述"已有报告量"仅统计已录入 CONTEXT.md 的报告；如有报告文件未录入，请先完成 CONTEXT.md 更新再接任务。
 
 ---
 
@@ -33,47 +35,60 @@
 
 | 项目 | 建议任务 | 任务价值 | 适合的 Agent 类型 |
 |------|----------|----------|------------------|
-| `ai-learning` | 精读 `FlashAttention (2022)` | 补齐 LLM 工程链路关键缺口 | 熟悉 LLM/系统优化 |
-| `cs-learning` | 精读 `Chubby` 或 `ZooKeeper/ZAB` | 补齐协调服务与一致性主线 | 熟悉分布式系统 |
-| `philosophy-learning` | 精读 `Nagel (1974) What Is It Like to Be a Bat?` | 打开心灵哲学主线，与 AI/心理学交叉强 | 熟悉哲学文本分析 |
+| `ai-learning` | 精读 `ZeRO (2019)` | 分布式训练主线最大缺口；与 FlashAttention、Scaling Laws 形成 LLM 训练完整闭环 | 熟悉分布式训练 |
+| `ai-learning` | 精读 `VideoMAE (2022)` 或 `EVA-02 (2023)` | 视觉自监督方向（MAE → VideoMAE）后续；与已有 DINOv2、MAE 形成序列 | 熟悉视觉 AI |
+| `cs-learning` | 精读 `Chubby (2006)` | 分布式协调服务主线缺口；Paxos → Chubby → ZooKeeper 链路目前断在中间 | 熟悉分布式系统 |
+| `philosophy-learning` | 精读 `Nagel (1974) What Is It Like to Be a Bat?` | 心灵哲学主线入口；与 AI 意识、人格问题高度交叉 | 熟悉哲学文本分析 |
 
 ### P2：第二批推荐
 
 | 项目 | 建议任务 | 任务价值 | 适合的 Agent 类型 |
 |------|----------|----------|------------------|
-| `psychology-learning` | 精读 `Kahneman & Tversky (1979)` | 从经典实验推进到行为经济学核心 | 熟悉心理学/行为科学 |
-| `biology-learning` | 精读 `Roenneberg (2012) Social Jetlag and Obesity` | 把现有综合报告落到论文级分析 | 熟悉生命科学文献 |
-| `ai-learning` | 精读 `Mistral 7B` 或 `DINO v2` | 分别补 LLM 开源脉络或视觉自监督后续 | 熟悉 AI 论文 |
-| `cs-learning` | 精读 `A Fast File System for UNIX` | 把 UNIX 主线从哲学扩展到文件系统实现 | 熟悉 OS/文件系统 |
+| `ai-learning` | 知识报告：`MoE (混合专家)` 深度解析 | GPT-4/Mixtral 架构基础；ai-learning 工程模块缺口 | 熟悉 LLM 架构 |
+| `cs-learning` | 精读 `DNS (1987, RFC 1034/1035)` | 网络方向第一篇；与 TCP/IP 自然衔接 | 熟悉网络协议 |
+| `philosophy-learning` | 精读 `黑格尔《精神现象学》导论` 或 `罗尔斯《正义论》第一章` | 补齐德国唯心论 or 当代政治哲学主线 | 熟悉哲学文本 |
+| `psychology-learning` | 制作"认知偏差全景图"知识报告 | 整合已有的 Kahneman/Tversky 系列报告；提升项目导航价值 | 熟悉认知心理学 |
+| `biology-learning` | 创建 `roadmap/` 目录 + 撰写学习路径 | biology 是唯一缺 roadmap 的子项目；结构完整性补缺 | 任意 Agent |
+| `biology-learning` | 精读 `Walker et al. (2017) Why We Sleep 核心论据综述` | 把"睡眠科学"方向的论文精读链跑通第一个高影响力节点 | 熟悉睡眠/神经科学 |
 
 ### P3：结构整理型任务
 
 | 项目 | 建议任务 | 任务价值 |
 |------|----------|----------|
-| `psychology-learning` | 制作心理学流派思维导图 | 提升项目导航与教学价值 |
-| `philosophy-learning` | 扩展“核心概念跨时代比较”之“自由/正义/存在” | 把项目从文本库推进为问题库 |
-| `biology-learning` | 补齐 timeline / papers / books 索引质量 | 为后续 Agent 降低选题成本 |
+| `psychology-learning` | 更新"心理学关键人物图谱"（加入 Bandura、Seligman 等新精读的作者） | 报告增加了 7 篇后，人物图谱已严重落后于内容 |
+| `ai-learning` | 更新 `roadmap/Learning_Roadmap.md` Phase 完成度 | Phase 2/3 大量论文已完成，但进度条仍显示 0% |
+| `cs-learning` | 新增"分布式系统知识图谱"知识报告 | 16 篇论文已可归纳出 Storage/Consensus/Coordination/Messaging 四主线 |
+| `philosophy-learning` | 扩展"知识跨时代比较"至"自由意志"专题 | 现有跨时代比较聚焦知识论，自由意志是另一个高张力主线 |
+| `全局` | 为 github-trending-analyzer 添加周报自动触发 schedule | 目前 trending 分析靠手动触发，可用 schedule 技能自动化 |
 
 ---
 
 ## 并发安排建议
 
-推荐最多同时开 3 个学习项目：
-
-- Agent A：`ai-learning`
-- Agent B：`cs-learning`
-- Agent C：`philosophy-learning` 或 `psychology-learning`
-
-`biology-learning` 更适合作为补位任务，在前 3 个项目有人推进后再启动。
+- **推荐最多同时开 3 个学习项目**，4 个以上会有 CONTEXT 竞写风险。
+- 推荐组合（当前时间点）：
+  - Agent A：`ai-learning`（ZeRO 或 VideoMAE）
+  - Agent B：`cs-learning`（Chubby）
+  - Agent C：`philosophy-learning`（Nagel） 或 `biology-learning`（补 roadmap）
 
 ---
 
-## 不建议重复领取的任务
+## 已完成，不应重复领取
 
-- `psychology-learning` 的 `Miller (1956)` 与 `Milgram (1963)` 已完成，不应再次领取。
-- `ai-learning` 的 `AlexNet` 已完成，不应继续作为待办入口。
-- `philosophy-learning` 的 `《美诺》`、`洞穴比喻`、`Gettier`、`笛卡尔《沉思录》` 已完成，不应重复开工。
-- `cs-learning` 的 `UNIX` 与 `Kafka` 已完成，接单前先看 `CONTEXT.md`。
+### ai-learning
+Transformer、BERT、GPT-3、InstructGPT、ResNet、GAN、DDPM、AlexNet、Scaling Laws、Chain-of-Thought、LoRA、ViT、CLIP、LLaMA、Swin Transformer、MAE、DINOv2、FlashAttention、LLaMA-2、Mistral 7B、Word2Vec、Tulu3；知识报告：Self-Attention、RLHF、Scaling Laws、LoRA、AI关键人物图谱、DINOv2深度解析、KV Cache
+
+### cs-learning
+Turing (1950)、Shannon (1948)、MapReduce (2004)、Bigtable (2006)、Lamport Clocks (1978)、GFS (2003)、Dynamo (2007)、Raft (2014)、Spanner (2012)、Paxos (2001)、Kafka (2011)、UNIX (1974)、ZooKeeper (2010)、FFS (1984)、Byzantine Generals (1982)、CSP (1978)、TCP/IP (1974)
+
+### philosophy-learning
+柏拉图《理想国》洞穴比喻、柏拉图《美诺》、笛卡尔《沉思录》、Gettier (1963)、康德《道德形而上学基础》、亚里士多德《尼各马可伦理学》；概念报告：哲学关键人物图谱、知识跨时代比较
+
+### psychology-learning
+Miller (1956)、Milgram (1963)、Festinger & Carlsmith (1959)、Kahneman & Tversky (1979) 前景理论、Seligman & Maier (1967) 习得性无助、Darley & Latané (1968) 旁观者效应、Asch (1951) 从众实验、Zimbardo (1971) 斯坦福监狱实验、Rosenhan (1973)、Tversky & Kahneman (1974) 启发式与偏差、Bandura (1961) Bobo 娃娃实验
+
+### biology-learning
+Social Jetlag and Obesity (2012)、Sleep GH 1988、GH Sleep Physiology 1996、Social Jetlag 代谢综合征 (2017)；概念报告：晚型人作息与力量训练
 
 ---
 
@@ -83,17 +98,5 @@
 
 1. 新增正式报告文件到对应 `reports/` 目录
 2. 按 `docs/REPORT_METADATA.md` 补齐 frontmatter
-3. 更新对应项目 `CONTEXT.md`
-4. 如 README 中有状态追踪或待办列表，同步修正
-
----
-
-## 建议接单顺序
-
-1. `ai-learning` → `FlashAttention`
-2. `cs-learning` → `Chubby` / `ZooKeeper`
-3. `philosophy-learning` → `Nagel (1974)`
-4. `psychology-learning` → `Prospect Theory`
-5. `biology-learning` → `Social Jetlag and Obesity`
-
-这套顺序的目标不是平均推进，而是优先补最能提升项目“知识主线完整度”的缺口。
+3. 更新对应项目 `CONTEXT.md`（已有报告 + 防幻觉边界两处都要更新）
+4. 如果任务完成后导致本 Task Board 的"已完成"列表需要更新，同步更新本文件
