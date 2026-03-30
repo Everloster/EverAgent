@@ -52,4 +52,5 @@
 - Paxos Made Simple (#13) ✅ 已完成（13_paxos_2001）
 - Kafka (#22) ✅ 已完成（22_kafka_2011）
 - UNIX Time-Sharing System (#04) ✅ 已完成（04_unix_1974，一切皆文件·fork/exec·管道）
-- 下一步推荐：Chubby、CSP (#18)、TCP/IP (#19)
+- TCP/IP (#19) ✅ 已完成（19_tcpip_1974，网关·端到端论点·分层协议栈·Flag Day 1983）
+- 下一步推荐：Chubby、CSP (#18)

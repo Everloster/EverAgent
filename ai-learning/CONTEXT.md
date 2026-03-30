@@ -36,6 +36,7 @@
 - `AI关键人物图谱` — Transformer 作者去向·OpenAI 分裂史
 - `Scaling_Laws_深度解析` — Kaplan 2020 幂律关系·Chinchilla 修正·涌现能力（2026-03-25）
 - `LoRA_深度解析` — 低秩适应原理·QLoRA·DoRA变体·代码实现·多任务部署（2026-03-25）
+- `KV_Cache_深度解析_20260330` — 键值缓存原理·GQA/MQA变体·PagedAttention·显存计算·PyTorch代码实现·SnapKV等前沿压缩方案（2026-03-30）
 
 ## 离线知识库
 → [`knowledge/INDEX.md`](./knowledge/INDEX.md)（子话题菜单，离线模型从此进入）
@@ -67,4 +68,5 @@
 - Swin Transformer (#13) ✅ 已完成（13_swin_transformer_2021）
 - MAE (#17) ✅ 已完成（17_mae_2022，75%掩码率·ViT自监督预训练·CVPR 2022）
 - DINOv2 (#35) ✅ 已完成（35_dinov2_2023）
-- 下一步推荐：VideoMAE、ZeRO、KV Cache、EVA-02
+- KV Cache 深度解析 ✅ 已完成（KV_Cache_深度解析_20260330）
+- 下一步推荐：VideoMAE、ZeRO、EVA-02
