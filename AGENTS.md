@@ -127,9 +127,33 @@ git commit -m "[task-execution] ai-learning: XXX报告
 
 Agent: Claude Opus 4.6
 Task-Type: task-execution"
-git pull --rebase origin main   # 冲突无法自动解决则暂停通知用户
-git push origin main
+GIT_NO_OPTIONAL_LOCKS=1 git fetch origin main
+GIT_NO_OPTIONAL_LOCKS=1 git merge --ff-only FETCH_HEAD  # 冲突无法自动解决则暂停通知用户
+GIT_NO_OPTIONAL_LOCKS=1 git push origin main
 ```
+
+> ⚠️ **锁文件说明**：本仓库挂载于 macOS 用户目录，沙箱环境无法自动清理 `.git/*.lock`。
+> 使用 `GIT_NO_OPTIONAL_LOCKS=1` 可减少锁文件产生。若 git 报 lock 错误，用户在终端执行：
+> `find .git -name "*.lock" -delete && git pull`
+
+### 降级方案（本地 git 因锁文件不可用时）
+
+使用 GitHub REST API 直接推送，无需本地 git：
+
+```bash
+# 1. 获取目标文件的当前 SHA
+curl -s -H "Authorization: token $GITHUB_TOKEN" \
+  "https://api.github.com/repos/Everloster/EverAgent/contents/{path}" | python3 -c "import sys,json; print(json.load(sys.stdin)['sha'])"
+
+# 2. PUT 更新文件（每个文件独立一次请求）
+curl -s -X PUT \
+  -H "Authorization: token $GITHUB_TOKEN" \
+  -H "Content-Type: application/json" \
+  "https://api.github.com/repos/Everloster/EverAgent/contents/{path}" \
+  -d "{\"message\":\"{commit msg}\",\"content\":\"$(base64 -w0 {local_file})\",\"sha\":\"{sha}\"}"
+```
+
+Token 从 `.env` 读取：`GITHUB_TOKEN=$(grep GITHUB_TOKEN .env | cut -d'"' -f2)`
 
 ---
 
