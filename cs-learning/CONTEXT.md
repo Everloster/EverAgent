@@ -24,6 +24,7 @@
 - `08_byzantine_generals_1982` — 恶意节点一致性问题奠基·3f+1容错下界·BFT与区块链共识理论源头（2026-03-26）
 - `18_csp_1978` — Communicating Sequential Processes·通道通信·进程代数·Go语言并发模型理论基础（2026-03-26）
 - `28_chord_2001` — Chord P2P查找协议·一致哈希环·Finger Table·O(logN)路由·稳定化协议·DHT奠基（2026-03-30）
+- `29_chubby_2006` — 粗粒度分布式锁服务·5副本Paxos cell·类文件系统接口·advisory锁+Sequencer·Grace period·意外成为Google主要命名服务（2026-03-31）
 
 **知识深度解析** (`reports/knowledge_reports/`)
 - `CS关键人物图谱` — 图灵→香农→Dijkstra→现代系统工程师的思想传承
@@ -56,4 +57,5 @@
 - UNIX Time-Sharing System (#04) ✅ 已完成（04_unix_1974，一切皆文件·fork/exec·管道）
 - TCP/IP (#19) ✅ 已完成（19_tcpip_1974，网关·端到端论点·分层协议栈·Flag Day 1983）
 - CSP (#18) ✅ 已完成（18_csp_1978，通道通信·进程代数·Go并发模型源头）
-- 下一步推荐：Chubby、DNS
+- Chubby (2006) ✅ 已完成（29_chubby_2006）
+- 下一步推荐：DNS

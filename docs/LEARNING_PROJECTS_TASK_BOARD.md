@@ -19,9 +19,9 @@
 
 | 项目 | 当前状态 | 论文/文本精读 | 知识/概念报告 | 主要缺口 | 建议优先级 |
 |------|----------|:---:|:---:|----------|:---:|
-| `ai-learning` | 🟢 高度活跃 | 23 篇 | 7 篇 | 分布式训练（ZeRO）、视频理解（VideoMAE） | P1 |
-| `cs-learning` | 🟢 成熟建设中 | 16 篇 | 1 篇 | 分布式协调（Chubby）、网络（DNS） | P1 |
-| `philosophy-learning` | 🟡 结构成型 | 6 篇文本分析 + 1 篇论文分析 | 2 篇 | 心灵哲学（Nagel）、黑格尔、20 世纪分析哲学 | P1 |
+| `ai-learning` | 🟢 高度活跃 | 24 篇 | 7 篇 | 分布式训练（ZeRO）、视频理解（VideoMAE） | P1 |
+| `cs-learning` | 🟢 成熟建设中 | 17 篇 | 1 篇 | 网络（DNS） | P1 |
+| `philosophy-learning` | 🟡 结构成型 | 7 篇文本分析 + 1 篇论文分析 | 2 篇 | 黑格尔、20 世纪分析哲学（现象学、语言哲学） | P1 |
 | `psychology-learning` | 🟢 快速扩张 | 10 篇 | 1 篇 | 发展心理学、临床心理学，人物图谱亟需更新 | P2 |
 | `biology-learning` | 🟡 初步成型 | 4 篇 | 1 篇 | 睡眠神经科学、昼夜节律分子机制、缺 roadmap | P2 |
 
@@ -76,13 +76,13 @@
 ## 已完成，不应重复领取
 
 ### ai-learning
-Transformer、BERT、GPT-3、InstructGPT、ResNet、GAN、DDPM、AlexNet、Scaling Laws、Chain-of-Thought、LoRA、ViT、CLIP、LLaMA、Swin Transformer、MAE、DINOv2、FlashAttention、LLaMA-2、Mistral 7B、Word2Vec、Tulu3；知识报告：Self-Attention、RLHF、Scaling Laws、LoRA、AI关键人物图谱、DINOv2深度解析、KV Cache
+Transformer、BERT、GPT-3、InstructGPT、ResNet、GAN、DDPM、AlexNet、Scaling Laws、Chain-of-Thought、LoRA、ViT、CLIP、LLaMA、Swin Transformer、MAE、DINOv2、FlashAttention、LLaMA-2、Mistral 7B、Word2Vec、Tulu3、MoE (混合专家) #21 (2017)；知识报告：Self-Attention、RLHF、Scaling Laws、LoRA、AI关键人物图谱、DINOv2深度解析、KV Cache
 
 ### cs-learning
-Turing (1950)、Shannon (1948)、MapReduce (2004)、Bigtable (2006)、Lamport Clocks (1978)、GFS (2003)、Dynamo (2007)、Raft (2014)、Spanner (2012)、Paxos (2001)、Kafka (2011)、UNIX (1974)、ZooKeeper (2010)、FFS (1984)、Byzantine Generals (1982)、CSP (1978)、TCP/IP (1974)
+Turing (1950)、Shannon (1948)、MapReduce (2004)、Bigtable (2006)、Lamport Clocks (1978)、GFS (2003)、Dynamo (2007)、Raft (2014)、Spanner (2012)、Paxos (2001)、Kafka (2011)、UNIX (1974)、ZooKeeper (2010)、FFS (1984)、Byzantine Generals (1982)、CSP (1978)、TCP/IP (1974)、Chubby (2006)
 
 ### philosophy-learning
-柏拉图《理想国》洞穴比喻、柏拉图《美诺》、笛卡尔《沉思录》、Gettier (1963)、康德《道德形而上学基础》、亚里士多德《尼各马可伦理学》；概念报告：哲学关键人物图谱、知识跨时代比较
+柏拉图《理想国》洞穴比喻、柏拉图《美诺》、笛卡尔《沉思录》、Gettier (1963)、康德《道德形而上学基础》、亚里士多德《尼各马可伦理学》、Nagel (1974) What Is It Like to Be a Bat?；概念报告：哲学关键人物图谱、知识跨时代比较
 
 ### psychology-learning
 Miller (1956)、Milgram (1963)、Festinger & Carlsmith (1959)、Kahneman & Tversky (1979) 前景理论、Seligman & Maier (1967) 习得性无助、Darley & Latané (1968) 旁观者效应、Asch (1951) 从众实验、Zimbardo (1971) 斯坦福监狱实验、Rosenhan (1973)、Tversky & Kahneman (1974) 启发式与偏差、Bandura (1961) Bobo 娃娃实验
