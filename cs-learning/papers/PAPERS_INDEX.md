@@ -280,6 +280,18 @@
 
 ---
 
+### #C1 | The Chubby Lock Service for Loosely-Coupled Distributed Systems
+**作者**：Mike Burrows（Google）
+**年份**：2006
+**发表**：OSDI '06
+**摘要**：描述 Google 内部粗粒度分布式锁服务。5 副本 Paxos cell + 类文件系统接口 + advisory 锁 + 事件通知。强调可用性优先、吞吐量次要。实际部署中最大用途意外变为命名服务而非锁服务。GFS 和 Bigtable 均依赖 Chubby 选主。
+**为什么读**：理解 Paxos → 锁服务 → ZooKeeper 演化链路的中间节点；论文完整记录了设计与实际使用的偏差，是分布式系统工程演化的第一手文献。
+**阅读难度**：⭐⭐（工程论文，可读性强；需要 Paxos 基础）
+**链接**：https://www.usenix.org/legacy/event/osdi06/tech/full_papers/burrows/burrows.pdf
+**阅读状态**：✅ 已完成（见 `reports/paper_analyses/29_chubby_2006_分析报告.md`）
+
+---
+
 ## ⚙️ 编程语言与编译器
 
 ### #18 | Communicating Sequential Processes (CSP)
