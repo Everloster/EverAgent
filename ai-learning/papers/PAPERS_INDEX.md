@@ -28,6 +28,7 @@
 - **核心贡献**：提出 Transformer 架构，完全基于注意力机制，取代 RNN/CNN，奠定现代 LLM 基础
 - **关键概念**：Self-Attention, Multi-Head Attention, Positional Encoding, Encoder-Decoder
 
+- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/01_transformer_2017.md`）
 ---
 
 ### 2. BERT（双向 Transformer 预训练）
@@ -40,6 +41,7 @@
 - **核心贡献**：双向预训练语言模型，MLM + NSP 任务，在11个NLP任务上刷新SOTA
 - **关键概念**：Masked Language Model, Next Sentence Prediction, Fine-tuning
 
+- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/02_bert_2018.md`）
 ---
 
 ### 3. Language Models are Few-Shot Learners（GPT-3）
@@ -52,6 +54,7 @@
 - **核心贡献**：1750亿参数，证明大模型在 few-shot 场景下的强大能力
 - **关键概念**：In-Context Learning, Few-Shot, Zero-Shot, Scaling
 
+- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/03_gpt3_2020.md`）
 ---
 
 ### 4. Training language models to follow instructions with human feedback（InstructGPT）
@@ -64,6 +67,7 @@
 - **核心贡献**：RLHF 技术使 LLM 学会遵循人类指令，ChatGPT 的技术前身
 - **关键概念**：RLHF, PPO, Reward Model, SFT
 
+- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/04_instructgpt_2022.md`）
 ---
 
 ### 5. Scaling Laws for Neural Language Models
@@ -76,6 +80,7 @@
 - **核心贡献**：揭示模型性能与参数量、数据量、计算量的幂律关系
 - **关键概念**：Power Law, Compute Budget, Optimal Model Size
 
+- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/05_scaling_laws_2020.md`）
 ---
 
 ## ⭐⭐ 第二优先级（重点阅读）
@@ -90,6 +95,7 @@
   - 或直接在 Chrome 访问：https://www.semanticscholar.org/paper/ImageNet-classification-with-deep-convolutional-Krizhevsky-Sutskever/abd1c342495432171beb7ca8fd9551ef13cbd0ff
 - **核心贡献**：GPU 训练深度 CNN，ImageNet 错误率从26%降至15%，掀起深度学习浪潮
 
+- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/06_alexnet_2012.md`）
 ---
 
 ### 7. Deep Residual Learning for Image Recognition（ResNet）
@@ -101,6 +107,7 @@
   - Arxiv 页面: https://arxiv.org/abs/1512.03385
 - **核心贡献**：残差连接解决梯度消失，152层网络训练成功
 
+- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/07_resnet_2015.md`）
 ---
 
 ### 8. Generative Adversarial Networks（GAN）
@@ -112,6 +119,7 @@
   - Arxiv 页面: https://arxiv.org/abs/1406.2661
 - **核心贡献**：生成对抗网络，生成式 AI 的奠基之作
 
+- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/08_gan_2014.md`）
 ---
 
 ### 9. Denoising Diffusion Probabilistic Models（DDPM）
@@ -123,6 +131,7 @@
   - Arxiv 页面: https://arxiv.org/abs/2006.11239
 - **核心贡献**：扩散模型的现代形式，Stable Diffusion 等的理论基础
 
+- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/09_ddpm_2020.md`）
 ---
 
 ### 10. Chain-of-Thought Prompting Elicits Reasoning in LLMs
@@ -134,6 +143,7 @@
   - Arxiv 页面: https://arxiv.org/abs/2201.11903
 - **核心贡献**：CoT 提示大幅提升 LLM 推理能力，Few-shot CoT 范式
 
+- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/10_chain_of_thought_2022.md`）
 ---
 
 ### 11. Learning Transferable Visual Models From Natural Language（CLIP）
@@ -145,6 +155,7 @@
   - Arxiv 页面: https://arxiv.org/abs/2103.00020
 - **核心贡献**：文本-图像对比学习，多模态 AI 基础
 
+- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/12_clip_2021.md`）
 ---
 
 ### 12. LLaMA: Open and Efficient Foundation Language Models
@@ -156,6 +167,7 @@
   - Arxiv 页面: https://arxiv.org/abs/2302.13971
 - **核心贡献**：开源高性能 LLM，推动开源 LLM 生态爆发
 
+- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/16_llama_2023.md`）
 ---
 
 ## ⭐ 第三优先级（扩展阅读）
@@ -172,6 +184,7 @@
 ### 15. LoRA: Low-Rank Adaptation of Large Language Models
 - **文件名建议**：`15_lora_2021.pdf`
 - **下载链接**：https://arxiv.org/pdf/2106.09685
+- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/15_lora_2021.md`）
 
 ### 16. Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks（RAG）
 - **文件名建议**：`16_rag_2020.pdf`
@@ -184,6 +197,7 @@
 ### 18. FlashAttention: Fast and Memory-Efficient Exact Attention
 - **文件名建议**：`18_flashattention_2022.pdf`
 - **下载链接**：https://arxiv.org/pdf/2205.14135
+- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/18_flashattention_2022.md`）
 
 ---
 
@@ -198,6 +212,7 @@
 - **下载链接**：https://arxiv.org/pdf/2010.11929
 - **核心贡献**：将图像分成 16×16 的 Patch 序列，直接用 Transformer 处理图像，推动 CV 领域从 CNN 迁移到 Transformer
 
+- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/11_vit_2020.md`）
 ---
 
 ### 20. Stable Diffusion / Latent Diffusion Models
@@ -216,6 +231,7 @@
 - **下载链接**：https://arxiv.org/pdf/1701.06538
 - **核心贡献**：现代 MoE（混合专家）架构的奠基论文，稀疏激活大幅降低推理成本，是 GPT-4、Gemini 等的关键技术
 
+- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/21_moe_2017.md`）
 ---
 
 ### 22. The Bitter Lesson（非论文，Rich Sutton 博客）
@@ -265,6 +281,7 @@
 - **下载链接**：https://arxiv.org/pdf/2411.15124
 - **核心贡献**：完整开源后训练三段流程（SFT→DPO→RLVR），性能媲美 GPT-4o-mini 和 Claude 3.5-Haiku
 
+- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/26_tulu3_2024.md`）
 ---
 
 ### 27. Scalable Diffusion Models with Transformers（DiT）
@@ -312,6 +329,7 @@
 - **下载链接**：https://arxiv.org/pdf/2310.06825
 - **核心贡献**：通过 GQA 与 Sliding Window Attention 提升 7B 开源模型的性能-效率比，推动“小而强”的开源 LLM 路线
 
+- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/33_mistral_7b_2023.md`）
 ---
 
 ### 34. LLaMA 2
@@ -321,6 +339,7 @@
 - **下载链接**：https://arxiv.org/pdf/2307.09288
 - **核心贡献**：系统性开放基础模型与 Chat 模型，推动开源对话模型、安全微调与私有化部署生态发展
 
+- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/34_llama2_2023.md`）
 ---
 
 ### 35. DINOv2: Learning Robust Visual Features without Supervision

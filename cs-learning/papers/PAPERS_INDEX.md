@@ -27,6 +27,7 @@
 **阅读难度**：⭐（无数学，哲学论证）
 **链接**：https://academic.oup.com/mind/article/LIX/236/433/986238
 
+**阅读状态**：✅ 已完成（见 `reports/paper_analyses/01_turing_1950.md`）
 ---
 
 ### #02 | A Mathematical Theory of Communication
@@ -38,6 +39,7 @@
 **阅读难度**：⭐⭐⭐（数学密集，建议先读第1-3节）
 **链接**：https://people.math.harvard.edu/~ctm/home/text/others/shannon/entropy/entropy.pdf
 
+**阅读状态**：✅ 已完成（见 `reports/paper_analyses/02_shannon_1948.md`）
 ---
 
 ### #16 | Go To Statement Considered Harmful
@@ -84,6 +86,7 @@
 **阅读难度**：⭐⭐（系统概念为主，代码较少）
 **链接**：https://dl.acm.org/doi/10.1145/361011.361061
 
+**阅读状态**：✅ 已完成（见 `reports/paper_analyses/04_unix_1974.md`）
 ---
 
 ### #23 | A Fast File System for UNIX (FFS)
@@ -95,6 +98,7 @@
 **阅读难度**：⭐⭐⭐（需要OS基础）
 **链接**：https://dl.acm.org/doi/10.1145/989.990
 
+**阅读状态**：✅ 已完成（见 `reports/paper_analyses/23_ffs_1984.md`）
 ---
 
 ### #06 | Reflections on Trusting Trust
@@ -119,6 +123,7 @@
 **阅读难度**：⭐⭐（协议描述，需要网络基础）
 **链接**：https://www.cs.princeton.edu/courses/archive/fall06/cos561/papers/cerf74.pdf
 
+**阅读状态**：✅ 已完成（见 `reports/paper_analyses/19_tcpip_1974.md`）
 ---
 
 ### #20 | The Design Philosophy of the DARPA Internet Protocols
@@ -167,6 +172,7 @@
 **阅读难度**：⭐⭐（概念清晰，数学推导简洁）
 **链接**：https://dl.acm.org/doi/10.1145/359545.359563
 
+**阅读状态**：✅ 已完成（见 `reports/paper_analyses/05_lamport_clocks_1978.md`）
 ---
 
 ### #08 | The Byzantine Generals Problem
@@ -178,6 +184,7 @@
 **阅读难度**：⭐⭐⭐（逻辑推导严密）
 **链接**：https://dl.acm.org/doi/10.1145/357172.357176
 
+**阅读状态**：✅ 已完成（见 `reports/paper_analyses/08_byzantine_generals_1982.md`）
 ---
 
 ### #09 | The Google File System (GFS)
@@ -189,6 +196,7 @@
 **阅读难度**：⭐⭐（工程论文，可读性强）
 **链接**：https://dl.acm.org/doi/10.1145/945445.945450
 
+**阅读状态**：✅ 已完成（见 `reports/paper_analyses/09_gfs_2003.md`）
 ---
 
 ### #10 | MapReduce: Simplified Data Processing on Large Clusters
@@ -200,6 +208,7 @@
 **阅读难度**：⭐（易读，举例清晰）
 **链接**：https://dl.acm.org/doi/10.5555/1251254.1251264
 
+**阅读状态**：✅ 已完成（见 `reports/paper_analyses/10_mapreduce_2004.md`）
 ---
 
 ### #11 | Dynamo: Amazon's Highly Available Key-value Store
@@ -211,6 +220,7 @@
 **阅读难度**：⭐⭐⭐（涉及多种分布式技术）
 **链接**：https://dl.acm.org/doi/10.1145/1294261.1294281
 
+**阅读状态**：✅ 已完成（见 `reports/paper_analyses/11_dynamo_2007.md`）
 ---
 
 ### #12 | Bigtable: A Distributed Storage System for Structured Data
@@ -222,6 +232,7 @@
 **阅读难度**：⭐⭐（工程论文，清晰）
 **链接**：https://dl.acm.org/doi/10.1145/1365815.1365816
 
+**阅读状态**：✅ 已完成（见 `reports/paper_analyses/12_bigtable_2006.md`）
 ---
 
 ### #13 | Paxos Made Simple
@@ -233,6 +244,7 @@
 **阅读难度**：⭐⭐（概念清晰，但需要反复思考）
 **链接**：https://lamport.azurewebsites.net/pubs/paxos-simple.pdf
 
+**阅读状态**：✅ 已完成（见 `reports/paper_analyses/13_paxos_2001.md`）
 ---
 
 ### #14 | In Search of an Understandable Consensus Algorithm (Raft)
@@ -244,6 +256,7 @@
 **阅读难度**：⭐⭐（结构清晰，图文并茂）
 **链接**：https://raft.github.io/raft.pdf
 
+**阅读状态**：✅ 已完成（见 `reports/paper_analyses/15_raft_2014.md`）
 ---
 
 ### #21 | Spanner: Google's Globally-Distributed Database
@@ -255,6 +268,7 @@
 **阅读难度**：⭐⭐⭐（需要分布式事务基础）
 **链接**：https://dl.acm.org/doi/10.1145/2491245
 
+**阅读状态**：✅ 已完成（见 `reports/paper_analyses/21_spanner_2012.md`）
 ---
 
 ### #22 | Kafka: A Distributed Messaging System for Log Processing
@@ -266,6 +280,7 @@
 **阅读难度**：⭐⭐（工程论文，清晰）
 **链接**：https://dl.acm.org/doi/10.1145/1989323.1989385
 
+**阅读状态**：✅ 已完成（见 `reports/paper_analyses/22_kafka_2011.md`）
 ---
 
 ### #28 | Chord: A Scalable Peer-to-peer Lookup Protocol for Internet Applications
@@ -303,6 +318,7 @@
 **阅读难度**：⭐⭐⭐（形式化符号较多）
 **链接**：https://dl.acm.org/doi/10.1145/359576.359585
 
+**阅读状态**：✅ 已完成（见 `reports/paper_analyses/18_csp_1978.md`）
 ---
 
 ### #26 | A New Solution to Dijkstra's Concurrent Programming Problem (Lamport's Bakery Algorithm)

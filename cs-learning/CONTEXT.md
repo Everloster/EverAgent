@@ -14,7 +14,7 @@
 - `05_lamport_clocks_1978` — happens-before偏序·逻辑时钟·全序扩展·分布式互斥算法·向量时钟先驱（2026-03-26）
 - `09_gfs_2003` — Google文件系统·单Master+ChunkServer·64MB大块·Lease机制·追加写语义·Hadoop HDFS原型（2026-03-26）
 - `11_dynamo_2007` — Amazon高可用KV存储·一致性哈希·Sloppy Quorum·向量时钟·Gossip·Merkle Tree反熵·AP系统典范（2026-03-26）
-- `13_raft_2014` — 可理解性优先共识算法·强Leader+随机超时选举·日志复制两阶段·五大安全性质·etcd/TiKV/CockroachDB原型（2026-03-26）
+- `15_raft_2014` — 可理解性优先共识算法·强Leader+随机超时选举·日志复制两阶段·五大安全性质·etcd/TiKV/CockroachDB原型（2026-03-26）
 - `21_spanner_2012` — Google全球分布式数据库·TrueTime(GPS+原子钟)·外部一致性·Commit Wait·SQL+ACID+水平扩展·NewSQL起点（2026-03-26）
 - `13_paxos_2001` — Paxos Made Simple·Prepare/Promise/Accept两阶段·多数派共识·值延续性·Multi-Paxos→Raft先驱（2026-03-26）
 - `22_kafka_2011` — 分布式消息日志·追加写+零拷贝·Pull消费模型+Offset·Consumer Group·ISR副本·现代数据流基础设施（2026-03-26）
@@ -23,6 +23,7 @@
 - `23_ffs_1984` — BSD Fast File System·cylinder group布局·fragment小块分配·空间局部性驱动文件系统性能革命（2026-03-26）
 - `08_byzantine_generals_1982` — 恶意节点一致性问题奠基·3f+1容错下界·BFT与区块链共识理论源头（2026-03-26）
 - `18_csp_1978` — Communicating Sequential Processes·通道通信·进程代数·Go语言并发模型理论基础（2026-03-26）
+- `19_tcpip_1974` — TCP/IP协议·分组交换·网关·端到端可靠性·互联网底层架构起源（2026-03-27）
 - `28_chord_2001` — Chord P2P查找协议·一致哈希环·Finger Table·O(logN)路由·稳定化协议·DHT奠基（2026-03-30）
 - `29_chubby_2006` — 粗粒度分布式锁服务·5副本Paxos cell·类文件系统接口·advisory锁+Sequencer·Grace period·意外成为Google主要命名服务（2026-03-31）
 
