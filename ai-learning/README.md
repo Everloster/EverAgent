@@ -120,7 +120,7 @@ ai-learning/
 - [Chain-of-Thought 论文分析](./reports/paper_analyses/10_chain_of_thought_2022.md) ← 思维链
 - [ViT 论文分析](./reports/paper_analyses/11_vit_2020.md) ← Vision Transformer
 - [CLIP 论文分析](./reports/paper_analyses/12_clip_2021.md) ← 多模态表示学习
-- [Swin Transformer 论文分析](./reports/paper_analyses/13_swin_transformer_2021.md) ← 层次化视觉 Transformer
+- [Swin Transformer 论文分析](./reports/paper_analyses/14_swin_transformer_2021.md) ← 层次化视觉 Transformer
 - [LoRA 论文分析](./reports/paper_analyses/15_lora_2021.md) ← 低秩适应微调
 - [LLaMA 论文分析](./reports/paper_analyses/16_llama_2023.md) ← 开源大模型
 - [MAE 论文分析](./reports/paper_analyses/17_mae_2022.md) ← 自监督视觉预训练
@@ -156,7 +156,7 @@ ai-learning/
 | 10 | Chain-of-Thought | 2022 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/10_chain_of_thought_2022.md) |
 | 11 | ViT | 2020 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/11_vit_2020.md) |
 | 12 | CLIP | 2021 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/12_clip_2021.md) |
-| 13 | Swin Transformer | 2021 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/13_swin_transformer_2021.md) |
+| 13 | Swin Transformer | 2021 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/14_swin_transformer_2021.md) |
 | 17 | MAE | 2022 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/17_mae_2022.md) |
 | 16 | LLaMA | 2023 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/16_llama_2023.md) |
 | 15 | LoRA | 2021 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/15_lora_2021.md) |
