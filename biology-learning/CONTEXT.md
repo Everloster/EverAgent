@@ -23,6 +23,7 @@
 - `skills/concept_deep_dive/SKILL.md` — 生物学概念 5 层理解模型
 
 ## 导航
+- 学习路径：`roadmap/Learning_Roadmap.md`
 - 论文索引：`papers/PAPERS_INDEX.md`（28 篇，含 PMC 开放链接）
 - 书籍索引：`books/BOOKS_INDEX.md`（25 部）
 
