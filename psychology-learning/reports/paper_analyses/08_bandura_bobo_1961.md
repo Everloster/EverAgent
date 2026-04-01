@@ -1,10 +1,13 @@
 ---
 title: Bandura Bobo娃娃实验精读分析报告
+domain: psychology-learning
+report_type: paper_analysis
+status: complete
+updated_on: 2026-03-28
 project: psychology-learning
 task_type: task-execution
 agent: GLM-5.0-Turbo
 date: 2026-03-28
-status: complete
 ---
 
 # Bandura Bobo 娃娃实验 — 观察学习与攻击行为的习得

@@ -1,11 +1,13 @@
 ---
 title: "亚里士多德《尼各马可伦理学》文本分析"
+domain: philosophy-learning
+report_type: text_analysis
+status: complete
+updated_on: 2026-03-30
 date: 2026-03-30
 category: text_analysis
-domain: philosophy-learning
 tags: [aristotle, virtue-ethics, eudaimonia, ethics, ancient-greek]
 difficulty: ⭐⭐⭐⭐
-status: complete
 ---
 
 # 06 | 亚里士多德《尼各马可伦理学》（约前 350）分析报告

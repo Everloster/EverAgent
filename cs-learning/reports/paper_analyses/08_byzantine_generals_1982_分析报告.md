@@ -1,3 +1,11 @@
+---
+title: "The Byzantine Generals Problem 分析报告"
+domain: cs-learning
+report_type: paper_analysis
+status: complete
+updated_on: 2026-03-27
+---
+
 # 08 | The Byzantine Generals Problem 分析报告
 
 **作者**：Leslie Lamport, Robert Shostak, Marshall Pease  
