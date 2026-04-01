@@ -1,8 +1,8 @@
 # Five Learning Projects Task Board
 
-> 目的：为其他 Agent 提供可直接接单的跨项目任务分发表
+> 目的：为 Agent 提供可直接领取的跨项目结构化任务队列
 > 适用范围：`ai-learning` / `cs-learning` / `philosophy-learning` / `psychology-learning` / `biology-learning`
-> 更新日期：**2026-04-01**（项目优化任务1，由 Claude Opus 4.6 同步已完成列表 + 修正推荐池）
+> 更新日期：**2026-04-01**（v3: 任务队列结构化，Claude Opus 4.6）
 
 ---
 
@@ -15,65 +15,170 @@
 
 ---
 
-## 项目进度概览（截至 2026-03-30）
+## 项目进度概览
 
-| 项目 | 当前状态 | 论文/文本精读 | 知识/概念报告 | 主要缺口 | 建议优先级 |
-|------|----------|:---:|:---:|----------|:---:|
-| `ai-learning` | 🟢 高度活跃 | 24 篇 | 7 篇 | 视频理解（VideoMAE）、工程类（MegaScale） | P1 |
-| `cs-learning` | 🟢 成熟建设中 | 19 篇 | 1 篇 | 网络（DNS）、知识报告严重不足（1/19=5%） | P1 |
-| `philosophy-learning` | 🟡 结构成型 | 7 篇文本分析 + 1 篇论文分析 | 2 篇 | 黑格尔、现象学、语言哲学 | P1 |
-| `psychology-learning` | 🟢 快速扩张 | 12 篇 | 1 篇 | 发展心理学、临床心理学，人物图谱亟需更新 | P2 |
-| `biology-learning` | 🟡 初步成型 | 4 篇 | 1 篇 | 睡眠神经科学、昼夜节律分子机制、缺 roadmap | P2 |
-
-> ⚠️ 注意：上述"已有报告量"仅统计已录入 CONTEXT.md 的报告；如有报告文件未录入，请先完成 CONTEXT.md 更新再接任务。
+| 项目 | 当前状态 | 论文/文本精读 | 知识/概念报告 | 知识报告比 | 主要缺口 |
+|------|----------|:---:|:---:|:---:|----------|
+| `ai-learning` | 🟢 高度活跃 | 24 | 7 | 29% | 视频理解、工程类 |
+| `cs-learning` | 🟢 成熟建设中 | 19 | 1 | 5% | 网络、知识归纳 |
+| `philosophy-learning` | 🟡 结构成型 | 8 (7文本+1论文) | 2 | 25% | 德国唯心论、分析哲学 |
+| `psychology-learning` | 🟢 快速扩张 | 12 | 1 | 8% | 发展/临床心理学 |
+| `biology-learning` | 🟡 初步成型 | 4 | 1 | 25% | 睡眠神经科学 |
 
 ---
 
-## 推荐接单池
+## 任务队列
 
-### P1：最适合马上开工
+### 领取协议
 
-| 项目 | 建议任务 | 任务价值 | 适合的 Agent 类型 |
-|------|----------|----------|------------------|
-| `ai-learning` | 精读 `VideoMAE (2022)` 或 `EVA-02 (2023)` | 视觉自监督方向（MAE -> VideoMAE）后续；与已有 DINOv2、MAE 形成序列 | 熟悉视觉 AI |
-| `ai-learning` | 精读 `MegaScale (2024)` | 工程类论文主线缺口；大规模训练系统实践 | 熟悉分布式训练 |
-| `cs-learning` | 精读 `DNS (1987, RFC 1034/1035)` | 网络方向第一篇；与 TCP/IP 自然衔接 | 熟悉网络协议 |
-| `cs-learning` | 知识报告：分布式系统知识图谱 | 19篇精读已足够归纳 Storage/Consensus/Coordination/Messaging 四主线 | 熟悉分布式系统 |
-| `philosophy-learning` | 精读黑格尔《精神现象学》导论 | 补齐德国唯心论主线；与康德/亚里士多德形成三角 | 熟悉哲学文本 |
+```
+1. Agent 读取本文件, 从 status: open 的任务中选择匹配自身能力的任务
+2. 将所选任务 status 改为 claimed, 填写 claimed_by 和 claimed_at
+3. 执行任务, 完成后将 status 改为 done, 填写 done_at
+4. 同步更新: CONTEXT.md + 已完成列表(本文件底部)
+5. 冲突处理: 两个 Agent 同时 claim 同一任务, 以先 push 者为准
+```
 
-### P2：第二批推荐
+### 开放任务池
 
-| 项目 | 建议任务 | 任务价值 | 适合的 Agent 类型 |
-|------|----------|----------|------------------|
-| `ai-learning` | 知识报告：`MoE (混合专家)` 深度解析 | GPT-4/Mixtral 架构基础；已有精读(#21)可支撑深度报告 | 熟悉 LLM 架构 |
-| `philosophy-learning` | 精读罗尔斯《正义论》第一章 | 当代政治哲学主线入口 | 熟悉哲学文本 |
-| `psychology-learning` | 制作"认知偏差全景图"知识报告 | 整合已有的 Kahneman/Tversky 系列报告；提升项目导航价值 | 熟悉认知心理学 |
-| `biology-learning` | 创建 `roadmap/` 目录 + 撰写学习路径 | biology 是唯一缺 roadmap 的子项目；结构完整性补缺 | 任意 Agent |
-| `biology-learning` | 精读 `Walker et al. (2017) Why We Sleep 核心论据综述` | 把"睡眠科学"方向的论文精读链跑通第一个高影响力节点 | 熟悉睡眠/神经科学 |
+```yaml
+# P1: 高价值, 可直接开工
+- id: T001
+  project: ai-learning
+  type: paper_analysis
+  target: "VideoMAE (2022) 或 EVA-02 (2023)"
+  value: "视觉自监督序列: MAE -> VideoMAE; 与 DINOv2/MAE 形成闭环"
+  priority: P1
+  status: open
+  claimed_by: null
+  claimed_at: null
 
-### P3：结构整理型任务
+- id: T002
+  project: ai-learning
+  type: paper_analysis
+  target: "MegaScale (2024)"
+  value: "工程类论文主线缺口; 大规模训练系统实践"
+  priority: P1
+  status: open
+  claimed_by: null
+  claimed_at: null
 
-| 项目 | 建议任务 | 任务价值 |
-|------|----------|----------|
-| `psychology-learning` | 更新"心理学关键人物图谱"（加入 Bandura、Seligman 等新精读的作者） | 报告增加了 7 篇后，人物图谱已严重落后于内容 |
-| `ai-learning` | 更新 `roadmap/Learning_Roadmap.md` Phase 完成度 | Phase 2/3 大量论文已完成，但进度条仍显示 0% |
-| `cs-learning` | 新增"分布式系统知识图谱"知识报告 | 16 篇论文已可归纳出 Storage/Consensus/Coordination/Messaging 四主线 |
-| `philosophy-learning` | 扩展"知识跨时代比较"至"自由意志"专题 | 现有跨时代比较聚焦知识论，自由意志是另一个高张力主线 |
-| `全局` | 为 github-trending-analyzer 添加周报自动触发 schedule | 目前 trending 分析靠手动触发，可用 schedule 技能自动化 |
+- id: T003
+  project: cs-learning
+  type: paper_analysis
+  target: "DNS (1987, RFC 1034/1035)"
+  value: "网络方向第一篇; 与 TCP/IP 自然衔接"
+  priority: P1
+  status: open
+  claimed_by: null
+  claimed_at: null
+
+- id: T004
+  project: cs-learning
+  type: knowledge_report
+  target: "分布式系统知识图谱"
+  value: "19篇精读可归纳 Storage/Consensus/Coordination/Messaging 四主线; 知识报告比仅5%"
+  priority: P1
+  status: open
+  claimed_by: null
+  claimed_at: null
+
+- id: T005
+  project: philosophy-learning
+  type: text_analysis
+  target: "黑格尔《精神现象学》导论"
+  value: "补齐德国唯心论主线; 与康德/亚里士多德形成三角"
+  priority: P1
+  status: open
+  claimed_by: null
+  claimed_at: null
+
+# P2: 第二批推荐
+- id: T006
+  project: ai-learning
+  type: knowledge_report
+  target: "MoE (混合专家) 深度解析"
+  value: "GPT-4/Mixtral 架构基础; 已有精读(#21)可支撑深度报告"
+  priority: P2
+  status: open
+  claimed_by: null
+  claimed_at: null
+
+- id: T007
+  project: philosophy-learning
+  type: text_analysis
+  target: "罗尔斯《正义论》第一章"
+  value: "当代政治哲学主线入口"
+  priority: P2
+  status: open
+  claimed_by: null
+  claimed_at: null
+
+- id: T008
+  project: psychology-learning
+  type: knowledge_report
+  target: "认知偏差全景图"
+  value: "整合 Kahneman/Tversky 系列报告; 提升导航价值"
+  priority: P2
+  status: open
+  claimed_by: null
+  claimed_at: null
+
+- id: T009
+  project: biology-learning
+  type: paper_analysis
+  target: "Walker et al. (2017) Why We Sleep 核心论据综述"
+  value: "睡眠科学方向高影响力节点"
+  priority: P2
+  status: open
+  claimed_by: null
+  claimed_at: null
+
+# P3: 结构整理型
+- id: T010
+  project: psychology-learning
+  type: maintenance
+  target: "更新心理学关键人物图谱"
+  value: "加入 Bandura/Seligman/Harlow 等新精读作者; 图谱严重落后内容"
+  priority: P3
+  status: open
+  claimed_by: null
+  claimed_at: null
+
+- id: T011
+  project: philosophy-learning
+  type: knowledge_report
+  target: "扩展知识跨时代比较至自由意志专题"
+  value: "现有比较聚焦知识论, 自由意志是另一高张力主线"
+  priority: P3
+  status: open
+  claimed_by: null
+  claimed_at: null
+
+- id: T012
+  project: global
+  type: maintenance
+  target: "github-trending-analyzer 周报自动化"
+  value: "目前靠手动触发, 可用 schedule 技能自动化"
+  priority: P3
+  status: open
+  claimed_by: null
+  claimed_at: null
+```
 
 ---
 
 ## 并发安排建议
 
-- **推荐最多同时开 3 个学习项目**，4 个以上会有 CONTEXT 竞写风险。
+- **推荐最多同时开 3 个学习项目**, 4 个以上会有 CONTEXT 竞写风险。
 - 推荐组合（当前时间点）：
-  - Agent A：`ai-learning`（VideoMAE 或 MegaScale）
-  - Agent B：`cs-learning`（DNS 或 分布式系统知识图谱）
-  - Agent C：`philosophy-learning`（黑格尔） 或 `biology-learning`（补 roadmap）
+  - Agent A：`ai-learning`（T001 VideoMAE 或 T002 MegaScale）
+  - Agent B：`cs-learning`（T003 DNS 或 T004 分布式系统知识图谱）
+  - Agent C：`philosophy-learning`（T005 黑格尔） 或 `psychology-learning`（T008 认知偏差）
 
 ---
 
-## 已完成，不应重复领取
+## 已完成, 不应重复领取
 
 ### ai-learning (24篇精读 + 7篇知识报告)
 Transformer、BERT、GPT-3、InstructGPT、ResNet、GAN、DDPM、AlexNet、Scaling Laws、Chain-of-Thought、LoRA、ViT、CLIP、LLaMA、Swin Transformer、MAE、DINOv2、FlashAttention、LLaMA-2、Mistral 7B、Word2Vec、Tulu3、MoE #21 (2017)、ZeRO #25 (2019)；知识报告：Self-Attention、RLHF、Scaling Laws、LoRA、AI关键人物图谱、DINOv2深度解析、KV Cache
@@ -81,22 +186,23 @@ Transformer、BERT、GPT-3、InstructGPT、ResNet、GAN、DDPM、AlexNet、Scali
 ### cs-learning (19篇精读 + 1篇知识报告)
 Turing (1950)、Shannon (1948)、MapReduce (2004)、Bigtable (2006)、Lamport Clocks (1978)、GFS (2003)、Dynamo (2007)、Raft (2014)、Spanner (2012)、Paxos (2001)、Kafka (2011)、UNIX (1974)、ZooKeeper (2010)、FFS (1984)、Byzantine Generals (1982)、CSP (1978)、TCP/IP (1974)、Chubby (2006)、Chord (2001)；知识报告：CS关键人物图谱
 
-### philosophy-learning
+### philosophy-learning (7篇文本分析 + 1篇论文分析 + 2篇概念报告)
 柏拉图《理想国》洞穴比喻、柏拉图《美诺》、笛卡尔《沉思录》、Gettier (1963)、康德《道德形而上学基础》、亚里士多德《尼各马可伦理学》、Nagel (1974) What Is It Like to Be a Bat?；概念报告：哲学关键人物图谱、知识跨时代比较
 
 ### psychology-learning (12篇精读 + 1篇知识报告)
 Miller (1956)、Milgram (1963)、Festinger & Carlsmith (1959)、Kahneman & Tversky (1979) 前景理论、Seligman & Maier (1967) 习得性无助、Darley & Latane (1968) 旁观者效应、Asch (1951) 从众实验、Zimbardo (1971) 斯坦福监狱实验、Rosenhan (1973)、Tversky & Kahneman (1974) 启发式与偏差、Bandura (1961) Bobo 娃娃实验、Harlow (1958) 恒河猴实验；知识报告：心理学关键人物图谱
 
-### biology-learning
+### biology-learning (4篇精读 + 1篇概念报告)
 Social Jetlag and Obesity (2012)、Sleep GH 1988、GH Sleep Physiology 1996、Social Jetlag 代谢综合征 (2017)；概念报告：晚型人作息与力量训练
 
 ---
 
 ## 交付标准
 
-每个 Agent 接任务时，至少完成以下 4 项：
+每个 Agent 接任务时, 至少完成以下 5 项:
 
 1. 新增正式报告文件到对应 `reports/` 目录
 2. 按 `docs/REPORT_METADATA.md` 补齐 frontmatter
-3. 更新对应项目 `CONTEXT.md`（已有报告 + 防幻觉边界两处都要更新）
-4. 如果任务完成后导致本 Task Board 的"已完成"列表需要更新，同步更新本文件
+3. 文件命名遵循 `{序号}_{简称}_{年份}.md`（无中文后缀）
+4. 更新对应项目 `CONTEXT.md`（已有报告 + 防幻觉边界两处都要更新）
+5. 更新本文件: 任务 status -> done + 已完成列表追加

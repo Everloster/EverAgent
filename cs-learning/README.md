@@ -36,7 +36,7 @@ cs-learning/
 │       └── SKILL.md                            # CS概念深挖技能（5层理解模型）
 │
 ├── reports/                                     # 📊 分析报告
-│   ├── paper_analyses/                         # 论文精读报告（12 篇已完成）
+│   ├── paper_analyses/                         # 论文精读报告（19 篇已完成）
 │   └── knowledge_reports/                      # 概念深度解析
 │       └── CS关键人物图谱.md                    # ✅ CS先驱生涯轨迹与技术传承图谱
 │

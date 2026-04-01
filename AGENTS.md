@@ -1,4 +1,4 @@
-# EverAgent — AI Agent 协作协议 v2.0
+# EverAgent — AI Agent 协作协议 v3.0
 
 > 唯一全局入口。README.md 供人类阅读，AI 忽略。
 
@@ -93,11 +93,17 @@ git config user.email ""  #按实际模型、Agent名替换，例如noreply@anth
 
 ### 任务3【执行任务】— Claude + 其他在线模型
 
-选取 2-3 个子项目的待办任务并发推进（学习/研究/分析）。
-规范：产出符合 `docs/REPORT_METADATA.md` frontmatter + `docs/SKILL_TEMPLATES.md` 方法论。
-完成后更新对应 CONTEXT.md → 立即提交推送（§4）。
+从 `docs/LEARNING_PROJECTS_TASK_BOARD.md` 的任务队列中领取 `status: open` 的任务。
+
+**领取流程**：
+1. 读取 Task Board, 选择 `status: open` 且匹配自身能力的任务
+2. 将任务 `status` 改为 `claimed`, 填写 `claimed_by` 和 `claimed_at`
+3. 执行任务, 产出符合 `docs/REPORT_METADATA.md` frontmatter + `docs/SKILL_TEMPLATES.md` 方法论
+4. 完成后将任务 `status` 改为 `done`, 更新 CONTEXT.md + 已完成列表
+5. 立即提交推送（§4）
 
 **并发约束**：不同子项目可并行，同一子项目禁止多 Agent 同时写入。
+**冲突处理**：两个 Agent 同时 claim 同一任务，以先 push 者为准。
 
 ### 任务4【初始化约束】— 自动执行
 
