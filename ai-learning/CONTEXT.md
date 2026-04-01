@@ -53,7 +53,7 @@
 ## ⚠️ 边界（防幻觉）
 以下内容**尚未研究**，禁止推测，须告知用户：
 - GPT-4 / Claude / Gemini 系列的专项分析报告
-- ���程类论文精读（MegaScale #31 等）
+- 工程类论文精读（MegaScale #31 等）
 - Phase 2 尚缺：DDIM 等后续扩散论文；VGGNet、Batch Normalization 专项报告
 - 视频理解方向（VideoMAE、TimeSformer 等）尚无报告
 - 下一步推荐：VideoMAE、MegaScale、EVA-02
