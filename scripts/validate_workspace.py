@@ -152,6 +152,55 @@ def validate_repository_hygiene() -> list[ValidationIssue]:
     return issues
 
 
+# Report naming convention: {number}_{name}_{year}.md (no Chinese suffixes)
+REPORT_NAME_BAD_SUFFIXES = re.compile(r"_[\u4e00-\u9fff]+\.md$")
+
+
+ANALYSIS_DIRS = {"paper_analyses", "text_analyses"}
+
+
+def validate_report_naming() -> list[ValidationIssue]:
+    """Check report filenames follow convention and detect duplicates."""
+    issues: list[ValidationIssue] = []
+    # Group by (project, report_dir, normalized_stem) to detect duplicates
+    seen: dict[str, list[Path]] = {}
+
+    for path in iter_report_files():
+        relative = path.relative_to(ROOT)
+        name = path.name
+
+        # Only enforce naming convention on paper/text analyses (not knowledge/concept reports)
+        if any(d in relative.parts for d in ANALYSIS_DIRS):
+            if REPORT_NAME_BAD_SUFFIXES.search(name):
+                issues.append(
+                    ValidationIssue(
+                        "WARN",
+                        relative,
+                        f"filename contains Chinese suffix; expected {{number}}_{{name}}_{{year}}.md",
+                    )
+                )
+
+        # Build dedup key: strip known suffixes to find the canonical stem
+        stem = path.stem
+        for suffix in ("_分析报告", "_后训练分析报告", "_精读报告"):
+            stem = stem.replace(suffix, "")
+        dedup_key = f"{path.parent}:{stem}"
+        seen.setdefault(dedup_key, []).append(relative)
+
+    for key, paths in seen.items():
+        if len(paths) > 1:
+            names = ", ".join(str(p) for p in paths)
+            issues.append(
+                ValidationIssue(
+                    "WARN",
+                    paths[0],
+                    f"possible duplicate reports: {names}",
+                )
+            )
+
+    return issues
+
+
 # LFS budget: GitHub free tier = 1 GB storage, 1 GB bandwidth/month
 LFS_STORAGE_WARN_MB = 700
 LFS_STORAGE_ERROR_MB = 950
@@ -208,6 +257,7 @@ def main() -> int:
     issues.extend(validate_skill_template_links())
     issues.extend(validate_readme_links())
     issues.extend(validate_repository_hygiene())
+    issues.extend(validate_report_naming())
     issues.extend(validate_lfs_budget())
 
     if not issues:

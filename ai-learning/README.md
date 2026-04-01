@@ -66,12 +66,12 @@ ai-learning/
 │
 ├── reports/                                     # 📊 分析报告
 │   ├── AI演义_笔记分析与项目整合报告.md          # 《AI演义》PDF 解析与项目改进建议
-│   ├── paper_analyses/                         # 论文精读报告（17 篇已完成）
+│   ├── paper_analyses/                         # 论文精读报告（24 篇已完成）
 │   │   ├── 01_transformer_2017.md
 │   │   ├── 04_instructgpt_2022.md
 │   │   ├── 12_clip_2021.md
 │   │   └── 26_tulu3_2024.md
-│   └── knowledge_reports/                      # 概念深度解析（5 篇）
+│   └── knowledge_reports/                      # 概念深度解析（7 篇）
 │       ├── self_attention_深度解析.md
 │       ├── RLHF_深度解析.md
 │       └── AI关键人物图谱.md

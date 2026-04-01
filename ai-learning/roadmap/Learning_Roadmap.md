@@ -40,7 +40,7 @@ Phase 1          Phase 2          Phase 3          Phase 4
 
 ---
 
-## Phase 2：深度学习核心（6-8 周） — 📊 33%
+## Phase 2：深度学习核心（6-8 周） — 📊 75%
 
 ### 目标
 掌握深度学习核心架构，能读懂并实现主流模型
@@ -77,7 +77,7 @@ Phase 1          Phase 2          Phase 3          Phase 4
 
 ---
 
-## Phase 3：大语言模型与 NLP（8-10 周） — 📊 0%
+## Phase 3：大语言模型与 NLP（8-10 周） — 📊 70%
 
 ### 目标
 深入理解 LLM 全技术栈，从预训练到部署
@@ -227,11 +227,12 @@ Phase 1          Phase 2          Phase 3          Phase 4
 
 基于当前进度，推荐的下一步：
 
-1. **Phase 2 收尾**：完成 Transformer 从零实现（nanoGPT），标记 Phase 2 完成
-2. **Phase 3 启动**：开始 BERT/GPT-3 精读（报告已有），进入 HuggingFace 实践
-3. **补充 Phase 1**：用 sklearn 完成一个完整的 ML pipeline 实践
+1. **Phase 2 收尾**：完成 Transformer 从零实现（nanoGPT），Phase 2 论文精读已基本完成
+2. **Phase 3 实践**：BERT/GPT-3/InstructGPT 精读已完成，进入 HuggingFace 微调实践
+3. **Phase 3 Infra**：ZeRO/FlashAttention/MoE 精读已完成，进入 DeepSpeed 实操
+4. **补充 Phase 1**：用 sklearn 完成一个完整的 ML pipeline 实践
 
-> 上次更新：2026-03-26
+> 上次更新：2026-04-01
 
 ---
 
