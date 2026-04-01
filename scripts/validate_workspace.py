@@ -152,12 +152,63 @@ def validate_repository_hygiene() -> list[ValidationIssue]:
     return issues
 
 
+# LFS budget: GitHub free tier = 1 GB storage, 1 GB bandwidth/month
+LFS_STORAGE_WARN_MB = 700
+LFS_STORAGE_ERROR_MB = 950
+
+
+def validate_lfs_budget() -> list[ValidationIssue]:
+    """Check total size of LFS-tracked files against GitHub free tier budget."""
+    issues: list[ValidationIssue] = []
+    gitattributes = ROOT / ".gitattributes"
+    if not gitattributes.exists():
+        return issues
+
+    text = gitattributes.read_text(encoding="utf-8")
+    lfs_patterns: list[str] = []
+    for line in text.splitlines():
+        if "filter=lfs" in line:
+            pattern = line.split()[0]
+            lfs_patterns.append(pattern)
+
+    if not lfs_patterns:
+        return issues
+
+    total_bytes = 0
+    for pattern in lfs_patterns:
+        for path in sorted(ROOT.rglob(pattern)):
+            if path.is_file():
+                total_bytes += path.stat().st_size
+
+    total_mb = total_bytes / (1024 * 1024)
+
+    if total_mb >= LFS_STORAGE_ERROR_MB:
+        issues.append(
+            ValidationIssue(
+                "ERROR",
+                Path(".gitattributes"),
+                f"LFS tracked files total {total_mb:.0f} MB, exceeding {LFS_STORAGE_ERROR_MB} MB safety limit (GitHub free = 1 GB)",
+            )
+        )
+    elif total_mb >= LFS_STORAGE_WARN_MB:
+        issues.append(
+            ValidationIssue(
+                "WARN",
+                Path(".gitattributes"),
+                f"LFS tracked files total {total_mb:.0f} MB, approaching {LFS_STORAGE_ERROR_MB} MB limit (GitHub free = 1 GB)",
+            )
+        )
+
+    return issues
+
+
 def main() -> int:
     issues = []
     issues.extend(validate_frontmatter())
     issues.extend(validate_skill_template_links())
     issues.extend(validate_readme_links())
     issues.extend(validate_repository_hygiene())
+    issues.extend(validate_lfs_budget())
 
     if not issues:
         print("Workspace validation passed.")
