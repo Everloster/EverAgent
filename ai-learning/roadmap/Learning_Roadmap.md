@@ -251,8 +251,8 @@ ai-learning/
 ├── reports/
 │   ├── AI演义_笔记分析与项目整合报告.md
 │   ├── paper_analyses/
-│   │   ├── 01_transformer_2017_分析报告.md  ✅
-│   │   └── 26_tulu3_2024_后训练分析报告.md  ✅
+│   │   ├── 01_transformer_2017.md  ✅
+│   │   └── 26_tulu3_2024.md  ✅
 │   └── knowledge_reports/
 │       ├── self_attention_深度解析.md       ✅
 │       ├── RLHF_深度解析.md                ✅
@@ -266,7 +266,7 @@ ai-learning/
 学习本路径时，以下报告可作为深度补充：
 
 - **Phase 2.3 Transformer** → [Self-Attention 深度解析](../reports/knowledge_reports/self_attention_深度解析.md)
-- **Phase 3.4 RLHF** → [RLHF 深度解析](../reports/knowledge_reports/RLHF_深度解析.md) + [InstructGPT 论文分析](../reports/paper_analyses/01_transformer_2017_分析报告.md)
-- **Phase 3.7 Infra与数据** → [Tulu 3 后训练全流程](../reports/paper_analyses/26_tulu3_2024_后训练分析报告.md)（DPO/RLVR 实践）
+- **Phase 3.4 RLHF** → [RLHF 深度解析](../reports/knowledge_reports/RLHF_深度解析.md) + [InstructGPT 论文分析](../reports/paper_analyses/01_transformer_2017.md)
+- **Phase 3.7 Infra与数据** → [Tulu 3 后训练全流程](../reports/paper_analyses/26_tulu3_2024.md)（DPO/RLVR 实践）
 - **贯穿全程的人文视角** → [AI关键人物图谱](../reports/knowledge_reports/AI关键人物图谱.md)
 - **理解架构竞争的底层逻辑** → [AI发展时间线·硬件彩票章节](./AI_Development_Timeline.md)

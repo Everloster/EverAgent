@@ -4,6 +4,35 @@
 
 ---
 
+## 2026-04-01
+
+### 项目优化（任务1，Claude Opus 4.6）
+- 修复 7 个报告文件的 YAML frontmatter 缺失（Byzantine Generals、Rosenhan 补全 frontmatter；KV Cache、DINOv2、Kant、Aristotle、Bandura 补齐字段）
+- 同步 Task Board 已完成列表（+ZeRO/Chord/Harlow），更新 P1/P2 推荐池
+- README 数据同步至实际数量（ai:24, cs:19, philosophy:7, psychology:12）
+- 清理 5 个 CONTEXT.md 防幻觉区：移除已完成标记堆积，只保留未研究项
+- 新增 biology-learning/roadmap/Learning_Roadmap.md（4 阶段学习路径）
+- 引入 Git LFS 管理 31 个 PDF 文件（164MB），添加 LFS 用量监控（700MB WARN / 950MB ERROR）
+- 新增 pre-commit hook：提交前自动运行 validate_workspace.py
+- 删除 ai-learning ZeRO 重复文件（25_zero_2019_分析报告.md）
+- 统一报告文件命名规范（移除中文后缀 `_分析报告`）
+
+### ai-learning
+- 新增 MoE #21（2017）稀疏门控混合专家论文精读
+- 新增 ZeRO #25（2019）分布式训练内存优化论文精读
+
+### cs-learning
+- 新增 Chord #28（2001）P2P 查找协议论文精读
+- 新增 Chubby #29（2006）分布式锁服务论文精读
+
+### philosophy-learning
+- 新增 Nagel（1974）What Is It Like to Be a Bat? 文本分析
+
+### psychology-learning
+- 新增 Harlow（1958）恒河猴实验论文精读
+
+---
+
 ## 2026-03-30
 
 ### 项目优化（任务1，Claude Sonnet 4.6）

@@ -73,11 +73,11 @@ psychology-learning/
 ### 第四步：阅读已有深度报告
 
 **实验/论文精读：**
-- [Miller (1956) 分析报告](./reports/paper_analyses/01_miller_magical_number_seven_1956_分析报告.md) — 工作记忆容量与认知革命的起点
-- [Milgram (1963) 分析报告](./reports/paper_analyses/02_milgram_obedience_1963_分析报告.md) — 服从权威与情境力量
-- [Festinger & Carlsmith (1959) 分析报告](./reports/paper_analyses/03_festinger_carlsmith_cognitive_dissonance_1959_分析报告.md) — 认知失调与不足理由效应
-- [Prospect Theory (1979) 分析报告](./reports/paper_analyses/05_kahneman_tversky_prospect_theory_1979_分析报告.md) — 损失厌恶、参考点依赖与风险决策
-- [Seligman & Maier (1967) 分析报告](./reports/paper_analyses/06_seligman_maier_learned_helplessness_1967_分析报告.md) — 习得性无助、控制感崩塌与后续放弃
+- [Miller (1956) 分析报告](./reports/paper_analyses/01_miller_magical_number_seven_1956.md) — 工作记忆容量与认知革命的起点
+- [Milgram (1963) 分析报告](./reports/paper_analyses/02_milgram_obedience_1963.md) — 服从权威与情境力量
+- [Festinger & Carlsmith (1959) 分析报告](./reports/paper_analyses/03_festinger_carlsmith_cognitive_dissonance_1959.md) — 认知失调与不足理由效应
+- [Prospect Theory (1979) 分析报告](./reports/paper_analyses/05_kahneman_tversky_prospect_theory_1979.md) — 损失厌恶、参考点依赖与风险决策
+- [Seligman & Maier (1967) 分析报告](./reports/paper_analyses/06_seligman_maier_learned_helplessness_1967.md) — 习得性无助、控制感崩塌与后续放弃
 
 **概念深度解析：**
 - [心理学关键人物图谱](./reports/concept_reports/心理学关键人物图谱.md) — 从冯特到卡尼曼的思想传承
@@ -95,12 +95,12 @@ psychology-learning/
 
 | # | 文本 | 作者 | 年份 | 优先级 | 分析报告 |
 |---|------|------|------|--------|---------|
-| 01 | The Magical Number Seven（神奇的数字七） | Miller | 1956 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/01_miller_magical_number_seven_1956_分析报告.md) |
-| 02 | Behavioral Study of Obedience（服从权威） | Milgram | 1963 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/02_milgram_obedience_1963_分析报告.md) |
-| 03 | Cognitive Consequences of Forced Compliance（认知失调） | Festinger & Carlsmith | 1959 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/03_festinger_carlsmith_cognitive_dissonance_1959_分析报告.md) |
+| 01 | The Magical Number Seven（神奇的数字七） | Miller | 1956 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/01_miller_magical_number_seven_1956.md) |
+| 02 | Behavioral Study of Obedience（服从权威） | Milgram | 1963 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/02_milgram_obedience_1963.md) |
+| 03 | Cognitive Consequences of Forced Compliance（认知失调） | Festinger & Carlsmith | 1959 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/03_festinger_carlsmith_cognitive_dissonance_1959.md) |
 | 04 | On Being Sane in Insane Places（精神病院中的正常人） | Rosenhan | 1973 | ⭐⭐⭐ | ⬜ 待读 |
-| 05 | Prospect Theory（前景理论） | Kahneman & Tversky | 1979 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/05_kahneman_tversky_prospect_theory_1979_分析报告.md) |
-| 06 | Failure to Escape Traumatic Shock（习得性无助） | Seligman & Maier | 1967 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/06_seligman_maier_learned_helplessness_1967_分析报告.md) |
+| 05 | Prospect Theory（前景理论） | Kahneman & Tversky | 1979 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/05_kahneman_tversky_prospect_theory_1979.md) |
+| 06 | Failure to Escape Traumatic Shock（习得性无助） | Seligman & Maier | 1967 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/06_seligman_maier_learned_helplessness_1967.md) |
 | 07 | Judgment under Uncertainty（不确定条件下的判断） | Tversky & Kahneman | 1974 | ⭐⭐⭐ | ⬜ 待读 |
 | 08 | The Nature of Love（爱的本质·恒河猴实验） | Harlow | 1958 | ⭐⭐⭐ | ⬜ 待读 |
 | 09 | Transmission of Aggression（攻击行为传播·Bobo娃娃） | Bandura et al. | 1961 | ⭐⭐ | ⬜ 待读 |

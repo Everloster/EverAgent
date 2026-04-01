@@ -163,7 +163,7 @@
 ### 13. Efficient Estimation of Word Representations（Word2Vec）
 - **文件名建议**：`13_word2vec_2013.pdf`
 - **下载链接**：https://arxiv.org/pdf/1301.3781
-- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/13_word2vec_2013_分析报告.md`）
+- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/13_word2vec_2013.md`）
 
 ### 14. Neural Machine Translation by Jointly Learning to Align（Bahdanau Attention）
 - **文件名建议**：`14_bahdanau_attention_2014.pdf`

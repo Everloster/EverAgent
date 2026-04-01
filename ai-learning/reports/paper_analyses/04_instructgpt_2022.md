@@ -225,7 +225,7 @@ InstructGPT 2022 ─────────────────────
 
 **与项目内其他报告的关系**：
 - [`RLHF_深度解析.md`](../knowledge_reports/RLHF_深度解析.md)：本报告的算法细节配套理解文档
-- [`26_tulu3_2024`](./26_tulu3_2024_后训练分析报告.md)：InstructGPT 流程的现代演进（DPO + RLVR 替代 PPO）
+- [`26_tulu3_2024`](./26_tulu3_2024.md)：InstructGPT 流程的现代演进（DPO + RLVR 替代 PPO）
 
 ---
 

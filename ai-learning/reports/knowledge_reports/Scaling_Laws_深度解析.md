@@ -300,9 +300,9 @@ Wei et al.（2022）发现：部分能力（如算术推理、多步推理）在
 
 | 相关报告 | 关联点 |
 |---------|--------|
-| [GPT-3 论文分析](../paper_analyses/03_gpt3_2020_分析报告.md) | GPT-3 的训练是 Kaplan Scaling Laws 的直接实践（但实际是欠训练的） |
+| [GPT-3 论文分析](../paper_analyses/03_gpt3_2020.md) | GPT-3 的训练是 Kaplan Scaling Laws 的直接实践（但实际是欠训练的） |
 | [RLHF 深度解析](./RLHF_深度解析.md) | RLHF 的 SFT 阶段也涉及数据量与性能的权衡 |
-| [Tulu 3 后训练分析](../paper_analyses/26_tulu3_2024_后训练分析报告.md) | 后训练数据量的 Scaling 是前沿研究方向 |
+| [Tulu 3 后训练分析](../paper_analyses/26_tulu3_2024.md) | 后训练数据量的 Scaling 是前沿研究方向 |
 | 学习路径 Phase 3.3 | 本报告对应路径中的 Scaling Laws 板块 |
 
 ---

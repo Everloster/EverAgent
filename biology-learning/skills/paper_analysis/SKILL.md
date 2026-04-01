@@ -17,7 +17,7 @@
 
 ## 分析框架（标准模板）
 
-输出报告保存为 `reports/paper_analyses/[编号]_[论文简称]_[年份]_分析报告.md`
+输出报告保存为 `reports/paper_analyses/[编号]_[论文简称]_[年份].md`
 
 ---
 
@@ -122,4 +122,4 @@ DOI / 获取链接：[如有]
 1. 获取论文（PDF 路径或 DOI 链接）
 2. 若为 Open Access，使用 WebFetch 获取全文
 3. 按框架生成报告，存入 `reports/paper_analyses/`
-4. 文件命名：`P[编号]_[简称]_[年份]_分析报告.md`
+4. 文件命名：`P[编号]_[简称]_[年份].md`

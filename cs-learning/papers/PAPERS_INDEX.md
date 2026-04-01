@@ -288,7 +288,7 @@
 **为什么读**：理解 Paxos → 锁服务 → ZooKeeper 演化链路的中间节点；论文完整记录了设计与实际使用的偏差，是分布式系统工程演化的第一手文献。
 **阅读难度**：⭐⭐（工程论文，可读性强；需要 Paxos 基础）
 **链接**：https://www.usenix.org/legacy/event/osdi06/tech/full_papers/burrows/burrows.pdf
-**阅读状态**：✅ 已完成（见 `reports/paper_analyses/29_chubby_2006_分析报告.md`）
+**阅读状态**：✅ 已完成（见 `reports/paper_analyses/29_chubby_2006.md`）
 
 ---
 

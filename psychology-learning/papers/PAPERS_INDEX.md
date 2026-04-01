@@ -20,7 +20,7 @@
 - **核心概念**：工作记忆容量、组块（Chunking）、信息论
 - **所属流派**：认知心理学（认知革命奠基论文之一）
 - **字数/阅读时间**：约30页 / 约2-3小时
-- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/01_miller_magical_number_seven_1956_分析报告.md`）
+- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/01_miller_magical_number_seven_1956.md`）
 
 ---
 
@@ -37,7 +37,7 @@
 - **所属流派**：社会心理学
 - **字数/阅读时间**：约8页 / 约1.5小时
 - **伦理争议**：此实验后来推动了 APA 研究伦理准则的修订
-- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/02_milgram_obedience_1963_分析报告.md`）
+- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/02_milgram_obedience_1963.md`）
 
 ---
 
@@ -51,7 +51,7 @@
 - **核心概念**：认知失调（Cognitive Dissonance）、自我辩护（Self-Justification）、态度改变
 - **所属流派**：社会心理学
 - **字数/阅读时间**：约8页 / 约1.5小时
-- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/03_festinger_carlsmith_cognitive_dissonance_1959_分析报告.md`）
+- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/03_festinger_carlsmith_cognitive_dissonance_1959.md`）
 
 ---
 
@@ -85,7 +85,7 @@
 - **所属流派**：行为经济学、认知心理学
 - **字数/阅读时间**：约29页（技术性较强）/ 约4小时
 - **重要性**：卡尼曼因此获2002年诺贝尔经济学奖
-- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/05_kahneman_tversky_prospect_theory_1979_分析报告.md`）
+- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/05_kahneman_tversky_prospect_theory_1979.md`）
 
 ---
 
@@ -100,7 +100,7 @@
 - **所属流派**：行为主义→认知心理学→临床心理学
 - **字数/阅读时间**：约9页 / 约1.5小时
 - **影响**：习得性无助理论后来成为抑郁症认知模型的基础
-- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/06_seligman_maier_learned_helplessness_1967_分析报告.md`）
+- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/06_seligman_maier_learned_helplessness_1967.md`）
 
 ---
 
@@ -116,7 +116,7 @@
 - **核心概念**：代表性启发、可得性启发、锚定与调整
 - **所属流派**：认知心理学、行为经济学
 - **字数/阅读时间**：约8页 / 约2小时
-- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/07_tversky_kahneman_heuristics_1974_分析报告.md`）
+- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/07_tversky_kahneman_heuristics_1974.md`）
 
 ---
 
@@ -159,7 +159,7 @@
 - **获取**：DOI: 10.1037/h0025589
 - **核心内容**：旁观者越多，单个旁观者施救概率越低（责任扩散）；"旁观者效应"的首个实验证据——受基蒂·杰诺维斯案件启发
 - **核心概念**：旁观者效应（Bystander Effect）、责任扩散（Diffusion of Responsibility）、多数无知（Pluralistic Ignorance）
-- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/10_darley_latane_bystander_1968_分析报告.md`）
+- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/10_darley_latane_bystander_1968.md`）
 
 ---
 
@@ -206,7 +206,7 @@
 - **发表**：Groups, Leadership and Men (H. Guetzkow, Ed.), 177–190
 - **核心内容**：当一组同谋者都选择明显错误的线段时，约37%的被试会随从群体给出错误答案；揭示规范性从众的力量
 - **核心概念**：从众（Conformity）、规范性社会影响、信息性社会影响
-- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/14_asch_conformity_1951_分析报告.md`）
+- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/14_asch_conformity_1951.md`）
 
 ---
 
@@ -327,7 +327,7 @@
 - **核心内容**：正常大学生被随机分配为"狱卒"与"囚犯"后，迅速出现虐待与崩溃；证明情境对行为的极端影响力
 - **伦理争议**：实验设计存在重大伦理问题，且津巴多介入过多；2019年后受到更多批评
 - **核心概念**：情境力量、角色认同（Role Identity）、去个体化
-- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/24_zimbardo_stanford_prison_1971_分析报告.md`）
+- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/24_zimbardo_stanford_prison_1971.md`）
 
 ---
 

@@ -272,9 +272,9 @@ Attention Is All You Need (2017)        Kaplan Scaling Laws (2020)
 
 | 相关报告 | 关联点 |
 |---------|--------|
-| [GPT-3 论文分析](./03_gpt3_2020_分析报告.md) | GPT-3 是 Kaplan Scaling Laws 的直接实践（但按 Chinchilla 视角看是欠训练的） |
-| [InstructGPT 论文分析](./04_instructgpt_2022_分析报告.md) | RLHF 后训练阶段的数据量 Scaling 是 Scaling Laws 的延伸问题 |
-| [Tulu 3 后训练分析](./26_tulu3_2024_后训练分析报告.md) | 后训练（SFT/DPO/RLVR）中数据量和质量的权衡，可类比 Scaling Laws 框架 |
+| [GPT-3 论文分析](./03_gpt3_2020.md) | GPT-3 是 Kaplan Scaling Laws 的直接实践（但按 Chinchilla 视角看是欠训练的） |
+| [InstructGPT 论文分析](./04_instructgpt_2022.md) | RLHF 后训练阶段的数据量 Scaling 是 Scaling Laws 的延伸问题 |
+| [Tulu 3 后训练分析](./26_tulu3_2024.md) | 后训练（SFT/DPO/RLVR）中数据量和质量的权衡，可类比 Scaling Laws 框架 |
 | [Scaling Laws 深度解析](../knowledge_reports/Scaling_Laws_深度解析.md) | 本报告的配套知识解析（代码 + 5层理解模型） |
 | 学习路径 Phase 3.3 | 本报告对应 Learning Roadmap 中的 Scaling Laws 板块（含 Chinchilla 修正） |
 

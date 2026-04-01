@@ -67,10 +67,10 @@ ai-learning/
 ├── reports/                                     # 📊 分析报告
 │   ├── AI演义_笔记分析与项目整合报告.md          # 《AI演义》PDF 解析与项目改进建议
 │   ├── paper_analyses/                         # 论文精读报告（17 篇已完成）
-│   │   ├── 01_transformer_2017_分析报告.md
-│   │   ├── 04_instructgpt_2022_分析报告.md
-│   │   ├── 12_clip_2021_分析报告.md
-│   │   └── 26_tulu3_2024_后训练分析报告.md
+│   │   ├── 01_transformer_2017.md
+│   │   ├── 04_instructgpt_2022.md
+│   │   ├── 12_clip_2021.md
+│   │   └── 26_tulu3_2024.md
 │   └── knowledge_reports/                      # 概念深度解析（5 篇）
 │       ├── self_attention_深度解析.md
 │       ├── RLHF_深度解析.md
@@ -108,23 +108,23 @@ ai-learning/
 ### 第四步：阅读已有深度报告
 
 **论文精读报告（17 篇已完成）：**
-- [Transformer 论文分析](./reports/paper_analyses/01_transformer_2017_分析报告.md) ← **推荐第一篇读**
-- [BERT 论文分析](./reports/paper_analyses/02_bert_2018_分析报告.md) ← 双向预训练
-- [GPT-3 论文分析](./reports/paper_analyses/03_gpt3_2020_分析报告.md) ← Few-shot
-- [InstructGPT 论文分析](./reports/paper_analyses/04_instructgpt_2022_分析报告.md) ← RLHF 起点
-- [Scaling Laws 论文分析](./reports/paper_analyses/05_scaling_laws_2020_分析报告.md) ← 训练策略与算力配置
-- [AlexNet 论文分析](./reports/paper_analyses/06_alexnet_2012_分析报告.md) ← 深度学习复兴拐点
-- [ResNet 论文分析](./reports/paper_analyses/07_resnet_2015_分析报告.md) ← 残差连接
-- [GAN 论文分析](./reports/paper_analyses/08_gan_2014_分析报告.md) ← 生成对抗网络
-- [DDPM 论文分析](./reports/paper_analyses/09_ddpm_2020_分析报告.md) ← 扩散模型
-- [Chain-of-Thought 论文分析](./reports/paper_analyses/10_chain_of_thought_2022_分析报告.md) ← 思维链
-- [ViT 论文分析](./reports/paper_analyses/11_vit_2020_分析报告.md) ← Vision Transformer
-- [CLIP 论文分析](./reports/paper_analyses/12_clip_2021_分析报告.md) ← 多模态表示学习
-- [Swin Transformer 论文分析](./reports/paper_analyses/13_swin_transformer_2021_分析报告.md) ← 层次化视觉 Transformer
-- [LoRA 论文分析](./reports/paper_analyses/15_lora_2021_分析报告.md) ← 低秩适应微调
-- [LLaMA 论文分析](./reports/paper_analyses/16_llama_2023_分析报告.md) ← 开源大模型
-- [MAE 论文分析](./reports/paper_analyses/17_mae_2022_分析报告.md) ← 自监督视觉预训练
-- [Tulu 3 后训练流程分析](./reports/paper_analyses/26_tulu3_2024_后训练分析报告.md) ← SFT→DPO→RLVR 完整解析
+- [Transformer 论文分析](./reports/paper_analyses/01_transformer_2017.md) ← **推荐第一篇读**
+- [BERT 论文分析](./reports/paper_analyses/02_bert_2018.md) ← 双向预训练
+- [GPT-3 论文分析](./reports/paper_analyses/03_gpt3_2020.md) ← Few-shot
+- [InstructGPT 论文分析](./reports/paper_analyses/04_instructgpt_2022.md) ← RLHF 起点
+- [Scaling Laws 论文分析](./reports/paper_analyses/05_scaling_laws_2020.md) ← 训练策略与算力配置
+- [AlexNet 论文分析](./reports/paper_analyses/06_alexnet_2012.md) ← 深度学习复兴拐点
+- [ResNet 论文分析](./reports/paper_analyses/07_resnet_2015.md) ← 残差连接
+- [GAN 论文分析](./reports/paper_analyses/08_gan_2014.md) ← 生成对抗网络
+- [DDPM 论文分析](./reports/paper_analyses/09_ddpm_2020.md) ← 扩散模型
+- [Chain-of-Thought 论文分析](./reports/paper_analyses/10_chain_of_thought_2022.md) ← 思维链
+- [ViT 论文分析](./reports/paper_analyses/11_vit_2020.md) ← Vision Transformer
+- [CLIP 论文分析](./reports/paper_analyses/12_clip_2021.md) ← 多模态表示学习
+- [Swin Transformer 论文分析](./reports/paper_analyses/13_swin_transformer_2021.md) ← 层次化视觉 Transformer
+- [LoRA 论文分析](./reports/paper_analyses/15_lora_2021.md) ← 低秩适应微调
+- [LLaMA 论文分析](./reports/paper_analyses/16_llama_2023.md) ← 开源大模型
+- [MAE 论文分析](./reports/paper_analyses/17_mae_2022.md) ← 自监督视觉预训练
+- [Tulu 3 后训练流程分析](./reports/paper_analyses/26_tulu3_2024.md) ← SFT→DPO→RLVR 完整解析
 
 **知识深度解析（5 篇）：**
 - [Self-Attention 深度解析](./reports/knowledge_reports/self_attention_深度解析.md) — 含代码实现
@@ -144,27 +144,27 @@ ai-learning/
 
 | # | 论文 | 年份 | 优先级 | 分析报告 |
 |---|------|------|--------|---------|
-| 01 | Attention Is All You Need (Transformer) | 2017 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/01_transformer_2017_分析报告.md) |
-| 02 | BERT | 2018 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/02_bert_2018_分析报告.md) |
-| 03 | GPT-3 | 2020 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/03_gpt3_2020_分析报告.md) |
-| 04 | InstructGPT (RLHF) | 2022 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/04_instructgpt_2022_分析报告.md) |
-| 05 | Scaling Laws | 2020 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/05_scaling_laws_2020_分析报告.md) |
-| 06 | AlexNet | 2012 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/06_alexnet_2012_分析报告.md) |
-| 07 | ResNet | 2015 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/07_resnet_2015_分析报告.md) |
-| 08 | GAN | 2014 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/08_gan_2014_分析报告.md) |
-| 09 | DDPM (Diffusion) | 2020 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/09_ddpm_2020_分析报告.md) |
-| 10 | Chain-of-Thought | 2022 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/10_chain_of_thought_2022_分析报告.md) |
-| 11 | ViT | 2020 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/11_vit_2020_分析报告.md) |
-| 12 | CLIP | 2021 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/12_clip_2021_分析报告.md) |
-| 13 | Swin Transformer | 2021 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/13_swin_transformer_2021_分析报告.md) |
-| 17 | MAE | 2022 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/17_mae_2022_分析报告.md) |
-| 16 | LLaMA | 2023 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/16_llama_2023_分析报告.md) |
-| 15 | LoRA | 2021 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/15_lora_2021_分析报告.md) |
+| 01 | Attention Is All You Need (Transformer) | 2017 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/01_transformer_2017.md) |
+| 02 | BERT | 2018 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/02_bert_2018.md) |
+| 03 | GPT-3 | 2020 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/03_gpt3_2020.md) |
+| 04 | InstructGPT (RLHF) | 2022 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/04_instructgpt_2022.md) |
+| 05 | Scaling Laws | 2020 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/05_scaling_laws_2020.md) |
+| 06 | AlexNet | 2012 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/06_alexnet_2012.md) |
+| 07 | ResNet | 2015 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/07_resnet_2015.md) |
+| 08 | GAN | 2014 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/08_gan_2014.md) |
+| 09 | DDPM (Diffusion) | 2020 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/09_ddpm_2020.md) |
+| 10 | Chain-of-Thought | 2022 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/10_chain_of_thought_2022.md) |
+| 11 | ViT | 2020 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/11_vit_2020.md) |
+| 12 | CLIP | 2021 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/12_clip_2021.md) |
+| 13 | Swin Transformer | 2021 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/13_swin_transformer_2021.md) |
+| 17 | MAE | 2022 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/17_mae_2022.md) |
+| 16 | LLaMA | 2023 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/16_llama_2023.md) |
+| 15 | LoRA | 2021 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/15_lora_2021.md) |
 | 20 | Stable Diffusion (LDM) | 2021 | ⭐⭐⭐ | ⬜ 待读 |
 | 21 | MoE | 2017 | ⭐⭐⭐ | ⬜ 待读 |
 | 22 | The Bitter Lesson | 2019 | ⭐⭐⭐ | ✅ [已保存](./papers/22_bitter_lesson_2019.md)（英中双语）|
 | 25 | ZeRO | 2019 | ⭐⭐ | ⬜ 待读 |
-| 26 | Tulu 3 | 2024 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/26_tulu3_2024_后训练分析报告.md) |
+| 26 | Tulu 3 | 2024 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/26_tulu3_2024.md) |
 | 27 | DiT | 2022 | ⭐⭐ | ⬜ 待读 |
 
 > 完整32篇索引见 [PAPERS_INDEX.md](./papers/PAPERS_INDEX.md)
