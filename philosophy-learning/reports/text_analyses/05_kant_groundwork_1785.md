@@ -1,10 +1,13 @@
 ---
 title: 康德《道德形而上学基础》文本精读分析报告
+domain: philosophy-learning
+report_type: text_analysis
+status: complete
+updated_on: 2026-03-28
 project: philosophy-learning
 task_type: task-execution
 agent: GLM-5.0-Turbo
 date: 2026-03-28
-status: complete
 ---
 
 # 康德《道德形而上学基础》— 绝对命令与道德哲学的先验转向

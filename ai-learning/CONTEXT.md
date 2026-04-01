@@ -53,23 +53,7 @@
 ## ⚠️ 边界（防幻觉）
 以下内容**尚未研究**，禁止推测，须告知用户：
 - GPT-4 / Claude / Gemini 系列的专项分析报告
-- 工程类报告（KV Cache、ZeRO 等尚无独立精读）
-- InstructGPT / PPO 的论文级精读 ✅ 已完成（04_instructgpt_2022）
-- Scaling Laws 论文（Kaplan 2020）精读级分析 ✅ 已完成（05_scaling_laws_2020）
-- LoRA 论文级精读 ✅ 已完成（15_lora_2021）
-- 工程类论文精读（MegaScale #31 等）
-- ZeRO (#25) ✅ 已完成（25_zero_2019）
-- ResNet (#07) ✅ 已完成（07_resnet_2015）
-- GAN (#08) ✅ 已完成（08_gan_2014）
-- DDPM (#09) ✅ 已完成（09_ddpm_2020）
-- AlexNet (#06) ✅ 已完成（06_alexnet_2012，基于论文知识分析）
-- Phase 2 尚缺：DDIM等后续扩散论文；VGGNet、Batch Normalization专项报告
-- ViT (#11) ✅ 已完成（11_vit_2020）
-- CLIP (#12) ✅ 已完成（12_clip_2021）
-- LLaMA (#16) ✅ 已完成（16_llama_2023）
-- Swin Transformer (#13) ✅ 已完成（13_swin_transformer_2021）
-- MAE (#17) ✅ 已完成（17_mae_2022，75%掩码率·ViT自监督预训练·CVPR 2022）
-- DINOv2 (#35) ✅ 已完成（35_dinov2_2023）
-- KV Cache 深度解析 ✅ 已完成（KV_Cache_深度解析_20260330）
-- MoE (#21) ✅ 已完成（21_moe_2017，稀疏门控·负载均衡·137B参数验证·2026-03-31）
-- 下一步推荐：VideoMAE、ZeRO、EVA-02
+- ���程类论文精读（MegaScale #31 等）
+- Phase 2 尚缺：DDIM 等后续扩散论文；VGGNet、Batch Normalization 专项报告
+- 视频理解方向（VideoMAE、TimeSformer 等）尚无报告
+- 下一步推荐：VideoMAE、MegaScale、EVA-02

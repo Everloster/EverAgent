@@ -1,3 +1,11 @@
+---
+title: "On Being Sane in Insane Places 分析报告"
+domain: psychology-learning
+report_type: paper_analysis
+status: complete
+updated_on: 2026-03-27
+---
+
 # 04 | On Being Sane in Insane Places 分析报告
 
 **作者**：David L. Rosenhan  
