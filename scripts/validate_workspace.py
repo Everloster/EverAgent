@@ -32,6 +32,7 @@ REPORT_GLOBS = [
 SKILL_TEMPLATE_HINT = "docs/SKILL_TEMPLATES.md"
 FRONTMATTER_PATTERN = re.compile(r"\A---\n(.*?)\n---\n", re.DOTALL)
 MARKDOWN_LINK_PATTERN = re.compile(r"\[[^\]]+\]\((?!https?://|mailto:|#)([^)]+)\)")
+REPLACEMENT_CHAR = "\ufffd"
 
 
 @dataclass
@@ -152,6 +153,45 @@ def validate_repository_hygiene() -> list[ValidationIssue]:
     return issues
 
 
+def validate_text_encoding() -> list[ValidationIssue]:
+    """Flag files that contain Unicode replacement characters."""
+    issues: list[ValidationIssue] = []
+    for path in sorted(ROOT.rglob("*.md")):
+        relative = path.relative_to(ROOT)
+        # Skip git internals even if a future path pattern matches there.
+        if ".git" in relative.parts:
+            continue
+
+        text = path.read_text(encoding="utf-8")
+        if REPLACEMENT_CHAR in text:
+            issues.append(
+                ValidationIssue(
+                    "WARN",
+                    relative,
+                    "contains Unicode replacement character (possible encoding corruption)",
+                )
+            )
+    return issues
+
+
+def validate_git_locks() -> list[ValidationIssue]:
+    """Warn when git lock files are present, since they can block future writes."""
+    issues: list[ValidationIssue] = []
+    git_dir = ROOT / ".git"
+    if not git_dir.exists():
+        return issues
+
+    for path in sorted(git_dir.rglob("*.lock")):
+        issues.append(
+            ValidationIssue(
+                "WARN",
+                path.relative_to(ROOT),
+                "git lock file is present and may block git operations",
+            )
+        )
+    return issues
+
+
 # Report naming convention: {number}_{name}_{year}.md (no Chinese suffixes)
 REPORT_NAME_BAD_SUFFIXES = re.compile(r"_[\u4e00-\u9fff]+\.md$")
 
@@ -257,8 +297,10 @@ def main() -> int:
     issues.extend(validate_skill_template_links())
     issues.extend(validate_readme_links())
     issues.extend(validate_repository_hygiene())
+    issues.extend(validate_text_encoding())
     issues.extend(validate_report_naming())
     issues.extend(validate_lfs_budget())
+    issues.extend(validate_git_locks())
 
     if not issues:
         print("Workspace validation passed.")
