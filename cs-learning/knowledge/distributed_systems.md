@@ -157,4 +157,4 @@ Hadoop MapReduce (2006, Doug Cutting)
 
 ---
 
-> ⚠️ 本文件基于 `10_mapreduce_2004_分析报告.md` 提炼，仅覆盖 MapReduce 相关内容。
+> ⚠️ 本文件基于 `10_mapreduce_2004.md` 提炼，仅覆盖 MapReduce 相关内容。

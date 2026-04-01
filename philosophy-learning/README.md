@@ -73,10 +73,10 @@ philosophy-learning/
 ### 第四步：阅读已有深度报告
 
 **文本精读：**
-- [《美诺》节选与美诺悖论](./reports/text_analyses/04_plato_meno_-380_分析报告.md) — 苏格拉底追问“德性是否可教”与“如果不知道 X，如何寻找 X？”
-- [柏拉图《理想国》第七卷·洞穴比喻](./reports/text_analyses/01_plato_republic_cave_-380_分析报告.md) — 理念论、认识论阶梯与哲学教育
-- [笛卡尔《第一哲学沉思集》](./reports/text_analyses/02_descartes_meditations_1641_分析报告.md) — 方法论怀疑、我思故我在、身心二元论
-- [Gettier《Is Justified True Belief Knowledge?》](./reports/text_analyses/03_gettier_1963_分析报告.md) — JTB 定义与认识论运气
+- [《美诺》节选与美诺悖论](./reports/text_analyses/04_plato_meno_-380.md) — 苏格拉底追问“德性是否可教”与“如果不知道 X，如何寻找 X？”
+- [柏拉图《理想国》第七卷·洞穴比喻](./reports/text_analyses/01_plato_republic_cave_-380.md) — 理念论、认识论阶梯与哲学教育
+- [笛卡尔《第一哲学沉思集》](./reports/text_analyses/02_descartes_meditations_1641.md) — 方法论怀疑、我思故我在、身心二元论
+- [Gettier《Is Justified True Belief Knowledge?》](./reports/text_analyses/03_gettier_1963.md) — JTB 定义与认识论运气
 
 **概念深度解析：**
 - [哲学关键人物图谱](./reports/concept_reports/哲学关键人物图谱.md) — 从苏格拉底到维特根斯坦的思想传承

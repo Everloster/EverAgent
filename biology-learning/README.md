@@ -51,9 +51,9 @@ biology-learning/
 ### 第一步：已有深度报告（直接阅读）
 
 **论文精读报告：**
-- [Social Jetlag and Obesity (2012)](./reports/paper_analyses/P01_social_jetlag_obesity_2012_分析报告.md) ← 社会性时差与 BMI 的标志性论文
-- [Sleep Onset, Slow Wave Sleep and GH Release (1988)](./reports/paper_analyses/P08_sleep_onset_sws_gh_1988_分析报告.md) ← 深睡与夜间生长激素释放的经典研究
-- [Physiology of Growth Hormone Secretion during Sleep (1996)](./reports/paper_analyses/P09_gh_sleep_physiology_1996_分析报告.md) ← GH、睡眠结构与年龄变化的整合性综述
+- [Social Jetlag and Obesity (2012)](./reports/paper_analyses/P01_social_jetlag_obesity_2012.md) ← 社会性时差与 BMI 的标志性论文
+- [Sleep Onset, Slow Wave Sleep and GH Release (1988)](./reports/paper_analyses/P08_sleep_onset_sws_gh_1988.md) ← 深睡与夜间生长激素释放的经典研究
+- [Physiology of Growth Hormone Secretion during Sleep (1996)](./reports/paper_analyses/P09_gh_sleep_physiology_1996.md) ← GH、睡眠结构与年龄变化的整合性综述
 
 **专题研究报告：**
 - [晚型人作息与力量训练深度研究](./reports/concept_reports/晚型人作息与力量训练_深度研究报告.md) ← **首篇报告，推荐入口**
@@ -92,9 +92,9 @@ biology-learning/
 
 | # | 论文 | 涉及领域 | 关键人物 | 状态 |
 |---|------|---------|---------|------|
-| P01 | [Social Jetlag and Obesity](./reports/paper_analyses/P01_social_jetlag_obesity_2012_分析报告.md) | 时间生物学 × 代谢健康 | Roenneberg、Merrow、Vetter | ✅ 完成 |
-| P08 | [Sleep Onset, Slow Wave Sleep and GH Release](./reports/paper_analyses/P08_sleep_onset_sws_gh_1988_分析报告.md) | 睡眠科学 × 内分泌学 | Born、Muth、Fehm | ✅ 完成 |
-| P09 | [Physiology of Growth Hormone Secretion during Sleep](./reports/paper_analyses/P09_gh_sleep_physiology_1996_分析报告.md) | 睡眠科学 × 内分泌学 | Van Cauter 等 | ✅ 完成 |
+| P01 | [Social Jetlag and Obesity](./reports/paper_analyses/P01_social_jetlag_obesity_2012.md) | 时间生物学 × 代谢健康 | Roenneberg、Merrow、Vetter | ✅ 完成 |
+| P08 | [Sleep Onset, Slow Wave Sleep and GH Release](./reports/paper_analyses/P08_sleep_onset_sws_gh_1988.md) | 睡眠科学 × 内分泌学 | Born、Muth、Fehm | ✅ 完成 |
+| P09 | [Physiology of Growth Hormone Secretion during Sleep](./reports/paper_analyses/P09_gh_sleep_physiology_1996.md) | 睡眠科学 × 内分泌学 | Van Cauter 等 | ✅ 完成 |
 
 ### 待研究课题
 
