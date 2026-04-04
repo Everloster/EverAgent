@@ -19,7 +19,7 @@
 
 | 项目 | 当前状态 | 论文/文本精读 | 知识/概念报告 | 知识报告比 | 主要缺口 |
 |------|----------|:---:|:---:|:---:|----------|
-| `ai-learning` | 🟢 高度活跃 | 24 | 7 | 29% | 视频理解、工程类 |
+| `ai-learning` | 🟢 高度活跃 | 25 | 7 | 28% | 工程类 |
 | `cs-learning` | 🟢 成熟建设中 | 19 | 1 | 5% | 网络、知识归纳 |
 | `philosophy-learning` | 🟡 结构成型 | 8 (7文本+1论文) | 2 | 25% | 德国唯心论、分析哲学 |
 | `psychology-learning` | 🟢 快速扩张 | 12 | 1 | 8% | 发展/临床心理学 |
@@ -49,9 +49,10 @@
   target: "VideoMAE (2022) 或 EVA-02 (2023)"
   value: "视觉自监督序列: MAE -> VideoMAE; 与 DINOv2/MAE 形成闭环"
   priority: P1
-  status: open
-  claimed_by: null
-  claimed_at: null
+  status: done
+  claimed_by: MiniMax-M2.7
+  claimed_at: 2026-04-04
+  done_at: 2026-04-04
 
 - id: T002
   project: ai-learning
@@ -59,9 +60,9 @@
   target: "MegaScale (2024)"
   value: "工程类论文主线缺口; 大规模训练系统实践"
   priority: P1
-  status: open
-  claimed_by: null
-  claimed_at: null
+  status: claimed
+  claimed_by: MiniMax-M2.7
+  claimed_at: 2026-04-04
 
 - id: T003
   project: cs-learning
@@ -180,8 +181,8 @@
 
 ## 已完成, 不应重复领取
 
-### ai-learning (24篇精读 + 7篇知识报告)
-Transformer、BERT、GPT-3、InstructGPT、ResNet、GAN、DDPM、AlexNet、Scaling Laws、Chain-of-Thought、LoRA、ViT、CLIP、LLaMA、Swin Transformer、MAE、DINOv2、FlashAttention、LLaMA-2、Mistral 7B、Word2Vec、Tulu3、MoE #21 (2017)、ZeRO #25 (2019)；知识报告：Self-Attention、RLHF、Scaling Laws、LoRA、AI关键人物图谱、DINOv2深度解析、KV Cache
+### ai-learning (25篇精读 + 7篇知识报告)
+Transformer、BERT、GPT-3、InstructGPT、ResNet、GAN、DDPM、AlexNet、Scaling Laws、Chain-of-Thought、LoRA、ViT、CLIP、LLaMA、Swin Transformer、MAE、DINOv2、FlashAttention、LLaMA-2、Mistral 7B、Word2Vec、Tulu3、MoE #21 (2017)、ZeRO #25 (2019)、VideoMAE #36 (2022)；知识报告：Self-Attention、RLHF、Scaling Laws、LoRA、AI关键人物图谱、DINOv2深度解析、KV Cache
 
 ### cs-learning (19篇精读 + 1篇知识报告)
 Turing (1950)、Shannon (1948)、MapReduce (2004)、Bigtable (2006)、Lamport Clocks (1978)、GFS (2003)、Dynamo (2007)、Raft (2014)、Spanner (2012)、Paxos (2001)、Kafka (2011)、UNIX (1974)、ZooKeeper (2010)、FFS (1984)、Byzantine Generals (1982)、CSP (1978)、TCP/IP (1974)、Chubby (2006)、Chord (2001)；知识报告：CS关键人物图谱
