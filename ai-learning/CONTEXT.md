@@ -30,6 +30,7 @@
 - `13_word2vec_2013` — CBOW与Skip-gram·层次化Softmax·负采样·词嵌入民主化·2023 NeurIPS时间检验奖（2026-03-28）
 - `35_dinov2_2023` — 自监督视觉基础模型·LVD-142M数据流水线·KoLeo正则化·蒸馏传承·全视觉任务通用特征（2026-03-28）
 - `36_videomae_2022` — 视频MAE·极高掩码率90-95%·Tube Masking·数据高效自监督预训练·K400 87.4%（2026-04-04）
+- `31_megascale_2024` — 万卡级LLM训练系统·12,288 GPU 55.2% MFU·3D并行Overlap·算法-系统协同设计·自动化故障恢复·NSDI 2024（2026-04-04）
 - `21_moe_2017` — 稀疏门控混合专家·Noisy Top-K Gating·负载均衡双损失·137B参数验证·GPT-4/Mixtral直接前驱（2026-03-31）
 - `25_zero_2019` — ZeRO内存优化·优化器状态/梯度/参数三级切分·DeepSpeed核心·万亿参数训练基础设施（2026-03-30）
 
@@ -55,6 +56,6 @@
 ## ⚠️ 边界（防幻觉）
 以下内容**尚未研究**，禁止推测，须告知用户：
 - GPT-4 / Claude / Gemini 系列的专项分析报告
-- 工程类论文精读（MegaScale #31 等）
+- 工程类论文精读（EVA-02 等后续工程论文）
 - Phase 2 尚缺：DDIM 等后续扩散论文；VGGNet、Batch Normalization 专项报告
-- 下一步推荐：MegaScale、EVA-02
+- 下一步推荐：EVA-02、Megatron-LM 深度分析

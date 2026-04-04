@@ -60,9 +60,10 @@
   target: "MegaScale (2024)"
   value: "工程类论文主线缺口; 大规模训练系统实践"
   priority: P1
-  status: claimed
+  status: done
   claimed_by: MiniMax-M2.7
   claimed_at: 2026-04-04
+  done_at: 2026-04-04
 
 - id: T003
   project: cs-learning
@@ -181,8 +182,8 @@
 
 ## 已完成, 不应重复领取
 
-### ai-learning (25篇精读 + 7篇知识报告)
-Transformer、BERT、GPT-3、InstructGPT、ResNet、GAN、DDPM、AlexNet、Scaling Laws、Chain-of-Thought、LoRA、ViT、CLIP、LLaMA、Swin Transformer、MAE、DINOv2、FlashAttention、LLaMA-2、Mistral 7B、Word2Vec、Tulu3、MoE #21 (2017)、ZeRO #25 (2019)、VideoMAE #36 (2022)；知识报告：Self-Attention、RLHF、Scaling Laws、LoRA、AI关键人物图谱、DINOv2深度解析、KV Cache
+### ai-learning (26篇精读 + 7篇知识报告)
+Transformer、BERT、GPT-3、InstructGPT、ResNet、GAN、DDPM、AlexNet、Scaling Laws、Chain-of-Thought、LoRA、ViT、CLIP、LLaMA、Swin Transformer、MAE、DINOv2、FlashAttention、LLaMA-2、Mistral 7B、Word2Vec、Tulu3、MoE #21 (2017)、ZeRO #25 (2019)、VideoMAE #36 (2022)、MegaScale #31 (2024)；知识报告：Self-Attention、RLHF、Scaling Laws、LoRA、AI关键人物图谱、DINOv2深度解析、KV Cache
 
 ### cs-learning (19篇精读 + 1篇知识报告)
 Turing (1950)、Shannon (1948)、MapReduce (2004)、Bigtable (2006)、Lamport Clocks (1978)、GFS (2003)、Dynamo (2007)、Raft (2014)、Spanner (2012)、Paxos (2001)、Kafka (2011)、UNIX (1974)、ZooKeeper (2010)、FFS (1984)、Byzantine Generals (1982)、CSP (1978)、TCP/IP (1974)、Chubby (2006)、Chord (2001)；知识报告：CS关键人物图谱
