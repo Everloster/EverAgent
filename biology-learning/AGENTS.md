@@ -15,17 +15,10 @@ agent_manifest:
   capability_level: task_executor
 ```
 
-> ⚠️ **git 身份设置**：执行 git 操作前，需在全局 AGENTS.md 中查看当前模型名称并配置：
-> ```bash
-> git config user.name  "<从全局 AGENTS.md 获取当前模型名称>"
-> git config user.email "noreply@everagent.ai"
-> ```
-
 ### 启动初始化
 
 ```bash
-# 1. 设置 git 身份（从全局 AGENTS.md 获取当前模型名称）
-# 2. 必读文件（按顺序）
+# 1. 必读文件（按顺序）
 # - biology-learning/CONTEXT.md                       （已有报告清单 + 防幻觉边界）
 # - biology-learning/papers/PAPERS_INDEX.md            （可研究的论文列表）
 # - biology-learning/skills/paper_analysis/SKILL.md   （生物学论文7步分析法）
