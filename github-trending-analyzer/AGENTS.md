@@ -15,7 +15,7 @@ agent_manifest:
   project: "github-trending-analyzer"
   capability_level: task_executor
   git_identity:
-    name: "TrendAgent"
+    name: "Claude MiniMax-M2.7"
     email: "noreply@everagent.ai"
 ```
 
@@ -23,7 +23,7 @@ agent_manifest:
 
 ```bash
 # 1. 设置 git 身份
-git config user.name  "TrendAgent"
+git config user.name  "Claude MiniMax-M2.7"
 git config user.email "noreply@everagent.ai"
 
 # 2. 必读文件（按顺序）
@@ -162,7 +162,7 @@ Repo 报告： github-trending-reports/research_{owner}_{repo}.md
 ## §5 Commit Protocol（提交规范）
 
 ```bash
-git config user.name  "TrendAgent"
+git config user.name  "Claude MiniMax-M2.7"
 git config user.email "noreply@everagent.ai"
 
 git add github-trending-reports/ knowledge/ CONTEXT.md
