@@ -51,7 +51,7 @@ Everything else (learning subprojects) -> Analysis Mode (default)
 
 ## Git Identity & Commit Rules
 
-- **Identity guard**: Before every commit, verify `git config user.name` matches the current Agent identity. If mismatched (e.g., another Agent changed it), fix it before committing.
+- **Identity guard**: Before every commit, verify `git config user.name` is non-empty. The name is dynamically set by the runtime model and does not need to match a predefined list.
 - **Commit format**: Follow AGENTS.md SS4 exactly:
   ```
   [{task-type}] {scope}: {description}
