@@ -8,6 +8,7 @@ description: Conduct multi-round deep research on any GitHub Repo. Use when user
 Multi-round research combining GitHub API, web_search, web_fetch to produce comprehensive markdown reports.
 
 关键约束：当本技能被 `github-trending-analyzer` 调用时，必须遵守上层技能的输出路径、命名规则、图表限制和中文结构要求。
+完整约束见 [`TASK_PROTOCOL.md`](../TASK_PROTOCOL.md) TT-1/TT-2 章节。
 
 ## Research Workflow
 

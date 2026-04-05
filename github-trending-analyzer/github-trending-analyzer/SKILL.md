@@ -11,6 +11,8 @@ description: "Analyzes GitHub trending repositories by day/week/month using deep
 
 - 分析 GitHub 热点项目 / 生成 trending 报告 / 查询当前热门项目趋势
 
+> 完整执行规范见 [`TASK_PROTOCOL.md`](../TASK_PROTOCOL.md) TT-1 章节，本文件提供技能摘要和脚本速查。
+
 ## 环境配置
 
 | 变量 | 说明 | 默认值 |
