@@ -14,7 +14,7 @@ agent_manifest:
   project: "psychology-learning"
   capability_level: task_executor
   git_identity:
-    name: "PsycheAgent"
+    name: "Claude MiniMax-M2.7"
     email: "noreply@everagent.ai"
 ```
 
@@ -22,7 +22,7 @@ agent_manifest:
 
 ```bash
 # 1. 设置 git 身份
-git config user.name  "PsycheAgent"
+git config user.name  "Claude MiniMax-M2.7"
 git config user.email "noreply@everagent.ai"
 
 # 2. 必读文件（按顺序）
@@ -157,7 +157,7 @@ knowledge_report: {主题}_{全景图|图谱|...}.md
 ## §5 Commit Protocol（提交规范）
 
 ```bash
-git config user.name  "PsycheAgent"
+git config user.name  "Claude MiniMax-M2.7"
 git config user.email "noreply@everagent.ai"
 
 git add reports/ CONTEXT.md docs/LEARNING_PROJECTS_TASK_BOARD.md
