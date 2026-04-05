@@ -126,6 +126,18 @@
 **阅读状态**：✅ 已完成（见 `reports/paper_analyses/19_tcpip_1974.md`）
 ---
 
+### #30 | Domain Names - Concepts and Facilities (RFC 1034/1035)
+**作者**：Paul Mockapetllis 等（ARPA/DARPA）
+**年份**：1987
+**发表**：RFC 1034 & RFC 1035，RFC Editor
+**摘要**：提出分布式层次化命名系统——域名到 IP 地址的映射。核心设计：倒置树形命名空间、委托授权（delegation）、递归/迭代查询分离、TTL 缓存策略。支撑全球约 3.5 亿注册域名、数十亿设备的名称解析服务。
+**为什么读**：理解互联网"门牌号系统"的设计原理；DNS 的委托授权思想深刻影响了 DHT、Chubby 等后续分布式系统。
+**阅读难度**：⭐⭐⭐（协议规范，需要网络基础）
+**链接**：https://www.rfc-editor.org/rfc/rfc1034.txt · https://www.rfc-editor.org/rfc/rfc1035.txt
+
+**阅读状态**：✅ 已完成（见 `reports/paper_analyses/30_dns_1987.md`）
+---
+
 ### #20 | The Design Philosophy of the DARPA Internet Protocols
 **作者**：David D. Clark
 **年份**：1988

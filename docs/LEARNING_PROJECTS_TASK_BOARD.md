@@ -73,9 +73,10 @@
   target: "DNS (1987, RFC 1034/1035)"
   value: "网络方向第一篇; 与 TCP/IP 自然衔接"
   priority: P1
-  status: open
-  claimed_by: null
-  claimed_at: null
+  status: done
+  claimed_by: MiniMax-M2.7
+  claimed_at: 2026-04-05
+  done_at: 2026-04-05
 
 - id: T004
   project: cs-learning
@@ -83,9 +84,10 @@
   target: "分布式系统知识图谱"
   value: "19篇精读可归纳 Storage/Consensus/Coordination/Messaging 四主线; 知识报告比仅5%"
   priority: P1
-  status: open
-  claimed_by: null
-  claimed_at: null
+  status: done
+  claimed_by: MiniMax-M2.7
+  claimed_at: 2026-04-05
+  done_at: 2026-04-05
 
 - id: T005
   project: philosophy-learning
@@ -93,9 +95,10 @@
   target: "黑格尔《精神现象学》导论"
   value: "补齐德国唯心论主线; 与康德/亚里士多德形成三角"
   priority: P1
-  status: open
-  claimed_by: null
-  claimed_at: null
+  status: done
+  claimed_by: MiniMax-M2.7
+  claimed_at: 2026-04-05
+  done_at: 2026-04-05
 
 # P2: 第二批推荐
 - id: T006
@@ -124,9 +127,10 @@
   target: "认知偏差全景图"
   value: "整合 Kahneman/Tversky 系列报告; 提升导航价值"
   priority: P2
-  status: open
-  claimed_by: null
-  claimed_at: null
+  status: done
+  claimed_by: MiniMax-M2.7
+  claimed_at: 2026-04-05
+  done_at: 2026-04-05
 
 - id: T009
   project: biology-learning
@@ -176,9 +180,9 @@
 
 - **推荐最多同时开 3 个学习项目**, 4 个以上会有 CONTEXT 竞写风险。
 - 推荐组合（当前时间点）：
-  - Agent A：`cs-learning`（T003 DNS 或 T004 分布式系统知识图谱）
-  - Agent B：`philosophy-learning`（T005 黑格尔）
-  - Agent C：`ai-learning`（T006 MoE 深度解析） 或 `psychology-learning`（T008 认知偏差）
+  - Agent A：`philosophy-learning`（T007 罗尔斯《正义论》或 T011 自由意志专题）
+  - Agent B：`ai-learning`（T006 MoE 深度解析）
+  - Agent C：`biology-learning`（T009 Walker睡眠研究）
 
 ---
 
@@ -187,14 +191,14 @@
 ### ai-learning (26篇精读 + 7篇知识报告)
 Transformer、BERT、GPT-3、InstructGPT、ResNet、GAN、DDPM、AlexNet、Scaling Laws、Chain-of-Thought、LoRA、ViT、CLIP、LLaMA、Swin Transformer、MAE、DINOv2、FlashAttention、LLaMA-2、Mistral 7B、Word2Vec、Tulu3、MoE #21 (2017)、ZeRO #25 (2019)、VideoMAE #36 (2022)、MegaScale #31 (2024)；知识报告：Self-Attention、RLHF、Scaling Laws、LoRA、AI关键人物图谱、DINOv2深度解析、KV Cache
 
-### cs-learning (19篇精读 + 1篇知识报告)
-Turing (1950)、Shannon (1948)、MapReduce (2004)、Bigtable (2006)、Lamport Clocks (1978)、GFS (2003)、Dynamo (2007)、Raft (2014)、Spanner (2012)、Paxos (2001)、Kafka (2011)、UNIX (1974)、ZooKeeper (2010)、FFS (1984)、Byzantine Generals (1982)、CSP (1978)、TCP/IP (1974)、Chubby (2006)、Chord (2001)；知识报告：CS关键人物图谱
+### cs-learning (20篇精读 + 2篇知识报告)
+Turing (1950)、Shannon (1948)、MapReduce (2004)、Bigtable (2006)、Lamport Clocks (1978)、GFS (2003)、Dynamo (2007)、Raft (2014)、Spanner (2012)、Paxos (2001)、Kafka (2011)、UNIX (1974)、ZooKeeper (2010)、FFS (1984)、Byzantine Generals (1982)、CSP (1978)、TCP/IP (1974)、Chubby (2006)、Chord (2001)、DNS RFC 1034/1035 (1987)；知识报告：CS关键人物图谱、分布式系统知识图谱
 
-### philosophy-learning (7篇文本分析 + 1篇论文分析 + 2篇概念报告)
-柏拉图《理想国》洞穴比喻、柏拉图《美诺》、笛卡尔《沉思录》、Gettier (1963)、康德《道德形而上学基础》、亚里士多德《尼各马可伦理学》、Nagel (1974) What Is It Like to Be a Bat?；概念报告：哲学关键人物图谱、知识跨时代比较
+### philosophy-learning (8篇文本分析 + 1篇论文分析 + 2篇概念报告)
+柏拉图《理想国》洞穴比喻、柏拉图《美诺》、笛卡尔《沉思录》、Gettier (1963)、康德《道德形而上学基础》、亚里士多德《尼各马可伦理学》、Nagel (1974) What Is It Like to Be a Bat?、黑格尔《精神现象学》导论 (1807)；概念报告：哲学关键人物图谱、知识跨时代比较
 
-### psychology-learning (12篇精读 + 1篇知识报告)
-Miller (1956)、Milgram (1963)、Festinger & Carlsmith (1959)、Kahneman & Tversky (1979) 前景理论、Seligman & Maier (1967) 习得性无助、Darley & Latane (1968) 旁观者效应、Asch (1951) 从众实验、Zimbardo (1971) 斯坦福监狱实验、Rosenhan (1973)、Tversky & Kahneman (1974) 启发式与偏差、Bandura (1961) Bobo 娃娃实验、Harlow (1958) 恒河猴实验；知识报告：心理学关键人物图谱
+### psychology-learning (12篇精读 + 2篇知识报告)
+Miller (1956)、Milgram (1963)、Festinger & Carlsmith (1959)、Kahneman & Tversky (1979) 前景理论、Seligman & Maier (1967) 习得性无助、Darley & Latane (1968) 旁观者效应、Asch (1951) 从众实验、Zimbardo (1971) 斯坦福监狱实验、Rosenhan (1973)、Tversky & Kahneman (1974) 启发式与偏差、Bandura (1961) Bobo 娃娃实验、Harlow (1958) 恒河猴实验；知识报告：心理学关键人物图谱、认知偏差全景图
 
 ### biology-learning (4篇精读 + 1篇概念报告)
 Social Jetlag and Obesity (2012)、Sleep GH 1988、GH Sleep Physiology 1996、Social Jetlag 代谢综合征 (2017)；概念报告：晚型人作息与力量训练
