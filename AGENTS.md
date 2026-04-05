@@ -14,7 +14,10 @@ agent_manifest:
   role: "全局调度·任务板管理·项目优化·新项目创建"
   capability_level: full_admin
   git_identity:
-    name: "Claude MiniMax-M2.7"
+    # name 格式: {AI助手名} {版本号}
+    # 例如: Claude MiniMax-M2.7
+    # 提交前需将此处替换为实际运行的模型名称
+    name: "<在此填入当前模型名称>"
     email: "noreply@everagent.ai"
 ```
 
@@ -24,7 +27,8 @@ agent_manifest:
 GITHUB_TOKEN=$(grep GITHUB_TOKEN .env | cut -d'"' -f2)
 git remote set-url origin https://${GITHUB_TOKEN}@github.com/Everloster/EverAgent.git
 git ls-remote origin HEAD          # 验权，失败则停止
-git config user.name  "Claude MiniMax-M2.7"
+# 提交前需将 <在此填入当前模型名称> 替换为实际模型名称
+git config user.name  "<在此填入当前模型名称>"
 git config user.email "noreply@everagent.ai"
 ```
 

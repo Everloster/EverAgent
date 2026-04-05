@@ -13,18 +13,18 @@ agent_manifest:
   role: "心理学实验精读·行为科学知识报告"
   project: "psychology-learning"
   capability_level: task_executor
-  git_identity:
-    name: "Claude MiniMax-M2.7"
-    email: "noreply@everagent.ai"
 ```
+
+> ⚠️ **git 身份设置**：执行 git 操作前，需在全局 AGENTS.md 中查看当前模型名称并配置：
+> ```bash
+> git config user.name  "<从全局 AGENTS.md 获取当前模型名称>"
+> git config user.email "noreply@everagent.ai"
+> ```
 
 ### 启动初始化
 
 ```bash
-# 1. 设置 git 身份
-git config user.name  "Claude MiniMax-M2.7"
-git config user.email "noreply@everagent.ai"
-
+# 1. 设置 git 身份（从全局 AGENTS.md 获取当前模型名称）
 # 2. 必读文件（按顺序）
 # - psychology-learning/CONTEXT.md                      （已有报告清单 + 防幻觉边界）
 # - psychology-learning/skills/paper_analysis/SKILL.md  （心理学实验7步分析法）
@@ -157,9 +157,7 @@ knowledge_report: {主题}_{全景图|图谱|...}.md
 ## §5 Commit Protocol（提交规范）
 
 ```bash
-git config user.name  "Claude MiniMax-M2.7"
-git config user.email "noreply@everagent.ai"
-
+# 提交前需先配置 git 身份（从全局 AGENTS.md 获取当前模型名称）
 git add reports/ CONTEXT.md docs/LEARNING_PROJECTS_TASK_BOARD.md
 git commit -m "[task-execution] psychology-learning: {报告标题简述}
 
