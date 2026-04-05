@@ -36,3 +36,8 @@ venv/
 *.swp
 *.swo
 *~
+
+# Agent runtime files (not committed)
+*/.agent-lock
+*/.agent-state
+*/.project-task-state

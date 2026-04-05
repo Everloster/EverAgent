@@ -49,12 +49,16 @@ agent_manifest:
 ### 2.1 领取任务
 
 ```
+0. 运行 python3 scripts/execution_validator.py --mode=input --task-id=TXXX
+   → 校验失败则停止，不 claim 任务
 1. 读取 docs/LEARNING_PROJECTS_TASK_BOARD.md
 2. 选取 project: psychology-learning, status: open 的任务
 3. 将 status 改为 claimed，填写 claimed_by: PsycheAgent，claimed_at: 当前时间
 4. 立即 commit push（防并发冲突）
 5. 将 status 改为 in_progress，填写 started_at
 ```
+
+> 校验脚本参考：docs/EXECUTION_SCHEMA.md
 
 ### 2.2 执行 paper_analysis（心理学实验/论文）
 
@@ -129,6 +133,16 @@ knowledge_report: {主题}_{全景图|图谱|...}.md
 
 1. `CONTEXT.md` — 在"已有报告"列表追加新报告条目
 2. `docs/LEARNING_PROJECTS_TASK_BOARD.md` — task status → done，填写 done_at，追加到已完成列表
+
+### 完成后必须校验
+
+```
+[commit 前必须运行]
+python3 scripts/execution_validator.py --mode=output --task-id=TXXX --project=psychology-learning
+   → 校验失败则不 commit，修复后重试
+```
+
+> 校验脚本参考：docs/EXECUTION_SCHEMA.md
 
 ---
 

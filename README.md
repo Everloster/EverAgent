@@ -1,7 +1,7 @@
 # 🧠 EverAgent — 个人学习与研究工作台
 
 > 用 AI Agent 驱动的个人知识体系，覆盖 AI 技术、计算机科学、哲学思想、心理学、生命科学与开源生态
-> 创建日期：2026-03-23 | 最后更新：2026-04-01（项目优化任务1：同步内容量 + frontmatter合规 + 防幻觉区清理）
+> 创建日期：2026-03-23 | 最后更新：2026-04-05（多代理协作规范化：校验框架 + Task Board视图化 + 决策边界 + 新项目自动化）
 
 > **AI/Agent 使用本仓库？** → 请直接阅读 [AGENTS.md](./AGENTS.md)，本文件供人类阅读。
 
@@ -34,7 +34,29 @@ EverAgent 是以 AI Agent 为核心工具的个人知识库，通过系统化学
 运行方式：
 
 ```bash
+# 全局校验（pre-commit）
 python3 scripts/validate_workspace.py
+
+# 任务执行校验（Agent 在领取/完成任务时调用）
+python3 scripts/execution_validator.py --mode=input --task-id=T001    # 领取前
+python3 scripts/execution_validator.py --mode=output --task-id=T001   # 完成后
+```
+
+### Task Board 汇总
+
+Task Board 视图由 `scripts/task_board_aggregator.py` 自动生成：
+
+```bash
+python3 scripts/task_board_aggregator.py --dry-run   # 预览
+python3 scripts/task_board_aggregator.py              # 生成视图
+```
+
+### 新项目创建
+
+新增子项目可通过自动化脚本创建：
+
+```bash
+python3 scripts/create_project.py --project={name} --domain={domain} --agent-name={AgentName}
 ```
 
 ## 整体学习理念

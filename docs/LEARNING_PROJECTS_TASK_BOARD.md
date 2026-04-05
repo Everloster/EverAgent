@@ -2,7 +2,9 @@
 
 > 目的：为 Agent 提供可直接领取的跨项目结构化任务队列
 > 适用范围：`ai-learning` / `cs-learning` / `philosophy-learning` / `psychology-learning` / `biology-learning`
-> 更新日期：**2026-04-05**（v4: T001/T002 完成，并发建议更新）
+> **本文件为只读视图**，由 `scripts/task_board_aggregator.py` 自动生成
+> 如需编辑任务，请编辑对应项目的 `.project-task-state` 文件
+> 更新日期：**2026-04-05**（v5: 改为自动生成视图）
 
 ---
 

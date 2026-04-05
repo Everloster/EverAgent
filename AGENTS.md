@@ -97,6 +97,27 @@ open → claimed → in_progress → done
 - 每次有新任务完成，同步追加到"已完成"列表
 - 禁止删除任何 done 状态的历史记录
 
+### 项目级任务状态文件（过渡阶段）
+
+**最终目标**：各项目使用 `{project}/.project-task-state` 管理自身任务状态，Task Board 作为只读视图。
+
+**当前状态**：过渡阶段，Task Board 仍为源文件，但即将迁移到分布式状态管理。
+
+**文件格式**（`.project-task-state`）：
+```yaml
+- id: T001
+  project: ai-learning
+  type: paper_analysis
+  target: "VideoMAE (2022)"
+  priority: P1
+  status: done
+  claimed_by: NeuronAgent
+  claimed_at: 2026-04-04T10:00:00+08:00
+  done_at: 2026-04-04T12:00:00+08:00
+```
+
+> 参考：`scripts/task_board_aggregator.py`（Task Board 汇总视图生成器）
+
 ---
 
 ## §4 Dispatch Protocol（调度协议）
@@ -108,15 +129,39 @@ EverAgent 接收用户指令后的决策流：
 2. 检查 Task Board：目标任务是否已 claimed / in_progress？
 3. 若无冲突：通知用户 "启动 {AgentName}，协议：{project}/AGENTS.md"
 4. Subagent 读取自身 AGENTS.md，自包含执行
-5. 执行完成后 Subagent 通过 commit message 广播状态
-6. EverAgent 读取 git log，更新 Task Board
+5. 执行前运行 python3 scripts/execution_validator.py --mode=input（领取校验）
+6. 执行完成后 Subagent 通过 commit message 广播状态
+7. 执行后运行 python3 scripts/execution_validator.py --mode=output（完成校验）
+8. EverAgent 读取 git log，更新 Task Board
 ```
+
+> 参考：docs/EXECUTION_SCHEMA.md（输入/输出标准化协议）
 
 ### 并发约束
 
 - 同一子项目同一时间只允许一个 Subagent 写入
 - 不同子项目可并行，推荐最多同时 3 个
 - 先 push 者为准；后者须 rebase 或重选任务
+
+### Project Lock（防并发写入）
+
+**文件**：`{project}/.agent-lock`（不提交到 git）
+
+**Lock 内容**：
+```
+agent: NeuronAgent
+task_id: T001
+claimed_at: 2026-04-05T10:00:00+08:00
+git_commit_sha: abc123...
+```
+
+**协议**：
+1. 领取任务前：检查 `.agent-lock` 是否存在
+2. 若存在且未过期（< 72h）：跳过此项目，选其他任务
+3. 若不存在或已过期：创建 lock 文件，然后 claim 任务
+4. commit push 完成后：删除 lock 文件
+
+> 作用：比 git push 更早检测并发冲突，避免无效 commit
 
 ### 冲突仲裁
 
