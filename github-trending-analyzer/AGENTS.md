@@ -14,18 +14,18 @@ agent_manifest:
   role: "GitHub 开源热点追踪·Repo 深度研究·趋势洞察知识库"
   project: "github-trending-analyzer"
   capability_level: task_executor
-  git_identity:
-    name: "Claude MiniMax-M2.7"
-    email: "noreply@everagent.ai"
 ```
+
+> ⚠️ **git 身份设置**：执行 git 操作前，需在全局 AGENTS.md 中查看当前模型名称并配置：
+> ```bash
+> git config user.name  "<从全局 AGENTS.md 获取当前模型名称>"
+> git config user.email "noreply@everagent.ai"
+> ```
 
 ### 启动初始化
 
 ```bash
-# 1. 设置 git 身份
-git config user.name  "Claude MiniMax-M2.7"
-git config user.email "noreply@everagent.ai"
-
+# 1. 设置 git 身份（从全局 AGENTS.md 获取当前模型名称）
 # 2. 必读文件（按顺序）
 # - github-trending-analyzer/CONTEXT.md          （知识库现状 + 防幻觉边界）
 # - github-trending-analyzer/TASK_PROTOCOL.md    （完整任务执行协议，执行前必读）
@@ -162,9 +162,7 @@ Repo 报告： github-trending-reports/research_{owner}_{repo}.md
 ## §5 Commit Protocol（提交规范）
 
 ```bash
-git config user.name  "Claude MiniMax-M2.7"
-git config user.email "noreply@everagent.ai"
-
+# 提交前需先配置 git 身份（从全局 AGENTS.md 获取当前模型名称）
 git add github-trending-reports/ knowledge/ CONTEXT.md
 git commit -m "[task-execution] github-trending-analyzer: {任务类型} {描述}
 
