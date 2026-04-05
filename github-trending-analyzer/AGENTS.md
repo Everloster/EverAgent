@@ -131,6 +131,16 @@ Repo 报告： github-trending-reports/research_{owner}_{repo}.md
 2. `knowledge/INDEX.md` — 更新统计数字（TT-3 执行）
 3. `CONTEXT.md` — 更新"知识库现状"数字（TT-3 执行）
 
+### 完成后必须校验
+
+```
+[commit 前必须运行]
+python3 scripts/execution_validator.py --mode=output --project=github-trending-analyzer
+   → 校验失败则不 commit，修复后重试
+```
+
+> 校验脚本参考：docs/EXECUTION_SCHEMA.md（TrendAgent 同时使用 scripts/validate_reports.py 的 8 项检查）
+
 ---
 
 ## §4 Write Permissions（写入权限）
