@@ -246,6 +246,179 @@ LFS_STORAGE_WARN_MB = 700
 LFS_STORAGE_ERROR_MB = 950
 
 
+def validate_report_structure() -> list[ValidationIssue]:
+    """Check that reports contain sufficient structural depth (headings count)."""
+    issues: list[ValidationIssue] = []
+    heading_pattern = re.compile(r"^#{2,3}\s+\S", re.MULTILINE)
+
+    for path in iter_report_files():
+        relative = path.relative_to(ROOT)
+        text = path.read_text(encoding="utf-8")
+        fm = parse_frontmatter(text)
+        if fm is None:
+            continue
+
+        report_type = fm.get("report_type", "")
+        headings = heading_pattern.findall(text)
+
+        if report_type in ("paper_analysis", "text_analysis"):
+            if len(headings) < 4:
+                issues.append(
+                    ValidationIssue(
+                        "WARN",
+                        relative,
+                        f"paper_analysis has only {len(headings)} sections (expected ≥ 4); "
+                        "may be missing required 7-step structure",
+                    )
+                )
+        elif report_type in ("knowledge_report", "concept_report"):
+            # 人物图谱、比较研究、深度研究报告等使用自定义结构，不要求5层
+            _SKIP_LAYER_CHECK = ("图谱", "比较", "研究报告", "timeline", "roadmap")
+            if any(kw in path.stem for kw in _SKIP_LAYER_CHECK):
+                continue
+            layer_count = len(re.findall(r"层次[一二三四五]", text))
+            if layer_count < 3:
+                issues.append(
+                    ValidationIssue(
+                        "WARN",
+                        relative,
+                        f"{report_type} has {layer_count} 层次 sections (expected ≥ 3); "
+                        "may be missing required 5-layer structure",
+                    )
+                )
+
+    return issues
+
+
+# Pattern: backtick-wrapped stems that look like report identifiers
+# Matches things like `01_transformer_2017`, `31_megascale_2024`, `self_attention_深度解析`
+_CONTEXT_REF_PATTERN = re.compile(r"`([a-zA-Z0-9_\-\u4e00-\u9fff]{4,})`")
+
+
+def validate_context_consistency() -> list[ValidationIssue]:
+    """Cross-check CONTEXT.md report listings against actual files on disk."""
+    issues: list[ValidationIssue] = []
+
+    for project_name, project_dir in LEARNING_PROJECTS.items():
+        context_path = project_dir / "CONTEXT.md"
+        reports_dir = project_dir / "reports"
+        if not context_path.exists() or not reports_dir.exists():
+            continue
+
+        context_text = context_path.read_text(encoding="utf-8")
+        relative_context = context_path.relative_to(ROOT)
+
+        # Collect all report file stems on disk
+        actual_stems: set[str] = {
+            p.stem for p in reports_dir.rglob("*.md") if p.is_file()
+        }
+
+        # Extract candidate references from CONTEXT.md (backtick-wrapped tokens)
+        raw_refs = _CONTEXT_REF_PATTERN.findall(context_text)
+        # Keep only refs that look like report stems (contain underscore)
+        referenced_stems: set[str] = {r for r in raw_refs if "_" in r}
+
+        # Referenced in CONTEXT.md but missing on disk
+        for stem in sorted(referenced_stems):
+            if stem not in actual_stems:
+                issues.append(
+                    ValidationIssue(
+                        "WARN",
+                        relative_context,
+                        f"CONTEXT.md references `{stem}` but no matching report file found on disk",
+                    )
+                )
+
+        # On disk but not mentioned in CONTEXT.md
+        for stem in sorted(actual_stems):
+            if stem not in referenced_stems:
+                # Only warn for numbered reports (e.g. 01_xxx); skip index/template files
+                if re.match(r"^\d{2}_", stem):
+                    issues.append(
+                        ValidationIssue(
+                            "WARN",
+                            relative_context,
+                            f"report `{stem}` exists on disk but is not listed in CONTEXT.md",
+                        )
+                    )
+
+    return issues
+
+
+def validate_task_board() -> list[ValidationIssue]:
+    """Check Task Board task entries for required field consistency."""
+    issues: list[ValidationIssue] = []
+    task_board = ROOT / "docs" / "LEARNING_PROJECTS_TASK_BOARD.md"
+    if not task_board.exists():
+        return issues
+
+    text = task_board.read_text(encoding="utf-8")
+    relative = task_board.relative_to(ROOT)
+
+    # Extract YAML code blocks
+    yaml_blocks = re.findall(r"```yaml\n(.*?)```", text, re.DOTALL)
+
+    for block in yaml_blocks:
+        # Split on task boundaries (lines starting with '- id:')
+        chunks = re.split(r"\n(?=- id:)", block.strip())
+        for chunk in chunks:
+            if not chunk.strip():
+                continue
+
+            task: dict[str, str] = {}
+            for line in chunk.splitlines():
+                line = line.strip().lstrip("- ")
+                if ":" in line:
+                    key, _, value = line.partition(":")
+                    task[key.strip()] = value.strip().strip('"')
+
+            if "id" not in task:
+                continue
+
+            task_id = task.get("id", "?")
+            status = task.get("status", "")
+
+            if status == "claimed":
+                for field in ("claimed_by", "claimed_at"):
+                    if not task.get(field) or task[field] in ("null", ""):
+                        issues.append(
+                            ValidationIssue(
+                                "WARN",
+                                relative,
+                                f"task {task_id}: status=claimed but `{field}` is null",
+                            )
+                        )
+            elif status == "in_progress":
+                if not task.get("started_at") or task["started_at"] in ("null", ""):
+                    issues.append(
+                        ValidationIssue(
+                            "WARN",
+                            relative,
+                            f"task {task_id}: status=in_progress but `started_at` is null",
+                        )
+                    )
+            elif status == "done":
+                if not task.get("done_at") or task["done_at"] in ("null", ""):
+                    issues.append(
+                        ValidationIssue(
+                            "WARN",
+                            relative,
+                            f"task {task_id}: status=done but `done_at` is null",
+                        )
+                    )
+            elif status == "failed":
+                if not task.get("failed_reason") or task["failed_reason"] in ("null", ""):
+                    issues.append(
+                        ValidationIssue(
+                            "WARN",
+                            relative,
+                            f"task {task_id}: status=failed but `failed_reason` is null",
+                        )
+                    )
+
+    return issues
+
+
 def validate_lfs_budget() -> list[ValidationIssue]:
     """Check total size of LFS-tracked files against GitHub free tier budget."""
     issues: list[ValidationIssue] = []
@@ -299,6 +472,9 @@ def main() -> int:
     issues.extend(validate_repository_hygiene())
     issues.extend(validate_text_encoding())
     issues.extend(validate_report_naming())
+    issues.extend(validate_report_structure())
+    issues.extend(validate_context_consistency())
+    issues.extend(validate_task_board())
     issues.extend(validate_lfs_budget())
     issues.extend(validate_git_locks())
 
