@@ -1,6 +1,6 @@
 # philosophy-learning — Project Context
 
-> **Agent 协议**：操作本项目前须完成 [AGENTS.md](../AGENTS.md) §0 初始化。任务3（执行任务）完成后须按 §4 自动提交推送。
+> **Agent 协议**：操作本项目前须读取 [AGENTS.md](./AGENTS.md)（SocratesAgent 自包含协议）。执行完成后按协议 §5 提交推送。
 
 **领域**：西方哲学史·经典文本精读·概念辨析
 **三维度**：思想深度 × 历史叙事 × 当代相关性
