@@ -2,7 +2,7 @@
 
 > 目的：为 Agent 提供可直接领取的跨项目结构化任务队列
 > 适用范围：`ai-learning` / `cs-learning` / `philosophy-learning` / `psychology-learning` / `biology-learning`
-> 更新日期：**2026-04-01**（v3: 任务队列结构化，Claude Opus 4.6）
+> 更新日期：**2026-04-05**（v4: T001/T002 完成，并发建议更新）
 
 ---
 
@@ -174,9 +174,9 @@
 
 - **推荐最多同时开 3 个学习项目**, 4 个以上会有 CONTEXT 竞写风险。
 - 推荐组合（当前时间点）：
-  - Agent A：`ai-learning`（T001 VideoMAE 或 T002 MegaScale）
-  - Agent B：`cs-learning`（T003 DNS 或 T004 分布式系统知识图谱）
-  - Agent C：`philosophy-learning`（T005 黑格尔） 或 `psychology-learning`（T008 认知偏差）
+  - Agent A：`cs-learning`（T003 DNS 或 T004 分布式系统知识图谱）
+  - Agent B：`philosophy-learning`（T005 黑格尔）
+  - Agent C：`ai-learning`（T006 MoE 深度解析） 或 `psychology-learning`（T008 认知偏差）
 
 ---
 
