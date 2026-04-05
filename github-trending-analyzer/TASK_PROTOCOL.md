@@ -1,5 +1,5 @@
 ---
-version: "1.0"
+version: "1.1"
 updated: "2026-04-05"
 ---
 
@@ -17,6 +17,7 @@ updated: "2026-04-05"
 | [TT-1 trending_report](#tt-1-trending_report) | 生成日/周/月 trending 报告 | github-trending-analyzer + github-deep-research | 汇总报告 + N 份 repo 报告 |
 | [TT-2 repo_research](#tt-2-repo_research) | 对单个 repo 深度研究 | github-deep-research | 1 份 repo 报告 |
 | [TT-3 index_sync](#tt-3-index_sync) | 批量操作后同步知识索引 | 无（纯文件维护） | 更新 3 处索引文件 |
+| [TT-4 validate_all](#tt-4-validate_all) | 验证全部报告质量 + 索引一致性 | scripts/validate_reports.py | 验证报告（stdout） |
 
 ---
 
@@ -73,17 +74,25 @@ github-trending-reports/research_{owner}_{repo}.md
 
 **Step 4 — 验证每份报告**（汇总前必须完成）
 
-每份报告须满足：
-```
-✅ 7 个章节均存在（项目概述/基本信息/技术分析/社区活跃度/发展趋势/竞品对比/总结评价）
-✅ 总行数 ≥ 150
-✅ 基本信息表格含 Stars/Forks/语言/协议/时间（均为精确值，禁止"17,000+"等模糊写法）
-✅ 竞品对比表格 ≥ 2 个竞品
-✅ 页脚格式：*报告生成时间: YYYY-MM-DD HH:MM* / *研究方法: github-deep-research 多轮深度研究*
-✅ 无宿主机路径（/tmp/、/sessions/、/mnt/ 等）
+对每个新生成的报告运行验证器：
+```bash
+python3 scripts/validate_reports.py {owner}/{repo}
 ```
 
-未通过验证 → 记入 `MISSING_REPOS` 列表（将在汇总中标记 ⚠️）。
+验证器执行以下 8 项检查，全部通过（exit 0）才算合格：
+
+| 检查 ID | 规则 |
+|---------|------|
+| V-NAME   | 文件名 `research_{owner}_{repo}.md`，禁止日期后缀 |
+| V-STRUCT | 7 个中文章节均存在（项目概述/基本信息/技术分析/社区活跃度/发展趋势/竞品对比/总结评价） |
+| V-LEN    | 总行数 ≥ 150 |
+| V-PREC   | 无模糊数值（禁止"17,000+"等大数字后跟"+"的写法） |
+| V-COMP   | 竞品对比表格数据行 ≥ 2 |
+| V-FOOTER | 页脚含 `*报告生成时间: YYYY-MM-DD*` 和 `*研究方法: github-deep-research 多轮深度研究*` |
+| V-PATH   | 无宿主机路径（/tmp/、/sessions/、/mnt/、/Users/、/home/） |
+| V-LANG   | 无英文模板标记（Executive Summary、Confidence Assessment 等） |
+
+未通过验证 → 修复后重新验证，不得跳过。记入 `MISSING_REPOS` 列表（将在汇总中标记 ⚠️）。
 
 **Step 5 — 生成汇总报告**
 ```bash
@@ -151,7 +160,12 @@ python3 github-trending-analyzer/trending_fetcher.py check {owner}/{repo}
 
 路径：`github-trending-reports/research_{owner}_{repo}.md`
 
-格式验收标准同 TT-1 Step 4。
+写入后立即运行验证器，exit 非 0 则修复：
+```bash
+python3 scripts/validate_reports.py {owner}/{repo}
+```
+
+验证标准同 TT-1 Step 4（8 项检查）。
 
 **Step 4 — 同步索引**（完成 TT-3）
 
@@ -197,6 +211,42 @@ python3 github-trending-analyzer/trending_fetcher.py check {owner}/{repo}
 
 ---
 
+---
+
+## TT-4: validate_all
+
+### 触发
+- 手动检查全部报告质量
+- 发现疑似不合规报告时
+- 批量修复后的回归验证
+
+### 执行步骤
+
+**Step 1 — 验证全部报告**
+```bash
+python3 scripts/validate_reports.py --fail-only --index
+```
+
+**Step 2 — 查看 JSON 详情**（可选，用于批量修复）
+```bash
+python3 scripts/validate_reports.py --json --index > /tmp/validation_results.json
+```
+
+**Step 3 — 针对失败报告修复并复验**
+```bash
+# 修复单个报告后
+python3 scripts/validate_reports.py {owner}/{repo}
+```
+
+### 退出码
+| 退出码 | 含义 |
+|--------|------|
+| 0 | 所有检查通过 |
+| 1 | 存在失败检查（详见输出） |
+| 2 | 使用错误（文件不存在等） |
+
+---
+
 ## 通用约束
 
 ### 写入限制
@@ -208,6 +258,7 @@ python3 github-trending-analyzer/trending_fetcher.py check {owner}/{repo}
 | `CONTEXT.md` | ✅ 仅更新数字 |
 | `github-trending-analyzer/` | ❌ 只读 |
 | `github-deep-research/` | ❌ 只读 |
+| `scripts/validate_reports.py` | ❌ 只读 |
 | `SKILL.md` / `TASK_PROTOCOL.md` | ❌ 只读 |
 
 ### 数据精度
