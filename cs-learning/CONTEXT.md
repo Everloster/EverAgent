@@ -1,6 +1,6 @@
 # cs-learning — Project Context
 
-> **Agent 协议**：操作本项目前须完成 [AGENTS.md](../AGENTS.md) §0 初始化。任务3（执行任务）完成后须按 §4 自动提交推送。
+> **Agent 协议**：操作本项目前须读取 [AGENTS.md](./AGENTS.md)（ByteAgent 自包含协议）。执行完成后按协议 §5 提交推送。
 
 **领域**：计算机科学基础·系统·算法·分布式
 **三维度**：理论深度 × 系统演化 × 工程实践
