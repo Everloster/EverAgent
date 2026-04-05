@@ -22,8 +22,8 @@
 - **报告质量验证**：`scripts/validate_reports.py` 执行 8 项检查（命名/结构/长度/精度/竞品/页脚/路径/语言），TT-1/TT-2 每次写入后必须通过
 
 ## 知识库现状（`github-trending-reports/`）
-- **汇总报告**：daily ×6、weekly ×1、monthly ×2（共 9 篇）
-- **Repo 深度报告**：64 篇（AI/ML、DevTools、Infra、Agent 等类别）
+- **汇总报告**：daily ×7、weekly ×1、monthly ×2（共 10 篇）
+- **Repo 深度报告**：72 篇（AI/ML、DevTools、Infra、Agent 等类别）
 - 完整索引 → [`knowledge/reports_index.md`](./knowledge/reports_index.md)
 
 ## 离线知识库

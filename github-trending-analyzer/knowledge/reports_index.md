@@ -13,6 +13,7 @@
 | all-weekly-summary-2026-03-17.md | Weekly | 2026-03-17 |
 | all-monthly-summary-2026-03-17.md | Monthly | 2026-03-17 |
 | all-monthly-summary-2026-03-18.md | Monthly | 2026-03-18 |
+| all-daily-summary-2026-04-05.md | Daily | 2026-04-05 |
 
 ## Repository Deep Reports
 
@@ -28,6 +29,8 @@
 - aquasecurity/trivy
 - AstrBotDevs/AstrBot
 - BerriAI/litellm
+- Blaizzy/mlx-vlm
+- block/goose
 - browser-use/browser-use
 - bytedance/deer-flow
 - clockworklabs/SpacetimeDB
@@ -57,9 +60,11 @@
 - moeru-ai/airi
 - msitarzewski/agency-agents
 - mvanhorn/last30days-skill
+- microsoft/agent-framework
 - NousResearch/hermes-agent
 - obra/superpowers
 - openclaw/openclaw
+- onyx-dot-app/onyx
 - p-e-w/heretic
 - pascalorg/editor
 - pbakaus/impeccable
@@ -67,10 +72,13 @@
 - ruvnet/ruflo
 - ruvnet/RuView
 - shareAI-lab/learn-claude-code
+- sherlock-project/sherlock
+- siddharthvaddem/openscreen
 - sickn33/antigravity-awesome-skills
 - supermemoryai/supermemory
 - systemd/systemd
 - TauricResearch/TradingAgents
+- telegramdesktop/tdesktop
 - tinygrad/tinygrad
 - twentyhq/twenty
 - Vaibhavs10/insanely-fast-whisper
@@ -80,3 +88,4 @@
 - volcengine/OpenViking
 - vxcontrol/pentagi
 - Yeachan-Heo/oh-my-claudecode
+- Yeachan-Heo/oh-my-codex
