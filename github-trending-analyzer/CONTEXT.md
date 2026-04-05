@@ -13,11 +13,13 @@
 | TT-1 trending_report | 生成日/周/月 trending 汇总报告 |
 | TT-2 repo_research | 对单个 repo 深度研究 |
 | TT-3 index_sync | 同步知识索引（每次 TT-1/TT-2 后必执行） |
+| TT-4 validate_all | 验证全部报告质量（`python3 scripts/validate_reports.py --fail-only --index`） |
 
 ## 工具能力
 - 按日/周/月抓取 GitHub Trending，对**每个 repo 完成深度分析后**再生成汇总报告
 - 对单个 Repo 多轮深度研究（GitHub API + 网络搜索），使用 `github-deep-research` 技能
 - 输出含架构分析·竞品对比·Mermaid 图表的结构化报告
+- **报告质量验证**：`scripts/validate_reports.py` 执行 8 项检查（命名/结构/长度/精度/竞品/页脚/路径/语言），TT-1/TT-2 每次写入后必须通过
 
 ## 知识库现状（`github-trending-reports/`）
 - **汇总报告**：daily ×6、weekly ×1、monthly ×2（共 9 篇）
