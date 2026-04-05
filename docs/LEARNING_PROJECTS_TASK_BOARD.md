@@ -55,7 +55,7 @@
   claimed_by: MiniMax-M2.7
   claimed_at: 2026-04-04T10:00:00+08:00
   started_at: 2026-04-04T10:30:00+08:00
-  done_at: 2026-04-04T12:00:00+08:00
+  done_at: 2026-04-05T15:47:00+08:00
 
 - id: T002
   project: ai-learning
@@ -67,7 +67,7 @@
   claimed_by: MiniMax-M2.7
   claimed_at: 2026-04-04T10:00:00+08:00
   started_at: 2026-04-04T10:30:00+08:00
-  done_at: 2026-04-04T14:00:00+08:00
+  done_at: 2026-04-05T15:47:00+08:00
 
 - id: T003
   project: cs-learning
@@ -79,7 +79,7 @@
   claimed_by: MiniMax-M2.7
   claimed_at: 2026-04-05T10:00:00+08:00
   started_at: 2026-04-05T10:30:00+08:00
-  done_at: 2026-04-05T15:40:00+08:00
+  done_at: 2026-04-05T15:47:00+08:00
 
 - id: T004
   project: cs-learning
@@ -91,7 +91,7 @@
   claimed_by: MiniMax-M2.7
   claimed_at: 2026-04-05T10:00:00+08:00
   started_at: 2026-04-05T10:30:00+08:00
-  done_at: 2026-04-05T15:40:00+08:00
+  done_at: 2026-04-05T15:47:00+08:00
 
 - id: T005
   project: philosophy-learning
@@ -103,7 +103,7 @@
   claimed_by: MiniMax-M2.7
   claimed_at: 2026-04-05T10:00:00+08:00
   started_at: 2026-04-05T10:30:00+08:00
-  done_at: 2026-04-05T15:40:00+08:00
+  done_at: 2026-04-05T15:47:00+08:00
 
 # P2: 第二批推荐
 - id: T006
@@ -136,7 +136,7 @@
   claimed_by: MiniMax-M2.7
   claimed_at: 2026-04-05T10:00:00+08:00
   started_at: 2026-04-05T10:30:00+08:00
-  done_at: 2026-04-05T15:40:00+08:00
+  done_at: 2026-04-05T15:47:00+08:00
 
 - id: T009
   project: biology-learning
