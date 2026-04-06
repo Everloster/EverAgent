@@ -112,9 +112,11 @@
   target: "MoE (混合专家) 深度解析"
   value: "GPT-4/Mixtral 架构基础; 已有精读(#21)可支撑深度报告"
   priority: P2
-  status: open
-  claimed_by: null
-  claimed_at: null
+  status: done
+  claimed_by: claude-sonnet-4-6
+  claimed_at: 2026-04-06T00:00:00+08:00
+  started_at: 2026-04-06T00:00:00+08:00
+  done_at: 2026-04-06T00:00:00+08:00
 
 - id: T007
   project: philosophy-learning
@@ -194,8 +196,8 @@
 
 ## 已完成, 不应重复领取
 
-### ai-learning (26篇精读 + 7篇知识报告)
-Transformer、BERT、GPT-3、InstructGPT、ResNet、GAN、DDPM、AlexNet、Scaling Laws、Chain-of-Thought、LoRA、ViT、CLIP、LLaMA、Swin Transformer、MAE、DINOv2、FlashAttention、LLaMA-2、Mistral 7B、Word2Vec、Tulu3、MoE #21 (2017)、ZeRO #25 (2019)、VideoMAE #36 (2022)、MegaScale #31 (2024)；知识报告：Self-Attention、RLHF、Scaling Laws、LoRA、AI关键人物图谱、DINOv2深度解析、KV Cache
+### ai-learning (26篇精读 + 8篇知识报告)
+Transformer、BERT、GPT-3、InstructGPT、ResNet、GAN、DDPM、AlexNet、Scaling Laws、Chain-of-Thought、LoRA、ViT、CLIP、LLaMA、Swin Transformer、MAE、DINOv2、FlashAttention、LLaMA-2、Mistral 7B、Word2Vec、Tulu3、MoE #21 (2017)、ZeRO #25 (2019)、VideoMAE #36 (2022)、MegaScale #31 (2024)；知识报告：Self-Attention、RLHF、Scaling Laws、LoRA、AI关键人物图谱、DINOv2深度解析、KV Cache、MoE混合专家深度解析
 
 ### cs-learning (20篇精读 + 2篇知识报告)
 Turing (1950)、Shannon (1948)、MapReduce (2004)、Bigtable (2006)、Lamport Clocks (1978)、GFS (2003)、Dynamo (2007)、Raft (2014)、Spanner (2012)、Paxos (2001)、Kafka (2011)、UNIX (1974)、ZooKeeper (2010)、FFS (1984)、Byzantine Generals (1982)、CSP (1978)、TCP/IP (1974)、Chubby (2006)、Chord (2001)、DNS RFC 1034/1035 (1987)；知识报告：CS关键人物图谱、分布式系统知识图谱

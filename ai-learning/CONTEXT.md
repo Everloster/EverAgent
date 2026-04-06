@@ -41,6 +41,7 @@
 - `Scaling_Laws_深度解析` — Kaplan 2020 幂律关系·Chinchilla 修正·涌现能力（2026-03-25）
 - `LoRA_深度解析` — 低秩适应原理·QLoRA·DoRA变体·代码实现·多任务部署（2026-03-25）
 - `KV_Cache_深度解析_20260330` — 键值缓存原理·GQA/MQA变体·PagedAttention·显存计算·PyTorch代码实现·SnapKV等前沿压缩方案（2026-03-30）
+- `MoE_混合专家_深度解析_20260406` — MoE条件计算·Noisy Top-K Gating·负载均衡双损失·Switch/Mixtral/DeepSeek变体全景·PyTorch实现·Scaling关系（2026-04-06）
 
 ## 离线知识库
 → [`knowledge/INDEX.md`](./knowledge/INDEX.md)（子话题菜单，离线模型从此进入）
