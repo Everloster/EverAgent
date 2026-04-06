@@ -51,7 +51,12 @@ Everything else (learning subprojects) -> Analysis Mode (default)
 
 ## Git Identity & Commit Rules
 
-- **Identity guard**: Before every commit, verify `git config user.name` is non-empty. The name is dynamically set by the runtime model and does not need to match a predefined list.
+- **Identity guard**: Before the first commit in any session, set git author to the current model name and noreply email:
+  ```bash
+  git config user.name "Claude Sonnet 4.6"    # replace with actual running model name
+  git config user.email "noreply@anthropic.com"
+  ```
+  A pre-commit hook enforces this — commits from personal git identities (non-noreply emails) are blocked automatically.
 - **Commit format**: Follow AGENTS.md SS4 exactly:
   ```
   [{task-type}] {scope}: {description}

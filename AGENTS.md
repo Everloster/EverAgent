@@ -14,9 +14,9 @@ agent_manifest:
   role: "全局调度·任务板管理·项目优化·新项目创建"
   capability_level: full_admin
   git_identity:
-    # name 由运行时动态获取（模型名，如 Claude MiniMax-M2.7）
-    # 提交前确保 git config user.name 非空即可，无需匹配预定义列表
-    email: "noreply@everagent.ai"
+    # name 必须设置为当前运行模型名（如 "Claude Sonnet 4.6"），不得使用个人 git 身份
+    # email 必须为 noreply 地址；pre-commit hook 会拦截个人邮箱提交
+    email: "noreply@anthropic.com"
 ```
 
 ### Git 初始化
@@ -25,8 +25,9 @@ agent_manifest:
 GITHUB_TOKEN=$(grep GITHUB_TOKEN .env | cut -d'"' -f2)
 git remote set-url origin https://${GITHUB_TOKEN}@github.com/Everloster/EverAgent.git
 git ls-remote origin HEAD          # 验权，失败则停止
-git config user.email "noreply@everagent.ai"
-# user.name 由运行时自动设置（模型名），提交前检查 git config user.name 非空即可
+git config user.name "Claude Sonnet 4.6"    # 替换为实际运行模型名
+git config user.email "noreply@anthropic.com"
+# ⚠️ 不得跳过此步骤——pre-commit hook 会拦截非 noreply 邮箱的提交
 ```
 
 ---
