@@ -31,6 +31,7 @@
 **知识深度解析** (`reports/knowledge_reports/`)
 - `CS关键人物图谱` — 图灵→香农→Dijkstra→现代系统工程师的思想传承
 - `分布式系统知识图谱` — Storage/Consensus/Coordination/Messaging 四主线整合，19篇精读归纳
+- `DHT实战排查：从协议理论到工程故障诊断` — Kademlia/BEP-5协议·WireGuard+wstunnel多层隧道·分层故障诊断方法论·Bootstrap节点生态现状（2026-04-06）
 
 ## 离线知识库
 → [`knowledge/INDEX.md`](./knowledge/INDEX.md)
