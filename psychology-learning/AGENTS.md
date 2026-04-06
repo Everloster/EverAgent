@@ -109,6 +109,41 @@ updated_on: "YYYY-MM-DD"
 
 ---
 
+## §2.x Wiki Integration（摄入后必须执行）
+
+完成 experiment_analysis 或 knowledge_report 后，执行 wiki 更新：
+
+```
+1. 识别报告中涉及的心理学家、实验室、机构
+   → 更新或创建 wiki/entities/{name}.md
+
+2. 识别核心心理学概念（认知偏差、实验范式、理论）
+   → 更新或创建 wiki/concepts/{concept}.md
+
+3. 追加 wiki/log.md 一行：
+   ## [YYYY-MM-DD] ingest | {实验/论文标题}
+   - 新建报告：reports/...
+   - 更新 wiki 页面：{列出实际更新的文件}
+
+4. 更新 wiki/index.md：在对应分类下追加条目
+```
+
+**跨域连接提示**：心理学实验结论与 ai-learning（RLHF/人类反馈）、biology（睡眠与认知）的交叉连接记录在 `wiki/concepts/` 页面的 `## 跨域连接` 区块。
+
+**页面格式参考**：`llm-wiki-plan.md` §四
+
+**写入权限**：
+
+| 路径 | 权限 |
+|------|------|
+| `wiki/entities/` | ✅ 新建·追加更新 |
+| `wiki/concepts/` | ✅ 新建·追加更新 |
+| `wiki/syntheses/` | ✅ 新建（归档有价值的问答） |
+| `wiki/index.md` | ✅ 追加条目 |
+| `wiki/log.md` | ✅ 仅 append |
+
+---
+
 ## §3 Output Standards（输出规范）
 
 ### 文件命名

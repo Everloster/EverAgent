@@ -69,5 +69,36 @@ Everything else (learning subprojects) -> Analysis Mode (default)
 
 ---
 
+## Wiki Operations
+
+Every learning subproject has a `wiki/` layer (Karpathy persistent wiki pattern).
+
+**On every Ingest (after writing the report):**
+1. Update or create `wiki/entities/` pages for mentioned persons / orgs
+2. Update or create `wiki/concepts/` pages for core concepts introduced
+3. Append one line to `wiki/log.md`
+4. Update `wiki/index.md` (add new entries under the correct section)
+
+**On Query (multi-concept synthesis):**
+- Read `wiki/index.md` first to locate relevant pages
+- If the answer synthesizes ≥ 3 concepts, archive the result to `wiki/syntheses/`
+- Append one line to `wiki/log.md`
+
+**On Lint (every ~15 ingests):**
+- Check for orphan pages, stub pages, contradictions, missing cross-references
+- Report findings, then fix or flag
+
+**Page locations:**
+```
+{project}/wiki/
+├── index.md          ← content catalog, updated on every ingest
+├── log.md            ← append-only operation log
+├── entities/         ← persons, orgs, systems
+├── concepts/         ← core ideas and techniques
+└── syntheses/        ← archived query results
+```
+
+---
+
 ## Override Rule
 User instructions > this file > ~/.claude/CLAUDE.md (global).
