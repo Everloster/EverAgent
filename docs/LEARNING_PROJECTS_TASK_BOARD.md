@@ -124,9 +124,11 @@
   target: "罗尔斯《正义论》第一章"
   value: "当代政治哲学主线入口"
   priority: P2
-  status: open
-  claimed_by: null
-  claimed_at: null
+  status: done
+  claimed_by: claude-sonnet-4-6
+  claimed_at: 2026-04-06T00:00:00+08:00
+  started_at: 2026-04-06T00:00:00+08:00
+  done_at: 2026-04-06T00:00:00+08:00
 
 - id: T008
   project: psychology-learning
@@ -202,8 +204,8 @@ Transformer、BERT、GPT-3、InstructGPT、ResNet、GAN、DDPM、AlexNet、Scali
 ### cs-learning (20篇精读 + 2篇知识报告)
 Turing (1950)、Shannon (1948)、MapReduce (2004)、Bigtable (2006)、Lamport Clocks (1978)、GFS (2003)、Dynamo (2007)、Raft (2014)、Spanner (2012)、Paxos (2001)、Kafka (2011)、UNIX (1974)、ZooKeeper (2010)、FFS (1984)、Byzantine Generals (1982)、CSP (1978)、TCP/IP (1974)、Chubby (2006)、Chord (2001)、DNS RFC 1034/1035 (1987)；知识报告：CS关键人物图谱、分布式系统知识图谱
 
-### philosophy-learning (8篇文本分析 + 1篇论文分析 + 2篇概念报告)
-柏拉图《理想国》洞穴比喻、柏拉图《美诺》、笛卡尔《沉思录》、Gettier (1963)、康德《道德形而上学基础》、亚里士多德《尼各马可伦理学》、Nagel (1974) What Is It Like to Be a Bat?、黑格尔《精神现象学》导论 (1807)；概念报告：哲学关键人物图谱、知识跨时代比较
+### philosophy-learning (9篇文本分析 + 1篇论文分析 + 2篇概念报告)
+柏拉图《理想国》洞穴比喻、柏拉图《美诺》、笛卡尔《沉思录》、Gettier (1963)、康德《道德形而上学基础》、亚里士多德《尼各马可伦理学》、Nagel (1974) What Is It Like to Be a Bat?、黑格尔《精神现象学》导论 (1807)、罗尔斯《正义论》第一章 (1971)；概念报告：哲学关键人物图谱、知识跨时代比较
 
 ### psychology-learning (12篇精读 + 2篇知识报告)
 Miller (1956)、Milgram (1963)、Festinger & Carlsmith (1959)、Kahneman & Tversky (1979) 前景理论、Seligman & Maier (1967) 习得性无助、Darley & Latane (1968) 旁观者效应、Asch (1951) 从众实验、Zimbardo (1971) 斯坦福监狱实验、Rosenhan (1973)、Tversky & Kahneman (1974) 启发式与偏差、Bandura (1961) Bobo 娃娃实验、Harlow (1958) 恒河猴实验；知识报告：心理学关键人物图谱、认知偏差全景图
