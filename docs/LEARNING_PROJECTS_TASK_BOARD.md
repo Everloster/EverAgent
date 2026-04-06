@@ -148,9 +148,11 @@
   target: "Walker et al. (2017) Why We Sleep 核心论据综述"
   value: "睡眠科学方向高影响力节点"
   priority: P2
-  status: open
-  claimed_by: null
-  claimed_at: null
+  status: done
+  claimed_by: claude-sonnet-4-6
+  claimed_at: 2026-04-06T00:00:00+08:00
+  started_at: 2026-04-06T00:00:00+08:00
+  done_at: 2026-04-06T00:00:00+08:00
 
 # P3: 结构整理型
 - id: T010
@@ -210,8 +212,8 @@ Turing (1950)、Shannon (1948)、MapReduce (2004)、Bigtable (2006)、Lamport Cl
 ### psychology-learning (12篇精读 + 2篇知识报告)
 Miller (1956)、Milgram (1963)、Festinger & Carlsmith (1959)、Kahneman & Tversky (1979) 前景理论、Seligman & Maier (1967) 习得性无助、Darley & Latane (1968) 旁观者效应、Asch (1951) 从众实验、Zimbardo (1971) 斯坦福监狱实验、Rosenhan (1973)、Tversky & Kahneman (1974) 启发式与偏差、Bandura (1961) Bobo 娃娃实验、Harlow (1958) 恒河猴实验；知识报告：心理学关键人物图谱、认知偏差全景图
 
-### biology-learning (4篇精读 + 1篇概念报告)
-Social Jetlag and Obesity (2012)、Sleep GH 1988、GH Sleep Physiology 1996、Social Jetlag 代谢综合征 (2017)；概念报告：晚型人作息与力量训练
+### biology-learning (5篇精读 + 1篇概念报告)
+Social Jetlag and Obesity (2012)、Sleep GH 1988、GH Sleep Physiology 1996、Social Jetlag 代谢综合征 (2017)、Walker Why We Sleep 核心论据综述 (2017)；概念报告：晚型人作息与力量训练
 
 ---
 
