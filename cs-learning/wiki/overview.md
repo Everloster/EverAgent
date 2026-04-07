@@ -138,6 +138,7 @@ status: active
 **plan §8 短期成功标准**（cs-learning 维度）：
 - [x] cs-learning wiki/ 有 ≥ 10 个 entity 页面、≥ 8 个 concept 页面（已 18 concept + 13 entity）
 - [x] Phase 2.5 Lint pass #1 完成（4 类问题已修补）
+- [x] Phase 2.5 Lint pass #2 完成（回归验证 + 修补 information/computation 双节点孤岛）
 - [ ] 每次新摄入后 log.md 有记录（待新摄入触发）
 
 ---

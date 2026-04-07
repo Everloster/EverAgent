@@ -78,6 +78,8 @@ I(X; Y) = H(X) - H(X|Y) = H(Y) - H(Y|X)
 
 ## 被引用于
 - [computation_theory](./computation_theory.md)
+- [tcp_ip](./tcp_ip.md)
+- [distributed_messaging](./distributed_messaging.md)
 - entities/[shannon_claude](../entities/shannon_claude.md)
 
 ## 开放问题
