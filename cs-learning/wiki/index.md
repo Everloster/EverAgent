@@ -53,6 +53,13 @@
 | [tcp_ip.md](./concepts/tcp_ip.md) | 端到端论点 + 无状态网关 |
 | [distributed_messaging.md](./concepts/distributed_messaging.md) | Kafka 日志范式，Pull 模型 |
 | [unix_philosophy.md](./concepts/unix_philosophy.md) | 一切皆文件 + 小工具组合 |
+| [cap_theorem.md](./concepts/cap_theorem.md) | Brewer 1998 / Gilbert-Lynch 2002 / Brewer 2017 修正：CAP 不可能三角的精确含义 |
+| [two_phase_commit.md](./concepts/two_phase_commit.md) | 2PC 协议：协调者 + 参与者 + Prepare/Commit + 阻塞性，及与 Paxos 的协同 |
+| [consistent_hashing.md](./concepts/consistent_hashing.md) | 环 + 虚拟节点 + 局部再平衡（与 dht_chord 的路由维度正交） |
+| [linearizability_vs_serializability.md](./concepts/linearizability_vs_serializability.md) | 线性一致 / 顺序一致 / 可串行化 / 严格可串行化的精确边界 |
+| [dns.md](./concepts/dns.md) | 层级命名 + 委托授权 + 缓存 + 递归/迭代查询 |
+| [information_theory.md](./concepts/information_theory.md) | Shannon 信息熵 + 源编码 + 信道容量 + 互信息 |
+| [computation_theory.md](./concepts/computation_theory.md) | 图灵机 / Lambda 演算 / Church-Turing 论题 / 停机问题 |
 
 ---
 

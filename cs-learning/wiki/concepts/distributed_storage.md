@@ -49,6 +49,8 @@ status: active
 
 **哲学差异**：Dynamo 说"可用性优先，短暂不一致可接受"；Bigtable 说"系统保证正确性"。来源：分布式系统知识图谱 §1.2
 
+> ⚠️ **矛盾标记**：Dynamo（AP / 最终一致）与 Spanner（CP / 严格可串行化）代表"强一致 vs 最终一致"的根本分歧，详见 [overview §4](../overview.md#四技术分歧与未决问题) 与 [cap_theorem](./cap_theorem.md)。
+
 ### Spanner（2012）— 全球强一致
 **核心设计决策**：
 - **TrueTime API**：GPS + 原子钟，将时钟误差从 NTP 毫秒降到 ~1-7ms，返回时间区间
@@ -80,9 +82,27 @@ status: active
 - [分布式系统知识图谱](../../reports/knowledge_reports/分布式系统知识图谱.md)
 
 ## 跨域连接
-- consensus_paxos_raft：Spanner 的 Paxos Group / Bigtable 的 Chubby 协调
-- coordination_chubby_zk：GFS / Bigtable 都依赖 Chubby
-- lamport_clocks：Dynamo 向量时钟、Spanner TrueTime
+- [consensus_paxos_raft](./consensus_paxos_raft.md)：Spanner 的 Paxos Group / Bigtable 的 Chubby 协调
+- [coordination_chubby_zk](./coordination_chubby_zk.md)：GFS / Bigtable 都依赖 Chubby
+- [lamport_clocks](./lamport_clocks.md)：Dynamo 向量时钟、Spanner TrueTime
+- [cap_theorem](./cap_theorem.md)：四个系统在 CAP 坐标系中的具体选择
+- [linearizability_vs_serializability](./linearizability_vs_serializability.md)：Spanner External Consistency 的精确含义
+- [two_phase_commit](./two_phase_commit.md)：Spanner 跨 Paxos Group 事务用 2PC + Paxos
+- [consistent_hashing](./consistent_hashing.md)：Dynamo 的数据分布层
+- [dht_chord](./dht_chord.md)：与一致哈希同源，但聚焦 P2P 路由
+- [mapreduce](./mapreduce.md)：与 GFS 配套的批处理上层
+- [unix_philosophy](./unix_philosophy.md)：GFS / Bigtable 的"组件化"设计沿袭
+
+## 被引用于
+- [cap_theorem](./cap_theorem.md)
+- [consistent_hashing](./consistent_hashing.md)
+- [linearizability_vs_serializability](./linearizability_vs_serializability.md)
+- [two_phase_commit](./two_phase_commit.md)
+- [coordination_chubby_zk](./coordination_chubby_zk.md)
+- [mapreduce](./mapreduce.md)
+- [dht_chord](./dht_chord.md)
+- [unix_philosophy](./unix_philosophy.md)
+- [syntheses/spanner_truetime_cap.md](../syntheses/spanner_truetime_cap.md)
 
 ## 开放问题
 - LSM-Tree 在 NVMe 时代的读放大最优解

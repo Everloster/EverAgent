@@ -4,6 +4,10 @@ related_papers: ["#10 MapReduce 2004", "#12 Bigtable 2006"]
 last_updated: "2026-03-26"
 ---
 
+> ⚠️ **DEPRECATED（2026-04-07）**：本文件已被新 wiki 层覆盖并扩展。
+> - 迁移目标：[`wiki/overview.md`](../wiki/overview.md) + [`wiki/concepts/`](../wiki/concepts/) 下的 mapreduce / distributed_storage / consensus_paxos_raft / coordination_chubby_zk / dht_chord / cap_theorem / consistent_hashing / two_phase_commit / linearizability_vs_serializability / distributed_messaging / lamport_clocks / byzantine_fault_tolerance 等 ~14 个独立 concept 页
+> - 新查询请走 [`wiki/index.md`](../wiki/index.md)
+
 # 分布式系统基石：MapReduce编程模型
 
 ## 核心论文背景

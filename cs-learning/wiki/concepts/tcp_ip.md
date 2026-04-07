@@ -27,6 +27,7 @@ Cerf & Kahn 1974 年提出的分组交换网络互联架构：无状态网关连
 
 ## 演化脉络
 - **1978**：TCP 拆分为 TCP + IP，路由功能移到 IP 网络层
+- **1987**：DNS（[dns](./dns.md)）建立在 TCP/IP 之上，把"全球命名"做成应用层服务
 - **1988**：Jacobson 拥塞控制（slow start / AIMD），解决 1986 年互联网拥塞崩溃
 - **1990s**：NAT 缓解 IPv4 地址耗尽
 - **2000s+**：IPv6、QUIC（基于 UDP 的可靠传输）
@@ -41,8 +42,14 @@ Cerf & Kahn 1974 年提出的分组交换网络互联架构：无状态网关连
 - [分布式系统知识图谱](../../reports/knowledge_reports/分布式系统知识图谱.md)
 
 ## 跨域连接
-- distributed_messaging：Kafka 是"持久化的 TCP"
-- coordination_chubby_zk：ZooKeeper 用 UDP 而非 TCP 心跳的工程教训
+- [dns](./dns.md)：DNS 是 TCP/IP 之上最早的应用层协议
+- [distributed_messaging](./distributed_messaging.md)：Kafka 是"持久化的 TCP"
+- [coordination_chubby_zk](./coordination_chubby_zk.md)：ZooKeeper 用 UDP 而非 TCP 心跳的工程教训
+- [unix_philosophy](./unix_philosophy.md)：sockets 是 Unix 思想在网络上的延伸
+
+## 被引用于
+- [dns](./dns.md)
+- [distributed_messaging](./distributed_messaging.md)
 
 ## 开放问题
 - QUIC 取代 TCP 的边界

@@ -125,27 +125,26 @@ status: active
 | tcp_ip | active |
 | distributed_messaging | active |
 | unix_philosophy | active |
+| cap_theorem | active（Phase 2.5 新增） |
+| two_phase_commit | active（Phase 2.5 新增） |
+| consistent_hashing | active（Phase 2.5 新增） |
+| linearizability_vs_serializability | active（Phase 2.5 新增） |
+| dns | active（Phase 2.5 新增） |
+| information_theory | active（Phase 2.5 新增） |
+| computation_theory | active（Phase 2.5 新增） |
 
-**已建 entity 页面**：12 个（turing / shannon / lamport / dijkstra / hoare / thompson_ritchie / dean_ghemawat / cerf_kahn / knuth / torvalds / bell_labs / google_research / mit_csail）
+**已建 entity 页面**：13 个（turing / shannon / lamport / dijkstra / hoare / thompson_ritchie / dean_ghemawat / cerf_kahn / knuth / torvalds / bell_labs / google_research / mit_csail）
 
 **plan §8 短期成功标准**（cs-learning 维度）：
-- [x] cs-learning wiki/ 有 ≥ 10 个 entity 页面、≥ 8 个 concept 页面
+- [x] cs-learning wiki/ 有 ≥ 10 个 entity 页面、≥ 8 个 concept 页面（已 18 concept + 13 entity）
+- [x] Phase 2.5 Lint pass #1 完成（4 类问题已修补）
 - [ ] 每次新摄入后 log.md 有记录（待新摄入触发）
-- [ ] 一篇新论文摄入后能通过 wiki/ 而非 reports/ 回答"这个概念是什么"（待验证）
 
 ---
 
-## 六、缺失的概念页面（建议下次摄入触发时补建）
+## 六、缺失的概念页面
 
-| 概念 | 触发条件 |
-|------|---------|
-| cap_theorem | 多篇报告引用，可独立蒸馏 |
-| two_phase_commit | Spanner 跨 Paxos Group 事务依赖 |
-| consistent_hashing | 已在 dht_chord 和 distributed_storage 中提及，但可独立成页 |
-| linearizability_vs_serializability | Spanner 区分点，仍偏简单 |
-| dns | 30_dns_1987 已读但未蒸馏 |
-| information_theory | Shannon 1948 论文未独立成 concept |
-| computation_theory | Turing 1936 / Church-Turing 论题未独立成 concept |
+✅ Phase 2.5 已清空 7 个缺失项。下一轮 lint 触发新一批增补。
 
 ---
 

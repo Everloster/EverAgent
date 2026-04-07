@@ -58,8 +58,12 @@ status: active
 - [分布式系统知识图谱](../../reports/knowledge_reports/分布式系统知识图谱.md)
 
 ## 跨域连接
-- consensus_paxos_raft：BFT 是其在恶意节点下的扩展
+- [consensus_paxos_raft](./consensus_paxos_raft.md)：BFT 是其在恶意节点下的扩展
+- [lamport_clocks](./lamport_clocks.md)：Lamport 同时是 BFT 论文作者
 - 区块链共识（PoW/PoS）
+
+## 被引用于
+- [consensus_paxos_raft](./consensus_paxos_raft.md)
 
 ## 开放问题
 - BFT 在 WAN 环境下的吞吐上限

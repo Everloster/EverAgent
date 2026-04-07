@@ -4,6 +4,10 @@ related_papers: []
 last_updated: "2026-03-26"
 ---
 
+> ⚠️ **DEPRECATED（2026-04-07）**：本文件已被新 wiki 层覆盖并扩展为 13 个独立 entity 页。
+> - 迁移目标：[`wiki/entities/`](../wiki/entities/) 下的 turing_alan / shannon_claude / lamport_leslie / dijkstra_edsger / hoare_tony / thompson_ritchie / knuth_donald / dean_ghemawat / cerf_kahn / torvalds_linus / bell_labs / google_research / mit_csail
+> - 新查询请走 [`wiki/index.md`](../wiki/index.md)
+
 # CS关键人物：思想传承与技术基因
 
 ## 第一代：理论与架构奠基（1930s–1960s）

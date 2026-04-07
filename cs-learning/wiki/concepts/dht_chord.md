@@ -23,9 +23,11 @@ status: active
 来源：28_chord_2001
 
 ## 为什么一致哈希重要
-**节点增删时只需迁移局部数据**——传统取模哈希需要全量再平衡。来源：11_dynamo_2007
+**节点增删时只需迁移局部数据**——传统取模哈希需要全量再平衡。详见独立成页的 [consistent_hashing](./consistent_hashing.md)（DHT 关注**路由**，consistent_hashing 关注**分布**，两者正交）。来源：11_dynamo_2007
 
 **虚拟节点（vnode）**：让数据更均匀分布，避免热点。来源：11_dynamo_2007
+
+> ⚠️ **矛盾标记**：DHT 默认**最终一致**与 Spanner 类**强一致存储**形成对比，详见 [overview §4](../overview.md#四技术分歧与未决问题) 的"强一致 vs 最终一致"分歧。
 
 ## 应用脉络
 - **Cassandra 分区环**：直接借鉴 Chord 一致哈希
@@ -50,8 +52,15 @@ DHT 在生产环境的失败常见于：
 - [分布式系统知识图谱](../../reports/knowledge_reports/分布式系统知识图谱.md)
 
 ## 跨域连接
-- distributed_storage：Dynamo / Cassandra 数据分布
-- consensus_paxos_raft：DHT 通常用最终一致而非强一致
+- [consistent_hashing](./consistent_hashing.md)：环 + vnode 的数据结构层面（与 DHT 路由正交）
+- [distributed_storage](./distributed_storage.md)：Dynamo / Cassandra 数据分布
+- [consensus_paxos_raft](./consensus_paxos_raft.md)：DHT 通常用最终一致而非强一致
+- [dns](./dns.md)：DNS 是层级命名 vs DHT 的平面命名空间——对比典范
+
+## 被引用于
+- [consistent_hashing](./consistent_hashing.md)
+- [distributed_storage](./distributed_storage.md)
+- [dns](./dns.md)
 
 ## 开放问题
 - DHT 在公网恶意环境下的安全性边界

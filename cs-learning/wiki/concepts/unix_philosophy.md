@@ -44,8 +44,16 @@ Unix 哲学是现代系统设计的事实标准——Linux、macOS、Android、i
 - [23_ffs_1984](../../reports/paper_analyses/23_ffs_1984.md)
 
 ## 跨域连接
-- distributed_storage：GFS 的"文件 → Chunk"分层抽象继承自 inode → block
+- [distributed_storage](./distributed_storage.md)：GFS 的"文件 → Chunk"分层抽象继承自 inode → block
+- [csp_concurrency](./csp_concurrency.md)：Unix pipe 是 CSP 在 OS 层的小型实现
+- [mapreduce](./mapreduce.md)：Map/Reduce 是"组合纯函数"思想在分布式上的延伸
 - 微服务架构：单一职责 + 接口组合的现代映射
+
+## 被引用于
+- [distributed_storage](./distributed_storage.md)
+- [mapreduce](./mapreduce.md)
+- [csp_concurrency](./csp_concurrency.md)
+- [tcp_ip](./tcp_ip.md)
 
 ## 开放问题
 - 文本流接口在结构化数据时代的局限（JSON / Protobuf 是补丁还是替代？）
