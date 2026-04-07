@@ -55,4 +55,22 @@
 - 旧文件不删除以维持 git 历史与外部引用兼容
 - CONTEXT.md / AGENTS.md 中对 knowledge/ 路径的旧引用本轮不动，留给后续摄入触发清理
 
+## [2026-04-07] lint-pass | Phase 2.5 Lint #2：回归验证 + 新孤岛修补
+- 扫描范围：18 concepts + 13 entities + overview + index + log + 1 synthesis（共 35 页面）
+- **回归验证**（Phase 2.5 修补效果）：
+  - ✅ 18/18 concepts 均含 `## 被引用于` 区块
+  - ✅ 7 个新 concept 全部有实质内容（60-120 行，非 stub）
+  - ✅ 原 3 个孤岛已破：mapreduce 入向 2、unix_philosophy 入向 5、dht_chord 入向 2
+  - ✅ 3 处 ⚠️ 矛盾标记（distributed_storage / consensus_paxos_raft / dht_chord）均链回 overview §4
+- **新发现问题**：
+  - ⚠️ Phase 2.5 引入双节点孤岛：information_theory ↔ computation_theory 仅互引，未被任何应用层 concept 反链
+- **本轮修补**（共 6 个文件）：
+  - tcp_ip → information_theory（Shannon 信道容量是 TCP 重传/FEC 理论上界）
+  - distributed_messaging → information_theory（日志压缩/Schema Registry 是熵编码）
+  - lamport_clocks → computation_theory（异步系统时序与 FLP 同源于可计算性边界）
+  - consensus_paxos_raft → computation_theory（FLP 不可能性是异步共识可计算性下界）
+  - information_theory `## 被引用于` 增补 tcp_ip / distributed_messaging
+  - computation_theory `## 被引用于` 增补 lamport_clocks / consensus_paxos_raft
+- 验证结论：Phase 2.5 收尾完成，wiki 双向链接图完全闭合（18 concept 节点、0 孤岛、3 矛盾标记锚定 overview）
+
 <!-- 后续 ingest / query-archive / lint 在此追加 -->

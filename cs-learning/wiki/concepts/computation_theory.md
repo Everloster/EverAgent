@@ -76,6 +76,8 @@ status: active
 
 ## 被引用于
 - [information_theory](./information_theory.md)
+- [lamport_clocks](./lamport_clocks.md)
+- [consensus_paxos_raft](./consensus_paxos_raft.md)
 - entities/[turing_alan](../entities/turing_alan.md)
 
 ## 开放问题
