@@ -57,7 +57,7 @@
 
 | 页面 | 简介 |
 |------|------|
-| *(待建)* | 涉及 ≥3 个概念的综合查询将归档到 syntheses/ |
+| [moe_vs_dense_inference_cost.md](./syntheses/moe_vs_dense_inference_cost.md) | MoE vs Dense 推理成本与参数效率本质区别，DeepSeek-V3 671B/37B 配比解析 |
 
 ---
 
