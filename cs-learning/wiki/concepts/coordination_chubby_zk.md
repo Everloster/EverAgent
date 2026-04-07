@@ -68,8 +68,16 @@ status: active
 - [分布式系统知识图谱](../../reports/knowledge_reports/分布式系统知识图谱.md)
 
 ## 跨域连接
-- consensus_paxos_raft：ZAB ≈ Multi-Paxos 的工程化
-- distributed_storage：Bigtable / GFS 都依赖 Chubby
+- [consensus_paxos_raft](./consensus_paxos_raft.md)：ZAB ≈ Multi-Paxos 的工程化
+- [distributed_storage](./distributed_storage.md)：Bigtable / GFS 都依赖 Chubby
+- [lamport_clocks](./lamport_clocks.md)：ZAB 的 zxid 是 Lamport 时钟变种
+- [cap_theorem](./cap_theorem.md)：协调服务通常选择 CP
+
+## 被引用于
+- [consensus_paxos_raft](./consensus_paxos_raft.md)
+- [distributed_storage](./distributed_storage.md)
+- [tcp_ip](./tcp_ip.md)
+- [distributed_messaging](./distributed_messaging.md)
 
 ## 开放问题
 - 协调服务的 client 数量上限（Chubby 论文坦承新 session 流量是瓶颈）

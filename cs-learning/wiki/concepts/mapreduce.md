@@ -43,8 +43,13 @@ status: active
 - [分布式系统知识图谱](../../reports/knowledge_reports/分布式系统知识图谱.md)
 
 ## 跨域连接
-- distributed_storage：Map 任务从 GFS 读，Reduce 写回 GFS
+- [distributed_storage](./distributed_storage.md)：Map 任务从 GFS 读，Reduce 写回 GFS
+- [unix_philosophy](./unix_philosophy.md)：Map/Reduce 是"纯函数管道"在分布式上的延伸
 - 函数式编程：纯函数 + 不可变数据 → 自动并行化
+
+## 被引用于
+- [distributed_storage](./distributed_storage.md)
+- [unix_philosophy](./unix_philosophy.md)
 
 ## 开放问题
 - 批流一体的最优抽象（DataFlow / Beam vs Spark Structured Streaming）

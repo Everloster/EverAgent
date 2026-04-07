@@ -4,6 +4,10 @@ related_papers: ["#01 Turing 1950", "#02 Shannon 1948"]
 last_updated: "2026-03-26"
 ---
 
+> ⚠️ **DEPRECATED（2026-04-07）**：本文件已被新 wiki 层覆盖并扩展。
+> - 迁移目标：[`wiki/concepts/computation_theory.md`](../wiki/concepts/computation_theory.md) · [`wiki/concepts/information_theory.md`](../wiki/concepts/information_theory.md) · [`wiki/concepts/unix_philosophy.md`](../wiki/concepts/unix_philosophy.md)
+> - 新查询请走 [`wiki/index.md`](../wiki/index.md)
+
 # 计算机科学基础：图灵与可计算性
 
 ## 核心人物：Alan Turing (1912-1954)

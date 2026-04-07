@@ -28,4 +28,31 @@
 - 数据源：05_lamport_clocks_1978 §3 / 分布式系统知识图谱 §6.2
 - 验证结论：Q1 ✅ 全 wiki 可答；Q2 ⚠️→✅ 已补全后可答
 
+## [2026-04-07] lint-pass | Phase 2.5 Lint #1：cs-learning wiki 全量健检
+- 扫描范围：18 concepts + 13 entities + overview + index + log + 1 synthesis（共 35 页面）
+- 发现项：
+  - **缺失概念**：7 个（cap_theorem / two_phase_commit / consistent_hashing / linearizability_vs_serializability / dns / information_theory / computation_theory）
+  - **孤岛页面**：dht_chord / mapreduce / unix_philosophy 仅有出向链接，无入向
+  - **单向引用**：distributed_storage→lamport_clocks、dht_chord→{distributed_storage, consensus}、tcp_ip→coordination_chubby_zk 等多处缺反向
+  - **矛盾点**：distributed_storage Spanner vs Dynamo、dht_chord 最终一致 vs 强一致存储、consensus_paxos_raft Paxos vs Raft（均与 overview §4 已有分歧条目对应）
+  - **旧层重复**：knowledge/ 4 个文件（432 行）与 wiki/ 内容重叠
+- 修补行动 → 见下三条记录
+
+## [2026-04-07] phase2.5-build | 补 7 个缺失 concept 页
+- 新建：cap_theorem / two_phase_commit / consistent_hashing / linearizability_vs_serializability / dns / information_theory / computation_theory
+- 每页结构：frontmatter + 一句话定义 + 核心原理 + 演化脉络 + 报告链接 + 跨域连接 + 被引用于 + 开放问题
+- 数据源：11_dynamo_2007 / 21_spanner_2012 / 28_chord_2001 / 30_dns_1987 / 19_tcpip_1974 / 02_shannon_1948 / 01_turing_1950 / 分布式系统知识图谱
+
+## [2026-04-07] cross-link | concept 双向链接审计 + 矛盾标注
+- 为 11 个旧 concept 全部追加 `## 被引用于` 区块（concept-to-concept + synthesis）
+- 修复单向引用：distributed_storage 跨域连接从 3 条扩到 9 条；tcp_ip 演化脉络注入 dns；dht_chord 注入 consistent_hashing 区分说明
+- 注入 ⚠️ 矛盾标记 3 处：distributed_storage（Spanner vs Dynamo）/ consensus_paxos_raft（Paxos vs Raft）/ dht_chord（最终一致 vs 强一致），均链回 overview §4
+- entity 反向链接本轮不做（仅保持现有 entity→concept 单向）
+
+## [2026-04-07] deprecate | knowledge/ 旧层标记
+- 为 cs-learning/knowledge/{INDEX,foundations,distributed_systems,key_figures}.md 顶部插入 deprecated banner
+- 每条 banner 标明对应迁移目标（→ wiki/index.md / wiki/concepts/{...}.md / wiki/entities/）
+- 旧文件不删除以维持 git 历史与外部引用兼容
+- CONTEXT.md / AGENTS.md 中对 knowledge/ 路径的旧引用本轮不动，留给后续摄入触发清理
+
 <!-- 后续 ingest / query-archive / lint 在此追加 -->

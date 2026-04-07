@@ -49,8 +49,13 @@ Hoare 1978 年提出的并发理论：用进程间消息传递（channel + rende
 - [18_csp_1978](../../reports/paper_analyses/18_csp_1978.md)
 
 ## 跨域连接
-- distributed_messaging：Kafka 的 Consumer Group ≈ "持久化的 CSP channel"
+- [distributed_messaging](./distributed_messaging.md)：Kafka 的 Consumer Group ≈ "持久化的 CSP channel"
+- [unix_philosophy](./unix_philosophy.md)：Unix pipe 是 CSP 的小型 OS 级实现
 - functional programming：纯函数 + 不可变 + 通信
+
+## 被引用于
+- [distributed_messaging](./distributed_messaging.md)
+- [unix_philosophy](./unix_philosophy.md)
 
 ## 开放问题
 - CSP 在分布式（跨机器）环境下的语义扩展
