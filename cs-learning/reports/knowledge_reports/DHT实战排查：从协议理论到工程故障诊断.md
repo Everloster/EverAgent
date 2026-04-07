@@ -66,14 +66,14 @@ sequenceDiagram
 
 主流 BT 客户端的默认 bootstrap 节点（2026-04 实测）：
 
-| 节点 | 维护方 | 协议 | 状态 |
-|------|--------|------|------|
-| `router.bittorrent.com:6881` | BitTorrent Inc. | UDP | **死亡** |
-| `router.utorrent.com:6881` | BitTorrent Inc. | UDP | **死亡** |
-| `dht.transmissionbt.com:6881` | Transmission | UDP | 存活 |
-| `dht.libtorrent.org:25401` | libtorrent (@arvidn) | UDP | 存活 |
-| `dht.aelitis.com:6881` | Vuze/Azureus | UDP | **死亡** |
-| `router.silotis.us:6881` | 社区 (IPv6) | UDP | **DNS 解析失败** |
+| 节点                            | 维护方                  | 协议  | 状态           |
+| ----------------------------- | -------------------- | --- | ------------ |
+| `router.bittorrent.com:6881`  | BitTorrent Inc.      | UDP | **死亡**       |
+| `router.utorrent.com:6881`    | BitTorrent Inc.      | UDP | **死亡**       |
+| `dht.transmissionbt.com:6881` | Transmission         | UDP | 存活           |
+| `dht.libtorrent.org:25401`    | libtorrent (@arvidn) | UDP | 存活           |
+| `dht.aelitis.com:6881`        | Vuze/Azureus         | UDP | **死亡**       |
+| `router.silotis.us:6881`      | 社区 (IPv6)            | UDP | **DNS 解析失败** |
 
 **启示**：6 个主流 bootstrap 节点中仅 2 个存活（33%）。BitTorrent 官方节点已长期失效。这是一个**单点故障风险** — 如果 Transmission 和 libtorrent 的节点也下线，整个公共 DHT 网络的新节点加入将受到严重影响。
 
