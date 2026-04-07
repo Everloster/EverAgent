@@ -60,7 +60,7 @@
 
 | 页面 | 简介 |
 |------|------|
-| *(待建)* | 涉及 ≥3 个概念的综合查询将归档到 syntheses/ |
+| [spanner_truetime_cap.md](./syntheses/spanner_truetime_cap.md) | Spanner 如何用 TrueTime + Paxos + INTERLEAVE 同时拿到全球强一致与水平扩展，CAP 反例的精确含义 |
 
 ---
 
