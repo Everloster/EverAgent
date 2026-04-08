@@ -24,7 +24,11 @@
 - `哲学关键人物图谱` — 苏格拉底→维特根斯坦思想传承图谱
 - `知识_跨时代比较` — 柏拉图→笛卡尔→休谟→盖梯尔之后，比较“知识是什么”的问题迁移（2026-03-26）
 
-## 离线知识库
+## Wiki 知识层（持续生长）
+→ [`wiki/index.md`](./wiki/index.md) · 入口：10 entities + 11 concepts + overview，每次摄入后更新
+→ [`wiki/overview.md`](./wiki/overview.md) · 5 主线骨架 + 时间拐点 + 概念依赖图
+
+## 离线知识库（旧层）
 → [`knowledge/INDEX.md`](./knowledge/INDEX.md)
 
 ## Skills
