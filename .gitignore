@@ -41,3 +41,7 @@ venv/
 */.agent-lock
 */.agent-state
 */.project-task-state
+
+# MemPalace (local MCP tool state)
+mempalace.yaml
+entities.json
