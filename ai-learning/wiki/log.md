@@ -34,4 +34,30 @@
 - 数据源：LoRA_深度解析 §应用位置 / §陷阱1 / §陷阱3
 - 验证结论：Q1 ✅ 全 wiki 可答；Q2 ⚠️→✅ 已补全后可答
 
+## [2026-04-09] ingest | Agent Systems 深度解析
+- 新建 concepts：agent_systems（含 ReAct/Tool Use/MCP 区分与联系，300字以上）
+- 新建 reports：Agent_ReAct_ToolUse_深度解析_20260409（5层框架 + Python ReAct Loop + 检验题 + 资源推荐）
+- 数据源：ReAct paper (Yao 2022, arXiv:2210.03629)、Anthropic MCP docs、MCP llms.txt
+- 状态：plan §8 Agent Systems 概念页 ✅ 完成
+
 <!-- 后续 ingest / query-archive / lint 在此追加 -->
+
+## [2026-04-09] ingest | RAG 深度解析
+- 新建 concepts：rag（检索增强生成，Naive → Advanced → Modular RAG 演进，GraphRAG · Self-RAG · Reranker）
+- 新建 reports：RAG_深度解析_20260409（5层框架 + Python Pipeline + 检验题 + 资源推荐）
+- 数据源：Lewis et al. 2020 (RAG), Gao et al. 2022 (HyDE), Yao et al. 2023 (Self-RAG), Microsoft GraphRAG 2024
+- 状态：RAG 核心范式 / Reranker / Chunk 策略 / 知识库选型 / 与 Fine-tuning 对比全覆盖
+
+## [2026-04-09] ingest | In-Context Learning 深度解析
+- 新建 concepts：in_context_learning（通过 prompt demonstrations 无梯度更新完成新任务，Bayesian / Task Recognition / Knowledge Activation 三派理论）
+- 新建 reports：In_Context_Learning_深度解析_20260409（5层框架 + ICL 三阶段机制 + 代码实现 + 检验题 + 资源推荐）
+- 数据源：Brown et al. 2020 (GPT-3), Rubin et al. 2022, Wei et al. 2023, Liu et al. 2024 (Position Bias), Gould et al. 2023
+- 状态：ICL 定义 / 三阶段运作机制 / 三大理论流派 / Scaling Laws / Position Bias / Instruction Tuning 影响全覆盖
+
+## [2026-04-09] ingest | Test-time Compute & Reasoning Models 深度解析
+- 主题：Test-time Compute · Reasoning Models（test-time scaling / o1-o3 / DeepSeek-R1 / GRPO / PRM / MCTS）
+- 新建报告：reports/knowledge_reports/Test_Time_Compute_深度解析_20260409.md
+- 新建 wiki 概念页：wiki/concepts/test_time_compute.md（含传统 training-time scaling 对比，300字以上）
+- 更新 wiki/index.md Concepts 表格新增条目
+- 数据源：Wei et al. 2022 CoT、OpenAI o1/o3 技术报告、DeepSeek-R1 论文、Brown et al. 2024 Inference-Time Scaling
+- 状态：plan §知识深度解析完成
