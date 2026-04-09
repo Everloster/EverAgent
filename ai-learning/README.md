@@ -1,7 +1,7 @@
 # 🤖 AI Learning Project
 
 > 系统学习人工智能的个人知识库与学习项目
-> 创建日期：2026-03-23 | 最后更新：2026-03-26（任务板校正 + 协作分发优化）
+> 创建日期：2026-03-23 | 最后更新：2026-04-09（新增 RAG/Agent/Test-time Compute/ICL 深度解析 4 篇，wiki 概念页 4 个）
 
 ---
 
@@ -66,12 +66,12 @@ ai-learning/
 │
 ├── reports/                                     # 📊 分析报告
 │   ├── AI演义_笔记分析与项目整合报告.md          # 《AI演义》PDF 解析与项目改进建议
-│   ├── paper_analyses/                         # 论文精读报告（24 篇已完成）
+│   ├── paper_analyses/                         # 论文精读报告（26 篇已完成）
 │   │   ├── 01_transformer_2017.md
 │   │   ├── 04_instructgpt_2022.md
 │   │   ├── 12_clip_2021.md
 │   │   └── 26_tulu3_2024.md
-│   └── knowledge_reports/                      # 概念深度解析（7 篇）
+│   └── knowledge_reports/                      # 概念深度解析（12 篇）
 │       ├── self_attention_深度解析.md
 │       ├── RLHF_深度解析.md
 │       └── AI关键人物图谱.md
@@ -107,7 +107,7 @@ ai-learning/
 
 ### 第四步：阅读已有深度报告
 
-**论文精读报告（17 篇已完成）：**
+**论文精读报告（26 篇已完成）：**
 - [Transformer 论文分析](./reports/paper_analyses/01_transformer_2017.md) ← **推荐第一篇读**
 - [BERT 论文分析](./reports/paper_analyses/02_bert_2018.md) ← 双向预训练
 - [GPT-3 论文分析](./reports/paper_analyses/03_gpt3_2020.md) ← Few-shot
@@ -126,7 +126,7 @@ ai-learning/
 - [MAE 论文分析](./reports/paper_analyses/17_mae_2022.md) ← 自监督视觉预训练
 - [Tulu 3 后训练流程分析](./reports/paper_analyses/26_tulu3_2024.md) ← SFT→DPO→RLVR 完整解析
 
-**知识深度解析（5 篇）：**
+**知识深度解析（12 篇）：**
 - [Self-Attention 深度解析](./reports/knowledge_reports/self_attention_深度解析.md) — 含代码实现
 - [RLHF 深度解析](./reports/knowledge_reports/RLHF_深度解析.md) — PPO/DPO 对比
 - [Scaling Laws 深度解析](./reports/knowledge_reports/Scaling_Laws_深度解析.md) — Kaplan 幂律·Chinchilla 修正
@@ -168,7 +168,7 @@ ai-learning/
 | 27 | DiT | 2022 | ⭐⭐ | ⬜ 待读 |
 
 > 完整32篇索引见 [PAPERS_INDEX.md](./papers/PAPERS_INDEX.md)
-> 当前已完成论文精读 17 篇，最新库存以 [CONTEXT.md](./CONTEXT.md) 为准。
+> 当前已完成论文精读 26 篇，知识深度解析 12 篇，最新库存以 [CONTEXT.md](./CONTEXT.md) 为准。
 
 ---
 
