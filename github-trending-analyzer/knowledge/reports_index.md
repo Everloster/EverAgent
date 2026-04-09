@@ -34,6 +34,7 @@
 - browser-use/browser-use
 - bytedance/deer-flow
 - clockworklabs/SpacetimeDB
+- coleam00/Archon
 - cloudflare/workerd
 - codecrafters-io/build-your-own-x
 - Crosstalk-Solutions/project-nomad
