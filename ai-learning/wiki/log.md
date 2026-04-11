@@ -40,6 +40,74 @@
 - 数据源：ReAct paper (Yao 2022, arXiv:2210.03629)、Anthropic MCP docs、MCP llms.txt
 - 状态：plan §8 Agent Systems 概念页 ✅ 完成
 
+## [2026-04-11] ingest | GPT-1 论文精读（AI演义四条线 P0-1）
+- 新建报告：reports/paper_analyses/37_gpt1_2018.md（7步分析，1.17亿参数 Transformer Decoder 预训练-微调范式开创）
+- 新建 entity：wiki/entities/radford_alec.md（GPT-1/2、CLIP、Whisper 核心作者）
+- 新建 concept：wiki/concepts/pretraining_finetuning.md（预训练-微调两阶段范式）
+- 更新 wiki/index.md：新增 Radford entity + pretraining_finetuning concept
+- 数据源：AI演义 PDF（谢青池）+ GPT-1 原论文知识
+- 状态：AI演义计划 P0-1 完成
+
+## [2026-04-11] ingest | GPT-2 论文精读（AI演义四条线 P0-2）
+- 新建报告：reports/paper_analyses/38_gpt2_2019.md（7步分析，1.5B参数 零样本多任务学习 WebText数据集 Pre-Norm标准化 Scaling信念验证）
+- Wiki 概念更新：pretraining_finetuning.md 中已涵盖 GPT-2 的 zero-shot 转折
+- 数据源：AI演义 PDF + GPT-2 原论文知识
+- 状态：AI演义计划 P0-2 完成
+
+## [2026-04-11] ingest | The Bitter Lesson 精读（AI演义四条线 P0-3）
+- 新建报告：reports/paper_analyses/22_bitter_lesson_2019.md（7步分析，70年AI历史元认知纲领 搜索与学习两大可扩展方法 四领域验证）
+- 新建 entity：wiki/entities/sutton_rich.md（RL奠基人，TD Learning，Bitter Lesson作者）
+- 新建 concept：wiki/concepts/bitter_lesson.md（苦涩教训：通用计算>知识编码，四条时间线哲学总纲）
+- 更新 wiki/index.md：新增 Sutton entity + bitter_lesson concept
+- 数据源：Sutton 2019 原文 + AI演义 PDF
+- 状态：AI演义计划 P0-3 完成，Batch P0 全部完成
+
+## [2026-04-11] ingest | Stable Diffusion / LDM 精读（AI演义四条线 P1-1）
+- 新建报告：reports/paper_analyses/20_stable_diffusion_2021.md（7步分析，潜空间扩散两阶段架构 交叉注意力条件机制 f=4~8最优平衡）
+- 新建 entity：wiki/entities/rombach_robin.md（LDM/SD 第一作者，LMU Munich & Runway ML）
+- 新建 concept：wiki/concepts/latent_diffusion.md（感知压缩+语义生成解耦，交叉注意力条件机制）
+- 更新 wiki/index.md：新增 Rombach entity + latent_diffusion concept
+- 数据源：LDM 原论文 CVPR 2022 + CLIP #12 + DDPM #09
+- 状态：AI演义计划 P1-1 完成
+
+## [2026-04-11] ingest | DiT 精读（AI演义四条线 P1-2）
+- 新建报告：reports/paper_analyses/27_dit_2022.md（7步分析，Transformer 替换 U-Net 骨架 AdaLN-Zero Scaling Laws Sora 技术基础）
+- 新建 entity：wiki/entities/peebles_william.md（DiT 第一作者 NYU→OpenAI Sora 核心贡献者）
+- 新建 entity：wiki/entities/xie_saining.md（DiT 共同作者 NYU 助理教授）
+- 新建 concept：wiki/concepts/diffusion_transformer.md（Patchify AdaLN-Zero Scaling Laws）
+- 更新 wiki/index.md：新增 Peebles + Xie entities + diffusion_transformer concept
+- 数据源：DiT 原论文 ICCV 2023 + ViT #11 + LDM #20
+- 状态：AI演义计划 P1-2 完成
+
+## [2026-04-11] ingest | ReAct 论文精读（AI演义四条线 P1-3）
+- 新建报告：reports/paper_analyses/17_react_2022.md（7步分析，Thought-Action-Observation 循环 推理+行动协同 自我纠错机制 多任务统一框架）
+- 新建 entity：wiki/entities/yao_shunyu.md（ReAct 第一作者 00后 SWE-bench 作者 Princeton→Meta AI）
+- Wiki concept：agent_systems.md 已在 P1-3 前完成（覆盖 ReAct Loop/MCP/ToolUse）
+- 更新 wiki/index.md：新增 Yao entity
+- 更新 wiki/log.md
+- 数据源：ReAct 原论文 arXiv:2210.03629 + CoT #10 + 已有 Agent 知识报告
+- 状态：AI演义计划 P1-3 完成，Batch P1 全部完成
+
+## [2026-04-11] ingest | LAION-5B + RefinedWeb 精读（AI演义四条线 P2-1 & P2-2）
+- 新建报告：reports/paper_analyses/29_laion5b_2022.md（7步分析，58.5亿图文对 CLIP过滤 开源多模态数据基础 Stable Diffusion数据源）
+- 新建报告：reports/paper_analyses/30_refinedweb_2023.md（7步分析，5T tokens progressive filtering Falkon LLM数据基础）
+- 新建 entity：wiki/entities/schuhmann_christoph.md（LAION创始人 LAION-5B负责人）
+- 新建 entity：wiki/entities/penedo_guilherme.md（RefinedWeb第一作者 TII Falkon核心）
+- 新建 entity：wiki/entities/tii.md（TII阿联酋技术创新研究院 Falkon+RefinedWeb诞生地）
+- 新建 concept：wiki/concepts/large_scale_data_filtering.md（URL去重 CLIP评分 progressive质量过滤 方法论）
+- 更新 wiki/index.md：新增 3 entities + 1 concept
+- 数据源：LAION-5B/RefinedWeb 原论文 + Scaling Laws #05 + CLIP #12
+- 状态：AI演义计划 P2-1 和 P2-2 完成
+
+## [2026-04-11] ingest | Google Translate (GNMT) + DeepVideo 精读（AI演义四条线 P2-3 & P2-4）
+- 新建报告：reports/paper_analyses/39_google_translate_2016.md（7步分析，GNMT深层残差LSTM WordPiece Attention NMT工业部署里程碑）
+- 新建报告：reports/paper_analyses/40_deepvideo_2014.md（7步分析，Sports-1M数据集 四种时序融合策略 Slow Fusion 多分辨率架构）
+- 新建 entity：wiki/entities/wu_yonghui.md（GNMT第一作者 Google Brain 深层残差LSTM+WordPiece）
+- 新建 entity：wiki/entities/karpathy_andrej.md（Deep Video第一作者 Stanford→Tesla CS231n讲师）
+- 更新 wiki/index.md：新增 Wu + Karpathy entities
+- 数据源：GNMT/DeepVideo 原论文 + CNN 基础 #06
+- 状态：AI演义计划 P2-3 和 P2-4 完成，Batch P2 全部完成
+
 <!-- 后续 ingest / query-archive / lint 在此追加 -->
 
 ## [2026-04-09] ingest | RAG 深度解析

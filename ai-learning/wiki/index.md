@@ -27,6 +27,17 @@
 | [brown_tom.md](./entities/brown_tom.md) | GPT-3 第一作者，Anthropic 联合创始团队成员 |
 | [schulman_john.md](./entities/schulman_john.md) | PPO 提出者，InstructGPT/ChatGPT 后训练核心 |
 | [dao_tri.md](./entities/dao_tri.md) | FlashAttention 第一作者 |
+| [radford_alec.md](./entities/radford_alec.md) | GPT-1/2、CLIP、Whisper 核心作者，OpenAI 早期研究员 |
+| [sutton_rich.md](./entities/sutton_rich.md) | 强化学习奠基人，The Bitter Lesson 作者，Alberta/DeepMind |
+| [rombach_robin.md](./entities/rombach_robin.md) | LDM / Stable Diffusion 第一作者，LMU Munich & Runway ML |
+| [peebles_william.md](./entities/peebles_william.md) | DiT 第一作者，NYU→OpenAI，Sora 核心贡献者 |
+| [xie_saining.md](./entities/xie_saining.md) | DiT 共同作者，NYU 助理教授 |
+| [yao_shunyu.md](./entities/yao_shunyu.md) | ReAct 第一作者，00后代表，SWE-bench 作者，Princeton→Meta AI |
+| [schuhmann_christoph.md](./entities/schuhmann_christoph.md) | LAION 创始人，LAION-5B 项目负责人 |
+| [penedo_guilherme.md](./entities/penedo_guilherme.md) | RefinedWeb 第一作者，TII，Falkon LLM 核心贡献者 |
+| [tii.md](./entities/tii.md) | 阿联酋技术创新研究院，Falkon LLM 与 RefinedWeb 诞生地 |
+| [wu_yonghui.md](./entities/wu_yonghui.md) | GNMT 第一作者，Google Brain，深层残差 LSTM + WordPiece |
+| [karpathy_andrej.md](./entities/karpathy_andrej.md) | Deep Video 第一作者，Stanford→Tesla，CS231n 讲师 |
 
 ### 机构
 | 页面 | 简介 |
@@ -54,6 +65,11 @@
 | [test_time_compute.md](./concepts/test_time_compute.md) | 推理时计算扩展，o1/o3 · DeepSeek-R1 · GRPO · PRM · MCTS，与 training-time scaling 互补 |
 | [rag.md](./concepts/rag.md) | 检索增强生成，Naive → Advanced → Modular RAG 演进，GraphRAG · Self-RAG · Reranker |
 | [in_context_learning.md](./concepts/in_context_learning.md) | 通过 prompt demonstrations 无梯度学习，Bayesian / Task Recognition / Knowledge Activation 三派理论 |
+| [pretraining_finetuning.md](./concepts/pretraining_finetuning.md) | 预训练-微调两阶段范式，GPT-1 确立，BERT 巅峰，LoRA/ICL 演化 |
+| [bitter_lesson.md](./concepts/bitter_lesson.md) | 苦涩教训：通用计算方法长期总赢，搜索与学习可无限扩展 |
+| [latent_diffusion.md](./concepts/latent_diffusion.md) | 潜空间扩散：两阶段感知压缩+语义生成，交叉注意力条件机制 |
+| [diffusion_transformer.md](./concepts/diffusion_transformer.md) | DiT：Transformer 替换 U-Net，AdaLN-Zero，Scaling Laws 验证 |
+| [large_scale_data_filtering.md](./concepts/large_scale_data_filtering.md) | billion级数据多级过滤：URL去重/CLIP评分/progressive质量过滤 |
 
 ---
 
