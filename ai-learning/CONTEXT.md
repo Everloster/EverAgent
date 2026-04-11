@@ -33,6 +33,16 @@
 - `31_megascale_2024` — 万卡级LLM训练系统·12,288 GPU 55.2% MFU·3D并行Overlap·算法-系统协同设计·自动化故障恢复·NSDI 2024（2026-04-04）
 - `21_moe_2017` — 稀疏门控混合专家·Noisy Top-K Gating·负载均衡双损失·137B参数验证·GPT-4/Mixtral直接前驱（2026-03-31）
 - `25_zero_2019` — ZeRO内存优化·优化器状态/梯度/参数三级切分·DeepSpeed核心·万亿参数训练基础设施（2026-03-30）
+- `37_gpt1_2018` — GPT-1·Transformer Decoder预训练·全参数微调·BooksCorpus 0.1B参数·NLP预训练-微调范式开创·12任务9项SOTA（2026-04-11）
+- `38_gpt2_2019` — GPT-2·1.5B参数·WebText 40GB·零样本多任务学习·Pre-Norm标准化·字节级BPE·scaling信念验证起点（2026-04-11）
+- `22_bitter_lesson_2019` — The Bitter Lesson·70年AI历史元认知纲领·通用计算方法>知识编码·搜索与学习两大可扩展方法·四条时间线哲学总纲（2026-04-11）
+- `20_stable_diffusion_2021` — Latent Diffusion·潜空间两阶段架构·f=4~8最优平衡·交叉注意力条件机制·SD 开源生态基石（2026-04-11）
+- `27_dit_2022` — DiT·Transformer替换U-Net·AdaLN-Zero·Scaling Laws验证·Sora技术基础·ICCV 2023（2026-04-11）
+- `17_react_2022` — ReAct·Thought-Action-Observation循环·推理+行动协同·自我纠错·Agent系统奠基石·arXiv 2022（2026-04-11）
+- `29_laion5b_2022` — LAION-5B·58.5亿图文对·CLIP自动过滤·开源多模态生态数据基础·Stable Diffusion数据源（2026-04-11）
+- `30_refinedweb_2023` — RefinedWeb·5T tokens·Progressive Quality Filtering·Falkon LLM数据基础·高质量数据工程方法论（2026-04-11）
+- `39_google_translate_2016` — GNMT·深层残差LSTM 8+8层·WordPiece·Attention·NMT工业部署里程碑·BLEU+60%（2026-04-11）
+- `40_deepvideo_2014` — Deep Video·Sports-1M数据集·四种时序融合策略·Slow Fusion·多分辨率架构·CVPR 2014（2026-04-11）
 
 **知识深度解析** (`reports/knowledge_reports/`)
 - `self_attention_深度解析` — 含代码实现
