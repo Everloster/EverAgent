@@ -45,3 +45,7 @@ venv/
 # MemPalace (local MCP tool state)
 mempalace.yaml
 entities.json
+
+#botlearn file
+.botlearn/
+skills/
