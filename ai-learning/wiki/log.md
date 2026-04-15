@@ -110,6 +110,14 @@
 
 <!-- 后续 ingest / query-archive / lint 在此追加 -->
 
+## [2026-04-15] ingest | EverAgent 作为 ToA 原型的解剖
+- 新建报告：reports/knowledge_reports/EverAgent_ToA原型解剖_20260415.md（119 commits 实证 + ToA五要素审计 + git history 考古 + 四个未解问题 + 设计模式提炼 + 自我批判）
+- 新建 concept：wiki/concepts/toa_system_design.md（可复用设计模式 + 未解问题对照表 + 人类角色演化实证）
+- 更新 wiki/index.md：Concepts 表新增 toa_system_design 条目
+- 核心数据：git log 119 commits，8种模型身份（OpenAI/Anthropic/MiniMax/智谱），task-execution 41次 / project-optimization 36次
+- 关键发现：`98d0e53 interrupted by limit` 失败记录；命名漂移（3种MiniMax写法）；质量回顾机制缺失；协议遵守依赖自律
+- 前置报告：ToA_CLI_Agentic原生论 + 双向驯化与多Agent涌现
+
 ## [2026-04-15] ingest | 双向驯化 & 多Agent涌现 深度解析
 - 新建报告：reports/knowledge_reports/双向驯化与多Agent涌现_深度解析_20260415.md（ToA盲区两论 + 四种驯化机制 + 四种涌现类型 + 叠加风险结构 + EverAgent活体案例）
 - 新建 concept：wiki/concepts/bidirectional_domestication.md（双向驯化 · 多Agent涌现 · 两论叠加效应）
