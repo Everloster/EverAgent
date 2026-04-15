@@ -110,6 +110,14 @@
 
 <!-- 后续 ingest / query-archive / lint 在此追加 -->
 
+## [2026-04-15] ingest | ToA 范式 · CLI 原生论 · 硅碳加速论 深度解析
+- 新建报告：reports/knowledge_reports/ToA_CLI_Agentic原生论_深度解析_20260415.md（5层分析框架 + 概念关系网络 + 批判性分析 + 行动推论）
+- 新建 concept：wiki/concepts/toa_paradigm.md（ToA 定义 · CLI 原生论机制 · 硅碳加速剪刀差 · 开放问题三条）
+- 更新 wiki/index.md：Concepts 表新增 toa_paradigm 条目
+- 核心观点：ToC/ToB → ToA 范式迁移；CLI 是 Agent 母语（强化学习天然适配）；硅碳剪刀差指数 vs 线性；GUI 是"最大迁移成本"而非 Bitter Lesson
+- 数据源：用户 2026-04-15 观点输入 + 项目内已有报告（agent_systems / bitter_lesson / scaling_laws / test_time_compute）
+- 关联已有概念：agent_systems / bitter_lesson / scaling_laws / test_time_compute / in_context_learning
+
 ## [2026-04-09] ingest | RAG 深度解析
 - 新建 concepts：rag（检索增强生成，Naive → Advanced → Modular RAG 演进，GraphRAG · Self-RAG · Reranker）
 - 新建 reports：RAG_深度解析_20260409（5层框架 + Python Pipeline + 检验题 + 资源推荐）

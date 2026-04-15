@@ -70,6 +70,7 @@
 | [latent_diffusion.md](./concepts/latent_diffusion.md) | 潜空间扩散：两阶段感知压缩+语义生成，交叉注意力条件机制 |
 | [diffusion_transformer.md](./concepts/diffusion_transformer.md) | DiT：Transformer 替换 U-Net，AdaLN-Zero，Scaling Laws 验证 |
 | [large_scale_data_filtering.md](./concepts/large_scale_data_filtering.md) | billion级数据多级过滤：URL去重/CLIP评分/progressive质量过滤 |
+| [toa_paradigm.md](./concepts/toa_paradigm.md) | ToA 范式：产品第一用户从人类转为 Agent；CLI 原生论；硅碳加速剪刀差 |
 
 ---
 
