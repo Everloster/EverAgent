@@ -71,6 +71,7 @@
 | [diffusion_transformer.md](./concepts/diffusion_transformer.md) | DiT：Transformer 替换 U-Net，AdaLN-Zero，Scaling Laws 验证 |
 | [large_scale_data_filtering.md](./concepts/large_scale_data_filtering.md) | billion级数据多级过滤：URL去重/CLIP评分/progressive质量过滤 |
 | [toa_paradigm.md](./concepts/toa_paradigm.md) | ToA 范式：产品第一用户从人类转为 Agent；CLI 原生论；硅碳加速剪刀差 |
+| [bidirectional_domestication.md](./concepts/bidirectional_domestication.md) | 双向驯化：硅基对碳基的四种认知侵蚀；多Agent涌现的四种类型与Alignment升维 |
 
 ---
 

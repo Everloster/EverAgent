@@ -110,6 +110,14 @@
 
 <!-- 后续 ingest / query-archive / lint 在此追加 -->
 
+## [2026-04-15] ingest | 双向驯化 & 多Agent涌现 深度解析
+- 新建报告：reports/knowledge_reports/双向驯化与多Agent涌现_深度解析_20260415.md（ToA盲区两论 + 四种驯化机制 + 四种涌现类型 + 叠加风险结构 + EverAgent活体案例）
+- 新建 concept：wiki/concepts/bidirectional_domestication.md（双向驯化 · 多Agent涌现 · 两论叠加效应）
+- 更新 wiki/index.md：Concepts 表新增 bidirectional_domestication 条目
+- 核心论点：碳基调教硅基是显性箭头，硅基调教碳基是结构性副产品；多Agent涌现在计算上不可约，单Agent Alignment框架的四个假设全部失效；两者叠加是ToA世界最深层的结构性风险
+- 前置报告：ToA_CLI_Agentic原生论_深度解析_20260415
+- 关联概念：agent_systems / toa_paradigm / in_context_learning / bitter_lesson
+
 ## [2026-04-15] ingest | ToA 范式 · CLI 原生论 · 硅碳加速论 深度解析
 - 新建报告：reports/knowledge_reports/ToA_CLI_Agentic原生论_深度解析_20260415.md（5层分析框架 + 概念关系网络 + 批判性分析 + 行动推论）
 - 新建 concept：wiki/concepts/toa_paradigm.md（ToA 定义 · CLI 原生论机制 · 硅碳加速剪刀差 · 开放问题三条）
