@@ -1,7 +1,7 @@
 # 🧠 EverAgent — 个人学习与研究工作台
 
 > 用 AI Agent 驱动的个人知识体系，覆盖 AI 技术、计算机科学、哲学思想、心理学、生命科学与开源生态
-> 创建日期：2026-03-23 | 最后更新：2026-04-05（多代理协作规范化：校验框架 + Task Board视图化 + 决策边界 + 新项目自动化）
+> 创建日期：2026-03-23 | 最后更新：2026-04-15（内容量全面扩充 + Wiki 知识网络成型）
 
 > **AI/Agent 使用本仓库？** → 请直接阅读 [AGENTS.md](./AGENTS.md)，本文件供人类阅读。
 
@@ -11,14 +11,14 @@
 
 EverAgent 是以 AI Agent 为核心工具的个人知识库，通过系统化学习路径、深度分析报告和自动化工具，将学习从"被动积累"变为"主动建构"。目前包含 **6 个子项目**：
 
-| 项目 | 领域 | 内容量 | 状态 |
-|------|------|--------|------|
-| [🤖 AI Learning](./ai-learning/README.md) | 人工智能技术·论文精读·技术深度报告 | 24 篇精读 + 7 篇深度报告 | 🟢 活跃 |
-| [💻 CS Learning](./cs-learning/README.md) | 计算机科学·系统·算法·分布式 | 19 篇精读 + 1 篇人物图谱 | 🟢 活跃 |
-| [📚 Philosophy Learning](./philosophy-learning/README.md) | 西方哲学史·经典文本·概念辨析 | 7 篇文本分析 + 1 篇论文分析 + 2 篇概念报告 | 🟡 建设中 |
-| [🧠 Psychology Learning](./psychology-learning/README.md) | 心理学·经典实验精读·行为经济学 | 12 篇精读 + 1 篇人物图谱 | 🟢 活跃 |
-| [🧬 Biology Learning](./biology-learning/README.md) | 时间生物学·睡眠科学·运动生理学 | 4 篇论文精读 + 1 篇概念报告 | 🟡 建设中 |
-| [📈 GitHub Trending Analyzer](./github-trending-analyzer/README.md) | 开源热点追踪·Repo 深度研究 | 64 篇 Repo 报告 + 8 篇汇总 | 🟢 活跃 |
+| 项目 | 领域 | 报告量 | Wiki 页面 | 状态 |
+|------|------|--------|-----------|------|
+| [🤖 AI Learning](./ai-learning/README.md) | 人工智能技术·论文精读·技术深度报告 | 36 篇精读 + 13 篇知识报告 | 23 entities · 19 concepts | 🟢 活跃 |
+| [💻 CS Learning](./cs-learning/README.md) | 计算机科学·系统·算法·分布式 | 20 篇精读 + 3 篇知识报告 | 13 entities · 18 concepts | 🟢 活跃 |
+| [📚 Philosophy Learning](./philosophy-learning/README.md) | 西方哲学史·经典文本·概念辨析 | 9 篇文本分析 + 1 篇论文分析 + 2 篇概念报告 | 10 entities · 11 concepts | 🟡 建设中 |
+| [🧠 Psychology Learning](./psychology-learning/README.md) | 心理学·经典实验精读·行为经济学 | 12 篇精读 + 2 篇知识报告 | — | 🟢 活跃 |
+| [🧬 Biology Learning](./biology-learning/README.md) | 时间生物学·睡眠科学·运动生理学 | 5 篇论文精读 + 1 篇概念报告 | — | 🟡 建设中 |
+| [📈 GitHub Trending Analyzer](./github-trending-analyzer/README.md) | 开源热点追踪·Repo 深度研究 | 84 篇 Repo 报告 + 3 篇深度研究 | — | 🟢 活跃 |
 
 ---
 
@@ -58,6 +58,25 @@ python3 scripts/task_board_aggregator.py              # 生成视图
 ```bash
 python3 scripts/create_project.py --project={name} --domain={domain} --agent-name={AgentName}
 ```
+
+---
+
+## Wiki 知识网络
+
+每个学习子项目内置 `wiki/` 层，采用 **Karpathy 持久化 Wiki 模式**——每次摄入新报告后自动更新，形成跨报告的知识图谱：
+
+```
+{project}/wiki/
+├── index.md       ← 内容目录，每次 ingest 后更新
+├── log.md         ← 追加式操作日志
+├── entities/      ← 人物 / 机构页面
+├── concepts/      ← 核心概念与技术页面
+└── syntheses/     ← 多概念合成查询归档
+```
+
+> Wiki 是报告的"索引层"：想快速定位某个概念或人物，先读 `wiki/index.md`，再深入对应报告。
+
+---
 
 ## 整体学习理念
 
