@@ -56,7 +56,8 @@
 - `Agent_ReAct_ToolUse_深度解析_20260409` — ReAct Loop·Function Calling·MCP协议·Multi-Agent协作·Python完整实现（2026-04-09）
 - `Test_Time_Compute_深度解析_20260409` — o1/o3·DeepSeek-R1·GRPO·PRM vs ORM·MCTS·Test-time Scaling Laws（2026-04-09）
 - `In_Context_Learning_深度解析_20260409` — ICL三阶段机制·Bayesian/TaskRecognition/Knowledge Activation三派理论·Position Bias·Scaling涌现
-- `ToA_CLI_Agentic原生论_深度解析_20260415` — ToA范式·CLI原生论·硅碳加速论·GUI迁移成本分析·批判性观点解析（2026-04-15）（2026-04-09）
+- `ToA_CLI_Agentic原生论_深度解析_20260415` — ToA范式·CLI原生论·硅碳加速论·GUI迁移成本分析·批判性观点解析（2026-04-15）
+- `双向驯化与多Agent涌现_深度解析_20260415` — 硅基对碳基的四种认知侵蚀机制·多Agent涌现四种类型·单Agent Alignment框架失效点·EverAgent活体案例（2026-04-15）（2026-04-09）
 
 ## 离线知识库
 → [`knowledge/INDEX.md`](./knowledge/INDEX.md)（子话题菜单，离线模型从此进入）
