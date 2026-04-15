@@ -40,6 +40,7 @@
 - Crosstalk-Solutions/project-nomad
 - czlonkowski/n8n-mcp
 - datalab-to/chandra
+- EverMind-AI/EverOS
 - fishaudio/fish-speech
 - fluxerapp/fluxer
 - FujiwaraChoki/MoneyPrinterV2
