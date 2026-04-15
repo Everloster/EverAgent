@@ -73,6 +73,8 @@
 | [toa_paradigm.md](./concepts/toa_paradigm.md) | ToA 范式：产品第一用户从人类转为 Agent；CLI 原生论；硅碳加速剪刀差 |
 | [bidirectional_domestication.md](./concepts/bidirectional_domestication.md) | 双向驯化：硅基对碳基的四种认知侵蚀；多Agent涌现的四种类型与Alignment升维 |
 | [toa_system_design.md](./concepts/toa_system_design.md) | ToA系统设计模式：双入口文档·自包含Subagent·审计链·质量回顾缺失等工程洞察 |
+| [toc_as_data_infrastructure.md](./concepts/toc_as_data_infrastructure.md) | ToC ChatBot 的真实战略价值：人类偏好数据采集器·数据飞轮·防 Model Collapse |
+| [opensource_vs_closedsource_toa.md](./concepts/opensource_vs_closedsource_toa.md) | ToA 世界开源 vs 闭源重新博弈：CLI 生态利好开源·数据飞轮利好闭源·三种终局场景 |
 
 ---
 
