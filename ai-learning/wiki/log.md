@@ -110,6 +110,15 @@
 
 <!-- 后续 ingest / query-archive / lint 在此追加 -->
 
+## [2026-04-15] ingest | 奶头乐ChatBot真实战略价值 + 开源vs闭源ToA博弈 深度解析
+- 新建报告：reports/knowledge_reports/奶头乐ChatBot的真实战略价值_20260415.md（数据飞轮·RLHF依赖·三类数据质量对比·OpenAI/Anthropic/国内厂商战略·Model Collapse反面）
+- 新建报告：reports/knowledge_reports/开源vs闭源在ToA世界的重新博弈_20260415.md（CLI原生论5条机制·MCP开源生态·本地部署经济学·DeepSeek分水岭·三种终局场景·监管变量）
+- 新建 concept：wiki/concepts/toc_as_data_infrastructure.md
+- 新建 concept：wiki/concepts/opensource_vs_closedsource_toa.md
+- 更新 wiki/index.md：新增 2 个 concept 条目
+- 前置报告：ToA_CLI_Agentic原生论_深度解析_20260415
+- 关联概念：toa_paradigm / rlhf / scaling_laws / agent_systems / bidirectional_domestication
+
 ## [2026-04-15] ingest | EverAgent 作为 ToA 原型的解剖
 - 新建报告：reports/knowledge_reports/EverAgent_ToA原型解剖_20260415.md（119 commits 实证 + ToA五要素审计 + git history 考古 + 四个未解问题 + 设计模式提炼 + 自我批判）
 - 新建 concept：wiki/concepts/toa_system_design.md（可复用设计模式 + 未解问题对照表 + 人类角色演化实证）

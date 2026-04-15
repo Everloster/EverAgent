@@ -58,7 +58,9 @@
 - `In_Context_Learning_深度解析_20260409` — ICL三阶段机制·Bayesian/TaskRecognition/Knowledge Activation三派理论·Position Bias·Scaling涌现
 - `ToA_CLI_Agentic原生论_深度解析_20260415` — ToA范式·CLI原生论·硅碳加速论·GUI迁移成本分析·批判性观点解析（2026-04-15）
 - `双向驯化与多Agent涌现_深度解析_20260415` — 硅基对碳基的四种认知侵蚀机制·多Agent涌现四种类型·单Agent Alignment框架失效点·EverAgent活体案例（2026-04-15）
-- `EverAgent_ToA原型解剖_20260415` — 119 commits实证·ToA五要素审计·git history考古·设计模式提炼·四个未解问题·自我批判（2026-04-15）（2026-04-09）
+- `EverAgent_ToA原型解剖_20260415` — 119 commits实证·ToA五要素审计·git history考古·设计模式提炼·四个未解问题·自我批判（2026-04-15）
+- `奶头乐ChatBot的真实战略价值_20260415` — ToC不是终点是数据基础设施·数据飞轮·RLHF依赖·防Model Collapse·三大AI公司战略对比（2026-04-15）
+- `开源vs闭源在ToA世界的重新博弈_20260415` — CLI原生论利好开源五条机制·闭源数据飞轮优势·DeepSeek分水岭·三种终局场景·监管变量（2026-04-15）（2026-04-09）
 
 ## 离线知识库
 → [`knowledge/INDEX.md`](./knowledge/INDEX.md)（子话题菜单，离线模型从此进入）
