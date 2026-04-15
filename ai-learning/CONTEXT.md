@@ -55,7 +55,8 @@
 - `RAG_深度解析_20260409` — Naive→Advanced→Modular RAG 演进·HyDE/Self-RAG/GraphRAG·Reranker两阶段·向量数据库选型（2026-04-09）
 - `Agent_ReAct_ToolUse_深度解析_20260409` — ReAct Loop·Function Calling·MCP协议·Multi-Agent协作·Python完整实现（2026-04-09）
 - `Test_Time_Compute_深度解析_20260409` — o1/o3·DeepSeek-R1·GRPO·PRM vs ORM·MCTS·Test-time Scaling Laws（2026-04-09）
-- `In_Context_Learning_深度解析_20260409` — ICL三阶段机制·Bayesian/TaskRecognition/Knowledge Activation三派理论·Position Bias·Scaling涌现（2026-04-09）
+- `In_Context_Learning_深度解析_20260409` — ICL三阶段机制·Bayesian/TaskRecognition/Knowledge Activation三派理论·Position Bias·Scaling涌现
+- `ToA_CLI_Agentic原生论_深度解析_20260415` — ToA范式·CLI原生论·硅碳加速论·GUI迁移成本分析·批判性观点解析（2026-04-15）（2026-04-09）
 
 ## 离线知识库
 → [`knowledge/INDEX.md`](./knowledge/INDEX.md)（子话题菜单，离线模型从此进入）
@@ -70,7 +71,7 @@
 
 ## ⚠️ 边界（防幻觉）
 以下内容**尚未研究**，禁止推测，须告知用户：
-- GPT-4 / Claude / Gemini 系列的专项分析报告
+- GPT-4 / Claude / Gemini 系列的专项分析报告（ToA报告中有引用现状描述，均标注为推断）
 - 工程类论文精读（EVA-02 等后续工程论文）
 - Phase 2 尚缺：DDIM 等后续扩散论文；VGGNet、Batch Normalization 专项报告
 - 下一步推荐：EVA-02、Megatron-LM 深度分析
