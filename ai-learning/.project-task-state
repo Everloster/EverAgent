@@ -62,3 +62,107 @@
   claimed_at: 2026-04-16T16:22:12+08:00
   started_at: 2026-04-16T16:22:15+08:00
   done_at: 2026-04-16T16:30:34+08:00
+
+# ── 2026 Q1 前沿热点专项：Agent × Harness 双主线（GitHub Trending 实证版）──
+# 数据来源：GitHub 日/周/月 Trending 榜单 2026-04-16 实时抓取
+# 主线一：Harness Engineering（P1）
+
+- id: T020
+  project: ai-learning
+  type: knowledge_report
+  target: "Agent Harness 三大设计流派解析：everything-claude-code x deer-flow x Archon"
+  value: "GitHub 月榜实证: affaan-m/everything-claude-code (81757月增星,157K总stars) + bytedance/deer-flow (31460月增星,61K stars) + coleam00/Archon (4263周增星,'first open-source harness builder'); performance harness vs long-horizon SuperAgent harness vs deterministic/repeatable harness 三种设计哲学技术对比"
+  priority: P1
+  required_capability: task_executor
+  status: open
+  claimed_by: null
+  claimed_at: null
+  started_at: null
+  done_at: null
+  failed_reason: null
+
+- id: T021
+  project: ai-learning
+  type: knowledge_report
+  target: "Agent Skills 生态：从 Karpathy 的 CLAUDE.md 到可复用技能树"
+  value: "GitHub 日榜#1实证: forrestchang/andrej-karpathy-skills (9646今日+30919本周+45K总stars); 补充: addyosmani/agent-skills (6693周增,'Production-grade engineering skills') + mattpocock/skills (14248月增) + obra/superpowers (70176月增); Karpathy LLM编程哲学凝结成 CLAUDE.md 的机制; Skills 作为 Harness 可复用组件的架构地位"
+  priority: P1
+  required_capability: task_executor
+  status: open
+  claimed_by: null
+  claimed_at: null
+  started_at: null
+  done_at: null
+  failed_reason: null
+
+- id: T022
+  project: ai-learning
+  type: knowledge_report
+  target: "Agent Memory 系统深度解析：claude-mem 的设计与上下文工程实践"
+  value: "GitHub 双榜实证: thedotmack/claude-mem (2305今日+10779周增,58K总stars); 会话记忆自动捕获→AI压缩→相关性注入三步机制; Memory 在 Harness 架构中的位置; 与 Context Engineering 的关系; mvanhorn/last30days-skill (18023月增) 作为对比案例"
+  priority: P1
+  required_capability: task_executor
+  status: open
+  claimed_by: null
+  claimed_at: null
+  started_at: null
+  done_at: null
+  failed_reason: null
+
+# 主线二：Agent 架构与进化（P1）
+
+- id: T023
+  project: ai-learning
+  type: knowledge_report
+  target: "自进化 Agent 架构：hermes-agent x GenericAgent 的技能树机制"
+  value: "GitHub 月/周双榜#1实证: NousResearch/hermes-agent (53110周增+81412月增,91K总stars,'The agent that grows with you'); 对照: lsdefine/GenericAgent ('Self-evolving agent: grows skill tree from 3.3K-line seed'); Self-improvement 技术实现路径; 自进化的可信度与边界分析"
+  priority: P1
+  required_capability: task_executor
+  status: open
+  claimed_by: null
+  claimed_at: null
+  started_at: null
+  done_at: null
+  failed_reason: null
+
+- id: T024
+  project: ai-learning
+  type: knowledge_report
+  target: "Managed Agents Platform：multica 的 Agent-as-Teammate 范式解析"
+  value: "GitHub 周榜实证: multica-ai/multica (10864周增,'Turn coding agents into real teammates — assign tasks, track progress, compound skills'); Agent 团队管理产品化路径; 与 LangGraph/CrewAI/AutoGen 的定位差异; Compound Skills 机制"
+  priority: P1
+  required_capability: task_executor
+  status: open
+  claimed_by: null
+  claimed_at: null
+  started_at: null
+  done_at: null
+  failed_reason: null
+
+- id: T025
+  project: ai-learning
+  type: knowledge_report
+  target: "垂直 AI Agent 爆发：金融领域三大架构解析（TradingAgents x Kronos x ai-hedge-fund）"
+  value: "GitHub 三榜实证: TauricResearch/TradingAgents (18792月增,多Agent金融交易) + shiyu-coder/Kronos (6486周+7042月,'Foundation Model for Financial Markets') + virattt/ai-hedge-fund (1058日+4314周,55K stars); 垂直域 Agent 技术架构 vs 通用 Agent 差异; 金融时序数据与 LLM 融合的技术路径"
+  priority: P2
+  required_capability: task_executor
+  status: open
+  claimed_by: null
+  claimed_at: null
+  started_at: null
+  done_at: null
+  failed_reason: null
+
+- id: T026
+  project: ai-learning
+  type: knowledge_report
+  target: "AI Coding Agent 终端架构：Scaffolding x Harness x Context 三层模型"
+  value: "核心文献: arxiv 2603.05344 (Building AI Coding Agents for the Terminal); GitHub 实证: obra/superpowers (2055今日+70176月增,'agentic skills framework'); Grok Code Fast 靠 edit format 从 6.7%->68.3%; Harness 决定性证据; 与 ToA 论技术互证; 与 EverAgent 自身架构对照"
+  priority: P2
+  required_capability: task_executor
+  status: open
+  claimed_by: null
+  claimed_at: null
+  started_at: null
+  done_at: null
+  failed_reason: null

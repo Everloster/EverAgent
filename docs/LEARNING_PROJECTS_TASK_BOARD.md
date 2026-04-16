@@ -3,7 +3,7 @@
 > 本文件为自动生成视图，由 `scripts/task_board_aggregator.py` 维护
 > **请勿直接编辑**，编辑将覆盖
 > 任务权威源：各项目的 `.project-task-state`，以及根目录的 `/.project-task-state`（global 任务）
-> 更新日期：**2026-04-16**
+> 更新日期：**2026-04-16**（T020-T026 基于 GitHub Trending 日/周/月实时数据重写）
 
 ---
 
@@ -30,7 +30,94 @@
 
 ## 任务队列
 
-### 开放任务池（P3）
+### 🔥 开放任务池（P1/P2）— ai-learning 2026 Q1 Agent × Harness 专项
+> 数据来源：GitHub Trending 日/周/月榜 2026-04-16 实时抓取，所有任务均有 GitHub 实证支撑
+
+```yaml
+# ── 主线一：Harness Engineering ───────────────────────────────────────────
+
+- id: T020
+  project: ai-learning
+  type: knowledge_report
+  target: "Agent Harness 三大设计流派：everything-claude-code x deer-flow x Archon"
+  value: "月榜#1 affaan-m/everything-claude-code (81757月增) + bytedance/deer-flow (31460月增) + coleam00/Archon (4263周增,'first open-source harness builder'); performance vs long-horizon vs deterministic 三种哲学"
+  priority: P1
+  required_capability: task_executor
+  status: open
+  claimed_by: null
+  claimed_at: null
+
+- id: T021
+  project: ai-learning
+  type: knowledge_report
+  target: "Agent Skills 生态：从 Karpathy 的 CLAUDE.md 到可复用技能树"
+  value: "日榜#1 forrestchang/andrej-karpathy-skills (9646今日+30919周); addyosmani/agent-skills (6693周) + mattpocock/skills (14248月) + obra/superpowers (70176月); Karpathy LLM编程哲学->CLAUDE.md 机制; Skills 作为 Harness 核心组件"
+  priority: P1
+  required_capability: task_executor
+  status: open
+  claimed_by: null
+  claimed_at: null
+
+- id: T022
+  project: ai-learning
+  type: knowledge_report
+  target: "Agent Memory 系统深度解析：claude-mem 的设计与上下文工程实践"
+  value: "双榜实证 thedotmack/claude-mem (2305今日+10779周,58K stars); 捕获->压缩->注入三步机制; Memory 在 Harness 架构中的位置; mvanhorn/last30days-skill (18023月) 对比"
+  priority: P1
+  required_capability: task_executor
+  status: open
+  claimed_by: null
+  claimed_at: null
+
+# ── 主线二：Agent 架构与进化 ──────────────────────────────────────────────
+
+- id: T023
+  project: ai-learning
+  type: knowledge_report
+  target: "自进化 Agent 架构：hermes-agent x GenericAgent 的技能树机制"
+  value: "月/周双榜#1 NousResearch/hermes-agent (53110周+81412月,91K stars,'The agent that grows with you'); 对照 lsdefine/GenericAgent ('grows skill tree from 3.3K-line seed'); Self-improvement 实现与边界"
+  priority: P1
+  required_capability: task_executor
+  status: open
+  claimed_by: null
+  claimed_at: null
+
+- id: T024
+  project: ai-learning
+  type: knowledge_report
+  target: "Managed Agents Platform：multica 的 Agent-as-Teammate 范式解析"
+  value: "周榜实证 multica-ai/multica (10864周,'Turn coding agents into real teammates'); Agent 团队管理产品化; Compound Skills 机制; vs LangGraph/CrewAI/AutoGen 定位差异"
+  priority: P1
+  required_capability: task_executor
+  status: open
+  claimed_by: null
+  claimed_at: null
+
+- id: T025
+  project: ai-learning
+  type: knowledge_report
+  target: "垂直 AI Agent 爆发：金融领域三大架构（TradingAgents x Kronos x ai-hedge-fund）"
+  value: "三榜实证: TauricResearch/TradingAgents (18792月) + shiyu-coder/Kronos (6486周) + virattt/ai-hedge-fund (1058今日,55K stars); 垂直域 vs 通用 Agent 技术权衡; 金融时序数据与 LLM 融合路径"
+  priority: P2
+  required_capability: task_executor
+  status: open
+  claimed_by: null
+  claimed_at: null
+
+- id: T026
+  project: ai-learning
+  type: knowledge_report
+  target: "AI Coding Agent 终端架构：Scaffolding x Harness x Context 三层模型"
+  value: "核心文献 arxiv 2603.05344; GitHub实证 obra/superpowers (2055今日+70176月); Grok Code Fast 6.7%->68.3% 靠 edit format; Harness决定性证据; 与 ToA 论技术互证; EverAgent 自身架构对照"
+  priority: P2
+  required_capability: task_executor
+  status: open
+  claimed_by: null
+  claimed_at: null
+
+```
+
+### 开放任务池（P3）— 其他子项目
 
 ```yaml
 - id: T011
