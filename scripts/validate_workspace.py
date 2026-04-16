@@ -15,6 +15,7 @@ import sys
 from dataclasses import dataclass
 from pathlib import Path
 
+from project_registry import AGENTS_REGISTRY, discover_projects, load_agents_registry
 from task_state import PROJECTS as TASK_STATE_PROJECTS, state_file_for_project
 
 
@@ -234,6 +235,111 @@ def validate_task_state_files() -> list[ValidationIssue]:
     return issues
 
 
+def validate_agents_registry(strict: bool) -> list[ValidationIssue]:
+    issues: list[ValidationIssue] = []
+    registry_path = AGENTS_REGISTRY
+    severity = "ERROR" if strict else "WARN"
+
+    if not registry_path.exists():
+        issues.append(ValidationIssue("ERROR", registry_path.relative_to(ROOT), "agents registry file is missing"))
+        return issues
+
+    entries = load_agents_registry(registry_path)
+    if not entries:
+        issues.append(ValidationIssue("ERROR", registry_path.relative_to(ROOT), "agents registry is empty or unreadable"))
+        return issues
+
+    seen_agents: set[str] = set()
+    seen_projects: set[str] = set()
+    discovered_projects = discover_projects()
+
+    for entry in entries:
+        missing_fields = [
+            field_name
+            for field_name in ("agent", "project", "protocol", "domain", "status", "title")
+            if not getattr(entry, field_name).strip()
+        ]
+        if missing_fields:
+            issues.append(
+                ValidationIssue(
+                    "ERROR",
+                    registry_path.relative_to(ROOT),
+                    f"registry entry for project '{entry.project or '?'}' missing fields: {', '.join(missing_fields)}",
+                )
+            )
+            continue
+
+        if entry.agent in seen_agents:
+            issues.append(
+                ValidationIssue(
+                    "ERROR",
+                    registry_path.relative_to(ROOT),
+                    f"duplicate agent in registry: {entry.agent}",
+                )
+            )
+        seen_agents.add(entry.agent)
+
+        if entry.project in seen_projects:
+            issues.append(
+                ValidationIssue(
+                    "ERROR",
+                    registry_path.relative_to(ROOT),
+                    f"duplicate project in registry: {entry.project}",
+                )
+            )
+        seen_projects.add(entry.project)
+
+        project_path = ROOT / entry.project
+        protocol_path = ROOT / entry.protocol
+        if not project_path.exists():
+            issues.append(
+                ValidationIssue(
+                    "ERROR",
+                    registry_path.relative_to(ROOT),
+                    f"registry project does not exist on disk: {entry.project}",
+                )
+            )
+        if not protocol_path.exists():
+            issues.append(
+                ValidationIssue(
+                    "ERROR",
+                    registry_path.relative_to(ROOT),
+                    f"registry protocol does not exist on disk: {entry.protocol}",
+                )
+            )
+        state_path = project_path / ".project-task-state"
+        if not state_path.exists():
+            issues.append(
+                ValidationIssue(
+                    "ERROR",
+                    registry_path.relative_to(ROOT),
+                    f"registry project missing state file: {state_path.relative_to(ROOT)}",
+                )
+            )
+
+    missing_registry_projects = sorted(set(discovered_projects) - seen_projects)
+    if missing_registry_projects:
+        issues.append(
+            ValidationIssue(
+                severity,
+                registry_path.relative_to(ROOT),
+                "projects discovered on disk but missing from registry: " + ", ".join(missing_registry_projects),
+            )
+        )
+
+    unknown_registry_projects = sorted(seen_projects - set(discovered_projects))
+    if unknown_registry_projects:
+        issues.append(
+            ValidationIssue(
+                "ERROR",
+                registry_path.relative_to(ROOT),
+                "registry contains unknown projects: " + ", ".join(unknown_registry_projects),
+            )
+        )
+
+    return issues
+
+
 def validate_report_naming(only_paths: set[Path] | None, strict: bool) -> list[ValidationIssue]:
     issues: list[ValidationIssue] = []
     severity = "ERROR" if strict else "WARN"
@@ -288,6 +394,7 @@ def main() -> int:
         lambda: validate_text_encoding(only_paths),
         validate_git_locks,
         validate_task_state_files,
+        lambda: validate_agents_registry(strict),
         lambda: validate_report_naming(only_paths, strict),
     ]
 
