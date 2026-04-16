@@ -60,6 +60,7 @@
 | [dns.md](./concepts/dns.md) | 层级命名 + 委托授权 + 缓存 + 递归/迭代查询 |
 | [information_theory.md](./concepts/information_theory.md) | Shannon 信息熵 + 源编码 + 信道容量 + 互信息 |
 | [computation_theory.md](./concepts/computation_theory.md) | 图灵机 / Lambda 演算 / Church-Turing 论题 / 停机问题 |
+| [os_kernel_design.md](./concepts/os_kernel_design.md) | 操作系统内核：UNIX一切皆文件·fork/exec/pipe·FFS·CSP·宏内核vs微内核·io_uring·Unikernel |
 
 ---
 
