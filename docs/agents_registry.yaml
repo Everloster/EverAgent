@@ -1,0 +1,41 @@
+- agent: NeuronAgent
+  project: ai-learning
+  protocol: ai-learning/AGENTS.md
+  domain: AI/ML 论文精读·技术报告
+  status: "🟢"
+  title: "🤖 AI Learning"
+
+- agent: ByteAgent
+  project: cs-learning
+  protocol: cs-learning/AGENTS.md
+  domain: 计算机科学·系统·算法
+  status: "🟢"
+  title: "💻 CS Learning"
+
+- agent: SocratesAgent
+  project: philosophy-learning
+  protocol: philosophy-learning/AGENTS.md
+  domain: 西方哲学·文本分析
+  status: "🟡"
+  title: "📚 Philosophy Learning"
+
+- agent: PsycheAgent
+  project: psychology-learning
+  protocol: psychology-learning/AGENTS.md
+  domain: 心理学·经典实验
+  status: "🟢"
+  title: "🧠 Psychology Learning"
+
+- agent: BioAgent
+  project: biology-learning
+  protocol: biology-learning/AGENTS.md
+  domain: 时间生物学·睡眠·运动生理
+  status: "🟡"
+  title: "🧬 Biology Learning"
+
+- agent: TrendAgent
+  project: github-trending-analyzer
+  protocol: github-trending-analyzer/AGENTS.md
+  domain: 开源热点·Repo 知识库
+  status: "🟢"
+  title: "📈 GitHub Trending Analyzer"

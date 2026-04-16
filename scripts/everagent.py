@@ -13,7 +13,10 @@ import subprocess
 import sys
 from pathlib import Path
 
+from project_lock import parse_lock
+from project_registry import STATE_FILE_NAME, discover_projects, load_agents_registry
 from task_state import find_stale_tasks
+from task_state import load_all_tasks, state_file_for_project
 from task_state_cli import command_abandon
 
 
@@ -99,6 +102,123 @@ def command_sweep_stale_tasks(args: argparse.Namespace) -> int:
     return 0
 
 
+def collect_audit_findings() -> tuple[list[str], list[str], list[str]]:
+    errors: list[str] = []
+    warnings: list[str] = []
+    infos: list[str] = []
+
+    registry_entries = load_agents_registry()
+    discovered_projects = discover_projects()
+    registry_projects = {entry.project for entry in registry_entries}
+
+    if not registry_entries:
+        errors.append("agents_registry.yaml is missing or empty")
+    else:
+        infos.append(f"registry_entries={len(registry_entries)}")
+
+    project_counts: dict[str, int] = {}
+    for entry in registry_entries:
+        project_counts[entry.project] = project_counts.get(entry.project, 0) + 1
+    duplicate_projects = sorted(project for project, count in project_counts.items() if count > 1)
+    if duplicate_projects:
+        errors.append("duplicate registry projects: " + ", ".join(duplicate_projects))
+
+    for entry in registry_entries:
+        project_path = ROOT / entry.project
+        protocol_path = ROOT / entry.protocol
+        if not project_path.exists():
+            errors.append(f"registry project missing on disk: {entry.project}")
+        if not protocol_path.exists():
+            errors.append(f"registry protocol missing on disk: {entry.protocol}")
+        try:
+            state_path = state_file_for_project(entry.project)
+        except KeyError:
+            state_path = project_path / STATE_FILE_NAME
+        if not state_path.exists():
+            errors.append(f"registry state file missing: {state_path.relative_to(ROOT)}")
+
+    extra_projects = sorted(set(discovered_projects) - registry_projects)
+    if extra_projects:
+        warnings.append("discovered projects missing from registry: " + ", ".join(extra_projects))
+
+    active_tasks = [task for task in load_all_tasks(include_global=False) if task.is_active]
+    if active_tasks:
+        infos.append(f"active_tasks={len(active_tasks)}")
+    for task in active_tasks:
+        lock_path = ROOT / task.project / ".agent-lock"
+        lock = parse_lock(lock_path)
+        if lock is None:
+            warnings.append(f"active task without lock: {task.id} ({task.project})")
+            continue
+        if lock.task_id != task.id:
+            warnings.append(f"lock/task mismatch for {task.project}: lock={lock.task_id} task={task.id}")
+
+    for project in discovered_projects:
+        lock_path = ROOT / project / ".agent-lock"
+        lock = parse_lock(lock_path)
+        if lock is None:
+            continue
+        matching_active = [task for task in active_tasks if task.project == project and task.id == lock.task_id]
+        if not matching_active:
+            warnings.append(f"orphan lock without active task: {project} ({lock.task_id})")
+
+    return errors, warnings, infos
+
+
+def cleanup_orphan_locks() -> list[str]:
+    active_tasks = [task for task in load_all_tasks(include_global=False) if task.is_active]
+    cleaned: list[str] = []
+    for project in discover_projects():
+        lock_path = ROOT / project / ".agent-lock"
+        lock = parse_lock(lock_path)
+        if lock is None:
+            continue
+        matching_active = [task for task in active_tasks if task.project == project and task.id == lock.task_id]
+        if matching_active:
+            continue
+        lock_path.unlink(missing_ok=True)
+        cleaned.append(f"removed orphan lock: {project}/.agent-lock")
+    return cleaned
+
+
+def command_audit(_: argparse.Namespace) -> int:
+    errors, warnings, infos = collect_audit_findings()
+    for item in infos:
+        print(f"[INFO] {item}")
+    for item in warnings:
+        print(f"[WARN] {item}")
+    for item in errors:
+        print(f"[ERROR] {item}")
+    if errors:
+        return 1
+    return 0
+
+
+def command_reconcile(args: argparse.Namespace) -> int:
+    if args.abandon_stale:
+        code = command_sweep_stale_tasks(
+            argparse.Namespace(ttl_hours=args.ttl_hours, apply=True, reason=args.reason)
+        )
+        if code != 0:
+            return code
+
+    for item in cleanup_orphan_locks():
+        print(f"[FIXED] {item}")
+
+    sync_code = command_sync(argparse.Namespace(sync_readme=True))
+    if sync_code != 0:
+        return sync_code
+
+    errors, warnings, infos = collect_audit_findings()
+    for item in infos:
+        print(f"[INFO] {item}")
+    for item in warnings:
+        print(f"[WARN] {item}")
+    for item in errors:
+        print(f"[ERROR] {item}")
+    return 1 if errors else 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="EverAgent maintenance CLI")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -120,6 +240,15 @@ def build_parser() -> argparse.ArgumentParser:
     sweep.add_argument("--apply", action="store_true", help="Apply the abandon transition")
     sweep.add_argument("--reason", help="Optional abandon reason override")
     sweep.set_defaults(func=command_sweep_stale_tasks)
+
+    audit = sub.add_parser("audit", help="Inspect registry/task/lock drift without changing files")
+    audit.set_defaults(func=command_audit)
+
+    reconcile = sub.add_parser("reconcile", help="Apply safe reconciliation and then audit the workspace")
+    reconcile.add_argument("--abandon-stale", action="store_true", help="Also abandon stale active tasks before syncing views")
+    reconcile.add_argument("--ttl-hours", type=int, default=72, help="Stale threshold in hours when abandoning stale tasks")
+    reconcile.add_argument("--reason", help="Optional abandon reason override")
+    reconcile.set_defaults(func=command_reconcile)
 
     return parser
 

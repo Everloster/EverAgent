@@ -9,26 +9,15 @@ import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
+from project_registry import load_agents_registry
 from task_state import GLOBAL_PROJECT, LEARNING_PROJECTS, TaskEntry, load_all_tasks
 
 
 ROOT = Path(__file__).resolve().parents[1]
 TASK_BOARD = ROOT / "docs" / "LEARNING_PROJECTS_TASK_BOARD.md"
 ROOT_README = ROOT / "README.md"
-GLOBAL_AGENTS = ROOT / "AGENTS.md"
 README_OVERVIEW_START = "<!-- PROJECT_OVERVIEW:START -->"
 README_OVERVIEW_END = "<!-- PROJECT_OVERVIEW:END -->"
-REGISTRY_ROW_PATTERN = re.compile(
-    r"^\| \*\*(?P<agent>[^*]+)\*\* \| `(?P<project>[^`]+)/` \| `(?P<protocol>[^`]+)` \| (?P<domain>.+?) \| (?P<status>[^|]+) \|$"
-)
-PROJECT_TITLES = {
-    "ai-learning": "🤖 AI Learning",
-    "cs-learning": "💻 CS Learning",
-    "philosophy-learning": "📚 Philosophy Learning",
-    "psychology-learning": "🧠 Psychology Learning",
-    "biology-learning": "🧬 Biology Learning",
-    "github-trending-analyzer": "📈 GitHub Trending Analyzer",
-}
 
 # If an active task hasn't been updated within this window, flag it in the board view.
 STALE_HOURS = 72
@@ -70,14 +59,11 @@ class ProjectStats:
 
 
 class CatalogEntry:
-    def __init__(self, project: str, domain: str, status: str) -> None:
+    def __init__(self, project: str, domain: str, status: str, title: str) -> None:
         self.project = project
         self.domain = domain
         self.status = status.strip()
-
-    @property
-    def title(self) -> str:
-        return PROJECT_TITLES.get(self.project, self.project.replace("-", " ").title())
+        self.title = title.strip() or self.project.replace("-", " ").title()
 
     @property
     def readme_link(self) -> str:
@@ -121,19 +107,15 @@ def count_trending_reports(project_path: Path) -> str:
 
 
 def load_catalog_entries() -> list[CatalogEntry]:
-    entries: list[CatalogEntry] = []
-    for line in GLOBAL_AGENTS.read_text(encoding="utf-8").splitlines():
-        match = REGISTRY_ROW_PATTERN.match(line.strip())
-        if not match:
-            continue
-        entries.append(
-            CatalogEntry(
-                project=match.group("project"),
-                domain=match.group("domain").strip(),
-                status=match.group("status").strip(),
-            )
+    return [
+        CatalogEntry(
+            project=entry.project,
+            domain=entry.domain,
+            status=entry.status,
+            title=entry.title,
         )
-    return entries
+        for entry in load_agents_registry()
+    ]
 
 
 def format_report_summary(project: str, stats: dict[str, ProjectStats]) -> str:

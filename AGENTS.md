@@ -47,6 +47,7 @@ python3 scripts/git_identity.py validate
 | **TrendAgent** | `github-trending-analyzer/` | `github-trending-analyzer/AGENTS.md` | 开源热点·Repo 知识库 | 🟢 |
 
 > 子 Agent 完全自包含：读取对应 `AGENTS.md` 即可独立执行，**不需要回读本文件**。
+> 机器可读注册表：`docs/agents_registry.yaml`。自动化脚本应优先读取该文件，而不是解析本表格。
 
 ---
 
