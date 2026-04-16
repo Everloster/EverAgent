@@ -1,6 +1,6 @@
 ---
 title: "EverAgent 作为 ToA 原型的解剖 — 一个运行中的硅碳协作系统的自我审视"
-domain: "AI Paradigm / Multi-Agent Systems / System Design"
+domain: "ai-learning"
 report_type: "concept_deep_dive"
 status: "completed"
 updated_on: "2026-04-15"

@@ -8,11 +8,11 @@
 
 ## §1 任务输入 Schema（Task Input）
 
-任务领取时必须校验的标准化结构。
+任务领取时必须校验的标准化结构。任务源为各项目的 `.project-task-state`；Task Board 只是聚合视图。
 
 ```yaml
 task_input:
-  task_id: string          # 非空，匹配 Task Board 中的 id（如 T001）
+  task_id: string          # 非空，匹配 .project-task-state 中的 id（如 T001）
   project: string          # 必须与 agent 项目路径匹配（如 ai-learning）
   type: enum               # paper_analysis | knowledge_report | text_analysis | concept_report
   target: string           # 非空，具体论文/文本/主题（如 VideoMAE (2022)）
@@ -25,7 +25,7 @@ task_input:
 
 | 字段 | 规则 |
 |------|------|
-| `task_id` | 非空，必须存在于 Task Board |
+| `task_id` | 非空，必须存在于 `.project-task-state` |
 | `project` | 必须与当前 Agent 项目路径一致 |
 | `type` | 必须在枚举值范围内 |
 | `target` | 非空，长度 > 0 |
@@ -36,14 +36,16 @@ task_input:
 ### §1.2 校验时机
 
 ```
-0. 读取 Task Board，选取 status: open 的任务
+0. 读取对应项目的 `.project-task-state`，选取 `status: open` 的任务
 1. 构造 task_input 结构
-2. 运行 python3 scripts/execution_validator.py --mode=input --task-id=TXXX
+2. 运行 `python3 scripts/execution_validator.py --mode=input --task-id=TXXX --project=<project>`
    → 校验失败则停止，不 claim 任务
    → 校验成功则继续步骤 3
-3. 将 status 改为 claimed，填写 claimed_by 和 claimed_at
-4. 立即 commit push（防并发冲突）
-5. 将 status 改为 in_progress，填写 started_at
+3. 运行 `python3 scripts/project_lock.py acquire --project=<project> --task-id=TXXX --agent=<AgentName>`
+   → 获取锁失败则停止，不 claim 任务
+4. 将状态文件中的任务改为 claimed，填写 claimed_by 和 claimed_at
+5. 立即 commit push（防并发冲突）
+6. 将状态文件中的任务改为 in_progress，填写 started_at
 ```
 
 ---
@@ -86,11 +88,12 @@ task_output:
 ```
 [任务执行完成后，commit 前]
 1. 构造 task_output 结构
-2. 运行 python3 scripts/execution_validator.py --mode=output --task-id=TXXX
+2. 运行 `python3 scripts/execution_validator.py --mode=output --task-id=TXXX --project=<project>`
    → 校验失败则不 commit，修复后重试
    → 校验成功则继续步骤 3
 3. 更新 status 为 done/failed
 4. commit push
+5. 运行 `python3 scripts/project_lock.py release --project=<project> --task-id=TXXX --agent=<AgentName>`
 ```
 
 ---
@@ -122,7 +125,7 @@ failure_report:
 ```
 1. 填写 failure_report
 2. 不删除 partial_files_created（保留中间产物）
-3. 将 Task Board 中对应任务 status 改为 failed
+3. 将对应 `.project-task-state` 中的任务 status 改为 failed
 4. commit push（message 包含 failed_reason）
 5. 不更新 CONTEXT.md（由 EverAgent 后续处理）
 ```
@@ -135,10 +138,16 @@ failure_report:
 
 ```bash
 # 输入校验（领取任务前）
-python3 scripts/execution_validator.py --mode=input --task-id=T001 [--project=ai-learning]
+python3 scripts/execution_validator.py --mode=input --task-id=T001 --project=ai-learning
+
+# 获取项目锁（领取后，写入前）
+python3 scripts/project_lock.py acquire --project=ai-learning --task-id=T001 --agent=NeuronAgent
 
 # 输出校验（完成任务后）
 python3 scripts/execution_validator.py --mode=output --task-id=T001 --project=ai-learning
+
+# 释放项目锁（push 后）
+python3 scripts/project_lock.py release --project=ai-learning --task-id=T001 --agent=NeuronAgent
 
 # 自检模式（验证脚本自身）
 python3 scripts/execution_validator.py --mode=self-check
@@ -162,6 +171,7 @@ python3 scripts/execution_validator.py --help
 - **validate_workspace.py**：全局 pre-commit 校验（文件存在性、frontmatter、链接等）
 - **validate_reports.py**：TrendAgent 专用报告校验（V-NAME ~ V-LANG 8项检查）
 - **execution_validator.py**：任务执行输入/输出标准化校验（本文档定义）
+- **project_lock.py**：项目级写锁管理（防并发写入）
 
 三者是互补关系：
 ```

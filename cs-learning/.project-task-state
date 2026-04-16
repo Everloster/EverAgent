@@ -1,0 +1,38 @@
+- id: T003
+  project: cs-learning
+  type: paper_analysis
+  target: "DNS (1987, RFC 1034/1035)"
+  value: "网络方向第一篇; 与 TCP/IP 自然衔接"
+  priority: P1
+  required_capability: task_executor
+  status: done
+  claimed_by: MiniMax-M2.7
+  claimed_at: 2026-04-05T10:00:00+08:00
+  started_at: 2026-04-05T10:30:00+08:00
+  done_at: 2026-04-05T15:47:00+08:00
+
+- id: T004
+  project: cs-learning
+  type: knowledge_report
+  target: "分布式系统知识图谱"
+  value: "19篇精读可归纳 Storage/Consensus/Coordination/Messaging 四主线; 知识报告比仅5%"
+  priority: P1
+  required_capability: task_executor
+  status: done
+  claimed_by: MiniMax-M2.7
+  claimed_at: 2026-04-05T10:00:00+08:00
+  started_at: 2026-04-05T10:30:00+08:00
+  done_at: 2026-04-05T15:47:00+08:00
+
+- id: T014
+  project: cs-learning
+  type: paper_analysis
+  target: "BGP (RFC 4271, 2006)"
+  value: "网络方向深化（BGP是互联网路由基础）"
+  priority: P2
+  required_capability: task_executor
+  status: done
+  claimed_by: claude-sonnet-4-6
+  claimed_at: 2026-04-16T10:00:00+08:00
+  started_at: 2026-04-16T10:05:00+08:00
+  done_at: 2026-04-16T11:30:00+08:00

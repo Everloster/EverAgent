@@ -1,0 +1,36 @@
+- id: T005
+  project: philosophy-learning
+  type: text_analysis
+  target: "黑格尔《精神现象学》导论"
+  value: "补齐德国唯心论主线; 与康德/亚里士多德形成三角"
+  priority: P1
+  required_capability: task_executor
+  status: done
+  claimed_by: MiniMax-M2.7
+  claimed_at: 2026-04-05T10:00:00+08:00
+  started_at: 2026-04-05T10:30:00+08:00
+  done_at: 2026-04-05T15:47:00+08:00
+
+- id: T007
+  project: philosophy-learning
+  type: text_analysis
+  target: "罗尔斯《正义论》第一章"
+  value: "当代政治哲学主线入口"
+  priority: P2
+  required_capability: task_executor
+  status: done
+  claimed_by: claude-sonnet-4-6
+  claimed_at: 2026-04-06T00:00:00+08:00
+  started_at: 2026-04-06T00:00:00+08:00
+  done_at: 2026-04-06T00:00:00+08:00
+
+- id: T011
+  project: philosophy-learning
+  type: knowledge_report
+  target: "扩展知识跨时代比较至自由意志专题"
+  value: "现有比较聚焦知识论, 自由意志是另一高张力主线"
+  priority: P3
+  required_capability: task_executor
+  status: open
+  claimed_by: null
+  claimed_at: null
