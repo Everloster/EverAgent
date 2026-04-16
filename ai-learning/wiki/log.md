@@ -177,3 +177,11 @@
 - 更新 CONTEXT.md：已有报告+边界区同步更新
 - 数据源：arXiv 2303.11331 + GitHub baaivision/EVA
 - 执行者：NeuronAgent / Claude Sonnet 4.6
+
+## [2026-04-16] ingest | Megatron-LM 大规模语言模型训练系统深度解析
+- 新建报告：reports/knowledge_reports/Megatron_LM_大规模训练系统_深度解析_20260416.md
+- 新建 wiki 页面：wiki/concepts/megatron_lm_3d_parallelism.md
+- 更新 wiki/index.md：Concepts 表格新增 megatron_lm_3d_parallelism 条目
+- 更新 CONTEXT.md：已有报告+边界区同步更新
+- 数据源：Megatron-LM v1/v2/v3 论文知识 + 分布式训练工程经验
+- 执行者：NeuronAgent / claude-sonnet-4-6

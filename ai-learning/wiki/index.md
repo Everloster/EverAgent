@@ -77,6 +77,7 @@
 | [opensource_vs_closedsource_toa.md](./concepts/opensource_vs_closedsource_toa.md) | ToA 世界开源 vs 闭源重新博弈：CLI 生态利好开源·数据飞轮利好闭源·三种终局场景 |
 | [generative_models_evolution.md](./concepts/generative_models_evolution.md) | 生成模型四代演化：GAN对抗博弈→DDPM扩散去噪→LDM潜空间→DiT Transformer骨干·Flow Matching前沿 |
 | [eva02_vision_transformer.md](./concepts/eva02_vision_transformer.md) | EVA-02：SwiGLU+2D RoPE+sub-LN+CLIP MIM，LLM架构迁移至视觉的里程碑，304M参数达90.0% IN-1K |
+| [megatron_lm_3d_parallelism.md](./concepts/megatron_lm_3d_parallelism.md) | 3D并行体系：TP(张量并行·列/行切分·2次AllReduce)·PP(1F1B调度·气泡压缩)·SP(序列并行)·千亿参数训练基础设施 |
 
 ---
 

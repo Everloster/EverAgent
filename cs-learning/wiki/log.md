@@ -89,3 +89,12 @@
 - 更新 CONTEXT.md：已有报告+边界区同步更新
 - 数据源：RFC 4271 (IETF) + Wikipedia BGP
 - 执行者：ByteAgent / Claude Sonnet 4.6
+
+## [2026-04-16] ingest | Go To Statement Considered Harmful (Dijkstra, 1968)
+- 新建报告：reports/paper_analyses/32_dijkstra_goto_1968.md
+- 更新 wiki 页面：wiki/entities/dijkstra_edsger.md（追加报告链接）
+- 新建 wiki 页面：wiki/concepts/structured_programming.md
+- 更新 wiki/index.md：Concepts 表格新增 structured_programming 条目
+- 更新 CONTEXT.md：已有报告+边界区同步更新
+- 数据源：Dijkstra (1968) CACM 原文 + 历史文献知识
+- 执行者：ByteAgent / claude-sonnet-4-6

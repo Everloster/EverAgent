@@ -36,3 +36,16 @@
   claimed_at: 2026-04-16T10:00:00+08:00
   started_at: 2026-04-16T10:05:00+08:00
   done_at: 2026-04-16T11:30:00+08:00
+
+- id: T015
+  project: cs-learning
+  type: paper_analysis
+  target: "Dijkstra Go To Statement Considered Harmful (1968)"
+  value: "编程语言理论入口; 结构化编程革命宣言; CONTEXT.md 下一步推荐"
+  priority: P2
+  required_capability: task_executor
+  status: done
+  claimed_by: ByteAgent
+  claimed_at: 2026-04-16T16:22:12+08:00
+  started_at: 2026-04-16T16:22:15+08:00
+  done_at: 2026-04-16T16:25:41+08:00

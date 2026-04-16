@@ -28,6 +28,7 @@ sources: [CS关键人物图谱]
 
 ## 在本项目的相关报告
 - [CS 关键人物图谱](../../reports/knowledge_reports/CS关键人物图谱.md)
+- [Go To Statement Considered Harmful 精读](../../reports/paper_analyses/32_dijkstra_goto_1968.md)
 
 ## 传承影响
 - 直接思想传承：C.A.R. Hoare（结构化 → 形式化验证）

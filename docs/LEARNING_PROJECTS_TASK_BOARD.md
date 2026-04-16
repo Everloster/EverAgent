@@ -20,8 +20,8 @@
 
 | 项目 | 当前状态 | 论文/文本精读 | 知识/概念报告 | 知识报告比 |
 |------|----------|:---:|:---:|:---:|
-| `ai-learning` | 🟢 | 37 | 18 | 33% |
-| `cs-learning` | 🟢 | 21 | 4 | 16% |
+| `ai-learning` | 🟢 | 37 | 19 | 34% |
+| `cs-learning` | 🟢 | 22 | 4 | 15% |
 | `philosophy-learning` | 🟡 | 10 | 2 | 17% |
 | `psychology-learning` | 🟡 | 12 | 2 | 14% |
 | `biology-learning` | 🟡 | 5 | 1 | 17% |
@@ -60,6 +60,32 @@
 ### 最近完成（自动生成）
 
 ```yaml
+- id: T016
+  project: ai-learning
+  type: knowledge_report
+  target: "Megatron-LM 大规模语言模型训练系统深度解析"
+  value: "工程类主线剩余缺口; 张量并行+流水线并行+数据并行 3D并行体系; CONTEXT.md 下一步推荐"
+  priority: P2
+  required_capability: task_executor
+  status: done
+  claimed_by: NeuronAgent
+  claimed_at: 2026-04-16T16:22:12+08:00
+  started_at: 2026-04-16T16:22:15+08:00
+  done_at: 2026-04-16T16:30:34+08:00
+
+- id: T015
+  project: cs-learning
+  type: paper_analysis
+  target: "Dijkstra Go To Statement Considered Harmful (1968)"
+  value: "编程语言理论入口; 结构化编程革命宣言; CONTEXT.md 下一步推荐"
+  priority: P2
+  required_capability: task_executor
+  status: done
+  claimed_by: ByteAgent
+  claimed_at: 2026-04-16T16:22:12+08:00
+  started_at: 2026-04-16T16:22:15+08:00
+  done_at: 2026-04-16T16:25:41+08:00
+
 - id: T013
   project: ai-learning
   type: paper_analysis
@@ -156,32 +182,6 @@
   type: paper_analysis
   target: "DNS (1987, RFC 1034/1035)"
   value: "网络方向第一篇; 与 TCP/IP 自然衔接"
-  priority: P1
-  required_capability: task_executor
-  status: done
-  claimed_by: MiniMax-M2.7
-  claimed_at: 2026-04-05T10:00:00+08:00
-  started_at: 2026-04-05T10:30:00+08:00
-  done_at: 2026-04-05T15:47:00+08:00
-
-- id: T004
-  project: cs-learning
-  type: knowledge_report
-  target: "分布式系统知识图谱"
-  value: "19篇精读可归纳 Storage/Consensus/Coordination/Messaging 四主线; 知识报告比仅5%"
-  priority: P1
-  required_capability: task_executor
-  status: done
-  claimed_by: MiniMax-M2.7
-  claimed_at: 2026-04-05T10:00:00+08:00
-  started_at: 2026-04-05T10:30:00+08:00
-  done_at: 2026-04-05T15:47:00+08:00
-
-- id: T005
-  project: philosophy-learning
-  type: text_analysis
-  target: "黑格尔《精神现象学》导论"
-  value: "补齐德国唯心论主线; 与康德/亚里士多德形成三角"
   priority: P1
   required_capability: task_executor
   status: done
