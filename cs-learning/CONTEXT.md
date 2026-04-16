@@ -28,6 +28,7 @@
 - `28_chord_2001` — Chord P2P查找协议·一致哈希环·Finger Table·O(logN)路由·稳定化协议·DHT奠基（2026-03-30）
 - `29_chubby_2006` — 粗粒度分布式锁服务·5副本Paxos cell·类文件系统接口·advisory锁+Sequencer·Grace period·意外成为Google主要命名服务（2026-03-31）
 - `31_bgp_rfc4271_2006` — RFC 4271·路径向量协议·AS间路由·AS_PATH防环·TCP 179·四类消息·六态FSM·CIDR聚合·互联网域间路由基石（2026-04-16）
+- `32_dijkstra_goto_1968` — Go To Statement Considered Harmful·结构化编程宣言·进度坐标可表达性框架·顺序/选择/循环三元组·Böhm-Jacopini基础·编程语言理论入口（2026-04-16）
 
 **知识深度解析** (`reports/knowledge_reports/`)
 - `CS关键人物图谱` — 图灵→香农→Dijkstra→现代系统工程师的思想传承
@@ -53,4 +54,4 @@
 - 编译器、数据库理论（关系代数等）方向尚无报告
 - 论文索引中列出但未精读的论文仅有索引，无分析报告
 - 操作系统方向已有知识报告（UNIX/FFS/CSP综合），但具体子话题（进程调度算法、虚拟内存管理）尚无专项报告
-- 下一步推荐：Dijkstra Go To Statement (1968)（编程语言理论入口）、数据库理论方向
+- 下一步推荐：Hoare Axiomatic Basis (1969)（编程语言形式化验证方向）、数据库理论方向（Codd Relational Model 1970）

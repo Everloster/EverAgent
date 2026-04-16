@@ -51,6 +51,7 @@
 **阅读难度**：⭐（极短，仅1页半，高度可读）
 **链接**：https://dl.acm.org/doi/10.1145/362929.362947
 
+**阅读状态**：✅ 已完成（见 `reports/paper_analyses/32_dijkstra_goto_1968.md`）
 ---
 
 ### #17 | An Axiomatic Basis for Computer Programming

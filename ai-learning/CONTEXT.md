@@ -63,6 +63,7 @@
 - `奶头乐ChatBot的真实战略价值_20260415` — ToC不是终点是数据基础设施·数据飞轮·RLHF依赖·防Model Collapse·三大AI公司战略对比（2026-04-15）
 - `开源vs闭源在ToA世界的重新博弈_20260415` — CLI原生论利好开源五条机制·闭源数据飞轮优势·DeepSeek分水岭·三种终局场景·监管变量（2026-04-15）
 - `生成模型演化全景_GAN_DDPM_LDM_DiT_20260416` — GAN→DDPM→Stable Diffusion→DiT四代演化·模式崩溃→扩散稳定→潜空间压缩→Transformer骨干·Flow Matching前沿·Sora视频生成（2026-04-16）
+- `Megatron_LM_大规模训练系统_深度解析_20260416` — 张量并行TP·流水线并行1F1B·序列并行SP·选择性激活重算·3D并行体系·DP+TP+PP组合策略·工程谱系与前沿动态（2026-04-16）
 
 ## 离线知识库
 → [`knowledge/INDEX.md`](./knowledge/INDEX.md)（子话题菜单，离线模型从此进入）
@@ -78,7 +79,7 @@
 ## ⚠️ 边界（防幻觉）
 以下内容**尚未研究**，禁止推测，须告知用户：
 - GPT-4 / Claude / Gemini 系列的专项分析报告（ToA报告中有引用现状描述，均标注为推断）
-- 工程类论文精读（Megatron-LM 等后续工程论文，EVA-02 已于 2026-04-16 完成）
+- 工程类论文精读（Megatron-LM 知识报告已完成；原始 Megatron 论文精读尚无独立 paper_analysis）
 - Phase 2 尚缺：DDIM 等后续扩散论文；VGGNet、Batch Normalization 专项报告
 - 生成模型知识报告已完成（GAN/DDPM/LDM/DiT综合），但DDIM加速采样、Consistency Models尚无专项报告
-- 下一步推荐：Megatron-LM 深度分析（工程类主线剩余缺口）
+- 下一步推荐：Megatron-LM 原始论文精读（v1/v2/v3 paper_analysis）、DDIM 加速采样专项报告、Consistency Models
