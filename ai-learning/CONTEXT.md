@@ -43,6 +43,7 @@
 - `30_refinedweb_2023` — RefinedWeb·5T tokens·Progressive Quality Filtering·Falkon LLM数据基础·高质量数据工程方法论（2026-04-11）
 - `39_google_translate_2016` — GNMT·深层残差LSTM 8+8层·WordPiece·Attention·NMT工业部署里程碑·BLEU+60%（2026-04-11）
 - `40_deepvideo_2014` — Deep Video·Sports-1M数据集·四种时序融合策略·Slow Fusion·多分辨率架构·CVPR 2014（2026-04-11）
+- `41_eva02_2023` — EVA-02·ViT+SwiGLU+2D RoPE+sub-LN·CLIP-ViT-bigG特征MIM·304M参数·ImageNet-1K 90.0% top-1·COCO 58.3 box AP·高效视觉基础模型里程碑（2026-04-16）
 
 **知识深度解析** (`reports/knowledge_reports/`)
 - `self_attention_深度解析` — 含代码实现
@@ -77,7 +78,7 @@
 ## ⚠️ 边界（防幻觉）
 以下内容**尚未研究**，禁止推测，须告知用户：
 - GPT-4 / Claude / Gemini 系列的专项分析报告（ToA报告中有引用现状描述，均标注为推断）
-- 工程类论文精读（EVA-02 等后续工程论文）
+- 工程类论文精读（Megatron-LM 等后续工程论文，EVA-02 已于 2026-04-16 完成）
 - Phase 2 尚缺：DDIM 等后续扩散论文；VGGNet、Batch Normalization 专项报告
 - 生成模型知识报告已完成（GAN/DDPM/LDM/DiT综合），但DDIM加速采样、Consistency Models尚无专项报告
-- 下一步推荐：EVA-02、Megatron-LM 深度分析（工程类主线缺口）
+- 下一步推荐：Megatron-LM 深度分析（工程类主线剩余缺口）

@@ -169,3 +169,11 @@
 - 更新 wiki/index.md：Concepts 表格新增 generative_models_evolution 条目
 - 数据源：08_gan_2014 / 09_ddpm_2020 / 20_stable_diffusion_2021 / 27_dit_2022 + 相关知识报告
 - 执行者：NeuronAgent / Claude Sonnet 4.6
+---
+## [2026-04-16] ingest | EVA-02: A Visual Representation for Neon Genesis (2023)
+- 新建报告：reports/paper_analyses/41_eva02_2023.md（7步分析框架，SwiGLU/2D RoPE/sub-LN架构解析，MIM预训练，IN-1K 90.0%）
+- 新建 concept：wiki/concepts/eva02_vision_transformer.md（架构要点·模型规格·EVA系列谱系·关联概念）
+- 更新 wiki/index.md：Concepts 表格新增 eva02_vision_transformer 条目
+- 更新 CONTEXT.md：已有报告+边界区同步更新
+- 数据源：arXiv 2303.11331 + GitHub baaivision/EVA
+- 执行者：NeuronAgent / Claude Sonnet 4.6
