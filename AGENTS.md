@@ -74,7 +74,7 @@ python3 scripts/git_identity.py validate
 ```
 open → claimed → in_progress → done
                              ↘ failed     (须填 failed_reason)
-                             ↘ abandoned  (claimed 后 48h 未更新 → 自动释放为 open)
+                             ↘ abandoned  (claimed/in_progress 超过 72h 未更新 → 标记为 abandoned；可后续 reopen)
 ```
 
 ### 任务 Schema

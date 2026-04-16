@@ -22,6 +22,7 @@ VALID_TRANSITIONS = {
     "done": {"claimed", "in_progress"},
     "fail": {"claimed", "in_progress"},
     "abandon": {"claimed", "in_progress"},
+    "reopen": {"failed", "abandoned"},
 }
 
 
@@ -105,6 +106,23 @@ def command_abandon(args: argparse.Namespace) -> int:
     return 0
 
 
+def command_reopen(args: argparse.Namespace) -> int:
+    task = require_task(args.task_id)
+    ensure_transition(task, "reopen")
+    updated = update_task(
+        task,
+        status="open",
+        claimed_by=None,
+        claimed_at=None,
+        started_at=None,
+        done_at=None,
+        failed_reason=None,
+    )
+    replace_task(task.project, task.id, updated)
+    print(f"[PASS] Reopened {task.id}")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Manage task-state transitions")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -140,6 +158,10 @@ def build_parser() -> argparse.ArgumentParser:
     abandon_parser.add_argument("--task-id", required=True)
     abandon_parser.add_argument("--reason")
     abandon_parser.set_defaults(func=command_abandon)
+
+    reopen_parser = subparsers.add_parser("reopen")
+    reopen_parser.add_argument("--task-id", required=True)
+    reopen_parser.set_defaults(func=command_reopen)
     return parser
 
 

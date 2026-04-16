@@ -2,7 +2,8 @@
 # EverAgent pre-commit hook: validate workspace metadata before commit
 # Runs validate_workspace.py and blocks commit if ERROR severity found
 #
-# Install: cp scripts/hooks/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
+# Install: python3 scripts/everagent.py hooks install
+# (legacy) cp scripts/hooks/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
 
 REPO_ROOT="$(git rev-parse --show-toplevel)"
 SCRIPT="$REPO_ROOT/scripts/validate_workspace.py"
@@ -25,7 +26,7 @@ if [ ! -f "$SCRIPT" ]; then
 fi
 
 echo "[pre-commit] Running workspace validation..."
-OUTPUT=$(python3 "$SCRIPT" 2>&1)
+OUTPUT=$(python3 "$SCRIPT" --mode=changed 2>&1)
 EXIT_CODE=$?
 
 if [ $EXIT_CODE -ne 0 ]; then

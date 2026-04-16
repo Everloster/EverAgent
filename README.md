@@ -44,6 +44,12 @@ EverAgent 是以 AI Agent 为核心工具的个人知识库，通过系统化学
 # 全局校验（pre-commit）
 python3 scripts/validate_workspace.py
 
+# 一键自检（校验 + 执行协议自检 + 聚合器 dry-run）
+python3 scripts/everagent.py doctor
+
+# 安装本仓库 pre-commit hook（可选）
+python3 scripts/everagent.py hooks install
+
 # 任务执行校验（Agent 在领取/完成任务时调用）
 python3 scripts/execution_validator.py --mode=input --task-id=T001    # 领取前
 python3 scripts/execution_validator.py --mode=output --task-id=T001   # 完成后
