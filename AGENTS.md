@@ -131,15 +131,12 @@ EverAgent 接收用户指令后的决策流：
 2. 检查对应 `{project}/.project-task-state`：目标任务是否已 claimed / in_progress？
 3. 若无冲突：通知用户 "启动 {AgentName}，协议：{project}/AGENTS.md"
 4. Subagent 读取自身 AGENTS.md，自包含执行
-5. 执行前运行 `python3 scripts/execution_validator.py --mode=input --task-id=TXXX --project={project}`（领取校验）
-6. 领取校验通过后运行 `python3 scripts/project_lock.py acquire --project={project} --task-id=TXXX --agent={AgentName}`（项目锁）
-7. 运行 `python3 scripts/task_state_cli.py claim --task-id=TXXX --agent={AgentName}`（状态迁移为 claimed）
-8. commit push 后运行 `python3 scripts/task_state_cli.py start --task-id=TXXX`（状态迁移为 in_progress）
-9. 执行完成后 Subagent 通过 commit message 广播状态
-10. 执行后运行 `python3 scripts/execution_validator.py --mode=output --task-id=TXXX --project={project}`（完成校验）
-11. 成功则运行 `python3 scripts/task_state_cli.py done --task-id=TXXX`，失败则运行 `python3 scripts/task_state_cli.py fail --task-id=TXXX --reason="{reason}"`
-12. push 完成后运行 `python3 scripts/project_lock.py release --project={project} --task-id=TXXX --agent={AgentName}`（释放锁）
-13. EverAgent 重新生成 Task Board 视图
+5. 优先运行 `python3 scripts/task_exec.py begin --task-id=TXXX --project={project} --agent={AgentName}`（领取校验 + 项目锁 + claim）
+6. commit push 后运行 `python3 scripts/task_exec.py start --task-id=TXXX`（状态迁移为 in_progress）
+7. 执行完成后 Subagent 通过 commit message 广播状态
+8. 成功则运行 `python3 scripts/task_exec.py finish --task-id=TXXX --project={project}`，失败则运行 `python3 scripts/task_exec.py fail --task-id=TXXX --project={project} --reason="{reason}"`
+9. push 完成后运行 `python3 scripts/task_exec.py release --task-id=TXXX --project={project} --agent={AgentName}`（释放锁）
+10. EverAgent 重新生成 Task Board 视图
 ```
 
 > 参考：docs/EXECUTION_SCHEMA.md（输入/输出标准化协议）
