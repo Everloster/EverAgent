@@ -14,9 +14,11 @@ agent_manifest:
   role: "全局调度·任务板管理·项目优化·新项目创建"
   capability_level: full_admin
   git_identity:
-    # name 必须设置为当前运行模型名（如 "Claude Sonnet 4.6"），不得使用个人 git 身份
-    # email 必须为 noreply 地址；pre-commit hook 会拦截个人邮箱提交
-    email: "noreply@anthropic.com"
+    # name 必须设置为当前运行模型名，不得使用个人 git 身份
+    # email 必须为当前模型供应商的 noreply 地址；pre-commit hook 会校验 name/email
+    # 可通过环境变量 EVERAGENT_GIT_NAME / EVERAGENT_GIT_EMAIL 覆盖默认值
+    name: "GPT-5 Codex"
+    email: "noreply@openai.com"
 ```
 
 ### Git 初始化
@@ -25,9 +27,10 @@ agent_manifest:
 GITHUB_TOKEN=$(grep GITHUB_TOKEN .env | cut -d'"' -f2)
 git remote set-url origin https://${GITHUB_TOKEN}@github.com/Everloster/EverAgent.git
 git ls-remote origin HEAD          # 验权，失败则停止
-git config user.name "Claude Sonnet 4.6"    # 替换为实际运行模型名
-git config user.email "noreply@anthropic.com"
-# ⚠️ 不得跳过此步骤——pre-commit hook 会拦截非 noreply 邮箱的提交
+git config user.name "GPT-5 Codex"          # 替换为实际运行模型名，或设置 EVERAGENT_GIT_NAME
+git config user.email "noreply@openai.com"  # 替换为当前模型供应商的 noreply 邮箱，或设置 EVERAGENT_GIT_EMAIL
+python3 scripts/git_identity.py validate
+# ⚠️ 不得跳过此步骤——pre-commit hook 会拦截 name/email 不匹配或非 noreply 邮箱的提交
 ```
 
 ---
@@ -130,10 +133,13 @@ EverAgent 接收用户指令后的决策流：
 4. Subagent 读取自身 AGENTS.md，自包含执行
 5. 执行前运行 `python3 scripts/execution_validator.py --mode=input --task-id=TXXX --project={project}`（领取校验）
 6. 领取校验通过后运行 `python3 scripts/project_lock.py acquire --project={project} --task-id=TXXX --agent={AgentName}`（项目锁）
-7. 执行完成后 Subagent 通过 commit message 广播状态
-8. 执行后运行 `python3 scripts/execution_validator.py --mode=output --task-id=TXXX --project={project}`（完成校验）
-9. push 完成后运行 `python3 scripts/project_lock.py release --project={project} --task-id=TXXX --agent={AgentName}`（释放锁）
-10. EverAgent 重新生成 Task Board 视图
+7. 运行 `python3 scripts/task_state_cli.py claim --task-id=TXXX --agent={AgentName}`（状态迁移为 claimed）
+8. commit push 后运行 `python3 scripts/task_state_cli.py start --task-id=TXXX`（状态迁移为 in_progress）
+9. 执行完成后 Subagent 通过 commit message 广播状态
+10. 执行后运行 `python3 scripts/execution_validator.py --mode=output --task-id=TXXX --project={project}`（完成校验）
+11. 成功则运行 `python3 scripts/task_state_cli.py done --task-id=TXXX`，失败则运行 `python3 scripts/task_state_cli.py fail --task-id=TXXX --reason="{reason}"`
+12. push 完成后运行 `python3 scripts/project_lock.py release --project={project} --task-id=TXXX --agent={AgentName}`（释放锁）
+13. EverAgent 重新生成 Task Board 视图
 ```
 
 > 参考：docs/EXECUTION_SCHEMA.md（输入/输出标准化协议）

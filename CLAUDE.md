@@ -53,10 +53,11 @@ Everything else (learning subprojects) -> Analysis Mode (default)
 
 - **Identity guard**: Before the first commit in any session, set git author to the current model name and noreply email:
   ```bash
-  git config user.name "Claude Sonnet 4.6"    # replace with actual running model name
-  git config user.email "noreply@anthropic.com"
+  git config user.name "GPT-5 Codex"           # replace with actual running model name, or set EVERAGENT_GIT_NAME
+  git config user.email "noreply@openai.com"   # replace with the current vendor noreply email, or set EVERAGENT_GIT_EMAIL
+  python3 scripts/git_identity.py validate
   ```
-  A pre-commit hook enforces this — commits from personal git identities (non-noreply emails) are blocked automatically.
+  A pre-commit hook enforces this — commits from personal git identities or mismatched model identities are blocked automatically.
 - **Commit format**: Follow AGENTS.md SS4 exactly:
   ```
   [{task-type}] {scope}: {description}

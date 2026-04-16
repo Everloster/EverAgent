@@ -43,9 +43,9 @@ task_input:
    → 校验成功则继续步骤 3
 3. 运行 `python3 scripts/project_lock.py acquire --project=<project> --task-id=TXXX --agent=<AgentName>`
    → 获取锁失败则停止，不 claim 任务
-4. 将状态文件中的任务改为 claimed，填写 claimed_by 和 claimed_at
+4. 运行 `python3 scripts/task_state_cli.py claim --task-id=TXXX --agent=<AgentName>`
 5. 立即 commit push（防并发冲突）
-6. 将状态文件中的任务改为 in_progress，填写 started_at
+6. 运行 `python3 scripts/task_state_cli.py start --task-id=TXXX`
 ```
 
 ---
@@ -91,7 +91,8 @@ task_output:
 2. 运行 `python3 scripts/execution_validator.py --mode=output --task-id=TXXX --project=<project>`
    → 校验失败则不 commit，修复后重试
    → 校验成功则继续步骤 3
-3. 更新 status 为 done/failed
+3. 运行 `python3 scripts/task_state_cli.py done --task-id=TXXX`
+   → 若失败则改用 `python3 scripts/task_state_cli.py fail --task-id=TXXX --reason="{reason}"`
 4. commit push
 5. 运行 `python3 scripts/project_lock.py release --project=<project> --task-id=TXXX --agent=<AgentName>`
 ```
@@ -125,7 +126,7 @@ failure_report:
 ```
 1. 填写 failure_report
 2. 不删除 partial_files_created（保留中间产物）
-3. 将对应 `.project-task-state` 中的任务 status 改为 failed
+3. 运行 `python3 scripts/task_state_cli.py fail --task-id=TXXX --reason="{failed_reason}"`
 4. commit push（message 包含 failed_reason）
 5. 不更新 CONTEXT.md（由 EverAgent 后续处理）
 ```
@@ -143,8 +144,15 @@ python3 scripts/execution_validator.py --mode=input --task-id=T001 --project=ai-
 # 获取项目锁（领取后，写入前）
 python3 scripts/project_lock.py acquire --project=ai-learning --task-id=T001 --agent=NeuronAgent
 
+# 更新任务状态
+python3 scripts/task_state_cli.py claim --task-id=T001 --agent=NeuronAgent
+python3 scripts/task_state_cli.py start --task-id=T001
+
 # 输出校验（完成任务后）
 python3 scripts/execution_validator.py --mode=output --task-id=T001 --project=ai-learning
+
+# 标记完成
+python3 scripts/task_state_cli.py done --task-id=T001
 
 # 释放项目锁（push 后）
 python3 scripts/project_lock.py release --project=ai-learning --task-id=T001 --agent=NeuronAgent
