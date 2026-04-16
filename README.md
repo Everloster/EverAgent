@@ -47,6 +47,13 @@ python3 scripts/validate_workspace.py
 # 一键自检（校验 + 执行协议自检 + 聚合器 dry-run）
 python3 scripts/everagent.py doctor
 
+# 巡检 registry / task / lock 是否漂移
+python3 scripts/everagent.py audit
+
+# 安全对账：同步视图，并按需清理超时任务
+python3 scripts/everagent.py reconcile
+python3 scripts/everagent.py reconcile --abandon-stale
+
 # 安装本仓库 pre-commit hook（可选）
 python3 scripts/everagent.py hooks install
 
