@@ -1,0 +1,3 @@
+# TrendAgent keeps its own TT task protocol; this file exists so workspace validation
+# and task-state tooling have a consistent source of truth when global automation
+# work is scheduled against this project.

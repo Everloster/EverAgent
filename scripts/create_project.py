@@ -103,6 +103,18 @@ def create_directories(project_dir: Path) -> None:
     print(f"[INFO] Created directory structure: {project_dir}")
 
 
+def generate_task_state(project_dir: Path) -> Path:
+    """创建版本化任务状态文件。"""
+    task_state = project_dir / ".project-task-state"
+    task_state.write_text(
+        "# Versioned task state for this project.\n"
+        "# Add tasks here and regenerate docs/LEARNING_PROJECTS_TASK_BOARD.md via task_board_aggregator.py.\n",
+        encoding="utf-8",
+    )
+    print(f"[INFO] Generated: {task_state}")
+    return task_state
+
+
 def generate_agents_md(project_dir: Path, args: argparse.Namespace) -> Path:
     """从模板生成 AGENTS.md"""
     if not SAMPLE_AGENTS.exists():
@@ -307,27 +319,11 @@ def update_global_agents(args: argparse.Namespace) -> None:
 
 
 def update_task_board(args: argparse.Namespace) -> None:
-    """更新 Task Board 项目进度概览"""
+    """提示通过聚合器刷新 Task Board。"""
     if not TASK_BOARD.exists():
         print(f"[WARN] Task Board not found: {TASK_BOARD}")
         return
-
-    text = TASK_BOARD.read_text(encoding="utf-8")
-
-    # 新项目行
-    new_row = f"| `{args.project}` | 🟢 新建 | 0 | 0 | 0% | — |"
-
-    # 在项目进度概览表格中添加新行
-    # 查找表格的最后一行（最后一个 | --- | 之前的真实数据行）
-    pattern = r"(\| ---+ \| ---+ \| ---+ \| ---+ \| ---+ \| ---+ \|)\n"
-    match = re.search(pattern, text)
-    if match:
-        insert_pos = match.start()
-        text = text[:insert_pos] + new_row + "\n" + text[insert_pos:]
-        TASK_BOARD.write_text(text, encoding="utf-8")
-        print(f"[INFO] Updated Task Board: added {args.project}")
-    else:
-        print(f"[WARN] Could not find project progress table in Task Board")
+    print("[INFO] Task Board now derives from .project-task-state files; rerun task_board_aggregator.py to refresh the view")
 
 
 def update_readme(args: argparse.Namespace) -> None:
@@ -372,22 +368,25 @@ def main() -> int:
     # 1. 创建目录结构
     create_directories(project_dir)
 
-    # 2. 生成 AGENTS.md
+    # 2. 生成版本化任务状态文件
+    generate_task_state(project_dir)
+
+    # 3. 生成 AGENTS.md
     generate_agents_md(project_dir, args)
 
-    # 3. 生成 CONTEXT.md
+    # 4. 生成 CONTEXT.md
     generate_context_md(project_dir, args)
 
-    # 4. 生成 README.md
+    # 5. 生成 README.md
     generate_readme_md(project_dir, args)
 
-    # 5. 更新全局 AGENTS.md §1
+    # 6. 更新全局 AGENTS.md §1
     update_global_agents(args)
 
-    # 6. 更新 Task Board
+    # 7. 更新 Task Board
     update_task_board(args)
 
-    # 7. 更新 README.md
+    # 8. 更新 README.md
     update_readme(args)
 
     print(f"\n[SUCCESS] Project {args.project} created!")

@@ -1,6 +1,6 @@
 ---
 title: "ToA 范式 · CLI 原生论 · 硅碳加速论 — 观点深度解析"
-domain: "AI Paradigm / Agent Economics / Interface Evolution"
+domain: "ai-learning"
 report_type: "concept_deep_dive"
 status: "completed"
 updated_on: "2026-04-15"

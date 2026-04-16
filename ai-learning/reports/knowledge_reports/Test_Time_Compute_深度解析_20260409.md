@@ -1,6 +1,6 @@
 ---
 title: "Test-time Compute · Reasoning Models 深度解析"
-domain: "LLM/Reasoning"
+domain: "ai-learning"
 report_type: "concept_deep_dive"
 status: "completed"
 updated_on: "2026-04-09"

@@ -1,0 +1,12 @@
+- id: T009
+  project: biology-learning
+  type: paper_analysis
+  target: "Walker et al. (2017) Why We Sleep 核心论据综述"
+  value: "睡眠科学方向高影响力节点"
+  priority: P2
+  required_capability: task_executor
+  status: done
+  claimed_by: claude-sonnet-4-6
+  claimed_at: 2026-04-06T00:00:00+08:00
+  started_at: 2026-04-06T00:00:00+08:00
+  done_at: 2026-04-06T00:00:00+08:00

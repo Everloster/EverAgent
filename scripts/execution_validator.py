@@ -1,20 +1,5 @@
 #!/usr/bin/env python3
-"""
-Execution Validator — 任务执行输入/输出标准化校验
-
-适用范围：所有学习型子Agent（ai-learning / cs-learning / philosophy-learning / psychology-learning / biology-learning）
-参考：docs/EXECUTION_SCHEMA.md
-
-校验模式：
-  --mode=input   任务领取前校验
-  --mode=output  任务完成后校验
-  --mode=self-check  校验脚本自身
-
-返回码：
-  0  校验通过
-  1  校验失败
-  2  脚本错误
-"""
+"""Validate task execution against versioned task-state files."""
 
 from __future__ import annotations
 
@@ -26,38 +11,16 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional
 
-# ── Project paths ────────────────────────────────────────────────────────────────
+from project_lock import is_expired, lock_path_for_project, parse_lock
+from task_state import GLOBAL_PROJECT, PROJECTS, TaskEntry, find_task, state_file_for_project
+
+
 ROOT = Path(__file__).resolve().parents[1]
-TASK_BOARD = ROOT / "docs" / "LEARNING_PROJECTS_TASK_BOARD.md"
 EXECUTION_SCHEMA = ROOT / "docs" / "EXECUTION_SCHEMA.md"
 
-PROJECTS = {
-    "ai-learning": ROOT / "ai-learning",
-    "cs-learning": ROOT / "cs-learning",
-    "philosophy-learning": ROOT / "philosophy-learning",
-    "psychology-learning": ROOT / "psychology-learning",
-    "biology-learning": ROOT / "biology-learning",
-    "github-trending-analyzer": ROOT / "github-trending-analyzer",
-}
-
-LEARNING_PROJECTS = {
-    name: path for name, path in PROJECTS.items() if name != "github-trending-analyzer"
-}
-
-# ── ISO8601 正则 ─────────────────────────────────────────────────────────────────
-# 接受两种格式：
-#   1. 简单格式：YYYY-MM-DD（如 2026-04-05）
-#   2. 完整格式：YYYY-MM-DDTHH:MM:SS+08:00 或 YYYY-MM-DDTHH:MM:SSZ
-ISO8601_RE = re.compile(
-    r"\d{4}-\d{2}-\d{2}(?:T\d{2}:\d{2}:\d{2}(?:\+\d{2}:\d{2}|Z)?)?$"
-)
-SHA1_RE = re.compile(r"^[0-9a-f]{40}$")
-
-# ── Frontmatter ─────────────────────────────────────────────────────────────────
+ISO8601_RE = re.compile(r"\d{4}-\d{2}-\d{2}(?:T\d{2}:\d{2}:\d{2}(?:\+\d{2}:\d{2}|Z)?)?$")
 REQUIRED_FRONTMATTER_KEYS = {"title", "domain", "report_type", "status", "updated_on"}
 FRONTMATTER_PATTERN = re.compile(r"\A---\n(.*?)\n---\n", re.DOTALL)
-
-# ── Task Schema ─────────────────────────────────────────────────────────────────
 VALID_TASK_TYPES = {
     "paper_analysis",
     "knowledge_report",
@@ -67,12 +30,21 @@ VALID_TASK_TYPES = {
     "new_project",
     "maintenance",
 }
-VALID_STATUS = {"open", "claimed", "in_progress", "done", "failed", "abandoned"}
+
+PROJECT_RULES = {
+    "ai-learning": {"requires_papers_index": True, "requires_wiki": True, "report_task_types": {"paper_analysis", "knowledge_report"}},
+    "cs-learning": {"requires_papers_index": True, "requires_wiki": True, "report_task_types": {"paper_analysis", "knowledge_report"}},
+    "philosophy-learning": {"requires_papers_index": False, "requires_wiki": True, "report_task_types": {"paper_analysis", "text_analysis", "concept_report"}},
+    "psychology-learning": {"requires_papers_index": False, "requires_wiki": True, "report_task_types": {"paper_analysis", "knowledge_report"}},
+    "biology-learning": {"requires_papers_index": True, "requires_wiki": True, "report_task_types": {"paper_analysis", "concept_report"}},
+    "github-trending-analyzer": {"requires_papers_index": False, "requires_wiki": False, "report_task_types": set()},
+    GLOBAL_PROJECT: {"requires_papers_index": False, "requires_wiki": False, "report_task_types": set()},
+}
 
 
 @dataclass
 class ValidationIssue:
-    severity: str  # ERROR | WARN
+    severity: str
     field: str
     message: str
 
@@ -91,8 +63,6 @@ class ValidationResult:
         self.issues.append(ValidationIssue("WARN", field, message))
 
 
-# ── 解析工具 ─────────────────────────────────────────────────────────────────────
-
 def parse_frontmatter(text: str) -> dict[str, str] | None:
     match = FRONTMATTER_PATTERN.match(text)
     if not match:
@@ -107,342 +77,280 @@ def parse_frontmatter(text: str) -> dict[str, str] | None:
     return fields
 
 
-def parse_task_from_board(task_id: str) -> Optional[dict[str, str]]:
-    """从 Task Board 中解析指定 task_id 的任务数据"""
-    if not TASK_BOARD.exists():
+def _parse_iso8601(value: Optional[str]) -> Optional[datetime]:
+    if not value:
         return None
-    text = TASK_BOARD.read_text(encoding="utf-8")
-    yaml_blocks = re.findall(r"```yaml\n(.*?)```", text, re.DOTALL)
-    for block in yaml_blocks:
-        chunks = re.split(r"\n(?=- id:)", block.strip())
-        for chunk in chunks:
-            if not chunk.strip():
-                continue
-            task: dict[str, str] = {}
-            for line in chunk.splitlines():
-                line = line.strip().lstrip("- ")
-                if ":" in line:
-                    key, _, value = line.partition(":")
-                    task[key.strip()] = value.strip().strip('"')
-            if task.get("id") == task_id:
-                return task
-    return None
+    normalized = value.replace("Z", "+00:00")
+    try:
+        parsed = datetime.fromisoformat(normalized)
+    except ValueError:
+        return None
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=timezone.utc)
+    return parsed
 
 
-def get_project_for_agent() -> Optional[str]:
-    """根据当前工作目录推断项目名称"""
-    # 如果从项目子目录运行，可以推断项目名
-    # 这里主要作为备用
-    return None
+def _extract_task_keywords(target: str) -> list[str]:
+    normalized = re.sub(r"[()/:,+]", " ", target)
+    raw_keywords = [token.strip() for token in re.split(r"\s+|或|->", normalized) if token.strip()]
+    keywords: list[str] = []
+    for token in raw_keywords:
+        if len(token) < 2:
+            continue
+        if token.isdigit():
+            continue
+        lowered = token.lower()
+        if lowered not in keywords:
+            keywords.append(lowered)
+    return keywords
 
 
-# ── Input 校验 ──────────────────────────────────────────────────────────────────
-
-def validate_input_schema(
-    task_id: str,
-    project: Optional[str] = None,
-) -> ValidationResult:
-    """
-    校验任务输入（领取前调用）
-    对应 EXECUTION_SCHEMA.md §1
-    """
-    result = ValidationResult(passed=True, task_id=task_id)
-
-    # 1. 检查 Task Board 存在性
-    if not TASK_BOARD.exists():
-        result.add_error("task_board", f"Task Board not found: {TASK_BOARD}")
-        return result
-
-    # 2. 解析 Task Board 中的任务
-    task = parse_task_from_board(task_id)
-    if task is None:
-        result.add_error("task_id", f"Task {task_id} not found in Task Board")
-        return result
-
-    # 3. 校验 task_id 非空（已在上面确保存在）
-
-    # 4. 校验 project 匹配
-    task_project = task.get("project", "")
-    if project and task_project and project != task_project:
-        result.add_error("project", f"Project mismatch: expected {task_project}, got {project}")
-
-    # 5. 校验 type 有效
-    task_type = task.get("type", "")
-    if task_type and task_type not in VALID_TASK_TYPES:
-        result.add_warning("type", f"Unknown task type: {task_type}")
-
-    # 6. 校验 target 非空
-    target = task.get("target", "")
-    if not target:
-        result.add_warning("target", "Task target is empty")
-
-    # 7. 校验 status 为 open（领取时才检查）
-    status = task.get("status", "")
-    if status != "open":
-        result.add_warning("status", f"Task status is '{status}', expected 'open' for new claims")
-
-    # 8. 校验 claimed_by / claimed_at 为 null
-    claimed_by = task.get("claimed_by", "")
-    if claimed_by and claimed_by != "null":
-        result.add_warning("claimed_by", f"Task already claimed by {claimed_by}")
-
-    # 9. 校验 EXECUTION_SCHEMA.md 存在
-    if not EXECUTION_SCHEMA.exists():
-        result.add_warning("schema", f"EXECUTION_SCHEMA.md not found: {EXECUTION_SCHEMA}")
-
-    # 10. 校验项目目录存在
-    if task_project and task_project in PROJECTS:
-        project_path = PROJECTS[task_project]
-        if not project_path.exists():
-            result.add_error("project_path", f"Project directory not found: {project_path}")
-        else:
-            # 11. 校验 CONTEXT.md 存在
-            context_path = project_path / "CONTEXT.md"
-            if not context_path.exists():
-                result.add_warning("context", f"CONTEXT.md not found: {context_path}")
-
-    return result
-
-
-# ── Output 校验 ─────────────────────────────────────────────────────────────────
-
-def validate_output_schema(
-    task_id: str,
-    project: Optional[str] = None,
-) -> ValidationResult:
-    """
-    校验任务输出（完成后调用）
-    对应 EXECUTION_SCHEMA.md §2
-    """
-    result = ValidationResult(passed=True, task_id=task_id)
-
-    # 1. 检查 Task Board 存在性
-    if not TASK_BOARD.exists():
-        result.add_error("task_board", f"Task Board not found: {TASK_BOARD}")
-        return result
-
-    # 2. 解析 Task Board 中的任务
-    task = parse_task_from_board(task_id)
-    if task is None:
-        result.add_error("task_id", f"Task {task_id} not found in Task Board")
-        return result
-
-    # 3. 校验 task_id 一致（已在上面确保存在）
-
-    # 4. 校验 status 为 done 或 failed
-    status = task.get("status", "")
-    if status not in ("done", "failed"):
-        result.add_warning("status", f"Task status is '{status}', expected 'done' or 'failed'")
-
-    # 5. 校验 done_at / failed_reason
-    done_at = task.get("done_at", "")
-    failed_reason = task.get("failed_reason", "")
-
-    if status == "done":
-        if not done_at or done_at == "null":
-            result.add_error("done_at", "status=done but done_at is null")
-        elif not ISO8601_RE.match(done_at):
-            result.add_warning("done_at", f"done_at may not be ISO8601: {done_at}")
-    elif status == "failed":
-        if not failed_reason or failed_reason == "null":
-            result.add_error("failed_reason", "status=failed but failed_reason is null")
-
-    # 6. 校验 claimed_by 非空
-    claimed_by = task.get("claimed_by", "")
-    if not claimed_by or claimed_by == "null":
-        result.add_warning("claimed_by", "Task claimed_by is null")
-
-    # 7. 校验 started_at 非空（如果 status 不是 open）
-    if status != "open" and status != "claimed":
-        started_at = task.get("started_at", "")
-        if not started_at or started_at == "null":
-            result.add_warning("started_at", "Task started_at is null for non-open task")
-
-    # 8. 校验 project 目录存在
-    task_project = task.get("project", "")
-    if task_project and task_project in PROJECTS:
-        project_path = PROJECTS[task_project]
-        if not project_path.exists():
-            result.add_error("project_path", f"Project directory not found: {project_path}")
-        else:
-            # 9. 校验 CONTEXT.md 已更新
-            context_path = project_path / "CONTEXT.md"
-            if not context_path.exists():
-                result.add_warning("context", f"CONTEXT.md not found: {context_path}")
-
-            # 10. 校验 reports 目录存在
-            reports_dir = project_path / "reports"
-            if not reports_dir.exists():
-                result.add_warning("reports", f"reports directory not found: {reports_dir}")
-
-    # 11. 校验 frontmatter（如果创建了新报告）
-    if status == "done":
-        report_issues = _validate_reports_frontmatter(task_project, project_path if task_project in PROJECTS else None)
-        result.issues.extend(report_issues)
-
-    return result
-
-
-def _validate_reports_frontmatter(
-    project: str,
-    project_path: Optional[Path],
-) -> list[ValidationIssue]:
-    """校验项目最近创建的报告的 frontmatter"""
-    issues: list[ValidationIssue] = []
-    if not project_path:
-        return issues
-
+def _discover_recent_reports(project_path: Path, task: TaskEntry, claimed_at: Optional[datetime]) -> list[Path]:
     reports_dir = project_path / "reports"
     if not reports_dir.exists():
-        return issues
+        return []
 
-    # 获取最近修改的 3 个报告文件
-    report_files = sorted(
-        (p for p in reports_dir.rglob("*.md") if p.is_file()),
-        key=lambda p: p.stat().st_mtime,
-        reverse=True,
-    )[:3]
+    candidates = [path for path in reports_dir.rglob("*.md") if path.is_file()]
+    keywords = _extract_task_keywords(task.target)
 
-    for report_path in report_files:
-        text = report_path.read_text(encoding="utf-8")
-        fm = parse_frontmatter(text)
-        if fm is None:
-            issues.append(ValidationIssue(
-                "ERROR",
-                str(report_path.relative_to(ROOT)),
-                "missing YAML frontmatter"
-            ))
+    def matches(path: Path) -> bool:
+        haystack = f"{path.name}\n{path.read_text(encoding='utf-8')[:2000]}".lower()
+        return any(keyword in haystack for keyword in keywords)
+
+    matched = [path for path in candidates if matches(path)]
+    if not matched:
+        matched = sorted(candidates, key=lambda path: path.stat().st_mtime, reverse=True)
+
+    if claimed_at is None:
+        return matched[:3]
+
+    recent: list[Path] = []
+    for path in matched:
+        modified = datetime.fromtimestamp(path.stat().st_mtime, tz=timezone.utc)
+        if modified >= claimed_at.astimezone(timezone.utc):
+            recent.append(path)
+    return (recent or matched)[:5]
+
+
+def _validate_frontmatter(project: str, report_paths: list[Path]) -> list[ValidationIssue]:
+    issues: list[ValidationIssue] = []
+    for report_path in report_paths:
+        frontmatter = parse_frontmatter(report_path.read_text(encoding="utf-8"))
+        if frontmatter is None:
+            issues.append(ValidationIssue("ERROR", str(report_path.relative_to(ROOT)), "missing YAML frontmatter"))
             continue
-
-        missing_keys = REQUIRED_FRONTMATTER_KEYS - set(fm)
+        missing_keys = REQUIRED_FRONTMATTER_KEYS - set(frontmatter)
         if missing_keys:
-            issues.append(ValidationIssue(
-                "WARN",
-                str(report_path.relative_to(ROOT)),
-                f"frontmatter missing keys: {', '.join(sorted(missing_keys))}"
-            ))
-
-        # 校验 domain 与项目一致
-        domain = fm.get("domain", "")
-        if domain and project not in domain.lower():
-            issues.append(ValidationIssue(
-                "WARN",
-                str(report_path.relative_to(ROOT)),
-                f"frontmatter domain '{domain}' may not match project '{project}'"
-            ))
-
+            issues.append(
+                ValidationIssue(
+                    "ERROR",
+                    str(report_path.relative_to(ROOT)),
+                    "frontmatter missing keys: " + ", ".join(sorted(missing_keys)),
+                )
+            )
+        domain = frontmatter.get("domain")
+        if domain and domain != project:
+            issues.append(
+                ValidationIssue(
+                    "ERROR",
+                    str(report_path.relative_to(ROOT)),
+                    f"frontmatter domain '{domain}' does not match '{project}'",
+                )
+            )
     return issues
 
 
-# ── Self-check 模式 ─────────────────────────────────────────────────────────────
+def _validate_expected_updates(task: TaskEntry, project_path: Path, result: ValidationResult) -> None:
+    rules = PROJECT_RULES[task.project]
+    claimed_at = _parse_iso8601(task.claimed_at)
 
-def validate_self_check() -> ValidationResult:
-    """校验脚本自身是否正确配置"""
-    result = ValidationResult(passed=True, task_id="self-check")
+    context_path = project_path / "CONTEXT.md"
+    if not context_path.exists():
+        result.add_error("context", f"CONTEXT.md not found: {context_path}")
+    elif claimed_at:
+        modified = datetime.fromtimestamp(context_path.stat().st_mtime, tz=timezone.utc)
+        if modified < claimed_at.astimezone(timezone.utc):
+            result.add_error("context", "CONTEXT.md was not updated after task claim")
 
-    # 1. 检查 EXECUTION_SCHEMA.md 存在
+    report_paths = _discover_recent_reports(project_path, task, claimed_at)
+    if task.type in rules["report_task_types"] and not report_paths:
+        result.add_error("reports", "No recently updated report was found for this task")
+    for issue in _validate_frontmatter(task.project, report_paths):
+        if issue.severity == "ERROR":
+            result.add_error(issue.field, issue.message)
+        else:
+            result.add_warning(issue.field, issue.message)
+
+    if rules["requires_papers_index"] and task.type == "paper_analysis":
+        papers_index = project_path / "papers" / "PAPERS_INDEX.md"
+        if not papers_index.exists():
+            result.add_error("papers_index", f"PAPERS_INDEX.md not found: {papers_index}")
+        elif claimed_at:
+            modified = datetime.fromtimestamp(papers_index.stat().st_mtime, tz=timezone.utc)
+            if modified < claimed_at.astimezone(timezone.utc):
+                result.add_error("papers_index", "PAPERS_INDEX.md was not updated after task claim")
+
+    if rules["requires_wiki"] and task.type in rules["report_task_types"]:
+        wiki_index = project_path / "wiki" / "index.md"
+        wiki_log = project_path / "wiki" / "log.md"
+        for label, path in {"wiki_index": wiki_index, "wiki_log": wiki_log}.items():
+            if not path.exists():
+                result.add_error(label, f"Required wiki file not found: {path}")
+                continue
+            if claimed_at:
+                modified = datetime.fromtimestamp(path.stat().st_mtime, tz=timezone.utc)
+                if modified < claimed_at.astimezone(timezone.utc):
+                    result.add_error(label, f"{path.name} was not updated after task claim")
+
+
+def _validate_lock_for_input(task: TaskEntry, result: ValidationResult) -> None:
+    if task.project == GLOBAL_PROJECT:
+        return
+    try:
+        lock = parse_lock(lock_path_for_project(task.project))
+    except (KeyError, ValueError) as exc:
+        result.add_error("lock", str(exc))
+        return
+
+    if lock is None:
+        return
+    if is_expired(lock):
+        result.add_warning("lock", f"Expired lock exists for {task.project}; safe to replace")
+        return
+    result.add_error("lock", f"Active project lock exists: task={lock.task_id} agent={lock.agent}")
+
+
+def _validate_lock_for_output(task: TaskEntry, result: ValidationResult) -> None:
+    if task.project == GLOBAL_PROJECT:
+        return
+    lock = parse_lock(lock_path_for_project(task.project))
+    if lock is None:
+        result.add_warning("lock", "No project lock found; release step may have been skipped")
+        return
+    if is_expired(lock):
+        result.add_error("lock", f"Project lock expired before completion: task={lock.task_id} agent={lock.agent}")
+        return
+    if lock.task_id != task.id:
+        result.add_error("lock", f"Project lock task mismatch: expected {task.id}, found {lock.task_id}")
+
+
+def _require_task(task_id: str, result: ValidationResult) -> Optional[TaskEntry]:
+    task = find_task(task_id)
+    if task is None:
+        result.add_error("task_id", f"Task {task_id} not found in any .project-task-state file")
+    return task
+
+
+def validate_input_schema(task_id: str, project: Optional[str] = None) -> ValidationResult:
+    result = ValidationResult(passed=True, task_id=task_id)
+    task = _require_task(task_id, result)
+    if task is None:
+        return result
+
+    if project and task.project != project:
+        result.add_error("project", f"Project mismatch: expected {task.project}, got {project}")
+    if task.type not in VALID_TASK_TYPES:
+        result.add_error("type", f"Unknown task type: {task.type}")
+    if task.status != "open":
+        result.add_error("status", f"Task status is '{task.status}', expected 'open'")
+    if task.claimed_by is not None:
+        result.add_error("claimed_by", f"Task already claimed by {task.claimed_by}")
+    if task.project not in PROJECTS:
+        result.add_error("project", f"Unknown project for task: {task.project}")
+        return result
+    state_file = state_file_for_project(task.project)
+    if not state_file.exists():
+        result.add_error("state_file", f"Task state file missing: {state_file}")
+    if task.project != GLOBAL_PROJECT:
+        context_path = PROJECTS[task.project] / "CONTEXT.md"
+        if not context_path.exists():
+            result.add_error("context", f"CONTEXT.md not found: {context_path}")
     if not EXECUTION_SCHEMA.exists():
-        result.add_error("schema", f"EXECUTION_SCHEMA.md not found: {EXECUTION_SCHEMA}")
-    else:
-        text = EXECUTION_SCHEMA.read_text(encoding="utf-8")
-        required_sections = ["§1", "§2", "§3", "§4"]
-        for section in required_sections:
-            if section not in text:
-                result.add_error("schema", f"Missing section {section} in EXECUTION_SCHEMA.md")
-
-    # 2. 检查 TASK_BOARD 存在
-    if not TASK_BOARD.exists():
-        result.add_error("task_board", f"Task Board not found: {TASK_BOARD}")
-
-    # 3. 检查所有项目目录存在
-    for name, path in PROJECTS.items():
-        if not path.exists():
-            result.add_warning("project", f"Project directory not found: {path} (expected for {name})")
-
-    # 4. 检查 validate_workspace.py 存在（作为依赖）
-    validate_workspace = ROOT / "scripts" / "validate_workspace.py"
-    if not validate_workspace.exists():
-        result.add_warning("dependency", f"validate_workspace.py not found: {validate_workspace}")
-
+        result.add_warning("schema", f"EXECUTION_SCHEMA.md not found: {EXECUTION_SCHEMA}")
+    _validate_lock_for_input(task, result)
     return result
 
 
-# ── CLI 入口 ────────────────────────────────────────────────────────────────────
+def validate_output_schema(task_id: str, project: Optional[str] = None) -> ValidationResult:
+    result = ValidationResult(passed=True, task_id=task_id)
+    task = _require_task(task_id, result)
+    if task is None:
+        return result
+
+    if project and task.project != project:
+        result.add_error("project", f"Project mismatch: expected {task.project}, got {project}")
+    if task.status not in {"done", "failed"}:
+        result.add_error("status", f"Task status is '{task.status}', expected 'done' or 'failed'")
+    if task.status == "done":
+        if not task.done_at:
+            result.add_error("done_at", "status=done but done_at is null")
+        elif not ISO8601_RE.match(task.done_at):
+            result.add_error("done_at", f"done_at is not ISO8601: {task.done_at}")
+    if task.status == "failed" and not task.failed_reason:
+        result.add_error("failed_reason", "status=failed but failed_reason is null")
+    if task.claimed_by is None:
+        result.add_error("claimed_by", "claimed_by is null")
+    if task.project not in PROJECTS:
+        result.add_error("project", f"Unknown project for task: {task.project}")
+        return result
+
+    _validate_lock_for_output(task, result)
+
+    if task.project != GLOBAL_PROJECT:
+        _validate_expected_updates(task, PROJECTS[task.project], result)
+    return result
+
+
+def validate_self_check() -> ValidationResult:
+    result = ValidationResult(passed=True, task_id="self-check")
+    if not EXECUTION_SCHEMA.exists():
+        result.add_error("schema", f"EXECUTION_SCHEMA.md not found: {EXECUTION_SCHEMA}")
+    for project, project_path in PROJECTS.items():
+        if project == GLOBAL_PROJECT:
+            state_path = state_file_for_project(project)
+            if not state_path.exists():
+                result.add_error("state_file", f"Global task-state file missing: {state_path}")
+            continue
+        if not project_path.exists():
+            result.add_error("project", f"Project directory missing: {project_path}")
+            continue
+        state_path = state_file_for_project(project)
+        if not state_path.exists():
+            result.add_error("state_file", f"Task-state file missing: {state_path}")
+    return result
+
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(
-        description="Execution Validator — 任务执行输入/输出标准化校验",
-        formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog="""
-返回码：
-  0  校验通过
-  1  校验失败
-  2  脚本错误（文件不存在、参数错误等）
-
-示例：
-  python3 scripts/execution_validator.py --mode=input --task-id=T001
-  python3 scripts/execution_validator.py --mode=output --task-id=T001 --project=ai-learning
-  python3 scripts/execution_validator.py --mode=self-check
-        """,
-    )
-    parser.add_argument(
-        "--mode",
-        required=True,
-        choices=["input", "output", "self-check"],
-        help="校验模式",
-    )
-    parser.add_argument(
-        "--task-id",
-        help="任务 ID（如 T001）",
-    )
-    parser.add_argument(
-        "--project",
-        help="项目名称（如 ai-learning）",
-    )
+    parser = argparse.ArgumentParser(description="Execution Validator")
+    parser.add_argument("--mode", required=True, choices=["input", "output", "self-check"])
+    parser.add_argument("--task-id", help="Task ID such as T001")
+    parser.add_argument("--project", help="Project name such as ai-learning")
     return parser
 
 
 def print_result(result: ValidationResult) -> None:
-    """打印校验结果"""
-    if result.passed:
-        print(f"[PASS] Task {result.task_id}")
-    else:
-        print(f"[FAIL] Task {result.task_id}")
-
+    print(f"[{'PASS' if result.passed else 'FAIL'}] Task {result.task_id}")
     for issue in result.issues:
         prefix = "ERROR" if issue.severity == "ERROR" else "WARN "
         print(f"  [{prefix}] {issue.field}: {issue.message}")
 
 
 def main() -> int:
-    parser = build_parser()
-    args = parser.parse_args()
+    args = build_parser().parse_args()
 
-    # mode=input
+    if args.mode in {"input", "output"} and not args.task_id:
+        print(f"[ERROR] --task-id is required for --mode={args.mode}", file=sys.stderr)
+        return 2
+
     if args.mode == "input":
-        if not args.task_id:
-            print("[ERROR] --task-id is required for --mode=input", file=sys.stderr)
-            return 2
         result = validate_input_schema(args.task_id, args.project)
-        print_result(result)
-        return 0 if result.passed else 1
-
-    # mode=output
     elif args.mode == "output":
-        if not args.task_id:
-            print("[ERROR] --task-id is required for --mode=output", file=sys.stderr)
-            return 2
         result = validate_output_schema(args.task_id, args.project)
-        print_result(result)
-        return 0 if result.passed else 1
-
-    # mode=self-check
-    elif args.mode == "self-check":
+    else:
         result = validate_self_check()
-        print_result(result)
-        return 0 if result.passed else 1
 
-    return 2
+    print_result(result)
+    return 0 if result.passed else 1
 
 
 if __name__ == "__main__":

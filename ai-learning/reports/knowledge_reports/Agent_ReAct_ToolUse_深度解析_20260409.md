@@ -1,6 +1,6 @@
 ---
 title: "AI Agent · ReAct · Tool Use 深度解析"
-domain: "AI Agent/LLM"
+domain: "ai-learning"
 report_type: "concept_deep_dive"
 status: "completed"
 updated_on: "2026-04-09"

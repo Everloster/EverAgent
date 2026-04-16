@@ -100,9 +100,7 @@ open → claimed → in_progress → done
 
 ### 项目级任务状态文件（过渡阶段）
 
-**最终目标**：各项目使用 `{project}/.project-task-state` 管理自身任务状态，Task Board 作为只读视图。
-
-**当前状态**：过渡阶段，Task Board 仍为源文件，但即将迁移到分布式状态管理。
+**当前状态**：各项目使用 `{project}/.project-task-state` 管理自身任务状态，根目录 `/.project-task-state` 管理 `global` 任务；Task Board 是聚合后的只读视图。
 
 **文件格式**（`.project-task-state`）：
 ```yaml
@@ -127,13 +125,15 @@ EverAgent 接收用户指令后的决策流：
 
 ```
 1. 识别目标项目 → 查 §1 找到对应 Subagent 名称和协议路径
-2. 检查 Task Board：目标任务是否已 claimed / in_progress？
+2. 检查对应 `{project}/.project-task-state`：目标任务是否已 claimed / in_progress？
 3. 若无冲突：通知用户 "启动 {AgentName}，协议：{project}/AGENTS.md"
 4. Subagent 读取自身 AGENTS.md，自包含执行
-5. 执行前运行 python3 scripts/execution_validator.py --mode=input（领取校验）
-6. 执行完成后 Subagent 通过 commit message 广播状态
-7. 执行后运行 python3 scripts/execution_validator.py --mode=output（完成校验）
-8. EverAgent 读取 git log，更新 Task Board
+5. 执行前运行 `python3 scripts/execution_validator.py --mode=input --task-id=TXXX --project={project}`（领取校验）
+6. 领取校验通过后运行 `python3 scripts/project_lock.py acquire --project={project} --task-id=TXXX --agent={AgentName}`（项目锁）
+7. 执行完成后 Subagent 通过 commit message 广播状态
+8. 执行后运行 `python3 scripts/execution_validator.py --mode=output --task-id=TXXX --project={project}`（完成校验）
+9. push 完成后运行 `python3 scripts/project_lock.py release --project={project} --task-id=TXXX --agent={AgentName}`（释放锁）
+10. EverAgent 重新生成 Task Board 视图
 ```
 
 > 参考：docs/EXECUTION_SCHEMA.md（输入/输出标准化协议）
@@ -157,10 +157,10 @@ git_commit_sha: abc123...
 ```
 
 **协议**：
-1. 领取任务前：检查 `.agent-lock` 是否存在
+1. 领取任务前：运行 `python3 scripts/project_lock.py check --project={project}`
 2. 若存在且未过期（< 72h）：跳过此项目，选其他任务
-3. 若不存在或已过期：创建 lock 文件，然后 claim 任务
-4. commit push 完成后：删除 lock 文件
+3. 若不存在或已过期：运行 `python3 scripts/project_lock.py acquire --project={project} --task-id=TXXX --agent={AgentName}`
+4. commit push 完成后：运行 `python3 scripts/project_lock.py release --project={project} --task-id=TXXX --agent={AgentName}`
 
 > 作用：比 git push 更早检测并发冲突，避免无效 commit
 

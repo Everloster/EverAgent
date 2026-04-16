@@ -1,0 +1,10 @@
+- id: T012
+  project: global
+  type: maintenance
+  target: "github-trending-analyzer 周报自动化"
+  value: "目前靠手动触发, 可用 schedule 技能自动化"
+  priority: P3
+  required_capability: full_admin
+  status: open
+  claimed_by: null
+  claimed_at: null

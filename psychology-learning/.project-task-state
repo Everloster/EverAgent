@@ -1,0 +1,23 @@
+- id: T008
+  project: psychology-learning
+  type: knowledge_report
+  target: "认知偏差全景图"
+  value: "整合 Kahneman/Tversky 系列报告; 提升导航价值"
+  priority: P2
+  required_capability: task_executor
+  status: done
+  claimed_by: MiniMax-M2.7
+  claimed_at: 2026-04-05T10:00:00+08:00
+  started_at: 2026-04-05T10:30:00+08:00
+  done_at: 2026-04-05T15:47:00+08:00
+
+- id: T010
+  project: psychology-learning
+  type: maintenance
+  target: "更新心理学关键人物图谱"
+  value: "加入 Bandura/Seligman/Harlow 等新精读作者; 图谱严重落后内容"
+  priority: P3
+  required_capability: task_executor
+  status: open
+  claimed_by: null
+  claimed_at: null

@@ -40,7 +40,6 @@ venv/
 # Agent runtime files (not committed)
 */.agent-lock
 */.agent-state
-*/.project-task-state
 
 # MemPalace (local MCP tool state)
 mempalace.yaml
