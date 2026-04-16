@@ -7,12 +7,39 @@ import argparse
 import os
 import subprocess
 import sys
+from pathlib import Path
 
 
-DEFAULT_NAME = "GPT-5 Codex"
+DEFAULT_NAME = "Trae GPT-5.4"
 DEFAULT_EMAIL = "noreply@openai.com"
 ENV_NAME_KEYS = ("EVERAGENT_GIT_NAME", "AGENT_GIT_NAME")
 ENV_EMAIL_KEYS = ("EVERAGENT_GIT_EMAIL", "AGENT_GIT_EMAIL")
+
+
+def _read_expected_from_agents_md() -> tuple[str | None, str | None]:
+    """Best-effort parse expected identity from the global AGENTS.md.
+
+    This avoids drift between docs and pre-commit validation defaults.
+    """
+
+    agents_md = Path(__file__).resolve().parents[1] / "AGENTS.md"
+    if not agents_md.exists():
+        return None, None
+    text = agents_md.read_text(encoding="utf-8")
+    # Keep parsing intentionally lightweight (no YAML dependency).
+    name = None
+    email = None
+    for line in text.splitlines():
+        stripped = line.strip()
+        if stripped.startswith('name: "'):
+            if "git_identity" in text[: text.find(line)]:
+                name = stripped.split('"', 2)[1]
+        if stripped.startswith('email: "'):
+            if "git_identity" in text[: text.find(line)]:
+                email = stripped.split('"', 2)[1]
+        if name and email:
+            break
+    return name, email
 
 
 def read_git_config(key: str) -> str:
@@ -31,6 +58,9 @@ def expected_name(cli_value: str | None) -> str:
     for key in ENV_NAME_KEYS:
         if os.getenv(key):
             return os.environ[key]
+    name, _ = _read_expected_from_agents_md()
+    if name:
+        return name
     return DEFAULT_NAME
 
 
@@ -40,6 +70,9 @@ def expected_email(cli_value: str | None) -> str:
     for key in ENV_EMAIL_KEYS:
         if os.getenv(key):
             return os.environ[key]
+    _, email = _read_expected_from_agents_md()
+    if email:
+        return email
     return DEFAULT_EMAIL
 
 

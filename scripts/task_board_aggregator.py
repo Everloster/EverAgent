@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import re
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -13,6 +14,21 @@ from task_state import GLOBAL_PROJECT, LEARNING_PROJECTS, TaskEntry, load_all_ta
 
 ROOT = Path(__file__).resolve().parents[1]
 TASK_BOARD = ROOT / "docs" / "LEARNING_PROJECTS_TASK_BOARD.md"
+ROOT_README = ROOT / "README.md"
+GLOBAL_AGENTS = ROOT / "AGENTS.md"
+README_OVERVIEW_START = "<!-- PROJECT_OVERVIEW:START -->"
+README_OVERVIEW_END = "<!-- PROJECT_OVERVIEW:END -->"
+REGISTRY_ROW_PATTERN = re.compile(
+    r"^\| \*\*(?P<agent>[^*]+)\*\* \| `(?P<project>[^`]+)/` \| `(?P<protocol>[^`]+)` \| (?P<domain>.+?) \| (?P<status>[^|]+) \|$"
+)
+PROJECT_TITLES = {
+    "ai-learning": "🤖 AI Learning",
+    "cs-learning": "💻 CS Learning",
+    "philosophy-learning": "📚 Philosophy Learning",
+    "psychology-learning": "🧠 Psychology Learning",
+    "biology-learning": "🧬 Biology Learning",
+    "github-trending-analyzer": "📈 GitHub Trending Analyzer",
+}
 
 
 class ProjectStats:
@@ -37,6 +53,21 @@ class ProjectStats:
         return "🔴"
 
 
+class CatalogEntry:
+    def __init__(self, project: str, domain: str, status: str) -> None:
+        self.project = project
+        self.domain = domain
+        self.status = status.strip()
+
+    @property
+    def title(self) -> str:
+        return PROJECT_TITLES.get(self.project, self.project.replace("-", " ").title())
+
+    @property
+    def readme_link(self) -> str:
+        return f"[{self.title}](./{self.project}/README.md)"
+
+
 def generate_project_stats() -> dict[str, ProjectStats]:
     stats: dict[str, ProjectStats] = {}
     for project_name, project_path in LEARNING_PROJECTS.items():
@@ -54,6 +85,80 @@ def generate_project_stats() -> dict[str, ProjectStats]:
                 knowledge_count += sum(1 for _ in (reports_dir / "concept_reports").rglob("*.md"))
         stats[project_name] = ProjectStats(paper_count, knowledge_count)
     return stats
+
+
+def count_wiki_pages(project_path: Path) -> str:
+    entities_dir = project_path / "wiki" / "entities"
+    concepts_dir = project_path / "wiki" / "concepts"
+    entity_count = sum(1 for path in entities_dir.glob("*.md")) if entities_dir.exists() else 0
+    concept_count = sum(1 for path in concepts_dir.glob("*.md")) if concepts_dir.exists() else 0
+    if entity_count == 0 and concept_count == 0:
+        return "—"
+    return f"{entity_count} entities · {concept_count} concepts"
+
+
+def count_trending_reports(project_path: Path) -> str:
+    reports_dir = project_path / "github-trending-reports"
+    repo_reports = len(list(reports_dir.glob("research_*.md"))) if reports_dir.exists() else 0
+    summary_reports = len(list(reports_dir.glob("all-*.md"))) if reports_dir.exists() else 0
+    return f"{repo_reports} 篇 Repo 报告 + {summary_reports} 篇汇总报告"
+
+
+def load_catalog_entries() -> list[CatalogEntry]:
+    entries: list[CatalogEntry] = []
+    for line in GLOBAL_AGENTS.read_text(encoding="utf-8").splitlines():
+        match = REGISTRY_ROW_PATTERN.match(line.strip())
+        if not match:
+            continue
+        entries.append(
+            CatalogEntry(
+                project=match.group("project"),
+                domain=match.group("domain").strip(),
+                status=match.group("status").strip(),
+            )
+        )
+    return entries
+
+
+def format_report_summary(project: str, stats: dict[str, ProjectStats]) -> str:
+    if project == "github-trending-analyzer":
+        return count_trending_reports(ROOT / project)
+    project_stats = stats.get(project, ProjectStats())
+    return f"{project_stats.paper_analyses} 篇精读/文本 + {project_stats.knowledge_reports} 篇知识/概念报告"
+
+
+def build_root_readme_overview(stats: dict[str, ProjectStats]) -> str:
+    entries = load_catalog_entries()
+    lines = [
+        README_OVERVIEW_START,
+        f"EverAgent 是以 AI Agent 为核心工具的个人知识库，通过系统化学习路径、深度分析报告和自动化工具，将学习从\"被动积累\"变为\"主动建构\"。目前包含 **{len(entries)} 个子项目**：",
+        "",
+        "| 项目 | 领域 | 报告量 | Wiki 页面 | 状态 |",
+        "|------|------|--------|-----------|------|",
+    ]
+    for entry in entries:
+        project_path = ROOT / entry.project
+        wiki_summary = "—" if entry.project == "github-trending-analyzer" else count_wiki_pages(project_path)
+        lines.append(
+            f"| {entry.readme_link} | {entry.domain} | {format_report_summary(entry.project, stats)} | {wiki_summary} | {entry.status} |"
+        )
+    lines.append(README_OVERVIEW_END)
+    return "\n".join(lines)
+
+
+def sync_root_readme_overview(stats: dict[str, ProjectStats] | None = None) -> None:
+    if stats is None:
+        stats = generate_project_stats()
+    text = ROOT_README.read_text(encoding="utf-8")
+    replacement = build_root_readme_overview(stats)
+    if README_OVERVIEW_START in text and README_OVERVIEW_END in text:
+        start = text.index(README_OVERVIEW_START)
+        end = text.index(README_OVERVIEW_END) + len(README_OVERVIEW_END)
+        updated = text[:start] + replacement + text[end:]
+    else:
+        section_pattern = re.compile(r"## 项目全景\n\n.*?\n---", re.DOTALL)
+        updated = section_pattern.sub(f"## 项目全景\n\n{replacement}\n\n---", text, count=1)
+    ROOT_README.write_text(updated, encoding="utf-8")
 
 
 def format_scalar(value: str | None) -> str:
@@ -157,6 +262,7 @@ def generate_task_board_view(tasks: list[TaskEntry], stats: dict[str, ProjectSta
 def main() -> int:
     parser = argparse.ArgumentParser(description="Task Board Aggregator")
     parser.add_argument("--dry-run", action="store_true", help="Only print the generated board")
+    parser.add_argument("--sync-readme", action="store_true", help="Refresh the root README project overview")
     args = parser.parse_args()
 
     tasks = load_all_tasks(include_global=True)
@@ -171,6 +277,8 @@ def main() -> int:
         return 0
 
     TASK_BOARD.write_text(view, encoding="utf-8")
+    if args.sync_readme:
+        sync_root_readme_overview(generate_project_stats())
     print(f"[PASS] Updated {TASK_BOARD}")
     return 0
 

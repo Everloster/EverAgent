@@ -31,15 +31,37 @@ VALID_TASK_TYPES = {
     "maintenance",
 }
 
-PROJECT_RULES = {
-    "ai-learning": {"requires_papers_index": True, "requires_wiki": True, "report_task_types": {"paper_analysis", "knowledge_report"}},
-    "cs-learning": {"requires_papers_index": True, "requires_wiki": True, "report_task_types": {"paper_analysis", "knowledge_report"}},
-    "philosophy-learning": {"requires_papers_index": False, "requires_wiki": True, "report_task_types": {"paper_analysis", "text_analysis", "concept_report"}},
-    "psychology-learning": {"requires_papers_index": False, "requires_wiki": True, "report_task_types": {"paper_analysis", "knowledge_report"}},
-    "biology-learning": {"requires_papers_index": True, "requires_wiki": True, "report_task_types": {"paper_analysis", "concept_report"}},
-    "github-trending-analyzer": {"requires_papers_index": False, "requires_wiki": False, "report_task_types": set()},
-    GLOBAL_PROJECT: {"requires_papers_index": False, "requires_wiki": False, "report_task_types": set()},
-}
+def build_project_rules() -> dict[str, dict[str, bool | set[str]]]:
+    rules: dict[str, dict[str, bool | set[str]]] = {}
+    for project_name, project_path in PROJECTS.items():
+        if project_name in {GLOBAL_PROJECT, "github-trending-analyzer"}:
+            rules[project_name] = {
+                "requires_papers_index": False,
+                "requires_wiki": False,
+                "report_task_types": set(),
+            }
+            continue
+
+        reports_dir = project_path / "reports"
+        report_task_types: set[str] = set()
+        if (reports_dir / "paper_analyses").exists():
+            report_task_types.add("paper_analysis")
+        if (reports_dir / "knowledge_reports").exists():
+            report_task_types.add("knowledge_report")
+        if (reports_dir / "text_analyses").exists():
+            report_task_types.add("text_analysis")
+        if (reports_dir / "concept_reports").exists():
+            report_task_types.add("concept_report")
+
+        rules[project_name] = {
+            "requires_papers_index": (project_path / "papers" / "PAPERS_INDEX.md").exists(),
+            "requires_wiki": (project_path / "wiki").exists(),
+            "report_task_types": report_task_types,
+        }
+    return rules
+
+
+PROJECT_RULES = build_project_rules()
 
 
 @dataclass

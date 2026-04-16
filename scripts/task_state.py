@@ -8,26 +8,11 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional
 
+from project_registry import GLOBAL_PROJECT, ROOT, discover_learning_projects, discover_projects
 
-ROOT = Path(__file__).resolve().parents[1]
 STATE_FILE_NAME = ".project-task-state"
-GLOBAL_PROJECT = "global"
-
-PROJECTS = {
-    "ai-learning": ROOT / "ai-learning",
-    "cs-learning": ROOT / "cs-learning",
-    "philosophy-learning": ROOT / "philosophy-learning",
-    "psychology-learning": ROOT / "psychology-learning",
-    "biology-learning": ROOT / "biology-learning",
-    "github-trending-analyzer": ROOT / "github-trending-analyzer",
-    GLOBAL_PROJECT: ROOT,
-}
-
-LEARNING_PROJECTS = {
-    name: path
-    for name, path in PROJECTS.items()
-    if name not in {GLOBAL_PROJECT, "github-trending-analyzer"}
-}
+PROJECTS = {**discover_projects(), GLOBAL_PROJECT: ROOT}
+LEARNING_PROJECTS = discover_learning_projects()
 
 
 @dataclass
