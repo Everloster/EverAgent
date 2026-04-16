@@ -158,22 +158,26 @@
 - id: T013
   project: ai-learning
   type: paper_analysis
-  target: "EVA-02 (2023) 或 Megatron-LM (2021)"
+  target: "EVA-02 (2023)"
   value: "工程类论文主线缺口；大规模视觉模型与训练并行框架"
   priority: P1
-  status: open
-  claimed_by: null
-  claimed_at: null
+  status: done
+  claimed_by: claude-sonnet-4-6
+  claimed_at: 2026-04-16T10:00:00+08:00
+  started_at: 2026-04-16T10:05:00+08:00
+  done_at: 2026-04-16T11:30:00+08:00
 
 - id: T014
   project: cs-learning
   type: paper_analysis
-  target: "BGP (RFC 4271, 2006) 或 Dijkstra Go To (1968)"
-  value: "网络方向深化（BGP是互联网路由基础）或编程语言理论起点"
+  target: "BGP (RFC 4271, 2006)"
+  value: "网络方向深化（BGP是互联网路由基础）"
   priority: P2
-  status: open
-  claimed_by: null
-  claimed_at: null
+  status: done
+  claimed_by: claude-sonnet-4-6
+  claimed_at: 2026-04-16T10:00:00+08:00
+  started_at: 2026-04-16T10:05:00+08:00
+  done_at: 2026-04-16T11:30:00+08:00
 
 # P3: 结构整理型
 - id: T010
@@ -221,11 +225,11 @@
 
 ## 已完成, 不应重复领取
 
-### ai-learning (35篇精读 + 16篇知识报告)
-Transformer、BERT、GPT-3、InstructGPT、ResNet、GAN、DDPM、AlexNet、Scaling Laws、Chain-of-Thought、LoRA、ViT、CLIP、LLaMA、Swin Transformer、MAE、DINOv2、FlashAttention、LLaMA-2、Mistral 7B、Word2Vec、Tulu3、MoE #21 (2017)、ZeRO #25 (2019)、VideoMAE #36 (2022)、MegaScale #31 (2024)、GPT-1 (2018)、GPT-2 (2019)、Bitter Lesson (2019)、Stable Diffusion/LDM (2021)、DiT (2022)、ReAct (2022)、LAION-5B (2022)、RefinedWeb (2023)、Google Translate/GNMT (2016)、DeepVideo (2014)；知识报告：Self-Attention、RLHF、Scaling Laws、LoRA、AI关键人物图谱、DINOv2深度解析、KV Cache、MoE混合专家深度解析、RAG深度解析、Agent/ReAct/ToolUse深度解析、Test-Time Compute深度解析、In-Context Learning深度解析、ToA/CLI原生论、双向驯化与多Agent涌现、EverAgent ToA原型解剖、奶头乐ChatBot战略价值、开源vs闭源ToA博弈、生成模型演化全景GAN→DDPM→LDM→DiT (2026-04-16)
+### ai-learning (36篇精读 + 16篇知识报告)
+Transformer、BERT、GPT-3、InstructGPT、ResNet、GAN、DDPM、AlexNet、Scaling Laws、Chain-of-Thought、LoRA、ViT、CLIP、LLaMA、Swin Transformer、MAE、DINOv2、FlashAttention、LLaMA-2、Mistral 7B、Word2Vec、Tulu3、MoE #21 (2017)、ZeRO #25 (2019)、VideoMAE #36 (2022)、MegaScale #31 (2024)、GPT-1 (2018)、GPT-2 (2019)、Bitter Lesson (2019)、Stable Diffusion/LDM (2021)、DiT (2022)、ReAct (2022)、LAION-5B (2022)、RefinedWeb (2023)、Google Translate/GNMT (2016)、DeepVideo (2014)、EVA-02 (2023)；知识报告：Self-Attention、RLHF、Scaling Laws、LoRA、AI关键人物图谱、DINOv2深度解析、KV Cache、MoE混合专家深度解析、RAG深度解析、Agent/ReAct/ToolUse深度解析、Test-Time Compute深度解析、In-Context Learning深度解析、ToA/CLI原生论、双向驯化与多Agent涌现、EverAgent ToA原型解剖、奶头乐ChatBot战略价值、开源vs闭源ToA博弈、生成模型演化全景GAN→DDPM→LDM→DiT (2026-04-16)
 
-### cs-learning (20篇精读 + 3篇知识报告)
-Turing (1950)、Shannon (1948)、MapReduce (2004)、Bigtable (2006)、Lamport Clocks (1978)、GFS (2003)、Dynamo (2007)、Raft (2014)、Spanner (2012)、Paxos (2001)、Kafka (2011)、UNIX (1974)、ZooKeeper (2010)、FFS (1984)、Byzantine Generals (1982)、CSP (1978)、TCP/IP (1974)、Chubby (2006)、Chord (2001)、DNS RFC 1034/1035 (1987)；知识报告：CS关键人物图谱、分布式系统知识图谱、操作系统内核设计深度解析 (2026-04-16)
+### cs-learning (21篇精读 + 3篇知识报告)
+Turing (1950)、Shannon (1948)、MapReduce (2004)、Bigtable (2006)、Lamport Clocks (1978)、GFS (2003)、Dynamo (2007)、Raft (2014)、Spanner (2012)、Paxos (2001)、Kafka (2011)、UNIX (1974)、ZooKeeper (2010)、FFS (1984)、Byzantine Generals (1982)、CSP (1978)、TCP/IP (1974)、Chubby (2006)、Chord (2001)、DNS RFC 1034/1035 (1987)、BGP RFC 4271 (2006)；知识报告：CS关键人物图谱、分布式系统知识图谱、操作系统内核设计深度解析 (2026-04-16)
 
 ### philosophy-learning (9篇文本分析 + 1篇论文分析 + 2篇概念报告)
 柏拉图《理想国》洞穴比喻、柏拉图《美诺》、笛卡尔《沉思录》、Gettier (1963)、康德《道德形而上学基础》、亚里士多德《尼各马可伦理学》、Nagel (1974) What Is It Like to Be a Bat?、黑格尔《精神现象学》导论 (1807)、罗尔斯《正义论》第一章 (1971)；概念报告：哲学关键人物图谱、知识跨时代比较

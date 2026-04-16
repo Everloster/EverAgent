@@ -81,3 +81,11 @@
 - 更新 wiki/index.md：Concepts 表格新增 os_kernel_design 条目
 - 数据源：04_unix_1974 / 23_ffs_1984 / 18_csp_1978 + 已有知识图谱
 - 执行者：ByteAgent / Claude Sonnet 4.6
+---
+## [2026-04-16] ingest | A Border Gateway Protocol 4 (BGP-4) — RFC 4271 (2006)
+- 新建报告：reports/paper_analyses/31_bgp_rfc4271_2006.md（7步分析框架，路径向量原理·FSM六态·路径属性·CIDR·安全事件）
+- 新建 concept：wiki/concepts/bgp_interdomain_routing.md（核心机制·iBGP vs eBGP·选路原则·关联概念）
+- 更新 wiki/index.md：Concepts 表格新增 bgp_interdomain_routing 条目
+- 更新 CONTEXT.md：已有报告+边界区同步更新
+- 数据源：RFC 4271 (IETF) + Wikipedia BGP
+- 执行者：ByteAgent / Claude Sonnet 4.6
