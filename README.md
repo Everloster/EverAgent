@@ -50,6 +50,10 @@ python3 scripts/everagent.py doctor
 # 安装本仓库 pre-commit hook（可选）
 python3 scripts/everagent.py hooks install
 
+# 清理超时任务（先巡检，再按需落地 abandon）
+python3 scripts/everagent.py sweep-stale-tasks
+python3 scripts/everagent.py sweep-stale-tasks --apply
+
 # 任务执行校验（Agent 在领取/完成任务时调用）
 python3 scripts/execution_validator.py --mode=input --task-id=T001    # 领取前
 python3 scripts/execution_validator.py --mode=output --task-id=T001   # 完成后

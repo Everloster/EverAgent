@@ -4,7 +4,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, replace
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Optional
 
@@ -85,6 +85,19 @@ def now_iso() -> str:
     return datetime.now(timezone.utc).astimezone().isoformat(timespec="seconds")
 
 
+def parse_iso8601(value: Optional[str]) -> Optional[datetime]:
+    if not value:
+        return None
+    normalized = value.replace("Z", "+00:00")
+    try:
+        parsed = datetime.fromisoformat(normalized)
+    except ValueError:
+        return None
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=timezone.utc)
+    return parsed
+
+
 def parse_task_state_file(path: Path, default_project: Optional[str] = None) -> list[TaskEntry]:
     if not path.exists():
         return []
@@ -149,6 +162,20 @@ def find_task(task_id: str) -> Optional[TaskEntry]:
         if task.id == task_id:
             return task
     return None
+
+
+def find_stale_tasks(include_global: bool = False, ttl_hours: int = 72) -> list[TaskEntry]:
+    cutoff = datetime.now(timezone.utc) - timedelta(hours=ttl_hours)
+    stale: list[TaskEntry] = []
+    for task in load_all_tasks(include_global=include_global):
+        if not task.is_active:
+            continue
+        reference = parse_iso8601(task.started_at or task.claimed_at)
+        if reference is None:
+            continue
+        if reference.astimezone(timezone.utc) < cutoff:
+            stale.append(task)
+    return stale
 
 
 def replace_task(project: str, task_id: str, updated_task: TaskEntry) -> None:
