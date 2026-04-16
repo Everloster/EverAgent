@@ -13,6 +13,9 @@ import subprocess
 import sys
 from pathlib import Path
 
+from task_state import find_stale_tasks
+from task_state_cli import command_abandon
+
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -73,6 +76,29 @@ def command_hooks_install(_: argparse.Namespace) -> int:
     return 0
 
 
+def command_sweep_stale_tasks(args: argparse.Namespace) -> int:
+    stale_tasks = find_stale_tasks(include_global=False, ttl_hours=args.ttl_hours)
+    if not stale_tasks:
+        print(f"[PASS] No stale tasks older than {args.ttl_hours}h were found.")
+        return 0
+
+    for task in stale_tasks:
+        print(f"[STALE] {task.id}\t{task.project}\t{task.status}\t{task.target}")
+        if args.apply:
+            command_abandon(
+                argparse.Namespace(
+                    task_id=task.id,
+                    reason=args.reason or f"stale>{args.ttl_hours}h",
+                )
+            )
+
+    if args.apply:
+        print(f"[PASS] Swept {len(stale_tasks)} stale task(s).")
+    else:
+        print(f"[WARN] Found {len(stale_tasks)} stale task(s). Re-run with --apply to abandon them.")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="EverAgent maintenance CLI")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -89,6 +115,12 @@ def build_parser() -> argparse.ArgumentParser:
     hooks_install = hooks_sub.add_parser("install", help="Install repo pre-commit hook into .git/hooks")
     hooks_install.set_defaults(func=command_hooks_install)
 
+    sweep = sub.add_parser("sweep-stale-tasks", help="Detect or abandon stale claimed/in_progress tasks")
+    sweep.add_argument("--ttl-hours", type=int, default=72, help="Stale threshold in hours")
+    sweep.add_argument("--apply", action="store_true", help="Apply the abandon transition")
+    sweep.add_argument("--reason", help="Optional abandon reason override")
+    sweep.set_defaults(func=command_sweep_stale_tasks)
+
     return parser
 
 
@@ -99,4 +131,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
