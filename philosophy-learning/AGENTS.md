@@ -57,10 +57,9 @@ agent_manifest:
    → 校验失败则停止，不 claim 任务
 1. 读取 philosophy-learning/.project-task-state（Task Board 仅作只读视图）
 2. 选取 project: philosophy-learning, status: open 的任务
-3. 运行 python3 scripts/project_lock.py acquire --project=philosophy-learning --task-id=TXXX --agent=SocratesAgent
-4. 运行 python3 scripts/task_state_cli.py claim --task-id=TXXX --agent=SocratesAgent
-5. 立即 commit push（防并发冲突）
-6. 运行 python3 scripts/task_state_cli.py start --task-id=TXXX
+3. 优先运行 python3 scripts/task_exec.py begin --task-id=TXXX --project=philosophy-learning --agent=SocratesAgent
+4. 立即 commit push（防并发冲突）
+5. 运行 python3 scripts/task_exec.py start --task-id=TXXX
 ```
 
 > 校验脚本参考：docs/EXECUTION_SCHEMA.md
@@ -183,7 +182,7 @@ concept_report:  {主题}_{比较|图谱|...}.md
 [commit 前必须运行]
 python3 scripts/execution_validator.py --mode=output --task-id=TXXX --project=philosophy-learning
    → 校验失败则不 commit，修复后重试
-python3 scripts/task_state_cli.py done --task-id=TXXX
+python3 scripts/task_exec.py finish --task-id=TXXX --project=philosophy-learning
 ```
 
 > 校验脚本参考：docs/EXECUTION_SCHEMA.md
@@ -219,7 +218,7 @@ Task-Type: task-execution"
 GIT_NO_OPTIONAL_LOCKS=1 git fetch origin main
 GIT_NO_OPTIONAL_LOCKS=1 git merge --ff-only FETCH_HEAD
 GIT_NO_OPTIONAL_LOCKS=1 git push origin main
-python3 scripts/project_lock.py release --project=philosophy-learning --task-id=TXXX --agent=SocratesAgent
+python3 scripts/task_exec.py release --task-id=TXXX --project=philosophy-learning --agent=SocratesAgent
 ```
 
 > 合并冲突无法自动解决时：停止操作，通知用户，由用户仲裁。

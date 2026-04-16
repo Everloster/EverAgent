@@ -37,15 +37,10 @@ task_input:
 
 ```
 0. 读取对应项目的 `.project-task-state`，选取 `status: open` 的任务
-1. 构造 task_input 结构
-2. 运行 `python3 scripts/execution_validator.py --mode=input --task-id=TXXX --project=<project>`
-   → 校验失败则停止，不 claim 任务
-   → 校验成功则继续步骤 3
-3. 运行 `python3 scripts/project_lock.py acquire --project=<project> --task-id=TXXX --agent=<AgentName>`
-   → 获取锁失败则停止，不 claim 任务
-4. 运行 `python3 scripts/task_state_cli.py claim --task-id=TXXX --agent=<AgentName>`
-5. 立即 commit push（防并发冲突）
-6. 运行 `python3 scripts/task_state_cli.py start --task-id=TXXX`
+1. 优先运行 `python3 scripts/task_exec.py begin --task-id=TXXX --project=<project> --agent=<AgentName>`
+   → 内部依次执行 input 校验、项目锁获取、状态迁移为 claimed
+2. 立即 commit push（防并发冲突）
+3. 运行 `python3 scripts/task_exec.py start --task-id=TXXX`
 ```
 
 ---
@@ -87,14 +82,10 @@ task_output:
 
 ```
 [任务执行完成后，commit 前]
-1. 构造 task_output 结构
-2. 运行 `python3 scripts/execution_validator.py --mode=output --task-id=TXXX --project=<project>`
-   → 校验失败则不 commit，修复后重试
-   → 校验成功则继续步骤 3
-3. 运行 `python3 scripts/task_state_cli.py done --task-id=TXXX`
-   → 若失败则改用 `python3 scripts/task_state_cli.py fail --task-id=TXXX --reason="{reason}"`
-4. commit push
-5. 运行 `python3 scripts/project_lock.py release --project=<project> --task-id=TXXX --agent=<AgentName>`
+1. 优先运行 `python3 scripts/task_exec.py finish --task-id=TXXX --project=<project>`
+   → 内部依次执行 output 校验、状态迁移为 done
+2. commit push
+3. 运行 `python3 scripts/task_exec.py release --task-id=TXXX --project=<project> --agent=<AgentName>`
 ```
 
 ---
@@ -126,9 +117,10 @@ failure_report:
 ```
 1. 填写 failure_report
 2. 不删除 partial_files_created（保留中间产物）
-3. 运行 `python3 scripts/task_state_cli.py fail --task-id=TXXX --reason="{failed_reason}"`
+3. 运行 `python3 scripts/task_exec.py fail --task-id=TXXX --project=<project> --reason="{failed_reason}"`
 4. commit push（message 包含 failed_reason）
-5. 不更新 CONTEXT.md（由 EverAgent 后续处理）
+5. 运行 `python3 scripts/task_exec.py release --task-id=TXXX --project=<project> --agent=<AgentName>`
+6. 不更新 CONTEXT.md（由 EverAgent 后续处理）
 ```
 
 ---
@@ -139,23 +131,14 @@ failure_report:
 
 ```bash
 # 输入校验（领取任务前）
-python3 scripts/execution_validator.py --mode=input --task-id=T001 --project=ai-learning
-
-# 获取项目锁（领取后，写入前）
-python3 scripts/project_lock.py acquire --project=ai-learning --task-id=T001 --agent=NeuronAgent
-
-# 更新任务状态
-python3 scripts/task_state_cli.py claim --task-id=T001 --agent=NeuronAgent
-python3 scripts/task_state_cli.py start --task-id=T001
+python3 scripts/task_exec.py begin --task-id=T001 --project=ai-learning --agent=NeuronAgent
+python3 scripts/task_exec.py start --task-id=T001
 
 # 输出校验（完成任务后）
-python3 scripts/execution_validator.py --mode=output --task-id=T001 --project=ai-learning
-
-# 标记完成
-python3 scripts/task_state_cli.py done --task-id=T001
+python3 scripts/task_exec.py finish --task-id=T001 --project=ai-learning
 
 # 释放项目锁（push 后）
-python3 scripts/project_lock.py release --project=ai-learning --task-id=T001 --agent=NeuronAgent
+python3 scripts/task_exec.py release --task-id=T001 --project=ai-learning --agent=NeuronAgent
 
 # 自检模式（验证脚本自身）
 python3 scripts/execution_validator.py --mode=self-check
@@ -180,6 +163,8 @@ python3 scripts/execution_validator.py --help
 - **validate_reports.py**：TrendAgent 专用报告校验（V-NAME ~ V-LANG 8项检查）
 - **execution_validator.py**：任务执行输入/输出标准化校验（本文档定义）
 - **project_lock.py**：项目级写锁管理（防并发写入）
+- **task_state_cli.py**：任务状态机原子操作（claim/start/done/fail 等）
+- **task_exec.py**：任务执行薄封装（begin/start/finish/fail/release）
 
 三者是互补关系：
 ```
