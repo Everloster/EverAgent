@@ -12,25 +12,11 @@ from task_state import PROJECTS as TASK_STATE_PROJECTS, state_file_for_project
 
 
 ROOT = Path(__file__).resolve().parents[1]
-PROJECTS = {
-    "ai-learning": ROOT / "ai-learning",
-    "biology-learning": ROOT / "biology-learning",
-    "cs-learning": ROOT / "cs-learning",
-    "philosophy-learning": ROOT / "philosophy-learning",
-    "psychology-learning": ROOT / "psychology-learning",
-    "github-trending-analyzer": ROOT / "github-trending-analyzer",
-}
+PROJECTS = {name: path for name, path in TASK_STATE_PROJECTS.items() if name != "global"}
 LEARNING_PROJECTS = {
     name: path for name, path in PROJECTS.items() if name != "github-trending-analyzer"
 }
 REQUIRED_FRONTMATTER_KEYS = {"title", "domain", "report_type", "status", "updated_on"}
-REPORT_GLOBS = [
-    "ai-learning/reports/**/*.md",
-    "biology-learning/reports/**/*.md",
-    "cs-learning/reports/**/*.md",
-    "philosophy-learning/reports/**/*.md",
-    "psychology-learning/reports/**/*.md",
-]
 SKILL_TEMPLATE_HINT = "docs/SKILL_TEMPLATES.md"
 FRONTMATTER_PATTERN = re.compile(r"\A---\n(.*?)\n---\n", re.DOTALL)
 MARKDOWN_LINK_PATTERN = re.compile(r"\[[^\]]+\]\((?!https?://|mailto:|#)([^)]+)\)")
@@ -63,8 +49,10 @@ def parse_frontmatter(text: str) -> dict[str, str] | None:
 
 def iter_report_files() -> list[Path]:
     files: set[Path] = set()
-    for pattern in REPORT_GLOBS:
-        files.update(ROOT.glob(pattern))
+    for project_path in LEARNING_PROJECTS.values():
+        reports_dir = project_path / "reports"
+        if reports_dir.exists():
+            files.update(reports_dir.rglob("*.md"))
     return sorted(path for path in files if path.is_file())
 
 

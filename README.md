@@ -9,16 +9,23 @@
 
 ## 项目全景
 
+<!--
+NOTE: The project overview table below is generated.
+Refresh it via: python3 scripts/task_board_aggregator.py --sync-readme
+-->
+
+<!-- PROJECT_OVERVIEW:START -->
 EverAgent 是以 AI Agent 为核心工具的个人知识库，通过系统化学习路径、深度分析报告和自动化工具，将学习从"被动积累"变为"主动建构"。目前包含 **6 个子项目**：
 
 | 项目 | 领域 | 报告量 | Wiki 页面 | 状态 |
 |------|------|--------|-----------|------|
-| [🤖 AI Learning](./ai-learning/README.md) | 人工智能技术·论文精读·技术深度报告 | 36 篇精读 + 13 篇知识报告 | 23 entities · 19 concepts | 🟢 活跃 |
-| [💻 CS Learning](./cs-learning/README.md) | 计算机科学·系统·算法·分布式 | 20 篇精读 + 3 篇知识报告 | 13 entities · 18 concepts | 🟢 活跃 |
-| [📚 Philosophy Learning](./philosophy-learning/README.md) | 西方哲学史·经典文本·概念辨析 | 9 篇文本分析 + 1 篇论文分析 + 2 篇概念报告 | 10 entities · 11 concepts | 🟡 建设中 |
-| [🧠 Psychology Learning](./psychology-learning/README.md) | 心理学·经典实验精读·行为经济学 | 12 篇精读 + 2 篇知识报告 | — | 🟢 活跃 |
-| [🧬 Biology Learning](./biology-learning/README.md) | 时间生物学·睡眠科学·运动生理学 | 5 篇论文精读 + 1 篇概念报告 | — | 🟡 建设中 |
-| [📈 GitHub Trending Analyzer](./github-trending-analyzer/README.md) | 开源热点追踪·Repo 深度研究 | 84 篇 Repo 报告 + 3 篇深度研究 | — | 🟢 活跃 |
+| [🤖 AI Learning](./ai-learning/README.md) | AI/ML 论文精读·技术报告 | 37 篇精读/文本 + 19 篇知识/概念报告 | 23 entities · 26 concepts | 🟢 |
+| [💻 CS Learning](./cs-learning/README.md) | 计算机科学·系统·算法 | 22 篇精读/文本 + 4 篇知识/概念报告 | 13 entities · 21 concepts | 🟢 |
+| [📚 Philosophy Learning](./philosophy-learning/README.md) | 西方哲学·文本分析 | 10 篇精读/文本 + 2 篇知识/概念报告 | 10 entities · 11 concepts | 🟡 |
+| [🧠 Psychology Learning](./psychology-learning/README.md) | 心理学·经典实验 | 12 篇精读/文本 + 2 篇知识/概念报告 | — | 🟢 |
+| [🧬 Biology Learning](./biology-learning/README.md) | 时间生物学·睡眠·运动生理 | 5 篇精读/文本 + 1 篇知识/概念报告 | — | 🟡 |
+| [📈 GitHub Trending Analyzer](./github-trending-analyzer/README.md) | 开源热点·Repo 知识库 | 74 篇 Repo 报告 + 10 篇汇总报告 | — | 🟢 |
+<!-- PROJECT_OVERVIEW:END -->
 
 ---
 

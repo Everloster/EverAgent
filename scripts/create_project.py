@@ -1,85 +1,48 @@
 #!/usr/bin/env python3
-"""
-Create Project — 自动化创建新子项目
-
-功能：
-  1. 按模板创建目录结构
-  2. 生成自包含的 AGENTS.md（基于模板）
-  3. 生成初始 CONTEXT.md
-  4. 自动更新全局 AGENTS.md §1
-  5. 自动更新 Task Board 项目进度
-  6. 自动更新 README.md
-
-用法：
-  python3 scripts/create_project.py --project={name} --domain={domain} --agent-name={AgentName}
-  python3 scripts/create_project.py --project=quantum-learning --domain=量子计算 --agent-name=QuantumAgent
-
-返回码：
-  0  成功
-  1  失败
-"""
+"""Create a new EverAgent subproject and refresh generated views."""
 
 from __future__ import annotations
 
 import argparse
 import re
+import subprocess
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-# ── Project paths ────────────────────────────────────────────────────────────────
+from project_registry import discover_projects
+
+
 ROOT = Path(__file__).resolve().parents[1]
 AGENTS_MD = ROOT / "AGENTS.md"
-README_MD = ROOT / "README.md"
-TASK_BOARD = ROOT / "docs" / "LEARNING_PROJECTS_TASK_BOARD.md"
 TEMPLATE_DIR = ROOT / "docs" / "PROJECT_TEMPLATE"
 SAMPLE_AGENTS = TEMPLATE_DIR / "AGENTS.md.template"
-
-PROJECTS = {
-    "ai-learning": ROOT / "ai-learning",
-    "cs-learning": ROOT / "cs-learning",
-    "philosophy-learning": ROOT / "philosophy-learning",
-    "psychology-learning": ROOT / "psychology-learning",
-    "biology-learning": ROOT / "biology-learning",
-    "github-trending-analyzer": ROOT / "github-trending-analyzer",
-}
+TASK_BOARD_AGGREGATOR = ROOT / "scripts" / "task_board_aggregator.py"
 
 
 def validate_args(args: argparse.Namespace) -> bool:
-    """验证参数"""
     errors: list[str] = []
+    projects = discover_projects()
 
-    # 检查项目名格式
     if not re.match(r"^[a-z][a-z0-9-]*$", args.project):
         errors.append(f"项目名格式错误：{args.project}（应使用小写字母、数字、连字符，如 quantum-learning）")
-
-    # 检查是否已存在
-    if args.project in PROJECTS:
+    if args.project in projects:
         errors.append(f"项目已存在：{args.project}")
-
-    # 检查目录是否已存在
     project_dir = ROOT / args.project
     if project_dir.exists():
         errors.append(f"目录已存在：{project_dir}")
-
-    # 检查 domain 是否为空
     if not args.domain:
         errors.append("domain 不能为空")
-
-    # 检查 agent_name 是否为空
     if not args.agent_name:
         errors.append("agent_name 不能为空")
-
     if errors:
         for err in errors:
             print(f"[ERROR] {err}", file=sys.stderr)
         return False
-
     return True
 
 
 def create_directories(project_dir: Path) -> None:
-    """创建项目目录结构"""
     dirs = [
         project_dir / "papers",
         project_dir / "books",
@@ -89,61 +52,56 @@ def create_directories(project_dir: Path) -> None:
         project_dir / "reports" / "text_analyses",
         project_dir / "knowledge",
         project_dir / "roadmap",
+        project_dir / "wiki" / "entities",
+        project_dir / "wiki" / "concepts",
+        project_dir / "wiki" / "syntheses",
         project_dir / "skills" / "paper_analysis",
         project_dir / "skills" / "concept_deep_dive",
     ]
 
-    for d in dirs:
-        d.mkdir(parents=True, exist_ok=True)
-        # 创建 .gitkeep 文件
-        gitkeep = d / ".gitkeep"
+    for directory in dirs:
+        directory.mkdir(parents=True, exist_ok=True)
+        gitkeep = directory / ".gitkeep"
         if not gitkeep.exists():
             gitkeep.write_text("", encoding="utf-8")
-
     print(f"[INFO] Created directory structure: {project_dir}")
 
 
-def generate_task_state(project_dir: Path) -> Path:
-    """创建版本化任务状态文件。"""
-    task_state = project_dir / ".project-task-state"
-    task_state.write_text(
+def write_text(path: Path, content: str) -> None:
+    path.write_text(content.rstrip() + "\n", encoding="utf-8")
+    print(f"[INFO] Generated: {path}")
+
+
+def generate_task_state(project_dir: Path) -> None:
+    write_text(
+        project_dir / ".project-task-state",
         "# Versioned task state for this project.\n"
         "# Add tasks here and regenerate docs/LEARNING_PROJECTS_TASK_BOARD.md via task_board_aggregator.py.\n",
-        encoding="utf-8",
     )
-    print(f"[INFO] Generated: {task_state}")
-    return task_state
 
 
-def generate_agents_md(project_dir: Path, args: argparse.Namespace) -> Path:
-    """从模板生成 AGENTS.md"""
-    if not SAMPLE_AGENTS.exists():
-        print(f"[WARN] Template not found: {SAMPLE_AGENTS}, creating default AGENTS.md")
-
-    # 读取模板或创建默认内容
+def load_agents_template() -> str:
     if SAMPLE_AGENTS.exists():
-        template = SAMPLE_AGENTS.read_text(encoding="utf-8")
-    else:
-        template = get_default_agents_template()
+        return SAMPLE_AGENTS.read_text(encoding="utf-8")
+    print(f"[WARN] Template not found: {SAMPLE_AGENTS}, using built-in fallback")
+    return get_default_agents_template()
 
-    # 替换占位符
+
+def render_template(template: str, args: argparse.Namespace) -> str:
     content = template.replace("{{AGENT_NAME}}", args.agent_name)
     content = content.replace("{{PROJECT_PATH}}", args.project)
-    content = content.replace("{{DOMAIN}}", args.domain)
+    return content.replace("{{DOMAIN}}", args.domain)
 
-    # 写入文件
-    agents_md = project_dir / "AGENTS.md"
-    agents_md.write_text(content, encoding="utf-8")
-    print(f"[INFO] Generated: {agents_md}")
 
-    return agents_md
+def generate_agents_md(project_dir: Path, args: argparse.Namespace) -> None:
+    write_text(project_dir / "AGENTS.md", render_template(load_agents_template(), args))
 
 
 def get_default_agents_template() -> str:
-    """获取默认 AGENTS.md 模板"""
     return """# {{AGENT_NAME}} — {{PROJECT_PATH}} 执行协议 v1.0
 
 > 本文件自包含。{{AGENT_NAME}} 只需读此文件 + `CONTEXT.md` 即可独立执行所有任务。
+> 由 EverAgent 调度，执行完成后通过 commit message 广播状态。
 
 ---
 
@@ -157,11 +115,21 @@ agent_manifest:
   capability_level: task_executor
 ```
 
+### 启动初始化
+
+```bash
+# 1. 必读文件（按顺序）
+# - {{PROJECT_PATH}}/CONTEXT.md
+# - {{PROJECT_PATH}}/.project-task-state
+# - {{PROJECT_PATH}}/skills/paper_analysis/SKILL.md
+```
+
 ---
 
-## §1 Project Scope
+## §1 Project Scope（项目边界）
 
 **领域**：{{DOMAIN}}
+**三维度**：技术深度 × 历史叙事 × 工程实践
 
 **可执行任务类型**：
 
@@ -169,44 +137,75 @@ agent_manifest:
 |------|------|---------|
 | `paper_analysis` | 单篇论文 7 步深度精读 | `reports/paper_analyses/` |
 | `knowledge_report` | 概念/技术专题深度解析 | `reports/knowledge_reports/` |
+| `concept_report` | 多篇材料整合后的概念报告 | `reports/concept_reports/` |
+| `text_analysis` | 经典文本逐章分析 | `reports/text_analyses/` |
+
+**禁止操作**：
+- 修改 `CONTEXT.md` 以外的项目元文件
+- 跨项目读写其他子项目文件
+- 修改全局 `AGENTS.md`、`CLAUDE.md`、`scripts/`
 
 ---
 
-## §2 Task Execution Protocol
+## §2 Task Execution Protocol（任务执行流程）
 
 ### 2.1 领取任务
 
 ```
 0. 运行 python3 scripts/execution_validator.py --mode=input --task-id=TXXX
-1. 读取 docs/LEARNING_PROJECTS_TASK_BOARD.md
+   → 校验失败则停止，不 claim 任务
+1. 读取 {{PROJECT_PATH}}/.project-task-state（Task Board 仅作只读视图）
 2. 选取 project: {{PROJECT_PATH}}, status: open 的任务
-3. 运行 python3 scripts/project_lock.py acquire --project={{PROJECT_PATH}} --task-id=TXXX --agent={{AGENT_NAME}}
-4. 运行 python3 scripts/task_state_cli.py claim --task-id=TXXX --agent={{AGENT_NAME}}
-5. 立即 commit push
-6. 运行 python3 scripts/task_state_cli.py start --task-id=TXXX
+3. 优先运行 python3 scripts/task_exec.py begin --task-id=TXXX --project={{PROJECT_PATH}} --agent={{AGENT_NAME}}
+4. 立即 commit push（防并发冲突）
+5. 运行 python3 scripts/task_exec.py start --task-id=TXXX
 ```
+
+> 校验脚本参考：docs/EXECUTION_SCHEMA.md
+
+## §3 Output Standards（输出规范）
+
+### 完成后必须更新
+
+1. `CONTEXT.md` — 在"已有报告"列表追加新报告条目
+2. `docs/LEARNING_PROJECTS_TASK_BOARD.md` — 通过聚合器重建只读视图
 
 ### 完成后必须校验
 
 ```
+[commit 前必须运行]
 python3 scripts/execution_validator.py --mode=output --task-id=TXXX --project={{PROJECT_PATH}}
-python3 scripts/task_state_cli.py done --task-id=TXXX
+   → 校验失败则不 commit，修复后重试
+python3 scripts/task_exec.py finish --task-id=TXXX --project={{PROJECT_PATH}}
 ```
 
 ---
 
-## §3 Hallucination Guard
+## §4 Write Permissions（写入权限）
+
+| 路径 | 权限 |
+|------|------|
+| `reports/` | ✅ 新建·修改 |
+| `CONTEXT.md` | ✅ 仅追加报告条目 |
+| `wiki/` | ✅ 新建·追加更新 |
+| `skills/` | ❌ 只读 |
+| `AGENTS.md`（本文件） | ❌ 只读 |
+| 其他子项目任意路径 | ❌ 禁止 |
+| 全局 `AGENTS.md` / `CLAUDE.md` / `scripts/` | ❌ 禁止 |
+
+---
+
+## §5 Hallucination Guard（防幻觉铁律）
 
 1. 执行前必须读取 `CONTEXT.md` 的"边界区"
 2. 禁止推测未研究的内容
+3. 报告内容须与原文严格对应
 """
 
 
-def generate_context_md(project_dir: Path, args: argparse.Namespace) -> Path:
-    """生成初始 CONTEXT.md"""
+def generate_context_md(project_dir: Path, args: argparse.Namespace) -> None:
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-
-    content = f"""# {{PROJECT_PATH}} Context
+    content = f"""# {args.project} Context
 
 > 项目：{args.domain}
 > Agent：{args.agent_name}
@@ -245,20 +244,10 @@ def generate_context_md(project_dir: Path, args: argparse.Namespace) -> Path:
 - 论文索引：`papers/PAPERS_INDEX.md`
 - 技能模板：`docs/SKILL_TEMPLATES.md`
 """
-
-    content = content.replace("{{AGENT_NAME}}", args.agent_name)
-    content = content.replace("{{PROJECT_PATH}}", args.project)
-    content = content.replace("{{DOMAIN}}", args.domain)
-
-    context_md = project_dir / "CONTEXT.md"
-    context_md.write_text(content, encoding="utf-8")
-    print(f"[INFO] Generated: {context_md}")
-
-    return context_md
+    write_text(project_dir / "CONTEXT.md", content)
 
 
-def generate_readme_md(project_dir: Path, args: argparse.Namespace) -> Path:
-    """生成项目 README.md"""
+def generate_readme_md(project_dir: Path, args: argparse.Namespace) -> None:
     content = f"""# {args.domain}
 
 > {args.agent_name} 学习项目
@@ -274,11 +263,19 @@ def generate_readme_md(project_dir: Path, args: argparse.Namespace) -> Path:
 ├── AGENTS.md              # 执行协议
 ├── CONTEXT.md             # 项目上下文
 ├── papers/                # 论文索引
+│   └── PAPERS_INDEX.md
+├── books/                 # 书单索引
+│   └── BOOKS_INDEX.md
 ├── reports/               # 报告产出
 │   ├── paper_analyses/    # 论文精读
-│   ├── knowledge_reports/ # 知识报告
-│   └── concept_reports/    # 概念报告
-├── knowledge/             # 离线知识库
+│   ├── knowledge_reports/ # 知识报告/专题解析
+│   ├── concept_reports/   # 概念报告
+│   └── text_analyses/     # 经典文本分析
+├── knowledge/             # 项目知识索引
+├── wiki/                  # 索引层知识网络
+│   ├── entities/
+│   ├── concepts/
+│   └── syntheses/
 ├── roadmap/               # 学习路线
 └── skills/                # 技能定义
 ```
@@ -287,64 +284,52 @@ def generate_readme_md(project_dir: Path, args: argparse.Namespace) -> Path:
 
 见 `AGENTS.md`
 """
+    write_text(project_dir / "README.md", content)
 
-    readme_md = project_dir / "README.md"
-    readme_md.write_text(content, encoding="utf-8")
-    print(f"[INFO] Generated: {readme_md}")
 
-    return readme_md
+def generate_supporting_files(project_dir: Path, args: argparse.Namespace) -> None:
+    now = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    files = {
+        project_dir / "papers" / "PAPERS_INDEX.md": "# Papers Index\n\n> 待补充论文清单。\n",
+        project_dir / "books" / "BOOKS_INDEX.md": "# Books Index\n\n> 待补充书单。\n",
+        project_dir / "knowledge" / "INDEX.md": "# Knowledge Index\n\n> 待补充项目知识索引。\n",
+        project_dir / "roadmap" / "Learning_Roadmap.md": f"# Learning Roadmap\n\n> {args.domain} 学习路线待规划。\n",
+        project_dir / "roadmap" / "Development_Timeline.md": "# Development Timeline\n\n> 待补充发展时间线。\n",
+        project_dir / "wiki" / "index.md": "# Wiki Index\n\n> 待随着报告摄入逐步建立。\n",
+        project_dir / "wiki" / "log.md": f"# Wiki Log\n\n## [{now}] init | scaffold\n- 初始化项目骨架\n",
+        project_dir / "skills" / "paper_analysis" / "SKILL.md": "# Paper Analysis Skill\n\n> 参考共享模板：`docs/SKILL_TEMPLATES.md`\n",
+        project_dir / "skills" / "concept_deep_dive" / "SKILL.md": "# Concept Deep Dive Skill\n\n> 参考共享模板：`docs/SKILL_TEMPLATES.md`\n",
+    }
+    for path, content in files.items():
+        write_text(path, content)
 
 
 def update_global_agents(args: argparse.Namespace) -> None:
-    """更新全局 AGENTS.md §1 Subagent Registry"""
-    if not AGENTS_MD.exists():
-        print(f"[WARN] Global AGENTS.md not found: {AGENTS_MD}")
-        return
-
-    text = AGENTS_MD.read_text(encoding="utf-8")
-
-    # 查找 Subagent Registry 表格
-    # 表格格式：| **Agent名** | `path` | `path/AGENTS.md` | 领域 | 🟢/🟡/🔴 |
+    lines = AGENTS_MD.read_text(encoding="utf-8").splitlines()
     new_row = f"| **{args.agent_name}** | `{args.project}/` | `{args.project}/AGENTS.md` | {args.domain} | 🟢 |"
-
-    # 在表格末尾（最后一个 | --- | 行之后）插入新行
-    # 找到最后一个 | --- | 行
-    pattern = r"(\| ---+ \| ---+ \| ---+ \| ---+ \| ---+ \|)\n"
-    match = re.search(pattern, text)
-    if match:
-        insert_pos = match.end()
-        text = text[:insert_pos] + new_row + "\n" + text[insert_pos:]
-        AGENTS_MD.write_text(text, encoding="utf-8")
-        print(f"[INFO] Updated global AGENTS.md §1: added {args.agent_name}")
-    else:
-        print(f"[WARN] Could not find Subagent Registry table in AGENTS.md")
-
-
-def update_task_board(args: argparse.Namespace) -> None:
-    """提示通过聚合器刷新 Task Board。"""
-    if not TASK_BOARD.exists():
-        print(f"[WARN] Task Board not found: {TASK_BOARD}")
-        return
-    print("[INFO] Task Board now derives from .project-task-state files; rerun task_board_aggregator.py to refresh the view")
-
-
-def update_readme(args: argparse.Namespace) -> None:
-    """更新根目录 README.md 项目表格"""
-    if not README_MD.exists():
-        print(f"[WARN] README.md not found: {README_MD}")
+    if new_row in lines:
+        print(f"[INFO] Global AGENTS.md already contains {args.project}")
         return
 
-    text = README_MD.read_text(encoding="utf-8")
+    separator_index = next((idx for idx, line in enumerate(lines) if line.startswith("|---------|")), None)
+    if separator_index is None:
+        raise ValueError("Could not find Subagent Registry table in AGENTS.md")
 
-    # 新项目行
-    new_row = f"| {args.agent_name} | {args.domain} | `/{args.project}/` | 🟢 |"
+    insert_index = separator_index + 1
+    while insert_index < len(lines) and lines[insert_index].startswith("| **"):
+        insert_index += 1
+    lines.insert(insert_index, new_row)
+    write_text(AGENTS_MD, "\n".join(lines))
+    print(f"[INFO] Updated global AGENTS.md §1: added {args.agent_name}")
 
-    # 查找项目表格并添加新行（如果有的话）
-    # 简单起见，只在文件末尾追加
-    text += f"\n{new_row}\n"
 
-    README_MD.write_text(text, encoding="utf-8")
-    print(f"[INFO] Updated README.md: added {args.project}")
+def refresh_generated_views() -> None:
+    subprocess.run(
+        [sys.executable, str(TASK_BOARD_AGGREGATOR), "--sync-readme"],
+        cwd=ROOT,
+        check=True,
+    )
+    print("[INFO] Refreshed task board and root README overview")
 
 
 def main() -> int:
@@ -355,7 +340,6 @@ def main() -> int:
     parser.add_argument("--dry-run", action="store_true", help="仅显示不写入")
     args = parser.parse_args()
 
-    # 验证
     if not validate_args(args):
         return 1
 
@@ -367,35 +351,20 @@ def main() -> int:
 
     project_dir = ROOT / args.project
 
-    # 1. 创建目录结构
     create_directories(project_dir)
-
-    # 2. 生成版本化任务状态文件
     generate_task_state(project_dir)
-
-    # 3. 生成 AGENTS.md
     generate_agents_md(project_dir, args)
-
-    # 4. 生成 CONTEXT.md
     generate_context_md(project_dir, args)
-
-    # 5. 生成 README.md
     generate_readme_md(project_dir, args)
-
-    # 6. 更新全局 AGENTS.md §1
+    generate_supporting_files(project_dir, args)
     update_global_agents(args)
-
-    # 7. 更新 Task Board
-    update_task_board(args)
-
-    # 8. 更新 README.md
-    update_readme(args)
+    refresh_generated_views()
 
     print(f"\n[SUCCESS] Project {args.project} created!")
     print(f"  Next steps:")
     print(f"  1. Review generated files in {project_dir}")
     print(f"  2. Add initial papers to {project_dir}/papers/PAPERS_INDEX.md")
-    print(f"  3. Create first task in Task Board")
+    print(f"  3. Create first task in {project_dir}/.project-task-state")
     print(f"  4. Commit: git add {args.project} && git commit -m '[new-project] {args.project}: initial structure'")
 
     return 0
