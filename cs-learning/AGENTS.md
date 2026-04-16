@@ -55,9 +55,9 @@ agent_manifest:
 1. 读取 cs-learning/.project-task-state（Task Board 仅作只读视图）
 2. 选取 project: cs-learning, status: open 的任务
 3. 运行 python3 scripts/project_lock.py acquire --project=cs-learning --task-id=TXXX --agent=ByteAgent
-4. 将 status 改为 claimed，填写 claimed_by: ByteAgent，claimed_at: 当前时间
+4. 运行 python3 scripts/task_state_cli.py claim --task-id=TXXX --agent=ByteAgent
 5. 立即 commit push（防并发冲突）
-6. 将 status 改为 in_progress，填写 started_at
+6. 运行 python3 scripts/task_state_cli.py start --task-id=TXXX
 ```
 
 > 校验脚本参考：docs/EXECUTION_SCHEMA.md
@@ -165,7 +165,7 @@ knowledge_report:  {主题}_{知识图谱|深度解析|...}.md
 
 1. `CONTEXT.md` — 在"已有报告"列表追加新报告条目
 2. `papers/PAPERS_INDEX.md` — 标记对应论文状态为已精读
-3. `docs/LEARNING_PROJECTS_TASK_BOARD.md` — task status → done，填写 done_at，追加到已完成列表
+3. `docs/LEARNING_PROJECTS_TASK_BOARD.md` — 通过聚合器重建只读视图
 
 ### 完成后必须校验
 
@@ -173,6 +173,7 @@ knowledge_report:  {主题}_{知识图谱|深度解析|...}.md
 [commit 前必须运行]
 python3 scripts/execution_validator.py --mode=output --task-id=TXXX --project=cs-learning
    → 校验失败则不 commit，修复后重试
+python3 scripts/task_state_cli.py done --task-id=TXXX
 ```
 
 > 校验脚本参考：docs/EXECUTION_SCHEMA.md

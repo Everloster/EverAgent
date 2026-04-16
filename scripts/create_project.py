@@ -180,15 +180,17 @@ agent_manifest:
 0. 运行 python3 scripts/execution_validator.py --mode=input --task-id=TXXX
 1. 读取 docs/LEARNING_PROJECTS_TASK_BOARD.md
 2. 选取 project: {{PROJECT_PATH}}, status: open 的任务
-3. 将 status 改为 claimed
-4. 立即 commit push
-5. 将 status 改为 in_progress
+3. 运行 python3 scripts/project_lock.py acquire --project={{PROJECT_PATH}} --task-id=TXXX --agent={{AGENT_NAME}}
+4. 运行 python3 scripts/task_state_cli.py claim --task-id=TXXX --agent={{AGENT_NAME}}
+5. 立即 commit push
+6. 运行 python3 scripts/task_state_cli.py start --task-id=TXXX
 ```
 
 ### 完成后必须校验
 
 ```
 python3 scripts/execution_validator.py --mode=output --task-id=TXXX --project={{PROJECT_PATH}}
+python3 scripts/task_state_cli.py done --task-id=TXXX
 ```
 
 ---

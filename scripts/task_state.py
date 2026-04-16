@@ -3,7 +3,8 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional
 
@@ -57,6 +58,26 @@ class TaskEntry:
     def is_done(self) -> bool:
         return self.status == "done"
 
+    def to_lines(self) -> list[str]:
+        lines = [f"- id: {self.id}"]
+        lines.append(f"  project: {self.project}")
+        lines.append(f"  type: {self.type}")
+        lines.append(f'  target: "{self.target}"')
+        if self.value:
+            lines.append(f'  value: "{self.value}"')
+        lines.append(f"  priority: {self.priority}")
+        lines.append(f"  required_capability: {self.required_capability}")
+        lines.append(f"  status: {self.status}")
+        lines.append(f"  claimed_by: {self.claimed_by or 'null'}")
+        lines.append(f"  claimed_at: {self.claimed_at or 'null'}")
+        if self.started_at is not None:
+            lines.append(f"  started_at: {self.started_at}")
+        if self.done_at is not None:
+            lines.append(f"  done_at: {self.done_at}")
+        if self.failed_reason is not None:
+            lines.append(f'  failed_reason: "{self.failed_reason}"')
+        return lines
+
 
 def state_file_for_project(project: str) -> Path:
     if project not in PROJECTS:
@@ -73,6 +94,10 @@ def _normalize_value(raw: str) -> Optional[str]:
     if value in {"", "null", "None"}:
         return None
     return value
+
+
+def now_iso() -> str:
+    return datetime.now(timezone.utc).astimezone().isoformat(timespec="seconds")
 
 
 def parse_task_state_file(path: Path, default_project: Optional[str] = None) -> list[TaskEntry]:
@@ -139,3 +164,32 @@ def find_task(task_id: str) -> Optional[TaskEntry]:
         if task.id == task_id:
             return task
     return None
+
+
+def replace_task(project: str, task_id: str, updated_task: TaskEntry) -> None:
+    path = state_file_for_project(project)
+    tasks = load_tasks_for_project(project)
+    replaced = False
+    updated_tasks: list[TaskEntry] = []
+    for task in tasks:
+        if task.id == task_id:
+            updated_tasks.append(updated_task)
+            replaced = True
+        else:
+            updated_tasks.append(task)
+    if not replaced:
+        raise KeyError(f"Task {task_id} not found in {path}")
+    write_task_state_file(path, updated_tasks)
+
+
+def write_task_state_file(path: Path, tasks: list[TaskEntry]) -> None:
+    content_lines: list[str] = []
+    for index, task in enumerate(tasks):
+        if index > 0:
+            content_lines.append("")
+        content_lines.extend(task.to_lines())
+    path.write_text("\n".join(content_lines).rstrip() + "\n", encoding="utf-8")
+
+
+def update_task(task: TaskEntry, **changes: Optional[str]) -> TaskEntry:
+    return replace(task, **changes)

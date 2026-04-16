@@ -6,6 +6,18 @@
 
 REPO_ROOT="$(git rev-parse --show-toplevel)"
 SCRIPT="$REPO_ROOT/scripts/validate_workspace.py"
+IDENTITY_SCRIPT="$REPO_ROOT/scripts/git_identity.py"
+
+if [ -f "$IDENTITY_SCRIPT" ]; then
+    echo "[pre-commit] Validating git identity..."
+    python3 "$IDENTITY_SCRIPT" validate
+    IDENTITY_EXIT_CODE=$?
+    if [ $IDENTITY_EXIT_CODE -ne 0 ]; then
+        echo ""
+        echo "[pre-commit] BLOCKED: git identity check failed."
+        exit 1
+    fi
+fi
 
 if [ ! -f "$SCRIPT" ]; then
     echo "[pre-commit] validate_workspace.py not found, skipping"
