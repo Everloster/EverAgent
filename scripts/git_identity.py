@@ -10,7 +10,9 @@ import sys
 from pathlib import Path
 
 
-DEFAULT_NAME = "Trae GPT-5.4"
+# Defaults are intentionally loose:
+# - Name is agent-defined per runtime (do NOT hardcode a single model name).
+# - Email must be a vendor noreply address; exact domain can be overridden by env/CLI.
 DEFAULT_EMAIL = "noreply@openai.com"
 ENV_NAME_KEYS = ("EVERAGENT_GIT_NAME", "AGENT_GIT_NAME")
 ENV_EMAIL_KEYS = ("EVERAGENT_GIT_EMAIL", "AGENT_GIT_EMAIL")
@@ -39,6 +41,11 @@ def _read_expected_from_agents_md() -> tuple[str | None, str | None]:
                 email = stripped.split('"', 2)[1]
         if name and email:
             break
+    # Treat placeholders like "<CURRENT_AGENT_NAME>" as "unspecified".
+    if name and name.startswith("<") and name.endswith(">"):
+        name = None
+    if email and email.startswith("<") and email.endswith(">"):
+        email = None
     return name, email
 
 
@@ -52,7 +59,7 @@ def read_git_config(key: str) -> str:
     return result.stdout.strip()
 
 
-def expected_name(cli_value: str | None) -> str:
+def expected_name(cli_value: str | None) -> str | None:
     if cli_value:
         return cli_value
     for key in ENV_NAME_KEYS:
@@ -61,10 +68,10 @@ def expected_name(cli_value: str | None) -> str:
     name, _ = _read_expected_from_agents_md()
     if name:
         return name
-    return DEFAULT_NAME
+    return None
 
 
-def expected_email(cli_value: str | None) -> str:
+def expected_email(cli_value: str | None) -> str | None:
     if cli_value:
         return cli_value
     for key in ENV_EMAIL_KEYS:
@@ -77,8 +84,8 @@ def expected_email(cli_value: str | None) -> str:
 
 
 def command_show(args: argparse.Namespace) -> int:
-    print(f"expected_name={expected_name(args.name)}")
-    print(f"expected_email={expected_email(args.email)}")
+    print(f"expected_name={expected_name(args.name) or '<dynamic>'}")
+    print(f"expected_email={expected_email(args.email) or '<dynamic>'}")
     print(f"git_name={read_git_config('user.name') or '<unset>'}")
     print(f"git_email={read_git_config('user.email') or '<unset>'}")
     return 0
@@ -93,27 +100,33 @@ def command_validate(args: argparse.Namespace) -> int:
     errors: list[str] = []
     if not act_name:
         errors.append("git user.name is unset")
-    elif act_name != exp_name:
+    elif exp_name and act_name != exp_name:
         errors.append(f"git user.name mismatch: expected '{exp_name}', got '{act_name}'")
 
     if not act_email:
         errors.append("git user.email is unset")
     else:
-        if act_email != exp_email:
-            errors.append(f"git user.email mismatch: expected '{exp_email}', got '{act_email}'")
         if "noreply@" not in act_email:
             errors.append(f"git user.email must be a noreply address, got '{act_email}'")
+        elif exp_email and act_email != exp_email:
+            print(f"[WARN] git user.email differs from expected '{exp_email}': got '{act_email}'", file=sys.stderr)
 
     if errors:
         for error in errors:
             print(f"[ERROR] {error}", file=sys.stderr)
-        print(
-            f"[HINT] Configure git with: git config user.name \"{exp_name}\" && git config user.email \"{exp_email}\"",
-            file=sys.stderr,
-        )
+        hint_name = exp_name or "<agent-defined name>"
+        hint_email = exp_email or "<vendor noreply email>"
+        print(f"[HINT] Configure git with: git config user.name \"{hint_name}\" && git config user.email \"{hint_email}\"", file=sys.stderr)
         return 1
 
-    print(f"[PASS] Git identity matches {exp_name} <{exp_email}>")
+    if exp_name and exp_email:
+        print(f"[PASS] Git identity matches {exp_name} <{exp_email}>")
+    elif exp_name:
+        print(f"[PASS] Git identity name OK ({act_name}); email is noreply ({act_email})")
+    elif exp_email:
+        print(f"[PASS] Git identity email OK ({act_email}); name is set ({act_name})")
+    else:
+        print(f"[PASS] Git identity OK: {act_name} <{act_email}>")
     return 0
 
 
