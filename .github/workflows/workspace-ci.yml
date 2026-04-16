@@ -1,0 +1,45 @@
+name: Workspace CI
+
+on:
+  push:
+    paths:
+      - "scripts/**"
+      - "docs/**"
+      - "AGENTS.md"
+      - "CLAUDE.md"
+      - "README.md"
+      - "**/.project-task-state"
+      - ".github/workflows/workspace-ci.yml"
+  pull_request:
+    paths:
+      - "scripts/**"
+      - "docs/**"
+      - "AGENTS.md"
+      - "CLAUDE.md"
+      - "README.md"
+      - "**/.project-task-state"
+      - ".github/workflows/workspace-ci.yml"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Workspace Validation
+        run: python3 scripts/validate_workspace.py
+
+      - name: Execution Schema Self Check
+        run: python3 scripts/execution_validator.py --mode=self-check
+
+      - name: Task Board Dry Run
+        run: python3 scripts/task_board_aggregator.py --dry-run > /dev/null
+
+      - name: Unit Tests (stdlib)
+        run: python3 -m unittest discover -s tests -p "test_*.py" -q

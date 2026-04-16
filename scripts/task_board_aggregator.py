@@ -6,7 +6,7 @@ from __future__ import annotations
 import argparse
 import re
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 from task_state import GLOBAL_PROJECT, LEARNING_PROJECTS, TaskEntry, load_all_tasks
@@ -29,6 +29,22 @@ PROJECT_TITLES = {
     "biology-learning": "🧬 Biology Learning",
     "github-trending-analyzer": "📈 GitHub Trending Analyzer",
 }
+
+# If an active task hasn't been updated within this window, flag it in the board view.
+STALE_HOURS = 72
+
+
+def _parse_iso8601(value: str | None) -> datetime | None:
+    if not value:
+        return None
+    normalized = value.replace("Z", "+00:00")
+    try:
+        parsed = datetime.fromisoformat(normalized)
+    except ValueError:
+        return None
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=timezone.utc)
+    return parsed
 
 
 class ProjectStats:
@@ -215,6 +231,7 @@ def generate_task_board_view(tasks: list[TaskEntry], stats: dict[str, ProjectSta
         "2. 领取前先运行 `python3 scripts/execution_validator.py --mode=input --task-id=TXXX --project=<project>`。",
         "3. 输入校验通过后立即获取项目锁：`python3 scripts/project_lock.py acquire --project=<project> --task-id=TXXX --agent=<AgentName>`。",
         "4. 完成任务后先运行输出校验，再提交、推送，最后释放项目锁。",
+        f"5. `claimed` / `in_progress` 超过 {STALE_HOURS}h 的任务会显示在“超时任务”区块，建议改为 `abandoned` 或人工 `reopen`。",
         "",
         "---",
         "",
@@ -244,6 +261,25 @@ def generate_task_board_view(tasks: list[TaskEntry], stats: dict[str, ProjectSta
     append_task_block(lines, "### 开放任务池（P3）", tasks_by_priority["P3"])
 
     active_tasks = [task for task in tasks if task.is_active]
+    stale: list[tuple[TaskEntry, int]] = []
+    if active_tasks:
+        cutoff = datetime.now(timezone.utc) - timedelta(hours=STALE_HOURS)
+        for task in active_tasks:
+            reference = _parse_iso8601(task.started_at or task.claimed_at)
+            if reference is None:
+                continue
+            if reference.astimezone(timezone.utc) < cutoff:
+                age_hours = int((datetime.now(timezone.utc) - reference.astimezone(timezone.utc)).total_seconds() // 3600)
+                stale.append((task, age_hours))
+    if stale:
+        lines.extend(["### 超时任务（需要处理）", "", "```yaml"])
+        for task, age_hours in sorted(stale, key=lambda item: item[1], reverse=True):
+            lines.append(f"# stale_hours: {age_hours} (threshold={STALE_HOURS})")
+            lines.append("# suggested_action: python3 scripts/task_state_cli.py abandon --task-id <ID> --reason \"stale\"")
+            lines.extend(format_task_yaml(task))
+            lines.append("")
+        lines.append("```")
+        lines.append("")
     append_task_block(lines, "### 进行中任务", active_tasks)
 
     done_tasks = sorted(

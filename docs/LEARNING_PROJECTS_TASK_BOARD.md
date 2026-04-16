@@ -13,6 +13,7 @@
 2. 领取前先运行 `python3 scripts/execution_validator.py --mode=input --task-id=TXXX --project=<project>`。
 3. 输入校验通过后立即获取项目锁：`python3 scripts/project_lock.py acquire --project=<project> --task-id=TXXX --agent=<AgentName>`。
 4. 完成任务后先运行输出校验，再提交、推送，最后释放项目锁。
+5. `claimed` / `in_progress` 超过 72h 的任务会显示在“超时任务”区块，建议改为 `abandoned` 或人工 `reopen`。
 
 ---
 
