@@ -17,8 +17,8 @@ agent_manifest:
     # name 必须设置为当前运行模型名，不得使用个人 git 身份
     # email 必须为当前模型供应商的 noreply 地址；pre-commit hook 会校验 name/email
     # 可通过环境变量 EVERAGENT_GIT_NAME / EVERAGENT_GIT_EMAIL 覆盖默认值
-    name: "Trae GPT-5.4"
-    email: "noreply@openai.com"
+    name: "<CURRENT_AGENT_NAME>"     # 例如：Trae GPT-5.4 / GPT-5.4 Codex
+    email: "<VENDOR_NOREPLY_EMAIL>"  # 例如：noreply@openai.com
 ```
 
 ### Git 初始化
@@ -27,8 +27,8 @@ agent_manifest:
 GITHUB_TOKEN=$(grep GITHUB_TOKEN .env | cut -d'"' -f2)
 git remote set-url origin https://${GITHUB_TOKEN}@github.com/Everloster/EverAgent.git
 git ls-remote origin HEAD          # 验权，失败则停止
-git config user.name "Trae GPT-5.4"         # 替换为实际运行模型名，或设置 EVERAGENT_GIT_NAME
-git config user.email "noreply@openai.com"  # 替换为当前模型供应商的 noreply 邮箱，或设置 EVERAGENT_GIT_EMAIL
+git config user.name "<CURRENT_AGENT_NAME>"         # 由当前运行 AI 自行决定（或设置 EVERAGENT_GIT_NAME）
+git config user.email "<VENDOR_NOREPLY_EMAIL>"      # 供应商 noreply 邮箱（或设置 EVERAGENT_GIT_EMAIL）
 python3 scripts/git_identity.py validate
 # ⚠️ 不得跳过此步骤——pre-commit hook 会拦截 name/email 不匹配或非 noreply 邮箱的提交
 ```
