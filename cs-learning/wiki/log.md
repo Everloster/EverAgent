@@ -74,3 +74,10 @@
 - 验证结论：Phase 2.5 收尾完成，wiki 双向链接图完全闭合（18 concept 节点、0 孤岛、3 矛盾标记锚定 overview）
 
 <!-- 后续 ingest / query-archive / lint 在此追加 -->
+
+## [2026-04-16] ingest | 操作系统内核设计深度解析 知识报告
+- 新建报告：reports/knowledge_reports/操作系统内核设计深度解析_20260416.md（5层框架+演化谱系图，整合UNIX/FFS/CSP三篇精读）
+- 新建 concept：wiki/concepts/os_kernel_design.md（UNIX五大原语·FFS cylinder group·CSP通道·宏内核vs微内核·io_uring演化·Unikernel）
+- 更新 wiki/index.md：Concepts 表格新增 os_kernel_design 条目
+- 数据源：04_unix_1974 / 23_ffs_1984 / 18_csp_1978 + 已有知识图谱
+- 执行者：ByteAgent / Claude Sonnet 4.6

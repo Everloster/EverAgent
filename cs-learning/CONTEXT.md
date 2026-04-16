@@ -32,6 +32,7 @@
 - `CS关键人物图谱` — 图灵→香农→Dijkstra→现代系统工程师的思想传承
 - `分布式系统知识图谱` — Storage/Consensus/Coordination/Messaging 四主线整合，19篇精读归纳
 - `DHT实战排查：从协议理论到工程故障诊断` — Kademlia/BEP-5协议·WireGuard+wstunnel多层隧道·分层故障诊断方法论·Bootstrap节点生态现状（2026-04-06）
+- `操作系统内核设计深度解析_20260416` — UNIX哲学·一切皆文件·fork/exec/pipe·FFS cylinder group·CSP通道通信·宏内核vs微内核·io_uring·Unikernel（2026-04-16）
 
 ## 离线知识库
 → [`knowledge/INDEX.md`](./knowledge/INDEX.md)
@@ -50,5 +51,5 @@
 - 网络方向已有 TCP/IP (1974) 和 DNS (1987)；BGP 等尚无独立精读报告
 - 编译器、数据库理论（关系代数等）方向尚无报告
 - 论文索引中列出但未精读的论文仅有索引，无分析报告
-- 知识报告严重不足（19篇精读仅1篇知识报告），分布式系统归纳尚缺
-- 下一步推荐：分布式系统知识图谱、 BGP（网络方向深化）
+- 操作系统方向已有知识报告（UNIX/FFS/CSP综合），但具体子话题（进程调度算法、虚拟内存管理）尚无专项报告
+- 下一步推荐：BGP（网络方向深化）、Dijkstra Go To Statement（编程语言理论入口）

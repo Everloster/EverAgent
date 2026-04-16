@@ -60,7 +60,8 @@
 - `双向驯化与多Agent涌现_深度解析_20260415` — 硅基对碳基的四种认知侵蚀机制·多Agent涌现四种类型·单Agent Alignment框架失效点·EverAgent活体案例（2026-04-15）
 - `EverAgent_ToA原型解剖_20260415` — 119 commits实证·ToA五要素审计·git history考古·设计模式提炼·四个未解问题·自我批判（2026-04-15）
 - `奶头乐ChatBot的真实战略价值_20260415` — ToC不是终点是数据基础设施·数据飞轮·RLHF依赖·防Model Collapse·三大AI公司战略对比（2026-04-15）
-- `开源vs闭源在ToA世界的重新博弈_20260415` — CLI原生论利好开源五条机制·闭源数据飞轮优势·DeepSeek分水岭·三种终局场景·监管变量（2026-04-15）（2026-04-09）
+- `开源vs闭源在ToA世界的重新博弈_20260415` — CLI原生论利好开源五条机制·闭源数据飞轮优势·DeepSeek分水岭·三种终局场景·监管变量（2026-04-15）
+- `生成模型演化全景_GAN_DDPM_LDM_DiT_20260416` — GAN→DDPM→Stable Diffusion→DiT四代演化·模式崩溃→扩散稳定→潜空间压缩→Transformer骨干·Flow Matching前沿·Sora视频生成（2026-04-16）
 
 ## 离线知识库
 → [`knowledge/INDEX.md`](./knowledge/INDEX.md)（子话题菜单，离线模型从此进入）
@@ -78,4 +79,5 @@
 - GPT-4 / Claude / Gemini 系列的专项分析报告（ToA报告中有引用现状描述，均标注为推断）
 - 工程类论文精读（EVA-02 等后续工程论文）
 - Phase 2 尚缺：DDIM 等后续扩散论文；VGGNet、Batch Normalization 专项报告
-- 下一步推荐：EVA-02、Megatron-LM 深度分析
+- 生成模型知识报告已完成（GAN/DDPM/LDM/DiT综合），但DDIM加速采样、Consistency Models尚无专项报告
+- 下一步推荐：EVA-02、Megatron-LM 深度分析（工程类主线缺口）

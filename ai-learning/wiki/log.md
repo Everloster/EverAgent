@@ -162,3 +162,10 @@
 - 更新 wiki/index.md Concepts 表格新增条目
 - 数据源：Wei et al. 2022 CoT、OpenAI o1/o3 技术报告、DeepSeek-R1 论文、Brown et al. 2024 Inference-Time Scaling
 - 状态：plan §知识深度解析完成
+
+## [2026-04-16] ingest | 生成模型演化全景：GAN → DDPM → LDM → DiT 知识报告
+- 新建报告：reports/knowledge_reports/生成模型演化全景_GAN_DDPM_LDM_DiT_20260416.md（5层框架+演化谱系图，整合4篇已精读论文）
+- 新建 concept：wiki/concepts/generative_models_evolution.md（四代演化对比·核心公式·前沿Flow Matching·开放问题）
+- 更新 wiki/index.md：Concepts 表格新增 generative_models_evolution 条目
+- 数据源：08_gan_2014 / 09_ddpm_2020 / 20_stable_diffusion_2021 / 27_dit_2022 + 相关知识报告
+- 执行者：NeuronAgent / Claude Sonnet 4.6
