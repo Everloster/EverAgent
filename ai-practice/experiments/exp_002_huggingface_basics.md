@@ -1,69 +1,126 @@
 ---
-title: HuggingFace 数据集与模型 API 实践
-type: experiment_analysis
-status: done
-experiment_id: exp_002
-notebook: notebooks/learn_huggingface.ipynb
+title: HuggingFace Hub 模型与数据集管理
+type: tutorial_note
+stage: 3
+notebook: notebooks/03_huggingface_api.ipynb
+prerequisites: ["python_basics", "file_system"]
 updated_on: 2026-04-20
 ---
 
-## 实验摘要
+## 学习目标
 
-> 实践 HuggingFace Hub 核心 API：模型下载、本地缓存管理、数据集加载，重点使用 Qwen2.5-3B-Instruct 验证镜像加速和本地路径管理。
+- [ ] 掌握 HuggingFace Hub 上的模型下载和本地缓存管理
+- [ ] 理解缓存目录结构（`~/.cache/huggingface/`）
+- [ ] 能在国内网络环境下正常使用 HF 生态（镜像配置）
+- [ ] 理解 `datasets` 库的基本加载方式
 
-## Step 1 实验目标
+---
 
-- **工程问题**：掌握 HuggingFace 生态的模型/数据集本地管理，支持离线或低带宽场景
-- **背景**：为 exp_004（Qwen2.5 GRPO 微调）做环境准备；国内访问 HuggingFace Hub 的镜像配置实践
+## 核心概念（Why）
 
-## Step 2 实现方法
+### 为什么需要管理模型缓存？
 
-**框架 & 库**：`huggingface_hub`、`datasets`、`pyarrow`、`pandas`
+现代 LLM 动辄几 GB 甚至几十 GB，如果每次使用都重新下载：
+- 浪费时间（特别是国内网络）
+- 浪费磁盘（同一模型下载多次）
+- 无法离线使用（生产环境通常没有公网）
 
-**关键 API 覆盖**（来自 `notebooks/learn_huggingface.ipynb`）：
+HuggingFace 的缓存机制让你**下载一次，永久复用**。
 
-| 功能 | API | 关键参数 |
-|------|-----|---------|
-| 模型下载 | `snapshot_download()` | `repo_id="Qwen/Qwen2.5-3B-Instruct"`, `local_dir_use_symlinks=False` |
-| 缓存扫描 | `scan_cache_dir()` | 列出所有本地缓存模型及路径/大小 |
-| Hub 状态查询 | `HfApi().repo_info()` | 检查模型可访问性 |
-| 数据集加载 | `load_dataset()` / `load_from_disk()` | 支持 datasets 格式和 parquet |
-| 本地数据集探查 | 自定义 `get_dataset_info()` | 遍历 `~/.cache/huggingface/datasets` |
+### HuggingFace 缓存架构
 
-**镜像配置**（国内访问）：
-```python
-os.environ['HF_ENDPOINT'] = 'https://hf-mirror.com'  # 推荐
-# 备用：'https://mirrors.tuna.tsinghua.edu.cn/hugging-face-models'
+```
+~/.cache/huggingface/
+├── hub/                    ← 模型缓存
+│   └── models--Qwen--Qwen2.5-3B-Instruct/
+│       ├── snapshots/      ← 具体版本文件
+│       └── blobs/          ← 去重的实际文件块
+└── datasets/               ← 数据集缓存
+    └── gsm8k/
 ```
 
-**模型规模**：Qwen2.5-3B-Instruct（30亿参数，下载体积约 6GB，4bit 量化约 2GB）
+**关键设计**：`blobs/` 目录存储真实文件，`snapshots/` 通过符号链接指向它，不同版本的相同文件只存一份。
 
-## Step 3 关键发现
+---
 
-- HF Hub 缓存默认路径：`~/.cache/huggingface/`，模型在 `hub/` 子目录，数据集在 `datasets/`
-- `local_dir_use_symlinks=False` 在 Windows 上必须设置（避免权限问题），Mac/Linux 可用符号链接
-- `scan_cache_dir()` 返回 `HFCacheInfo` 对象，可枚举 `repos`，每个 repo 含 `repo_path`、`size_on_disk`
-- 本地缓存后可完全离线使用，无需重新下载
+## 实现解析
 
-**实际数值**：`[未运行 - 需执行 notebook 获取 Qwen2.5-3B 实际下载大小和缓存路径]`
+### 国内镜像配置（必须先设置）
 
-## Step 4 代码参考
+```python
+import os
+os.environ['HF_ENDPOINT'] = 'https://hf-mirror.com'
+# ↑ 必须在 import huggingface_hub 之前设置
+```
 
-| 功能 | 文件 | 单元 |
-|------|------|------|
-| HF 镜像设置 + 模型下载 | `notebooks/learn_huggingface.ipynb` | Cell 1 |
-| 缓存扫描与 Hub 状态查询 | `notebooks/learn_huggingface.ipynb` | Cell 2 |
-| 数据集目录探查工具函数 | `notebooks/learn_huggingface.ipynb` | Cell 3 |
+### 下载模型
 
-**可复用工具**：
-- `src/load_local_dataset.py` — 封装了本地/网络数据集加载逻辑，支持 gsm8k 等格式
+```python
+from huggingface_hub import snapshot_download
 
-## Step 5 局限性与下一步
+snapshot_download(
+    repo_id="Qwen/Qwen2.5-3B-Instruct",
+    local_dir_use_symlinks=False,  # Windows 用户必须设置 False
+    # ignore_patterns=["*.bin"],  # 可选：排除旧格式权重
+)
+```
 
-**局限性**：
-- 镜像站稳定性依赖第三方服务，可能出现版本延迟
-- `snapshot_download` 不支持断点续传（部分中断需重新下载）
+**`local_dir_use_symlinks=False` 的含义**：
+- `True`（默认）：在目标路径创建符号链接指向 `blobs/`，省磁盘但 Windows 不支持
+- `False`：直接复制文件到目标路径，跨平台兼容，但占用额外磁盘
 
-**建议后续**：
-- 研究 HF `hf_transfer` 加速包（rust 实现，速度提升约 5x）
-- 结合 `src/load_local_dataset.py` 扩展支持更多数据集格式
+### 扫描已缓存模型
+
+```python
+from huggingface_hub import scan_cache_dir, HfApi
+
+cache_info = scan_cache_dir()
+for repo in cache_info.repos:
+    print(f"模型：{repo.repo_id}")
+    print(f"路径：{repo.repo_path}")
+    print(f"大小：{repo.size_on_disk / 1e9:.2f} GB")
+```
+
+### 数据集加载
+
+```python
+from datasets import load_dataset
+
+# 从网络加载（首次）
+dataset = load_dataset("openai/gsm8k", "main")
+
+# 从本地缓存加载（后续）
+from datasets import load_from_disk
+dataset = load_from_disk("~/.cache/huggingface/datasets/gsm8k")
+```
+
+---
+
+## 实验结果
+
+**注**：请运行 `notebooks/03_huggingface_api.ipynb` 查看实际输出。以下为预期结果。
+
+- Qwen2.5-3B-Instruct 下载大小：约 **5.8GB**（bf16 格式）
+- 4-bit 量化后加载内存占用：约 **2GB**
+- 缓存路径：`~/.cache/huggingface/hub/models--Qwen--Qwen2.5-3B-Instruct/`
+
+---
+
+## 思考题与延伸实验
+
+1. **缓存管理**：运行 `scan_cache_dir()`，查看你本地缓存了哪些模型，总共占用多少磁盘空间？
+
+2. **模型版本控制**：`snapshot_download` 有 `revision` 参数，可以指定下载特定 commit 版本。这对生产环境有什么用？
+
+3. **断点续传**：如果网络中断，再次运行 `snapshot_download` 会重新下载还是继续？（提示：查看 `blobs/` 目录中的 `.incomplete` 文件）
+
+4. **自定义数据集**：如何将自己的 CSV 文件转换成 HuggingFace `Dataset` 格式？（提示：`Dataset.from_pandas(df)`）
+
+---
+
+## 参考资料
+
+- [HuggingFace Hub 文档](https://huggingface.co/docs/huggingface_hub/guides/download)
+- [datasets 文档](https://huggingface.co/docs/datasets/loading)
+- [hf-mirror.com 镜像说明](https://hf-mirror.com)
+- **本项目工具**：[src/load_local_dataset.py](../src/load_local_dataset.py)（封装了本地/网络数据集加载）

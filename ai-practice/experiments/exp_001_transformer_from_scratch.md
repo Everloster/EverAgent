@@ -1,91 +1,154 @@
 ---
 title: 从零实现 Transformer 语言模型
-type: experiment_analysis
-status: done
-experiment_id: exp_001
-notebook: notebooks/step-by-step.ipynb
+type: tutorial_note
+stage: 1
+notebook: notebooks/01_transformer_from_scratch.ipynb
+prerequisites: ["pytorch_basics", "linear_algebra", "softmax"]
 updated_on: 2026-04-20
 ---
 
-## 实验摘要
+## 学习目标
 
-> 不依赖 HuggingFace，纯 PyTorch 从零实现仅解码器 Transformer 语言模型，在销售教科书数据集上进行自回归预训练，验证 Transformer 核心组件的实现正确性。
+- [ ] 理解缩放点积注意力的数学原理（Q、K、V 是什么，为什么要除以 √d_head）
+- [ ] 能读懂并解释 `MultiHeadAttention` 的完整实现
+- [ ] 理解 Pre-LN 与 Post-LN 的结构差异及训练稳定性影响
+- [ ] 理解自回归语言模型的训练与生成流程
+- [ ] 能独立修改超参数并观察训练效果变化
 
-## Step 1 实验目标
+---
 
-- **假设验证**：手写实现多头自注意力、位置编码、残差连接等核心组件，确认与原论文架构一致
-- **背景**：对应 ai-learning 中 `Attention Is All You Need`（2017, Vaswani et al.）的实践复现
-- **数据**：`data/sales_textbook.txt`（来源：HuggingFace goendalf666/sales-textbook_for_convincing_and_selling，452KB，1460行，66,323词）
+## 核心概念（Why）
 
-## Step 2 实现方法
+### 为什么要从零实现？
 
-**框架**：PyTorch（纯手写，无 transformers 库依赖）
+HuggingFace 一行代码就能加载 GPT-4 级别的模型。那为什么还要手写 Transformer？
 
-**分词器**：TikToken `cl100k_base`（与 GPT-3/4 同款编码，vocab_size ≈ 100,000+）
+因为**理解 = 能复现**。当你真正手写了 Attention 机制后：
+- 你会知道 KV Cache 为什么能加速推理（因为 K、V 不需要重算）
+- 你会理解 FlashAttention 解决的是什么内存瓶颈
+- 你会明白为什么 `context_length` 对显存的影响是平方级的
 
-**模型架构**（超参数，来自 `src/model.py:10-19`）：
+### 注意力机制的直觉
 
-| 超参数 | 值 | 说明 |
+注意力的核心问题：**序列中每个位置，应该"关注"其他哪些位置？**
+
+传统 RNN 用固定大小的隐藏状态压缩所有历史信息，导致长序列遗忘。  
+注意力机制让每个位置直接"查询"所有历史位置，没有信息损失。
+
+**数学表达**：
+```
+Attention(Q, K, V) = softmax(Q × K^T / √d_head) × V
+```
+
+- Q（Query）：当前位置在"问什么"
+- K（Key）：历史位置在"提供什么关键词"
+- V（Value）：历史位置的实际内容
+- `/ √d_head`：缩放因子，防止点积值过大导致 softmax 梯度消失
+
+**为什么要缩放**？d_head 维的随机向量内积期望为 0，方差为 d_head。除以 √d_head 后方差归一到 1，softmax 的梯度不会饱和。
+
+### 为什么用多头？
+
+单头注意力只能学习一种"关注模式"（如语法依存）。  
+多头让模型同时学习多种模式（语法 + 语义 + 位置等），拼接后投影合并信息。
+
+### Pre-LN vs Post-LN
+
+原论文（Vaswani 2017）用的是 **Post-LN**（LayerNorm 在残差之后）：
+```
+x = LayerNorm(x + Attention(x))   # Post-LN
+```
+
+本项目用的是 **Pre-LN**（LayerNorm 在 Attention 之前，GPT-2 采用的方案）：
+```
+x = x + Attention(LayerNorm(x))   # Pre-LN
+```
+
+Pre-LN 训练更稳定（梯度不容易爆炸），是现代大模型的标配。代价是最终表示没有经过 LayerNorm 归一化。
+
+---
+
+## 实现解析
+
+### 模型架构（教学规模）
+
+| 超参数 | 值 | 含义 |
 |--------|-----|------|
-| `d_model` | 64 | 嵌入维度 |
+| `d_model` | 64 | 嵌入维度（决定参数量） |
 | `num_blocks` | 8 | Transformer 层数 |
-| `num_heads` | 4 | 多头注意力头数 |
-| `head_size` | 16（=64/4） | 每头维度 |
-| `context_length` | 16 | 最大上下文长度（tokens） |
+| `num_heads` | 4 | 注意力头数 |
+| `head_size` | 16（=64/4） | 每头的维度 |
+| `context_length` | 16 | 最大上下文长度 |
 | `batch_size` | 4 | 训练批次大小 |
-| `dropout` | 0.1 | Dropout 率 |
-| `learning_rate` | 1e-3 | AdamW 学习率 |
-| `max_iters` | 5000 | 最大训练迭代数 |
-| `eval_interval` | 50 | 评估间隔 |
 
-**数据划分**：90% 训练 / 10% 验证（`src/model.py:43`）
+### 关键实现片段
 
-**架构注意点**（与原 Transformer 论文差异）：
-- 使用 Pre-LN（先 LayerNorm 再 Attention），而非原论文的 Post-LN（`src/model.py:156-157`）
-- 位置编码在每次 forward 时重新计算，非参数化（`src/model.py:197-203`）
-- FFN 激活函数用 ReLU（原论文），非 GELU（GPT-2 改进版）
+**缩放点积注意力**（`src/model.py`，Attention 类）：
+```python
+# Q × K^T / √d_head
+weights = (q @ k.transpose(-2, -1)) * (1.0 / math.sqrt(k.size(-1)))
+# 下三角 mask：防止看到未来信息（自回归）
+weights = weights.masked_fill(self.tril[:T, :T] == 0, float('-inf'))
+weights = F.softmax(weights, dim=-1)
+out = weights @ v
+```
 
-## Step 3 关键发现
+**残差连接（Pre-LN）**（`src/model.py`，TransformerBlock 类）：
+```python
+x = x + self.multi_head_attention_layer(self.layer_norm_1(x))
+x = x + self.feed_forward_layer(self.layer_norm_2(x))
+```
 
-**模型参数量估算**（基于架构，未实际统计）：
-- Embedding 层：约 `vocab_size × 64` 参数
-- 每个 TransformerBlock：约 `4 × 64² = 16,384` 参数
-- 8 个 Block 合计约 131K 参数 + Embedding
+**正弦位置编码**（`src/model.py`，forward 方法）：
+```python
+position = torch.arange(0, context_length).unsqueeze(1)
+div_term = torch.exp(torch.arange(0, d_model, 2) * (-math.log(10000.0) / d_model))
+PE[:, 0::2] = torch.sin(position * div_term)
+PE[:, 1::2] = torch.cos(position * div_term)
+```
 
-**训练指标**：`[未运行 - 需执行 src/model.py 获取实际 loss 曲线]`
+### 训练数据
 
-结构验证发现：
-- Pre-LN 结构（非原论文 Post-LN）更稳定，与 GPT-2 实践一致
-- context_length=16 极短，导致模型只能捕获非常局部的语言模式
-- 教学规模（d_model=64）参数量远小于实际 LLM，训练速度快
+- 文件：`data/sales_textbook.txt`（来源：HuggingFace，452KB，~66,000 词）
+- 分词器：TikToken `cl100k_base`（与 GPT-4 相同的分词方案）
+- 划分：90% 训练 / 10% 验证
 
-## Step 4 代码参考
+---
 
-| 组件 | 文件路径 | 行号 |
-|------|---------|------|
-| 超参数配置 | `src/model.py` | 11-19 |
-| FeedForward | `src/model.py` | 48-65 |
-| Scaled Dot-Product Attention | `src/model.py` | 67-105 |
-| MultiHeadAttention | `src/model.py` | 107-132 |
-| TransformerBlock（Pre-LN） | `src/model.py` | 134-158 |
-| 正弦位置编码 | `src/model.py` | 197-203 |
-| 完整模型 TransformerLanguageModel | `src/model.py` | 161-235 |
-| 训练循环 | `src/model.py` | 271-287 |
-| 自回归生成 | `src/model.py` | 220-235 |
+## 实验结果
 
-**核心可复用函数**：
-- `get_batch(split)` — 随机采样训练/验证批次（`src/model.py:238-244`）
-- `estimate_loss()` — 无梯度评估 train/val loss（`src/model.py:246-258`）
+**注**：本实验需要运行 `notebooks/01_transformer_from_scratch.ipynb` 获取实际结果。  
+在 CPU 上约需 30-60 分钟（5000 步），GPU 约需 5-10 分钟。
 
-## Step 5 局限性与下一步
+**理论参数量估算**：
+- Embedding：vocab_size × 64 ≈ 640 万参数
+- 每层 TransformerBlock：约 16K 参数（8 头 × 4 个线性层）
+- 8 层合计：约 13 万参数 + Embedding
 
-**局限性**：
-- `context_length=16` 过短，生成文本缺乏长程连贯性
-- `d_model=64` 为教学规模，远未达到实际 LLM 能力
-- 每次 forward 重算位置编码，效率低（应缓存或使用可学习 PE）
-- 无 KV Cache 机制，推理时计算量与序列长度成平方增长
+**已知结果特征**（基于代码结构推断）：
+- 初始 loss（随机权重）：约 `ln(vocab_size)` ≈ 11.5
+- 训练 5000 步后，训练 loss 应下降至 4-6 范围
+- 生成文本在教学规模下语义连贯性有限（context_length=16 过短）
 
-**建议后续实验**：
-1. 将 `context_length` 扩展到 256/512，观察生成质量变化
-2. 引入可学习位置编码（nn.Embedding 替换正弦函数）
-3. 与 `exp_003` 的预训练模型对比，量化规模效益
+---
+
+## 思考题与延伸实验
+
+1. **参数规模影响**：将 `d_model` 从 64 改为 128，预期训练时间和最终 loss 如何变化？为什么？
+
+2. **上下文长度影响**：将 `context_length` 从 16 改为 64，生成的文本连贯性会有什么变化？
+
+3. **注意力分析**：如何提取并可视化注意力权重矩阵？（提示：修改 `Attention.forward` 返回 `weights`）
+
+4. **温度采样**：`src/inference.py` 的生成目前用 `torch.multinomial` 采样。如何添加 temperature 参数来控制生成的多样性？（temperature > 1 更随机，< 1 更确定）
+
+5. **可学习位置编码**：当前用正弦/余弦固定位置编码。如果改用 `nn.Embedding(context_length, d_model)` 作为可学习位置编码，训练行为会如何变化？
+
+---
+
+## 参考资料
+
+- **原始论文**：[Attention Is All You Need](https://arxiv.org/abs/1706.03762)（Vaswani et al., 2017）
+- **推荐视频**：Andrej Karpathy 的 [Let's build GPT](https://www.youtube.com/watch?v=kCc8FmEb1nY)（本实验的灵感来源）
+- **深度阅读**：[The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/)（Jay Alammar，图示最清晰）
+- **本项目 Wiki**：[wiki/concepts/transformer_from_scratch.md](../wiki/concepts/transformer_from_scratch.md)
