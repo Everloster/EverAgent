@@ -3,7 +3,7 @@
 > 本文件为自动生成视图，由 `scripts/task_board_aggregator.py` 维护
 > **请勿直接编辑**，编辑将覆盖
 > 任务权威源：各项目的 `.project-task-state`，以及根目录的 `/.project-task-state`（global 任务）
-> 更新日期：**2026-04-16**
+> 更新日期：**2026-04-20**
 
 ---
 
@@ -22,6 +22,7 @@
 | 项目 | 当前状态 | 论文/文本精读 | 知识/概念报告 | 知识报告比 |
 |------|----------|:---:|:---:|:---:|
 | `ai-learning` | 🟢 | 37 | 19 | 34% |
+| `ai-practice` | 🔴 | 0 | 0 | 0% |
 | `biology-learning` | 🟡 | 5 | 1 | 17% |
 | `cs-learning` | 🟢 | 22 | 4 | 15% |
 | `philosophy-learning` | 🟡 | 10 | 2 | 17% |

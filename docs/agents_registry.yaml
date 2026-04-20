@@ -39,3 +39,10 @@
   domain: 开源热点·Repo 知识库
   status: "🟢"
   title: "📈 GitHub Trending Analyzer"
+
+- agent: PracticeAgent
+  project: ai-practice
+  protocol: ai-practice/AGENTS.md
+  domain: ML 工程·代码实验·模型训练
+  status: "🟢"
+  title: "⚗️ AI Practice"
