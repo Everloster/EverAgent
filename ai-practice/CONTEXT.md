@@ -23,6 +23,7 @@
 | exp_002 | HuggingFace 数据集与模型 API 实践 | notebooks/learn_huggingface.ipynb | experiments/exp_002_huggingface_basics.md |
 | exp_003 | Transformers 库加载预训练模型 | notebooks/learn_transformers.ipynb | experiments/exp_003_transformers_library.md |
 | exp_004 | Qwen2.5-3B GRPO 强化学习微调 | notebooks/Unsloth-Qwen2.5_(3B)-GRPO.ipynb | experiments/exp_004_qwen25_grpo_finetune.md |
+| exp_005 | MoE Transformer 稀疏激活实验 | notebooks/05_moe_transformer.ipynb | experiments/exp_005_moe_transformer.md |
 
 ---
 
@@ -31,6 +32,7 @@
 | 文件 | 说明 |
 |------|------|
 | `src/model.py` | Transformer LM 完整实现（教学版，d_model=64） |
+| `src/moe_model.py` | MoE Transformer 实现（4 experts, top_k=2，与 model.py 对比） |
 | `src/inference.py` | 模型推理脚本（加载 model-ckpt.pt 交互生成） |
 | `src/check_hardware.py` | 硬件兼容性检查（OS/CPU/GPU/CUDA/vLLM） |
 | `src/load_local_dataset.py` | HuggingFace 数据集加载工具（支持本地缓存） |
@@ -40,7 +42,7 @@
 
 ## ⚠️ 边界（防幻觉）
 
-以下实验已有报告，禁止重复生成：exp_001、exp_002、exp_003、exp_004
+以下实验已有报告，禁止重复生成：exp_001、exp_002、exp_003、exp_004、exp_005
 
 ---
 

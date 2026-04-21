@@ -11,6 +11,12 @@
 | Transformer 从零实现 | [transformer_from_scratch.md](concepts/transformer_from_scratch.md) | 纯 PyTorch 实现注意力、位置编码、Pre-LN 残差 |
 | 分词 / Tokenization | [tokenization.md](concepts/tokenization.md) | BPE 子词分词，TikToken vs AutoTokenizer |
 
+## 阶段 1.5 相关概念
+
+| 概念 | 文件 | 一句话说明 |
+|------|------|---------|
+| Mixture of Experts | [mixture_of_experts.md](concepts/mixture_of_experts.md) | 稀疏激活：参数量与计算量分离，Router + N 个 Expert |
+
 ## 阶段 4 相关概念
 
 | 概念 | 文件 | 一句话说明 |
@@ -35,7 +41,12 @@
 ## 概念关系图
 
 ```
-tokenization ──→ transformer_from_scratch ──→ lora_peft ──→ grpo
-                                                          ↘ sft_vs_rlhf
-                                           unsloth ──────→ grpo
+tokenization ──→ transformer_from_scratch ──→ mixture_of_experts
+                        │                              │
+                        │                    (替换 FFN 层)
+                        │
+                        ↓
+                    lora_peft ──→ grpo ← unsloth
+                        │           ↘ sft_vs_rlhf
+                        └──────────→ mixture_of_experts（MoE+LoRA 微调）
 ```

@@ -8,10 +8,10 @@
 ## 总览
 
 ```
-阶段 1 ──→ 阶段 2 ──→ 阶段 3 ──→ 阶段 4
-Transformer    HF 生态    预训练模型    GRPO 微调
-原理与实现     工程实践    快速上手      参数高效对齐
-（基础）       （工具）    （应用）      （进阶）
+阶段 1 ──→ [1.5 可选] ──→ 阶段 2 ──→ 阶段 3 ──→ 阶段 4
+Transformer    MoE 变体      HF 生态    预训练模型    GRPO 微调
+原理与实现     稀疏激活      工程实践    快速上手      参数高效对齐
+（基础）       （进阶选修）   （工具）    （应用）      （进阶）
 ```
 
 ---
@@ -54,6 +54,41 @@ Transformer    HF 生态    预训练模型    GRPO 微调
 2. 多头注意力相比单头有什么优势？
 3. 为什么语言模型需要下三角 mask？
 4. Pre-LN 结构中，LayerNorm 在残差连接的哪个位置？
+
+---
+
+## 阶段 1.5（进阶可选）：MoE 架构——稀疏激活与专家混合
+
+**Notebook**：[notebooks/05_moe_transformer.ipynb](notebooks/05_moe_transformer.ipynb)
+**教学笔记**：[experiments/exp_005_moe_transformer.md](experiments/exp_005_moe_transformer.md)
+**核心代码**：[src/moe_model.py](src/moe_model.py)
+
+> 这是阶段 1 的「进阶扩展」，不是必修内容。完成阶段 1 后，可选择直接进入阶段 2，或先深入理解 MoE 架构再继续。
+
+### 你将学到什么
+
+- MoE 的核心价值：**参数量与计算量分离**（4 倍参数，2 倍计算）
+- Router（Top-K 门控）的工作原理和代码实现
+- Expert Collapse 问题：为什么 MoE 训练比 Dense 更容易不稳定？
+- 辅助负载均衡损失（aux_loss）如何防止 Expert Collapse
+- 现代主流 LLM 的 MoE 配置：Mixtral（8E2K）、DeepSeek-V3（256E8K）
+
+### 前置知识（必须）
+
+- [ ] 完成阶段 1（理解 Dense FeedForward 层的结构）
+- [ ] 理解 `nn.ModuleList` vs `nn.Sequential` 的区别
+
+### 预计时间：2-3 小时
+
+### 硬件要求：CPU 即可（教学规模 d_model=64）
+
+### 学习成果检查点
+
+完成阶段 1.5 后，你应该能回答：
+1. 为什么 MoE 模型的参数量是 Dense 的 4 倍，但每 token 计算量只有 2 倍？
+2. 什么是 Expert Collapse？如何用 aux_loss 防止它？
+3. Mixtral-8x7B 实际推理计算量相当于几个 Dense 7B 模型？
+4. MoELayer 的 `forward()` 为什么不能用 `nn.Sequential`？
 
 ---
 
@@ -181,6 +216,7 @@ export HF_ENDPOINT=https://hf-mirror.com
 | 阶段 | Notebook | 教学笔记 | Wiki 概念 | 难度 |
 |------|---------|---------|---------|------|
 | 1 | [01_transformer_from_scratch](notebooks/01_transformer_from_scratch.ipynb) | [exp_001](experiments/exp_001_transformer_from_scratch.md) | [transformer_from_scratch](wiki/concepts/transformer_from_scratch.md) · [tokenization](wiki/concepts/tokenization.md) | ⭐⭐ |
+| 1.5 ✨ | [05_moe_transformer](notebooks/05_moe_transformer.ipynb) | [exp_005](experiments/exp_005_moe_transformer.md) | [mixture_of_experts](wiki/concepts/mixture_of_experts.md) | ⭐⭐⭐ |
 | 2 | [02_transformers_library](notebooks/02_transformers_library.ipynb) | [exp_003](experiments/exp_003_transformers_library.md) | — | ⭐ |
 | 3 | [03_huggingface_api](notebooks/03_huggingface_api.ipynb) | [exp_002](experiments/exp_002_huggingface_basics.md) | — | ⭐ |
 | 4 | [04_qwen25_grpo_finetuning](notebooks/04_qwen25_grpo_finetuning.ipynb) | [exp_004](experiments/exp_004_qwen25_grpo_finetune.md) | [grpo](wiki/concepts/grpo.md) · [lora_peft](wiki/concepts/lora_peft.md) · [sft_vs_rlhf](wiki/concepts/sft_vs_rlhf.md) · [unsloth](wiki/concepts/unsloth_framework.md) | ⭐⭐⭐⭐ |
