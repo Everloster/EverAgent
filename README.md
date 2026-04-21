@@ -1,7 +1,7 @@
 # 🧠 EverAgent — 个人学习与研究工作台
 
 > 用 AI Agent 驱动的个人知识体系，覆盖 AI 技术、计算机科学、哲学思想、心理学、生命科学与开源生态
-> 创建日期：2026-03-23 | 最后更新：2026-04-15（内容量全面扩充 + Wiki 知识网络成型）
+> 创建日期：2026-03-23 | 最后更新：2026-04-21（新增 ai-practice 子项目：LLM 工程实践教学）
 
 > **AI/Agent 使用本仓库？** → 请直接阅读 [AGENTS.md](./AGENTS.md)，本文件供人类阅读。
 
@@ -15,11 +15,12 @@ Refresh it via: python3 scripts/task_board_aggregator.py --sync-readme
 -->
 
 <!-- PROJECT_OVERVIEW:START -->
-EverAgent 是以 AI Agent 为核心工具的个人知识库，通过系统化学习路径、深度分析报告和自动化工具，将学习从"被动积累"变为"主动建构"。目前包含 **6 个子项目**：
+EverAgent 是以 AI Agent 为核心工具的个人知识库，通过系统化学习路径、深度分析报告和自动化工具，将学习从"被动积累"变为"主动建构"。目前包含 **7 个子项目**：
 
 | 项目 | 领域 | 报告量 | Wiki 页面 | 状态 |
 |------|------|--------|-----------|------|
 | [🤖 AI Learning](./ai-learning/README.md) | AI/ML 论文精读·技术报告 | 37 篇精读/文本 + 19 篇知识/概念报告 | 23 entities · 26 concepts | 🟢 |
+| [⚗️ AI Practice](./ai-practice/README.md) | LLM 工程实践·代码实验·模型训练 | 4 篇教学笔记 | 1 entities · 6 concepts | 🟢 |
 | [💻 CS Learning](./cs-learning/README.md) | 计算机科学·系统·算法 | 22 篇精读/文本 + 4 篇知识/概念报告 | 13 entities · 21 concepts | 🟢 |
 | [📚 Philosophy Learning](./philosophy-learning/README.md) | 西方哲学·文本分析 | 10 篇精读/文本 + 2 篇知识/概念报告 | 10 entities · 11 concepts | 🟡 |
 | [🧠 Psychology Learning](./psychology-learning/README.md) | 心理学·经典实验 | 12 篇精读/文本 + 2 篇知识/概念报告 | 12 entities · 12 concepts | 🟢 |
@@ -104,7 +105,7 @@ python3 scripts/create_project.py --project={name} --domain={domain} --agent-nam
 
 ## 整体学习理念
 
-六个项目共享同一套底层方法论：
+七个项目共享同一套底层方法论：
 
 ```
 提问  →  深度研究  →  结构化输出  →  持续迭代

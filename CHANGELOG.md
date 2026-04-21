@@ -4,6 +4,24 @@
 
 ---
 
+## 2026-04-21
+
+### 新增子项目：ai-practice（Claude Sonnet 4.6）
+- 从 Neverland/ML 迁移，创建第 7 个子项目 `ai-practice`（LLM 工程实践教学）
+- 注册 PracticeAgent，写入全局 AGENTS.md §1 注册表 & docs/agents_registry.yaml
+- 4 个 notebook 按阶段重命名（01_transformer → 04_qwen25_grpo）
+- 删除空目录（papers/, books/, reports/, knowledge/）
+- 全部 experiments/ 改写为 6 节教学笔记格式（含 WHY 部分 + 思考题 + 参考资料）
+- Wiki 概念页面从 ~30 行深化至 150+ 行（新增 lora_peft.md、tokenization.md）
+- 新建 LEARNING_PATH.md（4 阶段路线）、SETUP.md（环境配置指南）、skills/experiment_analysis/SKILL.md
+- `03_huggingface_api.ipynb` 大幅改写：补全中文注释 + 镜像配置 + 错误处理说明
+- README.md 从 Agent 任务说明改写为学生指南
+
+### 全局
+- README.md 项目总览更新：6 个子项目 → 7 个子项目，新增 ai-practice 行
+
+---
+
 ## 2026-04-01
 
 ### 项目优化（任务1，Claude Opus 4.6）
