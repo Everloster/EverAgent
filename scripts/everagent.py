@@ -47,6 +47,18 @@ def command_doctor(_: argparse.Namespace) -> int:
     return 0
 
 
+def command_evolve(args: argparse.Namespace) -> int:
+    cmd = ["python3", "scripts/ea_evolution.py", "--days", str(args.days)]
+    if args.dry_run:
+        cmd.append("--dry-run")
+    return run_step(cmd)
+
+
+def command_dashboard(args: argparse.Namespace) -> int:
+    cmd = ["python3", "scripts/ea_dashboard.py", "--port", str(args.port), "--host", args.host]
+    return run_step(cmd)
+
+
 def command_sync(args: argparse.Namespace) -> int:
     cmd = ["python3", "scripts/task_board_aggregator.py"]
     if args.sync_readme:
@@ -249,6 +261,16 @@ def build_parser() -> argparse.ArgumentParser:
     reconcile.add_argument("--ttl-hours", type=int, default=72, help="Stale threshold in hours when abandoning stale tasks")
     reconcile.add_argument("--reason", help="Optional abandon reason override")
     reconcile.set_defaults(func=command_reconcile)
+
+    evolve = sub.add_parser("evolve", help="Run self-evolution engine to analyze and auto-improve")
+    evolve.add_argument("--days", type=int, default=7, help="Analysis window in days")
+    evolve.add_argument("--dry-run", action="store_true", help="Show analysis without creating tasks")
+    evolve.set_defaults(func=command_evolve)
+
+    dashboard = sub.add_parser("dashboard", help="Launch real-time web dashboard")
+    dashboard.add_argument("--port", type=int, default=8080, help="Port to run on")
+    dashboard.add_argument("--host", default="127.0.0.1", help="Host to bind to")
+    dashboard.set_defaults(func=command_dashboard)
 
     return parser
 
