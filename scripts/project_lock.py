@@ -10,6 +10,7 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Optional
 
+from ea_events import emit_event
 from task_state import GLOBAL_PROJECT, PROJECTS
 
 
@@ -86,6 +87,13 @@ def write_lock(project: str, task_id: str, agent: str, git_commit_sha: str = "")
         ]
     )
     path.write_text(payload, encoding="utf-8")
+    emit_event(
+        event_type="lock_acquired",
+        actor=agent,
+        project=project,
+        task_id=task_id,
+        payload={"git_commit_sha": git_commit_sha},
+    )
     return path
 
 
@@ -135,6 +143,13 @@ def command_release(args: argparse.Namespace) -> int:
             return 1
 
     path.unlink()
+    emit_event(
+        event_type="lock_released",
+        actor=args.agent or "unknown",
+        project=args.project,
+        task_id=args.task_id,
+        payload={"force": args.force},
+    )
     print(f"[PASS] Lock released for {args.project}")
     return 0
 

@@ -1,11 +1,15 @@
 #!/usr/bin/env python3
-"""CLI for safe task-state transitions."""
+"""CLI for safe task-state transitions.
+
+Phase 1: All state transitions now emit events to the event log.
+"""
 
 from __future__ import annotations
 
 import argparse
 import sys
 
+from ea_events import emit_event
 from task_state import (
     TaskEntry,
     find_task,
@@ -66,6 +70,13 @@ def command_claim(args: argparse.Namespace) -> int:
         failed_reason=None,
     )
     replace_task(task.project, task.id, updated)
+    emit_event(
+        event_type="task_claimed",
+        actor=args.agent,
+        project=task.project,
+        task_id=task.id,
+        payload={"target": task.target, "type": task.type},
+    )
     print(f"[PASS] Claimed {task.id} for {args.agent}")
     return 0
 
@@ -75,6 +86,13 @@ def command_start(args: argparse.Namespace) -> int:
     ensure_transition(task, "start")
     updated = update_task(task, status="in_progress", started_at=now_iso())
     replace_task(task.project, task.id, updated)
+    emit_event(
+        event_type="task_started",
+        actor=task.claimed_by or "unknown",
+        project=task.project,
+        task_id=task.id,
+        payload={"target": task.target},
+    )
     print(f"[PASS] Started {task.id}")
     return 0
 
@@ -84,6 +102,13 @@ def command_done(args: argparse.Namespace) -> int:
     ensure_transition(task, "done")
     updated = update_task(task, status="done", done_at=now_iso(), failed_reason=None)
     replace_task(task.project, task.id, updated)
+    emit_event(
+        event_type="task_done",
+        actor=task.claimed_by or "unknown",
+        project=task.project,
+        task_id=task.id,
+        payload={"target": task.target, "duration_hint": "completed"},
+    )
     print(f"[PASS] Marked {task.id} done")
     return 0
 
@@ -93,6 +118,13 @@ def command_fail(args: argparse.Namespace) -> int:
     ensure_transition(task, "fail")
     updated = update_task(task, status="failed", failed_reason=args.reason, done_at=None)
     replace_task(task.project, task.id, updated)
+    emit_event(
+        event_type="task_failed",
+        actor=task.claimed_by or "unknown",
+        project=task.project,
+        task_id=task.id,
+        payload={"target": task.target, "reason": args.reason},
+    )
     print(f"[PASS] Marked {task.id} failed")
     return 0
 
@@ -102,6 +134,13 @@ def command_abandon(args: argparse.Namespace) -> int:
     ensure_transition(task, "abandon")
     updated = update_task(task, status="abandoned", failed_reason=args.reason or "abandoned")
     replace_task(task.project, task.id, updated)
+    emit_event(
+        event_type="task_abandoned",
+        actor=task.claimed_by or "unknown",
+        project=task.project,
+        task_id=task.id,
+        payload={"target": task.target, "reason": args.reason or "abandoned"},
+    )
     print(f"[PASS] Marked {task.id} abandoned")
     return 0
 
@@ -119,6 +158,13 @@ def command_reopen(args: argparse.Namespace) -> int:
         failed_reason=None,
     )
     replace_task(task.project, task.id, updated)
+    emit_event(
+        event_type="task_reopened",
+        actor="system",
+        project=task.project,
+        task_id=task.id,
+        payload={"target": task.target},
+    )
     print(f"[PASS] Reopened {task.id}")
     return 0
 

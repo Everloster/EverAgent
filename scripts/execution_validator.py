@@ -11,6 +11,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional
 
+from ea_events import emit_event
 from project_lock import is_expired, lock_path_for_project, parse_lock
 from task_state import GLOBAL_PROJECT, PROJECTS, TaskEntry, find_task, state_file_for_project
 
@@ -366,13 +367,32 @@ def main() -> int:
 
     if args.mode == "input":
         result = validate_input_schema(args.task_id, args.project)
+        _emit_validation_event(args.task_id, args.project, result, is_input=True)
     elif args.mode == "output":
         result = validate_output_schema(args.task_id, args.project)
+        _emit_validation_event(args.task_id, args.project, result, is_input=False)
     else:
         result = validate_self_check()
 
     print_result(result)
     return 0 if result.passed else 1
+
+
+def _emit_validation_event(task_id: str, project: Optional[str], result: ValidationResult, is_input: bool) -> None:
+    event_type = "input_validated" if is_input else "output_validated"
+    if not result.passed:
+        event_type = "validation_failed"
+    emit_event(
+        event_type=event_type,
+        actor="execution_validator",
+        project=project,
+        task_id=task_id,
+        payload={
+            "passed": result.passed,
+            "issue_count": len(result.issues),
+            "issue_fields": [issue.field for issue in result.issues],
+        },
+    )
 
 
 if __name__ == "__main__":
