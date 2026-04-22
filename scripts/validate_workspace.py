@@ -25,6 +25,7 @@ LEARNING_PROJECTS = {
     name: path for name, path in PROJECTS.items() if name != "github-trending-analyzer"
 }
 REQUIRED_FRONTMATTER_KEYS = {"title", "domain", "report_type", "status", "updated_on"}
+OPTIONAL_SEMANTIC_KEYS = {"semantic_tags", "related_concepts", "related_entities"}
 SKILL_TEMPLATE_HINT = "docs/SKILL_TEMPLATES.md"
 FRONTMATTER_PATTERN = re.compile(r"\A---\n(.*?)\n---\n", re.DOTALL)
 MARKDOWN_LINK_PATTERN = re.compile(r"\[[^\]]+\]\((?!https?://|mailto:|#)([^)]+)\)")
@@ -129,6 +130,31 @@ def validate_frontmatter(only_paths: set[Path] | None, strict: bool) -> list[Val
                     f"frontmatter domain '{domain}' does not match '{expected_domain}'",
                 )
             )
+
+        # Phase 2: validate semantic fields if present
+        for key in OPTIONAL_SEMANTIC_KEYS:
+            value = frontmatter.get(key)
+            if value is None:
+                continue
+            # Expect YAML list format like ["tag1", "tag2"] or single string
+            stripped = value.strip()
+            if stripped.startswith("[") and stripped.endswith("]"):
+                # Basic YAML list validation
+                inner = stripped[1:-1]
+                items = [item.strip().strip('"').strip("'") for item in inner.split(",")]
+                items = [item for item in items if item]
+                if not items:
+                    issues.append(
+                        ValidationIssue("WARN", relative, f"{key} is an empty list")
+                    )
+            elif "," in stripped:
+                issues.append(
+                    ValidationIssue(
+                        "WARN",
+                        relative,
+                        f"{key} should be a YAML list [\"a\", \"b\"], not comma-separated string",
+                    )
+                )
     return issues
 
 

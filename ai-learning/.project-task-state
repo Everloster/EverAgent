@@ -63,10 +63,6 @@
   started_at: 2026-04-16T16:22:15+08:00
   done_at: 2026-04-16T16:30:34+08:00
 
-# ── 2026 Q1 前沿热点专项：Agent × Harness 双主线（GitHub Trending 实证版）──
-# 数据来源：GitHub 日/周/月 Trending 榜单 2026-04-16 实时抓取
-# 主线一：Harness Engineering（P1）
-
 - id: T020
   project: ai-learning
   type: knowledge_report
@@ -77,9 +73,6 @@
   status: open
   claimed_by: null
   claimed_at: null
-  started_at: null
-  done_at: null
-  failed_reason: null
 
 - id: T021
   project: ai-learning
@@ -91,9 +84,6 @@
   status: open
   claimed_by: null
   claimed_at: null
-  started_at: null
-  done_at: null
-  failed_reason: null
 
 - id: T022
   project: ai-learning
@@ -105,11 +95,6 @@
   status: open
   claimed_by: null
   claimed_at: null
-  started_at: null
-  done_at: null
-  failed_reason: null
-
-# 主线二：Agent 架构与进化（P1）
 
 - id: T023
   project: ai-learning
@@ -121,9 +106,6 @@
   status: open
   claimed_by: null
   claimed_at: null
-  started_at: null
-  done_at: null
-  failed_reason: null
 
 - id: T024
   project: ai-learning
@@ -135,9 +117,6 @@
   status: open
   claimed_by: null
   claimed_at: null
-  started_at: null
-  done_at: null
-  failed_reason: null
 
 - id: T025
   project: ai-learning
@@ -149,9 +128,6 @@
   status: open
   claimed_by: null
   claimed_at: null
-  started_at: null
-  done_at: null
-  failed_reason: null
 
 - id: T026
   project: ai-learning
@@ -163,6 +139,14 @@
   status: open
   claimed_by: null
   claimed_at: null
-  started_at: null
-  done_at: null
-  failed_reason: null
+
+- id: T030
+  project: ai-learning
+  type: knowledge_report
+  target: "Agent 心跳监控与实时可观测性架构设计"
+  value: "基于 Phase 1 事件日志层，设计 Agent 心跳检测机制、实时 Dashboard 数据流、以及任务执行延迟告警系统"
+  priority: P2
+  required_capability: task_executor
+  status: open
+  claimed_by: null
+  claimed_at: null

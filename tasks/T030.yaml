@@ -1,0 +1,24 @@
+apiVersion: everagent.io/v1
+kind: Task
+metadata:
+  id: T030
+  project: ai-learning
+spec:
+  type: knowledge_report
+  target: "Agent 心跳监控与实时可观测性架构设计"
+  value: "基于 Phase 1 事件日志层，设计 Agent 心跳检测机制、实时 Dashboard 数据流、以及任务执行延迟告警系统"
+  priority: P2
+  dependencies:
+    - task: T020
+      condition: done
+  resources:
+    max_tokens: 30000
+    expected_duration: 2h
+  qualityGates:
+    - check: frontmatter_complete
+      required: true
+    - check: wiki_linked
+      required: false
+  retryPolicy:
+    maxRetries: 1
+    backoff: fixed
