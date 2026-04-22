@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Thin wrapper for common task execution flows."""
+"""Thin wrapper for common task execution flows.
+
+Phase 1+ integration: All state transitions automatically emit events
+to the event log via task_state_cli.py and project_lock.py.
+"""
 
 from __future__ import annotations
 

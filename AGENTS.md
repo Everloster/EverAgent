@@ -64,6 +64,9 @@ python3 scripts/git_identity.py validate
 | 项目优化（任务1） | ✅ | ❌ |
 | 创建新项目（任务2） | ✅ | ❌ |
 | 维护 Task Board | ✅ | 仅更新自身任务行 |
+| 事件溯源（events/） | ✅ | ✅（自动发射） |
+| 实时 Dashboard | ✅ | ❌ |
+| 自进化引擎 | ✅ | ❌ |
 
 ---
 
@@ -140,6 +143,8 @@ EverAgent 接收用户指令后的决策流：
 9. push 完成后运行 `python3 scripts/task_exec.py release --task-id=TXXX --project={project} --agent={AgentName}`（释放锁）
 10. EverAgent 重新生成 Task Board 视图
 ```
+
+> 自 Phase 1 起，所有状态变更自动记录到 `events/YYYY-MM-DD/evt_*.yaml`，形成完整审计追溯。可通过 `python3 scripts/everagent.py dashboard` 启动实时 Dashboard 查看事件流。
 
 > 参考：docs/EXECUTION_SCHEMA.md（输入/输出标准化协议）
 

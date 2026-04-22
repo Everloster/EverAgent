@@ -4,6 +4,20 @@
 
 ---
 
+## 2026-04-22
+
+### 基础设施重构 v2.0（Trae Kimi-2.6）
+- **Phase 0 模块化**：提取 `scripts/ea_common.py` 共享库，统一时间/YAML/路径工具
+- **Phase 1 事件溯源**：新增 `scripts/ea_events.py`，所有任务状态变更自动记录到 `events/`，支持完整审计追溯
+- **Phase 2 语义元数据**：扩展报告 frontmatter 规范，新增 `semantic_tags`、`related_concepts`、`related_entities`
+- **Phase 3 声明式任务 DSL**：新增 `scripts/ea_task_dsl.py`，支持 `tasks/T*.yaml` 自描述任务定义，含依赖图、资源声明、质量门禁
+- **Phase 4 实时 Dashboard**：新增 `scripts/ea_dashboard.py`（FastAPI + SSE），提供暗色主题 Web UI 实时展示任务状态、Agent 性能、事件流
+- **Phase 5 自进化引擎**：新增 `scripts/ea_evolution.py`，自动分析任务完成时间、Agent 成功率、项目健康度，生成优化建议任务
+- **CLI 集成**：`everagent.py` 新增 `evolve` 和 `dashboard` 子命令，统一入口
+- 新增示例任务 `tasks/T030.yaml`（Agent 可观测性架构设计）
+
+---
+
 ## 2026-04-21
 
 ### 新增子项目：ai-practice（Claude Sonnet 4.6）

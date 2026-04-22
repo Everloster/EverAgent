@@ -145,6 +145,12 @@ python3 scripts/execution_validator.py --mode=self-check
 
 # 帮助
 python3 scripts/execution_validator.py --help
+
+# 事件日志查询（Phase 1+）
+python3 -c "from scripts.ea_events import load_events; print(load_events(task_id='T001'))"
+
+# 实时 Dashboard（Phase 4+）
+python3 scripts/everagent.py dashboard --port 8080
 ```
 
 ### §4.2 返回码
