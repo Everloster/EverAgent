@@ -31,10 +31,10 @@ def parse_iso8601(value: Optional[str]) -> Optional[datetime]:
 
 
 def format_iso8601(dt: Optional[datetime] = None) -> str:
-    """Format datetime as ISO8601 string. Uses current time if dt is None."""
+    """Format datetime as ISO8601 string. Uses current UTC time if dt is None."""
     if dt is None:
         dt = datetime.now(timezone.utc)
-    return dt.astimezone().isoformat(timespec="seconds")
+    return dt.astimezone(timezone.utc).isoformat(timespec="seconds")
 
 
 def now_iso() -> str:
@@ -84,6 +84,15 @@ def read_yamlish_file(path: Path) -> list[dict[str, Optional[str]]]:
     return items
 
 
+def _escape_yamlish_value(value: str) -> str:
+    """Escape a value for yamlish output, wrapping in quotes if needed."""
+    if not value:
+        return '""'
+    # Escape backslashes and quotes
+    value = value.replace("\\", "\\\\").replace('"', '\\"')
+    return f'"{value}"'
+
+
 def write_yamlish_file(path: Path, items: list[dict[str, Optional[str]]]) -> None:
     """Write a list of dicts to a YAML-like file."""
     lines: list[str] = []
@@ -97,7 +106,7 @@ def write_yamlish_file(path: Path, items: list[dict[str, Optional[str]]]) -> Non
             if value is None:
                 lines.append(f"{prefix}{key}: null")
             else:
-                lines.append(f'{prefix}{key}: "{value}"')
+                lines.append(f"{prefix}{key}: {_escape_yamlish_value(value)}")
     path.write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8")
 
 

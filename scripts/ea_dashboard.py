@@ -259,15 +259,27 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                 </table>
             `;
         }
+        function escapeHtml(text) {
+            if (!text) return '';
+            return text.toString()
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
         function appendEvent(event) {
             const stream = document.getElementById('event-stream');
             const time = new Date(event.timestamp).toLocaleTimeString('zh-CN', {hour12: false});
             const div = document.createElement('div');
             div.className = 'event-item';
+            const actor = escapeHtml(event.actor);
+            const project = event.project ? escapeHtml(event.project) : '';
+            const taskId = event.task_id ? escapeHtml(event.task_id) : '';
             div.innerHTML = `
                 <span class="event-time">${time}</span>
-                <span class="event-type ${event.type}">${event.type}</span>
-                <span class="event-actor">${event.actor}${event.project ? ' → ' + event.project : ''}${event.task_id ? ' #' + event.task_id : ''}</span>
+                <span class="event-type ${escapeHtml(event.type)}">${escapeHtml(event.type)}</span>
+                <span class="event-actor">${actor}${project ? ' → ' + project : ''}${taskId ? ' #' + taskId : ''}</span>
             `;
             stream.insertBefore(div, stream.firstChild);
             while (stream.children.length > 50) {

@@ -232,8 +232,14 @@ def parse_task_dsl(path: Path) -> TaskDSL:
     # Parse resources
     resources_data = spec_data.get("resources", {})
     if isinstance(resources_data, dict):
+        max_tokens = None
+        if "max_tokens" in resources_data:
+            try:
+                max_tokens = int(resources_data["max_tokens"])
+            except (ValueError, TypeError):
+                max_tokens = None
         resources = TaskResource(
-            max_tokens=int(resources_data["max_tokens"]) if "max_tokens" in resources_data else None,
+            max_tokens=max_tokens,
             expected_duration=resources_data.get("expected_duration"),
         )
     else:
@@ -243,19 +249,37 @@ def parse_task_dsl(path: Path) -> TaskDSL:
     quality_gates: list[QualityGate] = []
     for gate in spec_data.get("qualityGates", []):
         if isinstance(gate, dict):
+            required_val = gate.get("required", "true")
+            if isinstance(required_val, bool):
+                required = required_val
+            else:
+                required = str(required_val).lower() == "true"
             quality_gates.append(
                 QualityGate(
                     check=gate.get("check", ""),
-                    required=str(gate.get("required", "true")).lower() == "true",
+                    required=required,
                 )
             )
 
     # Parse retry policy
     retry_data = spec_data.get("retryPolicy", {})
     if isinstance(retry_data, dict):
+        max_retries = 0
+        if "maxRetries" in retry_data:
+            try:
+                max_retries = int(retry_data["maxRetries"])
+                if max_retries < 0:
+                    max_retries = 0
+                elif max_retries > 10:
+                    max_retries = 10
+            except (ValueError, TypeError):
+                max_retries = 0
+        backoff = retry_data.get("backoff", "fixed")
+        if backoff not in VALID_BACKOFFS:
+            backoff = "fixed"
         retry_policy = RetryPolicy(
-            max_retries=int(retry_data["maxRetries"]) if "maxRetries" in retry_data else 0,
-            backoff=retry_data.get("backoff", "fixed"),
+            max_retries=max_retries,
+            backoff=backoff,
         )
     else:
         retry_policy = RetryPolicy()

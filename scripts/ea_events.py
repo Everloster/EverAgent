@@ -100,16 +100,25 @@ class Event:
 
 
 def _next_sequence(directory: Path) -> int:
-    """Count existing event files to determine next sequence number."""
+    """Count existing event files to determine next sequence number.
+
+    Uses a simple file-based counter stored in .seq to avoid race conditions
+    in multi-process scenarios.
+    """
+    seq_file = directory / ".seq"
     if not directory.exists():
+        directory.mkdir(parents=True, exist_ok=True)
+        seq_file.write_text("1", encoding="utf-8")
         return 1
-    pattern = re.compile(r"evt_\d{8}_\d{6}_(\d{3})\.yaml")
-    max_seq = 0
-    for child in directory.iterdir():
-        match = pattern.match(child.name)
-        if match:
-            max_seq = max(max_seq, int(match.group(1)))
-    return max_seq + 1
+
+    try:
+        current = int(seq_file.read_text(encoding="utf-8").strip())
+    except (ValueError, FileNotFoundError):
+        current = 0
+
+    next_seq = current + 1
+    seq_file.write_text(str(next_seq), encoding="utf-8")
+    return next_seq
 
 
 def emit_event(
@@ -212,16 +221,30 @@ def _parse_event_file(path: Path) -> Optional[Event]:
         return None
 
     data: dict[str, Any] = {"payload": {}}
+    in_payload = False
 
     for raw_line in text.splitlines():
         stripped = raw_line.rstrip()
         if not stripped:
             continue
 
-        if stripped.startswith("  ") and ":" in stripped:
+        # Payload fields are indented with 2 spaces
+        if stripped.startswith("  ") and ":" in stripped and not stripped.startswith("    "):
             key, value = stripped[2:].split(":", 1)
             key = key.strip()
-            value = value.strip().strip('"').strip("'")
+            value = value.strip()
+            # Try to parse as JSON first, then fall back to string
+            if value.startswith('"') and value.endswith('"'):
+                value = value[1:-1]
+            elif value in ("true", "false"):
+                value = value == "true"
+            elif value.isdigit() or (value.startswith("-") and value[1:].isdigit()):
+                value = int(value)
+            elif value.startswith("[") and value.endswith("]"):
+                try:
+                    value = __import__("json").loads(value)
+                except ValueError:
+                    pass
             data["payload"][key] = value
             continue
 
@@ -233,6 +256,7 @@ def _parse_event_file(path: Path) -> Optional[Event]:
         value = value.strip().strip('"').strip("'")
 
         if key == "payload":
+            in_payload = True
             continue
 
         data[key] = value

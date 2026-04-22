@@ -296,10 +296,37 @@ def analyze_event_patterns(days: int = 7) -> list[Insight]:
 # Action generation
 # ---------------------------------------------------------------------------
 
+def _get_next_task_id() -> str:
+    """Find the next available task ID by scanning existing tasks."""
+    from pathlib import Path
+    tasks_dir = Path("tasks")
+    if not tasks_dir.exists():
+        return "T031"
+
+    max_num = 30
+    for path in tasks_dir.glob("T*.yaml"):
+        try:
+            num = int(path.stem[1:])
+            max_num = max(max_num, num)
+        except ValueError:
+            continue
+
+    # Also check project state files
+    from task_state import load_all_tasks
+    for task in load_all_tasks():
+        try:
+            num = int(task.id[1:])
+            max_num = max(max_num, num)
+        except ValueError:
+            continue
+
+    return f"T{max_num + 1:03d}"
+
+
 def generate_optimization_tasks(insights: list[Insight], dry_run: bool = True) -> list[str]:
     """Generate optimization tasks from critical insights."""
     actions: list[str] = []
-    task_id_counter = 31  # Start from T031
+    task_id_counter = int(_get_next_task_id()[1:])
 
     for insight in insights:
         if insight.severity != "critical":
@@ -320,6 +347,11 @@ def generate_optimization_tasks(insights: list[Insight], dry_run: bool = True) -
         }
         project = project_map.get(insight.category, "global")
 
+        # Escape quotes in insight fields for YAML safety
+        safe_title = insight.title.replace('"', '\\"')
+        safe_desc = insight.description.replace('"', '\\"')
+        safe_action = insight.suggested_action.replace('"', '\\"')
+
         task_content = f"""apiVersion: everagent.io/v1
 kind: Task
 metadata:
@@ -327,8 +359,8 @@ metadata:
   project: {project}
 spec:
   type: project_optimization
-  target: "[自动发现] {insight.title}"
-  value: "{insight.description} | 建议行动: {insight.suggested_action}"
+  target: "[自动发现] {safe_title}"
+  value: "{safe_desc} | 建议行动: {safe_action}"
   priority: P2
   resources:
     max_tokens: 20000
