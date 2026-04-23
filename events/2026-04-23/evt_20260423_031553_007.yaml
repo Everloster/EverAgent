@@ -1,0 +1,9 @@
+event_id: evt_20260423_031553_007
+type: report_created
+timestamp: 2026-04-23T03:15:53+00:00
+actor: NeuronAgent
+project: ai-learning
+task_id: T025
+payload:
+  path: "ai-learning/reports/knowledge_reports/金融垂直域Agent技术架构深度解析.md"
+  type: "knowledge_report"

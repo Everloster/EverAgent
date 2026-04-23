@@ -109,9 +109,11 @@
   value: "GitHub 月/周双榜#1实证: NousResearch/hermes-agent (53110周增+81412月增,91K总stars,'The agent that grows with you'); 对照: lsdefine/GenericAgent ('Self-evolving agent: grows skill tree from 3.3K-line seed'); Self-improvement 技术实现路径; 自进化的可信度与边界分析"
   priority: P1
   required_capability: task_executor
-  status: open
-  claimed_by: null
-  claimed_at: null
+  status: done
+  claimed_by: NeuronAgent
+  claimed_at: 2026-04-23T10:00:00+08:00
+  started_at: 2026-04-23T10:05:00+08:00
+  done_at: 2026-04-23T10:30:00+08:00
 
 - id: T024
   project: ai-learning
@@ -120,9 +122,11 @@
   value: "GitHub 周榜实证: multica-ai/multica (10864周增,'Turn coding agents into real teammates — assign tasks, track progress, compound skills'); Agent 团队管理产品化路径; 与 LangGraph/CrewAI/AutoGen 的定位差异; Compound Skills 机制"
   priority: P1
   required_capability: task_executor
-  status: open
-  claimed_by: null
-  claimed_at: null
+  status: done
+  claimed_by: NeuronAgent
+  claimed_at: 2026-04-23T10:00:00+08:00
+  started_at: 2026-04-23T10:35:00+08:00
+  done_at: 2026-04-23T10:55:00+08:00
 
 - id: T025
   project: ai-learning
@@ -131,9 +135,11 @@
   value: "GitHub 三榜实证: TauricResearch/TradingAgents (18792月增,多Agent金融交易) + shiyu-coder/Kronos (6486周+7042月,'Foundation Model for Financial Markets') + virattt/ai-hedge-fund (1058日+4314周,55K stars); 垂直域 Agent 技术架构 vs 通用 Agent 差异; 金融时序数据与 LLM 融合的技术路径"
   priority: P2
   required_capability: task_executor
-  status: open
-  claimed_by: null
-  claimed_at: null
+  status: done
+  claimed_by: NeuronAgent
+  claimed_at: 2026-04-23T10:00:00+08:00
+  started_at: 2026-04-23T10:05:00+08:00
+  done_at: 2026-04-23T11:30:00+08:00
 
 - id: T026
   project: ai-learning
@@ -142,9 +148,11 @@
   value: "核心文献: arxiv 2603.05344 (Building AI Coding Agents for the Terminal); GitHub 实证: obra/superpowers (2055今日+70176月增,'agentic skills framework'); Grok Code Fast 靠 edit format 从 6.7%->68.3%; Harness 决定性证据; 与 ToA 论技术互证; 与 EverAgent 自身架构对照"
   priority: P2
   required_capability: task_executor
-  status: open
-  claimed_by: null
-  claimed_at: null
+  status: done
+  claimed_by: NeuronAgent
+  claimed_at: 2026-04-23T10:00:00+08:00
+  started_at: 2026-04-23T11:30:00+08:00
+  done_at: 2026-04-23T12:00:00+08:00
 
 - id: T030
   project: ai-learning

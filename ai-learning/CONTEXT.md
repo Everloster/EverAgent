@@ -68,6 +68,10 @@
 - `Agent_Skills_生态深度解析` — Karpathy CLAUDE.md→Anthropic Skills标准→156技能生态→agentskills.io跨平台兼容·渐进披露·Skill作为Harness组件（2026-04-22）
 - `Agent_Memory_系统深度解析` — claude-mem架构·会话记忆捕获→AI压缩→相关性注入·SQLite+FTS5+Chroma双重索引·Hooks生命周期·记忆系统四阶段演化（2026-04-22）
 - `Agent_心跳检测与实时Dashboard设计` — Push心跳·alive/suspected/dead三态·SSE实时数据流·watchfiles优化·延迟分级告警·自动干预·零侵入集成（2026-04-23）
+- `金融垂直域Agent技术架构深度解析` — TradingAgents多Agent协作·Kronos金融K线基础模型·ai-hedge-fund投资大师集体决策·金融时序与LLM融合三条路径（2026-04-23）
+- `AI编码Agent终端技术深度解析` — OpenDev Scaffolding-Harness-Context三层架构·obra/superpowers Skill驱动SDLC·Grok Code Fast Edit Format优化6.7%→68.3%（2026-04-23）
+- `Agent_自进化技术路径深度解析` — Hermes Agent闭环学习系统·GenericAgent极简进化论·四层vs五层记忆架构·技能生命周期·Token效率6x·进化算法前沿（2026-04-23）
+- `Agent_团队管理产品化路径深度解析` — Multica Agent-as-Teammate范式·任务生命周期状态机·Compound Skills·LangGraph/CrewAI/AutoGen四方定位差异·L2编排vsL3管理分层（2026-04-23）
 
 ## 离线知识库
 → [`knowledge/INDEX.md`](./knowledge/INDEX.md)（子话题菜单，离线模型从此进入）

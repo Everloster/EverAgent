@@ -144,4 +144,108 @@ GenericAgent 的分层记忆系统是其 Token 效率优势的关键：
 
 GenericAgent 的技能生成机制被称为 **"Crystallize Execution Path"（执行路径结晶）**：
 
-当 Agent 首次完成一个任务时（例如"读取我的微信消息"），它会
+当 Agent 首次完成一个任务时（例如"读取我的微信消息"），它会经历完整的探索过程：安装依赖 → 逆向数据库 → 编写读取脚本 → 保存为 Skill。第二次执行时，直接调用结晶后的 Skill，Token 消耗降低约 6 倍。
+
+这种"先贵后廉"的成本曲线，是 GenericAgent 与无状态 Agent 的本质差异。首次执行的高成本是"学习投资"，后续执行的低成本是"经验红利"。
+
+### 4.4 原子工具集与自主执行循环
+
+GenericAgent 仅提供 7 个原子工具：
+- `code_run`：执行任意代码
+- `file_read`：读取文件
+- `file_write`：写入文件
+- `web_search`：网络搜索
+- `browser_control`：浏览器控制
+- `shell_exec`：Shell 命令执行
+- `skill_recall`：技能召回
+
+Agent 主循环遵循：感知环境状态 → 任务推理 → 工具调用 → 观察结果 → 循环直至完成。整个循环约 100 行代码，却足以支撑复杂的系统级任务。
+
+---
+
+## 五、工程实现：两条路径的技术对比
+
+### 5.1 技能存储格式
+
+Hermes Agent 采用 **SKILL.md** 标准格式，与 agentskills.io 生态兼容：
+```markdown
+# Skill: {name}
+## Description
+{自然语言描述}
+## Tools
+{所需工具列表}
+## Steps
+{执行步骤}
+## Notes
+{边界条件与注意事项}
+```
+
+GenericAgent 的技能存储更紧凑，直接固化执行路径为可调用代码块，不依赖外部标准。
+
+### 5.2 记忆检索机制
+
+Hermes 使用 **FTS5 全文检索 + LLM 摘要** 的组合：
+- 优势：语义召回能力强，支持模糊匹配
+- 代价：每次检索需要额外的 LLM 调用，增加 Token 消耗
+
+GenericAgent 使用 **L1 Insight Index 快速路由**：
+- 优势：零 LLM 成本的路由决策，延迟极低
+- 代价：依赖精确的索引维护，长程语义关联能力有限
+
+### 5.3 自进化的可信度边界
+
+两个项目都面临共同的**可信度挑战**：
+
+1. **技能正确性验证**：Agent 自动生成的 Skill 可能包含隐性错误，在特定边界条件下失效。Hermes 通过 Patch 更新机制逐步修复；GenericAgent 依赖 L2 Global Facts 的严格准入控制。
+
+2. **进化方向偏差**：Agent 可能"学会"次优路径并固化。Hermes 的解决方式是用户纠正触发 Skill 更新；GenericAgent 则依赖 Meta Rules 中的约束条件。
+
+3. **上下文漂移**：随着时间推移，早期生成的 Skill 可能因环境变化而失效。两者都缺乏自动化的 Skill 过期检测机制，这是当前自进化 Agent 的共同盲区。
+
+---
+
+## 六、前沿动态：自进化的下一步
+
+### 6.1 进化算法的引入
+
+Hermes Agent 社区已提出 **Evolutionary Self-Improvement** 方向（Issue #337），借鉴 ARC-AGI-2 的进化模式（种群管理、适应度加权选择、LLM 驱动的变异、变异后验证），将进化算法引入 Skill 和 Prompt 的自动优化。这与 GenericAgent 的"结晶"机制形成互补——前者探索更优解空间，后者固化已知最优解。
+
+### 6.2 跨 Agent 技能共享
+
+agentskills.io 开放标准的推进，使得 Skill 从"个人资产"向"集体智慧"演化。Hermes 已兼容该标准，GenericAgent 的极简设计使其更容易嵌入标准生态。未来可能出现"Skill 市场"，Agent 不仅可以自我进化，还可以从社区下载预训练 Skill。
+
+### 6.3 与 Test-Time Compute 的交汇
+
+自进化 Agent 与 Test-Time Compute（如 o1/o3、DeepSeek-R1）在"推理时投入更多计算以提升质量"的理念上高度一致。区别在于：Test-Time Compute 在单次任务内扩展推理深度，自进化 Agent 在跨任务时间轴上积累经验密度。两者的结合可能是下一代 Agent 的核心范式。
+
+---
+
+## 七、个人评价与选型建议
+
+### 影响力评分
+
+| 维度 | Hermes Agent | GenericAgent |
+|------|-------------|--------------|
+| 社区影响力 | 9/10（现象级开源项目） | 7/10（技术圈高度关注） |
+| 工程成熟度 | 8/10（生产可用） | 6/10（原型级，但设计精巧） |
+| 技术原创性 | 7/10（整合创新） | 9/10（极简主义的突破） |
+| 可扩展性 | 8/10（插件生态丰富） | 7/10（代码少但扩展需理解设计） |
+| 学习价值 | 7/10（适合学习完整架构） | 9/10（适合理解核心机制） |
+
+### 选型建议
+
+- **选择 Hermes Agent**：需要生产级部署、多平台接入、团队协作、Serverless 弹性伸缩的场景
+- **选择 GenericAgent**：需要理解自进化核心机制、追求极致 Token 效率、希望基于最小代码进行二次开发的场景
+
+### 学习优先级
+
+对于 Agent 系统研究者，建议**先读 GenericAgent 的 3,300 行代码理解核心循环，再读 Hermes Agent 的架构文档理解生产化路径**。前者回答"自进化如何工作"，后者回答"自进化如何规模化"。
+
+---
+
+## 参考来源
+
+- NousResearch/hermes-agent GitHub 仓库及官方文档（hermes-agent.nousresearch.com）
+- lsdefine/GenericAgent GitHub 仓库及 README
+- GenericAgent: A Token-Efficient Self-Evolving LLM Agent via Contextual Information Density Maximization（arXiv 2604.17091）
+- Agent Skills for Large Language Models: Architecture, Acquisition, Security, and the Path Forward（arXiv 2602.12430）
