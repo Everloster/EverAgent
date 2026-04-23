@@ -1,0 +1,10 @@
+event_id: evt_20260423_031032_002
+type: output_validated
+timestamp: 2026-04-23T03:10:32+00:00
+actor: execution_validator
+project: ai-learning
+task_id: T030
+payload:
+  passed: true
+  issue_count: 1
+  issue_fields: ["lock"]

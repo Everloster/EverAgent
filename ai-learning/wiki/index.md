@@ -78,6 +78,7 @@
 | [generative_models_evolution.md](./concepts/generative_models_evolution.md) | 生成模型四代演化：GAN对抗博弈→DDPM扩散去噪→LDM潜空间→DiT Transformer骨干·Flow Matching前沿 |
 | [eva02_vision_transformer.md](./concepts/eva02_vision_transformer.md) | EVA-02：SwiGLU+2D RoPE+sub-LN+CLIP MIM，LLM架构迁移至视觉的里程碑，304M参数达90.0% IN-1K |
 | [megatron_lm_3d_parallelism.md](./concepts/megatron_lm_3d_parallelism.md) | 3D并行体系：TP(张量并行·列/行切分·2次AllReduce)·PP(1F1B调度·气泡压缩)·SP(序列并行)·千亿参数训练基础设施 |
+| [agent_observability.md](./concepts/agent_observability.md) | Agent 可观测性：心跳检测·实时 Dashboard·延迟告警·事件溯源·自动干预 |
 
 ---
 

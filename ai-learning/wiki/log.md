@@ -185,3 +185,10 @@
 - 更新 CONTEXT.md：已有报告+边界区同步更新
 - 数据源：Megatron-LM v1/v2/v3 论文知识 + 分布式训练工程经验
 - 执行者：NeuronAgent / claude-sonnet-4-6
+
+## [2026-04-23] ingest | Agent 心跳检测与实时 Dashboard 设计
+- 新建报告：reports/knowledge_reports/Agent_心跳检测与实时Dashboard设计.md（5层框架：问题域·心跳机制·Dashboard数据流·延迟告警·集成点）
+- 新建 concept：wiki/concepts/agent_observability.md（心跳检测·SSE实时推送·分级告警·自动干预）
+- 更新 wiki/index.md：Concepts 表新增 agent_observability 条目
+- 更新 CONTEXT.md：已有报告列表追加新条目
+- 数据源：scripts/ea_events.py / ea_dashboard.py / task_state_cli.py / everagent.py 代码分析 + EverAgent 架构设计

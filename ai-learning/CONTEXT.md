@@ -67,6 +67,7 @@
 - `Agent_Harness_三大设计流派解析` — everything-claude-code·deer-flow·Archon 设计哲学对比·配置分工vs图编排vs工作流固化·Harness工程五层解析（2026-04-22）
 - `Agent_Skills_生态深度解析` — Karpathy CLAUDE.md→Anthropic Skills标准→156技能生态→agentskills.io跨平台兼容·渐进披露·Skill作为Harness组件（2026-04-22）
 - `Agent_Memory_系统深度解析` — claude-mem架构·会话记忆捕获→AI压缩→相关性注入·SQLite+FTS5+Chroma双重索引·Hooks生命周期·记忆系统四阶段演化（2026-04-22）
+- `Agent_心跳检测与实时Dashboard设计` — Push心跳·alive/suspected/dead三态·SSE实时数据流·watchfiles优化·延迟分级告警·自动干预·零侵入集成（2026-04-23）
 
 ## 离线知识库
 → [`knowledge/INDEX.md`](./knowledge/INDEX.md)（子话题菜单，离线模型从此进入）
