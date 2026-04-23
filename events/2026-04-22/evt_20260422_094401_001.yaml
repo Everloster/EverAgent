@@ -1,0 +1,8 @@
+event_id: evt_20260422_094401_001
+type: task_done
+timestamp: 2026-04-22T09:44:01+00:00
+actor: ByteAgent
+project: cs-learning
+task_id: T035
+payload:
+  report_path: "cs-learning/reports/knowledge_reports/编程语言范式演化_从Lisp到Go的并发模型变迁.md"

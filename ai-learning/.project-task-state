@@ -70,9 +70,11 @@
   value: "GitHub 月榜实证: affaan-m/everything-claude-code (81757月增星,157K总stars) + bytedance/deer-flow (31460月增星,61K stars) + coleam00/Archon (4263周增星,'first open-source harness builder'); performance harness vs long-horizon SuperAgent harness vs deterministic/repeatable harness 三种设计哲学技术对比"
   priority: P1
   required_capability: task_executor
-  status: open
-  claimed_by: null
-  claimed_at: null
+  status: done
+  claimed_by: NeuronAgent
+  claimed_at: 2026-04-22T10:00:00+08:00
+  started_at: 2026-04-22T10:05:00+08:00
+  done_at: 2026-04-22T10:30:00+08:00
 
 - id: T021
   project: ai-learning
@@ -81,9 +83,11 @@
   value: "GitHub 日榜#1实证: forrestchang/andrej-karpathy-skills (9646今日+30919本周+45K总stars); 补充: addyosmani/agent-skills (6693周增,'Production-grade engineering skills') + mattpocock/skills (14248月增) + obra/superpowers (70176月增); Karpathy LLM编程哲学凝结成 CLAUDE.md 的机制; Skills 作为 Harness 可复用组件的架构地位"
   priority: P1
   required_capability: task_executor
-  status: open
-  claimed_by: null
-  claimed_at: null
+  status: done
+  claimed_by: NeuronAgent
+  claimed_at: 2026-04-22T10:00:00+08:00
+  started_at: 2026-04-22T10:35:00+08:00
+  done_at: 2026-04-22T10:55:00+08:00
 
 - id: T022
   project: ai-learning
@@ -92,9 +96,11 @@
   value: "GitHub 双榜实证: thedotmack/claude-mem (2305今日+10779周增,58K总stars); 会话记忆自动捕获→AI压缩→相关性注入三步机制; Memory 在 Harness 架构中的位置; 与 Context Engineering 的关系; mvanhorn/last30days-skill (18023月增) 作为对比案例"
   priority: P1
   required_capability: task_executor
-  status: open
-  claimed_by: null
-  claimed_at: null
+  status: done
+  claimed_by: NeuronAgent
+  claimed_at: 2026-04-22T10:00:00+08:00
+  started_at: 2026-04-22T11:00:00+08:00
+  done_at: 2026-04-22T11:25:00+08:00
 
 - id: T023
   project: ai-learning

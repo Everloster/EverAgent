@@ -64,6 +64,9 @@
 - `开源vs闭源在ToA世界的重新博弈_20260415` — CLI原生论利好开源五条机制·闭源数据飞轮优势·DeepSeek分水岭·三种终局场景·监管变量（2026-04-15）
 - `生成模型演化全景_GAN_DDPM_LDM_DiT_20260416` — GAN→DDPM→Stable Diffusion→DiT四代演化·模式崩溃→扩散稳定→潜空间压缩→Transformer骨干·Flow Matching前沿·Sora视频生成（2026-04-16）
 - `Megatron_LM_大规模训练系统_深度解析_20260416` — 张量并行TP·流水线并行1F1B·序列并行SP·选择性激活重算·3D并行体系·DP+TP+PP组合策略·工程谱系与前沿动态（2026-04-16）
+- `Agent_Harness_三大设计流派解析` — everything-claude-code·deer-flow·Archon 设计哲学对比·配置分工vs图编排vs工作流固化·Harness工程五层解析（2026-04-22）
+- `Agent_Skills_生态深度解析` — Karpathy CLAUDE.md→Anthropic Skills标准→156技能生态→agentskills.io跨平台兼容·渐进披露·Skill作为Harness组件（2026-04-22）
+- `Agent_Memory_系统深度解析` — claude-mem架构·会话记忆捕获→AI压缩→相关性注入·SQLite+FTS5+Chroma双重索引·Hooks生命周期·记忆系统四阶段演化（2026-04-22）
 
 ## 离线知识库
 → [`knowledge/INDEX.md`](./knowledge/INDEX.md)（子话题菜单，离线模型从此进入）

@@ -1,0 +1,18 @@
+apiVersion: everagent.io/v1
+kind: Task
+metadata:
+  id: T035
+  project: cs-learning
+spec:
+  type: knowledge_report
+  target: "编程语言范式演化：从Lisp到Go的并发模型变迁"
+  value: "整合 McCarthy(1960)/Dijkstra(1968)/Hoare(1978)/Lattner(2004) 等关键论文; 函数式/结构化/CSP/LLVM四阶段演化图谱"
+  priority: P2
+  resources:
+    max_tokens: 50000
+    expected_duration: 3h
+  qualityGates:
+    - check: frontmatter_complete
+      required: true
+    - check: mermaid_diagrams
+      required: true

@@ -1,0 +1,18 @@
+apiVersion: everagent.io/v1
+kind: Task
+metadata:
+  id: T032
+  project: biology-learning
+spec:
+  type: concept_report
+  target: "昼夜节律与运动表现：时间生物学视角的深度研究报告"
+  value: "整合 Hayes(2013)/Montaruli(2021)/Ezagouri(2023)/Gupta(2025) 多篇研究; 运动时间窗的生理机制与个体化应用"
+  priority: P2
+  resources:
+    max_tokens: 50000
+    expected_duration: 3h
+  qualityGates:
+    - check: frontmatter_complete
+      required: true
+    - check: evidence_graded
+      required: true

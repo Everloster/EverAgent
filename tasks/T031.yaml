@@ -1,0 +1,18 @@
+apiVersion: everagent.io/v1
+kind: Task
+metadata:
+  id: T031
+  project: biology-learning
+spec:
+  type: paper_analysis
+  target: "Stutz et al. (2025) Dose-response relationship between evening exercise and sleep"
+  value: "Nature Communications 高影响力论文; 运动时间对睡眠质量影响的剂量-反应关系"
+  priority: P1
+  resources:
+    max_tokens: 40000
+    expected_duration: 2h
+  qualityGates:
+    - check: frontmatter_complete
+      required: true
+    - check: sample_size_reported
+      required: true

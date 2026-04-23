@@ -1,0 +1,18 @@
+apiVersion: everagent.io/v1
+kind: Task
+metadata:
+  id: T036
+  project: cs-learning
+spec:
+  type: paper_analysis
+  target: "Lamport (1974) A New Solution to Dijkstra's Concurrent Programming Problem (Bakery Algorithm)"
+  value: "并发编程基础; 无硬件原子指令实现互斥的软件解法; 与后续分布式共识算法的思想关联"
+  priority: P2
+  resources:
+    max_tokens: 35000
+    expected_duration: 1.5h
+  qualityGates:
+    - check: frontmatter_complete
+      required: true
+    - check: evolution_lineage
+      required: true

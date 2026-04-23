@@ -1,0 +1,16 @@
+apiVersion: everagent.io/v1
+kind: Task
+metadata:
+  id: T033
+  project: biology-learning
+spec:
+  type: paper_analysis
+  target: "Dattilo et al. (2011) Sleep and muscle recovery: endocrinological and molecular basis"
+  value: "睡眠与肌肉恢复的内分泌与分子基础; 运动生理学关键文献"
+  priority: P2
+  resources:
+    max_tokens: 35000
+    expected_duration: 1.5h
+  qualityGates:
+    - check: frontmatter_complete
+      required: true

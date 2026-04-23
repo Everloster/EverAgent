@@ -29,12 +29,15 @@
 - `29_chubby_2006` — 粗粒度分布式锁服务·5副本Paxos cell·类文件系统接口·advisory锁+Sequencer·Grace period·意外成为Google主要命名服务（2026-03-31）
 - `31_bgp_rfc4271_2006` — RFC 4271·路径向量协议·AS间路由·AS_PATH防环·TCP 179·四类消息·六态FSM·CIDR聚合·互联网域间路由基石（2026-04-16）
 - `32_dijkstra_goto_1968` — Go To Statement Considered Harmful·结构化编程宣言·进度坐标可表达性框架·顺序/选择/循环三元组·Böhm-Jacopini基础·编程语言理论入口（2026-04-16）
+- `33_hoare_axiomatic_1969` — Hoare逻辑·{P}C{Q}三元组·赋值公理·循环不变式·程序验证理论基础·形式化方法学科起点·TLA+/Coq/Dafny前身（2026-04-22）
+- `34_lamport_bakery_1974` — Bakery Algorithm·无硬件原子指令纯软件互斥·取号排队直觉·并发编程经典教材·Ticket Lock/MCS Lock思想源头（2026-04-22）
 
 **知识深度解析** (`reports/knowledge_reports/`)
 - `CS关键人物图谱` — 图灵→香农→Dijkstra→现代系统工程师的思想传承
 - `分布式系统知识图谱` — Storage/Consensus/Coordination/Messaging 四主线整合，19篇精读归纳
 - `DHT实战排查：从协议理论到工程故障诊断` — Kademlia/BEP-5协议·WireGuard+wstunnel多层隧道·分层故障诊断方法论·Bootstrap节点生态现状（2026-04-06）
 - `操作系统内核设计深度解析_20260416` — UNIX哲学·一切皆文件·fork/exec/pipe·FFS cylinder group·CSP通道通信·宏内核vs微内核·io_uring·Unikernel（2026-04-16）
+- `编程语言范式演化_从Lisp到Go的并发模型变迁` — McCarthy(Lisp)·Dijkstra(结构化编程)·Hoare(CSP)·Lattner(LLVM)四阶段演化图谱·函数式/结构化/进程代数/编译器基础设施（2026-04-22）
 
 ## 离线知识库
 → [`knowledge/INDEX.md`](./knowledge/INDEX.md)
@@ -54,4 +57,4 @@
 - 编译器、数据库理论（关系代数等）方向尚无报告
 - 论文索引中列出但未精读的论文仅有索引，无分析报告
 - 操作系统方向已有知识报告（UNIX/FFS/CSP综合），但具体子话题（进程调度算法、虚拟内存管理）尚无专项报告
-- 下一步推荐：Hoare Axiomatic Basis (1969)（编程语言形式化验证方向）、数据库理论方向（Codd Relational Model 1970）
+- 下一步推荐：数据库理论方向（Codd Relational Model 1970）、编译器方向（Lattner LLVM 2004）

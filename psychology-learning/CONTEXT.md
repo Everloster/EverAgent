@@ -23,6 +23,7 @@
 **知识深度解析** (`reports/concept_reports/`)
 - `心理学关键人物图谱` — 冯特→卡尼曼思想传承与决裂史
 - `认知偏差全景图` — Kahneman/Tversky 启发式与偏差、前景理论及社会偏差的系统整合，核心偏差矩阵×层次结构图（2026-04-05）
+- `心理学关键人物图谱_更新版` — 加入 Bandura/Seligman/Harlow 等新精读作者；按领域×时代双重维度组织；含 Mermaid 全景关系图与人物矩阵（2026-04-22）
 
 ## 离线知识库
 → [`knowledge/INDEX.md`](./knowledge/INDEX.md)

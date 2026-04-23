@@ -1,0 +1,18 @@
+apiVersion: everagent.io/v1
+kind: Task
+metadata:
+  id: T034
+  project: cs-learning
+spec:
+  type: paper_analysis
+  target: "Hoare (1969) An Axiomatic Basis for Computer Programming"
+  value: "程序验证理论基础; Hoare逻辑的前置/后置条件形式化方法; 与Dijkstra结构化编程形成理论闭环"
+  priority: P1
+  resources:
+    max_tokens: 40000
+    expected_duration: 2h
+  qualityGates:
+    - check: frontmatter_complete
+      required: true
+    - check: evolution_lineage
+      required: true
