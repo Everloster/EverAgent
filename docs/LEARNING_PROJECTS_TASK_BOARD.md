@@ -32,28 +32,7 @@
 
 ## 任务队列
 
-### 开放任务池（P1）
-
-```yaml
-- id: T043
-  project: biology-learning
-  type: maintenance
-  target: "修正 CONTEXT 防幻觉边界与导航状态"
-  value: "biology-learning 已新增 P02/P03/P04/P17/P26 等报告，但 CONTEXT 边界仍称除 P01/P08/P09/P25 外其余未独立精读；需要修正边界、下一步推荐与导航描述，保持与已有报告一致"
-  priority: P1
-  required_capability: task_executor
-  status: open
-  claimed_by: null
-  claimed_at: null
-  context_links:
-    - biology-learning/AGENTS.md
-    - biology-learning/CONTEXT.md
-    - biology-learning/reports/paper_analyses
-    - biology-learning/reports/concept_reports
-
-```
-
-### 开放任务池（P2）
+### 最近完成（自动生成）
 
 ```yaml
 - id: T045
@@ -63,15 +42,35 @@
   value: "ai-practice 已有 exp_005 MoE Transformer 教学笔记；检查 README/CONTEXT/wiki/index/log 是否一致，补齐导航和边界说明，不新增实验"
   priority: P2
   required_capability: task_executor
-  status: open
-  claimed_by: null
-  claimed_at: null
+  status: done
+  claimed_by: PracticeAgent
+  claimed_at: 2026-04-24T18:03:29+08:00
+  started_at: 2026-04-24T18:03:29+08:00
+  done_at: 2026-04-24T18:03:30+08:00
   context_links:
     - ai-practice/AGENTS.md
     - ai-practice/CONTEXT.md
     - ai-practice/README.md
     - ai-practice/wiki/index.md
     - ai-practice/experiments/exp_005_moe_transformer.md
+
+- id: T043
+  project: biology-learning
+  type: maintenance
+  target: "修正 CONTEXT 防幻觉边界与导航状态"
+  value: "biology-learning 已新增 P02/P03/P04/P17/P26 等报告，但 CONTEXT 边界仍称除 P01/P08/P09/P25 外其余未独立精读；需要修正边界、下一步推荐与导航描述，保持与已有报告一致"
+  priority: P1
+  required_capability: task_executor
+  status: done
+  claimed_by: BioAgent
+  claimed_at: 2026-04-24T18:03:29+08:00
+  started_at: 2026-04-24T18:03:29+08:00
+  done_at: 2026-04-24T18:03:29+08:00
+  context_links:
+    - biology-learning/AGENTS.md
+    - biology-learning/CONTEXT.md
+    - biology-learning/reports/paper_analyses
+    - biology-learning/reports/concept_reports
 
 - id: T044
   project: philosophy-learning
@@ -80,20 +79,17 @@
   value: "philosophy-learning CONTEXT 的防幻觉边界存在重复条目，且最新 Gettier/Russell/Singer 等完成情况需要让边界描述更一致；只做元信息维护，不新增报告"
   priority: P2
   required_capability: task_executor
-  status: open
-  claimed_by: null
-  claimed_at: null
+  status: done
+  claimed_by: SocratesAgent
+  claimed_at: 2026-04-24T18:03:29+08:00
+  started_at: 2026-04-24T18:03:29+08:00
+  done_at: 2026-04-24T18:03:29+08:00
   context_links:
     - philosophy-learning/AGENTS.md
     - philosophy-learning/CONTEXT.md
     - philosophy-learning/reports/text_analyses
     - philosophy-learning/wiki/index.md
 
-```
-
-### 最近完成（自动生成）
-
-```yaml
 - id: T037
   project: biology-learning
   type: paper_analysis
@@ -184,45 +180,6 @@
   claimed_at: 2026-04-23T10:00:00+08:00
   started_at: 2026-04-23T11:30:00+08:00
   done_at: 2026-04-23T12:00:00+08:00
-
-- id: T025
-  project: ai-learning
-  type: knowledge_report
-  target: "垂直 AI Agent 爆发：金融领域三大架构解析（TradingAgents x Kronos x ai-hedge-fund）"
-  value: "GitHub 三榜实证: TauricResearch/TradingAgents (18792月增,多Agent金融交易) + shiyu-coder/Kronos (6486周+7042月,'Foundation Model for Financial Markets') + virattt/ai-hedge-fund (1058日+4314周,55K stars); 垂直域 Agent 技术架构 vs 通用 Agent 差异; 金融时序数据与 LLM 融合的技术路径"
-  priority: P2
-  required_capability: task_executor
-  status: done
-  claimed_by: NeuronAgent
-  claimed_at: 2026-04-23T10:00:00+08:00
-  started_at: 2026-04-23T10:05:00+08:00
-  done_at: 2026-04-23T11:30:00+08:00
-
-- id: T024
-  project: ai-learning
-  type: knowledge_report
-  target: "Managed Agents Platform：multica 的 Agent-as-Teammate 范式解析"
-  value: "GitHub 周榜实证: multica-ai/multica (10864周增,'Turn coding agents into real teammates — assign tasks, track progress, compound skills'); Agent 团队管理产品化路径; 与 LangGraph/CrewAI/AutoGen 的定位差异; Compound Skills 机制"
-  priority: P1
-  required_capability: task_executor
-  status: done
-  claimed_by: NeuronAgent
-  claimed_at: 2026-04-23T10:00:00+08:00
-  started_at: 2026-04-23T10:35:00+08:00
-  done_at: 2026-04-23T10:55:00+08:00
-
-- id: T023
-  project: ai-learning
-  type: knowledge_report
-  target: "自进化 Agent 架构：hermes-agent x GenericAgent 的技能树机制"
-  value: "GitHub 月/周双榜#1实证: NousResearch/hermes-agent (53110周增+81412月增,91K总stars,'The agent that grows with you'); 对照: lsdefine/GenericAgent ('Self-evolving agent: grows skill tree from 3.3K-line seed'); Self-improvement 技术实现路径; 自进化的可信度与边界分析"
-  priority: P1
-  required_capability: task_executor
-  status: done
-  claimed_by: NeuronAgent
-  claimed_at: 2026-04-23T10:00:00+08:00
-  started_at: 2026-04-23T10:05:00+08:00
-  done_at: 2026-04-23T10:30:00+08:00
 
 ```
 

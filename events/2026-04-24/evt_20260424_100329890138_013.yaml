@@ -1,0 +1,11 @@
+event_id: evt_20260424_100329890138_013
+type: task_claimed
+timestamp: 2026-04-24T10:03:29+00:00
+actor: PracticeAgent
+project: ai-practice
+task_id: T045
+message_id: <evt_20260424_100329890138_013@everagent.local>
+aamp: {"version":"1.1","intent":"task.ack","task_id":"T045","message_id":"<evt_20260424_100329890138_013@everagent.local>","dispatch_context":{"project":"ai-practice","actor":"PracticeAgent","event_type":"task_claimed"}}
+payload:
+  target: "同步 exp_005 后的 ai-practice 上下文与 wiki 导航"
+  type: "maintenance"

@@ -1,7 +1,7 @@
 # 🧬 Biology Learning Project
 
 > 系统学习生命科学的个人知识库与学习项目
-> 创建日期：2026-03-25 | 最后更新：2026-04-01（4 篇论文精读 + 1 篇概念报告 + roadmap）
+> 创建日期：2026-03-25 | 最后更新：2026-04-24（9 篇论文精读 + 3 篇专题报告 + wiki 导航）
 
 ---
 
@@ -39,7 +39,12 @@ biology-learning/
 ├── reports/                                          # 📊 分析报告
 │   ├── paper_analyses/                              # 论文精读报告
 │   └── concept_reports/                             # 概念与专题深度研究
-│       └── 晚型人作息与力量训练_深度研究报告.md       # ✅ 首篇报告（时间生物学 × 运动生理学 × 睡眠科学）
+│       └── ...                                      # ✅ 3 篇专题报告（时间生物学 × 运动生理学 × 睡眠科学）
+│
+├── wiki/                                             # 🧭 LLM 知识百科入口（早期种子状态）
+│   ├── index.md
+│   ├── concepts/
+│   └── entities/
 │
 └── notes/                                            # 📝 个人学习笔记与参考资料
 ```
@@ -52,13 +57,21 @@ biology-learning/
 
 **论文精读报告：**
 - [Social Jetlag and Obesity (2012)](./reports/paper_analyses/P01_social_jetlag_obesity_2012.md) ← 社会性时差与 BMI 的标志性论文
+- [Dose-response relationship between evening exercise and sleep (2025)](./reports/paper_analyses/P02_stutz_evening_exercise_sleep_2025.md) ← 晚间运动与睡眠的剂量-反应关系
+- [Sleep and muscle recovery (2011)](./reports/paper_analyses/P03_dattilo_sleep_muscle_2011.md) ← 睡眠债、内分泌环境与肌肉恢复假说
+- [The circadian system, sleep, and the health/disease balance (2022)](./reports/paper_analyses/P04_roenneberg_circadian_health_2022.md) ← 昼夜节律医学框架
 - [Sleep Onset, Slow Wave Sleep and GH Release (1988)](./reports/paper_analyses/P08_sleep_onset_sws_gh_1988.md) ← 深睡与夜间生长激素释放的经典研究
 - [Physiology of Growth Hormone Secretion during Sleep (1996)](./reports/paper_analyses/P09_gh_sleep_physiology_1996.md) ← GH、睡眠结构与年龄变化的整合性综述
+- [Circadian Rhythms in Exercise Performance (2013)](./reports/paper_analyses/P17_hayes_circadian_exercise_2013.md) ← 运动表现昼夜节律与激素/肌肉适应
+- [Social Jetlag, Metabolic Syndrome, and Type 2 Diabetes (2017)](./reports/paper_analyses/P25_social_jetlag_metabolic_syndrome_2017.md) ← 社会性时差与代谢风险
+- [Why We Sleep 核心论据综述 (2017)](./reports/paper_analyses/P26_walker_why_we_sleep_2017.md) ← 睡眠分期功能、睡眠剥夺风险与证据边界
 
 **专题研究报告：**
 - [晚型人作息与力量训练深度研究](./reports/concept_reports/晚型人作息与力量训练_深度研究报告.md) ← **首篇报告，推荐入口**
   - 覆盖：昼夜节律类型 × 深夜训练的激素环境 × 睡眠质量与 GH 分泌 × 可操作建议
   - 关键人物：Till Roenneberg、Matthew Walker、Russell Foster、Charles Czeisler
+- [昼夜节律与运动表现深度研究](./reports/concept_reports/昼夜节律与运动表现_深度研究报告.md) ← 运动表现节律、核心体温、激素波动与训练时间窗
+- [运动时间生物学个体化训练时间窗](./reports/concept_reports/运动时间生物学_个体化训练时间窗.md) ← 时型匹配、证据分级和个体化决策框架
 
 ### 第二步：核心分支导航
 
@@ -87,14 +100,22 @@ biology-learning/
 | # | 报告 | 涉及领域 | 关键人物 | 状态 |
 |---|------|---------|---------|------|
 | R01 | [晚型人作息与力量训练深度研究](./reports/concept_reports/晚型人作息与力量训练_深度研究报告.md) | 时间生物学 × 睡眠科学 × 运动生理学 | Roenneberg、Walker、Foster | ✅ 完成 |
+| R02 | [昼夜节律与运动表现深度研究](./reports/concept_reports/昼夜节律与运动表现_深度研究报告.md) | 时间生物学 × 运动生理学 | Hayes、Montaruli、Ezagouri、Gupta | ✅ 完成 |
+| R03 | [运动时间生物学个体化训练时间窗](./reports/concept_reports/运动时间生物学_个体化训练时间窗.md) | 时间生物学 × 运动表现 × 个体化应用 | Hayes、Ezagouri、Gupta | ✅ 完成 |
 
 ### 论文精读报告
 
 | # | 论文 | 涉及领域 | 关键人物 | 状态 |
 |---|------|---------|---------|------|
 | P01 | [Social Jetlag and Obesity](./reports/paper_analyses/P01_social_jetlag_obesity_2012.md) | 时间生物学 × 代谢健康 | Roenneberg、Merrow、Vetter | ✅ 完成 |
+| P02 | [Evening Exercise and Sleep](./reports/paper_analyses/P02_stutz_evening_exercise_sleep_2025.md) | 睡眠科学 × 运动生理学 | Stutz 等 | ✅ 完成 |
+| P03 | [Sleep and Muscle Recovery](./reports/paper_analyses/P03_dattilo_sleep_muscle_2011.md) | 睡眠科学 × 肌肉恢复 | Dattilo 等 | ✅ 完成 |
+| P04 | [Circadian System, Sleep, and Health/Disease Balance](./reports/paper_analyses/P04_roenneberg_circadian_health_2022.md) | 时间生物学 × 睡眠医学 | Roenneberg、Merrow | ✅ 完成 |
 | P08 | [Sleep Onset, Slow Wave Sleep and GH Release](./reports/paper_analyses/P08_sleep_onset_sws_gh_1988.md) | 睡眠科学 × 内分泌学 | Born、Muth、Fehm | ✅ 完成 |
 | P09 | [Physiology of Growth Hormone Secretion during Sleep](./reports/paper_analyses/P09_gh_sleep_physiology_1996.md) | 睡眠科学 × 内分泌学 | Van Cauter 等 | ✅ 完成 |
+| P17 | [Circadian Rhythms in Exercise Performance](./reports/paper_analyses/P17_hayes_circadian_exercise_2013.md) | 时间生物学 × 运动表现 | Hayes 等 | ✅ 完成 |
+| P25 | [Social Jetlag, Metabolic Syndrome, and Type 2 Diabetes](./reports/paper_analyses/P25_social_jetlag_metabolic_syndrome_2017.md) | 时间生物学 × 代谢健康 | Rutters 等 | ✅ 完成 |
+| P26 | [Why We Sleep 核心论据综述](./reports/paper_analyses/P26_walker_why_we_sleep_2017.md) | 睡眠科学 × 神经科学 × 健康风险 | Walker | ✅ 完成 |
 
 ### 待研究课题
 
