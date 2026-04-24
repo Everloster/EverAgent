@@ -15,9 +15,9 @@ from pathlib import Path
 
 from project_lock import parse_lock
 from project_registry import STATE_FILE_NAME, discover_projects, load_agents_registry
-from task_state import find_stale_tasks
+from task_state import find_expired_tasks, find_stale_tasks
 from task_state import load_all_tasks, state_file_for_project
-from task_state_cli import command_abandon
+from task_state_cli import command_abandon, command_expire
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -114,6 +114,31 @@ def command_sweep_stale_tasks(args: argparse.Namespace) -> int:
     return 0
 
 
+def command_sweep_expired_tasks(args: argparse.Namespace) -> int:
+    expired_tasks = find_expired_tasks(include_global=args.include_global)
+    if not expired_tasks:
+        print("[PASS] No expired tasks were found.")
+        return 0
+
+    for task in expired_tasks:
+        print(f"[EXPIRED] {task.id}\t{task.project}\t{task.status}\t{task.expires_at}\t{task.target}")
+        if args.apply:
+            command_expire(
+                argparse.Namespace(
+                    task_id=task.id,
+                    reason=args.reason or "expires_at elapsed",
+                    actor="system",
+                    force=False,
+                )
+            )
+
+    if args.apply:
+        print(f"[PASS] Swept {len(expired_tasks)} expired task(s).")
+    else:
+        print(f"[WARN] Found {len(expired_tasks)} expired task(s). Re-run with --apply to expire them.")
+    return 0
+
+
 def collect_audit_findings() -> tuple[list[str], list[str], list[str]]:
     errors: list[str] = []
     warnings: list[str] = []
@@ -207,6 +232,13 @@ def command_audit(_: argparse.Namespace) -> int:
 
 
 def command_reconcile(args: argparse.Namespace) -> int:
+    if args.expire_tasks:
+        code = command_sweep_expired_tasks(
+            argparse.Namespace(include_global=True, apply=True, reason=args.expire_reason)
+        )
+        if code != 0:
+            return code
+
     if args.abandon_stale:
         code = command_sweep_stale_tasks(
             argparse.Namespace(ttl_hours=args.ttl_hours, apply=True, reason=args.reason)
@@ -253,10 +285,18 @@ def build_parser() -> argparse.ArgumentParser:
     sweep.add_argument("--reason", help="Optional abandon reason override")
     sweep.set_defaults(func=command_sweep_stale_tasks)
 
+    expired = sub.add_parser("sweep-expired-tasks", help="Detect or expire tasks whose expires_at has elapsed")
+    expired.add_argument("--include-global", action="store_true", help="Also inspect global tasks")
+    expired.add_argument("--apply", action="store_true", help="Apply the expired transition")
+    expired.add_argument("--reason", help="Optional expired reason override")
+    expired.set_defaults(func=command_sweep_expired_tasks)
+
     audit = sub.add_parser("audit", help="Inspect registry/task/lock drift without changing files")
     audit.set_defaults(func=command_audit)
 
     reconcile = sub.add_parser("reconcile", help="Apply safe reconciliation and then audit the workspace")
+    reconcile.add_argument("--expire-tasks", action="store_true", help="Also expire tasks whose expires_at has elapsed")
+    reconcile.add_argument("--expire-reason", help="Optional expired reason override")
     reconcile.add_argument("--abandon-stale", action="store_true", help="Also abandon stale active tasks before syncing views")
     reconcile.add_argument("--ttl-hours", type=int, default=72, help="Stale threshold in hours when abandoning stale tasks")
     reconcile.add_argument("--reason", help="Optional abandon reason override")

@@ -34,6 +34,38 @@ class AampEventEnvelopeTests(unittest.TestCase):
                 self.assertEqual(loaded[0].aamp["status"], "completed")
                 self.assertEqual(loaded[0].message_id, emitted.message_id)
 
+    def test_dedupe_key_returns_existing_event(self) -> None:
+        repo_root = Path(__file__).resolve().parents[1]
+        scripts_dir = repo_root / "scripts"
+        import sys
+
+        if str(scripts_dir) not in sys.path:
+            sys.path.insert(0, str(scripts_dir))
+
+        import ea_events  # type: ignore
+
+        with tempfile.TemporaryDirectory() as tmp:
+            with patch.object(ea_events, "EVENTS_DIR", Path(tmp)):
+                first = ea_events.emit_event(
+                    event_type="task_dispatched",
+                    actor="EverAgent",
+                    project="global",
+                    task_id="T998",
+                    payload={"target": "Demo", "priority": "P2"},
+                    dedupe_key="T998:task.dispatch:EverAgent",
+                )
+                second = ea_events.emit_event(
+                    event_type="task_dispatched",
+                    actor="EverAgent",
+                    project="global",
+                    task_id="T998",
+                    payload={"target": "Demo", "priority": "P2"},
+                    dedupe_key="T998:task.dispatch:EverAgent",
+                )
+
+                self.assertEqual(first.event_id, second.event_id)
+                self.assertEqual(len(ea_events.load_events(task_id="T998")), 1)
+
 
 if __name__ == "__main__":
     unittest.main()

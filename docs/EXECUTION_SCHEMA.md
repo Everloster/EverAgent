@@ -55,7 +55,7 @@ task_input:
 ```yaml
 task_output:
   task_id: string
-  status: done | failed | cancelled
+  status: done | failed | cancelled | expired
   done_at: ISO8601 | null      # status=done 时非空
   failed_reason: string | null  # status=failed 时非空
   cancelled_at: ISO8601 | null  # status=cancelled 时非空
@@ -74,10 +74,11 @@ task_output:
 | 字段 | 规则 |
 |------|------|
 | `task_id` | 必须与输入 task_id 一致 |
-| `status` | 必须是 done、failed 或 cancelled |
+| `status` | 必须是 done、failed、cancelled 或 expired |
 | `done_at` | status=done 时必须是非空 ISO8601 |
 | `failed_reason` | status=failed 时必须是非空字符串 |
 | `cancelled_at` | status=cancelled 时必须是非空 ISO8601 |
+| `expires_at` | status=expired 时应已早于当前时间 |
 | `files_created` | 可空数组，但不能是 null |
 | `files_modified` | 至少包含 CONTEXT.md（如果存在） |
 | `frontmatter_validated` | 必须为 true（由校验脚本设置） |

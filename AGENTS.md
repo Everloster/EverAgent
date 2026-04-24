@@ -81,6 +81,7 @@ open → claimed → in_progress → done
                              ↘ failed       (须填 failed_reason)
                              ↘ help_needed  (需要用户补充信息、授权或策略澄清；可后续 start/reopen)
                              ↘ cancelled    (用户或调度方撤销任务)
+                             ↘ expired      (expires_at 到期后的本地终止投影)
                              ↘ abandoned    (claimed/in_progress/help_needed 超过 72h 未更新 → 标记为 abandoned；可后续 reopen)
 ```
 
@@ -94,7 +95,7 @@ open → claimed → in_progress → done
   value: string
   priority: P1 | P2 | P3
   required_capability: task_executor | full_admin
-  status: open | claimed | in_progress | help_needed | done | failed | cancelled | abandoned
+  status: open | claimed | in_progress | help_needed | done | failed | cancelled | expired | abandoned
   claimed_by: string | null
   claimed_at: ISO8601 | null
   started_at: ISO8601 | null

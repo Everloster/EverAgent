@@ -30,8 +30,9 @@ EverAgent targets an **AAMP-inspired local control-plane profile**:
 | `task.result` + `completed` | Task completed successfully | `status: done`, `task_done` |
 | `task.result` + `rejected` | Task failed or could not be honorably completed | `status: failed`, `task_failed` |
 | `task.cancel` | User or dispatcher withdraws the task | `status: cancelled`, `task_cancelled` |
+| local expiry projection | Task `expires_at` elapsed before terminal completion | `status: expired`, `task_expired` |
 
-`abandoned` remains an EverAgent local projection for stale active work. It is not a core AAMP wire intent.
+`abandoned` and `expired` remain EverAgent local projections. They are not additional core AAMP wire intents; `task_expired` is emitted as a rejected `task.result` envelope for interoperability.
 
 ## Task State Fields
 

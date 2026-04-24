@@ -62,6 +62,7 @@ def get_project_status() -> dict[str, dict[str, any]]:
             "done": sum(1 for t in tasks if t.status == "done"),
             "failed": sum(1 for t in tasks if t.status == "failed"),
             "cancelled": sum(1 for t in tasks if t.status == "cancelled"),
+            "expired": sum(1 for t in tasks if t.status == "expired"),
             "abandoned": sum(1 for t in tasks if t.status == "abandoned"),
         }
     return status
@@ -224,8 +225,8 @@ DASHBOARD_HTML = """<!DOCTYPE html>
         function renderProjects(status) {
             const container = document.getElementById('project-cards');
             container.innerHTML = Object.entries(status).map(([name, s]) => {
-                const health = s.help_needed > 0 || s.failed > 0 ? 'badge-red' : s.in_progress > 0 ? 'badge-yellow' : 'badge-green';
-                const healthText = s.help_needed > 0 ? 'NEEDS HELP' : s.in_progress > 0 ? 'BUSY' : s.failed > 0 ? 'ISSUE' : 'HEALTHY';
+                const health = s.help_needed > 0 || s.failed > 0 || s.expired > 0 ? 'badge-red' : s.in_progress > 0 ? 'badge-yellow' : 'badge-green';
+                const healthText = s.help_needed > 0 ? 'NEEDS HELP' : s.expired > 0 ? 'EXPIRED' : s.in_progress > 0 ? 'BUSY' : s.failed > 0 ? 'ISSUE' : 'HEALTHY';
                 return `
                     <div class="card">
                         <h3>${name} <span class="badge ${health}">${healthText}</span></h3>
@@ -237,6 +238,7 @@ DASHBOARD_HTML = """<!DOCTYPE html>
                             <div class="status-item"><div class="num">${s.claimed}</div><div class="label">Claimed</div></div>
                             <div class="status-item"><div class="num failed">${s.failed}</div><div class="label">Failed</div></div>
                             <div class="status-item"><div class="num">${s.cancelled}</div><div class="label">Cancelled</div></div>
+                            <div class="status-item"><div class="num failed">${s.expired}</div><div class="label">Expired</div></div>
                             <div class="status-item"><div class="num">${s.abandoned}</div><div class="label">Abandoned</div></div>
                         </div>
                     </div>
