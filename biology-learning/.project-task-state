@@ -88,3 +88,19 @@
   claimed_at: 2026-04-24T00:00:00+08:00
   started_at: 2026-04-24T00:00:00+08:00
   done_at: 2026-04-24T00:00:00+08:00
+
+- id: T043
+  project: biology-learning
+  type: maintenance
+  target: "修正 CONTEXT 防幻觉边界与导航状态"
+  value: "biology-learning 已新增 P02/P03/P04/P17/P26 等报告，但 CONTEXT 边界仍称除 P01/P08/P09/P25 外其余未独立精读；需要修正边界、下一步推荐与导航描述，保持与已有报告一致"
+  priority: P1
+  required_capability: task_executor
+  status: open
+  claimed_by: null
+  claimed_at: null
+  context_links:
+    - biology-learning/AGENTS.md
+    - biology-learning/CONTEXT.md
+    - biology-learning/reports/paper_analyses
+    - biology-learning/reports/concept_reports

@@ -1,0 +1,16 @@
+event_id: evt_20260424_095603101571_006
+type: task_dispatched
+timestamp: 2026-04-24T09:56:03+00:00
+actor: EverAgent
+project: ai-practice
+task_id: T045
+message_id: <evt_20260424_095603101571_006@everagent.local>
+dedupe_key: T045:task.dispatch:EverAgent
+aamp: {"version":"1.1","intent":"task.dispatch","task_id":"T045","message_id":"<evt_20260424_095603101571_006@everagent.local>","dispatch_context":{"project":"ai-practice","actor":"EverAgent","event_type":"task_dispatched"},"priority":"P2","context_links":["ai-practice/AGENTS.md","ai-practice/CONTEXT.md","ai-practice/README.md","ai-practice/wiki/index.md","ai-practice/experiments/exp_005_moe_transformer.md"]}
+payload:
+  target: "同步 exp_005 后的 ai-practice 上下文与 wiki 导航"
+  type: "maintenance"
+  priority: "P2"
+  parent_task_id: null
+  expires_at: null
+  context_links: ["ai-practice/AGENTS.md", "ai-practice/CONTEXT.md", "ai-practice/README.md", "ai-practice/wiki/index.md", "ai-practice/experiments/exp_005_moe_transformer.md"]

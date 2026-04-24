@@ -18,11 +18,14 @@ Event Schema (v1.0):
 from __future__ import annotations
 
 import json
+import os
 import re
+import tempfile
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any, Optional
+import fcntl
 
 from ea_common import EVENTS_DIR, format_iso8601, parse_iso8601
 
@@ -122,18 +125,22 @@ def _next_sequence(directory: Path) -> int:
     in multi-process scenarios.
     """
     seq_file = directory / ".seq"
-    if not directory.exists():
-        directory.mkdir(parents=True, exist_ok=True)
-        seq_file.write_text("1", encoding="utf-8")
-        return 1
+    directory.mkdir(parents=True, exist_ok=True)
 
-    try:
-        current = int(seq_file.read_text(encoding="utf-8").strip())
-    except (ValueError, FileNotFoundError):
-        current = 0
-
-    next_seq = current + 1
-    seq_file.write_text(str(next_seq), encoding="utf-8")
+    with seq_file.open("a+", encoding="utf-8") as handle:
+        fcntl.flock(handle.fileno(), fcntl.LOCK_EX)
+        handle.seek(0)
+        try:
+            current = int(handle.read().strip() or "0")
+        except ValueError:
+            current = 0
+        next_seq = current + 1
+        handle.seek(0)
+        handle.truncate()
+        handle.write(str(next_seq))
+        handle.flush()
+        os.fsync(handle.fileno())
+        fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
     return next_seq
 
 
@@ -156,7 +163,7 @@ def emit_event(
 
     now = datetime.now(timezone.utc)
     date_str = now.strftime("%Y-%m-%d")
-    time_str = now.strftime("%H%M%S")
+    time_str = now.strftime("%H%M%S%f")
 
     day_dir = EVENTS_DIR / date_str
     day_dir.mkdir(parents=True, exist_ok=True)
@@ -223,15 +230,23 @@ def _load_dedupe_event(dedupe_key: str) -> Optional[Event]:
 
 def _write_dedupe_index(dedupe_key: str, event_path: Path) -> None:
     path = _dedupe_index_path()
-    try:
-        index = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
-    except ValueError:
-        index = {}
-    try:
-        index[dedupe_key] = str(event_path.relative_to(EVENTS_DIR.parent))
-    except ValueError:
-        index[dedupe_key] = str(event_path)
-    path.write_text(json.dumps(index, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    lock_path = path.with_suffix(path.suffix + ".lock")
+    with lock_path.open("a+", encoding="utf-8") as lock_handle:
+        fcntl.flock(lock_handle.fileno(), fcntl.LOCK_EX)
+        try:
+            index = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+        except ValueError:
+            index = {}
+        try:
+            index[dedupe_key] = str(event_path.relative_to(EVENTS_DIR.parent))
+        except ValueError:
+            index[dedupe_key] = str(event_path)
+        with tempfile.NamedTemporaryFile("w", encoding="utf-8", dir=path.parent, delete=False) as tmp:
+            tmp.write(json.dumps(index, ensure_ascii=False, indent=2, sort_keys=True) + "\n")
+            tmp_path = Path(tmp.name)
+        tmp_path.replace(path)
+        fcntl.flock(lock_handle.fileno(), fcntl.LOCK_UN)
 
 
 def _build_aamp_envelope(
