@@ -44,6 +44,8 @@
 
 以下实验已有报告，禁止重复生成：exp_001、exp_002、exp_003、exp_004、exp_005
 
+exp_005 已包含 MoE Transformer 教学笔记与 `wiki/concepts/mixture_of_experts.md` 概念页；后续维护仅同步导航、索引、边界说明，不新增同主题实验。
+
 ---
 
 ## 后续实验方向（可选任务来源）

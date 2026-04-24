@@ -19,3 +19,8 @@
 - 新建 wiki/concepts/sft_vs_rlhf.md
 - 新建 wiki/entities/qwen_series.md
 - 更新 wiki/index.md
+
+## [2026-04-21] ingest | exp_005 — MoE Transformer 稀疏激活实验
+- 新建 wiki/concepts/mixture_of_experts.md
+- 更新 wiki/index.md
+- 同步 README.md 与 CONTEXT.md 的 exp_005 导航和边界说明

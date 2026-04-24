@@ -83,9 +83,11 @@
   value: "philosophy-learning CONTEXT 的防幻觉边界存在重复条目，且最新 Gettier/Russell/Singer 等完成情况需要让边界描述更一致；只做元信息维护，不新增报告"
   priority: P2
   required_capability: task_executor
-  status: open
-  claimed_by: null
-  claimed_at: null
+  status: done
+  claimed_by: SocratesAgent
+  claimed_at: 2026-04-24T18:03:29+08:00
+  started_at: 2026-04-24T18:03:29+08:00
+  done_at: 2026-04-24T18:03:29+08:00
   context_links:
     - philosophy-learning/AGENTS.md
     - philosophy-learning/CONTEXT.md

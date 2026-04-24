@@ -1,0 +1,11 @@
+event_id: evt_20260424_100330056971_015
+type: task_done
+timestamp: 2026-04-24T10:03:30+00:00
+actor: PracticeAgent
+project: ai-practice
+task_id: T045
+message_id: <evt_20260424_100330056971_015@everagent.local>
+aamp: {"version":"1.1","intent":"task.result","task_id":"T045","message_id":"<evt_20260424_100330056971_015@everagent.local>","dispatch_context":{"project":"ai-practice","actor":"PracticeAgent","event_type":"task_done"},"status":"completed"}
+payload:
+  target: "同步 exp_005 后的 ai-practice 上下文与 wiki 导航"
+  duration_hint: "completed"

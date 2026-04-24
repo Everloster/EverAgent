@@ -15,7 +15,7 @@
 
 | 概念 | 文件 | 一句话说明 |
 |------|------|---------|
-| Mixture of Experts | [mixture_of_experts.md](concepts/mixture_of_experts.md) | 稀疏激活：参数量与计算量分离，Router + N 个 Expert |
+| Mixture of Experts | [mixture_of_experts.md](concepts/mixture_of_experts.md) | 稀疏激活：参数量与计算量分离，Router + N 个 Expert；对应 [exp_005](../experiments/exp_005_moe_transformer.md) |
 
 ## 阶段 4 相关概念
 

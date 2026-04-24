@@ -1,0 +1,10 @@
+event_id: evt_20260424_100329554714_011
+type: task_started
+timestamp: 2026-04-24T10:03:29+00:00
+actor: SocratesAgent
+project: philosophy-learning
+task_id: T044
+message_id: <evt_20260424_100329554714_011@everagent.local>
+aamp: {"version":"1.1","intent":"task.stream.opened","task_id":"T044","message_id":"<evt_20260424_100329554714_011@everagent.local>","dispatch_context":{"project":"philosophy-learning","actor":"SocratesAgent","event_type":"task_started"},"stream_id":"stream_T044"}
+payload:
+  target: "清理 CONTEXT 防幻觉边界重复条目并同步最新覆盖"

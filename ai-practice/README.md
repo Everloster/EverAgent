@@ -1,7 +1,7 @@
 # AI Practice — LLM 工程实践教程
 
 > 从"手写 Transformer"到"微调大模型"的完整工程实践路径。
-> 4 个阶段，涵盖 LLM 核心工程技能。
+> 4 个主阶段 + 1 个架构扩展实验，涵盖 LLM 核心工程技能。
 
 ---
 
@@ -10,6 +10,7 @@
 | 阶段 | 内容 | 技术栈 |
 |------|------|--------|
 | 1 — 原理 | 从零实现 Transformer 语言模型 | PyTorch、TikToken |
+| 1.5 — 扩展 | MoE Transformer 稀疏激活实验 | PyTorch、Top-K Router |
 | 2 — 工具 | Transformers 库三层 API | HuggingFace Transformers |
 | 3 — 生态 | HuggingFace Hub 模型与数据集管理 | huggingface_hub、datasets |
 | 4 — 微调 | Qwen2.5-3B GRPO 强化学习微调 | Unsloth、TRL、PEFT |
@@ -61,12 +62,14 @@ ai-practice/
 │
 ├── notebooks/                ← 可运行的 Jupyter Notebooks
 │   ├── 01_transformer_from_scratch.ipynb   （阶段 1）
+│   ├── 05_moe_transformer.ipynb            （阶段 1.5）
 │   ├── 02_transformers_library.ipynb        （阶段 2）
 │   ├── 03_huggingface_api.ipynb             （阶段 3）
 │   └── 04_qwen25_grpo_finetuning.ipynb      （阶段 4）
 │
 ├── src/                      ← 可复用的 Python 模块
 │   ├── model.py              # 完整 Transformer 实现（教学版）
+│   ├── moe_model.py          # MoE Transformer 实现（4 experts, top_k=2）
 │   ├── inference.py          # 交互式推理脚本
 │   ├── check_hardware.py     # 硬件兼容性检查
 │   └── load_local_dataset.py # 数据集加载工具
@@ -75,12 +78,14 @@ ai-practice/
 │   ├── exp_001_transformer_from_scratch.md
 │   ├── exp_002_huggingface_basics.md
 │   ├── exp_003_transformers_library.md
-│   └── exp_004_qwen25_grpo_finetune.md
+│   ├── exp_004_qwen25_grpo_finetune.md
+│   └── exp_005_moe_transformer.md
 │
 ├── wiki/                     ← 概念知识库
 │   ├── index.md              # 概念索引
 │   └── concepts/             # 核心概念深度解析
 │       ├── transformer_from_scratch.md
+│       ├── mixture_of_experts.md
 │       ├── grpo.md
 │       ├── lora_peft.md
 │       ├── unsloth_framework.md
@@ -99,7 +104,7 @@ ai-practice/
 ## 章节地图
 
 ```
-01_transformer_from_scratch ─┐
+01_transformer_from_scratch ─┬─→ 05_moe_transformer
                               ├─→ 02_transformers_library
                               └─→ 03_huggingface_api ──→ 04_qwen25_grpo_finetuning
 ```
@@ -116,6 +121,7 @@ ai-practice/
 | 环境配置 | [SETUP.md](SETUP.md) | pip 安装命令、镜像配置、常见报错 |
 | 概念索引 | [wiki/index.md](wiki/index.md) | 核心概念快速查阅 |
 | Transformer 教学笔记 | [experiments/exp_001](experiments/exp_001_transformer_from_scratch.md) | 含思考题和参考资料 |
+| MoE Transformer 教学笔记 | [experiments/exp_005](experiments/exp_005_moe_transformer.md) | 稀疏激活、Router、Expert 负载均衡 |
 | GRPO 教学笔记 | [experiments/exp_004](experiments/exp_004_qwen25_grpo_finetune.md) | 含实际训练数值 |
 
 ---
