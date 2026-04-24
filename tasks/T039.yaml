@@ -1,0 +1,18 @@
+apiVersion: everagent.io/v1
+kind: Task
+metadata:
+  id: T039
+  project: biology-learning
+spec:
+  type: concept_report
+  target: "运动时间生物学：整合 Hayes/Ezagouri/Gupta 研究的个体化训练时间窗"
+  value: "整合 P17 Hayes(2013) + P20 Ezagouri(2023) + P21 Gupta(2025); 最佳运动时间的个体化决策框架"
+  priority: P2
+  resources:
+    max_tokens: 45000
+    expected_duration: 2.5h
+  qualityGates:
+    - check: frontmatter_complete
+      required: true
+    - check: evidence_graded
+      required: true

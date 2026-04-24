@@ -1,0 +1,18 @@
+apiVersion: everagent.io/v1
+kind: Task
+metadata:
+  id: T041
+  project: philosophy-learning
+spec:
+  type: text_analysis
+  target: "Russell (1905) On Denoting"
+  value: "摹状词理论; 法国现任国王是秃子难题; 逻辑分析哲学威力"
+  priority: P2
+  resources:
+    max_tokens: 35000
+    expected_duration: 2h
+  qualityGates:
+    - check: frontmatter_complete
+      required: true
+    - check: original_text_quotes
+      required: true

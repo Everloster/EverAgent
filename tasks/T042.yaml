@@ -1,0 +1,18 @@
+apiVersion: everagent.io/v1
+kind: Task
+metadata:
+  id: T042
+  project: philosophy-learning
+spec:
+  type: text_analysis
+  target: "Singer (1972) Famine, Affluence, and Morality"
+  value: "功利主义义务论证; 全球贫困的道德义务; 有效利他主义理论基础"
+  priority: P2
+  resources:
+    max_tokens: 35000
+    expected_duration: 2h
+  qualityGates:
+    - check: frontmatter_complete
+      required: true
+    - check: original_text_quotes
+      required: true

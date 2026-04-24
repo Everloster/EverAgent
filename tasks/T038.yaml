@@ -1,0 +1,18 @@
+apiVersion: everagent.io/v1
+kind: Task
+metadata:
+  id: T038
+  project: biology-learning
+spec:
+  type: paper_analysis
+  target: "Hayes et al. (2013) Circadian Rhythms in Exercise Performance: Implications for Hormonal and Muscular Adaptation"
+  value: "运动表现昼夜节律; 激素与肌肉适应的时间生物学机制"
+  priority: P2
+  resources:
+    max_tokens: 35000
+    expected_duration: 1.5h
+  qualityGates:
+    - check: frontmatter_complete
+      required: true
+    - check: sample_size_reported
+      required: true

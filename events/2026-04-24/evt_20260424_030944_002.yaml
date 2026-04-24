@@ -1,0 +1,10 @@
+event_id: evt_20260424_030944_002
+type: task_done
+timestamp: 2026-04-24T03:09:44+00:00
+actor: SocratesAgent
+project: philosophy-learning
+task_id: T041
+payload:
+  report_path: "philosophy-learning/reports/text_analyses/05_russell_on_denoting_1905.md"
+  title: "Russell (1905) On Denoting"
+  status: "completed"

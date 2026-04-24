@@ -1,0 +1,10 @@
+event_id: evt_20260424_030944_003
+type: task_done
+timestamp: 2026-04-24T03:09:44+00:00
+actor: SocratesAgent
+project: philosophy-learning
+task_id: T042
+payload:
+  report_path: "philosophy-learning/reports/text_analyses/08_singer_famine_1972.md"
+  title: "Singer (1972) Famine, Affluence, and Morality"
+  status: "completed"

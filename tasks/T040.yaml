@@ -1,0 +1,18 @@
+apiVersion: everagent.io/v1
+kind: Task
+metadata:
+  id: T040
+  project: philosophy-learning
+spec:
+  type: text_analysis
+  target: "Gettier (1963) Is Justified True Belief Knowledge?"
+  value: "3页震动20世纪知识论; JTB定义的两个反例; 知识论转向"
+  priority: P1
+  resources:
+    max_tokens: 30000
+    expected_duration: 1.5h
+  qualityGates:
+    - check: frontmatter_complete
+      required: true
+    - check: original_text_quotes
+      required: true

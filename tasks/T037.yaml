@@ -1,0 +1,18 @@
+apiVersion: everagent.io/v1
+kind: Task
+metadata:
+  id: T037
+  project: biology-learning
+spec:
+  type: paper_analysis
+  target: "Roenneberg & Merrow (2022) The circadian system, sleep, and the health/disease balance"
+  value: "J Sleep Research 综述; 昼夜节律系统、睡眠与健康/疾病平衡的整合视角"
+  priority: P1
+  resources:
+    max_tokens: 40000
+    expected_duration: 2h
+  qualityGates:
+    - check: frontmatter_complete
+      required: true
+    - check: sample_size_reported
+      required: true
