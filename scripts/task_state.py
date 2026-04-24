@@ -52,6 +52,10 @@ class TaskEntry:
     def is_cancelled(self) -> bool:
         return self.status == "cancelled"
 
+    @property
+    def is_terminal(self) -> bool:
+        return self.status in {"done", "failed", "cancelled", "abandoned", "expired"}
+
     def to_lines(self) -> list[str]:
         lines = [f"- id: {self.id}"]
         lines.append(f"  project: {self.project}")
@@ -216,6 +220,29 @@ def find_stale_tasks(include_global: bool = False, ttl_hours: int = 72) -> list[
         if reference.astimezone(timezone.utc) < cutoff:
             stale.append(task)
     return stale
+
+
+def find_expired_tasks(include_global: bool = True) -> list[TaskEntry]:
+    now = datetime.now(timezone.utc)
+    expired: list[TaskEntry] = []
+    for task in load_all_tasks(include_global=include_global):
+        if task.is_terminal or not task.expires_at:
+            continue
+        expires_at = parse_iso8601(task.expires_at)
+        if expires_at is None:
+            continue
+        if expires_at.astimezone(timezone.utc) <= now:
+            expired.append(task)
+    return expired
+
+
+def append_task(project: str, task: TaskEntry) -> None:
+    path = state_file_for_project(project)
+    if find_task(task.id) is not None:
+        raise KeyError(f"Task {task.id} already exists")
+    tasks = load_tasks_for_project(project)
+    tasks.append(task)
+    write_task_state_file(path, tasks)
 
 
 def replace_task(project: str, task_id: str, updated_task: TaskEntry) -> None:

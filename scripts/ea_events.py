@@ -29,12 +29,14 @@ from ea_common import EVENTS_DIR, format_iso8601, parse_iso8601
 
 EVENT_TYPES = {
     # Task lifecycle
+    "task_dispatched",
     "task_claimed",
     "task_started",
     "task_done",
     "task_failed",
     "task_help_needed",
     "task_cancelled",
+    "task_expired",
     "task_abandoned",
     "task_reopened",
     # Lock lifecycle
@@ -68,6 +70,7 @@ class Event:
     task_id: Optional[str] = None
     payload: dict[str, Any] = field(default_factory=dict)
     message_id: Optional[str] = None
+    dedupe_key: Optional[str] = None
     aamp: dict[str, Any] = field(default_factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -80,6 +83,7 @@ class Event:
             "task_id": self.task_id,
             "payload": self.payload,
             "message_id": self.message_id,
+            "dedupe_key": self.dedupe_key,
             "aamp": self.aamp,
         }
 
@@ -97,6 +101,8 @@ class Event:
             lines.append(f"task_id: {self.task_id}")
         if self.message_id:
             lines.append(f"message_id: {self.message_id}")
+        if self.dedupe_key:
+            lines.append(f"dedupe_key: {self.dedupe_key}")
         if self.aamp:
             lines.append(f"aamp: {json.dumps(self.aamp, ensure_ascii=False, separators=(',', ':'))}")
         if self.payload:
@@ -138,6 +144,8 @@ def emit_event(
     task_id: Optional[str] = None,
     payload: Optional[dict[str, Any]] = None,
     aamp: Optional[dict[str, Any]] = None,
+    message_id: Optional[str] = None,
+    dedupe_key: Optional[str] = None,
 ) -> Event:
     """Emit a new event and persist it to the events directory.
 
@@ -153,9 +161,14 @@ def emit_event(
     day_dir = EVENTS_DIR / date_str
     day_dir.mkdir(parents=True, exist_ok=True)
 
+    if dedupe_key:
+        existing = _load_dedupe_event(dedupe_key)
+        if existing is not None:
+            return existing
+
     seq = _next_sequence(day_dir)
     event_id = f"evt_{date_str.replace('-', '')}_{time_str}_{seq:03d}"
-    message_id = f"<{event_id}@everagent.local>"
+    message_id = message_id or f"<{event_id}@everagent.local>"
     aamp_envelope = aamp or _build_aamp_envelope(
         event_type=event_type,
         event_id=event_id,
@@ -175,13 +188,50 @@ def emit_event(
         task_id=task_id,
         payload=payload or {},
         message_id=message_id,
+        dedupe_key=dedupe_key,
         aamp=aamp_envelope,
     )
 
     event_path = day_dir / f"{event_id}.yaml"
     event_path.write_text(event.to_yaml() + "\n", encoding="utf-8")
+    if dedupe_key:
+        _write_dedupe_index(dedupe_key, event_path)
 
     return event
+
+
+def _dedupe_index_path() -> Path:
+    return EVENTS_DIR / ".dedupe.json"
+
+
+def _load_dedupe_event(dedupe_key: str) -> Optional[Event]:
+    path = _dedupe_index_path()
+    if not path.exists():
+        return None
+    try:
+        index = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return None
+    event_path_value = index.get(dedupe_key)
+    if not event_path_value:
+        return None
+    event_path = Path(event_path_value)
+    if not event_path.is_absolute():
+        event_path = EVENTS_DIR.parent / event_path
+    return _parse_event_file(event_path)
+
+
+def _write_dedupe_index(dedupe_key: str, event_path: Path) -> None:
+    path = _dedupe_index_path()
+    try:
+        index = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+    except ValueError:
+        index = {}
+    try:
+        index[dedupe_key] = str(event_path.relative_to(EVENTS_DIR.parent))
+    except ValueError:
+        index[dedupe_key] = str(event_path)
+    path.write_text(json.dumps(index, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 
 def _build_aamp_envelope(
@@ -198,12 +248,14 @@ def _build_aamp_envelope(
         return {}
 
     intent_by_event = {
+        "task_dispatched": "task.dispatch",
         "task_claimed": "task.ack",
         "task_started": "task.stream.opened",
         "task_help_needed": "task.help_needed",
         "task_done": "task.result",
         "task_failed": "task.result",
         "task_cancelled": "task.cancel",
+        "task_expired": "task.result",
     }
     intent = intent_by_event.get(event_type)
     if not intent:
@@ -220,9 +272,18 @@ def _build_aamp_envelope(
             "event_type": event_type,
         },
     }
-    if event_type == "task_done":
+    if event_type == "task_dispatched":
+        if payload.get("priority"):
+            envelope["priority"] = payload["priority"]
+        if payload.get("expires_at"):
+            envelope["expires_at"] = payload["expires_at"]
+        if payload.get("context_links"):
+            envelope["context_links"] = payload["context_links"]
+        if payload.get("parent_task_id"):
+            envelope["parent_task_id"] = payload["parent_task_id"]
+    elif event_type == "task_done":
         envelope["status"] = "completed"
-    elif event_type == "task_failed":
+    elif event_type in {"task_failed", "task_expired"}:
         envelope["status"] = "rejected"
     elif event_type == "task_help_needed" and payload.get("suggested_options"):
         envelope["suggested_options"] = payload["suggested_options"]
@@ -347,6 +408,7 @@ def _parse_event_file(path: Path) -> Optional[Event]:
         task_id=data.get("task_id"),
         payload=data.get("payload", {}),
         message_id=data.get("message_id"),
+        dedupe_key=data.get("dedupe_key"),
         aamp=data.get("aamp", {}),
     )
 

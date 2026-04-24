@@ -71,6 +71,39 @@ def command_begin(args: argparse.Namespace) -> int:
     return 0
 
 
+def command_dispatch(args: argparse.Namespace) -> int:
+    command = [
+        "python3",
+        "scripts/task_state_cli.py",
+        "dispatch",
+        "--task-id",
+        args.task_id,
+        "--project",
+        args.project,
+        "--type",
+        args.type,
+        "--target",
+        args.target,
+        "--priority",
+        args.priority,
+        "--required-capability",
+        args.required_capability,
+        "--actor",
+        args.actor,
+    ]
+    if args.value:
+        command.extend(["--value", args.value])
+    if args.parent_task_id:
+        command.extend(["--parent-task-id", args.parent_task_id])
+    if args.expires_at:
+        command.extend(["--expires-at", args.expires_at])
+    if args.context_links:
+        command.extend(["--context-links", *args.context_links])
+    run_step(command)
+    print("[PASS] Dispatch recorded. Commit/push the new open task before assigning it.")
+    return 0
+
+
 def command_start(args: argparse.Namespace) -> int:
     require_task(args.task_id)
     run_step(["python3", "scripts/task_state_cli.py", "start", "--task-id", args.task_id])
@@ -194,6 +227,20 @@ def build_parser() -> argparse.ArgumentParser:
     begin_parser.add_argument("--project", required=True)
     begin_parser.add_argument("--agent", required=True)
     begin_parser.set_defaults(func=command_begin)
+
+    dispatch_parser = subparsers.add_parser("dispatch")
+    dispatch_parser.add_argument("--task-id", required=True)
+    dispatch_parser.add_argument("--project", required=True)
+    dispatch_parser.add_argument("--type", required=True)
+    dispatch_parser.add_argument("--target", required=True)
+    dispatch_parser.add_argument("--value")
+    dispatch_parser.add_argument("--priority", default="P2", choices=["P1", "P2", "P3"])
+    dispatch_parser.add_argument("--required-capability", default="task_executor")
+    dispatch_parser.add_argument("--parent-task-id")
+    dispatch_parser.add_argument("--expires-at")
+    dispatch_parser.add_argument("--context-links", nargs="*")
+    dispatch_parser.add_argument("--actor", default="EverAgent")
+    dispatch_parser.set_defaults(func=command_dispatch)
 
     start_parser = subparsers.add_parser("start")
     start_parser.add_argument("--task-id", required=True)

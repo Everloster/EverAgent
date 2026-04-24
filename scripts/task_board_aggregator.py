@@ -265,6 +265,7 @@ def generate_task_board_view(tasks: list[TaskEntry], stats: dict[str, ProjectSta
     active_tasks = [task for task in tasks if task.status in {"claimed", "in_progress"}]
     help_needed_tasks = [task for task in tasks if task.status == "help_needed"]
     cancelled_tasks = [task for task in tasks if task.status == "cancelled"]
+    expired_tasks = [task for task in tasks if task.status == "expired"]
     stale: list[tuple[TaskEntry, int]] = []
     stale_candidates = active_tasks + help_needed_tasks
     if stale_candidates:
@@ -287,6 +288,7 @@ def generate_task_board_view(tasks: list[TaskEntry], stats: dict[str, ProjectSta
         lines.append("")
     append_task_block(lines, "### 进行中任务", active_tasks)
     append_task_block(lines, "### 需要协助（help_needed）", help_needed_tasks)
+    append_task_block(lines, "### 已过期任务", expired_tasks)
     append_task_block(lines, "### 已取消任务", cancelled_tasks)
 
     done_tasks = sorted(
@@ -296,7 +298,7 @@ def generate_task_board_view(tasks: list[TaskEntry], stats: dict[str, ProjectSta
     )[:10]
     append_task_block(lines, "### 最近完成（自动生成）", done_tasks)
 
-    global_tasks = [task for task in tasks if task.project == GLOBAL_PROJECT and task.status not in {"done", "cancelled"}]
+    global_tasks = [task for task in tasks if task.project == GLOBAL_PROJECT and task.status not in {"done", "cancelled", "expired"}]
     append_task_block(lines, "### Global Tasks", global_tasks)
 
     return "\n".join(lines).rstrip() + "\n"
