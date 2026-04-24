@@ -19,6 +19,9 @@ task_input:
   claimed_by: string       # 必须为当前 Agent 名称（如 NeuronAgent）
   claimed_at: ISO8601      # 当前时间（如 2026-04-05T10:30:00+08:00）
   git_commit_sha: string   # 领取时的 commit SHA，用于幂等校验
+  parent_task_id: string | null  # 可选，父任务 ID，用于嵌套工作流
+  expires_at: ISO8601 | null     # 可选，任务过期时间
+  context_links: string[]        # 可选，执行前应加载的上下文文件或 URI
 ```
 
 ### §1.1 输入校验规则
@@ -52,9 +55,10 @@ task_input:
 ```yaml
 task_output:
   task_id: string
-  status: done | failed
+  status: done | failed | cancelled
   done_at: ISO8601 | null      # status=done 时非空
   failed_reason: string | null  # status=failed 时非空
+  cancelled_at: ISO8601 | null  # status=cancelled 时非空
   files_created: string[]       # 绝对路径列表
   files_modified: string[]      # 绝对路径列表（含更新后的索引文件）
   frontmatter_validated: boolean
@@ -70,9 +74,10 @@ task_output:
 | 字段 | 规则 |
 |------|------|
 | `task_id` | 必须与输入 task_id 一致 |
-| `status` | 必须是 done 或 failed |
+| `status` | 必须是 done、failed 或 cancelled |
 | `done_at` | status=done 时必须是非空 ISO8601 |
 | `failed_reason` | status=failed 时必须是非空字符串 |
+| `cancelled_at` | status=cancelled 时必须是非空 ISO8601 |
 | `files_created` | 可空数组，但不能是 null |
 | `files_modified` | 至少包含 CONTEXT.md（如果存在） |
 | `frontmatter_validated` | 必须为 true（由校验脚本设置） |
@@ -122,6 +127,22 @@ failure_report:
 5. 运行 `python3 scripts/task_exec.py release --task-id=TXXX --project=<project> --agent=<AgentName>`
 6. 不更新 CONTEXT.md（由 EverAgent 后续处理）
 ```
+
+## §3.3 协助与取消协议（AAMP 对齐）
+
+当任务不能安全继续，但不应标记为失败时，使用 `help_needed`：
+
+```bash
+python3 scripts/task_exec.py help --task-id=TXXX --project=<project> --reason="{blocked_reason}"
+```
+
+当用户或调度方撤销任务时，使用 `cancelled`：
+
+```bash
+python3 scripts/task_exec.py cancel --task-id=TXXX --project=<project> --reason="{cancel_reason}"
+```
+
+这两条路径对应 AAMP 1.1 的 `task.help_needed` 与 `task.cancel` 控制面意图。`help_needed` 可后续恢复为 `in_progress`；`cancelled` 是终止状态，若需重新执行应通过 `reopen` 回到 `open`。
 
 ---
 

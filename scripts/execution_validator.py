@@ -302,8 +302,8 @@ def validate_output_schema(task_id: str, project: Optional[str] = None) -> Valid
 
     if project and task.project != project:
         result.add_error("project", f"Project mismatch: expected {task.project}, got {project}")
-    if task.status not in {"done", "failed"}:
-        result.add_error("status", f"Task status is '{task.status}', expected 'done' or 'failed'")
+    if task.status not in {"done", "failed", "cancelled"}:
+        result.add_error("status", f"Task status is '{task.status}', expected 'done', 'failed', or 'cancelled'")
     if task.status == "done":
         if not task.done_at:
             result.add_error("done_at", "status=done but done_at is null")
@@ -311,15 +311,21 @@ def validate_output_schema(task_id: str, project: Optional[str] = None) -> Valid
             result.add_error("done_at", f"done_at is not ISO8601: {task.done_at}")
     if task.status == "failed" and not task.failed_reason:
         result.add_error("failed_reason", "status=failed but failed_reason is null")
+    if task.status == "cancelled":
+        if not task.cancelled_at:
+            result.add_error("cancelled_at", "status=cancelled but cancelled_at is null")
+        elif not ISO8601_RE.match(task.cancelled_at):
+            result.add_error("cancelled_at", f"cancelled_at is not ISO8601: {task.cancelled_at}")
     if task.claimed_by is None:
         result.add_error("claimed_by", "claimed_by is null")
     if task.project not in PROJECTS:
         result.add_error("project", f"Unknown project for task: {task.project}")
         return result
 
-    _validate_lock_for_output(task, result)
+    if task.status != "cancelled":
+        _validate_lock_for_output(task, result)
 
-    if task.project != GLOBAL_PROJECT:
+    if task.project != GLOBAL_PROJECT and task.status != "cancelled":
         _validate_expected_updates(task, PROJECTS[task.project], result)
     return result
 

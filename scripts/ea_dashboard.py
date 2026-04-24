@@ -58,8 +58,10 @@ def get_project_status() -> dict[str, dict[str, any]]:
             "open": sum(1 for t in tasks if t.status == "open"),
             "claimed": sum(1 for t in tasks if t.status == "claimed"),
             "in_progress": sum(1 for t in tasks if t.status == "in_progress"),
+            "help_needed": sum(1 for t in tasks if t.status == "help_needed"),
             "done": sum(1 for t in tasks if t.status == "done"),
             "failed": sum(1 for t in tasks if t.status == "failed"),
+            "cancelled": sum(1 for t in tasks if t.status == "cancelled"),
             "abandoned": sum(1 for t in tasks if t.status == "abandoned"),
         }
     return status
@@ -222,17 +224,19 @@ DASHBOARD_HTML = """<!DOCTYPE html>
         function renderProjects(status) {
             const container = document.getElementById('project-cards');
             container.innerHTML = Object.entries(status).map(([name, s]) => {
-                const health = s.in_progress > 0 ? 'badge-yellow' : s.failed > 0 ? 'badge-red' : 'badge-green';
-                const healthText = s.in_progress > 0 ? 'BUSY' : s.failed > 0 ? 'ISSUE' : 'HEALTHY';
+                const health = s.help_needed > 0 || s.failed > 0 ? 'badge-red' : s.in_progress > 0 ? 'badge-yellow' : 'badge-green';
+                const healthText = s.help_needed > 0 ? 'NEEDS HELP' : s.in_progress > 0 ? 'BUSY' : s.failed > 0 ? 'ISSUE' : 'HEALTHY';
                 return `
                     <div class="card">
                         <h3>${name} <span class="badge ${health}">${healthText}</span></h3>
                         <div class="status-grid">
                             <div class="status-item"><div class="num open">${s.open}</div><div class="label">Open</div></div>
                             <div class="status-item"><div class="num in_progress">${s.in_progress}</div><div class="label">In Progress</div></div>
+                            <div class="status-item"><div class="num failed">${s.help_needed}</div><div class="label">Help Needed</div></div>
                             <div class="status-item"><div class="num done">${s.done}</div><div class="label">Done</div></div>
                             <div class="status-item"><div class="num">${s.claimed}</div><div class="label">Claimed</div></div>
                             <div class="status-item"><div class="num failed">${s.failed}</div><div class="label">Failed</div></div>
+                            <div class="status-item"><div class="num">${s.cancelled}</div><div class="label">Cancelled</div></div>
                             <div class="status-item"><div class="num">${s.abandoned}</div><div class="label">Abandoned</div></div>
                         </div>
                     </div>

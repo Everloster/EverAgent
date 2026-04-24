@@ -33,6 +33,8 @@ EVENT_TYPES = {
     "task_started",
     "task_done",
     "task_failed",
+    "task_help_needed",
+    "task_cancelled",
     "task_abandoned",
     "task_reopened",
     # Lock lifecycle
@@ -65,6 +67,8 @@ class Event:
     project: Optional[str] = None
     task_id: Optional[str] = None
     payload: dict[str, Any] = field(default_factory=dict)
+    message_id: Optional[str] = None
+    aamp: dict[str, Any] = field(default_factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -75,6 +79,8 @@ class Event:
             "project": self.project,
             "task_id": self.task_id,
             "payload": self.payload,
+            "message_id": self.message_id,
+            "aamp": self.aamp,
         }
 
     def to_yaml(self) -> str:
@@ -89,6 +95,10 @@ class Event:
             lines.append(f"project: {self.project}")
         if self.task_id:
             lines.append(f"task_id: {self.task_id}")
+        if self.message_id:
+            lines.append(f"message_id: {self.message_id}")
+        if self.aamp:
+            lines.append(f"aamp: {json.dumps(self.aamp, ensure_ascii=False, separators=(',', ':'))}")
         if self.payload:
             lines.append("payload:")
             for key, value in self.payload.items():
@@ -127,6 +137,7 @@ def emit_event(
     project: Optional[str] = None,
     task_id: Optional[str] = None,
     payload: Optional[dict[str, Any]] = None,
+    aamp: Optional[dict[str, Any]] = None,
 ) -> Event:
     """Emit a new event and persist it to the events directory.
 
@@ -144,6 +155,16 @@ def emit_event(
 
     seq = _next_sequence(day_dir)
     event_id = f"evt_{date_str.replace('-', '')}_{time_str}_{seq:03d}"
+    message_id = f"<{event_id}@everagent.local>"
+    aamp_envelope = aamp or _build_aamp_envelope(
+        event_type=event_type,
+        event_id=event_id,
+        message_id=message_id,
+        actor=actor,
+        project=project,
+        task_id=task_id,
+        payload=payload or {},
+    )
 
     event = Event(
         event_id=event_id,
@@ -153,12 +174,76 @@ def emit_event(
         project=project,
         task_id=task_id,
         payload=payload or {},
+        message_id=message_id,
+        aamp=aamp_envelope,
     )
 
     event_path = day_dir / f"{event_id}.yaml"
     event_path.write_text(event.to_yaml() + "\n", encoding="utf-8")
 
     return event
+
+
+def _build_aamp_envelope(
+    event_type: str,
+    event_id: str,
+    message_id: str,
+    actor: str,
+    project: Optional[str],
+    task_id: Optional[str],
+    payload: dict[str, Any],
+) -> dict[str, Any]:
+    """Build a compact AAMP 1.1 envelope for task lifecycle events."""
+    if not task_id:
+        return {}
+
+    intent_by_event = {
+        "task_claimed": "task.ack",
+        "task_started": "task.stream.opened",
+        "task_help_needed": "task.help_needed",
+        "task_done": "task.result",
+        "task_failed": "task.result",
+        "task_cancelled": "task.cancel",
+    }
+    intent = intent_by_event.get(event_type)
+    if not intent:
+        return {}
+
+    envelope: dict[str, Any] = {
+        "version": "1.1",
+        "intent": intent,
+        "task_id": task_id,
+        "message_id": message_id,
+        "dispatch_context": {
+            "project": project,
+            "actor": actor,
+            "event_type": event_type,
+        },
+    }
+    if event_type == "task_done":
+        envelope["status"] = "completed"
+    elif event_type == "task_failed":
+        envelope["status"] = "rejected"
+    elif event_type == "task_help_needed" and payload.get("suggested_options"):
+        envelope["suggested_options"] = payload["suggested_options"]
+    elif event_type == "task_started":
+        envelope["stream_id"] = f"stream_{task_id}"
+    return envelope
+
+
+def _parse_scalar(value: str) -> Any:
+    if value.startswith('"') and value.endswith('"'):
+        return value[1:-1]
+    if value in ("true", "false"):
+        return value == "true"
+    if value.isdigit() or (value.startswith("-") and value[1:].isdigit()):
+        return int(value)
+    if value.startswith("[") or value.startswith("{"):
+        try:
+            return json.loads(value)
+        except ValueError:
+            return value
+    return value
 
 
 def load_events(
@@ -233,19 +318,7 @@ def _parse_event_file(path: Path) -> Optional[Event]:
             key, value = stripped[2:].split(":", 1)
             key = key.strip()
             value = value.strip()
-            # Try to parse as JSON first, then fall back to string
-            if value.startswith('"') and value.endswith('"'):
-                value = value[1:-1]
-            elif value in ("true", "false"):
-                value = value == "true"
-            elif value.isdigit() or (value.startswith("-") and value[1:].isdigit()):
-                value = int(value)
-            elif value.startswith("[") and value.endswith("]"):
-                try:
-                    value = __import__("json").loads(value)
-                except ValueError:
-                    pass
-            data["payload"][key] = value
+            data["payload"][key] = _parse_scalar(value)
             continue
 
         if ":" not in stripped:
@@ -253,13 +326,13 @@ def _parse_event_file(path: Path) -> Optional[Event]:
 
         key, value = stripped.split(":", 1)
         key = key.strip()
-        value = value.strip().strip('"').strip("'")
+        value = value.strip()
 
         if key == "payload":
             in_payload = True
             continue
 
-        data[key] = value
+        data[key] = _parse_scalar(value.strip("'"))
 
     required = {"event_id", "type", "timestamp", "actor"}
     if not required.issubset(data.keys()):
@@ -273,6 +346,8 @@ def _parse_event_file(path: Path) -> Optional[Event]:
         project=data.get("project"),
         task_id=data.get("task_id"),
         payload=data.get("payload", {}),
+        message_id=data.get("message_id"),
+        aamp=data.get("aamp", {}),
     )
 
 

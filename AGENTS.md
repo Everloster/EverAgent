@@ -78,8 +78,10 @@ python3 scripts/git_identity.py validate
 
 ```
 open → claimed → in_progress → done
-                             ↘ failed     (须填 failed_reason)
-                             ↘ abandoned  (claimed/in_progress 超过 72h 未更新 → 标记为 abandoned；可后续 reopen)
+                             ↘ failed       (须填 failed_reason)
+                             ↘ help_needed  (需要用户补充信息、授权或策略澄清；可后续 start/reopen)
+                             ↘ cancelled    (用户或调度方撤销任务)
+                             ↘ abandoned    (claimed/in_progress/help_needed 超过 72h 未更新 → 标记为 abandoned；可后续 reopen)
 ```
 
 ### 任务 Schema
@@ -92,12 +94,17 @@ open → claimed → in_progress → done
   value: string
   priority: P1 | P2 | P3
   required_capability: task_executor | full_admin
-  status: open | claimed | in_progress | done | failed | abandoned
+  status: open | claimed | in_progress | help_needed | done | failed | cancelled | abandoned
   claimed_by: string | null
   claimed_at: ISO8601 | null
   started_at: ISO8601 | null
   done_at: ISO8601 | null
   failed_reason: string | null
+  parent_task_id: string | null
+  expires_at: ISO8601 | null
+  context_links: list[string]
+  help_reason: string | null
+  cancelled_at: ISO8601 | null
 ```
 
 ### EverAgent 任务板维护规则
@@ -139,7 +146,7 @@ EverAgent 接收用户指令后的决策流：
 5. 优先运行 `python3 scripts/task_exec.py begin --task-id=TXXX --project={project} --agent={AgentName}`（领取校验 + 项目锁 + claim）
 6. commit push 后运行 `python3 scripts/task_exec.py start --task-id=TXXX`（状态迁移为 in_progress）
 7. 执行完成后 Subagent 通过 commit message 广播状态
-8. 成功则运行 `python3 scripts/task_exec.py finish --task-id=TXXX --project={project}`，失败则运行 `python3 scripts/task_exec.py fail --task-id=TXXX --project={project} --reason="{reason}"`
+8. 成功则运行 `python3 scripts/task_exec.py finish --task-id=TXXX --project={project}`；失败则运行 `python3 scripts/task_exec.py fail --task-id=TXXX --project={project} --reason="{reason}"`；需要用户补充信息时运行 `python3 scripts/task_exec.py help --task-id=TXXX --project={project} --reason="{reason}"`；用户撤销时运行 `python3 scripts/task_exec.py cancel --task-id=TXXX --project={project} --reason="{reason}"`
 9. push 完成后运行 `python3 scripts/task_exec.py release --task-id=TXXX --project={project} --agent={AgentName}`（释放锁）
 10. EverAgent 重新生成 Task Board 视图
 ```

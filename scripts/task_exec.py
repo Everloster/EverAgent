@@ -121,6 +121,44 @@ def command_fail(args: argparse.Namespace) -> int:
     return 0
 
 
+def command_help(args: argparse.Namespace) -> int:
+    task = require_task(args.task_id)
+    project = args.project or task.project
+    if project != task.project:
+        raise ValueError(f"Task {task.id} belongs to {task.project}, not {project}")
+
+    command = [
+        "python3",
+        "scripts/task_state_cli.py",
+        "help",
+        "--task-id",
+        args.task_id,
+        "--reason",
+        args.reason,
+    ]
+    if args.suggested_options:
+        command.extend(["--suggested-options", *args.suggested_options])
+    run_step(command)
+    print("[PASS] Help-needed status recorded. Ask the user for clarification before continuing.")
+    return 0
+
+
+def command_cancel(args: argparse.Namespace) -> int:
+    task = require_task(args.task_id)
+    project = args.project or task.project
+    if project != task.project:
+        raise ValueError(f"Task {task.id} belongs to {task.project}, not {project}")
+
+    command = ["python3", "scripts/task_state_cli.py", "cancel", "--task-id", args.task_id]
+    if args.reason:
+        command.extend(["--reason", args.reason])
+    if args.actor:
+        command.extend(["--actor", args.actor])
+    run_step(command)
+    print("[PASS] Cancellation recorded. Commit/push the cancelled state, then release the lock if one exists.")
+    return 0
+
+
 def command_release(args: argparse.Namespace) -> int:
     task = require_task(args.task_id)
     project = args.project or task.project
@@ -171,6 +209,20 @@ def build_parser() -> argparse.ArgumentParser:
     fail_parser.add_argument("--project")
     fail_parser.add_argument("--reason", required=True)
     fail_parser.set_defaults(func=command_fail)
+
+    help_parser = subparsers.add_parser("help")
+    help_parser.add_argument("--task-id", required=True)
+    help_parser.add_argument("--project")
+    help_parser.add_argument("--reason", required=True)
+    help_parser.add_argument("--suggested-options", nargs="*")
+    help_parser.set_defaults(func=command_help)
+
+    cancel_parser = subparsers.add_parser("cancel")
+    cancel_parser.add_argument("--task-id", required=True)
+    cancel_parser.add_argument("--project")
+    cancel_parser.add_argument("--reason")
+    cancel_parser.add_argument("--actor")
+    cancel_parser.set_defaults(func=command_cancel)
 
     release_parser = subparsers.add_parser("release")
     release_parser.add_argument("--task-id", required=True)
