@@ -32,6 +32,65 @@
 
 ## 任务队列
 
+### 开放任务池（P1）
+
+```yaml
+- id: T043
+  project: biology-learning
+  type: maintenance
+  target: "修正 CONTEXT 防幻觉边界与导航状态"
+  value: "biology-learning 已新增 P02/P03/P04/P17/P26 等报告，但 CONTEXT 边界仍称除 P01/P08/P09/P25 外其余未独立精读；需要修正边界、下一步推荐与导航描述，保持与已有报告一致"
+  priority: P1
+  required_capability: task_executor
+  status: open
+  claimed_by: null
+  claimed_at: null
+  context_links:
+    - biology-learning/AGENTS.md
+    - biology-learning/CONTEXT.md
+    - biology-learning/reports/paper_analyses
+    - biology-learning/reports/concept_reports
+
+```
+
+### 开放任务池（P2）
+
+```yaml
+- id: T045
+  project: ai-practice
+  type: maintenance
+  target: "同步 exp_005 后的 ai-practice 上下文与 wiki 导航"
+  value: "ai-practice 已有 exp_005 MoE Transformer 教学笔记；检查 README/CONTEXT/wiki/index/log 是否一致，补齐导航和边界说明，不新增实验"
+  priority: P2
+  required_capability: task_executor
+  status: open
+  claimed_by: null
+  claimed_at: null
+  context_links:
+    - ai-practice/AGENTS.md
+    - ai-practice/CONTEXT.md
+    - ai-practice/README.md
+    - ai-practice/wiki/index.md
+    - ai-practice/experiments/exp_005_moe_transformer.md
+
+- id: T044
+  project: philosophy-learning
+  type: maintenance
+  target: "清理 CONTEXT 防幻觉边界重复条目并同步最新覆盖"
+  value: "philosophy-learning CONTEXT 的防幻觉边界存在重复条目，且最新 Gettier/Russell/Singer 等完成情况需要让边界描述更一致；只做元信息维护，不新增报告"
+  priority: P2
+  required_capability: task_executor
+  status: open
+  claimed_by: null
+  claimed_at: null
+  context_links:
+    - philosophy-learning/AGENTS.md
+    - philosophy-learning/CONTEXT.md
+    - philosophy-learning/reports/text_analyses
+    - philosophy-learning/wiki/index.md
+
+```
+
 ### 最近完成（自动生成）
 
 ```yaml

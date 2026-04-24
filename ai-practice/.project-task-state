@@ -1,2 +1,16 @@
-# Versioned task state for this project.
-# Add tasks here and regenerate docs/LEARNING_PROJECTS_TASK_BOARD.md via task_board_aggregator.py.
+- id: T045
+  project: ai-practice
+  type: maintenance
+  target: "同步 exp_005 后的 ai-practice 上下文与 wiki 导航"
+  value: "ai-practice 已有 exp_005 MoE Transformer 教学笔记；检查 README/CONTEXT/wiki/index/log 是否一致，补齐导航和边界说明，不新增实验"
+  priority: P2
+  required_capability: task_executor
+  status: open
+  claimed_by: null
+  claimed_at: null
+  context_links:
+    - ai-practice/AGENTS.md
+    - ai-practice/CONTEXT.md
+    - ai-practice/README.md
+    - ai-practice/wiki/index.md
+    - ai-practice/experiments/exp_005_moe_transformer.md
