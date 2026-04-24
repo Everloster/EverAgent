@@ -22,11 +22,13 @@ from task_state import (
 
 VALID_TRANSITIONS = {
     "claim": {"open"},
-    "start": {"claimed"},
-    "done": {"claimed", "in_progress"},
-    "fail": {"claimed", "in_progress"},
-    "abandon": {"claimed", "in_progress"},
-    "reopen": {"failed", "abandoned"},
+    "start": {"claimed", "help_needed"},
+    "done": {"claimed", "in_progress", "help_needed"},
+    "fail": {"claimed", "in_progress", "help_needed"},
+    "help": {"claimed", "in_progress"},
+    "cancel": {"open", "claimed", "in_progress", "help_needed"},
+    "abandon": {"claimed", "in_progress", "help_needed"},
+    "reopen": {"failed", "abandoned", "cancelled", "help_needed"},
 }
 
 
@@ -84,7 +86,7 @@ def command_claim(args: argparse.Namespace) -> int:
 def command_start(args: argparse.Namespace) -> int:
     task = require_task(args.task_id)
     ensure_transition(task, "start")
-    updated = update_task(task, status="in_progress", started_at=now_iso())
+    updated = update_task(task, status="in_progress", started_at=task.started_at or now_iso(), help_reason=None)
     replace_task(task.project, task.id, updated)
     emit_event(
         event_type="task_started",
@@ -126,6 +128,43 @@ def command_fail(args: argparse.Namespace) -> int:
         payload={"target": task.target, "reason": args.reason},
     )
     print(f"[PASS] Marked {task.id} failed")
+    return 0
+
+
+def command_help(args: argparse.Namespace) -> int:
+    task = require_task(args.task_id)
+    ensure_transition(task, "help")
+    updated = update_task(task, status="help_needed", help_reason=args.reason)
+    replace_task(task.project, task.id, updated)
+    emit_event(
+        event_type="task_help_needed",
+        actor=task.claimed_by or "unknown",
+        project=task.project,
+        task_id=task.id,
+        payload={"target": task.target, "reason": args.reason, "suggested_options": args.suggested_options or []},
+    )
+    print(f"[PASS] Marked {task.id} help_needed")
+    return 0
+
+
+def command_cancel(args: argparse.Namespace) -> int:
+    task = require_task(args.task_id)
+    ensure_transition(task, "cancel")
+    updated = update_task(
+        task,
+        status="cancelled",
+        cancelled_at=now_iso(),
+        failed_reason=args.reason or "cancelled",
+    )
+    replace_task(task.project, task.id, updated)
+    emit_event(
+        event_type="task_cancelled",
+        actor=args.actor or task.claimed_by or "system",
+        project=task.project,
+        task_id=task.id,
+        payload={"target": task.target, "reason": args.reason or "cancelled"},
+    )
+    print(f"[PASS] Cancelled {task.id}")
     return 0
 
 
@@ -199,6 +238,18 @@ def build_parser() -> argparse.ArgumentParser:
     fail_parser.add_argument("--task-id", required=True)
     fail_parser.add_argument("--reason", required=True)
     fail_parser.set_defaults(func=command_fail)
+
+    help_parser = subparsers.add_parser("help")
+    help_parser.add_argument("--task-id", required=True)
+    help_parser.add_argument("--reason", required=True)
+    help_parser.add_argument("--suggested-options", nargs="*", help="Optional suggested next actions")
+    help_parser.set_defaults(func=command_help)
+
+    cancel_parser = subparsers.add_parser("cancel")
+    cancel_parser.add_argument("--task-id", required=True)
+    cancel_parser.add_argument("--reason")
+    cancel_parser.add_argument("--actor")
+    cancel_parser.set_defaults(func=command_cancel)
 
     abandon_parser = subparsers.add_parser("abandon")
     abandon_parser.add_argument("--task-id", required=True)

@@ -3,7 +3,7 @@
 > 本文件为自动生成视图，由 `scripts/task_board_aggregator.py` 维护
 > **请勿直接编辑**，编辑将覆盖
 > 任务权威源：各项目的 `.project-task-state`，以及根目录的 `/.project-task-state`（global 任务）
-> 更新日期：**2026-04-22**
+> 更新日期：**2026-04-24**
 
 ---
 
@@ -13,7 +13,7 @@
 2. 领取前先运行 `python3 scripts/execution_validator.py --mode=input --task-id=TXXX --project=<project>`。
 3. 输入校验通过后立即获取项目锁：`python3 scripts/project_lock.py acquire --project=<project> --task-id=TXXX --agent=<AgentName>`。
 4. 完成任务后先运行输出校验，再提交、推送，最后释放项目锁。
-5. `claimed` / `in_progress` 超过 72h 的任务会显示在“超时任务”区块，建议改为 `abandoned` 或人工 `reopen`。
+5. `claimed` / `in_progress` / `help_needed` 超过 72h 的任务会显示在“超时任务”区块，建议改为 `abandoned` 或人工 `reopen`。
 
 ---
 
@@ -21,90 +21,97 @@
 
 | 项目 | 当前状态 | 论文/文本精读 | 知识/概念报告 | 知识报告比 |
 |------|----------|:---:|:---:|:---:|
-| `ai-learning` | 🟢 | 37 | 19 | 34% |
+| `ai-learning` | 🟢 | 37 | 28 | 43% |
 | `ai-practice` | 🔴 | 0 | 0 | 0% |
-| `biology-learning` | 🟡 | 5 | 1 | 17% |
-| `cs-learning` | 🟢 | 22 | 4 | 15% |
-| `philosophy-learning` | 🟡 | 10 | 2 | 17% |
-| `psychology-learning` | 🟡 | 12 | 2 | 14% |
+| `biology-learning` | 🟡 | 9 | 3 | 25% |
+| `cs-learning` | 🟢 | 24 | 5 | 17% |
+| `philosophy-learning` | 🟡 | 12 | 3 | 20% |
+| `psychology-learning` | 🟡 | 12 | 3 | 20% |
 
 ---
 
 ## 任务队列
 
-### 开放任务池（P1）
+### 最近完成（自动生成）
 
 ```yaml
-- id: T020
-  project: ai-learning
-  type: knowledge_report
-  target: "Agent Harness 三大设计流派解析：everything-claude-code x deer-flow x Archon"
-  value: "GitHub 月榜实证: affaan-m/everything-claude-code (81757月增星,157K总stars) + bytedance/deer-flow (31460月增星,61K stars) + coleam00/Archon (4263周增星,'first open-source harness builder'); performance harness vs long-horizon SuperAgent harness vs deterministic/repeatable harness 三种设计哲学技术对比"
+- id: T037
+  project: biology-learning
+  type: paper_analysis
+  target: "Roenneberg & Merrow (2022) The circadian system, sleep, and the health/disease balance"
+  value: "J Sleep Research 综述; 昼夜节律系统、睡眠与健康/疾病平衡的整合视角"
   priority: P1
   required_capability: task_executor
-  status: open
-  claimed_by: null
-  claimed_at: null
+  status: done
+  claimed_by: BioAgent
+  claimed_at: 2026-04-24T00:00:00+08:00
+  started_at: 2026-04-24T00:00:00+08:00
+  done_at: 2026-04-24T00:00:00+08:00
 
-- id: T021
-  project: ai-learning
-  type: knowledge_report
-  target: "Agent Skills 生态：从 Karpathy 的 CLAUDE.md 到可复用技能树"
-  value: "GitHub 日榜#1实证: forrestchang/andrej-karpathy-skills (9646今日+30919本周+45K总stars); 补充: addyosmani/agent-skills (6693周增,'Production-grade engineering skills') + mattpocock/skills (14248月增) + obra/superpowers (70176月增); Karpathy LLM编程哲学凝结成 CLAUDE.md 的机制; Skills 作为 Harness 可复用组件的架构地位"
-  priority: P1
-  required_capability: task_executor
-  status: open
-  claimed_by: null
-  claimed_at: null
-
-- id: T022
-  project: ai-learning
-  type: knowledge_report
-  target: "Agent Memory 系统深度解析：claude-mem 的设计与上下文工程实践"
-  value: "GitHub 双榜实证: thedotmack/claude-mem (2305今日+10779周增,58K总stars); 会话记忆自动捕获→AI压缩→相关性注入三步机制; Memory 在 Harness 架构中的位置; 与 Context Engineering 的关系; mvanhorn/last30days-skill (18023月增) 作为对比案例"
-  priority: P1
-  required_capability: task_executor
-  status: open
-  claimed_by: null
-  claimed_at: null
-
-- id: T023
-  project: ai-learning
-  type: knowledge_report
-  target: "自进化 Agent 架构：hermes-agent x GenericAgent 的技能树机制"
-  value: "GitHub 月/周双榜#1实证: NousResearch/hermes-agent (53110周增+81412月增,91K总stars,'The agent that grows with you'); 对照: lsdefine/GenericAgent ('Self-evolving agent: grows skill tree from 3.3K-line seed'); Self-improvement 技术实现路径; 自进化的可信度与边界分析"
-  priority: P1
-  required_capability: task_executor
-  status: open
-  claimed_by: null
-  claimed_at: null
-
-- id: T024
-  project: ai-learning
-  type: knowledge_report
-  target: "Managed Agents Platform：multica 的 Agent-as-Teammate 范式解析"
-  value: "GitHub 周榜实证: multica-ai/multica (10864周增,'Turn coding agents into real teammates — assign tasks, track progress, compound skills'); Agent 团队管理产品化路径; 与 LangGraph/CrewAI/AutoGen 的定位差异; Compound Skills 机制"
-  priority: P1
-  required_capability: task_executor
-  status: open
-  claimed_by: null
-  claimed_at: null
-
-```
-
-### 开放任务池（P2）
-
-```yaml
-- id: T025
-  project: ai-learning
-  type: knowledge_report
-  target: "垂直 AI Agent 爆发：金融领域三大架构解析（TradingAgents x Kronos x ai-hedge-fund）"
-  value: "GitHub 三榜实证: TauricResearch/TradingAgents (18792月增,多Agent金融交易) + shiyu-coder/Kronos (6486周+7042月,'Foundation Model for Financial Markets') + virattt/ai-hedge-fund (1058日+4314周,55K stars); 垂直域 Agent 技术架构 vs 通用 Agent 差异; 金融时序数据与 LLM 融合的技术路径"
+- id: T038
+  project: biology-learning
+  type: paper_analysis
+  target: "Hayes et al. (2013) Circadian Rhythms in Exercise Performance: Implications for Hormonal and Muscular Adaptation"
+  value: "运动表现昼夜节律; 激素与肌肉适应的时间生物学机制"
   priority: P2
   required_capability: task_executor
-  status: open
-  claimed_by: null
-  claimed_at: null
+  status: done
+  claimed_by: BioAgent
+  claimed_at: 2026-04-24T00:00:00+08:00
+  started_at: 2026-04-24T00:00:00+08:00
+  done_at: 2026-04-24T00:00:00+08:00
+
+- id: T039
+  project: biology-learning
+  type: concept_report
+  target: "运动时间生物学：整合 Hayes/Ezagouri/Gupta 研究的个体化训练时间窗"
+  value: "整合 P17 Hayes(2013) + P20 Ezagouri(2023) + P21 Gupta(2025); 最佳运动时间的个体化决策框架"
+  priority: P2
+  required_capability: task_executor
+  status: done
+  claimed_by: BioAgent
+  claimed_at: 2026-04-24T00:00:00+08:00
+  started_at: 2026-04-24T00:00:00+08:00
+  done_at: 2026-04-24T00:00:00+08:00
+
+- id: T040
+  project: philosophy-learning
+  type: text_analysis
+  target: "Gettier (1963) Is Justified True Belief Knowledge?"
+  value: "3页震动20世纪知识论; JTB定义的两个反例; 知识论转向"
+  priority: P1
+  required_capability: task_executor
+  status: done
+  claimed_by: SocratesAgent
+  claimed_at: 2026-04-24T00:00:00+08:00
+  started_at: 2026-04-24T00:00:00+08:00
+  done_at: 2026-04-24T00:00:00+08:00
+
+- id: T041
+  project: philosophy-learning
+  type: text_analysis
+  target: "Russell (1905) On Denoting"
+  value: "摹状词理论; 法国现任国王是秃子难题; 逻辑分析哲学威力"
+  priority: P2
+  required_capability: task_executor
+  status: done
+  claimed_by: SocratesAgent
+  claimed_at: 2026-04-24T00:00:00+08:00
+  started_at: 2026-04-24T00:00:00+08:00
+  done_at: 2026-04-24T00:00:00+08:00
+
+- id: T042
+  project: philosophy-learning
+  type: text_analysis
+  target: "Singer (1972) Famine, Affluence, and Morality"
+  value: "功利主义义务论证; 全球贫困的道德义务; 有效利他主义理论基础"
+  priority: P2
+  required_capability: task_executor
+  status: done
+  claimed_by: SocratesAgent
+  claimed_at: 2026-04-24T00:00:00+08:00
+  started_at: 2026-04-24T00:00:00+08:00
+  done_at: 2026-04-24T00:00:00+08:00
 
 - id: T026
   project: ai-learning
@@ -113,171 +120,50 @@
   value: "核心文献: arxiv 2603.05344 (Building AI Coding Agents for the Terminal); GitHub 实证: obra/superpowers (2055今日+70176月增,'agentic skills framework'); Grok Code Fast 靠 edit format 从 6.7%->68.3%; Harness 决定性证据; 与 ToA 论技术互证; 与 EverAgent 自身架构对照"
   priority: P2
   required_capability: task_executor
-  status: open
-  claimed_by: null
-  claimed_at: null
+  status: done
+  claimed_by: NeuronAgent
+  claimed_at: 2026-04-23T10:00:00+08:00
+  started_at: 2026-04-23T11:30:00+08:00
+  done_at: 2026-04-23T12:00:00+08:00
 
-```
-
-### 开放任务池（P3）
-
-```yaml
-- id: T011
-  project: philosophy-learning
-  type: knowledge_report
-  target: "扩展知识跨时代比较至自由意志专题"
-  value: "现有比较聚焦知识论, 自由意志是另一高张力主线"
-  priority: P3
-  required_capability: task_executor
-  status: open
-  claimed_by: null
-  claimed_at: null
-
-- id: T010
-  project: psychology-learning
-  type: maintenance
-  target: "更新心理学关键人物图谱"
-  value: "加入 Bandura/Seligman/Harlow 等新精读作者; 图谱严重落后内容"
-  priority: P3
-  required_capability: task_executor
-  status: open
-  claimed_by: null
-  claimed_at: null
-
-```
-
-### 最近完成（自动生成）
-
-```yaml
-- id: T016
+- id: T025
   project: ai-learning
   type: knowledge_report
-  target: "Megatron-LM 大规模语言模型训练系统深度解析"
-  value: "工程类主线剩余缺口; 张量并行+流水线并行+数据并行 3D并行体系; CONTEXT.md 下一步推荐"
+  target: "垂直 AI Agent 爆发：金融领域三大架构解析（TradingAgents x Kronos x ai-hedge-fund）"
+  value: "GitHub 三榜实证: TauricResearch/TradingAgents (18792月增,多Agent金融交易) + shiyu-coder/Kronos (6486周+7042月,'Foundation Model for Financial Markets') + virattt/ai-hedge-fund (1058日+4314周,55K stars); 垂直域 Agent 技术架构 vs 通用 Agent 差异; 金融时序数据与 LLM 融合的技术路径"
   priority: P2
   required_capability: task_executor
   status: done
   claimed_by: NeuronAgent
-  claimed_at: 2026-04-16T16:22:12+08:00
-  started_at: 2026-04-16T16:22:15+08:00
-  done_at: 2026-04-16T16:30:34+08:00
+  claimed_at: 2026-04-23T10:00:00+08:00
+  started_at: 2026-04-23T10:05:00+08:00
+  done_at: 2026-04-23T11:30:00+08:00
 
-- id: T015
-  project: cs-learning
-  type: paper_analysis
-  target: "Dijkstra Go To Statement Considered Harmful (1968)"
-  value: "编程语言理论入口; 结构化编程革命宣言; CONTEXT.md 下一步推荐"
-  priority: P2
-  required_capability: task_executor
-  status: done
-  claimed_by: ByteAgent
-  claimed_at: 2026-04-16T16:22:12+08:00
-  started_at: 2026-04-16T16:22:15+08:00
-  done_at: 2026-04-16T16:25:41+08:00
-
-- id: T013
-  project: ai-learning
-  type: paper_analysis
-  target: "EVA-02 (2023)"
-  value: "工程类论文主线缺口；大规模视觉模型与训练并行框架"
-  priority: P1
-  required_capability: task_executor
-  status: done
-  claimed_by: claude-sonnet-4-6
-  claimed_at: 2026-04-16T10:00:00+08:00
-  started_at: 2026-04-16T10:05:00+08:00
-  done_at: 2026-04-16T11:30:00+08:00
-
-- id: T014
-  project: cs-learning
-  type: paper_analysis
-  target: "BGP (RFC 4271, 2006)"
-  value: "网络方向深化（BGP是互联网路由基础）"
-  priority: P2
-  required_capability: task_executor
-  status: done
-  claimed_by: claude-sonnet-4-6
-  claimed_at: 2026-04-16T10:00:00+08:00
-  started_at: 2026-04-16T10:05:00+08:00
-  done_at: 2026-04-16T11:30:00+08:00
-
-- id: T006
+- id: T024
   project: ai-learning
   type: knowledge_report
-  target: "MoE (混合专家) 深度解析"
-  value: "GPT-4/Mixtral 架构基础; 已有精读(#21)可支撑深度报告"
-  priority: P2
+  target: "Managed Agents Platform：multica 的 Agent-as-Teammate 范式解析"
+  value: "GitHub 周榜实证: multica-ai/multica (10864周增,'Turn coding agents into real teammates — assign tasks, track progress, compound skills'); Agent 团队管理产品化路径; 与 LangGraph/CrewAI/AutoGen 的定位差异; Compound Skills 机制"
+  priority: P1
   required_capability: task_executor
   status: done
-  claimed_by: claude-sonnet-4-6
-  claimed_at: 2026-04-06T00:00:00+08:00
-  started_at: 2026-04-06T00:00:00+08:00
-  done_at: 2026-04-06T00:00:00+08:00
+  claimed_by: NeuronAgent
+  claimed_at: 2026-04-23T10:00:00+08:00
+  started_at: 2026-04-23T10:35:00+08:00
+  done_at: 2026-04-23T10:55:00+08:00
 
-- id: T009
-  project: biology-learning
-  type: paper_analysis
-  target: "Walker et al. (2017) Why We Sleep 核心论据综述"
-  value: "睡眠科学方向高影响力节点"
-  priority: P2
-  required_capability: task_executor
-  status: done
-  claimed_by: claude-sonnet-4-6
-  claimed_at: 2026-04-06T00:00:00+08:00
-  started_at: 2026-04-06T00:00:00+08:00
-  done_at: 2026-04-06T00:00:00+08:00
-
-- id: T007
-  project: philosophy-learning
-  type: text_analysis
-  target: "罗尔斯《正义论》第一章"
-  value: "当代政治哲学主线入口"
-  priority: P2
-  required_capability: task_executor
-  status: done
-  claimed_by: claude-sonnet-4-6
-  claimed_at: 2026-04-06T00:00:00+08:00
-  started_at: 2026-04-06T00:00:00+08:00
-  done_at: 2026-04-06T00:00:00+08:00
-
-- id: T001
+- id: T023
   project: ai-learning
-  type: paper_analysis
-  target: "VideoMAE (2022) 或 EVA-02 (2023)"
-  value: "视觉自监督序列: MAE -> VideoMAE; 与 DINOv2/MAE 形成闭环"
+  type: knowledge_report
+  target: "自进化 Agent 架构：hermes-agent x GenericAgent 的技能树机制"
+  value: "GitHub 月/周双榜#1实证: NousResearch/hermes-agent (53110周增+81412月增,91K总stars,'The agent that grows with you'); 对照: lsdefine/GenericAgent ('Self-evolving agent: grows skill tree from 3.3K-line seed'); Self-improvement 技术实现路径; 自进化的可信度与边界分析"
   priority: P1
   required_capability: task_executor
   status: done
-  claimed_by: MiniMax-M2.7
-  claimed_at: 2026-04-04T10:00:00+08:00
-  started_at: 2026-04-04T10:30:00+08:00
-  done_at: 2026-04-05T15:47:00+08:00
-
-- id: T002
-  project: ai-learning
-  type: paper_analysis
-  target: "MegaScale (2024)"
-  value: "工程类论文主线缺口; 大规模训练系统实践"
-  priority: P1
-  required_capability: task_executor
-  status: done
-  claimed_by: MiniMax-M2.7
-  claimed_at: 2026-04-04T10:00:00+08:00
-  started_at: 2026-04-04T10:30:00+08:00
-  done_at: 2026-04-05T15:47:00+08:00
-
-- id: T003
-  project: cs-learning
-  type: paper_analysis
-  target: "DNS (1987, RFC 1034/1035)"
-  value: "网络方向第一篇; 与 TCP/IP 自然衔接"
-  priority: P1
-  required_capability: task_executor
-  status: done
-  claimed_by: MiniMax-M2.7
-  claimed_at: 2026-04-05T10:00:00+08:00
-  started_at: 2026-04-05T10:30:00+08:00
-  done_at: 2026-04-05T15:47:00+08:00
+  claimed_by: NeuronAgent
+  claimed_at: 2026-04-23T10:00:00+08:00
+  started_at: 2026-04-23T10:05:00+08:00
+  done_at: 2026-04-23T10:30:00+08:00
 
 ```
 

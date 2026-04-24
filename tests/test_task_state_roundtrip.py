@@ -23,6 +23,13 @@ class TaskStateRoundTripTests(unittest.TestCase):
             "  status: open\n"
             "  claimed_by: null\n"
             "  claimed_at: null\n"
+            "  parent_task_id: T998\n"
+            "  expires_at: 2026-04-27T10:00:00+08:00\n"
+            "  context_links:\n"
+            "    - ai-learning/AGENTS.md\n"
+            "    - docs/EXECUTION_SCHEMA.md\n"
+            "  help_reason: \"Need approval\"\n"
+            "  cancelled_at: 2026-04-28T10:00:00+08:00\n"
         )
 
         with tempfile.TemporaryDirectory() as tmp:
@@ -32,13 +39,16 @@ class TaskStateRoundTripTests(unittest.TestCase):
             self.assertEqual(len(tasks), 1)
             self.assertEqual(tasks[0].id, "T999")
             self.assertEqual(tasks[0].status, "open")
+            self.assertEqual(tasks[0].parent_task_id, "T998")
+            self.assertEqual(tasks[0].context_links, ("ai-learning/AGENTS.md", "docs/EXECUTION_SCHEMA.md"))
+            self.assertEqual(tasks[0].help_reason, "Need approval")
 
             # Write it back and ensure it's still parseable.
             task_state.write_task_state_file(path, tasks)
             tasks2 = task_state.parse_task_state_file(path, default_project="ai-learning")
             self.assertEqual(tasks2[0].id, "T999")
+            self.assertEqual(tasks2[0].context_links, ("ai-learning/AGENTS.md", "docs/EXECUTION_SCHEMA.md"))
 
 
 if __name__ == "__main__":
     unittest.main()
-

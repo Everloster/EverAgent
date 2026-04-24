@@ -106,6 +106,12 @@ def count_trending_reports(project_path: Path) -> str:
     return f"{repo_reports} 篇 Repo 报告 + {summary_reports} 篇汇总报告"
 
 
+def count_practice_experiments(project_path: Path) -> str:
+    experiments_dir = project_path / "experiments"
+    experiment_count = len(list(experiments_dir.glob("*.md"))) if experiments_dir.exists() else 0
+    return f"{experiment_count} 篇教学笔记"
+
+
 def load_catalog_entries() -> list[CatalogEntry]:
     return [
         CatalogEntry(
@@ -121,6 +127,8 @@ def load_catalog_entries() -> list[CatalogEntry]:
 def format_report_summary(project: str, stats: dict[str, ProjectStats]) -> str:
     if project == "github-trending-analyzer":
         return count_trending_reports(ROOT / project)
+    if project == "ai-practice":
+        return count_practice_experiments(ROOT / project)
     project_stats = stats.get(project, ProjectStats())
     return f"{project_stats.paper_analyses} 篇精读/文本 + {project_stats.knowledge_reports} 篇知识/概念报告"
 
@@ -181,6 +189,18 @@ def format_task_yaml(task: TaskEntry) -> list[str]:
         lines.append(f"  done_at: {task.done_at}")
     if task.failed_reason is not None:
         lines.append(f'  failed_reason: "{task.failed_reason}"')
+    if task.parent_task_id is not None:
+        lines.append(f"  parent_task_id: {task.parent_task_id}")
+    if task.expires_at is not None:
+        lines.append(f"  expires_at: {task.expires_at}")
+    if task.context_links:
+        lines.append("  context_links:")
+        for link in task.context_links:
+            lines.append(f"    - {link}")
+    if task.help_reason is not None:
+        lines.append(f'  help_reason: "{task.help_reason}"')
+    if task.cancelled_at is not None:
+        lines.append(f"  cancelled_at: {task.cancelled_at}")
     return lines
 
 
@@ -213,7 +233,7 @@ def generate_task_board_view(tasks: list[TaskEntry], stats: dict[str, ProjectSta
         "2. 领取前先运行 `python3 scripts/execution_validator.py --mode=input --task-id=TXXX --project=<project>`。",
         "3. 输入校验通过后立即获取项目锁：`python3 scripts/project_lock.py acquire --project=<project> --task-id=TXXX --agent=<AgentName>`。",
         "4. 完成任务后先运行输出校验，再提交、推送，最后释放项目锁。",
-        f"5. `claimed` / `in_progress` 超过 {STALE_HOURS}h 的任务会显示在“超时任务”区块，建议改为 `abandoned` 或人工 `reopen`。",
+        f"5. `claimed` / `in_progress` / `help_needed` 超过 {STALE_HOURS}h 的任务会显示在“超时任务”区块，建议改为 `abandoned` 或人工 `reopen`。",
         "",
         "---",
         "",
@@ -242,11 +262,14 @@ def generate_task_board_view(tasks: list[TaskEntry], stats: dict[str, ProjectSta
     append_task_block(lines, "### 开放任务池（P2）", tasks_by_priority["P2"])
     append_task_block(lines, "### 开放任务池（P3）", tasks_by_priority["P3"])
 
-    active_tasks = [task for task in tasks if task.is_active]
+    active_tasks = [task for task in tasks if task.status in {"claimed", "in_progress"}]
+    help_needed_tasks = [task for task in tasks if task.status == "help_needed"]
+    cancelled_tasks = [task for task in tasks if task.status == "cancelled"]
     stale: list[tuple[TaskEntry, int]] = []
-    if active_tasks:
+    stale_candidates = active_tasks + help_needed_tasks
+    if stale_candidates:
         cutoff = datetime.now(timezone.utc) - timedelta(hours=STALE_HOURS)
-        for task in active_tasks:
+        for task in stale_candidates:
             reference = _parse_iso8601(task.started_at or task.claimed_at)
             if reference is None:
                 continue
@@ -263,6 +286,8 @@ def generate_task_board_view(tasks: list[TaskEntry], stats: dict[str, ProjectSta
         lines.append("```")
         lines.append("")
     append_task_block(lines, "### 进行中任务", active_tasks)
+    append_task_block(lines, "### 需要协助（help_needed）", help_needed_tasks)
+    append_task_block(lines, "### 已取消任务", cancelled_tasks)
 
     done_tasks = sorted(
         (task for task in tasks if task.is_done),
@@ -271,7 +296,7 @@ def generate_task_board_view(tasks: list[TaskEntry], stats: dict[str, ProjectSta
     )[:10]
     append_task_block(lines, "### 最近完成（自动生成）", done_tasks)
 
-    global_tasks = [task for task in tasks if task.project == GLOBAL_PROJECT and not task.is_done]
+    global_tasks = [task for task in tasks if task.project == GLOBAL_PROJECT and task.status not in {"done", "cancelled"}]
     append_task_block(lines, "### Global Tasks", global_tasks)
 
     return "\n".join(lines).rstrip() + "\n"

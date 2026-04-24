@@ -30,6 +30,11 @@ class TaskEntry:
     started_at: Optional[str] = None
     done_at: Optional[str] = None
     failed_reason: Optional[str] = None
+    parent_task_id: Optional[str] = None
+    expires_at: Optional[str] = None
+    context_links: tuple[str, ...] = ()
+    help_reason: Optional[str] = None
+    cancelled_at: Optional[str] = None
 
     @property
     def is_open(self) -> bool:
@@ -37,11 +42,15 @@ class TaskEntry:
 
     @property
     def is_active(self) -> bool:
-        return self.status in {"claimed", "in_progress"}
+        return self.status in {"claimed", "in_progress", "help_needed"}
 
     @property
     def is_done(self) -> bool:
         return self.status == "done"
+
+    @property
+    def is_cancelled(self) -> bool:
+        return self.status == "cancelled"
 
     def to_lines(self) -> list[str]:
         lines = [f"- id: {self.id}"]
@@ -61,6 +70,18 @@ class TaskEntry:
             lines.append(f"  done_at: {self.done_at}")
         if self.failed_reason is not None:
             lines.append(f'  failed_reason: "{self.failed_reason}"')
+        if self.parent_task_id is not None:
+            lines.append(f"  parent_task_id: {self.parent_task_id}")
+        if self.expires_at is not None:
+            lines.append(f"  expires_at: {self.expires_at}")
+        if self.context_links:
+            lines.append("  context_links:")
+            for link in self.context_links:
+                lines.append(f"    - {link}")
+        if self.help_reason is not None:
+            lines.append(f'  help_reason: "{self.help_reason}"')
+        if self.cancelled_at is not None:
+            lines.append(f"  cancelled_at: {self.cancelled_at}")
         return lines
 
 
@@ -104,6 +125,8 @@ def parse_task_state_file(path: Path, default_project: Optional[str] = None) -> 
 
     tasks: list[TaskEntry] = []
     current: dict[str, Optional[str]] = {}
+    current_list_key: Optional[str] = None
+    current_lists: dict[str, list[str]] = {}
 
     def flush() -> None:
         if not current.get("id"):
@@ -123,6 +146,11 @@ def parse_task_state_file(path: Path, default_project: Optional[str] = None) -> 
                 started_at=current.get("started_at"),
                 done_at=current.get("done_at"),
                 failed_reason=current.get("failed_reason"),
+                parent_task_id=current.get("parent_task_id"),
+                expires_at=current.get("expires_at"),
+                context_links=tuple(current_lists.get("context_links", [])),
+                help_reason=current.get("help_reason"),
+                cancelled_at=current.get("cancelled_at"),
             )
         )
 
@@ -133,11 +161,23 @@ def parse_task_state_file(path: Path, default_project: Optional[str] = None) -> 
         if stripped.startswith("- id:"):
             flush()
             current = {"id": _normalize_value(stripped.split(":", 1)[1])}
+            current_lists = {}
+            current_list_key = None
+            continue
+        if stripped.startswith("- ") and current_list_key:
+            current_lists.setdefault(current_list_key, []).append(stripped[2:].strip().strip('"').strip("'"))
             continue
         if ":" not in stripped:
             continue
         key, value = stripped.split(":", 1)
-        current[key.strip()] = _normalize_value(value)
+        key = key.strip()
+        normalized = _normalize_value(value)
+        if normalized is None and key in {"context_links"}:
+            current_list_key = key
+            current_lists.setdefault(key, [])
+            continue
+        current_list_key = None
+        current[key] = normalized
 
     flush()
     return tasks
