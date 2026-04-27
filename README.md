@@ -19,7 +19,7 @@ EverAgent 是以 AI Agent 为核心工具的个人知识库，通过系统化学
 
 | 项目 | 领域 | 报告量 | Wiki 页面 | 状态 |
 |------|------|--------|-----------|------|
-| [🤖 AI Learning](./ai-learning/README.md) | AI/ML 论文精读·技术报告 | 37 篇精读/文本 + 28 篇知识/概念报告 | 23 entities · 27 concepts | 🟢 |
+| [🤖 AI Learning](./ai-learning/README.md) | AI/ML 论文精读·技术报告 | 37 篇精读/文本 + 29 篇知识/概念报告 | 24 entities · 30 concepts | 🟢 |
 | [💻 CS Learning](./cs-learning/README.md) | 计算机科学·系统·算法 | 24 篇精读/文本 + 5 篇知识/概念报告 | 13 entities · 21 concepts | 🟢 |
 | [📚 Philosophy Learning](./philosophy-learning/README.md) | 西方哲学·文本分析 | 12 篇精读/文本 + 3 篇知识/概念报告 | 10 entities · 11 concepts | 🟡 |
 | [🧠 Psychology Learning](./psychology-learning/README.md) | 心理学·经典实验 | 12 篇精读/文本 + 3 篇知识/概念报告 | 12 entities · 12 concepts | 🟢 |

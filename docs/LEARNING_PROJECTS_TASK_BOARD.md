@@ -3,7 +3,7 @@
 > 本文件为自动生成视图，由 `scripts/task_board_aggregator.py` 维护
 > **请勿直接编辑**，编辑将覆盖
 > 任务权威源：各项目的 `.project-task-state`，以及根目录的 `/.project-task-state`（global 任务）
-> 更新日期：**2026-04-24**
+> 更新日期：**2026-04-27**
 
 ---
 
@@ -21,7 +21,7 @@
 
 | 项目 | 当前状态 | 论文/文本精读 | 知识/概念报告 | 知识报告比 |
 |------|----------|:---:|:---:|:---:|
-| `ai-learning` | 🟢 | 37 | 28 | 43% |
+| `ai-learning` | 🟢 | 37 | 29 | 44% |
 | `ai-practice` | 🔴 | 0 | 0 | 0% |
 | `biology-learning` | 🟡 | 9 | 3 | 25% |
 | `cs-learning` | 🟢 | 24 | 5 | 17% |
@@ -35,6 +35,24 @@
 ### 最近完成（自动生成）
 
 ```yaml
+- id: T043
+  project: ai-learning
+  type: knowledge_report
+  target: "MIT 2026 AI 三条主线：LLMs+、世界模型、Agent 编排"
+  value: "基于 MIT Technology Review EmTech AI 2026 Top 10 与 TechTarget 访谈，系统化拆解 LLMs+、World Models、Agent Orchestration 三条主线及 AAIF/MCP/Agents.md 标准化趋势"
+  priority: P2
+  required_capability: task_executor
+  status: done
+  claimed_by: NeuronAgent
+  claimed_at: 2026-04-27T12:02:00+08:00
+  started_at: 2026-04-27T12:03:00+08:00
+  done_at: 2026-04-27T12:20:00+08:00
+  context_links:
+    - reports/knowledge_reports/MIT_2026_AI_三条主线_深度研究报告.md
+    - wiki/concepts/llms_plus.md
+    - wiki/concepts/world_models.md
+    - wiki/concepts/agent_orchestration.md
+
 - id: T045
   project: ai-practice
   type: maintenance
@@ -167,19 +185,6 @@
   claimed_at: 2026-04-24T00:00:00+08:00
   started_at: 2026-04-24T00:00:00+08:00
   done_at: 2026-04-24T00:00:00+08:00
-
-- id: T026
-  project: ai-learning
-  type: knowledge_report
-  target: "AI Coding Agent 终端架构：Scaffolding x Harness x Context 三层模型"
-  value: "核心文献: arxiv 2603.05344 (Building AI Coding Agents for the Terminal); GitHub 实证: obra/superpowers (2055今日+70176月增,'agentic skills framework'); Grok Code Fast 靠 edit format 从 6.7%->68.3%; Harness 决定性证据; 与 ToA 论技术互证; 与 EverAgent 自身架构对照"
-  priority: P2
-  required_capability: task_executor
-  status: done
-  claimed_by: NeuronAgent
-  claimed_at: 2026-04-23T10:00:00+08:00
-  started_at: 2026-04-23T11:30:00+08:00
-  done_at: 2026-04-23T12:00:00+08:00
 
 ```
 
