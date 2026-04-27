@@ -166,3 +166,21 @@
   claimed_at: 2026-04-23T10:00:00+08:00
   started_at: 2026-04-23T10:05:00+08:00
   done_at: 2026-04-23T10:30:00+08:00
+
+- id: T043
+  project: ai-learning
+  type: knowledge_report
+  target: "MIT 2026 AI 三条主线：LLMs+、世界模型、Agent 编排"
+  value: "基于 MIT Technology Review EmTech AI 2026 Top 10 与 TechTarget 访谈，系统化拆解 LLMs+、World Models、Agent Orchestration 三条主线及 AAIF/MCP/Agents.md 标准化趋势"
+  priority: P2
+  required_capability: task_executor
+  status: done
+  claimed_by: NeuronAgent
+  claimed_at: 2026-04-27T12:02:00+08:00
+  started_at: 2026-04-27T12:03:00+08:00
+  done_at: 2026-04-27T12:20:00+08:00
+  context_links:
+    - reports/knowledge_reports/MIT_2026_AI_三条主线_深度研究报告.md
+    - wiki/concepts/llms_plus.md
+    - wiki/concepts/world_models.md
+    - wiki/concepts/agent_orchestration.md

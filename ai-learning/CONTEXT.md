@@ -72,6 +72,7 @@
 - `AI编码Agent终端技术深度解析` — OpenDev Scaffolding-Harness-Context三层架构·obra/superpowers Skill驱动SDLC·Grok Code Fast Edit Format优化6.7%→68.3%（2026-04-23）
 - `Agent_自进化技术路径深度解析` — Hermes Agent闭环学习系统·GenericAgent极简进化论·四层vs五层记忆架构·技能生命周期·Token效率6x·进化算法前沿（2026-04-23）
 - `Agent_团队管理产品化路径深度解析` — Multica Agent-as-Teammate范式·任务生命周期状态机·Compound Skills·LangGraph/CrewAI/AutoGen四方定位差异·L2编排vsL3管理分层（2026-04-23）
+- `MIT_2026_AI_三条主线_深度研究报告` — MIT Technology Review 2026 AI Top 10 中 LLMs+、世界模型、Agent 编排三条主线的系统化解读·AAIF/MCP/Agents.md 标准化时间线·开发者与企业落地路线（2026-04-27）
 
 ## 离线知识库
 → [`knowledge/INDEX.md`](./knowledge/INDEX.md)（子话题菜单，离线模型从此进入）

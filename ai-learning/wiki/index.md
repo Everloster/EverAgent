@@ -45,6 +45,7 @@
 | [openai.md](./entities/openai.md) | GPT 系列、InstructGPT、ChatGPT 系列发起方 |
 | [google_brain_deepmind.md](./entities/google_brain_deepmind.md) | Google Brain × DeepMind 2023 合并，AlphaFold/Gemini |
 | [meta_ai.md](./entities/meta_ai.md) | FAIR / LLaMA / MAE / DINOv2 / VideoMAE 大本营 |
+| [mit_technology_review.md](./entities/mit_technology_review.md) | MIT 旗下科技媒体，EmTech AI 2026 发布 AI Top 10 趋势框架 |
 
 ---
 
@@ -79,6 +80,9 @@
 | [eva02_vision_transformer.md](./concepts/eva02_vision_transformer.md) | EVA-02：SwiGLU+2D RoPE+sub-LN+CLIP MIM，LLM架构迁移至视觉的里程碑，304M参数达90.0% IN-1K |
 | [megatron_lm_3d_parallelism.md](./concepts/megatron_lm_3d_parallelism.md) | 3D并行体系：TP(张量并行·列/行切分·2次AllReduce)·PP(1F1B调度·气泡压缩)·SP(序列并行)·千亿参数训练基础设施 |
 | [agent_observability.md](./concepts/agent_observability.md) | Agent 可观测性：心跳检测·实时 Dashboard·延迟告警·事件溯源·自动干预 |
+| [llms_plus.md](./concepts/llms_plus.md) | LLMs+：MoE、长上下文、多模态、工具调用与模型路由组成的增强型 LLM 系统 |
+| [world_models.md](./concepts/world_models.md) | 世界模型：面向环境状态、动作后果与仿真规划的内部表征体系 |
+| [agent_orchestration.md](./concepts/agent_orchestration.md) | Agent 编排：多模型、多工具、多角色、权限与审计组成的任务执行系统 |
 
 ---
 

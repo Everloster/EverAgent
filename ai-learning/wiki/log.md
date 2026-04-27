@@ -192,3 +192,11 @@
 - 更新 wiki/index.md：Concepts 表新增 agent_observability 条目
 - 更新 CONTEXT.md：已有报告列表追加新条目
 - 数据源：scripts/ea_events.py / ea_dashboard.py / task_state_cli.py / everagent.py 代码分析 + EverAgent 架构设计
+
+## [2026-04-27] ingest | MIT 2026 AI 三条主线深度研究
+- 新建报告：reports/knowledge_reports/MIT_2026_AI_三条主线_深度研究报告.md（LLMs+ · 世界模型 · Agent 编排三层系统化框架）
+- 新建 entity：wiki/entities/mit_technology_review.md
+- 新建 concepts：wiki/concepts/llms_plus.md / wiki/concepts/world_models.md / wiki/concepts/agent_orchestration.md
+- 更新 wiki/index.md：新增 1 个 entity 条目与 3 个 concept 条目
+- 更新 CONTEXT.md：已有知识报告列表追加新条目
+- 数据源：AI资讯速览 2026-04-24、TechTarget 2026-04-22、MIT News / MIT Sloan 2026、WIRED 2025-12-09
