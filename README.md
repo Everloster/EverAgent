@@ -1,9 +1,11 @@
 # 🧠 EverAgent — 个人学习与研究工作台
 
 > 用 AI Agent 驱动的个人知识体系，覆盖 AI 技术、计算机科学、哲学思想、心理学、生命科学与开源生态
-> 创建日期：2026-03-23 | 最后更新：2026-04-21（新增 ai-practice 子项目：LLM 工程实践教学）
+> 创建日期：2026-03-23 | 最后更新：2026-04-28（新增 EverAgent 项目海报）
 
 > **AI/Agent 使用本仓库？** → 请直接阅读 [AGENTS.md](./AGENTS.md)，本文件供人类阅读。
+
+![EverAgent launch poster](./docs/assets/everagent-launch-poster.png)
 
 ---
 
