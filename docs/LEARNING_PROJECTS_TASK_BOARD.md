@@ -3,7 +3,7 @@
 > 本文件为自动生成视图，由 `scripts/task_board_aggregator.py` 维护
 > **请勿直接编辑**，编辑将覆盖
 > 任务权威源：各项目的 `.project-task-state`，以及根目录的 `/.project-task-state`（global 任务）
-> 更新日期：**2026-04-27**
+> 更新日期：**2026-04-29**
 
 ---
 
@@ -21,7 +21,7 @@
 
 | 项目 | 当前状态 | 论文/文本精读 | 知识/概念报告 | 知识报告比 |
 |------|----------|:---:|:---:|:---:|
-| `ai-learning` | 🟢 | 37 | 29 | 44% |
+| `ai-learning` | 🟢 | 37 | 30 | 45% |
 | `ai-practice` | 🔴 | 0 | 0 | 0% |
 | `biology-learning` | 🟡 | 9 | 3 | 25% |
 | `cs-learning` | 🟢 | 24 | 5 | 17% |
@@ -35,6 +35,22 @@
 ### 最近完成（自动生成）
 
 ```yaml
+- id: T046
+  project: ai-learning
+  type: knowledge_report
+  target: "LLM 国内外主流评估体系详解"
+  value: "系统解读大模型基准评测、国内外主流评测网站与 leaderboard、以及评测项与应用场景的匹配优先级"
+  priority: P1
+  required_capability: task_executor
+  status: done
+  claimed_by: NeuronAgent
+  claimed_at: 2026-04-29T11:03:11+08:00
+  started_at: 2026-04-29T11:03:12+08:00
+  done_at: 2026-04-29T11:09:44+08:00
+  context_links:
+    - reports/knowledge_reports/LLM_评估体系_深度解析_20260429.md
+    - wiki/concepts/llm_evaluation_systems.md
+
 - id: T043
   project: ai-learning
   type: knowledge_report
@@ -165,19 +181,6 @@
   type: text_analysis
   target: "Russell (1905) On Denoting"
   value: "摹状词理论; 法国现任国王是秃子难题; 逻辑分析哲学威力"
-  priority: P2
-  required_capability: task_executor
-  status: done
-  claimed_by: SocratesAgent
-  claimed_at: 2026-04-24T00:00:00+08:00
-  started_at: 2026-04-24T00:00:00+08:00
-  done_at: 2026-04-24T00:00:00+08:00
-
-- id: T042
-  project: philosophy-learning
-  type: text_analysis
-  target: "Singer (1972) Famine, Affluence, and Morality"
-  value: "功利主义义务论证; 全球贫困的道德义务; 有效利他主义理论基础"
   priority: P2
   required_capability: task_executor
   status: done

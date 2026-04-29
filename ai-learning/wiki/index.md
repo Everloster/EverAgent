@@ -83,6 +83,7 @@
 | [llms_plus.md](./concepts/llms_plus.md) | LLMs+：MoE、长上下文、多模态、工具调用与模型路由组成的增强型 LLM 系统 |
 | [world_models.md](./concepts/world_models.md) | 世界模型：面向环境状态、动作后果与仿真规划的内部表征体系 |
 | [agent_orchestration.md](./concepts/agent_orchestration.md) | Agent 编排：多模型、多工具、多角色、权限与审计组成的任务执行系统 |
+| [llm_evaluation_systems.md](./concepts/llm_evaluation_systems.md) | LLM 评估体系：静态/动态/偏好/代码/Agent/中文/安全评测与场景匹配优先级 |
 
 ---
 

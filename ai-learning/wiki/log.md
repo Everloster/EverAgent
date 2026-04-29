@@ -200,3 +200,10 @@
 - 更新 wiki/index.md：新增 1 个 entity 条目与 3 个 concept 条目
 - 更新 CONTEXT.md：已有知识报告列表追加新条目
 - 数据源：AI资讯速览 2026-04-24、TechTarget 2026-04-22、MIT News / MIT Sloan 2026、WIRED 2025-12-09
+
+## [2026-04-29] ingest | LLM 国内外主流评估体系详解
+- 新建报告：reports/knowledge_reports/LLM_评估体系_深度解析_20260429.md（基准评测范式、国内外 leaderboard 解读、MMLU/C-Eval/GPQA/LiveBench/SWE-bench/BFCL 等逐项分析、场景匹配优先级矩阵）
+- 新建 concept：wiki/concepts/llm_evaluation_systems.md（静态闭卷、动态去污染、偏好评测、代码工程、工具调用、多模态、安全评测速查）
+- 更新 wiki/index.md：Concepts 表新增 llm_evaluation_systems 条目
+- 更新 CONTEXT.md：已有知识报告列表追加新条目
+- 数据源：Stanford HELM、LMSYS/LMArena、OpenCompass、C-Eval、CMMLU、SuperCLUE、LiveBench、SWE-bench、BFCL、MMLU-Pro、GPQA
