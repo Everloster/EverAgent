@@ -1,0 +1,16 @@
+event_id: evt_20260425_140029471393_001
+type: task_dispatched
+timestamp: 2026-04-25T14:00:29+00:00
+actor: EverAgent
+project: ai-learning
+task_id: T046
+message_id: <evt_20260425_140029471393_001@everagent.local>
+dedupe_key: T046:task.dispatch:EverAgent
+aamp: {"version":"1.1","intent":"task.dispatch","task_id":"T046","message_id":"<evt_20260425_140029471393_001@everagent.local>","dispatch_context":{"project":"ai-learning","actor":"EverAgent","event_type":"task_dispatched"},"priority":"P2","context_links":["ai-learning/AGENTS.md","ai-learning/CONTEXT.md","ai-learning/papers/23_distilling_2015.pdf","ai-learning/reports/paper_analyses/42_distilling_2015.md"]}
+payload:
+  target: "Hinton, Vinyals & Dean (2015) Distilling the Knowledge in a Neural Network"
+  type: "paper_analysis"
+  priority: "P2"
+  parent_task_id: null
+  expires_at: null
+  context_links: ["ai-learning/AGENTS.md", "ai-learning/CONTEXT.md", "ai-learning/papers/23_distilling_2015.pdf", "ai-learning/reports/paper_analyses/42_distilling_2015.md"]

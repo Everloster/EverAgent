@@ -38,6 +38,9 @@
 | [tii.md](./entities/tii.md) | 阿联酋技术创新研究院，Falkon LLM 与 RefinedWeb 诞生地 |
 | [wu_yonghui.md](./entities/wu_yonghui.md) | GNMT 第一作者，Google Brain，深层残差 LSTM + WordPiece |
 | [karpathy_andrej.md](./entities/karpathy_andrej.md) | Deep Video 第一作者，Stanford→Tesla，CS231n 讲师 |
+| [vinyals_oriol.md](./entities/vinyals_oriol.md) | Distilling 共同作者，Google 序列建模与大规模模型研究者 |
+| [dean_jeff.md](./entities/dean_jeff.md) | Google Brain 关键创始人之一，Distilling / MoE 等大规模深度学习系统合作者 |
+| [silver_david.md](./entities/silver_david.md) | AlphaZero 第一作者，DeepMind 自我对弈强化学习与游戏 AI 研究者 |
 
 ### 机构
 | 页面 | 简介 |
@@ -84,6 +87,8 @@
 | [world_models.md](./concepts/world_models.md) | 世界模型：面向环境状态、动作后果与仿真规划的内部表征体系 |
 | [agent_orchestration.md](./concepts/agent_orchestration.md) | Agent 编排：多模型、多工具、多角色、权限与审计组成的任务执行系统 |
 | [llm_evaluation_systems.md](./concepts/llm_evaluation_systems.md) | LLM 评估体系：静态/动态/偏好/代码/Agent/中文/安全评测与场景匹配优先级 |
+| [knowledge_distillation.md](./concepts/knowledge_distillation.md) | 知识蒸馏：高温 softmax 软标签，教师-学生迁移，训练大模型能力到部署小模型 |
+| [alphazero_self_play_rl.md](./concepts/alphazero_self_play_rl.md) | AlphaZero：策略价值网络 + MCTS + 自我对弈，从规则出发学习棋类超人策略 |
 
 ---
 

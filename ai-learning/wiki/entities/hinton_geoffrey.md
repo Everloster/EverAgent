@@ -4,8 +4,8 @@ title: "Geoffrey Hinton"
 type: entity/person
 domain: [ai-learning]
 created: 2026-04-06
-updated: 2026-04-06
-sources: [AI关键人物图谱, 21_moe_2017]
+updated: 2026-04-25
+sources: [AI关键人物图谱, 21_moe_2017, 42_distilling_2015]
 ---
 
 # Geoffrey Hinton
@@ -17,12 +17,14 @@ sources: [AI关键人物图谱, 21_moe_2017]
 - **深度信念网络（2006）**：推动了深度多层神经网络的预训练方法，标志深度学习复兴的起点。来源：AI关键人物图谱 §四
 - **Dropout 正则化**：提出 Dropout 技术，成为防止深度网络过拟合的标准手段。来源：AI关键人物图谱 §四
 - **AlexNet 导师**：2012 年指导学生 Alex Krizhevsky 完成 AlexNet，在 ILSVRC 2012 上碾压传统方法，彻底点燃深度学习热潮。来源：AI关键人物图谱 §四
+- **知识蒸馏（2015）**：与 Oriol Vinyals、Jeff Dean 合著《Distilling the Knowledge in a Neural Network》，将高温 softmax 软标签确立为教师-学生模型压缩范式。来源：42_distilling_2015
 - **合著 MoE 奠基论文（2017）**：与 Noam Shazeer、Jeff Dean 等合著《Outrageously Large Neural Networks》，作为共同作者参与混合专家架构的早期验证。来源：21_moe_2017 基本信息卡片
 
 ## 立场演变
 Hinton 曾对"LLM 只是模式匹配"持怀疑态度，但后来转变为对 AI 风险高度警惕的警示者。2023 年离开 Google，公开呼吁监管，认为 AI 存在严肃的存在风险。来源：AI关键人物图谱 §四
 
 ## 在本项目的相关报告
+- [知识蒸馏论文（2015）](../../reports/paper_analyses/42_distilling_2015.md)
 - [MoE 奠基论文（2017）](../../reports/paper_analyses/21_moe_2017.md)
 - [AI 关键人物图谱](../../reports/knowledge_reports/AI关键人物图谱.md)
 

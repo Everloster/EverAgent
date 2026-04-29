@@ -1,7 +1,7 @@
 # 🧬 Biology Learning Project
 
 > 系统学习生命科学的个人知识库与学习项目
-> 创建日期：2026-03-25 | 最后更新：2026-04-24（9 篇论文精读 + 3 篇专题报告 + wiki 导航）
+> 创建日期：2026-03-25 | 最后更新：2026-04-25（10 篇论文精读 + 3 篇专题报告 + wiki 导航）
 
 ---
 
@@ -60,6 +60,7 @@ biology-learning/
 - [Dose-response relationship between evening exercise and sleep (2025)](./reports/paper_analyses/P02_stutz_evening_exercise_sleep_2025.md) ← 晚间运动与睡眠的剂量-反应关系
 - [Sleep and muscle recovery (2011)](./reports/paper_analyses/P03_dattilo_sleep_muscle_2011.md) ← 睡眠债、内分泌环境与肌肉恢复假说
 - [The circadian system, sleep, and the health/disease balance (2022)](./reports/paper_analyses/P04_roenneberg_circadian_health_2022.md) ← 昼夜节律医学框架
+- [Timed Exercise and Chronotype Phase Shifts (2020)](./reports/paper_analyses/P05_thomas_exercise_phase_chronotype_2020.md) ← 定时运动、DLMO 相位移动与时型差异
 - [Sleep Onset, Slow Wave Sleep and GH Release (1988)](./reports/paper_analyses/P08_sleep_onset_sws_gh_1988.md) ← 深睡与夜间生长激素释放的经典研究
 - [Physiology of Growth Hormone Secretion during Sleep (1996)](./reports/paper_analyses/P09_gh_sleep_physiology_1996.md) ← GH、睡眠结构与年龄变化的整合性综述
 - [Circadian Rhythms in Exercise Performance (2013)](./reports/paper_analyses/P17_hayes_circadian_exercise_2013.md) ← 运动表现昼夜节律与激素/肌肉适应
@@ -111,6 +112,7 @@ biology-learning/
 | P02 | [Evening Exercise and Sleep](./reports/paper_analyses/P02_stutz_evening_exercise_sleep_2025.md) | 睡眠科学 × 运动生理学 | Stutz 等 | ✅ 完成 |
 | P03 | [Sleep and Muscle Recovery](./reports/paper_analyses/P03_dattilo_sleep_muscle_2011.md) | 睡眠科学 × 肌肉恢复 | Dattilo 等 | ✅ 完成 |
 | P04 | [Circadian System, Sleep, and Health/Disease Balance](./reports/paper_analyses/P04_roenneberg_circadian_health_2022.md) | 时间生物学 × 睡眠医学 | Roenneberg、Merrow | ✅ 完成 |
+| P05 | [Timed Exercise and Chronotype Phase Shifts](./reports/paper_analyses/P05_thomas_exercise_phase_chronotype_2020.md) | 时间生物学 × 运动生理学 | Thomas、Pendergast | ✅ 完成 |
 | P08 | [Sleep Onset, Slow Wave Sleep and GH Release](./reports/paper_analyses/P08_sleep_onset_sws_gh_1988.md) | 睡眠科学 × 内分泌学 | Born、Muth、Fehm | ✅ 完成 |
 | P09 | [Physiology of Growth Hormone Secretion during Sleep](./reports/paper_analyses/P09_gh_sleep_physiology_1996.md) | 睡眠科学 × 内分泌学 | Van Cauter 等 | ✅ 完成 |
 | P17 | [Circadian Rhythms in Exercise Performance](./reports/paper_analyses/P17_hayes_circadian_exercise_2013.md) | 时间生物学 × 运动表现 | Hayes 等 | ✅ 完成 |
@@ -160,7 +162,8 @@ biology-learning/
 - [ ] 完善 `roadmap/Biology_Development_Timeline.md`（生命科学 200 年关键节点）
 - [ ] 完善 `papers/PAPERS_INDEX.md`（30篇核心论文索引）
 - [ ] 完善 `books/BOOKS_INDEX.md`（25部经典书籍索引）
-- [ ] 精读 Walker / Dattilo 等关于睡眠恢复与肌肉修复的综述性文献
+- [ ] 精读 Xie et al. (2013) 胶淋巴系统原始论文
+- [ ] 精读 Youngstedt et al. (2023) 运动对人体昼夜节律的综述
 
 ---
 

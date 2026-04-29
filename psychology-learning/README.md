@@ -1,7 +1,7 @@
 # 🧠 Psychology Learning Project
 
 > 系统学习心理学的个人知识库与学习项目
-> 创建日期：2026-03-24 | 最后更新：2026-04-01（12 篇精读 + 1 篇人物图谱）
+> 创建日期：2026-03-24 | 最后更新：2026-04-22（12 篇精读 + 3 篇概念报告）
 
 ---
 
@@ -76,11 +76,20 @@ psychology-learning/
 - [Miller (1956) 分析报告](./reports/paper_analyses/01_miller_magical_number_seven_1956.md) — 工作记忆容量与认知革命的起点
 - [Milgram (1963) 分析报告](./reports/paper_analyses/02_milgram_obedience_1963.md) — 服从权威与情境力量
 - [Festinger & Carlsmith (1959) 分析报告](./reports/paper_analyses/03_festinger_carlsmith_cognitive_dissonance_1959.md) — 认知失调与不足理由效应
+- [Rosenhan (1973) 分析报告](./reports/paper_analyses/04_rosenhan_sane_insane_places_1973.md) — 诊断标签与精神病学可靠性争议
 - [Prospect Theory (1979) 分析报告](./reports/paper_analyses/05_kahneman_tversky_prospect_theory_1979.md) — 损失厌恶、参考点依赖与风险决策
 - [Seligman & Maier (1967) 分析报告](./reports/paper_analyses/06_seligman_maier_learned_helplessness_1967.md) — 习得性无助、控制感崩塌与后续放弃
+- [Tversky & Kahneman (1974) 分析报告](./reports/paper_analyses/07_tversky_kahneman_heuristics_1974.md) — 启发式与偏差
+- [Bandura (1961) 分析报告](./reports/paper_analyses/08_bandura_bobo_1961.md) — 观察学习与攻击行为习得
+- [Darley & Latané (1968) 分析报告](./reports/paper_analyses/10_darley_latane_bystander_1968.md) — 旁观者效应与责任扩散
+- [Harlow (1958) 分析报告](./reports/paper_analyses/13_harlow_monkey_1958.md) — 依恋与接触舒适
+- [Asch (1951) 分析报告](./reports/paper_analyses/14_asch_conformity_1951.md) — 从众与群体压力
+- [Zimbardo (1971) 分析报告](./reports/paper_analyses/24_zimbardo_stanford_prison_1971.md) — 角色内化与情境力量
 
 **概念深度解析：**
 - [心理学关键人物图谱](./reports/concept_reports/心理学关键人物图谱.md) — 从冯特到卡尼曼的思想传承
+- [认知偏差全景图](./reports/concept_reports/认知偏差全景图.md) — 启发式、前景理论与社会偏差整合
+- [心理学关键人物图谱（更新版）](./reports/concept_reports/心理学关键人物图谱_更新版.md) — 加入 Bandura/Seligman/Harlow 等新精读作者
 
 ### 第五步：用技能模板生成新报告
 
@@ -98,13 +107,13 @@ psychology-learning/
 | 01 | The Magical Number Seven（神奇的数字七） | Miller | 1956 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/01_miller_magical_number_seven_1956.md) |
 | 02 | Behavioral Study of Obedience（服从权威） | Milgram | 1963 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/02_milgram_obedience_1963.md) |
 | 03 | Cognitive Consequences of Forced Compliance（认知失调） | Festinger & Carlsmith | 1959 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/03_festinger_carlsmith_cognitive_dissonance_1959.md) |
-| 04 | On Being Sane in Insane Places（精神病院中的正常人） | Rosenhan | 1973 | ⭐⭐⭐ | ⬜ 待读 |
+| 04 | On Being Sane in Insane Places（精神病院中的正常人） | Rosenhan | 1973 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/04_rosenhan_sane_insane_places_1973.md) |
 | 05 | Prospect Theory（前景理论） | Kahneman & Tversky | 1979 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/05_kahneman_tversky_prospect_theory_1979.md) |
 | 06 | Failure to Escape Traumatic Shock（习得性无助） | Seligman & Maier | 1967 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/06_seligman_maier_learned_helplessness_1967.md) |
-| 07 | Judgment under Uncertainty（不确定条件下的判断） | Tversky & Kahneman | 1974 | ⭐⭐⭐ | ⬜ 待读 |
-| 08 | The Nature of Love（爱的本质·恒河猴实验） | Harlow | 1958 | ⭐⭐⭐ | ⬜ 待读 |
-| 09 | Transmission of Aggression（攻击行为传播·Bobo娃娃） | Bandura et al. | 1961 | ⭐⭐ | ⬜ 待读 |
-| 10 | Bystander Intervention（旁观者效应） | Darley & Latané | 1968 | ⭐⭐ | ⬜ 待读 |
+| 07 | Judgment under Uncertainty（不确定条件下的判断） | Tversky & Kahneman | 1974 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/07_tversky_kahneman_heuristics_1974.md) |
+| 08 | The Nature of Love（爱的本质·恒河猴实验） | Harlow | 1958 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/13_harlow_monkey_1958.md) |
+| 09 | Transmission of Aggression（攻击行为传播·Bobo娃娃） | Bandura et al. | 1961 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/08_bandura_bobo_1961.md) |
+| 10 | Bystander Intervention（旁观者效应） | Darley & Latané | 1968 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/10_darley_latane_bystander_1968.md) |
 
 > 完整30篇索引见 [PAPERS_INDEX.md](./papers/PAPERS_INDEX.md)
 
@@ -183,7 +192,7 @@ Week 19+:   选择感兴趣方向深入（神经科学 / 临床心理学 / 行�
 
 ## 🛠️ 待办事项
 
-- [ ] 建立"核心概念深度解析"系列（认知失调、习得性无助、心流、依恋理论）
+- [ ] 建立"核心概念深度解析"系列（认知失调、习得性无助、心流、依恋理论；认知偏差全景图已完成）
 - [ ] 制作心理学流派思维导图
 - [ ] 补充神经科学专题模块（Phase 5）
 

@@ -207,3 +207,23 @@
 - 更新 wiki/index.md：Concepts 表新增 llm_evaluation_systems 条目
 - 更新 CONTEXT.md：已有知识报告列表追加新条目
 - 数据源：Stanford HELM、LMSYS/LMArena、OpenCompass、C-Eval、CMMLU、SuperCLUE、LiveBench、SWE-bench、BFCL、MMLU-Pro、GPQA
+
+## [2026-04-25] ingest | Distilling the Knowledge in a Neural Network (2015)
+- 新建报告：reports/paper_analyses/42_distilling_2015.md（7步分析框架，高温softmax/软硬标签联合/logits matching推导，MNIST/ASR/JFT实验数值）
+- 新建 concept：wiki/concepts/knowledge_distillation.md（定义、公式、关键证据、工程注意）
+- 新建 entities：wiki/entities/vinyals_oriol.md、wiki/entities/dean_jeff.md
+- 更新 entities：wiki/entities/hinton_geoffrey.md、wiki/entities/google_brain_deepmind.md
+- 更新 wiki/index.md：新增 Knowledge Distillation 概念与 Vinyals/Dean 人物条目
+- 更新 CONTEXT.md：已有报告与边界区追加知识蒸馏状态
+- 数据源：ai-learning/papers/23_distilling_2015.pdf
+- 执行者：NeuronAgent / Codex worker C
+
+## [2026-04-25] ingest | AlphaZero: Mastering Chess and Shogi by Self-Play (2017)
+- 新建报告：reports/paper_analyses/43_alphago_zero_2017.md（7步分析框架，说明本地 PDF 与索引标题不一致，按 AlphaZero 论文真实内容分析）
+- 新建 concept：wiki/concepts/alphazero_self_play_rl.md（策略价值网络、MCTS、自我对弈闭环、关键训练与比赛数字）
+- 新建 entity：wiki/entities/silver_david.md
+- 更新 entity：wiki/entities/google_brain_deepmind.md
+- 更新 wiki/index.md：新增 AlphaZero 概念与 David Silver 人物条目
+- 更新 CONTEXT.md / PAPERS_INDEX.md：追加报告状态，并标明本地 PDF 实为 AlphaZero arXiv 论文
+- 数据源：ai-learning/papers/24_alphago_zero_2017.pdf
+- 执行者：NeuronAgent / Codex worker E

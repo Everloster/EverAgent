@@ -4,8 +4,8 @@ title: "Chronotype（时型）"
 type: concept
 domain: [biology-learning]
 created: 2026-04-17
-updated: 2026-04-17
-sources: [P01_social_jetlag_obesity_2012, 晚型人作息与力量训练_深度研究报告]
+updated: 2026-04-25
+sources: [P01_social_jetlag_obesity_2012, P05_thomas_exercise_phase_chronotype_2020, 晚型人作息与力量训练_深度研究报告]
 ---
 
 # Chronotype（时型 / 晚型 vs 早型）
@@ -26,6 +26,7 @@ sources: [P01_social_jetlag_obesity_2012, 晚型人作息与力量训练_深度�
 - **Social Jetlag**：Chronotype 与社会约束的相位差
 - **GH 与 SWS 耦合**：训练时间在相位中的位置影响夜间 GH 脉冲
 - **代谢综合征**：晚型人群在早出勤社会中代谢指标整体较差
+- **Exercise Phase Shift**：Thomas et al. (2020) 显示 baseline DLMO / chronotype 会修饰晚间运动造成的相位移动方向；晚型人晚间运动出现相位提前，早型人晚间运动出现相位延迟。
 
 ## L5 前沿与争议
 - 全基因组关联研究（GWAS）已鉴定 ≥ 350 个与睡眠时相相关的位点
@@ -34,4 +35,5 @@ sources: [P01_social_jetlag_obesity_2012, 晚型人作息与力量训练_深度�
 
 ## 相关报告
 - [Social Jetlag and Obesity (2012) 精读](../../reports/paper_analyses/P01_social_jetlag_obesity_2012.md)
+- [Thomas et al. (2020) 定时运动与时型相位移动精读](../../reports/paper_analyses/P05_thomas_exercise_phase_chronotype_2020.md)
 - [晚型人作息与力量训练深度研究](../../reports/concept_reports/晚型人作息与力量训练_深度研究报告.md)

@@ -250,6 +250,8 @@
 - **文件名建议**：`23_distilling_2015.pdf`
 - **作者**：Hinton, Vinyals, Dean
 - **年份**：2015
+- **下载状态**：✅ **已保存** — 本地文件：`23_distilling_2015.pdf`
+- **精读状态**：✅ **已完成** — [42_distilling_2015.md](../reports/paper_analyses/42_distilling_2015.md)
 - **下载链接**：https://arxiv.org/pdf/1503.02531
 - **核心贡献**：知识蒸馏范式——用大模型的"软标签"训练小模型，开创了教师-学生学习框架
 
@@ -259,8 +261,11 @@
 - **文件名建议**：`24_alphago_zero_2017.pdf`
 - **作者**：Silver 等（DeepMind）
 - **年份**：2017
+- **下载状态**：✅ **已保存** — 本地文件：`24_alphago_zero_2017.pdf`
+- **精读状态**：✅ **已完成** — [43_alphago_zero_2017.md](../reports/paper_analyses/43_alphago_zero_2017.md)
+- **备注**：本地 PDF 正文实际为 arXiv:1712.01815v1 `Mastering Chess and Shogi by Self-Play with a General Reinforcement Learning Algorithm`（AlphaZero），非 Nature 2017 AlphaGo Zero 原文；报告按本地 PDF 真实内容完成。
 - **下载链接**：https://arxiv.org/pdf/1712.01815
-- **核心贡献**：纯强化学习，无需人类先验知识；启发了 OpenAI 的 test-time compute 思路（每步执行1600次 MCTS 搜索）
+- **核心贡献**：AlphaZero 将 AlphaGo Zero 的自我对弈强化学习泛化到国际象棋、日本将棋和围棋；训练时每步使用 800 次 MCTS simulations，并展示了 test-time compute 与学习闭环结合的威力。
 
 ---
 

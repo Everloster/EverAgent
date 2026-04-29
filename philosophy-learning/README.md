@@ -1,7 +1,7 @@
 # 📚 Philosophy Learning Project
 
 > 系统学习西方哲学的个人知识库与学习项目
-> 创建日期：2026-03-23 | 最后更新：2026-04-01（7 篇文本分析 + 1 篇论文分析 + 2 篇概念报告）
+> 创建日期：2026-03-23 | 最后更新：2026-04-25（11 篇文本分析 + 1 篇论文分析 + 3 篇概念报告）
 
 ---
 
@@ -77,10 +77,19 @@ philosophy-learning/
 - [柏拉图《理想国》第七卷·洞穴比喻](./reports/text_analyses/01_plato_republic_cave_-380.md) — 理念论、认识论阶梯与哲学教育
 - [笛卡尔《第一哲学沉思集》](./reports/text_analyses/02_descartes_meditations_1641.md) — 方法论怀疑、我思故我在、身心二元论
 - [Gettier《Is Justified True Belief Knowledge?》](./reports/text_analyses/03_gettier_1963.md) — JTB 定义与认识论运气
+- [柏拉图《美诺》节选](./reports/text_analyses/04_plato_meno_-380.md) — 德性是否可教、美诺悖论与苏格拉底方法
+- [Nagel《What Is It Like to Be a Bat?》](./reports/text_analyses/04_nagel_bat_1974.md) — 主观经验、感质与物理主义局限
+- [康德《道德形而上学基础》](./reports/text_analyses/05_kant_groundwork_1785.md) — 绝对命令、善良意志与义务论
+- [Russell《On Denoting》](./reports/text_analyses/05_russell_on_denoting_1905.md) — 摹状词理论与语言哲学转向
+- [亚里士多德《尼各马可伦理学》](./reports/text_analyses/06_aristotle_nicomachean_ethics_-350.md) — eudaimonia、德性习惯与中道原则
+- [黑格尔《精神现象学》导论](./reports/text_analyses/07_hegel_phaenomenologie_1807.md) — 辩证法、Geist 与意识经验
+- [罗尔斯《正义论》第一章](./reports/text_analyses/08_rawls_theory_of_justice_1971.md) — 原初状态、无知之幕与两条正义原则
+- [Singer《Famine, Affluence, and Morality》](./reports/text_analyses/08_singer_famine_1972.md) — 全球贫困、个人义务与有效利他主义
 
 **概念深度解析：**
 - [哲学关键人物图谱](./reports/concept_reports/哲学关键人物图谱.md) — 从苏格拉底到维特根斯坦的思想传承
 - [知识_跨时代比较](./reports/concept_reports/知识_跨时代比较.md) — 从柏拉图到盖梯尔，比较“知识是什么”的四种经典回答
+- [自由意志_跨时代比较](./reports/concept_reports/自由意志_跨时代比较.md) — 从亚里士多德到法兰克福，自由意志与决定论的张力主线
 
 ### 第五步：用技能模板生成新报告
 
@@ -98,11 +107,11 @@ philosophy-learning/
 | 01  | 洞穴寓言（《理想国》第七卷节选）                    | 柏拉图     | 约前375年 | ⭐⭐⭐ | ✅ 已完成 |
 | 02  | 第一哲学沉思集                             | 笛卡尔     | 1641   | ⭐⭐⭐ | ✅ 已完成 |
 | 03  | Is Justified True Belief Knowledge? | Gettier | 1963   | ⭐⭐⭐ | ✅ 已完成 |
-| 04  | What Is It Like to Be a Bat?        | Nagel   | 1974   | ⭐⭐⭐ | ⬜ 待读 |
-| 05  | On Denoting                         | Russell | 1905   | ⭐⭐⭐ | ⬜ 待读 |
+| 04  | What Is It Like to Be a Bat?        | Nagel   | 1974   | ⭐⭐⭐ | ✅ 已完成 |
+| 05  | On Denoting                         | Russell | 1905   | ⭐⭐⭐ | ✅ 已完成 |
 | 06  | Existentialism is a Humanism        | Sartre  | 1946   | ⭐⭐⭐ | ⬜ 待读 |
 | 07  | Two Dogmas of Empiricism            | Quine   | 1951   | ⭐⭐  | ⬜ 待读 |
-| 08  | Famine, Affluence, and Morality     | Singer  | 1972   | ⭐⭐  | ⬜ 待读 |
+| 08  | Famine, Affluence, and Morality     | Singer  | 1972   | ⭐⭐  | ✅ 已完成 |
 
 > 完整30篇索引见 [PAPERS_INDEX.md](./papers/PAPERS_INDEX.md)
 
@@ -111,10 +120,10 @@ philosophy-learning/
 | # | 书名 | 作者 | 年份 | 优先级 | 阅读状态 |
 |---|------|------|------|--------|---------|
 | B01 | 理想国（The Republic） | 柏拉图 | 约前375年 | ⭐⭐⭐ | 🟡 关键章节已精读（洞穴比喻、《美诺》相关主题已补） |
-| B02 | 尼各马可伦理学（Nicomachean Ethics） | 亚里士多德 | 约前350年 | ⭐⭐⭐ | ⬜ 待读 |
+| B02 | 尼各马可伦理学（Nicomachean Ethics） | 亚里士多德 | 约前350年 | ⭐⭐⭐ | 🟡 核心卷已精读 |
 | B03 | 第一哲学沉思集（Meditations） | 笛卡尔 | 1641 | ⭐⭐⭐ | ✅ 已完成核心精读 |
 | B04 | 纯粹理性批判（Critique of Pure Reason） | 康德 | 1781 | ⭐⭐⭐ | ⬜ 待读 |
-| B05 | 正义论（A Theory of Justice） | 罗尔斯 | 1971 | ⭐⭐⭐ | ⬜ 待读 |
+| B05 | 正义论（A Theory of Justice） | 罗尔斯 | 1971 | ⭐⭐⭐ | 🟡 第一章已精读 |
 | B06 | 查拉图斯特拉如是说（Thus Spoke Zarathustra） | 尼采 | 1883 | ⭐⭐ | ⬜ 待读 |
 | B07 | 哲学研究（Philosophical Investigations） | 维特根斯坦 | 1953 | ⭐⭐ | ⬜ 待读 |
 
@@ -181,7 +190,7 @@ Week 19+:   选择感兴趣方向深入（心灵哲学 / 政治哲学 / 伦理�
 ## 🛠️ 待办事项
 
 - [ ] 精读康德《未来形而上学导论》并生成入门报告
-- [ ] 完成 Nagel《成为蝙蝠是什么感觉？》心灵哲学分析
+- [ ] 精读诺齐克《无政府、国家与乌托邦》并与罗尔斯形成对话
 - [ ] 扩展"核心概念跨时代比较"系列报告（自由、正义、存在）
 - [ ] 制作哲学分支思维导图
 

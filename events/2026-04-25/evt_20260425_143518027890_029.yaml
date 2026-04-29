@@ -1,0 +1,9 @@
+event_id: evt_20260425_143518027890_029
+type: lock_released
+timestamp: 2026-04-25T14:35:18+00:00
+actor: BioAgent
+project: biology-learning
+task_id: T049
+message_id: <evt_20260425_143518027890_029@everagent.local>
+payload:
+  force: false

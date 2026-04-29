@@ -10,6 +10,8 @@
 | 页面 | 简介 |
 |------|------|
 | [roenneberg_till.md](./entities/roenneberg_till.md) | Till Roenneberg，LMU Munich，Social Jetlag 概念提出者，MCTQ 问卷 |
+| [shen_bingyi.md](./entities/shen_bingyi.md) | Bingyi Shen，运动对人类昼夜节律影响综述第一作者 |
+| [thomas_matthew_j.md](./entities/thomas_matthew_j.md) | J. Matthew Thomas，定时运动与 DLMO 相位移动人体干预研究第一作者 |
 | [walker_matthew.md](./entities/walker_matthew.md) | Matthew Walker，UC Berkeley 睡眠科学中心主任，《Why We Sleep》作者 |
 | [van_cauter_eve.md](./entities/van_cauter_eve.md) | Eve Van Cauter，芝加哥大学，睡眠内分泌与代谢 |
 | [born_jan.md](./entities/born_jan.md) | Jan Born，图宾根大学，睡眠与记忆 / GH 脉冲 |
@@ -26,6 +28,8 @@
 | [slow_wave_sleep.md](./concepts/slow_wave_sleep.md) | 慢波睡眠（SWS / N3）：生理恢复的核心阶段 |
 | [gh_sleep_coupling.md](./concepts/gh_sleep_coupling.md) | 生长激素与 SWS 的夜间耦合 |
 | [circadian_rhythm.md](./concepts/circadian_rhythm.md) | SCN + 外周钟 + 分子钟的 24h 内源节律系统 |
+| [exercise_phase_shift.md](./concepts/exercise_phase_shift.md) | 运动作为非光照授时因子造成 DLMO 相位移动 |
+| [non_photic_zeitgeber.md](./concepts/non_photic_zeitgeber.md) | 非光照授时因子：运动、进食、温度等光照之外的节律同步信号 |
 | [metabolic_syndrome.md](./concepts/metabolic_syndrome.md) | 代谢综合征：昼夜-代谢环的临床终点 |
 | [sleep_architecture.md](./concepts/sleep_architecture.md) | NREM/REM 交替的 ~90 分钟睡眠周期结构 |
 
