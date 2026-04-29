@@ -1,0 +1,16 @@
+event_id: evt_20260429_030311627474_001
+type: task_dispatched
+timestamp: 2026-04-29T03:03:11+00:00
+actor: EverAgent
+project: ai-learning
+task_id: T046
+message_id: <evt_20260429_030311627474_001@everagent.local>
+dedupe_key: T046:task.dispatch:EverAgent
+aamp: {"version":"1.1","intent":"task.dispatch","task_id":"T046","message_id":"<evt_20260429_030311627474_001@everagent.local>","dispatch_context":{"project":"ai-learning","actor":"EverAgent","event_type":"task_dispatched"},"priority":"P1"}
+payload:
+  target: "LLM 国内外主流评估体系详解"
+  type: "knowledge_report"
+  priority: "P1"
+  parent_task_id: null
+  expires_at: null
+  context_links: []

@@ -1,0 +1,11 @@
+event_id: evt_20260429_030311912990_004
+type: task_claimed
+timestamp: 2026-04-29T03:03:11+00:00
+actor: NeuronAgent
+project: ai-learning
+task_id: T046
+message_id: <evt_20260429_030311912990_004@everagent.local>
+aamp: {"version":"1.1","intent":"task.ack","task_id":"T046","message_id":"<evt_20260429_030311912990_004@everagent.local>","dispatch_context":{"project":"ai-learning","actor":"NeuronAgent","event_type":"task_claimed"}}
+payload:
+  target: "LLM 国内外主流评估体系详解"
+  type: "knowledge_report"
