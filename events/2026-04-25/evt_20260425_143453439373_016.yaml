@@ -1,0 +1,16 @@
+event_id: evt_20260425_143453439373_016
+type: task_dispatched
+timestamp: 2026-04-25T14:34:53+00:00
+actor: EverAgent
+project: ai-learning
+task_id: T048
+message_id: <evt_20260425_143453439373_016@everagent.local>
+dedupe_key: T048:task.dispatch:EverAgent
+aamp: {"version":"1.1","intent":"task.dispatch","task_id":"T048","message_id":"<evt_20260425_143453439373_016@everagent.local>","dispatch_context":{"project":"ai-learning","actor":"EverAgent","event_type":"task_dispatched"},"priority":"P2","context_links":["ai-learning/AGENTS.md","ai-learning/CONTEXT.md","ai-learning/papers/24_alphago_zero_2017.pdf","ai-learning/reports/paper_analyses/43_alphago_zero_2017.md"]}
+payload:
+  target: "Silver et al. (2017) AlphaZero self-play reinforcement learning"
+  type: "paper_analysis"
+  priority: "P2"
+  parent_task_id: null
+  expires_at: null
+  context_links: ["ai-learning/AGENTS.md", "ai-learning/CONTEXT.md", "ai-learning/papers/24_alphago_zero_2017.pdf", "ai-learning/reports/paper_analyses/43_alphago_zero_2017.md"]

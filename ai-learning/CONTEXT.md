@@ -44,6 +44,8 @@
 - `39_google_translate_2016` — GNMT·深层残差LSTM 8+8层·WordPiece·Attention·NMT工业部署里程碑·BLEU+60%（2026-04-11）
 - `40_deepvideo_2014` — Deep Video·Sports-1M数据集·四种时序融合策略·Slow Fusion·多分辨率架构·CVPR 2014（2026-04-11）
 - `41_eva02_2023` — EVA-02·ViT+SwiGLU+2D RoPE+sub-LN·CLIP-ViT-bigG特征MIM·304M参数·ImageNet-1K 90.0% top-1·COCO 58.3 box AP·高效视觉基础模型里程碑（2026-04-16）
+- `42_distilling_2015` — 知识蒸馏·高温softmax软标签·教师-学生训练·MNIST 146→74 errors·ASR蒸馏单模型WER 10.7%·模型压缩范式奠基（2026-04-25）
+- `43_alphago_zero_2017` — AlphaZero·自我对弈强化学习·策略价值网络+MCTS·700k步训练·国际象棋对Stockfish 28胜72和0负·将棋对Elmo 90胜2和8负·围棋对AG0 3-day 60胜40负（2026-04-25）
 
 **知识深度解析** (`reports/knowledge_reports/`)
 - `self_attention_深度解析` — 含代码实现
@@ -92,4 +94,6 @@
 - 工程类论文精读（Megatron-LM 知识报告已完成；原始 Megatron 论文精读尚无独立 paper_analysis）
 - Phase 2 尚缺：DDIM 等后续扩散论文；VGGNet、Batch Normalization 专项报告
 - 生成模型知识报告已完成（GAN/DDPM/LDM/DiT综合），但DDIM加速采样、Consistency Models尚无专项报告
+- 知识蒸馏原始论文 `42_distilling_2015` 已完成；现代 LLM 长文本/推理链蒸馏、DistilBERT/TinyBERT 专项报告尚无独立精读
+- 本地 `24_alphago_zero_2017.pdf` 实为 AlphaZero arXiv 论文 `Mastering Chess and Shogi by Self-Play with a General Reinforcement Learning Algorithm`，已完成 `43_alphago_zero_2017`；Nature 2017 `Mastering the game of Go without human knowledge` 原文尚无独立精读
 - 下一步推荐：Megatron-LM 原始论文精读（v1/v2/v3 paper_analysis）、DDIM 加速采样专项报告、Consistency Models

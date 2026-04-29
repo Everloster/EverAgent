@@ -106,3 +106,39 @@
     - biology-learning/CONTEXT.md
     - biology-learning/reports/paper_analyses
     - biology-learning/reports/concept_reports
+
+- id: T047
+  project: biology-learning
+  type: paper_analysis
+  target: "Thomas et al. (2020) Circadian rhythm phase shifts caused by timed exercise vary with chronotype"
+  value: "基于 JCI Insight/PMC 开放全文完成 P05 定时运动与时型相位移动精读，更新 CONTEXT/PAPERS_INDEX/wiki"
+  priority: P2
+  required_capability: task_executor
+  status: done
+  claimed_by: BioAgent
+  claimed_at: 2026-04-25T22:01:07+08:00
+  started_at: 2026-04-25T22:01:11+08:00
+  done_at: 2026-04-25T22:01:14+08:00
+  context_links:
+    - biology-learning/AGENTS.md
+    - biology-learning/CONTEXT.md
+    - biology-learning/papers/PAPERS_INDEX.md
+    - biology-learning/reports/paper_analyses/P05_thomas_exercise_phase_chronotype_2020.md
+
+- id: T049
+  project: biology-learning
+  type: paper_analysis
+  target: "Shen et al. (2023) Effects of exercise on circadian rhythms in humans"
+  value: "基于 Frontiers 官方开放全文完成 P07 运动对人体昼夜节律影响综述精读，更新 CONTEXT/PAPERS_INDEX/wiki"
+  priority: P2
+  required_capability: task_executor
+  status: done
+  claimed_by: BioAgent
+  claimed_at: 2026-04-25T22:35:17+08:00
+  started_at: 2026-04-25T22:35:17+08:00
+  done_at: 2026-04-25T22:35:17+08:00
+  context_links:
+    - biology-learning/AGENTS.md
+    - biology-learning/CONTEXT.md
+    - biology-learning/papers/PAPERS_INDEX.md
+    - biology-learning/reports/paper_analyses/P07_youngstedt_exercise_circadian_2023.md

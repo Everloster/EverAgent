@@ -3,7 +3,7 @@
 > 本文件为自动生成视图，由 `scripts/task_board_aggregator.py` 维护
 > **请勿直接编辑**，编辑将覆盖
 > 任务权威源：各项目的 `.project-task-state`，以及根目录的 `/.project-task-state`（global 任务）
-> 更新日期：**2026-04-29**
+> 更新日期：**2026-04-30**
 
 ---
 
@@ -21,9 +21,9 @@
 
 | 项目 | 当前状态 | 论文/文本精读 | 知识/概念报告 | 知识报告比 |
 |------|----------|:---:|:---:|:---:|
-| `ai-learning` | 🟢 | 37 | 30 | 45% |
+| `ai-learning` | 🟢 | 39 | 30 | 43% |
 | `ai-practice` | 🔴 | 0 | 0 | 0% |
-| `biology-learning` | 🟡 | 9 | 3 | 25% |
+| `biology-learning` | 🟡 | 11 | 3 | 21% |
 | `cs-learning` | 🟢 | 24 | 5 | 17% |
 | `philosophy-learning` | 🟡 | 12 | 3 | 20% |
 | `psychology-learning` | 🟡 | 12 | 3 | 20% |
@@ -68,6 +68,78 @@
     - wiki/concepts/llms_plus.md
     - wiki/concepts/world_models.md
     - wiki/concepts/agent_orchestration.md
+
+- id: T049
+  project: biology-learning
+  type: paper_analysis
+  target: "Shen et al. (2023) Effects of exercise on circadian rhythms in humans"
+  value: "基于 Frontiers 官方开放全文完成 P07 运动对人体昼夜节律影响综述精读，更新 CONTEXT/PAPERS_INDEX/wiki"
+  priority: P2
+  required_capability: task_executor
+  status: done
+  claimed_by: BioAgent
+  claimed_at: 2026-04-25T22:35:17+08:00
+  started_at: 2026-04-25T22:35:17+08:00
+  done_at: 2026-04-25T22:35:17+08:00
+  context_links:
+    - biology-learning/AGENTS.md
+    - biology-learning/CONTEXT.md
+    - biology-learning/papers/PAPERS_INDEX.md
+    - biology-learning/reports/paper_analyses/P07_youngstedt_exercise_circadian_2023.md
+
+- id: T048
+  project: ai-learning
+  type: paper_analysis
+  target: "Silver et al. (2017) AlphaZero self-play reinforcement learning"
+  value: "基于本地 PDF 24_alphago_zero_2017.pdf 的实际 AlphaZero 内容完成精读，更新 CONTEXT/PAPERS_INDEX/wiki"
+  priority: P2
+  required_capability: task_executor
+  status: done
+  claimed_by: NeuronAgent
+  claimed_at: 2026-04-25T22:35:01+08:00
+  started_at: 2026-04-25T22:35:01+08:00
+  done_at: 2026-04-25T22:35:01+08:00
+  context_links:
+    - ai-learning/AGENTS.md
+    - ai-learning/CONTEXT.md
+    - ai-learning/papers/24_alphago_zero_2017.pdf
+    - ai-learning/reports/paper_analyses/43_alphago_zero_2017.md
+
+- id: T047
+  project: biology-learning
+  type: paper_analysis
+  target: "Thomas et al. (2020) Circadian rhythm phase shifts caused by timed exercise vary with chronotype"
+  value: "基于 JCI Insight/PMC 开放全文完成 P05 定时运动与时型相位移动精读，更新 CONTEXT/PAPERS_INDEX/wiki"
+  priority: P2
+  required_capability: task_executor
+  status: done
+  claimed_by: BioAgent
+  claimed_at: 2026-04-25T22:01:07+08:00
+  started_at: 2026-04-25T22:01:11+08:00
+  done_at: 2026-04-25T22:01:14+08:00
+  context_links:
+    - biology-learning/AGENTS.md
+    - biology-learning/CONTEXT.md
+    - biology-learning/papers/PAPERS_INDEX.md
+    - biology-learning/reports/paper_analyses/P05_thomas_exercise_phase_chronotype_2020.md
+
+- id: T050
+  project: ai-learning
+  type: paper_analysis
+  target: "Hinton, Vinyals & Dean (2015) Distilling the Knowledge in a Neural Network"
+  value: "基于本地 PDF 23_distilling_2015.pdf 完成知识蒸馏原始论文精读，更新 CONTEXT/PAPERS_INDEX/wiki"
+  priority: P2
+  required_capability: task_executor
+  status: done
+  claimed_by: NeuronAgent
+  claimed_at: 2026-04-25T22:00:32+08:00
+  started_at: 2026-04-25T22:00:37+08:00
+  done_at: 2026-04-25T22:00:51+08:00
+  context_links:
+    - ai-learning/AGENTS.md
+    - ai-learning/CONTEXT.md
+    - ai-learning/papers/23_distilling_2015.pdf
+    - ai-learning/reports/paper_analyses/42_distilling_2015.md
 
 - id: T045
   project: ai-practice
@@ -133,58 +205,6 @@
   required_capability: task_executor
   status: done
   claimed_by: BioAgent
-  claimed_at: 2026-04-24T00:00:00+08:00
-  started_at: 2026-04-24T00:00:00+08:00
-  done_at: 2026-04-24T00:00:00+08:00
-
-- id: T038
-  project: biology-learning
-  type: paper_analysis
-  target: "Hayes et al. (2013) Circadian Rhythms in Exercise Performance: Implications for Hormonal and Muscular Adaptation"
-  value: "运动表现昼夜节律; 激素与肌肉适应的时间生物学机制"
-  priority: P2
-  required_capability: task_executor
-  status: done
-  claimed_by: BioAgent
-  claimed_at: 2026-04-24T00:00:00+08:00
-  started_at: 2026-04-24T00:00:00+08:00
-  done_at: 2026-04-24T00:00:00+08:00
-
-- id: T039
-  project: biology-learning
-  type: concept_report
-  target: "运动时间生物学：整合 Hayes/Ezagouri/Gupta 研究的个体化训练时间窗"
-  value: "整合 P17 Hayes(2013) + P20 Ezagouri(2023) + P21 Gupta(2025); 最佳运动时间的个体化决策框架"
-  priority: P2
-  required_capability: task_executor
-  status: done
-  claimed_by: BioAgent
-  claimed_at: 2026-04-24T00:00:00+08:00
-  started_at: 2026-04-24T00:00:00+08:00
-  done_at: 2026-04-24T00:00:00+08:00
-
-- id: T040
-  project: philosophy-learning
-  type: text_analysis
-  target: "Gettier (1963) Is Justified True Belief Knowledge?"
-  value: "3页震动20世纪知识论; JTB定义的两个反例; 知识论转向"
-  priority: P1
-  required_capability: task_executor
-  status: done
-  claimed_by: SocratesAgent
-  claimed_at: 2026-04-24T00:00:00+08:00
-  started_at: 2026-04-24T00:00:00+08:00
-  done_at: 2026-04-24T00:00:00+08:00
-
-- id: T041
-  project: philosophy-learning
-  type: text_analysis
-  target: "Russell (1905) On Denoting"
-  value: "摹状词理论; 法国现任国王是秃子难题; 逻辑分析哲学威力"
-  priority: P2
-  required_capability: task_executor
-  status: done
-  claimed_by: SocratesAgent
   claimed_at: 2026-04-24T00:00:00+08:00
   started_at: 2026-04-24T00:00:00+08:00
   done_at: 2026-04-24T00:00:00+08:00

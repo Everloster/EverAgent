@@ -1,7 +1,7 @@
 # 💻 Computer Science Learning Project
 
 > 系统学习计算机科学的个人知识库与学习项目
-> 创建日期：2026-03-24 | 最后更新：2026-03-26（任务板校正 + 协作分发优化）
+> 创建日期：2026-03-24 | 最后更新：2026-04-22（编程语言/并发主线补齐，当前 24 篇论文精读 + 5 篇知识报告）
 
 ---
 
@@ -36,7 +36,7 @@ cs-learning/
 │       └── SKILL.md                            # CS概念深挖技能（5层理解模型）
 │
 ├── reports/                                     # 📊 分析报告
-│   ├── paper_analyses/                         # 论文精读报告（19 篇已完成）
+│   ├── paper_analyses/                         # 论文精读报告（24 篇已完成）
 │   └── knowledge_reports/                      # 概念深度解析
 │       └── CS关键人物图谱.md                    # ✅ CS先驱生涯轨迹与技术传承图谱
 │
@@ -90,11 +90,20 @@ CS零基础，编程入门      →  Phase 1（编程基础 + 计算理论）  �
 - [Byzantine Generals (1982)](./reports/paper_analyses/08_byzantine_generals_1982.md)
 - [CSP (1978)](./reports/paper_analyses/18_csp_1978.md)
 - [TCP/IP (1974)](./reports/paper_analyses/19_tcpip_1974.md)
+- [DNS (1987)](./reports/paper_analyses/30_dns_1987.md)
+- [BGP (2006)](./reports/paper_analyses/31_bgp_rfc4271_2006.md)
 - [Chord (2001)](./reports/paper_analyses/28_chord_2001.md)
 - [Chubby (2006)](./reports/paper_analyses/29_chubby_2006.md)
+- [Dijkstra GOTO (1968)](./reports/paper_analyses/32_dijkstra_goto_1968.md)
+- [Hoare Logic (1969)](./reports/paper_analyses/33_hoare_axiomatic_1969.md)
+- [Lamport Bakery Algorithm (1974)](./reports/paper_analyses/34_lamport_bakery_1974.md)
 
 **概念深度解析：**
 - [CS关键人物图谱](./reports/knowledge_reports/CS关键人物图谱.md) — 从图灵到Linus的技术传承
+- [分布式系统知识图谱](./reports/knowledge_reports/分布式系统知识图谱.md) — Storage/Consensus/Coordination/Messaging 四主线
+- [DHT实战排查](./reports/knowledge_reports/DHT实战排查：从协议理论到工程故障诊断.md) — 协议理论到工程故障诊断
+- [操作系统内核设计深度解析](./reports/knowledge_reports/操作系统内核设计深度解析_20260416.md) — UNIX/FFS/CSP 到现代内核
+- [编程语言范式演化](./reports/knowledge_reports/编程语言范式演化_从Lisp到Go的并发模型变迁.md) — Lisp/结构化/CSP/LLVM 演化图谱
 
 ### 第五步：用技能模板生成新报告
 
@@ -122,8 +131,8 @@ CS零基础，编程入门      →  Phase 1（编程基础 + 计算理论）  �
 | 13 | Paxos Made Simple (Lamport) | 2001 | 共识算法 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/13_paxos_2001.md) |
 | 14 | In Search of an Understandable Consensus Algorithm (Raft) | 2014 | 共识算法 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/15_raft_2014.md) |
 | 15 | Bitcoin: A Peer-to-Peer Electronic Cash System (Nakamoto) | 2008 | 密码学/分布式 | ⭐⭐ | ⬜ 待读 |
-| 16 | Go To Statement Considered Harmful (Dijkstra) | 1968 | 编程语言 | ⭐⭐⭐ | ⬜ 待读 |
-| 17 | An Axiomatic Basis for Computer Programming (Hoare) | 1969 | 形式化方法 | ⭐⭐ | ⬜ 待读 |
+| 16 | Go To Statement Considered Harmful (Dijkstra) | 1968 | 编程语言 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/32_dijkstra_goto_1968.md) |
+| 17 | An Axiomatic Basis for Computer Programming (Hoare) | 1969 | 形式化方法 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/33_hoare_axiomatic_1969.md) |
 | 18 | Communicating Sequential Processes (Hoare) | 1978 | 并发理论 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/18_csp_1978.md) |
 | 19 | A Protocol for Packet Network Intercommunication (TCP/IP) | 1974 | 网络 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/19_tcpip_1974.md) |
 | 20 | The Design Philosophy of the DARPA Internet Protocols | 1988 | 网络 | ⭐⭐ | ⬜ 待读 |
@@ -132,14 +141,14 @@ CS零基础，编程入门      →  Phase 1（编程基础 + 计算理论）  �
 | 23 | A Fast File System for UNIX (McKusick et al.) | 1984 | 文件系统 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/23_ffs_1984.md) |
 | 24 | Recursive Functions of Symbolic Expressions (McCarthy) | 1960 | 编程语言 | ⭐⭐ | ⬜ 待读 |
 | 25 | An Efficient Algorithm for Determining the Convex Hull | 1973 | 算法 | ⭐ | ⬜ 待读 |
-| 26 | A New Solution to Dijkstra's Concurrent Programming Problem | 1974 | 并发 | ⭐⭐ | ⬜ 待读 |
+| 26 | A New Solution to Dijkstra's Concurrent Programming Problem | 1974 | 并发 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/34_lamport_bakery_1974.md) |
 | 27 | The Anatomy of a Large-Scale Hypertextual Web Search Engine | 1998 | 搜索引擎 | ⭐⭐⭐ | ⬜ 待读 |
 | 28 | Chord: A Scalable Peer-to-peer Lookup Protocol | 2001 | P2P/分布式 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/28_chord_2001.md) |
 | 29 | LLVM: A Compilation Framework for Lifelong Program Analysis | 2004 | 编译器 | ⭐⭐ | ⬜ 待读 |
 | 30 | Hints for Computer System Design (Lampson) | 1983 | 系统设计 | ⭐⭐⭐ | ⬜ 待读 |
 
 > 完整30篇索引（含摘要与下载链接）见 [PAPERS_INDEX.md](./papers/PAPERS_INDEX.md)
-> 当前已完成论文精读 12 篇，最新库存以 [CONTEXT.md](./CONTEXT.md) 为准。
+> 当前已完成论文精读 24 篇，知识深度解析 5 篇，最新库存以 [CONTEXT.md](./CONTEXT.md) 为准。
 
 ---
 
@@ -201,9 +210,9 @@ Week 33+:   专题深入（选择感兴趣方向：云计算 / 编译优化 / �
 
 ## 🛠️ 待办事项
 
-- [ ] 精读 Chubby 或 ZooKeeper/ZAB，补齐协调服务主线
-- [ ] 精读 A Fast File System for UNIX，补齐操作系统/文件系统脉络
-- [ ] 精读 TCP/IP 或 DARPA Internet Protocols，补齐网络主线
+- [ ] 精读 Codd 关系模型，补齐数据库理论主线
+- [ ] 精读 LLVM，补齐编译器基础设施主线
+- [ ] 精读 DARPA Internet Protocols，补齐互联网设计哲学主线
 - [ ] 阅读 CLRS 第1-10章并做笔记
 - [ ] 完成 xv6 操作系统实验（MIT 6.S081）
 

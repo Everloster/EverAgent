@@ -1,0 +1,16 @@
+event_id: evt_20260425_143510884110_023
+type: task_dispatched
+timestamp: 2026-04-25T14:35:10+00:00
+actor: EverAgent
+project: biology-learning
+task_id: T049
+message_id: <evt_20260425_143510884110_023@everagent.local>
+dedupe_key: T049:task.dispatch:EverAgent
+aamp: {"version":"1.1","intent":"task.dispatch","task_id":"T049","message_id":"<evt_20260425_143510884110_023@everagent.local>","dispatch_context":{"project":"biology-learning","actor":"EverAgent","event_type":"task_dispatched"},"priority":"P2","context_links":["biology-learning/AGENTS.md","biology-learning/CONTEXT.md","biology-learning/papers/PAPERS_INDEX.md","biology-learning/reports/paper_analyses/P07_youngstedt_exercise_circadian_2023.md"]}
+payload:
+  target: "Shen et al. (2023) Effects of exercise on circadian rhythms in humans"
+  type: "paper_analysis"
+  priority: "P2"
+  parent_task_id: null
+  expires_at: null
+  context_links: ["biology-learning/AGENTS.md", "biology-learning/CONTEXT.md", "biology-learning/papers/PAPERS_INDEX.md", "biology-learning/reports/paper_analyses/P07_youngstedt_exercise_circadian_2023.md"]

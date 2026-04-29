@@ -1,0 +1,11 @@
+event_id: evt_20260425_140107018226_012
+type: task_claimed
+timestamp: 2026-04-25T14:01:07+00:00
+actor: BioAgent
+project: biology-learning
+task_id: T047
+message_id: <evt_20260425_140107018226_012@everagent.local>
+aamp: {"version":"1.1","intent":"task.ack","task_id":"T047","message_id":"<evt_20260425_140107018226_012@everagent.local>","dispatch_context":{"project":"biology-learning","actor":"BioAgent","event_type":"task_claimed"}}
+payload:
+  target: "Thomas et al. (2020) Circadian rhythm phase shifts caused by timed exercise vary with chronotype"
+  type: "paper_analysis"

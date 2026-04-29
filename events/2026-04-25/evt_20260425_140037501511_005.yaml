@@ -1,0 +1,10 @@
+event_id: evt_20260425_140037501511_005
+type: task_started
+timestamp: 2026-04-25T14:00:37+00:00
+actor: NeuronAgent
+project: ai-learning
+task_id: T046
+message_id: <evt_20260425_140037501511_005@everagent.local>
+aamp: {"version":"1.1","intent":"task.stream.opened","task_id":"T046","message_id":"<evt_20260425_140037501511_005@everagent.local>","dispatch_context":{"project":"ai-learning","actor":"NeuronAgent","event_type":"task_started"},"stream_id":"stream_T046"}
+payload:
+  target: "Hinton, Vinyals & Dean (2015) Distilling the Knowledge in a Neural Network"

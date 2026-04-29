@@ -1,0 +1,10 @@
+event_id: evt_20260425_143501761539_020
+type: task_started
+timestamp: 2026-04-25T14:35:01+00:00
+actor: NeuronAgent
+project: ai-learning
+task_id: T048
+message_id: <evt_20260425_143501761539_020@everagent.local>
+aamp: {"version":"1.1","intent":"task.stream.opened","task_id":"T048","message_id":"<evt_20260425_143501761539_020@everagent.local>","dispatch_context":{"project":"ai-learning","actor":"NeuronAgent","event_type":"task_started"},"stream_id":"stream_T048"}
+payload:
+  target: "Silver et al. (2017) AlphaZero self-play reinforcement learning"

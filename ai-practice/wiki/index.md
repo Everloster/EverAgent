@@ -30,7 +30,7 @@
 
 | 实体 | 文件 | 类型 |
 |------|------|------|
-| Qwen 系列模型 | [../entities/qwen_series.md](entities/qwen_series.md) | 阿里云开源 LLM 系列 |
+| Qwen 系列模型 | [qwen_series.md](entities/qwen_series.md) | 阿里云开源 LLM 系列 |
 
 ## Syntheses（综合查询存档）
 

@@ -1,7 +1,7 @@
 # 🤖 AI Learning Project
 
 > 系统学习人工智能的个人知识库与学习项目
-> 创建日期：2026-03-23 | 最后更新：2026-04-09（新增 RAG/Agent/Test-time Compute/ICL 深度解析 4 篇，wiki 概念页 4 个）
+> 创建日期：2026-03-23 | 最后更新：2026-04-25（新增知识蒸馏精读，当前 38 篇论文精读 + 28 篇知识报告）
 
 ---
 
@@ -66,12 +66,12 @@ ai-learning/
 │
 ├── reports/                                     # 📊 分析报告
 │   ├── AI演义_笔记分析与项目整合报告.md          # 《AI演义》PDF 解析与项目改进建议
-│   ├── paper_analyses/                         # 论文精读报告（26 篇已完成）
+│   ├── paper_analyses/                         # 论文精读报告（38 篇已完成）
 │   │   ├── 01_transformer_2017.md
 │   │   ├── 04_instructgpt_2022.md
 │   │   ├── 12_clip_2021.md
 │   │   └── 26_tulu3_2024.md
-│   └── knowledge_reports/                      # 概念深度解析（12 篇）
+│   └── knowledge_reports/                      # 概念深度解析（28 篇）
 │       ├── self_attention_深度解析.md
 │       ├── RLHF_深度解析.md
 │       └── AI关键人物图谱.md
@@ -107,7 +107,7 @@ ai-learning/
 
 ### 第四步：阅读已有深度报告
 
-**论文精读报告（26 篇已完成）：**
+**论文精读报告（38 篇已完成）：**
 - [Transformer 论文分析](./reports/paper_analyses/01_transformer_2017.md) ← **推荐第一篇读**
 - [BERT 论文分析](./reports/paper_analyses/02_bert_2018.md) ← 双向预训练
 - [GPT-3 论文分析](./reports/paper_analyses/03_gpt3_2020.md) ← Few-shot
@@ -124,14 +124,33 @@ ai-learning/
 - [LoRA 论文分析](./reports/paper_analyses/15_lora_2021.md) ← 低秩适应微调
 - [LLaMA 论文分析](./reports/paper_analyses/16_llama_2023.md) ← 开源大模型
 - [MAE 论文分析](./reports/paper_analyses/17_mae_2022.md) ← 自监督视觉预训练
+- [FlashAttention 论文分析](./reports/paper_analyses/18_flashattention_2022.md) ← IO-aware 精确 Attention
+- [Stable Diffusion / LDM 论文分析](./reports/paper_analyses/20_stable_diffusion_2021.md) ← 潜空间扩散
+- [MoE 论文分析](./reports/paper_analyses/21_moe_2017.md) ← 稀疏门控混合专家
+- [The Bitter Lesson 精读](./reports/paper_analyses/22_bitter_lesson_2019.md) ← 通用计算方法元认知
+- [Knowledge Distillation 论文分析](./reports/paper_analyses/42_distilling_2015.md) ← 教师-学生软标签迁移
+- [ZeRO 论文分析](./reports/paper_analyses/25_zero_2019.md) ← 大规模训练内存优化
 - [Tulu 3 后训练流程分析](./reports/paper_analyses/26_tulu3_2024.md) ← SFT→DPO→RLVR 完整解析
+- [DiT 论文分析](./reports/paper_analyses/27_dit_2022.md) ← Transformer 生成骨架
+- [LAION-5B 论文分析](./reports/paper_analyses/29_laion5b_2022.md) ← 开源多模态数据
+- [RefinedWeb 论文分析](./reports/paper_analyses/30_refinedweb_2023.md) ← 高质量 Web 数据过滤
+- [MegaScale 论文分析](./reports/paper_analyses/31_megascale_2024.md) ← 万卡级训练系统
+- [EVA-02 论文分析](./reports/paper_analyses/41_eva02_2023.md) ← 高效视觉基础模型
 
-**知识深度解析（12 篇）：**
+**知识深度解析（28 篇）：**
 - [Self-Attention 深度解析](./reports/knowledge_reports/self_attention_深度解析.md) — 含代码实现
 - [RLHF 深度解析](./reports/knowledge_reports/RLHF_深度解析.md) — PPO/DPO 对比
 - [Scaling Laws 深度解析](./reports/knowledge_reports/Scaling_Laws_深度解析.md) — Kaplan 幂律·Chinchilla 修正
 - [LoRA 深度解析](./reports/knowledge_reports/LoRA_深度解析.md) — 低秩适应·QLoRA·DoRA
 - [AI关键人物图谱](./reports/knowledge_reports/AI关键人物图谱.md) — 研究者生涯与机构演化
+- [Agent Harness 三大设计流派解析](./reports/knowledge_reports/Agent_Harness_三大设计流派解析_20260422.md) — Harness 工程对比
+- [Agent Skills 生态深度解析](./reports/knowledge_reports/Agent_Skills_生态深度解析.md) — Skills 作为可复用组件
+- [Agent Memory 系统深度解析](./reports/knowledge_reports/Agent_Memory_系统深度解析.md) — 会话记忆与上下文工程
+- [Agent 心跳检测与实时 Dashboard 设计](./reports/knowledge_reports/Agent_心跳检测与实时Dashboard设计.md) — 可观测性与事件流
+- [金融垂直域 Agent 技术架构深度解析](./reports/knowledge_reports/金融垂直域Agent技术架构深度解析.md) — 金融多 Agent 与时序模型
+- [AI 编码 Agent 终端技术深度解析](./reports/knowledge_reports/AI编码Agent终端技术深度解析.md) — Scaffolding / Harness / Context 三层模型
+- [Agent 自进化技术路径深度解析](./reports/knowledge_reports/Agent_自进化技术路径深度解析.md) — 技能生命周期与记忆架构
+- [Agent 团队管理产品化路径深度解析](./reports/knowledge_reports/Agent_团队管理产品化路径深度解析.md) — Agent-as-Teammate 范式
 
 ### 第五步：用技能模板生成新报告
 
@@ -160,15 +179,16 @@ ai-learning/
 | 17 | MAE | 2022 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/17_mae_2022.md) |
 | 16 | LLaMA | 2023 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/16_llama_2023.md) |
 | 15 | LoRA | 2021 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/15_lora_2021.md) |
-| 20 | Stable Diffusion (LDM) | 2021 | ⭐⭐⭐ | ⬜ 待读 |
-| 21 | MoE | 2017 | ⭐⭐⭐ | ⬜ 待读 |
-| 22 | The Bitter Lesson | 2019 | ⭐⭐⭐ | ✅ [已保存](./papers/22_bitter_lesson_2019.md)（英中双语）|
-| 25 | ZeRO | 2019 | ⭐⭐ | ⬜ 待读 |
+| 20 | Stable Diffusion (LDM) | 2021 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/20_stable_diffusion_2021.md) |
+| 21 | MoE | 2017 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/21_moe_2017.md) |
+| 22 | The Bitter Lesson | 2019 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/22_bitter_lesson_2019.md) |
+| 23 | Distilling the Knowledge in a Neural Network | 2015 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/42_distilling_2015.md) |
+| 25 | ZeRO | 2019 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/25_zero_2019.md) |
 | 26 | Tulu 3 | 2024 | ⭐⭐⭐ | ✅ [已完成](./reports/paper_analyses/26_tulu3_2024.md) |
-| 27 | DiT | 2022 | ⭐⭐ | ⬜ 待读 |
+| 27 | DiT | 2022 | ⭐⭐ | ✅ [已完成](./reports/paper_analyses/27_dit_2022.md) |
 
-> 完整32篇索引见 [PAPERS_INDEX.md](./papers/PAPERS_INDEX.md)
-> 当前已完成论文精读 26 篇，知识深度解析 12 篇，最新库存以 [CONTEXT.md](./CONTEXT.md) 为准。
+> 完整论文索引见 [PAPERS_INDEX.md](./papers/PAPERS_INDEX.md)
+> 当前已完成论文精读 38 篇，知识深度解析 28 篇，最新库存以 [CONTEXT.md](./CONTEXT.md) 为准。
 
 ---
 

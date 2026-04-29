@@ -1,0 +1,10 @@
+event_id: evt_20260425_143517914678_027
+type: task_started
+timestamp: 2026-04-25T14:35:17+00:00
+actor: BioAgent
+project: biology-learning
+task_id: T049
+message_id: <evt_20260425_143517914678_027@everagent.local>
+aamp: {"version":"1.1","intent":"task.stream.opened","task_id":"T049","message_id":"<evt_20260425_143517914678_027@everagent.local>","dispatch_context":{"project":"biology-learning","actor":"BioAgent","event_type":"task_started"},"stream_id":"stream_T049"}
+payload:
+  target: "Shen et al. (2023) Effects of exercise on circadian rhythms in humans"
