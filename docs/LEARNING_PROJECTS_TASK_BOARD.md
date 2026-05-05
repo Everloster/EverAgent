@@ -3,7 +3,7 @@
 > 本文件为自动生成视图，由 `scripts/task_board_aggregator.py` 维护
 > **请勿直接编辑**，编辑将覆盖
 > 任务权威源：各项目的 `.project-task-state`，以及根目录的 `/.project-task-state`（global 任务）
-> 更新日期：**2026-04-30**
+> 更新日期：**2026-05-05**
 
 ---
 
@@ -23,7 +23,7 @@
 |------|----------|:---:|:---:|:---:|
 | `ai-learning` | 🟢 | 39 | 30 | 43% |
 | `ai-practice` | 🔴 | 0 | 0 | 0% |
-| `biology-learning` | 🟡 | 11 | 3 | 21% |
+| `biology-learning` | 🟡 | 11 | 4 | 27% |
 | `cs-learning` | 🟢 | 24 | 5 | 17% |
 | `philosophy-learning` | 🟡 | 12 | 3 | 20% |
 | `psychology-learning` | 🟡 | 12 | 3 | 20% |
@@ -35,6 +35,23 @@
 ### 最近完成（自动生成）
 
 ```yaml
+- id: T051
+  project: biology-learning
+  type: concept_report
+  target: "女童月经初潮提前与中枢性性早熟：国内临床经验、国际诊疗进展与家庭决策指南"
+  value: "围绕三年级女童来月经/初潮提前问题，结合中国临床共识与国际前沿研究，完成临床决策导向深度研究报告"
+  priority: P1
+  required_capability: task_executor
+  status: done
+  claimed_by: BioAgent
+  claimed_at: 2026-05-05T11:19:19+08:00
+  started_at: 2026-05-05T11:19:22+08:00
+  done_at: 2026-05-05T11:23:38+08:00
+  context_links:
+    - biology-learning/AGENTS.md
+    - biology-learning/CONTEXT.md
+    - biology-learning/reports/concept_reports
+
 - id: T046
   project: ai-learning
   type: knowledge_report
@@ -195,19 +212,6 @@
     - philosophy-learning/CONTEXT.md
     - philosophy-learning/reports/text_analyses
     - philosophy-learning/wiki/index.md
-
-- id: T037
-  project: biology-learning
-  type: paper_analysis
-  target: "Roenneberg & Merrow (2022) The circadian system, sleep, and the health/disease balance"
-  value: "J Sleep Research 综述; 昼夜节律系统、睡眠与健康/疾病平衡的整合视角"
-  priority: P1
-  required_capability: task_executor
-  status: done
-  claimed_by: BioAgent
-  claimed_at: 2026-04-24T00:00:00+08:00
-  started_at: 2026-04-24T00:00:00+08:00
-  done_at: 2026-04-24T00:00:00+08:00
 
 ```
 

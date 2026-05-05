@@ -37,3 +37,13 @@
 **更新 Wiki 页面**：`wiki/index.md`
 
 **核心事实**：Frontiers 官方页显示本文作者为 Shen et al.；综述范围覆盖正常光暗、恒定条件、扰乱光暗条件下的运动相位研究，并把 DLMO、aMT6s、体温、睡眠-觉醒行为和骨骼肌钟基因作为主要证据线索。运动是重要非光照授时因子，但效应通常弱于光照，应用建议需按睡眠、代谢、心血管等目标结局分级。
+
+## [2026-05-05] ingest | 女童月经初潮提前与中枢性性早熟
+
+**新建报告**：`reports/concept_reports/女童初潮提前与中枢性性早熟_深度研究报告.md`
+
+**新增 Wiki 页面**：`wiki/concepts/early_menarche.md`、`wiki/concepts/central_precocious_puberty.md`、`wiki/entities/chinese_pediatric_endocrinology_group.md`、`wiki/entities/eugster_erica.md`
+
+**更新 Wiki 页面**：`wiki/index.md`
+
+**核心事实**：三年级女童初潮通常提示月经初潮提前，应由儿科内分泌评估是否存在中枢性性早熟；报告整合中国 CPP 专家共识、国内儿童早发育队列和 JCEM/Lancet/JAMA 等国际证据，形成家庭就医清单和观察/治疗分层框架。

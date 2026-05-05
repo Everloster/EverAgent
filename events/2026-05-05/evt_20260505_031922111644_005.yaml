@@ -1,0 +1,10 @@
+event_id: evt_20260505_031922111644_005
+type: task_started
+timestamp: 2026-05-05T03:19:22+00:00
+actor: BioAgent
+project: biology-learning
+task_id: T051
+message_id: <evt_20260505_031922111644_005@everagent.local>
+aamp: {"version":"1.1","intent":"task.stream.opened","task_id":"T051","message_id":"<evt_20260505_031922111644_005@everagent.local>","dispatch_context":{"project":"biology-learning","actor":"BioAgent","event_type":"task_started"},"stream_id":"stream_T051"}
+payload:
+  target: "女童月经初潮提前与中枢性性早熟：国内临床经验、国际诊疗进展与家庭决策指南"
