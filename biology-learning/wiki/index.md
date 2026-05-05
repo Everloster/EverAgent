@@ -16,6 +16,8 @@
 | [van_cauter_eve.md](./entities/van_cauter_eve.md) | Eve Van Cauter，芝加哥大学，睡眠内分泌与代谢 |
 | [born_jan.md](./entities/born_jan.md) | Jan Born，图宾根大学，睡眠与记忆 / GH 脉冲 |
 | [rutters_femke.md](./entities/rutters_femke.md) | Femke Rutters，阿姆斯特丹 UMC，New Hoorn Study |
+| [chinese_pediatric_endocrinology_group.md](./entities/chinese_pediatric_endocrinology_group.md) | 中华医学会儿科学分会内分泌遗传代谢学组，中国 CPP 诊疗共识核心机构 |
+| [eugster_erica.md](./entities/eugster_erica.md) | Erica A. Eugster，儿童内分泌学者，JCEM 2023 CPP 临床路径综述作者 |
 
 ---
 
@@ -32,6 +34,8 @@
 | [non_photic_zeitgeber.md](./concepts/non_photic_zeitgeber.md) | 非光照授时因子：运动、进食、温度等光照之外的节律同步信号 |
 | [metabolic_syndrome.md](./concepts/metabolic_syndrome.md) | 代谢综合征：昼夜-代谢环的临床终点 |
 | [sleep_architecture.md](./concepts/sleep_architecture.md) | NREM/REM 交替的 ~90 分钟睡眠周期结构 |
+| [early_menarche.md](./concepts/early_menarche.md) | 月经初潮提前：小学阶段初潮的儿科内分泌评估入口 |
+| [central_precocious_puberty.md](./concepts/central_precocious_puberty.md) | 中枢性性早熟：HPG 轴提前启动导致的青春期发育 |
 
 ---
 
