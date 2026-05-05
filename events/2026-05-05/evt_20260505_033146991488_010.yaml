@@ -1,0 +1,16 @@
+event_id: evt_20260505_033146991488_010
+type: task_dispatched
+timestamp: 2026-05-05T03:31:46+00:00
+actor: EverAgent
+project: biology-learning
+task_id: T052
+message_id: <evt_20260505_033146991488_010@everagent.local>
+dedupe_key: T052:task.dispatch:EverAgent
+aamp: {"version":"1.1","intent":"task.dispatch","task_id":"T052","message_id":"<evt_20260505_033146991488_010@everagent.local>","dispatch_context":{"project":"biology-learning","actor":"EverAgent","event_type":"task_dispatched"},"priority":"P1","context_links":["biology-learning/reports/concept_reports/女童初潮提前与中枢性性早熟_深度研究报告.md","biology-learning/wiki/concepts/central_precocious_puberty.md"]}
+payload:
+  target: "扩充女童初潮提前与中枢性性早熟报告：纳入2022中国专家共识PDF全文与国际前沿论文分析"
+  type: "maintenance"
+  priority: "P1"
+  parent_task_id: null
+  expires_at: null
+  context_links: ["biology-learning/reports/concept_reports/女童初潮提前与中枢性性早熟_深度研究报告.md", "biology-learning/wiki/concepts/central_precocious_puberty.md"]

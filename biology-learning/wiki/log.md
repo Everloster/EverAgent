@@ -47,3 +47,11 @@
 **更新 Wiki 页面**：`wiki/index.md`
 
 **核心事实**：三年级女童初潮通常提示月经初潮提前，应由儿科内分泌评估是否存在中枢性性早熟；报告整合中国 CPP 专家共识、国内儿童早发育队列和 JCEM/Lancet/JAMA 等国际证据，形成家庭就医清单和观察/治疗分层框架。
+
+## [2026-05-05] ingest | 2022 中国 CPP 专家共识全文与前沿论文补充分析
+
+**更新报告**：`reports/concept_reports/女童初潮提前与中枢性性早熟_深度研究报告.md`
+
+**更新 Wiki 页面**：`wiki/concepts/central_precocious_puberty.md`、`wiki/concepts/early_menarche.md`
+
+**核心事实**：根据用户提供的《中枢性性早熟诊断与治疗专家共识（2022）》PDF，补充女童 7.5 岁前乳房发育或 10.0 岁前初潮的国内界值、GnRH 激发试验参数、盆腔超声和 MRI 分层、GnRHa 指征/监测/安全性，并加入 JAMA Pediatrics 2020、Endocrine Reviews 2022、JCEM 2020/2022/2023、韩国 2022 指南等逐篇前沿论文分析。

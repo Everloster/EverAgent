@@ -35,6 +35,22 @@
 ### 最近完成（自动生成）
 
 ```yaml
+- id: T052
+  project: biology-learning
+  type: maintenance
+  target: "扩充女童初潮提前与中枢性性早熟报告：纳入2022中国专家共识PDF全文与国际前沿论文分析"
+  value: "基于用户提供的2022中国CPP专家共识PDF，补充诊断阈值、检查参数、治疗指征、监测安全性，并增加权威前沿论文逐篇分析"
+  priority: P1
+  required_capability: task_executor
+  status: done
+  claimed_by: BioAgent
+  claimed_at: 2026-05-05T11:31:50+08:00
+  started_at: 2026-05-05T11:31:52+08:00
+  done_at: 2026-05-05T11:35:39+08:00
+  context_links:
+    - biology-learning/reports/concept_reports/女童初潮提前与中枢性性早熟_深度研究报告.md
+    - biology-learning/wiki/concepts/central_precocious_puberty.md
+
 - id: T051
   project: biology-learning
   type: concept_report
@@ -194,24 +210,6 @@
     - biology-learning/CONTEXT.md
     - biology-learning/reports/paper_analyses
     - biology-learning/reports/concept_reports
-
-- id: T044
-  project: philosophy-learning
-  type: maintenance
-  target: "清理 CONTEXT 防幻觉边界重复条目并同步最新覆盖"
-  value: "philosophy-learning CONTEXT 的防幻觉边界存在重复条目，且最新 Gettier/Russell/Singer 等完成情况需要让边界描述更一致；只做元信息维护，不新增报告"
-  priority: P2
-  required_capability: task_executor
-  status: done
-  claimed_by: SocratesAgent
-  claimed_at: 2026-04-24T18:03:29+08:00
-  started_at: 2026-04-24T18:03:29+08:00
-  done_at: 2026-04-24T18:03:29+08:00
-  context_links:
-    - philosophy-learning/AGENTS.md
-    - philosophy-learning/CONTEXT.md
-    - philosophy-learning/reports/text_analyses
-    - philosophy-learning/wiki/index.md
 
 ```
 
