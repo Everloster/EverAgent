@@ -1,0 +1,9 @@
+event_id: evt_20260507_044014371321_022
+type: lock_released
+timestamp: 2026-05-07T04:40:14+00:00
+actor: EverAgent
+project: ai-learning
+task_id: T053
+message_id: <evt_20260507_044014371321_022@everagent.local>
+payload:
+  force: false
