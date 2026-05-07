@@ -103,6 +103,12 @@ context_window >= system_prompt + user_prompt + documents + tool_outputs + conve
 
 下面这张图专门解释“1M Long Context 在预训练、后训练与线上推理阶段到底发生了什么”。
 
+中文版视觉图：
+
+![1M Long Context 中文四阶段视觉图](../../images/long_context_1m_lifecycle_infographic_cn.png)
+
+英文版视觉图：
+
 ![1M Long Context 三阶段视觉图](../../images/long_context_1m_lifecycle_infographic.png)
 
 需要先修正一个容易混淆的点：
