@@ -99,6 +99,63 @@ context_window >= system_prompt + user_prompt + documents + tool_outputs + conve
 
 ---
 
+## 2.1 总览图：从错位 next token 到更合理的预测
+
+下面这张图专门解释“1M Long Context 在预训练、后训练与线上推理阶段到底发生了什么”。
+
+需要先修正一个容易混淆的点：
+
+```text
+attention matrix 不是持久模型参数。
+```
+
+真正被训练更新的是 `Wq/Wk/Wv/Wo`、MLP、Embedding、LayerNorm 等模型权重。attention matrix 是模型在某个具体 1M 输入上，由 `QK^T` 动态算出来的注意力分布。为了贴近直觉，下图把它称为“attention pattern / 注意力图”。预训练和后训练都会改变模型权重，因此同样的 1M 输入会产生不同、更有用的 attention pattern。
+
+```mermaid
+flowchart TB
+    subgraph S0["输入构造：1M tokens 错开 1 位"]
+        A["原始长序列 x<br/>[t1, t2, t3, ..., t999999, t1000000]"]
+        B["训练输入 input_ids<br/>[t1, t2, t3, ..., t999999]"]
+        C["训练标签 labels<br/>[t2, t3, t4, ..., t1000000]"]
+        A --> B
+        A --> C
+        B --> D["next token loss<br/>预测第 i+1 个 token"]
+        C --> D
+    end
+
+    subgraph S1["阶段 1：预训练 Pretraining"]
+        D --> E["Transformer 前向传播<br/>Embedding + Position/RoPE + Attention + MLP"]
+        E --> F["每层动态产生 attention pattern<br/>A_l = softmax(Q_l K_l^T / sqrt(d))"]
+        F --> G["1M 背后的注意力图<br/>近似 1M x 1M，可见范围由 causal mask 限制"]
+        G --> H["梯度下降更新权重<br/>Wq/Wk/Wv/Wo/MLP/Embedding"]
+        H --> I["随机鹦鹉雏形<br/>能续写、会模仿统计模式<br/>但未必知道何时该遵循人类意图"]
+    end
+
+    subgraph S2["阶段 2：后训练 Post-training"]
+        I --> J["长上下文指令数据<br/>needle QA、长摘要、跨文档比较、引用证据、冲突检测"]
+        J --> K["SFT / DPO / RLHF / RLVR 等目标"]
+        K --> L["继续修改和强化模型权重<br/>尤其影响注意力如何分配、证据如何被使用"]
+        L --> M["同样 1M 输入下的 attention pattern 更任务化<br/>更会关注证据、指令、约束、相关片段"]
+        M --> N["next token 预测更合理<br/>不是只会续写，而是更会回答、引用、拒绝和澄清"]
+    end
+
+    subgraph S3["阶段 3：线上推理 Inference"]
+        N --> O["用户请求<br/>system prompt + 问题 + 资料 + 历史 + 工具结果"]
+        O --> P["Prompt packing / RAG / 截断 / 输出预算预留"]
+        P --> Q["Prefill 读取长上下文<br/>生成线上 attention pattern 与 KV cache"]
+        Q --> R["Decode 逐 token 生成<br/>每一步仍是 next token prediction"]
+        R --> T["最终表现<br/>看得进 1M、找得到证据、用得对、跑得起"]
+    end
+```
+
+这张图可以压缩成三句话：
+
+1. 预训练阶段：把 1M token 序列错开 1 位，用 next token loss 训练模型，让模型学会长序列统计规律。
+2. 预训练之后：模型权重会让每个 1M 输入动态产生巨大的 attention pattern，这是“随机鹦鹉”能模仿和续写的基础。
+3. 后训练阶段：通过长上下文指令、偏好和奖励数据继续更新权重，使 attention pattern 更关注任务证据，next token 预测也更符合人类问题和约束。
+
+---
+
 ## 3. 层次三：预训练阶段的 1M context
 
 ### 3.1 预训练阶段的核心含义
