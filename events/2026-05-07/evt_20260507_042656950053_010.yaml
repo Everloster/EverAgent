@@ -1,0 +1,10 @@
+event_id: evt_20260507_042656950053_010
+type: task_started
+timestamp: 2026-05-07T04:26:56+00:00
+actor: EverAgent
+project: ai-practice
+task_id: T054
+message_id: <evt_20260507_042656950053_010@everagent.local>
+aamp: {"version":"1.1","intent":"task.stream.opened","task_id":"T054","message_id":"<evt_20260507_042656950053_010@everagent.local>","dispatch_context":{"project":"ai-practice","actor":"EverAgent","event_type":"task_started"},"stream_id":"stream_T054"}
+payload:
+  target: "Long Context 1M 机制缩尺代码模拟实验"

@@ -24,11 +24,16 @@
   value: "在 ai-practice 中新增可运行长上下文机制实验：用小模型/小窗口模拟预训练 max_seq_len 与位置编码、后训练 needle-in-a-haystack SFT 数据、推理阶段 full-context vs RAG prompt packing/token budget/KV cache 成本观测，并产出实验笔记与 wiki 更新"
   priority: P1
   required_capability: task_executor
-  status: open
-  claimed_by: null
-  claimed_at: null
+  status: done
+  claimed_by: EverAgent
+  claimed_at: 2026-05-07T12:26:49+08:00
+  started_at: 2026-05-07T12:26:56+08:00
+  done_at: 2026-05-07T12:38:16+08:00
   context_links:
     - ai-practice/AGENTS.md
     - ai-practice/CONTEXT.md
     - ai-practice/LEARNING_PATH.md
     - ai-practice/skills/experiment_analysis/SKILL.md
+    - ai-practice/src/long_context_simulation.py
+    - ai-practice/experiments/exp_006_long_context_1m_simulation.md
+    - ai-practice/wiki/concepts/long_context_simulation.md

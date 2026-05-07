@@ -16,6 +16,7 @@
 | 概念 | 文件 | 一句话说明 |
 |------|------|---------|
 | Mixture of Experts | [mixture_of_experts.md](concepts/mixture_of_experts.md) | 稀疏激活：参数量与计算量分离，Router + N 个 Expert；对应 [exp_005](../experiments/exp_005_moe_transformer.md) |
+| Long Context Simulation | [long_context_simulation.md](concepts/long_context_simulation.md) | 用缩尺脚本模拟 1M context 在预训练、后训练、推理阶段的工程路径；对应 [exp_006](../experiments/exp_006_long_context_1m_simulation.md) |
 
 ## 阶段 4 相关概念
 
@@ -44,6 +45,9 @@
 tokenization ──→ transformer_from_scratch ──→ mixture_of_experts
                         │                              │
                         │                    (替换 FFN 层)
+                        │
+                        ├────────────→ long_context_simulation
+                        │                 (扩展 context window / 推理成本)
                         │
                         ↓
                     lora_peft ──→ grpo ← unsloth

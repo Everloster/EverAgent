@@ -21,7 +21,7 @@
 
 | 项目 | 当前状态 | 论文/文本精读 | 知识/概念报告 | 知识报告比 |
 |------|----------|:---:|:---:|:---:|
-| `ai-learning` | 🟢 | 39 | 30 | 43% |
+| `ai-learning` | 🟢 | 39 | 31 | 44% |
 | `ai-practice` | 🔴 | 0 | 0 | 0% |
 | `biology-learning` | 🟡 | 11 | 4 | 27% |
 | `cs-learning` | 🟢 | 24 | 5 | 17% |
@@ -32,7 +32,7 @@
 
 ## 任务队列
 
-### 开放任务池（P1）
+### 最近完成（自动生成）
 
 ```yaml
 - id: T053
@@ -42,13 +42,17 @@
   value: "围绕 1M 上下文窗口，系统拆解预训练中的长序列建模/位置编码/注意力机制，后训练中的长上下文检索与指令对齐，线上推理中的 token budget/KV cache/prefill 延迟/RAG 取舍，并沉淀 wiki 概念页"
   priority: P1
   required_capability: task_executor
-  status: open
-  claimed_by: null
-  claimed_at: null
+  status: done
+  claimed_by: EverAgent
+  claimed_at: 2026-05-07T12:26:49+08:00
+  started_at: 2026-05-07T12:26:56+08:00
+  done_at: 2026-05-07T12:38:16+08:00
   context_links:
     - ai-learning/AGENTS.md
     - ai-learning/CONTEXT.md
     - ai-learning/skills/concept_deep_dive/SKILL.md
+    - ai-learning/reports/knowledge_reports/Long_Context_1M_三阶段深度解析_20260507.md
+    - ai-learning/wiki/concepts/long_context_systems.md
 
 - id: T054
   project: ai-practice
@@ -57,20 +61,20 @@
   value: "在 ai-practice 中新增可运行长上下文机制实验：用小模型/小窗口模拟预训练 max_seq_len 与位置编码、后训练 needle-in-a-haystack SFT 数据、推理阶段 full-context vs RAG prompt packing/token budget/KV cache 成本观测，并产出实验笔记与 wiki 更新"
   priority: P1
   required_capability: task_executor
-  status: open
-  claimed_by: null
-  claimed_at: null
+  status: done
+  claimed_by: EverAgent
+  claimed_at: 2026-05-07T12:26:49+08:00
+  started_at: 2026-05-07T12:26:56+08:00
+  done_at: 2026-05-07T12:38:16+08:00
   context_links:
     - ai-practice/AGENTS.md
     - ai-practice/CONTEXT.md
     - ai-practice/LEARNING_PATH.md
     - ai-practice/skills/experiment_analysis/SKILL.md
+    - ai-practice/src/long_context_simulation.py
+    - ai-practice/experiments/exp_006_long_context_1m_simulation.md
+    - ai-practice/wiki/concepts/long_context_simulation.md
 
-```
-
-### 最近完成（自动生成）
-
-```yaml
 - id: T052
   project: biology-learning
   type: maintenance
@@ -209,43 +213,6 @@
     - ai-learning/CONTEXT.md
     - ai-learning/papers/23_distilling_2015.pdf
     - ai-learning/reports/paper_analyses/42_distilling_2015.md
-
-- id: T045
-  project: ai-practice
-  type: maintenance
-  target: "同步 exp_005 后的 ai-practice 上下文与 wiki 导航"
-  value: "ai-practice 已有 exp_005 MoE Transformer 教学笔记；检查 README/CONTEXT/wiki/index/log 是否一致，补齐导航和边界说明，不新增实验"
-  priority: P2
-  required_capability: task_executor
-  status: done
-  claimed_by: PracticeAgent
-  claimed_at: 2026-04-24T18:03:29+08:00
-  started_at: 2026-04-24T18:03:29+08:00
-  done_at: 2026-04-24T18:03:30+08:00
-  context_links:
-    - ai-practice/AGENTS.md
-    - ai-practice/CONTEXT.md
-    - ai-practice/README.md
-    - ai-practice/wiki/index.md
-    - ai-practice/experiments/exp_005_moe_transformer.md
-
-- id: T043
-  project: biology-learning
-  type: maintenance
-  target: "修正 CONTEXT 防幻觉边界与导航状态"
-  value: "biology-learning 已新增 P02/P03/P04/P17/P26 等报告，但 CONTEXT 边界仍称除 P01/P08/P09/P25 外其余未独立精读；需要修正边界、下一步推荐与导航描述，保持与已有报告一致"
-  priority: P1
-  required_capability: task_executor
-  status: done
-  claimed_by: BioAgent
-  claimed_at: 2026-04-24T18:03:29+08:00
-  started_at: 2026-04-24T18:03:29+08:00
-  done_at: 2026-04-24T18:03:29+08:00
-  context_links:
-    - biology-learning/AGENTS.md
-    - biology-learning/CONTEXT.md
-    - biology-learning/reports/paper_analyses
-    - biology-learning/reports/concept_reports
 
 ```
 

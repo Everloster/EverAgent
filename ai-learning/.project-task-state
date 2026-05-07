@@ -244,10 +244,14 @@
   value: "围绕 1M 上下文窗口，系统拆解预训练中的长序列建模/位置编码/注意力机制，后训练中的长上下文检索与指令对齐，线上推理中的 token budget/KV cache/prefill 延迟/RAG 取舍，并沉淀 wiki 概念页"
   priority: P1
   required_capability: task_executor
-  status: open
-  claimed_by: null
-  claimed_at: null
+  status: done
+  claimed_by: EverAgent
+  claimed_at: 2026-05-07T12:26:49+08:00
+  started_at: 2026-05-07T12:26:56+08:00
+  done_at: 2026-05-07T12:38:16+08:00
   context_links:
     - ai-learning/AGENTS.md
     - ai-learning/CONTEXT.md
     - ai-learning/skills/concept_deep_dive/SKILL.md
+    - ai-learning/reports/knowledge_reports/Long_Context_1M_三阶段深度解析_20260507.md
+    - ai-learning/wiki/concepts/long_context_systems.md

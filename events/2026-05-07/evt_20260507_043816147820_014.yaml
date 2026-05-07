@@ -1,0 +1,11 @@
+event_id: evt_20260507_043816147820_014
+type: task_done
+timestamp: 2026-05-07T04:38:16+00:00
+actor: EverAgent
+project: ai-learning
+task_id: T053
+message_id: <evt_20260507_043816147820_014@everagent.local>
+aamp: {"version":"1.1","intent":"task.result","task_id":"T053","message_id":"<evt_20260507_043816147820_014@everagent.local>","dispatch_context":{"project":"ai-learning","actor":"EverAgent","event_type":"task_done"},"status":"completed"}
+payload:
+  target: "1M Long Context 在预训练、后训练与线上推理阶段的技术含义"
+  duration_hint: "completed"

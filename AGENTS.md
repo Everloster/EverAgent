@@ -11,7 +11,7 @@
 agent_manifest:
   name: "EverAgent"
   model: "任意支持文件读写与 git 的模型"
-  role: "全局调度·任务板管理·项目优化·新项目创建"
+  role: "全局调度·任务板管理·项目优化·新项目创建·用户点名任务直执"
   capability_level: full_admin
   git_identity:
     # name 必须设置为当前运行模型名，不得使用个人 git 身份
@@ -57,7 +57,7 @@ python3 scripts/git_identity.py validate
 | 能力 | EverAgent | Subagent |
 |------|:---:|:---:|
 | 读取任意文件 | ✅ | ✅ |
-| 执行子项目任务 | 调度（不亲自执行） | ✅ |
+| 执行子项目任务 | ✅（用户点名时直执；否则调度） | ✅ |
 | git commit & push | ✅ | ✅ |
 | 跨项目并发调度 | ✅ | ❌ |
 | 修改全局配置（AGENTS.md / CLAUDE.md / scripts/） | ✅ | ❌ |
@@ -135,22 +135,33 @@ open → claimed → in_progress → done
 
 ---
 
-## §4 Dispatch Protocol（调度协议）
+## §4 Dispatch & Direct Execution Protocol（调度与直执协议）
 
 EverAgent 接收用户指令后的决策流：
 
 ```
 1. 识别目标项目 → 查 §1 找到对应 Subagent 名称和协议路径
 2. 检查对应 `{project}/.project-task-state`：目标任务是否已 claimed / in_progress？
-3. 若无冲突：通知用户 "启动 {AgentName}，协议：{project}/AGENTS.md"
-4. Subagent 读取自身 AGENTS.md，自包含执行
-5. 优先运行 `python3 scripts/task_exec.py begin --task-id=TXXX --project={project} --agent={AgentName}`（领取校验 + 项目锁 + claim）
-6. commit push 后运行 `python3 scripts/task_exec.py start --task-id=TXXX`（状态迁移为 in_progress）
-7. 执行完成后 Subagent 通过 commit message 广播状态
-8. 成功则运行 `python3 scripts/task_exec.py finish --task-id=TXXX --project={project}`；失败则运行 `python3 scripts/task_exec.py fail --task-id=TXXX --project={project} --reason="{reason}"`；需要用户补充信息时运行 `python3 scripts/task_exec.py help --task-id=TXXX --project={project} --reason="{reason}"`；用户撤销时运行 `python3 scripts/task_exec.py cancel --task-id=TXXX --project={project} --reason="{reason}"`
-9. push 完成后运行 `python3 scripts/task_exec.py release --task-id=TXXX --project={project} --agent={AgentName}`（释放锁）
-10. EverAgent 重新生成 Task Board 视图
+3. 判断执行模式：
+   - 默认模式：调度 Subagent 执行
+   - 直执模式：当用户明确要求 EverAgent "直接做 / 别只派任务 / 把任务完成" 时，EverAgent 必须亲自读取目标项目 `AGENTS.md` 与 `CONTEXT.md`，按子项目协议完成产出
+4. 默认模式下：通知用户 "启动 {AgentName}，协议：{project}/AGENTS.md"
+5. 直执模式下：通知用户 "EverAgent 直接执行 {project} 任务，遵循：{project}/AGENTS.md"
+6. 执行者读取自身/目标项目 AGENTS.md，自包含执行
+7. 优先运行 `python3 scripts/task_exec.py begin --task-id=TXXX --project={project} --agent={AgentName|EverAgent}`（领取校验 + 项目锁 + claim）
+8. claim 后尽快运行 `python3 scripts/task_exec.py start --task-id=TXXX`（状态迁移为 in_progress），并在可行时提交 claim；若用户要求立即交付，可在同一工作批次内完成产出后统一提交
+9. 执行完成后通过 commit message 广播状态
+10. 成功则运行 `python3 scripts/task_exec.py finish --task-id=TXXX --project={project}`；失败则运行 `python3 scripts/task_exec.py fail --task-id=TXXX --project={project} --reason="{reason}"`；需要用户补充信息时运行 `python3 scripts/task_exec.py help --task-id=TXXX --project={project} --reason="{reason}"`；用户撤销时运行 `python3 scripts/task_exec.py cancel --task-id=TXXX --project={project} --reason="{reason}"`
+11. push 完成后运行 `python3 scripts/task_exec.py release --task-id=TXXX --project={project} --agent={AgentName|EverAgent}`（释放锁）
+12. EverAgent 重新生成 Task Board 视图
 ```
+
+### 直执优先规则
+
+- 用户明确批评"只更新任务列表、不干活"或要求"把任务做了"时，EverAgent 不得仅创建/更新任务板，必须在当前回合推进到实际产出。
+- 直执跨项目任务时，EverAgent 必须分别读取各项目协议与上下文，遵守对应写入边界；若需要跨项目写入，则以全局 full_admin 身份执行并在 commit message 标注 `Agent: EverAgent`。
+- 对于报告/实验类任务，完成标准是：创建或更新实质产物、更新项目上下文与 wiki/导航、运行可用校验、将任务状态迁移到 done。
+- 只有遇到权限、资料缺失、锁冲突或用户决策缺口时，才允许停在 `help_needed`。
 
 > 自 Phase 1 起，所有状态变更自动记录到 `events/YYYY-MM-DD/evt_*.yaml`，形成完整审计追溯。可通过 `python3 scripts/everagent.py dashboard` 启动实时 Dashboard 查看事件流。
 

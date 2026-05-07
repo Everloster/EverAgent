@@ -8,10 +8,10 @@
 ## 总览
 
 ```
-阶段 1 ──→ [1.5 可选] ──→ 阶段 2 ──→ 阶段 3 ──→ 阶段 4
-Transformer    MoE 变体      HF 生态    预训练模型    GRPO 微调
-原理与实现     稀疏激活      工程实践    快速上手      参数高效对齐
-（基础）       （进阶选修）   （工具）    （应用）      （进阶）
+阶段 1 ──→ [1.5/1.6 可选] ──→ 阶段 2 ──→ 阶段 3 ──→ 阶段 4
+Transformer    MoE / Long Context    HF 生态    预训练模型    GRPO 微调
+原理与实现     架构与系统扩展         工程实践    快速上手      参数高效对齐
+（基础）       （进阶选修）            （工具）    （应用）      （进阶）
 ```
 
 ---
@@ -89,6 +89,41 @@ Transformer    MoE 变体      HF 生态    预训练模型    GRPO 微调
 2. 什么是 Expert Collapse？如何用 aux_loss 防止它？
 3. Mixtral-8x7B 实际推理计算量相当于几个 Dense 7B 模型？
 4. MoELayer 的 `forward()` 为什么不能用 `nn.Sequential`？
+
+---
+
+## 阶段 1.6（进阶可选）：Long Context 1M 缩尺模拟
+
+**脚本**：[src/long_context_simulation.py](src/long_context_simulation.py)
+**教学笔记**：[experiments/exp_006_long_context_1m_simulation.md](experiments/exp_006_long_context_1m_simulation.md)
+**Wiki 概念**：[wiki/concepts/long_context_simulation.md](wiki/concepts/long_context_simulation.md)
+
+> 这是阶段 1 的「系统扩展」实验。它不训练真实 1M-token 模型，而是用可运行脚本模拟预训练、后训练、推理三个阶段的长上下文代码入口。
+
+### 你将学到什么
+
+- `max_seq_len` 如何改变 position ids、causal mask 和 full-attention 成本
+- needle-in-a-haystack 如何模拟长上下文后训练的证据定位任务
+- full-context 与 RAG prompt packing 在 token 使用上的差异
+- KV cache 显存如何随上下文长度增长
+- 为什么 1M context 与 RAG 是互补关系
+
+### 运行方式
+
+```bash
+python3 ai-practice/src/long_context_simulation.py --context-len 4096 --needle-position 0.73 --chunk-size 256 --top-k 3
+```
+
+### 预计时间：30-60 分钟
+
+### 硬件要求：CPU 即可
+
+### 学习成果检查点
+
+1. 为什么上下文长度增加 32 倍，标准 attention 成本可能增加 1024 倍？
+2. 为什么后训练需要 needle / long QA 数据，而不是只靠预训练？
+3. RAG 为什么可以减少 prompt tokens，但会引入召回风险？
+4. KV cache 的显存公式中，`kv_heads` 为什么重要？
 
 ---
 
@@ -217,6 +252,7 @@ export HF_ENDPOINT=https://hf-mirror.com
 |------|---------|---------|---------|------|
 | 1 | [01_transformer_from_scratch](notebooks/01_transformer_from_scratch.ipynb) | [exp_001](experiments/exp_001_transformer_from_scratch.md) | [transformer_from_scratch](wiki/concepts/transformer_from_scratch.md) · [tokenization](wiki/concepts/tokenization.md) | ⭐⭐ |
 | 1.5 ✨ | [05_moe_transformer](notebooks/05_moe_transformer.ipynb) | [exp_005](experiments/exp_005_moe_transformer.md) | [mixture_of_experts](wiki/concepts/mixture_of_experts.md) | ⭐⭐⭐ |
+| 1.6 ✨ | [long_context_simulation](src/long_context_simulation.py) | [exp_006](experiments/exp_006_long_context_1m_simulation.md) | [long_context_simulation](wiki/concepts/long_context_simulation.md) | ⭐⭐ |
 | 2 | [02_transformers_library](notebooks/02_transformers_library.ipynb) | [exp_003](experiments/exp_003_transformers_library.md) | — | ⭐ |
 | 3 | [03_huggingface_api](notebooks/03_huggingface_api.ipynb) | [exp_002](experiments/exp_002_huggingface_basics.md) | — | ⭐ |
 | 4 | [04_qwen25_grpo_finetuning](notebooks/04_qwen25_grpo_finetuning.ipynb) | [exp_004](experiments/exp_004_qwen25_grpo_finetune.md) | [grpo](wiki/concepts/grpo.md) · [lora_peft](wiki/concepts/lora_peft.md) · [sft_vs_rlhf](wiki/concepts/sft_vs_rlhf.md) · [unsloth](wiki/concepts/unsloth_framework.md) | ⭐⭐⭐⭐ |

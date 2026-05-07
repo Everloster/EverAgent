@@ -24,3 +24,9 @@
 - 新建 wiki/concepts/mixture_of_experts.md
 - 更新 wiki/index.md
 - 同步 README.md 与 CONTEXT.md 的 exp_005 导航和边界说明
+
+## [2026-05-07] ingest | exp_006 — Long Context 1M 缩尺模拟实验
+- 新建 src/long_context_simulation.py
+- 新建 experiments/exp_006_long_context_1m_simulation.md
+- 新建 wiki/concepts/long_context_simulation.md
+- 更新 CONTEXT.md、README.md、LEARNING_PATH.md、wiki/index.md
