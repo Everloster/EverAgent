@@ -76,6 +76,7 @@
 - `Agent_团队管理产品化路径深度解析` — Multica Agent-as-Teammate范式·任务生命周期状态机·Compound Skills·LangGraph/CrewAI/AutoGen四方定位差异·L2编排vsL3管理分层（2026-04-23）
 - `MIT_2026_AI_三条主线_深度研究报告` — MIT Technology Review 2026 AI Top 10 中 LLMs+、世界模型、Agent 编排三条主线的系统化解读·AAIF/MCP/Agents.md 标准化时间线·开发者与企业落地路线（2026-04-27）
 - `LLM_评估体系_深度解析_20260429` — 国内外主流 LLM 评估体系·MMLU/C-Eval/GPQA/LiveBench/SWE-bench/BFCL 等基准解读·主流 leaderboard 读法·场景匹配优先级矩阵（2026-04-29）
+- `Long_Context_1M_三阶段深度解析_20260507` — 1M long context 在预训练、后训练、线上推理三阶段的系统化含义·位置编码/注意力复杂度·长上下文 SFT/needle·prefill/KV cache/RAG 取舍（2026-05-07）
 
 ## 离线知识库
 → [`knowledge/INDEX.md`](./knowledge/INDEX.md)（子话题菜单，离线模型从此进入）

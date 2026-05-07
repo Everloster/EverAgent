@@ -21,13 +21,13 @@ EverAgent 是以 AI Agent 为核心工具的个人知识库，通过系统化学
 
 | 项目 | 领域 | 报告量 | Wiki 页面 | 状态 |
 |------|------|--------|-----------|------|
-| [🤖 AI Learning](./ai-learning/README.md) | AI/ML 论文精读·技术报告 | 39 篇精读/文本 + 30 篇知识/概念报告 | 27 entities · 33 concepts | 🟢 |
+| [🤖 AI Learning](./ai-learning/README.md) | AI/ML 论文精读·技术报告 | 39 篇精读/文本 + 31 篇知识/概念报告 | 27 entities · 34 concepts | 🟢 |
 | [💻 CS Learning](./cs-learning/README.md) | 计算机科学·系统·算法 | 24 篇精读/文本 + 5 篇知识/概念报告 | 13 entities · 21 concepts | 🟢 |
 | [📚 Philosophy Learning](./philosophy-learning/README.md) | 西方哲学·文本分析 | 12 篇精读/文本 + 3 篇知识/概念报告 | 10 entities · 11 concepts | 🟡 |
 | [🧠 Psychology Learning](./psychology-learning/README.md) | 心理学·经典实验 | 12 篇精读/文本 + 3 篇知识/概念报告 | 12 entities · 12 concepts | 🟢 |
-| [🧬 Biology Learning](./biology-learning/README.md) | 时间生物学·睡眠·运动生理 | 11 篇精读/文本 + 3 篇知识/概念报告 | 7 entities · 9 concepts | 🟡 |
+| [🧬 Biology Learning](./biology-learning/README.md) | 时间生物学·睡眠·运动生理 | 11 篇精读/文本 + 4 篇知识/概念报告 | 9 entities · 11 concepts | 🟡 |
 | [📈 GitHub Trending Analyzer](./github-trending-analyzer/README.md) | 开源热点·Repo 知识库 | 74 篇 Repo 报告 + 10 篇汇总报告 | — | 🟢 |
-| [⚗️ AI Practice](./ai-practice/README.md) | ML 工程·代码实验·模型训练 | 5 篇教学笔记 | 1 entities · 7 concepts | 🟢 |
+| [⚗️ AI Practice](./ai-practice/README.md) | ML 工程·代码实验·模型训练 | 6 篇教学笔记 | 1 entities · 8 concepts | 🟢 |
 <!-- PROJECT_OVERVIEW:END -->
 
 ---

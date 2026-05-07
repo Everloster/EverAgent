@@ -89,6 +89,7 @@
 | [llm_evaluation_systems.md](./concepts/llm_evaluation_systems.md) | LLM 评估体系：静态/动态/偏好/代码/Agent/中文/安全评测与场景匹配优先级 |
 | [knowledge_distillation.md](./concepts/knowledge_distillation.md) | 知识蒸馏：高温 softmax 软标签，教师-学生迁移，训练大模型能力到部署小模型 |
 | [alphazero_self_play_rl.md](./concepts/alphazero_self_play_rl.md) | AlphaZero：策略价值网络 + MCTS + 自我对弈，从规则出发学习棋类超人策略 |
+| [long_context_systems.md](./concepts/long_context_systems.md) | 长上下文系统：预训练长序列能力、后训练证据利用、推理 KV cache/prefill/RAG 成本共同构成 1M context |
 
 ---
 
