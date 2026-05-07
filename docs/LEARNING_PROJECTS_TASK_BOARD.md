@@ -3,7 +3,7 @@
 > 本文件为自动生成视图，由 `scripts/task_board_aggregator.py` 维护
 > **请勿直接编辑**，编辑将覆盖
 > 任务权威源：各项目的 `.project-task-state`，以及根目录的 `/.project-task-state`（global 任务）
-> 更新日期：**2026-05-05**
+> 更新日期：**2026-05-07**
 
 ---
 
@@ -31,6 +31,42 @@
 ---
 
 ## 任务队列
+
+### 开放任务池（P1）
+
+```yaml
+- id: T053
+  project: ai-learning
+  type: knowledge_report
+  target: "1M Long Context 在预训练、后训练与线上推理阶段的技术含义"
+  value: "围绕 1M 上下文窗口，系统拆解预训练中的长序列建模/位置编码/注意力机制，后训练中的长上下文检索与指令对齐，线上推理中的 token budget/KV cache/prefill 延迟/RAG 取舍，并沉淀 wiki 概念页"
+  priority: P1
+  required_capability: task_executor
+  status: open
+  claimed_by: null
+  claimed_at: null
+  context_links:
+    - ai-learning/AGENTS.md
+    - ai-learning/CONTEXT.md
+    - ai-learning/skills/concept_deep_dive/SKILL.md
+
+- id: T054
+  project: ai-practice
+  type: maintenance
+  target: "Long Context 1M 机制缩尺代码模拟实验"
+  value: "在 ai-practice 中新增可运行长上下文机制实验：用小模型/小窗口模拟预训练 max_seq_len 与位置编码、后训练 needle-in-a-haystack SFT 数据、推理阶段 full-context vs RAG prompt packing/token budget/KV cache 成本观测，并产出实验笔记与 wiki 更新"
+  priority: P1
+  required_capability: task_executor
+  status: open
+  claimed_by: null
+  claimed_at: null
+  context_links:
+    - ai-practice/AGENTS.md
+    - ai-practice/CONTEXT.md
+    - ai-practice/LEARNING_PATH.md
+    - ai-practice/skills/experiment_analysis/SKILL.md
+
+```
 
 ### 最近完成（自动生成）
 

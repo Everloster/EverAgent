@@ -236,3 +236,18 @@
     - ai-learning/CONTEXT.md
     - ai-learning/papers/24_alphago_zero_2017.pdf
     - ai-learning/reports/paper_analyses/43_alphago_zero_2017.md
+
+- id: T053
+  project: ai-learning
+  type: knowledge_report
+  target: "1M Long Context 在预训练、后训练与线上推理阶段的技术含义"
+  value: "围绕 1M 上下文窗口，系统拆解预训练中的长序列建模/位置编码/注意力机制，后训练中的长上下文检索与指令对齐，线上推理中的 token budget/KV cache/prefill 延迟/RAG 取舍，并沉淀 wiki 概念页"
+  priority: P1
+  required_capability: task_executor
+  status: open
+  claimed_by: null
+  claimed_at: null
+  context_links:
+    - ai-learning/AGENTS.md
+    - ai-learning/CONTEXT.md
+    - ai-learning/skills/concept_deep_dive/SKILL.md

@@ -16,3 +16,19 @@
     - ai-practice/README.md
     - ai-practice/wiki/index.md
     - ai-practice/experiments/exp_005_moe_transformer.md
+
+- id: T054
+  project: ai-practice
+  type: maintenance
+  target: "Long Context 1M 机制缩尺代码模拟实验"
+  value: "在 ai-practice 中新增可运行长上下文机制实验：用小模型/小窗口模拟预训练 max_seq_len 与位置编码、后训练 needle-in-a-haystack SFT 数据、推理阶段 full-context vs RAG prompt packing/token budget/KV cache 成本观测，并产出实验笔记与 wiki 更新"
+  priority: P1
+  required_capability: task_executor
+  status: open
+  claimed_by: null
+  claimed_at: null
+  context_links:
+    - ai-practice/AGENTS.md
+    - ai-practice/CONTEXT.md
+    - ai-practice/LEARNING_PATH.md
+    - ai-practice/skills/experiment_analysis/SKILL.md
