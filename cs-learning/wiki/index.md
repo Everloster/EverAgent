@@ -63,6 +63,7 @@
 | [os_kernel_design.md](./concepts/os_kernel_design.md) | 操作系统内核：UNIX一切皆文件·fork/exec/pipe·FFS·CSP·宏内核vs微内核·io_uring·Unikernel |
 | [bgp_interdomain_routing.md](./concepts/bgp_interdomain_routing.md) | BGP 路径向量协议：AS间路由·AS_PATH防环·四消息六态FSM·CIDR聚合·互联网域间路由基石 |
 | [structured_programming.md](./concepts/structured_programming.md) | 结构化编程：GOTO废除宣言·进度坐标可表达性·顺序/选择/重复三元组·Böhm-Jacopini·编程语言范式基础 |
+| [tailscale_wireguard_vpn.md](./concepts/tailscale_wireguard_vpn.md) | Tailscale / WireGuard / VPN：加密隧道·NAT穿透·DERP中继·MagicDNS·ACL/Zero Trust·远程SSH实践 |
 
 ---
 

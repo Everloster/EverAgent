@@ -110,10 +110,12 @@ DNS 是分布式系统中**最终一致性**最成功的工程案例之一——
 - [tcp_ip](./tcp_ip.md)：DNS 是建立在 TCP/IP 之上的应用层协议
 - [cap_theorem](./cap_theorem.md)：DNS 选择 AP（最终一致 + 高可用）
 - [consistent_hashing](./consistent_hashing.md)：与 DNS 的层级命名形成对比——DHT 是平面命名空间
+- [tailscale_wireguard_vpn](./tailscale_wireguard_vpn.md)：MagicDNS 是 tailnet 内的设备名解析层，把 `100.x.y.z` 私有地址映射为可读机器名
 
 ## 被引用于
 - [tcp_ip](./tcp_ip.md)
 - [overview.md](../overview.md)
+- [tailscale_wireguard_vpn](./tailscale_wireguard_vpn.md)
 
 ## 开放问题
 - DNSSEC 部署率低的根本原因（密钥管理 + 旧 resolver 兼容）

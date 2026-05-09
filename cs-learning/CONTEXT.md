@@ -38,6 +38,7 @@
 - `DHT实战排查：从协议理论到工程故障诊断` — Kademlia/BEP-5协议·WireGuard+wstunnel多层隧道·分层故障诊断方法论·Bootstrap节点生态现状（2026-04-06）
 - `操作系统内核设计深度解析_20260416` — UNIX哲学·一切皆文件·fork/exec/pipe·FFS cylinder group·CSP通道通信·宏内核vs微内核·io_uring·Unikernel（2026-04-16）
 - `编程语言范式演化_从Lisp到Go的并发模型变迁` — McCarthy(Lisp)·Dijkstra(结构化编程)·Hoare(CSP)·Lattner(LLVM)四阶段演化图谱·函数式/结构化/进程代数/编译器基础设施（2026-04-22）
+- `Tailscale_WireGuard_VPN_原理深度解析` — 现代 VPN·WireGuard 加密隧道·Tailscale 控制/数据平面·NAT 穿透·DERP 中继·MagicDNS·ACL/Zero Trust·iPad 远程 SSH Mac 实践（2026-05-09）
 
 ## 离线知识库
 → [`knowledge/INDEX.md`](./knowledge/INDEX.md)
@@ -54,6 +55,7 @@
 ## ⚠️ 边界（防幻觉）
 以下内容**尚未研究**，禁止推测，须告知用户：
 - 网络方向已有 TCP/IP (1974)、DNS (1987)、BGP (2006)；更深层的网络协议（OSPF等）尚无独立精读报告
+- 现代远程访问网络已有 Tailscale/WireGuard/VPN 专题知识报告；该报告是工程原理综述，不等同于 WireGuard 协议形式化证明或 OpenVPN/IPsec 完整对比
 - 编译器、数据库理论（关系代数等）方向尚无报告
 - 论文索引中列出但未精读的论文仅有索引，无分析报告
 - 操作系统方向已有知识报告（UNIX/FFS/CSP综合），但具体子话题（进程调度算法、虚拟内存管理）尚无专项报告

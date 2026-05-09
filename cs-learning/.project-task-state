@@ -88,3 +88,16 @@
   claimed_at: 2026-04-22T10:00:00+08:00
   started_at: 2026-04-22T10:05:00+08:00
   done_at: 2026-04-22T10:30:00+08:00
+
+- id: T055
+  project: cs-learning
+  type: knowledge_report
+  target: "Tailscale / WireGuard / VPN 原理"
+  value: "系统梳理现代 VPN、WireGuard、NAT 穿透、DERP 中继、私有组网、ACL 与 Zero Trust 网络访问模型；面向 iPad + Termius 远程连接 MacBook 的工程实践"
+  priority: P2
+  required_capability: task_executor
+  status: done
+  claimed_by: EverAgent
+  claimed_at: 2026-05-09T16:30:46+08:00
+  started_at: 2026-05-09T16:30:49+08:00
+  done_at: 2026-05-09T16:34:55+08:00
