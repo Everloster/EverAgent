@@ -3,7 +3,7 @@
 > 本文件为自动生成视图，由 `scripts/task_board_aggregator.py` 维护
 > **请勿直接编辑**，编辑将覆盖
 > 任务权威源：各项目的 `.project-task-state`，以及根目录的 `/.project-task-state`（global 任务）
-> 更新日期：**2026-05-07**
+> 更新日期：**2026-05-09**
 
 ---
 
@@ -24,7 +24,7 @@
 | `ai-learning` | 🟢 | 39 | 31 | 44% |
 | `ai-practice` | 🔴 | 0 | 0 | 0% |
 | `biology-learning` | 🟡 | 11 | 4 | 27% |
-| `cs-learning` | 🟢 | 24 | 5 | 17% |
+| `cs-learning` | 🟢 | 24 | 6 | 20% |
 | `philosophy-learning` | 🟡 | 12 | 3 | 20% |
 | `psychology-learning` | 🟡 | 12 | 3 | 20% |
 
@@ -35,6 +35,19 @@
 ### 最近完成（自动生成）
 
 ```yaml
+- id: T055
+  project: cs-learning
+  type: knowledge_report
+  target: "Tailscale / WireGuard / VPN 原理"
+  value: "系统梳理现代 VPN、WireGuard、NAT 穿透、DERP 中继、私有组网、ACL 与 Zero Trust 网络访问模型；面向 iPad + Termius 远程连接 MacBook 的工程实践"
+  priority: P2
+  required_capability: task_executor
+  status: done
+  claimed_by: EverAgent
+  claimed_at: 2026-05-09T16:30:46+08:00
+  started_at: 2026-05-09T16:30:49+08:00
+  done_at: 2026-05-09T16:34:55+08:00
+
 - id: T053
   project: ai-learning
   type: knowledge_report
@@ -195,24 +208,6 @@
     - biology-learning/CONTEXT.md
     - biology-learning/papers/PAPERS_INDEX.md
     - biology-learning/reports/paper_analyses/P05_thomas_exercise_phase_chronotype_2020.md
-
-- id: T050
-  project: ai-learning
-  type: paper_analysis
-  target: "Hinton, Vinyals & Dean (2015) Distilling the Knowledge in a Neural Network"
-  value: "基于本地 PDF 23_distilling_2015.pdf 完成知识蒸馏原始论文精读，更新 CONTEXT/PAPERS_INDEX/wiki"
-  priority: P2
-  required_capability: task_executor
-  status: done
-  claimed_by: NeuronAgent
-  claimed_at: 2026-04-25T22:00:32+08:00
-  started_at: 2026-04-25T22:00:37+08:00
-  done_at: 2026-04-25T22:00:51+08:00
-  context_links:
-    - ai-learning/AGENTS.md
-    - ai-learning/CONTEXT.md
-    - ai-learning/papers/23_distilling_2015.pdf
-    - ai-learning/reports/paper_analyses/42_distilling_2015.md
 
 ```
 

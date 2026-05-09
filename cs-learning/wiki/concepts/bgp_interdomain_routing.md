@@ -73,3 +73,4 @@ MP-BGP (IPv6) / Route Reflector / RPKI / EVPN
 - → `tcp_ip.md`（BGP 运行于 TCP 之上）
 - → `dns.md`（互联网基础设施的另一支柱）
 - → `distributed_messaging.md`（大规模分布式通信协议设计的类比）
+- → `tailscale_wireguard_vpn.md`（公网 BGP 可达性与 Tailscale overlay 可达性是两层不同的网络控制问题）

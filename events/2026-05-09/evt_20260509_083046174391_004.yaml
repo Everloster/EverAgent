@@ -1,0 +1,11 @@
+event_id: evt_20260509_083046174391_004
+type: task_claimed
+timestamp: 2026-05-09T08:30:46+00:00
+actor: EverAgent
+project: cs-learning
+task_id: T055
+message_id: <evt_20260509_083046174391_004@everagent.local>
+aamp: {"version":"1.1","intent":"task.ack","task_id":"T055","message_id":"<evt_20260509_083046174391_004@everagent.local>","dispatch_context":{"project":"cs-learning","actor":"EverAgent","event_type":"task_claimed"}}
+payload:
+  target: "Tailscale / WireGuard / VPN 原理"
+  type: "knowledge_report"

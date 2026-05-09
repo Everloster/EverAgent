@@ -75,6 +75,14 @@
 
 <!-- 后续 ingest / query-archive / lint 在此追加 -->
 
+## [2026-05-09] ingest | Tailscale、WireGuard 与现代 VPN 知识报告
+- 新建报告：reports/knowledge_reports/Tailscale_WireGuard_VPN_原理深度解析.md（现代 VPN、WireGuard、Tailscale 控制/数据平面、NAT 穿透、DERP、MagicDNS、ACL、Exit Node、Subnet Router）
+- 新建 concept：wiki/concepts/tailscale_wireguard_vpn.md（加密隧道、身份化私有组网、iPad + Termius 远程 SSH Mac 实践）
+- 更新 wiki/index.md：Concepts 表格新增 tailscale_wireguard_vpn 条目
+- 更新 CONTEXT.md：已有报告与防幻觉边界同步
+- 数据源：WireGuard 官方协议/白皮书 + Tailscale 官方连接类型、设备可达性、DERP、加密、MagicDNS、ACL、Exit Node、Subnet Router 文档
+- 执行者：EverAgent
+
 ## [2026-04-16] ingest | 操作系统内核设计深度解析 知识报告
 - 新建报告：reports/knowledge_reports/操作系统内核设计深度解析_20260416.md（5层框架+演化谱系图，整合UNIX/FFS/CSP三篇精读）
 - 新建 concept：wiki/concepts/os_kernel_design.md（UNIX五大原语·FFS cylinder group·CSP通道·宏内核vs微内核·io_uring演化·Unikernel）

@@ -47,10 +47,12 @@ Cerf & Kahn 1974 年提出的分组交换网络互联架构：无状态网关连
 - [coordination_chubby_zk](./coordination_chubby_zk.md)：ZooKeeper 用 UDP 而非 TCP 心跳的工程教训
 - [unix_philosophy](./unix_philosophy.md)：sockets 是 Unix 思想在网络上的延伸
 - [information_theory](./information_theory.md)：Shannon 的信道容量与噪声编码定理是 TCP 重传与 FEC 的理论上界
+- [tailscale_wireguard_vpn](./tailscale_wireguard_vpn.md)：WireGuard/Tailscale 将 IP 包封装进加密 UDP 隧道，是端到端网络模型在私有 overlay 网络中的现代应用
 
 ## 被引用于
 - [dns](./dns.md)
 - [distributed_messaging](./distributed_messaging.md)
+- [tailscale_wireguard_vpn](./tailscale_wireguard_vpn.md)
 
 ## 开放问题
 - QUIC 取代 TCP 的边界
