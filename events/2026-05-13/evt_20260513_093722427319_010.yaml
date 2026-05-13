@@ -1,0 +1,11 @@
+event_id: evt_20260513_093722427319_010
+type: task_claimed
+timestamp: 2026-05-13T09:37:22+00:00
+actor: EverAgent
+project: ai-practice
+task_id: T057
+message_id: <evt_20260513_093722427319_010@everagent.local>
+aamp: {"version":"1.1","intent":"task.ack","task_id":"T057","message_id":"<evt_20260513_093722427319_010@everagent.local>","dispatch_context":{"project":"ai-practice","actor":"EverAgent","event_type":"task_claimed"}}
+payload:
+  target: "SkillOS 技能库策展小型实验复现"
+  type: "maintenance"

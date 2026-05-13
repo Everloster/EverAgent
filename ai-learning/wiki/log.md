@@ -110,6 +110,14 @@
 
 <!-- 后续 ingest / query-archive / lint 在此追加 -->
 
+## [2026-05-13] ingest | SkillOS 论文精读
+- 新建报告：reports/paper_analyses/44_skillos_2026.md
+- 新建 concept：wiki/concepts/skill_curation.md
+- 新建 entity：wiki/entities/google_cloud_ai_research.md
+- 更新 wiki/index.md：新增 Skill Curation 概念与 Google Cloud AI Research 机构
+- 更新 CONTEXT.md 与 papers/PAPERS_INDEX.md：登记 arXiv:2605.06614 精读状态
+- 关联实践：ai-practice exp_007 SkillOS 技能库策展小型实验复现
+
 ## [2026-05-07] ingest | 1M Long Context 三阶段深度解析
 - 新建报告：reports/knowledge_reports/Long_Context_1M_三阶段深度解析_20260507.md
 - 新建 concept：wiki/concepts/long_context_systems.md

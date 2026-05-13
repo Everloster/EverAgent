@@ -47,6 +47,7 @@
 |------|------|
 | [openai.md](./entities/openai.md) | GPT 系列、InstructGPT、ChatGPT 系列发起方 |
 | [google_brain_deepmind.md](./entities/google_brain_deepmind.md) | Google Brain × DeepMind 2023 合并，AlphaFold/Gemini |
+| [google_cloud_ai_research.md](./entities/google_cloud_ai_research.md) | SkillOS 主要作者单位之一，研究自进化 Agent 的技能策展训练 |
 | [meta_ai.md](./entities/meta_ai.md) | FAIR / LLaMA / MAE / DINOv2 / VideoMAE 大本营 |
 | [mit_technology_review.md](./entities/mit_technology_review.md) | MIT 旗下科技媒体，EmTech AI 2026 发布 AI Top 10 趋势框架 |
 
@@ -90,6 +91,7 @@
 | [knowledge_distillation.md](./concepts/knowledge_distillation.md) | 知识蒸馏：高温 softmax 软标签，教师-学生迁移，训练大模型能力到部署小模型 |
 | [alphazero_self_play_rl.md](./concepts/alphazero_self_play_rl.md) | AlphaZero：策略价值网络 + MCTS + 自我对弈，从规则出发学习棋类超人策略 |
 | [long_context_systems.md](./concepts/long_context_systems.md) | 长上下文系统：预训练长序列能力、后训练证据利用、推理 KV cache/prefill/RAG 成本共同构成 1M context |
+| [skill_curation.md](./concepts/skill_curation.md) | Skill Curation：从轨迹中插入、更新、删除可复用技能，让自进化 Agent 的经验变成可治理 SkillRepo |
 
 ---
 

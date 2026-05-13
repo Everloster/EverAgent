@@ -3,7 +3,7 @@
 > 本文件为自动生成视图，由 `scripts/task_board_aggregator.py` 维护
 > **请勿直接编辑**，编辑将覆盖
 > 任务权威源：各项目的 `.project-task-state`，以及根目录的 `/.project-task-state`（global 任务）
-> 更新日期：**2026-05-09**
+> 更新日期：**2026-05-13**
 
 ---
 
@@ -21,7 +21,7 @@
 
 | 项目 | 当前状态 | 论文/文本精读 | 知识/概念报告 | 知识报告比 |
 |------|----------|:---:|:---:|:---:|
-| `ai-learning` | 🟢 | 39 | 31 | 44% |
+| `ai-learning` | 🟢 | 40 | 31 | 44% |
 | `ai-practice` | 🔴 | 0 | 0 | 0% |
 | `biology-learning` | 🟡 | 11 | 4 | 27% |
 | `cs-learning` | 🟢 | 24 | 6 | 20% |
@@ -35,6 +35,32 @@
 ### 最近完成（自动生成）
 
 ```yaml
+- id: T057
+  project: ai-practice
+  type: maintenance
+  target: "SkillOS 技能库策展小型实验复现"
+  value: "在 ai-practice 中实现一个可本地运行的 SkillRepo + heuristic curator 缩尺实验，模拟 grouped task streams、技能新增/更新/删除、reuse 对后续任务成功率和步数的影响，并产出实验笔记与 wiki 更新"
+  priority: P1
+  required_capability: task_executor
+  status: done
+  claimed_by: EverAgent
+  claimed_at: 2026-05-13T17:37:22+08:00
+  started_at: 2026-05-13T17:37:26+08:00
+  done_at: 2026-05-13T17:50:10+08:00
+
+- id: T056
+  project: ai-learning
+  type: paper_analysis
+  target: "SkillOS: Learning Skill Curation for Self-Evolving Agents (2026)"
+  value: "精读 arXiv:2605.06614，聚焦自进化 Agent 的 SkillRepo、SkillCurator、grouped task streams、composite reward 与 GRPO 训练配方，并更新 CONTEXT/PAPERS_INDEX/wiki"
+  priority: P1
+  required_capability: task_executor
+  status: done
+  claimed_by: EverAgent
+  claimed_at: 2026-05-13T17:36:23+08:00
+  started_at: 2026-05-13T17:36:36+08:00
+  done_at: 2026-05-13T17:50:06+08:00
+
 - id: T055
   project: cs-learning
   type: knowledge_report
@@ -172,42 +198,6 @@
     - biology-learning/CONTEXT.md
     - biology-learning/papers/PAPERS_INDEX.md
     - biology-learning/reports/paper_analyses/P07_youngstedt_exercise_circadian_2023.md
-
-- id: T048
-  project: ai-learning
-  type: paper_analysis
-  target: "Silver et al. (2017) AlphaZero self-play reinforcement learning"
-  value: "基于本地 PDF 24_alphago_zero_2017.pdf 的实际 AlphaZero 内容完成精读，更新 CONTEXT/PAPERS_INDEX/wiki"
-  priority: P2
-  required_capability: task_executor
-  status: done
-  claimed_by: NeuronAgent
-  claimed_at: 2026-04-25T22:35:01+08:00
-  started_at: 2026-04-25T22:35:01+08:00
-  done_at: 2026-04-25T22:35:01+08:00
-  context_links:
-    - ai-learning/AGENTS.md
-    - ai-learning/CONTEXT.md
-    - ai-learning/papers/24_alphago_zero_2017.pdf
-    - ai-learning/reports/paper_analyses/43_alphago_zero_2017.md
-
-- id: T047
-  project: biology-learning
-  type: paper_analysis
-  target: "Thomas et al. (2020) Circadian rhythm phase shifts caused by timed exercise vary with chronotype"
-  value: "基于 JCI Insight/PMC 开放全文完成 P05 定时运动与时型相位移动精读，更新 CONTEXT/PAPERS_INDEX/wiki"
-  priority: P2
-  required_capability: task_executor
-  status: done
-  claimed_by: BioAgent
-  claimed_at: 2026-04-25T22:01:07+08:00
-  started_at: 2026-04-25T22:01:11+08:00
-  done_at: 2026-04-25T22:01:14+08:00
-  context_links:
-    - biology-learning/AGENTS.md
-    - biology-learning/CONTEXT.md
-    - biology-learning/papers/PAPERS_INDEX.md
-    - biology-learning/reports/paper_analyses/P05_thomas_exercise_phase_chronotype_2020.md
 
 ```
 

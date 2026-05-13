@@ -361,6 +361,20 @@
 
 ---
 
+### 36. SkillOS: Learning Skill Curation for Self-Evolving Agents
+- **文件名建议**：`36_skillos_2026.pdf`
+- **作者**：Siru Ouyang, Jun Yan, Yanfei Chen 等（UIUC / Google Cloud AI Research / MIT）
+- **年份**：2026
+- **发表**：arXiv:2605.06614v1
+- **下载链接**：
+  - Arxiv PDF: https://arxiv.org/pdf/2605.06614
+  - Arxiv 页面: https://arxiv.org/abs/2605.06614
+- **核心贡献**：提出面向自进化 Agent 的 SkillOS 训练配方，用 grouped task streams 与复合奖励训练 SkillCurator 管理 Markdown SkillRepo，实现跨 executor 和跨任务泛化
+- **关键概念**：Self-Evolving Agents、SkillRepo、Skill Curator、Procedural Memory、GRPO、Grouped Task Streams
+- **阅读状态**：✅ 已完成（见 `reports/paper_analyses/44_skillos_2026.md`）
+
+---
+
 ## 快速下载脚本（在有网络环境中运行）
 
 ```bash
