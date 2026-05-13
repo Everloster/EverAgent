@@ -46,6 +46,7 @@
 - `41_eva02_2023` — EVA-02·ViT+SwiGLU+2D RoPE+sub-LN·CLIP-ViT-bigG特征MIM·304M参数·ImageNet-1K 90.0% top-1·COCO 58.3 box AP·高效视觉基础模型里程碑（2026-04-16）
 - `42_distilling_2015` — 知识蒸馏·高温softmax软标签·教师-学生训练·MNIST 146→74 errors·ASR蒸馏单模型WER 10.7%·模型压缩范式奠基（2026-04-25）
 - `43_alphago_zero_2017` — AlphaZero·自我对弈强化学习·策略价值网络+MCTS·700k步训练·国际象棋对Stockfish 28胜72和0负·将棋对Elmo 90胜2和8负·围棋对AG0 3-day 60胜40负（2026-04-25）
+- `44_skillos_2026` — SkillOS·自进化Agent技能策展·SkillRepo+SkillCurator·grouped task streams·复合奖励+GRPO·8B curator跨executor泛化（2026-05-13）
 
 **知识深度解析** (`reports/knowledge_reports/`)
 - `self_attention_深度解析` — 含代码实现

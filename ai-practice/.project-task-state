@@ -37,3 +37,16 @@
     - ai-practice/src/long_context_simulation.py
     - ai-practice/experiments/exp_006_long_context_1m_simulation.md
     - ai-practice/wiki/concepts/long_context_simulation.md
+
+- id: T057
+  project: ai-practice
+  type: maintenance
+  target: "SkillOS 技能库策展小型实验复现"
+  value: "在 ai-practice 中实现一个可本地运行的 SkillRepo + heuristic curator 缩尺实验，模拟 grouped task streams、技能新增/更新/删除、reuse 对后续任务成功率和步数的影响，并产出实验笔记与 wiki 更新"
+  priority: P1
+  required_capability: task_executor
+  status: done
+  claimed_by: EverAgent
+  claimed_at: 2026-05-13T17:37:22+08:00
+  started_at: 2026-05-13T17:37:26+08:00
+  done_at: 2026-05-13T17:50:10+08:00

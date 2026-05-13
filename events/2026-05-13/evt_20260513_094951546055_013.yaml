@@ -1,0 +1,11 @@
+event_id: evt_20260513_094951546055_013
+type: validation_failed
+timestamp: 2026-05-13T09:49:51+00:00
+actor: execution_validator
+project: ai-learning
+task_id: T056
+message_id: <evt_20260513_094951546055_013@everagent.local>
+payload:
+  passed: false
+  issue_count: 1
+  issue_fields: ["status"]

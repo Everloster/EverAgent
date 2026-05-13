@@ -30,3 +30,10 @@
 - 新建 experiments/exp_006_long_context_1m_simulation.md
 - 新建 wiki/concepts/long_context_simulation.md
 - 更新 CONTEXT.md、README.md、LEARNING_PATH.md、wiki/index.md
+
+## [2026-05-13] ingest | exp_007 — SkillOS 技能库策展小型实验复现
+- 新建 src/skillos_curator_simulation.py
+- 新建 experiments/exp_007_skillos_curator_simulation.md
+- 新建 wiki/concepts/skillos_curator_simulation.md
+- 更新 CONTEXT.md、wiki/index.md
+- 实测 grouped 与 shuffled 两种任务流，对比 no_memory、raw_memory、skillos_heuristic 三种策略

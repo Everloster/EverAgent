@@ -255,3 +255,16 @@
     - ai-learning/skills/concept_deep_dive/SKILL.md
     - ai-learning/reports/knowledge_reports/Long_Context_1M_三阶段深度解析_20260507.md
     - ai-learning/wiki/concepts/long_context_systems.md
+
+- id: T056
+  project: ai-learning
+  type: paper_analysis
+  target: "SkillOS: Learning Skill Curation for Self-Evolving Agents (2026)"
+  value: "精读 arXiv:2605.06614，聚焦自进化 Agent 的 SkillRepo、SkillCurator、grouped task streams、composite reward 与 GRPO 训练配方，并更新 CONTEXT/PAPERS_INDEX/wiki"
+  priority: P1
+  required_capability: task_executor
+  status: done
+  claimed_by: EverAgent
+  claimed_at: 2026-05-13T17:36:23+08:00
+  started_at: 2026-05-13T17:36:36+08:00
+  done_at: 2026-05-13T17:50:06+08:00

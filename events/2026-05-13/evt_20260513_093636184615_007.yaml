@@ -1,0 +1,10 @@
+event_id: evt_20260513_093636184615_007
+type: task_started
+timestamp: 2026-05-13T09:36:36+00:00
+actor: EverAgent
+project: ai-learning
+task_id: T056
+message_id: <evt_20260513_093636184615_007@everagent.local>
+aamp: {"version":"1.1","intent":"task.stream.opened","task_id":"T056","message_id":"<evt_20260513_093636184615_007@everagent.local>","dispatch_context":{"project":"ai-learning","actor":"EverAgent","event_type":"task_started"},"stream_id":"stream_T056"}
+payload:
+  target: "SkillOS: Learning Skill Curation for Self-Evolving Agents (2026)"
