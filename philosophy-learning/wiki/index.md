@@ -27,6 +27,7 @@
 | [nagel_thomas.md](./entities/nagel_thomas.md) | 内格尔（1937–）·蝙蝠思想实验 + what it is like + 困难问题前驱 |
 | [rawls_john.md](./entities/rawls_john.md) | 罗尔斯（1921-2002）·作为公平的正义 + 无知之幕 + 差别原则 |
 | [gettier_edmund.md](./entities/gettier_edmund.md) | 盖提尔（1927-2021）·3 页论文推翻 2500 年 JTB 定义 |
+| [wittgenstein_ludwig.md](./entities/wittgenstein_ludwig.md) | 维特根斯坦（1889-1951）·逻辑图像论 + 可说/不可说划界 + 自我反转（前期《逻辑哲学论》→ 后期《哲学研究》） |
 
 ---
 
@@ -62,6 +63,13 @@
 |------|------|
 | [mind_body_dualism.md](./concepts/mind_body_dualism.md) | 笛卡尔身心二元论·res cogitans / res extensa + 交互问题 |
 | [qualia_subjective_experience.md](./concepts/qualia_subjective_experience.md) | 内格尔感受质·what it is like + 蝙蝠思想实验 + 还原论批判 |
+
+### 语言哲学
+| 页面 | 简介 |
+|------|------|
+| [picture_theory_of_meaning.md](./concepts/picture_theory_of_meaning.md) | 维特根斯坦逻辑图像论·命题=事态的逻辑图像 + 共享逻辑形式 + 反对"相似"为图示基础 |
+| [sayable_and_unsayable.md](./concepts/sayable_and_unsayable.md) | 可说/不可说的划界·unsinnig vs falsch + 伦理/美学/宗教"显示而不说" + 命题 7 |
+| [language_limit_world_limit.md](./concepts/language_limit_world_limit.md) | 5.6 语言的界限即世界的界限·逻辑同构说 + 5.61 不可说即不可思想 + LLM 能力边界类比 |
 
 ---
 
