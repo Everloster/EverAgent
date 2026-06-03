@@ -8,6 +8,19 @@
 
 <!-- 日志从此处开始追加 -->
 
+## [2026-06-03] ingest | 维特根斯坦《逻辑哲学论》深度精读（MiniMax-M3 主导）
+- 新建报告：reports/text_analyses/09_wittgenstein_tractatus_1921.md（713 行 / 58.6 KB / text_analysis）
+- 更新 wiki 页面：
+  - 新建 entities/wittgenstein_ludwig.md
+  - 新建 concepts/picture_theory_of_meaning.md（图示说 / Bildtheorie）
+  - 新建 concepts/sayable_and_unsayable.md（可说与不可说 / unsinnig 划界）
+  - 新建 concepts/language_limit_world_limit.md（5.6 语言界限即世界界限）
+- 更新 wiki/index.md：entities 表追加 1 项（11 entity 总数）；concepts 表新增"语言哲学"分类，3 个新概念入册
+- 更新 philosophy-learning/CONTEXT.md：text_analyses 列表追加新报告；防幻觉边界移除"维特根斯坦尚无独立报告"（已覆盖）
+- 数据源：用户直接调度，绕开 SocratesAgent task board；本项目首份由 MiniMax-M3 生成的 text_analysis
+- 报告特色：7 步分析框架 + 11 个 LLM 联结角度（全部 [推论] 标注，区分原意与类比）—— 首次将 LLM 工程议题（in-context learning、RLHF、mechanistic interpretability、emergent abilities）与维特根斯坦语言哲学系统化联结
+- 状态：plan §8 短期标准 ≥10 entities / ≥8 concepts 双双满足（11 entity + 14 concept）
+
 ## [2026-04-08] phase2-init | Phase 2 起步：philosophy-learning wiki 内容蒸馏
 - 新建 entities：socrates / plato / aristotle / descartes_rene / hume_david(stub) / kant_immanuel / hegel_georg / nagel_thomas / rawls_john / gettier_edmund（共 10 个）
 - 新建 concepts：theory_of_forms / socratic_method / cogito_ergo_sum / mind_body_dualism / categorical_imperative / virtue_ethics_eudaimonia / dialectic / justice_as_fairness / jtb_knowledge / qualia_subjective_experience / epistemic_luck（共 11 个）
