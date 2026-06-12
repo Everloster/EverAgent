@@ -48,3 +48,6 @@ entities.json
 #botlearn file
 .botlearn/
 skills/
+
+# Local cache for research/scripts (e.g. mmx search snippets)
+.cache/
