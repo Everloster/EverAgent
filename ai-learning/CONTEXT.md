@@ -79,6 +79,9 @@
 - `LLM_评估体系_深度解析_20260429` — 国内外主流 LLM 评估体系·MMLU/C-Eval/GPQA/LiveBench/SWE-bench/BFCL 等基准解读·主流 leaderboard 读法·场景匹配优先级矩阵（2026-04-29）
 - `Long_Context_1M_三阶段深度解析_20260507` — 1M long context 在预训练、后训练、线上推理三阶段的系统化含义·位置编码/注意力复杂度·长上下文 SFT/needle·prefill/KV cache/RAG 取舍（2026-05-07）
 
+**Notes（会议 / 观察笔记，非正式报告）** (`notes/`)
+- `note_AI教育不平等家长焦虑_20260617` — 飞书会议 71.7s 独白转录·AI 时代家长对教育不平等的反思·含原文（出处 + ASR 错字订正）·观点总结·与已有报告的互文对接（2026-06-17）
+
 ## 离线知识库
 → [`knowledge/INDEX.md`](./knowledge/INDEX.md)（子话题菜单，离线模型从此进入）
 
