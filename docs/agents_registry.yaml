@@ -46,3 +46,10 @@
   domain: ML 工程·代码实验·模型训练
   status: "🟢"
   title: "⚗️ AI Practice"
+
+- agent: PodcastAgent
+  project: podcast-learning
+  protocol: podcast-learning/AGENTS.md
+  domain: 播客内容学习与知识提取
+  status: "🟢"
+  title: "🎙️ Podcast Learning"
