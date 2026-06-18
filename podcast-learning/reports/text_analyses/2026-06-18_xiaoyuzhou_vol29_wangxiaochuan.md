@@ -11,7 +11,9 @@ guest: "王小川（百川智能创始人）"
 duration: "92m45s"
 transcript_chars: 19983
 transcript_words_approx: 19983
-polished: false
+polished: true
+polished_by: "Claude (MiniMax-M3)"
+polished_at: 2026-06-18
 status: archived
 created: 2026-06-18
 updated_on: 2026-06-18
@@ -153,17 +155,20 @@ transcript_path: reports/text_analyses/2026-06-18_xiaoyuzhou_vol29_wangxiaochuan
 
 ## 转录全文
 
-转录位于同目录下的 `2026-06-18_xiaoyuzhou_vol29_wangxiaochuan.transcript.txt`（55 KB，19,983 字，已随本次 commit 持久化）。
+转录位于同目录下的 `2026-06-18_xiaoyuzhou_vol29_wangxiaochuan.transcript.txt`（约 28 KB，19,983 字，**已人工润色**）。
 
 **生成信息**：
-- 工具：`bash ~/.agent-reach/tools/xiaoyuzhou/transcribe.sh --polish`
-- 模型：Groq Whisper large-v3（zh prompt 加标点）
-- 时间：2026-06-18 11:36
-- 润色：失败（Llama 3.3 70B 因 TPM 12,000 限速 fallback 到原始转录）
+- 转录工具：`bash ~/.agent-reach/tools/xiaoyuzhou/transcribe.sh`（无 --polish，节省 TPM）
+- 转录模型：Groq Whisper large-v3（zh prompt 加标点）
+- 转录时间：2026-06-18 11:36
+- **润色时间**：2026-06-18（人工，Claude MiniMax-M3）
+- **润色方式**：删除广告词 / whisper prompt 污染 / 修正明确误识别 / 合理分段 / 保留口语化风格
 
-**阅读体验改善**：
-1. 重跑 polish：等 15 分钟 TPM 重置后单独跑 `bash ~/.agent-reach/tools/xiaoyuzhou/transcribe.sh --polish <URL>`（避开高峰时段）
-2. 用其他 LLM 分段润色：每段 ≤ 3000 tokens，串行调用
+**结构**：
+- 第一段：开场 + 闯入者 + AI 编程 vs AI 医疗
+- 第二段：张文宏事件 + AI 时代 + 程序员与医生的对比
+- 第三段：商业模式 + 生命模型 + 三年后展望
+- 附录：润色说明（含 23 条主要修正对照表）
 
 转录关键引用见上"关键观点"section。
 
@@ -171,9 +176,20 @@ transcript_path: reports/text_analyses/2026-06-18_xiaoyuzhou_vol29_wangxiaochuan
 
 ## Limitations
 
-1. **转录未润色**：标点稀疏、章节边界模糊，部分专有名词（"分禁诊疗"应作"分级诊疗"）疑似 Whisper 同音误识别。
-2. **未提取音频校对**：本次只做了文字转录，未回听原音频校对关键引用。如需直接引用到外部，建议先回听。
-3. **润色失败原因**：Llama 3.3 70B 的 TPM 12,000 限制与脚本同时发 3 段 polish 请求冲突。属于工具局限，非内容问题。
-4. **未做跨期对比**：本报告仅针对 Vol.29，未与百川其他公开发言、王小川历次访谈做交叉验证。
-5. **未做事实核查**：王小川关于"AlphaFold 诺贝尔奖""豆包 DAU 思路"等说法未与外部权威源交叉验证。
-6. **商业判断非投资建议**：本报告不构成对百川智能或任何提及公司的投资建议。
+1. **人工润色保留**：
+   - 删除了小宇宙平台广告词（"请不吝点赞..." 重复 20+ 次）和 whisper prompt 污染（"请输出包含..."）
+   - 修正了明确可判断的同音误识别（分禁诊疗→分级诊疗、质普→智谱、白小一→百小一、毒包区→豆包、阿发福尔→AlphaFold 等）
+   - 合理分段（按说话人和话题切换）
+   - **未回听原音频校对**，部分判断依赖上下文推断而非音频确认
+2. **未做跨期对比**：本报告仅针对 Vol.29，未与百川其他公开发言、王小川历次访谈做交叉验证。
+3. **未做事实核查**：王小川关于"AlphaFold 诺贝尔奖""豆包 DAU 思路""OpenEvidence 45% 渗透率"等说法未与外部权威源交叉验证。
+4. **存疑内容已标注**：不确定的转录（人名如"王汇文"是否"王慧文"、"魏建伟"是否"魏则西"、"Daydreams of Molding" 等）保留原词 + 加注说明，未强行猜改。
+5. **商业判断非投资建议**：本报告不构成对百川智能或任何提及公司的投资建议。
+
+## 润色详细说明
+
+详见 `2026-06-18_xiaoyuzhou_vol29_wangxiaochuan.transcript.txt` 末尾的"润色说明"附录，含：
+- 23 条主要修正对照表（带依据）
+- 删减内容清单
+- 保留的转录噪声说明
+- 不确定 / 存疑部分标注
