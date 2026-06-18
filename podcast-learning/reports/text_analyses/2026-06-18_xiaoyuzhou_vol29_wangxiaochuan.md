@@ -15,7 +15,7 @@ polished: false
 status: archived
 created: 2026-06-18
 updated_on: 2026-06-18
-transcript_path: /tmp/podcast_transcript.txt
+transcript_path: reports/text_analyses/2026-06-18_xiaoyuzhou_vol29_wangxiaochuan.transcript.txt
 ---
 
 # Vol.29 对话王小川：造医生，战豆包，与无尽的 AI 非共识
@@ -153,11 +153,17 @@ transcript_path: /tmp/podcast_transcript.txt
 
 ## 转录全文
 
-转录位于 `/tmp/podcast_transcript.txt`（**注意**：`/tmp/` 重启会清空，重要内容需另行备份）。
+转录位于同目录下的 `2026-06-18_xiaoyuzhou_vol29_wangxiaochuan.transcript.txt`（55 KB，19,983 字，已随本次 commit 持久化）。
 
-本报告由 Groq Whisper large-v3 直接转录，标点稀疏；如需阅读体验改善，可：
-1. 重新跑 `bash ~/.agent-reach/tools/xiaoyuzhou/transcribe.sh --polish <URL>`（避开高峰时段，等 15 分钟 TPM 重置后单独跑 polish）
-2. 或用其他 LLM 分段（每段 ≤ 3000 tokens）补标点
+**生成信息**：
+- 工具：`bash ~/.agent-reach/tools/xiaoyuzhou/transcribe.sh --polish`
+- 模型：Groq Whisper large-v3（zh prompt 加标点）
+- 时间：2026-06-18 11:36
+- 润色：失败（Llama 3.3 70B 因 TPM 12,000 限速 fallback 到原始转录）
+
+**阅读体验改善**：
+1. 重跑 polish：等 15 分钟 TPM 重置后单独跑 `bash ~/.agent-reach/tools/xiaoyuzhou/transcribe.sh --polish <URL>`（避开高峰时段）
+2. 用其他 LLM 分段润色：每段 ≤ 3000 tokens，串行调用
 
 转录关键引用见上"关键观点"section。
 
