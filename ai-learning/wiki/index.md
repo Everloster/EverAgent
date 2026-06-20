@@ -92,6 +92,7 @@
 | [alphazero_self_play_rl.md](./concepts/alphazero_self_play_rl.md) | AlphaZero：策略价值网络 + MCTS + 自我对弈，从规则出发学习棋类超人策略 |
 | [long_context_systems.md](./concepts/long_context_systems.md) | 长上下文系统：预训练长序列能力、后训练证据利用、推理 KV cache/prefill/RAG 成本共同构成 1M context |
 | [skill_curation.md](./concepts/skill_curation.md) | Skill Curation：从轨迹中插入、更新、删除可复用技能，让自进化 Agent 的经验变成可治理 SkillRepo |
+| [agent_interop_protocols.md](./concepts/agent_interop_protocols.md) | Agent 互操作协议：MCP（Anthropic 工具层）·A2A（Google Agent 层·Linux 基金会托管）·AGENTS.md（OpenAI 联盟元信息层）三种事实标准 |
 
 ---
 

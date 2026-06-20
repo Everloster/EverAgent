@@ -1,0 +1,11 @@
+event_id: evt_20260620_160656155407_022
+type: task_claimed
+timestamp: 2026-06-20T16:06:56+00:00
+actor: NeuronAgent
+project: ai-learning
+task_id: T058
+message_id: <evt_20260620_160656155407_022@everagent.local>
+aamp: {"version":"1.1","intent":"task.ack","task_id":"T058","message_id":"<evt_20260620_160656155407_022@everagent.local>","dispatch_context":{"project":"ai-learning","actor":"NeuronAgent","event_type":"task_claimed"}}
+payload:
+  target: "MCP 协议 / Agents.md 标准化深度解析：Agent 互操作的三种范式"
+  type: "knowledge_report"
