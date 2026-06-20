@@ -1,0 +1,10 @@
+event_id: evt_20260620_162337444654_083
+type: task_started
+timestamp: 2026-06-20T16:23:37+00:00
+actor: SocratesAgent
+project: philosophy-learning
+task_id: T065
+message_id: <evt_20260620_162337444654_083@everagent.local>
+aamp: {"version":"1.1","intent":"task.stream.opened","task_id":"T065","message_id":"<evt_20260620_162337444654_083@everagent.local>","dispatch_context":{"project":"philosophy-learning","actor":"SocratesAgent","event_type":"task_started"},"stream_id":"stream_T065"}
+payload:
+  target: "美学三论：康德《判断力批判》+ 杜威《艺术即经验》+ Danto《艺术的终结》"

@@ -1,0 +1,9 @@
+event_id: evt_20260620_162340336174_084
+type: lock_released
+timestamp: 2026-06-20T16:23:40+00:00
+actor: NeuronAgent
+project: ai-learning
+task_id: T061
+message_id: <evt_20260620_162340336174_084@everagent.local>
+payload:
+  force: false

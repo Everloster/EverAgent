@@ -100,6 +100,7 @@
   target: "美学三论：康德《判断力批判》+ 杜威《艺术即经验》+ Danto《艺术的终结》"
   priority: P2
   required_capability: task_executor
-  status: claimed
+  status: in_progress
   claimed_by: SocratesAgent
   claimed_at: 2026-06-21T00:23:18+08:00
+  started_at: 2026-06-21T00:23:37+08:00
