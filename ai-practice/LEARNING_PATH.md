@@ -191,6 +191,7 @@ export HF_ENDPOINT=https://hf-mirror.com
 
 **Notebook**：[notebooks/04_qwen25_grpo_finetuning.ipynb](notebooks/04_qwen25_grpo_finetuning.ipynb)
 **教学笔记**：[experiments/exp_004_qwen25_grpo_finetune.md](experiments/exp_004_qwen25_grpo_finetune.md)
+**缩尺模拟**：[src/grpo_simulation.py](src/grpo_simulation.py) + [experiments/exp_008_grpo_simulation.md](experiments/exp_008_grpo_simulation.md)（CPU 可跑，无需 GPU）
 
 ### 你将学到什么
 
@@ -255,7 +256,7 @@ export HF_ENDPOINT=https://hf-mirror.com
 | 1.6 ✨ | [long_context_simulation](src/long_context_simulation.py) | [exp_006](experiments/exp_006_long_context_1m_simulation.md) | [long_context_simulation](wiki/concepts/long_context_simulation.md) | ⭐⭐ |
 | 2 | [02_transformers_library](notebooks/02_transformers_library.ipynb) | [exp_003](experiments/exp_003_transformers_library.md) | — | ⭐ |
 | 3 | [03_huggingface_api](notebooks/03_huggingface_api.ipynb) | [exp_002](experiments/exp_002_huggingface_basics.md) | — | ⭐ |
-| 4 | [04_qwen25_grpo_finetuning](notebooks/04_qwen25_grpo_finetuning.ipynb) | [exp_004](experiments/exp_004_qwen25_grpo_finetune.md) | [grpo](wiki/concepts/grpo.md) · [lora_peft](wiki/concepts/lora_peft.md) · [sft_vs_rlhf](wiki/concepts/sft_vs_rlhf.md) · [unsloth](wiki/concepts/unsloth_framework.md) | ⭐⭐⭐⭐ |
+| 4 | [04_qwen25_grpo_finetuning](notebooks/04_qwen25_grpo_finetuning.ipynb) · [grpo_simulation](src/grpo_simulation.py) | [exp_004](experiments/exp_004_qwen25_grpo_finetune.md) · [exp_008](experiments/exp_008_grpo_simulation.md) | [grpo](wiki/concepts/grpo.md) · [lora_peft](wiki/concepts/lora_peft.md) · [sft_vs_rlhf](wiki/concepts/sft_vs_rlhf.md) · [unsloth](wiki/concepts/unsloth_framework.md) | ⭐⭐⭐⭐ |
 
 ---
 

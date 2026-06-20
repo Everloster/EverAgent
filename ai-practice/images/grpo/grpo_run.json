@@ -10,9 +10,9 @@
     "kl_beta": 0.005,
     "lr": 1.0,
     "seed": 0,
-    "log_every": 10,
+    "log_every": 80,
     "eval_prompts": 8,
-    "out_dir": "/Users/jabe/workspace/EverAgent/ai-practice/src/../images/grpo"
+    "out_dir": "/Users/jabe/workspace/EverAgent/ai-practice/images/grpo"
   },
   "history": [
     {

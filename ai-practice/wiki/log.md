@@ -37,3 +37,13 @@
 - 新建 wiki/concepts/skillos_curator_simulation.md
 - 更新 CONTEXT.md、wiki/index.md
 - 实测 grouped 与 shuffled 两种任务流，对比 no_memory、raw_memory、skillos_heuristic 三种策略
+
+## [2026-06-21] ingest | exp_008 — GRPO 缩尺模拟（与 T060 推理模型三大流派联动）
+- 新建 src/grpo_simulation.py（2-token toy policy 复现 DeepSeekMath GRPO 训练循环）
+- 新建 experiments/exp_008_grpo_simulation.md
+- 新建 images/grpo/{grpo_curves.png, grpo_run.json, grpo_summary.txt}（canonical 共享 GT 训练曲线 + 完整指标）
+- 新建 images/grpo_mixed/{...}（mixed-GT failure case）
+- 更新 wiki/concepts/grpo.md（追加 sample-reuse 实现陷阱 + 缩尺训练曲线数据 + 与 exp_004 联动说明）
+- 更新 wiki/index.md（GRPO 概念页说明同时覆盖 exp_004 + exp_008）
+- 训练曲线形状与 T060 §3.3 描述一致：reward sigmoid 上升、entropy 单调下降、KL 单调上升
+- 关键实现 bug 修复：GRPO 必须在 gradient 步骤**复用** step 1 的采样（重新采样会让 advantage 与 gradient 解耦，训练原地踏步）
