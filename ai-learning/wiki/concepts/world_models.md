@@ -23,3 +23,13 @@
 - [MIT 2026 AI 三条主线深度研究](../../reports/knowledge_reports/MIT_2026_AI_三条主线_深度研究报告.md)
 - [生成模型演化全景](../../reports/knowledge_reports/生成模型演化全景_GAN_DDPM_LDM_DiT_20260416.md)
 - [DiT 论文精读](../../reports/paper_analyses/27_dit_2022.md)
+- [World Models / JEPA 路线深度报告](../../reports/knowledge_reports/World_Models_JEPA_路线深度报告_20260621.md) — 双路线对比，参数表，工业落地分支
+
+## 关键派生概念
+
+- **JEPA（Joint Embedding Predictive Architecture）**：在抽象表征空间预测而非像素重建
+- **V-JEPA 2**：Meta 2025-06 发布的视频版 JEPA，1.2B 参数，1M+ 小时训练视频
+- **AMI 实验室（Advanced Machine Intelligence）**：LeCun 2025-11 离 Meta 后 2026-01 创办，融资 €350M
+- **Cosmos**：NVIDIA 2025-01 发布的物理 AI 世界基础模型，4B-14B 参数
+- **GAIA-1/2**：Wayve 自动驾驶生成式世界模型
+- **Genie 2/3**：DeepMind 交互式 3D 环境世界模型

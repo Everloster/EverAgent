@@ -79,6 +79,7 @@
 - `LLM_评估体系_深度解析_20260429` — 国内外主流 LLM 评估体系·MMLU/C-Eval/GPQA/LiveBench/SWE-bench/BFCL 等基准解读·主流 leaderboard 读法·场景匹配优先级矩阵（2026-04-29）
 - `Long_Context_1M_三阶段深度解析_20260507` — 1M long context 在预训练、后训练、线上推理三阶段的系统化含义·位置编码/注意力复杂度·长上下文 SFT/needle·prefill/KV cache/RAG 取舍（2026-05-07）
 - `MCP_A2A_Agents_md_标准化深度解析_20260621` — MCP（2024-11 Anthropic 开源，2025-03-26 升级 Streamable HTTP+OAuth 2.1）· A2A（2025-04 Google 发布，2025-06 捐赠 Linux 基金会，100+ 合作厂商）· AGENTS.md（2025-08 OpenAI/Google/Cursor/Sourcegraph 共同发布，60,000+ 项目采纳）三种 Agent 互操作协议范式深度对比（2026-06-21）
+- `World_Models_JEPA_路线深度报告_20260621` — JEPA 路线（LeCun：I-JEPA→V-JEPA→V-JEPA 2 1.2B/1M+ hr 视频，2025-11 LeCun 离 Meta 创办 AMI 实验室融资 €350M）vs 生成式路线（OpenAI Sora / NVIDIA Cosmos 4B-14B / Wayve GAIA-2 / DeepMind Genie 3 720p@24fps）双线对比·参数表·应用场景（自动驾驶/机器人/游戏）·MIT 2026 三主线之一（2026-06-21）
 
 **Notes（会议 / 观察笔记，非正式报告）** (`notes/`)
 - `note_AI教育不平等家长焦虑_20260617` — 飞书会议 71.7s 独白转录·AI 时代家长对教育不平等的反思·含原文（出处 + ASR 错字订正）·观点总结·与已有报告的互文对接（2026-06-17）
