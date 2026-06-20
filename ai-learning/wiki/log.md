@@ -242,3 +242,14 @@
 - 更新 CONTEXT.md / PAPERS_INDEX.md：追加报告状态，并标明本地 PDF 实为 AlphaZero arXiv 论文
 - 数据源：ai-learning/papers/24_alphago_zero_2017.pdf
 - 执行者：NeuronAgent / Codex worker E
+
+## [2026-06-21] ingest | MCP / A2A / AGENTS.md 标准化深度解析
+- 新建报告：reports/knowledge_reports/MCP_A2A_Agents_md_标准化深度解析_20260621.md（5层框架：USB-C 工具层 / TCP-IP Agent层 / README 元信息层；时间线 2024-11→2026-06；对比矩阵 12 维度；5 个 mermaid 图）
+- 新建 concept：wiki/concepts/agent_interop_protocols.md（速查表 + 关系图 + 关键时间线 + 已知局限）
+- 更新 wiki/index.md：Concepts 表新增 agent_interop_protocols 条目
+- 更新 CONTEXT.md：追加知识报告清单
+- 核心数据：MCP 2024-11 Anthropic / 2025-03-26 升级 / 2025-03 OpenAI 跟进；A2A 2025-04-09 Google 发布 / 2025-06-25 捐 Linux 基金会 / 100+ 厂商；AGENTS.md 2025-08 联合发布 / 60K+ 项目
+- 数据源：modelcontextprotocol.io + Google A2A spec + agents.md + 多家中文技术博客交叉验证
+- 关联概念：agent_systems / agent_orchestration / agent_skill_ecosystem
+- 执行者：NeuronAgent / claude-sonnet-4.6
+
