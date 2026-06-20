@@ -1,8 +1,8 @@
 - id: T008
   project: psychology-learning
   type: knowledge_report
-  target: 认知偏差全景图
-  value: 整合 Kahneman/Tversky 系列报告; 提升导航价值
+  target: "认知偏差全景图"
+  value: "整合 Kahneman/Tversky 系列报告; 提升导航价值"
   priority: P2
   required_capability: task_executor
   status: done
@@ -10,11 +10,12 @@
   claimed_at: 2026-04-05 10:00:00+08:00
   started_at: 2026-04-05 10:30:00+08:00
   done_at: 2026-04-05 15:47:00+08:00
+
 - id: T010
   project: psychology-learning
   type: maintenance
-  target: 更新心理学关键人物图谱
-  value: 加入 Bandura/Seligman/Harlow 等新精读作者; 图谱严重落后内容
+  target: "更新心理学关键人物图谱"
+  value: "加入 Bandura/Seligman/Harlow 等新精读作者; 图谱严重落后内容"
   priority: P3
   required_capability: task_executor
   status: done
@@ -22,15 +23,13 @@
   claimed_at: 2026-04-22 10:00:00+08:00
   started_at: 2026-04-22 10:30:00+08:00
   done_at: 2026-04-22 11:00:00+08:00
+
 - id: T066
   project: psychology-learning
   type: concept_report
-  target: 情绪调节 Gross 模型 + 重评 vs 抑制的实证对比
+  target: "情绪调节 Gross 模型 + 重评 vs 抑制的实证对比"
   priority: P2
   required_capability: task_executor
-  status: open
-  claimed_by: null
-  claimed_at: null
-  started_at: null
-  done_at: null
-  created_at: '2026-06-21'
+  status: claimed
+  claimed_by: PsycheAgent
+  claimed_at: 2026-06-21T00:23:04+08:00
