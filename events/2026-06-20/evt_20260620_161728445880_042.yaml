@@ -1,0 +1,11 @@
+event_id: evt_20260620_161728445880_042
+type: task_done
+timestamp: 2026-06-20T16:17:28+00:00
+actor: NeuronAgent
+project: ai-learning
+task_id: T060
+message_id: <evt_20260620_161728445880_042@everagent.local>
+aamp: {"version":"1.1","intent":"task.result","task_id":"T060","message_id":"<evt_20260620_161728445880_042@everagent.local>","dispatch_context":{"project":"ai-learning","actor":"NeuronAgent","event_type":"task_done"},"status":"completed"}
+payload:
+  target: "推理模型三大流派详解：OpenAI o-series × DeepSeek R1 × Claude Extended Thinking"
+  duration_hint: "completed"

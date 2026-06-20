@@ -67,7 +67,7 @@
 | [self_supervised_learning.md](./concepts/self_supervised_learning.md) | 三大范式：遮蔽重建 / 自回归 / 对比自蒸馏 |
 | [sparse_activation.md](./concepts/sparse_activation.md) | 条件计算的设计哲学，MoE 是其最成功的实现 |
 | [agent_systems.md](./concepts/agent_systems.md) | ReAct Loop · Tool Use · Function Calling · MCP 协议 · Multi-Agent 协作 |
-| [test_time_compute.md](./concepts/test_time_compute.md) | 推理时计算扩展，o1/o3 · DeepSeek-R1 · GRPO · PRM · MCTS，与 training-time scaling 互补 |
+| [test_time_compute.md](./concepts/test_time_compute.md) | 推理时计算扩展，o1/o3 · DeepSeek-R1 · GRPO · PRM · MCTS · 三流派对比（OpenAI PRM·DeepSeek GRPO·Claude adaptive budget） |
 | [rag.md](./concepts/rag.md) | 检索增强生成，Naive → Advanced → Modular RAG 演进，GraphRAG · Self-RAG · Reranker |
 | [in_context_learning.md](./concepts/in_context_learning.md) | 通过 prompt demonstrations 无梯度学习，Bayesian / Task Recognition / Knowledge Activation 三派理论 |
 | [pretraining_finetuning.md](./concepts/pretraining_finetuning.md) | 预训练-微调两阶段范式，GPT-1 确立，BERT 巅峰，LoRA/ICL 演化 |
