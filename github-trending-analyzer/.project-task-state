@@ -1,3 +1,12 @@
-# TrendAgent keeps its own TT task protocol; this file exists so workspace validation
-# and task-state tooling have a consistent source of truth when global automation
-# work is scheduled against this project.
+- id: T070
+  project: github-trending-analyzer
+  type: maintenance
+  target: 2026 Q2 GitHub 趋势月报（5/6 月）
+  priority: P2
+  required_capability: task_executor
+  status: open
+  claimed_by: null
+  claimed_at: null
+  started_at: null
+  done_at: null
+  created_at: '2026-06-21'

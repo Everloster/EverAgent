@@ -1,0 +1,37 @@
+apiVersion: everagent.io/v1
+kind: Task
+metadata:
+  id: T061
+  project: ai-learning
+  status: open
+  created_at: 2026-06-21
+spec:
+  type: knowledge_report
+  target: "多模态理解模型对比：GPT-4o / Claude 3.5 vision / Gemini 2.5 / Qwen2.5-VL"
+  value: |
+    系统对比 2024-2026 多模态理解（vision + text，输出 text）四大代表：
+    - OpenAI GPT-4o / GPT-4.1 / GPT-4.5 (2024.05 → 2025.02 → 2025.04)
+    - Anthropic Claude 3.5 Sonnet vision / Claude 4 Opus vision / Claude Opus 4.7 (2024.10 → 2025.05 → 2026.Q1)
+    - Google Gemini 2.0 / 2.5 Pro / Flash (2024.12 → 2025.03 → 2025.06)
+    - Alibaba Qwen2.5-VL 3B/7B/72B + Qwen2.5-VL-Max (2025.01 → 2025.05)
+    对比维度：架构（vision encoder + LLM decoder / native multimodal / MoE 变体）、
+    上下文窗口（128K / 200K / 1M / 2M）、OCR 能力、Chart/Table/Diagram 理解、视频理解
+    （frame 采样 vs 全帧 vs 摘要）、function calling 与多模态工具、benchmark
+    （MMMU / MMBench / ChartQA / DocVQA / MathVista / MMVet）、
+    价格（per 1M input/output tokens）、延迟、API 限制。
+  priority: P1
+  resources:
+    max_tokens: 55000
+    expected_duration: 2h
+  qualityGates:
+    - check: frontmatter_complete
+      required: true
+    - check: evidence_graded
+      required: true
+    - check: mermaid_diagrams
+      required: true
+    - check: benchmark_comparison_table
+      required: true
+  retryPolicy:
+    maxRetries: 1
+    backoff: fixed

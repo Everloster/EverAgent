@@ -1,95 +1,101 @@
 - id: T005
   project: philosophy-learning
   type: text_analysis
-  target: "黑格尔《精神现象学》导论"
-  value: "补齐德国唯心论主线; 与康德/亚里士多德形成三角"
+  target: 黑格尔《精神现象学》导论
+  value: 补齐德国唯心论主线; 与康德/亚里士多德形成三角
   priority: P1
   required_capability: task_executor
   status: done
   claimed_by: MiniMax-M2.7
-  claimed_at: 2026-04-05T10:00:00+08:00
-  started_at: 2026-04-05T10:30:00+08:00
-  done_at: 2026-04-05T15:47:00+08:00
-
+  claimed_at: 2026-04-05 10:00:00+08:00
+  started_at: 2026-04-05 10:30:00+08:00
+  done_at: 2026-04-05 15:47:00+08:00
 - id: T007
   project: philosophy-learning
   type: text_analysis
-  target: "罗尔斯《正义论》第一章"
-  value: "当代政治哲学主线入口"
+  target: 罗尔斯《正义论》第一章
+  value: 当代政治哲学主线入口
   priority: P2
   required_capability: task_executor
   status: done
   claimed_by: claude-sonnet-4-6
-  claimed_at: 2026-04-06T00:00:00+08:00
-  started_at: 2026-04-06T00:00:00+08:00
-  done_at: 2026-04-06T00:00:00+08:00
-
+  claimed_at: 2026-04-06 00:00:00+08:00
+  started_at: 2026-04-06 00:00:00+08:00
+  done_at: 2026-04-06 00:00:00+08:00
 - id: T011
   project: philosophy-learning
   type: knowledge_report
-  target: "扩展知识跨时代比较至自由意志专题"
-  value: "现有比较聚焦知识论, 自由意志是另一高张力主线"
+  target: 扩展知识跨时代比较至自由意志专题
+  value: 现有比较聚焦知识论, 自由意志是另一高张力主线
   priority: P3
   required_capability: task_executor
   status: done
   claimed_by: SocratesAgent
-  claimed_at: 2026-04-22T00:00:00+08:00
-  started_at: 2026-04-22T00:00:00+08:00
-  done_at: 2026-04-22T00:00:00+08:00
-
+  claimed_at: 2026-04-22 00:00:00+08:00
+  started_at: 2026-04-22 00:00:00+08:00
+  done_at: 2026-04-22 00:00:00+08:00
 - id: T040
   project: philosophy-learning
   type: text_analysis
-  target: "Gettier (1963) Is Justified True Belief Knowledge?"
-  value: "3页震动20世纪知识论; JTB定义的两个反例; 知识论转向"
+  target: Gettier (1963) Is Justified True Belief Knowledge?
+  value: 3页震动20世纪知识论; JTB定义的两个反例; 知识论转向
   priority: P1
   required_capability: task_executor
   status: done
   claimed_by: SocratesAgent
-  claimed_at: 2026-04-24T00:00:00+08:00
-  started_at: 2026-04-24T00:00:00+08:00
-  done_at: 2026-04-24T00:00:00+08:00
-
+  claimed_at: 2026-04-24 00:00:00+08:00
+  started_at: 2026-04-24 00:00:00+08:00
+  done_at: 2026-04-24 00:00:00+08:00
 - id: T041
   project: philosophy-learning
   type: text_analysis
-  target: "Russell (1905) On Denoting"
-  value: "摹状词理论; 法国现任国王是秃子难题; 逻辑分析哲学威力"
+  target: Russell (1905) On Denoting
+  value: 摹状词理论; 法国现任国王是秃子难题; 逻辑分析哲学威力
   priority: P2
   required_capability: task_executor
   status: done
   claimed_by: SocratesAgent
-  claimed_at: 2026-04-24T00:00:00+08:00
-  started_at: 2026-04-24T00:00:00+08:00
-  done_at: 2026-04-24T00:00:00+08:00
-
+  claimed_at: 2026-04-24 00:00:00+08:00
+  started_at: 2026-04-24 00:00:00+08:00
+  done_at: 2026-04-24 00:00:00+08:00
 - id: T042
   project: philosophy-learning
   type: text_analysis
-  target: "Singer (1972) Famine, Affluence, and Morality"
-  value: "功利主义义务论证; 全球贫困的道德义务; 有效利他主义理论基础"
+  target: Singer (1972) Famine, Affluence, and Morality
+  value: 功利主义义务论证; 全球贫困的道德义务; 有效利他主义理论基础
   priority: P2
   required_capability: task_executor
   status: done
   claimed_by: SocratesAgent
-  claimed_at: 2026-04-24T00:00:00+08:00
-  started_at: 2026-04-24T00:00:00+08:00
-  done_at: 2026-04-24T00:00:00+08:00
-
+  claimed_at: 2026-04-24 00:00:00+08:00
+  started_at: 2026-04-24 00:00:00+08:00
+  done_at: 2026-04-24 00:00:00+08:00
 - id: T044
   project: philosophy-learning
   type: maintenance
-  target: "清理 CONTEXT 防幻觉边界重复条目并同步最新覆盖"
-  value: "philosophy-learning CONTEXT 的防幻觉边界存在重复条目，且最新 Gettier/Russell/Singer 等完成情况需要让边界描述更一致；只做元信息维护，不新增报告"
+  target: 清理 CONTEXT 防幻觉边界重复条目并同步最新覆盖
+  value: philosophy-learning CONTEXT 的防幻觉边界存在重复条目，且最新 Gettier/Russell/Singer 等完成情况需要让边界描述更一致；只做元信息维护，不新增报告
   priority: P2
   required_capability: task_executor
   status: done
   claimed_by: SocratesAgent
-  claimed_at: 2026-04-24T18:03:29+08:00
-  started_at: 2026-04-24T18:03:29+08:00
-  done_at: 2026-04-24T18:03:29+08:00
+  claimed_at: 2026-04-24 18:03:29+08:00
+  started_at: 2026-04-24 18:03:29+08:00
+  done_at: 2026-04-24 18:03:29+08:00
   context_links:
-    - philosophy-learning/AGENTS.md
-    - philosophy-learning/CONTEXT.md
-    - philosophy-learning/reports/text_analyses
-    - philosophy-learning/wiki/index.md
+  - philosophy-learning/AGENTS.md
+  - philosophy-learning/CONTEXT.md
+  - philosophy-learning/reports/text_analyses
+  - philosophy-learning/wiki/index.md
+- id: T065
+  project: philosophy-learning
+  type: text_analysis
+  target: 美学三论：康德《判断力批判》+ 杜威《艺术即经验》+ Danto《艺术的终结》
+  priority: P2
+  required_capability: task_executor
+  status: open
+  claimed_by: null
+  claimed_at: null
+  started_at: null
+  done_at: null
+  created_at: '2026-06-21'

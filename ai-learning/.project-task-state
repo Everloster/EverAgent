@@ -1,306 +1,328 @@
 - id: T001
   project: ai-learning
   type: paper_analysis
-  target: "VideoMAE (2022) 或 EVA-02 (2023)"
-  value: "视觉自监督序列: MAE -> VideoMAE; 与 DINOv2/MAE 形成闭环"
+  target: VideoMAE (2022) 或 EVA-02 (2023)
+  value: '视觉自监督序列: MAE -> VideoMAE; 与 DINOv2/MAE 形成闭环'
   priority: P1
   required_capability: task_executor
   status: done
   claimed_by: MiniMax-M2.7
-  claimed_at: 2026-04-04T10:00:00+08:00
-  started_at: 2026-04-04T10:30:00+08:00
-  done_at: 2026-04-05T15:47:00+08:00
-
+  claimed_at: 2026-04-04 10:00:00+08:00
+  started_at: 2026-04-04 10:30:00+08:00
+  done_at: 2026-04-05 15:47:00+08:00
 - id: T002
   project: ai-learning
   type: paper_analysis
-  target: "MegaScale (2024)"
-  value: "工程类论文主线缺口; 大规模训练系统实践"
+  target: MegaScale (2024)
+  value: 工程类论文主线缺口; 大规模训练系统实践
   priority: P1
   required_capability: task_executor
   status: done
   claimed_by: MiniMax-M2.7
-  claimed_at: 2026-04-04T10:00:00+08:00
-  started_at: 2026-04-04T10:30:00+08:00
-  done_at: 2026-04-05T15:47:00+08:00
-
+  claimed_at: 2026-04-04 10:00:00+08:00
+  started_at: 2026-04-04 10:30:00+08:00
+  done_at: 2026-04-05 15:47:00+08:00
 - id: T006
   project: ai-learning
   type: knowledge_report
-  target: "MoE (混合专家) 深度解析"
-  value: "GPT-4/Mixtral 架构基础; 已有精读(#21)可支撑深度报告"
+  target: MoE (混合专家) 深度解析
+  value: GPT-4/Mixtral 架构基础; 已有精读(#21)可支撑深度报告
   priority: P2
   required_capability: task_executor
   status: done
   claimed_by: claude-sonnet-4-6
-  claimed_at: 2026-04-06T00:00:00+08:00
-  started_at: 2026-04-06T00:00:00+08:00
-  done_at: 2026-04-06T00:00:00+08:00
-
+  claimed_at: 2026-04-06 00:00:00+08:00
+  started_at: 2026-04-06 00:00:00+08:00
+  done_at: 2026-04-06 00:00:00+08:00
 - id: T013
   project: ai-learning
   type: paper_analysis
-  target: "EVA-02 (2023)"
-  value: "工程类论文主线缺口；大规模视觉模型与训练并行框架"
+  target: EVA-02 (2023)
+  value: 工程类论文主线缺口；大规模视觉模型与训练并行框架
   priority: P1
   required_capability: task_executor
   status: done
   claimed_by: claude-sonnet-4-6
-  claimed_at: 2026-04-16T10:00:00+08:00
-  started_at: 2026-04-16T10:05:00+08:00
-  done_at: 2026-04-16T11:30:00+08:00
-
+  claimed_at: 2026-04-16 10:00:00+08:00
+  started_at: 2026-04-16 10:05:00+08:00
+  done_at: 2026-04-16 11:30:00+08:00
 - id: T016
   project: ai-learning
   type: knowledge_report
-  target: "Megatron-LM 大规模语言模型训练系统深度解析"
-  value: "工程类主线剩余缺口; 张量并行+流水线并行+数据并行 3D并行体系; CONTEXT.md 下一步推荐"
+  target: Megatron-LM 大规模语言模型训练系统深度解析
+  value: 工程类主线剩余缺口; 张量并行+流水线并行+数据并行 3D并行体系; CONTEXT.md 下一步推荐
   priority: P2
   required_capability: task_executor
   status: done
   claimed_by: NeuronAgent
-  claimed_at: 2026-04-16T16:22:12+08:00
-  started_at: 2026-04-16T16:22:15+08:00
-  done_at: 2026-04-16T16:30:34+08:00
-
+  claimed_at: 2026-04-16 16:22:12+08:00
+  started_at: 2026-04-16 16:22:15+08:00
+  done_at: 2026-04-16 16:30:34+08:00
 - id: T020
   project: ai-learning
   type: knowledge_report
-  target: "Agent Harness 三大设计流派解析：everything-claude-code x deer-flow x Archon"
-  value: "GitHub 月榜实证: affaan-m/everything-claude-code (81757月增星,157K总stars) + bytedance/deer-flow (31460月增星,61K stars) + coleam00/Archon (4263周增星,'first open-source harness builder'); performance harness vs long-horizon SuperAgent harness vs deterministic/repeatable harness 三种设计哲学技术对比"
+  target: Agent Harness 三大设计流派解析：everything-claude-code x deer-flow x Archon
+  value: 'GitHub 月榜实证: affaan-m/everything-claude-code (81757月增星,157K总stars) + bytedance/deer-flow
+    (31460月增星,61K stars) + coleam00/Archon (4263周增星,''first open-source harness builder'');
+    performance harness vs long-horizon SuperAgent harness vs deterministic/repeatable
+    harness 三种设计哲学技术对比'
   priority: P1
   required_capability: task_executor
   status: done
   claimed_by: NeuronAgent
-  claimed_at: 2026-04-22T10:00:00+08:00
-  started_at: 2026-04-22T10:05:00+08:00
-  done_at: 2026-04-22T10:30:00+08:00
-
+  claimed_at: 2026-04-22 10:00:00+08:00
+  started_at: 2026-04-22 10:05:00+08:00
+  done_at: 2026-04-22 10:30:00+08:00
 - id: T021
   project: ai-learning
   type: knowledge_report
-  target: "Agent Skills 生态：从 Karpathy 的 CLAUDE.md 到可复用技能树"
-  value: "GitHub 日榜#1实证: forrestchang/andrej-karpathy-skills (9646今日+30919本周+45K总stars); 补充: addyosmani/agent-skills (6693周增,'Production-grade engineering skills') + mattpocock/skills (14248月增) + obra/superpowers (70176月增); Karpathy LLM编程哲学凝结成 CLAUDE.md 的机制; Skills 作为 Harness 可复用组件的架构地位"
+  target: Agent Skills 生态：从 Karpathy 的 CLAUDE.md 到可复用技能树
+  value: 'GitHub 日榜#1实证: forrestchang/andrej-karpathy-skills (9646今日+30919本周+45K总stars);
+    补充: addyosmani/agent-skills (6693周增,''Production-grade engineering skills'') +
+    mattpocock/skills (14248月增) + obra/superpowers (70176月增); Karpathy LLM编程哲学凝结成
+    CLAUDE.md 的机制; Skills 作为 Harness 可复用组件的架构地位'
   priority: P1
   required_capability: task_executor
   status: done
   claimed_by: NeuronAgent
-  claimed_at: 2026-04-22T10:00:00+08:00
-  started_at: 2026-04-22T10:35:00+08:00
-  done_at: 2026-04-22T10:55:00+08:00
-
+  claimed_at: 2026-04-22 10:00:00+08:00
+  started_at: 2026-04-22 10:35:00+08:00
+  done_at: 2026-04-22 10:55:00+08:00
 - id: T022
   project: ai-learning
   type: knowledge_report
-  target: "Agent Memory 系统深度解析：claude-mem 的设计与上下文工程实践"
-  value: "GitHub 双榜实证: thedotmack/claude-mem (2305今日+10779周增,58K总stars); 会话记忆自动捕获→AI压缩→相关性注入三步机制; Memory 在 Harness 架构中的位置; 与 Context Engineering 的关系; mvanhorn/last30days-skill (18023月增) 作为对比案例"
+  target: Agent Memory 系统深度解析：claude-mem 的设计与上下文工程实践
+  value: 'GitHub 双榜实证: thedotmack/claude-mem (2305今日+10779周增,58K总stars); 会话记忆自动捕获→AI压缩→相关性注入三步机制;
+    Memory 在 Harness 架构中的位置; 与 Context Engineering 的关系; mvanhorn/last30days-skill
+    (18023月增) 作为对比案例'
   priority: P1
   required_capability: task_executor
   status: done
   claimed_by: NeuronAgent
-  claimed_at: 2026-04-22T10:00:00+08:00
-  started_at: 2026-04-22T11:00:00+08:00
-  done_at: 2026-04-22T11:25:00+08:00
-
+  claimed_at: 2026-04-22 10:00:00+08:00
+  started_at: 2026-04-22 11:00:00+08:00
+  done_at: 2026-04-22 11:25:00+08:00
 - id: T023
   project: ai-learning
   type: knowledge_report
-  target: "自进化 Agent 架构：hermes-agent x GenericAgent 的技能树机制"
-  value: "GitHub 月/周双榜#1实证: NousResearch/hermes-agent (53110周增+81412月增,91K总stars,'The agent that grows with you'); 对照: lsdefine/GenericAgent ('Self-evolving agent: grows skill tree from 3.3K-line seed'); Self-improvement 技术实现路径; 自进化的可信度与边界分析"
+  target: 自进化 Agent 架构：hermes-agent x GenericAgent 的技能树机制
+  value: 'GitHub 月/周双榜#1实证: NousResearch/hermes-agent (53110周增+81412月增,91K总stars,''The
+    agent that grows with you''); 对照: lsdefine/GenericAgent (''Self-evolving agent:
+    grows skill tree from 3.3K-line seed''); Self-improvement 技术实现路径; 自进化的可信度与边界分析'
   priority: P1
   required_capability: task_executor
   status: done
   claimed_by: NeuronAgent
-  claimed_at: 2026-04-23T10:00:00+08:00
-  started_at: 2026-04-23T10:05:00+08:00
-  done_at: 2026-04-23T10:30:00+08:00
-
+  claimed_at: 2026-04-23 10:00:00+08:00
+  started_at: 2026-04-23 10:05:00+08:00
+  done_at: 2026-04-23 10:30:00+08:00
 - id: T024
   project: ai-learning
   type: knowledge_report
-  target: "Managed Agents Platform：multica 的 Agent-as-Teammate 范式解析"
-  value: "GitHub 周榜实证: multica-ai/multica (10864周增,'Turn coding agents into real teammates — assign tasks, track progress, compound skills'); Agent 团队管理产品化路径; 与 LangGraph/CrewAI/AutoGen 的定位差异; Compound Skills 机制"
+  target: Managed Agents Platform：multica 的 Agent-as-Teammate 范式解析
+  value: 'GitHub 周榜实证: multica-ai/multica (10864周增,''Turn coding agents into real
+    teammates — assign tasks, track progress, compound skills''); Agent 团队管理产品化路径;
+    与 LangGraph/CrewAI/AutoGen 的定位差异; Compound Skills 机制'
   priority: P1
   required_capability: task_executor
   status: done
   claimed_by: NeuronAgent
-  claimed_at: 2026-04-23T10:00:00+08:00
-  started_at: 2026-04-23T10:35:00+08:00
-  done_at: 2026-04-23T10:55:00+08:00
-
+  claimed_at: 2026-04-23 10:00:00+08:00
+  started_at: 2026-04-23 10:35:00+08:00
+  done_at: 2026-04-23 10:55:00+08:00
 - id: T025
   project: ai-learning
   type: knowledge_report
-  target: "垂直 AI Agent 爆发：金融领域三大架构解析（TradingAgents x Kronos x ai-hedge-fund）"
-  value: "GitHub 三榜实证: TauricResearch/TradingAgents (18792月增,多Agent金融交易) + shiyu-coder/Kronos (6486周+7042月,'Foundation Model for Financial Markets') + virattt/ai-hedge-fund (1058日+4314周,55K stars); 垂直域 Agent 技术架构 vs 通用 Agent 差异; 金融时序数据与 LLM 融合的技术路径"
+  target: 垂直 AI Agent 爆发：金融领域三大架构解析（TradingAgents x Kronos x ai-hedge-fund）
+  value: 'GitHub 三榜实证: TauricResearch/TradingAgents (18792月增,多Agent金融交易) + shiyu-coder/Kronos
+    (6486周+7042月,''Foundation Model for Financial Markets'') + virattt/ai-hedge-fund
+    (1058日+4314周,55K stars); 垂直域 Agent 技术架构 vs 通用 Agent 差异; 金融时序数据与 LLM 融合的技术路径'
   priority: P2
   required_capability: task_executor
   status: done
   claimed_by: NeuronAgent
-  claimed_at: 2026-04-23T10:00:00+08:00
-  started_at: 2026-04-23T10:05:00+08:00
-  done_at: 2026-04-23T11:30:00+08:00
-
+  claimed_at: 2026-04-23 10:00:00+08:00
+  started_at: 2026-04-23 10:05:00+08:00
+  done_at: 2026-04-23 11:30:00+08:00
 - id: T026
   project: ai-learning
   type: knowledge_report
-  target: "AI Coding Agent 终端架构：Scaffolding x Harness x Context 三层模型"
-  value: "核心文献: arxiv 2603.05344 (Building AI Coding Agents for the Terminal); GitHub 实证: obra/superpowers (2055今日+70176月增,'agentic skills framework'); Grok Code Fast 靠 edit format 从 6.7%->68.3%; Harness 决定性证据; 与 ToA 论技术互证; 与 EverAgent 自身架构对照"
+  target: AI Coding Agent 终端架构：Scaffolding x Harness x Context 三层模型
+  value: '核心文献: arxiv 2603.05344 (Building AI Coding Agents for the Terminal); GitHub
+    实证: obra/superpowers (2055今日+70176月增,''agentic skills framework''); Grok Code
+    Fast 靠 edit format 从 6.7%->68.3%; Harness 决定性证据; 与 ToA 论技术互证; 与 EverAgent 自身架构对照'
   priority: P2
   required_capability: task_executor
   status: done
   claimed_by: NeuronAgent
-  claimed_at: 2026-04-23T10:00:00+08:00
-  started_at: 2026-04-23T11:30:00+08:00
-  done_at: 2026-04-23T12:00:00+08:00
-
+  claimed_at: 2026-04-23 10:00:00+08:00
+  started_at: 2026-04-23 11:30:00+08:00
+  done_at: 2026-04-23 12:00:00+08:00
 - id: T030
   project: ai-learning
   type: knowledge_report
-  target: "Agent 心跳监控与实时可观测性架构设计"
-  value: "基于 Phase 1 事件日志层，设计 Agent 心跳检测机制、实时 Dashboard 数据流、以及任务执行延迟告警系统"
+  target: Agent 心跳监控与实时可观测性架构设计
+  value: 基于 Phase 1 事件日志层，设计 Agent 心跳检测机制、实时 Dashboard 数据流、以及任务执行延迟告警系统
   priority: P2
   required_capability: task_executor
   status: done
   claimed_by: NeuronAgent
-  claimed_at: 2026-04-23T10:00:00+08:00
-  started_at: 2026-04-23T10:05:00+08:00
-  done_at: 2026-04-23T10:30:00+08:00
-
+  claimed_at: 2026-04-23 10:00:00+08:00
+  started_at: 2026-04-23 10:05:00+08:00
+  done_at: 2026-04-23 10:30:00+08:00
 - id: T043
   project: ai-learning
   type: knowledge_report
-  target: "MIT 2026 AI 三条主线：LLMs+、世界模型、Agent 编排"
-  value: "基于 MIT Technology Review EmTech AI 2026 Top 10 与 TechTarget 访谈，系统化拆解 LLMs+、World Models、Agent Orchestration 三条主线及 AAIF/MCP/Agents.md 标准化趋势"
+  target: MIT 2026 AI 三条主线：LLMs+、世界模型、Agent 编排
+  value: 基于 MIT Technology Review EmTech AI 2026 Top 10 与 TechTarget 访谈，系统化拆解 LLMs+、World
+    Models、Agent Orchestration 三条主线及 AAIF/MCP/Agents.md 标准化趋势
   priority: P2
   required_capability: task_executor
   status: done
   claimed_by: NeuronAgent
-  claimed_at: 2026-04-27T12:02:00+08:00
-  started_at: 2026-04-27T12:03:00+08:00
-  done_at: 2026-04-27T12:20:00+08:00
+  claimed_at: 2026-04-27 12:02:00+08:00
+  started_at: 2026-04-27 12:03:00+08:00
+  done_at: 2026-04-27 12:20:00+08:00
   context_links:
-    - reports/knowledge_reports/MIT_2026_AI_三条主线_深度研究报告.md
-    - wiki/concepts/llms_plus.md
-    - wiki/concepts/world_models.md
-    - wiki/concepts/agent_orchestration.md
-
+  - reports/knowledge_reports/MIT_2026_AI_三条主线_深度研究报告.md
+  - wiki/concepts/llms_plus.md
+  - wiki/concepts/world_models.md
+  - wiki/concepts/agent_orchestration.md
 - id: T046
   project: ai-learning
   type: knowledge_report
-  target: "LLM 国内外主流评估体系详解"
-  value: "系统解读大模型基准评测、国内外主流评测网站与 leaderboard、以及评测项与应用场景的匹配优先级"
+  target: LLM 国内外主流评估体系详解
+  value: 系统解读大模型基准评测、国内外主流评测网站与 leaderboard、以及评测项与应用场景的匹配优先级
   priority: P1
   required_capability: task_executor
   status: done
   claimed_by: NeuronAgent
-  claimed_at: 2026-04-29T11:03:11+08:00
-  started_at: 2026-04-29T11:03:12+08:00
-  done_at: 2026-04-29T11:09:44+08:00
+  claimed_at: 2026-04-29 11:03:11+08:00
+  started_at: 2026-04-29 11:03:12+08:00
+  done_at: 2026-04-29 11:09:44+08:00
   context_links:
-    - reports/knowledge_reports/LLM_评估体系_深度解析_20260429.md
-    - wiki/concepts/llm_evaluation_systems.md
-
+  - reports/knowledge_reports/LLM_评估体系_深度解析_20260429.md
+  - wiki/concepts/llm_evaluation_systems.md
 - id: T050
   project: ai-learning
   type: paper_analysis
-  target: "Hinton, Vinyals & Dean (2015) Distilling the Knowledge in a Neural Network"
-  value: "基于本地 PDF 23_distilling_2015.pdf 完成知识蒸馏原始论文精读，更新 CONTEXT/PAPERS_INDEX/wiki"
+  target: Hinton, Vinyals & Dean (2015) Distilling the Knowledge in a Neural Network
+  value: 基于本地 PDF 23_distilling_2015.pdf 完成知识蒸馏原始论文精读，更新 CONTEXT/PAPERS_INDEX/wiki
   priority: P2
   required_capability: task_executor
   status: done
   claimed_by: NeuronAgent
-  claimed_at: 2026-04-25T22:00:32+08:00
-  started_at: 2026-04-25T22:00:37+08:00
-  done_at: 2026-04-25T22:00:51+08:00
+  claimed_at: 2026-04-25 22:00:32+08:00
+  started_at: 2026-04-25 22:00:37+08:00
+  done_at: 2026-04-25 22:00:51+08:00
   context_links:
-    - ai-learning/AGENTS.md
-    - ai-learning/CONTEXT.md
-    - ai-learning/papers/23_distilling_2015.pdf
-    - ai-learning/reports/paper_analyses/42_distilling_2015.md
-
+  - ai-learning/AGENTS.md
+  - ai-learning/CONTEXT.md
+  - ai-learning/papers/23_distilling_2015.pdf
+  - ai-learning/reports/paper_analyses/42_distilling_2015.md
 - id: T048
   project: ai-learning
   type: paper_analysis
-  target: "Silver et al. (2017) AlphaZero self-play reinforcement learning"
-  value: "基于本地 PDF 24_alphago_zero_2017.pdf 的实际 AlphaZero 内容完成精读，更新 CONTEXT/PAPERS_INDEX/wiki"
+  target: Silver et al. (2017) AlphaZero self-play reinforcement learning
+  value: 基于本地 PDF 24_alphago_zero_2017.pdf 的实际 AlphaZero 内容完成精读，更新 CONTEXT/PAPERS_INDEX/wiki
   priority: P2
   required_capability: task_executor
   status: done
   claimed_by: NeuronAgent
-  claimed_at: 2026-04-25T22:35:01+08:00
-  started_at: 2026-04-25T22:35:01+08:00
-  done_at: 2026-04-25T22:35:01+08:00
+  claimed_at: 2026-04-25 22:35:01+08:00
+  started_at: 2026-04-25 22:35:01+08:00
+  done_at: 2026-04-25 22:35:01+08:00
   context_links:
-    - ai-learning/AGENTS.md
-    - ai-learning/CONTEXT.md
-    - ai-learning/papers/24_alphago_zero_2017.pdf
-    - ai-learning/reports/paper_analyses/43_alphago_zero_2017.md
-
+  - ai-learning/AGENTS.md
+  - ai-learning/CONTEXT.md
+  - ai-learning/papers/24_alphago_zero_2017.pdf
+  - ai-learning/reports/paper_analyses/43_alphago_zero_2017.md
 - id: T053
   project: ai-learning
   type: knowledge_report
-  target: "1M Long Context 在预训练、后训练与线上推理阶段的技术含义"
-  value: "围绕 1M 上下文窗口，系统拆解预训练中的长序列建模/位置编码/注意力机制，后训练中的长上下文检索与指令对齐，线上推理中的 token budget/KV cache/prefill 延迟/RAG 取舍，并沉淀 wiki 概念页"
+  target: 1M Long Context 在预训练、后训练与线上推理阶段的技术含义
+  value: 围绕 1M 上下文窗口，系统拆解预训练中的长序列建模/位置编码/注意力机制，后训练中的长上下文检索与指令对齐，线上推理中的 token budget/KV
+    cache/prefill 延迟/RAG 取舍，并沉淀 wiki 概念页
   priority: P1
   required_capability: task_executor
   status: done
   claimed_by: EverAgent
-  claimed_at: 2026-05-07T12:26:49+08:00
-  started_at: 2026-05-07T12:26:56+08:00
-  done_at: 2026-05-07T12:38:16+08:00
+  claimed_at: 2026-05-07 12:26:49+08:00
+  started_at: 2026-05-07 12:26:56+08:00
+  done_at: 2026-05-07 12:38:16+08:00
   context_links:
-    - ai-learning/AGENTS.md
-    - ai-learning/CONTEXT.md
-    - ai-learning/skills/concept_deep_dive/SKILL.md
-    - ai-learning/reports/knowledge_reports/Long_Context_1M_三阶段深度解析_20260507.md
-    - ai-learning/wiki/concepts/long_context_systems.md
-
+  - ai-learning/AGENTS.md
+  - ai-learning/CONTEXT.md
+  - ai-learning/skills/concept_deep_dive/SKILL.md
+  - ai-learning/reports/knowledge_reports/Long_Context_1M_三阶段深度解析_20260507.md
+  - ai-learning/wiki/concepts/long_context_systems.md
 - id: T056
   project: ai-learning
   type: paper_analysis
-  target: "SkillOS: Learning Skill Curation for Self-Evolving Agents (2026)"
-  value: "精读 arXiv:2605.06614，聚焦自进化 Agent 的 SkillRepo、SkillCurator、grouped task streams、composite reward 与 GRPO 训练配方，并更新 CONTEXT/PAPERS_INDEX/wiki"
+  target: 'SkillOS: Learning Skill Curation for Self-Evolving Agents (2026)'
+  value: 精读 arXiv:2605.06614，聚焦自进化 Agent 的 SkillRepo、SkillCurator、grouped task streams、composite
+    reward 与 GRPO 训练配方，并更新 CONTEXT/PAPERS_INDEX/wiki
   priority: P1
   required_capability: task_executor
   status: done
   claimed_by: EverAgent
-  claimed_at: 2026-05-13T17:36:23+08:00
-  started_at: 2026-05-13T17:36:36+08:00
-  done_at: 2026-05-13T17:50:06+08:00
-
+  claimed_at: 2026-05-13 17:36:23+08:00
+  started_at: 2026-05-13 17:36:36+08:00
+  done_at: 2026-05-13 17:50:06+08:00
 - id: T058
   project: ai-learning
   type: knowledge_report
-  target: "MCP 协议 / Agents.md 标准化深度解析：Agent 互操作的三种范式"
+  target: MCP 协议 / Agents.md 标准化深度解析：Agent 互操作的三种范式
   priority: P1
   required_capability: task_executor
   status: done
   claimed_by: NeuronAgent
-  claimed_at: 2026-06-21T00:06:56+08:00
-  started_at: 2026-06-21T00:06:58+08:00
-  done_at: 2026-06-21T00:10:53+08:00
-
+  claimed_at: 2026-06-21 00:06:56+08:00
+  started_at: 2026-06-21 00:06:58+08:00
+  done_at: 2026-06-21 00:10:53+08:00
 - id: T059
   project: ai-learning
   type: knowledge_report
-  target: "World Models / JEPA 路线深度报告：自监督世界建模 vs 生成式建模"
+  target: World Models / JEPA 路线深度报告：自监督世界建模 vs 生成式建模
   priority: P1
   required_capability: task_executor
   status: done
   claimed_by: NeuronAgent
-  claimed_at: 2026-06-21T00:11:10+08:00
-  started_at: 2026-06-21T00:11:10+08:00
-  done_at: 2026-06-21T00:13:54+08:00
-
+  claimed_at: 2026-06-21 00:11:10+08:00
+  started_at: 2026-06-21 00:11:10+08:00
+  done_at: 2026-06-21 00:13:54+08:00
 - id: T060
   project: ai-learning
   type: knowledge_report
-  target: "推理模型三大流派详解：OpenAI o-series × DeepSeek R1 × Claude Extended Thinking"
+  target: 推理模型三大流派详解：OpenAI o-series × DeepSeek R1 × Claude Extended Thinking
   priority: P1
   required_capability: task_executor
   status: done
   claimed_by: NeuronAgent
-  claimed_at: 2026-06-21T00:14:17+08:00
-  started_at: 2026-06-21T00:14:17+08:00
-  done_at: 2026-06-21T00:17:28+08:00
+  claimed_at: 2026-06-21 00:14:17+08:00
+  started_at: 2026-06-21 00:14:17+08:00
+  done_at: 2026-06-21 00:17:28+08:00
+- id: T061
+  project: ai-learning
+  type: knowledge_report
+  target: 多模态理解模型对比：GPT-4o / Claude 3.5 vision / Gemini 2.5 / Qwen2.5-VL
+  priority: P1
+  required_capability: task_executor
+  status: open
+  claimed_by: null
+  claimed_at: null
+  started_at: null
+  done_at: null
+  created_at: '2026-06-21'
+- id: T062
+  project: ai-learning
+  type: knowledge_report
+  target: LLM 推理优化引擎：vLLM / SGLang / TensorRT-LLM / llama.cpp
+  priority: P1
+  required_capability: task_executor
+  status: open
+  claimed_by: null
+  claimed_at: null
+  started_at: null
+  done_at: null
+  created_at: '2026-06-21'

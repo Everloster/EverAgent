@@ -1,0 +1,37 @@
+apiVersion: everagent.io/v1
+kind: Task
+metadata:
+  id: T067
+  project: biology-learning
+  status: open
+  created_at: 2026-06-21
+spec:
+  type: concept_report
+  target: "蓝光与褪黑素的光生物学：LED / 屏幕 / 夜间照明的家庭决策"
+  value: |
+    系统拆解夜间光暴露对生理节律的影响机制：
+    - 光的物理参数：波长 (380-780nm)、色温 (K)、照度 (lux)、剂量 (lux·h)
+    - 蓝光 (480nm) 与黑视蛋白 (melanopsin) 感光机制：ipRGCs、pRGCs
+    - 褪黑素抑制曲线：Czeisler 1980 早期研究、Zeitzer 2000 0.6×10¹³ photons/cm²/s 阈值
+    - 屏幕相关：手机/平板/电视的相对亮度、夜间模式 / 暖色滤镜的实际效果（争议）
+    - 家用 LED 光源：色温可调、智能家居、夜灯
+    - 决策框架：何时用蓝光增强警觉（白天工作）、何时避免（睡前 2-3h）
+    - 临床建议：AASM / Endocrine Society / AAO 立场
+    - 争议：屏幕蓝光是否真的影响褪黑素（取决于剂量、距离、暴露时长）
+    - 儿童与青少年的特殊敏感性
+  priority: P1
+  resources:
+    max_tokens: 50000
+    expected_duration: 2h
+  qualityGates:
+    - check: frontmatter_complete
+      required: true
+    - check: evidence_graded
+      required: true
+    - check: mermaid_diagrams
+      required: true
+    - check: decision_framework
+      required: true
+  retryPolicy:
+    maxRetries: 1
+    backoff: fixed
