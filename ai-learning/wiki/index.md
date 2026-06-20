@@ -85,7 +85,7 @@
 | [megatron_lm_3d_parallelism.md](./concepts/megatron_lm_3d_parallelism.md) | 3D并行体系：TP(张量并行·列/行切分·2次AllReduce)·PP(1F1B调度·气泡压缩)·SP(序列并行)·千亿参数训练基础设施 |
 | [agent_observability.md](./concepts/agent_observability.md) | Agent 可观测性：心跳检测·实时 Dashboard·延迟告警·事件溯源·自动干预 |
 | [llms_plus.md](./concepts/llms_plus.md) | LLMs+：MoE、长上下文、多模态、工具调用与模型路由组成的增强型 LLM 系统 |
-| [world_models.md](./concepts/world_models.md) | 世界模型：面向环境状态、动作后果与仿真规划的内部表征体系 |
+| [world_models.md](./concepts/world_models.md) | 世界模型：面向环境状态、动作后果与仿真规划的内部表征体系 · JEPA（V-JEPA 2 1.2B/1M+hr）vs 生成式（Cosmos 4B-14B/Genie 3/GAIA-2）双路线 |
 | [agent_orchestration.md](./concepts/agent_orchestration.md) | Agent 编排：多模型、多工具、多角色、权限与审计组成的任务执行系统 |
 | [llm_evaluation_systems.md](./concepts/llm_evaluation_systems.md) | LLM 评估体系：静态/动态/偏好/代码/Agent/中文/安全评测与场景匹配优先级 |
 | [knowledge_distillation.md](./concepts/knowledge_distillation.md) | 知识蒸馏：高温 softmax 软标签，教师-学生迁移，训练大模型能力到部署小模型 |
