@@ -268,3 +268,39 @@
   claimed_at: 2026-05-13T17:36:23+08:00
   started_at: 2026-05-13T17:36:36+08:00
   done_at: 2026-05-13T17:50:06+08:00
+- id: T058
+  project: ai-learning
+  type: knowledge_report
+  target: "MCP 协议 / Agents.md 标准化深度解析：Agent 互操作的三种范式"
+  priority: P1
+  required_capability: task_executor
+  status: open
+  claimed_by: null
+  claimed_at: null
+  started_at: null
+  done_at: null
+  created_at: 2026-06-21
+- id: T059
+  project: ai-learning
+  type: knowledge_report
+  target: "World Models / JEPA 路线深度报告：自监督世界建模 vs 生成式建模"
+  priority: P1
+  required_capability: task_executor
+  status: open
+  claimed_by: null
+  claimed_at: null
+  started_at: null
+  done_at: null
+  created_at: 2026-06-21
+- id: T060
+  project: ai-learning
+  type: knowledge_report
+  target: "推理模型三大流派详解：OpenAI o-series × DeepSeek R1 × Claude Extended Thinking"
+  priority: P1
+  required_capability: task_executor
+  status: open
+  claimed_by: null
+  claimed_at: null
+  started_at: null
+  done_at: null
+  created_at: 2026-06-21

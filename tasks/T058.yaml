@@ -1,0 +1,33 @@
+apiVersion: everagent.io/v1
+kind: Task
+metadata:
+  id: T058
+  project: ai-learning
+  status: open
+  created_at: 2026-06-21
+spec:
+  type: knowledge_report
+  target: "MCP 协议 / Agents.md 标准化深度解析：Agent 互操作的三种范式"
+  value: |
+    系统拆解 2025-2026 年 Agent 互操作协议标准化进程：
+    - MCP (Model Context Protocol, Anthropic 2024.11)：tool/data 双 channel、JSON-RPC 2.0 transport、stdio/SSE/HTTP 三种 transport、2025 生态扩张
+    - A2A (Agent-to-Agent, Google 2025.04)：Agent Card 描述、task lifecycle、opaque vs transparent execution、跨厂商发现
+    - Agents.md (Cloudflare 2025.06 / OpenAI 2025.08)：面向人类和 agent 双读者的项目级 README 标准化
+    对比矩阵：通信范式（同步 RPC / 异步消息 / 文档自描述）、寻址方式（tool schema / agent card / repo-root file）、安全模型（host-controlled / capability-token / repo-policy）、生态适配范围。
+    学术 + 实战双视角，每个协议给出官方规范、参考实现、典型应用、局限。
+  priority: P1
+  resources:
+    max_tokens: 50000
+    expected_duration: 2h
+  qualityGates:
+    - check: frontmatter_complete
+      required: true
+    - check: evidence_graded
+      required: true
+    - check: mermaid_diagrams
+      required: true
+    - check: comparison_matrix
+      required: true
+  retryPolicy:
+    maxRetries: 1
+    backoff: fixed
