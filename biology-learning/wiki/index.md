@@ -36,6 +36,7 @@
 | [sleep_architecture.md](./concepts/sleep_architecture.md) | NREM/REM 交替的 ~90 分钟睡眠周期结构 |
 | [early_menarche.md](./concepts/early_menarche.md) | 月经初潮提前：小学阶段初潮的儿科内分泌评估入口 |
 | [central_precocious_puberty.md](./concepts/central_precocious_puberty.md) | 中枢性性早熟：HPG 轴提前启动导致的青春期发育 |
+| [blue_light_melatonin.md](./concepts/blue_light_melatonin.md) | 蓝光与褪黑素：ipRGC × 黑视蛋白 × SCN-松果体通路的物理参数化与家庭决策 |
 
 ---
 

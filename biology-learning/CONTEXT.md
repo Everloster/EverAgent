@@ -24,6 +24,7 @@
 - `昼夜节律与运动表现_深度研究报告` — 整合 Hayes(2013)/Montaruli(2021)/Ezagouri(2023)/Gupta(2025)·核心体温节律·睾酮/皮质醇昼夜波动·肌肉分子钟机制·运动时间窗个体化建议（2026-04-22）
 - `运动时间生物学_个体化训练时间窗` — 整合 Hayes(2013)/Ezagouri(2023)/Gupta(2025)·核心体温/激素/分子钟三机制·时型匹配·证据分级决策框架·5层理解模型（2026-04-24）
 - `女童初潮提前与中枢性性早熟_深度研究报告` — 围绕小学三年级女童初潮提前问题，深度解析中国《中枢性性早熟诊断与治疗专家共识（2022）》PDF，整合国内儿童早发育队列与 JAMA Pediatrics/Endocrine Reviews/JCEM/Lancet/JAMA 等前沿证据，形成儿科内分泌就医决策框架（2026-05-05，已扩充）
+- `蓝光与褪黑素的光生物学_20260621` — ipRGC × 黑视蛋白 × SCN-松果体通路物理参数化：Czeisler 1980 / Brainard 2001 / Zeitzer 2000 ED50 / Berson 2002 / Lucas 2014 整合 + CIE S 026 melanopic EDI 决策表 + 家庭 LED / 屏幕 / 夜灯配置 + AASM/AAO/Endocrine Society 立场 + 7 设备 × 7 时间窗口决策矩阵（2026-06-21）
 
 ## 离线知识库
 → [`knowledge/INDEX.md`](./knowledge/INDEX.md)（内容积累中，话题框架已就绪）
