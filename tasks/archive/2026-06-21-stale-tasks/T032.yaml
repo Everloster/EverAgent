@@ -3,6 +3,9 @@ kind: Task
 metadata:
   id: T032
   project: biology-learning
+  status: archived
+  archived_at: 2026-06-21
+  archive_reason: "任务已 done（claimed_by BioAgent, done_at 2026-04-22），报告 biology-learning/reports/concept_reports/昼夜节律与运动表现_深度研究报告.md （358 行）已存在；tasks/ 中此 YAML 滞后于 .project-task-state，造成 2026-06-21 误派发并触发 help_needed。归档后从下次调度器候选中排除。"
 spec:
   type: concept_report
   target: "昼夜节律与运动表现：时间生物学视角的深度研究报告"

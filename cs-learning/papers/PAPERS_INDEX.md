@@ -63,6 +63,7 @@
 **阅读难度**：⭐⭐（需要一定逻辑基础）
 **链接**：https://dl.acm.org/doi/10.1145/363235.363259
 
+**阅读状态**：✅ 已完成（见 `reports/paper_analyses/33_hoare_axiomatic_1969.md`）
 ---
 
 ### #24 | Recursive Functions of Symbolic Expressions and Their Computation by Machine (Lisp)
@@ -343,6 +344,7 @@
 **阅读难度**：⭐⭐（逻辑清晰，算法简洁）
 **链接**：https://dl.acm.org/doi/10.1145/361082.361093
 
+**阅读状态**：✅ 已完成（见 `reports/paper_analyses/34_lamport_bakery_1974.md`）
 ---
 
 ### #29 | LLVM: A Compilation Framework for Lifelong Program Analysis and Transformation
