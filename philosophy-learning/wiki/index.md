@@ -28,6 +28,8 @@
 | [rawls_john.md](./entities/rawls_john.md) | 罗尔斯（1921-2002）·作为公平的正义 + 无知之幕 + 差别原则 |
 | [gettier_edmund.md](./entities/gettier_edmund.md) | 盖提尔（1927-2021）·3 页论文推翻 2500 年 JTB 定义 |
 | [wittgenstein_ludwig.md](./entities/wittgenstein_ludwig.md) | 维特根斯坦（1889-1951）·逻辑图像论 + 可说/不可说划界 + 自我反转（前期《逻辑哲学论》→ 后期《哲学研究》） |
+| [dewey_john.md](./entities/dewey_john.md) | 杜威（1859-1952）·实用主义第二代 + 一个经验 + 做与受 + 反对自我表达二元论 + 艺术与生活连续性 |
+| [danto_arthur.md](./entities/danto_arthur.md) | 丹托（1924-2013）·艺术终结论 + Brillo Box + 任何东西都可以是艺术 + 后历史阶段 + The Nation 艺术批评专栏 1984-2009 |
 
 ---
 
