@@ -1,2 +1,12 @@
-# Versioned task state for this project.
-# Add tasks here and regenerate docs/LEARNING_PROJECTS_TASK_BOARD.md via task_board_aggregator.py.
+- id: T069
+  project: podcast-learning
+  type: text_analysis
+  target: 小宇宙近期 3 期高质播客转录 + 概念抽取（Vol.30-32 或 3 期选定）
+  priority: P2
+  required_capability: task_executor
+  status: open
+  claimed_by: null
+  claimed_at: null
+  started_at: null
+  done_at: null
+  created_at: '2026-06-21'
