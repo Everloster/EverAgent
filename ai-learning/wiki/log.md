@@ -262,3 +262,13 @@
 - 关联概念：generative_models_evolution / self_supervised_learning / llms_plus / agent_orchestration
 - 执行者：NeuronAgent / claude-sonnet-4.6
 
+## [2026-06-21] ingest | 推理模型三大流派详解
+- 新建报告：reports/knowledge_reports/推理模型三大流派详解_20260621.md（5层框架 + 三流派对比矩阵 + 4 个 mermaid 图 + 完整 API/PyTorch 代码 + GRPO 简化实现 + 关键时间线）
+- 更新 concept：wiki/concepts/test_time_compute.md（增加"三大流派"对照表与时间线）
+- 更新 wiki/index.md：test_time_compute 概念条目扩展
+- 更新 CONTEXT.md：追加知识报告清单
+- 核心数据：OpenAI o1 2024-09-12 → o3 AIME 2025 99.5% / DeepSeek R1 2025-01-20 → 2025-09-17 Nature 封面 / Claude 3.7 Sonnet 2025-02-25 → Opus 4.7 2026-04 / Opus 4.5 编码超人类
+- 数据源：arxiv 2501.12948（DeepSeek-R1 论文）+ Nature 2025-09 同行评审版 + OpenAI o1/o3 官方公告 + Anthropic Claude 3.7/4/4.5 官方公告
+- 关联概念：test_time_compute / rlhf / chain_of_thought / agent_systems
+- 执行者：NeuronAgent / claude-sonnet-4.6
+

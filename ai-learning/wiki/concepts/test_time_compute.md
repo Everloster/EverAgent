@@ -1,8 +1,16 @@
 # Test-time Compute
 
 > 所属分类：核心概念（Core Concept）
-> 相关报告：[Test_Time_Compute_深度解析_20260409.md](../reports/knowledge_reports/Test_Time_Compute_深度解析_20260409.md)
+> 相关报告：[Test_Time_Compute_深度解析_20260409.md](../reports/knowledge_reports/Test_Time_Compute_深度解析_20260409.md) / [推理模型三大流派详解_20260621.md](../reports/knowledge_reports/推理模型三大流派详解_20260621.md)
 > 关联概念：Chain-of-Thought / PRM / MCTS / GRPO / RLHF
+
+## 三大流派（2024-2026）
+
+| 流派 | 训练范式 | 代表作 | 关键差异 |
+|------|---------|--------|---------|
+| **OpenAI o-series** | PRM + PPO + SFT 多阶段 | o1 (2024-09) → o3 (2025-04) | 隐式 CoT + 工具融合 + 闭源 |
+| **DeepSeek R1** | 纯 RL + GRPO（PPO 替代）+ 规则化奖励 | R1 (2025-01) → R1-Nature (2025-09) | 显式 <think> + 开源 + Distill 全系列 |
+| **Claude Extended Thinking** | 预训练 + RLHF + Constitutional + Deliberative | 3.7 Sonnet (2025-02) → Opus 4.7 (2026-04) | adaptive budget (128K max) + 交错 thinking/tool use |
 
 ## 什么是 Test-time Compute？
 
