@@ -31,7 +31,6 @@ import math
 import os
 import random
 from dataclasses import dataclass, field
-from typing import Callable
 
 import numpy as np
 
@@ -535,17 +534,17 @@ def _save_plot(history: list[dict], out_path: str) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="TinyGRPO simulation (CPU)")
-    parser.add_argument("--steps", type=int, default=30, help="GRPO update steps")
+    parser.add_argument("--steps", type=int, default=80, help="GRPO update steps")
     parser.add_argument("--num-prompts", type=int, default=20, help="Number of unique arithmetic prompts")
     parser.add_argument("--group-size", type=int, default=8, help="G, samples per prompt")
     parser.add_argument("--max-value", type=int, default=4, help="Max operand magnitude")
-    parser.add_argument("--shared-gt", type=int, default=5, help="If set, all prompts share this ground truth (toy single-answer mode)")
+    parser.add_argument("--shared-gt", type=int, default=7, help="If set, all prompts share this ground truth (toy single-answer mode)")
     parser.add_argument("--mixed-gt", action="store_true", help="Use mixed ground truths (failure case demo, requires prompt-conditional policy)")
     parser.add_argument("--clip-eps", type=float, default=0.2, help="PPO clip range")
-    parser.add_argument("--kl-beta", type=float, default=0.01, help="KL penalty weight")
-    parser.add_argument("--lr", type=float, default=0.5, help="Learning rate")
+    parser.add_argument("--kl-beta", type=float, default=0.005, help="KL penalty weight")
+    parser.add_argument("--lr", type=float, default=1.0, help="Learning rate")
     parser.add_argument("--seed", type=int, default=0)
-    parser.add_argument("--log-every", type=int, default=2)
+    parser.add_argument("--log-every", type=int, default=5)
     parser.add_argument("--eval-prompts", type=int, default=8)
     parser.add_argument("--out-dir", type=str, default=os.path.join(
         os.path.dirname(os.path.abspath(__file__)), "..", "images", "grpo"))

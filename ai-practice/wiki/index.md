@@ -24,7 +24,7 @@
 | 概念 | 文件 | 一句话说明 |
 |------|------|---------|
 | LoRA 参数高效微调 | [lora_peft.md](concepts/lora_peft.md) | 低秩矩阵分解，0.5% 参数量完成微调 |
-| GRPO 强化学习 | [grpo.md](concepts/grpo.md) | 无 Critic 的 PPO 变体，组内相对奖励 |
+| GRPO 强化学习 | [grpo.md](concepts/grpo.md) | 无 Critic 的 PPO 变体，组内相对奖励；含 exp_004（真实 3B）+ exp_008（CPU 缩尺）双实现 |
 | SFT vs RLHF | [sft_vs_rlhf.md](concepts/sft_vs_rlhf.md) | 监督模仿 vs 强化学习探索的权衡 |
 | Unsloth 框架 | [unsloth_framework.md](concepts/unsloth_framework.md) | Triton kernel 加速，2-5x 训练提速 |
 
