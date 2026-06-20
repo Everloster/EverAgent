@@ -3,6 +3,9 @@ kind: Task
 metadata:
   id: T030
   project: ai-learning
+  status: archived
+  archived_at: 2026-06-21
+  archive_reason: "任务已 done（claimed_by NeuronAgent, done_at 2026-04-23），报告 ai-learning/reports/knowledge_reports/Agent_心跳检测与实时Dashboard设计.md（425 行）已存在；tasks/ 中此 YAML 滞后于 .project-task-state，造成 2026-06-21 误派发并触发 help_needed。归档后从下次调度器候选中排除。"
 spec:
   type: knowledge_report
   target: "Agent 心跳监控与实时可观测性架构设计"

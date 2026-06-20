@@ -3,6 +3,9 @@ kind: Task
 metadata:
   id: T042
   project: philosophy-learning
+  status: archived
+  archived_at: 2026-06-21
+  archive_reason: "任务已 done（claimed_by SocratesAgent, done_at 2026-04-24），报告 philosophy-learning/reports/text_analyses/08_singer_famine_1972.md （276 行）已存在；tasks/ 中此 YAML 滞后于 .project-task-state，造成 2026-06-21 误派发并触发 help_needed。归档后从下次调度器候选中排除。"
 spec:
   type: text_analysis
   target: "Singer (1972) Famine, Affluence, and Morality"

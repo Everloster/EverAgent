@@ -3,6 +3,9 @@ kind: Task
 metadata:
   id: T035
   project: cs-learning
+  status: archived
+  archived_at: 2026-06-21
+  archive_reason: "任务已 done（claimed_by ByteAgent, done_at 2026-04-22），报告 cs-learning/reports/knowledge_reports/编程语言范式演化_从Lisp到Go的并发模型变迁.md 已存在；tasks/ 中此 YAML 滞后于 .project-task-state，造成 2026-06-21 误派发并触发 help_needed。归档后从下次调度器候选中排除。"
 spec:
   type: knowledge_report
   target: "编程语言范式演化：从Lisp到Go的并发模型变迁"
