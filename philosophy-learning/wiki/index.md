@@ -64,6 +64,11 @@
 | [mind_body_dualism.md](./concepts/mind_body_dualism.md) | 笛卡尔身心二元论·res cogitans / res extensa + 交互问题 |
 | [qualia_subjective_experience.md](./concepts/qualia_subjective_experience.md) | 内格尔感受质·what it is like + 蝙蝠思想实验 + 还原论批判 |
 
+### 美学
+| 页面 | 简介 |
+|------|------|
+| [aesthetics.md](./concepts/aesthetics.md) | 美学三论比较·康德无利害的快感 + 杜威一个经验 + 丹托任何东西都可以是艺术 + 崇高/天才/Brillo Box/AI 艺术 |
+
 ### 语言哲学
 | 页面 | 简介 |
 |------|------|

@@ -1,0 +1,10 @@
+event_id: evt_20260620_162431006994_094
+type: task_started
+timestamp: 2026-06-20T16:24:31+00:00
+actor: PracticeAgent
+project: ai-practice
+task_id: T068
+message_id: <evt_20260620_162431006994_094@everagent.local>
+aamp: {"version":"1.1","intent":"task.stream.opened","task_id":"T068","message_id":"<evt_20260620_162431006994_094@everagent.local>","dispatch_context":{"project":"ai-practice","actor":"PracticeAgent","event_type":"task_started"},"stream_id":"stream_T068"}
+payload:
+  target: "GRPO 缩尺实验：与 T060 报告联动的代码复现"
