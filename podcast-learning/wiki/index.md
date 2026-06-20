@@ -9,12 +9,17 @@
 
 - [[2026-06-18_xiaoyuzhou_vol29_wangxiaochuan|Vol.29 对话王小川：造医生，战豆包，与无尽的 AI 非共识]]（text_analysis · 2026-06-18）
 
+### 商业 / 宏观经济 / 中国行业分析
+
+- [[2026-06-20_bilibili_BV1NHJF6oE8m_cls-tongxue|三年行业吃肉榜/爆亏榜大合集（2023-2025）]]（text_analysis · 2026-06-20）— B 站 CLS 同学
+
 ---
 
 ## Entities（人物 / 机构）
 
 - [[entities/wang-xiaochuan|王小川]] — 百川智能创始人，前搜狗 CEO（Vol.29 嘉宾）
 - [[entities/baichuan-intelligence|百川智能]] — 中国 AI 公司，专注医疗大模型
+- [[entities/cls-tongxue|CLS 同学]] — B 站 UP 主，连续三年做"中国行业吃肉榜/衰落榜"
 
 ## Concepts（核心概念）
 
@@ -30,4 +35,4 @@
 
 ---
 
-*Last updated: 2026-06-18*
+*Last updated: 2026-06-20*
