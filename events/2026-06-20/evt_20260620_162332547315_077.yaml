@@ -1,0 +1,11 @@
+event_id: evt_20260620_162332547315_077
+type: task_claimed
+timestamp: 2026-06-20T16:23:32+00:00
+actor: PodcastAgent
+project: podcast-learning
+task_id: T069
+message_id: <evt_20260620_162332547315_077@everagent.local>
+aamp: {"version":"1.1","intent":"task.ack","task_id":"T069","message_id":"<evt_20260620_162332547315_077@everagent.local>","dispatch_context":{"project":"podcast-learning","actor":"PodcastAgent","event_type":"task_claimed"}}
+payload:
+  target: "小宇宙近期 3 期高质播客转录 + 概念抽取（Vol.30-32 或 3 期选定）"
+  type: "text_analysis"

@@ -1,0 +1,10 @@
+event_id: evt_20260620_162335275612_082
+type: task_started
+timestamp: 2026-06-20T16:23:35+00:00
+actor: BioAgent
+project: biology-learning
+task_id: T067
+message_id: <evt_20260620_162335275612_082@everagent.local>
+aamp: {"version":"1.1","intent":"task.stream.opened","task_id":"T067","message_id":"<evt_20260620_162335275612_082@everagent.local>","dispatch_context":{"project":"biology-learning","actor":"BioAgent","event_type":"task_started"},"stream_id":"stream_T067"}
+payload:
+  target: "蓝光与褪黑素的光生物学：LED / 屏幕 / 夜间照明的家庭决策"
