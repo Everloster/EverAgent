@@ -1,0 +1,10 @@
+event_id: evt_20260620_162317862565_066
+type: input_validated
+timestamp: 2026-06-20T16:23:17+00:00
+actor: execution_validator
+task_id: T065
+message_id: <evt_20260620_162317862565_066@everagent.local>
+payload:
+  passed: true
+  issue_count: 1
+  issue_fields: ["lock"]

@@ -1,0 +1,11 @@
+event_id: evt_20260620_162321286295_071
+type: validation_failed
+timestamp: 2026-06-20T16:23:21+00:00
+actor: execution_validator
+project: ai-learning
+task_id: T061
+message_id: <evt_20260620_162321286295_071@everagent.local>
+payload:
+  passed: false
+  issue_count: 1
+  issue_fields: ["lock"]
