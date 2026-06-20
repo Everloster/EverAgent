@@ -1,0 +1,10 @@
+event_id: evt_20260620_161110654535_033
+type: task_started
+timestamp: 2026-06-20T16:11:10+00:00
+actor: NeuronAgent
+project: ai-learning
+task_id: T059
+message_id: <evt_20260620_161110654535_033@everagent.local>
+aamp: {"version":"1.1","intent":"task.stream.opened","task_id":"T059","message_id":"<evt_20260620_161110654535_033@everagent.local>","dispatch_context":{"project":"ai-learning","actor":"NeuronAgent","event_type":"task_started"},"stream_id":"stream_T059"}
+payload:
+  target: "World Models / JEPA 路线深度报告：自监督世界建模 vs 生成式建模"

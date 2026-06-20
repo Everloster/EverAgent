@@ -253,3 +253,12 @@
 - 关联概念：agent_systems / agent_orchestration / agent_skill_ecosystem
 - 执行者：NeuronAgent / claude-sonnet-4.6
 
+## [2026-06-21] ingest | World Models / JEPA 路线深度报告
+- 新建报告：reports/knowledge_reports/World_Models_JEPA_路线深度报告_20260621.md（5层框架 + 双路线对比矩阵 + 4 个 mermaid 图 + 简化 PyTorch 实现 + 关键时间线）
+- 更新 concept：wiki/concepts/world_models.md（增加 6 个派生概念条目：JEPA / V-JEPA 2 / AMI / Cosmos / GAIA / Genie）
+- 更新 CONTEXT.md：追加知识报告清单
+- 核心数据：JEPA 路线 V-JEPA 2 1.2B/1M+hr/2025-06；LeCun 2025-11-19 离开 Meta → AMI 实验室 2026-01 融资 €350M；生成式路线 Cosmos 4B-14B（CES 2025）/ GAIA-2（2025-03）/ Genie 3 720p@24fps（2025-08）
+- 数据源：arxiv 2506.09985（V-JEPA 2）+ Meta blog + NVIDIA Cosmos 技术报告 + DeepMind Genie 3 公告 + 多家中文评测
+- 关联概念：generative_models_evolution / self_supervised_learning / llms_plus / agent_orchestration
+- 执行者：NeuronAgent / claude-sonnet-4.6
+
