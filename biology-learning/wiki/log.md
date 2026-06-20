@@ -55,3 +55,16 @@
 **更新 Wiki 页面**：`wiki/concepts/central_precocious_puberty.md`、`wiki/concepts/early_menarche.md`
 
 **核心事实**：根据用户提供的《中枢性性早熟诊断与治疗专家共识（2022）》PDF，补充女童 7.5 岁前乳房发育或 10.0 岁前初潮的国内界值、GnRH 激发试验参数、盆腔超声和 MRI 分层、GnRHa 指征/监测/安全性，并加入 JAMA Pediatrics 2020、Endocrine Reviews 2022、JCEM 2020/2022/2023、韩国 2022 指南等逐篇前沿论文分析。
+
+## [2026-06-21] ingest | 蓝光与褪黑素的光生物学深度研究
+
+**操作**：完成 concept_report 蓝光与褪黑素的光生物学_20260621.md（T067），系统拆解 ipRGC × 黑视蛋白 × SCN-松果体通路，整合 Czeisler 1980 / Brainard 2001 / Zeitzer 2000 ED50 / Berson 2002 / Lucas 2014 五项核心研究 + CIE S 026:2018 melanopic EDI 标准 + AASM/AAO/Endocrine Society 三大临床立场。
+
+**新建报告**：`reports/concept_reports/蓝光与褪黑素的光生物学_20260621.md`（454 行，2 个 mermaid 通路图，4 个决策表）
+
+**更新 Wiki 页面**：
+- 新建 `wiki/concepts/blue_light_melatonin.md`（5 层模型 + 跨域连接）
+- 更新 `wiki/index.md`（追加新概念条目）
+- 更新 `CONTEXT.md`（追加新报告条目 + 边界区更新）
+
+**决策框架亮点**：7 设备 × 7 时间窗口配置矩阵 + 紧急场景决策流程；强调 iPhone Night Shift 单独开启不够，必须降亮度 + 增加距离 + 多管齐下；指出 AAO 与 AASM 立场不矛盾（前者关心视网膜光毒性，后者关心节律干扰，两者剂量阈值相差 3–4 个数量级）。
