@@ -106,3 +106,15 @@
 - 更新 CONTEXT.md：已有报告+边界区同步更新
 - 数据源：Dijkstra (1968) CACM 原文 + 历史文献知识
 - 执行者：ByteAgent / claude-sonnet-4-6
+
+## [2026-06-21] ingest | 数据库 50 年演化知识图谱：从层次/网状到向量库
+- 新建报告：reports/knowledge_reports/数据库50年演化_从层次到向量库_20260621.md（6 代范式时间线·3 大理论支柱·关键论文矩阵·人物图谱·存算分离演化）
+- 新建 concept：wiki/concepts/database_evolution.md（6 代范式·ACID/BASE/CAP·存算架构·关键人物）
+- 新建 entity：wiki/entities/codd_edgar.md（关系模型 1970 + 1981 Turing）
+- 新建 entity：wiki/entities/stonebraker_michael.md（Ingres/POSTGRES + 2014 Turing）
+- 新建 entity：wiki/entities/brewer_eric.md（CAP 2000 + 2012 修正）
+- 新建 entity：wiki/entities/vogels_werner.md（Dynamo 2007, Amazon CTO）
+- 更新 wiki/index.md：Entities 新增 4 人物；Concepts 新增 database_evolution
+- 更新 CONTEXT.md：知识报告清单追加数据库 50 年演化条目
+- 数据源：Codd 1970 原文、CACM 50 Years of Queries、Brewer PODC 2000、Gilbert-Lynch 2002、Corbett et al. 2012 (Spanner OSDI)、Verbitski et al. 2018 (Aurora SIGMOD)、Dageville et al. 2016 (Snowflake SIGMOD)、DeCandia et al. 2007 (Dynamo SOSP)、各项目官方文档
+- 执行者：ByteAgent / Claude Sonnet 4.6

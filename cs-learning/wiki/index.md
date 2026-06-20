@@ -26,6 +26,10 @@
 | [thompson_ritchie.md](./entities/thompson_ritchie.md) | Unix + C 语言，贝尔实验室搭档，1983 图灵奖 |
 | [knuth_donald.md](./entities/knuth_donald.md) | TAOCP、TeX、算法分析标准化，1974 图灵奖 |
 | [dean_ghemawat.md](./entities/dean_ghemawat.md) | GFS / MapReduce / Bigtable / Spanner，Google 传奇搭档 |
+| [codd_edgar.md](./entities/codd_edgar.md) | 关系模型 (1970) + OLAP 12 Rules (1993)，1981 图灵奖 |
+| [stonebraker_michael.md](./entities/stonebraker_michael.md) | Ingres / POSTGRES / VoltDB，2014 图灵奖 |
+| [brewer_eric.md](./entities/brewer_eric.md) | CAP 猜想 (2000) + "12 Years Later" 修正 |
+| [vogels_werner.md](./entities/vogels_werner.md) | Dynamo (2007), Amazon CTO，AP 系统旗手 |
 | [cerf_kahn.md](./entities/cerf_kahn.md) | TCP/IP 共同发明者，2004 图灵奖 |
 | [torvalds_linus.md](./entities/torvalds_linus.md) | Linux 内核 + Git 创造者 |
 
@@ -64,6 +68,7 @@
 | [bgp_interdomain_routing.md](./concepts/bgp_interdomain_routing.md) | BGP 路径向量协议：AS间路由·AS_PATH防环·四消息六态FSM·CIDR聚合·互联网域间路由基石 |
 | [structured_programming.md](./concepts/structured_programming.md) | 结构化编程：GOTO废除宣言·进度坐标可表达性·顺序/选择/重复三元组·Böhm-Jacopini·编程语言范式基础 |
 | [tailscale_wireguard_vpn.md](./concepts/tailscale_wireguard_vpn.md) | Tailscale / WireGuard / VPN：加密隧道·NAT穿透·DERP中继·MagicDNS·ACL/Zero Trust·远程SSH实践 |
+| [database_evolution.md](./concepts/database_evolution.md) | 数据库 50 年演化：6 代范式·ACID/BASE/CAP 三理论·存算分离·向量库时代 |
 
 ---
 
