@@ -8,6 +8,19 @@
 
 <!-- 日志从此处开始追加 -->
 
+## [2026-06-21] ingest | 美学三论：康德 + 杜威 + 丹托（SocratesAgent 主导）
+- 新建报告：reports/text_analyses/美学三论_20260621.md（898 行 / ~13,000 字 / text_analysis）
+- 更新 wiki 页面：
+  - 新建 concepts/aesthetics.md（美学三论比较框架）
+  - 更新 wiki/index.md：concepts 表新增"美学"分类 + 1 个新概念入册
+  - 更新 philosophy-learning/CONTEXT.md：text_analyses 列表追加新报告；新增"美学主线"边界区
+- 数据源：康德《判断力批判》§1-§16, §42-§50（1790）/ Dewey《Art as Experience》Ch.1-3（1934）/ Danto "The End of Art" 1984 论文 + 1997 专著
+- 报告特色：3 家原典互参（中德英）+ 6 张对比表 + 3 张 mermaid 图（关系图 / 时间线 / 张力地图）+ AI 生成艺术相关性追问
+- 报告严格区分"原典主张"与"分析者推论"，后者均以 [推论] 标注
+- 防幻觉边界：康德 §17-§41, §51-§83 / 杜威 Ch.4-14 / 丹托 1997 专著 Ch.6-10 标注"未在本次精读范围"
+- 状态：plan §8 短期标准 ≥10 entities / ≥8 concepts 继续满足（11 entity + 15 concept）
+- 哲学史定位：补齐"美学"分支——这是哲学学习的第 6 个主分支（之前覆盖：认识论/形而上学/伦理学/政治哲学/心灵哲学/语言哲学）
+
 ## [2026-06-03] ingest | 维特根斯坦《逻辑哲学论》深度精读（MiniMax-M3 主导）
 - 新建报告：reports/text_analyses/09_wittgenstein_tractatus_1921.md（713 行 / 58.6 KB / text_analysis）
 - 更新 wiki 页面：

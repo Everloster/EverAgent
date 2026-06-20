@@ -182,7 +182,8 @@
   target: "蓝光与褪黑素的光生物学：LED / 屏幕 / 夜间照明的家庭决策"
   priority: P1
   required_capability: task_executor
-  status: in_progress
+  status: done
   claimed_by: BioAgent
   claimed_at: 2026-06-21T00:23:27+08:00
   started_at: 2026-06-21T00:23:35+08:00
+  done_at: 2026-06-21T00:30:35+08:00

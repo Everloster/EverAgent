@@ -1,0 +1,11 @@
+event_id: evt_20260620_162724948744_095
+type: validation_failed
+timestamp: 2026-06-20T16:27:24+00:00
+actor: execution_validator
+project: psychology-learning
+task_id: T066
+message_id: <evt_20260620_162724948744_095@everagent.local>
+payload:
+  passed: false
+  issue_count: 1
+  issue_fields: ["status"]

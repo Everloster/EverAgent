@@ -39,6 +39,7 @@
 - `操作系统内核设计深度解析_20260416` — UNIX哲学·一切皆文件·fork/exec/pipe·FFS cylinder group·CSP通道通信·宏内核vs微内核·io_uring·Unikernel（2026-04-16）
 - `编程语言范式演化_从Lisp到Go的并发模型变迁` — McCarthy(Lisp)·Dijkstra(结构化编程)·Hoare(CSP)·Lattner(LLVM)四阶段演化图谱·函数式/结构化/进程代数/编译器基础设施（2026-04-22）
 - `Tailscale_WireGuard_VPN_原理深度解析` — 现代 VPN·WireGuard 加密隧道·Tailscale 控制/数据平面·NAT 穿透·DERP 中继·MagicDNS·ACL/Zero Trust·iPad 远程 SSH Mac 实践（2026-05-09）
+- `数据库50年演化_从层次到向量库_20260621` — IMS 1968 / DBTG 1969 / Codd 1970 / System R / Ingres / Oracle 1979 / POSTGRES 1986 / PostgreSQL 1995- / Bigtable 2006 / Dynamo 2007 / MongoDB 2009 / Spanner 2012 / Aurora 2014 / Snowflake 2014 / CockroachDB 2015 / TiDB 2016 / Pinecone·Milvus·Weaviate 2019 / Qdrant 2021；六代范式·ACID/BASE/CAP 三理论·存算分离·向量库时代
 
 ## 离线知识库
 → [`knowledge/INDEX.md`](./knowledge/INDEX.md)
