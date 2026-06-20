@@ -8,6 +8,14 @@
 
 <!-- 日志从此处开始追加 -->
 
+## [2026-06-21] ingest | 情绪调节 Gross 模型 + 重评 vs 抑制实证对比
+- 新建报告：reports/concept_reports/情绪调节_Gross模型_20260621.md (512 行)
+- 更新 wiki 页面：
+  - concepts/emotion_regulation.md (新建，五层 L1-L5 + 神经基础表)
+  - entities/gross_james.md (新建)
+  - index.md (concepts + entities 各加一行)
+  - CONTEXT.md (已有报告列表追加一行)
+
 ## [2026-04-17] 首次种子 | psychology-learning wiki 初始化
 
 **操作**：基于已完成的 12 篇 paper_analyses + 2 篇 concept_reports 反向抽取 entities 与 concepts，完成 wiki 骨架填充。

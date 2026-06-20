@@ -21,6 +21,7 @@
 | [asch_solomon.md](./entities/asch_solomon.md) | Solomon Asch，从众线段实验 (1951)，Milgram 的导师 |
 | [zimbardo_philip.md](./entities/zimbardo_philip.md) | Philip Zimbardo，斯坦福监狱实验 (1971) |
 | [darley_latane.md](./entities/darley_latane.md) | Darley & Latané，旁观者效应 / 责任扩散 (1968) |
+| [gross_james.md](./entities/gross_james.md) | James J. Gross，情绪调节过程模型 (1998) + ERQ (2003) + 拓展框架 (2015) |
 
 ---
 
@@ -40,6 +41,7 @@
 | [conformity_asch.md](./concepts/conformity_asch.md) | 从众：信息性 vs 规范性影响 |
 | [diagnosis_labeling.md](./concepts/diagnosis_labeling.md) | 精神病诊断标签的污染效应，DSM-III 改革动因之一 |
 | [situationism.md](./concepts/situationism.md) | 情境主义：情境 > 品格的四经典证据合成 |
+| [emotion_regulation.md](./concepts/emotion_regulation.md) | 情绪调节 Gross 过程模型：重评 vs 抑制 + 神经基础 + 跨文化 + 临床应用 |
 
 ---
 
