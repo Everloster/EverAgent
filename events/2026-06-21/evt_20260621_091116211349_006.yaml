@@ -1,0 +1,11 @@
+event_id: evt_20260621_091116211349_006
+type: task_claimed
+timestamp: 2026-06-21T09:11:16+00:00
+actor: NeuronAgent
+project: ai-learning
+task_id: T062
+message_id: <evt_20260621_091116211349_006@everagent.local>
+aamp: {"version":"1.1","intent":"task.ack","task_id":"T062","message_id":"<evt_20260621_091116211349_006@everagent.local>","dispatch_context":{"project":"ai-learning","actor":"NeuronAgent","event_type":"task_claimed"}}
+payload:
+  target: "LLM 推理优化引擎：vLLM / SGLang / TensorRT-LLM / llama.cpp"
+  type: "knowledge_report"
