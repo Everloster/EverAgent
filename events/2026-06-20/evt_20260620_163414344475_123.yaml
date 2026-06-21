@@ -1,0 +1,10 @@
+event_id: evt_20260620_163414344475_123
+type: task_started
+timestamp: 2026-06-20T16:34:14+00:00
+actor: ByteAgent
+project: cs-learning
+task_id: T064
+message_id: <evt_20260620_163414344475_123@everagent.local>
+aamp: {"version":"1.1","intent":"task.stream.opened","task_id":"T064","message_id":"<evt_20260620_163414344475_123@everagent.local>","dispatch_context":{"project":"cs-learning","actor":"ByteAgent","event_type":"task_started"},"stream_id":"stream_T064"}
+payload:
+  target: "RFC 9000 QUIC: A UDP-Based Multiplexed and Secure Transport"
