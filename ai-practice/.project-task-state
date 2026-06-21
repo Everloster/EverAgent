@@ -50,6 +50,8 @@
   claimed_at: 2026-05-13 17:37:22+08:00
   started_at: 2026-05-13 17:37:26+08:00
   done_at: 2026-05-13 17:50:10+08:00
+  context_links:
+    - ai-practice/experiments/exp_007_skillos_curator_simulation.md
 
 - id: T068
   project: ai-practice
@@ -62,3 +64,5 @@
   claimed_at: 2026-06-21T00:23:58+08:00
   started_at: 2026-06-21T00:24:31+08:00
   done_at: 2026-06-21T00:35:04+08:00
+  context_links:
+    - ai-practice/experiments/exp_008_grpo_simulation.md

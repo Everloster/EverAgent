@@ -10,6 +10,8 @@
   claimed_at: 2026-04-05 10:00:00+08:00
   started_at: 2026-04-05 10:30:00+08:00
   done_at: 2026-04-05 15:47:00+08:00
+  context_links:
+    - psychology-learning/reports/concept_reports/认知偏差全景图.md
 
 - id: T010
   project: psychology-learning
@@ -23,6 +25,8 @@
   claimed_at: 2026-04-22 10:00:00+08:00
   started_at: 2026-04-22 10:30:00+08:00
   done_at: 2026-04-22 11:00:00+08:00
+  context_links:
+    - psychology-learning/reports/concept_reports/情绪调节_Gross模型_20260621.md
 
 - id: T066
   project: psychology-learning
@@ -35,3 +39,5 @@
   claimed_at: 2026-06-21T00:23:04+08:00
   started_at: 2026-06-21T00:23:07+08:00
   done_at: 2026-06-21T00:27:50+08:00
+  context_links:
+    - psychology-learning/reports/concept_reports/情绪调节_Gross模型_20260621.md
