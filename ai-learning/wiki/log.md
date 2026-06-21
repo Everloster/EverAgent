@@ -272,3 +272,13 @@
 - 关联概念：test_time_compute / rlhf / chain_of_thought / agent_systems
 - 执行者：NeuronAgent / claude-sonnet-4.6
 
+## [2026-06-21] ingest | LLM 推理优化引擎全景（vLLM / SGLang / TensorRT-LLM / llama.cpp）
+- 新建报告：reports/knowledge_reports/LLM_推理优化引擎_20260621.md（5层框架 + 4 引擎深度对比 + MLC-LLM/TGI 补充 + 2 个 mermaid 图 + 10 维对比表 + 量化/硬件/Multi-LoRA/Prefix 共享专题 + 选型决策树 + 7 千 5 百字）
+- 新建 concept：wiki/concepts/llm_inference_engines.md（4 引擎护城河 + 6 大核心技术 + 选型决策树 + 前沿动态）
+- 更新 wiki/index.md：Concepts 表新增 llm_inference_engines 条目
+- 更新 CONTEXT.md：追加知识报告清单
+- 核心数据：vLLM SOSP 2023 PagedAttention · SGLang NeurIPS 2024 RadixAttention 多轮 3-5x 命中率提升 · TensorRT-LLM FP8 4-8x vs FP16 · llama.cpp GGUF Q2-Q8 · MLC-LLM WebGPU 跨平台 · TGI 2026-03 v3.3.6
+- 数据源：USENIX SOSP 2023 Kwon et al. + arxiv 2312.07104 SGLang + arxiv 2311.03285 S-LoRA + arxiv 2310.18547 Punica + vLLM/SGLang/TensorRT-LLM/llama.cpp/mlc-llm/TGI 官方 GitHub README
+- 关联概念：kv_cache / lora_peft / megatron_lm_3d_parallelism / llms_plus
+- 执行者：NeuronAgent / claude-sonnet-4.6
+

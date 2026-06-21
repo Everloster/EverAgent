@@ -82,6 +82,7 @@
 - `World_Models_JEPA_路线深度报告_20260621` — JEPA 路线（LeCun：I-JEPA→V-JEPA→V-JEPA 2 1.2B/1M+ hr 视频，2025-11 LeCun 离 Meta 创办 AMI 实验室融资 €350M）vs 生成式路线（OpenAI Sora / NVIDIA Cosmos 4B-14B / Wayve GAIA-2 / DeepMind Genie 3 720p@24fps）双线对比·参数表·应用场景（自动驾驶/机器人/游戏）·MIT 2026 三主线之一（2026-06-21）
 - `推理模型三大流派详解_20260621` — OpenAI o-series（o1 2024-09→o3/o4-mini 2025-04 AIME 99.5%）· DeepSeek R1（2025-01→Nature 2025-09 封面·GRPO 纯 RL·Distill 1.5B-70B）· Claude Extended Thinking（3.7 Sonnet 2025-02→Opus 4.7 2026-04·adaptive budget 128K·deliberative alignment）三流派对比·训练范式·benchmark 表·GRPO 实现（2026-06-21）
 - `多模态理解模型对比_GPT4o_Claude_Gemini_QwenVL_20260621` — GPT-4o（2024-05 原生 omni·320ms 音频响应）· Claude 3.5 Sonnet Vision（2024-06→2024-10 Computer Use）· Gemini 2.5 Pro（2025-03 Vision Arena #1·1M-2M 上下文·稀疏 MoE）· Qwen2.5-VL 3B/7B/72B/Max（2025-01 开源·13 项评测超 GPT-4o）四家多模态理解模型对比·架构·benchmark·价格·场景选型（2026-06-21）
+- `LLM_推理优化引擎_20260621` — vLLM（PagedAttention·UC Berkeley 2023-06）· SGLang（RadixAttention·Stanford 2024-01）· TensorRT-LLM（Kernel Fusion + In-flight Batching·NVIDIA 2023-10）· llama.cpp（GGUF Q2-Q8·Gerganov 2023-03）四引擎深度对比+MLC-LLM/TGI 补充·架构范式·KV cache·量化·硬件·Multi-LoRA·Prefix sharing·2 个 mermaid 图+1 个 10 维对比表（2026-06-21）
 
 **Notes（会议 / 观察笔记，非正式报告）** (`notes/`)
 - `note_AI教育不平等家长焦虑_20260617` — 飞书会议 71.7s 独白转录·AI 时代家长对教育不平等的反思·含原文（出处 + ASR 错字订正）·观点总结·与已有报告的互文对接（2026-06-17）
