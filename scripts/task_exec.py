@@ -128,6 +128,31 @@ def command_finish(args: argparse.Namespace) -> int:
             project,
         ]
     )
+    # Quality gate (mandatory by default; override with --skip-quality-gate for
+    # CI / emergency / known-broken cases). Block finish if any required check FAILs.
+    if not getattr(args, "skip_quality_gate", False):
+        qg = subprocess.run(
+            [
+                "python3",
+                "scripts/check_quality_gates.py",
+                "--task-id",
+                args.task_id,
+            ],
+            capture_output=True,
+            text=True,
+        )
+        if qg.returncode != 0:
+            print("[FAIL] quality_gates failed; refusing to mark task done.", file=sys.stderr)
+            print("--- check_quality_gates output ---", file=sys.stderr)
+            print(qg.stdout, file=sys.stderr)
+            print(qg.stderr, file=sys.stderr)
+            print("--- end ---", file=sys.stderr)
+            print("Fix the failing required checks, or pass --skip-quality-gate to override.", file=sys.stderr)
+            return 1
+        print("[PASS] quality_gates check passed.")
+    else:
+        print("[WARN] quality_gates skipped via --skip-quality-gate (manual override).")
+
     run_step(["python3", "scripts/task_state_cli.py", "done", "--task-id", args.task_id])
     print("[PASS] Finish flow completed. Commit/push the done status, then release the lock.")
     return 0
@@ -249,6 +274,11 @@ def build_parser() -> argparse.ArgumentParser:
     finish_parser = subparsers.add_parser("finish")
     finish_parser.add_argument("--task-id", required=True)
     finish_parser.add_argument("--project")
+    finish_parser.add_argument(
+        "--skip-quality-gate",
+        action="store_true",
+        help="skip quality_gates check (manual override; discouraged)",
+    )
     finish_parser.set_defaults(func=command_finish)
 
     fail_parser = subparsers.add_parser("fail")

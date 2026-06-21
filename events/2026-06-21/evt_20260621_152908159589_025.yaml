@@ -1,0 +1,11 @@
+event_id: evt_20260621_152908159589_025
+type: validation_failed
+timestamp: 2026-06-21T15:29:08+00:00
+actor: execution_validator
+project: ai-practice
+task_id: T068
+message_id: <evt_20260621_152908159589_025@everagent.local>
+payload:
+  passed: false
+  issue_count: 1
+  issue_fields: ["done_at"]
