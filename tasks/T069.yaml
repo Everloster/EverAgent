@@ -3,34 +3,31 @@ kind: Task
 metadata:
   id: T069
   project: podcast-learning
-  status: open
+  status: done
   created_at: 2026-06-21
+  done_at: '2026-06-21T00:32:00+08:00'
+  completed_by: PodcastAgent
 spec:
   type: text_analysis
-  target: "小宇宙近期 3 期高质播客转录 + 概念抽取（Vol.30-32 或 3 期选定）"
-  value: |
-    与 Vol.29 王小川的协议保持一致：
-    - 选定 3 期小宇宙高质播客（2026 年 4-6 月，按 podcast 站近期热门或用户偏好）
-    - 拉取转录（如有），或使用 ASR (Whisper) 转写
-    - 按 podcast-learning/AGENTS.md 的 5 步文本分析模板产出
-    - 提取：核心人物、关键概念、争议点、可执行建议
-    - 同步生成 wiki/concepts/*.md 概念页 + wiki/entities/*.md 人物页
-    - 更新 podcast-learning/CONTEXT.md 已有播客清单
-    - 注意：若用户希望指定具体期数或主题，需询问；否则选学术 / 科技 / 商业 / 心理学
-      4 个领域各挑 1 期最近的热门节目
+  target: 小宇宙近期 3 期高质播客转录 + 概念抽取（Vol.30-32 或 3 期选定）
+  value: "与 Vol.29 王小川的协议保持一致：\n- 选定 3 期小宇宙高质播客（2026 年 4-6 月，按 podcast 站近期热门或用户偏好）\n\
+    - 拉取转录（如有），或使用 ASR (Whisper) 转写\n- 按 podcast-learning/AGENTS.md 的 5 步文本分析模板产出\n\
+    - 提取：核心人物、关键概念、争议点、可执行建议\n- 同步生成 wiki/concepts/*.md 概念页 + wiki/entities/*.md 人物页\n\
+    - 更新 podcast-learning/CONTEXT.md 已有播客清单\n- 注意：若用户希望指定具体期数或主题，需询问；否则选学术 / 科技 /\
+    \ 商业 / 心理学\n  4 个领域各挑 1 期最近的热门节目\n"
   priority: P2
   resources:
     max_tokens: 50000
     expected_duration: 2.5h
   qualityGates:
-    - check: frontmatter_complete
-      required: true
-    - check: transcript_attached
-      required: true
-    - check: original_text_quotes
-      required: true
-    - check: wiki_linked
-      required: true
+  - check: frontmatter_complete
+    required: true
+  - check: transcript_attached
+    required: true
+  - check: original_text_quotes
+    required: true
+  - check: wiki_linked
+    required: true
   retryPolicy:
     maxRetries: 1
     backoff: fixed

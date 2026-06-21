@@ -1,0 +1,11 @@
+event_id: evt_20260621_092140687814_018
+type: task_done
+timestamp: 2026-06-21T09:21:40+00:00
+actor: ByteAgent
+project: cs-learning
+task_id: T064
+message_id: <evt_20260621_092140687814_018@everagent.local>
+aamp: {"version":"1.1","intent":"task.result","task_id":"T064","message_id":"<evt_20260621_092140687814_018@everagent.local>","dispatch_context":{"project":"cs-learning","actor":"ByteAgent","event_type":"task_done"},"status":"completed"}
+payload:
+  target: "RFC 9000 QUIC: A UDP-Based Multiplexed and Secure Transport"
+  duration_hint: "completed"
