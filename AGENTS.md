@@ -115,11 +115,23 @@ open → claimed → in_progress → done
 - 每次有新任务完成，同步追加到"已完成"列表
 - 禁止删除任何 done 状态的历史记录
 
-### 项目级任务状态文件（过渡阶段）
+### 任务文件双轨：Spec vs State（强制分工）
 
-**当前状态**：各项目使用 `{project}/.project-task-state` 管理自身任务状态，根目录 `/.project-task-state` 管理 `global` 任务；Task Board 是聚合后的只读视图。
+**Spec（任务定义）** —— `tasks/T*.yaml`
+- 内容：id / project / created_at / spec.{type, target, value, priority, resources, qualityGates, retryPolicy}
+- 性质：**只描述要做什么**。**不包含 status / claimed_by / claimed_at / started_at / done_at / completed_by** 等运行时字段。
+- 生命周期：创建后不变更；归档后保留供历史审计。
+- 读方：EverAgent 调度时读；subagent 执行时读 spec。
 
-**文件格式**（`.project-task-state`）：
+**State（运行时状态）** —— `{project}/.project-task-state`
+- 内容：与 spec 同样的 id/type/target + **运行时字段**（status / claimed_by / claimed_at / started_at / done_at / failed_reason / context_links / help_reason / cancelled_at）
+- 性质：**任务状态机的唯一来源（single source of truth）**。
+- 写方：**仅 `scripts/task_state_cli.py` 与 `scripts/task_exec.py`** 通过 dataclass API 修改；禁止人工手编。
+- 根目录 `/.project-task-state` 管理 `project: global` 类任务（如 T012 自动化维护任务）。
+
+**为什么严格分开**：历史上 `tasks/T*.yaml` 与 `.project-task-state` 同时维护状态字段，造成 11+ 处状态漂移（如 T061/T069 报告已落盘但 state 卡在 in_progress）。2026-06-21 起强制：YAML 删状态字段；state 文件由脚本独占。
+
+**State 文件格式**（`.project-task-state`）：
 ```yaml
 - id: T001
   project: ai-learning
@@ -129,10 +141,12 @@ open → claimed → in_progress → done
   status: done
   claimed_by: NeuronAgent
   claimed_at: 2026-04-04T10:00:00+08:00
-  done_at: 2026-04-04T12:00:00+08:00
+  started_at: 2026-04-04T10:30:00+08:00
+  done_at: 2026-04-04T15:47:00+08:00
 ```
 
 > 参考：`scripts/task_board_aggregator.py`（Task Board 汇总视图生成器）
+> 校验：`python3 scripts/check_task_state_consistency.py` —— 若发现 YAML 与 state 字段重复，立即报错
 
 ---
 

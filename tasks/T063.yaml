@@ -3,33 +3,43 @@ kind: Task
 metadata:
   id: T063
   project: cs-learning
-  status: open
   created_at: 2026-06-21
 spec:
   type: knowledge_report
-  target: "数据库 50 年演化：层次→网状→关系→NoSQL→NewSQL→向量库"
-  value: |
-    系统梳理 1970-2026 数据库技术 6 代演化：
+  target: 数据库 50 年演化：层次→网状→关系→NoSQL→NewSQL→向量库
+  value: '系统梳理 1970-2026 数据库技术 6 代演化：
+
     - 第一代 (1960s-70s)：层次 (IMS, IBM 1966) + 网状 (CODASYL, 1969)
+
     - 第二代 (1970s-80s)：关系模型 + SQL (Codd 1970, System R, Ingres, Oracle 1979)
+
     - 第三代 (1990s-2000s)：对象-关系 (PostgreSQL 1996) + 数据仓库 + OLAP
-    - 第四代 (2000s-2010s)：NoSQL 四象限 — Key-Value (Dynamo 2007, Redis) / Document (MongoDB 2009) / Column (Bigtable 2006, Cassandra 2008) / Graph (Neo4j 2007)
-    - 第五代 (2010s-2020s)：NewSQL (Spanner 2012, CockroachDB 2015, TiDB 2016) + 云原生 (Aurora 2014, Snowflake 2014) + 图 (JanusGraph) + 时序 (InfluxDB)
-    - 第六代 (2020s-)：向量库 (Pinecone 2019, Weaviate 2019, Milvus 2019, Qdrant 2021) + 多模 + LLM-native (SurrealDB, MongoDB 8.0+ $vectorSearch)
+
+    - 第四代 (2000s-2010s)：NoSQL 四象限 — Key-Value (Dynamo 2007, Redis) / Document (MongoDB
+    2009) / Column (Bigtable 2006, Cassandra 2008) / Graph (Neo4j 2007)
+
+    - 第五代 (2010s-2020s)：NewSQL (Spanner 2012, CockroachDB 2015, TiDB 2016) + 云原生 (Aurora
+    2014, Snowflake 2014) + 图 (JanusGraph) + 时序 (InfluxDB)
+
+    - 第六代 (2020s-)：向量库 (Pinecone 2019, Weaviate 2019, Milvus 2019, Qdrant 2021) +
+    多模 + LLM-native (SurrealDB, MongoDB 8.0+ $vectorSearch)
+
     关键人物：Codd / Gray / Stonebraker / Dean / Corbett 等。CAP 定理、ACID vs BASE、HTAP、存算分离。
+
+    '
   priority: P2
   resources:
     max_tokens: 60000
     expected_duration: 2.5h
   qualityGates:
-    - check: frontmatter_complete
-      required: true
-    - check: evidence_graded
-      required: true
-    - check: mermaid_diagrams
-      required: true
-    - check: timeline_table
-      required: true
+  - check: frontmatter_complete
+    required: true
+  - check: evidence_graded
+    required: true
+  - check: mermaid_diagrams
+    required: true
+  - check: timeline_table
+    required: true
   retryPolicy:
     maxRetries: 1
     backoff: fixed

@@ -3,33 +3,44 @@ kind: Task
 metadata:
   id: T062
   project: ai-learning
-  status: open
   created_at: 2026-06-21
 spec:
   type: knowledge_report
-  target: "LLM 推理优化引擎：vLLM / SGLang / TensorRT-LLM / llama.cpp"
-  value: |
-    系统拆解 2024-2026 主流 LLM 推理优化框架：
-    - vLLM (UC Berkeley, 2023.06 起，PagedAttention 核心)：连续批处理、KV cache 分页、prefix caching、speculative decoding
-    - SGLang (Stanford, 2024.01 起，RadixAttention)：复杂 LLM 程序优化、structured output、front-end DSL
-    - TensorRT-LLM (NVIDIA, 2023.10 起)：kernel fusion、in-flight batching、FP8/INT4/INT8 weight-only、tensor parallel
-    - llama.cpp (Georgi Gerganov, 2023.03 起)：CPU/GPU 统一、量化生态（GGUF Q2-Q8）、Metal/CUDA/Vulkan 后端、Apple Silicon 优化
+  target: LLM 推理优化引擎：vLLM / SGLang / TensorRT-LLM / llama.cpp
+  value: '系统拆解 2024-2026 主流 LLM 推理优化框架：
+
+    - vLLM (UC Berkeley, 2023.06 起，PagedAttention 核心)：连续批处理、KV cache 分页、prefix caching、speculative
+    decoding
+
+    - SGLang (Stanford, 2024.01 起，RadixAttention)：复杂 LLM 程序优化、structured output、front-end
+    DSL
+
+    - TensorRT-LLM (NVIDIA, 2023.10 起)：kernel fusion、in-flight batching、FP8/INT4/INT8
+    weight-only、tensor parallel
+
+    - llama.cpp (Georgi Gerganov, 2023.03 起)：CPU/GPU 统一、量化生态（GGUF Q2-Q8）、Metal/CUDA/Vulkan
+    后端、Apple Silicon 优化
+
     - 其他：MLC-LLM / TGI / LMDeploy / DeepSpeed-FastGen / OpenLLM
+
     关键对比：架构范式（continuous batching / radix tree / kernel-level）、量化支持、硬件覆盖
+
     （NVIDIA/AMD/Apple/Intel/CPU-only）、多模态、LoRA 热加载、prefix sharing 效率、生态。
+
+    '
   priority: P1
   resources:
     max_tokens: 50000
     expected_duration: 2h
   qualityGates:
-    - check: frontmatter_complete
-      required: true
-    - check: evidence_graded
-      required: true
-    - check: mermaid_diagrams
-      required: true
-    - check: feature_comparison_table
-      required: true
+  - check: frontmatter_complete
+    required: true
+  - check: evidence_graded
+    required: true
+  - check: mermaid_diagrams
+    required: true
+  - check: feature_comparison_table
+    required: true
   retryPolicy:
     maxRetries: 1
     backoff: fixed

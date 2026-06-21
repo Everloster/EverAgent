@@ -3,10 +3,7 @@ kind: Task
 metadata:
   id: T069
   project: podcast-learning
-  status: done
   created_at: 2026-06-21
-  done_at: '2026-06-21T00:32:00+08:00'
-  completed_by: PodcastAgent
 spec:
   type: text_analysis
   target: 小宇宙近期 3 期高质播客转录 + 概念抽取（Vol.30-32 或 3 期选定）
