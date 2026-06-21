@@ -10,6 +10,8 @@
   claimed_at: 2026-04-05 10:00:00+08:00
   started_at: 2026-04-05 10:30:00+08:00
   done_at: 2026-04-05 15:47:00+08:00
+  context_links:
+    - cs-learning/reports/paper_analyses/30_dns_1987.md
 
 - id: T004
   project: cs-learning
@@ -23,6 +25,8 @@
   claimed_at: 2026-04-05 10:00:00+08:00
   started_at: 2026-04-05 10:30:00+08:00
   done_at: 2026-04-05 15:47:00+08:00
+  context_links:
+    - cs-learning/reports/knowledge_reports/分布式系统知识图谱.md
 
 - id: T014
   project: cs-learning
@@ -36,6 +40,8 @@
   claimed_at: 2026-04-16 10:00:00+08:00
   started_at: 2026-04-16 10:05:00+08:00
   done_at: 2026-04-16 11:30:00+08:00
+  context_links:
+    - cs-learning/reports/paper_analyses/31_bgp_rfc4271_2006.md
 
 - id: T015
   project: cs-learning
@@ -49,6 +55,8 @@
   claimed_at: 2026-04-16 16:22:12+08:00
   started_at: 2026-04-16 16:22:15+08:00
   done_at: 2026-04-16 16:25:41+08:00
+  context_links:
+    - cs-learning/reports/paper_analyses/32_dijkstra_goto_1968.md
 
 - id: T034
   project: cs-learning
@@ -62,6 +70,8 @@
   claimed_at: 2026-04-22 10:00:00+08:00
   started_at: 2026-04-22 10:05:00+08:00
   done_at: 2026-04-22 10:30:00+08:00
+  context_links:
+    - cs-learning/reports/paper_analyses/33_hoare_axiomatic_1969.md
 
 - id: T035
   project: cs-learning
@@ -75,6 +85,8 @@
   claimed_at: 2026-04-22 16:55:00+08:00
   started_at: 2026-04-22 16:55:00+08:00
   done_at: 2026-04-22 17:05:00+08:00
+  context_links:
+    - cs-learning/reports/knowledge_reports/编程语言范式演化_从Lisp到Go的并发模型变迁.md
 
 - id: T036
   project: cs-learning
@@ -88,6 +100,8 @@
   claimed_at: 2026-04-22 10:00:00+08:00
   started_at: 2026-04-22 10:05:00+08:00
   done_at: 2026-04-22 10:30:00+08:00
+  context_links:
+    - cs-learning/reports/paper_analyses/34_lamport_bakery_1974.md
 
 - id: T055
   project: cs-learning
@@ -101,6 +115,8 @@
   claimed_at: 2026-05-09 16:30:46+08:00
   started_at: 2026-05-09 16:30:49+08:00
   done_at: 2026-05-09 16:34:55+08:00
+  context_links:
+    - cs-learning/reports/knowledge_reports/Tailscale_WireGuard_VPN_原理深度解析.md
 
 - id: T063
   project: cs-learning
@@ -113,6 +129,8 @@
   claimed_at: 2026-06-21T00:23:11+08:00
   started_at: 2026-06-21T00:23:13+08:00
   done_at: 2026-06-21T00:33:57+08:00
+  context_links:
+    - cs-learning/reports/knowledge_reports/数据库50年演化_从层次到向量库_20260621.md
 
 - id: T064
   project: cs-learning
@@ -125,3 +143,5 @@
   claimed_at: 2026-06-21T00:34:12+08:00
   started_at: 2026-06-21T00:34:14+08:00
   done_at: 2026-06-21T17:21:40+08:00
+  context_links:
+    - cs-learning/reports/paper_analyses/35_quic_rfc9000_2021.md
