@@ -269,38 +269,22 @@ git_commit_sha: abc123...
 
 ## §7 Commit Protocol（EverAgent 提交规范）
 
-### Commit Message 格式
+> 共享规则 → [`docs/PROTOCOL_COMMON.md`](docs/PROTOCOL_COMMON.md) §B Commit Message + §C Push Flow
+>
+> 本节仅列出根级特殊说明：
 
-```
-[{task-type}] {scope}: {描述}
-
-Agent: EverAgent
-Task-Type: {project-optimization | new-project | task-execution}
-```
-
-- `scope`：`global` 或具体子项目名
-
-### 推送流程
-
-```bash
-git add -A
-git commit -m "[project-optimization] global: {描述}
-
-Agent: EverAgent
-Task-Type: project-optimization"
-GIT_NO_OPTIONAL_LOCKS=1 git fetch origin main
-GIT_NO_OPTIONAL_LOCKS=1 git merge --ff-only FETCH_HEAD
-GIT_NO_OPTIONAL_LOCKS=1 git push origin main
-```
-
-> ⚠️ lock 错误处理：`find .git -name "*.lock" -delete && git pull`
+- **Pre-commit hook 强制**：commit 会被 `scripts/git_identity.py` 校验 author 身份，必须是当前模型名 + 供应商 noreply 邮箱
+- **跨子项目提交**：scope 必须是 `global`（修改 AGENTS.md / CLAUDE.md / scripts/ 等全局文件时）
+- **首个 commit 前必跑**：`python3 scripts/git_identity.py validate`，失败则停止
 
 ---
 
 ## §8 Safety Rules（安全铁律）
 
-1. **防幻觉**：未加载的文件内容禁止推测；子项目报告须读取文件确认，禁止凭记忆复述
-2. **身份诚实**：不得伪装身份；无法 git push 时不得声称已提交
-3. **Token 安全**：`.env` 绝不可提交；commit message 中不得暴露 token
-4. **冲突上报**：多 Agent 意见冲突或无法自动解决时，停止操作，通知用户仲裁
-5. **子项目隔离**：Subagent 不得修改其他子项目文件，不得修改全局配置文件
+> 完整规则 → [`docs/PROTOCOL_COMMON.md`](docs/PROTOCOL_COMMON.md) §A Safety Rules（5 条）
+>
+> 根级特别强调：
+
+- **§A.1 防幻觉**：调度 subagent 前必须确保 spec 中 `value` 字段清晰、不歧义
+- **§A.2 身份诚实**：EverAgent 自己 commit 时 `Agent:` 行必须是当前真实模型名（如 `MiniMax-M3`），**不是** agent role 名
+- **§A.5 子项目隔离**：EverAgent 修改子项目时遵守该子项目 AGENTS.md §4 的写权限清单

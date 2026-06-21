@@ -182,10 +182,16 @@ GIT_NO_OPTIONAL_LOCKS=1 git push origin main
 
 ---
 
-## §6 Hallucination Guard（防幻觉铁律）
+## §6 Hallucination Guard
 
+> 共享规则 → [`docs/PROTOCOL_COMMON.md`](../docs/PROTOCOL_COMMON.md) §A Safety Rules
+>
+> 本节仅列出本项目特有的补充：
 1. 只有 `knowledge/reports_index.md` 中列出的 Repo 才有分析报告，其余禁止推测
 2. 报告内容须读取对应文件确认，禁止凭记忆复述报告细节
 3. Stars/Forks 等数值必须使用 GitHub API 精确返回值，禁止估算或使用"约"
 4. 汇总报告的"报告状态说明"须如实区分新生成和缓存复用，禁止虚报"全部新生成"
 5. 竞品对比表格数据须来自实际研究，不得编造竞品数据
+
+---
+

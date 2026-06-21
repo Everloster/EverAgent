@@ -225,10 +225,16 @@ python3 scripts/task_exec.py release --task-id=TXXX --project=philosophy-learnin
 
 ---
 
-## §6 Hallucination Guard（防幻觉铁律）
+## §6 Hallucination Guard
 
+> 共享规则 → [`docs/PROTOCOL_COMMON.md`](../docs/PROTOCOL_COMMON.md) §A Safety Rules
+>
+> 本节仅列出本项目特有的补充：
 1. 执行前必须读取 `CONTEXT.md` 的"已有报告"区，禁止重复生成已有分析
 2. 哲学家的立场必须以原文为准，不得用"通常认为"替代原文引用
 3. 不同哲学家对同一问题的观点对比，须各自独立有据，不得互相推论
 4. 禁止推测哲学家未明确表达的主张，不确定时标注 "unclear from the text"
 5. 历史影响部分只陈述有文献记载的影响，不得推测
+
+---
+

@@ -215,9 +215,14 @@ python3 scripts/task_exec.py release --task-id=TXXX --project=cs-learning --agen
 
 ---
 
-## §6 Hallucination Guard（防幻觉铁律）
+## §6 Hallucination Guard
 
-1. 执行前必须读取 `CONTEXT.md` 的"⚠️ 边界"区，已列出报告禁止重复生成
+> 共享规则 → [`docs/PROTOCOL_COMMON.md`](../docs/PROTOCOL_COMMON.md) §A Safety Rules
+>
+> 本节仅列出本项目特有的补充：
 2. 协议细节、算法参数必须来自原始 RFC/论文，不得凭常识填充
 3. 系统性能数据（如 GFS 的 chunk 大小、Raft 的超时参数）必须标注来源章节
 4. "演化谱系"中列出的后继系统，只陈述原文提及或公认事实，不推测
+
+---
+
