@@ -1,0 +1,11 @@
+event_id: evt_20260621_092054271724_016
+type: validation_failed
+timestamp: 2026-06-21T09:20:54+00:00
+actor: execution_validator
+project: cs-learning
+task_id: T064
+message_id: <evt_20260621_092054271724_016@everagent.local>
+payload:
+  passed: false
+  issue_count: 1
+  issue_fields: ["status"]

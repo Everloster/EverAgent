@@ -47,3 +47,5 @@
     bash /Users/jabe/.agent-reach/tools/xiaoyuzhou/transcribe.sh https://www.xiaoyuzhoufm.com/episode/697b3b35875712791583c0f8 /tmp/vol31.txt
     # Vol.30 / Vol.32 单期 episode ID 需补充
     ```
+## 2026-06-21 ingest
+- T069 完结：3 期播客综合笔记 + 3 个新概念页 + 4 个新实体页；transcript 缺失由 WebSearch 公开资料合成补全
