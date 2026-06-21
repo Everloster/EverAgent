@@ -31,6 +31,7 @@
 - `32_dijkstra_goto_1968` — Go To Statement Considered Harmful·结构化编程宣言·进度坐标可表达性框架·顺序/选择/循环三元组·Böhm-Jacopini基础·编程语言理论入口（2026-04-16）
 - `33_hoare_axiomatic_1969` — Hoare逻辑·{P}C{Q}三元组·赋值公理·循环不变式·程序验证理论基础·形式化方法学科起点·TLA+/Coq/Dafny前身（2026-04-22）
 - `34_lamport_bakery_1974` — Bakery Algorithm·无硬件原子指令纯软件互斥·取号排队直觉·并发编程经典教材·Ticket Lock/MCS Lock思想源头（2026-04-22）
+- `35_quic_rfc9000_2021` — RFC 9000·UDP之上用户态传输协议·内嵌TLS 1.3·连接ID抗NAT rebind·流多路复用无HoL阻塞·0-RTT握手·Cloudflare/Google/Meta全栈部署（2026-06-21）
 
 **知识深度解析** (`reports/knowledge_reports/`)
 - `CS关键人物图谱` — 图灵→香农→Dijkstra→现代系统工程师的思想传承

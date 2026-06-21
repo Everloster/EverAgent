@@ -69,6 +69,7 @@
 | [structured_programming.md](./concepts/structured_programming.md) | 结构化编程：GOTO废除宣言·进度坐标可表达性·顺序/选择/重复三元组·Böhm-Jacopini·编程语言范式基础 |
 | [tailscale_wireguard_vpn.md](./concepts/tailscale_wireguard_vpn.md) | Tailscale / WireGuard / VPN：加密隧道·NAT穿透·DERP中继·MagicDNS·ACL/Zero Trust·远程SSH实践 |
 | [database_evolution.md](./concepts/database_evolution.md) | 数据库 50 年演化：6 代范式·ACID/BASE/CAP 三理论·存算分离·向量库时代 |
+| [quic_protocol.md](./concepts/quic_protocol.md) | QUIC 协议：UDP 之上·内嵌 TLS 1.3·Connection ID 抗 NAT rebind·流多路复用无 HoL 阻塞·0-RTT 握手·Cloudflare/Google/Meta 全栈 |
 
 ---
 

@@ -118,3 +118,12 @@
 - 更新 CONTEXT.md：知识报告清单追加数据库 50 年演化条目
 - 数据源：Codd 1970 原文、CACM 50 Years of Queries、Brewer PODC 2000、Gilbert-Lynch 2002、Corbett et al. 2012 (Spanner OSDI)、Verbitski et al. 2018 (Aurora SIGMOD)、Dageville et al. 2016 (Snowflake SIGMOD)、DeCandia et al. 2007 (Dynamo SOSP)、各项目官方文档
 - 执行者：ByteAgent / Claude Sonnet 4.6
+
+## [2026-06-21] ingest | RFC 9000 QUIC: A UDP-Based Multiplexed and Secure Transport
+- 新建报告：reports/paper_analyses/35_quic_rfc9000_2021.md（7步分析 + 协议栈/流复用/握手三 mermaid + 8 RFC 引用表 + 演化谱系）
+- 新建 concept：wiki/concepts/quic_protocol.md（UDP 之上·内嵌 TLS 1.3·Connection ID·stream 多路复用·0-RTT·连接迁移·HTTP/3 性能数据）
+- 更新 wiki/index.md：Concepts 表格新增 quic_protocol 条目
+- 更新 CONTEXT.md：已有报告追加 RFC 9000 条目
+- 更新 papers/PAPERS_INDEX.md：网络方向新增 #31 RFC 9000 条目
+- 数据源：RFC 9000/9001/9002/8999/9221/9298/9287/9369（IETF 原文）+ Cloudflare/Google/Meta 公开部署数据
+- 执行者：ByteAgent

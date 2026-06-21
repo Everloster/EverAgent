@@ -162,6 +162,18 @@
 
 ---
 
+### #31 | RFC 9000 QUIC: A UDP-Based Multiplexed and Secure Transport
+**作者**：Jana Iyengar, Martin Thomson (Editors); IETF QUIC Working Group
+**年份**：2021
+**发表**：IETF RFC Editor (RFC 9000 + RFC 9001 + RFC 9002 + RFC 8999 四件套)
+**摘要**：QUIC 是建立在 UDP 之上的通用、安全、多路复用传输协议。核心创新：内嵌 TLS 1.3 实现 1-RTT / 0-RTT 握手、Connection ID 抗 NAT rebind 实现连接迁移、独立 stream 消除 TCP 队头阻塞、可插拔拥塞控制（CUBIC/BBR）。Cloudflare / Google / Meta / Apple 全栈部署，HTTP/3（RFC 9114）基于其上。
+**为什么读**：TCP/IP 之后最重要的传输层协议；解决 HTTP/2 over TCP 的两大根本缺陷（TCP HoL 阻塞 + 握手延迟）；"用户态传输层"开启协议快速迭代时代。
+**阅读难度**：⭐⭐⭐⭐（22 章协议规范，需要 TCP/TLS 基础）
+**链接**：https://www.rfc-editor.org/rfc/rfc9000.html
+**阅读状态**：✅ 已完成（见 `reports/paper_analyses/35_quic_rfc9000_2021.md`）
+
+---
+
 ## 🗄️ 数据库
 
 ### #03 | A Relational Model of Data for Large Shared Data Banks
