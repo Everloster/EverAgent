@@ -51,6 +51,7 @@ import argparse
 import re
 import sys
 from dataclasses import dataclass, field
+from datetime import datetime
 from pathlib import Path
 from typing import Callable
 
@@ -452,9 +453,95 @@ def build_context(specs: dict, states: dict) -> list[TaskContext]:
     return ctxs
 
 
+def render_html(ctxs: list[TaskContext], totals: dict[str, int], run_date: str) -> str:
+    """Render self-contained HTML (no external CSS/JS) for browser viewing."""
+    css = """
+    body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+           max-width: 1100px; margin: 2em auto; padding: 0 1em; color: #222; }
+    h1 { font-size: 1.6em; border-bottom: 2px solid #333; padding-bottom: 0.3em; }
+    h2 { font-size: 1.3em; margin-top: 1.5em; }
+    .summary { display: flex; gap: 1.5em; padding: 1em; background: #f5f5f7;
+               border-radius: 8px; margin: 1em 0; }
+    .summary-item { text-align: center; }
+    .summary-num { font-size: 2em; font-weight: 600; }
+    .pass { color: #1a7f37; }
+    .warn { color: #9a6700; }
+    .fail { color: #cf222e; }
+    .skip { color: #6e7781; }
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 0.92em; }
+    th, td { border: 1px solid #d0d7de; padding: 6px 10px; text-align: left; vertical-align: top; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #fafbfc; }
+    .task-id { font-family: 'SF Mono', Menlo, monospace; font-weight: 600; }
+    .project { color: #6e7781; font-size: 0.9em; }
+    .status-PASS { color: #1a7f37; font-weight: 600; }
+    .status-FAIL { color: #cf222e; font-weight: 600; }
+    .status-WARN { color: #9a6700; font-weight: 600; }
+    .req { color: #cf222e; font-size: 0.8em; }
+    .opt { color: #6e7781; font-size: 0.8em; }
+    code { background: #f6f8fa; padding: 1px 4px; border-radius: 3px; font-size: 0.9em; }
+    .footer { color: #6e7781; font-size: 0.85em; margin-top: 2em; text-align: center; }
+    """
+    rows = []
+    for ctx in ctxs:
+        report = str(ctx.report_path.relative_to(ROOT)) if ctx.report_path else "<missing>"
+        for chk in ctx.checks:
+            name = chk.get("check")
+            required = chk.get("required", True)
+            fn = make_check(name)
+            status, msg = fn(ctx)
+            cls = f"status-{status}"
+            req_cls = "req" if required else "opt"
+            req_label = "required" if required else "optional"
+            rows.append(
+                f'<tr><td><span class="task-id">{ctx.task_id}</span><br>'
+                f'<span class="project">{ctx.project}</span></td>'
+                f'<td><code>{name}</code><br><span class="{req_cls}">{req_label}</span></td>'
+                f'<td><a href="{report}"><code>{report}</code></a></td>'
+                f'<td class="{cls}">{status}</td>'
+                f'<td>{msg}</td></tr>'
+            )
+
+    body_rows = "\n".join(rows) if rows else '<tr><td colspan="5">no checks</td></tr>'
+    summary_html = f"""
+<div class="summary">
+    <div class="summary-item"><div class="summary-num pass">{totals['pass']}</div>PASS</div>
+    <div class="summary-item"><div class="summary-num warn">{totals['warn']}</div>WARN</div>
+    <div class="summary-item"><div class="summary-num fail">{totals['fail']}</div>FAIL</div>
+    <div class="summary-item"><div class="summary-num skip">{totals['skip']}</div>SKIP</div>
+    <div class="summary-item"><div class="summary-num">{len(ctxs)}</div>tasks</div>
+</div>
+"""
+    html = f"""<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>Quality Gates Report — {run_date}</title>
+<style>{css}</style>
+</head>
+<body>
+<h1>Quality Gates Report</h1>
+<p>Generated {run_date} · {len(ctxs)} done task(s) checked</p>
+{summary_html}
+<h2>Check Matrix</h2>
+<table>
+<thead><tr><th>Task / Project</th><th>Check</th><th>Report</th><th>Status</th><th>Message</th></tr></thead>
+<tbody>
+{body_rows}
+</tbody>
+</table>
+<p class="footer">EverAgent · scripts/check_quality_gates.py · self-contained HTML (no external deps)</p>
+</body>
+</html>
+"""
+    return html
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--task-id", help="only check this single task")
+    parser.add_argument("--html", metavar="PATH",
+                        help="also write self-contained HTML report to PATH")
     args, _ = parser.parse_known_args()
 
     specs = load_active_specs()
@@ -499,6 +586,20 @@ def main() -> int:
     print(f"summary: {total_pass} PASS, {total_warn} WARN, {total_fail} FAIL")
     if fail_tasks:
         print(f"\nrequired failures: {fail_tasks}")
+
+    if args.html:
+        run_date = datetime.now().strftime("%Y-%m-%d %H:%M")
+        html = render_html(
+            ctxs,
+            {"pass": total_pass, "warn": total_warn, "fail": total_fail, "skip": total_skip},
+            run_date,
+        )
+        out = Path(args.html)
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(html, encoding="utf-8")
+        print(f"\n✓ HTML report written: {out}")
+
+    if fail_tasks:
         return 1
     return 0
 
