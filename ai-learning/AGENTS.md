@@ -211,9 +211,11 @@ python3 scripts/task_exec.py release --task-id=TXXX --project=ai-learning --agen
 
 ---
 
-## §6 Hallucination Guard（防幻觉铁律）
+## §6 Hallucination Guard
 
-1. 执行前必须读取 `CONTEXT.md` 的"⚠️ 边界"区，已列出报告禁止重复生成
-2. 论文中未出现的数据、实验结果禁止推测，不确定时标注 "unclear from the text"
-3. 禁止推测 GPT-4、Claude、Gemini 等未研究模型的内部细节
-4. 报告内容须与论文原文严格对应，不得引入外部知识替代原文实验数据
+> 共享规则 → [`docs/PROTOCOL_COMMON.md`](../docs/PROTOCOL_COMMON.md) §A Safety Rules
+>
+> 本节仅列出本项目特有的补充：
+
+---
+

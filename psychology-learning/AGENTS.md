@@ -217,10 +217,16 @@ python3 scripts/task_exec.py release --task-id=TXXX --project=psychology-learnin
 
 ---
 
-## §6 Hallucination Guard（防幻觉铁律）
+## §6 Hallucination Guard
 
+> 共享规则 → [`docs/PROTOCOL_COMMON.md`](../docs/PROTOCOL_COMMON.md) §A Safety Rules
+>
+> 本节仅列出本项目特有的补充：
 1. 执行前必须读取 `CONTEXT.md` 的"已有报告"区，禁止重复生成
 2. 实验数据（样本量、p值、结论）必须以原始论文为准，不得引用二手综述替代
 3. 复现状况须基于已发表研究，不得推测
 4. 争议性实验（如 Zimbardo 斯坦福监狱实验）须同时呈现支持与批评两方声音
 5. 禁止将"历史影响"与"科学有效性"混为一谈
+
+---
+

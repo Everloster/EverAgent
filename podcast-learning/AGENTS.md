@@ -157,10 +157,15 @@ updated_on: 2026-06-18
 
 ---
 
-## §5 Hallucination Guard（防幻觉铁律）
+## §5 Hallucination Guard
 
-1. 执行前必须读取 `CONTEXT.md` 的"边界区"，已列出报告禁止重复生成
+> 共享规则 → [`docs/PROTOCOL_COMMON.md`](../docs/PROTOCOL_COMMON.md) §A Safety Rules
+>
+> 本节仅列出本项目特有的补充：
 2. 转录中未出现的引用、数据、人物言论禁止推测
 3. 关键引用必须保留原文（哪怕标点残缺），不能重写
 4. 若转录质量极差（polish 失败 + 内容难以理解），在报告 limitations 中标注，不强行总结
 5. 跨项目引用需用户明确授权（CLAUDE.md 规则：默认不跨项目交叉引用）
+
+---
+

@@ -222,10 +222,15 @@ python3 scripts/task_exec.py release --task-id=TXXX --project=biology-learning -
 
 ---
 
-## §6 Hallucination Guard（防幻觉铁律）
+## §6 Hallucination Guard
 
-1. 执行前必须读取 `CONTEXT.md` 的"⚠️ 边界"区，禁止重复生成已有报告
+> 共享规则 → [`docs/PROTOCOL_COMMON.md`](../docs/PROTOCOL_COMMON.md) §A Safety Rules
+>
+> 本节仅列出本项目特有的补充：
 2. 生理数据必须来自原始论文，不得从二手科普文章引用数值
 3. 动物实验结论推广到人类时，必须明确标注"动物研究"，不得直接陈述为人类效应
 4. 应用建议（如"最佳训练时间"）须有明确文献支撑，不得基于常识推断
 5. 样本量小（n<30）的研究，结论须标注样本量限制
+
+---
+

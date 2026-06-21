@@ -102,6 +102,11 @@ python3 scripts/task_exec.py finish --task-id=TXXX --project=ai-practice
 
 ## §4 Hallucination Guard
 
-1. 执行前必须读取 `CONTEXT.md` 的"边界区"，已列出实验禁止重复
+> 共享规则 → [`docs/PROTOCOL_COMMON.md`](../docs/PROTOCOL_COMMON.md) §A Safety Rules
+>
+> 本节仅列出本项目特有的补充：
 2. 教学笔记中的数值（损失、准确率等）必须来自实际运行，无结果标注 `[待补充]`
 3. 代码引用需含文件路径和行号（或 notebook cell 编号）
+
+---
+
