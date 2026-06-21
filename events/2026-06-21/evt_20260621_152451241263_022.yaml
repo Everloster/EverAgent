@@ -1,0 +1,10 @@
+event_id: evt_20260621_152451241263_022
+type: task_started
+timestamp: 2026-06-21T15:24:51+00:00
+actor: EverAgent
+project: global
+task_id: T012
+message_id: <evt_20260621_152451241263_022@everagent.local>
+aamp: {"version":"1.1","intent":"task.stream.opened","task_id":"T012","message_id":"<evt_20260621_152451241263_022@everagent.local>","dispatch_context":{"project":"global","actor":"EverAgent","event_type":"task_started"},"stream_id":"stream_T012"}
+payload:
+  target: "github-trending-analyzer 周报自动化"
