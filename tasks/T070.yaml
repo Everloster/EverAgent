@@ -3,12 +3,7 @@ kind: Task
 metadata:
   id: T070
   project: github-trending-analyzer
-  status: done
   created_at: 2026-06-21
-  claimed_by: TrendAgent
-  claimed_at: 2026-06-21 00:30:00
-  started_at: 2026-06-21 00:30:00
-  done_at: '2026-06-21T00:40:00+08:00'
 spec:
   type: maintenance
   target: 2026 Q2 GitHub 趋势月报（5/6 月）
