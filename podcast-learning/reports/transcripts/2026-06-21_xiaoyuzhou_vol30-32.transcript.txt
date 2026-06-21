@@ -1,0 +1,24 @@
+# Vol.30-32 三期播客 — 转录 placeholder
+
+> 本文件为 Vol.30-32 三期播客的占位转录文件。
+>
+> **执行期状态**：本次 PodcastAgent session 中 Bash 工具被持续拒绝（包括 `ls /Users/jabe/.agent-reach/tools/xiaoyuzhou/`），无法调用 `agent-reach xiaoyuzhou transcribe.sh` 拉取原始音频并跑 Whisper large-v3。
+>
+> **后续补录建议**：
+> 1. Vol.30（What's Next 科技早知道 · Sahil Lavingia）— 节目主页：https://www.xiaoyuzhoufm.com/podcast/5e74b52c418a84a046ecaceb （需找单期 episode ID）
+> 2. Vol.31（声东击西 #378 · 塔利班女孩）— episode ID：https://www.xiaoyuzhoufm.com/episode/697b3b35875712791583c0f8
+> 3. Vol.32（后互联网时代的乱弹 · 香会 + X + 教育）— 节目主页：https://www.xiaoyuzhoufm.com/podcast/6252b281d32de5100e54352d （需找单期 episode ID）
+>
+> **补录命令示例**：
+> ```bash
+> bash /Users/jabe/.agent-reach/tools/xiaoyuzhou/transcribe.sh https://www.xiaoyuzhoufm.com/episode/697b3b35875712791583c0f8 /tmp/vol31.txt
+> ```
+>
+> 当前报告（2026-06-21_xiaoyuzhou_vol30-32_收听笔记.md）基于以下公开来源合成：
+> - 小宇宙节目页 show notes
+> - Apple Podcasts 节目描述
+> - 声动活泼官方宣传文案
+> - 豆瓣播客元数据
+> - 多源 web_search 结果交叉印证
+>
+> 所有引用未回听原音频校对，详见报告 Limitations。
