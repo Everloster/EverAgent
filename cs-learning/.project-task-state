@@ -1,68 +1,8 @@
-- id: T003
-  project: cs-learning
-  type: paper_analysis
-  target: "DNS (1987, RFC 1034/1035)"
-  value: "网络方向第一篇; 与 TCP/IP 自然衔接"
-  priority: P1
-  required_capability: task_executor
-  status: done
-  claimed_by: MiniMax-M2.7
-  claimed_at: 2026-04-05 10:00:00+08:00
-  started_at: 2026-04-05 10:30:00+08:00
-  done_at: 2026-04-05 15:47:00+08:00
-  context_links:
-    - cs-learning/reports/paper_analyses/30_dns_1987.md
-
-- id: T004
-  project: cs-learning
-  type: knowledge_report
-  target: "分布式系统知识图谱"
-  value: "19篇精读可归纳 Storage/Consensus/Coordination/Messaging 四主线; 知识报告比仅5%"
-  priority: P1
-  required_capability: task_executor
-  status: done
-  claimed_by: MiniMax-M2.7
-  claimed_at: 2026-04-05 10:00:00+08:00
-  started_at: 2026-04-05 10:30:00+08:00
-  done_at: 2026-04-05 15:47:00+08:00
-  context_links:
-    - cs-learning/reports/knowledge_reports/分布式系统知识图谱.md
-
-- id: T014
-  project: cs-learning
-  type: paper_analysis
-  target: "BGP (RFC 4271, 2006)"
-  value: "网络方向深化（BGP是互联网路由基础）"
-  priority: P2
-  required_capability: task_executor
-  status: done
-  claimed_by: claude-sonnet-4-6
-  claimed_at: 2026-04-16 10:00:00+08:00
-  started_at: 2026-04-16 10:05:00+08:00
-  done_at: 2026-04-16 11:30:00+08:00
-  context_links:
-    - cs-learning/reports/paper_analyses/31_bgp_rfc4271_2006.md
-
-- id: T015
-  project: cs-learning
-  type: paper_analysis
-  target: "Dijkstra Go To Statement Considered Harmful (1968)"
-  value: "编程语言理论入口; 结构化编程革命宣言; CONTEXT.md 下一步推荐"
-  priority: P2
-  required_capability: task_executor
-  status: done
-  claimed_by: ByteAgent
-  claimed_at: 2026-04-16 16:22:12+08:00
-  started_at: 2026-04-16 16:22:15+08:00
-  done_at: 2026-04-16 16:25:41+08:00
-  context_links:
-    - cs-learning/reports/paper_analyses/32_dijkstra_goto_1968.md
-
 - id: T034
   project: cs-learning
   type: paper_analysis
-  target: "Hoare (1969) An Axiomatic Basis for Computer Programming"
-  value: "程序验证理论基础; Hoare逻辑的前置/后置条件形式化方法; 与Dijkstra结构化编程形成理论闭环"
+  target: Hoare (1969) An Axiomatic Basis for Computer Programming
+  value: 程序验证理论基础; Hoare逻辑的前置/后置条件形式化方法; 与Dijkstra结构化编程形成理论闭环
   priority: P1
   required_capability: task_executor
   status: done
@@ -71,13 +11,12 @@
   started_at: 2026-04-22 10:05:00+08:00
   done_at: 2026-04-22 10:30:00+08:00
   context_links:
-    - cs-learning/reports/paper_analyses/33_hoare_axiomatic_1969.md
-
+  - cs-learning/reports/paper_analyses/33_hoare_axiomatic_1969.md
 - id: T035
   project: cs-learning
   type: knowledge_report
-  target: "编程语言范式演化：从Lisp到Go的并发模型变迁"
-  value: "整合 McCarthy(1960)/Dijkstra(1968)/Hoare(1978)/Lattner(2004) 等关键论文; 函数式/结构化/CSP/LLVM四阶段演化图谱"
+  target: 编程语言范式演化：从Lisp到Go的并发模型变迁
+  value: 整合 McCarthy(1960)/Dijkstra(1968)/Hoare(1978)/Lattner(2004) 等关键论文; 函数式/结构化/CSP/LLVM四阶段演化图谱
   priority: P2
   required_capability: task_executor
   status: done
@@ -86,13 +25,12 @@
   started_at: 2026-04-22 16:55:00+08:00
   done_at: 2026-04-22 17:05:00+08:00
   context_links:
-    - cs-learning/reports/knowledge_reports/编程语言范式演化_从Lisp到Go的并发模型变迁.md
-
+  - cs-learning/reports/knowledge_reports/编程语言范式演化_从Lisp到Go的并发模型变迁.md
 - id: T036
   project: cs-learning
   type: paper_analysis
-  target: "Lamport (1974) A New Solution to Dijkstra's Concurrent Programming Problem"
-  value: "并发编程基础; 无硬件原子指令实现互斥的软件解法; 与后续分布式共识算法的思想关联"
+  target: Lamport (1974) A New Solution to Dijkstra's Concurrent Programming Problem
+  value: 并发编程基础; 无硬件原子指令实现互斥的软件解法; 与后续分布式共识算法的思想关联
   priority: P2
   required_capability: task_executor
   status: done
@@ -101,47 +39,30 @@
   started_at: 2026-04-22 10:05:00+08:00
   done_at: 2026-04-22 10:30:00+08:00
   context_links:
-    - cs-learning/reports/paper_analyses/34_lamport_bakery_1974.md
-
-- id: T055
-  project: cs-learning
-  type: knowledge_report
-  target: "Tailscale / WireGuard / VPN 原理"
-  value: "系统梳理现代 VPN、WireGuard、NAT 穿透、DERP 中继、私有组网、ACL 与 Zero Trust 网络访问模型；面向 iPad"
-  priority: P2
-  required_capability: task_executor
-  status: done
-  claimed_by: EverAgent
-  claimed_at: 2026-05-09 16:30:46+08:00
-  started_at: 2026-05-09 16:30:49+08:00
-  done_at: 2026-05-09 16:34:55+08:00
-  context_links:
-    - cs-learning/reports/knowledge_reports/Tailscale_WireGuard_VPN_原理深度解析.md
-
+  - cs-learning/reports/paper_analyses/34_lamport_bakery_1974.md
 - id: T063
   project: cs-learning
   type: knowledge_report
-  target: "数据库 50 年演化：层次→网状→关系→NoSQL→NewSQL→向量库"
+  target: 数据库 50 年演化：层次→网状→关系→NoSQL→NewSQL→向量库
   priority: P2
   required_capability: task_executor
   status: done
   claimed_by: ByteAgent
-  claimed_at: 2026-06-21T00:23:11+08:00
-  started_at: 2026-06-21T00:23:13+08:00
-  done_at: 2026-06-21T00:33:57+08:00
+  claimed_at: 2026-06-21 00:23:11+08:00
+  started_at: 2026-06-21 00:23:13+08:00
+  done_at: 2026-06-21 00:33:57+08:00
   context_links:
-    - cs-learning/reports/knowledge_reports/数据库50年演化_从层次到向量库_20260621.md
-
+  - cs-learning/reports/knowledge_reports/数据库50年演化_从层次到向量库_20260621.md
 - id: T064
   project: cs-learning
   type: paper_analysis
-  target: "RFC 9000 QUIC: A UDP-Based Multiplexed and Secure Transport"
+  target: 'RFC 9000 QUIC: A UDP-Based Multiplexed and Secure Transport'
   priority: P1
   required_capability: task_executor
   status: done
   claimed_by: ByteAgent
-  claimed_at: 2026-06-21T00:34:12+08:00
-  started_at: 2026-06-21T00:34:14+08:00
-  done_at: 2026-06-21T17:21:40+08:00
+  claimed_at: 2026-06-21 00:34:12+08:00
+  started_at: 2026-06-21 00:34:14+08:00
+  done_at: 2026-06-21 17:21:40+08:00
   context_links:
-    - cs-learning/reports/paper_analyses/35_quic_rfc9000_2021.md
+  - cs-learning/reports/paper_analyses/35_quic_rfc9000_2021.md
