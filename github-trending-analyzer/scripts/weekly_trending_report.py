@@ -186,6 +186,8 @@ def main() -> int:
     parser.add_argument("--since", default="weekly", choices=["daily", "weekly", "monthly"])
     parser.add_argument("--dispatch", action="store_true",
                         help="also dispatch research tasks for new repos")
+    parser.add_argument("--auto-research", action="store_true",
+                        help="auto-generate research_*.md skeletons via GitHub API")
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
 
@@ -247,6 +249,23 @@ def main() -> int:
             print(f"  {d}")
         if len(dispatched) > 5:
             print(f"  ... and {len(dispatched) - 5} more")
+
+    if args.auto_research:
+        # Build a virtual weekly-summary file path so auto_research can pick
+        # up the repos we just fetched (avoid re-fetching from disk).
+        print("\nrunning auto_research on this week's repos...")
+        ar = subprocess.run(
+            [sys.executable, str(PROJECT_ROOT / "scripts" / "auto_research.py"),
+             "--from-weekly-summary", f"github-trending-reports/all-{args.since}-summary-{run_date}.md"],
+            cwd=PROJECT_ROOT,
+            capture_output=True,
+            text=True,
+        )
+        # Print auto_research output (last 20 lines for brevity)
+        for line in ar.stdout.splitlines()[-20:]:
+            print(f"  {line}")
+        if ar.returncode != 0:
+            print(f"  [WARN] auto_research exited {ar.returncode}", file=sys.stderr)
 
     return 0
 
