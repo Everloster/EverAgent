@@ -147,6 +147,8 @@ open → claimed → in_progress → done
 
 > 参考：`scripts/task_board_aggregator.py`（Task Board 汇总视图生成器）
 > 校验：`python3 scripts/check_task_state_consistency.py` —— 若发现 YAML 与 state 字段重复，立即报错
+>
+> **质量门自动校验**：`python3 scripts/check_quality_gates.py` —— 对每个 status=done 的任务运行 spec.qualityGates 声明的检查。Subagent 完成 `task_exec.py finish` **之前必须**运行此脚本并确保 0 FAIL（exit 0）。unknown check = WARN，不阻塞。
 
 ---
 
