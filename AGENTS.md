@@ -169,6 +169,7 @@ EverAgent 接收用户指令后的决策流：
 8. claim 后尽快运行 `python3 scripts/task_exec.py start --task-id=TXXX`（状态迁移为 in_progress），并在可行时提交 claim；若用户要求立即交付，可在同一工作批次内完成产出后统一提交
 9. 执行完成后通过 commit message 广播状态
 10. 成功则运行 `python3 scripts/task_exec.py finish --task-id=TXXX --project={project}`；失败则运行 `python3 scripts/task_exec.py fail --task-id=TXXX --project={project} --reason="{reason}"`；需要用户补充信息时运行 `python3 scripts/task_exec.py help --task-id=TXXX --project={project} --reason="{reason}"`；用户撤销时运行 `python3 scripts/task_exec.py cancel --task-id=TXXX --project={project} --reason="{reason}"`
+    - **`finish` 流程内置三道关**：(1) `execution_validator --mode=output` 检查 task 字段格式；(2) `check_quality_gates.py --task-id=TXXX` 跑 spec.qualityGates 全部 check；(3) `task_state_cli.py done` 标记完成。**任何 required check FAIL 则 finish 拒绝**，须先修复。仅 `--skip-quality-gate` 可绕过（CI / 紧急覆盖）。
 11. push 完成后运行 `python3 scripts/task_exec.py release --task-id=TXXX --project={project} --agent={AgentName|EverAgent}`（释放锁）
 12. EverAgent 重新生成 Task Board 视图
 ```

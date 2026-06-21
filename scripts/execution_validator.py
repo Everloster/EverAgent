@@ -19,7 +19,9 @@ from task_state import GLOBAL_PROJECT, PROJECTS, TaskEntry, find_task, state_fil
 ROOT = Path(__file__).resolve().parents[1]
 EXECUTION_SCHEMA = ROOT / "docs" / "EXECUTION_SCHEMA.md"
 
-ISO8601_RE = re.compile(r"\d{4}-\d{2}-\d{2}(?:T\d{2}:\d{2}:\d{2}(?:\+\d{2}:\d{2}|Z)?)?$")
+# Accept both 'T' separator (RFC 3339 strict) and space separator (ISO 8601 permissive).
+# Both `2026-06-21T17:15:57+08:00` and `2026-06-21 17:15:57+08:00` are valid ISO 8601.
+ISO8601_RE = re.compile(r"\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}:\d{2}(?:\+\d{2}:\d{2}|Z)?$")
 REQUIRED_FRONTMATTER_KEYS = {"title", "domain", "report_type", "status", "updated_on"}
 FRONTMATTER_PATTERN = re.compile(r"\A---\n(.*?)\n---\n", re.DOTALL)
 VALID_TASK_TYPES = {

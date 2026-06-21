@@ -47,6 +47,7 @@ WARN-only, 1 if any required check FAILS.
 
 from __future__ import annotations
 
+import argparse
 import re
 import sys
 from dataclasses import dataclass, field
@@ -452,11 +453,17 @@ def build_context(specs: dict, states: dict) -> list[TaskContext]:
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--task-id", help="only check this single task")
+    args, _ = parser.parse_known_args()
+
     specs = load_active_specs()
     states = load_all_states()
     ctxs = build_context(specs, states)
+    if args.task_id:
+        ctxs = [c for c in ctxs if c.task_id == args.task_id]
     if not ctxs:
-        print("no done tasks with active specs to check")
+        print(f"no done tasks to check (filter={args.task_id})")
         return 0
 
     total_pass = total_warn = total_fail = total_skip = 0
