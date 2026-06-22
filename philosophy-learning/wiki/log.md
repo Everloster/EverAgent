@@ -42,3 +42,23 @@
 - 数据源：哲学关键人物图谱、知识_跨时代比较、knowledge/epistemology.md、01_plato_republic_cave_-380、02_descartes_meditations_1641、03_gettier_1963（text + paper）、04_nagel_bat_1974、04_plato_meno_-380、05_kant_groundwork_1785、06_aristotle_nicomachean_ethics_-350、07_hegel_phaenomenologie_1807、08_rawls_theory_of_justice_1971
 - 状态：plan §8 短期标准 ≥10 entities / ≥8 concepts 双双满足（10 entity + 11 concept）
 - 已知问题：休谟为 stub（待《人性论》精读）；维特根斯坦/海德格尔/尼采/弗雷格 在人物图谱中是节点但无独立精读，本轮不建页
+
+## [2026-06-22] deepen (conversational-learning) | 程乐松 道教观念史与宗教经典诠释学 思想综述
+- 模式：对话学习车道（用户发起"想学习程乐松教授的相关哲学"，§2B）。随项目扩为「世界哲学」范围后中国哲学方向首篇。
+- 新建报告：reports/concept_reports/程乐松_道教与宗教诠释学_思想综述_20260622.md（5 层理解模型，含公开来源标注与 [推论] 区分）
+- 新建 entity：wiki/entities/cheng_lesong.md（北大哲学系教授·道教观念史）
+- 新建 concept：wiki/concepts/religious_hermeneutics_idea_history.md（观念史视角 + 宗教经典诠释学）
+- 更新 index.md：Entities 表 + Concepts 新增「中国哲学」组
+- 核心知识：以宗教（信仰）的方式看待宗教 · 观念史视角（身体/不死/神秘主义）· 同情性理解 vs 客观性 · 放下现代性的傲慢 · 日常即超越 · 道/术动态互构 · 效验作为神圣性标准
+- 数据源：北大哲学系官方简介 + 《道教研究学报》第十期(2018)书评 + 北大文研院未名学者讲座09(2016) + 北大国际合作部赫拉利对谈报道(2025-03)
+- 防幻觉：在世学者，全部事实陈述附公开来源，推论标 [推论]
+- 执行者：SocratesAgent / Trae Openrouter（对话学习模式）
+
+## [2026-06-22] deepen (conversational-learning) | 程乐松追问深入：以死长生 + vs 西方宗教学
+- 模式：对话学习车道追问续写（用户选 #1+#2），未新建报告。
+- 续写报告：reports/concept_reports/程乐松_道教与宗教诠释学_思想综述_20260622.md 追加「## 追问深入 [2026-06-22]：两个核心主题深挖」+ 4 道追问检验题
+- 更新 concept：wiki/concepts/religious_hermeneutics_idea_history.md 新增「追问深入」小节
+- 主题一「以死长生」：外丹丹与毒同体悖论 · 身体是信仰枢纽 · 长生技能/叙事/信仰三面相 · 陈撄宁仙学现代化回响
+- 主题二「vs 西方宗教学」：隐匿出发点（西方信仰特征=理论原型/理想型）· 标准先行的方法论偏狭 · 价值中立原则 · "必须懂西方理论但反对单一标准审查" · 信仰不需要辩护
+- 数据源：程乐松《从信俗看宗教研究的"中国化"》(中国社科网2025-04) + 《仙学：超越科学与道教的"终结"》(aisixiang) + 未名学者讲座09 + 海淀政协访谈(2023) + 《身体不死与神秘主义》豆瓣目录
+- 执行者：SocratesAgent / Trae Openrouter（对话学习模式）

@@ -1,5 +1,9 @@
 # Agent Asynchronous Messaging Protocol (AAMP) Core Specification
 
+> ℹ️ **状态：参考规范（概念资产）** — EverAgent 未实现其邮件/JMAP/SMTP/SDK 运行时。
+> EverAgent 仅采用 AAMP 1.1 的核心任务词汇表与事件信封（见 [`docs/AAMP_ADAPTER.md`](docs/AAMP_ADAPTER.md)，该映射已在 `scripts/ea_events.py` 中实现并有测试覆盖）。
+> 本文件保留为完整协议参考，供未来若要实现 HTTP/邮件控制平面时使用。
+
 Specification - 15 April 2026
 
 Core control-plane semantics for interoperable asynchronous task exchange over Internet mail, with an optional streaming observation extension.

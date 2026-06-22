@@ -6,6 +6,9 @@
 **三维度**：技术深度 × 历史叙事 × 工程实践
 
 ## 已有报告
+
+> **台账分工**（避免三处重复维护）：本区是唯一的**成品报告台账**（含每篇摘要）；学习进度状态（已学/在学/未学）见 [roadmap 核心知识地图](./roadmap/Learning_Roadmap.md)；计划学的前沿动态见 roadmap「新知识雷达」；防幻觉的"尚未研究"否定式声明见本文末「⚠️ 边界」。对话学习模式见 [AGENTS.md](./AGENTS.md) §2B。
+
 **论文精读** (`reports/paper_analyses/`)
 - `01_transformer_2017` — Attention Is All You Need，Self-Attention 机制奠基
 - `02_bert_2018` — 双向预训练语言模型
@@ -55,7 +58,7 @@
 - `Scaling_Laws_深度解析` — Kaplan 2020 幂律关系·Chinchilla 修正·涌现能力（2026-03-25）
 - `LoRA_深度解析` — 低秩适应原理·QLoRA·DoRA变体·代码实现·多任务部署（2026-03-25）
 - `KV_Cache_深度解析_20260330` — 键值缓存原理·GQA/MQA变体·PagedAttention·显存计算·PyTorch代码实现·SnapKV等前沿压缩方案（2026-03-30）
-- `MoE_混合专家_深度解析_20260406` — MoE条件计算·Noisy Top-K Gating·负载均衡双损失·Switch/Mixtral/DeepSeek变体全景·PyTorch实现·Scaling关系（2026-04-06）
+- `MoE_混合专家_深度解析_20260406` — MoE条件计算·Noisy Top-K Gating·负载均衡双损失·Switch/Mixtral/DeepSeek变体全景·PyTorch实现·Scaling关系（2026-04-06；2026-06-22 追加「路由机制专题」：Token Choice/Expert Choice/auxiliary-loss-free 三代路由范式对比）
 - `RAG_深度解析_20260409` — Naive→Advanced→Modular RAG 演进·HyDE/Self-RAG/GraphRAG·Reranker两阶段·向量数据库选型（2026-04-09）
 - `Agent_ReAct_ToolUse_深度解析_20260409` — ReAct Loop·Function Calling·MCP协议·Multi-Agent协作·Python完整实现（2026-04-09）
 - `Test_Time_Compute_深度解析_20260409` — o1/o3·DeepSeek-R1·GRPO·PRM vs ORM·MCTS·Test-time Scaling Laws（2026-04-09）

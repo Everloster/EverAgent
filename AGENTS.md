@@ -41,7 +41,7 @@ python3 scripts/git_identity.py validate
 |---------|---------|---------|------|:---:|
 | **NeuronAgent** | `ai-learning/` | `ai-learning/AGENTS.md` | AI/ML 论文精读·技术报告 | 🟢 |
 | **ByteAgent** | `cs-learning/` | `cs-learning/AGENTS.md` | 计算机科学·系统·算法 | 🟢 |
-| **SocratesAgent** | `philosophy-learning/` | `philosophy-learning/AGENTS.md` | 西方哲学·文本分析 | 🟡 |
+| **SocratesAgent** | `philosophy-learning/` | `philosophy-learning/AGENTS.md` | 世界哲学·文本分析（含中国哲学） | 🟡 |
 | **PsycheAgent** | `psychology-learning/` | `psychology-learning/AGENTS.md` | 心理学·经典实验 | 🟢 |
 | **BioAgent** | `biology-learning/` | `biology-learning/AGENTS.md` | 时间生物学·睡眠·运动生理 | 🟡 |
 | **TrendAgent** | `github-trending-analyzer/` | `github-trending-analyzer/AGENTS.md` | 开源热点·Repo 知识库 | 🟢 |

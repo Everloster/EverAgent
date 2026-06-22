@@ -23,7 +23,7 @@ EverAgent 是以 AI Agent 为核心工具的个人知识库，通过系统化学
 |------|------|--------|-----------|------|
 | [🤖 AI Learning](./ai-learning/README.md) | AI/ML 论文精读·技术报告 | 40 篇精读/文本 + 31 篇知识/概念报告 | 28 entities · 35 concepts | 🟢 |
 | [💻 CS Learning](./cs-learning/README.md) | 计算机科学·系统·算法 | 24 篇精读/文本 + 6 篇知识/概念报告 | 13 entities · 22 concepts | 🟢 |
-| [📚 Philosophy Learning](./philosophy-learning/README.md) | 西方哲学·文本分析 | 13 篇精读/文本 + 3 篇知识/概念报告 | 11 entities · 14 concepts | 🟡 |
+| [📚 Philosophy Learning](./philosophy-learning/README.md) | 世界哲学·文本分析（含中国哲学） | 13 篇精读/文本 + 3 篇知识/概念报告 | 11 entities · 14 concepts | 🟡 |
 | [🧠 Psychology Learning](./psychology-learning/README.md) | 心理学·经典实验 | 12 篇精读/文本 + 4 篇知识/概念报告 | 12 entities · 12 concepts | 🟢 |
 | [🧬 Biology Learning](./biology-learning/README.md) | 时间生物学·睡眠·运动生理 | 11 篇精读/文本 + 4 篇知识/概念报告 | 9 entities · 11 concepts | 🟡 |
 | [📈 GitHub Trending Analyzer](./github-trending-analyzer/README.md) | 开源热点·Repo 知识库 | 74 篇 Repo 报告 + 10 篇汇总报告 | — | 🟢 |
@@ -58,8 +58,8 @@ python3 scripts/everagent.py audit
 python3 scripts/everagent.py reconcile
 python3 scripts/everagent.py reconcile --abandon-stale
 
-# 自进化引擎：分析执行数据，自动发现优化机会
-python3 scripts/everagent.py evolve --days 7 --dry-run
+# 自进化引擎：分析执行数据，输出优化建议（只读，不创建任务）
+python3 scripts/everagent.py evolve --days 7
 
 # 实时 Dashboard：Web 可视化任务状态与事件流
 python3 scripts/everagent.py dashboard --port 8080

@@ -15,7 +15,7 @@
 - agent: SocratesAgent
   project: philosophy-learning
   protocol: philosophy-learning/AGENTS.md
-  domain: 西方哲学·文本分析
+  domain: 世界哲学·文本分析（含中国哲学）
   status: "🟡"
   title: "📚 Philosophy Learning"
 
