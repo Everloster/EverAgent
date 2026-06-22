@@ -4,7 +4,7 @@ title: "MoE（混合专家架构）"
 type: concept
 domain: [ai-learning]
 created: 2026-04-07
-updated: 2026-04-07
+updated: 2026-06-22
 sources: [MoE_混合专家_深度解析_20260406, 21_moe_2017, 33_mistral_7b_2023]
 status: active
 ---
@@ -48,6 +48,21 @@ G(x)   = Softmax(KeepTopK(H(x), k))                       -- Top-K 稀疏化
 来源：MoE_深度解析 §专家崩塌问题
 
 Shazeer 2017 实证：双损失（w=0.1）可将最重载专家的相对负载从 17.8x 降至 1.07x-1.47x。来源：21_moe_2017 §负载均衡设计动机
+
+## 路由机制三代范式（追问深入 2026-06-22）
+路由的核心问题是"token 该去哪 k 个专家"，三代范式分歧在"谁选谁 + 如何防失衡"：
+
+| 范式 | 路由方向 | 负载均衡 | 干扰梯度 | 自回归推理 | 代表 |
+|------|:---:|:---:|:---:|:---:|---|
+| Token Choice | token→expert | 需辅助损失/硬容量 | 有 | ✅ | Shazeer/Switch/Mixtral |
+| Expert Choice | expert→token | 天然完美均衡 | 无 | ❌（需全 batch 视野） | GLaM 实验线 |
+| Auxiliary-Loss-Free | token→expert | bias 动态纠偏 | 无 | ✅ | DeepSeek-V3 |
+
+- **Token Choice 的原罪**：正反馈循环（强者愈强）导致 Expert Collapse；约束分软（辅助损失/Z-loss）与硬（capacity+token dropping）。
+- **Expert Choice**：专家挑 token，定义上负载恒等，但 token 激活数可变、且破坏自回归因果性（无法逐 token 推理）。
+- **Auxiliary-Loss-Free（DeepSeek arXiv:2408.15664）**：每专家加可调 bias 影响"选谁"，但加权输出仍用原始 gating score、bias 不走反向传播 → 既均衡又不污染主任务梯度；配套用 Sigmoid 门控（256 专家下取代 Softmax）。
+
+来源：MoE_深度解析 §追问深入：路由机制专题
 
 ## 关键变体全景
 | 模型 | 年份 | k | 专家数 | 总参 / 激活参 |
