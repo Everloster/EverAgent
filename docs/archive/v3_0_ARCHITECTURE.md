@@ -1,5 +1,11 @@
 # EverAgent v3.0 — 分布式自治架构设计
 
+> ⚠️ **状态：已归档愿景（未实现）** — 2026-06-22 收敛
+> 本文档描述的数据库驱动 / 自治调度器 / 知识图谱构建从未接入主链路。
+> 对应的 alpha 代码（`scripts/ea_database.py`、`ea_autonomy.py`、`ea_qa.py`、`ea_stream.py`、`.everagent.db`）已在本次架构收敛中删除，可在 git 历史中找回。
+> 当前真相源是各项目的 `.project-task-state` 文件（v2 文件驱动 + git 串行流），见 [`AAMP_ADAPTER.md`](AAMP_ADAPTER.md)。
+> 保留本文件仅作为未来若要引入数据库/自治层的设计参考。
+
 > 版本：v3.0-alpha | 日期：2026-04-22
 > 目标：从文件驱动进化为数据库驱动、事件驱动、自治优化的认知操作系统
 

@@ -18,8 +18,7 @@ from typing import Any
 
 from ea_common import now_iso
 from ea_events import emit_event, load_events
-from ea_task_dsl import render_task_dsl_to_state, sync_task_dsls_to_project_states
-from task_state import TaskEntry, load_tasks_for_project, write_task_state_file
+from task_state import load_tasks_for_project
 
 
 # ---------------------------------------------------------------------------
@@ -293,91 +292,34 @@ def analyze_event_patterns(days: int = 7) -> list[Insight]:
 
 
 # ---------------------------------------------------------------------------
-# Action generation
+# Recommendation generation
 # ---------------------------------------------------------------------------
 
-def _get_next_task_id() -> str:
-    """Find the next available task ID by scanning existing tasks."""
-    from pathlib import Path
-    tasks_dir = Path("tasks")
-    if not tasks_dir.exists():
-        return "T031"
+def recommend_optimizations(insights: list[Insight]) -> list[str]:
+    """Turn critical insights into human-readable optimization recommendations.
 
-    max_num = 30
-    for path in tasks_dir.glob("T*.yaml"):
-        try:
-            num = int(path.stem[1:])
-            max_num = max(max_num, num)
-        except ValueError:
-            continue
+    The engine never writes task files. Task creation stays a deliberate human
+    step via task_state_cli.py / task_exec.py against .project-task-state.
+    """
+    project_map = {
+        "performance": "ai-learning",
+        "quality": "ai-learning",
+        "agent_health": "global",
+        "capacity": "global",
+        "backlog": "global",
+        "process": "global",
+        "system": "global",
+    }
 
-    # Also check project state files
-    from task_state import load_all_tasks
-    for task in load_all_tasks():
-        try:
-            num = int(task.id[1:])
-            max_num = max(max_num, num)
-        except ValueError:
-            continue
-
-    return f"T{max_num + 1:03d}"
-
-
-def generate_optimization_tasks(insights: list[Insight], dry_run: bool = True) -> list[str]:
-    """Generate optimization tasks from critical insights."""
-    actions: list[str] = []
-    task_id_counter = int(_get_next_task_id()[1:])
-
+    recommendations: list[str] = []
     for insight in insights:
         if insight.severity != "critical":
             continue
-
-        task_id = f"T{task_id_counter:03d}"
-        task_id_counter += 1
-
-        # Map category to project
-        project_map = {
-            "performance": "ai-learning",
-            "quality": "ai-learning",
-            "agent_health": "global",
-            "capacity": "global",
-            "backlog": "global",
-            "process": "global",
-            "system": "global",
-        }
         project = project_map.get(insight.category, "global")
-
-        # Escape quotes in insight fields for YAML safety
-        safe_title = insight.title.replace('"', '\\"')
-        safe_desc = insight.description.replace('"', '\\"')
-        safe_action = insight.suggested_action.replace('"', '\\"')
-
-        task_content = f"""apiVersion: everagent.io/v1
-kind: Task
-metadata:
-  id: {task_id}
-  project: {project}
-spec:
-  type: project_optimization
-  target: "[自动发现] {safe_title}"
-  value: "{safe_desc} | 建议行动: {safe_action}"
-  priority: P2
-  resources:
-    max_tokens: 20000
-    expected_duration: 1h
-  qualityGates:
-    - check: frontmatter_complete
-      required: true
-"""
-
-        task_path = __import__("pathlib").Path("tasks") / f"{task_id}.yaml"
-        if not dry_run:
-            task_path.write_text(task_content, encoding="utf-8")
-            actions.append(f"CREATED: {task_id} -> {project}")
-        else:
-            actions.append(f"WOULD_CREATE: {task_id} -> {project} ({insight.title})")
-
-    return actions
+        recommendations.append(
+            f"[{project}] {insight.title} — {insight.suggested_action}"
+        )
+    return recommendations
 
 
 def print_report(insights: list[Insight], actions: list[str]) -> None:
@@ -412,7 +354,7 @@ def print_report(insights: list[Insight], actions: list[str]) -> None:
                 print(f"    Action: {item.suggested_action}")
 
     if actions:
-        print(f"\n📋 Generated Tasks ({len(actions)})")
+        print(f"\n📋 Recommended Optimizations ({len(actions)})")
         print("-" * 40)
         for a in actions:
             print(f"  {a}")
@@ -427,7 +369,7 @@ def print_report(insights: list[Insight], actions: list[str]) -> None:
 def main() -> int:
     parser = argparse.ArgumentParser(description="EverAgent Self-Evolution Engine")
     parser.add_argument("--days", type=int, default=7, help="Analysis window in days")
-    parser.add_argument("--dry-run", action="store_true", help="Show what would be done without creating tasks")
+    parser.add_argument("--dry-run", action="store_true", help="Accepted for compatibility; the engine never writes task files")
     args = parser.parse_args()
 
     print(f"[INFO] Analyzing last {args.days} days of event history...")
@@ -439,11 +381,11 @@ def main() -> int:
     all_insights.extend(analyze_project_health())
     all_insights.extend(analyze_event_patterns(args.days))
 
-    # Generate optimization tasks from critical insights
-    actions = generate_optimization_tasks(all_insights, dry_run=args.dry_run)
+    # Turn critical insights into recommendations (no file writes)
+    recommendations = recommend_optimizations(all_insights)
 
     # Print report
-    print_report(all_insights, actions)
+    print_report(all_insights, recommendations)
 
     # Emit system audit event
     emit_event(
@@ -452,16 +394,9 @@ def main() -> int:
         payload={
             "insights_count": len(all_insights),
             "critical_count": sum(1 for i in all_insights if i.severity == "critical"),
-            "tasks_generated": len(actions),
-            "dry_run": args.dry_run,
+            "recommendations_count": len(recommendations),
         },
     )
-
-    if not args.dry_run and actions:
-        # Sync new tasks to project states
-        sync_results = sync_task_dsls_to_project_states(dry_run=False)
-        for r in sync_results:
-            print(f"[SYNC] {r}")
 
     return 0
 

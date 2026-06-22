@@ -4,6 +4,18 @@
 
 ---
 
+## 2026-06-22
+
+### 架构收敛 v5.1（移除未落地抽象）
+- **统一真相源**：明确各项目 `.project-task-state` 文件为唯一任务真相源（v2 文件驱动 + git 串行流）。
+- **删除 v3 SQLite 死簇**：移除 `scripts/ea_database.py`、`ea_autonomy.py`、`ea_qa.py`、`ea_stream.py` 及被 git 跟踪的 `.everagent.db`（自称"双写兼容"但从未接入主链路）；`.everagent.db` 加入 `.gitignore`。
+- **删除声明式 DSL 旁支**：移除 `scripts/ea_task_dsl.py` 与 `tasks/T*.yaml`（与状态文件 100% 重复、sync 空转，且曾于 2026-06-21 因状态漂移导致误派发）；`ea_evolution.py` 解耦 DSL，`evolve` 现仅做分析 + 推荐 + emit，不再写任务文件。
+- **审计记录归档**：`tasks/archive/2026-06-21-stale-tasks/` → `docs/archive/`（保留漂移事件 post-mortem）。
+- **文档诚实化**：`v3_0_ARCHITECTURE.md` 移入 `docs/archive/` 并标注"已归档愿景（未实现）"；`AAMP_CORE_SPECIFICATION.md` 标注"参考规范（概念资产）"，澄清仅事件信封映射（`ea_events.py`）为已实现部分。
+- 全部脚本通过 `py_compile`，22 项测试与 `everagent.py doctor` 保持通过。
+
+---
+
 ## 2026-04-22
 
 ### 基础设施重构 v2.0（Trae Kimi-2.6）
