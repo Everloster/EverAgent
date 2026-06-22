@@ -41,6 +41,9 @@ venv/
 */.agent-lock
 */.agent-state
 
+# Local SQLite cache (not a source of truth; .project-task-state files are authoritative)
+.everagent.db
+
 # MemPalace (local MCP tool state)
 mempalace.yaml
 entities.json

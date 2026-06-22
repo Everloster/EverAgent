@@ -30,6 +30,7 @@
 | [wittgenstein_ludwig.md](./entities/wittgenstein_ludwig.md) | 维特根斯坦（1889-1951）·逻辑图像论 + 可说/不可说划界 + 自我反转（前期《逻辑哲学论》→ 后期《哲学研究》） |
 | [dewey_john.md](./entities/dewey_john.md) | 杜威（1859-1952）·实用主义第二代 + 一个经验 + 做与受 + 反对自我表达二元论 + 艺术与生活连续性 |
 | [danto_arthur.md](./entities/danto_arthur.md) | 丹托（1924-2013）·艺术终结论 + Brillo Box + 任何东西都可以是艺术 + 后历史阶段 + The Nation 艺术批评专栏 1984-2009 |
+| [cheng_lesong.md](./entities/cheng_lesong.md) | 程乐松（1978–）·北大哲学系教授·道教观念史 + 以宗教的方式看待宗教 + 同情性理解 + 日常即超越（中国哲学） |
 
 ---
 
@@ -77,6 +78,11 @@
 | [picture_theory_of_meaning.md](./concepts/picture_theory_of_meaning.md) | 维特根斯坦逻辑图像论·命题=事态的逻辑图像 + 共享逻辑形式 + 反对"相似"为图示基础 |
 | [sayable_and_unsayable.md](./concepts/sayable_and_unsayable.md) | 可说/不可说的划界·unsinnig vs falsch + 伦理/美学/宗教"显示而不说" + 命题 7 |
 | [language_limit_world_limit.md](./concepts/language_limit_world_limit.md) | 5.6 语言的界限即世界的界限·逻辑同构说 + 5.61 不可说即不可思想 + LLM 能力边界类比 |
+
+### 中国哲学
+| 页面 | 简介 |
+|------|------|
+| [religious_hermeneutics_idea_history.md](./concepts/religious_hermeneutics_idea_history.md) | 程乐松·观念史视角 + 宗教经典诠释学 + 以宗教的方式看待宗教 + 同情性理解 + 日常即超越 |
 
 ---
 

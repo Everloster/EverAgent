@@ -282,3 +282,11 @@
 - 关联概念：kv_cache / lora_peft / megatron_lm_3d_parallelism / llms_plus
 - 执行者：NeuronAgent / claude-sonnet-4.6
 
+
+## [2026-06-22] deepen (conversational-learning) | MoE 路由机制专题
+- 模式：对话学习车道（用户发起"想学 MoE 路由机制"，§2B）。追问=续写既有报告，未新建报告。
+- 续写报告：reports/knowledge_reports/MoE_混合专家_深度解析_20260406.md 追加「## 追问深入 [2026-06-22]：路由机制专题」（三代路由范式 + Token/Expert Choice + auxiliary-loss-free + 对比表 + 2025-2026 动态 + 路由检验题），frontmatter updated_on 刷新为 2026-06-22。
+- 更新 concept：wiki/concepts/moe_architecture.md 新增「路由机制三代范式」小节，updated 刷新为 2026-06-22。
+- 核心知识：Token Choice 正反馈失衡 · Switch Top-1 权衡 · Expert Choice 反转路由破坏自回归因果 · DeepSeek auxiliary-loss-free（bias 纠偏不污染梯度，arXiv:2408.15664）· Sigmoid 门控。
+- 数据源：DeepSeek Loss-Free Balancing (arXiv:2408.15664) + Expert Choice (Zhou 2022) + MoE 路由综述 WebSearch（2026-04~06）
+- 执行者：NeuronAgent / Trae Openrouter（对话学习模式）
