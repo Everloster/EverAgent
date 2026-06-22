@@ -58,8 +58,8 @@ python3 scripts/everagent.py audit
 python3 scripts/everagent.py reconcile
 python3 scripts/everagent.py reconcile --abandon-stale
 
-# 自进化引擎：分析执行数据，自动发现优化机会
-python3 scripts/everagent.py evolve --days 7 --dry-run
+# 自进化引擎：分析执行数据，输出优化建议（只读，不创建任务）
+python3 scripts/everagent.py evolve --days 7
 
 # 实时 Dashboard：Web 可视化任务状态与事件流
 python3 scripts/everagent.py dashboard --port 8080
