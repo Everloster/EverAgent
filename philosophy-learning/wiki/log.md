@@ -42,3 +42,14 @@
 - 数据源：哲学关键人物图谱、知识_跨时代比较、knowledge/epistemology.md、01_plato_republic_cave_-380、02_descartes_meditations_1641、03_gettier_1963（text + paper）、04_nagel_bat_1974、04_plato_meno_-380、05_kant_groundwork_1785、06_aristotle_nicomachean_ethics_-350、07_hegel_phaenomenologie_1807、08_rawls_theory_of_justice_1971
 - 状态：plan §8 短期标准 ≥10 entities / ≥8 concepts 双双满足（10 entity + 11 concept）
 - 已知问题：休谟为 stub（待《人性论》精读）；维特根斯坦/海德格尔/尼采/弗雷格 在人物图谱中是节点但无独立精读，本轮不建页
+
+## [2026-06-22] deepen (conversational-learning) | 程乐松 道教观念史与宗教经典诠释学 思想综述
+- 模式：对话学习车道（用户发起"想学习程乐松教授的相关哲学"，§2B）。随项目扩为「世界哲学」范围后中国哲学方向首篇。
+- 新建报告：reports/concept_reports/程乐松_道教与宗教诠释学_思想综述_20260622.md（5 层理解模型，含公开来源标注与 [推论] 区分）
+- 新建 entity：wiki/entities/cheng_lesong.md（北大哲学系教授·道教观念史）
+- 新建 concept：wiki/concepts/religious_hermeneutics_idea_history.md（观念史视角 + 宗教经典诠释学）
+- 更新 index.md：Entities 表 + Concepts 新增「中国哲学」组
+- 核心知识：以宗教（信仰）的方式看待宗教 · 观念史视角（身体/不死/神秘主义）· 同情性理解 vs 客观性 · 放下现代性的傲慢 · 日常即超越 · 道/术动态互构 · 效验作为神圣性标准
+- 数据源：北大哲学系官方简介 + 《道教研究学报》第十期(2018)书评 + 北大文研院未名学者讲座09(2016) + 北大国际合作部赫拉利对谈报道(2025-03)
+- 防幻觉：在世学者，全部事实陈述附公开来源，推论标 [推论]
+- 执行者：SocratesAgent / Trae Openrouter（对话学习模式）
