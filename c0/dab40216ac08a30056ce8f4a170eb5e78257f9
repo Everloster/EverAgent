@@ -1,0 +1,930 @@
+philosophy-learning/LEARNING_PROFILE.md
+  s_86311eedb47e7d::t_850a35b92a02c1 1-68 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a38ffbc5f6275f6fbdf5a7d","tool_type":"agent","tool_id":"Write","line_ranges":[{"Range":[1,68]}]}]}
+AGENTS.md
+  s_86311eedb47e7d::t_27dcfec447cf83 44 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a38ff9a5f6275f6fbdf5a71","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Single":44}]}]}
+philosophy-learning/reports/concept_reports/程乐松_道教与宗教诠释学_思想综述_20260622.md
+  s_86311eedb47e7d::t_f02a542eb0a5ef 1-118 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3900975f6275f6fbdf5aa7","tool_type":"agent","tool_id":"Write","line_ranges":[{"Range":[1,118]}]}]}
+philosophy-learning/roadmap/Learning_Roadmap.md
+  s_86311eedb47e7d::t_d4e0a48f7c357e 1,3-6,10-47 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a38ffde5f6275f6fbdf5a86","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Single":1},{"Range":[3,6]},{"Range":[10,47]}]}]}
+philosophy-learning/wiki/concepts/religious_hermeneutics_idea_history.md
+  s_86311eedb47e7d::t_2ab5f633281802 1-46 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3901515f6275f6fbdf5ab3","tool_type":"agent","tool_id":"Write","line_ranges":[{"Range":[1,46]}]}]}
+README.md
+  s_86311eedb47e7d::t_cbab17abfa4867 26 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a38ffac5f6275f6fbdf5a74","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Single":26}]}]}
+philosophy-learning/README.md
+  s_86311eedb47e7d::t_f2d8d16d538e02 3-4,10 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a38ff635f6275f6fbdf5a68","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Range":[3,4]},{"Single":10}]}]}
+philosophy-learning/wiki/log.md
+  s_86311eedb47e7d::t_891d31b6f6e98f 45-55 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3901bb5f6275f6fbdf5abf","tool_type":"agent","tool_id":"Shell","line_ranges":[{"Range":[45,55]}]}]}
+docs/agents_registry.yaml
+  s_86311eedb47e7d::t_9512ecdb70337f 18 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a38ff985f6275f6fbdf5a6e","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Single":18}]}]}
+philosophy-learning/wiki/entities/cheng_lesong.md
+  s_86311eedb47e7d::t_31ba476559c1d3 1-44 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3901145f6275f6fbdf5aad","tool_type":"agent","tool_id":"Write","line_ranges":[{"Range":[1,44]}]}]}
+philosophy-learning/CONTEXT.md
+  s_86311eedb47e7d::t_943b072daf1639 34 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3901d35f6275f6fbdf5ac2","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Single":34}]}]}
+  s_86311eedb47e7d::t_754cd107f289e3 60-61 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a38ff475f6275f6fbdf5a65","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Range":[60,61]}]}]}
+  s_86311eedb47e7d::t_f69e93038d802a 11 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a38ff385f6275f6fbdf5a62","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Single":11}]}]}
+  s_86311eedb47e7d::t_b26c6d3111edf3 5,9-10 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a38ff275f6275f6fbdf5a5f","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Single":5},{"Range":[9,10]}]}]}
+  s_86311eedb47e7d::t_6b72e86ba78044 37 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3901ec5f6275f6fbdf5ac5","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Single":37}]}]}
+philosophy-learning/AGENTS.md
+  s_86311eedb47e7d::t_d5d954c1736e3e 52 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3900405f6275f6fbdf5a95","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Single":52}]}]}
+  s_86311eedb47e7d::t_6b077c74e727d1 244-245 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a39004f5f6275f6fbdf5a98","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Range":[244,245]}]}]}
+  s_86311eedb47e7d::t_4ae8131a9c8970 25-28,31 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3900095f6275f6fbdf5a8f","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Range":[25,28]},{"Single":31}]}]}
+  s_86311eedb47e7d::t_acffc68513c182 272-287 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3900655f6275f6fbdf5a9b","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Range":[272,287]}]}]}
+  s_86311eedb47e7d::t_2b8a551480e4a9 13 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a38fed25f6275f6fbdf5a56","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Single":13}]}]}
+  s_86311eedb47e7d::t_e0704f40106158 37,46,48-49 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a38fee95f6275f6fbdf5a59","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Single":37},{"Single":46},{"Range":[48,49]}]}]}
+  s_86311eedb47e7d::t_6efd70b183b85d 297 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a38ff075f6275f6fbdf5a5c","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Single":297}]}]}
+  s_86311eedb47e7d::t_e2c6da3c5f3b3d 124-160 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a39001c5f6275f6fbdf5a92","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Range":[124,160]}]}]}
+philosophy-learning/wiki/index.md
+  s_86311eedb47e7d::t_190e8e55f9f718 33 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a39018e5f6275f6fbdf5ab9","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Single":33}]}]}
+  s_86311eedb47e7d::t_637e3f522b059f 82-86 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3901a55f6275f6fbdf5abc","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Range":[82,86]}]}]}
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "c0dab40216ac08a30056ce8f4a170eb5e78257f9",
+  "prompts": {},
+  "sessions": {
+    "s_86311eedb47e7d": {
+      "agent_id": {
+        "tool": "trae",
+        "id": "69eadb9ae2443081b9cc1a8a",
+        "model": "openrouter-3o__max"
+      },
+      "human_author": "Trae Openrouter <noreply@trae.cn>"
+    }
+  },
+  "attestation_metadata": {
+    "AGENTS.md": [
+      {
+        "hash": "s_86311eedb47e7d::t_27dcfec447cf83",
+        "line_ranges": [
+          {
+            "Single": 44
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a38ff9a5f6275f6fbdf5a71",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Single": 44
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "README.md": [
+      {
+        "hash": "s_86311eedb47e7d::t_cbab17abfa4867",
+        "line_ranges": [
+          {
+            "Single": 26
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a38ffac5f6275f6fbdf5a74",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Single": 26
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "docs/agents_registry.yaml": [
+      {
+        "hash": "s_86311eedb47e7d::t_9512ecdb70337f",
+        "line_ranges": [
+          {
+            "Single": 18
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a38ff985f6275f6fbdf5a6e",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Single": 18
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "philosophy-learning/AGENTS.md": [
+      {
+        "hash": "s_86311eedb47e7d::t_d5d954c1736e3e",
+        "line_ranges": [
+          {
+            "Single": 52
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3900405f6275f6fbdf5a95",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Single": 52
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "hash": "s_86311eedb47e7d::t_6b077c74e727d1",
+        "line_ranges": [
+          {
+            "Range": [
+              244,
+              245
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a39004f5f6275f6fbdf5a98",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Range": [
+                  244,
+                  245
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "hash": "s_86311eedb47e7d::t_4ae8131a9c8970",
+        "line_ranges": [
+          {
+            "Range": [
+              25,
+              28
+            ]
+          },
+          {
+            "Single": 31
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3900095f6275f6fbdf5a8f",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Range": [
+                  25,
+                  28
+                ]
+              },
+              {
+                "Single": 31
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "hash": "s_86311eedb47e7d::t_acffc68513c182",
+        "line_ranges": [
+          {
+            "Range": [
+              272,
+              287
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3900655f6275f6fbdf5a9b",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Range": [
+                  272,
+                  287
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "hash": "s_86311eedb47e7d::t_2b8a551480e4a9",
+        "line_ranges": [
+          {
+            "Single": 13
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a38fed25f6275f6fbdf5a56",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Single": 13
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "hash": "s_86311eedb47e7d::t_e0704f40106158",
+        "line_ranges": [
+          {
+            "Single": 37
+          },
+          {
+            "Single": 46
+          },
+          {
+            "Range": [
+              48,
+              49
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a38fee95f6275f6fbdf5a59",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Single": 37
+              },
+              {
+                "Single": 46
+              },
+              {
+                "Range": [
+                  48,
+                  49
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "hash": "s_86311eedb47e7d::t_6efd70b183b85d",
+        "line_ranges": [
+          {
+            "Single": 297
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a38ff075f6275f6fbdf5a5c",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Single": 297
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "hash": "s_86311eedb47e7d::t_e2c6da3c5f3b3d",
+        "line_ranges": [
+          {
+            "Range": [
+              124,
+              160
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a39001c5f6275f6fbdf5a92",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Range": [
+                  124,
+                  160
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "philosophy-learning/CONTEXT.md": [
+      {
+        "hash": "s_86311eedb47e7d::t_943b072daf1639",
+        "line_ranges": [
+          {
+            "Single": 34
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3901d35f6275f6fbdf5ac2",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Single": 34
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "hash": "s_86311eedb47e7d::t_754cd107f289e3",
+        "line_ranges": [
+          {
+            "Range": [
+              60,
+              61
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a38ff475f6275f6fbdf5a65",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Range": [
+                  60,
+                  61
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "hash": "s_86311eedb47e7d::t_f69e93038d802a",
+        "line_ranges": [
+          {
+            "Single": 11
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a38ff385f6275f6fbdf5a62",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Single": 11
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "hash": "s_86311eedb47e7d::t_b26c6d3111edf3",
+        "line_ranges": [
+          {
+            "Single": 5
+          },
+          {
+            "Range": [
+              9,
+              10
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a38ff275f6275f6fbdf5a5f",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Single": 5
+              },
+              {
+                "Range": [
+                  9,
+                  10
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "hash": "s_86311eedb47e7d::t_6b72e86ba78044",
+        "line_ranges": [
+          {
+            "Single": 37
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3901ec5f6275f6fbdf5ac5",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Single": 37
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "philosophy-learning/LEARNING_PROFILE.md": [
+      {
+        "hash": "s_86311eedb47e7d::t_850a35b92a02c1",
+        "line_ranges": [
+          {
+            "Range": [
+              1,
+              68
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a38ffbc5f6275f6fbdf5a7d",
+            "tool_type": "agent",
+            "tool_id": "Write",
+            "line_ranges": [
+              {
+                "Range": [
+                  1,
+                  68
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "philosophy-learning/README.md": [
+      {
+        "hash": "s_86311eedb47e7d::t_f2d8d16d538e02",
+        "line_ranges": [
+          {
+            "Range": [
+              3,
+              4
+            ]
+          },
+          {
+            "Single": 10
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a38ff635f6275f6fbdf5a68",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Range": [
+                  3,
+                  4
+                ]
+              },
+              {
+                "Single": 10
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "philosophy-learning/reports/concept_reports/程乐松_道教与宗教诠释学_思想综述_20260622.md": [
+      {
+        "hash": "s_86311eedb47e7d::t_f02a542eb0a5ef",
+        "line_ranges": [
+          {
+            "Range": [
+              1,
+              118
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3900975f6275f6fbdf5aa7",
+            "tool_type": "agent",
+            "tool_id": "Write",
+            "line_ranges": [
+              {
+                "Range": [
+                  1,
+                  118
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "philosophy-learning/roadmap/Learning_Roadmap.md": [
+      {
+        "hash": "s_86311eedb47e7d::t_d4e0a48f7c357e",
+        "line_ranges": [
+          {
+            "Single": 1
+          },
+          {
+            "Range": [
+              3,
+              6
+            ]
+          },
+          {
+            "Range": [
+              10,
+              47
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a38ffde5f6275f6fbdf5a86",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Single": 1
+              },
+              {
+                "Range": [
+                  3,
+                  6
+                ]
+              },
+              {
+                "Range": [
+                  10,
+                  47
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "philosophy-learning/wiki/concepts/religious_hermeneutics_idea_history.md": [
+      {
+        "hash": "s_86311eedb47e7d::t_2ab5f633281802",
+        "line_ranges": [
+          {
+            "Range": [
+              1,
+              46
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3901515f6275f6fbdf5ab3",
+            "tool_type": "agent",
+            "tool_id": "Write",
+            "line_ranges": [
+              {
+                "Range": [
+                  1,
+                  46
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "philosophy-learning/wiki/entities/cheng_lesong.md": [
+      {
+        "hash": "s_86311eedb47e7d::t_31ba476559c1d3",
+        "line_ranges": [
+          {
+            "Range": [
+              1,
+              44
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3901145f6275f6fbdf5aad",
+            "tool_type": "agent",
+            "tool_id": "Write",
+            "line_ranges": [
+              {
+                "Range": [
+                  1,
+                  44
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "philosophy-learning/wiki/index.md": [
+      {
+        "hash": "s_86311eedb47e7d::t_190e8e55f9f718",
+        "line_ranges": [
+          {
+            "Single": 33
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a39018e5f6275f6fbdf5ab9",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Single": 33
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "hash": "s_86311eedb47e7d::t_637e3f522b059f",
+        "line_ranges": [
+          {
+            "Range": [
+              82,
+              86
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3901a55f6275f6fbdf5abc",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Range": [
+                  82,
+                  86
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "philosophy-learning/wiki/log.md": [
+      {
+        "hash": "s_86311eedb47e7d::t_891d31b6f6e98f",
+        "line_ranges": [
+          {
+            "Range": [
+              45,
+              55
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3901bb5f6275f6fbdf5abf",
+            "tool_type": "agent",
+            "tool_id": "Shell",
+            "line_ranges": [
+              {
+                "Range": [
+                  45,
+                  55
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "remote_transcripts": {
+    "s_86311eedb47e7d": {
+      "tool": "trae",
+      "conversation_id": "69eadb9ae2443081b9cc1a8a",
+      "session_id": "69eadb9ae2443081b9cc1a8a",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_86311eedb47e7d::t_190e8e55f9f718": {
+      "tool": "trae",
+      "conversation_id": "69eadb9ae2443081b9cc1a8a",
+      "session_id": "69eadb9ae2443081b9cc1a8a",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_86311eedb47e7d::t_27dcfec447cf83": {
+      "tool": "trae",
+      "conversation_id": "69eadb9ae2443081b9cc1a8a",
+      "session_id": "69eadb9ae2443081b9cc1a8a",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_86311eedb47e7d::t_2ab5f633281802": {
+      "tool": "trae",
+      "conversation_id": "69eadb9ae2443081b9cc1a8a",
+      "session_id": "69eadb9ae2443081b9cc1a8a",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_86311eedb47e7d::t_2b8a551480e4a9": {
+      "tool": "trae",
+      "conversation_id": "69eadb9ae2443081b9cc1a8a",
+      "session_id": "69eadb9ae2443081b9cc1a8a",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_86311eedb47e7d::t_31ba476559c1d3": {
+      "tool": "trae",
+      "conversation_id": "69eadb9ae2443081b9cc1a8a",
+      "session_id": "69eadb9ae2443081b9cc1a8a",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_86311eedb47e7d::t_4ae8131a9c8970": {
+      "tool": "trae",
+      "conversation_id": "69eadb9ae2443081b9cc1a8a",
+      "session_id": "69eadb9ae2443081b9cc1a8a",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_86311eedb47e7d::t_637e3f522b059f": {
+      "tool": "trae",
+      "conversation_id": "69eadb9ae2443081b9cc1a8a",
+      "session_id": "69eadb9ae2443081b9cc1a8a",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_86311eedb47e7d::t_6b077c74e727d1": {
+      "tool": "trae",
+      "conversation_id": "69eadb9ae2443081b9cc1a8a",
+      "session_id": "69eadb9ae2443081b9cc1a8a",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_86311eedb47e7d::t_6b72e86ba78044": {
+      "tool": "trae",
+      "conversation_id": "69eadb9ae2443081b9cc1a8a",
+      "session_id": "69eadb9ae2443081b9cc1a8a",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_86311eedb47e7d::t_6efd70b183b85d": {
+      "tool": "trae",
+      "conversation_id": "69eadb9ae2443081b9cc1a8a",
+      "session_id": "69eadb9ae2443081b9cc1a8a",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_86311eedb47e7d::t_754cd107f289e3": {
+      "tool": "trae",
+      "conversation_id": "69eadb9ae2443081b9cc1a8a",
+      "session_id": "69eadb9ae2443081b9cc1a8a",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_86311eedb47e7d::t_850a35b92a02c1": {
+      "tool": "trae",
+      "conversation_id": "69eadb9ae2443081b9cc1a8a",
+      "session_id": "69eadb9ae2443081b9cc1a8a",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_86311eedb47e7d::t_891d31b6f6e98f": {
+      "tool": "trae",
+      "conversation_id": "69eadb9ae2443081b9cc1a8a",
+      "session_id": "69eadb9ae2443081b9cc1a8a",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_86311eedb47e7d::t_943b072daf1639": {
+      "tool": "trae",
+      "conversation_id": "69eadb9ae2443081b9cc1a8a",
+      "session_id": "69eadb9ae2443081b9cc1a8a",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_86311eedb47e7d::t_9512ecdb70337f": {
+      "tool": "trae",
+      "conversation_id": "69eadb9ae2443081b9cc1a8a",
+      "session_id": "69eadb9ae2443081b9cc1a8a",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_86311eedb47e7d::t_acffc68513c182": {
+      "tool": "trae",
+      "conversation_id": "69eadb9ae2443081b9cc1a8a",
+      "session_id": "69eadb9ae2443081b9cc1a8a",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_86311eedb47e7d::t_b26c6d3111edf3": {
+      "tool": "trae",
+      "conversation_id": "69eadb9ae2443081b9cc1a8a",
+      "session_id": "69eadb9ae2443081b9cc1a8a",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_86311eedb47e7d::t_cbab17abfa4867": {
+      "tool": "trae",
+      "conversation_id": "69eadb9ae2443081b9cc1a8a",
+      "session_id": "69eadb9ae2443081b9cc1a8a",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_86311eedb47e7d::t_d4e0a48f7c357e": {
+      "tool": "trae",
+      "conversation_id": "69eadb9ae2443081b9cc1a8a",
+      "session_id": "69eadb9ae2443081b9cc1a8a",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_86311eedb47e7d::t_d5d954c1736e3e": {
+      "tool": "trae",
+      "conversation_id": "69eadb9ae2443081b9cc1a8a",
+      "session_id": "69eadb9ae2443081b9cc1a8a",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_86311eedb47e7d::t_e0704f40106158": {
+      "tool": "trae",
+      "conversation_id": "69eadb9ae2443081b9cc1a8a",
+      "session_id": "69eadb9ae2443081b9cc1a8a",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_86311eedb47e7d::t_e2c6da3c5f3b3d": {
+      "tool": "trae",
+      "conversation_id": "69eadb9ae2443081b9cc1a8a",
+      "session_id": "69eadb9ae2443081b9cc1a8a",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_86311eedb47e7d::t_f02a542eb0a5ef": {
+      "tool": "trae",
+      "conversation_id": "69eadb9ae2443081b9cc1a8a",
+      "session_id": "69eadb9ae2443081b9cc1a8a",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_86311eedb47e7d::t_f2d8d16d538e02": {
+      "tool": "trae",
+      "conversation_id": "69eadb9ae2443081b9cc1a8a",
+      "session_id": "69eadb9ae2443081b9cc1a8a",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_86311eedb47e7d::t_f69e93038d802a": {
+      "tool": "trae",
+      "conversation_id": "69eadb9ae2443081b9cc1a8a",
+      "session_id": "69eadb9ae2443081b9cc1a8a",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    }
+  }
+}
