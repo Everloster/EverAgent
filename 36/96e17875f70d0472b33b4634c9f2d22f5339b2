@@ -1,0 +1,481 @@
+biology-learning/skills/paper_analysis/SKILL.md
+  s_dc21e0d1941f13::t_ea19d8e51f6125 18-63 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3a75015f6275f6fbdf62e6","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Range":[18,63]}]}]}
+ai-learning/skills/concept_deep_dive/SKILL.md
+  s_dc21e0d1941f13::t_9c0c764cc67d76 19-57 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3a757e5f6275f6fbdf631c","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Range":[19,57]}]}]}
+psychology-learning/skills/concept_deep_dive/SKILL.md
+  s_dc21e0d1941f13::t_bd9f88db7a1e58 20-56 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3a75b05f6275f6fbdf6322","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Range":[20,56]}]}]}
+ai-learning/skills/paper_analysis/SKILL.md
+  s_dc21e0d1941f13::t_0481423f71f63a 18-57 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3a745c5f6275f6fbdf6294","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Range":[18,57]}]}]}
+cs-learning/skills/paper_analysis/SKILL.md
+  s_dc21e0d1941f13::t_50dbbf937964e7 19-60 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3a748f5f6275f6fbdf62ad","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Range":[19,60]}]}]}
+psychology-learning/skills/paper_analysis/SKILL.md
+  s_dc21e0d1941f13::t_2f1d764c979f3e 19-60 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3a74c55f6275f6fbdf62c9","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Range":[19,60]}]}]}
+philosophy-learning/skills/text_analysis/SKILL.md
+  s_dc21e0d1941f13::t_8cbdc010b51f39 20-74 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3a753a5f6275f6fbdf6300","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Range":[20,74]}]}]}
+biology-learning/skills/concept_deep_dive/SKILL.md
+  s_dc21e0d1941f13::t_42362d35887fda 19-60 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3a75c55f6275f6fbdf6325","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Range":[19,60]}]}]}
+philosophy-learning/skills/concept_deep_dive/SKILL.md
+  s_dc21e0d1941f13::t_1a8a5ee8eea1ea 20-55 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3a75ed5f6275f6fbdf6333","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Range":[20,55]}]}]}
+scripts/execution_validator.py
+  s_dc21e0d1941f13::t_743217875de2ff 188-251 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3a760d5f6275f6fbdf6339","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Range":[188,251]}]}]}
+  s_dc21e0d1941f13::t_38bcacf84fdd71 273-275 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3a762d5f6275f6fbdf633f","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Range":[273,275]}]}]}
+cs-learning/skills/concept_deep_dive/SKILL.md
+  s_dc21e0d1941f13::t_8e54ad543f1b68 19-54 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3a75945f6275f6fbdf631f","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Range":[19,54]}]}]}
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "3696e17875f70d0472b33b4634c9f2d22f5339b2",
+  "prompts": {},
+  "sessions": {
+    "s_dc21e0d1941f13": {
+      "agent_id": {
+        "tool": "trae",
+        "id": "6a2a5b13fb3e804a0c0c7396",
+        "model": "Doubao-Seed-2.1-Pro__dev"
+      },
+      "human_author": "Trae Doubao-Seed-2.1-pro <noreply@trae.cn>"
+    }
+  },
+  "attestation_metadata": {
+    "ai-learning/skills/concept_deep_dive/SKILL.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_9c0c764cc67d76",
+        "line_ranges": [
+          {
+            "Range": [
+              19,
+              57
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3a757e5f6275f6fbdf631c",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Range": [
+                  19,
+                  57
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ai-learning/skills/paper_analysis/SKILL.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_0481423f71f63a",
+        "line_ranges": [
+          {
+            "Range": [
+              18,
+              57
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3a745c5f6275f6fbdf6294",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Range": [
+                  18,
+                  57
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "biology-learning/skills/concept_deep_dive/SKILL.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_42362d35887fda",
+        "line_ranges": [
+          {
+            "Range": [
+              19,
+              60
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3a75c55f6275f6fbdf6325",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Range": [
+                  19,
+                  60
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "biology-learning/skills/paper_analysis/SKILL.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_ea19d8e51f6125",
+        "line_ranges": [
+          {
+            "Range": [
+              18,
+              63
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3a75015f6275f6fbdf62e6",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Range": [
+                  18,
+                  63
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "cs-learning/skills/concept_deep_dive/SKILL.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_8e54ad543f1b68",
+        "line_ranges": [
+          {
+            "Range": [
+              19,
+              54
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3a75945f6275f6fbdf631f",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Range": [
+                  19,
+                  54
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "cs-learning/skills/paper_analysis/SKILL.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_50dbbf937964e7",
+        "line_ranges": [
+          {
+            "Range": [
+              19,
+              60
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3a748f5f6275f6fbdf62ad",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Range": [
+                  19,
+                  60
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "philosophy-learning/skills/concept_deep_dive/SKILL.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_1a8a5ee8eea1ea",
+        "line_ranges": [
+          {
+            "Range": [
+              20,
+              55
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3a75ed5f6275f6fbdf6333",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Range": [
+                  20,
+                  55
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "philosophy-learning/skills/text_analysis/SKILL.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_8cbdc010b51f39",
+        "line_ranges": [
+          {
+            "Range": [
+              20,
+              74
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3a753a5f6275f6fbdf6300",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Range": [
+                  20,
+                  74
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "psychology-learning/skills/concept_deep_dive/SKILL.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_bd9f88db7a1e58",
+        "line_ranges": [
+          {
+            "Range": [
+              20,
+              56
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3a75b05f6275f6fbdf6322",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Range": [
+                  20,
+                  56
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "psychology-learning/skills/paper_analysis/SKILL.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_2f1d764c979f3e",
+        "line_ranges": [
+          {
+            "Range": [
+              19,
+              60
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3a74c55f6275f6fbdf62c9",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Range": [
+                  19,
+                  60
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "scripts/execution_validator.py": [
+      {
+        "hash": "s_dc21e0d1941f13::t_743217875de2ff",
+        "line_ranges": [
+          {
+            "Range": [
+              188,
+              251
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3a760d5f6275f6fbdf6339",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Range": [
+                  188,
+                  251
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "hash": "s_dc21e0d1941f13::t_38bcacf84fdd71",
+        "line_ranges": [
+          {
+            "Range": [
+              273,
+              275
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3a762d5f6275f6fbdf633f",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Range": [
+                  273,
+                  275
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "remote_transcripts": {
+    "s_dc21e0d1941f13": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_0481423f71f63a": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_1a8a5ee8eea1ea": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_2f1d764c979f3e": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_38bcacf84fdd71": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_42362d35887fda": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_50dbbf937964e7": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_743217875de2ff": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_8cbdc010b51f39": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_8e54ad543f1b68": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_9c0c764cc67d76": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_bd9f88db7a1e58": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_ea19d8e51f6125": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    }
+  }
+}
