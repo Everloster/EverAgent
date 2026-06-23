@@ -23,15 +23,34 @@ agent_manifest:
 
 ### Git 初始化
 
+> **认证方式**：统一使用 `gh` CLI 的 credential helper。**禁止**把任何 token（包括 `.env` 里的）拼到 `git remote URL` 里——token 一旦出现在 URL 里，shell 输出 / 错误信息 / 日志都会泄露，且无法靠 gh 的 helper 覆盖。
+> `.env` 的 `GITHUB_TOKEN` 仅保留作"token 备份/轮换参考"用途，**不**用于 git 命令行。
+
 ```bash
-GITHUB_TOKEN=$(grep GITHUB_TOKEN .env | cut -d'"' -f2)
-git remote set-url origin https://${GITHUB_TOKEN}@github.com/Everloster/EverAgent.git
-git ls-remote origin HEAD          # 验权，失败则停止
+# 1. 确认 gh 已登录（用户侧一次性的事；CI/无头环境见 gh auth login --with-token）
+gh auth status                          # 检查：应显示 Logged in to github.com
+
+# 2. 用 gh 接管 git 认证（设置 helper，写入 git config，幂等可重复跑）
+gh auth setup-git
+git remote set-url origin https://github.com/Everloster/EverAgent.git   # 标准 URL，不带 token
+
+# 3. 验权 + 设置身份
+git ls-remote origin HEAD               # 验权，失败则停止
 git config user.name "<CURRENT_AGENT_NAME>"         # 由当前运行 AI 自行决定（或设置 EVERAGENT_GIT_NAME）
 git config user.email "<VENDOR_NOREPLY_EMAIL>"      # 供应商 noreply 邮箱（或设置 EVERAGENT_GIT_EMAIL）
 python3 scripts/git_identity.py validate
 # ⚠️ 不得跳过此步骤——pre-commit hook 会拦截 name/email 不匹配或非 noreply 邮箱的提交
 ```
+
+**Push flow**（所有 git 网络命令必须加 `GIT_NO_OPTIONAL_LOCKS=1` 前缀）：
+
+```bash
+GIT_NO_OPTIONAL_LOCKS=1 git fetch origin main
+GIT_NO_OPTIONAL_LOCKS=1 git merge --ff-only FETCH_HEAD
+GIT_NO_OPTIONAL_LOCKS=1 git push origin main
+```
+
+> 如果 push 仍然报 `could not read Password for 'https://…@github.com'`：说明 remote URL 残留旧 token，跑 `git remote set-url origin https://github.com/Everloster/EverAgent.git` 清理后重试。
 
 ---
 
