@@ -185,6 +185,70 @@ def _validate_frontmatter(project: str, report_paths: list[Path]) -> list[Valida
     return issues
 
 
+def _validate_evidence_density(task: TaskEntry, report_paths: list[Path], result: ValidationResult) -> None:
+    fuzzy_phrases = {
+        "显著提升", "显著提高", "显著改善", "大幅提升", "大幅提高", "大幅改善",
+        "研究表明", "实验证明", "结果显示", "多家博客", "有报告称",
+        "state-of-the-art", "sota", "显著差异",
+    }
+    url_pattern = re.compile(r"https?://\S+")
+    precise_number_pattern = re.compile(r"\d+\.\d+|%\s*\)|n\s*=\s*\d+|Table\s+\d|Figure\s+\d|Fig\.\s*\d|p\s*[<=>]\s*0?\.\d+")
+    speculation_markers = ["[推测]", "[待验证]", "[未验证]", "[动物实验]", "[体外实验]", "[初步证据]"]
+
+    for report_path in report_paths:
+        try:
+            content = report_path.read_text(encoding="utf-8")
+        except (OSError, UnicodeDecodeError):
+            continue
+
+        rel = str(report_path.relative_to(ROOT))
+        content_lower = content.lower()
+
+        if task.type == "paper_analysis":
+            precise_count = len(precise_number_pattern.findall(content))
+            if precise_count < 2:
+                result.add_warning(
+                    rel,
+                    f"evidence_density: found only {precise_count} precise numerical citations "
+                    "(expected ≥2: percentages, decimal values, n= counts, Table/Figure refs, p-values)",
+                )
+            fuzzy_count = sum(content.count(phrase) for phrase in fuzzy_phrases)
+            if fuzzy_count > 3 and precise_count < 5:
+                result.add_warning(
+                    rel,
+                    f"evidence_density: {fuzzy_count} fuzzy phrases ('显著提升', '研究表明' etc.) "
+                    f"with only {precise_count} precise numbers",
+                )
+
+        if task.type in {"knowledge_report", "concept_report"}:
+            url_count = len(url_pattern.findall(content))
+            has_speculation_marker = any(marker in content for marker in speculation_markers)
+            recent_year_pattern = re.compile(r"202[4-9]")
+            mentions_recent = bool(recent_year_pattern.search(content))
+            if mentions_recent and url_count == 0:
+                result.add_warning(
+                    rel,
+                    "evidence_density: report mentions 2024+ events but contains 0 URL source citations; "
+                    "post-cutoff claims require WebSearch verification",
+                )
+            fuzzy_count = sum(content.count(phrase) for phrase in fuzzy_phrases)
+            if fuzzy_count > 5 and url_count == 0 and not has_speculation_marker:
+                result.add_warning(
+                    rel,
+                    f"evidence_density: {fuzzy_count} fuzzy/source-free phrases with 0 URLs and no speculation markers",
+                )
+
+        if task.type == "text_analysis":
+            stephanus_refs = len(re.findall(r"[a-z]+\d*[a-c]?|Ch\.\s*\d+|§\s*\d+|p\.\s*\d+", content, re.IGNORECASE))
+            quote_marks = content.count("》") + content.count('"')
+            if stephanus_refs < 2 and quote_marks < 4:
+                result.add_warning(
+                    rel,
+                    "evidence_density: text analysis lacks standard reference markers "
+                    "(Stephanus/Academy numbers, chapter/section, or direct quotations)",
+                )
+
+
 def _validate_expected_updates(task: TaskEntry, project_path: Path, result: ValidationResult) -> None:
     rules = PROJECT_RULES[task.project]
     claimed_at = _parse_iso8601(task.claimed_at)
@@ -205,6 +269,9 @@ def _validate_expected_updates(task: TaskEntry, project_path: Path, result: Vali
             result.add_error(issue.field, issue.message)
         else:
             result.add_warning(issue.field, issue.message)
+
+    if task.type in rules["report_task_types"] and report_paths:
+        _validate_evidence_density(task, report_paths, result)
 
     if rules["requires_papers_index"] and task.type == "paper_analysis":
         papers_index = project_path / "papers" / "PAPERS_INDEX.md"
