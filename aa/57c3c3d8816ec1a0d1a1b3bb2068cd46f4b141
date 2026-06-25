@@ -1,0 +1,2741 @@
+cs-learning/skills/concept_deep_dive/SKILL.md
+  s_dc21e0d1941f13::t_b60161cc2c7a8e 3 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cb0a732c24586f7da06d3","tool_type":"agent","tool_id":"Shell","line_ranges":[{"Single":3}]}]}
+philosophy-learning/wiki/open-questions.md
+  s_dc21e0d1941f13::t_6c32e80dbf90f0 1-17 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cad8232c24586f7da067c","tool_type":"agent","tool_id":"Shell","line_ranges":[{"Range":[1,17]}]}]}
+podcast-learning/AGENTS.md
+  s_dc21e0d1941f13::t_cb9cd049f5c733 1,3-4,8,10,12-17,21,23-25,29,33-35,38-41,45,49,51-53,55 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cae2e32c24586f7da06a0","tool_type":"agent","tool_id":"Write","line_ranges":[{"Single":1},{"Range":[3,4]},{"Single":8},{"Single":10},{"Range":[12,17]},{"Single":21},{"Range":[23,25]},{"Single":29},{"Range":[33,35]},{"Range":[38,41]},{"Single":45},{"Single":49},{"Range":[51,53]},{"Single":55}]}]}
+ai-practice/skills/paper_analysis/SKILL.md
+  s_dc21e0d1941f13::t_b60161cc2c7a8e 3 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cb0a732c24586f7da06d3","tool_type":"agent","tool_id":"Shell","line_ranges":[{"Single":3}]}]}
+philosophy-learning/skills/text_analysis/SKILL.md
+  s_dc21e0d1941f13::t_b60161cc2c7a8e 3 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cb0a732c24586f7da06d3","tool_type":"agent","tool_id":"Shell","line_ranges":[{"Single":3}]}]}
+docs/PROTOCOL_COMMON.md
+  s_dc21e0d1941f13::t_e6365569fb5b1e 26-27,29 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cb05632c24586f7da06c7","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Range":[26,27]},{"Single":29}]}]}
+  s_dc21e0d1941f13::t_e20f0adb68e61d 58,60,63-64,69,71-74,78 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cafe932c24586f7da06b5","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Single":58},{"Single":60},{"Range":[63,64]},{"Single":69},{"Range":[71,74]},{"Single":78}]}]}
+  s_dc21e0d1941f13::t_24eff8df4f4333 3,9,12-13 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cb04232c24586f7da06c4","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Single":3},{"Single":9},{"Range":[12,13]}]}]}
+ai-practice/MAP.md
+  s_dc21e0d1941f13::t_6c32e80dbf90f0 1-29 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cad8232c24586f7da067c","tool_type":"agent","tool_id":"Shell","line_ranges":[{"Range":[1,29]}]}]}
+philosophy-learning/skills/concept_deep_dive/SKILL.md
+  s_dc21e0d1941f13::t_b60161cc2c7a8e 3 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cb0a732c24586f7da06d3","tool_type":"agent","tool_id":"Shell","line_ranges":[{"Single":3}]}]}
+scripts/lint_evidence.py
+  s_dc21e0d1941f13::t_18ef95f9367c9d 1-108 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cacad32c24586f7da0652","tool_type":"agent","tool_id":"Write","line_ranges":[{"Range":[1,108]}]}]}
+ai-practice/AGENTS.md
+  s_dc21e0d1941f13::t_045a96c37c3798 1,3-4,8,10,12-17,21,23-26,30,32-41,44,46,49,52 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cae3d32c24586f7da06a3","tool_type":"agent","tool_id":"Write","line_ranges":[{"Single":1},{"Range":[3,4]},{"Single":8},{"Single":10},{"Range":[12,17]},{"Single":21},{"Range":[23,26]},{"Single":30},{"Range":[32,41]},{"Single":44},{"Single":46},{"Single":49},{"Single":52}]}]}
+biology-learning/MAP.md
+  s_dc21e0d1941f13::t_6c32e80dbf90f0 1-29 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cad8232c24586f7da067c","tool_type":"agent","tool_id":"Shell","line_ranges":[{"Range":[1,29]}]}]}
+podcast-learning/MAP.md
+  s_dc21e0d1941f13::t_6c32e80dbf90f0 1-29 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cad8232c24586f7da067c","tool_type":"agent","tool_id":"Shell","line_ranges":[{"Range":[1,29]}]}]}
+github-trending-analyzer/AGENTS.md
+  s_dc21e0d1941f13::t_1ad1e051896045 138-139 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cae6b32c24586f7da06ac","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Range":[138,139]}]}]}
+biology-learning/skills/paper_analysis/SKILL.md
+  s_dc21e0d1941f13::t_b60161cc2c7a8e 3 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cb0a732c24586f7da06d3","tool_type":"agent","tool_id":"Shell","line_ranges":[{"Single":3}]}]}
+ai-practice/PROFILE.md
+  s_dc21e0d1941f13::t_762c08f12deb26 1-49 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cad7032c24586f7da0679","tool_type":"agent","tool_id":"Write","line_ranges":[{"Range":[1,49]}]}]}
+README.md
+  s_dc21e0d1941f13::t_43ef47829e9f64 3-4,6,14,16,26,28,30,32,35,38,40-42,46,49-59,64,66-69,72-76 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cb00e32c24586f7da06bb","tool_type":"agent","tool_id":"Write","line_ranges":[{"Range":[3,4]},{"Single":6},{"Single":14},{"Single":16},{"Single":26},{"Single":28},{"Single":30},{"Single":32},{"Single":35},{"Single":38},{"Range":[40,42]},{"Single":46},{"Range":[49,59]},{"Single":64},{"Range":[66,69]},{"Range":[72,76]}]}]}
+  s_dc21e0d1941f13::t_3c2004aed61e61 17-25 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cb02832c24586f7da06be","tool_type":"agent","tool_id":"Shell","line_ranges":[{"Range":[17,25]}]}]}
+ai-practice/skills/concept_deep_dive/SKILL.md
+  s_dc21e0d1941f13::t_b60161cc2c7a8e 3 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cb0a732c24586f7da06d3","tool_type":"agent","tool_id":"Shell","line_ranges":[{"Single":3}]}]}
+ai-learning/skills/concept_deep_dive/SKILL.md
+  s_dc21e0d1941f13::t_b60161cc2c7a8e 3 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cb0a732c24586f7da06d3","tool_type":"agent","tool_id":"Shell","line_ranges":[{"Single":3}]}]}
+podcast-learning/CONTEXT.md
+  s_dc21e0d1941f13::t_8fdc1323cfec42 97 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cb13c32c24586f7da06eb","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Single":97}]}]}
+biology-learning/wiki/open-questions.md
+  s_dc21e0d1941f13::t_6c32e80dbf90f0 1-17 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cad8232c24586f7da067c","tool_type":"agent","tool_id":"Shell","line_ranges":[{"Range":[1,17]}]}]}
+biology-learning/PROFILE.md
+  s_dc21e0d1941f13::t_d55e22639ebc18 1-49 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cad3432c24586f7da0670","tool_type":"agent","tool_id":"Write","line_ranges":[{"Range":[1,49]}]}]}
+psychology-learning/skills/concept_deep_dive/SKILL.md
+  s_dc21e0d1941f13::t_b60161cc2c7a8e 3 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cb0a732c24586f7da06d3","tool_type":"agent","tool_id":"Shell","line_ranges":[{"Single":3}]}]}
+cs-learning/wiki/open-questions.md
+  s_dc21e0d1941f13::t_6c32e80dbf90f0 1-17 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cad8232c24586f7da067c","tool_type":"agent","tool_id":"Shell","line_ranges":[{"Range":[1,17]}]}]}
+philosophy-learning/MAP.md
+  s_dc21e0d1941f13::t_6c32e80dbf90f0 1-30 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cad8232c24586f7da067c","tool_type":"agent","tool_id":"Shell","line_ranges":[{"Range":[1,30]}]}]}
+podcast-learning/PROFILE.md
+  s_dc21e0d1941f13::t_682faa6f2de18d 2-9,11-13,15-17,19,23-29,34-40 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cad4232c24586f7da0673","tool_type":"agent","tool_id":"Write","line_ranges":[{"Range":[2,9]},{"Range":[11,13]},{"Range":[15,17]},{"Single":19},{"Range":[23,29]},{"Range":[34,40]}]}]}
+  s_dc21e0d1941f13::t_e77a65e273cdc6 1,10,14,18,20-22,30-33 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cad5d32c24586f7da0676","tool_type":"agent","tool_id":"Write","line_ranges":[{"Single":1},{"Single":10},{"Single":14},{"Single":18},{"Range":[20,22]},{"Range":[30,33]}]}]}
+cs-learning/PROFILE.md
+  s_dc21e0d1941f13::t_4ab9691406fd18 1-52 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cad2532c24586f7da066a","tool_type":"agent","tool_id":"Write","line_ranges":[{"Range":[1,52]}]}]}
+psychology-learning/wiki/open-questions.md
+  s_dc21e0d1941f13::t_6c32e80dbf90f0 1-17 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cad8232c24586f7da067c","tool_type":"agent","tool_id":"Shell","line_ranges":[{"Range":[1,17]}]}]}
+cs-learning/skills/paper_analysis/SKILL.md
+  s_dc21e0d1941f13::t_b60161cc2c7a8e 3 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cb0a732c24586f7da06d3","tool_type":"agent","tool_id":"Shell","line_ranges":[{"Single":3}]}]}
+CLAUDE.md
+  s_dc21e0d1941f13::t_353a75c5587929 3,7,9-12,16,22-25,29,31,33-34,37-39,43,45-46 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cb06a32c24586f7da06ca","tool_type":"agent","tool_id":"Write","line_ranges":[{"Single":3},{"Single":7},{"Range":[9,12]},{"Single":16},{"Range":[22,25]},{"Single":29},{"Single":31},{"Range":[33,34]},{"Range":[37,39]},{"Single":43},{"Range":[45,46]}]}]}
+psychology-learning/skills/paper_analysis/SKILL.md
+  s_dc21e0d1941f13::t_b60161cc2c7a8e 3 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cb0a732c24586f7da06d3","tool_type":"agent","tool_id":"Shell","line_ranges":[{"Single":3}]}]}
+psychology-learning/PROFILE.md
+  s_dc21e0d1941f13::t_e665fc754c29bd 1-50 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cad2f32c24586f7da066d","tool_type":"agent","tool_id":"Write","line_ranges":[{"Range":[1,50]}]}]}
+ai-learning/MAP.md
+  s_dc21e0d1941f13::t_6c32e80dbf90f0 1-29 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cad8232c24586f7da067c","tool_type":"agent","tool_id":"Shell","line_ranges":[{"Range":[1,29]}]}]}
+scripts/reindex.py
+  s_dc21e0d1941f13::t_8699facf5eafe4 1-93 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cac9632c24586f7da064f","tool_type":"agent","tool_id":"Write","line_ranges":[{"Range":[1,93]}]}]}
+cs-learning/MAP.md
+  s_dc21e0d1941f13::t_6c32e80dbf90f0 1-30 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cad8232c24586f7da067c","tool_type":"agent","tool_id":"Shell","line_ranges":[{"Range":[1,30]}]}]}
+ai-practice/wiki/open-questions.md
+  s_dc21e0d1941f13::t_6c32e80dbf90f0 1-17 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cad8232c24586f7da067c","tool_type":"agent","tool_id":"Shell","line_ranges":[{"Range":[1,17]}]}]}
+cs-learning/AGENTS.md
+  s_dc21e0d1941f13::t_00063a92acb411 1,3-4,8,10,12-17,19,23,25-27,31,35,37,45,48-49,52 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cadeb32c24586f7da0694","tool_type":"agent","tool_id":"Write","line_ranges":[{"Single":1},{"Range":[3,4]},{"Single":8},{"Single":10},{"Range":[12,17]},{"Single":19},{"Single":23},{"Range":[25,27]},{"Single":31},{"Single":35},{"Single":37},{"Single":45},{"Range":[48,49]},{"Single":52}]}]}
+biology-learning/AGENTS.md
+  s_dc21e0d1941f13::t_8c47f30037aa61 1,3-4,8,10,12-17,19,23,25-27,31,35,37,45,48-49,52 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cae1032c24586f7da069a","tool_type":"agent","tool_id":"Write","line_ranges":[{"Single":1},{"Range":[3,4]},{"Single":8},{"Single":10},{"Range":[12,17]},{"Single":19},{"Single":23},{"Range":[25,27]},{"Single":31},{"Single":35},{"Single":37},{"Single":45},{"Range":[48,49]},{"Single":52}]}]}
+philosophy-learning/AGENTS.md
+  s_dc21e0d1941f13::t_d3ccd193747827 1,3-4,8,10,12-17,19,23,25-27,31,35,37,45,48-49,52 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cae1f32c24586f7da069d","tool_type":"agent","tool_id":"Write","line_ranges":[{"Single":1},{"Range":[3,4]},{"Single":8},{"Single":10},{"Range":[12,17]},{"Single":19},{"Single":23},{"Range":[25,27]},{"Single":31},{"Single":35},{"Single":37},{"Single":45},{"Range":[48,49]},{"Single":52}]}]}
+podcast-learning/wiki/open-questions.md
+  s_dc21e0d1941f13::t_6c32e80dbf90f0 1-17 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cad8232c24586f7da067c","tool_type":"agent","tool_id":"Shell","line_ranges":[{"Range":[1,17]}]}]}
+biology-learning/skills/concept_deep_dive/SKILL.md
+  s_dc21e0d1941f13::t_b60161cc2c7a8e 3 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cb0a732c24586f7da06d3","tool_type":"agent","tool_id":"Shell","line_ranges":[{"Single":3}]}]}
+ai-practice/skills/experiment_analysis/SKILL.md
+  s_dc21e0d1941f13::t_beefd95dbfe970 5 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cb0dd32c24586f7da06d9","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Single":5}]}]}
+psychology-learning/AGENTS.md
+  s_dc21e0d1941f13::t_dd5623696c2443 1,3-4,8,10,12-17,19,23,25-27,31,35,37,45,48-49,52 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cadf832c24586f7da0697","tool_type":"agent","tool_id":"Write","line_ranges":[{"Single":1},{"Range":[3,4]},{"Single":8},{"Single":10},{"Range":[12,17]},{"Single":19},{"Single":23},{"Range":[25,27]},{"Single":31},{"Single":35},{"Single":37},{"Single":45},{"Range":[48,49]},{"Single":52}]}]}
+psychology-learning/MAP.md
+  s_dc21e0d1941f13::t_6c32e80dbf90f0 1-30 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cad8232c24586f7da067c","tool_type":"agent","tool_id":"Shell","line_ranges":[{"Range":[1,30]}]}]}
+ai-learning/wiki/open-questions.md
+  s_dc21e0d1941f13::t_6c32e80dbf90f0 1-17 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cad8232c24586f7da067c","tool_type":"agent","tool_id":"Shell","line_ranges":[{"Range":[1,17]}]}]}
+ai-learning/skills/paper_analysis/SKILL.md
+  s_dc21e0d1941f13::t_b60161cc2c7a8e 3 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cb0a732c24586f7da06d3","tool_type":"agent","tool_id":"Shell","line_ranges":[{"Single":3}]}]}
+scripts/hooks/pre-commit
+  s_dc21e0d1941f13::t_713ccd197b8049 2-3,10 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cac6032c24586f7da0643","tool_type":"agent","tool_id":"Write","line_ranges":[{"Range":[2,3]},{"Single":10}]}]}
+ai-learning/AGENTS.md
+  s_dc21e0d1941f13::t_81a33dd6447a08 1,3-4,8,10,12-17,19,23,25-27,31,35,37,43,47,50-51,54 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cadc332c24586f7da068e","tool_type":"agent","tool_id":"Write","line_ranges":[{"Single":1},{"Range":[3,4]},{"Single":8},{"Single":10},{"Range":[12,17]},{"Single":19},{"Single":23},{"Range":[25,27]},{"Single":31},{"Single":35},{"Single":37},{"Single":43},{"Single":47},{"Range":[50,51]},{"Single":54}]}]}
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "aa57c3c3d8816ec1a0d1a1b3bb2068cd46f4b141",
+  "prompts": {},
+  "sessions": {
+    "s_dc21e0d1941f13": {
+      "agent_id": {
+        "tool": "trae",
+        "id": "6a2a5b13fb3e804a0c0c7396",
+        "model": "openrouter-3o__max"
+      },
+      "human_author": "trae-openrouter-3o <noreply@trae.cn>"
+    }
+  },
+  "attestation_metadata": {
+    "CLAUDE.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_353a75c5587929",
+        "line_ranges": [
+          {
+            "Single": 3
+          },
+          {
+            "Single": 7
+          },
+          {
+            "Range": [
+              9,
+              12
+            ]
+          },
+          {
+            "Single": 16
+          },
+          {
+            "Range": [
+              22,
+              25
+            ]
+          },
+          {
+            "Single": 29
+          },
+          {
+            "Single": 31
+          },
+          {
+            "Range": [
+              33,
+              34
+            ]
+          },
+          {
+            "Range": [
+              37,
+              39
+            ]
+          },
+          {
+            "Single": 43
+          },
+          {
+            "Range": [
+              45,
+              46
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cb06a32c24586f7da06ca",
+            "tool_type": "agent",
+            "tool_id": "Write",
+            "line_ranges": [
+              {
+                "Single": 3
+              },
+              {
+                "Single": 7
+              },
+              {
+                "Range": [
+                  9,
+                  12
+                ]
+              },
+              {
+                "Single": 16
+              },
+              {
+                "Range": [
+                  22,
+                  25
+                ]
+              },
+              {
+                "Single": 29
+              },
+              {
+                "Single": 31
+              },
+              {
+                "Range": [
+                  33,
+                  34
+                ]
+              },
+              {
+                "Range": [
+                  37,
+                  39
+                ]
+              },
+              {
+                "Single": 43
+              },
+              {
+                "Range": [
+                  45,
+                  46
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "README.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_43ef47829e9f64",
+        "line_ranges": [
+          {
+            "Range": [
+              3,
+              4
+            ]
+          },
+          {
+            "Single": 6
+          },
+          {
+            "Single": 14
+          },
+          {
+            "Single": 16
+          },
+          {
+            "Single": 26
+          },
+          {
+            "Single": 28
+          },
+          {
+            "Single": 30
+          },
+          {
+            "Single": 32
+          },
+          {
+            "Single": 35
+          },
+          {
+            "Single": 38
+          },
+          {
+            "Range": [
+              40,
+              42
+            ]
+          },
+          {
+            "Single": 46
+          },
+          {
+            "Range": [
+              49,
+              59
+            ]
+          },
+          {
+            "Single": 64
+          },
+          {
+            "Range": [
+              66,
+              69
+            ]
+          },
+          {
+            "Range": [
+              72,
+              76
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cb00e32c24586f7da06bb",
+            "tool_type": "agent",
+            "tool_id": "Write",
+            "line_ranges": [
+              {
+                "Range": [
+                  3,
+                  4
+                ]
+              },
+              {
+                "Single": 6
+              },
+              {
+                "Single": 14
+              },
+              {
+                "Single": 16
+              },
+              {
+                "Single": 26
+              },
+              {
+                "Single": 28
+              },
+              {
+                "Single": 30
+              },
+              {
+                "Single": 32
+              },
+              {
+                "Single": 35
+              },
+              {
+                "Single": 38
+              },
+              {
+                "Range": [
+                  40,
+                  42
+                ]
+              },
+              {
+                "Single": 46
+              },
+              {
+                "Range": [
+                  49,
+                  59
+                ]
+              },
+              {
+                "Single": 64
+              },
+              {
+                "Range": [
+                  66,
+                  69
+                ]
+              },
+              {
+                "Range": [
+                  72,
+                  76
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "hash": "s_dc21e0d1941f13::t_3c2004aed61e61",
+        "line_ranges": [
+          {
+            "Range": [
+              17,
+              25
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cb02832c24586f7da06be",
+            "tool_type": "agent",
+            "tool_id": "Shell",
+            "line_ranges": [
+              {
+                "Range": [
+                  17,
+                  25
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ai-learning/AGENTS.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_81a33dd6447a08",
+        "line_ranges": [
+          {
+            "Single": 1
+          },
+          {
+            "Range": [
+              3,
+              4
+            ]
+          },
+          {
+            "Single": 8
+          },
+          {
+            "Single": 10
+          },
+          {
+            "Range": [
+              12,
+              17
+            ]
+          },
+          {
+            "Single": 19
+          },
+          {
+            "Single": 23
+          },
+          {
+            "Range": [
+              25,
+              27
+            ]
+          },
+          {
+            "Single": 31
+          },
+          {
+            "Single": 35
+          },
+          {
+            "Single": 37
+          },
+          {
+            "Single": 43
+          },
+          {
+            "Single": 47
+          },
+          {
+            "Range": [
+              50,
+              51
+            ]
+          },
+          {
+            "Single": 54
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cadc332c24586f7da068e",
+            "tool_type": "agent",
+            "tool_id": "Write",
+            "line_ranges": [
+              {
+                "Single": 1
+              },
+              {
+                "Range": [
+                  3,
+                  4
+                ]
+              },
+              {
+                "Single": 8
+              },
+              {
+                "Single": 10
+              },
+              {
+                "Range": [
+                  12,
+                  17
+                ]
+              },
+              {
+                "Single": 19
+              },
+              {
+                "Single": 23
+              },
+              {
+                "Range": [
+                  25,
+                  27
+                ]
+              },
+              {
+                "Single": 31
+              },
+              {
+                "Single": 35
+              },
+              {
+                "Single": 37
+              },
+              {
+                "Single": 43
+              },
+              {
+                "Single": 47
+              },
+              {
+                "Range": [
+                  50,
+                  51
+                ]
+              },
+              {
+                "Single": 54
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ai-learning/MAP.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_6c32e80dbf90f0",
+        "line_ranges": [
+          {
+            "Range": [
+              1,
+              29
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cad8232c24586f7da067c",
+            "tool_type": "agent",
+            "tool_id": "Shell",
+            "line_ranges": [
+              {
+                "Range": [
+                  1,
+                  29
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ai-learning/skills/concept_deep_dive/SKILL.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_b60161cc2c7a8e",
+        "line_ranges": [
+          {
+            "Single": 3
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cb0a732c24586f7da06d3",
+            "tool_type": "agent",
+            "tool_id": "Shell",
+            "line_ranges": [
+              {
+                "Single": 3
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ai-learning/skills/paper_analysis/SKILL.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_b60161cc2c7a8e",
+        "line_ranges": [
+          {
+            "Single": 3
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cb0a732c24586f7da06d3",
+            "tool_type": "agent",
+            "tool_id": "Shell",
+            "line_ranges": [
+              {
+                "Single": 3
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ai-learning/wiki/open-questions.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_6c32e80dbf90f0",
+        "line_ranges": [
+          {
+            "Range": [
+              1,
+              17
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cad8232c24586f7da067c",
+            "tool_type": "agent",
+            "tool_id": "Shell",
+            "line_ranges": [
+              {
+                "Range": [
+                  1,
+                  17
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ai-practice/AGENTS.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_045a96c37c3798",
+        "line_ranges": [
+          {
+            "Single": 1
+          },
+          {
+            "Range": [
+              3,
+              4
+            ]
+          },
+          {
+            "Single": 8
+          },
+          {
+            "Single": 10
+          },
+          {
+            "Range": [
+              12,
+              17
+            ]
+          },
+          {
+            "Single": 21
+          },
+          {
+            "Range": [
+              23,
+              26
+            ]
+          },
+          {
+            "Single": 30
+          },
+          {
+            "Range": [
+              32,
+              41
+            ]
+          },
+          {
+            "Single": 44
+          },
+          {
+            "Single": 46
+          },
+          {
+            "Single": 49
+          },
+          {
+            "Single": 52
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cae3d32c24586f7da06a3",
+            "tool_type": "agent",
+            "tool_id": "Write",
+            "line_ranges": [
+              {
+                "Single": 1
+              },
+              {
+                "Range": [
+                  3,
+                  4
+                ]
+              },
+              {
+                "Single": 8
+              },
+              {
+                "Single": 10
+              },
+              {
+                "Range": [
+                  12,
+                  17
+                ]
+              },
+              {
+                "Single": 21
+              },
+              {
+                "Range": [
+                  23,
+                  26
+                ]
+              },
+              {
+                "Single": 30
+              },
+              {
+                "Range": [
+                  32,
+                  41
+                ]
+              },
+              {
+                "Single": 44
+              },
+              {
+                "Single": 46
+              },
+              {
+                "Single": 49
+              },
+              {
+                "Single": 52
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ai-practice/MAP.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_6c32e80dbf90f0",
+        "line_ranges": [
+          {
+            "Range": [
+              1,
+              29
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cad8232c24586f7da067c",
+            "tool_type": "agent",
+            "tool_id": "Shell",
+            "line_ranges": [
+              {
+                "Range": [
+                  1,
+                  29
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ai-practice/PROFILE.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_762c08f12deb26",
+        "line_ranges": [
+          {
+            "Range": [
+              1,
+              49
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cad7032c24586f7da0679",
+            "tool_type": "agent",
+            "tool_id": "Write",
+            "line_ranges": [
+              {
+                "Range": [
+                  1,
+                  49
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ai-practice/skills/concept_deep_dive/SKILL.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_b60161cc2c7a8e",
+        "line_ranges": [
+          {
+            "Single": 3
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cb0a732c24586f7da06d3",
+            "tool_type": "agent",
+            "tool_id": "Shell",
+            "line_ranges": [
+              {
+                "Single": 3
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ai-practice/skills/experiment_analysis/SKILL.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_beefd95dbfe970",
+        "line_ranges": [
+          {
+            "Single": 5
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cb0dd32c24586f7da06d9",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Single": 5
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ai-practice/skills/paper_analysis/SKILL.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_b60161cc2c7a8e",
+        "line_ranges": [
+          {
+            "Single": 3
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cb0a732c24586f7da06d3",
+            "tool_type": "agent",
+            "tool_id": "Shell",
+            "line_ranges": [
+              {
+                "Single": 3
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ai-practice/wiki/open-questions.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_6c32e80dbf90f0",
+        "line_ranges": [
+          {
+            "Range": [
+              1,
+              17
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cad8232c24586f7da067c",
+            "tool_type": "agent",
+            "tool_id": "Shell",
+            "line_ranges": [
+              {
+                "Range": [
+                  1,
+                  17
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "biology-learning/AGENTS.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_8c47f30037aa61",
+        "line_ranges": [
+          {
+            "Single": 1
+          },
+          {
+            "Range": [
+              3,
+              4
+            ]
+          },
+          {
+            "Single": 8
+          },
+          {
+            "Single": 10
+          },
+          {
+            "Range": [
+              12,
+              17
+            ]
+          },
+          {
+            "Single": 19
+          },
+          {
+            "Single": 23
+          },
+          {
+            "Range": [
+              25,
+              27
+            ]
+          },
+          {
+            "Single": 31
+          },
+          {
+            "Single": 35
+          },
+          {
+            "Single": 37
+          },
+          {
+            "Single": 45
+          },
+          {
+            "Range": [
+              48,
+              49
+            ]
+          },
+          {
+            "Single": 52
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cae1032c24586f7da069a",
+            "tool_type": "agent",
+            "tool_id": "Write",
+            "line_ranges": [
+              {
+                "Single": 1
+              },
+              {
+                "Range": [
+                  3,
+                  4
+                ]
+              },
+              {
+                "Single": 8
+              },
+              {
+                "Single": 10
+              },
+              {
+                "Range": [
+                  12,
+                  17
+                ]
+              },
+              {
+                "Single": 19
+              },
+              {
+                "Single": 23
+              },
+              {
+                "Range": [
+                  25,
+                  27
+                ]
+              },
+              {
+                "Single": 31
+              },
+              {
+                "Single": 35
+              },
+              {
+                "Single": 37
+              },
+              {
+                "Single": 45
+              },
+              {
+                "Range": [
+                  48,
+                  49
+                ]
+              },
+              {
+                "Single": 52
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "biology-learning/MAP.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_6c32e80dbf90f0",
+        "line_ranges": [
+          {
+            "Range": [
+              1,
+              29
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cad8232c24586f7da067c",
+            "tool_type": "agent",
+            "tool_id": "Shell",
+            "line_ranges": [
+              {
+                "Range": [
+                  1,
+                  29
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "biology-learning/PROFILE.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_d55e22639ebc18",
+        "line_ranges": [
+          {
+            "Range": [
+              1,
+              49
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cad3432c24586f7da0670",
+            "tool_type": "agent",
+            "tool_id": "Write",
+            "line_ranges": [
+              {
+                "Range": [
+                  1,
+                  49
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "biology-learning/skills/concept_deep_dive/SKILL.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_b60161cc2c7a8e",
+        "line_ranges": [
+          {
+            "Single": 3
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cb0a732c24586f7da06d3",
+            "tool_type": "agent",
+            "tool_id": "Shell",
+            "line_ranges": [
+              {
+                "Single": 3
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "biology-learning/skills/paper_analysis/SKILL.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_b60161cc2c7a8e",
+        "line_ranges": [
+          {
+            "Single": 3
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cb0a732c24586f7da06d3",
+            "tool_type": "agent",
+            "tool_id": "Shell",
+            "line_ranges": [
+              {
+                "Single": 3
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "biology-learning/wiki/open-questions.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_6c32e80dbf90f0",
+        "line_ranges": [
+          {
+            "Range": [
+              1,
+              17
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cad8232c24586f7da067c",
+            "tool_type": "agent",
+            "tool_id": "Shell",
+            "line_ranges": [
+              {
+                "Range": [
+                  1,
+                  17
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "cs-learning/AGENTS.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_00063a92acb411",
+        "line_ranges": [
+          {
+            "Single": 1
+          },
+          {
+            "Range": [
+              3,
+              4
+            ]
+          },
+          {
+            "Single": 8
+          },
+          {
+            "Single": 10
+          },
+          {
+            "Range": [
+              12,
+              17
+            ]
+          },
+          {
+            "Single": 19
+          },
+          {
+            "Single": 23
+          },
+          {
+            "Range": [
+              25,
+              27
+            ]
+          },
+          {
+            "Single": 31
+          },
+          {
+            "Single": 35
+          },
+          {
+            "Single": 37
+          },
+          {
+            "Single": 45
+          },
+          {
+            "Range": [
+              48,
+              49
+            ]
+          },
+          {
+            "Single": 52
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cadeb32c24586f7da0694",
+            "tool_type": "agent",
+            "tool_id": "Write",
+            "line_ranges": [
+              {
+                "Single": 1
+              },
+              {
+                "Range": [
+                  3,
+                  4
+                ]
+              },
+              {
+                "Single": 8
+              },
+              {
+                "Single": 10
+              },
+              {
+                "Range": [
+                  12,
+                  17
+                ]
+              },
+              {
+                "Single": 19
+              },
+              {
+                "Single": 23
+              },
+              {
+                "Range": [
+                  25,
+                  27
+                ]
+              },
+              {
+                "Single": 31
+              },
+              {
+                "Single": 35
+              },
+              {
+                "Single": 37
+              },
+              {
+                "Single": 45
+              },
+              {
+                "Range": [
+                  48,
+                  49
+                ]
+              },
+              {
+                "Single": 52
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "cs-learning/MAP.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_6c32e80dbf90f0",
+        "line_ranges": [
+          {
+            "Range": [
+              1,
+              30
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cad8232c24586f7da067c",
+            "tool_type": "agent",
+            "tool_id": "Shell",
+            "line_ranges": [
+              {
+                "Range": [
+                  1,
+                  30
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "cs-learning/PROFILE.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_4ab9691406fd18",
+        "line_ranges": [
+          {
+            "Range": [
+              1,
+              52
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cad2532c24586f7da066a",
+            "tool_type": "agent",
+            "tool_id": "Write",
+            "line_ranges": [
+              {
+                "Range": [
+                  1,
+                  52
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "cs-learning/skills/concept_deep_dive/SKILL.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_b60161cc2c7a8e",
+        "line_ranges": [
+          {
+            "Single": 3
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cb0a732c24586f7da06d3",
+            "tool_type": "agent",
+            "tool_id": "Shell",
+            "line_ranges": [
+              {
+                "Single": 3
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "cs-learning/skills/paper_analysis/SKILL.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_b60161cc2c7a8e",
+        "line_ranges": [
+          {
+            "Single": 3
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cb0a732c24586f7da06d3",
+            "tool_type": "agent",
+            "tool_id": "Shell",
+            "line_ranges": [
+              {
+                "Single": 3
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "cs-learning/wiki/open-questions.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_6c32e80dbf90f0",
+        "line_ranges": [
+          {
+            "Range": [
+              1,
+              17
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cad8232c24586f7da067c",
+            "tool_type": "agent",
+            "tool_id": "Shell",
+            "line_ranges": [
+              {
+                "Range": [
+                  1,
+                  17
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "docs/PROTOCOL_COMMON.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_e6365569fb5b1e",
+        "line_ranges": [
+          {
+            "Range": [
+              26,
+              27
+            ]
+          },
+          {
+            "Single": 29
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cb05632c24586f7da06c7",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Range": [
+                  26,
+                  27
+                ]
+              },
+              {
+                "Single": 29
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "hash": "s_dc21e0d1941f13::t_e20f0adb68e61d",
+        "line_ranges": [
+          {
+            "Single": 58
+          },
+          {
+            "Single": 60
+          },
+          {
+            "Range": [
+              63,
+              64
+            ]
+          },
+          {
+            "Single": 69
+          },
+          {
+            "Range": [
+              71,
+              74
+            ]
+          },
+          {
+            "Single": 78
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cafe932c24586f7da06b5",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Single": 58
+              },
+              {
+                "Single": 60
+              },
+              {
+                "Range": [
+                  63,
+                  64
+                ]
+              },
+              {
+                "Single": 69
+              },
+              {
+                "Range": [
+                  71,
+                  74
+                ]
+              },
+              {
+                "Single": 78
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "hash": "s_dc21e0d1941f13::t_24eff8df4f4333",
+        "line_ranges": [
+          {
+            "Single": 3
+          },
+          {
+            "Single": 9
+          },
+          {
+            "Range": [
+              12,
+              13
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cb04232c24586f7da06c4",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Single": 3
+              },
+              {
+                "Single": 9
+              },
+              {
+                "Range": [
+                  12,
+                  13
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "github-trending-analyzer/AGENTS.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_1ad1e051896045",
+        "line_ranges": [
+          {
+            "Range": [
+              138,
+              139
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cae6b32c24586f7da06ac",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Range": [
+                  138,
+                  139
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "philosophy-learning/AGENTS.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_d3ccd193747827",
+        "line_ranges": [
+          {
+            "Single": 1
+          },
+          {
+            "Range": [
+              3,
+              4
+            ]
+          },
+          {
+            "Single": 8
+          },
+          {
+            "Single": 10
+          },
+          {
+            "Range": [
+              12,
+              17
+            ]
+          },
+          {
+            "Single": 19
+          },
+          {
+            "Single": 23
+          },
+          {
+            "Range": [
+              25,
+              27
+            ]
+          },
+          {
+            "Single": 31
+          },
+          {
+            "Single": 35
+          },
+          {
+            "Single": 37
+          },
+          {
+            "Single": 45
+          },
+          {
+            "Range": [
+              48,
+              49
+            ]
+          },
+          {
+            "Single": 52
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cae1f32c24586f7da069d",
+            "tool_type": "agent",
+            "tool_id": "Write",
+            "line_ranges": [
+              {
+                "Single": 1
+              },
+              {
+                "Range": [
+                  3,
+                  4
+                ]
+              },
+              {
+                "Single": 8
+              },
+              {
+                "Single": 10
+              },
+              {
+                "Range": [
+                  12,
+                  17
+                ]
+              },
+              {
+                "Single": 19
+              },
+              {
+                "Single": 23
+              },
+              {
+                "Range": [
+                  25,
+                  27
+                ]
+              },
+              {
+                "Single": 31
+              },
+              {
+                "Single": 35
+              },
+              {
+                "Single": 37
+              },
+              {
+                "Single": 45
+              },
+              {
+                "Range": [
+                  48,
+                  49
+                ]
+              },
+              {
+                "Single": 52
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "philosophy-learning/MAP.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_6c32e80dbf90f0",
+        "line_ranges": [
+          {
+            "Range": [
+              1,
+              30
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cad8232c24586f7da067c",
+            "tool_type": "agent",
+            "tool_id": "Shell",
+            "line_ranges": [
+              {
+                "Range": [
+                  1,
+                  30
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "philosophy-learning/skills/concept_deep_dive/SKILL.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_b60161cc2c7a8e",
+        "line_ranges": [
+          {
+            "Single": 3
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cb0a732c24586f7da06d3",
+            "tool_type": "agent",
+            "tool_id": "Shell",
+            "line_ranges": [
+              {
+                "Single": 3
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "philosophy-learning/skills/text_analysis/SKILL.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_b60161cc2c7a8e",
+        "line_ranges": [
+          {
+            "Single": 3
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cb0a732c24586f7da06d3",
+            "tool_type": "agent",
+            "tool_id": "Shell",
+            "line_ranges": [
+              {
+                "Single": 3
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "philosophy-learning/wiki/open-questions.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_6c32e80dbf90f0",
+        "line_ranges": [
+          {
+            "Range": [
+              1,
+              17
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cad8232c24586f7da067c",
+            "tool_type": "agent",
+            "tool_id": "Shell",
+            "line_ranges": [
+              {
+                "Range": [
+                  1,
+                  17
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "podcast-learning/AGENTS.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_cb9cd049f5c733",
+        "line_ranges": [
+          {
+            "Single": 1
+          },
+          {
+            "Range": [
+              3,
+              4
+            ]
+          },
+          {
+            "Single": 8
+          },
+          {
+            "Single": 10
+          },
+          {
+            "Range": [
+              12,
+              17
+            ]
+          },
+          {
+            "Single": 21
+          },
+          {
+            "Range": [
+              23,
+              25
+            ]
+          },
+          {
+            "Single": 29
+          },
+          {
+            "Range": [
+              33,
+              35
+            ]
+          },
+          {
+            "Range": [
+              38,
+              41
+            ]
+          },
+          {
+            "Single": 45
+          },
+          {
+            "Single": 49
+          },
+          {
+            "Range": [
+              51,
+              53
+            ]
+          },
+          {
+            "Single": 55
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cae2e32c24586f7da06a0",
+            "tool_type": "agent",
+            "tool_id": "Write",
+            "line_ranges": [
+              {
+                "Single": 1
+              },
+              {
+                "Range": [
+                  3,
+                  4
+                ]
+              },
+              {
+                "Single": 8
+              },
+              {
+                "Single": 10
+              },
+              {
+                "Range": [
+                  12,
+                  17
+                ]
+              },
+              {
+                "Single": 21
+              },
+              {
+                "Range": [
+                  23,
+                  25
+                ]
+              },
+              {
+                "Single": 29
+              },
+              {
+                "Range": [
+                  33,
+                  35
+                ]
+              },
+              {
+                "Range": [
+                  38,
+                  41
+                ]
+              },
+              {
+                "Single": 45
+              },
+              {
+                "Single": 49
+              },
+              {
+                "Range": [
+                  51,
+                  53
+                ]
+              },
+              {
+                "Single": 55
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "podcast-learning/CONTEXT.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_8fdc1323cfec42",
+        "line_ranges": [
+          {
+            "Single": 97
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cb13c32c24586f7da06eb",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Single": 97
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "podcast-learning/MAP.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_6c32e80dbf90f0",
+        "line_ranges": [
+          {
+            "Range": [
+              1,
+              29
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cad8232c24586f7da067c",
+            "tool_type": "agent",
+            "tool_id": "Shell",
+            "line_ranges": [
+              {
+                "Range": [
+                  1,
+                  29
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "podcast-learning/PROFILE.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_682faa6f2de18d",
+        "line_ranges": [
+          {
+            "Range": [
+              2,
+              9
+            ]
+          },
+          {
+            "Range": [
+              11,
+              13
+            ]
+          },
+          {
+            "Range": [
+              15,
+              17
+            ]
+          },
+          {
+            "Single": 19
+          },
+          {
+            "Range": [
+              23,
+              29
+            ]
+          },
+          {
+            "Range": [
+              34,
+              40
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cad4232c24586f7da0673",
+            "tool_type": "agent",
+            "tool_id": "Write",
+            "line_ranges": [
+              {
+                "Range": [
+                  2,
+                  9
+                ]
+              },
+              {
+                "Range": [
+                  11,
+                  13
+                ]
+              },
+              {
+                "Range": [
+                  15,
+                  17
+                ]
+              },
+              {
+                "Single": 19
+              },
+              {
+                "Range": [
+                  23,
+                  29
+                ]
+              },
+              {
+                "Range": [
+                  34,
+                  40
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "hash": "s_dc21e0d1941f13::t_e77a65e273cdc6",
+        "line_ranges": [
+          {
+            "Single": 1
+          },
+          {
+            "Single": 10
+          },
+          {
+            "Single": 14
+          },
+          {
+            "Single": 18
+          },
+          {
+            "Range": [
+              20,
+              22
+            ]
+          },
+          {
+            "Range": [
+              30,
+              33
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cad5d32c24586f7da0676",
+            "tool_type": "agent",
+            "tool_id": "Write",
+            "line_ranges": [
+              {
+                "Single": 1
+              },
+              {
+                "Single": 10
+              },
+              {
+                "Single": 14
+              },
+              {
+                "Single": 18
+              },
+              {
+                "Range": [
+                  20,
+                  22
+                ]
+              },
+              {
+                "Range": [
+                  30,
+                  33
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "podcast-learning/wiki/open-questions.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_6c32e80dbf90f0",
+        "line_ranges": [
+          {
+            "Range": [
+              1,
+              17
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cad8232c24586f7da067c",
+            "tool_type": "agent",
+            "tool_id": "Shell",
+            "line_ranges": [
+              {
+                "Range": [
+                  1,
+                  17
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "psychology-learning/AGENTS.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_dd5623696c2443",
+        "line_ranges": [
+          {
+            "Single": 1
+          },
+          {
+            "Range": [
+              3,
+              4
+            ]
+          },
+          {
+            "Single": 8
+          },
+          {
+            "Single": 10
+          },
+          {
+            "Range": [
+              12,
+              17
+            ]
+          },
+          {
+            "Single": 19
+          },
+          {
+            "Single": 23
+          },
+          {
+            "Range": [
+              25,
+              27
+            ]
+          },
+          {
+            "Single": 31
+          },
+          {
+            "Single": 35
+          },
+          {
+            "Single": 37
+          },
+          {
+            "Single": 45
+          },
+          {
+            "Range": [
+              48,
+              49
+            ]
+          },
+          {
+            "Single": 52
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cadf832c24586f7da0697",
+            "tool_type": "agent",
+            "tool_id": "Write",
+            "line_ranges": [
+              {
+                "Single": 1
+              },
+              {
+                "Range": [
+                  3,
+                  4
+                ]
+              },
+              {
+                "Single": 8
+              },
+              {
+                "Single": 10
+              },
+              {
+                "Range": [
+                  12,
+                  17
+                ]
+              },
+              {
+                "Single": 19
+              },
+              {
+                "Single": 23
+              },
+              {
+                "Range": [
+                  25,
+                  27
+                ]
+              },
+              {
+                "Single": 31
+              },
+              {
+                "Single": 35
+              },
+              {
+                "Single": 37
+              },
+              {
+                "Single": 45
+              },
+              {
+                "Range": [
+                  48,
+                  49
+                ]
+              },
+              {
+                "Single": 52
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "psychology-learning/MAP.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_6c32e80dbf90f0",
+        "line_ranges": [
+          {
+            "Range": [
+              1,
+              30
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cad8232c24586f7da067c",
+            "tool_type": "agent",
+            "tool_id": "Shell",
+            "line_ranges": [
+              {
+                "Range": [
+                  1,
+                  30
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "psychology-learning/PROFILE.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_e665fc754c29bd",
+        "line_ranges": [
+          {
+            "Range": [
+              1,
+              50
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cad2f32c24586f7da066d",
+            "tool_type": "agent",
+            "tool_id": "Write",
+            "line_ranges": [
+              {
+                "Range": [
+                  1,
+                  50
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "psychology-learning/skills/concept_deep_dive/SKILL.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_b60161cc2c7a8e",
+        "line_ranges": [
+          {
+            "Single": 3
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cb0a732c24586f7da06d3",
+            "tool_type": "agent",
+            "tool_id": "Shell",
+            "line_ranges": [
+              {
+                "Single": 3
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "psychology-learning/skills/paper_analysis/SKILL.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_b60161cc2c7a8e",
+        "line_ranges": [
+          {
+            "Single": 3
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cb0a732c24586f7da06d3",
+            "tool_type": "agent",
+            "tool_id": "Shell",
+            "line_ranges": [
+              {
+                "Single": 3
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "psychology-learning/wiki/open-questions.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_6c32e80dbf90f0",
+        "line_ranges": [
+          {
+            "Range": [
+              1,
+              17
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cad8232c24586f7da067c",
+            "tool_type": "agent",
+            "tool_id": "Shell",
+            "line_ranges": [
+              {
+                "Range": [
+                  1,
+                  17
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "scripts/hooks/pre-commit": [
+      {
+        "hash": "s_dc21e0d1941f13::t_713ccd197b8049",
+        "line_ranges": [
+          {
+            "Range": [
+              2,
+              3
+            ]
+          },
+          {
+            "Single": 10
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cac6032c24586f7da0643",
+            "tool_type": "agent",
+            "tool_id": "Write",
+            "line_ranges": [
+              {
+                "Range": [
+                  2,
+                  3
+                ]
+              },
+              {
+                "Single": 10
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "scripts/lint_evidence.py": [
+      {
+        "hash": "s_dc21e0d1941f13::t_18ef95f9367c9d",
+        "line_ranges": [
+          {
+            "Range": [
+              1,
+              108
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cacad32c24586f7da0652",
+            "tool_type": "agent",
+            "tool_id": "Write",
+            "line_ranges": [
+              {
+                "Range": [
+                  1,
+                  108
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "scripts/reindex.py": [
+      {
+        "hash": "s_dc21e0d1941f13::t_8699facf5eafe4",
+        "line_ranges": [
+          {
+            "Range": [
+              1,
+              93
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cac9632c24586f7da064f",
+            "tool_type": "agent",
+            "tool_id": "Write",
+            "line_ranges": [
+              {
+                "Range": [
+                  1,
+                  93
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "remote_transcripts": {
+    "s_dc21e0d1941f13": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_00063a92acb411": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_045a96c37c3798": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_18ef95f9367c9d": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_1ad1e051896045": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_24eff8df4f4333": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_353a75c5587929": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_3c2004aed61e61": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_43ef47829e9f64": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_4ab9691406fd18": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_682faa6f2de18d": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_6c32e80dbf90f0": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_713ccd197b8049": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_762c08f12deb26": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_81a33dd6447a08": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_8699facf5eafe4": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_8c47f30037aa61": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_8fdc1323cfec42": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_b60161cc2c7a8e": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_beefd95dbfe970": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_cb9cd049f5c733": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_d3ccd193747827": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_d55e22639ebc18": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_dd5623696c2443": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_e20f0adb68e61d": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_e4ef8baea1ee3c": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_e6365569fb5b1e": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_e665fc754c29bd": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_e77a65e273cdc6": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    }
+  }
+}
