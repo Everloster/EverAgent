@@ -54,17 +54,31 @@ python3 github-trending-analyzer/trending_fetcher.py check {owner}/{repo}
 
 **Step 3 — 逐 repo 深度研究**（仅 needs_update=true 的 repo）
 
-调用 `github-deep-research` 技能，**4 轮研究**：
+调用 `github-deep-research` 技能，**4 轮研究，每轮有强制产出物**（详见 [`github-deep-research/SKILL.md`](github-deep-research/SKILL.md)）：
+
 ```bash
-# Round 1: GitHub API 基础数据
+# Round 1 — 元数据
 python3 github-deep-research/scripts/github_api.py {owner} {repo} summary
 python3 github-deep-research/scripts/github_api.py {owner} {repo} readme
 python3 github-deep-research/scripts/github_api.py {owner} {repo} contributors
 python3 github-deep-research/scripts/github_api.py {owner} {repo} releases
-python3 github-deep-research/scripts/github_api.py {owner} {repo} issues
+python3 github-deep-research/scripts/github_api.py {owner} {repo} tree
 
-# Round 2-4: web_search + web_fetch（见 github-deep-research/SKILL.md）
+# Round 2 — 读代码（强制）：依赖清单 + 2-5 个核心源文件
+python3 github-deep-research/scripts/github_api.py {owner} {repo} file package.json
+
+# Round 3 — 竞品核验（强制）：web 搜索竞品 → gh 拉真实 stars/license/pushed
+gh api -X GET repos/{competitor} --jq '"stars=\(.stargazers_count) | license=\(.license.spdx_id)"'
+
+# Round 4 — 量化信号：提交曲线 + issue 响应
+python3 github-deep-research/scripts/github_api.py {owner} {repo} commit_activity
 ```
+
+研究质量底线（缺一即视为 README 复述，需补做）：
+- **技术分析**章 ≥1 处 `[代码]` 证据（来自真实源文件，非 README 措辞）
+- **竞品对比**表的 stars/协议为 `gh` 实测值，禁止凭记忆
+- **社区活跃度/发展趋势**章 ≥1 个量化结论（提交曲线 / issue 响应）
+- 关键结论就地标注证据等级（`[代码]`/`[API]`/`[Web]`/`[推测]`）
 
 研究完成后，将结果转换为 **7 章中文格式**，直接写入：
 ```

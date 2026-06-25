@@ -27,6 +27,7 @@
 - alibaba/page-agent
 - alibaba/zvec
 - alirezarezvani/claude-skills
+- andreknieriem/headunit-revived
 - aquasecurity/trivy
 - asgeirtj/system_prompts_leaks
 - AstrBotDevs/AstrBot
@@ -93,6 +94,7 @@
 - sherlock-project/sherlock
 - sickn33/antigravity-awesome-skills
 - siddharthvaddem/openscreen
+- stablyai/orca
 - supermemoryai/supermemory
 - swc-project/swc
 - systemd/systemd
