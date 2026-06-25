@@ -1,9 +1,0 @@
-event_id: evt_20260513_095024820788_018
-type: lock_released
-timestamp: 2026-05-13T09:50:24+00:00
-actor: EverAgent
-project: ai-practice
-task_id: T057
-message_id: <evt_20260513_095024820788_018@everagent.local>
-payload:
-  force: false

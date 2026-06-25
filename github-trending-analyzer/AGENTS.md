@@ -135,11 +135,10 @@ Repo 报告： github-trending-reports/research_{owner}_{repo}.md
 
 ```
 [commit 前必须运行]
-python3 scripts/execution_validator.py --mode=output --project=github-trending-analyzer
-   → 校验失败则不 commit，修复后重试
+python3 github-trending-analyzer/scripts/validate_reports.py {owner}/{repo}
+   → 校验失败则不 commit，修复后重试（8 项检查见 §2）
 ```
 
-> 校验脚本参考：docs/EXECUTION_SCHEMA.md（TrendAgent 同时使用 scripts/validate_reports.py 的 8 项检查）
 
 ---
 

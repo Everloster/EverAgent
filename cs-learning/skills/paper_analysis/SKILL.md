@@ -1,6 +1,6 @@
 # CS 论文深度分析技能
 
-> 基于通用模板：[SKILL_TEMPLATES.md](../../docs/SKILL_TEMPLATES.md) · 模板 A
+> 通用研究方法论与输出框架见根 [METHODOLOGY.md](../../METHODOLOGY.md)（强制）。本文件为领域特化部分。
 > 本文件为领域特化版本，增加了以下专属模块：正确性论证、复杂性分析、工程 trade-off
 
 > 7步分析法：从摘要到影响，系统解读CS经典论文

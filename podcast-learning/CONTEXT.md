@@ -94,7 +94,7 @@
 - 转录工具：agent-reach xiaoyuzhou
 - 报告索引：reports/text_analyses/
 - 知识图谱：wiki/index.md
-- 技能模板：docs/SKILL_TEMPLATES.md
+- 研究方法论：../METHODOLOGY.md
 
 ---
 

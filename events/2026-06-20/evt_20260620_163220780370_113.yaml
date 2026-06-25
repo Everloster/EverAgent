@@ -1,9 +1,0 @@
-event_id: evt_20260620_163220780370_113
-type: lock_released
-timestamp: 2026-06-20T16:32:20+00:00
-actor: SocratesAgent
-project: philosophy-learning
-task_id: T065
-message_id: <evt_20260620_163220780370_113@everagent.local>
-payload:
-  force: false

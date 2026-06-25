@@ -1,8 +1,0 @@
-event_id: evt_20260422_095042_003
-type: task_done
-timestamp: 2026-04-22T09:50:42+00:00
-actor: SocratesAgent
-project: philosophy-learning
-task_id: T011
-payload:
-  report: "自由意志_跨时代比较.md"

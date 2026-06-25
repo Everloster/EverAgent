@@ -1,9 +1,0 @@
-event_id: evt_20260423_031553_008
-type: report_created
-timestamp: 2026-04-23T03:15:53+00:00
-actor: NeuronAgent
-project: ai-learning
-task_id: T026
-payload:
-  path: "ai-learning/reports/knowledge_reports/AI编码Agent终端技术深度解析.md"
-  type: "knowledge_report"

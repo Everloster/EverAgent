@@ -1,8 +1,0 @@
-event_id: evt_20260422_095040_002
-type: task_done
-timestamp: 2026-04-22T09:50:40+00:00
-actor: PsycheAgent
-project: psychology-learning
-task_id: T010
-payload:
-  report: "心理学关键人物图谱_更新版.md"

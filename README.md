@@ -1,9 +1,9 @@
 # 🧠 EverAgent — 个人学习与研究工作台
 
-> 用 AI Agent 驱动的个人知识体系，覆盖 AI 技术、计算机科学、哲学思想、心理学、生命科学与开源生态
-> 创建日期：2026-03-23 | 最后更新：2026-04-28（新增 EverAgent 项目海报）
+> 用 AI Agent 驱动的个人知识库：AI 帮我快速研究一个新领域/概念，产出高质量报告，我抽空阅读。
+> 覆盖 AI 技术、计算机科学、哲学、心理学、生物学、ML 工程、播客与开源生态。
 
-> **AI/Agent 使用本仓库？** → 请直接阅读 [AGENTS.md](./AGENTS.md)，本文件供人类阅读。
+> **AI 使用本仓库？** → 先读 [AGENTS.md](./AGENTS.md) 与 [METHODOLOGY.md](./METHODOLOGY.md)，本文件供人类阅读。
 
 ![EverAgent launch poster](./docs/assets/everagent-launch-poster.png)
 
@@ -11,116 +11,69 @@
 
 ## 项目全景
 
-<!--
-NOTE: The project overview table below is generated.
-Refresh it via: python3 scripts/task_board_aggregator.py --sync-readme
--->
+> 下表由 `python3 scripts/reindex.py` 自动生成。
 
-<!-- PROJECT_OVERVIEW:START -->
-EverAgent 是以 AI Agent 为核心工具的个人知识库，通过系统化学习路径、深度分析报告和自动化工具，将学习从"被动积累"变为"主动建构"。目前包含 **8 个子项目**：
-
-| 项目 | 领域 | 报告量 | Wiki 页面 | 状态 |
-|------|------|--------|-----------|------|
-| [🤖 AI Learning](./ai-learning/README.md) | AI/ML 论文精读·技术报告 | 40 篇精读/文本 + 31 篇知识/概念报告 | 28 entities · 35 concepts | 🟢 |
-| [💻 CS Learning](./cs-learning/README.md) | 计算机科学·系统·算法 | 24 篇精读/文本 + 6 篇知识/概念报告 | 13 entities · 22 concepts | 🟢 |
-| [📚 Philosophy Learning](./philosophy-learning/README.md) | 世界哲学·文本分析（含中国哲学） | 13 篇精读/文本 + 3 篇知识/概念报告 | 11 entities · 14 concepts | 🟡 |
-| [🧠 Psychology Learning](./psychology-learning/README.md) | 心理学·经典实验 | 12 篇精读/文本 + 4 篇知识/概念报告 | 12 entities · 12 concepts | 🟢 |
-| [🧬 Biology Learning](./biology-learning/README.md) | 时间生物学·睡眠·运动生理 | 11 篇精读/文本 + 4 篇知识/概念报告 | 9 entities · 11 concepts | 🟡 |
-| [📈 GitHub Trending Analyzer](./github-trending-analyzer/README.md) | 开源热点·Repo 知识库 | 74 篇 Repo 报告 + 10 篇汇总报告 | — | 🟢 |
-| [⚗️ AI Practice](./ai-practice/README.md) | ML 工程·代码实验·模型训练 | 7 篇教学笔记 | 1 entities · 9 concepts | 🟢 |
-| [🎙️ Podcast Learning](./podcast-learning/README.md) | 播客内容学习与知识提取 | 1 篇文本 + 0 篇知识/概念报告 | 2 entities · 5 concepts | 🟢 |
-<!-- PROJECT_OVERVIEW:END -->
+<!-- AUTO-OVERVIEW:START -->
+| 项目 | 报告 | Wiki(概念/实体/综合) |
+|------|------|----------------------|
+| 🤖 [AI Learning](./ai-learning/) | 77 篇 | 38/28/1 |
+| 💻 [CS Learning](./cs-learning/) | 32 篇 | 24/17/1 |
+| 📚 [Philosophy Learning](./philosophy-learning/) | 18 篇 | 16/14/0 |
+| 🧠 [Psychology Learning](./psychology-learning/) | 17 篇 | 13/13/0 |
+| 🧬 [Biology Learning](./biology-learning/) | 16 篇 | 12/9/0 |
+| ⚗️ [AI Practice](./ai-practice/) | 0 篇 | 9/1/0 |
+| 🎙️ [Podcast Learning](./podcast-learning/) | 3 篇 | 15/13/0 |
+<!-- AUTO-OVERVIEW:END -->
 
 ---
 
-## 工作区校验
+## 核心理念
 
-仓库已提供一个轻量级校验脚本，用来检查：
+这是一个**知识库**，不是任务管理系统。工作循环很简单：
 
-- 学习型子项目报告的 YAML frontmatter 是否完整
-- `README.md` / `CONTEXT.md` 中的相对链接是否可达
-- 各项目 `skills` 是否回链到共享模板
-- 仓库里是否残留 `.DS_Store` 之类的卫生问题
-
-运行方式：
-
-```bash
-# 全局校验（pre-commit）
-python3 scripts/validate_workspace.py
-
-# 一键自检（校验 + 执行协议自检 + 聚合器 dry-run）
-python3 scripts/everagent.py doctor
-
-# 巡检 registry / task / lock 是否漂移
-python3 scripts/everagent.py audit
-
-# 安全对账：同步视图，并按需清理超时任务
-python3 scripts/everagent.py reconcile
-python3 scripts/everagent.py reconcile --abandon-stale
-
-# 自进化引擎：分析执行数据，输出优化建议（只读，不创建任务）
-python3 scripts/everagent.py evolve --days 7
-
-# 实时 Dashboard：Web 可视化任务状态与事件流
-python3 scripts/everagent.py dashboard --port 8080
-
-# 安装本仓库 pre-commit hook（可选）
-python3 scripts/everagent.py hooks install
-
-# 清理超时任务（先巡检，再按需落地 abandon）
-python3 scripts/everagent.py sweep-stale-tasks
-python3 scripts/everagent.py sweep-stale-tasks --apply
-
-# 任务执行校验（Agent 在领取/完成任务时调用）
-python3 scripts/execution_validator.py --mode=input --task-id=T001    # 领取前
-python3 scripts/execution_validator.py --mode=output --task-id=T001   # 完成后
+```
+我："帮我学 X"  →  AI 研究并归档  →  我抽空读报告  →  有新问题继续问  →  循环
 ```
 
-### Task Board 汇总
+三个支撑：
 
-Task Board 视图由 `scripts/task_board_aggregator.py` 自动生成：
+1. **方法论**（[METHODOLOGY.md](./METHODOLOGY.md)）— 先规定怎么读、怎么查、怎么验证，再谈输出。这是真正的核心：让 AI 真读原文、标注证据、不编造。
+2. **知识层** — 每个领域的 `reports/`（我读的东西）+ `wiki/`（概念/实体/综合/未解问题的索引）。
+3. **画像层** — 每个领域的 `PROFILE.md`（我会什么、偏好什么）+ `MAP.md`（覆盖与缺口），让 AI 不重复讲我会的、知道下一步学什么。
 
-```bash
-python3 scripts/task_board_aggregator.py --dry-run   # 预览
-python3 scripts/task_board_aggregator.py              # 生成视图
+---
+
+## 每个领域的结构
+
 ```
-
-### 新项目创建
-
-新增子项目可通过自动化脚本创建：
-
-```bash
-python3 scripts/create_project.py --project={name} --domain={domain} --agent-name={AgentName}
+{domain}-learning/
+├── AGENTS.md          # 领域边界 + 特化要求
+├── PROFILE.md         # 学习者画像（兴趣/水平/偏好/追问队列）
+├── MAP.md             # 领域地图（想覆盖什么、已覆盖什么、缺口）
+├── reports/           # 报告产出
+├── wiki/
+│   ├── concepts/      # 核心概念页
+│   ├── entities/      # 人物/机构/模型页
+│   ├── syntheses/     # 跨报告综合理解
+│   └── open-questions.md  # 未解问题池（持续学习的拉力）
+└── skills/            # 领域特化研究模板
 ```
 
 ---
 
-## Wiki 知识网络
+## 工具
 
-每个学习子项目内置 `wiki/` 层，采用 **Karpathy 持久化 Wiki 模式**——每次摄入新报告后自动更新，形成跨报告的知识图谱：
-
+```bash
+python3 scripts/reindex.py                    # 刷新本 README 的报告/wiki 计数
+python3 scripts/lint_evidence.py --domain ai-learning   # 证据密度自检（非阻塞）
+python3 scripts/git_identity.py validate      # 提交身份校验
 ```
-{project}/wiki/
-├── index.md       ← 内容目录，每次 ingest 后更新
-├── log.md         ← 追加式操作日志
-├── entities/      ← 人物 / 机构页面
-├── concepts/      ← 核心概念与技术页面
-└── syntheses/     ← 多概念合成查询归档
-```
-
-> Wiki 是报告的"索引层"：想快速定位某个概念或人物，先读 `wiki/index.md`，再深入对应报告。
 
 ---
 
-## 整体学习理念
+## 版本说明
 
-七个项目共享同一套底层方法论：
-
-```
-提问  →  深度研究  →  结构化输出  →  持续迭代
-```
-
-能随时间积累的深度，才是真正的竞争力。
+EverAgent 2.0（知识优先架构）。早期的多 Agent 编排框架（任务状态机、项目锁、事件溯源、Dashboard、自进化引擎）已归档到 `legacy-v1-multiagent` 分支——单用户学习场景不需要那套机器。
 
 ---
 

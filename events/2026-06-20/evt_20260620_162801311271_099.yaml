@@ -1,9 +1,0 @@
-event_id: evt_20260620_162801311271_099
-type: lock_released
-timestamp: 2026-06-20T16:28:01+00:00
-actor: PsycheAgent
-project: psychology-learning
-task_id: T066
-message_id: <evt_20260620_162801311271_099@everagent.local>
-payload:
-  force: false

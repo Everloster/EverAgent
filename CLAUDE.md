@@ -1,103 +1,49 @@
 ## EverAgent CLAUDE.md
 ## Layered on top of ~/.claude/CLAUDE.md (global rules)
-## This file only contains PROJECT-SPECIFIC rules. Do not duplicate global rules.
+## Project-specific rules only. Do not duplicate global rules.
 
 ---
 
-## Mode Router
+## 定位
 
-```
-Working on github-trending-analyzer/ ? -> Coding Mode
-Running multi-agent workflow per AGENTS.md ? -> Agent Execution Mode
-Everything else (learning subprojects) -> Analysis Mode (default)
-```
+EverAgent 是个人学习知识库。默认所有工作都是「分析模式」：研究一个主题、产出高质量报告。
+完整协议见 [AGENTS.md](./AGENTS.md)，研究方法论见 [METHODOLOGY.md](./METHODOLOGY.md)。
+
+例外：`github-trending-analyzer/` 是自动化工具项目，按其自身 AGENTS.md 工作。
 
 ---
 
-## Analysis Mode (Default - all learning subprojects)
+## Analysis Mode（默认 · 所有学习领域）
 
 - Lead with the finding. Context and methodology after.
 - Every numerical claim must include source or derivation. No silent estimation.
 - When uncertain, state confidence explicitly: "likely", "unclear from the text", "insufficient data".
 - Never fabricate data, statistics, author claims, or experiment results.
-- Distinguish observed facts from inferences - label inferences explicitly.
-- Report format: summary (<=3 bullets) -> supporting data -> limitations. In that order.
-- Do not round aggressively. Preserve meaningful precision from source.
-
-### Paper Analysis Rules
-- All reports must include complete YAML frontmatter: title, domain, report_type, status, updated_on.
-- Follow the 7-step analysis template defined in `docs/SKILL_TEMPLATES.md`. If that file is missing or outdated, fall back to the per-project `skills/paper_analysis/SKILL.md`.
-- Before modifying any report, read the subproject's CONTEXT.md first.
-- Do not cross-reference content between subprojects unless explicitly asked.
+- Distinguish observed facts from inferences — label inferences explicitly.
+- 报告必须遵守 METHODOLOGY.md：真读原文、证据分级标注、知识截止日期处理、结尾「思考与追问」三问。
+- 报告必须带完整 frontmatter（title, domain, report_type, status, updated_on）。
+- 写报告前先读该领域的 PROFILE.md / MAP.md / wiki，避免重复已掌握的内容。
 
 ---
 
-## Coding Mode (github-trending-analyzer only)
+## Git Identity & Commit
 
-- Only handle errors for realistic failure scenarios.
-- No additional rules beyond global ~/.claude/CLAUDE.md.
-
----
-
-## Agent Execution Mode (multi-agent workflows per AGENTS.md)
-
-- Output must be structured and parseable without post-processing (JSON, bullets, tables).
-- Execute tasks without narration. Skip confirmations for clearly defined tasks.
-- On failure: state failure reason and last attempted action, then stop. Do not retry silently.
-- One subproject per agent session. Do not operate across subprojects concurrently.
-- All string output must be JSON-serializable (ASCII only, no smart quotes or unicode).
-
----
-
-## Git Identity & Commit Rules
-
-- **Identity guard**: Before the first commit in any session, set git author to the current model name and noreply email:
+- 首次提交前设置身份并校验：
   ```bash
-  git config user.name "GPT-5 Codex"           # replace with actual running model name, or set EVERAGENT_GIT_NAME
-  git config user.email "noreply@openai.com"   # replace with the current vendor noreply email, or set EVERAGENT_GIT_EMAIL
+  git config user.name "<当前模型名>"
+  git config user.email "<供应商 noreply 邮箱>"
   python3 scripts/git_identity.py validate
   ```
-  A pre-commit hook enforces this — commits from personal git identities or mismatched model identities are blocked automatically.
-- **Commit format**: Follow AGENTS.md SS4 exactly:
-  ```
-  [{task-type}] {scope}: {description}
-
-  Agent: {model name}
-  Task-Type: {project-optimization | new-project | task-execution}
-  ```
-- **Push flow**: `git fetch origin main` -> `git merge --ff-only FETCH_HEAD` -> `git push origin main`. Use `GIT_NO_OPTIONAL_LOCKS=1` prefix on all git network commands.
-- **Token safety**: `.env` must never be committed. Commit messages must never contain tokens.
+  pre-commit hook 会拦截身份不符的提交。
+- Commit 格式与 push flow 见 [docs/PROTOCOL_COMMON.md](./docs/PROTOCOL_COMMON.md) §B/§C。
+- `.env` 绝不提交；commit message 不含 token。
 
 ---
 
-## Wiki Operations
+## Wiki 操作
 
-Every learning subproject has a `wiki/` layer (Karpathy persistent wiki pattern).
-
-**On every Ingest (after writing the report):**
-1. Update or create `wiki/entities/` pages for mentioned persons / orgs
-2. Update or create `wiki/concepts/` pages for core concepts introduced
-3. Append one line to `wiki/log.md`
-4. Update `wiki/index.md` (add new entries under the correct section)
-
-**On Query (multi-concept synthesis):**
-- Read `wiki/index.md` first to locate relevant pages
-- If the answer synthesizes ≥ 3 concepts, archive the result to `wiki/syntheses/`
-- Append one line to `wiki/log.md`
-
-**On Lint (every ~15 ingests):**
-- Check for orphan pages, stub pages, contradictions, missing cross-references
-- Report findings, then fix or flag
-
-**Page locations:**
-```
-{project}/wiki/
-├── index.md          ← content catalog, updated on every ingest
-├── log.md            ← append-only operation log
-├── entities/         ← persons, orgs, systems
-├── concepts/         ← core ideas and techniques
-└── syntheses/        ← archived query results
-```
+每个领域有 `wiki/` 层（concepts / entities / syntheses / open-questions.md）。
+写完报告后：更新相关概念/实体页（追加链接而非重写）、未解问题汇入 open-questions.md、必要时归档 syntheses。
 
 ---
 
