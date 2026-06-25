@@ -39,10 +39,11 @@ agent_manifest:
 |------|---------|---------|
 | TT-1 `trending_report` | 生成日/周/月 trending 汇总报告 | `TASK_PROTOCOL.md § TT-1` |
 | TT-2 `repo_research` | 对单个 repo 深度研究 | `TASK_PROTOCOL.md § TT-2` |
+| TT-5 `repo_analyze_interactive` | 对话贴 repo 链接，交互式分析（已有报告则选更新/换视角/跳过） | `TASK_PROTOCOL.md § TT-5` · `repo-analyze-interactive/SKILL.md` |
 | TT-3 `index_sync` | 同步知识索引 | `TASK_PROTOCOL.md § TT-3` |
 | TT-4 `validate_all` | 验证全部报告质量 | `TASK_PROTOCOL.md § TT-4` |
 
-> TT-3 在每次 TT-1 / TT-2 完成后**必须自动执行**，不需要单独领取。
+> TT-3 在每次 TT-1 / TT-2 / TT-5 完成后**必须自动执行**，不需要单独领取。
 
 **禁止操作**：
 - 修改 `github-trending-analyzer/`（工具脚本）、`github-deep-research/`（研究脚本）
@@ -76,6 +77,20 @@ Step 2  深度研究（4 轮）
 Step 3  写入报告 + 验证（exit 0）
 Step 4  同步索引（TT-3，自动）
 ```
+
+### TT-5 repo_analyze_interactive 执行流（对话贴链接触发）
+
+```
+Step 1  解析链接 → owner/repo
+Step 2  check 缓存 → 拿 exists / age_days
+Step 3  分支：
+        · 无报告 → 直接研究
+        · 有报告 → 告知上次时间，AskUserQuestion 三选一：
+                   A 更新（覆盖） / B 换视角（问视角→ _{topic} 后缀，不覆盖） / C 跳过（展示现有）
+Step 4  深度研究（4 轮，换视角时侧重该视角）
+Step 5  写报告 + 验证（exit 0） + 同步索引（TT-3，自动）
+```
+
 
 ### 8 项验证规则（TT-1 Step 4 / TT-2 Step 3）
 

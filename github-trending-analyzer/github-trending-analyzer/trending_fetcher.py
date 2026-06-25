@@ -10,6 +10,8 @@ import json
 import os
 import platform
 import re
+import shutil
+import subprocess
 import sys
 import time
 from datetime import datetime, timedelta
@@ -216,6 +218,8 @@ def fetch_trending_via_api(since: str = "daily", language: str = "") -> List[Dic
     """
     Fetch trending repositories via GitHub Search API (fallback).
 
+    Uses the `gh` CLI (gh api) so authentication is handled by `gh auth login`.
+
     Args:
         since: Time period - 'daily', 'weekly', or 'monthly'
         language: Programming language filter (optional)
@@ -232,23 +236,24 @@ def fetch_trending_via_api(since: str = "daily", language: str = "") -> List[Dic
     if language:
         q += f" language:{language}"
 
-    url = (
-        f"https://api.github.com/search/repositories"
-        f"?q={q}&sort=stars&order=desc&per_page=25"
-    )
+    if shutil.which("gh") is None:
+        print("Error: `gh` CLI not found. Install it and run `gh auth login`.", file=sys.stderr)
+        return []
 
-    headers = {
-        "Accept": "application/vnd.github.v3+json",
-        "User-Agent": get_user_agent(),
-    }
-    if os.environ.get("GITHUB_TOKEN"):
-        headers["Authorization"] = f"token {os.environ.get('GITHUB_TOKEN')}"
-
-    req = Request(url, headers=headers)
+    cmd = [
+        "gh", "api", "-X", "GET", "search/repositories",
+        "-f", f"q={q}",
+        "-f", "sort=stars",
+        "-f", "order=desc",
+        "-f", "per_page=25",
+    ]
     try:
-        with urlopen(req, timeout=30) as response:
-            data = json.loads(response.read().decode("utf-8"))
-    except (HTTPError, URLError) as e:
+        proc = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
+        if proc.returncode != 0:
+            print(f"Error fetching from GitHub Search API: {proc.stderr.strip()}", file=sys.stderr)
+            return []
+        data = json.loads(proc.stdout)
+    except (subprocess.SubprocessError, OSError, json.JSONDecodeError) as e:
         print(f"Error fetching from GitHub Search API: {e}", file=sys.stderr)
         return []
 
