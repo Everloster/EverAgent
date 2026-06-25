@@ -33,7 +33,13 @@ Task-Type: {project-optimization | new-project | task-execution}
 
 ## §C Push Flow（推送流程 · 全局统一）
 
+> **双身份**：每个 commit 的 **Author = 仓库主人 Everloster**（显示其 GitHub 头像），**Committer = 当前 Agent**（通过 hook 校验）。
+> Author 用 `GIT_AUTHOR_*` 环境变量覆盖；Committer 取 `git config user.name/email`（保持当前 Agent 身份）。
+
 ```bash
+export GIT_AUTHOR_NAME="Everloster"
+export GIT_AUTHOR_EMAIL="2820419+Everloster@users.noreply.github.com"
+
 git add -A
 git commit -m "[{task-type}] {scope}: {描述}
 
@@ -43,6 +49,10 @@ GIT_NO_OPTIONAL_LOCKS=1 git fetch origin main
 GIT_NO_OPTIONAL_LOCKS=1 git merge --ff-only FETCH_HEAD
 GIT_NO_OPTIONAL_LOCKS=1 git push origin main
 ```
+
+- `2820419+Everloster@users.noreply.github.com` 是 Everloster 账号的 GitHub noreply 邮箱（`{id}+{login}@users.noreply.github.com`），绑定后 GitHub 显示其头像并链接 profile。
+- Committer 邮箱必须含 `noreply@`，否则 pre-commit hook（`git_identity.py`）拦截。
+- GitHub 提交页会显示为 "Everloster authored and {Agent} committed"，两个头像并排。
 
 ### 常见错误处理
 
