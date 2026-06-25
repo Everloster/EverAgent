@@ -271,8 +271,9 @@ def main():
     """CLI interface for testing."""
     if len(sys.argv) < 3:
         print("Usage: python github_api.py <owner> <repo> [command]")
-        print("Commands: info, readme, tree, languages, contributors,")
-        print("          commits, issues, prs, releases, summary")
+        print("Commands: info, readme, tree, file <path>, languages,")
+        print("          contributors, commits, commit_activity, issues,")
+        print("          prs, releases, tags, summary")
         sys.exit(1)
 
     owner, repo = sys.argv[1], sys.argv[2]
@@ -284,14 +285,23 @@ def main():
         "info": lambda: api.get_repo_info(owner, repo),
         "readme": lambda: api.get_readme(owner, repo),
         "tree": lambda: api.format_tree(api.get_tree(owner, repo)),
+        # `file <path>`: read one source file (lever 1, code-grounded analysis).
+        "file": lambda: api.get_file_content(owner, repo, sys.argv[4]),
         "languages": lambda: api.get_languages(owner, repo),
         "contributors": lambda: api.get_contributors(owner, repo),
         "commits": lambda: api.get_recent_commits(owner, repo),
+        # `commit_activity`: weekly commit counts for the last 52 weeks (lever 3).
+        "commit_activity": lambda: api.get_commit_activity(owner, repo),
         "issues": lambda: api.get_issues(owner, repo),
         "prs": lambda: api.get_pull_requests(owner, repo),
         "releases": lambda: api.get_releases(owner, repo),
+        "tags": lambda: api.get_tags(owner, repo),
         "summary": lambda: api.summarize_repo(owner, repo),
     }
+
+    if command == "file" and len(sys.argv) < 5:
+        print("Usage: python github_api.py <owner> <repo> file <path>")
+        sys.exit(1)
 
     if command not in commands:
         print(f"Unknown command: {command}")
