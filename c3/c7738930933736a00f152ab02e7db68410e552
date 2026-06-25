@@ -1,0 +1,674 @@
+philosophy-learning/PROFILE.md
+  s_dc21e0d1941f13::t_340b13d084a624 15 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cc32932c24586f7da0773","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Single":15}]}]}
+  s_dc21e0d1941f13::t_874094ee0846f1 49 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cc33832c24586f7da0776","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Single":49}]}]}
+  s_dc21e0d1941f13::t_6d4ed054e804c1 64-67,78 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cc35532c24586f7da077c","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Range":[64,67]},{"Single":78}]}]}
+ai-learning/wiki/open-questions.md
+  s_dc21e0d1941f13::t_d5fab97b944c71 11-13 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cc18e32c24586f7da0742","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Range":[11,13]}]}]}
+philosophy-learning/reports/text_analyses/10_zhuangzi_qiwulun_-300.md
+  s_dc21e0d1941f13::t_3506d8c091de65 1-167 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cc0eb32c24586f7da0733","tool_type":"agent","tool_id":"Write","line_ranges":[{"Range":[1,167]}]}]}
+ai-learning/wiki/concepts/speculative_decoding.md
+  s_dc21e0d1941f13::t_adbebdd6b4254f 1-33 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cc15c32c24586f7da0736","tool_type":"agent","tool_id":"Write","line_ranges":[{"Range":[1,33]}]}]}
+biology-learning/wiki/concepts/time_restricted_eating.md
+  s_dc21e0d1941f13::t_3c2cf29147459d 1-29 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cc16932c24586f7da0739","tool_type":"agent","tool_id":"Write","line_ranges":[{"Range":[1,29]}]}]}
+biology-learning/reports/concept_reports/限时进食TRE与代谢健康_20260625.md
+  s_dc21e0d1941f13::t_4304fca0788c9a 1-175 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cc01932c24586f7da072a","tool_type":"agent","tool_id":"Write","line_ranges":[{"Range":[1,175]}]}]}
+biology-learning/wiki/open-questions.md
+  s_dc21e0d1941f13::t_75878d4242427e 11-13 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cc19232c24586f7da0745","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Range":[11,13]}]}]}
+philosophy-learning/wiki/open-questions.md
+  s_dc21e0d1941f13::t_ecbe3180054935 15-18 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cc31632c24586f7da0770","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Range":[15,18]}]}]}
+  s_dc21e0d1941f13::t_47e24be65e410f 11-14 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cc19632c24586f7da0748","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Range":[11,14]}]}]}
+philosophy-learning/wiki/concepts/second_hand_life_cheng_lesong.md
+  s_dc21e0d1941f13::t_3a812192b796cd 1-29 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cc30932c24586f7da076d","tool_type":"agent","tool_id":"Write","line_ranges":[{"Range":[1,29]}]}]}
+philosophy-learning/wiki/concepts/qiwu_equality_of_things.md
+  s_dc21e0d1941f13::t_70e9766e9a804c 1-34 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cc17232c24586f7da073c","tool_type":"agent","tool_id":"Write","line_ranges":[{"Range":[1,34]}]}]}
+README.md
+  s_dc21e0d1941f13::t_9de48f4f6da8e3 19,21,23 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cc1a432c24586f7da074b","tool_type":"agent","tool_id":"Shell","line_ranges":[{"Single":19},{"Single":21},{"Single":23}]}]}
+ai-learning/reports/knowledge_reports/投机解码SpeculativeDecoding_深度解析_20260625.md
+  s_dc21e0d1941f13::t_f62367aba5c98a 1-210 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cc07c32c24586f7da072d","tool_type":"agent","tool_id":"Write","line_ranges":[{"Range":[1,210]}]}]}
+philosophy-learning/reports/concept_reports/程乐松的当代哲学_AI时代的自我与反卷_20260625.md
+  s_dc21e0d1941f13::t_b923b1374ec0d3 1-135,142-160 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cc29732c24586f7da076a","tool_type":"agent","tool_id":"Write","line_ranges":[{"Range":[1,135]},{"Range":[142,160]}]}]}
+  s_dc21e0d1941f13::t_a26aabe09113cb 136-141 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a3cc38632c24586f7da0782","tool_type":"agent","tool_id":"Edit","line_ranges":[{"Range":[136,141]}]}]}
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "c3c7738930933736a00f152ab02e7db68410e552",
+  "prompts": {},
+  "sessions": {
+    "s_dc21e0d1941f13": {
+      "agent_id": {
+        "tool": "trae",
+        "id": "6a2a5b13fb3e804a0c0c7396",
+        "model": "openrouter-3o__max"
+      },
+      "human_author": "trae-openrouter-3o <noreply@trae.cn>"
+    }
+  },
+  "attestation_metadata": {
+    "README.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_9de48f4f6da8e3",
+        "line_ranges": [
+          {
+            "Single": 19
+          },
+          {
+            "Single": 21
+          },
+          {
+            "Single": 23
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cc1a432c24586f7da074b",
+            "tool_type": "agent",
+            "tool_id": "Shell",
+            "line_ranges": [
+              {
+                "Single": 19
+              },
+              {
+                "Single": 21
+              },
+              {
+                "Single": 23
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ai-learning/reports/knowledge_reports/投机解码SpeculativeDecoding_深度解析_20260625.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_f62367aba5c98a",
+        "line_ranges": [
+          {
+            "Range": [
+              1,
+              210
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cc07c32c24586f7da072d",
+            "tool_type": "agent",
+            "tool_id": "Write",
+            "line_ranges": [
+              {
+                "Range": [
+                  1,
+                  210
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ai-learning/wiki/concepts/speculative_decoding.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_adbebdd6b4254f",
+        "line_ranges": [
+          {
+            "Range": [
+              1,
+              33
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cc15c32c24586f7da0736",
+            "tool_type": "agent",
+            "tool_id": "Write",
+            "line_ranges": [
+              {
+                "Range": [
+                  1,
+                  33
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ai-learning/wiki/open-questions.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_d5fab97b944c71",
+        "line_ranges": [
+          {
+            "Range": [
+              11,
+              13
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cc18e32c24586f7da0742",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Range": [
+                  11,
+                  13
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "biology-learning/reports/concept_reports/限时进食TRE与代谢健康_20260625.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_4304fca0788c9a",
+        "line_ranges": [
+          {
+            "Range": [
+              1,
+              175
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cc01932c24586f7da072a",
+            "tool_type": "agent",
+            "tool_id": "Write",
+            "line_ranges": [
+              {
+                "Range": [
+                  1,
+                  175
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "biology-learning/wiki/concepts/time_restricted_eating.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_3c2cf29147459d",
+        "line_ranges": [
+          {
+            "Range": [
+              1,
+              29
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cc16932c24586f7da0739",
+            "tool_type": "agent",
+            "tool_id": "Write",
+            "line_ranges": [
+              {
+                "Range": [
+                  1,
+                  29
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "biology-learning/wiki/open-questions.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_75878d4242427e",
+        "line_ranges": [
+          {
+            "Range": [
+              11,
+              13
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cc19232c24586f7da0745",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Range": [
+                  11,
+                  13
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "philosophy-learning/PROFILE.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_340b13d084a624",
+        "line_ranges": [
+          {
+            "Single": 15
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cc32932c24586f7da0773",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Single": 15
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "hash": "s_dc21e0d1941f13::t_874094ee0846f1",
+        "line_ranges": [
+          {
+            "Single": 49
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cc33832c24586f7da0776",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Single": 49
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "hash": "s_dc21e0d1941f13::t_6d4ed054e804c1",
+        "line_ranges": [
+          {
+            "Range": [
+              64,
+              67
+            ]
+          },
+          {
+            "Single": 78
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cc35532c24586f7da077c",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Range": [
+                  64,
+                  67
+                ]
+              },
+              {
+                "Single": 78
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "philosophy-learning/reports/concept_reports/程乐松的当代哲学_AI时代的自我与反卷_20260625.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_b923b1374ec0d3",
+        "line_ranges": [
+          {
+            "Range": [
+              1,
+              135
+            ]
+          },
+          {
+            "Range": [
+              142,
+              160
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cc29732c24586f7da076a",
+            "tool_type": "agent",
+            "tool_id": "Write",
+            "line_ranges": [
+              {
+                "Range": [
+                  1,
+                  135
+                ]
+              },
+              {
+                "Range": [
+                  142,
+                  160
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "hash": "s_dc21e0d1941f13::t_a26aabe09113cb",
+        "line_ranges": [
+          {
+            "Range": [
+              136,
+              141
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cc38632c24586f7da0782",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Range": [
+                  136,
+                  141
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "philosophy-learning/reports/text_analyses/10_zhuangzi_qiwulun_-300.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_3506d8c091de65",
+        "line_ranges": [
+          {
+            "Range": [
+              1,
+              167
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cc0eb32c24586f7da0733",
+            "tool_type": "agent",
+            "tool_id": "Write",
+            "line_ranges": [
+              {
+                "Range": [
+                  1,
+                  167
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "philosophy-learning/wiki/concepts/qiwu_equality_of_things.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_70e9766e9a804c",
+        "line_ranges": [
+          {
+            "Range": [
+              1,
+              34
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cc17232c24586f7da073c",
+            "tool_type": "agent",
+            "tool_id": "Write",
+            "line_ranges": [
+              {
+                "Range": [
+                  1,
+                  34
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "philosophy-learning/wiki/concepts/second_hand_life_cheng_lesong.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_3a812192b796cd",
+        "line_ranges": [
+          {
+            "Range": [
+              1,
+              29
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cc30932c24586f7da076d",
+            "tool_type": "agent",
+            "tool_id": "Write",
+            "line_ranges": [
+              {
+                "Range": [
+                  1,
+                  29
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "philosophy-learning/wiki/open-questions.md": [
+      {
+        "hash": "s_dc21e0d1941f13::t_ecbe3180054935",
+        "line_ranges": [
+          {
+            "Range": [
+              15,
+              18
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cc31632c24586f7da0770",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Range": [
+                  15,
+                  18
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "hash": "s_dc21e0d1941f13::t_47e24be65e410f",
+        "line_ranges": [
+          {
+            "Range": [
+              11,
+              14
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a3cc19632c24586f7da0748",
+            "tool_type": "agent",
+            "tool_id": "Edit",
+            "line_ranges": [
+              {
+                "Range": [
+                  11,
+                  14
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "remote_transcripts": {
+    "s_dc21e0d1941f13": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_340b13d084a624": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_3506d8c091de65": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_3a812192b796cd": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_3c2cf29147459d": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_4304fca0788c9a": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_47e24be65e410f": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_6d4ed054e804c1": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_70e9766e9a804c": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_75878d4242427e": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_874094ee0846f1": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_9de48f4f6da8e3": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_a26aabe09113cb": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_adbebdd6b4254f": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_b923b1374ec0d3": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_d5fab97b944c71": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_ecbe3180054935": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_dc21e0d1941f13::t_f62367aba5c98a": {
+      "tool": "trae",
+      "conversation_id": "6a2a5b13fb3e804a0c0c7396",
+      "session_id": "6a2a5b13fb3e804a0c0c7396",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    }
+  }
+}
