@@ -1,9 +1,0 @@
-event_id: evt_20260620_162332516182_076
-type: lock_acquired
-timestamp: 2026-06-20T16:23:32+00:00
-actor: PodcastAgent
-project: podcast-learning
-task_id: T069
-message_id: <evt_20260620_162332516182_076@everagent.local>
-payload:
-  git_commit_sha: ""

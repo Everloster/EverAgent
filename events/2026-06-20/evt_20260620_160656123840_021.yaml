@@ -1,9 +1,0 @@
-event_id: evt_20260620_160656123840_021
-type: lock_acquired
-timestamp: 2026-06-20T16:06:56+00:00
-actor: NeuronAgent
-project: ai-learning
-task_id: T058
-message_id: <evt_20260620_160656123840_021@everagent.local>
-payload:
-  git_commit_sha: ""

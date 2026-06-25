@@ -1,228 +1,52 @@
-# ByteAgent — cs-learning 执行协议 v1.0
+# cs-learning — 领域协议
 
-> 本文件自包含。ByteAgent 只需读此文件 + `CONTEXT.md` 即可独立执行所有任务。
-> 由 EverAgent 调度，执行完成后通过 commit message 广播状态。
+> 领域：计算机科学（系统·算法·分布式·数据库·网络）经典论文精读与概念深挖。
+> 通用研究方法论见根 [METHODOLOGY.md](../METHODOLOGY.md)（强制）。本文件只写本领域的边界与特化。
 
 ---
 
-## §0 Agent Manifest
+## 工作模式：对话即学习
+
+用户说"帮我学 X / 深入 Y / 上次那个继续"，按以下循环：
+
+1. **读画像与地图** — [PROFILE.md](./PROFILE.md)、[MAP.md](./MAP.md)、[wiki/open-questions.md](./wiki/open-questions.md)
+2. **查已有积累** — 翻 `wiki/concepts/` 与 `reports/`，已有则深化而非重复
+3. **做研究** — 按 METHODOLOGY 真读原文、查证、标注证据；框架见 `skills/`
+4. **写报告** — 存 `reports/`，带 frontmatter，结尾必带「思考与追问」三问
+5. **沉淀** — 更新 wiki、未解问题汇入 open-questions、必要时写 syntheses
+6. **更新画像** — 把新兴趣/水平/偏好写回 PROFILE（仅凭用户真实表达，禁止臆测）
+
+> 追问已有主题时：在原报告追加 `## 追问深入 [日期]` 小节并刷新 `updated_on`，不另开新文件。
+
+---
+
+## 领域特化
+
+- **报告类型**：`reports/paper_analyses/`（论文精读）、`reports/knowledge_reports/`（概念深挖）
+- **特化要求**：正确性证明重构关键步骤；复杂度精确到 big-O（注明 worst/amortized/expected）；伪代码可复现；trade-off 给具体数值
+- **特化模板**：[skills/paper_analysis/SKILL.md](./skills/paper_analysis/SKILL.md)、[skills/concept_deep_dive/SKILL.md](./skills/concept_deep_dive/SKILL.md)
+
+---
+
+## 报告 frontmatter
 
 ```yaml
-agent_manifest:
-  name: "ByteAgent"
-  role: "计算机科学论文精读·系统知识报告"
-  project: "cs-learning"
-  capability_level: task_executor
-```
-
-### 启动初始化
-
-```bash
-# 1. 必读文件（按顺序）
-# - cs-learning/CONTEXT.md               （已有报告清单 + 防幻觉边界）
-# - cs-learning/papers/PAPERS_INDEX.md   （可研究的论文列表）
-# - cs-learning/skills/paper_analysis/SKILL.md  （7步分析法）
-```
-
 ---
-
-## §1 Project Scope（项目边界）
-
-**领域**：计算机科学基础·系统·算法·分布式
-**三维度**：理论深度 × 系统演化 × 工程实践
-
-**可执行任务类型**：
-
-| 类型 | 说明 | 产出路径 |
-|------|------|---------|
-| `paper_analysis` | 单篇 CS 经典论文 7 步深度精读 | `reports/paper_analyses/` |
-| `knowledge_report` | 系统/算法专题知识图谱或深度解析 | `reports/knowledge_reports/` |
-
-**禁止操作**：
-- 修改 `CONTEXT.md` 以外的项目元文件
-- 跨项目读写其他子项目文件
-- 修改全局 `AGENTS.md`、`CLAUDE.md`、`scripts/`
-
----
-
-## §2 Task Execution Protocol（任务执行流程）
-
-### 2.1 领取任务
-
-```
-0. 运行 python3 scripts/execution_validator.py --mode=input --task-id=TXXX
-   → 校验失败则停止，不 claim 任务
-1. 读取 cs-learning/.project-task-state（Task Board 仅作只读视图）
-2. 选取 project: cs-learning, status: open 的任务
-3. 优先运行 python3 scripts/task_exec.py begin --task-id=TXXX --project=cs-learning --agent=ByteAgent
-4. 立即 commit push（防并发冲突）
-5. 运行 python3 scripts/task_exec.py start --task-id=TXXX
-```
-
-> 校验脚本参考：docs/EXECUTION_SCHEMA.md
-
-### 2.2 执行 paper_analysis
-
-**执行前**：读取 `CONTEXT.md` 的"⚠️ 边界（防幻觉）"——若目标论文已有报告，停止并告知用户。
-
-**7 步分析框架**（详见 `skills/paper_analysis/SKILL.md`）：
-
-```
-Step 1  论文定位      — 领域·时间节点·解决什么问题
-Step 2  核心贡献      — 方法创新·实验结论·关键数字（精确值，禁止估算）
-Step 3  技术细节      — 协议/算法/数据结构设计
-Step 4  实验验证      — 评估方法·基线对比·局限性
-Step 5  演化谱系      — 前驱工作·直接后续系统·工程落地（必须包含此章节）
-Step 6  工程实践      — 如何部署·已知陷阱·现代替代品
-Step 7  个人评价      — 历史地位·学习优先级建议
-```
-
-> ⚠️ **CS 特有要求**：Step 5"演化谱系"在每篇报告中不可省略，需画出 前驱→本论文→后继系统 的传承链。
-
-**报告 frontmatter**：
-```yaml
----
-title: "论文标题"
+title: "标题"
 domain: "cs-learning"
-report_type: "paper_analysis"
+report_type: "paper_analysis"   # 或 knowledge_report
 status: "completed"
 updated_on: "YYYY-MM-DD"
 ---
 ```
 
-### 2.3 执行 knowledge_report
-
-**适用场景**：多篇精读可归纳为一个专题（如"分布式系统知识图谱"，整合 19 篇精读）。
-
-**报告结构**：
-
-```
-1. 专题定义与边界
-2. 核心主线（分类/演化路径）
-3. 关键论文矩阵表（论文 × 核心贡献 × 与本专题关系）
-4. 概念关联图（Mermaid flowchart）
-5. 学习路径建议
-6. 未解问题与前沿方向
-```
-
 ---
 
-## §2.x Wiki Integration（摄入后必须执行）
-
-完成 paper_analysis 或 knowledge_report 后，执行 wiki 更新：
-
-```
-1. 识别报告中涉及的人物、机构
-   → 更新或创建 wiki/entities/{name}.md
-
-2. 识别核心概念（系统、算法、协议）
-   → 更新或创建 wiki/concepts/{concept}.md
-
-3. 追加 wiki/log.md 一行：
-   ## [YYYY-MM-DD] ingest | {论文/报告标题}
-   - 新建报告：reports/...
-   - 更新 wiki 页面：{列出实际更新的文件}
-
-4. 更新 wiki/index.md：在对应分类下追加条目
-```
-
-**页面格式参考**：`llm-wiki-plan.md` §四
-
-**写入权限**：
-
-| 路径 | 权限 |
-|------|------|
-| `wiki/entities/` | ✅ 新建·追加更新 |
-| `wiki/concepts/` | ✅ 新建·追加更新 |
-| `wiki/syntheses/` | ✅ 新建（归档有价值的问答） |
-| `wiki/index.md` | ✅ 追加条目 |
-| `wiki/log.md` | ✅ 仅 append |
-
----
-
-## §3 Output Standards（输出规范）
-
-### 文件命名
-
-```
-paper_analysis:    {序号}_{简称}_{年份}.md
-                   例：19_tcpip_1974.md
-knowledge_report:  {主题}_{知识图谱|深度解析|...}.md
-                   例：分布式系统_知识图谱.md
-```
-
-**序号规则**：读取 `reports/paper_analyses/` 现有文件，取最大序号 +1。
-
-### 质量标准
-
-- 所有技术数据（延迟、吞吐、容量等）必须来自论文原文，精确引用
-- 必须包含"演化谱系"章节
-- 报告行数 ≥ 150 行
-- Mermaid 图表只允许：`flowchart` / `sequenceDiagram` / `gantt` / `pie`
-
-### 完成后必须更新
-
-1. `CONTEXT.md` — 在"已有报告"列表追加新报告条目
-2. `papers/PAPERS_INDEX.md` — 标记对应论文状态为已精读
-3. `docs/LEARNING_PROJECTS_TASK_BOARD.md` — 通过聚合器重建只读视图
-
-### 完成后必须校验
-
-```
-[commit 前必须运行]
-python3 scripts/execution_validator.py --mode=output --task-id=TXXX --project=cs-learning
-   → 校验失败则不 commit，修复后重试
-python3 scripts/task_exec.py finish --task-id=TXXX --project=cs-learning
-```
-
-> 校验脚本参考：docs/EXECUTION_SCHEMA.md
-
----
-
-## §4 Write Permissions（写入权限）
-
-| 路径 | 权限 |
-|------|------|
-| `reports/paper_analyses/` | ✅ 新建·修改 |
-| `reports/knowledge_reports/` | ✅ 新建·修改 |
-| `CONTEXT.md` | ✅ 仅追加报告条目·更新边界区 |
-| `papers/PAPERS_INDEX.md` | ✅ 仅更新状态标记 |
-| `docs/LEARNING_PROJECTS_TASK_BOARD.md` | ✅ 仅更新自身任务行 + 追加已完成条目 |
-| `skills/` | ❌ 只读 |
-| `AGENTS.md`（本文件） | ❌ 只读 |
-| 其他子项目任意路径 | ❌ 禁止 |
-| 全局 `AGENTS.md` / `CLAUDE.md` / `scripts/` | ❌ 禁止 |
-
----
-
-## §5 Commit Protocol（提交规范）
+## 完成后自检
 
 ```bash
-# 提交前需先配置 git 身份（从全局 AGENTS.md 获取当前模型名称）
-git add reports/ CONTEXT.md papers/PAPERS_INDEX.md docs/LEARNING_PROJECTS_TASK_BOARD.md
-git commit -m "[task-execution] cs-learning: {报告标题简述}
-
-Agent: ByteAgent
-Task-Type: task-execution"
-
-GIT_NO_OPTIONAL_LOCKS=1 git fetch origin main
-GIT_NO_OPTIONAL_LOCKS=1 git merge --ff-only FETCH_HEAD
-GIT_NO_OPTIONAL_LOCKS=1 git push origin main
-python3 scripts/task_exec.py release --task-id=TXXX --project=cs-learning --agent=ByteAgent
+python3 scripts/lint_evidence.py <报告路径>
+python3 scripts/reindex.py
 ```
 
-> 合并冲突无法自动解决时：停止操作，通知用户，由用户仲裁。
-
----
-
-## §6 Hallucination Guard
-
-> 共享规则 → [`docs/PROTOCOL_COMMON.md`](../docs/PROTOCOL_COMMON.md) §A Safety Rules
->
-> 本节仅列出本项目特有的补充：
-2. 协议细节、算法参数必须来自原始 RFC/论文，不得凭常识填充
-3. 系统性能数据（如 GFS 的 chunk 大小、Raft 的超时参数）必须标注来源章节
-4. "演化谱系"中列出的后继系统，只陈述原文提及或公认事实，不推测
-
----
-
+提交规范见根 [AGENTS.md](../AGENTS.md) 与 [docs/PROTOCOL_COMMON.md](../docs/PROTOCOL_COMMON.md)。

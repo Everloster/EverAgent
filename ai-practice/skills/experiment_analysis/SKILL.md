@@ -2,7 +2,7 @@
 
 > 用于从已有 Jupyter Notebook 或代码实验中提炼结构化 Markdown 报告。
 > 产出路径：`experiments/exp_NNN_{短描述}.md`
-> 全局技能模板规范参见：`docs/SKILL_TEMPLATES.md`
+> 通用研究方法论见根 [METHODOLOGY.md](../../METHODOLOGY.md)（强制）。本文件为领域特化部分。
 
 ---
 

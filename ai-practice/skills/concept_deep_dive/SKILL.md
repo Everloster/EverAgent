@@ -1,3 +1,3 @@
 # Concept Deep Dive Skill
 
-> 参考共享模板：`docs/SKILL_TEMPLATES.md`
+> 通用研究方法论与输出框架见根 [METHODOLOGY.md](../../METHODOLOGY.md)（强制）。本文件为领域特化部分。

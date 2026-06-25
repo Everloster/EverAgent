@@ -1,9 +1,0 @@
-event_id: evt_20260622_032719376017_001
-type: system_audit
-timestamp: 2026-06-22T03:27:19+00:00
-actor: ea_evolution
-message_id: <evt_20260622_032719376017_001@everagent.local>
-payload:
-  insights_count: 3
-  critical_count: 0
-  recommendations_count: 0

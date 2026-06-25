@@ -1,309 +1,87 @@
-# EverAgent — 主调度协议 v5.0
+# EverAgent — 主协议
 
-> 唯一全局调度入口。README.md 供人类阅读，AI 读此文件。
-> 子项目执行规范见各自 `{project}/AGENTS.md`，本文件只负责调度与全局治理。
-
----
-
-## §0 EverAgent Manifest
-
-```yaml
-agent_manifest:
-  name: "EverAgent"
-  model: "任意支持文件读写与 git 的模型"
-  role: "全局调度·任务板管理·项目优化·新项目创建·用户点名任务直执"
-  capability_level: full_admin
-  git_identity:
-    # name 必须设置为当前运行模型名，不得使用个人 git 身份
-    # email 必须为当前模型供应商的 noreply 地址；pre-commit hook 会校验 name/email
-    # 可通过环境变量 EVERAGENT_GIT_NAME / EVERAGENT_GIT_EMAIL 覆盖默认值
-    name: "<CURRENT_AGENT_NAME>"     # 例如：Trae GPT-5.4 / GPT-5.4 Codex
-    email: "<VENDOR_NOREPLY_EMAIL>"  # 例如：noreply@openai.com
-```
-
-### Git 初始化
-
-> **认证方式**：统一使用 `gh` CLI 的 credential helper。**禁止**把任何 token（包括 `.env` 里的）拼到 `git remote URL` 里——token 一旦出现在 URL 里，shell 输出 / 错误信息 / 日志都会泄露，且无法靠 gh 的 helper 覆盖。
-> `.env` 的 `GITHUB_TOKEN` 仅保留作"token 备份/轮换参考"用途，**不**用于 git 命令行。
-
-```bash
-# 1. 确认 gh 已登录（用户侧一次性的事；CI/无头环境见 gh auth login --with-token）
-gh auth status                          # 检查：应显示 Logged in to github.com
-
-# 2. 用 gh 接管 git 认证（设置 helper，写入 git config，幂等可重复跑）
-gh auth setup-git
-git remote set-url origin https://github.com/Everloster/EverAgent.git   # 标准 URL，不带 token
-
-# 3. 验权 + 设置身份
-git ls-remote origin HEAD               # 验权，失败则停止
-git config user.name "<CURRENT_AGENT_NAME>"         # 由当前运行 AI 自行决定（或设置 EVERAGENT_GIT_NAME）
-git config user.email "<VENDOR_NOREPLY_EMAIL>"      # 供应商 noreply 邮箱（或设置 EVERAGENT_GIT_EMAIL）
-python3 scripts/git_identity.py validate
-# ⚠️ 不得跳过此步骤——pre-commit hook 会拦截 name/email 不匹配或非 noreply 邮箱的提交
-```
-
-**Push flow**（所有 git 网络命令必须加 `GIT_NO_OPTIONAL_LOCKS=1` 前缀）：
-
-```bash
-GIT_NO_OPTIONAL_LOCKS=1 git fetch origin main
-GIT_NO_OPTIONAL_LOCKS=1 git merge --ff-only FETCH_HEAD
-GIT_NO_OPTIONAL_LOCKS=1 git push origin main
-```
-
-> 如果 push 仍然报 `could not read Password for 'https://…@github.com'`：说明 remote URL 残留旧 token，跑 `git remote set-url origin https://github.com/Everloster/EverAgent.git` 清理后重试。
+> 个人学习工作台。AI 帮我快速研究一个新领域/概念，产出高质量报告，我抽空阅读。
+> 本质是**知识库**，不是任务管理系统。AI 被「怎么做好研究」驱动，不被状态机协调。
 
 ---
 
-## §1 Subagent Registry（子 Agent 注册表）
+## §0 定位
 
-| Agent 名 | 项目路径 | 协议入口 | 领域 | 状态 |
-|---------|---------|---------|------|:---:|
-| **NeuronAgent** | `ai-learning/` | `ai-learning/AGENTS.md` | AI/ML 论文精读·技术报告 | 🟢 |
-| **ByteAgent** | `cs-learning/` | `cs-learning/AGENTS.md` | 计算机科学·系统·算法 | 🟢 |
-| **SocratesAgent** | `philosophy-learning/` | `philosophy-learning/AGENTS.md` | 世界哲学·文本分析（含中国哲学） | 🟡 |
-| **PsycheAgent** | `psychology-learning/` | `psychology-learning/AGENTS.md` | 心理学·经典实验 | 🟢 |
-| **BioAgent** | `biology-learning/` | `biology-learning/AGENTS.md` | 时间生物学·睡眠·运动生理 | 🟡 |
-| **TrendAgent** | `github-trending-analyzer/` | `github-trending-analyzer/AGENTS.md` | 开源热点·Repo 知识库 | 🟢 |
-| **PracticeAgent** | `ai-practice/` | `ai-practice/AGENTS.md` | ML 工程·代码实验·模型训练 | 🟢 |
-| **PodcastAgent** | `podcast-learning/` | `podcast-learning/AGENTS.md` | 播客内容学习与知识提取 | 🟢 |
-
-> 子 Agent 完全自包含：读取对应 `AGENTS.md` 即可独立执行，**不需要回读本文件**。
-> 机器可读注册表：`docs/agents_registry.yaml`。自动化脚本应优先读取该文件，而不是解析本表格。
+- **使用方式**：单用户、对话即学习。我说"帮我学 X"，AI 现场研究并归档。
+- **核心资产**：各领域的 `reports/`（我读的东西）+ `wiki/`（知识索引）。
+- **核心 IP**：[METHODOLOGY.md](./METHODOLOGY.md) — 先规定怎么读、怎么查、怎么验证，再谈输出。
 
 ---
 
-## §2 EverAgent 能力矩阵
+## §1 领域注册表
 
-| 能力 | EverAgent | Subagent |
-|------|:---:|:---:|
-| 读取任意文件 | ✅ | ✅ |
-| 执行子项目任务 | ✅（用户点名时直执；否则调度） | ✅ |
-| git commit & push | ✅ | ✅ |
-| 跨项目并发调度 | ✅ | ❌ |
-| 修改全局配置（AGENTS.md / CLAUDE.md / scripts/） | ✅ | ❌ |
-| 项目优化（任务1） | ✅ | ❌ |
-| 创建新项目（任务2） | ✅ | ❌ |
-| 维护 Task Board | ✅ | 仅更新自身任务行 |
-| 事件溯源（events/） | ✅ | ✅（自动发射） |
-| 实时 Dashboard | ✅ | ❌ |
-| 自进化引擎 | ✅ | ❌ |
+| 领域 | 路径 | 内容 |
+|------|------|------|
+| AI/ML | `ai-learning/` | 论文精读·技术报告 |
+| 计算机科学 | `cs-learning/` | 系统·算法·分布式 |
+| 哲学 | `philosophy-learning/` | 世界哲学·文本分析（含中国哲学） |
+| 心理学 | `psychology-learning/` | 经典实验·概念 |
+| 生物学 | `biology-learning/` | 时间生物学·睡眠·运动生理 |
+| ML 工程 | `ai-practice/` | 代码实验·教学笔记 |
+| 播客 | `podcast-learning/` | 播客内容学习 |
+| 开源热点 | `github-trending-analyzer/` | Repo 研究（自动化工具，自带脚本） |
 
----
-
-## §3 Task Board Protocol（任务板）
-
-**入口**：`docs/LEARNING_PROJECTS_TASK_BOARD.md`
-
-### 任务状态机
-
-```
-open → claimed → in_progress → done
-                             ↘ failed       (须填 failed_reason)
-                             ↘ help_needed  (需要用户补充信息、授权或策略澄清；可后续 start/reopen)
-                             ↘ cancelled    (用户或调度方撤销任务)
-                             ↘ expired      (expires_at 到期后的本地终止投影)
-                             ↘ abandoned    (claimed/in_progress/help_needed 超过 72h 未更新 → 标记为 abandoned；可后续 reopen)
-```
-
-### 任务 Schema
-
-```yaml
-- id: string
-  project: string
-  type: paper_analysis | knowledge_report | text_analysis | concept_report | project_optimization | new_project | maintenance
-  target: string
-  value: string
-  priority: P1 | P2 | P3
-  required_capability: task_executor | full_admin
-  status: open | claimed | in_progress | help_needed | done | failed | cancelled | expired | abandoned
-  claimed_by: string | null
-  claimed_at: ISO8601 | null
-  started_at: ISO8601 | null
-  done_at: ISO8601 | null
-  failed_reason: string | null
-  parent_task_id: string | null
-  expires_at: ISO8601 | null
-  context_links: list[string]
-  help_reason: string | null
-  cancelled_at: ISO8601 | null
-```
-
-### EverAgent 任务板维护规则
-
-- 每次任务1（项目优化）完成后同步更新"项目进度概览"表格数字
-- 每次有新任务完成，同步追加到"已完成"列表
-- 禁止删除任何 done 状态的历史记录
-
-### 任务文件双轨：Spec vs State（强制分工）
-
-**Spec（任务定义）** —— `tasks/T*.yaml`
-- 内容：id / project / created_at / spec.{type, target, value, priority, resources, qualityGates, retryPolicy}
-- 性质：**只描述要做什么**。**不包含 status / claimed_by / claimed_at / started_at / done_at / completed_by** 等运行时字段。
-- 生命周期：创建后不变更；归档后保留供历史审计。
-- 读方：EverAgent 调度时读；subagent 执行时读 spec。
-
-**State（运行时状态）** —— `{project}/.project-task-state`
-- 内容：与 spec 同样的 id/type/target + **运行时字段**（status / claimed_by / claimed_at / started_at / done_at / failed_reason / context_links / help_reason / cancelled_at）
-- 性质：**任务状态机的唯一来源（single source of truth）**。
-- 写方：**仅 `scripts/task_state_cli.py` 与 `scripts/task_exec.py`** 通过 dataclass API 修改；禁止人工手编。
-- 根目录 `/.project-task-state` 管理 `project: global` 类任务（如 T012 自动化维护任务）。
-
-**为什么严格分开**：历史上 `tasks/T*.yaml` 与 `.project-task-state` 同时维护状态字段，造成 11+ 处状态漂移（如 T061/T069 报告已落盘但 state 卡在 in_progress）。2026-06-21 起强制：YAML 删状态字段；state 文件由脚本独占。
-
-**State 文件格式**（`.project-task-state`）：
-```yaml
-- id: T001
-  project: ai-learning
-  type: paper_analysis
-  target: "VideoMAE (2022)"
-  priority: P1
-  status: done
-  claimed_by: NeuronAgent
-  claimed_at: 2026-04-04T10:00:00+08:00
-  started_at: 2026-04-04T10:30:00+08:00
-  done_at: 2026-04-04T15:47:00+08:00
-```
-
-> 参考：`scripts/task_board_aggregator.py`（Task Board 汇总视图生成器）
-> 校验：`python3 scripts/check_task_state_consistency.py` —— 若发现 YAML 与 state 字段重复，立即报错
->
-> **质量门自动校验**：`python3 scripts/check_quality_gates.py` —— 对每个 status=done 的任务运行 spec.qualityGates 声明的检查。Subagent 完成 `task_exec.py finish` **之前必须**运行此脚本并确保 0 FAIL（exit 0）。unknown check = WARN，不阻塞。
+每个领域自包含：读该领域 `AGENTS.md` + `METHODOLOGY.md` 即可独立工作。
 
 ---
 
-## §4 Dispatch & Direct Execution Protocol（调度与直执协议）
-
-EverAgent 接收用户指令后的决策流：
+## §2 对话即学习（主流程）
 
 ```
-1. 识别目标项目 → 查 §1 找到对应 Subagent 名称和协议路径
-2. 检查对应 `{project}/.project-task-state`：目标任务是否已 claimed / in_progress？
-3. 判断执行模式：
-   - 默认模式：调度 Subagent 执行
-   - 直执模式：当用户明确要求 EverAgent "直接做 / 别只派任务 / 把任务完成" 时，EverAgent 必须亲自读取目标项目 `AGENTS.md` 与 `CONTEXT.md`，按子项目协议完成产出
-4. 默认模式下：通知用户 "启动 {AgentName}，协议：{project}/AGENTS.md"
-5. 直执模式下：通知用户 "EverAgent 直接执行 {project} 任务，遵循：{project}/AGENTS.md"
-6. 执行者读取自身/目标项目 AGENTS.md，自包含执行
-7. 优先运行 `python3 scripts/task_exec.py begin --task-id=TXXX --project={project} --agent={AgentName|EverAgent}`（领取校验 + 项目锁 + claim）
-8. claim 后尽快运行 `python3 scripts/task_exec.py start --task-id=TXXX`（状态迁移为 in_progress），并在可行时提交 claim；若用户要求立即交付，可在同一工作批次内完成产出后统一提交
-9. 执行完成后通过 commit message 广播状态
-10. 成功则运行 `python3 scripts/task_exec.py finish --task-id=TXXX --project={project}`；失败则运行 `python3 scripts/task_exec.py fail --task-id=TXXX --project={project} --reason="{reason}"`；需要用户补充信息时运行 `python3 scripts/task_exec.py help --task-id=TXXX --project={project} --reason="{reason}"`；用户撤销时运行 `python3 scripts/task_exec.py cancel --task-id=TXXX --project={project} --reason="{reason}"`
-    - **`finish` 流程内置三道关**：(1) `execution_validator --mode=output` 检查 task 字段格式；(2) `check_quality_gates.py --task-id=TXXX` 跑 spec.qualityGates 全部 check；(3) `task_state_cli.py done` 标记完成。**任何 required check FAIL 则 finish 拒绝**，须先修复。仅 `--skip-quality-gate` 可绕过（CI / 紧急覆盖）。
-11. push 完成后运行 `python3 scripts/task_exec.py release --task-id=TXXX --project={project} --agent={AgentName|EverAgent}`（释放锁）
-12. EverAgent 重新生成 Task Board 视图
+我："帮我学 X" / "深入 Y" / "上次那个继续"
+  ↓
+AI：1. 识别领域 → 读该领域 AGENTS.md
+    2. 读 PROFILE.md（我会什么、偏好）+ MAP.md（覆盖与缺口）+ wiki/open-questions.md
+    3. 查 wiki/concepts/ 与 reports/：已有则深化，没有则新建
+    4. 按 METHODOLOGY 做研究：真读原文、查证、标注证据
+    5. 写报告到 reports/，结尾必带「思考与追问」三问
+    6. 沉淀：更新 wiki、未解问题汇入 open-questions、更新 PROFILE/MAP
+    7. 自检：lint_evidence.py + reindex.py
+  ↓
+我：抽空读报告 → 有新问题继续对话 → 循环
 ```
 
-### 直执优先规则
-
-- 用户明确批评"只更新任务列表、不干活"或要求"把任务做了"时，EverAgent 不得仅创建/更新任务板，必须在当前回合推进到实际产出。
-- 直执跨项目任务时，EverAgent 必须分别读取各项目协议与上下文，遵守对应写入边界；若需要跨项目写入，则以全局 full_admin 身份执行并在 commit message 标注 `Agent: EverAgent`。
-- 对于报告/实验类任务，完成标准是：创建或更新实质产物、更新项目上下文与 wiki/导航、运行可用校验、将任务状态迁移到 done。
-- 只有遇到权限、资料缺失、锁冲突或用户决策缺口时，才允许停在 `help_needed`。
-
-> 自 Phase 1 起，所有状态变更自动记录到 `events/YYYY-MM-DD/evt_*.yaml`，形成完整审计追溯。可通过 `python3 scripts/everagent.py dashboard` 启动实时 Dashboard 查看事件流。
-
-> 参考：docs/EXECUTION_SCHEMA.md（输入/输出标准化协议）
-
-### 并发约束
-
-- 同一子项目同一时间只允许一个 Subagent 写入
-- 不同子项目可并行，推荐最多同时 3 个
-- 先 push 者为准；后者须 rebase 或重选任务
-
-### Project Lock（防并发写入）
-
-**文件**：`{project}/.agent-lock`（不提交到 git）
-
-**Lock 内容**：
-```
-agent: NeuronAgent
-task_id: T001
-claimed_at: 2026-04-05T10:00:00+08:00
-git_commit_sha: abc123...
-```
-
-**协议**：
-1. 领取任务前：运行 `python3 scripts/project_lock.py check --project={project}`
-2. 若存在且未过期（< 72h）：跳过此项目，选其他任务
-3. 若不存在或已过期：运行 `python3 scripts/project_lock.py acquire --project={project} --task-id=TXXX --agent={AgentName}`
-4. commit push 完成后：运行 `python3 scripts/project_lock.py release --project={project} --task-id=TXXX --agent={AgentName}`
-
-> 作用：比 git push 更早检测并发冲突，避免无效 commit
-
-### 冲突仲裁
-
-两个 Agent 同时 claim 同一任务 → 先 push 者有效，后者将 status 重置回 open 并另选任务。
-无法自动解决时：停止操作，通知用户，由用户仲裁。
+没有任务领取、状态迁移、并发锁。追问已有主题时续写原报告，不另开新文件。
 
 ---
 
-## §5 Project Optimization Rules（任务1）
-
-任务1 = 全局重构·规划·TODO 分配，仅 EverAgent 执行。
-
-**可操作范围**：
-- `AGENTS.md`（本文件）
-- `{project}/AGENTS.md`（各子项目协议）
-- `CLAUDE.md`
-- `docs/`（Task Board、模板文件）
-- `scripts/`
-- `README.md`、`CHANGELOG.md`
-
-**禁止操作**：
-- `.env`
-- `.git/`（git 命令除外）
-- 子项目 `reports/`、`knowledge/`（属于任务3 产出，不得在优化任务中随意修改）
-
----
-
-## §6 New Project Rules（任务2）
-
-新项目目录模板：
+## §3 目录约定
 
 ```
-{name}-learning/
-├── AGENTS.md              ← 新项目 Subagent 协议（必须自包含）
-├── CONTEXT.md
-├── README.md
-├── papers/PAPERS_INDEX.md
-├── books/BOOKS_INDEX.md
-├── reports/
-│   ├── paper_analyses/
-│   └── concept_reports/
-├── knowledge/INDEX.md
-├── roadmap/
-│   ├── Learning_Roadmap.md
-│   └── Development_Timeline.md
-└── skills/
-    ├── paper_analysis/SKILL.md
-    └── concept_deep_dive/SKILL.md
+EverAgent/
+├── AGENTS.md            # 本文件
+├── METHODOLOGY.md       # 通用研究方法论（强制）
+├── README.md            # 人类导航（含自动生成的报告计数）
+├── scripts/
+│   ├── reindex.py       # 重建 README 报告/wiki 计数
+│   ├── lint_evidence.py # 证据密度自检（非阻塞）
+│   └── git_identity.py  # 提交身份校验
+├── docs/                # PROTOCOL_COMMON（提交/安全规则）、REPORT_METADATA、personal
+└── {domain}-learning/
+    ├── AGENTS.md        # 领域边界 + 特化（~50 行）
+    ├── PROFILE.md       # 学习者画像
+    ├── MAP.md           # 领域地图（覆盖与缺口）
+    ├── reports/         # 报告产出
+    ├── wiki/            # concepts/ entities/ syntheses/ open-questions.md
+    └── skills/          # 领域特化研究模板
 ```
 
-创建完成后，同步更新：
-1. 本文件 §1 Subagent Registry
-2. `docs/LEARNING_PROJECTS_TASK_BOARD.md` 项目进度概览
-3. 根目录 `README.md` 项目全景表格
+---
+
+## §4 全局规则
+
+- **安全与防幻觉**：[docs/PROTOCOL_COMMON.md](./docs/PROTOCOL_COMMON.md) §A — 未读内容禁止推测；数值必须有来源；不编造。
+- **提交规范**：[docs/PROTOCOL_COMMON.md](./docs/PROTOCOL_COMMON.md) §B/§C — commit 格式、push flow（`GIT_NO_OPTIONAL_LOCKS=1`）。
+- **git 身份**：首次提交前 `python3 scripts/git_identity.py validate`，pre-commit hook 强制校验。
+- **历史版本**：旧的多 Agent 编排框架（任务状态机/锁/事件溯源/Dashboard）归档在 `legacy-v1-multiagent` 分支。
 
 ---
 
-## §7 Commit Protocol（EverAgent 提交规范）
+## §5 新增领域
 
-> 共享规则 → [`docs/PROTOCOL_COMMON.md`](docs/PROTOCOL_COMMON.md) §B Commit Message + §C Push Flow
->
-> 本节仅列出根级特殊说明：
-
-- **Pre-commit hook 强制**：commit 会被 `scripts/git_identity.py` 校验 author 身份，必须是当前模型名 + 供应商 noreply 邮箱
-- **跨子项目提交**：scope 必须是 `global`（修改 AGENTS.md / CLAUDE.md / scripts/ 等全局文件时）
-- **首个 commit 前必跑**：`python3 scripts/git_identity.py validate`，失败则停止
-
----
-
-## §8 Safety Rules（安全铁律）
-
-> 完整规则 → [`docs/PROTOCOL_COMMON.md`](docs/PROTOCOL_COMMON.md) §A Safety Rules（5 条）
->
-> 根级特别强调：
-
-- **§A.1 防幻觉**：调度 subagent 前必须确保 spec 中 `value` 字段清晰、不歧义
-- **§A.2 身份诚实**：EverAgent 自己 commit 时 `Agent:` 行必须是当前真实模型名（如 `MiniMax-M3`），**不是** agent role 名
-- **§A.5 子项目隔离**：EverAgent 修改子项目时遵守该子项目 AGENTS.md §4 的写权限清单
+复制任一领域结构：`AGENTS.md` + `PROFILE.md` + `MAP.md` + `reports/` + `wiki/{concepts,entities,syntheses,open-questions.md}` + `skills/`，然后更新 §1 表格与 README。

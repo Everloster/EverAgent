@@ -1,6 +1,6 @@
 # 技能：AI 论文深度分析
 
-> 基于通用模板：[SKILL_TEMPLATES.md](../../docs/SKILL_TEMPLATES.md) · 模板 A
+> 通用研究方法论与输出框架见根 [METHODOLOGY.md](../../METHODOLOGY.md)（强制）。本文件为领域特化部分。
 > 本文件为领域特化版本，增加了以下专属模块：核心公式、伪代码、训练目标与损失函数
 
 ## 技能描述
