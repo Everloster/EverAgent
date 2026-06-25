@@ -32,10 +32,9 @@ import argparse
 import base64
 import json
 import re
+import shutil
 import subprocess
 import sys
-import urllib.request
-import urllib.error
 from datetime import datetime
 from pathlib import Path
 
@@ -43,32 +42,41 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 REPORTS_DIR = PROJECT_ROOT / "github-trending-reports"
 
 
-def fetch(url: str, accept: str = "application/vnd.github+json") -> dict | str | None:
-    """GET a GitHub API endpoint, return parsed JSON or raw text."""
-    req = urllib.request.Request(url, headers={
-        "Accept": accept,
-        "User-Agent": "EverAgent-TrendAnalyzer/1.0",
-    })
-    try:
-        with urllib.request.urlopen(req, timeout=30) as r:
-            return json.loads(r.read().decode("utf-8"))
-    except urllib.error.HTTPError as e:
-        if e.code == 403:
-            print(f"  [WARN] rate-limited: {e.headers.get('x-ratelimit-remaining', '?')} remaining")
-        else:
-            print(f"  [WARN] HTTP {e.code}: {url}")
+def fetch(endpoint: str, accept: str = "application/vnd.github+json") -> dict | str | None:
+    """GET a GitHub API endpoint via `gh api`, return parsed JSON or raw text.
+
+    `endpoint` is a path like 'repos/{owner}/{repo}' (no host). Authentication
+    is handled by `gh auth login`, so no token management is needed.
+    """
+    if shutil.which("gh") is None:
+        print("  [WARN] `gh` CLI not found; run `gh auth login`")
         return None
-    except (urllib.error.URLError, json.JSONDecodeError) as e:
+    cmd = ["gh", "api", endpoint.lstrip("/")]
+    if accept:
+        cmd += ["-H", f"Accept: {accept}"]
+    try:
+        proc = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
+    except (subprocess.SubprocessError, OSError) as e:
+        print(f"  [WARN] {type(e).__name__}: {e}")
+        return None
+    if proc.returncode != 0:
+        print(f"  [WARN] gh api failed: {endpoint}: {proc.stderr.strip()[:120]}")
+        return None
+    if "raw" in accept:
+        return proc.stdout
+    try:
+        return json.loads(proc.stdout)
+    except json.JSONDecodeError as e:
         print(f"  [WARN] {type(e).__name__}: {e}")
         return None
 
 
 def fetch_repo_meta(owner: str, repo: str) -> dict | None:
-    return fetch(f"https://api.github.com/repos/{owner}/{repo}")
+    return fetch(f"repos/{owner}/{repo}")
 
 
 def fetch_readme(owner: str, repo: str) -> str:
-    data = fetch(f"https://api.github.com/repos/{owner}/{repo}/readme")
+    data = fetch(f"repos/{owner}/{repo}/readme")
     if not isinstance(data, dict) or not data.get("content"):
         return ""
     try:

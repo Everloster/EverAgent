@@ -16,6 +16,7 @@ updated: "2026-04-05"
 |------|---------|---------|------|
 | [TT-1 trending_report](#tt-1-trending_report) | 生成日/周/月 trending 报告 | github-trending-analyzer + github-deep-research | 汇总报告 + N 份 repo 报告 |
 | [TT-2 repo_research](#tt-2-repo_research) | 对单个 repo 深度研究 | github-deep-research | 1 份 repo 报告 |
+| [TT-5 repo_analyze_interactive](#tt-5-repo_analyze_interactive) | 对话贴 repo 链接，交互式分析（已有报告则选更新/换视角/跳过） | github-deep-research | 1 份 repo 报告 |
 | [TT-3 index_sync](#tt-3-index_sync) | 批量操作后同步知识索引 | 无（纯文件维护） | 更新 3 处索引文件 |
 | [TT-4 validate_all](#tt-4-validate_all) | 验证全部报告质量 + 索引一致性 | scripts/validate_reports.py | 验证报告（stdout） |
 
@@ -168,6 +169,59 @@ python3 scripts/validate_reports.py {owner}/{repo}
 验证标准同 TT-1 Step 4（8 项检查）。
 
 **Step 4 — 同步索引**（完成 TT-3）
+
+---
+
+## TT-5: repo_analyze_interactive
+
+> TT-2 的**对话交互式封装**。区别只在触发方式与"已有报告时的交互"，研究/验证/索引全部复用 TT-2/TT-3。
+> 技能文档：[`repo-analyze-interactive/SKILL.md`](repo-analyze-interactive/SKILL.md)
+
+### 触发
+用户在对话中**粘贴 GitHub repo 链接**（如 `https://github.com/interviewstreet/hiring-agent`）并要求分析。
+
+### 执行步骤
+
+**Step 1 — 解析链接**
+
+从 URL 提取 `{owner}/{repo}`，去除 `.git`、尾部斜杠、`?query`、`#frag`、`/tree/...` 等。解析失败则停止并请用户确认链接。
+
+**Step 2 — 检查缓存**
+```bash
+python3 github-trending-analyzer/trending_fetcher.py check {owner}/{repo}
+```
+读取 `exists` / `age_days` / `needs_update` / `name_mismatch` / `path`。
+
+**Step 3 — 分情况处理**
+
+- `exists=false`（无报告）→ 直接进入 Step 4 深度研究，输出默认报告。
+- `exists=true`（有报告）→ **停下来交互**，告知用户"上次分析在 {age_days} 天前"，给出三选一（用 AskUserQuestion）：
+
+  | 选项 | 行为 | 产物 |
+  |------|------|------|
+  | **A. 更新** | 用最新数据重研究，覆盖 | `research_{owner}_{repo}.md` |
+  | **B. 换视角** | 先问用户要哪个视角，再研究，**不覆盖** | `research_{owner}_{repo}_{topic}.md` |
+  | **C. 跳过** | 读取并展示现有报告，结束 | 不改文件 |
+
+  - 选 B 时：用 AskUserQuestion 让用户选视角（安全 security / 商业 business / 架构 architecture / 竞品 ecosystem / 其他自定义）；研究时围绕该视角展开，7 章结构不变。
+
+**Step 4 — 深度研究**
+
+调用 `github-deep-research`，4 轮研究（同 TT-1 Step 3）。换视角时各章内容侧重该视角。
+
+**Step 5 — 写报告 + 验证 + 同步索引**
+
+- 写入 `github-trending-reports/research_{owner}_{repo}.md`（或换视角的 `_{topic}` 后缀文件）
+- 验证：`python3 scripts/validate_reports.py {owner}/{repo}` → exit 0 才合格（V-NAME 接受非日期后缀；换视角文件按其文件名校验）
+- 同步索引：执行 TT-3
+
+### 输出命名
+| 场景 | 文件名 |
+|------|--------|
+| 默认 / 更新 | `research_{owner}_{repo}.md`（保留原始大小写与连字符，无日期后缀） |
+| 换视角 | `research_{owner}_{repo}_{topic}.md`（topic 英文小写短词） |
+
+> 注：换视角文件会让 TT-3/V-INDEX 的"按首个下划线拆 owner/repo"出现额外条目，属预期；它们是同一 repo 的不同视角报告，索引里并列即可，不视为重复。
 
 ---
 

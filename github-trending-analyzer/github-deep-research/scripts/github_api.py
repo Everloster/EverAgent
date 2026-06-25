@@ -1,106 +1,68 @@
 #!/usr/bin/env python3
 """
 GitHub API client for deep research.
-Uses requests for HTTP operations.
+Uses the `gh` CLI (gh api) for all requests — authentication is handled by
+the user's existing `gh auth login`, so no token management is needed.
 """
 
 import json
+import shutil
+import subprocess
 import sys
 from typing import Any, Dict, List, Optional
-from urllib.parse import urlencode
-
-
-def encode_query_params(params: Dict) -> str:
-    """Encode query parameters safely, including spaces and special characters."""
-    return urlencode(params, doseq=True)
 
 
 class GitHubAPIError(Exception):
     """Raised when GitHub API request fails."""
 
 
-try:
-    import requests
-except ImportError:
-    # Fallback to urllib if requests not available
-    import urllib.error
-    import urllib.request
-
-    class RequestsFallback:
-        """Minimal requests-like interface using urllib."""
-
-        class Response:
-            def __init__(self, data: bytes, status: int):
-                self._data = data
-                self.status_code = status
-                self.text = data.decode("utf-8", errors="replace")
-
-            def json(self):
-                return json.loads(self._data)
-
-            def raise_for_status(self):
-                if self.status_code >= 400:
-                    raise Exception(f"HTTP {self.status_code}")
-
-        @staticmethod
-        def get(url: str, headers: dict = None, params: dict = None, timeout: int = 30):
-            if params:
-                query = encode_query_params(params)
-                url = f"{url}?{query}"
-
-            req = urllib.request.Request(url, headers=headers or {})
-            try:
-                with urllib.request.urlopen(req, timeout=timeout) as resp:
-                    return RequestsFallback.Response(resp.read(), resp.status)
-            except urllib.error.HTTPError as e:
-                return RequestsFallback.Response(e.read(), e.code)
-
-    requests = RequestsFallback()
-
-
 class GitHubAPI:
-    """GitHub API client for repository analysis."""
-
-    BASE_URL = "https://api.github.com"
+    """GitHub API client backed by the `gh` CLI."""
 
     def __init__(self, token: Optional[str] = None):
         """
         Initialize GitHub API client.
 
         Args:
-            token: Optional GitHub personal access token for higher rate limits
+            token: Ignored — kept for backward compatibility. `gh` uses its own
+                   stored credentials (`gh auth login`).
         """
-        self.token = token
-        self.headers = {
-            "Accept": "application/vnd.github.v3+json",
-            "User-Agent": "Deep-Research-Bot/1.0",
-        }
-        if token:
-            self.headers["Authorization"] = f"token {token}"
+        if shutil.which("gh") is None:
+            raise GitHubAPIError(
+                "`gh` CLI not found. Install it and run `gh auth login`."
+            )
 
     def _get(
         self, endpoint: str, params: Optional[Dict] = None, accept: Optional[str] = None
     ) -> Any:
-        """Make GET request to GitHub API."""
-        url = f"{self.BASE_URL}{endpoint}"
-        headers = self.headers.copy()
+        """Make a GET request via `gh api`."""
+        cmd = ["gh", "api", endpoint.lstrip("/")]
         if accept:
-            headers["Accept"] = accept
+            cmd += ["-H", f"Accept: {accept}"]
+        if params:
+            # `-X GET -f k=v` sends params as query string (plain `-f` would POST).
+            cmd += ["-X", "GET"]
+            for key, value in params.items():
+                cmd += ["-f", f"{key}={value}"]
 
         try:
-            resp = requests.get(url, headers=headers, params=params, timeout=30)
-            resp.raise_for_status()
-        except Exception as e:
+            proc = subprocess.run(
+                cmd, capture_output=True, text=True, timeout=60
+            )
+        except (subprocess.SubprocessError, OSError) as e:
+            raise GitHubAPIError(f"GitHub API request failed: GET {endpoint}: {e}") from e
+
+        if proc.returncode != 0:
             message = f"GitHub API request failed: GET {endpoint}"
             if params:
                 message += f" params={params}"
-            raise GitHubAPIError(f"{message}: {e}") from e
+            raise GitHubAPIError(f"{message}: {proc.stderr.strip()}")
 
         if "application/vnd.github.raw" in (accept or ""):
-            return resp.text
+            return proc.stdout
         try:
-            return resp.json()
-        except Exception as e:
+            return json.loads(proc.stdout)
+        except (json.JSONDecodeError, ValueError) as e:
             raise GitHubAPIError(
                 f"GitHub API returned non-JSON response for {endpoint}: {e}"
             ) from e

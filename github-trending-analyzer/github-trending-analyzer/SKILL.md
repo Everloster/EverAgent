@@ -15,10 +15,14 @@ description: "Analyzes GitHub trending repositories by day/week/month using deep
 
 ## 环境配置
 
+GitHub API 调用统一通过 **`gh` CLI**（`gh api`），认证由 `gh auth login` 处理，**无需配置 token**。
+执行前确保 `gh auth status` 显示已登录。
+
 | 变量 | 说明 | 默认值 |
 |------|------|--------|
-| `GITHUB_TOKEN` | 避免 API 速率限制 | 无 |
 | `TRENDING_REPORTS_DIR` | 报告输出目录 | `./github-trending-reports` |
+
+> 注：`github.com/trending` 榜单页为 HTML 抓取（非 API），不经 gh；其余所有 GitHub API 调用（repo 元数据、README、contributors、releases、search 等）均走 `gh api`。
 
 ## 辅助工具
 
