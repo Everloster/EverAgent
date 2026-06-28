@@ -110,5 +110,6 @@
 - volcengine/OpenViking
 - vxcontrol/pentagi
 - withastro/flue
+- xbtlin/ai-berkshire
 - Yeachan-Heo/oh-my-claudecode
 - Yeachan-Heo/oh-my-codex
