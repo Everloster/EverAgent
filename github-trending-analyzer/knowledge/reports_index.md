@@ -97,6 +97,7 @@
 - sickn33/antigravity-awesome-skills
 - siddharthvaddem/openscreen
 - stablyai/orca
+- StarTrail-org/PixelRAG
 - supermemoryai/supermemory
 - swc-project/swc
 - systemd/systemd
