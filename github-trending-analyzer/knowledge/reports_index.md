@@ -82,6 +82,7 @@
 - NousResearch/hermes-agent
 - NVIDIA/SkillSpector
 - obra/superpowers
+- omnigent-ai/omnigent
 - onyx-dot-app/onyx
 - openclaw/openclaw
 - p-e-w/heretic
