@@ -107,6 +107,7 @@
 - tinygrad/tinygrad
 - tursodatabase/turso
 - twentyhq/twenty
+- usestrix/strix
 - Vaibhavs10/insanely-fast-whisper
 - vectorize-io/hindsight
 - virattt/ai-hedge-fund
