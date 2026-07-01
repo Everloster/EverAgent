@@ -90,6 +90,7 @@
 - pascalorg/editor
 - pbakaus/impeccable
 - promptfoo/promptfoo
+- Robbyant/lingbot-map
 - ruvnet/ruflo
 - ruvnet/RuView
 - shareAI-lab/learn-claude-code
