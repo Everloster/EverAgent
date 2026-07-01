@@ -58,6 +58,7 @@
 - HKUDS/LightRAG
 - hsliuping/TradingAgents-CN
 - huggingface/skills
+- InternScience/Agents-A1
 - interviewstreet/hiring-agent
 - iptv-org/iptv
 - jamwithai/production-agentic-rag-course
