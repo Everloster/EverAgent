@@ -17,7 +17,7 @@
 
 ## 出现于
 
-- [[../reports/text_analyses/2026-06-18_xiaoyuzhou_vol29_wangxiaochuan|Vol.29 报告]]
+- [[../reports/2026-06-18_xiaoyuzhou_vol29_wangxiaochuan|Vol.29 报告]]
 
 ## 相关链接
 
