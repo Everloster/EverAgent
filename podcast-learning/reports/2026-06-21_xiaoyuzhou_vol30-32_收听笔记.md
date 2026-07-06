@@ -1,7 +1,7 @@
 ---
 title: "Vol.30-32 三期高质播客综合收听笔记（Sahil Lavingia 一人公司 + 塔利班女孩 + 香会 X 教育）"
 domain: "podcast-learning"
-report_type: text_analysis
+report_type: cross_episode
 source: 小宇宙播客
 source_url: https://www.xiaoyuzhoufm.com/
 show: "What's Next 科技早知道 / 声东击西 / 后互联网时代的乱弹"

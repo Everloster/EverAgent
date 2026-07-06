@@ -1,7 +1,7 @@
 ---
 title: "Vol.29 对话王小川：造医生，战豆包，与无尽的 AI 非共识"
 domain: "podcast-learning"
-report_type: text_analysis
+report_type: episode_summary
 source: 小宇宙播客
 source_url: https://www.xiaoyuzhoufm.com/episode/6a3207814233e62bc54b2a3f
 show: "（明镜与点点）"
@@ -17,7 +17,7 @@ polished_at: 2026-06-18
 status: archived
 created: 2026-06-18
 updated_on: 2026-06-18
-transcript_path: reports/text_analyses/2026-06-18_xiaoyuzhou_vol29_wangxiaochuan.transcript.txt
+transcript_path: reports/transcripts/2026-06-18_xiaoyuzhou_vol29_wangxiaochuan.transcript.txt
 ---
 
 # Vol.29 对话王小川：造医生，战豆包，与无尽的 AI 非共识

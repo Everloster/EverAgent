@@ -1,7 +1,7 @@
 ---
 title: "三年行业吃肉榜/爆亏榜大合集（2023-2025）：谁在偷偷赚钱，谁在快速衰落"
 domain: "中国行业 / 商业 / 宏观经济"
-report_type: text_analysis
+report_type: episode_summary
 source: Bilibili 视频
 source_url: https://www.bilibili.com/video/BV1NHJF6oE8m
 show: "CLS同学 行业系列"

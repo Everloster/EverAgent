@@ -9,6 +9,17 @@
 
 ---
 
+## 四类项目
+
+| 类 | 项目 | 工作模式 |
+|----|------|---------|
+| **A 知识研究** | ai / cs / philosophy / psychology / biology | 对话启发式学习，真读原文，产出高质量报告 |
+| **B 代码实践** | ai-practice | 各类 AI 技术的低成本可运行 demo + 教学笔记 |
+| **C 播客学习** | podcast-learning | 发链接 → 本地转写 → 润色 → 总结/讨论 → 报告 |
+| **D 开源研究** | github-trending-analyzer | 发 repo 链接 → 输出/更新研究报告（自带脚本与协议） |
+
+---
+
 ## 项目全景
 
 > 下表由 `python3 scripts/reindex.py` 自动生成。
@@ -16,7 +27,7 @@
 <!-- AUTO-OVERVIEW:START -->
 | 项目 | 报告 | Wiki(概念/实体/综合) |
 |------|------|----------------------|
-| 🤖 [AI Learning](./ai-learning/) | 78 篇 | 39/28/1 |
+| 🤖 [AI Learning](./ai-learning/) | 77 篇 | 39/28/1 |
 | 💻 [CS Learning](./cs-learning/) | 32 篇 | 24/17/1 |
 | 📚 [Philosophy Learning](./philosophy-learning/) | 20 篇 | 18/14/1 |
 | 🧠 [Psychology Learning](./psychology-learning/) | 17 篇 | 13/13/0 |

@@ -1,11 +1,14 @@
-# AI Practice — LLM 工程实践教程
+# AI Practice — 各类 AI 技术的低成本 demo
 
-> 从"手写 Transformer"到"微调大模型"的完整工程实践路径。
-> 4 个主阶段 + 2 个架构/系统扩展实验，涵盖 LLM 核心工程技能。
+> 用最小、可在个人机器（CPU / 单卡 / 缩尺模拟）跑起来的 demo，把一项 AI 技术讲透。
+> 类似"教学材料配套代码"：每个 demo 配一篇教学笔记，数值都来自实际运行。
+> 覆盖 Transformer/注意力、微调（LoRA/GRPO）、RAG、Agent、多模态、推理优化、扩散模型等——不限于 LLM 工程。
 
 ---
 
-## 你将学到什么
+## 现有主线（LLM 工程实践路径）
+
+从"手写 Transformer"到"微调大模型"的完整路径，4 个主阶段 + 架构/系统扩展实验：
 
 | 阶段 | 内容 | 技术栈 |
 |------|------|--------|
@@ -15,6 +18,8 @@
 | 2 — 工具 | Transformers 库三层 API | HuggingFace Transformers |
 | 3 — 生态 | HuggingFace Hub 模型与数据集管理 | huggingface_hub、datasets |
 | 4 — 微调 | Qwen2.5-3B GRPO 强化学习微调 | Unsloth、TRL、PEFT |
+
+> 新方向（RAG/Agent/多模态/推理优化等）按同样"低成本可运行 demo + 教学笔记"模式增量加入，见 [AGENTS.md](./AGENTS.md)。
 
 ---
 
