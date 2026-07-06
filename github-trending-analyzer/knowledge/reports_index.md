@@ -118,3 +118,4 @@
 - xbtlin/ai-berkshire
 - Yeachan-Heo/oh-my-claudecode
 - Yeachan-Heo/oh-my-codex
+- Zackriya-Solutions/meetily
