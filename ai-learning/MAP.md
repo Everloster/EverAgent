@@ -12,7 +12,7 @@
 | 数学与ML基础 | ✓ | 待统计 | 待补 |
 | 深度学习核心 | ✓ | 待统计 | 待补 |
 | 大语言模型与NLP | ✓ | 待统计 | 待补 |
-| 前沿专题(Agent/推理/多模态) | ✓ | 待统计 | 待补 |
+| 前沿专题(Agent/推理/多模态) | ✓ | Agent Harness 三大流派、自进化路径、AI 编码 Agent 终端；**进化式 harness 一手实证（paper 46）** | 进化循环的过拟合防护、reward 消融、跨家族迁移机制待补 |
 | 可解释性 & AI 安全 | ✓ | J-space/J-lens 全局工作空间（paper 45） | 点火实验、机制可解释性系统方法（SAE 等）待补 |
 
 ---
@@ -29,3 +29,5 @@
 
 - 初始化领域地图（EverAgent，architecture-redesign）。覆盖状态待逐步回填。
 - `2026-07-07` — 新增"可解释性 & AI 安全"主线，覆盖 J-space/J-lens 全局工作空间（paper 45）。
+- `2026-07-07` — 前沿专题(Agent)补充进化式 harness 一手实证（paper 46，Niklaus "Don't Train the Model, Evolve the Harness"）；关联 wiki/concepts/agent_harness.md。
+- `2026-07-07` — 新增讨论型报告《Bitter Lesson vs Agent Harness 推演与网上观点审阅》，缝合 paper 22 × 46，交叉审阅 5 份网络观点（Minh Pham/exe.dev/Miessler/PostHog-Tavily/Howardism），提出"两把镰刀 + 知识/底座二分 + 可证伪信号"。
