@@ -13,21 +13,24 @@ related_entities: ["openai", "anthropic"]
 
 > **这篇是什么**：把"LLM + Agent Harness 工程"这套东西，从**一次请求怎么走**的角度讲透。不停留在概念，而是落到**真实报文的字段**和**官方文档写的循环伪代码**，回答两个最容易含糊的问题。
 >
-> **要澄清的两个核心问题**：
+> **要澄清的三个核心问题**：
 > 1. 加上 Harness 后，中间要调用工具时，**Harness / LLM / 工具三方到底是如何"有来有回"交互的**？
 > 2. LLM 是无状态的，那在一次长对话里反复调工具，**输入 token 是不是单向越滚越大、最终逼近上下文上限**？如果是，工业界怎么治？
+> 3. 当 LLM 输出不带工具调用的纯文本（即要回复用户了），用户**再追问时，之前 LLM 回复过的内容、调用过的工具，会不会再次成为上下文**？
 >
-> **怎么读**：只想要结论 → 看「🎯 两句话直答」+「🔧 一次工具往返的报文级全景」。想搞清 token 为什么膨胀、怎么治 → 看「📈 token 膨胀」+「🧹 四类治理机制」。想校正几个常见误解 → 看「🧠 四个容易踩的认知误区」。
+> **怎么读**：只想要结论 → 看「🎯 三句话直答」+「🔧 一次工具往返的报文级全景」。想搞清 token 为什么膨胀、怎么治 → 看「📈 token 膨胀」+「🧹 四类治理机制」。想懂多轮对话里历史怎么带 → 看「🔄 跨用户轮次」。想校正几个常见误解 → 看「🧠 四个容易踩的认知误区」。
 >
 > **证据边界**：所有带 `报文`/`字段名`/`具体数值` 的结论都来自 OpenAI / Anthropic 官方文档原文（链接见文末），逐条标了出处。标 `[推测]` 的是推断，非官方定论。
 
 ---
 
-## 🎯 两句话直答
+## 🎯 三句话直答
 
 > **问题一**：三方交互的本质是一个 **`messages` 数组不断追加、Harness 反复回发的 `while` 循环**。LLM 每轮只输出"要调哪个工具、参数是什么"（一个结构化对象），**它自己不执行**；Harness 执行完把结果作为一条新消息**追加**回数组，再把**全量数组**重新发给 LLM，直到 LLM 输出"不带工具调用的纯文本"才收尾。这就是 Anthropic 官方写的 `while stop_reason == "tool_use"` 循环。
 >
 > **问题二**：**原生不做优化时，输入 token 确实单向膨胀**，根因就是"LLM 无状态"。现代解法分两个层次：① **推理侧的 prompt caching**——不减文本，但把重复前缀的计费打到 **0.1 倍**、并省掉重复 prefill 计算；② **上下文侧的 context editing / compaction**——真的把老消息删掉或压成摘要，官方示例能把 ~100k tokens 压回 ~2–3k。二者正交，通常叠加使用。
+>
+> **问题三**：**会，而且默认全都带回来。** 一次回复结束不清空任何东西——用户的追问只是往同一个 `messages` 数组**再 append 一条 `user` 消息**，之前所有的用户提问、assistant 回复、工具调用（`tool_use`/`tool_call`）和工具结果（`tool_result`）**原样留在数组里一起重发**。这正是 LLM"记得"上文的唯一机制。所以问题二的 token 膨胀**不在一次回复处归零，而是跨用户轮次继续累积**。（唯一例外：模型的"思考/reasoning"块有特殊处理，见「🔄 跨用户轮次」。）
 
 ---
 
@@ -210,6 +213,48 @@ LLM 无状态  ⇒  每轮必须重发全量历史  ⇒  历史只增不减  ⇒
 
 ---
 
+## 🔄 跨用户轮次：一次回复结束后，历史会重新进上下文吗？（回答问题三）
+
+**会，而且默认全部带回来。** 这是很多人第一次接触时最反直觉的一点：一次 Agent 循环收尾（LLM 输出纯文本、Harness 推给用户）**并不清空任何东西**。用户追问的那一刻，发生的仅仅是——往同一个 `messages` 数组**再 append 一条 `user` 消息**，然后把**整个数组**（含之前所有用户提问、assistant 回复、工具调用与工具结果）重新发给 LLM。
+
+换句话说，问题二里的 token 膨胀**不会在每次回复处归零，而是跨用户轮次继续累积**。所谓"多轮对话"，本质就是"一个只增不减的 `messages` 数组，被反复重发"。
+
+### 官方证据：手动管理 = 把上一轮输出 append 回去
+
+OpenAI 官方给的多轮标准写法，字面就是"把模型上一次的输出塞回历史，再加新问题"：
+
+> ```python
+> history = [{"role": "user", "content": "tell me a joke"}]
+> response = client.chat.completions.create(model=..., messages=history)
+> history.append(response.choices[0].message)      # ← 上一轮 assistant 回复 append 回去
+> history.append({"role": "user", "content": "tell me another"})  # ← 新追问
+> second = client.chat.completions.create(model=..., messages=history)  # ← 全量重发
+> ```
+> "By using alternating `user` and `assistant` messages, you capture the previous state of a conversation in one request to the model."（OpenAI Conversation state docs 原文示例）
+
+带工具的对话同理：**上一轮的 `tool_use`/`tool_call` 和 `tool_result` 必须一起保留在数组里**，否则模型对不上"这个结果是哪次调用来的"，也丢失了它上一轮为什么那样答的依据。
+
+### 一个关键澄清：Responses API "有状态" ≠ "省 token"
+
+有人会问："OpenAI 的 Responses API 不是有 `previous_response_id`、Conversations 对象这种服务端状态吗？那是不是就不用重发历史、也不涨 token 了？"——**这是个常见误解**。服务端替你**存**了历史、免去你手动拼数组，但送进模型的上下文一分没少：
+
+> "Even when using `previous_response_id`, all previous input tokens for responses in the chain are billed as input tokens in the API."（OpenAI Conversation state docs 原文）
+
+即：**"有状态"省的是你的拼接工作，不是模型的输入 token。** 计费与膨胀照旧，真正省钱还得靠 prompt caching（改单价）+ 裁剪/摘要（改数量），见下一节。
+
+### 唯一的例外：模型的"思考/reasoning"块
+
+正常的 `text` / `tool_use` / `tool_result` 都原样带回；但模型的**内部思考块**（Anthropic 的 `thinking` 块、OpenAI 的 reasoning）是个特例，处理**依模型而异**：
+
+- **保留**：在较新的模型上（Anthropic 官方举例 Opus 4.5+ / Sonnet 4.6+），跨轮**默认保留**之前的 thinking 块，且它们**计入输入 token**（命中缓存时按缓存价）。
+- **剥离**：在较早的 Opus/Sonnet 与全部 Haiku 上，一旦来了一条**非 tool_result 的 user 消息**（也就是用户真正的新追问），**之前所有 thinking 块会被自动丢弃、从上下文剥离**。（Anthropic Extended thinking docs 原文）
+
+> 一个务必记住的约束：**在一次带工具的循环内部，thinking 块必须原样保留、不能改**（尤其是 interleaved thinking），否则会破坏签名与推理连续性。"跨用户轮次可剥离"和"循环内必须保留"是两个不同的边界。（Anthropic docs）
+
+**小结**：默认心智模型就记一句话——**除了模型思考块可能被剥离，其余历史（含工具往返）跨轮全带**。这也是为什么长对话最终一定要靠下一节的治理机制。
+
+---
+
 ## 🧹 四类治理机制：怎么阻止上下文无限膨胀
 
 按**"改数量" vs "改单价"**两个正交维度归类，这是理解各机制关系的关键：
@@ -238,7 +283,7 @@ LLM 无状态  ⇒  每轮必须重发全量历史  ⇒  历史只增不减  ⇒
 ## 💭 思考与追问
 
 1. **我真正理解了什么？**
-   我把"有来有回"这个模糊直觉，落成了**报文级的确定机械过程**：一个 `messages` 数组的追加—重发循环，退出判据是两家文档白纸黑字的 `stop_reason`/`finish_reason`。同时确认了 token 膨胀的因果链（无状态 → 全量重发 → 单向膨胀）**必然成立**，并把治理拆成正交的两轴——**"改单价"（prompt caching，0.1 折）** vs **"改数量"（窗口/摘要/context editing）**。最有价值的收获是校正了四个常见认知误区，其中最关键的三个：客户端"看不到中间步骤"（错，流式协议原生可见）、缓存"只提速"（漏了 10 倍降价）、上下文治理"只能客户端写"（漏了服务端自动 compaction/context editing）。
+   我把"有来有回"这个模糊直觉，落成了**报文级的确定机械过程**：一个 `messages` 数组的追加—重发循环，退出判据是两家文档白纸黑字的 `stop_reason`/`finish_reason`。同时确认了 token 膨胀的因果链（无状态 → 全量重发 → 单向膨胀）**必然成立**，而且这条膨胀线**不会在一次回复结束时归零，而是跨用户追问继续累积**——除了模型思考块可能被剥离，其余历史（含工具往返）跨轮全带；连"服务端有状态"也只省拼接、不省 token。我把治理拆成正交的两轴——**"改单价"（prompt caching，0.1 折）** vs **"改数量"（窗口/摘要/context editing）**。最有价值的收获是校正了四个常见认知误区，其中最关键的三个：客户端"看不到中间步骤"（错，流式协议原生可见）、缓存"只提速"（漏了 10 倍降价）、上下文治理"只能客户端写"（漏了服务端自动 compaction/context editing）。
 
 2. **我还没搞懂什么？**（汇入 open-questions）
    - **compaction 的摘要质量如何保证不丢关键约束？** 官方把 100k 压到 2–3k，压缩比 ~40×，那些被丢掉的工具中间结果里若含后续步骤依赖的关键事实，模型如何不"断片"？有没有可证伪的失败模式基准？
@@ -268,3 +313,7 @@ LLM 无状态  ⇒  每轮必须重发全量历史  ⇒  历史只增不减  ⇒
   https://docs.claude.com/en/docs/build-with-claude/prompt-caching
 - Anthropic · Context editing & Compaction（clear_tool_uses / compaction_control）
   https://docs.claude.com/en/docs/build-with-claude/context-editing
+- OpenAI · Conversation state（手动 append 历史 / `previous_response_id` 仍全量计费）
+  https://platform.openai.com/docs/guides/conversation-state
+- Anthropic · Extended thinking（thinking 块跨轮保留 vs 剥离，依模型而异）
+  https://docs.claude.com/en/docs/build-with-claude/extended-thinking
