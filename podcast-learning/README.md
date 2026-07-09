@@ -1,7 +1,7 @@
 # 播客学习 — 本地转写驱动
 
 > 发一个播客/视频链接 → 本地转写出原文 → 润色 → 总结/讨论 → 产出报告。
-> 转写全程本地运行（faster-whisper），不上传云端。
+> 转写全程本地运行（whisper.cpp / Metal 加速），不上传云端。
 
 > **AI 使用本项目？** → 先读 [AGENTS.md](./AGENTS.md) 与根 [METHODOLOGY.md](../METHODOLOGY.md)。
 
@@ -27,7 +27,7 @@ AI：1. 本地转写   scripts/transcribe.py → reports/transcripts/*.transcrip
 ```
 podcast-learning/
 ├── AGENTS.md              # 执行协议
-├── SETUP.md               # 转写依赖安装（yt-dlp + faster-whisper + ffmpeg）
+├── SETUP.md               # 转写依赖安装（whisper.cpp + yt-dlp + ffmpeg）
 ├── scripts/
 │   └── transcribe.py      # 本地转写脚本
 ├── reports/
