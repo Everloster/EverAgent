@@ -31,4 +31,4 @@
 - `2026-07-07` — 新增"可解释性 & AI 安全"主线，覆盖 J-space/J-lens 全局工作空间（paper 45）。
 - `2026-07-07` — 前沿专题(Agent)补充进化式 harness 一手实证（paper 46，Niklaus "Don't Train the Model, Evolve the Harness"）；关联 wiki/concepts/agent_harness.md。
 - `2026-07-07` — 新增讨论型报告《Bitter Lesson vs Agent Harness 推演与网上观点审阅》，缝合 paper 22 × 46，交叉审阅 5 份网络观点（Minh Pham/exe.dev/Miessler/PostHog-Tavily/Howardism），提出"两把镰刀 + 知识/底座二分 + 可证伪信号"。
-- `2026-07-09` — 前沿专题(Agent)补充《Harness 请求全链路深度解析》：报文级拆解客户端↔网关↔Harness↔LLM↔工具"有来有回"（OpenAI tool_calls / Anthropic tool_use·tool_result·stop_reason 循环），解答 token 单向膨胀因果，四类上下文治理（prompt caching 0.1×、滑窗、compaction、context editing），并对豆包答案 5 处纠偏。新缺口汇入 open-questions（compaction 压缩比失真、caching 前缀失效、服务端/客户端历史对账）。
+- `2026-07-09` — 前沿专题(Agent)补充《Harness 请求全链路深度解析》：报文级拆解客户端↔网关↔Harness↔LLM↔工具"有来有回"（OpenAI tool_calls / Anthropic tool_use·tool_result·stop_reason 循环），解答 token 单向膨胀因果，四类上下文治理（prompt caching 0.1×、滑窗、compaction、context editing），并澄清 4 个常见认知误区。新缺口汇入 open-questions（compaction 压缩比失真、caching 前缀失效、服务端/客户端历史对账）。定位为纯原理讲解（不含来源评价）。
