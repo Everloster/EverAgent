@@ -337,5 +337,18 @@ note: "本报告按 podcast-learning/AGENTS.md 的 5 步协议产出，但本次
 
 ---
 
+## 版权与引用
+
+- **节目版权**：本资料涉及 3 期独立播客节目，版权归各自主理人 / 嘉宾 / 制作方所有：
+  - Vol.30 版权归 What's Next 科技早知道（声动活泼）/ Sahil Lavingia 所有
+  - Vol.31 版权归声动活泼（声东击西）/ 受访者 Lina & Sophia 所有（化名报道）
+  - Vol.32 版权归后互联网时代的乱弹（庄表伟 + 声湃 WavPub）所有
+- **本资料性质**：仅供个人学习、研究用途，遵循《著作权法》第 24 条合理使用原则。
+- **完整转录**：本期为 cross_episode 综合精读，**未取得完整转录**（详见 §任务 T069 限制段）；仅依据小宇宙 show notes + Apple Podcasts 节目描述 + 声动活泼官方宣传 + 豆瓣元数据 + 多源 web_search 合成。
+- **引用边界**：本报告所有原话引用每条 ≤ 3 句 + 评价/分析，属合理使用。
+- **下架请求**：如任何一期版权方认为内容超出合理使用范围，请联系项目维护者（详见 [COPYRIGHT.md](./COPYRIGHT.md)）。
+
+---
+
 *报告生成：PodcastAgent (Claude, MiniMax-M3) · 2026-06-21*
 *协议：podcast-learning/AGENTS.md v1.0 · 任务 T069*

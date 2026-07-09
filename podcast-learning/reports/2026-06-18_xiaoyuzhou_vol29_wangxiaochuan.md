@@ -174,6 +174,16 @@ transcript_path: reports/transcripts/2026-06-18_xiaoyuzhou_vol29_wangxiaochuan.t
 
 ---
 
+## 版权与引用
+
+- **节目版权**：本资料涉及的播客节目版权归主理人（明镜与点点）/ 嘉宾（王小川）/ 制作方所有。
+- **本资料性质**：仅供个人学习、研究用途，遵循《著作权法》第 24 条合理使用原则。
+- **完整转录**：原始转录稿 `reports/transcripts/2026-06-18_xiaoyuzhou_vol29_wangxiaochuan.transcript.txt` 保留在仓库中（**未润色，标点稀疏**）。
+- **引用边界**：本报告所有原话引用每条 ≤ 3 句 + 评价/分析，属合理使用。
+- **下架请求**：如版权方认为内容超出合理使用范围，请联系项目维护者（详见 [COPYRIGHT.md](./COPYRIGHT.md)）。
+
+---
+
 ## Limitations
 
 1. **人工润色保留**：
