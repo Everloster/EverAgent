@@ -22,6 +22,9 @@
 - **[Bitter Lesson × Harness]** "能力缺口填补物 vs 保证型需求"能否**事前**形式化判定哪段确定性代码会 BLE-hobbled？PostHog 的 todo_write（活）与 JSON retry（死）都是确定性代码，事后好解释、事前难预测（来源：Bitter Lesson vs Harness 推演 20260707）
 - **[Bitter Lesson × Harness]** "两把镰刀"哪把更快削平 harness——agentic-RL（模型吸收）还是 MCP 生态（协议标准化）？机制不同，结局不同（来源：同上）
 - **[Bitter Lesson × Harness]** 进化循环真的完全免疫镰刀吗？"设计 reward 和搜索空间"会不会也被 meta-search（AlphaEvolve 式）吃掉，人退到哪一层？（来源：同上）
+- **[Harness 请求链路]** compaction 把 ~100k 压到 ~2–3k（~40× 压缩比），被丢的工具中间结果若含后续依赖的关键事实，模型如何不"断片"？有无可证伪的失败模式基准？（来源：Harness 请求全链路 20260709）
+- **[Harness 请求链路]** prompt caching 前缀失效边界：system/tools/老历史改一字节即整段失效重写（1.25×）。"动态 RAG 每轮注入不同片段"是否系统性打穿缓存、让 0.1 折形同虚设？RAG 该放前缀还是尾部？（来源：同上）
+- **[Harness 请求链路]** 服务端 context editing 清掉的工具历史 vs 客户端持久化的全量历史，一致性/审计以哪份为准？（来源：同上）
 
 ---
 

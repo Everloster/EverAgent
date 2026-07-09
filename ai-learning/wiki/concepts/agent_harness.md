@@ -1,7 +1,7 @@
 # Agent Harness / 进化式 Harness（脚手架与自动优化）
 
 > 维护日期：2026-07-07 | 分类：AI Agent / Scaffolding / 自进化
-> 关联报告：`reports/paper_analyses/46_evolve_the_harness_2026.md`、`reports/knowledge_reports/Agent_Harness_三大设计流派解析.md`、`reports/knowledge_reports/Agent_自进化技术路径深度解析.md`
+> 关联报告：`reports/paper_analyses/46_evolve_the_harness_2026.md`、`reports/knowledge_reports/Agent_Harness_三大设计流派解析.md`、`reports/knowledge_reports/Agent_自进化技术路径深度解析.md`、`reports/knowledge_reports/Agent_Harness请求全链路_深度解析_20260709.md`（报文级请求全链路 + 上下文膨胀治理）
 
 ---
 
