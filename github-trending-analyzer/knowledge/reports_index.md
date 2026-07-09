@@ -64,6 +64,7 @@
 - jamwithai/production-agentic-rag-course
 - jarrodwatts/claude-hud
 - jingyaogong/minimind
+- karpathy/autoresearch
 - kepano/obsidian-skills
 - koala73/worldmonitor
 - Kong/insomnia
@@ -90,6 +91,7 @@
 - pascalorg/editor
 - pbakaus/impeccable
 - promptfoo/promptfoo
+- ResearAI/OpenScience
 - Robbyant/lingbot-map
 - ruvnet/ruflo
 - ruvnet/RuView
