@@ -2,6 +2,7 @@
 
 > 按主题分类的内容目录。每次 Ingest 必须更新。
 > 链接到 [[log|log.md]] 查看完整时间线。
+> **版权与引用**：见 [COPYRIGHT.md](../COPYRIGHT.md)。节目版权归主理人/嘉宾/制作方所有。
 
 ## Reports（精读归档）
 
@@ -16,6 +17,10 @@
 ### 跨领域综合（Vol.30-32 三期）
 
 - [[2026-06-21_xiaoyuzhou_vol30-32_收听笔记|Vol.30-32 三期高质播客综合收听笔记]]（text_analysis · 2026-06-21）— 覆盖学术/科技 + 商业（Vol.30）/ 心理学+人文+国际（Vol.31）/ 工程+开发者文化（Vol.32）
+
+### 读书方法论 / 认知框架
+
+- [[2026-07-09_xiaoyuzhou_6a4b22ad_lijigang|读书：4种配速，取景框，人是滤器，冲刷神经网络 —— 明镜与李继刚关于读书方法论的深度对话]]（episode_summary · 2026-07-09）— 小宇宙「明镜与点点」（面基）对谈节目，1h54min，核心公式 F × X = Fx
 
 ---
 
@@ -43,6 +48,11 @@
 - [[entities/lina-kabul-pseudonym|Lina（化名）]] — 喀布尔阿富汗女孩（Vol.31 受访者）
 - [[entities/sophia-mazar-pseudonym|Sophia（化名）]] — 马扎里沙里夫阿富汗女孩（Vol.31 受访者）
 
+### 来自 2026-07-09 对谈节目
+
+- [[entities/mingjing|明镜]] — 小宇宙「明镜与点点」主理人，43talks 闭门会创办者
+- [[entities/li-jigang|李继刚]]（43 AI · 即刻）— 2026-07-09 嘉宾对谈；提出"取景框""影子之书"等关键概念
+
 ## Concepts（核心概念）
 
 ### 来自 Vol.29 王小川系列
@@ -66,10 +76,15 @@
 - [[concepts/shangri-la-dialogue|香格里拉对话（香会）]] — 中美防务高层定期对话机制，避免军事误判
 - [[concepts/ai-era-education-challenge|AI 时代的教育挑战]] — 中小学 / 大学 / 职业教育的体系性改革压力
 
+### 来自 2026-07-09 对谈节目系列
+
+- [[concepts/fx-formula|F × X = Fx 公式]] — 人是过滤器，修行 = 修行自己的 F（明镜核心思维模型）
+- [[concepts/reading-four-paces|读书的四种配速]] — 主题阅读 + 周维度的书 + 每天一本书 + 每天一个章节
+
 ## Syntheses（跨期综合）
 
 （待 ≥3 概念综合时建立）
 
 ---
 
-*Last updated: 2026-06-21*
+*Last updated: 2026-07-09*

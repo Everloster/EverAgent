@@ -520,6 +520,16 @@ polish_corrections: 50+ (详见 polished.txt 末尾"主要 Whisper 误识别 / �
 
 ---
 
+## 版权与引用
+
+- **节目版权**：本资料涉及的播客节目版权归 UP 主（CLS 同学）/ B 站（bilibili）所有。
+- **本资料性质**：仅供个人学习、研究用途，遵循《著作权法》第 24 条合理使用原则。
+- **完整转录**：原始转录稿 `reports/transcripts/2026-06-20_bilibili_BV1NHJF6oE8m_cls-tongxue.transcript.txt` 与润色稿 `...polished.txt` 保留在仓库中。
+- **引用边界**：本报告所有原话引用每条 ≤ 3 句 + 评价/分析，属合理使用。
+- **下架请求**：如版权方认为内容超出合理使用范围，请联系项目维护者（详见 [COPYRIGHT.md](./COPYRIGHT.md)）。
+
+---
+
 ## Limitations（已知局限）
 
 1. **数据来源**：所有数字均来自 UP 主 CLS 同学引用研报数据，**未直接核对原始上市公司财报**。关键决策前应回听原视频对应时间戳段落 + 比对 wind / 同花顺等数据源。
