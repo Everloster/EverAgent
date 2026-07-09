@@ -18,7 +18,7 @@ EverAgent 是个人学习知识库。8 个子项目按工作模式分为 4 类�
 |----|------|---------|
 | **A 知识研究** | ai / cs / philosophy / psychology / biology-learning | 对话启发学习 → 真读原文 → 产出高质量报告 |
 | **B 代码实践** | ai-practice | 各类 AI 技术的低成本可运行 demo + 教学笔记（数值须来自实际运行） |
-| **C 播客学习** | podcast-learning | 链接 → 本地转写（faster-whisper）→ 润色 → 总结/讨论 → 报告 |
+| **C 播客学习** | podcast-learning | 链接 → 本地转写（whisper.cpp）→ 润色 → 总结/讨论 → 报告 |
 | **D 开源研究** | github-trending-analyzer | 贴 repo 链接 → 输出/更新研究报告（自带协议与验证脚本） |
 
 先识别用户意图属于哪一类，再读对应项目的 `AGENTS.md` 独立工作。B/C/D 有各自特化工作流，不套用 A 类的报告流程。

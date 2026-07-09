@@ -2,11 +2,14 @@
 """Podcast 本地转写脚本.
 
 用 yt-dlp 下载音频（小宇宙 / B站 / YouTube / 直链 / 本地文件），
-再用 faster-whisper 本地转写为纯文本。全程离线（除下载音频外），不上传云端。
+再用 whisper.cpp（whisper-cli）本地转写为带时间戳的纯文本。
+全程离线（除下载音频外），不上传云端。
 
 依赖见 podcast-learning/SETUP.md：
-    pip install yt-dlp faster-whisper
-    # 系统需 ffmpeg（brew install ffmpeg）
+    # 系统需：whisper.cpp（https://github.com/ggml-org/whisper.cpp）
+    #         ffmpeg（brew install ffmpeg）
+    #         yt-dlp（brew install yt-dlp）
+    # whisper.cpp 编译后把 build/bin/whisper-cli 软链到 /opt/homebrew/bin/。
 
 用法：
     # 从链接转写（自动下载音频 → 转写）
@@ -22,20 +25,42 @@
     # 指定模型大小与语言（默认 large-v3 / zh）
     python3 transcribe.py "URL" --model medium --lang zh --out out.txt
 
-模型大小与显存/内存权衡（faster-whisper）：
+模型大小权衡（whisper.cpp ggml 格式）：
     tiny / base / small / medium / large-v3
-    CPU 可跑 small/medium；有 GPU（--device cuda）建议 large-v3。
-    Apple Silicon 走 CPU int8，medium 约实时 2-4x。
+    Apple Silicon 走 Metal 加速，large-v3 仍可对 1h 音频在数分钟内处理完。
+
+环境变量：
+    WHISPER_CPP_MODELS   whisper.cpp 模型目录（默认：~/workspace/whisper.cpp/models/）
 """
 
 from __future__ import annotations
 
 import argparse
+import json
+import os
 import shutil
 import subprocess
 import sys
 import tempfile
 from pathlib import Path
+
+DEFAULT_WHISPER_CPP_MODELS = "/Users/jabe/workspace/whisper.cpp/models"
+
+# 模型名（tiny / base / small / medium / large-v3）→ ggml 文件名
+MODEL_FILES = {
+    "tiny": "ggml-tiny.bin",
+    "tiny.en": "ggml-tiny.en.bin",
+    "base": "ggml-base.bin",
+    "base.en": "ggml-base.en.bin",
+    "small": "ggml-small.bin",
+    "small.en": "ggml-small.en.bin",
+    "medium": "ggml-medium.bin",
+    "medium.en": "ggml-medium.en.bin",
+    "large": "ggml-large-v3.bin",
+    "large-v1": "ggml-large-v1.bin",
+    "large-v2": "ggml-large-v2.bin",
+    "large-v3": "ggml-large-v3.bin",
+}
 
 
 def is_url(s: str) -> bool:
@@ -47,9 +72,27 @@ def check_dep(name: str, hint: str) -> None:
         sys.exit(f"[transcribe] 缺少依赖 `{name}`。{hint}")
 
 
+def resolve_model_path(model: str, model_dir: str | None) -> Path:
+    """把模型名（如 'large-v3'）解析为 .bin 绝对路径."""
+    model_dir = model_dir or os.environ.get("WHISPER_CPP_MODELS", DEFAULT_WHISPER_CPP_MODELS)
+    filename = MODEL_FILES.get(model)
+    if filename is None:
+        sys.exit(
+            f"[transcribe] 未知模型 `{model}`。可选: {', '.join(MODEL_FILES)}"
+        )
+    path = Path(model_dir) / filename
+    if not path.exists():
+        sys.exit(
+            f"[transcribe] 模型文件不存在: {path}\n"
+            f"  · 装模型: cd {model_dir} && ./download-ggml-model.sh {model}\n"
+            f"  · 或设置环境变量 WHISPER_CPP_MODELS 指向你的模型目录"
+        )
+    return path
+
+
 def download_audio(url: str, audio_out: Path) -> Path:
-    """用 yt-dlp 下载最佳音频，转成 mp3。返回实际输出路径。"""
-    check_dep("yt-dlp", "安装：pip install yt-dlp")
+    """用 yt-dlp 下载最佳音频，转成 mp3。返回实际输出路径."""
+    check_dep("yt-dlp", "安装：brew install yt-dlp")
     check_dep("ffmpeg", "安装：brew install ffmpeg")
 
     # yt-dlp 用 %(ext)s 决定后缀，这里固定抽取为 mp3
@@ -75,58 +118,76 @@ def download_audio(url: str, audio_out: Path) -> Path:
 def transcribe(
     audio: Path,
     out: Path,
-    model_size: str,
+    model: str,
     lang: str | None,
-    device: str,
-    compute_type: str,
+    model_dir: str | None,
 ) -> None:
-    try:
-        from faster_whisper import WhisperModel
-    except ImportError:
-        sys.exit("[transcribe] 缺少 faster-whisper。安装：pip install faster-whisper")
-
-    print(f"[transcribe] 加载模型 {model_size}（device={device}, compute={compute_type}）…")
-    model = WhisperModel(model_size, device=device, compute_type=compute_type)
-
-    print(f"[transcribe] 开始转写：{audio}")
-    segments, info = model.transcribe(
-        str(audio),
-        language=lang,
-        vad_filter=True,
-        beam_size=5,
+    check_dep(
+        "whisper-cli",
+        "安装：编译 https://github.com/ggml-org/whisper.cpp 后把 build/bin/whisper-cli 软链到 PATH",
     )
-    detected = getattr(info, "language", lang)
-    print(f"[transcribe] 检测语言：{detected}（概率 {getattr(info, 'language_probability', 0):.2f}）")
+
+    model_path = resolve_model_path(model, model_dir)
+    print(f"[transcribe] 模型: {model_path}")
+    print(f"[transcribe] 语言: {lang or 'auto-detect'}")
+
+    with tempfile.TemporaryDirectory(prefix="whisper-out-") as tmp:
+        prefix = Path(tmp) / "out"
+        cmd = [
+            "whisper-cli",
+            "-m", str(model_path),
+            "-l", lang or "auto",
+            "-f", str(audio),
+            "-oj",                # JSON 输出（带时间戳、文本）
+            "-of", str(prefix),   # 输出文件前缀
+            "-np",                # 抑制 whisper 自带的进度/计时打印
+        ]
+        print(f"[transcribe] 调用 whisper-cli…")
+        subprocess.run(cmd, check=True)
+
+        json_path = Path(tmp) / "out.json"
+        if not json_path.exists():
+            sys.exit(f"[transcribe] 期望 JSON 产物 {json_path} 不存在")
+        with json_path.open(encoding="utf-8") as f:
+            data = json.load(f)
 
     out.parent.mkdir(parents=True, exist_ok=True)
     n = 0
     with out.open("w", encoding="utf-8") as f:
-        for seg in segments:
-            ts = f"[{fmt_ts(seg.start)} -> {fmt_ts(seg.end)}]"
-            line = f"{ts} {seg.text.strip()}"
-            f.write(line + "\n")
+        for seg in data.get("transcription", []):
+            ts_from = seg["timestamps"]["from"].split(",")[0]  # HH:MM:SS,mmm → HH:MM:SS
+            ts_to = seg["timestamps"]["to"].split(",")[0]
+            text = seg["text"].strip()
+            f.write(f"[{ts_from} -> {ts_to}] {text}\n")
             n += 1
             if n % 50 == 0:
                 print(f"[transcribe]   已写 {n} 段…")
-    print(f"[transcribe] 完成：{out}（共 {n} 段）")
 
-
-def fmt_ts(seconds: float) -> str:
-    m, s = divmod(int(seconds), 60)
-    h, m = divmod(m, 60)
-    return f"{h:02d}:{m:02d}:{s:02d}"
+    detected = data.get("result", {}).get("language", lang)
+    print(f"[transcribe] 完成：{out}（{n} 段，检测语种={detected}）")
 
 
 def main() -> int:
-    p = argparse.ArgumentParser(description="Podcast 本地转写（yt-dlp + faster-whisper）")
+    p = argparse.ArgumentParser(description="Podcast 本地转写（yt-dlp + whisper.cpp）")
     p.add_argument("source", help="播客/视频链接，或本地音频文件路径")
     p.add_argument("--out", help="转写文本输出路径（.transcript.txt）")
     p.add_argument("--audio-out", help="下载音频的保存路径（默认临时目录）")
-    p.add_argument("--download-only", action="store_true", help="只下载音频，不转写")
-    p.add_argument("--model", default="large-v3", help="faster-whisper 模型大小（默认 large-v3）")
-    p.add_argument("--lang", default="zh", help="语言代码，默认 zh；设为 auto 让模型自动检测")
-    p.add_argument("--device", default="cpu", help="cpu / cuda（默认 cpu）")
-    p.add_argument("--compute-type", default="int8", help="int8 / float16 / float32（默认 int8）")
+    p.add_argument(
+        "--download-only", action="store_true", help="只下载音频，不转写"
+    )
+    p.add_argument(
+        "--model",
+        default="large-v3",
+        help="whisper.cpp 模型大小（默认 large-v3）: "
+        + ", ".join(MODEL_FILES),
+    )
+    p.add_argument(
+        "--lang", default="zh", help="语言代码，默认 zh；设为 auto 让模型自动检测"
+    )
+    p.add_argument(
+        "--model-dir",
+        help="whisper.cpp 模型目录（默认读环境变量 WHISPER_CPP_MODELS，或 ~/workspace/whisper.cpp/models/）",
+    )
     args = p.parse_args()
 
     lang = None if args.lang == "auto" else args.lang
@@ -147,7 +208,9 @@ def main() -> int:
 
     if args.download_only:
         if tmpdir is not None:
-            print("[transcribe] 警告：--download-only 且未指定 --audio-out，音频在临时目录，退出后会丢失。")
+            print(
+                "[transcribe] 警告：--download-only 且未指定 --audio-out，音频在临时目录，退出后会丢失。"
+            )
         return 0
 
     # 2) 转写
@@ -156,10 +219,9 @@ def main() -> int:
     transcribe(
         audio=audio,
         out=Path(args.out),
-        model_size=args.model,
+        model=args.model,
         lang=lang,
-        device=args.device,
-        compute_type=args.compute_type,
+        model_dir=args.model_dir,
     )
 
     if tmpdir is not None:

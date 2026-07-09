@@ -15,7 +15,7 @@
 - cross_episode（跨期共性 / 系列专题）
 - concept_tracking（单一概念 / 人物纵向追踪）
 
-转录方式：**本地** `scripts/transcribe.py`（yt-dlp 下载 + faster-whisper，全程离线）。依赖见 SETUP.md。
+转录方式：**本地** `scripts/transcribe.py`（yt-dlp 下载 + whisper.cpp，Metal 加速，全程离线）。依赖见 SETUP.md。
 
 ---
 
@@ -78,7 +78,7 @@
 
 ## 参考资源
 
-- 转录工具：本地 `scripts/transcribe.py`（faster-whisper）
+- 转录工具：本地 `scripts/transcribe.py`（whisper.cpp / ggml-large-v3）
 - 报告索引：reports/
 - 知识图谱：wiki/index.md
 - 研究方法论：../METHODOLOGY.md

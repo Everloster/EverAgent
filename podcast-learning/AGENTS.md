@@ -10,7 +10,7 @@
 用户发一个播客/视频链接（或本地音频文件），或说"上次那期继续"，按以下循环：
 
 1. **读画像与地图** — [PROFILE.md](./PROFILE.md)、[MAP.md](./MAP.md)、[wiki/open-questions.md](./wiki/open-questions.md)
-2. **本地转写** — 用 `scripts/transcribe.py` 本地转写（yt-dlp 下载音频 + faster-whisper），产出 `reports/transcripts/{slug}.transcript.txt`。首次用需按 [SETUP.md](./SETUP.md) 装依赖。
+2. **本地转写** — 用 `scripts/transcribe.py` 本地转写（yt-dlp 下载音频 + whisper.cpp），产出 `reports/transcripts/{slug}.transcript.txt`。首次用需按 [SETUP.md](./SETUP.md) 装依赖。
 3. **润色** — 基于原始转写去口水词、断句、纠正明显错字，产出 `.polished.txt`（与转写并列存放）。**只修表达，不改事实**；无法辨识处保留原文并标 `[?]`。
 4. **提取/总结** — 通读润色稿，提取核心观点/关键人物/新概念/关键数字/金句。
 5. **写报告** — 存 `reports/`，带 frontmatter，结尾必带「思考与追问」三问。
@@ -23,7 +23,7 @@
 
 ## 领域特化
 
-- **转写脚本**：`scripts/transcribe.py`（本地 faster-whisper，全程离线）；模型/依赖见 [SETUP.md](./SETUP.md)。
+- **转写脚本**：`scripts/transcribe.py`（本地 whisper.cpp，Metal 加速，全程离线）；模型/依赖见 [SETUP.md](./SETUP.md)。
 - **报告类型**：`reports/`（单期总结/跨期专题/概念追踪，同目录按 frontmatter `report_type` 区分，不再按子目录拆分）。
 - **特化要求（关键）**：**转录中未出现的引用、数据、人物言论禁止推测**；关键引用保留原文（哪怕标点残缺）；转录质量差时在 limitations 标注，不强行总结；润色只改表达不改事实。
 - **特化模板**：[skills/transcription/SKILL.md](./skills/transcription/SKILL.md)（转写+润色规范）、[skills/episode_analysis/SKILL.md](./skills/episode_analysis/SKILL.md)（总结/报告模板）。
