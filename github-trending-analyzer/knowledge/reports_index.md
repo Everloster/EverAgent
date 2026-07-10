@@ -108,6 +108,7 @@
 - telegramdesktop/tdesktop
 - tinygrad/tinygrad
 - tursodatabase/turso
+- trycua/cua
 - twentyhq/twenty
 - usestrix/strix
 - Vaibhavs10/insanely-fast-whisper
