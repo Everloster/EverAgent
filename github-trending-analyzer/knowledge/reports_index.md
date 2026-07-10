@@ -117,6 +117,7 @@
 - virattt/dexter
 - volcengine/OpenViking
 - vxcontrol/pentagi
+- wonderwhy-er/DesktopCommanderMCP
 - withastro/flue
 - xbtlin/ai-berkshire
 - Yeachan-Heo/oh-my-claudecode
