@@ -137,6 +137,16 @@ EverAgent/
 
 ---
 
+## §4.5 基础设施：自建 VPS（DeviceNode）
+
+本工作台管理**一台 AWS Lightsail VPS**（东京 / Ubuntu 24.04），用途：自建代理节点（VLESS+Reality，供科学访问 AI 服务）+ 备用。
+
+- **档案**：[DeviceNode.md](./DeviceNode.md) — 实例规格、静态 IP、SSH 方式、proxy-panel 面板地址、防火墙端口、运维待办。跨设备接手先读它。
+- **敏感信息不入库**：面板密码、SSH 私钥、节点 UUID/密钥等只存个人密码库，`DeviceNode.md` 仅记录非敏感的连接与运维信息。
+- **成本铁律**：按量付费（非免费套餐），勿跑 BT/DHT 等大流量任务；建议设 AWS Budget 告警。不用时记得 Terminate + 释放静态 IP 止血。
+
+---
+
 ## §5 新增领域
 
 复制任一领域结构：`AGENTS.md` + `PROFILE.md` + `MAP.md` + `reports/` + `wiki/{concepts,entities,syntheses,open-questions.md}` + `skills/`，然后更新 §1 表格与 README。
