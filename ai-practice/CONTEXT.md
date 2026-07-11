@@ -27,6 +27,7 @@
 | exp_006 | Long Context 1M 缩尺模拟实验 | src/long_context_simulation.py | experiments/exp_006_long_context_1m_simulation.md |
 | exp_007 | SkillOS 技能库策展小型实验复现 | src/skillos_curator_simulation.py | experiments/exp_007_skillos_curator_simulation.md |
 | exp_008 | GRPO 缩尺模拟实验（与 T060 联动） | src/grpo_simulation.py | experiments/exp_008_grpo_simulation.md |
+| exp_009 | 本机（M5 Max 128GB）本地 LLM 选型评测——whichllm × llm-checker × fastfetch | —（仅 CLI，无 notebook） | experiments/exp_009_local_llm_selector.md |
 
 ---
 
@@ -48,7 +49,7 @@
 
 ## ⚠️ 边界（防幻觉）
 
-以下实验已有报告，禁止重复生成：exp_001、exp_002、exp_003、exp_004、exp_005、exp_006、exp_007、exp_008
+以下实验已有报告，禁止重复生成：exp_001、exp_002、exp_003、exp_004、exp_005、exp_006、exp_007、exp_008、exp_009
 
 exp_005 已包含 MoE Transformer 教学笔记与 `wiki/concepts/mixture_of_experts.md` 概念页；后续维护仅同步导航、索引、边界说明，不新增同主题实验。
 
