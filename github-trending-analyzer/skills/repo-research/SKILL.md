@@ -1,13 +1,13 @@
 ---
-name: "repo-analyze-interactive"
+name: "repo-research"
 description: "Analyze a single GitHub repo on demand from a pasted URL. Detects existing reports, shows last-analysis time, and lets the user choose update / new-perspective / skip. Invoke when the user pastes a GitHub repo URL and asks to analyze it."
 ---
 
-# 单 Repo 交互式深度分析
+# 事① 单 Repo 深度研究（对话贴链接触发）
 
-对话里贴一个 GitHub repo 链接即可触发：对该 repo 用 `github-deep-research` 做深度研究并按命名规则输出报告。**若已有报告，先报告上次分析时间，由用户决定更新 / 换视角 / 跳过。**
+对话里贴一个 GitHub repo 链接即可触发：对该 repo 用 `deep-research` skill 做深度研究并按命名规则输出报告。**若已有报告，先报告上次分析时间，由用户决定更新 / 换视角 / 跳过。**
 
-> 完整执行规范见 [`TASK_PROTOCOL.md`](../TASK_PROTOCOL.md) **TT-5** 章节。本技能是 TT-2 的交互式封装，复用其全部研究 / 验证 / 索引机制。
+> 完整执行规范见 [`../../AGENTS.md`](../../AGENTS.md) **事① 单 Repo 研究** 章节，本文件为技能摘要。
 
 ## 触发条件
 
@@ -26,7 +26,7 @@ description: "Analyze a single GitHub repo on demand from a pasted URL. Detects 
    - 解析不出 owner/repo → 停止，请用户确认链接
 
 2. 检查缓存
-   python3 github-trending-analyzer/trending_fetcher.py check {owner}/{repo}
+   python3 scripts/trending_fetcher.py check {owner}/{repo}
    读取输出：exists / age_days / needs_update / name_mismatch / path
 
 3. 分情况：
@@ -63,20 +63,22 @@ description: "Analyze a single GitHub repo on demand from a pasted URL. Detects 
 
 示例：`research_interviewstreet_hiring-agent.md`、`research_interviewstreet_hiring-agent_security.md`
 
-## 与 TT-2 的区别
+## 与「事② trending 汇总」的区别
 
-| | TT-2 repo_research | TT-5 本技能 |
+| | 事② trending 汇总 | 事① 本技能 |
 |---|---|---|
-| 触发 | 派发任务 / 显式请求 | 对话贴链接 |
-| 已有报告时 | 提示缓存有效，问是否强制重研究 | **给出上次时间，A/B/C 三选一交互** |
+| 触发 | "出 trending 报告" | 对话贴单个链接 |
+| 已有报告时 | 缓存有效则跳过 | **给出上次时间，A/B/C 三选一交互** |
 | 换视角 | 不支持 | 支持，带 `_{topic}` 后缀，不覆盖原报告 |
 | 研究 / 验证 / 索引 | 同 | 完全复用 |
 
-## 注意事项（继承 TT-2 全部约束）
+## 注意事项
 
-1. 研究必须调用 `github-deep-research`，结果转 7 章中文格式，禁止存英文模板
+1. 研究必须调用 `deep-research` skill，结果转 7 章中文格式，禁止存英文模板
 2. Stars/Forks 用 API 精确值，禁止"17,000+"
 3. 页脚统一：`*报告生成时间: YYYY-MM-DD*` / `*研究方法: github-deep-research 多轮深度研究*`
 4. 临时文件放 `/tmp/github-trending-{date}/`，完成清理，禁止写入报告
-5. 写入仅限 `github-trending-reports/` 与 `knowledge/`
+5. 写入仅限 `reports/` 与 `knowledge/`
+6. 每次产出新报告后必须同步 `knowledge/reports_index.md`
+ng-reports/` 与 `knowledge/`
 6. 每次产出新报告后必须执行 TT-3 同步索引

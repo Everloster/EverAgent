@@ -1,4 +1,0 @@
-[INFO] total_pages=867 per_page=100
-[INFO] page 1/867 ok, fetched=1, skipped=0, rate=0.2 page/s
-[INFO] empty page 10, stop
-[DONE] {'user': 'Everloster', 'user_id': '2820419', 'total_pages_reported_by_api': 867, 'pages_on_disk': 9, 'total_repos': 867, 'fetched_at': '2026-06-03T05:33:09.370291+00:00', 'earliest_starred_at': '2012-11-17T09:51:36Z', 'latest_starred_at': '2026-06-03T03:54:56Z', 'per_page': 100}

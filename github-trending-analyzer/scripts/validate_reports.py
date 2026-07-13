@@ -36,7 +36,7 @@ from typing import Dict, List, Optional
 
 # ── Project paths ──────────────────────────────────────────────────────────────
 PROJECT_ROOT = Path(__file__).parent.parent.resolve()
-REPORTS_DIR = PROJECT_ROOT / "github-trending-reports"
+REPORTS_DIR = PROJECT_ROOT / "reports"
 INDEX_FILE = PROJECT_ROOT / "knowledge" / "reports_index.md"
 
 

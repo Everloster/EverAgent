@@ -27,12 +27,12 @@ def get_default_reports_dir() -> Path:
     Get default reports directory.
     Priority:
     1. TRENDING_REPORTS_DIR environment variable
-    2. github-trending-reports in current working directory
+    2. reports/ in current working directory
     """
     env_dir = os.environ.get("TRENDING_REPORTS_DIR")
     if env_dir:
         return Path(env_dir)
-    return Path.cwd() / "github-trending-reports"
+    return Path.cwd() / "reports"
 
 
 def ensure_dir(path: Path):

@@ -5,7 +5,7 @@ from pathlib import Path
 def load_module():
     module_path = (
         Path(__file__).resolve().parents[1]
-        / "github-trending-analyzer"
+        / "scripts"
         / "trending_fetcher.py"
     )
     spec = spec_from_file_location("trending_fetcher", module_path)
@@ -44,7 +44,7 @@ def test_parse_trending_repos_from_html():
 def load_report_generator():
     module_path = (
         Path(__file__).resolve().parents[1]
-        / "github-trending-analyzer"
+        / "scripts"
         / "report_generator.py"
     )
     spec = spec_from_file_location("report_generator", module_path)

@@ -14,6 +14,9 @@
 | all-monthly-summary-2026-03-17.md | Monthly | 2026-03-17 |
 | all-monthly-summary-2026-03-18.md | Monthly | 2026-03-18 |
 | all-daily-summary-2026-04-05.md | Daily | 2026-04-05 |
+| all-monthly-summary-2026-05-31.md | Monthly | 2026-05-31 |
+| all-weekly-summary-2026-06-21.md | Weekly | 2026-06-21 |
+| all-monthly-summary-2026-06-21.md | Monthly | 2026-06-21 |
 
 ## Repository Deep Reports
 
