@@ -54,3 +54,6 @@ skills/
 
 # Local cache for research/scripts (e.g. mmx search snippets)
 .cache/
+
+# Firecrawl scrape cache (transient fetch output, not a source of truth)
+.firecrawl/
