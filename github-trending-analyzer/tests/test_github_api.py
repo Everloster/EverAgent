@@ -6,7 +6,6 @@ from unittest import mock
 def load_module():
     module_path = (
         Path(__file__).resolve().parents[1]
-        / "github-deep-research"
         / "scripts"
         / "github_api.py"
     )

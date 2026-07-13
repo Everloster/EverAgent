@@ -1,17 +1,17 @@
 ---
-name: "github-trending-analyzer"
+name: "trending-analyzer"
 description: "Analyzes GitHub trending repositories by day/week/month using deep research. Invoke when user asks to analyze GitHub trending projects or generate trending reports."
 ---
 
-# GitHub 热点项目分析
+# 事② GitHub Trending 汇总分析
 
-对 GitHub Trending 热点项目进行深度分析，生成结构化趋势报告。
+对 GitHub Trending 热点项目进行深度分析，生成结构化趋势汇总报告（日/周/月）。
 
 ## 触发条件
 
 - 分析 GitHub 热点项目 / 生成 trending 报告 / 查询当前热门项目趋势
 
-> 完整执行规范见 [`TASK_PROTOCOL.md`](../TASK_PROTOCOL.md) TT-1 章节，本文件提供技能摘要和脚本速查。
+> 完整执行规范见 [`../../AGENTS.md`](../../AGENTS.md) **事② trending 汇总** 章节，本文件提供技能摘要和脚本速查。
 
 ## 环境配置
 
@@ -20,28 +20,28 @@ GitHub API 调用统一通过 **`gh` CLI**（`gh api`），认证由 `gh auth lo
 
 | 变量 | 说明 | 默认值 |
 |------|------|--------|
-| `TRENDING_REPORTS_DIR` | 报告输出目录 | `./github-trending-reports` |
+| `TRENDING_REPORTS_DIR` | 报告输出目录 | `./reports` |
 
 > 注：`github.com/trending` 榜单页为 HTML 抓取（非 API），不经 gh；其余所有 GitHub API 调用（repo 元数据、README、contributors、releases、search 等）均走 `gh api`。
 
 ## 辅助工具
 
-### trending_fetcher.py
+### scripts/trending_fetcher.py
 
 ```bash
-python3 <skill_dir>/trending_fetcher.py fetch daily      # 获取日榜（daily/weekly/monthly）
-python3 <skill_dir>/trending_fetcher.py fetch daily python  # 按语言过滤
-python3 <skill_dir>/trending_fetcher.py check owner/repo  # 检查报告缓存状态
-python3 <skill_dir>/trending_fetcher.py info             # 查看技能路径
+python3 scripts/trending_fetcher.py fetch daily      # 获取日榜（daily/weekly/monthly）
+python3 scripts/trending_fetcher.py fetch daily python  # 按语言过滤
+python3 scripts/trending_fetcher.py check owner/repo  # 检查报告缓存状态
+python3 scripts/trending_fetcher.py info             # 查看脚本路径
 ```
 
 `check` 命令输出：`{"exists": bool, "age_days": float, "needs_update": bool}`
 
-### report_generator.py
+### scripts/report_generator.py
 
 ```bash
-python3 <skill_dir>/report_generator.py project '<repo_json>' '<research_json>' output.md
-python3 <skill_dir>/report_generator.py summary daily '<repos_json>' output.md
+python3 scripts/report_generator.py project '<repo_json>' '<research_json>' output.md
+python3 scripts/report_generator.py summary daily '<repos_json>' output.md
 ```
 
 生成基础模板；深度内容需 Agent 补充。
@@ -51,15 +51,15 @@ python3 <skill_dir>/report_generator.py summary daily '<repos_json>' output.md
 ## 目录结构（严格遵守）
 
 ```
-github-trending-analyzer/     ← 只读，Agent 不可修改
-github-deep-research/         ← 只读，所有 Agent 使用此技能完成单个 repo 深度研究
-github-trending-reports/      ← 【唯一输出目录】
+scripts/            ← 只读，Agent 不可修改（含 github_api.py 深度研究脚本）
+skills/deep-research/ ← 深度研究方法论（4 轮），研究单个 repo 时遵循
+reports/            ← 【唯一输出目录】
 ├── all-{period}-summary-YYYY-MM-DD.md   ← 汇总报告
 └── research_{owner}_{repo}.md           ← 单项目报告（仅允许这两种格式）
-knowledge/                    ← 仅追加更新 reports_index.md，不可删除已有条目
+knowledge/          ← 仅追加更新 reports_index.md，不可删除已有条目
 ```
 
-**写入限制**：只能写 `github-trending-reports/` 和 `knowledge/`，禁止在其他目录创建文件，禁止修改 SKILL.md / 脚本 / README / CONTEXT.md。
+**写入限制**：只能写 `reports/` 和 `knowledge/`，禁止在其他目录创建文件，禁止修改 SKILL.md / 脚本 / README。
 
 **文件命名**：`{owner}` 和 `{repo}` 必须与 GitHub 原始名称大小写完全一致。
 - ✅ `research_hsliuping_TradingAgents-CN.md`
@@ -80,7 +80,7 @@ import shutil; shutil.rmtree(f"/tmp/github-trending-{today}", ignore_errors=True
 ### 1. 获取 Trending 列表
 
 ```bash
-python3 <skill_dir>/trending_fetcher.py fetch daily
+python3 scripts/trending_fetcher.py fetch daily
 ```
 
 ### 2. 逐项目深度分析
@@ -219,3 +219,4 @@ python3 <skill_dir>/trending_fetcher.py fetch daily
 | 3 | 报告页脚出现"Github Deep Research by DeerFlow"等其他品牌 | 统一用 `*报告生成时间: ...` / `*研究方法: ...` |
 | 4 | Stars 写"17,000+"等模糊值 | 使用 API 精确返回的整数 |
 | 5 | 趋势分析只写 2-3 行 | 必须包含 🔥/🏢/🔬/📊 四个子章节 |
+� |

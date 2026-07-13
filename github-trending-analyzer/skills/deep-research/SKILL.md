@@ -1,14 +1,14 @@
 ---
-name: github-deep-research
+name: deep-research
 description: Conduct multi-round deep research on any GitHub Repo. Use when users request comprehensive analysis, timeline reconstruction, competitive analysis, or in-depth investigation of GitHub. Produces structured markdown reports with executive summaries, chronological timelines, metrics analysis, and Mermaid diagrams. Triggers on Github repository URL or open source projects.
 ---
 
-# GitHub Deep Research Skill
+# 事③ GitHub 深度研究方法论
 
 Multi-round research combining GitHub API, web_search, web_fetch to produce comprehensive markdown reports.
 
-关键约束：当本技能被 `github-trending-analyzer` 调用时，必须遵守上层技能的输出路径、命名规则、图表限制和中文结构要求。
-完整约束见 [`TASK_PROTOCOL.md`](../TASK_PROTOCOL.md) TT-1/TT-2 章节。
+关键约束：当本方法论被「事① 单 repo 研究」或「事② trending 汇总」调用时，必须遵守上层的输出路径、命名规则、图表限制和中文结构要求。
+完整约束见 [`../../AGENTS.md`](../../AGENTS.md)（报告命名 + 7 章结构 + 8 项验证）。
 
 ## Research Workflow
 
@@ -41,12 +41,12 @@ Multi-round research combining GitHub API, web_search, web_fetch to produce comp
 
 直接执行 `scripts/github_api.py`，不必先 `read_file()`：
 ```bash
-python3 /path/to/skill/scripts/github_api.py <owner> <repo> summary
-python3 /path/to/skill/scripts/github_api.py <owner> <repo> readme
-python3 /path/to/skill/scripts/github_api.py <owner> <repo> contributors
-python3 /path/to/skill/scripts/github_api.py <owner> <repo> releases
-python3 /path/to/skill/scripts/github_api.py <owner> <repo> languages
-python3 /path/to/skill/scripts/github_api.py <owner> <repo> tree
+python3 scripts/github_api.py <owner> <repo> summary
+python3 scripts/github_api.py <owner> <repo> readme
+python3 scripts/github_api.py <owner> <repo> contributors
+python3 scripts/github_api.py <owner> <repo> releases
+python3 scripts/github_api.py <owner> <repo> languages
+python3 scripts/github_api.py <owner> <repo> tree
 ```
 **产出物**：语言字节占比、头部 5 贡献者及 contributions、近 10 次发版（看 alpha/beta/rc → 正式版节奏）、顶层目录结构。
 
@@ -61,8 +61,8 @@ python3 /path/to/skill/scripts/github_api.py <owner> <repo> tree
 2. 读依赖清单（按语言择一）：`package.json` / `pyproject.toml` / `Cargo.toml` / `go.mod` / `pom.xml` / `build.gradle`。
 3. 读 **2-5 个关键源文件**（入口文件、核心模块、关键配置）：
 ```bash
-python3 /path/to/skill/scripts/github_api.py <owner> <repo> file package.json
-python3 /path/to/skill/scripts/github_api.py <owner> <repo> file src/main.py
+python3 scripts/github_api.py <owner> <repo> file package.json
+python3 scripts/github_api.py <owner> <repo> file src/main.py
 ```
 **产出物**：从真实代码得出的架构判断（模块划分、数据流、关键依赖、设计取舍），标注 [代码]。README 与代码冲突时以代码为准并指出冲突。
 
@@ -81,8 +81,8 @@ gh api -X GET repos/<owner>/<repo> --jq '"\(.full_name) | stars=\(.stargazers_co
 **Round 4 — 量化信号 + 深挖（决定"社区活跃度/发展趋势"章）**
 
 ```bash
-python3 /path/to/skill/scripts/github_api.py <owner> <repo> commit_activity   # 近 52 周周提交
-python3 /path/to/skill/scripts/github_api.py <owner> <repo> issues            # issue 响应概况
+python3 scripts/github_api.py <owner> <repo> commit_activity   # 近 52 周周提交
+python3 scripts/github_api.py <owner> <repo> issues            # issue 响应概况
 ```
 - 用 commit_activity 描述趋势（"近 8 周均值 vs 全年均值"），替代"几乎每日提交"这类定性话术。
 - 用 issues 的 created/closed 时间估算响应概况。
