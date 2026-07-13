@@ -1,21 +1,23 @@
 # github-trending-analyzer — 执行协议
 
-> 唯一执行协议，自包含。本项目只做**两件事**，与两件事无关的一律不接。
+> 唯一执行协议，自包含。本项目只做**三件事**，与三件事无关的一律不接。
 > 由 EverAgent 根 `AGENTS.md` 的 D 类路由进入（贴 repo 链接 / trending 请求）。
 
 ---
 
-## §0 项目使命（两件事）
+## §0 项目使命（三件事）
 
 | # | 事 | 触发 | 产出 | 对应 skill |
 |---|----|------|------|-----------|
 | A | **单 repo 深度研究** | 对话贴 repo 链接 / "深挖 owner/repo" | `reports/research_{owner}_{repo}.md` | `skills/repo-research/` |
 | B | **trending 汇总** | "出日/周/月 trending 报告" | `reports/all-{period}-summary-{date}.md` + 榜上各 repo 报告 | `skills/trending-analyzer/` |
+| C | **迭代优化研究技能本身** | 每次做完 A/B 后 / "优化研究技能" | 对 `skills/repo-research/SKILL.md`（必要时脚本）的改进 | 元活动，改的就是 A 的 skill |
 
 **事A 就是深度研究方法论本身**（4 轮研究 + 7 章中文报告，全部写在 `skills/repo-research/SKILL.md`）。
 **事B 建立在事A 之上**：抓榜单 → 对榜上每个 repo 做一次事A → 汇总成趋势报告。
+**事C 是元活动**：把每次真实研究中踩到的坑、发现的更快取数姿势、更强的证据要求，**折回**事A 的 skill，让下一次研究更强。事C 没有独立 skill——它的产出就是对事A skill 的 diff。
 
-> **质量怎么保证？** 靠**遵循并持续迭代 skill 规范**，不靠脚本校验。研究中总结出更好的做法，直接改 `skills/repo-research/SKILL.md`，让下一次更强。本项目**不做结果校验脚本、不设 exit-0 门禁**。
+> **质量怎么保证？** 靠**遵循并持续迭代 skill 规范（事C）**，不靠脚本校验。研究中总结出更好的做法，直接改 `skills/repo-research/SKILL.md`。本项目**不做结果校验脚本、不设 exit-0 门禁**。
 
 ---
 
@@ -95,6 +97,24 @@ github-trending-analyzer/
              报告链接(./research_*.md) / 报告状态说明(如实区分新生成与缓存复用)
 ```
 
+### 事C 迭代优化研究技能
+
+**每次做完一次真实研究（事A/B）后，顺手做一次事C**——这是本项目质量的唯一保证机制：
+
+```
+1. 复盘本次研究，记录 1~N 条"摩擦点/教训"，例如：
+   · 哪个取数命令太啰嗦/输出爆炸（如 contributors/releases 全量 JSON）→ 记下更优的 gh --jq 姿势
+   · 哪类结论差点凭记忆写（如竞品 stars）→ 强化"现查现填"约束
+   · 哪个新维度值得固化（如 commit_activity 近8周 vs 全年均值、pack 文件计数验证 README 声明）
+2. 判断是否值得沉淀：
+   · 通用、可复用 → 直接改 skills/repo-research/SKILL.md（改命令示例 / 加一条强制产出物 / 加一条边界）
+   · 仅本次特例 → 不改 skill，仅在报告里就地标注即可
+3. skill 的改动要小而准：优先补"更省事的命令"和"更硬的证据要求"，避免堆砌空泛话术。
+4. 与报告一起提交（同一次 commit 里，报告 + skill diff）。
+```
+
+> 判断标准：**这条教训下次研究别的 repo 还用得上吗？** 用得上就进 skill，用不上就留在本次报告。
+
 ---
 
 ## §4 报告命名与索引
@@ -108,7 +128,7 @@ github-trending-analyzer/
 ```
 ✅ `research_hsliuping_TradingAgents-CN.md`　❌ `research_hsliuping_tradingagents_cn.md`（大小写/连字符丢失）　❌ 带日期后缀
 
-报告页脚统一沿用现有 106 篇的格式：
+报告页脚统一沿用现有报告的格式：
 ```
 ---
 *报告生成时间: YYYY-MM-DD*

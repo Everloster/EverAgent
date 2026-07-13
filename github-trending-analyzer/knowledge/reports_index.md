@@ -50,6 +50,7 @@
 - czlonkowski/n8n-mcp
 - datalab-to/chandra
 - DeusData/codebase-memory-mcp
+- Dicklesworthstone/destructive_command_guard
 - EverMind-AI/EverOS
 - fishaudio/fish-speech
 - fluxerapp/fluxer

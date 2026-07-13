@@ -79,6 +79,13 @@ python3 scripts/github_api.py <owner> <repo> tree
 ```
 **产出物**：语言字节占比、头部 5 贡献者及 contributions、近 10 次发版（看 alpha/beta/rc → 正式版节奏）、顶层目录结构。
 
+> 💡 **省事姿势（事C 沉淀）**：`contributors` / `releases` 走 `github_api.py` 会打印全量 raw JSON，噪声极大。要"头部贡献者 / 发版节奏"这类摘要时，直接用 `gh --jq` 一行取：
+> ```bash
+> gh api "repos/<owner>/<repo>/contributors?per_page=10" --jq '.[] | "\(.login) | \(.contributions)"'
+> gh api "repos/<owner>/<repo>/releases?per_page=12" --jq '.[] | "\(.tag_name) | \(.published_at[0:10]) | prerelease=\(.prerelease)"'
+> ```
+> 由此可顺手判断**巴士因子**（单作者提交占比过高 = 可持续性风险，写进"社区活跃度"章）。
+
 **可用命令**（`github_api.py` 末位参数）：
 `summary` · `info` · `readme` · `tree` · `file <path>` · `languages` · `contributors` · `commits` · `commit_activity` · `issues` · `prs` · `releases` · `tags`
 
@@ -94,6 +101,14 @@ python3 scripts/github_api.py <owner> <repo> file package.json
 python3 scripts/github_api.py <owner> <repo> file src/main.py
 ```
 **产出物**：从真实代码得出的架构判断（模块划分、数据流、关键依赖、设计取舍），标注 `[代码]`。README 与代码冲突时以代码为准并指出冲突。
+
+> 💡 **核验 README 声明（事C 沉淀）**：README 常有"50+ packs""支持 7 种语言"这类营销式数字。**用代码实测反查**，别照抄：
+> ```bash
+> # 递归列出文件树，统计某类文件数量（例：packs 规则文件）
+> gh api "repos/<owner>/<repo>/git/trees/<default_branch>?recursive=1" \
+>   --jq '[.tree[] | select(.path|test("^src/packs/.+/.+\\.rs$")) | select(.path|test("mod.rs|test")|not)] | length'
+> ```
+> 数字对得上就写"与代码一致"，对不上就指出差距——这类就地核验比复述 README 有价值得多。
 
 ### Round 3 — 竞品核验（强制，决定"竞品对比"章可信度）
 
@@ -117,6 +132,15 @@ python3 scripts/github_api.py <owner> <repo> issues            # issue 响应概
 - 用 issues 的 created/closed 时间估算响应概况。
 - web_fetch 有价值 URL 补充 sentiment 与 roadmap。
 **产出物**：≥1 个量化结论（提交曲线特征 / issue 响应概况）。
+
+> 💡 **一行出量化结论（事C 沉淀）**：
+> ```bash
+> # 近8周周均 vs 全年周均（差距大 = 已过爆发期/进入维护期，是客观信号非贬义）
+> gh api "repos/<owner>/<repo>/stats/commit_activity" \
+>   --jq 'map(.total) as $t | {year_avg:(($t|add)/($t|length)), last8_avg:(($t[-8:]|add)/8)}'
+> # issue 开放/已关闭计数（排除 PR），估算关闭率与响应活跃度
+> gh api -X GET "search/issues?q=repo:<owner>/<repo>+type:issue+state:closed" --jq '.total_count'
+> ```
 
 ---
 
@@ -177,4 +201,4 @@ provenance 跟着结论**就地**标注，而非集中文末：
 1. **数值精度**：Stars/Forks 用 API 精确整数，禁止 "17,000+" 类模糊表达。
 2. **写入范围**：只写 `reports/`；临时文件放 `/tmp/github-trending-{date}/`，完成后清理，禁止写入报告、禁止提交。
 3. **不凭记忆**：报告内容须读文件/API 确认，代码与 README 冲突以代码为准并指出。
-4. **持续迭代**：本技能就是方法论本身。研究中总结出的更好做法（新的取数命令、新的证据要求等）直接改本文件，让下一次研究更强。
+4. **持续迭代（事C）**：本技能就是方法论本身。**每次研究完顺手做一次事C**——把踩到的坑、更省事的取数命令、更硬的证据要求折回本文件（判断标准：下次研究别的 repo 还用得上吗？用得上就进 skill）。skill 改动与报告放同一次 commit。
