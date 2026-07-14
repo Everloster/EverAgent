@@ -86,6 +86,17 @@ python3 scripts/github_api.py <owner> <repo> tree
 > ```
 > 由此可顺手判断**巴士因子**（单作者提交占比过高 = 可持续性风险，写进"社区活跃度"章）。
 
+> ⚠️ **默认分支健康度核验（事C 沉淀，高价值）**：**别默认 `main`/`master` 上就是那个走红的代码**。大型项目重写、monorepo 迁移、代码搬到独立仓库时，默认分支可能是**空壳骨架**——只看它会得出完全错误的技术判断。出现以下任一信号就必须查分支：① 顶层 blob 数异常少（视频编辑器/框架却只有 ~100 文件）；② 入口/首页是 `hello world` 占位；③ README 或根路由标题含 `rewrite`/`beta`/`v2`/`new.`；④ 依赖清单缺了该品类的核心库（如视频编辑器没有 ffmpeg/媒体库）。核验命令：
+> ```bash
+> # 列所有分支
+> gh api "repos/<owner>/<repo>/branches?per_page=50" --jq '.[].name'
+> # 对比候选分支的文件数，找出真正装着生产代码的那个（数量最多/含核心目录的）
+> for b in main dev staging rewrite; do n=$(gh api "repos/<owner>/<repo>/git/trees/$b?recursive=1" --jq '[.tree[]|select(.type=="blob")]|length' 2>/dev/null); echo "$b: $n blobs"; done
+> # 确认某分支是否含品类核心目录（例：视频编辑器的 timeline/editor/renderer）
+> gh api "repos/<owner>/<repo>/git/trees/<branch>?recursive=1" --jq '.tree[]|select(.path|test("timeline|editor|renderer";"i"))|.path' | head
+> ```
+> 读代码（R2）必须切到**真正的生产分支**（`?ref=<branch>` / `contents/...?ref=<branch>`），并在报告开头**显著提示**"默认分支不是生产代码，真代码在 X 分支"。老代码常被搬到 `-classic`/`-legacy`/`-old` 后缀的独立仓库，一并 `gh api repos/<owner>/<repo>-classic` 核验归档状态。
+
 **可用命令**（`github_api.py` 末位参数）：
 `summary` · `info` · `readme` · `tree` · `file <path>` · `languages` · `contributors` · `commits` · `commit_activity` · `issues` · `prs` · `releases` · `tags`
 
@@ -141,6 +152,14 @@ python3 scripts/github_api.py <owner> <repo> issues            # issue 响应概
 > # issue 开放/已关闭计数（排除 PR），估算关闭率与响应活跃度
 > gh api -X GET "search/issues?q=repo:<owner>/<repo>+type:issue+state:closed" --jq '.total_count'
 > ```
+
+> 💡 **star 暴涨归因 + 分支活跃度陷阱（事C 沉淀）**：用户常问"为什么今天暴涨几千 star"。两步定位：
+> ① **先排除代码驱动**——`stats/commit_activity` 只统计**默认分支**，若真代码在别的分支（见 R1 默认分支核验），这里的数字会误导；要直接查生产分支近况：
+> ```bash
+> gh api "repos/<owner>/<repo>/commits?sha=<prod_branch>&since=$(date -v-14d +%Y-%m-%dT00:00:00Z)&per_page=100" --jq 'length'  # 近14天提交数
+> ```
+> 若近期无新 release 且生产分支停更，则**暴涨是站外事件驱动，不是代码驱动**。
+> ② **再定位站外事件**——`web_search "<repo> star surge <month year>"` + 关注竞品动向（对标商业产品涨价/封锁常是导火索）。把"代码侧无爆发 + 多语种媒体共振 + 里程碑效应"这类归因写进"发展趋势"章，比笼统说"项目火了"有价值。
 
 ---
 
