@@ -45,7 +45,7 @@ tests/       脚本单元测试
 
 ## 知识库现状（`reports/`）
 
-- **Repo 深度报告**：107 篇（AI/ML、DevTools、Infra、Agent 等）
+- **Repo 深度报告**：108 篇（AI/ML、DevTools、Infra、Agent 等）
 - **汇总报告**：daily ×7、weekly ×2、monthly ×4（共 13 篇）
 - 完整索引 → [`knowledge/reports_index.md`](./knowledge/reports_index.md)
 

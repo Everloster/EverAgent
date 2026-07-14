@@ -90,6 +90,7 @@
 - omnigent-ai/omnigent
 - onyx-dot-app/onyx
 - openclaw/openclaw
+- OpenCut-app/OpenCut
 - p-e-w/heretic
 - Panniantong/Agent-Reach
 - pascalorg/editor
