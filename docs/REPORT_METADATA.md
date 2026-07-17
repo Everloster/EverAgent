@@ -41,3 +41,4 @@ related_entities: ["vaswani_ashish", "google_brain"]
 - `github-trending-analyzer/github-trending-reports/` 下的自动生成报告可暂缓补齐，但推荐逐步对齐，便于后续统一索引。
 - **新增报告**建议填写 `semantic_tags` 和 `related_concepts`，为后续知识图谱自动构建提供数据基础。
 - `semantic_tags` 使用小写英文，多个单词用下划线连接（如 `test_time_compute`）。
+- 以上字段由 `scripts/reindex.py` 消费，自动生成阅读索引 [REPORT_INDEX.md](./REPORT_INDEX.md)（按更新时间列出全部报告）。

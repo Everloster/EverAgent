@@ -120,10 +120,10 @@ EverAgent/
 ├── METHODOLOGY.md       # 通用研究方法论（强制）
 ├── README.md            # 人类导航（含自动生成的报告计数）
 ├── scripts/
-│   ├── reindex.py       # 重建 README 报告/wiki 计数
+│   ├── reindex.py       # 重建 README 计数 + docs/REPORT_INDEX.md 阅读索引
 │   ├── lint_evidence.py # 证据密度自检（非阻塞）
 │   └── git_identity.py  # 提交身份校验
-├── docs/                # PROTOCOL_COMMON（提交/安全规则）、SEARCH（搜索阶梯）、REPORT_METADATA、personal
+├── docs/                # PROTOCOL_COMMON（提交/安全规则）、SEARCH（搜索阶梯）、REPORT_METADATA、REPORT_INDEX（自动生成）、personal
 └── {domain}-learning/
     ├── AGENTS.md        # 领域边界 + 特化（~50 行）
     ├── PROFILE.md       # 学习者画像

@@ -39,6 +39,8 @@
 | 🎙️ [Podcast Learning](./podcast-learning/) | 4 篇 | 17/15/0 |
 <!-- AUTO-OVERVIEW:END -->
 
+> 📖 抽空读报告？全部报告按更新时间索引 → [docs/REPORT_INDEX.md](./docs/REPORT_INDEX.md)（`reindex.py` 自动生成）
+
 ---
 
 ## 核心理念
@@ -78,7 +80,7 @@
 ## 工具
 
 ```bash
-python3 scripts/reindex.py                    # 刷新本 README 的报告/wiki 计数
+python3 scripts/reindex.py                    # 刷新本 README 计数 + 重建 docs/REPORT_INDEX.md 阅读索引
 python3 scripts/lint_evidence.py --domain ai-learning   # 证据密度自检（非阻塞）
 python3 scripts/git_identity.py validate      # 提交身份校验
 ```
