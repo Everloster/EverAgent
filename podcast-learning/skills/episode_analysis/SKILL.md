@@ -64,6 +64,8 @@ updated_on: YYYY-MM-DD
 
 `cross_episode` / `concept_tracking` 复用上面骨架，把「核心观点」换成跨期对比表或演变时间线。
 
+> 观点成体系、摘要装不下推理路径时，改用 [qa_chain](../qa_chain/SKILL.md) 的问答链格式（`format: qa_chain`）。
+
 ---
 
 ## 规则
