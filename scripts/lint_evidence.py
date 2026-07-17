@@ -2,9 +2,9 @@
 """Evidence-density linter for EverAgent reports.
 
 A self-check tool, not a gate. Flags reports that "look like" deep analysis
-but lack precise evidence: missing numbers in paper analyses, missing source
-URLs for post-cutoff claims in knowledge reports, missing citations in text
-analyses.
+but lack precise evidence: missing numbers in paper analyses, missing
+verifiable citations (URL / arXiv / DOI / RFC) for post-cutoff claims in
+knowledge reports, missing citations in text analyses.
 
 Usage:
     python3 scripts/lint_evidence.py path/to/report.md [more.md ...]
@@ -24,7 +24,12 @@ FUZZY = [
     "研究表明", "实验证明", "结果显示", "多家博客", "有报告称", "显著差异",
 ]
 SPEC_MARKERS = ["[推测]", "[待验证]", "[未验证]", "[动物实验]", "[体外实验]", "[初步"]
+# 可核实引用 = URL 或稳定标识符（arXiv / DOI / RFC）。这些都能让读者事后独立复核，
+# 因此在证据密度检查里等价于 URL；只认 http(s) 会对引 arXiv 的报告产生假阳性。
 URL_RE = re.compile(r"https?://\S+")
+ARXIV_RE = re.compile(r"arxiv[:/]\s*\d{4}\.\d{4,5}|arxiv\.org/abs/", re.I)
+DOI_RE = re.compile(r"doi[:\s]\s*10\.\d{4,9}/|doi\.org/10\.", re.I)
+RFC_RE = re.compile(r"\bRFC\s?\d{3,5}\b", re.I)
 NUM_RE = re.compile(
     r"\d+\.\d+|%|n\s*=\s*\d+|N\s*=\s*\d+|Table\s+\d|Figure\s+\d|Fig\.\s*\d|p\s*[<=>]\s*0?\.\d+"
 )
@@ -54,6 +59,8 @@ def lint_file(path: Path) -> list[str]:
     fuzzy = sum(text.count(f) for f in FUZZY)
     nums = len(NUM_RE.findall(text))
     urls = len(URL_RE.findall(text))
+    # 可核实引用总数：URL + arXiv + DOI + RFC。任一形式都足以让读者复核来源。
+    cites = urls + len(ARXIV_RE.findall(text)) + len(DOI_RE.findall(text)) + len(RFC_RE.findall(text))
     has_marker = any(m in text for m in SPEC_MARKERS)
 
     if rtype == "paper_analysis":
@@ -62,10 +69,10 @@ def lint_file(path: Path) -> list[str]:
         if fuzzy > 3 and nums < 5:
             warns.append(f"{fuzzy} fuzzy phrases with only {nums} precise numbers")
     elif rtype == "knowledge_report":
-        if RECENT_RE.search(text) and urls == 0:
-            warns.append("mentions 2024+ events but 0 URL citations (verify via WebSearch)")
-        if fuzzy > 5 and urls == 0 and not has_marker:
-            warns.append(f"{fuzzy} source-free fuzzy phrases, 0 URLs, no speculation markers")
+        if RECENT_RE.search(text) and cites == 0:
+            warns.append("mentions 2024+ events but 0 verifiable citations (URL/arXiv/DOI/RFC — verify via WebSearch)")
+        if fuzzy > 5 and cites == 0 and not has_marker:
+            warns.append(f"{fuzzy} source-free fuzzy phrases, 0 verifiable citations, no speculation markers")
     elif rtype == "text_analysis":
         if len(CITE_RE.findall(text)) < 4:
             warns.append("few citation markers (page/section numbers or direct quotations)")
