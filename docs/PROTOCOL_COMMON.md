@@ -34,14 +34,12 @@ Task-Type: {project-optimization | new-project | task-execution}
 ## §C Push Flow（推送流程 · 全局统一）
 
 > **双身份**：每个 commit 的 **Author = 仓库主人 Everloster**（显示其 GitHub 头像），**Committer = 当前 Agent**（通过 hook 校验）。
-> Author 用 `GIT_AUTHOR_*` 环境变量覆盖；Committer 取 `git config user.name/email`（保持当前 Agent 身份）。
+> Author 由 `scripts/ecommit.sh` 自动注入（等价于手动 export `GIT_AUTHOR_*`）；Committer 取 `git config user.name/email`（保持当前 Agent 身份）。
+> pre-commit hook 会同时强制校验 Author：绕过 ecommit、且未设 `GIT_AUTHOR_*` 的裸 `git commit` 会被拦截。
 
 ```bash
-export GIT_AUTHOR_NAME="Everloster"
-export GIT_AUTHOR_EMAIL="2820419+Everloster@users.noreply.github.com"
-
 git add -A
-git commit -m "[{task-type}] {scope}: {描述}
+scripts/ecommit.sh -m "[{task-type}] {scope}: {描述}
 
 Agent: {模型名}
 Task-Type: {task-type}"
