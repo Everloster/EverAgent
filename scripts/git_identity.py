@@ -1,10 +1,16 @@
 #!/usr/bin/env python3
-"""Validate configured git identity for agent commits."""
+"""Validate configured git identity for agent commits.
+
+Checks both halves of the dual identity (docs/PROTOCOL_COMMON.md §C):
+- Committer = current agent (git config user.name/email, noreply required)
+- Author    = repo owner Everloster (GIT_AUTHOR_* env, e.g. via scripts/ecommit.sh)
+"""
 
 from __future__ import annotations
 
 import argparse
 import os
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -16,6 +22,12 @@ from pathlib import Path
 DEFAULT_EMAIL = "noreply@openai.com"
 ENV_NAME_KEYS = ("EVERAGENT_GIT_NAME", "AGENT_GIT_NAME")
 ENV_EMAIL_KEYS = ("EVERAGENT_GIT_EMAIL", "AGENT_GIT_EMAIL")
+
+# Dual identity: every commit's Author must be the repo owner (PROTOCOL_COMMON §C).
+EXPECTED_AUTHOR_NAME = "Everloster"
+EXPECTED_AUTHOR_EMAIL = "2820419+Everloster@users.noreply.github.com"
+ENV_AUTHOR_NAME_KEYS = ("EVERAGENT_GIT_AUTHOR_NAME",)
+ENV_AUTHOR_EMAIL_KEYS = ("EVERAGENT_GIT_AUTHOR_EMAIL",)
 
 
 def _read_expected_from_agents_md() -> tuple[str | None, str | None]:
@@ -57,6 +69,31 @@ def read_git_config(key: str) -> str:
         text=True,
     )
     return result.stdout.strip()
+
+
+def expected_author() -> tuple[str, str]:
+    name, email = EXPECTED_AUTHOR_NAME, EXPECTED_AUTHOR_EMAIL
+    for key in ENV_AUTHOR_NAME_KEYS:
+        if os.getenv(key):
+            name = os.environ[key]
+    for key in ENV_AUTHOR_EMAIL_KEYS:
+        if os.getenv(key):
+            email = os.environ[key]
+    return name, email
+
+
+def read_author_ident() -> tuple[str, str]:
+    """Author of the would-be commit (honors GIT_AUTHOR_* env vars)."""
+    result = subprocess.run(
+        ["git", "var", "GIT_AUTHOR_IDENT"],
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    m = re.match(r"^(.*?) <(.*?)>", result.stdout.strip())
+    if not m:
+        return "", ""
+    return m.group(1), m.group(2)
 
 
 def expected_name(cli_value: str | None) -> str | None:
@@ -111,22 +148,24 @@ def command_validate(args: argparse.Namespace) -> int:
         elif exp_email and act_email != exp_email:
             print(f"[WARN] git user.email differs from expected '{exp_email}': got '{act_email}'", file=sys.stderr)
 
+    exp_author = expected_author()
+    author = read_author_ident()
+    if author != exp_author:
+        errors.append(
+            f"dual-identity violated: commit Author must be repo owner "
+            f"'{exp_author[0]} <{exp_author[1]}>', got '{author[0]} <{author[1]}>'"
+        )
+
     if errors:
         for error in errors:
             print(f"[ERROR] {error}", file=sys.stderr)
         hint_name = exp_name or "<agent-defined name>"
         hint_email = exp_email or "<vendor noreply email>"
         print(f"[HINT] Configure git with: git config user.name \"{hint_name}\" && git config user.email \"{hint_email}\"", file=sys.stderr)
+        print("[HINT] Commit via scripts/ecommit.sh (auto-sets Author=Everloster), see docs/PROTOCOL_COMMON.md §C", file=sys.stderr)
         return 1
 
-    if exp_name and exp_email:
-        print(f"[PASS] Git identity matches {exp_name} <{exp_email}>")
-    elif exp_name:
-        print(f"[PASS] Git identity name OK ({act_name}); email is noreply ({act_email})")
-    elif exp_email:
-        print(f"[PASS] Git identity email OK ({act_email}); name is set ({act_name})")
-    else:
-        print(f"[PASS] Git identity OK: {act_name} <{act_email}>")
+    print(f"[PASS] Git identity OK: committer {act_name} <{act_email}>, author {author[0]} <{author[1]}>")
     return 0
 
 

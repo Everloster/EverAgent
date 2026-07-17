@@ -122,7 +122,8 @@ EverAgent/
 ├── scripts/
 │   ├── reindex.py       # 重建 README 计数 + docs/REPORT_INDEX.md 阅读索引
 │   ├── lint_evidence.py # 证据密度自检（非阻塞）
-│   └── git_identity.py  # 提交身份校验
+│   ├── git_identity.py  # 提交身份校验（Committer + Author 双身份）
+│   └── ecommit.sh       # 双身份提交包装（Author=Everloster）
 ├── docs/                # PROTOCOL_COMMON（提交/安全规则）、SEARCH（搜索阶梯）、REPORT_METADATA、REPORT_INDEX（自动生成）、personal
 └── {domain}-learning/
     ├── AGENTS.md        # 领域边界 + 特化（~50 行）
@@ -141,7 +142,7 @@ EverAgent/
 - **搜索/查资料**：[docs/SEARCH.md](./docs/SEARCH.md) — 从最省钱有效档位起爬（本地 → `llm` Gemini websearch → WebSearch/Fetch → 专业 Skill）。
 - **安全与防幻觉**：[docs/PROTOCOL_COMMON.md](./docs/PROTOCOL_COMMON.md) §A — 未读内容禁止推测；数值必须有来源；不编造。
 - **提交规范**：[docs/PROTOCOL_COMMON.md](./docs/PROTOCOL_COMMON.md) §B/§C — commit 格式、push flow（`GIT_NO_OPTIONAL_LOCKS=1`）。
-- **git 身份**：首次提交前 `python3 scripts/git_identity.py validate`，pre-commit hook 强制校验。
+- **git 身份**：提交一律走 `scripts/ecommit.sh`（自动注入 Author=Everloster 双身份）；pre-commit hook 强制校验 Committer 与 Author，裸 `git commit` 未设 `GIT_AUTHOR_*` 会被拦截。
 - **历史版本**：旧的多 Agent 编排框架（任务状态机/锁/事件溯源/Dashboard）归档在 `legacy-v1-multiagent` 分支。
 
 ---

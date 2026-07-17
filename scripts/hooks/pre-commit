@@ -1,6 +1,8 @@
 #!/bin/sh
-# EverAgent pre-commit hook: validate git identity before commit
-# Install: cp scripts/hooks/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
+# EverAgent pre-commit hook: validate git identity (committer + author) before commit
+# Install（二选一）:
+#   git config core.hooksPath scripts/hooks   # 推荐：版本化、随 pull 自动更新
+#   cp scripts/hooks/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
 
 REPO_ROOT="$(git rev-parse --show-toplevel)"
 IDENTITY_SCRIPT="$REPO_ROOT/scripts/git_identity.py"
