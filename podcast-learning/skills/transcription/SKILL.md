@@ -20,6 +20,32 @@ python3 transcribe.py "<链接或本地音频路径>" \
 - 链接无法被 yt-dlp 解析时：手动下载音频 → 用本地文件模式转写。
 - 转写文件保留时间戳行 `[HH:MM:SS -> HH:MM:SS] 文本`，方便回溯定位。
 
+### B站链接：音频获取走 opencli（2026-07-18 实测定规）
+
+B站风控已全面 412 拦截 yt-dlp（直连/代理/Cookie 均无效），`bili-cli audio` 接口也故障（`internal_error: 获取音频流`）。**优先用 opencli 复用浏览器登录态下载**：
+
+```bash
+# 1. 下载视频（opencli 走浏览器会话，绕过 412）
+opencli bilibili download <BVID> --output /tmp/bv_xxx --quality 480p
+
+# 2. 提取音频
+ffmpeg -y -i /tmp/bv_xxx/*.mp4 -vn -ac 1 -ar 16000 -b:a 128k /tmp/bv_xxx/audio.mp3
+
+# 3. 本地 whisper.cpp 转写
+whisper-cli -m ~/workspace/whisper.cpp/models/ggml-large-v3.bin \
+    -l zh -f /tmp/bv_xxx/audio.mp3 -oj -of /tmp/bv_xxx/out -np
+```
+
+**官方字幕 = 修正源**（替代小宇宙 shownotes 的角色）：
+
+```bash
+opencli bilibili subtitle <BVID> -f yaml > /tmp/subtitles.yaml
+```
+
+- 用字幕逐处校验 whisper 误识别（人名/术语/数字），修正写入 polished 头部清单。
+- ⚠️ 官方字幕自身也是 ASR 产物，**可能有错**（实测："夜里面"→"叶里面"、"清晨"→"清纯"）——字幕与 whisper 一致但上下文明显不通时，依上下文修正并单独标注「字幕亦错」。
+- 视频发布日期用 API 拿（命名需要）：`curl -s "https://api.bilibili.com/x/web-interface/view?bvid=<BVID>"` 取 `pubdate`。
+
 ## 二、润色（产出 `.polished.txt`）
 
 基于转写原文做**忠实润色**，与转写并列存放，同名 `.polished.txt`。
