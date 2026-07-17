@@ -7,6 +7,7 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-07-18 | [你到底该不该吃早餐?这期告诉你早餐的真相](../podcast-learning/reports/2026-07-14_bilibili_BV1HUNk6MEY5_luge-gustav.md) | podcast-learning |
 | 2026-07-17 | [🇰🇷 韩剧推荐 Top10（2024–2026 · 豆瓣评分）](../web-surfing/reports/kdrama-top10-2024-2026.md) | web-surfing |
 | 2026-07-17 | [8个专家只请2个来上班，为什么模型反而更聪明了？—— MoE 科普讲解](../ai-learning/reports/knowledge_reports/MoE混合专家_科普讲解_20260717.md) | ai-learning |
 | 2026-07-15 | [无状态的鹦鹉，怎么学会了连续对话和自己用工具？—— Agent 请求全链路科普](../ai-learning/reports/knowledge_reports/Agent请求全链路_科普讲解_20260715.md) | ai-learning |
@@ -31,7 +32,6 @@
 | 2026-06-21 | [推理模型三大流派详解：OpenAI o-series × DeepSeek R1 × Claude Extended Thinking](../ai-learning/reports/knowledge_reports/推理模型三大流派详解_20260621.md) | ai-learning |
 | 2026-06-21 | [情绪调节 Gross 模型 + 重评 vs 抑制的实证对比](../psychology-learning/reports/concept_reports/情绪调节_Gross模型_20260621.md) | psychology-learning |
 | 2026-06-21 | [多模态理解模型对比：GPT-4o × Claude 3.5 Vision × Gemini 2.5 × Qwen2.5-VL](../ai-learning/reports/knowledge_reports/多模态理解模型对比_GPT4o_Claude_Gemini_QwenVL_20260621.md) | ai-learning |
-| 2026-06-21 | [World Models / JEPA 路线深度报告：自监督世界建模 vs 生成式建模](../ai-learning/reports/knowledge_reports/World_Models_JEPA_路线深度报告_20260621.md) | ai-learning |
 
 ## 🤖 AI Learning（86 篇）
 
@@ -231,10 +231,11 @@
 | 2026-03-26 | [Physiology of Growth Hormone Secretion during Sleep (1996) 精读](../biology-learning/reports/paper_analyses/P09_gh_sleep_physiology_1996.md) | — |
 | 2026-03-23 | [晚型人作息与力量训练深度研究](../biology-learning/reports/concept_reports/晚型人作息与力量训练_深度研究报告.md) | — |
 
-## 🎙️ Podcast Learning（4 篇）
+## 🎙️ Podcast Learning（5 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-07-18 | [你到底该不该吃早餐?这期告诉你早餐的真相](../podcast-learning/reports/2026-07-14_bilibili_BV1HUNk6MEY5_luge-gustav.md) | — |
 | 2026-07-09 | [读书：4种配速，取景框，人是滤器，冲刷神经网络 —— 明镜与李继刚关于读书方法论的深度对话](../podcast-learning/reports/2026-07-09_xiaoyuzhou_6a4b22ad_lijigang.md) | — |
 | 2026-06-21 | [Vol.30-32 三期高质播客综合收听笔记（Sahil Lavingia 一人公司 + 塔利班女孩 + 香会 X 教育）](../podcast-learning/reports/2026-06-21_xiaoyuzhou_vol30-32_收听笔记.md) | — |
 | 2026-06-20 | [三年行业吃肉榜/爆亏榜大合集（2023-2025）：谁在偷偷赚钱，谁在快速衰落](../podcast-learning/reports/2026-06-20_bilibili_BV1NHJF6oE8m_cls-tongxue.md) | — |
