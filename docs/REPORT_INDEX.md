@@ -7,11 +7,11 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-07-17 | [🇰🇷 韩剧推荐 Top10（2024–2026 · 豆瓣评分）](../web-surfing/reports/kdrama-top10-2024-2026.md) | web-surfing |
 | 2026-07-17 | [8个专家只请2个来上班，为什么模型反而更聪明了？—— MoE 科普讲解](../ai-learning/reports/knowledge_reports/MoE混合专家_科普讲解_20260717.md) | ai-learning |
 | 2026-07-15 | [无状态的鹦鹉，怎么学会了连续对话和自己用工具？—— Agent 请求全链路科普](../ai-learning/reports/knowledge_reports/Agent请求全链路_科普讲解_20260715.md) | ai-learning |
 | 2026-07-15 | [客户端→网关→Harness→LLM→工具 请求全链路深度解析](../ai-learning/reports/knowledge_reports/Agent_Harness请求全链路_深度解析_20260709.md) | ai-learning |
 | 2026-07-15 | [一个模型的一生：1M 长上下文，从出生到上岗都经历了什么？—— 长上下文科普](../ai-learning/reports/knowledge_reports/长上下文1M_模型的一生_科普讲解_20260715.md) | ai-learning |
-| 2026-07-14 | [🇰🇷 韩剧推荐 Top10（2024–2026 · 豆瓣评分）](../web-surfing/reports/kdrama-top10-2024-2026.md) | web-surfing |
 | 2026-07-14 | [涌进 Anthropic 的 N 个巨佬：原文存档 + 逐人核实与深度分析](../ai-learning/reports/knowledge_reports/涌进Anthropic的N个巨佬_核实与深度分析_20260714.md) | ai-learning |
 | 2026-07-13 | [《欢迎来到伪智力繁荣时代》分析总结 — AI 如何拉平真伪思想的外观差距](../ai-learning/reports/knowledge_reports/伪智力繁荣时代_评论文精读与批判_20260713.md) | ai-learning |
 | 2026-07-10 | [自建科学上网节点：从抗审查协议到线路选型的系统工程](../cs-learning/reports/knowledge_reports/自建科学上网节点_抗审查协议与线路选型_20260710.md) | cs-learning |
@@ -244,5 +244,5 @@
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
-| 2026-07-14 | [🇰🇷 韩剧推荐 Top10（2024–2026 · 豆瓣评分）](../web-surfing/reports/kdrama-top10-2024-2026.md) | — |
+| 2026-07-17 | [🇰🇷 韩剧推荐 Top10（2024–2026 · 豆瓣评分）](../web-surfing/reports/kdrama-top10-2024-2026.md) | — |
 
