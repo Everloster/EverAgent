@@ -11,7 +11,7 @@
 用户发一个播客/视频链接（或本地音频文件），或说"上次那期继续"，按以下循环：
 
 1. **读画像与地图** — [PROFILE.md](./PROFILE.md)、[MAP.md](./MAP.md)、[wiki/open-questions.md](./wiki/open-questions.md)
-2. **下载 + 本地转写** — 用 `scripts/transcribe.py`（yt-dlp 下载音频 + **whisper.cpp** 本地转写，Metal 加速），产出 `reports/transcripts/{slug}.transcript.txt`。首次用需按 [SETUP.md](./SETUP.md) 装依赖。
+2. **下载 + 本地转写** — 用 `scripts/transcribe.py`（yt-dlp 下载音频 + **whisper.cpp** 本地转写，Metal 加速），产出 `reports/transcripts/{slug}.transcript.txt`。首次用需按 [SETUP.md](./SETUP.md) 装依赖。**B站链接例外**：yt-dlp 被 412 拦截，音频获取改走 `opencli bilibili download` + ffmpeg + whisper-cli，官方字幕作校验源（详见 [skills/transcription](./skills/transcription/SKILL.md) §一）。
 3. **拉 shownotes（推荐）** — 用 WebFetch 拉小宇宙/Apple Podcasts 页面，提取**章节时间戳 + 嘉宾身份 + 书单 + 关键概念**。whisper 对人名/英文术语/数字误识别率高，shownotes 是**修正源**。
 4. **润色** — 基于原始转写去口水词、断句、纠正明显错字，产出 `.{slug}.polished.txt`（与转写并列存放）。**只修表达，不改事实**；无法辨识处保留原文并标 `[?]`。
 5. **按 shownotes 重组（推荐）** — 把 raw 段按 shownotes 章节时间戳归类合并，**去掉时间戳**（避免读者被时间码干扰阅读流），每节一段连续文本，加 `## 章节标题`。
