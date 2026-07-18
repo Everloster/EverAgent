@@ -4,7 +4,7 @@ title: "MoE（混合专家架构）"
 type: concept
 domain: [ai-learning]
 created: 2026-04-07
-updated: 2026-06-22
+updated: 2026-07-19
 sources: [MoE_混合专家_深度解析_20260406, 21_moe_2017, 33_mistral_7b_2023]
 status: active
 ---
@@ -89,6 +89,7 @@ Shazeer 2017 实证：相同计算预算下，MoE 的参数扩展效益远优于
 Jacobs 1991（最初提出）→ Bengio 2013/2015（条件计算理论）→ **Shazeer 2017**（GPU 规模验证）→ GShard 2021 / Switch Transformer 2021 → Mixtral 8×7B 2023（开源主流化）→ DeepSeek-V2/V3 2024（细粒度 + 无辅助损失均衡）。来源：MoE_深度解析 §历史叙事
 
 ## 在本项目的相关报告
+- [MoE 科普讲解：一个 token 的专家大楼之旅（2026-07-19，入口推荐）](../../reports/knowledge_reports/MoE混合专家_一个token的专家大楼之旅_科普讲解_20260719.md)
 - [MoE 混合专家深度解析](../../reports/knowledge_reports/MoE_混合专家_深度解析_20260406.md)
 - [MoE 奠基论文 (Shazeer 2017) 论文精读](../../reports/paper_analyses/21_moe_2017.md)
 - [Mistral 7B (2023) 论文精读](../../reports/paper_analyses/33_mistral_7b_2023.md)

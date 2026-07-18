@@ -7,11 +7,12 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-07-19 | [一个字走进大楼：6710 亿参数，凭什么 94% 在睡觉？—— MoE 混合专家科普](../ai-learning/reports/knowledge_reports/MoE混合专家_一个token的专家大楼之旅_科普讲解_20260719.md) | ai-learning |
+| 2026-07-19 | [8个专家只请2个来上班，为什么模型反而更聪明了？—— MoE 科普讲解](../ai-learning/reports/knowledge_reports/MoE混合专家_科普讲解_20260717.md) | ai-learning |
 | 2026-07-18 | [读书：4种配速，取景框，人是滤器，冲刷神经网络 —— 明镜与李继刚关于读书方法论的深度对话](../podcast-learning/reports/2026-07-09_xiaoyuzhou-mingjing-diandian_lijigang.md) | podcast-learning |
 | 2026-07-18 | [你到底该不该吃早餐?这期告诉你早餐的真相](../podcast-learning/reports/2026-07-14_bilibili-luge-gustav_breakfast.md) | podcast-learning |
 | 2026-07-18 | [一红16年，干啥啥赚钱？｜屠龙博士创业的秘密！](../podcast-learning/reports/2026-07-07_bilibili-kedaibiao-lizheng_tulong-boshi.md) | podcast-learning |
 | 2026-07-17 | [🇰🇷 韩剧推荐 Top10（2024–2026 · 豆瓣评分）](../web-surfing/reports/kdrama-top10-2024-2026.md) | web-surfing |
-| 2026-07-17 | [8个专家只请2个来上班，为什么模型反而更聪明了？—— MoE 科普讲解](../ai-learning/reports/knowledge_reports/MoE混合专家_科普讲解_20260717.md) | ai-learning |
 | 2026-07-15 | [无状态的鹦鹉，怎么学会了连续对话和自己用工具？—— Agent 请求全链路科普](../ai-learning/reports/knowledge_reports/Agent请求全链路_科普讲解_20260715.md) | ai-learning |
 | 2026-07-15 | [客户端→网关→Harness→LLM→工具 请求全链路深度解析](../ai-learning/reports/knowledge_reports/Agent_Harness请求全链路_深度解析_20260709.md) | ai-learning |
 | 2026-07-15 | [一个模型的一生：1M 长上下文，从出生到上岗都经历了什么？—— 长上下文科普](../ai-learning/reports/knowledge_reports/长上下文1M_模型的一生_科普讲解_20260715.md) | ai-learning |
@@ -31,13 +32,13 @@
 | 2026-06-21 | [美学三论：康德《判断力批判》+ 杜威《艺术即经验》+ 丹托《艺术的终结》](../philosophy-learning/reports/text_analyses/美学三论_20260621.md) | philosophy-learning |
 | 2026-06-21 | [数据库 50 年演化知识图谱：从层次/网状到向量库](../cs-learning/reports/knowledge_reports/数据库50年演化_从层次到向量库_20260621.md) | cs-learning |
 | 2026-06-21 | [推理模型三大流派详解：OpenAI o-series × DeepSeek R1 × Claude Extended Thinking](../ai-learning/reports/knowledge_reports/推理模型三大流派详解_20260621.md) | ai-learning |
-| 2026-06-21 | [情绪调节 Gross 模型 + 重评 vs 抑制的实证对比](../psychology-learning/reports/concept_reports/情绪调节_Gross模型_20260621.md) | psychology-learning |
 
-## 🤖 AI Learning（86 篇）
+## 🤖 AI Learning（87 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
-| 2026-07-17 | [8个专家只请2个来上班，为什么模型反而更聪明了？—— MoE 科普讲解](../ai-learning/reports/knowledge_reports/MoE混合专家_科普讲解_20260717.md) | `moe`, `mixture-of-experts`, `sparse-activation`, `routing`, `load-balancing`, `conditional-computation` |
+| 2026-07-19 | [一个字走进大楼：6710 亿参数，凭什么 94% 在睡觉？—— MoE 混合专家科普](../ai-learning/reports/knowledge_reports/MoE混合专家_一个token的专家大楼之旅_科普讲解_20260719.md) | `moe`, `mixture-of-experts`, `sparse-activation`, `routing`, `ffn`, `load-balancing` |
+| 2026-07-19 | [8个专家只请2个来上班，为什么模型反而更聪明了？—— MoE 科普讲解](../ai-learning/reports/knowledge_reports/MoE混合专家_科普讲解_20260717.md) | `moe`, `mixture-of-experts`, `sparse-activation`, `routing`, `load-balancing`, `conditional-computation` |
 | 2026-07-15 | [无状态的鹦鹉，怎么学会了连续对话和自己用工具？—— Agent 请求全链路科普](../ai-learning/reports/knowledge_reports/Agent请求全链路_科普讲解_20260715.md) | `agent_harness`, `function_calling`, `tool_use`, `agentic_loop`, `context_management`, `prompt_caching` |
 | 2026-07-15 | [客户端→网关→Harness→LLM→工具 请求全链路深度解析](../ai-learning/reports/knowledge_reports/Agent_Harness请求全链路_深度解析_20260709.md) | `agent_harness`, `function_calling`, `tool_use`, `agentic_loop`, `context_management`, `prompt_caching` |
 | 2026-07-15 | [一个模型的一生：1M 长上下文，从出生到上岗都经历了什么？—— 长上下文科普](../ai-learning/reports/knowledge_reports/长上下文1M_模型的一生_科普讲解_20260715.md) | `long_context`, `pretraining`, `post_training`, `inference`, `kv_cache`, `rag` |
