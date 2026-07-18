@@ -11,13 +11,13 @@
 ### 来自 2026-07-18 追问攻坚（残留新问）
 
 - **「雀巢资助早餐研究」的具体论文清单？** —— 基利书中只把雀巢列在笼统名单里，本轮查证未找到以 Nestlé 为资助方的具体早餐论文。需读基利原书第 4–6 章（"Breakfast Myths"，LitRes 试读片段未含）。
-  - 来源：[[2026-07-14_bilibili_BV1HUNk6MEY5_luge-gustav]] 追问攻坚·问 3 残留
+  - 来源：[[2026-07-14_bilibili-luge-gustav_breakfast]] 追问攻坚·问 3 残留
 
 - **《Dataclysm》第 2 章 "Death by a Thousand Mehs" 的书内确切数字？** —— 博客版（The Mathematics of Beauty）已逐字核实，但纸质书第 2 章 archive.org 借阅受限，书中数字表述置信度仅中高。列入 A 类拆书候选（屠龙期已标注）。
-  - 来源：[[2026-07-07_bilibili_BV1krM46BEpn_tulong-boshi]] 追问攻坚·问 9 残留
+  - 来源：[[2026-07-07_bilibili-kedaibiao-lizheng_tulong-boshi]] 追问攻坚·问 9 残留
 
 - **蛋白质 preload 的长期获益（HbA1c/体重）有无 RCT？** —— 急性餐后效应证据明确（meta 高确定性），但进食顺序 meta 对 HbA1c 无显著效应（Okami 2022）。需要 12 周以上的 preload RCT 证据。
-  - 来源：[[2026-07-14_bilibili_BV1HUNk6MEY5_luge-gustav]] 追问攻坚·问 2 残留
+  - 来源：[[2026-07-14_bilibili-luge-gustav_breakfast]] 追问攻坚·问 2 残留
 
 ---
 

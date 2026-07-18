@@ -51,4 +51,4 @@
 
 ## 引用本概念的报告
 
-- [[2026-07-09_xiaoyuzhou_6a4b22ad_lijigang|读书：4种配速，取景框，人是滤器，冲刷神经网络]]
+- [[2026-07-09_xiaoyuzhou-mingjing-diandian_lijigang|读书：4种配速，取景框，人是滤器，冲刷神经网络]]

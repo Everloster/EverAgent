@@ -32,7 +32,7 @@
 
 ## 出现于
 
-- [[../reports/2026-06-18_xiaoyuzhou_vol29_wangxiaochuan|Vol.29 报告]]
+- [[../reports/2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan|Vol.29 报告]]
 
 ## 相关链接
 

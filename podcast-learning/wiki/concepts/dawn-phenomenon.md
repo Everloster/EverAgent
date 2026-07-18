@@ -42,7 +42,7 @@
 
 ## 在库来源
 
-- [[2026-07-14_bilibili_BV1HUNk6MEY5_luge-gustav]] — 鹿哥Gustav《你到底该不该吃早餐?》
+- [[2026-07-14_bilibili-luge-gustav_breakfast]] — 鹿哥Gustav《你到底该不该吃早餐?》
 
 ## 关联
 

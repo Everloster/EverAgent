@@ -8,19 +8,19 @@
 
 ### AI 行业 / 医疗 AI
 
-- [[2026-06-18_xiaoyuzhou_vol29_wangxiaochuan|Vol.29 对话王小川：造医生，战豆包，与无尽的 AI 非共识]]（text_analysis · 2026-06-18）
+- [[2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan|Vol.29 对话王小川：造医生，战豆包，与无尽的 AI 非共识]]（text_analysis · 2026-06-18）
 
 ### 商业 / 宏观经济 / 中国行业分析
 
-- [[2026-06-20_bilibili_BV1NHJF6oE8m_cls-tongxue|三年行业吃肉榜/爆亏榜大合集（2023-2025）]]（text_analysis · 2026-06-20）— B 站 CLS 同学
+- [[2026-06-20_bilibili-cls-tongxue_hangye-bangdan|三年行业吃肉榜/爆亏榜大合集（2023-2025）]]（text_analysis · 2026-06-20）— B 站 CLS 同学
 
 ### 跨领域综合（Vol.30-32 三期）
 
-- [[2026-06-21_xiaoyuzhou_vol30-32_收听笔记|Vol.30-32 三期高质播客综合收听笔记]]（text_analysis · 2026-06-21）— 覆盖学术/科技 + 商业（Vol.30）/ 心理学+人文+国际（Vol.31）/ 工程+开发者文化（Vol.32）
+- [[2026-06-21_xiaoyuzhou-multi_notes|Vol.30-32 三期高质播客综合收听笔记]]（text_analysis · 2026-06-21）— 覆盖学术/科技 + 商业（Vol.30）/ 心理学+人文+国际（Vol.31）/ 工程+开发者文化（Vol.32）
 
 ### 读书方法论 / 认知框架
 
-- [[2026-07-09_xiaoyuzhou_6a4b22ad_lijigang|读书：4种配速，取景框，人是滤器，冲刷神经网络 —— 明镜与李继刚关于读书方法论的深度对话]]（episode_summary · 2026-07-09）— 小宇宙「明镜与点点」（面基）对谈节目，1h54min，核心公式 F × X = Fx
+- [[2026-07-09_xiaoyuzhou-mingjing-diandian_lijigang|读书：4种配速，取景框，人是滤器，冲刷神经网络 —— 明镜与李继刚关于读书方法论的深度对话]]（episode_summary · 2026-07-09）— 小宇宙「明镜与点点」（面基）对谈节目，1h54min，核心公式 F × X = Fx
 
 ---
 

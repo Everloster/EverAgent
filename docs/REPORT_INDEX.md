@@ -7,9 +7,9 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
-| 2026-07-18 | [读书：4种配速，取景框，人是滤器，冲刷神经网络 —— 明镜与李继刚关于读书方法论的深度对话](../podcast-learning/reports/2026-07-09_xiaoyuzhou_6a4b22ad_lijigang.md) | podcast-learning |
-| 2026-07-18 | [你到底该不该吃早餐?这期告诉你早餐的真相](../podcast-learning/reports/2026-07-14_bilibili_BV1HUNk6MEY5_luge-gustav.md) | podcast-learning |
-| 2026-07-18 | [一红16年，干啥啥赚钱？｜屠龙博士创业的秘密！](../podcast-learning/reports/2026-07-07_bilibili_BV1krM46BEpn_tulong-boshi.md) | podcast-learning |
+| 2026-07-18 | [读书：4种配速，取景框，人是滤器，冲刷神经网络 —— 明镜与李继刚关于读书方法论的深度对话](../podcast-learning/reports/2026-07-09_xiaoyuzhou-mingjing-diandian_lijigang.md) | podcast-learning |
+| 2026-07-18 | [你到底该不该吃早餐?这期告诉你早餐的真相](../podcast-learning/reports/2026-07-14_bilibili-luge-gustav_breakfast.md) | podcast-learning |
+| 2026-07-18 | [一红16年，干啥啥赚钱？｜屠龙博士创业的秘密！](../podcast-learning/reports/2026-07-07_bilibili-kedaibiao-lizheng_tulong-boshi.md) | podcast-learning |
 | 2026-07-17 | [🇰🇷 韩剧推荐 Top10（2024–2026 · 豆瓣评分）](../web-surfing/reports/kdrama-top10-2024-2026.md) | web-surfing |
 | 2026-07-17 | [8个专家只请2个来上班，为什么模型反而更聪明了？—— MoE 科普讲解](../ai-learning/reports/knowledge_reports/MoE混合专家_科普讲解_20260717.md) | ai-learning |
 | 2026-07-15 | [无状态的鹦鹉，怎么学会了连续对话和自己用工具？—— Agent 请求全链路科普](../ai-learning/reports/knowledge_reports/Agent请求全链路_科普讲解_20260715.md) | ai-learning |
@@ -235,12 +235,12 @@
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
-| 2026-07-18 | [读书：4种配速，取景框，人是滤器，冲刷神经网络 —— 明镜与李继刚关于读书方法论的深度对话](../podcast-learning/reports/2026-07-09_xiaoyuzhou_6a4b22ad_lijigang.md) | — |
-| 2026-07-18 | [你到底该不该吃早餐?这期告诉你早餐的真相](../podcast-learning/reports/2026-07-14_bilibili_BV1HUNk6MEY5_luge-gustav.md) | — |
-| 2026-07-18 | [一红16年，干啥啥赚钱？｜屠龙博士创业的秘密！](../podcast-learning/reports/2026-07-07_bilibili_BV1krM46BEpn_tulong-boshi.md) | — |
-| 2026-06-21 | [Vol.30-32 三期高质播客综合收听笔记（Sahil Lavingia 一人公司 + 塔利班女孩 + 香会 X 教育）](../podcast-learning/reports/2026-06-21_xiaoyuzhou_vol30-32_收听笔记.md) | — |
-| 2026-06-20 | [三年行业吃肉榜/爆亏榜大合集（2023-2025）：谁在偷偷赚钱，谁在快速衰落](../podcast-learning/reports/2026-06-20_bilibili_BV1NHJF6oE8m_cls-tongxue.md) | — |
-| 2026-06-18 | [Vol.29 对话王小川：造医生，战豆包，与无尽的 AI 非共识](../podcast-learning/reports/2026-06-18_xiaoyuzhou_vol29_wangxiaochuan.md) | — |
+| 2026-07-18 | [读书：4种配速，取景框，人是滤器，冲刷神经网络 —— 明镜与李继刚关于读书方法论的深度对话](../podcast-learning/reports/2026-07-09_xiaoyuzhou-mingjing-diandian_lijigang.md) | — |
+| 2026-07-18 | [你到底该不该吃早餐?这期告诉你早餐的真相](../podcast-learning/reports/2026-07-14_bilibili-luge-gustav_breakfast.md) | — |
+| 2026-07-18 | [一红16年，干啥啥赚钱？｜屠龙博士创业的秘密！](../podcast-learning/reports/2026-07-07_bilibili-kedaibiao-lizheng_tulong-boshi.md) | — |
+| 2026-06-21 | [Vol.30-32 三期高质播客综合收听笔记（Sahil Lavingia 一人公司 + 塔利班女孩 + 香会 X 教育）](../podcast-learning/reports/2026-06-21_xiaoyuzhou-multi_notes.md) | — |
+| 2026-06-20 | [三年行业吃肉榜/爆亏榜大合集（2023-2025）：谁在偷偷赚钱，谁在快速衰落](../podcast-learning/reports/2026-06-20_bilibili-cls-tongxue_hangye-bangdan.md) | — |
+| 2026-06-18 | [Vol.29 对话王小川：造医生，战豆包，与无尽的 AI 非共识](../podcast-learning/reports/2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan.md) | — |
 
 ## 🏄 Web Surfing（1 篇）
 

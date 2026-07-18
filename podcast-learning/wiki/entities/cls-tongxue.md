@@ -23,7 +23,7 @@
 
 ## 关键产出（已被 podcast-learning 收录）
 
-- [[2026-06-20_bilibili_BV1NHJF6oE8m_cls-tongxue]] — 三年大合集（2023-2025）
+- [[2026-06-20_bilibili-cls-tongxue_hangye-bangdan]] — 三年大合集（2023-2025）
 
 ## 风格特征（从转录观察）
 

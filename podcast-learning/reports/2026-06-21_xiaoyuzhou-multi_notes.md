@@ -14,7 +14,7 @@ polished: false
 status: archived
 created: 2026-06-21
 updated_on: 2026-06-21
-transcript_path: reports/transcripts/2026-06-21_xiaoyuzhou_vol30-32.transcript.txt
+transcript_path: reports/transcripts/2026-06-21_xiaoyuzhou-multi_notes.transcript.txt
 note: "本报告按 podcast-learning/AGENTS.md 的 5 步协议产出，但本次执行受 Bash/WebFetch 工具权限限制，无法调用 agent-reach xiaoyuzhou 拉取原始音频转录。报告基于小宇宙公开 show notes + 多源 web_search 的节目元数据与节目介绍合成。所有引用均标注来源；凡转录内容未获音频校对的部分，标 [show notes] 或 [search-derived]。3 期选自 4 个目标域（学术/科技、商业/财经、心理学/人文、工程/开发者文化）以多元化覆盖。"
 ---
 

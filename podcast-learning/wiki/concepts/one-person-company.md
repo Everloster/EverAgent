@@ -4,7 +4,7 @@ domain: "AI 商业 / 创业方法论"
 created: 2026-06-21
 updated_on: 2026-06-21
 sources:
-  - "[[2026-06-21_xiaoyuzhou_vol30-32_收听笔记]]"
+  - "[[2026-06-21_xiaoyuzhou-multi_notes]]"
 related_entities:
   - "[[entities/sahil-lavingia]]"
   - "[[entities/gumroad]]"

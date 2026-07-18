@@ -22,8 +22,8 @@ polished_at: 2026-07-18
 status: archived
 created: 2026-07-18
 updated_on: 2026-07-18
-transcript_path: reports/transcripts/2026-07-14_bilibili_BV1HUNk6MEY5_luge-gustav.transcript.txt
-polished_transcript_path: reports/transcripts/2026-07-14_bilibili_BV1HUNk6MEY5_luge-gustav.polished.txt
+transcript_path: reports/transcripts/2026-07-14_bilibili-luge-gustav_breakfast.transcript.txt
+polished_transcript_path: reports/transcripts/2026-07-14_bilibili-luge-gustav_breakfast.polished.txt
 pipeline: opencli bilibili download（浏览器登录态，yt-dlp 直连被 412 拦截）→ ffmpeg mp3 → whisper.cpp / ggml-large-v3 / Metal → B站官方字幕（577 条）双源校验 → Claude 自拟 10 节重构
 source_shownotes_chapters: false
 notable_correction: "whisper 误识别 一线→胰腺、基莱/积来/鸡来→基利、康奈亚→康奈尔、博内斯→伯内斯 等 17 处（依官方字幕修正）；官方字幕自身 3 处错误（叶里面/清纯/参加）依上下文修正"

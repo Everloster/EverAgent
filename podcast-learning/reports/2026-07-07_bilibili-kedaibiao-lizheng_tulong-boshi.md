@@ -21,8 +21,8 @@ polished_at: 2026-07-18
 status: archived
 created: 2026-07-18
 updated_on: 2026-07-18
-transcript_path: reports/transcripts/2026-07-07_bilibili_BV1krM46BEpn_tulong-boshi.transcript.txt
-polished_transcript_path: reports/transcripts/2026-07-07_bilibili_BV1krM46BEpn_tulong-boshi.polished.txt
+transcript_path: reports/transcripts/2026-07-07_bilibili-kedaibiao-lizheng_tulong-boshi.transcript.txt
+polished_transcript_path: reports/transcripts/2026-07-07_bilibili-kedaibiao-lizheng_tulong-boshi.polished.txt
 pipeline: opencli bilibili download → ffmpeg mp3 → whisper.cpp / ggml-large-v3 / Metal → B站官方字幕（英文 AI 翻译版 2,860 条）语义校验 + 末节重构 → Claude 自拟 16 节
 source_shownotes_chapters: false
 notable_correction: "whisper 于 01:26:26 起重复幻觉循环，最后 9 分钟据官方英文字幕重构；40+ 处同音误识别依上下文修正（畜男→处男、某定→锚定、思想刚硬→思想钢印、Data Sealing→Dataclysm 等）"
