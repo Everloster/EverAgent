@@ -3,7 +3,7 @@ title: "语言模型中的全局工作空间（J-space / J-lens）——Anthropi
 domain: "ai-learning"
 report_type: "paper_analysis"
 status: "completed"
-updated_on: "2026-07-07"
+updated_on: "2026-07-19"
 semantic_tags: ["interpretability", "global_workspace", "jacobian_lens", "consciousness", "ai_safety", "introspection"]
 related_concepts: ["attention_mechanism", "in_context_learning", "test_time_compute", "agent_observability"]
 related_entities: ["openai"]
@@ -184,7 +184,7 @@ Anthropic 主动邀请三组外部专家写**独立评论**（PDF 同步发布�
 - 定调：**"我们视此发现为意识研究的一座里程碑"**，因为它给 GNW 假说提供了**机制性、可检验**的版本。
 - 认可 J-space 满足他们的 **C1（全局可用性）**，并有 **C2（自我监控）的初步迹象**。
 - **但列出关键差异（= 最有价值的批判）**：
-  1. **"点火（ignition）"尚未证实**：人脑意识的可靠标志是非线性、竞争性、全或无的"点火"。论文只证了容量有限，没证全或无的阈值式进入。（补记：初稿后新增分析显示，模糊证据在后层会突变为全或无表征，section 4.1.1 / fig 29——部分回应了这点。）
+  1. **"点火（ignition）"尚未证实**：人脑意识的可靠标志是非线性、竞争性、全或无的"点火"。论文只证了容量有限，没证全或无的阈值式进入。（补记：初稿后新增分析显示，模糊证据在后层会突变为全或无表征，section 4.1.1 / fig 29——部分回应了这点。）（2026-07-19 再补：已读长论文 4.1.1 及附录 Ignition Details 原文，fig 29 + figs 70/71 几乎逐条命中 Dehaene 自己开出的"决定性实验"标准，应改判为**实质回应但非完整证明**——详见文末「追问深入（2026-07-19）」。）
   2. **容量可能偏高**：J-space ~25 概念远超人类工作记忆的 3–4 槽；去冗余后可能只是"一个心境/语境"，或 ~6 个连贯 idea。
   3. **是"子框架"不是"专用神经群"**：人脑 GNW 预测有特定解剖（前额叶密集）+ 形态（长程轴突）的工作空间神经元；J-space 只是分布在普通神经元上的**稀疏子框架（sparse subframe）**，甚至不是线性子空间。
   4. **缺自发递归活动**：人脑工作空间靠皮层-皮层/丘脑递归环维持；Transformer 只有前馈单程，是"反应式"的，无法复现静息态/睡眠/麻醉下的意识signatures。（缓解因素：层深≈时间维度；多 token 生成≈动态环。）
@@ -253,12 +253,37 @@ Logit lens / SAE 可解释性 ───────┘        ├ 用于 alignme
    我理解了 J-lens 的本质是"跨上下文平均的雅可比投影"，用来分离"随时准备被说出来的表征"和"碰巧泄漏到当前输出的东西"；也理解了这篇的真正价值是**可操作的安全机制**（评估意识可定位可关闭、关闭后模型真的会作恶），而"意识"标题被三方专家一致校准为"仅是 **access consciousness**，非现象意识"。我还理解了这套结构**训练涌现、预训练已存在**，暗示工作空间是智能的通用解。**（2026-07-07 新增）** 我还厘清了一个关键定位问题：J-space 是**激活值（残差流）**层面的东西，不是冻结的参数权重，也不是 LLM 外面的 harness/scratchpad——见「🧭 追问深入」小节。
 
 2. **我还没搞懂什么？**（具体，汇入 open-questions）
-   - **"点火/ignition"到底证没证？** Dehaene 说没证全或无的阈值式进入，作者初稿后补的 fig 29 说后层会突变——这两者是"部分回应"还是"实质证明"？需读长论文的 4.1.1。
+   - ~~**"点火/ignition"到底证没证？**~~ ✅ 已于 2026-07-19 解决（读长论文 4.1.1 + 附录 Ignition Details 原文）：**实质回应但非完整证明**，见文末「追问深入（2026-07-19）」。
    - **J-space 是不是"一条统一的意识流"？** Eleos 质疑这些特权表征可能**不汇成单一 workspace**。判定标准是什么？
    - **雅可比对"未来输出"的因果影响**如何精确定义？是对最终 token 的梯度，还是跨多步生成的某种累积？Nanda 的 `J·W_U` 表述里，"到 penultimate layer 的 Jacobian"具体怎么算。
    - **counterfactual reflection training 的完整损失函数**长什么样？"只训它被打断时会说什么"如何形式化。
 
 3. **下一步读什么 / 做什么？**
-   - 回长论文核对三处硬数据：点火(fig 29)、容量(fig 31)、消融(fig 24/78)，把本报告 [论文-未读] 标注消掉。
+   - 回长论文核对三处硬数据：点火(fig 29)~~、容量(fig 31)、消融(fig 24/78)~~，把本报告 [论文-未读] 标注消掉。（fig 29 已于 2026-07-19 核对完毕，见文末；fig 31 / fig 24/78 仍待核。）
    - 在 `ai-practice/` 用 Neuronpedia demo + 开源库，在一个小开源模型上复刻"法国→中国 swap"这个最干净的因果实验，拿真实读数。
    - 把本文与 Anthropic 的 introspection 前作串成一篇 synthesis（"Anthropic 的模型内省研究线：从 introspective awareness 到 J-space"）。
+
+---
+
+## 追问深入（2026-07-19）
+
+### ✅ "点火/ignition"：实质回应，但非完整证明（已读长论文 4.1.1 + 附录 Ignition Details + Dehaene 评论 PDF 原文）
+
+**fig 29 实际做了什么（§4.1.1 "Interpretation of ambiguous inputs solidifies at the workspace onset"）**：把某概念 token 的输入 embedding 换成两个国家概念的加权混合 (1−α)e_B + αe_A，16 对国家 × 40 个载体句，α 从 0 扫到 1，逐层记录残差流。结果：早层平滑跟踪输入比例；**约 layer 38（恰为 workspace onset）起，激活突变为靠近某一端点、在阈值 α 处陡峭切换**。面板 C 显示 J-space 成分的突变比整体激活更早、更陡。
+
+**附录量化（figs 70/71）**：
+
+- fig 70：以"投影份额从 10% 到 90% 所需 α 变化量"度量过渡锐度——J-space 成分的过渡**始终比非 J-space 成分更窄、更早触底**（层 21–42 间急剧变陡）。
+- fig 71（关键）：在最模糊 α 处看逐 prompt 分布——约模型深度一半处，**J-space 成分分布明显双峰**（多数 trial 靠近 0 或 1，中间无质量）；同层非 J-space 成分仍有大量质量停在 0.5，即"尚未承诺"。
+
+**为什么判"实质回应"**：这两条正好命中 Dehaene & Naccache 自己列出的 ignition 操作性标准（阈值式非线性进入 + 阈值处双峰分叉），实验设计与他们提议的"决定性实验"高度同构；且 J-space 领先于非 J-space 成分承诺，说明这是工作空间层带头的全或无选择，不是全网普适的 late-layer 锐化。Dehaene 评论 PDF 的**脚注**也承认了这一分析："the J-space quickly transitions to an all-or-none representation… (see section 4.1.1, figure 29)… These findings point to a capacity-limited system"——但保留 "still unclear whether its limits are similar to those of the human GNW"，且正文 "remains to be fully demonstrated" 一句未删。
+
+**为什么仍非"完整证明"**（对照 Dehaene 完整定义的三个缺口，推断）：
+
+1. 实验操纵的是**两解释间的证据模糊度**（α 混合 embedding），不是**单一刺激的物理强度**——未演示"阈下刺激只激起局部波然后消亡"这一 ignition 标志对照；
+2. 双峰是**跨 prompt（不同载体句）**的分布，不是"同一刺激恰在阈值、跨运行分叉"——确定性前馈模型无跨运行随机性，严格说不等价于 Sergent et al. 2021 的阈值试次分叉；
+3. **自放大、递归维持**在前馈单程中无直接对应物（作者以"层深≈时间"替代），竞争性仅有 §A.17 双任务成绩中等下降的间接证据。
+
+**作者的学术诚实度佐证**：加了 fig 29 之后，引言中 "unclear whether this mirrors sharp, competitive ignition" 的保留条款原样保留，正文只称 "ignition-like effects"——作者自己的定性就是"部分回应"，与本判定一致。
+
+**结论降级表述**：ignition 的大部分操作标准（阈值非线性、阈值处双峰、J-space 带头承诺）已证；**递归/自放大与阈下刺激对照仍未证**。此 open question 关闭。
