@@ -4,7 +4,7 @@ domain: "创业哲学 / 商业"
 created: 2026-06-21
 updated_on: 2026-06-21
 sources:
-  - "[[2026-06-21_xiaoyuzhou_vol30-32_收听笔记]]"
+  - "[[2026-06-21_xiaoyuzhou-multi_notes]]"
 related_entities:
   - "[[entities/sahil-lavingia]]"
   - "[[entities/gumroad]]"

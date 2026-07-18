@@ -4,7 +4,7 @@
 > 录制/发布：小宇宙 · 2026-07-09
 > 时长：1 小时 53 分（6815 秒）
 > 原始转录：whisper.cpp / ggml-large-v3 / Metal 加速 / zh
-> 润色稿：reports/transcripts/2026-07-09_xiaoyuzhou_6a4b22ad.polished.txt
+> 润色稿：reports/transcripts/2026-07-09_xiaoyuzhou-mingjing-diandian_lijigang.polished.txt
 > 状态：删除了小宇宙片尾自动广告 4 段；其他保留 whisper.cpp 原始输出（含可能的同音误识别）。
 
 ---

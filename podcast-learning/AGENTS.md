@@ -39,39 +39,43 @@
 
 ## 文件命名规范
 
+> 2026-07-18 重构：旧格式 `{date}_{platform}_{show_id}_{slug}` 中 show_id（BV 号/episode hash）可读性太差，已废弃。**show_id 不再入文件名，溯源靠 frontmatter `source_url`。**
+
 报告 / 转录 / 润色稿三件套共享同一前缀：
 
 ```
-{YYYY-MM-DD}_{platform}_{show_id}_{slug}.{md|transcript.txt|polished.txt}
+{YYYY-MM-DD}_{platform}-{show_slug}_{guest_or_topic}.{md|transcript.txt|polished.txt}
 ```
 
 | 字段 | 取值规则 | 示例 |
 |------|---------|------|
 | `{YYYY-MM-DD}` | 节目发布日期（**不是处理日期**）| `2026-07-09` |
 | `{platform}` | `xiaoyuzhou` / `bilibili` / `youtube` / `local` | `xiaoyuzhou` |
-| `{show_id}` | 节目内 ID（**唯一性即可**，不要混用风格）| `vol29` / `BV1NHJF6oE8m` / `vol30-32` / `6a4b22ad` |
-| `{slug}` | **嘉宾 slug**（小写连字符）| `wangxiaochuan` / `cls-tongxue` / `li-jigang` |
-| `{slug}` 例外 | 无嘉宾时用主题描述（如 `_收听笔记`） | `vol30-32_收听笔记` |
+| `{show_slug}` | **节目的可读 slug**（小写连字符，拼音或英文），同一节目固定同一 slug | 明镜与点点→`mingjing-diandian`、课代表立正→`kedaibiao-lizheng`、CLS同学→`cls-tongxue`、鹿哥Gustav→`luge-gustav` |
+| `{show_slug}` 例外 | 跨节目综合用 `multi` | `xiaoyuzhou-multi` |
+| `{guest_or_topic}` | **嘉宾 slug**（小写连字符）；无嘉宾（单口/综合）用**主题 slug** | `wangxiaochuan` / `lijigang` / `breakfast` / `notes` |
 
 ### 命名实例
 
 | 文件 | 类型 | 命名依据 |
 |------|------|---------|
-| `2026-06-18_xiaoyuzhou_vol29_wangxiaochuan.md` | 报告 | 王小川作客 Vol.29 |
-| `2026-06-20_bilibili_BV1NHJF6oE8m_cls-tongxue.md` | 报告 | CLS 同学单口 |
-| `2026-06-21_xiaoyuzhou_vol30-32_收听笔记.md` | 报告 | 3 期综合，无单一嘉宾 → 用 `_收听笔记` |
-| `2026-07-09_xiaoyuzhou_6a4b22ad_lijigang.md` | 报告 | 李继刚作客 6a4b22ad episode（**对谈节目**） |
-| `2026-07-09_xiaoyuzhou_6a4b22ad_lijigang.transcript.txt` | 原始转录 | 5,372 段，**带时间戳** |
-| `2026-07-09_xiaoyuzhou_6a4b22ad_lijigang.polished.txt` | 润色稿 | 按 shownotes 36 章节，**不带时间戳** |
+| `2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan.md` | 报告 | 王小川作客《明镜与点点》 |
+| `2026-06-20_bilibili-cls-tongxue_hangye-bangdan.md` | 报告 | CLS 同学单口 → 主题 slug |
+| `2026-06-21_xiaoyuzhou-multi_notes.md` | 报告 | 3 期跨节目综合 → `multi` + `notes` |
+| `2026-07-09_xiaoyuzhou-mingjing-diandian_lijigang.md` | 报告 | 李继刚作客《明镜与点点》 |
+| `2026-07-09_xiaoyuzhou-mingjing-diandian_lijigang.transcript.txt` | 原始转录 | 5,372 段，**带时间戳** |
+| `2026-07-09_xiaoyuzhou-mingjing-diandian_lijigang.polished.txt` | 润色稿 | 按 shownotes 36 章节，**不带时间戳** |
+| `2026-07-14_bilibili-luge-gustav_breakfast.md` | 报告 | 鹿哥Gustav 单口 → 主题 slug |
 
 ### 反例（不要用）
 
 | 反例 | 错误原因 |
 |------|---------|
-| `2026-07-09_xiaoyuzhou_ep-6a4b22ad_mingjing-reading.md` | slug 写"mingjing-reading"是错的——mingjing 是主持不是嘉宾；且"ep-" 前缀与 vol30-32 风格不一致 |
-| `2026-07-09_xiaoyuzhou_6a4b22ad.transcript.txt` | transcript/polished 缺 slug，无法与报告关联 |
-| `2026-07-09_podcast_ep-6a4b22ad_lijigang.md` | platform 字段不标准化（podcast 太宽泛） |
-| `2026-07-09_xiaoyuzhou_6a4b22ad_李继刚.md` | slug 不要用中文（跨平台兼容性） |
+| `2026-07-09_xiaoyuzhou_6a4b22ad_lijigang.md` | **旧格式**：show_id（hash/BV号）入文件名，可读性差——已废弃 |
+| `2026-07-09_xiaoyuzhou_mingjing-reading.md` | slug 写"mingjing-reading"是错的——mingjing 是主持不是嘉宾；show_slug 缺失 |
+| `2026-07-09_xiaoyuzhou-mingjing-diandian.transcript.txt` | transcript/polished 缺 guest_or_topic，无法与报告关联 |
+| `2026-07-09_podcast-mingjing-diandian_lijigang.md` | platform 字段不标准化（podcast 太宽泛） |
+| `2026-07-09_xiaoyuzhou-mingjing-diandian_李继刚.md` | slug 不要用中文（跨平台兼容性） |
 
 ---
 

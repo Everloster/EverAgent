@@ -22,7 +22,7 @@
 - **书店**：用卖美妆的方法卖书（讲"这本书对我的影响"）→ 中信第三大渠道商
 - **护肤品公司**：连续三年 4000/5000/6000 万"趴着"，2026 Q1 单季 3400 万——非线性爆发
 
-## 核心方法论（详见 [[2026-07-07_bilibili_BV1krM46BEpn_tulong-boshi|访谈报告]]）
+## 核心方法论（详见 [[2026-07-07_bilibili-kedaibiao-lizheng_tulong-boshi|访谈报告]]）
 
 - **非线性世界观**：History doesn't crawl, it jumps；拐点=凑齐要素后的显化，无法单因果归因
 - **不看竞对**：体量小时分析竞对绝对有害；"正确答案唯一"是要扔掉的框；平衡是极致的反面
@@ -34,7 +34,7 @@
 
 ## 关键产出（已被 podcast-learning 收录）
 
-- [[2026-07-07_bilibili_BV1krM46BEpn_tulong-boshi]] — 课代表立正对谈（2026-07-07，1h35m）
+- [[2026-07-07_bilibili-kedaibiao-lizheng_tulong-boshi]] — 课代表立正对谈（2026-07-07，1h35m）
 
 ## 相关链接
 

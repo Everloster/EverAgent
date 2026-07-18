@@ -24,8 +24,8 @@ polished_at: 2026-07-09
 status: archived
 created: 2026-07-09
 updated_on: 2026-07-18
-transcript_path: reports/transcripts/2026-07-09_xiaoyuzhou_6a4b22ad.transcript.txt
-polished_transcript_path: reports/transcripts/2026-07-09_xiaoyuzhou_6a4b22ad.polished.txt
+transcript_path: reports/transcripts/2026-07-09_xiaoyuzhou-mingjing-diandian_lijigang.transcript.txt
+polished_transcript_path: reports/transcripts/2026-07-09_xiaoyuzhou-mingjing-diandian_lijigang.polished.txt
 pipeline: yt-dlp 拉小宇宙音频 → ffmpeg 转 mp3 → whisper.cpp / ggml-large-v3 / Metal 加速 / 7m30s 墙钟 → Claude 自润 → 按 shownotes 36 章节重组成 polished
 source_shownotes_chapters: true
 notable_correction: "whisper 把「李继刚」听成「李金刚/李吉刚」、把「面基」听成无关词；whisper 也没识别出对话双方（明镜+李继刚）；本报告依 shownotes 与公开信息修正"
@@ -560,8 +560,8 @@ ljg-skills（工程层）
 
 ## 转录全文
 
-- **原文**（含时间戳 + 头部 metadata）：`reports/transcripts/2026-07-09_xiaoyuzhou_6a4b22ad.transcript.txt`（约 237 KB，5,372 段，35,430 汉字）
-- **润色稿**（按 shownotes 36 章节重组，无时间戳）：`reports/transcripts/2026-07-09_xiaoyuzhou_6a4b22ad.polished.txt`（约 43 KB，36 章节，35,897 汉字）
+- **原文**（含时间戳 + 头部 metadata）：`reports/transcripts/2026-07-09_xiaoyuzhou-mingjing-diandian_lijigang.transcript.txt`（约 237 KB，5,372 段，35,430 汉字）
+- **润色稿**（按 shownotes 36 章节重组，无时间戳）：`reports/transcripts/2026-07-09_xiaoyuzhou-mingjing-diandian_lijigang.polished.txt`（约 43 KB，36 章节，35,897 汉字）
 
 **生成信息**：
 - 下载工具：`yt-dlp` 拉小宇宙音频（generic extractor）→ 105.22 MB m4a → ffmpeg 转 mp3（128 MB）
@@ -580,7 +580,7 @@ ljg-skills（工程层）
 
 - **节目版权**：本资料涉及的播客节目版权归主理人（明镜与点点）/ 嘉宾（李继刚 · 43 AI）/ 制作方所有。
 - **本资料性质**：仅供个人学习、研究用途，遵循《著作权法》第 24 条合理使用原则。
-- **完整转录**：原始转录稿 `reports/transcripts/2026-07-09_xiaoyuzhou_6a4b22ad_lijigang.transcript.txt` 与润色稿 `...polished.txt` 保留在仓库中（35,430 汉字 / 36 章节）。
+- **完整转录**：原始转录稿 `reports/transcripts/2026-07-09_xiaoyuzhou-mingjing-diandian_lijigang.transcript.txt` 与润色稿 `...polished.txt` 保留在仓库中（35,430 汉字 / 36 章节）。
 - **引用边界**：本报告所有原话引用每条 ≤ 3 句 + 评价/分析，属合理使用。
 - **下架请求**：如版权方认为内容超出合理使用范围，请联系项目维护者（详见 [COPYRIGHT.md](./COPYRIGHT.md)）。
 

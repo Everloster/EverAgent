@@ -25,17 +25,17 @@
   - 来源：小宇宙 · 明镜与点点 · Vol.29
   - 嘉宾：王小川（百川智能创始人）
   - 时长：92m45s / 字数：19,983
-  - 路径：`reports/2026-06-18_xiaoyuzhou_vol29_wangxiaochuan.md`
-  - 转录原文：`reports/transcripts/2026-06-18_xiaoyuzhou_vol29_wangxiaochuan.transcript.txt`
+  - 路径：`reports/2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan.md`
+  - 转录原文：`reports/transcripts/2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan.transcript.txt`
   - 状态：archived（**polish 失败**，标点稀疏）
 
 - **三年行业吃肉榜/爆亏榜大合集（2023-2025）**（2026-06-20）
   - 来源：B 站 · CLS同学 · BV1NHJF6oE8m
   - 嘉宾：—（UP 主单口深度分析）
   - 时长：1h2m53s / 字数：21,953
-  - 路径：`reports/2026-06-20_bilibili_BV1NHJF6oE8m_cls-tongxue.md`
-  - 转录原文：`reports/transcripts/2026-06-20_bilibili_BV1NHJF6oE8m_cls-tongxue.transcript.txt`
-  - 润色版：`reports/transcripts/2026-06-20_bilibili_BV1NHJF6oE8m_cls-tongxue.polished.txt`（Claude 自润，50+ 处 Whisper 误识别修正）
+  - 路径：`reports/2026-06-20_bilibili-cls-tongxue_hangye-bangdan.md`
+  - 转录原文：`reports/transcripts/2026-06-20_bilibili-cls-tongxue_hangye-bangdan.transcript.txt`
+  - 润色版：`reports/transcripts/2026-06-20_bilibili-cls-tongxue_hangye-bangdan.polished.txt`（Claude 自润，50+ 处 Whisper 误识别修正）
   - 状态：archived（**polished**，Claude (MiniMax-M3) 自润）
   - 内容：覆盖 30 个一级/二级行业、3 年 60 个 TOP5 排名 + 大量上市公司具体数据点
 
@@ -45,8 +45,8 @@
     - **Vol.30**：What's Next 科技早知道 · Sahil Lavingia · 一人公司 · 2026-06-09
     - **Vol.31**：声东击西 #378 · 塔利班关闭学校后阿富汗女孩的四年 · 2026-01-29
     - **Vol.32**：后互联网时代的乱弹 · 第 166 期 · 香会 + X 新生态 + 教育 · 2026-06-06
-  - 路径：`reports/2026-06-21_xiaoyuzhou_vol30-32_收听笔记.md`
-  - 转录：`reports/transcripts/2026-06-21_xiaoyuzhou_vol30-32.transcript.txt`（**占位**）
+  - 路径：`reports/2026-06-21_xiaoyuzhou-multi_notes.md`
+  - 转录：`reports/transcripts/2026-06-21_xiaoyuzhou-multi_notes.transcript.txt`（**占位**）
   - 状态：archived（**transcript 未取得**，报告基于小宇宙 show notes + Apple Podcasts 节目描述 + 多源 web_search 合成）
   - 新增 entities：Sahil Lavingia、Gumroad、Patreon、丁教 Diane、Lina（化名）、Sophia（化名）、徐涛、庄表伟、声动活泼、声湃 WavPub
   - 新增 concepts：一人公司、vibe coding、小而美、创作者经济工具型vs平台型、阿富汗女性教育禁令、化名报道、后互联网时代、平台算法治理、香格里拉对话、AI 时代的教育挑战
@@ -55,9 +55,9 @@
   - 来源：小宇宙 · 明镜与点点（面基）· 单期
   - 嘉宾：李继刚（43 AI · 即刻）—— 主持人明镜 + 嘉宾李继刚 **对谈节目**（非单口独白）
   - 时长：1h54min（6815s）/ 字数：35,430 汉字（raw）/ 35,897 汉字（polished）/ 5372 段 / 语速 312 字/min
-  - 路径：`reports/2026-07-09_xiaoyuzhou_6a4b22ad_lijigang.md`
-  - 转录原文：`reports/transcripts/2026-07-09_xiaoyuzhou_6a4b22ad_lijigang.transcript.txt`（5372 段，237 KB）
-  - 润色版：`reports/transcripts/2026-07-09_xiaoyuzhou_6a4b22ad_lijigang.polished.txt`（按 shownotes 36 章节重组，无时间戳，43 KB）
+  - 路径：`reports/2026-07-09_xiaoyuzhou-mingjing-diandian_lijigang.md`
+  - 转录原文：`reports/transcripts/2026-07-09_xiaoyuzhou-mingjing-diandian_lijigang.transcript.txt`（5372 段，237 KB）
+  - 润色版：`reports/transcripts/2026-07-09_xiaoyuzhou-mingjing-diandian_lijigang.polished.txt`（按 shownotes 36 章节重组，无时间戳，43 KB）
   - 状态：archived（**polished**，Claude (MiniMax-M3) 自润 + 按章节重构）
   - pipeline：yt-dlp → ffmpeg mp3 → whisper.cpp / ggml-large-v3 / Metal 加速 / 7m30s 墙钟 → WebFetch 拉小宇宙 shownotes（修正嘉宾 + 36 章节时间戳 + 17 本书单）→ Claude 按章节重组成 polished
   - 内容：F × X = Fx 公式 / 读书的四种配速 / 找好书的四种方法 / 影子之书 / AI 时代读书方法论 / 43talks 闭门会 / "人是过滤器" / 预制菜同构讨论 / AI 魔法对魔法 / 17 本引用书 / 守 破 离 / 分辨率 / 一念境转
