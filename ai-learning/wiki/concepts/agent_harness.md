@@ -62,6 +62,8 @@ score = pooled_criterion_rate + 0.5×all_pass_rate − 0.005×tokens_per_million
 
 **家族谱系**：GEPA（进化提示词）、AlphaEvolve/ShinkaEvolve（进化代码）、Darwin Gödel Machine（自改 agent）、Karpathy autoresearch（进化训练配方）、Meta-Harness loop（进化 harness，冻结模型）。
 
+**成本数字（2026-07-19 核实）**：优化后 DeepSeek V4 Pro 跑 100 任务约 $77.3 vs Sonnet 4.6 $546.9 ≈ **1/7 成本**（一手图表数据）。口径：同一条 token 轨迹 × 刊例价估算、仅 agent rollout 不含 judge、基线专指 Sonnet 4.6。详见报告 46 追问深入节。
+
 ---
 
 ## 相关概念

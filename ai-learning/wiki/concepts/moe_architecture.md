@@ -99,6 +99,10 @@ Jacobs 1991（最初提出）→ Bengio 2013/2015（条件计算理论）→ **S
 - MoE 替换 FFN，但 Attention 层保持 Dense → concept: attention_mechanism
 - 与心理学/亚里士多德"分工论"在抽象层面有类比关系（plan §3 跨域连接清单）
 
+## 已澄清事实（2026-07-19）
+
+- **DeepSeek-V3 前 3 层稠密的原因**：无消融实验支撑；"浅层特征通用、分工收益小"是社区推测，三篇原文（DeepSeekMoE/V2/V3）均无出处。唯一官方理由出自 DeepSeekMoE：首层负载均衡收敛特别慢（工程观察）。详见 MoE 大楼之旅报告追问深入节。
+
 ## 开放问题
 - DeepSeek-V3 去掉辅助损失后用 bias 调节防崩塌，长期稳定性如何？
 - 专家粒度（细粒度 vs 粗粒度）的最优 trade-off？
