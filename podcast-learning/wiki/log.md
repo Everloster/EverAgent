@@ -67,3 +67,17 @@
 - 特别：whisper.cpp 后端（架构 redesign 后的新栈）首次在 podcast-learning 实战通过，实测 113 min 音频 7m30s 处理完（约 15× 实时，比 faster-whisper CPU int8 估算快 25-50 倍）
 - 重要修正：whisper 把"李继刚"听成"李金刚/李吉刚"（多发）、把对谈误判为单口独白、没识别 shownotes 提供的 36 章节；本日志依 WebFetch 拉取的小宇宙页面修正
 - Limitations: 标点稀疏 / "861 个神经元"应为"860 亿" / 难书名"GB"应指《GEB》/ 说话人区分缺失（明镜 vs 李继刚）/ 关键数字"86 1 亿"为已知吞字错误未在 polished 中修改
+
+## [2026-07-19] ingest | xiaoyuzhou
+- 来源：小宇宙 · 屠龙之术 · 单期《重估一切，文艺复兴——2026H1 AI行业观察》
+- 形式：**单口**（主播庄明浩；CSDN 大会 45min 演讲的重新录制版，素材=ima 知识库 5-6 月约 200 张图 + 50 份 PDF，PPT 76 页）
+- 时长：54m37s（3277s）· 转录：1,973 段 / **14,591 汉字**（whisper.cpp / ggml-large-v3 / Metal / zh）/ 语速 267 字/min
+- 报告：[[2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review]]
+- pipeline: yt-dlp 拉小宇宙音频 → whisper.cpp 本地转写（7/19 完成，卡在 shownotes 未拉取）→ curl 抓 episode 页（JSON-LD + __NEXT_DATA__）解析 shownotes（69 时间戳 + 节目简介）→ Kimi 通读全文 → 按章节重组成 polished（12 节 56 小节，无时间戳）
+- 润色：删末尾 whisper 幻觉行（MING PAO...）+ 修正 40+ 处系统性同音误识别（KPS/CBS→CAPEX、视野模型→世界模型、美利奇→美第奇、Cloud Code→Claude Code、Isofix/ASOPEC/阿萨佩→Anthropic、openseo→OpenAI、Covid→CoreWeave、候选人→后训练、OpenSource→OpenRouter 等）+ 30+ 处不确定项标 [?]（Fable 5、马语、小龙虾、国产产品名等）
+- 核心框架：文艺复兴映射（印刷术=推理成本坍塌 / 美第奇=CAPEX / 南北文艺复兴=中美双极 / 透视法=世界模型 / 工坊=Agent / 虚荣的篝火=治理反弹 / 人的画像=第四支柱）
+- 关键判断：CAPEX 三年连续低估 vs 收入只够折旧；Anthropic 26Q2 反超 OpenAI（to B 订阅 + 估值）；Agent 元年 Chatbot 翻篇（Codex=新 ChatGPT，日增百万用户）；token maxxing 一季内证伪；"刚刚开始"
+- 新增 entities：庄明浩（注意与 B 站屠龙博士区分，仅昵称同含"屠龙"）
+- 新增 concepts：文艺复兴映射框架 / 美第奇的账本（CAPEX 泡沫之辩）/ Agent 元年 / 世界模型三分类 / 第四支柱
+- 顺手补齐：wiki/index.md 漏登的 2026-07-07 屠龙博士、2026-07-14 鹿哥早餐两期报告与对应实体/概念条目
+- Limitations：音频未保留（大小按 128kbps×时长估算 52MB）；CAPEX/估值/股价均为主播转述未经独立核实；30+ 处 [?] 详见报告 Limitations

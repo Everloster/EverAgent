@@ -10,6 +10,18 @@
 
 - [[2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan|Vol.29 对话王小川：造医生，战豆包，与无尽的 AI 非共识]]（text_analysis · 2026-06-18）
 
+### AI 行业 / 宏观观察
+
+- [[2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review|重估一切，文艺复兴——2026H1 AI行业观察]]（episode_summary · 2026-07-17）— 小宇宙「屠龙之术」庄明浩单口，54m37s，CAPEX 泡沫之辩 / Agent 元年 / 中美双极 / 第四支柱
+
+### 创业方法论 / 商业认知
+
+- [[2026-07-07_bilibili-kedaibiao-lizheng_tulong-boshi|课代表立正对谈屠龙博士]]（episode_summary · 2026-07-07）— B 站，非线性世界观 / 定价锚定 / 人才洼地
+
+### 健康 / 营养科普
+
+- [[2026-07-14_bilibili-luge-gustav_breakfast|你到底该不该吃早餐？]]（episode_summary · 2026-07-14）— B 站鹿哥Gustav，观念考古 + 黎明现象
+
 ### 商业 / 宏观经济 / 中国行业分析
 
 - [[2026-06-20_bilibili-cls-tongxue_hangye-bangdan|三年行业吃肉榜/爆亏榜大合集（2023-2025）]]（text_analysis · 2026-06-20）— B 站 CLS 同学
@@ -53,6 +65,12 @@
 - [[entities/mingjing|明镜]] — 小宇宙「明镜与点点」主理人，43talks 闭门会创办者
 - [[entities/li-jigang|李继刚]]（43 AI · 即刻）— 2026-07-09 嘉宾对谈；提出"取景框""影子之书"等关键概念
 
+### 来自 2026-07-07 / 2026-07-14 / 2026-07-17 单期
+
+- [[entities/tulong-boshi|屠龙博士]] — 课代表立正访谈嘉宾（B 站），非线性世界观 / 知行合一
+- [[entities/luge-gustav|鹿哥Gustav]] — B 站 UP 主，健康营养科普 / 观念考古
+- [[entities/zhuang-minghao|庄明浩]] — 小宇宙「屠龙之术」主播，互联网/风投从业者，季度性 AI 行业大整理 PPT
+
 ## Concepts（核心概念）
 
 ### 来自 Vol.29 王小川系列
@@ -81,10 +99,23 @@
 - [[concepts/fx-formula|F × X = Fx 公式]] — 人是过滤器，修行 = 修行自己的 F（明镜核心思维模型）
 - [[concepts/reading-four-paces|读书的四种配速]] — 主题阅读 + 周维度的书 + 每天一本书 + 每天一个章节
 
+### 来自 2026-07-07 / 2026-07-14 单期
+
+- [[concepts/nonlinear-history-jumps|非线性历史跳跃]] — 屠龙博士的历史观/创业观
+- [[concepts/dawn-phenomenon|黎明现象]] — 晨起血糖升高的生理机制（早餐议题）
+
+### 来自 2026-07-17 屠龙之术 2026H1 行业观察
+
+- [[concepts/renaissance-revaluation|文艺复兴映射框架（重估一切）]] — 印刷术=推理成本坍塌，一切价值重估；四章映射对照
+- [[concepts/ai-capex-bubble-debate|美第奇的账本：AI CAPEX 泡沫之辩]] — 收入只够折旧；黄金时代 vs 郁金香泡沫前夜
+- [[concepts/agent-first-year|Agent 元年（Chatbot 翻篇）]] — Codex=新 ChatGPT、Claude Code 时刻、软件去 UI 化
+- [[concepts/world-model-three-types|世界模型三分类]] — 渲染器 / 模拟器 / 规划器（李飞飞）
+- [[concepts/fourth-pillar|第四支柱（人的画像）]] — 从不自动出现，只能被具体的人刻意建造
+
 ## Syntheses（跨期综合）
 
 （待 ≥3 概念综合时建立）
 
 ---
 
-*Last updated: 2026-07-09*
+*Last updated: 2026-07-19*
