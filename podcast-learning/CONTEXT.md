@@ -65,6 +65,20 @@
   - 新增 concepts：F × X = Fx 公式、读书的四种配速
   - 重要修正：whisper 把"李继刚"听成"李金刚/李吉刚"、把对谈误判为单口独白；依 shownotes 修正
 
+- **重估一切，文艺复兴——2026H1 AI行业观察**（2026-07-17）
+  - 来源：小宇宙 · 屠龙之术 · 单期
+  - 嘉宾：—（庄明浩单口；CSDN 大会 45min 演讲重录版，PPT 76 页）
+  - 时长：54m37s（3277s）/ 字数：14,591 汉字（raw）/ 13,996 汉字（polished）/ 1,973 段 / 语速 267 字/min
+  - 路径：`reports/2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review.md`
+  - 转录原文：`reports/transcripts/2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review.transcript.txt`（1,973 段，93 KB）
+  - 润色版：`reports/transcripts/2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review.polished.txt`（shownotes 69 时间戳归并 12 节 56 小节，无时间戳）
+  - 状态：archived（**polished**，Kimi 自润 + 按章节重构）
+  - pipeline：yt-dlp → whisper.cpp / ggml-large-v3 / Metal → curl 抓 episode 页 JSON-LD/__NEXT_DATA__ 解析 shownotes → Kimi 通读 + 按章节重组
+  - 内容：文艺复兴映射框架 / 美第奇的账本（CAPEX 三年低估 vs 收入只够折旧）/ Anthropic 反超 OpenAI / 中美壁画-版画双路线 / 世界模型三分类 / Agent 元年（Codex=新 ChatGPT、Claude Code 时刻）/ 治理三对博弈 / token maxxing 证伪 / 第四支柱
+  - 新增 entities：庄明浩
+  - 新增 concepts：文艺复兴映射框架、美第奇的账本、Agent 元年、世界模型三分类、第四支柱
+  - 重要修正：whisper 系统性误识别 40+ 处（KPS/CBS→CAPEX、视野模型→世界模型、美利奇→美第奇、Cloud Code→Claude Code 等）；30+ 处不确定项标 [?]
+
 ## ⚠️ 边界（防幻觉）
 
 以下主题已有报告，禁止重复生成：
@@ -81,6 +95,8 @@
 - 后互联网时代 / 平台算法治理 / 香格里拉对话（详见 Vol.30-32 报告 + concepts/post-internet-era.md 等）
 - F × X = Fx 公式 / 读书的四种配速 / 人是过滤器（详见 2026-07-09 明镜报告 + concepts/fx-formula.md + concepts/reading-four-paces.md）
 - 明镜 / 43talks / 影子之书（详见 2026-07-09 明镜报告 + entities/mingjing.md）
+- 屠龙之术 2026H1 行业观察：文艺复兴映射框架 / 美第奇的账本（CAPEX 泡沫之辩）/ Agent 元年 / 世界模型三分类 / 第四支柱（详见 2026-07-17 报告 + concepts/renaissance-revaluation.md 等 5 页）
+- 庄明浩 / 屠龙之术 实体（详见 entities/zhuang-minghao.md；注意与 B 站屠龙博士 tulong-boshi 区分）
 
 ---
 
@@ -99,4 +115,4 @@
 
 ---
 
-*Last updated: 2026-07-09 (added 2026-07-09 明镜读书方法论长谈 + 2 concepts + 1 entity；whisper.cpp 后端首次实战通过 7m30s/113min=15× 实时)*
+*Last updated: 2026-07-19 (added 2026-07-17 屠龙之术 2026H1 AI 行业观察 + 5 concepts + 1 entity；补齐 index.md 漏登的 07-07/07-14 两期条目)*
