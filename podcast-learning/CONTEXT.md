@@ -79,9 +79,26 @@
   - 新增 concepts：文艺复兴映射框架、美第奇的账本、Agent 元年、世界模型三分类、第四支柱
   - 重要修正：whisper 系统性误识别 40+ 处（KPS/CBS→CAPEX、视野模型→世界模型、美利奇→美第奇、Cloud Code→Claude Code 等）；30+ 处不确定项标 [?]
 
+- **人到中年仨账户：现金流、肌肉、睡眠**（2026-07-13）
+  - 来源：小宇宙 · 面基 · 单期
+  - 嘉宾：—（老钱单口；35 岁，预习自己与 60 岁母亲的中年）
+  - 时长：72m06s（4326s）/ 字数：19,509 汉字（raw）/ 19,166 汉字（polished）/ 2,414 段 / 语速 271 字/min
+  - 路径：`reports/2026-07-13_xiaoyuzhou-mingjing-diandian_midlife-accounts.md`
+  - 转录原文：`reports/transcripts/2026-07-13_xiaoyuzhou-mingjing-diandian_midlife-accounts.transcript.txt`（2,414 段，114 KB）
+  - 润色版：`reports/transcripts/2026-07-13_xiaoyuzhou-mingjing-diandian_midlife-accounts.polished.txt`（shownotes ~40 时间戳归并 9 节 31 小节，无时间戳）
+  - 状态：archived（**polished**，Kimi 自润 + 按章节重构）
+  - pipeline：transcribe.py（yt-dlp + whisper.cpp）→ curl 抓 episode 页确认节目身份 → FetchURL 拉 shownotes → Kimi 通读 + 按章节重组
+  - 内容：中年三本账框架 / 蓄水池模型与人力资本久期 / 订阅制支出与社会 SaaS 化 / 力量训练=退休储蓄（《超越百岁》）/ 蛋白质账 / 控制论看睡眠 / 睡眠三状态与温度曲线 / Eat, Sleep, Gym, Invest.
+  - 新增 entities：老钱
+  - 新增 concepts：中年三本账、订阅制支出、力量训练=退休储蓄、控制论看睡眠
+  - 重要修正：**节目官方名确认为「面基」**（episode 页 podcast.title），即本库此前所称"明镜与点点"；老钱与"明镜"关系待确认；whisper 系统性误识别 40+ 处（面积→面基、生物中→生物钟、Aidsleep→Eight Sleep 等）
+
 ## ⚠️ 边界（防幻觉）
 
 以下主题已有报告，禁止重复生成：
+
+- 中年三本账（现金账/肉身账/睡眠账）/ 订阅制支出 / 力量训练=退休储蓄 / 控制论看睡眠（详见 2026-07-13 面基报告 + concepts/midlife-three-accounts.md 等 4 页）
+- 老钱 / 面基 实体（详见 entities/lao-qian.md；节目官方名「面基」= 本库此前所称"明镜与点点"，老钱与"明镜"关系待确认）
 
 - 百川 M4 模型（详见 Vol.29 报告 + concepts/baichuan-m4.md）
 - 百小一 AI 家庭医生（详见 Vol.29 报告 + concepts/baixiao-yi-ai-doctor.md）
@@ -115,4 +132,4 @@
 
 ---
 
-*Last updated: 2026-07-19 (added 2026-07-17 屠龙之术 2026H1 AI 行业观察 + 5 concepts + 1 entity；补齐 index.md 漏登的 07-07/07-14 两期条目)*
+*Last updated: 2026-07-20 (added 2026-07-13 面基《仨账户》+ 4 concepts + 1 entity；节目官方名确认为「面基」)*

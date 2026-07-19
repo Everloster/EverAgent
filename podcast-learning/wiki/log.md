@@ -81,3 +81,17 @@
 - 新增 concepts：文艺复兴映射框架 / 美第奇的账本（CAPEX 泡沫之辩）/ Agent 元年 / 世界模型三分类 / 第四支柱
 - 顺手补齐：wiki/index.md 漏登的 2026-07-07 屠龙博士、2026-07-14 鹿哥早餐两期报告与对应实体/概念条目
 - Limitations：音频未保留（大小按 128kbps×时长估算 52MB）；CAPEX/估值/股价均为主播转述未经独立核实；30+ 处 [?] 详见报告 Limitations
+
+## [2026-07-20] ingest | xiaoyuzhou
+- 来源：小宇宙 · 面基 · 单期《人到中年仨账户：现金流、肌肉、睡眠》
+- 形式：**单口**（主播老钱 / 老钱日日谈；35 岁，预习自己与母亲的中年）
+- 时长：72m06s（4326s）· 转录：2,414 段 / **19,509 汉字**（whisper.cpp / ggml-large-v3 / Metal / zh，transcribe.py）/ 语速 271 字/min
+- 报告：[[2026-07-13_xiaoyuzhou-mingjing-diandian_midlife-accounts]]
+- pipeline: yt-dlp → whisper.cpp 本地转写 → curl 抓 episode 页 JSON-LD/__NEXT_DATA__（确认节目身份 + 时长）→ FetchURL 拉 shownotes（~40 时间戳 + 书单 + 概念解释）→ Kimi 通读 → 按章节重组成 polished（9 节 31 小节，无时间戳）
+- **节目身份确认**：episode 页 podcast.title=面基 → 本库此前所称"明镜与点点"官方名即「面基」（2026-07-09 李继刚期同一节目）；老钱与"明镜"关系待确认（实体页交叉标注 [?]）
+- 润色：删末尾 whisper 幻觉行（优优独播剧场...）+ 修正 40+ 处系统性误识别（面积→面基、生物中→生物钟、腺肝→腺苷、缺窍→缺觉、潜睡眠→浅睡眠、Aidsleep→Eight Sleep、烙蛋白→酪蛋白、金关涛→金观涛 等）+ 10+ 处 [?]
+- 核心框架：中年三本账（现金账/肉身账/睡眠账）——地基性 + 可量化 + 慢反馈；订阅制支出（SEI 12 年 6 倍，社会 SaaS 化）；力量训练=退休储蓄（《超越百岁》）；控制论看睡眠（输入可控输出不可控）；Eat, Sleep, Gym, Invest.
+- 赞助提示：59:23 起为 Eight Sleep 赞助段（已在报告标注，内容与广告区分阅读）
+- 新增 entities：老钱
+- 新增 concepts：中年三本账 / 订阅制支出 / 力量训练=退休储蓄 / 控制论看睡眠
+- Limitations：音频未保留（69MB 为估算）；shownotes 自带科学注记（2A 类=夜班工作而非睡眠不足本身；β-淀粉样蛋白非唯一元凶）已在报告保留

@@ -11,6 +11,7 @@
 | 2026-07-20 | [实习生抢答、老教授过目：速度快 2-3 倍，凭什么一个字都不改？—— 投机解码科普](../ai-learning/reports/knowledge_reports/投机解码SpeculativeDecoding_科普讲解_20260720.md) | ai-learning |
 | 2026-07-20 | [同一个模型分数能差 2 倍、价格能差 140 倍——Agent 时代的榜单到底该怎么看？](../ai-learning/reports/knowledge_reports/Agent_LLM评分体系与主流模型价格能力_科普讲解_20260720.md) | ai-learning |
 | 2026-07-20 | [同一个 GPT-5.5 考出四个分数——Agent 的智能，几分靠模型、几分靠 Harness？](../ai-learning/reports/knowledge_reports/Agent智能_模型与Harness各占多少_科普讲解_20260720.md) | ai-learning |
+| 2026-07-20 | [人到中年仨账户：现金流、肌肉、睡眠（面基 · 老钱单口）](../podcast-learning/reports/2026-07-13_xiaoyuzhou-mingjing-diandian_midlife-accounts.md) | podcast-learning |
 | 2026-07-20 | [AI 越来越强，我们给它搭的「脚手架」会被自己淘汰吗？—— Bitter Lesson × Harness 科普讲解](../ai-learning/reports/knowledge_reports/Bitter_Lesson_vs_Harness_科普讲解_20260720.md) | ai-learning |
 | 2026-07-19 | [重估一切，文艺复兴——2026H1 AI行业观察（屠龙之术 · 庄明浩单口）](../podcast-learning/reports/2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review.md) | podcast-learning |
 | 2026-07-19 | [语言模型中的全局工作空间（J-space / J-lens）——Anthropic 2026 可解释性研究精读](../ai-learning/reports/paper_analyses/45_global_workspace_jspace_2026.md) | ai-learning |
@@ -31,7 +32,6 @@
 | 2026-06-25 | [限时进食（TRE）与代谢健康：8/16 到底有没有用、对谁有用](../biology-learning/reports/concept_reports/限时进食TRE与代谢健康_20260625.md) | biology-learning |
 | 2026-06-25 | [程乐松的当代哲学：AI 时代的自我、反卷与'不要过二手生活](../philosophy-learning/reports/concept_reports/程乐松的当代哲学_AI时代的自我与反卷_20260625.md) | philosophy-learning |
 | 2026-06-25 | [投机解码 Speculative Decoding：用小模型给大模型加速 2-3 倍而不改变输出](../ai-learning/reports/knowledge_reports/投机解码SpeculativeDecoding_深度解析_20260625.md) | ai-learning |
-| 2026-06-25 | [庄子《齐物论》](../philosophy-learning/reports/text_analyses/10_zhuangzi_qiwulun_-300.md) | philosophy-learning |
 
 ## 🤖 AI Learning（91 篇）
 
@@ -237,10 +237,11 @@
 | 2026-03-26 | [Physiology of Growth Hormone Secretion during Sleep (1996) 精读](../biology-learning/reports/paper_analyses/P09_gh_sleep_physiology_1996.md) | — |
 | 2026-03-23 | [晚型人作息与力量训练深度研究](../biology-learning/reports/concept_reports/晚型人作息与力量训练_深度研究报告.md) | — |
 
-## 🎙️ Podcast Learning（7 篇）
+## 🎙️ Podcast Learning（8 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-07-20 | [人到中年仨账户：现金流、肌肉、睡眠（面基 · 老钱单口）](../podcast-learning/reports/2026-07-13_xiaoyuzhou-mingjing-diandian_midlife-accounts.md) | — |
 | 2026-07-19 | [重估一切，文艺复兴——2026H1 AI行业观察（屠龙之术 · 庄明浩单口）](../podcast-learning/reports/2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review.md) | — |
 | 2026-07-18 | [读书：4种配速，取景框，人是滤器，冲刷神经网络 —— 明镜与李继刚关于读书方法论的深度对话](../podcast-learning/reports/2026-07-09_xiaoyuzhou-mingjing-diandian_lijigang.md) | — |
 | 2026-07-18 | [你到底该不该吃早餐?这期告诉你早餐的真相](../podcast-learning/reports/2026-07-14_bilibili-luge-gustav_breakfast.md) | — |

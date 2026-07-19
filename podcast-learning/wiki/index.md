@@ -22,6 +22,10 @@
 
 - [[2026-07-14_bilibili-luge-gustav_breakfast|你到底该不该吃早餐？]]（episode_summary · 2026-07-14）— B 站鹿哥Gustav，观念考古 + 黎明现象
 
+### 理财 / 中年生活规划
+
+- [[2026-07-13_xiaoyuzhou-mingjing-diandian_midlife-accounts|人到中年仨账户：现金流、肌肉、睡眠]]（episode_summary · 2026-07-13）— 小宇宙「面基」老钱单口，72m06s，三本账框架 / 订阅制支出 / 力量训练=退休储蓄 / 控制论看睡眠
+
 ### 商业 / 宏观经济 / 中国行业分析
 
 - [[2026-06-20_bilibili-cls-tongxue_hangye-bangdan|三年行业吃肉榜/爆亏榜大合集（2023-2025）]]（text_analysis · 2026-06-20）— B 站 CLS 同学
@@ -70,6 +74,7 @@
 - [[entities/tulong-boshi|屠龙博士]] — 课代表立正访谈嘉宾（B 站），非线性世界观 / 知行合一
 - [[entities/luge-gustav|鹿哥Gustav]] — B 站 UP 主，健康营养科普 / 观念考古
 - [[entities/zhuang-minghao|庄明浩]] — 小宇宙「屠龙之术」主播，互联网/风投从业者，季度性 AI 行业大整理 PPT
+- [[entities/lao-qian|老钱]] — 小宇宙「面基」主理人（节目官方名「面基」，即本库此前所称"明镜与点点"），老钱日日谈 / 三个看板网站
 
 ## Concepts（核心概念）
 
@@ -112,10 +117,17 @@
 - [[concepts/world-model-three-types|世界模型三分类]] — 渲染器 / 模拟器 / 规划器（李飞飞）
 - [[concepts/fourth-pillar|第四支柱（人的画像）]] — 从不自动出现，只能被具体的人刻意建造
 
+### 来自 2026-07-13 面基《仨账户》
+
+- [[concepts/midlife-three-accounts|中年三本账]] — 现金账 / 肉身账 / 睡眠账；地基性 + 可量化 + 慢反馈
+- [[concepts/subscription-spending|订阅制支出（社会 SaaS 化）]] — 停不起的支出；SEI 12 年 6 倍；中产脆弱性
+- [[concepts/muscle-retirement-savings|力量训练 = 退休储蓄]] — 肌肉是长寿器官（《超越百岁》）；渐进式超负荷 + 蛋白质账
+- [[concepts/sleep-cybernetics|控制论看睡眠]] — 输入可控输出不可控；"睡眠无法被命令，只能被允许"
+
 ## Syntheses（跨期综合）
 
 （待 ≥3 概念综合时建立）
 
 ---
 
-*Last updated: 2026-07-19*
+*Last updated: 2026-07-20*
