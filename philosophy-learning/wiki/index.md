@@ -83,6 +83,7 @@
 | 页面 | 简介 |
 |------|------|
 | [religious_hermeneutics_idea_history.md](./concepts/religious_hermeneutics_idea_history.md) | 程乐松·观念史视角 + 宗教经典诠释学 + 以宗教的方式看待宗教 + 同情性理解 + 日常即超越 |
+| [chongfan_jingyan_methodology.md](./concepts/chongfan_jingyan_methodology.md) | 程乐松·方法论纲领：双向疏离 + 重返经验 + 即事言理/以述为作 + 手筋（重访/拼图/激生）+ 双重居间性 |
 
 ---
 

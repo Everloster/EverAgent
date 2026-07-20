@@ -21,7 +21,12 @@
 
 > 接下来最想补的缺口，按优先级。AI 可主动从这里提议。
 
-- （待补 — 由对话采集）
+- **活跃线（2026-07-20 对话确认）**：
+  - Agent/Harness 工程线（进化 harness 过拟合与跨家族迁移、Bitter Lesson 镰刀、请求链路 compaction/caching）
+  - 模型效率线（MoE 专家结构、投机解码）
+  - AI 行业与认知生态（Khanmigo RCT 追踪、Anthropic 人才信号回访）
+- 可解释性/意识线（J-space 残留 3 问）：暂缓，不主动提议
+- 注意：wiki/open-questions.md 是历史快照 ≠ 当前兴趣，提议前先与用户确认
 
 ---
 
@@ -34,3 +39,4 @@
 - `2026-07-09` — 前沿专题(Agent)补充《Harness 请求全链路深度解析》：报文级拆解客户端↔网关↔Harness↔LLM↔工具"有来有回"（OpenAI tool_calls / Anthropic tool_use·tool_result·stop_reason 循环），解答 token 单向膨胀因果，四类上下文治理（prompt caching 0.1×、滑窗、compaction、context editing），并澄清 4 个常见认知误区。新缺口汇入 open-questions（compaction 压缩比失真、caching 前缀失效、服务端/客户端历史对账）。定位为纯原理讲解（不含来源评价）。
 - `2026-07-13` — 新增评论文精读《伪智力繁荣时代评论文精读与批判》（源：公众号「朋克周」）：提炼原创概念"伪智力繁荣/认知香薰/思想皮肤"，把核心命题"AI 缩小真伪思想外观差距（抬高表达地板而非判断天花板）"与 [Bitter Lesson × Harness]"能力普及削平表层脚手架"缝合；用 METHODOLOGY §二反向审视源文（有新"区分"但缺新"事实"，"摩擦即真"判据有幸存者偏差）。新缺口汇入 open-questions（"摩擦=真"可证伪性、"外观差距缩小"的可测实验设计）。[评] 若"AI 与认知生态"同类议题≥3 次，考虑新建 MAP 主线。
 - `2026-07-14` — 新增行业观察《涌进 Anthropic 的 N 个巨佬 核实与深度分析》（源：公众号「数字生命卡兹克」）：原文全文存档 + 对 9 位（+引子 Tom Blomfield）逐个一手核验（10 人多源交叉，全部属实）。增量：文章漏掉的半张名单（Fontoura/Boyd/Instagram/Adept CTO，实为成建制系统挖角）；重排出三个"人才桶"（算力/预训练·RL/AI-for-Science·社科对齐）各对应一条战线；用官方《When AI builds itself》"80%+ 代码由 Claude 写"锚定 Karpathy 线；批判其幸存者偏差与"贝尔实验室"类比裂缝（闭源商业 vs 开放基础研究）。新缺口汇入 open-questions（信号证真/证伪周期、AI 造 AI 杠杆上限、闭源实验室承载"公共地基"的张力）。[评] "AI 行业信号/人物图谱"已是第 2 篇（另有 AI关键人物图谱.md），距新建主线更近一步。
+- 2026-07-20：对话确认当前兴趣——活跃线为 Agent/Harness 工程、模型效率（MoE/投机解码）、AI 行业与认知生态；可解释性/意识线暂缓。明确 open-questions 为历史快照，提议前需先确认兴趣。
