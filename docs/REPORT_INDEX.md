@@ -8,6 +8,8 @@
 | 日期 | 报告 | 领域 |
 |------|------|------|
 | 2026-07-20 | [程乐松一手文本精读：重返经验、断裂的居间性与「做中国哲学」的手筋](../philosophy-learning/reports/concept_reports/程乐松_方法论一手精读_重返经验与做中国哲学_20260720.md) | philosophy-learning |
+| 2026-07-20 | [同一个模型分数能差 2 倍、价格能差 140 倍——Agent 时代的榜单到底该怎么看？](../ai-learning/reports/knowledge_reports/Agent_LLM评分体系与主流模型价格能力_科普讲解_20260720.md) | ai-learning |
+| 2026-07-20 | [同一个 GPT-5.5 考出四个分数——Agent 的智能，几分靠模型、几分靠 Harness？](../ai-learning/reports/knowledge_reports/Agent智能_模型与Harness各占多少_科普讲解_20260720.md) | ai-learning |
 | 2026-07-20 | [AI 越来越强，我们给它搭的「脚手架」会被自己淘汰吗？—— Bitter Lesson × Harness 科普讲解](../ai-learning/reports/knowledge_reports/Bitter_Lesson_vs_Harness_科普讲解_20260720.md) | ai-learning |
 | 2026-07-19 | [语言模型中的全局工作空间（J-space / J-lens）——Anthropic 2026 可解释性研究精读](../ai-learning/reports/paper_analyses/45_global_workspace_jspace_2026.md) | ai-learning |
 | 2026-07-19 | [不要训模型，进化 Harness——Karpathy 700 次 Loop 实验 & Niklaus 一手实验精读](../ai-learning/reports/paper_analyses/46_evolve_the_harness_2026.md) | ai-learning |
@@ -30,13 +32,13 @@
 | 2026-06-25 | [庄子《齐物论》](../philosophy-learning/reports/text_analyses/10_zhuangzi_qiwulun_-300.md) | philosophy-learning |
 | 2026-06-22 | [程乐松：道教观念史与宗教经典诠释学 思想综述](../philosophy-learning/reports/concept_reports/程乐松_道教与宗教诠释学_思想综述_20260622.md) | philosophy-learning |
 | 2026-06-22 | [MoE 混合专家深度解析](../ai-learning/reports/knowledge_reports/MoE_混合专家_深度解析_20260406.md) | ai-learning |
-| 2026-06-21 | [蓝光与褪黑素的光生物学：LED / 屏幕 / 夜间照明的家庭决策](../biology-learning/reports/concept_reports/蓝光与褪黑素的光生物学_20260621.md) | biology-learning |
-| 2026-06-21 | [美学三论：康德《判断力批判》+ 杜威《艺术即经验》+ 丹托《艺术的终结》](../philosophy-learning/reports/text_analyses/美学三论_20260621.md) | philosophy-learning |
 
-## 🤖 AI Learning（88 篇）
+## 🤖 AI Learning（90 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-07-20 | [同一个模型分数能差 2 倍、价格能差 140 倍——Agent 时代的榜单到底该怎么看？](../ai-learning/reports/knowledge_reports/Agent_LLM评分体系与主流模型价格能力_科普讲解_20260720.md) | — |
+| 2026-07-20 | [同一个 GPT-5.5 考出四个分数——Agent 的智能，几分靠模型、几分靠 Harness？](../ai-learning/reports/knowledge_reports/Agent智能_模型与Harness各占多少_科普讲解_20260720.md) | — |
 | 2026-07-20 | [AI 越来越强，我们给它搭的「脚手架」会被自己淘汰吗？—— Bitter Lesson × Harness 科普讲解](../ai-learning/reports/knowledge_reports/Bitter_Lesson_vs_Harness_科普讲解_20260720.md) | `bitter_lesson`, `agent_harness`, `scaffolding`, `science_popularization`, `self_evolving_agent`, `compute_allocation` |
 | 2026-07-19 | [语言模型中的全局工作空间（J-space / J-lens）——Anthropic 2026 可解释性研究精读](../ai-learning/reports/paper_analyses/45_global_workspace_jspace_2026.md) | `interpretability`, `global_workspace`, `jacobian_lens`, `consciousness`, `ai_safety`, `introspection` |
 | 2026-07-19 | [不要训模型，进化 Harness——Karpathy 700 次 Loop 实验 & Niklaus 一手实验精读](../ai-learning/reports/paper_analyses/46_evolve_the_harness_2026.md) | `agent_harness`, `self_evolving_agent`, `scaffolding`, `meta_harness`, `context_engineering`, `autoresearch` |
