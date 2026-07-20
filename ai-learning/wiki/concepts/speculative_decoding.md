@@ -25,7 +25,8 @@
 
 ## 相关报告
 
-- [投机解码 Speculative Decoding 深度解析](../../reports/knowledge_reports/投机解码SpeculativeDecoding_深度解析_20260625.md)
+- [投机解码科普讲解（20260720，建直觉首选）](../../reports/knowledge_reports/投机解码SpeculativeDecoding_科普讲解_20260720.md) — 教授/实习生贯穿类比，三词词表手算验证无损性 + 硬件账算平 2-3× 加速
+- [投机解码 Speculative Decoding 深度解析](../../reports/knowledge_reports/投机解码SpeculativeDecoding_深度解析_20260625.md) — 公式逐符号拆解 + 伪代码 + 变体谱系
 
 ## 未解问题
 
