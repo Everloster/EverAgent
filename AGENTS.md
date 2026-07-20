@@ -144,7 +144,7 @@ EverAgent/
 - **提交规范**：[docs/PROTOCOL_COMMON.md](./docs/PROTOCOL_COMMON.md) §B/§C — commit 格式、push flow（`GIT_NO_OPTIONAL_LOCKS=1`）。
 - **git 身份**：提交一律走 `scripts/ecommit.sh`（自动注入 Author=Everloster 双身份）；pre-commit hook 强制校验 Committer 与 Author，裸 `git commit` 未设 `GIT_AUTHOR_*` 会被拦截。
 - **历史版本**：旧的多 Agent 编排框架（任务状态机/锁/事件溯源/Dashboard）归档在 `legacy-v1-multiagent` 分支。
-- **兴趣确认**：各领域 `wiki/open-questions.md` 是历史快照 ≠ 当前兴趣；定期（每周，由 cron 提醒驱动）与用户确认学习兴趣和方向，确认结果写回各领域 `MAP.md` 优先级队列（2026-07-20 确立）。用户未指定方向的活儿，动手前先问最近的学习兴趣和方向。
+- **兴趣确认**：各领域 `wiki/open-questions.md` 是历史快照 ≠ 当前兴趣。用户未指定明确方向的活儿，动手前先习惯性问一句最近的学习兴趣和方向；确认结果写回各领域 `MAP.md` 优先级队列（2026-07-20 确立）。
 
 ---
 
