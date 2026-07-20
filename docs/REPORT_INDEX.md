@@ -7,20 +7,21 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-07-20 | [程乐松一手文本精读：重返经验、断裂的居间性与「做中国哲学」的手筋](../philosophy-learning/reports/concept_reports/程乐松_方法论一手精读_重返经验与做中国哲学_20260720.md) | philosophy-learning |
+| 2026-07-19 | [语言模型中的全局工作空间（J-space / J-lens）——Anthropic 2026 可解释性研究精读](../ai-learning/reports/paper_analyses/45_global_workspace_jspace_2026.md) | ai-learning |
+| 2026-07-19 | [不要训模型，进化 Harness——Karpathy 700 次 Loop 实验 & Niklaus 一手实验精读](../ai-learning/reports/paper_analyses/46_evolve_the_harness_2026.md) | ai-learning |
 | 2026-07-19 | [一个字走进大楼：6710 亿参数，凭什么 94% 在睡觉？—— MoE 混合专家科普](../ai-learning/reports/knowledge_reports/MoE混合专家_一个token的专家大楼之旅_科普讲解_20260719.md) | ai-learning |
+| 2026-07-19 | [《欢迎来到伪智力繁荣时代》分析总结 — AI 如何拉平真伪思想的外观差距](../ai-learning/reports/knowledge_reports/伪智力繁荣时代_评论文精读与批判_20260713.md) | ai-learning |
 | 2026-07-19 | [8个专家只请2个来上班，为什么模型反而更聪明了？—— MoE 科普讲解](../ai-learning/reports/knowledge_reports/MoE混合专家_科普讲解_20260717.md) | ai-learning |
 | 2026-07-18 | [读书：4种配速，取景框，人是滤器，冲刷神经网络 —— 明镜与李继刚关于读书方法论的深度对话](../podcast-learning/reports/2026-07-09_xiaoyuzhou-mingjing-diandian_lijigang.md) | podcast-learning |
 | 2026-07-18 | [你到底该不该吃早餐?这期告诉你早餐的真相](../podcast-learning/reports/2026-07-14_bilibili-luge-gustav_breakfast.md) | podcast-learning |
 | 2026-07-18 | [一红16年，干啥啥赚钱？｜屠龙博士创业的秘密！](../podcast-learning/reports/2026-07-07_bilibili-kedaibiao-lizheng_tulong-boshi.md) | podcast-learning |
-| 2026-07-17 | [🇰🇷 韩剧推荐 Top10（2024–2026 · 豆瓣评分）](../web-surfing/reports/kdrama-top10-2024-2026.md) | web-surfing |
 | 2026-07-15 | [无状态的鹦鹉，怎么学会了连续对话和自己用工具？—— Agent 请求全链路科普](../ai-learning/reports/knowledge_reports/Agent请求全链路_科普讲解_20260715.md) | ai-learning |
 | 2026-07-15 | [客户端→网关→Harness→LLM→工具 请求全链路深度解析](../ai-learning/reports/knowledge_reports/Agent_Harness请求全链路_深度解析_20260709.md) | ai-learning |
 | 2026-07-15 | [一个模型的一生：1M 长上下文，从出生到上岗都经历了什么？—— 长上下文科普](../ai-learning/reports/knowledge_reports/长上下文1M_模型的一生_科普讲解_20260715.md) | ai-learning |
+| 2026-07-14 | [🇰🇷 韩剧推荐 Top10（2024–2026 · 豆瓣评分）](../web-surfing/reports/kdrama-top10-2024-2026.md) | web-surfing |
 | 2026-07-14 | [涌进 Anthropic 的 N 个巨佬：原文存档 + 逐人核实与深度分析](../ai-learning/reports/knowledge_reports/涌进Anthropic的N个巨佬_核实与深度分析_20260714.md) | ai-learning |
-| 2026-07-13 | [《欢迎来到伪智力繁荣时代》分析总结 — AI 如何拉平真伪思想的外观差距](../ai-learning/reports/knowledge_reports/伪智力繁荣时代_评论文精读与批判_20260713.md) | ai-learning |
 | 2026-07-10 | [自建科学上网节点：从抗审查协议到线路选型的系统工程](../cs-learning/reports/knowledge_reports/自建科学上网节点_抗审查协议与线路选型_20260710.md) | cs-learning |
-| 2026-07-07 | [语言模型中的全局工作空间（J-space / J-lens）——Anthropic 2026 可解释性研究精读](../ai-learning/reports/paper_analyses/45_global_workspace_jspace_2026.md) | ai-learning |
-| 2026-07-07 | [不要训模型，进化 Harness——Karpathy 700 次 Loop 实验 & Niklaus 一手实验精读](../ai-learning/reports/paper_analyses/46_evolve_the_harness_2026.md) | ai-learning |
 | 2026-07-07 | [Bitter Lesson 会杀死 Agent Harness 吗？——一场推演与网上观点交叉审阅](../ai-learning/reports/knowledge_reports/Bitter_Lesson_vs_Agent_Harness_推演与网上观点审阅_20260707.md) | ai-learning |
 | 2026-06-25 | [限时进食（TRE）与代谢健康：8/16 到底有没有用、对谁有用](../biology-learning/reports/concept_reports/限时进食TRE与代谢健康_20260625.md) | biology-learning |
 | 2026-06-25 | [程乐松的当代哲学：AI 时代的自我、反卷与'不要过二手生活](../philosophy-learning/reports/concept_reports/程乐松的当代哲学_AI时代的自我与反卷_20260625.md) | philosophy-learning |
@@ -31,21 +32,20 @@
 | 2026-06-21 | [蓝光与褪黑素的光生物学：LED / 屏幕 / 夜间照明的家庭决策](../biology-learning/reports/concept_reports/蓝光与褪黑素的光生物学_20260621.md) | biology-learning |
 | 2026-06-21 | [美学三论：康德《判断力批判》+ 杜威《艺术即经验》+ 丹托《艺术的终结》](../philosophy-learning/reports/text_analyses/美学三论_20260621.md) | philosophy-learning |
 | 2026-06-21 | [数据库 50 年演化知识图谱：从层次/网状到向量库](../cs-learning/reports/knowledge_reports/数据库50年演化_从层次到向量库_20260621.md) | cs-learning |
-| 2026-06-21 | [推理模型三大流派详解：OpenAI o-series × DeepSeek R1 × Claude Extended Thinking](../ai-learning/reports/knowledge_reports/推理模型三大流派详解_20260621.md) | ai-learning |
 
 ## 🤖 AI Learning（87 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-07-19 | [语言模型中的全局工作空间（J-space / J-lens）——Anthropic 2026 可解释性研究精读](../ai-learning/reports/paper_analyses/45_global_workspace_jspace_2026.md) | `interpretability`, `global_workspace`, `jacobian_lens`, `consciousness`, `ai_safety`, `introspection` |
+| 2026-07-19 | [不要训模型，进化 Harness——Karpathy 700 次 Loop 实验 & Niklaus 一手实验精读](../ai-learning/reports/paper_analyses/46_evolve_the_harness_2026.md) | `agent_harness`, `self_evolving_agent`, `scaffolding`, `meta_harness`, `context_engineering`, `autoresearch` |
 | 2026-07-19 | [一个字走进大楼：6710 亿参数，凭什么 94% 在睡觉？—— MoE 混合专家科普](../ai-learning/reports/knowledge_reports/MoE混合专家_一个token的专家大楼之旅_科普讲解_20260719.md) | `moe`, `mixture-of-experts`, `sparse-activation`, `routing`, `ffn`, `load-balancing` |
+| 2026-07-19 | [《欢迎来到伪智力繁荣时代》分析总结 — AI 如何拉平真伪思想的外观差距](../ai-learning/reports/knowledge_reports/伪智力繁荣时代_评论文精读与批判_20260713.md) | — |
 | 2026-07-19 | [8个专家只请2个来上班，为什么模型反而更聪明了？—— MoE 科普讲解](../ai-learning/reports/knowledge_reports/MoE混合专家_科普讲解_20260717.md) | `moe`, `mixture-of-experts`, `sparse-activation`, `routing`, `load-balancing`, `conditional-computation` |
 | 2026-07-15 | [无状态的鹦鹉，怎么学会了连续对话和自己用工具？—— Agent 请求全链路科普](../ai-learning/reports/knowledge_reports/Agent请求全链路_科普讲解_20260715.md) | `agent_harness`, `function_calling`, `tool_use`, `agentic_loop`, `context_management`, `prompt_caching` |
 | 2026-07-15 | [客户端→网关→Harness→LLM→工具 请求全链路深度解析](../ai-learning/reports/knowledge_reports/Agent_Harness请求全链路_深度解析_20260709.md) | `agent_harness`, `function_calling`, `tool_use`, `agentic_loop`, `context_management`, `prompt_caching` |
 | 2026-07-15 | [一个模型的一生：1M 长上下文，从出生到上岗都经历了什么？—— 长上下文科普](../ai-learning/reports/knowledge_reports/长上下文1M_模型的一生_科普讲解_20260715.md) | `long_context`, `pretraining`, `post_training`, `inference`, `kv_cache`, `rag` |
 | 2026-07-14 | [涌进 Anthropic 的 N 个巨佬：原文存档 + 逐人核实与深度分析](../ai-learning/reports/knowledge_reports/涌进Anthropic的N个巨佬_核实与深度分析_20260714.md) | — |
-| 2026-07-13 | [《欢迎来到伪智力繁荣时代》分析总结 — AI 如何拉平真伪思想的外观差距](../ai-learning/reports/knowledge_reports/伪智力繁荣时代_评论文精读与批判_20260713.md) | — |
-| 2026-07-07 | [语言模型中的全局工作空间（J-space / J-lens）——Anthropic 2026 可解释性研究精读](../ai-learning/reports/paper_analyses/45_global_workspace_jspace_2026.md) | `interpretability`, `global_workspace`, `jacobian_lens`, `consciousness`, `ai_safety`, `introspection` |
-| 2026-07-07 | [不要训模型，进化 Harness——Karpathy 700 次 Loop 实验 & Niklaus 一手实验精读](../ai-learning/reports/paper_analyses/46_evolve_the_harness_2026.md) | `agent_harness`, `self_evolving_agent`, `scaffolding`, `meta_harness`, `context_engineering`, `autoresearch` |
 | 2026-07-07 | [Bitter Lesson 会杀死 Agent Harness 吗？——一场推演与网上观点交叉审阅](../ai-learning/reports/knowledge_reports/Bitter_Lesson_vs_Agent_Harness_推演与网上观点审阅_20260707.md) | `bitter_lesson`, `agent_harness`, `scaffolding`, `context_engineering`, `self_evolving_agent`, `prompt_engineering` |
 | 2026-06-25 | [投机解码 Speculative Decoding：用小模型给大模型加速 2-3 倍而不改变输出](../ai-learning/reports/knowledge_reports/投机解码SpeculativeDecoding_深度解析_20260625.md) | — |
 | 2026-06-22 | [MoE 混合专家深度解析](../ai-learning/reports/knowledge_reports/MoE_混合专家_深度解析_20260406.md) | — |
@@ -163,10 +163,11 @@
 | 2026-03-24 | [MapReduce (2004) 论文精读](../cs-learning/reports/paper_analyses/10_mapreduce_2004.md) | — |
 | 2026-03-24 | [CS 关键人物图谱](../cs-learning/reports/knowledge_reports/CS关键人物图谱.md) | — |
 
-## 📚 Philosophy Learning（20 篇）
+## 📚 Philosophy Learning（21 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-07-20 | [程乐松一手文本精读：重返经验、断裂的居间性与「做中国哲学」的手筋](../philosophy-learning/reports/concept_reports/程乐松_方法论一手精读_重返经验与做中国哲学_20260720.md) | — |
 | 2026-06-25 | [程乐松的当代哲学：AI 时代的自我、反卷与'不要过二手生活](../philosophy-learning/reports/concept_reports/程乐松的当代哲学_AI时代的自我与反卷_20260625.md) | — |
 | 2026-06-25 | [庄子《齐物论》](../philosophy-learning/reports/text_analyses/10_zhuangzi_qiwulun_-300.md) | — |
 | 2026-06-22 | [程乐松：道教观念史与宗教经典诠释学 思想综述](../philosophy-learning/reports/concept_reports/程乐松_道教与宗教诠释学_思想综述_20260622.md) | — |
@@ -247,5 +248,5 @@
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
-| 2026-07-17 | [🇰🇷 韩剧推荐 Top10（2024–2026 · 豆瓣评分）](../web-surfing/reports/kdrama-top10-2024-2026.md) | — |
+| 2026-07-14 | [🇰🇷 韩剧推荐 Top10（2024–2026 · 豆瓣评分）](../web-surfing/reports/kdrama-top10-2024-2026.md) | — |
 

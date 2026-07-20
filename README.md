@@ -30,9 +30,9 @@
 <!-- AUTO-OVERVIEW:START -->
 | 项目 | 报告 | Wiki(概念/实体/综合) |
 |------|------|----------------------|
-| 🤖 [AI Learning](./ai-learning/) | 87 篇 | 41/28/1 |
+| 🤖 [AI Learning](./ai-learning/) | 87 篇 | 42/28/1 |
 | 💻 [CS Learning](./cs-learning/) | 33 篇 | 24/17/1 |
-| 📚 [Philosophy Learning](./philosophy-learning/) | 20 篇 | 18/14/1 |
+| 📚 [Philosophy Learning](./philosophy-learning/) | 21 篇 | 19/14/1 |
 | 🧠 [Psychology Learning](./psychology-learning/) | 17 篇 | 13/13/0 |
 | 🧬 [Biology Learning](./biology-learning/) | 17 篇 | 13/9/0 |
 | ⚗️ [AI Practice](./ai-practice/) | 0 篇 | 9/1/0 |
