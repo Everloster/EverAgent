@@ -37,7 +37,7 @@
 
 ## Harness 会被 Bitter Lesson 反杀吗？
 
-见讨论型报告《Bitter Lesson vs Agent Harness 推演与网上观点审阅》。结论：**分层判生死**——
+见讨论型报告《Bitter Lesson vs Agent Harness 推演与网上观点审阅》（深度专业版）与《AI 越来越强，我们给它搭的脚手架会被自己淘汰吗？》（`reports/knowledge_reports/Bitter_Lesson_vs_Harness_科普讲解_20260720.md`，师傅/徒弟类比科普版）。结论：**分层判生死**——
 - **会被砍（"how"/知识层）**：提示词 playbook、固定编排/DAG、专职子代理固定分工、补模型缺陷的 workaround（如 JSON retry）。判据：填补的是"会被 scaling 填平的能力缺口"。
 - **砍不到（"what"/底座层）**：高风险场景的确定性**安全闸门**（如 never-push）、工具/环境接口、self-reinforcing 的极简工具（todo_write）、**进化循环本身（=Search，Sutton 钦点）**。
 - **两把镰刀**：模型 scaling（agentic-RL 训掉"自我管理赤字"）+ 环境生态适配（MCP/agent-native API 从另一头溶解胶水层）。
