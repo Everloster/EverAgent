@@ -7,7 +7,8 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
-| 2026-07-20 | [程乐松一手文本精读：重返经验、断裂的居间性与「做中国哲学」的手筋](../philosophy-learning/reports/concept_reports/程乐松_方法论一手精读_重返经验与做中国哲学_20260720.md) | philosophy-learning |
+| 2026-07-21 | [赵鼎新《儒法国家》理论框架：四种竞争、战争驱动与两千年韧性结构](../philosophy-learning/reports/concept_reports/赵鼎新_儒法国家_理论框架_20260721.md) | philosophy-learning |
+| 2026-07-21 | [程乐松一手文本精读：重返经验、断裂的居间性与「做中国哲学」的手筋](../philosophy-learning/reports/concept_reports/程乐松_方法论一手精读_重返经验与做中国哲学_20260720.md) | philosophy-learning |
 | 2026-07-20 | [实习生抢答、老教授过目：速度快 2-3 倍，凭什么一个字都不改？—— 投机解码科普](../ai-learning/reports/knowledge_reports/投机解码SpeculativeDecoding_科普讲解_20260720.md) | ai-learning |
 | 2026-07-20 | [同一个模型分数能差 2 倍、价格能差 140 倍——Agent 时代的榜单到底该怎么看？](../ai-learning/reports/knowledge_reports/Agent_LLM评分体系与主流模型价格能力_科普讲解_20260720.md) | ai-learning |
 | 2026-07-20 | [同一个 GPT-5.5 考出四个分数——Agent 的智能，几分靠模型、几分靠 Harness？](../ai-learning/reports/knowledge_reports/Agent智能_模型与Harness各占多少_科普讲解_20260720.md) | ai-learning |
@@ -31,7 +32,6 @@
 | 2026-07-07 | [Bitter Lesson 会杀死 Agent Harness 吗？——一场推演与网上观点交叉审阅](../ai-learning/reports/knowledge_reports/Bitter_Lesson_vs_Agent_Harness_推演与网上观点审阅_20260707.md) | ai-learning |
 | 2026-06-25 | [限时进食（TRE）与代谢健康：8/16 到底有没有用、对谁有用](../biology-learning/reports/concept_reports/限时进食TRE与代谢健康_20260625.md) | biology-learning |
 | 2026-06-25 | [程乐松的当代哲学：AI 时代的自我、反卷与'不要过二手生活](../philosophy-learning/reports/concept_reports/程乐松的当代哲学_AI时代的自我与反卷_20260625.md) | philosophy-learning |
-| 2026-06-25 | [投机解码 Speculative Decoding：用小模型给大模型加速 2-3 倍而不改变输出](../ai-learning/reports/knowledge_reports/投机解码SpeculativeDecoding_深度解析_20260625.md) | ai-learning |
 
 ## 🤖 AI Learning（91 篇）
 
@@ -167,11 +167,12 @@
 | 2026-03-24 | [MapReduce (2004) 论文精读](../cs-learning/reports/paper_analyses/10_mapreduce_2004.md) | — |
 | 2026-03-24 | [CS 关键人物图谱](../cs-learning/reports/knowledge_reports/CS关键人物图谱.md) | — |
 
-## 📚 Philosophy Learning（21 篇）
+## 📚 Philosophy Learning（22 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
-| 2026-07-20 | [程乐松一手文本精读：重返经验、断裂的居间性与「做中国哲学」的手筋](../philosophy-learning/reports/concept_reports/程乐松_方法论一手精读_重返经验与做中国哲学_20260720.md) | — |
+| 2026-07-21 | [赵鼎新《儒法国家》理论框架：四种竞争、战争驱动与两千年韧性结构](../philosophy-learning/reports/concept_reports/赵鼎新_儒法国家_理论框架_20260721.md) | — |
+| 2026-07-21 | [程乐松一手文本精读：重返经验、断裂的居间性与「做中国哲学」的手筋](../philosophy-learning/reports/concept_reports/程乐松_方法论一手精读_重返经验与做中国哲学_20260720.md) | — |
 | 2026-06-25 | [程乐松的当代哲学：AI 时代的自我、反卷与'不要过二手生活](../philosophy-learning/reports/concept_reports/程乐松的当代哲学_AI时代的自我与反卷_20260625.md) | — |
 | 2026-06-25 | [庄子《齐物论》](../philosophy-learning/reports/text_analyses/10_zhuangzi_qiwulun_-300.md) | — |
 | 2026-06-22 | [程乐松：道教观念史与宗教经典诠释学 思想综述](../philosophy-learning/reports/concept_reports/程乐松_道教与宗教诠释学_思想综述_20260622.md) | — |
