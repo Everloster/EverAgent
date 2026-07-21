@@ -122,7 +122,10 @@ reports/{slug}.md    # slug 用英文小写短词描述任务，如 kdrama-top10
 
 ```bash
 git add web-surfing/
-git commit -m "[web-surfing] {任务}: {描述}"
+scripts/ecommit.sh -m "[web-surfing] {任务}: {描述}
+
+Agent: {当前模型名}
+Task-Type: task-execution"
 
 GIT_NO_OPTIONAL_LOCKS=1 git fetch origin main
 GIT_NO_OPTIONAL_LOCKS=1 git merge --ff-only FETCH_HEAD
