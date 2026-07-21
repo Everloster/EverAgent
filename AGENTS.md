@@ -145,6 +145,7 @@ EverAgent/
 - **git 身份**：提交一律走 `scripts/ecommit.sh`（自动注入 Author=Everloster 双身份）；pre-commit hook 强制校验 Committer 与 Author，裸 `git commit` 未设 `GIT_AUTHOR_*` 会被拦截。
 - **历史版本**：旧的多 Agent 编排框架（任务状态机/锁/事件溯源/Dashboard）归档在 `legacy-v1-multiagent` 分支。
 - **兴趣确认**：各领域 `wiki/open-questions.md` 是历史快照 ≠ 当前兴趣。用户未指定明确方向的活儿，动手前先习惯性问一句最近的学习兴趣和方向；确认结果写回各领域 `MAP.md` 优先级队列（2026-07-20 确立）。
+- **token 纪律（2026-07-21 确立）**：报告质量优先、用户当前兴趣与方向优先。wiki 维护类工作（lint 健康检查/批量重构回填/图谱与索引优化）一律 **hold**，除非用户明确要求；wiki 只在报告产出过程中顺带沉淀，不为 wiki 而 wiki。
 
 ---
 
@@ -156,6 +157,15 @@ EverAgent/
 - **配置模板**：[infra/DeviceNode/clash-config.template.yaml](./infra/DeviceNode/clash-config.template.yaml) — 去密钥的 Clash 配置模板（占位符 + rule-providers 开源规则集），改规则从这里改再同步到服务端。
 - **敏感信息不入库**：SSH 私钥、节点 UUID/Reality 密钥、**订阅链接**等只存个人密码库，`DeviceNode.md` 与模板仅记录非敏感信息。订阅链接等同密码，泄露即重新生成。
 - **成本铁律**：按量付费（非免费套餐），勿跑 BT/DHT 等大流量任务；建议设 AWS Budget 告警。不用时记得 Terminate + 释放静态 IP 止血。
+
+---
+
+## §4.6 备忘：Karpathy 的 LLM Wiki
+
+- 原文（idea file）：<https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f> — EverAgent 的「原始资料 → reports → wiki → AGENTS.md schema」结构即此模式的多领域实例。
+- 改进版 gist（可加置信度标注与 supersession「论断被新证据取代」机制）：<https://gist.github.com/rohitg00/2067ab416f7bbe447c1977edaaa681e2>
+- 生态清单：<https://github.com/gavischneider/awesome-llm-wiki>；最火的成品实现 <https://github.com/nashsu/llm_wiki>（桌面应用）。
+- **待办（暂缓）**：wiki 健康检查（lint：矛盾/陈旧/孤儿页/supersession）未制度化。当前报告质量优先，等报告足够好、编译出的 wiki 才值得维护，届时回来补这条（2026-07-21 记）。
 
 ---
 
