@@ -145,7 +145,10 @@ github-trending-analyzer/
 
 ```bash
 git add reports/ knowledge/ AGENTS.md README.md
-git commit -m "[github-trending-analyzer] {任务}: {描述}"
+scripts/ecommit.sh -m "[github-trending-analyzer] {任务}: {描述}
+
+Agent: {当前模型名}
+Task-Type: task-execution"
 
 GIT_NO_OPTIONAL_LOCKS=1 git fetch origin main
 GIT_NO_OPTIONAL_LOCKS=1 git merge --ff-only FETCH_HEAD
