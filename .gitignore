@@ -46,3 +46,6 @@ venv/
 
 # Firecrawl scrape cache (transient fetch output, not a source of truth)
 .firecrawl/
+
+# 灰色来源书籍：仅本地学习使用，不入库（版权归出版方，公共仓库不可传播）
+philosophy-learning/books/儒法国家_中国历史新论_赵鼎新_2022.epub
