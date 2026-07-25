@@ -7,7 +7,7 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
-| 2026-07-21 | [赵鼎新《儒法国家》理论框架：四种竞争、战争驱动与两千年韧性结构](../philosophy-learning/reports/concept_reports/赵鼎新_儒法国家_理论框架_20260721.md) | philosophy-learning |
+| 2026-07-26 | [赵鼎新《儒法国家》理论框架：四种竞争、战争驱动与两千年韧性结构](../philosophy-learning/reports/concept_reports/赵鼎新_儒法国家_理论框架_20260721.md) | philosophy-learning |
 | 2026-07-21 | [程乐松一手文本精读：重返经验、断裂的居间性与「做中国哲学」的手筋](../philosophy-learning/reports/concept_reports/程乐松_方法论一手精读_重返经验与做中国哲学_20260720.md) | philosophy-learning |
 | 2026-07-20 | [实习生抢答、老教授过目：速度快 2-3 倍，凭什么一个字都不改？—— 投机解码科普](../ai-learning/reports/knowledge_reports/投机解码SpeculativeDecoding_科普讲解_20260720.md) | ai-learning |
 | 2026-07-20 | [同一个模型分数能差 2 倍、价格能差 140 倍——Agent 时代的榜单到底该怎么看？](../ai-learning/reports/knowledge_reports/Agent_LLM评分体系与主流模型价格能力_科普讲解_20260720.md) | ai-learning |
@@ -23,10 +23,10 @@
 | 2026-07-18 | [读书：4种配速，取景框，人是滤器，冲刷神经网络 —— 明镜与李继刚关于读书方法论的深度对话](../podcast-learning/reports/2026-07-09_xiaoyuzhou-mingjing-diandian_lijigang.md) | podcast-learning |
 | 2026-07-18 | [你到底该不该吃早餐?这期告诉你早餐的真相](../podcast-learning/reports/2026-07-14_bilibili-luge-gustav_breakfast.md) | podcast-learning |
 | 2026-07-18 | [一红16年，干啥啥赚钱？｜屠龙博士创业的秘密！](../podcast-learning/reports/2026-07-07_bilibili-kedaibiao-lizheng_tulong-boshi.md) | podcast-learning |
+| 2026-07-17 | [🇰🇷 韩剧推荐 Top10（2024–2026 · 豆瓣评分）](../web-surfing/reports/kdrama-top10-2024-2026.md) | web-surfing |
 | 2026-07-15 | [无状态的鹦鹉，怎么学会了连续对话和自己用工具？—— Agent 请求全链路科普](../ai-learning/reports/knowledge_reports/Agent请求全链路_科普讲解_20260715.md) | ai-learning |
 | 2026-07-15 | [客户端→网关→Harness→LLM→工具 请求全链路深度解析](../ai-learning/reports/knowledge_reports/Agent_Harness请求全链路_深度解析_20260709.md) | ai-learning |
 | 2026-07-15 | [一个模型的一生：1M 长上下文，从出生到上岗都经历了什么？—— 长上下文科普](../ai-learning/reports/knowledge_reports/长上下文1M_模型的一生_科普讲解_20260715.md) | ai-learning |
-| 2026-07-14 | [🇰🇷 韩剧推荐 Top10（2024–2026 · 豆瓣评分）](../web-surfing/reports/kdrama-top10-2024-2026.md) | web-surfing |
 | 2026-07-14 | [涌进 Anthropic 的 N 个巨佬：原文存档 + 逐人核实与深度分析](../ai-learning/reports/knowledge_reports/涌进Anthropic的N个巨佬_核实与深度分析_20260714.md) | ai-learning |
 | 2026-07-10 | [自建科学上网节点：从抗审查协议到线路选型的系统工程](../cs-learning/reports/knowledge_reports/自建科学上网节点_抗审查协议与线路选型_20260710.md) | cs-learning |
 | 2026-07-07 | [Bitter Lesson 会杀死 Agent Harness 吗？——一场推演与网上观点交叉审阅](../ai-learning/reports/knowledge_reports/Bitter_Lesson_vs_Agent_Harness_推演与网上观点审阅_20260707.md) | ai-learning |
@@ -171,7 +171,7 @@
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
-| 2026-07-21 | [赵鼎新《儒法国家》理论框架：四种竞争、战争驱动与两千年韧性结构](../philosophy-learning/reports/concept_reports/赵鼎新_儒法国家_理论框架_20260721.md) | — |
+| 2026-07-26 | [赵鼎新《儒法国家》理论框架：四种竞争、战争驱动与两千年韧性结构](../philosophy-learning/reports/concept_reports/赵鼎新_儒法国家_理论框架_20260721.md) | — |
 | 2026-07-21 | [程乐松一手文本精读：重返经验、断裂的居间性与「做中国哲学」的手筋](../philosophy-learning/reports/concept_reports/程乐松_方法论一手精读_重返经验与做中国哲学_20260720.md) | — |
 | 2026-06-25 | [程乐松的当代哲学：AI 时代的自我、反卷与'不要过二手生活](../philosophy-learning/reports/concept_reports/程乐松的当代哲学_AI时代的自我与反卷_20260625.md) | — |
 | 2026-06-25 | [庄子《齐物论》](../philosophy-learning/reports/text_analyses/10_zhuangzi_qiwulun_-300.md) | — |
@@ -255,5 +255,5 @@
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
-| 2026-07-14 | [🇰🇷 韩剧推荐 Top10（2024–2026 · 豆瓣评分）](../web-surfing/reports/kdrama-top10-2024-2026.md) | — |
+| 2026-07-17 | [🇰🇷 韩剧推荐 Top10（2024–2026 · 豆瓣评分）](../web-surfing/reports/kdrama-top10-2024-2026.md) | — |
 
