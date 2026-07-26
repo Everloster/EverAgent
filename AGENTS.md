@@ -13,9 +13,9 @@
 
 ---
 
-## §1 项目注册表（5 类）
+## §1 项目注册表（6 类）
 
-9 个子项目按**工作模式**归为 5 类。**按「意图」路由，不按「当前目录」路由**：识别用户想干什么 → 判定属于哪一类 → 读对应项目 `AGENTS.md` 独立工作。判不进 A–E 的，直接在 EverAgent 根目录处理（见 §1.5）。
+10 个子项目按**工作模式**归为 6 类。**按「意图」路由，不按「当前目录」路由**：识别用户想干什么 → 判定属于哪一类 → 读对应项目 `AGENTS.md` 独立工作。判不进 A–F 的，直接在 EverAgent 根目录处理（见 §1.5）。
 
 ### A 类 · 知识研究领域（5 个）— 对话启发式学习
 
@@ -61,6 +61,14 @@
 
 **工作流**：我说"帮我上 X 网站看看 / 抓一下 Y" → **先查复用**（本项目沉淀过？opencli 有适配器？agent-reach 覆盖？）→ 有则复用、无则 `opencli browser` 直驱 → 只读公开数据产出报告 → 这站以后还会来就沉淀成 `skills/site-{name}/`（详见该项目 AGENTS.md）。
 
+### F 类 · 基础设施与设备（1 个）— 修复驱动 + 档案沉淀
+
+| 项目 | 路径 | 内容 |
+|------|------|------|
+| 基础设施与设备 | `infra/` | VPS/代理网络 + 各终端设备的安装、修复、排障；一设备一档 |
+
+**工作流**：我说"电脑/设备 X 有问题 / 看看这台机器" → 判型（VPS/代理网络 → 根 `DeviceNode.md`；终端设备 → `infra/devices/{hostname}.md`）→ 实测修复 → 命令级可复现沉淀到对应档案（详见 `infra/AGENTS.md`）。
+
 > 每个项目自包含：读该项目 `AGENTS.md` + 根 `METHODOLOGY.md` 即可独立工作。
 
 ---
@@ -77,10 +85,11 @@
   ├─ 发来播客/视频链接            → C 类 podcast-learning
   ├─ 发来 repo 链接 / trending    → D 类 github-trending-analyzer
   ├─ "帮我上 X 网站/抓一下 Y/整理清单" → E 类 web-surfing（opencli 驱动）
-  └─ A–E 都不匹配（杂事/工具/一次性调研/流程） → 直接在 EverAgent 根目录干活
+  ├─ "电脑/设备 X 有问题 / 看看这台机器" → F 类 infra（VPS/代理网络 → 根 DeviceNode.md；终端设备 → infra/devices/）
+  └─ A–F 都不匹配（杂事/工具/一次性调研/流程） → 直接在 EverAgent 根目录干活
 ```
 
-**兜底（归不进 A–E 时）**：不新建"杂物"子项目，直接在根目录处理。默认遵守：
+**兜底（归不进 A–F 时）**：不新建"杂物"子项目，直接在根目录处理。默认遵守：
 
 1. **搜索用最省钱有效的档位** — 见 [docs/SEARCH.md](./docs/SEARCH.md)（本机已装 `llm` + Gemini websearch，默认联网入口）。
 2. **真读来源、标注证据** — 复用 METHODOLOGY §一/§二：不凭记忆下结论，事实带来源，推测标 `[推测]`；知识截止后的事实必须联网核实（§三）。
@@ -149,11 +158,12 @@ EverAgent/
 
 ---
 
-## §4.5 基础设施：自建 VPS（DeviceNode）
+## §4.5 基础设施与设备：自建 VPS（DeviceNode）+ F 类 infra/
 
-本工作台管理**一台 AWS Lightsail VPS**（东京 / Ubuntu 24.04），用途：自建代理节点（VLESS+Reality，官方 Xray-core + nginx 订阅链接，供科学访问 AI 服务）+ 备用。
+本工作台管理**一台 AWS Lightsail VPS**（东京 / Ubuntu 24.04），用途：自建代理节点（VLESS+Reality，官方 Xray-core + nginx 订阅链接，供科学访问 AI 服务）+ 备用。终端设备维护自 2026-07-26 起升级为 **F 类子项目 `infra/`**。
 
-- **档案**：[DeviceNode.md](./DeviceNode.md) — 实例规格、静态 IP、SSH 方式、Xray-core 节点、防火墙端口、订阅链接服务、规则维护、运维待办。跨设备接手先读它。
+- **设备维护（F 类）**：协议 [infra/AGENTS.md](./infra/AGENTS.md)；设备档案 `infra/devices/{hostname}.md`（首档 DeviceNode）。设备出问题先读对应档案再动手。
+- **档案**：[DeviceNode.md](./DeviceNode.md) — 实例规格、静态 IP、SSH 方式、Xray-core 节点、防火墙端口、订阅链接服务、规则维护、运维待办、设备联动摘要。跨设备接手先读它。
 - **配置模板**：[infra/DeviceNode/clash-config.template.yaml](./infra/DeviceNode/clash-config.template.yaml) — 去密钥的 Clash 配置模板（占位符 + rule-providers 开源规则集），改规则从这里改再同步到服务端。
 - **敏感信息不入库**：SSH 私钥、节点 UUID/Reality 密钥、**订阅链接**等只存个人密码库，`DeviceNode.md` 与模板仅记录非敏感信息。订阅链接等同密码，泄露即重新生成。
 - **成本铁律**：按量付费（非免费套餐），勿跑 BT/DHT 等大流量任务；建议设 AWS Budget 告警。不用时记得 Terminate + 释放静态 IP 止血。
