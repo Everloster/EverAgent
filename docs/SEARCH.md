@@ -2,6 +2,7 @@
 
 > 全局搜索/查资料方法。查东西时**从最省钱有效的档位开始，不够再往上爬**，而不是一上来就动用重工具。
 > 被根 [AGENTS.md](../AGENTS.md) §4 引用；任何领域、任何任务都适用。
+> 2026-07-26 全面修订：按本机实测重排（mcporter 盘点 + 逐档验证），新增 exa 档与抓取 fallback 链。
 
 ---
 
@@ -10,8 +11,12 @@
 | 你要的东西 | 直接去 |
 |-----------|--------|
 | 代码库里的事实（某函数在哪、某配置值） | **本地工具**：Grep / Glob / Read，别联网 |
-| 一个明确网址的内容 | **抓取**：`llm ... -o url_context` 或 WebFetch |
-| 需要最新事实 + 出处 | **联网搜索**：见下面阶梯 |
+| 一个明确网址的内容 | **抓取**：FetchURL；失败走 [§三 fallback 链](#三抓取-fallback-链借-openclaw-设计) |
+| 快事实 + 出处 + 时效 | **档位 1**：llm Gemini websearch |
+| 搜索列表（有哪些来源） | **档位 2**：WebSearch / exa |
+| 难抓的页（JS 重/反爬）、批量、监控 | **档位 3**：firecrawl MCP |
+| 登录态、复杂交互、多轮操作 | **档位 4**：opencli browser / agent-reach |
+| 结构化数据（金融/论文/企业） | **专项**：kimi-datasource / firecrawl research |
 
 ---
 
@@ -20,8 +25,8 @@
 ### 档位 0 · 本地优先（零成本）
 先问：这真的需要联网吗？代码/文件里的事用 Grep/Glob/Read。
 
-### 档位 1 · llm + Gemini websearch（首选联网档，已装好）
-本机已装 `llm` 0.31 + `llm-gemini` 0.32，Key 已配。**这是默认联网搜索入口**：轻量、带 Google 实时接地、给结论快。
+### 档位 1 · llm + Gemini websearch（快事实首选，已装好）
+本机已装 `llm` 0.31 + `llm-gemini` 0.32，Key 已配。**轻量、带 Google 实时接地、给结论快**。
 
 ```bash
 # 联网搜索 + 事实问答（google_search grounding）
@@ -34,50 +39,78 @@ llm -m gemini-2.5-flash -o url_context 1 "总结这个页面 https://example.com
 llm -m gemini-2.5-pro -o google_search 1 -o url_context 1 "你的问题"
 ```
 
-要点：
-- `-o google_search 1` = 打开 Google 实时检索接地；结论带时效性（已实测能返回几天前的新闻）。
-- `-o url_context 1` = 让模型抓取你给的 URL 原文再回答。
-- `gemini-2.5-flash` 快而省，先用它；要深推理/长文综合再上 `gemini-2.5-pro`。
-- **验证提醒**：Gemini 给的结论仍需按 [METHODOLOGY.md](../METHODOLOGY.md) §二标注证据；关键事实让它给出来源 URL，必要时用档位 2 复核。
+要点：`-o google_search 1` 打开 Google 实时检索接地；`gemini-2.5-flash` 快而省，深推理再上 `gemini-2.5-pro`。Gemini 结论仍需按 [METHODOLOGY.md](../METHODOLOGY.md) §二标注证据，关键事实让它给来源 URL，必要时档位 2 复核。
 
-### 档位 2 · 内置 WebSearch / WebFetch（交叉验证 & 拿原文）
-当需要**多来源交叉验证**、或要拿到**结构化搜索结果列表 / 网页原始 markdown** 时：
-- `WebSearch` — 拿到标题+URL 列表，适合"有哪些来源"。
-- `WebFetch` — 把某个 URL 转 markdown 再提问，适合精读单页。
+### 档位 2 · 搜索引擎层（拿列表 / 拿原文）
+- **WebSearch**（Kimi 内置）：关键词式搜索，拿标题+URL+摘要列表，适合"有哪些来源"。
+- **exa（经 mcporter，已配好并实测）**：神经/语义搜索。**query 写「理想页面的描述」而不是关键词**（"blog post comparing React and Vue performance" 而非 "React vs Vue"）；`category:people` / `category:company` 找人找公司；结果自带内容 highlights，常省一次抓取。
+  ```bash
+  mcporter call exa.web_search_exa query="<理想页面描述>" numResults=5
+  mcporter call exa.web_fetch_exa urls='["<url1>","<url2>"]'   # 批量读全文（clean markdown）
+  ```
+  分工：**关键词明确 → WebSearch；概念/相似/研究向、或关键词搜不到 → exa**。
+- **FetchURL**：单页转 markdown 精读（失败走 §三）。
 
-用途分工：档位 1 给"快速有出处的结论"，档位 2 给"我要亲自看原文/多源对比"。
+### 档位 3 · firecrawl MCP（难抓的页 / 批量 / 监控，26 工具已接入）
+- `firecrawl_scrape`：JS 渲染页（`waitFor`）、反爬（`proxy: stealth`）、结构化抽取（json format + schema）、缓存加速（`maxAge`）。
+- `firecrawl_search`：带正文抓取的搜索（要内容时用，比 WebSearch 重，耗额度）。
+- `firecrawl_map` + `firecrawl_crawl`：整站/批量——先 map 定位目标页再 scrape，省额度。
+- `firecrawl_monitor_*`：页面/搜索定时监控（diff + meaningful 判定）。
+- `firecrawl_agent`：多站点开放式深度研究（**最后手段**，慢且贵，2–5 分钟起）。
 
-### 档位 3 · 专业搜索 Skill（重任务才上）
-需要**深度、多轮、结构化产出**时，用已装的 Skill（按需选一个，别滥用）：
+### 档位 4 · 登录态与交互（重任务）
+- **opencli browser**：真实 Chrome——登录态会话、表单、翻页、网络请求捕获。JS 重 + 要登录的站用它。
+- **agent-reach** skill：多平台多轮操作（发链接让它研究/整理/代操作）。
 
-| 场景 | Skill |
-|------|-------|
-| 通用联网研究/查找 | `agent-reach` |
-| 抓取/搜索网页并要干净 markdown | `firecrawl-search` / `firecrawl-scrape` |
-| 出带引用的深度研究报告 | `firecrawl-deep-research` |
-| 找论文/学术 | `firecrawl-research-papers` |
-| 中文 AI 资讯/热榜/社交语义搜索 | `ai-radar` / `sensight` |
-
-> 触发规则：用户点名某 Skill、或任务明显匹配其描述时才用；用完即止，不跨轮沿用。
+### 专项（不走阶梯，直接用）
+- **kimi-datasource**：股票/财报/技术指标/宏观/企业（天眼查）/arxiv/scholar 结构化数据。
+- **firecrawl_research_search_papers / related_papers / read_paper**：学术检索、引文扩展、原文选段验证。
 
 ---
 
-## 三、默认决策树
+## 三、抓取 fallback 链（借 openclaw 设计）
+
+单页抓取按序降级，每步失败再往下（对应 openclaw web_fetch 的 Readability → Firecrawl → Browser）：
+
+```
+FetchURL（快、免费）
+  → firecrawl_scrape（JS 渲染 waitFor=5–10s / 反爬 stealth / maxAge 缓存）
+  → opencli browser（登录态、复杂交互）
+```
+
+- **缓存意识**：重复抓同一页用 firecrawl `maxAge`（加速 + 省额度）；`.firecrawl/` 是本地缓存目录（已 gitignore，不作事实源）。
+- **来源纪律**：搜索工具给出的结论仍须真读来源（METHODOLOGY §一），数值必须有出处。
+
+---
+
+## 四、默认决策树
 
 ```
 要查东西
-  ├─ 在代码/文件里?           → 档位0 Grep/Glob/Read
-  ├─ 有明确 URL 要读?         → llm -o url_context / WebFetch
-  ├─ 要最新事实 + 快结论?      → 档位1 llm -o google_search  ← 默认从这里开始
-  ├─ 要多源交叉/亲看原文?      → 档位2 WebSearch + WebFetch
-  └─ 要深度多轮结构化产出?     → 档位3 对应 Skill
+  ├─ 在代码/文件里?              → 档位0 Grep/Glob/Read
+  ├─ 有明确 URL 要读?            → §三 fallback 链（FetchURL 起）
+  ├─ 要快事实 + 时效?            → 档位1 llm google_search      ← 默认从这里开始
+  ├─ 要来源列表?                 → 档位2 WebSearch；语义/相似/研究向 → exa
+  ├─ JS 重/反爬/批量/监控?        → 档位3 firecrawl MCP
+  ├─ 要登录/多轮交互?            → 档位4 opencli browser → agent-reach
+  └─ 金融/论文/企业结构化数据?     → kimi-datasource / firecrawl research
 ```
 
-**原则**：能在低档位解决就不往上爬；往上爬要有理由（时效不够、需交叉验证、需深度产出）。
+**原则**：能在低档位解决就不往上爬；往上爬要有理由（时效不够、需交叉验证、需深度产出、抓不动）。
 
 ---
 
-## 四、维护
+## 五、各设备的实际实现（指针）
 
-发现更好的搜索工具/用法（新模型、新 Skill、更优命令）→ 更新本文件。
-安装类变更（如换 Gemini 模型、加插件）记得同步这里的命令示例。
+阶梯各档用什么工具实现是**设备事实**，随机器不同而不同。各设备已安装/验证的搜索能力清单见其设备档案：
+
+- DeviceNode：[../infra/devices/DeviceNode.md](../infra/devices/DeviceNode.md) §三「搜索栈」（2026-07-26 盘点）
+
+> 设备档案维护：已装工具与健康状态、配置位置（如 mcporter/exa）、盘点日期。换机/新机时按 `infra/AGENTS.md` schema 建档，并在本节补一行指针。
+
+---
+
+## 六、维护
+
+- 方法论/用法变更（新阶梯档位、更优命令、fallback 调整）→ 更新本文件。
+- 安装类变更（装/卸工具、换模型、新增 MCP 服务）→ 更新对应 `infra/devices/{hostname}.md` 的搜索栈，本文件 §五 指针不动。
