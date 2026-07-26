@@ -163,7 +163,7 @@ EverAgent/
 本工作台管理**一台 AWS Lightsail VPS**（东京 / Ubuntu 24.04），用途：自建代理节点（VLESS+Reality，官方 Xray-core + nginx 订阅链接，供科学访问 AI 服务）+ 备用。终端设备维护自 2026-07-26 起升级为 **F 类子项目 `infra/`**。
 
 - **设备维护（F 类）**：协议 [infra/AGENTS.md](./infra/AGENTS.md)；设备档案 `infra/devices/{hostname}.md`（首档 DeviceNode）。设备出问题先读对应档案再动手。
-- **档案**：[DeviceNode.md](./DeviceNode.md) — 实例规格、静态 IP、SSH 方式、Xray-core 节点、防火墙端口、订阅链接服务、规则维护、运维待办、设备联动摘要。跨设备接手先读它。
+- **档案**：[DeviceNode.md](./DeviceNode.md) — 实例规格、静态 IP、SSH 方式、Xray-core 节点（443 经 nginx SNI 分流）、防火墙端口、订阅链接服务、规则维护、域名管理（<redacted-domain>）、Tailscale 节点与 DERP 中继、运维待办、设备联动摘要。跨设备接手先读它。
 - **配置模板**：[infra/DeviceNode/clash-config.template.yaml](./infra/DeviceNode/clash-config.template.yaml) — 去密钥的 Clash 配置模板（占位符 + rule-providers 开源规则集），改规则从这里改再同步到服务端。
 - **敏感信息不入库**：SSH 私钥、节点 UUID/Reality 密钥、**订阅链接**等只存个人密码库，`DeviceNode.md` 与模板仅记录非敏感信息。订阅链接等同密码，泄露即重新生成。
 - **成本铁律**：按量付费（非免费套餐），勿跑 BT/DHT 等大流量任务；建议设 AWS Budget 告警。不用时记得 Terminate + 释放静态 IP 止血。
