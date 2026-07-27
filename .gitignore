@@ -49,3 +49,8 @@ venv/
 
 # 灰色来源书籍：仅本地学习使用，不入库（版权归出版方，公共仓库不可传播）
 philosophy-learning/books/儒法国家_中国历史新论_赵鼎新_2022.epub
+
+# 基础设施与设备家底（含 AWS 账号/IP/SSH/Tailscale 等敏感面）已拆至独立私有仓 EverAgent-infra。
+# 本地两仓并排/软链一体工作时，兜底忽略这些路径，防手滑把敏感档案再次提交到公开仓。
+/DeviceNode.md
+/infra/

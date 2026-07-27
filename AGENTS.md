@@ -65,9 +65,11 @@
 
 | 项目 | 路径 | 内容 |
 |------|------|------|
-| 基础设施与设备 | `infra/` | VPS/代理网络 + 各终端设备的安装、修复、排障；一设备一档 |
+| 基础设施与设备 | `infra/`（**私有仓**） | VPS/代理网络 + 各终端设备的安装、修复、排障；一设备一档 |
 
-**工作流**：我说"电脑/设备 X 有问题 / 看看这台机器" → 判型（VPS/代理网络 → 根 `DeviceNode.md`；终端设备 → `infra/devices/{hostname}.md`）→ 实测修复 → 命令级可复现沉淀到对应档案（详见 `infra/AGENTS.md`）。
+> 🔒 **F 类内容已迁出本公开仓**：`infra/` 与 `DeviceNode.md` 含 AWS 账号/IP/SSH/Tailscale 等敏感信息，2026-07-27 拆至独立**私有仓 `EverAgent-infra`**（本地与本公开仓并排 clone 即可一体工作）。以下 F 类说明保留为路由指引；实际档案在私有仓，本公开仓不含。
+
+**工作流**：我说"电脑/设备 X 有问题 / 看看这台机器" → 判型（VPS/代理网络 → 私有仓 `DeviceNode.md`；终端设备 → 私有仓 `infra/devices/{hostname}.md`）→ 实测修复 → 命令级可复现沉淀到对应档案（详见私有仓 `infra/AGENTS.md`）。
 
 > 每个项目自包含：读该项目 `AGENTS.md` + 根 `METHODOLOGY.md` 即可独立工作。
 
@@ -85,7 +87,7 @@
   ├─ 发来播客/视频链接            → C 类 podcast-learning
   ├─ 发来 repo 链接 / trending    → D 类 github-trending-analyzer
   ├─ "帮我上 X 网站/抓一下 Y/整理清单" → E 类 web-surfing（opencli 驱动）
-  ├─ "电脑/设备 X 有问题 / 看看这台机器" → F 类 infra（VPS/代理网络 → 根 DeviceNode.md；终端设备 → infra/devices/）
+  ├─ "电脑/设备 X 有问题 / 看看这台机器" → F 类 infra（🔒 私有仓 EverAgent-infra：VPS/代理网络 → DeviceNode.md；终端设备 → infra/devices/）
   └─ A–F 都不匹配（杂事/工具/一次性调研/流程） → 直接在 EverAgent 根目录干活
 ```
 
@@ -148,7 +150,7 @@ EverAgent/
 ## §4 全局规则
 
 - **交流语言**：整个项目过程与用户对话一律用**中文**（含解释、追问、报告正文、commit 描述）。代码、命令、专有名词、原文引用保持原样。
-- **搜索/查资料**：[docs/SEARCH.md](./docs/SEARCH.md) — 从最省钱有效档位起爬（本地 → `llm` Gemini websearch → WebSearch/exa → firecrawl MCP → opencli；各设备的实际搜索能力见 `infra/devices/` 搜索栈）。
+- **搜索/查资料**：[docs/SEARCH.md](./docs/SEARCH.md) — 从最省钱有效档位起爬（本地 → `llm` Gemini websearch → WebSearch/exa → firecrawl MCP → opencli；各设备的实际搜索能力见私有仓 `EverAgent-infra` 的 `infra/devices/` 搜索栈）。
 - **安全与防幻觉**：[docs/PROTOCOL_COMMON.md](./docs/PROTOCOL_COMMON.md) §A — 未读内容禁止推测；数值必须有来源；不编造。
 - **提交规范**：[docs/PROTOCOL_COMMON.md](./docs/PROTOCOL_COMMON.md) §B/§C — commit 格式、push flow（`GIT_NO_OPTIONAL_LOCKS=1`）。
 - **git 身份**：提交一律走 `scripts/ecommit.sh`（自动注入 Author=Everloster 双身份）；pre-commit hook 强制校验 Committer 与 Author，裸 `git commit` 未设 `GIT_AUTHOR_*` 会被拦截。
@@ -158,14 +160,16 @@ EverAgent/
 
 ---
 
-## §4.5 基础设施与设备：自建 VPS（DeviceNode）+ F 类 infra/
+## §4.5 基础设施与设备：自建 VPS（DeviceNode）+ F 类 infra/（🔒 私有仓）
 
-本工作台管理**一台 AWS Lightsail VPS**（东京 / Ubuntu 24.04），用途：自建代理节点（VLESS+Reality，官方 Xray-core + nginx 订阅链接，供科学访问 AI 服务）+ 备用。终端设备维护自 2026-07-26 起升级为 **F 类子项目 `infra/`**。
+本工作台管理**一台 AWS Lightsail VPS**（东京 / Ubuntu 24.04），用途：自建代理节点（VLESS+Reality，官方 Xray-core + nginx 订阅链接，供科学访问 AI 服务）+ 备用。终端设备维护为 **F 类子项目 `infra/`**。
 
-- **设备维护（F 类）**：协议 [infra/AGENTS.md](./infra/AGENTS.md)；设备档案 `infra/devices/{hostname}.md`（首档 DeviceNode）。设备出问题先读对应档案再动手。
-- **档案**：[DeviceNode.md](./DeviceNode.md) — 实例规格、静态 IP、SSH 方式、Xray-core 节点（443 经 nginx SNI 分流）、防火墙端口、订阅链接服务、规则维护、域名管理（<redacted-domain>）、Tailscale 节点与 DERP 中继、运维待办、设备联动摘要。跨设备接手先读它。
-- **配置模板**：[infra/DeviceNode/clash-config.template.yaml](./infra/DeviceNode/clash-config.template.yaml) — 去密钥的 Clash 配置模板（占位符 + rule-providers 开源规则集），改规则从这里改再同步到服务端。
-- **敏感信息不入库**：SSH 私钥、节点 UUID/Reality 密钥、**订阅链接**等只存个人密码库，`DeviceNode.md` 与模板仅记录非敏感信息。订阅链接等同密码，泄露即重新生成。
+> 🔒 **敏感面隔离（2026-07-27）**：`DeviceNode.md` 与 `infra/` 含 AWS 账号、公网/内网 IP、SSH 接入、Tailscale 网段、代理架构等，已整体迁至**独立私有仓 `EverAgent-infra`**，不在本公开仓。下列指针指向该私有仓；本地把两仓并排 clone 即可按 F 类协议一体工作。
+
+- **设备维护（F 类）**：协议 `infra/AGENTS.md`（私有仓）；设备档案 `infra/devices/{hostname}.md`。设备出问题先读对应档案再动手。
+- **VPS 档案**：`DeviceNode.md`（私有仓） — 实例规格、静态 IP、SSH 方式、Xray-core 节点（443 经 nginx SNI 分流）、防火墙端口、订阅链接服务、规则维护、域名管理、Tailscale 节点与 DERP 中继、运维待办、设备联动摘要。跨设备接手先读它。
+- **配置模板**：`infra/DeviceNode/clash-config.template.yaml`（私有仓） — 去密钥的 Clash 配置模板（占位符 + 开源规则集），改规则从这里改再同步到服务端。
+- **敏感信息不入库**：SSH 私钥、节点 UUID/Reality 密钥、**订阅链接**等只存个人密码库，连私有仓也不放；档案与模板仅记录非敏感信息。订阅链接等同密码，泄露即重新生成。
 - **成本铁律**：按量付费（非免费套餐），勿跑 BT/DHT 等大流量任务；建议设 AWS Budget 告警。不用时记得 Terminate + 释放静态 IP 止血。
 
 ---
