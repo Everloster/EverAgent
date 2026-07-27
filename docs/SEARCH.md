@@ -104,7 +104,7 @@ FetchURL（快、免费）
 
 阶梯各档用什么工具实现是**设备事实**，随机器不同而不同。各设备已安装/验证的搜索能力清单见其设备档案（🔒 在私有仓 `EverAgent-infra`，含敏感基础设施信息，不在本公开仓）：
 
-- DeviceNode：私有仓 `infra/devices/DeviceNode.md` §三「搜索栈」
+- 各设备：私有仓 `infra/devices/{hostname}.md` §三「搜索栈」
 
 > 设备档案维护：已装工具与健康状态、配置位置（如 mcporter/exa）、盘点日期。换机/新机时按私有仓 `infra/AGENTS.md` schema 建档，并在本节补一行指针。
 
