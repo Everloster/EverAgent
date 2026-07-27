@@ -113,4 +113,4 @@ FetchURL（快、免费）
 ## 六、维护
 
 - 方法论/用法变更（新阶梯档位、更优命令、fallback 调整）→ 更新本文件。
-- 安装类变更（装/卸工具、换模型、新增 MCP 服务）→ 更新对应 `infra/devices/{hostname}.md` 的搜索栈，本文件 §五 指针不动。
+- 安装类变更（装/卸工具、换模型、新增 MCP 服务）→ 更新私有仓 `EverAgent-infra` 对应 `infra/devices/{hostname}.md` 的搜索栈，本文件 §五 指针不动。
