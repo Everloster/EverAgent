@@ -5,6 +5,8 @@
 
 > **AI 使用本仓库？** → 先读 [AGENTS.md](./AGENTS.md) 与 [METHODOLOGY.md](./METHODOLOGY.md)，本文件供人类阅读。
 
+> **换机 / 首次拉取？** → 读 [docs/WORKSPACE_SETUP.md](./docs/WORKSPACE_SETUP.md)：本仓（公开）+ 私有仓 `EverAgent-infra`（F 类设备家底）如何并排搭建、更新、协作。
+
 ![EverAgent launch poster](./docs/assets/everagent-launch-poster.png)
 
 ---
