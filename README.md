@@ -20,7 +20,7 @@
 | **C 播客学习** | podcast-learning | 发链接 → 本地转写 → 润色 → 总结/讨论 → 报告 |
 | **D 开源研究** | github-trending-analyzer | 发 repo 链接 → 输出/更新研究报告（自带脚本与协议） |
 | **E 上网冲浪** | web-surfing | 发上网需求 → opencli 抓公开数据 → 清单/报告；沉淀站点技能 |
-| **F 基础设施与设备** | infra + DeviceNode.md（🔒 私有仓 EverAgent-infra） | 设备/VPS 出问题 → 实测修复 → 设备档案沉淀 |
+| **F 基础设施与设备** | infra + VPS 档案（🔒 私有仓 EverAgent-infra） | 设备/VPS 出问题 → 实测修复 → 设备档案沉淀 |
 
 > 不属于以上 5 类的杂事（工具/一次性调研/流程），**按意图判定后直接在根目录处理**，不新建"杂物"项目；反复出现再升级为正式领域。搜索方法见 [docs/SEARCH.md](./docs/SEARCH.md)。
 

@@ -11,7 +11,7 @@
 | 仓库 | 可见性 | 装什么 | 谁维护 |
 |------|--------|--------|--------|
 | **EverAgent** | 🌐 公开 | A–E 类全部知识资产（报告/wiki）+ 方法论 + 脚本 + 协议 | 对话即学习，持续开源 |
-| **EverAgent-infra** | 🔒 私有 | F 类：`DeviceNode.md` + `infra/`（VPS、各设备档案、代理配置模板） | 修复驱动，含 AWS 账号/IP/SSH/Tailscale，**永不进公开仓** |
+| **EverAgent-infra** | 🔒 私有 | F 类：VPS 管理档案 + `infra/`（VPS、各设备档案、代理配置模板） | 修复驱动，含 AWS 账号/IP/SSH/Tailscale，**永不进公开仓** |
 
 **为什么拆两仓**：EverAgent 要开源，但设备档案含敏感基础设施信息，不能公开。2026-07-27 拆分，公开仓历史已彻底脱敏（文件 + commit message 双清）。
 
@@ -24,7 +24,7 @@
 在同一个父目录下把两仓**并排 clone**（关键：`EverAgent-infra` 紧挨 `EverAgent`）：
 
 ```bash
-cd ~/TraeWorkspace          # 或你惯用的工作根目录
+cd ~/<your-workspace>          # 或你惯用的工作根目录
 git clone https://github.com/Everloster/EverAgent.git
 git clone https://github.com/Everloster/EverAgent-infra.git   # 私有，需 gh 已登录 Everloster
 ```
@@ -32,7 +32,7 @@ git clone https://github.com/Everloster/EverAgent-infra.git   # 私有，需 gh 
 得到：
 
 ```
-~/TraeWorkspace/
+~/<your-workspace>/
 ├── EverAgent/          # 公开仓（当前所在）
 └── EverAgent-infra/    # 私有仓（并排）
 ```
@@ -40,7 +40,7 @@ git clone https://github.com/Everloster/EverAgent-infra.git   # 私有，需 gh 
 **校验搭好了**：
 
 ```bash
-ls ~/TraeWorkspace/EverAgent-infra/DeviceNode.md && echo "✅ infra 就位"
+ls ~/<your-workspace>/EverAgent-infra/README.md && echo "✅ infra 就位"
 ```
 
 > 私有仓 clone 不下来？→ `gh auth status` 确认已登录 Everloster 且有 `repo` scope；或用 `gh repo clone Everloster/EverAgent-infra`。
@@ -72,10 +72,10 @@ git config user.email "noreply@<vendor>.com"   # 必须含 noreply@
 
 ```bash
 # 公开仓
-cd ~/TraeWorkspace/EverAgent && git pull
+cd ~/<your-workspace>/EverAgent && git pull
 
 # 私有仓
-cd ~/TraeWorkspace/EverAgent-infra && git pull
+cd ~/<your-workspace>/EverAgent-infra && git pull
 ```
 
 > ⚠️ **历史重写提示**：公开仓 2026-07-27 做过一次历史脱敏（force push）。若某台旧 clone `git pull` 报分叉/冲突，且**无本地未推送改动**，直接对齐远端即可：
@@ -91,13 +91,13 @@ AI 读公开仓 `AGENTS.md` 即知按**意图**路由（不看当前目录）：
 
 - **A–E 类**（学 X / demo / 播客 / repo / 上网）→ 全在公开仓 `EverAgent/` 内，正常干活。
 - **F 类**（"设备 X 有问题 / 看看这台机器 / VPS 怎样"）→ 去**并排的 `../EverAgent-infra/`**：
-  - VPS / 代理网络 → `EverAgent-infra/DeviceNode.md`
+  - VPS / 代理网络 → 私有仓根目录的 VPS 管理档案
   - 终端设备 → `EverAgent-infra/infra/devices/{hostname}.md`
   - F 类协议 → `EverAgent-infra/infra/AGENTS.md`
 
-**AGENTS.md 里所有 `私有仓 infra/...`、`私有仓 DeviceNode.md` 的指针，实际路径都是 `../EverAgent-infra/` 下的对应文件**（前提：按 §二并排 clone）。
+**AGENTS.md 里所有指向 `私有仓 infra/...` 与 VPS 档案的指针，实际路径都是 `../EverAgent-infra/` 下的对应文件**（前提：按 §二并排 clone）。
 
-> 公开仓 `.gitignore` 已兜底忽略 `/infra/` 与 `/DeviceNode.md`：即便本地把私有仓内容软链/复制进公开仓目录，也不会误提交到公开仓。
+> 公开仓 `.gitignore` 已兜底忽略 `/infra/` 与 VPS 档案文件：即便本地把私有仓内容软链/复制进公开仓目录，也不会误提交到公开仓。
 
 ---
 
@@ -106,4 +106,4 @@ AI 读公开仓 `AGENTS.md` 即知按**意图**路由（不看当前目录）：
 - 密钥 / SSH 私钥 / 节点 UUID / Reality 密钥 / 订阅链接 → **两仓都不入库**，只存个人密码库。
 - 公开仓：任何设备档案、真实 IP、AWS 账号、域名 → 不进（含 commit message）。
 - 私有仓：可记内网 IP / 主机名 / 设备指纹等非密钥信息；密钥仍不入。
-- 工作机（DeviceNode）另有更强的公司保密红线，见其设备档案。
+- 工作机（公司设备）另有更强的公司保密红线，见私有仓对应设备档案。
