@@ -155,7 +155,7 @@ EverAgent/
 - **搜索/查资料**：[docs/SEARCH.md](./docs/SEARCH.md) — 从最省钱有效档位起爬（本地 → `llm` Gemini websearch → WebSearch/exa → firecrawl MCP → opencli；各设备的实际搜索能力见私有仓 `EverAgent-infra` 的 `infra/devices/` 搜索栈）。
 - **安全与防幻觉**：[docs/PROTOCOL_COMMON.md](./docs/PROTOCOL_COMMON.md) §A — 未读内容禁止推测；数值必须有来源；不编造。
 - **提交规范**：[docs/PROTOCOL_COMMON.md](./docs/PROTOCOL_COMMON.md) §B/§C — commit 格式、push flow（`GIT_NO_OPTIONAL_LOCKS=1`）。
-- **git 身份**：提交一律走 `scripts/ecommit.sh`（自动注入 Author=Everloster 双身份）；pre-commit hook 强制校验 Committer 与 Author，裸 `git commit` 未设 `GIT_AUTHOR_*` 会被拦截。
+- **git 身份**：提交一律走 `scripts/ecommit.sh`（自动注入 Author=Everloster 双身份）；pre-commit hook 强制校验 Committer 与 Author，裸 `git commit` 未设 `GIT_AUTHOR_*` 会被拦截。**识别不出 agent 身份（whoami 返回 `*-unknown`）一律禁止提交**——ecommit 硬失败 + hook 拦截，绝不静默兜底；先修 `scripts/whoami_agent.py` 覆盖当前 CLI，应急与用户确认身份后显式传 `AGENT_ID/AGENT_EMAIL`（2026-07-28 确立）。
 - **历史版本**：旧的多 Agent 编排框架（任务状态机/锁/事件溯源/Dashboard）归档在 `legacy-v1-multiagent` 分支。
 - **兴趣确认**：各领域 `wiki/open-questions.md` 是历史快照 ≠ 当前兴趣。用户未指定明确方向的活儿，动手前先习惯性问一句最近的学习兴趣和方向；确认结果写回各领域 `MAP.md` 优先级队列（2026-07-20 确立）。
 - **token 纪律（2026-07-21 确立）**：报告质量优先、用户当前兴趣与方向优先。wiki 维护类工作（lint 健康检查/批量重构回填/图谱与索引优化）一律 **hold**，除非用户明确要求；wiki 只在报告产出过程中顺带沉淀，不为 wiki 而 wiki。

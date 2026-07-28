@@ -34,8 +34,9 @@ Task-Type: {project-optimization | new-project | task-execution}
 ## §C Push Flow（推送流程 · 全局统一）
 
 > **双身份**：每个 commit 的 **Author = 仓库主人 Everloster**（固定，显示其 GitHub 头像），**Committer = 当前运行的 Agent**（自动识别，谁跑就填谁）。
-> `scripts/ecommit.sh` 自动完成两件事：注入 Author=Everloster；调用 `scripts/whoami-agent.sh` 识别当前 agent 身份（进程链判 CLI + 读其配置拿模型，如 `trae-openrouter-3o`/`codex-gpt-5.5`）设为 Committer。**换任何 CLI/模型都无需改配置。**
+> `scripts/ecommit.sh` 自动完成两件事：注入 Author=Everloster；调用 `scripts/whoami_agent.py` 识别当前 agent 身份（环境变量 + 进程链判 CLI + 读其配置拿模型，如 `trae-openrouter-3o`/`codex-gpt-5.5`/`kimi-cli-k3`）设为 Committer。**换任何 CLI/模型都无需改配置。**
 > pre-commit hook 强制校验：Committer 邮箱须含 `noreply@`；Author 须为 Everloster（绕过 ecommit 且未设 `GIT_AUTHOR_*` 的裸 `git commit` 会被拦截）。
+> **身份识别失败 = 禁止提交（2026-07-28 铁律）**：whoami 返回 `*-unknown` 时 ecommit 直接退出、hook 同样拦截，绝不允许静默兜底提交。处理：① 优先修 `scripts/whoami_agent.py` 覆盖当前 CLI（加检测规则 + 厂商 noreply 邮箱）；② 应急与用户确认身份后显式指定：`AGENT_ID=<cli>-<model> AGENT_EMAIL=<厂商noreply> scripts/ecommit.sh -m "..."`。
 
 ```bash
 git add -A

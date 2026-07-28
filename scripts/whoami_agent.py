@@ -42,6 +42,7 @@ VENDOR_EMAIL = {
     "windsurf":    "noreply@codeium.com",
     "qwen-code":   "noreply@alibabacloud.com",
     "amp":         "noreply@sourcegraph.com",
+    "kimi-cli":    "noreply@moonshot.ai",
 }
 FALLBACK_EMAIL = "noreply@everloster.com"
 
@@ -64,6 +65,10 @@ CLI_RULES = [
     ("aider",       lambda: _has("AIDER_API_KEY")),
     ("claude-code", lambda: _has("CLAUDECODE", "CLAUDE_CODE")),
     ("goose",       lambda: _has("GOOSE_PROVIDER")),
+    # kimi-cli（Kimi Code CLI）：无专有环境变量，靠进程链判（comm=kimi）。放最后——
+    # 进程链判定优先级最低，嵌套场景下让 env 型 CLI 先匹配。
+    # 注意命名：kimi = 桌面 App，kimi-cli = 命令行工具，二者身份须区分（2026-07-28 用户订正）。
+    ("kimi-cli",    lambda: _has("KIMI_CLI", "KIMI_CODE_CLI") or _proc_has("kimi")),
 ]
 
 
@@ -122,6 +127,10 @@ def detect_model(cli: str) -> str:
         return os.environ.get("GEMINI_MODEL", "unknown")
     if cli in ("cursor", "cursor-cli"):
         return os.environ.get("CURSOR_MODEL", "unknown")
+    if cli == "kimi-cli":
+        # ~/.kimi-code/config.toml 的 default_model 形如 "kimi-code/k3"，取 / 后段
+        raw = _toml_get(HOME / ".kimi-code" / "config.toml", "default_model") or ""
+        return raw.split("/")[-1] if raw else os.environ.get("KIMI_MODEL", "unknown")
     # 通用兜底
     return os.environ.get("AGENT_MODEL", "unknown")
 
