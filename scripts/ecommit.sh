@@ -12,14 +12,15 @@ _D="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 export GIT_AUTHOR_NAME="${GIT_AUTHOR_NAME:-Everloster}"
 export GIT_AUTHOR_EMAIL="${GIT_AUTHOR_EMAIL:-2820419+Everloster@users.noreply.github.com}"
 
-# Committer：自动识别当前 agent 身份（whoami-agent.sh）。失败则回退到 git config，绝不中断提交。
-_AGENT="$("$_D/whoami-agent.sh" 2>/dev/null || true)"
-if [ -n "${_AGENT:-}" ]; then
-  export GIT_COMMITTER_NAME="$_AGENT"
-  export GIT_COMMITTER_EMAIL="noreply@trae.com"
+# Committer：自动识别当前 agent 身份（whoami_agent.py，跨平台 mac/linux/win）。失败则回退 git config，绝不中断提交。
+_NAME="$(python3 "$_D/whoami_agent.py" --name 2>/dev/null || true)"
+_EMAIL="$(python3 "$_D/whoami_agent.py" --email 2>/dev/null || true)"
+if [ -n "${_NAME:-}" ] && [ -n "${_EMAIL:-}" ]; then
+  export GIT_COMMITTER_NAME="$_NAME"
+  export GIT_COMMITTER_EMAIL="$_EMAIL"
   # 同步 git config，使 pre-commit hook（读 user.name/email）与实际 committer 一致
-  git config user.name "$_AGENT"
-  git config user.email "noreply@trae.com"
+  git config user.name "$_NAME"
+  git config user.email "$_EMAIL"
 fi
 
 exec git commit "$@"
