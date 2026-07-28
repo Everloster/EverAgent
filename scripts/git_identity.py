@@ -137,6 +137,11 @@ def command_validate(args: argparse.Namespace) -> int:
     errors: list[str] = []
     if not act_name:
         errors.append("git user.name is unset")
+    elif act_name.endswith("-unknown"):
+        errors.append(
+            f"committer identity unresolved: '{act_name}' — fix scripts/whoami_agent.py to cover this CLI, "
+            "or set AGENT_ID/AGENT_EMAIL explicitly after confirming with the user"
+        )
     elif exp_name and act_name != exp_name:
         errors.append(f"git user.name mismatch: expected '{exp_name}', got '{act_name}'")
 
