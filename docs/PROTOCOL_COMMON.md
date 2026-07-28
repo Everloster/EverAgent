@@ -33,9 +33,9 @@ Task-Type: {project-optimization | new-project | task-execution}
 
 ## §C Push Flow（推送流程 · 全局统一）
 
-> **双身份**：每个 commit 的 **Author = 仓库主人 Everloster**（显示其 GitHub 头像），**Committer = 当前 Agent**（通过 hook 校验）。
-> Author 由 `scripts/ecommit.sh` 自动注入（等价于手动 export `GIT_AUTHOR_*`）；Committer 取 `git config user.name/email`（保持当前 Agent 身份）。
-> pre-commit hook 会同时强制校验 Author：绕过 ecommit、且未设 `GIT_AUTHOR_*` 的裸 `git commit` 会被拦截。
+> **双身份**：每个 commit 的 **Author = 仓库主人 Everloster**（固定，显示其 GitHub 头像），**Committer = 当前运行的 Agent**（自动识别，谁跑就填谁）。
+> `scripts/ecommit.sh` 自动完成两件事：注入 Author=Everloster；调用 `scripts/whoami-agent.sh` 识别当前 agent 身份（进程链判 CLI + 读其配置拿模型，如 `trae-openrouter-3o`/`codex-gpt-5.5`）设为 Committer。**换任何 CLI/模型都无需改配置。**
+> pre-commit hook 强制校验：Committer 邮箱须含 `noreply@`；Author 须为 Everloster（绕过 ecommit 且未设 `GIT_AUTHOR_*` 的裸 `git commit` 会被拦截）。
 
 ```bash
 git add -A
