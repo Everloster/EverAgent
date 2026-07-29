@@ -9,6 +9,7 @@
 |------|------|------|
 | 2026-07-29 | [炒菜逻辑：家常菜为什么比不过饭店香味——调料下锅时机全解](../web-surfing/reports/cooking-logic-timing-douyin.md) | web-surfing |
 | 2026-07-29 | [十年封神日剧 TOP10(2016–2025)—— SeedHub 对应资源索引](../web-surfing/reports/jdrama-top10-2016-2025-seedhub.md) | web-surfing |
+| 2026-07-29 | [为什么 FDE 在 AI 时代这么火？因为差距不在模型，在业务细节](../podcast-learning/reports/2026-07-29_bilibili-kedaibiao-lizheng_jove-fde.md) | podcast-learning |
 | 2026-07-29 | [Evoken 陈冕晚点访谈精读：一家 AI 应用公司如何在模型吞噬中求生](../ai-learning/reports/knowledge_reports/Evoken陈冕晚点访谈_AI应用生存策略_20260729.md) | ai-learning |
 | 2026-07-28 | [Kimi K3：一座 2.8 万亿参数的城市，是怎么让信息不堵车的？](../ai-learning/reports/knowledge_reports/KimiK3_信息流三方向_科普讲解_20260728.md) | ai-learning |
 | 2026-07-26 | [赵鼎新《儒法国家》理论框架：四种竞争、战争驱动与两千年韧性结构](../philosophy-learning/reports/concept_reports/赵鼎新_儒法国家_理论框架_20260721.md) | philosophy-learning |
@@ -31,7 +32,6 @@
 | 2026-07-15 | [无状态的鹦鹉，怎么学会了连续对话和自己用工具？—— Agent 请求全链路科普](../ai-learning/reports/knowledge_reports/Agent请求全链路_科普讲解_20260715.md) | ai-learning |
 | 2026-07-15 | [客户端→网关→Harness→LLM→工具 请求全链路深度解析](../ai-learning/reports/knowledge_reports/Agent_Harness请求全链路_深度解析_20260709.md) | ai-learning |
 | 2026-07-15 | [一个模型的一生：1M 长上下文，从出生到上岗都经历了什么？—— 长上下文科普](../ai-learning/reports/knowledge_reports/长上下文1M_模型的一生_科普讲解_20260715.md) | ai-learning |
-| 2026-07-14 | [涌进 Anthropic 的 N 个巨佬：原文存档 + 逐人核实与深度分析](../ai-learning/reports/knowledge_reports/涌进Anthropic的N个巨佬_核实与深度分析_20260714.md) | ai-learning |
 
 ## 🤖 AI Learning（93 篇）
 
@@ -240,10 +240,11 @@
 | 2026-03-26 | [Physiology of Growth Hormone Secretion during Sleep (1996) 精读](../biology-learning/reports/paper_analyses/P09_gh_sleep_physiology_1996.md) | — |
 | 2026-03-23 | [晚型人作息与力量训练深度研究](../biology-learning/reports/concept_reports/晚型人作息与力量训练_深度研究报告.md) | — |
 
-## 🎙️ Podcast Learning（8 篇）
+## 🎙️ Podcast Learning（9 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-07-29 | [为什么 FDE 在 AI 时代这么火？因为差距不在模型，在业务细节](../podcast-learning/reports/2026-07-29_bilibili-kedaibiao-lizheng_jove-fde.md) | — |
 | 2026-07-20 | [人到中年仨账户：现金流、肌肉、睡眠（面基 · 老钱单口）](../podcast-learning/reports/2026-07-13_xiaoyuzhou-mingjing-diandian_midlife-accounts.md) | — |
 | 2026-07-19 | [重估一切，文艺复兴——2026H1 AI行业观察（屠龙之术 · 庄明浩单口）](../podcast-learning/reports/2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review.md) | — |
 | 2026-07-18 | [读书：4种配速，取景框，人是滤器，冲刷神经网络 —— 明镜与李继刚关于读书方法论的深度对话](../podcast-learning/reports/2026-07-09_xiaoyuzhou-mingjing-diandian_lijigang.md) | — |
