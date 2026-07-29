@@ -7,6 +7,8 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-07-29 | [炒菜逻辑：家常菜为什么比不过饭店香味——调料下锅时机全解](../web-surfing/reports/cooking-logic-timing-douyin.md) | web-surfing |
+| 2026-07-29 | [十年封神日剧 TOP10(2016–2025)—— SeedHub 对应资源索引](../web-surfing/reports/jdrama-top10-2016-2025-seedhub.md) | web-surfing |
 | 2026-07-28 | [Kimi K3：一座 2.8 万亿参数的城市，是怎么让信息不堵车的？](../ai-learning/reports/knowledge_reports/KimiK3_信息流三方向_科普讲解_20260728.md) | ai-learning |
 | 2026-07-26 | [赵鼎新《儒法国家》理论框架：四种竞争、战争驱动与两千年韧性结构](../philosophy-learning/reports/concept_reports/赵鼎新_儒法国家_理论框架_20260721.md) | philosophy-learning |
 | 2026-07-21 | [程乐松一手文本精读：重返经验、断裂的居间性与「做中国哲学」的手筋](../philosophy-learning/reports/concept_reports/程乐松_方法论一手精读_重返经验与做中国哲学_20260720.md) | philosophy-learning |
@@ -30,8 +32,6 @@
 | 2026-07-14 | [🇰🇷 韩剧推荐 Top10（2024–2026 · 豆瓣评分）](../web-surfing/reports/kdrama-top10-2024-2026.md) | web-surfing |
 | 2026-07-14 | [涌进 Anthropic 的 N 个巨佬：原文存档 + 逐人核实与深度分析](../ai-learning/reports/knowledge_reports/涌进Anthropic的N个巨佬_核实与深度分析_20260714.md) | ai-learning |
 | 2026-07-10 | [自建科学上网节点：从抗审查协议到线路选型的系统工程](../cs-learning/reports/knowledge_reports/自建科学上网节点_抗审查协议与线路选型_20260710.md) | cs-learning |
-| 2026-07-07 | [Bitter Lesson 会杀死 Agent Harness 吗？——一场推演与网上观点交叉审阅](../ai-learning/reports/knowledge_reports/Bitter_Lesson_vs_Agent_Harness_推演与网上观点审阅_20260707.md) | ai-learning |
-| 2026-06-25 | [限时进食（TRE）与代谢健康：8/16 到底有没有用、对谁有用](../biology-learning/reports/concept_reports/限时进食TRE与代谢健康_20260625.md) | biology-learning |
 
 ## 🤖 AI Learning（92 篇）
 
@@ -252,9 +252,11 @@
 | 2026-06-20 | [三年行业吃肉榜/爆亏榜大合集（2023-2025）：谁在偷偷赚钱，谁在快速衰落](../podcast-learning/reports/2026-06-20_bilibili-cls-tongxue_hangye-bangdan.md) | — |
 | 2026-06-18 | [Vol.29 对话王小川：造医生，战豆包，与无尽的 AI 非共识](../podcast-learning/reports/2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan.md) | — |
 
-## 🏄 Web Surfing（1 篇）
+## 🏄 Web Surfing（3 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-07-29 | [炒菜逻辑：家常菜为什么比不过饭店香味——调料下锅时机全解](../web-surfing/reports/cooking-logic-timing-douyin.md) | — |
+| 2026-07-29 | [十年封神日剧 TOP10(2016–2025)—— SeedHub 对应资源索引](../web-surfing/reports/jdrama-top10-2016-2025-seedhub.md) | — |
 | 2026-07-14 | [🇰🇷 韩剧推荐 Top10（2024–2026 · 豆瓣评分）](../web-surfing/reports/kdrama-top10-2024-2026.md) | — |
 
