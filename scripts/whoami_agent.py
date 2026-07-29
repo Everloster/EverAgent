@@ -43,6 +43,7 @@ VENDOR_EMAIL = {
     "qwen-code":   "noreply@alibabacloud.com",
     "amp":         "noreply@sourcegraph.com",
     "kimi-cli":    "noreply@moonshot.ai",
+    "minimax-code": "noreply@minimaxi.com",
 }
 FALLBACK_EMAIL = "noreply@everloster.com"
 
@@ -69,6 +70,8 @@ CLI_RULES = [
     # 进程链判定优先级最低，嵌套场景下让 env 型 CLI 先匹配。
     # 注意命名：kimi = 桌面 App，kimi-cli = 命令行工具，二者身份须区分（2026-07-28 用户订正）。
     ("kimi-cli",    lambda: _has("KIMI_CLI", "KIMI_CODE_CLI") or _proc_has("kimi")),
+    # minimax-code（MiniMax Code 桌面 App，Electron）：进程链 comm=MiniMax Code Helper。
+    ("minimax-code", lambda: _has("MINIMAX_CODE") or _proc_has("MiniMax Code")),
 ]
 
 
@@ -110,6 +113,17 @@ def _toml_get(path: Path, key: str) -> str | None:
     return None
 
 
+def _yaml_get(path: Path, key: str) -> str | None:
+    """极简 yaml 取顶层 key（`key: value` 形式，不引三方库）。"""
+    if not path.is_file():
+        return None
+    for line in path.read_text(encoding="utf-8", errors="ignore").splitlines():
+        m = re.match(rf'^\s*{re.escape(key)}\s*:\s*"?([^"#\n]+)"?', line)
+        if m:
+            return m.group(1).strip()
+    return None
+
+
 def detect_model(cli: str) -> str:
     """按 CLI 读其配置拿模型名。"""
     if cli == "trae":
@@ -131,6 +145,11 @@ def detect_model(cli: str) -> str:
         # ~/.kimi-code/config.toml 的 default_model 形如 "kimi-code/k3"，取 / 后段
         raw = _toml_get(HOME / ".kimi-code" / "config.toml", "default_model") or ""
         return raw.split("/")[-1] if raw else os.environ.get("KIMI_MODEL", "unknown")
+    if cli == "minimax-code":
+        # ~/.minimax/config.yaml 的 defaultModel 形如 "minimax/MiniMax-M3"，取 / 后段并去 MiniMax- 前缀
+        raw = _yaml_get(HOME / ".minimax" / "config.yaml", "defaultModel") or ""
+        m = re.sub(r"^minimax-", "", raw.split("/")[-1], flags=re.I)
+        return m or os.environ.get("MINIMAX_MODEL", "unknown")
     # 通用兜底
     return os.environ.get("AGENT_MODEL", "unknown")
 
@@ -150,7 +169,7 @@ def detect() -> tuple[str, str]:
             continue
 
     if not cli:
-        # 完全识别不出：进程名 + 兜底邮箱（保证提交不中断）
+        # 完全识别不出：进程名 + 兜底邮箱（ecommit 会拦 *-unknown，绝不静默提交）
         base = "agent"
         if os.name != "nt":
             try:
@@ -160,6 +179,7 @@ def detect() -> tuple[str, str]:
                     capture_output=True, text=True, timeout=3).stdout.strip()) or "agent"
             except Exception:
                 pass
+        base = re.sub(r"[^A-Za-z0-9._-]+", "-", base).strip("-").lower()
         return f"{base}-unknown", FALLBACK_EMAIL
 
     model = detect_model(cli)
