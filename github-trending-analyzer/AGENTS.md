@@ -7,11 +7,17 @@
 
 ## §0 项目使命（三件事）
 
+> **⚠️ 先分流：丢链接 ≠ 出报告（2026-07-29 确立）。**
+> 用户只丢一个 repo 链接、没说要干嘛 → **默认只做「轻量介绍」**：`gh` 抓元数据 + README，口头讲清楚它是什么/技术栈/亮点，**不落文件、不跑 4 轮研究、不写报告**。
+> **只有用户明确说要"做任务 / 出报告 / 深挖 / 研究 / 深度分析 owner/repo"时，才启动事A（真 repo 研究）。** 拿不准是哪种 → 先做轻量介绍，并问一句"要不要出正式研究报告？"。
+
 | # | 事 | 触发 | 产出 | 对应 skill |
 |---|----|------|------|-----------|
-| A | **单 repo 深度研究** | 对话贴 repo 链接 / "深挖 owner/repo" | `reports/research_{owner}_{repo}.md` | `skills/repo-research/` |
+| A | **单 repo 深度研究** | **明确要求**"出报告/深挖/研究/深度分析 owner/repo"（非仅丢链接） | `reports/research_{owner}_{repo}.md` | `skills/repo-research/` |
 | B | **trending 汇总** | "出日/周/月 trending 报告" | `reports/all-{period}-summary-{date}.md` + 榜上各 repo 报告 | `skills/trending-analyzer/` |
 | C | **迭代优化研究技能本身** | 每次做完 A/B 后 / "优化研究技能" | 对 `skills/repo-research/SKILL.md`（必要时脚本）的改进 | 元活动，改的就是 A 的 skill |
+
+> **轻量介绍**（丢链接的默认档）不属于三件事、无 skill、无产出文件——就是 `gh repo view` + 读 README 后口头讲清。它是 D 类的"快速响应档"，事A 是"深度档"。
 
 **事A 就是深度研究方法论本身**（4 轮研究 + 7 章中文报告，全部写在 `skills/repo-research/SKILL.md`）。
 **事B 建立在事A 之上**：抓榜单 → 对榜上每个 repo 做一次事A → 汇总成趋势报告。
