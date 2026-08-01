@@ -294,8 +294,8 @@ N.O.M.A.D. 与 EverAgent 没有产品集成关系。本报告保存在 EverAgent
 3. 新接入的 4TB 外置 SSD 保留原 NTFS 数据，在其上创建最大 2.5TB 的动态 ext4 VHDX 专供 N.O.M.A.D.，兼顾 Linux 数据库语义与可迁移性。
 4. Admin、MySQL、Redis、Qdrant、Kiwix 与 Ollama 安全桥均固定镜像 digest 并由精简 Compose 管理；未启用 updater、disk-collector、Dozzle 或容器版 Ollama。
 5. Admin、Kiwix、Qdrant 均只绑定 loopback；宿主 Ollama 通过仅绑定 N.O.M.A.D. 专用 Docker 网关的安全桥接接入，不暴露 LAN/Tailscale。
-6. 已实测 `nomic-embed-text:v1.5` 13/13 层和 `qwen3.5:9b` 33/33 层卸载到 RTX 5090。
-7. 已加载项目稳定版自带的 4.5MB mini Wikipedia，Kiwix 可离线浏览；Wikipedia 生成 1,364 个 chunks，内置文档另有 66 个，Qdrant 合计 1,430 points，RAG 能基于离线条目回答问题。
+6. 烟雾测试中，`nomic-embed-text:v1.5` 13/13 层和既有 `qwen3.5:9b` 33/33 层均成功卸载到 RTX 5090；这只证明链路可用，不代表已选择正式聊天模型。`qwen3.5:9b/27b` 是部署前已有资产，N.O.M.A.D. 当前没有 `chat.lastModel`。
+7. 内容烟雾测试只加载项目稳定版自带的 4.5MB mini Wikipedia：Kiwix 可离线浏览，Wikipedia 生成 1,364 个 chunks，内置文档另有 66 个，Qdrant 合计 1,430 points。正式下载哪些语言、百科、课程、地图和技术资料尚未由用户决定。
 8. 已完成容器停止、VHDX 卸载、重新附加与服务恢复演练；Qdrant points、ZIM hash 和模型配置均保持。
 
 MBP Apple Silicon 路线因此不再执行。它仍然“理论上可跑”，但要承担 ARM 镜像、社区 fork 漂移和两套推理/容器运行时的维护成本，没有必要。[评]
@@ -316,7 +316,7 @@ Project N.O.M.A.D. 已在 Razer WSL2 上完成最小可用部署，其价值点�
 - 不干扰 Razer 现有 EverClaw、Ansible、宿主 Ollama、LM Studio 和 Windows 端口；
 - 停止 PoC 后能完整回滚。
 
-当前已经通过“控制面健康、RTX 5090 推理、mini Wikipedia 离线浏览、RAG 检索、外置盘恢复”五项门禁。下一阶段应先观察 48 小时稳定性，再逐步扩充 ZIM、课程和地图，不应直接下载数百 GB 全量内容。
+当前已经通过“控制面健康、RTX 5090 推理、mini Wikipedia 离线浏览、RAG 检索、外置盘恢复”五项技术门禁，但**模型选型、RAG 去留与正式内容方案仍待用户拍板**。确认之前不应继续下载模型、ZIM、课程或地图；确认后再观察 48 小时稳定性并逐步扩容。
 
 ---
 *报告生成时间: 2026-08-01*
