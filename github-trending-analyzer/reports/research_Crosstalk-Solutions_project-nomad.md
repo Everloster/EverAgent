@@ -294,9 +294,10 @@ N.O.M.A.D. 与 EverAgent 没有产品集成关系。本报告保存在 EverAgent
 3. 新接入的 4TB 外置 SSD 保留原 NTFS 数据，在其上创建最大 2.5TB 的动态 ext4 VHDX 专供 N.O.M.A.D.，兼顾 Linux 数据库语义与可迁移性。
 4. Admin、MySQL、Redis、Qdrant、Kiwix 与 Ollama 安全桥均固定镜像 digest 并由精简 Compose 管理；未启用 updater、disk-collector、Dozzle 或容器版 Ollama。
 5. Admin、Kiwix、Qdrant 均只绑定 loopback；宿主 Ollama 通过仅绑定 N.O.M.A.D. 专用 Docker 网关的安全桥接接入，不暴露 LAN/Tailscale。
-6. 烟雾测试中，`nomic-embed-text:v1.5` 13/13 层和既有 `qwen3.5:9b` 33/33 层均成功卸载到 RTX 5090；这只证明链路可用，不代表已选择正式聊天模型。`qwen3.5:9b/27b` 是部署前已有资产，N.O.M.A.D. 当前没有 `chat.lastModel`。
-7. 内容烟雾测试只加载项目稳定版自带的 4.5MB mini Wikipedia：Kiwix 可离线浏览，Wikipedia 生成 1,364 个 chunks，内置文档另有 66 个，Qdrant 合计 1,430 points。正式下载哪些语言、百科、课程、地图和技术资料尚未由用户决定。
-8. 已完成容器停止、VHDX 卸载、重新附加与服务恢复演练；Qdrant points、ZIM hash 和模型配置均保持。
+6. 烟雾测试中，`nomic-embed-text:v1.5` 13/13 层和既有 `qwen3.5:9b` 33/33 层均成功卸载到 RTX 5090；这证明 Ollama bridge 可用。用户随后决定保留 9B 作为 Qwen3.6 尚无 Small 系列时的轻量模型，并删除 Ollama `qwen3.5:27b`；N.O.M.A.D. 当前仍没有 `chat.lastModel`。
+7. 正式内容已确定为中文 `wikipedia_zh_all_maxi_2026-05.zim`（28,090,766,209 bytes）与英文 `wikipedia_en_all_maxi_2026-02.zim`（123,980,647,016 bytes），正由 N.O.M.A.D. 后台下载到外置 ext4；`rag.defaultIngestPolicy` 已设为 `Manual`，下载完成不自动触发约 152GB ZIM 的全量向量化。4.5MB mini Wikipedia 仍只是烟雾资产。
+8. Windows 原生 Unsloth Studio 已完成安装和空载验证：Unsloth `2026.7.6`、PyTorch `2.10.0+cu130`、RTX 5090 CUDA 与预编译 `llama.cpp b10194` 均正常，Studio 只监听 `127.0.0.1:8888`。主力模型已选为 `Qwen3.6-35B-A3B-MTP` 的 `UD-Q3_K_XL` + `mmproj-F16`，正在后台下载；下载完成后仍需单独设计 Windows Studio 到 WSL N.O.M.A.D. 的本机路由，不能把服务暴露到 `0.0.0.0`。
+9. 已完成容器停止、VHDX 卸载、重新附加与服务恢复演练；Qdrant points、ZIM hash 和模型配置均保持。
 
 MBP Apple Silicon 路线因此不再执行。它仍然“理论上可跑”，但要承担 ARM 镜像、社区 fork 漂移和两套推理/容器运行时的维护成本，没有必要。[评]
 
@@ -306,17 +307,17 @@ Project N.O.M.A.D. 已在 Razer WSL2 上完成最小可用部署，其价值点�
 
 > **独立的离线知识与教育服务器：先把百科、书籍、课程、地图真正下载到本地，再用本地 AI 做增强检索。**
 
-首轮 PoC 的成功标准不是“页面能打开”，而是：
+首轮部署的持续验收标准不是“页面能打开”，而是：
 
-- 原生 Metal 推理确实生效；
-- 小型 ZIM、课程和地图样本可稳定下载、离线浏览和更新；
+- Windows 原生 CUDA 推理确实生效，并保持 Studio 仅 loopback 可达；
+- 正式中英文 Wikipedia ZIM 可稳定下载、离线浏览和更新；
 - 本地 AI 能检索已下载内容；
 - 来源能回到原文；
 - 删除/重建不产生幽灵向量；
 - 不干扰 Razer 现有 EverClaw、Ansible、宿主 Ollama、LM Studio 和 Windows 端口；
 - 停止 PoC 后能完整回滚。
 
-当前已经通过“控制面健康、RTX 5090 推理、mini Wikipedia 离线浏览、RAG 检索、外置盘恢复”五项技术门禁，但**模型选型、RAG 去留与正式内容方案仍待用户拍板**。确认之前不应继续下载模型、ZIM、课程或地图；确认后再观察 48 小时稳定性并逐步扩容。
+当前已经通过“控制面健康、RTX 5090 推理、mini Wikipedia 离线浏览、RAG 检索、外置盘恢复、Windows Unsloth 空载启动”六项技术门禁；正式 Wikipedia 与主力模型也已选定并进入后台下载。尚未完成的是：Qwen3.6 MTP 的真实加载/速度/显存验收、Windows Studio 到 N.O.M.A.D. 的安全接入，以及是否让正式 Wikipedia 参与 RAG。其他课程、地图和内容包仍需逐项确认。
 
 ---
 *报告生成时间: 2026-08-01*
