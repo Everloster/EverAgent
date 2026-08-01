@@ -121,6 +121,14 @@ python3 scripts/github_api.py <owner> <repo> file src/main.py
 > ```
 > 数字对得上就写"与代码一致"，对不上就指出差距——这类就地核验比复述 README 有价值得多。
 
+> 💡 **部署兼容性要核验已发布制品（事C 沉淀）**：Dockerfile、CI 或源码里出现 `arm64` / `multi-arch` 分支，**不等于 registry 里的正式镜像已经发布该架构**。只要报告讨论“能否部署到某 OS/CPU”，必须同时检查官方支持声明、安装脚本门禁和实际 image manifest；三者冲突时，以发布制品与维护者当前声明为准，并明确区分“源码可构建”“社区验证可跑”“官方支持”。
+> ```bash
+> # Docker Hub / GHCR 镜像均可先用 buildx 查看发布平台
+> docker buildx imagetools inspect <registry>/<owner>/<image>:<tag>
+> # 重点确认输出中是否真的存在 linux/amd64、linux/arm64 等 Platform
+> ```
+> 若本机没有 Docker daemon，也可直接走 registry HTTP API 读取 manifest/index；不要因为 Dockerfile 有 `ARG TARGETARCH` 就替官方宣布多架构支持。
+
 ### Round 3 — 竞品核验（强制，决定"竞品对比"章可信度）
 
 > ⚠️ 禁止凭记忆填竞品 stars。所有竞品数值必须现查现填。
