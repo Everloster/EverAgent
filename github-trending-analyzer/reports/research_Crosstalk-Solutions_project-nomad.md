@@ -283,26 +283,26 @@ N.O.M.A.D. 与 EverAgent 没有产品集成关系。本报告保存在 EverAgent
 - **核心贡献集中**：前两名贡献者占 74.6586%。
 - **社区 macOS fork 漂移**：功能丰富但独立版本、单维护者、安装面和后台服务较大。
 
-### 对 MBP 部署的判断
+### 对本地设备部署的最终判断
 
-**硬件适合，官方软件路径不适合直接照抄。**
+前期评估聚焦高性能 MBP，但实际部署决策已经改为 **Razer Blade 16 + WSL2 Ubuntu x86-64**。[实测]
 
-推荐的首轮方案不是执行任何 `curl | bash`，而是做一个**可回滚的最小 PoC**：
+原因不是 Razer 绝对算力更强，而是软硬件组合更贴合上游正式发布面：
 
-1. 固定官方 `v1.33.0` 源码与 commit。
-2. 复用已安装的 Docker Desktop，不再引入第二套 OrbStack。
-3. 尝试从官方源码本地构建 `linux/arm64` admin image；构建不过才评估固定 commit 的社区镜像。
-4. 只启动 Admin + MySQL + Redis + Dozzle，暂不启用 updater、disk-collector 和 Supply Depot。
-5. 宿主端口改为 `9090`，避开已有的 `127.0.0.1:8080` 服务。
-6. 模型使用 macOS 原生 Ollama/Metal，经 `host.docker.internal:11434` 接入；不在 Docker 里再跑一套 Ollama。
-7. 第一批只拉 `nomic-embed-text:v1.5`，复用一个现有聊天模型，不批量下载模型。
-8. 先下载小型 Wikipedia/ZIM、少量课程或地图样本，验证离线浏览、内容管理、更新和 RAG；通过后再扩展到完整内容库。
-9. 所有入口先限本机；通过后再讨论 LAN/Tailscale 访问和备份。
-10. 验证通过后，才决定继续维护最小官方适配层，还是转向经审计的 macOS fork。
+1. Razer WSL2 是 Ubuntu 22.04 x86-64，官方 `v1.33.0` amd64 镜像可直接运行，无需维护 ARM64 fork。
+2. WSL 已有 systemd、原生 Docker Engine、48GB 内存配额和 RTX 5090 Laptop 24GB CUDA 透传。
+3. 新接入的 4TB 外置 SSD 保留原 NTFS 数据，在其上创建最大 2.5TB 的动态 ext4 VHDX 专供 N.O.M.A.D.，兼顾 Linux 数据库语义与可迁移性。
+4. Admin、MySQL、Redis、Qdrant、Kiwix 与 Ollama 安全桥均固定镜像 digest 并由精简 Compose 管理；未启用 updater、disk-collector、Dozzle 或容器版 Ollama。
+5. Admin、Kiwix、Qdrant 均只绑定 loopback；宿主 Ollama 通过仅绑定 N.O.M.A.D. 专用 Docker 网关的安全桥接接入，不暴露 LAN/Tailscale。
+6. 已实测 `nomic-embed-text:v1.5` 13/13 层和 `qwen3.5:9b` 33/33 层卸载到 RTX 5090。
+7. 已加载项目稳定版自带的 4.5MB mini Wikipedia，Kiwix 可离线浏览；Wikipedia 生成 1,364 个 chunks，内置文档另有 66 个，Qdrant 合计 1,430 points，RAG 能基于离线条目回答问题。
+8. 已完成容器停止、VHDX 卸载、重新附加与服务恢复演练；Qdrant points、ZIM hash 和模型配置均保持。
+
+MBP Apple Silicon 路线因此不再执行。它仍然“理论上可跑”，但要承担 ARM 镜像、社区 fork 漂移和两套推理/容器运行时的维护成本，没有必要。[评]
 
 ### 最终结论
 
-Project N.O.M.A.D. 值得在高性能 MBP 上试，其价值点应定位为：
+Project N.O.M.A.D. 已在 Razer WSL2 上完成最小可用部署，其价值点应定位为：
 
 > **独立的离线知识与教育服务器：先把百科、书籍、课程、地图真正下载到本地，再用本地 AI 做增强检索。**
 
@@ -313,10 +313,10 @@ Project N.O.M.A.D. 值得在高性能 MBP 上试，其价值点应定位为：
 - 本地 AI 能检索已下载内容；
 - 来源能回到原文；
 - 删除/重建不产生幽灵向量；
-- 不干扰 MBP 现有 Whisper、OpenClaw、Docker/Ollama 和端口；
+- 不干扰 Razer 现有 EverClaw、Ansible、宿主 Ollama、LM Studio 和 Windows 端口；
 - 停止 PoC 后能完整回滚。
 
-满足这些门禁后，它才值得升级为 MBP 的长期常驻服务。
+当前已经通过“控制面健康、RTX 5090 推理、mini Wikipedia 离线浏览、RAG 检索、外置盘恢复”五项门禁。下一阶段应先观察 48 小时稳定性，再逐步扩充 ZIM、课程和地图，不应直接下载数百 GB 全量内容。
 
 ---
 *报告生成时间: 2026-08-01*
