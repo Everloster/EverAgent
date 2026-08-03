@@ -44,6 +44,7 @@ VENDOR_EMAIL = {
     "amp":         "noreply@sourcegraph.com",
     "kimi-cli":    "noreply@moonshot.ai",
     "minimax-code": "noreply@minimaxi.com",
+    "qoderclicn":  "noreply@qoder.com.cn",
 }
 FALLBACK_EMAIL = "noreply@everloster.com"
 
@@ -66,6 +67,8 @@ CLI_RULES = [
     ("aider",       lambda: _has("AIDER_API_KEY")),
     ("claude-code", lambda: _has("CLAUDECODE", "CLAUDE_CODE")),
     ("goose",       lambda: _has("GOOSE_PROVIDER")),
+    # qoderclicn（QoderCN CLI，CN 渠道）：专有环境变量 QODERCN_CLI，进程链 comm=qoderclicn 兜底。
+    ("qoderclicn",  lambda: _has("QODERCN_CLI") or _proc_has("qoderclicn")),
     # kimi-cli（Kimi Code CLI）：无专有环境变量，靠进程链判（comm=kimi）。放最后——
     # 进程链判定优先级最低，嵌套场景下让 env 型 CLI 先匹配。
     # 注意命名：kimi = 桌面 App，kimi-cli = 命令行工具，二者身份须区分（2026-07-28 用户订正）。
@@ -150,6 +153,15 @@ def detect_model(cli: str) -> str:
         raw = _yaml_get(HOME / ".minimax" / "config.yaml", "defaultModel") or ""
         m = re.sub(r"^minimax-", "", raw.split("/")[-1], flags=re.I)
         return m or os.environ.get("MINIMAX_MODEL", "unknown")
+    if cli == "qoderclicn":
+        # ~/.qoder-cn/settings.json 的 model.name 形如 "qmodel_38max"（厂商内部模型键，非显示名）
+        try:
+            import json
+            cfg = json.loads((HOME / ".qoder-cn" / "settings.json").read_text(encoding="utf-8"))
+            name = cfg.get("model", {}).get("name") or ""
+        except Exception:
+            name = ""
+        return name or os.environ.get("QODERCN_MODEL", "unknown")
     # 通用兜底
     return os.environ.get("AGENT_MODEL", "unknown")
 
