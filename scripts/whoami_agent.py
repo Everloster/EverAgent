@@ -78,10 +78,88 @@ CLI_RULES = [
 ]
 
 
+_WIN_SCAN: tuple[list[str], list[str], bool] | None = None
+
+
+def _win_scan() -> tuple[list[str], list[str], bool]:
+    """Windows 进程扫描：ctypes Toolhelp32 快照（纯 stdlib、毫秒级、无 PowerShell 冷启动抖动）。
+    返回 (祖先链小写, 全快照进程名原始大小写, 祖先链是否正常走到根)。
+    实测坑（2026-08-09 ecommit 场景）：MSYS2 的 bash 脚本 exec 会弄死中间进程，
+    祖先链在两个 bash.exe 后即断（父 PID 已不在快照），此时须回落全快照匹配。"""
+    global _WIN_SCAN
+    if _WIN_SCAN is not None:
+        return _WIN_SCAN
+    ancestors: list[str] = []
+    all_raw: list[str] = []
+    reached_root = False
+    try:
+        import ctypes
+
+        TH32CS_SNAPPROCESS = 0x00000002
+        INVALID_HANDLE = ctypes.c_void_p(-1).value
+
+        class PROCESSENTRY32W(ctypes.Structure):
+            _fields_ = [
+                ("dwSize", ctypes.c_ulong),
+                ("cntUsage", ctypes.c_ulong),
+                ("th32ProcessID", ctypes.c_ulong),
+                ("th32DefaultHeapID", ctypes.c_size_t),
+                ("th32ModuleID", ctypes.c_ulong),
+                ("cntThreads", ctypes.c_ulong),
+                ("th32ParentProcessID", ctypes.c_ulong),
+                ("pcPriClassBase", ctypes.c_long),
+                ("dwFlags", ctypes.c_ulong),
+                ("szExeFile", ctypes.c_wchar * 260),
+            ]
+
+        k32 = ctypes.windll.kernel32
+        snap = k32.CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0)
+        if snap == INVALID_HANDLE:
+            raise OSError("CreateToolhelp32Snapshot failed")
+        try:
+            entry = PROCESSENTRY32W()
+            entry.dwSize = ctypes.sizeof(PROCESSENTRY32W)
+            procs: dict[int, tuple[int, str]] = {}
+            ok = k32.Process32FirstW(snap, ctypes.byref(entry))
+            while ok:
+                procs[entry.th32ProcessID] = (entry.th32ParentProcessID, entry.szExeFile)
+                ok = k32.Process32NextW(snap, ctypes.byref(entry))
+        finally:
+            k32.CloseHandle(snap)
+        all_raw = [exe for _, exe in procs.values()]
+        pid = os.getpid()
+        for _ in range(16):
+            info = procs.get(pid)
+            if not info:
+                break  # 父进程已死（MSYS2 exec 截断）→ 链断
+            ppid, exe = info
+            ancestors.append(exe.lower())
+            if ppid <= 0 or ppid == pid or exe.lower() in ("explorer.exe", "services.exe", "sshd.exe", "system"):
+                reached_root = True
+                break
+            pid = ppid
+    except Exception as e:
+        if os.environ.get("WHOAMI_DEBUG"):
+            print(f"[whoami] _win_scan 异常: {e!r}", file=sys.stderr)
+    _WIN_SCAN = (ancestors, all_raw, reached_root)
+    return _WIN_SCAN
+
+
 def _proc_has(*names) -> bool:
-    """进程链兜底（仅类 Unix 有 ps；Windows 上直接返回 False，靠 env 判定）。"""
+    """进程链兜底：类 Unix 用 ps 向上爬；Windows 用 Toolhelp32 快照（2026-08-09 补）。
+    祖先链被 MSYS2 exec 截断时回落全快照精确匹配 `{name}.exe`（大小写敏感——
+    kimi.exe 是 CLI、Kimi.exe 是桌面 App，二者必须区分）。局限：多个 agent CLI
+    并存时全快照匹配可能误中，优先靠各 CLI 专有 env / AGENT_ID 显式指定。"""
     if os.name == "nt":
-        return False
+        ancestors, all_raw, reached_root = _win_scan()
+        low = [n.lower() for n in names]
+        if any(n in a for a in ancestors for n in low):
+            return True
+        if reached_root:
+            return False
+        if os.environ.get("WHOAMI_DEBUG"):
+            print(f"[whoami] 祖先链截断 {ancestors}，回落全快照匹配 {names}", file=sys.stderr)
+        return any(raw == f"{n}.exe" for raw in all_raw for n in names)
     try:
         import subprocess
         pid = os.getpid()
