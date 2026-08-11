@@ -67,11 +67,9 @@
 
 | 项目 | 路径 | 内容 |
 |------|------|------|
-| 基础设施与设备 | `infra/`（**私有仓**） | VPS/代理网络 + 各终端设备的安装、修复、排障；一设备一档 |
+| 基础设施与设备 | **私有仓 `EverAgent-infra`** | 自建基础设施 + 各终端设备的安装、修复、排障；一设备一档 |
 
-> 🔒 **F 类内容已迁出本公开仓**：`infra/` 与 VPS 管理档案 含 AWS 账号/IP/SSH/Tailscale 等敏感信息，2026-07-27 拆至独立**私有仓 `EverAgent-infra`**（本地与本公开仓并排 clone 即可一体工作）。以下 F 类说明保留为路由指引；实际档案在私有仓，本公开仓不含。
-
-**工作流**：我说"电脑/设备 X 有问题 / 看看这台机器" → 判型（VPS/代理网络 → 私有仓 VPS 管理档案；终端设备 → 私有仓 `infra/devices/{hostname}.md`）→ 实测修复 → 命令级可复现沉淀到对应档案（详见私有仓 `infra/AGENTS.md`）。
+> 🔒 **F 类整体在独立私有仓 `EverAgent-infra`**：含敏感面（账号/IP/SSH/网络拓扑等），2026-07-27 起不在本公开仓。本公开仓仅保留路由指引：**F 类意图 → 转私有仓，一切细节见 `../EverAgent-infra/AGENTS.md`**。本地两仓并排 clone 即可一体工作。
 
 > 每个项目自包含：读该项目 `AGENTS.md` + 根 `METHODOLOGY.md` 即可独立工作。
 
@@ -89,7 +87,7 @@
   ├─ 发来播客/视频链接            → C 类 podcast-learning
   ├─ 发来 repo 链接 / trending    → D 类 github-trending-analyzer
   ├─ "帮我上 X 网站/抓一下 Y/整理清单" → E 类 web-surfing（opencli 驱动）
-  ├─ "电脑/设备 X 有问题 / 看看这台机器" → F 类 infra（🔒 私有仓 EverAgent-infra：VPS/代理网络 → VPS 管理档案；终端设备 → infra/devices/）
+  ├─ "电脑/设备 X 有问题 / 看看这台机器" → F 类（🔒 私有仓 EverAgent-infra，一切细节见其 AGENTS.md）
   └─ A–F 都不匹配（杂事/工具/一次性调研/流程） → 直接在 EverAgent 根目录干活
 ```
 
@@ -152,7 +150,7 @@ EverAgent/
 ## §4 全局规则
 
 - **交流语言**：整个项目过程与用户对话一律用**中文**（含解释、追问、报告正文、commit 描述）。代码、命令、专有名词、原文引用保持原样。
-- **搜索/查资料**：[docs/SEARCH.md](./docs/SEARCH.md) — 从最省钱有效档位起爬（本地 → `llm` Gemini websearch → WebSearch/exa → firecrawl MCP → opencli；各设备的实际搜索能力见私有仓 `EverAgent-infra` 的 `infra/devices/` 搜索栈）。
+- **搜索/查资料**：[docs/SEARCH.md](./docs/SEARCH.md) — 从最省钱有效档位起爬（本地 → `llm` Gemini websearch → WebSearch/exa → firecrawl MCP → opencli；各设备的实际搜索能力见私有仓 `EverAgent-infra`）。
 - **安全与防幻觉**：[docs/PROTOCOL_COMMON.md](./docs/PROTOCOL_COMMON.md) §A — 未读内容禁止推测；数值必须有来源；不编造。
 - **提交规范**：[docs/PROTOCOL_COMMON.md](./docs/PROTOCOL_COMMON.md) §B/§C — commit 格式、push flow（`GIT_NO_OPTIONAL_LOCKS=1`）。
 - **git 身份**：提交一律走 `scripts/ecommit.sh`（自动注入 Author=Everloster 双身份）；pre-commit hook 强制校验 Committer 与 Author，裸 `git commit` 未设 `GIT_AUTHOR_*` 会被拦截。**识别不出 agent 身份（whoami 返回 `*-unknown`）一律禁止提交**——ecommit 硬失败 + hook 拦截，绝不静默兜底；先修 `scripts/whoami_agent.py` 覆盖当前 CLI，应急与用户确认身份后显式传 `AGENT_ID/AGENT_EMAIL`（2026-07-28 确立）。
@@ -163,17 +161,11 @@ EverAgent/
 
 ---
 
-## §4.5 基础设施与设备：自建 VPS + F 类 infra/（🔒 私有仓）
+## §4.5 基础设施与设备（F 类 · 🔒 私有仓）
 
-本工作台管理**一台 AWS Lightsail VPS**（东京 / Ubuntu 24.04），用途：自建代理节点（VLESS+Reality，官方 Xray-core + nginx 订阅链接，供科学访问 AI 服务）+ 备用。终端设备维护为 **F 类子项目 `infra/`**。
+本工作台管理的自建基础设施与各终端设备维护，属 **F 类**，已整体隔离到独立私有仓 **`EverAgent-infra`**——含账号、IP、SSH、网络拓扑、代理架构等敏感面，**一律不在本公开仓**。
 
-> 🔒 **敏感面隔离（2026-07-27）**：VPS 管理档案 与 `infra/` 含 AWS 账号、公网/内网 IP、SSH 接入、Tailscale 网段、代理架构等，已整体迁至**独立私有仓 `EverAgent-infra`**，不在本公开仓。下列指针指向该私有仓；本地把两仓并排 clone 即可按 F 类协议一体工作。
-
-- **设备维护（F 类）**：协议 `infra/AGENTS.md`（私有仓）；设备档案 `infra/devices/{hostname}.md`。设备出问题先读对应档案再动手。
-- **VPS 档案**（私有仓） — 实例规格、静态 IP、SSH 方式、Xray-core 节点（443 经 nginx SNI 分流）、防火墙端口、订阅链接服务、规则维护、域名管理、Tailscale 节点与 DERP 中继、运维待办、设备联动摘要。跨设备接手先读它。
-- **配置模板**：`infra/vps-config/clash-config.template.yaml`（私有仓） — 去密钥的 Clash 配置模板（占位符 + 开源规则集），改规则从这里改再同步到服务端。
-- **敏感信息不入库**：SSH 私钥、节点 UUID/Reality 密钥、**订阅链接**等只存个人密码库，连私有仓也不放；档案与模板仅记录非敏感信息。订阅链接等同密码，泄露即重新生成。
-- **成本铁律**：按量付费（非免费套餐），勿跑 BT/DHT 等大流量任务；建议设 AWS Budget 告警。不用时记得 Terminate + 释放静态 IP 止血。
+> **路由指引（本公开仓只保留这一句）**：F 类意图（设备/网络/基础设施出问题）→ 转私有仓 `../EverAgent-infra/`，协议、设备档案、基础设施管理、配置模板、敏感信息处置铁律**全部见其 `AGENTS.md`**。本地两仓并排 clone 即可一体工作。
 
 ---
 
