@@ -205,9 +205,58 @@ def _yaml_get(path: Path, key: str) -> str | None:
     return None
 
 
+def _trae_session_model() -> str | None:
+    """从当前 TRAE thread 的运行日志读取真实会话模型。
+
+    `~/.trae/traecli.toml` 记录的是静态/下次启动配置，模型在会话内切换后可能仍是旧值。
+    TRAE 运行日志则按 thread_id 记录每次请求的 config_name，是当前会话事实源。
+    """
+    thread_id = (
+        os.environ.get("TRAE_THREAD_ID")
+        or os.environ.get("TRAECLI_THREAD_ID")
+        or os.environ.get("CODEX_THREAD_ID")
+    )
+    if not thread_id:
+        return None
+
+    log_dir = HOME / ".trae" / "cli" / "log"
+    try:
+        logs = sorted(
+            log_dir.glob("traecli*.log"),
+            key=lambda path: path.stat().st_mtime,
+            reverse=True,
+        )
+    except OSError:
+        return None
+
+    for log_path in logs:
+        try:
+            with log_path.open("rb") as handle:
+                handle.seek(0, os.SEEK_END)
+                size = handle.tell()
+                handle.seek(max(0, size - 8 * 1024 * 1024))
+                text = handle.read().decode("utf-8", errors="ignore")
+        except OSError:
+            continue
+
+        for line in reversed(text.splitlines()):
+            if f"thread_id={thread_id}" not in line:
+                continue
+            match = re.search(r"\bconfig_name=([^\s]+)", line)
+            if match:
+                return match.group(1)
+            match = re.search(r"server reported model ([^\s]+)", line)
+            if match:
+                return match.group(1)
+    return None
+
+
 def detect_model(cli: str) -> str:
     """按 CLI 读其配置拿模型名。"""
     if cli == "trae":
+        session_model = _trae_session_model()
+        if session_model:
+            return session_model
         t = HOME / ".trae" / "traecli.toml"
         prov = _toml_get(t, "model_provider") or ""
         model = _toml_get(t, "model") or ""
