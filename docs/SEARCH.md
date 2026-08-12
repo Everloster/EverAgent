@@ -2,7 +2,8 @@
 
 > 全局搜索/查资料方法。查东西时**从最省钱有效的档位开始，不够再往上爬**，而不是一上来就动用重工具。
 > 被根 [AGENTS.md](../AGENTS.md) §4 引用；任何领域、任何任务都适用。
-> 2026-07-26 全面修订：按本机实测重排（mcporter 盘点 + 逐档验证），新增 exa 档与抓取 fallback 链。
+> 2026-07-26 全面修订：按 JabeMBP 实测重排（mcporter 盘点 + 逐档验证），新增 exa 档与抓取 fallback 链。
+> 2026-08-12 订正：本文只定义「能力阶梯与用法」，不再把某台设备的已安装状态写成全局事实；实际可用性以私有仓对应设备档案为准。
 
 ---
 
@@ -25,8 +26,8 @@
 ### 档位 0 · 本地优先（零成本）
 先问：这真的需要联网吗？代码/文件里的事用 Grep/Glob/Read。
 
-### 档位 1 · llm + Gemini websearch（快事实首选，已装好）
-本机已装 `llm` 0.31 + `llm-gemini` 0.32，Key 已配。**轻量、带 Google 实时接地、给结论快**。
+### 档位 1 · llm + Gemini websearch（快事实首选）
+设备已配置 `llm` + `llm-gemini` 与个人 API Key 时，这一档**轻量、带 Google 实时接地、给结论快**。执行前先查对应设备档案，不得因本文有示例命令就假定本机已配好凭据。
 
 ```bash
 # 联网搜索 + 事实问答（google_search grounding）
@@ -43,7 +44,7 @@ llm -m gemini-2.5-pro -o google_search 1 -o url_context 1 "你的问题"
 
 ### 档位 2 · 搜索引擎层（拿列表 / 拿原文）
 - **WebSearch**（Kimi 内置）：关键词式搜索，拿标题+URL+摘要列表，适合"有哪些来源"。
-- **exa（经 mcporter，已配好并实测）**：神经/语义搜索。**query 写「理想页面的描述」而不是关键词**（"blog post comparing React and Vue performance" 而非 "React vs Vue"）；`category:people` / `category:company` 找人找公司；结果自带内容 highlights，常省一次抓取。
+- **exa（经 mcporter）**：神经/语义搜索。**query 写「理想页面的描述」而不是关键词**（"blog post comparing React and Vue performance" 而非 "React vs Vue"）；`category:people` / `category:company` 找人找公司；结果自带内容 highlights，常省一次抓取。是否已配置以设备档案或 `agent-reach doctor --json` 为准。
   ```bash
   mcporter call exa.web_search_exa query="<理想页面描述>" numResults=5
   mcporter call exa.web_fetch_exa urls='["<url1>","<url2>"]'   # 批量读全文（clean markdown）
@@ -51,7 +52,7 @@ llm -m gemini-2.5-pro -o google_search 1 -o url_context 1 "你的问题"
   分工：**关键词明确 → WebSearch；概念/相似/研究向、或关键词搜不到 → exa**。
 - **FetchURL**：单页转 markdown 精读（失败走 §三）。
 
-### 档位 3 · firecrawl MCP（难抓的页 / 批量 / 监控，26 工具已接入）
+### 档位 3 · firecrawl MCP（难抓的页 / 批量 / 监控）
 - `firecrawl_scrape`：JS 渲染页（`waitFor`）、反爬（`proxy: stealth`）、结构化抽取（json format + schema）、缓存加速（`maxAge`）。
 - `firecrawl_search`：带正文抓取的搜索（要内容时用，比 WebSearch 重，耗额度）。
 - `firecrawl_map` + `firecrawl_crawl`：整站/批量——先 map 定位目标页再 scrape，省额度。
@@ -102,7 +103,7 @@ FetchURL（快、免费）
 
 ## 五、各设备的实际实现（指针）
 
-阶梯各档用什么工具实现是**设备事实**，随机器不同而不同。各设备已安装/验证的搜索能力清单见其设备档案（🔒 在私有仓 `EverAgent-infra`，含敏感基础设施信息，不在本公开仓）：
+阶梯各档用什么工具实现是**设备事实**，随机器不同而不同。上文命令是能力模板，不代表当前机器已安装、已登录或已配凭据。各设备已安装/验证的搜索能力清单见其设备档案（🔒 在私有仓 `EverAgent-infra`，含敏感基础设施信息，不在本公开仓）：
 
 - 各设备：私有仓 `infra/devices/{hostname}.md` §三「搜索栈」
 
