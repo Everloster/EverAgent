@@ -38,6 +38,9 @@
 - **[Harness 占比]** "模型代际值多少分"随任务剧烈波动（Opus 4.6→4.7：SWE-Bench Pro +24.6 vs Terminal-Bench +1.2）——是能力维度差异还是考试饱和/协议差异（来源：同上）
 - **[Harness 占比]** 思考档位的提分是"真能力"还是"更贵的采样"——xhigh 与 medium 同分时 token 消耗差几倍，"单位成本成功率"谁赢（来源：同上）
 - **[Anthropic 人才/信号]** 闭源前沿实验室能否承载"AI 成为公共地基"的期待？把顶尖经济学家/生物学家/哲学家集中到一家闭源商业公司，与"公共地基应开放共享"是否存在结构性张力？可与《开源 vs 闭源在 ToA 世界的重新博弈》缝合（来源：同上）
+- **[vLLM]** `step_with_batch_queue`「填队列优先」策略在 PP 下如何消泡？`max_concurrent_batches` 与 PP stage 数的关系、structured output 为何要推迟采样（deferred_scheduler_output）（来源：vLLM 架构总览 20260821，挂阶段 1）
+- **[vLLM]** AsyncScheduler 的 `num_output_placeholders` 机制在什么负载下改善 TTFT/吞吐、什么负载下反而浪费名额？（来源：同上，挂阶段 1，可 GPU 实测）
+- **[vLLM]** scale_out 渲染分离是否预示「全链路 disaggregation」演化（P/D 分离 → KV 传输 → 渲染分离 → sampler/detokenizer 独立成服务）？（来源：同上，挂阶段 7，结合官方 roadmap）
 
 ---
 

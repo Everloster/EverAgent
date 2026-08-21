@@ -7,6 +7,7 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-08-21 | [vLLM V1 架构总览：一个请求的一生（骨架篇）](../ai-learning/reports/knowledge_reports/vLLM_V1架构总览_深度解析_20260821.md) | ai-learning |
 | 2026-07-31 | [对话 Evoken 陈冕：在模型不断吞噬应用价值的时代，一家独立 AI 应用公司如何 survive](../podcast-learning/reports/2026-07-30_xiaoyuzhou-wandian-latetalk_chenmian.md) | podcast-learning |
 | 2026-07-31 | [从模型信仰到应用求生：中国 AI 创业与一级市场故事线(2022底—2026)](../ai-learning/reports/knowledge_reports/中国AI创业与一级市场故事线_从模型信仰到应用求生_20260731.md) | ai-learning |
 | 2026-07-31 | [AI 应用创业生死录：从 Evoken(Liblib/Lovart/LibTV)看模型吞噬应用时代的 survive 经济学](../ai-learning/reports/knowledge_reports/AI应用创业生死录_Evoken三产品商业分析_20260731.md) | ai-learning |
@@ -31,12 +32,12 @@
 | 2026-07-19 | [8个专家只请2个来上班，为什么模型反而更聪明了？—— MoE 科普讲解](../ai-learning/reports/knowledge_reports/MoE混合专家_科普讲解_20260717.md) | ai-learning |
 | 2026-07-18 | [读书：4种配速，取景框，人是滤器，冲刷神经网络 —— 明镜与李继刚关于读书方法论的深度对话](../podcast-learning/reports/2026-07-09_xiaoyuzhou-mingjing-diandian_lijigang.md) | podcast-learning |
 | 2026-07-18 | [你到底该不该吃早餐?这期告诉你早餐的真相](../podcast-learning/reports/2026-07-14_bilibili-luge-gustav_breakfast.md) | podcast-learning |
-| 2026-07-18 | [一红16年，干啥啥赚钱？｜屠龙博士创业的秘密！](../podcast-learning/reports/2026-07-07_bilibili-kedaibiao-lizheng_tulong-boshi.md) | podcast-learning |
 
-## 🤖 AI Learning（96 篇）
+## 🤖 AI Learning（97 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-08-21 | [vLLM V1 架构总览：一个请求的一生（骨架篇）](../ai-learning/reports/knowledge_reports/vLLM_V1架构总览_深度解析_20260821.md) | — |
 | 2026-07-31 | [从模型信仰到应用求生：中国 AI 创业与一级市场故事线(2022底—2026)](../ai-learning/reports/knowledge_reports/中国AI创业与一级市场故事线_从模型信仰到应用求生_20260731.md) | — |
 | 2026-07-31 | [AI 应用创业生死录：从 Evoken(Liblib/Lovart/LibTV)看模型吞噬应用时代的 survive 经济学](../ai-learning/reports/knowledge_reports/AI应用创业生死录_Evoken三产品商业分析_20260731.md) | — |
 | 2026-07-30 | [当'聪明'变成一种诅咒：AGI 会不会让普通人从此无关紧要？——《The Intelligence Curse》精读](../ai-learning/reports/knowledge_reports/IntelligenceCurse_智能诅咒_科普讲解_20260730.md) | — |
@@ -264,5 +265,5 @@
 |------|------|------|
 | 2026-07-29 | [炒菜逻辑：家常菜为什么比不过饭店香味——调料下锅时机全解](../web-surfing/reports/cooking-logic-timing-douyin.md) | — |
 | 2026-07-29 | [十年封神日剧 TOP10(2016–2025)—— SeedHub 对应资源索引](../web-surfing/reports/jdrama-top10-2016-2025-seedhub.md) | — |
-| 2026-07-14 | [🇰🇷 韩剧推荐 Top10（2024–2026 · 豆瓣评分）](../web-surfing/reports/kdrama-top10-2024-2026.md) | — |
+| 2026-07-17 | [🇰🇷 韩剧推荐 Top10（2024–2026 · 豆瓣评分）](../web-surfing/reports/kdrama-top10-2024-2026.md) | — |
 

@@ -95,6 +95,8 @@ LLM 推理有三大物理瓶颈：
 
 ## 与本项目其他报告的关系
 
+- **vLLM_V1架构总览_深度解析_20260821**：vLLM 源码级学习系列锚点（概念页 [vllm_v1_architecture](wiki/concepts/vllm_v1_architecture.md)），把本页的 vLLM 行推进到源码级
+
 - **KV_Cache_深度解析_20260330**：理解 KV cache 是理解本概念的基础
 - **LoRA_深度解析**：理解 LoRA 原理后，Multi-LoRA serving 的工程价值才显现
 - **Megatron_LM_大规模训练系统_深度解析_20260416**：推理系统的并行策略与训练系统高度同构（TP/PP）
