@@ -24,7 +24,7 @@
 
 - **活跃线（2026-07-20 对话确认）**：
   - Agent/Harness 工程线（进化 harness 过拟合与跨家族迁移、Bitter Lesson 镰刀、请求链路 compaction/caching）
-  - 模型效率线（MoE 专家结构、投机解码）
+  - 模型效率线（MoE 专家结构、投机解码；**vLLM 推理引擎源码级长线**——2026-08-21 拍板，七阶段全量+GPU 实操+深度专业体，计划见 [roadmap/vLLM_源码级学习计划_20260821.md](./roadmap/vLLM_源码级学习计划_20260821.md)）
   - AI 行业与认知生态（Khanmigo RCT 追踪、Anthropic 人才信号回访）
 - 可解释性/意识线（J-space 残留 3 问）：暂缓，不主动提议
 - 注意：wiki/open-questions.md 是历史快照 ≠ 当前兴趣，提议前先与用户确认
@@ -46,3 +46,5 @@
 - 2026-07-29：**领域扩边界 + 新增主线「AI 行业与商业观察」**（用户拍板"旧边界是遗产"）——第 3 次行业观察类输入达成（07-13 评论文/07-14 巨佬/本次 Evoken），旧 [评] 预言的"≥3 次新建主线"兑现。首篇报告《Evoken 陈冕晚点访谈精读：AI 应用生存策略》：健身房年包定价精算、PMF 后发竞争观、模型吞噬应用与 Bitter Lesson 缝合、高价值 token 论；证据纪律=经营数字全标受访者自述。三缺口汇入 open-questions（消耗率基准/吞噬边界条件/应用时代信号 2027-01 回访）。
 - 2026-07-30：行业/政治经济观察线第 2 篇——《Intelligence Curse 智能诅咒精读》(科普体)。把 Luke Drago & Rudolf Laine 66 页长文压成"资源诅咒 → 智能诅咒"一根主类比:掌权者靠 AI 而非人挣钱 → 失去投资普通人的激励(教育/福利/就业回报归零)。三部曲(金字塔替换→权力冻结→社会契约断裂)+ 三出路(Avert/Diffuse/Democratize)。权威锚点核实=Michael Ross《Does Oil Hinder Democracy?》(World Politics 2001)三机制、rentier state theory、Great Leveler,证明类比经济学根基扎实。缝合点:Diffuse 章"替代 vs 补充/别造单体 Agent/对齐到个人用户/开源施压"直接接 [Bitter Lesson × Harness]——技术选型=政治选择。三缺口汇入 open-questions(可证伪信号/类比裂缝/对齐到个人用户可行性)。
 - 2026-07-31：行业观察线第 3 篇(深度专业/商业分析)——《AI应用创业生死录:Evoken三产品商业分析》。**跨类复合任务**(E类 opencli 官网实地调研 + A类分析),三源交叉:播客完整版(晚点175陈冕)+ shownotes/图文 + 三产品官网实测(liblib.art/lovart.ai/liblib.tv)。核心增量=**把陈冕的定价哲学在 Lovart 官网定价页逐条实证**(积分制/按模型明码标价 Seedance $0.04/秒/消耗率机制/年包锁LTV),证明"薄毛利+消耗率定价"不是空谈而是精算工程。三产品=应用层价值栈三种活法(Liblib聚合+社区/Lovart Agent编排/LibTV垂类场景)。战略框架"逐鹿中原vs占领江东"=在巨头注意力时间差里偏安求生(真名是体面拖延非必胜)。生死系于两个外部变量:token成本曲线+巨头注意力窗口。缝合[Intelligence Curse]/[Bitter Lesson]:judgment护城河是否也会被模型淹没。三缺口(江东天险量化/薄毛利打穿点建模/judgment证伪信号)。
+- `2026-08-21`：用户拍板 vLLM 源码级学习长线（七阶段全量 + GPU 实操 + 深度专业体），录入模型效率线活跃队列，计划文件落 `roadmap/vLLM_源码级学习计划_20260821.md`。该线承载结清 open-questions「EAGLE 特征层原理」的任务；每完成一阶段回本文件回填覆盖状态。
+- `2026-08-21`：vLLM 长线**阶段 0 落地**——《vLLM V1 架构总览：一个请求的一生（骨架篇）》（深度专业体）。源码 pin v0.27.1 本地 clone（`../vllm`），三路并行源码勘察 + 主会话抽查复核（V0 alias、step 本体、`vllm/models/` 归属）。要点：四类进程模型（A+DP+N+1）、请求一生 12 跳、EngineCore 三线程 busy loop 与 execute/sample 两相拆分、执行层四层结构、「v0.27.1 vs 教科书 V1」11 条新变化（含 V0 彻底删除、Renderer 抽象、scale_out 前后端分离、Model Runner V2）。GPU 动手清单待 infra 开机补齐。三新问汇入 open-questions。
