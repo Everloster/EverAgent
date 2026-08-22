@@ -45,6 +45,7 @@ VENDOR_EMAIL = {
     "kimi-cli":    "noreply@moonshot.ai",
     "minimax-code": "noreply@minimaxi.com",
     "qoderclicn":  "noreply@qoder.com.cn",
+    "zcode":       "noreply@z.ai",
 }
 FALLBACK_EMAIL = "noreply@everloster.com"
 
@@ -69,6 +70,10 @@ CLI_RULES = [
     ("goose",       lambda: _has("GOOSE_PROVIDER")),
     # qoderclicn（QoderCN CLI，CN 渠道）：专有环境变量 QODERCN_CLI，进程链 comm=qoderclicn 兜底。
     ("qoderclicn",  lambda: _has("QODERCN_CLI") or _proc_has("qoderclicn")),
+    # zcode（ZCode 桌面 App 内嵌 CLI，厂商 z.ai）：专有 ZCODE_* 环境变量为主，
+    # 进程链 comm=zcode-cli / zcode-host-* 兜底（首字母大写的 ZCode 主进程不参与匹配）。
+    ("zcode",       lambda: _has("ZCODE_APP_VERSION", "ZCODE_ENV", "ZCODE_PROCESS_LABEL")
+                        or _proc_has("zcode-cli", "zcode-host")),
     # kimi-cli（Kimi Code CLI）：无专有环境变量，靠进程链判（comm=kimi）。放最后——
     # 进程链判定优先级最低，嵌套场景下让 env 型 CLI 先匹配。
     # 注意命名：kimi = 桌面 App，kimi-cli = 命令行工具，二者身份须区分（2026-07-28 用户订正）。
@@ -251,6 +256,43 @@ def _trae_session_model() -> str | None:
     return None
 
 
+def _zcode_session_model() -> str | None:
+    """从 ZCode CLI 运行日志读取真实会话模型。
+
+    `~/.zcode/v2/setting.json` 只存套餐键（modelProviderFamilySelectedKeys，如
+    coding-plan:builtin:bigmodel-start-plan），不含模型显示名；而
+    `~/.zcode/cli/log/zcode-YYYY-MM-DD.jsonl` 按天记录请求，含
+    `<plan>/<Model>`（如 bigmodel-start-plan/GLM-5.3），是当前会话事实源。
+    取最新日志里最后一次出现的模型名。
+    """
+    log_dir = HOME / ".zcode" / "cli" / "log"
+    try:
+        logs = sorted(
+            log_dir.glob("zcode-*.jsonl"),
+            key=lambda path: path.stat().st_mtime,
+            reverse=True,
+        )
+    except OSError:
+        return None
+
+    for log_path in logs:
+        try:
+            with log_path.open("rb") as handle:
+                handle.seek(0, os.SEEK_END)
+                size = handle.tell()
+                handle.seek(max(0, size - 8 * 1024 * 1024))
+                text = handle.read().decode("utf-8", errors="ignore")
+        except OSError:
+            continue
+
+        # 优先 <plan>/<Model> 组合（多套餐家族并存时最精确），再退裸模型名
+        for pat in (r"[a-z0-9-]+-plan/(GLM[-.0-9]+)", r"\b(GLM[-.0-9]+)\b"):
+            hits = re.findall(pat, text)
+            if hits:
+                return hits[-1]
+    return None
+
+
 def detect_model(cli: str) -> str:
     """按 CLI 读其配置拿模型名。"""
     if cli == "trae":
@@ -271,6 +313,9 @@ def detect_model(cli: str) -> str:
         return os.environ.get("GEMINI_MODEL", "unknown")
     if cli in ("cursor", "cursor-cli"):
         return os.environ.get("CURSOR_MODEL", "unknown")
+    if cli == "zcode":
+        # env 可显式覆盖；默认读当日会话日志的真实模型（如 GLM-5.3）
+        return (os.environ.get("ZCODE_MODEL") or _zcode_session_model() or "unknown")
     if cli == "kimi-cli":
         # ~/.kimi-code/config.toml 的 default_model 形如 "kimi-code/k3"，取 / 后段
         raw = _toml_get(HOME / ".kimi-code" / "config.toml", "default_model") or ""
