@@ -14,6 +14,10 @@
 
 - [[2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review|重估一切，文艺复兴——2026H1 AI行业观察]]（episode_summary · 2026-07-17）— 小宇宙「屠龙之术」庄明浩单口，54m37s，CAPEX 泡沫之辩 / Agent 元年 / 中美双极 / 第四支柱
 
+### AI Infra / 开源商业化
+
+- [[2026-07-28_xiaoyuzhou-zhangxiaojun_youkaichao|对游凯超3小时访谈：开源Infra、和模型Co-design、"如果vLLM失败，我们会后悔一辈子"]]（episode_summary · 发布 2026-07-28，归档 2026-08-22）— 小宇宙「张小珺Jùn｜商业访谈录」Vol.148，3h00m26s，vLLM 三年史 / 仁慈的独裁者 / 模型-Infra co-design / Inferact 创业；与 ai-learning vLLM 源码线互为表里
+
 ### 创业方法论 / 商业认知
 
 - [[2026-07-07_bilibili-kedaibiao-lizheng_tulong-boshi|课代表立正对谈屠龙博士]]（episode_summary · 2026-07-07）— B 站，非线性世界观 / 定价锚定 / 人才洼地
@@ -76,6 +80,11 @@
 - [[entities/zhuang-minghao|庄明浩]] — 小宇宙「屠龙之术」主播，互联网/风投从业者，季度性 AI 行业大整理 PPT
 - [[entities/lao-qian|老钱]] — 小宇宙「面基」主理人（节目官方名「面基」，即本库此前所称"明镜与点点"），老钱日日谈 / 三个看板网站
 
+### 来自 2026-07-28 张小珺对谈游凯超（Vol.148）
+
+- [[entities/you-kaichao|游凯超]] — Inferact 联创兼首席科学家、vLLM 核心维护者（Vol.148 嘉宾；清华本博）
+- [[entities/inferact|Inferact]] — vLLM 核心团队创立的商业公司（Bring Inference into Action），1.5 亿美元种子轮、8 亿美元估值
+
 ## Concepts（核心概念）
 
 ### 来自 Vol.29 王小川系列
@@ -124,10 +133,15 @@
 - [[concepts/muscle-retirement-savings|力量训练 = 退休储蓄]] — 肌肉是长寿器官（《超越百岁》）；渐进式超负荷 + 蛋白质账
 - [[concepts/sleep-cybernetics|控制论看睡眠]] — 输入可控输出不可控；"睡眠无法被命令，只能被允许"
 
+### 来自 2026-07-28 张小珺对谈游凯超（Vol.148）
+
+- [[concepts/model-infra-codesign|模型×Infra×硬件 Co-design]] — 模型结构决定推理效率上界；RoPE / DeepSeek 双料模式 / 投机解码谱系
+- [[concepts/hardware-lottery|Hardware Lottery（系统彩票）]] — 算法须被系统高效实现才能存活（Sara Hooker 2020）
+
 ## Syntheses（跨期综合）
 
 （待 ≥3 概念综合时建立）
 
 ---
 
-*Last updated: 2026-07-20*
+*Last updated: 2026-08-22*

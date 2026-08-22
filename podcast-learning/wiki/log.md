@@ -95,3 +95,15 @@
 - 新增 entities：老钱
 - 新增 concepts：中年三本账 / 订阅制支出 / 力量训练=退休储蓄 / 控制论看睡眠
 - Limitations：音频未保留（69MB 为估算）；shownotes 自带科学注记（2A 类=夜班工作而非睡眠不足本身；β-淀粉样蛋白非唯一元凶）已在报告保留
+
+## [2026-08-22] ingest | xiaoyuzhou
+- 来源：小宇宙 · 张小珺Jùn｜商业访谈录 · Vol.148《对游凯超3小时访谈：开源Infra、和模型Co-design、"如果vLLM失败，我们会后悔一辈子"》（2026-07-28 发布）
+- 形式：**对谈**（主持张小珺 × 嘉宾游凯超：Inferact 联创兼首席科学家、vLLM 核心维护者，清华本博）
+- 时长：3h00m26s（10826s）· 转录：6,120 段 / **53,373 汉字**（whisper.cpp / ggml-large-v3 / Metal，transcribe.py，约 16min 墙钟）/ 语速 296 字/min
+- 报告：[[2026-07-28_xiaoyuzhou-zhangxiaojun_youkaichao]]
+- pipeline：yt-dlp → whisper.cpp → episode 页 JSON-LD/__NEXT_DATA__（时长/发布日）+ FetchURL shownotes（8 章节时间戳）→ **8 章并行分章润色**（agent swarm）→ 组装 polished（49,568 汉字）
+- 润色：修正约 300 处系统性误识别（VLM/VM/为我们→vLLM 70+、杨斯多伊克→Ion Stoica 20+、归机→硅基、推力引擎→推理引擎、语言集世界→语言即世界 等）；约 40 处 [?]（翁嘉义[?]疑为翁家翌 Jiayi Weng、Johan[?]疑为 Zhuohan 音误、ch6 海外大咖人名被吞 等）
+- 核心框架：vLLM 三年三级跳（SOSP 低分过线→开源→PyTorch 基金会→Inferact）/ 仁慈的独裁者分级治理 / AI slop 与善意假设崩塌 / 模型-Infra-硬件 co-design / hardware lottery / Token vs 电力 / 开源模型会赢
+- 新增 entities：游凯超、Inferact；新节目 slug：zhangxiaojun（张小珺Jùn｜商业访谈录）
+- 新增 concepts：模型×Infra×硬件 co-design、hardware lottery（系统彩票）
+- Limitations：音频未保留（173MB 为 128kbps 估算）；嘉宾口述两处事实存疑已在报告标注（OpenSSH 段实为 OpenSSL Heartbleed；ALiBi 表述）；融资细节（1.5 亿美元种子/8 亿估值/a16z+Lightspeed 领投）经公开报道交叉验证；**与 ai-learning vLLM 源码级学习线互为表里**（代码在 ai-learning，人在本线）

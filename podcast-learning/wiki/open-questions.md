@@ -72,3 +72,12 @@
 - [ ] FDE 的 know-how 复利会不会被自家平台模板化反噬（客服界的"节点式工作流"命运）？
 - [ ] 结果计费（outcome-based pricing）是不是 AI ToB 终局定价？已有哪些公司在跑？
 - [ ] 国内 AI 客服/外呼的真实格局：是路径不同（营销机器人）还是 FDE 时机未到？找对照样本
+
+### 来自 2026-07-28 张小珺对谈游凯超（新汇入）
+
+- **「vLLM = AI 推理领域的 Linux」的商业类比成立到什么程度？** —— Red Hat 卖订阅支持 vs Inferact 卖 Endpoint/BYOC 按量收费，单位经济完全不同；开源推理引擎商业化的历史窗口有多大（模型公司自研引擎外溢 vs 公用推理层的张力）？
+  - 来源：[[2026-07-28_xiaoyuzhou-zhangxiaojun_youkaichao]] 思考与追问·问 1
+- **「系统彩票」如何反塑模型架构？** —— 若算法必须被系统高效实现才能存活，硬件押注者（NVIDIA 路线图、国产卡）就在间接设计未来的模型；RoPE/FlashAttention 式共赢能否复制到 linear attention（KDA/Gated DeltaNet）？（与 ai-learning K3 报告、vLLM 源码线阶段 3 联动）
+  - 来源：同上 问 2
+- **coding agent 时代的开源治理分岔** —— vLLM 走「人审+认证+拉黑 AI slop」，OpenClaw 式社区走「AI 提交、AI 审、AI 合并」；若维护的核心价值是「解决未来 3 个月问题的 context」，AI 自治社区能积累这种 context 吗？开源社区价值是否正从「代码贡献」迁往「维护者判断」？
+  - 来源：同上 问 3
