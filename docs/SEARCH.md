@@ -43,8 +43,8 @@ llm -m gemini-2.5-pro -o google_search 1 -o url_context 1 "你的问题"
 要点：`-o google_search 1` 打开 Google 实时检索接地；`gemini-2.5-flash` 快而省，深推理再上 `gemini-2.5-pro`。Gemini 结论仍需按 [METHODOLOGY.md](../METHODOLOGY.md) §二标注证据，关键事实让它给来源 URL，必要时档位 2 复核。
 
 ### 档位 2 · 搜索引擎层（拿列表 / 拿原文）
-- **WebSearch**（Kimi 内置）：关键词式搜索，拿标题+URL+摘要列表，适合"有哪些来源"。
-- **exa（经 mcporter）**：神经/语义搜索。**query 写「理想页面的描述」而不是关键词**（"blog post comparing React and Vue performance" 而非 "React vs Vue"）；`category:people` / `category:company` 找人找公司；结果自带内容 highlights，常省一次抓取。是否已配置以设备档案或 `agent-reach doctor --json` 为准。
+- **WebSearch**（agent CLI 内置，Kimi/zcode 等均有）：关键词式搜索，拿标题+URL+摘要列表，适合"有哪些来源"。
+- **exa（经 mcporter）**：神经/语义搜索。**query 写「理想页面的描述」而不是关键词**（"blog post comparing React and Vue performance" 而非 "React vs Vue"）；`category:people` / `category:company` 找人找公司；结果自带内容 highlights，常省一次抓取。注意：exa 若配在项目级 `config/mcporter.json`，则只在**该项目目录（cwd）下**被 mcporter 发现，换目录就不可见（`mcporter list` 里消失、agent-reach doctor 报 off）——用时先 cd 进项目。是否已配置以设备档案或 `agent-reach doctor --json` 为准。
   ```bash
   mcporter call exa.web_search_exa query="<理想页面描述>" numResults=5
   mcporter call exa.web_fetch_exa urls='["<url1>","<url2>"]'   # 批量读全文（clean markdown）
