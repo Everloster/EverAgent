@@ -93,6 +93,21 @@
   - 新增 concepts：中年三本账、订阅制支出、力量训练=退休储蓄、控制论看睡眠
   - 重要修正：**节目官方名确认为「面基」**（episode 页 podcast.title），即本库此前所称"明镜与点点"；老钱与"明镜"关系待确认；whisper 系统性误识别 40+ 处（面积→面基、生物中→生物钟、Aidsleep→Eight Sleep 等）
 
+- **对游凯超3小时访谈：开源Infra、和模型Co-design、"如果vLLM失败，我们会后悔一辈子"**（2026-07-28 发布，2026-08-22 归档）
+  - 来源：小宇宙 · 张小珺Jùn｜商业访谈录（语言即世界工作室）· Vol.148 —— **新节目 slug：zhangxiaojun**
+  - 嘉宾：游凯超（Inferact 联创兼首席科学家、vLLM 核心维护者，清华本博）—— 主持张小珺 × 嘉宾**对谈**
+  - 时长：3h00m26s（10826s）/ 字数：53,373 汉字（raw）/ 49,568 汉字（polished）/ 6,120 段 / 语速 296 字/min
+  - 路径：`reports/2026-07-28_xiaoyuzhou-zhangxiaojun_youkaichao.md`
+  - 转录原文：`reports/transcripts/2026-07-28_xiaoyuzhou-zhangxiaojun_youkaichao.transcript.txt`（6,120 段）
+  - 润色版：`reports/transcripts/2026-07-28_xiaoyuzhou-zhangxiaojun_youkaichao.polished.txt`（按 shownotes 8 章节重组，无时间戳）
+  - 状态：archived（**polished**，Kimi 8 章并行分章润色 + 组装）
+  - pipeline：transcribe.py（yt-dlp + whisper.cpp，约 16min 墙钟）→ episode 页 JSON-LD + FetchURL shownotes（8 章节）→ 8 章并行 agent 润色 → 组装
+  - 内容：vLLM 三年三级跳（SOSP 低分过线 → 开源 → PyTorch 基金会 → Inferact 1.5 亿美元种子轮）/ 仁慈的独裁者分级治理 / AI slop 与善意假设崩塌 / 模型-Infra-硬件 co-design / hardware lottery / DeepSeek 双料模式 / 投机解码谱系（EAGLE/MTP/DFlash/DSpark）/ Token vs 电力 / 开源模型会赢 / 上下文百万级 hot take
+  - 新增 entities：游凯超、Inferact
+  - 新增 concepts：模型×Infra×硬件 co-design、hardware lottery（系统彩票）
+  - 重要修正：whisper 系统性误识别约 300 处（VLM/VM/为我们→vLLM 70+、杨斯多伊克→Ion Stoica 20+、归机→硅基、推力引擎→推理引擎、语言集世界→语言即世界 等）；约 40 处 [?]；嘉宾口述两处事实存疑（OpenSSH 段实为 OpenSSL Heartbleed；ALiBi 表述）
+  - **跨项目联动**：与 ai-learning 的 vLLM 源码级学习线互为表里（概念页 `ai-learning/wiki/concepts/vllm_v1_architecture.md`）
+
 ## ⚠️ 边界（防幻觉）
 
 以下主题已有报告，禁止重复生成：
@@ -114,6 +129,8 @@
 - 明镜 / 43talks / 影子之书（详见 2026-07-09 明镜报告 + entities/mingjing.md）
 - 屠龙之术 2026H1 行业观察：文艺复兴映射框架 / 美第奇的账本（CAPEX 泡沫之辩）/ Agent 元年 / 世界模型三分类 / 第四支柱（详见 2026-07-17 报告 + concepts/renaissance-revaluation.md 等 5 页）
 - 庄明浩 / 屠龙之术 实体（详见 entities/zhuang-minghao.md；注意与 B 站屠龙博士 tulong-boshi 区分）
+- vLLM 项目口述史 / 仁慈的独裁者治理 / Inferact 创业 / 模型-Infra co-design / hardware lottery（详见 2026-07-28 游凯超期 + entities/you-kaichao.md、entities/inferact.md + concepts/model-infra-codesign.md、hardware-lottery.md）
+- 游凯超 / Inferact 实体（详见 entities/）
 
 ---
 
@@ -132,4 +149,4 @@
 
 ---
 
-*Last updated: 2026-07-20 (added 2026-07-13 面基《仨账户》+ 4 concepts + 1 entity；节目官方名确认为「面基」)*
+*Last updated: 2026-08-22 (added 2026-07-28 张小珺×游凯超 Vol.148 + 2 entities + 2 concepts；新节目 slug：zhangxiaojun；与 ai-learning vLLM 源码线交叉链接)*

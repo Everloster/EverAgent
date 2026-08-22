@@ -23,5 +23,6 @@ vLLM V1 是 vLLM 现行且唯一的引擎架构（V0 已删除）：多进程（
 
 ## 关联
 
+- 人物口述史（互为表里：代码在本线，人在播客线）：podcast-learning《对游凯超3小时访谈》（vLLM 核心维护者/Inferact 首席科学家游凯超，2026-07-28 期）— `podcast-learning/reports/2026-07-28_xiaoyuzhou-zhangxiaojun_youkaichao.md`
 - 预科概念：[kv_cache](./kv_cache.md)、[llm_inference_engines](./llm_inference_engines.md)、投机解码（报告 `投机解码SpeculativeDecoding_科普讲解_20260720.md`）
 - 上游概念页「LLM 推理优化引擎」的 vLLM 行从本篇起获得源码级支撑
