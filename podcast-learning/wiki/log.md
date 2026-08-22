@@ -107,3 +107,8 @@
 - 新增 entities：游凯超、Inferact；新节目 slug：zhangxiaojun（张小珺Jùn｜商业访谈录）
 - 新增 concepts：模型×Infra×硬件 co-design、hardware lottery（系统彩票）
 - Limitations：音频未保留（173MB 为 128kbps 估算）；嘉宾口述两处事实存疑已在报告标注（OpenSSH 段实为 OpenSSL Heartbleed；ALiBi 表述）；融资细节（1.5 亿美元种子/8 亿估值/a16z+Lightspeed 领投）经公开报道交叉验证；**与 ai-learning vLLM 源码级学习线互为表里**（代码在 ai-learning，人在本线）
+
+## [2026-08-23] index | xiaoyuzhou
+- 归档「张小珺Jùn｜商业访谈录」全量 154 集选题索引：[[zhangxiaojun-episode-index]]（官方 RSS `feed.xyzfm.space/dk4yh3pkpjp3` 免登录全量拉取，2022-04 至今）
+- 设周更扫描 cron：每周一 09:47 扫 RSS 对比索引首行，发现新集 → 提醒用户（不落文件、不自动转写）
+- 方法备忘：小宇宙节目主页 SSR JSON 仅含最新 15 集；官方「加载更多」API 需登录 token（401）；**全量清单走 Apple Podcasts lookup 反查 feedUrl → RSS**，通用可复用
