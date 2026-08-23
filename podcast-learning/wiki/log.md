@@ -109,6 +109,8 @@
 - Limitations：音频未保留（173MB 为 128kbps 估算）；嘉宾口述两处事实存疑已在报告标注（OpenSSH 段实为 OpenSSL Heartbleed；ALiBi 表述）；融资细节（1.5 亿美元种子/8 亿估值/a16z+Lightspeed 领投）经公开报道交叉验证；**与 ai-learning vLLM 源码级学习线互为表里**（代码在 ai-learning，人在本线）
 
 ## [2026-08-23] index | xiaoyuzhou
-- 归档「张小珺Jùn｜商业访谈录」全量 154 集选题索引：[[zhangxiaojun-episode-index]]（官方 RSS `feed.xyzfm.space/dk4yh3pkpjp3` 免登录全量拉取，2022-04 至今）
+- 归档「张小珺Jùn｜商业访谈录」全量 154 集选题索引：[[show-indexes/zhangxiaojun]]（官方 RSS `feed.xyzfm.space/dk4yh3pkpjp3` 免登录全量拉取，2022-04 至今）
 - 设周更扫描 cron：每周一 09:47 扫 RSS 对比索引首行，发现新集 → 提醒用户（不落文件、不自动转写）
 - 方法备忘：小宇宙节目主页 SSR JSON 仅含最新 15 集；官方「加载更多」API 需登录 token（401）；**全量清单走 Apple Podcasts lookup 反查 feedUrl → RSS**，通用可复用
+- 同日扩面：小宇宙 app 内导出 OPML（官方功能）→ 归档为 [[curated-podcasts|精选播客清单]]（51 档节目，含公开 RSS；对外表述为精选清单）→ `scripts/fetch_show_indexes.py` 拉全部 51 档节目的全量单集索引入 `wiki/show-indexes/`（共 7,839 集，零失败；含喜马拉雅/fireside/transistor 等非小宇宙源）
+- 周更 cron 升级：由单节目（张小珺）改为全量刷新（`fetch_show_indexes.py`，每周一 09:47，cron id 01M0PF17S1J77J21T69Z7WZQJP），新集自动插入索引并提醒；「状态」列人工标记经链接 diff 保留（修过一次 [[wikilink|别名]] 竖线干扰状态列解析的 bug）

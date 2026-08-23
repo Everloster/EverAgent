@@ -46,7 +46,8 @@
 
 ## 节目索引（选题库）
 
-- [[zhangxiaojun-episode-index|张小珺Jùn｜商业访谈录 · 全量单集索引]] — 154 集（2022-04 至今），官方 RSS 免登录拉取；挑集转写 + 周更 cron 扫描新集
+- [[curated-podcasts|精选播客清单]] — 51 档精选播客（附公开 RSS + OPML 源文件）
+- `show-indexes/` — 每档节目的全量单集索引（新→旧），由 `scripts/fetch_show_indexes.py` 拉取/周更刷新；挑集数即可发起转写
 
 ## Entities（人物 / 机构）
 
