@@ -44,7 +44,7 @@ llm -m gemini-2.5-pro -o google_search 1 -o url_context 1 "你的问题"
 
 ### 档位 2 · 搜索引擎层（拿列表 / 拿原文）
 - **WebSearch**（agent CLI 内置，Kimi/zcode 等均有）：关键词式搜索，拿标题+URL+摘要列表，适合"有哪些来源"。
-- **exa（经 mcporter）**：神经/语义搜索。**query 写「理想页面的描述」而不是关键词**（"blog post comparing React and Vue performance" 而非 "React vs Vue"）；`category:people` / `category:company` 找人找公司；结果自带内容 highlights，常省一次抓取。注意：exa 若配在项目级 `config/mcporter.json`，则只在**该项目目录（cwd）下**被 mcporter 发现，换目录就不可见（`mcporter list` 里消失、agent-reach doctor 报 off）——用时先 cd 进项目。是否已配置以设备档案或 `agent-reach doctor --json` 为准。
+- **exa（经 mcporter）**：神经/语义搜索。**query 写「理想页面的描述」而不是关键词**（"blog post comparing React and Vue performance" 而非 "React vs Vue"）；`category:people` / `category:company` 找人找公司；结果自带内容 highlights，常省一次抓取。注意：exa 配置位置决定可见性——配在 mcporter **home 级**（`~/.mcporter/mcporter.json`）则任意 cwd 可见（JabeMBP 已如此，2026-08-23 从项目级提升）；若某设备配在项目级 `config/mcporter.json`，则只在**该项目目录（cwd）下**被 mcporter 发现，换目录就不可见（`mcporter list` 里消失、agent-reach doctor 报 off）——用时先 cd 进项目，或提升到 home 级。是否已配置以设备档案或 `agent-reach doctor --json` 为准。
   ```bash
   mcporter call exa.web_search_exa query="<理想页面描述>" numResults=5
   mcporter call exa.web_fetch_exa urls='["<url1>","<url2>"]'   # 批量读全文（clean markdown）
