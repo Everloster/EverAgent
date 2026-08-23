@@ -81,3 +81,12 @@
   - 来源：同上 问 2
 - **coding agent 时代的开源治理分岔** —— vLLM 走「人审+认证+拉黑 AI slop」，OpenClaw 式社区走「AI 提交、AI 审、AI 合并」；若维护的核心价值是「解决未来 3 个月问题的 context」，AI 自治社区能积累这种 context 吗？开源社区价值是否正从「代码贡献」迁往「维护者判断」？
   - 来源：同上 问 3
+
+### 来自 2026-08-04 硅谷101 E247 盛颖（新汇入）
+
+- **SGLang vs vLLM 的「时间轴分野」会收敛还是分叉？** —— 盛颖：「大家都差不多，分野在时间轴上」（SGLang 先 scale up，vLLM 先社区覆盖）。两家几乎同时商业化、同一 mentor（Ion Stoica）、同一投资人圈层——开源推理引擎走向双寡头、合并还是被云厂商收编？挂 ai-learning vLLM 源码线（阶段 1/3 对照读 SGLang scheduler）
+  - 来源：[[2026-08-04_rss-guigu101_shengying]] 思考与追问·问 1
+- **RadixAttention（前缀树）vs vLLM prefix caching（哈希块表）的真实差异** —— 命中率/开销/适用场景，两种前缀复用数据结构是不是理解两家引擎性格的显微镜？挂 vLLM 源码线阶段 2
+  - 来源：同上 问 2
+- **「infra 即产品、infra 击中人性」能成立吗？** —— infra 的 taste/美感能否转化为可衡量的竞争优势，还是只是 founder 偏好？对照：RadixArk 无 private fork 的纯开源路线 vs Inferact Endpoint/BYOC 按量收费，五年后谁活着
+  - 来源：同上 问 3

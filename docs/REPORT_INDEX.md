@@ -7,6 +7,7 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-08-23 | [对话盛颖：xAI，Infra的浪漫，SGLang，开源，平权与「甄嬛传」](../podcast-learning/reports/2026-08-04_rss-guigu101_shengying.md) | podcast-learning |
 | 2026-08-22 | [对游凯超3小时访谈：开源Infra、和模型Co-design、「如果vLLM失败，我们会后悔一辈子」](../podcast-learning/reports/2026-07-28_xiaoyuzhou-zhangxiaojun_youkaichao.md) | podcast-learning |
 | 2026-08-21 | [vLLM V1 架构总览：一个请求的一生（骨架篇）](../ai-learning/reports/knowledge_reports/vLLM_V1架构总览_深度解析_20260821.md) | ai-learning |
 | 2026-07-31 | [对话 Evoken 陈冕：在模型不断吞噬应用价值的时代，一家独立 AI 应用公司如何 survive](../podcast-learning/reports/2026-07-30_xiaoyuzhou-wandian-latetalk_chenmian.md) | podcast-learning |
@@ -31,7 +32,6 @@
 | 2026-07-19 | [一个字走进大楼：6710 亿参数，凭什么 94% 在睡觉？—— MoE 混合专家科普](../ai-learning/reports/knowledge_reports/MoE混合专家_一个token的专家大楼之旅_科普讲解_20260719.md) | ai-learning |
 | 2026-07-19 | [《欢迎来到伪智力繁荣时代》分析总结 — AI 如何拉平真伪思想的外观差距](../ai-learning/reports/knowledge_reports/伪智力繁荣时代_评论文精读与批判_20260713.md) | ai-learning |
 | 2026-07-19 | [8个专家只请2个来上班，为什么模型反而更聪明了？—— MoE 科普讲解](../ai-learning/reports/knowledge_reports/MoE混合专家_科普讲解_20260717.md) | ai-learning |
-| 2026-07-18 | [读书：4种配速，取景框，人是滤器，冲刷神经网络 —— 明镜与李继刚关于读书方法论的深度对话](../podcast-learning/reports/2026-07-09_xiaoyuzhou-mingjing-diandian_lijigang.md) | podcast-learning |
 
 ## 🤖 AI Learning（97 篇）
 
@@ -244,10 +244,11 @@
 | 2026-03-26 | [Physiology of Growth Hormone Secretion during Sleep (1996) 精读](../biology-learning/reports/paper_analyses/P09_gh_sleep_physiology_1996.md) | — |
 | 2026-03-23 | [晚型人作息与力量训练深度研究](../biology-learning/reports/concept_reports/晚型人作息与力量训练_深度研究报告.md) | — |
 
-## 🎙️ Podcast Learning（11 篇）
+## 🎙️ Podcast Learning（12 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-08-23 | [对话盛颖：xAI，Infra的浪漫，SGLang，开源，平权与「甄嬛传」](../podcast-learning/reports/2026-08-04_rss-guigu101_shengying.md) | — |
 | 2026-08-22 | [对游凯超3小时访谈：开源Infra、和模型Co-design、「如果vLLM失败，我们会后悔一辈子」](../podcast-learning/reports/2026-07-28_xiaoyuzhou-zhangxiaojun_youkaichao.md) | — |
 | 2026-07-31 | [对话 Evoken 陈冕：在模型不断吞噬应用价值的时代，一家独立 AI 应用公司如何 survive](../podcast-learning/reports/2026-07-30_xiaoyuzhou-wandian-latetalk_chenmian.md) | — |
 | 2026-07-29 | [为什么 FDE 在 AI 时代这么火？因为差距不在模型，在业务细节](../podcast-learning/reports/2026-07-29_bilibili-kedaibiao-lizheng_jove-fde.md) | — |

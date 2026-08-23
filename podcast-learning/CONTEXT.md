@@ -108,6 +108,22 @@
   - 重要修正：whisper 系统性误识别约 300 处（VLM/VM/为我们→vLLM 70+、杨斯多伊克→Ion Stoica 20+、归机→硅基、推力引擎→推理引擎、语言集世界→语言即世界 等）；约 40 处 [?]；嘉宾口述两处事实存疑（OpenSSH 段实为 OpenSSL Heartbleed；ALiBi 表述）
   - **跨项目联动**：与 ai-learning 的 vLLM 源码级学习线互为表里（概念页 `ai-learning/wiki/concepts/vllm_v1_architecture.md`）
 
+- **对话盛颖：xAI，Infra的浪漫，SGLang，开源，平权与「甄嬛传」**（2026-08-04 发布，2026-08-23 归档）
+  - 来源：硅谷101 · E247（Fireside RSS 音频直链，sv101.net/260）—— **首个 RSS 直链来源**（platform=rss）
+  - 嘉宾：盛颖（RadixArk 联创&CEO、SGLang 发起人、xAI 前推理团队负责人；上海交大 ACM→哥大→斯坦福 PhD）—— 陈茜采访
+  - 时长：1h46m26s（6387s）/ 字数：34,164 汉字（raw）/ 33,726 汉字（polished）/ 5,578 段 / 语速 321 字/min
+  - 路径：`reports/2026-08-04_rss-guigu101_shengying.md`
+  - 转录原文：`reports/transcripts/2026-08-04_rss-guigu101_shengying.transcript.txt`
+  - 润色版：`reports/transcripts/2026-08-04_rss-guigu101_shengying.polished.txt`（按 shownotes 12 章节重组，无时间戳）
+  - 状态：archived（**polished**，Kimi 12 章并行分章润色 + 组装）
+  - pipeline：RSS 拿直链 → yt-dlp → whisper.cpp + **--vad** → Fireside shownotes → 12 章并行润色
+  - **重大踩坑**：首跑无 VAD 时 whisper 循环幻觉报废约 1/3 内容，VAD 重跑恢复；教训入 AGENTS.md 已知局限 #5
+  - 内容：SGLang 发起史 / RadixAttention / 与 vLLM 的时间轴分野 / day zero 兼容 / infra 即产品 / xAI v1.0 / Ion Stoica / RadixArk 1 亿美元种子（Accel）/ 开源是空气 / 平权
+  - 新增 entities：盛颖、RadixArk、SGLang
+  - 新增 concepts：RadixAttention
+  - 重要修正：「Axial/Excel 领投」→ Accel（依官方新闻稿）；简介误写清华 → 实为上海交大 ACM 班（以转写为准）；约 200 处误识别修正 + 60 处 [?]
+  - **跨项目联动**：与游凯超期构成开源推理引擎双子星对照；链接 ai-learning vLLM 概念页
+
 ## ⚠️ 边界（防幻觉）
 
 以下主题已有报告，禁止重复生成：
@@ -131,6 +147,7 @@
 - 庄明浩 / 屠龙之术 实体（详见 entities/zhuang-minghao.md；注意与 B 站屠龙博士 tulong-boshi 区分）
 - vLLM 项目口述史 / 仁慈的独裁者治理 / Inferact 创业 / 模型-Infra co-design / hardware lottery（详见 2026-07-28 游凯超期 + entities/you-kaichao.md、entities/inferact.md + concepts/model-infra-codesign.md、hardware-lottery.md）
 - 游凯超 / Inferact 实体（详见 entities/）
+- 盛颖 / RadixArk / SGLang 实体、RadixAttention 概念（详见 2026-08-04 硅谷101 E247 报告 + entities/sheng-ying.md、radixark.md、sglang.md + concepts/radix-attention.md）
 
 ---
 
@@ -150,4 +167,4 @@
 
 ---
 
-*Last updated: 2026-08-22 (added 2026-07-28 张小珺×游凯超 Vol.148 + 2 entities + 2 concepts；新节目 slug：zhangxiaojun；与 ai-learning vLLM 源码线交叉链接)*
+*Last updated: 2026-08-23 (added 2026-08-04 硅谷101 E247 盛颖期 + 3 entities + 1 concept；VAD 循环幻觉教训入 AGENTS.md；与游凯超期双子星对照)*

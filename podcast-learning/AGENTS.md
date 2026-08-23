@@ -180,6 +180,7 @@ ln -sf ~/workspace/whisper.cpp/build/bin/whisper-bench /opt/homebrew/bin/whisper
 2. **中英人名/术语/书名误识别率高**（"李继刚"→"李金刚"）—— 必须以 shownotes 校验
 3. **关键数字吞字**（"860 亿"→"861"）—— 报告里要标"未在 polished 中修改"
 4. **不自动加中文标点**—— 保留原貌，不补
+5. **长音频 + 音乐/过场段易触发循环幻觉**（2026-08-23 硅谷101 E247 实例：无 VAD 时约 39 分钟起整段循环输出无关广告词，音频本身完好）。**解法**：`transcribe.py --whisper-args "--vad -vm ~/workspace/whisper.cpp/models/for-tests-silero-v6.2.0-ggml.bin"` 重跑——VAD 切掉非语音段，循环不再点火。`transcribe.py` 已支持 `--whisper-args` 透传（2026-08-23 新增）
 
 ---
 
