@@ -88,7 +88,10 @@ def fmt_dur(d):
     try:
         if ":" in d:
             p = [int(x) for x in d.split(":")]
-            s = p[0] * 3600 + (p[1] if len(p) > 1 else 0) * 60 + (p[2] if len(p) > 2 else 0)
+            if len(p) == 2:  # MM:SS
+                s = p[0] * 60 + p[1]
+            else:  # H:MM:SS
+                s = p[0] * 3600 + p[1] * 60 + p[2]
         else:
             s = int(float(d))
     except ValueError:
