@@ -38,6 +38,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import shlex
 import shutil
 import subprocess
 import sys
@@ -121,6 +122,7 @@ def transcribe(
     model: str,
     lang: str | None,
     model_dir: str | None,
+    whisper_args: list[str] | None = None,
 ) -> None:
     check_dep(
         "whisper-cli",
@@ -142,6 +144,8 @@ def transcribe(
             "-of", str(prefix),   # 输出文件前缀
             "-np",                # 抑制 whisper 自带的进度/计时打印
         ]
+        if whisper_args:
+            cmd += whisper_args   # 透传 whisper-cli 额外参数（如 --vad / -mc 0 防循环幻觉）
         print(f"[transcribe] 调用 whisper-cli…")
         subprocess.run(cmd, check=True)
 
@@ -188,6 +192,10 @@ def main() -> int:
         "--model-dir",
         help="whisper.cpp 模型目录（默认读环境变量 WHISPER_CPP_MODELS，或 ~/workspace/whisper.cpp/models/）",
     )
+    p.add_argument(
+        "--whisper-args",
+        help='透传给 whisper-cli 的额外参数，如 "--vad -vm <silero模型> -mc 0"（长音频防循环幻觉）',
+    )
     args = p.parse_args()
 
     lang = None if args.lang == "auto" else args.lang
@@ -222,6 +230,7 @@ def main() -> int:
         model=args.model,
         lang=lang,
         model_dir=args.model_dir,
+        whisper_args=shlex.split(args.whisper_args) if args.whisper_args else None,
     )
 
     if tmpdir is not None:

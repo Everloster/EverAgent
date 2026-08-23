@@ -95,6 +95,7 @@ LLM 推理有三大物理瓶颈：
 
 ## 与本项目其他报告的关系
 
+- **podcast-learning 2026-08-04_rss-guigu101_shengying**（硅谷101 E247）：SGLang 发起人盛颖访谈——RadixAttention、与 vLLM 的「时间轴分野」、day zero 兼容、infra 即产品；本表 SGLang 行的一手口述补充
 - **vLLM_V1架构总览_深度解析_20260821**：vLLM 源码级学习系列锚点（概念页 [vllm_v1_architecture](wiki/concepts/vllm_v1_architecture.md)），把本页的 vLLM 行推进到源码级
 
 - **KV_Cache_深度解析_20260330**：理解 KV cache 是理解本概念的基础

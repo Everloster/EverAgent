@@ -17,6 +17,7 @@
 ### AI Infra / 开源商业化
 
 - [[2026-07-28_xiaoyuzhou-zhangxiaojun_youkaichao|对游凯超3小时访谈：开源Infra、和模型Co-design、"如果vLLM失败，我们会后悔一辈子"]]（episode_summary · 发布 2026-07-28，归档 2026-08-22）— 小宇宙「张小珺Jùn｜商业访谈录」Vol.148，3h00m26s，vLLM 三年史 / 仁慈的独裁者 / 模型-Infra co-design / Inferact 创业；与 ai-learning vLLM 源码线互为表里
+- [[2026-08-04_rss-guigu101_shengying|对话盛颖：xAI，Infra的浪漫，SGLang，开源，平权与「甄嬛传」]]（episode_summary · 发布 2026-08-04，归档 2026-08-23）— 硅谷101 E247，1h46m26s，SGLang/RadixArk vs vLLM/Inferact 双子星对照 / infra 即产品 / 平权；首跑循环幻觉 → VAD 修复的标志性案例
 
 ### 创业方法论 / 商业认知
 
@@ -90,6 +91,12 @@
 - [[entities/you-kaichao|游凯超]] — Inferact 联创兼首席科学家、vLLM 核心维护者（Vol.148 嘉宾；清华本博）
 - [[entities/inferact|Inferact]] — vLLM 核心团队创立的商业公司（Bring Inference into Action），1.5 亿美元种子轮、8 亿美元估值
 
+### 来自 2026-08-04 硅谷101 E247（盛颖期）
+
+- [[entities/sheng-ying|盛颖（Ying Sheng）]] — RadixArk 联创&CEO、SGLang 发起人、LMSYS 联创、xAI 前推理团队负责人（E247 嘉宾）
+- [[entities/radixark|RadixArk]] — SGLang 团队商业化公司（SGLang 推理 + Miles RL），1 亿美元种子轮、4 亿估值，Accel 领投
+- [[entities/sglang|SGLang]] — LMSYS 社区的开源推理引擎（RadixAttention；归社区所有，公司无 private fork）
+
 ## Concepts（核心概念）
 
 ### 来自 Vol.29 王小川系列
@@ -143,10 +150,14 @@
 - [[concepts/model-infra-codesign|模型×Infra×硬件 Co-design]] — 模型结构决定推理效率上界；RoPE / DeepSeek 双料模式 / 投机解码谱系
 - [[concepts/hardware-lottery|Hardware Lottery（系统彩票）]] — 算法须被系统高效实现才能存活（Sara Hooker 2020）
 
+### 来自 2026-08-04 硅谷101 E247（盛颖期）
+
+- [[concepts/radix-attention|RadixAttention（基数注意力）]] — 前缀树 + KV memory pool 做跨请求前缀复用；与 PagedAttention 互补
+
 ## Syntheses（跨期综合）
 
 （待 ≥3 概念综合时建立）
 
 ---
 
-*Last updated: 2026-08-22*
+*Last updated: 2026-08-23*

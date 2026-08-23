@@ -114,3 +114,16 @@
 - 方法备忘：小宇宙节目主页 SSR JSON 仅含最新 15 集；官方「加载更多」API 需登录 token（401）；**全量清单走 Apple Podcasts lookup 反查 feedUrl → RSS**，通用可复用
 - 同日扩面：小宇宙 app 内导出 OPML（官方功能）→ 归档为 [[curated-podcasts|精选播客清单]]（51 档节目，含公开 RSS；对外表述为精选清单）→ `scripts/fetch_show_indexes.py` 拉全部 51 档节目的全量单集索引入 `wiki/show-indexes/`（共 7,839 集，零失败；含喜马拉雅/fireside/transistor 等非小宇宙源）
 - 周更 cron 升级：由单节目（张小珺）改为全量刷新（`fetch_show_indexes.py`，每周一 09:47，cron id 01M0PF17S1J77J21T69Z7WZQJP），新集自动插入索引并提醒；「状态」列人工标记经链接 diff 保留（修过一次 [[wikilink|别名]] 竖线干扰状态列解析的 bug）
+
+## [2026-08-23] ingest | rss（Fireside）
+- 来源：硅谷101 · E247《对话盛颖：xAI，Infra的浪漫，SGLang，开源，平权与"甄嬛传"》（2026-08-04 发布）
+- 形式：**对谈**（采访陈茜 × 嘉宾盛颖：RadixArk 联创&CEO、SGLang 发起人、xAI 前推理团队负责人；上海交大 ACM→哥大→斯坦福 PhD）
+- 时长：1h46m26s（6387s）· 转录：5,578 段 / **34,164 汉字**（whisper.cpp / ggml-large-v3 / Metal / **--vad silero**）/ 语速 321 字/min · 音频 147MB（实测）
+- 报告：[[2026-08-04_rss-guigu101_shengying]]
+- pipeline：RSS 拿到频直链 → yt-dlp → whisper.cpp → Fireside shownotes（12 章节）→ 12 章并行润色 → 组装 polished（33,726 汉字）
+- **重大踩坑**：首跑无 VAD，whisper 在音乐/过场段陷入循环幻觉（约 00:39 起循环输出无关广告词，整段报废；音频本身完好）→ `--vad` 重跑恢复；教训已写入 AGENTS.md 已知局限 #5，`transcribe.py` 新增 `--whisper-args` 透传
+- 润色：修正约 200 处系统性误识别（SG Lane→SGLang、ReddixArc/Radi Shark→RadixArk、施琳/摄影→盛颖、一浪→Elon、Young Stoica→Ion Stoica、PSC→PhD 等）；约 60 处 [?]
+- 外部核验：RadixArk 1 亿美元种子/4 亿估值/Accel 领投（BusinessWire 官方稿，2026-05-05）；转写中「Axial/Excel 领投」系误识别
+- 核心框架：infra 即产品 / impact not making / RadixAttention / SGLang vs vLLM 时间轴分野 / day zero / 开源是空气 / 平权「赢不需要被解释」/ 世间的美好是存在的
+- 新增 entities：盛颖、RadixArk、SGLang；新增 concepts：RadixAttention
+- 与 [2026-07-28] 游凯超期构成双子星对照（vLLM/Inferact vs SGLang/RadixArk，同一伯克利圈子）；已交叉链接 ai-learning vLLM 概念页
