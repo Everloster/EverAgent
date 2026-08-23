@@ -56,3 +56,8 @@ philosophy-learning/books/儒法国家_中国历史新论_赵鼎新_2022.epub
 # 私有仓根目录的 VPS 管理档案（用泛化模式兜底，不在公开仓写出真实文件名）
 /*VPS*.md
 /*vps*.md
+
+# 外部工具自动生成的杂项（botlearn cron 路径配置错误会每天重建 .botlearn/；Qoder IDE 项目目录；来历不明的 0 字节文件）
+/.botlearn/
+/.qoder/
+/-l
