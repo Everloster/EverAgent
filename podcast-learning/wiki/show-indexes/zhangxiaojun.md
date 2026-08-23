@@ -1,9 +1,7 @@
-# 张小珺Jùn｜商业访谈录 — 全量单集索引（选题库）
+# 张小珺Jùn｜商业访谈录 — 全量单集索引
 
-> 节目：[小宇宙主页](https://www.xiaoyuzhoufm.com/podcast/626b46ea9cbbf0451cf5a962) ｜ 主播：张小珺 ｜ 出品：语言即世界工作室
-> 数据来源：官方 RSS（`https://feed.xyzfm.space/dk4yh3pkpjp3`，经 Apple Podcasts id1634356920 反查，免登录）
-> 拉取日期：2026-08-23 ｜ 总集数：154（2022-04-29 至今）
-> 用法：挑集数发给 agent 转写；「状态」列跟踪已处理单集。新集由周更 cron 扫描提醒。
+> 来源：官方 RSS（<https://feed.xyzfm.space/dk4yh3pkpjp3>）｜ 最近拉取：2026-08-23 ｜ 总集数：154
+> 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|

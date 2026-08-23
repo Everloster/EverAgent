@@ -145,7 +145,7 @@
 - 转录工具：本地 `scripts/transcribe.py`（whisper.cpp / ggml-large-v3）
 - 报告索引：reports/
 - 知识图谱：wiki/index.md
-- 选题库：[[wiki/zhangxiaojun-episode-index.md]]（张小珺节目 154 集全量索引 + 周更 cron 扫描）
+- 选题库：[[wiki/curated-podcasts.md]]（51 档精选播客）+ `wiki/show-indexes/`（全量单集索引，周更 cron 刷新；脚本 `scripts/fetch_show_indexes.py`）
 - 研究方法论：../METHODOLOGY.md
 
 ---
