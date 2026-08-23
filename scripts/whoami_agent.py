@@ -46,6 +46,7 @@ VENDOR_EMAIL = {
     "minimax-code": "noreply@minimaxi.com",
     "qoderclicn":  "noreply@qoder.com.cn",
     "zcode":       "noreply@z.ai",
+    "pi":          "noreply@pi.dev",
 }
 FALLBACK_EMAIL = "noreply@everloster.com"
 
@@ -66,6 +67,9 @@ CLI_RULES = [
     ("windsurf",    lambda: _has("CODEIUM_EDITOR_APP_ROOT")),
     ("qwen-code",   lambda: _has("QWEN_CODE")),
     ("aider",       lambda: _has("AIDER_API_KEY")),
+    # claude-code：CLAUDECODE/CLAUDE_CODE 为继承型 env（claude 的 shell 工具子进程均带），
+    # 放中后段让位给可能嵌套运行的其他 CLI 专有信号（同 pi/kimi-cli 让位原则）。
+    # 2026-08-24 修：5c4be6f 加 pi 时误删此行，致 cc-connect daemon 场景识别为 zsh-unknown。
     ("claude-code", lambda: _has("CLAUDECODE", "CLAUDE_CODE")),
     ("goose",       lambda: _has("GOOSE_PROVIDER")),
     # qoderclicn（QoderCN CLI，CN 渠道）：专有环境变量 QODERCN_CLI，进程链 comm=qoderclicn 兜底。
@@ -80,6 +84,12 @@ CLI_RULES = [
     ("kimi-cli",    lambda: _has("KIMI_CLI", "KIMI_CODE_CLI") or _proc_has("kimi")),
     # minimax-code（MiniMax Code 桌面 App，Electron）：进程链 comm=MiniMax Code Helper。
     ("minimax-code", lambda: _has("MINIMAX_CODE") or _proc_has("MiniMax Code")),
+    # pi（pi-coding-agent，OSS harness，官网 pi.dev）：会话环境自带 PI_CODING_AGENT=true
+    # 和 PI_SESSION_ID/PI_MODEL，专有且稳定，纯 env 判定即可——不加进程链兜底，
+    # 因 "pi" 二字太短，子串匹配会误中 pip 等进程。
+    # 放最后：PI_* 是环境继承型信号（pi 的 bash 工具会传给所有子进程），若别的
+    # CLI 嵌套运行在 pi 内，应让它们自己的专有信号先命中（同 trae 嵌套让位原则）。
+    ("pi",          lambda: _has("PI_CODING_AGENT", "PI_SESSION_ID")),
 ]
 
 
@@ -313,6 +323,9 @@ def detect_model(cli: str) -> str:
         return os.environ.get("GEMINI_MODEL", "unknown")
     if cli in ("cursor", "cursor-cli"):
         return os.environ.get("CURSOR_MODEL", "unknown")
+    if cli == "pi":
+        # pi 会话环境直接携带当前模型（PI_MODEL，如 glm-5.3），harness 暴露的会话事实源
+        return os.environ.get("PI_MODEL") or "unknown"
     if cli == "zcode":
         # env 可显式覆盖；默认读当日会话日志的真实模型（如 GLM-5.3）
         return (os.environ.get("ZCODE_MODEL") or _zcode_session_model() or "unknown")
