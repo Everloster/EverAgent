@@ -1,11 +1,12 @@
 # 声动早咖啡 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/q88qwmydeuw8>）｜ 最近拉取：2026-08-23 ｜ 总集数：1037
+> 来源：官方 RSS（<https://feed.xyzfm.space/q88qwmydeuw8>）｜ 最近拉取：2026-08-24 ｜ 总集数：1038
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
 | 22 | 2025-07-01 | 12m33s | [22.8 元袋装冰块进驻山姆，农夫山泉为何也盯上冰块生意？](https://www.xiaoyuzhoufm.com/episode/6863f40393fd2d72b80338a6?utm_source=rss) | — |
+| — | 2026-08-23 | 15m10s | [越卖越贵的「山下有松们」，如何持续抢占轻奢包袋市场？](https://www.xiaoyuzhoufm.com/episode/6a8ab3251352af56ff3a94ce?utm_source=rss) | — |
 | — | 2026-08-20 | 15m09s | [咖啡豆｜传统美食广场接连闭店，「大食代们」遇到哪些发展阻碍？](https://www.xiaoyuzhoufm.com/episode/6a86e5a0ef65145dfcc2a728?utm_source=rss) | — |
 | — | 2026-08-19 | 10m40s | [蓝箭航天完成中国首次陆地火箭回收，宇树科技市值超过 3000 亿](https://www.xiaoyuzhoufm.com/episode/6a85963eef65145dfcc21639?utm_source=rss) | — |
 | — | 2026-08-18 | 16m18s | [不爱直播带货的欧美消费者，为何在这家平台上大把花钱？](https://www.xiaoyuzhoufm.com/episode/6a8450685aeb2a5712e8caca?utm_source=rss) | — |

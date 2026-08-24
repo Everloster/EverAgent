@@ -1,10 +1,11 @@
 # 菠萝健康派 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/qe8egag9eycv>）｜ 最近拉取：2026-08-23 ｜ 总集数：121
+> 来源：官方 RSS（<https://feed.xyzfm.space/qe8egag9eycv>）｜ 最近拉取：2026-08-24 ｜ 总集数：122
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-08-23 | 1h21m | [刘方奇教授：肠癌越来越年轻，确诊后先别急着手术！vol.122](https://www.xiaoyuzhoufm.com/episode/6a89579c1352af56ff3a329c?utm_source=rss) | — |
 | — | 2026-08-16 | 1h19m | [罗敏敏教授：给大脑加上“分子开关”，抑郁、帕金森、阿尔茨海默能不能精准治疗？vol.121](https://www.xiaoyuzhoufm.com/episode/6a818ff436641f136d890176?utm_source=rss) | — |
 | — | 2026-08-12 | 1h16m | [赵立平教授：糖尿病可能还有“逆转”机会！vol.120](https://www.xiaoyuzhoufm.com/episode/6a7c9f5b36641f136d875548?utm_source=rss) | — |
 | — | 2026-08-09 | 54m33s | [王伟教授：壁虎断尾重生，人类有机会重获再生能力吗？vol.119](https://www.xiaoyuzhoufm.com/episode/6a785b11c4079d62c57fa8e9?utm_source=rss) | — |

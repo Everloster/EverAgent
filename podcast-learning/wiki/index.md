@@ -26,6 +26,7 @@
 ### 健康 / 营养科普
 
 - [[2026-07-14_bilibili-luge-gustav_breakfast|你到底该不该吃早餐？]]（episode_summary · 2026-07-14）— B 站鹿哥Gustav，观念考古 + 黎明现象
+- [[2026-08-24_xiaoyuzhou-boluo-jiankang_liufangqi|刘方奇教授：肠癌越来越年轻，确诊后先别急着手术！]]（episode_summary · 发布 2026-08-24，归档同日）— 小宇宙「菠萝健康派」vol.122，1h21m，遗传性肠癌 / 筛查年龄 / 保肛与造口 / 新辅助治疗 / 肛指检查
 
 ### 理财 / 中年生活规划
 
@@ -97,6 +98,11 @@
 - [[entities/radixark|RadixArk]] — SGLang 团队商业化公司（SGLang 推理 + Miles RL），1 亿美元种子轮、4 亿估值，Accel 领投
 - [[entities/sglang|SGLang]] — LMSYS 社区的开源推理引擎（RadixAttention；归社区所有，公司无 private fork）
 
+### 来自 2026-08-24 菠萝健康派 vol.122（刘方奇期）
+
+- [[entities/liu-fangqi|刘方奇]] — 复旦大学附属肿瘤医院大肠外科副主任医师（vol.122 嘉宾；遗传性肠癌/保肛/新辅助方向）
+- [[entities/li-zhizhong|李治中（菠萝）]] — 《菠萝健康派》主播，杜克癌症生物学博士、科普作家（@菠萝因子）
+
 ## Concepts（核心概念）
 
 ### 来自 Vol.29 王小川系列
@@ -154,10 +160,15 @@
 
 - [[concepts/radix-attention|RadixAttention（基数注意力）]] — 前缀树 + KV memory pool 做跨请求前缀复用；与 PagedAttention 互补
 
+### 来自 2026-08-24 菠萝健康派 vol.122（刘方奇期）
+
+- [[concepts/hereditary-colorectal-cancer|遗传性肠癌（Lynch/FAP/PJS）]] — 胚系突变、5%、生殖阻断与 Lynch 的免疫治疗新价值
+- [[concepts/neoadjuvant-watch-and-wait|新辅助治疗与「观察等待」]] — 确诊后先别急着手术；dMMR 三年 DFS 100%（自述口径）
+
 ## Syntheses（跨期综合）
 
 （待 ≥3 概念综合时建立）
 
 ---
 
-*Last updated: 2026-08-23*
+*Last updated: 2026-08-24*

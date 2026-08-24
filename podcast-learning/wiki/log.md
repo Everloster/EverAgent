@@ -127,3 +127,15 @@
 - 核心框架：infra 即产品 / impact not making / RadixAttention / SGLang vs vLLM 时间轴分野 / day zero / 开源是空气 / 平权「赢不需要被解释」/ 世间的美好是存在的
 - 新增 entities：盛颖、RadixArk、SGLang；新增 concepts：RadixAttention
 - 与 [2026-07-28] 游凯超期构成双子星对照（vLLM/Inferact vs SGLang/RadixArk，同一伯克利圈子）；已交叉链接 ai-learning vLLM 概念页
+
+## [2026-08-24] ingest | xiaoyuzhou
+- 来源：小宇宙 · 菠萝健康派 · vol.122《刘方奇教授：肠癌越来越年轻，确诊后先别急着手术！》（2026-08-24 发布，周更扫描 cron 捕获）
+- 形式：**对谈**（主播李治中/菠萝 × 嘉宾刘方奇：复旦大学附属肿瘤医院大肠外科副主任医师，师从蔡三军，从业 16 年）
+- 时长：1h21m34s（4894s）· 转录：3,358 段 / **26,467 汉字**（whisper.cpp / ggml-large-v3 / Metal / --vad silero）/ 语速 324 字/min
+- 报告：[[2026-08-24_xiaoyuzhou-boluo-jiankang_liufangqi]]
+- pipeline：transcribe.py（yt-dlp + whisper.cpp + VAD）→ 小宇宙 shownotes（10 章节）→ 10 章并行润色 → 组装 polished（26,512 汉字）
+- 内容：遗传性肠癌（Lynch/FAP/PJS、胚系检测、三代试管生殖阻断）/ 肠癌年轻化与筛查年龄 / 保肛与造口去污名化 / 新辅助治疗与观察等待 / 肛指检查价值 / 外科医生的温度
+- 医学术语误识别密集修正约 200 处（邻居综合症→Lynch、迭面骂/DMMA→dMMR、心腹中→新辅助、细肉→息肉、灶口→造口、宝刚→保肛、聚钢门→距肛门 等）；约 40 处 [?]
+- 新增 entities：刘方奇、李治中（菠萝）
+- 新增 concepts：遗传性肠癌（Lynch/FAP/PJS）、新辅助治疗与观察等待
+- 证据纪律：医学数字绝大部分为嘉宾个人临床口径自述，报告已做证据等级声明 + 不构成医疗建议；「dMMR 新辅助免疫三年 DFS 100%」等待一手文献追踪（open-questions 问 2）
