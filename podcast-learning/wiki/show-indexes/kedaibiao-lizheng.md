@@ -1,10 +1,11 @@
 # 课代表立正 — 全量单集索引
 
-> 来源：官方 RSS（<https://feeds.transistor.fm/kedaibiao>）｜ 最近拉取：2026-08-23 ｜ 总集数：522
+> 来源：官方 RSS（<https://feeds.transistor.fm/kedaibiao>）｜ 最近拉取：2026-08-24 ｜ 总集数：523
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-08-20 | 7m09s | [E523. 我们把一个世界级的AI大会带到了上海！](https://share.transistor.fm/s/1127d3e1) | — |
 | — | 2026-08-19 | 20m51s | [E522. AI能“帮”你成为超级个体，但顺序别搞反了](https://share.transistor.fm/s/7e14748f) | — |
 | — | 2026-08-16 | 10m31s | [E521. 吐槽大厂，做成七位数生意｜The Tech Roast Show访谈](https://share.transistor.fm/s/b977b554) | — |
 | — | 2026-08-11 | 1h22m | [E520. AI时代，找工作的难度，远超你想象｜Jobright创始人分享一线求职数据](https://share.transistor.fm/s/821be88b) | — |

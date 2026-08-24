@@ -1,10 +1,11 @@
 # 十字路口Crossing — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/68fyjknth9hj>）｜ 最近拉取：2026-08-23 ｜ 总集数：125
+> 来源：官方 RSS（<https://feed.xyzfm.space/68fyjknth9hj>）｜ 最近拉取：2026-08-24 ｜ 总集数：126
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-08-23 | 1h03m | [22 岁的具身 CEO、5 轮融资、过亿美元、“不知天有多高”、“一年吃了十年的苦”｜对谈黄一：萝博派对创始人/CEO](https://www.xiaoyuzhoufm.com/episode/6a8aab34ef65145dfcc3ea11?utm_source=rss) | — |
 | — | 2026-08-09 | 56m24s | [「模型能力已经够了，要卷就卷 infra」｜对谈戴冠兰：Runta 创始人](https://www.xiaoyuzhoufm.com/episode/6a773808c4079d62c57f5802?utm_source=rss) | — |
 | — | 2026-08-02 | 51m12s | [「热爱一个行业15年的理由是什么？」｜对谈汪天凡：我要投真正的快乐、投最纯的愿景、投人性的光辉【公路播客】](https://www.xiaoyuzhoufm.com/episode/6a6eb9e71b5e24969ce77ab5?utm_source=rss) | — |
 | — | 2026-07-26 | 49m34s | [11 年，110 亿美金，然后呢？｜对话 Airwallex 吴恺：AI 时代，下一站 1000 亿](https://www.xiaoyuzhoufm.com/episode/6a6320d16356eb2d9be7bd07?utm_source=rss) | — |

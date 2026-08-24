@@ -1,6 +1,6 @@
 # 天真不天真 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/mcklbwxjdvfu>）｜ 最近拉取：2026-08-23 ｜ 总集数：56
+> 来源：官方 RSS（<https://feed.xyzfm.space/mcklbwxjdvfu>）｜ 最近拉取：2026-08-24 ｜ 总集数：56
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |

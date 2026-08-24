@@ -124,6 +124,19 @@
   - 重要修正：「Axial/Excel 领投」→ Accel（依官方新闻稿）；简介误写清华 → 实为上海交大 ACM 班（以转写为准）；约 200 处误识别修正 + 60 处 [?]
   - **跨项目联动**：与游凯超期构成开源推理引擎双子星对照；链接 ai-learning vLLM 概念页
 
+- **刘方奇教授：肠癌越来越年轻，确诊后先别急着手术！**（2026-08-24 发布并归档）
+  - 来源：小宇宙 · 菠萝健康派 · vol.122（周更扫描 cron 捕获的新集）
+  - 嘉宾：刘方奇（复旦大学附属肿瘤医院大肠外科副主任医师，师从蔡三军，从业 16 年）—— 主播李治中（菠萝）对谈
+  - 时长：1h21m34s（4894s）/ 字数：26,467 汉字（raw）/ 26,512 汉字（polished）/ 3,358 段 / 语速 324 字/min
+  - 路径：`reports/2026-08-24_xiaoyuzhou-boluo-jiankang_liufangqi.md`
+  - 转录原文：`reports/transcripts/2026-08-24_xiaoyuzhou-boluo-jiankang_liufangqi.transcript.txt`
+  - 润色版：`reports/transcripts/2026-08-24_xiaoyuzhou-boluo-jiankang_liufangqi.polished.txt`（按 shownotes 10 章节重组）
+  - 状态：archived（**polished**，Kimi 10 章并行分章润色；VAD 转写一次通过）
+  - 内容：遗传性肠癌（Lynch/FAP/PJS、胚系检测、三代试管生殖阻断）/ 肠癌年轻化与 45 岁筛查线 / 保肛与造口去污名化 / 新辅助治疗与观察等待（dMMR 三年 DFS 100% 自述）/ 肛指检查 1/3 可摸到 / 外科医生的温度
+  - 新增 entities：刘方奇、李治中（菠萝）
+  - 新增 concepts：遗传性肠癌、新辅助治疗与观察等待
+  - 重要修正：医学术语系统性误识别约 200 处（邻居综合症→Lynch、DMMA→dMMR、心腹中→新辅助、细肉→息肉、灶口→造口、宝刚→保肛 等）；约 40 处 [?]；证据纪律：医学数字为嘉宾自述口径，报告含「不构成医疗建议」声明
+
 ## ⚠️ 边界（防幻觉）
 
 以下主题已有报告，禁止重复生成：
@@ -148,6 +161,7 @@
 - vLLM 项目口述史 / 仁慈的独裁者治理 / Inferact 创业 / 模型-Infra co-design / hardware lottery（详见 2026-07-28 游凯超期 + entities/you-kaichao.md、entities/inferact.md + concepts/model-infra-codesign.md、hardware-lottery.md）
 - 游凯超 / Inferact 实体（详见 entities/）
 - 盛颖 / RadixArk / SGLang 实体、RadixAttention 概念（详见 2026-08-04 硅谷101 E247 报告 + entities/sheng-ying.md、radixark.md、sglang.md + concepts/radix-attention.md）
+- 刘方奇 / 李治中（菠萝）实体、遗传性肠癌 / 新辅助治疗与观察等待概念（详见 2026-08-24 菠萝健康派 vol.122 报告 + entities/liu-fangqi.md、li-zhizhong.md + concepts/hereditary-colorectal-cancer.md、neoadjuvant-watch-and-wait.md）
 
 ---
 
@@ -167,4 +181,4 @@
 
 ---
 
-*Last updated: 2026-08-23 (added 2026-08-04 硅谷101 E247 盛颖期 + 3 entities + 1 concept；VAD 循环幻觉教训入 AGENTS.md；与游凯超期双子星对照)*
+*Last updated: 2026-08-24 (added 菠萝健康派 vol.122 刘方奇期 + 2 entities + 2 concepts；本期由周更 cron 捕获)*
