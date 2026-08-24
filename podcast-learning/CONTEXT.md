@@ -137,6 +137,19 @@
   - 新增 concepts：遗传性肠癌、新辅助治疗与观察等待
   - 重要修正：医学术语系统性误识别约 200 处（邻居综合症→Lynch、DMMA→dMMR、心腹中→新辅助、细肉→息肉、灶口→造口、宝刚→保肛 等）；约 40 处 [?]；证据纪律：医学数字为嘉宾自述口径，报告含「不构成医疗建议」声明
 
+- **帆书讲《炎症》：身体出现这些信号，可能是炎症在提醒你！**（2026-08-21 发布，2026-08-25 归档）
+  - 来源：B 站 · 帆书视频播客 · 第49期（BV1j18i6VEtn）
+  - 形式：讲书/科普对谈（帆书主播[疑为樊登?] × 金博医生[三甲]）
+  - 时长：17m50s（1070s）/ 字数：5,445 汉字（raw）/ 5,971 汉字（polished）/ 602 段 / 语速 305 字/min
+  - 路径：`reports/2026-08-21_bilibili-fanshu_yanzheng.md`
+  - 转录原文：`reports/transcripts/2026-08-21_bilibili-fanshu_yanzheng.transcript.txt`
+  - 润色版：`reports/transcripts/2026-08-21_bilibili-fanshu_yanzheng.polished.txt`（按内容话题重组 8 节）
+  - 状态：archived（**polished**，Kimi 通读自润 + 官方字幕交叉校验）
+  - pipeline：opencli bilibili download → ffmpeg → whisper.cpp + VAD → 官方字幕交叉校验（首次完整走通「字幕亦错」标注流程）
+  - 内容：慢性炎症/隐匿炎症/自查三法（C 反应蛋白·腰围·步速握力）/ 炎症×癌症×心血管 / 肥胖与巨噬细胞 / 炎性衰老与阿尔茨海默 / 餐桌抗炎四件套（脂肪·盐·糖·纤维）
+  - 新增 concepts：慢性炎症与隐匿的炎症
+  - 实体备注：金博医生与帆书主播身份信息不足，暂未建实体页
+
 ## ⚠️ 边界（防幻觉）
 
 以下主题已有报告，禁止重复生成：
@@ -162,6 +175,7 @@
 - 游凯超 / Inferact 实体（详见 entities/）
 - 盛颖 / RadixArk / SGLang 实体、RadixAttention 概念（详见 2026-08-04 硅谷101 E247 报告 + entities/sheng-ying.md、radixark.md、sglang.md + concepts/radix-attention.md）
 - 刘方奇 / 李治中（菠萝）实体、遗传性肠癌 / 新辅助治疗与观察等待概念（详见 2026-08-24 菠萝健康派 vol.122 报告 + entities/liu-fangqi.md、li-zhizhong.md + concepts/hereditary-colorectal-cancer.md、neoadjuvant-watch-and-wait.md）
+- 慢性炎症与隐匿的炎症概念（详见 2026-08-21 帆书视频播客 49 期报告 + concepts/chronic-inflammation.md）
 
 ---
 
@@ -181,4 +195,4 @@
 
 ---
 
-*Last updated: 2026-08-24 (added 菠萝健康派 vol.122 刘方奇期 + 2 entities + 2 concepts；本期由周更 cron 捕获)*
+*Last updated: 2026-08-25 (added 帆书视频播客 49《炎症》讲书期 + 1 concept；官方字幕交叉校验流程首次完整走通)*

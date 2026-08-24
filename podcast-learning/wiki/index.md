@@ -27,6 +27,7 @@
 
 - [[2026-07-14_bilibili-luge-gustav_breakfast|你到底该不该吃早餐？]]（episode_summary · 2026-07-14）— B 站鹿哥Gustav，观念考古 + 黎明现象
 - [[2026-08-24_xiaoyuzhou-boluo-jiankang_liufangqi|刘方奇教授：肠癌越来越年轻，确诊后先别急着手术！]]（episode_summary · 发布 2026-08-24，归档同日）— 小宇宙「菠萝健康派」vol.122，1h21m，遗传性肠癌 / 筛查年龄 / 保肛与造口 / 新辅助治疗 / 肛指检查
+- [[2026-08-21_bilibili-fanshu_yanzheng|帆书讲《炎症》：身体出现这些信号，可能是炎症在提醒你]]（episode_summary · 发布 2026-08-21，归档 2026-08-25）— B 站帆书视频播客 49，18min，慢性炎症 / 隐匿炎症自查 / 炎性衰老 / 餐桌抗炎；官方字幕交叉校验样板
 
 ### 理财 / 中年生活规划
 
@@ -165,10 +166,14 @@
 - [[concepts/hereditary-colorectal-cancer|遗传性肠癌（Lynch/FAP/PJS）]] — 胚系突变、5%、生殖阻断与 Lynch 的免疫治疗新价值
 - [[concepts/neoadjuvant-watch-and-wait|新辅助治疗与「观察等待」]] — 确诊后先别急着手术；dMMR 三年 DFS 100%（自述口径）
 
+### 来自 2026-08-21 帆书视频播客 49（炎症期）
+
+- [[concepts/chronic-inflammation|慢性炎症与隐匿的炎症]] — 「无声的小火」；自查三法（C 反应蛋白/腰围/步速握力）
+
 ## Syntheses（跨期综合）
 
 （待 ≥3 概念综合时建立）
 
 ---
 
-*Last updated: 2026-08-24*
+*Last updated: 2026-08-25*

@@ -7,6 +7,7 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-08-25 | [身体出现这些信号，可能是炎症在提醒你！——帆书讲《炎症》](../podcast-learning/reports/2026-08-21_bilibili-fanshu_yanzheng.md) | podcast-learning |
 | 2026-08-24 | [刘方奇教授：肠癌越来越年轻，确诊后先别急着手术！](../podcast-learning/reports/2026-08-24_xiaoyuzhou-boluo-jiankang_liufangqi.md) | podcast-learning |
 | 2026-08-24 | [AI 行业日报 · 2026-08-24](../web-surfing/reports/ai-news-daily-2026-08-24.md) | web-surfing |
 | 2026-08-23 | [对话盛颖：xAI，Infra的浪漫，SGLang，开源，平权与「甄嬛传」](../podcast-learning/reports/2026-08-04_rss-guigu101_shengying.md) | podcast-learning |
@@ -31,7 +32,6 @@
 | 2026-07-20 | [AI 越来越强，我们给它搭的「脚手架」会被自己淘汰吗？—— Bitter Lesson × Harness 科普讲解](../ai-learning/reports/knowledge_reports/Bitter_Lesson_vs_Harness_科普讲解_20260720.md) | ai-learning |
 | 2026-07-19 | [重估一切，文艺复兴——2026H1 AI行业观察（屠龙之术 · 庄明浩单口）](../podcast-learning/reports/2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review.md) | podcast-learning |
 | 2026-07-19 | [语言模型中的全局工作空间（J-space / J-lens）——Anthropic 2026 可解释性研究精读](../ai-learning/reports/paper_analyses/45_global_workspace_jspace_2026.md) | ai-learning |
-| 2026-07-19 | [不要训模型，进化 Harness——Karpathy 700 次 Loop 实验 & Niklaus 一手实验精读](../ai-learning/reports/paper_analyses/46_evolve_the_harness_2026.md) | ai-learning |
 
 ## 🤖 AI Learning（97 篇）
 
@@ -244,10 +244,11 @@
 | 2026-03-26 | [Physiology of Growth Hormone Secretion during Sleep (1996) 精读](../biology-learning/reports/paper_analyses/P09_gh_sleep_physiology_1996.md) | — |
 | 2026-03-23 | [晚型人作息与力量训练深度研究](../biology-learning/reports/concept_reports/晚型人作息与力量训练_深度研究报告.md) | — |
 
-## 🎙️ Podcast Learning（13 篇）
+## 🎙️ Podcast Learning（14 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-08-25 | [身体出现这些信号，可能是炎症在提醒你！——帆书讲《炎症》](../podcast-learning/reports/2026-08-21_bilibili-fanshu_yanzheng.md) | — |
 | 2026-08-24 | [刘方奇教授：肠癌越来越年轻，确诊后先别急着手术！](../podcast-learning/reports/2026-08-24_xiaoyuzhou-boluo-jiankang_liufangqi.md) | — |
 | 2026-08-23 | [对话盛颖：xAI，Infra的浪漫，SGLang，开源，平权与「甄嬛传」](../podcast-learning/reports/2026-08-04_rss-guigu101_shengying.md) | — |
 | 2026-08-22 | [对游凯超3小时访谈：开源Infra、和模型Co-design、「如果vLLM失败，我们会后悔一辈子」](../podcast-learning/reports/2026-07-28_xiaoyuzhou-zhangxiaojun_youkaichao.md) | — |
