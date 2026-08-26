@@ -9,7 +9,6 @@ updated_on: "2026-04-15"
 # ToA 范式 · CLI 原生论 · 硅碳加速论
 
 > 生成日期：2026-04-15 | 难度：⭐⭐⭐（需要 LLM Agent / 产品范式基础）
-> 基于通用模板：[SKILL_TEMPLATES.md](../../docs/SKILL_TEMPLATES.md) · 模板 B（概念深度解析 5 层模型，扩展版）
 
 ---
 

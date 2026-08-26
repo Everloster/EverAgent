@@ -18,7 +18,7 @@
 | **A 知识研究** | ai / cs / philosophy / psychology / biology | 对话启发式学习，真读原文，产出高质量报告 |
 | **B 代码实践** | ai-practice | 各类 AI 技术的低成本可运行 demo + 教学笔记 |
 | **C 播客学习** | podcast-learning | 发链接 → 本地转写 → 润色 → 总结/讨论 → 报告 |
-| **D 开源研究** | github-trending-analyzer | 发 repo 链接 → 输出/更新研究报告（自带脚本与协议） |
+| **D 开源研究** | github-trending-analyzer | 发 repo 链接 → 默认轻量介绍（口头讲清，不落文件）；明确要"出报告/深挖"才跑真 repo 研究（自带脚本与协议） |
 | **E 上网冲浪** | web-surfing | 发上网需求 → opencli 抓公开数据 → 清单/报告；沉淀站点技能 |
 | **F 基础设施与设备** | infra + VPS 档案（🔒 私有仓 EverAgent-infra） | 设备/VPS 出问题 → 实测修复 → 设备档案沉淀 |
 

@@ -18,8 +18,10 @@ from pathlib import Path
 
 # Defaults are intentionally loose:
 # - Name is agent-defined per runtime (do NOT hardcode a single model name).
-# - Email must be a vendor noreply address; exact domain can be overridden by env/CLI.
-DEFAULT_EMAIL = "noreply@openai.com"
+# - Email must be a vendor noreply address; the exact domain is resolved
+#   dynamically from scripts/whoami_agent.py (the current-agent single source of
+#   truth), never hardcoded here — a fixed vendor domain drifts every time the
+#   active CLI/model changes (e.g. openai -> trae).
 ENV_NAME_KEYS = ("EVERAGENT_GIT_NAME", "AGENT_GIT_NAME")
 ENV_EMAIL_KEYS = ("EVERAGENT_GIT_EMAIL", "AGENT_GIT_EMAIL")
 
@@ -71,6 +73,35 @@ def read_git_config(key: str) -> str:
     return result.stdout.strip()
 
 
+def _whoami_email() -> str | None:
+    """Resolve the current agent's vendor noreply email from whoami_agent.py.
+
+    whoami_agent.py is the single source of truth for committer identity
+    (docs/PROTOCOL_COMMON.md §C). Resolving the expected email here — instead of
+    hardcoding a vendor domain — keeps this validator in step with whatever CLI/
+    model is actually running. Returns None when unresolved (script missing,
+    error, `*-unknown`, or non-noreply output); validate then falls back to the
+    generic "must contain noreply@" rule rather than a specific-domain match.
+    """
+    script = Path(__file__).resolve().parent / "whoami_agent.py"
+    if not script.exists():
+        return None
+    try:
+        result = subprocess.run(
+            [sys.executable, str(script), "--email"],
+            check=False,
+            capture_output=True,
+            text=True,
+            timeout=15,
+        )
+    except (OSError, subprocess.SubprocessError):
+        return None
+    email = result.stdout.strip()
+    if not email or email.endswith("-unknown") or "noreply@" not in email:
+        return None
+    return email
+
+
 def expected_author() -> tuple[str, str]:
     name, email = EXPECTED_AUTHOR_NAME, EXPECTED_AUTHOR_EMAIL
     for key in ENV_AUTHOR_NAME_KEYS:
@@ -117,7 +148,7 @@ def expected_email(cli_value: str | None) -> str | None:
     _, email = _read_expected_from_agents_md()
     if email:
         return email
-    return DEFAULT_EMAIL
+    return _whoami_email()
 
 
 def command_show(args: argparse.Namespace) -> int:
@@ -191,3 +222,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
+
