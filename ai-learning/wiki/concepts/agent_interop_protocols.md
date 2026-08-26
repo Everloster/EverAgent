@@ -84,7 +84,6 @@
 - [agent_systems.md](./agent_systems.md) — ReAct Loop · Function Calling · MCP 协议
 - [test_time_compute.md](./test_time_compute.md) — Test-Time Scaling Laws
 - [agent_orchestration.md](./agent_orchestration.md) — MIT 2026 三主线之一
-- [agent_skill_ecosystem.md](./agent_skill_ecosystem.md) — Skills 与 AGENTS.md 同属元信息层
 
 ---
 
