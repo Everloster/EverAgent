@@ -139,7 +139,7 @@ def reward_format(completions, **kwargs):
 - **DeepSeek-R1**：[DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via RL](https://arxiv.org/abs/2501.12948)（GRPO 的大规模应用）
 - **PPO 原论文**：[Proximal Policy Optimization Algorithms](https://arxiv.org/abs/1707.06347)（理解 PPO 再看 GRPO 差异）
 - **TRL 文档**：[GRPOTrainer](https://huggingface.co/docs/trl/grpo_trainer)
-- **T060 配套报告**：[推理模型三大流派详解_20260621.md](../../ai-learning/reports/knowledge_reports/推理模型三大流派详解_20260621.md) §3.3 / §4.4 — GRPO 在 R1 中的工程应用
+- **T060 配套报告**：[推理模型三大流派详解_20260621.md](../../../ai-learning/reports/knowledge_reports/推理模型三大流派详解_20260621.md) §3.3 / §4.4 — GRPO 在 R1 中的工程应用
 
 ---
 
@@ -147,5 +147,5 @@ def reward_format(completions, **kwargs):
 
 | exp_id | 范围 | 路径 |
 |--------|------|------|
-| exp_004 | Qwen2.5-3B + GSM8K（真实 LLM） | [experiments/exp_004_qwen25_grpo_finetune.md](../experiments/exp_004_qwen25_grpo_finetune.md) |
-| exp_008 | toy 字符级 policy（CPU 缩尺） | [experiments/exp_008_grpo_simulation.md](../experiments/exp_008_grpo_simulation.md) |
+| exp_004 | Qwen2.5-3B + GSM8K（真实 LLM） | [experiments/exp_004_qwen25_grpo_finetune.md](../../experiments/exp_004_qwen25_grpo_finetune.md) |
+| exp_008 | toy 字符级 policy（CPU 缩尺） | [experiments/exp_008_grpo_simulation.md](../../experiments/exp_008_grpo_simulation.md) |

@@ -302,7 +302,7 @@ Rich Sutton (RL 奠基人)
 2. Kaplan et al. (2020) "Scaling Laws for Neural Language Models" — Bitter Lesson 的数学化
 3. Silver et al. (2017) "AlphaGo Zero" — Bitter Lesson 的围棋实证
 4. Sara Hooker (2021) "The Hardware Lottery" — 硬件形态对方法选择的影响（补充视角）
-5. [AI发展时间线](../roadmap/AI_Development_Timeline.md) — 项目内的 20 年 AI 历史整理
+5. [AI发展时间线](../../roadmap/AI_Development_Timeline.md) — 项目内的 20 年 AI 历史整理
 
 ---
 

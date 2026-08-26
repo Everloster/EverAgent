@@ -1,7 +1,7 @@
 # Test-time Compute
 
 > 所属分类：核心概念（Core Concept）
-> 相关报告：[Test_Time_Compute_深度解析_20260409.md](../reports/knowledge_reports/Test_Time_Compute_深度解析_20260409.md) / [推理模型三大流派详解_20260621.md](../reports/knowledge_reports/推理模型三大流派详解_20260621.md)
+> 相关报告：[Test_Time_Compute_深度解析_20260409.md](../../reports/knowledge_reports/Test_Time_Compute_深度解析_20260409.md) / [推理模型三大流派详解_20260621.md](../../reports/knowledge_reports/推理模型三大流派详解_20260621.md)
 > 关联概念：Chain-of-Thought / PRM / MCTS / GRPO / RLHF
 
 ## 三大流派（2024-2026）

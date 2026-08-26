@@ -582,7 +582,7 @@ ljg-skills（工程层）
 - **本资料性质**：仅供个人学习、研究用途，遵循《著作权法》第 24 条合理使用原则。
 - **完整转录**：原始转录稿 `reports/transcripts/2026-07-09_xiaoyuzhou-mingjing-diandian_lijigang.transcript.txt` 与润色稿 `...polished.txt` 保留在仓库中（35,430 汉字 / 36 章节）。
 - **引用边界**：本报告所有原话引用每条 ≤ 3 句 + 评价/分析，属合理使用。
-- **下架请求**：如版权方认为内容超出合理使用范围，请联系项目维护者（详见 [COPYRIGHT.md](./COPYRIGHT.md)）。
+- **下架请求**：如版权方认为内容超出合理使用范围，请联系项目维护者（详见 [COPYRIGHT.md](../COPYRIGHT.md)）。
 
 ---
 
