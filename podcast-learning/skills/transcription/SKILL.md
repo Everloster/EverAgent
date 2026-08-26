@@ -1,6 +1,6 @@
 # Skill: transcription — 本地转写 + 润色规范
 
-> 通用研究方法论见根 [METHODOLOGY.md](../../METHODOLOGY.md)（强制）。本文件为领域特化部分。
+> 通用研究方法论见根 [METHODOLOGY.md](../../../METHODOLOGY.md)（强制）。本文件为领域特化部分。
 > 目标：把一个播客/视频链接（或本地音频）变成可读、忠实的原文，供后续总结与讨论。
 
 ---

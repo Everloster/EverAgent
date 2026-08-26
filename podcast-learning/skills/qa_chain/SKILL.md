@@ -1,6 +1,6 @@
 # Skill: 问答链（Q-A chain）— 把一期播客拆成提问链
 
-> 通用研究方法论见根 [METHODOLOGY.md](../../METHODOLOGY.md)（强制），本文件为领域特化部分。
+> 通用研究方法论见根 [METHODOLOGY.md](../../../METHODOLOGY.md)（强制），本文件为领域特化部分。
 > 前置：已有 `reports/transcripts/{slug}.polished.txt`。**一切事实以转写原文为准**（同 episode_analysis 红线）。
 > 思想来源：李继刚 [ljg-qa](https://github.com/lijigang/ljg-skills)。已按本项目纪律改造：
 > A 的每个事实性断言必须能指回转写原文（标章节/大致时间戳），禁止用模型常识"补全"嘉宾没说过的话。

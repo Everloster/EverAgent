@@ -143,7 +143,7 @@ ai-learning/
 - [Scaling Laws 深度解析](./reports/knowledge_reports/Scaling_Laws_深度解析.md) — Kaplan 幂律·Chinchilla 修正
 - [LoRA 深度解析](./reports/knowledge_reports/LoRA_深度解析.md) — 低秩适应·QLoRA·DoRA
 - [AI关键人物图谱](./reports/knowledge_reports/AI关键人物图谱.md) — 研究者生涯与机构演化
-- [Agent Harness 三大设计流派解析](./reports/knowledge_reports/Agent_Harness_三大设计流派解析_20260422.md) — Harness 工程对比
+- [Agent Harness 三大设计流派解析](./reports/knowledge_reports/Agent_Harness_三大设计流派解析.md) — Harness 工程对比
 - [Agent Skills 生态深度解析](./reports/knowledge_reports/Agent_Skills_生态深度解析.md) — Skills 作为可复用组件
 - [Agent Memory 系统深度解析](./reports/knowledge_reports/Agent_Memory_系统深度解析.md) — 会话记忆与上下文工程
 - [Agent 心跳检测与实时 Dashboard 设计](./reports/knowledge_reports/Agent_心跳检测与实时Dashboard设计.md) — 可观测性与事件流

@@ -1,6 +1,6 @@
 # Skill: episode_analysis — 播客总结/报告模板
 
-> 通用研究方法论与「思考与追问」要求见根 [METHODOLOGY.md](../../METHODOLOGY.md)（强制）。本文件为领域特化部分。
+> 通用研究方法论与「思考与追问」要求见根 [METHODOLOGY.md](../../../METHODOLOGY.md)（强制）。本文件为领域特化部分。
 > 前置：已有 `reports/transcripts/{slug}.transcript.txt`（及润色稿）。报告一切事实以转写原文为准。
 
 ---
