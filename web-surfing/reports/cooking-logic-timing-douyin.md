@@ -1,3 +1,12 @@
+---
+title: "炒菜逻辑：家常菜为什么比不过饭店香味——调料下锅时机全解"
+domain: "web-surfing"
+report_type: "knowledge_report"
+status: "completed"
+updated_on: "2026-07-29"
+semantic_tags: ["cooking", "douyin", "transcription"]
+---
+
 # 炒菜逻辑：家常菜为什么比不过饭店香味——调料下锅时机全解
 
 > **来源**：抖音视频《炒菜逻辑：终于明白家常菜比不上饭店菜品香味的原因，原来是调料下锅时机出错了》(作者：奇妙科普,`aweme_id=7667117596784856370`，时长约 6 分钟）。

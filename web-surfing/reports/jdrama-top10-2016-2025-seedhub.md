@@ -1,3 +1,12 @@
+---
+title: "十年封神日剧 TOP10(2016–2025)—— SeedHub 对应资源索引"
+domain: "web-surfing"
+report_type: "knowledge_report"
+status: "completed"
+updated_on: "2026-07-29"
+semantic_tags: ["jdrama", "seedhub", "douyin"]
+---
+
 # 十年封神日剧 TOP10(2016–2025)—— SeedHub 对应资源索引
 
 > **任务来源**：抖音视频《10年封神日剧TOP10！全是9分神作，剧荒直接存》(作者：酷猫影视笔记，`aweme_id=7667183346656513315`)。
