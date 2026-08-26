@@ -38,7 +38,7 @@
 | 📚 [Philosophy Learning](./philosophy-learning/) | 22 篇 | 20/14/1 |
 | 🧠 [Psychology Learning](./psychology-learning/) | 17 篇 | 13/13/0 |
 | 🧬 [Biology Learning](./biology-learning/) | 17 篇 | 13/9/0 |
-| ⚗️ [AI Practice](./ai-practice/) | 0 篇 | 9/1/0 |
+| ⚗️ [AI Practice](./ai-practice/) | 9 篇 | 9/1/0 |
 | 🎙️ [Podcast Learning](./podcast-learning/) | 14 篇 | 34/26/0 |
 <!-- AUTO-OVERVIEW:END -->
 

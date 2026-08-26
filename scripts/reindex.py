@@ -53,8 +53,19 @@ def count_md(path: Path) -> int:
 
 def domain_stats(domain: str) -> dict[str, int]:
     base = ROOT / domain
+    # ai-practice（B 类）产出形态是 experiments/ 教学笔记（exp_NNN_*.md），
+    # 不是 reports/。其余领域的"报告"都在 reports/。
+    if domain == "ai-practice":
+        exp = base / "experiments"
+        reports = (
+            sum(1 for p in exp.glob("exp_*.md") if p.is_file())
+            if exp.exists()
+            else 0
+        )
+    else:
+        reports = count_md(base / "reports")
     return {
-        "reports": count_md(base / "reports"),
+        "reports": reports,
         "concepts": count_md(base / "wiki" / "concepts"),
         "entities": count_md(base / "wiki" / "entities"),
         "syntheses": count_md(base / "wiki" / "syntheses"),
@@ -127,10 +138,18 @@ def parse_report(path: Path) -> dict:
                 break
     if not info["title"]:
         info["title"] = path.stem
+    # 日期来源优先级：frontmatter updated_on > 文件名内的 YYYY-MM-DD > 文件 mtime。
+    # 文件名日期专治 web-surfing 日报（ai-news-daily-2026-08-26），mtime 会随
+    # clone/checkout 重置导致索引日期漂移。文件名无完整日期的报告（如
+    # kdrama-top10-2024-2026，那是内容年份不是日期）不会误命中，继续回退。
     if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", info["updated_on"]):
-        info["updated_on"] = datetime.date.fromtimestamp(
-            path.stat().st_mtime
-        ).isoformat()
+        m = re.search(r"\d{4}-\d{2}-\d{2}", path.stem)
+        if m:
+            info["updated_on"] = m.group(0)
+        else:
+            info["updated_on"] = datetime.date.fromtimestamp(
+                path.stat().st_mtime
+            ).isoformat()
     return info
 
 

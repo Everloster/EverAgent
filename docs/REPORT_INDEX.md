@@ -7,7 +7,9 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-08-26 | [AI 行业日报 · 2026-08-26](../web-surfing/reports/ai-news-daily-2026-08-26.md) | web-surfing |
 | 2026-08-25 | [身体出现这些信号，可能是炎症在提醒你！——帆书讲《炎症》](../podcast-learning/reports/2026-08-21_bilibili-fanshu_yanzheng.md) | podcast-learning |
+| 2026-08-25 | [AI 行业日报 · 2026-08-25](../web-surfing/reports/ai-news-daily-2026-08-25.md) | web-surfing |
 | 2026-08-24 | [刘方奇教授：肠癌越来越年轻，确诊后先别急着手术！](../podcast-learning/reports/2026-08-24_xiaoyuzhou-boluo-jiankang_liufangqi.md) | podcast-learning |
 | 2026-08-24 | [AI 行业日报 · 2026-08-24](../web-surfing/reports/ai-news-daily-2026-08-24.md) | web-surfing |
 | 2026-08-23 | [对话盛颖：xAI，Infra的浪漫，SGLang，开源，平权与「甄嬛传」](../podcast-learning/reports/2026-08-04_rss-guigu101_shengying.md) | podcast-learning |
@@ -30,8 +32,6 @@
 | 2026-07-20 | [同一个 GPT-5.5 考出四个分数——Agent 的智能，几分靠模型、几分靠 Harness？](../ai-learning/reports/knowledge_reports/Agent智能_模型与Harness各占多少_科普讲解_20260720.md) | ai-learning |
 | 2026-07-20 | [人到中年仨账户：现金流、肌肉、睡眠（面基 · 老钱单口）](../podcast-learning/reports/2026-07-13_xiaoyuzhou-mingjing-diandian_midlife-accounts.md) | podcast-learning |
 | 2026-07-20 | [AI 越来越强，我们给它搭的「脚手架」会被自己淘汰吗？—— Bitter Lesson × Harness 科普讲解](../ai-learning/reports/knowledge_reports/Bitter_Lesson_vs_Harness_科普讲解_20260720.md) | ai-learning |
-| 2026-07-19 | [重估一切，文艺复兴——2026H1 AI行业观察（屠龙之术 · 庄明浩单口）](../podcast-learning/reports/2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review.md) | podcast-learning |
-| 2026-07-19 | [语言模型中的全局工作空间（J-space / J-lens）——Anthropic 2026 可解释性研究精读](../ai-learning/reports/paper_analyses/45_global_workspace_jspace_2026.md) | ai-learning |
 
 ## 🤖 AI Learning（97 篇）
 
@@ -263,13 +263,15 @@
 | 2026-06-20 | [三年行业吃肉榜/爆亏榜大合集（2023-2025）：谁在偷偷赚钱，谁在快速衰落](../podcast-learning/reports/2026-06-20_bilibili-cls-tongxue_hangye-bangdan.md) | — |
 | 2026-06-18 | [Vol.29 对话王小川：造医生，战豆包，与无尽的 AI 非共识](../podcast-learning/reports/2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan.md) | — |
 
-## 🏄 Web Surfing（5 篇）
+## 🏄 Web Surfing（7 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-08-26 | [AI 行业日报 · 2026-08-26](../web-surfing/reports/ai-news-daily-2026-08-26.md) | — |
+| 2026-08-25 | [AI 行业日报 · 2026-08-25](../web-surfing/reports/ai-news-daily-2026-08-25.md) | — |
 | 2026-08-24 | [AI 行业日报 · 2026-08-24](../web-surfing/reports/ai-news-daily-2026-08-24.md) | — |
 | 2026-08-23 | [AI 行业日报 · 2026-08-23](../web-surfing/reports/ai-news-daily-2026-08-23.md) | — |
-| 2026-07-29 | [炒菜逻辑：家常菜为什么比不过饭店香味——调料下锅时机全解](../web-surfing/reports/cooking-logic-timing-douyin.md) | — |
-| 2026-07-29 | [十年封神日剧 TOP10(2016–2025)—— SeedHub 对应资源索引](../web-surfing/reports/jdrama-top10-2016-2025-seedhub.md) | — |
-| 2026-07-17 | [🇰🇷 韩剧推荐 Top10（2024–2026 · 豆瓣评分）](../web-surfing/reports/kdrama-top10-2024-2026.md) | — |
+| 2026-07-29 | [炒菜逻辑：家常菜为什么比不过饭店香味——调料下锅时机全解](../web-surfing/reports/cooking-logic-timing-douyin.md) | `cooking`, `douyin`, `transcription` |
+| 2026-07-29 | [十年封神日剧 TOP10(2016–2025)—— SeedHub 对应资源索引](../web-surfing/reports/jdrama-top10-2016-2025-seedhub.md) | `jdrama`, `seedhub`, `douyin` |
+| 2026-07-15 | [🇰🇷 韩剧推荐 Top10（2024–2026 · 豆瓣评分）](../web-surfing/reports/kdrama-top10-2024-2026.md) | `kdrama`, `seedhub`, `douban` |
 
