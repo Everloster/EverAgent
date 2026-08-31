@@ -4,8 +4,10 @@
 读 `wiki/curated-podcasts.opml`（小宇宙 OPML 导出），逐个抓节目的公开 RSS，
 生成/刷新 `wiki/show-indexes/{slug}.md`（全量单集索引，新→旧排列）。
 
-- 「状态」列由人工/agent 维护（如「✅ 已处理」），刷新时按单集链接保留，不会被覆盖
-- 新增单集检测：与旧文件按链接 diff，stdout 汇总打印 NEW 行（供周更 cron 汇报）
+- 「状态」列由人工/agent 维护（如「✅ 已处理」），刷新时按 guid/链接保留，不会被覆盖
+- 新增单集检测：与旧文件按 **guid + 链接双键** diff（guid 藏在标题单元格的 HTML 注释里，
+  防单集链接换域名时全量误报 NEW + 状态丢失——2026-08-31 硅谷101 sv101.net→fireside.fm 实例），
+  stdout 汇总打印 NEW 行；某节目新增占比 > 30% 判为疑似链接变更，降级 SUSPECT 不计入 NEW
 - 幂等；失败节目跳过并在结尾汇总，不静默
 
 用法：python3 fetch_show_indexes.py
@@ -103,19 +105,26 @@ def norm_link(link):
     return link.split("?")[0].rstrip("/")
 
 
-def load_old_statuses(path):
-    """旧索引里 单集链接 → 状态 的映射（保留人工维护的 ✅ 等标记）。
+def load_old_keys(path):
+    """旧索引的键 → 状态 映射，键含链接与 guid 两套（guid 在标题单元格 HTML 注释里）。
 
-    状态列可能含 |（如 [[wikilink|别名]]），不能用 split('|')，用正则从尾部取。
+    状态列可能含 |（如 [[wikilink|别名]]），不能用 split('|')，用正则按列取。
     """
+    by_link, by_guid = {}, {}
     if not path.exists():
-        return {}
-    statuses = {}
+        return by_link, by_guid
     for line in path.read_text(encoding="utf-8").splitlines():
-        m = re.search(r"\]\((https?://[^)]*)\)\s*\|(.*)\|\s*$", line)
-        if m:
-            statuses[norm_link(m.group(1))] = m.group(2).strip()
-    return statuses
+        # 链接后 [^|]* 段容纳 guid 注释；状态列用贪婪 (.*) 到行尾竖线——
+        # 状态可含 [[wikilink|别名]] 的竖线，不能用 [^|]*（跨不过去会整行失配）
+        m = re.search(r"\]\((https?://[^)]*)\)([^|]*)\|\s*(.*)\|\s*$", line)
+        if not m:
+            continue
+        status = m.group(3).strip()
+        by_link[norm_link(m.group(1))] = status
+        g = re.search(r"<!--g:(.*?)-->", m.group(2))
+        if g:
+            by_guid[g.group(1)] = status
+    return by_link, by_guid
 
 
 def fetch(url):
@@ -134,9 +143,11 @@ def render(show, feed, rows, today):
         "| 集 | 发布日期 | 时长 | 标题 | 状态 |",
         "|---|---|---|---|---|",
     ]
-    for num, date, dur, title, link, status in rows:
+    for num, date, dur, title, link, status, guid in rows:
         tcell = title.replace("|", "\\|")
         title_md = f"[{tcell}]({link})" if link else tcell
+        if guid:  # guid 藏 HTML 注释：渲染不可见，diff 用
+            title_md += f"<!--g:{guid}-->"
         lines.append(f"| {num} | {date} | {dur} | {title_md} | {status} |")
     return "\n".join(lines) + "\n"
 
@@ -145,7 +156,7 @@ def main():
     shows = parse_opml(OPML)
     today = time.strftime("%Y-%m-%d")
     OUT_DIR.mkdir(exist_ok=True)
-    failures, all_new = [], []
+    failures, all_new, suspects = [], [], []
     for i, (title, feed) in enumerate(shows, 1):
         slug = SLUGS.get(title.strip()) or "show-" + re.sub(r"\W", "", title)[:20]
         dest = OUT_DIR / f"{slug}.md"
@@ -154,17 +165,24 @@ def main():
             items = re.findall(r"<item>(.*?)</item>", xml, re.S)
             if not items:
                 raise ValueError("RSS 无 item")
-            old_statuses = load_old_statuses(dest)
-            old_links = set(old_statuses)
-            rows = []
+            old_by_link, old_by_guid = load_old_keys(dest)
+            has_old = bool(old_by_link or old_by_guid)
+            rows, show_new = [], []
             for it in items:
                 t, link = field(it, "title"), field(it, "link")
+                guid = field(it, "guid")
                 date, dur = fmt_date(field(it, "pubDate")), fmt_dur(field(it, "itunes:duration"))
                 m = re.match(r"(\d+)\s*[\.、]", t)
-                status = old_statuses.get(norm_link(link), "—")
-                rows.append((m.group(1) if m else "—", date, dur, t, link, status))
-                if old_links and norm_link(link) not in old_links:
-                    all_new.append((title, t, link))
+                known = guid in old_by_guid or norm_link(link) in old_by_link
+                status = old_by_guid.get(guid) or old_by_link.get(norm_link(link), "—")
+                rows.append((m.group(1) if m else "—", date, dur, t, link, status, guid))
+                if has_old and not known:
+                    show_new.append((t, link, date))
+            # 护栏：新增占比过高 → 疑似链接变更，降级不计入 NEW
+            if show_new and len(rows) >= 10 and len(show_new) / len(rows) > 0.3:
+                suspects.append((title, len(show_new), len(rows), show_new[0][0]))
+            else:
+                all_new.extend((title, t, link) for t, link, _ in show_new)
             # 新→旧：有集数按集数，无集数按日期字符串
             rows.sort(key=lambda r: (r[0].isdigit() and int(r[0]) or 0, r[1]), reverse=True)
             dest.write_text(render(title, feed, rows, today), encoding="utf-8")
@@ -180,6 +198,10 @@ def main():
             print(f"NEW | {show} | {t} | {link}")
     else:
         print("=== 无新增单集 ===")
+    if suspects:
+        print("=== 疑似链接变更（新增占比>30%，已降级，请人工核对）===")
+        for t, n, total, first in suspects:
+            print(f"SUSPECT | {t} | {n}/{total} 集判定新增，如 {first}")
     if failures:
         print("=== 失败节目 ===")
         for t, e in failures:

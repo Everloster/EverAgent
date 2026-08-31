@@ -1,6 +1,6 @@
 # 精选播客清单
 
-> 51 档精选播客，每档附公开 RSS。全量单集索引见 [show-indexes/](./show-indexes/)（由 `scripts/fetch_show_indexes.py` 每周刷新）。
+> 51 档精选播客，每档附公开 RSS。全量单集索引见 [show-indexes/](./show-indexes/)（由 `scripts/fetch_show_indexes.py` 按需刷新——用户催更时跑，见 AGENTS.md）。
 > 源文件：[curated-podcasts.opml](./curated-podcasts.opml)（OPML 2.0，可导入任意播客客户端）。
 > 收录时间：2026-08-23。
 
