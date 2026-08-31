@@ -1,152 +1,153 @@
 # 疯投圈 — 全量单集索引
 
-> 来源：官方 RSS（<https://crazy.capital/feed>）｜ 最近拉取：2026-08-24 ｜ 总集数：145
+> 来源：官方 RSS（<https://crazy.capital/feed>）｜ 最近拉取：2026-08-31 ｜ 总集数：146
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
-| — | 2026-08-22 | 1h12m | [145 ✪ 改嫁中资的餐饮洋品牌](https://crazy.capital/145) | — |
-| — | 2026-08-09 | 1h05m | [144 ✪ 国货出海新趋势：山下有松、观夏、PANE](https://crazy.capital/144) | — |
-| — | 2026-07-27 | 1h24m | [143 ✪ 🚗「蔚小理」的高端探索](https://crazy.capital/143) | — |
-| — | 2026-07-10 | 1h02m | [142 ✪ 产品体验学日本、全球营销学韩国](https://crazy.capital/142) | — |
-| — | 2026-06-26 | 1h11m | [141 ✪ ☕️咖啡战争2026：机构化与本土化](https://crazy.capital/141) | — |
-| — | 2026-06-18 | 1h23m | [140 ✪ 大疆还能低空飞多久？](https://crazy.capital/140) | — |
-| — | 2026-06-04 | 1h06m | [139 ✪ 泡泡玛特和拼多多值得投资么？](https://crazy.capital/139) | — |
-| — | 2026-05-13 | 1h15m | [138 ✪ 👟昂跑中国重直营、🦍超级猩猩不办卡](https://crazy.capital/138) | — |
-| — | 2026-04-20 | 1h16m | [137 ✪ 从顺德猪肉婆到韩国圣水洞：那些AI无法取代的体验消费](https://crazy.capital/137) | — |
-| — | 2026-04-10 | 1h11m | [136 ✪ 美团的零售破局：收购叮咚、挑战山姆盒马？](https://crazy.capital/136) | — |
-| — | 2026-03-27 | 1h13m | [135 ✪ 🥤奶茶争霸2026](https://crazy.capital/135) | — |
-| — | 2026-03-20 | 1h12m | [134 ✪ G2格局下的全球投资](https://crazy.capital/134) | — |
-| — | 2026-03-05 | 1h12m | [133 ✪ 圈层化与试图破圈的lululemon](https://crazy.capital/133) | — |
-| — | 2026-02-10 | 1h17m | [132 ✪ 🍦雪糕江湖](https://crazy.capital/132) | — |
-| — | 2026-01-30 | 55m11s | [131 ✪ 对话野人先生：野蛮生长的中国冰淇淋](https://crazy.capital/131) | — |
-| — | 2026-01-21 | 1h12m | [130 ✪ 成为迪士尼之前，泡泡玛特可能先超过乐高](https://crazy.capital/130) | — |
-| — | 2025-12-13 | 1h22m | [129 ✪ 体验化增长：Peet's、亚朵、源氏木语](https://crazy.capital/129) | — |
-| — | 2025-12-04 | 1h05m | [128 ✪ 个人投资的风险管理](https://crazy.capital/128) | — |
-| — | 2025-11-21 | 1h05m | [127 ✪ 全球化之路：出海其实也挺难](https://crazy.capital/127) | — |
-| — | 2025-11-13 | 1h04m | [126 ✪ 银发新势力：被低估的消费觉醒](https://crazy.capital/126) | — |
-| — | 2025-11-02 | 1h09m | [125 ✪ 名创优品「偷师」泡泡玛特、卡游上市遇挫](https://crazy.capital/125) | — |
-| — | 2025-10-06 | 58m51s | [124 ✪ 二线城市的商机](https://crazy.capital/124) | — |
-| — | 2025-09-30 | 1h18m | [123 ✪ 掘金东南亚的机遇与挑战](https://crazy.capital/123) | — |
-| — | 2025-09-03 | 1h03m | [122 ✪ 山姆中国还能火多久？](https://crazy.capital/122) | — |
-| — | 2025-08-12 | 1h08m | [121 ✪ 长沙很忙：鸣鸣忙上市、茶颜忙零食](https://crazy.capital/121) | — |
-| — | 2025-08-06 | 1h10m | [120 ✪ 💸个人资产如何配置才能睡得着？](https://crazy.capital/120) | — |
-| — | 2025-07-24 | 1h10m | [119 ✪ 人群洞察：染发的中老年和集卡的小学生](https://crazy.capital/119) | — |
-| — | 2025-07-09 | 1h17m | [118 ✪ 🦘🐶🐱即时零售三国杀](https://crazy.capital/118) | — |
-| — | 2025-06-27 | 1h07m | [117 ✪ 👨‍🦳那些朝气蓬勃的老年人](https://crazy.capital/117) | — |
-| — | 2025-06-05 | 1h16m | [116 ✪ 关税冲突下中国品牌的全球化之路](https://crazy.capital/116) | — |
-| — | 2025-05-16 | 1h24m | [115 ✪ ☕️咖啡战争2025](https://crazy.capital/115) | — |
-| — | 2025-04-29 | 1h08m | [114 ✪ 升级的小米、降级的盒马](https://crazy.capital/114) | — |
-| — | 2025-04-15 | 54m50s | [113 ✪ 疯投圈×无界有声：在AI时代重思教育](https://crazy.capital/113) | — |
-| — | 2025-03-27 | 1h13m | [112 ✪ 奶茶争霸2025](https://crazy.capital/112) | — |
-| — | 2025-03-11 | 1h20m | [111 ✪ 上市一年股价十倍，老铺黄金凭什么](https://crazy.capital/111) | — |
-| — | 2025-02-28 | 1h14m | [110 ✪ 健康红利还能持续多久？](https://crazy.capital/110) | — |
-| — | 2025-02-11 | 1h18m | [109 ✪ 回顾与展望：低增速时代的商业趋势](https://crazy.capital/109) | — |
-| — | 2025-01-07 | 1h04m | [108 ✪ 银发の商机](https://crazy.capital/108) | — |
-| — | 2024-12-16 | 1h10m | [107 ✪ 社区何以生长：线上小红书、线下阿那亚](https://crazy.capital/107) | — |
-| — | 2024-11-18 | 1h21m | [106 ✪ 胖东来永辉大战沃尔玛山姆](https://crazy.capital/106) | — |
-| — | 2024-11-06 | 1h07m | [105 ✪ 霸王茶姬、林里、柠季为何能开遍全国？](https://crazy.capital/105) | — |
-| — | 2024-10-22 | 1h08m | [104 ✪ 内卷与反内卷：拼多多的商家、卖枕头的亚朵](https://crazy.capital/104) | — |
-| — | 2024-09-23 | 1h00m | [103 ✪ 跨境游重启，何人欢喜何人忧？](https://crazy.capital/103) | — |
-| — | 2024-09-17 | 1h34m | [102 ✪ 视频号有何商机？](https://crazy.capital/102) | — |
-| — | 2024-08-31 | 1h20m | [101 ✪ 直播电商见顶了吗？](https://crazy.capital/101) | — |
-| — | 2024-08-08 | 1h03m | [100 ✪ 名创优品大战泡泡玛特](https://crazy.capital/100) | — |
-| — | 2024-07-25 | 1h14m | [99 ✪ 中式快餐如何超越麦当劳？](https://crazy.capital/99) | — |
-| — | 2024-07-08 | 1h18m | [98 ✪ 咖啡战争2024](https://crazy.capital/98) | — |
-| — | 2024-06-21 | 1h23m | [97 ✪ 全球化之路：优衣库、萨莉亚、日本动漫](https://crazy.capital/97) | — |
-| — | 2024-05-31 | 1h10m | [96 ✪ 中高端也要性价比：山姆、理想、lululemon](https://crazy.capital/96) | — |
-| — | 2024-05-11 | 1h12m | [95 ✪ 「非股非债」的线下加盟新趋势](https://crazy.capital/95) | — |
-| — | 2024-04-01 | 1h05m | [94 ✪ 国潮退去，李宁应否固守「李宁」？](https://crazy.capital/94) | — |
-| — | 2024-03-22 | 1h18m | [93 ✪ 出海电商大杀四方](https://crazy.capital/93) | — |
-| — | 2024-03-11 | 1h19m | [92 ✪ 酒店逆势涨价的商业逻辑](https://crazy.capital/92) | — |
-| — | 2024-02-26 | 1h08m | [91 ✪ 日本游学考察见闻录](https://crazy.capital/91) | — |
-| — | 2024-02-07 | 59m09s | [90 ✪ 奶茶争霸2024（下）](https://crazy.capital/90) | — |
-| — | 2024-01-31 | 1h06m | [89 ✪ 奶茶争霸2024（上）](https://crazy.capital/89) | — |
-| — | 2023-12-25 | 1h07m | [88 ✪ 盒马的两难：既要「移山」、又要下沉](https://crazy.capital/88) | — |
-| — | 2023-12-14 | 1h00m | [87 ✪ 经济动能切换，普通人何去何从？](https://crazy.capital/87) | — |
-| — | 2023-11-22 | 59m33s | [86 ✪ 健康红利引爆无糖茶与户外风潮](https://crazy.capital/86) | — |
-| — | 2023-11-10 | 1h22m | [85 ✪ 三顿半：体验型品牌如何跨越周期成长？](https://crazy.capital/85) | — |
-| — | 2023-10-22 | 1h13m | [84 ✪ 逆风狂飙二十年——优衣库的启示](https://crazy.capital/84) | — |
-| — | 2023-09-24 | 1h19m | [83 ✪ 心理健身：焦虑时代的新刚需](https://crazy.capital/83) | — |
-| — | 2023-09-06 | 1h14m | [82 ✪ 香奈儿涨价、特斯拉降价——消费品如何定价？](https://crazy.capital/82) | — |
-| — | 2023-08-22 | 1h08m | [81 ✪ 「睡眠环境」新机遇](https://crazy.capital/81) | — |
-| — | 2023-08-06 | 1h05m | [80 ✪ 咖啡战争2023](https://crazy.capital/80) | — |
-| — | 2023-07-19 | 1h17m | [79 ✪ 在不确定的时代思考投资的确定性](https://crazy.capital/79) | — |
-| — | 2023-06-21 | 1h09m | [78 ✪ 创作者的小时代——聊聊小红书与视频号](https://crazy.capital/78) | — |
-| — | 2023-05-14 | 1h10m | [77 ✪ 卷王的大航海时代——中国企业出海新范式](https://crazy.capital/77) | — |
-| — | 2023-04-20 | 1h03m | [76 ✪ 广度 vs 深度：产品战略的抉择](https://crazy.capital/76) | — |
-| — | 2023-03-20 | 1h07m | [75 ✪ 黑天鹅盛行，实体商业如何管理风险？](https://crazy.capital/75) | — |
-| — | 2023-02-21 | 1h24m | [74 ✪ 新消费背后的真趋势](https://crazy.capital/74) | — |
-| — | 2023-01-15 | 1h08m | [73 ✪ 三顿半吴骏：城市漫游、灵感与创造的故事](https://crazy.capital/73) | — |
-| — | 2022-12-30 | 52m58s | [72 ✪ 从直播到商城：兴趣电商的迭代与演化](https://crazy.capital/72) | — |
-| — | 2022-12-08 | 1h11m | [71 ✪ 每日优鲜落幕、山姆店崛起](https://crazy.capital/71) | — |
-| — | 2022-11-21 | 1h08m | [70 ✪ 从得物到阿那亚：再谈情感价值](https://crazy.capital/70) | — |
-| — | 2022-10-20 | 1h22m | [69 ✪ 品牌管理：靠创意还是科学？](https://crazy.capital/69) | — |
-| — | 2022-08-30 | 1h17m | [68 ✪ 做视频后收获的新认知](https://crazy.capital/68) | — |
-| — | 2022-07-30 | 1h27m | [67 ✪ 火锅争雄：服务至上 vs 产品主义](https://crazy.capital/67) | — |
-| — | 2022-06-06 | 1h18m | [66 ✪ 二级市场的叙事与估值逻辑](https://crazy.capital/66) | — |
-| — | 2022-06-01 | 7m15s | [65 ✪ 咖啡战争2022](https://crazy.capital/65) | — |
-| — | 2022-04-30 | 1h07m | [64 ✪ 漫谈「创作者经济」](https://crazy.capital/64) | — |
-| — | 2022-03-31 | 1h22m | [63 ✪ 从直播带货看电商新格局](https://crazy.capital/63) | — |
-| — | 2022-02-22 | 1h20m | [62 ✪ 健康饮食到底是真趋势还是伪需求？](https://crazy.capital/62) | — |
-| — | 2022-01-19 | 1h17m | [61 ✪ 边缘创新：破圈于主流之外](https://crazy.capital/61) | — |
-| — | 2021-12-13 | 57m30s | [60 ✪ 不止于盲盒：年轻人的潮流消费](https://crazy.capital/60) | — |
-| — | 2021-12-03 | 1h18m | [59 ✪ 从吃水果到喝水果、从果茶到品茗](https://crazy.capital/59) | — |
-| — | 2021-10-31 | 1h01m | [58 ✪ 运动鞋会出现下一个国货之光吗？](https://crazy.capital/58) | — |
-| — | 2021-09-30 | 1h08m | [57 ✪ 灵感与卓越之茶](https://crazy.capital/57) | — |
-| — | 2021-09-10 | 1h06m | [56 ✪ 超级文和友：商业地产新物种](https://crazy.capital/56) | — |
-| — | 2021-07-14 | 1h00m | [55 ✪ 从 Zara 到 Shein：快时尚的两代王者](https://crazy.capital/55) | — |
-| — | 2021-06-01 | 1h04m | [54 ✪ 线下门店业态的复兴](https://crazy.capital/54) | — |
-| — | 2021-04-12 | 58m33s | [53 ✪ 咖啡战争2021](https://crazy.capital/53) | — |
-| — | 2021-03-20 | 1h00m | [52 ✪ 探寻万亿家居行业的创新模式](https://crazy.capital/52) | — |
-| — | 2021-02-03 | 1h17m | [51 ✪ 从泡泡玛特谈起：物质消费中的情感价值](https://crazy.capital/51) | — |
-| — | 2020-12-25 | 1h21m | [50 ✪ 电商混战同城零售](https://crazy.capital/50) | — |
-| — | 2020-11-16 | 1h10m | [49 ✪ 饮料行业的首富与新贵](https://crazy.capital/49) | — |
-| — | 2020-09-18 | 1h11m | [48 ✪ 微醺时代：低度酒的崛起](https://crazy.capital/48) | — |
-| — | 2020-08-20 | 1h00m | [47 ✪ 日本消费升级启示录](https://crazy.capital/47) | — |
-| — | 2020-07-10 | 59m13s | [46 ✪ 永不过时的金银珠宝生意](https://crazy.capital/46) | — |
-| — | 2020-06-14 | 1h08m | [45 ✪ 后移动互联网时代的VC行业](https://crazy.capital/45) | — |
-| — | 2020-05-14 | 1h09m | [44 ✪ 你坐的是职场真火箭还是窜天猴？](https://crazy.capital/44) | — |
-| — | 2020-03-30 | 1h04m | [43 ✪ 生鲜之王——永辉超市](https://crazy.capital/43) | — |
-| — | 2020-02-28 | 1h08m | [42 ✪ 专业类 KOL 的崛起](https://crazy.capital/42) | — |
-| — | 2020-02-13 | 1h09m | [41 ✪ 快手的社交网络之路](https://crazy.capital/41) | — |
-| — | 2019-12-31 | 1h14m | [40 ✪ 疯投圈的未来](https://crazy.capital/40) | — |
-| — | 2019-12-14 | 1h03m | [39 ✪ 与花总漫谈短视频行业](https://crazy.capital/39) | — |
-| — | 2019-10-29 | 1h07m | [38 ✪ 运动用品市场风云再起](https://crazy.capital/38) | — |
-| — | 2019-09-20 | 1h15m | [37 ✪ 「中国有过多企业旨在提升效率，太少能创造体验」](https://crazy.capital/37) | — |
-| — | 2019-08-25 | 1h18m | [36 ✪ 新消费品牌崛起大时代](https://crazy.capital/36) | — |
-| — | 2019-07-21 | 1h13m | [35 ✪ 创业，不止北上广深杭](https://crazy.capital/35) | — |
-| — | 2019-06-21 | 1h14m | [34 ✪ 再谈出海电商的全球机遇](https://crazy.capital/34) | — |
-| — | 2019-05-12 | 1h14m | [33 ✪ 过载时代的信息修养](https://crazy.capital/33) | — |
-| — | 2019-04-02 | 1h26m | [32 ✪ 复杂服务行业如何平台化](https://crazy.capital/32) | — |
-| — | 2019-03-12 | 1h11m | [31 ✪ NOME vs 名创优品：日用零售的王者之争](https://crazy.capital/31) | — |
-| — | 2019-02-20 | 1h12m | [30 ✪ 卖不掉的衣服去哪了？](https://crazy.capital/30) | — |
-| — | 2019-01-26 | 1h04m | [29 ✪ airbnb—唯一还有机会在中国胜出的硅谷巨头](https://crazy.capital/29) | — |
-| — | 2019-01-03 | 1h01m | [28 ✪ 学习爱好者最好的时代](https://crazy.capital/28) | — |
-| — | 2018-12-12 | 1h18m | [27 ✪ 名创优品的十元店江湖](https://crazy.capital/27) | — |
-| — | 2018-11-06 | 1h17m | [26 ✪ 美团是中国最大型的便利店](https://crazy.capital/26) | — |
-| — | 2018-10-27 | 1h20m | [25 ✪ 如何用 VC 的思维买股票](https://crazy.capital/25) | — |
-| — | 2018-09-27 | 1h16m | [24 ✪ 咖啡战争](https://crazy.capital/24) | — |
-| — | 2018-09-01 | 1h15m | [23 ✪ 漫谈小米生态链](https://crazy.capital/23) | — |
-| — | 2018-08-11 | 1h02m | [22 ✪ 在线旅游三国杀](https://crazy.capital/22) | — |
-| — | 2018-07-12 | 1h38m | [21 ✪ 自由职业是生活的理想状态吗？](https://crazy.capital/21) | — |
-| — | 2018-06-10 | 1h21m | [20 ✪ 居住市场进入租赁时代](https://crazy.capital/20) | — |
-| — | 2018-04-24 | 1h02m | [19 ✪ 星巴克轶事](https://crazy.capital/19) | — |
-| — | 2018-04-02 | 1h04m | [18 ✪ 拼多多=中国的Costco?](https://crazy.capital/18) | — |
-| — | 2018-02-27 | 1h20m | [17 ✪ 股权投资 VS 区块链投资](https://crazy.capital/17) | — |
-| — | 2018-01-17 | 1h06m | [16 ✪ 巨头进击的一年——2017创投领域回顾](https://crazy.capital/16) | — |
-| — | 2017-12-11 | 1h16m | [15 ✪ 知识服务利用你的焦虑，你还是忍不住持续付费](https://crazy.capital/15) | — |
-| — | 2017-11-22 | 1h15m | [14 ✪ 「产品不好的公司不配做营销」](https://crazy.capital/14) | — |
-| — | 2017-10-17 | 1h05m | [13 ✪ 无人零售真伪风口之辩](https://crazy.capital/13) | — |
-| — | 2017-09-26 | 44m41s | [12 ✪ 「『新』不一定是好的，但『旧』一定是不好的」](https://crazy.capital/12) | — |
-| — | 2017-09-07 | 1h07m | [11 ✪ 租赁是电商的未来趋势吗？](https://crazy.capital/11) | — |
-| — | 2017-08-07 | 1h07m | [10 ✪ 新零售可以解决生鲜行业难题吗？](https://crazy.capital/10) | — |
-| — | 2017-07-13 | 1h04m | [9 ✪ 茶饮行业会出现下一个星巴克吗？](https://crazy.capital/9) | — |
-| — | 2017-05-09 | 1h14m | [8 ✪ 专访小密圈吴鲁加](https://crazy.capital/8) | — |
-| — | 2017-03-14 | 59m52s | [7 ✪ 两个穿着严选拖鞋的人聊严选](https://crazy.capital/7) | — |
-| — | 2016-12-31 | 1h12m | [6 ✪ 2016 回顾与展望](https://crazy.capital/6) | — |
-| — | 2016-12-05 | 1h01m | [5 ✪ 你会在网上买家具吗？](https://crazy.capital/5) | — |
-| — | 2016-06-18 | 1h03m | [4 ✪ Keep 都一年四轮融资了，体育创业还有什么机会吗？](https://crazy.capital/4) | — |
-| — | 2016-04-13 | 42m18s | [3 ✪ 互联网金融在中国](https://crazy.capital/3) | — |
-| — | 2016-03-04 | 1h23m | [2 ✪ SaaS 太热闹，教你看尽门道](https://crazy.capital/2) | — |
-| — | 2016-02-25 | 59m52s | [1 ✪ 2016 会是出口电商爆发的元年吗？](https://crazy.capital/1) | — |
+| — | 2026-08-31 | 1h18m | [146 ✪ 对买量和铺货说bye-bye，AI如何驱动出海品牌增长?](https://crazy.capital/146)<!--g:https://crazy.capital/146--> | — |
+| — | 2026-08-22 | 1h12m | [145 ✪ 改属中资的餐饮洋品牌](https://crazy.capital/145)<!--g:https://crazy.capital/145--> | — |
+| — | 2026-08-09 | 1h05m | [144 ✪ 国货出海新趋势：山下有松、观夏、PANE](https://crazy.capital/144)<!--g:https://crazy.capital/144--> | — |
+| — | 2026-07-27 | 1h24m | [143 ✪ 🚗「蔚小理」的高端探索](https://crazy.capital/143)<!--g:https://crazy.capital/143--> | — |
+| — | 2026-07-10 | 1h02m | [142 ✪ 产品体验学日本、全球营销学韩国](https://crazy.capital/142)<!--g:https://crazy.capital/142--> | — |
+| — | 2026-06-26 | 1h11m | [141 ✪ ☕️咖啡战争2026：机构化与本土化](https://crazy.capital/141)<!--g:https://crazy.capital/141--> | — |
+| — | 2026-06-18 | 1h23m | [140 ✪ 大疆还能低空飞多久？](https://crazy.capital/140)<!--g:https://crazy.capital/140--> | — |
+| — | 2026-06-04 | 1h06m | [139 ✪ 泡泡玛特和拼多多值得投资么？](https://crazy.capital/139)<!--g:https://crazy.capital/139--> | — |
+| — | 2026-05-13 | 1h15m | [138 ✪ 👟昂跑中国重直营、🦍超级猩猩不办卡](https://crazy.capital/138)<!--g:https://crazy.capital/138--> | — |
+| — | 2026-04-20 | 1h16m | [137 ✪ 从顺德猪肉婆到韩国圣水洞：那些AI无法取代的体验消费](https://crazy.capital/137)<!--g:https://crazy.capital/137--> | — |
+| — | 2026-04-10 | 1h11m | [136 ✪ 美团的零售破局：收购叮咚、挑战山姆盒马？](https://crazy.capital/136)<!--g:https://crazy.capital/136--> | — |
+| — | 2026-03-27 | 1h13m | [135 ✪ 🥤奶茶争霸2026](https://crazy.capital/135)<!--g:https://crazy.capital/135--> | — |
+| — | 2026-03-20 | 1h12m | [134 ✪ G2格局下的全球投资](https://crazy.capital/134)<!--g:https://crazy.capital/134--> | — |
+| — | 2026-03-05 | 1h12m | [133 ✪ 圈层化与试图破圈的lululemon](https://crazy.capital/133)<!--g:https://crazy.capital/133--> | — |
+| — | 2026-02-10 | 1h17m | [132 ✪ 🍦雪糕江湖](https://crazy.capital/132)<!--g:https://crazy.capital/132--> | — |
+| — | 2026-01-30 | 55m11s | [131 ✪ 对话野人先生：野蛮生长的中国冰淇淋](https://crazy.capital/131)<!--g:https://crazy.capital/131--> | — |
+| — | 2026-01-21 | 1h12m | [130 ✪ 成为迪士尼之前，泡泡玛特可能先超过乐高](https://crazy.capital/130)<!--g:https://crazy.capital/130--> | — |
+| — | 2025-12-13 | 1h22m | [129 ✪ 体验化增长：Peet's、亚朵、源氏木语](https://crazy.capital/129)<!--g:https://crazy.capital/129--> | — |
+| — | 2025-12-04 | 1h05m | [128 ✪ 个人投资的风险管理](https://crazy.capital/128)<!--g:https://crazy.capital/128--> | — |
+| — | 2025-11-21 | 1h05m | [127 ✪ 全球化之路：出海其实也挺难](https://crazy.capital/127)<!--g:https://crazy.capital/127--> | — |
+| — | 2025-11-13 | 1h04m | [126 ✪ 银发新势力：被低估的消费觉醒](https://crazy.capital/126)<!--g:https://crazy.capital/126--> | — |
+| — | 2025-11-02 | 1h09m | [125 ✪ 名创优品「偷师」泡泡玛特、卡游上市遇挫](https://crazy.capital/125)<!--g:https://crazy.capital/125--> | — |
+| — | 2025-10-06 | 58m51s | [124 ✪ 二线城市的商机](https://crazy.capital/124)<!--g:https://crazy.capital/124--> | — |
+| — | 2025-09-30 | 1h18m | [123 ✪ 掘金东南亚的机遇与挑战](https://crazy.capital/123)<!--g:https://crazy.capital/123--> | — |
+| — | 2025-09-03 | 1h03m | [122 ✪ 山姆中国还能火多久？](https://crazy.capital/122)<!--g:https://crazy.capital/122--> | — |
+| — | 2025-08-12 | 1h08m | [121 ✪ 长沙很忙：鸣鸣忙上市、茶颜忙零食](https://crazy.capital/121)<!--g:https://crazy.capital/121--> | — |
+| — | 2025-08-06 | 1h10m | [120 ✪ 💸个人资产如何配置才能睡得着？](https://crazy.capital/120)<!--g:https://crazy.capital/120--> | — |
+| — | 2025-07-24 | 1h10m | [119 ✪ 人群洞察：染发的中老年和集卡的小学生](https://crazy.capital/119)<!--g:https://crazy.capital/119--> | — |
+| — | 2025-07-09 | 1h17m | [118 ✪ 🦘🐶🐱即时零售三国杀](https://crazy.capital/118)<!--g:https://crazy.capital/118--> | — |
+| — | 2025-06-27 | 1h07m | [117 ✪ 👨‍🦳那些朝气蓬勃的老年人](https://crazy.capital/117)<!--g:https://crazy.capital/117--> | — |
+| — | 2025-06-05 | 1h16m | [116 ✪ 关税冲突下中国品牌的全球化之路](https://crazy.capital/116)<!--g:https://crazy.capital/116--> | — |
+| — | 2025-05-16 | 1h24m | [115 ✪ ☕️咖啡战争2025](https://crazy.capital/115)<!--g:https://crazy.capital/115--> | — |
+| — | 2025-04-29 | 1h08m | [114 ✪ 升级的小米、降级的盒马](https://crazy.capital/114)<!--g:https://crazy.capital/114--> | — |
+| — | 2025-04-15 | 54m50s | [113 ✪ 疯投圈×无界有声：在AI时代重思教育](https://crazy.capital/113)<!--g:https://crazy.capital/113--> | — |
+| — | 2025-03-27 | 1h13m | [112 ✪ 奶茶争霸2025](https://crazy.capital/112)<!--g:https://crazy.capital/112--> | — |
+| — | 2025-03-11 | 1h20m | [111 ✪ 上市一年股价十倍，老铺黄金凭什么](https://crazy.capital/111)<!--g:https://crazy.capital/111--> | — |
+| — | 2025-02-28 | 1h14m | [110 ✪ 健康红利还能持续多久？](https://crazy.capital/110)<!--g:https://crazy.capital/110--> | — |
+| — | 2025-02-11 | 1h18m | [109 ✪ 回顾与展望：低增速时代的商业趋势](https://crazy.capital/109)<!--g:https://crazy.capital/109--> | — |
+| — | 2025-01-07 | 1h04m | [108 ✪ 银发の商机](https://crazy.capital/108)<!--g:https://crazy.capital/108--> | — |
+| — | 2024-12-16 | 1h10m | [107 ✪ 社区何以生长：线上小红书、线下阿那亚](https://crazy.capital/107)<!--g:https://crazy.capital/107--> | — |
+| — | 2024-11-18 | 1h21m | [106 ✪ 胖东来永辉大战沃尔玛山姆](https://crazy.capital/106)<!--g:https://crazy.capital/106--> | — |
+| — | 2024-11-06 | 1h07m | [105 ✪ 霸王茶姬、林里、柠季为何能开遍全国？](https://crazy.capital/105)<!--g:https://crazy.capital/105--> | — |
+| — | 2024-10-22 | 1h08m | [104 ✪ 内卷与反内卷：拼多多的商家、卖枕头的亚朵](https://crazy.capital/104)<!--g:https://crazy.capital/104--> | — |
+| — | 2024-09-23 | 1h00m | [103 ✪ 跨境游重启，何人欢喜何人忧？](https://crazy.capital/103)<!--g:https://crazy.capital/103--> | — |
+| — | 2024-09-17 | 1h34m | [102 ✪ 视频号有何商机？](https://crazy.capital/102)<!--g:https://crazy.capital/102--> | — |
+| — | 2024-08-31 | 1h20m | [101 ✪ 直播电商见顶了吗？](https://crazy.capital/101)<!--g:https://crazy.capital/101--> | — |
+| — | 2024-08-08 | 1h03m | [100 ✪ 名创优品大战泡泡玛特](https://crazy.capital/100)<!--g:https://crazy.capital/100--> | — |
+| — | 2024-07-25 | 1h14m | [99 ✪ 中式快餐如何超越麦当劳？](https://crazy.capital/99)<!--g:https://crazy.capital/99--> | — |
+| — | 2024-07-08 | 1h18m | [98 ✪ 咖啡战争2024](https://crazy.capital/98)<!--g:https://crazy.capital/98--> | — |
+| — | 2024-06-21 | 1h23m | [97 ✪ 全球化之路：优衣库、萨莉亚、日本动漫](https://crazy.capital/97)<!--g:https://crazy.capital/97--> | — |
+| — | 2024-05-31 | 1h10m | [96 ✪ 中高端也要性价比：山姆、理想、lululemon](https://crazy.capital/96)<!--g:https://crazy.capital/96--> | — |
+| — | 2024-05-11 | 1h12m | [95 ✪ 「非股非债」的线下加盟新趋势](https://crazy.capital/95)<!--g:https://crazy.capital/95--> | — |
+| — | 2024-04-01 | 1h05m | [94 ✪ 国潮退去，李宁应否固守「李宁」？](https://crazy.capital/94)<!--g:https://crazy.capital/94--> | — |
+| — | 2024-03-22 | 1h18m | [93 ✪ 出海电商大杀四方](https://crazy.capital/93)<!--g:https://crazy.capital/93--> | — |
+| — | 2024-03-11 | 1h19m | [92 ✪ 酒店逆势涨价的商业逻辑](https://crazy.capital/92)<!--g:https://crazy.capital/92--> | — |
+| — | 2024-02-26 | 1h08m | [91 ✪ 日本游学考察见闻录](https://crazy.capital/91)<!--g:https://crazy.capital/91--> | — |
+| — | 2024-02-07 | 59m09s | [90 ✪ 奶茶争霸2024（下）](https://crazy.capital/90)<!--g:https://crazy.capital/90--> | — |
+| — | 2024-01-31 | 1h06m | [89 ✪ 奶茶争霸2024（上）](https://crazy.capital/89)<!--g:https://crazy.capital/89--> | — |
+| — | 2023-12-25 | 1h07m | [88 ✪ 盒马的两难：既要「移山」、又要下沉](https://crazy.capital/88)<!--g:https://crazy.capital/88--> | — |
+| — | 2023-12-14 | 1h00m | [87 ✪ 经济动能切换，普通人何去何从？](https://crazy.capital/87)<!--g:https://crazy.capital/87--> | — |
+| — | 2023-11-22 | 59m33s | [86 ✪ 健康红利引爆无糖茶与户外风潮](https://crazy.capital/86)<!--g:https://crazy.capital/86--> | — |
+| — | 2023-11-10 | 1h22m | [85 ✪ 三顿半：体验型品牌如何跨越周期成长？](https://crazy.capital/85)<!--g:https://crazy.capital/85--> | — |
+| — | 2023-10-22 | 1h13m | [84 ✪ 逆风狂飙二十年——优衣库的启示](https://crazy.capital/84)<!--g:https://crazy.capital/84--> | — |
+| — | 2023-09-24 | 1h19m | [83 ✪ 心理健身：焦虑时代的新刚需](https://crazy.capital/83)<!--g:https://crazy.capital/83--> | — |
+| — | 2023-09-06 | 1h14m | [82 ✪ 香奈儿涨价、特斯拉降价——消费品如何定价？](https://crazy.capital/82)<!--g:https://crazy.capital/82--> | — |
+| — | 2023-08-22 | 1h08m | [81 ✪ 「睡眠环境」新机遇](https://crazy.capital/81)<!--g:https://crazy.capital/81--> | — |
+| — | 2023-08-06 | 1h05m | [80 ✪ 咖啡战争2023](https://crazy.capital/80)<!--g:https://crazy.capital/80--> | — |
+| — | 2023-07-19 | 1h17m | [79 ✪ 在不确定的时代思考投资的确定性](https://crazy.capital/79)<!--g:https://crazy.capital/79--> | — |
+| — | 2023-06-21 | 1h09m | [78 ✪ 创作者的小时代——聊聊小红书与视频号](https://crazy.capital/78)<!--g:https://crazy.capital/78--> | — |
+| — | 2023-05-14 | 1h10m | [77 ✪ 卷王的大航海时代——中国企业出海新范式](https://crazy.capital/77)<!--g:https://crazy.capital/77--> | — |
+| — | 2023-04-20 | 1h03m | [76 ✪ 广度 vs 深度：产品战略的抉择](https://crazy.capital/76)<!--g:https://crazy.capital/76--> | — |
+| — | 2023-03-20 | 1h07m | [75 ✪ 黑天鹅盛行，实体商业如何管理风险？](https://crazy.capital/75)<!--g:https://crazy.capital/75--> | — |
+| — | 2023-02-21 | 1h24m | [74 ✪ 新消费背后的真趋势](https://crazy.capital/74)<!--g:https://crazy.capital/74--> | — |
+| — | 2023-01-15 | 1h08m | [73 ✪ 三顿半吴骏：城市漫游、灵感与创造的故事](https://crazy.capital/73)<!--g:https://crazy.capital/73--> | — |
+| — | 2022-12-30 | 52m58s | [72 ✪ 从直播到商城：兴趣电商的迭代与演化](https://crazy.capital/72)<!--g:https://crazy.capital/72--> | — |
+| — | 2022-12-08 | 1h11m | [71 ✪ 每日优鲜落幕、山姆店崛起](https://crazy.capital/71)<!--g:https://crazy.capital/71--> | — |
+| — | 2022-11-21 | 1h08m | [70 ✪ 从得物到阿那亚：再谈情感价值](https://crazy.capital/70)<!--g:https://crazy.capital/70--> | — |
+| — | 2022-10-20 | 1h22m | [69 ✪ 品牌管理：靠创意还是科学？](https://crazy.capital/69)<!--g:https://crazy.capital/69--> | — |
+| — | 2022-08-30 | 1h17m | [68 ✪ 做视频后收获的新认知](https://crazy.capital/68)<!--g:https://crazy.capital/68--> | — |
+| — | 2022-07-30 | 1h27m | [67 ✪ 火锅争雄：服务至上 vs 产品主义](https://crazy.capital/67)<!--g:https://crazy.capital/67--> | — |
+| — | 2022-06-06 | 1h18m | [66 ✪ 二级市场的叙事与估值逻辑](https://crazy.capital/66)<!--g:https://crazy.capital/66--> | — |
+| — | 2022-06-01 | 7m15s | [65 ✪ 咖啡战争2022](https://crazy.capital/65)<!--g:https://crazy.capital/65--> | — |
+| — | 2022-04-30 | 1h07m | [64 ✪ 漫谈「创作者经济」](https://crazy.capital/64)<!--g:https://crazy.capital/64--> | — |
+| — | 2022-03-31 | 1h22m | [63 ✪ 从直播带货看电商新格局](https://crazy.capital/63)<!--g:https://crazy.capital/63--> | — |
+| — | 2022-02-22 | 1h20m | [62 ✪ 健康饮食到底是真趋势还是伪需求？](https://crazy.capital/62)<!--g:https://crazy.capital/62--> | — |
+| — | 2022-01-19 | 1h17m | [61 ✪ 边缘创新：破圈于主流之外](https://crazy.capital/61)<!--g:https://crazy.capital/61--> | — |
+| — | 2021-12-13 | 57m30s | [60 ✪ 不止于盲盒：年轻人的潮流消费](https://crazy.capital/60)<!--g:https://crazy.capital/60--> | — |
+| — | 2021-12-03 | 1h18m | [59 ✪ 从吃水果到喝水果、从果茶到品茗](https://crazy.capital/59)<!--g:https://crazy.capital/59--> | — |
+| — | 2021-10-31 | 1h01m | [58 ✪ 运动鞋会出现下一个国货之光吗？](https://crazy.capital/58)<!--g:https://crazy.capital/58--> | — |
+| — | 2021-09-30 | 1h08m | [57 ✪ 灵感与卓越之茶](https://crazy.capital/57)<!--g:https://crazy.capital/57--> | — |
+| — | 2021-09-10 | 1h06m | [56 ✪ 超级文和友：商业地产新物种](https://crazy.capital/56)<!--g:https://crazy.capital/56--> | — |
+| — | 2021-07-14 | 1h00m | [55 ✪ 从 Zara 到 Shein：快时尚的两代王者](https://crazy.capital/55)<!--g:https://crazy.capital/55--> | — |
+| — | 2021-06-01 | 1h04m | [54 ✪ 线下门店业态的复兴](https://crazy.capital/54)<!--g:https://crazy.capital/54--> | — |
+| — | 2021-04-12 | 58m33s | [53 ✪ 咖啡战争2021](https://crazy.capital/53)<!--g:https://crazy.capital/53--> | — |
+| — | 2021-03-20 | 1h00m | [52 ✪ 探寻万亿家居行业的创新模式](https://crazy.capital/52)<!--g:https://crazy.capital/52--> | — |
+| — | 2021-02-03 | 1h17m | [51 ✪ 从泡泡玛特谈起：物质消费中的情感价值](https://crazy.capital/51)<!--g:https://crazy.capital/51--> | — |
+| — | 2020-12-25 | 1h21m | [50 ✪ 电商混战同城零售](https://crazy.capital/50)<!--g:https://crazy.capital/50--> | — |
+| — | 2020-11-16 | 1h10m | [49 ✪ 饮料行业的首富与新贵](https://crazy.capital/49)<!--g:https://crazy.capital/49--> | — |
+| — | 2020-09-18 | 1h11m | [48 ✪ 微醺时代：低度酒的崛起](https://crazy.capital/48)<!--g:https://crazy.capital/48--> | — |
+| — | 2020-08-20 | 1h00m | [47 ✪ 日本消费升级启示录](https://crazy.capital/47)<!--g:https://crazy.capital/47--> | — |
+| — | 2020-07-10 | 59m13s | [46 ✪ 永不过时的金银珠宝生意](https://crazy.capital/46)<!--g:https://crazy.capital/46--> | — |
+| — | 2020-06-14 | 1h08m | [45 ✪ 后移动互联网时代的VC行业](https://crazy.capital/45)<!--g:https://crazy.capital/45--> | — |
+| — | 2020-05-14 | 1h09m | [44 ✪ 你坐的是职场真火箭还是窜天猴？](https://crazy.capital/44)<!--g:https://crazy.capital/44--> | — |
+| — | 2020-03-30 | 1h04m | [43 ✪ 生鲜之王——永辉超市](https://crazy.capital/43)<!--g:https://crazy.capital/43--> | — |
+| — | 2020-02-28 | 1h08m | [42 ✪ 专业类 KOL 的崛起](https://crazy.capital/42)<!--g:https://crazy.capital/42--> | — |
+| — | 2020-02-13 | 1h09m | [41 ✪ 快手的社交网络之路](https://crazy.capital/41)<!--g:https://crazy.capital/41--> | — |
+| — | 2019-12-31 | 1h14m | [40 ✪ 疯投圈的未来](https://crazy.capital/40)<!--g:https://crazy.capital/40--> | — |
+| — | 2019-12-14 | 1h03m | [39 ✪ 与花总漫谈短视频行业](https://crazy.capital/39)<!--g:https://crazy.capital/39--> | — |
+| — | 2019-10-29 | 1h07m | [38 ✪ 运动用品市场风云再起](https://crazy.capital/38)<!--g:https://crazy.capital/38--> | — |
+| — | 2019-09-20 | 1h15m | [37 ✪ 「中国有过多企业旨在提升效率，太少能创造体验」](https://crazy.capital/37)<!--g:https://crazy.capital/37--> | — |
+| — | 2019-08-25 | 1h18m | [36 ✪ 新消费品牌崛起大时代](https://crazy.capital/36)<!--g:https://crazy.capital/36--> | — |
+| — | 2019-07-21 | 1h13m | [35 ✪ 创业，不止北上广深杭](https://crazy.capital/35)<!--g:https://crazy.capital/35--> | — |
+| — | 2019-06-21 | 1h14m | [34 ✪ 再谈出海电商的全球机遇](https://crazy.capital/34)<!--g:https://crazy.capital/34--> | — |
+| — | 2019-05-12 | 1h14m | [33 ✪ 过载时代的信息修养](https://crazy.capital/33)<!--g:https://crazy.capital/33--> | — |
+| — | 2019-04-02 | 1h26m | [32 ✪ 复杂服务行业如何平台化](https://crazy.capital/32)<!--g:https://crazy.capital/32--> | — |
+| — | 2019-03-12 | 1h11m | [31 ✪ NOME vs 名创优品：日用零售的王者之争](https://crazy.capital/31)<!--g:https://crazy.capital/31--> | — |
+| — | 2019-02-20 | 1h12m | [30 ✪ 卖不掉的衣服去哪了？](https://crazy.capital/30)<!--g:https://crazy.capital/30--> | — |
+| — | 2019-01-26 | 1h04m | [29 ✪ airbnb—唯一还有机会在中国胜出的硅谷巨头](https://crazy.capital/29)<!--g:https://crazy.capital/29--> | — |
+| — | 2019-01-03 | 1h01m | [28 ✪ 学习爱好者最好的时代](https://crazy.capital/28)<!--g:https://crazy.capital/28--> | — |
+| — | 2018-12-12 | 1h18m | [27 ✪ 名创优品的十元店江湖](https://crazy.capital/27)<!--g:https://crazy.capital/27--> | — |
+| — | 2018-11-06 | 1h17m | [26 ✪ 美团是中国最大型的便利店](https://crazy.capital/26)<!--g:https://crazy.capital/26--> | — |
+| — | 2018-10-27 | 1h20m | [25 ✪ 如何用 VC 的思维买股票](https://crazy.capital/25)<!--g:https://crazy.capital/25--> | — |
+| — | 2018-09-27 | 1h16m | [24 ✪ 咖啡战争](https://crazy.capital/24)<!--g:https://crazy.capital/24--> | — |
+| — | 2018-09-01 | 1h15m | [23 ✪ 漫谈小米生态链](https://crazy.capital/23)<!--g:https://crazy.capital/23--> | — |
+| — | 2018-08-11 | 1h02m | [22 ✪ 在线旅游三国杀](https://crazy.capital/22)<!--g:https://crazy.capital/22--> | — |
+| — | 2018-07-12 | 1h38m | [21 ✪ 自由职业是生活的理想状态吗？](https://crazy.capital/21)<!--g:https://crazy.capital/21--> | — |
+| — | 2018-06-10 | 1h21m | [20 ✪ 居住市场进入租赁时代](https://crazy.capital/20)<!--g:https://crazy.capital/20--> | — |
+| — | 2018-04-24 | 1h02m | [19 ✪ 星巴克轶事](https://crazy.capital/19)<!--g:https://crazy.capital/19--> | — |
+| — | 2018-04-02 | 1h04m | [18 ✪ 拼多多=中国的Costco?](https://crazy.capital/18)<!--g:https://crazy.capital/18--> | — |
+| — | 2018-02-27 | 1h20m | [17 ✪ 股权投资 VS 区块链投资](https://crazy.capital/17)<!--g:https://crazy.capital/17--> | — |
+| — | 2018-01-17 | 1h06m | [16 ✪ 巨头进击的一年——2017创投领域回顾](https://crazy.capital/16)<!--g:https://crazy.capital/16--> | — |
+| — | 2017-12-11 | 1h16m | [15 ✪ 知识服务利用你的焦虑，你还是忍不住持续付费](https://crazy.capital/15)<!--g:https://crazy.capital/15--> | — |
+| — | 2017-11-22 | 1h15m | [14 ✪ 「产品不好的公司不配做营销」](https://crazy.capital/14)<!--g:https://crazy.capital/14--> | — |
+| — | 2017-10-17 | 1h05m | [13 ✪ 无人零售真伪风口之辩](https://crazy.capital/13)<!--g:https://crazy.capital/13--> | — |
+| — | 2017-09-26 | 44m41s | [12 ✪ 「『新』不一定是好的，但『旧』一定是不好的」](https://crazy.capital/12)<!--g:https://crazy.capital/12--> | — |
+| — | 2017-09-07 | 1h07m | [11 ✪ 租赁是电商的未来趋势吗？](https://crazy.capital/11)<!--g:https://crazy.capital/11--> | — |
+| — | 2017-08-07 | 1h07m | [10 ✪ 新零售可以解决生鲜行业难题吗？](https://crazy.capital/10)<!--g:https://crazy.capital/10--> | — |
+| — | 2017-07-13 | 1h04m | [9 ✪ 茶饮行业会出现下一个星巴克吗？](https://crazy.capital/9)<!--g:https://crazy.capital/9--> | — |
+| — | 2017-05-09 | 1h14m | [8 ✪ 专访小密圈吴鲁加](https://crazy.capital/8)<!--g:https://crazy.capital/8--> | — |
+| — | 2017-03-14 | 59m52s | [7 ✪ 两个穿着严选拖鞋的人聊严选](https://crazy.capital/7)<!--g:https://crazy.capital/7--> | — |
+| — | 2016-12-31 | 1h12m | [6 ✪ 2016 回顾与展望](https://crazy.capital/6)<!--g:https://crazy.capital/6--> | — |
+| — | 2016-12-05 | 1h01m | [5 ✪ 你会在网上买家具吗？](https://crazy.capital/5)<!--g:https://crazy.capital/5--> | — |
+| — | 2016-06-18 | 1h03m | [4 ✪ Keep 都一年四轮融资了，体育创业还有什么机会吗？](https://crazy.capital/4)<!--g:https://crazy.capital/4--> | — |
+| — | 2016-04-13 | 42m18s | [3 ✪ 互联网金融在中国](https://crazy.capital/3)<!--g:https://crazy.capital/3--> | — |
+| — | 2016-03-04 | 1h23m | [2 ✪ SaaS 太热闹，教你看尽门道](https://crazy.capital/2)<!--g:https://crazy.capital/2--> | — |
+| — | 2016-02-25 | 59m52s | [1 ✪ 2016 会是出口电商爆发的元年吗？](https://crazy.capital/1)<!--g:https://crazy.capital/1--> | — |
