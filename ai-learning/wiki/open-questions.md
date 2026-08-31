@@ -41,6 +41,9 @@
 - **[vLLM]** `step_with_batch_queue`「填队列优先」策略在 PP 下如何消泡？`max_concurrent_batches` 与 PP stage 数的关系、structured output 为何要推迟采样（deferred_scheduler_output）（来源：vLLM 架构总览 20260821，挂阶段 1）
 - **[vLLM]** AsyncScheduler 的 `num_output_placeholders` 机制在什么负载下改善 TTFT/吞吐、什么负载下反而浪费名额？（来源：同上，挂阶段 1，可 GPU 实测）
 - **[vLLM]** scale_out 渲染分离是否预示「全链路 disaggregation」演化（P/D 分离 → KV 传输 → 渲染分离 → sampler/detokenizer 独立成服务）？（来源：同上，挂阶段 7，结合官方 roadmap）
+- **[ChatGPT Work / 多 agent]** Sol/Luna/Terra 子 agent 的上下文如何在父子间传递？`/workspace` 持久卷子 agent 是否可见、产出如何回流去重、子 agent 会不会绕过父 agent 的 auto-review 而独立踩满致命三重？（来源：ChatGPT Work 能力面解析 20260831）
+- **[ChatGPT Work / 推理档位]** Ultra 档"更激进委派子 agent"（Simon 推测）能否证实？若成立，最高推理档本质是"从单体深思转向多体并行"，会改写"推理档位=想得更久"的默认理解——需 Work 环境实测 High vs Ultra 是否 fork 子会话（来源：同上）
+- **[ChatGPT Work / AI 安全]** OpenAI 的 auto-review 机制对"出网 code interpreter + 浏览器读恶意页"这条具体注入链路拦不拦得住？有无公开红队报告/CVE？（来源：同上，接 lethal trifecta 与 ChatGPT Atlas 注入实证）
 
 ---
 

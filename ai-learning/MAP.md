@@ -12,7 +12,7 @@
 | 数学与ML基础 | ✓ | 待统计 | 待补 |
 | 深度学习核心 | ✓ | 待统计 | 待补 |
 | 大语言模型与NLP | ✓ | 待统计 | 待补 |
-| 前沿专题(Agent/推理/多模态) | ✓ | Agent Harness 三大流派、自进化路径、AI 编码 Agent 终端；**进化式 harness 一手实证（paper 46）**；**Harness 请求全链路（报文级 function calling/tool use + agentic loop）** | 进化循环的过拟合防护、reward 消融、跨家族迁移机制待补 |
+| 前沿专题(Agent/推理/多模态) | ✓ | Agent Harness 三大流派、自进化路径、AI 编码 Agent 终端；**进化式 harness 一手实证（paper 46）**；**Harness 请求全链路（报文级 function calling/tool use + agentic loop）**；**ChatGPT Work 能力面逆向解析（商业化 harness 活样本 + 七层映射表，08-31）** | 进化循环的过拟合防护、reward 消融、跨家族迁移机制待补；Work 子 agent 上下文传递、Ultra 档委派机制、auto-review 抗注入实证待补 |
 | 可解释性 & AI 安全 | ✓ | J-space/J-lens 全局工作空间（paper 45） | 点火实验、机制可解释性系统方法（SAE 等）待补 |
 | **AI 行业与商业观察** | ✓ | 伪智力繁荣评论批判（07-13）、Anthropic 人才信号核实（07-14）、Evoken 陈冕访谈精读（07-29）、《Intelligence Curse》智能诅咒精读（07-30）、《AI应用创业生死录》Evoken三产品商业分析（07-31）、**《中国AI创业与一级市场故事线2022底-2026》从模型信仰到应用求生——三幕迁徙+全融资轮次表+机构视角(07-31)** | 「应用时代」信号追踪（2027-01）、薄毛利打穿点建模、judgment护城河证伪信号、国资接棒是续命还是改写规则、应用层估值洼地会否修复、IPO后二级市场重估 |
 
@@ -48,3 +48,4 @@
 - 2026-07-31：行业观察线第 3 篇(深度专业/商业分析)——《AI应用创业生死录:Evoken三产品商业分析》。**跨类复合任务**(E类 opencli 官网实地调研 + A类分析),三源交叉:播客完整版(晚点175陈冕)+ shownotes/图文 + 三产品官网实测(liblib.art/lovart.ai/liblib.tv)。核心增量=**把陈冕的定价哲学在 Lovart 官网定价页逐条实证**(积分制/按模型明码标价 Seedance $0.04/秒/消耗率机制/年包锁LTV),证明"薄毛利+消耗率定价"不是空谈而是精算工程。三产品=应用层价值栈三种活法(Liblib聚合+社区/Lovart Agent编排/LibTV垂类场景)。战略框架"逐鹿中原vs占领江东"=在巨头注意力时间差里偏安求生(真名是体面拖延非必胜)。生死系于两个外部变量:token成本曲线+巨头注意力窗口。缝合[Intelligence Curse]/[Bitter Lesson]:judgment护城河是否也会被模型淹没。三缺口(江东天险量化/薄毛利打穿点建模/judgment证伪信号)。
 - `2026-08-21`：用户拍板 vLLM 源码级学习长线（七阶段全量 + GPU 实操 + 深度专业体），录入模型效率线活跃队列，计划文件落 `roadmap/vLLM_源码级学习计划_20260821.md`。该线承载结清 open-questions「EAGLE 特征层原理」的任务；每完成一阶段回本文件回填覆盖状态。
 - `2026-08-21`：vLLM 长线**阶段 0 落地**——《vLLM V1 架构总览：一个请求的一生（骨架篇）》（深度专业体）。源码 pin v0.27.1 本地 clone（`../vllm`），三路并行源码勘察 + 主会话抽查复核（V0 alias、step 本体、`vllm/models/` 归属）。要点：四类进程模型（A+DP+N+1）、请求一生 12 跳、EngineCore 三线程 busy loop 与 execute/sample 两相拆分、执行层四层结构、「v0.27.1 vs 教科书 V1」11 条新变化（含 V0 彻底删除、Renderer 抽象、scale_out 前后端分离、Model Runner V2）。GPU 动手清单待 infra 开机补齐。三新问汇入 open-questions。
+- `2026-08-31`：Agent/Harness 工程线 + AI 安全线新增《ChatGPT Work 能力面与 Harness 样本深度解析》（深度专业体）。精读 Simon Willison《Understanding ChatGPT Work》(2026-08-30) 一手实验评测，做三件事：① 逐条拆解 7 项 Chat 没有的独占能力（Sol/Luna/Terra 六档推理·出网 code interpreter·headless Chrome+Playwright·跨会话持久 `/workspace` 卷·ChatGPT Sites 部署到 Cloudflare·子 agent·定时任务）；② 缝合本库 harness 谱系，产出「harness 七层抽象 × Work 对应件」映射表，论断 **Work 不是新范式，是已知 harness 抽象的极致商业化**（开放度拉满，尤其"默认全域名出网 code interpreter"远超 Claude 短白名单）；③ 把 Simon 的 lethal trifecta（致命三重）落到 Work，论证**三样全占是能力面必然副产品而非漏洞**（持久卷=私有数据/浏览器读任意页=不可信内容/出网=外传通道），与"纯 Chat 风险小"同源。证据分层标注 `[Simon 实测]`/`[Simon 推测]`/`[官方核实]`；GPT-5.6 天体命名(2026-06-26)、Work GA(2026-07-09)经联网核实。三缺口汇入 open-questions（子 agent 上下文传递、Ultra 委派机制、auto-review 抗注入实证）。
