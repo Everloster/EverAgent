@@ -135,7 +135,7 @@ EverAgent/
 │   ├── lint_evidence.py # 证据密度自检（非阻塞）
 │   ├── git_identity.py  # 提交身份校验（Committer + Author 双身份）
 │   └── ecommit.sh       # 双身份提交包装（Author=Everloster）
-├── docs/                # PROTOCOL_COMMON（提交/安全规则）、SEARCH（搜索阶梯）、REPORT_METADATA、REPORT_INDEX（自动生成）、personal
+├── docs/                # PROTOCOL_COMMON（提交/安全规则）、SEARCH（搜索阶梯）、REPORT_METADATA、REPORT_INDEX（自动生成）、personal、external-skills（外部技能 vendor 区）
 └── {domain}-learning/
     ├── AGENTS.md        # 领域边界 + 特化（~50 行）
     ├── PROFILE.md       # 学习者画像
@@ -158,6 +158,7 @@ EverAgent/
 - **兴趣确认**：各领域 `wiki/open-questions.md` 是历史快照 ≠ 当前兴趣。用户未指定明确方向的活儿，动手前先习惯性问一句最近的学习兴趣和方向；确认结果写回各领域 `MAP.md` 优先级队列（2026-07-20 确立）。
 - **token 纪律（2026-07-21 确立）**：报告质量优先、用户当前兴趣与方向优先。wiki 维护类工作（lint 健康检查/批量重构回填/图谱与索引优化）一律 **hold**，除非用户明确要求；wiki 只在报告产出过程中顺带沉淀，不为 wiki 而 wiki。
 - **工具选型纪律（2026-07-28 确立）**：动手做工具/软件/代码前，**先查开源社区与官方是否已有可复用方案**（GitHub/官网/官方文档），确认没有才自写。选型优先级固定：**官方 CLI > 官方 MCP/SDK > 成熟开源 > 自写脚本**，每降一级须先说明上级为何不可用。尤其 B 类（ai-practice 造工具/demo）、F 类（infra 基础设施）适用；F 类完整铁律见私有仓 `EverAgent-infra/AGENTS.md` 核心原则节。
+- **外部技能 vendor 区（2026-09-01 引入）**：`docs/external-skills/` 存放从开源社区挑来的方法论技能副本（当前：hypothesis-generation / scientific-writing，源自 scientific-agent-skills，MIT）。路由：报告「思考与追问」/open-questions 深化 → 读 `hypothesis-generation/SKILL.md` 的对立假说与判别性预测框架；报告写作的证据纪律 → `scientific-writing/SKILL.md` 的 evidence-record 先行、draft 不添加记录外事实。上游更新跑 `scripts/sync-external-skills.sh`（`--install` 可投射到 `~/.agents/skills/`），同步记录见该目录 `UPSTREAM.md`。**存量 20 个领域技能不重构**，仅新增统一走此模式。
 
 ---
 
