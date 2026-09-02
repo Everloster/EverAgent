@@ -7,11 +7,17 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-09-02 | [晚点聊177｜详解 Kimi K3：体感、推理系统工程、开源大辩论与估值冲击](../podcast-learning/reports/2026-08-04_rss-wandian-latetalk_kimi-k3.md) | podcast-learning |
+| 2026-09-02 | [张小珺152｜孙宇涛领读 Kimi K3 技术报告：三维 scaling、注意力谱系与 infra co-design](../podcast-learning/reports/2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report.md) | podcast-learning |
+| 2026-09-02 | [Kimi K3 一鱼两吃：张小珺152 × 晚点聊177 对照精读](../podcast-learning/reports/2026-09-02_multi_kimi-k3-dueling-reads.md) | podcast-learning |
+| 2026-09-02 | [AI 行业日报 · 2026-09-02](../web-surfing/reports/ai-news-daily-2026-09-02.md) | web-surfing |
+| 2026-09-01 | [AI 行业日报 · 2026-09-01](../web-surfing/reports/ai-news-daily-2026-09-01.md) | web-surfing |
 | 2026-08-31 | [ChatGPT Work 能力面逆向解析：一个商业化 Agent Harness 的活样本，兼谈致命三重](../ai-learning/reports/knowledge_reports/ChatGPT_Work_能力面与Harness样本_深度解析_20260831.md) | ai-learning |
 | 2026-08-31 | [AI 行业日报 · 2026-08-31](../web-surfing/reports/ai-news-daily-2026-08-31.md) | web-surfing |
 | 2026-08-28 | [惠州租房建议报告——两位老人 2026 年 9/10 月入住版（1–3 个月短住体验）](../web-surfing/reports/huizhou-rental-guide-2026-09.md) | web-surfing |
 | 2026-08-28 | [AI 行业日报 · 2026-08-28](../web-surfing/reports/ai-news-daily-2026-08-28.md) | web-surfing |
 | 2026-08-27 | [AI 行业日报 · 2026-08-27](../web-surfing/reports/ai-news-daily-2026-08-27.md) | web-surfing |
+| 2026-08-26 | [张小珺 152 领读Kimi K3技术报告 — shownotes](../podcast-learning/reports/transcripts/2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report.shownotes.md) | podcast-learning |
 | 2026-08-26 | [AI 行业日报 · 2026-08-26](../web-surfing/reports/ai-news-daily-2026-08-26.md) | web-surfing |
 | 2026-08-25 | [身体出现这些信号，可能是炎症在提醒你！——帆书讲《炎症》](../podcast-learning/reports/2026-08-21_bilibili-fanshu_yanzheng.md) | podcast-learning |
 | 2026-08-25 | [AI 行业日报 · 2026-08-25](../web-surfing/reports/ai-news-daily-2026-08-25.md) | web-surfing |
@@ -21,17 +27,11 @@
 | 2026-08-23 | [AI 行业日报 · 2026-08-23](../web-surfing/reports/ai-news-daily-2026-08-23.md) | web-surfing |
 | 2026-08-22 | [对游凯超3小时访谈：开源Infra、和模型Co-design、「如果vLLM失败，我们会后悔一辈子」](../podcast-learning/reports/2026-07-28_xiaoyuzhou-zhangxiaojun_youkaichao.md) | podcast-learning |
 | 2026-08-21 | [vLLM V1 架构总览：一个请求的一生（骨架篇）](../ai-learning/reports/knowledge_reports/vLLM_V1架构总览_深度解析_20260821.md) | ai-learning |
+| 2026-08-04 | [晚点聊 177 详解Kimi K3 — shownotes](../podcast-learning/reports/transcripts/2026-08-04_rss-wandian-latetalk_kimi-k3.shownotes.md) | podcast-learning |
 | 2026-07-31 | [对话 Evoken 陈冕：在模型不断吞噬应用价值的时代，一家独立 AI 应用公司如何 survive](../podcast-learning/reports/2026-07-30_xiaoyuzhou-wandian-latetalk_chenmian.md) | podcast-learning |
 | 2026-07-31 | [从模型信仰到应用求生：中国 AI 创业与一级市场故事线(2022底—2026)](../ai-learning/reports/knowledge_reports/中国AI创业与一级市场故事线_从模型信仰到应用求生_20260731.md) | ai-learning |
 | 2026-07-31 | [AI 应用创业生死录：从 Evoken(Liblib/Lovart/LibTV)看模型吞噬应用时代的 survive 经济学](../ai-learning/reports/knowledge_reports/AI应用创业生死录_Evoken三产品商业分析_20260731.md) | ai-learning |
 | 2026-07-30 | [当'聪明'变成一种诅咒：AGI 会不会让普通人从此无关紧要？——《The Intelligence Curse》精读](../ai-learning/reports/knowledge_reports/IntelligenceCurse_智能诅咒_科普讲解_20260730.md) | ai-learning |
-| 2026-07-29 | [炒菜逻辑：家常菜为什么比不过饭店香味——调料下锅时机全解](../web-surfing/reports/cooking-logic-timing-douyin.md) | web-surfing |
-| 2026-07-29 | [十年封神日剧 TOP10(2016–2025)—— SeedHub 对应资源索引](../web-surfing/reports/jdrama-top10-2016-2025-seedhub.md) | web-surfing |
-| 2026-07-29 | [为什么 FDE 在 AI 时代这么火？因为差距不在模型，在业务细节](../podcast-learning/reports/2026-07-29_bilibili-kedaibiao-lizheng_jove-fde.md) | podcast-learning |
-| 2026-07-29 | [Evoken 陈冕晚点访谈精读：一家 AI 应用公司如何在模型吞噬中求生](../ai-learning/reports/knowledge_reports/Evoken陈冕晚点访谈_AI应用生存策略_20260729.md) | ai-learning |
-| 2026-07-28 | [Kimi K3：一座 2.8 万亿参数的城市，是怎么让信息不堵车的？](../ai-learning/reports/knowledge_reports/KimiK3_信息流三方向_科普讲解_20260728.md) | ai-learning |
-| 2026-07-26 | [赵鼎新《儒法国家》理论框架：四种竞争、战争驱动与两千年韧性结构](../philosophy-learning/reports/concept_reports/赵鼎新_儒法国家_理论框架_20260721.md) | philosophy-learning |
-| 2026-07-21 | [程乐松一手文本精读：重返经验、断裂的居间性与「做中国哲学」的手筋](../philosophy-learning/reports/concept_reports/程乐松_方法论一手精读_重返经验与做中国哲学_20260720.md) | philosophy-learning |
 
 ## 🤖 AI Learning（98 篇）
 
@@ -245,14 +245,19 @@
 | 2026-03-26 | [Physiology of Growth Hormone Secretion during Sleep (1996) 精读](../biology-learning/reports/paper_analyses/P09_gh_sleep_physiology_1996.md) | — |
 | 2026-03-23 | [晚型人作息与力量训练深度研究](../biology-learning/reports/concept_reports/晚型人作息与力量训练_深度研究报告.md) | — |
 
-## 🎙️ Podcast Learning（14 篇）
+## 🎙️ Podcast Learning（19 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-09-02 | [晚点聊177｜详解 Kimi K3：体感、推理系统工程、开源大辩论与估值冲击](../podcast-learning/reports/2026-08-04_rss-wandian-latetalk_kimi-k3.md) | — |
+| 2026-09-02 | [张小珺152｜孙宇涛领读 Kimi K3 技术报告：三维 scaling、注意力谱系与 infra co-design](../podcast-learning/reports/2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report.md) | — |
+| 2026-09-02 | [Kimi K3 一鱼两吃：张小珺152 × 晚点聊177 对照精读](../podcast-learning/reports/2026-09-02_multi_kimi-k3-dueling-reads.md) | — |
+| 2026-08-26 | [张小珺 152 领读Kimi K3技术报告 — shownotes](../podcast-learning/reports/transcripts/2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report.shownotes.md) | — |
 | 2026-08-25 | [身体出现这些信号，可能是炎症在提醒你！——帆书讲《炎症》](../podcast-learning/reports/2026-08-21_bilibili-fanshu_yanzheng.md) | — |
 | 2026-08-24 | [刘方奇教授：肠癌越来越年轻，确诊后先别急着手术！](../podcast-learning/reports/2026-08-24_xiaoyuzhou-boluo-jiankang_liufangqi.md) | — |
 | 2026-08-23 | [对话盛颖：xAI，Infra的浪漫，SGLang，开源，平权与「甄嬛传」](../podcast-learning/reports/2026-08-04_rss-guigu101_shengying.md) | — |
 | 2026-08-22 | [对游凯超3小时访谈：开源Infra、和模型Co-design、「如果vLLM失败，我们会后悔一辈子」](../podcast-learning/reports/2026-07-28_xiaoyuzhou-zhangxiaojun_youkaichao.md) | — |
+| 2026-08-04 | [晚点聊 177 详解Kimi K3 — shownotes](../podcast-learning/reports/transcripts/2026-08-04_rss-wandian-latetalk_kimi-k3.shownotes.md) | — |
 | 2026-07-31 | [对话 Evoken 陈冕：在模型不断吞噬应用价值的时代，一家独立 AI 应用公司如何 survive](../podcast-learning/reports/2026-07-30_xiaoyuzhou-wandian-latetalk_chenmian.md) | — |
 | 2026-07-29 | [为什么 FDE 在 AI 时代这么火？因为差距不在模型，在业务细节](../podcast-learning/reports/2026-07-29_bilibili-kedaibiao-lizheng_jove-fde.md) | — |
 | 2026-07-20 | [人到中年仨账户：现金流、肌肉、睡眠（面基 · 老钱单口）](../podcast-learning/reports/2026-07-13_xiaoyuzhou-mingjing-diandian_midlife-accounts.md) | — |
@@ -264,10 +269,12 @@
 | 2026-06-20 | [三年行业吃肉榜/爆亏榜大合集（2023-2025）：谁在偷偷赚钱，谁在快速衰落](../podcast-learning/reports/2026-06-20_bilibili-cls-tongxue_hangye-bangdan.md) | — |
 | 2026-06-18 | [Vol.29 对话王小川：造医生，战豆包，与无尽的 AI 非共识](../podcast-learning/reports/2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan.md) | — |
 
-## 🏄 Web Surfing（11 篇）
+## 🏄 Web Surfing（13 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-09-02 | [AI 行业日报 · 2026-09-02](../web-surfing/reports/ai-news-daily-2026-09-02.md) | — |
+| 2026-09-01 | [AI 行业日报 · 2026-09-01](../web-surfing/reports/ai-news-daily-2026-09-01.md) | — |
 | 2026-08-31 | [AI 行业日报 · 2026-08-31](../web-surfing/reports/ai-news-daily-2026-08-31.md) | — |
 | 2026-08-28 | [惠州租房建议报告——两位老人 2026 年 9/10 月入住版（1–3 个月短住体验）](../web-surfing/reports/huizhou-rental-guide-2026-09.md) | — |
 | 2026-08-28 | [AI 行业日报 · 2026-08-28](../web-surfing/reports/ai-news-daily-2026-08-28.md) | — |

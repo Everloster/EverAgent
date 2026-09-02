@@ -5,7 +5,7 @@
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
-| 152 | 2026-08-26 | 2h04m | [152. 领读Kimi K3技术报告：从架构创新聊起，注意力美学、多教师蒸馏和开源MoE](https://www.xiaoyuzhoufm.com/episode/6a8eadd61352af56ff3c6017?utm_source=rss)<!--g:6a8eadd61352af56ff3c6017--> | — |
+| 152 | 2026-08-26 | 2h04m | [152. 领读Kimi K3技术报告：从架构创新聊起，注意力美学、多教师蒸馏和开源MoE](https://www.xiaoyuzhoufm.com/episode/6a8eadd61352af56ff3c6017?utm_source=rss)<!--g:6a8eadd61352af56ff3c6017--> | ✅ 已处理（[[2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report|报告]]） |
 | 151 | 2026-08-19 | 1h09m | [151. 17岁被2026年ICML收录论文的小少年：我bet开心！开心！开心！](https://www.xiaoyuzhoufm.com/episode/6a8472b95aeb2a5712e8de78?utm_source=rss)<!--g:6a8472b95aeb2a5712e8de78--> | — |
 | 150 | 2026-08-12 | 3h36m | [150. 对英伟达研究副总裁刘洺堉的4小时访谈：功夫、Cosmos 3、开源世界模型、黄仁勋、你不需要击败所有对手](https://www.xiaoyuzhoufm.com/episode/6a7cbeb017676351c5710266?utm_source=rss)<!--g:6a7cbeb017676351c5710266--> | — |
 | 149 | 2026-07-30 | 1h40m | [149. 亲历中美neo labs资本狂潮，和清华刘子鸣聊：AI for AI、机制可解释性和Max Tegmark](https://www.xiaoyuzhoufm.com/episode/6a69b07eb581962ce2bd4d97?utm_source=rss)<!--g:6a69b07eb581962ce2bd4d97--> | — |
