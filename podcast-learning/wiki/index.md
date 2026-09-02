@@ -19,6 +19,12 @@
 - [[2026-07-28_xiaoyuzhou-zhangxiaojun_youkaichao|对游凯超3小时访谈：开源Infra、和模型Co-design、"如果vLLM失败，我们会后悔一辈子"]]（episode_summary · 发布 2026-07-28，归档 2026-08-22）— 小宇宙「张小珺Jùn｜商业访谈录」Vol.148，3h00m26s，vLLM 三年史 / 仁慈的独裁者 / 模型-Infra co-design / Inferact 创业；与 ai-learning vLLM 源码线互为表里
 - [[2026-08-04_rss-guigu101_shengying|对话盛颖：xAI，Infra的浪漫，SGLang，开源，平权与「甄嬛传」]]（episode_summary · 发布 2026-08-04，归档 2026-08-23）— 硅谷101 E247，1h46m26s，SGLang/RadixArk vs vLLM/Inferact 双子星对照 / infra 即产品 / 平权；首跑循环幻觉 → VAD 修复的标志性案例
 
+### AI 模型 / 前沿架构（K3 一鱼两吃）
+
+- [[2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report|张小珺152：孙宇涛领读 Kimi K3 技术报告]]（episode_summary · 发布 2026-08-26，归档 2026-09-02）— 2h04m，学术谱系学：三维 scaling / 线性注意力演化 / 连接方式谱系 / MoonEP / "模型内科"；串讲十多篇论文
+- [[2026-08-04_rss-wandian-latetalk_kimi-k3|晚点聊177：详解 Kimi K3]]（episode_summary · 发布 2026-08-04，归档 2026-09-02）— 1h55m，工业生态学：Opus 4.8 体感 / 白板式前缀缓存 / MOPD / 开源大辩论与估值冲击 / Kernel Development Agent
+- [[2026-09-02_multi_kimi-k3-dueling-reads|K3 一鱼两吃：张小珺152 × 晚点聊177 对照精读]]（cross_episode · 2026-09-02）— 六维度对照 / 事实口径核验（NoPE/MOPD/2.5×vs6.3×） / 互补盲区 / 合成框架 / 联读指南
+
 ### 创业方法论 / 商业认知
 
 - [[2026-07-07_bilibili-kedaibiao-lizheng_tulong-boshi|课代表立正对谈屠龙博士]]（episode_summary · 2026-07-07）— B 站，非线性世界观 / 定价锚定 / 人才洼地
@@ -104,6 +110,14 @@
 - [[entities/liu-fangqi|刘方奇]] — 复旦大学附属肿瘤医院大肠外科副主任医师（vol.122 嘉宾；遗传性肠癌/保肛/新辅助方向）
 - [[entities/li-zhizhong|李治中（菠萝）]] — 《菠萝健康派》主播，杜克癌症生物学博士、科普作家（@菠萝因子）
 
+### 来自 2026-09-02 K3 一鱼两吃（张小珺152 × 晚点聊177）
+
+- [[entities/sun-yutao|孙宇涛]] — 清华 CS 博士生；RetNet 一作；参数量第一性 / 渐进主义 / 转向世界模型
+- [[entities/zhao-chenyang|赵晨阳]] — RadixArk 创始成员、SGLang 核心开发者；流水线护城河论 / RSI 已在有验证器领域运作
+- [[entities/zeng-zhiyuan|曾致远]] — UW 博二；忒修斯之船（可组合性版）/ RSI 瓶颈在 evaluation
+- [[entities/moonshot-ai|月之暗面（Moonshot/Kimi）]] — 杨植麟；K1.5→K3 谱系；"模型内科" / "用 infra 换算力"
+- [[entities/zhang-xiaojun|张小珺]] — 商业访谈录主播；148/152 两期；"学习播客"形态开创
+
 ## Concepts（核心概念）
 
 ### 来自 Vol.29 王小川系列
@@ -170,10 +184,19 @@
 
 - [[concepts/chronic-inflammation|慢性炎症与隐匿的炎症]] — 「无声的小火」；自查三法（C 反应蛋白/腰围/步速握力）
 
+### 来自 2026-09-02 K3 一鱼两吃（张小珺152 × 晚点聊177）
+
+- [[concepts/kimi-k3|Kimi K3]] — 2.8T/104B 开源 MoE；三维 scaling；架构总览表
+- [[concepts/kda-linear-attention|KDA 与混合注意力]] — 线性注意力六步谱系；decay 下界与 BF16 co-design；白板式缓存
+- [[concepts/quantile-balancing|Quantile Balancing]] — 分位数一步算 bias；负载均衡三代演进
+- [[concepts/attention-residuals|Attention Residuals]] — 层间选择性读取；与 mHC 对偶；Pre-LN 超集
+- [[concepts/mopd|MOPD]] — 多教师 on-policy 蒸馏；3 域×3 努力度；解耦与合板
+- [[concepts/kernel-development-agent|Kernel Development Agent]] — RSI 三条件（便宜/可验证/难作弊）；双 KDA 之问
+
 ## Syntheses（跨期综合）
 
 （待 ≥3 概念综合时建立）
 
 ---
 
-*Last updated: 2026-08-25*
+*Last updated: 2026-09-02*

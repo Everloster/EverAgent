@@ -157,3 +157,15 @@
 - **事故 2｜解析正则回归**：改键时新正则用 `[^|]*` 取状态列，遇 `✅ 已处理（[[报告|别名]]）` 内嵌竖线整行失配（张小珺 148 状态一度被重置，已手工恢复）。状态列必须保持贪婪 `(.*)` 到行尾竖线的旧结构——与 2026-08-24 修过的 wikilink 竖线坑同源，回归了一次，已在代码注释里立牌
 - 三遍全量跑收敛验证：第三遍「无新增单集」+ 148 ✅ 状态完整保留 + 51 档零失败
 - **机制变更**：周更 cron（id 01M0PF17S1J77J21T69Z7WZQJP）退役——它挂在当时会话里从未持久化（本机 crontab/launchd/openclaw 均查无此任务）。2026-08-31 起**改用户主动催更**，工作流写入 AGENTS.md（跑脚本 → NEW 按 PROFILE 兴趣排序汇总 → 问是否转写）
+
+## [2026-09-02] ingest | xiaoyuzhou + rss（Kimi K3 一鱼两吃·双期对照）
+- **A 源**：小宇宙 · 张小珺商业访谈录 · 152《领读Kimi K3技术报告：从架构创新聊起，注意力美学、多教师蒸馏和开源MoE》（2026-08-26 发布）｜对谈（张小珺 × 嘉宾**孙宇涛**：清华 CS 博士候选人、上海创智学院璞锐学者、RetNet 一作）
+- **B 源**：RSS（晚点聊官方 feed）· LateTalk · 177《详解Kimi K3：强到冲击Anthropic估值的模型什么样？》（2026-08-04 发布）｜三人谈（主播曼祺 × **赵晨阳**：RadixArk/SGLang 创始成员 + **曾致远**：UW 博二）
+- A：2h04m19s（7459s）· 6,719 段 / 40,439 汉字 / 语速 325 字/min · B：1h55m（6900s）· 5,500 段 / 33,263 汉字 / 289 字/min
+- 报告三份：[[2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report]]（学术谱系学）+ [[2026-08-04_rss-wandian-latetalk_kimi-k3]]（工业生态学）+ **[[2026-09-02_multi_kimi-k3-dueling-reads]]（cross_episode 对照层）**
+- pipeline（Workflow 编排·ultracode）：双期 transcribe → 切片（12+15 章）→ **27 章并行润色** → 双期要素提取（结构化）→ 对照 agent 交叉分析（factual_diffs 带外部核验：全模型 NoPE、MOPD=3域×3努力度、MXFP4/MXFP8、2.5×训练效率 vs 6.3×解码加速勿混）
+- 修正统计：A 期 400+ 处（传送门→Transformer×10、上海创制→创智、松林→杨松林与苏剑林分列、C2GOU→SiTU-GLU 等）；B 期 300+ 处（AnswerPick→Anthropic、钱坠付用→前缀复用等）
+- 新增 entities ×5：[[entities/sun-yutao]]、[[entities/zhao-chenyang]]、[[entities/zeng-zhiyuan]]、[[entities/moonshot-ai]]、[[entities/zhang-xiaojun]]；concepts ×6：[[concepts/kimi-k3]]、[[concepts/kda-linear-attention]]、[[concepts/quantile-balancing]]、[[concepts/attention-residuals]]、[[concepts/mopd]]、[[concepts/kernel-development-agent]]
+- open-questions 汇入 3 问（工程税分工 / 护城河可复制性 / 双 KDA 复利）
+- show-indexes 状态 ✅ ×2（zhangxiaojun 152、wandian-latetalk 177）
+- **踩坑两枚**：① transcribe.py `--whisper-args` 里 `~/` 波浪号在 subprocess 列表模式不展开 → VAD 模型找不到 → SIGABRT；**解法：传绝对路径**（AGENTS.md 示例照抄会踩）。② 双 Workflow 并行 27 agent 撞 API 账户级 429 限流（5+9 章失败）→ **分批补齐（3 agent/批）** 后全绿——多 workflow 叠加时并发要主动限批
