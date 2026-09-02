@@ -182,3 +182,8 @@ EverAgent/
 ## §5 新增领域
 
 复制任一领域结构：`AGENTS.md` + `PROFILE.md` + `MAP.md` + `reports/` + `wiki/{concepts,entities,syntheses,open-questions.md}` + `skills/`，然后更新 §1 表格与 README。
+
+## MCP 优先级（2026-09-02 定）
+
+同类任务优先用智谱 GLM Coding Plan 四件套 MCP：`web-search-prime`（网页搜索）/`web-reader`（网页阅读）/`zai-mcp-server`（图像与视频分析、OCR、UI 截图转码）/`zread`（GitHub 仓库结构/文件/文档检索）；内置工具或其它 MCP 的同类能力仅在前者失败或需要第二来源时兜底。工具未安装或连接失败时静默降级，不要因此中断任务。
+
