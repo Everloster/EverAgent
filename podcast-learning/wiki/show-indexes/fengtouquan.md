@@ -1,10 +1,11 @@
 # 疯投圈 — 全量单集索引
 
-> 来源：官方 RSS（<https://crazy.capital/feed>）｜ 最近拉取：2026-08-31 ｜ 总集数：146
+> 来源：官方 RSS（<https://crazy.capital/feed>）｜ 最近拉取：2026-09-09 ｜ 总集数：147
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-08 | 1h10m | [147 ✪ SHEIN回港上市、新拼姆开启自营](https://crazy.capital/147)<!--g:https://crazy.capital/147--> | — |
 | — | 2026-08-31 | 1h18m | [146 ✪ 对买量和铺货说bye-bye，AI如何驱动出海品牌增长?](https://crazy.capital/146)<!--g:https://crazy.capital/146--> | — |
 | — | 2026-08-22 | 1h12m | [145 ✪ 改属中资的餐饮洋品牌](https://crazy.capital/145)<!--g:https://crazy.capital/145--> | — |
 | — | 2026-08-09 | 1h05m | [144 ✪ 国货出海新趋势：山下有松、观夏、PANE](https://crazy.capital/144)<!--g:https://crazy.capital/144--> | — |

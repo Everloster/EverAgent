@@ -1,10 +1,11 @@
 # 屠龙大实话 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/fp7wecdfhgyq>）｜ 最近拉取：2026-08-31 ｜ 总集数：95
+> 来源：官方 RSS（<https://feed.xyzfm.space/fp7wecdfhgyq>）｜ 最近拉取：2026-09-09 ｜ 总集数：96
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| 62 | 2026-08-31 | 1h25m | [62. 如何避免“精英白女综合症”？](https://www.xiaoyuzhoufm.com/episode/6a94fa2da0210c197dcad5a6?utm_source=rss)<!--g:6a94fa2da0210c197dcad5a6--> | — |
 | 61 | 2026-07-30 | 1h49m | [61.商业评论采访两小时超长版（一剪子没剪），超多商业故事](https://www.xiaoyuzhoufm.com/episode/6a6b644856a3f3491ba7a241?utm_source=rss)<!--g:6a6b644856a3f3491ba7a241--> | — |
 | 60 | 2026-07-14 | 1h06m | [60.B-BOX大神转型音乐全能：如何用声音诠释这个世界](https://www.xiaoyuzhoufm.com/episode/6a548a044adef2b365632d85?utm_source=rss)<!--g:6a548a044adef2b365632d85--> | — |
 | 59 | 2026-06-23 | 1h39m | [59. 线性思维害死人？和康奈尔大学经济学博士课代表立正扒一扒这个思维中的隐形巨坑](https://www.xiaoyuzhoufm.com/episode/6a3a1a139d2f5743683c5833?utm_source=rss)<!--g:6a3a1a139d2f5743683c5833--> | — |

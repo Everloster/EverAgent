@@ -1,10 +1,12 @@
 # 半拿铁·周刊 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/vylham8uw3ay>）｜ 最近拉取：2026-08-31 ｜ 总集数：50
+> 来源：官方 RSS（<https://feed.xyzfm.space/vylham8uw3ay>）｜ 最近拉取：2026-09-09 ｜ 总集数：52
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-01 | 1h43m | [No.48 安踏已经变芯、两根铁轨变金、光模块利润狂奔、芯片十年翻身、家具盛景退温、地方罚没加深、血糖焦虑入侵](https://www.xiaoyuzhoufm.com/episode/6a965369f03e74ee6b031619?utm_source=rss)<!--g:6a965369f03e74ee6b031619--> | — |
+| — | 2026-08-31 | 19m26s | [番外 3.【📍珠峰】把艺术片当金融产品，诺兰的商业帝国是怎么建成的](https://www.xiaoyuzhoufm.com/episode/6a957846a0210c197dcb255d?utm_source=rss)<!--g:6a957846a0210c197dcb255d--> | — |
 | — | 2026-08-25 | 1h48m | [No.47 Google 提智能体、旺旺经营告急、泡面生意争气、许家印判无期、旧书去哪里、保研辅导生意、考研是个难题](https://www.xiaoyuzhoufm.com/episode/6a8c6a00ef65145dfcc4bb69?utm_source=rss)<!--g:6a8c6a00ef65145dfcc4bb69--> | — |
 | — | 2026-08-11 | 1h58m | [No.46 新加坡海里扩张、大学教授不敢躺、印度黑魔法上堂、AI 歌手再冲榜、AI 演员带货也开张](https://www.xiaoyuzhoufm.com/episode/6a7ab14717676351c5701218?utm_source=rss)<!--g:6a7ab14717676351c5701218--> | — |
 | — | 2026-07-28 | 1h48m | [No.45 数学双星摘奖、AI 进厂上岗、高分志愿转向、快递末端算账、数据买卖开张](https://www.xiaoyuzhoufm.com/episode/6a68606eb581962ce2bcb846?utm_source=rss)<!--g:6a68606eb581962ce2bcb846--> | — |

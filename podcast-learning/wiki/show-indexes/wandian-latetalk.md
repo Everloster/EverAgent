@@ -1,10 +1,11 @@
 # 晚点聊 LateTalk — 全量单集索引
 
-> 来源：官方 RSS（<https://podcast.latepost.com/rss>）｜ 最近拉取：2026-08-31 ｜ 总集数：179
+> 来源：官方 RSS（<https://podcast.latepost.com/rss>）｜ 最近拉取：2026-09-09 ｜ 总集数：180
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-02 | 1h02m | [180: 具身智能的金钱游戏：进展难测、收入催熟与 IPO 竞速](https://podcast.latepost.com/180)<!--g:68e222fe-2a2e-43ee-811a-dfdb445a9deb--> | — |
 | — | 2026-08-17 | 49m33s | [179: 蒸馏风暴：一场无人公开谈论的技术竞赛](https://podcast.latepost.com/179)<!--g:da707393-af0f-4607-9712-93f469508667--> | — |
 | — | 2026-08-07 | 1h29m | [178: 与田渊栋聊 RSI：模型自进化如何到来？](https://podcast.latepost.com/178)<!--g:38fb4a6b-3eab-4c3e-b93c-7176ef17c668--> | — |
 | — | 2026-08-04 | 1h55m | [177: 详解Kimi K3：强到冲击Anthropic估值的模型什么样？](https://podcast.latepost.com/177)<!--g:460cc55b-c0f2-4898-95cf-f3372ece1eb2--> | ✅ 已处理（[[2026-08-04_rss-wandian-latetalk_kimi-k3|报告]]） |

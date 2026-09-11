@@ -1,10 +1,11 @@
 # 赛博对话 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/v99nfxe349ny>）｜ 最近拉取：2026-08-31 ｜ 总集数：54
+> 来源：官方 RSS（<https://feed.xyzfm.space/v99nfxe349ny>）｜ 最近拉取：2026-09-09 ｜ 总集数：55
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-02 | 54m46s | [vol.55｜Robotaxi：当无人驾驶从科幻走向日常｜对话小马智行创始人彭军](https://www.xiaoyuzhoufm.com/episode/6a969c29f03e74ee6b034a57?utm_source=rss)<!--g:6a969c29f03e74ee6b034a57--> | — |
 | — | 2026-08-20 | 1h57m | [vol.54｜对话陈震&王自如：两个中年男人的自律哲学](https://www.xiaoyuzhoufm.com/episode/6a870d7e1352af56ff3964a1?utm_source=rss)<!--g:6a870d7e1352af56ff3964a1--> | — |
 | — | 2026-08-06 | 1h19m | [vol.53｜与机器人谈甜甜恋爱：有伴侣又有机器人算不算出轨?｜对话李清都X大头博士](https://www.xiaoyuzhoufm.com/episode/6a7458a1e31fb76ffb309995?utm_source=rss)<!--g:6a7458a1e31fb76ffb309995--> | — |
 | — | 2026-07-22 | 1h09m | [vol.52｜长鑫科技上市首日涨471%背后，全球存储行业到底发生了什么｜刘飞X老麦X潘玮哲](https://www.xiaoyuzhoufm.com/episode/6a6097a86356eb2d9be6aa13?utm_source=rss)<!--g:6a6097a86356eb2d9be6aa13--> | — |

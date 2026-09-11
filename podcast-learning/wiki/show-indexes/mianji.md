@@ -1,10 +1,11 @@
 # 面基 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/6hpdgggtxpxb>）｜ 最近拉取：2026-08-31 ｜ 总集数：169
+> 来源：官方 RSS（<https://feed.xyzfm.space/6hpdgggtxpxb>）｜ 最近拉取：2026-09-09 ｜ 总集数：170
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-07 | 1h04m | [时代症候 与 安定此心](https://www.xiaoyuzhoufm.com/episode/6a9e16a6f03e74ee6b06256c?utm_source=rss)<!--g:6a9e16a6f03e74ee6b06256c--> | — |
 | — | 2026-08-31 | 1h11m | [财报的根 + 估值的茎 = 叙事的果实](https://www.xiaoyuzhoufm.com/episode/6a950d48a0210c197dcadf9a?utm_source=rss)<!--g:6a950d48a0210c197dcadf9a--> | — |
 | — | 2026-08-24 | 2h27m | [E172.山上山下皆人间，无事逍遥即神仙](https://www.xiaoyuzhoufm.com/episode/6a8bbab7ef65145dfcc44b6d?utm_source=rss)<!--g:6a8bbab7ef65145dfcc44b6d--> | — |
 | — | 2026-08-17 | 2h51m | [E171.通缩的本质是机会的丧失、人本位与动物精神、信用时代的工作量证明](https://www.xiaoyuzhoufm.com/episode/6a819b2517676351c572adc0?utm_source=rss)<!--g:6a819b2517676351c572adc0--> | — |

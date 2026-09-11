@@ -12,6 +12,7 @@
 
 ## 相关期数（精选索引）
 
+- 153 曾鸣：产业史观、AI 云公司、公司消亡、战略生成 → [[2026-09-03_xiaoyuzhou-zhangxiaojun_zengming|报告]]
 - 152 领读 Kimi K3 技术报告（孙宇涛）→ [[2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report|报告]]
 - 148 游凯超：开源 Infra、vLLM → [[2026-07-28_xiaoyuzhou-zhangxiaojun_youkaichao|报告]]
 - 150 刘洺堉（英伟达）、151 ICML 少年、119 与杨松琳考古算法变种史（待处理）

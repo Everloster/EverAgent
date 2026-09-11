@@ -1,11 +1,12 @@
 # 能者多唠｜商业原声 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/qlenc4cdh48c>）｜ 最近拉取：2026-08-31 ｜ 总集数：122
+> 来源：官方 RSS（<https://feed.xyzfm.space/qlenc4cdh48c>）｜ 最近拉取：2026-09-09 ｜ 总集数：123
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
-| — | 2026-08-25 | 1h26m | [Vol.124 年入超十亿，直营店800+，百元饰品能跑出zara和优衣库吗？](https://www.xiaoyuzhoufm.com/episode/6a8d4f741352af56ff3bbc3a?utm_source=rss)<!--g:6a8d4f741352af56ff3bbc3a--> | — |
+| — | 2026-09-04 | 1h18m | [Vol.125年轻人开始玩缝纫机？ 百年行业迎来新生意](https://www.xiaoyuzhoufm.com/episode/6a9a889ca0210c197dcd7792?utm_source=rss)<!--g:6a9a889ca0210c197dcd7792--> | — |
+| — | 2026-08-25 | 1h26m | [Vol.124 萱子创始人 郑萍：年入超十亿，直营店800+，百元饰品能跑出zara和优衣库吗？](https://www.xiaoyuzhoufm.com/episode/6a8d4f741352af56ff3bbc3a?utm_source=rss)<!--g:6a8d4f741352af56ff3bbc3a--> | — |
 | — | 2026-08-07 | 2h07m | [Vol.123 王星记掌门人 孙亚青：扇子没人用了？百年老字号怎么办](https://www.xiaoyuzhoufm.com/episode/6a75ac02c4079d62c57ee2d2?utm_source=rss)<!--g:6a75ac02c4079d62c57ee2d2--> | — |
 | — | 2026-07-27 | 1h36m | [Vol.122 有鹿创始人 陈俊波：阿里P10到机器人创业 AI大脑为何要从扫地开始？](https://www.xiaoyuzhoufm.com/episode/6a67315db581962ce2bc35e9?utm_source=rss)<!--g:6a67315db581962ce2bc35e9--> | — |
 | — | 2026-07-17 | 1h06m | [Vol.121 梵尼诗联创 刘建新：上万元的黑胶唱片机，走进中产客厅](https://www.xiaoyuzhoufm.com/episode/6a59f7f66356eb2d9be42616?utm_source=rss)<!--g:6a59f7f66356eb2d9be42616--> | — |

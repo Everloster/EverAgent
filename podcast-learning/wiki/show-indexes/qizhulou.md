@@ -1,10 +1,12 @@
 # 起朱楼宴宾客 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/ahng8d9qlywl>）｜ 最近拉取：2026-08-31 ｜ 总集数：175
+> 来源：官方 RSS（<https://feed.xyzfm.space/ahng8d9qlywl>）｜ 最近拉取：2026-09-09 ｜ 总集数：177
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| 181 | 2026-09-08 | 1h17m | [181.这轮规模空前的中国制造业出海背后｜线下活动实录](https://www.xiaoyuzhoufm.com/episode/6a9ecfa7a0210c197dcf0d4e?utm_source=rss)<!--g:6a9ecfa7a0210c197dcf0d4e--> | — |
+| 180 | 2026-09-03 | 1h37m | [180.当一个把所有钱都放活期存款的理财恐惧者开始考虑资产配置｜串台日谈公园](https://www.xiaoyuzhoufm.com/episode/6a984590f03e74ee6b041871?utm_source=rss)<!--g:6a984590f03e74ee6b041871--> | — |
 | 179 | 2026-08-24 | 56m22s | [179.先救日元再救长债，“救火队长”贝森特在走一条怎样的钢丝？](https://www.xiaoyuzhoufm.com/episode/6a8bd18f1352af56ff3b0053?utm_source=rss)<!--g:6a8bd18f1352af56ff3b0053--> | — |
 | 177 | 2026-08-11 | 1h17m | [177.日本医保为何要支持免费的国民体检？](https://www.xiaoyuzhoufm.com/episode/6a7a90c617676351c56ffcf0?utm_source=rss)<!--g:6a7a90c617676351c56ffcf0--> | — |
 | 176 | 2026-08-04 | 1h11m | [176.纽约一年：一个悲观主义者的活法｜725沙龙实录](https://www.xiaoyuzhoufm.com/episode/6a7140981b5e24969ce87540?utm_source=rss)<!--g:6a7140981b5e24969ce87540--> | — |

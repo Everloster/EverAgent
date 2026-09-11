@@ -1,10 +1,11 @@
 # 二的三次方 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/8mwdbxbr4kck>）｜ 最近拉取：2026-08-31 ｜ 总集数：159
+> 来源：官方 RSS（<https://feed.xyzfm.space/8mwdbxbr4kck>）｜ 最近拉取：2026-09-09 ｜ 总集数：160
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-03 | 1h45m | [vol:156 突发！传统媒体衰落的原因，今天找到了！](https://www.xiaoyuzhoufm.com/episode/6a994707f03e74ee6b0487ba?utm_source=rss)<!--g:6a994707f03e74ee6b0487ba--> | — |
 | — | 2026-08-27 | 1h38m | [vol:155 我就想好好吃口饭，咋就这么难？](https://www.xiaoyuzhoufm.com/episode/6a9012311352af56ff3cfc8e?utm_source=rss)<!--g:6a9012311352af56ff3cfc8e--> | — |
 | — | 2026-08-20 | 1h22m | [vol:154 喂我花生！为我发声！咱们讲点道理好不好？！](https://www.xiaoyuzhoufm.com/episode/6a86de4fef65145dfcc2a3fb?utm_source=rss)<!--g:6a86de4fef65145dfcc2a3fb--> | — |
 | — | 2026-08-13 | 1h39m | [vol:153 把自己养育一遍，为人子女，也为人父母](https://www.xiaoyuzhoufm.com/episode/6a7dd2b336641f136d87cf89?utm_source=rss)<!--g:6a7dd2b336641f136d87cf89--> | — |

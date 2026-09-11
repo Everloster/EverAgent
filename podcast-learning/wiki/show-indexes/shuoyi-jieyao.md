@@ -1,10 +1,11 @@
 # 说医解药 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/34eqplbv6ptd>）｜ 最近拉取：2026-08-31 ｜ 总集数：88
+> 来源：官方 RSS（<https://feed.xyzfm.space/34eqplbv6ptd>）｜ 最近拉取：2026-09-09 ｜ 总集数：89
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-03 | 45m24s | [肿瘤疫苗第一人科利的传奇人生：纽约老钱医院崛起的见证者 Vol.87](https://www.xiaoyuzhoufm.com/episode/6a98e707f03e74ee6b044703?utm_source=rss)<!--g:6a98e707f03e74ee6b044703--> | — |
 | — | 2026-08-27 | 49m58s | [肿瘤疫苗压抑百年后的翻盘：从手搓科利毒素到AI定制mRNA Vol.86](https://www.xiaoyuzhoufm.com/episode/6a8f88c91352af56ff3ca306?utm_source=rss)<!--g:6a8f88c91352af56ff3ca306--> | — |
 | — | 2026-08-20 | 59m33s | [血脂和降脂药到底是什么？为什么低胆固醇饮食救不了你的血脂？降脂药、降脂针，它们有什么区别？Vol.85](https://www.xiaoyuzhoufm.com/episode/6a8673811352af56ff390850?utm_source=rss)<!--g:6a8673811352af56ff390850--> | — |
 | — | 2026-08-13 | 49m46s | [生长激素的真相：有必要给孩子打吗？能用它为自己抗衰老吗？Vol.84](https://www.xiaoyuzhoufm.com/episode/6a7d0b4036641f136d875ec4?utm_source=rss)<!--g:6a7d0b4036641f136d875ec4--> | — |

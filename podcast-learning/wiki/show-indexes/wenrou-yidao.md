@@ -1,6 +1,6 @@
 # 温柔一刀 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/vmpr88xy7qqg>）｜ 最近拉取：2026-08-31 ｜ 总集数：146
+> 来源：官方 RSS（<https://feed.xyzfm.space/vmpr88xy7qqg>）｜ 最近拉取：2026-09-09 ｜ 总集数：145
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
@@ -75,7 +75,6 @@
 | — | 2023-12-29 | 49m43s | [Vol.79 从崛起到陨落，我们可以从美国DTC品牌兴衰中学到什么？](https://www.xiaoyuzhoufm.com/episode/658d5907b8fd2bc060297cba?utm_source=rss)<!--g:658d5907b8fd2bc060297cba--> | — |
 | — | 2023-12-21 | 1h01m | [Vol.78 中国奢侈品解题：在传承上创新，让文化流淌 \| 对谈SHANG XIA上下CEO吴晨](https://www.xiaoyuzhoufm.com/episode/6584246d20d779b49dbebd36?utm_source=rss)<!--g:6584246d20d779b49dbebd36--> | — |
 | — | 2023-12-17 | 43m08s | [Vol.77 昔日赣州小镇青年，如今泰国旅行业“地头蛇” \| 一个悲情创业者的10年](https://www.xiaoyuzhoufm.com/episode/657d8f5c3d1caa927ab5ee2e?utm_source=rss)<!--g:657d8f5c3d1caa927ab5ee2e--> | — |
-| — | 2023-11-29 | 1h24m | [Vol 76 创业十年，“红酒女王”醉鹅娘决定推倒一切重新来过](https://www.xiaoyuzhoufm.com/episode/6565f68eb95673db216c0ecd?utm_source=rss)<!--g:6565f68eb95673db216c0ecd--> | — |
 | — | 2023-11-23 | 1h48m | [Vol.75 视频号商业化进入2.0，我们怎么抢先变现？和最懂视频号的3个人一起聊聊](https://www.xiaoyuzhoufm.com/episode/655ddd4451ba7218571acbc1?utm_source=rss)<!--g:655ddd4451ba7218571acbc1--> | — |
 | — | 2023-11-15 | 1h16m | [Vol.74 把150元的牙膏卖进中国，她白手起家用10年做出圈\| 对话Dr.Wild大中华区总裁“牙膏姐姐”](https://www.xiaoyuzhoufm.com/episode/6553470f0500be931c9d619b?utm_source=rss)<!--g:6553470f0500be931c9d619b--> | — |
 | — | 2023-11-09 | 42m49s | [Vol.73 对谈麦当劳×小红书：当品牌社区遇见平台社区，如何链接一群人的快乐与共识？](https://www.xiaoyuzhoufm.com/episode/654ba7269da6ed7e74c13161?utm_source=rss)<!--g:654ba7269da6ed7e74c13161--> | — |

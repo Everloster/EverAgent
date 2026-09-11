@@ -1,11 +1,11 @@
 # AI炼金术 — 全量单集索引
 
-> 来源：官方 RSS（<https://www.ximalaya.com/album/74194808.xml>）｜ 最近拉取：2026-08-31 ｜ 总集数：137
+> 来源：官方 RSS（<https://www.ximalaya.com/album/74194808.xml>）｜ 最近拉取：2026-09-09 ｜ 总集数：137
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
-| — | 2026-08-29 | 1h10m | [OPC 已经凉了，FDE 会有光明的未来么？](https://www.ximalaya.com/sound/1009684225)<!--g:xmly_track_1009684225--> | — |
+| — | 2026-08-29 | 1h06m | [OPC 已经凉了，FDE 会有光明的未来么？](https://www.ximalaya.com/sound/1009684225)<!--g:xmly_track_1009684225--> | — |
 | — | 2026-08-27 | 45m56s | [AI 原生组织转型 02：用 AI 推进流程、闭环迭代](https://www.ximalaya.com/sound/1009009150)<!--g:xmly_track_1009009150--> | — |
 | — | 2026-08-24 | 1h21m | [XMind Mango：分活，分圈，分钱，搞 AI](https://www.ximalaya.com/sound/1008316536)<!--g:xmly_track_1008316536--> | — |
 | — | 2026-08-22 | 1h21m | [AI 原生组织转型 01：用 AI 对齐事实、对齐打法](https://www.ximalaya.com/sound/1007960985)<!--g:xmly_track_1007960985--> | — |

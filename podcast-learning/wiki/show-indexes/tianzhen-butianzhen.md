@@ -1,10 +1,11 @@
 # 天真不天真 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/mcklbwxjdvfu>）｜ 最近拉取：2026-08-31 ｜ 总集数：56
+> 来源：官方 RSS（<https://feed.xyzfm.space/mcklbwxjdvfu>）｜ 最近拉取：2026-09-09 ｜ 总集数：57
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-08 | 1h01m | [vol.55 对谈携隐Melody：选一条更慢的路 然后试着走得更远](https://www.xiaoyuzhoufm.com/episode/6a9eba42a0210c197dceff02?utm_source=rss)<!--g:6a9eba42a0210c197dceff02--> | — |
 | — | 2026-08-19 | 1h00m | [vol.54 对谈宋佳：我为什么是我？命运的目的地不是掌控一切 而是经历一切](https://www.xiaoyuzhoufm.com/episode/6a8448e38156bf33621a4c94?utm_source=rss)<!--g:6a8448e38156bf33621a4c94--> | — |
 | — | 2026-07-27 | 1h23m | [vol.53 对谈易立竞：折腾vs独处 极致对照组的两种活法答案](https://www.xiaoyuzhoufm.com/episode/6a66487e6356eb2d9be8ca46?utm_source=rss)<!--g:6a66487e6356eb2d9be8ca46--> | — |
 | — | 2026-07-06 | 53m27s | [vol.52 对谈王安宇：十年可以让一个人发生多少变化](https://www.xiaoyuzhoufm.com/episode/6a4a7af02e335a35a80e7c18?utm_source=rss)<!--g:6a4a7af02e335a35a80e7c18--> | — |
