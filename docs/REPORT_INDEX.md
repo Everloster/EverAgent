@@ -7,8 +7,12 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-09-11 | [Anthropic 经济情景模型：把 AI 能力预测翻译成 2030 年的 GDP、工资与失业](../ai-learning/reports/knowledge_reports/Anthropic经济情景模型_深度解析_20260911.md) | ai-learning |
+| 2026-09-11 | [AI 行业日报 · 2026-09-11](../web-surfing/reports/ai-news-daily-2026-09-11.md) | web-surfing |
+| 2026-09-10 | [AI 行业日报 · 2026-09-10](../web-surfing/reports/ai-news-daily-2026-09-10.md) | web-surfing |
 | 2026-09-09 | [vLLM 调度器：continuous batching 的真身（课论断 ↔ 源码对照篇）](../ai-learning/reports/knowledge_reports/vLLM_调度器_continuous_batching真身_20260909.md) | ai-learning |
 | 2026-09-09 | [AI 行业日报 · 2026-09-09](../web-surfing/reports/ai-news-daily-2026-09-09.md) | web-surfing |
+| 2026-09-09 | [153. 和曾鸣聊产业史观：残酷的真相、会消亡的公司、优秀≠卓越](../podcast-learning/reports/2026-09-03_xiaoyuzhou-zhangxiaojun_zengming.md) | podcast-learning |
 | 2026-09-08 | [AI 行业日报 · 2026-09-08](../web-surfing/reports/ai-news-daily-2026-09-08.md) | web-surfing |
 | 2026-09-04 | [AI 行业日报 · 2026-09-04](../web-surfing/reports/ai-news-daily-2026-09-04.md) | web-surfing |
 | 2026-09-03 | [AI 行业日报 · 2026-09-03](../web-surfing/reports/ai-news-daily-2026-09-03.md) | web-surfing |
@@ -28,15 +32,12 @@
 | 2026-08-25 | [AI 行业日报 · 2026-08-25](../web-surfing/reports/ai-news-daily-2026-08-25.md) | web-surfing |
 | 2026-08-24 | [刘方奇教授：肠癌越来越年轻，确诊后先别急着手术！](../podcast-learning/reports/2026-08-24_xiaoyuzhou-boluo-jiankang_liufangqi.md) | podcast-learning |
 | 2026-08-24 | [AI 行业日报 · 2026-08-24](../web-surfing/reports/ai-news-daily-2026-08-24.md) | web-surfing |
-| 2026-08-23 | [对话盛颖：xAI，Infra的浪漫，SGLang，开源，平权与「甄嬛传」](../podcast-learning/reports/2026-08-04_rss-guigu101_shengying.md) | podcast-learning |
-| 2026-08-23 | [AI 行业日报 · 2026-08-23](../web-surfing/reports/ai-news-daily-2026-08-23.md) | web-surfing |
-| 2026-08-22 | [对游凯超3小时访谈：开源Infra、和模型Co-design、「如果vLLM失败，我们会后悔一辈子」](../podcast-learning/reports/2026-07-28_xiaoyuzhou-zhangxiaojun_youkaichao.md) | podcast-learning |
-| 2026-08-21 | [vLLM V1 架构总览：一个请求的一生（骨架篇）](../ai-learning/reports/knowledge_reports/vLLM_V1架构总览_深度解析_20260821.md) | ai-learning |
 
-## 🤖 AI Learning（99 篇）
+## 🤖 AI Learning（100 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-09-11 | [Anthropic 经济情景模型：把 AI 能力预测翻译成 2030 年的 GDP、工资与失业](../ai-learning/reports/knowledge_reports/Anthropic经济情景模型_深度解析_20260911.md) | — |
 | 2026-09-09 | [vLLM 调度器：continuous batching 的真身（课论断 ↔ 源码对照篇）](../ai-learning/reports/knowledge_reports/vLLM_调度器_continuous_batching真身_20260909.md) | — |
 | 2026-08-31 | [ChatGPT Work 能力面逆向解析：一个商业化 Agent Harness 的活样本，兼谈致命三重](../ai-learning/reports/knowledge_reports/ChatGPT_Work_能力面与Harness样本_深度解析_20260831.md) | `chatgpt_work`, `agent_harness`, `code_interpreter`, `headless_browser`, `persistent_filesystem`, `sub_agents` |
 | 2026-08-21 | [vLLM V1 架构总览：一个请求的一生（骨架篇）](../ai-learning/reports/knowledge_reports/vLLM_V1架构总览_深度解析_20260821.md) | — |
@@ -246,10 +247,11 @@
 | 2026-03-26 | [Physiology of Growth Hormone Secretion during Sleep (1996) 精读](../biology-learning/reports/paper_analyses/P09_gh_sleep_physiology_1996.md) | — |
 | 2026-03-23 | [晚型人作息与力量训练深度研究](../biology-learning/reports/concept_reports/晚型人作息与力量训练_深度研究报告.md) | — |
 
-## 🎙️ Podcast Learning（19 篇）
+## 🎙️ Podcast Learning（20 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-09-09 | [153. 和曾鸣聊产业史观：残酷的真相、会消亡的公司、优秀≠卓越](../podcast-learning/reports/2026-09-03_xiaoyuzhou-zhangxiaojun_zengming.md) | — |
 | 2026-09-02 | [晚点聊177｜详解 Kimi K3：体感、推理系统工程、开源大辩论与估值冲击](../podcast-learning/reports/2026-08-04_rss-wandian-latetalk_kimi-k3.md) | — |
 | 2026-09-02 | [张小珺152｜孙宇涛领读 Kimi K3 技术报告：三维 scaling、注意力谱系与 infra co-design](../podcast-learning/reports/2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report.md) | — |
 | 2026-09-02 | [Kimi K3 一鱼两吃：张小珺152 × 晚点聊177 对照精读](../podcast-learning/reports/2026-09-02_multi_kimi-k3-dueling-reads.md) | — |
@@ -270,10 +272,12 @@
 | 2026-06-20 | [三年行业吃肉榜/爆亏榜大合集（2023-2025）：谁在偷偷赚钱，谁在快速衰落](../podcast-learning/reports/2026-06-20_bilibili-cls-tongxue_hangye-bangdan.md) | — |
 | 2026-06-18 | [Vol.29 对话王小川：造医生，战豆包，与无尽的 AI 非共识](../podcast-learning/reports/2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan.md) | — |
 
-## 🏄 Web Surfing（17 篇）
+## 🏄 Web Surfing（19 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-09-11 | [AI 行业日报 · 2026-09-11](../web-surfing/reports/ai-news-daily-2026-09-11.md) | — |
+| 2026-09-10 | [AI 行业日报 · 2026-09-10](../web-surfing/reports/ai-news-daily-2026-09-10.md) | — |
 | 2026-09-09 | [AI 行业日报 · 2026-09-09](../web-surfing/reports/ai-news-daily-2026-09-09.md) | — |
 | 2026-09-08 | [AI 行业日报 · 2026-09-08](../web-surfing/reports/ai-news-daily-2026-09-08.md) | — |
 | 2026-09-04 | [AI 行业日报 · 2026-09-04](../web-surfing/reports/ai-news-daily-2026-09-04.md) | — |

@@ -290,3 +290,11 @@
 - 核心知识：Token Choice 正反馈失衡 · Switch Top-1 权衡 · Expert Choice 反转路由破坏自回归因果 · DeepSeek auxiliary-loss-free（bias 纠偏不污染梯度，arXiv:2408.15664）· Sigmoid 门控。
 - 数据源：DeepSeek Loss-Free Balancing (arXiv:2408.15664) + Expert Choice (Zhou 2022) + MoE 路由综述 WebSearch（2026-04~06）
 - 执行者：NeuronAgent / Trae Openrouter（对话学习模式）
+
+## [2026-09-11] ingest | 行业观察线（Anthropic 经济情景模型）
+- **源**：Anthropic Institute Working Paper 2026-02《Economic Scenarios for Transformative AI》（Korinek/Jones/Sacher/Cotter/McCrory，57 页）+ 官网 Scenario Explorer（anthropic.com/institute/econ-scenarios）。任务经 OpenClaw 转达（用户微信下达）。
+- 报告：reports/knowledge_reports/Anthropic经济情景模型_深度解析_20260911.md（深度专业体）
+- 要点：任务实例 CES 模型（m×d×a×ψ×ρ 五参数 + ξ/μ 摩擦）；三情景 2030 GDP +1.6/+8.3/+32.4%、劳动份额 60→59.4/56.1/45.2、extreme 认知失业率 17.9%；创新效应自认下界（RSI 硬编码进 a_t）；10,980 人调查中位数≈substantial；双来源口径分离（美元 GDP/访客样本/10% extreme 仅见于 explainer）
+- 新增 concept：[[concepts/anthropic_econ_scenarios]]；index.md 已收录
+- open-questions 汇入 3 问（ε 代理指标 / 参数更新 vs 框架更新 / 个人版 ψ 对冲）
+- 缝合：CAPEX 泡沫之辩（podcast-learning 2026-07-17）、Intelligence Curse（2026-07-30）、曾鸣三阶段论（podcast-learning 2026-09-03）
