@@ -94,6 +94,7 @@
 | [skill_curation.md](./concepts/skill_curation.md) | Skill Curation：从轨迹中插入、更新、删除可复用技能，让自进化 Agent 的经验变成可治理 SkillRepo |
 | [agent_interop_protocols.md](./concepts/agent_interop_protocols.md) | Agent 互操作协议：MCP（Anthropic 工具层）·A2A（Google Agent 层·Linux 基金会托管）·AGENTS.md（OpenAI 联盟元信息层）三种事实标准 |
 | [llm_inference_engines.md](./concepts/llm_inference_engines.md) | LLM 推理优化引擎：vLLM (PagedAttention) · SGLang (RadixAttention) · TensorRT-LLM (Kernel Fusion) · llama.cpp (GGUF) 四引擎深度对比 + MLC-LLM/TGI 补充 |
+| [anthropic_econ_scenarios.md](./concepts/anthropic_econ_scenarios.md) | Anthropic 经济情景模型：m×d×a×ψ×ρ 五参数路径 → 2030 GDP/劳动份额/工资/失业；公众中位数预期≈substantial |
 
 ---
 
