@@ -1,10 +1,11 @@
 # 卫诗婕｜漫谈Light the Star — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/4jjdlpq3khc9>）｜ 最近拉取：2026-08-31 ｜ 总集数：85
+> 来源：官方 RSS（<https://feed.xyzfm.space/4jjdlpq3khc9>）｜ 最近拉取：2026-09-09 ｜ 总集数：86
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| 86 | 2026-09-07 | 1h25m | [86.「明年科技公司就只招 AI 人才了！」和脉脉CEO林凡聊全球 AI 人才动向、组织变革与大模型季报](https://www.xiaoyuzhoufm.com/episode/6a9daa7ea0210c197dce7a8b?utm_source=rss)<!--g:6a9daa7ea0210c197dce7a8b--> | — |
 | 85 | 2026-08-31 | 44m14s | [85.和蚂蚁、千问、吉利、OPPO、vivo 的五位总裁，聊 Agent 的商业元年、漏斗与放大器](https://www.xiaoyuzhoufm.com/episode/6a946979a0210c197dcaa8a2?utm_source=rss)<!--g:6a946979a0210c197dcaa8a2--> | — |
 | 84 | 2026-08-25 | 1h02m | [84.49 家央企采买进场，史上最热WRC：泡沫被挤压，具身行业进入实战阶段｜14 年从业者的行家鉴别指南](https://www.xiaoyuzhoufm.com/episode/6a8d09c5ef65145dfcc4e8f5?utm_source=rss)<!--g:6a8d09c5ef65145dfcc4e8f5--> | — |
 | 83 | 2026-08-19 | 1h55m | [83.宇树上市：王兴兴的「幸运」，投资人的「教训」｜对谈宇树早期投资人、初心资本田江川](https://www.xiaoyuzhoufm.com/episode/6a84930d8156bf33621a70c0?utm_source=rss)<!--g:6a84930d8156bf33621a70c0--> | — |

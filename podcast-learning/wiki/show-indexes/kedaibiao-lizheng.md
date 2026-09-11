@@ -1,10 +1,14 @@
 # 课代表立正 — 全量单集索引
 
-> 来源：官方 RSS（<https://feeds.transistor.fm/kedaibiao>）｜ 最近拉取：2026-08-31 ｜ 总集数：523
+> 来源：官方 RSS（<https://feeds.transistor.fm/kedaibiao>）｜ 最近拉取：2026-09-09 ｜ 总集数：527
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-01 | 1h05m | [E527. 2026年，硅谷创投，几乎不看AI应用了？｜硅谷一线投资人周楠](https://share.transistor.fm/s/0982731a)<!--g:a2ace109-ef1f-4897-b664-37fb42da1185--> | — |
+| — | 2026-08-28 | 15m47s | [E526. Hypothesis Testing Explained｜假设检验详解：Alpha、Beta、Power、MDE与样本量](https://share.transistor.fm/s/a5353b07)<!--g:1c38c75a-8756-403a-ac76-1d7555ebbe40--> | — |
+| — | 2026-08-27 | 1h09m | [E525. 让心自由，才能更好地活着｜对话《金刚经50讲》王路](https://share.transistor.fm/s/a80fe0ca)<!--g:ec64cd11-aa27-450f-882b-0a6a851ebcc1--> | — |
+| — | 2026-08-23 | 19m05s | [E524. 为什么多数赚钱好生意，不会被你看到？](https://share.transistor.fm/s/e830eeb3)<!--g:d2f9a26e-99fb-48cf-9b38-d147eb973934--> | — |
 | — | 2026-08-20 | 7m09s | [E523. 我们把一个世界级的AI大会带到了上海！](https://share.transistor.fm/s/1127d3e1)<!--g:a9ea97ed-5125-4ff6-9a5d-8d8f78e57148--> | — |
 | — | 2026-08-19 | 20m51s | [E522. AI能“帮”你成为超级个体，但顺序别搞反了](https://share.transistor.fm/s/7e14748f)<!--g:b0238fa3-80a4-4fa0-8b8f-77a524055053--> | — |
 | — | 2026-08-16 | 10m31s | [E521. 吐槽大厂，做成七位数生意｜The Tech Roast Show访谈](https://share.transistor.fm/s/b977b554)<!--g:6bfbcaaa-00ab-45d2-ac25-7d52ec5b2c9c--> | — |

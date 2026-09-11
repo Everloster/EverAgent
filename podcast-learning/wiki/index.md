@@ -12,6 +12,7 @@
 
 ### AI 行业 / 宏观观察
 
+- [[2026-09-03_xiaoyuzhou-zhangxiaojun_zengming|153. 和曾鸣聊产业史观：残酷的真相、会消亡的公司、优秀≠卓越]]（episode_summary · 2026-09-03）— 小宇宙「张小珺Jùn」对谈曾鸣，2h34m，AI 产业化三阶段论 / 模型公司=AI 云公司（寡头+强监管）/ 公司消亡 / 战略生成 / 巨头审判
 - [[2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review|重估一切，文艺复兴——2026H1 AI行业观察]]（episode_summary · 2026-07-17）— 小宇宙「屠龙之术」庄明浩单口，54m37s，CAPEX 泡沫之辩 / Agent 元年 / 中美双极 / 第四支柱
 
 ### AI Infra / 开源商业化

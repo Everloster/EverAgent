@@ -1,10 +1,11 @@
 # 开始连接 LinkStart — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/q9a6lueucj6a>）｜ 最近拉取：2026-08-31 ｜ 总集数：128
+> 来源：官方 RSS（<https://feed.xyzfm.space/q9a6lueucj6a>）｜ 最近拉取：2026-09-09 ｜ 总集数：129
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-02 | 1h18m | [Vol.129｜豆包、千问、WorkBuddy 齐入场：巨头压注 AI 办公，旧优势还能赢下生产力入口吗？](https://www.xiaoyuzhoufm.com/episode/6a978f4fa0210c197dcc095e?utm_source=rss)<!--g:6a978f4fa0210c197dcc095e--> | — |
 | — | 2026-08-05 | 1h19m | [Vol.128｜硅谷把 FDE 当 mini CTO 招？聊聊爆火的 AI 新职业](https://www.xiaoyuzhoufm.com/episode/6a72a3dbab3a91c24a0ffc60?utm_source=rss)<!--g:6a72a3dbab3a91c24a0ffc60--> | — |
 | — | 2026-07-21 | 46m34s | [Vol.127｜存储涨价让手机不性感了，但硬件重新变得有意思了｜串台「屠龙之术」](https://www.xiaoyuzhoufm.com/episode/6a5e11aba3fec224d5a08442?utm_source=rss)<!--g:6a5e11aba3fec224d5a08442--> | — |
 | — | 2026-07-13 | 1h28m | [Vol.126｜融疯了的具身，是泡沫还是黎明？](https://www.xiaoyuzhoufm.com/episode/6a506f661e32575f5eb422eb?utm_source=rss)<!--g:6a506f661e32575f5eb422eb--> | — |

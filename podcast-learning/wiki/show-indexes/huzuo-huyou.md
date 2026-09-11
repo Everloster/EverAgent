@@ -1,10 +1,13 @@
 # 忽左忽右 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/cv4bkgpuglwp>）｜ 最近拉取：2026-08-31 ｜ 总集数：635
+> 来源：官方 RSS（<https://feed.xyzfm.space/cv4bkgpuglwp>）｜ 最近拉取：2026-09-09 ｜ 总集数：638
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-08 | 58m11s | [499 翻越陇坂：阎海军谈作为古代中国东西互动轴心的陇山](https://www.xiaoyuzhoufm.com/episode/6a9fd33ba0210c197dcf773e?utm_source=rss)<!--g:6a9fd33ba0210c197dcf773e--> | — |
+| — | 2026-09-04 | 1h07m | [498 寻找赉安：为近代上海梧桐区创造风貌的法国建筑师](https://www.xiaoyuzhoufm.com/episode/6a9a8beea0210c197dcd797c?utm_source=rss)<!--g:6a9a8beea0210c197dcd797c--> | — |
+| — | 2026-09-01 | 1h41m | [497 信天翁档案：解密1965年新加坡独立与「新马分家」的台前幕后](https://www.xiaoyuzhoufm.com/episode/6a96a621a0210c197dcbb58d?utm_source=rss)<!--g:6a96a621a0210c197dcbb58d--> | — |
 | — | 2026-08-28 | 1h19m | [496 移民潮背后的休达：从古典时代蛮族渡海、伊比利亚「收复失地运动」到葡萄牙大航海](https://www.xiaoyuzhoufm.com/episode/6a914f40f03e74ee6b013d4a?utm_source=rss)<!--g:6a914f40f03e74ee6b013d4a--> | — |
 | — | 2026-08-25 | 1h16m | [495 陆大鹏谈莎士比亚戏剧与英国历史的互相影响](https://www.xiaoyuzhoufm.com/episode/6a8d2078ef65145dfcc4f6d5?utm_source=rss)<!--g:6a8d2078ef65145dfcc4f6d5--> | — |
 | — | 2026-08-21 | 1h38m | [494 张诗坪谈战争史视角下的秦末汉初混战](https://www.xiaoyuzhoufm.com/episode/6a881352ef65145dfcc323d4?utm_source=rss)<!--g:6a881352ef65145dfcc323d4--> | — |

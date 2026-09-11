@@ -1,19 +1,19 @@
 # 纵横四海 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/jl8739ky8w9j>）｜ 最近拉取：2026-08-31 ｜ 总集数：87
+> 来源：官方 RSS（<https://feed.xyzfm.space/jl8739ky8w9j>）｜ 最近拉取：2026-09-09 ｜ 总集数：87
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
 | — | 2026-08-29 | 3h35m | [EP86 颠覆工作流，效率提升3000%](https://www.xiaoyuzhoufm.com/episode/6a8eb50eef65145dfcc5c072?utm_source=rss)<!--g:6a8eb50eef65145dfcc5c072--> | — |
-| — | 2026-07-25 | 3h59m | [EP85 Mini MBA｜营销管理：赚到你钱的人都做对了什么？](https://www.xiaoyuzhoufm.com/episode/6a6303b36356eb2d9be7a859?utm_source=rss)<!--g:6a6303b36356eb2d9be7a859--> | — |
+| — | 2026-07-25 | 3h59m | [EP85 用STP打造个人核心竞争力](https://www.xiaoyuzhoufm.com/episode/6a6303b36356eb2d9be7a859?utm_source=rss)<!--g:6a6303b36356eb2d9be7a859--> | — |
 | — | 2026-07-25 | 7m58s | [卷首语：我憋了一个大招](https://www.xiaoyuzhoufm.com/episode/6a62ed12a3fec224d5a2923f?utm_source=rss)<!--g:6a62ed12a3fec224d5a2923f--> | — |
 | — | 2026-06-27 | 3h45m | [EP84《Roar》：生酮、轻断食、168、空腹训练…通通达咩🙅‍♂️](https://www.xiaoyuzhoufm.com/episode/6a3fd0302e335a35a80a47d3?utm_source=rss)<!--g:6a3fd0302e335a35a80a47d3--> | — |
 | — | 2026-06-02 | 4h02m | [EP83《少有人走的路》：每个人都有自己的奥德赛](https://www.xiaoyuzhoufm.com/episode/6a1e7a9f7460cabdeb59d161?utm_source=rss)<!--g:6a1e7a9f7460cabdeb59d161--> | — |
 | — | 2026-05-23 | 4h08m | [EP82《五次重置》：对什么都提不起劲的时候，试试这15个方法](https://www.xiaoyuzhoufm.com/episode/6a11c383e59ebca9362ce192?utm_source=rss)<!--g:6a11c383e59ebca9362ce192--> | — |
 | — | 2026-05-08 | 4h29m | [EP81《深度关系》：如何“给情绪价值”？包教包会](https://www.xiaoyuzhoufm.com/episode/69fd9db2e1eb34a939fa0377?utm_source=rss)<!--g:69fd9db2e1eb34a939fa0377--> | — |
 | — | 2026-04-25 | 4h32m | [EP80《深度工作》：什么是AI时代最不能被取代的技能？](https://www.xiaoyuzhoufm.com/episode/69eb32bd1e94ae69210ebaeb?utm_source=rss)<!--g:69eb32bd1e94ae69210ebaeb--> | — |
-| — | 2026-03-30 | 4h28m | [EP79《自控力》& ADHD：我们都是如何被劫持了注意力](https://www.xiaoyuzhoufm.com/episode/69ca5b36e2c8be3155e92207?utm_source=rss)<!--g:69ca5b36e2c8be3155e92207--> | — |
+| — | 2026-03-30 | 4h28m | [EP79《专注力》& ADHD：我们都是如何被劫持了注意力](https://www.xiaoyuzhoufm.com/episode/69ca5b36e2c8be3155e92207?utm_source=rss)<!--g:69ca5b36e2c8be3155e92207--> | — |
 | — | 2026-03-15 | 4h10m | [EP78《贪婪的多巴胺》：如何像沉迷游戏一样沉迷学习？](https://www.xiaoyuzhoufm.com/episode/69b6ba56f8b8079bfa78a815?utm_source=rss)<!--g:69b6ba56f8b8079bfa78a815--> | — |
 | — | 2026-02-28 | 2h52m | [EP77《一间只属于自己的房间》：女人需要两样东西，钱，和自己的房间](https://www.xiaoyuzhoufm.com/episode/69a2d63ca22480add67241a6?utm_source=rss)<!--g:69a2d63ca22480add67241a6--> | — |
 | — | 2026-02-05 | 3h35m | [EP76《人生设计课》：你的人生不需要「最优解」](https://www.xiaoyuzhoufm.com/episode/69844eacc78b823892cc5494?utm_source=rss)<!--g:69844eacc78b823892cc5494--> | — |

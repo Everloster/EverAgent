@@ -1,10 +1,12 @@
 # 十字路口Crossing — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/68fyjknth9hj>）｜ 最近拉取：2026-08-31 ｜ 总集数：127
+> 来源：官方 RSS（<https://feed.xyzfm.space/68fyjknth9hj>）｜ 最近拉取：2026-09-09 ｜ 总集数：129
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-06 | 1h16m | [她被骗过、被救过、被捧上神坛过、被疼痛击倒过，决定在AI时代继续冒险｜对谈陈安妮](https://www.xiaoyuzhoufm.com/episode/6a9abd3df03e74ee6b052a28?utm_source=rss)<!--g:6a9abd3df03e74ee6b052a28--> | — |
+| — | 2026-09-02 | 2h30m | [对卷卷的3小时访谈：从抖音到AI 3D、创业的过山车、成为制造业OS的野心、基础模型不会吞噬一切！](https://www.xiaoyuzhoufm.com/episode/6a97a9daa0210c197dcc1ba0?utm_source=rss)<!--g:6a97a9daa0210c197dcc1ba0--> | — |
 | — | 2026-08-30 | 48m54s | [AI 下半场，不会只剩一个超级模型｜对谈 Kevin Ding：Pyromind 创始人/CEO](https://www.xiaoyuzhoufm.com/episode/6a90fc5e1352af56ff3d48af?utm_source=rss)<!--g:6a90fc5e1352af56ff3d48af--> | — |
 | — | 2026-08-23 | 1h02m | [22 岁的具身 CEO、5 轮融资、过亿美元、“不知天有多高”、“一年吃了十年的苦”｜对谈黄一：萝博派对创始人/CEO](https://www.xiaoyuzhoufm.com/episode/6a8aab34ef65145dfcc3ea11?utm_source=rss)<!--g:6a8aab34ef65145dfcc3ea11--> | — |
 | — | 2026-08-09 | 56m24s | [「模型能力已经够了，要卷就卷 infra」｜对谈戴冠兰：Runta 创始人](https://www.xiaoyuzhoufm.com/episode/6a773808c4079d62c57f5802?utm_source=rss)<!--g:6a773808c4079d62c57f5802--> | — |
@@ -15,7 +17,7 @@
 | — | 2026-07-01 | 52m04s | [Agent 元年第 500 天：什么在消失，什么在诞生——为什么我们不该再投资 GUI 思维的软件？](https://www.xiaoyuzhoufm.com/episode/6a4511d92e335a35a80c8431?utm_source=rss)<!--g:6a4511d92e335a35a80c8431--> | — |
 | — | 2026-06-28 | 52m21s | [我遇到了第一个真正想买的陪伴机器人！｜对话世博：越伴动力创始人【公路播客】](https://www.xiaoyuzhoufm.com/episode/6a3f281f9d2f5743683e81b2?utm_source=rss)<!--g:6a3f281f9d2f5743683e81b2--> | — |
 | — | 2026-06-21 | 38m24s | [对话 MiniMax 闫俊杰：M3、10X 计划、10T 模型、和智能的终局](https://www.xiaoyuzhoufm.com/episode/6a374ab075ba9e0c53368f7e?utm_source=rss)<!--g:6a374ab075ba9e0c53368f7e--> | — |
-| — | 2026-06-18 | 49m39s | [哪条路线，才能通往「世界模型」的终局？｜对话黄碧薇：Aether AI 创始人](https://www.xiaoyuzhoufm.com/episode/6a333a614233e62bc54ba990?utm_source=rss)<!--g:6a333a614233e62bc54ba990--> | — |
+| — | 2026-06-18 | 49m39s | [因果路线，才能通往「世界模型」的终局？｜对话黄碧薇：Aether AI 创始人](https://www.xiaoyuzhoufm.com/episode/6a333a614233e62bc54ba990?utm_source=rss)<!--g:6a333a614233e62bc54ba990--> | — |
 | — | 2026-06-10 | 1h03m | [高手怎么用 AI？普通人怎么学 AI？投资人如何投 AI？｜对谈课代表立正](https://www.xiaoyuzhoufm.com/episode/6a275ed57444b5722235a897?utm_source=rss)<!--g:6a275ed57444b5722235a897--> | — |
 | — | 2026-06-03 | 55m07s | [OpenAI 和 Anthropic 共同看好的 FDE：AI 时代的新岗位出现，旧分工松动｜对谈 Rolling AI](https://www.xiaoyuzhoufm.com/episode/6a1e4022ac7bdb080c348b41?utm_source=rss)<!--g:6a1e4022ac7bdb080c348b41--> | — |
 | — | 2026-05-27 | 47m22s | [2026 AI 游戏全景扫描：四层图景、三大误区、一个共识缺口｜对谈 405 游局筱宁](https://www.xiaoyuzhoufm.com/episode/6a11a57c8b5c94538e98794d?utm_source=rss)<!--g:6a11a57c8b5c94538e98794d--> | — |

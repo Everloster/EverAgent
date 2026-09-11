@@ -1,10 +1,11 @@
 # 张小珺Jùn｜商业访谈录 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/dk4yh3pkpjp3>）｜ 最近拉取：2026-08-31 ｜ 总集数：155
+> 来源：官方 RSS（<https://feed.xyzfm.space/dk4yh3pkpjp3>）｜ 最近拉取：2026-09-09 ｜ 总集数：156
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| 153 | 2026-09-03 | 2h34m | [153. 和曾鸣聊产业史观：残酷的真相、会消亡的公司、优秀≠卓越、“OAI、Anth大概率不是原生时代大赢家”](https://www.xiaoyuzhoufm.com/episode/6a97f287f03e74ee6b03ea5b?utm_source=rss)<!--g:6a97f287f03e74ee6b03ea5b--> | ✅ |
 | 152 | 2026-08-26 | 2h04m | [152. 领读Kimi K3技术报告：从架构创新聊起，注意力美学、多教师蒸馏和开源MoE](https://www.xiaoyuzhoufm.com/episode/6a8eadd61352af56ff3c6017?utm_source=rss)<!--g:6a8eadd61352af56ff3c6017--> | ✅ 已处理（[[2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report|报告]]） |
 | 151 | 2026-08-19 | 1h09m | [151. 17岁被2026年ICML收录论文的小少年：我bet开心！开心！开心！](https://www.xiaoyuzhoufm.com/episode/6a8472b95aeb2a5712e8de78?utm_source=rss)<!--g:6a8472b95aeb2a5712e8de78--> | — |
 | 150 | 2026-08-12 | 3h36m | [150. 对英伟达研究副总裁刘洺堉的4小时访谈：功夫、Cosmos 3、开源世界模型、黄仁勋、你不需要击败所有对手](https://www.xiaoyuzhoufm.com/episode/6a7cbeb017676351c5710266?utm_source=rss)<!--g:6a7cbeb017676351c5710266--> | — |

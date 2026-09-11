@@ -1,10 +1,13 @@
 # 高能量 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/jhfuba3dahq8>）｜ 最近拉取：2026-08-31 ｜ 总集数：231
+> 来源：官方 RSS（<https://feed.xyzfm.space/jhfuba3dahq8>）｜ 最近拉取：2026-09-09 ｜ 总集数：234
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-07 | 1h27m | [Vol.234 宏观漫谈110｜全球流动性的困境与中国五类经济主体的金融结构转型（9.2录制）](https://www.xiaoyuzhoufm.com/episode/6a9e786ea0210c197dced93c?utm_source=rss)<!--g:6a9e786ea0210c197dced93c--> | — |
+| — | 2026-09-04 | 2h27m | [Vol.233 媒体、社区与投资：与张鹏聊极客公园的发展史和宇树投资往事](https://www.xiaoyuzhoufm.com/episode/6a9b03dba0210c197dcdaa24?utm_source=rss)<!--g:6a9b03dba0210c197dcdaa24--> | — |
+| — | 2026-08-31 | 59m45s | [Vol.232 产业观察44｜具身智能+AI4S，能诞生什么新物种？](https://www.xiaoyuzhoufm.com/episode/6a957514f03e74ee6b02bf6e?utm_source=rss)<!--g:6a957514f03e74ee6b02bf6e--> | — |
 | — | 2026-08-28 | 3h19m | [Vol.231 一个中年人决定为摇滚买单：与马智勇聊中国摇滚、线下演出和音乐行业之变](https://www.xiaoyuzhoufm.com/episode/6a908708ef65145dfcc6863f?utm_source=rss)<!--g:6a908708ef65145dfcc6863f--> | — |
 | — | 2026-08-20 | 1h14m | [Vol.230 产业观察43｜AI for Science 如何在制药化学合成落地？](https://www.xiaoyuzhoufm.com/episode/6a86669a1352af56ff38fe49?utm_source=rss)<!--g:6a86669a1352af56ff38fe49--> | — |
 | — | 2026-08-12 | 1h35m | [Vol.229 宏观漫谈109｜我们正处于一个美元主导的资本周期上升阶段尾部（8.6录制）](https://www.xiaoyuzhoufm.com/episode/6a7bf13836641f136d86f3cc?utm_source=rss)<!--g:6a7bf13836641f136d86f3cc--> | — |

@@ -1,10 +1,11 @@
 # 全嘻嘻 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/ptewvlwcgb8n>）｜ 最近拉取：2026-08-31 ｜ 总集数：167
+> 来源：官方 RSS（<https://feed.xyzfm.space/ptewvlwcgb8n>）｜ 最近拉取：2026-09-09 ｜ 总集数：168
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-03 | 1h24m | [全嘻嘻：请男嘉宾刘煜暄和女嘉宾佳佳魔法对轰](https://www.xiaoyuzhoufm.com/episode/6a9954d0a0210c197dccf40f?utm_source=rss)<!--g:6a9954d0a0210c197dccf40f--> | — |
 | — | 2026-08-27 | 1h25m | [社会化第二课：饭局+送礼](https://www.xiaoyuzhoufm.com/episode/6a8ff44fef65145dfcc6449a?utm_source=rss)<!--g:6a8ff44fef65145dfcc6449a--> | — |
 | — | 2026-08-20 | 52m09s | [遇见老登先别跑，一条视频帮你轻松拿捏](https://www.xiaoyuzhoufm.com/episode/6a86c5f1ef65145dfcc2970b?utm_source=rss)<!--g:6a86c5f1ef65145dfcc2970b--> | — |
 | — | 2026-08-14 | 1h32m | [领导不会说的5个老实人逆袭大杀招](https://www.xiaoyuzhoufm.com/episode/6a7e902117676351c571afa1?utm_source=rss)<!--g:6a7e902117676351c571afa1--> | — |

@@ -169,3 +169,13 @@
 - open-questions 汇入 3 问（工程税分工 / 护城河可复制性 / 双 KDA 复利）
 - show-indexes 状态 ✅ ×2（zhangxiaojun 152、wandian-latetalk 177）
 - **踩坑两枚**：① transcribe.py `--whisper-args` 里 `~/` 波浪号在 subprocess 列表模式不展开 → VAD 模型找不到 → SIGABRT；**解法：传绝对路径**（AGENTS.md 示例照抄会踩）。② 双 Workflow 并行 27 agent 撞 API 账户级 429 限流（5+9 章失败）→ **分批补齐（3 agent/批）** 后全绿——多 workflow 叠加时并发要主动限批
+
+## [2026-09-09] ingest | xiaoyuzhou（张小珺153 × 曾鸣：产业史观）
+- **源**：小宇宙 · 张小珺商业访谈录 · 153《和曾鸣聊产业史观：残酷的真相、会消亡的公司、优秀≠卓越、"OAI、Anth大概率不是原生时代大赢家"》（2026-09-03 发布）｜对谈（张小珺 × **曾鸣**：前阿里总参谋长、《智能商业》《智能战略》作者）
+- 2h34m18s（9258s）· 3,863 段 / 39,544 汉字（polished 36,065）/ 语速 256 字/min / 音频 171.5MB
+- 报告：[[2026-09-03_xiaoyuzhou-zhangxiaojun_zengming]]（episode_summary，7 章 shownotes 重组）
+- pipeline：yt-dlp → whisper.cpp large-v3 + VAD（silero v6.2.0，全程无循环幻觉）→ webReader shownotes → 按 7 章重组润色
+- 修正统计：100+ 处（曾敏→曾鸣、小骏→小珺、科程制→科层制、Open Cloud→OpenClaw、Skilling Law→Scaling Law、归基员工→硅基员工 等）；三处数字存疑保留+[?]（万亿被吞字、德鲁克卒年、爱迪生灯泡年份）；整句无法辨识 1 处（"付粉袋[?]"）
+- 新增 entities ×1：[[entities/zeng-ming]]；concepts ×3：[[concepts/native-app-stage]]（三阶段论）、[[concepts/strategy-generation]]、[[concepts/intelligence-flywheel]]
+- open-questions 汇入 3 问（寡头监管×折旧对撞 / Agent 入口信任第三方 / 组织生成证伪）
+- show-indexes 状态 ✅ ×1（zhangxiaojun 153）

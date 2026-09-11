@@ -1,10 +1,11 @@
 # 乱翻书 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/yxuruh3f9mc4>）｜ 最近拉取：2026-08-31 ｜ 总集数：279
+> 来源：官方 RSS（<https://feed.xyzfm.space/yxuruh3f9mc4>）｜ 最近拉取：2026-09-09 ｜ 总集数：280
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| 272 | 2026-09-02 | 1h51m | [272. 从飞书基座到Agent优先，豆包工作All in one紧追WorkBuddy](https://www.xiaoyuzhoufm.com/episode/6a981121a0210c197dcc5e6e?utm_source=rss)<!--g:6a981121a0210c197dcc5e6e--> | — |
 | 271 | 2026-08-21 | 1h21m | [271.唐朝都要不存在了？为什么伪史论会在今年大爆发？](https://www.xiaoyuzhoufm.com/episode/6a8813df1352af56ff39cc0e?utm_source=rss)<!--g:6a8813df1352af56ff39cc0e--> | — |
 | 270 | 2026-08-01 | 1h37m | [270.大厂押注AI办公，飞书和钉钉却先成了配角](https://www.xiaoyuzhoufm.com/episode/6a6da28d1b5e24969ce72d4c?utm_source=rss)<!--g:6a6da28d1b5e24969ce72d4c--> | — |
 | 269 | 2026-07-09 | 1h11m | [269. 卷规模 VS 卷创作：真人短剧的两种生存模式](https://www.xiaoyuzhoufm.com/episode/6a4f777d1e32575f5eb3cbc1?utm_source=rss)<!--g:6a4f777d1e32575f5eb3cbc1--> | — |

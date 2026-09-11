@@ -1,10 +1,11 @@
 # 听懂涨声 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/lulbgftcj6vw>）｜ 最近拉取：2026-08-31 ｜ 总集数：110
+> 来源：官方 RSS（<https://feed.xyzfm.space/lulbgftcj6vw>）｜ 最近拉取：2026-09-09 ｜ 总集数：111
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-03 | 1h07m | [重读《金钱心理学》：当房子和教育变成一种负债，我们如何重新理解财富？](https://www.xiaoyuzhoufm.com/episode/6a990a13f03e74ee6b045ae3?utm_source=rss)<!--g:6a990a13f03e74ee6b045ae3--> | — |
 | — | 2026-08-26 | 55m59s | [我看了中美几十年的数据，发现投资里“躺赢”和“躺平”真不是一回事｜对话陈鹏](https://www.xiaoyuzhoufm.com/episode/6a8e6921ef65145dfcc58800?utm_source=rss)<!--g:6a8e6921ef65145dfcc58800--> | — |
 | — | 2026-08-20 | 1h41m | [从梁圣到梁子，量化的超额去哪儿了？](https://www.xiaoyuzhoufm.com/episode/6a86cdd8ef65145dfcc29bf2?utm_source=rss)<!--g:6a86cdd8ef65145dfcc29bf2--> | — |
 | — | 2026-08-13 | 23m01s | [为啥我没躲过7月的科技股大跌？](https://www.xiaoyuzhoufm.com/episode/6a7d710e17676351c57144ac?utm_source=rss)<!--g:6a7d710e17676351c57144ac--> | — |

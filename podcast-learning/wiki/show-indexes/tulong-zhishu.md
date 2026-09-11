@@ -1,10 +1,12 @@
 # 屠龙之术 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/834hyx3v9k74>）｜ 最近拉取：2026-08-31 ｜ 总集数：129
+> 来源：官方 RSS（<https://feed.xyzfm.space/834hyx3v9k74>）｜ 最近拉取：2026-09-09 ｜ 总集数：131
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-04 | 1h09m | [中国一级半市场的水下江湖-续集｜串台苔藓之火](https://www.xiaoyuzhoufm.com/episode/6a918c15a0210c197dc9c039?utm_source=rss)<!--g:6a918c15a0210c197dc9c039--> | — |
+| — | 2026-09-02 | 52m42s | [AI李时珍带你“尝百草”---小宇宙先声活动演讲---91页PPT solo](https://www.xiaoyuzhoufm.com/episode/6a97d6a8f03e74ee6b03d6a6?utm_source=rss)<!--g:6a97d6a8f03e74ee6b03d6a6--> | — |
 | — | 2026-08-31 | 31m27s | [模型到底吃不吃应用？--从 Canva、Figma 到美图， 看 AI 应用公司的两种命运](https://www.xiaoyuzhoufm.com/episode/6a9281bea0210c197dca0307?utm_source=rss)<!--g:6a9281bea0210c197dca0307--> | — |
 | — | 2026-08-24 | 47m26s | [中国一级半市场的水下江湖（5年-183期-5032条交易线索）](https://www.xiaoyuzhoufm.com/episode/6a89cfbe1352af56ff3a6049?utm_source=rss)<!--g:6a89cfbe1352af56ff3a6049--> | — |
 | — | 2026-08-09 | 33m53s | [AI by the numbers-23页PPT solo](https://www.xiaoyuzhoufm.com/episode/6a789a5ac4079d62c57fca54?utm_source=rss)<!--g:6a789a5ac4079d62c57fca54--> | — |

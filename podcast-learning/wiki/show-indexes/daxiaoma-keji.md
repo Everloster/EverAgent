@@ -1,10 +1,11 @@
 # 大小马聊科技 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/ura8q9jpl4xj>）｜ 最近拉取：2026-08-31 ｜ 总集数：91
+> 来源：官方 RSS（<https://feed.xyzfm.space/ura8q9jpl4xj>）｜ 最近拉取：2026-09-09 ｜ 总集数：92
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-06 | 1h18m | [V94.理智分析中国火箭回收与美国「孙学」](https://www.xiaoyuzhoufm.com/episode/6a9d85b2a0210c197dce6fa6?utm_source=rss)<!--g:6a9d85b2a0210c197dce6fa6--> | — |
 | — | 2026-08-21 | 1h40m | [V93.小米干不过华为？深度解析两家商业逻辑与危机](https://www.xiaoyuzhoufm.com/episode/6a87d39a1352af56ff39a4b9?utm_source=rss)<!--g:6a87d39a1352af56ff39a4b9--> | — |
 | — | 2026-07-27 | 1h09m | [V92.我用AI重活一遍！AI提升幸福感的9种姿势？](https://www.xiaoyuzhoufm.com/episode/6a66e136a3fec224d5a3f00f?utm_source=rss)<!--g:6a66e136a3fec224d5a3f00f--> | — |
 | — | 2026-04-25 | 1h14m | [V91.马斯克SpaceX上市，人类最大IPO！中美太空暗战，谁是真正赢家？](https://www.xiaoyuzhoufm.com/episode/69ec7fe11e94ae69211e634f?utm_source=rss)<!--g:69ec7fe11e94ae69211e634f--> | — |

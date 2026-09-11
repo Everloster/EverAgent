@@ -1,10 +1,11 @@
 # 菠萝健康派 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/qe8egag9eycv>）｜ 最近拉取：2026-08-31 ｜ 总集数：123
+> 来源：官方 RSS（<https://feed.xyzfm.space/qe8egag9eycv>）｜ 最近拉取：2026-09-09 ｜ 总集数：124
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-06 | 55m27s | [赵晓刚教授：肺结节先别急着切！这几个判断很重要vol.124](https://www.xiaoyuzhoufm.com/episode/6a9d5246a0210c197dce5329?utm_source=rss)<!--g:6a9d5246a0210c197dce5329--> | — |
 | — | 2026-08-30 | 45m49s | [虞先濬教授：关于胰腺癌，好多真相我不吐不快！vol.123](https://www.xiaoyuzhoufm.com/episode/6a9394aff03e74ee6b01ea9d?utm_source=rss)<!--g:6a9394aff03e74ee6b01ea9d--> | — |
 | — | 2026-08-23 | 1h21m | [刘方奇教授：肠癌越来越年轻，确诊后先别急着手术！vol.122](https://www.xiaoyuzhoufm.com/episode/6a89579c1352af56ff3a329c?utm_source=rss)<!--g:6a89579c1352af56ff3a329c--> | — |
 | — | 2026-08-16 | 1h19m | [罗敏敏教授：给大脑加上“分子开关”，抑郁、帕金森、阿尔茨海默能不能精准治疗？vol.121](https://www.xiaoyuzhoufm.com/episode/6a818ff436641f136d890176?utm_source=rss)<!--g:6a818ff436641f136d890176--> | — |

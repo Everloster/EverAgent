@@ -1,10 +1,11 @@
 # 知行小酒馆 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/j8yp8gxkmgqr>）｜ 最近拉取：2026-08-31 ｜ 总集数：262
+> 来源：官方 RSS（<https://feed.xyzfm.space/j8yp8gxkmgqr>）｜ 最近拉取：2026-09-09 ｜ 总集数：263
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-04 | 1h40m | [E250 为什么学了这么多知识，却还是做不好投资？](https://www.xiaoyuzhoufm.com/episode/6a9a6ce4a0210c197dcd64dc?utm_source=rss)<!--g:6a9a6ce4a0210c197dcd64dc--> | — |
 | — | 2026-08-28 | 1h36m | [E249 对话叶檀：我不再是人生的过道人](https://www.xiaoyuzhoufm.com/episode/6a9128d7a0210c197dc98747?utm_source=rss)<!--g:6a9128d7a0210c197dc98747--> | — |
 | — | 2026-08-21 | 1h18m | [E248 从 QQ 空间到苹果设计大奖：一个非典型设计师的成长之路](https://www.xiaoyuzhoufm.com/episode/6a87c3f51352af56ff3999b8?utm_source=rss)<!--g:6a87c3f51352af56ff3999b8--> | — |
 | — | 2026-08-14 | 2h54m | [E247 和爱的人谈钱，但不只是钱｜小酒馆故事会七夕特辑 💝](https://www.xiaoyuzhoufm.com/episode/6a7e91ff36641f136d8807ab?utm_source=rss)<!--g:6a7e91ff36641f136d8807ab--> | — |

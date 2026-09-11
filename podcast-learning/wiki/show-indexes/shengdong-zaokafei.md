@@ -1,11 +1,18 @@
 # 声动早咖啡 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/q88qwmydeuw8>）｜ 最近拉取：2026-08-31 ｜ 总集数：1043
+> 来源：官方 RSS（<https://feed.xyzfm.space/q88qwmydeuw8>）｜ 最近拉取：2026-09-09 ｜ 总集数：1050
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
 | 22 | 2025-07-01 | 12m33s | [22.8 元袋装冰块进驻山姆，农夫山泉为何也盯上冰块生意？](https://www.xiaoyuzhoufm.com/episode/6863f40393fd2d72b80338a6?utm_source=rss)<!--g:6863f40393fd2d72b80338a6--> | — |
+| — | 2026-09-08 | 16m18s | [猪肉价格经历漫长下跌，为什么「猪周期」不再遵循老节奏？](https://www.xiaoyuzhoufm.com/episode/6aa01491f03e74ee6b0730ef?utm_source=rss)<!--g:6aa01491f03e74ee6b0730ef--> | — |
+| — | 2026-09-07 | 11m03s | [怡宝纯净水份额下滑，安踏旗下瑜伽服品牌开设健身房](https://www.xiaoyuzhoufm.com/episode/6a9ec764f03e74ee6b069cc2?utm_source=rss)<!--g:6a9ec764f03e74ee6b069cc2--> | — |
+| — | 2026-09-06 | 15m57s | [美妆小样变身独立商品，品牌为何都在纷纷布局迷你产品？](https://www.xiaoyuzhoufm.com/episode/6a9d3aa9a0210c197dce4a3e?utm_source=rss)<!--g:6a9d3aa9a0210c197dce4a3e--> | — |
+| — | 2026-09-03 | 16m07s | [咖啡豆｜运动鞋系上绸缎丝带，鞋履品牌为什么集体迷上芭蕾风？](https://www.xiaoyuzhoufm.com/episode/6a9972c2a0210c197dcd0293?utm_source=rss)<!--g:6a9972c2a0210c197dcd0293--> | — |
+| — | 2026-09-02 | 9m52s | [戴森进入电动牙刷领域，传统金店加盟持续收缩](https://www.xiaoyuzhoufm.com/episode/6a982ff6f03e74ee6b040d62?utm_source=rss)<!--g:6a982ff6f03e74ee6b040d62--> | — |
+| — | 2026-09-01 | 14m10s | [在非洲卖快餐，为什么肯德基比麦当劳更吃得开？](https://www.xiaoyuzhoufm.com/episode/6a96e1e1a0210c197dcbd6bf?utm_source=rss)<!--g:6a96e1e1a0210c197dcbd6bf--> | — |
+| — | 2026-08-31 | 11m18s | [凯乐石在欧洲开店，广告首次成为 B 站第一大业务](https://www.xiaoyuzhoufm.com/episode/6a9591b7a0210c197dcb34e5?utm_source=rss)<!--g:6a9591b7a0210c197dcb34e5--> | — |
 | — | 2026-08-30 | 16m59s | [难以影响购票决策的飞机餐，为何成为航司升级重点？](https://www.xiaoyuzhoufm.com/episode/6a9409e3a0210c197dca7e05?utm_source=rss)<!--g:6a9409e3a0210c197dca7e05--> | — |
 | — | 2026-08-27 | 15m15s | [咖啡豆｜美式汉堡炸鸡扎堆来华，快餐品牌为什么又盯上中国市场？](https://www.xiaoyuzhoufm.com/episode/6a903e4fef65145dfcc66d16?utm_source=rss)<!--g:6a903e4fef65145dfcc66d16--> | — |
 | — | 2026-08-26 | 11m35s | [外卖成为海底捞增长最快的业务，乐高表示不会用 AI 来设计产品](https://www.xiaoyuzhoufm.com/episode/6a8efed81352af56ff3c8ccf?utm_source=rss)<!--g:6a8efed81352af56ff3c8ccf--> | — |

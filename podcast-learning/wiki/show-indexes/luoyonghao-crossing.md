@@ -1,10 +1,11 @@
 # 罗永浩的十字路口 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/wmnkvmrpwuww>）｜ 最近拉取：2026-08-31 ｜ 总集数：36
+> 来源：官方 RSS（<https://feed.xyzfm.space/wmnkvmrpwuww>）｜ 最近拉取：2026-09-09 ｜ 总集数：37
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-01 | 3h43m | [手工耿×罗永浩！“村口的五金店里，出现了一个达达主义艺术家”](https://www.xiaoyuzhoufm.com/episode/6a9625b9f03e74ee6b02f0df?utm_source=rss)<!--g:6a9625b9f03e74ee6b02f0df--> | — |
 | — | 2026-08-06 | 2h54m | [罗永浩的X字路口！我们能活到今天，多亏了祖传的势利眼](https://www.xiaoyuzhoufm.com/episode/6a734c29ab3a91c24a1067fa?utm_source=rss)<!--g:6a734c29ab3a91c24a1067fa--> | — |
 | — | 2026-07-31 | 3h07m | [零跑汽车朱江明×罗永浩！零跑汽车十年：不会讲故事的人，如何卖成了第一](https://www.xiaoyuzhoufm.com/episode/6a6b586b56a3f3491ba79b33?utm_source=rss)<!--g:6a6b586b56a3f3491ba79b33--> | — |
 | — | 2026-07-24 | 2h32m | [罗永浩的X字路口！“精神病”失控大乱斗，强迫症、ADHD、攻击型人格障碍.......](https://www.xiaoyuzhoufm.com/episode/6a62befca3fec224d5a2715c?utm_source=rss)<!--g:6a62befca3fec224d5a2715c--> | — |

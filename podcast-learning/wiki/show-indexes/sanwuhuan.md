@@ -1,10 +1,11 @@
 # 三五环 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/m3dda867gh7j>）｜ 最近拉取：2026-08-31 ｜ 总集数：234
+> 来源：官方 RSS（<https://feed.xyzfm.space/m3dda867gh7j>）｜ 最近拉取：2026-09-09 ｜ 总集数：235
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-01 | 49m23s | [No.232 吴汉坤：AI 时代，演员第一个丢饭碗？](https://www.xiaoyuzhoufm.com/episode/6a959a88f03e74ee6b02d5bf?utm_source=rss)<!--g:6a959a88f03e74ee6b02d5bf--> | — |
 | — | 2026-08-25 | 55m57s | [No.231 抽象仔：从《航拍中国》到《新鸳鸯蝴蝶梦》，重新用 AI 学习互联网表达](https://www.xiaoyuzhoufm.com/episode/6a8db32d1352af56ff3bf384?utm_source=rss)<!--g:6a8db32d1352af56ff3bf384--> | — |
 | — | 2026-08-18 | 1h13m | [No.230 串台万物生长｜咖啡续命、酒精助眠，当代人的睡眠失控与管理](https://www.xiaoyuzhoufm.com/episode/6a8336318156bf336219d647?utm_source=rss)<!--g:6a8336318156bf336219d647--> | — |
 | — | 2026-08-11 | 1h00m | [No.229 对话少数派老麦：从 Palm、WebOS 到 AI 硬件，依然不想成为多数派](https://www.xiaoyuzhoufm.com/episode/6a7726aac4079d62c57f5185?utm_source=rss)<!--g:6a7726aac4079d62c57f5185--> | — |
