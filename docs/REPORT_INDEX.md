@@ -7,6 +7,7 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-09-11 | [程乐松×脱不花《长谈》64期：活得哲学一点——一场打通「出圈金句」与「道教研究/中国哲学方法论」的3小时对谈](../podcast-learning/reports/2026-09-05_bilibili-changtan_chenglesong.md) | podcast-learning |
 | 2026-09-11 | [Anthropic 经济情景模型：把 AI 能力预测翻译成 2030 年的 GDP、工资与失业](../ai-learning/reports/knowledge_reports/Anthropic经济情景模型_深度解析_20260911.md) | ai-learning |
 | 2026-09-11 | [AI 行业日报 · 2026-09-11](../web-surfing/reports/ai-news-daily-2026-09-11.md) | web-surfing |
 | 2026-09-10 | [AI 行业日报 · 2026-09-10](../web-surfing/reports/ai-news-daily-2026-09-10.md) | web-surfing |
@@ -31,7 +32,6 @@
 | 2026-08-25 | [身体出现这些信号，可能是炎症在提醒你！——帆书讲《炎症》](../podcast-learning/reports/2026-08-21_bilibili-fanshu_yanzheng.md) | podcast-learning |
 | 2026-08-25 | [AI 行业日报 · 2026-08-25](../web-surfing/reports/ai-news-daily-2026-08-25.md) | web-surfing |
 | 2026-08-24 | [刘方奇教授：肠癌越来越年轻，确诊后先别急着手术！](../podcast-learning/reports/2026-08-24_xiaoyuzhou-boluo-jiankang_liufangqi.md) | podcast-learning |
-| 2026-08-24 | [AI 行业日报 · 2026-08-24](../web-surfing/reports/ai-news-daily-2026-08-24.md) | web-surfing |
 
 ## 🤖 AI Learning（100 篇）
 
@@ -247,10 +247,11 @@
 | 2026-03-26 | [Physiology of Growth Hormone Secretion during Sleep (1996) 精读](../biology-learning/reports/paper_analyses/P09_gh_sleep_physiology_1996.md) | — |
 | 2026-03-23 | [晚型人作息与力量训练深度研究](../biology-learning/reports/concept_reports/晚型人作息与力量训练_深度研究报告.md) | — |
 
-## 🎙️ Podcast Learning（20 篇）
+## 🎙️ Podcast Learning（21 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-09-11 | [程乐松×脱不花《长谈》64期：活得哲学一点——一场打通「出圈金句」与「道教研究/中国哲学方法论」的3小时对谈](../podcast-learning/reports/2026-09-05_bilibili-changtan_chenglesong.md) | — |
 | 2026-09-09 | [153. 和曾鸣聊产业史观：残酷的真相、会消亡的公司、优秀≠卓越](../podcast-learning/reports/2026-09-03_xiaoyuzhou-zhangxiaojun_zengming.md) | — |
 | 2026-09-02 | [晚点聊177｜详解 Kimi K3：体感、推理系统工程、开源大辩论与估值冲击](../podcast-learning/reports/2026-08-04_rss-wandian-latetalk_kimi-k3.md) | — |
 | 2026-09-02 | [张小珺152｜孙宇涛领读 Kimi K3 技术报告：三维 scaling、注意力谱系与 infra co-design](../podcast-learning/reports/2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report.md) | — |
