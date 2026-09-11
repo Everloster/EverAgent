@@ -179,3 +179,5 @@
 - 新增 entities ×1：[[entities/zeng-ming]]；concepts ×3：[[concepts/native-app-stage]]（三阶段论）、[[concepts/strategy-generation]]、[[concepts/intelligence-flywheel]]
 - open-questions 汇入 3 问（寡头监管×折旧对撞 / Agent 入口信任第三方 / 组织生成证伪）
 - show-indexes 状态 ✅ ×1（zhangxiaojun 153）
+
+- 2026-09-11 | ingest | BV1B24667EQH《长谈》64期 程乐松×脱不花（2h55m58s）→ whisper large-v3+VAD 转写 4466段/51,130字（无幻觉循环）→ B站官方字幕交叉校正 ~80处（40处[?]存疑）→ 28章 polished → 报告+philosophy-learning 程乐松实体页/open-questions 联动更新
