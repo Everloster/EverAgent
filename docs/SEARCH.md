@@ -3,7 +3,25 @@
 > 全局搜索/查资料方法。查东西时**从最省钱有效的档位开始，不够再往上爬**，而不是一上来就动用重工具。
 > 被根 [AGENTS.md](../AGENTS.md) §4 引用；任何领域、任何任务都适用。
 > 2026-07-26 全面修订：按实机实测重排（mcporter 盘点 + 逐档验证），新增 exa 档与抓取 fallback 链。
-> 2026-08-12 订正：本文只定义「能力阶梯与用法」，不再把某台设备的已安装状态写成全局事实；实际可用性以私有仓对应设备档案为准。
+> 2026-09-12 订正：本文只定义跨设备方法。并排私有仓和 eacli 可用时，先走 Token Plan capability router；设备安装、认证和版本事实仍只在私有仓维护。
+
+## 零、Token Plan-first（有 eacli 时优先）
+
+```bash
+eacli tool select --capability web.search --device auto --json
+eacli tool invoke --capability web.search --input-json '{"query":"关键词"}' \
+  --device auto --request-id req_search_... --json
+```
+
+- 搜索/网页/公开 GitHub/视觉专项：智谱优先。
+- 金融、宏观、论文、法律、企业结构化数据：Kimi Datasource，严格先 describe 再 query。
+- 图片、视频、语音、文本生成：MiniMax；生成操作禁止自动 fallback。
+- 输入只写 `tool select --json` 返回的 capability canonical schema，不写智谱/MiniMax 私有字段；
+  eacli 会在最终执行设备完成 provider 映射。
+- eacli 未部署、正在修复或没有 ready route 时，才进入下方通用搜索阶梯。
+
+本公开仓不保存设备、凭据、固定版本或私有拓扑；完整 catalog 和操作边界见并排私有仓的
+`infra/references/token-plan-reference.md`。
 
 ---
 
@@ -13,7 +31,7 @@
 |-----------|--------|
 | 代码库里的事实（某函数在哪、某配置值） | **本地工具**：Grep / Glob / Read，别联网 |
 | 一个明确网址的内容 | **抓取**：FetchURL；失败走 [§三 fallback 链](#三抓取-fallback-链借-openclaw-设计) |
-| 快事实 + 出处 + 时效 | **档位 1**：llm Gemini websearch |
+| 快事实 + 出处 + 时效 | 有 eacli → Token Plan `web.search`；否则 **档位 1** |
 | 搜索列表（有哪些来源） | **档位 2**：WebSearch / exa |
 | 难抓的页（JS 重/反爬）、批量、监控 | **档位 3**：firecrawl MCP |
 | 登录态、复杂交互、多轮操作 | **档位 4**：opencli browser / agent-reach |
@@ -26,7 +44,7 @@
 ### 档位 0 · 本地优先（零成本）
 先问：这真的需要联网吗？代码/文件里的事用 Grep/Glob/Read。
 
-### 档位 1 · llm + Gemini websearch（快事实首选）
+### 档位 1 · llm + Gemini websearch（无 eacli ready route 时的通用首选）
 设备已配置 `llm` + `llm-gemini` 与个人 API Key 时，这一档**轻量、带 Google 实时接地、给结论快**。执行前先查对应设备档案，不得因本文有示例命令就假定本机已配好凭据。
 
 ```bash

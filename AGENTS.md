@@ -150,7 +150,7 @@ EverAgent/
 ## §4 全局规则
 
 - **交流语言**：整个项目过程与用户对话一律用**中文**（含解释、追问、报告正文、commit 描述）。代码、命令、专有名词、原文引用保持原样。
-- **搜索/查资料**：[docs/SEARCH.md](./docs/SEARCH.md) — 从最省钱有效档位起爬（本地 → `llm` Gemini websearch → WebSearch/exa → firecrawl MCP → opencli；各设备的实际搜索能力见私有仓 `EverAgent-infra`）。
+- **搜索/查资料**：[docs/SEARCH.md](./docs/SEARCH.md) — 有并排私有仓且 eacli 已部署时，先按 capability 使用三家 Token Plan；否则再走文档中的通用降级阶梯。各设备安装与认证事实只在私有仓维护。
 - **安全与防幻觉**：[docs/PROTOCOL_COMMON.md](./docs/PROTOCOL_COMMON.md) §A — 未读内容禁止推测；数值必须有来源；不编造。
 - **提交规范**：[docs/PROTOCOL_COMMON.md](./docs/PROTOCOL_COMMON.md) §B/§C — commit 格式、push flow（`GIT_NO_OPTIONAL_LOCKS=1`）。
 - **git 身份**：提交一律走 `scripts/ecommit.sh`（自动注入 Author=Everloster 双身份）；pre-commit hook 强制校验 Committer 与 Author，裸 `git commit` 未设 `GIT_AUTHOR_*` 会被拦截。**识别不出 agent 身份（whoami 返回 `*-unknown`）一律禁止提交**——ecommit 硬失败 + hook 拦截，绝不静默兜底；先修 `scripts/whoami_agent.py` 覆盖当前 CLI，应急与用户确认身份后显式传 `AGENT_ID/AGENT_EMAIL`（2026-07-28 确立）。
@@ -183,7 +183,12 @@ EverAgent/
 
 复制任一领域结构：`AGENTS.md` + `PROFILE.md` + `MAP.md` + `reports/` + `wiki/{concepts,entities,syntheses,open-questions.md}` + `skills/`，然后更新 §1 表格与 README。
 
-## MCP 优先级（2026-09-02 定）
+## Token Plan-first（2026-09-12 定）
 
-同类任务优先用智谱 GLM Coding Plan 四件套 MCP：`web-search-prime`（网页搜索）/`web-reader`（网页阅读）/`zai-mcp-server`（图像与视频分析、OCR、UI 截图转码）/`zread`（GitHub 仓库结构/文件/文档检索）；内置工具或其它 MCP 的同类能力仅在前者失败或需要第二来源时兜底。工具未安装或连接失败时静默降级，不要因此中断任务。
-
+当并排私有仓 `../EverAgent-infra/` 存在且 eacli 已部署时，搜索、网页读取、公开仓库理解、
+结构化数据和多媒体任务先用 `eacli tool select --capability <id> --device auto --json`，再用
+`eacli tool invoke`。通用分工：智谱用于搜索/网页/ZRead/视觉，Kimi Datasource 用于金融、宏观、
+论文、法律和企业数据，MiniMax 用于图片、视频、语音与文本生成。设备、凭据、版本、地址等私有
+事实不得复制到本公开仓；调用只使用 `tool select --json` 返回的 canonical input schema，完整策略与
+catalog 只在私有仓维护。eacli 不可用或正在修复时，才按
+[`docs/SEARCH.md`](./docs/SEARCH.md) 的通用阶梯降级。
