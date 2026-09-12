@@ -26,7 +26,7 @@
 | [[wiki/entities/mingjing\|明镜（明镜与点点）]] | 读书方法论、F×X 思维模型、43talks 闭门会 | 2026-07-09 用户发链接学习 |
 | [[wiki/entities/li-jigang\|李继刚（43 AI · 即刻）]] | 取景框 / 影子之书 / 少读点有用的书 | 2026-07-09 对谈嘉宾 |
 | [[wiki/entities/wang-xiaochuan\|王小川]] | 医疗 AI / 生命模型 / 非共识 AI 路线 | 2026-06-18 Vol.29 |
-| [[wiki/entities/cls-tongxue\|CLS 同学]] | 中国行业吃肉/衰落榜 | 2026-06-20 BV1NHJF6oE8m |
+| [[wiki/entities/cls-tongxue\|CLS 同学]] | 中国行业吃肉/衰落榜 / 房地产政策信号学（名分→清算→紧箍咒）/ 以旧换新推演 | 2026-06-20 BV1NHJF6oE8m；2026-09-12 BV1dnbV6TEMy |
 | [[wiki/entities/sahil-lavingia\|Sahil Lavingia]] | 一人公司 / 小而美 | 2026-06-21 Vol.30-32 |
 | [[wiki/entities/luge-gustav\|鹿哥Gustav]] | 健康营养科普 / 观念考古 / 诚实呈现对立证据 | 2026-07-18 BV1HUNk6MEY5 |
 | [[wiki/entities/tulong-boshi\|屠龙博士]] | 非线性世界观 / 定价锚定 / 人才洼地 / 知行合一 | 2026-07-18 BV1krM46BEpn |
@@ -50,6 +50,8 @@
 ---
 
 ## 更新日志
+
+- 2026-09-12：用户发 CLS同学房产以旧换新视频，"做个播客学习任务"。CLS 关注点扩至房产政策信号学；报告与 AI 行业主线（CAPEX 泡沫之辩/AI 云公司）挂联动。
 
 - 2026-09-11：用户发 B站《长谈》64期（程乐松×脱不花）并明确"做个学习任务，之前有搞过程乐松的专题研究"。登记程乐松为关注人物；报告与 philosophy-learning 程乐松专题（3报告+wiki实体页）交叉挂钩。
 
