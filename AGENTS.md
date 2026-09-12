@@ -1,5 +1,19 @@
 # EverAgent — 主协议
 
+<!-- BEGIN MANAGED EACLI TOKEN PLAN POLICY -->
+## Token Plan-first（由 everagentcli 管理）
+
+对联网搜索、网页读取、公开 GitHub 仓库、图像/视频理解、结构化数据和媒体生成任务，Agent **必须先走 eacli 的三家 Token Plan 能力面**：
+
+1. 先用 `eacli tokenplan catalog --json` 识别 canonical capability；用 `eacli tool select --capability <id> --device auto --json` 获取 provider/device 选择证据。
+2. 实际调用用 `eacli tool invoke --capability <id> --input-json ... --device auto --request-id <stable-id> --json`；安装与认证状态用 `eacli tokenplan doctor|verify --device all --json`。
+3. 当 typed capability 已存在时，不直接绕过 eacli 调 `mcporter`、provider MCP、`mmx` 或供应商私有参数。eacli 不可用或尚未覆盖时才允许最小降级，并记录原因；有时间应优先修 eacli。
+4. 凭据只在最终执行设备本地解析，禁止写入 prompt、argv、RPC、仓库或结果。只读能力才允许按 catalog 自动 fallback；生成类任务禁止自动重放。
+5. Agent 启动时必须保留项目 context-file 加载；禁止使用跳过项目指令的参数。Claude Code 通过仓库 `CLAUDE.md` 的 `@AGENTS.md` 导入本策略。
+
+这是默认执行与审计策略，不是安全沙箱；用户明确指令、仓库安全红线和授权等级始终优先。
+<!-- END MANAGED EACLI TOKEN PLAN POLICY -->
+
 > 个人学习工作台。AI 帮我快速研究一个新领域/概念，产出高质量报告，我抽空阅读。
 > 本质是**知识库**，不是任务管理系统。AI 被「怎么做好研究」驱动，不被状态机协调。
 
