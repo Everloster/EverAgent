@@ -33,6 +33,8 @@
 
 ## 更新日志
 
+- 2026-09-12：新增覆盖「机器意识/AI 术语史/AI 能耗三角」线（王坚外滩大会视频驱动，两段式任务 Phase2）；报告：knowledge_reports/王坚三分智能框架与机器意识_深度解析_20260912。
+
 - 初始化领域地图（EverAgent，architecture-redesign）。覆盖状态待逐步回填。
 - `2026-07-07` — 新增"可解释性 & AI 安全"主线，覆盖 J-space/J-lens 全局工作空间（paper 45）。
 - `2026-07-07` — 前沿专题(Agent)补充进化式 harness 一手实证（paper 46，Niklaus "Don't Train the Model, Evolve the Harness"）；关联 wiki/concepts/agent_harness.md。
