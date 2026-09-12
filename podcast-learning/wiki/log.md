@@ -182,3 +182,4 @@
 
 - 2026-09-11 | ingest | BV1B24667EQH《长谈》64期 程乐松×脱不花（2h55m58s）→ whisper large-v3+VAD 转写 4466段/51,130字（无幻觉循环）→ B站官方字幕交叉校正 ~80处（40处[?]存疑）→ 28章 polished → 报告+philosophy-learning 程乐松实体页/open-questions 联动更新
 - 2026-09-12 | ingest | BV1dnbV6TEMy CLS同学房产以旧换新（15min31s）→ whisper large-v3+VAD 553段/5,586字 → 双源校正+政策锚点联网核实（十五五规划/恒大宣判/沪八条 [Web]）→ 8章 polished → 报告
+- 2026-09-12 | ingest | BV1ZuYm67EzG 王坚×凉子外滩大会问答（5min07s）→ opencli故障改B站API直取音频 → whisper 553→182段/1551字 → 6章polished → 报告（观点提取）→ 衍生 ai-learning 深度解析（两段式任务）
