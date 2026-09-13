@@ -2,6 +2,7 @@
 
 > 领域：心理学经典实验与概念深挖（认知·社会·发展·行为经济学·临床）。
 > 通用研究方法论见根 [METHODOLOGY.md](../METHODOLOGY.md)（强制）。本文件只写本领域的边界与特化。
+> **Token Plan-first（根 AGENTS.md 托管策略）**：联网搜索/网页读取/公开仓库理解/视觉/结构化数据/媒体生成，先走 `eacli tool select` + `tool invoke`；eacli 不可用时才按 docs/SEARCH.md 阶梯降级并记录原因。
 
 ---
 

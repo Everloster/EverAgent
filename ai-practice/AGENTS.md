@@ -4,6 +4,7 @@
 > 用最小、可在个人机器（CPU / 单卡 / 缩尺模拟）上跑起来的 demo，把一项 AI 技术讲透。
 > 涵盖但不限于：Transformer/注意力、微调（LoRA/GRPO）、RAG、Agent、多模态、推理优化、扩散模型等。
 > 通用研究方法论见根 [METHODOLOGY.md](../METHODOLOGY.md)（强制）。本文件只写本领域的边界与特化。
+> **Token Plan-first（根 AGENTS.md 托管策略）**：联网搜索/网页读取/公开仓库理解/视觉/结构化数据/媒体生成，先走 `eacli tool select` + `tool invoke`；eacli 不可用时才按 docs/SEARCH.md 阶梯降级并记录原因。
 
 ---
 
