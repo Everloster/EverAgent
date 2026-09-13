@@ -2,7 +2,7 @@
 
 > 领域：播客/访谈内容学习。**本地转写驱动**：我发链接 → 本地转写出原文 → 润色 → 总结/讨论 → 报告。
 > 通用研究方法论见根 [METHODOLOGY.md](../METHODOLOGY.md)（强制）。本文件只写本领域的边界与特化。
-> **Token Plan-first（根 AGENTS.md 托管策略）**：shownotes 拉取、联网查证等网页读取优先 `eacli tool select/invoke`（智谱 reader），eacli 不可用时才用本文 WebFetch 路径降级。
+> **Token Plan-first（根 AGENTS.md 托管策略）**：shownotes 拉取、联网查证等网页读取优先 `eacli tool select/invoke`（智谱 reader），eacli 不可用时先修 eacli（eacli-first，2026-09-13），不设降级路径。
 > **版权与引用**：见 [COPYRIGHT.md](./COPYRIGHT.md)。节目版权归主理人/嘉宾/制作方所有，本项目仅做个人学习。
 
 ---

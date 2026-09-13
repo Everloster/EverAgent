@@ -107,7 +107,7 @@
 
 **兜底（归不进 A–F 时）**：不新建"杂物"子项目，直接在根目录处理。默认遵守：
 
-1. **搜索用最省钱有效的档位** — 见 [docs/SEARCH.md](./docs/SEARCH.md)（本机已装 `llm` + Gemini websearch，默认联网入口）。
+1. **搜索/联网一律 eacli Token Plan-first**（见顶部托管策略块与文末「Token Plan-first」节）；**eacli 不可用时先修 eacli，不另建降级路径**（eacli-first，2026-09-13 确立）。
 2. **真读来源、标注证据** — 复用 METHODOLOGY §一/§二：不凭记忆下结论，事实带来源，推测标 `[推测]`；知识截止后的事实必须联网核实（§三）。
 3. **安全铁律** — 复用 PROTOCOL_COMMON §A：不伪装身份、不提交密钥、领域隔离、冲突上报。
 4. **一次性小事直接答，不留垃圾文件**；确有长期价值的产出，再考虑落成文件或按 §5 升级为正式领域。
@@ -149,7 +149,7 @@ EverAgent/
 │   ├── lint_evidence.py # 证据密度自检（非阻塞）
 │   ├── git_identity.py  # 提交身份校验（Committer + Author 双身份）
 │   └── ecommit.sh       # 双身份提交包装（Author=Everloster）
-├── docs/                # PROTOCOL_COMMON（提交/安全规则）、SEARCH（搜索阶梯）、REPORT_METADATA、REPORT_INDEX（自动生成）、personal、external-skills（外部技能 vendor 区）
+├── docs/                # PROTOCOL_COMMON（提交/安全规则）、REPORT_METADATA、REPORT_INDEX（自动生成）、personal、external-skills（外部技能 vendor 区）
 └── {domain}-learning/
     ├── AGENTS.md        # 领域边界 + 特化（~50 行）
     ├── PROFILE.md       # 学习者画像
@@ -164,7 +164,7 @@ EverAgent/
 ## §4 全局规则
 
 - **交流语言**：整个项目过程与用户对话一律用**中文**（含解释、追问、报告正文、commit 描述）。代码、命令、专有名词、原文引用保持原样。
-- **搜索/查资料**：[docs/SEARCH.md](./docs/SEARCH.md) — 有并排私有仓且 eacli 已部署时，先按 capability 使用三家 Token Plan；否则再走文档中的通用降级阶梯。各设备安装与认证事实只在私有仓维护。
+- **搜索/查资料**：**eacli Token Plan-first** — 联网搜索/网页读取/公开仓库理解/视觉/结构化数据/媒体生成，先 `eacli tool select --capability <id> --device auto --json` 再 `tool invoke`。eacli 不可用或缺能力时：**先修 eacli（eacli-first），不设平行降级阶梯**；各设备安装与认证事实只在私有仓维护。
 - **安全与防幻觉**：[docs/PROTOCOL_COMMON.md](./docs/PROTOCOL_COMMON.md) §A — 未读内容禁止推测；数值必须有来源；不编造。
 - **提交规范**：[docs/PROTOCOL_COMMON.md](./docs/PROTOCOL_COMMON.md) §B/§C — commit 格式、push flow（`GIT_NO_OPTIONAL_LOCKS=1`）。
 - **git 身份**：提交一律走 `scripts/ecommit.sh`（自动注入 Author=Everloster 双身份）；pre-commit hook 强制校验 Committer 与 Author，裸 `git commit` 未设 `GIT_AUTHOR_*` 会被拦截。**识别不出 agent 身份（whoami 返回 `*-unknown`）一律禁止提交**——ecommit 硬失败 + hook 拦截，绝不静默兜底；先修 `scripts/whoami_agent.py` 覆盖当前 CLI，应急与用户确认身份后显式传 `AGENT_ID/AGENT_EMAIL`（2026-07-28 确立）。
@@ -204,5 +204,5 @@ EverAgent/
 `eacli tool invoke`。通用分工：智谱用于搜索/网页/ZRead/视觉，Kimi Datasource 用于金融、宏观、
 论文、法律和企业数据，MiniMax 用于图片、视频、语音与文本生成。设备、凭据、版本、地址等私有
 事实不得复制到本公开仓；调用只使用 `tool select --json` 返回的 canonical input schema，完整策略与
-catalog 只在私有仓维护。eacli 不可用或正在修复时，才按
-[`docs/SEARCH.md`](./docs/SEARCH.md) 的通用阶梯降级。
+catalog 只在私有仓维护。**eacli 不可用或正在修复时，先修 eacli（eacli-first，2026-09-13 定）**——
+原 `docs/SEARCH.md` 降级阶梯同日退役，不再维护平行降级路径。

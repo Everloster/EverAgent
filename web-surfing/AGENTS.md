@@ -4,7 +4,7 @@
 > （抓片单/看热搜/追动态/查资料/整理清单……），并把常用站点沉淀成可复用技能。
 > 由 EverAgent 根 `AGENTS.md` 的 E 类路由进入（"帮我上网/上 X 网站看看/抓一下 X"）。
 > 自包含：读本文件 + 根 `METHODOLOGY.md` 即可独立工作。
-> **Token Plan-first（根 AGENTS.md 托管策略）**：联网搜索/网页读取/公开仓库理解/视觉/结构化数据/媒体生成，先走 `eacli tool select` + `tool invoke`（智谱=搜索网页视觉、Kimi=结构化数据、MiniMax=生成）；eacli 不可用时才按本文 opencli 流程降级并记录原因。
+> **Token Plan-first（根 AGENTS.md 托管策略）**：公开联网搜索/网页读取先走 `eacli tool select` + `tool invoke`（智谱=搜索网页视觉等）；eacli 不可用时先修 eacli（eacli-first，2026-09-13）。**需登录态/浏览器直驱的站点抓取仍走 opencli**——那是本地工具链，不属于 tokenplan 能力面，不算降级。
 
 ---
 
@@ -32,7 +32,7 @@
                      · 无 → 走浏览器直驱（opencli browser <session> open/extract/...）
   ↓
 ③ 顺带查 agent-reach → 若属于它覆盖的 13 平台（小红书/Twitter/B站/Reddit/YouTube/播客/RSS…），
-                       优先用 agent-reach（见根 docs/SEARCH.md 档位3），它对这些平台路由更成熟
+                       优先用 agent-reach（本地技能 `~/.agents/skills/agent-reach`），它对这些平台路由更成熟
   ↓
 ④ 干活 → 只读公开数据，标注证据；批量抓要低频加延时
   ↓

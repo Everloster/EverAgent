@@ -2,7 +2,7 @@
 
 > 领域：计算机科学（系统·算法·分布式·数据库·网络）经典论文精读与概念深挖。
 > 通用研究方法论见根 [METHODOLOGY.md](../METHODOLOGY.md)（强制）。本文件只写本领域的边界与特化。
-> **Token Plan-first（根 AGENTS.md 托管策略）**：联网搜索/网页读取/公开仓库理解/视觉/结构化数据/媒体生成，先走 `eacli tool select` + `tool invoke`；eacli 不可用时才按 docs/SEARCH.md 阶梯降级并记录原因。
+> **Token Plan-first（根 AGENTS.md 托管策略）**：联网搜索/网页读取/公开仓库理解/视觉/结构化数据/媒体生成，先走 `eacli tool select` + `tool invoke`；eacli 不可用时先修 eacli（eacli-first，2026-09-13），不设降级阶梯。
 
 ---
 

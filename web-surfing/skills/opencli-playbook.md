@@ -30,7 +30,7 @@ opencli list | grep -i <站点关键词>
 opencli list -f json | python3 -c "import json,sys; d=json.load(sys.stdin); d=d if isinstance(d,list) else next(v for v in d.values() if isinstance(v,list)); print(sorted({c['site'] for c in d if '关键词' in c['site'].lower()}))"
 
 # ③ 若属于 agent-reach 的 13 平台（小红书/Twitter/B站/Reddit/YouTube/播客/V2EX/RSS/雪球/LinkedIn），
-#    优先用 agent-reach（见根 docs/SEARCH.md），它对这些平台路由更成熟
+#    优先用 agent-reach（本地技能 `~/.agents/skills/agent-reach`），它对这些平台路由更成熟
 ```
 
 **决策**：有沉淀 → 照沉淀干；有适配器 → 用适配器；都没有 → 浏览器直驱 + 干完沉淀。

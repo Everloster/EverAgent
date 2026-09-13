@@ -2,7 +2,7 @@
 
 > 领域：AI/ML 论文精读与技术深度报告 **+ AI 行业与商业观察**（行业访谈/商业案例/公司与人才信号——2026-07-29 用户拍板扩边界，旧"纯技术"边界作废）。
 > 通用研究方法论见根 [METHODOLOGY.md](../METHODOLOGY.md)（强制）。本文件只写本领域的边界与特化。
-> **Token Plan-first（根 AGENTS.md 托管策略）**：联网搜索/网页读取/公开仓库理解/视觉/结构化数据/媒体生成，先走 `eacli tool select` + `tool invoke`；eacli 不可用时才按 docs/SEARCH.md 阶梯降级并记录原因。
+> **Token Plan-first（根 AGENTS.md 托管策略）**：联网搜索/网页读取/公开仓库理解/视觉/结构化数据/媒体生成，先走 `eacli tool select` + `tool invoke`；eacli 不可用时先修 eacli（eacli-first，2026-09-13），不设降级阶梯。
 
 ---
 
