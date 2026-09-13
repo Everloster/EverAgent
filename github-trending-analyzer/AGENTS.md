@@ -2,7 +2,7 @@
 
 > 唯一执行协议，自包含。本项目只做**三件事**，与三件事无关的一律不接。
 > 由 EverAgent 根 `AGENTS.md` 的 D 类路由进入（贴 repo 链接 / trending 请求）。
-> **Token Plan-first（根 AGENTS.md 托管策略）**：公开仓库理解/网页读取先走 `eacli tool select` + `tool invoke`（智谱 ZRead 等）；eacli 不可用时才用 gh/WebFetch 降级并记录原因。
+> **Token Plan-first（根 AGENTS.md 托管策略）**：公开仓库理解/网页读取先走 `eacli tool select` + `tool invoke`（智谱 ZRead 等）；eacli 不可用时先修 eacli（eacli-first，2026-09-13），不设降级路径。
 
 ---
 

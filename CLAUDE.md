@@ -17,7 +17,7 @@
 
 - 研究方法论（强制）：[METHODOLOGY.md](./METHODOLOGY.md)
 - 提交规范与 push flow：[docs/PROTOCOL_COMMON.md](./docs/PROTOCOL_COMMON.md) §B/§C
-- 搜索阶梯：[docs/SEARCH.md](./docs/SEARCH.md)
+- 搜索阶梯：**已退役（2026-09-13）**——联网任务一律 eacli Token Plan-first（见根 AGENTS.md 托管策略块），eacli 不可用先修 eacli
 
 本文件只记录 Claude 专属约定，不拷贝 AGENTS.md 的内容——两份协议必然漂移，以 AGENTS.md 为准。
 
