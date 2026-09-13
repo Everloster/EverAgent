@@ -7,6 +7,7 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-09-13 | [一本书看清"工作"的真相：竹竹暴风雪解读 × 鲍曼《工作、消费主义和新穷人》原书深读](../podcast-learning/reports/2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism.md) | podcast-learning |
 | 2026-09-12 | [王坚的三分智能框架与机器意识：一个工程院士的「消解式回答」经得起检验吗？](../ai-learning/reports/knowledge_reports/王坚三分智能框架与机器意识_深度解析_20260912.md) | ai-learning |
 | 2026-09-12 | [王坚回应凉子：AI 何时产生自主意识——5分钟里的三个论断（机器智能≠人工的人类智能 / 技术只拓展边界 / AI 的使命是减少资源消耗）](../podcast-learning/reports/2026-09-11_bilibili-liangzi-fangtanlu_wangjian.md) | podcast-learning |
 | 2026-09-12 | [CLS同学：如果5%的房地产以旧换新出台，你会买新房吗？——三驾马车承压下的「房地产出冷宫」推演](../podcast-learning/reports/2026-09-12_bilibili-cls-tongxue_fangchan-yijiuhuanxin.md) | podcast-learning |
@@ -31,7 +32,6 @@
 | 2026-08-28 | [AI 行业日报 · 2026-08-28](../web-surfing/reports/ai-news-daily-2026-08-28.md) | web-surfing |
 | 2026-08-27 | [AI 行业日报 · 2026-08-27](../web-surfing/reports/ai-news-daily-2026-08-27.md) | web-surfing |
 | 2026-08-26 | [张小珺 152 领读Kimi K3技术报告 — shownotes](../podcast-learning/reports/transcripts/2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report.shownotes.md) | podcast-learning |
-| 2026-08-26 | [AI 行业日报 · 2026-08-26](../web-surfing/reports/ai-news-daily-2026-08-26.md) | web-surfing |
 
 ## 🤖 AI Learning（101 篇）
 
@@ -248,10 +248,11 @@
 | 2026-03-26 | [Physiology of Growth Hormone Secretion during Sleep (1996) 精读](../biology-learning/reports/paper_analyses/P09_gh_sleep_physiology_1996.md) | — |
 | 2026-03-23 | [晚型人作息与力量训练深度研究](../biology-learning/reports/concept_reports/晚型人作息与力量训练_深度研究报告.md) | — |
 
-## 🎙️ Podcast Learning（23 篇）
+## 🎙️ Podcast Learning（24 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-09-13 | [一本书看清"工作"的真相：竹竹暴风雪解读 × 鲍曼《工作、消费主义和新穷人》原书深读](../podcast-learning/reports/2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism.md) | — |
 | 2026-09-12 | [王坚回应凉子：AI 何时产生自主意识——5分钟里的三个论断（机器智能≠人工的人类智能 / 技术只拓展边界 / AI 的使命是减少资源消耗）](../podcast-learning/reports/2026-09-11_bilibili-liangzi-fangtanlu_wangjian.md) | — |
 | 2026-09-12 | [CLS同学：如果5%的房地产以旧换新出台，你会买新房吗？——三驾马车承压下的「房地产出冷宫」推演](../podcast-learning/reports/2026-09-12_bilibili-cls-tongxue_fangchan-yijiuhuanxin.md) | — |
 | 2026-09-11 | [程乐松×脱不花《长谈》64期：活得哲学一点——一场打通「出圈金句」与「道教研究/中国哲学方法论」的3小时对谈](../podcast-learning/reports/2026-09-05_bilibili-changtan_chenglesong.md) | — |
