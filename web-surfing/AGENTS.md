@@ -4,6 +4,7 @@
 > （抓片单/看热搜/追动态/查资料/整理清单……），并把常用站点沉淀成可复用技能。
 > 由 EverAgent 根 `AGENTS.md` 的 E 类路由进入（"帮我上网/上 X 网站看看/抓一下 X"）。
 > 自包含：读本文件 + 根 `METHODOLOGY.md` 即可独立工作。
+> **Token Plan-first（根 AGENTS.md 托管策略）**：联网搜索/网页读取/公开仓库理解/视觉/结构化数据/媒体生成，先走 `eacli tool select` + `tool invoke`（智谱=搜索网页视觉、Kimi=结构化数据、MiniMax=生成）；eacli 不可用时才按本文 opencli 流程降级并记录原因。
 
 ---
 
