@@ -7,6 +7,7 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-09-14 | [易论AI Vol.1：AI最前沿的人已经不聊大模型了——李继刚×橘子×歸藏的四人谈（服务裹着能力/齿轮速度差/Agent+X/上下文是一辆车）](../podcast-learning/reports/2026-09-09_xiaoyuzhou-yilun-ai_frontier-no-llm.md) | podcast-learning |
 | 2026-09-13 | [一本书看清"工作"的真相：竹竹暴风雪解读 × 鲍曼《工作、消费主义和新穷人》原书深读](../podcast-learning/reports/2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism.md) | podcast-learning |
 | 2026-09-12 | [王坚的三分智能框架与机器意识：一个工程院士的「消解式回答」经得起检验吗？](../ai-learning/reports/knowledge_reports/王坚三分智能框架与机器意识_深度解析_20260912.md) | ai-learning |
 | 2026-09-12 | [王坚回应凉子：AI 何时产生自主意识——5分钟里的三个论断（机器智能≠人工的人类智能 / 技术只拓展边界 / AI 的使命是减少资源消耗）](../podcast-learning/reports/2026-09-11_bilibili-liangzi-fangtanlu_wangjian.md) | podcast-learning |
@@ -31,7 +32,6 @@
 | 2026-08-28 | [惠州租房建议报告——两位老人 2026 年 9/10 月入住版（1–3 个月短住体验）](../web-surfing/reports/huizhou-rental-guide-2026-09.md) | web-surfing |
 | 2026-08-28 | [AI 行业日报 · 2026-08-28](../web-surfing/reports/ai-news-daily-2026-08-28.md) | web-surfing |
 | 2026-08-27 | [AI 行业日报 · 2026-08-27](../web-surfing/reports/ai-news-daily-2026-08-27.md) | web-surfing |
-| 2026-08-26 | [张小珺 152 领读Kimi K3技术报告 — shownotes](../podcast-learning/reports/transcripts/2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report.shownotes.md) | podcast-learning |
 
 ## 🤖 AI Learning（101 篇）
 
@@ -248,10 +248,11 @@
 | 2026-03-26 | [Physiology of Growth Hormone Secretion during Sleep (1996) 精读](../biology-learning/reports/paper_analyses/P09_gh_sleep_physiology_1996.md) | — |
 | 2026-03-23 | [晚型人作息与力量训练深度研究](../biology-learning/reports/concept_reports/晚型人作息与力量训练_深度研究报告.md) | — |
 
-## 🎙️ Podcast Learning（24 篇）
+## 🎙️ Podcast Learning（25 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-09-14 | [易论AI Vol.1：AI最前沿的人已经不聊大模型了——李继刚×橘子×歸藏的四人谈（服务裹着能力/齿轮速度差/Agent+X/上下文是一辆车）](../podcast-learning/reports/2026-09-09_xiaoyuzhou-yilun-ai_frontier-no-llm.md) | — |
 | 2026-09-13 | [一本书看清"工作"的真相：竹竹暴风雪解读 × 鲍曼《工作、消费主义和新穷人》原书深读](../podcast-learning/reports/2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism.md) | — |
 | 2026-09-12 | [王坚回应凉子：AI 何时产生自主意识——5分钟里的三个论断（机器智能≠人工的人类智能 / 技术只拓展边界 / AI 的使命是减少资源消耗）](../podcast-learning/reports/2026-09-11_bilibili-liangzi-fangtanlu_wangjian.md) | — |
 | 2026-09-12 | [CLS同学：如果5%的房地产以旧换新出台，你会买新房吗？——三驾马车承压下的「房地产出冷宫」推演](../podcast-learning/reports/2026-09-12_bilibili-cls-tongxue_fangchan-yijiuhuanxin.md) | — |
