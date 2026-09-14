@@ -66,7 +66,13 @@
 - **成本预估**：~35 分钟/节（文本 ~8min + TTS ~25min）+ ~30 万 token/节；9 节全量 ≈ 5.5h 机器时间 + ~270 万 token。
 - **前置**：OpenMAIC dev server（`cd ../OpenMAIC && pnpm dev`）+ voxcpm-server 先起（配音必须生成时 enableTTS:true，事后无法补）。
 - **导出**：`EverAgent/scripts/export_openmaic_courses.py` 需扩第二个系列（当前 SERIES 硬编码 vLLM 关键词、输出 `vLLM课N_*`）——新增 AgentHarness 系列：关键词对**生成后的实际课程名**（教训：课程名优先于场景标题匹配）、输出 `AgentHarness课N_<id>.md` 落 `ai-learning/courses/`。每交付新课重跑导出。
-- **合集门户**：`OpenMAIC/public/portal.html`（vLLM 7 节合集页）改造为**双系列门户**（vLLM 区块 + AgentHarness 区块，继续学习按系列记忆）——方案待用户拍板（备选：独立 harness 门户页）。
+- **合集门户**：`OpenMAIC/public/portal.html` 已改造为**双系列门户**（2026-09-14 用户拍板「按推荐开工」）：vLLM 区块 + AgentHarness 区块，继续学习全局置顶（兼容旧 localStorage 键）；顺手修复了旧版所有卡片都标「第 1 节」的 bug。
+
+### 课程进度
+
+- [x] 课 1 · Agent Harness 入门：一个 turn 的一生 —— **已交付**（2026-09-14，课堂 `PSjnepyKmW`，8 场景 38 段配音 100% 覆盖，28 分钟生产；讲义 `courses/AgentHarness课1_PSjnepyKmW.md`）
+- [x] 课 2 · Agent Harness 三大设计哲学 —— **已交付**（2026-09-14，课堂 `Al0oZubX_R`，8 场景 40 段配音 100% 覆盖，29 分钟生产；讲义 `courses/AgentHarness课2_Al0oZubX_R.md`；课程名实为「三大设计哲学」，含「哲学」关键词正常命中第 2 节）
+- [ ] 课 3-7 · 等用户学完课 1+2 收反馈后批量生产（脚本 `../OpenMAIC/scripts-batch-harness-courses.sh` 现含课 1+2，批量时改写课 3-7 requirement 即可）
 
 ---
 
