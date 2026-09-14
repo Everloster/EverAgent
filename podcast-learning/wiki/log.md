@@ -184,3 +184,4 @@
 - 2026-09-12 | ingest | BV1dnbV6TEMy CLS同学房产以旧换新（15min31s）→ whisper large-v3+VAD 553段/5,586字 → 双源校正+政策锚点联网核实（十五五规划/恒大宣判/沪八条 [Web]）→ 8章 polished → 报告
 - 2026-09-12 | ingest | BV1ZuYm67EzG 王坚×凉子外滩大会问答（5min07s）→ opencli故障改B站API直取音频 → whisper 553→182段/1551字 → 6章polished → 报告（观点提取）→ 衍生 ai-learning 深度解析（两段式任务）
 - 2026-09-13 | ingest | BV1Nugw63E9a 竹竹暴风雪解读鲍曼《工作、消费主义和新穷人》上集（18m19s）→ opencli download（首次 Navigation rejected，重试通过）→ whisper large-v3+VAD 843段/6,261字（无官方字幕，语义级校验，19处修正+6处[?]）→ 双源学习：eacli tokenplan 搜得原书 2021 郭楠译本 PDF（166页，存 ~/workspace/books/ 仅本地不入库）→ 报告 [[2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism]]（视频×原书对照）+ entities/zhuzhu-baofengxue + concepts×3（work-ethic/consumer-society/new-poor-bauman）+ open-questions 3问
+- 2026-09-14 | ingest | 小宇宙易论AI Vol.1 四人谈（93min）→ whisper large-v3+VAD 2750段/24,997字 → 10章polished（skill→scale系统性校正，26处[?]）→ 报告+三实体页；PROFILE/MAP/open-questions 同步沉淀

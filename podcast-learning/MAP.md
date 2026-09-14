@@ -9,7 +9,7 @@
 
 | 主线 | 想覆盖 | 已覆盖（报告/wiki） | 缺口 |
 |------|--------|---------------------|------|
-| AI行业 | ✓ | Vol.29 王小川医疗 AI / 生命模型 / 非共识 AI 路线（2026-06-18）；**2026-07-17 屠龙之术 2026H1 行业观察（文艺复兴映射 / CAPEX 泡沫之辩 / Agent 元年，wiki: zhuang-minghao、renaissance-revaluation 等 5 概念）**；**2026-09-03 曾鸣产业史观（三阶段论 / AI 云公司=寡头+强监管 / 公司消亡 / 战略生成，wiki: zeng-ming、native-app-stage、strategy-generation、intelligence-flywheel）** | 持续关注；下半年四议题（ROI 指标 / 中美差距 / 世界模型共识 / 治理冲突）跟踪 |
+| AI行业 | ✓ | Vol.29 王小川医疗 AI / 生命模型 / 非共识 AI 路线（2026-06-18）；**2026-07-17 屠龙之术 2026H1 行业观察（文艺复兴映射 / CAPEX 泡沫之辩 / Agent 元年，wiki: zhuang-minghao、renaissance-revaluation 等 5 概念）**；**2026-09-03 曾鸣产业史观（三阶段论 / AI 云公司=寡头+强监管 / 公司消亡 / 战略生成，wiki: zeng-ming、native-app-stage、strategy-generation、intelligence-flywheel）**；**2026-09-09 易论AI Vol.1 四人谈（李继刚/橘子/歸藏：服务裹着能力·FDE/齿轮速度差/Agent+X 入口之争/上下文管理/缓存经济学，wiki: li-jigang 扩充、juzi-cola、guizang）** | 持续关注；下半年四议题（ROI 指标 / 中美差距 / 世界模型共识 / 治理冲突）跟踪 |
 | 商业 | ✓ | BV1NHJF6oE8m CLS 同学三年行业吃肉榜/衰落榜（2026-06-20）；**2026-07-07 屠龙博士创业方法论（非线性/定价锚定/人才洼地，wiki: tulong-boshi、nonlinear-history-jumps）**；**2026-09-12 CLS 房产以旧换新推演（政策三连[Web]/央地9:1/二手房二手车化，与 AI 主线 CAPEX 议题联动）** | 2026 行业更新；《Dataclysm》拆书；AI capex→中国出口传导链核验 |
 | 科技/访谈 | ✓ | Vol.30-32 三期（2026-06-21） | — |
 | 读书方法论 / 认知框架 | ✓ | **2026-07-09 明镜关于 F×X 公式 / 四种配速 / 人是滤器（首次）**；**2026-08-14 竹竹解读×鲍曼《工作、消费主义和新穷人》双源深读（工作伦理/消费者社会/新穷人，wiki: zhuzhu-baofengxue、work-ethic、consumer-society、new-poor-bauman）** | 待深化；竹竹领读系列（下集新穷人、乡土中国/生育制度等 35 集）可追踪 |
