@@ -42,7 +42,31 @@
 ## 实验环境备注
 
 - 三家均可本地跑：pi 用现有 GLM/Kimi coding plan key（pi-ai 原生支持 OpenAI 兼容 provider，顺手成为阶段 4 实操）；dsh 一条 `npx` 起 Web UI；codex 用官方 npm 包（账号/key 走用户家底，细节不落本仓）。
-- OpenMAIC 课驱动（vLLM 线演化出的模式）**不预设**：harness 主题代码可读性强于 vLLM，先看阶段 0/1 直读体感，需要时再议。
+
+## 课程载体：OpenMAIC（2026-09-14 增补，用户拍板「需要 openmaic 课程，这个效果好」）
+
+**vLLM 线「一阶段一循环」模式整体继承**：每阶段 = ①概念课开路（建直觉，到不了源码级——课是地图，码是地形）→ ②源码精读（对照课论断找代码证据标行号）→ ③阶段报告入 reports/。课与源码主线不互相替代。
+
+### 课程序列（骨架 9 节排定，逐批生产逐批收反馈）
+
+| 课 | 暂定课名（系列前缀「Agent Harness」） | 对应阶段 | 核心内容 | 预科存量 |
+|----|------|------|------|------|
+| 1 | Agent Harness 入门：一个 turn 的一生 | 0/1 开路 | harness 定义与边界（模型之外的脚手架）、turn 完整循环、四件套（prompt 组装/LLM 调用/工具执行/上下文写回） | 请求全链路报告（报文层已懂，课建 turn 级直觉） |
+| 2 | Agent Harness 三种哲学：巨石、插件与极简 | 0 | codex 安全工程巨石 / dsh everything-is-a-plugin / pi 极简内核，为什么三家都成立；取舍维度：安全边界放哪、扩展怎么做、复杂度预算 | 三大流派报告、ChatGPT Work 七层映射 |
+| 3 | Agent Harness 主循环解剖 | 1 | turn 状态机、流式处理、错误重试、终止条件；pi 一个文件 vs codex/core 的反差 | — |
+| 4 | Agent Harness 工具执行与沙箱 | 2 | tool schema/调用解析/审批链；execpolicy、多平台沙箱、pi「不做权限」的外置哲学——三家里反差最大的一课 | — |
+| 5 | Agent Harness 上下文工程 | 3 | compaction 触发与策略、context 组装、session 持久化与重放 | 存量「四类上下文治理」论断（请求全链路报告） |
+| 6 | Agent Harness 统一 LLM API | 4 | provider 抽象、模型路由、流式解析、OpenAI 兼容适配；可嵌自家 plan 家底实操 | 模型 plan 家底速查 |
+| 7 | Agent Harness 插件化与 MCP | 5 | everything-is-a-plugin vs extensions 自扩展 vs codex 插件族 | ChatGPT Work 报告生态层 |
+| 8 | Agent Harness 外壳与协议（点菜） | 6 | TUI/Web/Server 三形态、app-server/CBOR 协议设计 | — |
+| 9 | Agent Harness 封顶：同一个 turn，三种哲学 | 验收 | 三图流对照 + 取舍总表 + 「哪层会被模型吃掉」（回扣 Bitter Lesson） | Bitter Lesson 双稿 |
+
+- **生产节奏（仿 vLLM 实际演化）**：第一批课 1+2 单做（验证 harness 主题的课程手感）→ 收反馈 → 课 3-7 批量（约 3h 机器时间）→ 课 8 点菜、课 9 等验收。
+- **配方照抄制度化版**：slide+quiz only（禁交互/模拟/3D 重型场景）、每页≤5 条要点每条一句话宁少勿多、场景 8、`enableTTS:true`、glm-5.3 主力 + flash 分流轻活、本地 VoxCPM 48kHz 配音。
+- **成本预估**：~35 分钟/节（文本 ~8min + TTS ~25min）+ ~30 万 token/节；9 节全量 ≈ 5.5h 机器时间 + ~270 万 token。
+- **前置**：OpenMAIC dev server（`cd ../OpenMAIC && pnpm dev`）+ voxcpm-server 先起（配音必须生成时 enableTTS:true，事后无法补）。
+- **导出**：`EverAgent/scripts/export_openmaic_courses.py` 需扩第二个系列（当前 SERIES 硬编码 vLLM 关键词、输出 `vLLM课N_*`）——新增 AgentHarness 系列：关键词对**生成后的实际课程名**（教训：课程名优先于场景标题匹配）、输出 `AgentHarness课N_<id>.md` 落 `ai-learning/courses/`。每交付新课重跑导出。
+- **合集门户**：`OpenMAIC/public/portal.html`（vLLM 7 节合集页）改造为**双系列门户**（vLLM 区块 + AgentHarness 区块，继续学习按系列记忆）——方案待用户拍板（备选：独立 harness 门户页）。
 
 ---
 
