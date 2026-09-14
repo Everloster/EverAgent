@@ -15,8 +15,25 @@ ROOT = Path(__file__).parent.parent
 COURSES_DIR = Path("../OpenMAIC/data/classrooms").resolve()
 OUT_DIR = ROOT / "ai-learning" / "courses"
 
-SERIES = [(2, "调度"), (3, "请求的一生"), (4, "深潜"), (5, "执行层"),
-          (6, "采样"), (7, "投机")]
+SERIES_CONFIG = {
+    "harness": {
+        "match": "harness",
+        "prefix": "AgentHarness课",
+        "title": "AgentHarness 课",
+        # 关键词对生成后的实际课程名；课程名优先于场景标题（场景会回顾上节而误中）
+        "no_rules": [(1, "turn"), (2, "哲学"), (3, "主循环"), (4, "沙箱"),
+                     (5, "上下文"), (6, "LLM API"), (7, "MCP"), (8, "外壳"), (9, "封顶")],
+        "default_no": 1,
+    },
+    "vllm": {
+        "match": "vllm",
+        "prefix": "vLLM课",
+        "title": "vLLM 课",
+        "no_rules": [(2, "调度"), (3, "请求的一生"), (4, "深潜"), (5, "执行层"),
+                     (6, "采样"), (7, "投机")],
+        "default_no": 1,
+    },
+}
 
 
 def parse_time(v):
@@ -31,15 +48,22 @@ def parse_time(v):
         return 0
 
 
-def series_no(name, titles):
-    # 课程名优先（场景标题可能回顾上节而误中，如「按调度 interval 吐字」）
-    for no, key in SERIES:
+def detect_series(name):
+    n = name.lower()
+    for cfg in SERIES_CONFIG.values():
+        if cfg["match"] in n:
+            return cfg
+    return None
+
+
+def series_no(cfg, name, titles):
+    for no, key in cfg["no_rules"]:
         if key in name:
             return no
-    for no, key in SERIES:
+    for no, key in cfg["no_rules"]:
         if any(key in t for t in titles):
             return no
-    return 1  # 首节（入门）按默认
+    return cfg["default_no"]
 
 
 def export(course_file: Path, force=False) -> Path | None:
@@ -49,16 +73,20 @@ def export(course_file: Path, force=False) -> Path | None:
     name = stage.get("name") or cid
     scenes = d.get("scenes", [])
     titles = [s.get("title", "") for s in scenes]
-    no = series_no(name, titles)
+    cfg = detect_series(name)
+    if cfg is None:
+        print(f"  [skip] {cid} 「{name}」不属于任何已配置系列", file=sys.stderr)
+        return None
+    no = series_no(cfg, name, titles)
     date = time.strftime("%Y-%m-%d", time.localtime(parse_time(d.get("createdAt"))))
 
-    out = OUT_DIR / f"vLLM课{no}_{cid}.md"
+    out = OUT_DIR / f"{cfg['prefix']}{no}_{cid}.md"
     if out.exists() and not force:
         return None
 
     lines = [
         "---",
-        f'title: "vLLM 课 {no}：{name}"',
+        f'title: "{cfg["title"]} {no}：{name}"',
         'domain: "ai-learning"',
         'content_type: "course_notes"',
         f'classroom_id: "{cid}"',
@@ -67,7 +95,7 @@ def export(course_file: Path, force=False) -> Path | None:
         f'created_on: "{date}"',
         "---",
         "",
-        f"# vLLM 课 {no}：{name}",
+        f"# {cfg['title']} {no}：{name}",
         "",
         f"> OpenMAIC 互动课堂讲义导出（{date}，共 {len(scenes)} 场景）。"
         f"配音频互动版：http://localhost:3000/classroom/{cid}",
