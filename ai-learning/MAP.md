@@ -25,6 +25,7 @@
 - **活跃线（2026-07-20 对话确认）**：
   - Agent/Harness 工程线（进化 harness 过拟合与跨家族迁移、Bitter Lesson 镰刀、请求链路 compaction/caching；**三仓 harness 源码级对照长线（codex/deepseek-harness/pi）——2026-09-14 拍板，七阶段+验收，计划见 [roadmap/AgentHarness_三仓源码学习计划_20260914.md](./roadmap/AgentHarness_三仓源码学习计划_20260914.md)**）
   - 模型效率线（MoE 专家结构、投机解码；**vLLM 推理引擎源码级长线**——2026-08-21 拍板，七阶段全量+GPU 实操+深度专业体，计划见 [roadmap/vLLM_源码级学习计划_20260821.md](./roadmap/vLLM_源码级学习计划_20260821.md)）
+  - 字节级建模/蒸馏线（paper 47 起：字节级蒸馏突破 Token 天花板——转换方法、缩放律外推可信度、中文场景空白；**paper 47《Breaking the Token Ceiling》精读（09-15，wiki: byte_level_distillation）**）
   - AI 行业与认知生态（Khanmigo RCT 追踪、Anthropic 人才信号回访）
 - 可解释性/意识线（J-space 残留 3 问）：暂缓，不主动提议
 - 注意：wiki/open-questions.md 是历史快照 ≠ 当前兴趣，提议前先与用户确认
@@ -32,6 +33,7 @@
 ---
 
 ## 更新日志
+- `2026-09-15`：模型效率线新增字节级建模/蒸馏方向——paper 47《Breaking the Token Ceiling》（UW × Meta FAIR）精读（深度专业体）：Marginalize-It/End-Of-Token 两种单次前向转换、两阶段缩放律拟合、外推天花板 52.4 vs 48.4；批判重点=超越全为外推（实测 44.6 仍落后）、验证集敏感（追平点 ×27）、+30.94% 开销的 confound。三缺口汇入 open-questions（天花板折现 / <eot> 边界监督 / 字节×on-policy 组合）。
 
 - 2026-09-14：**Agent/Harness 工程线新增「三仓 harness 源码级对照长线」**（用户拍板"三家源码学习实践，类似 vllm 学习计划"）。对象固定：codex（Rust 巨石，OpenAI）`../codex` @ 5b1d656018 / deepseek-harness（TS everything-is-a-plugin，DeepSeek）`../deepseek-harness` @ c291e7961a / pi（TS 极简内核，badlogic）`../pi` @ 71dca87（本次新 clone）。一根主线「一个 agent turn 的一生」×三家对照，七阶段+验收封顶《同一个 turn，三种哲学》；存量（三大流派/请求全链路/ChatGPT Work/Bitter Lesson 双稿）列为预科。计划文件落 `roadmap/AgentHarness_三仓源码学习计划_20260914.md`；每完成一阶段回本文件回填覆盖状态。
 - 2026-09-12：新增覆盖「机器意识/AI 术语史/AI 能耗三角」线（王坚外滩大会视频驱动，两段式任务 Phase2）；报告：knowledge_reports/王坚三分智能框架与机器意识_深度解析_20260912。

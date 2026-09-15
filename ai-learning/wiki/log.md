@@ -298,3 +298,11 @@
 - 新增 concept：[[concepts/anthropic_econ_scenarios]]；index.md 已收录
 - open-questions 汇入 3 问（ε 代理指标 / 参数更新 vs 框架更新 / 个人版 ψ 对冲）
 - 缝合：CAPEX 泡沫之辩（podcast-learning 2026-07-17）、Intelligence Curse（2026-07-30）、曾鸣三阶段论（podcast-learning 2026-09-03）
+
+## [2026-09-15] ingest | 论文精读 paper 47（字节级蒸馏）
+- **源**：arXiv 2609.12303《Breaking the Token Ceiling: Distilling Smaller, Stronger Byte Models》（UW × Meta FAIR，52 页）+ 量子位转述文（eacli web.read 拉取；任务经 eacli 派发）
+- 报告：reports/paper_analyses/47_byte_distillation_2026.md（深度专业体）
+- 要点：两种单次前向转换（Marginalize-It 近似 / End-Of-Token 精确，<eot> +30.94% 算力）；1.28B 层参数三学生 × 六组（tokenization×objective）；两阶段缩放律（compute→BPB→下游）；外推天花板 52.4/50.5/48.4；数据省 6.35×、存储省 5.19×
+- 批判弹药：超越全为外推（实测 44.6% 仍落后 Llama-3.2-1B/Gemma-2B）；验证集 2 追平点 ×27；8e-3 时 Token 蒸馏输监督；原文瑕疵清单（R² 打架/0.462 vs 0.463/obs 矛盾/α 未报告）
+- 新增 concept：[[concepts/byte_level_distillation]]（index 已收录，knowledge_distillation 互链）
+- open-questions 汇入 3 问（天花板折现 / <eot> 边界监督 / 字节×on-policy）

@@ -53,3 +53,7 @@ q_i = exp(z_i / T) / Σ_j exp(z_j / T)
 - [Distilling the Knowledge in a Neural Network](../../reports/paper_analyses/42_distilling_2015.md)
 - [DINOv2 论文精读](../../reports/paper_analyses/35_dinov2_2023.md)
 - [EVA-02 论文精读](../../reports/paper_analyses/41_eva02_2023.md)
+
+## 相关概念
+
+- [[byte_level_distillation]] — 字节级蒸馏（2026）：教师 token 分布单次前向转字节级，免 top-k 截断、存储 1/5（paper 47）
