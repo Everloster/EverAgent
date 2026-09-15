@@ -185,3 +185,14 @@
 - 2026-09-12 | ingest | BV1ZuYm67EzG 王坚×凉子外滩大会问答（5min07s）→ opencli故障改B站API直取音频 → whisper 553→182段/1551字 → 6章polished → 报告（观点提取）→ 衍生 ai-learning 深度解析（两段式任务）
 - 2026-09-13 | ingest | BV1Nugw63E9a 竹竹暴风雪解读鲍曼《工作、消费主义和新穷人》上集（18m19s）→ opencli download（首次 Navigation rejected，重试通过）→ whisper large-v3+VAD 843段/6,261字（无官方字幕，语义级校验，19处修正+6处[?]）→ 双源学习：eacli tokenplan 搜得原书 2021 郭楠译本 PDF（166页，存 ~/workspace/books/ 仅本地不入库）→ 报告 [[2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism]]（视频×原书对照）+ entities/zhuzhu-baofengxue + concepts×3（work-ethic/consumer-society/new-poor-bauman）+ open-questions 3问
 - 2026-09-14 | ingest | 小宇宙易论AI Vol.1 四人谈（93min）→ whisper large-v3+VAD 2750段/24,997字 → 10章polished（skill→scale系统性校正，26处[?]）→ 报告+三实体页；PROFILE/MAP/open-questions 同步沉淀
+
+## [2026-09-15] ingest | bilibili
+- 来源：B 站 · 所长林超《AI泡沫，2027年爆破？》（2026-07-24 发布，BV1NKge6YEyj）＝小宇宙《涌现 EmergenceHK×Bill It Up》S01E01 同源（时长 2303/2302s 互证）
+- 形式：**三人对谈**（所长林超 × Bill Qian[前 Binance Labs 负责人、Phoenix/Cypher Capital CIO，口播"前百亿美金科技基金管理人"] + 蒋涛[CSDN 创始人]）
+- 时长：38m23s（2303s）· 转录：1,880 段 / **12,795 汉字**（whisper.cpp large-v3 Metal --vad）/ 语速 333 字/min · 音频 36.6MiB
+- 报告：[[2026-07-24_bilibili-suochang-linchao_ai-bubble-2027]]
+- pipeline：yt-dlp 直下 → whisper → 4 块并行润色（无官方字幕/无章节时间轴，校验源=简介+eacli 外部核验；16 处 [?] 保守）
+- 内容：深V 软着陆 vs 2027H2 之辩 / [[concepts/open-source-price-anchoring|开源价格锚定]]（蒋涛新概念页）/ 四大泡沫论检视（剪刀差=7000亿 CAPEX vs 1000亿收入）/ 7 万亿 AI 债（SemiAnalysis）/ 调度层价值（27B+harness 20→70 分）/ B 端决战与"拿奖学金学习"
+- 互链：[[concepts/ai-capex-bubble-debate]] 追加三视角互补段（庄明浩供给侧/Bill 金融侧/蒋涛需求侧）
+- 外部核验：Anthropic ≈9650 亿美元估值（嘉宾"1万亿"四舍五入）✓；软银 400 亿投 OpenAI ✓（现押注超 600 亿）；OpenAI/Anthropic/SpaceX 冲 IPO ✓
+- **经验两条**：① **B 站 412 拦截已消失**——yt-dlp 直下成功（AGENTS.md"B站链接例外：yt-dlp 被 412 拦截"已过时，opencli download 仅作 fallback）；② opencli bilibili summary/download 依赖浏览器扩展在线，扩展不在线时 Navigation rejected，video/subtitle 走 API 不受影响

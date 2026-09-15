@@ -12,6 +12,7 @@
 
 ### AI 行业 / 宏观观察
 
+- [[2026-07-24_bilibili-suochang-linchao_ai-bubble-2027|所长林超《AI泡沫，2027年爆破？》：开源价格锚定、巨头 IPO 考验与七万亿债]]（episode_summary · 发布 2026-07-24，归档 2026-09-15）— 涌现×Bill It Up S01E01 视频版，38m23s 三人对谈（Bill Qian+蒋涛），深V 软着陆 vs 2027H2 / 开源价格锚定 / 四大泡沫论检视 / 调度层价值；与 CAPEX 泡沫之辩三视角互补
 - [[2026-09-03_xiaoyuzhou-zhangxiaojun_zengming|153. 和曾鸣聊产业史观：残酷的真相、会消亡的公司、优秀≠卓越]]（episode_summary · 2026-09-03）— 小宇宙「张小珺Jùn」对谈曾鸣，2h34m，AI 产业化三阶段论 / 模型公司=AI 云公司（寡头+强监管）/ 公司消亡 / 战略生成 / 巨头审判
 - [[2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review|重估一切，文艺复兴——2026H1 AI行业观察]]（episode_summary · 2026-07-17）— 小宇宙「屠龙之术」庄明浩单口，54m37s，CAPEX 泡沫之辩 / Agent 元年 / 中美双极 / 第四支柱
 
@@ -159,6 +160,10 @@
 
 - [[concepts/nonlinear-history-jumps|非线性历史跳跃]] — 屠龙博士的历史观/创业观
 - [[concepts/dawn-phenomenon|黎明现象]] — 晨起血糖升高的生理机制（早餐议题）
+
+### 来自 2026-07-24 涌现对谈（AI 泡沫 S01E01）
+
+- [[concepts/open-source-price-anchoring|开源价格锚定]] — 蒋涛：能力逼近 90-95% 时中国把价格锚在 1/10，闭源收入曲线被掐死
 
 ### 来自 2026-07-17 屠龙之术 2026H1 行业观察
 

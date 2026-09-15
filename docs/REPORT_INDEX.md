@@ -7,6 +7,7 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-09-15 | [所长林超《AI泡沫，2027年爆破？》：开源价格锚定、巨头 IPO 考验与七万亿债](../podcast-learning/reports/2026-07-24_bilibili-suochang-linchao_ai-bubble-2027.md) | podcast-learning |
 | 2026-09-15 | [字节级蒸馏突破 Token 天花板：Marginalize-It 与 End-Of-Token 的技术全景与批判性评估](../ai-learning/reports/paper_analyses/47_byte_distillation_2026.md) | ai-learning |
 | 2026-09-14 | [易论AI Vol.1：AI最前沿的人已经不聊大模型了——李继刚×橘子×歸藏的四人谈（服务裹着能力/齿轮速度差/Agent+X/上下文是一辆车）](../podcast-learning/reports/2026-09-09_xiaoyuzhou-yilun-ai_frontier-no-llm.md) | podcast-learning |
 | 2026-09-13 | [一本书看清"工作"的真相：竹竹暴风雪解读 × 鲍曼《工作、消费主义和新穷人》原书深读](../podcast-learning/reports/2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism.md) | podcast-learning |
@@ -31,7 +32,6 @@
 | 2026-08-31 | [ChatGPT Work 能力面逆向解析：一个商业化 Agent Harness 的活样本，兼谈致命三重](../ai-learning/reports/knowledge_reports/ChatGPT_Work_能力面与Harness样本_深度解析_20260831.md) | ai-learning |
 | 2026-08-31 | [AI 行业日报 · 2026-08-31](../web-surfing/reports/ai-news-daily-2026-08-31.md) | web-surfing |
 | 2026-08-28 | [惠州租房建议报告——两位老人 2026 年 9/10 月入住版（1–3 个月短住体验）](../web-surfing/reports/huizhou-rental-guide-2026-09.md) | web-surfing |
-| 2026-08-28 | [AI 行业日报 · 2026-08-28](../web-surfing/reports/ai-news-daily-2026-08-28.md) | web-surfing |
 
 ## 🤖 AI Learning（102 篇）
 
@@ -249,10 +249,11 @@
 | 2026-03-26 | [Physiology of Growth Hormone Secretion during Sleep (1996) 精读](../biology-learning/reports/paper_analyses/P09_gh_sleep_physiology_1996.md) | — |
 | 2026-03-23 | [晚型人作息与力量训练深度研究](../biology-learning/reports/concept_reports/晚型人作息与力量训练_深度研究报告.md) | — |
 
-## 🎙️ Podcast Learning（25 篇）
+## 🎙️ Podcast Learning（27 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-09-15 | [所长林超《AI泡沫，2027年爆破？》：开源价格锚定、巨头 IPO 考验与七万亿债](../podcast-learning/reports/2026-07-24_bilibili-suochang-linchao_ai-bubble-2027.md) | — |
 | 2026-09-14 | [易论AI Vol.1：AI最前沿的人已经不聊大模型了——李继刚×橘子×歸藏的四人谈（服务裹着能力/齿轮速度差/Agent+X/上下文是一辆车）](../podcast-learning/reports/2026-09-09_xiaoyuzhou-yilun-ai_frontier-no-llm.md) | — |
 | 2026-09-13 | [一本书看清"工作"的真相：竹竹暴风雪解读 × 鲍曼《工作、消费主义和新穷人》原书深读](../podcast-learning/reports/2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism.md) | — |
 | 2026-09-12 | [王坚回应凉子：AI 何时产生自主意识——5分钟里的三个论断（机器智能≠人工的人类智能 / 技术只拓展边界 / AI 的使命是减少资源消耗）](../podcast-learning/reports/2026-09-11_bilibili-liangzi-fangtanlu_wangjian.md) | — |
@@ -270,6 +271,7 @@
 | 2026-08-04 | [晚点聊 177 详解Kimi K3 — shownotes](../podcast-learning/reports/transcripts/2026-08-04_rss-wandian-latetalk_kimi-k3.shownotes.md) | — |
 | 2026-07-31 | [对话 Evoken 陈冕：在模型不断吞噬应用价值的时代，一家独立 AI 应用公司如何 survive](../podcast-learning/reports/2026-07-30_xiaoyuzhou-wandian-latetalk_chenmian.md) | — |
 | 2026-07-29 | [为什么 FDE 在 AI 时代这么火？因为差距不在模型，在业务细节](../podcast-learning/reports/2026-07-29_bilibili-kedaibiao-lizheng_jove-fde.md) | — |
+| 2026-07-24 | [涌现EmergenceHK×Bill It Up S01E01《AI泡沫，2027年爆破？》— shownotes（B站视频版同源）](../podcast-learning/reports/transcripts/2026-07-24_bilibili-suochang-linchao_ai-bubble-2027.shownotes.md) | — |
 | 2026-07-20 | [人到中年仨账户：现金流、肌肉、睡眠（面基 · 老钱单口）](../podcast-learning/reports/2026-07-13_xiaoyuzhou-mingjing-diandian_midlife-accounts.md) | — |
 | 2026-07-19 | [重估一切，文艺复兴——2026H1 AI行业观察（屠龙之术 · 庄明浩单口）](../podcast-learning/reports/2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review.md) | — |
 | 2026-07-18 | [读书：4种配速，取景框，人是滤器，冲刷神经网络 —— 明镜与李继刚关于读书方法论的深度对话](../podcast-learning/reports/2026-07-09_xiaoyuzhou-mingjing-diandian_lijigang.md) | — |
