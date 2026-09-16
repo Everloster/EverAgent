@@ -14,7 +14,7 @@
 | 大语言模型与NLP | ✓ | 待统计 | 待补 |
 | 前沿专题(Agent/推理/多模态) | ✓ | Agent Harness 三大流派、自进化路径、AI 编码 Agent 终端；**进化式 harness 一手实证（paper 46）**；**Harness 请求全链路（报文级 function calling/tool use + agentic loop）**；**ChatGPT Work 能力面逆向解析（商业化 harness 活样本 + 七层映射表，08-31）** | 进化循环的过拟合防护、reward 消融、跨家族迁移机制待补；Work 子 agent 上下文传递、Ultra 档委派机制、auto-review 抗注入实证待补 |
 | 可解释性 & AI 安全 | ✓ | J-space/J-lens 全局工作空间（paper 45） | 点火实验、机制可解释性系统方法（SAE 等）待补 |
-| **AI 行业与商业观察** | ✓ | 伪智力繁荣评论批判（07-13）、Anthropic 人才信号核实（07-14）、Evoken 陈冕访谈精读（07-29）、《Intelligence Curse》智能诅咒精读（07-30）、《AI应用创业生死录》Evoken三产品商业分析（07-31）、**《中国AI创业与一级市场故事线2022底-2026》从模型信仰到应用求生——三幕迁徙+全融资轮次表+机构视角(07-31)、**Anthropic《Economic Scenarios for Transformative AI》经济情景模型精读（09-11，wiki: anthropic_econ_scenarios）** | 「应用时代」信号追踪（2027-01）、薄毛利打穿点建模、judgment护城河证伪信号、国资接棒是续命还是改写规则、应用层估值洼地会否修复、IPO后二级市场重估、**经济情景模型 2027 判别点回访（modest 是否被排除）** |
+| **AI 行业与商业观察** | ✓ | 伪智力繁荣评论批判（07-13）、Anthropic 人才信号核实（07-14）、Evoken 陈冕访谈精读（07-29）、《Intelligence Curse》智能诅咒精读（07-30）、《AI应用创业生死录》Evoken三产品商业分析（07-31）、**《中国AI创业与一级市场故事线2022底-2026》从模型信仰到应用求生——三幕迁徙+全融资轮次表+机构视角(07-31)、**Anthropic《Economic Scenarios for Transformative AI》经济情景模型精读（09-11，wiki: anthropic_econ_scenarios）、**DeepSeek 算子工程师自白《我不得不把才华埋葬在昨天》精读与延伸研究（09-16，wiki: craft_displacement）** | 「应用时代」信号追踪（2027-01）、薄毛利打穿点建模、judgment护城河证伪信号、国资接棒是续命还是改写规则、应用层估值洼地会否修复、IPO后二级市场重估、**经济情景模型 2027 判别点回访（modest 是否被排除）**、**"AI 写算子 ≥ 刘胜与"2027 年中回访** |
 
 ---
 
@@ -35,6 +35,7 @@
 ## 更新日志
 - `2026-09-15`：模型效率线新增字节级建模/蒸馏方向——paper 47《Breaking the Token Ceiling》（UW × Meta FAIR）精读（深度专业体）：Marginalize-It/End-Of-Token 两种单次前向转换、两阶段缩放律拟合、外推天花板 52.4 vs 48.4；批判重点=超越全为外推（实测 44.6 仍落后）、验证集敏感（追平点 ×27）、+30.94% 开销的 confound。三缺口汇入 open-questions（天花板折现 / <eot> 边界监督 / 字节×on-policy 组合）。
 
+- 2026-09-16：行业观察线新增《〈我不得不把才华埋葬在昨天〉精读与延伸研究》（Jabe 微信文章派单，Razer kimi 执行）。DeepSeek 算子工程师刘胜与（intlsy，身份已多源核实：北大 HPC 成员页/GitHub/媒体点名）在 v4.1 Flash（2026-09-10 发布，552B MoE，high-rank MQA head dim=512 + CSA indexer，架构细节与作者自述自洽）发布后的"转业不失业"自白。增量：① 逐节标注经验/判断/立场三类型；② 织毛衣比喻解剖——捕捉"技能与意趣可分离"，系统性低估三件事（手织毛衣非零边际成本而算子是、比喻机器静止而 AI 递归加速、心流可重建）；③ 谱系对话三路——SBTC 失灵处由 Acemoglu-Restrepo 任务模型接管（转业=displacement+reinstatement 个人版）、心流理论下"被夺走热爱"=挑战-技能匹配系统被拆散、软件工程实证盘点（Bastani PNAS 2025 撤 AI −17%、METR −19% vs Peng +55.8% 的方法学分歧、GitClear/Stanford/DORA 支持"屎山"方向但量级无证据）；④ 三担忧实证分级（①最强②中等③纯直觉）+ 开源普惠论证五前提检验。新建 wiki 概念页 craft_displacement；三新问汇入 open-questions（机甲窗口期锚点、汇编式 vs 永存式判别设计、2027 年中回访）。
 - 2026-09-14：**Agent/Harness 工程线新增「三仓 harness 源码级对照长线」**（用户拍板"三家源码学习实践，类似 vllm 学习计划"）。对象固定：codex（Rust 巨石，OpenAI）`../codex` @ 5b1d656018 / deepseek-harness（TS everything-is-a-plugin，DeepSeek）`../deepseek-harness` @ c291e7961a / pi（TS 极简内核，badlogic）`../pi` @ 71dca87（本次新 clone）。一根主线「一个 agent turn 的一生」×三家对照，七阶段+验收封顶《同一个 turn，三种哲学》；存量（三大流派/请求全链路/ChatGPT Work/Bitter Lesson 双稿）列为预科。计划文件落 `roadmap/AgentHarness_三仓源码学习计划_20260914.md`；每完成一阶段回本文件回填覆盖状态。
 - 2026-09-12：新增覆盖「机器意识/AI 术语史/AI 能耗三角」线（王坚外滩大会视频驱动，两段式任务 Phase2）；报告：knowledge_reports/王坚三分智能框架与机器意识_深度解析_20260912。
 
