@@ -7,7 +7,11 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
-| 2026-09-16 | [惠州租房建议报告——两位老人 2026 年 9/10 月入住版（1–3 个月短住体验）](../web-surfing/reports/huizhou-rental-guide-2026-09.md) | web-surfing |
+| 2026-09-18 | [Jev 与 System One Models — TypeSafe AI「决策模型」新范式全景研究](../ai-learning/reports/knowledge_reports/Jev与System-One-Models_TypeSafe决策模型范式研究_20260918.md) | ai-learning |
+| 2026-09-18 | [AI 行业日报 · 2026-09-18](../web-surfing/reports/ai-news-daily-2026-09-18.md) | web-surfing |
+| 2026-09-17 | [果蝇全脑连接组开源与「赛博果蝇」生态 — 神经科学里程碑的爆发与祛魅](../biology-learning/reports/concept_reports/果蝇全脑连接组与赛博果蝇生态_深度研究_20260917.md) | biology-learning |
+| 2026-09-17 | [小米 MiMo-V2.6 公开直播 RL 训练 — RL Scaling 三维度体系研究](../ai-learning/reports/knowledge_reports/MiMo-V2.6公开RL训练直播_RL-Scaling三维度体系研究_20260917.md) | ai-learning |
+| 2026-09-17 | [AI 行业日报 · 2026-09-17](../web-surfing/reports/ai-news-daily-2026-09-17.md) | web-surfing |
 | 2026-09-16 | [《我不得不把才华埋葬在昨天》精读与延伸研究 — DeepSeek 算子工程师自白中的 AI 时代手艺人处境](../ai-learning/reports/knowledge_reports/才华埋葬在昨天_DeepSeek算子工程师自白精读与延伸研究_20260916.md) | ai-learning |
 | 2026-09-16 | [AI 行业日报 · 2026-09-16](../web-surfing/reports/ai-news-daily-2026-09-16.md) | web-surfing |
 | 2026-09-15 | [所长林超《AI泡沫，2027年爆破？》：开源价格锚定、巨头 IPO 考验与七万亿债](../podcast-learning/reports/2026-07-24_bilibili-suochang-linchao_ai-bubble-2027.md) | podcast-learning |
@@ -28,15 +32,13 @@
 | 2026-09-08 | [AI 行业日报 · 2026-09-08](../web-surfing/reports/ai-news-daily-2026-09-08.md) | web-surfing |
 | 2026-09-04 | [AI 行业日报 · 2026-09-04](../web-surfing/reports/ai-news-daily-2026-09-04.md) | web-surfing |
 | 2026-09-03 | [AI 行业日报 · 2026-09-03](../web-surfing/reports/ai-news-daily-2026-09-03.md) | web-surfing |
-| 2026-09-02 | [晚点聊177｜详解 Kimi K3：体感、推理系统工程、开源大辩论与估值冲击](../podcast-learning/reports/2026-08-04_rss-wandian-latetalk_kimi-k3.md) | podcast-learning |
-| 2026-09-02 | [张小珺152｜孙宇涛领读 Kimi K3 技术报告：三维 scaling、注意力谱系与 infra co-design](../podcast-learning/reports/2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report.md) | podcast-learning |
-| 2026-09-02 | [Kimi K3 一鱼两吃：张小珺152 × 晚点聊177 对照精读](../podcast-learning/reports/2026-09-02_multi_kimi-k3-dueling-reads.md) | podcast-learning |
-| 2026-09-02 | [AI 行业日报 · 2026-09-02](../web-surfing/reports/ai-news-daily-2026-09-02.md) | web-surfing |
 
-## 🤖 AI Learning（103 篇）
+## 🤖 AI Learning（105 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-09-18 | [Jev 与 System One Models — TypeSafe AI「决策模型」新范式全景研究](../ai-learning/reports/knowledge_reports/Jev与System-One-Models_TypeSafe决策模型范式研究_20260918.md) | — |
+| 2026-09-17 | [小米 MiMo-V2.6 公开直播 RL 训练 — RL Scaling 三维度体系研究](../ai-learning/reports/knowledge_reports/MiMo-V2.6公开RL训练直播_RL-Scaling三维度体系研究_20260917.md) | — |
 | 2026-09-16 | [《我不得不把才华埋葬在昨天》精读与延伸研究 — DeepSeek 算子工程师自白中的 AI 时代手艺人处境](../ai-learning/reports/knowledge_reports/才华埋葬在昨天_DeepSeek算子工程师自白精读与延伸研究_20260916.md) | — |
 | 2026-09-15 | [字节级蒸馏突破 Token 天花板：Marginalize-It 与 End-Of-Token 的技术全景与批判性评估](../ai-learning/reports/paper_analyses/47_byte_distillation_2026.md) | — |
 | 2026-09-12 | [王坚的三分智能框架与机器意识：一个工程院士的「消解式回答」经得起检验吗？](../ai-learning/reports/knowledge_reports/王坚三分智能框架与机器意识_深度解析_20260912.md) | — |
@@ -228,10 +230,11 @@
 | 2026-03-24 | [Miller 魔力数字七 (1956) 精读](../psychology-learning/reports/paper_analyses/01_miller_magical_number_seven_1956.md) | — |
 | 2026-03-24 | [Milgram 服从实验 (1963) 精读](../psychology-learning/reports/paper_analyses/02_milgram_obedience_1963.md) | — |
 
-## 🧬 Biology Learning（17 篇）
+## 🧬 Biology Learning（18 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-09-17 | [果蝇全脑连接组开源与「赛博果蝇」生态 — 神经科学里程碑的爆发与祛魅](../biology-learning/reports/concept_reports/果蝇全脑连接组与赛博果蝇生态_深度研究_20260917.md) | — |
 | 2026-06-25 | [限时进食（TRE）与代谢健康：8/16 到底有没有用、对谁有用](../biology-learning/reports/concept_reports/限时进食TRE与代谢健康_20260625.md) | — |
 | 2026-06-21 | [蓝光与褪黑素的光生物学：LED / 屏幕 / 夜间照明的家庭决策](../biology-learning/reports/concept_reports/蓝光与褪黑素的光生物学_20260621.md) | — |
 | 2026-05-05 | [女童月经初潮提前与中枢性性早熟：国内临床经验、国际诊疗进展与家庭决策指南](../biology-learning/reports/concept_reports/女童初潮提前与中枢性性早熟_深度研究报告.md) | — |
@@ -282,11 +285,12 @@
 | 2026-06-20 | [三年行业吃肉榜/爆亏榜大合集（2023-2025）：谁在偷偷赚钱，谁在快速衰落](../podcast-learning/reports/2026-06-20_bilibili-cls-tongxue_hangye-bangdan.md) | — |
 | 2026-06-18 | [Vol.29 对话王小川：造医生，战豆包，与无尽的 AI 非共识](../podcast-learning/reports/2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan.md) | — |
 
-## 🏄 Web Surfing（21 篇）
+## 🏄 Web Surfing（23 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
-| 2026-09-16 | [惠州租房建议报告——两位老人 2026 年 9/10 月入住版（1–3 个月短住体验）](../web-surfing/reports/huizhou-rental-guide-2026-09.md) | — |
+| 2026-09-18 | [AI 行业日报 · 2026-09-18](../web-surfing/reports/ai-news-daily-2026-09-18.md) | — |
+| 2026-09-17 | [AI 行业日报 · 2026-09-17](../web-surfing/reports/ai-news-daily-2026-09-17.md) | — |
 | 2026-09-16 | [AI 行业日报 · 2026-09-16](../web-surfing/reports/ai-news-daily-2026-09-16.md) | — |
 | 2026-09-14 | [AI 行业日报 · 2026-09-14](../web-surfing/reports/ai-news-daily-2026-09-14.md) | — |
 | 2026-09-11 | [AI 行业日报 · 2026-09-11](../web-surfing/reports/ai-news-daily-2026-09-11.md) | — |
@@ -298,6 +302,7 @@
 | 2026-09-02 | [AI 行业日报 · 2026-09-02](../web-surfing/reports/ai-news-daily-2026-09-02.md) | — |
 | 2026-09-01 | [AI 行业日报 · 2026-09-01](../web-surfing/reports/ai-news-daily-2026-09-01.md) | — |
 | 2026-08-31 | [AI 行业日报 · 2026-08-31](../web-surfing/reports/ai-news-daily-2026-08-31.md) | — |
+| 2026-08-28 | [惠州租房建议报告——两位老人 2026 年 9/10 月入住版（1–3 个月短住体验）](../web-surfing/reports/huizhou-rental-guide-2026-09.md) | — |
 | 2026-08-28 | [AI 行业日报 · 2026-08-28](../web-surfing/reports/ai-news-daily-2026-08-28.md) | — |
 | 2026-08-27 | [AI 行业日报 · 2026-08-27](../web-surfing/reports/ai-news-daily-2026-08-27.md) | — |
 | 2026-08-26 | [AI 行业日报 · 2026-08-26](../web-surfing/reports/ai-news-daily-2026-08-26.md) | — |

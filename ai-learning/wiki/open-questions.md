@@ -105,3 +105,9 @@
   - 来源：同上 问2
 - **[手艺替代·回访锚点]** 2027 年中检验刘胜与"半年到一年 AI 写算子 ≥ 我"是否兑现；验证样本=DeepSeek 新一代模型主算子的生产方式/署名。
   - 来源：同上 问3
+- **[RL Scaling]** MiMo 的 Agentic In-group Credit Assignment 具体算法是什么？官方承诺"未来几周逐步开源"——开源后核对是 GiGPO 式组内锚点对照、PRM 式步骤打分还是新设计（来源：MiMo-V2.6 直播训练研究 20260917 §2.2 推测回访锚点）
+- **[RL Scaling]** MiMo-V2.6 直播 run 的奖励曲线长程形状：数百 step 后是否平台化、是否出现 overoptimization 拐点？（2–4 周后复查直播页/技术报告；对应 §4.2 判别清单）
+- **[RL Scaling]** RL 版 scaling law 是否存在可外推形式 L(C_rl)？需要跨 run 的成本-能力数据点，小米成本计数器是第一个公开数据点（来源：同上 §4.1）
+- **[校准/Jev]** RLCD 的实际机制（scoring rule 进 reward？低维离散空间策略梯度？）待官方论文验证；confidence 计算公式与校准曲线（ECE）官方未公开，第三方独立测评缺失（来源：Jev/System One Models 研究 20260918）
+- **[校准]** OpenAI 2025《Why Language Models Hallucinate》（arXiv:2509.04664）+ Kalai & Vempala 精读候选——"幻觉的统计学根源"专题，为反 RLHF 阵营打底
+- **[行业观察]** Jev 商业模式压力测试：大模型厂商若以结构化输出+长尾降价碾压，窄决策模型的护城河（数据自造？校准证据？）能否成立——跟踪 haiku/luna 级小模型的延迟/降价动作
