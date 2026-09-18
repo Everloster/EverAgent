@@ -1,7 +1,7 @@
 # Test-time Compute
 
 > 所属分类：核心概念（Core Concept）
-> 相关报告：[Test_Time_Compute_深度解析_20260409.md](../../reports/knowledge_reports/Test_Time_Compute_深度解析_20260409.md) / [推理模型三大流派详解_20260621.md](../../reports/knowledge_reports/推理模型三大流派详解_20260621.md)
+> 相关报告：[Test_Time_Compute_深度解析_20260409.md](../../reports/knowledge_reports/Test_Time_Compute_深度解析_20260409.md) / [推理模型三大流派详解_20260621.md](../../reports/knowledge_reports/推理模型三大流派详解_20260621.md) / [MiMo-V2.6公开RL训练直播_RL-Scaling三维度体系研究_20260917.md](../../reports/knowledge_reports/MiMo-V2.6公开RL训练直播_RL-Scaling三维度体系研究_20260917.md)（RL 训练算力轴=test-time 轴的训练端孪生，见 [[rl_scaling]]）
 > 关联概念：Chain-of-Thought / PRM / MCTS / GRPO / RLHF
 
 ## 三大流派（2024-2026）

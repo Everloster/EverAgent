@@ -75,6 +75,8 @@ L_DPO = -E[ log σ(β·log(π/π_ref)(y_w|x) - β·log(π/π_ref)(y_l|x)) ]
 - [RLHF 深度解析](../../reports/knowledge_reports/RLHF_深度解析.md)
 - [InstructGPT (2022) 论文精读](../../reports/paper_analyses/04_instructgpt_2022.md)
 - [Tulu 3 (2024) 论文精读](../../reports/paper_analyses/26_tulu3_2024.md) — 后训练数据量 scaling 前沿
+- [MiMo-V2.6 公开 RL 训练直播研究](../../reports/knowledge_reports/MiMo-V2.6公开RL训练直播_RL-Scaling三维度体系研究_20260917.md) — reward hacking 在 grader compute 维度的重现；评分器强度决定 RL 可扩展上限（见 [[rl_scaling]]）
+- [Jev 与 System One Models 研究（2026-09-18）](../../reports/knowledge_reports/Jev与System-One-Models_TypeSafe决策模型范式研究_20260918.md) — "RLHF 批判"的产业版：RLCD = 用 proper scoring rule 替代人类偏好当优化目标（见 [[model_calibration]]）
 
 ## 跨域连接
 - LoRA 是 SFT/DPO 阶段降低显存的标配 → concept: lora_peft
