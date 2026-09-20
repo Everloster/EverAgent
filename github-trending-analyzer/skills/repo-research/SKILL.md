@@ -113,6 +113,8 @@ python3 scripts/github_api.py <owner> <repo> file src/main.py
 ```
 **产出物**：从真实代码得出的架构判断（模块划分、数据流、关键依赖、设计取舍），标注 `[代码]`。README 与代码冲突时以代码为准并指出冲突。
 
+> 💡 **本机已有 clone 时 R2 走本地（事C 沉淀，2026-09-20）**：大 monorepo 用 `gh api` 逐文件拉既慢又看不清全局。若用户已把源码 clone 到本地（如 `~/workspace/{repo}`）：①先 `git log` pin 住 commit 作证据基线；②按顶层模块分组（如 `libs/` 下每个子包一组），派多个 explore 子代理并行勘察，每组产出"定位/入口文件:行号/核心抽象/调用关系/坑"digest；③主会话只读 digest 写报告。语言占比对 monorepo 会失真（文档站 HTML 可能占大头），别拿它判断技术栈重心。
+
 > 💡 **核验 README 声明（事C 沉淀）**：README 常有"50+ packs""支持 7 种语言"这类营销式数字。**用代码实测反查**，别照抄：
 > ```bash
 > # 递归列出文件树，统计某类文件数量（例：packs 规则文件）
@@ -159,6 +161,10 @@ python3 scripts/github_api.py <owner> <repo> issues            # issue 响应概
 >   --jq 'map(.total) as $t | {year_avg:(($t|add)/($t|length)), last8_avg:(($t[-8:]|add)/8)}'
 > # issue 开放/已关闭计数（排除 PR），估算关闭率与响应活跃度
 > gh api -X GET "search/issues?q=repo:<owner>/<repo>+type:issue+state:closed" --jq '.total_count'
+> ```
+> ⚠️ `stats/commit_activity` 对大 repo 常返回空数组（GitHub 异步统计未就绪），空值兜底用 search API 精确计数（2026-09-20 实测 trycua/cua）：
+> ```bash
+> gh api -X GET "search/commits?q=repo:<owner>/<repo>+committer-date:YYYY-MM-DD..YYYY-MM-DD" --jq '.total_count'
 > ```
 
 > 💡 **star 暴涨归因 + 分支活跃度陷阱（事C 沉淀）**：用户常问"为什么今天暴涨几千 star"。两步定位：
