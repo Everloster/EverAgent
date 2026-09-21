@@ -111,3 +111,12 @@
 - **[校准/Jev]** RLCD 的实际机制（scoring rule 进 reward？低维离散空间策略梯度？）待官方论文验证；confidence 计算公式与校准曲线（ECE）官方未公开，第三方独立测评缺失（来源：Jev/System One Models 研究 20260918）
 - **[校准]** OpenAI 2025《Why Language Models Hallucinate》（arXiv:2509.04664）+ Kalai & Vempala 精读候选——"幻觉的统计学根源"专题，为反 RLHF 阵营打底
 - **[行业观察]** Jev 商业模式压力测试：大模型厂商若以结构化输出+长尾降价碾压，窄决策模型的护城河（数据自造？校准证据？）能否成立——跟踪 haiku/luna 级小模型的延迟/降价动作
+
+## 2026-09-22 Laya/System1 决策模型（新汇入）
+
+- **自定义选项集上的校准衰减** —— 官方 ECE 0.009-0.06 全是预定义任务族；换成自己定义的 criteria 后校准还剩多少？落地前必须自测 reliability diagram（尤其 choice≥11 的未校准警告桶）。
+  - 来源：[[Laya_System1决策模型_深度解析_20260922]] 思考与追问·问 2
+- **RLCD vs 后处理校准的增量** —— RL 训出的校准与 temperature scaling/Platt scaling 相比增量多大？原文无 ablation，是最大未验证假设。
+  - 来源：同上 问 2
+- **B 类候选：laya-router-demo** —— 用程乐松期 4466 段真实转写做「广告段识别」对照（laya vs 规则 vs LLM），人工校正结果当 ground truth；教学笔记入 ai-practice。
+  - 来源：同上 问 3

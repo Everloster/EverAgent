@@ -7,6 +7,8 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-09-22 | [Laya：把「反射性决策」从 LLM 里拆出来——421M 非自回归 System 1 决策模型解析与本机实测](../ai-learning/reports/knowledge_reports/Laya_System1决策模型_深度解析_20260922.md) | ai-learning |
+| 2026-09-21 | [AI 行业日报 · 2026-09-21](../web-surfing/reports/ai-news-daily-2026-09-21.md) | web-surfing |
 | 2026-09-18 | [Jev 与 System One Models — TypeSafe AI「决策模型」新范式全景研究](../ai-learning/reports/knowledge_reports/Jev与System-One-Models_TypeSafe决策模型范式研究_20260918.md) | ai-learning |
 | 2026-09-18 | [AI 行业日报 · 2026-09-18](../web-surfing/reports/ai-news-daily-2026-09-18.md) | web-surfing |
 | 2026-09-17 | [果蝇全脑连接组开源与「赛博果蝇」生态 — 神经科学里程碑的爆发与祛魅](../biology-learning/reports/concept_reports/果蝇全脑连接组与赛博果蝇生态_深度研究_20260917.md) | biology-learning |
@@ -30,13 +32,12 @@
 | 2026-09-09 | [AI 行业日报 · 2026-09-09](../web-surfing/reports/ai-news-daily-2026-09-09.md) | web-surfing |
 | 2026-09-09 | [153. 和曾鸣聊产业史观：残酷的真相、会消亡的公司、优秀≠卓越](../podcast-learning/reports/2026-09-03_xiaoyuzhou-zhangxiaojun_zengming.md) | podcast-learning |
 | 2026-09-08 | [AI 行业日报 · 2026-09-08](../web-surfing/reports/ai-news-daily-2026-09-08.md) | web-surfing |
-| 2026-09-04 | [AI 行业日报 · 2026-09-04](../web-surfing/reports/ai-news-daily-2026-09-04.md) | web-surfing |
-| 2026-09-03 | [AI 行业日报 · 2026-09-03](../web-surfing/reports/ai-news-daily-2026-09-03.md) | web-surfing |
 
-## 🤖 AI Learning（105 篇）
+## 🤖 AI Learning（106 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-09-22 | [Laya：把「反射性决策」从 LLM 里拆出来——421M 非自回归 System 1 决策模型解析与本机实测](../ai-learning/reports/knowledge_reports/Laya_System1决策模型_深度解析_20260922.md) | — |
 | 2026-09-18 | [Jev 与 System One Models — TypeSafe AI「决策模型」新范式全景研究](../ai-learning/reports/knowledge_reports/Jev与System-One-Models_TypeSafe决策模型范式研究_20260918.md) | — |
 | 2026-09-17 | [小米 MiMo-V2.6 公开直播 RL 训练 — RL Scaling 三维度体系研究](../ai-learning/reports/knowledge_reports/MiMo-V2.6公开RL训练直播_RL-Scaling三维度体系研究_20260917.md) | — |
 | 2026-09-16 | [《我不得不把才华埋葬在昨天》精读与延伸研究 — DeepSeek 算子工程师自白中的 AI 时代手艺人处境](../ai-learning/reports/knowledge_reports/才华埋葬在昨天_DeepSeek算子工程师自白精读与延伸研究_20260916.md) | — |
@@ -285,10 +286,11 @@
 | 2026-06-20 | [三年行业吃肉榜/爆亏榜大合集（2023-2025）：谁在偷偷赚钱，谁在快速衰落](../podcast-learning/reports/2026-06-20_bilibili-cls-tongxue_hangye-bangdan.md) | — |
 | 2026-06-18 | [Vol.29 对话王小川：造医生，战豆包，与无尽的 AI 非共识](../podcast-learning/reports/2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan.md) | — |
 
-## 🏄 Web Surfing（23 篇）
+## 🏄 Web Surfing（24 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-09-21 | [AI 行业日报 · 2026-09-21](../web-surfing/reports/ai-news-daily-2026-09-21.md) | — |
 | 2026-09-18 | [AI 行业日报 · 2026-09-18](../web-surfing/reports/ai-news-daily-2026-09-18.md) | — |
 | 2026-09-17 | [AI 行业日报 · 2026-09-17](../web-surfing/reports/ai-news-daily-2026-09-17.md) | — |
 | 2026-09-16 | [AI 行业日报 · 2026-09-16](../web-surfing/reports/ai-news-daily-2026-09-16.md) | — |
