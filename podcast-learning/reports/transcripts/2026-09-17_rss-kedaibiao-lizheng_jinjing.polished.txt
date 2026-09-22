@@ -1,0 +1,432 @@
+# 《对话 319｜硅谷AI高手们，正在操作几百个AI同时上班 —— GitHub 七万星 Orca 创始人津晶对话》— 润色稿
+
+> **节目**：课代表立正（孙煜征）
+> **单集**：对话 319｜硅谷AI高手们，正在操作几百个AI同时上班
+> **嘉宾**：津晶（Orca 联合创始人，Stably AI 创始人，前 Google 工程师，YC 校友）
+> **主持**：孙煜征
+> **来源**：RSS 播客 · 2026-09-17 · 1h06m54s（4013 秒）
+> **转录**：whisper.cpp / ggml-large-v3 / Metal 加速 / --vad（silero-v6.2.0）+ -mc 0 / 2759 段
+> **润色**：去时间戳、按 shownotes 14 章重组；删除两处口播广告（32:10–32:50 超线性学院插播、01:05:59–01:06:49 AI Builders 课程）及片尾预告剪辑；修正可确认的同音误识别（Clock/Cloud Code→Claude Code、Astropic→Anthropic、金金→津晶、Devon→Devin、虎精→虎鲸、Stable→Stably 等，详见文末校正清单）；不确定项标 `[?]`；保留口语化表达，补少量标点。
+> **分节依据**：shownotes 14 章时间戳。
+
+---
+> **版权声明**：本转录/润色稿仅供个人学习、研究用途，遵循《著作权法》第 24 条合理使用原则。
+> 节目版权归主理人 / 嘉宾 / 制作方所有。下架请求请见 [COPYRIGHT.md](../../COPYRIGHT.md)。
+
+## 开场：一个人，几百个 AI 任务
+
+（开场剪辑）
+
+津晶：当你在 Terminal 里面跑到了 5 个 Claude Code 的时候，可能你就已经不清楚到底谁在干什么样的活了。但是我们的用户一般同时会跑几百个 agent——比如说我自己，同时在 work 400 多个不同的 feature。
+
+孙煜征：400 多个怎么管得过来？怎么想得过来？怎么跟进得过来？
+
+津晶：一个 Cloudflare 的 engineer，把每天他要 review 的 PR——因为我们有那种 nested worktree——他在 top level 的 worktree 同时开 20 个 worktree，来管理他的 20 个 PR review 同时跟进。每天上班找一个 agent，然后 pew，把 20 个活丢到那个 agent 里面，跑完的时候喝个咖啡，看看是不是干完了，干完了以后再讲。
+
+孙煜征：大家一般不是说，创业是十个里头九个失败吧，但是为什么你做一个成一个这样子？
+
+津晶：在可能未来的一年之内，要做成一个好的产品，其实还是需要非常大的时间和 token 消耗的打磨，所以好的 taste 还是可以给你一个很大的领先的机会。第二点，我觉得我们增长这么快——在非常少的 marketing 投入的情况下，我们可能 95% 的时间都在做产品——能做这么好，我觉得还是得借力。
+
+孙煜征：恭喜恭喜，我刚看了一下，49000 颗星了，马上要到 5 万颗星了。
+
+津晶：谢谢。
+
+孙煜征：估计这个视频发的时候，你们就 10 多万了。
+
+（正片开始）
+
+---
+## Orca 解决了 Claude Code 的什么问题？
+
+孙煜征：我们先请你介绍一下你们的产品和公司，尤其是对于一个可能平时在用 Claude Code、在用 Codex，但是从来没有了解过什么是 Agentic IDE 的人，讲一下你们产品到底是做啥的[?]。
+
+津晶：大家好，我是津晶。我们的产品叫 Orca。Orca 是一个 ADE，ADE 是个很新的概念，其实你可以把它想象成就是 Agent IDE——让人与 agent 非常好合作的一种新的工作平台吧。
+
+Orca 和比如说你直接用 Claude Code 在 Terminal，有两个最大的区别。一个是它的集成性：Orca 把你整个 workflow 所需要的各种工具都集成在了一起。比如说我们很多 user，他会用 Orca 里面集成的 GitHub issue 或者 Linear issue，他就直接从他今天要干的 20 条 Linear tickets 开始，20 个 Linear tickets 变成 Orca 里面的 20 个不同的 parallel thread；当 thread 有各种 updates 的时候，又能自动反馈到 Linear；以及到最后做 code review 和测试等等，这些所有的工具在 Orca 里面都有一个集成。所以你不用切换五六个不同的 app，一条路就能跑通。
+
+第二个不一样的点：当你在 Terminal 里面跑到了大概五个 Claude Code 的时候，可能你就已经不清楚到底谁在干什么样的活了。但是我们的用户一般同时会跑几百个 agent——它同时可能会有 10 到 20 个不同的 feature，然后每个 feature 里面也是四五个 agent 互相合作。Claude Code 和 Codex 可以通过 Orca 互相合作，非常高的 agent parallelization。
+
+第三个就是，大部分用户在 Orca 里面也可以直接用 Claude Code 和 Codex。因为我们专注在工具的集成和协作这方面，并没有自己的 harness，所以用户发现用 Orca 一分钟就能上手——他可以直接在我们自带的 Orca Terminal 里面用上 Claude Code 和 Codex。
+
+---
+## ADE 和 Harness，究竟差在哪？
+
+孙煜征：你刚刚介绍的这几个，我每一个都有好多个问题。第一个，你把它叫做 ADE，但不叫流行词 harness，那是为什么？或者说在你心中，harness 和 ADE 的定义是什么不同？第二个，现在更多人——哪怕很多程序员——使用习惯越来越多地从 Terminal 变成了 Codex 或者 Claude Code 的图形界面工具，在那里边我似乎也可以同时追踪很多个不同的 session 也好、worktree 也好，那你们和它们的区别是什么？尤其在这些工具里边其实也集成了像 Linear 或 GitHub 等等的工具，它们很明显也企图集成越来越多的东西，为什么你们可以比 Anthropic、OpenAI 做得更好？
+
+津晶：第一个问题其实相对简单一些，ADE 和 Harness 的区别。Harness 你可以把它想象成一个 loop：你有一个 AI，每告诉它干一件事情，就给它一个 input message，它给一个 output message。而 Harness 就是：我怎么把"有一个 input 可以做一个 output"的 agent 做成一个 loop？而且它不是一个简单的 loop，这个 loop 还可以做很多不一样的 routine、tool use 等等——它可以读你的 bash，可以 search the web。所以 Harness 就是像 Codex 和 Claude Code 后面的这个 loop 和 tool use 的 combination 的一个集合。比较 popular 的 harness 有像 Pi[?]，还有 OpenCode——OpenCode 最近变得比较 popular——像 Devin 这些都算是 harness。
+
+ADE 则是在一个 harness 的基础之上：它没有直接与 model 结合，也没有直接去做这个 loop，它把做 loop 的这些功能交给现有的很多 harness，反而更 focus 在人与 agent 的管理 workflow。所以 Orca 的很多功能，我们的侧重点就在——我们并没有自己的 harness，就像刚才说的，用户可以在 Orca 里面使用 Claude Code、Devin、OpenCode 这些所有的其他 harness——更侧重在怎么让大家看到这 100 个不同 agent harness 之间工作的中途结果；人如果需要一些 input，怎么能快速地提供反馈；怎么 review 它们最后的结果，或者中途的一些 HTML design。这就是 ADE 和 Harness 的一些区别。
+
+孙煜征：明白了。比如说我们之前做一个翻译的任务，其实是用一个 markdown 文件，加上用 Claude Code -p——就是给它一个 prompt 去修改这个 markdown 文件做翻译——那其实就相当于调用了一个 Claude Code 的 harness，去对这个文件本身做一个改动，最后生成一个结果，中间它也可以出一些 JSON。ADE 就是把这个过程整个地 UI 化、更加系统化地去做好这件事——我是在调度 100 个不同的 Claude Code 去帮我干活。
+
+津晶：是的。现在的 Orca 其实是 70% 的 UI，但 30% 用户用得比较多的还有我们的 CLI。所以它就是起一个调度作用：不仅是 UI 方面可以调度，也可以通过我们的 CLI 来协调不同的 harness 之间做它们自己的 loop engineering。
+
+第二个问题，大家从 Terminal UI 到 GUI，这其实是一个个人偏好问题。对我们来说并没有特别强的 vision 或 opinion——确实有人 Terminal 比较顺手，有人用 GUI 比较顺手；从 engineering 的角度来说它们也各有优势、各有难点。在 Orca 里面你两种都可以选，可以选择 default 是 Terminal UI 还是 GUI，还可以同一个 session 里面自由切换。
+
+从 business 方面的考量，我们可能会有一些 opinion：作为一个创业者，你得与现有的工具衔接得非常好。为什么 Orca 一开始的形态是让 user 用 Terminal UI？因为 Claude Code 和 Codex 的 CLI user 其实远大于它们的 desktop app user——已经有这么多的 user 在 iTerm 或者 Ghostty 里面使用 Claude Code，如果我还要给他们一些阻碍，说"嘿，你不要用 Claude Code 的 terminal UI，你来我这里用一个新的不一样的 interface"——每次当 Claude Code 有更新的时候，我还得想办法去 wrap 它们一下，比如 Claude Code 最近有很多不同的模式，UltraCode[?] 等等，每次它们一更新，我都要想办法在我的 GUI 里面实现它们那个不一样的 rendering，其实会影响我们的 iteration speed。所以我们虽然有 GUI，但 GUI 的功能更新肯定没有 TUI 快，因为 TUI 里面你直接就能得到 Claude Code 和 Codex 更新的功能。
+
+孙煜征：Interesting。就是 Codex 的 GUI 和它的 CLI、或者说 TUI，功能几乎是 on par 的，这个理解对吗？
+
+津晶：是的，因为它是 Codex 的 first party。但如果你不是 first party，比如 Claude Code——Claude Desktop 的功能和 Claude Code 其实完全不 on par，Claude Code 一般都会先好好多步。而且如果你用 TUI，你能得到其他很多很好的 harness，像 Pi[?] 就是一个非常好的 harness，OpenCode 也是一个很好的 harness。
+
+---
+## AI 越来越多，人的注意力怎么分配？
+
+孙煜征：这里边我再追问一个。你前面说，如果用 Claude Code 本身的 terminal，我可能 track 五个 session 就已经看不过来了，那你们是怎么解决这个问题的？Claude Code 本身也带有很多 orchestration，它的 orchestration 功能比 Codex 多很多，也有一个 agent view，可以观看你的几个 Claude Code 的进展。为什么 Orca 在 Claude Code 和其他 agent 的基础上又更进了一步？
+
+津晶：因为我们有一个很好的 agent status 的集成，跨越所有的 worktree。比如说我自己现在有 400 多个 worktree，就是我同时在 work 400 多个不同的 feature，每个都可能会有一些推进，有一些会推进得更快一些。它能将所有这种不同 session 的 agent status、以及跨所有 agent harness——不管是 Claude Code 还是 Codex 还是 OpenCode——都集成到一个 agent status：这个 worktree 有这几个 agent，这个是在 work，这个是 block——you need to answer it immediately；这个是已经完成——you need to review the result immediately。所以它做了一个非常好的集成性。
+
+我觉得有时候集成性和中立性的功能是被忽视的。哪怕我的功能跟 Claude Code 一模一样，但是并不是所有人都用 Claude Code。而且从我们用户群体以及观察到的所有大趋势看，大家对这种单一的 Claude Code 的采购，正偏向于多 vendor 以及 open model 的采购。所以即使我们的功能和 Claude Code 一样，作为一个能支持各种 agent 的 status 集成、能让你用不同的 agent、不同的 model 的产品，它也有独特的优点。以及在 Claude Code 基础上面，我们也增加了更加先进的 agent status 集成和 triage。
+
+孙煜征：把你们的价值分开看是挺棒的，比如 vendor agnostic。其实很多时候非常强调这一点，因为你 lock 一个 vendor 的话，尤其在 AI 这个时代，谁知道哪个厂子突然自己又发疯了，不知道干点啥，而且你追我赶也很快[?]。我们在教学的时候也非常强调大家对工具的使用，要想方设法积累自己的习惯——比如把 skill 放到一个公共目录下，不要放到它们自己的目录下。
+
+津晶：是的。还有一个很重要的就是你的花费。AI 的使用习惯和大企业的花费习惯非常不一样，我可以两个都讲一下，因为花费其实是工具效率的一个非常重要的方面。多 harness、多这种 agent vendor 的好处是：比如说你的 Claude Code 的 usage hit the limit，你可以马上在 Orca 里面——我们甚至有个 handoff 的功能——直接把这个 Claude Code 一键发送给 Codex，Codex 就像没事一样 continue working on it。
+
+孙煜征：这个还挺方便。我们自己在开发的时候很多时候会遇到，哪怕我有很多个 Claude Code account 可以 switch，你也没办法 unlimited 地增加 Claude Code account，因为它肯定会限制你。
+
+津晶：所以我的 Claude Code 用完的时候，我可以切换到 Codex；然后最近又有 DeepSeek，我也可以用 OpenCode Go[?]；然后我还可以用 Grok，Grok 用完了可以换到 Antigravity。所以 cost 是个很重要的维度。对于 enterprise 来说也是：为什么 enterprise 现在非常非常感兴趣地看 Codex 和很多 open weight 的 model？就是因为 Anthropic 的 bill 已经成为他们的第一大开销，已经超过他们工程师的花销。所以无论是从效率方面还是 cost 方面来说，这种多 harness 都更有好处。
+
+---
+## 为什么不怕被 OpenAI 和 Anthropic 做掉？
+
+孙煜征：我们聊一个话题我产生三个新问题。先回答一开始那个问题吧：为什么你们这个产品不是 Anthropic 出的、或者说不是 OpenAI 的一个 feature？
+
+津晶：我们的功能其实跟 Claude Desktop 和 Codex 都有很大的重合。这个我就要引用我们 community member 的话来说：基本上在他们用了 Orca 以后，特别是追求 100x 的 engineer，他们都会说"我不知道为什么，Claude Code 和 Codex 就是没有 Orca 做得好"。这当然不是一个非常 defensible 的长久 position。从现在来说，Orca 迭代非常快：每天有一个 stable 版本发布，每个 stable 版本基本上都是上百个 PR。我们也在不停地有最新的和 AI co-work 的功能，包括我们的 orchestration——让 agent 管理不同的 terminal，以及将一个 workflow 从一个 agent hand off 给另外一个 agent——这是 Orca 名字的来源，orchestration for agents。这是我们一开始就有的概念：那时候 Codex 的 agent 并不是 self-aware 的，它在一个 session 里面根本没办法把 context handover 给另外一个 Codex session，let alone……
+
+孙煜征：对，这个好像是这周才出来的 feature，对吧？
+
+津晶：是的。所以我们一直在领先，永远都是布局下一步怎么和 AI 更好地协同。一个是我们的 feature 迭代，以及因为我们做一个 open source project，我们本身也是 builder，我们跟很多 startup builder、hyperscanning[?] 的 builder 有非常感同身受的地方，这让我们的产品 sense 非常准。比如 Claude Code 和 Codex team，他们都是 unlimited token，他们根本不会想到我要怎么管理不同的 subscription、什么要到期了；如果我这个不 efficient，我没办法尽快 ship[?] 这个 feature。他们在一个非常 cushioned 的 environment，看到的很多问题和我们的很多问题都不一样。
+
+孙煜征：对，这是其一。更长远的，为什么 Codex、Claude Code 很难做成这些？另外一个就是 incentive 不 align——他们的 incentive 都是让大家 lock into their tool。
+
+津晶：对，抛开中立和集成之外，其实 incentive 也不一样[?]。
+
+孙煜征：能跨 Claude Code 和 Codex 去使用，是你们的核心 proposition 之一。但是顺着这个思路往前走，整个产品的设计其实也不一样——这个产品设计思路可能反而更符合大家的使用习惯。
+
+津晶：是的。literally 假如一个人使用 AI 成为一个超级个体，能够以最快速度迭代产品、做各种 daily workflow——我觉得在 AI 这个时代，迭代最快的就是你自己又是产品经理、又是 engineer，你对这个问题非常感同身受的时候，你就会迭代非常快。而 Claude 和 Codex 他们不免要去通过产品经理或其他方式来了解大家到底有什么问题、如何迭代，我觉得这会对他们的速度造成一个差距。
+
+孙煜征：对。但是我去美团[?]这种地方，他们就会惊讶于 Anthropic 的迭代速度，"哇，Anthropic 迭代好快啊"，但你们其实已经比他们更快了，长江后浪推前浪[?]的感觉。这个点我觉得理解了：一个是 integration 中立性，一个是你们的 design philosophy，第三个是你们团队的使用场景和他们的使用场景不一样，最后导致对用户的同理心不一样，再加上你们迭代速度确实比他们更快。你们现在团队几个人？
+
+津晶：四个人。
+
+孙煜征：厉害厉害。感觉很快就要被 OpenAI 或者 Anthropic 给收了。稍稍回答一下：Pi[?] 或者 OpenCode，你们为什么在他们的市场做出来了这么大的一块东西？
+
+津晶：我觉得我们比他们更开放。Orca 有一个很大的 philosophy——这也是一个新的趋势——叫 generative UI：还有一种新的 software，就是一切都可以以 plugin 的形式来集成。Orca 也在朝这个方向转型，我们内部的 vision 和 philosophy 已经在这一个方面了。我先说我们和 OpenCode：OpenCode 的 open 在于你可以集成各种不同的 model；至于你要怎么 loop、怎么和 agent 交互，它其实不 open——你得用它给你的那一套 opinionated harness。而且我们有 data backing：OpenCode 的受欢迎程度还是远比不上 Claude Code 和 Codex。Orca 的擅长之处就在于借力 Claude Code 和 Codex：你喜欢 Claude Code、你喜欢 Codex，那没问题，来我们这里用——Claude Code 有的我们都有，Codex 有的我们都有，但我们有它们没有的。OpenCode 除了 model 方面集成更多以外，它的 harness 逼着你做一个选择：你喜欢 Claude Code 还是喜欢 OpenCode？那不好意思，你得选一个。我们跟 OpenCode 和 Pi[?] 最大的区别是：我们不会逼着用户做选择，我们以最大的兼容性来让大家使用 Orca。
+
+孙煜征：Pi[?] 有逼着大家做选择吗？
+
+津晶：Pi[?] 当然——你得选 Pi 作为你的 harness；你选了 Pi，你就不能用 Claude Code 作为你的 harness。
+
+孙煜征：能不能用 Pi 去用 Claude Code？
+
+津晶：你可以用 Pi 去用 Anthropic 的 model，可以用 Claude 的 model，但是你没办法用 Claude Code 这一个 harness。Claude Code 其实是一个非常非常好的 harness——我甚至知道有人在有 Pi[?] 的情况下，还是会去 Claude Code 里面用中转的 API 来使用 DeepSeek、GLM、Kimi 的 model，但他想用 Claude Code 这个 harness。
+
+孙煜征：你之前好像还提到了一个词，Ghost——Ghostty？
+
+津晶：Ghostty。
+
+---
+## 一个好用的 AI 工具，难在什么细节？
+
+孙煜征：所以说你们这个产品是凭空出现的吗？还是你们其实看到了一些东西、用了一些东西，然后在巨人的肩膀上迭代[?]？
+
+津晶：这是个好问题。我们有两个 inspiration。一个是内部的：我们这两年一直在做 DevTools，也 build 了很多其他的 agent，我们之前做了一个 UI testing agent，所以对 agent building 以及如何 manage agent session 这些都比较熟悉。当时我们一些用 AI testing agent 的用户也说：你们这个 agent management 做得还挺好，要不可以用它来 manage general coding agent？这是内部的一个 inspiration。外部的 inspiration 是我们的 engineering 团队也想 100x、1000x，所以试了蛮多其他的工具——我们试了 Ghostty，也试了 iTerm，当时非常喜欢 Ghostty 和 iTerm 的切屏，同一个屏幕里面可以跑不同的 agent，所以这也是 Orca 的主要的一个部分，切屏模式。但是它不好的地方，就是 Ghostty 和 iTerm 有三个 limitation 让我们觉得可以优化，所以我们就决定去优化它，然后就产生了 Orca。
+
+这三个地方：一个是它不是 worktree centric。它可以让你切屏 agent，但你的 git worktree 的 creation 和 deletion 其实有一个蛮复杂的 life cycle——现在有越来越多的 library 可以用——但 Orca 非常好地让你管理你所有的 worktree 以及它的 PR 的 life cycle。第二个我觉得它做不好的就是 agent status：像 iTerm 和 Ghostty，Claude Code 可以修改它的那个 terminal 的 title，但是它还是没办法展示完整的 agent status——比如"我这个在 working""I require more attention"——在那么多的 tab 里面，你就完全看不到它的 agent status，只是一个标题而已，不是一个真正的 status。而我们这个 status 可以作为一个 API 集成——Orca 现在也支持 extension，大家可以拿我们这个集成的 status 的 API，甚至来 build 一些他自己喜欢的管理的 view。这是 agent status 我觉得他们做得不好的。
+
+第三个做得不好的就是 updates。我觉得这个是大家很忽略的一个问题：为什么 Orca 现在变这么 popular，一个很重要的原因是我们日更，大家也愿意每日来 update，大家永远都会拿到我们最好的 feature，而不是说"别人有一个新的 feature，Orca 没有"。但是 Ghostty 和 iTerm 这两个 terminal，只要你 update，你所有的 session completely gone——你之前可能在跑 50 个 agent，一 update，你当然可以把 history 找回来，但是这 50 个 agent 哪些在跑、哪些是已经跑完的，每次 update 你都要自己去 figure out。所以 iTerm 和 Ghostty update 很慢，基本上没有人敢 update，用户和你一起迭代的速度也变得更慢。
+
+孙煜征：你怎么做到的？
+
+津晶：这其实还花了我们蛮多功夫。每一个 terminal session 叫 PTY，每次 update 我们会 restore 所有的 PTY——我们有一个 local database 来给这个 PTY take snapshot，然后当你回来的时候，你本来之前它跑到哪一步，我们就帮你不仅是把 history bring 回来——如果你之前在跑，就帮你继续跑下去；还有你的 dev server 等等这些，如果已经在跑，都不会 kill 这个 PTY。
+
+孙煜征：那还是一个挺细致的活，做出来应该也是不容易的。
+
+津晶：是不容易。take snapshot 以及 restore 这个本身并不难，但是要让它非常 performant——我们还做了很多缓存：你这个一旦存太多了，然后每个 terminal 其实非常耗内存，你想你几百个 session 都要 tracking 它的 state，非常耗内存，所以我们还有一整套 caching、code storage 等等 performance 的一系列优化。
+
+孙煜征：哇，听上去好像是一些 idea，但其实你们平时很多时间要放在做这种很细致的工作上。
+
+津晶：对。看起来好像就是你跟 Ghostty 差不多、UI 差不多，但其实它的整个使用体验，很多很小的细节我们都做了蛮多的功夫。我经常跟人说：prototype 到一个真正的 production，其实中间是有一个鸿沟的；能力不够是看不见这个鸿沟的，AI 可以帮你更快地带到这个鸿沟边上，但你想跨过这个鸿沟，还是需要很多的时间、精力和水平。
+
+孙煜征：刚才这个小例子很小，但是能感觉到这个事情其实是非常吃 software engineering 的能力。你们是愿意花时间去做这件事的四个人团队。
+
+---
+## 400 多个任务，怎样做到不用逐个盯？
+
+孙煜征：那我们再继续往下聊。刚刚聊的你们的这些 power user，他们都是开几百个 session、同时 orchestrate 几百个 agent 这样的工作——attention 管得过来吗？大家平时怎么工作的？你身边的人可能都是这样的人，你觉得这是很正常的事，但这些人应该是非常非常少部分，可能需要你带着"不是这样的人"的同理心，帮大家描述一下这些人的日常工作和怎么管理过来。
+
+津晶：先从简单的吧：选一个好的工具，像 Orca 这种，它本身的很多 UI、CLI 的设计就是为了让你能直观地看到你到底有哪些工作内容。比如我们用户通过这些优化能管理这么多的 agent。一些 UI 方面的优化，就是我们的搜索功能：大家都用过像 Google Doc 或者 Notion，你可能只有两个 doc，我给你一个界面，第一行是第一个 doc、第二个是第二个 doc；但是当你有 1000 个 doc 的时候，很多时候你要靠搜索。所以我们做了很多搜索功能的优化：我们的搜索排序会抓很多的关键词，比如你那个 agent session 的 title、worktree 的 name，以及 worktree 相关的 Linear ticket 里面的一些关键词——通过很多这种关键词，让你快速跳到"我三天前好像在 work on 这个东西，它现在的进展是什么"，你搜索一下，我就把你带到那个 terminal 页面。如果你直接用 Ghostty，在你的 100 个 Ghostty 的 tab 里面，你也不知道到底哪个在干嘛。
+
+孙煜征：这个不是 agentic 搜索，这个就是很快的 index 搜索。
+
+津晶：我觉得一方面是 index 搜索，一方面其实是你们对这样一个全新的工作方式自己使用了、有很多痛点之后，针对它进行了开发——我相信你们这个搜索其实带了很多之前大家不会想要放到搜索结果里的信息。
+
+孙煜征：是的，以前大家会搜索 Linear、Google Doc 这种，大家没有想到要把 terminal、各种 worktree 之间的关键词都拿来搜索。到现在 Codex 搜索其实不是很好用，我想搜索我们的东西还是搜不出来的，我不是很 trust 搜索。
+
+津晶：这个也是，我并不觉得我们做到完美，我们还有很多搜索方面想要提升的——搜索总是在 index 的 freshness 和你的 retrieval speed 之间做抉择，所以我们还有很多可以提升的。这是其中一个——我们的用户如何能在几百个之间跟进 agent 的方式。
+
+第二个方式就是：让 agent 来管理 agent。Orca CLI 自带 orchestration，我们看到很多用户会写一个 orchestration 的 script——其实跟 Claude Code 内部的那个 subagent 很相似——就是：你看我的 Linear ticket，把它收集所有的 requirements，然后写一个 design doc，然后再 review 好多遍，review 完了之后再 implement，然后再 QA testing——Orca 自带一个 browser use 和 mobile emulator，你可以用 Orca 自带的这些来做 QA testing——完了之后给我一个 PR 和一个 HTML report，Orca 也自带 artifact sharing 这种。所以很多用户他已经有一个这样的 recipe 弄好了，直接从 Linear ticket 一开始，然后就 Claude Code 驾驭着 Codex 或者其他的，最后给他一个 PR 和一个 artifact 式的 review。
+
+孙煜征：明白了。他其实是：我有一个 task，这个 task 我有一个目标，把 criteria 讲好——我要什么是好的、什么是不好的，我过去有什么问题，做这个目标的时候我希望你去做哪些步骤——比如说你要先 plan，写完了以后你可能还要互相校对，校对了以后你可能还要在实际产品上去看。其实这个过程人就几乎不参与了，人就看第一步和最后一步交出来的东西是不是合理就行了。
+
+津晶：是的。以及如果你需要参与的话，一开始可以跟 AI 写：如果是有重大决定你不太确定，你可以让我参与——但你让我参与的时候，你得给我那种容易去 review 的东西。因为我们自带一个 browser，我们发现很多 user 会让 AI 哪怕中间问他的一些问题，都是说"给我一个 visualization 的解释"：这是我想要做的事情，你看一下这个 HTML 页面觉得 OK 不 OK，OK 你就继续。
+
+孙煜征：这一步我觉得了解了，信息更好的编排、组织和呈现也了解了。但是 again，你到底每天要管多少事？你真的能看得过来这些东西吗？我觉得大家想了这些以后还是会觉得：400 多个我怎么管得过来、怎么想得过来、怎么跟进得过来？
+
+津晶：OK，这是好问题，我就要说到第三点：还是要自动化。比如说我 400 多个里面，可能 200 多个已经是自动化在跑——跑成 SOP，就像大家以前用 OpenCore[?] 一样，它有一个像 manager thread 一样，每天会定时跑。为什么 Orca 能够日更？整个 release 还是一个挺复杂的过程：你得找一个很好的 branch to cut，你还要搜集——比如我们的 AI 会搜集我们 Linear、Slack 里面大家有没有 report 内测版本的 bug——它会搜集所有信息，它会做出决定；如果它需要问我问题，它还会自己给我发 Slack 信息。但它就是一个很流程化的东西：每天都有一个 release 的 agent，每一个小时跑一次，看一下这个 release 到什么地方了，它会自动把这样一个流程跑完。包括我们 Discord——我们四个人不仅做所有的工程，我们还有一个非常大的 Discord community，微信也有 community。
+
+孙煜征：你们微信也有？
+
+津晶：对，应该要请你——都已经忘了这茬——请你到我们微信的 community。我们 X 上面也是好几万的 follower。所以这些所有的管理其实都是自动化的：它每天会 triage 该怎么回这些 user、今天收集到哪些信息。Orca 自带这个 automation feature，可以连接你的 remote host，这些 automation 都跑在我们 team 的一个 share 的 remote host 里面。
+
+---
+## 这么多 Agent，一个月要花多少钱？
+
+孙煜征：那大家可能的问题就是：这些东西到底要花多少 token、花多少钱？
+
+津晶：token 的话肯定还是不少的。如果你是纯 API 的计算，那其实还挺贵的——我也会看我自己的一些 API usage，肯定每个月好几万。但是大家现在都知道，像 Claude Code、Codex 还有 Kimi 这些第一方的 subscription 有非常多的 subsidizing：它自己的 profit margin 很高，如果按 API，Claude 和 OpenAI 都是 90% 的 profit margin，但是如果你买它的 subscription plan，它就 heavily subsidized。所以通过买不同的 subscription plan，我觉得都还挺好的：我基本上每一个 provider 买上一两个，就够我一个月做所有的 automation 和快速迭代的 agent 使用。
+
+孙煜征：买上一两个 200 美元的？
+
+津晶：对，基本上我只买 200 美元的，因为那个是最好的 deal。所以我 Claude、OpenCode、Codex、Grok、Antigravity 这些我都有，每个都用一下就行。
+
+孙煜征：刚刚其实你说了一个挺重要的点，我没有展开：你说你们用 plugin。我的理解是，你这里边可能不光模型、harness，包括你的工具、可能其他的东西也是 plugin。你们的 plugin philosophy 和 Codex 有什么不一样？为什么是用 plugin 而不是用 skill？
+
+津晶：skill 和 plugin 它们两个之间有很多共通的。但我们想的 plugin 可能更偏向于 UI 方面的 plugin，就是有用户界面的。我觉得在未来很长一段时间，UI 和 AI 的使用都挺重要——相当于人和 AI 其实都需要一个工具上的提升。针对 AI 的 plugin 跟 skill 很相像，就是 skill 和一些 command 的集成；我们的 plugin 更偏向于 UI 方面。举几个例子：现在 Orca 能够内部打开很多不同的文件格式，比如我们有个 markdown file 的 editor，有 HTML 的 editor 和 annotator——你可以在 HTML 上面画等等。但是用户有很多不同的文件格式想要支持：比如我们有些用户是做芯片设计的，他有他们公司自己的文件格式，想要自己的那种编辑器；以及 PPT 的编辑器、video editor——比如 Claude Code 在左边的 panel 给他生成了一个 video，他直接想在右边、就在 Orca 里面可以打开这个 video，就像他打开一个 markdown file 可以 edit 一样。核心的 Orca 没有办法支持所有的这些 editor，用户就可以通过 plugin 的形式，在 Orca 里面干很多自己想干的事。
+
+孙煜征：理解了。最后一个关于用户的问题：你的这些 power user 用这么多，你知不知道他们大概都在干些什么事？大部分还是 engineering，在公司打工疯狂整 PR，还是干嘛？
+
+津晶：其实我们的用户跟早期的 Cursor 和早期的 Claude Code 有很多重合，都是最早这批用 AI 来提升效率的。一般的 pattern 是：他会用我们做一些 personal project，觉得非常好的话，也想在办公的时候用我们。personal project 有 web app、mobile app，现在我们看到比较 popular 的还有大家会 build 越来越多的 desktop app——写 electron app 越来越容易了。也有很多用来做 automation：比如每天要炒股的，可以用我们来搜集信息，左边是 Claude Code，右边是 Claude Code 给他的今天的股票分析 HTML，他可以在 HTML 上面加一些 comments、annotation，然后又发给 Claude Code，两个一起 co-work。personal use 就是什么都有。但我们有非常大的用户群体是作为 day-to-day work 使用的：我看 Twitter 上有人分享他的用户案例，他是一个 Cloudflare 的 engineer，把每天他要 review 的 PR——他就用一个 master 的 agent，然后开——因为我们有那种 nested worktree——他在 top level 的 worktree 开比如说 20 个小的 sub worktree，同时开 20 个 worktree 来管理他的 20 个 PR review 同时跟进。也有很多大公司的人觉得：如果我更 efficient，是不是可以留出更多时间做其他的 project，或者升职更快等等。
+
+孙煜征：就是 Cloudflare 的工程师每天上班打开一看，今天有 20 个活，然后找一个 agent，pew，把这 20 个活丢到那个 agent 里面，开了 20 个 sub-worktree，然后下班的时候喝个咖啡，看看是不是都干完了，干完了再讲一下——今天的活就干完了。中间他自己去干什么就不知道了。
+
+（32:10–32:50 插播广告：超线性学院，从略）
+
+---
+## 从 Google 到 YC，她如何连续把产品做起来？
+
+孙煜征：那我们讲讲你的创业。你大学毕业之后——是 16 年毕业的——先做矿的[?]，然后再去 Google 的，对吧？创业大概四五年的样子。你是第二个创业项目进的 YC？
+
+津晶：其实是第一个。
+
+孙煜征：那好，讲讲你的故事。
+
+津晶：其实从小我就看我爸创业、做他自己的 business，比起在公司里面，我特别想自己拍板决定做什么，所以从大学里面就一直想创业。当时是国际学生，来美国你不可能说从大学就创业，毕竟还有很多身份的问题，所以大学毕业之后也循规蹈矩地做了大厂的工作。但是 Google 刚好在湾区，湾区的创业氛围非常浓厚，在 Google 的时候我就业余会参加各种各样的创业活动，从这些优秀的湾区创业人才身上也学到了很多。当时就觉得自己想做一个什么——那是几年前，AI 还没有火，也没有特别好的点子，所以就觉得"管它了，随便做一个点子，什么能上手就行"。当时的第一个点子是做一个直播的平台：给那种 special events——像婚礼、公司的一些 event——做线上直播。那个项目的增长比较好，用户和收入增长都比较好，也是拉着这个进了 YC。但是在 YC 毕业之后我们就发现，做 event space 是非常有挑战性的：要做成一个很大的 business，最重要的一点就是用户的留存性——如果你的增长永远都要来自于不停地去外面吸收新用户，那是非常危险的，因为你永远不可能保证下个月广告费用会不会增加、能不能拉到那么多用户。event space 的留存性比较差，哪怕它一年之后回来使用——比如像婚礼——那就更差了。所以我们当时意识到：这个可以有很好的收入，但是要做到 billion、十亿百亿级别的公司，还是得做那种非常高频使用的。
+
+所以我们的第二个点子叫 Stably，用 AI 来做软件测试，这在当时来说也是一个非常合理的选择。Stably 做得也算比较成功，有不少企业客户。但是为什么最近几个月我们更专注在做 Orca？我们发现以前的 B2B SaaS 和 DevTool，你做一个 niche[?]、去深入、把它做扎实，是非常值得去做的；但现在我们发现，所有的 DevTool 是不是都 collapse 到一个方面了——用 AI 来生成？我现在很多做 video editing 的 workflow，其实很多时候可以用 Claude Code 帮你看一些 video frame，甚至用它来帮你 editing，让 Claude 去 prompt Seedance[?] 来做。所以我们发现 general coding 的这个 workflow，其实可以取代很多以前 B2B 的 specialized workflow。我们已经投入那么多来做 AI testing agent，可以把很多投入放在 general purpose agent 上。
+
+孙煜征：这里边有一个你轻描淡写、但大家觉得可能很不可思议的事情：你做 Orca 是一个现象级的成功。从功能上来说大家会问为什么 Anthropic、OpenAI 这么牛逼的公司没有做出来；从增长上，你的 focus 还没有放在增长、只有四个人的情况下，能增长到 GitHub 五万颗星——我不知道你们的日活或 download 是什么样子，应该也是 proportional 非常高的程度。这还是最近的东西。你前面的两次创业——大家一般不是说创业十个里头九个失败吗，为什么你做一个成一个？
+
+津晶：可能我对成功的定义[?]是要到 one billion 这种级别吧，但至少还是每个都做起来了。我觉得有两点：一个是我们确实是一个非常技术的团队——我和我的 co-founder，我之前在 Google，他在 Uber——基本上我们想做的点子都能把它做到最好；可能在选点子、business、monetization 方面还有很多要尝试的，但产品方面确实可以把它做到最好。我觉得可以分享的经验是：即使大家说现在 AI 写一个就可以了[?]，但在可能未来的一年之内，要做成一个好的产品，其实还是需要非常大的时间和 token 消耗的打磨，所以好的 taste 还是可以给你一个很大的领先机会。这是第一点。第二点就更多是 Orca 方面的成功吧。
+
+---
+## 95% 的时间做产品，增长从哪来？
+
+津晶：我觉得 Orca 增长这么快，就是在非常少的 marketing 投入的情况下——我们可能 95% 的时间都在做产品，5% 就是想什么发什么、今天发一下 Twitter——能做这么好，我觉得还是得借力、赶上那个趋势。回到我最开始说的 TUI 和 GUI 之间：我们本身没有一个 strong opinion，我们更多想做的是大家想用什么我们就很好地支持，而不是摆在一个对立面的位置上——"你要不用 Claude、要不用我们"，让用户做选择。如果这样的话，你的 marketing 得投入非常大才能改变用户的使用习惯。而我们是让 Claude 和 Codex 用得更好、更容易，不需要改变他的使用习惯，他就可以用上你，他也会非常愿意分享给他的同事："我知道我们刚买了 Claude，但我不是让你用一个新的工具，你用这个可以让 Claude 用起来更好。"所以他的分享和 adoption 都会比较高。
+
+孙煜征：你们现在 download 方便透露大概多少吗？
+
+津晶：不会透露具体数字，但 download 肯定是比 star 还要高很多。
+
+孙煜征：这里边大概多少比例是来自于口碑？我想知道大家怎么知道你们的。对于任何一家公司，awareness 和 trust 都是非常高的 barrier——大家能知道你们，还信任到足够愿意试一下。为什么你们可以这么快让大家愿意试用？
+
+津晶：我觉得确实是这个赛道的原因：这个赛道很容易传播，现在不停有新的 tool 出来，大家都愿意尝试一下有什么好的方法能管理它的 agent——直接用 iTerm 和 Ghostty 有很多我刚才说的问题，大家也不是很满意，总是非常愿意去尝试新的 tool，所以得到 traffic 其实还挺容易的。但我们其实比较在乎的是留存率——我们留存率也挺高的。留存率高才能有 viral growth，一传二传三；如果它第一天没有转化、没有留存，看一眼就走了，就没办法散播到第二个第三个人。所以我们非常看重留存率。我们发现用户有一个规律：他基本上试了所有工具——有时候刚好最后一个试的 Orca，有时候先试了 Orca 又去试了一圈新的工具，或者同时试——不管先后顺序是怎样，最后都会选择 Orca。
+
+孙煜征：留存是产品决定的，产品好到一定程度是带传播指数的，一传二传三。可是在那之前，你说"得到 traffic 很简单"——对于一个没做过的人可能不简单。同赛道有很多人试图做这件事，他们都不觉得简单。想想你的 YC 同学们[?]，他们可能很多人在做这个。为什么你觉得简单？
+
+津晶：我没花很多精力在上面，我可以想一下我们做的不一样、可能有帮助的地方：我们做 marketing 还是偏 leverage marketing——这跟我们的产品设计思路非常一样，我们非常借力。我能看到有跟我们相同的一些产品，它的 X post 就是关于"我们产品有个新功能"，因为它会觉得自己的责任是去宣传产品的功能；它如果把 Claude Code 和 Codex 看成竞争关系，比如 Claude Code 今天出了一个 agent 管理的功能，就是"哇，天塌了，大家会不会都用 Claude Code 了"。就像我刚才说的，不管 Claude Code 有什么，只要还有 Codex 在，我中立，它就总有存在的价值——更何况现在不仅是两家独大，有非常多的 player。我们的松弛就在于：我们不把任何一家视为我们的 competitor——虽然它目的是想来 compete，但我们觉得这是一个非常 open 的 ecosystem。这就体现在我们的 marketing 里面：Claude Code 发布，我们会点赞——"好了，大家可以在 Orca 里面这样用 Claude Code"；Codex 发布新功能，"Codex 做得好，可以在 Orca 里面这样用"。大家非常愿意看这种内容——大家很喜欢学有什么新的 Claude Code trick、Codex trick。所以我们基本上想什么发什么，可能五分钟发一个内容，基本上都有好几百赞，就是因为发到了大家喜欢的内容。
+
+孙煜征：Google 能人千千万，Uber 能人千千万，很多人从 Google 出来也没有能力去做一个那么好的产品。在你看起来，你们所谓好的技术和好的产品能力是怎么培养的？great 和 good 的区别是什么？
+
+津晶：技术方面比我们好的有很多。我觉得还是要 land——能把一个想法真正执行和落地。我甚至觉得当时我们能进 YC，可能也是 YC 面试我们最看重的一点：虽然我们第一个点子并不算最好的点子，甚至我们之后确实抛弃了那个点子，但是不管什么点子，我们就有执行力。可以说执行力是一个方面：作为工程师，执行力并不仅仅体现在你有技术能力，而是把各个方面都打通——去找到一个好的方向，了解这个方向的玩家有哪些、大家的痛点是什么，找到大家最共鸣的那个痛点，然后很快地解决这个痛点；每一步都能很精准地做正确的事。它听起来很简单，但其中每一个步骤都可能有十个不同的步骤。
+
+---
+## 访谈 100 个用户，怎样问出真正的需求？
+
+孙煜征：点开一个，稍稍展开：怎么找到痛点？用具体的例子给大家解释一下，当时你是怎么找到痛点、解决痛点的？为什么其他人没有找到、没有解决？
+
+津晶：我们第一个点子做线上 event 直播。找痛点的方式有几个：一个是身边的朋友。我们做每一个点子——包括最近做 Orca[?]——都像回到最初在黑板前第一次头脑风暴一样，按这个步骤走：我们都会问上一百个人，而且是深度的沟通交流，不是发问卷。比如做婚礼直播，我们甚至跟最开始的很多 couple 说"可不可以给你打一个电话"，然后非常深入地沟通：你为什么会想到用我们这个产品？这是很好的 insight。我一般会问：第一，你为什么第一会想到这个点子；第二，你为什么会想到找这样一个解决方案，有没有考虑过其他的解决方案——比如第一个点子，我说你为什么没有考虑 Zoom？Zoom 完全可以，你有试过 Zoom 吗？——那你就可以得到"我的优势具体在哪"，那我一定得加大投入我的优势；他可能也考虑了其他的产品。第三点，要变现的情况下你可以问：既然这个问题对你来说这么重要、你要到处找，那有类似产品的话，你在上面花了多少钱？这都是非常重要的。
+
+孙煜征：你看过 The Mom Test 那本书吗？我看过。为什么我想到这本书——就是你问的是"你在类似产品上花了多少钱"，而不是"你愿不愿意为我的产品花钱"。
+
+津晶：对对对。比如我们 YC 的 advisor、我们的 YC group partner 是 Michael Seibel，他非常直白地跟我们说：你要对你的用户了解到这个程度——比如我们做 B2B，他去年的收入是多少、收入增幅是多少、他们最大的开销是多少？你能不能做到成为他们第二大或者第一大的开销？你能帮他们解决多大价值的问题，能让你做到他们第一大、第二大的开销？他说你如果不知道你的用户收入是多少、增长是多少、最大的问题是什么、里面每个不同的人想解决什么问题——如果你做不到对用户这样的了解程度，那你的宣传也好、产品设计也好，都是隔靴搔痒，没办法做得很准确。
+
+孙煜征：那你怎么去了解的？你会怎么做？
+
+津晶：就直接问那些客户。很多人可以问——我们在湾区，对现在的赛道有一些天然优势：我身边的朋友，你就可以直接问"你们公司到底采购了什么""你们公司营收怎么样""今年 AI tool 方面的 budget 是什么""你上次采购的那个 tool 花了多少钱"。比如我就知道很多公司，它们第一大开销现在已经变成 AI 了——在 AI 之前，它们第一大开销其实是 Datadog，不是 AWS。
+
+孙煜征：哦对。
+
+津晶：以及"你们今年的 budget、预算是什么"。如果一个问不到，你就不停地问不同的人——我们发现公司的回答其实都大同小异，问上这么多个你大概就知道了。其实现在来说，这是很好的机会去 develop 对用户的一个 true understanding，而且这个 true understanding 比大家想象中的要深很多——很多时候大家以为是有了，其实还是表面的，要不停地问下去：访谈 100 个客户，问他们非常具体的问题，在里面不断地寻找真实的痛点是什么。
+
+孙煜征：那找到了真正的痛点，你们怎么把它转化成你们的 solution？
+
+津晶：先听一下他们已有的 solution。还是回到 leverage——借力：很多公司内部已经有各种各样的尝试，你可以知道"这个行不行、那个行不行"，这已经是一个非常好的 baseline[?] 了。另外，我们也在快速迭代：有很好的判断，但我不能保证我们的判断是正确的，快速迭代得到反馈还是非常重要的。我觉得这也是我们做得比较好的。特别是现在有了 AI 的赋能[?]：你既然确认这个痛点是真实的，解决它的方式——要不你就推出三种[?]不同的解决方式，当然三种都是你猜想应该是最好的。包括我们那个 agent status 的集成，其实也是经过了好几个迭代的：现在有很多人会抄我们的 agent status 集成的显示[?]，但之前第一版放在很中心的位置，我们当时觉得"这个可能是想看的时候再看一下的那种"，很随意地放在右边的一个角落，然后我们发现那根本没有任何用处，然后我们就会把它放在不同的地方，试了好多版，根据大家的反馈调整了很多次。
+
+---
+## 用户意见那么多，最后该听谁的？
+
+孙煜征：根据大家的反馈——你真实的 feedback loop 怎么建立？很多时候大家得到的是一个 biased sample，或者声音很大但其实不代表真实用户，你怎么得到有效的反馈，从而在快速迭代[?]中找到方向？
+
+津晶：可能这个不太科学——我们现在还没有做任何科学的实验，很多还是靠自己最后的判断。反正我们的原则是：包括我们很多社区的 PR、issue、各个论坛上面对我们的反馈，我们都是把它作为一个参考；我们也会做 qualitative 和 quantitative 的一些集成[?]——比如 50% 来自于这个，但要证实一下大家有这种建议。我觉得它都只作为一个信息：特别是在 AI 时代，你得到信息的方式越来越多，但我们都只把它作为一个信息，最后的决定权还是在我们 team 这四个人——有非常好的 product sense。也是属于大家相信自己：先收集足够多的信息，然后以你最好的判断来做出一个决定。
+
+孙煜征：我其实觉得这个非常有道理。采访投资的人他们也说，最后很多时候是体感。我自己是做数据科学的，数据能告诉你的东西可能也就百分之二三十，你最后要看的是你的 mental model——就是你说的这个 product sense，或者说是 taste。在这个话题上还可以多聊一些：你觉得你的 taste 或者 product sense 建立的比较关键的节点、milestone、开悟的时间？可能在一段时间之前你觉得自己没有找到一个好的 product sense，但有一段时间你突然感觉悟了。
+
+津晶：一个悟的点可能是：如果在不同的 product feature 之间犹豫不决、不知道该怎么解决的时候，那就以我自己作为标准用户——这恰好是因为我这个赛道的原因，我就是一个很好的用户；我们又有团队，可以体验很多团队之间协作的 AI workflow；我们之前产品也有卖给大公司的经历[?]，所以我也知道大公司的一些 workflow；同时我们现在又是一个快速迭代的团队。所以我觉得我们可能是很好的用户——在犹豫不决的时候，就试一下，看能不能提升我们的效率：它再不济，虽然大家可能不喜欢，但它至少提升了我们的效率，这恰恰可能最后是一个非常好的结果。这可能是最近开悟的一点。
+
+之前开悟的一点，是意识到 AI 发展的一个大趋势：很多的产品都可以通过 coding agent 来解决。现在的产品有两个分化：一个像我们这种做 general coding agent 平台，帮大家使用 Claude Code、Codex 这种；另外一种像很多产品，在它现有的 UI 里面加入一些 chatbot，有非常多增加用户体验的地方，但 context loss 太多。这对我来说是一个非常大的产品设计方向的启发：现有的很多产品，它的大方向已经很好了，你不能去 fight against 它，你要 build on top of it。我觉得这两个开悟瞬间都很重要。
+
+孙煜征：那我们再回到你的第一个创业项目：你是怎么让别人知道你这个项目，并且能收上钱来、有收入的？
+
+津晶：时间点很重要。我现在回想，我总体的 theme 是：基本上每个项目在开始的时候都有很多 inbound。比如 Orca 现在是大家刚好管理 agent 有困难，包括 enterprise 都在 look for solution；之前的 Stably AI testing，是 AI 生成太多 junk code，大家想怎么用 AI 也来做 testing；第一个 virtual event，我们刚好在 COVID 的尾巴，一放到 App Store，就有好几个毫不认识的人在 App Store 里面直接找到了我们。所以总结下来，都是在那个时间内解决正确的问题。第二点是要相信平台分发的流量：比如 Orca，我们很多流量还是来自于 GitHub 本身——大家直接在 GitHub 里面搜 ADE，这是一个新词，我们当时是唯一一个标明 ADE 的。大家当时会想 ADE 是什么，我标的时候也想"是不是风险太大了"，我当时就说：不管了，我们就是要造一个新词叫 ADE。现在大家越来越多人搜 ADE 或者 agentic development，很大一部分流量来自于 GitHub。所以我觉得在不同的平台能够利用它的流量，也是挺有用的。
+
+孙煜征：有一个特别好的产品，然后能抓到一个时代的脉搏——总之很好，喜欢"脉搏"这个词，你这个中医能力很强，把脉[?]能力非常强。
+
+---
+## 大厂跑得这么快，她为什么还不焦虑？
+
+孙煜征：正好就讲到了松弛感这件事。稍稍讲一下你的创业心态：为什么你没有那么着急？就觉得机会总是有的，只要你想去干都能干成？
+
+津晶：这个饼很大。大家会想象这是一个零和游戏——Anthropic、OpenAI 吃了这个就没有了——但是大家没想到，可能从历史的长河来看，我们刚刚在这里。没有人能想到以后我们的 GDP、我们人类作为一个文明能达到一个什么样的程度。可能大家觉得 SaaS 也完了，但是天哪，世界上还有这么多可以 build 的东西：我们连机器人都没有，我还没有做饭机器人，我们还没有登月、还没有去过火星，更别说生物方面还有很多可以做的突破。天哪，我对未来特别乐观——身为一个 builder，可以做的事情太多了，这个不行，我再试下一个。我们的松弛感就来自于：我们确实经历了很多这种"这个不行就做下一个吧"，无所谓，只要还有饭吃就可以。
+
+孙煜征：你应该 aware，很多人说 AI 是泡沫、现在科技发展是泡沫，包括 AI 对 GDP 也没有什么特别大的正面影响。但是你 aware 这些的情况下，还是选择了另外一个更乐观的信仰。
+
+津晶：我乐观的前提是：我其实不相信 AI 能取代人类。AI 的智能和人的智能有很多相似的地方，但我觉得它们是非常互补的。两年前我可能没有这么乐观——两年前我会说 AI 真的会取代人类：它和第二次工业革命不一样，蒸汽机取代的是我们的体力劳动，但我们至少还有脑力；现在 AI 真的取代我脑力，那人还有什么用？但我发现脑力不是一个简单的维度。比如说我的聪明程度和 Orca——Orca 其实是虎鲸的意思——虎鲸是一个聪明的动物，它的 intelligence 是不一样的：有虎鲸擅长的东西，也有人类擅长的；我发现有 AI 擅长的，也有人擅长的，AI 可能朝一个不同的方向走。虽然大家在把它训练得非常像人，但很多时候你还是没有一个像爱因斯坦当时提出相对论那样的思考。可能这是我的一个乐观——当然很多 AI 专家可能会出来打断我说，AI 在任何维度都可以降维打击人类。在我的观点，AI 和人类是互补的情况下，AI 我就把它当成一个巨大的生产力提升的工具。之前人类有很多没有解决的问题，比如生物医疗方面，还有矿产、对地球的开发——不知道大家对"一类文明"这个概念熟不熟悉[?]：一类文明就是这个文明动用[?]整个行星的能量。我觉得我们可能在十亿分之一的朝一类文明的路上，可以做的事情还有很多。就像人类多少年前没有想到，当我们解放了一个生产力的时候，就可以有这么大的可能性。那是我的乐观。稍微不乐观的，可能来自于财富分配：财富分配非常取决于人和 AI 的智能是不是互补。如果 AI 可以完全取代人类，那确实会有一个非常大的财富分配问题——大部分人会被少部分掌握 AI 的人认为是没有价值的，财富就不会分配给大家。但如果是不管 AI 再聪明，它还是需要一个人——哪怕是我们觉得比较愚蠢的人——提供一个 AI 达不到的互补的智能，那社会的分配形态也会继续延续。这是我跟技术毫无关系的一个思考。
+
+孙煜征：我觉得我 partially agree：人确实是不可替代的，AI 再怎么训练和人都是有区别的。但问题是，我们在教育的过程中过度强调了那些可以被 AI 取代的东西，而人真正独特的东西没有强调。我很看好下一代人，他们真的在 AI native 的世界里边，会反过来强调人性独特的东西——不管是你的 craft、你的兴趣、你的 passion、mastery。但是现在我们因为在工业革命之后，把人尽量地打造成一个标准件，而标准件的东西是最容易被取代的。
+
+津晶：是的，这确实是一个 concern。我觉得中间的转型区域会比较艰难。我非常喜欢历史——可能有些过度依赖于历史——这确实发生过很多次：工业革命的时候发生过，甚至在工业革命之前也发生过很多次。纺织技术出来的时候，90% 还是 80% 的英国青年都是失业，真的一整代青年人都失业了，应该是维多利亚女王时期还是什么。对那一代人来说非常艰难，但对于整个国家以及整个社会，大家也找到新的出路，可以开始钻研科学等等。
+
+孙煜征：Transition 是痛苦的，但又会被历史遗忘。对历史来说都是一个小点，但对每个人来说，那五年都是人生一个很重要的决定点。所以我非常能感受到，不管是做 AI 创业者还是其他行业，大家肯定都有一部分焦虑在身上。我在你身上感觉是没什么焦虑的。
+
+津晶：因为只要跑在这个前面就可以了——就适应吧。只要你觉得你能适应，其实就还好。
+
+---
+## 接下来的 AI 创业机会，她看好哪三类？
+
+孙煜征：我们还有一点时间。你有没有觉得我应该问的问题，或者想跟观众交流的东西？
+
+津晶：就展望一下，先不说远的——远的当然总体非常乐观，以及会担忧一些 AI 监管或者财富分配。从近的说，我觉得现在有一些比较好的创业机会，其中三个方面。
+
+第一个方面是 2C，做回 2C。B2B 在之前是一个更好的 business model：你卖给一个企业不太容易，但卖给企业之后，一般你签的至少是一年的 contract，很多时候你给它一点 discount 可以签个两三年，即使只签一年，它的那个年费[?]也比较高，因为 switching cost 比较高。但是现在，B2B 的 sales cycle 还是很高——大家不要以为现在 B2B 有了 AI 它会加速，其实采购并没有加速，相反变得更慢：大家采购现在非常犹豫，以前就是"我就应该买个 tool"，现在它会反复衡量"我买 tool、我要买 AI usage、我要买多少"，是个很漫长的过程；然后当你经过那漫长的过程采购了，三个月之后他们很快就想如何解除这个 contract。所以我碰到美国或者其他国家——也有一些印度的朋友——问创业的建议，我会说你看一下 2C，做一些 APP。
+
+孙煜征：你说的是 2B 变差了，但是 2C 有变好吗？
+
+津晶：2C 有变好，原因在于 ROI 变好了。以前做一个 2C、做一个 APP 还是挺麻烦的，现在很多人一个月可以做好多个 APP——ROI 的 investment 变少了。
+
+孙煜征：但 app 也变多了，市场上的应用多了 100 倍，这个时候大家的 attention 又是有限的，每个人手机上下载的 app 是有限的。
+
+津晶：我觉得看你做什么类的 app。如果你的 app 是那种零和游戏的 app——你要不看 TikTok、要不在看我——那肯定会竞争更激烈。但如果你的 app 是处于一个增长这个饼的——之前大家做不到的事，就像当时 iPhone 出来的时候，Uber、Airbnb 同期的这些 app，很多是大家以前想做但要花好多时间做不到的事情，甚至一个 APP 自带一些 AI 功能，是以前根本不太可能的——现在的这个饼其实在增长。如果你能解决一个实际的问题，也不需要担心"我跟 TikTok 抢时间"这种。另外一个为什么 ROI 变好、return 变好：大家的付费意愿现在是增强了的。之前 2C 用户对 APP 习惯了 free 的 ads powered economy，被 Google 补贴习惯了，觉得这个 APP 就应该免费——Google Map 就是应该免费、Docs 就应该免费、什么都应该免费。但现在没有人能够继续这种补贴了：AI 时代没有谁愿意这样补贴，你对 AI 的 usage 做一个收费，其实大家是愿意付费的。我从很多数据看到，C 端用户的付费意愿是在提高的。这是一个方向。
+
+第二个方向当然就是硬件，特别是国内的创业者：国内非常强的优势就是硬件优势，这个我觉得美国很多年都可能赶超不了。甚至我知道很多在美国创业的各个国家的人，他只要做硬件相关——我以前有个朋友卖美国这边的 heating system，他们自创的一种 AC，他基本上每个月都要飞一次中国——他们也感受到很多 supply chain 没办法处理得很好的问题。我觉得国内很多创业者可能有这方面的先天优势，可以考虑一下硬件和软件结合的方面，比如 Plaud（P-L-A-U-D）就是一个非常好的例子，软硬件结合得很好。
+
+第三点当然就是回到第一性原理思考：compute——芯片、存储，以及再往高一点集成它们一起形成算力。这会是接下来一两年非常火的，包括我看到 YC 新的 batch 也有很多 startups[?]——YC 的 batch 其实非常结合当时的热点——新 batch 的热点就是"我帮你 host 你的 model""我帮 enterprise self-host 这个 model""我帮你找算力"，不管是跑 agent 的算力还是跑 model 的算力，因为算力现在都很紧缺。举一个数据：湾区[?]现在所有的 MacBook Air，基本上你去任何一个苹果店、Best Buy 什么 computer store，越高配置的都是脱销、非常 backorder。现在算力非常紧俏，有算力的人可能会先得一步，这中间有很多套利的机会——因为它还没有完全变成像电力那种一家独大、国有[?]的，虽然要很大的云厂家才能来做这种算力，但其中一些小机会在这么大的一个市场里也是有的。我昨天跟一个朋友聊，他想下一个创业，我跟他说黄仁勋的那个 five-layer cake：在算力和 model 之间还有一层芯片的优化，这是一个 transferred layer[?]——这件事之前是 CUDA 一统天下，但在 AI 之后，我觉得还是有更多的机会。除了算力集成、算力 hosting、算力的 serving，从一个芯片到它产生 token 之间的优化，我觉得也是一个很大的机会。
+
+孙煜征：另外一个我不知道——B2B 不是一个好的，但服务你觉得是好的东西吗？或者是一个值得的[?]方向吗？类似 FTE 这样的服务、technical consulting，但现在更多是帮助大家做 AI 的 adoption[?]。
+
+津晶：看个人的接受程度。可能跟 2C 一样，你得必须随时 adapt——可能每个月这个市场的需求不一样：这个月帮大家 adopt AI，你的热点在于如何帮大家节省 cost；下个月大家又有不一样的热点。
+
+孙煜征：我想的那个服务，就是你去用 AI 直接收一个公司然后去使用[?]。我想到一个东西：这个东西在美国卖 60 美元还是多少，被几个公司垄断了，我 order[?] 拿到可能要一个月，很贵，而且它中间还养了好几层的人——能很明显感觉到他们是一个十几年前 build 的系统：我现在在网站下单，他给我放到另外一个公司，另外一个公司又给我发了一个邮件，确定了以后再去 ship。
+
+津晶：对对对。我觉得这是刚才没说到的一个：传统行业也有蛮多机会，比如建筑——身边蛮多做建筑的有非常好的 revenue，因为 AI 对他们是纯 enable[?]，而且在 Anthropic 的产品设计模式和建筑工地具体使用场景之间，还是有一个特别大的鸿沟。所以我觉得这些都是机会：填沟填缝，然后就看到很多机会。
+
+孙煜征：很棒。我们现在时间差不多，约到五点[?]。还有没有什么想跟我们观众聊的？
+
+津晶：觉得我今天在 Superlinear[?] 上面看到好多大家发布的产品，社区里面大家都很厉害，希望和大家一起在这个 AI 的淘金浪潮里面淘到自己的一桶金。如果大家想要 AI 产品迭代、以及做日常业务的工作流不是最满意，也欢迎大家试下 Orca——我们每天都有一个新的 feature 发布，希望能让大家永远都保持最快的速度迭代。
+
+孙煜征：肯定的。我尽早把咱们的访谈发到 Superlinear 社区[?]，多鼓励大家去试用你们的产品。里面确实都是中文世界里使用 AI 比较先进的一群人了——两万多个人，里面现在可能七八百个不同的项目了，相信大家会非常喜欢你的产品。好了，感谢感谢。
+
+津晶：好，谢谢，谢谢你。
+
+（片尾预告剪辑及 AI Builders 课程广告：01:05:28–01:06:49，从略）
+
+---
+
+## 校正清单（whisper 误识别 → 修正）
+
+| 原文（误） | 修正 | 说明 |
+|---|---|---|
+| Clock / Clock Code / Cloud Code / Clocko / Clocker / Clockwork / Clockhold / Walker / Volca / Oka / Org / Oracle / Overcast | Claude Code / Orca（按语境） | whisper 对这两个品牌名的系统性误识别；"Walker/Volca/Oka/Org/Oracle/Overcast" 处均指 Orca |
+| 金金 | 津晶 | 嘉宾名，依 shownotes |
+| Astropic / Ethopic / SRPG / Athropic | Anthropic | |
+| Anthropic 的 bio/bill | Anthropic 的 bill（账单） | "企业第一大开销"语境 |
+| 故意UI / Agui UI / 固定UI | GUI | |
+| 2E / tue | TUI | |
+| COI / clid | CLI | |
+| Terminal-P | Claude Code `-p` | headless 模式参数 |
+| Paranormal thread | parallel thread | |
+| Worksheet / sub-workshare | worktree / sub-worktree | |
+| Devon | Devin | |
+| Py / 派 | Pi[?] | 某 harness 名，未能完全确认，保留 [?] |
+| Anti-Gravity / AltiGravity | Antigravity | Google 的 agentic IDE |
+| DeepSync | DeepSeek | |
+| rock | Grok | |
+| OpenCode Go | OpenCode Go[?] | 不确定是否为独立产品名 |
+| OpenCore | OpenCore[?] | "跑成 SOP……像大家以前用 OpenCore 一样"，未能确认指代 |
+| UltraCode | UltraCode[?] | Claude Code 的模式名，疑为 ultrathink 类，不确定 |
+| Ghost / Ghosting / Ghostie / Ghosty | Ghostty | 终端模拟器 |
+| item | iTerm | |
+| head off / handle off | handoff / hand off | |
+| on-part | on par | |
+| 集成和写作 | 集成和协作 | |
+| 工序 | 工具 | |
+| 十个礼本九个失败 | 十个里头九个失败 | |
+| 5万可行了 | 5万颗星了 | |
+| hyperscanning 的 builder | hyperscanning[?] | 不确定，疑为 hyperscaling/high-agency 类 |
+| 尽快 Shift 这个 Feature | 尽快 ship[?] 这个 feature | |
+| incentive 也不是要烂的 | incentive 也不一样[?] | |
+| 特写美团 | 去美团[?] | 孙煜征在美团做企业培训，语境支持 |
+| 长江空浪最前浪 | 长江后浪推前浪[?] | |
+| 在日志上在进行迭代 | 在巨人的肩膀上迭代[?] | |
+|  Stable（第二个创业项目） | Stably | 即 stablyai，Orca 所属公司 |
+| establish AI testing | Stably AI testing | |
+| 心妙淡写 | 轻描淡写 | |
+| 线上级的成功 | 现象级的成功 | |
+| 成功的地域 | 成功的定义[?] | |
+| 能升YC | 能进 YC | |
+| 它面世我们 | YC 面试我们 | |
+| leash area | niche[?] | |
+| Cdance | Seedance[?] | 字节视频生成模型 |
+| AI 列一个就可以了 | AI 写一个就可以了[?] | |
+| 流存率 | 留存率 | 多处 |
+| Traffic King | traffic | "得到 traffic 很简单"语境 |
+| 外系同学们 | YC 同学们[?] | |
+| context（"大家愿意看这种 context"） | content | |
+| Code Text Trick | Codex trick | |
+| 满能千千万 | 能人千千万 | |
+| The Man Test | The Mom Test | Rob Fitzpatrick 的用户访谈经典，主持人口误或误识别，内容完全对应 |
+| base 9 | baseline[?] | |
+| 推出300不同的解决方式 | 推出三种[?]不同的解决方式 | |
+| agent status 的机身显示 | agent status 集成的显示[?] | |
+| 快速地带 | 快速迭代[?] | |
+| quantitative 和 quantitative | qualitative 和 quantitative[?] | 原文两次均为 quantitative，一处应为 qualitative |
+| 大公司的一些经营力 | 大公司的一些经历[?] | |
+| Champbox | chatbot | |
+| 总监很好 | 总之很好 | |
+| 打麦能力 | 把脉能力 | |
+| 松弛干 | 松弛感 | |
+| Athropic Open Air | Anthropic、OpenAI | |
+| SARS 也完了 | SaaS 也完了 | "SaaS 已死"梗 |
+| 虎精 | 虎鲸 | Orca 一词的本义 |
+| 属不属性 | 熟不熟悉[?] | |
+| 204 整个行星的能量 | 动用[?]整个行星的能量 | 卡尔达肖夫一类文明 |
+| 土币变差了 | 2B 变差了 | |
+| RI | ROI | 多处 |
+| Dock 就应该免费 | Docs 就应该免费 | |
+| 再做矿的 | 先做矿的[?] | 毕业后的首段经历，未能确认 |
+| 年薪也比较高（B2B 合同） | 年费[?]也比较高 | |
+| 再弯曲 | 在湾区 | |
+| 一家独搭国有 | 一家独大、国有[?] | |
+| starter（YC batch） | startups[?] | |
+| Transferred Layer | transferred layer[?] | 疑为 translation layer |
+| 酷大一统天下 | CUDA 一统天下 | |
+| 王仁勋 | 黄仁勋 | |
+| 职责的方向 | 值得的方向[?] | |
+| AI 的 ability | AI 的 adoption[?] | |
+| 纯实 enable | 纯 enable[?] | |
+| 我 other 拿到 | 我 order[?] 拿到 | |
+| 再去 Shift | 再去 ship | |
+| SuperNinja / Super0 / State Superlinear | Superlinear[?] | 孙煜征的社区"超线性学院"（superlinear.academy） |
+| 淘金闹潮 | 淘金浪潮 | |
+| 拆报 | chatbot | |
+| 交度所有的数据 | 调度所有的数据 | |

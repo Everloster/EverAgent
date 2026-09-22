@@ -196,3 +196,5 @@
 - 互链：[[concepts/ai-capex-bubble-debate]] 追加三视角互补段（庄明浩供给侧/Bill 金融侧/蒋涛需求侧）
 - 外部核验：Anthropic ≈9650 亿美元估值（嘉宾"1万亿"四舍五入）✓；软银 400 亿投 OpenAI ✓（现押注超 600 亿）；OpenAI/Anthropic/SpaceX 冲 IPO ✓
 - **经验两条**：① **B 站 412 拦截已消失**——yt-dlp 直下成功（AGENTS.md"B站链接例外：yt-dlp 被 412 拦截"已过时，opencli download 仅作 fallback）；② opencli bilibili summary/download 依赖浏览器扩展在线，扩展不在线时 Navigation rejected，video/subtitle 走 API 不受影响
+- 2026-09-22 | ingest ×3 | 用户点名催更新三集：① 屠龙之术《智能的下一幕》73页PPT solo（55m21s，2009段/12,452字）→ [[2026-09-15_xiaoyuzhou-tulong-zhishu_next-act]]（模型狂奔/智能分化/循环自生/界面重构；与 07-17 CAPEX 期续集关系已对照）；② 课代表319 津晶/Orca（1h06m54s）→ [[2026-09-17_rss-kedaibiao-lizheng_jinjing]]（ADE vs Harness、400 任务三层法）；**首轮转写 VAD-only 在 00:13:01 起循环幻觉占 89.5%，加 `-mc 0` 重转修复——教训已写进 AGENTS.md 已知局限**（VAD 单独不保险，触发点可在语音中段；质检须跑重复段检测）；③ 十字路口×徐梦迪（1h20m，3159段/22,227字）→ [[2026-09-20_xiaoyuzhou-crossing_xumengdi]]（adaptation/ICL、loss≠成功率、机器人 GPT-1 阶段论；JHU 求学口径未核实已标 Limitations）
+- 新增 entities ×2（jinjing-orca、xu-mengdi）；concepts ×2（loop-rsi-consensus、ade-vs-harness）；open-questions 汇入 9 问（三期各 3）

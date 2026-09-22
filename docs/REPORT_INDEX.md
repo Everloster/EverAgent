@@ -8,6 +8,9 @@
 | 日期 | 报告 | 领域 |
 |------|------|------|
 | 2026-09-22 | [格罗滕迪克「涨潮」思想 — 让难题消失的升维方法研究](../ai-learning/reports/knowledge_reports/格罗滕迪克涨潮思想_让难题消失的升维方法研究_20260922.md) | ai-learning |
+| 2026-09-22 | [智能的下一幕：庄明浩 73 页 PPT 的 2026Q3 行业复盘（模型狂奔/智能分化/循环自生/界面重构）](../podcast-learning/reports/2026-09-15_xiaoyuzhou-tulong-zhishu_next-act.md) | podcast-learning |
+| 2026-09-22 | [一个人指挥 400 个 AI：Orca 津晶的多 agent 编排实操（ADE vs Harness）](../podcast-learning/reports/2026-09-17_rss-kedaibiao-lizheng_jinjing.md) | podcast-learning |
+| 2026-09-22 | [「我看到了 Scaling Law 的信号」：徐梦迪谈具身智能、世界模型与真正的泛化](../podcast-learning/reports/2026-09-20_xiaoyuzhou-crossing_xumengdi.md) | podcast-learning |
 | 2026-09-22 | [Laya：把「反射性决策」从 LLM 里拆出来——421M 非自回归 System 1 决策模型解析与本机实测](../ai-learning/reports/knowledge_reports/Laya_System1决策模型_深度解析_20260922.md) | ai-learning |
 | 2026-09-22 | [AI 行业日报 · 2026-09-22](../web-surfing/reports/ai-news-daily-2026-09-22.md) | web-surfing |
 | 2026-09-21 | [AI 行业日报 · 2026-09-21](../web-surfing/reports/ai-news-daily-2026-09-21.md) | web-surfing |
@@ -29,9 +32,6 @@
 | 2026-09-12 | [CLS同学：如果5%的房地产以旧换新出台，你会买新房吗？——三驾马车承压下的「房地产出冷宫」推演](../podcast-learning/reports/2026-09-12_bilibili-cls-tongxue_fangchan-yijiuhuanxin.md) | podcast-learning |
 | 2026-09-11 | [程乐松×脱不花《长谈》64期：活得哲学一点——一场打通「出圈金句」与「道教研究/中国哲学方法论」的3小时对谈](../podcast-learning/reports/2026-09-05_bilibili-changtan_chenglesong.md) | podcast-learning |
 | 2026-09-11 | [Anthropic 经济情景模型：把 AI 能力预测翻译成 2030 年的 GDP、工资与失业](../ai-learning/reports/knowledge_reports/Anthropic经济情景模型_深度解析_20260911.md) | ai-learning |
-| 2026-09-11 | [AI 行业日报 · 2026-09-11](../web-surfing/reports/ai-news-daily-2026-09-11.md) | web-surfing |
-| 2026-09-10 | [AI 行业日报 · 2026-09-10](../web-surfing/reports/ai-news-daily-2026-09-10.md) | web-surfing |
-| 2026-09-09 | [vLLM 调度器：continuous batching 的真身（课论断 ↔ 源码对照篇）](../ai-learning/reports/knowledge_reports/vLLM_调度器_continuous_batching真身_20260909.md) | ai-learning |
 
 ## 🤖 AI Learning（108 篇）
 
@@ -256,10 +256,13 @@
 | 2026-03-26 | [Physiology of Growth Hormone Secretion during Sleep (1996) 精读](../biology-learning/reports/paper_analyses/P09_gh_sleep_physiology_1996.md) | — |
 | 2026-03-23 | [晚型人作息与力量训练深度研究](../biology-learning/reports/concept_reports/晚型人作息与力量训练_深度研究报告.md) | — |
 
-## 🎙️ Podcast Learning（27 篇）
+## 🎙️ Podcast Learning（30 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-09-22 | [智能的下一幕：庄明浩 73 页 PPT 的 2026Q3 行业复盘（模型狂奔/智能分化/循环自生/界面重构）](../podcast-learning/reports/2026-09-15_xiaoyuzhou-tulong-zhishu_next-act.md) | — |
+| 2026-09-22 | [一个人指挥 400 个 AI：Orca 津晶的多 agent 编排实操（ADE vs Harness）](../podcast-learning/reports/2026-09-17_rss-kedaibiao-lizheng_jinjing.md) | — |
+| 2026-09-22 | [「我看到了 Scaling Law 的信号」：徐梦迪谈具身智能、世界模型与真正的泛化](../podcast-learning/reports/2026-09-20_xiaoyuzhou-crossing_xumengdi.md) | — |
 | 2026-09-15 | [所长林超《AI泡沫，2027年爆破？》：开源价格锚定、巨头 IPO 考验与七万亿债](../podcast-learning/reports/2026-07-24_bilibili-suochang-linchao_ai-bubble-2027.md) | — |
 | 2026-09-14 | [易论AI Vol.1：AI最前沿的人已经不聊大模型了——李继刚×橘子×歸藏的四人谈（服务裹着能力/齿轮速度差/Agent+X/上下文是一辆车）](../podcast-learning/reports/2026-09-09_xiaoyuzhou-yilun-ai_frontier-no-llm.md) | — |
 | 2026-09-13 | [一本书看清"工作"的真相：竹竹暴风雪解读 × 鲍曼《工作、消费主义和新穷人》原书深读](../podcast-learning/reports/2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism.md) | — |
