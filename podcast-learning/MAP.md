@@ -9,7 +9,7 @@
 
 | 主线 | 想覆盖 | 已覆盖（报告/wiki） | 缺口 |
 |------|--------|---------------------|------|
-| AI行业 | ✓ | Vol.29 王小川医疗 AI / 生命模型 / 非共识 AI 路线（2026-06-18）；**2026-07-17 屠龙之术 2026H1 行业观察（文艺复兴映射 / CAPEX 泡沫之辩 / Agent 元年，wiki: zhuang-minghao、renaissance-revaluation 等 5 概念）**；**2026-09-03 曾鸣产业史观（三阶段论 / AI 云公司=寡头+强监管 / 公司消亡 / 战略生成，wiki: zeng-ming、native-app-stage、strategy-generation、intelligence-flywheel）**；**2026-09-09 易论AI Vol.1 四人谈（李继刚/橘子/歸藏：服务裹着能力·FDE/齿轮速度差/Agent+X 入口之争/上下文管理/缓存经济学，wiki: li-jigang 扩充、juzi-cola、guizang）** | 持续关注；下半年四议题（ROI 指标 / 中美差距 / 世界模型共识 / 治理冲突）跟踪 |
+| AI行业 | ✓ | Vol.29 王小川医疗 AI / 生命模型 / 非共识 AI 路线（2026-06-18）；**2026-07-17 屠龙之术 2026H1 行业观察（文艺复兴映射 / CAPEX 泡沫之辩 / Agent 元年，wiki: zhuang-minghao、renaissance-revaluation 等 5 概念）**；**2026-09-03 曾鸣产业史观（三阶段论 / AI 云公司=寡头+强监管 / 公司消亡 / 战略生成，wiki: zeng-ming、native-app-stage、strategy-generation、intelligence-flywheel）**；**2026-09-09 易论AI Vol.1 四人谈（李继刚/橘子/歸藏：服务裹着能力·FDE/齿轮速度差/Agent+X 入口之争/上下文管理/缓存经济学，wiki: li-jigang 扩充、juzi-cola、guizang）**；**2026-09-15 屠龙之术 73 页 PPT Q3 复盘（Own Your Intelligence / Loop·RSI 共识 / new lab 里程碑缺位，wiki: loop-rsi-consensus）**；**2026-09-17 课代表 319 津晶/Orca 多 agent 编排（ADE vs Harness，wiki: jinjing-orca、ade-vs-harness）**；**2026-09-20 十字路口×徐梦迪具身智能（loss≠成功率 / 机器人 GPT-1 阶段论，wiki: xu-mengdi）** | 持续关注；具身 scaling 信号（徐梦迪线）与 new lab 里程碑信号（庄明浩线）跟踪 |
 | 商业 | ✓ | BV1NHJF6oE8m CLS 同学三年行业吃肉榜/衰落榜（2026-06-20）；**2026-07-07 屠龙博士创业方法论（非线性/定价锚定/人才洼地，wiki: tulong-boshi、nonlinear-history-jumps）**；**2026-09-12 CLS 房产以旧换新推演（政策三连[Web]/央地9:1/二手房二手车化，与 AI 主线 CAPEX 议题联动）** | 2026 行业更新；《Dataclysm》拆书；AI capex→中国出口传导链核验 |
 | 科技/访谈 | ✓ | Vol.30-32 三期（2026-06-21） | — |
 | 读书方法论 / 认知框架 | ✓ | **2026-07-09 明镜关于 F×X 公式 / 四种配速 / 人是滤器（首次）**；**2026-08-14 竹竹解读×鲍曼《工作、消费主义和新穷人》双源深读（工作伦理/消费者社会/新穷人，wiki: zhuzhu-baofengxue、work-ethic、consumer-society、new-poor-bauman）** | 待深化；竹竹领读系列（下集新穷人、乡土中国/生育制度等 35 集）可追踪 |
@@ -28,6 +28,7 @@
 
 ## 更新日志
 
+- 2026-09-22：AI行业主线回填三期（屠龙 Q3 复盘 / 课代表 319 / 徐梦迪）；新增跟踪线：具身智能 scaling 信号、new lab 里程碑信号。
 - 2026-09-13：「读书方法论 / 认知框架」主线回填竹竹解读×鲍曼双源深读（首个「视频+原书 PDF」双源学习案例）；新增可追踪缺口：竹竹领读下集（新穷人）。
 - 2026-09-12：「商业」主线回填 CLS 房产以旧换新期；新增缺口「AI capex→中国出口传导链核验」（挂 AI 行业主线）。
 

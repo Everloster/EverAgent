@@ -15,6 +15,7 @@
 - [[2026-07-24_bilibili-suochang-linchao_ai-bubble-2027|所长林超《AI泡沫，2027年爆破？》：开源价格锚定、巨头 IPO 考验与七万亿债]]（episode_summary · 发布 2026-07-24，归档 2026-09-15）— 涌现×Bill It Up S01E01 视频版，38m23s 三人对谈（Bill Qian+蒋涛），深V 软着陆 vs 2027H2 / 开源价格锚定 / 四大泡沫论检视 / 调度层价值；与 CAPEX 泡沫之辩三视角互补
 - [[2026-09-03_xiaoyuzhou-zhangxiaojun_zengming|153. 和曾鸣聊产业史观：残酷的真相、会消亡的公司、优秀≠卓越]]（episode_summary · 2026-09-03）— 小宇宙「张小珺Jùn」对谈曾鸣，2h34m，AI 产业化三阶段论 / 模型公司=AI 云公司（寡头+强监管）/ 公司消亡 / 战略生成 / 巨头审判
 - [[2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review|重估一切，文艺复兴——2026H1 AI行业观察]]（episode_summary · 2026-07-17）— 小宇宙「屠龙之术」庄明浩单口，54m37s，CAPEX 泡沫之辩 / Agent 元年 / 中美双极 / 第四支柱
+- [[2026-09-15_xiaoyuzhou-tulong-zhishu_next-act|智能的下一幕：庄明浩 73 页 PPT 2026Q3 复盘]]（episode_summary · 2026-09-15）— 屠龙之术单口，55m21s，模型狂奔（制造业化/benchmark 失效）/ 智能分化（Own Your Intelligence）/ 循环自生（Loop·RSI 共识）/ 界面重构（App Store 十年首降）
 
 ### AI Infra / 开源商业化
 
@@ -52,6 +53,14 @@
 ### 读书方法论 / 认知框架
 
 - [[2026-07-09_xiaoyuzhou-mingjing-diandian_lijigang|读书：4种配速，取景框，人是滤器，冲刷神经网络 —— 明镜与李继刚关于读书方法论的深度对话]]（episode_summary · 2026-07-09）— 小宇宙「明镜与点点」（面基）对谈节目，1h54min，核心公式 F × X = Fx
+
+### AI 行业 / Agent 工程实操
+
+- [[2026-09-17_rss-kedaibiao-lizheng_jinjing|一个人指挥 400 个 AI：Orca 津晶的多 agent 编排实操（ADE vs Harness）]]（episode_summary · 2026-09-17）— 课代表立正对话 319，1h06m，ADE/harness 分层 / 400 任务三层法 / 4 人日产百 PR；首轮转写循环幻觉 89.5%、`-mc 0` 修复的标志性案例
+
+### 具身智能 / 人物访谈
+
+- [[2026-09-20_xiaoyuzhou-crossing_xumengdi|「我看到了 Scaling Law 的信号」：徐梦迪谈具身智能、世界模型与真正的泛化]]（episode_summary · 2026-09-20）— 十字路口Crossing 对谈清华叉院 AP，1h20m，adaptation/ICL / loss≠成功率 / 机器人 GPT-1 阶段论 / 数据四路融合
 
 ### 社会学 / 工作观
 
@@ -115,6 +124,11 @@
 
 - [[entities/liu-fangqi|刘方奇]] — 复旦大学附属肿瘤医院大肠外科副主任医师（vol.122 嘉宾；遗传性肠癌/保肛/新辅助方向）
 - [[entities/li-zhizhong|李治中（菠萝）]] — 《菠萝健康派》主播，杜克癌症生物学博士、科普作家（@菠萝因子）
+
+### 来自 2026-09 三期（屠龙 Q3 / 课代表 319 / 徐梦迪）
+
+- [[entities/jinjing-orca|津晶 & Orca（Stably AI）]] — ADE 提出者；400+ 任务编排实操；ex-Google/YC
+- [[entities/xu-mengdi|徐梦迪]] — 清华叉院 AP，具身智能；CMU 最佳博士论文；斯坦福博后（李飞飞/吴佳俊）
 
 ### 来自 2026-08-14 竹竹暴风雪（社会学领读 16 期）
 
@@ -217,5 +231,10 @@
 - [[concepts/work-ethic|工作伦理]] — 被发明的规训工具："工作即正义，不工作即罪恶"（鲍曼第 1 章）
 - [[concepts/consumer-society|消费者社会 / 消费美学]] — 人首先要成为消费者才能再有其他身份；美学取代伦理学整合社会（鲍曼第 2 章）
 - [[concepts/new-poor-bauman|新穷人（有缺陷的消费者）]] — 贫穷从失业变成"不合格消费者"的困境（鲍曼第 2/4/6 章）
+
+### 来自 2026-09 三期（屠龙 Q3 / 课代表 319 / 徐梦迪）
+
+- [[concepts/loop-rsi-consensus|Loop / RSI 共识（循环自生）]] — 大佬共识收敛到 AI 改进 AI；a16z 四象限划边界；new lab 943 亿融资 vs 里程碑缺位
+- [[concepts/ade-vs-harness|ADE vs Harness]] — 津晶的分层：harness=agent loop，ADE=人与 agent 的管理 workflow
 
 *Last updated: 2026-09-13*
