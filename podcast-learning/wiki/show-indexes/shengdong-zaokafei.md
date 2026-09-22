@@ -1,11 +1,20 @@
 # 声动早咖啡 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/q88qwmydeuw8>）｜ 最近拉取：2026-09-09 ｜ 总集数：1050
+> 来源：官方 RSS（<https://feed.xyzfm.space/q88qwmydeuw8>）｜ 最近拉取：2026-09-22 ｜ 总集数：1059
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
 | 22 | 2025-07-01 | 12m33s | [22.8 元袋装冰块进驻山姆，农夫山泉为何也盯上冰块生意？](https://www.xiaoyuzhoufm.com/episode/6863f40393fd2d72b80338a6?utm_source=rss)<!--g:6863f40393fd2d72b80338a6--> | — |
+| — | 2026-09-21 | 10m58s | [京沪高铁中秋节前出现降价，新百伦起诉迪卡侬侵权](https://www.xiaoyuzhoufm.com/episode/6ab13af893d5eb3bdc78df25?utm_source=rss)<!--g:6ab13af893d5eb3bdc78df25--> | — |
+| — | 2026-09-20 | 19m19s | [参半｜阿那亚变身热门景点，一度销售难的地产项目如何摆脱困境？](https://www.xiaoyuzhoufm.com/episode/6aafe10e0916f6f8b4465477?utm_source=rss)<!--g:6aafe10e0916f6f8b4465477--> | — |
+| — | 2026-09-17 | 17m33s | [图拉斯｜咖啡豆：月饼薯片都打上「黑松露」标签，高端食材为何变得无处不在？](https://www.xiaoyuzhoufm.com/episode/6aabe7fb051af796b9e9c0c0?utm_source=rss)<!--g:6aabe7fb051af796b9e9c0c0--> | — |
+| — | 2026-09-16 | 14m04s | [图拉斯｜苹果成今年艾美奖的最大赢家，携程二季度由盈转亏](https://www.xiaoyuzhoufm.com/episode/6aaa9890051af796b9e93c72?utm_source=rss)<!--g:6aaa9890051af796b9e93c72--> | — |
+| — | 2026-09-15 | 16m28s | [图拉斯｜卖了三十年雪饼的旺旺，为何推不出下一款明星产品？](https://www.xiaoyuzhoufm.com/episode/6aa95be4051af796b9e8b939?utm_source=rss)<!--g:6aa95be4051af796b9e8b939--> | — |
+| — | 2026-09-14 | 13m28s | [图拉斯｜资生堂起诉平价商超奥乐齐，Alo 签约王一博](https://www.xiaoyuzhoufm.com/episode/6aa7e17b9d32647781690234?utm_source=rss)<!--g:6aa7e17b9d32647781690234--> | — |
+| — | 2026-09-13 | 18m44s | [图拉斯｜把校徽印上卫衣 T 恤，美国大学如何把授权校名做成一门生意？](https://www.xiaoyuzhoufm.com/episode/6aa68fb49d326477816866e6?utm_source=rss)<!--g:6aa68fb49d326477816866e6--> | — |
+| — | 2026-09-10 | 14m08s | [咖啡豆｜从飞机潜艇走进日常生活，钛为什么成了水杯的热门材料？](https://www.xiaoyuzhoufm.com/episode/6aa2b1e29d32647781672d46?utm_source=rss)<!--g:6aa2b1e29d32647781672d46--> | — |
+| — | 2026-09-09 | 10m21s | [OpenAI 突破性数学成果陷入争议，LV 旗下基金牵头收购 Hyrox 控股权](https://www.xiaoyuzhoufm.com/episode/6aa154219d3264778166998e?utm_source=rss)<!--g:6aa154219d3264778166998e--> | — |
 | — | 2026-09-08 | 16m18s | [猪肉价格经历漫长下跌，为什么「猪周期」不再遵循老节奏？](https://www.xiaoyuzhoufm.com/episode/6aa01491f03e74ee6b0730ef?utm_source=rss)<!--g:6aa01491f03e74ee6b0730ef--> | — |
 | — | 2026-09-07 | 11m03s | [怡宝纯净水份额下滑，安踏旗下瑜伽服品牌开设健身房](https://www.xiaoyuzhoufm.com/episode/6a9ec764f03e74ee6b069cc2?utm_source=rss)<!--g:6a9ec764f03e74ee6b069cc2--> | — |
 | — | 2026-09-06 | 15m57s | [美妆小样变身独立商品，品牌为何都在纷纷布局迷你产品？](https://www.xiaoyuzhoufm.com/episode/6a9d3aa9a0210c197dce4a3e?utm_source=rss)<!--g:6a9d3aa9a0210c197dce4a3e--> | — |

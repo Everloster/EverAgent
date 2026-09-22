@@ -1,10 +1,11 @@
 # 投资ABC — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/9bmupxfae9qd>）｜ 最近拉取：2026-09-09 ｜ 总集数：64
+> 来源：官方 RSS（<https://feed.xyzfm.space/9bmupxfae9qd>）｜ 最近拉取：2026-09-22 ｜ 总集数：65
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-14 | 1h02m | [E63 从收租到收息：为什么这些年，大家越来越关注红利投资了？](https://www.xiaoyuzhoufm.com/episode/6aa630e9492687f6aad90bfa?utm_source=rss)<!--g:6aa630e9492687f6aad90bfa--> | — |
 | — | 2026-08-31 | 1h08m | [E62 从互联网泡沫到 AI 淘金热，我们该如何参与一场技术革命？](https://www.xiaoyuzhoufm.com/episode/6a939d58a0210c197dca52e0?utm_source=rss)<!--g:6a939d58a0210c197dca52e0--> | — |
 | — | 2026-08-17 | 50m26s | [E61 聊聊心理账户：让投资账户里的钱，抵达具体的生活](https://www.xiaoyuzhoufm.com/episode/6a81623717676351c572978e?utm_source=rss)<!--g:6a81623717676351c572978e--> | — |
 | — | 2026-08-03 | 53m59s | [E60 中国视角下的新兴市场：狂风大浪的海洋中，互利共存是根本](https://www.xiaoyuzhoufm.com/episode/6a6f0e6e1b5e24969ce79c4e?utm_source=rss)<!--g:6a6f0e6e1b5e24969ce79c4e--> | — |

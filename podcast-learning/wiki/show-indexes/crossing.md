@@ -1,10 +1,13 @@
 # 十字路口Crossing — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/68fyjknth9hj>）｜ 最近拉取：2026-09-09 ｜ 总集数：129
+> 来源：官方 RSS（<https://feed.xyzfm.space/68fyjknth9hj>）｜ 最近拉取：2026-09-22 ｜ 总集数：132
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-20 | 1h20m | [“我看到了 Scaling Law 的信号” \| 对谈清华叉院助理教授徐梦迪：具身智能、世界模型、真正的泛化](https://www.xiaoyuzhoufm.com/episode/6ab0504f0916f6f8b4466ece?utm_source=rss)<!--g:6ab0504f0916f6f8b4466ece--> | — |
+| — | 2026-09-16 | 1h09m | [于是转身向具身走去｜对话王家伟：24 岁的具身智能首席科学家](https://www.xiaoyuzhoufm.com/episode/6aaa9f039d326477816a3488?utm_source=rss)<!--g:6aaa9f039d326477816a3488--> | — |
+| — | 2026-09-13 | 42m42s | [当具身智能走到十字路口｜对谈苏度、蚂蚁灵波、自变量、破壳：四种一线判断](https://www.xiaoyuzhoufm.com/episode/6aa67b319d32647781685e95?utm_source=rss)<!--g:6aa67b319d32647781685e95--> | — |
 | — | 2026-09-06 | 1h16m | [她被骗过、被救过、被捧上神坛过、被疼痛击倒过，决定在AI时代继续冒险｜对谈陈安妮](https://www.xiaoyuzhoufm.com/episode/6a9abd3df03e74ee6b052a28?utm_source=rss)<!--g:6a9abd3df03e74ee6b052a28--> | — |
 | — | 2026-09-02 | 2h30m | [对卷卷的3小时访谈：从抖音到AI 3D、创业的过山车、成为制造业OS的野心、基础模型不会吞噬一切！](https://www.xiaoyuzhoufm.com/episode/6a97a9daa0210c197dcc1ba0?utm_source=rss)<!--g:6a97a9daa0210c197dcc1ba0--> | — |
 | — | 2026-08-30 | 48m54s | [AI 下半场，不会只剩一个超级模型｜对谈 Kevin Ding：Pyromind 创始人/CEO](https://www.xiaoyuzhoufm.com/episode/6a90fc5e1352af56ff3d48af?utm_source=rss)<!--g:6a90fc5e1352af56ff3d48af--> | — |

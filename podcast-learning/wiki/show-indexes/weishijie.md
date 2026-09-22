@@ -1,10 +1,12 @@
 # 卫诗婕｜漫谈Light the Star — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/4jjdlpq3khc9>）｜ 最近拉取：2026-09-09 ｜ 总集数：86
+> 来源：官方 RSS（<https://feed.xyzfm.space/4jjdlpq3khc9>）｜ 最近拉取：2026-09-22 ｜ 总集数：88
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| 88 | 2026-09-16 | 2h29m | [88.在新加坡，与祥峰郑俊聪的访谈：硬科技，下一代 Long China 与华人创新的信心史](https://www.xiaoyuzhoufm.com/episode/6aa96825051af796b9e8bec1?utm_source=rss)<!--g:6aa96825051af796b9e8bec1--> | — |
+| 87 | 2026-09-12 | 2h06m | [87.蓝色光标 x AhaCreator官宣后首次访谈：营销巨头、AI 原生，与出海增长进行时](https://www.xiaoyuzhoufm.com/episode/6aa3c67d492687f6aad866a4?utm_source=rss)<!--g:6aa3c67d492687f6aad866a4--> | — |
 | 86 | 2026-09-07 | 1h25m | [86.「明年科技公司就只招 AI 人才了！」和脉脉CEO林凡聊全球 AI 人才动向、组织变革与大模型季报](https://www.xiaoyuzhoufm.com/episode/6a9daa7ea0210c197dce7a8b?utm_source=rss)<!--g:6a9daa7ea0210c197dce7a8b--> | — |
 | 85 | 2026-08-31 | 44m14s | [85.和蚂蚁、千问、吉利、OPPO、vivo 的五位总裁，聊 Agent 的商业元年、漏斗与放大器](https://www.xiaoyuzhoufm.com/episode/6a946979a0210c197dcaa8a2?utm_source=rss)<!--g:6a946979a0210c197dcaa8a2--> | — |
 | 84 | 2026-08-25 | 1h02m | [84.49 家央企采买进场，史上最热WRC：泡沫被挤压，具身行业进入实战阶段｜14 年从业者的行家鉴别指南](https://www.xiaoyuzhoufm.com/episode/6a8d09c5ef65145dfcc4e8f5?utm_source=rss)<!--g:6a8d09c5ef65145dfcc4e8f5--> | — |

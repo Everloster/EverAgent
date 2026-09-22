@@ -1,10 +1,12 @@
 # 半拿铁 | 商业沉浮录 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/tcettvc3x689>）｜ 最近拉取：2026-09-09 ｜ 总集数：235
+> 来源：官方 RSS（<https://feed.xyzfm.space/tcettvc3x689>）｜ 最近拉取：2026-09-22 ｜ 总集数：237
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-16 | 1h58m | [No.219 📦️ 快递江湖三十年：桐庐帮、淘宝、拼多多与价格战](https://www.xiaoyuzhoufm.com/episode/6aa96e72051af796b9e8c0a5?utm_source=rss)<!--g:6aa96e72051af796b9e8c0a5--> | — |
+| — | 2026-09-09 | 3h35m | [No.218 🚲 O2O 与共享经济：属于单车、充电宝、上门美甲和按摩的魔幻撒钱年代  \| 中国互联网故事 28](https://www.xiaoyuzhoufm.com/episode/6aa0ed3b30dee5c2474b9301?utm_source=rss)<!--g:6aa0ed3b30dee5c2474b9301--> | — |
 | — | 2026-09-02 | 1h35m | [No.217 🧲 宁波往事：从方太到申洲，从油烟机到中国最大服装代工巨头](https://www.xiaoyuzhoufm.com/episode/6a9661cca0210c197dcb8152?utm_source=rss)<!--g:6a9661cca0210c197dcb8152--> | — |
 | — | 2026-08-26 | 2h55m | [No.216 ⚔️ 「十步杀一人」：红衣大炮周鸿祎的三十年全面战争史 \| 中国互联网故事 27](https://www.xiaoyuzhoufm.com/episode/6a8e56df1352af56ff3c1fe6?utm_source=rss)<!--g:6a8e56df1352af56ff3c1fe6--> | — |
 | — | 2026-08-21 | 1h47m | [No.215 🚘 华为不造车，鸿蒙智行到底是什么？](https://www.xiaoyuzhoufm.com/episode/6a87b8021352af56ff398ff8?utm_source=rss)<!--g:6a87b8021352af56ff398ff8--> | — |

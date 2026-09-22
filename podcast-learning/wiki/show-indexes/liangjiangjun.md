@@ -1,10 +1,11 @@
 # 梁将军商业内参 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/xquy9a67l9vy>）｜ 最近拉取：2026-09-09 ｜ 总集数：42
+> 来源：官方 RSS（<https://feed.xyzfm.space/xquy9a67l9vy>）｜ 最近拉取：2026-09-22 ｜ 总集数：43
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-21 | 52m47s | [和赞意风犬娱乐创始人 Penny 聊聊，CMO 不可错过的娱乐八卦](https://www.xiaoyuzhoufm.com/episode/6aae8f610916f6f8b445d5f0?utm_source=rss)<!--g:6aae8f610916f6f8b445d5f0--> | — |
 | — | 2026-04-08 | 8m14s | [28 期｜那个没人问的问题：月之暗面180亿估值背后的叙事套利](https://www.xiaoyuzhoufm.com/episode/69d5ab26e2c8be3155a1c4b4?utm_source=rss)<!--g:69d5ab26e2c8be3155a1c4b4--> | — |
 | — | 2026-03-30 | 29m39s | [27 期｜重塑“中式滋补”，喜纯如何让年轻人爱上老方子？\| 专访喜纯创始人](https://www.xiaoyuzhoufm.com/episode/69c6239744523328b2438ba6?utm_source=rss)<!--g:69c6239744523328b2438ba6--> | — |
 | — | 2026-03-18 | 18m26s | [26期｜ 为什么互联网那套打法，推不动AI这个新物种？](https://www.xiaoyuzhoufm.com/episode/69b9f3decaaea1fb3bd20572?utm_source=rss)<!--g:69b9f3decaaea1fb3bd20572--> | — |

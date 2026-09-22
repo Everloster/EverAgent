@@ -1,10 +1,11 @@
 # 此话当真 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/kf7lym7fc4e9>）｜ 最近拉取：2026-09-09 ｜ 总集数：58
+> 来源：官方 RSS（<https://feed.xyzfm.space/kf7lym7fc4e9>）｜ 最近拉取：2026-09-22 ｜ 总集数：59
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-16 | 46m48s | [对话张托肯：用 AI 三天设计一颗芯片后，一位清华博士决定「开卷」](https://www.xiaoyuzhoufm.com/episode/6aaa86279d326477816a2744?utm_source=rss)<!--g:6aaa86279d326477816a2744--> | — |
 | — | 2026-08-17 | 56m17s | [从「同事.skill」到「人生系统」，你害怕被蒸馏吗？](https://www.xiaoyuzhoufm.com/episode/6a82e0405aeb2a5712e823d5?utm_source=rss)<!--g:6a82e0405aeb2a5712e823d5--> | — |
 | — | 2026-07-01 | 52m04s | [Agent 元年第 500 天：什么在消失，什么在诞生，为什么我们不该再投资 GUI 思维的软件？](https://www.xiaoyuzhoufm.com/episode/6a44e5169d2f57436840e641?utm_source=rss)<!--g:6a44e5169d2f57436840e641--> | — |
 | — | 2026-06-23 | 58m14s | [对话鹍鹏：真人互动影游突然火了，他做了十年的梦终于被看见](https://www.xiaoyuzhoufm.com/episode/6a3954439d2f5743683c0ff5?utm_source=rss)<!--g:6a3954439d2f5743683c0ff5--> | — |

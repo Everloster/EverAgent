@@ -1,10 +1,12 @@
 # 菠萝健康派 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/qe8egag9eycv>）｜ 最近拉取：2026-09-09 ｜ 总集数：124
+> 来源：官方 RSS（<https://feed.xyzfm.space/qe8egag9eycv>）｜ 最近拉取：2026-09-22 ｜ 总集数：126
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-20 | 1h15m | [卷毛：做殡葬4年，进这一行是我做过最正确的选择vol.126](https://www.xiaoyuzhoufm.com/episode/6aae67af0916f6f8b445c5a0?utm_source=rss)<!--g:6aae67af0916f6f8b445c5a0--> | — |
+| — | 2026-09-13 | 46m12s | [房方皓：流感季来了！这一针疫苗，年年都不能省！vol.125](https://www.xiaoyuzhoufm.com/episode/6aa61f509d32647781683b13?utm_source=rss)<!--g:6aa61f509d32647781683b13--> | — |
 | — | 2026-09-06 | 55m27s | [赵晓刚教授：肺结节先别急着切！这几个判断很重要vol.124](https://www.xiaoyuzhoufm.com/episode/6a9d5246a0210c197dce5329?utm_source=rss)<!--g:6a9d5246a0210c197dce5329--> | — |
 | — | 2026-08-30 | 45m49s | [虞先濬教授：关于胰腺癌，好多真相我不吐不快！vol.123](https://www.xiaoyuzhoufm.com/episode/6a9394aff03e74ee6b01ea9d?utm_source=rss)<!--g:6a9394aff03e74ee6b01ea9d--> | — |
 | — | 2026-08-23 | 1h21m | [刘方奇教授：肠癌越来越年轻，确诊后先别急着手术！vol.122](https://www.xiaoyuzhoufm.com/episode/6a89579c1352af56ff3a329c?utm_source=rss)<!--g:6a89579c1352af56ff3a329c--> | — |

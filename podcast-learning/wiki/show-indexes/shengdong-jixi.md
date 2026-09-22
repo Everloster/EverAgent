@@ -1,10 +1,12 @@
 # 声东击西 — 全量单集索引
 
-> 来源：官方 RSS（<https://www.etw.fm/rss>）｜ 最近拉取：2026-09-09 ｜ 总集数：429
+> 来源：官方 RSS（<https://www.etw.fm/rss>）｜ 最近拉取：2026-09-22 ｜ 总集数：431
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-17 | 1h15m | [#405  从地理边界到思维边界：我们如何被「划界」塑造？](https://etw.fm/2225)<!--g:16a80abc-0826-4ec8-8c94-54ecb79161ef--> | — |
+| — | 2026-09-10 | 2h27m | [#404  邵阳：一位华人市议员亲历的美国地方政治丨十周年特别节目](https://etw.fm/2224)<!--g:f96bdc7a-c667-4594-8719-2070d24f8231--> | — |
 | — | 2026-09-03 | 45m16s | [#403  从八十年飞行史，看城市、社会和我们自己的改变丨国泰航空 x 声东击西](https://etw.fm/2223)<!--g:53eaa77d-973d-4ad2-b733-cc55e586497a--> | — |
 | — | 2026-08-27 | 41m21s | [#402  即将中断的粮食援助：一个中国人在南苏丹看到的饥饿](https://etw.fm/2222)<!--g:fa63b0de-01f3-44b7-bf44-f1077c09f438--> | — |
 | — | 2026-08-20 | 1h16m | [#401  边域、「慢聚漫奏」：我们还能迎来另外一个达特茅斯的夏天吗？](https://etw.fm/2221)<!--g:f7495e05-2c4d-4f21-9814-ffdc997630d3--> | — |
@@ -141,8 +143,8 @@
 | — | 2024-01-25 | 57m24s | [#284 写计划这么多年，我们有进化吗？](https://etw.fm/2085)<!--g:eb001edf-820f-45e3-91b0-c8ef9b968d7e--> | — |
 | — | 2024-01-19 | 24m47s | [#283 声音实验室：送你一声穿越历史的龙吟，一份寂静和一支城市电子乐](https://etw.fm/2084)<!--g:69ec21cc-8356-493e-9d74-549e27cfdd8e--> | — |
 | — | 2023-12-25 | 27m35s | [#282 请收下这枚记录 2023 年的声音时光胶囊](https://etw.fm/2083)<!--g:415f98a8-835e-4740-88c6-c5016d6232ff--> | — |
-| — | 2023-12-22 | 30m25s | [#281 美国权力的运转，奥本海默，中东冲突和一位传记作家｜英文版](https://etw.fm/2081)<!--g:f86620dd-4a69-4ea8-b9c8-0ffd7cddd5cb--> | — |
 | — | 2023-12-22 | 29m54s | [#280 美国权力的运转，奥本海默，中东冲突和一位传记作家 \| 中文版](https://etw.fm/2082)<!--g:c2a004b0-6221-4313-84f4-727dd8192a2c--> | — |
+| — | 2023-12-22 | 30m25s | [#281 美国权力的运转，奥本海默，中东冲突和一位传记作家｜英文版](https://etw.fm/2081)<!--g:f86620dd-4a69-4ea8-b9c8-0ffd7cddd5cb--> | — |
 | — | 2023-12-13 | 47m34s | [#279 喝着「早咖啡」一起「跳进兔子洞」：声动活泼的幕后大揭秘](https://etw.fm/2080)<!--g:2fe0f2d5-8b50-4db1-9d47-9f22dacf9fce--> | — |
 | — | 2023-11-30 | 52m33s | [#278 当一个国家抛弃自己的货币：阿根廷「全面美元化」下的绝望与豪赌](https://etw.fm/2079)<!--g:4f3c60c8-9d7d-492a-b3fd-4ca4152551be--> | — |
 | — | 2023-11-16 | 52m42s | [#277 事业、家庭和自我：成为父母前，我们究竟在担忧什么？](https://etw.fm/2078)<!--g:76832386-d434-4f78-b08a-68b219c53ecf--> | — |
@@ -430,7 +432,7 @@
 | — | 2016-12-13 | 29m53s | [#7 火人节（上篇）：到沙漠里待上一周是什么感觉？](https://etw.fm/burningman-1)<!--g:http://audio.xmcdn.com/group21/M02/B7/E7/wKgJLVhPKm-Sod2GAN2V64Ijp0A995.m4a--> | — |
 | — | 2016-12-13 | 29m47s | [#8 火人节（下篇）：这真的是一场精神炼狱吗？](https://etw.fm/burningman-2)<!--g:http://audio.xmcdn.com/group24/M03/B8/60/wKgJNVhPK9PwmyJTANzZ9VoxoOg291.m4a--> | — |
 | — | 2016-12-08 | 50m22s | [#1：特朗普都成了《时代》年度人物了，你不想了解下美国政治吗？](https://etw.fm/trump-time-person-of-the-year)<!--g:http://aod.ws.xmcdn.com/group23/M00/9E/BD/wKgJNFhIZUajXp0aAXLQuJ1tfvU035.m4a--> | — |
-| — | 2016-12-08 | 37m13s | [#6 Airbnb 下篇：并不都是美好，但总归看到了更大的世界](https://etw.fm/airbnb-a-big-world)<!--g:http://audio.xmcdn.com/group22/M0A/9E/F2/wKgJLlhIUU6QplTJARPq7sSy6wU580.m4a--> | — |
 | — | 2016-12-08 | 30m44s | [#5 Airbnb 上篇：你不仅能住在别人家，还有人带你玩](https://etw.fm/airbnb-others-home)<!--g:http://audio.xmcdn.com/group25/M04/9E/35/wKgJMVhITwfA7wiiAOPTuK0L5R4203.m4a--> | — |
+| — | 2016-12-08 | 37m13s | [#6 Airbnb 下篇：并不都是美好，但总归看到了更大的世界](https://etw.fm/airbnb-a-big-world)<!--g:http://audio.xmcdn.com/group22/M0A/9E/F2/wKgJLlhIUU6QplTJARPq7sSy6wU580.m4a--> | — |
 | — | 2016-12-07 | 38m27s | [#4 商业丨 黄牛再次出动，这次是为了Snapchat的一款墨镜](https://etw.fm/snapchat-spectacles)<!--g:http://audio.xmcdn.com/group21/M09/9A/7B/wKgJKFhHW0TQlXzsARdnvWituy0890.m4a--> | — |
 | — | 2016-11-26 | 47m48s | [#2：要让《纸牌屋》第5季怎么拍呢？](https://etw.fm/house-of-cards)<!--g:http://audio.xmcdn.com/group22/M09/69/49/wKgJLlg4tnSSbi7HAVrykbsuQ9Y429.m4a--> | — |

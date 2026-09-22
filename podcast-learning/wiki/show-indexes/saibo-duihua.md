@@ -1,10 +1,12 @@
 # 赛博对话 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/v99nfxe349ny>）｜ 最近拉取：2026-09-09 ｜ 总集数：55
+> 来源：官方 RSS（<https://feed.xyzfm.space/v99nfxe349ny>）｜ 最近拉取：2026-09-22 ｜ 总集数：57
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-22 | 1h57m | [vol.57｜AI、艺术与航天：外滩大会上的三个未来信号](https://www.xiaoyuzhoufm.com/episode/6ab203b5f04646b3a955478d?utm_source=rss)<!--g:6ab203b5f04646b3a955478d--> | — |
+| — | 2026-09-15 | 1h08m | [vol.56｜屏摄让《牛来》意外爆火，《龙餐馆》靠二创出圈，AI时代影视宣发逻辑变了?｜对话谭飞、叶福生](https://www.xiaoyuzhoufm.com/episode/6aa932729d3264778169982d?utm_source=rss)<!--g:6aa932729d3264778169982d--> | — |
 | — | 2026-09-02 | 54m46s | [vol.55｜Robotaxi：当无人驾驶从科幻走向日常｜对话小马智行创始人彭军](https://www.xiaoyuzhoufm.com/episode/6a969c29f03e74ee6b034a57?utm_source=rss)<!--g:6a969c29f03e74ee6b034a57--> | — |
 | — | 2026-08-20 | 1h57m | [vol.54｜对话陈震&王自如：两个中年男人的自律哲学](https://www.xiaoyuzhoufm.com/episode/6a870d7e1352af56ff3964a1?utm_source=rss)<!--g:6a870d7e1352af56ff3964a1--> | — |
 | — | 2026-08-06 | 1h19m | [vol.53｜与机器人谈甜甜恋爱：有伴侣又有机器人算不算出轨?｜对话李清都X大头博士](https://www.xiaoyuzhoufm.com/episode/6a7458a1e31fb76ffb309995?utm_source=rss)<!--g:6a7458a1e31fb76ffb309995--> | — |

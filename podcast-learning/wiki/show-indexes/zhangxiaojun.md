@@ -1,6 +1,6 @@
 # 张小珺Jùn｜商业访谈录 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/dk4yh3pkpjp3>）｜ 最近拉取：2026-09-09 ｜ 总集数：156
+> 来源：官方 RSS（<https://feed.xyzfm.space/dk4yh3pkpjp3>）｜ 最近拉取：2026-09-22 ｜ 总集数：156
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |

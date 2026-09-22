@@ -1,10 +1,12 @@
 # 开始连接 LinkStart — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/q9a6lueucj6a>）｜ 最近拉取：2026-09-09 ｜ 总集数：129
+> 来源：官方 RSS（<https://feed.xyzfm.space/q9a6lueucj6a>）｜ 最近拉取：2026-09-22 ｜ 总集数：131
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-17 | 1h25m | [Vol.131｜给抖音起名字的人，All in「AI 3D」：和卷卷复盘押注制造业OS的关键决策](https://www.xiaoyuzhoufm.com/episode/6aab77919d326477816a76e1?utm_source=rss)<!--g:6aab77919d326477816a76e1--> | — |
+| — | 2026-09-11 | 1h22m | [Vol.130 \| 对话极壳孙宽：具身的另一种可能，穿上外骨骼](https://www.xiaoyuzhoufm.com/episode/6aa39161492687f6aad8438f?utm_source=rss)<!--g:6aa39161492687f6aad8438f--> | — |
 | — | 2026-09-02 | 1h18m | [Vol.129｜豆包、千问、WorkBuddy 齐入场：巨头压注 AI 办公，旧优势还能赢下生产力入口吗？](https://www.xiaoyuzhoufm.com/episode/6a978f4fa0210c197dcc095e?utm_source=rss)<!--g:6a978f4fa0210c197dcc095e--> | — |
 | — | 2026-08-05 | 1h19m | [Vol.128｜硅谷把 FDE 当 mini CTO 招？聊聊爆火的 AI 新职业](https://www.xiaoyuzhoufm.com/episode/6a72a3dbab3a91c24a0ffc60?utm_source=rss)<!--g:6a72a3dbab3a91c24a0ffc60--> | — |
 | — | 2026-07-21 | 46m34s | [Vol.127｜存储涨价让手机不性感了，但硬件重新变得有意思了｜串台「屠龙之术」](https://www.xiaoyuzhoufm.com/episode/6a5e11aba3fec224d5a08442?utm_source=rss)<!--g:6a5e11aba3fec224d5a08442--> | — |

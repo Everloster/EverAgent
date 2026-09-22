@@ -1,14 +1,18 @@
 # 乱翻书 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/yxuruh3f9mc4>）｜ 最近拉取：2026-09-09 ｜ 总集数：280
+> 来源：官方 RSS（<https://feed.xyzfm.space/yxuruh3f9mc4>）｜ 最近拉取：2026-09-22 ｜ 总集数：284
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
-| 272 | 2026-09-02 | 1h51m | [272. 从飞书基座到Agent优先，豆包工作All in one紧追WorkBuddy](https://www.xiaoyuzhoufm.com/episode/6a981121a0210c197dcc5e6e?utm_source=rss)<!--g:6a981121a0210c197dcc5e6e--> | — |
+| 276 | 2026-09-22 | 1h12m | [276.当AI给出所有答案，年轻人如何找到自己的问题？](https://www.xiaoyuzhoufm.com/episode/6ab2546493d5eb3bdc794b18?utm_source=rss)<!--g:6ab2546493d5eb3bdc794b18--> | — |
+| 275 | 2026-09-21 | 2h06m | [275.AI办公的热闹还没散，个人Agent的战争已经开始｜拆解Town、Instinct、Grok Bot与Muse](https://www.xiaoyuzhoufm.com/episode/6ab029b7ac389df82734ebb6?utm_source=rss)<!--g:6ab029b7ac389df82734ebb6--> | — |
+| 274 | 2026-09-16 | 59m55s | [274.从全面屏到中折叠，小米的高端化这次找对路了吗？](https://www.xiaoyuzhoufm.com/episode/6aa9329c051af796b9e8a2dc?utm_source=rss)<!--g:6aa9329c051af796b9e8a2dc--> | — |
+| 273 | 2026-09-14 | 1h28m | [273.逛完外滩大会，发现蚂蚁找到了新位置](https://www.xiaoyuzhoufm.com/episode/6aa76141492687f6aad974bc?utm_source=rss)<!--g:6aa76141492687f6aad974bc--> | — |
+| 272 | 2026-09-02 | 1h51m | [272.从飞书基座到Agent优先，豆包工作All in one紧追WorkBuddy](https://www.xiaoyuzhoufm.com/episode/6a981121a0210c197dcc5e6e?utm_source=rss)<!--g:6a981121a0210c197dcc5e6e--> | — |
 | 271 | 2026-08-21 | 1h21m | [271.唐朝都要不存在了？为什么伪史论会在今年大爆发？](https://www.xiaoyuzhoufm.com/episode/6a8813df1352af56ff39cc0e?utm_source=rss)<!--g:6a8813df1352af56ff39cc0e--> | — |
 | 270 | 2026-08-01 | 1h37m | [270.大厂押注AI办公，飞书和钉钉却先成了配角](https://www.xiaoyuzhoufm.com/episode/6a6da28d1b5e24969ce72d4c?utm_source=rss)<!--g:6a6da28d1b5e24969ce72d4c--> | — |
-| 269 | 2026-07-09 | 1h11m | [269. 卷规模 VS 卷创作：真人短剧的两种生存模式](https://www.xiaoyuzhoufm.com/episode/6a4f777d1e32575f5eb3cbc1?utm_source=rss)<!--g:6a4f777d1e32575f5eb3cbc1--> | — |
+| 269 | 2026-07-09 | 1h11m | [269.卷规模 VS 卷创作：真人短剧的两种生存模式](https://www.xiaoyuzhoufm.com/episode/6a4f777d1e32575f5eb3cbc1?utm_source=rss)<!--g:6a4f777d1e32575f5eb3cbc1--> | — |
 | 268 | 2026-06-24 | 1h01m | [268.AI时代，个人工作台会重新回到手机吗？](https://www.xiaoyuzhoufm.com/episode/6a3bdd319d2f5743683d4841?utm_source=rss)<!--g:6a3bdd319d2f5743683d4841--> | — |
 | 267 | 2026-06-01 | 36m57s | [267.3000块成本，3.5亿次播放，AI短剧怎么在抖音挣钱？](https://www.xiaoyuzhoufm.com/episode/6a1d9e487460cabdeb597a29?utm_source=rss)<!--g:6a1d9e487460cabdeb597a29--> | — |
 | 266 | 2026-04-28 | 2h02m | [266.从红果到AI短剧：谁在革谁的命？](https://www.xiaoyuzhoufm.com/episode/69f0d90f740bacea8777122d?utm_source=rss)<!--g:69f0d90f740bacea8777122d--> | — |
@@ -21,11 +25,11 @@
 | 259 | 2026-01-28 | 1h54m | [259.从互联网医疗到AI健康：一场新供给革命](https://www.xiaoyuzhoufm.com/episode/6979b0c9fed1b9fd8d559165?utm_source=rss)<!--g:6979b0c9fed1b9fd8d559165--> | — |
 | 258 | 2026-01-12 | 1h53m | [258.对话光帆科技董红光：当耳机长出眼睛， “说一下”开始取代“点十下”](https://www.xiaoyuzhoufm.com/episode/69649d43e235ea65bc6b156c?utm_source=rss)<!--g:69649d43e235ea65bc6b156c--> | — |
 | 257 | 2025-12-30 | 53m28s | [257.半佛怕爆款，三表拒AI，冰汝谢川普：我们为什么坚守图文？](https://www.xiaoyuzhoufm.com/episode/695384792db086f897c8b5d3?utm_source=rss)<!--g:695384792db086f897c8b5d3--> | — |
-| 256 | 2025-12-29 | 1h07m | [256. 中文互联网“build in public”的新实验，为什么会是AMA？](https://www.xiaoyuzhoufm.com/episode/695263e22db086f8979b5580?utm_source=rss)<!--g:695263e22db086f8979b5580--> | — |
+| 256 | 2025-12-29 | 1h07m | [256.中文互联网“build in public”的新实验，为什么会是AMA？](https://www.xiaoyuzhoufm.com/episode/695263e22db086f8979b5580?utm_source=rss)<!--g:695263e22db086f8979b5580--> | — |
 | 255 | 2025-12-25 | 1h37m | [255.钉钉告别移动互联网](https://www.xiaoyuzhoufm.com/episode/694d62e407f7c63e431d6c0d?utm_source=rss)<!--g:694d62e407f7c63e431d6c0d--> | — |
 | 254 | 2025-12-22 | 1h54m | [254.三天即被封杀，豆包手机只是一场核试验？](https://www.xiaoyuzhoufm.com/episode/694938e10b60b7bf75d8ad57?utm_source=rss)<!--g:694938e10b60b7bf75d8ad57--> | — |
-| 253 | 2025-12-18 | 2h26m | [253. 2026播客市场乱预测，我们在美国挖掘的业界内幕](https://www.xiaoyuzhoufm.com/episode/69442ff8038062bdbcac0d44?utm_source=rss)<!--g:69442ff8038062bdbcac0d44--> | — |
-| 252 | 2025-12-11 | 1h06m | [252. AI眼镜替代手机？至少10年起步，可能更久](https://www.xiaoyuzhoufm.com/episode/693aef2137f52a644e74704d?utm_source=rss)<!--g:693aef2137f52a644e74704d--> | — |
+| 253 | 2025-12-18 | 2h26m | [253.2026播客市场乱预测，我们在美国挖掘的业界内幕](https://www.xiaoyuzhoufm.com/episode/69442ff8038062bdbcac0d44?utm_source=rss)<!--g:69442ff8038062bdbcac0d44--> | — |
+| 252 | 2025-12-11 | 1h06m | [252.AI眼镜替代手机？至少10年起步，可能更久](https://www.xiaoyuzhoufm.com/episode/693aef2137f52a644e74704d?utm_source=rss)<!--g:693aef2137f52a644e74704d--> | — |
 | 251 | 2025-12-09 | 1h29m | [251.从Substack到《纽约客》：美国媒体的原子化与百年长青](https://www.xiaoyuzhoufm.com/episode/6937f4694ef12f9fe9be4212?utm_source=rss)<!--g:6937f4694ef12f9fe9be4212--> | — |
 | 250 | 2025-11-24 | 1h16m | [250.河北厂二代反抗价格战：两次死里逃生，三年从代工到品牌](https://www.xiaoyuzhoufm.com/episode/6924193a6018cc2c9856cbc6?utm_source=rss)<!--g:6924193a6018cc2c9856cbc6--> | — |
 | 249 | 2025-11-18 | 1h16m | [249.对话「斑马口语」：全球首个AI外教如何超越人类？](https://www.xiaoyuzhoufm.com/episode/691c7eabcbba038b422baffe?utm_source=rss)<!--g:691c7eabcbba038b422baffe--> | — |
@@ -132,8 +136,8 @@
 | 148 | 2023-12-30 | 1h57m | [148.大模型年终复盘：现在是个体户的好时代！](https://www.xiaoyuzhoufm.com/episode/658fda16b8fd2bc0603d49fa?utm_source=rss)<!--g:658fda16b8fd2bc0603d49fa--> | — |
 | 147 | 2023-12-24 | 1h25m | [147.产品×种草×人，小红书商业化的15度夹角](https://www.xiaoyuzhoufm.com/episode/658809bebf3589e8942f6e86?utm_source=rss)<!--g:658809bebf3589e8942f6e86--> | — |
 | 146 | 2023-11-29 | 1h24m | [146.对话齐俊元：微软和Google之后，飞书如何思考第三代办公软件？](https://www.xiaoyuzhoufm.com/episode/6566bbc79f440f5443cca804?utm_source=rss)<!--g:6566bbc79f440f5443cca804--> | — |
-| 145 | 2023-11-19 | 1h29m | [145. 卷进人大附中的我们，现在怎样了？当精英教育撞上现实](https://www.xiaoyuzhoufm.com/episode/655a1c518fb8b597a29f546e?utm_source=rss)<!--g:655a1c518fb8b597a29f546e--> | — |
-| 144 | 2023-11-16 | 1h14m | [144. 对话张凯夫：当郭德纲开始说英语，AI将如何重塑全球商业？](https://www.xiaoyuzhoufm.com/episode/65559a4c51ba721857df32b5?utm_source=rss)<!--g:65559a4c51ba721857df32b5--> | — |
+| 145 | 2023-11-19 | 1h29m | [145.卷进人大附中的我们，现在怎样了？当精英教育撞上现实](https://www.xiaoyuzhoufm.com/episode/655a1c518fb8b597a29f546e?utm_source=rss)<!--g:655a1c518fb8b597a29f546e--> | — |
+| 144 | 2023-11-16 | 1h14m | [144.对话张凯夫：当郭德纲开始说英语，AI将如何重塑全球商业？](https://www.xiaoyuzhoufm.com/episode/65559a4c51ba721857df32b5?utm_source=rss)<!--g:65559a4c51ba721857df32b5--> | — |
 | 143 | 2023-11-09 | 42m15s | [143.与印尼打交道，TikTok忽视了什么？](https://www.xiaoyuzhoufm.com/episode/654c673d51ba721857949404?utm_source=rss)<!--g:654c673d51ba721857949404--> | — |
 | 142 | 2023-11-07 | 1h45m | [142.滴滴优步合并再复盘：土洋之争、Uber黑帮、第二曲线](https://www.xiaoyuzhoufm.com/episode/6549d60d505e127e6fdb63f3?utm_source=rss)<!--g:6549d60d505e127e6fdb63f3--> | — |
 | 141 | 2023-10-31 | 1h06m | [141.中国特稿二十年，岂有豪情似旧时](https://www.xiaoyuzhoufm.com/episode/654085073572ca833131030a?utm_source=rss)<!--g:654085073572ca833131030a--> | — |
@@ -147,15 +151,15 @@
 | 133 | 2023-08-30 | 51m40s | [133.我在东北，我没得选，只能干农业](https://www.xiaoyuzhoufm.com/episode/64ef3a97e490c5dee5e49942?utm_source=rss)<!--g:64ef3a97e490c5dee5e49942--> | — |
 | 132 | 2023-08-22 | 1h11m | [132.复盘美拍：快手抖音崛起时，如何应对？](https://www.xiaoyuzhoufm.com/episode/64e43e3480c9ec4c5ff1636d?utm_source=rss)<!--g:64e43e3480c9ec4c5ff1636d--> | — |
 | 131 | 2023-08-20 | 1h07m | [131.矫枉必须过正？闲话阿里变革](https://www.xiaoyuzhoufm.com/episode/64e1b56be490c5dee5f00fc2?utm_source=rss)<!--g:64e1b56be490c5dee5f00fc2--> | — |
-| 130 | 2023-08-15 | 55m36s | [130. 对话叶军：钉钉做个人版，可以理解成微信做企微吗？](https://www.xiaoyuzhoufm.com/episode/64db6e0580c9ec4c5f5749db?utm_source=rss)<!--g:64db6e0580c9ec4c5f5749db--> | — |
+| 130 | 2023-08-15 | 55m36s | [130.对话叶军：钉钉做个人版，可以理解成微信做企微吗？](https://www.xiaoyuzhoufm.com/episode/64db6e0580c9ec4c5f5749db?utm_source=rss)<!--g:64db6e0580c9ec4c5f5749db--> | — |
 | 129 | 2023-08-12 | 1h27m | [129.博主和MCN如何做好小红书？跟明仔和摘星阁侃侃聊聊](https://www.xiaoyuzhoufm.com/episode/64d7537380c9ec4c5f0f9b57?utm_source=rss)<!--g:64d7537380c9ec4c5f0f9b57--> | — |
 | 128 | 2023-07-28 | 57m13s | [128.天下苦办卡久矣，美发和瑜伽行业如何纠偏？](https://www.xiaoyuzhoufm.com/episode/64c37d1b99e1e7669e3e2e2e?utm_source=rss)<!--g:64c37d1b99e1e7669e3e2e2e--> | — |
 | 127 | 2023-07-22 | 1h41m | [127.淘天取消P序列，聊聊阿里和美团的职级改革](https://www.xiaoyuzhoufm.com/episode/64bbcf0c5680f4d4a8709638?utm_source=rss)<!--g:64bbcf0c5680f4d4a8709638--> | — |
-| 126 | 2023-07-13 | 1h20m | [126. “当清北和MBA纷纷涌入，这个行业可能离见顶不远了”](https://www.xiaoyuzhoufm.com/episode/64af9ab36dab8896d1ecdc31?utm_source=rss)<!--g:64af9ab36dab8896d1ecdc31--> | — |
+| 126 | 2023-07-13 | 1h20m | [126.“当清北和MBA纷纷涌入，这个行业可能离见顶不远了”](https://www.xiaoyuzhoufm.com/episode/64af9ab36dab8896d1ecdc31?utm_source=rss)<!--g:64af9ab36dab8896d1ecdc31--> | — |
 | 125 | 2023-07-08 | 53m34s | [125.创作者闲聊：种了十年人参，结果长出一根白萝卜](https://www.xiaoyuzhoufm.com/episode/64a954f9f4ccb12e0b5fac67?utm_source=rss)<!--g:64a954f9f4ccb12e0b5fac67--> | — |
-| 124 | 2023-06-09 | 56m05s | [124. 大马华社新三宝：微信、抖音、小红书](https://www.xiaoyuzhoufm.com/episode/6482e04d53a5e5ea1447bbfd?utm_source=rss)<!--g:6482e04d53a5e5ea1447bbfd--> | — |
+| 124 | 2023-06-09 | 56m05s | [124.大马华社新三宝：微信、抖音、小红书](https://www.xiaoyuzhoufm.com/episode/6482e04d53a5e5ea1447bbfd?utm_source=rss)<!--g:6482e04d53a5e5ea1447bbfd--> | — |
 | 123 | 2023-06-02 | 1h21m | [123.对话天涯创始人邢明：天涯重启之后，未来何去何从？](https://www.xiaoyuzhoufm.com/episode/647a15f01672628240bfbd7e?utm_source=rss)<!--g:647a15f01672628240bfbd7e--> | — |
-| 122 | 2023-05-30 | 1h14m | [122. 菲律宾贫富折叠，最异类的亚洲国家](https://www.xiaoyuzhoufm.com/episode/6475b5b153a5e5ea1476af73?utm_source=rss)<!--g:6475b5b153a5e5ea1476af73--> | — |
+| 122 | 2023-05-30 | 1h14m | [122.菲律宾贫富折叠，最异类的亚洲国家](https://www.xiaoyuzhoufm.com/episode/6475b5b153a5e5ea1476af73?utm_source=rss)<!--g:6475b5b153a5e5ea1476af73--> | — |
 | 121 | 2023-05-29 | 1h24m | [121.AI孙燕姿侵犯了谁的版权？聊聊AIGC时代的版权与确权](https://www.xiaoyuzhoufm.com/episode/647464696752b5f9de6d9439?utm_source=rss)<!--g:647464696752b5f9de6d9439--> | — |
 | 120 | 2023-05-26 | 1h09m | [120.越南是小国吗？东南亚是统一大市场吗？](https://www.xiaoyuzhoufm.com/episode/64705d8b53a5e5ea1421a367?utm_source=rss)<!--g:64705d8b53a5e5ea1421a367--> | — |
 | 119 | 2023-05-23 | 50m53s | [119.浅聊一期鞋圈和得物](https://www.xiaoyuzhoufm.com/episode/646c712a53a5e5ea14d6897a?utm_source=rss)<!--g:646c712a53a5e5ea14d6897a--> | — |
@@ -165,7 +169,7 @@
 | 115 | 2023-04-27 | 1h13m | [115.2023年了，还该去互联网大厂吗？](https://www.xiaoyuzhoufm.com/episode/644a2863306513184c8ac245?utm_source=rss)<!--g:644a2863306513184c8ac245--> | — |
 | 114 | 2023-04-24 | 1h19m | [114.为何星舰炸了大家还鼓掌？SpaceX和中美商业航天对比](https://www.xiaoyuzhoufm.com/episode/64463cf47d934b8505cadf9a?utm_source=rss)<!--g:64463cf47d934b8505cadf9a--> | — |
 | 113 | 2023-04-18 | 1h45m | [113.中国餐饮何以迈入万店时代？](https://www.xiaoyuzhoufm.com/episode/643e85ab66e4c00c6a6e0837?utm_source=rss)<!--g:643e85ab66e4c00c6a6e0837--> | — |
-| 112 | 2023-04-08 | 1h08m | [112. 播客杂谈：视频和直播、亮屏和广告、创作者生态和不可能三角](https://www.xiaoyuzhoufm.com/episode/64313e0566e4c00c6a88e3b8?utm_source=rss)<!--g:64313e0566e4c00c6a88e3b8--> | — |
+| 112 | 2023-04-08 | 1h08m | [112.播客杂谈：视频和直播、亮屏和广告、创作者生态和不可能三角](https://www.xiaoyuzhoufm.com/episode/64313e0566e4c00c6a88e3b8?utm_source=rss)<!--g:64313e0566e4c00c6a88e3b8--> | — |
 | 111 | 2023-04-03 | 50m43s | [111.对谈飞博、大禹、无忧：MCN如何穿越周期，内容变化与平台选择](https://www.xiaoyuzhoufm.com/episode/642a7baf994fd175bd93423d?utm_source=rss)<!--g:642a7baf994fd175bd93423d--> | — |
 | 110 | 2023-04-01 | 1h23m | [110.做公司、卖公司、买公司，与三位创业者聊数据服务行业的现状与未来](https://www.xiaoyuzhoufm.com/episode/6427bc04994fd175bd673bfa?utm_source=rss)<!--g:6427bc04994fd175bd673bfa--> | — |
 | 109 | 2023-03-29 | 1h05m | [109.Excel、数字化和飞书业务三件套](https://www.xiaoyuzhoufm.com/episode/6423e032179eec5331a1db40?utm_source=rss)<!--g:6423e032179eec5331a1db40--> | — |
@@ -259,13 +263,13 @@
 | 21 | 2021-11-26 | 1h30m | [21.快手时长占互联网11%，但「行业老二」还需找回叙事自信](https://www.xiaoyuzhoufm.com/episode/61a0a02b90e462aca0ea11e5?utm_source=rss)<!--g:61a0a02b90e462aca0ea11e5--> | — |
 | 20 | 2021-11-21 | 1h11m | [20.互联网产品观大比较——《微信背后的产品观》读书讨论会](https://www.xiaoyuzhoufm.com/episode/619a38ff5cc95c0876bb9a2a?utm_source=rss)<!--g:619a38ff5cc95c0876bb9a2a--> | — |
 | 19 | 2021-11-18 | 1h07m | [19.飞书5.0：忘掉DAU，关注“谁在用”](https://www.xiaoyuzhoufm.com/episode/6196e5f0796c5ace0a60f90d?utm_source=rss)<!--g:6196e5f0796c5ace0a60f90d--> | — |
-| 18 | 2021-11-17 | 1h14m | [18. Facebook、腾讯和Roblox的元宇宙布局](https://www.xiaoyuzhoufm.com/episode/61948e1ea44f7812d522c501?utm_source=rss)<!--g:61948e1ea44f7812d522c501--> | — |
-| 17 | 2021-11-15 | 52m18s | [17. 四个月投入1000亿，聊聊腾讯的新战略](https://www.xiaoyuzhoufm.com/episode/6192899d1890a883fe8aaa91?utm_source=rss)<!--g:6192899d1890a883fe8aaa91--> | — |
+| 18 | 2021-11-17 | 1h14m | [18.Facebook、腾讯和Roblox的元宇宙布局](https://www.xiaoyuzhoufm.com/episode/61948e1ea44f7812d522c501?utm_source=rss)<!--g:61948e1ea44f7812d522c501--> | — |
+| 17 | 2021-11-15 | 52m18s | [17.四个月投入1000亿，聊聊腾讯的新战略](https://www.xiaoyuzhoufm.com/episode/6192899d1890a883fe8aaa91?utm_source=rss)<!--g:6192899d1890a883fe8aaa91--> | — |
 | 16 | 2021-11-13 | 1h07m | [16.没有二选一的双十一，聊聊阿里的竞争和变化](https://www.xiaoyuzhoufm.com/episode/618f933507ed34de8983fdce?utm_source=rss)<!--g:618f933507ed34de8983fdce--> | — |
-| 15 | 2021-11-09 | 54m26s | [15. 卿本佳人奈何做贼，吐槽一下知乎和微博](https://www.xiaoyuzhoufm.com/episode/618a6547294df1fa843338d5?utm_source=rss)<!--g:618a6547294df1fa843338d5--> | — |
-| 14 | 2021-11-03 | 1h23m | [14. 聊聊字节架构调整，在张一鸣退出董事会之后](https://www.xiaoyuzhoufm.com/episode/61828787510bc77265779fe0?utm_source=rss)<!--g:61828787510bc77265779fe0--> | — |
+| 15 | 2021-11-09 | 54m26s | [15.卿本佳人奈何做贼，吐槽一下知乎和微博](https://www.xiaoyuzhoufm.com/episode/618a6547294df1fa843338d5?utm_source=rss)<!--g:618a6547294df1fa843338d5--> | — |
+| 14 | 2021-11-03 | 1h23m | [14.聊聊字节架构调整，在张一鸣退出董事会之后](https://www.xiaoyuzhoufm.com/episode/61828787510bc77265779fe0?utm_source=rss)<!--g:61828787510bc77265779fe0--> | — |
 | 13 | 2021-10-31 | 1h12m | [13.知乎、B站和小红书，哪个社区真正信仰UGC？](https://www.xiaoyuzhoufm.com/episode/617e7a10e93949169b01801f?utm_source=rss)<!--g:617e7a10e93949169b01801f--> | — |
-| 12 | 2021-10-31 | 1h36m | [12. 社区杂谈：贴吧、闲鱼和极速版](https://www.xiaoyuzhoufm.com/episode/617e76cfe93949169b01801e?utm_source=rss)<!--g:617e76cfe93949169b01801e--> | — |
+| 12 | 2021-10-31 | 1h36m | [12.社区杂谈：贴吧、闲鱼和极速版](https://www.xiaoyuzhoufm.com/episode/617e76cfe93949169b01801e?utm_source=rss)<!--g:617e76cfe93949169b01801e--> | — |
 | 11 | 2021-10-17 | 1h13m | [11.直播、广告、电商，B站未来如何赚钱](https://www.xiaoyuzhoufm.com/episode/616c43e4d8fa23fb00fc4dc5?utm_source=rss)<!--g:616c43e4d8fa23fb00fc4dc5--> | — |
 | 10 | 2021-10-17 | 1h10m | [10.B站的自制、游戏和社区](https://www.xiaoyuzhoufm.com/episode/616c2fa37e390a2de9e01fca?utm_source=rss)<!--g:616c2fa37e390a2de9e01fca--> | — |
 | 9 | 2021-10-13 | 1h53m | [9.现在还是做科技内容的好时间嘛？](https://www.xiaoyuzhoufm.com/episode/6166f4cf8c45a4b92321bbf1?utm_source=rss)<!--g:6166f4cf8c45a4b92321bbf1--> | — |
@@ -273,7 +277,7 @@
 | 7 | 2021-10-06 | 55m28s | [7.曾经，移动梦网拯救过中国互联网](https://www.xiaoyuzhoufm.com/episode/615d24cdc8c1d14e833669ea?utm_source=rss)<!--g:615d24cdc8c1d14e833669ea--> | — |
 | 6 | 2021-09-24 | 51m13s | [6.连麦张小龙：聊微信8.0和产品经理如何成长](https://www.xiaoyuzhoufm.com/episode/614d9a31fe9d08537eeaee43?utm_source=rss)<!--g:614d9a31fe9d08537eeaee43--> | — |
 | 5 | 2021-09-13 | 59m22s | [5.与荔枝创始人聊播客、社区与广州](https://www.xiaoyuzhoufm.com/episode/613ee96f505556e9d9a1dfcb?utm_source=rss)<!--g:613ee96f505556e9d9a1dfcb--> | — |
-| 4 | 2021-09-10 | 30m54s | [4. 字节跳动的误读、组织和边界](https://www.xiaoyuzhoufm.com/episode/613b039a9f0d73e73a39d3a1?utm_source=rss)<!--g:613b039a9f0d73e73a39d3a1--> | — |
+| 4 | 2021-09-10 | 30m54s | [4.字节跳动的误读、组织和边界](https://www.xiaoyuzhoufm.com/episode/613b039a9f0d73e73a39d3a1?utm_source=rss)<!--g:613b039a9f0d73e73a39d3a1--> | — |
 | 3 | 2021-09-08 | 29m40s | [3.跟宋健聊短视频和泛知识](https://www.xiaoyuzhoufm.com/episode/613849df9f0d73e73a39d36b?utm_source=rss)<!--g:613849df9f0d73e73a39d36b--> | — |
 | 2 | 2021-09-07 | 54m27s | [2.前优酷总裁：为什么长视频难赚钱？](https://www.xiaoyuzhoufm.com/episode/61372a4e29d7564cf7132611?utm_source=rss)<!--g:61372a4e29d7564cf7132611--> | — |
 | 1 | 2021-09-07 | 52m34s | [1.跟魏明复盘优酷的前世今生](https://www.xiaoyuzhoufm.com/episode/613729c0557723575872c67b?utm_source=rss)<!--g:613729c0557723575872c67b--> | — |
