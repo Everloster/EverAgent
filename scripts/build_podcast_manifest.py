@@ -103,24 +103,38 @@ def load_reports() -> dict[str, dict]:
 
 
 def parse_show_index(path: pathlib.Path) -> list[dict]:
+    link = re.compile(r"\[([^]]+)]\((https://www\.xiaoyuzhoufm\.com/episode/[^)]+)\)")
     rows: list[dict] = []
     for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
-        match = ROW.match(line)
+        if "xiaoyuzhoufm.com/episode/" not in line:
+            continue
+        match = link.search(line)
         if not match:
             continue
-        episode_no, date, duration, title, audio, status = match.groups()
-        audio = safe_https(audio.strip())
-        guid = re.search(r"<!--g:([^>]+)-->", line)
-        if not audio or "xiaoyuzhoufm.com/episode/" not in audio:
+        title = compact(match.group(1), 240)
+        audio = safe_https(match.group(2))
+        if not title or not audio:
             continue
+        cells = [cell.strip() for cell in line.strip().strip("|").split("|")]
+        date = next((cell for cell in cells if re.fullmatch(r"\d{4}-\d{2}-\d{2}", cell)), "")
+        duration = next((cell for cell in cells if re.search(r"\d+m|\dh", cell)), "")
+        episode_no = None
+        for cell in cells:
+            value = cell.strip()
+            if value.isdigit():
+                episode_no = int(value)
+                break
+        guid_match = re.search(r"<!--g:([^>]+)-->", line)
+        guid = guid_match.group(1)[:128] if guid_match else sha256(normalize_url(audio))[:24]
+        status_cell = cells[-1] if cells else ""
         rows.append({
-            "episode_no": int(episode_no) if episode_no.isdigit() else None,
+            "episode_no": episode_no,
             "date": date,
-            "duration": duration.strip()[:32],
-            "title": compact(title.strip(), 240),
+            "duration": duration[:32],
+            "title": title,
             "audio_url": audio,
-            "guid": guid.group(1)[:128] if guid else sha256(normalize_url(audio))[:24],
-            "index_status": compact(status.strip(), 80),
+            "guid": guid,
+            "index_status": compact(status_cell, 80),
         })
     return rows
 
@@ -181,12 +195,19 @@ def build() -> dict:
                 },
             })
 
-    items.sort(key=lambda item: (item["date"], item["episode_no"] or 0), reverse=True)
+    # Keep every already-reported episode in the bounded manifest, then fill
+    # remaining slots with the newest pending episodes for future study tasks.
+    reported = [item for item in items if item["study_state"] == "reported"]
+    pending = [item for item in items if item["study_state"] == "pending"]
+    reported.sort(key=lambda item: (item["date"], item["episode_no"] or 0), reverse=True)
+    pending.sort(key=lambda item: (item["date"], item["episode_no"] or 0), reverse=True)
+    selected = (reported + pending)[:MAX_ITEMS]
+    selected.sort(key=lambda item: (item["date"], item["episode_no"] or 0), reverse=True)
     return {
         "schema_version": 1,
         "source": "curated-xiaoyuzhou",
         "platform": "xiaoyuzhou",
-        "items": items[:MAX_ITEMS],
+        "items": selected,
     }
 
 
