@@ -7,8 +7,10 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-09-22 | [格罗滕迪克「涨潮」思想 — 让难题消失的升维方法研究](../ai-learning/reports/knowledge_reports/格罗滕迪克涨潮思想_让难题消失的升维方法研究_20260922.md) | ai-learning |
 | 2026-09-22 | [Laya：把「反射性决策」从 LLM 里拆出来——421M 非自回归 System 1 决策模型解析与本机实测](../ai-learning/reports/knowledge_reports/Laya_System1决策模型_深度解析_20260922.md) | ai-learning |
 | 2026-09-21 | [AI 行业日报 · 2026-09-21](../web-surfing/reports/ai-news-daily-2026-09-21.md) | web-surfing |
+| 2026-09-19 | [DeepSeek-V4.1-Flash 架构解剖 — CED 非对称设计与 KV Cache 压缩极限](../ai-learning/reports/knowledge_reports/DeepSeek-V4.1-Flash架构解剖_CED非对称与KV压缩极限_20260919.md) | ai-learning |
 | 2026-09-18 | [Jev 与 System One Models — TypeSafe AI「决策模型」新范式全景研究](../ai-learning/reports/knowledge_reports/Jev与System-One-Models_TypeSafe决策模型范式研究_20260918.md) | ai-learning |
 | 2026-09-18 | [AI 行业日报 · 2026-09-18](../web-surfing/reports/ai-news-daily-2026-09-18.md) | web-surfing |
 | 2026-09-17 | [果蝇全脑连接组开源与「赛博果蝇」生态 — 神经科学里程碑的爆发与祛魅](../biology-learning/reports/concept_reports/果蝇全脑连接组与赛博果蝇生态_深度研究_20260917.md) | biology-learning |
@@ -30,14 +32,14 @@
 | 2026-09-10 | [AI 行业日报 · 2026-09-10](../web-surfing/reports/ai-news-daily-2026-09-10.md) | web-surfing |
 | 2026-09-09 | [vLLM 调度器：continuous batching 的真身（课论断 ↔ 源码对照篇）](../ai-learning/reports/knowledge_reports/vLLM_调度器_continuous_batching真身_20260909.md) | ai-learning |
 | 2026-09-09 | [AI 行业日报 · 2026-09-09](../web-surfing/reports/ai-news-daily-2026-09-09.md) | web-surfing |
-| 2026-09-09 | [153. 和曾鸣聊产业史观：残酷的真相、会消亡的公司、优秀≠卓越](../podcast-learning/reports/2026-09-03_xiaoyuzhou-zhangxiaojun_zengming.md) | podcast-learning |
-| 2026-09-08 | [AI 行业日报 · 2026-09-08](../web-surfing/reports/ai-news-daily-2026-09-08.md) | web-surfing |
 
-## 🤖 AI Learning（106 篇）
+## 🤖 AI Learning（108 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-09-22 | [格罗滕迪克「涨潮」思想 — 让难题消失的升维方法研究](../ai-learning/reports/knowledge_reports/格罗滕迪克涨潮思想_让难题消失的升维方法研究_20260922.md) | — |
 | 2026-09-22 | [Laya：把「反射性决策」从 LLM 里拆出来——421M 非自回归 System 1 决策模型解析与本机实测](../ai-learning/reports/knowledge_reports/Laya_System1决策模型_深度解析_20260922.md) | — |
+| 2026-09-19 | [DeepSeek-V4.1-Flash 架构解剖 — CED 非对称设计与 KV Cache 压缩极限](../ai-learning/reports/knowledge_reports/DeepSeek-V4.1-Flash架构解剖_CED非对称与KV压缩极限_20260919.md) | — |
 | 2026-09-18 | [Jev 与 System One Models — TypeSafe AI「决策模型」新范式全景研究](../ai-learning/reports/knowledge_reports/Jev与System-One-Models_TypeSafe决策模型范式研究_20260918.md) | — |
 | 2026-09-17 | [小米 MiMo-V2.6 公开直播 RL 训练 — RL Scaling 三维度体系研究](../ai-learning/reports/knowledge_reports/MiMo-V2.6公开RL训练直播_RL-Scaling三维度体系研究_20260917.md) | — |
 | 2026-09-16 | [《我不得不把才华埋葬在昨天》精读与延伸研究 — DeepSeek 算子工程师自白中的 AI 时代手艺人处境](../ai-learning/reports/knowledge_reports/才华埋葬在昨天_DeepSeek算子工程师自白精读与延伸研究_20260916.md) | — |
@@ -303,8 +305,8 @@
 | 2026-09-03 | [AI 行业日报 · 2026-09-03](../web-surfing/reports/ai-news-daily-2026-09-03.md) | — |
 | 2026-09-02 | [AI 行业日报 · 2026-09-02](../web-surfing/reports/ai-news-daily-2026-09-02.md) | — |
 | 2026-09-01 | [AI 行业日报 · 2026-09-01](../web-surfing/reports/ai-news-daily-2026-09-01.md) | — |
+| 2026-08-31 | [惠州租房建议报告——两位老人 2026 年 9/10 月入住版（1–3 个月短住体验）](../web-surfing/reports/huizhou-rental-guide-2026-09.md) | — |
 | 2026-08-31 | [AI 行业日报 · 2026-08-31](../web-surfing/reports/ai-news-daily-2026-08-31.md) | — |
-| 2026-08-28 | [惠州租房建议报告——两位老人 2026 年 9/10 月入住版（1–3 个月短住体验）](../web-surfing/reports/huizhou-rental-guide-2026-09.md) | — |
 | 2026-08-28 | [AI 行业日报 · 2026-08-28](../web-surfing/reports/ai-news-daily-2026-08-28.md) | — |
 | 2026-08-27 | [AI 行业日报 · 2026-08-27](../web-surfing/reports/ai-news-daily-2026-08-27.md) | — |
 | 2026-08-26 | [AI 行业日报 · 2026-08-26](../web-surfing/reports/ai-news-daily-2026-08-26.md) | — |

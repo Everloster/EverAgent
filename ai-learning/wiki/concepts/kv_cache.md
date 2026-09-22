@@ -76,6 +76,7 @@ KV_mem = 2 × seq_len × num_heads × head_dim × bytes_per_param
 
 ## 在本项目的相关报告
 - [KV Cache 深度解析](../../reports/knowledge_reports/KV_Cache_深度解析_20260330.md)
+- [DeepSeek-V4.1-Flash 架构解剖（2026-09-19）](../../reports/knowledge_reports/DeepSeek-V4.1-Flash架构解剖_CED非对称与KV压缩极限_20260919.md) — 压缩极限案例：890 B/token（见 [[kv_compression_architectures]]）
 
 ## 跨域连接
 - KV Cache 直接依赖 Attention 的 K/V 结构 → concept: attention_mechanism
@@ -84,4 +85,4 @@ KV_mem = 2 × seq_len × num_heads × head_dim × bytes_per_param
 ## 开放问题
 - 1M+ token 超长上下文下 KV Cache 的有效管理仍是挑战
 - 如何无损将 KV Cache 压缩到 2-4 bit？
-- 跨层 KV 共享是否可行（减少层数但保留表达力）？
+- 跨层 KV 共享是否可行（减少层数但保留表达力）？→ ✅ 已被工业界回答：DeepSeek CSA2（2026-09）Full/Reindex/Reuse 跨层复用落地于 V4.1-Flash，全局 KV 压至 890 B/token；代价是长文精细检索降级（LongBench-V2 45.2 vs Pro 51.5）。见 [[kv_compression_architectures]]
