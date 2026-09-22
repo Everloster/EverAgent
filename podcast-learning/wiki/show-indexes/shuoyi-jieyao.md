@@ -1,10 +1,12 @@
 # 说医解药 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/34eqplbv6ptd>）｜ 最近拉取：2026-09-09 ｜ 总集数：89
+> 来源：官方 RSS（<https://feed.xyzfm.space/34eqplbv6ptd>）｜ 最近拉取：2026-09-22 ｜ 总集数：91
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-17 | 1h01m | [【串台】上市又退市？从渐冻症看罕见病药物研发的困难与挑战 Vol.89](https://www.xiaoyuzhoufm.com/episode/6aabe5bf9d326477816ab199?utm_source=rss)<!--g:6aabe5bf9d326477816ab199--> | — |
+| — | 2026-09-10 | 38m42s | [参加临床试验是赌命吗？老百姓如何判断一个试验是否靠谱？Vol.88](https://www.xiaoyuzhoufm.com/episode/6aa20b1e9d3264778166ca46?utm_source=rss)<!--g:6aa20b1e9d3264778166ca46--> | — |
 | — | 2026-09-03 | 45m24s | [肿瘤疫苗第一人科利的传奇人生：纽约老钱医院崛起的见证者 Vol.87](https://www.xiaoyuzhoufm.com/episode/6a98e707f03e74ee6b044703?utm_source=rss)<!--g:6a98e707f03e74ee6b044703--> | — |
 | — | 2026-08-27 | 49m58s | [肿瘤疫苗压抑百年后的翻盘：从手搓科利毒素到AI定制mRNA Vol.86](https://www.xiaoyuzhoufm.com/episode/6a8f88c91352af56ff3ca306?utm_source=rss)<!--g:6a8f88c91352af56ff3ca306--> | — |
 | — | 2026-08-20 | 59m33s | [血脂和降脂药到底是什么？为什么低胆固醇饮食救不了你的血脂？降脂药、降脂针，它们有什么区别？Vol.85](https://www.xiaoyuzhoufm.com/episode/6a8673811352af56ff390850?utm_source=rss)<!--g:6a8673811352af56ff390850--> | — |

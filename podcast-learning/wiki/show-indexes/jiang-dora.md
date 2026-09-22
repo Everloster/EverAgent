@@ -1,10 +1,11 @@
 # 姜Dora在此 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/pjq9hb8ggrjm>）｜ 最近拉取：2026-09-09 ｜ 总集数：81
+> 来源：官方 RSS（<https://feed.xyzfm.space/pjq9hb8ggrjm>）｜ 最近拉取：2026-09-22 ｜ 总集数：82
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-15 | 18m51s | [余秀华：大女主个屁，我是小女人\| 人不应该有榜样，每个人都会活成自己的样子【余秀华×姜Dora】](https://www.xiaoyuzhoufm.com/episode/6aa7ce6f9d3264778168f9d0?utm_source=rss)<!--g:6aa7ce6f9d3264778168f9d0--> | — |
 | — | 2026-08-21 | 22m25s | [让别人觉得你工作能力很强的技巧｜初入职场如何社会化？【周日的夜晚】](https://www.xiaoyuzhoufm.com/episode/6a86c1ee1352af56ff393ae7?utm_source=rss)<!--g:6a86c1ee1352af56ff393ae7--> | — |
 | — | 2026-08-04 | 19m38s | [普通人总是通过消灭财富的方式来彰显财富，存款才是你的财富](https://www.xiaoyuzhoufm.com/episode/6a7063791b5e24969ce83144?utm_source=rss)<!--g:6a7063791b5e24969ce83144--> | — |
 | — | 2026-07-13 | 13m41s | [一旦察觉自己状态不对，一定要把自己救上来【刘同×姜Dora】](https://www.xiaoyuzhoufm.com/episode/6a50d0964adef2b36561e830?utm_source=rss)<!--g:6a50d0964adef2b36561e830--> | — |

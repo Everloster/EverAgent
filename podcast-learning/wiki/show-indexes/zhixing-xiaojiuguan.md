@@ -1,10 +1,12 @@
 # 知行小酒馆 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/j8yp8gxkmgqr>）｜ 最近拉取：2026-09-09 ｜ 总集数：263
+> 来源：官方 RSS（<https://feed.xyzfm.space/j8yp8gxkmgqr>）｜ 最近拉取：2026-09-22 ｜ 总集数：265
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-18 | 1h04m | [E252 公积金新规来了，这笔钱该怎么用？这份行动清单供你参考](https://www.xiaoyuzhoufm.com/episode/6aace1189d326477816b0a46?utm_source=rss)<!--g:6aace1189d326477816b0a46--> | — |
+| — | 2026-09-11 | 1h49m | [E251 对话方言：你相信的是价值投资，还是巴菲特的造富神话？](https://www.xiaoyuzhoufm.com/episode/6aa37bcd492687f6aad83995?utm_source=rss)<!--g:6aa37bcd492687f6aad83995--> | — |
 | — | 2026-09-04 | 1h40m | [E250 为什么学了这么多知识，却还是做不好投资？](https://www.xiaoyuzhoufm.com/episode/6a9a6ce4a0210c197dcd64dc?utm_source=rss)<!--g:6a9a6ce4a0210c197dcd64dc--> | — |
 | — | 2026-08-28 | 1h36m | [E249 对话叶檀：我不再是人生的过道人](https://www.xiaoyuzhoufm.com/episode/6a9128d7a0210c197dc98747?utm_source=rss)<!--g:6a9128d7a0210c197dc98747--> | — |
 | — | 2026-08-21 | 1h18m | [E248 从 QQ 空间到苹果设计大奖：一个非典型设计师的成长之路](https://www.xiaoyuzhoufm.com/episode/6a87c3f51352af56ff3999b8?utm_source=rss)<!--g:6a87c3f51352af56ff3999b8--> | — |

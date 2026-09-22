@@ -1,10 +1,11 @@
 # 温柔一刀 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/vmpr88xy7qqg>）｜ 最近拉取：2026-09-09 ｜ 总集数：145
+> 来源：官方 RSS（<https://feed.xyzfm.space/vmpr88xy7qqg>）｜ 最近拉取：2026-09-22 ｜ 总集数：146
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-14 | 1h08m | [从找人到读人，聊聊IP的新解法｜Vol.147 对谈抖音招商运营负责人张文君](https://www.xiaoyuzhoufm.com/episode/6aa7b00a9d3264778168e730?utm_source=rss)<!--g:6aa7b00a9d3264778168e730--> | — |
 | — | 2026-08-18 | 45m15s | [今年营销圈在发生什么？我问出了7个大咖的水下信息](https://www.xiaoyuzhoufm.com/episode/6a84485a8156bf33621a4c69?utm_source=rss)<!--g:6a84485a8156bf33621a4c69--> | — |
 | — | 2026-06-09 | 1h27m | [从京东上市到鸣鸣很忙千亿，一个在场20年的消费投资人 \| vol.145 对话启承资本创始人常斌](https://www.xiaoyuzhoufm.com/episode/6a27ef1341404ca3b66733d1?utm_source=rss)<!--g:6a27ef1341404ca3b66733d1--> | — |
 | — | 2026-05-26 | 1h15m | [从“不懂生意”到年销数亿，浴见的十一年品牌之路 \|vol.144 对话浴见创始人李励](https://www.xiaoyuzhoufm.com/episode/6a1576eaff7b9a8c0a5b7ac3?utm_source=rss)<!--g:6a1576eaff7b9a8c0a5b7ac3--> | — |

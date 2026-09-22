@@ -1,10 +1,12 @@
 # 纵横四海 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/jl8739ky8w9j>）｜ 最近拉取：2026-09-09 ｜ 总集数：87
+> 来源：官方 RSS（<https://feed.xyzfm.space/jl8739ky8w9j>）｜ 最近拉取：2026-09-22 ｜ 总集数：89
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-21 | 3h45m | [EP88 史上最强播客/读书笔记？](https://www.xiaoyuzhoufm.com/episode/6ab11c95f04646b3a954fbe0?utm_source=rss)<!--g:6ab11c95f04646b3a954fbe0--> | — |
+| — | 2026-09-13 | 3h40m | [EP87《稀缺》：如何设计一个让自己变聪明的系统](https://www.xiaoyuzhoufm.com/episode/6aa41d87492687f6aad88ee3?utm_source=rss)<!--g:6aa41d87492687f6aad88ee3--> | — |
 | — | 2026-08-29 | 3h35m | [EP86 颠覆工作流，效率提升3000%](https://www.xiaoyuzhoufm.com/episode/6a8eb50eef65145dfcc5c072?utm_source=rss)<!--g:6a8eb50eef65145dfcc5c072--> | — |
 | — | 2026-07-25 | 3h59m | [EP85 用STP打造个人核心竞争力](https://www.xiaoyuzhoufm.com/episode/6a6303b36356eb2d9be7a859?utm_source=rss)<!--g:6a6303b36356eb2d9be7a859--> | — |
 | — | 2026-07-25 | 7m58s | [卷首语：我憋了一个大招](https://www.xiaoyuzhoufm.com/episode/6a62ed12a3fec224d5a2923f?utm_source=rss)<!--g:6a62ed12a3fec224d5a2923f--> | — |

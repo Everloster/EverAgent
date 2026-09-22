@@ -1,10 +1,14 @@
 # 忽左忽右 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/cv4bkgpuglwp>）｜ 最近拉取：2026-09-09 ｜ 总集数：638
+> 来源：官方 RSS（<https://feed.xyzfm.space/cv4bkgpuglwp>）｜ 最近拉取：2026-09-22 ｜ 总集数：642
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-22 | 1h03m | [502 宇宙超级工程是如何垮掉的：刘怡谈「挑战者号」事故四十周年](https://www.xiaoyuzhoufm.com/episode/6ab23bbe93d5eb3bdc793ad3?utm_source=rss)<!--g:6ab23bbe93d5eb3bdc793ad3--> | — |
+| — | 2026-09-16 | 1h19m | [特番｜从蜂窝网络到手机革命：杨旸谈移动通信浪潮三十年](https://www.xiaoyuzhoufm.com/episode/6aaa6e139d326477816a1bf6?utm_source=rss)<!--g:6aaa6e139d326477816a1bf6--> | — |
+| — | 2026-09-15 | 1h14m | [501 从洪亮吉、龚自珍到魏源：清中叶的人如何看待自己国家未来？](https://www.xiaoyuzhoufm.com/episode/6aa8fe83051af796b9e8832e?utm_source=rss)<!--g:6aa8fe83051af796b9e8832e--> | — |
+| — | 2026-09-11 | 1h35m | [500 晋江陈埭镇往事：黄子懿谈改开进程中的中国运动品牌](https://www.xiaoyuzhoufm.com/episode/6aa3c3269d32647781679918?utm_source=rss)<!--g:6aa3c3269d32647781679918--> | — |
 | — | 2026-09-08 | 58m11s | [499 翻越陇坂：阎海军谈作为古代中国东西互动轴心的陇山](https://www.xiaoyuzhoufm.com/episode/6a9fd33ba0210c197dcf773e?utm_source=rss)<!--g:6a9fd33ba0210c197dcf773e--> | — |
 | — | 2026-09-04 | 1h07m | [498 寻找赉安：为近代上海梧桐区创造风貌的法国建筑师](https://www.xiaoyuzhoufm.com/episode/6a9a8beea0210c197dcd797c?utm_source=rss)<!--g:6a9a8beea0210c197dcd797c--> | — |
 | — | 2026-09-01 | 1h41m | [497 信天翁档案：解密1965年新加坡独立与「新马分家」的台前幕后](https://www.xiaoyuzhoufm.com/episode/6a96a621a0210c197dcbb58d?utm_source=rss)<!--g:6a96a621a0210c197dcbb58d--> | — |
