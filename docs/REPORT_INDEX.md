@@ -7,6 +7,7 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-09-23 | [是个人物 EP22｜程乐松：不要牛马，不要狗屁，要什么？——日常性的哲学](../podcast-learning/reports/2026-09-11_bilibili-shigerenwu_chenglesong.md) | podcast-learning |
 | 2026-09-23 | [多重囚徒困境：全球宏观和资本市场 2026 三季度复盘与展望](../podcast-learning/reports/2026-09-14_xiaoyuzhou-qizhulou_2026q3-macro.md) | podcast-learning |
 | 2026-09-23 | [AI 行业日报 · 2026-09-23](../web-surfing/reports/ai-news-daily-2026-09-23.md) | web-surfing |
 | 2026-09-22 | [用 AI 三天设计一颗芯片后，一位清华博士决定「开卷」](../podcast-learning/reports/2026-09-16_xiaoyuzhou-cihua-dangzhen_zhangtuoken.md) | podcast-learning |
@@ -31,7 +32,6 @@
 | 2026-09-15 | [字节级蒸馏突破 Token 天花板：Marginalize-It 与 End-Of-Token 的技术全景与批判性评估](../ai-learning/reports/paper_analyses/47_byte_distillation_2026.md) | ai-learning |
 | 2026-09-14 | [易论AI Vol.1：AI最前沿的人已经不聊大模型了——李继刚×橘子×歸藏的四人谈（服务裹着能力/齿轮速度差/Agent+X/上下文是一辆车）](../podcast-learning/reports/2026-09-09_xiaoyuzhou-yilun-ai_frontier-no-llm.md) | podcast-learning |
 | 2026-09-14 | [AI 行业日报 · 2026-09-14](../web-surfing/reports/ai-news-daily-2026-09-14.md) | web-surfing |
-| 2026-09-13 | [一本书看清"工作"的真相：竹竹暴风雪解读 × 鲍曼《工作、消费主义和新穷人》原书深读](../podcast-learning/reports/2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism.md) | podcast-learning |
 
 ## 🤖 AI Learning（109 篇）
 
@@ -257,10 +257,11 @@
 | 2026-03-26 | [Physiology of Growth Hormone Secretion during Sleep (1996) 精读](../biology-learning/reports/paper_analyses/P09_gh_sleep_physiology_1996.md) | — |
 | 2026-03-23 | [晚型人作息与力量训练深度研究](../biology-learning/reports/concept_reports/晚型人作息与力量训练_深度研究报告.md) | — |
 
-## 🎙️ Podcast Learning（33 篇）
+## 🎙️ Podcast Learning（34 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-09-23 | [是个人物 EP22｜程乐松：不要牛马，不要狗屁，要什么？——日常性的哲学](../podcast-learning/reports/2026-09-11_bilibili-shigerenwu_chenglesong.md) | — |
 | 2026-09-23 | [多重囚徒困境：全球宏观和资本市场 2026 三季度复盘与展望](../podcast-learning/reports/2026-09-14_xiaoyuzhou-qizhulou_2026q3-macro.md) | — |
 | 2026-09-22 | [用 AI 三天设计一颗芯片后，一位清华博士决定「开卷」](../podcast-learning/reports/2026-09-16_xiaoyuzhou-cihua-dangzhen_zhangtuoken.md) | — |
 | 2026-09-22 | [智能的下一幕：庄明浩 73 页 PPT 的 2026Q3 行业复盘（模型狂奔/智能分化/循环自生/界面重构）](../podcast-learning/reports/2026-09-15_xiaoyuzhou-tulong-zhishu_next-act.md) | — |

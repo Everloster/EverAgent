@@ -201,3 +201,15 @@
 - 2026-09-22 | ingest ×2 | 用户点名再做两集：① 硅谷101 E251 推理芯片之战（1h31m，3202段/28,350字，Mark+子杨）→ [[2026-09-15_rss-guigu101_e251-inference-chips]]（训练算力/推理带宽、SRAM 收敛、Groq/Cerebras/Jalapeño 三路径、英伟达 200 亿 acqui-hire Groq、Bill Dally 设计哲学）；② 此话当真×张托肯（46m48s，1451段/12,657字）→ [[2026-09-16_xiaoyuzhou-cihua-dangzhen_zhangtuoken]]（芯片开卷计划、三天流片、渗透率 80-90%、模型能力>Harness、agent 驾驶员）。两期均用 VAD+`-mc 0` 新组合转写，零循环幻觉。新增 entities/zhang-tuoken；concepts ×2（inference-bandwidth、chip-open-plan）；open-questions +6
 
 - 2026-09-23 | ingest | 起朱楼 182《多重囚徒困境》Q3 宏观复盘（1h39m，3062段/27,368字，Ricky×大卫翁）→ [[2026-09-14_xiaoyuzhou-qizhulou_2026q3-macro]]（债券融资时代到来=CAPEX 泡沫之辩实况续集；AI 囚徒困境三层嵌套；Anthropic 8 月 ARR 放缓 ≈40 亿=情景模型 d_t 验证数据；Q4 排序 黄金>A股>美股>H股）；与屠龙 Q3（技术侧）拼成完整 Q3 图景。open-questions +3
+
+## [2026-09-23] ingest | bilibili
+- 来源：B 站 · 是个人物 EP22《对话北大哲学系教授程乐松：不要牛马，不要狗屁，要什么？》（2026-09-11 发布，BV1QkY561EeD，视频播客）
+- 形式：**对谈**（主播张寒 × 嘉宾程乐松：北大哲学系系主任、道家道教研究、连续两年毕业典礼致辞出圈、新书《留白》）
+- 时长：83m01s（4981s）· 转录：2,993 段 / **24,345 汉字**（whisper.cpp large-v3 Metal **--vad silero -mc 0**）/ 语速 293 字/min · 音频 93.9MiB
+- 报告：[[2026-09-11_bilibili-shigerenwu_chenglesong]]
+- pipeline：yt-dlp 直下 → whisper（**-mc 0 首次实战**：2993 段零循环幻觉，重复段检测通过——09-22 红线验证有效）→ 7 块并行润色（无官方字幕，校验源=简介+eacli 核验；90+ 处修正、23 处 [?]）
+- 内容：explain out vs explain away / 剧本化人生与恐怖平衡 / 不狗屁的两个方向（热爱的一往无前 / 坚实真切跨过时间跨度）/ 价值判断 vs 事实判断 / 脚踩西瓜皮=回望才有必然性 / 微小习惯锚点 / AI 与去中心化时代的哲学家 / 安时而处顺
+- 新增 entities：[[entities/cheng-lesong]]；新增 concepts：[[concepts/odyssey-years]]
+- 外部核验：程乐松系主任身份与两年致辞出圈（北大哲学系官网/上观/解放日报）✓
+- 互链：与 [[2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism|鲍曼工作观]]同线；[[concepts/reading-four-paces|读书配速]]互见
+- 经验：opencli bilibili subtitle 本期走浏览器路径失败（Navigation rejected，扩展离线；上期走 API 返回 EMPTY_RESULT）——subtitle 路径不稳定，B 站字幕可用性按期波动，不可依赖
