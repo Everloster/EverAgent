@@ -6,7 +6,7 @@
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
 | — | 2026-09-17 | 35m43s | [外滩大会线下圆桌｜敢把钱包交给AI吗？聊聊Agent交易爆发前夜的信任基建](https://sv101.fireside.fm/265)<!--g:78ec2d74-0ad7-4c6f-9764-728eec0e6e87--> | — |
-| — | 2026-09-15 | 1h31m | [E251｜推理芯片之战：聊聊Groq、Cerebras与OpenAI三大路径与Bill Dally的设计哲学](https://sv101.fireside.fm/264)<!--g:786d63c4-d46c-4ff3-80f8-fc895b2a57f0--> | — |
+| — | 2026-09-15 | 1h31m | [E251｜推理芯片之战：聊聊Groq、Cerebras与OpenAI三大路径与Bill Dally的设计哲学](https://sv101.fireside.fm/264)<!--g:786d63c4-d46c-4ff3-80f8-fc895b2a57f0--> | ✅ |
 | — | 2026-08-27 | 1h16m | [E250｜mRNA的第二战场：对话英博，拆解Moderna人类首个肿瘤疫苗三期突破](https://sv101.fireside.fm/263)<!--g:73a69583-98ee-43d6-a892-3e7c93012dd9--> | — |
 | — | 2026-08-19 | 1h27m | [E249｜Token经济转点：OpenClaw、Hermes到本地自研的Agent进化之路](https://sv101.fireside.fm/262)<!--g:6242033d-a14a-44e3-a622-cbfc7d3c3817--> | — |
 | — | 2026-08-10 | 1h03m | [E248｜一个“催发货”AI要跑通260步，和阿里瓴羊朋新宇聊聊中国式FDE](https://sv101.fireside.fm/261)<!--g:9e923c4c-1c87-499b-90a4-9a21cc83e4b1--> | — |
