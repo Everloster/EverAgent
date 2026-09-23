@@ -70,6 +70,7 @@
 
 ### 社会学 / 工作观
 
+- [[2026-09-11_bilibili-shigerenwu_chenglesong|是个人物 EP22：程乐松——不要牛马，不要狗屁，要什么？]]（episode_summary · 发布 2026-09-11，归档 2026-09-23）— B 站视频播客，83m，北大哲学系系主任的"反卷"日常哲学：explain out vs explain away / 不狗屁的两个方向 / 脚踩西瓜皮（回望才有必然性）/ 安时而处顺；与鲍曼工作观线互补
 - [[2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism|一本书看清"工作"的真相：竹竹解读 × 鲍曼《工作、消费主义和新穷人》原书深读]]（episode_summary · 2026-08-14）— B 站「竹竹暴风雪」社会学领读 16 期（上）× 原书 166 页全文对照，18m19s，工作伦理被发明 / 生产者社会→消费者社会 / 消费美学 / 新穷人
 
 ---
@@ -149,6 +150,10 @@
 - [[entities/moonshot-ai|月之暗面（Moonshot/Kimi）]] — 杨植麟；K1.5→K3 谱系；"模型内科" / "用 infra 换算力"
 - [[entities/zhang-xiaojun|张小珺]] — 商业访谈录主播；148/152 两期；"学习播客"形态开创
 
+### 来自 2026-09-11 是个人物 EP22（程乐松期）
+
+- [[entities/cheng-lesong|程乐松]] — 北大哲学系系主任；"反卷教授"但拒绝精神导师；explain away；不狗屁的两个方向
+
 ## Concepts（核心概念）
 
 ### 来自 Vol.29 王小川系列
@@ -227,6 +232,10 @@
 - [[concepts/attention-residuals|Attention Residuals]] — 层间选择性读取；与 mHC 对偶；Pre-LN 超集
 - [[concepts/mopd|MOPD]] — 多教师 on-policy 蒸馏；3 域×3 努力度；解耦与合板
 - [[concepts/kernel-development-agent|Kernel Development Agent]] — RSI 三条件（便宜/可验证/难作弊）；双 KDA 之问
+
+### 来自 2026-09-11 是个人物 EP22（程乐松期）
+
+- [[concepts/odyssey-years|奥德赛时期]] — 命名即辩护；"能意识到自己在奥德赛时期的人活得不算太差"
 
 ## Syntheses（跨期综合）
 
