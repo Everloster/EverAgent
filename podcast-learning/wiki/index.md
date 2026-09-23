@@ -57,6 +57,11 @@
 ### AI 行业 / Agent 工程实操
 
 - [[2026-09-17_rss-kedaibiao-lizheng_jinjing|一个人指挥 400 个 AI：Orca 津晶的多 agent 编排实操（ADE vs Harness）]]（episode_summary · 2026-09-17）— 课代表立正对话 319，1h06m，ADE/harness 分层 / 400 任务三层法 / 4 人日产百 PR；首轮转写循环幻觉 89.5%、`-mc 0` 修复的标志性案例
+- [[2026-09-16_xiaoyuzhou-cihua-dangzhen_zhangtuoken|用 AI 三天设计一颗芯片后，一位清华博士决定「开卷」]]（episode_summary · 2026-09-16）— 此话当真对话张托肯，46m48s，芯片开卷计划 / 三天流片 / 渗透率 80-90% / 模型能力>Harness / agent 驾驶员
+
+### AI Infra / 推理芯片
+
+- [[2026-09-15_rss-guigu101_e251-inference-chips|推理芯片之战：训练看算力、推理看带宽]]（episode_summary · 2026-09-15）— 硅谷101 E251，1h31m，Mark（Bill Dally 学生）+子杨（前 Amazon Annapurna）；SRAM 收敛 / Groq·Cerebras·Jalapeño 三路径 / acqui-hire Groq / CUDA 一定会被绕过
 
 ### 具身智能 / 人物访谈
 
@@ -129,6 +134,7 @@
 
 - [[entities/jinjing-orca|津晶 & Orca（Stably AI）]] — ADE 提出者；400+ 任务编排实操；ex-Google/YC
 - [[entities/xu-mengdi|徐梦迪]] — 清华叉院 AP，具身智能；CMU 最佳博士论文；斯坦福博后（李飞飞/吴佳俊）
+- [[entities/zhang-tuoken|张托肯]] — 清华电子系博士→ETH 博后；「芯片开卷计划」发起人；三天流片 / EDA 桥接工具开源 / Razavi Bench
 
 ### 来自 2026-08-14 竹竹暴风雪（社会学领读 16 期）
 
@@ -236,5 +242,7 @@
 
 - [[concepts/loop-rsi-consensus|Loop / RSI 共识（循环自生）]] — 大佬共识收敛到 AI 改进 AI；a16z 四象限划边界；new lab 943 亿融资 vs 里程碑缺位
 - [[concepts/ade-vs-harness|ADE vs Harness]] — 津晶的分层：harness=agent loop，ADE=人与 agent 的管理 workflow
+- [[concepts/inference-bandwidth|训练看算力，推理看带宽]] — decode 每 token 读全模型权重；SRAM 收敛与三路径折扣；CUDA 一定会被绕过
+- [[concepts/chip-open-plan|芯片开卷计划]] — 0→60/80 分内容开卷+AI 加速；封闭世界的胜利（数字芯片渗透率 80-90%）
 
 *Last updated: 2026-09-13*
