@@ -5,7 +5,7 @@
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
-| 182 | 2026-09-14 | 1h39m | [182.全球宏观和资本市场2026三季度复盘与展望：多重囚徒困境](https://www.xiaoyuzhoufm.com/episode/6aa7f2e6129fe965d3326f40?utm_source=rss)<!--g:6aa7f2e6129fe965d3326f40--> | — |
+| 182 | 2026-09-14 | 1h39m | [182.全球宏观和资本市场2026三季度复盘与展望：多重囚徒困境](https://www.xiaoyuzhoufm.com/episode/6aa7f2e6129fe965d3326f40?utm_source=rss)<!--g:6aa7f2e6129fe965d3326f40--> | ✅ |
 | 181 | 2026-09-08 | 1h17m | [181.这轮规模空前的中国制造业出海背后｜线下活动实录](https://www.xiaoyuzhoufm.com/episode/6a9ecfa7a0210c197dcf0d4e?utm_source=rss)<!--g:6a9ecfa7a0210c197dcf0d4e--> | — |
 | 180 | 2026-09-03 | 1h37m | [180.当一个把所有钱都放活期存款的理财恐惧者开始考虑资产配置｜串台日谈公园](https://www.xiaoyuzhoufm.com/episode/6a984590f03e74ee6b041871?utm_source=rss)<!--g:6a984590f03e74ee6b041871--> | — |
 | 179 | 2026-08-24 | 56m22s | [179.先救日元再救长债，“救火队长”贝森特在走一条怎样的钢丝？](https://www.xiaoyuzhoufm.com/episode/6a8bd18f1352af56ff3b0053?utm_source=rss)<!--g:6a8bd18f1352af56ff3b0053--> | — |
