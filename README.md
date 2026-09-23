@@ -33,13 +33,13 @@
 <!-- AUTO-OVERVIEW:START -->
 | 项目 | 报告 | Wiki(概念/实体/综合) |
 |------|------|----------------------|
-| 🤖 [AI Learning](./ai-learning/) | 108 篇 | 51/29/1 |
+| 🤖 [AI Learning](./ai-learning/) | 109 篇 | 51/29/1 |
 | 💻 [CS Learning](./cs-learning/) | 33 篇 | 24/17/1 |
 | 📚 [Philosophy Learning](./philosophy-learning/) | 22 篇 | 20/14/1 |
 | 🧠 [Psychology Learning](./psychology-learning/) | 17 篇 | 13/13/0 |
 | 🧬 [Biology Learning](./biology-learning/) | 18 篇 | 14/9/0 |
 | ⚗️ [AI Practice](./ai-practice/) | 9 篇 | 9/1/0 |
-| 🎙️ [Podcast Learning](./podcast-learning/) | 30 篇 | 49/37/0 |
+| 🎙️ [Podcast Learning](./podcast-learning/) | 32 篇 | 51/38/0 |
 <!-- AUTO-OVERVIEW:END -->
 
 > 📖 抽空读报告？全部报告按更新时间索引 → [docs/REPORT_INDEX.md](./docs/REPORT_INDEX.md)（`reindex.py` 自动生成）
