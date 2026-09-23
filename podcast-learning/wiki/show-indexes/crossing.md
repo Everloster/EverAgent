@@ -5,7 +5,7 @@
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
-| — | 2026-09-20 | 1h20m | [“我看到了 Scaling Law 的信号” \| 对谈清华叉院助理教授徐梦迪：具身智能、世界模型、真正的泛化](https://www.xiaoyuzhoufm.com/episode/6ab0504f0916f6f8b4466ece?utm_source=rss)<!--g:6ab0504f0916f6f8b4466ece--> | — |
+| — | 2026-09-20 | 1h20m | [“我看到了 Scaling Law 的信号” \| 对谈清华叉院助理教授徐梦迪：具身智能、世界模型、真正的泛化](https://www.xiaoyuzhoufm.com/episode/6ab0504f0916f6f8b4466ece?utm_source=rss)<!--g:6ab0504f0916f6f8b4466ece--> | ✅ |
 | — | 2026-09-16 | 1h09m | [于是转身向具身走去｜对话王家伟：24 岁的具身智能首席科学家](https://www.xiaoyuzhoufm.com/episode/6aaa9f039d326477816a3488?utm_source=rss)<!--g:6aaa9f039d326477816a3488--> | — |
 | — | 2026-09-13 | 42m42s | [当具身智能走到十字路口｜对谈苏度、蚂蚁灵波、自变量、破壳：四种一线判断](https://www.xiaoyuzhoufm.com/episode/6aa67b319d32647781685e95?utm_source=rss)<!--g:6aa67b319d32647781685e95--> | — |
 | — | 2026-09-06 | 1h16m | [她被骗过、被救过、被捧上神坛过、被疼痛击倒过，决定在AI时代继续冒险｜对谈陈安妮](https://www.xiaoyuzhoufm.com/episode/6a9abd3df03e74ee6b052a28?utm_source=rss)<!--g:6a9abd3df03e74ee6b052a28--> | — |

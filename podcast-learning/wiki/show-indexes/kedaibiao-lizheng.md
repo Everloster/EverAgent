@@ -5,7 +5,7 @@
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
-| — | 2026-09-17 | 1h06m | [对话 319｜硅谷AI高手们，正在操作几百个AI同时上班｜Github七万星Orca创始人津晶对话](https://share.transistor.fm/s/da94edb8)<!--g:683b7e67-4b46-4456-879e-49a52f95efe3--> | — |
+| — | 2026-09-17 | 1h06m | [对话 319｜硅谷AI高手们，正在操作几百个AI同时上班｜Github七万星Orca创始人津晶对话](https://share.transistor.fm/s/da94edb8)<!--g:683b7e67-4b46-4456-879e-49a52f95efe3--> | ✅ |
 | — | 2026-09-14 | 21m47s | [立正说 213｜职场不再奖励表演式工作，晋升要对结果负责](https://share.transistor.fm/s/a8fc0fee)<!--g:e206c10a-201f-491b-a9ea-ef3c12b465a7--> | — |
 | — | 2026-09-10 | 11m05s | [立正说 212｜老东家被OpenAI以11亿美元收购，我为什么选择全职卖课？](https://share.transistor.fm/s/83d61c9f)<!--g:280b791e-1a99-4863-b361-ea9c2df5fbdc--> | — |
 | — | 2026-09-07 | 20m16s | [立正说 211｜AI已经用得很好，为什么还是怕被淘汰？](https://share.transistor.fm/s/ca1954b0)<!--g:1bd4a9f9-7550-4c2d-af7e-4da1ea6f121b--> | — |
