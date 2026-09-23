@@ -7,6 +7,8 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-09-23 | [多重囚徒困境：全球宏观和资本市场 2026 三季度复盘与展望](../podcast-learning/reports/2026-09-14_xiaoyuzhou-qizhulou_2026q3-macro.md) | podcast-learning |
+| 2026-09-23 | [AI 行业日报 · 2026-09-23](../web-surfing/reports/ai-news-daily-2026-09-23.md) | web-surfing |
 | 2026-09-22 | [用 AI 三天设计一颗芯片后，一位清华博士决定「开卷」](../podcast-learning/reports/2026-09-16_xiaoyuzhou-cihua-dangzhen_zhangtuoken.md) | podcast-learning |
 | 2026-09-22 | [格罗滕迪克「涨潮」思想 — 让难题消失的升维方法研究](../ai-learning/reports/knowledge_reports/格罗滕迪克涨潮思想_让难题消失的升维方法研究_20260922.md) | ai-learning |
 | 2026-09-22 | [智能的下一幕：庄明浩 73 页 PPT 的 2026Q3 行业复盘（模型狂奔/智能分化/循环自生/界面重构）](../podcast-learning/reports/2026-09-15_xiaoyuzhou-tulong-zhishu_next-act.md) | podcast-learning |
@@ -30,8 +32,6 @@
 | 2026-09-14 | [易论AI Vol.1：AI最前沿的人已经不聊大模型了——李继刚×橘子×歸藏的四人谈（服务裹着能力/齿轮速度差/Agent+X/上下文是一辆车）](../podcast-learning/reports/2026-09-09_xiaoyuzhou-yilun-ai_frontier-no-llm.md) | podcast-learning |
 | 2026-09-14 | [AI 行业日报 · 2026-09-14](../web-surfing/reports/ai-news-daily-2026-09-14.md) | web-surfing |
 | 2026-09-13 | [一本书看清"工作"的真相：竹竹暴风雪解读 × 鲍曼《工作、消费主义和新穷人》原书深读](../podcast-learning/reports/2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism.md) | podcast-learning |
-| 2026-09-12 | [王坚的三分智能框架与机器意识：一个工程院士的「消解式回答」经得起检验吗？](../ai-learning/reports/knowledge_reports/王坚三分智能框架与机器意识_深度解析_20260912.md) | ai-learning |
-| 2026-09-12 | [王坚回应凉子：AI 何时产生自主意识——5分钟里的三个论断（机器智能≠人工的人类智能 / 技术只拓展边界 / AI 的使命是减少资源消耗）](../podcast-learning/reports/2026-09-11_bilibili-liangzi-fangtanlu_wangjian.md) | podcast-learning |
 
 ## 🤖 AI Learning（109 篇）
 
@@ -257,10 +257,11 @@
 | 2026-03-26 | [Physiology of Growth Hormone Secretion during Sleep (1996) 精读](../biology-learning/reports/paper_analyses/P09_gh_sleep_physiology_1996.md) | — |
 | 2026-03-23 | [晚型人作息与力量训练深度研究](../biology-learning/reports/concept_reports/晚型人作息与力量训练_深度研究报告.md) | — |
 
-## 🎙️ Podcast Learning（32 篇）
+## 🎙️ Podcast Learning（33 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-09-23 | [多重囚徒困境：全球宏观和资本市场 2026 三季度复盘与展望](../podcast-learning/reports/2026-09-14_xiaoyuzhou-qizhulou_2026q3-macro.md) | — |
 | 2026-09-22 | [用 AI 三天设计一颗芯片后，一位清华博士决定「开卷」](../podcast-learning/reports/2026-09-16_xiaoyuzhou-cihua-dangzhen_zhangtuoken.md) | — |
 | 2026-09-22 | [智能的下一幕：庄明浩 73 页 PPT 的 2026Q3 行业复盘（模型狂奔/智能分化/循环自生/界面重构）](../podcast-learning/reports/2026-09-15_xiaoyuzhou-tulong-zhishu_next-act.md) | — |
 | 2026-09-22 | [推理芯片之战：训练看算力、推理看带宽——Groq、Cerebras、OpenAI 三条路径与 Bill Dally 的设计哲学](../podcast-learning/reports/2026-09-15_rss-guigu101_e251-inference-chips.md) | — |
@@ -294,10 +295,11 @@
 | 2026-06-20 | [三年行业吃肉榜/爆亏榜大合集（2023-2025）：谁在偷偷赚钱，谁在快速衰落](../podcast-learning/reports/2026-06-20_bilibili-cls-tongxue_hangye-bangdan.md) | — |
 | 2026-06-18 | [Vol.29 对话王小川：造医生，战豆包，与无尽的 AI 非共识](../podcast-learning/reports/2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan.md) | — |
 
-## 🏄 Web Surfing（25 篇）
+## 🏄 Web Surfing（26 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-09-23 | [AI 行业日报 · 2026-09-23](../web-surfing/reports/ai-news-daily-2026-09-23.md) | — |
 | 2026-09-22 | [AI 行业日报 · 2026-09-22](../web-surfing/reports/ai-news-daily-2026-09-22.md) | — |
 | 2026-09-21 | [AI 行业日报 · 2026-09-21](../web-surfing/reports/ai-news-daily-2026-09-21.md) | — |
 | 2026-09-18 | [AI 行业日报 · 2026-09-18](../web-surfing/reports/ai-news-daily-2026-09-18.md) | — |

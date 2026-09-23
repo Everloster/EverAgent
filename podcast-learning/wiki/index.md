@@ -16,6 +16,7 @@
 - [[2026-09-03_xiaoyuzhou-zhangxiaojun_zengming|153. 和曾鸣聊产业史观：残酷的真相、会消亡的公司、优秀≠卓越]]（episode_summary · 2026-09-03）— 小宇宙「张小珺Jùn」对谈曾鸣，2h34m，AI 产业化三阶段论 / 模型公司=AI 云公司（寡头+强监管）/ 公司消亡 / 战略生成 / 巨头审判
 - [[2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review|重估一切，文艺复兴——2026H1 AI行业观察]]（episode_summary · 2026-07-17）— 小宇宙「屠龙之术」庄明浩单口，54m37s，CAPEX 泡沫之辩 / Agent 元年 / 中美双极 / 第四支柱
 - [[2026-09-15_xiaoyuzhou-tulong-zhishu_next-act|智能的下一幕：庄明浩 73 页 PPT 2026Q3 复盘]]（episode_summary · 2026-09-15）— 屠龙之术单口，55m21s，模型狂奔（制造业化/benchmark 失效）/ 智能分化（Own Your Intelligence）/ 循环自生（Loop·RSI 共识）/ 界面重构（App Store 十年首降）
+- [[2026-09-14_xiaoyuzhou-qizhulou_2026q3-macro|多重囚徒困境：2026Q3 全球宏观复盘]]（episode_summary · 2026-09-14）— 起朱楼宴宾客×Ricky，1h39m，债券融资时代 / AI 通胀其他通缩 / 囚徒困境三层嵌套 / 资金挤兑时间表 / Q4 排序（黄金>A股>美股>H股）
 
 ### AI Infra / 开源商业化
 
