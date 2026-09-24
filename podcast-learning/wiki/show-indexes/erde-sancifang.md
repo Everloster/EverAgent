@@ -1,10 +1,11 @@
 # 二的三次方 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/8mwdbxbr4kck>）｜ 最近拉取：2026-09-24 ｜ 总集数：162
+> 来源：官方 RSS（<https://feed.xyzfm.space/8mwdbxbr4kck>）｜ 最近拉取：2026-09-25 ｜ 总集数：163
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-24 | 1h29m | [vol:159 平常咱也能将就，遇事咱得会讲究。](https://www.xiaoyuzhoufm.com/episode/6ab50369e742e36efcbad673?utm_source=rss)<!--g:6ab50369e742e36efcbad673--> | — |
 | — | 2026-09-17 | 1h43m | [vol:158 努力路上有笑有泪，和佛对谈小黑下跪！](https://www.xiaoyuzhoufm.com/episode/6aabcfd1051af796b9e9b40f?utm_source=rss)<!--g:6aabcfd1051af796b9e9b40f--> | — |
 | — | 2026-09-10 | 1h53m | [vol:157 欠了一百万？别慌，主播现场给你还了！](https://www.xiaoyuzhoufm.com/episode/6aa27e68492687f6aad7e04b?utm_source=rss)<!--g:6aa27e68492687f6aad7e04b--> | — |
 | — | 2026-09-03 | 1h45m | [vol:156 突发！传统媒体衰落的原因，今天找到了！](https://www.xiaoyuzhoufm.com/episode/6a994707f03e74ee6b0487ba?utm_source=rss)<!--g:6a994707f03e74ee6b0487ba--> | — |

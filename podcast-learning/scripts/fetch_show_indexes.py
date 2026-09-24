@@ -49,6 +49,10 @@ SLUGS = {
     "信号与噪声": "xinhao-yuzaosheng", "半拿铁·周刊": "bannatie-zhoukan",
     "101 Weekly": "101-weekly", "罗永浩的十字路口": "luoyonghao-crossing",
     "课代表立正": "kedaibiao-lizheng",
+    # 2026-09-25 从「我也在听的品质播客」分享合集并入（OPML 导出丢档，collection API 补齐）
+    "无尽的谈话♾️": "wujin-tanhua", "半拿铁·故事篇": "bannatie-gushipian",
+    "人文清华播客：对话清华学者": "renwen-qinghua", "Ready Go": "ready-go",
+    "商业就是这样": "shangye-jiushi-zheyang",
 }
 
 MONTHS = {"Jan": "01", "Feb": "02", "Mar": "03", "Apr": "04", "May": "05", "Jun": "06",
