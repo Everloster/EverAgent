@@ -1,10 +1,11 @@
 # AI炼金术 — 全量单集索引
 
-> 来源：官方 RSS（<https://www.ximalaya.com/album/74194808.xml>）｜ 最近拉取：2026-09-22 ｜ 总集数：139
+> 来源：官方 RSS（<https://www.ximalaya.com/album/74194808.xml>）｜ 最近拉取：2026-09-24 ｜ 总集数：140
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-23 | 1h06m | [PureblueAI 鲁扬：把 prompt 当货架空间，把 GEO 当量化交易](https://www.ximalaya.com/sound/1017619050)<!--g:xmly_track_1017619050--> | — |
 | — | 2026-09-17 | 1h38m | [XCircle 小飞：只做管理那批人，要没工作了](https://www.ximalaya.com/sound/1015908823)<!--g:xmly_track_1015908823--> | — |
 | — | 2026-09-14 | 1h07m | [鹿客陈彬：把一家 12 年的硬件公司，重写成 AI 原生组织](https://www.ximalaya.com/sound/1014649800)<!--g:xmly_track_1014649800--> | — |
 | — | 2026-08-29 | 1h06m | [OPC 已经凉了，FDE 会有光明的未来么？](https://www.ximalaya.com/sound/1009684225)<!--g:xmly_track_1009684225--> | — |

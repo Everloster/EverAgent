@@ -1,6 +1,6 @@
 # 姜Dora在此 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/pjq9hb8ggrjm>）｜ 最近拉取：2026-09-22 ｜ 总集数：82
+> 来源：官方 RSS（<https://feed.xyzfm.space/pjq9hb8ggrjm>）｜ 最近拉取：2026-09-24 ｜ 总集数：82
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
