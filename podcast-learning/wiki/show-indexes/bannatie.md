@@ -1,10 +1,11 @@
 # 半拿铁 | 商业沉浮录 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/tcettvc3x689>）｜ 最近拉取：2026-09-22 ｜ 总集数：237
+> 来源：官方 RSS（<https://feed.xyzfm.space/tcettvc3x689>）｜ 最近拉取：2026-09-24 ｜ 总集数：238
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-23 | 2h36m | [No.220 🌀 互联网系列大结局：贾公下周回国日，乐视宏图未倒时 \| 中国互联网故事 29](https://www.xiaoyuzhoufm.com/episode/6ab2900693d5eb3bdc7966dc?utm_source=rss)<!--g:6ab2900693d5eb3bdc7966dc--> | — |
 | — | 2026-09-16 | 1h58m | [No.219 📦️ 快递江湖三十年：桐庐帮、淘宝、拼多多与价格战](https://www.xiaoyuzhoufm.com/episode/6aa96e72051af796b9e8c0a5?utm_source=rss)<!--g:6aa96e72051af796b9e8c0a5--> | — |
 | — | 2026-09-09 | 3h35m | [No.218 🚲 O2O 与共享经济：属于单车、充电宝、上门美甲和按摩的魔幻撒钱年代  \| 中国互联网故事 28](https://www.xiaoyuzhoufm.com/episode/6aa0ed3b30dee5c2474b9301?utm_source=rss)<!--g:6aa0ed3b30dee5c2474b9301--> | — |
 | — | 2026-09-02 | 1h35m | [No.217 🧲 宁波往事：从方太到申洲，从油烟机到中国最大服装代工巨头](https://www.xiaoyuzhoufm.com/episode/6a9661cca0210c197dcb8152?utm_source=rss)<!--g:6a9661cca0210c197dcb8152--> | — |

@@ -1,10 +1,11 @@
 # 能者多唠｜商业原声 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/qlenc4cdh48c>）｜ 最近拉取：2026-09-22 ｜ 总集数：125
+> 来源：官方 RSS（<https://feed.xyzfm.space/qlenc4cdh48c>）｜ 最近拉取：2026-09-24 ｜ 总集数：126
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-24 | 1h29m | [Vol.128中秋节，揭秘300亿的月饼生意！](https://www.xiaoyuzhoufm.com/episode/6ab35b9ff04646b3a955cfa4?utm_source=rss)<!--g:6ab35b9ff04646b3a955cfa4--> | — |
 | — | 2026-09-18 | 1h09m | [Vol.127一把餐椅上千元，四个直男室友如何造出“妈妈”大爆款](https://www.xiaoyuzhoufm.com/episode/6aacfc0c9d326477816b1d48?utm_source=rss)<!--g:6aacfc0c9d326477816b1d48--> | — |
 | — | 2026-09-11 | 1h13m | [Vol.126 卖养猫三大件年入15亿，一家宠物公司为什么想做苹果？](https://www.xiaoyuzhoufm.com/episode/6aa3c860492687f6aad86801?utm_source=rss)<!--g:6aa3c860492687f6aad86801--> | — |
 | — | 2026-09-04 | 1h18m | [Vol.125年轻人开始玩缝纫机？ 百年行业迎来新生意](https://www.xiaoyuzhoufm.com/episode/6a9a889ca0210c197dcd7792?utm_source=rss)<!--g:6a9a889ca0210c197dcd7792--> | — |

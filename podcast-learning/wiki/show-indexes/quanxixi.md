@@ -1,10 +1,11 @@
 # 全嘻嘻 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/ptewvlwcgb8n>）｜ 最近拉取：2026-09-22 ｜ 总集数：170
+> 来源：官方 RSS（<https://feed.xyzfm.space/ptewvlwcgb8n>）｜ 最近拉取：2026-09-24 ｜ 总集数：171
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-23 | 1h37m | [大佬婚姻真相【全嘻嘻 × 姐友聊天】](https://www.xiaoyuzhoufm.com/episode/6ab3be3593d5eb3bdc79d6bf?utm_source=rss)<!--g:6ab3be3593d5eb3bdc79d6bf--> | — |
 | — | 2026-09-18 | 1h52m | [让孩子成为海淀小学生后，我后悔了......【全嘻嘻 x 姐友聊天】](https://www.xiaoyuzhoufm.com/episode/6aaba7e79d326477816a9419?utm_source=rss)<!--g:6aaba7e79d326477816a9419--> | — |
 | — | 2026-09-11 | 32m35s | [【八月回信】为什么考上编制的人生，还是这么痛苦？【全嘻嘻】](https://www.xiaoyuzhoufm.com/episode/6aa36609492687f6aad829e3?utm_source=rss)<!--g:6aa36609492687f6aad829e3--> | — |
 | — | 2026-09-03 | 1h24m | [全嘻嘻：请男嘉宾刘煜暄和女嘉宾佳佳魔法对轰【全嘻嘻 x 师兄聊天】](https://www.xiaoyuzhoufm.com/episode/6a9954d0a0210c197dccf40f?utm_source=rss)<!--g:6a9954d0a0210c197dccf40f--> | — |

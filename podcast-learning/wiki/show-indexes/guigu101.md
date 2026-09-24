@@ -1,10 +1,11 @@
 # 硅谷101 — 全量单集索引
 
-> 来源：官方 RSS（<https://feeds.fireside.fm/sv101/rss>）｜ 最近拉取：2026-09-22 ｜ 总集数：261
+> 来源：官方 RSS（<https://feeds.fireside.fm/sv101/rss>）｜ 最近拉取：2026-09-24 ｜ 总集数：262
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-23 | 54m32s | [E252｜硅谷睡眠外挂：富人的玩具，还是预防医疗的入口？｜对话Eight Sleep创始人](https://sv101.fireside.fm/266)<!--g:833a6b89-e6a1-4d61-a3b3-46f4d664894e--> | — |
 | — | 2026-09-17 | 35m43s | [外滩大会线下圆桌｜敢把钱包交给AI吗？聊聊Agent交易爆发前夜的信任基建](https://sv101.fireside.fm/265)<!--g:78ec2d74-0ad7-4c6f-9764-728eec0e6e87--> | — |
 | — | 2026-09-15 | 1h31m | [E251｜推理芯片之战：聊聊Groq、Cerebras与OpenAI三大路径与Bill Dally的设计哲学](https://sv101.fireside.fm/264)<!--g:786d63c4-d46c-4ff3-80f8-fc895b2a57f0--> | ✅ |
 | — | 2026-08-27 | 1h16m | [E250｜mRNA的第二战场：对话英博，拆解Moderna人类首个肿瘤疫苗三期突破](https://sv101.fireside.fm/263)<!--g:73a69583-98ee-43d6-a892-3e7c93012dd9--> | — |
