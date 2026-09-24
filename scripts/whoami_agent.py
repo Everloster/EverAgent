@@ -303,8 +303,55 @@ def _zcode_session_model() -> str | None:
     return None
 
 
+def _opencode_session_model() -> str | None:
+    """从 opencode 本地 SQLite（~/.local/share/opencode/opencode.db）读当前会话模型。
+
+    opencode 不在配置文件里存全局模型（~/.config/opencode/opencode.json 无 model 键，
+    模型是会话级选择），每条 assistant 消息把 providerID/modelID/path.cwd 存进 message
+    表（JSON 文本列）。取「cwd 与当前目录一致的最新一条」即当前会话事实源；cwd 无匹配
+    时退全局最新一条。只读模式打开（mode=ro，WAL 下不阻塞写入方），任何异常返回 None
+    让上层落 unknown（ecommit 拦 *-unknown，绝不静默猜）。
+    """
+    db = HOME / ".local" / "share" / "opencode" / "opencode.db"
+    if not db.is_file():
+        return None
+    try:
+        import json as _json
+        import sqlite3
+        cwd = os.getcwd()
+        con = sqlite3.connect(f"file:{db}?mode=ro", uri=True, timeout=2)
+        try:
+            rows = con.execute(
+                "SELECT data FROM message "
+                "WHERE json_extract(data,'$.role')='assistant' "
+                "ORDER BY time_created DESC LIMIT 50"
+            ).fetchall()
+        finally:
+            con.close()
+        cwd_latest = global_latest = None
+        for (raw,) in rows:
+            try:
+                data = _json.loads(raw)
+            except Exception:
+                continue
+            model = data.get("modelID") or ""
+            if not model:
+                continue
+            if global_latest is None:
+                global_latest = model
+            if cwd_latest is None and (data.get("path") or {}).get("cwd") == cwd:
+                cwd_latest = model
+                break
+        return cwd_latest or global_latest
+    except Exception:
+        return None
+
+
 def detect_model(cli: str) -> str:
     """按 CLI 读其配置拿模型名。"""
+    if cli == "opencode":
+        # env 显式覆盖优先（编排层/测试可注入）；否则读本地会话库
+        return os.environ.get("OPENCODE_MODEL") or _opencode_session_model() or "unknown"
     if cli == "trae":
         session_model = _trae_session_model()
         if session_model:
