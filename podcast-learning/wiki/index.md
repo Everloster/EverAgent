@@ -12,6 +12,9 @@
 
 ### AI 行业 / 宏观观察
 
+- [[2026-09-24_xiaoyuzhou-guiji-lichang_zhangfan-fde|硅基立场 Vol.32：张帆"去他X的FDE"]]（episode_summary · 发布 2026-09-24，归档 2026-09-25）— 骆轶航×智谱前COO，1h43m，FDE=高级外包 / 正态分布与边缘解 / 知识承载三载体（workflow→harness→weight）/ 企业 RSI / 反工业革命与液态组织；立场披露：嘉宾创业方向是 FDE 替代品
+- [[2026-08-17_xiaoyuzhou-cihua-dangzhen_distill|此话当真：同事.skill 与人生系统.skill，你害怕被蒸馏吗]]（episode_summary · 发布 2026-08-17，归档 2026-09-25）— 真格出品，56m，周天奕（23k star）×蔡不菜（Obsidian 人生系统）/ build in public / AI 审美污染与读 2023 年以前的文字 / 文风同化恐惧 / agent 的最后一百米；与张帆期构成蒸馏之争镜像
+
 - [[2026-07-24_bilibili-suochang-linchao_ai-bubble-2027|所长林超《AI泡沫，2027年爆破？》：开源价格锚定、巨头 IPO 考验与七万亿债]]（episode_summary · 发布 2026-07-24，归档 2026-09-15）— 涌现×Bill It Up S01E01 视频版，38m23s 三人对谈（Bill Qian+蒋涛），深V 软着陆 vs 2027H2 / 开源价格锚定 / 四大泡沫论检视 / 调度层价值；与 CAPEX 泡沫之辩三视角互补
 - [[2026-09-03_xiaoyuzhou-zhangxiaojun_zengming|153. 和曾鸣聊产业史观：残酷的真相、会消亡的公司、优秀≠卓越]]（episode_summary · 2026-09-03）— 小宇宙「张小珺Jùn」对谈曾鸣，2h34m，AI 产业化三阶段论 / 模型公司=AI 云公司（寡头+强监管）/ 公司消亡 / 战略生成 / 巨头审判
 - [[2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review|重估一切，文艺复兴——2026H1 AI行业观察]]（episode_summary · 2026-07-17）— 小宇宙「屠龙之术」庄明浩单口，54m37s，CAPEX 泡沫之辩 / Agent 元年 / 中美双极 / 第四支柱

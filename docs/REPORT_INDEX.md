@@ -7,6 +7,9 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-09-25 | [硅基立场 Vol.32｜张帆：去他X的FDE——能力沉淀在哪里，从定制外包到企业自学习](../podcast-learning/reports/2026-09-24_xiaoyuzhou-guiji-lichang_zhangfan-fde.md) | podcast-learning |
+| 2026-09-25 | [此话当真｜同事.skill 与人生系统.skill：你害怕被蒸馏吗？](../podcast-learning/reports/2026-08-17_xiaoyuzhou-cihua-dangzhen_distill.md) | podcast-learning |
+| 2026-09-24 | [Vol.32 对话元理智能张帆：去他X的FDE — shownotes](../podcast-learning/reports/transcripts/2026-09-24_xiaoyuzhou-guiji-lichang_zhangfan-fde.shownotes.md) | podcast-learning |
 | 2026-09-24 | [AI 行业日报 · 2026-09-24](../web-surfing/reports/ai-news-daily-2026-09-24.md) | web-surfing |
 | 2026-09-23 | [是个人物 EP22｜程乐松：不要牛马，不要狗屁，要什么？——日常性的哲学](../podcast-learning/reports/2026-09-11_bilibili-shigerenwu_chenglesong.md) | podcast-learning |
 | 2026-09-23 | [多重囚徒困境：全球宏观和资本市场 2026 三季度复盘与展望](../podcast-learning/reports/2026-09-14_xiaoyuzhou-qizhulou_2026q3-macro.md) | podcast-learning |
@@ -29,9 +32,6 @@
 | 2026-09-17 | [AI 行业日报 · 2026-09-17](../web-surfing/reports/ai-news-daily-2026-09-17.md) | web-surfing |
 | 2026-09-16 | [《我不得不把才华埋葬在昨天》精读与延伸研究 — DeepSeek 算子工程师自白中的 AI 时代手艺人处境](../ai-learning/reports/knowledge_reports/才华埋葬在昨天_DeepSeek算子工程师自白精读与延伸研究_20260916.md) | ai-learning |
 | 2026-09-16 | [AI 行业日报 · 2026-09-16](../web-surfing/reports/ai-news-daily-2026-09-16.md) | web-surfing |
-| 2026-09-15 | [所长林超《AI泡沫，2027年爆破？》：开源价格锚定、巨头 IPO 考验与七万亿债](../podcast-learning/reports/2026-07-24_bilibili-suochang-linchao_ai-bubble-2027.md) | podcast-learning |
-| 2026-09-15 | [字节级蒸馏突破 Token 天花板：Marginalize-It 与 End-Of-Token 的技术全景与批判性评估](../ai-learning/reports/paper_analyses/47_byte_distillation_2026.md) | ai-learning |
-| 2026-09-14 | [易论AI Vol.1：AI最前沿的人已经不聊大模型了——李继刚×橘子×歸藏的四人谈（服务裹着能力/齿轮速度差/Agent+X/上下文是一辆车）](../podcast-learning/reports/2026-09-09_xiaoyuzhou-yilun-ai_frontier-no-llm.md) | podcast-learning |
 
 ## 🤖 AI Learning（109 篇）
 
@@ -257,10 +257,13 @@
 | 2026-03-26 | [Physiology of Growth Hormone Secretion during Sleep (1996) 精读](../biology-learning/reports/paper_analyses/P09_gh_sleep_physiology_1996.md) | — |
 | 2026-03-23 | [晚型人作息与力量训练深度研究](../biology-learning/reports/concept_reports/晚型人作息与力量训练_深度研究报告.md) | — |
 
-## 🎙️ Podcast Learning（34 篇）
+## 🎙️ Podcast Learning（38 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-09-25 | [硅基立场 Vol.32｜张帆：去他X的FDE——能力沉淀在哪里，从定制外包到企业自学习](../podcast-learning/reports/2026-09-24_xiaoyuzhou-guiji-lichang_zhangfan-fde.md) | — |
+| 2026-09-25 | [此话当真｜同事.skill 与人生系统.skill：你害怕被蒸馏吗？](../podcast-learning/reports/2026-08-17_xiaoyuzhou-cihua-dangzhen_distill.md) | — |
+| 2026-09-24 | [Vol.32 对话元理智能张帆：去他X的FDE — shownotes](../podcast-learning/reports/transcripts/2026-09-24_xiaoyuzhou-guiji-lichang_zhangfan-fde.shownotes.md) | — |
 | 2026-09-23 | [是个人物 EP22｜程乐松：不要牛马，不要狗屁，要什么？——日常性的哲学](../podcast-learning/reports/2026-09-11_bilibili-shigerenwu_chenglesong.md) | — |
 | 2026-09-23 | [多重囚徒困境：全球宏观和资本市场 2026 三季度复盘与展望](../podcast-learning/reports/2026-09-14_xiaoyuzhou-qizhulou_2026q3-macro.md) | — |
 | 2026-09-22 | [用 AI 三天设计一颗芯片后，一位清华博士决定「开卷」](../podcast-learning/reports/2026-09-16_xiaoyuzhou-cihua-dangzhen_zhangtuoken.md) | — |
@@ -283,6 +286,7 @@
 | 2026-08-24 | [刘方奇教授：肠癌越来越年轻，确诊后先别急着手术！](../podcast-learning/reports/2026-08-24_xiaoyuzhou-boluo-jiankang_liufangqi.md) | — |
 | 2026-08-23 | [对话盛颖：xAI，Infra的浪漫，SGLang，开源，平权与「甄嬛传」](../podcast-learning/reports/2026-08-04_rss-guigu101_shengying.md) | — |
 | 2026-08-22 | [对游凯超3小时访谈：开源Infra、和模型Co-design、「如果vLLM失败，我们会后悔一辈子」](../podcast-learning/reports/2026-07-28_xiaoyuzhou-zhangxiaojun_youkaichao.md) | — |
+| 2026-08-17 | [从「同事.skill」到「人生系统」，你害怕被蒸馏吗？ — shownotes](../podcast-learning/reports/transcripts/2026-08-17_xiaoyuzhou-cihua-dangzhen_distill.shownotes.md) | — |
 | 2026-08-04 | [晚点聊 177 详解Kimi K3 — shownotes](../podcast-learning/reports/transcripts/2026-08-04_rss-wandian-latetalk_kimi-k3.shownotes.md) | — |
 | 2026-07-31 | [对话 Evoken 陈冕：在模型不断吞噬应用价值的时代，一家独立 AI 应用公司如何 survive](../podcast-learning/reports/2026-07-30_xiaoyuzhou-wandian-latetalk_chenmian.md) | — |
 | 2026-07-29 | [为什么 FDE 在 AI 时代这么火？因为差距不在模型，在业务细节](../podcast-learning/reports/2026-07-29_bilibili-kedaibiao-lizheng_jove-fde.md) | — |
