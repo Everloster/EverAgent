@@ -5,7 +5,7 @@
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
-| — | 2026-09-24 | 1h42m | [Vol.32 对话元理智能张帆：去他X的FDE](https://www.xiaoyuzhoufm.com/episode/6ab51d2d195d838e2ae9c407?utm_source=rss)<!--g:6ab51d2d195d838e2ae9c407--> | — |
+| — | 2026-09-24 | 1h42m | [Vol.32 对话元理智能张帆：去他X的FDE](https://www.xiaoyuzhoufm.com/episode/6ab51d2d195d838e2ae9c407?utm_source=rss)<!--g:6ab51d2d195d838e2ae9c407--> | ✅ 已处理（[[2026-09-24_xiaoyuzhou-guiji-lichang_zhangfan-fde|报告]]） |
 | — | 2026-08-11 | 1h02m | [Vol.31 美国 AI 还有没有开源？它们在做什么？](https://www.xiaoyuzhoufm.com/episode/6a7abc7417676351c57018ef?utm_source=rss)<!--g:6a7abc7417676351c57018ef--> | — |
 | — | 2026-07-02 | 1h44m | [Vol.30 对话 Sand.ai 曹越：我现在是 100% 的 founder，0% 的 researcher](https://www.xiaoyuzhoufm.com/episode/6a4620dc9d2f574368416d6a?utm_source=rss)<!--g:6a4620dc9d2f574368416d6a--> | — |
 | — | 2026-06-18 | 1h32m | [Vol.29 对话王小川：造医生，战豆包，与无尽的 AI 非共识。](https://www.xiaoyuzhoufm.com/episode/6a3207814233e62bc54b2a3f?utm_source=rss)<!--g:6a3207814233e62bc54b2a3f--> | — |

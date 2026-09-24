@@ -221,3 +221,13 @@
 - `fetch_show_indexes.py` SLUGS 补 5 档映射并全量刷新：5 新档索引建成；顺带新增单集 2 集（二的立方 vol:159、硅基立场 Vol.32 张帆 FDE 对谈）
 - **一苒一刻 feed 永久下线（HTTP 410，curl 独立确认）**——清单已标 ⚠️，这解释了它不在用户新导出里；疯投圈/晚点聊本次 SSL EOF 持续失败（网络出口问题，索引保留旧数据，下轮催更再试）
 - 方法沉淀：collection API（`curl /collection/podcast/{id}` 取 SSR JSON `target` 数组）+ iTunes search 反查 feedUrl = 小宇宙导出丢档的完整补档路径
+
+## [2026-09-25] ingest | xiaoyuzhou ×2（FDE 批判 × 蒸馏实践，镜像双期）
+- **A 源**：硅基立场 Vol.32《对话元理智能张帆：去他X的FDE》（2026-09-24 发布）｜对谈（骆轶航 × 张帆：元理智能创始人/CEO、智谱前 COO）｜1h42m58s（6178s）· 4,022 段 / 31,077 汉字 / 304 字/min → [[2026-09-24_xiaoyuzhou-guiji-lichang_zhangfan-fde]]
+- **B 源**：此话当真《从「同事.skill」到「人生系统」，你害怕被蒸馏吗？》（2026-08-17 发布）｜三人谈（Cindy × 周天奕[同事.skill 23k star] + 蔡不菜[人生系统.skill/Obsidian]）｜56m17s（3377s）· 2,195 段 / 16,949 汉字 / 302 字/min → [[2026-08-17_xiaoyuzhou-cihua-dangzhen_distill]]
+- pipeline（双期流水线并行）：双 yt-dlp → whisper 串行（--vad silero -mc 0，双期零循环）→ 双 shownotes SSR → 15 块并行润色（fde 10 块中 3 块撞 429 分批补跑全清；skl 5 块一次全清）
+- **A 核心**：FDE=高级定制外包（能力沉淀在人不可规模化）/ Palantir=AI 时代的 SAP / FDA（Agent化）才是 AI native / 正态分布中央解="很有道理的废话"、边缘解=非共识=竞争力 / 知识承载三载体（规则→workflow、文字→harness、脑神经→weight，"写成规则就坍缩"）/ AlphaGo Zero=人的知识是噪音 / "每次服务从折旧变训练" / 企业比基模离 RSI 更近 / AI 是反工业革命、组织液态化（腐化逻辑 vs 生长逻辑）/ 护城河段子
+- **B 核心**：两个 skill 的诞生与二创生态（前任.skill 的 issue 软事）/ 反蒸馏回应（"社会关系的递进，阻止不了"）/ Codex+ChatCut 替 2 实习生 / Cursor 偷加 rm -rf 删库事故 / AI 审美污染与"读 2023 年以前的文字" / 文风同化恐惧 / agent 不够 personal（最后一百米）/ 信任度 90% vs 复核派 / 效率悖论（更快但更焦虑）
+- **镜像互链**：A"思考逻辑在隐空间、文字层必坍缩、只有 weight 能承载" vs B"Obsidian 文字层跑出 90% 信任"——蒸馏之争正反方同日落档，两报告 related 互指；思考与追问各自指向对方
+- show-indexes 状态 ✅ ×2（guiji-lichang Vol.32、cihua-dangzhen 蒸馏期）
+- 修正统计：A 150+ 处（规矩立场→硅基立场、阿拉佛GO→AlphaGo、白眼星法→白矮星化等）；B 70+ 处（征流→蒸馏、webcoding→Vibe Coding 等）
