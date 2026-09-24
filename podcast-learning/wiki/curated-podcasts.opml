@@ -213,4 +213,11 @@ Hello～如果是新朋友，推荐几期具代表性的必听节目：1.感受�
 https://www.superlinear.academy/
 
 了解立正与更多作品：
-https://www.lizheng.ai/" xmlUrl="https://feeds.transistor.fm/kedaibiao" type="rss"/></body></opml>
+https://www.lizheng.ai/" xmlUrl="https://feeds.transistor.fm/kedaibiao" type="rss"/><outline title="窦文涛的聊客" text="窦文涛的聊客｜窦文涛" type="rss"/><!-- rss 待补：小宇宙独播未暴露公开 feed（2026-09-25） -->
+<outline title="无尽的谈话♾️" text="无尽的谈话♾️｜二十一世纪梨子" xmlUrl="https://feed.xyzfm.space/6lpf4tv9pq4y" type="rss"/>
+<outline title="半拿铁·故事篇" text="半拿铁·故事篇｜刘飞Lufy" xmlUrl="https://www.ximalaya.com/album/83323735.xml" type="rss"/>
+<outline title="人文清华播客：对话清华学者" text="人文清华播客：对话清华学者｜人文清华" xmlUrl="https://www.ximalaya.com/album/54649472.xml" type="rss"/>
+<outline title="Ready Go" text="Ready Go｜携隐Melody" xmlUrl="https://www.ximalaya.com/album/82119659.xml" type="rss"/>
+<outline title="商业就是这样" text="商业就是这样｜YiMagazine" xmlUrl="http://www.ximalaya.com/album/46587439.xml" type="rss"/>
+<outline title="职场有话说" text="职场有话说｜王一快" type="rss"/><!-- rss 待补：小宇宙独播未暴露公开 feed（2026-09-25） -->
+</body></opml>

@@ -213,3 +213,11 @@
 - 外部核验：程乐松系主任身份与两年致辞出圈（北大哲学系官网/上观/解放日报）✓
 - 互链：与 [[2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism|鲍曼工作观]]同线；[[concepts/reading-four-paces|读书配速]]互见
 - 经验：opencli bilibili subtitle 本期走浏览器路径失败（Navigation rejected，扩展离线；上期走 API 返回 EMPTY_RESULT）——subtitle 路径不稳定，B 站字幕可用性按期波动，不可依赖
+
+## [2026-09-25] index | 播客清单合并（collection 补档机制确立）
+- 用户从小宇宙二次导出 OPML（每次限 50），两次导出**完全同集合仅顺序不同：43 档、零新增**；用户提供「我也在听的品质播客」分享合集链接（/collection/podcast/{id}）
+- **机制发现**：小宇宙 OPML 导出对分享合集中的部分节目会**静默丢档**（本次丢 7/50）；collection 页面 SSR JSON 的 `collection.target` 数组才是完整清单（本次 50 档全量）
+- 合并：51 → **58 档**；新增 7 档——窦文涛的聊客、无尽的谈话♾️、半拿铁·故事篇、人文清华播客、Ready Go（携隐）、商业就是这样（第一财经YiMagazine）、职场有话说（王一快）；5 档 RSS 经 Apple iTunes search 反查补齐，2 档（窦文涛的聊客、职场有话说）小宇宙独播未暴露公开 feed、清单标待补（OPML 留 outline 无 xmlUrl，fetch 自动跳过）
+- `fetch_show_indexes.py` SLUGS 补 5 档映射并全量刷新：5 新档索引建成；顺带新增单集 2 集（二的立方 vol:159、硅基立场 Vol.32 张帆 FDE 对谈）
+- **一苒一刻 feed 永久下线（HTTP 410，curl 独立确认）**——清单已标 ⚠️，这解释了它不在用户新导出里；疯投圈/晚点聊本次 SSL EOF 持续失败（网络出口问题，索引保留旧数据，下轮催更再试）
+- 方法沉淀：collection API（`curl /collection/podcast/{id}` 取 SSR JSON `target` 数组）+ iTunes search 反查 feedUrl = 小宇宙导出丢档的完整补档路径

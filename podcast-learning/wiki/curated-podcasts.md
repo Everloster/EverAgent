@@ -1,8 +1,8 @@
 # 精选播客清单
 
-> 51 档精选播客，每档附公开 RSS。全量单集索引见 [show-indexes/](./show-indexes/)（由 `scripts/fetch_show_indexes.py` 按需刷新——用户催更时跑，见 AGENTS.md）。
+> 58 档精选播客（56 档附公开 RSS）。全量单集索引见 [show-indexes/](./show-indexes/)（由 `scripts/fetch_show_indexes.py` 按需刷新——用户催更时跑，见 AGENTS.md）。
 > 源文件：[curated-podcasts.opml](./curated-podcasts.opml)（OPML 2.0，可导入任意播客客户端）。
-> 收录时间：2026-08-23。
+> 收录：2026-08-23 首批 51 档（小宇宙 OPML 导出）；2026-09-25 增补 7 档——小宇宙 OPML 导出对分享合集中部分节目会丢档（本次丢 7 档），经「我也在听的品质播客」collection 链接 API 补齐，其中 5 档 RSS 由 Apple iTunes 反查，2 档（窦文涛的聊客、职场有话说）小宇宙独播未暴露公开 feed、待补。
 
 ## AI / 科技
 
@@ -38,6 +38,8 @@
 | 组织进化论 | [rss](https://feed.xyzfm.space/wb9n7uukpubp) | [[show-indexes/zuzhi-jinhualun]] |
 | 半拿铁｜商业沉浮录 | [rss](https://feed.xyzfm.space/tcettvc3x689) | [[show-indexes/bannatie]] |
 | 半拿铁·周刊 | [rss](https://feed.xyzfm.space/vylham8uw3ay) | [[show-indexes/bannatie-zhoukan]] |
+| 半拿铁·故事篇 | [rss](https://www.ximalaya.com/album/83323735.xml) | [[show-indexes/bannatie-gushipian]] |
+| 商业就是这样 | [rss](http://www.ximalaya.com/album/46587439.xml) | [[show-indexes/shangye-jiushi-zheyang]] |
 | 起朱楼宴宾客 | [rss](https://feed.xyzfm.space/ahng8d9qlywl) | [[show-indexes/qizhulou]] |
 | 成为巴菲特｜价投村 | [rss](https://feed.xyzfm.space/w67gc9bantgx) | [[show-indexes/chengwei-buffett]] |
 | 投资ABC | [rss](https://feed.xyzfm.space/9bmupxfae9qd) | [[show-indexes/touzi-abc]] |
@@ -51,9 +53,10 @@
 | 屠龙大实话 | [rss](https://feed.xyzfm.space/fp7wecdfhgyq) | [[show-indexes/tulong-dashihua]] |
 | 面基 | [rss](https://feed.xyzfm.space/6hpdgggtxpxb) | [[show-indexes/mianji]] |
 | 全嘻嘻 | [rss](https://feed.xyzfm.space/ptewvlwcgb8n) | [[show-indexes/quanxixi]] |
+| 职场有话说 | 待补（小宇宙独播） | — |
 | 姜Dora在此 | [rss](https://feed.xyzfm.space/pjq9hb8ggrjm) | [[show-indexes/jiang-dora]] |
 | 是宇弦啊 | [rss](https://feed.xyzfm.space/guaamk8ml3cb) | [[show-indexes/yuxian]] |
-| 一苒一刻 | [rss](https://feed.xyzfm.space/yeprwl3lx4hc) | [[show-indexes/yiran-yike]] |
+| 一苒一刻 | ⚠️ feed 已下线（410 Gone，2026-09-25 确认，疑停更/下架） | [[show-indexes/yiran-yike]] |
 
 ## 泛文化 / 生活 / 健康
 
@@ -65,6 +68,10 @@
 | 声动早咖啡 | [rss](https://feed.xyzfm.space/q88qwmydeuw8) | [[show-indexes/shengdong-zaokafei]] |
 | 纵横四海 | [rss](https://feed.xyzfm.space/jl8739ky8w9j) | [[show-indexes/zongheng-sihai]] |
 | 李诞 | [rss](https://feed.xyzfm.space/l3c8em3l8hfn) | [[show-indexes/lidan]] |
+| 窦文涛的聊客 | 待补（小宇宙独播） | — |
+| 无尽的谈话♾️ | [rss](https://feed.xyzfm.space/6lpf4tv9pq4y) | [[show-indexes/wujin-tanhua]] |
+| 人文清华播客：对话清华学者 | [rss](https://www.ximalaya.com/album/54649472.xml) | [[show-indexes/renwen-qinghua]] |
+| Ready Go | [rss](https://www.ximalaya.com/album/82119659.xml) | [[show-indexes/ready-go]] |
 | 天真不天真 | [rss](https://feed.xyzfm.space/mcklbwxjdvfu) | [[show-indexes/tianzhen-butianzhen]] |
 | 第一推动 | [rss](https://feed.xyzfm.space/ndyjpcapc6fc) | [[show-indexes/diyi-tuidong]] |
 | 菠萝健康派 | [rss](https://feed.xyzfm.space/qe8egag9eycv) | [[show-indexes/boluo-jiankang]] |
