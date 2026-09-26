@@ -231,3 +231,5 @@
 - **镜像互链**：A"思考逻辑在隐空间、文字层必坍缩、只有 weight 能承载" vs B"Obsidian 文字层跑出 90% 信任"——蒸馏之争正反方同日落档，两报告 related 互指；思考与追问各自指向对方
 - show-indexes 状态 ✅ ×2（guiji-lichang Vol.32、cihua-dangzhen 蒸馏期）
 - 修正统计：A 150+ 处（规矩立场→硅基立场、阿拉佛GO→AlphaGo、白眼星法→白矮星化等）；B 70+ 处（征流→蒸馏、webcoding→Vibe Coding 等）
+
+- 2026-09-26 | ingest | AI炼金术×鹿客陈彬《把一家 12 年的硬件公司重写成 AI 原生组织》（1h07m，2646段/20,483字，喜马拉雅源）→ [[2026-09-14_ximalaya-ailianjinshu_chenbin]]（从 1 到 0 / HARO 四件套 / 圈子制权力下放 / 三轮报名 / FDE 蒸馏恐惧；与曾鸣公司消亡=预言×实验、与张帆 FDE 批判=正反方对照）。open-questions +3

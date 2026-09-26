@@ -7,7 +7,7 @@
 |---|---|---|---|---|
 | — | 2026-09-23 | 1h06m | [PureblueAI 鲁扬：把 prompt 当货架空间，把 GEO 当量化交易](https://www.ximalaya.com/sound/1017619050)<!--g:xmly_track_1017619050--> | — |
 | — | 2026-09-17 | 1h38m | [XCircle 小飞：只做管理那批人，要没工作了](https://www.ximalaya.com/sound/1015908823)<!--g:xmly_track_1015908823--> | — |
-| — | 2026-09-14 | 1h07m | [鹿客陈彬：把一家 12 年的硬件公司，重写成 AI 原生组织](https://www.ximalaya.com/sound/1014649800)<!--g:xmly_track_1014649800--> | — |
+| — | 2026-09-14 | 1h07m | [鹿客陈彬：把一家 12 年的硬件公司，重写成 AI 原生组织](https://www.ximalaya.com/sound/1014649800)<!--g:xmly_track_1014649800--> | ✅ |
 | — | 2026-08-29 | 1h06m | [OPC 已经凉了，FDE 会有光明的未来么？](https://www.ximalaya.com/sound/1009684225)<!--g:xmly_track_1009684225--> | — |
 | — | 2026-08-27 | 45m56s | [AI 原生组织转型 02：用 AI 推进流程、闭环迭代](https://www.ximalaya.com/sound/1009009150)<!--g:xmly_track_1009009150--> | — |
 | — | 2026-08-24 | 1h20m | [XMind Mango：分活，分圈，分钱，搞 AI](https://www.ximalaya.com/sound/1008316536)<!--g:xmly_track_1008316536--> | — |

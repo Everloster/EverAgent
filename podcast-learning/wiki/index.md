@@ -62,6 +62,7 @@
 
 - [[2026-09-17_rss-kedaibiao-lizheng_jinjing|一个人指挥 400 个 AI：Orca 津晶的多 agent 编排实操（ADE vs Harness）]]（episode_summary · 2026-09-17）— 课代表立正对话 319，1h06m，ADE/harness 分层 / 400 任务三层法 / 4 人日产百 PR；首轮转写循环幻觉 89.5%、`-mc 0` 修复的标志性案例
 - [[2026-09-16_xiaoyuzhou-cihua-dangzhen_zhangtuoken|用 AI 三天设计一颗芯片后，一位清华博士决定「开卷」]]（episode_summary · 2026-09-16）— 此话当真对话张托肯，46m48s，芯片开卷计划 / 三天流片 / 渗透率 80-90% / 模型能力>Harness / agent 驾驶员
+- [[2026-09-14_ximalaya-ailianjinshu_chenbin|把一家 12 年的硬件公司重写成 AI 原生组织]]（episode_summary · 2026-09-14）— AI炼金术×鹿客陈彬，1h07m，从 1 到 0 / HARO / 圈子制 / FDE 蒸馏恐惧；与曾鸣 153 期=预言×实验、与张帆 FDE 批判=正反方
 
 ### AI Infra / 推理芯片
 
