@@ -233,3 +233,5 @@
 - 修正统计：A 150+ 处（规矩立场→硅基立场、阿拉佛GO→AlphaGo、白眼星法→白矮星化等）；B 70+ 处（征流→蒸馏、webcoding→Vibe Coding 等）
 
 - 2026-09-26 | ingest | AI炼金术×鹿客陈彬《把一家 12 年的硬件公司重写成 AI 原生组织》（1h07m，2646段/20,483字，喜马拉雅源）→ [[2026-09-14_ximalaya-ailianjinshu_chenbin]]（从 1 到 0 / HARO 四件套 / 圈子制权力下放 / 三轮报名 / FDE 蒸馏恐惧；与曾鸣公司消亡=预言×实验、与张帆 FDE 批判=正反方对照）。open-questions +3
+
+- 2026-09-27 | ingest | B站可妈×黄翔《孩子成绩差，真的不是学习的料吗》（43m40s，1888段/14,365字）→ [[2026-07-04_bilibili-kema_huangxiang-brain]]（脑科学教育观：可塑性/敏感期/检索式学习法/11.5h 空腹/AI 两相反研究）；**首个 whisper+CC 字幕双源校验案例**（字幕术语谐音错 40+ 处亦有不少，两源互修）；新增实体 huang-xiang/kema（见下）；open-questions +3

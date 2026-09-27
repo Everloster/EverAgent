@@ -7,9 +7,11 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-09-27 | [孩子成绩差，真的是因为「不是学习的料」吗？——对谈脑科学专家黄翔](../podcast-learning/reports/2026-07-04_bilibili-kema_huangxiang-brain.md) | podcast-learning |
 | 2026-09-26 | [把一家 12 年的硬件公司重写成 AI 原生组织：鹿客陈彬的「从 1 到 0」实操](../podcast-learning/reports/2026-09-14_ximalaya-ailianjinshu_chenbin.md) | podcast-learning |
 | 2026-09-25 | [硅基立场 Vol.32｜张帆：去他X的FDE——能力沉淀在哪里，从定制外包到企业自学习](../podcast-learning/reports/2026-09-24_xiaoyuzhou-guiji-lichang_zhangfan-fde.md) | podcast-learning |
 | 2026-09-25 | [此话当真｜同事.skill 与人生系统.skill：你害怕被蒸馏吗？](../podcast-learning/reports/2026-08-17_xiaoyuzhou-cihua-dangzhen_distill.md) | podcast-learning |
+| 2026-09-25 | [AI 行业日报 · 2026-09-25](../web-surfing/reports/ai-news-daily-2026-09-25.md) | web-surfing |
 | 2026-09-24 | [Vol.32 对话元理智能张帆：去他X的FDE — shownotes](../podcast-learning/reports/transcripts/2026-09-24_xiaoyuzhou-guiji-lichang_zhangfan-fde.shownotes.md) | podcast-learning |
 | 2026-09-24 | [AI 行业日报 · 2026-09-24](../web-surfing/reports/ai-news-daily-2026-09-24.md) | web-surfing |
 | 2026-09-23 | [是个人物 EP22｜程乐松：不要牛马，不要狗屁，要什么？——日常性的哲学](../podcast-learning/reports/2026-09-11_bilibili-shigerenwu_chenglesong.md) | podcast-learning |
@@ -30,8 +32,6 @@
 | 2026-09-18 | [AI 行业日报 · 2026-09-18](../web-surfing/reports/ai-news-daily-2026-09-18.md) | web-surfing |
 | 2026-09-17 | [果蝇全脑连接组开源与「赛博果蝇」生态 — 神经科学里程碑的爆发与祛魅](../biology-learning/reports/concept_reports/果蝇全脑连接组与赛博果蝇生态_深度研究_20260917.md) | biology-learning |
 | 2026-09-17 | [小米 MiMo-V2.6 公开直播 RL 训练 — RL Scaling 三维度体系研究](../ai-learning/reports/knowledge_reports/MiMo-V2.6公开RL训练直播_RL-Scaling三维度体系研究_20260917.md) | ai-learning |
-| 2026-09-17 | [AI 行业日报 · 2026-09-17](../web-surfing/reports/ai-news-daily-2026-09-17.md) | web-surfing |
-| 2026-09-16 | [《我不得不把才华埋葬在昨天》精读与延伸研究 — DeepSeek 算子工程师自白中的 AI 时代手艺人处境](../ai-learning/reports/knowledge_reports/才华埋葬在昨天_DeepSeek算子工程师自白精读与延伸研究_20260916.md) | ai-learning |
 
 ## 🤖 AI Learning（109 篇）
 
@@ -257,10 +257,11 @@
 | 2026-03-26 | [Physiology of Growth Hormone Secretion during Sleep (1996) 精读](../biology-learning/reports/paper_analyses/P09_gh_sleep_physiology_1996.md) | — |
 | 2026-03-23 | [晚型人作息与力量训练深度研究](../biology-learning/reports/concept_reports/晚型人作息与力量训练_深度研究报告.md) | — |
 
-## 🎙️ Podcast Learning（39 篇）
+## 🎙️ Podcast Learning（40 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-09-27 | [孩子成绩差，真的是因为「不是学习的料」吗？——对谈脑科学专家黄翔](../podcast-learning/reports/2026-07-04_bilibili-kema_huangxiang-brain.md) | — |
 | 2026-09-26 | [把一家 12 年的硬件公司重写成 AI 原生组织：鹿客陈彬的「从 1 到 0」实操](../podcast-learning/reports/2026-09-14_ximalaya-ailianjinshu_chenbin.md) | — |
 | 2026-09-25 | [硅基立场 Vol.32｜张帆：去他X的FDE——能力沉淀在哪里，从定制外包到企业自学习](../podcast-learning/reports/2026-09-24_xiaoyuzhou-guiji-lichang_zhangfan-fde.md) | — |
 | 2026-09-25 | [此话当真｜同事.skill 与人生系统.skill：你害怕被蒸馏吗？](../podcast-learning/reports/2026-08-17_xiaoyuzhou-cihua-dangzhen_distill.md) | — |
@@ -301,10 +302,11 @@
 | 2026-06-20 | [三年行业吃肉榜/爆亏榜大合集（2023-2025）：谁在偷偷赚钱，谁在快速衰落](../podcast-learning/reports/2026-06-20_bilibili-cls-tongxue_hangye-bangdan.md) | — |
 | 2026-06-18 | [Vol.29 对话王小川：造医生，战豆包，与无尽的 AI 非共识](../podcast-learning/reports/2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan.md) | — |
 
-## 🏄 Web Surfing（27 篇）
+## 🏄 Web Surfing（28 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-09-25 | [AI 行业日报 · 2026-09-25](../web-surfing/reports/ai-news-daily-2026-09-25.md) | — |
 | 2026-09-24 | [AI 行业日报 · 2026-09-24](../web-surfing/reports/ai-news-daily-2026-09-24.md) | — |
 | 2026-09-23 | [AI 行业日报 · 2026-09-23](../web-surfing/reports/ai-news-daily-2026-09-23.md) | — |
 | 2026-09-22 | [AI 行业日报 · 2026-09-22](../web-surfing/reports/ai-news-daily-2026-09-22.md) | — |
