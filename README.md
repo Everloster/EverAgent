@@ -64,12 +64,15 @@
 
 ## 每个领域的结构
 
+各领域共享下述公共骨架；此外各域**可按需自建**子目录，不强制统一（常见扩展见骨架下方说明）。
+
 ```
 {domain}-learning/
 ├── AGENTS.md          # 领域边界 + 特化要求
 ├── PROFILE.md         # 学习者画像（兴趣/水平/偏好/追问队列）
+├── CONTEXT.md         # 项目上下文：已有报告/实验台账 + 防幻觉边界
 ├── MAP.md             # 领域地图（想覆盖什么、已覆盖什么、缺口）
-├── reports/           # 报告产出
+├── reports/           # 报告产出（ai-practice 无此目录，产出在 experiments/）
 ├── wiki/
 │   ├── concepts/      # 核心概念页
 │   ├── entities/      # 人物/机构/模型页
@@ -77,6 +80,10 @@
 │   └── open-questions.md  # 未解问题池（持续学习的拉力）
 └── skills/            # 领域特化研究模板
 ```
+
+> **PROFILE 与 CONTEXT 的命名二分**（每个领域两者都有，勿混用）：`PROFILE.md` = **学习者画像**，描绘"人"（兴趣/水平/偏好）；`CONTEXT.md` = **项目上下文**，登记"已有产出"的台账与防重复研究边界（运行状态类文件）。
+>
+> 各域其余目录按需设置，常见的有：`knowledge/`（离线知识库入口，各域皆有）、`papers/`（论文 PDF + 索引）、`books/`、`roadmap/`（学习路线）、`images/`；ai-learning 另有 `courses/`、`notes/`；ai-practice 另有 `experiments/`、`notebooks/`、`src/`、`data/`；podcast-learning 另有 `scripts/`（本地转写）与 `wiki/show-indexes/`（周更单集索引）。
 
 ---
 

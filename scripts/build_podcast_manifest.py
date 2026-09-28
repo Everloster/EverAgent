@@ -5,9 +5,21 @@ Reads generated show indexes under podcast-learning/wiki/show-indexes and
 existing report frontmatter under podcast-learning/reports. The output is a
 public, bounded JSON manifest consumed by EverAgent Android. No transcript or
 private note content is included.
+
+Usage:
+    python3 scripts/build_podcast_manifest.py          # rebuild docs/PODCAST_MANIFEST.json in place
+    python3 scripts/build_podcast_manifest.py --check  # rebuild in memory and compare with the
+                                                       # committed manifest: exit 0 when identical,
+                                                       # exit 1 with add/change/remove counts when stale
+
+--check is a manual staleness probe: the manifest is a generated artifact
+(AUTO), so run --check after landing new podcast reports or show-index
+refreshes to notice a needed rebuild, then run without --check to regenerate.
+It is deliberately not wired into any git hook or CI job.
 """
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import pathlib
@@ -211,13 +223,54 @@ def build() -> dict:
     }
 
 
-def main() -> int:
-    manifest = build()
-    OUTPUT.write_text(
-        json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
-        encoding="utf-8",
+def serialize(manifest: dict) -> str:
+    return json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
+
+
+def diff_counts(old_items: list[dict], new_items: list[dict]) -> tuple[int, int, int]:
+    """Return (added, changed, removed) counts keyed by item id."""
+    old_by_id = {item["id"]: item for item in old_items}
+    new_by_id = {item["id"]: item for item in new_items}
+    added = sum(1 for item_id in new_by_id if item_id not in old_by_id)
+    removed = sum(1 for item_id in old_by_id if item_id not in new_by_id)
+    changed = sum(
+        1
+        for item_id, item in new_by_id.items()
+        if item_id in old_by_id and old_by_id[item_id] != item
     )
+    return added, changed, removed
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Build podcast manifest")
+    parser.add_argument(
+        "--check",
+        action="store_true",
+        help="compare an in-memory rebuild with the committed manifest; "
+        "exit 1 with add/change/remove counts when stale",
+    )
+    args = parser.parse_args()
+
+    manifest = build()
     reported = sum(1 for item in manifest["items"] if item["study_state"] == "reported")
+
+    if args.check:
+        if not OUTPUT.exists():
+            print(f"[podcast-manifest] {OUTPUT.name} missing; run without --check to generate")
+            return 1
+        existing = OUTPUT.read_text(encoding="utf-8")
+        if existing == serialize(manifest):
+            print(f"[podcast-manifest] up to date ({len(manifest['items'])} items; {reported} reported)")
+            return 0
+        old_items = json.loads(existing).get("items", [])
+        added, changed, removed = diff_counts(old_items, manifest["items"])
+        print(
+            f"[podcast-manifest] stale: +{added} new, ~{changed} changed, "
+            f"-{removed} removed; run without --check to refresh"
+        )
+        return 1
+
+    OUTPUT.write_text(serialize(manifest), encoding="utf-8")
     print(f"[podcast-manifest] {len(manifest['items'])} items; {reported} reported")
     return 0
 
