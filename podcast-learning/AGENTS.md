@@ -1,19 +1,19 @@
 # podcast-learning — 领域协议
 
-> 领域：播客/访谈内容学习。**本地转写驱动**：我发链接 → 本地转写出原文 → 润色 → 总结/讨论 → 报告。
+> 领域：播客/访谈内容学习。**Razer 静默转写驱动**：我发链接 → eacli 在 Razer 下载并转写 → 润色 → 总结/讨论 → 报告。
 > 通用研究方法论见根 [METHODOLOGY.md](../METHODOLOGY.md)（强制）。本文件只写本领域的边界与特化。
 > **Token Plan-first（根 AGENTS.md 托管策略）**：shownotes 拉取、联网查证等网页读取优先 `eacli tool select/invoke`（智谱 reader），eacli 不可用时先修 eacli（eacli-first，2026-09-13），不设降级路径。
 > **版权与引用**：见 [COPYRIGHT.md](./COPYRIGHT.md)。节目版权归主理人/嘉宾/制作方所有，本项目仅做个人学习。
 
 ---
 
-## 工作模式：链接 → 本地转写 → 报告
+## 工作模式：链接 → Razer 静默转写 → 报告
 
 用户发一个播客/视频链接（或本地音频文件），或说"上次那期继续"，按以下循环：
 
 1. **读画像与地图** — [PROFILE.md](./PROFILE.md)、[MAP.md](./MAP.md)、[wiki/open-questions.md](./wiki/open-questions.md)
-2. **下载 + 本地转写** — 用 `scripts/transcribe.py`（yt-dlp 下载音频 + **whisper.cpp** 本地转写，Metal 加速），产出 `reports/transcripts/{slug}.transcript.txt`。首次用需按 [SETUP.md](./SETUP.md) 装依赖。**B站链接例外**：yt-dlp 被 412 拦截，音频获取改走 `opencli bilibili download` + ffmpeg + whisper-cli，官方字幕作校验源（详见 [skills/transcription](./skills/transcription/SKILL.md) §一）。
-3. **拉 shownotes（推荐）** — 用 WebFetch 拉小宇宙/Apple Podcasts 页面，提取**章节时间戳 + 嘉宾身份 + 书单 + 关键概念**。whisper 对人名/英文术语/数字误识别率高，shownotes 是**修正源**。
+2. **下载 + 静默转写** — URL 默认走 `eacli podcast status|plan|run|result`，固定在 Razer 使用 `yt-dlp --ignore-config` + loopback-only **whisper.cpp large-v3/CUDA**。拿到 transcript artifact 后复制到当前隔离 worktree 的 `reports/transcripts/{slug}.transcript.txt`。本地文件或 Razer worker 不可用时才使用 `scripts/transcribe.py` 的纯 CLI fallback。完整流程见 [skills/transcription](./skills/transcription/SKILL.md) §一。
+3. **拉 shownotes（推荐）** — 用 `eacli tool invoke --capability web.read` 拉小宇宙/Apple Podcasts 页面，提取**章节时间戳 + 嘉宾身份 + 书单 + 关键概念**。whisper 对人名/英文术语/数字误识别率高，shownotes 是**修正源**。
 4. **润色** — 基于原始转写去口水词、断句、纠正明显错字，产出 `.{slug}.polished.txt`（与转写并列存放）。**只修表达，不改事实**；无法辨识处保留原文并标 `[?]`。
 5. **按 shownotes 重组（推荐）** — 把 raw 段按 shownotes 章节时间戳归类合并，**去掉时间戳**（避免读者被时间码干扰阅读流），每节一段连续文本，加 `## 章节标题`。
 6. **提取/总结** — 通读润色稿，提取核心观点/关键人物/新概念/关键数字/金句。
@@ -22,6 +22,14 @@
 9. **更新画像** — 把新关注的节目/人物/主题写回 PROFILE（仅凭用户真实表达，禁止臆测）。
 
 > "继续讨论"场景：用户读完转写/报告后追问，围绕转写原文与已查证事实展开，不引入转写外的编造内容。
+
+### 静默执行硬边界
+
+- 后台播客任务**禁止** `opencli browser`、任何 interactive browser、`open` / `xdg-open` 等系统 URL opener，以及 `afplay` / `mpv` / `vlc` 等音视频播放。
+- B 站等站点下载失败时，只允许继续尝试无 UI 的官方 API、站点 adapter 或 `yt-dlp`；仍失败就返回明确原因，**不得打开完整网页兜底**。
+- `opencli` 仅可用于已证明不创建浏览器标签页的站点 API/adapter 元数据能力；不能依赖 Chrome 登录态、扩展或同步标签组。
+- 微信发送播客/视频任务必须用 `/ea public <任务和链接>`。未带 `/ea` 的已知媒体链接会由 MBP Hermes guard 拦截，不再直接进入 MBP Agent。
+- Fabric 会把播客转写/沉淀报告解析为 write，默认选择 Razer 的 Kimi；MBP 用户工作区不参与后台 write。
 
 ---
 
@@ -40,14 +48,14 @@
 
 ## 领域特化
 
-- **转写后端**：`scripts/transcribe.py`（本地 **whisper.cpp / ggml-large-v3 / Metal 加速** / 全程离线）。本机实测 **1h53min 音频 7m30s 墙钟**（约 15× 实时），比 faster-whisper CPU int8 估算快 25-50 倍。详细安装见 [SETUP.md](./SETUP.md)。
+- **主转写后端**：Razer `eacli podcast`（**whisper.cpp v1.9.1 / ggml-large-v3 / CUDA sm_120 / Silero VAD / max-context=0**，服务仅监听 `127.0.0.1:18002`）。`scripts/transcribe.py` 仅保留本地音频和故障隔离 fallback；不得把 fallback 扩写成浏览器下载。
 - **报告类型**：`reports/`（单期总结/跨期专题/概念追踪，同目录按 frontmatter `report_type` 区分）。
 - **特化要求（关键）**：
   - **转录中未出现的引用、数据、人物言论禁止推测**
   - **关键引用保留原文**（哪怕标点残缺）
   - **转录质量差时在 Limitations 标注，不强行总结**
   - **润色只改表达不改事实**
-  - **whisper 对中英人名/英文术语/关键数字的误识别率高**（实测："李继刚"→"李金刚"、"GB"→原吞字、"860 亿"→"861"），**必须以 WebFetch 拉取的 shownotes 二次校验**
+  - **whisper 对中英人名/英文术语/关键数字的误识别率高**（实测："李继刚"→"李金刚"、"GB"→原吞字、"860 亿"→"861"），**必须以 eacli `web.read` 拉取的 shownotes 二次校验**
 
 ---
 
@@ -137,8 +145,11 @@
 ### 拉取方法
 
 ```bash
-# WebFetch 拉小宇宙 episode 页面
-WebFetch https://www.xiaoyuzhoufm.com/episode/{episode_id} "提取：1) 标题/时长/发布者/发布日期 2) 节目描述 3) 时间轴（完整章节时间戳）4) 嘉宾信息 5) 主题标签 6) 提到的书"
+# 先选择 provider/device，再读取 episode 页面；正文由 Agent 提取所需字段
+eacli tool select --capability web.read --device auto --json
+eacli tool invoke --capability web.read \
+  --input-json '{"url":"https://www.xiaoyuzhoufm.com/episode/{episode_id}"}' \
+  --device auto --request-id req_podcast_shownotes_<stable-id> --json
 ```
 
 ### 使用规则
