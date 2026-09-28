@@ -46,6 +46,7 @@ import tempfile
 from pathlib import Path
 
 DEFAULT_WHISPER_CPP_MODELS = "/Users/jabe/workspace/whisper.cpp/models"
+DEFAULT_VAD_FILE = "ggml-silero-v6.2.0.bin"
 
 # 模型名（tiny / base / small / medium / large-v3）→ ggml 文件名
 MODEL_FILES = {
@@ -100,10 +101,13 @@ def download_audio(url: str, audio_out: Path) -> Path:
     out_template = str(audio_out.with_suffix(".%(ext)s"))
     cmd = [
         "yt-dlp",
+        "--ignore-config",
+        "--no-playlist",
         "-x",
         "--audio-format", "mp3",
         "--audio-quality", "0",
         "-o", out_template,
+        "--",
         url,
     ]
     print(f"[transcribe] 下载音频：{url}")
@@ -130,6 +134,12 @@ def transcribe(
     )
 
     model_path = resolve_model_path(model, model_dir)
+    vad_path = model_path.parent / DEFAULT_VAD_FILE
+    if not vad_path.is_file():
+        sys.exit(
+            f"[transcribe] VAD 模型不存在: {vad_path}\n"
+            "  · 长音频禁止无 VAD 转写；按 SETUP.md 下载固定 Silero 模型"
+        )
     print(f"[transcribe] 模型: {model_path}")
     print(f"[transcribe] 语言: {lang or 'auto-detect'}")
 
@@ -143,6 +153,9 @@ def transcribe(
             "-oj",                # JSON 输出（带时间戳、文本）
             "-of", str(prefix),   # 输出文件前缀
             "-np",                # 抑制 whisper 自带的进度/计时打印
+            "--vad",              # 过滤静音段，降低长音频幻觉
+            "-vm", str(vad_path), # 固定 Silero VAD
+            "-mc", "0",          # 禁止跨段上下文自反馈循环
         ]
         if whisper_args:
             cmd += whisper_args   # 透传 whisper-cli 额外参数（如 --vad / -mc 0 防循环幻觉）

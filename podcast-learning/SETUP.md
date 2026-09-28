@@ -23,6 +23,9 @@ ln -sf ~/workspace/whisper.cpp/build/bin/whisper-bench /opt/homebrew/bin/whisper
 # 下载模型（默认 large-v3；中文播客推荐）
 cd models
 ./download-ggml-model.sh large-v3
+curl --fail --location --output ggml-silero-v6.2.0.bin \
+  https://huggingface.co/ggml-org/whisper-vad/resolve/main/ggml-silero-v6.2.0.bin
+echo 'b65ad872758ea4ac85ec18aa132b384d91804f52799c70edc80f8fdb0420e1a5  ggml-silero-v6.2.0.bin' | shasum -a 256 -c -
 ```
 
 > **Apple Silicon**：Metal 加速默认开（`libggml-metal.dylib` 自动链接），无需额外配置。
@@ -33,14 +36,14 @@ cd models
 ```bash
 cd podcast-learning/scripts
 
-# 从链接：下载音频 → 本地转写（默认 large-v3 / 中文）
-python3 transcribe.py "https://www.xiaoyuzhoufm.com/episode/xxxx" \
-    --out ../reports/transcripts/2026-07-06_xiaoyuzhou_epXX.transcript.txt
+# URL 的常规入口：Razer 静默 worker（先 plan，再按返回值确认）
+eacli podcast status
+eacli podcast plan --source "https://www.xiaoyuzhoufm.com/episode/xxxx"
 
-# 从本地音频文件
+# 本地文件或隔离排障 fallback
 python3 transcribe.py /path/to/audio.mp3 --out out.transcript.txt
 
-# 只下载音频不转写（留档/换机器转写）
+# 只下载音频不转写（无 UI；留档/换机器转写）
 python3 transcribe.py "URL" --download-only --audio-out ep.mp3
 
 # 显式指定模型目录（默认 ~/workspace/whisper.cpp/models/）
@@ -64,7 +67,9 @@ WHISPER_CPP_MODELS=/path/to/models python3 transcribe.py "URL" --out out.txt
 
 ## 支持的链接来源
 
-yt-dlp 支持小宇宙、B站、YouTube、Apple Podcasts、直链音频等。无法解析时，先手动下载音频再用本地文件模式转写。
+yt-dlp 支持小宇宙、B站、YouTube、Apple Podcasts、直链音频等。URL 常规任务必须走
+Razer `eacli podcast`；无法解析时只允许无 UI API/adapter 或用户提供本地音频。禁止用
+`opencli browser`、Chrome 登录态、系统 URL opener 或播放器兜底。
 
 ## 故障排查
 

@@ -7,7 +7,22 @@
 
 ## 一、转写（产出 `.transcript.txt`）
 
-用本地脚本，全程离线（除下载音频），不走云端 API。
+URL 的 canonical 路径是 Razer 静默 worker；不在 MBP/MBA 打开网页或播放媒体：
+
+```bash
+eacli podcast status --json
+eacli podcast plan --source '<URL>' --language zh --timeout 21600 --json
+eacli podcast run --source '<URL>' --language zh --timeout 21600 \
+  --plan-id pdp_... --confirm pdp_.../razer \
+  --request-id req_<stable-id> --json
+eacli podcast result --job job_podcast_... --wait 3600 --json
+```
+
+`result` 返回的 transcript 位于 Razer 系统盘
+`/srv/everagent/artifacts/podcast/`。执行任务的 Razer Agent 将其复制到当前隔离 worktree 的
+`reports/transcripts/`，再继续润色和报告。
+
+本地文件，或明确隔离排障时，才使用本地脚本。它全程离线（除下载音频），不走云端 API：
 
 ```bash
 cd podcast-learning/scripts
@@ -20,27 +35,29 @@ python3 transcribe.py "<链接或本地音频路径>" \
 - 链接无法被 yt-dlp 解析时：手动下载音频 → 用本地文件模式转写。
 - 转写文件保留时间戳行 `[HH:MM:SS -> HH:MM:SS] 文本`，方便回溯定位。
 
-### B站链接：音频获取走 opencli（2026-07-18 实测定规）
+### B站链接：只允许无 UI 获取
 
-B站风控已全面 412 拦截 yt-dlp（直连/代理/Cookie 均无效），`bili-cli audio` 接口也故障（`internal_error: 获取音频流`）。**优先用 opencli 复用浏览器登录态下载**：
+旧流程曾在 yt-dlp 失败后使用 `opencli bilibili download` 复用 Chrome 登录态。该路径会创建
+`OpenCLI Browser` 标签组；Chrome Saved Tab Group Sync 可能把标签同步到其他 Mac 并自动播放，
+因此已退役。现在固定：
 
 ```bash
-# 1. 下载视频（opencli 走浏览器会话，绕过 412）
-opencli bilibili download <BVID> --output /tmp/bv_xxx --quality 480p
-
-# 2. 提取音频
-ffmpeg -y -i /tmp/bv_xxx/*.mp4 -vn -ac 1 -ar 16000 -b:a 128k /tmp/bv_xxx/audio.mp3
-
-# 3. 本地 whisper.cpp 转写
-whisper-cli -m ~/workspace/whisper.cpp/models/ggml-large-v3.bin \
-    -l zh -f /tmp/bv_xxx/audio.mp3 -oj -of /tmp/bv_xxx/out -np
+yt-dlp --ignore-config --no-playlist --extract-audio \
+  --audio-format wav -- '<B站 URL>'
 ```
+
+- 默认仍由 `eacli podcast` 在 Razer 执行上述下载，不手工跑。
+- 下载失败时允许无 UI 的官方 API或已证明不创建 tab 的站点 adapter；仍失败就停止并报告。
+- **禁止** `opencli browser`、依赖浏览器扩展/Chrome 登录态的 download fallback、`open` /
+  `xdg-open`，以及任何音视频播放器。
 
 **官方字幕 = 修正源**（替代小宇宙 shownotes 的角色）：
 
 ```bash
 opencli bilibili subtitle <BVID> -f yaml > /tmp/subtitles.yaml
 ```
+
+仅当该命令命中无 UI adapter 时可用；如果实现要求启动浏览器，立即停止，不降级。
 
 - 用字幕逐处校验 whisper 误识别（人名/术语/数字），修正写入 polished 头部清单。
 - ⚠️ 官方字幕自身也是 ASR 产物，**可能有错**（实测："夜里面"→"叶里面"、"清晨"→"清纯"）——字幕与 whisper 一致但上下文明显不通时，依上下文修正并单独标注「字幕亦错」。
@@ -53,7 +70,8 @@ opencli bilibili subtitle <BVID> -f yaml > /tmp/subtitles.yaml
 
 - **必查**：转写完成后 `tail` 检查尾部 + 抽查重复段（`uniq -d`），不要只看开头几段就交付。
 - **发现循环**：截断有效部分，丢失时段用官方字幕重构（哪怕是英文翻译版字幕，也能回译出内容骨架）；transcript 头部与报告 Limitations 必须如实标注故障区间。
-- 长音频（>60min）可考虑分段转写降低循环风险（未验证，标 [待验证]）。
+- Razer worker 固定启用 Silero VAD + `max-context=0`，并在落盘前检查连续重复段；同句连续
+  超过 3 段即任务失败，不生成伪完成报告。
 
 ## 二、润色（产出 `.polished.txt`）
 
