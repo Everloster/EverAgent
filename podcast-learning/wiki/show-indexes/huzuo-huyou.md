@@ -1,10 +1,11 @@
 # 忽左忽右 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/cv4bkgpuglwp>）｜ 最近拉取：2026-09-25 ｜ 总集数：642
+> 来源：官方 RSS（<https://feed.xyzfm.space/cv4bkgpuglwp>）｜ 最近拉取：2026-09-28 ｜ 总集数：643
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-25 | 1h49m | [503 无锡·台北·匹兹堡：冯俊文回忆时代巨变中的历史学家许倬云](https://www.xiaoyuzhoufm.com/episode/6ab638ece742e36efcbb1e4e?utm_source=rss)<!--g:6ab638ece742e36efcbb1e4e--> | — |
 | — | 2026-09-22 | 1h03m | [502 宇宙超级工程是如何垮掉的：刘怡谈「挑战者号」事故四十周年](https://www.xiaoyuzhoufm.com/episode/6ab23bbe93d5eb3bdc793ad3?utm_source=rss)<!--g:6ab23bbe93d5eb3bdc793ad3--> | — |
 | — | 2026-09-16 | 1h19m | [特番｜从蜂窝网络到手机革命：杨旸谈移动通信浪潮三十年](https://www.xiaoyuzhoufm.com/episode/6aaa6e139d326477816a1bf6?utm_source=rss)<!--g:6aaa6e139d326477816a1bf6--> | — |
 | — | 2026-09-15 | 1h14m | [501 从洪亮吉、龚自珍到魏源：清中叶的人如何看待自己国家未来？](https://www.xiaoyuzhoufm.com/episode/6aa8fe83051af796b9e8832e?utm_source=rss)<!--g:6aa8fe83051af796b9e8832e--> | — |

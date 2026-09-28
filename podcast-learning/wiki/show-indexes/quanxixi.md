@@ -1,6 +1,6 @@
 # 全嘻嘻 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/ptewvlwcgb8n>）｜ 最近拉取：2026-09-25 ｜ 总集数：171
+> 来源：官方 RSS（<https://feed.xyzfm.space/ptewvlwcgb8n>）｜ 最近拉取：2026-09-28 ｜ 总集数：171
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
@@ -73,7 +73,7 @@
 | — | 2024-12-03 | 1h05m | [躺在ICU病房里的年轻人【全嘻嘻 x薄世宁】](https://www.xiaoyuzhoufm.com/episode/674eb98d66d2c0bc8742e7b0?utm_source=rss)<!--g:674eb98d66d2c0bc8742e7b0--> | — |
 | — | 2024-11-16 | 2h08m | [【母女睡前聊天】父亲频繁出轨，但我更恨妈妈【全嘻嘻】](https://www.xiaoyuzhoufm.com/episode/6738734df373fe5d4dc11e57?utm_source=rss)<!--g:6738734df373fe5d4dc11e57--> | — |
 | — | 2024-11-04 | 1h45m | [股市防割指南：资产过亿，说没就没？【全嘻嘻 x戴某demo】](https://www.xiaoyuzhoufm.com/episode/672894f033c798676f556c2e?utm_source=rss)<!--g:672894f033c798676f556c2e--> | — |
-| — | 2024-10-19 | 1h34m | [养老院治好了我的焦虑症【全嘻嘻 x戴某demo】](https://www.xiaoyuzhoufm.com/episode/67138310db2cf827575ddbbd?utm_source=rss)<!--g:67138310db2cf827575ddbbd--> | — |
+| — | 2024-10-19 | 1h34m | [养老院治好了我的焦虑症【全嘻嘻】](https://www.xiaoyuzhoufm.com/episode/67138310db2cf827575ddbbd?utm_source=rss)<!--g:67138310db2cf827575ddbbd--> | — |
 | — | 2024-09-27 | 2h00m | [看到杨天真也闯过祸，我心里平衡了...【全嘻嘻 x 杨天真】](https://www.xiaoyuzhoufm.com/episode/66f540d769b6a485e81e1c45?utm_source=rss)<!--g:66f540d769b6a485e81e1c45--> | — |
 | — | 2024-09-06 | 1h58m | [16年教培老师: Top 1%鸡娃家庭不会说的秘密【全嘻嘻 x 束阳】](https://www.xiaoyuzhoufm.com/episode/66db0749ee04007d88aa0783?utm_source=rss)<!--g:66db0749ee04007d88aa0783--> | — |
 | — | 2024-09-02 | 1h19m | [北大宿舍聊天最后一集：视频删减部分【全嘻嘻 x 250宿舍聊天】](https://www.xiaoyuzhoufm.com/episode/66d5b9814a0f950f84fdff19?utm_source=rss)<!--g:66d5b9814a0f950f84fdff19--> | — |

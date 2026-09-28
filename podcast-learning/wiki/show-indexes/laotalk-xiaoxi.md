@@ -1,6 +1,6 @@
 # 老talk消息 — 全量单集索引
 
-> 来源：官方 RSS（<https://www.ximalaya.com/album/31225613.xml>）｜ 最近拉取：2026-09-25 ｜ 总集数：180
+> 来源：官方 RSS（<https://www.ximalaya.com/album/31225613.xml>）｜ 最近拉取：2026-09-28 ｜ 总集数：180
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
@@ -149,7 +149,7 @@
 | — | 2020-08-04 | 32m31s | [Solo \| 女人追求完美婚姻，男人拒绝长大](https://www.ximalaya.com/sound/323749397)<!--g:https://aod.cos.tx.xmcdn.com/storages/f6e0-audiofreehighqps/09/E3/CMCoOSAC_uxGBKbieABHuM67.mp3--> | — |
 | — | 2020-07-20 | 18m28s | [solo \| 李国庆也是受害者](https://www.ximalaya.com/sound/318579849)<!--g:https://aod.cos.tx.xmcdn.com/group84/M08/43/ED/wKg5Hl8VBBfA6fNKAqRfeLSVGac142.mp3--> | — |
 | — | 2020-07-11 | 23m39s | [Solo \| 高考后，先选前途，再填志愿](https://www.ximalaya.com/sound/315754188)<!--g:https://aod.cos.tx.xmcdn.com/storages/5cda-audiofreehighqps/E8/A0/CMCoCqMC32LhA2KzOABA4apD.mp3--> | — |
-| — | 2020-07-05 | 20m46s | [Solo \| 反转和洗地](https://www.ximalaya.com/sound/313832839)<!--g:https://aod.cos.tx.xmcdn.com/group83/M08/80/55/wKg5I18BxgrAmmszAJn8YddMeVQ314.m4a--> | — |
+| — | 2020-07-05 | 20m46s | [Solo \| 反转和洗地](https://www.ximalaya.com/sound/313832839)<!--g:https://aod.cos.tx.xmcdn.com/group84/M01/81/D0/wKg5Hl8BxfGAXc6qAvjV-O5U-2c765.mp3--> | — |
 | — | 2020-06-23 | 21m48s | [Solo \| 中国人为什么不能住大房子？](https://www.ximalaya.com/sound/310186189)<!--g:https://aod.cos.tx.xmcdn.com/group85/M08/EF/23/wKg5H17xoUOBiY8wAKGtjYu44ms692.m4a--> | — |
 | — | 2020-06-19 | 18m17s | [Solo \| 与“不平等”相处](https://www.ximalaya.com/sound/309137900)<!--g:https://aod.cos.tx.xmcdn.com/group84/M05/C4/66/wKg5Hl7s2-2D7N6hAp2p0L3RmQo563.mp3--> | — |
 | — | 2020-06-14 | 16m34s | [Solo \| 为什么是“新发地”](https://www.ximalaya.com/sound/307462282)<!--g:https://aod.cos.tx.xmcdn.com/group84/M00/7F/3B/wKg5Hl7mG1vR9O8cAl7SeI0jOfg321.mp3--> | — |
@@ -161,7 +161,7 @@
 | — | 2020-05-18 | 20m54s | [复工日记09 \| “后浪”的女权](https://www.ximalaya.com/sound/297790285)<!--g:https://aod.cos.tx.xmcdn.com/group80/M08/65/4C/wKgPEV7B78TCYqkhATMxV4eMcDE421.mp3--> | — |
 | — | 2020-05-06 | 27m34s | [复工日记07 \| 后浪与入关学](https://www.ximalaya.com/sound/292975230)<!--g:https://aod.cos.tx.xmcdn.com/group80/M02/CE/C0/wKgPEV6ytEzDDvX0AZTaKOAlP2M758.mp3--> | — |
 | — | 2020-05-03 | 21m22s | [复工日记06 \| 宋朝的自由](https://www.ximalaya.com/sound/291804388)<!--g:https://aod.cos.tx.xmcdn.com/group80/M08/66/C1/wKgPEV6u7TzDwYjwAKAkrvGPTbw718-aacv2-48K.m4a--> | — |
-| — | 2020-04-24 | 59m30s | [Vol.11 \| 如何拯救餐饮行业](https://www.ximalaya.com/sound/287755371)<!--g:https://aod.cos.tx.xmcdn.com/group80/M04/00/5D/wKgPDF6idWuDUWzEAb27qFs6ICI478.m4a--> | — |
+| — | 2020-04-24 | 59m30s | [Vol.11 \| 如何拯救餐饮行业](https://www.ximalaya.com/sound/287755371)<!--g:https://aod.cos.tx.xmcdn.com/group81/M06/05/F0/wKgPEl6idSCCbnPrCIGvf_eI5hs819.mp3--> | — |
 | — | 2020-04-10 | 59m28s | [Vol. 10 \| 北京楼市过春天](https://www.ximalaya.com/sound/281312392)<!--g:https://aod.cos.tx.xmcdn.com/group76/M03/84/C1/wKgO3l6Qd6WDFD8pCIIP-k6-6Mk095.mp3--> | — |
 | — | 2020-03-30 | 15m01s | [复工日记04 \| 胡锡进反对胡锡进](https://www.ximalaya.com/sound/275620177)<!--g:https://aod.cos.tx.xmcdn.com/group75/M01/78/3A/wKgO3V6BVNDxjFTfAHCFO0RWgUI783.m4a--> | — |
 | — | 2020-03-24 | 15m40s | [复工日记03 \| 社交网络上的人是孤独的](https://www.ximalaya.com/sound/272794056)<!--g:https://aod.cos.tx.xmcdn.com/group78/M06/F9/65/wKgO4F55ktXAR3FnAHVrZ-NKl1k836.m4a--> | — |
@@ -171,14 +171,14 @@
 | — | 2020-02-21 | 17m09s | [隔离日记12 \| 病毒所的历史进程与石正丽的个人奋斗](https://www.ximalaya.com/sound/257173074)<!--g:https://aod.cos.tx.xmcdn.com/group78/M0B/8C/39/wKgO1l5PXcqze6IfAPwyUS-sFwQ937.mp3--> | — |
 | — | 2020-02-17 | 17m53s | [隔离日记11 \| 我和我的房子](https://www.ximalaya.com/sound/255460357)<!--g:https://aod.cos.tx.xmcdn.com/group75/M00/3A/D7/wKgO3V5Kd9fjtMjsAQb5gPZ7530369.mp3--> | — |
 | — | 2020-02-16 | 20m37s | [隔离日记10 \| 现在，2020年应该鼓励年轻人进体制内吗？](https://www.ximalaya.com/sound/254857609)<!--g:https://aod.cos.tx.xmcdn.com/group73/M05/22/69/wKgO215IySWD1TFyAS7Q0bSzF4k196.mp3--> | — |
-| — | 2020-02-14 | 26m11s | [隔离日记08 \| 一个科比球迷的自白](https://www.ximalaya.com/sound/254294777)<!--g:https://aod.cos.tx.xmcdn.com/group77/M05/1A/24/wKgO1V5GzQqzbMvXAMQsJXbsKis336.m4a--> | — |
-| — | 2020-02-13 | 18m00s | [隔离日记09 \| 2010年代手机简史](https://www.ximalaya.com/sound/253813282)<!--g:https://aod.cos.tx.xmcdn.com/group71/M06/D5/B4/wKgOz15FWHDAEJNMAIbYQAWA8zs881.m4a--> | — |
-| — | 2020-02-11 | 14m19s | [隔离日记07 \| 韩国电影一小步 奥斯卡的一大步](https://www.ximalaya.com/sound/252909775)<!--g:https://aod.cos.tx.xmcdn.com/group70/M08/8F/2D/wKgO2F5CtJKh9cYCAGtPzCVbX1M048.m4a--> | — |
+| — | 2020-02-14 | 26m11s | [隔离日记08 \| 一个科比球迷的自白](https://www.ximalaya.com/sound/254294777)<!--g:https://aod.cos.tx.xmcdn.com/group73/M08/14/DD/wKgO0V5GybvzDBPVAj6uGuvf_B0807.mp3--> | — |
+| — | 2020-02-13 | 18m00s | [隔离日记09 \| 2010年代手机简史](https://www.ximalaya.com/sound/253813282)<!--g:https://aod.cos.tx.xmcdn.com/group71/M03/D5/7E/wKgOz15FV0KhSCGWAQh8dBxVHXM108.mp3--> | — |
+| — | 2020-02-11 | 14m19s | [隔离日记07 \| 韩国电影一小步 奥斯卡的一大步](https://www.ximalaya.com/sound/252909775)<!--g:https://aod.cos.tx.xmcdn.com/group71/M03/8A/2C/wKgO2V5CstmzwZc4ATrdzt8FUHU855.mp3--> | — |
 | — | 2020-02-09 | 25m40s | [隔离日记06 \| 末代皇帝的原生家庭](https://www.ximalaya.com/sound/251918485)<!--g:https://aod.cos.tx.xmcdn.com/group70/M05/3C/0A/wKgO2F4_1WbSrfYWAXjQYbVz3Ig326.mp3--> | — |
 | — | 2020-01-30 | 15m37s | [隔离日记03 \| 从科学家崇拜到医生崇拜](https://www.ximalaya.com/sound/247763506)<!--g:https://aod.cos.tx.xmcdn.com/group70/M00/E7/66/wKgO2F4yU7yzQnh1AOW8JbzBbR8474.mp3--> | — |
 | — | 2020-01-29 | 15m50s | [隔离日记02 \| 两代人的战争与和解](https://www.ximalaya.com/sound/247473357)<!--g:https://aod.cos.tx.xmcdn.com/group72/M0B/85/75/wKgO0F4xDVPQQ7CrAOjsdTzrPvw618.mp3--> | — |
-| — | 2020-01-29 | 18m17s | [隔离日记01 \| 武汉和武汉人](https://www.ximalaya.com/sound/247473355)<!--g:https://aod.cos.tx.xmcdn.com/group70/M07/D0/35/wKgOzl4xDibS9O1vAIkHWJRY9zk866.m4a--> | — |
-| — | 2020-01-24 | 46m31s | [【新春特辑】黄泛区一家人](https://www.ximalaya.com/sound/246402715)<!--g:https://aod.cos.tx.xmcdn.com/group70/M01/77/64/wKgO2F4qeJSA8ETaAVxoWwS-4P0856.m4a--> | — |
+| — | 2020-01-29 | 18m17s | [隔离日记01 \| 武汉和武汉人](https://www.ximalaya.com/sound/247473355)<!--g:https://aod.cos.tx.xmcdn.com/group70/M01/D0/1D/wKgOzl4xDRCztA_NAQzCUSwo_tc206.mp3--> | — |
+| — | 2020-01-24 | 46m31s | [【新春特辑】黄泛区一家人](https://www.ximalaya.com/sound/246402715)<!--g:https://aod.cos.tx.xmcdn.com/group70/M02/77/58/wKgO2F4qd6nzhzhOBVLv6iRrBzM780.mp3--> | — |
 | — | 2020-01-20 | 53m25s | [vol.08 \| 医院的那点事儿](https://www.ximalaya.com/sound/245402319)<!--g:https://aod.cos.tx.xmcdn.com/group70/M09/23/C6/wKgOzl4lAoLjvEfwAYvzWUEDhvU135-aacv2-48K.m4a--> | — |
 | — | 2019-12-27 | 39m54s | [Vol. 07 \| 现实主义的“树先生”与表现主义的“小丑”](https://www.ximalaya.com/sound/239953971)<!--g:https://aod.cos.tx.xmcdn.com/group70/M0B/59/70/wKgOzl4F0aXyKF5mASrmZN18hO0466.m4a--> | — |
 | — | 2019-12-08 | 39m58s | [Vol.05 \| 中国足球为什么不行？因为报道上出现了偏差](https://www.ximalaya.com/sound/235106169)<!--g:https://aod.cos.tx.xmcdn.com/group68/M07/8C/1D/wKgMeF3sx8PTVviBAStnZl1T3qY025-aacv2-48K.m4a--> | — |
