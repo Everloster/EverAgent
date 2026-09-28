@@ -1,6 +1,93 @@
 {
   "items": [
     {
+      "audio_url": "https://www.xiaoyuzhoufm.com/episode/6ab71039195d838e2aea294a?utm_source=rss",
+      "date": "2026-09-27",
+      "duration": "40m46s",
+      "episode_no": null,
+      "guid": "6ab71039195d838e2aea294a",
+      "id": "6fd64e387c515aa4d5dcd4262abe487467e26f2fcf3020e01bdab6eff7a08936",
+      "index_status": "—",
+      "kind": "podcast_episode",
+      "platform": "xiaoyuzhou",
+      "report": {
+        "path": "",
+        "raw_url": "",
+        "title": "",
+        "updated_on": "",
+        "url": ""
+      },
+      "show": "42章经",
+      "show_slug": "42zhangjing",
+      "study_state": "pending",
+      "task": {
+        "kind": "podcast_learning",
+        "prompt": "请按 podcast-learning 协议学习小宇宙节目《AI Trading —— 决策便宜，行动很贵｜对谈超 3w Star Vibe-Trading 作者浩哲》。来源：https://www.xiaoyuzhoufm.com/episode/6ab71039195d838e2aea294a?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
+        "ready": true,
+        "suggested_report_path": "podcast-learning/reports/2026-09-27_xiaoyuzhou-42zhangjing_episode-x.md",
+        "target_worker": "razer"
+      },
+      "title": "AI Trading —— 决策便宜，行动很贵｜对谈超 3w Star Vibe-Trading 作者浩哲"
+    },
+    {
+      "audio_url": "https://www.xiaoyuzhoufm.com/episode/6ab7fb97e742e36efcbb881a?utm_source=rss",
+      "date": "2026-09-27",
+      "duration": "1h52m",
+      "episode_no": null,
+      "guid": "6ab7fb97e742e36efcbb881a",
+      "id": "ef25afcc1a54953a2a0a5fdcb52aedb2afb4a5637de5334815f3e090c34fcb04",
+      "index_status": "—",
+      "kind": "podcast_episode",
+      "platform": "xiaoyuzhou",
+      "report": {
+        "path": "",
+        "raw_url": "",
+        "title": "",
+        "updated_on": "",
+        "url": ""
+      },
+      "show": "十字路口Crossing",
+      "show_slug": "crossing",
+      "study_state": "pending",
+      "task": {
+        "kind": "podcast_learning",
+        "prompt": "请按 podcast-learning 协议学习小宇宙节目《AI 时代，我们到底该学什么？｜对谈于红：三种不会过时的能力》。来源：https://www.xiaoyuzhoufm.com/episode/6ab7fb97e742e36efcbb881a?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
+        "ready": true,
+        "suggested_report_path": "podcast-learning/reports/2026-09-27_xiaoyuzhou-crossing_episode-x.md",
+        "target_worker": "razer"
+      },
+      "title": "AI 时代，我们到底该学什么？｜对谈于红：三种不会过时的能力"
+    },
+    {
+      "audio_url": "https://www.xiaoyuzhoufm.com/episode/6ab4b804e742e36efcbab131?utm_source=rss",
+      "date": "2026-09-24",
+      "duration": "1h39m",
+      "episode_no": 277,
+      "guid": "6ab4b804e742e36efcbab131",
+      "id": "e7bbb6ea8d08f1fd594510fca22a3fb859aa279b71f018569c08192239267dc8",
+      "index_status": "—",
+      "kind": "podcast_episode",
+      "platform": "xiaoyuzhou",
+      "report": {
+        "path": "",
+        "raw_url": "",
+        "title": "",
+        "updated_on": "",
+        "url": ""
+      },
+      "show": "乱翻书",
+      "show_slug": "luanfanshu",
+      "study_state": "pending",
+      "task": {
+        "kind": "podcast_learning",
+        "prompt": "请按 podcast-learning 协议学习小宇宙节目《277.从提醒你，到替你办：Today想把Personal AI带到哪一步？》。来源：https://www.xiaoyuzhoufm.com/episode/6ab4b804e742e36efcbab131?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
+        "ready": true,
+        "suggested_report_path": "podcast-learning/reports/2026-09-24_xiaoyuzhou-luanfanshu_episode-277.md",
+        "target_worker": "razer"
+      },
+      "title": "277.从提醒你，到替你办：Today想把Personal AI带到哪一步？"
+    },
+    {
       "audio_url": "https://www.xiaoyuzhoufm.com/episode/6ab2546493d5eb3bdc794b18?utm_source=rss",
       "date": "2026-09-22",
       "duration": "1h12m",
@@ -28,6 +115,35 @@
         "target_worker": "razer"
       },
       "title": "276.当AI给出所有答案，年轻人如何找到自己的问题？"
+    },
+    {
+      "audio_url": "https://www.xiaoyuzhoufm.com/episode/6ab2b85df04646b3a955a1de?utm_source=rss",
+      "date": "2026-09-22",
+      "duration": "41m08s",
+      "episode_no": null,
+      "guid": "6ab2b85df04646b3a955a1de",
+      "id": "2cf0a1e29c20a24e7285fa128130af7c82b01227b92b434f95dd3f3cdb2f4233",
+      "index_status": "—",
+      "kind": "podcast_episode",
+      "platform": "xiaoyuzhou",
+      "report": {
+        "path": "",
+        "raw_url": "",
+        "title": "",
+        "updated_on": "",
+        "url": ""
+      },
+      "show": "屠龙之术",
+      "show_slug": "tulong-zhishu",
+      "study_state": "pending",
+      "task": {
+        "kind": "podcast_learning",
+        "prompt": "请按 podcast-learning 协议学习小宇宙节目《AI进入生产阶段之后， 智能、算力、芯片 会走向哪里？》。来源：https://www.xiaoyuzhoufm.com/episode/6ab2b85df04646b3a955a1de?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
+        "ready": true,
+        "suggested_report_path": "podcast-learning/reports/2026-09-22_xiaoyuzhou-tulong-zhishu_episode-x.md",
+        "target_worker": "razer"
+      },
+      "title": "AI进入生产阶段之后， 智能、算力、芯片 会走向哪里？"
     },
     {
       "audio_url": "https://www.xiaoyuzhoufm.com/episode/6ab029b7ac389df82734ebb6?utm_source=rss",
@@ -65,7 +181,7 @@
       "episode_no": null,
       "guid": "6ab0504f0916f6f8b4466ece",
       "id": "baa98dc7b8fe1d40d1c94fb77a2f0c905d58ee7e4fba98bf85836ec1d42a5da1",
-      "index_status": "—",
+      "index_status": "✅",
       "kind": "podcast_episode",
       "platform": "xiaoyuzhou",
       "report": {
@@ -152,7 +268,7 @@
       "episode_no": null,
       "guid": "6aa82d11129fe965d33288ca",
       "id": "26ed2fb81ed6f350a90b0befa23ceb284698eda044352f9854f96ee8fb89ca87",
-      "index_status": "—",
+      "index_status": "✅",
       "kind": "podcast_episode",
       "platform": "xiaoyuzhou",
       "report": {
@@ -5683,122 +5799,6 @@
         "target_worker": "razer"
       },
       "title": "117. 开源一段论文探索之旅：模型范式、Infra和数据、语言、多模态的完整变迁史"
-    },
-    {
-      "audio_url": "https://www.xiaoyuzhoufm.com/episode/68fe0681083a71a4eb4e17f6?utm_source=rss",
-      "date": "2025-10-26",
-      "duration": "1h24m",
-      "episode_no": null,
-      "guid": "68fe0681083a71a4eb4e17f6",
-      "id": "6a757cf8ed06e7c4c39e0558ffa33fc27e8f822abc1e18ee520e3a1e46c1f608",
-      "index_status": "—",
-      "kind": "podcast_episode",
-      "platform": "xiaoyuzhou",
-      "report": {
-        "path": "",
-        "raw_url": "",
-        "title": "",
-        "updated_on": "",
-        "url": ""
-      },
-      "show": "十字路口Crossing",
-      "show_slug": "crossing",
-      "study_state": "pending",
-      "task": {
-        "kind": "podcast_learning",
-        "prompt": "请按 podcast-learning 协议学习小宇宙节目《刚完成亿元级融资，他要如何挑战 AI 硬件的“不可能三角”｜对谈马啸：未来智能创始人/CEO》。来源：https://www.xiaoyuzhoufm.com/episode/68fe0681083a71a4eb4e17f6?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
-        "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-10-26_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
-      },
-      "title": "刚完成亿元级融资，他要如何挑战 AI 硬件的“不可能三角”｜对谈马啸：未来智能创始人/CEO"
-    },
-    {
-      "audio_url": "https://www.xiaoyuzhoufm.com/episode/68fb18780156720321d444eb?utm_source=rss",
-      "date": "2025-10-25",
-      "duration": "52m35s",
-      "episode_no": null,
-      "guid": "68fb18780156720321d444eb",
-      "id": "582038ab1468931a06139bb318e176316b3ccb7127b22e92290880dafc8accbd",
-      "index_status": "—",
-      "kind": "podcast_episode",
-      "platform": "xiaoyuzhou",
-      "report": {
-        "path": "",
-        "raw_url": "",
-        "title": "",
-        "updated_on": "",
-        "url": ""
-      },
-      "show": "42章经",
-      "show_slug": "42zhangjing",
-      "study_state": "pending",
-      "task": {
-        "kind": "podcast_learning",
-        "prompt": "请按 podcast-learning 协议学习小宇宙节目《OpusClip 增长秘诀：如果每个阶段只让我选一件事做 \\| 对谈 Opus 前增长产品负责人君陶》。来源：https://www.xiaoyuzhoufm.com/episode/68fb18780156720321d444eb?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
-        "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-10-25_xiaoyuzhou-42zhangjing_episode-x.md",
-        "target_worker": "razer"
-      },
-      "title": "OpusClip 增长秘诀：如果每个阶段只让我选一件事做 \\| 对谈 Opus 前增长产品负责人君陶"
-    },
-    {
-      "audio_url": "https://www.xiaoyuzhoufm.com/episode/68f96441083a71a4ebd16696?utm_source=rss",
-      "date": "2025-10-23",
-      "duration": "1h26m",
-      "episode_no": null,
-      "guid": "68f96441083a71a4ebd16696",
-      "id": "cf5fda6b79d3755f37b2a377776ed944b7f58e8da56942f2b02e858ab187047c",
-      "index_status": "—",
-      "kind": "podcast_episode",
-      "platform": "xiaoyuzhou",
-      "report": {
-        "path": "",
-        "raw_url": "",
-        "title": "",
-        "updated_on": "",
-        "url": ""
-      },
-      "show": "十字路口Crossing",
-      "show_slug": "crossing",
-      "study_state": "pending",
-      "task": {
-        "kind": "podcast_learning",
-        "prompt": "请按 podcast-learning 协议学习小宇宙节目《当阿里入局全球 AI Coding，战场里的 60 天 \\| 对话叔同：Qoder 创始人》。来源：https://www.xiaoyuzhoufm.com/episode/68f96441083a71a4ebd16696?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
-        "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-10-23_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
-      },
-      "title": "当阿里入局全球 AI Coding，战场里的 60 天 \\| 对话叔同：Qoder 创始人"
-    },
-    {
-      "audio_url": "https://www.xiaoyuzhoufm.com/episode/68f77d0b456ffec65ed9d9ad?utm_source=rss",
-      "date": "2025-10-22",
-      "duration": "1h26m",
-      "episode_no": null,
-      "guid": "68f77d0b456ffec65ed9d9ad",
-      "id": "3ef46914900959029230c6ddcadec0f27ee3f98e4bb00c5878a062570d84bd40",
-      "index_status": "—",
-      "kind": "podcast_episode",
-      "platform": "xiaoyuzhou",
-      "report": {
-        "path": "",
-        "raw_url": "",
-        "title": "",
-        "updated_on": "",
-        "url": ""
-      },
-      "show": "屠龙之术",
-      "show_slug": "tulong-zhishu",
-      "study_state": "pending",
-      "task": {
-        "kind": "podcast_learning",
-        "prompt": "请按 podcast-learning 协议学习小宇宙节目《Vol.75 \"我可是AI司马迁啊…”---串台十字路口》。来源：https://www.xiaoyuzhoufm.com/episode/68f77d0b456ffec65ed9d9ad?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
-        "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-10-22_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
-      },
-      "title": "Vol.75 \"我可是AI司马迁啊…”---串台十字路口"
     }
   ],
   "platform": "xiaoyuzhou",
