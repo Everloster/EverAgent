@@ -4,8 +4,8 @@ title: "Meta AI（FAIR）"
 type: entity/org
 domain: [ai-learning]
 created: 2026-04-07
-updated: 2026-04-07
-sources: [AI关键人物图谱, 16_llama_2023, 17_mae_2022, 35_dinov2_2023]
+updated: 2026-09-28
+sources: [AI关键人物图谱, 16_llama_2023, 17_mae_2022, 35_dinov2_2023, 2026-09-22_meta-muse_product-research]
 ---
 
 # Meta AI（FAIR）
@@ -17,7 +17,8 @@ Meta 旗下 AI 研究机构，前身为 Facebook AI Research（FAIR），由 Yan
 - **LLaMA 系列开源大模型**：LLaMA / LLaMA-2 等开源大模型证明了"小模型 + 高质量数据"的高效路线，重塑开源 LLM 生态。来源：03_gpt3_2020 §影响的后续模型谱系 / 16_llama_2023
 - **MAE（Masked Autoencoders）**：提出 75% 高掩码率 + 不对称编码器-解码器的视觉自监督预训练框架，作者团队来自 Meta AI / FAIR（Kaiming He, Xinlei Chen, Saining Xie 等）。来源：17_mae_2022 论文头部信息
 - **DINOv2 视觉基础模型**：通过 1.42 亿张精筛图像 + 系统训练优化，首次让纯自监督 ViT 在多视觉任务上超越 OpenCLIP 等弱监督方法。作者团队均属 Meta AI Research。来源：35_dinov2_2023 基本信息卡片
-- **立场**：LeCun 主导下，Meta AI 倾向于"开源 + 反对 LLM-only AGI 路线"，与 OpenAI / Anthropic 形成明显路线分歧。来源：AI关键人物图谱 §四
+- **Muse 个人 AI Agent（2026-09-08 发布）**：消费级 Agent 产品，底层模型 Muse Spark 1.3（权重不公开，与 LLaMA 开源路线相反）。逆向孤证显示手机端走标准 MCP 协议接受云端指挥——巨头给 MCP 背书的行业信号。详见 [[muse_agent]]
+- **立场**：LeCun 主导下，Meta AI 倾向于"开源 + 反对 LLM-only AGI 路线"，与 OpenAI / Anthropic 形成明显路线分歧。来源：AI关键人物图谱 §四。注意：模型层开源（LLaMA），产品层闭源高权限（Muse）——两层策略分化
 
 ## 在本项目的相关报告
 - [LLaMA (2023) 论文精读](../../reports/paper_analyses/16_llama_2023.md)
@@ -25,6 +26,7 @@ Meta 旗下 AI 研究机构，前身为 Facebook AI Research（FAIR），由 Yan
 - [MAE (2022) 深度分析](../../reports/paper_analyses/17_mae_2022.md)
 - [DINOv2 (2023) 论文精读](../../reports/paper_analyses/35_dinov2_2023.md)
 - [VideoMAE (2022) 论文精读](../../reports/paper_analyses/36_videomae_2022.md)
+- [Meta Muse 深度产品研究报告 v2](../../reports/2026-09-22_meta-muse_product-research.md)（2026-09-28）
 
 ## 与其他人物/机构的关系
 - **Yann LeCun**：首席科学家，深度学习三巨头之一，CNN/LeNet 发明者。来源：AI关键人物图谱 §四

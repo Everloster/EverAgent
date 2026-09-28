@@ -7,6 +7,7 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-09-28 | [Meta Muse 深度产品研究报告 v2（APK 逆向 + 独立评测补充版）](../ai-learning/reports/2026-09-22_meta-muse_product-research.md) | ai-learning |
 | 2026-09-27 | [孩子成绩差，真的是因为「不是学习的料」吗？——对谈脑科学专家黄翔](../podcast-learning/reports/2026-07-04_bilibili-kema_huangxiang-brain.md) | podcast-learning |
 | 2026-09-26 | [把一家 12 年的硬件公司重写成 AI 原生组织：鹿客陈彬的「从 1 到 0」实操](../podcast-learning/reports/2026-09-14_ximalaya-ailianjinshu_chenbin.md) | podcast-learning |
 | 2026-09-25 | [硅基立场 Vol.32｜张帆：去他X的FDE——能力沉淀在哪里，从定制外包到企业自学习](../podcast-learning/reports/2026-09-24_xiaoyuzhou-guiji-lichang_zhangfan-fde.md) | podcast-learning |
@@ -23,7 +24,6 @@
 | 2026-09-22 | [推理芯片之战：训练看算力、推理看带宽——Groq、Cerebras、OpenAI 三条路径与 Bill Dally 的设计哲学](../podcast-learning/reports/2026-09-15_rss-guigu101_e251-inference-chips.md) | podcast-learning |
 | 2026-09-22 | [一个人指挥 400 个 AI：Orca 津晶的多 agent 编排实操（ADE vs Harness）](../podcast-learning/reports/2026-09-17_rss-kedaibiao-lizheng_jinjing.md) | podcast-learning |
 | 2026-09-22 | [「我看到了 Scaling Law 的信号」：徐梦迪谈具身智能、世界模型与真正的泛化](../podcast-learning/reports/2026-09-20_xiaoyuzhou-crossing_xumengdi.md) | podcast-learning |
-| 2026-09-22 | [Meta Muse 深度产品研究报告 v2（APK 逆向补充版）](../ai-learning/reports/2026-09-22_meta-muse_product-research.md) | ai-learning |
 | 2026-09-22 | [Laya：把「反射性决策」从 LLM 里拆出来——421M 非自回归 System 1 决策模型解析与本机实测](../ai-learning/reports/knowledge_reports/Laya_System1决策模型_深度解析_20260922.md) | ai-learning |
 | 2026-09-22 | [AI 行业日报 · 2026-09-22](../web-surfing/reports/ai-news-daily-2026-09-22.md) | web-surfing |
 | 2026-09-21 | [AI 行业日报 · 2026-09-21](../web-surfing/reports/ai-news-daily-2026-09-21.md) | web-surfing |
@@ -37,8 +37,8 @@
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-09-28 | [Meta Muse 深度产品研究报告 v2（APK 逆向 + 独立评测补充版）](../ai-learning/reports/2026-09-22_meta-muse_product-research.md) | — |
 | 2026-09-22 | [格罗滕迪克「涨潮」思想 — 让难题消失的升维方法研究](../ai-learning/reports/knowledge_reports/格罗滕迪克涨潮思想_让难题消失的升维方法研究_20260922.md) | — |
-| 2026-09-22 | [Meta Muse 深度产品研究报告 v2（APK 逆向补充版）](../ai-learning/reports/2026-09-22_meta-muse_product-research.md) | — |
 | 2026-09-22 | [Laya：把「反射性决策」从 LLM 里拆出来——421M 非自回归 System 1 决策模型解析与本机实测](../ai-learning/reports/knowledge_reports/Laya_System1决策模型_深度解析_20260922.md) | — |
 | 2026-09-19 | [DeepSeek-V4.1-Flash 架构解剖 — CED 非对称设计与 KV Cache 压缩极限](../ai-learning/reports/knowledge_reports/DeepSeek-V4.1-Flash架构解剖_CED非对称与KV压缩极限_20260919.md) | — |
 | 2026-09-18 | [Jev 与 System One Models — TypeSafe AI「决策模型」新范式全景研究](../ai-learning/reports/knowledge_reports/Jev与System-One-Models_TypeSafe决策模型范式研究_20260918.md) | — |
