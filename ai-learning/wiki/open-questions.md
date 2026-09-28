@@ -129,3 +129,11 @@
   - 来源：同上 问 2
 - **B 类候选：laya-router-demo** —— 用程乐松期 4466 段真实转写做「广告段识别」对照（laya vs 规则 vs LLM），人工校正结果当 ground truth；教学笔记入 ai-practice。
   - 来源：同上 问 3
+
+## 2026-09-28 Meta Muse 个人 Agent（新汇入）
+
+- **[Agent产品/孤证]** Muse APK 逆向（微信公众号，60 项权限 + MCP 全线采用 + Aura/Hatch 架构）是全网孤证——独立第二来源缺位；B 类候选：自行下载 APK 跑 `aapt dump permissions` 一小时复核权限清单（来源：[[2026-09-22_meta-muse_product-research]] 思考与追问·问3）
+- **[Agent产品/评测鸿沟]** ApprenticeBench 19%（真实应付账款端到端任务）vs Claude Fable 5.1 的 72%——340 万下载用户的"能干活"体验与模型实测鸿沟如何并存：任务分布更简单，还是人工/规则兜底比例高？（同上 问2）
+- **[Agent产品/伦理]** 真人接线员事件（404 Media/Reuters 曝光→Meta 回滚 outbound calls）是否引来 FTC/州监管介入——Wizard-of-Oz 披露义务的首个大规模消费级判例，跟踪后续（同上 问2）
+- **[评测方法论]** Muse Spark「官方自报 vs 独立测」双例落差（DeepSWE 75.4 自报不上公共榜；Terminal-Bench 88.8 自报 vs Vals 72.3）——Agent 时代读 benchmark 必须查 evidence ledger 的"谁来测"
+- **[监管]** 欧盟版本走向验证"GDPR/DMA 阉割版"预判（同上 问3）
