@@ -235,3 +235,5 @@
 - 2026-09-26 | ingest | AI炼金术×鹿客陈彬《把一家 12 年的硬件公司重写成 AI 原生组织》（1h07m，2646段/20,483字，喜马拉雅源）→ [[2026-09-14_ximalaya-ailianjinshu_chenbin]]（从 1 到 0 / HARO 四件套 / 圈子制权力下放 / 三轮报名 / FDE 蒸馏恐惧；与曾鸣公司消亡=预言×实验、与张帆 FDE 批判=正反方对照）。open-questions +3
 
 - 2026-09-27 | ingest | B站可妈×黄翔《孩子成绩差，真的不是学习的料吗》（43m40s，1888段/14,365字）→ [[2026-07-04_bilibili-kema_huangxiang-brain]]（脑科学教育观：可塑性/敏感期/检索式学习法/11.5h 空腹/AI 两相反研究）；**首个 whisper+CC 字幕双源校验案例**（字幕术语谐音错 40+ 处亦有不少，两源互修）；新增实体 huang-xiang/kema（见下）；open-questions +3
+
+- 2026-09-28 | ingest | B站易论AI×胡修涵（捏Ta）《被AI淘汰的人才是AI最大的市场》（123min，2746段/31,300汉字，官方AI字幕单源无whisper）→ [[2026-09-18_bilibili-yilun-ai_huxiuhan]]（创作即消费/废人论；双边vs多边；内容积木+康威定律；冷启动纪律；AIGC vs AIUGC 参与感实验科学；小世界/迪士尼乐园/fork；可塑性软件+AI内容四象限；全民套壳Claude Code=信号；教堂比喻收尾）；**首个官方字幕单源全程润色案例**（B站视频流限速下不动，用户裁定字幕为主源）；修正 50+ 处（人名漂移：吴秀涵/胡修寒/胡秋涵→胡修涵；菲律宾比索→PHP；LAURA→LoRA；coffee ui→ComfyUI；买塔→Meta；电农阶级→佃农阶级等，清单见 polished 头部）；16 章自拟分节（无 shownotes）；新增实体 hu-xiuhan / nieta；open-questions +3

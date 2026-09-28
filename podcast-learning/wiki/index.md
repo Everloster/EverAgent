@@ -34,6 +34,7 @@
 
 ### 创业方法论 / 商业认知
 
+- [[2026-09-18_bilibili-yilun-ai_huxiuhan|易论AI×捏Ta胡修涵：被AI淘汰的人才是AI最大的市场]]（episode_summary · 发布 2026-09-18，归档 2026-09-28）— B站易论AI（易亚婷），123min，创作即消费/废人论 / 双边vs多边网络结构 / 内容积木+康威定律 / 冷启动纪律 / AIGC vs AIUGC 参与感 / 小世界·迪士尼乐园·fork / 可塑性软件+AI内容四象限 / 公司光谱 / 教堂比喻；首个官方字幕单源（无 whisper）全程润色案例，修正 50+ 处
 - [[2026-07-07_bilibili-kedaibiao-lizheng_tulong-boshi|课代表立正对谈屠龙博士]]（episode_summary · 2026-07-07）— B 站，非线性世界观 / 定价锚定 / 人才洼地
 
 ### 健康 / 营养科普
@@ -64,6 +65,7 @@
 
 ### AI 行业 / Agent 工程实操
 
+- [[2026-09-09_xiaoyuzhou-yilun-ai_frontier-no-llm|易论AI Vol.1：AI最前沿的人已经不聊大模型了]]（episode_summary · 2026-09-09）— 李继刚×橘子×歸藏×易亚婷四人谈，93min，服务裹着能力 / 齿轮速度差 / Agent+X / 上下文是一辆车 / 缓存经济学；补登索引（本期 ingest 时遗漏）
 - [[2026-09-17_rss-kedaibiao-lizheng_jinjing|一个人指挥 400 个 AI：Orca 津晶的多 agent 编排实操（ADE vs Harness）]]（episode_summary · 2026-09-17）— 课代表立正对话 319，1h06m，ADE/harness 分层 / 400 任务三层法 / 4 人日产百 PR；首轮转写循环幻觉 89.5%、`-mc 0` 修复的标志性案例
 - [[2026-09-16_xiaoyuzhou-cihua-dangzhen_zhangtuoken|用 AI 三天设计一颗芯片后，一位清华博士决定「开卷」]]（episode_summary · 2026-09-16）— 此话当真对话张托肯，46m48s，芯片开卷计划 / 三天流片 / 渗透率 80-90% / 模型能力>Harness / agent 驾驶员
 - [[2026-09-14_ximalaya-ailianjinshu_chenbin|把一家 12 年的硬件公司重写成 AI 原生组织]]（episode_summary · 2026-09-14）— AI炼金术×鹿客陈彬，1h07m，从 1 到 0 / HARO / 圈子制 / FDE 蒸馏恐惧；与曾鸣 153 期=预言×实验、与张帆 FDE 批判=正反方
@@ -167,6 +169,11 @@
 
 - [[entities/cheng-lesong|程乐松]] — 北大哲学系系主任；"反卷教授"但拒绝精神导师；explain away；不狗屁的两个方向
 
+### 来自 2026-09-18 易论AI×胡修涵（捏Ta期）
+
+- [[entities/hu-xiuhan|胡修涵]] — 捏Ta 创始人；北大→哥大→Meta→特赞 CTO；系统论者；创作即消费 / 双边vs多边 / 冷启动纪律 / 第二世界教堂论
+- [[entities/nieta|捏Ta]] — AI 原创角色社区（1200 万用户/600 万角色）；反 AIGC 押 AIUGC；fork 机制；场先于角色建厚
+
 ## Concepts（核心概念）
 
 ### 来自 Vol.29 王小川系列
@@ -268,4 +275,4 @@
 - [[concepts/inference-bandwidth|训练看算力，推理看带宽]] — decode 每 token 读全模型权重；SRAM 收敛与三路径折扣；CUDA 一定会被绕过
 - [[concepts/chip-open-plan|芯片开卷计划]] — 0→60/80 分内容开卷+AI 加速；封闭世界的胜利（数字芯片渗透率 80-90%）
 
-*Last updated: 2026-09-13*
+*Last updated: 2026-09-28*
