@@ -1,11 +1,12 @@
 # 声动早咖啡 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/q88qwmydeuw8>）｜ 最近拉取：2026-09-25 ｜ 总集数：1061
+> 来源：官方 RSS（<https://feed.xyzfm.space/q88qwmydeuw8>）｜ 最近拉取：2026-09-28 ｜ 总集数：1062
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
 | 22 | 2025-07-01 | 12m33s | [22.8 元袋装冰块进驻山姆，农夫山泉为何也盯上冰块生意？](https://www.xiaoyuzhoufm.com/episode/6863f40393fd2d72b80338a6?utm_source=rss)<!--g:6863f40393fd2d72b80338a6--> | — |
+| — | 2026-09-27 | 15m02s | [昂跑签下姆巴佩之后，跑鞋品牌做足球生意还有哪些难题？](https://www.xiaoyuzhoufm.com/episode/6ab92bc2e742e36efcbbd61e?utm_source=rss)<!--g:6ab92bc2e742e36efcbbd61e--> | — |
 | — | 2026-09-23 | 11m53s | [月饼市场持续降温，豆包缩减对话业务团队](https://www.xiaoyuzhoufm.com/episode/6ab3cb0f93d5eb3bdc79dbf0?utm_source=rss)<!--g:6ab3cb0f93d5eb3bdc79dbf0--> | — |
 | — | 2026-09-22 | 16m22s | [一辆「小电驴」卖到三四千元，小牛、九号如何实现电动两轮车高端化？](https://www.xiaoyuzhoufm.com/episode/6ab2833093d5eb3bdc795f6f?utm_source=rss)<!--g:6ab2833093d5eb3bdc795f6f--> | — |
 | — | 2026-09-21 | 10m58s | [京沪高铁中秋节前出现降价，新百伦起诉迪卡侬侵权](https://www.xiaoyuzhoufm.com/episode/6ab13af893d5eb3bdc78df25?utm_source=rss)<!--g:6ab13af893d5eb3bdc78df25--> | — |

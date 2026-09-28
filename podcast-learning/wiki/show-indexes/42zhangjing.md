@@ -1,11 +1,12 @@
 # 42章经 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/evgg6xle9rdc>）｜ 最近拉取：2026-09-25 ｜ 总集数：70
+> 来源：官方 RSS（<https://feed.xyzfm.space/evgg6xle9rdc>）｜ 最近拉取：2026-09-28 ｜ 总集数：71
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
 | 24 | 2024-01-13 | 40m44s | [24、25 年会是下一代浪潮最关键的两年 \| AI 年终复盘](https://www.xiaoyuzhoufm.com/episode/65a2a75fb5e4856c70801eba?utm_source=rss)<!--g:65a2a75fb5e4856c70801eba--> | — |
+| — | 2026-09-27 | 40m46s | [AI Trading —— 决策便宜，行动很贵｜对谈超 3w Star Vibe-Trading 作者浩哲](https://www.xiaoyuzhoufm.com/episode/6ab71039195d838e2aea294a?utm_source=rss)<!--g:6ab71039195d838e2aea294a--> | — |
 | — | 2026-08-29 | 47m29s | [一个人、两周、数百美元，如何训出登顶 Hugging Face 的模型 \| 对谈研究员逯雨鑫](https://www.xiaoyuzhoufm.com/episode/6a8ed6e7ef65145dfcc5d249?utm_source=rss)<!--g:6a8ed6e7ef65145dfcc5d249--> | — |
 | — | 2026-08-08 | 59m29s | [从蒸馏到合成数据到 RSI，模型竞争的下一个焦点是什么？｜对谈 Evolvent AI 联创孟繁青](https://www.xiaoyuzhoufm.com/episode/6a75424b000a55a9bb042560?utm_source=rss)<!--g:6a75424b000a55a9bb042560--> | — |
 | — | 2026-07-19 | 26m36s | [AI 发展了 4 年，把应用发展没了？｜AI 年中复盘](https://www.xiaoyuzhoufm.com/episode/6a5b98a66356eb2d9be4ad2c?utm_source=rss)<!--g:6a5b98a66356eb2d9be4ad2c--> | — |

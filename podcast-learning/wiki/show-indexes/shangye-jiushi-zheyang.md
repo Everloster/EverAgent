@@ -1,10 +1,11 @@
 # 商业就是这样 — 全量单集索引
 
-> 来源：官方 RSS（<http://www.ximalaya.com/album/46587439.xml>）｜ 最近拉取：2026-09-25 ｜ 总集数：369
+> 来源：官方 RSS（<http://www.ximalaya.com/album/46587439.xml>）｜ 最近拉取：2026-09-28 ｜ 总集数：370
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-27 | 9m12s | [假期通知兼谈本台为什么要做视频播客](https://www.ximalaya.com/sound/1018741567)<!--g:xmly_track_1018741567--> | — |
 | — | 2026-09-23 | 1h53m | [Vol.276 做月嫂育儿嫂的姐姐，都有故事](https://www.ximalaya.com/sound/1017890906)<!--g:xmly_track_1017890906--> | — |
 | — | 2026-09-20 | 14m49s | [商业小样50 \| 都在讨论家务机器人，不如关心到底有什么家务](https://www.ximalaya.com/sound/1017031596)<!--g:xmly_track_1017031596--> | — |
 | — | 2026-09-16 | 39m01s | [Vol.275 澳洲保健品是怎么火起来的?](https://www.ximalaya.com/sound/1015773861)<!--g:xmly_track_1015773861--> | — |

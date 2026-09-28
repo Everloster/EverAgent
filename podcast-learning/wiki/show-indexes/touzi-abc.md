@@ -1,10 +1,11 @@
 # 投资ABC — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/9bmupxfae9qd>）｜ 最近拉取：2026-09-25 ｜ 总集数：65
+> 来源：官方 RSS（<https://feed.xyzfm.space/9bmupxfae9qd>）｜ 最近拉取：2026-09-28 ｜ 总集数：66
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-28 | 58m31s | [E64 我看了中美几十年的数据，发现投资里「躺赢」和「躺平」真不是一回事](https://www.xiaoyuzhoufm.com/episode/6aaf9f1a0916f6f8b4463441?utm_source=rss)<!--g:6aaf9f1a0916f6f8b4463441--> | — |
 | — | 2026-09-14 | 1h02m | [E63 从收租到收息：为什么这些年，大家越来越关注红利投资了？](https://www.xiaoyuzhoufm.com/episode/6aa630e9492687f6aad90bfa?utm_source=rss)<!--g:6aa630e9492687f6aad90bfa--> | — |
 | — | 2026-08-31 | 1h08m | [E62 从互联网泡沫到 AI 淘金热，我们该如何参与一场技术革命？](https://www.xiaoyuzhoufm.com/episode/6a939d58a0210c197dca52e0?utm_source=rss)<!--g:6a939d58a0210c197dca52e0--> | — |
 | — | 2026-08-17 | 50m26s | [E61 聊聊心理账户：让投资账户里的钱，抵达具体的生活](https://www.xiaoyuzhoufm.com/episode/6a81623717676351c572978e?utm_source=rss)<!--g:6a81623717676351c572978e--> | — |
