@@ -12,6 +12,16 @@
 5. Agent 启动时必须保留项目 context-file 加载；禁止使用跳过项目指令的参数。Claude Code 通过仓库 `CLAUDE.md` 的 `@AGENTS.md` 导入本策略。
 
 这是默认执行与审计策略，不是安全沙箱；用户明确指令、仓库安全红线和授权等级始终优先。
+
+## Personal Context-first（由 everagentcli 管理）
+
+当任务涉及已经积累的个人设备、网络、服务、项目或学习资料时，Agent **先取最小上下文，再读 owner**：
+
+1. 先用 `eacli context catalog --json` 确认领域、唯一 owner、敏感级别与现有 typed entry。
+2. 已知领域用 `eacli context get --domain <id> --json`；需要定位资料用 `eacli context search --query <text> --json`，不得默认通读整个仓库或巨型档案。
+3. 结果中的仓库相对路径与 SHA-256 是 provenance，不是第二份事实；需要修改时仍回到 owner 文件并遵守该仓协议。
+4. `EverAgent-infra` 私有上下文不得复制进公开仓；CLI 不可用时才最小化直接读取 owner，并记录原因。
+5. `eacli context verify --repo all --json` 用于检查目录、owner、来源与章节漂移；它只读且不自动修复。
 <!-- END MANAGED EACLI TOKEN PLAN POLICY -->
 
 > 个人学习工作台。AI 帮我快速研究一个新领域/概念，产出高质量报告，我抽空阅读。

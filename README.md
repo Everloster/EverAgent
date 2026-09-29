@@ -7,6 +7,10 @@
 
 > **换机 / 首次拉取？** → 读 [docs/WORKSPACE_SETUP.md](./docs/WORKSPACE_SETUP.md)：本仓（公开）+ 私有仓 `EverAgent-infra`（F 类设备家底）如何并排搭建、更新、协作。
 
+> **查已有个人上下文？** → 并排私仓和 eacli 可用时，先运行 `eacli context catalog`，再用
+> `eacli context get --domain <id>` 或 `eacli context search --query <关键词>` 获取带来源的最小切片。
+> 本仓继续拥有公开知识正文；私有设备/网络内容不会复制到这里。
+
 ![EverAgent launch poster](./docs/assets/everagent-launch-poster.png)
 
 ---
