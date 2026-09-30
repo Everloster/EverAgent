@@ -7,6 +7,8 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-09-30 | [AI 行业日报 · 2026-09-30](../web-surfing/reports/ai-news-daily-2026-09-30.md) | web-surfing |
+| 2026-09-29 | [AI 行业日报 · 2026-09-29](../web-surfing/reports/ai-news-daily-2026-09-29.md) | web-surfing |
 | 2026-09-28 | [易论AI×捏Ta胡修涵：被AI淘汰的人才是AI最大的市场（创作即消费/双边vs多边/迪士尼不是乐园是上下文/AI内容四象限）](../podcast-learning/reports/2026-09-18_bilibili-yilun-ai_huxiuhan.md) | podcast-learning |
 | 2026-09-28 | [Meta Muse 深度产品研究报告 v2（APK 逆向 + 独立评测补充版）](../ai-learning/reports/2026-09-22_meta-muse_product-research.md) | ai-learning |
 | 2026-09-28 | [AI 行业日报 · 2026-09-28](../web-surfing/reports/ai-news-daily-2026-09-28.md) | web-surfing |
@@ -30,8 +32,6 @@
 | 2026-09-22 | [AI 行业日报 · 2026-09-22](../web-surfing/reports/ai-news-daily-2026-09-22.md) | web-surfing |
 | 2026-09-21 | [AI 行业日报 · 2026-09-21](../web-surfing/reports/ai-news-daily-2026-09-21.md) | web-surfing |
 | 2026-09-19 | [DeepSeek-V4.1-Flash 架构解剖 — CED 非对称设计与 KV Cache 压缩极限](../ai-learning/reports/knowledge_reports/DeepSeek-V4.1-Flash架构解剖_CED非对称与KV压缩极限_20260919.md) | ai-learning |
-| 2026-09-18 | [Jev 与 System One Models — TypeSafe AI「决策模型」新范式全景研究](../ai-learning/reports/knowledge_reports/Jev与System-One-Models_TypeSafe决策模型范式研究_20260918.md) | ai-learning |
-| 2026-09-18 | [AI 行业日报 · 2026-09-18](../web-surfing/reports/ai-news-daily-2026-09-18.md) | web-surfing |
 
 ## 🤖 AI Learning（109 篇）
 
@@ -303,10 +303,12 @@
 | 2026-06-20 | [三年行业吃肉榜/爆亏榜大合集（2023-2025）：谁在偷偷赚钱，谁在快速衰落](../podcast-learning/reports/2026-06-20_bilibili-cls-tongxue_hangye-bangdan.md) | — |
 | 2026-06-18 | [Vol.29 对话王小川：造医生，战豆包，与无尽的 AI 非共识](../podcast-learning/reports/2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan.md) | — |
 
-## 🏄 Web Surfing（29 篇）
+## 🏄 Web Surfing（31 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-09-30 | [AI 行业日报 · 2026-09-30](../web-surfing/reports/ai-news-daily-2026-09-30.md) | — |
+| 2026-09-29 | [AI 行业日报 · 2026-09-29](../web-surfing/reports/ai-news-daily-2026-09-29.md) | — |
 | 2026-09-28 | [AI 行业日报 · 2026-09-28](../web-surfing/reports/ai-news-daily-2026-09-28.md) | — |
 | 2026-09-25 | [AI 行业日报 · 2026-09-25](../web-surfing/reports/ai-news-daily-2026-09-25.md) | — |
 | 2026-09-24 | [AI 行业日报 · 2026-09-24](../web-surfing/reports/ai-news-daily-2026-09-24.md) | — |
@@ -325,8 +327,8 @@
 | 2026-09-03 | [AI 行业日报 · 2026-09-03](../web-surfing/reports/ai-news-daily-2026-09-03.md) | — |
 | 2026-09-02 | [AI 行业日报 · 2026-09-02](../web-surfing/reports/ai-news-daily-2026-09-02.md) | — |
 | 2026-09-01 | [AI 行业日报 · 2026-09-01](../web-surfing/reports/ai-news-daily-2026-09-01.md) | — |
+| 2026-08-31 | [惠州租房建议报告——两位老人 2026 年 9/10 月入住版（1–3 个月短住体验）](../web-surfing/reports/huizhou-rental-guide-2026-09.md) | — |
 | 2026-08-31 | [AI 行业日报 · 2026-08-31](../web-surfing/reports/ai-news-daily-2026-08-31.md) | — |
-| 2026-08-28 | [惠州租房建议报告——两位老人 2026 年 9/10 月入住版（1–3 个月短住体验）](../web-surfing/reports/huizhou-rental-guide-2026-09.md) | — |
 | 2026-08-28 | [AI 行业日报 · 2026-08-28](../web-surfing/reports/ai-news-daily-2026-08-28.md) | — |
 | 2026-08-27 | [AI 行业日报 · 2026-08-27](../web-surfing/reports/ai-news-daily-2026-08-27.md) | — |
 | 2026-08-26 | [AI 行业日报 · 2026-08-26](../web-surfing/reports/ai-news-daily-2026-08-26.md) | — |
