@@ -115,6 +115,8 @@ python3 scripts/github_api.py <owner> <repo> file src/main.py
 
 > 💡 **本机已有 clone 时 R2 走本地（事C 沉淀，2026-09-20）**：大 monorepo 用 `gh api` 逐文件拉既慢又看不清全局。若用户已把源码 clone 到本地（如 `~/workspace/{repo}`）：①先 `git log` pin 住 commit 作证据基线；②按顶层模块分组（如 `libs/` 下每个子包一组），派多个 explore 子代理并行勘察，每组产出"定位/入口文件:行号/核心抽象/调用关系/坑"digest；③主会话只读 digest 写报告。语言占比对 monorepo 会失真（文档站 HTML 可能占大头），别拿它判断技术栈重心。
 
+> 💡 **薄壳包/嵌套 monorepo 下钻（事C 沉淀，2026-09-30）**：PyPI 发布名常是**薄壳**（如 `hindsight-api` 只含 621 字节的 pyproject，真代码在同仓 `hindsight-api-slim/`）。顶层 `tree` 看不出真实模块结构时：①先读薄壳 pyproject 的 `dependencies`/`tool.uv.sources`（workspace 指针）找到真身目录；②对子树下钻用两步 tree sha（全仓 `recursive=1` 会 TLS 超时/EOF）：`git/trees/<顶层sha>` 取子目录 sha → `git/trees/<子sha>?recursive=1` 拿全清单（含 size）。③读大文件前先探 `.size`：>100KB 别用 contents API 拉全文，靠目录结构+同目录小文件（types.py/constants）取证据即可，1MB+ 单文件本身就可作为"架构风格"证据（如巨型单文件 = 重内聚取舍）记录。
+
 > 💡 **核验 README 声明（事C 沉淀）**：README 常有"50+ packs""支持 7 种语言"这类营销式数字。**用代码实测反查**，别照抄：
 > ```bash
 > # 递归列出文件树，统计某类文件数量（例：packs 规则文件）
