@@ -1,6 +1,6 @@
 # 老talk消息 — 全量单集索引
 
-> 来源：官方 RSS（<https://www.ximalaya.com/album/31225613.xml>）｜ 最近拉取：2026-09-28 ｜ 总集数：180
+> 来源：官方 RSS（<https://www.ximalaya.com/album/31225613.xml>）｜ 最近拉取：2026-10-01 ｜ 总集数：180
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
@@ -119,16 +119,16 @@
 | — | 2021-05-30 | 42m08s | [对谈06 \| 白岩松和年轻人](https://www.ximalaya.com/sound/420217832)<!--g:https://aod.cos.tx.xmcdn.com/storages/0183-audiofreehighqps/CC/25/CKwRIDoEiX1JAThV-ACyuybI.m4a--> | — |
 | — | 2021-05-26 | 40m56s | [对谈05 \| 看完左晖最后的几次采访，我陷进去了](https://www.ximalaya.com/sound/418813582)<!--g:https://aod.cos.tx.xmcdn.com/storages/2ef4-audiofreehighqps/44/63/CKwRIaIEg6rDAS9wbgCwmTs8.m4a--> | — |
 | — | 2021-05-08 | 40m14s | [Solo｜蔚来学了小米，但是小米学不了蔚来](https://www.ximalaya.com/sound/413111805)<!--g:https://aod.cos.tx.xmcdn.com/storages/d2c2-audiofreehighqps/04/58/CKwRIRwEa8iWABAAAACoH7Rg.mp3--> | — |
-| — | 2021-04-24 | 31m15s | [Solo \| 爱恨特斯拉，是非陶阿姨](https://www.ximalaya.com/sound/408777823)<!--g:https://aod.cos.tx.xmcdn.com/storages/b337-audiofreehighqps/D9/EC/CKwRIDoEWUuAAOehGACiVSBC.m4a--> | — |
+| — | 2021-04-24 | 31m15s | [Solo \| 爱恨特斯拉，是非陶阿姨](https://www.ximalaya.com/sound/408777823)<!--g:https://aod.cos.tx.xmcdn.com/storages/9e32-audiofreehighqps/8E/EF/CKwRIDoEWUsgABAAAACiVQXH.mp3--> | — |
 | — | 2021-04-18 | 32m03s | [Solo \| 年轻人不生，它们急了，它们急了](https://www.ximalaya.com/sound/406808160)<!--g:https://aod.cos.tx.xmcdn.com/storages/bb37-audiofreehighqps/1A/60/CKwRIDoEUYceAO2rXgCf5JUc.m4a--> | — |
-| — | 2021-04-11 | 28m55s | [Solo \| 理想的过去，现在和将来](https://www.ximalaya.com/sound/404395624)<!--g:https://aod.cos.tx.xmcdn.com/storages/ec56-audiofreehighqps/74/FB/CKwRIaIESCVrANZuuQCdGL0F.m4a--> | — |
+| — | 2021-04-11 | 28m55s | [Solo \| 理想的过去，现在和将来](https://www.ximalaya.com/sound/404395624)<!--g:https://aod.cos.tx.xmcdn.com/storages/8f98-audiofreehighqps/CA/CB/CKwRIDoESCTfABAAAACdGJB9.mp3--> | — |
 | — | 2021-04-10 | 21m55s | [Solo｜阿里巴巴，忘掉基业长青吧](https://www.ximalaya.com/sound/404211189)<!--g:https://aod.cos.tx.xmcdn.com/storages/fa05-audiofreehighqps/20/0D/CKwRIMAER1DRAKJ7HwCc6XV6.m4a--> | — |
 | — | 2021-03-22 | 26m22s | [对谈05 \| 吉利如何失去了自主品牌的C位](https://www.ximalaya.com/sound/397905332)<!--g:https://aod.cos.tx.xmcdn.com/storages/f8a5-audiofreehighqps/22/C7/CKwRIJEELmYSAMOFTgCVeTVr.m4a--> | — |
 | — | 2021-03-21 | 28m54s | [对谈04 \| 80后家中的第一辆车](https://www.ximalaya.com/sound/397520965)<!--g:https://aod.cos.tx.xmcdn.com/storages/2a56-audiofreehighqps/53/BA/CKwRIW4ELQjOANY-RQCU_XW5.m4a--> | — |
-| — | 2021-03-20 | 27m02s | [Solo \| 小米造车的“天时、地利、人和”](https://www.ximalaya.com/sound/397237944)<!--g:https://aod.cos.tx.xmcdn.com/storages/e92c-audiofreehighqps/1D/75/CKwRIDoEK-QsAMhhDwCUvE6N.m4a--> | — |
+| — | 2021-03-20 | 27m02s | [Solo \| 小米造车的“天时、地利、人和”](https://www.ximalaya.com/sound/397237944)<!--g:https://aod.cos.tx.xmcdn.com/storages/bf6c-audiofreehighqps/70/00/CKwRIJEEK-POABAAAACUvEQ_.mp3--> | — |
 | — | 2021-03-20 | 28m20s | [对谈03 \| 范志毅！How dare you？](https://www.ximalaya.com/sound/397155769)<!--g:https://aod.cos.tx.xmcdn.com/storages/0db0-audiofreehighqps/F4/9D/CKwRIaIEK7UJANIOUACUqg68-aacv2-48K.m4a--> | — |
 | — | 2021-02-08 | 29m31s | [对谈02 \| Clubhouse和声音的故事](https://www.ximalaya.com/sound/384166017)<!--g:https://aod.cos.tx.xmcdn.com/storages/caa1-audiofreehighqps/C8/EC/CKwRINsD9taEABAAAACFlTWF.mp3--> | — |
-| — | 2021-01-25 | 36m43s | [Solo \| 称赞张小龙时我并不开心](https://www.ximalaya.com/sound/378470824)<!--g:https://aod.cos.tx.xmcdn.com/storages/dcd4-audiofreehighqps/23/E1/CMCoOSID5BNeARA2SQB_fVhC.m4a--> | — |
+| — | 2021-01-25 | 36m43s | [Solo \| 称赞张小龙时我并不开心](https://www.ximalaya.com/sound/378470824)<!--g:https://aod.cos.tx.xmcdn.com/storages/d3dd-audiofreehighqps/42/98/CKwRIJED5BJiABAAAAB_fPu-.mp3--> | — |
 | — | 2021-01-22 | 22m40s | [Solo \| 疫情过后，这个世界会好吗？](https://www.ximalaya.com/sound/377426151)<!--g:https://aod.cos.tx.xmcdn.com/storages/3e29-audiofreehighqps/01/8C/CKwRIJED4E62ABAAAAB-hN1-.mp3--> | — |
 | — | 2021-01-06 | 19m33s | [Solo \| 中国没有特斯拉](https://www.ximalaya.com/sound/372099189)<!--g:https://aod.cos.tx.xmcdn.com/storages/f38e-audiofreehighqps/49/EC/CMCoOR8DyydoAJEFNQB4w96b-aacv2-48K.m4a--> | — |
 | — | 2020-12-27 | 56m37s | [Vol.18 \| 钱塘江边，西子湖畔，谈谈阿里](https://www.ximalaya.com/sound/369026879)<!--g:https://aod.cos.tx.xmcdn.com/storages/5531-audiofreehighqps/C4/13/CMCoOR4DvcMPAaO1nAB1UhKj.m4a--> | — |
@@ -156,7 +156,7 @@
 | — | 2020-06-08 | 21m03s | [Solo \| 摆摊经济学](https://www.ximalaya.com/sound/305474437)<!--g:https://aod.cos.tx.xmcdn.com/group83/M03/2C/5B/wKg5HV7eGlrylg0rAJweoxS6iXg628.m4a--> | — |
 | — | 2020-06-03 | 21m15s | [复工日记14 \| 当黑人遭遇美国的“国运”和“国本”](https://www.ximalaya.com/sound/303775158)<!--g:https://aod.cos.tx.xmcdn.com/group80/M0A/59/1E/wKgPEV7Xg2qzBZqcAwqauKs5T1I437.mp3--> | — |
 | — | 2020-06-02 | 20m39s | [复工日记13 \| 月收入1000多元的中国人](https://www.ximalaya.com/sound/303390037)<!--g:https://aod.cos.tx.xmcdn.com/group81/M09/43/74/wKgPEl7WAiuDavX-AvTSeAOC18k458.mp3--> | — |
-| — | 2020-05-19 | 19m24s | [复工日记11 \| 腾讯又要背水一战了？](https://www.ximalaya.com/sound/298543370)<!--g:https://aod.cos.tx.xmcdn.com/group80/M01/9E/94/wKgPDF7EBHmSHvV8AI_lZx7emN4277.m4a--> | — |
+| — | 2020-05-19 | 19m24s | [复工日记11 \| 腾讯又要背水一战了？](https://www.ximalaya.com/sound/298543370)<!--g:https://aod.cos.tx.xmcdn.com/group79/M03/A9/11/wKgPEF7EBGWBOlKSAR0tcisHchE760.mp3--> | — |
 | — | 2020-05-18 | 22m08s | [复工日记10 \| 华为的真相](https://www.ximalaya.com/sound/297794881)<!--g:https://aod.cos.tx.xmcdn.com/group79/M06/69/91/wKgPC17B86iiC1GQAKQcKe1Bz1Y633.m4a--> | — |
 | — | 2020-05-18 | 20m54s | [复工日记09 \| “后浪”的女权](https://www.ximalaya.com/sound/297790285)<!--g:https://aod.cos.tx.xmcdn.com/group80/M08/65/4C/wKgPEV7B78TCYqkhATMxV4eMcDE421.mp3--> | — |
 | — | 2020-05-06 | 27m34s | [复工日记07 \| 后浪与入关学](https://www.ximalaya.com/sound/292975230)<!--g:https://aod.cos.tx.xmcdn.com/group80/M02/CE/C0/wKgPEV6ytEzDDvX0AZTaKOAlP2M758.mp3--> | — |

@@ -1,11 +1,13 @@
 # 声动早咖啡 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/q88qwmydeuw8>）｜ 最近拉取：2026-09-28 ｜ 总集数：1062
+> 来源：官方 RSS（<https://feed.xyzfm.space/q88qwmydeuw8>）｜ 最近拉取：2026-10-01 ｜ 总集数：1064
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
 | 22 | 2025-07-01 | 12m33s | [22.8 元袋装冰块进驻山姆，农夫山泉为何也盯上冰块生意？](https://www.xiaoyuzhoufm.com/episode/6863f40393fd2d72b80338a6?utm_source=rss)<!--g:6863f40393fd2d72b80338a6--> | — |
+| — | 2026-09-29 | 18m20s | [索道赚钱能力堪比茅台，山岳景区为何还在为增长发愁？](https://www.xiaoyuzhoufm.com/episode/6abbc141e742e36efcbcc703?utm_source=rss)<!--g:6abbc141e742e36efcbcc703--> | — |
+| — | 2026-09-28 | 10m48s | [京东开出购物中心，蔚来与吉利推进充电换电合作](https://www.xiaoyuzhoufm.com/episode/6aba6cace742e36efcbc4bc4?utm_source=rss)<!--g:6aba6cace742e36efcbc4bc4--> | — |
 | — | 2026-09-27 | 15m02s | [昂跑签下姆巴佩之后，跑鞋品牌做足球生意还有哪些难题？](https://www.xiaoyuzhoufm.com/episode/6ab92bc2e742e36efcbbd61e?utm_source=rss)<!--g:6ab92bc2e742e36efcbbd61e--> | — |
 | — | 2026-09-23 | 11m53s | [月饼市场持续降温，豆包缩减对话业务团队](https://www.xiaoyuzhoufm.com/episode/6ab3cb0f93d5eb3bdc79dbf0?utm_source=rss)<!--g:6ab3cb0f93d5eb3bdc79dbf0--> | — |
 | — | 2026-09-22 | 16m22s | [一辆「小电驴」卖到三四千元，小牛、九号如何实现电动两轮车高端化？](https://www.xiaoyuzhoufm.com/episode/6ab2833093d5eb3bdc795f6f?utm_source=rss)<!--g:6ab2833093d5eb3bdc795f6f--> | — |
