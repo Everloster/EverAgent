@@ -1,10 +1,11 @@
 # 卫诗婕｜漫谈Light the Star — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/4jjdlpq3khc9>）｜ 最近拉取：2026-09-28 ｜ 总集数：89
+> 来源：官方 RSS（<https://feed.xyzfm.space/4jjdlpq3khc9>）｜ 最近拉取：2026-10-01 ｜ 总集数：90
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| 90 | 2026-09-29 | 1h26m | [90.人形机器人为什么执着于运动会？｜与天工熊友军的访谈](https://www.xiaoyuzhoufm.com/episode/6aba6ee6195d838e2aeb3367?utm_source=rss)<!--g:6aba6ee6195d838e2aeb3367--> | — |
 | 89 | 2026-09-23 | 1h15m | [89.当 AI 进入组织，那些「从没人说过的真相」｜与网易阮良聊 AI Native 与企业 Agent 实战](https://www.xiaoyuzhoufm.com/episode/6ab23423f04646b3a955631f?utm_source=rss)<!--g:6ab23423f04646b3a955631f--> | — |
 | 88 | 2026-09-16 | 2h29m | [88.在新加坡，与祥峰郑俊聪的访谈：硬科技，下一代 Long China 与华人创新的信心史](https://www.xiaoyuzhoufm.com/episode/6aa96825051af796b9e8bec1?utm_source=rss)<!--g:6aa96825051af796b9e8bec1--> | — |
 | 87 | 2026-09-12 | 2h06m | [87.蓝色光标 x AhaCreator官宣后首次访谈：营销巨头、AI 原生，与出海增长进行时](https://www.xiaoyuzhoufm.com/episode/6aa3c67d492687f6aad866a4?utm_source=rss)<!--g:6aa3c67d492687f6aad866a4--> | — |

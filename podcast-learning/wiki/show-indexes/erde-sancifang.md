@@ -1,6 +1,6 @@
 # 二的三次方 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/8mwdbxbr4kck>）｜ 最近拉取：2026-09-28 ｜ 总集数：163
+> 来源：官方 RSS（<https://feed.xyzfm.space/8mwdbxbr4kck>）｜ 最近拉取：2026-10-01 ｜ 总集数：162
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
@@ -18,7 +18,6 @@
 | — | 2026-07-16 | 1h52m | [vol:149 辩论赛场真奇妙，咱和席瑞聊内耗](https://www.xiaoyuzhoufm.com/episode/6a58c0f7a4972c496dfcdc8c?utm_source=rss)<!--g:6a58c0f7a4972c496dfcdc8c--> | — |
 | — | 2026-07-09 | 1h56m | [vol:148 今天我们厉害了，松天硕刘旸尚九熙带我们见大世面了！](https://www.xiaoyuzhoufm.com/episode/6a4f73ee4adef2b36561574b?utm_source=rss)<!--g:6a4f73ee4adef2b36561574b--> | — |
 | — | 2026-07-02 | 1h37m | [vol:147 “大夫，我dna怎么就一条？”“哦，你掉链子了！”](https://www.xiaoyuzhoufm.com/episode/6a464fed2e335a35a80d0eb9?utm_source=rss)<!--g:6a464fed2e335a35a80d0eb9--> | — |
-| — | 2026-06-18 | 1h14m | [vol:146 人最多的一期！八嘴八舌聊聊网络，不懂ai日子照过！](https://www.xiaoyuzhoufm.com/episode/6a3390d94233e62bc54be009?utm_source=rss)<!--g:6a3390d94233e62bc54be009--> | — |
 | — | 2026-06-11 | 1h18m | [vol:145 人生在世谁不贪？好事我全要，坏事我不沾！](https://www.xiaoyuzhoufm.com/episode/6a2a3a41dbccffcfa9c72d68?utm_source=rss)<!--g:6a2a3a41dbccffcfa9c72d68--> | — |
 | — | 2026-06-04 | 1h18m | [vol:144 学会这些套路规则，让你秒变社交魅魔](https://www.xiaoyuzhoufm.com/episode/6a214d7fb30e1571aea09f43?utm_source=rss)<!--g:6a214d7fb30e1571aea09f43--> | — |
 | — | 2026-05-28 | 1h07m | [vol:143 全部发散！不定主题随机聊天，Adhd福音！](https://www.xiaoyuzhoufm.com/episode/6a181ca57460cabdeb575088?utm_source=rss)<!--g:6a181ca57460cabdeb575088--> | — |

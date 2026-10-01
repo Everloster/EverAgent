@@ -1,10 +1,11 @@
 # 赛博对话 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/v99nfxe349ny>）｜ 最近拉取：2026-09-28 ｜ 总集数：57
+> 来源：官方 RSS（<https://feed.xyzfm.space/v99nfxe349ny>）｜ 最近拉取：2026-10-01 ｜ 总集数：58
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-09-28 | 1h17m | [vol.58｜第一代苹果折叠屏手机，买还是等？｜刘飞X李楠X米罗](https://www.xiaoyuzhoufm.com/episode/6aba499d195d838e2aeb22d8?utm_source=rss)<!--g:6aba499d195d838e2aeb22d8--> | — |
 | — | 2026-09-22 | 1h57m | [vol.57｜AI、艺术与航天：外滩大会上的三个未来信号](https://www.xiaoyuzhoufm.com/episode/6ab203b5f04646b3a955478d?utm_source=rss)<!--g:6ab203b5f04646b3a955478d--> | — |
 | — | 2026-09-15 | 1h08m | [vol.56｜AI二创如何撬动50亿流量？当AI杀进片场，电影还需要"人"吗｜刘飞对话谭飞、叶福生](https://www.xiaoyuzhoufm.com/episode/6aa932729d3264778169982d?utm_source=rss)<!--g:6aa932729d3264778169982d--> | — |
 | — | 2026-09-02 | 54m46s | [vol.55｜Robotaxi：当无人驾驶从科幻走向日常｜对话小马智行创始人彭军](https://www.xiaoyuzhoufm.com/episode/6a969c29f03e74ee6b034a57?utm_source=rss)<!--g:6a969c29f03e74ee6b034a57--> | — |
