@@ -70,6 +70,7 @@
 - [[2026-09-17_rss-kedaibiao-lizheng_jinjing|一个人指挥 400 个 AI：Orca 津晶的多 agent 编排实操（ADE vs Harness）]]（episode_summary · 2026-09-17）— 课代表立正对话 319，1h06m，ADE/harness 分层 / 400 任务三层法 / 4 人日产百 PR；首轮转写循环幻觉 89.5%、`-mc 0` 修复的标志性案例
 - [[2026-09-16_xiaoyuzhou-cihua-dangzhen_zhangtuoken|用 AI 三天设计一颗芯片后，一位清华博士决定「开卷」]]（episode_summary · 2026-09-16）— 此话当真对话张托肯，46m48s，芯片开卷计划 / 三天流片 / 渗透率 80-90% / 模型能力>Harness / agent 驾驶员
 - [[2026-09-14_ximalaya-ailianjinshu_chenbin|把一家 12 年的硬件公司重写成 AI 原生组织]]（episode_summary · 2026-09-14）— AI炼金术×鹿客陈彬，1h07m，从 1 到 0 / HARO / 圈子制 / FDE 蒸馏恐惧；与曾鸣 153 期=预言×实验、与张帆 FDE 批判=正反方
+- [[2026-09-23_ximalaya-ailianjinshu_luyang|GEO 是量化交易不是 SEO：把 prompt 当货架空间]]（episode_summary · 2026-09-23）— AI炼金术×PureblueAI 鲁扬，1h05m，SEO/GEO=两个物种 / 用模型学模型+量化挖因子 / AI 可解释性 / AI 消费闭环（豆包酒旅抽佣 8-12 点）/ 意图电商+prompt 货架 / 科学 GEO 八环节；与陈彬期=AI 原生企业内外两面、与 ai-trading=机器打机器同构
 
 ### AI Infra / 推理芯片
 
@@ -175,6 +176,10 @@
 - [[entities/hu-xiuhan|胡修涵]] — 捏Ta 创始人；北大→哥大→Meta→特赞 CTO；系统论者；创作即消费 / 双边vs多边 / 冷启动纪律 / 第二世界教堂论
 - [[entities/nieta|捏Ta]] — AI 原创角色社区（1200 万用户/600 万角色）；反 AIGC 押 AIUGC；fork 机制；场先于角色建厚
 
+### 来自 2026-09-23 AI炼金术（GEO 期）
+
+- [[entities/luyang|鲁扬]] — 清蓝（PureblueAI）创始人；前火山引擎市场总经理/豆包大模型市场负责人；国内第一批 GEO 服务商；"用一个模型学习一个模型" / "一个 prompt 就是一个货架" / 同频论
+
 ## Concepts（核心概念）
 
 ### 来自 Vol.29 王小川系列
@@ -276,4 +281,8 @@
 - [[concepts/inference-bandwidth|训练看算力，推理看带宽]] — decode 每 token 读全模型权重；SRAM 收敛与三路径折扣；CUDA 一定会被绕过
 - [[concepts/chip-open-plan|芯片开卷计划]] — 0→60/80 分内容开卷+AI 加速；封闭世界的胜利（数字芯片渗透率 80-90%）
 
-*Last updated: 2026-09-28*
+### 来自 2026-09-23 AI炼金术（GEO 期）
+
+- [[concepts/geo|GEO（生成引擎优化）]] — 与 SEO=物种级差异（规则物 vs 黑盒物）；AI 可解释性+因子挖掘；意图电商与 prompt 货架；科学 GEO 八环节与月均验证
+
+*Last updated: 2026-10-02*
