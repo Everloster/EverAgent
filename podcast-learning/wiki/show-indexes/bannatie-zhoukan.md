@@ -5,7 +5,7 @@
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
-| — | 2026-09-22 | 1h38m | [No.50 内容刷量灌水、便利店员工吃亏、电玩城连锁清退、钟薛高再次回归、豆包手机争位、家长信息合规](https://www.xiaoyuzhoufm.com/episode/6ab0ce5bf04646b3a954cee7?utm_source=rss)<!--g:6ab0ce5bf04646b3a954cee7--> | — |
+| — | 2026-09-22 | 1h38m | [No.50 内容刷量灌水、便利店员工吃亏、电玩城连锁清退、钟薛高再次回归、豆包手机争位、家长信息合规](https://www.xiaoyuzhoufm.com/episode/6ab0ce5bf04646b3a954cee7?utm_source=rss)<!--g:6ab0ce5bf04646b3a954cee7--> | ✅ |
 | — | 2026-09-15 | 1h33m | [No.49 AI 短剧狂卷、校招生被退劝、打假网红关八年、苹果折叠开卷、锁屏广告惹嫌、免陪照护补员](https://www.xiaoyuzhoufm.com/episode/6aa8ccca9d32647781695670?utm_source=rss)<!--g:6aa8ccca9d32647781695670--> | — |
 | — | 2026-09-01 | 1h43m | [No.48 安踏已经变芯、两根铁轨变金、光模块利润狂奔、芯片十年翻身、家具盛景退温、地方罚没加深、血糖焦虑入侵](https://www.xiaoyuzhoufm.com/episode/6a965369f03e74ee6b031619?utm_source=rss)<!--g:6a965369f03e74ee6b031619--> | — |
 | — | 2026-08-31 | 19m26s | [番外 3.【📍珠峰】把艺术片当金融产品，诺兰的商业帝国是怎么建成的](https://www.xiaoyuzhoufm.com/episode/6a957846a0210c197dcb255d?utm_source=rss)<!--g:6a957846a0210c197dcb255d--> | — |
