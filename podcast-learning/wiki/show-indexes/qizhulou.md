@@ -1,11 +1,11 @@
 # 起朱楼宴宾客 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/ahng8d9qlywl>）｜ 最近拉取：2026-10-01 ｜ 总集数：179
+> 来源：官方 RSS（<https://feed.xyzfm.space/ahng8d9qlywl>）｜ 最近拉取：2026-10-04 ｜ 总集数：179
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
-| 184 | 2026-09-28 | 1h40m | [184.为了在算法时代被“听见”，我们改变了多少自己？\| 对谈「声东击西」张晶](https://www.xiaoyuzhoufm.com/episode/6ab9fc20e742e36efcbc12c2?utm_source=rss)<!--g:6ab9fc20e742e36efcbc12c2--> | — |
+| 183 | 2026-09-28 | 1h40m | [183.为了在算法时代被“听见”，我们改变了多少自己？\| 对谈「声东击西」张晶](https://www.xiaoyuzhoufm.com/episode/6ab9fc20e742e36efcbc12c2?utm_source=rss)<!--g:6ab9fc20e742e36efcbc12c2--> | — |
 | 182 | 2026-09-14 | 1h39m | [182.全球宏观和资本市场2026三季度复盘与展望：多重囚徒困境](https://www.xiaoyuzhoufm.com/episode/6aa7f2e6129fe965d3326f40?utm_source=rss)<!--g:6aa7f2e6129fe965d3326f40--> | ✅ |
 | 181 | 2026-09-08 | 1h17m | [181.这轮规模空前的中国制造业出海背后｜线下活动实录](https://www.xiaoyuzhoufm.com/episode/6a9ecfa7a0210c197dcf0d4e?utm_source=rss)<!--g:6a9ecfa7a0210c197dcf0d4e--> | — |
 | 180 | 2026-09-03 | 1h37m | [180.当一个把所有钱都放活期存款的理财恐惧者开始考虑资产配置｜串台日谈公园](https://www.xiaoyuzhoufm.com/episode/6a984590f03e74ee6b041871?utm_source=rss)<!--g:6a984590f03e74ee6b041871--> | — |

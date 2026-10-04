@@ -21,6 +21,7 @@
 - [[2026-09-15_xiaoyuzhou-tulong-zhishu_next-act|智能的下一幕：庄明浩 73 页 PPT 2026Q3 复盘]]（episode_summary · 2026-09-15）— 屠龙之术单口，55m21s，模型狂奔（制造业化/benchmark 失效）/ 智能分化（Own Your Intelligence）/ 循环自生（Loop·RSI 共识）/ 界面重构（App Store 十年首降）
 - [[2026-09-14_xiaoyuzhou-qizhulou_2026q3-macro|多重囚徒困境：2026Q3 全球宏观复盘]]（episode_summary · 2026-09-14）— 起朱楼宴宾客×Ricky，1h39m，债券融资时代 / AI 通胀其他通缩 / 囚徒困境三层嵌套 / 资金挤兑时间表 / Q4 排序（黄金>A股>美股>H股）
 - [[2026-09-02_rss-wandian-latetalk_embodied-money|具身智能的金钱游戏：进展难测、收入催熟与 IPO 竞速]]（episode_summary · 2026-09-02）— 晚点聊 180，1h02m，数采中心闭环 / 互为供应商客户 / Club Deal / 8000 台真实销量 / 数据 Scaling 验证时间表
+- [[2026-10-02_rss-wandian-latetalk_ai-quarterly-26q3|AI 季报 26Q3：个人助理爆发、千禧年难题、1200 个 agent 冲破隔离]]（episode_summary · 2026-10-02）— 晚点聊 183×Henry，2h07m，Dots/Muse/Instinct / NS 方程 / ExploitGym 事件 / ARR 反超 / RSI 两路线 / 成本暴跌 22 倍 / Jev
 
 ### AI Infra / 开源商业化
 
@@ -68,6 +69,7 @@
 
 - [[2026-09-09_xiaoyuzhou-yilun-ai_frontier-no-llm|易论AI Vol.1：AI最前沿的人已经不聊大模型了]]（episode_summary · 2026-09-09）— 李继刚×橘子×歸藏×易亚婷四人谈，93min，服务裹着能力 / 齿轮速度差 / Agent+X / 上下文是一辆车 / 缓存经济学；补登索引（本期 ingest 时遗漏）
 - [[2026-09-17_rss-kedaibiao-lizheng_jinjing|一个人指挥 400 个 AI：Orca 津晶的多 agent 编排实操（ADE vs Harness）]]（episode_summary · 2026-09-17）— 课代表立正对话 319，1h06m，ADE/harness 分层 / 400 任务三层法 / 4 人日产百 PR；首轮转写循环幻觉 89.5%、`-mc 0` 修复的标志性案例
+- [[2026-09-24_rss-kedaibiao-lizheng_ai-hype-jev|如何炒作一个 AI 概念？以 Jev 为例]]（episode_summary · 2026-09-24）— 课代表立正单口，19m16s，五步判断法 / hype 三成因 / Skill 能否取代 MCP 的张力
 - [[2026-09-16_xiaoyuzhou-cihua-dangzhen_zhangtuoken|用 AI 三天设计一颗芯片后，一位清华博士决定「开卷」]]（episode_summary · 2026-09-16）— 此话当真对话张托肯，46m48s，芯片开卷计划 / 三天流片 / 渗透率 80-90% / 模型能力>Harness / agent 驾驶员
 - [[2026-09-14_ximalaya-ailianjinshu_chenbin|把一家 12 年的硬件公司重写成 AI 原生组织]]（episode_summary · 2026-09-14）— AI炼金术×鹿客陈彬，1h07m，从 1 到 0 / HARO / 圈子制 / FDE 蒸馏恐惧；与曾鸣 153 期=预言×实验、与张帆 FDE 批判=正反方
 - [[2026-09-23_ximalaya-ailianjinshu_luyang|GEO 是量化交易不是 SEO：把 prompt 当货架空间]]（episode_summary · 2026-09-23）— AI炼金术×PureblueAI 鲁扬，1h05m，SEO/GEO=两个物种 / 用模型学模型+量化挖因子 / AI 可解释性 / AI 消费闭环（豆包酒旅抽佣 8-12 点）/ 意图电商+prompt 货架 / 科学 GEO 八环节；与陈彬期=AI 原生企业内外两面、与 ai-trading=机器打机器同构

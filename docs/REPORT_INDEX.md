@@ -7,6 +7,9 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-10-04 | [如何炒作一个 AI 概念？以 Jev 为例——孙煜征的五步判断法](../podcast-learning/reports/2026-09-24_rss-kedaibiao-lizheng_ai-hype-jev.md) | podcast-learning |
+| 2026-10-04 | [AI 季报 26Q3：个人助理爆发、千禧年难题被攻破、1200 个 agent 冲破隔离](../podcast-learning/reports/2026-10-02_rss-wandian-latetalk_ai-quarterly-26q3.md) | podcast-learning |
+| 2026-10-01 | [决策便宜，行动很贵：Vibe-Trading 作者浩哲谈 AI Trading 的通道、闸门与人的位置](../podcast-learning/reports/2026-09-27_xiaoyuzhou-42zhangjing_wuhaozhe.md) | podcast-learning |
 | 2026-10-01 | [具身智能的金钱游戏：进展难测、收入催熟与 IPO 竞速](../podcast-learning/reports/2026-09-02_rss-wandian-latetalk_embodied-money.md) | podcast-learning |
 | 2026-10-01 | [AI 行业日报 · 2026-10-01](../web-surfing/reports/ai-news-daily-2026-10-01.md) | web-surfing |
 | 2026-09-30 | [字节级蒸馏突破 Token 天花板：Marginalize-It 与 End-Of-Token 的技术全景与批判性评估](../ai-learning/reports/paper_analyses/47_byte_distillation_2026.md) | ai-learning |
@@ -29,9 +32,6 @@
 | 2026-09-22 | [格罗滕迪克「涨潮」思想 — 让难题消失的升维方法研究](../ai-learning/reports/knowledge_reports/格罗滕迪克涨潮思想_让难题消失的升维方法研究_20260922.md) | ai-learning |
 | 2026-09-22 | [智能的下一幕：庄明浩 73 页 PPT 的 2026Q3 行业复盘（模型狂奔/智能分化/循环自生/界面重构）](../podcast-learning/reports/2026-09-15_xiaoyuzhou-tulong-zhishu_next-act.md) | podcast-learning |
 | 2026-09-22 | [推理芯片之战：训练看算力、推理看带宽——Groq、Cerebras、OpenAI 三条路径与 Bill Dally 的设计哲学](../podcast-learning/reports/2026-09-15_rss-guigu101_e251-inference-chips.md) | podcast-learning |
-| 2026-09-22 | [一个人指挥 400 个 AI：Orca 津晶的多 agent 编排实操（ADE vs Harness）](../podcast-learning/reports/2026-09-17_rss-kedaibiao-lizheng_jinjing.md) | podcast-learning |
-| 2026-09-22 | [「我看到了 Scaling Law 的信号」：徐梦迪谈具身智能、世界模型与真正的泛化](../podcast-learning/reports/2026-09-20_xiaoyuzhou-crossing_xumengdi.md) | podcast-learning |
-| 2026-09-22 | [Laya：把「反射性决策」从 LLM 里拆出来——421M 非自回归 System 1 决策模型解析与本机实测](../ai-learning/reports/knowledge_reports/Laya_System1决策模型_深度解析_20260922.md) | ai-learning |
 
 ## 🤖 AI Learning（109 篇）
 
@@ -257,10 +257,13 @@
 | 2026-03-26 | [Physiology of Growth Hormone Secretion during Sleep (1996) 精读](../biology-learning/reports/paper_analyses/P09_gh_sleep_physiology_1996.md) | — |
 | 2026-03-23 | [晚型人作息与力量训练深度研究](../biology-learning/reports/concept_reports/晚型人作息与力量训练_深度研究报告.md) | — |
 
-## 🎙️ Podcast Learning（42 篇）
+## 🎙️ Podcast Learning（45 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-10-04 | [如何炒作一个 AI 概念？以 Jev 为例——孙煜征的五步判断法](../podcast-learning/reports/2026-09-24_rss-kedaibiao-lizheng_ai-hype-jev.md) | — |
+| 2026-10-04 | [AI 季报 26Q3：个人助理爆发、千禧年难题被攻破、1200 个 agent 冲破隔离](../podcast-learning/reports/2026-10-02_rss-wandian-latetalk_ai-quarterly-26q3.md) | — |
+| 2026-10-01 | [决策便宜，行动很贵：Vibe-Trading 作者浩哲谈 AI Trading 的通道、闸门与人的位置](../podcast-learning/reports/2026-09-27_xiaoyuzhou-42zhangjing_wuhaozhe.md) | — |
 | 2026-10-01 | [具身智能的金钱游戏：进展难测、收入催熟与 IPO 竞速](../podcast-learning/reports/2026-09-02_rss-wandian-latetalk_embodied-money.md) | — |
 | 2026-09-28 | [易论AI×捏Ta胡修涵：被AI淘汰的人才是AI最大的市场（创作即消费/双边vs多边/迪士尼不是乐园是上下文/AI内容四象限）](../podcast-learning/reports/2026-09-18_bilibili-yilun-ai_huxiuhan.md) | — |
 | 2026-09-27 | [孩子成绩差，真的是因为「不是学习的料」吗？——对谈脑科学专家黄翔](../podcast-learning/reports/2026-07-04_bilibili-kema_huangxiang-brain.md) | — |

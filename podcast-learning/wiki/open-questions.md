@@ -277,3 +277,4 @@
   - 来源：[[2026-09-22_xiaoyuzhou-bannatie-zhoukan_no50-weekly-news]] 思考与追问·问 1
 - **SAEP 会不会重演 robots 协议的命运**：robots 靠自律、被 3B 大战打破后靠判例补位；SAEP 有系统层强制力但只活在一台 Nubia 里。判别性预测（窗口期 2027 下半年收窄论）：各厂商系统内建等价控制点并强制 App 声明 → SAEP 上升为事实行业标准（苹果/谷歌的等价物是什么？）；各厂商直接用自家助手+私有接口 → SAEP 退化为豆包手机出厂设置。与 [[concepts/ai-trading]] 的「Harness 在谁手里」同构：手机场景 Harness 在厂商手里。
   - 来源：同上 问 3；实体页 [[concepts/ai-phone-scheduling]]
+||||||| parent of 44e9072 ([podcast-learning] 两期：课代表215 Jev 炒作五步法 + 晚点聊183 AI 季报 26Q3)

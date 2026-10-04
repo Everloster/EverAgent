@@ -1,10 +1,11 @@
 # 晚点聊 LateTalk — 全量单集索引
 
-> 来源：官方 RSS（<https://podcast.latepost.com/rss>）｜ 最近拉取：2026-10-01 ｜ 总集数：181
+> 来源：官方 RSS（<https://podcast.latepost.com/rss>）｜ 最近拉取：2026-10-04 ｜ 总集数：182
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-10-02 | 2h07m | [183: 与Henry的「AI季报26Q3」：Muse引爆个人助理、Astra进入机器人、OpenAI收入猛增](https://podcast.latepost.com/183)<!--g:47e78c2f-c36f-4894-9124-dad5dcffc972--> | ✅ |
 | — | 2026-09-24 | 3h22m | [182: 对话梁琛奇：抖音、猫箱、创业，「他们都搞生产力，我想用 AI 创造开心」](https://podcast.latepost.com/182)<!--g:63e76d1a-c5bb-4103-8ef4-e235917367c6--> | — |
 | — | 2026-09-02 | 1h02m | [180: 具身智能的金钱游戏：进展难测、收入催熟与 IPO 竞速](https://podcast.latepost.com/180)<!--g:68e222fe-2a2e-43ee-811a-dfdb445a9deb--> | ✅ |
 | — | 2026-08-17 | 49m33s | [179: 蒸馏风暴：一场无人公开谈论的技术竞赛](https://podcast.latepost.com/179)<!--g:da707393-af0f-4607-9712-93f469508667--> | — |
@@ -72,8 +73,8 @@
 | — | 2025-05-21 | 2h06m | [117: 印奇的AI创业14年：所有不能闭环的辉煌都是暂时的](https://podcast.latepost.com/117)<!--g:3aeec51d-7351-4d6f-9b03-e5c70df37908--> | — |
 | — | 2025-05-17 | 1h39m | [116: 当AI研究者写科幻，与Meta田渊栋聊他的智能想象：我们终会“所思即所得”](https://podcast.latepost.com/116)<!--g:083c4758-47a0-4c5a-b98b-4fd3b5b1723b--> | — |
 | — | 2025-05-12 | 1h28m | [115: 华为发布超节点，如何搅动AI算力市场？与魔形智能徐凌杰聊芯片层新变化](https://podcast.latepost.com/115)<!--g:92f4fb5a-6ac6-449b-b4b9-296f04af9a96--> | — |
-| — | 2025-05-06 | 2h01m | [114: 秘塔闵可锐2：“我不是演员”](https://podcast.latepost.com/114)<!--g:a600c2c2-ae39-4ac0-98d5-2948a7443b55--> | — |
 | — | 2025-05-06 | 1h56m | [113: 秘塔闵可锐1：回到故事开始，那些「神预言」](https://podcast.latepost.com/113)<!--g:76d67192-d59c-4d6b-8069-139b0b5008ec--> | — |
+| — | 2025-05-06 | 2h01m | [114: 秘塔闵可锐2：“我不是演员”](https://podcast.latepost.com/114)<!--g:a600c2c2-ae39-4ac0-98d5-2948a7443b55--> | — |
 | — | 2025-04-29 | 1h22m | [112: 与千寻高阳聊具身：一个像机器人的人，怎么做像人的机器人](https://podcast.latepost.com/112)<!--g:a4f8ae7c-c10b-4d45-a447-e5f5f111f09a--> | — |
 | — | 2025-04-23 | 1h34m | [111: Pokee.ai 朱哲清的 Agent 造法：强化学习作后端，语言模型作前端\|Agent#3](https://podcast.latepost.com/111)<!--g:4c52c472-e49c-4b7c-b281-e1d47d4a1458--> | — |
 | — | 2025-04-15 | 1h40m | [110: 与明势夏令聊Agent竞争：通用入口之战就要来，创业要做垂、做专\|Agent#2](https://podcast.latepost.com/110)<!--g:a954e0ce-097d-4e34-87c3-53544858ebcf--> | — |

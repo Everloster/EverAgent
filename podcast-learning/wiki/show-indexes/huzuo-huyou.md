@@ -1,10 +1,11 @@
 # 忽左忽右 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/cv4bkgpuglwp>）｜ 最近拉取：2026-10-01 ｜ 总集数：644
+> 来源：官方 RSS（<https://feed.xyzfm.space/cv4bkgpuglwp>）｜ 最近拉取：2026-10-04 ｜ 总集数：645
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-10-02 | 1h43m | [505 茶海轶闻：与王恺漫谈中国茶的真假传说](https://www.xiaoyuzhoufm.com/episode/6abf70bee742e36efcbdbcba?utm_source=rss)<!--g:6abf70bee742e36efcbdbcba--> | — |
 | — | 2026-09-29 | 1h20m | [504 林行止、《信报》与香港经济黄金年代](https://www.xiaoyuzhoufm.com/episode/6abb74cee742e36efcbca2c3?utm_source=rss)<!--g:6abb74cee742e36efcbca2c3--> | — |
 | — | 2026-09-25 | 1h49m | [503 无锡·台北·匹兹堡：冯俊文回忆时代巨变中的历史学家许倬云](https://www.xiaoyuzhoufm.com/episode/6ab638ece742e36efcbb1e4e?utm_source=rss)<!--g:6ab638ece742e36efcbb1e4e--> | — |
 | — | 2026-09-22 | 1h03m | [502 宇宙超级工程是如何垮掉的：刘怡谈「挑战者号」事故四十周年](https://www.xiaoyuzhoufm.com/episode/6ab23bbe93d5eb3bdc793ad3?utm_source=rss)<!--g:6ab23bbe93d5eb3bdc793ad3--> | — |
