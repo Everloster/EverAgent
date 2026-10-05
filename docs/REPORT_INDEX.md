@@ -7,12 +7,17 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-10-05 | [AI 行业日报 · 2026-10-05](../web-surfing/reports/ai-news-daily-2026-10-05.md) | web-surfing |
 | 2026-10-04 | [如何炒作一个 AI 概念？以 Jev 为例——孙煜征的五步判断法](../podcast-learning/reports/2026-09-24_rss-kedaibiao-lizheng_ai-hype-jev.md) | podcast-learning |
+| 2026-10-04 | [半拿铁·周刊 No.50：刷量入刑的边界、自爆营业、大玩家清算、钟薛高降价重生、豆包手机二代与 SAEP、家长信息合规](../podcast-learning/reports/2026-09-22_xiaoyuzhou-bannatie-zhoukan_no50-weekly-news.md) | podcast-learning |
 | 2026-10-04 | [AI 季报 26Q3：个人助理爆发、千禧年难题被攻破、1200 个 agent 冲破隔离](../podcast-learning/reports/2026-10-02_rss-wandian-latetalk_ai-quarterly-26q3.md) | podcast-learning |
+| 2026-10-03 | [金瓶梅·绿色版 9《蒋竹山：从入赘开店到净身出户》：三十两假债局与 S1 收官（降级：无音频）](../podcast-learning/reports/2026-08-13_ximalaya-bannatie-gushipian_jiangzhushan.md) | podcast-learning |
+| 2026-10-02 | [GEO 是量化交易不是 SEO：PureblueAI 鲁扬谈 AI 时代的货架与流量](../podcast-learning/reports/2026-09-23_ximalaya-ailianjinshu_luyang.md) | podcast-learning |
 | 2026-10-01 | [决策便宜，行动很贵：Vibe-Trading 作者浩哲谈 AI Trading 的通道、闸门与人的位置](../podcast-learning/reports/2026-09-27_xiaoyuzhou-42zhangjing_wuhaozhe.md) | podcast-learning |
 | 2026-10-01 | [具身智能的金钱游戏：进展难测、收入催熟与 IPO 竞速](../podcast-learning/reports/2026-09-02_rss-wandian-latetalk_embodied-money.md) | podcast-learning |
 | 2026-10-01 | [AI 行业日报 · 2026-10-01](../web-surfing/reports/ai-news-daily-2026-10-01.md) | web-surfing |
 | 2026-09-30 | [字节级蒸馏突破 Token 天花板：Marginalize-It 与 End-Of-Token 的技术全景与批判性评估](../ai-learning/reports/paper_analyses/47_byte_distillation_2026.md) | ai-learning |
+| 2026-09-30 | [No.221 🥓 中国辣条江湖 — 官方 shownotes 存档](../podcast-learning/reports/transcripts/2026-09-30_xiaoyuzhou-bannatie_latiao.shownotes.md) | podcast-learning |
 | 2026-09-30 | [AI 行业日报 · 2026-09-30](../web-surfing/reports/ai-news-daily-2026-09-30.md) | web-surfing |
 | 2026-09-29 | [AI 行业日报 · 2026-09-29](../web-surfing/reports/ai-news-daily-2026-09-29.md) | web-surfing |
 | 2026-09-28 | [易论AI×捏Ta胡修涵：被AI淘汰的人才是AI最大的市场（创作即消费/双边vs多边/迪士尼不是乐园是上下文/AI内容四象限）](../podcast-learning/reports/2026-09-18_bilibili-yilun-ai_huxiuhan.md) | podcast-learning |
@@ -27,11 +32,6 @@
 | 2026-09-24 | [AI 行业日报 · 2026-09-24](../web-surfing/reports/ai-news-daily-2026-09-24.md) | web-surfing |
 | 2026-09-23 | [是个人物 EP22｜程乐松：不要牛马，不要狗屁，要什么？——日常性的哲学](../podcast-learning/reports/2026-09-11_bilibili-shigerenwu_chenglesong.md) | podcast-learning |
 | 2026-09-23 | [多重囚徒困境：全球宏观和资本市场 2026 三季度复盘与展望](../podcast-learning/reports/2026-09-14_xiaoyuzhou-qizhulou_2026q3-macro.md) | podcast-learning |
-| 2026-09-23 | [AI 行业日报 · 2026-09-23](../web-surfing/reports/ai-news-daily-2026-09-23.md) | web-surfing |
-| 2026-09-22 | [用 AI 三天设计一颗芯片后，一位清华博士决定「开卷」](../podcast-learning/reports/2026-09-16_xiaoyuzhou-cihua-dangzhen_zhangtuoken.md) | podcast-learning |
-| 2026-09-22 | [格罗滕迪克「涨潮」思想 — 让难题消失的升维方法研究](../ai-learning/reports/knowledge_reports/格罗滕迪克涨潮思想_让难题消失的升维方法研究_20260922.md) | ai-learning |
-| 2026-09-22 | [智能的下一幕：庄明浩 73 页 PPT 的 2026Q3 行业复盘（模型狂奔/智能分化/循环自生/界面重构）](../podcast-learning/reports/2026-09-15_xiaoyuzhou-tulong-zhishu_next-act.md) | podcast-learning |
-| 2026-09-22 | [推理芯片之战：训练看算力、推理看带宽——Groq、Cerebras、OpenAI 三条路径与 Bill Dally 的设计哲学](../podcast-learning/reports/2026-09-15_rss-guigu101_e251-inference-chips.md) | podcast-learning |
 
 ## 🤖 AI Learning（109 篇）
 
@@ -257,14 +257,18 @@
 | 2026-03-26 | [Physiology of Growth Hormone Secretion during Sleep (1996) 精读](../biology-learning/reports/paper_analyses/P09_gh_sleep_physiology_1996.md) | — |
 | 2026-03-23 | [晚型人作息与力量训练深度研究](../biology-learning/reports/concept_reports/晚型人作息与力量训练_深度研究报告.md) | — |
 
-## 🎙️ Podcast Learning（45 篇）
+## 🎙️ Podcast Learning（52 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
 | 2026-10-04 | [如何炒作一个 AI 概念？以 Jev 为例——孙煜征的五步判断法](../podcast-learning/reports/2026-09-24_rss-kedaibiao-lizheng_ai-hype-jev.md) | — |
+| 2026-10-04 | [半拿铁·周刊 No.50：刷量入刑的边界、自爆营业、大玩家清算、钟薛高降价重生、豆包手机二代与 SAEP、家长信息合规](../podcast-learning/reports/2026-09-22_xiaoyuzhou-bannatie-zhoukan_no50-weekly-news.md) | — |
 | 2026-10-04 | [AI 季报 26Q3：个人助理爆发、千禧年难题被攻破、1200 个 agent 冲破隔离](../podcast-learning/reports/2026-10-02_rss-wandian-latetalk_ai-quarterly-26q3.md) | — |
+| 2026-10-03 | [金瓶梅·绿色版 9《蒋竹山：从入赘开店到净身出户》：三十两假债局与 S1 收官（降级：无音频）](../podcast-learning/reports/2026-08-13_ximalaya-bannatie-gushipian_jiangzhushan.md) | — |
+| 2026-10-02 | [GEO 是量化交易不是 SEO：PureblueAI 鲁扬谈 AI 时代的货架与流量](../podcast-learning/reports/2026-09-23_ximalaya-ailianjinshu_luyang.md) | — |
 | 2026-10-01 | [决策便宜，行动很贵：Vibe-Trading 作者浩哲谈 AI Trading 的通道、闸门与人的位置](../podcast-learning/reports/2026-09-27_xiaoyuzhou-42zhangjing_wuhaozhe.md) | — |
 | 2026-10-01 | [具身智能的金钱游戏：进展难测、收入催熟与 IPO 竞速](../podcast-learning/reports/2026-09-02_rss-wandian-latetalk_embodied-money.md) | — |
+| 2026-09-30 | [No.221 🥓 中国辣条江湖 — 官方 shownotes 存档](../podcast-learning/reports/transcripts/2026-09-30_xiaoyuzhou-bannatie_latiao.shownotes.md) | — |
 | 2026-09-28 | [易论AI×捏Ta胡修涵：被AI淘汰的人才是AI最大的市场（创作即消费/双边vs多边/迪士尼不是乐园是上下文/AI内容四象限）](../podcast-learning/reports/2026-09-18_bilibili-yilun-ai_huxiuhan.md) | — |
 | 2026-09-27 | [孩子成绩差，真的是因为「不是学习的料」吗？——对谈脑科学专家黄翔](../podcast-learning/reports/2026-07-04_bilibili-kema_huangxiang-brain.md) | — |
 | 2026-09-26 | [把一家 12 年的硬件公司重写成 AI 原生组织：鹿客陈彬的「从 1 到 0」实操](../podcast-learning/reports/2026-09-14_ximalaya-ailianjinshu_chenbin.md) | — |
@@ -273,11 +277,13 @@
 | 2026-09-24 | [Vol.32 对话元理智能张帆：去他X的FDE — shownotes](../podcast-learning/reports/transcripts/2026-09-24_xiaoyuzhou-guiji-lichang_zhangfan-fde.shownotes.md) | — |
 | 2026-09-23 | [是个人物 EP22｜程乐松：不要牛马，不要狗屁，要什么？——日常性的哲学](../podcast-learning/reports/2026-09-11_bilibili-shigerenwu_chenglesong.md) | — |
 | 2026-09-23 | [多重囚徒困境：全球宏观和资本市场 2026 三季度复盘与展望](../podcast-learning/reports/2026-09-14_xiaoyuzhou-qizhulou_2026q3-macro.md) | — |
+| 2026-09-23 | [shownotes — PureblueAI 鲁扬：把 prompt 当货架空间，把 GEO 当量化交易](../podcast-learning/reports/transcripts/2026-09-23_ximalaya-ailianjinshu_luyang.shownotes.md) | — |
 | 2026-09-22 | [用 AI 三天设计一颗芯片后，一位清华博士决定「开卷」](../podcast-learning/reports/2026-09-16_xiaoyuzhou-cihua-dangzhen_zhangtuoken.md) | — |
 | 2026-09-22 | [智能的下一幕：庄明浩 73 页 PPT 的 2026Q3 行业复盘（模型狂奔/智能分化/循环自生/界面重构）](../podcast-learning/reports/2026-09-15_xiaoyuzhou-tulong-zhishu_next-act.md) | — |
 | 2026-09-22 | [推理芯片之战：训练看算力、推理看带宽——Groq、Cerebras、OpenAI 三条路径与 Bill Dally 的设计哲学](../podcast-learning/reports/2026-09-15_rss-guigu101_e251-inference-chips.md) | — |
 | 2026-09-22 | [一个人指挥 400 个 AI：Orca 津晶的多 agent 编排实操（ADE vs Harness）](../podcast-learning/reports/2026-09-17_rss-kedaibiao-lizheng_jinjing.md) | — |
 | 2026-09-22 | [「我看到了 Scaling Law 的信号」：徐梦迪谈具身智能、世界模型与真正的泛化](../podcast-learning/reports/2026-09-20_xiaoyuzhou-crossing_xumengdi.md) | — |
+| 2026-09-22 | [Shownotes — 半拿铁·周刊 No.50](../podcast-learning/reports/transcripts/2026-09-22_xiaoyuzhou-bannatie-zhoukan_no50-weekly-news.shownotes.md) | — |
 | 2026-09-15 | [所长林超《AI泡沫，2027年爆破？》：开源价格锚定、巨头 IPO 考验与七万亿债](../podcast-learning/reports/2026-07-24_bilibili-suochang-linchao_ai-bubble-2027.md) | — |
 | 2026-09-14 | [易论AI Vol.1：AI最前沿的人已经不聊大模型了——李继刚×橘子×歸藏的四人谈（服务裹着能力/齿轮速度差/Agent+X/上下文是一辆车）](../podcast-learning/reports/2026-09-09_xiaoyuzhou-yilun-ai_frontier-no-llm.md) | — |
 | 2026-09-13 | [一本书看清"工作"的真相：竹竹暴风雪解读 × 鲍曼《工作、消费主义和新穷人》原书深读](../podcast-learning/reports/2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism.md) | — |
@@ -294,6 +300,7 @@
 | 2026-08-23 | [对话盛颖：xAI，Infra的浪漫，SGLang，开源，平权与「甄嬛传」](../podcast-learning/reports/2026-08-04_rss-guigu101_shengying.md) | — |
 | 2026-08-22 | [对游凯超3小时访谈：开源Infra、和模型Co-design、「如果vLLM失败，我们会后悔一辈子」](../podcast-learning/reports/2026-07-28_xiaoyuzhou-zhangxiaojun_youkaichao.md) | — |
 | 2026-08-17 | [从「同事.skill」到「人生系统」，你害怕被蒸馏吗？ — shownotes](../podcast-learning/reports/transcripts/2026-08-17_xiaoyuzhou-cihua-dangzhen_distill.shownotes.md) | — |
+| 2026-08-13 | [shownotes — 金瓶梅·绿色版 9.蒋竹山：从入赘开店到净身出户](../podcast-learning/reports/transcripts/2026-08-13_ximalaya-bannatie-gushipian_jiangzhushan.shownotes.md) | — |
 | 2026-08-04 | [晚点聊 177 详解Kimi K3 — shownotes](../podcast-learning/reports/transcripts/2026-08-04_rss-wandian-latetalk_kimi-k3.shownotes.md) | — |
 | 2026-07-31 | [对话 Evoken 陈冕：在模型不断吞噬应用价值的时代，一家独立 AI 应用公司如何 survive](../podcast-learning/reports/2026-07-30_xiaoyuzhou-wandian-latetalk_chenmian.md) | — |
 | 2026-07-29 | [为什么 FDE 在 AI 时代这么火？因为差距不在模型，在业务细节](../podcast-learning/reports/2026-07-29_bilibili-kedaibiao-lizheng_jove-fde.md) | — |
@@ -307,10 +314,11 @@
 | 2026-06-20 | [三年行业吃肉榜/爆亏榜大合集（2023-2025）：谁在偷偷赚钱，谁在快速衰落](../podcast-learning/reports/2026-06-20_bilibili-cls-tongxue_hangye-bangdan.md) | — |
 | 2026-06-18 | [Vol.29 对话王小川：造医生，战豆包，与无尽的 AI 非共识](../podcast-learning/reports/2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan.md) | — |
 
-## 🏄 Web Surfing（32 篇）
+## 🏄 Web Surfing（33 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-10-05 | [AI 行业日报 · 2026-10-05](../web-surfing/reports/ai-news-daily-2026-10-05.md) | — |
 | 2026-10-01 | [AI 行业日报 · 2026-10-01](../web-surfing/reports/ai-news-daily-2026-10-01.md) | — |
 | 2026-09-30 | [AI 行业日报 · 2026-09-30](../web-surfing/reports/ai-news-daily-2026-09-30.md) | — |
 | 2026-09-29 | [AI 行业日报 · 2026-09-29](../web-surfing/reports/ai-news-daily-2026-09-29.md) | — |
@@ -323,6 +331,7 @@
 | 2026-09-18 | [AI 行业日报 · 2026-09-18](../web-surfing/reports/ai-news-daily-2026-09-18.md) | — |
 | 2026-09-17 | [AI 行业日报 · 2026-09-17](../web-surfing/reports/ai-news-daily-2026-09-17.md) | — |
 | 2026-09-16 | [AI 行业日报 · 2026-09-16](../web-surfing/reports/ai-news-daily-2026-09-16.md) | — |
+| 2026-09-14 | [惠州租房建议报告——两位老人 2026 年 9/10 月入住版（1–3 个月短住体验）](../web-surfing/reports/huizhou-rental-guide-2026-09.md) | — |
 | 2026-09-14 | [AI 行业日报 · 2026-09-14](../web-surfing/reports/ai-news-daily-2026-09-14.md) | — |
 | 2026-09-11 | [AI 行业日报 · 2026-09-11](../web-surfing/reports/ai-news-daily-2026-09-11.md) | — |
 | 2026-09-10 | [AI 行业日报 · 2026-09-10](../web-surfing/reports/ai-news-daily-2026-09-10.md) | — |
@@ -333,7 +342,6 @@
 | 2026-09-02 | [AI 行业日报 · 2026-09-02](../web-surfing/reports/ai-news-daily-2026-09-02.md) | — |
 | 2026-09-01 | [AI 行业日报 · 2026-09-01](../web-surfing/reports/ai-news-daily-2026-09-01.md) | — |
 | 2026-08-31 | [AI 行业日报 · 2026-08-31](../web-surfing/reports/ai-news-daily-2026-08-31.md) | — |
-| 2026-08-28 | [惠州租房建议报告——两位老人 2026 年 9/10 月入住版（1–3 个月短住体验）](../web-surfing/reports/huizhou-rental-guide-2026-09.md) | — |
 | 2026-08-28 | [AI 行业日报 · 2026-08-28](../web-surfing/reports/ai-news-daily-2026-08-28.md) | — |
 | 2026-08-27 | [AI 行业日报 · 2026-08-27](../web-surfing/reports/ai-news-daily-2026-08-27.md) | — |
 | 2026-08-26 | [AI 行业日报 · 2026-08-26](../web-surfing/reports/ai-news-daily-2026-08-26.md) | — |
