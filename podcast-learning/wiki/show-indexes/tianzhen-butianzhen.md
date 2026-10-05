@@ -1,6 +1,6 @@
 # 天真不天真 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/mcklbwxjdvfu>）｜ 最近拉取：2026-10-04 ｜ 总集数：58
+> 来源：官方 RSS（<https://feed.xyzfm.space/mcklbwxjdvfu>）｜ 最近拉取：2026-10-05 ｜ 总集数：57
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
@@ -34,7 +34,6 @@
 | — | 2025-07-12 | 1h10m | [vol.31 对谈小红与房主任：一个50岁脱口秀演员 在女性托举中自我重生](https://www.xiaoyuzhoufm.com/episode/6871366f60f8f77d400ed762?utm_source=rss)<!--g:6871366f60f8f77d400ed762--> | — |
 | — | 2025-06-24 | 1h16m | [vol.30 对谈邵亦波：一个学霸的“学会爱自己”之路](https://www.xiaoyuzhoufm.com/episode/685986762a38b4d97928da10?utm_source=rss)<!--g:685986762a38b4d97928da10--> | — |
 | — | 2025-06-20 | 32m06s | [150万订阅特别加更：给自己十五个问题 了解自己的价值排序](https://www.xiaoyuzhoufm.com/episode/6854e9662a38b4d9799a64d0?utm_source=rss)<!--g:6854e9662a38b4d9799a64d0--> | — |
-| — | 2025-06-10 | 1h20m | [vol.29 对谈康永哥：高情商创作者对谈 冰系与火系能力对撞](https://www.xiaoyuzhoufm.com/episode/6846874679e285b9b8fad7c8?utm_source=rss)<!--g:6846874679e285b9b8fad7c8--> | — |
 | — | 2025-05-27 | 1h09m | [vol.28 看清真问题，找到真答案才能破除焦虑](https://www.xiaoyuzhoufm.com/episode/6834704f31215eb506d4dd13?utm_source=rss)<!--g:6834704f31215eb506d4dd13--> | — |
 | — | 2025-05-13 | 46m33s | [vol.27 与李诞闲谈 来吧 让我们一起嘲笑成功学](https://www.xiaoyuzhoufm.com/episode/6821ff8424f85593463bf552?utm_source=rss)<!--g:6821ff8424f85593463bf552--> | — |
 | — | 2025-04-29 | 1h08m | [vol.26 我的新进化：在运动中找回生命主体性](https://www.xiaoyuzhoufm.com/episode/680f302a7a449ae858295bea?utm_source=rss)<!--g:680f302a7a449ae858295bea--> | — |
