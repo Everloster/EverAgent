@@ -5,7 +5,7 @@
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
-| — | 2026-09-28 | 58m10s | [当AI开始设计芯片---聊聊EDA与AI时代的芯片设计](https://www.xiaoyuzhoufm.com/episode/6ab9f026e742e36efcbc0d88?utm_source=rss)<!--g:6ab9f026e742e36efcbc0d88--> | — |
+| — | 2026-09-28 | 58m10s | [当AI开始设计芯片---聊聊EDA与AI时代的芯片设计](https://www.xiaoyuzhoufm.com/episode/6ab9f026e742e36efcbc0d88?utm_source=rss)<!--g:6ab9f026e742e36efcbc0d88--> | ✅ |
 | — | 2026-09-22 | 41m08s | [AI进入生产阶段之后， 智能、算力、芯片 会走向哪里？](https://www.xiaoyuzhoufm.com/episode/6ab2b85df04646b3a955a1de?utm_source=rss)<!--g:6ab2b85df04646b3a955a1de--> | — |
 | — | 2026-09-15 | 55m21s | [智能的下一幕，让人兴奋---73页PPT solo](https://www.xiaoyuzhoufm.com/episode/6aa82d11129fe965d33288ca?utm_source=rss)<!--g:6aa82d11129fe965d33288ca--> | ✅ |
 | — | 2026-09-04 | 1h09m | [中国一级半市场的水下江湖-续集｜串台苔藓之火](https://www.xiaoyuzhoufm.com/episode/6a918c15a0210c197dc9c039?utm_source=rss)<!--g:6a918c15a0210c197dc9c039--> | — |

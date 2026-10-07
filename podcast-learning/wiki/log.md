@@ -244,3 +244,5 @@
 
 - 2026-10-03 | ingest | 半拿铁·故事篇×金瓶梅·绿色版 9《蒋竹山：从入赘开店到净身出户》（1h38m12s，喜马拉雅源，**降级：无音频**）→ [[2026-08-13_ximalaya-bannatie-gushipian_jiangzhushan]]（S1 收官双线：三十两假债局（雇凶→造假债→提刑重杖→净身出户）×瓶儿入府（冷落→悬梁→鞭审和好）；敬济×金莲新线开雷；官方 shownotes=对仗时间轴 12 节+人物表+12 条学术书目（《大明律》/《中国流氓史》/明代妇女财产权/园林闺秀空间/明代的"白牌"）；单集页显示 S2E1 已上线）。过程注记：**首个全程无音频案例**——eacli podcast worker 不可达（ssh 超时×2）、本地 fallback（yt-dlp/whisper-cli）/eacli tool/WebSearch 均被会话权限拦截 → 降级 MCP web_reader 直读单集页 SSR（×2 一致性校验，shownotes 已存档 `.shownotes.md`）；报告按 shownotes+词话本回目对照撰写（回目段标注「我方典籍知识，未联网核验」），音频可得后升级（补金句/数字/concepts：入赘婚、明代司法寻租、花园空间政治）。新增 entities/bannatie；show-indexes 状态 ✅；open-questions +3
 ||||||| parent of 44e9072 ([podcast-learning] 两期：课代表215 Jev 炒作五步法 + 晚点聊183 AI 季报 26Q3)
+
+- 2026-10-07 | ingest ×2 | 用户授权自选两集：① 屠龙之术《当AI开始设计芯片》（58m10s，1865段/14,573字，新思科技从业者）→ [[2026-09-28_xiaoyuzhou-tulong-zhishu_eda-ai-chips]]（EDA 129 亿/双寡头、自研=经济账、工具=harness 一部分、全自动造芯证伪清单、与张托肯期渗透率口径对照）；② 硅谷101 E253 AI 数据行业（58m04s，2407段/19,041字，何允中×孙一铀）→ [[2026-09-27_rss-guigu101_e253-ai-data-industry]]（三种基因/Rubric→RL 环境/ALE/榜单水很深/Lab 未必有最好的基因/proof of work 防造假）。open-questions +6

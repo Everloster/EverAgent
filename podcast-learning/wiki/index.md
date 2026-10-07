@@ -19,6 +19,7 @@
 - [[2026-09-03_xiaoyuzhou-zhangxiaojun_zengming|153. 和曾鸣聊产业史观：残酷的真相、会消亡的公司、优秀≠卓越]]（episode_summary · 2026-09-03）— 小宇宙「张小珺Jùn」对谈曾鸣，2h34m，AI 产业化三阶段论 / 模型公司=AI 云公司（寡头+强监管）/ 公司消亡 / 战略生成 / 巨头审判
 - [[2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review|重估一切，文艺复兴——2026H1 AI行业观察]]（episode_summary · 2026-07-17）— 小宇宙「屠龙之术」庄明浩单口，54m37s，CAPEX 泡沫之辩 / Agent 元年 / 中美双极 / 第四支柱
 - [[2026-09-15_xiaoyuzhou-tulong-zhishu_next-act|智能的下一幕：庄明浩 73 页 PPT 2026Q3 复盘]]（episode_summary · 2026-09-15）— 屠龙之术单口，55m21s，模型狂奔（制造业化/benchmark 失效）/ 智能分化（Own Your Intelligence）/ 循环自生（Loop·RSI 共识）/ 界面重构（App Store 十年首降）
+- [[2026-09-28_xiaoyuzhou-tulong-zhishu_eda-ai-chips|当 AI 开始设计芯片：EDA 与 AI 造芯真伪]]（episode_summary · 2026-09-28）— 屠龙之术×新思科技从业者，58m10s，EDA 双寡头 / 自研=经济账 / 硅基员工计费之问 / 全自动造芯证伪清单
 - [[2026-09-14_xiaoyuzhou-qizhulou_2026q3-macro|多重囚徒困境：2026Q3 全球宏观复盘]]（episode_summary · 2026-09-14）— 起朱楼宴宾客×Ricky，1h39m，债券融资时代 / AI 通胀其他通缩 / 囚徒困境三层嵌套 / 资金挤兑时间表 / Q4 排序（黄金>A股>美股>H股）
 - [[2026-09-02_rss-wandian-latetalk_embodied-money|具身智能的金钱游戏：进展难测、收入催熟与 IPO 竞速]]（episode_summary · 2026-09-02）— 晚点聊 180，1h02m，数采中心闭环 / 互为供应商客户 / Club Deal / 8000 台真实销量 / 数据 Scaling 验证时间表
 - [[2026-10-02_rss-wandian-latetalk_ai-quarterly-26q3|AI 季报 26Q3：个人助理爆发、千禧年难题、1200 个 agent 冲破隔离]]（episode_summary · 2026-10-02）— 晚点聊 183×Henry，2h07m，Dots/Muse/Instinct / NS 方程 / ExploitGym 事件 / ARR 反超 / RSI 两路线 / 成本暴跌 22 倍 / Jev
@@ -77,6 +78,7 @@
 ### AI Infra / 推理芯片
 
 - [[2026-09-15_rss-guigu101_e251-inference-chips|推理芯片之战：训练看算力、推理看带宽]]（episode_summary · 2026-09-15）— 硅谷101 E251，1h31m，Mark（Bill Dally 学生）+子杨（前 Amazon Annapurna）；SRAM 收敛 / Groq·Cerebras·Jalapeño 三路径 / acqui-hire Groq / CUDA 一定会被绕过
+- [[2026-09-27_rss-guigu101_e253-ai-data-industry|谁在给大模型出题、卖题、判卷？AI 数据行业的野蛮生长]]（episode_summary · 2026-09-27）— 硅谷101 E253，58m04s，何允中（Scale）×孙一铀（ALE）；数据公司三基因 / Rubric→RL 环境 / benchmark 生意禁区 / 专家造假验证
 
 ### 具身智能 / 人物访谈
 
