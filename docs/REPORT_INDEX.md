@@ -7,6 +7,7 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-10-07 | [AI 行业日报 · 2026-10-07](../web-surfing/reports/ai-news-daily-2026-10-07.md) | web-surfing |
 | 2026-10-06 | [AI 行业日报 · 2026-10-06](../web-surfing/reports/ai-news-daily-2026-10-06.md) | web-surfing |
 | 2026-10-05 | [AI 行业日报 · 2026-10-05](../web-surfing/reports/ai-news-daily-2026-10-05.md) | web-surfing |
 | 2026-10-04 | [如何炒作一个 AI 概念？以 Jev 为例——孙煜征的五步判断法](../podcast-learning/reports/2026-09-24_rss-kedaibiao-lizheng_ai-hype-jev.md) | podcast-learning |
@@ -31,7 +32,6 @@
 | 2026-09-25 | [AI 行业日报 · 2026-09-25](../web-surfing/reports/ai-news-daily-2026-09-25.md) | web-surfing |
 | 2026-09-24 | [Vol.32 对话元理智能张帆：去他X的FDE — shownotes](../podcast-learning/reports/transcripts/2026-09-24_xiaoyuzhou-guiji-lichang_zhangfan-fde.shownotes.md) | podcast-learning |
 | 2026-09-24 | [AI 行业日报 · 2026-09-24](../web-surfing/reports/ai-news-daily-2026-09-24.md) | web-surfing |
-| 2026-09-23 | [是个人物 EP22｜程乐松：不要牛马，不要狗屁，要什么？——日常性的哲学](../podcast-learning/reports/2026-09-11_bilibili-shigerenwu_chenglesong.md) | podcast-learning |
 
 ## 🤖 AI Learning（109 篇）
 
@@ -314,10 +314,11 @@
 | 2026-06-20 | [三年行业吃肉榜/爆亏榜大合集（2023-2025）：谁在偷偷赚钱，谁在快速衰落](../podcast-learning/reports/2026-06-20_bilibili-cls-tongxue_hangye-bangdan.md) | — |
 | 2026-06-18 | [Vol.29 对话王小川：造医生，战豆包，与无尽的 AI 非共识](../podcast-learning/reports/2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan.md) | — |
 
-## 🏄 Web Surfing（34 篇）
+## 🏄 Web Surfing（35 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-10-07 | [AI 行业日报 · 2026-10-07](../web-surfing/reports/ai-news-daily-2026-10-07.md) | — |
 | 2026-10-06 | [AI 行业日报 · 2026-10-06](../web-surfing/reports/ai-news-daily-2026-10-06.md) | — |
 | 2026-10-05 | [AI 行业日报 · 2026-10-05](../web-surfing/reports/ai-news-daily-2026-10-05.md) | — |
 | 2026-10-01 | [AI 行业日报 · 2026-10-01](../web-surfing/reports/ai-news-daily-2026-10-01.md) | — |
