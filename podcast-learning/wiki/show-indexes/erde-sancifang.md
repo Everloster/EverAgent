@@ -1,10 +1,11 @@
 # 二的三次方 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/8mwdbxbr4kck>）｜ 最近拉取：2026-10-05 ｜ 总集数：163
+> 来源：官方 RSS（<https://feed.xyzfm.space/8mwdbxbr4kck>）｜ 最近拉取：2026-10-09 ｜ 总集数：164
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-10-08 | 1h25m | [vol:161 演员收入大公开！张博洋：我报价600w！](https://www.xiaoyuzhoufm.com/episode/6ac77e63195d838e2aeec6c9?utm_source=rss)<!--g:6ac77e63195d838e2aeec6c9--> | — |
 | — | 2026-10-01 | 1h47m | [vol:160 不是，这事儿能对吗？我不理解！（喜剧节版）](https://www.xiaoyuzhoufm.com/episode/6abe40c5e742e36efcbd7e47?utm_source=rss)<!--g:6abe40c5e742e36efcbd7e47--> | — |
 | — | 2026-09-24 | 1h29m | [vol:159 平常咱也能将就，遇事咱得会讲究。ft.范湉湉](https://www.xiaoyuzhoufm.com/episode/6ab50369e742e36efcbad673?utm_source=rss)<!--g:6ab50369e742e36efcbad673--> | — |
 | — | 2026-09-17 | 1h43m | [vol:158 努力路上有笑有泪，和佛对谈小黑下跪！](https://www.xiaoyuzhoufm.com/episode/6aabcfd1051af796b9e9b40f?utm_source=rss)<!--g:6aabcfd1051af796b9e9b40f--> | — |

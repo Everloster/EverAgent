@@ -150,6 +150,41 @@
   - 新增 concepts：慢性炎症与隐匿的炎症
   - 实体备注：金博医生与帆书主播身份信息不足，暂未建实体页
 
+### 2026-10-09 六集批次（催更→全高优先集处理）
+
+- **起朱楼 184：加息周期的重大投资决策——五步建立海外长债组合**（2026-10-08 发布）
+  - 小宇宙单口（大卫翁）1h11m / 2,360 段 / 21,255→17,528 汉字；Razer eacli podcast 转写（173.7s）
+  - 路径：`reports/2026-10-08_xiaoyuzhou-qizhulou_2026q3-investment-review.md`（+transcript/polished 三件套）
+  - 内容：Q3 账本（+2.5%/YTD -0.5%）｜牛市后期三特征验证｜两轮加息四渠道对比（信用渠道=本轮要害）｜五步决策框架（目标→工具→风险后手→产品→建仓节奏）
+  - 降级记录：智谱 web.reader 对该 URL 内容审查误判（1301）→ curl 直拉公开页面（shownotes）；同域名其他集正常
+- **屠龙大实话：诺奖得主 Deisseroth 谈《照亮破碎之心》**（2026-10-06，28 期重发+视频）
+  - 中英混合访谈 53m31s / 851 段（auto 版）——**英文回答被 whisper 强转破碎中文，两次尝试（zh/auto）均失败**；polished 为"转译大意"整理版
+  - 路径：`reports/2026-10-06_xiaoyuzhou-tulong-dashihua_karl-deisseroth.md`
+  - 诺奖已核实：Deisseroth+Hegemann+Nagel 共获 2026 诺贝尔生理学或医学奖（web.search nobelprize.org）
+  - 新增 entities：[[deisseroth]]；新增 concepts：[[optogenetics]]（接脑科学线）
+  - 转写失败经验：中英混合长音频是当前 pipeline 盲区，英文原声细节以视频字幕/原书为准
+- **课代表立正 216：Codex 迭代十几轮的网站，Claude 一天作废**（2026-10-05）
+  - transistor 短视频音频 14m17s / 610 段；本地 transcribe.py fallback（Razer 白名单不批 share.transistor.fm）
+  - 路径：`reports/2026-10-05_rss-kedaibiao-lizheng_codex-claude.md`
+  - 内容：Cowork→文档→Code 工作流（Document first）｜社区地图 n(n-1)/2 链接具象化｜"问问立正" Agentic RAG｜叙事主权/自留地｜摩托车垫片故事（高手不搞 fancy）
+- **硅谷101 E255：榜单 99 分用户没感觉——张阔 107 任务评测**（2026-10-08）
+  - fireside RSS 46m13s / 1,669 段；本地 transcribe.py fallback（白名单不批 aphid.fireside.fm）
+  - 路径：`reports/2026-10-08_rss-guigu101_e255-zhangkuo.md`
+  - 内容：Agent=Model×Harness×Context（乘法）｜107-task 开源 bench（最前沿模型无人干预 61%）｜帕累托路由 1/3 成本（3.69 vs 9+ 美元）｜商业 AGI 定义｜"不挂 means nothing"
+- **十字路口：AI 无限，人生有限——山音与 KK**（2026-10-08）
+  - 小宇宙对谈 1h05m / 2,805 段；Razer eacli podcast
+  - 路径：`reports/2026-10-08_xiaoyuzhou-crossing_kk-shanyin.md`
+  - 内容：不写剧本的电影（0.5→1）｜"眉头一皱"判断力｜"在现场"不可替代｜做 AI 没有任何借口｜Seedance/Nano Banana 版本线｜游戏时刻前夜｜中国创作者定义电影语言的窗口
+  - 修正量大：Seedance 有 8+ 种误写、CapCut 5+ 种；版本号（2.0/2.5）含推测
+- **知行小酒馆 E253：会思考的沙子与杀人的沙子——李治霖**（2026-10-09）
+  - 小宇宙对谈 1h18m / 3,153 段 / 27,215→6,388 汉字；Razer eacli podcast
+  - 路径：`reports/2026-10-09_xiaoyuzhou-zhixing-xiaojiuguan_e253-ai-good.md`
+  - 内容：83% 劳动人口未用 AI｜6500 亿 AI capex vs 3040 亿消除极端贫困｜有效公益账本（白内障 3-5 千/蚊帐 3-5 千美元/先心病 3.8 万）｜恩格斯停顿 AI 版｜村医 20%→80%｜Max Roser 三句话
+  - 关键修正：李治霖（6 种同音误写）｜发蚊帐（原转写"发文章"）｜转经（"赚金"）｜占了一卦
+
+**本批 pipeline 记录**：Razer eacli podcast 成功 4 集（小宇宙域名）；本地 transcribe.py fallback 2 集（transistor/fireside 域名不在 Razer 白名单）；一集瞬时失败重试成功；中英混合音频转写质量不可用（屠龙期）。索引状态已更新 5 档（qizhulou/tulong-dashihua/guigu101/crossing/zhixing-xiaojiuguan/kedaibiao-lizheng）。
+
+
 ## ⚠️ 边界（防幻觉）
 
 以下主题已有报告，禁止重复生成：

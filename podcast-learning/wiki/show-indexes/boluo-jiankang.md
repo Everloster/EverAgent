@@ -1,10 +1,11 @@
 # 菠萝健康派 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/qe8egag9eycv>）｜ 最近拉取：2026-10-05 ｜ 总集数：129
+> 来源：官方 RSS（<https://feed.xyzfm.space/qe8egag9eycv>）｜ 最近拉取：2026-10-09 ｜ 总集数：130
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-10-07 | 56m38s | [马春来教授：药不能乱吃！这些用药误区，很多人都中招了vol.130](https://www.xiaoyuzhoufm.com/episode/6ac615a6195d838e2aee2f0a?utm_source=rss)<!--g:6ac615a6195d838e2aee2f0a--> | — |
 | — | 2026-09-27 | 1h01m | [程若倩教授：孩子身高这件事，到底矮不矮、治不治？vol.129](https://www.xiaoyuzhoufm.com/episode/6ab88db2195d838e2aea8187?utm_source=rss)<!--g:6ab88db2195d838e2aea8187--> | ✅ |
 | — | 2026-09-26 | 27m31s | [彭建平教授：股骨头缺血性坏死是什么？真有这么危险？vol.128](https://www.xiaoyuzhoufm.com/episode/6ab7d590195d838e2aea6222?utm_source=rss)<!--g:6ab7d590195d838e2aea6222--> | — |
 | — | 2026-09-23 | 52m30s | [岳华教授：“静悄悄的流行病”骨质疏松，可预防、可治疗！vol.127](https://www.xiaoyuzhoufm.com/episode/6ab3d22cf04646b3a9560b72?utm_source=rss)<!--g:6ab3d22cf04646b3a9560b72--> | — |

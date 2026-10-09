@@ -1,10 +1,11 @@
 # 开始连接 LinkStart — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/q9a6lueucj6a>）｜ 最近拉取：2026-10-05 ｜ 总集数：132
+> 来源：官方 RSS（<https://feed.xyzfm.space/q9a6lueucj6a>）｜ 最近拉取：2026-10-09 ｜ 总集数：133
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-10-08 | 1h49m | [Vol.133｜和开发者、投资人聊 Agent 游戏：AI 改变了游戏生产，能颠覆游戏本身吗？](https://www.xiaoyuzhoufm.com/episode/6abb7be1e742e36efcbca77f?utm_source=rss)<!--g:6abb7be1e742e36efcbca77f--> | — |
 | — | 2026-09-28 | 1h04m | [Vol.132｜Jev 爆火：AI 的下一步，可能不是把模型做得更大](https://www.xiaoyuzhoufm.com/episode/6aba47b6195d838e2aeb2225?utm_source=rss)<!--g:6aba47b6195d838e2aeb2225--> | — |
 | — | 2026-09-17 | 1h25m | [Vol.131｜给抖音起名字的人，All in「AI 3D」：和卷卷复盘押注制造业OS的关键决策](https://www.xiaoyuzhoufm.com/episode/6aab77919d326477816a76e1?utm_source=rss)<!--g:6aab77919d326477816a76e1--> | — |
 | — | 2026-09-11 | 1h22m | [Vol.130 \| 对话极壳孙宽：具身的另一种可能，穿上外骨骼](https://www.xiaoyuzhoufm.com/episode/6aa39161492687f6aad8438f?utm_source=rss)<!--g:6aa39161492687f6aad8438f--> | — |

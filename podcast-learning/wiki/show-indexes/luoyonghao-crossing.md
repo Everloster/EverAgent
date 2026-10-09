@@ -1,6 +1,6 @@
 # 罗永浩的十字路口 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/wmnkvmrpwuww>）｜ 最近拉取：2026-10-05 ｜ 总集数：37
+> 来源：官方 RSS（<https://feed.xyzfm.space/wmnkvmrpwuww>）｜ 最近拉取：2026-10-09 ｜ 总集数：36
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
@@ -16,7 +16,6 @@
 | — | 2026-05-29 | 2h33m | [罗永浩的X字路口！当一群情绪不稳定的杠精讨论起情绪稳定](https://www.xiaoyuzhoufm.com/episode/6a190f4f7460cabdeb57a7ad?utm_source=rss)<!--g:6a190f4f7460cabdeb57a7ad--> | — |
 | — | 2026-05-21 | 2h39m | [郑执×罗永浩！总是赶末班车的人，可以改进时间管理......也可以拥有一辆属于自己的车](https://www.xiaoyuzhoufm.com/episode/6a0e83fa1b7bd502958f347d?utm_source=rss)<!--g:6a0e83fa1b7bd502958f347d--> | — |
 | — | 2026-05-13 | 2h20m | [李想×罗永浩！李想的理想：通过 AI 技术，让普通人也过上富豪的生活](https://www.xiaoyuzhoufm.com/episode/6a037114e1eb34a939471baf?utm_source=rss)<!--g:6a037114e1eb34a939471baf--> | — |
-| — | 2026-04-29 | 3h36m | [蔡康永×罗永浩！在残酷的世界寻找自在与和解、保持慈悲与真实](https://www.xiaoyuzhoufm.com/episode/69f12bc9d97e02e4ca5d1bc6?utm_source=rss)<!--g:69f12bc9d97e02e4ca5d1bc6--> | — |
 | — | 2026-04-17 | 3h40m | [携程梁建章×罗永浩！在企业家与学者之间，他选择了最艰难的“往返票”](https://www.xiaoyuzhoufm.com/episode/69e19a1ee2c8be31556f0c7a?utm_source=rss)<!--g:69e19a1ee2c8be31556f0c7a--> | — |
 | — | 2026-04-13 | 2h30m | [“无聊斋” × 罗永浩的X字路口！喜剧工作者在AI时代可以多“活”几年](https://www.xiaoyuzhoufm.com/episode/69db5089e2c8be3155fd7978?utm_source=rss)<!--g:69db5089e2c8be3155fd7978--> | — |
 | — | 2026-04-02 | 2h32m | [崔健×罗永浩！去天堂和去地狱，都要带上艺术家](https://www.xiaoyuzhoufm.com/episode/69cdbe5eb977fb2c47e1e409?utm_source=rss)<!--g:69cdbe5eb977fb2c47e1e409--> | — |

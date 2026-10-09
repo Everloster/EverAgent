@@ -1,6 +1,6 @@
 # 屠龙大实话 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/fp7wecdfhgyq>）｜ 最近拉取：2026-10-05 ｜ 总集数：97
+> 来源：官方 RSS（<https://feed.xyzfm.space/fp7wecdfhgyq>）｜ 最近拉取：2026-10-09 ｜ 总集数：98
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
@@ -93,6 +93,7 @@
 | 1 | 2024-08-02 | 1h14m | [1.情绪价值已经被讲烂了吗？听听屠龙内心是怎么看待情绪价值的](https://www.xiaoyuzhoufm.com/episode/66aca27a7349f7a5574d6926?utm_source=rss)<!--g:66aca27a7349f7a5574d6926--> | — |
 | 1 | 2024-07-31 | 1m00s | [1.男孩为何如此难管?](https://www.xiaoyuzhoufm.com/episode/69ff1ac8e1eb34a9390e61b1?utm_source=rss)<!--g:69ff1ac8e1eb34a9390e61b1--> | — |
 | 1 | 2024-07-31 | 1m00s | [1.为什么女生容易情绪不稳定？女性大脑灵敏与稳定的博弈](https://www.xiaoyuzhoufm.com/episode/69fef1001b7bd50295cb382f?utm_source=rss)<!--g:69fef1001b7bd50295cb382f--> | — |
+| — | 2026-10-06 | 53m31s | [我采访了今年诺奖获得者Karl Deisseroth](https://www.xiaoyuzhoufm.com/episode/6ac466bb195d838e2aedae9a?utm_source=rss)<!--g:6ac466bb195d838e2aedae9a--> | ✅ 已处理（2026-10-09 报告） |
 | — | 2026-07-25 | 10m38s | [屠龙短节目03｜深层相似性：预测孩子成就的第一能力](https://www.xiaoyuzhoufm.com/episode/6a5b7ee46356eb2d9be4a146?utm_source=rss)<!--g:6a5b7ee46356eb2d9be4a146--> | — |
 | — | 2026-07-21 | 11m11s | [屠龙短节目02｜关注流、推荐流、搜索流：流量时代长红的秘密](https://www.xiaoyuzhoufm.com/episode/6a5b7e5a6356eb2d9be4a119?utm_source=rss)<!--g:6a5b7e5a6356eb2d9be4a119--> | — |
 | — | 2026-07-17 | 18m47s | [屠龙短节目01｜带你听懂古埃及的战略性覆灭](https://www.xiaoyuzhoufm.com/episode/6a5a86c26356eb2d9be45575?utm_source=rss)<!--g:6a5a86c26356eb2d9be45575--> | — |

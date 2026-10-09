@@ -1,10 +1,11 @@
 # 全嘻嘻 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/ptewvlwcgb8n>）｜ 最近拉取：2026-10-05 ｜ 总集数：172
+> 来源：官方 RSS（<https://feed.xyzfm.space/ptewvlwcgb8n>）｜ 最近拉取：2026-10-09 ｜ 总集数：172
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-10-08 | 25m17s | [2026 年，30岁流水线工人生存现状调研【全嘻嘻】](https://www.xiaoyuzhoufm.com/episode/6ab5ac50e742e36efcbaface?utm_source=rss)<!--g:6ab5ac50e742e36efcbaface--> | — |
 | — | 2026-09-29 | 55m42s | [观众裁判们，这些丑东西值得买吗？【全嘻嘻 x 姐友聊天】](https://www.xiaoyuzhoufm.com/episode/6ab49dd793d5eb3bdc7a1c77?utm_source=rss)<!--g:6ab49dd793d5eb3bdc7a1c77--> | — |
 | — | 2026-09-23 | 1h37m | [大佬婚姻真相【全嘻嘻 × 姐友聊天】](https://www.xiaoyuzhoufm.com/episode/6ab3be3593d5eb3bdc79d6bf?utm_source=rss)<!--g:6ab3be3593d5eb3bdc79d6bf--> | — |
 | — | 2026-09-18 | 1h52m | [让孩子成为海淀小学生后，我后悔了......【全嘻嘻 x 姐友聊天】](https://www.xiaoyuzhoufm.com/episode/6aaba7e79d326477816a9419?utm_source=rss)<!--g:6aaba7e79d326477816a9419--> | — |
@@ -47,7 +48,6 @@
 | — | 2025-08-26 | 27m05s | [【八月回信】坦诚就是：先分清「叙事」和「体验」【全嘻嘻】](https://www.xiaoyuzhoufm.com/episode/68ad544a42cc2798e775b704?utm_source=rss)<!--g:68ad544a42cc2798e775b704--> | — |
 | — | 2025-08-22 | 1h44m | [【前国家队康复师】运动的尽头是康复？10大康复骗局！【全嘻嘻 x 陈博闻】](https://www.xiaoyuzhoufm.com/episode/68a8496a42cc2798e7e4dc43?utm_source=rss)<!--g:68a8496a42cc2798e7e4dc43--> | — |
 | — | 2025-08-08 | 1h23m | [和马督工聊：公知、流量、新闻学、小镇青年、工业党【全嘻嘻】](https://www.xiaoyuzhoufm.com/episode/6895ac8d638b015879994d5e?utm_source=rss)<!--g:6895ac8d638b015879994d5e--> | — |
-| — | 2025-07-11 | 1h11m | [看到蔡康永也有低情商的时候，我心理平衡了…...【全嘻嘻 x 蔡康永】](https://www.xiaoyuzhoufm.com/episode/6870de6460f8f77d40032e65?utm_source=rss)<!--g:6870de6460f8f77d40032e65--> | — |
 | — | 2025-07-03 | 17m45s | [【六月回信】从没输过的职业女性，因生不出男孩而自我厌恶【全嘻嘻】](https://www.xiaoyuzhoufm.com/episode/68665d5e60f8f77d40acdbf7?utm_source=rss)<!--g:68665d5e60f8f77d40acdbf7--> | — |
 | — | 2025-06-26 | 1h23m | [当我请身边真女总裁观看短视频女总裁赛道……](https://www.xiaoyuzhoufm.com/episode/685cf20008d8fd8586171601?utm_source=rss)<!--g:685cf20008d8fd8586171601--> | — |
 | — | 2025-06-07 | 17m15s | [【五月回信】彩礼差三万：中产阶级异性恋女性的尴尬【全嘻嘻】](https://www.xiaoyuzhoufm.com/episode/68445fc779e285b9b8bc4fb2?utm_source=rss)<!--g:68445fc779e285b9b8bc4fb2--> | — |

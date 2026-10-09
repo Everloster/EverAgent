@@ -1,10 +1,11 @@
 # 大小马聊科技 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/ura8q9jpl4xj>）｜ 最近拉取：2026-10-05 ｜ 总集数：92
+> 来源：官方 RSS（<https://feed.xyzfm.space/ura8q9jpl4xj>）｜ 最近拉取：2026-10-09 ｜ 总集数：93
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-10-08 | 1h53m | [V95.中美新拐点！苹果 Meta特斯拉英伟达，深度拆解各家招式](https://www.xiaoyuzhoufm.com/episode/6ac7a5e2195d838e2aeedbc8?utm_source=rss)<!--g:6ac7a5e2195d838e2aeedbc8--> | — |
 | — | 2026-09-06 | 1h18m | [V94.理智分析中国火箭回收与美国「孙学」](https://www.xiaoyuzhoufm.com/episode/6a9d85b2a0210c197dce6fa6?utm_source=rss)<!--g:6a9d85b2a0210c197dce6fa6--> | — |
 | — | 2026-08-21 | 1h40m | [V93.小米干不过华为？深度解析两家商业逻辑与危机](https://www.xiaoyuzhoufm.com/episode/6a87d39a1352af56ff39a4b9?utm_source=rss)<!--g:6a87d39a1352af56ff39a4b9--> | — |
 | — | 2026-07-27 | 1h09m | [V92.我用AI重活一遍！AI提升幸福感的9种姿势？](https://www.xiaoyuzhoufm.com/episode/6a66e136a3fec224d5a3f00f?utm_source=rss)<!--g:6a66e136a3fec224d5a3f00f--> | — |

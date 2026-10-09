@@ -7,7 +7,13 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-10-09 | [起朱楼184：加息周期的重大投资决策——五步建立海外长债组合｜三季度投资账复盘](../podcast-learning/reports/2026-10-08_xiaoyuzhou-qizhulou_2026q3-investment-review.md) | podcast-learning |
+| 2026-10-09 | [课代表立正216：Codex迭代十几轮的网站，Claude一天作废——个人网站与叙事主权](../podcast-learning/reports/2026-10-05_rss-kedaibiao-lizheng_codex-claude.md) | podcast-learning |
 | 2026-10-09 | [程若倩教授：孩子身高这件事，到底矮不矮、治不治？](../podcast-learning/reports/2026-09-27_xiaoyuzhou-boluo-jiankang_chengruoqian.md) | podcast-learning |
+| 2026-10-09 | [硅谷101 E255：榜单 99 分，用户没感觉——张阔的 107 任务评测与垂直 Agent 成本战](../podcast-learning/reports/2026-10-08_rss-guigu101_e255-zhangkuo.md) | podcast-learning |
+| 2026-10-09 | [知行小酒馆 E253：会思考的沙子与杀人的沙子——李治霖谈 AI 时代的折叠世界与有效公益](../podcast-learning/reports/2026-10-09_xiaoyuzhou-zhixing-xiaojiuguan_e253-ai-good.md) | podcast-learning |
+| 2026-10-09 | [屠龙大实话：诺奖得主 Deisseroth 谈《照亮破碎之心》——精神疾病是进化的代价，光遗传是精确的怜悯](../podcast-learning/reports/2026-10-06_xiaoyuzhou-tulong-dashihua_karl-deisseroth.md) | podcast-learning |
+| 2026-10-09 | [十字路口：AI 无限，人生有限——山音与 KK 的一线 AI 导演方法论](../podcast-learning/reports/2026-10-08_xiaoyuzhou-crossing_kk-shanyin.md) | podcast-learning |
 | 2026-10-09 | [VISTA：视觉原生 Harness 论文精读——无损视觉记忆与主动检查如何把 Opus 5.0 的 ARC-AGI-3 分数从 40.68 拉到 100](../ai-learning/reports/paper_analyses/48_vista_2026.md) | ai-learning |
 | 2026-10-09 | [Laya：把「反射性决策」从 LLM 里拆出来——421M 非自回归 System 1 决策模型解析与本机实测](../ai-learning/reports/knowledge_reports/Laya_System1决策模型_深度解析_20260922.md) | ai-learning |
 | 2026-10-09 | [AI 行业日报 · 2026-10-09](../web-surfing/reports/ai-news-daily-2026-10-09.md) | web-surfing |
@@ -26,12 +32,6 @@
 | 2026-10-02 | [GEO 是量化交易不是 SEO：PureblueAI 鲁扬谈 AI 时代的货架与流量](../podcast-learning/reports/2026-09-23_ximalaya-ailianjinshu_luyang.md) | podcast-learning |
 | 2026-10-01 | [决策便宜，行动很贵：Vibe-Trading 作者浩哲谈 AI Trading 的通道、闸门与人的位置](../podcast-learning/reports/2026-09-27_xiaoyuzhou-42zhangjing_wuhaozhe.md) | podcast-learning |
 | 2026-10-01 | [具身智能的金钱游戏：进展难测、收入催熟与 IPO 竞速](../podcast-learning/reports/2026-09-02_rss-wandian-latetalk_embodied-money.md) | podcast-learning |
-| 2026-10-01 | [AI 行业日报 · 2026-10-01](../web-surfing/reports/ai-news-daily-2026-10-01.md) | web-surfing |
-| 2026-09-30 | [字节级蒸馏突破 Token 天花板：Marginalize-It 与 End-Of-Token 的技术全景与批判性评估](../ai-learning/reports/paper_analyses/47_byte_distillation_2026.md) | ai-learning |
-| 2026-09-30 | [No.221 🥓 中国辣条江湖 — 官方 shownotes 存档](../podcast-learning/reports/transcripts/2026-09-30_xiaoyuzhou-bannatie_latiao.shownotes.md) | podcast-learning |
-| 2026-09-30 | [AI 行业日报 · 2026-09-30](../web-surfing/reports/ai-news-daily-2026-09-30.md) | web-surfing |
-| 2026-09-29 | [AI 行业日报 · 2026-09-29](../web-surfing/reports/ai-news-daily-2026-09-29.md) | web-surfing |
-| 2026-09-28 | [易论AI×捏Ta胡修涵：被AI淘汰的人才是AI最大的市场（创作即消费/双边vs多边/迪士尼不是乐园是上下文/AI内容四象限）](../podcast-learning/reports/2026-09-18_bilibili-yilun-ai_huxiuhan.md) | podcast-learning |
 
 ## 🤖 AI Learning（111 篇）
 
@@ -259,11 +259,17 @@
 | 2026-03-26 | [Physiology of Growth Hormone Secretion during Sleep (1996) 精读](../biology-learning/reports/paper_analyses/P09_gh_sleep_physiology_1996.md) | — |
 | 2026-03-23 | [晚型人作息与力量训练深度研究](../biology-learning/reports/concept_reports/晚型人作息与力量训练_深度研究报告.md) | — |
 
-## 🎙️ Podcast Learning（57 篇）
+## 🎙️ Podcast Learning（63 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-10-09 | [起朱楼184：加息周期的重大投资决策——五步建立海外长债组合｜三季度投资账复盘](../podcast-learning/reports/2026-10-08_xiaoyuzhou-qizhulou_2026q3-investment-review.md) | — |
+| 2026-10-09 | [课代表立正216：Codex迭代十几轮的网站，Claude一天作废——个人网站与叙事主权](../podcast-learning/reports/2026-10-05_rss-kedaibiao-lizheng_codex-claude.md) | — |
 | 2026-10-09 | [程若倩教授：孩子身高这件事，到底矮不矮、治不治？](../podcast-learning/reports/2026-09-27_xiaoyuzhou-boluo-jiankang_chengruoqian.md) | — |
+| 2026-10-09 | [硅谷101 E255：榜单 99 分，用户没感觉——张阔的 107 任务评测与垂直 Agent 成本战](../podcast-learning/reports/2026-10-08_rss-guigu101_e255-zhangkuo.md) | — |
+| 2026-10-09 | [知行小酒馆 E253：会思考的沙子与杀人的沙子——李治霖谈 AI 时代的折叠世界与有效公益](../podcast-learning/reports/2026-10-09_xiaoyuzhou-zhixing-xiaojiuguan_e253-ai-good.md) | — |
+| 2026-10-09 | [屠龙大实话：诺奖得主 Deisseroth 谈《照亮破碎之心》——精神疾病是进化的代价，光遗传是精确的怜悯](../podcast-learning/reports/2026-10-06_xiaoyuzhou-tulong-dashihua_karl-deisseroth.md) | — |
+| 2026-10-09 | [十字路口：AI 无限，人生有限——山音与 KK 的一线 AI 导演方法论](../podcast-learning/reports/2026-10-08_xiaoyuzhou-crossing_kk-shanyin.md) | — |
 | 2026-10-07 | [高薪、事少，为什么我还是想逃？——电丸科技AK × 甄总谈旧人生地图失效](../podcast-learning/reports/2026-10-03_bilibili-dianwan-ak_ep04-quit.md) | — |
 | 2026-10-07 | [谁在给大模型出题、卖题、判卷？AI 数据行业的野蛮生长](../podcast-learning/reports/2026-09-27_rss-guigu101_e253-ai-data-industry.md) | — |
 | 2026-10-07 | [当 AI 开始设计芯片：新思科技视角下的 EDA 与 AI 造芯真伪](../podcast-learning/reports/2026-09-28_xiaoyuzhou-tulong-zhishu_eda-ai-chips.md) | — |

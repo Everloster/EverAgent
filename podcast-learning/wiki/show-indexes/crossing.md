@@ -1,10 +1,11 @@
 # 十字路口Crossing — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/68fyjknth9hj>）｜ 最近拉取：2026-10-05 ｜ 总集数：133
+> 来源：官方 RSS（<https://feed.xyzfm.space/68fyjknth9hj>）｜ 最近拉取：2026-10-09 ｜ 总集数：134
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-10-08 | 1h05m | [AI 无限，人生有限｜对谈 KK、山音：一线 AI 创作者](https://www.xiaoyuzhoufm.com/episode/6ac7ce36195d838e2aeeebd9?utm_source=rss)<!--g:6ac7ce36195d838e2aeeebd9--> | ✅ 已处理（2026-10-09 报告） |
 | — | 2026-09-27 | 1h52m | [AI 时代，我们到底该学什么？｜对谈于红：三种不会过时的能力](https://www.xiaoyuzhoufm.com/episode/6ab7fb97e742e36efcbb881a?utm_source=rss)<!--g:6ab7fb97e742e36efcbb881a--> | — |
 | — | 2026-09-20 | 1h20m | [“我看到了 Scaling Law 的信号” \| 对谈清华叉院助理教授徐梦迪：具身智能、世界模型、真正的泛化](https://www.xiaoyuzhoufm.com/episode/6ab0504f0916f6f8b4466ece?utm_source=rss)<!--g:6ab0504f0916f6f8b4466ece--> | ✅ |
 | — | 2026-09-16 | 1h09m | [于是转身向具身走去｜对话王家伟：24 岁的具身智能首席科学家](https://www.xiaoyuzhoufm.com/episode/6aaa9f039d326477816a3488?utm_source=rss)<!--g:6aaa9f039d326477816a3488--> | — |
