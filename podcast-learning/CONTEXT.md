@@ -185,6 +185,26 @@
 **本批 pipeline 记录**：Razer eacli podcast 成功 4 集（小宇宙域名）；本地 transcribe.py fallback 2 集（transistor/fireside 域名不在 Razer 白名单）；一集瞬时失败重试成功；中英混合音频转写质量不可用（屠龙期）。索引状态已更新 5 档（qizhulou/tulong-dashihua/guigu101/crossing/zhixing-xiaojiuguan/kedaibiao-lizheng）。
 
 
+### 2026-10-09（二）中优先批次：4 项全处理
+
+- **课代表立正·职业方法论九讲（存量专题）**：立正说 217/218/221-225 + 对话 327/328/329（2022-03~2023-08，transistor feed 回灌的存量视频片段，10 集批量本地转写 1208 段）
+  - 路径：`reports/2026-10-09_rss-kedaibiao-lizheng_career-methods-series.md`（cross_episode；transcripts 前缀 `lizheng-career-series_` 共 10 件）
+  - 内容：7+1 职业选择框架/AlphaGo 决策法/认知余裕（90% 工作无意义）/失败的期权/L6→L7 的 2-3 年/Simple vs Easy 榨汁机/不当韭菜三原则/大学生三问/correlation→causality/网红经济学
+  - 关键修正：阿富汗/After Goal→AlphaGo；学书界→学术界；企号→起号
+- **听懂涨声：父子坦白局**（2026-10-09，冉总+17 岁 Warren，1h36m/3307 段）
+  - 路径：`reports/2026-10-09_xiaoyuzhou-tingdong-zhangsheng_father-son-money.md`
+  - 内容：5 万公里移动课堂/建筑师范本第一曲线/杀死昨天的自己/禁止即诱惑/礼物股/应试四反/十分之一幸存律/原生家庭论
+  - 关键修正：阮总→冉总；适应率→市盈率；Wordnos→Ordinals；八字真言[?]未还原
+- **说医解药 Vol.91：银鳕鱼汞争议**（2026-10-08，外博，53m/1468 段）
+  - 路径：`reports/2026-10-08_xiaoyuzhou-shuoyi-jieyao_vol91-cod-mercury.md`
+  - 内容：三种汞毒性阶梯/血汞阈值/FDA 0.15-0.46 分档数学/鳕鱼命名史/油鱼骗局/Omega-3 十倍差
+  - 系统性误识别：汞→拱/肱/股/肿、鳕→血/雪（全文数百处）
+- **大小马 V95：中美新拐点**（2026-10-08，+电丸 AK，1h53m/4023 段）
+  - 路径：`reports/2026-10-08_xiaoyuzhou-daxiaoma-keji_v95-china-us.md`
+  - 内容：失业率反常识/出海三不碰/聚合 vs 单点/AI 眼镜三数量级增量/苹果 Security Enclave 长期主义/Muse 与 APP 时代崩塌/World Labs 收购/判断力保值
+  - **pipeline 事件**：transcript 202KB 超 eacli pull 上限 → invoke 远程 split 三片合并取回（已验证无损）
+
+
 ## ⚠️ 边界（防幻觉）
 
 以下主题已有报告，禁止重复生成：

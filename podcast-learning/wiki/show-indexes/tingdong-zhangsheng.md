@@ -5,7 +5,7 @@
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
-| — | 2026-10-09 | 1h36m | [中国家庭最缺的一课：一对父子关于钱、认知与风险的坦白局](https://www.xiaoyuzhoufm.com/episode/6ac77fd3e742e36efcbfdde6?utm_source=rss)<!--g:6ac77fd3e742e36efcbfdde6--> | — |
+| — | 2026-10-09 | 1h36m | [中国家庭最缺的一课：一对父子关于钱、认知与风险的坦白局](https://www.xiaoyuzhoufm.com/episode/6ac77fd3e742e36efcbfdde6?utm_source=rss)<!--g:6ac77fd3e742e36efcbfdde6--> | ✅ 已处理（2026-10-09 报告） |
 | — | 2026-09-14 | 53m06s | [对话趋势动物Nick：我一个长居上海的人，怎么就跑到新疆买房了呢？](https://www.xiaoyuzhoufm.com/episode/6aa7aed99d3264778168e66c?utm_source=rss)<!--g:6aa7aed99d3264778168e66c--> | — |
 | — | 2026-09-03 | 1h07m | [重读《金钱心理学》：当房子和教育变成一种负债，我们如何重新理解财富？](https://www.xiaoyuzhoufm.com/episode/6a990a13f03e74ee6b045ae3?utm_source=rss)<!--g:6a990a13f03e74ee6b045ae3--> | — |
 | — | 2026-08-26 | 55m59s | [我看了中美几十年的数据，发现投资里“躺赢”和“躺平”真不是一回事｜对话陈鹏](https://www.xiaoyuzhoufm.com/episode/6a8e6921ef65145dfcc58800?utm_source=rss)<!--g:6a8e6921ef65145dfcc58800--> | — |

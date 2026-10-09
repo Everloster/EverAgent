@@ -329,17 +329,17 @@
 | — | 2023-09-02 | 8m05s | [立正说 096｜我的减肥攻略应该收多少钱？](https://share.transistor.fm/s/ce9d39e3)<!--g:38500fab-630f-4d46-bb48-bd391e3bcb9b--> | — |
 | — | 2023-08-31 | 11m51s | [立正说 095｜想「成事」，先改造潜意识](https://share.transistor.fm/s/48ff3211)<!--g:0ff2fee0-1990-41ba-af91-89dca27376f2--> | — |
 | — | 2023-08-29 | 15m00s | [对话 120｜返璞归真是意大利菜的真谛](https://share.transistor.fm/s/f0ff0904)<!--g:78cf8401-f63a-4b7f-9ab9-b2c10b29858c--> | — |
-| — | 2023-08-25 | 4m07s | [立正说 225｜摆脱不痛不痒的工作习惯](https://share.transistor.fm/s/1e7b2ac6)<!--g:19ac7729-ca77-42b6-8bd4-96e7459c1b8e--> | — |
+| — | 2023-08-25 | 4m07s | [立正说 225｜摆脱不痛不痒的工作习惯](https://share.transistor.fm/s/1e7b2ac6)<!--g:19ac7729-ca77-42b6-8bd4-96e7459c1b8e--> | ✅ 已处理（2026-10-09 跨期报告） |
 | — | 2023-08-23 | 10m34s | [对话 119｜人的价值（不该）如何定义？](https://share.transistor.fm/s/ad305d86)<!--g:16c14b0b-a630-4b9e-80f3-0ac5124c8767--> | — |
 | — | 2023-08-21 | 41m03s | [对话 118｜年轻有为的国企老总，为什么选择从头创业？](https://share.transistor.fm/s/e95fa77a)<!--g:6d8a535c-93d0-401d-8eb6-7c5c072265b3--> | — |
-| — | 2023-08-19 | 1m30s | [对话 329｜高阶升职不靠卷](https://share.transistor.fm/s/8ba2dca2)<!--g:6107c281-62e6-4665-951c-a01b7cf711c5--> | — |
+| — | 2023-08-19 | 1m30s | [对话 329｜高阶升职不靠卷](https://share.transistor.fm/s/8ba2dca2)<!--g:6107c281-62e6-4665-951c-a01b7cf711c5--> | ✅ 已处理（2026-10-09 跨期报告） |
 | — | 2023-08-17 | 22m48s | [对话 117｜塔罗牌如何预测未来？](https://share.transistor.fm/s/349c8d2b)<!--g:60afc6f4-d11a-4759-ad28-f7623f1d410d--> | — |
 | — | 2023-08-13 | 20m15s | [对话 116｜升职加薪的意义是什么来着？｜DoorDash分析经理访谈 3⧸3](https://share.transistor.fm/s/73f64751)<!--g:f2514838-e8e4-4253-95f4-b40b7cfb1e38--> | — |
 | — | 2023-08-11 | 12m14s | [对话 115｜主动掌控工作｜Doordash分析经理访谈2⧸3](https://share.transistor.fm/s/eb295b41)<!--g:2c44328f-6905-4970-9d5c-0647afa5f5d7--> | — |
 | — | 2023-08-09 | 17m25s | [对话 114｜从Contractor到Sr Manager的逆袭？｜如何在工作中找到自信？｜DoorDash分析经理访谈1⧸3](https://share.transistor.fm/s/41069d71)<!--g:fbaf9bae-cf33-4470-a2d6-297b9da220dc--> | — |
 | — | 2023-08-05 | 1h21m | [对话 113｜无意义聊天视频，完全没有剪辑](https://share.transistor.fm/s/d916c06a)<!--g:1a4eab98-4d4c-4ba2-9cd1-bb45dfa004a8--> | — |
 | — | 2023-08-05 | 11m29s | [对话 112｜如何提高自己的认知？](https://share.transistor.fm/s/06d36ece)<!--g:ea22e889-a863-48f5-b93e-df5b21cd23a9--> | — |
-| — | 2023-08-03 | 3m59s | [立正说 224｜故意犯错，有利于职业成长？](https://share.transistor.fm/s/185f06fb)<!--g:ec05e786-89aa-4a6d-973e-25f5e4df2fe1--> | — |
+| — | 2023-08-03 | 3m59s | [立正说 224｜故意犯错，有利于职业成长？](https://share.transistor.fm/s/185f06fb)<!--g:ec05e786-89aa-4a6d-973e-25f5e4df2fe1--> | ✅ 已处理（2026-10-09 跨期报告） |
 | — | 2023-07-31 | 13m17s | [对话 111｜看不惯的同学比自己赚的多，如何自我和解？](https://share.transistor.fm/s/442181a8)<!--g:c37f8df3-43dd-4109-a5f7-c76d45da4af6--> | — |
 | — | 2023-07-30 | 1h08m | [对话 110｜7 李森采访 - 过往经历脱敏未剪辑](https://share.transistor.fm/s/551846e0)<!--g:d16dabf3-cbd0-4ff2-8dda-223758863ded--> | — |
 | — | 2023-07-30 | 20m34s | [对话 109｜5 李森采访5](https://share.transistor.fm/s/f807c5cd)<!--g:e7cdd60a-dcbd-4341-89cc-82440a9ef4f5--> | — |
@@ -354,15 +354,15 @@
 | — | 2023-07-16 | 7m48s | [立正说 093｜理财、套牢、认知差，让你赚不到钱的三个概念误区](https://share.transistor.fm/s/e3ebb7c1)<!--g:bf8925e6-0035-4bc9-a51e-302c4011f0c9--> | — |
 | — | 2023-07-13 | 14m10s | [对话 101｜钻石保值吗？为什么你到手亏一半？](https://share.transistor.fm/s/bcedee56)<!--g:4a70d58a-4766-4d95-b672-616186997d6d--> | — |
 | — | 2023-07-11 | 12m39s | [对话 100｜用钻石的价格，揭穿营销的真谛](https://share.transistor.fm/s/3f97bd5d)<!--g:5c0a20b1-f43d-4449-96ac-6fbffe9f5869--> | — |
-| — | 2023-07-09 | 4m53s | [对话 328｜网红到底多赚钱？](https://share.transistor.fm/s/b400b2f7)<!--g:88c8e925-edfc-4484-bacb-ef09956e382c--> | — |
+| — | 2023-07-09 | 4m53s | [对话 328｜网红到底多赚钱？](https://share.transistor.fm/s/b400b2f7)<!--g:88c8e925-edfc-4484-bacb-ef09956e382c--> | ✅ 已处理（2026-10-09 跨期报告） |
 | — | 2023-07-08 | 9m33s | [立正说 092｜回美国了！为什么离开大厂？](https://share.transistor.fm/s/327dcf93)<!--g:27cf7258-2d4a-41c8-b496-5537a8b37bd0--> | — |
 | — | 2023-07-07 | 13m53s | [对话 099｜珠宝销售如何让你冲动消费？](https://share.transistor.fm/s/547be74e)<!--g:cfcb91fd-848b-463e-af5c-f4280553c556--> | — |
-| — | 2023-07-05 | 3m48s | [立正说 223｜对大学生的三条建议：找到工作以外的自我价值](https://share.transistor.fm/s/758c2ffb)<!--g:b2810b53-a6d5-4367-959d-e344e18d3576--> | — |
+| — | 2023-07-05 | 3m48s | [立正说 223｜对大学生的三条建议：找到工作以外的自我价值](https://share.transistor.fm/s/758c2ffb)<!--g:b2810b53-a6d5-4367-959d-e344e18d3576--> | ✅ 已处理（2026-10-09 跨期报告） |
 | — | 2023-07-03 | 19m37s | [对话 098｜如何自洽？｜得觉访谈1⧸2](https://share.transistor.fm/s/b818c231)<!--g:92dd09a6-d52c-49ea-9a6a-3cde1dca733f--> | — |
 | — | 2023-06-30 | 18m00s | [对话 097｜全网最真诚的红蓝宝石一手科普｜深水行业如何判断价值？](https://share.transistor.fm/s/00bb5499)<!--g:a0365019-cf67-40e2-a5fd-90baa36895c9--> | — |
 | — | 2023-06-26 | 58m56s | [对话 096｜打工人喝茶的好处？｜工夫茶非遗传承采访2⧸3](https://share.transistor.fm/s/04884042)<!--g:d474d7f3-b128-459e-a360-2ec023bd75e5--> | — |
 | — | 2023-06-23 | 10m09s | [对话 095｜真诚是面试第一要义](https://share.transistor.fm/s/ddb347d3)<!--g:ae68e5ca-6635-4948-b0ad-ae4d3f6900b4--> | — |
-| — | 2023-06-19 | 3m44s | [立正说 222｜为什么我不想看到下属太忙？](https://share.transistor.fm/s/0e7365d7)<!--g:b439d6c7-b2af-4094-8126-ad30c6a263e7--> | — |
+| — | 2023-06-19 | 3m44s | [立正说 222｜为什么我不想看到下属太忙？](https://share.transistor.fm/s/0e7365d7)<!--g:b439d6c7-b2af-4094-8126-ad30c6a263e7--> | ✅ 已处理（2026-10-09 跨期报告） |
 | — | 2023-06-15 | 15m35s | [对话 094｜原来有意义的人生这么短？｜Mutiple-Fire系列](https://share.transistor.fm/s/9aeb64b7)<!--g:d32206aa-70d7-4a52-904a-22f0a3dfdf3b--> | — |
 | — | 2023-06-10 | 12m42s | [对话 093｜想清楚这些，才能成为财富的主人｜Multiple-Fire系列](https://share.transistor.fm/s/95641475)<!--g:1b7bb0eb-e4ba-4d20-87cc-c1aed1973321--> | — |
 | — | 2023-06-05 | 8m15s | [立正说 091｜Web3其实是二次元？｜如何判断新技术？](https://share.transistor.fm/s/c06ff335)<!--g:fc8e7b91-db08-4015-82c0-4d56149c58a3--> | — |
@@ -378,7 +378,7 @@
 | — | 2023-05-03 | 17m57s | [对话 086｜字节跳动的牛逼之处，真正内行的视角](https://share.transistor.fm/s/2f8ea2b7)<!--g:0f212fb7-35e4-47df-9428-29202a7fe7ef--> | — |
 | — | 2023-05-01 | 2h05m | [对话 085｜Drink with me ｜ 两小时无主题闲扯](https://share.transistor.fm/s/744e4b60)<!--g:34f87629-48ed-42cb-bd3b-aaf77754c879--> | — |
 | — | 2023-04-26 | 42m37s | [对话 084｜工夫茶的原理和手法，一次学清楚](https://share.transistor.fm/s/6ad36296)<!--g:19af3e91-7030-437e-8a9c-be3403f54f31--> | — |
-| — | 2023-04-18 | 4m55s | [立正说 221｜为什么越卷越失败？｜Simple vs. Easy](https://share.transistor.fm/s/9b321b69)<!--g:805aa584-c9e3-46c3-8ece-009de9a1e2a1--> | — |
+| — | 2023-04-18 | 4m55s | [立正说 221｜为什么越卷越失败？｜Simple vs. Easy](https://share.transistor.fm/s/9b321b69)<!--g:805aa584-c9e3-46c3-8ece-009de9a1e2a1--> | ✅ 已处理（2026-10-09 跨期报告） |
 | — | 2023-04-16 | 6m56s | [立正说 087｜ChatGPT的泡沫快碎了吗？](https://share.transistor.fm/s/e3ebd260)<!--g:f71e55bc-1d5f-42e5-918c-1cd7ee12cb1c--> | — |
 | — | 2023-04-14 | 34m24s | [对话 083｜调酒师如何消化顾客的情绪？](https://share.transistor.fm/s/d9989540)<!--g:d56abd4e-f671-4d9a-836a-fea274bb0337--> | — |
 | — | 2023-04-11 | 26m47s | [对话 082｜如何自我和解，财富自由，抓住本质，活出自己，找到幸福？](https://share.transistor.fm/s/c1fe7c8f)<!--g:be114fc5-8f57-47e4-8c94-a55bb97bda12--> | — |
@@ -386,7 +386,7 @@
 | — | 2023-04-06 | 54m54s | [立正说 086｜TechTalk @statsig_official ： What's ChatGPT？](https://share.transistor.fm/s/23136dc7)<!--g:f451527a-b2a4-4ece-af5b-18515658da26--> | — |
 | — | 2023-04-05 | 6m44s | [立正说 085｜国产ChatGPT有戏吗？](https://share.transistor.fm/s/a656f181)<!--g:ae28de75-f7c0-4502-b531-2a806e794cf5--> | — |
 | — | 2023-04-02 | 7m19s | [立正说 084｜盖茨和Altman眼中的GPT，是什么？](https://share.transistor.fm/s/c609fd8c)<!--g:f3ca71e3-5222-4709-ae36-629c2f2d542a--> | — |
-| — | 2023-03-29 | 3m39s | [对话 327｜简简单单，不当韭菜](https://share.transistor.fm/s/4ae7f1d8)<!--g:b08fe527-92d3-4b4d-adbd-7328534356c7--> | — |
+| — | 2023-03-29 | 3m39s | [对话 327｜简简单单，不当韭菜](https://share.transistor.fm/s/4ae7f1d8)<!--g:b08fe527-92d3-4b4d-adbd-7328534356c7--> | ✅ 已处理（2026-10-09 跨期报告） |
 | — | 2023-03-24 | 13m54s | [对话 080｜不接商单，假清高还是下大棋？讨厌的观众能不能骂？](https://share.transistor.fm/s/4bdce82f)<!--g:a8250364-81b2-449c-9a4e-fafd4cf8d72a--> | — |
 | — | 2023-03-18 | 9m11s | [立正说 083｜如何不被ChatGPT卷掉？｜脑艺人](https://share.transistor.fm/s/389fa5e5)<!--g:5812ae9c-dc3c-4656-9eb6-b7c671823a54--> | — |
 | — | 2023-03-17 | 13m42s | [对话 079｜网红心得！](https://share.transistor.fm/s/5dbeb2b3)<!--g:d28db924-4191-45a5-85f4-15af97a637d1--> | — |
@@ -447,8 +447,8 @@
 | — | 2022-04-04 | 22m05s | [对话 049｜游戏策划是做什么的？｜年轻人如何保留自己的棱角？｜应届生采访系列1](https://share.transistor.fm/s/e850f61a)<!--g:1fcbd86d-12d0-4613-99ee-93adcd9ff379--> | — |
 | — | 2022-04-01 | 11m15s | [立正说 059｜跨赛道跳槽的经验｜跳槽的最佳时机？｜如何选择职业4⧸4](https://share.transistor.fm/s/d24104d5)<!--g:8df45e5a-876a-45fc-8a56-e96bd91e79d7--> | — |
 | — | 2022-03-31 | 7m04s | [立正说 058｜放弃金融咨询选互联网，后悔过吗？｜如何选择职业 3⧸4](https://share.transistor.fm/s/59d1a21d)<!--g:54bad476-09ea-4610-8210-f6acbea71080--> | — |
-| — | 2022-03-29 | 4m03s | [立正说 218｜不被奋斗困住，不求世俗认同，不恋过往｜如何选择职业 2/4](https://share.transistor.fm/s/6c7f5290)<!--g:60a60883-18a7-40cc-8516-ab2cb2ef1757--> | — |
-| — | 2022-03-28 | 4m33s | [立正说 217｜抱歉无法替你做选择，但这些经验会有借鉴｜如何选择职业 1/4](https://share.transistor.fm/s/0beed475)<!--g:dfd2b6e3-9c83-4679-a411-05c73e0bcfd4--> | — |
+| — | 2022-03-29 | 4m03s | [立正说 218｜不被奋斗困住，不求世俗认同，不恋过往｜如何选择职业 2/4](https://share.transistor.fm/s/6c7f5290)<!--g:60a60883-18a7-40cc-8516-ab2cb2ef1757--> | ✅ 已处理（2026-10-09 跨期报告） |
+| — | 2022-03-28 | 4m33s | [立正说 217｜抱歉无法替你做选择，但这些经验会有借鉴｜如何选择职业 1/4](https://share.transistor.fm/s/0beed475)<!--g:dfd2b6e3-9c83-4679-a411-05c73e0bcfd4--> | ✅ 已处理（2026-10-09 跨期报告） |
 | — | 2022-03-22 | 14m37s | [立正说 057｜初中参加机器人AI比赛，竟领悟获益终身的创业教训？｜课代表故事会](https://share.transistor.fm/s/b583d095)<!--g:e58b8600-a344-4b9a-8d8e-a8f5992b95a0--> | — |
 | — | 2022-03-18 | 26m53s | [对话 048｜大厂总监天天靠开会能为公司创造什么价值？](https://share.transistor.fm/s/a5d4cd41)<!--g:765a12d7-b75c-4fc5-99a7-6051857fe4e7--> | — |
 | — | 2022-03-15 | 23m23s | [对话 047｜职场新人常见误区？｜资深HR对职业发展的真诚建议｜HRBP采访 3⧸3](https://share.transistor.fm/s/3e014583)<!--g:389d24a3-c7dc-4fae-b247-aaa1a20facad--> | — |

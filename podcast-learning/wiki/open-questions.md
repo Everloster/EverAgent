@@ -93,6 +93,18 @@
 - **有效公益的成本效益测算方法** —— 知行 E253：浅池实验哲学论证强，但益盒的量化框架（QALY/DALY 本土化？）值得检验；桑德斯 AI 主权财富基金法案条款与法理（"像石油"类比 vs 训练数据非排他性）。
   - 来源：[[2026-10-09_xiaoyuzhou-zhixing-xiaojiuguan_e253-ai-good]] 问 2
 
+
+### 来自 2026-10-09（二）中优先批次（新汇入）
+
+- **"如何选择职业"3/4、4/4 缺失** —— 孙煜征职业系列只有 1/4、2/4 回灌入库，后两集（BCG vs 互联网、亚马逊 vs Facebook 的具体决策逻辑）需去 YouTube 频道补看。
+  - 来源：[[2026-10-09_rss-kedaibiao-lizheng_career-methods-series]] 问 2
+- **冉总的宏观机构与"八字真言"** —— 听懂涨声："全球前三宏观研究公司"未点名（公司股份变动后离开）；八字真言原话转写无法还原；Warren 的非营利组织业务细节未展开。
+  - 来源：[[2026-10-09_xiaoyuzhou-tingdong-zhangsheng_father-son-money]] 问 2
+- **裸盖鱼的现行分类** —— 说医解药口播"被扔到了鲈形目"，与常见资料（鲉形目/鲈形目之争）需核对；中国本土鱼类的系统性汞数据缺。
+  - 来源：[[2026-10-08_xiaoyuzhou-shuoyi-jieyao_vol91-cod-mercury]] 问 2
+- **Meta Muse connector 生态与"Manas"收购** —— 大小马 V95：Muse 被亚马逊/Google 收敛权限的时间线；Meta 高溢价收购的中国团队"Manas[?]"是谁；World Labs 收购最终结构。
+  - 来源：[[2026-10-08_xiaoyuzhou-daxiaoma-keji_v95-china-us]] 问 2
+
 ## 已解决
 
 ### 2026-07-18 首轮攻坚：9 问全清 ✅
