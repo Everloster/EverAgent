@@ -34,6 +34,7 @@
 
 ## 更新日志
 
+- 2026-10-08：前沿专题+行业观察交叉线新增《OpenAI数学手稿事件（openai/math）核实与深度分析》（卡兹克公众号文章驱动，用户点名"做个 AI 深度学习任务"）。增量：①仓库一手核验——719 手稿/372 成果组/~4000 问题/3h·result，722→719 符号错误撤稿实录，42% 形式化口径不可复算（300 vs 242 vs 200 三路数字互不吻合），17 分支学科分布（TCS 40/组合 37 居前）；②五大头条逐项对照 overview.tex 原文（准黎曼 7/8 主结果+11/12 伴生、ω≤9/4、挂谷三维极大+四维维数、UGC、Hodge CM、整数乘法 κ=2⁻¹⁸²）；③外部事件全链核实（NS 风波 Clay C/D、Buckmaster/Bubeck 争议双方确认点、联名信实为 28 位、AGMAI 9-29 与发布形态逐条对照表）；④修正文章 6 处失真（含 Altman 推文原文实为七词宣言、"arXiv 月限两篇"有误）；⑤「评判器成本」框架深加工为可证伪预测并缝合 model_calibration/rl_scaling/craft_displacement。新建 wiki 概念页 ai_automated_math_research；PROFILE 兴趣点 #9 录入。三新问汇入 open-questions。
 - 2026-09-30：校正 paper 47 的内部倍数不一致，并同步概念页和直接追问；仅按已有列值重算，原论文 Table 6/22 待复核，其他结论的证据时点不变。本次没有新增研究方向或修改兴趣优先级。
 
 - 2026-09-22：跨域方法论新增《格罗滕迪克「涨潮」思想：让难题消失的升维方法研究》（Jabe 抖音视频派单，Razer kimi 执行；数学方法论/数学史，非 AI 主线，归入跨域方法论）。增量：①出处考证纠偏——《The Rising Sea》是 McLarty 写格氏的论文而非格氏手稿，"涨潮"精确出处=R&S 第 122 节 pp.552–555；②三份一手 PDF 仅保留于 Razer 本地研究缓存，公开仓只存报告与来源链接；③方法论精读——涨潮三步法（造世界→翻译→等成熟）、Deligne "trivial steps" 描述、"简单与普遍是同一追求两面"；④反鸡汤两修正：Deligne 收官 Weil 猜想仍靠硬功夫，同一思维在人生/体制冲突上存在明显边界；⑤三条可操作原则（问题分类再选工具/造海显式记账/给 Deligne 留位置）。新建 wiki 概念页 problem_dissolution_rising_sea，缝合 craft_displacement/bitter_lesson。三新问汇入 open-questions。

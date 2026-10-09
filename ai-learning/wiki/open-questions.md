@@ -44,6 +44,9 @@
 - **[ChatGPT Work / 多 agent]** Sol/Luna/Terra 子 agent 的上下文如何在父子间传递？`/workspace` 持久卷子 agent 是否可见、产出如何回流去重、子 agent 会不会绕过父 agent 的 auto-review 而独立踩满致命三重？（来源：ChatGPT Work 能力面解析 20260831）
 - **[ChatGPT Work / 推理档位]** Ultra 档"更激进委派子 agent"（Simon 推测）能否证实？若成立，最高推理档本质是"从单体深思转向多体并行"，会改写"推理档位=想得更久"的默认理解——需 Work 环境实测 High vs Ultra 是否 fork 子会话（来源：同上）
 - **[ChatGPT Work / AI 安全]** OpenAI 的 auto-review 机制对"出网 code interpreter + 浏览器读恶意页"这条具体注入链路拦不拦得住？有无公开红队报告/CVE？（来源：同上，接 lethal trifecta 与 ChatGPT Atlas 注入实证）
+- **[AI×数学]** 准黎曼 7/8 的 Lean 形式化是否做过 statement-level 审计（Lean 陈述 = 准黎曼猜想的公认表述）？"编译通过≠证的是原题"这条缝隙在 openai/math 上有没有公开的专家对照记录？（来源：openai/math 核实与深度分析 20261008）
+- **[AI×数学]** ~58% 未 Lean 形式化结果的消化激励如何安排——AGMAI 的中立仓库会成真吗？追踪指标：2027-01 回访 372 组中被独立确认/反驳/遗忘的分布（来源：同上）
+- **[AI×数学/评判器成本]** 可证伪检验：未来 6-12 个月，裁判可自动化的领域（理论 CS/组合优化）是否出现类似 openai/math 的批量成果发布？若"裁判贵"的领域（湿实验生物）反而先批量出成果，框架证伪（来源：同上）
 
 ---
 
