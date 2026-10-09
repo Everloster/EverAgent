@@ -140,6 +140,12 @@
 - 每阶段交付后收一次学习反馈（懂了 / 卡在哪 / 深度不够），反馈 > 配方自检 > 脚本自检；必要时调整后续阶段顺序（阶段 2-6 允许按兴趣重排）。
 - 每完成一阶段：回本文件勾进度 + 更新 MAP.md 覆盖状态。
 
+## 第四样本：VISTA（2026-10-09 增补，光谱的学术端）
+
+- **源码副本**：`~/workspace/VISTA` @ c97c354（MIT，82 py/18,754 行）；**refer 手册**：infra 仓 `infra/references/vista-reference.md`；**论文精读**：`reports/paper_analyses/48_vista_2026.md`（arXiv 2610.02200）。
+- 定位：codex/dsh/pi 是工程自发形态的 harness，VISTA 是学术自觉形态（何恺明团队，ARC-AGI-3 RHAE 100）——**它把 Claude Code/Codex CLI 经 Docker+MCP 雇佣为玩家主体**，即 coding CLI 被当作通用 agent 运行时。对照价值：7 行 prompt vs 千行 prompt；GUIDE/WORKING 显式化上下文管理；三重恢复分类学（Compact/Retry/Runtime + 标记文件状态机）；六段消融证明"无损记忆+按需回看"贡献最大单段跳变（+24 RHAE）。
+- 与阶段映射：阶段 3（上下文工程）看其双笔记+压缩握手；阶段 2（工具系统）看其 question-driven inspect；阶段 6（产品形态）看其 MCP 工具面反向暴露模式。
+
 ## 进度
 
 - [ ] 阶段 0 · 三仓总览与跑通

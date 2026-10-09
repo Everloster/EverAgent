@@ -141,3 +141,14 @@
 - **[Agent产品/伦理]** 真人接线员事件（404 Media/Reuters 曝光→Meta 回滚 outbound calls）是否引来 FTC/州监管介入——Wizard-of-Oz 披露义务的首个大规模消费级判例，跟踪后续（同上 问2）
 - **[评测方法论]** Muse Spark「官方自报 vs 独立测」双例落差（DeepSWE 75.4 自报不上公共榜；Terminal-Bench 88.8 自报 vs Vals 72.3）——Agent 时代读 benchmark 必须查 evidence ledger 的"谁来测"
 - **[监管]** 欧盟版本走向验证"GDPR/DMA 阉割版"预判（同上 问3）
+
+## 2026-10-09 VISTA 视觉 Harness（新汇入）
+
+- **完整 VISTA@Opus xhigh 的每游戏成本** —— 消融只给了 GPT-5.6 Sol 的 per-game token；"满分"的美元价格需从 arcprize scorecard 反推，是落地关键问题。
+  - 来源：[[48_vista_2026]] 思考与追问·问 2
+- **(v) 档动作数反降的机制** —— 无损记忆+inspect 使 RHAE 70→94 且动作数 23,702→12,261 反降：是"回看减少试错"还是"inspect 调用挤掉 play"？关系该结论能否迁移到生产 agent。
+  - 来源：同上
+- **视觉档案的语义检索层** —— turn/frame 索引在千+回合长程任务下够不够？VISTA 的显式注意力与 Hindsight 式 embedding 检索如何互补（跨模态 synthesis 候选：Anthropic博文×李继刚×Hindsight×VISTA 四源）。
+  - 来源：同上
+- **B 类复现实验位** —— GLM-5.3 Flash 320B + VISTA（paper Figure 8: 1.89→66.93）在 Razer Ubuntu 侧跑 ARC-AGI-3 公开子集，检验 harness 红利在自有模型栈的成色。
+  - 来源：同上 问 3
