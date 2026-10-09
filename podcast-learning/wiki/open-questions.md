@@ -305,3 +305,4 @@
   - 来源：同上 问 2
 - **GH 长期肿瘤安全性的口径核对**：嘉宾说「荟萃分析显示与正常人群相同」（SAGhE/GeNeSIS 队列）——原文的置信区间、死亡/二次肿瘤亚组结论是否支撑这个通俗表述？
   - 来源：[[concepts/growth-hormone-height-decision|生长激素与追高决策]] 判别要点
+||||||| parent of cbb01bf ([podcast-learning] 电丸科技 EP04《高薪、事少，为什么我还是想逃？》)

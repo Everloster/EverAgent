@@ -84,6 +84,10 @@
 
 - [[2026-09-20_xiaoyuzhou-crossing_xumengdi|「我看到了 Scaling Law 的信号」：徐梦迪谈具身智能、世界模型与真正的泛化]]（episode_summary · 2026-09-20）— 十字路口Crossing 对谈清华叉院 AP，1h20m，adaptation/ICL / loss≠成功率 / 机器人 GPT-1 阶段论 / 数据四路融合
 
+### 职业 / 人生叙事
+
+- [[2026-10-03_bilibili-dianwan-ak_ep04-quit|高薪、事少，为什么我还是想逃？]]（episode_summary · 2026-10-03）— 电丸科技AK×甄总，1h08m，旧人生地图失效 / 四信号 / 决定权外包 / 投流门槛 / 好产品≠好生意
+
 ### 社会学 / 工作观
 
 - [[2026-09-11_bilibili-shigerenwu_chenglesong|是个人物 EP22：程乐松——不要牛马，不要狗屁，要什么？]]（episode_summary · 发布 2026-09-11，归档 2026-09-23）— B 站视频播客，83m，北大哲学系系主任的"反卷"日常哲学：explain out vs explain away / 不狗屁的两个方向 / 脚踩西瓜皮（回望才有必然性）/ 安时而处顺；与鲍曼工作观线互补
