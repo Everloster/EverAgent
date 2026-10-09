@@ -43,7 +43,7 @@
 | 🧠 [Psychology Learning](./psychology-learning/) | 17 篇 | 13/13/0 |
 | 🧬 [Biology Learning](./biology-learning/) | 18 篇 | 14/9/0 |
 | ⚗️ [AI Practice](./ai-practice/) | 9 篇 | 9/1/0 |
-| 🎙️ [Podcast Learning](./podcast-learning/) | 54 篇 | 55/47/0 |
+| 🎙️ [Podcast Learning](./podcast-learning/) | 56 篇 | 56/48/0 |
 <!-- AUTO-OVERVIEW:END -->
 
 > 📖 抽空读报告？全部报告按更新时间索引 → [docs/REPORT_INDEX.md](./docs/REPORT_INDEX.md)（`reindex.py` 自动生成）

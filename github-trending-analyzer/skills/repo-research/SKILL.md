@@ -177,6 +177,23 @@ python3 scripts/github_api.py <owner> <repo> issues            # issue 响应概
 > 若近期无新 release 且生产分支停更，则**暴涨是站外事件驱动，不是代码驱动**。
 > ② **再定位站外事件**——`web_search "<repo> star surge <month year>"` + 关注竞品动向（对标商业产品涨价/封锁常是导火索）。把"代码侧无爆发 + 多语种媒体共振 + 里程碑效应"这类归因写进"发展趋势"章，比笼统说"项目火了"有价值。
 
+> 💡 **PR 计数用 Link header，别信 search API（事C 沉淀，2026-10-09 实测 NandhaKishorM/laya）**：`search/issues?q=...+type:pr+state:merged` 对新仓库常返回 0（索引未就绪），直接把 PR 总数写成 0 就错了。用 pulls 端点的分页 Link header 拿精确总数：
+> ```bash
+> gh api -X GET "repos/<owner>/<repo>/pulls?state=all&per_page=1" -i 2>/dev/null | grep -i '^link:' | grep -o 'page=[0-9]*>; rel="last"'
+> ```
+
+> 💡 **HN 帖子是 sentiment 金矿，Algolia API 是合法降级（事C 沉淀，2026-10-09）**：走红 repo 的 show HN 帖（评论/第三方实测/批评）比媒体稿更有信息量。`eacli web.read` 对 news.ycombinator.com 解析失败时，HN Algolia 公开 JSON API 是最小降级（记录原因即可）：
+> ```bash
+> curl -s "https://hn.algolia.com/api/v1/items/<id>" | jq '{title, points, author, children: [.children[] | {author, text}]}'
+> ```
+> 找帖子：`curl -s "https://hn.algolia.com/api/v1/search?query=<repo name>"`。R3/R4 的社区反馈章优先用它。
+
+> 💡 **grep 代码注释里的 issue 编号，找"声明与实现的缝隙"（事C 沉淀，2026-10-09 高价值）**：README 叙事层（如"trained with RL"）与代码注释/issue 引用（如 `#741 measured no gain from the extra term`）可能直接矛盾——这是比任何 benchmark 都硬的证据。R2 读代码时固定加一步：
+> ```bash
+> grep -rn "#[0-9]\{3,4\}" <核心模块> | grep -i "measured\|no gain\|fix\|because\|regress"
+> ```
+> 发现缝隙就写进技术分析章（"README 宣称 X，源码注释/实验引用 Y"），这往往是报告最有价值的段蓂。
+
 ---
 
 ## 报告：7 章中文结构

@@ -3,15 +3,20 @@ title: "Laya：把「反射性决策」从 LLM 里拆出来——421M 非自回�
 domain: "ai-learning"
 report_type: "knowledge_report"
 status: "completed"
-updated_on: "2026-09-22"
-tags: [System1, 非自回归, RLCD, 校准, 决策模型, ModernBERT, 部署实测, 路由]
+updated_on: "2026-10-09"
+tags: [System1, 非自回归, RLCD, 校准, 决策模型, ModernBERT, 部署实测, 路由, Jev, OpenAI-Decisions-API, 源码深读, v0.4.1]
 difficulty: ⭐⭐⭐
 source_trigger: "微信公众号 ModelScope《Laya 开源：比Jev快4倍！421M参数，33毫秒完成 System 1 决策》（mp.weixin.qq.com/s/9SJf3nhK25rZcZwQNTg7mw）——用户要求：AI 研究学习 + 能否部署使用 + 双仓场景"
 ---
 
-# Laya：把「反射性决策」从 LLM 里拆出来
+# Laya：把「反射性决策」从 LLM 里拆出来（v0.4.1 续深版）
 
-> **一句话**：Laya 是一个 421M 参数的非自回归决策模型——不生成任何文本，一次前向传播输出「选择/评分/布尔」三类判断及其**数学校准的概率**，本机 Mac MPS 实测 4 问 34.5ms / 1 问 10.7ms。它攻击的是每个 AI 流水线里最浪费的一环：**用 8B-70B 的生成式 LLM 回答"这封邮件该给谁"**。本报告 = 原理解析 + 官方宣称的本机核验 + 双仓（EverAgent / EverAgent-infra）场景评估。
+> **x → f → f(x)**（按 METHODOLOGY 框架 A）
+> - **x**：AI 流水线里海量「反射式判断」（路由/分级/是否）该由什么模型承担？
+> - **f**：作者的回答——判别式编码器 + 类型化问题（choice/score/noul）+ 适当评分规则校准，把决策从生成式 LLM 中剥离成一次前向 [代码]。
+> - **f(x)**：接受 f 后，决策层的成本结构被重写（10-30ms、$0、零幻觉），但「校准」大部分来自事后温度拟合而非 RL 训练（#741 实测），零样本能力低于 majority 基线——**它是「微调后用于垂域的快速底座」，不是开箱即用的决策引擎**。该结论已被本机实测（09-22）+ 源码深读（10-09）双重验证。
+
+> **一句话**：Laya 是一个 421M 参数的非自回归决策模型——不生成任何文本，一次前向传播输出「选择/评分/布尔」三类判断及其**数学校准的概率**，本机 Mac MPS 实测 4 问 34.5ms / 1 问 10.7ms。它攻击的是每个 AI 流水线里最浪费的一环：**用 8B-70B 的生成式 LLM 回答"这封邮件该给谁"**。本报告 = 原理解析 + 官方宣称的本机核验 + 双仓（EverAgent / EverAgent-infra）场景评估；**10-09 续篇**追加 v0.4.1 源码深读、Jev→OpenAI 行业博弈全景、社区争议实录与理论定位。
 
 ---
 
@@ -113,7 +118,7 @@ source_trigger: "微信公众号 ModelScope《Laya 开源：比Jev快4倍！421M
 - **colibrì（09-12 介绍）**：两种推理经济学——colibrì 省**显存**（大模型塞进小机器），Laya 省**token 与延迟**（小模型替大模型干活）；都对「每个 token 都是成本」的橘子论断回应。
 - **王坚期**：「机器智能不做拟人」——Laya 是极端案例：连语言都不生成，只留判断。
 
-## 🤔 思考与追问
+## 🤔 思考与追问（2026-09-22 初版）
 
 1. **我真正理解了什么？**
    Laya 的本质贡献不是 421M 的参数效率，而是**把「校准」从 LLM 的行为问题变成可优化的数学目标**（proper scoring rules 作为 RL 奖励）。工程上最有价值的是 act/escalate 头——「何时不信自己」被做成了模型的一部分，而不是外挂的 if-else。对双仓而言，它是第一批「本机 MPS 跑得起、延迟达标、Apache 2.0」的实用非生成模型。
@@ -129,7 +134,105 @@ source_trigger: "微信公众号 ModelScope《Laya 开源：比Jev快4倍！421M
    - 把「自定义选项集上的校准自测」写进 demo 的必做清单（用 reliability diagram + ECE）；
    - infra 侧若做告警分级，先拿历史告警数据回测 0.85 阈值的覆盖率/准确率曲线再上。
 
-## 来源
+---
+
+# 续篇（2026-10-09 · v0.4.1 · 31,848 stars 时代）
+
+> 初版报告三周后回访。期间发生的事：仓库从 9,984 → **31,848 stars**（3.2x）、821 PR、100 贡献者；版本 v0.3.5 → v0.4.1（20 天 29+ 正式版）；两个 checkpoint → 三个（新增 `laya-typed-decisions`）；OpenAI 入场。本续篇基于**本地 clone 源码深读**（pin `1adc59f`，2026-10-08）+ Wikipedia/Fortune/HN 交叉核验，完整 7 章研究报告另见 `github-trending-analyzer/reports/research_NandhaKishorM_laya.md`。[API]
+
+## 7. 行业叙事完整版：三周内的三方博弈
+
+初版只把 Jev 当对比基准，现在它是一整条行业故事线 [Web]：
+
+| 日期 | 事件 | 信源 |
+|---|---|---|
+| 2024 | Diogo Almeida 离开 OpenAI（在彼 ~4 年，做过 RLHF/InstructGPT/ChatGPT/GPT-4），与 Erik Gafni、Sasha Sheng 创立 TypeSafe AI | Wikipedia |
+| 09-15 | **Jev 发布**（限量 early access）：判别式、typed 输出、宣称比前沿 LLM 快 40-200x/便宜 40-400x；同步宣布 DCVC 领投 **$40M 种子轮**（估值 $200M）| Wikipedia/Forbes/Fortune |
+| 09-18 | Laya 开源（作者 NandhaKishorM/Convai Innovations，HN show 帖自称「built on the exact research on jev architecture one year ago」）| HN id=49765348（1,363 分）|
+| 10-06 | **OpenAI 跟进发布 Decisions API**（基于 GPT-6 Luna）——品类获得最大玩家背书 | Fortune 10-08 |
+| 10-08 | Fortune 专题《Jev…viral hit…OpenAI hot on its heels》；Laya 同日发 v0.4.1 | Fortune/API |
+
+三个值得记住的细节 [Web]：
+1. **「Jev」命名自 Jevons 悖论**（Almeida 亲口）：效率提升→消耗总量反而大增——比 LLM 便宜两个数量级的决策智能会催生海量新调用。这是对 Bitter Lesson 的一次经济学倒装：不是算力吞掉方法，而是廉价吞掉犹豫 [推测]。
+2. **API 三原语同构**：Jev 的 `noul/choice/score` 与 Laya 完全同名同义（连 confidence 公式 `(p_max−1/n)/(1−1/n)` 都一致）——Laya 的 `laya-serve` 直接做 Jev-compatible HTTP 层。开源对闭源的「协议寄生」策略执行得非常彻底 [代码] [Web Wikipedia]。
+3. **TypeSafe 的 RLCD 细节未公开**（Wikipedia 猜测含 Brier 项的监督式）；Laya 同名算法是作者自己的复刻命名。两个 RLCD 不是同一物——引用时必须区分 [Web]。
+
+## 8. 源码深读：回答初版的三个未解问题
+
+### 8.1 未解问题③「RLCD vs 后处理校准的增量」——#741 给出了答案
+
+初版最大的未验证假设是「RL 训出来的校准 vs 后处理校准谁在起作用」。v0.4 源码直接回答了 [代码 `laya/train.py`]：
+
+```python
+LOSSES = ("soft-ce", "rlcd")
+# "rlcd" (the default) is the notebook's objective: a GRPO-style term over noisy logit
+# samples rewarded by `proper_reward`, plus soft cross-entropy...
+# #741 measured no gain from the extra term on the typed-decisions split.
+```
+
+**结论：GRPO 项在该分割上零增益，`soft-ce` 单独等效**。再叠加上 shipped checkpoints 的出厂校准实际来自温度拟合（见下），README 开头的 "trained with RL against strictly proper scoring rules" 与可验证证据之间有明确缝隙。诚实地说：**Laya 证明了「编码器+类型化输出+事后校准」这条工程路线可行，但没有证明「RL 训练出校准」这个更强的命题**。初版对 RLCD 数学的分析依然成立（作为设计文档读），但要降级理解为「训练目标的设计意图」而非「已验证的增益来源」。
+
+### 8.2 未解问题①「温度钳制的边界」——分桶校准机制全貌
+
+`calibrate.py` 的完整语义 [代码]：温度按 `temp_bucket(qtype, k)` 分桶拟合（LBFGS，NLL on softmax(z/T)）；**桶样本 <2,000 不写入桶级温度**（回退类型级标量，下限 10 样本）；全部 clamp 到 [0.5, 5.0]。初版发现的「choice≥11 桶被钳制」即落在「样本不足→标量→clamp」的路径上。工程含义没变：**自定义选项集必须自带 ≥2,000/桶 的校准集重拟合**，否则置信度只是「看起来校准」。
+
+### 8.3 新发现：编码格式与 token 预算经济学
+
+`build_sequence` 的真实格式 [代码]：
+```
+[CLS] <qtype> instructions [SEP] [MASK] opt0 [MASK] opt1 … [SEP] state [SEP]
+```
+- 问题+选项（head）在前、state 在后，`head_max_len`（192/256）封顶，**每选项保底 4 tokens**（`per = max(4, (head_max_len-16)//k)`）——超过 ~head_max_len/4 个选项时 head 会**超出上限**，state 被截断而非仅保守 [README Honest limits]。77 选项 × 4 tokens ≈ 300+ tokens 的 head，每选项 3-4 tokens「文本不可分辨」，0.425 准确率的根因在此。
+- state 的 tokenize **每行一次、全问题共享**（`state_ids` 复用）——批量多问的 token 经济学核心 [代码]。
+- 补丁双层：`predict_shortlist`（调用方嵌入模型先筛 top-20）与 `predict_tournament`（16 标签分组循环赛）[代码 `shortlist.py`]。
+
+### 8.4 新发现：防御性工程的范本价值
+
+三处值得抄进自己项目的模式 [代码]：
+1. **OOM 作用域回退**：GPU 溢出只把当前请求降级 CPU 重试（曾因一次 OOM 永久降速 10-15x，#649 修复），降级计数写进 `/health`——「慢车道可观测」；
+2. **懒加载边界**：`import laya` 不拉 torch（模块级 `__getattr__`），路由/语言检测纯 Python 可用——导入开销与推理解耦；
+3. **供应链 pin 语义**：per-checkpoint SHA-256 覆盖 shared map 的合并规则、显式 `{}` = 「这条不验证」的掩蔽语义，全部有测试钉死——digest 工程的教科书。
+
+## 9. 社区争议实录：「just BERT」论战
+
+HN 1,363 分主帖的 77 条评论里，批评与赞美同样有信息量 [Web]：
+
+| 阵营 | 论点 | 我的核验 |
+|---|---|---|
+| NLP 老兵（Oras） | 「it's just BERT」——决策模型=分类器换皮 | ✅ 架构上成立（ModernBERT+头），但低估了「类型化 API+校准+生态」的产品化增量 [代码] |
+| 第三方实测 | 合成数据集 1,000 条：Jev 98% vs **Laya 15%** | 与 README 自认「零样本低于 majority 基线」一致——**未微调的 Laya 不可用** [README] |
+| 上下文批评（cube2222） | 512-1024 vs Jev 32k 是重大限制 | ✅ 8192 上限后长文准确率 8-17/20 波动 [README] |
+| 「vibecoded」质疑 | 代码疑似 AI 生成堆砌 | ⚠️ 与源码实读相反：docstring 即 ADR、防御性极强——更像是「AI 辅助但重度人审」的产物 [代码] [推测] |
+| 支持者（zurfer） | Jev 已把 Luna/Gemini 工作负载变 10x 便宜 2x 快，Laya 再开源化一层 | 品类价值的最强证词 [Web] |
+
+这场论战的教学价值：**「架构是否新颖」与「产品是否成立」是两个问题**。Laya 在前者接近零创新（BERT+分类头+适当评分规则都是已知件），在后者做对了 API 设计、诚实基准与生态卡位——而 OpenAI 用 Decisions API 入场证明了后者的市场判断。
+
+## 10. 理论定位：判别式决策模型在谱系里的坐标
+
+- **适当评分规则的数学地位**：log score 对真实分布的期望在 q=p 时取唯一最大（Gibbs 不等式）；spherical score S=(p·q)/‖q‖ 同样严格适当且梯度更平滑；RPS 对有序类别是严格适当的（按累积分布 CDF 距离）。Laya 把三者加权复合（w_sph=0.5, w_rps=1.0），复合保持适当性——**设计正确**；只是其必要性未被 #741 之上的消融支持 [代码] [推测]。
+- **判别 vs 生成的分工理论**：Jev/Laya 属于「判别式 zero-shot 指令跟随」——用指令文本在推理时定义标签空间（区别于经典分类器的固定标签训练）。它填补的是「LLM 太贵、FastText 太笨」之间的空档。OpenAI Decisions API 用 GPT-6 Luna 做同样的事，说明路线之争（专用小模型 vs 通用大模型+API 包装）刚刚开始 [Web Fortune]。
+- **System 1/2 映射谱系**：Kahneman（2011 心理学）→ TypeSafe（2026 商业化命名「System One models」）→ 社区共识术语。注意这是**隐喻而非同构**：Laya 没有「快而直觉」的认知机制，只有「快而受限的输出空间」——System 1 的「直觉性错误」（如否定句失效 #377）恰好也在 Laya 上复现，倒是个有趣的平行 [推测] [README]。
+
+## 🤔 思考与追问（2026-10-09 续）
+
+1. **我真正理解了什么？** 三周前我以为 Laya 的核心资产是「RLCD 训练出的校准」；源码深读后修正为——它的核心资产是**「类型化决策 API + 可复现的诚实基准 + 微调工具链」这个产品化组合**，校准主要靠后处理温度。这个修正本身就是方法论课：README 的叙事层（RL 训练校准）与证据层（#741 消融）之间的缝隙，只有读代码才能看见。
+2. **我还没搞懂什么？**
+   - OpenAI Decisions API（GPT-6 Luna）的能力边界与定价——若它以生成式大模型做到 Jev 级速度，专用判别式小模型的存在意义会被压缩到「本地/隐私/边缘」场景；需要等第三方基准。
+   - `laya-typed-decisions` 的微调配方（RLCD vs soft-ce 在**其他**分割上是否也无增益——#741 只测了一个分割）。
+   - 高基数问题的 shortlist 路线（嵌入模型与决策模型的误差如何叠加）——README 的 Banking77 0.425 没有给出 shortlist 修复后的对照数字。
+3. **下一步做什么？**
+   - 初版计划的 B 类 demo（`ai-practice/laya-router-demo`，播客段落分类对照实验）依然成立，且 v0.4 的 `train.py` 让「微调后 vs 零样本」对照实验成本大降——优先级上调；
+   - 在 demo 中补一组「soft-ce vs rlcd」双目标微调对照（每个只需 ~352 updates，Kaggle 2xT4 可跑）——直接回应未解问题；
+   - 跟踪 OpenAI Decisions API 的第三方评测，一个月后回访这条产品线。
+
+## 来源（续篇追加）
+- 本地 clone 源码：`NandhaKishorM/laya@1adc59f`（2026-10-08，v0.4.1）——`train.py`/`calibrate.py`/`common.py`/`agent.py`/`router.py`/`shortlist.py`/`pyproject.toml` 逐文件精读 [代码]
+- GitHub API（2026-10-09 实测）：stars/contributors/releases/commit_activity/pulls（821 PR）/languages [API]
+- Wikipedia: *Jev (AI model)*（2026-10 快照：TypeSafe 创始团队/$40M DCVC 种子轮/技术规格/RLCD 未公开）https://en.wikipedia.org/wiki/Jev_(AI_model)；Fortune 2026-10-08（OpenAI Decisions API 10-06 发布、Almeida 专访）https://fortune.com/2026/10/08/jev-an-ai-for-making-quick-decisions-has-been-a-viral-hit-in-silicon-valley-but-openai-is-hot-on-its-heels；HN show 帖 https://news.ycombinator.com/item?id=49765348（1,363 分主帖+评论，经 Algolia API）；TypeSafe 官方博客 https://typesafe.ai/blog/introducing-system-one-models-and-jev（经搜索摘要）[Web]（eacli web.read 于 10-09 抓取；HN Algolia API 直取——eacli 对该 URL 解析失败的记录降级）
+- 竞品 gh 实测（2026-10-09）：urchade/GLiNER 4,067★、huggingface/setfit 2,836★、sentence-transformers 19,161★、AbdelStark/jev-benchmarks 25★、nibzard/decision-model-benchmark 11★ [API]
+- 姊妹报告：`github-trending-analyzer/reports/research_NandhaKishorM_laya.md`（7 章完整版，同日）
+
+## 来源（2026-09-22 初版）
 - 触发文章：ModelScope 公众号《Laya 开源：比Jev快4倍！421M 参数，33 毫秒完成 System 1 决策》（mp.weixin.qq.com/s/9SJf3nhK25rZcZwQNTg7mw，全文经 web-reader 抓取）
 - GitHub：NandhaKishorM/laya（Apache 2.0，2026-09-18 创建，实测时 9,984 星/827 forks，Python）[Web]
 - 模型：convaiinnovations/laya（ModelScope/HF 双发布；English + multilingual 两 checkpoint）[Web]

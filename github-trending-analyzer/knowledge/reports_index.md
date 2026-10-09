@@ -64,6 +64,7 @@
 - huggingface/skills
 - InternScience/Agents-A1
 - interviewstreet/hiring-agent
+- NandhaKishorM/laya
 - iptv-org/iptv
 - jamwithai/production-agentic-rag-course
 - jarrodwatts/claude-hud
