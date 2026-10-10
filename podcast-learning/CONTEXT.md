@@ -205,6 +205,12 @@
   - **pipeline 事件**：transcript 202KB 超 eacli pull 上限 → invoke 远程 split 三片合并取回（已验证无损）
 
 
+### 工具：sync_index_status.py（2026-10-09 新增）
+
+- **用途**：把 `reports/*.md` frontmatter `source_url`（100% 覆盖）回填到 `wiki/show-indexes/*.md` 状态列，打通「已做过」记录。起因：催更推荐连续把 3 个已做过的集当新集推荐（乱翻书 275 / 42章经浩哲 / 张帆 FDE）——事实源一直在 reports 里，只是没与索引打通。
+- **契约**：幂等；匹配到的行统一写「✅ 已处理（日期 slug）」；未匹配的行不动（保留人工状态）；stdout 附「报告 URL 不在精选索引」清单（bilibili 等源正常，域名变更如 sv101.net→fireside、latepost↔xiaoyuzhou 双域也会出现在此，人工核）。
+- **接入点**：AGENTS.md 催更流程第 1 步 + 报告自检清单（fetch_show_indexes 刷新按 guid/链接双键保留状态列，✅ 不会丢）。
+
 ## ⚠️ 边界（防幻觉）
 
 以下主题已有报告，禁止重复生成：

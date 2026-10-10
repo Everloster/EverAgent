@@ -5,12 +5,12 @@
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
-| 153 | 2026-09-03 | 2h34m | [153. 和曾鸣聊产业史观：残酷的真相、会消亡的公司、优秀≠卓越、“OAI、Anth大概率不是原生时代大赢家”](https://www.xiaoyuzhoufm.com/episode/6a97f287f03e74ee6b03ea5b?utm_source=rss)<!--g:6a97f287f03e74ee6b03ea5b--> | ✅ |
-| 152 | 2026-08-26 | 2h04m | [152. 领读Kimi K3技术报告：从架构创新聊起，注意力美学、多教师蒸馏和开源MoE](https://www.xiaoyuzhoufm.com/episode/6a8eadd61352af56ff3c6017?utm_source=rss)<!--g:6a8eadd61352af56ff3c6017--> | ✅ 已处理（[[2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report|报告]]） |
+| 153 | 2026-09-03 | 2h34m | [153. 和曾鸣聊产业史观：残酷的真相、会消亡的公司、优秀≠卓越、“OAI、Anth大概率不是原生时代大赢家”](https://www.xiaoyuzhoufm.com/episode/6a97f287f03e74ee6b03ea5b?utm_source=rss)<!--g:6a97f287f03e74ee6b03ea5b--> | ✅ 已处理（2026-09-03 xiaoyuzhou-zhangxiaojun_zengming） |
+| 152 | 2026-08-26 | 2h04m | [152. 领读Kimi K3技术报告：从架构创新聊起，注意力美学、多教师蒸馏和开源MoE](https://www.xiaoyuzhoufm.com/episode/6a8eadd61352af56ff3c6017?utm_source=rss)<!--g:6a8eadd61352af56ff3c6017--> | ✅ 已处理（[[2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report| ✅ 已处理（2026-09-02 multi_kimi-k3-dueling-reads） |
 | 151 | 2026-08-19 | 1h09m | [151. 17岁被2026年ICML收录论文的小少年：我bet开心！开心！开心！](https://www.xiaoyuzhoufm.com/episode/6a8472b95aeb2a5712e8de78?utm_source=rss)<!--g:6a8472b95aeb2a5712e8de78--> | — |
 | 150 | 2026-08-12 | 3h36m | [150. 对英伟达研究副总裁刘洺堉的4小时访谈：功夫、Cosmos 3、开源世界模型、黄仁勋、你不需要击败所有对手](https://www.xiaoyuzhoufm.com/episode/6a7cbeb017676351c5710266?utm_source=rss)<!--g:6a7cbeb017676351c5710266--> | — |
 | 149 | 2026-07-30 | 1h40m | [149. 亲历中美neo labs资本狂潮，和清华刘子鸣聊：AI for AI、机制可解释性和Max Tegmark](https://www.xiaoyuzhoufm.com/episode/6a69b07eb581962ce2bd4d97?utm_source=rss)<!--g:6a69b07eb581962ce2bd4d97--> | — |
-| 148 | 2026-07-28 | 3h00m | [148. 对游凯超3小时访谈：开源Infra、和模型Co-design 、“如果vLLM失败，我们会后悔一辈子”](https://www.xiaoyuzhoufm.com/episode/6a66ed17a3fec224d5a3f744?utm_source=rss)<!--g:6a66ed17a3fec224d5a3f744--> | ✅ 已处理（[[2026-07-28_xiaoyuzhou-zhangxiaojun_youkaichao|报告]]） |
+| 148 | 2026-07-28 | 3h00m | [148. 对游凯超3小时访谈：开源Infra、和模型Co-design 、“如果vLLM失败，我们会后悔一辈子”](https://www.xiaoyuzhoufm.com/episode/6a66ed17a3fec224d5a3f744?utm_source=rss)<!--g:6a66ed17a3fec224d5a3f744--> | ✅ 已处理（[[2026-07-28_xiaoyuzhou-zhangxiaojun_youkaichao| ✅ 已处理（2026-07-28 xiaoyuzhou-zhangxiaojun_youkaichao） |
 | 147 | 2026-07-22 | 1h52m | [147. 和蚂蚁灵波沈宇军聊：机器人原生基础模型、大脑和本体的关系、预训练与数据scale up、老师汤晓鸥](https://www.xiaoyuzhoufm.com/episode/6a5f79b3a3fec224d5a128cd?utm_source=rss)<!--g:6a5f79b3a3fec224d5a128cd--> | — |
 | 146 | 2026-07-16 | 3h48m | [146. 对Physical Intelligence柯丽一鸣4小时访谈：Pi的开源模型研究，机器人的江湖、族谱与主角](https://www.xiaoyuzhoufm.com/episode/6a57a05da4972c496dfc67f1?utm_source=rss)<!--g:6a57a05da4972c496dfc67f1--> | — |
 | 145 | 2026-06-12 | 3h01m | [145. 口述SpaceX开发史：和前高管洪力德聊，马斯克用人观、最大IPO、太空与AI、人类文明扩张前奏？](https://www.xiaoyuzhoufm.com/episode/6a2be5da43a22a695582ad20?utm_source=rss)<!--g:6a2be5da43a22a695582ad20--> | — |

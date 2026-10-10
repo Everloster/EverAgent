@@ -5,7 +5,7 @@
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
-| — | 2026-10-09 | 1h18m | [E253 AI 会改变世界，可它真的有让世界变好吗？](https://www.xiaoyuzhoufm.com/episode/6ac89152195d838e2aef2e5f?utm_source=rss)<!--g:6ac89152195d838e2aef2e5f--> | ✅ 已处理（2026-10-09 报告） |
+| — | 2026-10-09 | 1h18m | [E253 AI 会改变世界，可它真的有让世界变好吗？](https://www.xiaoyuzhoufm.com/episode/6ac89152195d838e2aef2e5f?utm_source=rss)<!--g:6ac89152195d838e2aef2e5f--> | ✅ 已处理（2026-10-09 xiaoyuzhou-zhixing-xiaojiuguan_e253-ai-good） |
 | — | 2026-09-18 | 1h04m | [E252 公积金新规来了，这笔钱该怎么用？这份行动清单供你参考](https://www.xiaoyuzhoufm.com/episode/6aace1189d326477816b0a46?utm_source=rss)<!--g:6aace1189d326477816b0a46--> | — |
 | — | 2026-09-11 | 1h49m | [E251 对话方言：你相信的是价值投资，还是巴菲特的造富神话？](https://www.xiaoyuzhoufm.com/episode/6aa37bcd492687f6aad83995?utm_source=rss)<!--g:6aa37bcd492687f6aad83995--> | — |
 | — | 2026-09-04 | 1h40m | [E250 为什么学了这么多知识，却还是做不好投资？](https://www.xiaoyuzhoufm.com/episode/6a9a6ce4a0210c197dcd64dc?utm_source=rss)<!--g:6a9a6ce4a0210c197dcd64dc--> | — |

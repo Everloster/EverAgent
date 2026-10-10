@@ -7,7 +7,7 @@
 |---|---|---|---|---|
 | 277 | 2026-09-24 | 1h39m | [277.从提醒你，到替你办：Today想把Personal AI带到哪一步？](https://www.xiaoyuzhoufm.com/episode/6ab4b804e742e36efcbab131?utm_source=rss)<!--g:6ab4b804e742e36efcbab131--> | — |
 | 276 | 2026-09-22 | 1h12m | [276.当AI给出所有答案，年轻人如何找到自己的问题？](https://www.xiaoyuzhoufm.com/episode/6ab2546493d5eb3bdc794b18?utm_source=rss)<!--g:6ab2546493d5eb3bdc794b18--> | — |
-| 275 | 2026-09-21 | 2h06m | [275.AI办公的热闹还没散，个人Agent的战争已经开始｜拆解Town、Instinct、Grok Bot与Muse](https://www.xiaoyuzhoufm.com/episode/6ab029b7ac389df82734ebb6?utm_source=rss)<!--g:6ab029b7ac389df82734ebb6--> | — |
+| 275 | 2026-09-21 | 2h06m | [275.AI办公的热闹还没散，个人Agent的战争已经开始｜拆解Town、Instinct、Grok Bot与Muse](https://www.xiaoyuzhoufm.com/episode/6ab029b7ac389df82734ebb6?utm_source=rss)<!--g:6ab029b7ac389df82734ebb6--> | ✅ 已处理（2026-09-21 xiaoyuzhou-luanfanshu_personal-agent-wars） |
 | 274 | 2026-09-16 | 59m55s | [274.从全面屏到中折叠，小米的高端化这次找对路了吗？](https://www.xiaoyuzhoufm.com/episode/6aa9329c051af796b9e8a2dc?utm_source=rss)<!--g:6aa9329c051af796b9e8a2dc--> | — |
 | 273 | 2026-09-14 | 1h28m | [273.逛完外滩大会，发现蚂蚁找到了新位置](https://www.xiaoyuzhoufm.com/episode/6aa76141492687f6aad974bc?utm_source=rss)<!--g:6aa76141492687f6aad974bc--> | — |
 | 272 | 2026-09-02 | 1h51m | [272.从飞书基座到Agent优先，豆包工作All in one紧追WorkBuddy](https://www.xiaoyuzhoufm.com/episode/6a981121a0210c197dcc5e6e?utm_source=rss)<!--g:6a981121a0210c197dcc5e6e--> | — |

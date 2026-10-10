@@ -3,7 +3,7 @@ title: "课代表立正·职业方法论九讲：选择、余裕、失败与升�
 domain: "podcast-learning"
 report_type: cross_episode
 source: 播客（课代表立正 transistor RSS，历史视频片段）
-source_url: https://share.transistor.fm/s/0beed475（系列首集）
+source_url: https://share.transistor.fm/s/0beed475  # 系列首集（217）
 show: "课代表立正"
 episode: "立正说 217/218/221/222/223/224/225 + 对话 327/328/329（2022-03 ~ 2023-08 存量，2026-10 feed 回灌入库）"
 host: "课代表立正（孙煜征，单口；327-329 为对谈/现场问答）"

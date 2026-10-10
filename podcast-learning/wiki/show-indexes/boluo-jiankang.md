@@ -6,14 +6,14 @@
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
 | — | 2026-10-07 | 56m38s | [马春来教授：药不能乱吃！这些用药误区，很多人都中招了vol.130](https://www.xiaoyuzhoufm.com/episode/6ac615a6195d838e2aee2f0a?utm_source=rss)<!--g:6ac615a6195d838e2aee2f0a--> | — |
-| — | 2026-09-27 | 1h01m | [程若倩教授：孩子身高这件事，到底矮不矮、治不治？vol.129](https://www.xiaoyuzhoufm.com/episode/6ab88db2195d838e2aea8187?utm_source=rss)<!--g:6ab88db2195d838e2aea8187--> | ✅ |
+| — | 2026-09-27 | 1h01m | [程若倩教授：孩子身高这件事，到底矮不矮、治不治？vol.129](https://www.xiaoyuzhoufm.com/episode/6ab88db2195d838e2aea8187?utm_source=rss)<!--g:6ab88db2195d838e2aea8187--> | ✅ 已处理（2026-09-27 xiaoyuzhou-boluo-jiankang_chengruoqian） |
 | — | 2026-09-26 | 27m31s | [彭建平教授：股骨头缺血性坏死是什么？真有这么危险？vol.128](https://www.xiaoyuzhoufm.com/episode/6ab7d590195d838e2aea6222?utm_source=rss)<!--g:6ab7d590195d838e2aea6222--> | — |
 | — | 2026-09-23 | 52m30s | [岳华教授：“静悄悄的流行病”骨质疏松，可预防、可治疗！vol.127](https://www.xiaoyuzhoufm.com/episode/6ab3d22cf04646b3a9560b72?utm_source=rss)<!--g:6ab3d22cf04646b3a9560b72--> | — |
 | — | 2026-09-20 | 1h15m | [卷毛：做殡葬4年，进这一行是我做过最正确的选择vol.126](https://www.xiaoyuzhoufm.com/episode/6aae67af0916f6f8b445c5a0?utm_source=rss)<!--g:6aae67af0916f6f8b445c5a0--> | — |
 | — | 2026-09-13 | 46m12s | [房方皓：流感季来了！这一针疫苗，年年都不能省！vol.125](https://www.xiaoyuzhoufm.com/episode/6aa61f509d32647781683b13?utm_source=rss)<!--g:6aa61f509d32647781683b13--> | — |
 | — | 2026-09-06 | 55m27s | [赵晓刚教授：肺结节先别急着切！这几个判断很重要vol.124](https://www.xiaoyuzhoufm.com/episode/6a9d5246a0210c197dce5329?utm_source=rss)<!--g:6a9d5246a0210c197dce5329--> | — |
 | — | 2026-08-30 | 45m49s | [虞先濬教授：关于胰腺癌，好多真相我不吐不快！vol.123](https://www.xiaoyuzhoufm.com/episode/6a9394aff03e74ee6b01ea9d?utm_source=rss)<!--g:6a9394aff03e74ee6b01ea9d--> | — |
-| — | 2026-08-23 | 1h21m | [刘方奇教授：肠癌越来越年轻，确诊后先别急着手术！vol.122](https://www.xiaoyuzhoufm.com/episode/6a89579c1352af56ff3a329c?utm_source=rss)<!--g:6a89579c1352af56ff3a329c--> | — |
+| — | 2026-08-23 | 1h21m | [刘方奇教授：肠癌越来越年轻，确诊后先别急着手术！vol.122](https://www.xiaoyuzhoufm.com/episode/6a89579c1352af56ff3a329c?utm_source=rss)<!--g:6a89579c1352af56ff3a329c--> | ✅ 已处理（2026-08-24 xiaoyuzhou-boluo-jiankang_liufangqi） |
 | — | 2026-08-16 | 1h19m | [罗敏敏教授：给大脑加上“分子开关”，抑郁、帕金森、阿尔茨海默能不能精准治疗？vol.121](https://www.xiaoyuzhoufm.com/episode/6a818ff436641f136d890176?utm_source=rss)<!--g:6a818ff436641f136d890176--> | — |
 | — | 2026-08-12 | 1h16m | [赵立平教授：糖尿病可能还有“逆转”机会！vol.120](https://www.xiaoyuzhoufm.com/episode/6a7c9f5b36641f136d875548?utm_source=rss)<!--g:6a7c9f5b36641f136d875548--> | — |
 | — | 2026-08-09 | 54m33s | [王伟教授：壁虎断尾重生，人类有机会重获再生能力吗？vol.119](https://www.xiaoyuzhoufm.com/episode/6a785b11c4079d62c57fa8e9?utm_source=rss)<!--g:6a785b11c4079d62c57fa8e9--> | — |

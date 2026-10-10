@@ -37,8 +37,9 @@
 
 用户说「刷一下播客 / 催更 / 这周有什么新集」时：
 
-1. 跑 `python3 scripts/fetch_show_indexes.py` 全量刷新 51 档索引（~2 分钟，51 档 × 0.3s 限速）
-2. 按 stdout `NEW |` 行汇总，**按 PROFILE.md 兴趣排序**呈现（关注节目/人物优先，不按节目原序）
+1. 先跑 `python3 scripts/sync_index_status.py` 把 reports frontmatter 的 `source_url` 回填到各档索引状态列（幂等；防止把已做过的集当新集推荐——2026-10-09 实际翻车三次后立）
+2. 跑 `python3 scripts/fetch_show_indexes.py` 全量刷新 51 档索引（~2 分钟，51 档 × 0.3s 限速）；它按 guid/链接双键保留状态列，✅ 不会被刷掉
+3. 按 stdout `NEW |` 行汇总，**先排除索引状态列已标「✅ 已处理」的行**，再按 PROFILE.md 兴趣排序呈现（关注节目/人物优先，不按节目原序）
 3. `SUSPECT |` 行 = 疑似 RSS 链接变更的误报（新增占比 >30% 自动降级），人工核对，不当新集汇报
 4. 问用户要不要转写哪几集（**不自动转写**）
 
@@ -272,6 +273,7 @@ python3 ../scripts/reindex.py
 逐项核对：
 - [ ] 报告 / transcript / polished 三件套命名一致（同一前缀）
 - [ ] 报告 frontmatter 路径指向真实文件
+- [ ] **跑 `python3 scripts/sync_index_status.py`**：把新报告 source_url 回填对应索引行的状态列（防止下次催更误推荐）
 - [ ] 报告章节地图与 polished 实际分节一致
 - [ ] 报告 Limitations 段列出本场所有 whisper 误识别
 - [ ] wiki 概念 / 实体页引用报告文件名

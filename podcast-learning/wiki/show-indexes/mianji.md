@@ -15,8 +15,8 @@
 | — | 2026-08-03 | 2h25m | [E169.A股的春夏秋冬：种树、种粮、种菜](https://www.xiaoyuzhoufm.com/episode/6a6ff6f5ab3a91c24a0ec11e?utm_source=rss)<!--g:6a6ff6f5ab3a91c24a0ec11e--> | — |
 | — | 2026-07-27 | 1h47m | [E168.所有净值曲线背后都是人，正态分布的普通人](https://www.xiaoyuzhoufm.com/episode/6a66d3cda3fec224d5a3e902?utm_source=rss)<!--g:6a66d3cda3fec224d5a3e902--> | — |
 | — | 2026-07-20 | 1h52m | [E167.百万个景观社会：听说你也想当主播？](https://www.xiaoyuzhoufm.com/episode/6a5d91ae6356eb2d9be53d41?utm_source=rss)<!--g:6a5d91ae6356eb2d9be53d41--> | — |
-| — | 2026-07-13 | 1h12m | [E166.人到中年仨账户：现金流、肌肉、睡眠](https://www.xiaoyuzhoufm.com/episode/6a5096e14adef2b36561c45a?utm_source=rss)<!--g:6a5096e14adef2b36561c45a--> | — |
-| — | 2026-07-06 | 1h53m | [E165.读书：4种配速，取景框，人是滤器，冲刷神经网络](https://www.xiaoyuzhoufm.com/episode/6a4b22ad3fb7233cbf4454c7?utm_source=rss)<!--g:6a4b22ad3fb7233cbf4454c7--> | — |
+| — | 2026-07-13 | 1h12m | [E166.人到中年仨账户：现金流、肌肉、睡眠](https://www.xiaoyuzhoufm.com/episode/6a5096e14adef2b36561c45a?utm_source=rss)<!--g:6a5096e14adef2b36561c45a--> | ✅ 已处理（2026-07-13 xiaoyuzhou-mingjing-diandian_midlife-accounts） |
+| — | 2026-07-06 | 1h53m | [E165.读书：4种配速，取景框，人是滤器，冲刷神经网络](https://www.xiaoyuzhoufm.com/episode/6a4b22ad3fb7233cbf4454c7?utm_source=rss)<!--g:6a4b22ad3fb7233cbf4454c7--> | ✅ 已处理（2026-07-09 xiaoyuzhou-mingjing-diandian_lijigang） |
 | — | 2026-06-29 | 1h56m | [E164.《大厂小民》：我们必须克制对系统与上岸的期待](https://www.xiaoyuzhoufm.com/episode/6a41f1212e335a35a80b0159?utm_source=rss)<!--g:6a41f1212e335a35a80b0159--> | — |
 | — | 2026-06-22 | 1h16m | [E163.要完了？不！是要玩了！](https://www.xiaoyuzhoufm.com/episode/6a3814cc75ba9e0c5336edf6?utm_source=rss)<!--g:6a3814cc75ba9e0c5336edf6--> | — |
 | — | 2026-06-15 | 1h52m | [E162.康波周期中的AI：新技术总在萧条期爆发，bad times make good people](https://www.xiaoyuzhoufm.com/episode/6a2f6e7f4233e62bc549f576?utm_source=rss)<!--g:6a2f6e7f4233e62bc549f576--> | — |

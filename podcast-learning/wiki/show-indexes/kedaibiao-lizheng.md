@@ -5,12 +5,12 @@
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
-| — | 2026-10-05 | 14m17s | [立正说 216｜Codex跟我迭代十几轮，Claude一天就全作废？](https://share.transistor.fm/s/eafb2ed7)<!--g:8625f08e-5bcd-4f38-b3db-8df5efbebce3--> | ✅ 已处理（2026-10-09 报告） |
+| — | 2026-10-05 | 14m17s | [立正说 216｜Codex跟我迭代十几轮，Claude一天就全作废？](https://share.transistor.fm/s/eafb2ed7)<!--g:8625f08e-5bcd-4f38-b3db-8df5efbebce3--> | ✅ 已处理（2026-10-05 rss-kedaibiao-lizheng_codex-claude） |
 | — | 2026-10-01 | 41m16s | [对话 321｜两次破产，却从没缺过钱：为什么关键时刻总有人帮宝二爷？](https://share.transistor.fm/s/d0b4dbac)<!--g:bd6e0b72-f19c-4ece-aff3-d8897739d4e0--> | — |
 | — | 2026-09-28 | 46m39s | [对话 320｜别人眼中的死局，他如何反复做成大生意？｜宝二爷](https://share.transistor.fm/s/c4c3d600)<!--g:761a4fdc-01de-4b94-adc1-b4eb3ac7eba3--> | — |
-| — | 2026-09-24 | 19m16s | [立正说 215｜如何炒作一个AI概念？以Jev为例…](https://share.transistor.fm/s/e6e502cd)<!--g:340338e4-cbe1-4d10-ab83-81ad3f8d36e5--> | ✅ |
+| — | 2026-09-24 | 19m16s | [立正说 215｜如何炒作一个AI概念？以Jev为例…](https://share.transistor.fm/s/e6e502cd)<!--g:340338e4-cbe1-4d10-ab83-81ad3f8d36e5--> | ✅ 已处理（2026-09-24 rss-kedaibiao-lizheng_ai-hype-jev） |
 | — | 2026-09-23 | 17m45s | [立正说 214｜2026年了，大多数人仍然不理解自媒体的真正价值](https://share.transistor.fm/s/3166b674)<!--g:190c8d7f-9862-4d56-bf7d-af54ac55616e--> | — |
-| — | 2026-09-17 | 1h06m | [对话 319｜硅谷AI高手们，正在操作几百个AI同时上班｜Github七万星Orca创始人津晶对话](https://share.transistor.fm/s/da94edb8)<!--g:683b7e67-4b46-4456-879e-49a52f95efe3--> | ✅ |
+| — | 2026-09-17 | 1h06m | [对话 319｜硅谷AI高手们，正在操作几百个AI同时上班｜Github七万星Orca创始人津晶对话](https://share.transistor.fm/s/da94edb8)<!--g:683b7e67-4b46-4456-879e-49a52f95efe3--> | ✅ 已处理（2026-09-17 rss-kedaibiao-lizheng_jinjing） |
 | — | 2026-09-14 | 21m47s | [立正说 213｜职场不再奖励表演式工作，晋升要对结果负责](https://share.transistor.fm/s/a8fc0fee)<!--g:e206c10a-201f-491b-a9ea-ef3c12b465a7--> | — |
 | — | 2026-09-10 | 11m05s | [立正说 212｜老东家被OpenAI以11亿美元收购，我为什么选择全职卖课？](https://share.transistor.fm/s/83d61c9f)<!--g:280b791e-1a99-4863-b361-ea9c2df5fbdc--> | — |
 | — | 2026-09-07 | 20m16s | [立正说 211｜AI已经用得很好，为什么还是怕被淘汰？](https://share.transistor.fm/s/ca1954b0)<!--g:1bd4a9f9-7550-4c2d-af7e-4da1ea6f121b--> | — |
@@ -448,7 +448,7 @@
 | — | 2022-04-01 | 11m15s | [立正说 059｜跨赛道跳槽的经验｜跳槽的最佳时机？｜如何选择职业4⧸4](https://share.transistor.fm/s/d24104d5)<!--g:8df45e5a-876a-45fc-8a56-e96bd91e79d7--> | — |
 | — | 2022-03-31 | 7m04s | [立正说 058｜放弃金融咨询选互联网，后悔过吗？｜如何选择职业 3⧸4](https://share.transistor.fm/s/59d1a21d)<!--g:54bad476-09ea-4610-8210-f6acbea71080--> | — |
 | — | 2022-03-29 | 4m03s | [立正说 218｜不被奋斗困住，不求世俗认同，不恋过往｜如何选择职业 2/4](https://share.transistor.fm/s/6c7f5290)<!--g:60a60883-18a7-40cc-8516-ab2cb2ef1757--> | ✅ 已处理（2026-10-09 跨期报告） |
-| — | 2022-03-28 | 4m33s | [立正说 217｜抱歉无法替你做选择，但这些经验会有借鉴｜如何选择职业 1/4](https://share.transistor.fm/s/0beed475)<!--g:dfd2b6e3-9c83-4679-a411-05c73e0bcfd4--> | ✅ 已处理（2026-10-09 跨期报告） |
+| — | 2022-03-28 | 4m33s | [立正说 217｜抱歉无法替你做选择，但这些经验会有借鉴｜如何选择职业 1/4](https://share.transistor.fm/s/0beed475)<!--g:dfd2b6e3-9c83-4679-a411-05c73e0bcfd4--> | ✅ 已处理（2026-10-09 rss-kedaibiao-lizheng_career-methods-series） |
 | — | 2022-03-22 | 14m37s | [立正说 057｜初中参加机器人AI比赛，竟领悟获益终身的创业教训？｜课代表故事会](https://share.transistor.fm/s/b583d095)<!--g:e58b8600-a344-4b9a-8d8e-a8f5992b95a0--> | — |
 | — | 2022-03-18 | 26m53s | [对话 048｜大厂总监天天靠开会能为公司创造什么价值？](https://share.transistor.fm/s/a5d4cd41)<!--g:765a12d7-b75c-4fc5-99a7-6051857fe4e7--> | — |
 | — | 2022-03-15 | 23m23s | [对话 047｜职场新人常见误区？｜资深HR对职业发展的真诚建议｜HRBP采访 3⧸3](https://share.transistor.fm/s/3e014583)<!--g:389d24a3-c7dc-4fae-b247-aaa1a20facad--> | — |

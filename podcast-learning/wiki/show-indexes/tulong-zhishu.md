@@ -5,9 +5,9 @@
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
-| — | 2026-09-28 | 58m10s | [当AI开始设计芯片---聊聊EDA与AI时代的芯片设计](https://www.xiaoyuzhoufm.com/episode/6ab9f026e742e36efcbc0d88?utm_source=rss)<!--g:6ab9f026e742e36efcbc0d88--> | ✅ |
+| — | 2026-09-28 | 58m10s | [当AI开始设计芯片---聊聊EDA与AI时代的芯片设计](https://www.xiaoyuzhoufm.com/episode/6ab9f026e742e36efcbc0d88?utm_source=rss)<!--g:6ab9f026e742e36efcbc0d88--> | ✅ 已处理（2026-09-28 xiaoyuzhou-tulong-zhishu_eda-ai-chips） |
 | — | 2026-09-22 | 41m08s | [AI进入生产阶段之后， 智能、算力、芯片 会走向哪里？](https://www.xiaoyuzhoufm.com/episode/6ab2b85df04646b3a955a1de?utm_source=rss)<!--g:6ab2b85df04646b3a955a1de--> | — |
-| — | 2026-09-15 | 55m21s | [智能的下一幕，让人兴奋---73页PPT solo](https://www.xiaoyuzhoufm.com/episode/6aa82d11129fe965d33288ca?utm_source=rss)<!--g:6aa82d11129fe965d33288ca--> | ✅ |
+| — | 2026-09-15 | 55m21s | [智能的下一幕，让人兴奋---73页PPT solo](https://www.xiaoyuzhoufm.com/episode/6aa82d11129fe965d33288ca?utm_source=rss)<!--g:6aa82d11129fe965d33288ca--> | ✅ 已处理（2026-09-15 xiaoyuzhou-tulong-zhishu_next-act） |
 | — | 2026-09-04 | 1h09m | [中国一级半市场的水下江湖-续集｜串台苔藓之火](https://www.xiaoyuzhoufm.com/episode/6a918c15a0210c197dc9c039?utm_source=rss)<!--g:6a918c15a0210c197dc9c039--> | — |
 | — | 2026-09-02 | 52m42s | [AI李时珍带你“尝百草”---小宇宙先声活动演讲---91页PPT solo](https://www.xiaoyuzhoufm.com/episode/6a97d6a8f03e74ee6b03d6a6?utm_source=rss)<!--g:6a97d6a8f03e74ee6b03d6a6--> | — |
 | — | 2026-08-31 | 31m27s | [模型到底吃不吃应用？--从 Canva、Figma 到美图， 看 AI 应用公司的两种命运](https://www.xiaoyuzhoufm.com/episode/6a9281bea0210c197dca0307?utm_source=rss)<!--g:6a9281bea0210c197dca0307--> | — |
@@ -16,7 +16,7 @@
 | — | 2026-08-01 | 28m08s | [你真的信WorkBuddy有2000万月活？](https://www.xiaoyuzhoufm.com/episode/6a6e285e1b5e24969ce760fa?utm_source=rss)<!--g:6a6e285e1b5e24969ce760fa--> | — |
 | — | 2026-07-22 | 43m28s | [AI抢走内存，K型消费下我们还要做硬件吗？---串台开始连接 LinkStart](https://www.xiaoyuzhoufm.com/episode/6a5f100a6356eb2d9be5eee3?utm_source=rss)<!--g:6a5f100a6356eb2d9be5eee3--> | — |
 | — | 2026-07-21 | 55m07s | [2026AI狂飙、资本抽水与我们的“恩格斯暂停”---串台进击波财经](https://www.xiaoyuzhoufm.com/episode/6a5ee6f76356eb2d9be5d600?utm_source=rss)<!--g:6a5ee6f76356eb2d9be5d600--> | — |
-| — | 2026-07-17 | 54m37s | [重估一切，文艺复兴---2026H1 AI行业观察](https://www.xiaoyuzhoufm.com/episode/6a5a91e1a3fec224d59f4ddd?utm_source=rss)<!--g:6a5a91e1a3fec224d59f4ddd--> | — |
+| — | 2026-07-17 | 54m37s | [重估一切，文艺复兴---2026H1 AI行业观察](https://www.xiaoyuzhoufm.com/episode/6a5a91e1a3fec224d59f4ddd?utm_source=rss)<!--g:6a5a91e1a3fec224d59f4ddd--> | ✅ 已处理（2026-07-17 xiaoyuzhou-tulong-zhishu_2026h1-ai-review） |
 | — | 2026-06-29 | 53m33s | [World Model-世界模型也有Scaling Law吗？](https://www.xiaoyuzhoufm.com/episode/6a40c46d9d2f5743683f00a8?utm_source=rss)<!--g:6a40c46d9d2f5743683f00a8--> | — |
 | — | 2026-06-24 | 42m17s | [说好的艺术家呢？--- AI时代，内容工业的三次死亡与创作者的重生](https://www.xiaoyuzhoufm.com/episode/6a3b7fbb2e335a35a808904e?utm_source=rss)<!--g:6a3b7fbb2e335a35a808904e--> | — |
 | — | 2026-06-18 | 1h08m | [从开源到 Agent，从组织到个体：AIEC 大会现场侧记](https://www.xiaoyuzhoufm.com/episode/6a337d604233e62bc54bd46b?utm_source=rss)<!--g:6a337d604233e62bc54bd46b--> | — |
