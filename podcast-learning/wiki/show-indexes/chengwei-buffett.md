@@ -5,7 +5,7 @@
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
-| — | 2026-02-11 | 1h44m | [27 \| 买珠还椟：从邓白氏到穆迪，商业信用的权力与秩序](https://www.xiaoyuzhoufm.com/episode/698c1c5066e2c30377f84d58?utm_source=rss)<!--g:698c1c5066e2c30377f84d58--> | — |
+| — | 2026-02-11 | 1h44m | [27 \| 买珠还椟：从邓白氏到穆迪，商业信用的权力与秩序](https://www.xiaoyuzhoufm.com/episode/698c1c5066e2c30377f84d58?utm_source=rss)<!--g:698c1c5066e2c30377f84d58--> | ✅ |
 | — | 2025-09-15 | 1h26m | [26 \| 认知误区，先胜投资.....聊老子、孙子兵法与巴芒理念](https://www.xiaoyuzhoufm.com/episode/68c7af192c82c9dcca6cc8ce?utm_source=rss)<!--g:68c7af192c82c9dcca6cc8ce--> | — |
 | — | 2025-09-05 | 1h42m | [25｜对话75后私募经理：价投迎来黄金时代](https://www.xiaoyuzhoufm.com/episode/68b96dd697178f08ee444959?utm_source=rss)<!--g:68b96dd697178f08ee444959--> | — |
 | — | 2024-06-17 | 1h59m | [24｜对话80后资深投资人：银行股的投资逻辑](https://www.xiaoyuzhoufm.com/episode/666f128cb6a84127292f8d79?utm_source=rss)<!--g:666f128cb6a84127292f8d79--> | — |
