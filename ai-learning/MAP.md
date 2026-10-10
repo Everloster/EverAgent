@@ -14,7 +14,7 @@
 | 大语言模型与NLP | ✓ | 待统计 | 待补 |
 | 前沿专题(Agent/推理/多模态) | ✓ | Agent Harness 三大流派、自进化路径、AI 编码 Agent 终端；**进化式 harness 一手实证（paper 46）**；**Harness 请求全链路（报文级 function calling/tool use + agentic loop）**；**ChatGPT Work 能力面逆向解析（商业化 harness 活样本 + 七层映射表，08-31）** | 进化循环的过拟合防护、reward 消融、跨家族迁移机制待补；Work 子 agent 上下文传递、Ultra 档委派机制、auto-review 抗注入实证待补 |
 | 可解释性 & AI 安全 | ✓ | J-space/J-lens 全局工作空间（paper 45） | 点火实验、机制可解释性系统方法（SAE 等）待补 |
-| **AI 行业与商业观察** | ✓ | 伪智力繁荣评论批判（07-13）、Anthropic 人才信号核实（07-14）、Evoken 陈冕访谈精读（07-29）、《Intelligence Curse》智能诅咒精读（07-30）、《AI应用创业生死录》Evoken三产品商业分析（07-31）、**《中国AI创业与一级市场故事线2022底-2026》从模型信仰到应用求生——三幕迁徙+全融资轮次表+机构视角(07-31)、**Anthropic《Economic Scenarios for Transformative AI》经济情景模型精读（09-11，wiki: anthropic_econ_scenarios）、**DeepSeek 算子工程师自白《我不得不把才华埋葬在昨天》精读与延伸研究（09-16，wiki: craft_displacement）** | 「应用时代」信号追踪（2027-01）、薄毛利打穿点建模、judgment护城河证伪信号、国资接棒是续命还是改写规则、应用层估值洼地会否修复、IPO后二级市场重估、**经济情景模型 2027 判别点回访（modest 是否被排除）**、**"AI 写算子 ≥ 刘胜与"2027 年中回访** |
+| **AI 行业与商业观察** | ✓ | 伪智力繁荣评论批判（07-13）、Anthropic 人才信号核实（07-14）、Evoken 陈冕访谈精读（07-29）、《Intelligence Curse》智能诅咒精读（07-30）、《AI应用创业生死录》Evoken三产品商业分析（07-31）、**《中国AI创业与一级市场故事线2022底-2026》从模型信仰到应用求生——三幕迁徙+全融资轮次表+机构视角(07-31)、**Anthropic《Economic Scenarios for Transformative AI》经济情景模型精读（09-11，wiki: anthropic_econ_scenarios）、**DeepSeek 算子工程师自白《我不得不把才华埋葬在昨天》精读与延伸研究（09-16，wiki: craft_displacement）**、**Personal Context 正交论：PC 五层解剖+构建工程+三段链条（10-10，用户今日思考驱动，wiki: personal-context-orthogonality；缝合乱翻书275四赌注/Laya Jevons/bitter_lesson）** | 「应用时代」信号追踪（2027-01）、薄毛利打穿点建模、judgment护城河证伪信号、国资接棒是续命还是改写规则、应用层估值洼地会否修复、IPO后二级市场重估、**经济情景模型 2027 判别点回访（modest 是否被排除）**、**"AI 写算子 ≥ 刘胜与"2027 年中回访**、**L5 委托层协议（DELEGATION.md 待建）/跨产品投影最小充分集/画像固化度量** |
 
 ---
 
@@ -33,6 +33,8 @@
 ---
 
 ## 更新日志
+
+- 2026-10-10：行业观察×方法论新增《Personal Context 正交论：穿越 AI 进步周期的资产，与 PC 的构建工程》（用户 2026-10-10 今日思考驱动）。增量：①两类 context 判别法（事实性↑/过程性↓）；②三升值机制（兑现/Jevons/Bitter Lesson 个人版）+反方边界（豆包签证 bad case；"信任和习惯最值钱"）；③PC 五层解剖（L5 委托=终极资产），WC=PC 职业域投影；④四构建原则+业界 memory 方案对照（Mem0/Letta/Zep/memU/mcp-memory-service，web 核实）+EverAgent 自指审计（L5 缺失→DELEGATION.md 待建）；⑤风险五项。新建 wiki 概念页 personal-context-orthogonality；缝合 personal-agent-wars（podcast）/system1-decision-laya/bitter_lesson。四新问汇入 open-questions（含 2027-01 Letta consolidation 回访）。
 
 - 2026-10-08：前沿专题+行业观察交叉线新增《OpenAI数学手稿事件（openai/math）核实与深度分析》（卡兹克公众号文章驱动，用户点名"做个 AI 深度学习任务"）。增量：①仓库一手核验——719 手稿/372 成果组/~4000 问题/3h·result，722→719 符号错误撤稿实录，42% 形式化口径不可复算（300 vs 242 vs 200 三路数字互不吻合），17 分支学科分布（TCS 40/组合 37 居前）；②五大头条逐项对照 overview.tex 原文（准黎曼 7/8 主结果+11/12 伴生、ω≤9/4、挂谷三维极大+四维维数、UGC、Hodge CM、整数乘法 κ=2⁻¹⁸²）；③外部事件全链核实（NS 风波 Clay C/D、Buckmaster/Bubeck 争议双方确认点、联名信实为 28 位、AGMAI 9-29 与发布形态逐条对照表）；④修正文章 6 处失真（含 Altman 推文原文实为七词宣言、"arXiv 月限两篇"有误）；⑤「评判器成本」框架深加工为可证伪预测并缝合 model_calibration/rl_scaling/craft_displacement。新建 wiki 概念页 ai_automated_math_research；PROFILE 兴趣点 #9 录入。三新问汇入 open-questions。
 - 2026-09-30：校正 paper 47 的内部倍数不一致，并同步概念页和直接追问；仅按已有列值重算，原论文 Table 6/22 待复核，其他结论的证据时点不变。本次没有新增研究方向或修改兴趣优先级。

@@ -7,6 +7,7 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-10-10 | [Personal Context 正交论：穿越 AI 进步周期的资产，与 PC 的构建工程](../ai-learning/reports/knowledge_reports/PersonalContext正交论_PC构建指南_20261010.md) | ai-learning |
 | 2026-10-09 | [起朱楼184：加息周期的重大投资决策——五步建立海外长债组合｜三季度投资账复盘](../podcast-learning/reports/2026-10-08_xiaoyuzhou-qizhulou_2026q3-investment-review.md) | podcast-learning |
 | 2026-10-09 | [课代表立正·职业方法论九讲：选择、余裕、失败与升职的存量专题（217/218/221-225/327-329）](../podcast-learning/reports/2026-10-09_rss-kedaibiao-lizheng_career-methods-series.md) | podcast-learning |
 | 2026-10-09 | [课代表立正216：Codex迭代十几轮的网站，Claude一天作废——个人网站与叙事主权](../podcast-learning/reports/2026-10-05_rss-kedaibiao-lizheng_codex-claude.md) | podcast-learning |
@@ -31,12 +32,12 @@
 | 2026-10-06 | [AI 行业日报 · 2026-10-06](../web-surfing/reports/ai-news-daily-2026-10-06.md) | web-surfing |
 | 2026-10-05 | [AI 行业日报 · 2026-10-05](../web-surfing/reports/ai-news-daily-2026-10-05.md) | web-surfing |
 | 2026-10-04 | [如何炒作一个 AI 概念？以 Jev 为例——孙煜征的五步判断法](../podcast-learning/reports/2026-09-24_rss-kedaibiao-lizheng_ai-hype-jev.md) | podcast-learning |
-| 2026-10-04 | [半拿铁·周刊 No.50：刷量入刑的边界、自爆营业、大玩家清算、钟薛高降价重生、豆包手机二代与 SAEP、家长信息合规](../podcast-learning/reports/2026-09-22_xiaoyuzhou-bannatie-zhoukan_no50-weekly-news.md) | podcast-learning |
 
-## 🤖 AI Learning（111 篇）
+## 🤖 AI Learning（112 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-10-10 | [Personal Context 正交论：穿越 AI 进步周期的资产，与 PC 的构建工程](../ai-learning/reports/knowledge_reports/PersonalContext正交论_PC构建指南_20261010.md) | — |
 | 2026-10-09 | [VISTA：视觉原生 Harness 论文精读——无损视觉记忆与主动检查如何把 Opus 5.0 的 ARC-AGI-3 分数从 40.68 拉到 100](../ai-learning/reports/paper_analyses/48_vista_2026.md) | — |
 | 2026-10-09 | [Laya：把「反射性决策」从 LLM 里拆出来——421M 非自回归 System 1 决策模型解析与本机实测](../ai-learning/reports/knowledge_reports/Laya_System1决策模型_深度解析_20260922.md) | — |
 | 2026-10-08 | [OpenAI 数学手稿事件（openai/math）核实与深度分析](../ai-learning/reports/knowledge_reports/OpenAI数学手稿事件_核实与深度分析_20261008.md) | — |
