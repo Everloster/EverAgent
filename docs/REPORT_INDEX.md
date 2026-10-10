@@ -7,6 +7,11 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-10-10 | [晚点聊182：梁琛奇——用 AI 创造开心：猫箱推演、动念引线与养女儿方法论](../podcast-learning/reports/2026-09-24_rss-wandian-latetalk_liangchenqi-ai-joy.md) | podcast-learning |
+| 2026-10-10 | [屠龙之术：AICC2026 侧记——Agent=Model+Harness 成业界公式，算力缺口十年十倍](../podcast-learning/reports/2026-09-22_xiaoyuzhou-tulong-zhishu_ai-production-stage.md) | podcast-learning |
+| 2026-10-10 | [卫诗婕89：阮良——个人提效500%，交付只从20天到17天：AI 进组织的木桶真相](../podcast-learning/reports/2026-09-23_xiaoyuzhou-weishijie_ruanliang-ai-org.md) | podcast-learning |
+| 2026-10-10 | [十字路口：于红——AI 时代学什么？林迪效应、SEL 与把终点放在 30 岁](../podcast-learning/reports/2026-09-27_xiaoyuzhou-crossing_yuhong-sel.md) | podcast-learning |
+| 2026-10-10 | [乱翻书277：Today 中国首发——Memory×Proactive、单 session 终局与产品经理的价值回归](../podcast-learning/reports/2026-09-24_xiaoyuzhou-luanfanshu_today-personal-ai.md) | podcast-learning |
 | 2026-10-10 | [Personal Context 正交论：穿越 AI 进步周期的资产，与 PC 的构建工程](../ai-learning/reports/knowledge_reports/PersonalContext正交论_PC构建指南_20261010.md) | ai-learning |
 | 2026-10-09 | [起朱楼184：加息周期的重大投资决策——五步建立海外长债组合｜三季度投资账复盘](../podcast-learning/reports/2026-10-08_xiaoyuzhou-qizhulou_2026q3-investment-review.md) | podcast-learning |
 | 2026-10-09 | [课代表立正·职业方法论九讲：选择、余裕、失败与升职的存量专题（217/218/221-225/327-329）](../podcast-learning/reports/2026-10-09_rss-kedaibiao-lizheng_career-methods-series.md) | podcast-learning |
@@ -27,11 +32,6 @@
 | 2026-10-08 | [AI 行业日报 · 2026-10-08](../web-surfing/reports/ai-news-daily-2026-10-08.md) | web-surfing |
 | 2026-10-07 | [高薪、事少，为什么我还是想逃？——电丸科技AK × 甄总谈旧人生地图失效](../podcast-learning/reports/2026-10-03_bilibili-dianwan-ak_ep04-quit.md) | podcast-learning |
 | 2026-10-07 | [谁在给大模型出题、卖题、判卷？AI 数据行业的野蛮生长](../podcast-learning/reports/2026-09-27_rss-guigu101_e253-ai-data-industry.md) | podcast-learning |
-| 2026-10-07 | [当 AI 开始设计芯片：新思科技视角下的 EDA 与 AI 造芯真伪](../podcast-learning/reports/2026-09-28_xiaoyuzhou-tulong-zhishu_eda-ai-chips.md) | podcast-learning |
-| 2026-10-07 | [AI 行业日报 · 2026-10-07](../web-surfing/reports/ai-news-daily-2026-10-07.md) | web-surfing |
-| 2026-10-06 | [AI 行业日报 · 2026-10-06](../web-surfing/reports/ai-news-daily-2026-10-06.md) | web-surfing |
-| 2026-10-05 | [AI 行业日报 · 2026-10-05](../web-surfing/reports/ai-news-daily-2026-10-05.md) | web-surfing |
-| 2026-10-04 | [如何炒作一个 AI 概念？以 Jev 为例——孙煜征的五步判断法](../podcast-learning/reports/2026-09-24_rss-kedaibiao-lizheng_ai-hype-jev.md) | podcast-learning |
 
 ## 🤖 AI Learning（112 篇）
 
@@ -260,10 +260,15 @@
 | 2026-03-26 | [Physiology of Growth Hormone Secretion during Sleep (1996) 精读](../biology-learning/reports/paper_analyses/P09_gh_sleep_physiology_1996.md) | — |
 | 2026-03-23 | [晚型人作息与力量训练深度研究](../biology-learning/reports/concept_reports/晚型人作息与力量训练_深度研究报告.md) | — |
 
-## 🎙️ Podcast Learning（68 篇）
+## 🎙️ Podcast Learning（73 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-10-10 | [晚点聊182：梁琛奇——用 AI 创造开心：猫箱推演、动念引线与养女儿方法论](../podcast-learning/reports/2026-09-24_rss-wandian-latetalk_liangchenqi-ai-joy.md) | — |
+| 2026-10-10 | [屠龙之术：AICC2026 侧记——Agent=Model+Harness 成业界公式，算力缺口十年十倍](../podcast-learning/reports/2026-09-22_xiaoyuzhou-tulong-zhishu_ai-production-stage.md) | — |
+| 2026-10-10 | [卫诗婕89：阮良——个人提效500%，交付只从20天到17天：AI 进组织的木桶真相](../podcast-learning/reports/2026-09-23_xiaoyuzhou-weishijie_ruanliang-ai-org.md) | — |
+| 2026-10-10 | [十字路口：于红——AI 时代学什么？林迪效应、SEL 与把终点放在 30 岁](../podcast-learning/reports/2026-09-27_xiaoyuzhou-crossing_yuhong-sel.md) | — |
+| 2026-10-10 | [乱翻书277：Today 中国首发——Memory×Proactive、单 session 终局与产品经理的价值回归](../podcast-learning/reports/2026-09-24_xiaoyuzhou-luanfanshu_today-personal-ai.md) | — |
 | 2026-10-09 | [起朱楼184：加息周期的重大投资决策——五步建立海外长债组合｜三季度投资账复盘](../podcast-learning/reports/2026-10-08_xiaoyuzhou-qizhulou_2026q3-investment-review.md) | — |
 | 2026-10-09 | [课代表立正·职业方法论九讲：选择、余裕、失败与升职的存量专题（217/218/221-225/327-329）](../podcast-learning/reports/2026-10-09_rss-kedaibiao-lizheng_career-methods-series.md) | — |
 | 2026-10-09 | [课代表立正216：Codex迭代十几轮的网站，Claude一天作废——个人网站与叙事主权](../podcast-learning/reports/2026-10-05_rss-kedaibiao-lizheng_codex-claude.md) | — |
@@ -363,8 +368,8 @@
 | 2026-09-03 | [AI 行业日报 · 2026-09-03](../web-surfing/reports/ai-news-daily-2026-09-03.md) | — |
 | 2026-09-02 | [AI 行业日报 · 2026-09-02](../web-surfing/reports/ai-news-daily-2026-09-02.md) | — |
 | 2026-09-01 | [AI 行业日报 · 2026-09-01](../web-surfing/reports/ai-news-daily-2026-09-01.md) | — |
-| 2026-08-31 | [惠州租房建议报告——两位老人 2026 年 9/10 月入住版（1–3 个月短住体验）](../web-surfing/reports/huizhou-rental-guide-2026-09.md) | — |
 | 2026-08-31 | [AI 行业日报 · 2026-08-31](../web-surfing/reports/ai-news-daily-2026-08-31.md) | — |
+| 2026-08-28 | [惠州租房建议报告——两位老人 2026 年 9/10 月入住版（1–3 个月短住体验）](../web-surfing/reports/huizhou-rental-guide-2026-09.md) | — |
 | 2026-08-28 | [AI 行业日报 · 2026-08-28](../web-surfing/reports/ai-news-daily-2026-08-28.md) | — |
 | 2026-08-27 | [AI 行业日报 · 2026-08-27](../web-surfing/reports/ai-news-daily-2026-08-27.md) | — |
 | 2026-08-26 | [AI 行业日报 · 2026-08-26](../web-surfing/reports/ai-news-daily-2026-08-26.md) | — |

@@ -107,7 +107,7 @@ def main() -> int:
     ap.add_argument("files", nargs="*", help="报告文件名（reports/ 下）；缺省全量")
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
-    targets = [REPORTS / f for f in args.files] if args.files else sorted(REPORTS.glob("*.md"))
+    targets = [REPORTS / pathlib.Path(f).name for f in args.files] if args.files else sorted(REPORTS.glob("*.md"))
     bad = sum(1 for r in targets if check(r, args.dry_run))
     print(f"\n共 {len(targets)} 篇，{bad if args.dry_run else '已修正 ' + str(bad)} 篇存在差异")
     return 0

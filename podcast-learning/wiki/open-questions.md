@@ -114,6 +114,24 @@
 - **Meta Muse connector 生态与"Manas"收购** —— 大小马 V95：Muse 被亚马逊/Google 收敛权限的时间线；Meta 高溢价收购的中国团队"Manas[?]"是谁；World Labs 收购最终结构。
   - 来源：[[2026-10-08_xiaoyuzhou-daxiaoma-keji_v95-china-us]] 问 2
 
+
+### 来自 2026-10-10 五集批次（新汇入）
+
+- **"好学校负向效果"的原研究** —— 于红口述（中国除外、同排位学生进好学校毕业百分位反而低）；幸福 50/10/40 配比（疑 Lyubomirsky 系）同待溯源。
+  - 来源：[[2026-09-27_xiaoyuzhou-crossing_yuhong-sel]] 问 2
+- **兔咚咚商业模型/探月拒藤校案例可核实性** —— 于红期未展开 toC 定价与获客；探月校长"拒绝藤校 offer 才代表成功"需核实。
+  - 来源：同上 问 2
+- **OpenCloud 是什么** —— 阮良（"手机操控电脑/登录小红书抓信息"）与潘乱两期口播一致但均未核实——理解 2026 agent 格局的关键缺口。
+  - 来源：[[2026-09-23_xiaoyuzhou-weishijie_ruanliang-ai-org]]/[[2026-09-24_xiaoyuzhou-luanfanshu_today-personal-ai]] 问 2
+- **网易积分制的 AI 时代化** —— 阮良：有效代码量换算工作价值——AI 时代代码量还成立吗；OpenCloud/WorkBuddy[?] 产品核实。
+  - 来源：[[2026-09-23_xiaoyuzhou-weishijie_ruanliang-ai-org]] 问 2
+- **IDC 报告存疑数字** —— token 复合增长率"4822.6%"与任务次数倍数不自洽；缺口年份 2030/2036 口播矛盾；"中国智能体渗透率领先全球"无数值——下载报告原文核对。
+  - 来源：[[2026-09-22_xiaoyuzhou-tulong-zhishu_ai-production-stage]] 问 2
+- **Today 的 memory 架构与"上下文鸿沟"量化** —— Timeline/图/时序融合方案只给方向；数字资产与 agent 可用性的关系能否量化。
+  - 来源：[[2026-09-24_xiaoyuzhou-luanfanshu_today-personal-ai]] 问 2
+- **动念引线的产品形态/想象力曲线解法** —— 梁琛奇愿景（Default/平行世界）未发布；猫箱两种 use case 占比；字节"预算清零"机制运作。
+  - 来源：[[2026-09-24_rss-wandian-latetalk_liangchenqi-ai-joy]] 问 2
+
 ## 已解决
 
 ### 2026-07-18 首轮攻坚：9 问全清 ✅

@@ -5,7 +5,7 @@
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
-| 277 | 2026-09-24 | 1h39m | [277.从提醒你，到替你办：Today想把Personal AI带到哪一步？](https://www.xiaoyuzhoufm.com/episode/6ab4b804e742e36efcbab131?utm_source=rss)<!--g:6ab4b804e742e36efcbab131--> | — |
+| 277 | 2026-09-24 | 1h39m | [277.从提醒你，到替你办：Today想把Personal AI带到哪一步？](https://www.xiaoyuzhoufm.com/episode/6ab4b804e742e36efcbab131?utm_source=rss)<!--g:6ab4b804e742e36efcbab131--> | ✅ 已处理（2026-09-24 xiaoyuzhou-luanfanshu_today-personal-ai） |
 | 276 | 2026-09-22 | 1h12m | [276.当AI给出所有答案，年轻人如何找到自己的问题？](https://www.xiaoyuzhoufm.com/episode/6ab2546493d5eb3bdc794b18?utm_source=rss)<!--g:6ab2546493d5eb3bdc794b18--> | — |
 | 275 | 2026-09-21 | 2h06m | [275.AI办公的热闹还没散，个人Agent的战争已经开始｜拆解Town、Instinct、Grok Bot与Muse](https://www.xiaoyuzhoufm.com/episode/6ab029b7ac389df82734ebb6?utm_source=rss)<!--g:6ab029b7ac389df82734ebb6--> | ✅ 已处理（2026-09-21 xiaoyuzhou-luanfanshu_personal-agent-wars） |
 | 274 | 2026-09-16 | 59m55s | [274.从全面屏到中折叠，小米的高端化这次找对路了吗？](https://www.xiaoyuzhoufm.com/episode/6aa9329c051af796b9e8a2dc?utm_source=rss)<!--g:6aa9329c051af796b9e8a2dc--> | — |
