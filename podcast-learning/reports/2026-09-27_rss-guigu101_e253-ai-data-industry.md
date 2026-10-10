@@ -11,8 +11,8 @@ guest: "何允中（Scale AI 研究总监，前 Meta 搜索推荐）× 孙一铀
 duration: "58m04s"
 duration_seconds: 3484
 transcript_segments: 2407
-hanzi_chars_raw: 19041
-hanzi_chars_polished: 18133
+hanzi_chars_raw: 19242
+hanzi_chars_polished: 18938
 speech_rate_cjk: "331 字/min"
 chapters: 12
 polished: true
@@ -26,6 +26,8 @@ polished_transcript_path: reports/transcripts/2026-09-27_rss-guigu101_e253-ai-da
 pipeline: fireside 直链 → whisper.cpp / large-v3 / Metal / VAD+`-mc 0` → 19 章归并 12 节
 source_shownotes_chapters: true
 notable_correction: "人名/术语经 Apple Podcasts shownotes 联网核验（何允中、孙一铀、Mercor 100 亿、SWE Atlas 结构等）；Scale/Mercor/AfterQuery 的十余种误写已归一"
+total_chars_raw: 80811
+total_chars_polished: 27821
 ---
 
 # 谁在给大模型出题、卖题、判卷？AI 数据行业的野蛮生长

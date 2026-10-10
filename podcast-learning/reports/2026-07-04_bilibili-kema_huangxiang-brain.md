@@ -11,9 +11,9 @@ guest: "黄翔（复旦华山医院神经外科主治医生/医学博士，《�
 duration: "43m40s"
 duration_seconds: 2620
 transcript_segments: 1888
-hanzi_chars_raw: 14365
+hanzi_chars_raw: 14604
 hanzi_chars_polished: 14875
-speech_rate_cjk: "329 字/min"
+speech_rate_cjk: "334 字/min"
 chapters: 10
 polished: true
 polished_by: "Kimi (k3) 润色（whisper+CC 字幕双源校验）"
@@ -26,6 +26,8 @@ polished_transcript_path: reports/transcripts/2026-07-04_bilibili-kema_huangxian
 pipeline: opencli bilibili download → ffmpeg → whisper.cpp / large-v3 / Metal / VAD+`-mc 0` + B 站 CC 字幕双源校验 → 10 节重组
 source_shownotes_chapters: false
 notable_correction: "双源互校：术语类依字幕修 40+ 处（绝对应高→绝对音高、简索式→检索式、李源吉→李元吉），常识词依 whisper 修 15 处（字幕亦错），两源皆错依上下文修 17 处（记和意→记和忆、常识增强→长时程增强）；唯一说话人口误：MIT 被说成'哈佛理工学院'（保留原话+[?]）"
+total_chars_raw: 60505
+total_chars_polished: 18306
 ---
 
 # 孩子成绩差，真的是因为「不是学习的料」吗？——对谈脑科学专家黄翔

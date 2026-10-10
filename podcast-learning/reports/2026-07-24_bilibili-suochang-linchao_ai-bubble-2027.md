@@ -28,6 +28,8 @@ pipeline: yt-dlp（B站直下成功，412 拦截已消失） → whisper.cpp / g
 source_shownotes_chapters: false
 notable_correction: "Bill Chang→Bill Qian（X @billitup 核验）、质朴→智谱、甚是→甚至、GBT→GPT、OPAS→Opus、必源/避源→闭源、积膜→基模、试梦力→市梦率、升V→深V、直击P 120亿美元→GDP 120万亿美元、OpenCore→OpenClaw、千万(30B)→千问、HBN4→HBM4、虫孤→重估 等，合计 40+ 处；本期无官方字幕校验源，保守修正 16 处 [?]"
 related_concepts: "[[ai-capex-bubble-debate]]、[[concepts/open-source-price-anchoring|开源价格锚定]]"
+total_chars_raw: 59364
+total_chars_polished: 13535
 ---
 
 # 所长林超《AI泡沫，2027年爆破？》

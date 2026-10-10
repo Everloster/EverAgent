@@ -11,9 +11,9 @@ guest: "张托肯（清华电子系博士、ETH Zürich 博后，「芯片开卷
 duration: "46m48s"
 duration_seconds: 2808
 transcript_segments: 1451
-hanzi_chars_raw: 12657
-hanzi_chars_polished: 12751
-speech_rate_cjk: "270 字/min"
+hanzi_chars_raw: 12865
+hanzi_chars_polished: 13194
+speech_rate_cjk: "275 字/min"
 chapters: 8
 polished: true
 polished_by: "Kimi (k3) 润色"
@@ -26,6 +26,8 @@ polished_transcript_path: reports/transcripts/2026-09-16_xiaoyuzhou-cihua-dangzh
 pipeline: yt-dlp → whisper.cpp / ggml-large-v3 / Metal / VAD+`-mc 0` → eacli web.read shownotes → 8 节重组
 source_shownotes_chapters: true
 notable_correction: "修正 40+ 处（丛林→从零、柳片→流片、开传→开卷、ETA 软件→EDA 软件、SuiteBench→SWE-bench 等）；10 处 [?]；下载量 1.6 万（原话）vs 1.7 万（shownotes）以原话为准"
+total_chars_raw: 49431
+total_chars_polished: 17368
 ---
 
 # 用 AI 三天设计一颗芯片后，一位清华博士决定「开卷」

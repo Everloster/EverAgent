@@ -11,9 +11,9 @@ guest: "陈彬（鹿客智能锁创始人/CEO，索尼/百度小度背景）"
 duration: "1h06m33s"
 duration_seconds: 3993
 transcript_segments: 2646
-hanzi_chars_raw: 20483
+hanzi_chars_raw: 20695
 hanzi_chars_polished: 18061
-speech_rate_cjk: "308 字/min"
+speech_rate_cjk: "311 字/min"
 chapters: 10
 polished: true
 polished_by: "Kimi (k3) 润色"
@@ -26,6 +26,8 @@ polished_transcript_path: reports/transcripts/2026-09-14_ximalaya-ailianjinshu_c
 pipeline: yt-dlp（喜马拉雅源）→ whisper.cpp / ggml-large-v3 / Metal / VAD+`-mc 0` → eacli web.read shownotes → 10 节重组
 source_shownotes_chapters: true
 notable_correction: "修正 100+ 处（陆克→鹿客、Halo→HARO、管媒生→管培生、征流→蒸馏、IPDN→IPD、五看三病→五看三定等）；87 处 [?]"
+total_chars_raw: 86237
+total_chars_polished: 23850
 ---
 
 # 把一家 12 年的硬件公司重写成 AI 原生组织：鹿客陈彬的「从 1 到 0」

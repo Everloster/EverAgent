@@ -28,6 +28,8 @@ pipeline: yt-dlp → whisper.cpp large-v3 Metal "--vad silero -mc 0"（零循环
 source_shownotes_chapters: true
 notable_correction: "规矩立场→硅基立场、原力/原理智能→元理智能、质朴/智浦→智谱、鸡膜/积膜/积木→基模、骚打/搜他→SOTA、FTV/FTE/FDA(语境)→FDE、阿拉佛GO/AFAGO→AlphaGo、白眼星法→白矮星化、商业想法学习→商业强化学习、Axinger→埃森哲、AnswerPick→Anthropic、哈尼斯→Harness、征留→蒸馏、太无适合→泰晤士河、松下性质入→松下幸之助 等 150+ 处；68 处 [?] 保留"
 related: "FDE 主题线第 4 期（前 3 期在库未做）：LinkStart Vol.128、硅谷101 E248、AI炼金术 OPC/FDE；RSI/harness 与 [[2026-08-04_rss-wandian-latetalk_kimi-k3|K3 期]]互见；蒸馏批判与 [[2026-08-17_xiaoyuzhou-cihua-dangzhen_distill|此话当真]] 同日处理构成镜像"
+total_chars_raw: 130664
+total_chars_polished: 32432
 ---
 
 # 硅基立场 Vol.32｜张帆：去他X的FDE

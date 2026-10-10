@@ -11,9 +11,9 @@ guest: "津晶（Orca/Stably 联创，ex-Google，YC）"
 duration: "1h06m54s"
 duration_seconds: 4014
 transcript_segments: 2759
-hanzi_chars_raw: 19746
+hanzi_chars_raw: 19955
 hanzi_chars_polished: 16789
-speech_rate_cjk: "295 字/min"
+speech_rate_cjk: "298 字/min"
 chapters: 14
 polished: true
 polished_by: "Kimi (k3) 润色"
@@ -26,6 +26,8 @@ polished_transcript_path: reports/transcripts/2026-09-17_rss-kedaibiao-lizheng_j
 pipeline: transistor 直链 mp3 → whisper.cpp / ggml-large-v3 / Metal / **VAD+`-mc 0`**（首轮 VAD-only 在 00:13:01 起灾难性循环幻觉，89.5% 无效，重转修复）→ 14 章重组
 source_shownotes_chapters: true
 notable_correction: "系统性误识别 85 条（Clock Code→Claude Code、Walker/Volca→Orca、虎精→虎鲸、The Man Test→The Mom Test 等）；首轮转写循环幻觉事故与修复记入 AGENTS.md 已知局限"
+total_chars_raw: 95326
+total_chars_polished: 32674
 ---
 
 # 一个人指挥 400 个 AI：Orca 津晶的多 agent 编排实操

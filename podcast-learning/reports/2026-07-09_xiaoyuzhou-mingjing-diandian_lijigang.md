@@ -11,10 +11,10 @@ guest: "李继刚（43 AI，即刻 @752D3103-1107-43A0-BA49-20EC29D09E36）"
 duration: "1h54m"
 duration_seconds: 6815
 transcript_segments: 5372
-hanzi_chars_raw: 35430
-hanzi_chars_polished: 35897
-total_chars_raw: 42075
-total_chars_polished: 43102
+hanzi_chars_raw: 35574
+hanzi_chars_polished: 35952
+total_chars_raw: 166057
+total_chars_polished: 43451
 audio_size_mb: 128
 speech_rate_cjk: "312 字/min"
 chapters: 36

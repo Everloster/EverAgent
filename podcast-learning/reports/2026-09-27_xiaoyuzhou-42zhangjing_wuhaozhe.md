@@ -11,10 +11,10 @@ guest: "吴浩哲（Vibe-Trading 作者与维护者；港大在读博士、HKUDS
 duration: "40m46s"
 duration_seconds: 2446
 transcript_segments: 1369
-hanzi_chars_raw: 10500
-hanzi_chars_polished: 10600
-total_chars_raw: 13000
-total_chars_polished: 12600
+hanzi_chars_raw: 12076
+hanzi_chars_polished: 11924
+total_chars_raw: 46571
+total_chars_polished: 16068
 audio_size_mb: 412
 speech_rate_cjk: "约 258 字/min（估算）"
 chapters: 16

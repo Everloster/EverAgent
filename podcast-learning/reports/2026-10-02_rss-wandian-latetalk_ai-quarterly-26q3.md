@@ -11,7 +11,7 @@ guest: "Henry（MOE Capital 创始合伙人，常驻 AI 观察嘉宾）"
 duration: "2h07m"
 duration_seconds: 7618
 transcript_segments: 4447
-hanzi_chars_raw: 36990
+hanzi_chars_raw: 37174
 hanzi_chars_polished: 37221
 speech_rate_cjk: "293 字/min"
 chapters: 14
@@ -26,6 +26,8 @@ polished_transcript_path: reports/transcripts/2026-10-02_rss-wandian-latetalk_ai
 pipeline: yt-dlp → whisper.cpp / large-v3 / Metal / VAD+`-mc 0` → eacli web.read shownotes → 23 章归并 14 节
 source_shownotes_chapters: true
 notable_correction: "英文专名大规模修正（Anthropic 有 15+ 种误写、Astral→Astra、Nins→Muse、S-1 招股书等）；49 处 [?] 未确认专名保留原音；两段录制结构按播出顺序重组"
+total_chars_raw: 153405
+total_chars_polished: 55155
 ---
 
 # AI 季报 26Q3：个人助理爆发、千禧年难题被攻破、1200 个 agent 冲破隔离

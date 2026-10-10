@@ -11,9 +11,9 @@ guest: "（单口）"
 duration: "19m16s"
 duration_seconds: 1156
 transcript_segments: 827
-hanzi_chars_raw: 7321
+hanzi_chars_raw: 7457
 hanzi_chars_polished: 6816
-speech_rate_cjk: "380 字/min"
+speech_rate_cjk: "387 字/min"
 chapters: 6
 polished: true
 polished_by: "Kimi (k3) 润色"
@@ -26,6 +26,8 @@ polished_transcript_path: reports/transcripts/2026-09-24_rss-kedaibiao-lizheng_a
 pipeline: transistor 直链 mp3 → whisper.cpp / large-v3 / Metal / VAD+`-mc 0` → 6 节重组
 source_shownotes_chapters: false
 notable_correction: "Jev 七种误识别归一（JAF/Jive/Jeff/JAV/Java/Zive→Jev）；修正 40+ 处（皈依化→归一化、Fantoon→fine-tune、REG→RAG 等）；两处音频缺段（00:03:16 跳 2 秒、00:13:47-56 缺 9 秒）已标注"
+total_chars_raw: 28771
+total_chars_polished: 10371
 ---
 
 # 如何炒作一个 AI 概念？以 Jev 为例——孙煜征的五步判断法

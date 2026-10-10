@@ -28,6 +28,8 @@ pipeline: yt-dlp → whisper.cpp large-v3 Metal "--vad silero -mc 0"（零循环
 source_shownotes_chapters: true
 notable_correction: "天一/彩彩/猜不猜→天奕/蔡蔡、征流/真流→蒸馏、2M/2RF→rm -rf、webcoding→Vibe Coding、OpenCloud→OpenClaw、支普→智谱、龟藏→归藏、报纸直评→Boss直聘、李士诗诗课→DeepMind、Gallery Rail→guardrail、母台单身、AMC大运营→MCN 等 70+ 处；45 处 [?] 保留"
 related: "与同日处理的 [[2026-09-24_xiaoyuzhou-guiji-lichang_zhangfan-fde|张帆 FDE 批判期]]构成蒸馏之争的镜像正反方；agent/personal context 与 EverAgent 工作台同构"
+total_chars_raw: 71676
+total_chars_polished: 17723
 ---
 
 # 此话当真｜同事.skill 与人生系统.skill：你害怕被蒸馏吗？

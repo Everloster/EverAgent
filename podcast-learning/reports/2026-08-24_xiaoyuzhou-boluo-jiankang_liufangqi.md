@@ -11,9 +11,9 @@ guest: "刘方奇"
 duration: "1h21m34s"
 duration_seconds: 4894
 transcript_segments: 3358
-hanzi_chars_raw: 26467
+hanzi_chars_raw: 26592
 hanzi_chars_polished: 26512
-total_chars_raw: 99500
+total_chars_raw: 107731
 total_chars_polished: 29191
 speech_rate_cjk: "324 字/min (raw)"
 chapters: 10

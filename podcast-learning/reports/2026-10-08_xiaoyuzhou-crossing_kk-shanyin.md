@@ -13,7 +13,7 @@ duration_seconds: 3900
 transcript_segments: 2805
 hanzi_chars_raw: 21174
 hanzi_chars_polished: 8066
-total_chars_raw: 101000
+total_chars_raw: 89581
 total_chars_polished: 11071
 audio_size_mb: 63
 speech_rate_cjk: "326 字/min"

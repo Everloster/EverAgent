@@ -21,6 +21,8 @@ transcript_path: reports/transcripts/2026-06-20_bilibili-cls-tongxue_hangye-bang
 pipeline: agent-reach bilibili (opencli summary → yt-dlp video download → ffmpeg mp3 extract → Groq Whisper large-v3 转录 → Claude 自润)
 polished_transcript_path: reports/transcripts/2026-06-20_bilibili-cls-tongxue_hangye-bangdan.polished.txt
 polish_corrections: 50+ (详见 polished.txt 末尾"主要 Whisper 误识别 / 错字 修正清单")
+hanzi_chars_polished: 21926
+total_chars_polished: 29464
 ---
 
 # 三年行业吃肉榜/爆亏榜大合集（2023–2025）

@@ -12,10 +12,10 @@ book: "《工作、消费主义和新穷人》（Work, Consumerism and the New P
 duration: "18m19s"
 duration_seconds: 1099
 transcript_segments: 843
-hanzi_chars_raw: 6261
-hanzi_chars_polished: 6279
+hanzi_chars_raw: 6460
+hanzi_chars_polished: 6559
 audio_size_mb: 16.8
-speech_rate_cjk: "342 字/min"
+speech_rate_cjk: "353 字/min"
 chapters: 6
 polished: true
 polished_by: "Kimi (k3) 润色 + 原书全文对照"
@@ -29,6 +29,8 @@ book_pdf_local: "~/workspace/books/工作、消费主义和新穷人_鲍曼_郭�
 pipeline: opencli bilibili download → ffmpeg → whisper.cpp / ggml-large-v3 / Metal / VAD → 无官方字幕（语义级校验）→ 按话题重组 → 原书全文（pdftotext）逐章对照
 source_shownotes_chapters: false
 notable_correction: "无官方字幕，19 处确定修正（无险一金→五险一金、爆卖→鲍曼、POA→PUA、飞升机走→非升即走等）+ 6 处存疑 [?]；书 PDF 无页码，引用按章+小节定位"
+total_chars_raw: 27061
+total_chars_polished: 7723
 ---
 
 # 一本书看清"工作"的真相：视频解读 × 原书深读

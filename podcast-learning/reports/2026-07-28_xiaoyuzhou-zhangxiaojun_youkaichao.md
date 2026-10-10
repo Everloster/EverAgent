@@ -10,10 +10,10 @@ host: "张小珺"
 guest: "游凯超（Kaichao You）"
 duration: "3h00m26s"
 duration_seconds: 10826
-transcript_segments: 6120
-hanzi_chars_raw: 53373
+transcript_segments: 6119
+hanzi_chars_raw: 53458
 hanzi_chars_polished: 49568
-total_chars_raw: 206959
+total_chars_raw: 207284
 total_chars_polished: 61150
 audio_size_mb: 173
 speech_rate_cjk: "296 字/min (raw)"

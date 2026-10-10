@@ -11,11 +11,11 @@ guest: "金博医生（三甲医生）"
 duration: "17m50s"
 duration_seconds: 1070
 transcript_segments: 602
-hanzi_chars_raw: 5445
-hanzi_chars_polished: 5971
-total_chars_raw: 21800
-total_chars_polished: 18696
-speech_rate_cjk: "305 字/min (raw)"
+hanzi_chars_raw: 5559
+hanzi_chars_polished: 5373
+total_chars_raw: 20485
+total_chars_polished: 6653
+speech_rate_cjk: "312 字/min"
 chapters: 8
 polished: true
 polished_by: "Kimi (kimi-cli-k3)，通读自润 + 官方字幕交叉校验"

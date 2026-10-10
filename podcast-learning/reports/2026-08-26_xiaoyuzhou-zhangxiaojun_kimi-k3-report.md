@@ -11,10 +11,10 @@ guest: "孙宇涛（清华大学计算机系博士候选人、上海创智学院
 duration: "2h04m19s"
 duration_seconds: 7459
 transcript_segments: 6719
-hanzi_chars_raw: 40439
+hanzi_chars_raw: 40440
 hanzi_chars_polished: 32696
-total_chars_raw: 56000
-total_chars_polished: 41000
+total_chars_raw: 214968
+total_chars_polished: 52994
 audio_size_mb: 150
 speech_rate_cjk: "325 字/min"
 chapters: 12

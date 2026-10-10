@@ -17,7 +17,7 @@
 4. **润色** — 基于原始转写去口水词、断句、纠正明显错字，产出 `.{slug}.polished.txt`（与转写并列存放）。**只修表达，不改事实**；无法辨识处保留原文并标 `[?]`。
 5. **按 shownotes 重组（推荐）** — 把 raw 段按 shownotes 章节时间戳归类合并，**去掉时间戳**（避免读者被时间码干扰阅读流），每节一段连续文本，加 `## 章节标题`。
 6. **提取/总结** — 通读润色稿，提取核心观点/关键人物/新概念/关键数字/金句。
-7. **写报告** — 存 `reports/`，带 frontmatter，结尾必带「思考与追问」三问。
+7. **写报告** — 存 `reports/`，带 frontmatter，结尾必带「思考与追问」三问；**写作规范、润色产物契约、收尾顺序见 [skills/report-writing/SKILL.md](./skills/report-writing/SKILL.md)（2026-10-09 审计后立，每批任务必对照）**：顶部加速览、主要话题只写增量观点、wiki 双链≥1、frontmatter 数字禁手填（跑 fill_report_stats.py）。
 8. **沉淀** — 更新 wiki（人物/概念页）、未解问题汇入 open-questions。
 9. **更新画像** — 把新关注的节目/人物/主题写回 PROFILE（仅凭用户真实表达，禁止臆测）。
 
@@ -276,8 +276,9 @@ python3 ../scripts/reindex.py
 - [ ] **跑 `python3 scripts/sync_index_status.py`**：把新报告 source_url 回填对应索引行的状态列（防止下次催更误推荐）
 - [ ] 报告章节地图与 polished 实际分节一致
 - [ ] 报告 Limitations 段列出本场所有 whisper 误识别
+- [ ] **对照 [skills/report-writing/SKILL.md](../skills/report-writing/SKILL.md) 第四节收尾**：fill_report_stats.py 数字校验 → sync_index_status.py 回填 → reindex+lint → CONTEXT 台账含「本批改进」一行（micro-retro）
 - [ ] wiki 概念 / 实体页引用报告文件名
-- [ ] open-questions 汇入新问
+- [ ] open-questions 汇入新问（思考与追问·问 2 全量）
 - [ ] log.md 追加 ingest 条目
 
 提交规范见根 [AGENTS.md](../AGENTS.md) 与 [docs/PROTOCOL_COMMON.md](../docs/PROTOCOL_COMMON.md)。

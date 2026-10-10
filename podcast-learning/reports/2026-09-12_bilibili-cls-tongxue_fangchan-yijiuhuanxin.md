@@ -11,12 +11,12 @@ guest: "无"
 duration: "15min31s"
 duration_seconds: 931
 transcript_segments: 553
-hanzi_chars_raw: 5586
-hanzi_chars_polished: 5246
-total_chars_raw: 5739
-total_chars_polished: 5330
+hanzi_chars_raw: 5674
+hanzi_chars_polished: 5591
+total_chars_raw: 19401
+total_chars_polished: 6257
 audio_size_mb: 14
-speech_rate_cjk: "360 字/min"
+speech_rate_cjk: "366 字/min"
 chapters: 8
 polished: true
 polished_by: "Claude (GLM-5.3)"

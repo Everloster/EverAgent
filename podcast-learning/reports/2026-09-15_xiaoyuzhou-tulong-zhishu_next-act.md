@@ -11,7 +11,7 @@ guest: "（单口）"
 duration: "55m21s"
 duration_seconds: 3320
 transcript_segments: 2009
-hanzi_chars_raw: 12452
+hanzi_chars_raw: 12571
 hanzi_chars_polished: 11863
 speech_rate_cjk: "225 字/min"
 chapters: 4
@@ -26,6 +26,8 @@ polished_transcript_path: reports/transcripts/2026-09-15_xiaoyuzhou-tulong-zhish
 pipeline: yt-dlp → whisper.cpp / ggml-large-v3 / Metal / VAD → eacli web.read shownotes → 按四章重组 → eacli web.search 抽查核实
 source_shownotes_chapters: true
 notable_correction: "公司/术语修正 80+ 处（DeepSick→DeepSeek、SOPIC→Anthropic、SpecialX→xAI、Glock→Grok、Skill.ai→Scale AI、Aftercurry→AfterQuery、KPIX→CAPEX 等）；45 处 [?] 存疑（国产办公 agent 产品名等）"
+total_chars_raw: 64127
+total_chars_polished: 19336
 ---
 
 # 智能的下一幕：庄明浩 73 页 PPT 的 2026Q3 行业复盘

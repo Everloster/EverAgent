@@ -11,7 +11,7 @@ guest: "陈冕（演语科技 Evoken 创始人，旗下 Liblib / Lovart / LibTV�
 duration: "2h08m"
 duration_seconds: 7709
 transcript_segments: 4979
-hanzi_chars_raw: 38071
+hanzi_chars_raw: 38135
 audio_size_mb: 123
 speech_rate_cjk: "约 300 字/min"
 polished: false
@@ -24,6 +24,7 @@ pipeline: yt-dlp → whisper.cpp / ggml-large-v3 / Metal（MBP，2h08m→约8min
 source_shownotes_chapters: true
 notable_correction: "whisper 误识别 陈冕→陈敏、Lovart→Lavarte/老弯子、Seedance→Cdance/Sedans、Nano Banana→Norbanana、逐鹿中原→逐渐中原（依 shownotes + 常识修正）"
 related_report: ai-learning/reports/knowledge_reports（07-29 Evoken 陈冕访谈精读，本期为其完整版）
+total_chars_raw: 161146
 ---
 
 # 对话 Evoken 陈冕：模型吞噬应用的时代，独立应用公司如何 survive

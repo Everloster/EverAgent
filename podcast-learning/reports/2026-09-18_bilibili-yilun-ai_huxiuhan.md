@@ -13,8 +13,8 @@ duration_seconds: 7403
 transcript_segments: 2746
 hanzi_chars_raw: 31300
 hanzi_chars_polished: 29279
-total_chars_raw: 33054
-total_chars_polished: 35933
+total_chars_raw: 99015
+total_chars_polished: 37584
 speech_rate_cjk: "254 字/min"
 chapters: 17
 polished: true

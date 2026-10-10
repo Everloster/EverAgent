@@ -27,6 +27,8 @@ shownotes_path: reports/transcripts/2026-09-23_ximalaya-ailianjinshu_luyang.show
 pipeline: eacli podcast（Razer 静默 worker：yt-dlp → whisper.cpp v1.9.1 / ggml-large-v3 / CUDA sm_120 / Silero VAD / -mc 0，零循环幻觉）→ MCP web_reader 单集页 shownotes（eacli tool select/invoke 被会话权限拦截，降级并记录）→ Claude 按 14 章重组
 source_shownotes_chapters: true
 notable_correction: "修正 100+ 处（GU/机油/寄优/寄邮→GEO、Publu/pblu/Qblue→Pureblue、鲁阳→鲁扬、人心→任鑫、硬字八绝→因子挖掘、引空间→隐空间、轴底→酒旅、安堂→氨糖、蓝雪时节→《蓝血十杰》等）；20+ 处 [?] 未核实专名"
+total_chars_raw: 81602
+total_chars_polished: 26877
 ---
 
 # GEO 是量化交易不是 SEO：PureblueAI 鲁扬谈 AI 时代的货架与流量

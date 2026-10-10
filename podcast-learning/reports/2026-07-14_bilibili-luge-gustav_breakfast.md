@@ -12,9 +12,9 @@ duration: "16m56s"
 duration_seconds: 1016
 transcript_segments: 645
 hanzi_chars_raw: 5842
-hanzi_chars_polished: 5793
-total_chars_polished: 6535
-speech_rate_cjk: "345 字/min"
+hanzi_chars_polished: 6193
+total_chars_polished: 7454
+speech_rate_cjk: "350 字/min"
 chapters: 10
 polished: true
 polished_by: "claude-code-k3"

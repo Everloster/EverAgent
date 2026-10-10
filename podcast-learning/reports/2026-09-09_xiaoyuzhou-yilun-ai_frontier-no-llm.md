@@ -11,10 +11,10 @@ guest: "李继刚（43AI合伙人）、橘子（Cola/ListenHub创始人）、歸
 duration: "93min"
 duration_seconds: 5580
 transcript_segments: 2750
-hanzi_chars_raw: 24997
-hanzi_chars_polished: 24979
-total_chars_raw: 26100
-total_chars_polished: 26000
+hanzi_chars_raw: 25099
+hanzi_chars_polished: 25379
+total_chars_raw: 94132
+total_chars_polished: 29274
 audio_size_mb: 90
 speech_rate_cjk: "269 字/min"
 chapters: 10

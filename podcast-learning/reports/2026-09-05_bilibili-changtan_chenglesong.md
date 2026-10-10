@@ -11,10 +11,10 @@ guest: "程乐松（北京大学哲学系主任）"
 duration: "2h55m58s"
 duration_seconds: 10558
 transcript_segments: 4466
-hanzi_chars_raw: 51130
-hanzi_chars_polished: 51098
-total_chars_raw: 51402
-total_chars_polished: 51802
+hanzi_chars_raw: 51227
+hanzi_chars_polished: 51656
+total_chars_raw: 159004
+total_chars_polished: 53463
 audio_size_mb: 161
 speech_rate_cjk: "291 字/min"
 chapters: 28

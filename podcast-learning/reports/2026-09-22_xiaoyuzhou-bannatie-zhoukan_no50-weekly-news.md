@@ -10,10 +10,10 @@ host: "潇磊、刘飞"
 guest: "无（双主持周刊，本期与财新联动话题）"
 duration: "1h38m15s"
 duration_seconds: 5895
-transcript_segments: 3482
-hanzi_chars_raw: 22000
+transcript_segments: 3481
+hanzi_chars_raw: 28028
 hanzi_chars_polished: 0
-total_chars_raw: 26500
+total_chars_raw: 113395
 total_chars_polished: 0
 audio_size_mb: 995
 speech_rate_cjk: "约 224 字/min（估算，方法见 Limitations）"

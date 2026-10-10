@@ -11,7 +11,7 @@ guest: "曾鸣（前阿里巴巴集团总参谋长，《智能战略》《智能
 duration: "2h34m"
 duration_seconds: 9258
 transcript_segments: 3863
-hanzi_chars_raw: 39544
+hanzi_chars_raw: 39703
 hanzi_chars_polished: 36065
 total_chars_raw: 135423
 total_chars_polished: 42818

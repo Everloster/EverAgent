@@ -11,7 +11,7 @@ guest: "Mark（Stanford PhD，Bill Dally 学生，硬件/系统架构）；子�
 duration: "1h31m32s"
 duration_seconds: 5492
 transcript_segments: 3202
-hanzi_chars_raw: 28350
+hanzi_chars_raw: 28573
 hanzi_chars_polished: 27919
 speech_rate_cjk: "312 字/min"
 chapters: 10
@@ -26,6 +26,8 @@ polished_transcript_path: reports/transcripts/2026-09-15_rss-guigu101_e251-infer
 pipeline: fireside 直链 → whisper.cpp / ggml-large-v3 / Metal / VAD+`-mc 0` → 24 章归并 10 节重组
 source_shownotes_chapters: true
 notable_correction: "专名修正 80+ 处（Grok→Groq、3Bus/Seribus→Cerebras、Bill Daly→Bill Dally、Hanapino→Jalapeño、Tranium→Trainium、KVCash→KV Cache、抵扣→decode、HRM→HBM 等）；Mark/子杨话轮按硬线索推断，无线索处标「嘉宾」"
+total_chars_raw: 109761
+total_chars_polished: 35990
 ---
 
 # 推理芯片之战：训练看算力，推理看带宽

@@ -11,7 +11,7 @@ guest: "Ricky（宏观研究员/机构投资者，常驻嘉宾）"
 duration: "1h39m"
 duration_seconds: 5975
 transcript_segments: 3062
-hanzi_chars_raw: 27368
+hanzi_chars_raw: 27563
 hanzi_chars_polished: 25244
 speech_rate_cjk: "275 字/min"
 chapters: 8
@@ -26,6 +26,8 @@ polished_transcript_path: reports/transcripts/2026-09-14_xiaoyuzhou-qizhulou_202
 pipeline: yt-dlp → whisper.cpp / ggml-large-v3 / Metal / VAD+`-mc 0` → eacli web.read shownotes → 8 章重组
 source_shownotes_chapters: true
 notable_correction: "修正 100+ 处（民意→名义、扶持/红值→估值、河肥→合肥、长兴→长鑫、封缩→通缩、Kapex→CapEx 等）；4100万→4100亿 单位按语境修正并标 [?]"
+total_chars_raw: 102574
+total_chars_polished: 31054
 ---
 
 # 多重囚徒困境：2026Q3 全球宏观复盘与展望

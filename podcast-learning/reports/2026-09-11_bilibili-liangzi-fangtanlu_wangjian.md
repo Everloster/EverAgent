@@ -12,11 +12,11 @@ duration: "5min07s"
 duration_seconds: 307
 transcript_segments: 182
 hanzi_chars_raw: 1551
-hanzi_chars_polished: 1654
+hanzi_chars_polished: 1770
 total_chars_raw: 1677
-total_chars_polished: 1790
+total_chars_polished: 2329
 audio_size_mb: 4.7
-speech_rate_cjk: "303 字/min"
+speech_rate_cjk: "328 字/min"
 chapters: 6
 polished: true
 polished_by: "Claude (GLM-5.3)"

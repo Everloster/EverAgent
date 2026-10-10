@@ -11,9 +11,9 @@ guest: "子楠（晚点科技组记者）× 徐玉萌（晚点平台组记者）
 duration: "1h02m"
 duration_seconds: 3755
 transcript_segments: 2268
-hanzi_chars_raw: 19362
+hanzi_chars_raw: 19555
 hanzi_chars_polished: 18621
-speech_rate_cjk: "309 字/min"
+speech_rate_cjk: "312 字/min"
 chapters: 10
 polished: true
 polished_by: "Kimi (k3) 润色"
@@ -26,6 +26,8 @@ polished_transcript_path: reports/transcripts/2026-09-02_rss-wandian-latetalk_em
 pipeline: yt-dlp → whisper.cpp / large-v3 / Metal / VAD+`-mc 0` → shownotes 16 章归并 10 节（transcribe.py 默认 VAD 文件名漂移已修：建 ggml-silero 软链）
 source_shownotes_chapters: true
 notable_correction: "「具身智能」一词 whisper 全军覆没 30+ 处（巨声/聚酸/距身…）已批量修正；宇树/智元/长盛轴承/邓泰华等专名修正 60+ 处；「106万台→1.6 万台」「五个月→5 亿」两处数字语音校正（高置信）"
+total_chars_raw: 74832
+total_chars_polished: 22428
 ---
 
 # 具身智能的金钱游戏：进展难测、收入催熟与 IPO 竞速

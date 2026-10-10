@@ -11,9 +11,9 @@ guest: "（双主播对谈）"
 duration: "1h08m35s"
 duration_seconds: 4115
 transcript_segments: 2259
-hanzi_chars_raw: 19069
+hanzi_chars_raw: 19274
 hanzi_chars_polished: 20426
-speech_rate_cjk: "278 字/min"
+speech_rate_cjk: "281 字/min"
 chapters: 8
 polished: true
 polished_by: "Kimi (k3) 润色（whisper+CC 字幕双源校验）"
@@ -26,6 +26,8 @@ polished_transcript_path: reports/transcripts/2026-10-03_bilibili-dianwan-ak_ep0
 pipeline: opencli bilibili download（Navigation rejected 重试两次后过）→ ffmpeg → whisper.cpp / large-v3 / Metal / VAD+`-mc 0` + CC 字幕双源校验 → 8 节重组
 source_shownotes_chapters: true
 notable_correction: "双源互校修正 60+ 处（郑总→甄总、荧幕→影目、骑驱找马→骑驴找马、头牛→投流、附罗选→负螺旋、GMA→GMV 等）；6 处两源冲突/均错已标注"
+total_chars_raw: 74085
+total_chars_polished: 26084
 ---
 
 # 高薪、事少，为什么我还是想逃？——旧人生地图失效之后

@@ -11,9 +11,9 @@ guest: "盛颖（Ying Sheng）"
 duration: "1h46m26s"
 duration_seconds: 6387
 transcript_segments: 5578
-hanzi_chars_raw: 34164
+hanzi_chars_raw: 34281
 hanzi_chars_polished: 33726
-total_chars_raw: 129000
+total_chars_raw: 176151
 total_chars_polished: 45733
 audio_size_mb: 147
 speech_rate_cjk: "321 字/min (raw)"

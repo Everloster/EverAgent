@@ -28,6 +28,8 @@ pipeline: yt-dlp（B站直下） → whisper.cpp large-v3 Metal "--vad silero -m
 source_shownotes_chapters: false
 notable_correction: "橡标/项标/香苗→项飙、许哲云→许倬云、桑黛尔→桑德尔、于敏洪→俞敏洪、冯伟兰→冯友兰、张大爷→张岱年、四说新语→《世说新语》、华山一条、占座、磕CP、存在于时间→《存在与时间》、警官化→景观化、慈禧笔幅→此起彼伏、不要牛吗→不要牛马、秦毅→秦失 等 90+ 处；无官方字幕，23 处 [?] 保守保留"
 related: "与 [[2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism|鲍曼《工作、消费主义和新穷人》]] 同属'工作观'线；读书方法互见 [[concepts/reading-four-paces|读书的四种配速]]"
+total_chars_raw: 96373
+total_chars_polished: 22710
 ---
 
 # 是个人物 EP22｜程乐松：不要牛马，不要狗屁，要什么？

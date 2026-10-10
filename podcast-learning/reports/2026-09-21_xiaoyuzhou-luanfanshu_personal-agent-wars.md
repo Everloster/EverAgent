@@ -11,10 +11,10 @@ guest: "莫唯书Mark（前TikTok产品，公众号：莫思Moss）· Suki（Tod
 duration: "2h06m"
 duration_seconds: 7559
 transcript_segments: 4039
-hanzi_chars_raw: 34034
-hanzi_chars_polished: 34034
-total_chars_raw: 204189
-total_chars_polished: 108135
+hanzi_chars_raw: 34105
+hanzi_chars_polished: 34196
+total_chars_raw: 136518
+total_chars_polished: 39661
 audio_size_mb: 1387
 speech_rate_cjk: "270 字/min"
 chapters: 7

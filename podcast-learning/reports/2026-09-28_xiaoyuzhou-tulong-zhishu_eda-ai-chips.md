@@ -11,9 +11,9 @@ guest: "颜华[?]（新思科技 Synopsys 从业者，从业近 20 年；姓名�
 duration: "58m10s"
 duration_seconds: 3490
 transcript_segments: 1865
-hanzi_chars_raw: 14573
+hanzi_chars_raw: 14754
 hanzi_chars_polished: 12889
-speech_rate_cjk: "251 字/min"
+speech_rate_cjk: "254 字/min"
 chapters: 10
 polished: true
 polished_by: "Kimi (k3) 润色"
@@ -26,6 +26,8 @@ polished_transcript_path: reports/transcripts/2026-09-28_xiaoyuzhou-tulong-zhish
 pipeline: yt-dlp → whisper.cpp / large-v3 / Metal / VAD+`-mc 0` → eacli web.read shownotes → 10 节重组
 source_shownotes_chapters: true
 notable_correction: "术语修正 60+ 处（心思→新思、推炮→tape-out、车台机店→台积电、Value Log→Verilog 等）；跨库交叉验证修正三处（GP6→GPT-6、辣椒→Jalapeño、智库→智谱）；嘉宾姓名未能确认（标 [?]）"
+total_chars_raw: 61061
+total_chars_polished: 17503
 ---
 
 # 当 AI 开始设计芯片：新思科技视角下的 EDA 与 AI 造芯真伪

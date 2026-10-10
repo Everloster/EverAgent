@@ -11,7 +11,7 @@ guest: "徐梦迪（清华大学交叉信息研究院助理教授；CMU 博士�
 duration: "1h20m"
 duration_seconds: 4841
 transcript_segments: 3159
-hanzi_chars_raw: 22227
+hanzi_chars_raw: 22392
 hanzi_chars_polished: 22906
 speech_rate_cjk: "276 字/min"
 chapters: 24
@@ -26,6 +26,8 @@ polished_transcript_path: reports/transcripts/2026-09-20_xiaoyuzhou-crossing_xum
 pipeline: yt-dlp → whisper.cpp / ggml-large-v3 / Metal / VAD → eacli web.read shownotes → 按 24 章重组 → eacli web.search 身份核查
 source_shownotes_chapters: true
 notable_correction: "人名/术语修正 40+ 处（巨声→具身、in-connect→in-context learning、Charles Fien→Chelsea Finn、卡主→Koji 等）；49:26-49:27 循环幻觉一处已去重；主持人口径中的 Johns Hopkins 求学经历未能核实（见 Limitations）"
+total_chars_raw: 103329
+total_chars_polished: 35387
 ---
 
 # 「我看到了 Scaling Law 的信号」：十字路口对谈徐梦迪
