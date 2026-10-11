@@ -5,7 +5,7 @@
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
-| — | 2026-09-23 | 47m12s | [AI 和真格管理合伙人刘元录了一期播客](https://www.xiaoyuzhoufm.com/episode/6ab39422f04646b3a955f030?utm_source=rss)<!--g:6ab39422f04646b3a955f030--> | — |
+| — | 2026-09-23 | 47m12s | [AI 和真格管理合伙人刘元录了一期播客](https://www.xiaoyuzhoufm.com/episode/6ab39422f04646b3a955f030?utm_source=rss)<!--g:6ab39422f04646b3a955f030--> | ✅ 已处理（2026-09-23 xiaoyuzhou-cihua-dangzhen_liuyuan） |
 | — | 2026-09-16 | 46m48s | [对话张托肯：用 AI 三天设计一颗芯片后，一位清华博士决定「开卷」](https://www.xiaoyuzhoufm.com/episode/6aaa86279d326477816a2744?utm_source=rss)<!--g:6aaa86279d326477816a2744--> | ✅ 已处理（2026-09-16 xiaoyuzhou-cihua-dangzhen_zhangtuoken） |
 | — | 2026-08-17 | 56m17s | [从「同事.skill」到「人生系统」，你害怕被蒸馏吗？](https://www.xiaoyuzhoufm.com/episode/6a82e0405aeb2a5712e823d5?utm_source=rss)<!--g:6a82e0405aeb2a5712e823d5--> | ✅ 已处理（[[2026-08-17_xiaoyuzhou-cihua-dangzhen_distill| ✅ 已处理（2026-08-17 xiaoyuzhou-cihua-dangzhen_distill） |
 | — | 2026-07-01 | 52m04s | [Agent 元年第 500 天：什么在消失，什么在诞生，为什么我们不该再投资 GUI 思维的软件？](https://www.xiaoyuzhoufm.com/episode/6a44e5169d2f57436840e641?utm_source=rss)<!--g:6a44e5169d2f57436840e641--> | — |
