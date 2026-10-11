@@ -118,6 +118,7 @@
 - twentyhq/twenty
 - usestrix/strix
 - Vaibhavs10/insanely-fast-whisper
+- yetone/magpie
 - vectorize-io/hindsight
 - virattt/ai-hedge-fund
 - virattt/dexter
