@@ -7,7 +7,10 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-10-12 | [AI 行业日报 · 2026-10-12](../web-surfing/reports/ai-news-daily-2026-10-12.md) | web-surfing |
+| 2026-10-11 | [AI 和真格管理合伙人刘元录了一期播客](../podcast-learning/reports/2026-09-23_xiaoyuzhou-cihua-dangzhen_liuyuan.md) | podcast-learning |
 | 2026-10-10 | [晚点聊182：梁琛奇——用 AI 创造开心：猫箱推演、动念引线与养女儿方法论](../podcast-learning/reports/2026-09-24_rss-wandian-latetalk_liangchenqi-ai-joy.md) | podcast-learning |
+| 2026-10-10 | [成为巴菲特27：买珠还椟——从邓白氏到穆迪，商业信用的权力与秩序](../podcast-learning/reports/2026-02-11_xiaoyuzhou-chengwei-buffett_nantian.md) | podcast-learning |
 | 2026-10-10 | [屠龙之术：AICC2026 侧记——Agent=Model+Harness 成业界公式，算力缺口十年十倍](../podcast-learning/reports/2026-09-22_xiaoyuzhou-tulong-zhishu_ai-production-stage.md) | podcast-learning |
 | 2026-10-10 | [卫诗婕89：阮良——个人提效500%，交付只从20天到17天：AI 进组织的木桶真相](../podcast-learning/reports/2026-09-23_xiaoyuzhou-weishijie_ruanliang-ai-org.md) | podcast-learning |
 | 2026-10-10 | [十字路口：于红——AI 时代学什么？林迪效应、SEL 与把终点放在 30 岁](../podcast-learning/reports/2026-09-27_xiaoyuzhou-crossing_yuhong-sel.md) | podcast-learning |
@@ -20,6 +23,7 @@
 | 2026-10-09 | [程若倩教授：孩子身高这件事，到底矮不矮、治不治？](../podcast-learning/reports/2026-09-27_xiaoyuzhou-boluo-jiankang_chengruoqian.md) | podcast-learning |
 | 2026-10-09 | [硅谷101 E255：榜单 99 分，用户没感觉——张阔的 107 任务评测与垂直 Agent 成本战](../podcast-learning/reports/2026-10-08_rss-guigu101_e255-zhangkuo.md) | podcast-learning |
 | 2026-10-09 | [知行小酒馆 E253：会思考的沙子与杀人的沙子——李治霖谈 AI 时代的折叠世界与有效公益](../podcast-learning/reports/2026-10-09_xiaoyuzhou-zhixing-xiaojiuguan_e253-ai-good.md) | podcast-learning |
+| 2026-10-09 | [惠州租房建议报告——两位老人 2026 年 9/10 月入住版（1–3 个月短住体验）](../web-surfing/reports/huizhou-rental-guide-2026-09.md) | web-surfing |
 | 2026-10-09 | [屠龙大实话：诺奖得主 Deisseroth 谈《照亮破碎之心》——精神疾病是进化的代价，光遗传是精确的怜悯](../podcast-learning/reports/2026-10-06_xiaoyuzhou-tulong-dashihua_karl-deisseroth.md) | podcast-learning |
 | 2026-10-09 | [大小马 V95：中美新拐点——出海小霸王、AI 眼镜三数量级增量与 Muse 时代的APP崩塌](../podcast-learning/reports/2026-10-08_xiaoyuzhou-daxiaoma-keji_v95-china-us.md) | podcast-learning |
 | 2026-10-09 | [听懂涨声：17 岁矿主与建筑师父亲——钱、认知与风险的父子坦白局](../podcast-learning/reports/2026-10-09_xiaoyuzhou-tingdong-zhangsheng_father-son-money.md) | podcast-learning |
@@ -28,10 +32,6 @@
 | 2026-10-09 | [VISTA：视觉原生 Harness 论文精读——无损视觉记忆与主动检查如何把 Opus 5.0 的 ARC-AGI-3 分数从 40.68 拉到 100](../ai-learning/reports/paper_analyses/48_vista_2026.md) | ai-learning |
 | 2026-10-09 | [Laya：把「反射性决策」从 LLM 里拆出来——421M 非自回归 System 1 决策模型解析与本机实测](../ai-learning/reports/knowledge_reports/Laya_System1决策模型_深度解析_20260922.md) | ai-learning |
 | 2026-10-09 | [AI 行业日报 · 2026-10-09](../web-surfing/reports/ai-news-daily-2026-10-09.md) | web-surfing |
-| 2026-10-08 | [OpenAI 数学手稿事件（openai/math）核实与深度分析](../ai-learning/reports/knowledge_reports/OpenAI数学手稿事件_核实与深度分析_20261008.md) | ai-learning |
-| 2026-10-08 | [AI 行业日报 · 2026-10-08](../web-surfing/reports/ai-news-daily-2026-10-08.md) | web-surfing |
-| 2026-10-07 | [高薪、事少，为什么我还是想逃？——电丸科技AK × 甄总谈旧人生地图失效](../podcast-learning/reports/2026-10-03_bilibili-dianwan-ak_ep04-quit.md) | podcast-learning |
-| 2026-10-07 | [谁在给大模型出题、卖题、判卷？AI 数据行业的野蛮生长](../podcast-learning/reports/2026-09-27_rss-guigu101_e253-ai-data-industry.md) | podcast-learning |
 
 ## 🤖 AI Learning（112 篇）
 
@@ -260,11 +260,13 @@
 | 2026-03-26 | [Physiology of Growth Hormone Secretion during Sleep (1996) 精读](../biology-learning/reports/paper_analyses/P09_gh_sleep_physiology_1996.md) | — |
 | 2026-03-23 | [晚型人作息与力量训练深度研究](../biology-learning/reports/concept_reports/晚型人作息与力量训练_深度研究报告.md) | — |
 
-## 🎙️ Podcast Learning（73 篇）
+## 🎙️ Podcast Learning（75 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-10-11 | [AI 和真格管理合伙人刘元录了一期播客](../podcast-learning/reports/2026-09-23_xiaoyuzhou-cihua-dangzhen_liuyuan.md) | — |
 | 2026-10-10 | [晚点聊182：梁琛奇——用 AI 创造开心：猫箱推演、动念引线与养女儿方法论](../podcast-learning/reports/2026-09-24_rss-wandian-latetalk_liangchenqi-ai-joy.md) | — |
+| 2026-10-10 | [成为巴菲特27：买珠还椟——从邓白氏到穆迪，商业信用的权力与秩序](../podcast-learning/reports/2026-02-11_xiaoyuzhou-chengwei-buffett_nantian.md) | — |
 | 2026-10-10 | [屠龙之术：AICC2026 侧记——Agent=Model+Harness 成业界公式，算力缺口十年十倍](../podcast-learning/reports/2026-09-22_xiaoyuzhou-tulong-zhishu_ai-production-stage.md) | — |
 | 2026-10-10 | [卫诗婕89：阮良——个人提效500%，交付只从20天到17天：AI 进组织的木桶真相](../podcast-learning/reports/2026-09-23_xiaoyuzhou-weishijie_ruanliang-ai-org.md) | — |
 | 2026-10-10 | [十字路口：于红——AI 时代学什么？林迪效应、SEL 与把终点放在 30 岁](../podcast-learning/reports/2026-09-27_xiaoyuzhou-crossing_yuhong-sel.md) | — |
@@ -338,10 +340,12 @@
 | 2026-06-20 | [三年行业吃肉榜/爆亏榜大合集（2023-2025）：谁在偷偷赚钱，谁在快速衰落](../podcast-learning/reports/2026-06-20_bilibili-cls-tongxue_hangye-bangdan.md) | — |
 | 2026-06-18 | [Vol.29 对话王小川：造医生，战豆包，与无尽的 AI 非共识](../podcast-learning/reports/2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan.md) | — |
 
-## 🏄 Web Surfing（37 篇）
+## 🏄 Web Surfing（38 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-10-12 | [AI 行业日报 · 2026-10-12](../web-surfing/reports/ai-news-daily-2026-10-12.md) | — |
+| 2026-10-09 | [惠州租房建议报告——两位老人 2026 年 9/10 月入住版（1–3 个月短住体验）](../web-surfing/reports/huizhou-rental-guide-2026-09.md) | — |
 | 2026-10-09 | [AI 行业日报 · 2026-10-09](../web-surfing/reports/ai-news-daily-2026-10-09.md) | — |
 | 2026-10-08 | [AI 行业日报 · 2026-10-08](../web-surfing/reports/ai-news-daily-2026-10-08.md) | — |
 | 2026-10-07 | [AI 行业日报 · 2026-10-07](../web-surfing/reports/ai-news-daily-2026-10-07.md) | — |
@@ -369,7 +373,6 @@
 | 2026-09-02 | [AI 行业日报 · 2026-09-02](../web-surfing/reports/ai-news-daily-2026-09-02.md) | — |
 | 2026-09-01 | [AI 行业日报 · 2026-09-01](../web-surfing/reports/ai-news-daily-2026-09-01.md) | — |
 | 2026-08-31 | [AI 行业日报 · 2026-08-31](../web-surfing/reports/ai-news-daily-2026-08-31.md) | — |
-| 2026-08-28 | [惠州租房建议报告——两位老人 2026 年 9/10 月入住版（1–3 个月短住体验）](../web-surfing/reports/huizhou-rental-guide-2026-09.md) | — |
 | 2026-08-28 | [AI 行业日报 · 2026-08-28](../web-surfing/reports/ai-news-daily-2026-08-28.md) | — |
 | 2026-08-27 | [AI 行业日报 · 2026-08-27](../web-surfing/reports/ai-news-daily-2026-08-27.md) | — |
 | 2026-08-26 | [AI 行业日报 · 2026-08-26](../web-surfing/reports/ai-news-daily-2026-08-26.md) | — |
