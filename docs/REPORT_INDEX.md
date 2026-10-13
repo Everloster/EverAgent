@@ -7,6 +7,7 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-10-13 | [AI 行业日报 · 2026-10-13](../web-surfing/reports/ai-news-daily-2026-10-13.md) | web-surfing |
 | 2026-10-12 | [AI 行业日报 · 2026-10-12](../web-surfing/reports/ai-news-daily-2026-10-12.md) | web-surfing |
 | 2026-10-11 | [AI 和真格管理合伙人刘元录了一期播客](../podcast-learning/reports/2026-09-23_xiaoyuzhou-cihua-dangzhen_liuyuan.md) | podcast-learning |
 | 2026-10-10 | [晚点聊182：梁琛奇——用 AI 创造开心：猫箱推演、动念引线与养女儿方法论](../podcast-learning/reports/2026-09-24_rss-wandian-latetalk_liangchenqi-ai-joy.md) | podcast-learning |
@@ -24,14 +25,13 @@
 | 2026-10-09 | [程若倩教授：孩子身高这件事，到底矮不矮、治不治？](../podcast-learning/reports/2026-09-27_xiaoyuzhou-boluo-jiankang_chengruoqian.md) | podcast-learning |
 | 2026-10-09 | [硅谷101 E255：榜单 99 分，用户没感觉——张阔的 107 任务评测与垂直 Agent 成本战](../podcast-learning/reports/2026-10-08_rss-guigu101_e255-zhangkuo.md) | podcast-learning |
 | 2026-10-09 | [知行小酒馆 E253：会思考的沙子与杀人的沙子——李治霖谈 AI 时代的折叠世界与有效公益](../podcast-learning/reports/2026-10-09_xiaoyuzhou-zhixing-xiaojiuguan_e253-ai-good.md) | podcast-learning |
+| 2026-10-09 | [惠州租房建议报告——两位老人 2026 年 9/10 月入住版（1–3 个月短住体验）](../web-surfing/reports/huizhou-rental-guide-2026-09.md) | web-surfing |
 | 2026-10-09 | [屠龙大实话：诺奖得主 Deisseroth 谈《照亮破碎之心》——精神疾病是进化的代价，光遗传是精确的怜悯](../podcast-learning/reports/2026-10-06_xiaoyuzhou-tulong-dashihua_karl-deisseroth.md) | podcast-learning |
 | 2026-10-09 | [大小马 V95：中美新拐点——出海小霸王、AI 眼镜三数量级增量与 Muse 时代的APP崩塌](../podcast-learning/reports/2026-10-08_xiaoyuzhou-daxiaoma-keji_v95-china-us.md) | podcast-learning |
 | 2026-10-09 | [听懂涨声：17 岁矿主与建筑师父亲——钱、认知与风险的父子坦白局](../podcast-learning/reports/2026-10-09_xiaoyuzhou-tingdong-zhangsheng_father-son-money.md) | podcast-learning |
 | 2026-10-09 | [十字路口：AI 无限，人生有限——山音与 KK 的一线 AI 导演方法论](../podcast-learning/reports/2026-10-08_xiaoyuzhou-crossing_kk-shanyin.md) | podcast-learning |
 | 2026-10-09 | [乱翻书275：个人Agent的战争——拆解Town、Instinct、Grok Bot与Muse（含产品深研档案）](../podcast-learning/reports/2026-09-21_xiaoyuzhou-luanfanshu_personal-agent-wars.md) | podcast-learning |
 | 2026-10-09 | [VISTA：视觉原生 Harness 论文精读——无损视觉记忆与主动检查如何把 Opus 5.0 的 ARC-AGI-3 分数从 40.68 拉到 100](../ai-learning/reports/paper_analyses/48_vista_2026.md) | ai-learning |
-| 2026-10-09 | [Laya：把「反射性决策」从 LLM 里拆出来——421M 非自回归 System 1 决策模型解析与本机实测](../ai-learning/reports/knowledge_reports/Laya_System1决策模型_深度解析_20260922.md) | ai-learning |
-| 2026-10-09 | [AI 行业日报 · 2026-10-09](../web-surfing/reports/ai-news-daily-2026-10-09.md) | web-surfing |
 
 ## 🤖 AI Learning（112 篇）
 
@@ -341,11 +341,13 @@
 | 2026-06-20 | [三年行业吃肉榜/爆亏榜大合集（2023-2025）：谁在偷偷赚钱，谁在快速衰落](../podcast-learning/reports/2026-06-20_bilibili-cls-tongxue_hangye-bangdan.md) | — |
 | 2026-06-18 | [Vol.29 对话王小川：造医生，战豆包，与无尽的 AI 非共识](../podcast-learning/reports/2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan.md) | — |
 
-## 🏄 Web Surfing（38 篇）
+## 🏄 Web Surfing（39 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-10-13 | [AI 行业日报 · 2026-10-13](../web-surfing/reports/ai-news-daily-2026-10-13.md) | — |
 | 2026-10-12 | [AI 行业日报 · 2026-10-12](../web-surfing/reports/ai-news-daily-2026-10-12.md) | — |
+| 2026-10-09 | [惠州租房建议报告——两位老人 2026 年 9/10 月入住版（1–3 个月短住体验）](../web-surfing/reports/huizhou-rental-guide-2026-09.md) | — |
 | 2026-10-09 | [AI 行业日报 · 2026-10-09](../web-surfing/reports/ai-news-daily-2026-10-09.md) | — |
 | 2026-10-08 | [AI 行业日报 · 2026-10-08](../web-surfing/reports/ai-news-daily-2026-10-08.md) | — |
 | 2026-10-07 | [AI 行业日报 · 2026-10-07](../web-surfing/reports/ai-news-daily-2026-10-07.md) | — |
@@ -373,7 +375,6 @@
 | 2026-09-02 | [AI 行业日报 · 2026-09-02](../web-surfing/reports/ai-news-daily-2026-09-02.md) | — |
 | 2026-09-01 | [AI 行业日报 · 2026-09-01](../web-surfing/reports/ai-news-daily-2026-09-01.md) | — |
 | 2026-08-31 | [AI 行业日报 · 2026-08-31](../web-surfing/reports/ai-news-daily-2026-08-31.md) | — |
-| 2026-08-28 | [惠州租房建议报告——两位老人 2026 年 9/10 月入住版（1–3 个月短住体验）](../web-surfing/reports/huizhou-rental-guide-2026-09.md) | — |
 | 2026-08-28 | [AI 行业日报 · 2026-08-28](../web-surfing/reports/ai-news-daily-2026-08-28.md) | — |
 | 2026-08-27 | [AI 行业日报 · 2026-08-27](../web-surfing/reports/ai-news-daily-2026-08-27.md) | — |
 | 2026-08-26 | [AI 行业日报 · 2026-08-26](../web-surfing/reports/ai-news-daily-2026-08-26.md) | — |
