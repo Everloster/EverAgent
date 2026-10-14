@@ -25,8 +25,8 @@ source_shownotes_chapters: true
 notable_correction: "Hannes→harness｜投款/投稿→token｜减到差→剪刀差｜语气大会→云栖大会｜实体模型→十万亿模型｜智园→智源｜吴花强→吴华强[?]｜一组器→忆阻器[?]｜一个命令→1M[?]｜4%权重→4-bit[?]｜昆仑星→昆仑芯｜木西→沐曦｜摩尔县城→摩尔线程｜岁元→燧原[?]｜轻微→清微智能｜摩达→魔搭｜电子无所→电子五所；数字存疑项见 Limitations"
 hanzi_chars_raw: 9735
 total_chars_raw: 36565
-hanzi_chars_polished: 2208
-total_chars_polished: 3655
+hanzi_chars_polished: 2206
+total_chars_polished: 3657
 ---
 
 # 屠龙之术：AICC2026 侧记

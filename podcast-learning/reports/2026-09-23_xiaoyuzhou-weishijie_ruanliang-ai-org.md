@@ -25,8 +25,8 @@ source_shownotes_chapters: true
 notable_correction: "网易智起→智企｜针流/征留→蒸馏｜销售罐/销管→销售冠｜建桩性→健壮性｜荣誉→冗余｜红狼军→红蓝军｜阿弥巴巴→阿米巴｜分巢/工夫→分蜂/工蜂｜邱波军→求伯君｜改道为商→改稻为桑｜断崖式零钱→断崖式下跌｜凯夫→开复（李开复）｜全站→全栈｜支普→智谱；OpenCloud[?]/WorkBuddy[?]/钉钉[?]/MRC[?]/OPC=one-person company[?]/李小柳[?] 保留"
 hanzi_chars_raw: 21268
 total_chars_raw: 86382
-hanzi_chars_polished: 3083
-total_chars_polished: 4900
+hanzi_chars_polished: 3081
+total_chars_polished: 4902
 ---
 
 # 卫诗婕89：阮良——AI 进组织的木桶真相

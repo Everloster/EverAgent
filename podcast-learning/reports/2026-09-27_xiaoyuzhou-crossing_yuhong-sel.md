@@ -25,8 +25,8 @@ source_shownotes_chapters: true
 notable_correction: "邻离效应→林迪效应｜ICL/SEO/SEM→SEL｜探阅/太阅→探月（学院）｜与中为始→以终为始｜最棒单→满帮[?]｜知普→智谱｜Musicly→Musical.ly｜语术/群和→[?]；三处 [?] 保留"
 hanzi_chars_raw: 32489
 total_chars_raw: 131859
-hanzi_chars_polished: 3991
-total_chars_polished: 5899
+hanzi_chars_polished: 3989
+total_chars_polished: 5901
 ---
 
 # 十字路口：于红——AI 时代学什么？

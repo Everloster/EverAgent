@@ -7,6 +7,9 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-10-14 | [食贫道×刘慈欣：智能的不可判断性、AI三学派与爆炒腰花的生活哲学](../podcast-learning/reports/2026-10-14_bilibili-shipindao_liucixin-interview.md) | podcast-learning |
+| 2026-10-14 | [硅谷101（再访张阔）：榜单99分与真实61%之间——E255 对篇](../podcast-learning/reports/2026-10-14_bilibili-svj101_zhangkuo-model-user-gap.md) | podcast-learning |
+| 2026-10-14 | [电丸AK：千问AI眼镜 N1 Pro——鼻托 PPG、三芯片与眼追的必要性](../podcast-learning/reports/2026-10-14_bilibili-dianwan-ak_qwen-glasses-n1pro.md) | podcast-learning |
 | 2026-10-14 | [B 站关注列表、最近投稿与未看更新采集方案调研](../web-surfing/reports/bilibili-following-updates-research-2026-10-14.md) | web-surfing |
 | 2026-10-14 | [AI 行业日报 · 2026-10-14](../web-surfing/reports/ai-news-daily-2026-10-14.md) | web-surfing |
 | 2026-10-13 | [AI 行业日报 · 2026-10-13](../web-surfing/reports/ai-news-daily-2026-10-13.md) | web-surfing |
@@ -29,9 +32,6 @@
 | 2026-10-09 | [课代表立正216：Codex迭代十几轮的网站，Claude一天作废——个人网站与叙事主权](../podcast-learning/reports/2026-10-05_rss-kedaibiao-lizheng_codex-claude.md) | podcast-learning |
 | 2026-10-09 | [说医解药 Vol.91：银鳕鱼汞中毒争议——三种汞、鳕鱼命名史与 FDA 选鱼数学](../podcast-learning/reports/2026-10-08_xiaoyuzhou-shuoyi-jieyao_vol91-cod-mercury.md) | podcast-learning |
 | 2026-10-09 | [程若倩教授：孩子身高这件事，到底矮不矮、治不治？](../podcast-learning/reports/2026-09-27_xiaoyuzhou-boluo-jiankang_chengruoqian.md) | podcast-learning |
-| 2026-10-09 | [硅谷101 E255：榜单 99 分，用户没感觉——张阔的 107 任务评测与垂直 Agent 成本战](../podcast-learning/reports/2026-10-08_rss-guigu101_e255-zhangkuo.md) | podcast-learning |
-| 2026-10-09 | [知行小酒馆 E253：会思考的沙子与杀人的沙子——李治霖谈 AI 时代的折叠世界与有效公益](../podcast-learning/reports/2026-10-09_xiaoyuzhou-zhixing-xiaojiuguan_e253-ai-good.md) | podcast-learning |
-| 2026-10-09 | [屠龙大实话：诺奖得主 Deisseroth 谈《照亮破碎之心》——精神疾病是进化的代价，光遗传是精确的怜悯](../podcast-learning/reports/2026-10-06_xiaoyuzhou-tulong-dashihua_karl-deisseroth.md) | podcast-learning |
 
 ## 🤖 AI Learning（112 篇）
 
@@ -260,10 +260,13 @@
 | 2026-03-26 | [Physiology of Growth Hormone Secretion during Sleep (1996) 精读](../biology-learning/reports/paper_analyses/P09_gh_sleep_physiology_1996.md) | — |
 | 2026-03-23 | [晚型人作息与力量训练深度研究](../biology-learning/reports/concept_reports/晚型人作息与力量训练_深度研究报告.md) | — |
 
-## 🎙️ Podcast Learning（80 篇）
+## 🎙️ Podcast Learning（83 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-10-14 | [食贫道×刘慈欣：智能的不可判断性、AI三学派与爆炒腰花的生活哲学](../podcast-learning/reports/2026-10-14_bilibili-shipindao_liucixin-interview.md) | — |
+| 2026-10-14 | [硅谷101（再访张阔）：榜单99分与真实61%之间——E255 对篇](../podcast-learning/reports/2026-10-14_bilibili-svj101_zhangkuo-model-user-gap.md) | — |
+| 2026-10-14 | [电丸AK：千问AI眼镜 N1 Pro——鼻托 PPG、三芯片与眼追的必要性](../podcast-learning/reports/2026-10-14_bilibili-dianwan-ak_qwen-glasses-n1pro.md) | — |
 | 2026-10-12 | [课代表330：郑昌熙（李飞飞World Labs）——工业场景不会有ChatGPT时刻、抽象层级论与鸡生蛋问题](../podcast-learning/reports/2026-10-08_rss-kedaibiao-lizheng_lifeifei-worldlabs-robot.md) | — |
 | 2026-10-12 | [十字路口：鸭哥——Context Infrastructure 三要素、0人公司与睡眠回归实验](../podcast-learning/reports/2026-10-11_xiaoyuzhou-crossing_yage-ai-strong.md) | — |
 | 2026-10-12 | [AI炼金术：橘子（ColaOS）——时代追上了个人Agent先行者，他却打了转向灯](../podcast-learning/reports/2026-10-09_ximalaya-ailianjinshu_juzi-personal-agent.md) | — |
@@ -379,8 +382,8 @@
 | 2026-09-03 | [AI 行业日报 · 2026-09-03](../web-surfing/reports/ai-news-daily-2026-09-03.md) | — |
 | 2026-09-02 | [AI 行业日报 · 2026-09-02](../web-surfing/reports/ai-news-daily-2026-09-02.md) | — |
 | 2026-09-01 | [AI 行业日报 · 2026-09-01](../web-surfing/reports/ai-news-daily-2026-09-01.md) | — |
-| 2026-08-31 | [惠州租房建议报告——两位老人 2026 年 9/10 月入住版（1–3 个月短住体验）](../web-surfing/reports/huizhou-rental-guide-2026-09.md) | — |
 | 2026-08-31 | [AI 行业日报 · 2026-08-31](../web-surfing/reports/ai-news-daily-2026-08-31.md) | — |
+| 2026-08-28 | [惠州租房建议报告——两位老人 2026 年 9/10 月入住版（1–3 个月短住体验）](../web-surfing/reports/huizhou-rental-guide-2026-09.md) | — |
 | 2026-08-28 | [AI 行业日报 · 2026-08-28](../web-surfing/reports/ai-news-daily-2026-08-28.md) | — |
 | 2026-08-27 | [AI 行业日报 · 2026-08-27](../web-surfing/reports/ai-news-daily-2026-08-27.md) | — |
 | 2026-08-26 | [AI 行业日报 · 2026-08-26](../web-surfing/reports/ai-news-daily-2026-08-26.md) | — |

@@ -156,6 +156,22 @@
 - **Jev 官方 benchmark 构成 / "微信聊天记录备份插件"具体是哪个** —— 鸭哥期两个可复现性极高的 [?]。
   - 来源：[[2026-10-11_xiaoyuzhou-crossing_yage-ai-strong]] 问 2
 
+
+### 来自 2026-10-14 B 站三集批次（新汇入）
+
+- **[预测对·三源] "可数字化任务完成率"**：张阔 61%（107-task 实测）vs 子皓"半年后 100%"（Ambi 判断）vs 刘慈欣"即使到了你也无法判断"（认识论上限）——2027-04 回查时三者分别验证工程/产品/哲学三层。
+  - 来源：[[2026-10-14_bilibili-svj101_zhangkuo-model-user-gap]] 增量观点 1/3；[[2026-10-12_xiaoyuzhou-42zhangjing_zihao-ambi]]；[[2026-10-14_bilibili-shipindao_liucixin-interview]]
+- **107-task 官网 Astra 评分**：张阔"再过两天可查"（现应已出）——首个可验证数据点。
+  - 来源：同上 问 2
+- **AI 三学派的当代对应**：刘慈欣"符号/进化/大数据"框架中，LeCun 世界模型/JEPA 属于哪派？符号/进化学派有无活跃研究？
+  - 来源：[[2026-10-14_bilibili-shipindao_liucixin-interview]] 问 2
+- **N1 Pro 定价/开售/被动记录云端隐私条款**：AK"即将发布"机；"每天固定删除"的执行细节。
+  - 来源：[[2026-10-14_bilibili-dianwan-ak_qwen-glasses-n1pro]] 问 2
+- **S1[?] 对标机型 / AK"HRV 提高 12%"睡眠实验视频**（09-24，健康线候选下一篇）。
+  - 来源：同上 问 2/3
+- **食贫道《AI 八卦》正片**（10 月，硅谷一个月拍摄："拍人对 AI 的态度不拍技术"）——追更。
+  - 来源：[[2026-10-14_bilibili-shipindao_liucixin-interview]] 问 3
+
 ## 已解决
 
 ### 2026-07-18 首轮攻坚：9 问全清 ✅

@@ -25,8 +25,8 @@ source_shownotes_chapters: true
 notable_correction: "Overclock→OpenCloud｜土系/突击→to C｜磨弄→魔怔｜Tongue→Town｜Luck→Lark｜科舍→xAI｜帕里托→帕累托｜单车→端侧大模型｜工艺→公益（米公益）｜金融筹→轻松筹｜王辉文→王慧文｜独带→独家代理｜监制→兼职｜烟土发水→言出法随｜Plot→Plaud｜格兰多拉→Grammarly｜安置塔→安克｜曲老师→曲凯｜charm→Charm（Meta 硬件）；Jex[?]/后盆亚[?]/HRV[?]/Prodi[?]/Janspark[?]/TouchBt6[?]/GateHub[?] 保留"
 hanzi_chars_raw: 26723
 total_chars_raw: 115503
-hanzi_chars_polished: 3069
-total_chars_polished: 5582
+hanzi_chars_polished: 3073
+total_chars_polished: 5590
 ---
 
 # 42章经：子皓——交互成本决定需求

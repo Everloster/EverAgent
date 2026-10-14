@@ -25,8 +25,8 @@ source_shownotes_chapters: true
 notable_correction: "长期学长→昌熙学长｜巨神→具身智能｜SynX/CENIX→SceniX｜Waltlab→World Labs｜写图扣着→SIGGRAPH｜Baton→bet on｜新海图→星海图｜民政处→智元[?]｜语树→宇树｜special→spatial intelligence｜no level→low-level control｜机身单单→鸡生蛋蛋生鸡｜four times→full time｜抽空门→车库门｜亚哥→鸭哥｜国父论→国富论；配器导师[?]/leather king[?]/卡环音[?]/华族[?]/南赛[?] 保留"
 hanzi_chars_raw: 17541
 total_chars_raw: 83073
-hanzi_chars_polished: 1804
-total_chars_polished: 4490
+hanzi_chars_polished: 1808
+total_chars_polished: 4496
 ---
 
 # 课代表 330：郑昌熙——工业场景不会有 ChatGPT 时刻

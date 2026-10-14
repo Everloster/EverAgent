@@ -25,8 +25,8 @@ source_shownotes_chapters: false
 notable_correction: "杂币→撒币｜Sonic→Sonnet｜海库→Haiku 5.5｜DipSuite→DeepSeek Flash｜Mandus→Manus｜银河平衡→盈亏平衡｜AR→ARR｜身材有数→生财有术｜中产站→中转站｜荷毛台→茅台｜老灯→老登｜外婆→外包｜运进→运镜｜Cdance→Seedance｜支持→支使（shownotes）｜banana 2.1→Nano Banana 2.1｜cgm→Gemini；文浩[?]/OMAKI[?]/mode[?] 保留；主播名按口播裁定为任鑫+文浩[?]"
 hanzi_chars_raw: 19164
 total_chars_raw: 84006
-hanzi_chars_polished: 2012
-total_chars_polished: 3960
+hanzi_chars_polished: 2016
+total_chars_polished: 3968
 ---
 
 # AI炼金术：橘子——先行者的转向

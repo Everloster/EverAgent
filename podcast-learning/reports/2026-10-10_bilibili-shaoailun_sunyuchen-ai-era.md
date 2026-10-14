@@ -25,8 +25,8 @@ source_shownotes_chapters: false
 notable_correction: "搏击（被写成博记/伯基/薄机等 10+ 种）｜探机→碳基｜归基→硅基｜斯美格鲁泰→司美格鲁肽｜尾神/伟东义→韦东奕[?]｜NS 方程｜Zcode→智谱编程助手｜东带→Don't Die｜猪髓老→逐水草；B.AI[?]/三猫=Sam Altman[?]/多胆听[?] 保留"
 hanzi_chars_raw: 65738
 total_chars_raw: 294222
-hanzi_chars_polished: 2721
-total_chars_polished: 4726
+hanzi_chars_polished: 2719
+total_chars_polished: 4728
 ---
 
 # 孙宇晨×邵艾伦：搏击、开图与认知决定命运

@@ -25,8 +25,8 @@ source_shownotes_chapters: true
 notable_correction: "JV/GEV/GVT→Jev｜Flood Code→Claude Code｜签问3.5→千问 3.5｜止读→top-k[?]｜Fable 5→[?]｜压根/压哥→鸭哥｜蒸留/真留→蒸馏｜侥幸的话→时髦的话[?]；老鸭汤/可达鸭/永哥说餐饮 为口播原名"
 hanzi_chars_raw: 19854
 total_chars_raw: 82167
-hanzi_chars_polished: 2462
-total_chars_polished: 5323
+hanzi_chars_polished: 2466
+total_chars_polished: 5331
 ---
 
 # 十字路口：鸭哥——Context Infrastructure 三要素
