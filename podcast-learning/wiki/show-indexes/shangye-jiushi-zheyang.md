@@ -1,10 +1,11 @@
 # 商业就是这样 — 全量单集索引
 
-> 来源：官方 RSS（<http://www.ximalaya.com/album/46587439.xml>）｜ 最近拉取：2026-10-09 ｜ 总集数：371
+> 来源：官方 RSS（<http://www.ximalaya.com/album/46587439.xml>）｜ 最近拉取：2026-10-14 ｜ 总集数：372
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-10-13 | 1h27m | [特番｜从会开车到会做事：AI如何进入真实世界](https://www.ximalaya.com/sound/1024049105)<!--g:xmly_track_1024049105--> | — |
 | — | 2026-10-07 | 59m32s | [城市就是这样22｜中国的“中位数城市”是哪座？](https://www.ximalaya.com/sound/1021674577)<!--g:xmly_track_1021674577--> | — |
 | — | 2026-09-27 | 9m12s | [假期通知兼谈本台为什么要做视频播客](https://www.ximalaya.com/sound/1018741567)<!--g:xmly_track_1018741567--> | — |
 | — | 2026-09-23 | 1h53m | [Vol.276 做月嫂育儿嫂的姐姐，都有故事](https://www.ximalaya.com/sound/1017890906)<!--g:xmly_track_1017890906--> | — |

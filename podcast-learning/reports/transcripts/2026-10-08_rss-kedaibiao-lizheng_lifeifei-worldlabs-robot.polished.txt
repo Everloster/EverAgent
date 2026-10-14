@@ -1,0 +1,49 @@
+# 课代表立正 330《李飞飞收购郑昌熙：有生之年，我们可能看不到通用机器人出现》精编稿
+
+> 主播：孙煜征（课代表立正）｜嘉宾：郑昌熙（哥伦比亚大学计算机科学教授、SceniX 联合创始人；录制时 sabbatical 全职 World Labs）｜transistor｜2026-10-08｜59m55s
+> **精编版说明**：结构化精编，约为转写全文的 14%；[?] 为未确认专名
+> 主要修正：长期学长→昌熙学长｜巨神→具身智能｜SynX/CENIX/Snyx/3X→SceniX｜Waltlab/沃尔纳斯→World Labs｜Sybetic→sabbatical｜Midgeria→Midjourney｜写图扣着→SIGGRAPH｜国父论→国富论｜Baton→bet on｜新海图→星海图｜民政处→智元[?]｜语树→宇树｜special intelligence→spatial intelligence｜no level→low-level control｜机身单单→鸡生蛋蛋生鸡｜four times→full time｜抽空门→车库门｜亚哥→鸭哥｜Drant→杜兰特｜硬件 agglostics→hardware agnostic
+---
+
+## 一、职业轨迹：哥大教授→腾讯纽约 Lab→SceniX→World Labs
+
+疫情期 sabbatical 拖不住了，恰逢腾讯高层要在纽约开实验室（不用搬家）。**刻意建的不是 research lab 而是 incubation lab**（探索产品方向）。体验大厂创新者困境：新技术浪潮刚起时 senior management 不确定→资源/信任/all in 的决心都在博弈——"这不是腾讯独有的问题，所有大厂当有很好商业模式时，to what extent you want to jump in"。两年后回校，与腾讯同事+哥大新faculty（robotics）创立 **SceniX**：起点是发现 **graphics 社区的 state-of-the-art simulation/rendering 在 robotics 社区没有被 fully appreciate——有信息差的地方就有商业机会**。现 sabbatical 全职 World Labs（"从小船换到大船"，做的事一样：simulation centric workflow）。
+
+## 二、学术圈的觉醒：technology 不是第一有用的
+
+"**In terms of business，technology 真的不是最关键的东西，甚至不是第二有用的。**"学术界是 technology-driven 的 value system——工业革命后社会奖励知识/创造力，学术界把创造力量化为 paper。**Paper 游戏**：知道 game rule 后，"做了一个很牛的技术"和"做了一个便于 publish 的东西"的界线变模糊；spin paper 之道（看起来非常不一样+某种方法解决+效果不错——是不是 cherry pick who knows）；被拒就换一批 reviewer 重投="再买一张彩票"。**有价值的只有两种工作**：inspire 后续工作的开创性 / 解决 practical 问题——"很多 paper 两头都不沾，走中间路线（因为容易）"。**"定义你职业生涯的 paper 一篇就够了"**（MIT 教授的 quality-impact 曲线：超过某个 bar 突然 define your career，其他工作全不重要）。
+
+**中年危机与自我觉醒**：拿到 tenure 后几年"人生是不是就这样了"——年复一年 SIGGRAPH、当 reviewer、发 paper。读哲学（《历史的教训》杜兰特、《人类简史》）、meditation、佛学书。"**有 metric 是好事（科学主义需要 metric 衡量 progress），但 metric 是多维的、动态的**——人生有很多支点，在适当时候改变 metric 本身不是坏事。"学生的"兴趣"很多是熟悉度的混淆（机缘巧合做了→以为感兴趣）——人生经历和真正兴趣缠在一起，觉醒后某个事件 trigger 大改变。
+
+**大学=菜市场的摊位**：学校启动菜市场（不同 tier：Harvard 是第五大道的菜市场），教授是摊主（交租金=research funding 被抽 overhead）；**摊位上做的事本质是个人英雄主义行为**（accumulate personal reputation）——这限制了能做的 scope；industry 反而是 teamwork。
+
+## 三、SceniX 与三维度判断：不会有工业场景的 ChatGPT
+
+**产品定义**：simulation centric workflow → robust + performant 的 robotic policy（聚焦工业场景）。**具身 AI 三维度**：①generalization（能做多少种任务）②robustness（各种光照/几何/潮湿程度下成功率——"跑十次换三次不可接受"）③speed/performance（完成太慢甚至与人同速则 ROI 算不过来）——**SceniX 聚焦后两者**。
+
+**核心判断：embodied AI 很难有 ChatGPT 式 foundation model**（"突然出来 80-90% 任务都能做，且是真能放进生产环境，不是 demo 十次成五六次"）。依据：
+1. **数据问题未解**（需要比文字/图片多数量级的数据，physics 在里面；谁给、怎么给）。
+2. **亚当·斯密分工论**：工业化=specialization（流水线工人只做一个螺丝钉）→降成本的必由之路→**generalization 和 specialization 之间的线怎么画**是根本问题→早期（很长时间）必须 specialized 才能 justify robustness/speed 的 ROI。家用机器人例外（家里只愿意买一个机器人→generalization 优先），但那是社会心理学问题，工业不是。
+3. **low-level control 的频率**：控制电机远高于游戏引擎 60fps 的响应要求→大模型的 computational budget 问题（"算力总会够"是 valid argument，但看要多久——游戏引擎花几十年才把计算时间降下来）。
+
+## 四、蓝领为什么比白领难：抽象层级论
+
+**人类社会建立在 hierarchy of abstraction 上**：越上层（智力活动）抽象越彻底——语言（维特根斯坦"语言即世界"）、数学（纯抽象符号系统）→LLM 处理得越好（语言/写 code/数学）；**越下层（体力/物理）越难抽象**→处理不好。3D representation 至今无共识；更虚的（审美）更说不清。推荐《树之生命，木之心》：日本宫殿木匠（树活千年、建筑再撑千年）的手艺**无法用语言描述，全在身体里**。
+
+**世界模型的定义**：能预测"当前状态+干预动作→下一时刻世界状态"的模型。关键难题：**state 在哪个尺度抽象**（分子动力学的每个分子 vs 刚体的位置旋转）——"dark art / domain knowledge，答案永远 it depends"（不同 workload 要 capture 不同层的 physics——折盒子的纸板 hinge fatigue 会变软，超 robust 就要 capture 到这一层）。**World model 的鸡生蛋问题被大家回避**：它 carry 一定程度的上帝视角，但谁来给它经验去 train？——"没有什么天降神兵"。对"某公司出了 video prediction 就叫 world model"的否定：视频生成≠理解物理。
+
+## 五、泡沫评价与 AI 会不会取代研究者
+
+"肯定有乐观情绪，但对从业者是好事情"（社会+资本关注 push 走一大步）。**车库门案例**（鸭哥）：单片机+廉价相机+GPT 对话 10 分钟+5 小时训练=定制高精度车库门监控模型——**"最厉害的是想到用单片机做这件事（idea），后面只是执行层面的东西"→researcher 的价值在前面**。更深远的问题：execution 成本趋零时，**explore idea 的范式会怎么变**（不是所有 idea 都 work，新的没想过的 idea 的探索方式）。
+
+## 六、美国具身智能版图与中美路线
+
+热的原因=外推（language/image/video 成功→下一 frontier 是物理世界，"老黄天天宣传的"）。公司三类：①数据公司 ②general policy（如 Physical Intelligence）③软硬一体的宏大叙事（如 Figure AI）。**World Labs 的定位不同：spatial intelligence**（空间智能——3D reconstruction 等最落地场景），robotics 只是自然应用场景之一。**"所有 embodied AI 公司（包括我们自己）都还没在真实生产环境大规模用起来——GPT-2 阶段，GPT-3 都没到。"**
+
+**中美路线差异**：国内公司（星海图/智元/宇树）讲大开大合的故事（本体+大脑+simulation 平台全有）；美国 startup 更聚焦（SceniX 是 hardware agnostic——五六个不同本体都能 work；"startup 早期很难什么都做"）。对"美国没制造业、robotics 该在中国做"的回应：①西方（美欧加）制造业规模并不显著低于中国（有数据）；②**人力成本高反而对 automation 更 desperate（更强的需求）**；③规模化工业生产+社会福利提高/文明化=automation 永恒主题。
+
+**硬件之难**：VR/AR 的教训（hardware is always hard——电池/电机/供电/算力的平衡）；MIT 昆虫机器人还连着线（电池技术）；刘嘉教授：人脑 7/6 的神经元在小脑（物理控制）——AI 能做的恰是人类"以为自己厉害其实不那么厉害"的脑力活动。
+
+## 七、结语
+
+知识的表达（语言/图片）≠知识的本质；world model 需要触及知识的本质——这本身是 less clear 的事情。AI 使我们从工业革命的极 specialization 朝 generalization 移动——"这不是突变过程，什么时候 trigger 大变化，很难预测。"

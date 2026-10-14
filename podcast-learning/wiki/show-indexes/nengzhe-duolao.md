@@ -1,16 +1,16 @@
 # 能者多唠｜商业原声 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/qlenc4cdh48c>）｜ 最近拉取：2026-10-09 ｜ 总集数：128
+> 来源：官方 RSS（<https://feed.xyzfm.space/qlenc4cdh48c>）｜ 最近拉取：2026-10-14 ｜ 总集数：128
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
 | — | 2026-10-07 | 1h35m | [Vol.130 中国超市进化论 ：聊山姆、奥乐齐、金粒门爆火背后](https://www.xiaoyuzhoufm.com/episode/6abc83e8e742e36efcbcfadf?utm_source=rss)<!--g:6abc83e8e742e36efcbcfadf--> | — |
 | — | 2026-10-01 | 54m01s | [Vol.129对话经济学家张维迎、黄益平：AI这么热，消费从哪增长？](https://www.xiaoyuzhoufm.com/episode/6aba1bc1e742e36efcbc258b?utm_source=rss)<!--g:6aba1bc1e742e36efcbc258b--> | — |
-| — | 2026-09-24 | 1h29m | [Vol.128中秋节，揭秘300亿的月饼生意！](https://www.xiaoyuzhoufm.com/episode/6ab35b9ff04646b3a955cfa4?utm_source=rss)<!--g:6ab35b9ff04646b3a955cfa4--> | — |
-| — | 2026-09-18 | 1h09m | [Vol.127一把餐椅上千元，四个直男室友如何造出“妈妈”大爆款](https://www.xiaoyuzhoufm.com/episode/6aacfc0c9d326477816b1d48?utm_source=rss)<!--g:6aacfc0c9d326477816b1d48--> | — |
-| — | 2026-09-11 | 1h13m | [Vol.126 卖养猫三大件年入15亿，一家宠物公司为什么想做苹果？](https://www.xiaoyuzhoufm.com/episode/6aa3c860492687f6aad86801?utm_source=rss)<!--g:6aa3c860492687f6aad86801--> | — |
-| — | 2026-09-04 | 1h18m | [Vol.125年轻人开始玩缝纫机？ 百年行业迎来新生意](https://www.xiaoyuzhoufm.com/episode/6a9a889ca0210c197dcd7792?utm_source=rss)<!--g:6a9a889ca0210c197dcd7792--> | — |
+| — | 2026-09-24 | 1h29m | [Vol.128 稻香村总裁 周立源：中秋节，揭秘300亿的月饼生意！](https://www.xiaoyuzhoufm.com/episode/6ab35b9ff04646b3a955cfa4?utm_source=rss)<!--g:6ab35b9ff04646b3a955cfa4--> | — |
+| — | 2026-09-18 | 1h09m | [Vol.127 哈卡达联创 邓泽群：一把餐椅上千元，四个直男如何造出妈妈爆款](https://www.xiaoyuzhoufm.com/episode/6aacfc0c9d326477816b1d48?utm_source=rss)<!--g:6aacfc0c9d326477816b1d48--> | — |
+| — | 2026-09-11 | 1h13m | [Vol.126 小佩宠物联创 张俊超：卖养猫三大件年入15亿，宠物公司想做苹果？](https://www.xiaoyuzhoufm.com/episode/6aa3c860492687f6aad86801?utm_source=rss)<!--g:6aa3c860492687f6aad86801--> | — |
+| — | 2026-09-04 | 1h18m | [Vol.125 兄弟中国董事长 张燕：年轻人开始玩缝纫机？ 百年行业迎来新生意](https://www.xiaoyuzhoufm.com/episode/6a9a889ca0210c197dcd7792?utm_source=rss)<!--g:6a9a889ca0210c197dcd7792--> | — |
 | — | 2026-08-25 | 1h26m | [Vol.124 萱子创始人 郑萍：年入超十亿，直营店800+，百元饰品能跑出zara和优衣库吗？](https://www.xiaoyuzhoufm.com/episode/6a8d4f741352af56ff3bbc3a?utm_source=rss)<!--g:6a8d4f741352af56ff3bbc3a--> | — |
 | — | 2026-08-07 | 2h07m | [Vol.123 王星记掌门人 孙亚青：扇子没人用了？百年老字号怎么办](https://www.xiaoyuzhoufm.com/episode/6a75ac02c4079d62c57ee2d2?utm_source=rss)<!--g:6a75ac02c4079d62c57ee2d2--> | — |
 | — | 2026-07-27 | 1h36m | [Vol.122 有鹿创始人 陈俊波：阿里P10到机器人创业 AI大脑为何要从扫地开始？](https://www.xiaoyuzhoufm.com/episode/6a67315db581962ce2bc35e9?utm_source=rss)<!--g:6a67315db581962ce2bc35e9--> | — |

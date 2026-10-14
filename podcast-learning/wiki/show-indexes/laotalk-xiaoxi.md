@@ -1,6 +1,6 @@
 # 老talk消息 — 全量单集索引
 
-> 来源：官方 RSS（<https://www.ximalaya.com/album/31225613.xml>）｜ 最近拉取：2026-10-09 ｜ 总集数：180
+> 来源：官方 RSS（<https://www.ximalaya.com/album/31225613.xml>）｜ 最近拉取：2026-10-14 ｜ 总集数：180
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
@@ -122,7 +122,7 @@
 | — | 2021-04-24 | 31m15s | [Solo \| 爱恨特斯拉，是非陶阿姨](https://www.ximalaya.com/sound/408777823)<!--g:https://aod.cos.tx.xmcdn.com/storages/9e32-audiofreehighqps/8E/EF/CKwRIDoEWUsgABAAAACiVQXH.mp3--> | — |
 | — | 2021-04-18 | 32m03s | [Solo \| 年轻人不生，它们急了，它们急了](https://www.ximalaya.com/sound/406808160)<!--g:https://aod.cos.tx.xmcdn.com/storages/bb37-audiofreehighqps/1A/60/CKwRIDoEUYceAO2rXgCf5JUc.m4a--> | — |
 | — | 2021-04-11 | 28m55s | [Solo \| 理想的过去，现在和将来](https://www.ximalaya.com/sound/404395624)<!--g:https://aod.cos.tx.xmcdn.com/storages/8f98-audiofreehighqps/CA/CB/CKwRIDoESCTfABAAAACdGJB9.mp3--> | — |
-| — | 2021-04-10 | 21m55s | [Solo｜阿里巴巴，忘掉基业长青吧](https://www.ximalaya.com/sound/404211189)<!--g:https://aod.cos.tx.xmcdn.com/storages/fa05-audiofreehighqps/20/0D/CKwRIMAER1DRAKJ7HwCc6XV6.m4a--> | — |
+| — | 2021-04-10 | 21m55s | [Solo｜阿里巴巴，忘掉基业长青吧](https://www.ximalaya.com/sound/404211189)<!--g:https://aod.cos.tx.xmcdn.com/storages/5d99-audiofreehighqps/7F/C8/CKwRINsER0-LABAAAACc6PK_.mp3--> | — |
 | — | 2021-03-22 | 26m22s | [对谈05 \| 吉利如何失去了自主品牌的C位](https://www.ximalaya.com/sound/397905332)<!--g:https://aod.cos.tx.xmcdn.com/storages/f8a5-audiofreehighqps/22/C7/CKwRIJEELmYSAMOFTgCVeTVr.m4a--> | — |
 | — | 2021-03-21 | 28m54s | [对谈04 \| 80后家中的第一辆车](https://www.ximalaya.com/sound/397520965)<!--g:https://aod.cos.tx.xmcdn.com/storages/2a56-audiofreehighqps/53/BA/CKwRIW4ELQjOANY-RQCU_XW5.m4a--> | — |
 | — | 2021-03-20 | 27m02s | [Solo \| 小米造车的“天时、地利、人和”](https://www.ximalaya.com/sound/397237944)<!--g:https://aod.cos.tx.xmcdn.com/storages/bf6c-audiofreehighqps/70/00/CKwRIJEEK-POABAAAACUvEQ_.mp3--> | — |
@@ -137,12 +137,12 @@
 | — | 2020-12-07 | 49m47s | [Vol.16 \| 何时让房东变成“弱势群体”](https://www.ximalaya.com/sound/362727904)<!--g:https://aod.cos.tx.xmcdn.com/storages/33ba-audiofreehighqps/C1/78/CMCoOSYDo8cWBx-rRQBuz4cu.mp3--> | — |
 | — | 2020-11-23 | 18m25s | [Solo \| 烂尾楼之都的悲歌](https://www.ximalaya.com/sound/358109048)<!--g:https://aod.cos.tx.xmcdn.com/storages/ed23-audiofreehighqps/98/52/CMCoOR8DkTHoAqL3eABpx8jK.mp3--> | — |
 | — | 2020-11-15 | 25m35s | [Solo \| 马云和这家公司的至暗时刻？](https://www.ximalaya.com/sound/355577083)<!--g:https://aod.cos.tx.xmcdn.com/storages/503c-audiofreehighqps/E8/AE/CMCoOSADhuY8AL26MgBnOAEp.m4a--> | — |
-| — | 2020-11-13 | 22m54s | [Solo \| 要更大一号的三星，还是要下一个硅谷](https://www.ximalaya.com/sound/354789142)<!--g:https://aod.cos.tx.xmcdn.com/storages/2069-audiofreehighqps/F2/8A/CMCoOSIDg7geAKnIcQBmbwZI.m4a--> | — |
+| — | 2020-11-13 | 22m54s | [Solo \| 要更大一号的三星，还是要下一个硅谷](https://www.ximalaya.com/sound/354789142)<!--g:https://aod.cos.tx.xmcdn.com/storages/471e-audiofreehighqps/F9/38/CMCoOSIDg7f_A0bn9ABmbv_m.mp3--> | — |
 | — | 2020-10-23 | 49m52s | [Vol.15 \| 互联网公司的“王实味时刻”](https://www.ximalaya.com/sound/348458719)<!--g:https://aod.cos.tx.xmcdn.com/storages/506b-audiofreehighqps/A7/AF/CMCoOSUDaLKfByKORABf-jVo.mp3--> | — |
 | — | 2020-09-21 | 57m39s | [Vol.14 \| 国产战争片的进步与退化](https://www.ximalaya.com/sound/338551789)<!--g:https://aod.cos.tx.xmcdn.com/storages/21da-audiofreehighqps/08/5D/CMCoOSUDPfaaAatMWABWbKve.m4a--> | — |
 | — | 2020-09-11 | 27m44s | [Solo \| 骑手的“原子化”，美团的定时炸弹](https://www.ximalaya.com/sound/335601322)<!--g:https://aod.cos.tx.xmcdn.com/group82/M06/40/CC/wKg5Il9bQFGBJ4c5AM2X4KZiw94051.m4a--> | — |
 | — | 2020-09-06 | 32m20s | [对谈01 \| 少年不识温铁军](https://www.ximalaya.com/sound/334216547)<!--g:https://aod.cos.tx.xmcdn.com/group86/M03/FF/DE/wKg5IF9U5CCztjy8AO_E0OSWBgs900.m4a--> | — |
-| — | 2020-08-30 | 59m42s | [Vol.13 \| 张一鸣和字节跳动的困境](https://www.ximalaya.com/sound/332104471)<!--g:https://aod.cos.tx.xmcdn.com/storages/4f9d-audiofreehighqps/EE/C7/CMCoOSMDITuzAbqP3QBQFL94.m4a--> | — |
+| — | 2020-08-30 | 59m42s | [Vol.13 \| 张一鸣和字节跳动的困境](https://www.ximalaya.com/sound/332104471)<!--g:https://aod.cos.tx.xmcdn.com/group83/M08/97/B5/wKg5I19LeE6wc2P5CIrjJtIpT-I529.mp3--> | — |
 | — | 2020-08-28 | 18m03s | [Solo \| 小米十年，超人雷军](https://www.ximalaya.com/sound/331614284)<!--g:https://aod.cos.tx.xmcdn.com/storages/d646-audiofreehighqps/3F/01/CMCoOSADHtomAIXl6QBPoU-5.m4a--> | — |
 | — | 2020-08-21 | 15m05s | [Solo \| 特斯拉不想让拼多多“白嫖”](https://www.ximalaya.com/sound/329330640)<!--g:https://aod.cos.tx.xmcdn.com/group85/M02/15/51/wKg5JV8_nFrDyNSOAijFy-EV-xk216.mp3--> | — |
 | — | 2020-08-19 | 56m27s | [Vol.12 \| 半年之后，武汉人还记得什么？](https://www.ximalaya.com/sound/328521867)<!--g:https://aod.cos.tx.xmcdn.com/group87/M00/EF/54/wKg5J188eynwaVTZCBH7euVg0RU939.mp3--> | — |

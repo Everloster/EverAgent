@@ -1,10 +1,11 @@
 # 半拿铁·周刊 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/vylham8uw3ay>）｜ 最近拉取：2026-10-09 ｜ 总集数：54
+> 来源：官方 RSS（<https://feed.xyzfm.space/vylham8uw3ay>）｜ 最近拉取：2026-10-14 ｜ 总集数：55
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-10-13 | 1h32m | [No.51 深睡如何增强、养老院青年进场、临终照护扩张、气候影响产粮、最后再聊聊诺奖](https://www.xiaoyuzhoufm.com/episode/6acda912e742e36efcc22411?utm_source=rss)<!--g:6acda912e742e36efcc22411--> | — |
 | — | 2026-09-22 | 1h38m | [No.50 内容刷量灌水、便利店员工吃亏、电玩城连锁清退、钟薛高再次回归、豆包手机争位、家长信息合规](https://www.xiaoyuzhoufm.com/episode/6ab0ce5bf04646b3a954cee7?utm_source=rss)<!--g:6ab0ce5bf04646b3a954cee7--> | ✅ 已处理（2026-09-22 xiaoyuzhou-bannatie-zhoukan_no50-weekly-news） |
 | — | 2026-09-15 | 1h33m | [No.49 AI 短剧狂卷、校招生被退劝、打假网红关八年、苹果折叠开卷、锁屏广告惹嫌、免陪照护补员](https://www.xiaoyuzhoufm.com/episode/6aa8ccca9d32647781695670?utm_source=rss)<!--g:6aa8ccca9d32647781695670--> | — |
 | — | 2026-09-01 | 1h43m | [No.48 安踏已经变芯、两根铁轨变金、光模块利润狂奔、芯片十年翻身、家具盛景退温、地方罚没加深、血糖焦虑入侵](https://www.xiaoyuzhoufm.com/episode/6a965369f03e74ee6b031619?utm_source=rss)<!--g:6a965369f03e74ee6b031619--> | — |

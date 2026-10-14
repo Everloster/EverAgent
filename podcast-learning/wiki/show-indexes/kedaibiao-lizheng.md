@@ -1,10 +1,11 @@
 # 课代表立正 — 全量单集索引
 
-> 来源：官方 RSS（<https://feeds.transistor.fm/kedaibiao>）｜ 最近拉取：2026-10-09 ｜ 总集数：554
+> 来源：官方 RSS（<https://feeds.transistor.fm/kedaibiao>）｜ 最近拉取：2026-10-14 ｜ 总集数：555
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-10-08 | 59m55s | [对话 330｜李飞飞收购郑昌熙：有生之年，我们可能看不到通用机器人出现](https://share.transistor.fm/s/c6dcdc20)<!--g:2251d5c6-56c9-4003-ad43-db5e9c57b11e--> | ✅ 已处理（2026-10-08 rss-kedaibiao-lizheng_lifeifei-worldlabs-robot） |
 | — | 2026-10-05 | 14m17s | [立正说 216｜Codex跟我迭代十几轮，Claude一天就全作废？](https://share.transistor.fm/s/eafb2ed7)<!--g:8625f08e-5bcd-4f38-b3db-8df5efbebce3--> | ✅ 已处理（2026-10-05 rss-kedaibiao-lizheng_codex-claude） |
 | — | 2026-10-01 | 41m16s | [对话 321｜两次破产，却从没缺过钱：为什么关键时刻总有人帮宝二爷？](https://share.transistor.fm/s/d0b4dbac)<!--g:bd6e0b72-f19c-4ece-aff3-d8897739d4e0--> | — |
 | — | 2026-09-28 | 46m39s | [对话 320｜别人眼中的死局，他如何反复做成大生意？｜宝二爷](https://share.transistor.fm/s/c4c3d600)<!--g:761a4fdc-01de-4b94-adc1-b4eb3ac7eba3--> | — |

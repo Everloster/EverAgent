@@ -1,10 +1,11 @@
 # 菠萝健康派 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/qe8egag9eycv>）｜ 最近拉取：2026-10-09 ｜ 总集数：130
+> 来源：官方 RSS（<https://feed.xyzfm.space/qe8egag9eycv>）｜ 最近拉取：2026-10-14 ｜ 总集数：131
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-10-11 | 1h09m | [何继业教授：想要生活有尊严，肌肉从今天开始练！vol.131](https://www.xiaoyuzhoufm.com/episode/6acb13cb195d838e2af00dba?utm_source=rss)<!--g:6acb13cb195d838e2af00dba--> | — |
 | — | 2026-10-07 | 56m38s | [马春来教授：药不能乱吃！这些用药误区，很多人都中招了vol.130](https://www.xiaoyuzhoufm.com/episode/6ac615a6195d838e2aee2f0a?utm_source=rss)<!--g:6ac615a6195d838e2aee2f0a--> | — |
 | — | 2026-09-27 | 1h01m | [程若倩教授：孩子身高这件事，到底矮不矮、治不治？vol.129](https://www.xiaoyuzhoufm.com/episode/6ab88db2195d838e2aea8187?utm_source=rss)<!--g:6ab88db2195d838e2aea8187--> | ✅ 已处理（2026-09-27 xiaoyuzhou-boluo-jiankang_chengruoqian） |
 | — | 2026-09-26 | 27m31s | [彭建平教授：股骨头缺血性坏死是什么？真有这么危险？vol.128](https://www.xiaoyuzhoufm.com/episode/6ab7d590195d838e2aea6222?utm_source=rss)<!--g:6ab7d590195d838e2aea6222--> | — |

@@ -1,11 +1,12 @@
 # 面基 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/6hpdgggtxpxb>）｜ 最近拉取：2026-10-09 ｜ 总集数：172
+> 来源：官方 RSS（<https://feed.xyzfm.space/6hpdgggtxpxb>）｜ 最近拉取：2026-10-14 ｜ 总集数：173
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
-| — | 2026-09-28 | 1h34m | [新一代投资者似乎不爱买股票了：逐渐被ETF主导的市场和未来](https://www.xiaoyuzhoufm.com/episode/6aba2ca3e742e36efcbc2fa2?utm_source=rss)<!--g:6aba2ca3e742e36efcbc2fa2--> | — |
+| — | 2026-10-12 | 1h30m | [写一份《纪律.md》，代替我入市投资](https://www.xiaoyuzhoufm.com/episode/6acb9dd0e742e36efcc15a45?utm_source=rss)<!--g:6acb9dd0e742e36efcc15a45--> | — |
+| — | 2026-09-28 | 1h34m | [E177.新一代投资者似乎不爱买股票了：逐渐被ETF主导的市场和未来](https://www.xiaoyuzhoufm.com/episode/6aba2ca3e742e36efcbc2fa2?utm_source=rss)<!--g:6aba2ca3e742e36efcbc2fa2--> | — |
 | — | 2026-09-22 | 1h38m | [E176.投资者的敌人：我与我周旋久](https://www.xiaoyuzhoufm.com/episode/6ab1f87ef04646b3a955422d?utm_source=rss)<!--g:6ab1f87ef04646b3a955422d--> | — |
 | — | 2026-09-07 | 1h04m | [E174.时代症候 与 安定此心](https://www.xiaoyuzhoufm.com/episode/6a9e16a6f03e74ee6b06256c?utm_source=rss)<!--g:6a9e16a6f03e74ee6b06256c--> | — |
 | — | 2026-08-31 | 1h11m | [E173.财报的根 + 估值的茎 = 叙事的果实](https://www.xiaoyuzhoufm.com/episode/6a950d48a0210c197dcadf9a?utm_source=rss)<!--g:6a950d48a0210c197dcadf9a--> | — |

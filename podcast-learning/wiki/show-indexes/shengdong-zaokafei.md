@@ -1,11 +1,14 @@
 # 声动早咖啡 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/q88qwmydeuw8>）｜ 最近拉取：2026-10-09 ｜ 总集数：1066
+> 来源：官方 RSS（<https://feed.xyzfm.space/q88qwmydeuw8>）｜ 最近拉取：2026-10-14 ｜ 总集数：1069
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
 | 22 | 2025-07-01 | 12m33s | [22.8 元袋装冰块进驻山姆，农夫山泉为何也盯上冰块生意？](https://www.xiaoyuzhoufm.com/episode/6863f40393fd2d72b80338a6?utm_source=rss)<!--g:6863f40393fd2d72b80338a6--> | — |
+| — | 2026-10-13 | 15m41s | [高洁丝｜火锅连锁能开上千家，同样做聚餐生意的烧烤品牌为何扩张难？](https://www.xiaoyuzhoufm.com/episode/6ace3e8b195d838e2af160f7?utm_source=rss)<!--g:6ace3e8b195d838e2af160f7--> | — |
+| — | 2026-10-12 | 12m37s | [高洁丝｜微信上线免费短剧小程序，中国对欧盟的混动车出口预计减少](https://www.xiaoyuzhoufm.com/episode/6accd5d1195d838e2af0c571?utm_source=rss)<!--g:6accd5d1195d838e2af0c571--> | — |
+| — | 2026-10-11 | 16m32s | [高洁丝｜顶级机场到海外「开分店」，机场运营如何变身跨国生意？](https://www.xiaoyuzhoufm.com/episode/6acb9567195d838e2af03d90?utm_source=rss)<!--g:6acb9567195d838e2af03d90--> | — |
 | — | 2026-10-08 | 14m09s | [咖啡豆｜「希尔顿们」入驻县域市场，国际中端连锁酒店为何加速扩张？](https://www.xiaoyuzhoufm.com/episode/6ac7b241e742e36efcbff9ba?utm_source=rss)<!--g:6ac7b241e742e36efcbff9ba--> | — |
 | — | 2026-10-07 | 11m49s | [国庆假期「多城串游」热度攀升，星巴克因无糖饮料中含糖被起诉](https://www.xiaoyuzhoufm.com/episode/6ac626ebe742e36efcbf4d9e?utm_source=rss)<!--g:6ac626ebe742e36efcbf4d9e--> | — |
 | — | 2026-09-29 | 18m20s | [索道赚钱能力堪比茅台，山岳景区为何还在为增长发愁？](https://www.xiaoyuzhoufm.com/episode/6abbc141e742e36efcbcc703?utm_source=rss)<!--g:6abbc141e742e36efcbcc703--> | — |

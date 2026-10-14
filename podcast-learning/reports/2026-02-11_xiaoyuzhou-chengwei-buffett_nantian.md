@@ -12,9 +12,9 @@ duration: "1h44m"
 duration_seconds: 6240
 transcript_segments: 3970
 hanzi_chars_raw: 28500
-hanzi_chars_polished: 26000
+hanzi_chars_polished: 24205
 total_chars_raw: 31000
-total_chars_polished: 28300
+total_chars_polished: 30485
 audio_size_mb: 1143
 speech_rate_cjk: "≈250 字/min（估算）"
 chapters: 0

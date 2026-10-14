@@ -140,6 +140,22 @@
 - **"孙宇晨奖"（数学形式化证明）实际设立情况 / 波场日交易量口径** —— 均为口述无独立来源。
   - 来源：同上 问 2
 
+
+### 来自 2026-10-12 四集批次（新汇入）
+
+- **[预测对] 六个月后"可数字化任务 100% 完成" vs "107-task 61%"** —— 子皓（Ambi）与张阔（E255）的分歧本身是可验证预测：2027-04 前后重跑 107-task 或同类 bench。
+  - 来源：[[2026-10-12_xiaoyuzhou-42zhangjing_zihao-ambi]] 增量观点 5
+- **Ambi 硬件形态与"环境 delta 驱动主动性"的实现** —— App Store 可下（需邀请码）；form factor/电池方案/delta 触发机制待实测。
+  - 来源：同上 问 2
+- **Jex[?] 是什么产品** —— 子皓引用其在 Latent Space 的 continuous running 论（与 Ambi"在场"哲学一致）——两期报告的 [?]，web.search 可清。
+  - 来源：同上 问 2；[[2026-10-11_xiaoyuzhou-crossing_yage-ai-strong]]（鸭哥也提过"从 OpenCloud 换到 Hermes"）
+- **国内"零 AI 产品寒冬"归因** —— 子皓/曲凯留的开放问题：今年中国眼前一亮的 AI 产品几乎为零（资本/人才/大厂雄心？）。
+  - 来源：[[2026-10-12_xiaoyuzhou-42zhangjing_zihao-ambi]] 概览
+- **SceniX technical release（五六个本体验证）/ World Labs 内部分工** —— 郑昌熙的 blog 原文未读。
+  - 来源：[[2026-10-08_rss-kedaibiao-lizheng_lifeifei-worldlabs-robot]] 问 2
+- **Jev 官方 benchmark 构成 / "微信聊天记录备份插件"具体是哪个** —— 鸭哥期两个可复现性极高的 [?]。
+  - 来源：[[2026-10-11_xiaoyuzhou-crossing_yage-ai-strong]] 问 2
+
 ## 已解决
 
 ### 2026-07-18 首轮攻坚：9 问全清 ✅
