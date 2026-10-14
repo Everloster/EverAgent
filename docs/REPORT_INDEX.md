@@ -7,6 +7,7 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-10-14 | [AI 行业日报 · 2026-10-14](../web-surfing/reports/ai-news-daily-2026-10-14.md) | web-surfing |
 | 2026-10-13 | [AI 行业日报 · 2026-10-13](../web-surfing/reports/ai-news-daily-2026-10-13.md) | web-surfing |
 | 2026-10-12 | [AI 行业日报 · 2026-10-12](../web-surfing/reports/ai-news-daily-2026-10-12.md) | web-surfing |
 | 2026-10-11 | [AI 和真格管理合伙人刘元录了一期播客](../podcast-learning/reports/2026-09-23_xiaoyuzhou-cihua-dangzhen_liuyuan.md) | podcast-learning |
@@ -31,7 +32,6 @@
 | 2026-10-09 | [听懂涨声：17 岁矿主与建筑师父亲——钱、认知与风险的父子坦白局](../podcast-learning/reports/2026-10-09_xiaoyuzhou-tingdong-zhangsheng_father-son-money.md) | podcast-learning |
 | 2026-10-09 | [十字路口：AI 无限，人生有限——山音与 KK 的一线 AI 导演方法论](../podcast-learning/reports/2026-10-08_xiaoyuzhou-crossing_kk-shanyin.md) | podcast-learning |
 | 2026-10-09 | [乱翻书275：个人Agent的战争——拆解Town、Instinct、Grok Bot与Muse（含产品深研档案）](../podcast-learning/reports/2026-09-21_xiaoyuzhou-luanfanshu_personal-agent-wars.md) | podcast-learning |
-| 2026-10-09 | [VISTA：视觉原生 Harness 论文精读——无损视觉记忆与主动检查如何把 Opus 5.0 的 ARC-AGI-3 分数从 40.68 拉到 100](../ai-learning/reports/paper_analyses/48_vista_2026.md) | ai-learning |
 
 ## 🤖 AI Learning（112 篇）
 
@@ -341,10 +341,11 @@
 | 2026-06-20 | [三年行业吃肉榜/爆亏榜大合集（2023-2025）：谁在偷偷赚钱，谁在快速衰落](../podcast-learning/reports/2026-06-20_bilibili-cls-tongxue_hangye-bangdan.md) | — |
 | 2026-06-18 | [Vol.29 对话王小川：造医生，战豆包，与无尽的 AI 非共识](../podcast-learning/reports/2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan.md) | — |
 
-## 🏄 Web Surfing（39 篇）
+## 🏄 Web Surfing（40 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-10-14 | [AI 行业日报 · 2026-10-14](../web-surfing/reports/ai-news-daily-2026-10-14.md) | — |
 | 2026-10-13 | [AI 行业日报 · 2026-10-13](../web-surfing/reports/ai-news-daily-2026-10-13.md) | — |
 | 2026-10-12 | [AI 行业日报 · 2026-10-12](../web-surfing/reports/ai-news-daily-2026-10-12.md) | — |
 | 2026-10-09 | [惠州租房建议报告——两位老人 2026 年 9/10 月入住版（1–3 个月短住体验）](../web-surfing/reports/huizhou-rental-guide-2026-09.md) | — |
