@@ -65,7 +65,7 @@
 - **配方照抄制度化版**：slide+quiz only（禁交互/模拟/3D 重型场景）、每页≤5 条要点每条一句话宁少勿多、场景 8、`enableTTS:true`、glm-5.3 主力 + flash 分流轻活、本地 VoxCPM 48kHz 配音。
 - **成本预估**：~35 分钟/节（文本 ~8min + TTS ~25min）+ ~30 万 token/节；9 节全量 ≈ 5.5h 机器时间 + ~270 万 token。
 - **前置**：OpenMAIC dev server（`cd ../OpenMAIC && pnpm dev`）+ voxcpm-server 先起（配音必须生成时 enableTTS:true，事后无法补）。
-- **导出**：`EverAgent/scripts/export_openmaic_courses.py` 需扩第二个系列（当前 SERIES 硬编码 vLLM 关键词、输出 `vLLM课N_*`）——新增 AgentHarness 系列：关键词对**生成后的实际课程名**（教训：课程名优先于场景标题匹配）、输出 `AgentHarness课N_<id>.md` 落 `ai-learning/courses/`。每交付新课重跑导出。
+- **导出**：`EverAgent/scripts/export_openmaic_courses.py` 需扩第二个系列（当前 SERIES 硬编码 vLLM 关键词、输出 `vLLM课N_*`）——新增 AgentHarness 系列：关键词对**生成后的实际课程名**（教训：课程名优先于场景标题匹配）、输出 `AgentHarness课N_<id>.md` 落 `ai-learning/courses/`。每交付新课重跑导出。（2026-10-14 起该脚本与讲义已迁私有仓维护，公开仓不再更新。）
 - **合集门户**：`OpenMAIC/public/portal.html` 已改造为**双系列门户**（2026-09-14 用户拍板「按推荐开工」）：vLLM 区块 + AgentHarness 区块，继续学习全局置顶（兼容旧 localStorage 键）；顺手修复了旧版所有卡片都标「第 1 节」的 bug。
 
 ### 课程进度
