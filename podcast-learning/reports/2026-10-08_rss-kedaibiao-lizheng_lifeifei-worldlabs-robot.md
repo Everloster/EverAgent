@@ -11,9 +11,9 @@ guest: "郑昌熙（哥伦比亚大学计算机科学教授、SceniX 联合创�
 duration: "59m55s"
 duration_seconds: 3595
 transcript_segments: 2434
-chapters: 2（shownotes Part1 赛道思考/Part2 个人经历）
+chapters: 23（shownotes 时间戳章节）
 polished: true
-polished_by: "Claude (pi)（结构化精编，约 raw 的 14%，头部已标注）"
+polished_by: "Claude (pi)（结构化精编，约 raw 的 10%（按汉字数 1804/17541），头部已标注）"
 polished_at: 2026-10-12
 status: archived
 created: 2026-10-12

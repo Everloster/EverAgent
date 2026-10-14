@@ -13,7 +13,7 @@ duration_seconds: 5160
 transcript_segments: 3592
 chapters: 2（shownotes Part1 赛道思考/Part2 个人经历）
 polished: true
-polished_by: "Claude (pi)（结构化精编，约 raw 的 12%，头部已标注）"
+polished_by: "Claude (pi)（结构化精编，约 raw 的 11.5%（按汉字数 3069/26723），头部已标注）"
 polished_at: 2026-10-12
 status: archived
 created: 2026-10-12
@@ -99,9 +99,8 @@ Peter Thiel《从0到1》（壁垒分类）；红杉合伙人（帕累托最优�
 | 10 个月 | 苹果设计师在 Meta 做出 Charm 的时长 |
 | 几十万 vs 亿级 | Manus/Plaud 付费用户量 vs Muse/豆包冲的平民市场 |
 | 25→27→30 元 | 溜冰场三级差价（高三独家代理模型） |
-| 30-40% | 保险 user journey 优化后单日转化提升 |
+| 30-40% | 保险 user journey 优化后单日提升（口播"翻了百分之三四十"，字面歧义：提升或翻倍） |
 | 100 分钟/2 分钟 | 硬件与软件的可用性结构差 |
-| 6 年+4 年+… | 公益创业/保险 SaaS/模型硬件的履历时长 |
 
 ## Limitations
 

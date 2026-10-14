@@ -13,7 +13,7 @@ duration_seconds: 4350
 transcript_segments: 2447
 chapters: 4（shownotes Part1-4）
 polished: true
-polished_by: "Claude (pi)（结构化精编，约 raw 的 12%，头部已标注）"
+polished_by: "Claude (pi)（结构化精编，约 raw 的 12.4%（按汉字数 2462/19854），头部已标注）"
 polished_at: 2026-10-12
 status: archived
 created: 2026-10-12
@@ -103,7 +103,7 @@ Jev 三条件（基模/需求/包装）｜校准概率与置信度分离｜casca
 | 一周 | 多变量回归证伪"咖啡影响睡眠"省下的实验时间 |
 | 几千张 | 幼儿园照片（AI 逆向私有 API 一晚下完） |
 | 4B / 20+分 vs 8分 | 千问 3.5 4B vs GPT-4o（AI Index 口径） |
-| 1000 人 | 1Password 团队规模（"正确性软件"的存活理由） |
+| 1000 人 | 1Password 团队规模（口播"我听说"，传闻口径） |
 | 2026.4 / 8 / 9 月 | Manus / Grok Bot / Muse 云端电脑时间线 |
 
 ## Limitations

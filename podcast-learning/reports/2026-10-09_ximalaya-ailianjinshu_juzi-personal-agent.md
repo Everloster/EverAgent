@@ -13,7 +13,7 @@ duration_seconds: 4423
 transcript_segments: 2595
 chapters: 3（按主题自组）
 polished: true
-polished_by: "Claude (pi)（结构化精编，约 raw 的 13%，头部已标注）"
+polished_by: "Claude (pi)（结构化精编，约 raw 的 10.5%（按汉字数 2012/19164），头部已标注）"
 polished_at: 2026-10-12
 status: archived
 created: 2026-10-12
@@ -94,7 +94,7 @@ Ben Thompson 播客（2C 广告模型论）；曾鸣著作（"每次都不一样
 | 2.5% - 30% | Instinct 佣金 story：Shopify → boutique 酒店 |
 | 30 分 / 一个月 | 被 Seedance 瞬间拉平的领先差距 / Manus/Dot 复刻耗时 |
 | 2 周 | 爆款给的时间窗口 |
-| 100 亿（美元） | Jev 融资估值（口播口径） |
+| 100 亿（美元） | Jev 融资估值（嘉宾转述口播，未经第三方核实） |
 | 1.2 万 / 8 次 | Next Token 单期播放 / 四期新星榜次数（平台推流效果） |
 | 100 vs 200 美元 | GPT（用不完）vs Opus（花得完）月费 |
 

@@ -1,7 +1,7 @@
 # AI炼金术《和 ColaOS 橘子聊个人 Agent 这半年：时代追上了他，他却打了转向灯》精编稿
 
 > 主播：任鑫、文浩[?]（AI炼金术/Next Token）｜嘉宾：橘子（ColaOS 创始人，个人 Agent 先行者）｜喜马拉雅｜2026-10-09｜1h14m
-> **精编版说明**：结构化精编，约为转写全文的 13%；[?] 为未确认专名
+> **精编版说明**：结构化精编，约为转写全文的 10.5%（按汉字数）；[?] 为未确认专名
 > 主要修正：杂币→撒币大法｜Sonic→Sonnet｜海库/Hiku 5.5→Haiku 5.5｜DipSuite/DevSeq→DeepSeek Flash｜GRM5.3→GLM 5.3｜Mandus/Mandancy→Manus｜银河平衡→盈亏平衡｜AR→ARR｜身材有数→生财有术｜中产站→中转站｜荷毛台→茅台｜老灯→老登｜外婆→外包｜运进→运镜｜Cdance→Seedance｜支持别人干活→支使（shownotes 原词）｜退一下→推一下｜banana 2.1→Nano Banana 2.1｜cgm/gm→Gemini｜birth agent→browser agent[?]｜洗小说/AI洗稿保留原意；文浩[?]/OMAKI[?]/mode[?]/腹画器[?]/联取声[?] 保留
 ---
 
