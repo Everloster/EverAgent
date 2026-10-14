@@ -45,7 +45,9 @@ def _parse_json(raw: str, label: str) -> Any:
     try:
         return json.loads(raw)
     except json.JSONDecodeError as exc:
-        raise InboxError(f"{label} returned invalid JSON: {exc}") from exc
+        raise InboxError(
+            f"{label} returned invalid JSON: {exc}; bytes={len(raw)}"
+        ) from exc
 
 
 class BrowserSession:
@@ -60,9 +62,18 @@ class BrowserSession:
         self.opened = True
         return self
 
-    def eval(self, expression: str, timeout: int = 120) -> Any:
-        raw = _run_opencli(["browser", self.name, "eval", expression], timeout=timeout)
-        return _parse_json(raw, "browser eval")
+    def eval(self, expression: str, timeout: int = 120, attempts: int = 3) -> Any:
+        last_error: InboxError | None = None
+        for attempt in range(attempts):
+            raw = _run_opencli(["browser", self.name, "eval", expression], timeout=timeout)
+            try:
+                return _parse_json(raw, "browser eval")
+            except InboxError as exc:
+                last_error = exc
+                if attempt + 1 < attempts:
+                    time.sleep(0.5 * (attempt + 1))
+        assert last_error is not None
+        raise last_error
 
     def __exit__(self, exc_type: Any, exc: Any, tb: Any) -> None:
         if self.opened:
@@ -99,28 +110,45 @@ def fetch_followings(
     max_pages: int,
     delay_ms: int,
 ) -> dict[str, Any]:
-    expression = f"""(async()=>{{
-      const all=[];
-      let total=0;
-      let complete=false;
-      for(let pn=1;pn<={max_pages};pn++){{
-        const q=new URLSearchParams({{vmid:{_js_string(account_mid)},pn:String(pn),ps:'50',order:'desc'}});
-        const j=await (await fetch('https://api.bilibili.com/x/relation/followings?'+q,
-          {{credentials:'include'}})).json();
-        if(j.code!==0) throw new Error(`followings failed: ${{j.message}} (${{j.code}})`);
-        const list=j.data?.list||[];
-        total=Number(j.data?.total||total||0);
-        for(const u of list) all.push({{
-          mid:String(u.mid),name:u.uname||'',sign:u.sign||'',face:u.face||'',
-          followed_at:Number(u.mtime||0),special:Boolean(u.special),
-          official:u.official_verify?.desc||''
-        }});
-        if(list.length<50){{complete=true;break;}}
-        if({delay_ms}>0) await new Promise(r=>setTimeout(r,{delay_ms}));
-      }}
-      return {{total,complete,items:all}};
-    }})()"""
-    return session.eval(expression, timeout=max(120, max_pages * 3))
+    all_items: list[dict[str, Any]] = []
+    total = 0
+    complete = False
+    # Keep each browser bridge response small. Some profiles intermittently
+    # truncate large eval payloads even though the underlying API succeeded.
+    batch_size = 1
+    for start_page in range(1, max_pages + 1, batch_size):
+        end_page = min(start_page + batch_size - 1, max_pages)
+        expression = f"""(async()=>{{
+          const all=[];
+          let total=0;
+          let complete=false;
+          for(let pn={start_page};pn<={end_page};pn++){{
+            const q=new URLSearchParams({{vmid:{_js_string(account_mid)},pn:String(pn),ps:'50',order:'desc'}});
+            const j=await (await fetch('https://api.bilibili.com/x/relation/followings?'+q,
+              {{credentials:'include'}})).json();
+            if(j.code!==0) throw new Error(`followings failed: ${{j.message}} (${{j.code}})`);
+            const list=j.data?.list||[];
+            total=Number(j.data?.total||total||0);
+            for(const u of list) all.push({{
+              mid:String(u.mid),name:u.uname||'',sign:u.sign||'',face:u.face||'',
+              followed_at:Number(u.mtime||0),special:Boolean(u.special),
+              official:u.official_verify?.desc||''
+            }});
+            if(list.length<50){{complete=true;break;}}
+            if({delay_ms}>0) await new Promise(r=>setTimeout(r,{delay_ms}));
+          }}
+          return {{total,complete,items:all}};
+        }})()"""
+        try:
+            batch = session.eval(expression, timeout=max(120, batch_size * 4))
+        except InboxError as exc:
+            raise InboxError(f"followings page {start_page}: {exc}") from exc
+        total = int(batch.get("total") or total)
+        all_items.extend(batch.get("items") or [])
+        if batch.get("complete"):
+            complete = True
+            break
+    return {"total": total, "complete": complete, "items": all_items}
 
 
 def fetch_recommended_ups(

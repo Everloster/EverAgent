@@ -12,6 +12,9 @@ description: 读取 B 站登录账号的关注列表、关注动态、最近投�
 - 完整关注列表和已读游标属于个人偏好数据，放私有/本地数据目录；公开仓只存用户确认后的精选清单。
 - 批量请求低频执行；出现 `-352`、验证码或限流立即停止。
 
+完整关注快照的唯一 owner 位于并排私有仓 `../EverAgent-infra/personal/bilibili-following/README.md`。
+先用 `eacli context get --domain personal.bilibili --json` 取最小上下文；禁止把其中的 JSONL 数据复制回公开仓。
+
 ## 开始前
 
 ```bash
