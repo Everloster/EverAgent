@@ -13,7 +13,7 @@ duration_seconds: 2468
 transcript_segments: 1072
 chapters: 3（大会三章）
 polished: true
-polished_by: "Claude (pi)（结构化精编，约 raw 的 20%，头部已标注）"
+polished_by: "Claude (pi)（结构化精编，约 raw 的 22.7%（按汉字数 2208/9735），头部已标注）"
 polished_at: 2026-10-10
 status: archived
 created: 2026-10-10

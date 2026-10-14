@@ -112,4 +112,4 @@ Memory×Proactive（双引擎）｜没有记忆的主动=骚扰｜better OpenClo
 
 1. **我真正理解了什么？**这期最有长期价值的是"**技术成熟度前夜**"的产品时机论和"先验知识=壁垒"的分工论——前者解释了为什么同一季度所有产品一起 ready（都在等同一个技术拐点），后者把"模型 AGI 后人还剩什么"回答为：rubrics 的设计能力（哪个信号密度高、频率怎么调、时效怎么判）。**产品经理的价值回归不是怀旧，是 token 成本曲线上的必然**。
 2. **我还没搞懂什么？①OpenCloud 究竟是什么（阮良/潘乱两期口播一致但均未核实——很可能是理解 2026 agent 格局的关键缺口）；②Today 的 memory 具体架构（Timeline/图/时序的融合方案只给了方向）；③"上下文鸿沟"能否量化（数字资产与 agent 可用性的关系）；④Instinct Memory 逆向文章原文。
-3. **下一步读什么/做什么？①核实 OpenCloud（web.search，两期报告的 [?] 即可清掉）；②把"协同即 token 成本/单 session 优先/多 agent 只用于 eval"写进 eacli 舰队的设计备忘；③对照 [[2026-09-24_rss-kedaibiao-lizheng_codex-claude|216 期]]的 Document first：Today 用记忆降低委托成本、孙煜征用文档降低委托成本——同一个问题的个人版与团队版解法，可合并进跨期笔记；④关注 Today 上线后的留存数据（育儿场景是否如 Suki 所说成立）。
+3. **下一步读什么/做什么？①核实 OpenCloud（web.search，两期报告的 [?] 即可清掉）；②把"协同即 token 成本/单 session 优先/多 agent 只用于 eval"写进 eacli 舰队的设计备忘；③对照 [[2026-10-05_rss-kedaibiao-lizheng_codex-claude|216 期]]的 Document first：Today 用记忆降低委托成本、孙煜征用文档降低委托成本——同一个问题的个人版与团队版解法，可合并进跨期笔记；④关注 Today 上线后的留存数据（育儿场景是否如 Suki 所说成立）。

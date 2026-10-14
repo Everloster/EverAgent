@@ -13,7 +13,7 @@ duration_seconds: 4510
 transcript_segments: 2641
 chapters: 5（shownotes 时间轴）
 polished: true
-polished_by: "Claude (pi)（结构化精编，约 raw 的 11%，头部已标注）"
+polished_by: "Claude (pi)（结构化精编，约 raw 的 14.5%（按汉字数 3083/21268），头部已标注）"
 polished_at: 2026-10-10
 status: archived
 created: 2026-10-10
