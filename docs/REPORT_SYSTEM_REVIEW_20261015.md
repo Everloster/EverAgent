@@ -16,7 +16,7 @@
 
 本次已完成机制改造：建立统一报告目录、全仓审计器、报告专用 repo skill、分层 context 文档和 10 个 ACE 回放任务；精简所有高频 `AGENTS.md`；修复全局索引覆盖、一个真实断链和一个缺失状态字段；把 GitHub 报告模板与生成器升级到当前元数据合同。
 
-静态 context 指标从 **66,775 bytes 降到 27,668 bytes（−58.6%）**。最重的 Podcast 路径从默认预算的 **102.7% 降到 31.6%**，所有任务路径均低于 33%，重复长段落归零。
+静态 context 指标从 **66,775 bytes 降到 28,231 bytes（−57.7%）**。最重的 AI Learning 路径占默认预算的 **32.8%**，所有任务路径均低于 33%，重复长段落归零。
 
 ---
 
@@ -69,7 +69,7 @@
 | 缺 H1 | 1 | AI Practice 旧实验笔记 |
 | 重复标题 | 10 | GitHub 日/周/月榜使用通用标题，索引需依日期区分 |
 
-这些结果说明全库需要“历史兼容 + 新增严格”的分期门禁。把 452 篇一次性改成新模板会制造巨大 diff，也无法提高事实正确性。本次因此没有批量重写旧报告；新报告和显式升级到 `quality_schema: report-v1` 的报告执行严格合同，旧报告保持可读并进入 WARN 队列。
+这些结果说明全库需要“历史兼容 + 新增严格”的分期门禁。把 452 篇一次性改成新模板会制造巨大 diff，也无法提高事实正确性。本次因此没有批量重写旧报告；新报告执行 `quality_schema: report-v2`，`report-v1` 保留为过渡格式，旧报告保持可读并进入 WARN 队列。
 
 ### 2.2 各领域的真实强弱项
 
@@ -137,10 +137,10 @@ OpenAI 建议缩短 skill 描述和常驻 `AGENTS.md`；ACE 论文提醒不要�
 
 ### 4.1 Context 架构
 
-- 根 `AGENTS.md` 从 16,849 bytes 减至 7,156 bytes，删除重复 Token Plan、历史备忘和各领域流程复述。
-- Podcast `AGENTS.md` 从 16,808 bytes 减至 3,138 bytes；详细转写、润色与报告规则继续由现有 skills 持有。
-- GitHub `AGENTS.md` 从 9,598 bytes 减至 2,262 bytes；四轮研究细节移入 `repo-research/references/research-method.md`。
-- Web `AGENTS.md` 从 6,681 bytes 减至 1,994 bytes；opencli 命令继续由 `opencli-playbook.md` 按需提供。
+- 根 `AGENTS.md` 从 16,849 bytes 减至 7,332 bytes，删除重复 Token Plan、历史备忘和各领域流程复述。
+- Podcast `AGENTS.md` 从 16,808 bytes 减至 3,230 bytes；详细转写、润色与报告规则继续由现有 skills 持有。
+- GitHub `AGENTS.md` 从 9,598 bytes 减至 2,279 bytes；四轮研究细节移入 `repo-research/references/research-method.md`。
+- Web `AGENTS.md` 从 6,681 bytes 减至 2,020 bytes；opencli 命令继续由 `opencli-playbook.md` 按需提供。
 - 五个 A 类领域和 AI Practice 改为按需读取 PROFILE、MAP、open-questions 和单一体裁 skill。
 - 新增 [CONTEXT_ENGINEERING.md](./CONTEXT_ENGINEERING.md)，明确 context owner、ACE delta 更新和模型专属 overlay 边界。
 
@@ -148,7 +148,7 @@ OpenAI 建议缩短 skill 描述和常驻 `AGENTS.md`；ACE 论文提醒不要�
 
 - 新增 [REPORT_WORKFLOW.md](./REPORT_WORKFLOW.md)，统一“是否落报告”、最小 context、Generator–Reflector–Curator 循环、报告合同和完成定义。
 - 新增 `.agents/skills/everagent-report/`，description 仅承担明确报告请求的路由，并排除短问答与只贴 repo 链接。
-- 新报告使用 `quality_schema: report-v1`；历史报告不被强制批量迁移。
+- 新报告使用 `quality_schema: report-v2`，并选择 `standard / important / flagship`；历史报告不被强制批量迁移。
 - GitHub 报告生成器和模板已输出当前 frontmatter；AI Practice 与 Podcast 模板同步字段。
 - “每次任务都扩写 skill”改成“每次反思，只有可复用或高风险发现才写入最小 delta”。
 
@@ -157,13 +157,16 @@ OpenAI 建议缩短 skill 描述和常驻 `AGENTS.md`；ACE 论文提醒不要�
 - 新增 `scripts/report_catalog.py`，统一定义九个报告集合。
 - `scripts/reindex.py` 改用统一目录：纳入 GitHub 124 篇和 AI Practice 10 篇，排除 Podcast shownotes。
 - `scripts/reindex.py --check` 现在真正比较生成结果并在索引漂移时返回失败。
-- 新增 `scripts/audit_reports.py`：全量扫描历史债务，对新增报告和 `report-v1` 执行严格合同；中文路径与已暂存的新文件也能被 `--changed` 正确识别。
+- 新增 `scripts/audit_reports.py`：全量扫描历史债务，对新增报告和版本化报告执行严格合同；中文路径与已暂存的新文件也能被 `--changed` 正确识别。
+- 新增 `scripts/report_quality.py` 与 `report-v2`：完成态报告必须具备关键 claim 证据账本、独立 Reviewer 记录、五维评分和通过判定。
+- `scripts/ecommit.sh` 在提交前对 Git index 的精确快照运行报告审计、索引一致性和 context 评估，防止工作区未暂存文件掩盖提交内容。
 - 修复一处 Podcast 版权链接、一处 Podcast status 缺失，以及 GitHub 月报中的缺失报告链接；生成器也会把缺失报告写成纯文本，避免回归。
 
 ### 4.4 评估
 
-- 新增 `scripts/eval_report_context.py`，检查 10 个 `AGENTS.md` 的路径字节预算，并扫描 36 个活跃 context 文件的重复、无条件读取、内部链接、过时指令和报告 skill 元数据。
+- 新增 `scripts/eval_report_context.py`，检查 10 个 `AGENTS.md` 的路径字节预算，并扫描 37 个活跃 context 文件的重复、无条件读取、内部链接、过时指令和报告 skill 元数据。
 - 新增 `evals/ace-report-tasks.json`，覆盖文章精读、论文精读、概念学习、旧报告追问、最小 demo、播客、repo 轻量介绍、repo 深研、Web 查询和全仓治理十类常见任务。
+- 新增用户认可的报告质量锚点，并支持按模型、Harness 和 context revision 聚合平均分、P10、零分率、升级率与稀缺模型调用量。
 - 支持生成行为记录模板和评分；安全结果必须显式记录为通过，否则该 case 计 0 分：
 
 ```bash
@@ -178,11 +181,11 @@ python3 scripts/eval_report_context.py --score /tmp/ace-run.json
 
 | 路径 | 改造前 | 改造后 | 变化 |
 |---|---:|---:|---:|
-| 全部项目 `AGENTS.md` | 66,775 B | 27,668 B | **−58.6%** |
-| 根 | 16,849 B | 7,156 B | −57.5% |
-| AI Learning 链 | 21,482 B / 65.6% | 10,532 B / 32.1% | −51.0% |
-| Podcast 链 | 33,657 B / 102.7% | 10,354 B / 31.6% | −69.2% |
-| GitHub 链 | 26,447 B / 80.7% | 9,418 B / 28.7% | −64.4% |
+| 全部项目 `AGENTS.md` | 66,775 B | 28,231 B | **−57.7%** |
+| 根 | 16,849 B | 7,332 B | −56.5% |
+| AI Learning 链 | 21,482 B / 65.6% | 10,759 B / 32.8% | −49.9% |
+| Podcast 链 | 33,657 B / 102.7% | 10,562 B / 32.2% | −68.6% |
+| GitHub 链 | 26,447 B / 80.7% | 9,611 B / 29.3% | −63.7% |
 | 跨文件重复长段落 | 2 组 | 0 组 | 清零 |
 
 百分比以 OpenAI 文档给出的默认 32 KiB `AGENTS.md` 合并上限为分母。该指标只衡量静态输入压力，不代表最终任务质量。
@@ -209,7 +212,7 @@ python3 scripts/eval_report_context.py --score /tmp/ace-run.json
 
 ### 历史债务
 
-历史报告只在以下情形升级到 `report-v1`：用户继续该主题、报告被新报告直接引用、关键事实被发现错误、或批次修复能由确定性工具安全完成。其余 WARN 保留为可见债务，避免为了整齐而重写数百篇内容。
+历史报告只在以下情形升级到 `report-v2`：用户继续该主题、报告被新报告直接引用、关键事实被发现错误、或批次修复能由确定性工具安全完成。其余 WARN 保留为可见债务，避免为了整齐而重写数百篇内容。
 
 ---
 
@@ -221,3 +224,15 @@ python3 scripts/eval_report_context.py --score /tmp/ace-run.json
 - 不同模型与 Harness 的最优 context 可能不同，当前结构允许 overlay，但尚未积累跨模型对照数据。
 
 这套机制的目标是让问题可见、让新增债务停止增长，并让后续改动能通过同一批真实任务验证。
+
+---
+
+## 8. 多模型质量下限补强
+
+用户确认的运行偏好是：GLM 5.3 作为额度充足的主力模型；Kimi K3 能力较好但额度有限，优先保留给升级复核；MiniMax M3 不再用于新报告。该偏好已进入机器可读的 `config/report-quality-policy.json`，而不是散落进多个 Harness prompt。
+
+第二阶段引入 `report-v2`：每篇新报告必须同时拥有 evidence manifest 与独立 review 记录。`scripts/report_quality.py` 负责初始化、生成 Reviewer prompt、验证关键 claim 与来源覆盖、计算五维最低分，并在失败时返回 `revise` 或 `escalate`。旗舰报告需要两次独立复核，其中至少一次来自强模型。
+
+默认资源路径为：GLM 5.3 生成 → GLM 5.3 新会话复核 → 首轮修订 → GPT-5.6 Sol 升级复核 → 无法使用时才调用 Kimi K3。Kimi K3 默认每篇最多一次，用户明确指定时可覆盖；MiniMax M3 会被质量门直接拒绝。
+
+提交入口 `scripts/ecommit.sh` 会运行已暂存报告审计、索引一致性和 context 评估。跨模型回放新增质量判定与 P10 聚合，避免平均分掩盖最差报告。完整协议见 [REPORT_QUALITY_GATE.md](./REPORT_QUALITY_GATE.md)。

@@ -29,7 +29,7 @@
 
 ## 报告合同
 
-需要归档时遵守根 [REPORT_WORKFLOW](../docs/REPORT_WORKFLOW.md)，新增报告使用标准 frontmatter 与 `quality_schema: "report-v1"`。报告应说明查询范围、筛选口径、时间点、来源和未覆盖部分。
+需要归档时遵守根 [REPORT_WORKFLOW](../docs/REPORT_WORKFLOW.md)，新增报告使用标准 frontmatter、`quality_schema: "report-v2"` 与合适的 `quality_tier`。报告应说明查询范围、筛选口径、时间点、来源和未覆盖部分。
 
 完成后运行：
 

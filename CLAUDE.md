@@ -17,6 +17,7 @@
 
 - 研究方法论（强制）：[METHODOLOGY.md](./METHODOLOGY.md)
 - 报告生产与完成定义：[docs/REPORT_WORKFLOW.md](./docs/REPORT_WORKFLOW.md)
+- 跨模型质量门与模型升级策略：[docs/REPORT_QUALITY_GATE.md](./docs/REPORT_QUALITY_GATE.md)
 - Context 分层与 ACE 评估：[docs/CONTEXT_ENGINEERING.md](./docs/CONTEXT_ENGINEERING.md)
 - 提交规范与 push flow：[docs/PROTOCOL_COMMON.md](./docs/PROTOCOL_COMMON.md) §B/§C
 - 搜索阶梯：**已退役（2026-09-13）**——联网任务一律 eacli Token Plan-first（见根 AGENTS.md 托管策略块），eacli 不可用先修 eacli

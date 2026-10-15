@@ -65,15 +65,33 @@ def build_table() -> str:
     return "\n".join(rows)
 
 
-def collect_reports() -> dict[str, list[dict]]:
+def indexed_fallback_dates() -> dict[Path, str]:
+    """Read stable fallback dates for legacy reports without metadata."""
+    if not INDEX_PATH.exists():
+        return {}
+    dates: dict[Path, str] = {}
+    row = re.compile(r"^\|\s*(\d{4}-\d{2}-\d{2})\s*\|\s*\[.*\]\(([^)]+)\)\s*\|")
+    for line in INDEX_PATH.read_text(encoding="utf-8", errors="replace").splitlines():
+        match = row.match(line)
+        if not match:
+            continue
+        date, target = match.groups()
+        dates[(INDEX_PATH.parent / target).resolve()] = date
+    return dates
+
+
+def collect_reports(fallback_dates: dict[Path, str] | None = None) -> dict[str, list[dict]]:
     """All reports per index domain, sorted by updated_on desc."""
+    fallback_dates = fallback_dates or {}
     by_domain: dict[str, list[dict]] = {}
     for collection in COLLECTIONS:
         if not collection.include_in_index:
             continue
         entries = []
         for _item, path in iter_reports(collection.id):
-            entries.append(report_info(path))
+            entries.append(
+                report_info(path, fallback_updated_on=fallback_dates.get(path.resolve(), ""))
+            )
         entries.sort(key=lambda r: (r["updated_on"], r["title"]), reverse=True)
         by_domain[collection.id] = entries
     return by_domain
@@ -151,7 +169,7 @@ def main() -> int:
     else:
         expected_readme = text
 
-    expected_index = build_index(collect_reports())
+    expected_index = build_index(collect_reports(indexed_fallback_dates()))
 
     if args.check:
         stale = []

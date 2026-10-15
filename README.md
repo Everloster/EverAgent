@@ -66,7 +66,7 @@
 2. **知识层** — 每个领域的 `reports/`（我读的东西）+ `wiki/`（概念/实体/综合/未解问题的索引）。
 3. **画像层** — 每个领域的 `PROFILE.md`（我会什么、偏好什么）+ `MAP.md`（覆盖与缺口），让 AI 不重复讲我会的、知道下一步学什么。
 
-报告生产采用按需 context：统一入口见 [REPORT_WORKFLOW.md](./docs/REPORT_WORKFLOW.md)，模型与 Harness 的分层及 ACE 评估见 [CONTEXT_ENGINEERING.md](./docs/CONTEXT_ENGINEERING.md)。
+报告生产采用按需 context：统一入口见 [REPORT_WORKFLOW.md](./docs/REPORT_WORKFLOW.md)，跨模型质量门见 [REPORT_QUALITY_GATE.md](./docs/REPORT_QUALITY_GATE.md)，模型与 Harness 的分层及 ACE 评估见 [CONTEXT_ENGINEERING.md](./docs/CONTEXT_ENGINEERING.md)。
 本轮全库审计、基线数据与落地清单见 [REPORT_SYSTEM_REVIEW_20261015.md](./docs/REPORT_SYSTEM_REVIEW_20261015.md)。
 
 ---
@@ -100,6 +100,8 @@
 
 ```bash
 python3 scripts/reindex.py                    # 刷新本 README 计数 + 重建 docs/REPORT_INDEX.md 阅读索引
+python3 scripts/report_quality.py policy      # 查看模型路由与质量等级
+python3 scripts/report_quality.py check <报告> # 校验 report-v2 证据与独立复核
 python3 scripts/audit_reports.py --changed    # 新增/修改报告质量门
 python3 scripts/audit_reports.py --all --json # 全库报告审计
 python3 scripts/eval_report_context.py        # context 与 ACE 任务集静态评估

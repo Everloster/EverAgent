@@ -5,91 +5,103 @@
   "cases": [
     {
       "id": "a_article_deep_analysis",
-      "prompt": "深度分析这篇 AI 官方文章并出报告：https://example.com/article",
+      "prompt": "深度分析这篇 AI 官方文章并出报告：https://developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra",
       "expected_route": "ai-learning",
       "artifact_policy": "required",
-      "max_initial_project_files": 4,
+      "quality_tier": "important",
+      "reference_anchor": "astra_instruction_architecture",
+      "max_initial_project_files": 7,
       "must_not_pause_before_research": true,
-      "required_checks": ["source_read", "report_gate", "reindex"]
+      "required_checks": ["source_read", "evidence_manifest", "independent_review", "quality_gate", "report_gate", "reindex"]
     },
     {
       "id": "a_paper_deep_read",
-      "prompt": "精读这篇论文，核对实验数字并归档报告：https://arxiv.org/abs/0000.00000",
+      "prompt": "精读 Attention Is All You Need，核对实验数字并归档报告：https://arxiv.org/abs/1706.03762",
       "expected_route": "ai-learning",
       "artifact_policy": "required",
-      "max_initial_project_files": 4,
+      "quality_tier": "important",
+      "max_initial_project_files": 7,
       "must_not_pause_before_research": true,
-      "required_checks": ["primary_source", "numeric_evidence", "report_gate", "reindex"]
+      "required_checks": ["primary_source", "numeric_evidence", "evidence_manifest", "independent_review", "quality_gate", "report_gate", "reindex"]
     },
     {
       "id": "a_concept_explanation",
       "prompt": "帮我系统学习一致性哈希，出一份能读懂的报告",
       "expected_route": "cs-learning",
       "artifact_policy": "required",
-      "max_initial_project_files": 4,
+      "quality_tier": "important",
+      "max_initial_project_files": 7,
       "must_not_pause_before_research": true,
-      "required_checks": ["source_read", "report_gate", "reindex"]
+      "required_checks": ["source_read", "evidence_manifest", "independent_review", "quality_gate", "report_gate", "reindex"]
     },
     {
       "id": "a_existing_followup",
       "prompt": "继续上次的 MoE 路由问题，补上负载均衡的追问",
       "expected_route": "ai-learning",
       "artifact_policy": "update_existing",
-      "max_initial_project_files": 5,
+      "quality_tier": "important",
+      "max_initial_project_files": 7,
       "must_not_pause_before_research": true,
-      "required_checks": ["existing_report_lookup", "report_gate", "reindex"]
+      "required_checks": ["existing_report_lookup", "evidence_manifest", "independent_review", "quality_gate", "report_gate", "reindex"]
     },
     {
       "id": "b_minimal_demo",
       "prompt": "用最小可运行 demo 帮我理解 speculative decoding，并记录真实输出",
       "expected_route": "ai-practice",
       "artifact_policy": "required",
-      "max_initial_project_files": 4,
+      "quality_tier": "standard",
+      "max_initial_project_files": 7,
       "must_not_pause_before_research": true,
-      "required_checks": ["code_run", "observed_output", "report_gate", "reindex"]
+      "required_checks": ["code_run", "observed_output", "evidence_manifest", "independent_review", "quality_gate", "report_gate", "reindex"]
     },
     {
       "id": "c_podcast",
-      "prompt": "把这个播客转写、润色并做学习报告：https://example.com/episode",
+      "prompt": "把这个播客转写、润色并做学习报告：https://www.bilibili.com/video/BV1tXKi6NE4b/",
       "expected_route": "podcast-learning",
       "artifact_policy": "required",
-      "max_initial_project_files": 4,
+      "quality_tier": "important",
+      "max_initial_project_files": 7,
       "must_not_pause_before_research": true,
-      "required_checks": ["silent_transcription", "shownotes_check", "podcast_audit", "report_gate", "reindex"]
+      "required_checks": ["silent_transcription", "shownotes_check", "evidence_manifest", "independent_review", "quality_gate", "podcast_audit", "report_gate", "reindex"]
     },
     {
       "id": "d_repo_light",
-      "prompt": "https://github.com/owner/repo",
+      "prompt": "https://github.com/openai/evals",
       "expected_route": "github-trending-analyzer",
       "artifact_policy": "forbidden",
-      "max_initial_project_files": 2,
+      "quality_tier": null,
+      "max_initial_project_files": 3,
       "must_not_pause_before_research": true,
       "required_checks": ["readme_read"]
     },
     {
       "id": "d_repo_deep",
-      "prompt": "深挖这个仓库并出报告：https://github.com/owner/repo",
+      "prompt": "深挖这个仓库并出报告：https://github.com/openai/evals",
       "expected_route": "github-trending-analyzer",
       "artifact_policy": "required",
-      "max_initial_project_files": 4,
+      "quality_tier": "important",
+      "max_initial_project_files": 7,
       "must_not_pause_before_research": true,
-      "required_checks": ["repo_metadata", "source_code", "competitors", "activity", "report_gate"]
+      "required_checks": ["repo_metadata", "source_code", "competitors", "activity", "evidence_manifest", "independent_review", "quality_gate", "report_gate", "reindex"]
     },
     {
       "id": "e_web_lookup",
       "prompt": "帮我查一下这个网站今天的公开价格",
       "expected_route": "web-surfing",
       "artifact_policy": "conditional",
+      "quality_tier": "standard",
       "max_initial_project_files": 3,
       "must_not_pause_before_research": true,
-      "required_checks": ["source_read"]
+      "required_checks": ["source_read"],
+      "artifact_required_checks": ["evidence_manifest", "independent_review", "quality_gate", "report_gate", "reindex"]
     },
     {
       "id": "root_report_system_audit",
       "prompt": "Review 全仓报告机制，落地优化并建立评估方法",
       "expected_route": "root",
       "artifact_policy": "required",
-      "max_initial_project_files": 5,
+      "quality_tier": null,
+      "max_initial_project_files": 7,
       "must_not_pause_before_research": true,
       "required_checks": ["inventory", "implementation", "static_eval", "behavioral_eval_plan", "reindex"]
     }

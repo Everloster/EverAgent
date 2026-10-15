@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "current_report_schema": "report-v2",
+  "default_quality_tier": "important",
+  "preference_source": {
+    "type": "user_confirmed",
+    "recorded_on": "2026-10-15",
+    "review_after_completed_reports": 30
+  },
+  "model_policy": {
+    "default_generator": "glm-5.3",
+    "default_reviewer": "glm-5.3",
+    "premium_reviewer_order": [
+      "gpt-5.6-sol",
+      "kimi-k3"
+    ],
+    "strong_reviewers": [
+      "gpt-5.6-sol",
+      "kimi-k3"
+    ],
+    "scarce_models": [
+      "kimi-k3"
+    ],
+    "disabled_models": [
+      "minimax-m3"
+    ],
+    "aliases": {
+      "glm53": "glm-5.3",
+      "glm-5.3": "glm-5.3",
+      "zhipu-glm-5.3": "glm-5.3",
+      "pi-glm-5.3": "glm-5.3",
+      "56sol": "gpt-5.6-sol",
+      "gpt-5.6-sol": "gpt-5.6-sol",
+      "codex-gpt-5.6-sol": "gpt-5.6-sol",
+      "kimi k3": "kimi-k3",
+      "kimi-k3": "kimi-k3",
+      "kimi-cli-k3": "kimi-k3",
+      "moonshot-kimi-k3": "kimi-k3",
+      "m3": "minimax-m3",
+      "minimax-m3": "minimax-m3",
+      "minimax/m3": "minimax-m3",
+      "minimax/minimax-m3": "minimax-m3"
+    },
+    "fresh_context_required": true,
+    "scarce_model_max_calls_per_report": 1,
+    "scarce_model_preferred_roles": [
+      "escalation_review",
+      "flagship_final_review"
+    ],
+    "explicit_user_override_allowed": true
+  },
+  "dimensions": {
+    "evidence_fidelity": 35,
+    "request_coverage": 20,
+    "reasoning_quality": 20,
+    "readability": 15,
+    "limitations": 10
+  },
+  "hard_failure_codes": [
+    "fabricated_or_unread_source",
+    "critical_claim_unsupported",
+    "key_number_mismatch",
+    "core_requirement_missing",
+    "safety_or_privacy_violation"
+  ],
+  "score_bands": {
+    "95_100": "证据逐项核验，核心问题完整回答，没有实质缺陷",
+    "85_94": "整体可靠，只有不影响核心结论的轻微缺陷",
+    "70_84": "存在需要修订的证据、推理、覆盖或表达问题",
+    "0_69": "核心要求或事实可靠性不足"
+  },
+  "tiers": {
+    "standard": {
+      "minimum_total": 82,
+      "minimum_dimension_scores": {
+        "evidence_fidelity": 85,
+        "request_coverage": 80,
+        "reasoning_quality": 75,
+        "readability": 75,
+        "limitations": 70
+      },
+      "minimum_sources": 1,
+      "minimum_primary_sources": 1,
+      "minimum_critical_claims": 2,
+      "reviewers_required": 1,
+      "strong_reviewers_required": 0,
+      "max_revision_rounds": 1
+    },
+    "important": {
+      "minimum_total": 88,
+      "minimum_dimension_scores": {
+        "evidence_fidelity": 90,
+        "request_coverage": 85,
+        "reasoning_quality": 85,
+        "readability": 80,
+        "limitations": 80
+      },
+      "minimum_sources": 2,
+      "minimum_primary_sources": 1,
+      "minimum_critical_claims": 3,
+      "reviewers_required": 1,
+      "strong_reviewers_required": 0,
+      "max_revision_rounds": 1
+    },
+    "flagship": {
+      "minimum_total": 92,
+      "minimum_dimension_scores": {
+        "evidence_fidelity": 95,
+        "request_coverage": 90,
+        "reasoning_quality": 90,
+        "readability": 85,
+        "limitations": 85
+      },
+      "minimum_sources": 3,
+      "minimum_primary_sources": 2,
+      "minimum_critical_claims": 4,
+      "reviewers_required": 2,
+      "strong_reviewers_required": 1,
+      "max_revision_rounds": 1
+    }
+  }
+}

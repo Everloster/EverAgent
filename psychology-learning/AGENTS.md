@@ -29,9 +29,11 @@
 title: "标题"
 domain: "psychology-learning"
 report_type: "paper_analysis"   # 或 concept_report
-status: "completed"
+status: "in_progress"
 updated_on: "YYYY-MM-DD"
-quality_schema: "report-v1"
+quality_schema: "report-v2"
+quality_tier: "important"
+semantic_tags: ["tag"]
 ---
 ```
 

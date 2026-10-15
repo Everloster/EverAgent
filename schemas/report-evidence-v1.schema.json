@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Everloster/EverAgent/schemas/report-evidence-v1.schema.json",
+  "title": "EverAgent report evidence manifest",
+  "type": "object",
+  "required": ["schema_version", "report_path", "quality_tier", "generator", "task", "sources", "claims", "limitations"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "report_path": {"type": "string", "minLength": 1},
+    "quality_tier": {"enum": ["standard", "important", "flagship"]},
+    "created_on": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+    "generator": {
+      "type": "object",
+      "required": ["model", "harness", "run_id", "explicit_model_override"],
+      "properties": {
+        "model": {"type": "string", "minLength": 1},
+        "harness": {"type": "string", "minLength": 1},
+        "run_id": {"type": "string", "minLength": 1},
+        "explicit_model_override": {"type": "boolean"},
+        "override_reason": {"type": "string"}
+      }
+    },
+    "task": {
+      "type": "object",
+      "required": ["summary", "requirements"],
+      "properties": {
+        "summary": {"type": "string", "minLength": 1},
+        "requirements": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["id", "text"],
+            "properties": {
+              "id": {"type": "string", "minLength": 1},
+              "text": {"type": "string", "minLength": 1}
+            }
+          }
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "kind", "title", "locator", "accessed_on"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "kind": {"enum": ["primary", "official", "secondary", "local", "execution"]},
+          "title": {"type": "string", "minLength": 1},
+          "locator": {"type": "string", "minLength": 1},
+          "accessed_on": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"}
+        }
+      }
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "claim", "report_anchor", "support", "source_ids", "critical"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "claim": {"type": "string", "minLength": 1},
+          "report_anchor": {"type": "string", "minLength": 1},
+          "support": {"enum": ["direct", "derived", "inference"]},
+          "source_ids": {"type": "array", "items": {"type": "string"}},
+          "evidence": {"type": "string"},
+          "critical": {"type": "boolean"}
+        }
+      }
+    },
+    "limitations": {"type": "array", "items": {"type": "string"}}
+  }
+}

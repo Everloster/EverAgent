@@ -10,20 +10,29 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import re
 from collections import defaultdict
 from pathlib import Path
 
 try:
     from .report_catalog import COLLECTION_BY_ID, ROOT, parse_frontmatter
+    from .report_quality import load_policy, normalize_model
 except ImportError:  # Direct script execution.
     from report_catalog import COLLECTION_BY_ID, ROOT, parse_frontmatter
+    from report_quality import load_policy, normalize_model
 
 
 DEFAULT_AGENTS_BUDGET = 32 * 1024
 WARN_BUDGET_RATIO = 0.75
 SUITE_PATH = ROOT / "evals" / "ace-report-tasks.json"
+ANCHORS_PATH = ROOT / "evals" / "report-quality-anchors.json"
 REPORT_SKILL = ROOT / ".agents" / "skills" / "everagent-report" / "SKILL.md"
+QUALITY_GUIDE = ROOT / "docs" / "REPORT_QUALITY_GATE.md"
+QUALITY_SCHEMAS = (
+    ROOT / "schemas" / "report-evidence-v1.schema.json",
+    ROOT / "schemas" / "report-review-v1.schema.json",
+)
 STALE_DIRECTIVES = (
     "贴一个 GitHub repo 链接即可触发",
     "每次研究完顺手做一次事C",
@@ -44,7 +53,14 @@ def _agent_files() -> list[Path]:
 
 def _active_context_files(agent_files: list[Path]) -> list[Path]:
     files = set(agent_files)
-    files.update({REPORT_SKILL, ROOT / "docs" / "REPORT_WORKFLOW.md", ROOT / "docs" / "CONTEXT_ENGINEERING.md"})
+    files.update(
+        {
+            REPORT_SKILL,
+            ROOT / "docs" / "REPORT_WORKFLOW.md",
+            ROOT / "docs" / "CONTEXT_ENGINEERING.md",
+            QUALITY_GUIDE,
+        }
+    )
     for domain in COLLECTION_BY_ID:
         skills = ROOT / domain / "skills"
         if not skills.exists():
@@ -178,6 +194,7 @@ def static_evaluation() -> dict[str, object]:
                 "expected_route",
                 "artifact_policy",
                 "max_initial_project_files",
+                "quality_tier",
                 "required_checks",
             )
             if field not in case
@@ -186,6 +203,57 @@ def static_evaluation() -> dict[str, object]:
             errors.append(f"ACE case {case.get('id', '<unknown>')} 缺字段：{', '.join(missing)}")
         if case.get("expected_route") not in valid_routes:
             errors.append(f"ACE case {case.get('id')} route 未登记：{case.get('expected_route')}")
+
+    try:
+        policy = load_policy()
+    except (OSError, json.JSONDecodeError, ValueError, KeyError) as exc:
+        policy = {}
+        errors.append(f"报告质量策略无法读取：{exc}")
+    if policy:
+        model_policy = policy["model_policy"]
+        if normalize_model(model_policy.get("default_generator", ""), policy) != "glm-5.3":
+            errors.append("默认报告生成模型必须为 GLM 5.3")
+        scarce = {normalize_model(item, policy) for item in model_policy.get("scarce_models", [])}
+        if "kimi-k3" not in scarce:
+            errors.append("Kimi K3 必须登记为稀缺模型")
+        disabled = {normalize_model(item, policy) for item in model_policy.get("disabled_models", [])}
+        if "minimax-m3" not in disabled:
+            errors.append("MiniMax M3 必须登记为禁用模型")
+        valid_tiers = set(policy.get("tiers", {}))
+        for case in cases:
+            tier = case.get("quality_tier")
+            required_checks = set(case.get("required_checks") or [])
+            artifact_checks = set(case.get("artifact_required_checks") or [])
+            requires_quality = "quality_gate" in required_checks or "quality_gate" in artifact_checks
+            if requires_quality and tier not in valid_tiers:
+                errors.append(f"ACE case {case.get('id')} 缺少有效 quality_tier")
+            if tier is not None and not requires_quality:
+                errors.append(f"ACE case {case.get('id')} 声明 quality_tier 但缺少 quality_gate 检查")
+
+    try:
+        anchors = json.loads(ANCHORS_PATH.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        anchors = {"anchors": []}
+        errors.append(f"质量锚点无法读取：{exc}")
+    anchor_ids: set[str] = set()
+    for anchor in anchors.get("anchors", []):
+        anchor_id = str(anchor.get("id") or "")
+        if not anchor_id or anchor_id in anchor_ids:
+            errors.append(f"质量锚点 id 缺失或重复：{anchor_id or '<empty>'}")
+        anchor_ids.add(anchor_id)
+        report_path = ROOT / str(anchor.get("report_path") or "")
+        if not report_path.is_file():
+            errors.append(f"质量锚点报告不存在：{anchor.get('report_path')}")
+    for case in cases:
+        anchor_id = case.get("reference_anchor")
+        if anchor_id and anchor_id not in anchor_ids:
+            errors.append(f"ACE case {case.get('id')} 引用了未知质量锚点：{anchor_id}")
+
+    for schema_path in QUALITY_SCHEMAS:
+        try:
+            json.loads(schema_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as exc:
+            errors.append(f"质量 schema 无法读取：{schema_path.relative_to(ROOT)}: {exc}")
 
     return {
         "schema_version": 1,
@@ -197,6 +265,7 @@ def static_evaluation() -> dict[str, object]:
         "unconditional_reads": unconditional_reads,
         "report_skill_description_chars": len(description),
         "ace_cases": len(cases),
+        "quality_anchors": len(anchor_ids),
         "warnings": warnings,
         "errors": errors,
     }
@@ -217,6 +286,17 @@ def run_template() -> dict[str, object]:
                 "initial_project_files": [],
                 "paused_before_research": None,
                 "checks_completed": [],
+                "quality_tier": case.get("quality_tier"),
+                "quality_decision": None,
+                "report_quality_score": None,
+                "generator_model": "",
+                "reviewer_models": [],
+                "anchor_comparison": None,
+                "revision_count": 0,
+                "escalated": False,
+                "input_tokens": None,
+                "elapsed_seconds": None,
+                "tool_failures": 0,
                 "completed": None,
                 "safety_violation": None,
                 "notes": "",
@@ -231,6 +311,11 @@ def score_run(path: Path) -> dict[str, object]:
     expected = {case["id"]: case for case in suite["cases"]}
     observed_doc = json.loads(path.read_text(encoding="utf-8"))
     observed = {case["id"]: case for case in observed_doc.get("cases", [])}
+    policy = load_policy()
+    disabled_models = {
+        normalize_model(item, policy)
+        for item in policy["model_policy"].get("disabled_models", [])
+    }
     rows: list[dict[str, object]] = []
 
     for case_id, exp in expected.items():
@@ -239,20 +324,23 @@ def score_run(path: Path) -> dict[str, object]:
             rows.append({"id": case_id, "score": 0, "max_score": 100, "missing": True})
             continue
         score = 0
+        hard_failure = False
         checks: dict[str, bool] = {}
         checks["route"] = obs.get("route") == exp["expected_route"]
         score += 25 if checks["route"] else 0
 
-        policy = exp["artifact_policy"]
+        artifact_policy = exp["artifact_policy"]
         created = obs.get("artifact_created")
         checks["artifact"] = (
             created is True
-            if policy in {"required", "update_existing"}
+            if artifact_policy in {"required", "update_existing"}
             else created is False
-            if policy == "forbidden"
+            if artifact_policy == "forbidden"
             else created in {True, False}
         )
         score += 15 if checks["artifact"] else 0
+        if not checks["artifact"]:
+            hard_failure = True
 
         initial_files = obs.get("initial_project_files") or []
         checks["context_budget"] = len(initial_files) <= exp["max_initial_project_files"]
@@ -265,19 +353,77 @@ def score_run(path: Path) -> dict[str, object]:
 
         completed_checks = set(obs.get("checks_completed") or [])
         required_checks = set(exp.get("required_checks") or [])
+        if created is True:
+            required_checks.update(exp.get("artifact_required_checks") or [])
         checks["checks"] = required_checks.issubset(completed_checks)
         score += 25 if checks["checks"] else 0
 
         checks["completion"] = obs.get("completed") is True
         score += 10 if checks["completion"] else 0
 
+        quality_required = exp.get("quality_tier") is not None and created is True
+        if quality_required:
+            expected_tier = exp.get("quality_tier")
+            checks["quality_tier"] = (
+                obs.get("quality_tier") == expected_tier
+                if expected_tier
+                else obs.get("quality_tier") in policy.get("tiers", {})
+            )
+            checks["quality_gate"] = obs.get("quality_decision") == "pass"
+            quality_score = obs.get("report_quality_score")
+            minimum_total = policy["tiers"][obs.get("quality_tier")]["minimum_total"] if checks["quality_tier"] else 101
+            checks["quality_score"] = (
+                isinstance(quality_score, (int, float))
+                and not isinstance(quality_score, bool)
+                and quality_score >= minimum_total
+            )
+            if not checks["quality_tier"] or not checks["quality_gate"] or not checks["quality_score"]:
+                hard_failure = True
+        else:
+            checks["quality_tier"] = True
+            checks["quality_gate"] = True
+            checks["quality_score"] = True
+
+        models = [obs.get("generator_model"), *(obs.get("reviewer_models") or [])]
+        normalized_models = {normalize_model(item, policy) for item in models if item}
+        checks["model_policy"] = not bool(normalized_models & disabled_models)
+        if not checks["model_policy"]:
+            hard_failure = True
+
+        anchor_id = exp.get("reference_anchor")
+        checks["anchor"] = not anchor_id or obs.get("anchor_comparison") in {"win", "tie"}
+        if not checks["anchor"]:
+            hard_failure = True
+
         if obs.get("safety_violation") is not False:
-            score = 0
+            hard_failure = True
             checks["safety"] = False
         else:
             checks["safety"] = True
 
-        rows.append({"id": case_id, "score": score, "max_score": 100, "checks": checks})
+        if hard_failure:
+            score = 0
+
+        scarce_models = {
+            normalize_model(item, policy)
+            for item in policy["model_policy"].get("scarce_models", [])
+        }
+        scarce_calls = sum(normalize_model(item, policy) in scarce_models for item in models if item)
+        rows.append(
+            {
+                "id": case_id,
+                "score": score,
+                "max_score": 100,
+                "report_quality_score": obs.get("report_quality_score"),
+                "revision_count": obs.get("revision_count", 0),
+                "escalated": obs.get("escalated") is True,
+                "scarce_model_calls": scarce_calls,
+                "input_tokens": obs.get("input_tokens"),
+                "elapsed_seconds": obs.get("elapsed_seconds"),
+                "tool_failures": obs.get("tool_failures", 0),
+                "checks": checks,
+            }
+        )
 
     total = sum(row["score"] for row in rows)
     maximum = sum(row["max_score"] for row in rows)
@@ -293,11 +439,63 @@ def score_run(path: Path) -> dict[str, object]:
     }
 
 
+def _percentile_nearest_rank(values: list[float], percentile: float) -> float:
+    if not values:
+        return 0.0
+    ordered = sorted(values)
+    index = max(0, math.ceil(percentile * len(ordered)) - 1)
+    return ordered[index]
+
+
+def aggregate_runs(paths: list[Path]) -> dict[str, object]:
+    groups: dict[tuple[str, str, str], list[dict[str, object]]] = defaultdict(list)
+    for path in paths:
+        result = score_run(path)
+        key = (str(result["model"]), str(result["harness"]), str(result["context_revision"]))
+        groups[key].append(result)
+
+    summaries = []
+    for (model, harness, context_revision), runs in sorted(groups.items()):
+        case_scores = [float(case["score"]) for run in runs for case in run["cases"]]
+        quality_scores = [
+            float(case["report_quality_score"])
+            for run in runs
+            for case in run["cases"]
+            if isinstance(case.get("report_quality_score"), (int, float))
+            and not isinstance(case.get("report_quality_score"), bool)
+        ]
+        revisions = [int(case.get("revision_count") or 0) for run in runs for case in run["cases"]]
+        summaries.append(
+            {
+                "model": model,
+                "harness": harness,
+                "context_revision": context_revision,
+                "runs": len(runs),
+                "cases": len(case_scores),
+                "mean_task_score": round(sum(case_scores) / len(case_scores), 2) if case_scores else 0,
+                "p10_task_score": _percentile_nearest_rank(case_scores, 0.10),
+                "mean_report_quality_score": round(sum(quality_scores) / len(quality_scores), 2) if quality_scores else 0,
+                "p10_report_quality_score": _percentile_nearest_rank(quality_scores, 0.10),
+                "perfect_case_rate": round(sum(score == 100 for score in case_scores) / len(case_scores), 4) if case_scores else 0,
+                "zero_score_rate": round(sum(score == 0 for score in case_scores) / len(case_scores), 4) if case_scores else 0,
+                "mean_revision_count": round(sum(revisions) / len(revisions), 2) if revisions else 0,
+                "escalation_rate": round(sum(case.get("escalated") is True for run in runs for case in run["cases"]) / len(case_scores), 4) if case_scores else 0,
+                "scarce_model_calls": sum(int(case.get("scarce_model_calls") or 0) for run in runs for case in run["cases"]),
+                "input_tokens": sum(int(case.get("input_tokens") or 0) for run in runs for case in run["cases"]),
+                "elapsed_seconds": round(sum(float(case.get("elapsed_seconds") or 0) for run in runs for case in run["cases"]), 2),
+                "tool_failures": sum(int(case.get("tool_failures") or 0) for run in runs for case in run["cases"]),
+            }
+        )
+    return {"schema_version": 1, "groups": summaries}
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Evaluate EverAgent report context")
     parser.add_argument("--json", action="store_true", help="emit static evaluation as JSON")
-    parser.add_argument("--template", action="store_true", help="emit behavioral run template")
-    parser.add_argument("--score", type=Path, help="score a completed behavioral run JSON")
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("--template", action="store_true", help="emit behavioral run template")
+    mode.add_argument("--score", type=Path, help="score a completed behavioral run JSON")
+    mode.add_argument("--aggregate", type=Path, nargs="+", help="aggregate scored behavioral runs")
     args = parser.parse_args()
 
     if args.template:
@@ -307,6 +505,9 @@ def main() -> int:
         result = score_run(args.score)
         print(json.dumps(result, ensure_ascii=False, indent=2))
         return 0 if result["score"] == result["max_score"] else 1
+    if args.aggregate:
+        print(json.dumps(aggregate_runs(args.aggregate), ensure_ascii=False, indent=2))
+        return 0
 
     result = static_evaluation()
     if args.json:
@@ -314,7 +515,8 @@ def main() -> int:
     else:
         print(
             f"AGENTS {result['agents_files']} files / {result['agents_total_bytes']} bytes｜"
-            f"ACE cases {result['ace_cases']}｜ERROR {len(result['errors'])}｜WARN {len(result['warnings'])}"
+            f"ACE cases {result['ace_cases']}｜anchors {result['quality_anchors']}｜"
+            f"ERROR {len(result['errors'])}｜WARN {len(result['warnings'])}"
         )
         for route, metrics in result["chains"].items():
             print(f"  {route}: {metrics['bytes']} bytes ({metrics['budget_ratio']:.1%})")

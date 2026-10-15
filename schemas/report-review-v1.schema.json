@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Everloster/EverAgent/schemas/report-review-v1.schema.json",
+  "title": "EverAgent independent report review",
+  "type": "object",
+  "required": ["schema_version", "report_path", "quality_tier", "revision_round", "reviews"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "report_path": {"type": "string", "minLength": 1},
+    "quality_tier": {"enum": ["standard", "important", "flagship"]},
+    "revision_round": {"type": "integer", "minimum": 1},
+    "reviews": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["reviewer", "scores", "score_reasons", "critical_claim_ids_checked", "source_ids_checked", "requirement_ids_checked", "unsupported_claims", "missing_requirements", "hard_failures", "notes"],
+        "properties": {
+          "role": {"enum": ["primary_review", "escalation_review", "flagship_final_review"]},
+          "reviewer": {
+            "type": "object",
+            "required": ["model", "harness", "run_id", "independent_context", "explicit_model_override"],
+            "properties": {
+              "model": {"type": "string", "minLength": 1},
+              "harness": {"type": "string", "minLength": 1},
+              "run_id": {"type": "string", "minLength": 1},
+              "independent_context": {"const": true},
+              "explicit_model_override": {"type": "boolean"},
+              "override_reason": {"type": "string"}
+            }
+          },
+          "scores": {
+            "type": "object",
+            "required": ["evidence_fidelity", "request_coverage", "reasoning_quality", "readability", "limitations"],
+            "properties": {
+              "evidence_fidelity": {"type": "number", "minimum": 0, "maximum": 100},
+              "request_coverage": {"type": "number", "minimum": 0, "maximum": 100},
+              "reasoning_quality": {"type": "number", "minimum": 0, "maximum": 100},
+              "readability": {"type": "number", "minimum": 0, "maximum": 100},
+              "limitations": {"type": "number", "minimum": 0, "maximum": 100}
+            },
+            "additionalProperties": false
+          },
+          "score_reasons": {
+            "type": "object",
+            "required": ["evidence_fidelity", "request_coverage", "reasoning_quality", "readability", "limitations"],
+            "properties": {
+              "evidence_fidelity": {"type": "string", "minLength": 1},
+              "request_coverage": {"type": "string", "minLength": 1},
+              "reasoning_quality": {"type": "string", "minLength": 1},
+              "readability": {"type": "string", "minLength": 1},
+              "limitations": {"type": "string", "minLength": 1}
+            },
+            "additionalProperties": false
+          },
+          "critical_claim_ids_checked": {"type": "array", "items": {"type": "string"}},
+          "source_ids_checked": {"type": "array", "items": {"type": "string"}},
+          "requirement_ids_checked": {"type": "array", "items": {"type": "string"}},
+          "unsupported_claims": {"type": "array", "items": {"type": "string"}},
+          "missing_requirements": {"type": "array", "items": {"type": "string"}},
+          "hard_failures": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "fabricated_or_unread_source",
+                "critical_claim_unsupported",
+                "key_number_mismatch",
+                "core_requirement_missing",
+                "safety_or_privacy_violation"
+              ]
+            }
+          },
+          "notes": {"type": "string"}
+        }
+      }
+    },
+    "history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["revision_round", "reviews", "decision"],
+        "properties": {
+          "revision_round": {"type": "integer", "minimum": 1},
+          "reviews": {"type": "array"},
+          "decision": {"type": "object"}
+        }
+      }
+    },
+    "decision": {"type": "object"}
+  }
+}

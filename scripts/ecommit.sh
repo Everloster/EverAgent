@@ -2,6 +2,7 @@
 # 双身份提交包装（docs/PROTOCOL_COMMON.md §C）：
 #   Author    = Everloster（仓库主人，固定，GitHub 显示其头像）
 #   Committer = 当前运行的 agent（自动识别 CLI+模型，谁跑就填谁；换 agent/模型无需改配置）
+#   Gate      = 提交前验证已暂存报告、索引与 context
 # 用法与 git commit 完全相同：
 #   scripts/ecommit.sh -m "[{task-type}] {scope}: {描述}"
 set -euo pipefail
@@ -28,5 +29,9 @@ export GIT_COMMITTER_EMAIL="$_EMAIL"
 # 同步 git config，使 pre-commit hook（读 user.name/email）与实际 committer 一致
 git config user.name "$_NAME"
 git config user.email "$_EMAIL"
+
+# 所有 Harness 共用同一份确定性质量门。hook 可能不由本仓控制，故 ecommit 主动执行。
+python3 "$_D/precommit_quality.py"
+export EVERAGENT_QUALITY_GATE_DONE=1
 
 exec git commit "$@"

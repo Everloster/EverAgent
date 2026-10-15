@@ -2,13 +2,14 @@
 """Audit EverAgent report artifacts with legacy-aware, changed-file gating.
 
 The repository contains several generations of reports. Full-library audits surface
-legacy debt without blocking work; newly added reports and files that opt into
-``quality_schema: report-v1`` are checked as current artifacts.
+legacy debt without blocking work; newly added reports must use ``report-v2``.
+Versioned reports are checked against their declared contract.
 
 Usage:
     python3 scripts/audit_reports.py --all
     python3 scripts/audit_reports.py --all --json
     python3 scripts/audit_reports.py --changed
+    python3 scripts/audit_reports.py --staged
     python3 scripts/audit_reports.py path/to/report.md
 """
 
@@ -26,12 +27,24 @@ from pathlib import Path
 try:
     from .lint_evidence import lint_file as lint_evidence_file
     from .report_catalog import ROOT, collection_for_path, iter_reports, parse_frontmatter
+    from .report_quality import (
+        CURRENT_REPORT_SCHEMA,
+        SUPPORTED_REPORT_SCHEMAS,
+        evaluate_report as evaluate_report_quality,
+        report_for_quality_artifact,
+    )
 except ImportError:  # Direct script execution.
     from lint_evidence import lint_file as lint_evidence_file
     from report_catalog import ROOT, collection_for_path, iter_reports, parse_frontmatter
+    from report_quality import (
+        CURRENT_REPORT_SCHEMA,
+        SUPPORTED_REPORT_SCHEMAS,
+        evaluate_report as evaluate_report_quality,
+        report_for_quality_artifact,
+    )
 
 
-QUALITY_SCHEMA = "report-v1"
+QUALITY_SCHEMA = CURRENT_REPORT_SCHEMA
 REQUIRED_FIELDS = ("title", "domain", "report_type", "status", "updated_on")
 CANONICAL_STATUSES = {
     "completed",
@@ -83,13 +96,32 @@ def _git_paths(command: list[str]) -> set[Path]:
     return {ROOT / item for item in proc.stdout.split("\0") if item}
 
 
+def _reports_from_paths(paths: set[Path]) -> list[Path]:
+    reports: set[Path] = set()
+    for path in paths:
+        if collection_for_path(path):
+            reports.add(path)
+            continue
+        report = report_for_quality_artifact(path)
+        if report is not None and collection_for_path(report):
+            reports.add(report)
+    return sorted(reports)
+
+
 def changed_reports() -> tuple[list[Path], set[Path]]:
     tracked = _git_paths(["git", "diff", "HEAD", "--name-only", "--diff-filter=ACMRTUXB", "-z"])
     added = _git_paths(["git", "diff", "HEAD", "--name-only", "--diff-filter=A", "-z"])
     untracked = _git_paths(["git", "ls-files", "-z", "--others", "--exclude-standard"])
     candidates = tracked | untracked
-    reports = sorted(path for path in candidates if collection_for_path(path))
+    reports = _reports_from_paths(candidates)
     return reports, {path.resolve() for path in added | untracked}
+
+
+def staged_reports() -> tuple[list[Path], set[Path]]:
+    staged = _git_paths(["git", "diff", "--cached", "--name-only", "--diff-filter=ACMRTUXB", "-z"])
+    added = _git_paths(["git", "diff", "--cached", "--name-only", "--diff-filter=A", "-z"])
+    reports = _reports_from_paths(staged)
+    return reports, {path.resolve() for path in added}
 
 
 def _issue(severity: str, code: str, path: Path, message: str) -> Issue:
@@ -144,8 +176,10 @@ def audit_file(path: Path, *, enforce: bool, wikilinks: dict[str, list[Path]]) -
     metadata = parse_frontmatter(text)
     status_value = str(metadata.get("status") or "").lower()
     completed = status_value not in {"in_progress", "planned"}
-    schema_current = metadata.get("quality_schema") == QUALITY_SCHEMA
-    enforce = enforce or schema_current
+    schema_value = str(metadata.get("quality_schema") or "")
+    versioned_schema = schema_value in SUPPORTED_REPORT_SCHEMAS
+    strict_selection = enforce
+    enforce = strict_selection or versioned_schema
 
     if not _has_frontmatter_close(text):
         issues.append(_issue(_severity(enforce), "META001", path, "缺少有效 frontmatter"))
@@ -167,12 +201,18 @@ def audit_file(path: Path, *, enforce: bool, wikilinks: dict[str, list[Path]]) -
         status = str(metadata.get("status") or "")
         if status and status not in CANONICAL_STATUSES:
             issues.append(_issue(_severity(enforce), "META005", path, f"非规范 status：{status}"))
-        if enforce and not schema_current:
+        if schema_value and not versioned_schema:
+            issues.append(_issue(_severity(enforce), "META006", path, f"未知 quality_schema：{schema_value}"))
+        elif strict_selection and schema_value != QUALITY_SCHEMA:
             issues.append(
                 _issue("error", "META006", path, f"新增报告需声明 quality_schema: {QUALITY_SCHEMA}")
             )
         if "semantic_tags" not in metadata:
             issues.append(_issue(_severity(enforce), "META007", path, "缺少 semantic_tags"))
+        if strict_selection and schema_value == QUALITY_SCHEMA and not completed:
+            issues.append(
+                _issue("error", "META009", path, "新增 report-v2 报告必须完成复核并 finalize 后才能提交")
+            )
 
     if not re.search(r"^#\s+\S", text, re.MULTILINE):
         issues.append(_issue(_severity(enforce), "STRUCT001", path, "缺少 H1 标题"))
@@ -182,7 +222,7 @@ def audit_file(path: Path, *, enforce: bool, wikilinks: dict[str, list[Path]]) -
         issues.append(_issue(_severity(enforce), "STRUCT003", path, "completed 报告仍含模板占位符"))
 
     if collection.id in LEARNING_DOMAINS and "思考与追问" not in text:
-        issues.append(_issue(_severity(enforce), "LEARN001", path, "学习报告缺少“思考与追问”"))
+        issues.append(_issue(_severity(enforce and completed), "LEARN001", path, "学习报告缺少“思考与追问”"))
 
     evidence_count = len(EVIDENCE_RE.findall(text))
     if completed and evidence_count == 0:
@@ -206,6 +246,15 @@ def audit_file(path: Path, *, enforce: bool, wikilinks: dict[str, list[Path]]) -
 
     for warning in lint_evidence_file(path):
         issues.append(_issue("warning", "EVID900", path, warning))
+
+    if schema_value == CURRENT_REPORT_SCHEMA and completed:
+        quality_result = evaluate_report_quality(path)
+        for finding in quality_result["errors"]:
+            issues.append(_issue("error", finding["code"], path, finding["message"]))
+        for finding in quality_result["warnings"]:
+            issues.append(_issue("warning", finding["code"], path, finding["message"]))
+    elif schema_value == CURRENT_REPORT_SCHEMA and not metadata.get("quality_tier"):
+        issues.append(_issue(_severity(enforce), "QG002", path, "report-v2 草稿缺少 quality_tier"))
     return issues
 
 
@@ -216,6 +265,8 @@ def audit(paths: list[Path], *, strict_all: bool, new_paths: set[Path]) -> dict[
     titles: dict[str, list[Path]] = defaultdict(list)
     metadata_missing = 0
     current_schema_reports = 0
+    versioned_reports = 0
+    schema_counts: Counter[str] = Counter()
 
     for path in paths:
         collection = collection_for_path(path)
@@ -226,7 +277,12 @@ def audit(paths: list[Path], *, strict_all: bool, new_paths: set[Path]) -> dict[
         metadata = parse_frontmatter(text)
         if not metadata:
             metadata_missing += 1
-        if metadata.get("quality_schema") == QUALITY_SCHEMA:
+        schema_value = str(metadata.get("quality_schema") or "")
+        if schema_value:
+            schema_counts[schema_value] += 1
+        if schema_value in SUPPORTED_REPORT_SCHEMAS:
+            versioned_reports += 1
+        if schema_value == QUALITY_SCHEMA:
             current_schema_reports += 1
         title = str(metadata.get("title") or "")
         if not title:
@@ -259,7 +315,9 @@ def audit(paths: list[Path], *, strict_all: bool, new_paths: set[Path]) -> dict[
         "domains": dict(sorted(domains.items())),
         "metadata_missing": metadata_missing,
         "current_schema_reports": current_schema_reports,
-        "legacy_reports": sum(domains.values()) - current_schema_reports,
+        "versioned_reports": versioned_reports,
+        "legacy_reports": sum(domains.values()) - versioned_reports,
+        "quality_schema_counts": dict(sorted(schema_counts.items())),
         "errors": counts["error"],
         "warnings": counts["warning"],
         "issue_codes": dict(sorted(codes.items())),
@@ -276,8 +334,10 @@ def main() -> int:
     scope = parser.add_mutually_exclusive_group()
     scope.add_argument("--all", action="store_true", help="audit every registered report")
     scope.add_argument("--changed", action="store_true", help="audit changed and untracked reports")
+    scope.add_argument("--staged", action="store_true", help="audit reports staged for commit")
     parser.add_argument("--strict", action="store_true", help="apply current contract to every selected report")
     parser.add_argument("--json", action="store_true", help="emit machine-readable JSON")
+    parser.add_argument("--summary-only", action="store_true", help="print totals without individual warnings")
     parser.add_argument("paths", nargs="*", help="explicit report paths")
     args = parser.parse_args()
 
@@ -293,6 +353,8 @@ def main() -> int:
         }
     elif args.all:
         paths = [path for _collection, path in iter_reports()]
+    elif args.staged:
+        paths, new_paths = staged_reports()
     else:
         paths, new_paths = changed_reports()
 
@@ -304,9 +366,10 @@ def main() -> int:
             f"审计 {result['reports_scanned']} 篇：ERROR {result['errors']}｜"
             f"WARN {result['warnings']}｜缺 frontmatter {result['metadata_missing']}"
         )
-        for issue in result["issues"]:
-            symbol = "✗" if issue["severity"] == "error" else "⚠"
-            print(f"  {symbol} {issue['code']} {issue['path']}: {issue['message']}")
+        if not args.summary_only:
+            for issue in result["issues"]:
+                symbol = "✗" if issue["severity"] == "error" else "⚠"
+                print(f"  {symbol} {issue['code']} {issue['path']}: {issue['message']}")
 
     return 1 if result["errors"] else 0
 

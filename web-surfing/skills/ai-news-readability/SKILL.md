@@ -40,9 +40,10 @@
 title: "AI 行业日报 · {{DATE}}"
 domain: "web-surfing"
 report_type: "daily_summary"
-status: "completed"
+status: "in_progress"
 updated_on: "{{DATE}}"
-quality_schema: "report-v1"
+quality_schema: "report-v2"
+quality_tier: "standard"
 semantic_tags: ["ai_news", "daily_digest"]
 ---
 

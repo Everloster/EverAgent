@@ -23,7 +23,7 @@
 ## 报告合同
 
 - 单 repo 报告保留七部分：概述、基本信息、技术分析、社区活跃度、发展趋势、竞品对比、总结评价。
-- 新报告增加标准 frontmatter 与 `quality_schema: "report-v1"`。
+- 新报告增加标准 frontmatter、`quality_schema: "report-v2"` 与 `quality_tier`。
 - 报告命名保持 GitHub 原始大小写与连字符：`research_{owner}_{repo}.md`；换视角追加小写英文后缀。
 - Trending 报告如实区分本轮新研究与缓存复用。
 

@@ -2,9 +2,10 @@
 title: "{OWNER}/{REPO} 深度研究报告"
 domain: "github-trending-analyzer"
 report_type: "repo_deep_research"
-status: "completed"
+status: "in_progress"
 updated_on: "{YYYY-MM-DD}"
-quality_schema: "report-v1"
+quality_schema: "report-v2"
+quality_tier: "important"
 semantic_tags: ["github", "open_source", "repository_research"]
 ---
 

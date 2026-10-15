@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "description": "用户明确认可的质量锚点，仅用于同类报告的盲比和深度校准，不作为事实真值。",
+  "anchors": [
+    {
+      "id": "astra_instruction_architecture",
+      "report_path": "ai-learning/reports/knowledge_reports/GPT6_Astra指令架构_从Prompt堆叠到按需控制_深度解析_20261015.md",
+      "status": "user_approved",
+      "use_for": ["official_article_analysis", "agent_harness_analysis", "context_engineering"],
+      "strengths": [
+        "先重构原文论证再提出项目建议",
+        "区分官方事实、工程经验和分析者推断",
+        "同时给出适用边界、反例与可验证行动"
+      ],
+      "caution": "只比较结构、证据纪律与解释深度；仍需回到本次来源核验事实。"
+    }
+  ]
+}

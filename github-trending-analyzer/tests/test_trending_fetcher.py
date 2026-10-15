@@ -81,7 +81,9 @@ def test_generate_summary_report_uses_period_growth_label(tmp_path):
     content = output.read_text(encoding="utf-8")
     assert "本周增长" in content
     assert "今日增长" not in content
-    assert 'quality_schema: "report-v1"' in content
+    assert 'quality_schema: "report-v2"' in content
+    assert 'quality_tier: "standard"' in content
+    assert 'status: "in_progress"' in content
     assert 'report_type: "weekly_summary"' in content
 
 
@@ -137,5 +139,7 @@ def test_generate_project_report_uses_period_growth_label(tmp_path):
     content = output.read_text(encoding="utf-8")
     assert "本月增长" in content
     assert "今日增长" not in content
-    assert 'quality_schema: "report-v1"' in content
+    assert 'quality_schema: "report-v2"' in content
+    assert 'quality_tier: "important"' in content
+    assert 'status: "in_progress"' in content
     assert 'report_type: "repo_deep_research"' in content

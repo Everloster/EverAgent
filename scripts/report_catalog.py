@@ -123,7 +123,7 @@ def parse_frontmatter(text: str) -> dict[str, object]:
     return result
 
 
-def report_info(path: Path) -> dict[str, object]:
+def report_info(path: Path, *, fallback_updated_on: str = "") -> dict[str, object]:
     text = path.read_text(encoding="utf-8", errors="replace")
     metadata = parse_frontmatter(text)
     title = str(metadata.get("title") or "")
@@ -139,6 +139,11 @@ def report_info(path: Path) -> dict[str, object]:
             updated_on = filename_date.group(0)
         elif footer_date:
             updated_on = footer_date.group(1)
+        elif re.fullmatch(r"\d{4}-\d{2}-\d{2}", fallback_updated_on):
+            # Keep the legacy date already recorded in REPORT_INDEX stable. Git
+            # does not preserve mtimes, so relying on path.stat() alone makes a
+            # clean checkout or staged snapshot reorder old reports.
+            updated_on = fallback_updated_on
         else:
             updated_on = dt.date.fromtimestamp(path.stat().st_mtime).isoformat()
 

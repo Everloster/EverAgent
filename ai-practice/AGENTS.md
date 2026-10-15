@@ -33,9 +33,11 @@ domain: "ai-practice"
 report_type: experiment_analysis
 experiment_id: exp_NNN
 notebook: notebooks/xxx.ipynb   # 若有对应 notebook
-status: completed
+status: in_progress
 updated_on: YYYY-MM-DD
-quality_schema: "report-v1"
+quality_schema: "report-v2"
+quality_tier: "standard"
+semantic_tags: ["experiment"]
 ---
 ```
 

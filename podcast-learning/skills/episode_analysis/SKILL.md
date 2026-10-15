@@ -29,9 +29,10 @@ source_url: https://...
 show: "节目名"
 guest: "嘉宾"
 transcript: reports/transcripts/{slug}.transcript.txt
-status: archived
+status: in_progress
 updated_on: YYYY-MM-DD
-quality_schema: "report-v1"
+quality_schema: "report-v2"
+quality_tier: "important"
 semantic_tags: ["podcast"]
 ---
 

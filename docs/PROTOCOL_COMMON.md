@@ -70,11 +70,13 @@ GIT_NO_OPTIONAL_LOCKS=1 git push origin main
 
 ```bash
 python3 scripts/reindex.py
+python3 scripts/report_quality.py check <报告路径>  # report-v2
 python3 scripts/audit_reports.py --changed
 python3 scripts/reindex.py --check
 ```
 
-- 新报告及声明 `quality_schema: report-v1` 的报告执行严格合同；当前任务造成的 ERROR 必须清零。
+- 新报告使用 `quality_schema: report-v2`，并通过证据账本、独立复核和评分门；`report-v1` 保留为过渡格式。
+- `scripts/ecommit.sh` 会对已暂存报告、索引和 context 自动运行确定性门禁。
 - 历史报告只进入 WARN 清单，不因一次任务批量重写。
 - 播客、代码实验等领域若有额外审计或真实运行要求，按领域 `AGENTS.md` 追加执行。
 - `lint_evidence.py` 保留为单文件快速诊断，由统一审计器复用。

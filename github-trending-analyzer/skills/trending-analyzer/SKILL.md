@@ -21,7 +21,7 @@ description: "Analyze GitHub Trending for a requested day, week, or month, resea
 - 单 repo 报告遵守 repo-research 的四轮证据与七章结构。
 - 汇总说明抓取时点、榜单周期、语言筛选和缓存阈值。
 - 趋势判断至少引用榜单数据或单 repo 证据；把事实、维护者计划与 `[推测]` 分开。
-- 新报告使用标准 frontmatter、`quality_schema: "report-v1"` 与 `semantic_tags`。
+- 新报告使用标准 frontmatter、`quality_schema: "report-v2"`、`quality_tier: "standard"` 与 `semantic_tags`。
 
 ## 辅助命令
 

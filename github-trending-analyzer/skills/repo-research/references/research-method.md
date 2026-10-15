@@ -194,7 +194,7 @@ frontmatter: title / domain / report_type / status / updated_on / quality_schema
 7. 总结评价   优势 / 劣势 / 适用场景
 ```
 
-新报告使用 `domain: github-trending-analyzer`、`report_type: repo_deep_research`、`quality_schema: "report-v1"`。
+新报告使用 `domain: github-trending-analyzer`、`report_type: repo_deep_research`、`quality_schema: "report-v2"` 和 `quality_tier: "important"`。
 
 页脚统一（沿用既有报告格式，便于批量识别）：
 ```

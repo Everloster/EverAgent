@@ -50,6 +50,7 @@ Curator 不重写整份 context。完整重写容易丢失例外、证据来源�
 - 升级模型时重点回放：自主推进、澄清、工具选择、测试范围、子任务委派和停止时机。
 - 新模型已经稳定具备的通用能力，不继续用仓库规则逐步教一遍。
 - Harness 能确定性保证的规则迁到代码；文本只保留调用条件和失败含义。
+- 报告模型角色、额度偏好和升级顺序由 [`config/report-quality-policy.json`](../config/report-quality-policy.json) 统一维护，具体流程见 [REPORT_QUALITY_GATE.md](./REPORT_QUALITY_GATE.md)。
 
 ## 预算与指标
 
@@ -64,6 +65,7 @@ python3 scripts/eval_report_context.py
 python3 scripts/eval_report_context.py --json
 python3 scripts/eval_report_context.py --template > /tmp/ace-run.json
 python3 scripts/eval_report_context.py --score /tmp/ace-run.json
+python3 scripts/eval_report_context.py --aggregate /tmp/*-run.json
 ```
 
 ## 参考

@@ -24,7 +24,7 @@
 4. **wiki 双链 ≥1**：正文至少 1 处 `[[...]]` 链到概念/实体页或相关报告；该集没有可链对象时在 Limitations 写明（这是审计发现的零双链问题）
 5. **frontmatter 数字禁止手填**：写完报告必跑 `python3 scripts/fill_report_stats.py <报告>`（自动统计三件套字数/段数/语速并写回）
 6. **思考与追问·问 2 全量汇入 open-questions**（不只挑几条）；问 3 的行动项若可执行，写明"谁/何时"或明确挂起
-7. **新报告 frontmatter**：增加 `quality_schema: "report-v1"`，并逐字段核对实际节目。
+7. **新报告 frontmatter**：增加 `quality_schema: "report-v2"` 与 `quality_tier: "important"`，并逐字段核对实际节目。
 
 ## 四、收尾（顺序固定）
 

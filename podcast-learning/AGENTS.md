@@ -11,7 +11,7 @@
 1. 读取 [transcription skill](./skills/transcription/SKILL.md) 执行下载、静默转写和润色。
 2. 读取 [report-writing skill](./skills/report-writing/SKILL.md) 选择报告结构与收尾检查；只有需要问答链时再读 [qa_chain](./skills/qa_chain/SKILL.md)。
 3. 通过 eacli 从 `knowledge.podcasts` 获取最小 context；需要定位旧报告时查询 `knowledge.index`，避免默认扫描全部报告。命令格式见根 REPORT_WORKFLOW。
-4. 新报告遵守根 [REPORT_WORKFLOW](../docs/REPORT_WORKFLOW.md)，并使用 `quality_schema: "report-v1"`。
+4. 新报告遵守根 [REPORT_WORKFLOW](../docs/REPORT_WORKFLOW.md)，并使用 `quality_schema: "report-v2"` 与 `quality_tier: "important"`。
 
 ### “继续讨论”
 

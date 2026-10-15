@@ -30,6 +30,7 @@
 
 - 研究证据与写作方法：[METHODOLOGY.md](./METHODOLOGY.md)
 - 报告任务的统一流程与完成定义：[docs/REPORT_WORKFLOW.md](./docs/REPORT_WORKFLOW.md)
+- 跨模型报告质量下限与升级策略：[docs/REPORT_QUALITY_GATE.md](./docs/REPORT_QUALITY_GATE.md)
 - Context 分层、ACE 增量更新与评估：[docs/CONTEXT_ENGINEERING.md](./docs/CONTEXT_ENGINEERING.md)
 - 安全、提交与 push 规则：[docs/PROTOCOL_COMMON.md](./docs/PROTOCOL_COMMON.md)
 - 报告元数据：[docs/REPORT_METADATA.md](./docs/REPORT_METADATA.md)
@@ -65,6 +66,7 @@
 
 ```bash
 python3 scripts/reindex.py
+python3 scripts/report_quality.py check <报告路径>  # report-v2
 python3 scripts/audit_reports.py --changed
 python3 scripts/reindex.py --check
 ```

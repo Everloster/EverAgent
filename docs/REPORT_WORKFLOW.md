@@ -2,6 +2,7 @@
 
 > 适用范围：用户明确要求研究、精读、深挖、分析并归档，或现有任务协议要求形成长期报告时。
 > 本文件是报告流程的唯一公共 owner；领域差异仍由各项目 `AGENTS.md` 与专用 skill 负责。
+> 跨模型证据账本、独立复核、评分和升级策略见 [REPORT_QUALITY_GATE.md](./REPORT_QUALITY_GATE.md)。
 
 ## 1. 先判断是否需要报告
 
@@ -26,8 +27,9 @@
 1. 当前路径生效的 `AGENTS.md`。
 2. 与报告体裁对应的 skill；不要同时读取所有模板。
 3. `METHODOLOGY.md` 中与本次来源类型、证据和结尾要求相关的章节。
-4. 通过 `eacli context get --domain <domain> --json` 取得领域入口；需要定位具体主题时用 `eacli context search --domain <domain> --query "<主题>" --json`，只读取命中的报告或 wiki 页面。
-5. 仅在以下条件读取画像文件：
+4. `config/report-quality-policy.json` 中当前任务等级需要的模型与评分策略。
+5. 通过 `eacli context get --domain <domain> --json` 取得领域入口；需要定位具体主题时用 `eacli context search --domain <domain> --query "<主题>" --json`，只读取命中的报告或 wiki 页面。
+6. 仅在以下条件读取画像文件：
    - `PROFILE.md`：需要选择讲解深度、写作风格，或用户本轮表达了新偏好；
    - `MAP.md`：需要判断覆盖缺口，或报告完成后新增了长期主题；
    - `wiki/open-questions.md`：需要续接旧问题，或准备沉淀新的未解问题。
@@ -41,6 +43,7 @@
 ### Generator：完成当前报告
 
 - 明确研究问题、来源边界、读者和交付路径。
+- 为新报告选择 `standard / important / flagship`，运行 `report_quality.py init`，在研究过程中填写 evidence manifest。
 - 先读原始材料，再写事实；知识截止后的事实必须联网核验。
 - 把事实、来源解读和自己的推断分开。
 - 文章或论文分析使用 `x → f → f(x)` 建立逻辑主线。
@@ -56,9 +59,17 @@
 - 用户要求的交付物是否全部完成；
 - 是否出现无关扩写、重复结论或模板残留。
 
+### Independent Reviewer：独立复核
+
+- 使用全新会话，只提供任务、报告、证据账本和原始来源，不提供生成者的推理过程。
+- 逐项复核用户要求、关键 claim 与来源支持关系，填写五维评分和未解决问题。
+- 默认由 GLM 5.3 完成常规复核；失败达到升级条件时再使用 GPT-5.6 Sol，无法使用时调用 Kimi K3。MiniMax M3 不进入新报告链路。
+- Reviewer 不直接宣称通过；最终判定由 `report_quality.py check` 计算。
+
 运行确定性检查：
 
 ```bash
+python3 scripts/report_quality.py check <报告路径> --finalize  # report-v2
 python3 scripts/reindex.py
 python3 scripts/audit_reports.py --changed
 python3 scripts/reindex.py --check
@@ -78,19 +89,22 @@ python3 scripts/reindex.py --check
 
 ## 4. 报告合同
 
-新报告使用 `quality_schema: "report-v1"`，并至少包含：
+新报告使用 `quality_schema: "report-v2"`，并至少包含：
 
 ```yaml
 ---
 title: "报告标题"
 domain: "所属项目"
 report_type: "报告类型"
-status: "completed"
+status: "in_progress"
 updated_on: "YYYY-MM-DD"
-quality_schema: "report-v1"
+quality_schema: "report-v2"
+quality_tier: "important"
 semantic_tags: ["tag"]
 ---
 ```
+
+独立复核通过后由 `report_quality.py check --finalize` 切换为 `completed`；需要归档语义的体裁使用 `--final-status archived`。
 
 正文最低要求按任务类型变化：
 
@@ -115,8 +129,9 @@ semantic_tags: ["tag"]
 3. 事实、来源主张和分析者推断已区分；
 4. 关键数字包含单位、时间和口径；
 5. 限制与未解决问题已写明；
-6. 应更新的 MAP、PROFILE、wiki 仅以最小 delta 同步；
-7. 报告审计通过，README 与报告索引处于最新状态。
+6. evidence manifest 覆盖关键 claim，独立 review 达到对应 tier 门槛；
+7. 应更新的 MAP、PROFILE、wiki 仅以最小 delta 同步；
+8. 报告质量门通过，README 与报告索引处于最新状态。
 
 ## 6. 评估报告机制
 
@@ -125,6 +140,7 @@ semantic_tags: ["tag"]
 ```bash
 python3 scripts/audit_reports.py --changed
 python3 scripts/audit_reports.py --all --json
+python3 scripts/report_quality.py check <报告路径>
 python3 scripts/eval_report_context.py
 python3 scripts/reindex.py --check
 ```
@@ -141,6 +157,7 @@ python3 scripts/reindex.py --check
 - 是否发生无必要澄清或审批；
 - 是否满足完成条件；
 - 报告门禁是否通过；
+- report quality 五维分数及 P10；
 - 工具调用、输入 token、compaction 与返工次数。
 
 安全边界、证据正确性和交付完整性不得退化。效率指标只有在质量不降时才有意义。

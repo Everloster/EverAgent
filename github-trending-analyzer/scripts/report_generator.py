@@ -14,7 +14,7 @@ from pathlib import Path
 from typing import Dict, List, Optional
 
 
-QUALITY_SCHEMA = "report-v1"
+QUALITY_SCHEMA = "report-v2"
 
 
 def get_skill_dir() -> Path:
@@ -100,9 +100,10 @@ def generate_project_report(
 title: {yaml_quote(report_title)}
 domain: "github-trending-analyzer"
 report_type: "repo_deep_research"
-status: "completed"
+status: "in_progress"
 updated_on: "{report_date}"
 quality_schema: "{QUALITY_SCHEMA}"
+quality_tier: "important"
 semantic_tags: ["github", "open_source", "repository_research"]
 ---
 
@@ -365,9 +366,10 @@ def generate_summary_report(
 title: {yaml_quote(report_title)}
 domain: "github-trending-analyzer"
 report_type: "{period}_summary"
-status: "completed"
+status: "in_progress"
 updated_on: "{report_date}"
 quality_schema: "{QUALITY_SCHEMA}"
+quality_tier: "standard"
 semantic_tags: ["github", "trending", "open_source"]
 ---
 
