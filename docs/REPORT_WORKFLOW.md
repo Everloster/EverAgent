@@ -20,6 +20,10 @@
 
 用户已明确主题和交付物时直接推进。只有缺失信息会实质改变研究对象、风险或最终形态时才提问。
 
+### 本次任务合同
+
+在当前会话中明确四项即可，无需新建计划文件：目标、交付物、验收信号、停止条件。用户已授权的本地与可逆步骤持续执行到验收信号满足；只有真正的外部写入、不可逆动作或会改变报告方向的歧义才暂停。
+
 ## 2. 最小上下文加载
 
 按以下顺序加载，够用即停：
@@ -33,6 +37,7 @@
    - `PROFILE.md`：需要选择讲解深度、写作风格，或用户本轮表达了新偏好；
    - `MAP.md`：需要判断覆盖缺口，或报告完成后新增了长期主题；
    - `wiki/open-questions.md`：需要续接旧问题，或准备沉淀新的未解问题。
+7. 只有需要 evidence-record 写作约束时读取 `docs/external-skills/scientific-agent-skills/scientific-writing/SKILL.md`；需要对立假说和判别性预测时读取同目录的 `hypothesis-generation/SKILL.md`。
 
 不要默认通读整个 `reports/`、`wiki/`、所有 skills 或三份画像文件。目录扫描只用于定位，正文读取应由任务相关性驱动。
 
@@ -46,7 +51,7 @@
 - 为新报告选择 `standard / important / flagship`，运行 `report_quality.py init`，在研究过程中填写 evidence manifest。
 - 先读原始材料，再写事实；知识截止后的事实必须联网核验。
 - 把事实、来源解读和自己的推断分开。
-- 文章或论文分析使用 `x → f → f(x)` 建立逻辑主线。
+- 观点文章或论证型材料在能澄清主线时使用 `x → f → f(x)`；实证论文按研究问题、设计、结果与局限组织。
 
 ### Reflector：检查真实缺陷
 
@@ -76,6 +81,7 @@ python3 scripts/reindex.py --check
 ```
 
 播客报告还需运行其领域审计；代码实验运行该项目要求的真实验证。
+完成一次必要检查后，只有正文、证据文件或相关代码继续变化，或检查暴露新风险时才重跑受影响部分。
 
 ### Curator：只写入可复用增量
 
@@ -110,7 +116,7 @@ semantic_tags: ["tag"]
 
 | 类型 | 必须具备 |
 |---|---|
-| 论文 / 实证研究 | 原始材料、方法与样本、精确数字、局限、`x → f → f(x)`、思考与追问 |
+| 论文 / 实证研究 | 原始材料、方法与样本、精确数字、证据质量、局限、思考与追问 |
 | 文章 / 观点分析 | 原文论证重构、事实核验、作者观点与个人推断分离、反方边界、思考与追问 |
 | 概念深挖 | 定义、机制、设计动机、关联概念、前沿与争议、思考与追问 |
 | 播客 / 视频 | 原始转写、润色依据、shownotes 核验、增量观点、关键数字、Limitations、思考与追问 |
@@ -145,20 +151,29 @@ python3 scripts/eval_report_context.py
 python3 scripts/reindex.py --check
 ```
 
-静态门禁检查元数据、来源锚点、学习闭环、占位符、内部链接、索引状态、context 体积、重复段落与 ACE 任务集结构。
+静态门禁检查元数据、来源锚点、学习闭环、占位符、内部链接、索引状态，以及指令 Owner、常驻字节预算、skill description、渐进披露和 ACE 任务集结构。
 
 ### 行为回放
 
 任务集位于 `evals/ace-report-tasks.json`。在同一模型、推理档位和工具条件下，用旧版与候选 context 各跑相同任务，记录：
 
+```bash
+python3 scripts/eval_report_context.py --template > /tmp/ace-run.json
+python3 scripts/eval_report_context.py --score /tmp/ace-run.json
+python3 scripts/eval_report_context.py --aggregate /tmp/*-run.json
+```
+
 - 路由是否正确；
+- skill 选择的 precision / recall，是否加载了邻近但无关的 playbook；
 - 是否创建了不该创建的报告；
-- 首次行动前读取了多少文件；
+- 首次行动前读取了多少文件，是否命中明确禁止的无关 context；
 - 是否发生无必要澄清或审批；
-- 是否满足完成条件；
+- 是否满足可观察的完成信号，或在真正的授权边界前正确停止；
 - 报告门禁是否通过；
 - report quality 五维分数及 P10；
 - 工具调用、输入 token、compaction 与返工次数。
+
+填写实际加载的仓库 skill、首次行动前文件、澄清次数、完成信号与停止原因；不要根据“应该怎样做”反填理想值。
 
 安全边界、证据正确性和交付完整性不得退化。效率指标只有在质量不降时才有意义。
 

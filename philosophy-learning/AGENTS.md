@@ -1,50 +1,17 @@
 # philosophy-learning — 领域协议
 
-> 领域：世界哲学（含中国哲学）文本分析与概念深挖。
-> 通用研究方法论见根 [METHODOLOGY.md](../METHODOLOGY.md)（强制）。本文件只写本领域的边界与特化。
-> 联网与个人上下文遵守根 `AGENTS.md` 的托管策略，本文件不重复工具细节。
+> 世界哲学与中国哲学的文本分析和概念研究。
 
----
+## 路由
 
-## 工作模式：对话即学习
+- 原典、章节或论证分析读取 [text_analysis](./skills/text_analysis/SKILL.md)。
+- 跨文本概念与思想谱系读取 [concept_deep_dive](./skills/concept_deep_dive/SKILL.md)。
+- 新建、续写或审计报告时使用根级 [`everagent-report`](../.agents/skills/everagent-report/SKILL.md)；追问已有主题时更新原报告。
 
-用户明确要求学习、精读、深挖或出报告时，使用根 skill [`everagent-report`](../.agents/skills/everagent-report/SKILL.md) 与 [REPORT_WORKFLOW](../docs/REPORT_WORKFLOW.md)。通过 eacli 从 `knowledge.philosophy` 获取最小 context，再按需读取 PROFILE、MAP、open-questions 和一个体裁 skill。哲学文本采用 METHODOLOGY 的三遍阅读法。
+## 领域约束
 
-> 追问已有主题时：在原报告追加 `## 追问深入 [日期]` 小节并刷新 `updated_on`，不另开新文件。
+- 论证重构忠实原文；补出的隐含前提必须标明。
+- 关键概念回到作者文本界定技术含义，引用保留可核对的页码、节号或标准编号。
+- 对重要主张呈现最强反驳及其可能回应，避免把当代解释冒充作者原意。
 
----
-
-## 领域特化
-
-- **报告类型**：`reports/text_analyses/`（文本分析）、`reports/concept_reports/`（概念深挖）
-- **特化要求**：论证重构忠实原文（不加作者没有的前提，隐含前提标注）；关键概念回到原文界定技术含义；原文引用标准页码（Stephanus/Academy/节号）；呈现最强反驳
-- **特化模板**：[skills/text_analysis/SKILL.md](./skills/text_analysis/SKILL.md)、[skills/concept_deep_dive/SKILL.md](./skills/concept_deep_dive/SKILL.md)
-
----
-
-## 报告 frontmatter
-
-```yaml
----
-title: "标题"
-domain: "philosophy-learning"
-report_type: "text_analysis"   # 或 concept_report
-status: "in_progress"
-updated_on: "YYYY-MM-DD"
-quality_schema: "report-v2"
-quality_tier: "important"
-semantic_tags: ["tag"]
----
-```
-
----
-
-## 完成后自检
-
-```bash
-python3 scripts/reindex.py
-python3 scripts/audit_reports.py --changed
-python3 scripts/reindex.py --check
-```
-
-提交规范见根 [AGENTS.md](../AGENTS.md) 与 [docs/PROTOCOL_COMMON.md](../docs/PROTOCOL_COMMON.md)。
+需要既有覆盖时查询 eacli `knowledge.philosophy`；PROFILE、MAP 和 open-questions 条件读取。三遍阅读法、元数据与质量门由根级工作流拥有。

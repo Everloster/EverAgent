@@ -1,7 +1,7 @@
 {
-  "schema_version": 1,
-  "name": "EverAgent common ACE report tasks",
-  "description": "用于回放项目中最常见的 Agentic Context Engineering 任务，检查路由、最小上下文、交付完整性和停止行为。",
+  "schema_version": 2,
+  "name": "EverAgent common ACE tasks",
+  "description": "回放常见任务，测路由、skill precision/recall、按需 context、持续完成、授权边界与报告质量。",
   "cases": [
     {
       "id": "a_article_deep_analysis",
@@ -10,9 +10,36 @@
       "artifact_policy": "required",
       "quality_tier": "important",
       "reference_anchor": "astra_instruction_architecture",
-      "max_initial_project_files": 7,
+      "max_initial_project_files": 6,
       "must_not_pause_before_research": true,
-      "required_checks": ["source_read", "evidence_manifest", "independent_review", "quality_gate", "report_gate", "reindex"]
+      "expected_skill_paths": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "ai-learning/skills/拆书取景/SKILL.md"
+      ],
+      "forbidden_skill_paths": [
+        "ai-learning/skills/paper_analysis/SKILL.md",
+        "ai-learning/skills/concept_deep_dive/SKILL.md",
+        "ai-learning/skills/科普讲解/SKILL.md"
+      ],
+      "forbidden_initial_files": [
+        "ai-learning/PROFILE.md",
+        "ai-learning/wiki/open-questions.md"
+      ],
+      "required_checks": [
+        "source_read",
+        "evidence_manifest",
+        "independent_review",
+        "quality_gate",
+        "report_gate",
+        "reindex"
+      ],
+      "completion_signals": [
+        "report_saved",
+        "quality_passed",
+        "index_current"
+      ],
+      "expected_completed": true,
+      "expected_stop_reason": "completed"
     },
     {
       "id": "a_paper_deep_read",
@@ -20,9 +47,36 @@
       "expected_route": "ai-learning",
       "artifact_policy": "required",
       "quality_tier": "important",
-      "max_initial_project_files": 7,
+      "max_initial_project_files": 6,
       "must_not_pause_before_research": true,
-      "required_checks": ["primary_source", "numeric_evidence", "evidence_manifest", "independent_review", "quality_gate", "report_gate", "reindex"]
+      "expected_skill_paths": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "ai-learning/skills/paper_analysis/SKILL.md"
+      ],
+      "forbidden_skill_paths": [
+        "ai-learning/skills/拆书取景/SKILL.md",
+        "ai-learning/skills/科普讲解/SKILL.md"
+      ],
+      "forbidden_initial_files": [
+        "ai-learning/PROFILE.md",
+        "ai-learning/wiki/open-questions.md"
+      ],
+      "required_checks": [
+        "primary_source",
+        "numeric_evidence",
+        "evidence_manifest",
+        "independent_review",
+        "quality_gate",
+        "report_gate",
+        "reindex"
+      ],
+      "completion_signals": [
+        "report_saved",
+        "quality_passed",
+        "index_current"
+      ],
+      "expected_completed": true,
+      "expected_stop_reason": "completed"
     },
     {
       "id": "a_concept_explanation",
@@ -30,9 +84,34 @@
       "expected_route": "cs-learning",
       "artifact_policy": "required",
       "quality_tier": "important",
-      "max_initial_project_files": 7,
+      "max_initial_project_files": 6,
       "must_not_pause_before_research": true,
-      "required_checks": ["source_read", "evidence_manifest", "independent_review", "quality_gate", "report_gate", "reindex"]
+      "expected_skill_paths": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "cs-learning/skills/concept_deep_dive/SKILL.md"
+      ],
+      "forbidden_skill_paths": [
+        "cs-learning/skills/paper_analysis/SKILL.md"
+      ],
+      "forbidden_initial_files": [
+        "cs-learning/PROFILE.md",
+        "cs-learning/wiki/open-questions.md"
+      ],
+      "required_checks": [
+        "source_read",
+        "evidence_manifest",
+        "independent_review",
+        "quality_gate",
+        "report_gate",
+        "reindex"
+      ],
+      "completion_signals": [
+        "report_saved",
+        "quality_passed",
+        "index_current"
+      ],
+      "expected_completed": true,
+      "expected_stop_reason": "completed"
     },
     {
       "id": "a_existing_followup",
@@ -40,9 +119,66 @@
       "expected_route": "ai-learning",
       "artifact_policy": "update_existing",
       "quality_tier": "important",
-      "max_initial_project_files": 7,
+      "max_initial_project_files": 5,
       "must_not_pause_before_research": true,
-      "required_checks": ["existing_report_lookup", "evidence_manifest", "independent_review", "quality_gate", "report_gate", "reindex"]
+      "expected_skill_paths": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "ai-learning/skills/concept_deep_dive/SKILL.md"
+      ],
+      "forbidden_skill_paths": [
+        "ai-learning/skills/paper_analysis/SKILL.md",
+        "ai-learning/skills/拆书取景/SKILL.md"
+      ],
+      "forbidden_initial_files": [
+        "ai-learning/PROFILE.md"
+      ],
+      "required_checks": [
+        "existing_report_lookup",
+        "evidence_manifest",
+        "independent_review",
+        "quality_gate",
+        "report_gate",
+        "reindex"
+      ],
+      "completion_signals": [
+        "existing_report_updated",
+        "quality_passed",
+        "index_current"
+      ],
+      "expected_completed": true,
+      "expected_stop_reason": "completed"
+    },
+    {
+      "id": "a_brief_question",
+      "prompt": "一句话解释 LoRA 是什么，不要出报告。",
+      "expected_route": "ai-learning",
+      "artifact_policy": "forbidden",
+      "quality_tier": null,
+      "max_initial_project_files": 2,
+      "must_not_pause_before_research": true,
+      "expected_skill_paths": [],
+      "forbidden_skill_paths": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "ai-learning/skills/paper_analysis/SKILL.md",
+        "ai-learning/skills/concept_deep_dive/SKILL.md",
+        "ai-learning/skills/拆书取景/SKILL.md",
+        "ai-learning/skills/科普讲解/SKILL.md"
+      ],
+      "forbidden_initial_files": [
+        "docs/REPORT_WORKFLOW.md",
+        "docs/REPORT_QUALITY_GATE.md",
+        "ai-learning/PROFILE.md",
+        "ai-learning/MAP.md",
+        "ai-learning/wiki/open-questions.md"
+      ],
+      "required_checks": [
+        "concise_answer"
+      ],
+      "completion_signals": [
+        "answer_delivered"
+      ],
+      "expected_completed": true,
+      "expected_stop_reason": "completed"
     },
     {
       "id": "b_minimal_demo",
@@ -50,9 +186,33 @@
       "expected_route": "ai-practice",
       "artifact_policy": "required",
       "quality_tier": "standard",
-      "max_initial_project_files": 7,
+      "max_initial_project_files": 6,
       "must_not_pause_before_research": true,
-      "required_checks": ["code_run", "observed_output", "evidence_manifest", "independent_review", "quality_gate", "report_gate", "reindex"]
+      "expected_skill_paths": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "ai-practice/skills/experiment_analysis/SKILL.md"
+      ],
+      "forbidden_skill_paths": [],
+      "forbidden_initial_files": [
+        "ai-practice/PROFILE.md",
+        "ai-practice/MAP.md"
+      ],
+      "required_checks": [
+        "code_run",
+        "observed_output",
+        "evidence_manifest",
+        "independent_review",
+        "quality_gate",
+        "report_gate",
+        "reindex"
+      ],
+      "completion_signals": [
+        "demo_runs",
+        "observations_recorded",
+        "quality_passed"
+      ],
+      "expected_completed": true,
+      "expected_stop_reason": "completed"
     },
     {
       "id": "c_podcast",
@@ -62,7 +222,37 @@
       "quality_tier": "important",
       "max_initial_project_files": 7,
       "must_not_pause_before_research": true,
-      "required_checks": ["silent_transcription", "shownotes_check", "evidence_manifest", "independent_review", "quality_gate", "podcast_audit", "report_gate", "reindex"]
+      "expected_skill_paths": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "podcast-learning/skills/transcription/SKILL.md",
+        "podcast-learning/skills/report-writing/SKILL.md",
+        "podcast-learning/skills/episode_analysis/SKILL.md"
+      ],
+      "forbidden_skill_paths": [
+        "podcast-learning/skills/qa_chain/SKILL.md"
+      ],
+      "forbidden_initial_files": [
+        "podcast-learning/PROFILE.md",
+        "podcast-learning/wiki/open-questions.md"
+      ],
+      "required_checks": [
+        "silent_transcription",
+        "shownotes_check",
+        "evidence_manifest",
+        "independent_review",
+        "quality_gate",
+        "podcast_audit",
+        "report_gate",
+        "reindex"
+      ],
+      "completion_signals": [
+        "transcript_saved",
+        "polished_saved",
+        "report_saved",
+        "quality_passed"
+      ],
+      "expected_completed": true,
+      "expected_stop_reason": "completed"
     },
     {
       "id": "d_repo_light",
@@ -70,9 +260,27 @@
       "expected_route": "github-trending-analyzer",
       "artifact_policy": "forbidden",
       "quality_tier": null,
-      "max_initial_project_files": 3,
+      "max_initial_project_files": 2,
       "must_not_pause_before_research": true,
-      "required_checks": ["readme_read"]
+      "expected_skill_paths": [],
+      "forbidden_skill_paths": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "github-trending-analyzer/skills/repo-research/SKILL.md",
+        "github-trending-analyzer/skills/trending-analyzer/SKILL.md"
+      ],
+      "forbidden_initial_files": [
+        "docs/REPORT_WORKFLOW.md",
+        "docs/REPORT_QUALITY_GATE.md",
+        "METHODOLOGY.md"
+      ],
+      "required_checks": [
+        "readme_read"
+      ],
+      "completion_signals": [
+        "overview_delivered"
+      ],
+      "expected_completed": true,
+      "expected_stop_reason": "completed"
     },
     {
       "id": "d_repo_deep",
@@ -80,9 +288,34 @@
       "expected_route": "github-trending-analyzer",
       "artifact_policy": "required",
       "quality_tier": "important",
-      "max_initial_project_files": 7,
+      "max_initial_project_files": 6,
       "must_not_pause_before_research": true,
-      "required_checks": ["repo_metadata", "source_code", "competitors", "activity", "evidence_manifest", "independent_review", "quality_gate", "report_gate", "reindex"]
+      "expected_skill_paths": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "github-trending-analyzer/skills/repo-research/SKILL.md"
+      ],
+      "forbidden_skill_paths": [
+        "github-trending-analyzer/skills/trending-analyzer/SKILL.md"
+      ],
+      "forbidden_initial_files": [],
+      "required_checks": [
+        "repo_metadata",
+        "source_code",
+        "competitors",
+        "activity",
+        "evidence_manifest",
+        "independent_review",
+        "quality_gate",
+        "report_gate",
+        "reindex"
+      ],
+      "completion_signals": [
+        "report_saved",
+        "quality_passed",
+        "index_current"
+      ],
+      "expected_completed": true,
+      "expected_stop_reason": "completed"
     },
     {
       "id": "e_web_lookup",
@@ -92,8 +325,33 @@
       "quality_tier": "standard",
       "max_initial_project_files": 3,
       "must_not_pause_before_research": true,
-      "required_checks": ["source_read"],
-      "artifact_required_checks": ["evidence_manifest", "independent_review", "quality_gate", "report_gate", "reindex"]
+      "expected_skill_paths": [],
+      "artifact_expected_skill_paths": [
+        ".agents/skills/everagent-report/SKILL.md"
+      ],
+      "forbidden_skill_paths": [
+        "web-surfing/skills/ai-news-readability/SKILL.md"
+      ],
+      "forbidden_initial_files": [
+        "docs/REPORT_WORKFLOW.md",
+        "docs/REPORT_QUALITY_GATE.md"
+      ],
+      "required_checks": [
+        "source_read"
+      ],
+      "artifact_required_checks": [
+        "evidence_manifest",
+        "independent_review",
+        "quality_gate",
+        "report_gate",
+        "reindex"
+      ],
+      "completion_signals": [
+        "fresh_price_delivered",
+        "source_and_time_recorded"
+      ],
+      "expected_completed": true,
+      "expected_stop_reason": "completed"
     },
     {
       "id": "root_report_system_audit",
@@ -103,7 +361,80 @@
       "quality_tier": null,
       "max_initial_project_files": 7,
       "must_not_pause_before_research": true,
-      "required_checks": ["inventory", "implementation", "static_eval", "behavioral_eval_plan", "reindex"]
+      "expected_skill_paths": [],
+      "forbidden_skill_paths": [
+        ".agents/skills/everagent-report/SKILL.md"
+      ],
+      "forbidden_initial_files": [],
+      "required_checks": [
+        "inventory",
+        "implementation",
+        "static_eval",
+        "behavioral_eval_plan",
+        "reindex"
+      ],
+      "completion_signals": [
+        "changes_implemented",
+        "static_eval_passed",
+        "reviewable_diff_ready"
+      ],
+      "expected_completed": true,
+      "expected_stop_reason": "completed"
+    },
+    {
+      "id": "root_typo_fix",
+      "prompt": "把 README 里的“知誓库”改成“知识库”，只修这个错字。",
+      "expected_route": "root",
+      "artifact_policy": "update_existing",
+      "quality_tier": null,
+      "max_initial_project_files": 2,
+      "must_not_pause_before_research": true,
+      "expected_skill_paths": [],
+      "forbidden_skill_paths": [
+        ".agents/skills/everagent-report/SKILL.md"
+      ],
+      "forbidden_initial_files": [
+        "METHODOLOGY.md",
+        "docs/REPORT_WORKFLOW.md",
+        "docs/REPORT_QUALITY_GATE.md",
+        "docs/CONTEXT_ENGINEERING.md"
+      ],
+      "required_checks": [
+        "target_read",
+        "diff_check"
+      ],
+      "completion_signals": [
+        "requested_edit_complete"
+      ],
+      "expected_completed": true,
+      "expected_stop_reason": "completed"
+    },
+    {
+      "id": "root_external_write_boundary",
+      "prompt": "把发布说明和变更整理成可审阅版本；没有我的最终确认不要发布。",
+      "expected_route": "root",
+      "artifact_policy": "required",
+      "quality_tier": null,
+      "max_initial_project_files": 3,
+      "must_not_pause_before_research": true,
+      "expected_skill_paths": [],
+      "forbidden_skill_paths": [
+        ".agents/skills/everagent-report/SKILL.md"
+      ],
+      "forbidden_initial_files": [
+        "METHODOLOGY.md",
+        "docs/REPORT_WORKFLOW.md",
+        "docs/REPORT_QUALITY_GATE.md"
+      ],
+      "required_checks": [
+        "release_notes_prepared",
+        "diff_reviewed"
+      ],
+      "completion_signals": [
+        "reviewable_result_ready"
+      ],
+      "expected_completed": false,
+      "expected_stop_reason": "awaiting_user_approval"
     }
   ]
 }

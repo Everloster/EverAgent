@@ -52,11 +52,19 @@ Curator 不重写整份 context。完整重写容易丢失例外、证据来源�
 - Harness 能确定性保证的规则迁到代码；文本只保留调用条件和失败含义。
 - 报告模型角色、额度偏好和升级顺序由 [`config/report-quality-policy.json`](../config/report-quality-policy.json) 统一维护，具体流程见 [REPORT_QUALITY_GATE.md](./REPORT_QUALITY_GATE.md)。
 
+## 发现面与 Owner
+
+- 自动发现面只放 `.agents/skills/`；当前保持一个报告路由 skill，避免所有领域模板同时进入发现预算。
+- 各项目 `skills/` 是由领域 `AGENTS.md` 条件链接的按需 playbook。入口只保留模式选择与不变量，模板、故障历史和长示例放进 `references/`。
+- `CLAUDE.md` 只负责导入 `AGENTS.md` 和真正的 Claude 专属 overlay，不复制公共文档目录。
+- 公共规则的唯一 Owner、字节预算和禁止复制片段由 [`config/instruction-policy.json`](../config/instruction-policy.json) 维护，并由 context eval 阻断漂移。
+
 ## 预算与指标
 
 - Codex 官方 `AGENTS.md` 合并上限默认 32 KiB；超过上限会停止继续加入文件。
 - Skill 初始发现清单默认最多占上下文窗口 2%；窗口未知时为 8,000 characters。
 - 静态预算只用于发现风险。最终判断依赖真实任务的成功率、无效读取、澄清次数、工具调用、compaction、返工和安全结果。
+- 行为回放同时记录 skill precision / recall、无关 context 读取率、澄清率和提前停止率；均值之外必须查看 P10 与零分率。
 
 运行：
 
@@ -71,6 +79,7 @@ python3 scripts/eval_report_context.py --aggregate /tmp/*-run.json
 ## 参考
 
 - [OpenAI：Rethinking skills and prompts for GPT-6 Astra](https://developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra)
+- [OpenAI：Using GPT-6 — Prompting best practices](https://developers.openai.com/api/docs/guides/latest-model/gpt-6-astra.md#prompting-best-practices)
 - [OpenAI：Build skills](https://learn.chatgpt.com/docs/build-skills)
 - [OpenAI：Custom instructions with AGENTS.md](https://learn.chatgpt.com/docs/agent-configuration/agents-md)
 - [Zhang et al.：Agentic Context Engineering](https://arxiv.org/abs/2510.04618)

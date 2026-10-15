@@ -1,50 +1,17 @@
 # cs-learning — 领域协议
 
-> 领域：计算机科学（系统·算法·分布式·数据库·网络）经典论文精读与概念深挖。
-> 通用研究方法论见根 [METHODOLOGY.md](../METHODOLOGY.md)（强制）。本文件只写本领域的边界与特化。
-> 联网与个人上下文遵守根 `AGENTS.md` 的托管策略，本文件不重复工具细节。
+> 计算机科学中的系统、算法、分布式、数据库与网络研究。
 
----
+## 路由
 
-## 工作模式：对话即学习
+- 论文精读读取 [paper_analysis](./skills/paper_analysis/SKILL.md)。
+- 概念、机制或系统设计读取 [concept_deep_dive](./skills/concept_deep_dive/SKILL.md)。
+- 新建、续写或审计报告时使用根级 [`everagent-report`](../.agents/skills/everagent-report/SKILL.md)；追问已有主题时更新原报告。
 
-用户明确要求学习、精读、深挖或出报告时，使用根 skill [`everagent-report`](../.agents/skills/everagent-report/SKILL.md) 与 [REPORT_WORKFLOW](../docs/REPORT_WORKFLOW.md)。通过 eacli 从 `knowledge.computer-science` 获取最小 context，再按需读取 PROFILE、MAP、open-questions 和一个体裁 skill。
+## 领域约束
 
-> 追问已有主题时：在原报告追加 `## 追问深入 [日期]` 小节并刷新 `updated_on`，不另开新文件。
+- 正确性证明重构关键步骤，不用结论代替论证。
+- 复杂度注明 worst、amortized 或 expected；伪代码应足以复现核心机制。
+- trade-off 尽量给真实量级、基准或反例，无法量化时说明资料边界。
 
----
-
-## 领域特化
-
-- **报告类型**：`reports/paper_analyses/`（论文精读）、`reports/knowledge_reports/`（概念深挖）
-- **特化要求**：正确性证明重构关键步骤；复杂度精确到 big-O（注明 worst/amortized/expected）；伪代码可复现；trade-off 给具体数值
-- **特化模板**：[skills/paper_analysis/SKILL.md](./skills/paper_analysis/SKILL.md)、[skills/concept_deep_dive/SKILL.md](./skills/concept_deep_dive/SKILL.md)
-
----
-
-## 报告 frontmatter
-
-```yaml
----
-title: "标题"
-domain: "cs-learning"
-report_type: "paper_analysis"   # 或 knowledge_report
-status: "in_progress"
-updated_on: "YYYY-MM-DD"
-quality_schema: "report-v2"
-quality_tier: "important"
-semantic_tags: ["tag"]
----
-```
-
----
-
-## 完成后自检
-
-```bash
-python3 scripts/reindex.py
-python3 scripts/audit_reports.py --changed
-python3 scripts/reindex.py --check
-```
-
-提交规范见根 [AGENTS.md](../AGENTS.md) 与 [docs/PROTOCOL_COMMON.md](../docs/PROTOCOL_COMMON.md)。
+需要既有覆盖时查询 eacli `knowledge.computer-science`；PROFILE、MAP 和 open-questions 仅在对应条件下读取。公共方法、元数据、质量门和收尾检查由根级 Owner 维护。

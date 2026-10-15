@@ -1,40 +1,23 @@
-# web-surfing — 执行协议
+# web-surfing — 领域协议
 
-> 公开网站检索、抓取与整理。联网、Personal Context 和提交规则由根 `AGENTS.md` 负责；本文件只保留站点路由与访问边界。
+> 公开网站检索、抓取与整理。
 
-## 任务路由
+## 路由
 
-| 意图 | 默认动作 | 产物 |
+| 意图 | 默认入口 | 产物 |
 |---|---|---|
-| 查一个事实、页面或价格 | 直接核验并回答 | 不落文件 |
-| 抓公开清单、跨页整理 | 先查复用，再抓取 | 有长期价值时写 `reports/` |
-| 同一站点反复使用或访问方式稳定 | 更新 `skills/site-{name}/SKILL.md` | 最小可复用 delta |
-| AI 新闻日报 | 使用 [ai-news-readability](./skills/ai-news-readability/SKILL.md) | 日报 |
+| 单一事实、页面或价格 | eacli typed capability | 直接答复 |
+| 公开清单或跨页整理 | 已有 `site-*` playbook；无匹配再选工具 | 有长期价值时归档 |
+| AI 新闻日报 | [ai-news-readability](./skills/ai-news-readability/SKILL.md) | 日报 |
+| 需要登录态或页面交互 | 可用 adapter；必要时读 [opencli-playbook](./skills/opencli-playbook.md) | 按任务交付 |
 
-开始前先检查已有 `site-*` skill 和可用 adapter。通用 opencli 操作只在需要浏览器或登录态时读取 [opencli-playbook](./skills/opencli-playbook.md)，不要把整份手册默认加载。
+归档报告时使用根级 [`everagent-report`](../.agents/skills/everagent-report/SKILL.md)。不要为了可能复用而预先读取所有站点 playbook。
 
-## 工具选择
+## 访问边界
 
-- 公开搜索、网页读取与结构化数据优先走根协议规定的 eacli typed capability。
-- 需要已有 Chrome 登录态、页面交互或 typed capability 未覆盖时，使用 opencli adapter；仍无覆盖才使用浏览器直驱。
-- 使用浏览器能力前运行 `opencli doctor`；工具输出使用 JSON 或 YAML。
-
-## 边界
-
-- 默认只读公开数据。发帖、评论、点赞、下单等外部写入必须有用户明确授权。
-- 不批量下载盗版或付费墙内容。
-- 批量遍历保持低频；遇验证码或限速停止并报告。
+- 默认只读公开数据；发帖、评论、点赞、下单等外部写入需要用户授权。
+- 不批量下载盗版或付费墙内容；批量遍历保持低频，遇验证码或限速停止并报告。
+- 动态事实写明来源与数据时点；评分、价格和库存不得从记忆填写。
 - 中间数据放 `/tmp/web-surfing-{date}/`，不得提交。
-- 所有动态事实写明来源与数据时点；评分、价格和库存不得从记忆填写。
 
-## 报告合同
-
-需要归档时遵守根 [REPORT_WORKFLOW](../docs/REPORT_WORKFLOW.md)，新增报告使用标准 frontmatter、`quality_schema: "report-v2"` 与合适的 `quality_tier`。报告应说明查询范围、筛选口径、时间点、来源和未覆盖部分。
-
-完成后运行：
-
-```bash
-python3 scripts/reindex.py
-python3 scripts/audit_reports.py --changed
-python3 scripts/reindex.py --check
-```
+站点命令、报告字段和完成检查由选中的 playbook 与根级工作流拥有。

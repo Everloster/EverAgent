@@ -28,77 +28,55 @@
 
 ## §0 核心入口
 
-- 研究证据与写作方法：[METHODOLOGY.md](./METHODOLOGY.md)
-- 报告任务的统一流程与完成定义：[docs/REPORT_WORKFLOW.md](./docs/REPORT_WORKFLOW.md)
-- 跨模型报告质量下限与升级策略：[docs/REPORT_QUALITY_GATE.md](./docs/REPORT_QUALITY_GATE.md)
-- Context 分层、ACE 增量更新与评估：[docs/CONTEXT_ENGINEERING.md](./docs/CONTEXT_ENGINEERING.md)
-- 安全、提交与 push 规则：[docs/PROTOCOL_COMMON.md](./docs/PROTOCOL_COMMON.md)
-- 报告元数据：[docs/REPORT_METADATA.md](./docs/REPORT_METADATA.md)
+以下文件是条件路由，不是启动时的必读清单：
+
+| 当前任务 | 读取的唯一公共 Owner |
+|---|---|
+| 研究证据、来源与写作判断 | [METHODOLOGY.md](./METHODOLOGY.md) 的相关章节 |
+| 新建、续写或审计长期报告 | [`everagent-report`](./.agents/skills/everagent-report/SKILL.md) |
+| 报告流程与完成定义 | [REPORT_WORKFLOW.md](./docs/REPORT_WORKFLOW.md) |
+| 证据账本、独立复核与模型升级 | [REPORT_QUALITY_GATE.md](./docs/REPORT_QUALITY_GATE.md) |
+| Context 或 Harness 调整 | [CONTEXT_ENGINEERING.md](./docs/CONTEXT_ENGINEERING.md) |
+| commit、push 或安全边界 | [PROTOCOL_COMMON.md](./docs/PROTOCOL_COMMON.md) |
+| 新增或迁移报告元数据 | [REPORT_METADATA.md](./docs/REPORT_METADATA.md) |
 
 ## §1 按意图路由
 
-路由看用户意图，不看当前目录。确定目标项目后，只读该项目的 `AGENTS.md` 和任务实际需要的资料。
+路由看用户意图，不看当前目录。确定项目后读取该项目 `AGENTS.md`；未命中 A–F 的任务在根目录完成。
 
 | 类 | 意图 | 项目 | 默认产出 |
 |---|---|---|---|
 | A | 学习、精读、深入研究概念/论文/文章 | `ai-learning` / `cs-learning` / `philosophy-learning` / `psychology-learning` / `biology-learning` | 研究报告 |
 | B | 用最小可运行 demo 理解 AI 技术 | `ai-practice` | 代码、真实输出、实验笔记 |
 | C | 播客或视频学习 | `podcast-learning` | 静默转写、润色稿、报告 |
-| D | GitHub repo 或 trending | `github-trending-analyzer` | 仅链接时口头介绍；明确深挖时报告 |
-| E | 查网站、抓公开数据、整理清单 | `web-surfing` | 直接答复；有长期价值时报告 |
+| D | GitHub repo 或 trending | `github-trending-analyzer` | 裸链接口头介绍；明确深挖才写报告 |
+| E | 查网站、抓公开数据、整理清单 | `web-surfing` | 直接答复；有长期价值时归档 |
 | F | 设备、网络、服务和基础设施 | `../EverAgent-infra/` | 修复与私有档案 |
 
-无法归类的临时任务直接在根目录完成。只有同类请求反复出现、需要专用脚本或需要长期索引时，才新增项目。
+只有同类请求反复出现、需要专用脚本或需要长期索引时，才新增项目。
 
 ## §2 Context 加载
 
-1. 先读当前项目 `AGENTS.md`，再按其中的条件链接读取材料。
-2. 涉及已有个人或项目积累时，按顶部 Personal Context-first 获取最小切片；不要默认通读整个仓库、全部报告或全部 wiki。
-3. `PROFILE.md` 只在需要适配读者或记录用户明确偏好时读写；`MAP.md` 只在判断覆盖与更新长期方向时读写；`open-questions.md` 只在续接或沉淀问题时读取。
-4. 报告任务使用 repo skill [`everagent-report`](./.agents/skills/everagent-report/SKILL.md)。复杂体裁只加载对应领域 skill，不并读所有模板。
-5. 模型特有的主动性、测试范围、委派或写作补丁放在运行时配置或小型 overlay；仓库协议保留模型无关的不变量。
+1. 先读当前项目 `AGENTS.md`，再选一个与任务直接匹配的 skill 或 reference；够用即停。
+2. 涉及既有积累时按顶部 Personal Context-first 获取最小切片，不默认扫描全部报告、wiki 或 skills。
+3. `PROFILE.md` 只用于适配读者或记录用户明确偏好；`MAP.md` 只用于覆盖判断与长期方向；`open-questions.md` 只用于续接或沉淀问题。
+4. 模型特有的主动性、委派、测试或写作补丁留在运行时 overlay；仓库只保存模型无关事实与边界。
 
-## §3 报告任务
+## §3 执行边界
 
-用户明确要求“研究 / 精读 / 深挖 / 出报告”时，按 [REPORT_WORKFLOW.md](./docs/REPORT_WORKFLOW.md) 完成研究、写作、最小知识沉淀和质量检查。一次性问答不为归档而归档。
-
-完成报告后运行：
-
-```bash
-python3 scripts/reindex.py
-python3 scripts/report_quality.py check <报告路径>  # report-v2
-python3 scripts/audit_reports.py --changed
-python3 scripts/reindex.py --check
-```
-
-领域有额外审计器时一并运行。历史报告的告警作为修复队列；当前任务新增的错误必须清零。
+- 用户表达行动意图时直接推进；从请求和既有上下文推断合理细节，不停在确认能力、列计划或首版实现。
+- 开始前在当前会话中明确目标、交付物、必要检查和停止条件；无需把一次性任务合同写入仓库。
+- 只有缺失信息会实质改变结果，或外部写入、发布、生产数据、权限扩大及不可逆操作尚未获授权时才询问。
+- 验证范围与改动风险匹配：先做受影响检查；只有失败、跨模块影响或未解决风险才扩大，不重复运行已通过且未受影响的检查。
+- 用户明确指令优先于 skill 的一般建议。若某个 skill 迫使任务暂停、偏离或留有未完成项，指出具体文件和适用规则。
 
 ## §4 全局不变量
 
-- **语言**：项目过程、解释、报告正文和 commit 描述使用中文；代码、命令、专有名词与原文引用保持原样。
-- **证据**：未读内容不得推测；数字和知识截止后的事实必须有可复核来源；推断标 `[推测]` 或 `[待验证]`。
+- **语言**：项目沟通、报告正文和 commit 描述使用中文；代码、命令、专有名词与原文引用保持原样。
+- **证据**：未读内容不得推测；数字和知识截止后的事实必须可追溯；推断标 `[推测]` 或 `[待验证]`。
 - **安全**：遵守 [PROTOCOL_COMMON.md](./docs/PROTOCOL_COMMON.md) §A；公开仓不得写入私有设备、账号、网络或凭据信息。
-- **权限**：本地、可逆、只读和用户已明确授权的步骤可持续推进；发布、外部写入、生产数据变更和不可逆操作按实际风险取得授权。
-- **提交**：一律使用 `scripts/ecommit.sh`；身份识别为 `*-unknown` 时禁止提交。commit 与 push 流程见 [PROTOCOL_COMMON.md](./docs/PROTOCOL_COMMON.md) §B/§C。
-- **工具选型**：做工具或代码前依次检查官方 CLI、官方 MCP/SDK、成熟开源方案，再考虑自写；联网能力遵守顶部 Token Plan-first。
-- **知识维护**：wiki 只随报告或明确请求做最小更新，不单独开展批量美化。PROFILE 只记录用户真实表达。
-- **外部方法**：报告证据写作可按需读取 `docs/external-skills/scientific-agent-skills/scientific-writing/SKILL.md`；提出可证伪假说时读取同目录 `hypothesis-generation/SKILL.md`。
+- **提交**：一律使用 `scripts/ecommit.sh`；身份识别为 `*-unknown` 时禁止提交。
+- **工具**：做工具或代码前依次检查官方 CLI、官方 MCP/SDK、成熟开源方案，再考虑自写；联网遵守顶部 Token Plan-first。
+- **知识维护**：wiki 只随报告或明确请求做最小更新；PROFILE 只记录用户真实表达。
 
-## §5 目录与领域扩展
-
-项目结构和人类导航见 [README.md](./README.md)。A 类领域保持：
-
-```text
-{domain}-learning/
-├── AGENTS.md
-├── PROFILE.md
-├── CONTEXT.md
-├── MAP.md
-├── reports/
-├── wiki/
-└── skills/
-```
-
-新增领域时复制该骨架，并更新本文件路由表与 README。F 类内容始终留在并排私有仓 `../EverAgent-infra/`。
-
-> 旧多 Agent 状态机、锁和 Dashboard 已归档在 `legacy-v1-multiagent` 分支；当前仓库保持知识优先。
+项目结构与人类导航见 [README.md](./README.md)。F 类细节始终留在并排私有仓 `../EverAgent-infra/`。

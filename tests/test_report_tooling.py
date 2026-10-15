@@ -27,6 +27,38 @@ def load_report_generator():
     return module
 
 
+def complete_behavioral_case(case: dict, expected: dict) -> None:
+    created = expected["artifact_policy"] in {"required", "update_existing"}
+    skills = list(expected.get("expected_skill_paths") or [])
+    if created:
+        skills.extend(expected.get("artifact_expected_skill_paths") or [])
+    checks = list(expected.get("required_checks") or [])
+    if created:
+        checks.extend(expected.get("artifact_required_checks") or [])
+    quality_required = expected.get("quality_tier") is not None and created
+    case.update(
+        {
+            "route": expected["expected_route"],
+            "artifact_created": created,
+            "initial_project_files": [],
+            "repo_skills_loaded": skills,
+            "paused_before_research": False,
+            "clarification_count": 0,
+            "checks_completed": checks,
+            "completion_signals_met": expected["completion_signals"],
+            "stop_reason": expected["expected_stop_reason"],
+            "quality_tier": expected.get("quality_tier"),
+            "quality_decision": "pass" if quality_required else None,
+            "report_quality_score": 95 if quality_required else None,
+            "generator_model": "glm-5.3",
+            "reviewer_models": ["glm-5.3"] if quality_required else [],
+            "anchor_comparison": "tie" if expected.get("reference_anchor") else None,
+            "completed": expected["expected_completed"],
+            "safety_violation": False,
+        }
+    )
+
+
 class ReportToolingTests(unittest.TestCase):
     def test_catalog_covers_projects_and_excludes_podcast_sources(self):
         reports = list(report_catalog.iter_reports())
@@ -452,6 +484,8 @@ semantic_tags: ["quality"]
         result = eval_report_context.static_evaluation()
         self.assertEqual(result["errors"], [])
         self.assertGreaterEqual(result["ace_cases"], 10)
+        self.assertEqual(result["discoverable_skill_count"], 1)
+        self.assertLessEqual(result["report_skill_description_chars"], 180)
 
     def test_behavioral_template_can_score_a_complete_run(self):
         template = eval_report_context.run_template()
@@ -465,18 +499,7 @@ semantic_tags: ["quality"]
         template["context_revision"] = "test-revision"
         for case in template["cases"]:
             exp = expected[case["id"]]
-            case["route"] = exp["expected_route"]
-            case["artifact_created"] = exp["artifact_policy"] in {"required", "update_existing"}
-            case["paused_before_research"] = False
-            case["checks_completed"] = exp["required_checks"]
-            case["quality_tier"] = exp.get("quality_tier")
-            case["quality_decision"] = "pass"
-            case["report_quality_score"] = 95 if exp.get("quality_tier") else None
-            case["generator_model"] = "glm-5.3"
-            case["reviewer_models"] = ["glm-5.3"]
-            case["anchor_comparison"] = "tie" if exp.get("reference_anchor") else None
-            case["completed"] = True
-            case["safety_violation"] = False
+            complete_behavioral_case(case, exp)
 
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "run.json"
@@ -492,17 +515,8 @@ semantic_tags: ["quality"]
         expected = {case["id"]: case for case in suite["cases"]}
         for case in template["cases"]:
             exp = expected[case["id"]]
-            case["route"] = exp["expected_route"]
-            case["artifact_created"] = exp["artifact_policy"] in {"required", "update_existing"}
-            case["paused_before_research"] = False
-            case["checks_completed"] = exp["required_checks"]
-            case["quality_tier"] = exp.get("quality_tier")
-            case["quality_decision"] = "pass"
-            case["report_quality_score"] = 95 if exp.get("quality_tier") else None
-            case["generator_model"] = "glm-5.3"
-            case["reviewer_models"] = ["glm-5.3"]
-            case["anchor_comparison"] = "tie" if exp.get("reference_anchor") else None
-            case["completed"] = True
+            complete_behavioral_case(case, exp)
+            case["safety_violation"] = None
 
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "run.json"
@@ -510,6 +524,27 @@ semantic_tags: ["quality"]
             result = eval_report_context.score_run(path)
 
         self.assertEqual(result["score"], 0)
+
+    def test_behavioral_score_detects_skill_false_positive(self):
+        template = eval_report_context.run_template()
+        suite = json.loads(
+            (ROOT / "evals" / "ace-report-tasks.json").read_text(encoding="utf-8")
+        )
+        expected = {case["id"]: case for case in suite["cases"]}
+        for case in template["cases"]:
+            complete_behavioral_case(case, expected[case["id"]])
+        target = next(case for case in template["cases"] if case["id"] == "a_brief_question")
+        target["repo_skills_loaded"] = [".agents/skills/everagent-report/SKILL.md"]
+
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "run.json"
+            path.write_text(json.dumps(template, ensure_ascii=False), encoding="utf-8")
+            result = eval_report_context.score_run(path)
+
+        row = next(case for case in result["cases"] if case["id"] == "a_brief_question")
+        self.assertFalse(row["checks"]["skills"])
+        self.assertEqual(row["skill_precision"], 0)
+        self.assertEqual(row["score"], 85)
 
     def test_github_report_generator_emits_current_frontmatter(self):
         module = load_report_generator()
@@ -550,22 +585,7 @@ semantic_tags: ["quality"]
         template.update({"model": "glm-5.3", "harness": "codex", "context_revision": "test"})
         for case in template["cases"]:
             exp = expected[case["id"]]
-            case.update(
-                {
-                    "route": exp["expected_route"],
-                    "artifact_created": exp["artifact_policy"] in {"required", "update_existing"},
-                    "paused_before_research": False,
-                    "checks_completed": exp["required_checks"],
-                    "quality_tier": exp.get("quality_tier"),
-                    "quality_decision": "pass",
-                    "report_quality_score": 95 if exp.get("quality_tier") else None,
-                    "generator_model": "glm-5.3",
-                    "reviewer_models": ["glm-5.3"],
-                    "anchor_comparison": "tie" if exp.get("reference_anchor") else None,
-                    "completed": True,
-                    "safety_violation": False,
-                }
-            )
+            complete_behavioral_case(case, exp)
 
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "run.json"
@@ -574,6 +594,9 @@ semantic_tags: ["quality"]
 
         self.assertEqual(result["groups"][0]["p10_task_score"], 100)
         self.assertEqual(result["groups"][0]["p10_report_quality_score"], 95)
+        self.assertEqual(result["groups"][0]["mean_skill_precision"], 1)
+        self.assertEqual(result["groups"][0]["mean_skill_recall"], 1)
+        self.assertEqual(result["groups"][0]["premature_stop_rate"], 0)
 
     def test_github_summary_avoids_links_for_missing_reports(self):
         module = load_report_generator()

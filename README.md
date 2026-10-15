@@ -3,7 +3,7 @@
 > 用 AI Agent 驱动的个人知识库：AI 帮我快速研究一个新领域/概念，产出高质量报告，我抽空阅读。
 > 覆盖 AI 技术、计算机科学、哲学、心理学、生物学、ML 工程、播客与开源生态。
 
-> **AI 使用本仓库？** → 先读 [AGENTS.md](./AGENTS.md) 与 [METHODOLOGY.md](./METHODOLOGY.md)，本文件供人类阅读。
+> **AI 使用本仓库？** → 先读 [AGENTS.md](./AGENTS.md)；只有研究与报告任务再按其中路由读取 [METHODOLOGY.md](./METHODOLOGY.md)。本文件供人类阅读。
 
 > **换机 / 首次拉取？** → 读 [docs/WORKSPACE_SETUP.md](./docs/WORKSPACE_SETUP.md)：本仓（公开）+ 私有仓 `EverAgent-infra`（F 类设备家底）如何并排搭建、更新、协作。
 
@@ -66,7 +66,7 @@
 2. **知识层** — 每个领域的 `reports/`（我读的东西）+ `wiki/`（概念/实体/综合/未解问题的索引）。
 3. **画像层** — 每个领域的 `PROFILE.md`（我会什么、偏好什么）+ `MAP.md`（覆盖与缺口），让 AI 不重复讲我会的、知道下一步学什么。
 
-报告生产采用按需 context：统一入口见 [REPORT_WORKFLOW.md](./docs/REPORT_WORKFLOW.md)，跨模型质量门见 [REPORT_QUALITY_GATE.md](./docs/REPORT_QUALITY_GATE.md)，模型与 Harness 的分层及 ACE 评估见 [CONTEXT_ENGINEERING.md](./docs/CONTEXT_ENGINEERING.md)。
+报告生产采用按需 context：统一入口见 [REPORT_WORKFLOW.md](./docs/REPORT_WORKFLOW.md)，跨模型质量门见 [REPORT_QUALITY_GATE.md](./docs/REPORT_QUALITY_GATE.md)，模型与 Harness 的分层及 ACE 评估见 [CONTEXT_ENGINEERING.md](./docs/CONTEXT_ENGINEERING.md)，机器可读预算与 Owner 见 [`config/instruction-policy.json`](./config/instruction-policy.json)。
 本轮全库审计、基线数据与落地清单见 [REPORT_SYSTEM_REVIEW_20261015.md](./docs/REPORT_SYSTEM_REVIEW_20261015.md)。
 
 ---
@@ -87,7 +87,7 @@
 │   ├── entities/      # 人物/机构/模型页
 │   ├── syntheses/     # 跨报告综合理解
 │   └── open-questions.md  # 未解问题池（持续学习的拉力）
-└── skills/            # 领域特化研究模板
+└── skills/            # 由领域 AGENTS.md 按需加载的 playbook
 ```
 
 > **PROFILE 与 CONTEXT 的命名二分**（每个领域两者都有，勿混用）：`PROFILE.md` = **学习者画像**，描绘"人"（兴趣/水平/偏好）；`CONTEXT.md` = **项目上下文**，登记"已有产出"的台账与防重复研究边界（运行状态类文件）。
@@ -104,7 +104,7 @@ python3 scripts/report_quality.py policy      # 查看模型路由与质量等�
 python3 scripts/report_quality.py check <报告> # 校验 report-v2 证据与独立复核
 python3 scripts/audit_reports.py --changed    # 新增/修改报告质量门
 python3 scripts/audit_reports.py --all --json # 全库报告审计
-python3 scripts/eval_report_context.py        # context 与 ACE 任务集静态评估
+python3 scripts/eval_report_context.py        # 指令预算、skill 路由与 ACE 任务集静态评估
 python3 scripts/reindex.py --check            # 验证索引未漂移
 python3 scripts/git_identity.py validate      # 提交身份校验
 ```

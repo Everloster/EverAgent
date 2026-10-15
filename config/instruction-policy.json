@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "basis": [
+    {
+      "title": "Rethinking skills and prompts for GPT-6 Astra",
+      "url": "https://developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra",
+      "accessed_on": "2026-10-15"
+    },
+    {
+      "title": "Using GPT-6 — Prompting best practices",
+      "url": "https://developers.openai.com/api/docs/guides/latest-model/gpt-6-astra.md#prompting-best-practices",
+      "accessed_on": "2026-10-15"
+    }
+  ],
+  "budgets": {
+    "root_repo_owned_bytes_max": 4300,
+    "domain_agents_bytes_max": 1600,
+    "claude_bridge_bytes_max": 320,
+    "discoverable_skill_count_max": 4,
+    "discoverable_skill_description_chars_max": 180,
+    "discoverable_skill_entrypoint_bytes_max": 1500,
+    "on_demand_playbook_entrypoint_bytes_warn": 6500
+  },
+  "owners": {
+    "research_method": "METHODOLOGY.md",
+    "report_workflow": "docs/REPORT_WORKFLOW.md",
+    "report_quality": "docs/REPORT_QUALITY_GATE.md",
+    "report_metadata": "docs/REPORT_METADATA.md",
+    "context_governance": "docs/CONTEXT_ENGINEERING.md",
+    "commit_and_safety": "docs/PROTOCOL_COMMON.md"
+  },
+  "root_forbidden_snippets": [
+    "python3 scripts/reindex.py",
+    "quality_schema:"
+  ],
+  "domain_agents_forbidden_snippets": [
+    "quality_schema:",
+    "python3 scripts/reindex.py",
+    "python3 scripts/audit_reports.py",
+    "python3 scripts/report_quality.py",
+    "## 报告 frontmatter",
+    "## 完成后自检"
+  ],
+  "claude_forbidden_snippets": [
+    "REPORT_WORKFLOW.md",
+    "REPORT_QUALITY_GATE.md",
+    "PROTOCOL_COMMON.md",
+    "METHODOLOGY.md"
+  ],
+  "common_context_forbidden_model_tokens": [
+    "gpt-6-astra",
+    "gpt-5.6-sol",
+    "glm-5.3",
+    "kimi-k3",
+    "minimax-m3"
+  ]
+}

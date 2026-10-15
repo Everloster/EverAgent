@@ -27,7 +27,9 @@ DEFAULT_AGENTS_BUDGET = 32 * 1024
 WARN_BUDGET_RATIO = 0.75
 SUITE_PATH = ROOT / "evals" / "ace-report-tasks.json"
 ANCHORS_PATH = ROOT / "evals" / "report-quality-anchors.json"
+INSTRUCTION_POLICY_PATH = ROOT / "config" / "instruction-policy.json"
 REPORT_SKILL = ROOT / ".agents" / "skills" / "everagent-report" / "SKILL.md"
+CLAUDE_BRIDGE = ROOT / "CLAUDE.md"
 QUALITY_GUIDE = ROOT / "docs" / "REPORT_QUALITY_GATE.md"
 QUALITY_SCHEMAS = (
     ROOT / "schemas" / "report-evidence-v1.schema.json",
@@ -38,11 +40,18 @@ STALE_DIRECTIVES = (
     "每次研究完顺手做一次事C",
     "每批任务结束，若发现新问题/新解法，把一行改进写进",
     "禁止修改 SKILL.md / 脚本 / README",
+    "WebFetch",
+    "WebSearch",
+    "每次上网前先读",
 )
 
 
 def _load_suite() -> dict:
     return json.loads(SUITE_PATH.read_text(encoding="utf-8"))
+
+
+def _load_instruction_policy() -> dict:
+    return json.loads(INSTRUCTION_POLICY_PATH.read_text(encoding="utf-8"))
 
 
 def _agent_files() -> list[Path]:
@@ -56,9 +65,14 @@ def _active_context_files(agent_files: list[Path]) -> list[Path]:
     files.update(
         {
             REPORT_SKILL,
+            ROOT / "METHODOLOGY.md",
             ROOT / "docs" / "REPORT_WORKFLOW.md",
             ROOT / "docs" / "CONTEXT_ENGINEERING.md",
+            ROOT / "docs" / "PROTOCOL_COMMON.md",
+            ROOT / "docs" / "REPORT_METADATA.md",
             QUALITY_GUIDE,
+            CLAUDE_BRIDGE,
+            INSTRUCTION_POLICY_PATH,
         }
     )
     for domain in COLLECTION_BY_ID:
@@ -68,6 +82,29 @@ def _active_context_files(agent_files: list[Path]) -> list[Path]:
         files.update(skills.rglob("SKILL.md"))
         files.update(skills.rglob("references/*.md"))
     return sorted(path for path in files if path.exists())
+
+
+def _repo_owned_root_text(text: str) -> str:
+    return re.sub(
+        r"<!-- BEGIN MANAGED EACLI TOKEN PLAN POLICY -->.*?<!-- END MANAGED EACLI TOKEN PLAN POLICY -->",
+        "",
+        text,
+        flags=re.DOTALL,
+    )
+
+
+def _discoverable_skills() -> list[Path]:
+    base = ROOT / ".agents" / "skills"
+    return sorted(base.glob("*/SKILL.md")) if base.exists() else []
+
+
+def _on_demand_playbooks() -> list[Path]:
+    paths: list[Path] = []
+    for domain in COLLECTION_BY_ID:
+        base = ROOT / domain / "skills"
+        if base.exists():
+            paths.extend(base.rglob("SKILL.md"))
+    return sorted(set(paths))
 
 
 def _paragraph_duplicates(files: list[Path]) -> list[dict[str, object]]:
@@ -112,6 +149,22 @@ def static_evaluation() -> dict[str, object]:
     warnings: list[str] = []
     errors: list[str] = []
 
+    try:
+        instruction_policy = _load_instruction_policy()
+    except (OSError, json.JSONDecodeError, KeyError) as exc:
+        instruction_policy = {}
+        errors.append(f"指令架构策略无法读取：{exc}")
+    budgets = instruction_policy.get("budgets", {})
+    if instruction_policy and instruction_policy.get("schema_version") != 1:
+        errors.append("指令架构策略 schema_version 必须为 1")
+    for owner, relative in instruction_policy.get("owners", {}).items():
+        if not (ROOT / str(relative)).is_file():
+            errors.append(f"指令 Owner 不存在：{owner} -> {relative}")
+    for source in instruction_policy.get("basis", []):
+        url = str(source.get("url") or "")
+        if not url.startswith("https://developers.openai.com/"):
+            errors.append(f"指令策略依据不是 OpenAI 官方开发者文档：{url or '<empty>'}")
+
     for domain in [*COLLECTION_BY_ID, "root"]:
         chain = [root_agents]
         domain_agents = ROOT / domain / "AGENTS.md"
@@ -128,6 +181,60 @@ def static_evaluation() -> dict[str, object]:
             warnings.append(f"{domain} 的 AGENTS 链占默认 32 KiB 的 {ratio:.1%}")
         if ratio > 1:
             errors.append(f"{domain} 的 AGENTS 链超过默认 32 KiB")
+
+    root_text = root_agents.read_text(encoding="utf-8", errors="replace")
+    root_repo_owned_bytes = len(_repo_owned_root_text(root_text).encode("utf-8"))
+    root_limit = int(budgets.get("root_repo_owned_bytes_max", 0) or 0)
+    if root_limit and root_repo_owned_bytes > root_limit:
+        errors.append(f"根 AGENTS 仓库自有内容 {root_repo_owned_bytes} bytes，超过 {root_limit}")
+
+    domain_agent_bytes: dict[str, int] = {}
+    domain_limit = int(budgets.get("domain_agents_bytes_max", 0) or 0)
+    for path in files:
+        if path == root_agents:
+            continue
+        relative = str(path.relative_to(ROOT))
+        size = path.stat().st_size
+        domain_agent_bytes[relative] = size
+        if domain_limit and size > domain_limit:
+            errors.append(f"领域 AGENTS 过大：{relative} 为 {size} bytes，超过 {domain_limit}")
+
+    for snippet in instruction_policy.get("root_forbidden_snippets", []):
+        if snippet in _repo_owned_root_text(root_text):
+            errors.append(f"根 AGENTS 复制了按需 Owner 内容：{snippet}")
+    for path in files:
+        if path == root_agents:
+            continue
+        text = path.read_text(encoding="utf-8", errors="replace")
+        for snippet in instruction_policy.get("domain_agents_forbidden_snippets", []):
+            if snippet in text:
+                errors.append(f"领域 AGENTS 复制了公共 Owner 内容：{path.relative_to(ROOT)} -> {snippet}")
+    common_context = {
+        "AGENTS.md": _repo_owned_root_text(root_text),
+        **{
+            str(path.relative_to(ROOT)): path.read_text(encoding="utf-8", errors="replace")
+            for path in files
+            if path != root_agents
+        },
+    }
+    for token in instruction_policy.get("common_context_forbidden_model_tokens", []):
+        for relative, text in common_context.items():
+            if str(token).lower() in text.lower():
+                errors.append(f"模型专属补丁进入公共 AGENTS：{relative} -> {token}")
+
+    claude_bytes = CLAUDE_BRIDGE.stat().st_size if CLAUDE_BRIDGE.exists() else 0
+    claude_limit = int(budgets.get("claude_bridge_bytes_max", 0) or 0)
+    if not CLAUDE_BRIDGE.exists():
+        errors.append("缺少 CLAUDE.md bridge")
+    else:
+        claude_text = CLAUDE_BRIDGE.read_text(encoding="utf-8", errors="replace")
+        if claude_text.count("@AGENTS.md") != 1:
+            errors.append("CLAUDE.md 必须且只能导入一次 @AGENTS.md")
+        if claude_limit and claude_bytes > claude_limit:
+            errors.append(f"CLAUDE.md bridge 为 {claude_bytes} bytes，超过 {claude_limit}")
+        for snippet in instruction_policy.get("claude_forbidden_snippets", []):
+            if snippet in claude_text:
+                errors.append(f"CLAUDE.md 重复了公共 Owner 链接：{snippet}")
 
     duplicates = _paragraph_duplicates(files)
     if duplicates:
@@ -156,6 +263,40 @@ def static_evaluation() -> dict[str, object]:
             if directive in text:
                 errors.append(f"过时 context 指令：{path.relative_to(ROOT)} -> {directive}")
 
+    discoverable_skills = _discoverable_skills()
+    on_demand_playbooks = _on_demand_playbooks()
+    discoverable_description_chars = 0
+    skill_count_limit = int(budgets.get("discoverable_skill_count_max", 0) or 0)
+    description_limit = int(budgets.get("discoverable_skill_description_chars_max", 0) or 0)
+    entrypoint_limit = int(budgets.get("discoverable_skill_entrypoint_bytes_max", 0) or 0)
+    playbook_warn = int(budgets.get("on_demand_playbook_entrypoint_bytes_warn", 0) or 0)
+    if skill_count_limit and len(discoverable_skills) > skill_count_limit:
+        errors.append(f"自动发现 skill 数量 {len(discoverable_skills)}，超过 {skill_count_limit}")
+    for path in discoverable_skills:
+        skill_text = path.read_text(encoding="utf-8", errors="replace")
+        skill = parse_frontmatter(skill_text)
+        description = str(skill.get("description") or "")
+        discoverable_description_chars += len(description)
+        if not skill.get("name") or not description:
+            errors.append(f"自动发现 skill 缺少 name/description：{path.relative_to(ROOT)}")
+        if description_limit and len(description) > description_limit:
+            errors.append(
+                f"skill description 过长：{path.relative_to(ROOT)} 为 {len(description)} characters，超过 {description_limit}"
+            )
+        if entrypoint_limit and path.stat().st_size > entrypoint_limit:
+            errors.append(
+                f"skill 入口过大：{path.relative_to(ROOT)} 为 {path.stat().st_size} bytes，超过 {entrypoint_limit}"
+            )
+        if not re.search(r"\b(?:use|when)\b|用于|适用", description, re.IGNORECASE):
+            warnings.append(f"skill description 缺少正向触发条件：{path.relative_to(ROOT)}")
+        if not re.search(r"\b(?:skip|exclude|except|not)\b|不用于|不适用|跳过", description, re.IGNORECASE):
+            warnings.append(f"skill description 缺少非触发边界：{path.relative_to(ROOT)}")
+    for path in on_demand_playbooks:
+        if playbook_warn and path.stat().st_size > playbook_warn:
+            warnings.append(
+                f"按需 playbook 入口偏大：{path.relative_to(ROOT)} 为 {path.stat().st_size} bytes"
+            )
+
     if not REPORT_SKILL.exists():
         errors.append("缺少 .agents/skills/everagent-report/SKILL.md")
         skill = {}
@@ -168,8 +309,8 @@ def static_evaluation() -> dict[str, object]:
             errors.append("everagent-report skill 的 name 不正确")
         if not description:
             errors.append("everagent-report skill 缺少 description")
-        elif len(description) > 500:
-            warnings.append("everagent-report description 超过 500 characters")
+        elif description_limit and len(description) > description_limit:
+            errors.append(f"everagent-report description 超过 {description_limit} characters")
         if "skip" not in description.lower() and "不" not in description:
             warnings.append("everagent-report description 缺少明显的非触发边界")
 
@@ -196,6 +337,11 @@ def static_evaluation() -> dict[str, object]:
                 "max_initial_project_files",
                 "quality_tier",
                 "required_checks",
+                "expected_skill_paths",
+                "forbidden_skill_paths",
+                "completion_signals",
+                "expected_completed",
+                "expected_stop_reason",
             )
             if field not in case
         ]
@@ -203,6 +349,16 @@ def static_evaluation() -> dict[str, object]:
             errors.append(f"ACE case {case.get('id', '<unknown>')} 缺字段：{', '.join(missing)}")
         if case.get("expected_route") not in valid_routes:
             errors.append(f"ACE case {case.get('id')} route 未登记：{case.get('expected_route')}")
+        expected_skills = set(case.get("expected_skill_paths") or [])
+        forbidden_skills = set(case.get("forbidden_skill_paths") or [])
+        overlap = expected_skills & forbidden_skills
+        if overlap:
+            errors.append(f"ACE case {case.get('id')} 的 skill 正负样本冲突：{', '.join(sorted(overlap))}")
+        for skill_path in expected_skills | forbidden_skills | set(case.get("artifact_expected_skill_paths") or []):
+            if not (ROOT / skill_path).is_file():
+                errors.append(f"ACE case {case.get('id')} 引用了不存在的 skill：{skill_path}")
+        if not case.get("completion_signals"):
+            errors.append(f"ACE case {case.get('id')} 缺少 completion_signals")
 
     try:
         policy = load_policy()
@@ -259,11 +415,20 @@ def static_evaluation() -> dict[str, object]:
         "schema_version": 1,
         "agents_files": len(files),
         "agents_total_bytes": sum(path.stat().st_size for path in files),
+        "root_repo_owned_bytes": root_repo_owned_bytes,
+        "domain_agent_bytes": domain_agent_bytes,
+        "claude_bridge_bytes": claude_bytes,
         "active_context_files": len(context_files),
+        "governed_context_files": len(context_files),
         "chains": chains,
         "duplicate_blocks": duplicates,
         "unconditional_reads": unconditional_reads,
         "report_skill_description_chars": len(description),
+        "discoverable_skill_count": len(discoverable_skills),
+        "discoverable_skill_description_chars": discoverable_description_chars,
+        "on_demand_playbook_count": len(on_demand_playbooks),
+        "on_demand_playbook_entrypoint_bytes": sum(path.stat().st_size for path in on_demand_playbooks),
+        "largest_on_demand_playbook_bytes": max((path.stat().st_size for path in on_demand_playbooks), default=0),
         "ace_cases": len(cases),
         "quality_anchors": len(anchor_ids),
         "warnings": warnings,
@@ -274,7 +439,7 @@ def static_evaluation() -> dict[str, object]:
 def run_template() -> dict[str, object]:
     suite = _load_suite()
     return {
-        "schema_version": 1,
+        "schema_version": 2,
         "model": "",
         "harness": "",
         "context_revision": "",
@@ -284,8 +449,12 @@ def run_template() -> dict[str, object]:
                 "route": None,
                 "artifact_created": None,
                 "initial_project_files": [],
+                "repo_skills_loaded": [],
                 "paused_before_research": None,
+                "clarification_count": 0,
                 "checks_completed": [],
+                "completion_signals_met": [],
+                "stop_reason": None,
                 "quality_tier": case.get("quality_tier"),
                 "quality_decision": None,
                 "report_quality_score": None,
@@ -310,6 +479,8 @@ def score_run(path: Path) -> dict[str, object]:
     suite = _load_suite()
     expected = {case["id"]: case for case in suite["cases"]}
     observed_doc = json.loads(path.read_text(encoding="utf-8"))
+    if observed_doc.get("schema_version") != 2:
+        raise ValueError("behavioral run schema_version must be 2; regenerate with --template")
     observed = {case["id"]: case for case in observed_doc.get("cases", [])}
     policy = load_policy()
     disabled_models = {
@@ -327,7 +498,7 @@ def score_run(path: Path) -> dict[str, object]:
         hard_failure = False
         checks: dict[str, bool] = {}
         checks["route"] = obs.get("route") == exp["expected_route"]
-        score += 25 if checks["route"] else 0
+        score += 20 if checks["route"] else 0
 
         artifact_policy = exp["artifact_policy"]
         created = obs.get("artifact_created")
@@ -338,28 +509,52 @@ def score_run(path: Path) -> dict[str, object]:
             if artifact_policy == "forbidden"
             else created in {True, False}
         )
-        score += 15 if checks["artifact"] else 0
+        score += 10 if checks["artifact"] else 0
         if not checks["artifact"]:
             hard_failure = True
 
         initial_files = obs.get("initial_project_files") or []
-        checks["context_budget"] = len(initial_files) <= exp["max_initial_project_files"]
-        score += 15 if checks["context_budget"] else 0
+        forbidden_files = set(exp.get("forbidden_initial_files") or [])
+        unnecessary_context_reads = sorted(forbidden_files & set(map(str, initial_files)))
+        checks["context_budget"] = (
+            len(initial_files) <= exp["max_initial_project_files"]
+            and not unnecessary_context_reads
+        )
+        score += 10 if checks["context_budget"] else 0
 
         checks["initiative"] = not (
             exp.get("must_not_pause_before_research") and obs.get("paused_before_research") is True
         )
         score += 10 if checks["initiative"] else 0
 
+        expected_skills = set(exp.get("expected_skill_paths") or [])
+        if created is True:
+            expected_skills.update(exp.get("artifact_expected_skill_paths") or [])
+        forbidden_skills = set(exp.get("forbidden_skill_paths") or [])
+        loaded_skills = set(map(str, obs.get("repo_skills_loaded") or []))
+        matched_skills = expected_skills & loaded_skills
+        skill_recall = len(matched_skills) / len(expected_skills) if expected_skills else 1.0
+        skill_precision = len(matched_skills) / len(loaded_skills) if loaded_skills else (1.0 if not expected_skills else 0.0)
+        forbidden_skill_hits = sorted(forbidden_skills & loaded_skills)
+        checks["skills"] = skill_recall == 1.0 and skill_precision == 1.0 and not forbidden_skill_hits
+        score += 15 if checks["skills"] else 0
+
         completed_checks = set(obs.get("checks_completed") or [])
         required_checks = set(exp.get("required_checks") or [])
         if created is True:
             required_checks.update(exp.get("artifact_required_checks") or [])
         checks["checks"] = required_checks.issubset(completed_checks)
-        score += 25 if checks["checks"] else 0
+        score += 20 if checks["checks"] else 0
 
-        checks["completion"] = obs.get("completed") is True
-        score += 10 if checks["completion"] else 0
+        required_completion = set(exp.get("completion_signals") or [])
+        observed_completion = set(obs.get("completion_signals_met") or [])
+        expected_completed = exp.get("expected_completed") is True
+        checks["completion"] = (
+            obs.get("completed") is expected_completed
+            and required_completion.issubset(observed_completion)
+            and obs.get("stop_reason") == exp.get("expected_stop_reason")
+        )
+        score += 15 if checks["completion"] else 0
 
         quality_required = exp.get("quality_tier") is not None and created is True
         if quality_required:
@@ -418,6 +613,13 @@ def score_run(path: Path) -> dict[str, object]:
                 "revision_count": obs.get("revision_count", 0),
                 "escalated": obs.get("escalated") is True,
                 "scarce_model_calls": scarce_calls,
+                "skill_precision": round(skill_precision, 4),
+                "skill_recall": round(skill_recall, 4),
+                "forbidden_skill_hits": forbidden_skill_hits,
+                "unnecessary_context_reads": unnecessary_context_reads,
+                "initial_context_files": len(initial_files),
+                "clarification_count": int(obs.get("clarification_count") or 0),
+                "premature_stop": not checks["completion"],
                 "input_tokens": obs.get("input_tokens"),
                 "elapsed_seconds": obs.get("elapsed_seconds"),
                 "tool_failures": obs.get("tool_failures", 0),
@@ -428,7 +630,7 @@ def score_run(path: Path) -> dict[str, object]:
     total = sum(row["score"] for row in rows)
     maximum = sum(row["max_score"] for row in rows)
     return {
-        "schema_version": 1,
+        "schema_version": 2,
         "model": observed_doc.get("model", ""),
         "harness": observed_doc.get("harness", ""),
         "context_revision": observed_doc.get("context_revision", ""),
@@ -465,6 +667,7 @@ def aggregate_runs(paths: list[Path]) -> dict[str, object]:
             and not isinstance(case.get("report_quality_score"), bool)
         ]
         revisions = [int(case.get("revision_count") or 0) for run in runs for case in run["cases"]]
+        all_cases = [case for run in runs for case in run["cases"]]
         summaries.append(
             {
                 "model": model,
@@ -479,14 +682,20 @@ def aggregate_runs(paths: list[Path]) -> dict[str, object]:
                 "perfect_case_rate": round(sum(score == 100 for score in case_scores) / len(case_scores), 4) if case_scores else 0,
                 "zero_score_rate": round(sum(score == 0 for score in case_scores) / len(case_scores), 4) if case_scores else 0,
                 "mean_revision_count": round(sum(revisions) / len(revisions), 2) if revisions else 0,
-                "escalation_rate": round(sum(case.get("escalated") is True for run in runs for case in run["cases"]) / len(case_scores), 4) if case_scores else 0,
-                "scarce_model_calls": sum(int(case.get("scarce_model_calls") or 0) for run in runs for case in run["cases"]),
-                "input_tokens": sum(int(case.get("input_tokens") or 0) for run in runs for case in run["cases"]),
-                "elapsed_seconds": round(sum(float(case.get("elapsed_seconds") or 0) for run in runs for case in run["cases"]), 2),
-                "tool_failures": sum(int(case.get("tool_failures") or 0) for run in runs for case in run["cases"]),
+                "mean_skill_precision": round(sum(float(case.get("skill_precision") or 0) for case in all_cases) / len(all_cases), 4) if all_cases else 0,
+                "mean_skill_recall": round(sum(float(case.get("skill_recall") or 0) for case in all_cases) / len(all_cases), 4) if all_cases else 0,
+                "context_overread_rate": round(sum(bool(case.get("unnecessary_context_reads")) for case in all_cases) / len(all_cases), 4) if all_cases else 0,
+                "mean_initial_context_files": round(sum(int(case.get("initial_context_files") or 0) for case in all_cases) / len(all_cases), 2) if all_cases else 0,
+                "clarification_rate": round(sum(int(case.get("clarification_count") or 0) > 0 for case in all_cases) / len(all_cases), 4) if all_cases else 0,
+                "premature_stop_rate": round(sum(case.get("premature_stop") is True for case in all_cases) / len(all_cases), 4) if all_cases else 0,
+                "escalation_rate": round(sum(case.get("escalated") is True for case in all_cases) / len(case_scores), 4) if case_scores else 0,
+                "scarce_model_calls": sum(int(case.get("scarce_model_calls") or 0) for case in all_cases),
+                "input_tokens": sum(int(case.get("input_tokens") or 0) for case in all_cases),
+                "elapsed_seconds": round(sum(float(case.get("elapsed_seconds") or 0) for case in all_cases), 2),
+                "tool_failures": sum(int(case.get("tool_failures") or 0) for case in all_cases),
             }
         )
-    return {"schema_version": 1, "groups": summaries}
+    return {"schema_version": 2, "groups": summaries}
 
 
 def main() -> int:
@@ -502,11 +711,20 @@ def main() -> int:
         print(json.dumps(run_template(), ensure_ascii=False, indent=2))
         return 0
     if args.score:
-        result = score_run(args.score)
+        try:
+            result = score_run(args.score)
+        except (OSError, json.JSONDecodeError, ValueError) as exc:
+            print(f"[context-eval] {exc}")
+            return 1
         print(json.dumps(result, ensure_ascii=False, indent=2))
         return 0 if result["score"] == result["max_score"] else 1
     if args.aggregate:
-        print(json.dumps(aggregate_runs(args.aggregate), ensure_ascii=False, indent=2))
+        try:
+            result = aggregate_runs(args.aggregate)
+        except (OSError, json.JSONDecodeError, ValueError) as exc:
+            print(f"[context-eval] {exc}")
+            return 1
+        print(json.dumps(result, ensure_ascii=False, indent=2))
         return 0
 
     result = static_evaluation()
@@ -515,6 +733,8 @@ def main() -> int:
     else:
         print(
             f"AGENTS {result['agents_files']} files / {result['agents_total_bytes']} bytes｜"
+            f"root-owned {result['root_repo_owned_bytes']} bytes｜"
+            f"skills {result['discoverable_skill_count']} / {result['discoverable_skill_description_chars']} chars｜"
             f"ACE cases {result['ace_cases']}｜anchors {result['quality_anchors']}｜"
             f"ERROR {len(result['errors'])}｜WARN {len(result['warnings'])}"
         )

@@ -1,6 +1,6 @@
 # Skill: episode_analysis — 播客总结/报告模板
 
-> 通用研究方法论与「思考与追问」要求见根 [METHODOLOGY.md](../../../METHODOLOGY.md)（强制）。本文件为领域特化部分。
+> 通用研究方法论与「思考与追问」要求见根 [METHODOLOGY.md](../../../METHODOLOGY.md)；按当前任务读取相关章节。本文件只保留领域差异。
 > 前置：已有 `reports/transcripts/{slug}.transcript.txt`（及润色稿）。报告一切事实以转写原文为准。
 
 ---
@@ -74,6 +74,6 @@ semantic_tags: ["podcast"]
 ## 规则
 
 1. **事实以转写为准**：转写外的引用/数据/言论禁止出现（见 transcription skill 红线）。
-2. **客观背景信息**（嘉宾履历、节目定位等）若非转写内容，须 WebSearch 查证并标来源，不编造。
+2. **客观背景信息**（嘉宾履历、节目定位等）若非转写内容，须通过 eacli 查证并标来源，不编造。
 3. **沉淀**：报告完成后更新 `wiki/`（新人物/概念页）、未解问题汇入 `wiki/open-questions.md`。
 4. **继续讨论**：用户追问时围绕转写原文 + 已查证事实展开，不引入编造内容。

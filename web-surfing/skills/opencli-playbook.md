@@ -1,6 +1,6 @@
 # opencli-playbook — opencli 通用上网手册
 
-> web-surfing 项目的主力工具手册。**每次上网前先读 §1「查复用」**，再决定用哪条路径。
+> 只在任务需要浏览器、登录态或 adapter 时读取。先看 §1「查复用」，再选择与当前站点匹配的路径。
 > 本机版本：opencli v1.8.6（上游 [jackwener/OpenCLI](https://github.com/jackwener/OpenCLI)，与最新 Release 一致）。
 
 ---

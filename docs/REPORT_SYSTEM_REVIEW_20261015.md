@@ -14,9 +14,9 @@
 4. 历史元数据不统一：155 篇无 frontmatter，279 篇无 semantic tags，12 篇使用非规范 status。
 5. 缺少 context 的行为回放：无法回答规则精简后，路由、早停、误触发、无效读取和安全表现是否真的改善。
 
-本次已完成机制改造：建立统一报告目录、全仓审计器、报告专用 repo skill、分层 context 文档和 10 个 ACE 回放任务；精简所有高频 `AGENTS.md`；修复全局索引覆盖、一个真实断链和一个缺失状态字段；把 GitHub 报告模板与生成器升级到当前元数据合同。
+本次已完成机制改造：建立统一报告目录、全仓审计器、报告专用 repo skill、分层 context 文档和 13 个 ACE 回放任务；精简所有高频 `AGENTS.md`；修复全局索引覆盖、一个真实断链和一个缺失状态字段；把 GitHub 报告模板与生成器升级到当前元数据合同。
 
-静态 context 指标从 **66,775 bytes 降到 28,231 bytes（−57.7%）**。最重的 AI Learning 路径占默认预算的 **32.8%**，所有任务路径均低于 33%，重复长段落归零。
+静态 context 指标从 **66,775 bytes 降到 16,311 bytes（−75.6%）**。最重的 Podcast 路径占默认预算的 **24.3%**，所有任务路径均低于 25%，重复长段落归零。
 
 ---
 
@@ -45,7 +45,7 @@
 
 - **结构全扫**：frontmatter、标题、状态、日期、tags、证据锚点、思考与追问、占位符、相对链接。
 - **34 篇分层抽样**：每个领域取最新、最旧、最短、最长报告，检查模板、证据表达、重复内容与读者入口。
-- **机制 review**：根与九个项目 `AGENTS.md`、21 个领域 skill、`METHODOLOGY.md`、元数据规范、索引器和现有质量脚本。
+- **机制 review**：根与九个项目 `AGENTS.md`、22 个领域 playbook、`METHODOLOGY.md`、元数据规范、索引器和现有质量脚本。
 - **外部方法对照**：[GPT-6 Astra 指令文章](https://developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra)、[OpenAI Skills 文档](https://learn.chatgpt.com/docs/build-skills)、[OpenAI AGENTS.md 文档](https://learn.chatgpt.com/docs/agent-configuration/agents-md)、[ACE 论文](https://arxiv.org/abs/2510.04618)和 [HumanLayer ACE 工作流](https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/ace-fca.md)。
 
 静态规则无法判断一篇报告的思想价值，也会把合理的“待验证”或示例误判成风险。全量扫描共记录 755 条相互重叠的 WARN；下列数字是维护线索，不是质量排名，也不能相加后当成问题报告数。
@@ -137,10 +137,10 @@ OpenAI 建议缩短 skill 描述和常驻 `AGENTS.md`；ACE 论文提醒不要�
 
 ### 4.1 Context 架构
 
-- 根 `AGENTS.md` 从 16,849 bytes 减至 7,332 bytes，删除重复 Token Plan、历史备忘和各领域流程复述。
-- Podcast `AGENTS.md` 从 16,808 bytes 减至 3,230 bytes；详细转写、润色与报告规则继续由现有 skills 持有。
-- GitHub `AGENTS.md` 从 9,598 bytes 减至 2,279 bytes；四轮研究细节移入 `repo-research/references/research-method.md`。
-- Web `AGENTS.md` 从 6,681 bytes 减至 2,020 bytes；opencli 命令继续由 `opencli-playbook.md` 按需提供。
+- 根 `AGENTS.md` 从 16,849 bytes 减至 6,539 bytes，其中仓库自有内容 4,224 bytes；公共文档改成条件路由，不再复制报告命令。
+- Podcast `AGENTS.md` 从 16,808 bytes 减至 1,414 bytes；详细转写、润色与报告规则由 playbook 和 references 持有。
+- GitHub `AGENTS.md` 从 9,598 bytes 减至 1,218 bytes；只保留轻量介绍、深研和 trending 的分流及代码证据边界。
+- Web `AGENTS.md` 从 6,681 bytes 减至 1,184 bytes；只保留站点路由和访问边界。
 - 五个 A 类领域和 AI Practice 改为按需读取 PROFILE、MAP、open-questions 和单一体裁 skill。
 - 新增 [CONTEXT_ENGINEERING.md](./CONTEXT_ENGINEERING.md)，明确 context owner、ACE delta 更新和模型专属 overlay 边界。
 
@@ -164,8 +164,9 @@ OpenAI 建议缩短 skill 描述和常驻 `AGENTS.md`；ACE 论文提醒不要�
 
 ### 4.4 评估
 
-- 新增 `scripts/eval_report_context.py`，检查 10 个 `AGENTS.md` 的路径字节预算，并扫描 37 个活跃 context 文件的重复、无条件读取、内部链接、过时指令和报告 skill 元数据。
-- 新增 `evals/ace-report-tasks.json`，覆盖文章精读、论文精读、概念学习、旧报告追问、最小 demo、播客、repo 轻量介绍、repo 深研、Web 查询和全仓治理十类常见任务。
+- 新增 `scripts/eval_report_context.py`，检查 10 个 `AGENTS.md` 的路径字节预算，并扫描 58 个受治理 context 文件的重复、无条件读取、内部链接、过时指令和 skill 元数据。
+- `evals/ace-report-tasks.json` 扩展为 13 个任务，加入简短问答、微小修改和“先准备、最终发布前停下”的决策边界样本。
+- 行为评分新增 skill precision / recall、无关 context 读取率、澄清率和提前停止率。
 - 新增用户认可的报告质量锚点，并支持按模型、Harness 和 context revision 聚合平均分、P10、零分率、升级率与稀缺模型调用量。
 - 支持生成行为记录模板和评分；安全结果必须显式记录为通过，否则该 case 计 0 分：
 
@@ -181,11 +182,11 @@ python3 scripts/eval_report_context.py --score /tmp/ace-run.json
 
 | 路径 | 改造前 | 改造后 | 变化 |
 |---|---:|---:|---:|
-| 全部项目 `AGENTS.md` | 66,775 B | 28,231 B | **−57.7%** |
-| 根 | 16,849 B | 7,332 B | −56.5% |
-| AI Learning 链 | 21,482 B / 65.6% | 10,759 B / 32.8% | −49.9% |
-| Podcast 链 | 33,657 B / 102.7% | 10,562 B / 32.2% | −68.6% |
-| GitHub 链 | 26,447 B / 80.7% | 9,611 B / 29.3% | −63.7% |
+| 全部项目 `AGENTS.md` | 66,775 B | 16,311 B | **−75.6%** |
+| 根 | 16,849 B | 6,539 B | −61.2% |
+| AI Learning 链 | 21,482 B / 65.6% | 7,901 B / 24.1% | −63.2% |
+| Podcast 链 | 33,657 B / 102.7% | 7,953 B / 24.3% | −76.4% |
+| GitHub 链 | 26,447 B / 80.7% | 7,757 B / 23.7% | −70.7% |
 | 跨文件重复长段落 | 2 组 | 0 组 | 清零 |
 
 百分比以 OpenAI 文档给出的默认 32 KiB `AGENTS.md` 合并上限为分母。该指标只衡量静态输入压力，不代表最终任务质量。
@@ -236,3 +237,18 @@ python3 scripts/eval_report_context.py --score /tmp/ace-run.json
 默认资源路径为：GLM 5.3 生成 → GLM 5.3 新会话复核 → 首轮修订 → GPT-5.6 Sol 升级复核 → 无法使用时才调用 Kimi K3。Kimi K3 默认每篇最多一次，用户明确指定时可覆盖；MiniMax M3 会被质量门直接拒绝。
 
 提交入口 `scripts/ecommit.sh` 会运行已暂存报告审计、索引一致性和 context 评估。跨模型回放新增质量判定与 P10 聚合，避免平均分掩盖最差报告。完整协议见 [REPORT_QUALITY_GATE.md](./REPORT_QUALITY_GATE.md)。
+
+---
+
+## 9. 按 GPT-6 Astra 原文进行的第二轮重构
+
+第二轮重新读取 OpenAI 原文与 GPT-6 官方 prompting guidance，不再把“压缩字节数”当作唯一目标，而是逐项落实其控制边界：
+
+1. **常驻层只保留控制面。** 九个领域 `AGENTS.md` 删除重复 frontmatter、质量命令和公共收尾流程，总大小从 20,899 bytes 降到 9,772 bytes。`CLAUDE.md` 从 1,295 bytes 缩为 239 bytes，只保留 `@AGENTS.md` bridge。
+2. **Skill 发现层只做分类。** 自动发现面维持一个 `everagent-report`，description 从 219 缩为 150 characters，入口从 2,187 缩为 1,310 bytes；简短问答、简单查询和裸 repo 链接均写入非触发边界。
+3. **领域 playbook 渐进披露。** 22 个按需 playbook 的入口合计从 150,393 bytes 降到 34,192 bytes（−77.3%），最大入口从 11,678 bytes 降到 5,919 bytes；详细模板、快速索引和历史故障保存在 17 个 `references/` 文件中，由任务分支按需读取。`METHODOLOGY.md` 也从 7,774 bytes 降到 5,578 bytes，把固定七步模板改成按证据类型选择分析维度。
+4. **任务 prompt 以边界为中心。** 根协议明确目标、交付物、验收信号和停止条件；本地可逆工作持续推进，只有实质歧义或未授权外部动作才暂停；验证先覆盖受影响范围，避免小改动触发全套测试。
+5. **原则进入确定性门禁。** `config/instruction-policy.json` 记录 Owner、常驻字节预算、自动发现 skill 预算和禁止复制片段；pre-commit 已有的 context eval 会阻断再次膨胀。
+6. **评估覆盖正负样本。** ACE 回放不仅测报告质量，还测不该触发报告 skill 的一句话问答、裸 repo 链接和 typo 修复，以及应在发布前停止的授权边界。
+
+这轮保留了完整领域知识，没有把长 playbook 删除；变化只发生在何时加载、由谁拥有以及怎样验证。它直接对应原文的三项核心建议：description 可区分、`SKILL.md` 渐进披露、`AGENTS.md` 按任务读取，并补上官方 prompting guidance 对持续完成、决策边界和测试范围的要求。
