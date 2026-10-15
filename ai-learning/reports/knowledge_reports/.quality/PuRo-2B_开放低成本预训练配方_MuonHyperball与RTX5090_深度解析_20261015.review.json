@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/PuRo-2B_开放低成本预训练配方_MuonHyperball与RTX5090_深度解析_20261015.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "glm-5.3",
+        "harness": "claude-code",
+        "run_id": "review-dcc5663b1ae6",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 96,
+        "request_coverage": 97,
+        "reasoning_quality": 95,
+        "readability": 94,
+        "limitations": 93
+      },
+      "score_reasons": {
+        "evidence_fidelity": "17/17 claims 全查(含全部 9 条 critical)。关键数字逐项对照论文提取件与 repo 快照零误差:成本链 6,009.46+16,504.95=22,514.41 GPU-h、×2.0833 RMB/h=46,905 RMB≈$6,891(p40/Table 7/18);五档 $2.16K~$6.89K 与 Avg15 51.98~56.00(Table 18/19 p53)逐行一致;Table 2 全部 GPU 参数(A100 312/80GB/$1.79、H200 989.5/1979/141GB/$4.00/0.89/1.78、5090 209.5/419/32GB/$0.31/2.43/4.87)与报告表格吻合;P2P 31.5→56 GB/s、14.3µs→0.4µs、8卡 busbw 14.75→27.34、GDR 24卡 8.87→19.93(p9-10)一致;MFU 73% 与脚注 6 的 P_eff=(0.72/419+0.28/209.5)⁻¹≈327 精确一致;FP8 72%/98.0%/1.36×/1.34×/LOO 1.17–1.28 与 97.6–98.1(p11/23/43-44)一致;式(1)(3)(4)(5)与式(10) power schedule 逐符号转写正确(τ=1000 步=1.536M samples 两口径等价);170M 三臂 3.0288/3.0303/3.0733(Figure 5)对应报告 3.029/3.030/3.073;CMA 消融 57.17/55.99/57.18/55.57/55.64/57.12/56.80/57.81(Figure 13b+§H.3 p56)全对;六 checkpoint 步号 222,100~222,569、窗口 469 步≈2.95B(p56)全对;SFT 三设置 66.89→68.66/+1.77(范围 1.36–2.12)、74.10→76.12/+2.02(范围 1.21–3.26)、53.96→55.13/+1.17、IFEval 41.71→43.07(p24-25/附录E p46-48)全对;run_puro_2b.sh 的 --lr 4.077248127291725e-05、--muon-hyperball-lr-mult 10.0(行52)、layout 'Et*18|t*10L'/'Et*9|t*9|t*9|tL'、341,867,221÷1536=222,569.3 步数自洽均验证;license 四资产实测(HF 权重 apache-2.0、HF 数据集 other、Puro-Megatron NOASSERTION、Kaiyuan-Spark Apache-2.0)与 Nemotron-CC-v2/Synthetic-Code 禁再分发(Table 22 脚注)成立;HF 模型卡 '$4.4K is not the canonical final checkpoint' 与 'The fit has no uncertainty interval' 引文核实;HF papers 页 pszemraj FP16-accumulate 问答与作者回答逐字核实。扣分点:报告 §2.1 把论文 'most practical option with FP4 support' 转写为「唯一有 FP4 支持的实际选项」,而 Table 2 显示 RTX PRO 6000 亦有 FP4,属引申过度(记入 unsupported_claims);§11.9 声称 arXiv 元数据与 PDF 作者名单不一致,当前(2026-10-15)arXiv API 元数据与 PDF 一致(含 Chengxia Li 无 Kaiyue Wen),仅 HF bibtex 侧成立,arXiv 侧无法复现;§10.1 将 Qwen2-1.5B 55.14 等总分标注为 (Table 19, S=p53),实际出自 Table 7(p39),数字本身正确。",
+        "request_coverage": "六条 requirements 全部满足:REQ1 真读一手来源且全文 S=pN/R=file:line 引用(抽查的页码/行号全部命中,如 R=run_puro_2b.sh:52 恰为 lr-mult 10.0、ORIGIN_COMMITS.md:43-53 恰为 excluded 节);REQ2 公式逐符号解释完整(§5.1 式1 的 R、û_t、Normalize 各项含义,§5.2 式4 ELR 定义,§6 power schedule 含 τ 双口径换算);REQ3 单位口径严格(tokens vs samples 在 §3.3 表与 §8 步数自洽计算中显式区分,§1.2 全节钉 Reproduction-Cost Boundary);REQ4 批判性评估十条覆盖要求的全部五点(成本口径 §11.1、驱动 EULA §11.2、自家评测协议 §11.3、代际对标 §11.4、license 差异 §11.7)且超出要求;REQ5 §13 三问完整(理解/未懂/下一步);REQ6 §12 与 Megatron 20260416 报告及模型效率线缝合具体。超额部分:发现 SMA6 六 checkpoint 与 --non-persistent-ckpt-num-to-keep 4 的机制缺口、$4.4K 档的 HF 口径身份、Phase 2-only $5.05K 与标题数字的对应关系。",
+        "reasoning_quality": "综合质量高:以 ELR=η_t 为轴把 MuonH 机制、m=10 桥接、WSD sweep 观察、power+linear 生产 schedule 串成因果链,与论文 §3.3 的论证结构一致且无过度引申;对四成本因子『参考系不同不构成联合阶乘消融』『TPP=20 消融 vs TPP≈700 生产』的口径警示忠实转达(§4.3.1 原文+脚注7);对 $4.4K『实测 UD-1/2 55.54>55.14 加标度律内插,不是外推新 run』的辨析精确(p24 原文佐证);[推测] 标注使用规范(仅两处:标题数字品牌化解读、ELR 成为标准诊断量的展望)。发现的问题均非推理错误而是转写措辞级。170M 结论外推风险、路由消融缺口、fixed-RMS 着墨少等可追问点的识别准确。",
+        "readability": "结构出色:§0 一页结论先行,硬件→系统→精度→优化器→数据→课程→后训练→评测的分层与论文 §3-§4 对齐,每层先给机制再给证据;表格密度高且信息自洽(如 §8 消融表与 §10.2 五档表);中文行文流畅,术语/数字/专有名词保留原文;引用体系 S/R/HF 三级清晰,二手传播分层提示(§11.1)实用。小瑕疵:§0.2 用『外推』而 §10.2 辨析为『内插』,前后措辞有轻微张力;个别长句(如 §11.7 license 段)信息密度过载。",
+        "limitations": "evidence.json limitations 六条具体且诚实(页码基于提取件、外部反响时效、SMA6 采集机制未解、路由/逻辑矩阵消融缺口、标度律系数未公布、Phase 1 终点 LR 的 HF 卡与脚本口径差),每条都在报告正文有对应落点(§8 未解细节、§11.6、§10.2、§13.2);报告自身额外标注了 [推测] 两处与「元数据以 PDF 题名页为准」的引用建议。扣分:arXiv 元数据不一致声明当前无法复现(HF bibtex 侧成立),提示该条外部快照核验存在不确定性但 limitations 未覆盖此风险;kenashe.ai 三点论点仅验证了文章存在与日期,未逐字复核论点内容。"
+      },
+      "critical_claim_ids_checked": [
+        "C1",
+        "C2",
+        "C3",
+        "C5",
+        "C6",
+        "C7",
+        "C11",
+        "C12",
+        "C15"
+      ],
+      "source_ids_checked": [
+        "S",
+        "R",
+        "HF",
+        "EXT"
+      ],
+      "requirement_ids_checked": [
+        "REQ1",
+        "REQ2",
+        "REQ3",
+        "REQ4",
+        "REQ5",
+        "REQ6"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "复核覆盖:论文提取件 p1/4/8-26/38-48/53/55-56 逐页打开,repo 三文件逐行,HF 联网抽查(collection 9模型+1数据集+1论文、Base 卡、1of2 卡、papers 页问答、数据集卡 license),GitHub API 两仓 license,arXiv API 元数据,kenashe.ai 存在性(经 web 搜索确认 2026-08-28 文章存在;其三点论点内容未逐字复核,C17 其余 EXT 细节如 AlphaSignal/hankli.space/X 帖未抽查,均为非承载性次要来源)。全部 17 条 claims 核验通过,无一关键数字错误。另两处不构成 unsupported 的轻微问题:①§11.9『arXiv 元数据与 v2 PDF 题名页作者名单不一致』——HF bibtex 侧核实成立(含 Kaiyue Wen 无 Chengxia Li),但 2026-10-15 当日 arXiv API 元数据与 PDF 一致(含 Chengxia Li 无 Kaiyue Wen),arXiv 侧声明无法复现,可能是元数据事后更正或生成者误读;『以 PDF 题名页为准』的建议本身仍正确(Wen 确实只出现在致谢与引文[99],已核实)。②§10.1 将 Qwen2-1.5B 55.14/Qwen2.5-1.5B 60.73/SmolLM3 65.85 的来源标为 (Table 19, S=p53),这些总分实际出自 Table 7(p39),Table 19 只含 PuRo 各分支分数;数字无误,来源页标注不全。③§0.2『按标度律外推 $4.4K 可达 Qwen2-1.5B』与 §10.2 自身的『内插而非外推新 run』辨析存在轻微措辞张力,论文摘要原词为 fitted law suggests。以上均为修订级以下瑕疵,不影响报告结论可靠性。格式说明:本仓 quality gate 规定 unsupported_claims 为 claim_id 字符串数组且非空即判 blocked,语义是「claim 未被证据支持」;本次复核 17/17 claims 均获一手来源支持,无一属于该语义,故置空。上文所述 C2 同节的『唯一 FP4 选项』措辞引申、arXiv 元数据声明不可复现、Table 7/19 来源页标注三处轻微问题已在 score_reasons 与本 notes 中完整记录,均为修订级以下瑕疵,不构成 unsupported claim、missing requirement 或 hard failure。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 95.4,
+    "evaluated_on": "2026-10-15",
+    "policy_id": "report-quality-2026-10-15-r1",
+    "policy_sha256": "69eb1667e587b2e30f4141910049d8a6f7383b16059125c867ee09a23ac37268",
+    "report_sha256": "e872cbb82ef57b5a5f2845d706d9edc39e9fba2078a9f40e4aaa203ba899416d",
+    "evidence_sha256": "ff051adec88d60fbbc9286dc32b3e455be59a20811509e88e42e45650fe1ee41"
+  }
+}

@@ -1,0 +1,278 @@
+{
+ "schema_version": 1,
+ "report_path": "ai-learning/reports/knowledge_reports/PuRo-2B_开放低成本预训练配方_MuonHyperball与RTX5090_深度解析_20261015.md",
+ "quality_tier": "important",
+ "created_on": "2026-10-15",
+ "generator": {
+  "model": "glm-5.3",
+  "harness": "claude-code",
+  "run_id": "puro2b-report-20261015",
+  "explicit_model_override": false,
+  "override_reason": ""
+ },
+ "task": {
+  "summary": "repo+paper 学习任务：深析清华 thu-pacman PuRo-2B 开放低成本预训练配方（arXiv 2608.27370v2 + thu-pacman/Puro-Megatron），覆盖硬件/系统/精度/优化器/数据/课程后训练/评测标度全栈，产出中文深度报告。",
+  "requirements": [
+   {
+    "id": "REQ1",
+    "text": "真读论文原文与 repo 关键文件，事实带来源（S=页码，R=文件:行号）"
+   },
+   {
+    "id": "REQ2",
+    "text": "公式逐符号解释（MuonH 更新式、有效学习率定义、power schedule）"
+   },
+   {
+    "id": "REQ3",
+    "text": "关键数字保留单位与口径（tokens vs samples、Reproduction-Cost Boundary）"
+   },
+   {
+    "id": "REQ4",
+    "text": "批判性评估（成本口径、驱动 EULA、自家评测协议、代际对标、license 差异）"
+   },
+   {
+    "id": "REQ5",
+    "text": "结尾「思考与追问」三问"
+   },
+   {
+    "id": "REQ6",
+    "text": "与本库既有知识缝合（Megatron 20260416 报告、模型效率线）"
+   }
+  ]
+ },
+ "sources": [
+  {
+   "id": "S",
+   "kind": "primary",
+   "title": "PuRo-2B: Poor Lab's Qwen2-1.5B Trained on RTX 5090 within $5090 (arXiv 2608.27370v2)",
+   "locator": "arxiv.org/abs/2608.27370；本地 PDF /tmp/puro-study/puro-paper.pdf（文本提取 puro-paper.txt，===PAGE N=== 分页）",
+   "accessed_on": "2026-10-15"
+  },
+  {
+   "id": "R",
+   "kind": "primary",
+   "title": "thu-pacman/Puro-Megatron（fork Megatron-LM core_v0.16.0 @3bec9aa）",
+   "locator": "github.com/thu-pacman/Puro-Megatron；本地快照 /tmp/puro-study/{run_puro_2b.sh,ORIGIN_COMMITS.md,puro-megatron-ext.md}",
+   "accessed_on": "2026-10-15"
+  },
+  {
+   "id": "HF",
+   "kind": "official",
+   "title": "HuggingFace thu-pacman/puro-2B 集合（9 模型仓 + 数据集 + 论文条目）",
+   "locator": "huggingface.co/collections/thu-pacman/puro-2b 及 thu-pacman/Puro-2B-Base 模型卡、datasets/thu-pacman/Puro-2B 数据集卡",
+   "accessed_on": "2026-10-15"
+  },
+  {
+   "id": "EXT",
+   "kind": "secondary",
+   "title": "外部反响（kenashe.ai 2026-08-28、cctest.ai、HF papers 页作者问答、吕凯峰 X 帖）",
+   "locator": "HF papers 页 discussions；kenashe.ai 博客；x.com/vfleaking（深读路 hf-external 快照核验）",
+   "accessed_on": "2026-10-15"
+  }
+ ],
+ "claims": [
+  {
+   "id": "C1",
+   "claim": "生产 run 实测 22,514.41 GPU-h ≈ $6,891；五个缩放档 $2.16K~$6.89K；$4.4K 档（Uniform-Phase2-1of2）实测 55.54 已超 Qwen2-1.5B 的 55.14",
+   "report_anchor": "精确成本账：Phase 1 实测 6,009.46 GPU-h",
+   "support": "direct",
+   "source_ids": [
+    "S",
+    "HF"
+   ],
+   "evidence": "论文 Table 18/19 p53、Table 6 p38、§2.2 p8；HF 卡对 $4.4K 身份的更严表述",
+   "critical": true
+  },
+  {
+   "id": "C2",
+   "claim": "RTX 5090 FP8 成本效率约 2.7× H200（EFLOP/USD 4.87 vs 1.78）；$0.31/h 为五年摊销估计、无公开租赁渠道",
+   "report_anchor": "成本效率约是 H200 的 2.7",
+   "support": "direct",
+   "source_ids": [
+    "S"
+   ],
+   "evidence": "论文 Table 2 p9 + §3.1.1",
+   "critical": true
+  },
+  {
+   "id": "C3",
+   "claim": "驱动修改启用 PCIe P2P（单向 31.5→56 GB/s、延迟 14.3µs→0.4µs、8 卡 busbw 14.75→27.34 GB/s）与 GDR（24 卡 busbw 8.87→19.93 GB/s）；GDR 细节因 EULA 不公开",
+   "report_anchor": "修改版开源 NVIDIA 驱动",
+   "support": "direct",
+   "source_ids": [
+    "S"
+   ],
+   "evidence": "论文 §3.1.2 p9-10",
+   "critical": true
+  },
+  {
+   "id": "C4",
+   "claim": "Phase1 24 卡 238 TFLOP/s/卡、Phase2 96 卡 192 TFLOP/s/卡；加权 MFU≈73%（混合精度加权峰值 P_eff≈327 TFLOP/s 口径，非 BF16-only）",
+   "report_anchor": "加权 MFU 约 73%",
+   "support": "direct",
+   "source_ids": [
+    "S"
+   ],
+   "evidence": "论文 §3.1.3 p10-11 及脚注 6",
+   "critical": false
+  },
+  {
+   "id": "C5",
+   "claim": "FP8：逻辑块跟随 DeepSeek-V3（128 值/128×128 权重块）但经 Blackwell MXFP8 路径执行；72% 计算走 FP8；ρ_C=98.0%、吞吐 1.36×、质量调整净收益 1.34×",
+   "report_anchor": "质量调整后净收益 1.34",
+   "support": "direct",
+   "source_ids": [
+    "S"
+   ],
+   "evidence": "论文 §3.2 p11 + §4.3.1/附录 D p42-44",
+   "critical": true
+  },
+  {
+   "id": "C6",
+   "claim": "MuonH 机制：固定 R=‖W0‖F，更新归一化后位移 η·R，投影回球面；有效学习率 ρ_t=η_t 数值上等于学习率超参本身",
+   "report_anchor": "把矩阵钉在固定半径的球面上",
+   "support": "direct",
+   "source_ids": [
+    "S",
+    "R"
+   ],
+   "evidence": "论文 §3.3 式(1) p12 + §3.3.1 p13 + Figure 4；R=puro-megatron-ext.md",
+   "critical": true
+  },
+  {
+   "id": "C7",
+   "claim": "170M 三角对照：MuonH 3.029 ≈ ELR 对齐 Muon 3.030 << 普通 LR Muon 3.073 → 效率差距主要归因于有效 LR schedule 而非投影本身",
+   "report_anchor": "3.029",
+   "support": "direct",
+   "source_ids": [
+    "S"
+   ],
+   "evidence": "论文 §3.3.1 p13-14 Figure 5",
+   "critical": true
+  },
+  {
+   "id": "C8",
+   "claim": "WSD sweep 两观察（大 peak 要长 decay：下边缘 0.4→0.8 单调；长 horizon 要长 decay）→ 生产 power(p=0.5)+linear 两阶段（438.8B: ~5e-2→1.04e-2；960B linear→1e-5）",
+   "report_anchor": "更大 peak 需要更长 decay",
+   "support": "direct",
+   "source_ids": [
+    "S",
+    "R"
+   ],
+   "evidence": "论文 §3.3.2 p14-15 Figure 6；R=run_puro_2b.sh:109-125",
+   "critical": false
+  },
+  {
+   "id": "C9",
+   "claim": "数据两阶段账：Phase1 438.84B（EN 73.2%）+ Phase2 938.06B 池（EN 59.4%/Math 18.3%）+ 43.87B 线性过渡 ≈ 1.4T tokens",
+   "report_anchor": "438.84B",
+   "support": "direct",
+   "source_ids": [
+    "S",
+    "HF"
+   ],
+   "evidence": "论文 Table 3/Figure 8 p18 + §3.6.2 p19；HF 数据集卡同口径",
+   "critical": false
+  },
+  {
+   "id": "C10",
+   "claim": "proxy benchmarking：Qwen3-0.6B + 86B replay、2000 步≈8.4B、candidate 占比升到 80%、15-bench 能力向量；DCLM q00 第 3 vs q25 第 11 → Phase2 留 top~5%（34B）",
+   "report_anchor": "能力向量代替单一样本分",
+   "support": "direct",
+   "source_ids": [
+    "S"
+   ],
+   "evidence": "论文 §3.6.1 p17-18 Figure 9",
+   "critical": false
+  },
+  {
+   "id": "C11",
+   "claim": "CMA 消融：CD vs UD +1.18（57.17/55.99）；衰减轨迹平均后 +1.61（57.18/55.57）；CDC 218k 六 checkpoint 平均 57.81 为生产端点（steps 222,100~222,569）",
+   "report_anchor": "CD vs UD：57.17 vs 55.99",
+   "support": "direct",
+   "source_ids": [
+    "S"
+   ],
+   "evidence": "论文 §3.4 p15-16 Figure 13b + §H.3 p56",
+   "critical": true
+  },
+  {
+   "id": "C12",
+   "claim": "SFT 后课程优势保持：GSM8K +1.77pp（66.89→68.66）、Math&Code+replay +2.02pp（74.10→76.12）、Tulu-3 宏平均 +1.17pp（53.96→55.13）；UD/CMA 同池同 SFT 成对设计",
+   "report_anchor": "优势",
+   "support": "direct",
+   "source_ids": [
+    "S"
+   ],
+   "evidence": "论文 §4.4 p24 + 附录 E p45-48",
+   "critical": true
+  },
+  {
+   "id": "C13",
+   "claim": "15-bench 总分：PuRo-2B 57.81 / Qwen2-1.5B 55.14 / Qwen2.5-1.5B 60.73；Math/Code 四项 43.50 vs 40.29 vs 47.52",
+   "report_anchor": "15 项总分 P：PuRo-2B（CMA 生产版）57.81",
+   "support": "direct",
+   "source_ids": [
+    "S",
+    "HF"
+   ],
+   "evidence": "论文 Table 4 p21、Table 5 p22、Table 19 p53；HF 卡同数",
+   "critical": false
+  },
+  {
+   "id": "C14",
+   "claim": "run_puro_2b.sh 与论文逐参数对应：三 recipe、m=10、4.077248127291725e-05=论文 4.08e-5 未舍入值、步数自洽 341,867,221/1536=222,569.3",
+   "report_anchor": "三阶段配方的权威入口",
+   "support": "direct",
+   "source_ids": [
+    "R",
+    "S"
+   ],
+   "evidence": "R=run_puro_2b.sh:44-77,108-177 + 论文 §H.3 p56",
+   "critical": false
+  },
+  {
+   "id": "C15",
+   "claim": "开放度裂缝：license 四资产四样（HF 权重 Apache 2.0、HF 数据集 other 混合上游、GitHub 仓 Other/NOASSERTION、Kaiyuan-Spark Apache-2.0），论文摘要「under Apache 2.0」与实测不完全符；SFT/curriculum/评测代码明确排除在公开仓外",
+   "report_anchor": "四类资产四种 license",
+   "support": "direct",
+   "source_ids": [
+    "R",
+    "HF",
+    "S"
+   ],
+   "evidence": "gh api + HF 卡实测；R=ORIGIN_COMMITS.md:43-53；论文摘要 p1",
+   "critical": true
+  },
+  {
+   "id": "C16",
+   "claim": "标度律形式 P = a + b·log2(C − C_P1)（C_P1=$1.84K；shift 后 RMSE 0.452→0.209）；四成本因子参考系不同不构成阶乘消融；消融在 TPP=20 而生产 TPP≈700",
+   "report_anchor": "Puro Cost Scaling Law",
+   "support": "direct",
+   "source_ids": [
+    "S"
+   ],
+   "evidence": "论文 §4.3 p22-24 + 附录 A p38",
+   "critical": false
+  },
+  {
+   "id": "C17",
+   "claim": "外部反响：kenashe.ai 三点独立质疑（compute≠total、自设协议、消费卡改变谁做实验）；二次传播失真两例（matching/approaching、TE delayed scaling）；HF 评论区作者答 FP16-accumulate 明显伤性能（正文无消融）",
+   "report_anchor": "外部反响速写",
+   "support": "direct",
+   "source_ids": [
+    "EXT",
+    "HF"
+   ],
+   "evidence": "hf-external 深读路核验（2026-10-15 快照）",
+   "critical": false
+  }
+ ],
+ "limitations": [
+  "论文页码引用基于 pdf 文本提取件（/tmp/puro-study/puro-paper.txt，===PAGE N=== 分页），复核时可对照 PDF 原件",
+  "外部反响核验依赖 2026-10-15 快照（HF API、博客），时效有限；未发现 HN/Reddit 专题帖不代表无遗漏",
+  "SMA6 六 checkpoint 在 non-persistent-ckpt-num-to-keep 4 下的采集机制论文与 repo 均未说明（报告 §8 标注为未解细节）",
+  "MuonH 参数路由（哪些矩阵进 MuonH）与逻辑矩阵 Newton-Schulz 的独立消融论文未提供——报告列为可追问缺口而非缺陷定论",
+  "标度律拟合系数（a、b 数值）与置信区间论文未公布，报告引用的是形式、数据点与结论性数字",
+  "Phase 1 power schedule 终点 LR 存在口径微妙处：HF 卡写 5.00e-3→1.04e-3（阶段边界值），脚本 min-lr 5e-4；报告未展开"
+ ]
+}

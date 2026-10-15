@@ -83,6 +83,7 @@
 | [generative_models_evolution.md](./concepts/generative_models_evolution.md) | 生成模型四代演化：GAN对抗博弈→DDPM扩散去噪→LDM潜空间→DiT Transformer骨干·Flow Matching前沿 |
 | [eva02_vision_transformer.md](./concepts/eva02_vision_transformer.md) | EVA-02：SwiGLU+2D RoPE+sub-LN+CLIP MIM，LLM架构迁移至视觉的里程碑，304M参数达90.0% IN-1K |
 | [megatron_lm_3d_parallelism.md](./concepts/megatron_lm_3d_parallelism.md) | 3D并行体系：TP(张量并行·列/行切分·2次AllReduce)·PP(1F1B调度·气泡压缩)·SP(序列并行)·千亿参数训练基础设施 |
+| [muon_hyperball.md](./concepts/muon_hyperball.md) | Muon系优化器与Hyperball包装：Newton-Schulz正交化·固定球面投影·有效学习率显式化(ρ=η)·参数路由·ELR视角的LR schedule设计 |
 | [agent_observability.md](./concepts/agent_observability.md) | Agent 可观测性：心跳检测·实时 Dashboard·延迟告警·事件溯源·自动干预 |
 | [llms_plus.md](./concepts/llms_plus.md) | LLMs+：MoE、长上下文、多模态、工具调用与模型路由组成的增强型 LLM 系统 |
 | [world_models.md](./concepts/world_models.md) | 世界模型：面向环境状态、动作后果与仿真规划的内部表征体系 · JEPA（V-JEPA 2 1.2B/1M+hr）vs 生成式（Cosmos 4B-14B/Genie 3/GAIA-2）双路线 |

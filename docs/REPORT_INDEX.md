@@ -7,6 +7,7 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-10-15 | [PuRo-2B 开放低成本预训练配方深度解析：MuonHyperball、FP8 与 RTX 5090 的 $5090 实验](../ai-learning/reports/knowledge_reports/PuRo-2B_开放低成本预训练配方_MuonHyperball与RTX5090_深度解析_20261015.md) | ai-learning |
 | 2026-10-15 | [GPT-6 Astra 指令架构：从 Prompt 堆叠到按需控制](../ai-learning/reports/knowledge_reports/GPT6_Astra指令架构_从Prompt堆叠到按需控制_深度解析_20261015.md) | ai-learning |
 | 2026-10-15 | [Agent Skills 生态深度解析](../ai-learning/reports/knowledge_reports/Agent_Skills_生态深度解析.md) | ai-learning |
 | 2026-10-15 | [AI 行业日报 · 2026-10-15](../web-surfing/reports/ai-news-daily-2026-10-15.md) | web-surfing |
@@ -31,12 +32,12 @@
 | 2026-10-10 | [十字路口：于红——AI 时代学什么？林迪效应、SEL 与把终点放在 30 岁](../podcast-learning/reports/2026-09-27_xiaoyuzhou-crossing_yuhong-sel.md) | podcast-learning |
 | 2026-10-10 | [乱翻书277：Today 中国首发——Memory×Proactive、单 session 终局与产品经理的价值回归](../podcast-learning/reports/2026-09-24_xiaoyuzhou-luanfanshu_today-personal-ai.md) | podcast-learning |
 | 2026-10-10 | [Personal Context 正交论：穿越 AI 进步周期的资产，与 PC 的构建工程](../ai-learning/reports/knowledge_reports/PersonalContext正交论_PC构建指南_20261010.md) | ai-learning |
-| 2026-10-09 | [起朱楼184：加息周期的重大投资决策——五步建立海外长债组合｜三季度投资账复盘](../podcast-learning/reports/2026-10-08_xiaoyuzhou-qizhulou_2026q3-investment-review.md) | podcast-learning |
 
-## 🤖 AI Learning（113 篇）
+## 🤖 AI Learning（114 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-10-15 | [PuRo-2B 开放低成本预训练配方深度解析：MuonHyperball、FP8 与 RTX 5090 的 $5090 实验](../ai-learning/reports/knowledge_reports/PuRo-2B_开放低成本预训练配方_MuonHyperball与RTX5090_深度解析_20261015.md) | `pretraining`, `muon_optimizer`, `fp8_training`, `cost_scaling_law`, `curriculum_learning`, `model_averaging` |
 | 2026-10-15 | [GPT-6 Astra 指令架构：从 Prompt 堆叠到按需控制](../ai-learning/reports/knowledge_reports/GPT6_Astra指令架构_从Prompt堆叠到按需控制_深度解析_20261015.md) | `gpt_6_astra`, `agent_skills`, `agents_md`, `prompt_engineering`, `context_engineering`, `agent_harness` |
 | 2026-10-15 | [Agent Skills 生态深度解析](../ai-learning/reports/knowledge_reports/Agent_Skills_生态深度解析.md) | — |
 | 2026-10-10 | [Personal Context 正交论：穿越 AI 进步周期的资产，与 PC 的构建工程](../ai-learning/reports/knowledge_reports/PersonalContext正交论_PC构建指南_20261010.md) | — |
