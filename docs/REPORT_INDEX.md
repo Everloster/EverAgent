@@ -281,7 +281,7 @@
 | 日期 | 报告 | 标签 |
 |------|------|------|
 | 2026-10-14 | [食贫道×刘慈欣：智能的不可判断性、AI三学派与爆炒腰花的生活哲学](../podcast-learning/reports/2026-10-14_bilibili-shipindao_liucixin-interview.md) | — |
-| 2026-10-14 | [硅谷101（再访张阔）：榜单99分与真实61%之间——E255 对篇](../podcast-learning/reports/2026-10-14_bilibili-svj101_zhangkuo-model-user-gap.md) | — |
+| 2026-10-14 | [硅谷101（再访张阔）：榜单99分与真实61%之间——E255 对篇](../podcast-learning/reports/2026-10-14_bilibili-svj101_zhangkuo-model-user-gap.md) | `agent`, `harness`, `context`, `benchmark`, `ecommerce` |
 | 2026-10-14 | [电丸AK：千问AI眼镜 N1 Pro——鼻托 PPG、三芯片与眼追的必要性](../podcast-learning/reports/2026-10-14_bilibili-dianwan-ak_qwen-glasses-n1pro.md) | — |
 | 2026-10-12 | [课代表330：郑昌熙（李飞飞World Labs）——工业场景不会有ChatGPT时刻、抽象层级论与鸡生蛋问题](../podcast-learning/reports/2026-10-08_rss-kedaibiao-lizheng_lifeifei-worldlabs-robot.md) | — |
 | 2026-10-12 | [十字路口：鸭哥——Context Infrastructure 三要素、0人公司与睡眠回归实验](../podcast-learning/reports/2026-10-11_xiaoyuzhou-crossing_yage-ai-strong.md) | — |
@@ -487,7 +487,7 @@
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
-| 2026-10-15 | [AI 行业日报 · 2026-10-15](../web-surfing/reports/ai-news-daily-2026-10-15.md) | — |
+| 2026-10-15 | [AI 行业日报 · 2026-10-15](../web-surfing/reports/ai-news-daily-2026-10-15.md) | `ai_news`, `daily`, `industry_watch` |
 | 2026-10-14 | [B 站关注列表、最近投稿与未看更新采集方案调研](../web-surfing/reports/bilibili-following-updates-research-2026-10-14.md) | — |
 | 2026-10-14 | [AI 行业日报 · 2026-10-14](../web-surfing/reports/ai-news-daily-2026-10-14.md) | — |
 | 2026-10-13 | [AI 行业日报 · 2026-10-13](../web-surfing/reports/ai-news-daily-2026-10-13.md) | — |

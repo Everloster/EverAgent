@@ -15,9 +15,11 @@ chapters: 4（按主题自组）
 polished: true
 polished_by: "Claude (pi)（结构化精编，约 raw 的 10.5%（按汉字数），头部已标注）"
 polished_at: 2026-10-14
-status: archived
+status: "archived"
 created: 2026-10-14
 updated_on: 2026-10-14
+quality_schema: "report-v2"
+semantic_tags: ["agent", "harness", "context", "benchmark", "ecommerce"]
 transcript_path: reports/transcripts/2026-10-14_bilibili-svj101_zhangkuo-model-user-gap.transcript.txt
 polished_transcript_path: reports/transcripts/2026-10-14_bilibili-svj101_zhangkuo-model-user-gap.polished.txt
 pipeline: opencli bilibili user-videos（关注列表选题）→ yt-dlp --print 拿 B 站简介（shownotes）→ eacli podcast plan/run（Razer whisper large-v3/CUDA，**B 站域名白名单放行实证**）→ eacli pull（86750B）→ 精编（SKILL v2）
@@ -27,6 +29,7 @@ hanzi_chars_raw: 14564
 total_chars_raw: 57618
 hanzi_chars_polished: 1559
 total_chars_polished: 3395
+quality_tier: "important"
 ---
 
 # 硅谷101再访张阔：榜单与真实之间的落差

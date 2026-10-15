@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "report_path": "web-surfing/reports/ai-news-daily-2026-10-15.md",
+  "quality_tier": "standard",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "replay-review-ai-news-20261015",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 92,
+        "request_coverage": 95,
+        "reasoning_quality": 89,
+        "readability": 92,
+        "limitations": 91
+      },
+      "score_reasons": {
+        "evidence_fidelity": "抽查两条高风险头条的一手页面，机制、分数、价格与运营数字一致；其余来源层级有显式标注。",
+        "request_coverage": "新闻、Trending、简讯、趋势总结和数据源状态均覆盖。",
+        "reasoning_quality": "趋势段与事实段分离，并对厂商自述、run-rate 和榜单热度保留边界。",
+        "readability": "头条采用速读、事实、质疑、来源的稳定结构，适合日报扫描。",
+        "limitations": "末尾完整列出直读失败项、转述项和快照时点限制。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03"
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "这是 standard 真实回放；高风险数字已重新读取一手来源，未把整期所有快讯升级为同等置信度。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 91.9,
+    "evaluated_on": "2026-10-15",
+    "policy_id": "report-quality-2026-10-15-r1",
+    "policy_sha256": "69eb1667e587b2e30f4141910049d8a6f7383b16059125c867ee09a23ac37268",
+    "report_sha256": "248ce694c514493e9c4e710ee30be831b3a3c7eba7fcbcc7d503c3a56cb70b0e",
+    "evidence_sha256": "25bf66c888286ee143ba9769e291ce422fce1f9ec60f1f36d8bd831d35d36e91"
+  }
+}

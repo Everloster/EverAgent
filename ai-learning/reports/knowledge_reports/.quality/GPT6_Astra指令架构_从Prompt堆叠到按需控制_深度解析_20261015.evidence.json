@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/GPT6_Astra指令架构_从Prompt堆叠到按需控制_深度解析_20261015.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-15",
+  "generator": {
+    "model": "gpt-5.6-sol",
+    "harness": "codex",
+    "run_id": "commit-4b3811a",
+    "explicit_model_override": false,
+    "override_reason": ""
+  },
+  "task": {
+    "summary": "深度分析 OpenAI 关于 GPT-6 Astra skills 与 prompts 的原文，并形成可落地的 EverAgent 改造建议。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "重构原文论证与关键建议，不把二手摘要当原文。"
+      },
+      {
+        "id": "R02",
+        "text": "使用 OpenAI 官方提示、Skills 与 AGENTS 文档交叉核验。"
+      },
+      {
+        "id": "R03",
+        "text": "区分官方事实、工程推论与适用边界，提出可评估的项目行动。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "official",
+      "title": "Rethinking skills and prompts for GPT-6 Astra",
+      "locator": "https://developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra",
+      "accessed_on": "2026-10-15"
+    },
+    {
+      "id": "S02",
+      "kind": "official",
+      "title": "Using GPT-6 — Prompting best practices",
+      "locator": "https://developers.openai.com/api/docs/guides/latest-model/gpt-6-astra#prompting-best-practices",
+      "accessed_on": "2026-10-15"
+    },
+    {
+      "id": "S03",
+      "kind": "official",
+      "title": "Build skills",
+      "locator": "https://learn.chatgpt.com/docs/build-skills",
+      "accessed_on": "2026-10-15"
+    },
+    {
+      "id": "S04",
+      "kind": "official",
+      "title": "Custom instructions with AGENTS.md",
+      "locator": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+      "accessed_on": "2026-10-15"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "模型升级会改变最优 Harness，旧脚手架可能从帮助变成阻力。",
+      "report_anchor": "模型能力升级会改变最优 Harness。",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "原文要求重新审视 skills、AGENTS.md 与 task prompts；提示指南说明新模型更敏感地遵循这些指令。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "Skill description 应承担准确触发，而不是完整教程。",
+      "report_anchor": "Skill description 是路由标签。",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S03"
+      ],
+      "evidence": "原文明确要求描述尽量短并清楚说明何时使用；Skills 文档说明名称与描述先进入发现上下文。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "AGENTS.md 应聚焦稳定规则和条件入口。",
+      "report_anchor": "`AGENTS.md` 是常驻控制面。",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S04"
+      ],
+      "evidence": "原文要求更新并精简 AGENTS.md；官方文档说明其发现、合并和覆盖机制。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "可机械判定的硬保证应迁入脚本、hook、类型或 CI。",
+      "report_anchor": "[工程推论] 硬保证交给确定性机制。",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S04"
+      ],
+      "evidence": "这是报告基于原文的工程推论，正文现已明确标注其归属。",
+      "critical": true
+    }
+  ],
+  "limitations": [
+    "OpenAI 原文属于官方工程经验，没有公开受控实验、样本量或统一效果数字。",
+    "EverAgent 的具体收益仍需在真实任务、模型与 Harness 组合上持续回放。"
+  ]
+}

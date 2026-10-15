@@ -1,8 +1,8 @@
 #!/bin/sh
 # EverAgent pre-commit hook: validate git identity and staged report/context quality
-# Install（二选一）:
-#   git config core.hooksPath scripts/hooks   # 推荐：版本化、随 pull 自动更新
-#   cp scripts/hooks/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
+# Defense in depth. scripts/ecommit.sh always runs the same gate first.
+# If an environment already owns core.hooksPath, do not overwrite it merely to
+# activate this hook; the repository commit wrapper remains authoritative.
 
 REPO_ROOT="$(git rev-parse --show-toplevel)"
 IDENTITY_SCRIPT="$REPO_ROOT/scripts/git_identity.py"

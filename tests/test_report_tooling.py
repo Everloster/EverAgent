@@ -1,4 +1,5 @@
 import importlib.util
+import io
 import json
 import subprocess
 import sys
@@ -13,6 +14,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 import audit_reports  # noqa: E402
 import eval_report_context  # noqa: E402
+import precommit_quality  # noqa: E402
 import reindex  # noqa: E402
 import report_catalog  # noqa: E402
 import report_quality  # noqa: E402
@@ -40,10 +42,10 @@ def complete_behavioral_case(case: dict, expected: dict) -> None:
         {
             "route": expected["expected_route"],
             "artifact_created": created,
-            "initial_project_files": [],
+            "initial_project_files": list(expected.get("expected_initial_files") or []),
             "repo_skills_loaded": skills,
-            "paused_before_research": False,
-            "clarification_count": 0,
+            "paused_before_research": expected.get("must_pause_before_research") is True,
+            "clarification_count": 1 if expected.get("must_pause_before_research") else 0,
             "checks_completed": checks,
             "completion_signals_met": expected["completion_signals"],
             "stop_reason": expected["expected_stop_reason"],
@@ -70,18 +72,35 @@ class ReportToolingTests(unittest.TestCase):
         self.assertFalse(any("transcripts" in path.parts for _collection, path in reports))
 
     def test_report_v1_contract_remains_supported(self):
-        report = (
-            ROOT
-            / "ai-learning"
-            / "reports"
-            / "knowledge_reports"
-            / "GPT6_Astra指令架构_从Prompt堆叠到按需控制_深度解析_20261015.md"
-        )
-        issues = audit_reports.audit_file(
-            report,
-            enforce=False,
-            wikilinks=audit_reports._wikilink_index(),
-        )
+        reports_dir = ROOT / "ai-learning" / "reports"
+        with tempfile.TemporaryDirectory(dir=reports_dir) as directory:
+            report = Path(directory) / "legacy-v1.md"
+            report.write_text(
+                """---
+title: "Legacy v1"
+domain: "ai-learning"
+report_type: "knowledge_report"
+status: "completed"
+updated_on: "2026-10-15"
+quality_schema: "report-v1"
+semantic_tags: ["legacy"]
+---
+
+# Legacy v1
+
+来源：https://example.com/source
+
+## 思考与追问
+
+1. 何时按需迁移？
+""",
+                encoding="utf-8",
+            )
+            issues = audit_reports.audit_file(
+                report,
+                enforce=False,
+                wikilinks=audit_reports._wikilink_index(),
+            )
         self.assertEqual(
             [issue for issue in issues if issue.severity == "error"],
             [],
@@ -223,6 +242,20 @@ semantic_tags: ["quality"]
             }
             report_quality._write_json(evidence_path, evidence)
             report_quality._write_json(review_path, review)
+            evidence_schema, _review_schema = report_quality.load_artifact_schemas()
+            malformed_evidence = json.loads(json.dumps(evidence))
+            malformed_evidence["task"]["requirements"] = "invalid"
+            schema_errors = report_quality._schema_errors(malformed_evidence, evidence_schema)
+            unsafe_local_evidence = json.loads(json.dumps(evidence))
+            unsafe_local_evidence["sources"][0].update(
+                {"kind": "local", "locator": "/etc/passwd"}
+            )
+            unsafe_findings, _unsafe_summary = report_quality.validate_evidence_manifest(
+                report,
+                report_catalog.parse_frontmatter(report.read_text(encoding="utf-8")),
+                unsafe_local_evidence,
+                report_quality.load_policy(),
+            )
             result = report_quality.evaluate_report(report)
             proc = subprocess.run(
                 [sys.executable, str(ROOT / "scripts" / "report_quality.py"), "check", str(report), "--finalize"],
@@ -233,17 +266,46 @@ semantic_tags: ["quality"]
             )
             finalized_metadata = report_catalog.parse_frontmatter(report.read_text(encoding="utf-8"))
             finalized_review = json.loads(review_path.read_text(encoding="utf-8"))
+            finalized_result = report_quality.evaluate_report(report)
+            repeated_finalize = subprocess.run(
+                [sys.executable, str(ROOT / "scripts" / "report_quality.py"), "check", str(report), "--finalize"],
+                cwd=ROOT,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+            stricter_policy = json.loads(json.dumps(report_quality.load_policy()))
+            stricter_policy["tiers"]["important"]["minimum_total"] = 99
+            pinned_policy_result = report_quality.evaluate_report(report, stricter_policy)
             audit_issues = audit_reports.audit_file(
                 report,
                 enforce=True,
                 wikilinks=audit_reports._wikilink_index(),
             )
+            forged_review = json.loads(json.dumps(finalized_review))
+            forged_review["decision"]["policy_sha256"] = "0" * 64
+            report_quality._write_json(review_path, forged_review)
+            forged_policy_result = report_quality.evaluate_report(report)
+            report_quality._write_json(review_path, finalized_review)
+            report.write_text(report.read_text(encoding="utf-8") + "\n判定后改动。\n", encoding="utf-8")
+            tampered_result = report_quality.evaluate_report(report)
 
         self.assertEqual(result["decision"], "pass")
         self.assertEqual(result["errors"], [])
         self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
         self.assertEqual(finalized_metadata["status"], "completed")
         self.assertEqual(finalized_review["decision"]["status"], "pass")
+        self.assertEqual(repeated_finalize.returncode, 1)
+        self.assertIn("finalized reports are immutable", repeated_finalize.stderr)
+        self.assertEqual(finalized_review["decision"]["policy_id"], report_quality.load_policy()["policy_id"])
+        self.assertEqual(len(finalized_review["decision"]["policy_sha256"]), 64)
+        self.assertEqual(finalized_result["policy_source"], "archive")
+        self.assertEqual(pinned_policy_result["decision"], "pass")
+        self.assertEqual(pinned_policy_result["policy_source"], "archive")
+        self.assertIn("QG008", {item["code"] for item in forged_policy_result["errors"]})
+        self.assertIn("type must be array", "\n".join(schema_errors))
+        self.assertIn("EVM035", {item.code for item in unsafe_findings})
+        self.assertIn("QG014", {item["code"] for item in tampered_result["errors"]})
         self.assertEqual([item for item in audit_issues if item.severity == "error"], [])
 
     def test_new_report_v2_draft_is_blocked_before_review(self):
@@ -484,8 +546,31 @@ semantic_tags: ["quality"]
         result = eval_report_context.static_evaluation()
         self.assertEqual(result["errors"], [])
         self.assertGreaterEqual(result["ace_cases"], 10)
+        self.assertEqual(result["quality_replays"], 3)
+        self.assertTrue(result["commit_wrapper_guarded"])
+        self.assertTrue(result["ci_quality_guarded"])
         self.assertEqual(result["discoverable_skill_count"], 1)
         self.assertLessEqual(result["report_skill_description_chars"], 180)
+
+    def test_ecommit_rejects_options_that_change_the_index_after_gate(self):
+        proc = subprocess.run(
+            ["bash", str(ROOT / "scripts" / "ecommit.sh"), "--all", "--dry-run"],
+            cwd=ROOT,
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+        self.assertEqual(proc.returncode, 2)
+        self.assertIn("改变待提交内容", proc.stderr)
+
+    def test_precommit_blocks_mutating_an_archived_policy(self):
+        archived = "config/report-quality-policies/report-quality-2026-10-15-r1.json"
+        with mock.patch.object(
+            precommit_quality,
+            "git_paths",
+            side_effect=[{archived}, set(), {archived}],
+        ), mock.patch("sys.stderr", new=io.StringIO()):
+            self.assertEqual(precommit_quality.main(), 1)
 
     def test_behavioral_template_can_score_a_complete_run(self):
         template = eval_report_context.run_template()
@@ -545,6 +630,33 @@ semantic_tags: ["quality"]
         self.assertFalse(row["checks"]["skills"])
         self.assertEqual(row["skill_precision"], 0)
         self.assertEqual(row["score"], 85)
+
+    def test_open_ended_learning_case_requires_one_clarification(self):
+        template = eval_report_context.run_template()
+        suite = json.loads(
+            (ROOT / "evals" / "ace-report-tasks.json").read_text(encoding="utf-8")
+        )
+        expected = {case["id"]: case for case in suite["cases"]}
+        for case in template["cases"]:
+            complete_behavioral_case(case, expected[case["id"]])
+        target = next(
+            case for case in template["cases"]
+            if case["id"] == "a_open_ended_learning_direction"
+        )
+        target["paused_before_research"] = False
+        target["clarification_count"] = 0
+
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "run.json"
+            path.write_text(json.dumps(template, ensure_ascii=False), encoding="utf-8")
+            result = eval_report_context.score_run(path)
+
+        row = next(
+            case for case in result["cases"]
+            if case["id"] == "a_open_ended_learning_direction"
+        )
+        self.assertFalse(row["checks"]["initiative"])
+        self.assertEqual(row["score"], 90)
 
     def test_github_report_generator_emits_current_frontmatter(self):
         module = load_report_generator()

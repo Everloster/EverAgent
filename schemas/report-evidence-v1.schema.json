@@ -3,7 +3,7 @@
   "$id": "https://github.com/Everloster/EverAgent/schemas/report-evidence-v1.schema.json",
   "title": "EverAgent report evidence manifest",
   "type": "object",
-  "required": ["schema_version", "report_path", "quality_tier", "generator", "task", "sources", "claims", "limitations"],
+  "required": ["schema_version", "report_path", "quality_tier", "created_on", "generator", "task", "sources", "claims", "limitations"],
   "properties": {
     "schema_version": {"const": 1},
     "report_path": {"type": "string", "minLength": 1},

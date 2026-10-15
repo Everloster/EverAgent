@@ -1,3 +1,14 @@
+---
+title: "AI 行业日报 · 2026-10-15"
+domain: "web-surfing"
+report_type: "ai_news_daily"
+status: "completed"
+updated_on: "2026-10-15"
+quality_schema: "report-v2"
+semantic_tags: ["ai_news", "daily", "industry_watch"]
+quality_tier: "standard"
+---
+
 # AI 行业日报 · 2026-10-15
 
 四源：AIHOT ✅ · GitHub Trending ✅ · AI Digest ❌ · HN ✅

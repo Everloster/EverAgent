@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "description": "持续回放三种真实报告体裁与三个生成 Harness，防止 report-v2 只在临时 fixture 中成立。",
+  "cases": [
+    {
+      "id": "official_article_codex",
+      "report_path": "ai-learning/reports/knowledge_reports/GPT6_Astra指令架构_从Prompt堆叠到按需控制_深度解析_20261015.md",
+      "quality_tier": "important",
+      "status": "completed",
+      "minimum_score": 96
+    },
+    {
+      "id": "ai_daily_claude_code",
+      "report_path": "web-surfing/reports/ai-news-daily-2026-10-15.md",
+      "quality_tier": "standard",
+      "status": "completed",
+      "minimum_score": 91
+    },
+    {
+      "id": "podcast_pi",
+      "report_path": "podcast-learning/reports/2026-10-14_bilibili-svj101_zhangkuo-model-user-gap.md",
+      "quality_tier": "important",
+      "status": "archived",
+      "minimum_score": 92
+    }
+  ]
+}

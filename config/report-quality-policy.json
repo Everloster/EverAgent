@@ -1,5 +1,6 @@
 {
   "schema_version": 1,
+  "policy_id": "report-quality-2026-10-15-r1",
   "current_report_schema": "report-v2",
   "default_quality_tier": "important",
   "preference_source": {

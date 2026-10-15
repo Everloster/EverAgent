@@ -33,7 +33,8 @@ web-surfing/
 ├── knowledge/                   # 可选：跨任务索引
 └── skills/
     ├── opencli-playbook.md      # opencli 通用手册（主力工具）
-    └── site-seeduck/SKILL.md    # SeedHub 站点沉淀（URL/命令/坑）
+    ├── site-seeduck/SKILL.md    # SeedHub 站点沉淀（URL/命令/坑）
+    └── site-bilibili/SKILL.md   # B 站关注、动态与学习收件箱（只读）
 ```
 
 ## 已沉淀
@@ -42,6 +43,7 @@ web-surfing/
 |------|------|------|
 | 通用手册 | `skills/opencli-playbook.md` | opencli 三大支柱 + 173 站速查 + 浏览器直驱模板 |
 | 站点技能 | `skills/site-seeduck/` | SeedHub 影视站：URL 结构 / 语言年份 tagId / 翻页解析脚本 |
+| 站点技能 | `skills/site-bilibili/` | B 站关注、动态、历史与学习候选收件箱（只读） |
 | 报告 | `reports/kdrama-top10-2024-2026.md` | 2024–2026 韩剧豆瓣评分 Top10（含链接） |
 
 ## 主力工具：opencli

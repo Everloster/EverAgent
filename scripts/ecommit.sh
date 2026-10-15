@@ -9,6 +9,41 @@ set -euo pipefail
 
 _D="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+# 门禁验证的是当前 Git index。-a/--all、--include/--only/--patch 和
+# pathspec 会在门禁后让 git commit 构造另一棵树，因此这里只接受元数据选项。
+_EXPECT_VALUE=""
+for _ARG in "$@"; do
+  if [ -n "$_EXPECT_VALUE" ]; then
+    _EXPECT_VALUE=""
+    continue
+  fi
+  case "$_ARG" in
+    -m|-F|-C|-c|--message|--file|--reuse-message|--reedit-message|--author|--date|--cleanup|--squash|--trailer)
+      _EXPECT_VALUE="$_ARG"
+      ;;
+    -m?*|-F?*|-C?*|-c?*|--message=*|--file=*|--reuse-message=*|--reedit-message=*|--author=*|--date=*|--cleanup=*|--squash=*|--trailer=*)
+      ;;
+    -q|--quiet|-v|--verbose|-s|--signoff|--no-signoff|-S|--gpg-sign|--gpg-sign=*|--no-gpg-sign|--no-verify|--verify|--allow-empty|--allow-empty-message|--amend|--no-post-rewrite|--no-edit|--reset-author|--dry-run|--short|--branch|--porcelain|--long|-z|--null|--ahead-behind|--no-ahead-behind|--renames|--no-renames|--find-renames|--find-renames=*)
+      ;;
+    -a|--all|-i|--include|-o|--only|-p|--patch|--interactive|--fixup|--fixup=*|--pathspec-from-file|--pathspec-from-file=*|--pathspec-file-nul|--)
+      echo "[ecommit] BLOCKED: $_ARG 会在质量门后改变待提交内容；请先显式 git add。" >&2
+      exit 2
+      ;;
+    -*)
+      echo "[ecommit] BLOCKED: 未审计的 git commit 选项 $_ARG。" >&2
+      exit 2
+      ;;
+    *)
+      echo "[ecommit] BLOCKED: 不接受 pathspec '$_ARG'；请先显式 git add。" >&2
+      exit 2
+      ;;
+  esac
+done
+if [ -n "$_EXPECT_VALUE" ]; then
+  echo "[ecommit] BLOCKED: $_EXPECT_VALUE 缺少参数值。" >&2
+  exit 2
+fi
+
 # Author：固定仓库主人（可被已存在的 GIT_AUTHOR_* 覆盖，便于特殊场景）
 export GIT_AUTHOR_NAME="${GIT_AUTHOR_NAME:-Everloster}"
 export GIT_AUTHOR_EMAIL="${GIT_AUTHOR_EMAIL:-2820419+Everloster@users.noreply.github.com}"
@@ -26,12 +61,23 @@ if [ -z "${_NAME:-}" ] || [ -z "${_EMAIL:-}" ] || [[ "$_NAME" == *-unknown ]]; t
 fi
 export GIT_COMMITTER_NAME="$_NAME"
 export GIT_COMMITTER_EMAIL="$_EMAIL"
-# 同步 git config，使 pre-commit hook（读 user.name/email）与实际 committer 一致
-git config user.name "$_NAME"
-git config user.email "$_EMAIL"
+# 只对本次进程覆盖 git config，使外部 hook 看到同一身份；不修改仓库配置。
+_CONFIG_COUNT="${GIT_CONFIG_COUNT:-0}"
+export "GIT_CONFIG_KEY_${_CONFIG_COUNT}=user.name"
+export "GIT_CONFIG_VALUE_${_CONFIG_COUNT}=$_NAME"
+_CONFIG_COUNT=$((_CONFIG_COUNT + 1))
+export "GIT_CONFIG_KEY_${_CONFIG_COUNT}=user.email"
+export "GIT_CONFIG_VALUE_${_CONFIG_COUNT}=$_EMAIL"
+export GIT_CONFIG_COUNT=$((_CONFIG_COUNT + 1))
 
-# 所有 Harness 共用同一份确定性质量门。hook 可能不由本仓控制，故 ecommit 主动执行。
+# 所有 Harness 共用同一份确定性质量门。hook 可能由外部环境管理，故 ecommit 主动执行。
+_INDEX_BEFORE="$(git write-tree)"
 python3 "$_D/precommit_quality.py"
+_INDEX_AFTER="$(git write-tree)"
+if [ "$_INDEX_BEFORE" != "$_INDEX_AFTER" ]; then
+  echo "[ecommit] BLOCKED: 质量门运行期间 Git index 已变化，请重新检查并重试。" >&2
+  exit 3
+fi
 export EVERAGENT_QUALITY_GATE_DONE=1
 
 exec git commit "$@"

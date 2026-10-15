@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "report_path": "web-surfing/reports/ai-news-daily-2026-10-15.md",
+  "quality_tier": "standard",
+  "created_on": "2026-10-15",
+  "generator": {
+    "model": "glm-5.3",
+    "harness": "claude-code",
+    "run_id": "commit-f11fb9d",
+    "explicit_model_override": false,
+    "override_reason": ""
+  },
+  "task": {
+    "summary": "汇总 2026-10-15 AI 行业动态，保留来源层级、数字口径与趋势判断。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "覆盖当天主要 AI 新闻与 GitHub Trending。"
+      },
+      {
+        "id": "R02",
+        "text": "标明直读、检索摘要、转述与未读边界。"
+      },
+      {
+        "id": "R03",
+        "text": "将事实汇总与趋势分析分开。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "primary",
+      "title": "Visual Studio Copilot and SSMS Remote Code Execution",
+      "locator": "https://embracethered.com/blog/posts/2026/visual-studio-copilot-remote-code-execution",
+      "accessed_on": "2026-10-15"
+    },
+    {
+      "id": "S02",
+      "kind": "official",
+      "title": "Introducing Grok Voice 3.0",
+      "locator": "https://x.ai/news/grok-voice-3",
+      "accessed_on": "2026-10-15"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "Visual Studio Copilot 与 SSMS 的共享组件存在尾点路径规范化绕过，可导致 RCE。",
+      "report_anchor": "根因是 Windows 文件名末尾句点在 NTFS 与 Win32 层的行为差异",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "研究员原文描述受保护文件名校验与 Win32 写入规范化之间的差异，并给出 CVE 与修复时间线。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "Grok Voice 3.0 的官方公告列出 AA 指数 86.9、低于一秒时延和每分钟 0.08 美元。",
+      "report_anchor": "以 86.9 分登顶 Artificial Analysis 语音指数",
+      "support": "direct",
+      "source_ids": [
+        "S02"
+      ],
+      "evidence": "xAI 官方发布页同时给出 86.9、低于一秒与 $0.08/min。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "Starlink 呼叫中心的 20,000 通/日与约 70% 无人工闭环属于厂商自报。",
+      "report_anchor": "Starlink 呼叫中心日用其接 2 万通电话",
+      "support": "direct",
+      "source_ids": [
+        "S02"
+      ],
+      "evidence": "xAI 官方发布页给出该运营数据；报告同时明确无第三方审计。",
+      "critical": true
+    }
+  ],
+  "limitations": [
+    "日报包含时点性榜单和检索快照，部分来源不能在之后完整复现。",
+    "部分简讯只到二手转述或标题级，报告已集中列出未直读项。"
+  ]
+}

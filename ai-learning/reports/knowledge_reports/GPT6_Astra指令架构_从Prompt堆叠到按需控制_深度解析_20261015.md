@@ -4,10 +4,11 @@ domain: "ai-learning"
 report_type: "text_analysis"
 status: "completed"
 updated_on: "2026-10-15"
-quality_schema: "report-v1"
+quality_schema: "report-v2"
 semantic_tags: ["gpt_6_astra", "agent_skills", "agents_md", "prompt_engineering", "context_engineering", "agent_harness"]
 related_concepts: ["agent_harness", "skill_curation", "long_context_systems"]
 related_entities: ["openai"]
+quality_tier: "important"
 ---
 
 # GPT-6 Astra 指令架构：从 Prompt 堆叠到按需控制
@@ -27,13 +28,13 @@ related_entities: ["openai"]
 
 这篇文章最重要的判断是：**模型能力升级会改变最优 Harness。** 旧模型需要大量步骤提醒、权限刹车和验收提示；GPT-6 Astra 的指令遵循、长任务连贯性和主动验证能力更强，同一批规则可能从帮助变成阻力。[原文](https://developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra)与[GPT-6 官方提示指南](https://developers.openai.com/api/docs/guides/latest-model/gpt-6-astra#prompting-best-practices)都明确提醒：Astra 更敏感地执行 skills 与 `AGENTS.md` 中的内容，也更容易在不确定或权限边界处停下。
 
-它给出的工程方向可以压缩成五句话：
+前四句直接概括原文，第五句是本文结合软件工程实践得到的工程推论：
 
 1. **Skill description 是路由标签。** 它要提高触发判断的区分度，不能承担完整教程。
 2. **`SKILL.md` 是按需工作流入口。** 复杂细节继续放进 references、scripts 和模板，以渐进式披露控制上下文。
 3. **`AGENTS.md` 是常驻控制面。** 只放跨任务稳定、确实会改变行为的规则，以及“什么任务读什么文档”的条件路由。
 4. **任务提示是本次任务的合同。** 写清目标、交付物、完成定义、允许自主推进的范围与真正需要停下的决策点。
-5. **硬保证交给确定性机制。** 安全边界、格式、提交身份、路径和质量门禁，能由脚本、hook、类型或 CI 保证时，不应只靠更长的文字提醒。
+5. **[工程推论] 硬保证交给确定性机制。** 安全边界、格式、提交身份、路径和质量门禁，能由脚本、hook、类型或 CI 保证时，不应只靠更长的文字提醒。
 
 对 EverAgent 最直接的启示是：当前根 `AGENTS.md` 与 `ai-learning/AGENTS.md` 合计 **21,482 bytes**，占 Codex 官方默认 `AGENTS.md` 合并上限 32 KiB 的 **65.6%**。容量还没有触顶，但同一 Token Plan 规则在根文件中多次复述，历史备忘也进入常驻上下文。下一步真正值得做的是一次带任务回放的指令审计，而不是简单追求更短。
 

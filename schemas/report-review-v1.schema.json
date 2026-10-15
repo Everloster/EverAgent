@@ -13,7 +13,7 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["reviewer", "scores", "score_reasons", "critical_claim_ids_checked", "source_ids_checked", "requirement_ids_checked", "unsupported_claims", "missing_requirements", "hard_failures", "notes"],
+        "required": ["role", "reviewer", "scores", "score_reasons", "critical_claim_ids_checked", "source_ids_checked", "requirement_ids_checked", "unsupported_claims", "missing_requirements", "hard_failures", "notes"],
         "properties": {
           "role": {"enum": ["primary_review", "escalation_review", "flagship_final_review"]},
           "reviewer": {
@@ -85,6 +85,17 @@
         }
       }
     },
-    "decision": {"type": "object"}
+    "decision": {
+      "type": "object",
+      "properties": {
+        "status": {"enum": ["pass", "revise", "escalate", "needs_review", "blocked"]},
+        "score": {"type": ["number", "null"]},
+        "evaluated_on": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+        "policy_id": {"type": "string", "minLength": 1},
+        "policy_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "report_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "evidence_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    }
   }
 }

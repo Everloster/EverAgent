@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-14_bilibili-svj101_zhangkuo-model-user-gap.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-15",
+  "generator": {
+    "model": "glm-5.3",
+    "harness": "pi",
+    "run_id": "commit-0b8d51a",
+    "explicit_model_override": false,
+    "override_reason": ""
+  },
+  "task": {
+    "summary": "基于 B 站播客转写，总结张阔对模型榜单与真实商业 Agent 差距的判断，并形成跨期分析。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "所有事实和引语回到转写或明确外部来源。"
+      },
+      {
+        "id": "R02",
+        "text": "保留 107-task、成本和难度分级等关键数字。"
+      },
+      {
+        "id": "R03",
+        "text": "区分嘉宾自述、跨期分析与未核限制，并保留思考与追问。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "local",
+      "title": "硅谷101再访张阔原始转写",
+      "locator": "podcast-learning/reports/transcripts/2026-10-14_bilibili-svj101_zhangkuo-model-user-gap.transcript.txt",
+      "accessed_on": "2026-10-15"
+    },
+    {
+      "id": "S02",
+      "kind": "local",
+      "title": "硅谷101再访张阔精编稿",
+      "locator": "podcast-learning/reports/transcripts/2026-10-14_bilibili-svj101_zhangkuo-model-user-gap.polished.txt",
+      "accessed_on": "2026-10-15"
+    },
+    {
+      "id": "S03",
+      "kind": "primary",
+      "title": "硅谷101播客 B 站视频版",
+      "locator": "https://www.bilibili.com/video/BV186pW6kEzU",
+      "accessed_on": "2026-10-14"
+    },
+    {
+      "id": "S04",
+      "kind": "local",
+      "title": "硅谷101 E255 对篇报告",
+      "locator": "podcast-learning/reports/2026-10-08_rss-guigu101_e255-zhangkuo.md",
+      "accessed_on": "2026-10-15"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "107-task 含 107 个电商任务，前沿模型无人干预通过率约 61%。",
+      "report_anchor": "前沿模型无人干预 ~61%",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "精编稿第一节明确记录 107 个任务、七类与约 61% 通过率。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "嘉宾用 Agent = Model × Harness × Context 表达三者缺一不可。",
+      "report_anchor": "Agent=Model×Harness×Context（乘法）",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "原始转写与精编稿均保留该乘法表达及三项解释。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "107 个任务的厂商口径成本为 Accio 3.69 美元，对比 Codex/Claude Code 9 美元以上。",
+      "report_anchor": "107 任务 Accio 3.69 美元 vs Codex/Claude Code 9+",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "精编稿第二节明确给出 3.69 与 9+ 美元，并标注约三分之一。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "嘉宾区分“上云”与长程能力，并把长程拆为定时、事件驱动和季度复盘。",
+      "report_anchor": "长程分定时/事件驱动/季度复盘三类",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "精编稿第四节记录上云是 basic、长程需要按三类业务场景定义。",
+      "critical": true
+    }
+  ],
+  "limitations": [
+    "精编稿约为原始转写汉字量的 10.5%，个别中英混杂词仍未还原。",
+    "核心评测、成本和商业案例来自产品负责人自述，跨播客一致不等于第三方验证。"
+  ]
+}

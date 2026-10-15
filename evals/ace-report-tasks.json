@@ -181,6 +181,39 @@
       "expected_stop_reason": "completed"
     },
     {
+      "id": "a_open_ended_learning_direction",
+      "prompt": "最近想学点 AI，但还没想好具体方向，你帮我安排一下。",
+      "expected_route": "ai-learning",
+      "artifact_policy": "forbidden",
+      "quality_tier": null,
+      "max_initial_project_files": 3,
+      "must_not_pause_before_research": false,
+      "must_pause_before_research": true,
+      "expected_initial_files": [
+        "ai-learning/MAP.md"
+      ],
+      "expected_skill_paths": [],
+      "forbidden_skill_paths": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "ai-learning/skills/paper_analysis/SKILL.md",
+        "ai-learning/skills/concept_deep_dive/SKILL.md",
+        "ai-learning/skills/拆书取景/SKILL.md",
+        "ai-learning/skills/科普讲解/SKILL.md"
+      ],
+      "forbidden_initial_files": [
+        "ai-learning/PROFILE.md",
+        "ai-learning/wiki/open-questions.md"
+      ],
+      "required_checks": [
+        "current_interest_clarification"
+      ],
+      "completion_signals": [
+        "clarification_asked_once"
+      ],
+      "expected_completed": false,
+      "expected_stop_reason": "awaiting_learning_direction"
+    },
+    {
       "id": "b_minimal_demo",
       "prompt": "用最小可运行 demo 帮我理解 speculative decoding，并记录真实输出",
       "expected_route": "ai-practice",

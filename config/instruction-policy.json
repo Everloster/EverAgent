@@ -25,6 +25,8 @@
     "research_method": "METHODOLOGY.md",
     "report_workflow": "docs/REPORT_WORKFLOW.md",
     "report_quality": "docs/REPORT_QUALITY_GATE.md",
+    "report_quality_policy": "config/report-quality-policy.json",
+    "report_quality_replays": "evals/report-quality-replays.json",
     "report_metadata": "docs/REPORT_METADATA.md",
     "context_governance": "docs/CONTEXT_ENGINEERING.md",
     "commit_and_safety": "docs/PROTOCOL_COMMON.md"
@@ -49,6 +51,18 @@
   ],
   "common_context_forbidden_model_tokens": [
     "gpt-6-astra",
+    "gpt-5.6-sol",
+    "glm-5.3",
+    "kimi-k3",
+    "minimax-m3"
+  ],
+  "model_neutral_owner_files": [
+    "docs/REPORT_WORKFLOW.md",
+    "docs/REPORT_QUALITY_GATE.md",
+    "docs/CONTEXT_ENGINEERING.md",
+    ".agents/skills/everagent-report/SKILL.md"
+  ],
+  "model_neutral_forbidden_model_tokens": [
     "gpt-5.6-sol",
     "glm-5.3",
     "kimi-k3",

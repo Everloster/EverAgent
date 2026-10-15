@@ -14,22 +14,26 @@ import math
 import re
 from collections import defaultdict
 from pathlib import Path
+from urllib.parse import unquote
 
 try:
     from .report_catalog import COLLECTION_BY_ID, ROOT, parse_frontmatter
-    from .report_quality import load_policy, normalize_model
+    from .report_quality import evaluate_report as evaluate_report_quality, load_policy, normalize_model
 except ImportError:  # Direct script execution.
     from report_catalog import COLLECTION_BY_ID, ROOT, parse_frontmatter
-    from report_quality import load_policy, normalize_model
+    from report_quality import evaluate_report as evaluate_report_quality, load_policy, normalize_model
 
 
 DEFAULT_AGENTS_BUDGET = 32 * 1024
 WARN_BUDGET_RATIO = 0.75
 SUITE_PATH = ROOT / "evals" / "ace-report-tasks.json"
 ANCHORS_PATH = ROOT / "evals" / "report-quality-anchors.json"
+QUALITY_REPLAYS_PATH = ROOT / "evals" / "report-quality-replays.json"
 INSTRUCTION_POLICY_PATH = ROOT / "config" / "instruction-policy.json"
 REPORT_SKILL = ROOT / ".agents" / "skills" / "everagent-report" / "SKILL.md"
 CLAUDE_BRIDGE = ROOT / "CLAUDE.md"
+ECOMMIT = ROOT / "scripts" / "ecommit.sh"
+CI_QUALITY_WORKFLOW = ROOT / ".github" / "workflows" / "quality.yml"
 QUALITY_GUIDE = ROOT / "docs" / "REPORT_QUALITY_GATE.md"
 QUALITY_SCHEMAS = (
     ROOT / "schemas" / "report-evidence-v1.schema.json",
@@ -129,15 +133,45 @@ def _paragraph_duplicates(files: list[Path]) -> list[dict[str, object]]:
     ]
 
 
+def _heading_anchor(heading: str) -> str:
+    value = re.sub(r"<[^>]+>", "", heading.strip().lower())
+    value = re.sub(r"[`*_~]", "", value)
+    value = "".join(char for char in value if char.isalnum() or char in {" ", "-", "_"})
+    return re.sub(r"\s+", "-", value)
+
+
+def _markdown_anchors(path: Path) -> set[str]:
+    anchors: set[str] = set()
+    counts: dict[str, int] = defaultdict(int)
+    for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
+        match = re.match(r"^#{1,6}\s+(.+?)\s*#*$", line)
+        if not match:
+            continue
+        base = _heading_anchor(match.group(1))
+        if not base:
+            continue
+        count = counts[base]
+        counts[base] += 1
+        anchors.add(base if count == 0 else f"{base}-{count}")
+    return anchors
+
+
 def _relative_link_errors(path: Path) -> list[str]:
     text = path.read_text(encoding="utf-8", errors="replace")
     errors: list[str] = []
     for target in re.findall(r"\[[^\]]*\]\((\.\.?/[^)]+)\)", text):
-        clean = target.strip().strip("<>").split("#", 1)[0]
+        normalized = target.strip().strip("<>")
+        clean, separator, fragment = normalized.partition("#")
         if "{" in clean or "}" in clean or "..." in clean:
             continue
-        if clean and not (path.parent / clean).resolve().exists():
+        resolved = (path.parent / clean).resolve()
+        if clean and not resolved.exists():
             errors.append(f"{path.relative_to(ROOT)} -> {target}")
+            continue
+        if separator and resolved.suffix.lower() == ".md":
+            anchor = unquote(fragment).lower()
+            if anchor and anchor not in _markdown_anchors(resolved):
+                errors.append(f"{path.relative_to(ROOT)} -> {target}（锚点不存在）")
     return errors
 
 
@@ -221,6 +255,15 @@ def static_evaluation() -> dict[str, object]:
         for relative, text in common_context.items():
             if str(token).lower() in text.lower():
                 errors.append(f"模型专属补丁进入公共 AGENTS：{relative} -> {token}")
+    for token in instruction_policy.get("model_neutral_forbidden_model_tokens", []):
+        for relative in instruction_policy.get("model_neutral_owner_files", []):
+            path = ROOT / str(relative)
+            if not path.is_file():
+                errors.append(f"模型中立 Owner 不存在：{relative}")
+                continue
+            text = path.read_text(encoding="utf-8", errors="replace")
+            if str(token).lower() in text.lower():
+                errors.append(f"模型名进入模型中立 Owner：{relative} -> {token}")
 
     claude_bytes = CLAUDE_BRIDGE.stat().st_size if CLAUDE_BRIDGE.exists() else 0
     claude_limit = int(budgets.get("claude_bridge_bytes_max", 0) or 0)
@@ -235,6 +278,41 @@ def static_evaluation() -> dict[str, object]:
         for snippet in instruction_policy.get("claude_forbidden_snippets", []):
             if snippet in claude_text:
                 errors.append(f"CLAUDE.md 重复了公共 Owner 链接：{snippet}")
+
+    commit_wrapper_guarded = False
+    if not ECOMMIT.is_file():
+        errors.append("缺少 scripts/ecommit.sh")
+    else:
+        ecommit_text = ECOMMIT.read_text(encoding="utf-8", errors="replace")
+        required_guards = (
+            "git write-tree",
+            "precommit_quality.py",
+            "_INDEX_BEFORE",
+            "_INDEX_AFTER",
+            "--pathspec-from-file",
+        )
+        missing_guards = [item for item in required_guards if item not in ecommit_text]
+        if missing_guards:
+            errors.append("ecommit 缺少 staged snapshot 防护：" + ", ".join(missing_guards))
+        else:
+            commit_wrapper_guarded = True
+
+    ci_quality_guarded = False
+    if not CI_QUALITY_WORKFLOW.is_file():
+        errors.append("缺少 .github/workflows/quality.yml")
+    else:
+        workflow_text = CI_QUALITY_WORKFLOW.read_text(encoding="utf-8", errors="replace")
+        required_ci_checks = (
+            "tests.test_report_tooling",
+            "audit_reports.py --all",
+            "reindex.py --check",
+            "eval_report_context.py",
+        )
+        missing_ci_checks = [item for item in required_ci_checks if item not in workflow_text]
+        if missing_ci_checks:
+            errors.append("CI 质量门缺少检查：" + ", ".join(missing_ci_checks))
+        else:
+            ci_quality_guarded = True
 
     duplicates = _paragraph_duplicates(files)
     if duplicates:
@@ -357,8 +435,13 @@ def static_evaluation() -> dict[str, object]:
         for skill_path in expected_skills | forbidden_skills | set(case.get("artifact_expected_skill_paths") or []):
             if not (ROOT / skill_path).is_file():
                 errors.append(f"ACE case {case.get('id')} 引用了不存在的 skill：{skill_path}")
+        for context_path in set(case.get("expected_initial_files") or []):
+            if not (ROOT / context_path).is_file():
+                errors.append(f"ACE case {case.get('id')} 引用了不存在的初始 context：{context_path}")
         if not case.get("completion_signals"):
             errors.append(f"ACE case {case.get('id')} 缺少 completion_signals")
+        if case.get("must_pause_before_research") and case.get("must_not_pause_before_research"):
+            errors.append(f"ACE case {case.get('id')} 同时要求暂停和禁止暂停")
 
     try:
         policy = load_policy()
@@ -366,15 +449,6 @@ def static_evaluation() -> dict[str, object]:
         policy = {}
         errors.append(f"报告质量策略无法读取：{exc}")
     if policy:
-        model_policy = policy["model_policy"]
-        if normalize_model(model_policy.get("default_generator", ""), policy) != "glm-5.3":
-            errors.append("默认报告生成模型必须为 GLM 5.3")
-        scarce = {normalize_model(item, policy) for item in model_policy.get("scarce_models", [])}
-        if "kimi-k3" not in scarce:
-            errors.append("Kimi K3 必须登记为稀缺模型")
-        disabled = {normalize_model(item, policy) for item in model_policy.get("disabled_models", [])}
-        if "minimax-m3" not in disabled:
-            errors.append("MiniMax M3 必须登记为禁用模型")
         valid_tiers = set(policy.get("tiers", {}))
         for case in cases:
             tier = case.get("quality_tier")
@@ -411,6 +485,48 @@ def static_evaluation() -> dict[str, object]:
         except (OSError, json.JSONDecodeError) as exc:
             errors.append(f"质量 schema 无法读取：{schema_path.relative_to(ROOT)}: {exc}")
 
+    try:
+        replay_suite = json.loads(QUALITY_REPLAYS_PATH.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        replay_suite = {"cases": []}
+        errors.append(f"真实报告回放集无法读取：{exc}")
+    if not isinstance(replay_suite, dict):
+        replay_suite = {"cases": []}
+        errors.append("真实报告回放集必须是 JSON object")
+    replay_cases = replay_suite.get("cases", [])
+    if replay_suite.get("schema_version") != 1:
+        errors.append("真实报告回放集 schema_version 必须为 1")
+    if not isinstance(replay_cases, list) or not replay_cases:
+        errors.append("真实报告回放集必须包含至少一个 case")
+        replay_cases = []
+    replay_ids: set[str] = set()
+    for replay in replay_cases:
+        replay_id = str(replay.get("id") or "")
+        if not replay_id or replay_id in replay_ids:
+            errors.append(f"真实报告回放 id 缺失或重复：{replay_id or '<empty>'}")
+        replay_ids.add(replay_id)
+        report_path = ROOT / str(replay.get("report_path") or "")
+        if not report_path.is_file():
+            errors.append(f"真实报告回放目标不存在：{replay.get('report_path')}")
+            continue
+        try:
+            result = evaluate_report_quality(report_path)
+        except (OSError, ValueError, json.JSONDecodeError) as exc:
+            errors.append(f"真实报告回放失败：{replay_id}: {exc}")
+            continue
+        metadata = parse_frontmatter(report_path.read_text(encoding="utf-8", errors="replace"))
+        if result["decision"] != "pass":
+            errors.append(f"真实报告回放未通过：{replay_id}: {result['decision']}")
+        if metadata.get("quality_tier") != replay.get("quality_tier"):
+            errors.append(f"真实报告回放 tier 漂移：{replay_id}")
+        if metadata.get("status") != replay.get("status"):
+            errors.append(f"真实报告回放 status 漂移：{replay_id}")
+        minimum_score = replay.get("minimum_score")
+        if not isinstance(minimum_score, (int, float)) or isinstance(minimum_score, bool):
+            errors.append(f"真实报告回放 minimum_score 无效：{replay_id}")
+        elif not isinstance(result.get("score"), (int, float)) or result["score"] < minimum_score:
+            errors.append(f"真实报告回放分数不足：{replay_id}")
+
     return {
         "schema_version": 1,
         "agents_files": len(files),
@@ -418,6 +534,8 @@ def static_evaluation() -> dict[str, object]:
         "root_repo_owned_bytes": root_repo_owned_bytes,
         "domain_agent_bytes": domain_agent_bytes,
         "claude_bridge_bytes": claude_bytes,
+        "commit_wrapper_guarded": commit_wrapper_guarded,
+        "ci_quality_guarded": ci_quality_guarded,
         "active_context_files": len(context_files),
         "governed_context_files": len(context_files),
         "chains": chains,
@@ -431,6 +549,7 @@ def static_evaluation() -> dict[str, object]:
         "largest_on_demand_playbook_bytes": max((path.stat().st_size for path in on_demand_playbooks), default=0),
         "ace_cases": len(cases),
         "quality_anchors": len(anchor_ids),
+        "quality_replays": len(replay_cases),
         "warnings": warnings,
         "errors": errors,
     }
@@ -514,17 +633,28 @@ def score_run(path: Path) -> dict[str, object]:
             hard_failure = True
 
         initial_files = obs.get("initial_project_files") or []
+        required_initial_files = set(exp.get("expected_initial_files") or [])
         forbidden_files = set(exp.get("forbidden_initial_files") or [])
         unnecessary_context_reads = sorted(forbidden_files & set(map(str, initial_files)))
         checks["context_budget"] = (
             len(initial_files) <= exp["max_initial_project_files"]
+            and required_initial_files.issubset(set(map(str, initial_files)))
             and not unnecessary_context_reads
         )
         score += 10 if checks["context_budget"] else 0
 
-        checks["initiative"] = not (
-            exp.get("must_not_pause_before_research") and obs.get("paused_before_research") is True
-        )
+        if exp.get("must_pause_before_research"):
+            checks["initiative"] = (
+                obs.get("paused_before_research") is True
+                and int(obs.get("clarification_count") or 0) == 1
+            )
+        elif exp.get("must_not_pause_before_research"):
+            checks["initiative"] = (
+                obs.get("paused_before_research") is False
+                and int(obs.get("clarification_count") or 0) == 0
+            )
+        else:
+            checks["initiative"] = True
         score += 10 if checks["initiative"] else 0
 
         expected_skills = set(exp.get("expected_skill_paths") or [])

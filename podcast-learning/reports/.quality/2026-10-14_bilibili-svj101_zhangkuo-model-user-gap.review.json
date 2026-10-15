@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-14_bilibili-svj101_zhangkuo-model-user-gap.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "replay-review-podcast-20261015",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 93,
+        "request_coverage": 95,
+        "reasoning_quality": 91,
+        "readability": 92,
+        "limitations": 92
+      },
+      "score_reasons": {
+        "evidence_fidelity": "107/61%、乘法公式、成本与长程分类均回查精编稿和原始转写；厂商自述边界保留。",
+        "request_coverage": "摘要、关键观点、数字、跨期连接、限制和三问完整。",
+        "reasoning_quality": "跨期连接有明确来源，推论与嘉宾原话分区呈现。",
+        "readability": "速览、概览、增量分析和关键数字层次清楚。",
+        "limitations": "转写压缩、未还原词、厂商利益关系和第三方验证缺口均明确。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04"
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "以仓内原始转写和精编稿独立复核；外部案例未作新增事实背书。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 92.75,
+    "evaluated_on": "2026-10-15",
+    "policy_id": "report-quality-2026-10-15-r1",
+    "policy_sha256": "69eb1667e587b2e30f4141910049d8a6f7383b16059125c867ee09a23ac37268",
+    "report_sha256": "bf5ca72307d05e114f7035769ef17d47a02872ad9f5e3f09e2f5d52dff0c5f14",
+    "evidence_sha256": "cb76cf2a24d2d7becf6a383cc64ea2854e6dc9ad7174790263a3d2c194ec8133"
+  }
+}

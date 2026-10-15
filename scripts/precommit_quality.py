@@ -69,6 +69,19 @@ def report_for_sidecar(path: str) -> str | None:
 def main() -> int:
     staged = git_paths("diff", "--cached", "--name-only", "--diff-filter=ACMRTUXB")
     added = git_paths("diff", "--cached", "--name-only", "--diff-filter=A")
+    modified_or_removed = git_paths("diff", "--cached", "--name-only", "--diff-filter=DMRTUXB")
+    changed_policy_archives = sorted(
+        path
+        for path in modified_or_removed
+        if path.startswith("config/report-quality-policies/")
+    )
+    if changed_policy_archives:
+        print(
+            "[precommit-quality] BLOCKED: archived report policies are immutable; add a new policy_id instead: "
+            + ", ".join(changed_policy_archives),
+            file=sys.stderr,
+        )
+        return 1
     added_reports = sorted(path for path in added if is_report(path))
     orphan_sidecars = sorted(
         path

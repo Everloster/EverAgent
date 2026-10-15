@@ -10,11 +10,13 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+import hashlib
 import json
 import re
 import sys
 import uuid
 from dataclasses import asdict, dataclass
+from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
@@ -25,6 +27,9 @@ except ImportError:  # Direct script execution.
 
 
 POLICY_PATH = ROOT / "config" / "report-quality-policy.json"
+POLICY_ARCHIVE_DIR = ROOT / "config" / "report-quality-policies"
+EVIDENCE_SCHEMA_PATH = ROOT / "schemas" / "report-evidence-v1.schema.json"
+REVIEW_SCHEMA_PATH = ROOT / "schemas" / "report-review-v1.schema.json"
 CURRENT_REPORT_SCHEMA = "report-v2"
 SUPPORTED_REPORT_SCHEMAS = {"report-v1", CURRENT_REPORT_SCHEMA}
 EVIDENCE_SCHEMA_VERSION = 1
@@ -44,11 +49,15 @@ class QualityFinding:
 
 def load_policy(path: Path = POLICY_PATH) -> dict[str, Any]:
     policy = json.loads(path.read_text(encoding="utf-8"))
-    weights = policy.get("dimensions", {})
-    if sum(weights.values()) != 100:
-        raise ValueError("report quality dimension weights must sum to 100")
-    if policy.get("current_report_schema") != CURRENT_REPORT_SCHEMA:
-        raise ValueError("current_report_schema does not match the validator")
+    _validate_policy(policy)
+    if path.resolve() == POLICY_PATH.resolve():
+        archive = POLICY_ARCHIVE_DIR / f"{policy['policy_id']}.json"
+        if not archive.is_file():
+            raise ValueError(f"active report policy is not archived: {archive.relative_to(ROOT)}")
+        archived = json.loads(archive.read_text(encoding="utf-8"))
+        _validate_policy(archived)
+        if _canonical_json_bytes(archived) != _canonical_json_bytes(policy):
+            raise ValueError("active report policy differs from its immutable archive")
     return policy
 
 
@@ -90,9 +99,307 @@ def _load_json(path: Path) -> dict[str, Any]:
     return data
 
 
+def _canonical_json_bytes(value: Any) -> bytes:
+    return json.dumps(
+        value,
+        ensure_ascii=False,
+        sort_keys=True,
+        separators=(",", ":"),
+    ).encode("utf-8")
+
+
+def policy_sha256(policy: dict[str, Any]) -> str:
+    return hashlib.sha256(_canonical_json_bytes(policy)).hexdigest()
+
+
+def policy_reference(policy: dict[str, Any]) -> dict[str, str]:
+    return {
+        "policy_id": str(policy["policy_id"]),
+        "policy_sha256": policy_sha256(policy),
+    }
+
+
+def load_policy_revision(policy_id: str) -> dict[str, Any]:
+    if re.fullmatch(r"[a-z0-9][a-z0-9._-]*", policy_id) is None:
+        raise ValueError("policy_id contains unsafe characters")
+    path = POLICY_ARCHIVE_DIR / f"{policy_id}.json"
+    policy = _load_json(path)
+    _validate_policy(policy)
+    if policy.get("policy_id") != policy_id:
+        raise ValueError("archived policy id does not match its filename")
+    return policy
+
+
+def _type_matches(value: Any, expected: str | list[str]) -> bool:
+    if isinstance(expected, list):
+        return any(_type_matches(value, item) for item in expected)
+    checks = {
+        "object": lambda item: isinstance(item, dict),
+        "array": lambda item: isinstance(item, list),
+        "string": lambda item: isinstance(item, str),
+        "integer": lambda item: isinstance(item, int) and not isinstance(item, bool),
+        "number": lambda item: isinstance(item, (int, float)) and not isinstance(item, bool),
+        "boolean": lambda item: isinstance(item, bool),
+        "null": lambda item: item is None,
+    }
+    return expected in checks and checks[expected](value)
+
+
+def _schema_errors(value: Any, schema: dict[str, Any], location: str = "$") -> list[str]:
+    """Validate the JSON-Schema subset used by the report artifact contracts."""
+    errors: list[str] = []
+    expected_type = schema.get("type")
+    if expected_type is not None and not _type_matches(value, expected_type):
+        return [f"{location}: type must be {expected_type}"]
+    if "const" in schema and value != schema["const"]:
+        errors.append(f"{location}: value must equal {schema['const']!r}")
+    if "enum" in schema and value not in schema["enum"]:
+        errors.append(f"{location}: value is outside the declared enum")
+
+    if isinstance(value, dict):
+        required = schema.get("required", [])
+        for key in required:
+            if key not in value:
+                errors.append(f"{location}.{key}: required field is missing")
+        properties = schema.get("properties", {})
+        for key, item in value.items():
+            child = properties.get(key)
+            if isinstance(child, dict):
+                errors.extend(_schema_errors(item, child, f"{location}.{key}"))
+            elif schema.get("additionalProperties") is False:
+                errors.append(f"{location}.{key}: additional property is not allowed")
+    elif isinstance(value, list):
+        minimum = schema.get("minItems")
+        if isinstance(minimum, int) and len(value) < minimum:
+            errors.append(f"{location}: requires at least {minimum} items")
+        item_schema = schema.get("items")
+        if isinstance(item_schema, dict):
+            for index, item in enumerate(value):
+                errors.extend(_schema_errors(item, item_schema, f"{location}[{index}]"))
+    elif isinstance(value, str):
+        minimum = schema.get("minLength")
+        if isinstance(minimum, int) and len(value) < minimum:
+            errors.append(f"{location}: string is shorter than {minimum}")
+        pattern = schema.get("pattern")
+        if isinstance(pattern, str) and re.fullmatch(pattern, value) is None:
+            errors.append(f"{location}: string does not match {pattern}")
+    elif isinstance(value, (int, float)) and not isinstance(value, bool):
+        minimum = schema.get("minimum")
+        maximum = schema.get("maximum")
+        if isinstance(minimum, (int, float)) and value < minimum:
+            errors.append(f"{location}: value is below {minimum}")
+        if isinstance(maximum, (int, float)) and value > maximum:
+            errors.append(f"{location}: value is above {maximum}")
+    return errors
+
+
+@lru_cache(maxsize=1)
+def load_artifact_schemas() -> tuple[dict[str, Any], dict[str, Any]]:
+    return _load_json(EVIDENCE_SCHEMA_PATH), _load_json(REVIEW_SCHEMA_PATH)
+
+
+def _nested(schema: dict[str, Any], *keys: str) -> Any:
+    value: Any = schema
+    for key in keys:
+        value = value[key]
+    return value
+
+
+def _validate_policy(policy: dict[str, Any]) -> None:
+    errors: list[str] = []
+    if policy.get("schema_version") != 1:
+        errors.append("schema_version must be 1")
+    if not str(policy.get("policy_id") or "").strip():
+        errors.append("policy_id must be non-empty")
+    if policy.get("current_report_schema") != CURRENT_REPORT_SCHEMA:
+        errors.append("current_report_schema does not match the validator")
+    dimensions = policy.get("dimensions")
+    if not isinstance(dimensions, dict) or not dimensions:
+        errors.append("dimensions must be a non-empty object")
+        dimensions = {}
+    if any(not isinstance(value, (int, float)) or isinstance(value, bool) for value in dimensions.values()):
+        errors.append("dimension weights must be numeric")
+    elif sum(dimensions.values()) != 100:
+        errors.append("report quality dimension weights must sum to 100")
+
+    evidence_schema, review_schema = load_artifact_schemas()
+    evidence_tiers = set(_nested(evidence_schema, "properties", "quality_tier", "enum"))
+    review_tiers = set(_nested(review_schema, "properties", "quality_tier", "enum"))
+    policy_tiers = set((policy.get("tiers") or {}).keys())
+    if evidence_tiers != review_tiers or policy_tiers != evidence_tiers:
+        errors.append("quality tier enums drift between policy and schemas")
+    schema_dimensions = set(
+        _nested(
+            review_schema,
+            "properties",
+            "reviews",
+            "items",
+            "properties",
+            "scores",
+            "properties",
+        )
+    )
+    if set(dimensions) != schema_dimensions:
+        errors.append("quality dimensions drift between policy and review schema")
+    schema_failures = set(
+        _nested(
+            review_schema,
+            "properties",
+            "reviews",
+            "items",
+            "properties",
+            "hard_failures",
+            "items",
+            "enum",
+        )
+    )
+    if set(policy.get("hard_failure_codes") or []) != schema_failures:
+        errors.append("hard failure codes drift between policy and review schema")
+    schema_source_kinds = set(
+        _nested(evidence_schema, "properties", "sources", "items", "properties", "kind", "enum")
+    )
+    if schema_source_kinds != SOURCE_KINDS:
+        errors.append("source kinds drift between validator and evidence schema")
+    schema_support_types = set(
+        _nested(evidence_schema, "properties", "claims", "items", "properties", "support", "enum")
+    )
+    if schema_support_types != SUPPORT_TYPES:
+        errors.append("support types drift between validator and evidence schema")
+    schema_review_roles = set(
+        _nested(review_schema, "properties", "reviews", "items", "properties", "role", "enum")
+    )
+    if schema_review_roles != REVIEW_ROLES:
+        errors.append("review roles drift between validator and review schema")
+
+    model_policy = policy.get("model_policy")
+    if not isinstance(model_policy, dict):
+        errors.append("model_policy must be an object")
+        model_policy = {}
+    for key in ("default_generator", "default_reviewer"):
+        if not str(model_policy.get(key) or "").strip():
+            errors.append(f"model_policy.{key} must be non-empty")
+    for key in ("premium_reviewer_order", "strong_reviewers", "scarce_models", "disabled_models"):
+        if not isinstance(model_policy.get(key), list):
+            errors.append(f"model_policy.{key} must be an array")
+    if set(model_policy.get("scarce_models") or []) & set(model_policy.get("disabled_models") or []):
+        errors.append("scarce_models and disabled_models must be disjoint")
+    if not set(model_policy.get("premium_reviewer_order") or []).issubset(
+        set(model_policy.get("strong_reviewers") or [])
+    ):
+        errors.append("premium_reviewer_order must be a subset of strong_reviewers")
+
+    for tier, rules in (policy.get("tiers") or {}).items():
+        if not isinstance(rules, dict):
+            errors.append(f"tier {tier} must be an object")
+            continue
+        if set(rules.get("minimum_dimension_scores") or {}) != set(dimensions):
+            errors.append(f"tier {tier} minimum_dimension_scores drift from dimensions")
+        for key in (
+            "minimum_total",
+            "minimum_sources",
+            "minimum_primary_sources",
+            "minimum_critical_claims",
+            "reviewers_required",
+            "strong_reviewers_required",
+            "max_revision_rounds",
+        ):
+            if not isinstance(rules.get(key), (int, float)) or isinstance(rules.get(key), bool):
+                errors.append(f"tier {tier}.{key} must be numeric")
+    if errors:
+        raise ValueError("; ".join(errors))
+
+
+def _artifact_schema_findings(
+    value: dict[str, Any],
+    schema: dict[str, Any],
+    *,
+    code: str,
+    label: str,
+) -> list[QualityFinding]:
+    return [
+        QualityFinding("error", code, f"{label} 不符合 JSON schema：{error}")
+        for error in _schema_errors(value, schema)[:20]
+    ]
+
+
 def _write_json(path: Path, data: dict[str, Any]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def _decision_record(
+    result: dict[str, Any],
+    policy: dict[str, Any],
+    report: Path,
+    evidence_path: Path,
+) -> dict[str, Any]:
+    reference = policy_reference(policy)
+    decision = {
+        "status": result["decision"],
+        "score": result["score"],
+        "evaluated_on": dt.date.today().isoformat(),
+        **reference,
+        "report_sha256": hashlib.sha256(report.read_bytes()).hexdigest(),
+    }
+    if evidence_path.exists():
+        decision["evidence_sha256"] = hashlib.sha256(evidence_path.read_bytes()).hexdigest()
+    return decision
+
+
+def _policy_for_finalized_report(
+    metadata: dict[str, object],
+    review: dict[str, Any] | None,
+    current_policy: dict[str, Any],
+) -> tuple[dict[str, Any], list[QualityFinding]]:
+    status = str(metadata.get("status") or "")
+    if status in {"in_progress", "planned"}:
+        return current_policy, []
+    if not isinstance(review, dict):
+        return current_policy, []
+    decision = review.get("decision")
+    if not isinstance(decision, dict) or not decision:
+        return current_policy, []
+    expected_digest = str(decision.get("policy_sha256") or "")
+    expected_id = str(decision.get("policy_id") or "")
+    findings: list[QualityFinding] = []
+    if not expected_id or not expected_digest:
+        findings.append(QualityFinding("error", "QG007", "已完成报告缺少最终判定的策略版本引用"))
+    try:
+        registered_policy = load_policy_revision(expected_id)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        findings.append(QualityFinding("error", "QG016", f"最终判定引用的策略版本不可用：{exc}"))
+    else:
+        if expected_digest != policy_sha256(registered_policy):
+            findings.append(QualityFinding("error", "QG008", "最终判定的 policy_sha256 与已登记版本不一致"))
+    return (registered_policy if not findings else current_policy), findings
+
+
+def _finalized_binding_findings(
+    report: Path,
+    metadata: dict[str, object],
+    evidence_path: Path,
+    review: dict[str, Any] | None,
+    score: float | None,
+) -> list[QualityFinding]:
+    if str(metadata.get("status") or "") in {"in_progress", "planned"}:
+        return []
+    if not isinstance(review, dict):
+        return []
+    decision = review.get("decision")
+    if not isinstance(decision, dict) or not decision:
+        return [QualityFinding("error", "QG011", "已完成报告缺少最终判定记录")]
+    findings: list[QualityFinding] = []
+    if decision.get("status") != "pass":
+        findings.append(QualityFinding("error", "QG012", "已完成报告的最终判定不是 pass"))
+    if decision.get("score") != score:
+        findings.append(QualityFinding("error", "QG013", "最终判定分数与复核记录不一致"))
+    report_digest = hashlib.sha256(report.read_bytes()).hexdigest()
+    evidence_digest = hashlib.sha256(evidence_path.read_bytes()).hexdigest() if evidence_path.exists() else ""
+    if decision.get("report_sha256") != report_digest:
+        findings.append(QualityFinding("error", "QG014", "报告内容在最终判定后发生变化"))
+    if decision.get("evidence_sha256") != evidence_digest:
+        findings.append(QualityFinding("error", "QG015", "证据账本在最终判定后发生变化"))
+    return findings
 
 
 def _set_frontmatter_fields(report: Path, fields: dict[str, str]) -> None:
@@ -162,6 +469,15 @@ def validate_evidence_manifest(
     policy: dict[str, Any],
 ) -> tuple[list[QualityFinding], dict[str, Any]]:
     findings: list[QualityFinding] = []
+    evidence_schema, _review_schema = load_artifact_schemas()
+    findings.extend(
+        _artifact_schema_findings(
+            manifest,
+            evidence_schema,
+            code="EVM000",
+            label="证据账本",
+        )
+    )
     tier = str(metadata.get("quality_tier") or "")
     tier_policy = policy.get("tiers", {}).get(tier)
     relative = report_relative_path(report)
@@ -229,6 +545,18 @@ def validate_evidence_manifest(
             findings.append(QualityFinding("error", "EVM015", f"未知 source kind：{kind}"))
         if kind in {"primary", "official", "local", "execution"}:
             primary_sources += 1
+        if kind == "local":
+            locator = str(source.get("locator") or "")
+            locator_path = Path(locator)
+            local_candidate = ROOT / locator_path
+            local_source = local_candidate.resolve()
+            try:
+                local_source.relative_to(ROOT.resolve())
+                inside_root = not locator_path.is_absolute()
+            except ValueError:
+                inside_root = False
+            if not locator or not inside_root or local_candidate.is_symlink() or not local_source.is_file():
+                findings.append(QualityFinding("error", "EVM035", f"本地来源不存在或不是普通文件：{locator or '<empty>'}"))
         if source.get("accessed_on") and not re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(source["accessed_on"])):
             findings.append(QualityFinding("error", "EVM016", f"source {source_id} 的 accessed_on 格式错误"))
     if len(source_ids) != len(set(source_ids)):
@@ -323,6 +651,15 @@ def validate_review_record(
     policy: dict[str, Any],
 ) -> tuple[list[QualityFinding], dict[str, Any]]:
     findings: list[QualityFinding] = []
+    _evidence_schema, review_schema = load_artifact_schemas()
+    findings.extend(
+        _artifact_schema_findings(
+            review,
+            review_schema,
+            code="REV000",
+            label="复核记录",
+        )
+    )
     tier = str(metadata.get("quality_tier") or "")
     tier_policy = policy.get("tiers", {}).get(tier) or {}
     relative = report_relative_path(report)
@@ -511,15 +848,39 @@ def validate_review_record(
 
 def evaluate_report(report: Path, policy: dict[str, Any] | None = None) -> dict[str, Any]:
     report = report.resolve()
-    policy = policy or load_policy()
+    current_policy = policy or load_policy()
     metadata = parse_frontmatter(report.read_text(encoding="utf-8", errors="replace"))
     tier = str(metadata.get("quality_tier") or "")
     findings: list[QualityFinding] = []
     evidence_path, review_path = quality_artifact_paths(report)
+    manifest: dict[str, Any] | None = None
+    review: dict[str, Any] | None = None
 
     if metadata.get("quality_schema") != CURRENT_REPORT_SCHEMA:
         findings.append(QualityFinding("error", "QG001", f"质量流水线要求 quality_schema: {CURRENT_REPORT_SCHEMA}"))
-    if tier not in policy.get("tiers", {}):
+
+    if evidence_path.exists():
+        try:
+            manifest = _load_json(evidence_path)
+        except (OSError, json.JSONDecodeError, ValueError) as exc:
+            findings.append(QualityFinding("error", "QG004", f"证据账本无法读取：{exc}"))
+    else:
+        findings.append(QualityFinding("error", "QG003", f"缺少证据账本：{evidence_path.relative_to(ROOT)}"))
+    if review_path.exists():
+        try:
+            review = _load_json(review_path)
+        except (OSError, json.JSONDecodeError, ValueError) as exc:
+            findings.append(QualityFinding("error", "QG006", f"复核记录无法读取：{exc}"))
+    else:
+        findings.append(QualityFinding("error", "QG005", f"缺少独立复核记录：{review_path.relative_to(ROOT)}"))
+
+    effective_policy, policy_findings = _policy_for_finalized_report(
+        metadata,
+        review,
+        current_policy,
+    )
+    findings.extend(policy_findings)
+    if tier not in effective_policy.get("tiers", {}):
         findings.append(QualityFinding("error", "QG002", f"未知或缺失 quality_tier：{tier or '<empty>'}"))
 
     evidence_summary = {
@@ -532,16 +893,14 @@ def evaluate_report(report: Path, policy: dict[str, Any] | None = None) -> dict[
         "generator_run_id": "",
         "generator_explicit_override": False,
     }
-    if not evidence_path.exists():
-        findings.append(QualityFinding("error", "QG003", f"缺少证据账本：{evidence_path.relative_to(ROOT)}"))
-    else:
-        try:
-            manifest = _load_json(evidence_path)
-        except (OSError, json.JSONDecodeError, ValueError) as exc:
-            findings.append(QualityFinding("error", "QG004", f"证据账本无法读取：{exc}"))
-        else:
-            evidence_findings, evidence_summary = validate_evidence_manifest(report, metadata, manifest, policy)
-            findings.extend(evidence_findings)
+    if manifest is not None:
+        evidence_findings, evidence_summary = validate_evidence_manifest(
+            report,
+            metadata,
+            manifest,
+            effective_policy,
+        )
+        findings.extend(evidence_findings)
 
     review_summary = {
         "revision_round": 1,
@@ -552,22 +911,24 @@ def evaluate_report(report: Path, policy: dict[str, Any] | None = None) -> dict[
         "strong_reviews": 0,
         "scarce_model_calls": 0,
     }
-    if not review_path.exists():
-        findings.append(QualityFinding("error", "QG005", f"缺少独立复核记录：{review_path.relative_to(ROOT)}"))
-    else:
-        try:
-            review = _load_json(review_path)
-        except (OSError, json.JSONDecodeError, ValueError) as exc:
-            findings.append(QualityFinding("error", "QG006", f"复核记录无法读取：{exc}"))
-        else:
-            review_findings, review_summary = validate_review_record(
-                report,
-                metadata,
-                review,
-                evidence_summary,
-                policy,
-            )
-            findings.extend(review_findings)
+    if review is not None:
+        review_findings, review_summary = validate_review_record(
+            report,
+            metadata,
+            review,
+            evidence_summary,
+            effective_policy,
+        )
+        findings.extend(review_findings)
+    findings.extend(
+        _finalized_binding_findings(
+            report,
+            metadata,
+            evidence_path,
+            review,
+            review_summary["score"],
+        )
+    )
 
     error_codes = {finding.code for finding in findings if finding.severity == "error"}
     incomplete_codes = {"QG003", "QG004", "QG005", "QG006", "REV005", "REV006", "REV014", "REV015", "REV016", "REV017"}
@@ -578,7 +939,7 @@ def evaluate_report(report: Path, policy: dict[str, Any] | None = None) -> dict[
     elif blocking_codes:
         decision = "blocked"
     elif error_codes & quality_failure_codes:
-        max_rounds = int(policy.get("tiers", {}).get(tier, {}).get("max_revision_rounds", 1))
+        max_rounds = int(effective_policy.get("tiers", {}).get(tier, {}).get("max_revision_rounds", 1))
         decision = "revise" if review_summary["revision_round"] <= max_rounds else "escalate"
     elif error_codes <= incomplete_codes:
         decision = "needs_review"
@@ -595,7 +956,10 @@ def evaluate_report(report: Path, policy: dict[str, Any] | None = None) -> dict[
         "score": review_summary["score"],
         "dimension_scores": review_summary["dimension_scores"],
         "decision": decision,
-        "recommended_models": policy["model_policy"].get("premium_reviewer_order", []) if decision == "escalate" else [],
+        "policy_id": effective_policy.get("policy_id", ""),
+        "policy_sha256": policy_sha256(effective_policy),
+        "policy_source": "archive" if effective_policy is not current_policy else "current",
+        "recommended_models": effective_policy["model_policy"].get("premium_reviewer_order", []) if decision == "escalate" else [],
         "warnings": [asdict(item) for item in findings if item.severity == "warning"],
         "errors": [asdict(item) for item in findings if item.severity == "error"],
     }
@@ -829,16 +1193,22 @@ def _print_result(result: dict[str, Any], as_json: bool) -> None:
 
 
 def main() -> int:
+    try:
+        policy = load_policy()
+    except (OSError, ValueError, json.JSONDecodeError, KeyError) as exc:
+        print(f"[report-quality] invalid policy or schema: {exc}", file=sys.stderr)
+        return 1
+    tier_choices = tuple(sorted(policy["tiers"]))
     parser = argparse.ArgumentParser(description="Manage and validate EverAgent report quality artifacts")
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     policy_parser = subparsers.add_parser("policy", help="show model routing and quality thresholds")
-    policy_parser.add_argument("--tier", choices=("standard", "important", "flagship"))
+    policy_parser.add_argument("--tier", choices=tier_choices)
     policy_parser.add_argument("--json", action="store_true")
 
     init_parser = subparsers.add_parser("init", help="initialize report-v2 evidence and review artifacts")
     init_parser.add_argument("report", type=Path)
-    init_parser.add_argument("--tier", choices=("standard", "important", "flagship"), default=None)
+    init_parser.add_argument("--tier", choices=tier_choices, default=None)
     init_parser.add_argument("--generator-model", required=True)
     init_parser.add_argument("--harness", required=True)
     init_parser.add_argument("--run-id")
@@ -870,15 +1240,15 @@ def main() -> int:
     check_parser.add_argument("--final-status", choices=("completed", "archived"), default="completed")
 
     args = parser.parse_args()
-    policy = load_policy()
-
     if args.command == "policy":
-        result = policy if args.tier is None else {
+        result = ({**policy, "policy_sha256": policy_sha256(policy)} if args.tier is None else {
             "schema_version": policy["schema_version"],
+            "policy_id": policy["policy_id"],
+            "policy_sha256": policy_sha256(policy),
             "model_policy": policy["model_policy"],
             "tier": args.tier,
             "quality": policy["tiers"][args.tier],
-        }
+        })
         if args.json:
             print(json.dumps(result, ensure_ascii=False, indent=2))
         else:
@@ -949,19 +1319,33 @@ def main() -> int:
     except (OSError, ValueError, json.JSONDecodeError) as exc:
         print(f"[report-quality] {exc}", file=sys.stderr)
         return 1
-    if args.write_decision or args.finalize:
-        _evidence_path, review_path = quality_artifact_paths(args.report.resolve())
-        if review_path.exists():
-            review = _load_json(review_path)
-            review["decision"] = {
-                "status": result["decision"],
-                "score": result["score"],
-                "evaluated_on": dt.date.today().isoformat(),
-                "policy_schema_version": policy["schema_version"],
-            }
-            _write_json(review_path, review)
+    report_metadata = parse_frontmatter(
+        args.report.resolve().read_text(encoding="utf-8", errors="replace")
+    )
+    if (args.write_decision or args.finalize) and str(report_metadata.get("status") or "") not in {
+        "in_progress",
+        "planned",
+    }:
+        print(
+            "[report-quality] finalized reports are immutable; run new-revision before writing a new decision",
+            file=sys.stderr,
+        )
+        return 1
     if args.finalize and result["decision"] == "pass":
         _set_frontmatter_fields(args.report.resolve(), {"status": args.final_status})
+    if args.write_decision or args.finalize:
+        evidence_path, review_path = quality_artifact_paths(args.report.resolve())
+        if review_path.exists():
+            review = _load_json(review_path)
+            review["decision"] = _decision_record(
+                result,
+                policy,
+                args.report.resolve(),
+                evidence_path,
+            )
+            _write_json(review_path, review)
+    if args.finalize and result["decision"] == "pass":
+        result = evaluate_report(args.report)
     _print_result(result, args.json)
     return 0 if result["decision"] == "pass" else 1
 

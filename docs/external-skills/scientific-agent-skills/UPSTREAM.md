@@ -26,5 +26,5 @@ scripts/sync-external-skills.sh --install # 额外：把仓内副本投射到 ~/
 
 ## 消费方式（两种并存）
 
-1. **报告流程内嵌（默认）**：根 AGENTS.md §4 路由——「思考与追问」/open-questions 相关 → 读 `hypothesis-generation/SKILL.md`；报告写作证据纪律 → `scientific-writing/SKILL.md`
+1. **报告流程内嵌（默认）**：[REPORT_WORKFLOW.md §2 第 7 条](../../REPORT_WORKFLOW.md#2-最小上下文加载) 路由——「思考与追问」/open-questions 相关 → 读 `hypothesis-generation/SKILL.md`；报告写作证据纪律 → `scientific-writing/SKILL.md`
 2. **Skill 工具原生调用（可选，每台机器）**：`--install` 投射到 `~/.agents/skills/` 后，上游 YAML front matter 生效，可被 agent 自动发现

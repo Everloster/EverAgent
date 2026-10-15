@@ -35,7 +35,8 @@ Task-Type: {project-optimization | new-project | task-execution}
 
 > **双身份**：每个 commit 的 **Author = 仓库主人 Everloster**（固定，显示其 GitHub 头像），**Committer = 当前运行的 Agent**（自动识别，谁跑就填谁）。
 > `scripts/ecommit.sh` 自动完成两件事：注入 Author=Everloster；调用 `scripts/whoami_agent.py` 识别当前 agent 身份（环境变量 + 进程链判 CLI + 读其配置拿模型，如 `trae-openrouter-3o`/`codex-gpt-5.5`/`kimi-cli-k3`）设为 Committer。**换任何 CLI/模型都无需改配置。**
-> pre-commit hook 强制校验：Committer 邮箱须含 `noreply@`；Author 须为 Everloster（绕过 ecommit 且未设 `GIT_AUTHOR_*` 的裸 `git commit` 会被拦截）。
+> `scripts/ecommit.sh` 是项目质量门的强制入口：它验证精确 staged snapshot，并拒绝会在门禁后改变提交树的 commit 参数。版本化 pre-commit hook 是额外防线；若设备已有外部 `core.hooksPath`，不要覆盖它，外部 hook 会在 `git commit` 阶段继续执行。
+> `.github/workflows/quality.yml` 在 push 与 PR 上复跑仓库级检查，避免本机 hook 配置差异成为唯一防线。
 > **身份识别失败 = 禁止提交（2026-07-28 铁律）**：whoami 返回 `*-unknown` 时 ecommit 直接退出、hook 同样拦截，绝不允许静默兜底提交。处理：① 优先修 `scripts/whoami_agent.py` 覆盖当前 CLI（加检测规则 + 厂商 noreply 邮箱）；② 应急与用户确认身份后显式指定：`AGENT_ID=<cli>-<model> AGENT_EMAIL=<厂商noreply> scripts/ecommit.sh -m "..."`。
 
 ```bash
@@ -76,7 +77,7 @@ python3 scripts/reindex.py --check
 ```
 
 - 新报告使用 `quality_schema: report-v2`，并通过证据账本、独立复核和评分门；`report-v1` 保留为过渡格式。
-- `scripts/ecommit.sh` 会对已暂存报告、索引和 context 自动运行确定性门禁。
+- `scripts/ecommit.sh` 会对已暂存报告、索引和 context 自动运行确定性门禁，并校验门禁前后的 index tree 未变化。
 - 历史报告只进入 WARN 清单，不因一次任务批量重写。
 - 播客、代码实验等领域若有额外审计或真实运行要求，按领域 `AGENTS.md` 追加执行。
 - `lint_evidence.py` 保留为单文件快速诊断，由统一审计器复用。

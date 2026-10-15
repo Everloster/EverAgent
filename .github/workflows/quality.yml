@@ -1,0 +1,26 @@
+name: EverAgent quality
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run report tooling tests
+        run: python3 -m unittest tests.test_report_tooling
+      - name: Audit all reports
+        run: python3 scripts/audit_reports.py --all --summary-only
+      - name: Verify generated indexes
+        run: python3 scripts/reindex.py --check
+      - name: Evaluate context and real report replays
+        run: python3 scripts/eval_report_context.py
