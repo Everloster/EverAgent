@@ -9,6 +9,7 @@
 |------|------|------|
 | 2026-10-15 | [PuRo-2B 开放低成本预训练配方深度解析：MuonHyperball、FP8 与 RTX 5090 的 $5090 实验](../ai-learning/reports/knowledge_reports/PuRo-2B_开放低成本预训练配方_MuonHyperball与RTX5090_深度解析_20261015.md) | ai-learning |
 | 2026-10-15 | [GPT-6 Astra 指令架构：从 Prompt 堆叠到按需控制](../ai-learning/reports/knowledge_reports/GPT6_Astra指令架构_从Prompt堆叠到按需控制_深度解析_20261015.md) | ai-learning |
+| 2026-10-15 | [Bruce_PhD 精力管理四件事：减决策、线粒体、咖啡因时机与攻击性](../podcast-learning/reports/2026-09-03_bilibili-bruce-phd_energy-boost.md) | podcast-learning |
 | 2026-10-15 | [Agent Skills 生态深度解析](../ai-learning/reports/knowledge_reports/Agent_Skills_生态深度解析.md) | ai-learning |
 | 2026-10-15 | [AI 行业日报 · 2026-10-15](../web-surfing/reports/ai-news-daily-2026-10-15.md) | web-surfing |
 | 2026-10-14 | [食贫道×刘慈欣：智能的不可判断性、AI三学派与爆炒腰花的生活哲学](../podcast-learning/reports/2026-10-14_bilibili-shipindao_liucixin-interview.md) | podcast-learning |
@@ -31,7 +32,6 @@
 | 2026-10-10 | [卫诗婕89：阮良——个人提效500%，交付只从20天到17天：AI 进组织的木桶真相](../podcast-learning/reports/2026-09-23_xiaoyuzhou-weishijie_ruanliang-ai-org.md) | podcast-learning |
 | 2026-10-10 | [十字路口：于红——AI 时代学什么？林迪效应、SEL 与把终点放在 30 岁](../podcast-learning/reports/2026-09-27_xiaoyuzhou-crossing_yuhong-sel.md) | podcast-learning |
 | 2026-10-10 | [乱翻书277：Today 中国首发——Memory×Proactive、单 session 终局与产品经理的价值回归](../podcast-learning/reports/2026-09-24_xiaoyuzhou-luanfanshu_today-personal-ai.md) | podcast-learning |
-| 2026-10-10 | [Personal Context 正交论：穿越 AI 进步周期的资产，与 PC 的构建工程](../ai-learning/reports/knowledge_reports/PersonalContext正交论_PC构建指南_20261010.md) | ai-learning |
 
 ## 🤖 AI Learning（114 篇）
 
@@ -277,10 +277,11 @@
 | 2026-04-20 | [Qwen2.5-3B GRPO 强化学习微调](../ai-practice/experiments/exp_004_qwen25_grpo_finetune.md) | — |
 | 2026-04-20 | [HuggingFace Hub 模型与数据集管理](../ai-practice/experiments/exp_002_huggingface_basics.md) | — |
 
-## 🎙️ Podcast Learning（73 篇）
+## 🎙️ Podcast Learning（74 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-10-15 | [Bruce_PhD 精力管理四件事：减决策、线粒体、咖啡因时机与攻击性](../podcast-learning/reports/2026-09-03_bilibili-bruce-phd_energy-boost.md) | `energy_management`, `mitochondria`, `coenzyme_q10`, `caffeine`, `decision_fatigue`, `conflict_management` |
 | 2026-10-14 | [食贫道×刘慈欣：智能的不可判断性、AI三学派与爆炒腰花的生活哲学](../podcast-learning/reports/2026-10-14_bilibili-shipindao_liucixin-interview.md) | — |
 | 2026-10-14 | [硅谷101（再访张阔）：榜单99分与真实61%之间——E255 对篇](../podcast-learning/reports/2026-10-14_bilibili-svj101_zhangkuo-model-user-gap.md) | `agent`, `harness`, `context`, `benchmark`, `ecommerce` |
 | 2026-10-14 | [电丸AK：千问AI眼镜 N1 Pro——鼻托 PPG、三芯片与眼追的必要性](../podcast-learning/reports/2026-10-14_bilibili-dianwan-ak_qwen-glasses-n1pro.md) | — |

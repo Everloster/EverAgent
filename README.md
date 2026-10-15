@@ -43,7 +43,7 @@
 | 🧠 [Psychology Learning](./psychology-learning/) | 17 篇 | 13/13/0 |
 | 🧬 [Biology Learning](./biology-learning/) | 18 篇 | 14/9/0 |
 | ⚗️ [AI Practice](./ai-practice/) | 10 篇 | 9/1/0 |
-| 🎙️ [Podcast Learning](./podcast-learning/) | 73 篇 | 58/51/0 |
+| 🎙️ [Podcast Learning](./podcast-learning/) | 74 篇 | 58/51/0 |
 | 🔭 [GitHub Research](./github-trending-analyzer/) | 124 篇 | 0/0/0 |
 | 🏄 [Web Surfing](./web-surfing/) | 42 篇 | 0/0/0 |
 <!-- AUTO-OVERVIEW:END -->
