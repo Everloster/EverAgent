@@ -81,6 +81,35 @@ def test_generate_summary_report_uses_period_growth_label(tmp_path):
     content = output.read_text(encoding="utf-8")
     assert "本周增长" in content
     assert "今日增长" not in content
+    assert 'quality_schema: "report-v1"' in content
+    assert 'report_type: "weekly_summary"' in content
+
+
+def test_generate_summary_report_does_not_link_missing_reports(tmp_path):
+    module = load_report_generator()
+    output = tmp_path / "summary.md"
+    repos = [
+        {
+            "owner": "acme",
+            "repo": "rocket",
+            "language": "Python",
+            "stars": 1234,
+            "today_stars": 56,
+            "description": "Fast launch toolkit",
+            "url": "https://github.com/acme/rocket",
+        }
+    ]
+
+    module.generate_summary_report(
+        "weekly",
+        repos,
+        output,
+        missing_repos=["acme/rocket"],
+    )
+
+    content = output.read_text(encoding="utf-8")
+    assert "./research_acme_rocket.md" not in content
+    assert "acme/rocket — 本地深研报告缺失" in content
 
 
 def test_generate_project_report_uses_period_growth_label(tmp_path):
@@ -108,3 +137,5 @@ def test_generate_project_report_uses_period_growth_label(tmp_path):
     content = output.read_text(encoding="utf-8")
     assert "本月增长" in content
     assert "今日增长" not in content
+    assert 'quality_schema: "report-v1"' in content
+    assert 'report_type: "repo_deep_research"' in content

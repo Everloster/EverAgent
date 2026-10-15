@@ -11,11 +11,14 @@
 ```markdown
 ---
 title: {实验名称（中文）}
-type: experiment_analysis
-status: done
+domain: ai-practice
+report_type: experiment_analysis
+status: completed
 experiment_id: exp_NNN
 notebook: notebooks/{对应.ipynb}    # 若无对应 notebook 则省略此行
 updated_on: YYYY-MM-DD
+quality_schema: "report-v1"
+semantic_tags: ["experiment"]
 ---
 
 ## 实验摘要

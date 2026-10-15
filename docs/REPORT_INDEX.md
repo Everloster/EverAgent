@@ -18,6 +18,7 @@
 | 2026-10-13 | [AI 行业日报 · 2026-10-13](../web-surfing/reports/ai-news-daily-2026-10-13.md) | web-surfing |
 | 2026-10-12 | [课代表330：郑昌熙（李飞飞World Labs）——工业场景不会有ChatGPT时刻、抽象层级论与鸡生蛋问题](../podcast-learning/reports/2026-10-08_rss-kedaibiao-lizheng_lifeifei-worldlabs-robot.md) | podcast-learning |
 | 2026-10-12 | [十字路口：鸭哥——Context Infrastructure 三要素、0人公司与睡眠回归实验](../podcast-learning/reports/2026-10-11_xiaoyuzhou-crossing_yage-ai-strong.md) | podcast-learning |
+| 2026-10-12 | [magpie 深度研究报告（yetone/magpie）](../github-trending-analyzer/reports/research_yetone_magpie.md) | github-trending-analyzer |
 | 2026-10-12 | [AI炼金术：橘子（ColaOS）——时代追上了个人Agent先行者，他却打了转向灯](../podcast-learning/reports/2026-10-09_ximalaya-ailianjinshu_juzi-personal-agent.md) | podcast-learning |
 | 2026-10-12 | [AI 行业日报 · 2026-10-12](../web-surfing/reports/ai-news-daily-2026-10-12.md) | web-surfing |
 | 2026-10-12 | [42章经：子皓（Ambi）——交互成本决定需求、A2A网络效应与在场（ambient）哲学](../podcast-learning/reports/2026-10-12_xiaoyuzhou-42zhangjing_zihao-ambi.md) | podcast-learning |
@@ -31,7 +32,6 @@
 | 2026-10-10 | [乱翻书277：Today 中国首发——Memory×Proactive、单 session 终局与产品经理的价值回归](../podcast-learning/reports/2026-09-24_xiaoyuzhou-luanfanshu_today-personal-ai.md) | podcast-learning |
 | 2026-10-10 | [Personal Context 正交论：穿越 AI 进步周期的资产，与 PC 的构建工程](../ai-learning/reports/knowledge_reports/PersonalContext正交论_PC构建指南_20261010.md) | ai-learning |
 | 2026-10-09 | [起朱楼184：加息周期的重大投资决策——五步建立海外长债组合｜三季度投资账复盘](../podcast-learning/reports/2026-10-08_xiaoyuzhou-qizhulou_2026q3-investment-review.md) | podcast-learning |
-| 2026-10-09 | [课代表立正·职业方法论九讲：选择、余裕、失败与升职的存量专题（217/218/221-225/327-329）](../podcast-learning/reports/2026-10-09_rss-kedaibiao-lizheng_career-methods-series.md) | podcast-learning |
 
 ## 🤖 AI Learning（113 篇）
 
@@ -261,7 +261,22 @@
 | 2026-03-26 | [Physiology of Growth Hormone Secretion during Sleep (1996) 精读](../biology-learning/reports/paper_analyses/P09_gh_sleep_physiology_1996.md) | — |
 | 2026-03-23 | [晚型人作息与力量训练深度研究](../biology-learning/reports/concept_reports/晚型人作息与力量训练_深度研究报告.md) | — |
 
-## 🎙️ Podcast Learning（83 篇）
+## ⚗️ AI Practice（10 篇）
+
+| 日期 | 报告 | 标签 |
+|------|------|------|
+| 2026-08-24 | [实测笔记：book-to-skill 能优化 EverAgent 学习类项目吗？](../ai-practice/experiments/book-to-skill-demo/评估笔记_book-to-skill能否优化学习项目_20260729.md) | — |
+| 2026-07-11 | [本机（M5 Max 128GB）本地 LLM 选型评测——whichllm × llm-checker × fastfetch](../ai-practice/experiments/exp_009_local_llm_selector.md) | — |
+| 2026-06-21 | [GRPO 缩尺模拟实验：与 T060 推理模型三大流派联动的代码复现](../ai-practice/experiments/exp_008_grpo_simulation.md) | — |
+| 2026-05-13 | [SkillOS 技能库策展小型实验复现](../ai-practice/experiments/exp_007_skillos_curator_simulation.md) | — |
+| 2026-05-07 | [Long Context 1M 缩尺模拟实验](../ai-practice/experiments/exp_006_long_context_1m_simulation.md) | — |
+| 2026-04-21 | [MoE Transformer：用稀疏激活扩大模型容量](../ai-practice/experiments/exp_005_moe_transformer.md) | — |
+| 2026-04-20 | [从零实现 Transformer 语言模型](../ai-practice/experiments/exp_001_transformer_from_scratch.md) | — |
+| 2026-04-20 | [Transformers 库三层 API 实践](../ai-practice/experiments/exp_003_transformers_library.md) | — |
+| 2026-04-20 | [Qwen2.5-3B GRPO 强化学习微调](../ai-practice/experiments/exp_004_qwen25_grpo_finetune.md) | — |
+| 2026-04-20 | [HuggingFace Hub 模型与数据集管理](../ai-practice/experiments/exp_002_huggingface_basics.md) | — |
+
+## 🎙️ Podcast Learning（73 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
@@ -302,26 +317,21 @@
 | 2026-10-02 | [GEO 是量化交易不是 SEO：PureblueAI 鲁扬谈 AI 时代的货架与流量](../podcast-learning/reports/2026-09-23_ximalaya-ailianjinshu_luyang.md) | — |
 | 2026-10-01 | [决策便宜，行动很贵：Vibe-Trading 作者浩哲谈 AI Trading 的通道、闸门与人的位置](../podcast-learning/reports/2026-09-27_xiaoyuzhou-42zhangjing_wuhaozhe.md) | — |
 | 2026-10-01 | [具身智能的金钱游戏：进展难测、收入催熟与 IPO 竞速](../podcast-learning/reports/2026-09-02_rss-wandian-latetalk_embodied-money.md) | — |
-| 2026-09-30 | [No.221 🥓 中国辣条江湖 — 官方 shownotes 存档](../podcast-learning/reports/transcripts/2026-09-30_xiaoyuzhou-bannatie_latiao.shownotes.md) | — |
 | 2026-09-28 | [易论AI×捏Ta胡修涵：被AI淘汰的人才是AI最大的市场（创作即消费/双边vs多边/迪士尼不是乐园是上下文/AI内容四象限）](../podcast-learning/reports/2026-09-18_bilibili-yilun-ai_huxiuhan.md) | — |
-| 2026-09-27 | [程若倩教授：孩子身高这件事，到底矮不矮、治不治？vol.129 — shownotes](../podcast-learning/reports/transcripts/2026-09-27_xiaoyuzhou-boluo-jiankang_chengruoqian.shownotes.md) | — |
 | 2026-09-27 | [孩子成绩差，真的是因为「不是学习的料」吗？——对谈脑科学专家黄翔](../podcast-learning/reports/2026-07-04_bilibili-kema_huangxiang-brain.md) | — |
 | 2026-09-26 | [把一家 12 年的硬件公司重写成 AI 原生组织：鹿客陈彬的「从 1 到 0」实操](../podcast-learning/reports/2026-09-14_ximalaya-ailianjinshu_chenbin.md) | — |
 | 2026-09-25 | [硅基立场 Vol.32｜张帆：去他X的FDE——能力沉淀在哪里，从定制外包到企业自学习](../podcast-learning/reports/2026-09-24_xiaoyuzhou-guiji-lichang_zhangfan-fde.md) | — |
 | 2026-09-25 | [此话当真｜同事.skill 与人生系统.skill：你害怕被蒸馏吗？](../podcast-learning/reports/2026-08-17_xiaoyuzhou-cihua-dangzhen_distill.md) | — |
-| 2026-09-24 | [Vol.32 对话元理智能张帆：去他X的FDE — shownotes](../podcast-learning/reports/transcripts/2026-09-24_xiaoyuzhou-guiji-lichang_zhangfan-fde.shownotes.md) | — |
 | 2026-09-23 | [是个人物 EP22｜程乐松：不要牛马，不要狗屁，要什么？——日常性的哲学](../podcast-learning/reports/2026-09-11_bilibili-shigerenwu_chenglesong.md) | — |
 | 2026-09-23 | [多重囚徒困境：全球宏观和资本市场 2026 三季度复盘与展望](../podcast-learning/reports/2026-09-14_xiaoyuzhou-qizhulou_2026q3-macro.md) | — |
-| 2026-09-23 | [shownotes — PureblueAI 鲁扬：把 prompt 当货架空间，把 GEO 当量化交易](../podcast-learning/reports/transcripts/2026-09-23_ximalaya-ailianjinshu_luyang.shownotes.md) | — |
 | 2026-09-22 | [用 AI 三天设计一颗芯片后，一位清华博士决定「开卷」](../podcast-learning/reports/2026-09-16_xiaoyuzhou-cihua-dangzhen_zhangtuoken.md) | — |
 | 2026-09-22 | [智能的下一幕：庄明浩 73 页 PPT 的 2026Q3 行业复盘（模型狂奔/智能分化/循环自生/界面重构）](../podcast-learning/reports/2026-09-15_xiaoyuzhou-tulong-zhishu_next-act.md) | — |
 | 2026-09-22 | [推理芯片之战：训练看算力、推理看带宽——Groq、Cerebras、OpenAI 三条路径与 Bill Dally 的设计哲学](../podcast-learning/reports/2026-09-15_rss-guigu101_e251-inference-chips.md) | — |
 | 2026-09-22 | [一个人指挥 400 个 AI：Orca 津晶的多 agent 编排实操（ADE vs Harness）](../podcast-learning/reports/2026-09-17_rss-kedaibiao-lizheng_jinjing.md) | — |
 | 2026-09-22 | [「我看到了 Scaling Law 的信号」：徐梦迪谈具身智能、世界模型与真正的泛化](../podcast-learning/reports/2026-09-20_xiaoyuzhou-crossing_xumengdi.md) | — |
-| 2026-09-22 | [Shownotes — 半拿铁·周刊 No.50](../podcast-learning/reports/transcripts/2026-09-22_xiaoyuzhou-bannatie-zhoukan_no50-weekly-news.shownotes.md) | — |
 | 2026-09-15 | [所长林超《AI泡沫，2027年爆破？》：开源价格锚定、巨头 IPO 考验与七万亿债](../podcast-learning/reports/2026-07-24_bilibili-suochang-linchao_ai-bubble-2027.md) | — |
 | 2026-09-14 | [易论AI Vol.1：AI最前沿的人已经不聊大模型了——李继刚×橘子×歸藏的四人谈（服务裹着能力/齿轮速度差/Agent+X/上下文是一辆车）](../podcast-learning/reports/2026-09-09_xiaoyuzhou-yilun-ai_frontier-no-llm.md) | — |
-| 2026-09-13 | [一本书看清"工作"的真相：竹竹暴风雪解读 × 鲍曼《工作、消费主义和新穷人》原书深读](../podcast-learning/reports/2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism.md) | — |
+| 2026-09-13 | [一本书看清"工作"的真相：竹竹暴风雪解读 × 鲍曼《工作、消费主义和新穷人》原书深读](../podcast-learning/reports/2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism.md) | `bauman`, `work`, `consumerism` |
 | 2026-09-12 | [王坚回应凉子：AI 何时产生自主意识——5分钟里的三个论断（机器智能≠人工的人类智能 / 技术只拓展边界 / AI 的使命是减少资源消耗）](../podcast-learning/reports/2026-09-11_bilibili-liangzi-fangtanlu_wangjian.md) | — |
 | 2026-09-12 | [CLS同学：如果5%的房地产以旧换新出台，你会买新房吗？——三驾马车承压下的「房地产出冷宫」推演](../podcast-learning/reports/2026-09-12_bilibili-cls-tongxue_fangchan-yijiuhuanxin.md) | — |
 | 2026-09-11 | [程乐松×脱不花《长谈》64期：活得哲学一点——一场打通「出圈金句」与「道教研究/中国哲学方法论」的3小时对谈](../podcast-learning/reports/2026-09-05_bilibili-changtan_chenglesong.md) | — |
@@ -329,17 +339,12 @@
 | 2026-09-02 | [晚点聊177｜详解 Kimi K3：体感、推理系统工程、开源大辩论与估值冲击](../podcast-learning/reports/2026-08-04_rss-wandian-latetalk_kimi-k3.md) | — |
 | 2026-09-02 | [张小珺152｜孙宇涛领读 Kimi K3 技术报告：三维 scaling、注意力谱系与 infra co-design](../podcast-learning/reports/2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report.md) | — |
 | 2026-09-02 | [Kimi K3 一鱼两吃：张小珺152 × 晚点聊177 对照精读](../podcast-learning/reports/2026-09-02_multi_kimi-k3-dueling-reads.md) | — |
-| 2026-08-26 | [张小珺 152 领读Kimi K3技术报告 — shownotes](../podcast-learning/reports/transcripts/2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report.shownotes.md) | — |
 | 2026-08-25 | [身体出现这些信号，可能是炎症在提醒你！——帆书讲《炎症》](../podcast-learning/reports/2026-08-21_bilibili-fanshu_yanzheng.md) | — |
 | 2026-08-24 | [刘方奇教授：肠癌越来越年轻，确诊后先别急着手术！](../podcast-learning/reports/2026-08-24_xiaoyuzhou-boluo-jiankang_liufangqi.md) | — |
 | 2026-08-23 | [对话盛颖：xAI，Infra的浪漫，SGLang，开源，平权与「甄嬛传」](../podcast-learning/reports/2026-08-04_rss-guigu101_shengying.md) | — |
 | 2026-08-22 | [对游凯超3小时访谈：开源Infra、和模型Co-design、「如果vLLM失败，我们会后悔一辈子」](../podcast-learning/reports/2026-07-28_xiaoyuzhou-zhangxiaojun_youkaichao.md) | — |
-| 2026-08-17 | [从「同事.skill」到「人生系统」，你害怕被蒸馏吗？ — shownotes](../podcast-learning/reports/transcripts/2026-08-17_xiaoyuzhou-cihua-dangzhen_distill.shownotes.md) | — |
-| 2026-08-13 | [shownotes — 金瓶梅·绿色版 9.蒋竹山：从入赘开店到净身出户](../podcast-learning/reports/transcripts/2026-08-13_ximalaya-bannatie-gushipian_jiangzhushan.shownotes.md) | — |
-| 2026-08-04 | [晚点聊 177 详解Kimi K3 — shownotes](../podcast-learning/reports/transcripts/2026-08-04_rss-wandian-latetalk_kimi-k3.shownotes.md) | — |
 | 2026-07-31 | [对话 Evoken 陈冕：在模型不断吞噬应用价值的时代，一家独立 AI 应用公司如何 survive](../podcast-learning/reports/2026-07-30_xiaoyuzhou-wandian-latetalk_chenmian.md) | — |
-| 2026-07-29 | [为什么 FDE 在 AI 时代这么火？因为差距不在模型，在业务细节](../podcast-learning/reports/2026-07-29_bilibili-kedaibiao-lizheng_jove-fde.md) | — |
-| 2026-07-24 | [涌现EmergenceHK×Bill It Up S01E01《AI泡沫，2027年爆破？》— shownotes（B站视频版同源）](../podcast-learning/reports/transcripts/2026-07-24_bilibili-suochang-linchao_ai-bubble-2027.shownotes.md) | — |
+| 2026-07-29 | [为什么 FDE 在 AI 时代这么火？因为差距不在模型，在业务细节](../podcast-learning/reports/2026-07-29_bilibili-kedaibiao-lizheng_jove-fde.md) | `fde`, `agent_harness`, `enterprise_ai` |
 | 2026-07-20 | [人到中年仨账户：现金流、肌肉、睡眠（面基 · 老钱单口）](../podcast-learning/reports/2026-07-13_xiaoyuzhou-mingjing-diandian_midlife-accounts.md) | — |
 | 2026-07-19 | [重估一切，文艺复兴——2026H1 AI行业观察（屠龙之术 · 庄明浩单口）](../podcast-learning/reports/2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review.md) | — |
 | 2026-07-18 | [读书：4种配速，取景框，人是滤器，冲刷神经网络 —— 明镜与李继刚关于读书方法论的深度对话](../podcast-learning/reports/2026-07-09_xiaoyuzhou-mingjing-diandian_lijigang.md) | — |
@@ -348,6 +353,135 @@
 | 2026-06-21 | [Vol.30-32 三期高质播客综合收听笔记（Sahil Lavingia 一人公司 + 塔利班女孩 + 香会 X 教育）](../podcast-learning/reports/2026-06-21_xiaoyuzhou-multi_notes.md) | — |
 | 2026-06-20 | [三年行业吃肉榜/爆亏榜大合集（2023-2025）：谁在偷偷赚钱，谁在快速衰落](../podcast-learning/reports/2026-06-20_bilibili-cls-tongxue_hangye-bangdan.md) | — |
 | 2026-06-18 | [Vol.29 对话王小川：造医生，战豆包，与无尽的 AI 非共识](../podcast-learning/reports/2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan.md) | — |
+
+## 🔭 GitHub Research（124 篇）
+
+| 日期 | 报告 | 标签 |
+|------|------|------|
+| 2026-10-12 | [magpie 深度研究报告（yetone/magpie）](../github-trending-analyzer/reports/research_yetone_magpie.md) | — |
+| 2026-10-09 | [Laya（NandhaKishorM/laya）深度研究报告](../github-trending-analyzer/reports/research_NandhaKishorM_laya.md) | — |
+| 2026-09-30 | [Hindsight 深度研究报告（vectorize-io/hindsight）](../github-trending-analyzer/reports/research_vectorize-io_hindsight.md) | — |
+| 2026-09-20 | [trycua/cua 深度研究报告（源码视角 · refer）](../github-trending-analyzer/reports/research_trycua_cua_sourcecode.md) | — |
+| 2026-08-24 | [alibaba/page-agent 深度研究报告](../github-trending-analyzer/reports/research_alibaba_page-agent.md) | — |
+| 2026-08-24 | [World Monitor 深度研究报告](../github-trending-analyzer/reports/research_koala73_worldmonitor.md) | — |
+| 2026-08-24 | [Superpowers: AI 编码代理的技能框架深度研究报告](../github-trending-analyzer/reports/research_obra_superpowers.md) | — |
+| 2026-08-24 | [SpacetimeDB 深度研究报告](../github-trending-analyzer/reports/research_clockworklabs_SpacetimeDB.md) | — |
+| 2026-08-24 | [Promptfoo 深度研究报告](../github-trending-analyzer/reports/research_promptfoo_promptfoo.md) | — |
+| 2026-08-24 | [MiroFish 深度研究报告](../github-trending-analyzer/reports/research_666ghj_MiroFish.md) | — |
+| 2026-08-24 | [Lightpanda Browser 项目深度分析报告](../github-trending-analyzer/reports/research_lightpanda-io_browser.md) | — |
+| 2026-08-24 | [Impeccable 深度研究报告](../github-trending-analyzer/reports/research_pbakaus_impeccable.md) | — |
+| 2026-08-24 | [Hermes Agent 深度研究报告](../github-trending-analyzer/reports/research_NousResearch_hermes-agent.md) | — |
+| 2026-08-24 | [Heretic 深度研究报告](../github-trending-analyzer/reports/research_p-e-w_heretic.md) | — |
+| 2026-08-24 | [GitNexus 深度研究报告](../github-trending-analyzer/reports/research_abhigyanpatwari_GitNexus.md) | — |
+| 2026-08-24 | [Fluxer 深度研究报告](../github-trending-analyzer/reports/research_fluxerapp_fluxer.md) | — |
+| 2026-08-24 | [Fish Audio S2 深度研究报告](../github-trending-analyzer/reports/research_fishaudio_fish-speech.md) | — |
+| 2026-08-24 | [BerriAI/litellm 深度研究报告](../github-trending-analyzer/reports/research_BerriAI_litellm.md) | — |
+| 2026-08-24 | [AI Hedge Fund 项目深度分析报告](../github-trending-analyzer/reports/research_virattt_ai-hedge-fund.md) | — |
+| 2026-08-01 | [Crosstalk-Solutions/project-nomad](../github-trending-analyzer/reports/research_Crosstalk-Solutions_project-nomad.md) | — |
+| 2026-07-14 | [OpenCut-app/OpenCut 深度研究报告](../github-trending-analyzer/reports/research_OpenCut-app_OpenCut.md) | — |
+| 2026-07-13 | [Dicklesworthstone/destructive_command_guard](../github-trending-analyzer/reports/research_Dicklesworthstone_destructive_command_guard.md) | — |
+| 2026-07-10 | [trycua/cua 深度研究报告](../github-trending-analyzer/reports/research_trycua_cua.md) | — |
+| 2026-07-10 | [DesktopCommanderMCP — 仓库深度研究报告](../github-trending-analyzer/reports/research_wonderwhy-er_DesktopCommanderMCP.md) | — |
+| 2026-07-07 | [karpathy/autoresearch 深度研究报告](../github-trending-analyzer/reports/research_karpathy_autoresearch.md) | — |
+| 2026-07-07 | [ResearAI/OpenScience 深度研究报告](../github-trending-analyzer/reports/research_ResearAI_OpenScience.md) | — |
+| 2026-07-06 | [Zackriya-Solutions/meetily 深度研究报告](../github-trending-analyzer/reports/research_Zackriya-Solutions_meetily.md) | — |
+| 2026-07-01 | [usestrix/strix 深度研究报告](../github-trending-analyzer/reports/research_usestrix_strix.md) | — |
+| 2026-07-01 | [omnigent-ai/omnigent 深度研究报告](../github-trending-analyzer/reports/research_omnigent-ai_omnigent.md) | — |
+| 2026-07-01 | [StarTrail-org/PixelRAG 深度研究报告](../github-trending-analyzer/reports/research_StarTrail-org_PixelRAG.md) | — |
+| 2026-07-01 | [Robbyant/lingbot-map 深度研究报告](../github-trending-analyzer/reports/research_Robbyant_lingbot-map.md) | — |
+| 2026-07-01 | [InternScience/Agents-A1 深度研究报告](../github-trending-analyzer/reports/research_InternScience_Agents-A1.md) | — |
+| 2026-06-28 | [xbtlin/ai-berkshire 深度研究报告](../github-trending-analyzer/reports/research_xbtlin_ai-berkshire.md) | — |
+| 2026-06-25 | [withastro/flue 深度研究报告](../github-trending-analyzer/reports/research_withastro_flue.md) | — |
+| 2026-06-25 | [stablyai/orca 深度研究报告](../github-trending-analyzer/reports/research_stablyai_orca.md) | — |
+| 2026-06-25 | [interviewstreet/hiring-agent 深度研究报告](../github-trending-analyzer/reports/research_interviewstreet_hiring-agent.md) | — |
+| 2026-06-25 | [andreknieriem/headunit-revived 深度研究报告](../github-trending-analyzer/reports/research_andreknieriem_headunit-revived.md) | — |
+| 2026-06-21 | [tursodatabase/turso 深度研究报告](../github-trending-analyzer/reports/research_tursodatabase_turso.md) | — |
+| 2026-06-21 | [swc-project/swc 深度研究报告](../github-trending-analyzer/reports/research_swc-project_swc.md) | — |
+| 2026-06-21 | [n0-computer/iroh 深度研究报告](../github-trending-analyzer/reports/research_n0-computer_iroh.md) | — |
+| 2026-06-21 | [meshery/meshery 深度研究报告](../github-trending-analyzer/reports/research_meshery_meshery.md) | — |
+| 2026-06-21 | [makeplane/plane 深度研究报告](../github-trending-analyzer/reports/research_makeplane_plane.md) | — |
+| 2026-06-21 | [google-research/timesfm 深度研究报告](../github-trending-analyzer/reports/research_google-research_timesfm.md) | — |
+| 2026-06-21 | [freeCodeCamp/freeCodeCamp 深度研究报告](../github-trending-analyzer/reports/research_freeCodeCamp_freeCodeCamp.md) | — |
+| 2026-06-21 | [chopratejas/headroom 深度研究报告](../github-trending-analyzer/reports/research_chopratejas_headroom.md) | — |
+| 2026-06-21 | [chatwoot/chatwoot 深度研究报告](../github-trending-analyzer/reports/research_chatwoot_chatwoot.md) | — |
+| 2026-06-21 | [calesthio/OpenMontage 深度研究报告](../github-trending-analyzer/reports/research_calesthio_OpenMontage.md) | — |
+| 2026-06-21 | [asgeirtj/system_prompts_leaks 深度研究报告](../github-trending-analyzer/reports/research_asgeirtj_system_prompts_leaks.md) | — |
+| 2026-06-21 | [addyosmani/agent-skills 深度研究报告](../github-trending-analyzer/reports/research_addyosmani_agent-skills.md) | — |
+| 2026-06-21 | [Panniantong/Agent-Reach 深度研究报告](../github-trending-analyzer/reports/research_Panniantong_Agent-Reach.md) | — |
+| 2026-06-21 | [NVIDIA/SkillSpector 深度研究报告](../github-trending-analyzer/reports/research_NVIDIA_SkillSpector.md) | — |
+| 2026-06-21 | [LMCache/LMCache 深度研究报告](../github-trending-analyzer/reports/research_LMCache_LMCache.md) | — |
+| 2026-06-21 | [Kong/insomnia 深度研究报告](../github-trending-analyzer/reports/research_Kong_insomnia.md) | — |
+| 2026-06-21 | [GitHub Trending 月榜报告 — 2026 年 6 月（截至 6-21，半月数据）](../github-trending-analyzer/reports/all-monthly-summary-2026-06-21.md) | `github`, `trending`, `open_source` |
+| 2026-06-21 | [GitHub Trending 月榜报告 — 2026 年 5 月](../github-trending-analyzer/reports/all-monthly-summary-2026-05-31.md) | — |
+| 2026-06-21 | [GitHub Trending 周榜报告](../github-trending-analyzer/reports/all-weekly-summary-2026-06-21.md) | — |
+| 2026-06-21 | [DeusData/codebase-memory-mcp 深度研究报告](../github-trending-analyzer/reports/research_DeusData_codebase-memory-mcp.md) | — |
+| 2026-04-15 | [EverMind-AI/EverOS 深度研究报告](../github-trending-analyzer/reports/research_EverMind-AI_EverOS.md) | — |
+| 2026-04-10 | [coleam00/Archon](../github-trending-analyzer/reports/research_coleam00_Archon.md) | — |
+| 2026-04-05 | [telegramdesktop/tdesktop 深度研究报告](../github-trending-analyzer/reports/research_telegramdesktop_tdesktop.md) | — |
+| 2026-04-05 | [siddharthvaddem/openscreen 深度研究报告](../github-trending-analyzer/reports/research_siddharthvaddem_openscreen.md) | — |
+| 2026-04-05 | [sherlock-project/sherlock 深度研究报告](../github-trending-analyzer/reports/research_sherlock-project_sherlock.md) | — |
+| 2026-04-05 | [onyx-dot-app/onyx 深度研究报告](../github-trending-analyzer/reports/research_onyx-dot-app_onyx.md) | — |
+| 2026-04-05 | [microsoft/agent-framework 深度研究报告](../github-trending-analyzer/reports/research_microsoft_agent-framework.md) | — |
+| 2026-04-05 | [block/goose 深度研究报告](../github-trending-analyzer/reports/research_block_goose.md) | — |
+| 2026-04-05 | [Yeachan-Heo/oh-my-codex 深度研究报告](../github-trending-analyzer/reports/research_Yeachan-Heo_oh-my-codex.md) | — |
+| 2026-04-05 | [GitHub Trending 日榜报告](../github-trending-analyzer/reports/all-daily-summary-2026-04-05.md) | — |
+| 2026-04-05 | [Blaizzy/mlx-vlm 深度研究报告](../github-trending-analyzer/reports/research_Blaizzy_mlx-vlm.md) | — |
+| 2026-03-27 | [virattt/dexter](../github-trending-analyzer/reports/research_virattt_dexter.md) | — |
+| 2026-03-27 | [twentyhq/twenty](../github-trending-analyzer/reports/research_twentyhq_twenty.md) | — |
+| 2026-03-27 | [ruvnet/RuView](../github-trending-analyzer/reports/research_ruvnet_RuView.md) | — |
+| 2026-03-27 | [mvanhorn/last30days-skill](../github-trending-analyzer/reports/research_mvanhorn_last30days-skill.md) | — |
+| 2026-03-27 | [datalab-to/chandra](../github-trending-analyzer/reports/research_datalab-to_chandra.md) | — |
+| 2026-03-27 | [bytedance/deer-flow](../github-trending-analyzer/reports/research_bytedance_deer-flow.md) | — |
+| 2026-03-27 | [agentscope-ai/agentscope](../github-trending-analyzer/reports/research_agentscope-ai_agentscope.md) | — |
+| 2026-03-27 | [Yeachan-Heo/oh-my-claudecode](../github-trending-analyzer/reports/research_Yeachan-Heo_oh-my-claudecode.md) | — |
+| 2026-03-27 | [Vaibhavs10/insanely-fast-whisper](../github-trending-analyzer/reports/research_Vaibhavs10_insanely-fast-whisper.md) | — |
+| 2026-03-27 | [GitHub Trending 日榜报告](../github-trending-analyzer/reports/all-daily-summary-2026-03-27.md) | — |
+| 2026-03-26 | [GitHub Trending 日榜报告](../github-trending-analyzer/reports/all-daily-summary-2026-03-26.md) | — |
+| 2026-03-25 | [supermemoryai/supermemory](../github-trending-analyzer/reports/research_supermemoryai_supermemory.md) | — |
+| 2026-03-25 | [ruvnet/ruflo](../github-trending-analyzer/reports/research_ruvnet_ruflo.md) | — |
+| 2026-03-25 | [pascalorg/editor](../github-trending-analyzer/reports/research_pascalorg_editor.md) | — |
+| 2026-03-25 | [GitHub Trending 日榜报告](../github-trending-analyzer/reports/all-daily-summary-2026-03-25.md) | — |
+| 2026-03-24 | [vxcontrol/pentagi](../github-trending-analyzer/reports/research_vxcontrol_pentagi.md) | — |
+| 2026-03-24 | [tinygrad/tinygrad](../github-trending-analyzer/reports/research_tinygrad_tinygrad.md) | — |
+| 2026-03-24 | [kepano/obsidian-skills](../github-trending-analyzer/reports/research_kepano_obsidian-skills.md) | — |
+| 2026-03-24 | [jingyaogong/minimind](../github-trending-analyzer/reports/research_jingyaogong_minimind.md) | — |
+| 2026-03-24 | [iptv-org/iptv](../github-trending-analyzer/reports/research_iptv-org_iptv.md) | — |
+| 2026-03-24 | [hesreallyhim/awesome-claude-code](../github-trending-analyzer/reports/research_hesreallyhim_awesome-claude-code.md) | — |
+| 2026-03-24 | [czlonkowski/n8n-mcp](../github-trending-analyzer/reports/research_czlonkowski_n8n-mcp.md) | — |
+| 2026-03-24 | [affaan-m/everything-claude-code](../github-trending-analyzer/reports/research_affaan-m_everything-claude-code.md) | — |
+| 2026-03-24 | [TauricResearch/TradingAgents](../github-trending-analyzer/reports/research_TauricResearch_TradingAgents.md) | — |
+| 2026-03-24 | [GitHub Trending 日报 · 2026-03-24](../github-trending-analyzer/reports/all-daily-summary-2026-03-24.md) | — |
+| 2026-03-24 | [FujiwaraChoki/MoneyPrinterV2](../github-trending-analyzer/reports/research_FujiwaraChoki_MoneyPrinterV2.md) | — |
+| 2026-03-22 | [systemd/systemd](../github-trending-analyzer/reports/research_systemd_systemd.md) | — |
+| 2026-03-22 | [louis-e/arnis](../github-trending-analyzer/reports/research_louis-e_arnis.md) | — |
+| 2026-03-22 | [jarrodwatts/claude-hud](../github-trending-analyzer/reports/research_jarrodwatts_claude-hud.md) | — |
+| 2026-03-22 | [jamwithai/production-agentic-rag-course](../github-trending-analyzer/reports/research_jamwithai_production-agentic-rag-course.md) | — |
+| 2026-03-22 | [hsliuping/TradingAgents-CN](../github-trending-analyzer/reports/research_hsliuping_TradingAgents-CN.md) | — |
+| 2026-03-22 | [harry0703/MoneyPrinterTurbo](../github-trending-analyzer/reports/research_harry0703_MoneyPrinterTurbo.md) | — |
+| 2026-03-22 | [browser-use/browser-use](../github-trending-analyzer/reports/research_browser-use_browser-use.md) | — |
+| 2026-03-22 | [aquasecurity/trivy](../github-trending-analyzer/reports/research_aquasecurity_trivy.md) | — |
+| 2026-03-22 | [HKUDS/LightRAG](../github-trending-analyzer/reports/research_HKUDS_LightRAG.md) | — |
+| 2026-03-22 | [GitHub Trending 日榜报告](../github-trending-analyzer/reports/all-daily-summary-2026-03-22.md) | — |
+| 2026-03-18 | [🔬 GitHub 项目深度分析报告](../github-trending-analyzer/reports/research_sickn33_antigravity-awesome-skills.md) | — |
+| 2026-03-18 | [GitHub 仓库深度分析报告](../github-trending-analyzer/reports/research_alirezarezvani_claude-skills.md) | — |
+| 2026-03-18 | [GitHub Trending 月榜报告](../github-trending-analyzer/reports/all-monthly-summary-2026-03-18.md) | — |
+| 2026-03-17 | [volcengine/OpenViking 深度研究报告](../github-trending-analyzer/reports/research_volcengine_OpenViking.md) | — |
+| 2026-03-17 | [shareAI-lab/learn-claude-code 深度研究报告](../github-trending-analyzer/reports/research_shareAI-lab_learn-claude-code.md) | — |
+| 2026-03-17 | [openclaw/openclaw](../github-trending-analyzer/reports/research_openclaw_openclaw.md) | — |
+| 2026-03-17 | [msitarzewski/agency-agents 深度研究报告](../github-trending-analyzer/reports/research_msitarzewski_agency-agents.md) | — |
+| 2026-03-17 | [moeru-ai/airi](../github-trending-analyzer/reports/research_moeru-ai_airi.md) | — |
+| 2026-03-17 | [microsoft/BitNet](../github-trending-analyzer/reports/research_microsoft_BitNet.md) | — |
+| 2026-03-17 | [langchain-ai/deepagents](../github-trending-analyzer/reports/research_langchain-ai_deepagents.md) | — |
+| 2026-03-17 | [huggingface/skills 深度研究报告](../github-trending-analyzer/reports/research_huggingface_skills.md) | — |
+| 2026-03-17 | [codecrafters-io/build-your-own-x](../github-trending-analyzer/reports/research_codecrafters-io_build-your-own-x.md) | — |
+| 2026-03-17 | [alibaba/zvec 深度研究报告](../github-trending-analyzer/reports/research_alibaba_zvec.md) | — |
+| 2026-03-17 | [alibaba/OpenSandbox 深度研究报告](../github-trending-analyzer/reports/research_alibaba_OpenSandbox.md) | — |
+| 2026-03-17 | [GitHub Trending 月榜报告](../github-trending-analyzer/reports/all-monthly-summary-2026-03-17.md) | — |
+| 2026-03-17 | [GitHub Trending 日榜报告](../github-trending-analyzer/reports/all-daily-summary-2026-03-17.md) | — |
+| 2026-03-17 | [GitHub Trending 周榜报告](../github-trending-analyzer/reports/all-weekly-summary-2026-03-17.md) | — |
+| 2026-03-17 | [Cloudflare workerd 深度研究报告](../github-trending-analyzer/reports/research_cloudflare_workerd.md) | — |
+| 2026-03-17 | [AstrBotDevs/AstrBot](../github-trending-analyzer/reports/research_AstrBotDevs_AstrBot.md) | — |
+| 2026-03-17 | [666ghj/BettaFish 深度研究报告](../github-trending-analyzer/reports/research_666ghj_BettaFish.md) | — |
 
 ## 🏄 Web Surfing（42 篇）
 
@@ -384,9 +518,9 @@
 | 2026-09-03 | [AI 行业日报 · 2026-09-03](../web-surfing/reports/ai-news-daily-2026-09-03.md) | — |
 | 2026-09-02 | [AI 行业日报 · 2026-09-02](../web-surfing/reports/ai-news-daily-2026-09-02.md) | — |
 | 2026-09-01 | [AI 行业日报 · 2026-09-01](../web-surfing/reports/ai-news-daily-2026-09-01.md) | — |
-| 2026-08-31 | [惠州租房建议报告——两位老人 2026 年 9/10 月入住版（1–3 个月短住体验）](../web-surfing/reports/huizhou-rental-guide-2026-09.md) | — |
 | 2026-08-31 | [AI 行业日报 · 2026-08-31](../web-surfing/reports/ai-news-daily-2026-08-31.md) | — |
 | 2026-08-28 | [AI 行业日报 · 2026-08-28](../web-surfing/reports/ai-news-daily-2026-08-28.md) | — |
+| 2026-08-27 | [惠州租房建议报告——两位老人 2026 年 9/10 月入住版（1–3 个月短住体验）](../web-surfing/reports/huizhou-rental-guide-2026-09.md) | — |
 | 2026-08-27 | [AI 行业日报 · 2026-08-27](../web-surfing/reports/ai-news-daily-2026-08-27.md) | — |
 | 2026-08-26 | [AI 行业日报 · 2026-08-26](../web-surfing/reports/ai-news-daily-2026-08-26.md) | — |
 | 2026-08-25 | [AI 行业日报 · 2026-08-25](../web-surfing/reports/ai-news-daily-2026-08-25.md) | — |

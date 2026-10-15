@@ -42,8 +42,10 @@
 | 📚 [Philosophy Learning](./philosophy-learning/) | 22 篇 | 20/14/1 |
 | 🧠 [Psychology Learning](./psychology-learning/) | 17 篇 | 13/13/0 |
 | 🧬 [Biology Learning](./biology-learning/) | 18 篇 | 14/9/0 |
-| ⚗️ [AI Practice](./ai-practice/) | 9 篇 | 9/1/0 |
-| 🎙️ [Podcast Learning](./podcast-learning/) | 83 篇 | 58/51/0 |
+| ⚗️ [AI Practice](./ai-practice/) | 10 篇 | 9/1/0 |
+| 🎙️ [Podcast Learning](./podcast-learning/) | 73 篇 | 58/51/0 |
+| 🔭 [GitHub Research](./github-trending-analyzer/) | 124 篇 | 0/0/0 |
+| 🏄 [Web Surfing](./web-surfing/) | 42 篇 | 0/0/0 |
 <!-- AUTO-OVERVIEW:END -->
 
 > 📖 抽空读报告？全部报告按更新时间索引 → [docs/REPORT_INDEX.md](./docs/REPORT_INDEX.md)（`reindex.py` 自动生成）
@@ -63,6 +65,9 @@
 1. **方法论**（[METHODOLOGY.md](./METHODOLOGY.md)）— 先规定怎么读、怎么查、怎么验证，再谈输出。这是真正的核心：让 AI 真读原文、标注证据、不编造。
 2. **知识层** — 每个领域的 `reports/`（我读的东西）+ `wiki/`（概念/实体/综合/未解问题的索引）。
 3. **画像层** — 每个领域的 `PROFILE.md`（我会什么、偏好什么）+ `MAP.md`（覆盖与缺口），让 AI 不重复讲我会的、知道下一步学什么。
+
+报告生产采用按需 context：统一入口见 [REPORT_WORKFLOW.md](./docs/REPORT_WORKFLOW.md)，模型与 Harness 的分层及 ACE 评估见 [CONTEXT_ENGINEERING.md](./docs/CONTEXT_ENGINEERING.md)。
+本轮全库审计、基线数据与落地清单见 [REPORT_SYSTEM_REVIEW_20261015.md](./docs/REPORT_SYSTEM_REVIEW_20261015.md)。
 
 ---
 
@@ -95,7 +100,10 @@
 
 ```bash
 python3 scripts/reindex.py                    # 刷新本 README 计数 + 重建 docs/REPORT_INDEX.md 阅读索引
-python3 scripts/lint_evidence.py --domain ai-learning   # 证据密度自检（非阻塞）
+python3 scripts/audit_reports.py --changed    # 新增/修改报告质量门
+python3 scripts/audit_reports.py --all --json # 全库报告审计
+python3 scripts/eval_report_context.py        # context 与 ACE 任务集静态评估
+python3 scripts/reindex.py --check            # 验证索引未漂移
 python3 scripts/git_identity.py validate      # 提交身份校验
 ```
 

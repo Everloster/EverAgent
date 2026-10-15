@@ -11,11 +11,13 @@
 
 ## 主协议
 
-**本项目主协议是 [AGENTS.md](./AGENTS.md)，开始任何工作前先读它。** 项目注册表与意图路由（§1/§1.5）、各子项目工作流（§2）、目录约定（§3）、全局规则（§4，含语言/搜索/提交/git 身份/兴趣确认/token 纪律）都在那里。
+**本项目主协议是 [AGENTS.md](./AGENTS.md)。** 它只保留意图路由、context 加载和全局不变量；报告流程、研究方法与提交规则分别由下列文档负责。
 
 配套文件：
 
 - 研究方法论（强制）：[METHODOLOGY.md](./METHODOLOGY.md)
+- 报告生产与完成定义：[docs/REPORT_WORKFLOW.md](./docs/REPORT_WORKFLOW.md)
+- Context 分层与 ACE 评估：[docs/CONTEXT_ENGINEERING.md](./docs/CONTEXT_ENGINEERING.md)
 - 提交规范与 push flow：[docs/PROTOCOL_COMMON.md](./docs/PROTOCOL_COMMON.md) §B/§C
 - 搜索阶梯：**已退役（2026-09-13）**——联网任务一律 eacli Token Plan-first（见根 AGENTS.md 托管策略块），eacli 不可用先修 eacli
 

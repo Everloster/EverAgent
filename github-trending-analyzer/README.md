@@ -7,13 +7,13 @@
 
 | # | 事 | 触发 | 产出 |
 |---|----|------|------|
-| A | 单 repo 深度研究 | 对话贴 repo 链接 | `reports/research_{owner}_{repo}.md` |
+| A | 单 repo 深度研究 | 明确要求“深挖 / 研究 / 出报告” | `reports/research_{owner}_{repo}.md` |
 | B | trending 汇总 | "出日/周/月 trending 报告" | `reports/all-{period}-summary-{date}.md` + 榜上各 repo 报告 |
-| C | 迭代优化研究技能本身 | 每次做完 A/B 后 | 对 `skills/repo-research/SKILL.md` 的改进（元活动） |
+| C | 迭代优化研究技能本身 | 发现跨 repo 可复用的问题时 | 对 skill/reference 的最小增量 |
 
-**事A 就是深度研究方法论本身**（4 轮研究 + 7 章中文报告，见 `skills/repo-research/`）。事B 建立在事A 之上：抓榜单 → 对榜上每个 repo 做一次事A → 汇总。**事C 是元活动**：把每次研究踩到的坑与更优做法折回事A 的 skill，越用越强。
+仅发送 repo 链接时默认口头介绍，不落报告。事A 的入口在 `skills/repo-research/SKILL.md`，详细四轮研究方法已下沉到其 `references/`；事B 建立在事A 之上。
 
-> 报告质量靠**遵循并持续迭代 skill 规范（事C）**保证，不靠脚本校验。发现更好的研究做法就直接改 `skills/repo-research/SKILL.md`。
+报告质量由代码/API 证据与全仓报告门禁共同保证。每次任务都反思，只有可复用或高风险发现才写回长期 context。
 
 ## Quick Start
 
@@ -45,7 +45,7 @@ tests/       脚本单元测试
 
 ## 知识库现状（`reports/`）
 
-- **Repo 深度报告**：108 篇（AI/ML、DevTools、Infra、Agent 等）
+- **Repo 深度报告**：111 篇（AI/ML、DevTools、Infra、Agent 等）
 - **汇总报告**：daily ×7、weekly ×2、monthly ×4（共 13 篇）
 - 完整索引 → [`knowledge/reports_index.md`](./knowledge/reports_index.md)
 
@@ -54,6 +54,9 @@ tests/       脚本单元测试
 ```bash
 ruff check scripts tests
 pytest -q
+python3 ../scripts/reindex.py
+python3 ../scripts/audit_reports.py --changed
+python3 ../scripts/reindex.py --check
 ```
 
 CI：`.github/workflows/trending-analyzer-ci.yml`（push/PR 自动跑 ruff + pytest，仅护脚本，不校验报告内容）。

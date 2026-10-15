@@ -64,14 +64,20 @@ GIT_NO_OPTIONAL_LOCKS=1 git push origin main
 
 ---
 
-## §D 报告自检（非阻塞）
+## §D 报告质量门
 
-完成报告后建议运行：
+新增或实质修改报告后，从仓库根目录运行：
 
 ```bash
-python3 scripts/lint_evidence.py <报告路径>   # 证据密度自检（WARN，不阻塞）
-python3 scripts/reindex.py                     # 刷新 README 报告/wiki 计数
+python3 scripts/reindex.py
+python3 scripts/audit_reports.py --changed
+python3 scripts/reindex.py --check
 ```
+
+- 新报告及声明 `quality_schema: report-v1` 的报告执行严格合同；当前任务造成的 ERROR 必须清零。
+- 历史报告只进入 WARN 清单，不因一次任务批量重写。
+- 播客、代码实验等领域若有额外审计或真实运行要求，按领域 `AGENTS.md` 追加执行。
+- `lint_evidence.py` 保留为单文件快速诊断，由统一审计器复用。
 
 ---
 

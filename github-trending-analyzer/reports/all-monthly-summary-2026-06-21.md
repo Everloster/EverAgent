@@ -1,3 +1,12 @@
+---
+title: "GitHub Trending 月榜报告 — 2026 年 6 月（截至 6-21，半月数据）"
+domain: "github-trending-analyzer"
+report_type: "monthly_summary"
+status: "completed"
+updated_on: "2026-06-21"
+semantic_tags: ["github", "trending", "open_source"]
+---
+
 # GitHub Trending 月榜报告 — 2026 年 6 月（截至 6-21，半月数据）
 
 > 生成时间: 2026-06-21
@@ -38,26 +47,26 @@
 
 | 排名 | 项目 | 语言 | Stars | 月新增 | 类别 |
 |------|------|------|-------|--------|------|
-| 1 | [colbymchenry/codegraph](./research_colbymchenry_codegraph.md)* | TypeScript | 52,234 | +46,315 | Agent Skills / 代码图谱 |
-| 2 | [Egonex-AI/Understand-Anything](./research_Egonex-AI_Understand-Anything.md)* | TypeScript | 64,425 | +49,015 | Agent Skills / 代码图谱 |
+| 1 | colbymchenry/codegraph* | TypeScript | 52,234 | +46,315 | Agent Skills / 代码图谱 |
+| 2 | Egonex-AI/Understand-Anything* | TypeScript | 64,425 | +49,015 | Agent Skills / 代码图谱 |
 | 3 | [chopratejas/headroom](./research_chopratejas_headroom.md)* | Python | 41,069 | +34,870 | Agent Skills / Token 压缩 |
 | 4 | [harry0703/MoneyPrinterTurbo](./research_harry0703_MoneyPrinterTurbo.md) | Python | 90,287 | +33,118 | AI 应用 / 短视频 |
-| 5 | [microsoft/markitdown](./research_microsoft_markitdown.md)* | Python | 156,430 | +32,693 | AI 工具 / 文档转 Markdown |
-| 6 | [Leonxlnx/taste-skill](./research_Leonxlnx_taste-skill.md)* | JavaScript | 47,545 | +29,001 | Agent Skills / 设计品味 |
-| 7 | [rohitg00/ai-engineering-from-scratch](./research_rohitg00_ai-engineering-from-scratch.md)* | Python | 35,002 | +26,530 | 教学 / AI 工程 |
+| 5 | microsoft/markitdown* | Python | 156,430 | +32,693 | AI 工具 / 文档转 Markdown |
+| 6 | Leonxlnx/taste-skill* | JavaScript | 47,545 | +29,001 | Agent Skills / 设计品味 |
+| 7 | rohitg00/ai-engineering-from-scratch* | Python | 35,002 | +26,530 | 教学 / AI 工程 |
 | 8 | [mvanhorn/last30days-skill](./research_mvanhorn_last30days-skill.md) | Python | 44,995 | +18,741 | Agent Skills / 研究助手 |
-| 9 | [Panniantong/Agent-Reach](./research_Panniantong_Agent-Reach.md)* | Python | 35,625 | +15,107 | Agent Skills / 跨平台读取 |
-| 10 | [apple/container](./research_apple_container.md)* | Swift | 39,030 | +12,350 | 基础设施 / 容器 |
-| 11 | [mukul975/Anthropic-Cybersecurity-Skills](./research_mukul975_Anthropic-Cybersecurity-Skills.md)* | Python | 16,969 | +10,210 | Agent Skills / 安全 |
+| 9 | Panniantong/Agent-Reach* | Python | 35,625 | +15,107 | Agent Skills / 跨平台读取 |
+| 10 | apple/container* | Swift | 39,030 | +12,350 | 基础设施 / 容器 |
+| 11 | mukul975/Anthropic-Cybersecurity-Skills* | Python | 16,969 | +10,210 | Agent Skills / 安全 |
 | 12 | [iptv-org/iptv](./research_iptv-org_iptv.md) | TypeScript | 126,111 | +9,694 | 内容 / IPTV 频道 |
-| 13 | [anthropics/knowledge-work-plugins](./research_anthropics_knowledge-work-plugins.md)* | Python | 21,475 | +9,069 | Agent Skills / 知识工作 |
-| 14 | [can1357/oh-my-pi](./research_can1357_oh-my-pi.md)* | TypeScript | 13,618 | +8,619 | Agent Skills / 终端编码 |
-| 15 | [phuryn/pm-skills](./research_phuryn_pm-skills.md)* | Unknown | 20,013 | +8,407 | Agent Skills / PM 工作流 |
-| 16 | [hardikpandya/stop-slop](./research_hardikpandya_stop-slop.md)* | Unknown | 11,551 | +7,775 | Agent Skills / 文风清洗 |
+| 13 | anthropics/knowledge-work-plugins* | Python | 21,475 | +9,069 | Agent Skills / 知识工作 |
+| 14 | can1357/oh-my-pi* | TypeScript | 13,618 | +8,619 | Agent Skills / 终端编码 |
+| 15 | phuryn/pm-skills* | Unknown | 20,013 | +8,407 | Agent Skills / PM 工作流 |
+| 16 | hardikpandya/stop-slop* | Unknown | 11,551 | +7,775 | Agent Skills / 文风清洗 |
 | 17 | [DeusData/codebase-memory-mcp](./research_DeusData_codebase-memory-mcp.md)* | C | 9,030 | +5,450 | Agent Skills / MCP |
-| 18 | [ogulcancelik/herdr](./research_ogulcancelik_herdr.md)* | Rust | 6,465 | +4,761 | Agent 工具 / 多路复用 |
+| 18 | ogulcancelik/herdr* | Rust | 6,465 | +4,761 | Agent 工具 / 多路复用 |
 
-> 注：标记 `*` 的项目表示本仓库在 Q2 之前**无对应的深度研究报告**。汇总报告中保留链接占位，供后续 TrendAgent 按 TT-2 协议补全（见 §6 数据源说明）。
+> 注：标记 `*` 的项目表示本仓库在 Q2 之前**无对应的深度研究报告**，因此使用纯文本，避免生成失效链接；后续可按 TT-2 协议补全（见 §6 数据源说明）。
 
 ## 趋势分析
 
@@ -242,7 +251,7 @@ Q1 系统层项目以 SpacetimeDB（数据库）和 Lightpanda（浏览器）为
 - Pexels/Pixabay 自动匹配免版权素材
 - 内置 Web UI 极低门槛
 
-**Q2 表现**：月增 33,118 stars，仍是国内 AI 应用层出海标杆。**已有 Q1 深度研究报告**（[`./research_harry0703_MoneyPrinterTurbo.md`](../research_harry0703_MoneyPrinterTurbo.md)）。
+**Q2 表现**：月增 33,118 stars，仍是国内 AI 应用层出海标杆。**已有 Q1 [深度研究报告](./research_harry0703_MoneyPrinterTurbo.md)**。
 
 ### #5 microsoft/markitdown — LLM 友好的文档转换器
 
@@ -278,7 +287,7 @@ Q1 系统层项目以 SpacetimeDB（数据库）和 Lightpanda（浏览器）为
 **应用场景**：研究任何话题，覆盖 Reddit / X / YouTube / HN / Polymarket / Web
 **创新点**：研究 → 综合 → 输出三段式，自动引用来源
 
-**Q1 已有深度研究报告**（[`./research_mvanhorn_last30days-skill.md`](../research_mvanhorn_last30days-skill.md)）。
+**Q1 已有[深度研究报告](./research_mvanhorn_last30days-skill.md)**。
 
 ### #9 Panniantong/Agent-Reach — 给 AI Agent 装上"眼睛"
 

@@ -12,6 +12,8 @@ duration: "41m41s"
 duration_seconds: 2501
 published: "2026-07-29"
 updated_on: "2026-07-29"
+status: archived
+semantic_tags: ["fde", "agent_harness", "enterprise_ai"]
 ---
 
 # 为什么 FDE 在 AI 时代这么火？—— Jove(Cresta)对谈精读

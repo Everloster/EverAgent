@@ -14,6 +14,9 @@ from pathlib import Path
 from typing import Dict, List, Optional
 
 
+QUALITY_SCHEMA = "report-v1"
+
+
 def get_skill_dir() -> Path:
     """
     Get the directory where this skill is located.
@@ -45,6 +48,11 @@ def safe_format_number(value, default="N/A"):
     if isinstance(value, (int, float)):
         return f"{value:,}"
     return default
+
+
+def yaml_quote(value: str) -> str:
+    """Quote a scalar using JSON syntax, which is valid YAML."""
+    return json.dumps(value, ensure_ascii=False)
 
 
 def get_growth_label(period: str) -> str:
@@ -86,7 +94,19 @@ def generate_project_report(
     
     ensure_dir(output_path.parent)
     
-    content = f"""# {repo_data.get('owner', '')}/{repo_data.get('repo', '')}
+    report_date = datetime.now().strftime('%Y-%m-%d')
+    report_title = f"{repo_data.get('owner', '')}/{repo_data.get('repo', '')} 深度研究报告"
+    content = f"""---
+title: {yaml_quote(report_title)}
+domain: "github-trending-analyzer"
+report_type: "repo_deep_research"
+status: "completed"
+updated_on: "{report_date}"
+quality_schema: "{QUALITY_SCHEMA}"
+semantic_tags: ["github", "open_source", "repository_research"]
+---
+
+# {repo_data.get('owner', '')}/{repo_data.get('repo', '')}
 
 > {repo_data.get('description', 'No description available')}
 
@@ -339,7 +359,19 @@ def generate_summary_report(
     total_stars = sum(r.get("stars", 0) for r in repos)
     total_today = sum(r.get("today_stars", 0) for r in repos)
     
-    content = f"""# GitHub Trending {period_names.get(period, period)}报告
+    report_date = datetime.now().strftime('%Y-%m-%d')
+    report_title = f"GitHub Trending {period_names.get(period, period)}报告"
+    content = f"""---
+title: {yaml_quote(report_title)}
+domain: "github-trending-analyzer"
+report_type: "{period}_summary"
+status: "completed"
+updated_on: "{report_date}"
+quality_schema: "{QUALITY_SCHEMA}"
+semantic_tags: ["github", "trending", "open_source"]
+---
+
+# {report_title}
 
 > 生成时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
 
@@ -359,7 +391,7 @@ def generate_summary_report(
 
 | 排名 | 项目 | 语言 | Stars | {get_growth_label(period)} | 描述 |
 |------|------|------|-------|----------|------|
-{format_repo_table(repos, period)}
+{format_repo_table(repos, period, missing_repos)}
 
 ## 趋势分析
 
@@ -367,7 +399,7 @@ def generate_summary_report(
 
 ## 详细报告链接
 
-{format_report_links(repos, period)}
+{format_report_links(repos, period, missing_repos)}
 
 ## 报告状态说明
 
@@ -397,8 +429,13 @@ def format_language_stats(stats: Dict[str, int]) -> str:
     return "\n".join(lines)
 
 
-def format_repo_table(repos: List[Dict], period: str) -> str:
+def format_repo_table(
+    repos: List[Dict],
+    period: str,
+    missing_repos: Optional[List[str]] = None,
+) -> str:
     """Format repos as markdown table rows."""
+    missing = set(missing_repos or [])
     lines = []
     for i, repo in enumerate(repos, 1):
         owner = repo.get("owner", "")
@@ -408,8 +445,10 @@ def format_repo_table(repos: List[Dict], period: str) -> str:
         today = repo.get("today_stars", 0)
         desc = repo.get("description", "")[:50] + "..." if len(repo.get("description", "")) > 50 else repo.get("description", "")
         desc = desc.replace("|", "\\|")
-        
-        lines.append(f"| {i} | [{owner}/{name}](./research_{owner}_{name}.md) | {lang} | {stars:,} | +{today:,} | {desc} |")
+
+        full_name = f"{owner}/{name}"
+        project = full_name if full_name in missing else f"[{full_name}](./research_{owner}_{name}.md)"
+        lines.append(f"| {i} | {project} | {lang} | {stars:,} | +{today:,} | {desc} |")
     return "\n".join(lines)
 
 
@@ -436,14 +475,23 @@ def analyze_trends(repos: List[Dict], language_stats: Dict[str, int]) -> str:
     return "\n\n".join(parts)
 
 
-def format_report_links(repos: List[Dict], period: str) -> str:
+def format_report_links(
+    repos: List[Dict],
+    period: str,
+    missing_repos: Optional[List[str]] = None,
+) -> str:
     """Format links to individual reports."""
+    missing = set(missing_repos or [])
     lines = []
     for repo in repos:
         owner = repo.get("owner", "")
         name = repo.get("repo", "")
+        full_name = f"{owner}/{name}"
+        if full_name in missing:
+            lines.append(f"- {full_name} — 本地深研报告缺失")
+            continue
         link = f"./research_{owner}_{name}.md"
-        lines.append(f"- [{owner}/{name}]({link})")
+        lines.append(f"- [{full_name}]({link})")
     return "\n".join(lines)
 
 

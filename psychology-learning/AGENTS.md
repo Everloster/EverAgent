@@ -2,20 +2,13 @@
 
 > 领域：心理学经典实验与概念深挖（认知·社会·发展·行为经济学·临床）。
 > 通用研究方法论见根 [METHODOLOGY.md](../METHODOLOGY.md)（强制）。本文件只写本领域的边界与特化。
-> **Token Plan-first（根 AGENTS.md 托管策略）**：联网搜索/网页读取/公开仓库理解/视觉/结构化数据/媒体生成，先走 `eacli tool select` + `tool invoke`；eacli 不可用时先修 eacli（eacli-first，2026-09-13），不设降级阶梯。
+> 联网与个人上下文遵守根 `AGENTS.md` 的托管策略，本文件不重复工具细节。
 
 ---
 
 ## 工作模式：对话即学习
 
-用户说"帮我学 X / 深入 Y / 上次那个继续"，按以下循环：
-
-1. **读画像与地图** — [PROFILE.md](./PROFILE.md)、[MAP.md](./MAP.md)、[wiki/open-questions.md](./wiki/open-questions.md)
-2. **查已有积累** — 翻 `wiki/concepts/` 与 `reports/`，已有则深化而非重复
-3. **做研究** — 按 METHODOLOGY 真读原文、查证、标注证据；框架见 `skills/`
-4. **写报告** — 存 `reports/`，带 frontmatter，结尾必带「思考与追问」三问
-5. **沉淀** — 更新 wiki、未解问题汇入 open-questions、必要时写 syntheses
-6. **更新画像** — 把新兴趣/水平/偏好写回 PROFILE（仅凭用户真实表达，禁止臆测）
+用户明确要求学习、精读、深挖或出报告时，使用根 skill [`everagent-report`](../.agents/skills/everagent-report/SKILL.md) 与 [REPORT_WORKFLOW](../docs/REPORT_WORKFLOW.md)。通过 eacli 从 `knowledge.psychology` 获取最小 context，再按需读取 PROFILE、MAP、open-questions 和一个体裁 skill。
 
 > 追问已有主题时：在原报告追加 `## 追问深入 [日期]` 小节并刷新 `updated_on`，不另开新文件。
 
@@ -38,6 +31,7 @@ domain: "psychology-learning"
 report_type: "paper_analysis"   # 或 concept_report
 status: "completed"
 updated_on: "YYYY-MM-DD"
+quality_schema: "report-v1"
 ---
 ```
 
@@ -46,8 +40,9 @@ updated_on: "YYYY-MM-DD"
 ## 完成后自检
 
 ```bash
-python3 scripts/lint_evidence.py <报告路径>
 python3 scripts/reindex.py
+python3 scripts/audit_reports.py --changed
+python3 scripts/reindex.py --check
 ```
 
 提交规范见根 [AGENTS.md](../AGENTS.md) 与 [docs/PROTOCOL_COMMON.md](../docs/PROTOCOL_COMMON.md)。

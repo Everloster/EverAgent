@@ -36,6 +36,16 @@
 ### 2.1 页眉模板
 
 ```markdown
+---
+title: "AI 行业日报 · {{DATE}}"
+domain: "web-surfing"
+report_type: "daily_summary"
+status: "completed"
+updated_on: "{{DATE}}"
+quality_schema: "report-v1"
+semantic_tags: ["ai_news", "daily_digest"]
+---
+
 # AI 行业日报 · {{DATE}}
 
 四源：AIHOT {{A}} · GitHub Trending {{B}} · AI Digest {{C}} · HN {{D}}（{{A}}/{{B}}/{{C}}/{{D}} 取 ✅ ⚠️ ❌）

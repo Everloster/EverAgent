@@ -4,20 +4,13 @@
 > 用最小、可在个人机器（CPU / 单卡 / 缩尺模拟）上跑起来的 demo，把一项 AI 技术讲透。
 > 涵盖但不限于：Transformer/注意力、微调（LoRA/GRPO）、RAG、Agent、多模态、推理优化、扩散模型等。
 > 通用研究方法论见根 [METHODOLOGY.md](../METHODOLOGY.md)（强制）。本文件只写本领域的边界与特化。
-> **Token Plan-first（根 AGENTS.md 托管策略）**：联网搜索/网页读取/公开仓库理解/视觉/结构化数据/媒体生成，先走 `eacli tool select` + `tool invoke`；eacli 不可用时先修 eacli（eacli-first，2026-09-13），不设降级阶梯。
+> 联网与个人上下文遵守根 `AGENTS.md` 的托管策略，本文件不重复工具细节。
 
 ---
 
 ## 工作模式：对话即学习
 
-用户说"帮我用最小 demo 理解 X / 跑个实验验证 Y / 上次那个继续"，按以下循环：
-
-1. **读画像与地图** — [PROFILE.md](./PROFILE.md)、[MAP.md](./MAP.md)、[CONTEXT.md](./CONTEXT.md)（已有实验，防重复）、[wiki/open-questions.md](./wiki/open-questions.md)
-2. **查已有积累** — 翻 `wiki/concepts/`、`experiments/`、`notebooks/`、`src/`，已有则深化而非重复
-3. **写并跑 demo** — 写**可运行**的最小代码（`src/` 或 `notebooks/`）。跑不动真模型就做**缩尺模拟**（toy 规模），但必须真跑、拿真实数值
-4. **写教学笔记** — 存 `experiments/exp_NNN_*.md`，结尾必带「思考与追问」三问
-5. **沉淀** — 更新 wiki（概念页）、CONTEXT.md（追加实验行）、未解问题汇入 open-questions
-6. **更新画像** — 把新兴趣/水平/偏好写回 PROFILE（仅凭用户真实表达，禁止臆测）
+用户要求最小 demo 或实验验证时，使用根 skill [`everagent-report`](../.agents/skills/everagent-report/SKILL.md) 与 [REPORT_WORKFLOW](../docs/REPORT_WORKFLOW.md)。通过 eacli 从 `knowledge.practice` 获取最小 context，再按需读取 CONTEXT、MAP、PROFILE 和一个实验 skill。代码必须实际运行并记录观察值。
 
 ---
 
@@ -40,8 +33,9 @@ domain: "ai-practice"
 report_type: experiment_analysis
 experiment_id: exp_NNN
 notebook: notebooks/xxx.ipynb   # 若有对应 notebook
-status: done
+status: completed
 updated_on: YYYY-MM-DD
+quality_schema: "report-v1"
 ---
 ```
 
@@ -50,7 +44,9 @@ updated_on: YYYY-MM-DD
 ## 完成后自检
 
 ```bash
-python3 ../scripts/reindex.py
+python3 scripts/reindex.py
+python3 scripts/audit_reports.py --changed
+python3 scripts/reindex.py --check
 ```
 
 提交规范见根 [AGENTS.md](../AGENTS.md) 与 [docs/PROTOCOL_COMMON.md](../docs/PROTOCOL_COMMON.md)。

@@ -1,7 +1,7 @@
 # 播客报告写作 SKILL
 
 > 每次做播客学习任务（转写→润色→报告→沉淀）时对照本文件执行。它是 2026-10-09 对最近 5 篇报告审计后的沉淀，目的：**每次任务都比上批好一点**。
-> 维护规则：每批任务结束，若发现新问题/新解法，把一行改进写进对应节（保持轻量，勿膨胀成论文）。
+> 维护规则：每批任务结束先反思；只有跨节目可复用或高风险的问题才以最小 delta 更新本文件，一次性特例留在报告。
 
 ---
 
@@ -24,14 +24,15 @@
 4. **wiki 双链 ≥1**：正文至少 1 处 `[[...]]` 链到概念/实体页或相关报告；该集没有可链对象时在 Limitations 写明（这是审计发现的零双链问题）
 5. **frontmatter 数字禁止手填**：写完报告必跑 `python3 scripts/fill_report_stats.py <报告>`（自动统计三件套字数/段数/语速并写回）
 6. **思考与追问·问 2 全量汇入 open-questions**（不只挑几条）；问 3 的行动项若可执行，写明"谁/何时"或明确挂起
+7. **新报告 frontmatter**：增加 `quality_schema: "report-v1"`，并逐字段核对实际节目。
 
 ## 四、收尾（顺序固定）
 
 1. `fill_report_stats.py <报告>`——数字校验
 2. `sync_index_status.py`——状态回填
-3. `python3 ../scripts/reindex.py` + `lint_evidence.py --domain podcast-learning`
-4. CONTEXT 台账追加条目，**末尾加一行「本批改进」**：相对上批改了什么（micro-retro，显性进步记录）
-5. 若本批发现新问题/新经验：回写本 SKILL 对应节一行
+3. 从仓库根目录运行 `python3 scripts/reindex.py`、`python3 scripts/audit_reports.py --changed`、`python3 scripts/reindex.py --check`
+4. CONTEXT 只追加本期产物与必要边界；普通过程记录不进入长期上下文
+5. 若本批出现跨节目复用价值或高风险问题，以一条局部 delta 更新本 skill；否则不改
 
 ## 五、纪律红线（2026-10-14 全库 review 后立，违反即返工）
 

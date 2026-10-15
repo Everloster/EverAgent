@@ -3,6 +3,7 @@
 > 所有领域的研究与报告产出都必须遵守本文件。
 > 各领域 `skills/*/SKILL.md` 只写**领域特化部分**，通用方法论一律引用本文件，避免重复维护。
 > 这是 EverAgent 真正的核心 IP：**先规定怎么读、怎么查、怎么验证，再谈输出格式。**
+> Context 加载、ACE 增量策展与完成门禁由 [docs/REPORT_WORKFLOW.md](./docs/REPORT_WORKFLOW.md) 统一管理，本文件只拥有研究与证据方法。
 
 ---
 

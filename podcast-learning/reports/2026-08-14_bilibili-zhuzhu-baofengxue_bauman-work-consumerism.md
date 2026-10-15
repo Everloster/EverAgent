@@ -31,6 +31,7 @@ source_shownotes_chapters: false
 notable_correction: "无官方字幕，19 处确定修正（无险一金→五险一金、爆卖→鲍曼、POA→PUA、飞升机走→非升即走等）+ 6 处存疑 [?]；书 PDF 无页码，引用按章+小节定位"
 total_chars_raw: 27061
 total_chars_polished: 7723
+semantic_tags: ["bauman", "work", "consumerism"]
 ---
 
 # 一本书看清"工作"的真相：视频解读 × 原书深读
@@ -186,4 +187,4 @@ UP 主的大白话定义：**"即使你觉得生命不需要工作就已经很�
 
 ---
 
-*版权与引用：视频著作权归 UP 主「竹竹暴风雪」与 bilibili 所有；原书著作权归鲍曼遗产方与上海社会科学院出版社所有。本报告与转录仅供个人学习；引用遵循项目 [COPYRIGHT.md](./COPYRIGHT.md)；如版权方要求下架请联系。完整节目请去 B 站观看；原书请购买正版。*
+*版权与引用：视频著作权归 UP 主「竹竹暴风雪」与 bilibili 所有；原书著作权归鲍曼遗产方与上海社会科学院出版社所有。本报告与转录仅供个人学习；引用遵循项目 [COPYRIGHT.md](../COPYRIGHT.md)；如版权方要求下架请联系。完整节目请去 B 站观看；原书请购买正版。*

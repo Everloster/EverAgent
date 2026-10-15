@@ -31,6 +31,8 @@ guest: "嘉宾"
 transcript: reports/transcripts/{slug}.transcript.txt
 status: archived
 updated_on: YYYY-MM-DD
+quality_schema: "report-v1"
+semantic_tags: ["podcast"]
 ---
 
 ## 一句话总结

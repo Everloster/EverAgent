@@ -1,0 +1,242 @@
+# 事A · 单 Repo 深度研究（= 深度研究方法论本身）
+
+> **2026-10-15 路由说明**：仓库结构、文件读取和文档搜索先用 eacli `repo.public.*`；下文 `gh api` 命令只用于 typed capability 尚未覆盖的精确元数据、提交、issue、PR 与 release 统计。质量门由根 `scripts/audit_reports.py` 负责，本文件保留研究细节。
+
+本 reference 只在 `repo-research` skill 已因明确的“研究 / 深挖 / 出报告”请求而触发后加载。仅粘贴 GitHub 链接时做口头介绍，不执行四轮深研，也不落文件。
+它既是单 repo 的研究细节，也是 trending 汇总逐项深研时复用的方法。
+
+> 研究质量由一手代码与 API 证据、领域方法和确定性报告门禁共同保证。研究后只把跨仓库可复用且有真实证据的问题以局部 delta 写回，避免每次任务都扩写工作流。
+
+---
+
+## 触发条件
+
+- 用户明确说“深度研究 / 深挖 / 出报告 / 更新研究报告”，并给出 GitHub repo 链接或 `owner/repo`。
+- 仅有链接、或只说“看看这个项目”时不加载本 reference。
+
+## 认证
+
+仓库结构、文件和文档搜索先通过 eacli 的 `repo.public.structure`、`repo.public.read`、`repo.public.search`。只有 typed capability 未覆盖精确元数据、提交、issue、PR 或 release 时才使用 `gh api`，并记录降级原因；进入该分支前运行 `gh auth status`。
+凭据由执行设备本地解析，不写进参数、报告或仓库。`github.com/trending` 榜单页由 `trending_fetcher.py` 抓取。
+
+---
+
+## 主流程（4 步）
+
+1. 解析链接为 `owner/repo`；无法可靠解析时才请用户补充。
+2. 运行 `python3 scripts/trending_fetcher.py check {owner}/{repo}`，读取 `exists / age_days / needs_update / name_mismatch / path`。
+3. 没有报告时直接完成四轮研究。已有报告且用户明确要求更新或继续深挖时，读取原报告并覆盖更新；明确要求新视角时写 `research_{owner}_{repo}_{topic}.md`。只有原请求无法确定“更新原报告还是新增视角”，且两者会实质改变交付物时才询问。
+4. 完成四轮研究，写七章中文报告并运行全仓报告门禁。
+
+---
+
+## 4 轮深度研究方法论
+
+四轮研究，每轮有**强制产出物（artifact）**。没有产出物的轮次视为未完成，不得进入下一轮。
+核心原则：**技术分析必须基于真实代码，竞品数据必须经 API 核验，社区/趋势结论必须有量化信号支撑。**
+
+| 轮次 | 目标 | 强制产出物 |
+|------|------|-----------|
+| R1 元数据 | 仓库客观事实 | 语言占比、头部 5 贡献者及提交数、近 10 次发版节奏、顶层目录树 |
+| R2 读代码 | 代码驱动的架构理解 | 依赖清单要点 + 2-5 个核心源文件的关键发现（`[代码]` 证据） |
+| R3 竞品核验 | 真实、可验证的竞品表 | ≥2 个竞品的 `gh` 实测 stars/license/最近推送 |
+| R4 量化信号 | 数据驱动的活跃度/趋势 | 近 52 周提交曲线特征 + issue 响应概况 |
+
+### Round 1 — 元数据（GitHub API）
+
+先选择并调用 eacli typed capability：
+```bash
+eacli tool select --capability repo.public.structure --device auto --json
+eacli tool invoke --capability repo.public.structure \
+  --input-json '{"repo":"<owner>/<repo>"}' \
+  --device auto --request-id req_repo_structure_<stable-id> --json
+
+eacli tool select --capability repo.public.read --device auto --json
+eacli tool invoke --capability repo.public.read \
+  --input-json '{"repo":"<owner>/<repo>","path":"README.md"}' \
+  --device auto --request-id req_repo_readme_<stable-id> --json
+```
+**产出物**：语言字节占比、头部 5 贡献者及 contributions、近 10 次发版（看 alpha/beta/rc → 正式版节奏）、顶层目录结构。
+
+typed capability 未覆盖的量化字段才用 `gh api` 或现有 `scripts/github_api.py` 补齐。
+
+> 💡 **省事姿势（事C 沉淀）**：`contributors` / `releases` 走 `github_api.py` 会打印全量 raw JSON，噪声极大。要"头部贡献者 / 发版节奏"这类摘要时，直接用 `gh --jq` 一行取：
+> ```bash
+> gh api "repos/<owner>/<repo>/contributors?per_page=10" --jq '.[] | "\(.login) | \(.contributions)"'
+> gh api "repos/<owner>/<repo>/releases?per_page=12" --jq '.[] | "\(.tag_name) | \(.published_at[0:10]) | prerelease=\(.prerelease)"'
+> ```
+> 由此可顺手判断**巴士因子**（单作者提交占比过高 = 可持续性风险，写进"社区活跃度"章）。
+
+> ⚠️ **默认分支健康度核验（事C 沉淀，高价值）**：**别默认 `main`/`master` 上就是那个走红的代码**。大型项目重写、monorepo 迁移、代码搬到独立仓库时，默认分支可能是**空壳骨架**——只看它会得出完全错误的技术判断。出现以下任一信号就必须查分支：① 顶层 blob 数异常少（视频编辑器/框架却只有 ~100 文件）；② 入口/首页是 `hello world` 占位；③ README 或根路由标题含 `rewrite`/`beta`/`v2`/`new.`；④ 依赖清单缺了该品类的核心库（如视频编辑器没有 ffmpeg/媒体库）。核验命令：
+> ```bash
+> # 列所有分支
+> gh api "repos/<owner>/<repo>/branches?per_page=50" --jq '.[].name'
+> # 对比候选分支的文件数，找出真正装着生产代码的那个（数量最多/含核心目录的）
+> for b in main dev staging rewrite; do n=$(gh api "repos/<owner>/<repo>/git/trees/$b?recursive=1" --jq '[.tree[]|select(.type=="blob")]|length' 2>/dev/null); echo "$b: $n blobs"; done
+> # 确认某分支是否含品类核心目录（例：视频编辑器的 timeline/editor/renderer）
+> gh api "repos/<owner>/<repo>/git/trees/<branch>?recursive=1" --jq '.tree[]|select(.path|test("timeline|editor|renderer";"i"))|.path' | head
+> ```
+> 读代码（R2）必须切到**真正的生产分支**（`?ref=<branch>` / `contents/...?ref=<branch>`），并在报告开头**显著提示**"默认分支不是生产代码，真代码在 X 分支"。老代码常被搬到 `-classic`/`-legacy`/`-old` 后缀的独立仓库，一并 `gh api repos/<owner>/<repo>-classic` 核验归档状态。
+
+**可用命令**（`github_api.py` 末位参数）：
+`summary` · `info` · `readme` · `tree` · `file <path>` · `languages` · `contributors` · `commits` · `commit_activity` · `issues` · `prs` · `releases` · `tags`
+
+### Round 2 — 读代码（强制，决定"技术分析"章质量）
+
+> ⚠️ 不读代码就写架构 = README 复述。技术分析章必须出现 ≥1 处 `[代码]` 证据。
+
+1. 看 `repo.public.structure` 输出定位入口与核心模块。
+2. 读依赖清单（按语言择一）：`package.json` / `pyproject.toml` / `Cargo.toml` / `go.mod` / `pom.xml` / `build.gradle`。
+3. 读 **2-5 个关键源文件**（入口文件、核心模块、关键配置）：
+```bash
+eacli tool select --capability repo.public.read --device auto --json
+eacli tool invoke --capability repo.public.read \
+  --input-json '{"repo":"<owner>/<repo>","path":"<关键文件>"}' \
+  --device auto --request-id req_repo_file_<stable-id> --json
+```
+**产出物**：从真实代码得出的架构判断（模块划分、数据流、关键依赖、设计取舍），标注 `[代码]`。README 与代码冲突时以代码为准并指出冲突。
+
+> 💡 **本机已有 clone 时 R2 走本地（事C 沉淀，2026-09-20）**：大 monorepo 逐文件远程读取既慢又看不清全局。若用户已把源码 clone 到本地：①先 `git log` pin 住 commit 作证据基线；②按顶层模块分组勘察；Harness 支持且任务规模值得时再并行委派，每组产出“定位 / 入口文件:行号 / 核心抽象 / 调用关系 / 坑”摘要；③主会话只读摘要写报告。语言占比对 monorepo 会失真，不能单独据此判断技术栈重心。
+
+> 💡 **薄壳包/嵌套 monorepo 下钻（事C 沉淀，2026-09-30）**：PyPI 发布名常是**薄壳**（如 `hindsight-api` 只含 621 字节的 pyproject，真代码在同仓 `hindsight-api-slim/`）。顶层 `tree` 看不出真实模块结构时：①先读薄壳 pyproject 的 `dependencies`/`tool.uv.sources`（workspace 指针）找到真身目录；②对子树下钻用两步 tree sha（全仓 `recursive=1` 会 TLS 超时/EOF）：`git/trees/<顶层sha>` 取子目录 sha → `git/trees/<子sha>?recursive=1` 拿全清单（含 size）。③读大文件前先探 `.size`：>100KB 别用 contents API 拉全文，靠目录结构+同目录小文件（types.py/constants）取证据即可，1MB+ 单文件本身就可作为"架构风格"证据（如巨型单文件 = 重内聚取舍）记录。
+
+> 💡 **核验 README 声明（事C 沉淀）**：README 常有"50+ packs""支持 7 种语言"这类营销式数字。**用代码实测反查**，别照抄：
+> ```bash
+> # 递归列出文件树，统计某类文件数量（例：packs 规则文件）
+> gh api "repos/<owner>/<repo>/git/trees/<default_branch>?recursive=1" \
+>   --jq '[.tree[] | select(.path|test("^src/packs/.+/.+\\.rs$")) | select(.path|test("mod.rs|test")|not)] | length'
+> ```
+> 数字对得上就写"与代码一致"，对不上就指出差距——这类就地核验比复述 README 有价值得多。
+
+> 💡 **部署兼容性要核验已发布制品（事C 沉淀）**：Dockerfile、CI 或源码里出现 `arm64` / `multi-arch` 分支，**不等于 registry 里的正式镜像已经发布该架构**。只要报告讨论“能否部署到某 OS/CPU”，必须同时检查官方支持声明、安装脚本门禁和实际 image manifest；三者冲突时，以发布制品与维护者当前声明为准，并明确区分“源码可构建”“社区验证可跑”“官方支持”。
+> ```bash
+> # Docker Hub / GHCR 镜像均可先用 buildx 查看发布平台
+> docker buildx imagetools inspect <registry>/<owner>/<image>:<tag>
+> # 重点确认输出中是否真的存在 linux/amd64、linux/arm64 等 Platform
+> ```
+> 若本机没有 Docker daemon，也可直接走 registry HTTP API 读取 manifest/index；不要因为 Dockerfile 有 `ARG TARGETARCH` 就替官方宣布多架构支持。
+
+### Round 3 — 竞品核验（强制，决定"竞品对比"章可信度）
+
+> ⚠️ 禁止凭记忆填竞品 stars。所有竞品数值必须现查现填。
+
+1. 通过 eacli `web.search` 找同类项目（`{topic} alternatives` / `{topic} vs`）。
+2. 把每个候选竞品解析为 `owner/repo`。
+3. **逐个用 `gh` 拉真实数据**后才允许写入表格：
+```bash
+gh api -X GET repos/<owner>/<repo> --jq '"\(.full_name) | stars=\(.stargazers_count) | lang=\(.language) | license=\(.license.spdx_id) | pushed=\(.pushed_at[0:10])"'
+```
+**产出物**：≥2 个竞品的实测 stars/语言/协议/最近推送日期。闭源竞品标注"闭源"，不编造数字。
+
+### Round 4 — 量化信号 + 深挖（决定"社区活跃度/发展趋势"章）
+
+```bash
+python3 scripts/github_api.py <owner> <repo> commit_activity   # 近 52 周周提交
+python3 scripts/github_api.py <owner> <repo> issues            # issue 响应概况
+```
+- 用 commit_activity 描述趋势（"近 8 周均值 vs 全年均值"），替代"几乎每日提交"这类定性话术。
+- 用 issues 的 created/closed 时间估算响应概况。
+- 通过 eacli `web.read` 读取有价值的 URL，补充 sentiment 与 roadmap。
+**产出物**：≥1 个量化结论（提交曲线特征 / issue 响应概况）。
+
+> 💡 **一行出量化结论（事C 沉淀）**：
+> ```bash
+> # 近8周周均 vs 全年周均（差距大 = 已过爆发期/进入维护期，是客观信号非贬义）
+> gh api "repos/<owner>/<repo>/stats/commit_activity" \
+>   --jq 'map(.total) as $t | {year_avg:(($t|add)/($t|length)), last8_avg:(($t[-8:]|add)/8)}'
+> # issue 开放/已关闭计数（排除 PR），估算关闭率与响应活跃度
+> gh api -X GET "search/issues?q=repo:<owner>/<repo>+type:issue+state:closed" --jq '.total_count'
+> ```
+> ⚠️ `stats/commit_activity` 对大 repo 常返回空数组（GitHub 异步统计未就绪），空值兜底用 search API 精确计数（2026-09-20 实测 trycua/cua）：
+> ```bash
+> gh api -X GET "search/commits?q=repo:<owner>/<repo>+committer-date:YYYY-MM-DD..YYYY-MM-DD" --jq '.total_count'
+> ```
+
+> 💡 **star 暴涨归因 + 分支活跃度陷阱（事C 沉淀）**：用户常问"为什么今天暴涨几千 star"。两步定位：
+> ① **先排除代码驱动**——`stats/commit_activity` 只统计**默认分支**，若真代码在别的分支（见 R1 默认分支核验），这里的数字会误导；要直接查生产分支近况：
+> ```bash
+> gh api "repos/<owner>/<repo>/commits?sha=<prod_branch>&since=$(date -v-14d +%Y-%m-%dT00:00:00Z)&per_page=100" --jq 'length'  # 近14天提交数
+> ```
+> 若近期无新 release 且生产分支停更，则**暴涨是站外事件驱动，不是代码驱动**。
+> ② **再定位站外事件**——通过 eacli `web.search` 查询 `<repo> star surge <month year>`，并核对竞品动向。把“代码侧无爆发 + 多语种媒体共振 + 里程碑效应”这类归因写进“发展趋势”章，比笼统说“项目火了”有价值。
+
+> 💡 **PR 计数用 Link header，别信 search API（事C 沉淀，2026-10-09 实测 NandhaKishorM/laya）**：`search/issues?q=...+type:pr+state:merged` 对新仓库常返回 0（索引未就绪），直接把 PR 总数写成 0 就错了。用 pulls 端点的分页 Link header 拿精确总数：
+> ```bash
+> gh api -X GET "repos/<owner>/<repo>/pulls?state=all&per_page=1" -i 2>/dev/null | grep -i '^link:' | grep -o 'page=[0-9]*>; rel="last"'
+> ```
+
+> 💡 **HN 帖子是 sentiment 金矿，Algolia API 是合法降级（事C 沉淀，2026-10-09）**：走红 repo 的 show HN 帖（评论/第三方实测/批评）比媒体稿更有信息量。`eacli web.read` 对 news.ycombinator.com 解析失败时，HN Algolia 公开 JSON API 是最小降级（记录原因即可）：
+> ```bash
+> curl -s "https://hn.algolia.com/api/v1/items/<id>" | jq '{title, points, author, children: [.children[] | {author, text}]}'
+> ```
+> 找帖子：`curl -s "https://hn.algolia.com/api/v1/search?query=<repo name>"`。R3/R4 的社区反馈章优先用它。
+
+> 💡 **grep 代码注释里的 issue 编号，找"声明与实现的缝隙"（事C 沉淀，2026-10-09 高价值）**：README 叙事层（如"trained with RL"）与代码注释/issue 引用（如 `#741 measured no gain from the extra term`）可能直接矛盾——这是比任何 benchmark 都硬的证据。R2 读代码时固定加一步：
+> ```bash
+> grep -rn "#[0-9]\{3,4\}" <核心模块> | grep -i "measured\|no gain\|fix\|because\|regress"
+> ```
+> 发现缝隙就写进技术分析章（“README 宣称 X，源码注释/实验引用 Y”），这往往是报告最有价值的段落。
+
+---
+
+## 报告：7 章中文结构
+
+研究结果**必须**转换为下列 7 章中文结构存档，禁止直接存英文模板：
+
+```
+frontmatter: title / domain / report_type / status / updated_on / quality_schema / semantic_tags
+1. 项目概述   2-3 句定位与核心价值
+2. 基本信息   表格：Stars / Forks / 语言 / 协议 / 创建时间 / 最近更新 / GitHub 链接（API 精确值）
+3. 技术分析   技术栈 / 架构设计 / 核心功能（≥1 处 [代码] 证据）
+4. 社区活跃度 贡献者分析 / Issue·PR 活跃度 / 最近动态（量化）
+5. 发展趋势   版本演进 / Roadmap / 社区反馈
+6. 竞品对比   表格，≥2 个竞品（gh 实测数据）
+7. 总结评价   优势 / 劣势 / 适用场景
+```
+
+新报告使用 `domain: github-trending-analyzer`、`report_type: repo_deep_research`、`quality_schema: "report-v1"`。
+
+页脚统一（沿用既有报告格式，便于批量识别）：
+```
+---
+*报告生成时间: YYYY-MM-DD*
+*研究方法: github-deep-research 多轮深度研究*
+```
+
+### 证据就地标注（强制）
+
+provenance 跟着结论**就地**标注，而非集中文末：
+
+| 标签 | 含义 | 适用 |
+|------|------|------|
+| `[代码]` | 来自仓库真实源代码 | 技术分析、架构判断 |
+| `[README]` | 来自项目自述文档 | 功能描述、定位 |
+| `[API]` | 来自 GitHub API 精确数据 | stars/forks/贡献者/发版/提交曲线 |
+| `[Web]` | 来自网络搜索/第三方报道 | sentiment、行业背景 |
+| `[推测]` | 作者推断，无直接证据 | 商业模式、未公开 roadmap |
+
+关键结论（尤其技术分析与竞品对比）应能追溯到 `[代码]`/`[API]`/`[Web]` 之一；纯推断必须标 `[推测]`，不得伪装成事实。
+
+### Mermaid 图（可选）
+
+仅用 `flowchart` / `sequenceDiagram` / `gantt` / `pie`；禁用 `mindmap`、`timeline` 等不兼容类型。
+
+---
+
+## 命名规则
+
+| 场景 | 文件名 |
+|------|--------|
+| 默认 / 更新 | `research_{owner}_{repo}.md`（保留 GitHub 原始大小写与连字符，无日期后缀） |
+| 换视角 | `research_{owner}_{repo}_{topic}.md`（topic 英文小写：security / business / architecture / ecosystem ...） |
+
+示例：`research_interviewstreet_hiring-agent.md`、`research_interviewstreet_hiring-agent_security.md`
+
+---
+
+## 边界与注意事项
+
+1. **数值精度**：Stars/Forks 用 API 精确整数，禁止 "17,000+" 类模糊表达。
+2. **写入范围**：只写 `reports/`；临时文件放 `/tmp/github-trending-{date}/`，完成后清理，禁止写入报告、禁止提交。
+3. **不凭记忆**：报告内容须读文件/API 确认，代码与 README 冲突以代码为准并指出。
+4. **持续迭代（事C）**：每次研究后做反思；只有跨 repo 可复用、已有规则缺失，或一次失败风险足够高时，才以最小 delta 更新 skill/reference。一次性项目特例留在报告。

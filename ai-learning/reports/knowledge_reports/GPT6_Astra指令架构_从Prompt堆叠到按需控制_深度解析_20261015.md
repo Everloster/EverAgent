@@ -4,6 +4,7 @@ domain: "ai-learning"
 report_type: "text_analysis"
 status: "completed"
 updated_on: "2026-10-15"
+quality_schema: "report-v1"
 semantic_tags: ["gpt_6_astra", "agent_skills", "agents_md", "prompt_engineering", "context_engineering", "agent_harness"]
 related_concepts: ["agent_harness", "skill_curation", "long_context_systems"]
 related_entities: ["openai"]
