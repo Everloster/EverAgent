@@ -7,6 +7,7 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-10-15 | [AI 行业日报 · 2026-10-15](../web-surfing/reports/ai-news-daily-2026-10-15.md) | web-surfing |
 | 2026-10-14 | [食贫道×刘慈欣：智能的不可判断性、AI三学派与爆炒腰花的生活哲学](../podcast-learning/reports/2026-10-14_bilibili-shipindao_liucixin-interview.md) | podcast-learning |
 | 2026-10-14 | [硅谷101（再访张阔）：榜单99分与真实61%之间——E255 对篇](../podcast-learning/reports/2026-10-14_bilibili-svj101_zhangkuo-model-user-gap.md) | podcast-learning |
 | 2026-10-14 | [电丸AK：千问AI眼镜 N1 Pro——鼻托 PPG、三芯片与眼追的必要性](../podcast-learning/reports/2026-10-14_bilibili-dianwan-ak_qwen-glasses-n1pro.md) | podcast-learning |
@@ -31,7 +32,6 @@
 | 2026-10-09 | [课代表立正·职业方法论九讲：选择、余裕、失败与升职的存量专题（217/218/221-225/327-329）](../podcast-learning/reports/2026-10-09_rss-kedaibiao-lizheng_career-methods-series.md) | podcast-learning |
 | 2026-10-09 | [课代表立正216：Codex迭代十几轮的网站，Claude一天作废——个人网站与叙事主权](../podcast-learning/reports/2026-10-05_rss-kedaibiao-lizheng_codex-claude.md) | podcast-learning |
 | 2026-10-09 | [说医解药 Vol.91：银鳕鱼汞中毒争议——三种汞、鳕鱼命名史与 FDA 选鱼数学](../podcast-learning/reports/2026-10-08_xiaoyuzhou-shuoyi-jieyao_vol91-cod-mercury.md) | podcast-learning |
-| 2026-10-09 | [程若倩教授：孩子身高这件事，到底矮不矮、治不治？](../podcast-learning/reports/2026-09-27_xiaoyuzhou-boluo-jiankang_chengruoqian.md) | podcast-learning |
 
 ## 🤖 AI Learning（112 篇）
 
@@ -348,14 +348,16 @@
 | 2026-06-20 | [三年行业吃肉榜/爆亏榜大合集（2023-2025）：谁在偷偷赚钱，谁在快速衰落](../podcast-learning/reports/2026-06-20_bilibili-cls-tongxue_hangye-bangdan.md) | — |
 | 2026-06-18 | [Vol.29 对话王小川：造医生，战豆包，与无尽的 AI 非共识](../podcast-learning/reports/2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan.md) | — |
 
-## 🏄 Web Surfing（41 篇）
+## 🏄 Web Surfing（42 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-10-15 | [AI 行业日报 · 2026-10-15](../web-surfing/reports/ai-news-daily-2026-10-15.md) | — |
 | 2026-10-14 | [B 站关注列表、最近投稿与未看更新采集方案调研](../web-surfing/reports/bilibili-following-updates-research-2026-10-14.md) | — |
 | 2026-10-14 | [AI 行业日报 · 2026-10-14](../web-surfing/reports/ai-news-daily-2026-10-14.md) | — |
 | 2026-10-13 | [AI 行业日报 · 2026-10-13](../web-surfing/reports/ai-news-daily-2026-10-13.md) | — |
 | 2026-10-12 | [AI 行业日报 · 2026-10-12](../web-surfing/reports/ai-news-daily-2026-10-12.md) | — |
+| 2026-10-09 | [惠州租房建议报告——两位老人 2026 年 9/10 月入住版（1–3 个月短住体验）](../web-surfing/reports/huizhou-rental-guide-2026-09.md) | — |
 | 2026-10-09 | [AI 行业日报 · 2026-10-09](../web-surfing/reports/ai-news-daily-2026-10-09.md) | — |
 | 2026-10-08 | [AI 行业日报 · 2026-10-08](../web-surfing/reports/ai-news-daily-2026-10-08.md) | — |
 | 2026-10-07 | [AI 行业日报 · 2026-10-07](../web-surfing/reports/ai-news-daily-2026-10-07.md) | — |
@@ -383,7 +385,6 @@
 | 2026-09-02 | [AI 行业日报 · 2026-09-02](../web-surfing/reports/ai-news-daily-2026-09-02.md) | — |
 | 2026-09-01 | [AI 行业日报 · 2026-09-01](../web-surfing/reports/ai-news-daily-2026-09-01.md) | — |
 | 2026-08-31 | [AI 行业日报 · 2026-08-31](../web-surfing/reports/ai-news-daily-2026-08-31.md) | — |
-| 2026-08-28 | [惠州租房建议报告——两位老人 2026 年 9/10 月入住版（1–3 个月短住体验）](../web-surfing/reports/huizhou-rental-guide-2026-09.md) | — |
 | 2026-08-28 | [AI 行业日报 · 2026-08-28](../web-surfing/reports/ai-news-daily-2026-08-28.md) | — |
 | 2026-08-27 | [AI 行业日报 · 2026-08-27](../web-surfing/reports/ai-news-daily-2026-08-27.md) | — |
 | 2026-08-26 | [AI 行业日报 · 2026-08-26](../web-surfing/reports/ai-news-daily-2026-08-26.md) | — |
