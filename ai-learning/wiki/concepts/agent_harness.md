@@ -1,7 +1,7 @@
 # Agent Harness / 进化式 Harness（脚手架与自动优化）
 
-> 维护日期：2026-07-07 | 分类：AI Agent / Scaffolding / 自进化
-> 关联报告：`reports/paper_analyses/46_evolve_the_harness_2026.md`、`reports/knowledge_reports/Agent_Harness_三大设计流派解析.md`、`reports/knowledge_reports/Agent_自进化技术路径深度解析.md`、`reports/knowledge_reports/Agent_Harness请求全链路_深度解析_20260709.md`（报文级请求全链路 + 上下文膨胀治理）
+> 维护日期：2026-10-15 | 分类：AI Agent / Scaffolding / 自进化
+> 关联报告：`reports/paper_analyses/46_evolve_the_harness_2026.md`、`reports/knowledge_reports/Agent_Harness_三大设计流派解析.md`、`reports/knowledge_reports/Agent_自进化技术路径深度解析.md`、`reports/knowledge_reports/Agent_Harness请求全链路_深度解析_20260709.md`（报文级请求全链路 + 上下文膨胀治理）、`reports/knowledge_reports/GPT6_Astra指令架构_从Prompt堆叠到按需控制_深度解析_20261015.md`（模型升级后的指令债务与渐进式披露）
 
 ---
 
@@ -42,6 +42,12 @@
 - **砍不到（"what"/底座层）**：高风险场景的确定性**安全闸门**（如 never-push）、工具/环境接口、self-reinforcing 的极简工具（todo_write）、**进化循环本身（=Search，Sutton 钦点）**。
 - **两把镰刀**：模型 scaling（agentic-RL 训掉"自我管理赤字"）+ 环境生态适配（MCP/agent-native API 从另一头溶解胶水层）。
 - 业界共识（PostHog/Tavily/Minh Pham）：harness 应是"**thin interface to scalable compute, not where you hide the intelligence**"。
+
+### GPT-6 Astra 的新证据：旧提示可能从帮助变成约束
+
+OpenAI 2026-09 的官方工程指南指出，GPT-6 Astra 更敏感地遵循 skills 与 `AGENTS.md`，也更可能在权限或意图不清时停下。由此可见，Harness 的提示词层具有明显的模型版本依赖：为旧模型补“不会读、不会测、不敢停”而积累的规则，迁移到更强模型后可能造成过度读取、过度测试和提前停工。
+
+对应治理方式是：常驻层只保留稳定不变量与条件路由；特定工作流渐进加载；完成定义放入单次任务；可判定的硬约束交给代码。官方 Skills 文档还明确了发现层预算，技能过多时会截短 description，随后可能省略技能。
 
 ---
 

@@ -7,6 +7,8 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-10-15 | [GPT-6 Astra 指令架构：从 Prompt 堆叠到按需控制](../ai-learning/reports/knowledge_reports/GPT6_Astra指令架构_从Prompt堆叠到按需控制_深度解析_20261015.md) | ai-learning |
+| 2026-10-15 | [Agent Skills 生态深度解析](../ai-learning/reports/knowledge_reports/Agent_Skills_生态深度解析.md) | ai-learning |
 | 2026-10-15 | [AI 行业日报 · 2026-10-15](../web-surfing/reports/ai-news-daily-2026-10-15.md) | web-surfing |
 | 2026-10-14 | [食贫道×刘慈欣：智能的不可判断性、AI三学派与爆炒腰花的生活哲学](../podcast-learning/reports/2026-10-14_bilibili-shipindao_liucixin-interview.md) | podcast-learning |
 | 2026-10-14 | [硅谷101（再访张阔）：榜单99分与真实61%之间——E255 对篇](../podcast-learning/reports/2026-10-14_bilibili-svj101_zhangkuo-model-user-gap.md) | podcast-learning |
@@ -30,13 +32,13 @@
 | 2026-10-10 | [Personal Context 正交论：穿越 AI 进步周期的资产，与 PC 的构建工程](../ai-learning/reports/knowledge_reports/PersonalContext正交论_PC构建指南_20261010.md) | ai-learning |
 | 2026-10-09 | [起朱楼184：加息周期的重大投资决策——五步建立海外长债组合｜三季度投资账复盘](../podcast-learning/reports/2026-10-08_xiaoyuzhou-qizhulou_2026q3-investment-review.md) | podcast-learning |
 | 2026-10-09 | [课代表立正·职业方法论九讲：选择、余裕、失败与升职的存量专题（217/218/221-225/327-329）](../podcast-learning/reports/2026-10-09_rss-kedaibiao-lizheng_career-methods-series.md) | podcast-learning |
-| 2026-10-09 | [课代表立正216：Codex迭代十几轮的网站，Claude一天作废——个人网站与叙事主权](../podcast-learning/reports/2026-10-05_rss-kedaibiao-lizheng_codex-claude.md) | podcast-learning |
-| 2026-10-09 | [说医解药 Vol.91：银鳕鱼汞中毒争议——三种汞、鳕鱼命名史与 FDA 选鱼数学](../podcast-learning/reports/2026-10-08_xiaoyuzhou-shuoyi-jieyao_vol91-cod-mercury.md) | podcast-learning |
 
-## 🤖 AI Learning（112 篇）
+## 🤖 AI Learning（113 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-10-15 | [GPT-6 Astra 指令架构：从 Prompt 堆叠到按需控制](../ai-learning/reports/knowledge_reports/GPT6_Astra指令架构_从Prompt堆叠到按需控制_深度解析_20261015.md) | `gpt_6_astra`, `agent_skills`, `agents_md`, `prompt_engineering`, `context_engineering`, `agent_harness` |
+| 2026-10-15 | [Agent Skills 生态深度解析](../ai-learning/reports/knowledge_reports/Agent_Skills_生态深度解析.md) | — |
 | 2026-10-10 | [Personal Context 正交论：穿越 AI 进步周期的资产，与 PC 的构建工程](../ai-learning/reports/knowledge_reports/PersonalContext正交论_PC构建指南_20261010.md) | — |
 | 2026-10-09 | [VISTA：视觉原生 Harness 论文精读——无损视觉记忆与主动检查如何把 Opus 5.0 的 ARC-AGI-3 分数从 40.68 拉到 100](../ai-learning/reports/paper_analyses/48_vista_2026.md) | — |
 | 2026-10-09 | [Laya：把「反射性决策」从 LLM 里拆出来——421M 非自回归 System 1 决策模型解析与本机实测](../ai-learning/reports/knowledge_reports/Laya_System1决策模型_深度解析_20260922.md) | — |
@@ -90,7 +92,6 @@
 | 2026-04-23 | [Agent 心跳检测与实时 Dashboard 设计](../ai-learning/reports/knowledge_reports/Agent_心跳检测与实时Dashboard设计.md) | — |
 | 2026-04-23 | [Agent 团队管理产品化路径深度解析：Multica 与多 Agent 框架定位差异](../ai-learning/reports/knowledge_reports/Agent_团队管理产品化路径深度解析.md) | — |
 | 2026-04-23 | [AI编码Agent终端技术深度解析：Scaffolding + Harness + Context Engineering](../ai-learning/reports/knowledge_reports/AI编码Agent终端技术深度解析.md) | — |
-| 2026-04-22 | [Agent Skills 生态深度解析](../ai-learning/reports/knowledge_reports/Agent_Skills_生态深度解析.md) | — |
 | 2026-04-22 | [Agent Memory 系统深度解析](../ai-learning/reports/knowledge_reports/Agent_Memory_系统深度解析.md) | — |
 | 2026-04-22 | [Agent Harness 三大设计流派解析](../ai-learning/reports/knowledge_reports/Agent_Harness_三大设计流派解析.md) | — |
 | 2026-04-16 | [生成模型演化全景：GAN → DDPM → Stable Diffusion → DiT](../ai-learning/reports/knowledge_reports/生成模型演化全景_GAN_DDPM_LDM_DiT_20260416.md) | — |
@@ -357,7 +358,6 @@
 | 2026-10-14 | [AI 行业日报 · 2026-10-14](../web-surfing/reports/ai-news-daily-2026-10-14.md) | — |
 | 2026-10-13 | [AI 行业日报 · 2026-10-13](../web-surfing/reports/ai-news-daily-2026-10-13.md) | — |
 | 2026-10-12 | [AI 行业日报 · 2026-10-12](../web-surfing/reports/ai-news-daily-2026-10-12.md) | — |
-| 2026-10-09 | [惠州租房建议报告——两位老人 2026 年 9/10 月入住版（1–3 个月短住体验）](../web-surfing/reports/huizhou-rental-guide-2026-09.md) | — |
 | 2026-10-09 | [AI 行业日报 · 2026-10-09](../web-surfing/reports/ai-news-daily-2026-10-09.md) | — |
 | 2026-10-08 | [AI 行业日报 · 2026-10-08](../web-surfing/reports/ai-news-daily-2026-10-08.md) | — |
 | 2026-10-07 | [AI 行业日报 · 2026-10-07](../web-surfing/reports/ai-news-daily-2026-10-07.md) | — |
@@ -384,6 +384,7 @@
 | 2026-09-03 | [AI 行业日报 · 2026-09-03](../web-surfing/reports/ai-news-daily-2026-09-03.md) | — |
 | 2026-09-02 | [AI 行业日报 · 2026-09-02](../web-surfing/reports/ai-news-daily-2026-09-02.md) | — |
 | 2026-09-01 | [AI 行业日报 · 2026-09-01](../web-surfing/reports/ai-news-daily-2026-09-01.md) | — |
+| 2026-08-31 | [惠州租房建议报告——两位老人 2026 年 9/10 月入住版（1–3 个月短住体验）](../web-surfing/reports/huizhou-rental-guide-2026-09.md) | — |
 | 2026-08-31 | [AI 行业日报 · 2026-08-31](../web-surfing/reports/ai-news-daily-2026-08-31.md) | — |
 | 2026-08-28 | [AI 行业日报 · 2026-08-28](../web-surfing/reports/ai-news-daily-2026-08-28.md) | — |
 | 2026-08-27 | [AI 行业日报 · 2026-08-27](../web-surfing/reports/ai-news-daily-2026-08-27.md) | — |

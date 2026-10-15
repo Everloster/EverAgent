@@ -2,7 +2,7 @@
 title: "Skill Curation"
 type: concept
 status: active
-updated_on: 2026-05-13
+updated_on: 2026-10-15
 related: [agent_systems, agent_orchestration, rlhf]
 ---
 
@@ -76,6 +76,19 @@ SkillOS 的关键是 grouped task streams。
 - `wiki/` 概念页摄入。
 - `CONTEXT.md` 防重复边界更新。
 - 任务事件日志里的成功/失败反馈。
+
+## GPT-6 Astra 带来的新增约束（2026-10-15）
+
+OpenAI 官方文章《Rethinking skills and prompts for GPT-6 Astra》把 skill curation 从“积累有效经验”进一步推进到“主动清理指令债务”：
+
+- description 是发现层的路由标签，应收窄触发边界并把关键用例前置；
+- skill 根文件应作为最小路由器，复杂资料与脚本按需加载；
+- 模型升级后，过去用于补能力缺口的步骤提醒可能变成过度约束，应重新评测后更新或删除；
+- 硬边界优先交给脚本、hook、CI 等确定性机制，而不是继续堆提示词。
+
+OpenAI [Build skills](https://learn.chatgpt.com/docs/build-skills) 文档还给出实际预算：初始 skill 清单默认最多占上下文窗口 2%，未知窗口时为 8,000 characters；技能过多会先截短 description，再可能省略技能。因此，`r_comp` 不只衡量 skill 正文压缩，也应衡量发现层的路由预算与选择准确率。
+
+关联报告：`reports/knowledge_reports/GPT6_Astra指令架构_从Prompt堆叠到按需控制_深度解析_20261015.md`。
 
 ## 与相关概念的区别
 

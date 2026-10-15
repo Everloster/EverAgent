@@ -3,10 +3,12 @@ title: "Agent Skills 生态深度解析"
 domain: "ai-learning"
 report_type: "knowledge_report"
 status: "completed"
-updated_on: "2026-04-22"
+updated_on: "2026-10-15"
 ---
 
 # Agent Skills 生态深度解析
+
+> **2026-10-15 纠偏**：OpenAI 最新官方文档明确说明，渐进式披露仍受初始 skill 清单预算约束；技能过多时 description 会先被缩短，随后可能省略部分技能。本文原有“上下文永远不会被撑爆”和固定 30–50 tokens/skill 的表述过强，相关段落已按官方机制修订。详见《GPT-6 Astra 指令架构：从 Prompt 堆叠到按需控制》。
 
 ## 目录
 
@@ -108,11 +110,11 @@ Skill 的核心设计哲学是**渐进披露**（progressive disclosure）——
 
 | 层级 | 内容 | 何时加载 | Token 开销 |
 |------|------|---------|-----------|
-| Level 1 | YAML frontmatter（name + description） | Agent 启动时 | ~30-50 tokens |
+| Level 1 | YAML frontmatter（name + description） | Agent 启动时 | 共享初始 skill 清单预算，非固定单项成本 |
 | Level 2 | SKILL.md 正文 | Agent 判断相关时 | 数百 tokens |
 | Level 3 | references/、templates/ 等附加文件 | Agent 需要深入时 | 按需加载 |
 
-这种设计让 Agent 可以同时"知道"成百上千个 Skill，但只在需要时加载具体内容，上下文窗口永远不会被撑爆。
+这种设计显著减少平均上下文开销，但不代表技能数量可以无限增长。OpenAI 的 [Build skills](https://learn.chatgpt.com/docs/build-skills) 文档说明：Codex 的初始 skill 清单默认最多使用上下文窗口的 2%；上下文窗口未知时使用 8,000 characters。技能过多时，系统先缩短 description，继续增加时可能省略部分技能并告警。
 
 ### 核心公式
 
@@ -292,14 +294,14 @@ def decide_skills_to_load(user_message, installed_skills):
     return context
 ```
 
-**Token 预算管理**：
+**Token 预算管理（2026-10-15 更新）**：
 
-假设一个 Agent 安装了 50 个 Skills：
-- 启动时加载：50 × 40 tokens（元数据）= 2,000 tokens
-- 任务时加载：2-3 个相关 Skill × 500 tokens = 1,500 tokens
-- 总计：~3,500 tokens
+- 初始阶段只加载 skill 的名称、description；Codex 还会加载路径。
+- 这份清单默认共享最多 2% 的上下文窗口；窗口未知时为 8,000 characters。
+- `skills.max_context_tokens` 可以调整预算，官方当前允许最高 10,000 tokens。
+- 选中 skill 后仍会读取完整 `SKILL.md`，因此正文和 references 也应继续按需拆分。
 
-如果不使用渐进加载，50 个 Skill 全部塞进上下文：50 × 500 = 25,000 tokens——直接占满上下文窗口。
+结论：渐进式披露解决的是“避免默认加载所有正文”，没有消除 skill 发现层本身的规模成本。评估大技能库时，应同时测触发准确率、description 截断与技能省略。
 
 ### Skill 树结构示例
 
