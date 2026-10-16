@@ -1,10 +1,11 @@
 # 能者多唠｜商业原声 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/qlenc4cdh48c>）｜ 最近拉取：2026-10-14 ｜ 总集数：128
+> 来源：官方 RSS（<https://feed.xyzfm.space/qlenc4cdh48c>）｜ 最近拉取：2026-10-16 ｜ 总集数：129
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-10-15 | 1h29m | [Vol.131 当美妆品牌创始人 想做线上“胖东来”](https://www.xiaoyuzhoufm.com/episode/6ad02cffe742e36efcc3243e?utm_source=rss)<!--g:6ad02cffe742e36efcc3243e--> | — |
 | — | 2026-10-07 | 1h35m | [Vol.130 中国超市进化论 ：聊山姆、奥乐齐、金粒门爆火背后](https://www.xiaoyuzhoufm.com/episode/6abc83e8e742e36efcbcfadf?utm_source=rss)<!--g:6abc83e8e742e36efcbcfadf--> | — |
 | — | 2026-10-01 | 54m01s | [Vol.129对话经济学家张维迎、黄益平：AI这么热，消费从哪增长？](https://www.xiaoyuzhoufm.com/episode/6aba1bc1e742e36efcbc258b?utm_source=rss)<!--g:6aba1bc1e742e36efcbc258b--> | — |
 | — | 2026-09-24 | 1h29m | [Vol.128 稻香村总裁 周立源：中秋节，揭秘300亿的月饼生意！](https://www.xiaoyuzhoufm.com/episode/6ab35b9ff04646b3a955cfa4?utm_source=rss)<!--g:6ab35b9ff04646b3a955cfa4--> | — |

@@ -1,10 +1,11 @@
 # 半拿铁 | 商业沉浮录 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/tcettvc3x689>）｜ 最近拉取：2026-10-14 ｜ 总集数：240
+> 来源：官方 RSS（<https://feed.xyzfm.space/tcettvc3x689>）｜ 最近拉取：2026-10-16 ｜ 总集数：241
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-10-14 | 2h38m | [No.222 🏛️ 1402、穹顶、暗杀、佛罗伦萨与文艺复兴：美第奇家族·上](https://www.xiaoyuzhoufm.com/episode/6acf43d9e742e36efcc2dbdf?utm_source=rss)<!--g:6acf43d9e742e36efcc2dbdf--> | — |
 | — | 2026-10-12 | 1h30m | [番外 16：“情绪价值经济学”—花钱买开心，到底是不是一门好生意？](https://www.xiaoyuzhoufm.com/episode/6acc3cf9e742e36efcc17df4?utm_source=rss)<!--g:6acc3cf9e742e36efcc17df4--> | — |
 | — | 2026-09-30 | 1h44m | [No.221 🥓 中国辣条江湖](https://www.xiaoyuzhoufm.com/episode/6abbbc9a195d838e2aeba9d4?utm_source=rss)<!--g:6abbbc9a195d838e2aeba9d4--> | — |
 | — | 2026-09-23 | 2h36m | [No.220 🌀 互联网系列大结局：贾公下周回国日，乐视宏图未倒时 \| 中国互联网故事 29](https://www.xiaoyuzhoufm.com/episode/6ab2900693d5eb3bdc7966dc?utm_source=rss)<!--g:6ab2900693d5eb3bdc7966dc--> | — |

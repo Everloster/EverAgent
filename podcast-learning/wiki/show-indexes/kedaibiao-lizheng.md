@@ -1,10 +1,15 @@
 # 课代表立正 — 全量单集索引
 
-> 来源：官方 RSS（<https://feeds.transistor.fm/kedaibiao>）｜ 最近拉取：2026-10-14 ｜ 总集数：555
+> 来源：官方 RSS（<https://feeds.transistor.fm/kedaibiao>）｜ 最近拉取：2026-10-16 ｜ 总集数：560
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-10-14 | 43m09s | [对话 333｜AI在大企业中的应用才刚刚开始，人才供不应求？｜对话微软CoreAI副总裁Marco Casalaina](https://share.transistor.fm/s/fa38498a)<!--g:4fd66e83-e722-44f1-9bcd-2be9a6fb04bd--> | — |
+| — | 2026-10-14 | 2m19s | [对话 332｜硅谷女CEO：「伯乐」是职业发展的唯一加速器](https://share.transistor.fm/s/92c3fbb5)<!--g:47f38d3c-d8ef-4ca3-8f43-62eb2f0bfac1--> | — |
+| — | 2026-10-12 | 15m21s | [立正说 227｜为什么真正能改命的建议，听起来总像正确的废话？](https://share.transistor.fm/s/1daa0d18)<!--g:269b8970-cc39-44e6-b2b4-e6e14b87f867--> | — |
+| — | 2026-10-11 | 1m04s | [立正说 226｜我们把运气可视化出来了](https://share.transistor.fm/s/5e58ea43)<!--g:c4dc4ae4-1069-48cf-8d81-c8240aa742d5--> | — |
+| — | 2026-10-09 | 29m27s | [对话 331｜半小时，教会你做出比Jev更厉害的替代品，并手机部署](https://share.transistor.fm/s/8953909d)<!--g:871e0431-ba2c-4dd8-bc61-7d91562d6e0c--> | — |
 | — | 2026-10-08 | 59m55s | [对话 330｜李飞飞收购郑昌熙：有生之年，我们可能看不到通用机器人出现](https://share.transistor.fm/s/c6dcdc20)<!--g:2251d5c6-56c9-4003-ad43-db5e9c57b11e--> | ✅ 已处理（2026-10-08 rss-kedaibiao-lizheng_lifeifei-worldlabs-robot） |
 | — | 2026-10-05 | 14m17s | [立正说 216｜Codex跟我迭代十几轮，Claude一天就全作废？](https://share.transistor.fm/s/eafb2ed7)<!--g:8625f08e-5bcd-4f38-b3db-8df5efbebce3--> | ✅ 已处理（2026-10-05 rss-kedaibiao-lizheng_codex-claude） |
 | — | 2026-10-01 | 41m16s | [对话 321｜两次破产，却从没缺过钱：为什么关键时刻总有人帮宝二爷？](https://share.transistor.fm/s/d0b4dbac)<!--g:bd6e0b72-f19c-4ece-aff3-d8897739d4e0--> | — |

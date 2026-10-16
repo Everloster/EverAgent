@@ -1,6 +1,6 @@
 # 老talk消息 — 全量单集索引
 
-> 来源：官方 RSS（<https://www.ximalaya.com/album/31225613.xml>）｜ 最近拉取：2026-10-14 ｜ 总集数：180
+> 来源：官方 RSS（<https://www.ximalaya.com/album/31225613.xml>）｜ 最近拉取：2026-10-16 ｜ 总集数：180
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
@@ -153,7 +153,7 @@
 | — | 2020-06-23 | 21m48s | [Solo \| 中国人为什么不能住大房子？](https://www.ximalaya.com/sound/310186189)<!--g:https://aod.cos.tx.xmcdn.com/group85/M08/EF/23/wKg5H17xoUOBiY8wAKGtjYu44ms692.m4a--> | — |
 | — | 2020-06-19 | 18m17s | [Solo \| 与“不平等”相处](https://www.ximalaya.com/sound/309137900)<!--g:https://aod.cos.tx.xmcdn.com/group84/M05/C4/66/wKg5Hl7s2-2D7N6hAp2p0L3RmQo563.mp3--> | — |
 | — | 2020-06-14 | 16m34s | [Solo \| 为什么是“新发地”](https://www.ximalaya.com/sound/307462282)<!--g:https://aod.cos.tx.xmcdn.com/group84/M00/7F/3B/wKg5Hl7mG1vR9O8cAl7SeI0jOfg321.mp3--> | — |
-| — | 2020-06-08 | 21m03s | [Solo \| 摆摊经济学](https://www.ximalaya.com/sound/305474437)<!--g:https://aod.cos.tx.xmcdn.com/group83/M03/2C/5B/wKg5HV7eGlrylg0rAJweoxS6iXg628.m4a--> | — |
+| — | 2020-06-08 | 21m03s | [Solo \| 摆摊经济学](https://www.ximalaya.com/sound/305474437)<!--g:https://aod.cos.tx.xmcdn.com/group82/M06/2C/F1/wKg5Il7eGj7iKwdDAwNjOI6ti2E019.mp3--> | — |
 | — | 2020-06-03 | 21m15s | [复工日记14 \| 当黑人遭遇美国的“国运”和“国本”](https://www.ximalaya.com/sound/303775158)<!--g:https://aod.cos.tx.xmcdn.com/group80/M0A/59/1E/wKgPEV7Xg2qzBZqcAwqauKs5T1I437.mp3--> | — |
 | — | 2020-06-02 | 20m39s | [复工日记13 \| 月收入1000多元的中国人](https://www.ximalaya.com/sound/303390037)<!--g:https://aod.cos.tx.xmcdn.com/group81/M09/43/74/wKgPEl7WAiuDavX-AvTSeAOC18k458.mp3--> | — |
 | — | 2020-05-19 | 19m24s | [复工日记11 \| 腾讯又要背水一战了？](https://www.ximalaya.com/sound/298543370)<!--g:https://aod.cos.tx.xmcdn.com/group79/M03/A9/11/wKgPEF7EBGWBOlKSAR0tcisHchE760.mp3--> | — |

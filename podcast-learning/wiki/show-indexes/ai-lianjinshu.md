@@ -1,10 +1,11 @@
 # AI炼金术 — 全量单集索引
 
-> 来源：官方 RSS（<https://www.ximalaya.com/album/74194808.xml>）｜ 最近拉取：2026-10-14 ｜ 总集数：142
+> 来源：官方 RSS（<https://www.ximalaya.com/album/74194808.xml>）｜ 最近拉取：2026-10-16 ｜ 总集数：143
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-10-14 | 1h30m | [AI 帮我干完了 20 年的活儿，我却感觉像坐牢](https://www.ximalaya.com/sound/1024259801)<!--g:xmly_track_1024259801--> | — |
 | — | 2026-10-09 | 1h14m | [和 ColaOS 橘子聊个人 Agent 这半年：时代追上了他，他却打了转向灯](https://www.ximalaya.com/sound/1022384765)<!--g:xmly_track_1022384765--> | ✅ 已处理（2026-10-09 ximalaya-ailianjinshu_juzi-personal-agent） |
 | — | 2026-10-01 | 1h33m | [挣钱时都是超级个体，坐牢时把锅甩给 AI](https://www.ximalaya.com/sound/1020462716)<!--g:xmly_track_1020462716--> | — |
 | — | 2026-09-23 | 1h06m | [PureblueAI 鲁扬：把 prompt 当货架空间，把 GEO 当量化交易](https://www.ximalaya.com/sound/1017619050)<!--g:xmly_track_1017619050--> | ✅ 已处理（2026-09-23 ximalaya-ailianjinshu_luyang） |

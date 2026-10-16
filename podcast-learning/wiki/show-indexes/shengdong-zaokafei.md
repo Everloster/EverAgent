@@ -1,11 +1,13 @@
 # 声动早咖啡 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/q88qwmydeuw8>）｜ 最近拉取：2026-10-14 ｜ 总集数：1069
+> 来源：官方 RSS（<https://feed.xyzfm.space/q88qwmydeuw8>）｜ 最近拉取：2026-10-16 ｜ 总集数：1071
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
 | 22 | 2025-07-01 | 12m33s | [22.8 元袋装冰块进驻山姆，农夫山泉为何也盯上冰块生意？](https://www.xiaoyuzhoufm.com/episode/6863f40393fd2d72b80338a6?utm_source=rss)<!--g:6863f40393fd2d72b80338a6--> | — |
+| — | 2026-10-15 | 18m06s | [高洁丝｜咖啡豆：从万圣节限定到常年项目，环球影城为何押注「惊吓体验」？](https://www.xiaoyuzhoufm.com/episode/6ad0dc1a0e4e410a05bd77e5?utm_source=rss)<!--g:6ad0dc1a0e4e410a05bd77e5--> | — |
+| — | 2026-10-14 | 11m11s | [高洁丝｜豆包增加水电缴费功能，瑞幸引入奶茶品类](https://www.xiaoyuzhoufm.com/episode/6acf79bee742e36efcc2f773?utm_source=rss)<!--g:6acf79bee742e36efcc2f773--> | — |
 | — | 2026-10-13 | 15m41s | [高洁丝｜火锅连锁能开上千家，同样做聚餐生意的烧烤品牌为何扩张难？](https://www.xiaoyuzhoufm.com/episode/6ace3e8b195d838e2af160f7?utm_source=rss)<!--g:6ace3e8b195d838e2af160f7--> | — |
 | — | 2026-10-12 | 12m37s | [高洁丝｜微信上线免费短剧小程序，中国对欧盟的混动车出口预计减少](https://www.xiaoyuzhoufm.com/episode/6accd5d1195d838e2af0c571?utm_source=rss)<!--g:6accd5d1195d838e2af0c571--> | — |
 | — | 2026-10-11 | 16m32s | [高洁丝｜顶级机场到海外「开分店」，机场运营如何变身跨国生意？](https://www.xiaoyuzhoufm.com/episode/6acb9567195d838e2af03d90?utm_source=rss)<!--g:6acb9567195d838e2af03d90--> | — |
