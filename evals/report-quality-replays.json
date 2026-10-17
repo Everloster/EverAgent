@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "description": "持续回放三种真实报告体裁与三个生成 Harness，防止 report-v2 只在临时 fixture 中成立。",
+  "description": "持续回放五篇真实报告与三个生成 Harness，包含两篇重构后生产样本，防止 report-v2 只在临时 fixture 中成立。",
   "cases": [
     {
       "id": "official_article_codex",
@@ -21,6 +21,20 @@
       "report_path": "podcast-learning/reports/2026-10-14_bilibili-svj101_zhangkuo-model-user-gap.md",
       "quality_tier": "important",
       "status": "archived",
+      "minimum_score": 92
+    },
+    {
+      "id": "puro_post_refactor_claude_code",
+      "report_path": "ai-learning/reports/knowledge_reports/PuRo-2B_开放低成本预训练配方_MuonHyperball与RTX5090_深度解析_20261015.md",
+      "quality_tier": "important",
+      "status": "completed",
+      "minimum_score": 95
+    },
+    {
+      "id": "energy_post_refactor_claude_code",
+      "report_path": "podcast-learning/reports/2026-09-03_bilibili-bruce-phd_energy-boost.md",
+      "quality_tier": "important",
+      "status": "completed",
       "minimum_score": 92
     }
   ]

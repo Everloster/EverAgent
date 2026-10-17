@@ -18,6 +18,7 @@ import precommit_quality  # noqa: E402
 import reindex  # noqa: E402
 import report_catalog  # noqa: E402
 import report_quality  # noqa: E402
+import run_ace_context_ab  # noqa: E402
 
 
 def load_report_generator():
@@ -546,11 +547,90 @@ semantic_tags: ["quality"]
         result = eval_report_context.static_evaluation()
         self.assertEqual(result["errors"], [])
         self.assertGreaterEqual(result["ace_cases"], 10)
-        self.assertEqual(result["quality_replays"], 3)
+        self.assertEqual(result["quality_replays"], 5)
         self.assertTrue(result["commit_wrapper_guarded"])
         self.assertTrue(result["ci_quality_guarded"])
+        self.assertTrue(result["ace_context_ab_guarded"])
+        self.assertTrue(result["cross_model_sampling_guarded"])
         self.assertEqual(result["discoverable_skill_count"], 1)
         self.assertLessEqual(result["report_skill_description_chars"], 180)
+
+    def test_pi_trace_parser_uses_observed_repo_reads(self):
+        with tempfile.TemporaryDirectory() as directory:
+            snapshot = Path(directory)
+            paths = [
+                "ai-learning/AGENTS.md",
+                ".agents/skills/everagent-report/SKILL.md",
+                "ai-learning/skills/拆书取景/SKILL.md",
+            ]
+            for relative in paths:
+                target = snapshot / relative
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_text("fixture", encoding="utf-8")
+            final = {
+                "route": "ai-learning",
+                "artifact_policy": "required",
+                "paused_before_research": False,
+                "clarification_count": 0,
+                "clarification_question": "",
+                "initial_project_files": [*paths, "docs/not-read.md"],
+                "repo_skills_loaded": paths[1:],
+            }
+            events = []
+            for relative in paths:
+                events.append(
+                    {
+                        "type": "tool_execution_start",
+                        "toolName": "read",
+                        "args": {"path": relative},
+                    }
+                )
+            events.append(
+                {
+                    "type": "message_end",
+                    "message": {
+                        "role": "assistant",
+                        "content": [{"type": "text", "text": json.dumps(final)}],
+                        "model": "glm-5.3",
+                        "provider": "zai-coding-cn",
+                        "usage": {"input": 100, "cacheRead": 20, "output": 10},
+                    },
+                }
+            )
+            trace = "\n".join(json.dumps(event, ensure_ascii=False) for event in events)
+            observed = run_ace_context_ab.parse_pi_trace(trace, snapshot)
+
+        self.assertEqual(observed["initial_project_files"], paths)
+        self.assertEqual(observed["repo_skills_loaded"], paths[1:])
+        self.assertNotIn("docs/not-read.md", observed["initial_project_files"])
+        self.assertEqual(observed["input_tokens"], 120)
+
+    def test_startup_probe_scores_expected_route_and_skills(self):
+        suite = json.loads(
+            (ROOT / "evals" / "ace-report-tasks.json").read_text(encoding="utf-8")
+        )
+        case = next(item for item in suite["cases"] if item["id"] == "a_article_deep_analysis")
+        observed = {
+            "route": "ai-learning",
+            "artifact_policy": "required",
+            "paused_before_research": False,
+            "clarification_count": 0,
+            "initial_project_files": [
+                "ai-learning/AGENTS.md",
+                ".agents/skills/everagent-report/SKILL.md",
+                "ai-learning/skills/拆书取景/SKILL.md",
+            ],
+            "repo_skills_loaded": [
+                ".agents/skills/everagent-report/SKILL.md",
+                "ai-learning/skills/拆书取景/SKILL.md",
+            ],
+        }
+
+        result = run_ace_context_ab.score_probe(case, observed)
+
+        self.assertEqual(result["score"], 100)
+        self.assertEqual(result["skill_precision"], 1)
+        self.assertEqual(result["skill_recall"], 1)
 
     def test_ecommit_rejects_options_that_change_the_index_after_gate(self):
         proc = subprocess.run(
@@ -709,6 +789,15 @@ semantic_tags: ["quality"]
         self.assertEqual(result["groups"][0]["mean_skill_precision"], 1)
         self.assertEqual(result["groups"][0]["mean_skill_recall"], 1)
         self.assertEqual(result["groups"][0]["premature_stop_rate"], 0)
+
+    def test_cross_model_sampling_status_preserves_scarce_reviewer(self):
+        status = report_quality.cross_model_sampling_status()
+
+        self.assertEqual(status["interval"], 5)
+        self.assertEqual(status["pending_same_model_reports"], 3)
+        self.assertFalse(status["sample_due"])
+        self.assertIn("PuRo-2B", status["recommended_report"])
+        self.assertEqual(status["recommended_reviewers"][0], "gpt-5.6-sol")
 
     def test_github_summary_avoids_links_for_missing_reports(self):
         module = load_report_generator()

@@ -220,7 +220,7 @@ python3 scripts/eval_report_context.py --score /tmp/ace-run.json
 ## 7. 尚未自动化的边界
 
 - 静态脚本不能判断一篇报告是否真正解释清楚，也不能验证引用是否支持具体句子。
-- 行为回放仍需要实际模型运行并记录工具、文件读取和停止行为；仓库只提供任务集、记录格式和评分器。
+- 开工路由回放已能用 Pi JSONL 自动采集文件读取、Skill、tokens、耗时与澄清边界；完整任务的最终交付、测试范围和停止行为仍需要实际模型运行并填写行为记录。
 - 旧报告的事实更新、引用补齐和推理质量需要按阅读价值逐篇复核。
 - 不同模型与 Harness 的最优 context 可能不同，当前结构允许 overlay，但尚未积累跨模型对照数据。
 
@@ -252,3 +252,9 @@ python3 scripts/eval_report_context.py --score /tmp/ace-run.json
 6. **评估覆盖正负样本。** ACE 回放不仅测报告质量，还测不该触发报告 skill 的一句话问答、裸 repo 链接和 typo 修复，以及应在发布前停止的授权边界。
 
 这轮保留了完整领域知识，没有把长 playbook 删除；变化只发生在何时加载、由谁拥有以及怎样验证。它直接对应原文的三项核心建议：description 可区分、`SKILL.md` 渐进披露、`AGENTS.md` 按任务读取，并补上官方 prompting guidance 对持续完成、决策边界和测试范围的要求。
+
+---
+
+## 10. 2026-10-18 行为回放结果
+
+使用 GLM 5.3、Pi Harness、medium 推理档位，对 14 个 ACE case 在重构前后各重复三次。候选版本平均分从 80.24 提升到 97.38，P10 从 50 提升到 100，Skill recall 从 0.75 提升到 0.9881；平均初始文件减少 1.07 个，输入 tokens 减少 29,813，耗时减少 11.58 秒。接受条件通过，完整结果见 [ACE_CONTEXT_AB_20261018.md](./ACE_CONTEXT_AB_20261018.md)。

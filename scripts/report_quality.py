@@ -21,9 +21,9 @@ from pathlib import Path
 from typing import Any
 
 try:
-    from .report_catalog import ROOT, collection_for_path, parse_frontmatter
+    from .report_catalog import ROOT, collection_for_path, iter_reports, parse_frontmatter
 except ImportError:  # Direct script execution.
-    from report_catalog import ROOT, collection_for_path, parse_frontmatter
+    from report_catalog import ROOT, collection_for_path, iter_reports, parse_frontmatter
 
 
 POLICY_PATH = ROOT / "config" / "report-quality-policy.json"
@@ -1175,6 +1175,99 @@ def reviewer_prompt(report: Path) -> str:
 """
 
 
+def cross_model_sampling_status(policy: dict[str, Any] | None = None) -> dict[str, Any]:
+    active = policy or load_policy()
+    sampling = active.get("cross_model_sampling") or {}
+    enabled = sampling.get("enabled") is True
+    interval = int(sampling.get("important_reports_per_sample") or 0)
+    eligible_tiers = set(sampling.get("eligible_tiers") or ["important"])
+    strong_reviewers = {
+        normalize_model(item, active)
+        for item in active["model_policy"].get("strong_reviewers", [])
+    }
+    recorded_on = str(active.get("preference_source", {}).get("recorded_on") or "")
+    eligible: list[dict[str, Any]] = []
+
+    if enabled and interval > 0:
+        for _collection, report in iter_reports():
+            metadata = parse_frontmatter(report.read_text(encoding="utf-8", errors="replace"))
+            if metadata.get("quality_schema") != CURRENT_REPORT_SCHEMA:
+                continue
+            if metadata.get("status") not in {"completed", "archived"}:
+                continue
+            if metadata.get("quality_tier") not in eligible_tiers:
+                continue
+            updated_on = str(metadata.get("updated_on") or "")
+            if recorded_on and updated_on and updated_on < recorded_on:
+                continue
+            evidence_path, review_path = quality_artifact_paths(report)
+            if not evidence_path.is_file() or not review_path.is_file():
+                continue
+            try:
+                evidence = _load_json(evidence_path)
+                review = _load_json(review_path)
+            except (OSError, json.JSONDecodeError):
+                continue
+            generator = normalize_model(
+                str((evidence.get("generator") or {}).get("model") or ""), active
+            )
+            reviewer_models = [
+                normalize_model(
+                    str(((item.get("reviewer") or {}).get("model") or "")), active
+                )
+                for item in review.get("reviews") or []
+                if isinstance(item, dict)
+            ]
+            cross_model = any(
+                reviewer in strong_reviewers and reviewer != generator
+                for reviewer in reviewer_models
+            )
+            eligible.append(
+                {
+                    "report": report_relative_path(report),
+                    "updated_on": updated_on,
+                    "generator_model": generator,
+                    "reviewer_models": reviewer_models,
+                    "cross_model_audited": cross_model,
+                }
+            )
+
+    eligible.sort(key=lambda item: (item["updated_on"], item["report"]))
+    pending = [item for item in eligible if not item["cross_model_audited"]]
+    configured_order = list(sampling.get("reviewer_order") or [])
+    normalized_order = [normalize_model(item, active) for item in configured_order]
+    recommended: dict[str, Any] | None = None
+    if pending:
+        def reviewer_rank(item: dict[str, Any]) -> tuple[int, str, str]:
+            generator = str(item["generator_model"])
+            rank = next(
+                (index for index, reviewer in enumerate(normalized_order) if reviewer != generator),
+                len(normalized_order),
+            )
+            return rank, str(item["updated_on"]), str(item["report"])
+
+        recommended = min(pending, key=reviewer_rank)
+    recommended_reviewers = [
+        configured_order[index]
+        for index, reviewer in enumerate(normalized_order)
+        if recommended is None or reviewer != recommended["generator_model"]
+    ]
+    return {
+        "schema_version": 1,
+        "policy_id": active["policy_id"],
+        "enabled": enabled,
+        "interval": interval,
+        "eligible_tiers": sorted(eligible_tiers),
+        "eligible_reports": len(eligible),
+        "cross_model_audited_reports": len(eligible) - len(pending),
+        "pending_same_model_reports": len(pending),
+        "sample_due": enabled and interval > 0 and len(pending) >= interval,
+        "recommended_report": recommended["report"] if recommended else None,
+        "recommended_reviewers": recommended_reviewers,
+        "reports": eligible,
+    }
+
+
 def _print_result(result: dict[str, Any], as_json: bool) -> None:
     if as_json:
         print(json.dumps(result, ensure_ascii=False, indent=2))
@@ -1205,6 +1298,11 @@ def main() -> int:
     policy_parser = subparsers.add_parser("policy", help="show model routing and quality thresholds")
     policy_parser.add_argument("--tier", choices=tier_choices)
     policy_parser.add_argument("--json", action="store_true")
+
+    sampling_parser = subparsers.add_parser(
+        "sampling-status", help="show whether a sampled cross-model audit is due"
+    )
+    sampling_parser.add_argument("--json", action="store_true")
 
     init_parser = subparsers.add_parser("init", help="initialize report-v2 evidence and review artifacts")
     init_parser.add_argument("report", type=Path)
@@ -1253,6 +1351,22 @@ def main() -> int:
             print(json.dumps(result, ensure_ascii=False, indent=2))
         else:
             print(json.dumps(result, ensure_ascii=False, indent=2))
+        return 0
+
+    if args.command == "sampling-status":
+        result = cross_model_sampling_status(policy)
+        if args.json:
+            print(json.dumps(result, ensure_ascii=False, indent=2))
+        else:
+            print(
+                f"policy={result['policy_id']}｜eligible={result['eligible_reports']}｜"
+                f"pending={result['pending_same_model_reports']}/{result['interval']}｜"
+                f"sample_due={str(result['sample_due']).lower()}"
+            )
+            if result["recommended_report"]:
+                print("  建议抽样：" + str(result["recommended_report"]))
+            if result["recommended_reviewers"]:
+                print("  Reviewer 顺序：" + " → ".join(result["recommended_reviewers"]))
         return 0
 
     if args.command == "init":

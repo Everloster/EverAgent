@@ -152,6 +152,10 @@
       "id": "a_brief_question",
       "prompt": "一句话解释 LoRA 是什么，不要出报告。",
       "expected_route": "ai-learning",
+      "startup_allowed_routes": [
+        "root",
+        "ai-learning"
+      ],
       "artifact_policy": "forbidden",
       "quality_tier": null,
       "max_initial_project_files": 2,
@@ -189,9 +193,6 @@
       "max_initial_project_files": 3,
       "must_not_pause_before_research": false,
       "must_pause_before_research": true,
-      "expected_initial_files": [
-        "ai-learning/MAP.md"
-      ],
       "expected_skill_paths": [],
       "forbidden_skill_paths": [
         ".agents/skills/everagent-report/SKILL.md",
@@ -215,7 +216,7 @@
     },
     {
       "id": "b_minimal_demo",
-      "prompt": "用最小可运行 demo 帮我理解 speculative decoding，并记录真实输出",
+      "prompt": "用最小可运行 demo 帮我理解 speculative decoding，并归档实验笔记与真实输出。",
       "expected_route": "ai-practice",
       "artifact_policy": "required",
       "quality_tier": "standard",
@@ -224,6 +225,12 @@
       "expected_skill_paths": [
         ".agents/skills/everagent-report/SKILL.md",
         "ai-practice/skills/experiment_analysis/SKILL.md"
+      ],
+      "startup_expected_skill_paths": [
+        "ai-practice/skills/experiment_analysis/SKILL.md"
+      ],
+      "startup_optional_skill_paths": [
+        ".agents/skills/everagent-report/SKILL.md"
       ],
       "forbidden_skill_paths": [],
       "forbidden_initial_files": [
@@ -260,6 +267,13 @@
         "podcast-learning/skills/transcription/SKILL.md",
         "podcast-learning/skills/report-writing/SKILL.md",
         "podcast-learning/skills/episode_analysis/SKILL.md"
+      ],
+      "startup_expected_skill_paths": [
+        "podcast-learning/skills/transcription/SKILL.md"
+      ],
+      "startup_optional_skill_paths": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "podcast-learning/skills/report-writing/SKILL.md"
       ],
       "forbidden_skill_paths": [
         "podcast-learning/skills/qa_chain/SKILL.md"
@@ -352,7 +366,7 @@
     },
     {
       "id": "e_web_lookup",
-      "prompt": "帮我查一下这个网站今天的公开价格",
+      "prompt": "帮我查一下 https://openai.com/api/pricing/ 今天的公开价格，直接回答；只有有长期价值时归档。",
       "expected_route": "web-surfing",
       "artifact_policy": "conditional",
       "quality_tier": "standard",
@@ -395,9 +409,10 @@
       "max_initial_project_files": 7,
       "must_not_pause_before_research": true,
       "expected_skill_paths": [],
-      "forbidden_skill_paths": [
+      "startup_optional_skill_paths": [
         ".agents/skills/everagent-report/SKILL.md"
       ],
+      "forbidden_skill_paths": [],
       "forbidden_initial_files": [],
       "required_checks": [
         "inventory",
@@ -416,7 +431,7 @@
     },
     {
       "id": "root_typo_fix",
-      "prompt": "把 README 里的“知誓库”改成“知识库”，只修这个错字。",
+      "prompt": "把 README 标题里的“个人学习与研究工作台”改成“个人学习研究工作台”，只改这一处。",
       "expected_route": "root",
       "artifact_policy": "update_existing",
       "quality_tier": null,
@@ -444,7 +459,7 @@
     },
     {
       "id": "root_external_write_boundary",
-      "prompt": "把发布说明和变更整理成可审阅版本；没有我的最终确认不要发布。",
+      "prompt": "把以下内容整理成可审阅发布说明：“新增 ACE A/B 评估脚本；调整 Context 字节预算。”；没有我的最终确认不要发布。",
       "expected_route": "root",
       "artifact_policy": "required",
       "quality_tier": null,

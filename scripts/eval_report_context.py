@@ -9,6 +9,7 @@ completed run record against the suite's observable expectations.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import math
 import re
@@ -18,10 +19,20 @@ from urllib.parse import unquote
 
 try:
     from .report_catalog import COLLECTION_BY_ID, ROOT, parse_frontmatter
-    from .report_quality import evaluate_report as evaluate_report_quality, load_policy, normalize_model
+    from .report_quality import (
+        cross_model_sampling_status,
+        evaluate_report as evaluate_report_quality,
+        load_policy,
+        normalize_model,
+    )
 except ImportError:  # Direct script execution.
     from report_catalog import COLLECTION_BY_ID, ROOT, parse_frontmatter
-    from report_quality import evaluate_report as evaluate_report_quality, load_policy, normalize_model
+    from report_quality import (
+        cross_model_sampling_status,
+        evaluate_report as evaluate_report_quality,
+        load_policy,
+        normalize_model,
+    )
 
 
 DEFAULT_AGENTS_BUDGET = 32 * 1024
@@ -48,6 +59,26 @@ STALE_DIRECTIVES = (
     "WebSearch",
     "每次上网前先读",
 )
+
+
+def _behavior_context_sha256(root: Path = ROOT) -> str:
+    paths: set[Path] = set()
+    for pattern in (
+        "AGENTS.md",
+        "CLAUDE.md",
+        "*/AGENTS.md",
+        ".agents/skills/**/SKILL.md",
+        "*/skills/**/SKILL.md",
+        "evals/ace-report-tasks.json",
+    ):
+        paths.update(path for path in root.glob(pattern) if path.is_file())
+    digest = hashlib.sha256()
+    for path in sorted(paths, key=lambda item: item.relative_to(root).as_posix()):
+        digest.update(path.relative_to(root).as_posix().encode("utf-8"))
+        digest.update(b"\0")
+        digest.update(path.read_bytes())
+        digest.update(b"\0")
+    return digest.hexdigest()
 
 
 def _load_suite() -> dict:
@@ -182,6 +213,10 @@ def static_evaluation() -> dict[str, object]:
     chains: dict[str, dict[str, object]] = {}
     warnings: list[str] = []
     errors: list[str] = []
+    ace_context_ab_guarded = False
+    ace_context_ab_candidate_sha256 = ""
+    cross_model_sampling_guarded = False
+    cross_model_sampling_pending = 0
 
     try:
         instruction_policy = _load_instruction_policy()
@@ -194,10 +229,57 @@ def static_evaluation() -> dict[str, object]:
     for owner, relative in instruction_policy.get("owners", {}).items():
         if not (ROOT / str(relative)).is_file():
             errors.append(f"指令 Owner 不存在：{owner} -> {relative}")
+    ace_result_relative = instruction_policy.get("owners", {}).get("ace_context_ab_result")
+    if ace_result_relative:
+        ace_result_path = ROOT / str(ace_result_relative)
+        if ace_result_path.is_file():
+            try:
+                ace_result = json.loads(ace_result_path.read_text(encoding="utf-8"))
+                ace_context_ab_candidate_sha256 = str(
+                    ((ace_result.get("refs") or {}).get("candidate") or {}).get("context_sha256")
+                    or ""
+                )
+                if ace_result.get("schema_version") != 1:
+                    errors.append("ACE Context A/B 结果 schema_version 必须为 1")
+                elif (ace_result.get("comparison") or {}).get("accepted") is not True:
+                    errors.append("ACE Context A/B 最新结果未通过")
+                elif int(ace_result.get("repetitions") or 0) < 3:
+                    errors.append("ACE Context A/B 每个版本必须至少重复三次")
+                elif ace_context_ab_candidate_sha256 != _behavior_context_sha256():
+                    errors.append("ACE Context A/B 结果已过期；Context 或 ACE suite 变更后必须重跑")
+                else:
+                    case_count = len(_load_suite().get("cases") or [])
+                    expected_runs = case_count * int(ace_result["repetitions"])
+                    summaries = ace_result.get("summaries") or {}
+                    complete = all(
+                        int((summaries.get(label) or {}).get("runs") or 0) == expected_runs
+                        and int((summaries.get(label) or {}).get("successful_runs") or 0)
+                        == expected_runs
+                        for label in ("baseline", "candidate")
+                    )
+                    if not complete:
+                        errors.append("ACE Context A/B 结果缺少完整或成功的重复运行")
+                    else:
+                        ace_context_ab_guarded = True
+            except (OSError, json.JSONDecodeError) as exc:
+                errors.append(f"ACE Context A/B 结果无法读取：{exc}")
     for source in instruction_policy.get("basis", []):
         url = str(source.get("url") or "")
         if not url.startswith("https://developers.openai.com/"):
             errors.append(f"指令策略依据不是 OpenAI 官方开发者文档：{url or '<empty>'}")
+
+    try:
+        sampling_status = cross_model_sampling_status()
+        cross_model_sampling_pending = int(sampling_status["pending_same_model_reports"])
+        if sampling_status["sample_due"]:
+            errors.append(
+                "跨模型抽样复核已到期："
+                + str(sampling_status.get("recommended_report") or "<unknown>")
+            )
+        else:
+            cross_model_sampling_guarded = True
+    except (OSError, ValueError, json.JSONDecodeError, KeyError) as exc:
+        errors.append(f"跨模型抽样状态无法读取：{exc}")
 
     for domain in [*COLLECTION_BY_ID, "root"]:
         chain = [root_agents]
@@ -218,7 +300,12 @@ def static_evaluation() -> dict[str, object]:
 
     root_text = root_agents.read_text(encoding="utf-8", errors="replace")
     root_repo_owned_bytes = len(_repo_owned_root_text(root_text).encode("utf-8"))
+    root_warn = int(budgets.get("root_repo_owned_bytes_warn", 0) or 0)
     root_limit = int(budgets.get("root_repo_owned_bytes_max", 0) or 0)
+    if root_warn and root_repo_owned_bytes > root_warn:
+        warnings.append(
+            f"根 AGENTS 仓库自有内容 {root_repo_owned_bytes} bytes，超过软预算 {root_warn}"
+        )
     if root_limit and root_repo_owned_bytes > root_limit:
         errors.append(f"根 AGENTS 仓库自有内容 {root_repo_owned_bytes} bytes，超过 {root_limit}")
 
@@ -532,10 +619,16 @@ def static_evaluation() -> dict[str, object]:
         "agents_files": len(files),
         "agents_total_bytes": sum(path.stat().st_size for path in files),
         "root_repo_owned_bytes": root_repo_owned_bytes,
+        "root_repo_owned_bytes_warn": root_warn,
+        "root_repo_owned_bytes_max": root_limit,
         "domain_agent_bytes": domain_agent_bytes,
         "claude_bridge_bytes": claude_bytes,
         "commit_wrapper_guarded": commit_wrapper_guarded,
         "ci_quality_guarded": ci_quality_guarded,
+        "ace_context_ab_guarded": ace_context_ab_guarded,
+        "ace_context_ab_candidate_sha256": ace_context_ab_candidate_sha256,
+        "cross_model_sampling_guarded": cross_model_sampling_guarded,
+        "cross_model_sampling_pending": cross_model_sampling_pending,
         "active_context_files": len(context_files),
         "governed_context_files": len(context_files),
         "chains": chains,

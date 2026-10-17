@@ -66,7 +66,7 @@
 2. **知识层** — 每个领域的 `reports/`（我读的东西）+ `wiki/`（概念/实体/综合/未解问题的索引）。
 3. **画像层** — 每个领域的 `PROFILE.md`（我会什么、偏好什么）+ `MAP.md`（覆盖与缺口），让 AI 不重复讲我会的、知道下一步学什么。
 
-报告生产采用按需 context：统一入口见 [REPORT_WORKFLOW.md](./docs/REPORT_WORKFLOW.md)，跨模型质量门见 [REPORT_QUALITY_GATE.md](./docs/REPORT_QUALITY_GATE.md)，模型与 Harness 的分层及 ACE 评估见 [CONTEXT_ENGINEERING.md](./docs/CONTEXT_ENGINEERING.md)，机器可读预算与 Owner 见 [`config/instruction-policy.json`](./config/instruction-policy.json)，真实报告回放见 [`evals/report-quality-replays.json`](./evals/report-quality-replays.json)。
+报告生产采用按需 context：统一入口见 [REPORT_WORKFLOW.md](./docs/REPORT_WORKFLOW.md)，跨模型质量门见 [REPORT_QUALITY_GATE.md](./docs/REPORT_QUALITY_GATE.md)，模型与 Harness 的分层及 ACE 评估见 [CONTEXT_ENGINEERING.md](./docs/CONTEXT_ENGINEERING.md)，机器可读预算与 Owner 见 [`config/instruction-policy.json`](./config/instruction-policy.json)，真实报告回放见 [`evals/report-quality-replays.json`](./evals/report-quality-replays.json)，最近一次 Context A/B 结果见 [ACE_CONTEXT_AB_20261018.md](./docs/ACE_CONTEXT_AB_20261018.md)。
 本轮全库审计、基线数据与落地清单见 [REPORT_SYSTEM_REVIEW_20261015.md](./docs/REPORT_SYSTEM_REVIEW_20261015.md)。
 
 ---

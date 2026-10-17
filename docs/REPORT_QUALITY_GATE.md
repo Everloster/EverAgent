@@ -127,6 +127,12 @@ Reviewer 必须为每一维填写评分理由；`unsupported_claims` 和 `missin
 该策略控制默认资源分配，不阻止用户在具体任务中直接指定模型。
 `standard` 是否改为仅确定性审计，要等 `preference_source.review_after_completed_reports` 达到样本量后，根据真实失败率、返工率和成本再决定；样本不足时不提前取消独立复核。
 
+`important` 报告默认仍可由 GLM 5.3 新会话复核，但每累计 5 篇尚未经过强模型跨模型复核的报告，就抽取一篇交给 Sol；Sol 与生成器相同时再使用 Kimi K3。这样估计同模型盲区，同时避免每篇消耗稀缺额度。达到阈值后 context 门禁会阻断提交，直到完成一次符合条件的跨模型复核。查看当前进度：
+
+```bash
+python3 scripts/report_quality.py sampling-status --json
+```
+
 ## 7. 回归评估
 
 跨模型或 Harness 比较使用 `evals/ace-report-tasks.json`，每个组合至少重复三次。记录：
@@ -140,7 +146,9 @@ Reviewer 必须为每一维填写评分理由；`unsupported_claims` 和 `missin
 
 接受新配置的条件：关键错误率为 0、P10 不下降，并且质量不退化时成本或耗时有所改善。平均分只作为辅助指标。
 
-`evals/report-quality-replays.json` 还固定了三篇真实报告，覆盖不同体裁与生成 Harness。静态 context 评估会重新运行其 sidecar 与哈希绑定，防止质量门只在临时 fixture 中成立。
+`evals/report-quality-replays.json` 固定了五篇真实报告，覆盖不同体裁与三个生成 Harness，其中两篇是重构后的真实生产样本。静态 context 评估会重新运行其 sidecar 与哈希绑定，防止质量门只在临时 fixture 中成立。
+
+Context 重构另用 `scripts/run_ace_context_ab.py` 运行全部 ACE case 的只读开工探针，自动采集初始文件、repo Skill、澄清边界、tokens 与耗时。开工探针用于快速发现路由和无关 Context 回归；完整行为模板仍负责最终完成、质量门与安全结果，二者不能互相替代。
 
 ```bash
 python3 scripts/eval_report_context.py --template > /tmp/glm-codex-run.json

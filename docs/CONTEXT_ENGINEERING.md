@@ -63,6 +63,7 @@ Curator 不重写整份 context。完整重写容易丢失例外、证据来源�
 
 - Codex 官方 `AGENTS.md` 合并上限默认 32 KiB；超过上限会停止继续加入文件。
 - Skill 初始发现清单默认最多占上下文窗口 2%；窗口未知时为 8,000 characters。
+- 根协议字节预算采用软警告与硬上限两级：软预算用于提醒复核，硬上限才阻断提交，避免为了几个字节反复压缩稳定规则。
 - 静态预算只用于发现风险。最终判断依赖真实任务的成功率、无效读取、澄清次数、工具调用、compaction、返工和安全结果。
 - 行为回放同时记录 skill precision / recall、无关 context 读取率、澄清率和提前停止率；均值之外必须查看 P10 与零分率。
 
@@ -75,6 +76,20 @@ python3 scripts/eval_report_context.py --template > /tmp/ace-run.json
 python3 scripts/eval_report_context.py --score /tmp/ace-run.json
 python3 scripts/eval_report_context.py --aggregate /tmp/*-run.json
 ```
+
+Context 或 Skill 大改时，先运行受控开工探针。它在重构前后 checkout 上使用相同的 Pi、模型与推理档位，覆盖全部 ACE case 并重复三次；只允许读取，不联网或写入，原始 JSONL 留在临时目录，仓库仅保存归一化结果：
+
+```bash
+python3 scripts/run_ace_context_ab.py \
+  --baseline 4b3811a --candidate HEAD \
+  --repetitions 3 --jobs 3 \
+  --output evals/results/ace-context-ab-YYYYMMDD.json \
+  --markdown docs/ACE_CONTEXT_AB_YYYYMMDD.md
+```
+
+开工探针测路由、产物意图、初始文件、Skill 选择和澄清边界；它不替代完整任务。报告完成质量继续由真实 `report-v2` 回放验证，需要判断提前停止、测试范围或最终交付时再运行完整行为模板。
+
+最新通过结果由 `config/instruction-policy.json` 登记为 Owner，并绑定所有 `AGENTS.md`、Skill 入口和 ACE suite 的 SHA-256。上述 Context 变化后，静态门禁会要求重新回放，避免长期保留已经过期的“通过”结论。
 
 ## 参考
 
