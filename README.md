@@ -11,6 +11,12 @@
 > `eacli context get --domain <id>` 或 `eacli context search --query <关键词>` 获取带来源的最小切片。
 > 本仓继续拥有公开知识正文；私有设备/网络内容不会复制到这里。
 
+**横版全景**
+
+![EverAgent 横版学习与研究全景图](./docs/assets/everagent-horizontal.jpg)
+
+**初版概念海报**
+
 ![EverAgent launch poster](./docs/assets/everagent-launch-poster.png)
 
 ---
