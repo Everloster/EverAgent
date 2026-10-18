@@ -1,0 +1,203 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-09-16_xiaoyuzhou-crossing_wangjiawei.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-18",
+  "generator": {
+    "model": "glm-5.3",
+    "harness": "claude-code",
+    "run_id": "podcast-daily-2026-09-16",
+    "explicit_model_override": false,
+    "override_reason": ""
+  },
+  "task": {
+    "summary": "基于《十字路口Crossing》2026-09-16 期静默转写，总结王家伟（深朴智能 Simple AI 首席科学家）从大模型转向具身智能的判断：HiFi-UMI 数据路线、具身基础模型三能力定义、scaling 表述纪律、评估困境与前沿点评，并与本库既有具身报告做跨期分析。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "所有事实与引语回到转写、精编稿或已核验的外部来源（shownotes/arXiv/官方博客），不自述与转述不分的地方需标注口径。"
+      },
+      {
+        "id": "R02",
+        "text": "保留 HiFi-UMI 开源/内部数据量、定位与同步精度、replay 比例、GEN 系列、π0.7、三年 80% 等关键数字并分级标注来源。"
+      },
+      {
+        "id": "R03",
+        "text": "区分嘉宾自述（公司数据）、嘉宾转述（同行工作）与分析者推断；转写专名修正清单写入 polished 头部；保留 Limitations 与思考与追问。"
+      },
+      {
+        "id": "R04",
+        "text": "恢复任务边界：沿用同一单集（2026-09-16 crossing 王家伟），不做 git 提交、不选新集、不覆盖既有 review 结构。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "local",
+      "title": "十字路口 2026-09-16 期原始转写（Razer whisper large-v3）",
+      "locator": "podcast-learning/reports/transcripts/2026-09-16_xiaoyuzhou-crossing_wangjiawei.transcript.txt",
+      "accessed_on": "2026-10-18"
+    },
+    {
+      "id": "S02",
+      "kind": "local",
+      "title": "同集结构化精编稿（含修正清单）",
+      "locator": "podcast-learning/reports/transcripts/2026-09-16_xiaoyuzhou-crossing_wangjiawei.polished.txt",
+      "accessed_on": "2026-10-18"
+    },
+    {
+      "id": "S03",
+      "kind": "primary",
+      "title": "小宇宙单集页（shownotes：嘉宾履历、四章结构、HiFi-UMI/GEN-1.5/π0.7/Skild 概述）",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/6aaa9f039d326477816a3488",
+      "accessed_on": "2026-10-18"
+    },
+    {
+      "id": "S04",
+      "kind": "official",
+      "title": "HiFi-UMI 论文（Simple AI，arXiv 2607.25895）与 GEN-1.5 博客（generalistai.com/blog/gen-1.5）",
+      "locator": "https://arxiv.org/abs/2607.25895",
+      "accessed_on": "2026-10-18"
+    },
+    {
+      "id": "S05",
+      "kind": "official",
+      "title": "π0.7：a Steerable Model with Emergent Capabilities（Physical Intelligence，arXiv 2604.15483）与 CaP-X（arXiv 2603.22435，ICML 2026）",
+      "locator": "https://arxiv.org/abs/2604.15483",
+      "accessed_on": "2026-10-18"
+    },
+    {
+      "id": "S06",
+      "kind": "local",
+      "title": "对照报告：徐梦迪期（2026-09-20 crossing）与具身智能的金钱游戏（2026-09-02 晚点聊）",
+      "locator": "podcast-learning/reports/2026-09-20_xiaoyuzhou-crossing_xumengdi.md",
+      "accessed_on": "2026-10-18"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "深朴智能 HiFi-UMI 开源 2000 小时数据、内部积累数万小时；系统为毫米级定位、微秒级时间同步的六相机 UMI 手套，无需基站。",
+      "report_anchor": "深朴智能 HiFi-UMI",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "evidence": "转写 26:08–28:53 与 shownotes「开源 2,000 小时数据，内部积累数万小时」一致；arXiv 2607.25895 摘要及 36kr/PRNewswire 报道确认系统特性（2026-08 开源）。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "王家伟判断基模公司不会简单降维打击具身公司：GPT-6 Astra 执行慢（流传视频多为 16/32 倍速）、动态环境缺实时控制；终局是大脑（大模型）+小脑（action policy）两层。",
+      "report_anchor": "Astra 与降维打击",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "转写 06:27–08:15「大脑那部分……下面一定要给它配上比较好的 action policy」；倍速与咖啡杯例子为嘉宾口述判断。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "深朴把具身智能的「智能」定义为三个能力：适应（Zero-Shot→OOD）、Steerability、上下文理解；不追逐世界模型概念，从能力反推模型与数据。",
+      "report_anchor": "智能的三能力定义",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "转写 16:33–17:48 与 35:12–35:48（「我们没有特别的去往这个概念上面去做」）。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "关于 scaling，王家伟只承认「趋势/power law 现象」而拒绝宣称找到 scaling law；观察到 1%–0.5% 数据量任务可执行与组合泛化（零食→蓝盘子）。",
+      "report_anchor": "Scaling 表述纪律",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "转写 40:58–42:14「我们会避免讲 scaling law……存在一定的 power law」；42:41–43:29 组合泛化案例。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "前沿点评：GEN-1.5 的 in-context learning 为自然涌现且原生支持 30 秒 context（官方博客证实）；Skild AI 等专门训练 pair 数据的 ICL 被其评价为「不是很本质」；π0.7 的启示在 steerability。",
+      "report_anchor": "前沿点评",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05"
+      ],
+      "evidence": "转写 55:53–57:23；shownotes「GEN-1.5 对预训练与自然涌现的验证、π0.7 对 steerability 的强化、Skild AI 为 Demo 专门训练的 In-Context Learning 是否被高估」；generalistai.com 与 pi.website 官方页面核实。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "具身评估缺乏公认 benchmark：LIBERO 类纯后训练可刷爆、真机 benchmark 难复现、第三方尝试「既当裁判又当运动员」失败；具身评估评的是整链路成功率，最终看产品说话。",
+      "report_anchor": "评估困境",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S06"
+      ],
+      "evidence": "转写 47:03–49:02 与 57:35–58:13；与徐梦迪期「loss≠成功率」、晚点期「具身无公认 benchmark」形成三源互证。",
+      "critical": true
+    },
+    {
+      "id": "C07",
+      "claim": "组织与工作方式：70 多人团队、9:30–18:30 不强制加班、AI 工具额度无限制主要用 Codex；「管理好你的 agent」。",
+      "report_anchor": "70 多人",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "转写 50:56–52:58；均为嘉宾口述，团队规模无第三方核验。",
+      "critical": false
+    },
+    {
+      "id": "C08",
+      "claim": "三年内家庭机器人完成「倒盘子塞洗碗机」类任务的概率为 80%（嘉宾预测，2029-09 回访锚点）。",
+      "report_anchor": "80%",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "转写 01:08:29–01:09:18「我觉得三年的话，实现是 80%」。",
+      "critical": false
+    },
+    {
+      "id": "C09",
+      "claim": "[推测] 跨期分析（增量观点）：与徐梦迪期的 scaling 措辞纪律一致、与晚点具身金钱游戏的数据资产质量之问形成对照、把 ADE vs Harness 之辩推进到具身场景。",
+      "report_anchor": "增量观点（polished 之外的连接与分析）",
+      "support": "inference",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S06"
+      ],
+      "evidence": "对照结论由分析者基于两期报告文本得出，属推断而非嘉宾主张，已在正文以分析口吻呈现。",
+      "critical": false
+    }
+  ],
+  "limitations": [
+    "转写专名密度大：修正 40+ 处（清单见 polished 头部）；残留 [?]：合肥「中」、ASM 班/渔翁老师、Dyla2、Gemini「ER」、WRC。",
+    "GEN 系列 20 万→50 万小时与 9,000 夹爪实验的版本归属为嘉宾转述，web.search 未逐项核实这两个数字（已核实 GEN-1.5 30 秒 context/one-shot、π0.7、CaP-X、HiFi-UMI）。",
+    "嘉宾为深朴智能首席科学家：下载量、zero-shot 能力、95% replay 等为自述口径，模型年底发布前无法外部验证。",
+    "transcript 由 Razer artifact（sha256 786655e7…aac）经 harness 文件工具复制落盘：eacli 当前无 artifact pull capability；行数 2862/2862 对齐、边界与抽样比对一致，个别时间戳可能存在 ≤3 秒漂移，不影响内容。",
+    "fill_report_stats.py 未获本次 Bash 授权，hanzi/total_chars 与压缩比数值未能量化，frontmatter 未填该组字段（transcript_segments=2862 为实际计数）。",
+    "无说话人分离，极短附和句归属按上下文判定；独立复核与 finalize 由外层 wrapper 执行。"
+  ]
+}

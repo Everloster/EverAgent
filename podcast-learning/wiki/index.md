@@ -82,6 +82,7 @@
 
 ### 具身智能 / 人物访谈
 
+- [[2026-09-16_xiaoyuzhou-crossing_wangjiawei|十字路口：王家伟——24岁的具身智能首席科学家、HiFi-UMI与「趋势不等于Law」]]（episode_summary · 2026-09-16，恢复补齐 2026-10-18）— 十字路口Crossing，1h09m，风浪越大鱼越贵 / 大脑小脑两层论 / HiFi-UMI 毫米微秒级数据 / 三能力定义 / 趋势≠law / 评估保持真实 / GEN-1.5·π0.7·Skild 点评
 - [[2026-09-20_xiaoyuzhou-crossing_xumengdi|「我看到了 Scaling Law 的信号」：徐梦迪谈具身智能、世界模型与真正的泛化]]（episode_summary · 2026-09-20）— 十字路口Crossing 对谈清华叉院 AP，1h20m，adaptation/ICL / loss≠成功率 / 机器人 GPT-1 阶段论 / 数据四路融合
 
 ### 职业 / 人生叙事
@@ -166,6 +167,10 @@
 - [[entities/jinjing-orca|津晶 & Orca（Stably AI）]] — ADE 提出者；400+ 任务编排实操；ex-Google/YC
 - [[entities/xu-mengdi|徐梦迪]] — 清华叉院 AP，具身智能；CMU 最佳博士论文；斯坦福博后（李飞飞/吴佳俊）
 - [[entities/zhang-tuoken|张托肯]] — 清华电子系博士→ETH 博后；「芯片开卷计划」发起人；三天流片 / EDA 桥接工具开源 / Razavi Bench
+
+### 来自 2026-09-16 十字路口（王家伟期）
+
+- [[entities/wang-jiawei|王家伟]] — 深朴智能（Simple AI）首席科学家，24 岁；中科大少年班→MSRA 联培→DeepSeek/Seed；HiFi-UMI / 三能力定义 / 趋势≠law
 
 ### 来自 2026-08-14 竹竹暴风雪（社会学领读 16 期）
 

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-09-16_xiaoyuzhou-crossing_wangjiawei.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "escalation_review",
+      "reviewer": {
+        "model": "kimi-k3",
+        "harness": "kimi-code",
+        "run_id": "k3-review-14ce669e6ad92db0",
+        "independent_context": true,
+        "explicit_model_override": true,
+        "override_reason": "S03-S05 官方来源需要独立复核，原 GLM 复核未能访问"
+      },
+      "escalation_reason": "补验 S03-S05 官方来源，并校正 report_anchor 与推断标记",
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09"
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "scores": {
+        "evidence_fidelity": 94,
+        "request_coverage": 96,
+        "reasoning_quality": 91,
+        "readability": 92,
+        "limitations": 95
+      },
+      "score_reasons": {
+        "evidence_fidelity": "K3 逐项复核 C01-C09 与关键数字，并实际读取小宇宙 shownotes、HiFi-UMI、GEN-1.5、π0.7 与 CaP-X 官方页面。2000 小时、Zero-shot、GEN-1.5 的自然涌现与 30 秒 context、π0.7 steerability、毫米/微秒同步等均有一手来源；公司自述与转述/推断继续分开标注。",
+        "request_coverage": "R01-R04 全部覆盖：引语可回转写，数字分级，修正清单与 Limitations 完整，恢复仍是同一单集。S01-S06 均已检查；S03-S05 的先前缺口已补实。",
+        "reasoning_quality": "跨期连接有对照报告支撑，C09 以 [推测] 标明分析者推断。大脑/小脑、数据质量密度、具身 Harness 与评估困境的推理边界成立；不把公司能力自述改写为外部已验证事实。",
+        "readability": "报告可独立阅读，包含速览、概览、增量观点、关键人物/概念/数字、Limitations 与回访锚点。关键数字附来源级别，修正清单保留误识别与未还原专名。",
+        "limitations": "保留 GEN 数字归属未核、zero-shot/95% replay 为嘉宾自述、无说话人分离、artifact 复制与 ≤3 秒漂移等边界。剩余小问题（C05 时间锚点、S06 locator、个别归属措辞）不构成核心事实或隐私阻断。"
+      },
+      "notes": "K3 escalation review 已完成：C01-C09、S01-S06、R01-R04 全覆盖，无 hard_failures、missing_requirements 或 unsupported_claims。实际访问 xiaoyuzhoufm、arxiv.org/abs/2607.25895、generalistai.com/blog/gen-1.5、arxiv.org/abs/2604.15483、arxiv.org/abs/2603.22435，核验 shownotes 与官方模型/数据描述。保留原 GLM 复核于独立备份；本记录不声称 GLM 已访问这些来源。建议通过。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 93.6,
+    "evaluated_on": "2026-10-18",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "14b2f93c3b527fbc7b33ad8a5e3e3a1d8ca3efc24bf85af9453f01edcac45987",
+    "evidence_sha256": "2932eb50bfe698519a5e56222406c024b04b24bc27f07dadac0aa57cff40141a"
+  }
+}
