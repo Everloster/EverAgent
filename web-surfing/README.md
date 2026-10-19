@@ -12,7 +12,7 @@
 ```
 我："帮我上 X 网站看看 / 抓一下 Y / 整理个清单"
   ↓
-Agent：① 先查复用（本项目沉淀过？opencli 有适配器？agent-reach 覆盖？）
+Agent：① 先查复用（本项目沉淀过？opencli 有适配器？）
        ② 有就复用，没有就 opencli browser 直驱
        ③ 只读公开数据，产出清单/报告
        ④ 这站以后还会来 → 沉淀成 skills/site-{name}/
