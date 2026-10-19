@@ -8,6 +8,7 @@
 | 日期 | 报告 | 领域 |
 |------|------|------|
 | 2026-10-19 | [大小马 V94：中国火箭回收与美国「孙学」——争议资产、复用经济学与中欧美心态切片](../podcast-learning/reports/2026-09-06_xiaoyuzhou-daxiaoma-keji_v94-rocket-recovery-sunology.md) | podcast-learning |
+| 2026-10-19 | [AI 行业日报 · 2026-10-19](../web-surfing/reports/ai-news-daily-2026-10-19.md) | web-surfing |
 | 2026-10-18 | [十字路口：王家伟——24岁的具身智能首席科学家、HiFi-UMI与「趋势不等于Law」](../podcast-learning/reports/2026-09-16_xiaoyuzhou-crossing_wangjiawei.md) | podcast-learning |
 | 2026-10-15 | [PuRo-2B 开放低成本预训练配方深度解析：MuonHyperball、FP8 与 RTX 5090 的 $5090 实验](../ai-learning/reports/knowledge_reports/PuRo-2B_开放低成本预训练配方_MuonHyperball与RTX5090_深度解析_20261015.md) | ai-learning |
 | 2026-10-15 | [GPT-6 Astra 指令架构：从 Prompt 堆叠到按需控制](../ai-learning/reports/knowledge_reports/GPT6_Astra指令架构_从Prompt堆叠到按需控制_深度解析_20261015.md) | ai-learning |
@@ -31,7 +32,6 @@
 | 2026-10-10 | [成为巴菲特27：买珠还椟——从邓白氏到穆迪，商业信用的权力与秩序](../podcast-learning/reports/2026-02-11_xiaoyuzhou-chengwei-buffett_nantian.md) | podcast-learning |
 | 2026-10-10 | [屠龙之术：AICC2026 侧记——Agent=Model+Harness 成业界公式，算力缺口十年十倍](../podcast-learning/reports/2026-09-22_xiaoyuzhou-tulong-zhishu_ai-production-stage.md) | podcast-learning |
 | 2026-10-10 | [孙宇晨×邵艾伦：搏击理论、开图与认知决定命运——AI 时代的自我操作系统论](../podcast-learning/reports/2026-10-10_bilibili-shaoailun_sunyuchen-ai-era.md) | podcast-learning |
-| 2026-10-10 | [卫诗婕89：阮良——个人提效500%，交付只从20天到17天：AI 进组织的木桶真相](../podcast-learning/reports/2026-09-23_xiaoyuzhou-weishijie_ruanliang-ai-org.md) | podcast-learning |
 
 ## 🤖 AI Learning（114 篇）
 
@@ -487,10 +487,11 @@
 | 2026-03-17 | [AstrBotDevs/AstrBot](../github-trending-analyzer/reports/research_AstrBotDevs_AstrBot.md) | — |
 | 2026-03-17 | [666ghj/BettaFish 深度研究报告](../github-trending-analyzer/reports/research_666ghj_BettaFish.md) | — |
 
-## 🏄 Web Surfing（42 篇）
+## 🏄 Web Surfing（43 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-10-19 | [AI 行业日报 · 2026-10-19](../web-surfing/reports/ai-news-daily-2026-10-19.md) | `ai_news`, `daily`, `industry_watch` |
 | 2026-10-15 | [AI 行业日报 · 2026-10-15](../web-surfing/reports/ai-news-daily-2026-10-15.md) | `ai_news`, `daily`, `industry_watch` |
 | 2026-10-14 | [B 站关注列表、最近投稿与未看更新采集方案调研](../web-surfing/reports/bilibili-following-updates-research-2026-10-14.md) | — |
 | 2026-10-14 | [AI 行业日报 · 2026-10-14](../web-surfing/reports/ai-news-daily-2026-10-14.md) | — |

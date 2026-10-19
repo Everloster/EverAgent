@@ -1,0 +1,179 @@
+{
+  "schema_version": 1,
+  "report_path": "web-surfing/reports/ai-news-daily-2026-10-19.md",
+  "quality_tier": "standard",
+  "created_on": "2026-10-19",
+  "generator": {
+    "model": "glm-5.3",
+    "harness": "claude-code",
+    "run_id": "ai-news-2026-10-19",
+    "explicit_model_override": false,
+    "override_reason": ""
+  },
+  "task": {
+    "summary": "汇总 2026-10-19（含 10-16 以来仍在前排的条目）AI 行业动态，按可读性宪章成稿，保留来源层级、数字口径、去重边界与趋势判断。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "直读四源（AIHOT、GitHub Trending、AI Digest、HN），产出含今日要点、至少 3 条结构完整头条、Trending、简讯与趋势总结的日报。"
+      },
+      {
+        "id": "R02",
+        "text": "标明直读、检索快照、转述与标题级边界；重要新闻尽量回查一手来源（官方公告、研究者原文）。"
+      },
+      {
+        "id": "R03",
+        "text": "对照最近三篇日报（10-15/10-14/10-13）去重；延续事件提供新信息并链接历史日报；事实汇总与趋势分析分开。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "official",
+      "title": "How employment is changing at Anthropic（Anthropic 官方研究页）",
+      "locator": "https://www.anthropic.com/research/employment-at-anthropic",
+      "accessed_on": "2026-10-19"
+    },
+    {
+      "id": "S02",
+      "kind": "primary",
+      "title": "Anthropic has nearly stopped hiring junior staff because AI agents now work six times as many hours（The Decoder，10-18 全文直读）",
+      "locator": "https://the-decoder.com/anthropic-has-nearly-stopped-hiring-junior-staff-because-ai-agents-now-work-six-times-as-many-hours",
+      "accessed_on": "2026-10-19"
+    },
+    {
+      "id": "S03",
+      "kind": "primary",
+      "title": "Two German courts now hold Google liable for what its AI Overviews say（The Decoder，10-18 全文直读）",
+      "locator": "https://the-decoder.com/two-german-courts-now-hold-google-liable-for-what-its-ai-overviews-say",
+      "accessed_on": "2026-10-19"
+    },
+    {
+      "id": "S04",
+      "kind": "primary",
+      "title": "Deepseek V4.1 Flash 1017 beats larger rivals in agentic tasks while once again massively cutting per-task costs（The Decoder，10-17 全文直读）",
+      "locator": "https://the-decoder.com/deepseek-v4-1-flash-1017-beats-larger-rivals-in-agentic-tasks-while-once-again-massively-cutting-per-task-costs",
+      "accessed_on": "2026-10-19"
+    },
+    {
+      "id": "S05",
+      "kind": "primary",
+      "title": "The NIST Elliptic Curves Seeds Bounty Has Been Claimed（赏金设立者 Filippo Valsorda 一手，10-16 全文直读）",
+      "locator": "https://words.filippo.io/seeds-solved",
+      "accessed_on": "2026-10-19"
+    },
+    {
+      "id": "S06",
+      "kind": "primary",
+      "title": "The Decoder 首页（ChatGPT Chrome 助手、OpenAI Rosalind、中国出口管制三条全文口径直读）",
+      "locator": "https://the-decoder.com/",
+      "accessed_on": "2026-10-19"
+    },
+    {
+      "id": "S07",
+      "kind": "official",
+      "title": "AIHOT 日报第 181 期（2026-10-19，直读）",
+      "locator": "https://aihot.news/daily/2026-10-19",
+      "accessed_on": "2026-10-19"
+    },
+    {
+      "id": "S08",
+      "kind": "primary",
+      "title": "GitHub Trending 2026-10-19 快照（13 仓，总星/今日星直读）",
+      "locator": "https://github.com/trending",
+      "accessed_on": "2026-10-19"
+    },
+    {
+      "id": "S09",
+      "kind": "primary",
+      "title": "Hacker News 首页 30 条快照（2026-10-19，DeepSeek 条目 798 分 / 627 评论）",
+      "locator": "https://news.ycombinator.com/",
+      "accessed_on": "2026-10-19"
+    },
+    {
+      "id": "S10",
+      "kind": "secondary",
+      "title": "FT：China unveils draft export controls on AI technologies and chips（检索快照，标题级）",
+      "locator": "https://www.ft.com/content/e0a1295c-4492-4fdd-aaf5-55678a9ef9bf",
+      "accessed_on": "2026-10-19"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "Anthropic 内部研究：技术部门初级岗位占比自 2025 年初 21% 降至 14%，新招初级 27% 降至 9%，8 月起 agent 交互工时为员工的六倍。",
+      "report_anchor": "技术部门初级岗位占比从 2025 年初的 21% 降至 14%",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "Anthropic 官方研究页 Key findings 与正文直读（六倍工时、2026 年 1 月内部讨论）；The Decoder 10-18 全文给出全部百分比与 19:1 研究部门读数。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "慕尼黑 I 地区法院 5 月底裁定 Google 为 AI Overview 内容担责，Google 公开宣布上诉后以和解结案；2026-09-24 亚琛地区法院援引同一推理再下禁令，罚则最高每次 25 万欧元。",
+      "report_anchor": "形成两法院同口径的判例链",
+      "support": "direct",
+      "source_ids": [
+        "S03"
+      ],
+      "evidence": "The Decoder 10-18 全文直读：和解由该刊独家获悉（as THE DECODER has learned），亚琛裁定日期、判词引文与罚则均出自原文；Reuters 6-12 上诉报道为快照交叉。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "DeepSeek-V4.1-Flash-1017 开源权重发布，官方 DeepSWE 口径 top 档 77.0%、平均约 $0.20/任务，低于前代 $0.50/次与对手 $2–10+ 区间；同日开放 Search & Fetch API（$0.75/千次）。",
+      "report_anchor": "DeepSWE 77% 且约 $0.20/任务",
+      "support": "direct",
+      "source_ids": [
+        "S04",
+        "S09"
+      ],
+      "evidence": "The Decoder 10-17 全文直读含基准与成本图表口径；HN 首页快照确认 798 分 / 627 评论热度；报告已注明全部基准为厂商自报、独立评测未出。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "NIST 椭圆曲线种子由 1997-98 年 Unix 时间戳做种子的 drand48 生成；赏金设立者以 Go 复现验证，NSA 选择自由度约 30 位、不足以植入 NOBUS 后门，赏金三倍至 $36,864 捐给 ISRG。",
+      "report_anchor": "种子由 1997-98 年的 Unix 时间戳喂给 drand48 生成",
+      "support": "direct",
+      "source_ids": [
+        "S05",
+        "S06"
+      ],
+      "evidence": "words.filippo.io 10-16 全文直读（赏金设立者一手：算法细节、P-256 时间戳、30 位自由度结论、捐款去向）；「30 分钟解出」为 The Decoder 转述口径，已在质疑段标注。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "中国商务部与科技部 10-16 公布草案，拟把 23 项 AI 技术纳入出口管制，含模型权重、源码与训练方法，门槛 10^26 FLOPs 或 2 万亿参数，已开源技术豁免。",
+      "report_anchor": "拟把 40 项技术加入出口管制清单，其中 23 项为 AI 技术",
+      "support": "direct",
+      "source_ids": [
+        "S06",
+        "S10"
+      ],
+      "evidence": "The Decoder 首页直读给出 23 项、门槛与豁免口径；FT 标题级与 thenextweb 快照交叉确认草案存在与征询中；中文原文未直读已在报告与局限中声明。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "ChatGPT Chrome 扩展升级为完整浏览器助手：@chrome 指定标签页、Chat 模式跨标签取数、Work 模式经 Computer Use 代操作，面向所有 ChatGPT 计划开放。",
+      "report_anchor": "升级面向所有 ChatGPT 计划开放",
+      "support": "direct",
+      "source_ids": [
+        "S06"
+      ],
+      "evidence": "The Decoder 首页全文口径直读；OpenAI 官方公告未直读，已在质疑段与直读情况中标注。",
+      "critical": false
+    }
+  ],
+  "limitations": [
+    "日报包含时点性榜单（GitHub Trending、HN 首页）与检索快照，部分来源不能在之后完整复现。",
+    "10-16–10-18 无日报，本期为区间首录，个别条目的首发日（如亚琛裁定 9-24）以报道披露日为准。",
+    "部分头条与简讯停留在转述或标题级（OpenAI 官方公告、中国两部委中文原文、Anthropic writeup、Codex Desktop issue 等），报告已在详情块集中列出未直读项。"
+  ]
+}

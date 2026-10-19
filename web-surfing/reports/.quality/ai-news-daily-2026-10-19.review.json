@@ -1,0 +1,72 @@
+{
+  "decision": {
+    "status": "pass",
+    "score": 94.25,
+    "evaluated_on": "2026-10-19",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "995d2e2fff1a32747d51f6ae1b1f7ad5b1ca70e68da9d29b02f77134646b83b9",
+    "evidence_sha256": "b888f5204cc72befa2337e99c1a21dcdcaa0d9bf4356dc8c6f22879dabaf7fd1"
+  },
+  "quality_tier": "standard",
+  "report_path": "web-surfing/reports/ai-news-daily-2026-10-19.md",
+  "reviews": [
+    {
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06"
+      ],
+      "escalation_reason": "",
+      "hard_failures": [],
+      "missing_requirements": [],
+      "notes": "复核通道：本会话 Bash/WebFetch/WebSearch 均被权限模式拒绝，eacli 不可用，按 AGENTS.md 最小降级改用 MCP web reader 直读全部来源并记录原因。C01–C06 逐条对源核实：C01（S01 官方页+S02 全文：21%→14%、27%→9%、空缺 6%、8 月 6:1、研究部门 19:1、5.1×/3.1×/3.1×/1.7×、meta-work、招聘转向自主性与判断力均吻合）；C02（S03：慕尼黑 5 月底、和解系该刊独家获悉、亚琛 9-24 未经听审禁三种变体、每次最高 25 万欧元、两段判词引文、8 月底删除要求与 9 月中旬拒绝均吻合）；C03（S04：77.0%/约$0.20、$0.10 档 72%+、前代 74.2%/$0.50、对手 $2–10+、RLSF、$0.75/千次、三 harness 免费至 10-31；HN 798/627 与复核时首页一致）；C04（S05 赏金设立者一手全文：drand48+Unix 时间戳、P-256=1997-08-16 01:52:34、十人团队 10-15 01:07:51 认领、$36,864 捐 ISRG、约 30 位自由度、NOBUS 与 Bernstein-Lange 排除、双倍有效种子遗留、个人推荐与后量子时机，全部吻合；「30 分钟」系 The Decoder 转述，报告已如实标注且该转述源亦核实存在）；C05（S06 中国管制文经 301 canonical 直读：两部委 10-16 草案、23 项 AI、权重/源码/训练方法、10^26 FLOPs 或 2T 参数（另有全球前十条件，报告质疑段已提及）、已开源豁免+登记快速通道、推动转向美国开源模型分析均吻合；S10 FT 标题级交叉成立）；C06（The Decoder 站内检索确认：读开放标签页、Work 模式 Computer Use、全计划开放）。R01–R03 全部满足：R03 经实读 10-15/10-14/10-13 核实（2 仓存留、rea 七连榜、OpenCode 2.0=10-15 头条 6、Codex 守护进程=10-13 头条 3、Claude Code 云端会话=10-15 简讯，历史线引用全部属实，无重复事件，事实与趋势分析分节）。Trending 13 仓集合/排序/语言与复核快照一致，11 仓今日星精确吻合。发现的问题（均未达硬失败，已计入扣分）：(1) android/skills 与 mlabonne/llm-course 的今日星 +81/+375 疑似互换——android/skills 今日星由 81 增至 375 而总星仅增约 125，算术上不可能，判定誊写错误；(2) 头条 6 的「40 项技术总数」在已登记来源（S06/S10）中均无此数字，FT 标题级摘要亦未提及，来源链不完整（23 项 AI 核实成立）；(3) 头条 1 一处口径混用：「agent 交互工时 2026 年 3 月起超过人类员工」——3 月超过人类的是自主+交互合计工时，纯交互工时为 8 月达 6:1；(4) Reuters/thenextweb 在正文引用但未登记入 sources；头条 5 与 Rosalind 简讯仅链 The Decoder 首页未记文章 URL（两文经站内检索确认存在且口径一致，Rosalind 30 席/一年/不含 API/三项审核经全文核实）；(5) 「Furifong」应为 Furifont（轻微拼写）；(6) AI Digest 标 ❌ 处理诚实但未登记其 URL。时点性数字（Trending 总星/HN 分数）在生成与复核两个快照间的漂移属预期，不作为误差。综合：关键 claim 零伪造、零关键数字失溯，五维均在通过线上方，建议按 93/98/94/92/95 判 pass；上述 6 项小问题可在下一期沿用流程时注意，不构成本期阻断。",
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03"
+      ],
+      "reviewer": {
+        "explicit_model_override": false,
+        "harness": "claude-code",
+        "independent_context": true,
+        "model": "glm-5.3",
+        "override_reason": "",
+        "run_id": "ai-news-review-2026-10-19"
+      },
+      "role": "primary_review",
+      "score_reasons": {
+        "evidence_fidelity": "六条 claim（含五条 critical）全部经一手来源直读核实，关键数字逐项吻合：C01 的 21%→14%/27%→9%/6%/6:1/19:1/5.1×/3.1×/3.1×/1.7× 与 Anthropic 官方页及 The Decoder 全文一致；C02 的两案日期、25 万欧元罚则与判词引文逐字核对；C03 的 77.0%/$0.20/$0.10/74.2%/$0.50/$2–10+/RLSF/$0.75 千次全中；C04 与 Filippo 一手全文（含 $36,864→ISRG、30 位自由度、双倍种子遗留）完全吻合；C05 经 canonical 全文核过（40 项总数例外，见下）。Trending 13 仓集合、排序、语言与复核快照一致，11 仓今日星精确吻合；HN 十余条分数全部一致；AIHOT 181 期结构吻合；R03 去重与历史线引用（10-13 头条 3、10-15 云端会话、rea 七连榜、2 仓存留）全部属实。扣分项：android/skills 与 llm-course 的今日星 +81/+375 疑似互换（今日星 81→375 而总星仅增 125，算术上不可能，判为誊写错误）；头条 6 的「40 项技术总数」未获任何已登记来源支撑（FT 标题级无此数字）；头条 1 一处把 3 月总 agent 工时超人类写成「交互工时」口径混用；Reuters/thenextweb 正文引用但未登记入 sources。",
+        "limitations": "三层局限诚实且具体：账本 limitations 覆盖快照不可复现性、10-16–10-18 空档期的首录口径、转述级条目；正文 details 块集中列出全部未直读项与转述级关键条目并标注待复核；每条头条的细读与质疑段主动指出自报口径、和解动机不可核、单一样本不可外推等边界，「30 分钟」明确标注为转述、Anthropic writeup 未直读。AI Digest 停更状态如实标记 ❌。小缺口：AI Digest 未登记 URL；Trending 今日星的时点波动性在账本 limitations 已覆盖，但个别誊写错误未被生成器自查发现。",
+        "readability": "结构完整且自洽：8 条要点→6 条结构统一的三段式头条（速读/关键事实/细读与质疑/来源）→13 仓表格→简讯→三条趋势总结，脱离对话可独立阅读；关键数字加粗、新上榜标注、历史线内链、直读情况折叠块层级清楚；简讯密度高但每条带来源层级标注。小扣分：头条 5 与 Rosalind 简讯只链 The Decoder 首页未给文章 URL，读者无法直达原文；「Furifong」为 Furifont 拼写小误。",
+        "reasoning_quality": "推理链普遍带反例与边界：agent 工时与人类工时不同质、不能折算替代率；「和解规避先例」标为 The Decoder 定性；最高法院情形明确标注为最坏情形推演非既成事实；「击败更大模型」限定编码与 agent 类别；并用 AIHOT 10-18「API 单价不变」与本文「任务成本下降」做出跨源调和（降本来自更短输出而非降价）；Filippo 推荐 NIST 曲线标注为一家之言；Trending 第一的 ai-job-search 与头条 1 初级岗位萎缩同日对读、orca 与管制草案挤压闭源高价，属有依据的综合而非硬凑。趋势总结区分事实核与冷读，2030–2045 专家断层明确归因外部研究者推断。小扣分：3 月工时口径混用削弱一处论据链。",
+        "request_coverage": "R01 完整：四源中三源直读成稿，AI Digest 直读后确认停更并诚实标 ❌（无当日内容可用）；今日要点 8 条、6 条结构完整头条（要求≥3）、Trending 13 仓表、简讯、趋势总结齐备。R02 完整：每条来源标注直读/检索快照/转述/标题级，重要新闻回查一手（Anthropic 官方研究页、Filippo 赏金设立者一手、The Decoder 五篇全文），OpenAI 公告与两部委中文原文未直读均在质疑段与直读情况块集中声明。R03 完整：对照 10-15/10-14/10-13 去重经复核属实（无重复事件；区间首录边界写明），延续事件给出新信息并链接历史日报，事实汇总与趋势分析分节。扣 2 分：头条 5/简讯 的 The Decoder 文章 URL 未记录（仅首页级），40 项总数快照未登记来源。"
+      },
+      "scores": {
+        "evidence_fidelity": 93,
+        "limitations": 95,
+        "readability": 92,
+        "reasoning_quality": 94,
+        "request_coverage": 98
+      },
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10"
+      ],
+      "unsupported_claims": []
+    }
+  ],
+  "revision_round": 1,
+  "schema_version": 1
+}
