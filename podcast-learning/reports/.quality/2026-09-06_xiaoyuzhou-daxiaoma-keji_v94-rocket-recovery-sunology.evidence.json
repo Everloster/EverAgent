@@ -1,0 +1,265 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-09-06_xiaoyuzhou-daxiaoma-keji_v94-rocket-recovery-sunology.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-19",
+  "generator": {
+    "model": "glm-5.3",
+    "harness": "claude-code",
+    "run_id": "podcast-daily-2026-09-06",
+    "explicit_model_override": false,
+    "override_reason": ""
+  },
+  "task": {
+    "summary": "恢复本集既有转写与报告半成品；保持原始任务要求，以官方通报补核长征十号乙、朱雀三号遥二回收和 xAI 收购三项历史事件，纠正旧稿来源分级与任务混淆；口播数字、财务口径和复飞期限仍分级标注。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "优先用 eacli podcast plan/run 静默转写；事实以转写为准、专名用 shownotes 核验，[?] 保留语义并尽量清减（本任务仅 web.read 授权，火箭三项已核验，其余在 Limitations 写明尝试与边界）。"
+      },
+      {
+        "id": "R02",
+        "text": "报告写入 podcast-learning/reports/，命名与结构符合既有规范（速览/概览/增量观点/关键数字分级标注/Limitations/思考与追问），frontmatter 含 title/domain/report_type/status/updated_on/semantic_tags 且 quality_schema=report-v2、quality_tier=important。"
+      },
+      {
+        "id": "R03",
+        "text": "转写关键 2026 事实（长征十号乙、朱雀三号、xAI 并入 SpaceX）必须可追溯：经 eacli tokenplan web.read 只读核验并记录核验日期与差异（如朱雀三号回收为部分成功、复飞官方口径 6 个月内 vs 口播年底）。"
+      },
+      {
+        "id": "R04",
+        "text": "仅在有复用价值时更新 wiki entities/concepts；问 2 全量汇入 open-questions；完成后把 show-indexes/daxiaoma-keji.md 本集状态从 — 改为 ✅；不做 git 提交、不发送通知（外层 wrapper 负责）。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "local",
+      "title": "V94 原始转写（Whisper，分段与重复检测结果见对应文件）",
+      "locator": "podcast-learning/reports/transcripts/2026-09-06_xiaoyuzhou-daxiaoma-keji_v94-rocket-recovery-sunology.transcript.txt",
+      "accessed_on": "2026-10-19"
+    },
+    {
+      "id": "S02",
+      "kind": "local",
+      "title": "同集结构化精编稿（含修正清单与 [?] 残留清单）",
+      "locator": "podcast-learning/reports/transcripts/2026-09-06_xiaoyuzhou-daxiaoma-keji_v94-rocket-recovery-sunology.polished.txt",
+      "accessed_on": "2026-10-19"
+    },
+    {
+      "id": "S03",
+      "kind": "local",
+      "title": "小宇宙单集页 shownotes 存档（10 个时间戳章节与主播介绍）",
+      "locator": "podcast-learning/reports/transcripts/2026-09-06_xiaoyuzhou-daxiaoma-keji_v94-rocket-recovery-sunology.shownotes.md",
+      "accessed_on": "2026-10-19"
+    },
+    {
+      "id": "S04",
+      "kind": "primary",
+      "title": "小宇宙单集页（shownotes 原始来源，eacli tokenplan web.read/zhipu 读取）",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/6a9d85b2a0210c197dce6fa6",
+      "accessed_on": "2026-10-19"
+    },
+    {
+      "id": "S05",
+      "kind": "secondary",
+      "title": "维基百科 Zhuque-3 条目（二手资料，不能替代运营方通报）",
+      "locator": "https://en.wikipedia.org/wiki/Zhuque-3",
+      "accessed_on": "2026-10-19"
+    },
+    {
+      "id": "S06",
+      "kind": "secondary",
+      "title": "维基百科 Long March 10 条目（二手资料，不能替代官方试验通报）",
+      "locator": "https://en.wikipedia.org/wiki/Long_March_10",
+      "accessed_on": "2026-10-19"
+    },
+    {
+      "id": "S07",
+      "kind": "secondary",
+      "title": "维基百科 SpaceX 条目（二手资料，不能替代公司公告或财务来源）",
+      "locator": "https://en.wikipedia.org/wiki/SpaceX",
+      "accessed_on": "2026-10-19"
+    },
+    {
+      "id": "S08",
+      "kind": "local",
+      "title": "跨期对照报告：邵艾伦×孙宇晨（2026-10-10）、大小马 V95（2026-10-08）、晚点具身金钱游戏（2026-09-02）",
+      "locator": "podcast-learning/reports/2026-10-10_bilibili-shaoailun_sunyuchen-ai-era.md",
+      "accessed_on": "2026-10-19"
+    },
+    {
+      "id": "S09",
+      "kind": "primary",
+      "title": "长征十号乙海上网系回收官方通报（2026-07-10）",
+      "locator": "https://www.cnsa.gov.cn/n6758823/n6758838/c10761540/content.html",
+      "accessed_on": "2026-10-19"
+    },
+    {
+      "id": "S10",
+      "kind": "primary",
+      "title": "蓝箭航天朱雀三号遥二回收通报（2026-08-19）",
+      "locator": "https://www.landspace.com/news-detail.html?itemid=76",
+      "accessed_on": "2026-10-19"
+    },
+    {
+      "id": "S11",
+      "kind": "primary",
+      "title": "国家航天局朱雀三号遥二陆地回收通报（2026-08-19）",
+      "locator": "https://www.cnsa.gov.cn/n6758823/n6758838/c10768762/content.html",
+      "accessed_on": "2026-10-19"
+    },
+    {
+      "id": "S12",
+      "kind": "primary",
+      "title": "xAI joins SpaceX 当事方公告（2026-02-02）",
+      "locator": "https://x.ai/news/xai-joins-spacex",
+      "accessed_on": "2026-10-19"
+    },
+    {
+      "id": "S13",
+      "kind": "local",
+      "title": "官方网页核验摘记：原始 URL、查阅日期、短摘录与内容哈希",
+      "locator": "podcast-learning/reports/transcripts/2026-09-06_xiaoyuzhou-daxiaoma-keji_v94-rocket-recovery-sunology.verification.md",
+      "accessed_on": "2026-10-19"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "节目对比海上网系与陆地着陆腿回收；2026-07-10 长征十号乙与 2026-08-19 朱雀三号遥二成功回收有官方通报。回收、再次飞行和经济复用应分别验收，旧稿不能把不同任务混为部分成功。",
+      "report_anchor": "## 事实核验与口播差异",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S03",
+        "S09",
+        "S10",
+        "S11",
+        "S13"
+      ],
+      "evidence": "对照转写 00:37:18–00:42:19 与官方通报；两份回收通报有明确事件日期，均未给出 6 个月复飞期限。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "节目给出猎鹰9复用37次/中国0次、单发1.5–2亿/3亿多、4–5次摊薄成本与2–3天发射间隔。本文将它们登记为口播口径，未作为当前纪录或可比成本模型。",
+      "report_anchor": "## 关键数字",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "转写约 00:39:38–00:42:19；数字表逐项标明口播来源、统计窗口与成本口径缺口。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "大卫把行业快速变化、认知滞后与投资人FOMO联系到夸张叙事的奖励机制；这是主播分析，不是对特定人物的人格或成功概率认定。",
+      "report_anchor": "**硅谷风气**",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "转写约 00:07:23–00:10:16；夸张概率仅为修辞，报告未把它当统计数据。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "节目用孙宇晨讨论注意力不分好坏、争议带来曝光，以及策略的环境约束和代价。本文不展开未核实身份、私人纠纷或法律责任。",
+      "report_anchor": "**硅谷风气**",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "转写约 00:10:52–00:13:03、00:22:39–00:23:41；正文仅归纳主播观点。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "识人与避坑讨论包括融资中的弱点、周围人的长期行为，以及突如其来的好处和交换条件；这些经验不保证识人准确。",
+      "report_anchor": "**识人与避坑**",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "转写约 00:24:47–00:33:44；正文以经验归纳呈现，没有全称保证。",
+      "critical": false
+    },
+    {
+      "id": "C06",
+      "claim": "节目转述 90%/Q4 收入说法，但原始全员会与财务口径未取得；xAI 2026-02-02 公告只确认 SpaceX 宣布收购 xAI，不能证明该收入比例。",
+      "report_anchor": "**SpaceX 与马斯克**",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S12",
+        "S13"
+      ],
+      "evidence": "转写 00:46:25–00:49:28；当事方公告 2026-02-02，只确认收购事件。报告将收入与投资口径单列待核验。",
+      "critical": true
+    },
+    {
+      "id": "C07",
+      "claim": "大卫以尖端项目与重复建设对比中美产业，Emma以选择权讨论努力和休息；属于主播分析，不能替代产业数据或因果识别。",
+      "report_anchor": "**中美产业与心态**",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "转写约 00:50:32–00:51:37、01:03:21–01:04:10；正文声明价值判断与经济因果的区别。",
+      "critical": false
+    },
+    {
+      "id": "C08",
+      "claim": "节目用旅行见闻讨论涉外认知，99%仅为主播估计；应区分精英/民众和地域样本，不能据此推断全国民意。",
+      "report_anchor": "**中美产业与心态**",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "转写约 00:57:21–01:04:10；数字表明确没有调查样本。",
+      "critical": false
+    },
+    {
+      "id": "C09",
+      "claim": "[推测] 跨期比较可以分别讨论策略及代价、技术里程碑与单位经济、注意力与信任、工作伦理与选择权；这些类比不能替代对应领域的独立数据。",
+      "report_anchor": "## 增量观点（polished 之外的连接与分析）",
+      "support": "inference",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S08"
+      ],
+      "evidence": "依据本集与邵艾伦期的既有对照，属于分析者推断；正文四项均标 [推测]，不声称完整光谱或全库首次。",
+      "critical": false
+    },
+    {
+      "id": "C10",
+      "claim": "本次读取的官方回收通报没有给出 6 个月复飞期限，口播年底和二手 6 个月说法不作为官方承诺。",
+      "report_anchor": "## 事实核验与口播差异",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S10",
+        "S11",
+        "S13"
+      ],
+      "evidence": "逐项读取运营方与国家航天局通报，只给出回收成功及后续工程化验证方向；未给明确复飞日期。",
+      "critical": true
+    }
+  ],
+  "limitations": [
+    "转写只证明节目说过什么；本次以官方通报确认两次回收与收购历史事件，不据此确认整理日的最新复用纪录、官方复飞期限或公司财务状态。",
+    "复用纪录、成本、发射节奏、AI收入比例及民意比例均为口播或二手转述；原始统计与财务口径未取得，不作为当前事实。",
+    "多人抢话没有可靠说话人分离；未辨识专名仍待对照原音频，私人纠纷与未核实身份不在正文作事实结论。",
+    "精编按主题重组，统计与压缩比以对应文件实测为准；跨期连接属于分析者推断。",
+    "核验先走 Token Plan 搜索和网页读取；网页读取返回临时额度错误，按规则降级为官方 URL 的有界只读 HTTP 请求，查阅日期与内容哈希均有本地收据。没有把搜索摘要当作完整网页读取。"
+  ]
+}
