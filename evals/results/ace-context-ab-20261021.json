@@ -1,0 +1,4168 @@
+{
+  "schema_version": 1,
+  "generated_on": "2026-10-21",
+  "suite": "evals/ace-report-tasks.json",
+  "model": "zai-coding-cn/glm-5.3",
+  "harness": "pi",
+  "thinking": "medium",
+  "probe_scope": "startup-routing",
+  "execution_order": "paired-interleaved",
+  "repetitions": 3,
+  "refs": {
+    "baseline": {
+      "requested": "4b3811a",
+      "resolved": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "context_sha256": "983e56a5edf6989b4e35548ee4279b716f7426891c97106a1690c02a4f682932"
+    },
+    "candidate": {
+      "requested": "HEAD",
+      "resolved": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "context_sha256": "4cf9e61ea124beafcf222cd5659eb5c9a37fbbae362822d9950437345a4109b8"
+    }
+  },
+  "summaries": {
+    "baseline": {
+      "label": "baseline",
+      "revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "runs": 42,
+      "successful_runs": 42,
+      "mean_score": 79.76,
+      "minimum_score": 50.0,
+      "p10_score": 50.0,
+      "subperfect_runs": 22,
+      "zero_rate": 0.0,
+      "route_accuracy": 1.0,
+      "artifact_policy_accuracy": 0.9048,
+      "initiative_accuracy": 1.0,
+      "context_budget_accuracy": 0.5714,
+      "mean_skill_precision": 0.8571,
+      "mean_skill_recall": 0.75,
+      "mean_initial_project_files": 3.5,
+      "mean_input_tokens": 64667.4,
+      "mean_elapsed_seconds": 44.56,
+      "tool_failures": 10,
+      "forbidden_skill_hits": 3,
+      "forbidden_file_hits": 28,
+      "cases": [
+        {
+          "id": "a_article_deep_analysis",
+          "mean_score": 50.0,
+          "route_accuracy": 1.0,
+          "mean_skill_recall": 0.0,
+          "mean_initial_project_files": 7.33
+        },
+        {
+          "id": "a_brief_question",
+          "mean_score": 100.0,
+          "route_accuracy": 1.0,
+          "mean_skill_recall": 1.0,
+          "mean_initial_project_files": 0.33
+        },
+        {
+          "id": "a_concept_explanation",
+          "mean_score": 50.0,
+          "route_accuracy": 1.0,
+          "mean_skill_recall": 0.5,
+          "mean_initial_project_files": 6.0
+        },
+        {
+          "id": "a_existing_followup",
+          "mean_score": 50.0,
+          "route_accuracy": 1.0,
+          "mean_skill_recall": 0.0,
+          "mean_initial_project_files": 6.0
+        },
+        {
+          "id": "a_open_ended_learning_direction",
+          "mean_score": 80.0,
+          "route_accuracy": 1.0,
+          "mean_skill_recall": 1.0,
+          "mean_initial_project_files": 3.33
+        },
+        {
+          "id": "a_paper_deep_read",
+          "mean_score": 50.0,
+          "route_accuracy": 1.0,
+          "mean_skill_recall": 0.5,
+          "mean_initial_project_files": 6.67
+        },
+        {
+          "id": "b_minimal_demo",
+          "mean_score": 93.33,
+          "route_accuracy": 1.0,
+          "mean_skill_recall": 1.0,
+          "mean_initial_project_files": 5.0
+        },
+        {
+          "id": "c_podcast",
+          "mean_score": 100.0,
+          "route_accuracy": 1.0,
+          "mean_skill_recall": 1.0,
+          "mean_initial_project_files": 3.0
+        },
+        {
+          "id": "d_repo_deep",
+          "mean_score": 66.67,
+          "route_accuracy": 1.0,
+          "mean_skill_recall": 0.5,
+          "mean_initial_project_files": 2.0
+        },
+        {
+          "id": "d_repo_light",
+          "mean_score": 100.0,
+          "route_accuracy": 1.0,
+          "mean_skill_recall": 1.0,
+          "mean_initial_project_files": 1.0
+        },
+        {
+          "id": "e_web_lookup",
+          "mean_score": 100.0,
+          "route_accuracy": 1.0,
+          "mean_skill_recall": 1.0,
+          "mean_initial_project_files": 1.33
+        },
+        {
+          "id": "root_external_write_boundary",
+          "mean_score": 76.67,
+          "route_accuracy": 1.0,
+          "mean_skill_recall": 1.0,
+          "mean_initial_project_files": 1.67
+        },
+        {
+          "id": "root_report_system_audit",
+          "mean_score": 100.0,
+          "route_accuracy": 1.0,
+          "mean_skill_recall": 1.0,
+          "mean_initial_project_files": 4.33
+        },
+        {
+          "id": "root_typo_fix",
+          "mean_score": 100.0,
+          "route_accuracy": 1.0,
+          "mean_skill_recall": 1.0,
+          "mean_initial_project_files": 1.0
+        }
+      ]
+    },
+    "candidate": {
+      "label": "candidate",
+      "revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "runs": 42,
+      "successful_runs": 42,
+      "mean_score": 98.57,
+      "minimum_score": 70.0,
+      "p10_score": 100.0,
+      "subperfect_runs": 2,
+      "zero_rate": 0.0,
+      "route_accuracy": 1.0,
+      "artifact_policy_accuracy": 1.0,
+      "initiative_accuracy": 1.0,
+      "context_budget_accuracy": 1.0,
+      "mean_skill_precision": 1.0,
+      "mean_skill_recall": 0.9762,
+      "mean_initial_project_files": 2.4,
+      "mean_input_tokens": 38247.79,
+      "mean_elapsed_seconds": 35.85,
+      "tool_failures": 6,
+      "forbidden_skill_hits": 0,
+      "forbidden_file_hits": 0,
+      "cases": [
+        {
+          "id": "a_article_deep_analysis",
+          "mean_score": 80.0,
+          "route_accuracy": 1.0,
+          "mean_skill_recall": 0.6667,
+          "mean_initial_project_files": 2.67
+        },
+        {
+          "id": "a_brief_question",
+          "mean_score": 100.0,
+          "route_accuracy": 1.0,
+          "mean_skill_recall": 1.0,
+          "mean_initial_project_files": 0.67
+        },
+        {
+          "id": "a_concept_explanation",
+          "mean_score": 100.0,
+          "route_accuracy": 1.0,
+          "mean_skill_recall": 1.0,
+          "mean_initial_project_files": 3.0
+        },
+        {
+          "id": "a_existing_followup",
+          "mean_score": 100.0,
+          "route_accuracy": 1.0,
+          "mean_skill_recall": 1.0,
+          "mean_initial_project_files": 3.0
+        },
+        {
+          "id": "a_open_ended_learning_direction",
+          "mean_score": 100.0,
+          "route_accuracy": 1.0,
+          "mean_skill_recall": 1.0,
+          "mean_initial_project_files": 1.0
+        },
+        {
+          "id": "a_paper_deep_read",
+          "mean_score": 100.0,
+          "route_accuracy": 1.0,
+          "mean_skill_recall": 1.0,
+          "mean_initial_project_files": 3.33
+        },
+        {
+          "id": "b_minimal_demo",
+          "mean_score": 100.0,
+          "route_accuracy": 1.0,
+          "mean_skill_recall": 1.0,
+          "mean_initial_project_files": 3.33
+        },
+        {
+          "id": "c_podcast",
+          "mean_score": 100.0,
+          "route_accuracy": 1.0,
+          "mean_skill_recall": 1.0,
+          "mean_initial_project_files": 4.0
+        },
+        {
+          "id": "d_repo_deep",
+          "mean_score": 100.0,
+          "route_accuracy": 1.0,
+          "mean_skill_recall": 1.0,
+          "mean_initial_project_files": 3.33
+        },
+        {
+          "id": "d_repo_light",
+          "mean_score": 100.0,
+          "route_accuracy": 1.0,
+          "mean_skill_recall": 1.0,
+          "mean_initial_project_files": 1.0
+        },
+        {
+          "id": "e_web_lookup",
+          "mean_score": 100.0,
+          "route_accuracy": 1.0,
+          "mean_skill_recall": 1.0,
+          "mean_initial_project_files": 1.0
+        },
+        {
+          "id": "root_external_write_boundary",
+          "mean_score": 100.0,
+          "route_accuracy": 1.0,
+          "mean_skill_recall": 1.0,
+          "mean_initial_project_files": 2.33
+        },
+        {
+          "id": "root_report_system_audit",
+          "mean_score": 100.0,
+          "route_accuracy": 1.0,
+          "mean_skill_recall": 1.0,
+          "mean_initial_project_files": 4.0
+        },
+        {
+          "id": "root_typo_fix",
+          "mean_score": 100.0,
+          "route_accuracy": 1.0,
+          "mean_skill_recall": 1.0,
+          "mean_initial_project_files": 1.0
+        }
+      ]
+    }
+  },
+  "comparison": {
+    "deltas": {
+      "mean_score": 18.81,
+      "minimum_score": 20.0,
+      "p10_score": 50.0,
+      "subperfect_runs": -20.0,
+      "zero_rate": 0.0,
+      "route_accuracy": 0.0,
+      "artifact_policy_accuracy": 0.0952,
+      "initiative_accuracy": 0.0,
+      "context_budget_accuracy": 0.4286,
+      "mean_skill_precision": 0.1429,
+      "mean_skill_recall": 0.2262,
+      "mean_initial_project_files": -1.1,
+      "mean_input_tokens": -26419.61,
+      "mean_elapsed_seconds": -8.71,
+      "tool_failures": -4.0,
+      "forbidden_skill_hits": -3.0,
+      "forbidden_file_hits": -28.0
+    },
+    "critical_non_regression": true,
+    "efficiency_gain": true,
+    "accepted": true
+  },
+  "runs": [
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "a_article_deep_analysis",
+      "repetition": 1,
+      "elapsed_seconds": 90.783,
+      "process_exit_code": 0,
+      "route": "ai-learning",
+      "artifact_policy": "update_existing",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "ai-learning/AGENTS.md",
+        "METHODOLOGY.md",
+        "ai-learning/PROFILE.md",
+        "ai-learning/MAP.md",
+        "ai-learning/wiki/open-questions.md",
+        "docs/REPORT_INDEX.md",
+        "ai-learning/skills/concept_deep_dive/SKILL.md"
+      ],
+      "repo_skills_loaded": [
+        "ai-learning/skills/concept_deep_dive/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "ai-learning/AGENTS.md",
+        "METHODOLOGY.md",
+        "ai-learning/PROFILE.md",
+        "ai-learning/MAP.md",
+        "ai-learning/wiki/open-questions.md",
+        "docs/REPORT_INDEX.md",
+        "ai-learning/skills/concept_deep_dive/SKILL.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        "ai-learning/skills/concept_deep_dive/SKILL.md"
+      ],
+      "input_tokens": 133357,
+      "output_tokens": 3656,
+      "tool_failures": 2,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 50,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": false,
+        "initiative": true,
+        "skills": false
+      },
+      "skill_precision": 0.0,
+      "skill_recall": 0.0,
+      "forbidden_skill_hits": [
+        "ai-learning/skills/concept_deep_dive/SKILL.md"
+      ],
+      "forbidden_file_hits": [
+        "ai-learning/PROFILE.md",
+        "ai-learning/wiki/open-questions.md"
+      ],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "a_article_deep_analysis",
+      "repetition": 2,
+      "elapsed_seconds": 77.791,
+      "process_exit_code": 0,
+      "route": "ai-learning",
+      "artifact_policy": "update_existing",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "ai-learning/AGENTS.md",
+        "METHODOLOGY.md",
+        "ai-learning/PROFILE.md",
+        "ai-learning/MAP.md",
+        "ai-learning/wiki/open-questions.md",
+        "ai-learning/skills/paper_analysis/SKILL.md",
+        "ai-learning/reports/knowledge_reports/GPT6_Astra指令架构_从Prompt堆叠到按需控制_深度解析_20261015.md"
+      ],
+      "repo_skills_loaded": [
+        "ai-learning/skills/paper_analysis/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "ai-learning/AGENTS.md",
+        "METHODOLOGY.md",
+        "ai-learning/PROFILE.md",
+        "ai-learning/MAP.md",
+        "ai-learning/wiki/open-questions.md",
+        "ai-learning/skills/paper_analysis/SKILL.md",
+        "ai-learning/reports/knowledge_reports/GPT6_Astra指令架构_从Prompt堆叠到按需控制_深度解析_20261015.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        "ai-learning/skills/paper_analysis/SKILL.md"
+      ],
+      "input_tokens": 128385,
+      "output_tokens": 5347,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 50,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": false,
+        "initiative": true,
+        "skills": false
+      },
+      "skill_precision": 0.0,
+      "skill_recall": 0.0,
+      "forbidden_skill_hits": [
+        "ai-learning/skills/paper_analysis/SKILL.md"
+      ],
+      "forbidden_file_hits": [
+        "ai-learning/PROFILE.md",
+        "ai-learning/wiki/open-questions.md"
+      ],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "a_article_deep_analysis",
+      "repetition": 3,
+      "elapsed_seconds": 90.556,
+      "process_exit_code": 0,
+      "route": "ai-learning",
+      "artifact_policy": "update_existing",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "ai-learning/AGENTS.md",
+        "METHODOLOGY.md",
+        "ai-learning/PROFILE.md",
+        "ai-learning/MAP.md",
+        "ai-learning/wiki/open-questions.md",
+        "ai-learning/skills/paper_analysis/SKILL.md",
+        "ai-learning/reports/knowledge_reports/GPT6_Astra指令架构_从Prompt堆叠到按需控制_深度解析_20261015.md",
+        "docs/REPORT_INDEX.md"
+      ],
+      "repo_skills_loaded": [
+        "ai-learning/skills/paper_analysis/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "METHODOLOGY.md",
+        "ai-learning/AGENTS.md",
+        "ai-learning/PROFILE.md",
+        "ai-learning/MAP.md",
+        "ai-learning/wiki/open-questions.md",
+        "ai-learning/skills/paper_analysis/SKILL.md",
+        "ai-learning/reports/knowledge_reports/GPT6_Astra指令架构_从Prompt堆叠到按需控制_深度解析_20261015.md",
+        "docs/REPORT_INDEX.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        "ai-learning/skills/paper_analysis/SKILL.md"
+      ],
+      "input_tokens": 169369,
+      "output_tokens": 5185,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 50,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": false,
+        "initiative": true,
+        "skills": false
+      },
+      "skill_precision": 0.0,
+      "skill_recall": 0.0,
+      "forbidden_skill_hits": [
+        "ai-learning/skills/paper_analysis/SKILL.md"
+      ],
+      "forbidden_file_hits": [
+        "ai-learning/PROFILE.md",
+        "ai-learning/wiki/open-questions.md"
+      ],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "a_brief_question",
+      "repetition": 1,
+      "elapsed_seconds": 36.056,
+      "process_exit_code": 0,
+      "route": "root",
+      "artifact_policy": "forbidden",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [],
+      "repo_skills_loaded": [],
+      "claimed_initial_project_files": [],
+      "claimed_repo_skills_loaded": [],
+      "input_tokens": 16606,
+      "output_tokens": 2357,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "a_brief_question",
+      "repetition": 2,
+      "elapsed_seconds": 64.561,
+      "process_exit_code": 0,
+      "route": "root",
+      "artifact_policy": "forbidden",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "METHODOLOGY.md"
+      ],
+      "repo_skills_loaded": [],
+      "claimed_initial_project_files": [
+        "METHODOLOGY.md"
+      ],
+      "claimed_repo_skills_loaded": [],
+      "input_tokens": 39135,
+      "output_tokens": 4363,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "a_brief_question",
+      "repetition": 3,
+      "elapsed_seconds": 17.827,
+      "process_exit_code": 0,
+      "route": "root",
+      "artifact_policy": "forbidden",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [],
+      "repo_skills_loaded": [],
+      "claimed_initial_project_files": [],
+      "claimed_repo_skills_loaded": [],
+      "input_tokens": 16606,
+      "output_tokens": 775,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "a_concept_explanation",
+      "repetition": 1,
+      "elapsed_seconds": 18.948,
+      "process_exit_code": 0,
+      "route": "cs-learning",
+      "artifact_policy": "required",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "cs-learning/AGENTS.md",
+        "METHODOLOGY.md",
+        "cs-learning/PROFILE.md",
+        "cs-learning/MAP.md",
+        "cs-learning/wiki/open-questions.md",
+        "cs-learning/skills/concept_deep_dive/SKILL.md"
+      ],
+      "repo_skills_loaded": [
+        "cs-learning/skills/concept_deep_dive/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "METHODOLOGY.md",
+        "cs-learning/AGENTS.md",
+        "cs-learning/PROFILE.md",
+        "cs-learning/MAP.md",
+        "cs-learning/wiki/open-questions.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        "cs-learning/skills/concept_deep_dive/SKILL.md"
+      ],
+      "input_tokens": 59083,
+      "output_tokens": 1066,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 50,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": false,
+        "initiative": true,
+        "skills": false
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 0.5,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [
+        "cs-learning/PROFILE.md",
+        "cs-learning/wiki/open-questions.md"
+      ],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "a_concept_explanation",
+      "repetition": 2,
+      "elapsed_seconds": 37.871,
+      "process_exit_code": 0,
+      "route": "cs-learning",
+      "artifact_policy": "required",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "METHODOLOGY.md",
+        "cs-learning/AGENTS.md",
+        "cs-learning/PROFILE.md",
+        "cs-learning/MAP.md",
+        "cs-learning/wiki/open-questions.md",
+        "cs-learning/skills/concept_deep_dive/SKILL.md"
+      ],
+      "repo_skills_loaded": [
+        "cs-learning/skills/concept_deep_dive/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "METHODOLOGY.md",
+        "cs-learning/AGENTS.md",
+        "cs-learning/PROFILE.md",
+        "cs-learning/MAP.md",
+        "cs-learning/wiki/open-questions.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        "cs-learning/skills/concept_deep_dive/SKILL.md"
+      ],
+      "input_tokens": 61450,
+      "output_tokens": 2212,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 50,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": false,
+        "initiative": true,
+        "skills": false
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 0.5,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [
+        "cs-learning/PROFILE.md",
+        "cs-learning/wiki/open-questions.md"
+      ],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "a_concept_explanation",
+      "repetition": 3,
+      "elapsed_seconds": 26.036,
+      "process_exit_code": 0,
+      "route": "cs-learning",
+      "artifact_policy": "required",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "cs-learning/AGENTS.md",
+        "METHODOLOGY.md",
+        "cs-learning/PROFILE.md",
+        "cs-learning/MAP.md",
+        "cs-learning/wiki/open-questions.md",
+        "cs-learning/skills/concept_deep_dive/SKILL.md"
+      ],
+      "repo_skills_loaded": [
+        "cs-learning/skills/concept_deep_dive/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "cs-learning/AGENTS.md",
+        "METHODOLOGY.md",
+        "cs-learning/PROFILE.md",
+        "cs-learning/MAP.md",
+        "cs-learning/wiki/open-questions.md",
+        "cs-learning/skills/concept_deep_dive/SKILL.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        "cs-learning/skills/concept_deep_dive/SKILL.md"
+      ],
+      "input_tokens": 59864,
+      "output_tokens": 1283,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 50,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": false,
+        "initiative": true,
+        "skills": false
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 0.5,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [
+        "cs-learning/PROFILE.md",
+        "cs-learning/wiki/open-questions.md"
+      ],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "a_existing_followup",
+      "repetition": 1,
+      "elapsed_seconds": 56.291,
+      "process_exit_code": 0,
+      "route": "ai-learning",
+      "artifact_policy": "update_existing",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "ai-learning/AGENTS.md",
+        "METHODOLOGY.md",
+        "ai-learning/MAP.md",
+        "ai-learning/wiki/open-questions.md",
+        "ai-learning/PROFILE.md",
+        "ai-learning/reports/knowledge_reports/MoE混合专家_一个token的专家大楼之旅_科普讲解_20260719.md",
+        "ai-learning/skills/科普讲解/SKILL.md"
+      ],
+      "repo_skills_loaded": [
+        "ai-learning/skills/科普讲解/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "METHODOLOGY.md",
+        "ai-learning/AGENTS.md",
+        "ai-learning/PROFILE.md",
+        "ai-learning/MAP.md",
+        "ai-learning/wiki/open-questions.md",
+        "ai-learning/reports/knowledge_reports/MoE混合专家_一个token的专家大楼之旅_科普讲解_20260719.md",
+        "ai-learning/skills/科普讲解/SKILL.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        "ai-learning/skills/科普讲解/SKILL.md"
+      ],
+      "input_tokens": 109793,
+      "output_tokens": 3803,
+      "tool_failures": 2,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 50,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": false,
+        "initiative": true,
+        "skills": false
+      },
+      "skill_precision": 0.0,
+      "skill_recall": 0.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [
+        "ai-learning/PROFILE.md"
+      ],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "a_existing_followup",
+      "repetition": 2,
+      "elapsed_seconds": 103.288,
+      "process_exit_code": 0,
+      "route": "ai-learning",
+      "artifact_policy": "update_existing",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "ai-learning/AGENTS.md",
+        "ai-learning/MAP.md",
+        "METHODOLOGY.md",
+        "ai-learning/PROFILE.md",
+        "ai-learning/wiki/open-questions.md"
+      ],
+      "repo_skills_loaded": [],
+      "claimed_initial_project_files": [
+        "ai-learning/AGENTS.md",
+        "ai-learning/MAP.md",
+        "METHODOLOGY.md",
+        "ai-learning/PROFILE.md",
+        "ai-learning/wiki/open-questions.md"
+      ],
+      "claimed_repo_skills_loaded": [],
+      "input_tokens": 86667,
+      "output_tokens": 7214,
+      "tool_failures": 1,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 50,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": false,
+        "initiative": true,
+        "skills": false
+      },
+      "skill_precision": 0.0,
+      "skill_recall": 0.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [
+        "ai-learning/PROFILE.md"
+      ],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "a_existing_followup",
+      "repetition": 3,
+      "elapsed_seconds": 149.284,
+      "process_exit_code": 0,
+      "route": "ai-learning",
+      "artifact_policy": "update_existing",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "ai-learning/AGENTS.md",
+        "METHODOLOGY.md",
+        "ai-learning/PROFILE.md",
+        "ai-learning/MAP.md",
+        "ai-learning/wiki/open-questions.md",
+        "ai-learning/skills/科普讲解/SKILL.md"
+      ],
+      "repo_skills_loaded": [
+        "ai-learning/skills/科普讲解/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "ai-learning/AGENTS.md",
+        "METHODOLOGY.md",
+        "ai-learning/PROFILE.md",
+        "ai-learning/MAP.md",
+        "ai-learning/wiki/open-questions.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        "ai-learning/skills/科普讲解/SKILL.md"
+      ],
+      "input_tokens": 121160,
+      "output_tokens": 3173,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 50,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": false,
+        "initiative": true,
+        "skills": false
+      },
+      "skill_precision": 0.0,
+      "skill_recall": 0.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [
+        "ai-learning/PROFILE.md"
+      ],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "a_open_ended_learning_direction",
+      "repetition": 1,
+      "elapsed_seconds": 55.932,
+      "process_exit_code": 0,
+      "route": "ai-learning",
+      "artifact_policy": "forbidden",
+      "paused_before_research": true,
+      "clarification_count": 1,
+      "clarification_question": "你这次想学 AI，具体想往哪个方向走：是继续 MAP 里的活跃线（Agent/Harness 工程、vLLM/模型效率、字节级蒸馏、AI 行业与认知生态），还是换个新主题（如某篇论文/某个概念）从零入门？",
+      "initial_project_files": [
+        "ai-learning/AGENTS.md",
+        "ai-learning/MAP.md",
+        "ai-learning/PROFILE.md"
+      ],
+      "repo_skills_loaded": [],
+      "claimed_initial_project_files": [
+        "ai-learning/AGENTS.md",
+        "ai-learning/MAP.md",
+        "ai-learning/PROFILE.md"
+      ],
+      "claimed_repo_skills_loaded": [],
+      "input_tokens": 48603,
+      "output_tokens": 3777,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 80,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": false,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [
+        "ai-learning/PROFILE.md"
+      ],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "a_open_ended_learning_direction",
+      "repetition": 2,
+      "elapsed_seconds": 22.812,
+      "process_exit_code": 0,
+      "route": "ai-learning",
+      "artifact_policy": "forbidden",
+      "paused_before_research": true,
+      "clarification_count": 1,
+      "clarification_question": "你已有画像里活跃线是 Agent/Harness 工程、模型效率（MoE/投机解码/vLLM 源码）、AI 行业与商业观察（open-questions 仅是历史快照≠当前兴趣）：这次想沿哪条线安排，还是想开个全新方向？目标是建直觉（科普体）还是深度专业（公式/源码/落地）？",
+      "initial_project_files": [
+        "ai-learning/AGENTS.md",
+        "ai-learning/PROFILE.md",
+        "ai-learning/MAP.md",
+        "ai-learning/wiki/open-questions.md"
+      ],
+      "repo_skills_loaded": [],
+      "claimed_initial_project_files": [
+        "ai-learning/AGENTS.md",
+        "ai-learning/PROFILE.md",
+        "ai-learning/MAP.md",
+        "ai-learning/wiki/open-questions.md"
+      ],
+      "claimed_repo_skills_loaded": [],
+      "input_tokens": 53994,
+      "output_tokens": 1451,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 80,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": false,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [
+        "ai-learning/PROFILE.md",
+        "ai-learning/wiki/open-questions.md"
+      ],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "a_open_ended_learning_direction",
+      "repetition": 3,
+      "elapsed_seconds": 34.053,
+      "process_exit_code": 0,
+      "route": "ai-learning",
+      "artifact_policy": "forbidden",
+      "paused_before_research": true,
+      "clarification_count": 1,
+      "clarification_question": "按协议（用户未指定明确方向时先确认兴趣）：你这次想学哪条线——① Agent/Harness 工程（含三仓源码对照长线）② 模型效率（vLLM 源码级 / MoE / 投机解码）③ AI 行业与商业观察 ④ 其他全新方向？确定方向后再按体裁偏好（科普/深度专业）开工出报告。",
+      "initial_project_files": [
+        "ai-learning/AGENTS.md",
+        "ai-learning/PROFILE.md",
+        "ai-learning/MAP.md"
+      ],
+      "repo_skills_loaded": [],
+      "claimed_initial_project_files": [
+        "ai-learning/AGENTS.md",
+        "ai-learning/PROFILE.md",
+        "ai-learning/MAP.md"
+      ],
+      "claimed_repo_skills_loaded": [],
+      "input_tokens": 47071,
+      "output_tokens": 2212,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 80,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": false,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [
+        "ai-learning/PROFILE.md"
+      ],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "a_paper_deep_read",
+      "repetition": 1,
+      "elapsed_seconds": 64.839,
+      "process_exit_code": 0,
+      "route": "ai-learning",
+      "artifact_policy": "update_existing",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "ai-learning/AGENTS.md",
+        "METHODOLOGY.md",
+        "ai-learning/PROFILE.md",
+        "ai-learning/MAP.md",
+        "ai-learning/wiki/open-questions.md",
+        "ai-learning/skills/paper_analysis/SKILL.md",
+        "ai-learning/reports/paper_analyses/01_transformer_2017.md"
+      ],
+      "repo_skills_loaded": [
+        "ai-learning/skills/paper_analysis/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "ai-learning/AGENTS.md",
+        "METHODOLOGY.md",
+        "ai-learning/PROFILE.md",
+        "ai-learning/MAP.md",
+        "ai-learning/wiki/open-questions.md",
+        "ai-learning/skills/paper_analysis/SKILL.md",
+        "ai-learning/reports/paper_analyses/01_transformer_2017.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        "ai-learning/skills/paper_analysis/SKILL.md"
+      ],
+      "input_tokens": 125054,
+      "output_tokens": 3876,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 50,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": false,
+        "initiative": true,
+        "skills": false
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 0.5,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [
+        "ai-learning/PROFILE.md",
+        "ai-learning/wiki/open-questions.md"
+      ],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "a_paper_deep_read",
+      "repetition": 2,
+      "elapsed_seconds": 45.982,
+      "process_exit_code": 0,
+      "route": "ai-learning",
+      "artifact_policy": "update_existing",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "ai-learning/AGENTS.md",
+        "METHODOLOGY.md",
+        "ai-learning/PROFILE.md",
+        "ai-learning/MAP.md",
+        "ai-learning/wiki/open-questions.md",
+        "ai-learning/skills/paper_analysis/SKILL.md",
+        "docs/REPORT_INDEX.md",
+        "ai-learning/reports/paper_analyses/01_transformer_2017.md"
+      ],
+      "repo_skills_loaded": [
+        "ai-learning/skills/paper_analysis/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "ai-learning/AGENTS.md",
+        "METHODOLOGY.md",
+        "ai-learning/PROFILE.md",
+        "ai-learning/MAP.md",
+        "ai-learning/wiki/open-questions.md",
+        "ai-learning/skills/paper_analysis/SKILL.md",
+        "docs/REPORT_INDEX.md",
+        "ai-learning/reports/paper_analyses/01_transformer_2017.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        "ai-learning/skills/paper_analysis/SKILL.md"
+      ],
+      "input_tokens": 156852,
+      "output_tokens": 3168,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 50,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": false,
+        "initiative": true,
+        "skills": false
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 0.5,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [
+        "ai-learning/PROFILE.md",
+        "ai-learning/wiki/open-questions.md"
+      ],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "a_paper_deep_read",
+      "repetition": 3,
+      "elapsed_seconds": 41.893,
+      "process_exit_code": 0,
+      "route": "ai-learning",
+      "artifact_policy": "required",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "ai-learning/AGENTS.md",
+        "METHODOLOGY.md",
+        "ai-learning/MAP.md",
+        "ai-learning/skills/paper_analysis/SKILL.md",
+        "ai-learning/PROFILE.md"
+      ],
+      "repo_skills_loaded": [
+        "ai-learning/skills/paper_analysis/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "ai-learning/AGENTS.md",
+        "METHODOLOGY.md",
+        "ai-learning/MAP.md",
+        "ai-learning/PROFILE.md",
+        "ai-learning/skills/paper_analysis/SKILL.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        "ai-learning/skills/paper_analysis/SKILL.md"
+      ],
+      "input_tokens": 78943,
+      "output_tokens": 2264,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 50,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": false,
+        "initiative": true,
+        "skills": false
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 0.5,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [
+        "ai-learning/PROFILE.md"
+      ],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "b_minimal_demo",
+      "repetition": 1,
+      "elapsed_seconds": 28.746,
+      "process_exit_code": 0,
+      "route": "ai-practice",
+      "artifact_policy": "required",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "ai-practice/AGENTS.md",
+        "METHODOLOGY.md",
+        "ai-practice/skills/experiment_analysis/SKILL.md",
+        "ai-practice/CONTEXT.md"
+      ],
+      "repo_skills_loaded": [
+        "ai-practice/skills/experiment_analysis/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "ai-practice/AGENTS.md",
+        "METHODOLOGY.md",
+        "ai-practice/skills/experiment_analysis/SKILL.md",
+        "ai-practice/CONTEXT.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        "ai-practice/skills/experiment_analysis/SKILL.md"
+      ],
+      "input_tokens": 59394,
+      "output_tokens": 1799,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "b_minimal_demo",
+      "repetition": 2,
+      "elapsed_seconds": 40.152,
+      "process_exit_code": 0,
+      "route": "ai-practice",
+      "artifact_policy": "required",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "ai-practice/AGENTS.md",
+        "ai-practice/PROFILE.md",
+        "ai-practice/MAP.md",
+        "ai-practice/CONTEXT.md",
+        "ai-practice/skills/experiment_analysis/SKILL.md",
+        "ai-practice/wiki/open-questions.md",
+        "METHODOLOGY.md"
+      ],
+      "repo_skills_loaded": [
+        "ai-practice/skills/experiment_analysis/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "ai-practice/AGENTS.md",
+        "ai-practice/PROFILE.md",
+        "ai-practice/MAP.md",
+        "ai-practice/CONTEXT.md",
+        "ai-practice/skills/experiment_analysis/SKILL.md",
+        "ai-practice/wiki/open-questions.md",
+        "METHODOLOGY.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        "ai-practice/skills/experiment_analysis/SKILL.md"
+      ],
+      "input_tokens": 79590,
+      "output_tokens": 2400,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 80,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": false,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [
+        "ai-practice/MAP.md",
+        "ai-practice/PROFILE.md"
+      ],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "b_minimal_demo",
+      "repetition": 3,
+      "elapsed_seconds": 49.395,
+      "process_exit_code": 0,
+      "route": "ai-practice",
+      "artifact_policy": "required",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "ai-practice/AGENTS.md",
+        "METHODOLOGY.md",
+        "ai-practice/skills/experiment_analysis/SKILL.md",
+        "ai-practice/CONTEXT.md"
+      ],
+      "repo_skills_loaded": [
+        "ai-practice/skills/experiment_analysis/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "ai-practice/AGENTS.md",
+        "METHODOLOGY.md",
+        "ai-practice/CONTEXT.md",
+        "ai-practice/skills/experiment_analysis/SKILL.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        "ai-practice/skills/experiment_analysis/SKILL.md"
+      ],
+      "input_tokens": 59913,
+      "output_tokens": 2344,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "c_podcast",
+      "repetition": 1,
+      "elapsed_seconds": 26.049,
+      "process_exit_code": 0,
+      "route": "podcast-learning",
+      "artifact_policy": "required",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "podcast-learning/AGENTS.md",
+        "podcast-learning/skills/transcription/SKILL.md",
+        "podcast-learning/skills/report-writing/SKILL.md"
+      ],
+      "repo_skills_loaded": [
+        "podcast-learning/skills/transcription/SKILL.md",
+        "podcast-learning/skills/report-writing/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "podcast-learning/AGENTS.md",
+        "podcast-learning/skills/transcription/SKILL.md",
+        "podcast-learning/skills/report-writing/SKILL.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        "podcast-learning/skills/transcription/SKILL.md",
+        "podcast-learning/skills/report-writing/SKILL.md"
+      ],
+      "input_tokens": 64395,
+      "output_tokens": 1472,
+      "tool_failures": 1,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "c_podcast",
+      "repetition": 2,
+      "elapsed_seconds": 21.263,
+      "process_exit_code": 0,
+      "route": "podcast-learning",
+      "artifact_policy": "required",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "podcast-learning/AGENTS.md",
+        "podcast-learning/skills/transcription/SKILL.md",
+        "podcast-learning/skills/report-writing/SKILL.md"
+      ],
+      "repo_skills_loaded": [
+        "podcast-learning/skills/transcription/SKILL.md",
+        "podcast-learning/skills/report-writing/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "podcast-learning/AGENTS.md",
+        "podcast-learning/skills/transcription/SKILL.md",
+        "podcast-learning/skills/report-writing/SKILL.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        "podcast-learning/skills/transcription/SKILL.md",
+        "podcast-learning/skills/report-writing/SKILL.md"
+      ],
+      "input_tokens": 62464,
+      "output_tokens": 1303,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "c_podcast",
+      "repetition": 3,
+      "elapsed_seconds": 34.495,
+      "process_exit_code": 0,
+      "route": "podcast-learning",
+      "artifact_policy": "required",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "podcast-learning/AGENTS.md",
+        "podcast-learning/skills/transcription/SKILL.md",
+        "podcast-learning/skills/report-writing/SKILL.md"
+      ],
+      "repo_skills_loaded": [
+        "podcast-learning/skills/transcription/SKILL.md",
+        "podcast-learning/skills/report-writing/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "podcast-learning/AGENTS.md",
+        "podcast-learning/skills/transcription/SKILL.md",
+        "podcast-learning/skills/report-writing/SKILL.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        "podcast-learning/skills/transcription/SKILL.md",
+        "podcast-learning/skills/report-writing/SKILL.md"
+      ],
+      "input_tokens": 63725,
+      "output_tokens": 1796,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "d_repo_deep",
+      "repetition": 1,
+      "elapsed_seconds": 35.491,
+      "process_exit_code": 0,
+      "route": "github-trending-analyzer",
+      "artifact_policy": "conditional",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "github-trending-analyzer/AGENTS.md",
+        "github-trending-analyzer/skills/repo-research/SKILL.md"
+      ],
+      "repo_skills_loaded": [
+        "github-trending-analyzer/skills/repo-research/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "github-trending-analyzer/AGENTS.md",
+        "github-trending-analyzer/skills/repo-research/SKILL.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        "github-trending-analyzer/skills/repo-research/SKILL.md"
+      ],
+      "input_tokens": 62046,
+      "output_tokens": 1857,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 60,
+      "checks": {
+        "route": true,
+        "artifact_policy": false,
+        "context_budget": true,
+        "initiative": true,
+        "skills": false
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 0.5,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "d_repo_deep",
+      "repetition": 2,
+      "elapsed_seconds": 16.501,
+      "process_exit_code": 0,
+      "route": "github-trending-analyzer",
+      "artifact_policy": "required",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "github-trending-analyzer/AGENTS.md",
+        "github-trending-analyzer/skills/repo-research/SKILL.md"
+      ],
+      "repo_skills_loaded": [
+        "github-trending-analyzer/skills/repo-research/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "github-trending-analyzer/AGENTS.md",
+        "github-trending-analyzer/skills/repo-research/SKILL.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        "github-trending-analyzer/skills/repo-research/SKILL.md"
+      ],
+      "input_tokens": 61383,
+      "output_tokens": 999,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 70,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": false
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 0.5,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "d_repo_deep",
+      "repetition": 3,
+      "elapsed_seconds": 38.495,
+      "process_exit_code": 0,
+      "route": "github-trending-analyzer",
+      "artifact_policy": "required",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "github-trending-analyzer/AGENTS.md",
+        "github-trending-analyzer/skills/repo-research/SKILL.md"
+      ],
+      "repo_skills_loaded": [
+        "github-trending-analyzer/skills/repo-research/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "github-trending-analyzer/AGENTS.md",
+        "github-trending-analyzer/skills/repo-research/SKILL.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        "github-trending-analyzer/skills/repo-research/SKILL.md"
+      ],
+      "input_tokens": 62196,
+      "output_tokens": 1829,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 70,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": false
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 0.5,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "d_repo_light",
+      "repetition": 1,
+      "elapsed_seconds": 15.263,
+      "process_exit_code": 0,
+      "route": "github-trending-analyzer",
+      "artifact_policy": "forbidden",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "github-trending-analyzer/AGENTS.md"
+      ],
+      "repo_skills_loaded": [],
+      "claimed_initial_project_files": [
+        "github-trending-analyzer/AGENTS.md"
+      ],
+      "claimed_repo_skills_loaded": [],
+      "input_tokens": 36557,
+      "output_tokens": 1021,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "d_repo_light",
+      "repetition": 2,
+      "elapsed_seconds": 17.739,
+      "process_exit_code": 0,
+      "route": "github-trending-analyzer",
+      "artifact_policy": "forbidden",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "github-trending-analyzer/AGENTS.md"
+      ],
+      "repo_skills_loaded": [],
+      "claimed_initial_project_files": [
+        "github-trending-analyzer/AGENTS.md"
+      ],
+      "claimed_repo_skills_loaded": [],
+      "input_tokens": 36513,
+      "output_tokens": 979,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "d_repo_light",
+      "repetition": 3,
+      "elapsed_seconds": 26.89,
+      "process_exit_code": 0,
+      "route": "github-trending-analyzer",
+      "artifact_policy": "forbidden",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "github-trending-analyzer/AGENTS.md"
+      ],
+      "repo_skills_loaded": [],
+      "claimed_initial_project_files": [
+        "github-trending-analyzer/AGENTS.md"
+      ],
+      "claimed_repo_skills_loaded": [],
+      "input_tokens": 36783,
+      "output_tokens": 1304,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "e_web_lookup",
+      "repetition": 1,
+      "elapsed_seconds": 35.093,
+      "process_exit_code": 0,
+      "route": "web-surfing",
+      "artifact_policy": "conditional",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "web-surfing/AGENTS.md"
+      ],
+      "repo_skills_loaded": [],
+      "claimed_initial_project_files": [
+        "web-surfing/AGENTS.md"
+      ],
+      "claimed_repo_skills_loaded": [],
+      "input_tokens": 56203,
+      "output_tokens": 1990,
+      "tool_failures": 1,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "e_web_lookup",
+      "repetition": 2,
+      "elapsed_seconds": 23.299,
+      "process_exit_code": 0,
+      "route": "web-surfing",
+      "artifact_policy": "conditional",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "web-surfing/AGENTS.md"
+      ],
+      "repo_skills_loaded": [],
+      "claimed_initial_project_files": [
+        "web-surfing/AGENTS.md"
+      ],
+      "claimed_repo_skills_loaded": [],
+      "input_tokens": 35511,
+      "output_tokens": 1298,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "e_web_lookup",
+      "repetition": 3,
+      "elapsed_seconds": 65.387,
+      "process_exit_code": 0,
+      "route": "web-surfing",
+      "artifact_policy": "conditional",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "web-surfing/AGENTS.md",
+        "METHODOLOGY.md"
+      ],
+      "repo_skills_loaded": [],
+      "claimed_initial_project_files": [
+        "web-surfing/AGENTS.md",
+        "METHODOLOGY.md"
+      ],
+      "claimed_repo_skills_loaded": [],
+      "input_tokens": 60041,
+      "output_tokens": 3569,
+      "tool_failures": 1,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "root_external_write_boundary",
+      "repetition": 1,
+      "elapsed_seconds": 73.957,
+      "process_exit_code": 0,
+      "route": "root",
+      "artifact_policy": "conditional",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "METHODOLOGY.md",
+        "docs/PROTOCOL_COMMON.md"
+      ],
+      "repo_skills_loaded": [],
+      "claimed_initial_project_files": [
+        "METHODOLOGY.md",
+        "docs/PROTOCOL_COMMON.md"
+      ],
+      "claimed_repo_skills_loaded": [],
+      "input_tokens": 40923,
+      "output_tokens": 4736,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 70,
+      "checks": {
+        "route": true,
+        "artifact_policy": false,
+        "context_budget": false,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [
+        "METHODOLOGY.md"
+      ],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "root_external_write_boundary",
+      "repetition": 2,
+      "elapsed_seconds": 79.901,
+      "process_exit_code": 0,
+      "route": "root",
+      "artifact_policy": "conditional",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "docs/PROTOCOL_COMMON.md"
+      ],
+      "repo_skills_loaded": [],
+      "claimed_initial_project_files": [
+        "docs/PROTOCOL_COMMON.md"
+      ],
+      "claimed_repo_skills_loaded": [],
+      "input_tokens": 39335,
+      "output_tokens": 5094,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 90,
+      "checks": {
+        "route": true,
+        "artifact_policy": false,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "root_external_write_boundary",
+      "repetition": 3,
+      "elapsed_seconds": 41.27,
+      "process_exit_code": 0,
+      "route": "root",
+      "artifact_policy": "conditional",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "METHODOLOGY.md",
+        "docs/PROTOCOL_COMMON.md"
+      ],
+      "repo_skills_loaded": [],
+      "claimed_initial_project_files": [
+        "METHODOLOGY.md",
+        "docs/PROTOCOL_COMMON.md"
+      ],
+      "claimed_repo_skills_loaded": [],
+      "input_tokens": 37911,
+      "output_tokens": 2322,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 70,
+      "checks": {
+        "route": true,
+        "artifact_policy": false,
+        "context_budget": false,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [
+        "METHODOLOGY.md"
+      ],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "root_report_system_audit",
+      "repetition": 1,
+      "elapsed_seconds": 34.291,
+      "process_exit_code": 0,
+      "route": "root",
+      "artifact_policy": "update_existing",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "METHODOLOGY.md",
+        "scripts/lint_evidence.py",
+        "scripts/reindex.py",
+        "docs/REPORT_METADATA.md"
+      ],
+      "repo_skills_loaded": [],
+      "claimed_initial_project_files": [
+        "METHODOLOGY.md",
+        "scripts/lint_evidence.py",
+        "scripts/reindex.py",
+        "docs/REPORT_METADATA.md"
+      ],
+      "claimed_repo_skills_loaded": [],
+      "input_tokens": 62855,
+      "output_tokens": 2115,
+      "tool_failures": 2,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "root_report_system_audit",
+      "repetition": 2,
+      "elapsed_seconds": 23.451,
+      "process_exit_code": 0,
+      "route": "root",
+      "artifact_policy": "update_existing",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "METHODOLOGY.md",
+        "docs/PROTOCOL_COMMON.md",
+        "docs/REPORT_METADATA.md",
+        "scripts/lint_evidence.py",
+        "scripts/reindex.py"
+      ],
+      "repo_skills_loaded": [],
+      "claimed_initial_project_files": [
+        "METHODOLOGY.md",
+        "docs/PROTOCOL_COMMON.md",
+        "docs/REPORT_METADATA.md",
+        "scripts/lint_evidence.py",
+        "scripts/reindex.py"
+      ],
+      "claimed_repo_skills_loaded": [],
+      "input_tokens": 41376,
+      "output_tokens": 1356,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "root_report_system_audit",
+      "repetition": 3,
+      "elapsed_seconds": 61.186,
+      "process_exit_code": 0,
+      "route": "root",
+      "artifact_policy": "update_existing",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "METHODOLOGY.md",
+        "docs/REPORT_METADATA.md",
+        "scripts/lint_evidence.py",
+        "scripts/reindex.py"
+      ],
+      "repo_skills_loaded": [],
+      "claimed_initial_project_files": [
+        "METHODOLOGY.md",
+        "docs/REPORT_METADATA.md",
+        "scripts/lint_evidence.py",
+        "scripts/reindex.py"
+      ],
+      "claimed_repo_skills_loaded": [],
+      "input_tokens": 41901,
+      "output_tokens": 3471,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "root_typo_fix",
+      "repetition": 1,
+      "elapsed_seconds": 13.581,
+      "process_exit_code": 0,
+      "route": "root",
+      "artifact_policy": "update_existing",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "README.md"
+      ],
+      "repo_skills_loaded": [],
+      "claimed_initial_project_files": [
+        "README.md"
+      ],
+      "claimed_repo_skills_loaded": [],
+      "input_tokens": 34304,
+      "output_tokens": 576,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "root_typo_fix",
+      "repetition": 2,
+      "elapsed_seconds": 15.184,
+      "process_exit_code": 0,
+      "route": "root",
+      "artifact_policy": "update_existing",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "README.md"
+      ],
+      "repo_skills_loaded": [],
+      "claimed_initial_project_files": [
+        "README.md"
+      ],
+      "claimed_repo_skills_loaded": [],
+      "input_tokens": 34264,
+      "output_tokens": 582,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "baseline",
+      "context_revision": "4b3811ad52e4b1379ccf70bf82d19477a83a76e4",
+      "case_id": "root_typo_fix",
+      "repetition": 3,
+      "elapsed_seconds": 19.823,
+      "process_exit_code": 0,
+      "route": "root",
+      "artifact_policy": "update_existing",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "README.md"
+      ],
+      "repo_skills_loaded": [],
+      "claimed_initial_project_files": [
+        "README.md"
+      ],
+      "claimed_repo_skills_loaded": [],
+      "input_tokens": 34456,
+      "output_tokens": 817,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "a_article_deep_analysis",
+      "repetition": 1,
+      "elapsed_seconds": 92.374,
+      "process_exit_code": 0,
+      "route": "ai-learning",
+      "artifact_policy": "required",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "ai-learning/AGENTS.md",
+        ".agents/skills/everagent-report/SKILL.md",
+        "ai-learning/skills/拆书取景/SKILL.md",
+        "docs/REPORT_WORKFLOW.md"
+      ],
+      "repo_skills_loaded": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "ai-learning/skills/拆书取景/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "ai-learning/AGENTS.md",
+        ".agents/skills/everagent-report/SKILL.md",
+        "ai-learning/skills/拆书取景/SKILL.md",
+        "docs/REPORT_WORKFLOW.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "ai-learning/skills/拆书取景/SKILL.md"
+      ],
+      "input_tokens": 48944,
+      "output_tokens": 3663,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "a_article_deep_analysis",
+      "repetition": 2,
+      "elapsed_seconds": 24.226,
+      "process_exit_code": 0,
+      "route": "ai-learning",
+      "artifact_policy": "required",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "ai-learning/AGENTS.md"
+      ],
+      "repo_skills_loaded": [
+        ".agents/skills/everagent-report/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "ai-learning/AGENTS.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        ".agents/skills/everagent-report/SKILL.md"
+      ],
+      "input_tokens": 28775,
+      "output_tokens": 1211,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 70,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": false
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 0.5,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "a_article_deep_analysis",
+      "repetition": 3,
+      "elapsed_seconds": 21.336,
+      "process_exit_code": 0,
+      "route": "ai-learning",
+      "artifact_policy": "required",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "ai-learning/AGENTS.md",
+        ".agents/skills/everagent-report/SKILL.md"
+      ],
+      "repo_skills_loaded": [
+        ".agents/skills/everagent-report/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "ai-learning/AGENTS.md",
+        ".agents/skills/everagent-report/SKILL.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        ".agents/skills/everagent-report/SKILL.md"
+      ],
+      "input_tokens": 29063,
+      "output_tokens": 1308,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 70,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": false
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 0.5,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "a_brief_question",
+      "repetition": 1,
+      "elapsed_seconds": 34.168,
+      "process_exit_code": 0,
+      "route": "ai-learning",
+      "artifact_policy": "forbidden",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "ai-learning/AGENTS.md"
+      ],
+      "repo_skills_loaded": [],
+      "claimed_initial_project_files": [
+        "ai-learning/AGENTS.md"
+      ],
+      "claimed_repo_skills_loaded": [],
+      "input_tokens": 29248,
+      "output_tokens": 2124,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "a_brief_question",
+      "repetition": 2,
+      "elapsed_seconds": 27.361,
+      "process_exit_code": 0,
+      "route": "ai-learning",
+      "artifact_policy": "forbidden",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "ai-learning/AGENTS.md"
+      ],
+      "repo_skills_loaded": [],
+      "claimed_initial_project_files": [
+        "ai-learning/AGENTS.md"
+      ],
+      "claimed_repo_skills_loaded": [],
+      "input_tokens": 29094,
+      "output_tokens": 1550,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "a_brief_question",
+      "repetition": 3,
+      "elapsed_seconds": 38.769,
+      "process_exit_code": 0,
+      "route": "root",
+      "artifact_policy": "forbidden",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [],
+      "repo_skills_loaded": [],
+      "claimed_initial_project_files": [],
+      "claimed_repo_skills_loaded": [],
+      "input_tokens": 13793,
+      "output_tokens": 953,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "a_concept_explanation",
+      "repetition": 1,
+      "elapsed_seconds": 28.511,
+      "process_exit_code": 0,
+      "route": "cs-learning",
+      "artifact_policy": "required",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "cs-learning/AGENTS.md",
+        ".agents/skills/everagent-report/SKILL.md",
+        "cs-learning/skills/concept_deep_dive/SKILL.md"
+      ],
+      "repo_skills_loaded": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "cs-learning/skills/concept_deep_dive/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "cs-learning/AGENTS.md",
+        ".agents/skills/everagent-report/SKILL.md",
+        "cs-learning/skills/concept_deep_dive/SKILL.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "cs-learning/skills/concept_deep_dive/SKILL.md"
+      ],
+      "input_tokens": 44739,
+      "output_tokens": 1695,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "a_concept_explanation",
+      "repetition": 2,
+      "elapsed_seconds": 22.974,
+      "process_exit_code": 0,
+      "route": "cs-learning",
+      "artifact_policy": "required",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "cs-learning/AGENTS.md",
+        ".agents/skills/everagent-report/SKILL.md",
+        "cs-learning/skills/concept_deep_dive/SKILL.md"
+      ],
+      "repo_skills_loaded": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "cs-learning/skills/concept_deep_dive/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "cs-learning/AGENTS.md",
+        ".agents/skills/everagent-report/SKILL.md",
+        "cs-learning/skills/concept_deep_dive/SKILL.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "cs-learning/skills/concept_deep_dive/SKILL.md"
+      ],
+      "input_tokens": 43959,
+      "output_tokens": 1312,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "a_concept_explanation",
+      "repetition": 3,
+      "elapsed_seconds": 100.789,
+      "process_exit_code": 0,
+      "route": "cs-learning",
+      "artifact_policy": "required",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "cs-learning/AGENTS.md",
+        ".agents/skills/everagent-report/SKILL.md",
+        "cs-learning/skills/concept_deep_dive/SKILL.md"
+      ],
+      "repo_skills_loaded": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "cs-learning/skills/concept_deep_dive/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "cs-learning/AGENTS.md",
+        ".agents/skills/everagent-report/SKILL.md",
+        "cs-learning/skills/concept_deep_dive/SKILL.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "cs-learning/skills/concept_deep_dive/SKILL.md"
+      ],
+      "input_tokens": 43955,
+      "output_tokens": 1409,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "a_existing_followup",
+      "repetition": 1,
+      "elapsed_seconds": 39.828,
+      "process_exit_code": 0,
+      "route": "ai-learning",
+      "artifact_policy": "update_existing",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "ai-learning/AGENTS.md",
+        ".agents/skills/everagent-report/SKILL.md",
+        "ai-learning/skills/concept_deep_dive/SKILL.md"
+      ],
+      "repo_skills_loaded": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "ai-learning/skills/concept_deep_dive/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "ai-learning/AGENTS.md",
+        ".agents/skills/everagent-report/SKILL.md",
+        "ai-learning/skills/concept_deep_dive/SKILL.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "ai-learning/skills/concept_deep_dive/SKILL.md"
+      ],
+      "input_tokens": 46285,
+      "output_tokens": 2366,
+      "tool_failures": 1,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "a_existing_followup",
+      "repetition": 2,
+      "elapsed_seconds": 41.132,
+      "process_exit_code": 0,
+      "route": "ai-learning",
+      "artifact_policy": "update_existing",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "ai-learning/AGENTS.md",
+        ".agents/skills/everagent-report/SKILL.md",
+        "ai-learning/skills/concept_deep_dive/SKILL.md"
+      ],
+      "repo_skills_loaded": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "ai-learning/skills/concept_deep_dive/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "ai-learning/AGENTS.md",
+        ".agents/skills/everagent-report/SKILL.md",
+        "ai-learning/skills/concept_deep_dive/SKILL.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "ai-learning/skills/concept_deep_dive/SKILL.md"
+      ],
+      "input_tokens": 46433,
+      "output_tokens": 2411,
+      "tool_failures": 1,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "a_existing_followup",
+      "repetition": 3,
+      "elapsed_seconds": 136.926,
+      "process_exit_code": 0,
+      "route": "ai-learning",
+      "artifact_policy": "update_existing",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "ai-learning/AGENTS.md",
+        ".agents/skills/everagent-report/SKILL.md",
+        "ai-learning/skills/concept_deep_dive/SKILL.md"
+      ],
+      "repo_skills_loaded": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "ai-learning/skills/concept_deep_dive/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "ai-learning/AGENTS.md",
+        ".agents/skills/everagent-report/SKILL.md",
+        "ai-learning/skills/concept_deep_dive/SKILL.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "ai-learning/skills/concept_deep_dive/SKILL.md"
+      ],
+      "input_tokens": 46846,
+      "output_tokens": 3014,
+      "tool_failures": 1,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "a_open_ended_learning_direction",
+      "repetition": 1,
+      "elapsed_seconds": 50.879,
+      "process_exit_code": 0,
+      "route": "ai-learning",
+      "artifact_policy": "forbidden",
+      "paused_before_research": true,
+      "clarification_count": 1,
+      "clarification_question": "你对 AI 当前最感兴趣的方向或学习形式是什么——例如大模型/Agent 原理与论文精读、动手跑最小 demo 理解技术，还是通过播客/视频或科普内容先建立直觉？有没有特别想搞懂的具体问题？",
+      "initial_project_files": [
+        "ai-learning/AGENTS.md"
+      ],
+      "repo_skills_loaded": [],
+      "claimed_initial_project_files": [
+        "ai-learning/AGENTS.md"
+      ],
+      "claimed_repo_skills_loaded": [],
+      "input_tokens": 30887,
+      "output_tokens": 3230,
+      "tool_failures": 1,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "a_open_ended_learning_direction",
+      "repetition": 2,
+      "elapsed_seconds": 31.306,
+      "process_exit_code": 0,
+      "route": "ai-learning",
+      "artifact_policy": "forbidden",
+      "paused_before_research": true,
+      "clarification_count": 1,
+      "clarification_question": "你当前对 AI 最有兴趣的切入点是哪类：概念科普/论文精读（ai-learning），还是用最小可运行 demo 动手上手（ai-practice）？有没有特别想先深入的主题（如 LLM、Agent、ML 基础）？",
+      "initial_project_files": [
+        "ai-learning/AGENTS.md"
+      ],
+      "repo_skills_loaded": [],
+      "claimed_initial_project_files": [
+        "ai-learning/AGENTS.md"
+      ],
+      "claimed_repo_skills_loaded": [],
+      "input_tokens": 29556,
+      "output_tokens": 2139,
+      "tool_failures": 1,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "a_open_ended_learning_direction",
+      "repetition": 3,
+      "elapsed_seconds": 33.898,
+      "process_exit_code": 0,
+      "route": "ai-learning",
+      "artifact_policy": "forbidden",
+      "paused_before_research": true,
+      "clarification_count": 1,
+      "clarification_question": "你想往哪个方向学 AI：偏原理与论文（如大模型机制、经典论文精读），偏动手实践（跑通最小 demo、微调或应用开发），还是偏行业与产品观察？",
+      "initial_project_files": [
+        "ai-learning/AGENTS.md"
+      ],
+      "repo_skills_loaded": [],
+      "claimed_initial_project_files": [
+        "ai-learning/AGENTS.md"
+      ],
+      "claimed_repo_skills_loaded": [],
+      "input_tokens": 28916,
+      "output_tokens": 1893,
+      "tool_failures": 1,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "a_paper_deep_read",
+      "repetition": 1,
+      "elapsed_seconds": 25.27,
+      "process_exit_code": 0,
+      "route": "ai-learning",
+      "artifact_policy": "required",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "ai-learning/AGENTS.md",
+        ".agents/skills/everagent-report/SKILL.md",
+        "ai-learning/skills/paper_analysis/SKILL.md"
+      ],
+      "repo_skills_loaded": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "ai-learning/skills/paper_analysis/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "ai-learning/AGENTS.md",
+        ".agents/skills/everagent-report/SKILL.md",
+        "ai-learning/skills/paper_analysis/SKILL.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "ai-learning/skills/paper_analysis/SKILL.md"
+      ],
+      "input_tokens": 44817,
+      "output_tokens": 1482,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "a_paper_deep_read",
+      "repetition": 2,
+      "elapsed_seconds": 30.038,
+      "process_exit_code": 0,
+      "route": "ai-learning",
+      "artifact_policy": "required",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "ai-learning/AGENTS.md",
+        ".agents/skills/everagent-report/SKILL.md",
+        "ai-learning/skills/paper_analysis/SKILL.md"
+      ],
+      "repo_skills_loaded": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "ai-learning/skills/paper_analysis/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "ai-learning/AGENTS.md",
+        ".agents/skills/everagent-report/SKILL.md",
+        "ai-learning/skills/paper_analysis/SKILL.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "ai-learning/skills/paper_analysis/SKILL.md"
+      ],
+      "input_tokens": 45817,
+      "output_tokens": 2138,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "a_paper_deep_read",
+      "repetition": 3,
+      "elapsed_seconds": 41.944,
+      "process_exit_code": 0,
+      "route": "ai-learning",
+      "artifact_policy": "required",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "ai-learning/AGENTS.md",
+        ".agents/skills/everagent-report/SKILL.md",
+        "ai-learning/skills/paper_analysis/SKILL.md",
+        "docs/REPORT_WORKFLOW.md"
+      ],
+      "repo_skills_loaded": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "ai-learning/skills/paper_analysis/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "ai-learning/AGENTS.md",
+        ".agents/skills/everagent-report/SKILL.md",
+        "ai-learning/skills/paper_analysis/SKILL.md",
+        "docs/REPORT_WORKFLOW.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "ai-learning/skills/paper_analysis/SKILL.md"
+      ],
+      "input_tokens": 46715,
+      "output_tokens": 2463,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "b_minimal_demo",
+      "repetition": 1,
+      "elapsed_seconds": 25.113,
+      "process_exit_code": 0,
+      "route": "ai-practice",
+      "artifact_policy": "required",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "ai-practice/AGENTS.md",
+        "ai-practice/skills/experiment_analysis/SKILL.md",
+        ".agents/skills/everagent-report/SKILL.md"
+      ],
+      "repo_skills_loaded": [
+        "ai-practice/skills/experiment_analysis/SKILL.md",
+        ".agents/skills/everagent-report/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "ai-practice/AGENTS.md",
+        "ai-practice/skills/experiment_analysis/SKILL.md",
+        ".agents/skills/everagent-report/SKILL.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        "ai-practice/skills/experiment_analysis/SKILL.md",
+        ".agents/skills/everagent-report/SKILL.md"
+      ],
+      "input_tokens": 43287,
+      "output_tokens": 1167,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "b_minimal_demo",
+      "repetition": 2,
+      "elapsed_seconds": 22.474,
+      "process_exit_code": 0,
+      "route": "ai-practice",
+      "artifact_policy": "required",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "ai-practice/AGENTS.md",
+        "README.md",
+        "ai-practice/skills/experiment_analysis/SKILL.md",
+        ".agents/skills/everagent-report/SKILL.md"
+      ],
+      "repo_skills_loaded": [
+        "ai-practice/skills/experiment_analysis/SKILL.md",
+        ".agents/skills/everagent-report/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "ai-practice/AGENTS.md",
+        "README.md",
+        "ai-practice/skills/experiment_analysis/SKILL.md",
+        ".agents/skills/everagent-report/SKILL.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        "ai-practice/skills/experiment_analysis/SKILL.md",
+        ".agents/skills/everagent-report/SKILL.md"
+      ],
+      "input_tokens": 47691,
+      "output_tokens": 1426,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "b_minimal_demo",
+      "repetition": 3,
+      "elapsed_seconds": 32.373,
+      "process_exit_code": 0,
+      "route": "ai-practice",
+      "artifact_policy": "required",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "ai-practice/AGENTS.md",
+        "ai-practice/skills/experiment_analysis/SKILL.md",
+        ".agents/skills/everagent-report/SKILL.md"
+      ],
+      "repo_skills_loaded": [
+        "ai-practice/skills/experiment_analysis/SKILL.md",
+        ".agents/skills/everagent-report/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "ai-practice/AGENTS.md",
+        "ai-practice/skills/experiment_analysis/SKILL.md",
+        ".agents/skills/everagent-report/SKILL.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        "ai-practice/skills/experiment_analysis/SKILL.md",
+        ".agents/skills/everagent-report/SKILL.md"
+      ],
+      "input_tokens": 43052,
+      "output_tokens": 1389,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "c_podcast",
+      "repetition": 1,
+      "elapsed_seconds": 21.763,
+      "process_exit_code": 0,
+      "route": "podcast-learning",
+      "artifact_policy": "required",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "podcast-learning/AGENTS.md",
+        ".agents/skills/everagent-report/SKILL.md",
+        "podcast-learning/skills/transcription/SKILL.md",
+        "podcast-learning/skills/report-writing/SKILL.md"
+      ],
+      "repo_skills_loaded": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "podcast-learning/skills/transcription/SKILL.md",
+        "podcast-learning/skills/report-writing/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "podcast-learning/AGENTS.md",
+        ".agents/skills/everagent-report/SKILL.md",
+        "podcast-learning/skills/transcription/SKILL.md",
+        "podcast-learning/skills/report-writing/SKILL.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "podcast-learning/skills/transcription/SKILL.md",
+        "podcast-learning/skills/report-writing/SKILL.md"
+      ],
+      "input_tokens": 44347,
+      "output_tokens": 1324,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "c_podcast",
+      "repetition": 2,
+      "elapsed_seconds": 31.887,
+      "process_exit_code": 0,
+      "route": "podcast-learning",
+      "artifact_policy": "required",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "podcast-learning/AGENTS.md",
+        ".agents/skills/everagent-report/SKILL.md",
+        "podcast-learning/skills/transcription/SKILL.md",
+        "podcast-learning/skills/report-writing/SKILL.md"
+      ],
+      "repo_skills_loaded": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "podcast-learning/skills/transcription/SKILL.md",
+        "podcast-learning/skills/report-writing/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "podcast-learning/AGENTS.md",
+        ".agents/skills/everagent-report/SKILL.md",
+        "podcast-learning/skills/transcription/SKILL.md",
+        "podcast-learning/skills/report-writing/SKILL.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "podcast-learning/skills/transcription/SKILL.md",
+        "podcast-learning/skills/report-writing/SKILL.md"
+      ],
+      "input_tokens": 45725,
+      "output_tokens": 1973,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "c_podcast",
+      "repetition": 3,
+      "elapsed_seconds": 51.968,
+      "process_exit_code": 0,
+      "route": "podcast-learning",
+      "artifact_policy": "required",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "podcast-learning/AGENTS.md",
+        ".agents/skills/everagent-report/SKILL.md",
+        "podcast-learning/skills/transcription/SKILL.md",
+        "podcast-learning/skills/report-writing/SKILL.md"
+      ],
+      "repo_skills_loaded": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "podcast-learning/skills/transcription/SKILL.md",
+        "podcast-learning/skills/report-writing/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "podcast-learning/AGENTS.md",
+        ".agents/skills/everagent-report/SKILL.md",
+        "podcast-learning/skills/transcription/SKILL.md",
+        "podcast-learning/skills/report-writing/SKILL.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "podcast-learning/skills/transcription/SKILL.md",
+        "podcast-learning/skills/report-writing/SKILL.md"
+      ],
+      "input_tokens": 45338,
+      "output_tokens": 2542,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "d_repo_deep",
+      "repetition": 1,
+      "elapsed_seconds": 23.135,
+      "process_exit_code": 0,
+      "route": "github-trending-analyzer",
+      "artifact_policy": "required",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "github-trending-analyzer/AGENTS.md",
+        ".agents/skills/everagent-report/SKILL.md",
+        "github-trending-analyzer/skills/repo-research/SKILL.md"
+      ],
+      "repo_skills_loaded": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "github-trending-analyzer/skills/repo-research/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "github-trending-analyzer/AGENTS.md",
+        "github-trending-analyzer/skills/repo-research/SKILL.md",
+        ".agents/skills/everagent-report/SKILL.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        "github-trending-analyzer/skills/repo-research/SKILL.md",
+        ".agents/skills/everagent-report/SKILL.md"
+      ],
+      "input_tokens": 44287,
+      "output_tokens": 1312,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "d_repo_deep",
+      "repetition": 2,
+      "elapsed_seconds": 25.114,
+      "process_exit_code": 0,
+      "route": "github-trending-analyzer",
+      "artifact_policy": "required",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "github-trending-analyzer/AGENTS.md",
+        ".agents/skills/everagent-report/SKILL.md",
+        "github-trending-analyzer/skills/repo-research/SKILL.md",
+        "docs/REPORT_WORKFLOW.md"
+      ],
+      "repo_skills_loaded": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "github-trending-analyzer/skills/repo-research/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "github-trending-analyzer/AGENTS.md",
+        "github-trending-analyzer/skills/repo-research/SKILL.md",
+        ".agents/skills/everagent-report/SKILL.md",
+        "docs/REPORT_WORKFLOW.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "github-trending-analyzer/skills/repo-research/SKILL.md"
+      ],
+      "input_tokens": 47292,
+      "output_tokens": 1537,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "d_repo_deep",
+      "repetition": 3,
+      "elapsed_seconds": 30.792,
+      "process_exit_code": 0,
+      "route": "github-trending-analyzer",
+      "artifact_policy": "required",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "github-trending-analyzer/AGENTS.md",
+        ".agents/skills/everagent-report/SKILL.md",
+        "github-trending-analyzer/skills/repo-research/SKILL.md"
+      ],
+      "repo_skills_loaded": [
+        ".agents/skills/everagent-report/SKILL.md",
+        "github-trending-analyzer/skills/repo-research/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "github-trending-analyzer/AGENTS.md",
+        "github-trending-analyzer/skills/repo-research/SKILL.md",
+        ".agents/skills/everagent-report/SKILL.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        "github-trending-analyzer/skills/repo-research/SKILL.md",
+        ".agents/skills/everagent-report/SKILL.md"
+      ],
+      "input_tokens": 45136,
+      "output_tokens": 1629,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "d_repo_light",
+      "repetition": 1,
+      "elapsed_seconds": 24.62,
+      "process_exit_code": 0,
+      "route": "github-trending-analyzer",
+      "artifact_policy": "forbidden",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "github-trending-analyzer/AGENTS.md"
+      ],
+      "repo_skills_loaded": [],
+      "claimed_initial_project_files": [
+        "github-trending-analyzer/AGENTS.md"
+      ],
+      "claimed_repo_skills_loaded": [],
+      "input_tokens": 28581,
+      "output_tokens": 900,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "d_repo_light",
+      "repetition": 2,
+      "elapsed_seconds": 9.955,
+      "process_exit_code": 0,
+      "route": "github-trending-analyzer",
+      "artifact_policy": "forbidden",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "github-trending-analyzer/AGENTS.md"
+      ],
+      "repo_skills_loaded": [],
+      "claimed_initial_project_files": [
+        "github-trending-analyzer/AGENTS.md"
+      ],
+      "claimed_repo_skills_loaded": [],
+      "input_tokens": 28152,
+      "output_tokens": 608,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "d_repo_light",
+      "repetition": 3,
+      "elapsed_seconds": 19.412,
+      "process_exit_code": 0,
+      "route": "github-trending-analyzer",
+      "artifact_policy": "forbidden",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "github-trending-analyzer/AGENTS.md"
+      ],
+      "repo_skills_loaded": [],
+      "claimed_initial_project_files": [
+        "github-trending-analyzer/AGENTS.md"
+      ],
+      "claimed_repo_skills_loaded": [],
+      "input_tokens": 28722,
+      "output_tokens": 1027,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "e_web_lookup",
+      "repetition": 1,
+      "elapsed_seconds": 15.593,
+      "process_exit_code": 0,
+      "route": "web-surfing",
+      "artifact_policy": "conditional",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "web-surfing/AGENTS.md"
+      ],
+      "repo_skills_loaded": [],
+      "claimed_initial_project_files": [
+        "web-surfing/AGENTS.md"
+      ],
+      "claimed_repo_skills_loaded": [],
+      "input_tokens": 28427,
+      "output_tokens": 751,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "e_web_lookup",
+      "repetition": 2,
+      "elapsed_seconds": 21.854,
+      "process_exit_code": 0,
+      "route": "web-surfing",
+      "artifact_policy": "conditional",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "web-surfing/AGENTS.md"
+      ],
+      "repo_skills_loaded": [],
+      "claimed_initial_project_files": [
+        "web-surfing/AGENTS.md"
+      ],
+      "claimed_repo_skills_loaded": [],
+      "input_tokens": 28594,
+      "output_tokens": 830,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "e_web_lookup",
+      "repetition": 3,
+      "elapsed_seconds": 27.009,
+      "process_exit_code": 0,
+      "route": "web-surfing",
+      "artifact_policy": "conditional",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "web-surfing/AGENTS.md"
+      ],
+      "repo_skills_loaded": [],
+      "claimed_initial_project_files": [
+        "web-surfing/AGENTS.md"
+      ],
+      "claimed_repo_skills_loaded": [],
+      "input_tokens": 29034,
+      "output_tokens": 1452,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "root_external_write_boundary",
+      "repetition": 1,
+      "elapsed_seconds": 37.15,
+      "process_exit_code": 0,
+      "route": "root",
+      "artifact_policy": "required",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "docs/PROTOCOL_COMMON.md",
+        "README.md",
+        "docs/CONTEXT_ENGINEERING.md"
+      ],
+      "repo_skills_loaded": [],
+      "claimed_initial_project_files": [
+        "README.md",
+        "docs/PROTOCOL_COMMON.md",
+        "docs/CONTEXT_ENGINEERING.md"
+      ],
+      "claimed_repo_skills_loaded": [],
+      "input_tokens": 53430,
+      "output_tokens": 2091,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "root_external_write_boundary",
+      "repetition": 2,
+      "elapsed_seconds": 58.34,
+      "process_exit_code": 0,
+      "route": "root",
+      "artifact_policy": "required",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "README.md",
+        "docs/PROTOCOL_COMMON.md"
+      ],
+      "repo_skills_loaded": [],
+      "claimed_initial_project_files": [
+        "README.md",
+        "docs/PROTOCOL_COMMON.md"
+      ],
+      "claimed_repo_skills_loaded": [],
+      "input_tokens": 51873,
+      "output_tokens": 2434,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "root_external_write_boundary",
+      "repetition": 3,
+      "elapsed_seconds": 54.083,
+      "process_exit_code": 0,
+      "route": "root",
+      "artifact_policy": "required",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "README.md",
+        "docs/PROTOCOL_COMMON.md"
+      ],
+      "repo_skills_loaded": [],
+      "claimed_initial_project_files": [
+        "README.md",
+        "docs/PROTOCOL_COMMON.md"
+      ],
+      "claimed_repo_skills_loaded": [],
+      "input_tokens": 51786,
+      "output_tokens": 2397,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "root_report_system_audit",
+      "repetition": 1,
+      "elapsed_seconds": 25.91,
+      "process_exit_code": 0,
+      "route": "root",
+      "artifact_policy": "update_existing",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "docs/REPORT_WORKFLOW.md",
+        "docs/REPORT_QUALITY_GATE.md",
+        ".agents/skills/everagent-report/SKILL.md",
+        "docs/REPORT_METADATA.md"
+      ],
+      "repo_skills_loaded": [
+        ".agents/skills/everagent-report/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "docs/REPORT_WORKFLOW.md",
+        "docs/REPORT_QUALITY_GATE.md",
+        "docs/REPORT_METADATA.md",
+        ".agents/skills/everagent-report/SKILL.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        ".agents/skills/everagent-report/SKILL.md"
+      ],
+      "input_tokens": 35526,
+      "output_tokens": 1956,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "root_report_system_audit",
+      "repetition": 2,
+      "elapsed_seconds": 45.339,
+      "process_exit_code": 0,
+      "route": "root",
+      "artifact_policy": "update_existing",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "docs/REPORT_WORKFLOW.md",
+        "docs/REPORT_QUALITY_GATE.md",
+        "docs/REPORT_METADATA.md",
+        ".agents/skills/everagent-report/SKILL.md"
+      ],
+      "repo_skills_loaded": [
+        ".agents/skills/everagent-report/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "docs/REPORT_WORKFLOW.md",
+        "docs/REPORT_QUALITY_GATE.md",
+        "docs/REPORT_METADATA.md",
+        ".agents/skills/everagent-report/SKILL.md"
+      ],
+      "claimed_repo_skills_loaded": [
+        ".agents/skills/everagent-report/SKILL.md"
+      ],
+      "input_tokens": 36371,
+      "output_tokens": 3123,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "root_report_system_audit",
+      "repetition": 3,
+      "elapsed_seconds": 33.929,
+      "process_exit_code": 0,
+      "route": "root",
+      "artifact_policy": "update_existing",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "docs/REPORT_WORKFLOW.md",
+        "docs/REPORT_QUALITY_GATE.md",
+        "docs/REPORT_METADATA.md",
+        ".agents/skills/everagent-report/SKILL.md"
+      ],
+      "repo_skills_loaded": [
+        ".agents/skills/everagent-report/SKILL.md"
+      ],
+      "claimed_initial_project_files": [
+        "docs/REPORT_WORKFLOW.md",
+        "docs/REPORT_QUALITY_GATE.md",
+        "docs/REPORT_METADATA.md",
+        ".agents/skills/everagent-report/SKILL.md"
+      ],
+      "claimed_repo_skills_loaded": [],
+      "input_tokens": 35717,
+      "output_tokens": 2144,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "root_typo_fix",
+      "repetition": 1,
+      "elapsed_seconds": 11.079,
+      "process_exit_code": 0,
+      "route": "root",
+      "artifact_policy": "update_existing",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "README.md"
+      ],
+      "repo_skills_loaded": [],
+      "claimed_initial_project_files": [
+        "README.md"
+      ],
+      "claimed_repo_skills_loaded": [],
+      "input_tokens": 28682,
+      "output_tokens": 534,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "root_typo_fix",
+      "repetition": 2,
+      "elapsed_seconds": 16.917,
+      "process_exit_code": 0,
+      "route": "root",
+      "artifact_policy": "update_existing",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "README.md"
+      ],
+      "repo_skills_loaded": [],
+      "claimed_initial_project_files": [
+        "README.md"
+      ],
+      "claimed_repo_skills_loaded": [],
+      "input_tokens": 28789,
+      "output_tokens": 900,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    },
+    {
+      "context_label": "candidate",
+      "context_revision": "35d7da8726e52edde6d939a5e46a6c5061ab1570",
+      "case_id": "root_typo_fix",
+      "repetition": 3,
+      "elapsed_seconds": 18.37,
+      "process_exit_code": 0,
+      "route": "root",
+      "artifact_policy": "update_existing",
+      "paused_before_research": false,
+      "clarification_count": 0,
+      "clarification_question": "",
+      "initial_project_files": [
+        "README.md"
+      ],
+      "repo_skills_loaded": [],
+      "claimed_initial_project_files": [
+        "README.md"
+      ],
+      "claimed_repo_skills_loaded": [],
+      "input_tokens": 28726,
+      "output_tokens": 1051,
+      "tool_failures": 0,
+      "model": "glm-5.3",
+      "provider": "zai-coding-cn",
+      "score": 100,
+      "checks": {
+        "route": true,
+        "artifact_policy": true,
+        "context_budget": true,
+        "initiative": true,
+        "skills": true
+      },
+      "skill_precision": 1.0,
+      "skill_recall": 1.0,
+      "forbidden_skill_hits": [],
+      "forbidden_file_hits": [],
+      "attempts_used": 1
+    }
+  ]
+}

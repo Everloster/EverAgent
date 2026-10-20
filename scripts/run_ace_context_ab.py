@@ -559,14 +559,14 @@ def compare(baseline: dict[str, Any], candidate: dict[str, Any]) -> dict[str, An
         for metric in metrics
     }
     critical_non_regression = (
-        candidate["route_accuracy"] >= baseline["route_accuracy"]
+        candidate["successful_runs"] >= baseline["successful_runs"]
+        and candidate["route_accuracy"] >= baseline["route_accuracy"]
         and candidate["artifact_policy_accuracy"] >= baseline["artifact_policy_accuracy"]
         and candidate["initiative_accuracy"] >= baseline["initiative_accuracy"]
         and candidate["minimum_score"] >= baseline["minimum_score"]
         and candidate["p10_score"] >= baseline["p10_score"]
         and candidate["forbidden_skill_hits"] <= baseline["forbidden_skill_hits"]
         and candidate["forbidden_file_hits"] <= baseline["forbidden_file_hits"]
-        and candidate["tool_failures"] <= baseline["tool_failures"]
     )
     efficiency_gain = (
         candidate["mean_input_tokens"] < baseline["mean_input_tokens"]
@@ -656,6 +656,7 @@ def render_markdown(document: dict[str, Any]) -> str:
             "- 探针只运行开工阶段，原始任务没有联网、写文件、测试或发布。",
             "- 同一 case 与 repetition 的 baseline/candidate 交错提交，并轮换先后顺序，降低时段与队列偏差。",
             "- Pi 的用户级系统提示与全局 Skills 在两组中保持一致；结果只比较 checkout Context 的差异。",
+            "- 已恢复的 read 失败保留为观测指标；进程失败、行为分、禁止 Skill/文件与安全边界继续阻断接受。",
             "- 原始 JSONL 含机器级上下文，只保存在临时目录，没有进入公开仓；归档结果仅含仓库相对路径和聚合指标。",
             "- 任务完成质量、证据可靠性和提前停止仍由 report-v2 真实回放及完整行为回放补充。",
             "",

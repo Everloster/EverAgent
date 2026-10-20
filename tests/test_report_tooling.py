@@ -632,6 +632,44 @@ semantic_tags: ["quality"]
         self.assertEqual(result["skill_precision"], 1)
         self.assertEqual(result["skill_recall"], 1)
 
+    def test_context_ab_treats_recovered_tool_failures_as_telemetry(self):
+        baseline = {
+            "successful_runs": 42,
+            "mean_score": 95.0,
+            "minimum_score": 70.0,
+            "p10_score": 90.0,
+            "subperfect_runs": 5,
+            "zero_rate": 0.0,
+            "route_accuracy": 1.0,
+            "artifact_policy_accuracy": 1.0,
+            "initiative_accuracy": 1.0,
+            "context_budget_accuracy": 0.95,
+            "mean_skill_precision": 0.95,
+            "mean_skill_recall": 0.95,
+            "mean_initial_project_files": 3.0,
+            "mean_input_tokens": 50000.0,
+            "mean_elapsed_seconds": 40.0,
+            "tool_failures": 0,
+            "forbidden_skill_hits": 0,
+            "forbidden_file_hits": 0,
+        }
+        candidate = {
+            **baseline,
+            "mean_score": 98.0,
+            "mean_input_tokens": 45000.0,
+            "tool_failures": 3,
+        }
+
+        accepted = run_ace_context_ab.compare(baseline, candidate)
+        self.assertTrue(accepted["accepted"])
+        self.assertEqual(accepted["deltas"]["tool_failures"], 3)
+
+        candidate["forbidden_skill_hits"] = 1
+        self.assertFalse(run_ace_context_ab.compare(baseline, candidate)["accepted"])
+        candidate["forbidden_skill_hits"] = 0
+        candidate["successful_runs"] = 41
+        self.assertFalse(run_ace_context_ab.compare(baseline, candidate)["accepted"])
+
     def test_ecommit_rejects_options_that_change_the_index_after_gate(self):
         proc = subprocess.run(
             ["bash", str(ROOT / "scripts" / "ecommit.sh"), "--all", "--dry-run"],
