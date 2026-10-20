@@ -654,6 +654,7 @@ def render_markdown(document: dict[str, Any]) -> str:
             "## 边界",
             "",
             "- 探针只运行开工阶段，原始任务没有联网、写文件、测试或发布。",
+            "- 同一 case 与 repetition 的 baseline/candidate 交错提交，并轮换先后顺序，降低时段与队列偏差。",
             "- Pi 的用户级系统提示与全局 Skills 在两组中保持一致；结果只比较 checkout Context 的差异。",
             "- 原始 JSONL 含机器级上下文，只保存在临时目录，没有进入公开仓；归档结果仅含仓库相对路径和聚合指标。",
             "- 任务完成质量、证据可靠性和提前停止仍由 report-v2 真实回放及完整行为回放补充。",
@@ -712,9 +713,14 @@ def main() -> int:
         raw_dir = temp / "raw"
         raw_dir.mkdir()
         jobs: list[dict[str, Any]] = []
-        for label in ("baseline", "candidate"):
-            for repetition in range(1, args.repetitions + 1):
-                for case in cases:
+        for repetition in range(1, args.repetitions + 1):
+            for case_index, case in enumerate(cases):
+                labels = (
+                    ("baseline", "candidate")
+                    if (repetition + case_index) % 2
+                    else ("candidate", "baseline")
+                )
+                for label in labels:
                     jobs.append(
                         {
                             "ref_label": label,
@@ -755,6 +761,7 @@ def main() -> int:
         "harness": "pi",
         "thinking": args.thinking,
         "probe_scope": "startup-routing",
+        "execution_order": "paired-interleaved",
         "repetitions": args.repetitions,
         "refs": {
             "baseline": {
