@@ -49,20 +49,19 @@ ls ~/<your-workspace>/EverAgent-infra/README.md && echo "✅ infra 就位"
 
 ## 三、git 身份（两仓都要）
 
-两仓都用**双身份**：Author = 仓库主人 Everloster，Committer = 当前 Agent。
+两仓都用双身份：Author = 仓库主人 Everloster，Committer = 当前 Agent。
+两仓提交都走自己的 `scripts/ecommit.sh`；公共规则由公开仓 `scripts/git_commit.py` 拥有，
+私仓只绑定自己的 gate。首次使用和每次换模型均无需手动复制身份配置。
 
-- **公开仓**：提交走 `scripts/ecommit.sh`（自动注入 Author），详见 [docs/PROTOCOL_COMMON.md](./PROTOCOL_COMMON.md) §C。
-- **私有仓**：无 ecommit 脚本，提交时手动带 Author：
-  ```bash
-  GIT_AUTHOR_NAME="Everloster" GIT_AUTHOR_EMAIL="2820419+Everloster@users.noreply.github.com" \
-    git commit -m "..."
-  ```
-
-每台机器首次还需设 Committer（本机 Agent 身份），例：
 ```bash
-git config user.name "<当前 Agent 名>"
-git config user.email "noreply@<vendor>.com"   # 必须含 noreply@
+python3 scripts/whoami_agent.py --json   # 公开仓身份 owner
+scripts/ecommit.sh -m "[maintenance] global: 更新工作区说明"
 ```
+
+私仓用 `python3 scripts/agent_identity.py --json` 桥接同一 owner。
+身份来源、模型可信度、trailer 和提交检查见 [PROTOCOL_COMMON.md](./PROTOCOL_COMMON.md) §B/§C。
+linked worktree 从 Git common directory 找到并排公开 owner；单独 clone 私仓时，
+先恢复公开 owner，再进行提交。
 
 ---
 
@@ -72,16 +71,15 @@ git config user.email "noreply@<vendor>.com"   # 必须含 noreply@
 
 ```bash
 # 公开仓
-cd ~/<your-workspace>/EverAgent && git pull
+cd ~/<your-workspace>/EverAgent && git pull --ff-only
 
 # 私有仓
-cd ~/<your-workspace>/EverAgent-infra && git pull
+cd ~/<your-workspace>/EverAgent-infra && git pull --ff-only
 ```
 
-> ⚠️ **历史重写提示**：公开仓 2026-07-27 做过一次历史脱敏（force push）。若某台旧 clone `git pull` 报分叉/冲突，且**无本地未推送改动**，直接对齐远端即可：
-> ```bash
-> git fetch origin && git reset --hard origin/main
-> ```
+> **历史重写恢复**：公开仓 2026-07-27 做过历史脱敏。旧 clone 出现分叉时，先 fetch 并检查
+> 本地提交、工作区和远端差异；恢复方案按 PROTOCOL_COMMON §C 处理。覆盖工作区或改写历史
+> 需要针对实际对象的明确授权。
 
 ---
 

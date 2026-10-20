@@ -371,14 +371,19 @@ def static_evaluation() -> dict[str, object]:
         errors.append("缺少 scripts/ecommit.sh")
     else:
         ecommit_text = ECOMMIT.read_text(encoding="utf-8", errors="replace")
+        # Entrypoint ownership is static; the commit/index behavior is exercised by
+        # scripts.test_git_commit in the staged gate and CI.
+        engine_path = ECOMMIT.with_name("git_commit.py")
+        engine_text = engine_path.read_text(encoding="utf-8") if engine_path.is_file() else ""
         required_guards = (
-            "git write-tree",
-            "precommit_quality.py",
-            "_INDEX_BEFORE",
-            "_INDEX_AFTER",
-            "--pathspec-from-file",
+            ("wrapper delegates", "git_commit.py" in ecommit_text),
+            ("metadata-only parser", "def option_parts(" in engine_text),
+            ("staged tree before gate", 'before = git_value(["write-tree"]' in engine_text),
+            ("bound repository gate", "result = gate(target, env)" in engine_text),
+            ("index unchanged after gate", 'git_value(["write-tree"], cwd=cwd, env=env) != before' in engine_text),
+            ("public gate binding", "precommit_quality.py" in engine_text),
         )
-        missing_guards = [item for item in required_guards if item not in ecommit_text]
+        missing_guards = [label for label, present in required_guards if not present]
         if missing_guards:
             errors.append("ecommit 缺少 staged snapshot 防护：" + ", ".join(missing_guards))
         else:
@@ -391,6 +396,7 @@ def static_evaluation() -> dict[str, object]:
         workflow_text = CI_QUALITY_WORKFLOW.read_text(encoding="utf-8", errors="replace")
         required_ci_checks = (
             "tests.test_report_tooling",
+            "scripts.test_git_commit",
             "audit_reports.py --all",
             "reindex.py --check",
             "eval_report_context.py",

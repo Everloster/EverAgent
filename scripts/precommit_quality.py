@@ -118,10 +118,13 @@ def main() -> int:
             ),
         ]
         if staged & {"scripts/whoami_agent.py", "scripts/git_identity.py", "scripts/ecommit.sh",
-                     "scripts/test_whoami_agent.py", "scripts/test_git_identity.py"}:
+                     "scripts/git_commit.py", "scripts/test_git_commit.py",
+                     "scripts/test_whoami_agent.py", "scripts/test_git_identity.py"} or any(
+                         path.startswith("scripts/agent_identity/") for path in staged):
             checks.append((
                 "agent identity regression",
-                [sys.executable, "-m", "unittest", "scripts.test_whoami_agent", "scripts.test_git_identity", "-q"],
+                [sys.executable, "-m", "unittest", "scripts.test_whoami_agent",
+                 "scripts.test_git_identity", "scripts.test_git_commit", "-q"],
             ))
         if added_reports:
             checks.append(
