@@ -1,37 +1,57 @@
 ---
-title: "课代表立正·职业方法论九讲：选择、余裕、失败与升职的存量专题（217/218/221-225/327-329）"
+title: "课代表立正·职业方法论十讲：选择、余裕、失败与升职的存量专题（217/218/221-225/327-329）"
 domain: "podcast-learning"
 report_type: cross_episode
 source: 播客（课代表立正 transistor RSS，历史视频片段）
-source_url: https://share.transistor.fm/s/0beed475  # 系列首集（217）
+source_url: https://share.transistor.fm/s/0beed475
+source_urls:
+  - "https://share.transistor.fm/s/0beed475"
+  - "https://share.transistor.fm/s/6c7f5290"
+  - "https://share.transistor.fm/s/9b321b69"
+  - "https://share.transistor.fm/s/0e7365d7"
+  - "https://share.transistor.fm/s/758c2ffb"
+  - "https://share.transistor.fm/s/185f06fb"
+  - "https://share.transistor.fm/s/1e7b2ac6"
+  - "https://share.transistor.fm/s/4ae7f1d8"
+  - "https://share.transistor.fm/s/b400b2f7"
+  - "https://share.transistor.fm/s/8ba2dca2"
 show: "课代表立正"
 episode: "立正说 217/218/221/222/223/224/225 + 对话 327/328/329（2022-03 ~ 2023-08 存量，2026-10 feed 回灌入库）"
 host: "课代表立正（孙煜征，单口；327-329 为对谈/现场问答）"
 guest: "超旻（329 work smart 对谈）、杨帆（埔思学院院长，328）、利昂（327 韭菜田现场）"
-duration: "合计约 40 分钟（9 集 × 1.5-5 分钟 + 329 片段 1.5 分钟）"
+duration: "合计约 40 分钟（10 集，每集 1.5-5 分钟）"
 duration_seconds: 2371
 transcript_segments: 1208
 hanzi_chars_raw: 11836
-hanzi_chars_polished: 11300
 total_chars_raw: 42012
-total_chars_polished: 15200
 audio_size_mb: 30
 speech_rate_cjk: "300 字/min"
-chapters: 9（按主题自组）
-polished: true
-polished_by: "Claude (pi)"
-polished_at: 2026-10-09
+chapters: 10（按主题自组）
+polished: false
+polished_reason: "10 集均为 1.5-5 分钟的历史短片；本次保留各集原始转写并直接做跨期综合，没有生成可独立复核的单集 polished 文件。"
+polished_transcript_path: null
 status: archived
 created: 2026-10-09
 updated_on: 2026-10-09
 transcript_path: reports/transcripts/lizheng-career-series_2022-03-28_kedaibiao217_career-1.transcript.txt（等 10 件，前缀 lizheng-career-series_）
-polished_transcript_path:（本报告为跨期综合，各集原文即 polished 底稿，短篇不再另出单集润色稿）
+transcript_paths:
+  - "reports/transcripts/lizheng-career-series_2022-03-28_kedaibiao217_career-1.transcript.txt"
+  - "reports/transcripts/lizheng-career-series_2022-03-29_kedaibiao218_career-2.transcript.txt"
+  - "reports/transcripts/lizheng-career-series_2023-04-18_kedaibiao221_simple-easy.transcript.txt"
+  - "reports/transcripts/lizheng-career-series_2023-06-19_kedaibiao222_busy-subordinates.transcript.txt"
+  - "reports/transcripts/lizheng-career-series_2023-07-05_kedaibiao223_college-advice.transcript.txt"
+  - "reports/transcripts/lizheng-career-series_2023-08-03_kedaibiao224_deliberate-mistakes.transcript.txt"
+  - "reports/transcripts/lizheng-career-series_2023-08-25_kedaibiao225_painful-habits.transcript.txt"
+  - "reports/transcripts/lizheng-career-series_2023-03-29_kedaibiao327_no-leek.transcript.txt"
+  - "reports/transcripts/lizheng-career-series_2023-07-09_kedaibiao328_influencer-income.transcript.txt"
+  - "reports/transcripts/lizheng-career-series_2023-08-19_kedaibiao329_promotion.transcript.txt"
 pipeline: transistor feed enclosure mp3 → 本地 whisper.cpp / large-v3 / Metal / VAD+`-mc 0` 批量转写（10 集）→ feed description（shownotes）→ 跨期综合报告
 source_shownotes_chapters: false
 notable_correction: "学书界→学术界｜阿富汗/After Goal→AlphaGo（218 全局优化段，关键）｜企号→起号｜锤类→垂类｜考工→考公｜认知于欲→认知余裕｜custom slack→cognitive slack[?]｜钥匙机→榨汁机｜拆GPT→ChatGPT｜进要报/进兜→净到手[?]｜夏图的保罗→[?]｜模式演→[?]｜两高分→[?]｜demand身上→[?]"
+semantic_tags: ["career_decisions", "cognitive_slack", "work", "cross_episode"]
 ---
 
-# 课代表立正·职业方法论九讲：选择、余裕、失败与升职
+# 课代表立正·职业方法论十讲：选择、余裕、失败与升职
 
 > 存量专题：这 10 集（2022-03~2023-08）是 transistor feed 回灌入库的历史视频片段，本次催更批量处理。每集 1.5-5 分钟，单集太碎，按主题综合为一份跨期报告——恰好构成孙煜征（康奈尔经济学博士→BCG→亚马逊经济学家→Facebook DS→腾讯，现为 Superlinear Academy 创始人）的**职业方法论全景**。
 
@@ -48,7 +68,7 @@ notable_correction: "学书界→学术界｜阿富汗/After Goal→AlphaGo（21
 - **分析的价值感（225）**："形成参考"是自欺——分析必须影响决策（"因为我的分析，决策者选了 A 而不是 B"）；**correlation 分析若不敢给出 causality 方向，就没有用**。
 - **网红经济学（328）**：头部抖音网红个人净到手收入上亿（电商/汽车垂类最容易出千万级）；小红书 10 万真实活跃粉丝≈年入百万；但网红寿命短——数据看板一下降就换模式，"快速试错-拍到枯竭-再试错"是唯一方法论。
 
-## 九讲分述
+## 十讲分述
 
 ### 1. 职业选择的 7+1 框架（立正说 217，2022-03-28）
 
@@ -138,7 +158,7 @@ Google 数据（**注意 selection bias**：绝大多数人一辈子到不了 L7
 | 1.5 万/月 | 小红书接单商务的月薪（10 万粉博主配置） |
 | 10 万粉 ≈ 年入百万 | 小红书真实活跃粉丝与收入换算（2023 口径） |
 | 上亿 / 千万级 | 头部抖音网红个人净到手 / 千万粉门槛（电商、汽车垂类最易出） |
-| 2022-03 ~ 2023-08 | 九讲跨度（ChatGPT 前夜到后一年） |
+| 2022-03 ~ 2023-08 | 十讲跨度（ChatGPT 前夜到后一年） |
 
 ## Limitations
 
@@ -146,10 +166,10 @@ Google 数据（**注意 selection bias**：绝大多数人一辈子到不了 L7
 - 关键专名修正：**"阿富汗/After Goal"→AlphaGo**（218 核心比喻）、"学书界"→学术界、"企号"→起号、"锤类"→垂类、"考工"→考公、"钥匙机"→榨汁机、"拆GPT"→ChatGPT、"认知于欲"→认知余裕——均依上下文裁定。保留 [?]：custom slack（疑 cognitive slack）、夏图的保罗、模式演、两高分、demand 身上、进要报。
 - 225 中口播两次把"causality"说成"correlation"（"所有的 correlation 都是为了寻找那个 correlation"），按上下文语义修正为"寻找 causality"，已在正文标注。
 - 329 只有 1.5 分钟片段（50 段），对谈被截断，"work smart"的展开未收全（原视频 l5mSVSv_kgs 有完整版）。
-- 短篇批量处理：每集 1.5-5 分钟，未做单集 polished（各 transcript 即底稿），直接入跨期综合报告——符合"短内容合并处理"的性价比判断。
+- 短篇批量处理：每集 1.5-5 分钟，保留了 10 份原始 transcript，但没有生成单集 polished 文件；正文是跨期主题综合，不能替代逐集润色稿。
 
 ## 思考与追问
 
-1. **我真正理解了什么？**这九讲共享一个底层结构：**把稀缺资源（时间/心力/注意力）从"无意义的 90%"里赎回来，投给"想清楚的那 10%"**——忙是反面（没时间想）、失败练习是工具（心不被绷断才能想）、Simple 是输出形态（想清楚了才能简化）、AlphaGo 法是决策姿态（不被沉没成本绑架）。与 216 期（同月做的"眉头一皱"）、十字路口 KK（"你想得越少做得越好"）构成孙煜征方法论的完整闭环。
+1. **我真正理解了什么？**这十讲共享一个底层结构：**把稀缺资源（时间/心力/注意力）从"无意义的 90%"里赎回来，投给"想清楚的那 10%"**——忙是反面（没时间想）、失败练习是工具（心不被绷断才能想）、Simple 是输出形态（想清楚了才能简化）、AlphaGo 法是决策姿态（不被沉没成本绑架）。与 216 期（同月做的"眉头一皱"）、十字路口 KK（"你想得越少做得越好"）构成孙煜征方法论的完整闭环。
 2. **我还没搞懂什么？①217 的 8 个选择里两两组合的后几组（BCG vs 互联网、亚马逊 vs Facebook 的具体决策逻辑）在本批集数里只有预告没有展开（"如何选择职业"系列标注 1/4、2/4，缺 3/4、4/4）；②225 的"causality 方向判断"与统计严谨性的边界——什么时候 correlation 分析会误导决策；③328 杨帆对"知识位网红"的具体定义。
 3. **下一步读什么/做什么？①找"如何选择职业"3/4、4/4 两集补全系列（feed 里未回灌，可去 YouTube 频道）；②把"90% 无意义→认知余裕→10% 聚焦"与老钱"三本账"（管地基性）、大卫翁"重大决策一年≤3 个"对齐，写一篇跨节目"注意力/决策带宽管理"短综合；③329 完整版视频（work smart 展开）值得单独补看。

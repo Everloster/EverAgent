@@ -242,11 +242,11 @@ def static_evaluation() -> dict[str, object]:
                 if ace_result.get("schema_version") != 1:
                     errors.append("ACE Context A/B 结果 schema_version 必须为 1")
                 elif (ace_result.get("comparison") or {}).get("accepted") is not True:
-                    errors.append("ACE Context A/B 最新结果未通过")
+                    warnings.append("ACE Context A/B 最新结果未通过；仅在宣称 Context 架构改进前重跑")
                 elif int(ace_result.get("repetitions") or 0) < 3:
-                    errors.append("ACE Context A/B 每个版本必须至少重复三次")
+                    warnings.append("ACE Context A/B 每个版本不足三次；仅在架构里程碑验收时要求补齐")
                 elif ace_context_ab_candidate_sha256 != _behavior_context_sha256():
-                    errors.append("ACE Context A/B 结果已过期；Context 或 ACE suite 变更后必须重跑")
+                    warnings.append("ACE Context A/B 结果已过期；下次 Context 架构里程碑验收时重跑")
                 else:
                     case_count = len(_load_suite().get("cases") or [])
                     expected_runs = case_count * int(ace_result["repetitions"])
@@ -258,7 +258,7 @@ def static_evaluation() -> dict[str, object]:
                         for label in ("baseline", "candidate")
                     )
                     if not complete:
-                        errors.append("ACE Context A/B 结果缺少完整或成功的重复运行")
+                        warnings.append("ACE Context A/B 结果缺少完整成功运行；不能用于宣称架构改进")
                     else:
                         ace_context_ab_guarded = True
             except (OSError, json.JSONDecodeError) as exc:

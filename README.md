@@ -43,13 +43,13 @@
 <!-- AUTO-OVERVIEW:START -->
 | 项目 | 报告 | Wiki(概念/实体/综合) |
 |------|------|----------------------|
-| 🤖 [AI Learning](./ai-learning/) | 114 篇 | 54/30/1 |
+| 🤖 [AI Learning](./ai-learning/) | 115 篇 | 54/30/1 |
 | 💻 [CS Learning](./cs-learning/) | 33 篇 | 24/17/1 |
 | 📚 [Philosophy Learning](./philosophy-learning/) | 22 篇 | 20/14/1 |
 | 🧠 [Psychology Learning](./psychology-learning/) | 17 篇 | 13/13/0 |
 | 🧬 [Biology Learning](./biology-learning/) | 18 篇 | 14/9/0 |
 | ⚗️ [AI Practice](./ai-practice/) | 10 篇 | 9/1/0 |
-| 🎙️ [Podcast Learning](./podcast-learning/) | 76 篇 | 58/53/0 |
+| 🎙️ [Podcast Learning](./podcast-learning/) | 79 篇 | 58/53/0 |
 | 🔭 [GitHub Research](./github-trending-analyzer/) | 124 篇 | 0/0/0 |
 | 🏄 [Web Surfing](./web-surfing/) | 43 篇 | 0/0/0 |
 <!-- AUTO-OVERVIEW:END -->

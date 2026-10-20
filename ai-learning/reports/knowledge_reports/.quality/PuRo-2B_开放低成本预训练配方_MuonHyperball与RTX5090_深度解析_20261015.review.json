@@ -2,14 +2,14 @@
   "schema_version": 1,
   "report_path": "ai-learning/reports/knowledge_reports/PuRo-2B_开放低成本预训练配方_MuonHyperball与RTX5090_深度解析_20261015.md",
   "quality_tier": "important",
-  "revision_round": 1,
+  "revision_round": 2,
   "reviews": [
     {
       "role": "primary_review",
       "reviewer": {
         "model": "glm-5.3",
-        "harness": "claude-code",
-        "run_id": "review-dcc5663b1ae6",
+        "harness": "pi",
+        "run_id": "puro-r2-pi-glm53-20261020",
         "independent_context": true,
         "explicit_model_override": false,
         "override_reason": ""
@@ -19,26 +19,323 @@
         "evidence_fidelity": 96,
         "request_coverage": 97,
         "reasoning_quality": 95,
-        "readability": 94,
-        "limitations": 93
+        "readability": 95,
+        "limitations": 94
       },
       "score_reasons": {
-        "evidence_fidelity": "17/17 claims 全查(含全部 9 条 critical)。关键数字逐项对照论文提取件与 repo 快照零误差:成本链 6,009.46+16,504.95=22,514.41 GPU-h、×2.0833 RMB/h=46,905 RMB≈$6,891(p40/Table 7/18);五档 $2.16K~$6.89K 与 Avg15 51.98~56.00(Table 18/19 p53)逐行一致;Table 2 全部 GPU 参数(A100 312/80GB/$1.79、H200 989.5/1979/141GB/$4.00/0.89/1.78、5090 209.5/419/32GB/$0.31/2.43/4.87)与报告表格吻合;P2P 31.5→56 GB/s、14.3µs→0.4µs、8卡 busbw 14.75→27.34、GDR 24卡 8.87→19.93(p9-10)一致;MFU 73% 与脚注 6 的 P_eff=(0.72/419+0.28/209.5)⁻¹≈327 精确一致;FP8 72%/98.0%/1.36×/1.34×/LOO 1.17–1.28 与 97.6–98.1(p11/23/43-44)一致;式(1)(3)(4)(5)与式(10) power schedule 逐符号转写正确(τ=1000 步=1.536M samples 两口径等价);170M 三臂 3.0288/3.0303/3.0733(Figure 5)对应报告 3.029/3.030/3.073;CMA 消融 57.17/55.99/57.18/55.57/55.64/57.12/56.80/57.81(Figure 13b+§H.3 p56)全对;六 checkpoint 步号 222,100~222,569、窗口 469 步≈2.95B(p56)全对;SFT 三设置 66.89→68.66/+1.77(范围 1.36–2.12)、74.10→76.12/+2.02(范围 1.21–3.26)、53.96→55.13/+1.17、IFEval 41.71→43.07(p24-25/附录E p46-48)全对;run_puro_2b.sh 的 --lr 4.077248127291725e-05、--muon-hyperball-lr-mult 10.0(行52)、layout 'Et*18|t*10L'/'Et*9|t*9|t*9|tL'、341,867,221÷1536=222,569.3 步数自洽均验证;license 四资产实测(HF 权重 apache-2.0、HF 数据集 other、Puro-Megatron NOASSERTION、Kaiyuan-Spark Apache-2.0)与 Nemotron-CC-v2/Synthetic-Code 禁再分发(Table 22 脚注)成立;HF 模型卡 '$4.4K is not the canonical final checkpoint' 与 'The fit has no uncertainty interval' 引文核实;HF papers 页 pszemraj FP16-accumulate 问答与作者回答逐字核实。扣分点:报告 §2.1 把论文 'most practical option with FP4 support' 转写为「唯一有 FP4 支持的实际选项」,而 Table 2 显示 RTX PRO 6000 亦有 FP4,属引申过度(记入 unsupported_claims);§11.9 声称 arXiv 元数据与 PDF 作者名单不一致,当前(2026-10-15)arXiv API 元数据与 PDF 一致(含 Chengxia Li 无 Kaiyue Wen),仅 HF bibtex 侧成立,arXiv 侧无法复现;§10.1 将 Qwen2-1.5B 55.14 等总分标注为 (Table 19, S=p53),实际出自 Table 7(p39),数字本身正确。",
-        "request_coverage": "六条 requirements 全部满足:REQ1 真读一手来源且全文 S=pN/R=file:line 引用(抽查的页码/行号全部命中,如 R=run_puro_2b.sh:52 恰为 lr-mult 10.0、ORIGIN_COMMITS.md:43-53 恰为 excluded 节);REQ2 公式逐符号解释完整(§5.1 式1 的 R、û_t、Normalize 各项含义,§5.2 式4 ELR 定义,§6 power schedule 含 τ 双口径换算);REQ3 单位口径严格(tokens vs samples 在 §3.3 表与 §8 步数自洽计算中显式区分,§1.2 全节钉 Reproduction-Cost Boundary);REQ4 批判性评估十条覆盖要求的全部五点(成本口径 §11.1、驱动 EULA §11.2、自家评测协议 §11.3、代际对标 §11.4、license 差异 §11.7)且超出要求;REQ5 §13 三问完整(理解/未懂/下一步);REQ6 §12 与 Megatron 20260416 报告及模型效率线缝合具体。超额部分:发现 SMA6 六 checkpoint 与 --non-persistent-ckpt-num-to-keep 4 的机制缺口、$4.4K 档的 HF 口径身份、Phase 2-only $5.05K 与标题数字的对应关系。",
-        "reasoning_quality": "综合质量高:以 ELR=η_t 为轴把 MuonH 机制、m=10 桥接、WSD sweep 观察、power+linear 生产 schedule 串成因果链,与论文 §3.3 的论证结构一致且无过度引申;对四成本因子『参考系不同不构成联合阶乘消融』『TPP=20 消融 vs TPP≈700 生产』的口径警示忠实转达(§4.3.1 原文+脚注7);对 $4.4K『实测 UD-1/2 55.54>55.14 加标度律内插,不是外推新 run』的辨析精确(p24 原文佐证);[推测] 标注使用规范(仅两处:标题数字品牌化解读、ELR 成为标准诊断量的展望)。发现的问题均非推理错误而是转写措辞级。170M 结论外推风险、路由消融缺口、fixed-RMS 着墨少等可追问点的识别准确。",
-        "readability": "结构出色:§0 一页结论先行,硬件→系统→精度→优化器→数据→课程→后训练→评测的分层与论文 §3-§4 对齐,每层先给机制再给证据;表格密度高且信息自洽(如 §8 消融表与 §10.2 五档表);中文行文流畅,术语/数字/专有名词保留原文;引用体系 S/R/HF 三级清晰,二手传播分层提示(§11.1)实用。小瑕疵:§0.2 用『外推』而 §10.2 辨析为『内插』,前后措辞有轻微张力;个别长句(如 §11.7 license 段)信息密度过载。",
-        "limitations": "evidence.json limitations 六条具体且诚实(页码基于提取件、外部反响时效、SMA6 采集机制未解、路由/逻辑矩阵消融缺口、标度律系数未公布、Phase 1 终点 LR 的 HF 卡与脚本口径差),每条都在报告正文有对应落点(§8 未解细节、§11.6、§10.2、§13.2);报告自身额外标注了 [推测] 两处与「元数据以 PDF 题名页为准」的引用建议。扣分:arXiv 元数据不一致声明当前无法复现(HF bibtex 侧成立),提示该条外部快照核验存在不确定性但 limitations 未覆盖此风险;kenashe.ai 三点论点仅验证了文章存在与日期,未逐字复核论点内容。"
+        "evidence_fidelity": "17/17 claims（含全部 9 条 critical）对照 2026-10-20 重新获取的一手材料逐项核验：论文 PDF 从 arXiv 重下载（63 页与报告声称一致）并全文通读，repo 三文件（run_puro_2b.sh/ORIGIN_COMMITS.md/docs/puro-megatron.md）从 raw.githubusercontent 重取，HF Base 卡与数据集卡读 raw README，HF papers 页、arXiv API、GitHub license、kenashe.ai 原文分别核验。关键数字零误差：成本链 6,009.46+16,504.95=22,514.41 GPU-h × 2.0833 RMB/h = 46,905 RMB ≈ $6,891（Table 1 p6/Table 6 p38/§B p40）；五档 $2.16K~$6.89K 与 Avg15 51.98~56.00（Table 18/19 p53）逐行吻合；Table 2 全参数含 NVFP4 列（RTX PRO 6000 2015.2 / 5090 1676 / EFLOP/USD 19.46）；P2P/GDR 八个数（31.5→56、32→111、14.3µs→0.4µs、14.75→27.34、16.33→46.31、8.87→19.93）；MFU 73% 与脚注 6 P_eff=(0.72/419+0.28/209.5)⁻¹≈327；FP8 72%/+0.0031~0.0039/98.0%/1.36×/1.34×/LOO 97.6–98.1/22,654 vs 30,286；式(1)(3)(4)(5)(10) 逐符号；170M 三臂 3.0288/3.0303/3.0733（Figure 5 p14）；CMA 消融八数（57.17/55.99/57.18/55.57/55.64/57.12/56.80/57.81，Figure 13b+§H.3）；SFT 三设置（66.89→68.66 +1.77 范围 1.36–2.12；74.10→76.12 +2.02 范围 1.21–3.26；53.96→55.13 +1.17 且 15 项中 10 项占优；IFEval 41.71→43.07）；Table 4/5/7 全行；proxy 协议（2000 步×GBS1024×4096≈8.39B、candidate 升至 80%、86B replay、DCLM q00 总分第 3 vs q25 第 11、top~5%=33.77B）与 Table 22 license 注（Nemotron-CC-v2 与 Synthetic-Code 禁原始再分发）；run_puro_2b.sh:52 lr-mult 10.0、:153 lr=4.077248127291725e-05 未舍入值、:166 ckpt-step 218000、:170 num-to-keep 4、341,867,221÷1536=222,569.3 步数自洽。r1 指出的四处问题全部正确修订：①§2.1 改为「有 FP4 支持的最实际选项（RTX PRO 6000 也有 FP4 但更贵）」，与 p9 原句 RTX 5090 is also the most practical option with FP4 support 一致；②§11.9 收窄为 HF bibtex 侧不一致——实测 Base 卡与数据集卡 bibtex 均含 Kaiyue Wen 无 Chengxia Li（PDF 题名页相反），并如实记录 2026-10-15 arXiv API 元数据已与 PDF 一致、早期「arXiv 也不一致」不可复现；本次 2026-10-20 独立查询 arXiv API 同样为含 Chengxia Li 无 Kaiyue Wen，修订表述准确，「Wen 只出现在致谢与引文[99]」经 PDF 全文检索证实（致谢 p27/引文[99]）；③§0.2/§10.1 总分来源改为「PuRo 档位 Table 19 p53、对比模型 Table 7 p39」，归属正确；④§0.2/§10.2「外推」改为「拟合曲线概括这一交点」与「标度律内插，不是外推新 run」，与 p24 The observed UD checkpoint at approximately $4.4K already exceeds Qwen2-1.5B 精确对应。剩余问题均为修订级以下：§11.9「两张模型卡」实为一张模型卡+一张数据集卡（bibtex 逐字相同，实质不变）；§10.2 跨模型坐标列六项而略去 OLMoE $199,680（Table 7 外围数据点）；AlphaSignal「matching」与 hankli.space TE delayed scaling 两例二次传播失真的原始措辞未独立复核（非承载性，与 r1 状态相同）。",
+        "request_coverage": "六条 requirements 逐条核验满足。REQ1：抽查的 S=p/R=file:line 全部命中（p9 Table 2、p38-40 成本账、p53 Table 18/19、run_puro_2b.sh:52/:116-119/:153/:166/:170、ORIGIN_COMMITS.md:43-53、puro-megatron.md:47-66/:97-107、p55 seed 20260609）；REQ2：式(1) 各符号、式(3)(4) 对照、式(10) power schedule 含 τ 双口径等价（1000 步=1.536M samples，脚本 --lr-power-decay-samples 1536000）逐符号解释完整；REQ3：tokens vs samples 在 §3.3 表与 §8 步数自洽计算中显式区分，§1.2 全节钉 Reproduction-Cost Boundary，$0.31/h 摊销公式 12000/(8×30×24)=2.0833 保留原值链；REQ4：批判五点全覆盖（§11.1 成本口径、§11.2 驱动 EULA、§11.3 自家协议、§11.4 代际对标、§11.7 license 差异）且 §11.8 $4.4K 身份、§11.9 元数据、§11.10 FP16-acc 问答为超额；REQ5：§13 三问完整且「没搞懂」四条均为真实开放问题；REQ6：§12 与 Megatron 20260416 报告（TP/PP/DP 基础上的反常规用例）、推理效率线（vLLM/投机解码/MoE）、Moonlight/Muon 生态缝合具体。扣分余量：§10.2 略去 OLMoE 复现成本一行；§11.1 两例二次传播失真未经原始出处复核即转述（快照边界已在 limitations 声明）。",
+        "reasoning_quality": "以 ELR=η_t 为轴把 MuonH 机制、m=10 桥接、WSD sweep 两观察、power+linear 生产 schedule 串成因果链，与论文 §3.3 结构一致且无过度引申；对四成本因子『参考系不同不构成联合阶乘消融、乘积只是 accounting estimates』『消融在 TPP=20 而生产 TPP≈700』的口径警示忠实转达（§4.3.1 p22-23 原文+脚注7）；$4.4K 辨析修订后精确（实测 UD-1/2 55.54>55.14 加标度律内插，非外推新 run，p24 原文佐证）；WSD 观察同时给出点最优与下边缘两种读法并说明波动原因，与 p14-15/F.2 一致；[推测] 两处（$5090 品牌化、ELR 成为标准诊断量）使用规范；识别的可追问点（170M/BF16 结论外推到 2B/FP8、参数路由与逻辑矩阵 NS 缺独立消融、SMA6 六 checkpoint 与 num-to-keep 4 的机制缺口、fixed-RMS 着墨少）经核验均为论文与 repo 中真实存在的开放缺口而非臆测。",
+        "readability": "独立可读性成立：报告不依赖任何底稿或 polished 产物，全部机制、数字、表格直接承载在正文，章节自洽（§0 一页结论先行；硬件→系统→精度→优化器→数据→课程→后训练→评测分层与论文 §3-§4 对齐，每层先机制后证据）；表格密度高且自洽（§3.3 三阶段配方表、§8 消融表、§10.1 双表、§10.2 五档表）；S=pN/R=file:line/HF 三级引用体系清晰；r1 指出的 §0.2「外推」与 §10.2「内插」前后张力已随修订消除；中文行文流畅，术语/数字/专名保留原文，二手传播分层提示实用。轻微不足：§11.7 license 段信息密度仍偏高，§2.1 表格略去 NVFP4 列（正文括注已补齐该事实，属可接受的表格裁剪）。",
+        "limitations": "evidence 六条 limitations 均具体且在正文有落点：提取件页码→资料来源节声明「页码以 PDF 为准」；快照时效→§11.1 日期限定；SMA6 采集机制→§8 标注为未解细节（本次复核确认论文 §H.3 与脚本 :166/:170 确均未说明六输入如何凑齐）；路由/逻辑矩阵消融缺口→§11.6；标度律系数与置信区间未公布→§10.2（HF 卡 The fit has no uncertainty interval 原句核实）；Phase 1 终点 LR 双口径→HF 卡 5.00e-3→1.04e-3 与脚本 --min-lr 0.0005 并存，均实测属实。r1 指出的「arXiv 元数据不可复现」风险已在 §11.9 正文正面处理；本次补上了 r1 未完成的 kenashe.ai 三点论点逐字复核（compute cost ≠ total cost、自设 15 任务协议非普适、消费卡改变『谁能做实验』而非『谁自动赢』，原文 2026-08-28 全文读取一致），其窄域课程实验建议亦核实。扣分：AlphaSignal/hankli.space 两例失真原始出处仍未核验，limitations 仅以快照时效间接覆盖；「未发现 HN/Reddit 专题帖」为不可证负声明（已带日期限定）。"
       },
       "critical_claim_ids_checked": [
         "C1",
         "C2",
         "C3",
+        "C4",
         "C5",
         "C6",
         "C7",
+        "C8",
+        "C9",
+        "C10",
         "C11",
         "C12",
-        "C15"
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17"
+      ],
+      "coverage_unit_ids_checked": [
+        "A1",
+        "A2",
+        "A3",
+        "B1",
+        "B2",
+        "B3",
+        "C1",
+        "D1",
+        "D2",
+        "D3",
+        "E1",
+        "F1",
+        "G1",
+        "H1",
+        "I1",
+        "J1",
+        "K1",
+        "L1",
+        "M1"
+      ],
+      "source_content_map": [
+        {
+          "id": "A1",
+          "title": "三级开放度框架与『开放≠可负担』论证（closed/open-weight/open-recipe；Llama-3.2-3B $1.5M+、OLMoE $200K、SmolLM3 $719K/384 H100、Yulan 48 A800、Instella 128 MI300X）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S"
+          ],
+          "matched_coverage_unit_ids": [
+            "§1.1",
+            "§10.2"
+          ],
+          "notes": "报告 §1.1 完整转达分级与各家算力规模；§10.2 列出六个跨模型坐标（OLMoE $199,680 一行未列，外围数据点，记入 notes）"
+        },
+        {
+          "id": "A2",
+          "title": "Reproduction-Cost Boundary：算什么/不算什么的显式口径（边际加速器成本、CNY 台账、非总开发成本）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S"
+          ],
+          "matched_coverage_unit_ids": [
+            "§1.2"
+          ],
+          "notes": "§1.2 与 p8 §2.2 逐项对应，『$5090 是营销钩子、$6.9K/$4.4K 是正文口径』的解读有原文支撑"
+        },
+        {
+          "id": "A3",
+          "title": "Table 1 两档成本账：Phase1 24 卡 438.84B 10.43d $1.84K 共享；UD 480B 14,262h $4.37K；CMA 959.99B 22,514h $6.89K（Phase2 $5.05K）；合计 17.6 天",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S"
+          ],
+          "matched_coverage_unit_ids": [
+            "§0.2",
+            "§10.2"
+          ],
+          "notes": "全部数字与 Table 1/18 及 §B 特例段一致；$5.05K 对应 §11.8 的标题数字辨析"
+        },
+        {
+          "id": "B1",
+          "title": "Table 2 GPU 性价比：A100/H200/RTX PRO 6000/5090 全参数含 NVFP4 列；5090 BF16/FP8 成本效率 ~2.7× H200；$0.31/h 为五年摊销（8 卡节点 12,000 CNY/月）、无公开租赁渠道；FP32 累积限半；5090 是有 FP4 的最实际选项；价格采集 2026-08-16",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S"
+          ],
+          "matched_coverage_unit_ids": [
+            "§2.1"
+          ],
+          "notes": "报告表格数值全对；『最实际选项而非唯一』的修订与 p9 原句一致；NVFP4 列被表格裁剪但正文括注保留事实"
+        },
+        {
+          "id": "B2",
+          "title": "驱动层 P2P/GDR：单向 31.5→56 GB/s、双向 32→111、延迟 14.3µs→0.4µs、8 卡 busbw 14.75→27.34、同 socket 4 卡 16.33→46.31（~2.8×）、GDR 24 卡 8.87→19.93；EULA 不可公开；原厂驱动回退路径；三条 caveat；400Gbps IB + 双口 CX7 + HDR 交换机拓扑",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S"
+          ],
+          "matched_coverage_unit_ids": [
+            "§2.2"
+          ],
+          "notes": "八个数字与 p9-10 全对；caveat（无厂商支持/物理带宽上限/低端 CPU 反而更堵）完整转达"
+        },
+        {
+          "id": "B3",
+          "title": "并行与系统：无 TP、DP+PP、pp-dp 拓扑排序、MBS=2 roofline knee、大词表 LM-head 负载配平（18|10)/(9|9|9|1)、Muon/Adam 优化器状态 bin-packing、Phase1 238 / Phase2 192 TFLOP/s、MFU 73%（P_eff≈327 混合精度口径）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S"
+          ],
+          "matched_coverage_unit_ids": [
+            "§3.1",
+            "§3.2"
+          ],
+          "notes": "机制与数字与 p10-11 及脚注 6 一致；73% 非 BF16-only 的口径警示保留"
+        },
+        {
+          "id": "C1",
+          "title": "blockwise FP8：从随机初始化全程、E4M3、激活 1×128/权重 128×128 逻辑块跟随 DeepSeek-V3、SM120 上 E8M0 纯指数缩放经 MXFP8 执行、Hopper 差异自注、72% 计算占比、loss +0.0031~0.0039、98.0% 保留、1.36× 吞吐、1.34× 净收益、checkpoint 权重 BF16",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S"
+          ],
+          "matched_coverage_unit_ids": [
+            "§4"
+          ],
+          "notes": "逻辑块 vs 执行路径的区分（DeepSeek-V3 逻辑块 + MXFP8 执行）转写准确，Hopper 自注保留"
+        },
+        {
+          "id": "D1",
+          "title": "MuonH 机制与 ELR：式(1) 固定 R=‖W0‖F、位移 η·R、投影回球面；式(3)(4) 普通 Muon ELR 涌现；ρ_t=η_t 数值等式；m=10 生产桥接；尺度不变性动机",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S",
+            "R"
+          ],
+          "matched_coverage_unit_ids": [
+            "§5.1",
+            "§5.2"
+          ],
+          "notes": "式(1)(3)(4) 逐符号与 p12-13 一致；lr-mult 10 于脚本 :52 实证"
+        },
+        {
+          "id": "D2",
+          "title": "170M 三臂归因：MuonH 3.0288 / ELR 对齐 Muon 3.0303 / 普通 LR Muon 3.0733；式(5) 在线对齐；F.3 山形 scalar LR 反例；MPL held-out RMSE 0.0265→0.0210（base-Muon 臂主导）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S"
+          ],
+          "matched_coverage_unit_ids": [
+            "§5.3"
+          ],
+          "notes": "三臂数字与 Figure 5 图例一致；『收益主要来自 ELR 可控而非投影本身』的结论转写无引申"
+        },
+        {
+          "id": "D3",
+          "title": "LR schedule：WSD sweep 观察一（大 peak 要长 decay，下边缘 0.4/0.4/0.6/0.6/0.8）与观察二（长 horizon 要长 decay，0.4→0.6→0.6）；两锚点 MPL 估 ratio 0.33→0.85；生产 power(p=0.5,τ) + linear 两阶段；式(10)(11)",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S",
+            "R"
+          ],
+          "matched_coverage_unit_ids": [
+            "§6"
+          ],
+          "notes": "点最优与下边缘双读法保留；τ=1000 步=1.536M samples 双口径与脚本 --lr-power-decay-samples 1536000 等价验证"
+        },
+        {
+          "id": "E1",
+          "title": "CMA 与课程：UD/CD/CDC/CMA 四变体；组件内排序不做全局排名；376 桶×~2.5B；218k resume base LR 4.08e-5（Hyperball 4.08e-4=ELR）；六 checkpoint 222,100~222,569 等权平均（窗口 469 步≈2.95B）；消融 57.17/55.99、57.18/55.57、55.64/57.12、56.80/57.81；污染 caveat；UD seed 20260609；Table 20 token 台账；SMA6 与 num-to-keep=4 机制缺口",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S",
+            "R"
+          ],
+          "matched_coverage_unit_ids": [
+            "§8"
+          ],
+          "notes": "消融八数、桶构造、步号全对；num-to-keep 缺口经 §H.3 与脚本 :170 双侧确认真实存在且报告如实标注"
+        },
+        {
+          "id": "F1",
+          "title": "SFT case study：UD/CMA 同池同 SFT 成对设计；三设置 66.89→68.66(+1.77, 范围 1.36–2.12)、74.10→76.12(+2.02, 范围 1.21–3.26)、53.96→55.13(+1.17, 10/15 占优)；IFEval +1.36；13-gram 去污染；cosine 1e-5→1e-7、GBS 160",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S"
+          ],
+          "matched_coverage_unit_ids": [
+            "§9"
+          ],
+          "notes": "全部数字与 §4.4/附录 E（Table 13/15/17）一致；『优势穿透后训练』的表述与论文结论口径相同且保留非均匀性提醒"
+        },
+        {
+          "id": "G1",
+          "title": "数据配方：proxy benchmarking（Qwen3-0.6B+86B replay、2000 步≈8.4B、candidate 升至 80%、15-bench 能力向量）；三采样规则；DCLM q00 第 3 vs q25 第 11→留 top~5%（33.77B）；PCA（PC1 General↔Code、PC2 Math）；两阶段配比（EN 73.2%→59.4% 等）；43.9B 线性过渡；Kaiyuan-SpaRK/Chukonu ~2.5×；Table 22 license 注（Nemotron 禁再分发）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S",
+            "HF"
+          ],
+          "matched_coverage_unit_ids": [
+            "§7",
+            "§11.7"
+          ],
+          "notes": "配比表与 Figure 8/Table 3 逐格一致；proxy 协议参数与 §I.0 一致；DCLM 排名经 Table 24 实证"
+        },
+        {
+          "id": "H1",
+          "title": "评测协议与结果：15 benchmark 两群（GEN greedy+确定性后处理 / PPL）；OpenCompass 固定快照；OLMES CF/MCF 每模型独立取优；Table 4/5 全行（43.50 vs 40.29 vs 47.52；63.02 vs 60.54 vs 65.53；BBH +10.32、CSQA −2.71）；Table 7 跨模型坐标（55.14/60.73/65.85 等）；Pareto frontier 构造",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S",
+            "HF"
+          ],
+          "matched_coverage_unit_ids": [
+            "§10.1",
+            "§10.2"
+          ],
+          "notes": "Table 4/5/7 数字全对；总分来源归属（Table 19 p53/Table 7 p39）修订后正确"
+        },
+        {
+          "id": "I1",
+          "title": "成本因子与 Puro Cost Scaling Law：四因子参考系不同不构成联合阶乘消融（硬件 2.77×/FP8 1.34×/MuonH κ=1.19× LOO 1.17–1.28/CMA 2.40×）；TPP=20 vs TPP≈700 脚注；ρ_C=98.0% LOO 97.6–98.1；22,654 vs 30,286 GPU-h；P=a+b·log2(C−C_P1)、C_P1=$1.84K、RMSE 0.452→0.209；反演 $11.36K/1.65×、$16.55K/2.40×；Table 18/19 五档；$4.4K 实测越线（55.54>55.14）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S"
+          ],
+          "matched_coverage_unit_ids": [
+            "§10.2"
+          ],
+          "notes": "所有数字与 §4.3/附录 A/D 及 Table 18/19 一致；『内插而非外推新 run』辨析与 p24 原文精确对应；fixed-2B 配方特定、HBM 放大瓶颈的定位保留（附录 A p38）"
+        },
+        {
+          "id": "J1",
+          "title": "开放度与 license 裂缝：摘要『data, code, and model weights under Apache 2.0』vs 实测四资产四样（HF 权重 Apache-2.0、HF 数据集 other 混合上游、GitHub Puro-Megatron NOASSERTION、Kaiyuan-Spark Apache-2.0）；Nemotron-CC-v2/Synthetic-Code 禁原始再分发；SFT/curriculum/评测代码明确排除在公开仓外",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "R",
+            "HF",
+            "S"
+          ],
+          "matched_coverage_unit_ids": [
+            "§11.7"
+          ],
+          "notes": "四资产 license 本次全部独立实测（GitHub API/raw LICENSE/HF 卡 license 字段）；排除清单与 ORIGIN_COMMITS.md:43-53 逐行对应"
+        },
+        {
+          "id": "K1",
+          "title": "论文自述 limitations：基准污染（课程对比证据强度）；中文能力非主目标；过训练密集 regime（TPP≈700 非 compute-optimal）；标度律是 fixed-2B 配方特定 scale-down、非普适；放大需新通信/显存设计、32GB HBM 瓶颈",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S"
+          ],
+          "matched_coverage_unit_ids": [
+            "§10.2",
+            "§11.5",
+            "§13.2"
+          ],
+          "notes": "五条自述限制在报告正文均有对应落点且未被夸大或弱化"
+        },
+        {
+          "id": "L1",
+          "title": "外部反响：HF papers 页 pszemraj FP16-accumulate 质疑与作者『noticeably hurt model performance』回答（正文无消融）；kenashe.ai 2026-08-28 三点独立质疑（compute≠total、自设协议、消费卡改变谁做实验）与窄域课程实验建议；AlphaSignal/hankli.space 二次传播失真两例",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "EXT",
+            "HF"
+          ],
+          "matched_coverage_unit_ids": [
+            "§11.1",
+            "§11.10"
+          ],
+          "notes": "HF 问答与 kenashe.ai 三点本次均逐字核实；AlphaSignal『matching』与 hankli.space TE delayed scaling 两例原始出处仍未能独立复核（newsletter/博客不可达），为非承载性示例，已在 score_reasons 与 notes 记录"
+        },
+        {
+          "id": "M1",
+          "title": "repo 可审计性：fork Megatron-LM core_v0.16.0@3bec9aa；精选补丁系列映射表（PROM 11/MuonH 4/内存均衡 4 等）；deliberately excluded 清单；run_puro_2b.sh 三 recipe 逐参数（含 lr 0.00103847632916、未舍入 4.077248127291725e-05、reset scheduler/dataloader、Et*18|t*10L 与 Et*9|t*9|t*9|tL）；docs 的 MuonH 路由/fixed-RMS/逻辑矩阵说明",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "R"
+          ],
+          "matched_coverage_unit_ids": [
+            "§3.3",
+            "§5.4",
+            "资料来源"
+          ],
+          "notes": "三文件重取后逐行核对：行号引用（:52/:153/:166/:170、:43-53）全部命中；routing 与 wd 禁用、VALUE·√global_numel 定义、separate 模式均与 docs 一致"
+        }
       ],
       "source_ids_checked": [
         "S",
@@ -57,16 +354,87 @@
       "unsupported_claims": [],
       "missing_requirements": [],
       "hard_failures": [],
-      "notes": "复核覆盖:论文提取件 p1/4/8-26/38-48/53/55-56 逐页打开,repo 三文件逐行,HF 联网抽查(collection 9模型+1数据集+1论文、Base 卡、1of2 卡、papers 页问答、数据集卡 license),GitHub API 两仓 license,arXiv API 元数据,kenashe.ai 存在性(经 web 搜索确认 2026-08-28 文章存在;其三点论点内容未逐字复核,C17 其余 EXT 细节如 AlphaSignal/hankli.space/X 帖未抽查,均为非承载性次要来源)。全部 17 条 claims 核验通过,无一关键数字错误。另两处不构成 unsupported 的轻微问题:①§11.9『arXiv 元数据与 v2 PDF 题名页作者名单不一致』——HF bibtex 侧核实成立(含 Kaiyue Wen 无 Chengxia Li),但 2026-10-15 当日 arXiv API 元数据与 PDF 一致(含 Chengxia Li 无 Kaiyue Wen),arXiv 侧声明无法复现,可能是元数据事后更正或生成者误读;『以 PDF 题名页为准』的建议本身仍正确(Wen 确实只出现在致谢与引文[99],已核实)。②§10.1 将 Qwen2-1.5B 55.14/Qwen2.5-1.5B 60.73/SmolLM3 65.85 的来源标为 (Table 19, S=p53),这些总分实际出自 Table 7(p39),Table 19 只含 PuRo 各分支分数;数字无误,来源页标注不全。③§0.2『按标度律外推 $4.4K 可达 Qwen2-1.5B』与 §10.2 自身的『内插而非外推新 run』辨析存在轻微措辞张力,论文摘要原词为 fitted law suggests。以上均为修订级以下瑕疵,不影响报告结论可靠性。格式说明:本仓 quality gate 规定 unsupported_claims 为 claim_id 字符串数组且非空即判 blocked,语义是「claim 未被证据支持」;本次复核 17/17 claims 均获一手来源支持,无一属于该语义,故置空。上文所述 C2 同节的『唯一 FP4 选项』措辞引申、arXiv 元数据声明不可复现、Table 7/19 来源页标注三处轻微问题已在 score_reasons 与本 notes 中完整记录,均为修订级以下瑕疵,不构成 unsupported claim、missing requirement 或 hard failure。"
+      "notes": "复核方法：按来源优先顺序，先重建被清理的 /tmp/puro-study（arXiv PDF 重下载+pdftotext 逐页提取 63 页全文通读；repo 三文件经 raw.githubusercontent 重取（master 分支）；HF Base/数据集卡 raw README、HF papers 页、arXiv API、GitHub API/raw LICENSE、kenashe.ai 全文），形成 19 个独立来源单元后再读报告与 evidence。工具路径：eacli tokenplan catalog→tool select（web.read/repo.public.read 均 ready）；repo.public.read 的 zread 后端报 repo not found，降级为 raw.githubusercontent 直读（只读、无凭据），GitHub API 匿名限流后经 search API 取 license，均已记录。核验范围：17/17 claims（超出的 9 条 critical 全含）、4/4 sources、6/6 requirements；论文 p1-p26 正文与 p38-63 附录关键页逐页打开，抽查引用的页码/行号全部命中。r1 四处修订点全部复核确认（FP4『最实际选项』、arXiv 元数据收窄至 HF bibtex 侧、Table 7/19 归属、外推→内插）；r1 未完成的 kenashe.ai 论点逐字复核本次补齐。遗留事项（均修订级以下，供下一轮参考，不构成 unsupported/missing/hard failure）：①§11.9『两张模型卡』建议改为『HF 模型卡与数据集卡』（bibtex 逐字相同，实质不变）；②§10.2 跨模型坐标可补 OLMoE-A1B/7B $199,680 一行以完整对应 Table 7；③AlphaSignal『matching』与 hankli.space TE delayed scaling 两例二次传播失真的原始出处未能复核，建议保留快照声明或降级为单例（kenashe.ai 已实证）。加权分 95.65（96/35%、97/20%、95/20%、95/15%、94/10%）。"
     }
   ],
   "decision": {
     "status": "pass",
-    "score": 95.4,
-    "evaluated_on": "2026-10-15",
-    "policy_id": "report-quality-2026-10-15-r1",
-    "policy_sha256": "69eb1667e587b2e30f4141910049d8a6f7383b16059125c867ee09a23ac37268",
-    "report_sha256": "e872cbb82ef57b5a5f2845d706d9edc39e9fba2078a9f40e4aaa203ba899416d",
+    "score": 95.65,
+    "evaluated_on": "2026-10-20",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "0743831befed6e563177c8db3ae55f003855c272198bd44edf98fd122d443c6e",
     "evidence_sha256": "ff051adec88d60fbbc9286dc32b3e455be59a20811509e88e42e45650fe1ee41"
-  }
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "glm-5.3",
+            "harness": "claude-code",
+            "run_id": "review-dcc5663b1ae6",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 96,
+            "request_coverage": 97,
+            "reasoning_quality": 95,
+            "readability": 94,
+            "limitations": 93
+          },
+          "score_reasons": {
+            "evidence_fidelity": "17/17 claims 全查(含全部 9 条 critical)。关键数字逐项对照论文提取件与 repo 快照零误差:成本链 6,009.46+16,504.95=22,514.41 GPU-h、×2.0833 RMB/h=46,905 RMB≈$6,891(p40/Table 7/18);五档 $2.16K~$6.89K 与 Avg15 51.98~56.00(Table 18/19 p53)逐行一致;Table 2 全部 GPU 参数(A100 312/80GB/$1.79、H200 989.5/1979/141GB/$4.00/0.89/1.78、5090 209.5/419/32GB/$0.31/2.43/4.87)与报告表格吻合;P2P 31.5→56 GB/s、14.3µs→0.4µs、8卡 busbw 14.75→27.34、GDR 24卡 8.87→19.93(p9-10)一致;MFU 73% 与脚注 6 的 P_eff=(0.72/419+0.28/209.5)⁻¹≈327 精确一致;FP8 72%/98.0%/1.36×/1.34×/LOO 1.17–1.28 与 97.6–98.1(p11/23/43-44)一致;式(1)(3)(4)(5)与式(10) power schedule 逐符号转写正确(τ=1000 步=1.536M samples 两口径等价);170M 三臂 3.0288/3.0303/3.0733(Figure 5)对应报告 3.029/3.030/3.073;CMA 消融 57.17/55.99/57.18/55.57/55.64/57.12/56.80/57.81(Figure 13b+§H.3 p56)全对;六 checkpoint 步号 222,100~222,569、窗口 469 步≈2.95B(p56)全对;SFT 三设置 66.89→68.66/+1.77(范围 1.36–2.12)、74.10→76.12/+2.02(范围 1.21–3.26)、53.96→55.13/+1.17、IFEval 41.71→43.07(p24-25/附录E p46-48)全对;run_puro_2b.sh 的 --lr 4.077248127291725e-05、--muon-hyperball-lr-mult 10.0(行52)、layout 'Et*18|t*10L'/'Et*9|t*9|t*9|tL'、341,867,221÷1536=222,569.3 步数自洽均验证;license 四资产实测(HF 权重 apache-2.0、HF 数据集 other、Puro-Megatron NOASSERTION、Kaiyuan-Spark Apache-2.0)与 Nemotron-CC-v2/Synthetic-Code 禁再分发(Table 22 脚注)成立;HF 模型卡 '$4.4K is not the canonical final checkpoint' 与 'The fit has no uncertainty interval' 引文核实;HF papers 页 pszemraj FP16-accumulate 问答与作者回答逐字核实。扣分点:报告 §2.1 把论文 'most practical option with FP4 support' 转写为「唯一有 FP4 支持的实际选项」,而 Table 2 显示 RTX PRO 6000 亦有 FP4,属引申过度(记入 unsupported_claims);§11.9 声称 arXiv 元数据与 PDF 作者名单不一致,当前(2026-10-15)arXiv API 元数据与 PDF 一致(含 Chengxia Li 无 Kaiyue Wen),仅 HF bibtex 侧成立,arXiv 侧无法复现;§10.1 将 Qwen2-1.5B 55.14 等总分标注为 (Table 19, S=p53),实际出自 Table 7(p39),数字本身正确。",
+            "request_coverage": "六条 requirements 全部满足:REQ1 真读一手来源且全文 S=pN/R=file:line 引用(抽查的页码/行号全部命中,如 R=run_puro_2b.sh:52 恰为 lr-mult 10.0、ORIGIN_COMMITS.md:43-53 恰为 excluded 节);REQ2 公式逐符号解释完整(§5.1 式1 的 R、û_t、Normalize 各项含义,§5.2 式4 ELR 定义,§6 power schedule 含 τ 双口径换算);REQ3 单位口径严格(tokens vs samples 在 §3.3 表与 §8 步数自洽计算中显式区分,§1.2 全节钉 Reproduction-Cost Boundary);REQ4 批判性评估十条覆盖要求的全部五点(成本口径 §11.1、驱动 EULA §11.2、自家评测协议 §11.3、代际对标 §11.4、license 差异 §11.7)且超出要求;REQ5 §13 三问完整(理解/未懂/下一步);REQ6 §12 与 Megatron 20260416 报告及模型效率线缝合具体。超额部分:发现 SMA6 六 checkpoint 与 --non-persistent-ckpt-num-to-keep 4 的机制缺口、$4.4K 档的 HF 口径身份、Phase 2-only $5.05K 与标题数字的对应关系。",
+            "reasoning_quality": "综合质量高:以 ELR=η_t 为轴把 MuonH 机制、m=10 桥接、WSD sweep 观察、power+linear 生产 schedule 串成因果链,与论文 §3.3 的论证结构一致且无过度引申;对四成本因子『参考系不同不构成联合阶乘消融』『TPP=20 消融 vs TPP≈700 生产』的口径警示忠实转达(§4.3.1 原文+脚注7);对 $4.4K『实测 UD-1/2 55.54>55.14 加标度律内插,不是外推新 run』的辨析精确(p24 原文佐证);[推测] 标注使用规范(仅两处:标题数字品牌化解读、ELR 成为标准诊断量的展望)。发现的问题均非推理错误而是转写措辞级。170M 结论外推风险、路由消融缺口、fixed-RMS 着墨少等可追问点的识别准确。",
+            "readability": "结构出色:§0 一页结论先行,硬件→系统→精度→优化器→数据→课程→后训练→评测的分层与论文 §3-§4 对齐,每层先给机制再给证据;表格密度高且信息自洽(如 §8 消融表与 §10.2 五档表);中文行文流畅,术语/数字/专有名词保留原文;引用体系 S/R/HF 三级清晰,二手传播分层提示(§11.1)实用。小瑕疵:§0.2 用『外推』而 §10.2 辨析为『内插』,前后措辞有轻微张力;个别长句(如 §11.7 license 段)信息密度过载。",
+            "limitations": "evidence.json limitations 六条具体且诚实(页码基于提取件、外部反响时效、SMA6 采集机制未解、路由/逻辑矩阵消融缺口、标度律系数未公布、Phase 1 终点 LR 的 HF 卡与脚本口径差),每条都在报告正文有对应落点(§8 未解细节、§11.6、§10.2、§13.2);报告自身额外标注了 [推测] 两处与「元数据以 PDF 题名页为准」的引用建议。扣分:arXiv 元数据不一致声明当前无法复现(HF bibtex 侧成立),提示该条外部快照核验存在不确定性但 limitations 未覆盖此风险;kenashe.ai 三点论点仅验证了文章存在与日期,未逐字复核论点内容。"
+          },
+          "critical_claim_ids_checked": [
+            "C1",
+            "C2",
+            "C3",
+            "C5",
+            "C6",
+            "C7",
+            "C11",
+            "C12",
+            "C15"
+          ],
+          "source_ids_checked": [
+            "S",
+            "R",
+            "HF",
+            "EXT"
+          ],
+          "requirement_ids_checked": [
+            "REQ1",
+            "REQ2",
+            "REQ3",
+            "REQ4",
+            "REQ5",
+            "REQ6"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "复核覆盖:论文提取件 p1/4/8-26/38-48/53/55-56 逐页打开,repo 三文件逐行,HF 联网抽查(collection 9模型+1数据集+1论文、Base 卡、1of2 卡、papers 页问答、数据集卡 license),GitHub API 两仓 license,arXiv API 元数据,kenashe.ai 存在性(经 web 搜索确认 2026-08-28 文章存在;其三点论点内容未逐字复核,C17 其余 EXT 细节如 AlphaSignal/hankli.space/X 帖未抽查,均为非承载性次要来源)。全部 17 条 claims 核验通过,无一关键数字错误。另两处不构成 unsupported 的轻微问题:①§11.9『arXiv 元数据与 v2 PDF 题名页作者名单不一致』——HF bibtex 侧核实成立(含 Kaiyue Wen 无 Chengxia Li),但 2026-10-15 当日 arXiv API 元数据与 PDF 一致(含 Chengxia Li 无 Kaiyue Wen),arXiv 侧声明无法复现,可能是元数据事后更正或生成者误读;『以 PDF 题名页为准』的建议本身仍正确(Wen 确实只出现在致谢与引文[99],已核实)。②§10.1 将 Qwen2-1.5B 55.14/Qwen2.5-1.5B 60.73/SmolLM3 65.85 的来源标为 (Table 19, S=p53),这些总分实际出自 Table 7(p39),Table 19 只含 PuRo 各分支分数;数字无误,来源页标注不全。③§0.2『按标度律外推 $4.4K 可达 Qwen2-1.5B』与 §10.2 自身的『内插而非外推新 run』辨析存在轻微措辞张力,论文摘要原词为 fitted law suggests。以上均为修订级以下瑕疵,不影响报告结论可靠性。格式说明:本仓 quality gate 规定 unsupported_claims 为 claim_id 字符串数组且非空即判 blocked,语义是「claim 未被证据支持」;本次复核 17/17 claims 均获一手来源支持,无一属于该语义,故置空。上文所述 C2 同节的『唯一 FP4 选项』措辞引申、arXiv 元数据声明不可复现、Table 7/19 来源页标注三处轻微问题已在 score_reasons 与本 notes 中完整记录,均为修订级以下瑕疵,不构成 unsupported claim、missing requirement 或 hard failure。"
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 95.4,
+        "evaluated_on": "2026-10-15",
+        "policy_id": "report-quality-2026-10-15-r1",
+        "policy_sha256": "69eb1667e587b2e30f4141910049d8a6f7383b16059125c867ee09a23ac37268",
+        "report_sha256": "e872cbb82ef57b5a5f2845d706d9edc39e9fba2078a9f40e4aaa203ba899416d",
+        "evidence_sha256": "ff051adec88d60fbbc9286dc32b3e455be59a20811509e88e42e45650fe1ee41"
+      }
+    }
+  ]
 }

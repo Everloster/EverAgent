@@ -4,22 +4,25 @@ domain: "ai-learning"
 report_type: knowledge_report
 status: completed
 created: 2026-10-10
-updated_on: 2026-10-10
+updated_on: 2026-10-20
 tags: [PersonalContext, 正交性, 个人助手, AgentOS, memory层, context-engineering, EverAgent实践, 投资级思考]
+semantic_tags: ["personal_context", "agent_memory", "context_engineering", "delegation"]
 difficulty: ⭐⭐⭐⭐
 source_trigger: "用户 2026-10-10 今日思考：①做上下文的持续正交（Personal/Work Context）；②去年暴论：未来个人助手=输入法+IM+浏览器+搜索+AgentOS 的综合体；③穿越周期的正交思考：持续积累个人高效的 PC/WC，与 AI 进步持续正交——结合乱翻书275（2026-10-09 转写）、Laya/Jev 研究（2026-10-09）、个人助手产品全景调研（2026-10-09）展开论证"
 related_reports:
-  - "../..//podcast-learning/reports/2026-09-21_xiaoyuzhou-luanfanshu_personal-agent-wars.md"
+  - "../../../podcast-learning/reports/2026-09-21_xiaoyuzhou-luanfanshu_personal-agent-wars.md"
   - "./Laya_System1决策模型_深度解析_20260922.md"
-  - "../../github-trending-analyzer/reports/research_NandhaKishorM_laya.md"
+  - "../../../github-trending-analyzer/reports/research_NandhaKishorM_laya.md"
 ---
 
 # Personal Context 正交论：穿越周期的资产，与 PC 的构建工程
 
 > **x → f → f(x)**
 > - **x**：AI 模型以月为单位快速迭代，个人在 AI 时代应该积累什么，才能让自己的投入不被（甚至因）模型进步而贬值？
-> - **f**：正交论——把积累目标从"会用 AI 的技巧"（过程性，随模型进步贬值）切换到"Personal/Work Context"（事实性资产，随模型进步**升值**）：模型越强，同一份 context 兑现的价值越大。Context 是油，模型是越来越高效的炼油厂 [本报告论证]。
-> - **f(x)**：接受 f 后，个人策略变为三段链条——**积累事实性 context → 用 memory 工程炼成画像 → 通过反复交付换取委托信任**；工程上则要求 context 自持（所有权）、结构化（可检索）、带 provenance（可审计）、分层维护（按贬值速率区别投入）。验证状态：前段有 2026 年产品/资本市场的强证据支撑（四赌注全部围绕 context 变现 [Web][转写]），中段有反例警示（豆包签证 bad case：context≠画像 [转写]），后段尚未有个人可自持的成熟方案——是本报告的开放前沿。
+> - **f**：正交论——把积累目标从"会用 AI 的技巧"（过程性，容易随模型进步贬值）切换到"Personal/Work Context"（事实性资产）。在 context 准确、可迁移、可检索且模型确实能利用它时，模型越强，同一份 context **可能**兑现更大价值。Context 是油、模型是炼油厂，只是本文的解释模型，不是已被长期数据证明的定律 `[推测]`。
+> - **f(x)**：接受这项工作假说后，个人策略变为三段链条——**积累事实性 context → 用 memory 工程炼成画像 → 通过反复交付换取委托信任**；工程上则要求 context 自持（所有权）、结构化（可检索）、带 provenance（可审计）、分层维护（按贬值速率区别投入）。验证状态：前段有 2026 年产品与资本动作作为间接信号，中段有反例警示（豆包签证 bad case：context≠画像），后段尚未有个人可自持的成熟方案。
+
+> **成立条件与失效信号**：本文结论只在四个条件同时满足时成立：context 保持准确且不过时、可跨产品迁移、检索成本低于收益、下游模型能稳定使用它。若出现低成本即时画像、平台锁定导致不可迁移、旧事实持续误导决策，或维护成本长期高于交付收益，应下调 PC 的投入优先级。
 
 ---
 
@@ -41,15 +44,15 @@ related_reports:
 
 ### 1.1 换问题的收益
 
-面对快速迭代的 AI，常问的是"该学什么工具/模型"——这个问题**没有稳定答案**（答案半年一换）。正交论换了一个问法："什么东西在模型变化下不变（甚至受益）？"——这个问题有结构化答案。这是把不可控变量（模型进步）从策略依赖中剥离：**你不预测模型，你让模型的任何进步都为你服务** [推测→论证于§2]。
+面对快速迭代的 AI，常问的是"该学什么工具/模型"——答案通常随版本变化。正交论换了一个问法："什么东西在模型变化下更稳定，或有机会从模型进步中受益？"这个问法能减少对单一模型路线的押注，但不能消除维护、迁移和隐私成本 `[推测]`。
 
 ### 1.2 正交性的两层数学含义
 
 1. **独立性**：PC 的存在与增长不依赖任何特定模型——你的偏好、决策历史、判断对错记录、关系网络是"你的人生函数"的输出，模型换不换它都持续产生。
-2. **投影为正收益**：严格说这不是零相关的正交，而是**单调互补**——模型能力 ↑ 时，同一份 PC 的兑现价值 ↑。展开为三个机制：
+2. **条件性互补**：严格说这不是数学上的正交，而是一项待验证的互补假说——模型能力提升时，合格 PC 的兑现价值有机会提升。展开为三个可能机制：
    - **兑现机制**：去年 GPT-4 级模型拿着你的 context 只能做摘要；今年的 agent（Instinct/Grok Bot/Muse）拿着同一份 context 能把事办完。Context 没变，兑现从"问答"升级到"执行"。
    - **Jevons 机制**（Laya 期已论证）：决策智能成本下降两个数量级 → 单人可调用的决策频次暴涨 → 每份 context 被调用的次数上升。TypeSafe 给模型取名 Jevons（悖论）正是这个逻辑 [Web Wikipedia]。
-   - **Bitter Lesson 的个人版**：Sutton 说"能随算力扩展的通用方法长期总赢"；个人版是"**能随模型能力扩展的个人资产长期总赚**"。反过来，依赖模型弱点的方法（prompt 技巧、绕幻觉的手法、特定版本的手感）会随补弱而清零。
+   - **Bitter Lesson 的个人版 `[推测]`**：可随模型能力扩展的个人资产，可能比依赖某代模型弱点的技巧更耐久。prompt 技巧、绕幻觉的手法和特定版本手感仍可能在一段时间内有用，但应设置淘汰条件。
 
 ### 1.3 关键边界：两类 context，贬值速率天差地别
 
@@ -57,11 +60,11 @@ related_reports:
 |---|---|---|
 | 内容 | 偏好/价值观/决策历史/判断对错记录/知识资产/关系网络 | prompt 模板/工作流配置/工具使用技巧/"怎么用 AI"的经验 |
 | 贬值速率 | ≈0（只随人生增长） | 高（强模型平替弱模型时代的手艺） |
-| 与模型进步的关系 | 升值（兑现机制） | 贬值（被能力进步吞噬） |
-| 维护策略 | 持续投入、只增不删 | 定期允许作废、不恋战 |
+| 与模型进步的关系 | 条件性增值（取决于准确性、可迁移性和调用质量） | 更容易贬值（可能被能力进步吞噬） |
+| 维护策略 | 保留历史并标记 superseded，持续防腐 | 定期复核、允许作废 |
 | EverAgent 实例 | `reports/`、`wiki/concepts/`、`PROFILE.md` | `AGENTS.md` 流程规则、各 skill 的操作姿势 |
 
-**判别法**：问"下一代模型免费发布后，这条积累是更值钱还是更不值钱？"——偏好与判断记录更值钱；使用技巧大概率不值钱。用户的正交论在事实性 context 上完全成立，在过程性 context 上恰好反向 [本报告论证]。
+**判别法**：问"下一代模型免费发布后，这条积累是否仍可复核、可迁移、能改善决策？"偏好与判断记录通常更耐久；使用技巧更容易过时。由此得到的是投入优先级假说，不是对所有 context 的全称结论。
 
 ---
 
@@ -88,7 +91,7 @@ related_reports:
 
 ### 2.3 巨头悖论：为什么正交论对个人比对公司更成立
 
-Vanessa 的判断"这波没有网络效应，谁好用第二天就切换" [转写] 对公司的护城河是坏消息，对个人是好消息：**产品可以换，你的 context 资产不随产品迁移而灭失**（前提是自持，见 §4.1）。公司烧钱抢的是 context 的托管权；个人自持则让所有烧钱者变成你的免费炼油厂——模型军备竞赛的每一分投入都在升值你的存量 context。**这是个人视角下最反直觉的一步：巨头竞争越惨烈，自持 PC 的持有者越受益** [推测→机制论证于§1.2]。
+Vanessa 的判断"这波没有网络效应，谁好用第二天就切换" `[转写]` 对个人的启示是：**只有开放格式、自持且能导出的 context，才可能在换产品时保留价值**。若迁移成本可控，模型竞争会增加同一份 PC 的可选兑现渠道；若平台不提供导出、语义结构不兼容或授权无法迁移，这个收益会明显缩水 `[推测]`。
 
 ---
 
@@ -117,7 +120,7 @@ Vanessa 的判断"这波没有网络效应，谁好用第二天就切换" [转�
 1. **自持（Ownership）**：context 存自己控制的存储（本地/git 私有仓优先，开放格式）。Vanessa 原话的镜像："住在别人的 IM 里，接口不属于你，产品的命运也不属于你"——对个人即"context 托管给任何产品都只是租借" [转写]。自持不是拒绝产品，而是**产品为炼油厂、油库在自己手里**。
 2. **结构化（Retrievability）**：裸日志 ≠ 资产。OpenClaw 的 daily log 是原型但停留在流水账；EverAgent 的实践是三层结构——报告（叙事与判断）→ wiki 概念页（可引用的知识单元）→ open-questions（缺口即拉力）。结构决定 LLM 能否精准取用 [本仓实践]。
 3. **Provenance（可审计）**：每条事实带来源与时间，推测标 `[推测]`（METHODOLOGY §二）。这不仅是防幻觉，更是**资产防伪**——context 中毒（错误判断沉淀为"事实"）是 PC 的 P0 风险（§5.2）。eacli 的 sha256+repo 路径 provenance 是工程化形态 [本仓实践]。
-4. **分层维护（Deprecation Policy）**：按 §1.3 判别法区分投入——事实层只增不删（历史判断错了也不删，标注 superseded）；程序层定期重构（允许作废）；委托层只在真实交付后升级。
+4. **分层维护（Deprecation Policy）**：按 §1.3 判别法区分投入——事实层保留历史并标注 superseded，不把旧结论继续当当前事实；程序层定期重构；委托层只在真实交付后升级。
 
 ### 4.2 业界 memory 方案对照（2026-10 web 核实）
 
@@ -125,11 +128,11 @@ Agent memory 已成独立赛道（约 $31.5M 融资、12 万 GitHub stars 量级
 
 | 方案 | 路线 | 对 PC 构建的启示 |
 |---|---|---|
-| **Mem0** | LLM-driven CRUD（模型决定记什么/删什么） | 自动化抽取可行，但"删什么"交给模型有中毒风险 [Web] |
-| **Letta**（MemGPT 后继） | agent self-edit（agent 自己编辑自己的记忆） | 记忆与 agent 一体的极限形态；个人自持版=自己的 agent 管自己的库 [Web] |
-| **Zep** | 时序知识图谱（temporal KG） | L2 事实层的防腐蚀方案：带时间戳的事实演化链 [Web] |
-| **memU** | reinforcement counting（强化计数） | 高频引用=高价值信号，可做 PC 的自动加权 [Web] |
-| **mcp-memory-service** | 6-phase consolidation pipeline | 记忆需要"消化管道"（不只是存取）：consolidation 是画像构建的关键词 [Web] |
+| **[Mem0](https://github.com/mem0ai/mem0)** | LLM-driven CRUD（模型决定记什么/删什么） | 自动化抽取可行，但"删什么"交给模型有中毒风险 `[Web]` |
+| **[Letta](https://github.com/letta-ai/letta)**（MemGPT 后继） | agent self-edit（agent 自己编辑自己的记忆） | 记忆与 agent 一体的极限形态；个人自持版=自己的 agent 管自己的库 `[Web]` |
+| **[Zep / Graphiti](https://github.com/getzep/graphiti)** | 时序知识图谱（temporal KG） | L2 事实层的防腐蚀方案：带时间戳的事实演化链 `[Web]` |
+| **[memU](https://github.com/NevaMind-AI/memU)** | 文件化、跨 agent 的共享记忆 | 可检查、可回滚的共享记忆适合做 PC 投影；原稿的“强化计数”描述未在本轮官方仓定位，故撤回 `[Web]` |
+| **[mcp-memory-service](https://github.com/doobidoo/mcp-memory-service)** | 持久化存储、知识图谱与自动 consolidation | 记忆需要"消化管道"，但具体阶段数会随版本变化，本报告不再固定写成 6 阶段 `[Web]` |
 | **AGENTS.md 生态** | lean 文件 + 引用外部文档 | "入口精简、正文外置"是 context 的注意力经济学（2026-02 实践共识）；EverAgent 的根 AGENTS.md→各域 AGENTS.md 正是此结构 [Web] |
 | **Anthropic context engineering** | 官方工程方法论（2025-09） | system prompt 要"right altitude"；context 是有限注意力预算下的编译目标 [Web] |
 
@@ -162,14 +165,15 @@ Agent memory 已成独立赛道（约 $31.5M 融资、12 万 GitHub stars 量级
 2. **Context 中毒**：错误判断沉淀为"事实"、或被投毒（个人 context 是高价值攻击目标——社会工程学的新前沿 [推测]）。缓解：provenance 强制+人审关键沉淀。
 3. **隐私集中化风险**：自持 PC = 把鸡蛋放进一个篮子。缓解：双仓分级（敏感事实物理隔离）+ 本地推理优先（infra 侧已有此原则）。
 4. **画像固化风险**：PC 让 agent 越来越"懂你"，也可能把你锁进过去的自己（推荐系统信息茧房的 agent 版；豆包 bad case 的温和形态）。缓解：L1 画像允许显式改写（"我变了"应该是 PC 的一等操作）[推测]。
-5. **正交失效场景**：若未来模型进步到**从少量交互即时推断完整画像**（in-context 人格建模），存量 PC 的边际价值会下降——但"验证过的决策历史与委托边界"仍无法即时推断，L2/L5 保值 [推测]。
+5. **正交失效场景**：若未来模型能从少量交互低成本推断出足够好的画像，存量 PC 的边际价值会下降；验证过的决策历史与委托边界可能更耐久，但同样需要用对照实验确认 `[推测]`。
+6. **维护成本反噬**：若采集、清洗、打标签和防腐的长期成本高于它带来的返工减少或决策改善，PC 会从资产变成负担。应记录检索命中率、错误引用率与实际节省时间，连续复核无收益时缩减范围。
 
 ---
 
 ## 🤔 思考与追问
 
 1. **我真正理解了什么？**
-   正交论的力量不在于"context 有用"（这是常识），而在于**给个人提供了一个与模型军备竞赛解耦的复利坐标系**：巨头每烧一美元，自持 PC 的持有者就多一分兑现能力。它的正确形态是三段链条（积累→炼化→委托），缺任何一段都会退化为"context 沃土上的荒地"（豆包 bad case）或"有油无炼油厂"（OpenClaw 用户的流水账）。EverAgent 四年实践（不知不觉）走完了前两段，第三段（L5 委托层）是明日的第一优先级。
+   正交论的价值在于提供一个较少依赖单一模型版本的投入坐标系。它仍是一项条件性假说：积累→炼化→委托三段缺一，context 就可能退化为流水账或误导性画像。EverAgent 已覆盖前两段的部分工程，第三段（L5 委托层）仍需用真实交付验证。
 2. **我还没搞懂什么？**
    - **L5 的自持协议长什么样**：授权表是静态文件还是与 agent 协商的动态契约？Laya 的成本矩阵自动推导（对+1/错-3/升级-0.5→62.5% 阈值）能否推广为个人委托层的标准形式？
    - **跨产品投影的最小充分集**：给 Instinct/Muse/自建 agent 各投一份什么结构的 PC 切片，能在不交出全库的前提下兑现大部分价值？（eacli 按域取用是初步答案，缺"充分性"度量）
@@ -180,16 +184,14 @@ Agent memory 已成独立赛道（约 $31.5M 融资、12 万 GitHub stars 量级
    - **追踪 Letta/mcp-memory-service 的 consolidation 管道设计**——L2 防腐的工程答案可能从那里先出现（挂 open-questions，2027-01 回访）
 
 ## 来源
-- 用户 2026-10-10 今日思考（原始论点）
-- [[2026-09-21_xiaoyuzhou-luanfanshu_personal-agent-wars]]（乱翻书275 转写精读，2026-10-09 本仓产出）[转写]
-- [[Laya_System1决策模型_深度解析_20260922]] 及 10-09 续篇；[[research_NandhaKishorM_laya]] [代码][API]
-- Web 核实（2026-10-10，eacli web.search/read）：
-  - Agent memory 竞争格局：Mem0/Letta/Zep/memU/mcp-memory-service（The State of Agent Memory, 2026-02-26, blog.virenmohindra.me；The 2026 Agent Memory Race, hashnode 2026-05-02）[Web]
-  - Anthropic "Effective context engineering for AI agents"（2025-09-29，anthropic.com/engineering）[Web]
-  - AGENTS.md 精简+外置实践（paulswithers 2026-02-23）；Context Engineering 四支柱（sourcegraph 2026-05-28）[Web]
-  - arxiv "An Open-Source Personal Agent for Every Device You Own"（2026-10，引 Today 9-15 发布）[Web]
-  - 产品融资/发布事实：TechCrunch/Fortune/NYT/Reuters（见乱翻书275 报告 §11 档案）[Web]
-- EverAgent/eacli 自身实践（本仓文件，自指证据）[本仓]
+
+- 用户 2026-10-10 今日思考（原始论点，非外部事实来源）。
+- [乱翻书 275 转写精读](../../../podcast-learning/reports/2026-09-21_xiaoyuzhou-luanfanshu_personal-agent-wars.md)及[节目页](https://www.xiaoyuzhoufm.com/episode/6ab029b7ac389df82734ebb6?utm_source=rss)：四类 Personal Agent 路线、豆包签证反例与“信任和习惯”判断 `[转写]`。
+- [Laya System1 深度解析](./Laya_System1决策模型_深度解析_20260922.md)与[GitHub 姊妹报告](../../../github-trending-analyzer/reports/research_NandhaKishorM_laya.md)：Jevons 机制、act/escalate 与公开源码证据 `[代码][API]`。
+- [The State of Agent Memory (2026)](https://blog.virenmohindra.me/p/the-state-of-agent-memory-2026)：赛道规模与项目对照的二手综述；具体产品机制优先以上表各官方仓为准 `[Web]`。
+- Anthropic：[Effective context engineering for AI agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)（2025-09-29）`[Web]`。
+- 产品融资与发布时间：见乱翻书 275 报告 §11 的 TechCrunch、Fortune、NYT、Reuters 定位；本报告不再把未给链接的媒体名称当作独立证据。
+- EverAgent/eacli 自身实践：根 [AGENTS.md](../../../AGENTS.md)、[CONTEXT_ENGINEERING.md](../../../docs/CONTEXT_ENGINEERING.md) 与 context catalog/get/search `[本仓]`。
 
 ---
 *报告生成时间: 2026-10-10*

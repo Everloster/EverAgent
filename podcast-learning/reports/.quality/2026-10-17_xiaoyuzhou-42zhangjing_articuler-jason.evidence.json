@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-17_xiaoyuzhou-42zhangjing_articuler-jason.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-19",
+  "generator": {
+    "model": "gpt-6.1-sol",
+    "harness": "codex",
+    "run_id": "generator-2026-10-17_xiaoyuzhou-42zhangjing_articuler-jason-20261019",
+    "explicit_model_override": false,
+    "override_reason": ""
+  },
+  "task": {
+    "summary": "仅使用 Razer 静默转写，完成 Articuler.ai Jason 单期播客的转写、精编与学习报告。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "核验该期未重复处理并保存 Razer transcript、shownotes 与 polished。"
+      },
+      {
+        "id": "R02",
+        "text": "覆盖会议 PMF、数据飞轮、美国 GTM、现金流危机与保命牌。"
+      },
+      {
+        "id": "R03",
+        "text": "区分创始人自报数据与分析，保留局限、反例和追问。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "local",
+      "title": "Articuler.ai 原始转写（Razer worker）",
+      "locator": "podcast-learning/reports/transcripts/2026-10-17_xiaoyuzhou-42zhangjing_articuler-jason.transcript.txt",
+      "accessed_on": "2026-10-19"
+    },
+    {
+      "id": "S02",
+      "kind": "local",
+      "title": "Articuler.ai 结构化精编稿",
+      "locator": "podcast-learning/reports/transcripts/2026-10-17_xiaoyuzhou-42zhangjing_articuler-jason.polished.txt",
+      "accessed_on": "2026-10-19"
+    },
+    {
+      "id": "S03",
+      "kind": "local",
+      "title": "Articuler.ai 单集页面 shownotes",
+      "locator": "podcast-learning/reports/transcripts/2026-10-17_xiaoyuzhou-42zhangjing_articuler-jason.shownotes.md",
+      "accessed_on": "2026-10-19"
+    },
+    {
+      "id": "S04",
+      "kind": "primary",
+      "title": "42章经 Articuler.ai 单集页",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/6acddf92e742e36efcc2448d",
+      "accessed_on": "2026-10-19"
+    },
+    {
+      "id": "S05",
+      "kind": "local",
+      "title": "Articuler.ai Razer artifact 与传输回执",
+      "locator": "podcast-learning/reports/transcripts/2026-10-17_xiaoyuzhou-42zhangjing_articuler-jason.artifact.json",
+      "accessed_on": "2026-10-19"
+    },
+    {
+      "id": "S06",
+      "kind": "local",
+      "title": "Treg Agent 生态对篇报告",
+      "locator": "podcast-learning/reports/2026-10-18_xiaoyuzhou-crossing_treg-agent-ecosystem.md",
+      "accessed_on": "2026-10-19"
+    },
+    {
+      "id": "S07",
+      "kind": "local",
+      "title": "张帆对 FDE 的批判报告",
+      "locator": "podcast-learning/reports/2026-09-24_xiaoyuzhou-guiji-lichang_zhangfan-fde.md",
+      "accessed_on": "2026-10-19"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "嘉宾自报邀约邮件打开率约 80%、转化率约 15%–20%，平台注册用户 7 万出头。",
+      "report_anchor": "邀约邮件打开率约 80%",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "转写 00:03:41–00:04:30 与 00:15:38–00:15:49，shownotes 均记录这些口径。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "会议通过明确意图、局部高密度和连接行为形成原子社交网络，并沉淀不同于 LinkedIn 的行为信号。",
+      "report_anchor": "会议是社交网络的冷启动压缩器",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "转写 00:19:46–00:24:45 解释选择、连接响应和原子社交网络。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "现金流危机时，创始人投入个人资产，团队靠 2B 订单与成员支持维持生存。",
+      "report_anchor": "最难时 TS 被撤",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "转写 00:25:40–00:29:04、00:44:16–00:45:24 描述 TS、个人投入、工资与 2B 订单。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "美国 GTM 的核心建议是以本地公司身份进入当地圈子、亲自销售并和真实用户交流。",
+      "report_anchor": "按美国公司落地",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "转写 00:49:01–00:51:59 明确反对只在华人圈听建议，并要求与本地用户交流。",
+      "critical": true
+    }
+  ],
+  "limitations": [
+    "用户量、邮件效果、活动出席率与市场规模为创始人及 shownotes 口径。",
+    "匹配技术未披露评测集、基线、误配率或隐私设计。",
+    "节目集中于撑过困境的成功样本，存在幸存者偏差。"
+  ]
+}

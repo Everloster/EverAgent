@@ -119,7 +119,7 @@ semantic_tags: ["tag"]
 | 论文 / 实证研究 | 原始材料、方法与样本、精确数字、证据质量、局限、思考与追问 |
 | 文章 / 观点分析 | 原文论证重构、事实核验、作者观点与个人推断分离、反方边界、思考与追问 |
 | 概念深挖 | 定义、机制、设计动机、关联概念、前沿与争议、思考与追问 |
-| 播客 / 视频 | 原始转写、润色依据、shownotes 核验、增量观点、关键数字、Limitations、思考与追问 |
+| 播客 / 视频 | 原始转写、润色依据、shownotes 核验、来源内容地图、核心论证与案例、增量观点、关键数字、Limitations、思考与追问；标准/深度报告必须独立可读，不能把 polished 当成必读正文 |
 | GitHub 深研 | API 元数据、真实代码、量化活跃度、至少两个竞品、证据标签、七章结构 |
 | Web 调研 | 查询范围与时间、来源链接、筛选口径、事实与建议分离、数据时点 |
 | 代码实验 | 可运行代码、环境与命令、真实输出、失败记录、结论适用范围 |
@@ -139,9 +139,13 @@ semantic_tags: ["tag"]
 7. 应更新的 MAP、PROFILE、wiki 仅以最小 delta 同步；
 8. 报告质量门通过，README 与报告索引处于最新状态。
 
+对 `report_depth: standard | deep` 的播客报告，完成定义还包括：Reviewer 在读报告前先从转写、精编或 shownotes 独立列出核心内容单元，写入 review 的 `source_content_map`，再核对 evidence 的 `source_coverage`。声明有 shownotes 章节时，每章都要在两张地图中留痕；核心单元遗漏属于 `core_requirement_missing`。报告中已写内容全部正确，不能抵消重要内容的大面积缺失。
+
 ## 6. 评估报告机制
 
 ### 静态门禁
+
+全库审计先固定 Git 快照。记录当前 HEAD 与目标 ref（默认 `origin/main`）；若当前 HEAD 不包含目标 ref，`audit_reports.py --all` 会以 `SCOPE001` 停止。此时在隔离 worktree 中审目标 commit，不能扫描当前脏工作树后宣称“全量完成”。
 
 ```bash
 python3 scripts/audit_reports.py --changed
@@ -152,7 +156,7 @@ python3 scripts/reindex.py --check
 ```
 
 静态门禁检查元数据、来源锚点、学习闭环、占位符、内部链接、索引状态，以及指令 Owner、常驻字节预算、skill description、渐进披露和 ACE 任务集结构。
-它还回放 `evals/report-quality-replays.json` 中的真实报告，确认策略版本、最终分数、正文与证据哈希仍一致。
+它还回放 `evals/report-quality-replays.json` 中的真实报告，确认策略版本、最终分数、正文与证据哈希仍一致。模型驱动的完整 ACE Context A/B 不进入每次 commit 的同步阻断；结果过期只告警，留给 Context 架构里程碑验收。
 
 ### 行为回放
 

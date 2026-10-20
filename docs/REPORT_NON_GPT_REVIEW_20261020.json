@@ -1,0 +1,2917 @@
+{
+  "schema_version": 1,
+  "audit_id": "non-gpt-reports-20261020",
+  "window": {
+    "from": "2026-07-20",
+    "to": "2026-10-20",
+    "basis": "git first-add commit date"
+  },
+  "scope": {
+    "canonical_reports_added": 146,
+    "explicit_gpt_excluded": 8,
+    "reviewed_non_gpt": 138,
+    "provenance_rule": "evidence.generator when present, otherwise first-add commit committer identity; explicit GPT/OpenAI identities excluded",
+    "audited_workspace_head": "bf3642c99b169c8936a310113064c923cdf2b28f",
+    "remote_head_checked": "1025836246c138635af1d774c4286df00ae372bb",
+    "scope_correction": "Initial audit scanned the current worktree only. A later origin/main comparison found two additional non-GPT reports from 2026-10-19; both are now included."
+  },
+  "rubric": [
+    "evidence_fidelity",
+    "request_coverage",
+    "reasoning_quality",
+    "readability",
+    "limitations"
+  ],
+  "decision_definitions": {
+    "keep": "核心证据和论证成立，无内容级改写必要",
+    "preserve_snapshot": "时效型历史快照，保留原样；重写会破坏当日语境",
+    "repair": "主线可保留，局部来源、措辞、元数据或边界需修正",
+    "rewrite": "核心来源不可用、主张与证据错位，局部补丁不足"
+  },
+  "summary": {
+    "keep": 66,
+    "preserve_snapshot": 38,
+    "repair": 28,
+    "rewrite": 6
+  },
+  "entries": [
+    {
+      "path": "podcast-learning/reports/2026-09-16_xiaoyuzhou-crossing_wangjiawei.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-10-18",
+      "added_commit": "f26e1a6ad55bde13a4907d79d6fb862cd1db7d8e",
+      "generator_identity": "claude-code-glm-5.3",
+      "generator_evidence": {
+        "model": "glm-5.3",
+        "harness": "claude-code",
+        "run_id": "podcast-daily-2026-09-16",
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review+existing_independent_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 17451,
+        "url_count": 1,
+        "quality_schema": "report-v2",
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "web-surfing/reports/ai-news-daily-2026-10-15.md",
+      "domain": "web-surfing",
+      "added_on": "2026-10-15",
+      "added_commit": "f11fb9dcf5840ee124ab8ec207e3ba78b649f7cc",
+      "generator_identity": "claude-code-glm-5.3",
+      "generator_evidence": {
+        "model": "glm-5.3",
+        "harness": "claude-code",
+        "run_id": "commit-f11fb9d",
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "decision": "preserve_snapshot",
+      "priority": "P3",
+      "review_depth": "series_audit+existing_independent_review",
+      "reason": "历史日报有明确日期且链接密度高；抽样核验关键头条成立。重写会破坏当日信息快照，只需未来统一补 metadata。",
+      "static_signals": {
+        "bytes": 21464,
+        "url_count": 29,
+        "quality_schema": "report-v2",
+        "has_limitations": false,
+        "has_thought_questions": false
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-09-03_bilibili-bruce-phd_energy-boost.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-10-15",
+      "added_commit": "b2ef9115c3d1fc2e8a186367bae14cd39de031c1",
+      "generator_identity": "claude-code-glm-5.3-1m",
+      "generator_evidence": {
+        "model": "glm-5.3",
+        "harness": "claude-code",
+        "run_id": "bruce-episode-20261015",
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "decision": "repair",
+      "priority": "P1",
+      "review_depth": "deep_review+existing_independent_review",
+      "reason": "独立 review 已给出 3 处超出字幕证据的修词、广告时长和速览限定问题；另缺 transcript/polished 路径字段。",
+      "static_signals": {
+        "bytes": 9022,
+        "url_count": 1,
+        "quality_schema": "report-v2",
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediated_on": "2026-10-20",
+      "remediation_status": "repaired",
+      "quality_gate_status": "passed_revision_3",
+      "quality_gate_score": 94.6,
+      "final_reviewer": {
+        "model": "glm-5.3",
+        "harness": "pi",
+        "role": "primary_review",
+        "revision_round": 3
+      }
+    },
+    {
+      "path": "ai-learning/reports/knowledge_reports/PuRo-2B_开放低成本预训练配方_MuonHyperball与RTX5090_深度解析_20261015.md",
+      "domain": "ai-learning",
+      "added_on": "2026-10-15",
+      "added_commit": "1d09bdf4fd652dbf76edaebf71fa7c4cda65d6ed",
+      "generator_identity": "claude-code-glm-5.3-1m",
+      "generator_evidence": {
+        "model": "glm-5.3",
+        "harness": "claude-code",
+        "run_id": "puro2b-report-20261015",
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "decision": "repair",
+      "priority": "P1",
+      "review_depth": "deep_review+existing_independent_review",
+      "reason": "既有独立 review 已指出 FP4“唯一选项”、arXiv 作者元数据、Table 7/19 页码和“外推/内插”四处局部问题；主体可靠，无需重写。",
+      "static_signals": {
+        "bytes": 38639,
+        "url_count": 3,
+        "quality_schema": "report-v2",
+        "has_limitations": false,
+        "has_thought_questions": true
+      },
+      "remediated_on": "2026-10-20",
+      "remediation_status": "repaired",
+      "quality_gate_status": "passed_revision_2",
+      "quality_gate_score": 95.65,
+      "final_reviewer": {
+        "model": "glm-5.3",
+        "harness": "pi",
+        "role": "primary_review",
+        "revision_round": 2
+      }
+    },
+    {
+      "path": "web-surfing/reports/ai-news-daily-2026-10-14.md",
+      "domain": "web-surfing",
+      "added_on": "2026-10-14",
+      "added_commit": "5a24c07229186b97e8927583c37dcc1f3c82e175",
+      "generator_identity": "claude-code-glm-5.3",
+      "generator_evidence": null,
+      "decision": "preserve_snapshot",
+      "priority": "P3",
+      "review_depth": "series_audit",
+      "reason": "历史日报有明确日期且链接密度高；抽样核验关键头条成立。重写会破坏当日信息快照，只需未来统一补 metadata。",
+      "static_signals": {
+        "bytes": 19904,
+        "url_count": 29,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": false
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-10-14_bilibili-svj101_zhangkuo-model-user-gap.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-10-14",
+      "added_commit": "0b8d51a32ff681249494f7908b570c7795e35f21",
+      "generator_identity": "pi-glm-5.3",
+      "generator_evidence": {
+        "model": "glm-5.3",
+        "harness": "pi",
+        "run_id": "commit-0b8d51a",
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review+existing_independent_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 11862,
+        "url_count": 1,
+        "quality_schema": "report-v2",
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-10-14_bilibili-shipindao_liucixin-interview.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-10-14",
+      "added_commit": "0b8d51a32ff681249494f7908b570c7795e35f21",
+      "generator_identity": "pi-glm-5.3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 11625,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-10-14_bilibili-dianwan-ak_qwen-glasses-n1pro.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-10-14",
+      "added_commit": "0b8d51a32ff681249494f7908b570c7795e35f21",
+      "generator_identity": "pi-glm-5.3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 10640,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-10-12_xiaoyuzhou-42zhangjing_zihao-ambi.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-10-14",
+      "added_commit": "f6acacc61b1a2cef0010b2f0269ed8ccbf309a81",
+      "generator_identity": "pi-glm-5.3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 12968,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-10-11_xiaoyuzhou-crossing_yage-ai-strong.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-10-14",
+      "added_commit": "f6acacc61b1a2cef0010b2f0269ed8ccbf309a81",
+      "generator_identity": "pi-glm-5.3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 13146,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-10-09_ximalaya-ailianjinshu_juzi-personal-agent.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-10-14",
+      "added_commit": "f6acacc61b1a2cef0010b2f0269ed8ccbf309a81",
+      "generator_identity": "pi-glm-5.3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 12312,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-10-08_rss-kedaibiao-lizheng_lifeifei-worldlabs-robot.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-10-14",
+      "added_commit": "f6acacc61b1a2cef0010b2f0269ed8ccbf309a81",
+      "generator_identity": "pi-glm-5.3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 12690,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "web-surfing/reports/ai-news-daily-2026-10-13.md",
+      "domain": "web-surfing",
+      "added_on": "2026-10-13",
+      "added_commit": "484de94d8d43ee0e29ee670a54ca24f90eeeaf80",
+      "generator_identity": "claude-code-glm-5.3",
+      "generator_evidence": null,
+      "decision": "preserve_snapshot",
+      "priority": "P3",
+      "review_depth": "series_audit",
+      "reason": "历史日报有明确日期且链接密度高；抽样核验关键头条成立。重写会破坏当日信息快照，只需未来统一补 metadata。",
+      "static_signals": {
+        "bytes": 21746,
+        "url_count": 28,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": false
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-10-10_bilibili-shaoailun_sunyuchen-ai-era.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-10-13",
+      "added_commit": "d82e953dadec083ed802351f63169c4440fb4a85",
+      "generator_identity": "pi-glm-5.3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 13249,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "web-surfing/reports/ai-news-daily-2026-10-12.md",
+      "domain": "web-surfing",
+      "added_on": "2026-10-12",
+      "added_commit": "09a46321ea42a146c547b280b4063fb4f45d7755",
+      "generator_identity": "claude-code-glm-5.3",
+      "generator_evidence": null,
+      "decision": "preserve_snapshot",
+      "priority": "P3",
+      "review_depth": "series_audit",
+      "reason": "历史日报有明确日期且链接密度高；抽样核验关键头条成立。重写会破坏当日信息快照，只需未来统一补 metadata。",
+      "static_signals": {
+        "bytes": 21857,
+        "url_count": 26,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": false
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "github-trending-analyzer/reports/research_yetone_magpie.md",
+      "domain": "github-trending-analyzer",
+      "added_on": "2026-10-12",
+      "added_commit": "64d26544939fad98cb707da9ade4da583c19a229",
+      "generator_identity": "zcode-glm-5.3",
+      "generator_evidence": null,
+      "decision": "repair",
+      "priority": "P1",
+      "review_depth": "deep_review",
+      "reason": "代码研究主体可信，但无 frontmatter、无公共证据链接，且 stars/版本/adapter 数均高度易变；需固定快照和来源。",
+      "static_signals": {
+        "bytes": 7349,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": false
+      },
+      "remediated_on": "2026-10-20",
+      "remediation_status": "repaired"
+    },
+    {
+      "path": "podcast-learning/reports/2026-09-23_xiaoyuzhou-cihua-dangzhen_liuyuan.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-10-11",
+      "added_commit": "684bf03a4be4e728fc2fbe8471039ca3f8873328",
+      "generator_identity": "claude-code-glm-5.3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 13996,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-10-09_xiaoyuzhou-tingdong-zhangsheng_father-son-money.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-10-10",
+      "added_commit": "819da98e4000df1fcdd328a921cdde5aec430d72",
+      "generator_identity": "pi-glm-5.3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 13748,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-10-09_rss-kedaibiao-lizheng_career-methods-series.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-10-10",
+      "added_commit": "819da98e4000df1fcdd328a921cdde5aec430d72",
+      "generator_identity": "pi-glm-5.3",
+      "generator_evidence": null,
+      "decision": "repair",
+      "priority": "P2",
+      "review_depth": "deep_review",
+      "reason": "跨 10 件 transcript 的特殊元数据目前不可机器解析；内容可留，改成显式 source list 与聚合统计。",
+      "static_signals": {
+        "bytes": 20279,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediated_on": "2026-10-20",
+      "remediation_status": "repaired"
+    },
+    {
+      "path": "podcast-learning/reports/2026-10-08_xiaoyuzhou-shuoyi-jieyao_vol91-cod-mercury.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-10-10",
+      "added_commit": "819da98e4000df1fcdd328a921cdde5aec430d72",
+      "generator_identity": "pi-glm-5.3",
+      "generator_evidence": null,
+      "decision": "repair",
+      "priority": "P1",
+      "review_depth": "deep_review",
+      "reason": "毒理数字密集且未逐项核对 FDA/EPA/WHO；结论框架可留，但必须绑定一手阈值、份量和适用人群。",
+      "static_signals": {
+        "bytes": 12182,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediated_on": "2026-10-20",
+      "remediation_status": "repaired"
+    },
+    {
+      "path": "podcast-learning/reports/2026-10-08_xiaoyuzhou-daxiaoma-keji_v95-china-us.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-10-10",
+      "added_commit": "819da98e4000df1fcdd328a921cdde5aec430d72",
+      "generator_identity": "pi-glm-5.3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 14370,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-09-27_xiaoyuzhou-crossing_yuhong-sel.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-10-10",
+      "added_commit": "60de350dc1212ddfd7d8a192e1ca2b356f0ad462",
+      "generator_identity": "pi-glm-5.3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 10061,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-09-24_xiaoyuzhou-luanfanshu_today-personal-ai.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-10-10",
+      "added_commit": "60de350dc1212ddfd7d8a192e1ca2b356f0ad462",
+      "generator_identity": "pi-glm-5.3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 11070,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-09-24_rss-wandian-latetalk_liangchenqi-ai-joy.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-10-10",
+      "added_commit": "60de350dc1212ddfd7d8a192e1ca2b356f0ad462",
+      "generator_identity": "pi-glm-5.3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 11529,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-09-23_xiaoyuzhou-weishijie_ruanliang-ai-org.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-10-10",
+      "added_commit": "60de350dc1212ddfd7d8a192e1ca2b356f0ad462",
+      "generator_identity": "pi-glm-5.3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 10737,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-09-22_xiaoyuzhou-tulong-zhishu_ai-production-stage.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-10-10",
+      "added_commit": "60de350dc1212ddfd7d8a192e1ca2b356f0ad462",
+      "generator_identity": "pi-glm-5.3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 11140,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-09-21_xiaoyuzhou-luanfanshu_personal-agent-wars.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-10-10",
+      "added_commit": "ae54784cb1ad498fc700af9a4adee1794ffe9b4c",
+      "generator_identity": "pi-glm-5.3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 20454,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-02-11_xiaoyuzhou-chengwei-buffett_nantian.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-10-10",
+      "added_commit": "00c762ab2fc977f6795d298f3efaecfc9f867ca1",
+      "generator_identity": "claude-code-glm-5.3",
+      "generator_evidence": null,
+      "decision": "repair",
+      "priority": "P1",
+      "review_depth": "deep_review",
+      "reason": "原始 transcript 未入仓，仅 polished 可复核；大量商业史和投资数字来自口播，应补原始工件 receipt 与关键事实来源，并移除 /srv 路径。",
+      "static_signals": {
+        "bytes": 28655,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediated_on": "2026-10-20",
+      "remediation_status": "repaired"
+    },
+    {
+      "path": "github-trending-analyzer/reports/research_NandhaKishorM_laya.md",
+      "domain": "github-trending-analyzer",
+      "added_on": "2026-10-10",
+      "added_commit": "7710f3a54c07a7ba0ae091eb5c0f33dfdf6ea8ff",
+      "generator_identity": "pi-glm-5.3",
+      "generator_evidence": null,
+      "decision": "repair",
+      "priority": "P1",
+      "review_depth": "deep_review",
+      "reason": "源码深度足够，但无 frontmatter/公共定位；竞品与当前统计需加快照日期和来源链接。",
+      "static_signals": {
+        "bytes": 12989,
+        "url_count": 0,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": false
+      },
+      "remediated_on": "2026-10-20",
+      "remediation_status": "repaired"
+    },
+    {
+      "path": "ai-learning/reports/knowledge_reports/PersonalContext正交论_PC构建指南_20261010.md",
+      "domain": "ai-learning",
+      "added_on": "2026-10-10",
+      "added_commit": "a43fcd47504eb087efda664d48569ade126671c8",
+      "generator_identity": "pi-glm-5.3",
+      "generator_evidence": null,
+      "decision": "repair",
+      "priority": "P2",
+      "review_depth": "deep_review",
+      "reason": "概念框架有价值，但来源多为描述性条目而非可点击定位，部分行业判断需补 [推测] 与失效条件。",
+      "static_signals": {
+        "bytes": 19216,
+        "url_count": 0,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": true
+      },
+      "remediated_on": "2026-10-20",
+      "remediation_status": "repaired"
+    },
+    {
+      "path": "web-surfing/reports/ai-news-daily-2026-10-09.md",
+      "domain": "web-surfing",
+      "added_on": "2026-10-09",
+      "added_commit": "6eceaeb85fafb981b912f1d97eb2c304868c8c28",
+      "generator_identity": "claude-code-glm-5.3-flash",
+      "generator_evidence": null,
+      "decision": "preserve_snapshot",
+      "priority": "P3",
+      "review_depth": "series_audit",
+      "reason": "历史日报有明确日期且链接密度高；抽样核验关键头条成立。重写会破坏当日信息快照，只需未来统一补 metadata。",
+      "static_signals": {
+        "bytes": 23798,
+        "url_count": 31,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": false
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-10-09_xiaoyuzhou-zhixing-xiaojiuguan_e253-ai-good.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-10-09",
+      "added_commit": "67227168e449bb360bc91540a4b45c42325a6ef3",
+      "generator_identity": "pi-glm-5.3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 17177,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-10-08_xiaoyuzhou-qizhulou_2026q3-investment-review.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-10-09",
+      "added_commit": "67227168e449bb360bc91540a4b45c42325a6ef3",
+      "generator_identity": "pi-glm-5.3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 15373,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-10-08_xiaoyuzhou-crossing_kk-shanyin.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-10-09",
+      "added_commit": "67227168e449bb360bc91540a4b45c42325a6ef3",
+      "generator_identity": "pi-glm-5.3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 15015,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-10-08_rss-guigu101_e255-zhangkuo.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-10-09",
+      "added_commit": "67227168e449bb360bc91540a4b45c42325a6ef3",
+      "generator_identity": "pi-glm-5.3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 12748,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-10-06_xiaoyuzhou-tulong-dashihua_karl-deisseroth.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-10-09",
+      "added_commit": "67227168e449bb360bc91540a4b45c42325a6ef3",
+      "generator_identity": "pi-glm-5.3",
+      "generator_evidence": null,
+      "decision": "rewrite",
+      "priority": "P0",
+      "review_depth": "deep_review",
+      "reason": "英文回答被 Whisper 强制转成破碎中文，报告大量内容仅为“可辨大意”；核心来源失真，必须改用视频字幕、英文原声或原书。",
+      "static_signals": {
+        "bytes": 13642,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediated_on": "2026-10-20",
+      "remediation_status": "rewritten"
+    },
+    {
+      "path": "podcast-learning/reports/2026-10-05_rss-kedaibiao-lizheng_codex-claude.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-10-09",
+      "added_commit": "67227168e449bb360bc91540a4b45c42325a6ef3",
+      "generator_identity": "pi-glm-5.3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 11606,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-10-03_bilibili-dianwan-ak_ep04-quit.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-10-09",
+      "added_commit": "74b7d4e607d85a60cd3fad00c4dd9c703f5da9d8",
+      "generator_identity": "kimi-cli-k3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 9904,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-09-27_xiaoyuzhou-boluo-jiankang_chengruoqian.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-10-09",
+      "added_commit": "1759c242bb6025642cbee3fca6d5556f387cf268",
+      "generator_identity": "claude-code-glm-5.3-flash",
+      "generator_evidence": null,
+      "decision": "repair",
+      "priority": "P1",
+      "review_depth": "deep_review",
+      "reason": "生长激素、肿瘤风险、骨龄频率等临床建议主要来自口述；需用指南和队列数据校准，并移除公开报告中的内部 artifact 路径。",
+      "static_signals": {
+        "bytes": 26779,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediated_on": "2026-10-20",
+      "remediation_status": "repaired"
+    },
+    {
+      "path": "ai-learning/reports/paper_analyses/48_vista_2026.md",
+      "domain": "ai-learning",
+      "added_on": "2026-10-09",
+      "added_commit": "d6ad1528543a6fd22c95c05f0a1198884cfda442",
+      "generator_identity": "zcode-glm-5.3",
+      "generator_evidence": null,
+      "decision": "repair",
+      "priority": "P1",
+      "review_depth": "deep_review",
+      "reason": "论文数字结构清楚，但代码证据指向私有 infra 与本机目录；公开报告应改为公共 commit/file 位置并补可复核限制。",
+      "static_signals": {
+        "bytes": 12120,
+        "url_count": 0,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": true
+      },
+      "remediated_on": "2026-10-20",
+      "remediation_status": "repaired"
+    },
+    {
+      "path": "ai-learning/reports/knowledge_reports/OpenAI数学手稿事件_核实与深度分析_20261008.md",
+      "domain": "ai-learning",
+      "added_on": "2026-10-09",
+      "added_commit": "3812d8a359a5257cb94c5d15b96040a421bf9f89",
+      "generator_identity": "kimi-cli-k3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "论证主线、来源层级与推断边界总体成立；现有问题不足以要求重写。",
+      "static_signals": {
+        "bytes": 23304,
+        "url_count": 26,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "web-surfing/reports/ai-news-daily-2026-10-08.md",
+      "domain": "web-surfing",
+      "added_on": "2026-10-08",
+      "added_commit": "7d383c04552ea8c7232e00ec74c19dd5e10c95f8",
+      "generator_identity": "claude-code-glm-5.3-flash",
+      "generator_evidence": null,
+      "decision": "preserve_snapshot",
+      "priority": "P3",
+      "review_depth": "series_audit",
+      "reason": "历史日报有明确日期且链接密度高；抽样核验关键头条成立。重写会破坏当日信息快照，只需未来统一补 metadata。",
+      "static_signals": {
+        "bytes": 39988,
+        "url_count": 61,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": false
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "web-surfing/reports/ai-news-daily-2026-10-07.md",
+      "domain": "web-surfing",
+      "added_on": "2026-10-07",
+      "added_commit": "da403362f3a9a723f37d4488fc1c3fa63b0c97a9",
+      "generator_identity": "claude-code-glm-5.3-flash",
+      "generator_evidence": null,
+      "decision": "preserve_snapshot",
+      "priority": "P3",
+      "review_depth": "series_audit",
+      "reason": "历史日报有明确日期且链接密度高；抽样核验关键头条成立。重写会破坏当日信息快照，只需未来统一补 metadata。",
+      "static_signals": {
+        "bytes": 42483,
+        "url_count": 62,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": false
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-09-28_xiaoyuzhou-tulong-zhishu_eda-ai-chips.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-10-07",
+      "added_commit": "b09454eebdc1eeea6b963e7901595bf0f99a918d",
+      "generator_identity": "kimi-cli-k3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 10727,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-09-27_rss-guigu101_e253-ai-data-industry.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-10-07",
+      "added_commit": "b09454eebdc1eeea6b963e7901595bf0f99a918d",
+      "generator_identity": "kimi-cli-k3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 10802,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "web-surfing/reports/ai-news-daily-2026-10-06.md",
+      "domain": "web-surfing",
+      "added_on": "2026-10-06",
+      "added_commit": "61a992a3befa6635e9a8dfd6ce0306a4dace85e3",
+      "generator_identity": "claude-code-glm-5.3-flash",
+      "generator_evidence": null,
+      "decision": "preserve_snapshot",
+      "priority": "P3",
+      "review_depth": "series_audit",
+      "reason": "历史日报有明确日期且链接密度高；抽样核验关键头条成立。重写会破坏当日信息快照，只需未来统一补 metadata。",
+      "static_signals": {
+        "bytes": 42734,
+        "url_count": 68,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": false
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "web-surfing/reports/ai-news-daily-2026-10-05.md",
+      "domain": "web-surfing",
+      "added_on": "2026-10-05",
+      "added_commit": "3a417cb8cf7a8a6b63e816c66ff037ff96f56e09",
+      "generator_identity": "claude-code-glm-5.3-flash",
+      "generator_evidence": null,
+      "decision": "preserve_snapshot",
+      "priority": "P3",
+      "review_depth": "series_audit",
+      "reason": "历史日报有明确日期且链接密度高；抽样核验关键头条成立。重写会破坏当日信息快照，只需未来统一补 metadata。",
+      "static_signals": {
+        "bytes": 36413,
+        "url_count": 84,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": false
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-10-02_rss-wandian-latetalk_ai-quarterly-26q3.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-10-04",
+      "added_commit": "ef22425d51427f5358f636cadde354cece02d495",
+      "generator_identity": "kimi-cli-k3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 14884,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-09-24_rss-kedaibiao-lizheng_ai-hype-jev.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-10-04",
+      "added_commit": "ef22425d51427f5358f636cadde354cece02d495",
+      "generator_identity": "kimi-cli-k3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 8072,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-09-22_xiaoyuzhou-bannatie-zhoukan_no50-weekly-news.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-10-04",
+      "added_commit": "04d6d8ecdbaa7133f69ef0978a278fb58d167bf7",
+      "generator_identity": "claude-code-glm-5.3-flash",
+      "generator_evidence": null,
+      "decision": "repair",
+      "priority": "P2",
+      "review_depth": "deep_review",
+      "reason": "报告信息完整，但 transcript 曾经人工分片重录、无 polished；应补 artifact receipt、去内部路径，并明确哪些数字仅为节目转述。",
+      "static_signals": {
+        "bytes": 44110,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediated_on": "2026-10-20",
+      "remediation_status": "repaired"
+    },
+    {
+      "path": "podcast-learning/reports/2026-08-13_ximalaya-bannatie-gushipian_jiangzhushan.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-10-03",
+      "added_commit": "8018be0d1a81ad3043d1e8384626311cb236feec",
+      "generator_identity": "claude-code-glm-5.3-flash",
+      "generator_evidence": null,
+      "decision": "rewrite",
+      "priority": "P1",
+      "review_depth": "deep_review",
+      "reason": "无音频、无 transcript，正文由 shownotes 标题级推断与典籍记忆拼成；当前只能保留为降级索引，取得音频后重写。",
+      "static_signals": {
+        "bytes": 14959,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediated_on": "2026-10-20",
+      "remediation_status": "rewritten"
+    },
+    {
+      "path": "podcast-learning/reports/2026-09-23_ximalaya-ailianjinshu_luyang.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-10-02",
+      "added_commit": "bf3710fb490690dcacbd609fadf2aaa7a89a84ff",
+      "generator_identity": "claude-code-glm-5.3-flash",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 27555,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "web-surfing/reports/ai-news-daily-2026-10-01.md",
+      "domain": "web-surfing",
+      "added_on": "2026-10-01",
+      "added_commit": "7146d198345e8547907936b381ea7f2d1816270e",
+      "generator_identity": "claude-code-glm-5.3-flash",
+      "generator_evidence": null,
+      "decision": "preserve_snapshot",
+      "priority": "P3",
+      "review_depth": "series_audit",
+      "reason": "历史日报有明确日期且链接密度高；抽样核验关键头条成立。重写会破坏当日信息快照，只需未来统一补 metadata。",
+      "static_signals": {
+        "bytes": 42219,
+        "url_count": 59,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": false
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-09-27_xiaoyuzhou-42zhangjing_wuhaozhe.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-10-01",
+      "added_commit": "0d19de38dba6f7870034b591d9c56373afbaf927",
+      "generator_identity": "claude-code-glm-5.3-flash",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 28628,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-09-02_rss-wandian-latetalk_embodied-money.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-10-01",
+      "added_commit": "53ef6f474a71573bf0f9155e6a154e9a9cb7910f",
+      "generator_identity": "kimi-cli-k3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 10999,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "web-surfing/reports/ai-news-daily-2026-09-30.md",
+      "domain": "web-surfing",
+      "added_on": "2026-09-30",
+      "added_commit": "6e87565b83b66170f553d6baccbf05c3d2608fda",
+      "generator_identity": "claude-code-glm-5.3-flash",
+      "generator_evidence": null,
+      "decision": "preserve_snapshot",
+      "priority": "P3",
+      "review_depth": "series_audit",
+      "reason": "历史日报有明确日期且链接密度高；抽样核验关键头条成立。重写会破坏当日信息快照，只需未来统一补 metadata。",
+      "static_signals": {
+        "bytes": 40676,
+        "url_count": 56,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": false
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "web-surfing/reports/ai-news-daily-2026-09-29.md",
+      "domain": "web-surfing",
+      "added_on": "2026-09-29",
+      "added_commit": "fdc131e1db51d91a87c9ffdb554025e4685bee40",
+      "generator_identity": "claude-code-glm-5.3-flash",
+      "generator_evidence": null,
+      "decision": "preserve_snapshot",
+      "priority": "P3",
+      "review_depth": "series_audit",
+      "reason": "历史日报有明确日期且链接密度高；抽样核验关键头条成立。重写会破坏当日信息快照，只需未来统一补 metadata。",
+      "static_signals": {
+        "bytes": 40496,
+        "url_count": 59,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": false
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "web-surfing/reports/ai-news-daily-2026-09-28.md",
+      "domain": "web-surfing",
+      "added_on": "2026-09-28",
+      "added_commit": "c24fbe848c394387bceea359062b260e395ed05a",
+      "generator_identity": "claude-code-glm-5.3-flash",
+      "generator_evidence": null,
+      "decision": "preserve_snapshot",
+      "priority": "P3",
+      "review_depth": "series_audit",
+      "reason": "历史日报有明确日期且链接密度高；抽样核验关键头条成立。重写会破坏当日信息快照，只需未来统一补 metadata。",
+      "static_signals": {
+        "bytes": 26550,
+        "url_count": 45,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": false
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-09-18_bilibili-yilun-ai_huxiuhan.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-09-28",
+      "added_commit": "d5b1e32bbc6cba1241aac14b29045d72427f8baf",
+      "generator_identity": "kimi-cli-k3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 29513,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-07-04_bilibili-kema_huangxiang-brain.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-09-27",
+      "added_commit": "9e257a421e1f8f70fd77f30648115c00910d99b2",
+      "generator_identity": "kimi-cli-k3",
+      "generator_evidence": null,
+      "decision": "rewrite",
+      "priority": "P0",
+      "review_depth": "deep_review",
+      "reason": "核心可操作建议建立在嘉宾口述且未定位的一手研究上；11.5 小时空腹研究未检出，MIT/Harvard 数字与研究设计被混写，医学与教育风险较高。",
+      "static_signals": {
+        "bytes": 11831,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediated_on": "2026-10-20",
+      "remediation_status": "rewritten"
+    },
+    {
+      "path": "podcast-learning/reports/2026-09-14_ximalaya-ailianjinshu_chenbin.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-09-26",
+      "added_commit": "5269b2647c28ca81ec835c517a2e07cadc9263df",
+      "generator_identity": "kimi-cli-k3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 11876,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "web-surfing/reports/ai-news-daily-2026-09-25.md",
+      "domain": "web-surfing",
+      "added_on": "2026-09-25",
+      "added_commit": "d280b46eaf3cbe8ae30ef58513bbeee0b9d0b308",
+      "generator_identity": "claude-code-glm-5.3-flash",
+      "generator_evidence": null,
+      "decision": "preserve_snapshot",
+      "priority": "P3",
+      "review_depth": "series_audit",
+      "reason": "历史日报有明确日期且链接密度高；抽样核验关键头条成立。重写会破坏当日信息快照，只需未来统一补 metadata。",
+      "static_signals": {
+        "bytes": 33519,
+        "url_count": 57,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": false
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-09-24_xiaoyuzhou-guiji-lichang_zhangfan-fde.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-09-25",
+      "added_commit": "22672715b328ff7ac675b0a004f67f94e18b991f",
+      "generator_identity": "claude-code-glm-5.3-1m",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 23185,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-08-17_xiaoyuzhou-cihua-dangzhen_distill.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-09-25",
+      "added_commit": "22672715b328ff7ac675b0a004f67f94e18b991f",
+      "generator_identity": "claude-code-glm-5.3-1m",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 17210,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "web-surfing/reports/ai-news-daily-2026-09-24.md",
+      "domain": "web-surfing",
+      "added_on": "2026-09-24",
+      "added_commit": "3a4db559b43ed2c91c4a4102b4b1907573c36b9f",
+      "generator_identity": "claude-code-glm-5.3-flash",
+      "generator_evidence": null,
+      "decision": "preserve_snapshot",
+      "priority": "P3",
+      "review_depth": "series_audit",
+      "reason": "历史日报有明确日期且链接密度高；抽样核验关键头条成立。重写会破坏当日信息快照，只需未来统一补 metadata。",
+      "static_signals": {
+        "bytes": 32144,
+        "url_count": 66,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": false
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "web-surfing/reports/ai-news-daily-2026-09-23.md",
+      "domain": "web-surfing",
+      "added_on": "2026-09-23",
+      "added_commit": "ff08b383d8b26167cbd40a84faf93caa02abedb3",
+      "generator_identity": "claude-code-glm-5.3-flash",
+      "generator_evidence": null,
+      "decision": "preserve_snapshot",
+      "priority": "P3",
+      "review_depth": "series_audit",
+      "reason": "历史日报有明确日期且链接密度高；抽样核验关键头条成立。重写会破坏当日信息快照，只需未来统一补 metadata。",
+      "static_signals": {
+        "bytes": 44841,
+        "url_count": 92,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": false
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-09-16_xiaoyuzhou-cihua-dangzhen_zhangtuoken.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-09-23",
+      "added_commit": "2a264f8fb1f6afbfa6608e7dc2056f08779e37be",
+      "generator_identity": "kimi-cli-k3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 10279,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-09-15_rss-guigu101_e251-inference-chips.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-09-23",
+      "added_commit": "2a264f8fb1f6afbfa6608e7dc2056f08779e37be",
+      "generator_identity": "kimi-cli-k3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 10196,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-09-14_xiaoyuzhou-qizhulou_2026q3-macro.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-09-23",
+      "added_commit": "825dff28ccc2d90a69b2506f67c80295509f4d08",
+      "generator_identity": "kimi-cli-k3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 12435,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-09-11_bilibili-shigerenwu_chenglesong.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-09-23",
+      "added_commit": "6f654e30a77788d8c0e9e85628569bfa54691fa9",
+      "generator_identity": "claude-code-glm-5.3-1m",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 19299,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "ai-learning/reports/2026-09-22_meta-muse_product-research.md",
+      "domain": "ai-learning",
+      "added_on": "2026-09-23",
+      "added_commit": "6f654e30a77788d8c0e9e85628569bfa54691fa9",
+      "generator_identity": "claude-code-glm-5.3-1m",
+      "generator_evidence": null,
+      "decision": "rewrite",
+      "priority": "P0",
+      "review_depth": "deep_review",
+      "reason": "核心标题与结论依赖单一二手 APK 逆向文章，关键权限、端点与架构未由实际 APK 或第二来源验证；需以真实 APK/官方材料重建证据链。",
+      "static_signals": {
+        "bytes": 12510,
+        "url_count": 0,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": true
+      },
+      "remediated_on": "2026-10-20",
+      "remediation_status": "rewritten"
+    },
+    {
+      "path": "web-surfing/reports/ai-news-daily-2026-09-22.md",
+      "domain": "web-surfing",
+      "added_on": "2026-09-22",
+      "added_commit": "3408072e94c3dd17006ff6257bd37abb0520a7a5",
+      "generator_identity": "claude-code-glm-5.3-flash",
+      "generator_evidence": null,
+      "decision": "preserve_snapshot",
+      "priority": "P3",
+      "review_depth": "series_audit",
+      "reason": "历史日报有明确日期且链接密度高；抽样核验关键头条成立。重写会破坏当日信息快照，只需未来统一补 metadata。",
+      "static_signals": {
+        "bytes": 45244,
+        "url_count": 88,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": false
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-09-20_xiaoyuzhou-crossing_xumengdi.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-09-22",
+      "added_commit": "9dd9404c74981fd3fd08f8fcc0ee554d3bcab029",
+      "generator_identity": "kimi-cli-k3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 11287,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-09-17_rss-kedaibiao-lizheng_jinjing.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-09-22",
+      "added_commit": "9dd9404c74981fd3fd08f8fcc0ee554d3bcab029",
+      "generator_identity": "kimi-cli-k3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 10448,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-09-15_xiaoyuzhou-tulong-zhishu_next-act.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-09-22",
+      "added_commit": "9dd9404c74981fd3fd08f8fcc0ee554d3bcab029",
+      "generator_identity": "kimi-cli-k3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 10295,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "ai-learning/reports/knowledge_reports/Laya_System1决策模型_深度解析_20260922.md",
+      "domain": "ai-learning",
+      "added_on": "2026-09-22",
+      "added_commit": "1aef2d3bdaba4dcb81f5a9b23c4e1f4d0617296c",
+      "generator_identity": "zcode-glm-5.3",
+      "generator_evidence": null,
+      "decision": "repair",
+      "priority": "P2",
+      "review_depth": "deep_review",
+      "reason": "源码与实测充分，但需固定公共 commit、刷新易变统计并明确与 GitHub repo 报告的职责边界。",
+      "static_signals": {
+        "bytes": 25854,
+        "url_count": 4,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": true
+      },
+      "remediated_on": "2026-10-20",
+      "remediation_status": "repaired"
+    },
+    {
+      "path": "web-surfing/reports/ai-news-daily-2026-09-21.md",
+      "domain": "web-surfing",
+      "added_on": "2026-09-21",
+      "added_commit": "eed897607f0de20de1bc13965db14c8ac6691dd8",
+      "generator_identity": "claude-code-glm-5.3-flash",
+      "generator_evidence": null,
+      "decision": "preserve_snapshot",
+      "priority": "P3",
+      "review_depth": "series_audit",
+      "reason": "历史日报有明确日期且链接密度高；抽样核验关键头条成立。重写会破坏当日信息快照，只需未来统一补 metadata。",
+      "static_signals": {
+        "bytes": 44455,
+        "url_count": 82,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": false
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "github-trending-analyzer/reports/research_trycua_cua_sourcecode.md",
+      "domain": "github-trending-analyzer",
+      "added_on": "2026-09-20",
+      "added_commit": "f52c4bcc9ebb1639f30c32484ac64d8d234077cd",
+      "generator_identity": "kimi-cli-k3",
+      "generator_evidence": null,
+      "decision": "repair",
+      "priority": "P1",
+      "review_depth": "deep_review",
+      "reason": "源码地图质量高，但无 frontmatter且写入 ~/workspace 私有路径；应换成公共 commit/file 证据。",
+      "static_signals": {
+        "bytes": 15337,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": false
+      },
+      "remediated_on": "2026-10-20",
+      "remediation_status": "repaired"
+    },
+    {
+      "path": "web-surfing/reports/ai-news-daily-2026-09-18.md",
+      "domain": "web-surfing",
+      "added_on": "2026-09-18",
+      "added_commit": "31d328b9974d8a9b924ff1bc91cd913e190302fe",
+      "generator_identity": "claude-code-glm-5.3-flash",
+      "generator_evidence": null,
+      "decision": "preserve_snapshot",
+      "priority": "P3",
+      "review_depth": "series_audit",
+      "reason": "历史日报有明确日期且链接密度高；抽样核验关键头条成立。重写会破坏当日信息快照，只需未来统一补 metadata。",
+      "static_signals": {
+        "bytes": 50229,
+        "url_count": 96,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": false
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "web-surfing/reports/ai-news-daily-2026-09-17.md",
+      "domain": "web-surfing",
+      "added_on": "2026-09-17",
+      "added_commit": "d0728439d5ff548f53ee260ce18e8c34e98f7738",
+      "generator_identity": "claude-code-glm-5.3-flash",
+      "generator_evidence": null,
+      "decision": "preserve_snapshot",
+      "priority": "P3",
+      "review_depth": "series_audit",
+      "reason": "历史日报有明确日期且链接密度高；抽样核验关键头条成立。重写会破坏当日信息快照，只需未来统一补 metadata。",
+      "static_signals": {
+        "bytes": 38325,
+        "url_count": 92,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": false
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "web-surfing/reports/ai-news-daily-2026-09-16.md",
+      "domain": "web-surfing",
+      "added_on": "2026-09-16",
+      "added_commit": "8d932662c4e14c39bb4df0aaa6a9c8da859a7d01",
+      "generator_identity": "claude-code-glm-5.3-flash",
+      "generator_evidence": null,
+      "decision": "preserve_snapshot",
+      "priority": "P3",
+      "review_depth": "series_audit",
+      "reason": "历史日报有明确日期且链接密度高；抽样核验关键头条成立。重写会破坏当日信息快照，只需未来统一补 metadata。",
+      "static_signals": {
+        "bytes": 32886,
+        "url_count": 81,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": false
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-07-24_bilibili-suochang-linchao_ai-bubble-2027.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-09-15",
+      "added_commit": "381923fe4437693217e0b52fec4b134055903315",
+      "generator_identity": "claude-code-glm-5.3-1m",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 16824,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "ai-learning/reports/paper_analyses/47_byte_distillation_2026.md",
+      "domain": "ai-learning",
+      "added_on": "2026-09-15",
+      "added_commit": "7d927190846d211763a1ad7600f2725e70e5d34e",
+      "generator_identity": "kimi-cli-k3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "论证主线、来源层级与推断边界总体成立；现有问题不足以要求重写。",
+      "static_signals": {
+        "bytes": 16986,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "web-surfing/reports/ai-news-daily-2026-09-14.md",
+      "domain": "web-surfing",
+      "added_on": "2026-09-14",
+      "added_commit": "65b980e7207f49cb2310fcd076c7203ad419d9ce",
+      "generator_identity": "claude-code-glm-5.3-flash",
+      "generator_evidence": null,
+      "decision": "preserve_snapshot",
+      "priority": "P3",
+      "review_depth": "series_audit",
+      "reason": "历史日报有明确日期且链接密度高；抽样核验关键头条成立。重写会破坏当日信息快照，只需未来统一补 metadata。",
+      "static_signals": {
+        "bytes": 27037,
+        "url_count": 79,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": false
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-09-09_xiaoyuzhou-yilun-ai_frontier-no-llm.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-09-14",
+      "added_commit": "99f7c37227c45f793a3086cc32d4c757b1cdfc4d",
+      "generator_identity": "zcode-glm-5.3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 26322,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-09-13",
+      "added_commit": "ca0bfae50841e300e29637640131f3f47c47ec44",
+      "generator_identity": "kimi-cli-k3",
+      "generator_evidence": null,
+      "decision": "repair",
+      "priority": "P2",
+      "review_depth": "deep_review",
+      "reason": "双源读法很好，但公开报告暴露本地书籍路径；改为规范书目信息和章节页码即可。",
+      "static_signals": {
+        "bytes": 21214,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediated_on": "2026-10-20",
+      "remediation_status": "repaired"
+    },
+    {
+      "path": "podcast-learning/reports/2026-09-12_bilibili-cls-tongxue_fangchan-yijiuhuanxin.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-09-12",
+      "added_commit": "23ee257ffd0998d81d61acdfedbceaa92b6d10c4",
+      "generator_identity": "zcode-glm-5.3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 18857,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-09-11_bilibili-liangzi-fangtanlu_wangjian.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-09-12",
+      "added_commit": "bb33a11f80697cb24ca6dbb54c4e0f188f4fc25a",
+      "generator_identity": "zcode-glm-5.3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 10355,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "ai-learning/reports/knowledge_reports/王坚三分智能框架与机器意识_深度解析_20260912.md",
+      "domain": "ai-learning",
+      "added_on": "2026-09-12",
+      "added_commit": "bb33a11f80697cb24ca6dbb54c4e0f188f4fc25a",
+      "generator_identity": "zcode-glm-5.3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "论证主线、来源层级与推断边界总体成立；现有问题不足以要求重写。",
+      "static_signals": {
+        "bytes": 17172,
+        "url_count": 0,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "web-surfing/reports/ai-news-daily-2026-09-11.md",
+      "domain": "web-surfing",
+      "added_on": "2026-09-11",
+      "added_commit": "eec8f3fd6fde986618a65047e4adeba676cb89ef",
+      "generator_identity": "zcode-glm-5.3",
+      "generator_evidence": null,
+      "decision": "preserve_snapshot",
+      "priority": "P3",
+      "review_depth": "series_audit",
+      "reason": "历史日报有明确日期且链接密度高；抽样核验关键头条成立。重写会破坏当日信息快照，只需未来统一补 metadata。",
+      "static_signals": {
+        "bytes": 26093,
+        "url_count": 73,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": false
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-09-05_bilibili-changtan_chenglesong.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-09-11",
+      "added_commit": "5fa26b7fe23daf749b01a7c852e15d1772f98429",
+      "generator_identity": "zcode-glm-5.3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 40087,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-09-03_xiaoyuzhou-zhangxiaojun_zengming.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-09-11",
+      "added_commit": "a5b74fa40662bcd1c8ef98571a1dc374df881bae",
+      "generator_identity": "kimi-cli-k3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 22166,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "ai-learning/reports/knowledge_reports/Anthropic经济情景模型_深度解析_20260911.md",
+      "domain": "ai-learning",
+      "added_on": "2026-09-11",
+      "added_commit": "f2a61ebf21aceb911307367a2279b0147b423dde",
+      "generator_identity": "kimi-cli-k3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "论证主线、来源层级与推断边界总体成立；现有问题不足以要求重写。",
+      "static_signals": {
+        "bytes": 16002,
+        "url_count": 2,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "web-surfing/reports/ai-news-daily-2026-09-10.md",
+      "domain": "web-surfing",
+      "added_on": "2026-09-10",
+      "added_commit": "ef704816bc7debe52edc2aa08bfca42e4313ccd3",
+      "generator_identity": "zcode-glm-5.3",
+      "generator_evidence": null,
+      "decision": "preserve_snapshot",
+      "priority": "P3",
+      "review_depth": "series_audit",
+      "reason": "历史日报有明确日期且链接密度高；抽样核验关键头条成立。重写会破坏当日信息快照，只需未来统一补 metadata。",
+      "static_signals": {
+        "bytes": 24556,
+        "url_count": 77,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": false
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "web-surfing/reports/ai-news-daily-2026-09-09.md",
+      "domain": "web-surfing",
+      "added_on": "2026-09-09",
+      "added_commit": "e97097255dfdec63aa6b16331141d98aaa691136",
+      "generator_identity": "zcode-glm-5.3",
+      "generator_evidence": null,
+      "decision": "preserve_snapshot",
+      "priority": "P3",
+      "review_depth": "series_audit",
+      "reason": "历史日报有明确日期且链接密度高；抽样核验关键头条成立。重写会破坏当日信息快照，只需未来统一补 metadata。",
+      "static_signals": {
+        "bytes": 17523,
+        "url_count": 65,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": false
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "ai-learning/reports/knowledge_reports/vLLM_调度器_continuous_batching真身_20260909.md",
+      "domain": "ai-learning",
+      "added_on": "2026-09-09",
+      "added_commit": "5fad443654d03eeda760ab4ce9ff1e313aaccb7b",
+      "generator_identity": "zcode-glm-5.3",
+      "generator_evidence": null,
+      "decision": "repair",
+      "priority": "P1",
+      "review_depth": "deep_review",
+      "reason": "源码判断有价值，但仅引用本地 checkout 的行号，缺公共 commit 链接；旧版占位符启发式也需澄清。",
+      "static_signals": {
+        "bytes": 14374,
+        "url_count": 0,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": true
+      },
+      "remediated_on": "2026-10-20",
+      "remediation_status": "repaired"
+    },
+    {
+      "path": "web-surfing/reports/ai-news-daily-2026-09-08.md",
+      "domain": "web-surfing",
+      "added_on": "2026-09-08",
+      "added_commit": "0ebc3006be03985e3facf1cef76a61d548388804",
+      "generator_identity": "zcode-glm-5.3",
+      "generator_evidence": null,
+      "decision": "preserve_snapshot",
+      "priority": "P3",
+      "review_depth": "series_audit",
+      "reason": "历史日报有明确日期且链接密度高；抽样核验关键头条成立。重写会破坏当日信息快照，只需未来统一补 metadata。",
+      "static_signals": {
+        "bytes": 14667,
+        "url_count": 28,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": false
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "web-surfing/reports/ai-news-daily-2026-09-04.md",
+      "domain": "web-surfing",
+      "added_on": "2026-09-04",
+      "added_commit": "9b83c30332f84892bdb29aa431691ca65659e58b",
+      "generator_identity": "zcode-glm-5.3",
+      "generator_evidence": null,
+      "decision": "preserve_snapshot",
+      "priority": "P3",
+      "review_depth": "series_audit",
+      "reason": "历史日报有明确日期且链接密度高；抽样核验关键头条成立。重写会破坏当日信息快照，只需未来统一补 metadata。",
+      "static_signals": {
+        "bytes": 20281,
+        "url_count": 52,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": false
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "web-surfing/reports/ai-news-daily-2026-09-03.md",
+      "domain": "web-surfing",
+      "added_on": "2026-09-03",
+      "added_commit": "7a20e5dcfd11dbc42ff5dd18bcee826253c661aa",
+      "generator_identity": "zcode-glm-5.3",
+      "generator_evidence": null,
+      "decision": "preserve_snapshot",
+      "priority": "P3",
+      "review_depth": "series_audit",
+      "reason": "历史日报有明确日期且链接密度高；抽样核验关键头条成立。重写会破坏当日信息快照，只需未来统一补 metadata。",
+      "static_signals": {
+        "bytes": 22240,
+        "url_count": 53,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": false
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "web-surfing/reports/ai-news-daily-2026-09-02.md",
+      "domain": "web-surfing",
+      "added_on": "2026-09-02",
+      "added_commit": "025913e44bdddc7f774910228c06d5691413f37b",
+      "generator_identity": "zcode-glm-5.3",
+      "generator_evidence": null,
+      "decision": "preserve_snapshot",
+      "priority": "P3",
+      "review_depth": "series_audit",
+      "reason": "历史日报有明确日期且链接密度高；抽样核验关键头条成立。重写会破坏当日信息快照，只需未来统一补 metadata。",
+      "static_signals": {
+        "bytes": 19667,
+        "url_count": 47,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": false
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-09-02_multi_kimi-k3-dueling-reads.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-09-02",
+      "added_commit": "18d70bd1e56e480f8b281af34f13caa3649dd19f",
+      "generator_identity": "claude-code-glm-5.3-1m",
+      "generator_evidence": null,
+      "decision": "repair",
+      "priority": "P2",
+      "review_depth": "deep_review",
+      "reason": "对照价值高，但跨期来源路径和限制不够明确；补两份单期报告/原始材料的职责与外推边界。",
+      "static_signals": {
+        "bytes": 11909,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": true
+      },
+      "remediated_on": "2026-10-20",
+      "remediation_status": "repaired"
+    },
+    {
+      "path": "podcast-learning/reports/2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-09-02",
+      "added_commit": "18d70bd1e56e480f8b281af34f13caa3649dd19f",
+      "generator_identity": "claude-code-glm-5.3-1m",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 20348,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-08-04_rss-wandian-latetalk_kimi-k3.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-09-02",
+      "added_commit": "18d70bd1e56e480f8b281af34f13caa3649dd19f",
+      "generator_identity": "claude-code-glm-5.3-1m",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 20286,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "web-surfing/reports/ai-news-daily-2026-09-01.md",
+      "domain": "web-surfing",
+      "added_on": "2026-09-01",
+      "added_commit": "fa511092161acad9b21ec1049f290c39e196e410",
+      "generator_identity": "zcode-glm-5.3",
+      "generator_evidence": null,
+      "decision": "preserve_snapshot",
+      "priority": "P3",
+      "review_depth": "series_audit",
+      "reason": "历史日报有明确日期且链接密度高；抽样核验关键头条成立。重写会破坏当日信息快照，只需未来统一补 metadata。",
+      "static_signals": {
+        "bytes": 17793,
+        "url_count": 41,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": false
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "web-surfing/reports/ai-news-daily-2026-08-31.md",
+      "domain": "web-surfing",
+      "added_on": "2026-08-31",
+      "added_commit": "bb79d02dd0d39eca51f61a4b2f7cb3470b0b2ae6",
+      "generator_identity": "zcode-glm-5.3",
+      "generator_evidence": null,
+      "decision": "preserve_snapshot",
+      "priority": "P3",
+      "review_depth": "series_audit",
+      "reason": "历史日报有明确日期且链接密度高；抽样核验关键头条成立。重写会破坏当日信息快照，只需未来统一补 metadata。",
+      "static_signals": {
+        "bytes": 15557,
+        "url_count": 38,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": false
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "ai-learning/reports/knowledge_reports/ChatGPT_Work_能力面与Harness样本_深度解析_20260831.md",
+      "domain": "ai-learning",
+      "added_on": "2026-08-31",
+      "added_commit": "ed6b9e3d0900b00216302c5aad4671e4b891b4be",
+      "generator_identity": "trae-openrouter-3o",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "论证主线、来源层级与推断边界总体成立；现有问题不足以要求重写。",
+      "static_signals": {
+        "bytes": 27098,
+        "url_count": 5,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "web-surfing/reports/ai-news-daily-2026-08-28.md",
+      "domain": "web-surfing",
+      "added_on": "2026-08-28",
+      "added_commit": "93e05710e109e8442af2c8832ee6d30d471f32e2",
+      "generator_identity": "zcode-glm-5.3",
+      "generator_evidence": null,
+      "decision": "preserve_snapshot",
+      "priority": "P3",
+      "review_depth": "series_audit",
+      "reason": "历史日报有明确日期且链接密度高；抽样核验关键头条成立。重写会破坏当日信息快照，只需未来统一补 metadata。",
+      "static_signals": {
+        "bytes": 15929,
+        "url_count": 46,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": false
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "web-surfing/reports/huizhou-rental-guide-2026-09.md",
+      "domain": "web-surfing",
+      "added_on": "2026-08-27",
+      "added_commit": "fa52c13f9c5fcf6ef5a9d6429edf9ec3b5f3f6ac",
+      "generator_identity": "claude-code-glm-5.3-1m",
+      "generator_evidence": null,
+      "decision": "repair",
+      "priority": "P2",
+      "review_depth": "deep_review",
+      "reason": "决策信息充分且多轮订正，但缺规范 frontmatter，部分 Gemini/搜索聚合口径应降格并标过期时间。",
+      "static_signals": {
+        "bytes": 49807,
+        "url_count": 0,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediated_on": "2026-10-20",
+      "remediation_status": "repaired"
+    },
+    {
+      "path": "web-surfing/reports/ai-news-daily-2026-08-27.md",
+      "domain": "web-surfing",
+      "added_on": "2026-08-27",
+      "added_commit": "b451653adcaa41c5d731ea2281a7652a098c52d9",
+      "generator_identity": "zcode-glm-5.3",
+      "generator_evidence": null,
+      "decision": "preserve_snapshot",
+      "priority": "P3",
+      "review_depth": "series_audit",
+      "reason": "历史日报有明确日期且链接密度高；抽样核验关键头条成立。重写会破坏当日信息快照，只需未来统一补 metadata。",
+      "static_signals": {
+        "bytes": 15159,
+        "url_count": 44,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": false
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "web-surfing/reports/ai-news-daily-2026-08-26.md",
+      "domain": "web-surfing",
+      "added_on": "2026-08-26",
+      "added_commit": "4d6b02e2cb7b1b0619ac9287c4877f367c5fa4d4",
+      "generator_identity": "zcode-glm-5.3",
+      "generator_evidence": null,
+      "decision": "preserve_snapshot",
+      "priority": "P3",
+      "review_depth": "series_audit",
+      "reason": "历史日报有明确日期且链接密度高；抽样核验关键头条成立。重写会破坏当日信息快照，只需未来统一补 metadata。",
+      "static_signals": {
+        "bytes": 13712,
+        "url_count": 41,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": false
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "web-surfing/reports/ai-news-daily-2026-08-25.md",
+      "domain": "web-surfing",
+      "added_on": "2026-08-25",
+      "added_commit": "ce04a0de4827caa71b8b6891043789aae2da7c54",
+      "generator_identity": "zcode-glm-5.3",
+      "generator_evidence": null,
+      "decision": "preserve_snapshot",
+      "priority": "P3",
+      "review_depth": "series_audit",
+      "reason": "历史日报有明确日期且链接密度高；抽样核验关键头条成立。重写会破坏当日信息快照，只需未来统一补 metadata。",
+      "static_signals": {
+        "bytes": 12447,
+        "url_count": 43,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": false
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-08-21_bilibili-fanshu_yanzheng.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-08-25",
+      "added_commit": "19d00a650331d520a0a0d083d8d28c1cbbd5cd32",
+      "generator_identity": "kimi-cli-k3",
+      "generator_evidence": null,
+      "decision": "repair",
+      "priority": "P1",
+      "review_depth": "deep_review",
+      "reason": "大众医学转述把 Omega-6 等复杂问题简化成单向促炎；需补一手来源并把自查建议降格。",
+      "static_signals": {
+        "bytes": 12193,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediated_on": "2026-10-20",
+      "remediation_status": "repaired"
+    },
+    {
+      "path": "web-surfing/reports/ai-news-daily-2026-08-24.md",
+      "domain": "web-surfing",
+      "added_on": "2026-08-24",
+      "added_commit": "a1ed889b617d0fae2a0f5df638e6b92ae3fab746",
+      "generator_identity": "zcode-glm-5.3",
+      "generator_evidence": null,
+      "decision": "preserve_snapshot",
+      "priority": "P3",
+      "review_depth": "series_audit",
+      "reason": "历史日报有明确日期且链接密度高；抽样核验关键头条成立。重写会破坏当日信息快照，只需未来统一补 metadata。",
+      "static_signals": {
+        "bytes": 11768,
+        "url_count": 37,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": false
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-08-24_xiaoyuzhou-boluo-jiankang_liufangqi.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-08-24",
+      "added_commit": "c3098761b89eab9419467083e8dd2a8975bd0be8",
+      "generator_identity": "kimi-cli-k3",
+      "generator_evidence": null,
+      "decision": "repair",
+      "priority": "P1",
+      "review_depth": "deep_review",
+      "reason": "肠癌治疗数据和“先别手术”传播风险高，虽有声明但核心数字未对应具体研究；需逐项绑定指南/试验适用边界。",
+      "static_signals": {
+        "bytes": 16290,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediated_on": "2026-10-20",
+      "remediation_status": "repaired"
+    },
+    {
+      "path": "web-surfing/reports/ai-news-daily-2026-08-23.md",
+      "domain": "web-surfing",
+      "added_on": "2026-08-23",
+      "added_commit": "82be6d554d15de060c29a6173874cd33debc11b5",
+      "generator_identity": "zcode-glm-5.3",
+      "generator_evidence": null,
+      "decision": "preserve_snapshot",
+      "priority": "P3",
+      "review_depth": "series_audit",
+      "reason": "历史日报有明确日期且链接密度高；抽样核验关键头条成立。重写会破坏当日信息快照，只需未来统一补 metadata。",
+      "static_signals": {
+        "bytes": 10645,
+        "url_count": 33,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": false
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-08-04_rss-guigu101_shengying.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-08-23",
+      "added_commit": "f6a16adb0b4fd30d3b16d40c303d1cb8fc317385",
+      "generator_identity": "kimi-cli-k3",
+      "generator_evidence": null,
+      "decision": "repair",
+      "priority": "P1",
+      "review_depth": "deep_review",
+      "reason": "公开报告包含本地/私有 URL 路径，市场融资数字与人名仍有未核实项；需清理路径并补公开来源。",
+      "static_signals": {
+        "bytes": 18112,
+        "url_count": 2,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediated_on": "2026-10-20",
+      "remediation_status": "repaired"
+    },
+    {
+      "path": "podcast-learning/reports/2026-07-28_xiaoyuzhou-zhangxiaojun_youkaichao.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-08-22",
+      "added_commit": "59e0d258513947bc08ea53404563439db2d65b99",
+      "generator_identity": "kimi-cli-k3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 24309,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "ai-learning/reports/knowledge_reports/vLLM_V1架构总览_深度解析_20260821.md",
+      "domain": "ai-learning",
+      "added_on": "2026-08-21",
+      "added_commit": "7f887db8f6a26843528fad096e7b9c8a35677931",
+      "generator_identity": "kimi-cli-k3",
+      "generator_evidence": null,
+      "decision": "repair",
+      "priority": "P1",
+      "review_depth": "deep_review",
+      "reason": "公共报告写入真实本机绝对路径，且源码证据只对本地 tag 可读；改为公开仓 commit/文件链接即可。",
+      "static_signals": {
+        "bytes": 22965,
+        "url_count": 2,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": true
+      },
+      "remediated_on": "2026-10-20",
+      "remediation_status": "repaired"
+    },
+    {
+      "path": "podcast-learning/reports/2026-07-30_xiaoyuzhou-wandian-latetalk_chenmian.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-07-31",
+      "added_commit": "f07cd0ff09a1f245e07e9756d3fe64e7f5828d34",
+      "generator_identity": "trae-openrouter-3o",
+      "generator_evidence": null,
+      "decision": "repair",
+      "priority": "P2",
+      "review_depth": "deep_review",
+      "reason": "内容可信且自述边界清楚；需明确 polished=false/缺失原因并补标准来源定位。",
+      "static_signals": {
+        "bytes": 15527,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediated_on": "2026-10-20",
+      "remediation_status": "repaired"
+    },
+    {
+      "path": "ai-learning/reports/knowledge_reports/中国AI创业与一级市场故事线_从模型信仰到应用求生_20260731.md",
+      "domain": "ai-learning",
+      "added_on": "2026-07-31",
+      "added_commit": "4ed44d038b972f672587393f6807afd281451d7f",
+      "generator_identity": "trae-openrouter-3o",
+      "generator_evidence": null,
+      "decision": "repair",
+      "priority": "P1",
+      "review_depth": "deep_review",
+      "reason": "大量数字有来源但质量层级混杂，核心“价值单向迁徙”外推强于证据；需降格低质量二手源并收紧全称结论。",
+      "static_signals": {
+        "bytes": 16462,
+        "url_count": 10,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": true
+      },
+      "remediated_on": "2026-10-20",
+      "remediation_status": "repaired"
+    },
+    {
+      "path": "ai-learning/reports/knowledge_reports/AI应用创业生死录_Evoken三产品商业分析_20260731.md",
+      "domain": "ai-learning",
+      "added_on": "2026-07-31",
+      "added_commit": "447ef32e78442f145989c161ad69c2c6313f3533",
+      "generator_identity": "trae-openrouter-3o",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "论证主线、来源层级与推断边界总体成立；现有问题不足以要求重写。",
+      "static_signals": {
+        "bytes": 15894,
+        "url_count": 4,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "ai-learning/reports/knowledge_reports/IntelligenceCurse_智能诅咒_科普讲解_20260730.md",
+      "domain": "ai-learning",
+      "added_on": "2026-07-30",
+      "added_commit": "bd8ae1c044614d56e96844c3d7613e245f2de0bc",
+      "generator_identity": "trae-openrouter-3o",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "论证主线、来源层级与推断边界总体成立；现有问题不足以要求重写。",
+      "static_signals": {
+        "bytes": 18663,
+        "url_count": 4,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "web-surfing/reports/jdrama-top10-2016-2025-seedhub.md",
+      "domain": "web-surfing",
+      "added_on": "2026-07-29",
+      "added_commit": "b1c9fd601aca89a15a0d5763c4da70ead2749f85",
+      "generator_identity": "kimi-cli-k3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "任务范围和数据时点清楚，适合作为当时的检索结果保留。",
+      "static_signals": {
+        "bytes": 4825,
+        "url_count": 20,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": false
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "web-surfing/reports/cooking-logic-timing-douyin.md",
+      "domain": "web-surfing",
+      "added_on": "2026-07-29",
+      "added_commit": "b1c9fd601aca89a15a0d5763c4da70ead2749f85",
+      "generator_identity": "kimi-cli-k3",
+      "generator_evidence": null,
+      "decision": "rewrite",
+      "priority": "P1",
+      "review_depth": "deep_review",
+      "reason": "将视频口述直接写成烹饪化学结论，盐、热锅冷油、谷氨酸钠等多处存在过度简化或常见误区；无公开原视频链接且暴露本地路径。",
+      "static_signals": {
+        "bytes": 4268,
+        "url_count": 0,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": false
+      },
+      "remediated_on": "2026-10-20",
+      "remediation_status": "rewritten"
+    },
+    {
+      "path": "podcast-learning/reports/2026-07-29_bilibili-kedaibiao-lizheng_jove-fde.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-07-29",
+      "added_commit": "0a8b2f0d5a5eabf09bbd4506160be3d38ce60910",
+      "generator_identity": "kimi-cli-k3",
+      "generator_evidence": null,
+      "decision": "repair",
+      "priority": "P2",
+      "review_depth": "deep_review",
+      "reason": "正文证据分层清楚，但 frontmatter 缺 transcript/polished 路径，已有文件可直接回填。",
+      "static_signals": {
+        "bytes": 9890,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": true
+      },
+      "remediated_on": "2026-10-20",
+      "remediation_status": "repaired"
+    },
+    {
+      "path": "ai-practice/experiments/book-to-skill-demo/评估笔记_book-to-skill能否优化学习项目_20260729.md",
+      "domain": "ai-practice",
+      "added_on": "2026-07-29",
+      "added_commit": "8fa1de46bfd450a7eba8954c305faa6775470b50",
+      "generator_identity": "trae-openrouter-3o",
+      "generator_evidence": null,
+      "decision": "repair",
+      "priority": "P2",
+      "review_depth": "deep_review",
+      "reason": "实验结论与真实输出充分；补规范 frontmatter、产物路径与环境版本即可。",
+      "static_signals": {
+        "bytes": 4782,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediated_on": "2026-10-20",
+      "remediation_status": "repaired"
+    },
+    {
+      "path": "ai-learning/reports/knowledge_reports/Evoken陈冕晚点访谈_AI应用生存策略_20260729.md",
+      "domain": "ai-learning",
+      "added_on": "2026-07-29",
+      "added_commit": "5b51dd51c66714ba34ffcaededf58cca849c46da",
+      "generator_identity": "kimi-cli-k3",
+      "generator_evidence": null,
+      "decision": "repair",
+      "priority": "P2",
+      "review_depth": "deep_review",
+      "reason": "访谈自述与分析已分层，但来源字符串不可直接复核；补原访谈链接和可验证经营数据即可。",
+      "static_signals": {
+        "bytes": 9021,
+        "url_count": 0,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": true
+      },
+      "remediated_on": "2026-10-20",
+      "remediation_status": "repaired"
+    },
+    {
+      "path": "ai-learning/reports/knowledge_reports/KimiK3_信息流三方向_科普讲解_20260728.md",
+      "domain": "ai-learning",
+      "added_on": "2026-07-28",
+      "added_commit": "6a3d4a26b26320fb5a1255443d80011c78be0a85",
+      "generator_identity": "trae-openrouter-3o",
+      "generator_evidence": null,
+      "decision": "repair",
+      "priority": "P2",
+      "review_depth": "deep_review",
+      "reason": "科普主线清楚；需把官方 benchmark/“开源新王”“全球首个”与独立结论分层，并补局限章节。",
+      "static_signals": {
+        "bytes": 13200,
+        "url_count": 3,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": true
+      },
+      "remediated_on": "2026-10-20",
+      "remediation_status": "repaired"
+    },
+    {
+      "path": "philosophy-learning/reports/concept_reports/赵鼎新_儒法国家_理论框架_20260721.md",
+      "domain": "philosophy-learning",
+      "added_on": "2026-07-22",
+      "added_commit": "f4832c2f30c77a1e833b2f2135e7975cc0364bd5",
+      "generator_identity": "kimi-cli-k3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "读取范围、未读章节和作者/报告分析边界明确；适合保留原结构。",
+      "static_signals": {
+        "bytes": 51836,
+        "url_count": 8,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-07-20",
+      "added_commit": "447e345e7d1b2d5816448d9d40dc3df3c455bcdb",
+      "generator_identity": "kimi-cli-k3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 26261,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-07-13_xiaoyuzhou-mingjing-diandian_midlife-accounts.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-07-20",
+      "added_commit": "7b0a8393d418d960bbe724538f2f83eb0e8d1738",
+      "generator_identity": "kimi-cli-k3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "原始转写/润色或清楚的降级边界可追溯，领域审计通过；事实多按嘉宾口径归属，未发现需要推倒主线的证据断裂。",
+      "static_signals": {
+        "bytes": 23518,
+        "url_count": 1,
+        "quality_schema": null,
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "philosophy-learning/reports/concept_reports/程乐松_方法论一手精读_重返经验与做中国哲学_20260720.md",
+      "domain": "philosophy-learning",
+      "added_on": "2026-07-20",
+      "added_commit": "3121951960d9d697a1579d8ba7d7ca4ebfee0986",
+      "generator_identity": "kimicli-K3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "读取范围、未读章节和作者/报告分析边界明确；适合保留原结构。",
+      "static_signals": {
+        "bytes": 34002,
+        "url_count": 13,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "ai-learning/reports/knowledge_reports/投机解码SpeculativeDecoding_科普讲解_20260720.md",
+      "domain": "ai-learning",
+      "added_on": "2026-07-20",
+      "added_commit": "8709336214fa3797afc6b660e73abf2acf982f7d",
+      "generator_identity": "kimicli-K3",
+      "generator_evidence": null,
+      "decision": "repair",
+      "priority": "P1",
+      "review_depth": "deep_review",
+      "reason": "正文正确说明“保持输出分布”，但标题和开篇“一个字不改/完全相同”易被理解为同随机过程下序列逐字相同；需改成分布无损。",
+      "static_signals": {
+        "bytes": 25894,
+        "url_count": 9,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": true
+      },
+      "remediated_on": "2026-10-20",
+      "remediation_status": "repaired"
+    },
+    {
+      "path": "ai-learning/reports/knowledge_reports/Bitter_Lesson_vs_Harness_科普讲解_20260720.md",
+      "domain": "ai-learning",
+      "added_on": "2026-07-20",
+      "added_commit": "0d69ac07a0f44529335f1f6da9af63f5a741415e",
+      "generator_identity": "kimicli-K3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "论证主线、来源层级与推断边界总体成立；现有问题不足以要求重写。",
+      "static_signals": {
+        "bytes": 20265,
+        "url_count": 6,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "ai-learning/reports/knowledge_reports/Agent智能_模型与Harness各占多少_科普讲解_20260720.md",
+      "domain": "ai-learning",
+      "added_on": "2026-07-20",
+      "added_commit": "c7cae2f4bb569420e43e83965989cf34eafb1f6e",
+      "generator_identity": "kimicli-K3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "论证主线、来源层级与推断边界总体成立；现有问题不足以要求重写。",
+      "static_signals": {
+        "bytes": 18339,
+        "url_count": 6,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "ai-learning/reports/knowledge_reports/Agent_LLM评分体系与主流模型价格能力_科普讲解_20260720.md",
+      "domain": "ai-learning",
+      "added_on": "2026-07-20",
+      "added_commit": "c7cae2f4bb569420e43e83965989cf34eafb1f6e",
+      "generator_identity": "kimicli-K3",
+      "generator_evidence": null,
+      "decision": "keep",
+      "priority": "P3",
+      "review_depth": "structured_review",
+      "reason": "论证主线、来源层级与推断边界总体成立；现有问题不足以要求重写。",
+      "static_signals": {
+        "bytes": 20719,
+        "url_count": 26,
+        "quality_schema": null,
+        "has_limitations": false,
+        "has_thought_questions": true
+      },
+      "remediation_status": "not_required"
+    },
+    {
+      "path": "podcast-learning/reports/2026-09-06_xiaoyuzhou-daxiaoma-keji_v94-rocket-recovery-sunology.md",
+      "domain": "podcast-learning",
+      "added_on": "2026-10-19",
+      "added_commit": "26e6c655d62d14dfb1cc630a4dcbbce871a2fec3",
+      "generator_identity": "claude-code-glm-5.3",
+      "generator_evidence": {
+        "model": "glm-5.3",
+        "harness": "claude-code",
+        "run_id": "podcast-daily-2026-09-06",
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "decision": "rewrite",
+      "priority": "P1",
+      "review_depth": "deep_review+source_coverage_audit+independent_source_map",
+      "reason": "事实核验与边界可靠，但 78 分钟、2.27 万字转写被压成 2227 字报告，真正承载节目内容的概览与分析仅 829 字；十个 shownotes 章节的大量论证与案例只留索引，旧 Reviewer 又仅核对生成者登记的 claim，属于内容召回失败。",
+      "static_signals": {
+        "bytes": 22221,
+        "url_count": 6,
+        "quality_schema": "report-v2",
+        "has_limitations": true,
+        "has_thought_questions": true
+      },
+      "remediation_status": "rewritten",
+      "remediated_on": "2026-10-20",
+      "quality_gate_status": "passed_revision_4",
+      "quality_gate_score": 93.5,
+      "final_reviewer": {
+        "model": "kimi-k3",
+        "harness": "kimi-code",
+        "role": "escalation_review",
+        "revision_round": 4
+      }
+    },
+    {
+      "path": "web-surfing/reports/ai-news-daily-2026-10-19.md",
+      "domain": "web-surfing",
+      "added_on": "2026-10-19",
+      "added_commit": "1025836246c138635af1d774c4286df00ae372bb",
+      "generator_identity": "claude-code-glm-5.3",
+      "generator_evidence": {
+        "model": "glm-5.3",
+        "harness": "claude-code",
+        "run_id": "ai-news-2026-10-19",
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "decision": "preserve_snapshot",
+      "priority": "P3",
+      "review_depth": "series_audit+existing_independent_review",
+      "reason": "历史日报有明确日期、来源密度和 report-v2 复核；保留 2026-10-19 当日信息语境，不用后续事实改写。",
+      "static_signals": {
+        "bytes": 23073,
+        "url_count": 35,
+        "quality_schema": "report-v2",
+        "has_limitations": false,
+        "has_thought_questions": false
+      },
+      "remediation_status": "not_required"
+    }
+  ],
+  "remediation": {
+    "updated_on": "2026-10-20",
+    "content_scope_complete": true,
+    "rewrite_completed": 6,
+    "repair_completed": 28,
+    "pending_independent_review": 0,
+    "note": "6 篇重写与 28 篇修复均已完成正文处理和所需独立复核；大小马 V94 revision 4 由 Kimi K3 以 93.5 分通过，Bruce revision 3 与 PuRo revision 2 由 GLM-5.3 分别以 94.6、95.65 分通过。所有失效旧 hash 均未复用。",
+    "mechanism_fixes": [
+      "scripts/audit_reports.py 全库模式新增 SCOPE001：当前 HEAD 不包含 origin/main 时停止“全量审计”。",
+      "播客新增 report_depth 与 reader_contract: standalone；2026-10-20 起生效，standard/deep 不再受 2500 汉字上限约束，旧成稿不被追溯误伤。",
+      "evidence schema 新增 source_coverage；声明有 shownotes 时每章必须登记，核心内容单元不得省略。",
+      "review schema 新增 source_content_map；Reviewer 必须先从来源独立建图，再映射 coverage，不能只勾选生成者提供的 ID。",
+      "V94 revision 3 的独立来源地图实际以 REV033 阻断一项核心遗漏，修复后 revision 4 才通过，验证门禁可发现“已写内容正确但仍少一条主线”。",
+      "podcast audit 集成 transcript 时间戳单调性与重复检查；确定性错误不再仅靠头尾抽查。",
+      "模板占位符检查忽略 fenced/inline code，避免 num_output_placeholders 等真实代码标识误报。"
+    ],
+    "scope_fix": "审计范围新增 origin/main 对照；当前工作树落后远端时，不再宣称完成全量审计。"
+  }
+}

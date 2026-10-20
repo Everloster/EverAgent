@@ -1,18 +1,18 @@
 ---
-title: "实习生抢答、老教授过目：速度快 2-3 倍，凭什么一个字都不改？—— 投机解码科普"
+title: "实习生抢答、老教授过目：速度快 2-3 倍，凭什么不改变采样分布？——投机解码科普"
 domain: "ai-learning"
 report_type: "knowledge_report"
 status: "completed"
-updated_on: "2026-07-20"
+updated_on: "2026-10-20"
 semantic_tags: ["speculative-decoding", "inference-optimization", "memory-bandwidth", "draft-model", "rejection-sampling", "lossless-acceleration", "science_popularization"]
 related_concepts: ["speculative_decoding", "kv_cache", "llm_inference_engines", "moe_architecture"]
 related_entities: ["google", "deepmind"]
 difficulty: "beginner"
 ---
 
-# 实习生抢答、老教授过目：速度快 2-3 倍，凭什么一个字都不改？
+# 实习生抢答、老教授过目：速度快 2-3 倍，凭什么不改变采样分布？
 
-> **这篇是什么**：一篇面向"听说过投机解码，但一直没想通两件事——**为什么能快**、**凭什么敢说输出一个字都不改**"的读者的科普。我们不堆公式，而是跟着一位老教授和他的实习生，把"小模型抢答、大模型过目"的全过程走一遍——关键步骤全部用**能手算的小数字**演算：加速的账用真实硬件数字算，"一字不改"的底气用一个三个词的词表手算验证。
+> **这篇是什么**：一篇面向“听说过投机解码，但一直没想通两件事——**为什么能快**、**为什么不会改变目标模型的采样分布**”的读者的科普。我们不堆公式，而是跟着一位老教授和他的实习生，把“小模型抢答、大模型过目”的全过程走一遍——加速的账用真实硬件数字算，分布无损的底气用一个三个词的词表手算验证。
 >
 > **读完你能回答**：
 > - 大模型逐字蹦字为什么慢？慢在哪？
@@ -35,7 +35,7 @@ difficulty: "beginner"
 
 先摆原论文（Leviathan et al. 2023，Google）写在摘要里的承诺：
 
-> **大模型生成速度提升 2-3 倍，输出和原来完全相同（identical outputs）。**
+> **大模型生成速度可提升 2-3 倍，同时保持目标模型的采样分布。** 对 temperature=0 的贪心解码，确定性输出可以逐字相同；对随机采样，保证的是概率分布相同，不是两次运行必然得到同一条序列。
 
 第一次听的人都会犯嘀咕：
 
@@ -175,7 +175,7 @@ difficulty: "beginner"
 
 > 这个"decode 阶段是搬运游戏"的事实，和 MoE 省算力能换成速度、KV Cache 能省重复计算，是**同一个硬件瓶颈的三副面孔**——本库 `wiki/concepts/kv_cache.md` 与《MoE 科普》第 7 节可交叉印证。
 
-### 6. 想不通②：凭什么说"一个字都不改"？——三个词手算验证
+### 6. 想不通②：凭什么说“采样分布不改”？——三个词手算验证
 
 ✦ **一句话**：验收规则 + 残差改正，让任何字最终被写下的概率**恰好**等于教授自己写时的概率——用上面那个三词词表，三个数字全部手算对上。
 
@@ -219,7 +219,7 @@ P(x) = p(x)·min(1, q(x)/p(x))  +  P(发生打回) · [max(0, q(x)−p(x)) / Σ 
 - 写代码时满屏都是"好猜的字"：`for i in range(`、缩进、括号、`return`——模式固定，实习生十猜九中，一轮落定 4-5 个字不稀奇。
 - 写摘要/开放式文本时，"下一步写什么都行"的位置多，实习生常猜偏，教授频频打回，每轮平均落定的字数就下来了。
 
-原论文的实测正好印证这个光谱：Leviathan et al. 在 T5-XXL（11B）上测得 **2×–3×** 加速、输出与标准实现逐字一致；Chen et al.（DeepMind，与前者同期独立提出）在 Chinchilla 70B 上、batch=1、K=4，摘要任务 XSum 实测 **1.92×**（基线 14.1ms/token），代码任务 HumanEval 的加速明显更高（同表对比）。
+原论文的实测正好印证这个光谱：Leviathan et al. 在 T5-XXL（11B）上测得 **2×–3×** 加速；其摘要中的 “identical outputs” 需要结合解码设置理解——贪心解码可逐字一致，随机解码的算法保证是与标准采样拥有相同分布。Chen et al. 在 Chinchilla 70B、batch=1、K=4 下，XSum 实测 **1.92×**（基线 14.1ms/token），HumanEval 加速更高。
 
 这件事还有一个少有人提的社会面：Sandler et al.（2025）发现加速在不同任务、不同语言间**并不均**——实习生对低资源语言的拟合差，那些语言的用户享受到的加速更少。作者把这称为一种"计算不公平"，并给出了缓解方法（公平指标平均改善约 12%）。**同一个算法，对谁更好是不均匀的**——这是把"接受率"想透之后自然会看见的问题。
 
@@ -281,7 +281,7 @@ P(x) = p(x)·min(1, q(x)/p(x))  +  P(发生打回) · [max(0, q(x)−p(x)) / Σ 
 ```
 
 **四句话总纲**：
-1. **投机解码 = 小模型抢答 + 大模型一次通读验收 + 打回处亲手改正**，不改架构、不重训，即插即用。
+1. **投机解码 = 小模型抢答 + 大模型一次通读验收 + 拒绝处按校正分布采样**，不改目标模型；正确实现保持目标分布。
 2. **快的根源**：逐字生成的瓶颈是"搬参数"不是"计算"，一次验 K 个字和想 1 个字耗时几乎相同——省的是搬运趟数。
 3. **稳的根源**：采纳概率 min(1, q/p) 削掉草稿的高估，残差分布 max(0, q−p) 补上教授的亏欠，输出分布**严格**等于大模型自己采样——三个词的词表就能手算验证。
 4. **赚多少的变量**：接受率。任务里"好猜的字"越多、草稿与教授越对齐，加速越大；所以它不均匀（代码 > 摘要，语言间也不公平）。
@@ -350,7 +350,7 @@ P(x) = p(x)·min(1, q(x)/p(x))  +  P(发生打回) · [max(0, q(x)−p(x)) / Σ 
 
 ## 📚 参考来源
 
-- Leviathan, Kalman & Matias 2023 · *Fast Inference from Transformers via Speculative Decoding* · ICML 2023 — https://arxiv.org/abs/2211.17192 （摘要"2X–3X acceleration … with identical outputs"已逐字复核，2026-07-20；草稿模型 6M 参数见 OpenReview 版 p.6）
+- Leviathan, Kalman & Matias 2023 · *Fast Inference from Transformers via Speculative Decoding* · ICML 2023 — https://arxiv.org/abs/2211.17192 （摘要原词为 “identical outputs”；本版明确区分贪心序列一致与随机采样分布一致）
 - Chen et al. 2023 · *Accelerating Large Language Model Decoding with Speculative Sampling* — https://arxiv.org/abs/2302.01318 （Chinchilla 70B + 4B 草稿，batch=1、K=4；XSum 1.92×、基线 14.1ms/token，HumanEval 更高，Table 1）
 - Xia et al. 2024 · *Unlocking Efficiency in LLM Inference: A Survey of Speculative Decoding* — https://arxiv.org/abs/2401.07851
 - Cai et al. 2024 · *Medusa: Simple LLM Inference Acceleration Framework with Multiple Decoding Heads* — https://arxiv.org/abs/2401.10774

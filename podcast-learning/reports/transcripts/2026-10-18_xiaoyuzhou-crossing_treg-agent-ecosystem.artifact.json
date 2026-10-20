@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "job_id": "job_podcast_0c1fa5995ddbbac7259ece3a",
+  "status": "succeeded",
+  "device": "razer",
+  "silent": true,
+  "interactive_browser": false,
+  "audio_playback": false,
+  "duration_ms": 125676,
+  "artifact": {
+    "artifact_id": "pod_a6ac2be98ed464dd10208886",
+    "source_host": "www.xiaoyuzhoufm.com",
+    "source_sha256": "39f8938ebb4ed99e667c2de07b34cda29b2b1b4289c431232522716dc5a493ce",
+    "audio_size": 589217870,
+    "language": "zh",
+    "segments": 1799,
+    "service_version": "whisper.cpp-v1.9.1-sm120",
+    "transcript_size": 91178,
+    "transcript_sha256": "11898a25a59cd26c0463387f252bbf03a3b47a6c9abf0a215f43ebb04d7164e1",
+    "quality": {
+      "repetition_guard": {
+        "passed": true,
+        "max_consecutive_identical": 1
+      }
+    }
+  },
+  "transfer": {
+    "mode": "eacli pull",
+    "atomic": true,
+    "local_path": "podcast-learning/reports/transcripts/2026-10-18_xiaoyuzhou-crossing_treg-agent-ecosystem.transcript.txt",
+    "verified_sha256": true
+  }
+}

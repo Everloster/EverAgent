@@ -1,8 +1,33 @@
+---
+title: "实测笔记：book-to-skill 能优化 EverAgent 学习类项目吗？"
+domain: "ai-practice"
+report_type: "experiment_analysis"
+status: "completed"
+created: "2026-07-29"
+updated_on: "2026-10-20"
+semantic_tags: ["book_to_skill", "docling", "pdf_extraction", "progressive_disclosure"]
+source_url: "https://github.com/virgiliojr94/book-to-skill"
+artifact_paths:
+  - "experiments/book-to-skill-demo/kimi-k3-tech-report/SKILL.md"
+  - "experiments/book-to-skill-demo/kimi-k3-tech-report/chapters/ch02-architecture-kda.md"
+---
+
 # 实测笔记：book-to-skill 能优化 EverAgent 学习类项目吗？
 
 > 类型：B 类 ai-practice 低成本 demo + 实测评估。
-> 日期：2026-07-29。素材：Kimi K3 官方技术报告（47 页 / 38K token）。工具：[book-to-skill](https://github.com/virgiliojr94/book-to-skill)（11.9k★）。
+> 日期：2026-07-29。素材：Kimi K3 官方技术报告（47 页 / 38K token）。工具：[book-to-skill](https://github.com/virgiliojr94/book-to-skill)；星数是当时观察值，不作为实验结论证据。
 > 结论先行：**能优化，但只在一个特定场景；且对公式密集的学术论文有硬伤。别当银弹。**
+
+## 运行环境与版本可追溯性
+
+| 项目 | 可确认信息 | 证据边界 |
+|---|---|---|
+| `book-to-skill` | 实验日前最近的公开 commit 为 [`c6bc1b7`](https://github.com/virgiliojr94/book-to-skill/tree/c6bc1b7927822e563aae6212c07670f5a3d95ea7)，其 `pyproject.toml` 标记版本 `1.2.0`、Python `>=3.9` | 原实验没有保存 clone 的 `HEAD`，因此这个 commit 是日期锚点，不能证明当时 checkout 精确等于它 |
+| Python | Homebrew Python 3，venv 隔离 | 原实验没有保存 `python --version`；具体 major/minor/patch 无法事后可靠恢复 |
+| `docling` | 通过 `.venv/bin/pip install docling` 安装；上游 `technical` extra 当时未固定版本 | 原实验没有保存 `pip freeze`，具体版本未知；复现实验必须显式 pin 并保存 lock/receipt |
+| 运行平台 | Apple Silicon Mac，Homebrew Python，PEP 668 环境 | 未保存 macOS、芯片与依赖完整清单，性能数据不用于跨机器比较 |
+
+提交到仓库的实验产物只有 [`SKILL.md`](./kimi-k3-tech-report/SKILL.md) 和 [`ch02-architecture-kda.md`](./kimi-k3-tech-report/chapters/ch02-architecture-kda.md)。`$TMPDIR/book_skill_work/full_text.txt`、`metadata.json` 及其它草稿未归档，因此本报告只能复核已提交的两件产物与当时记录的输出统计。
 
 ## 一、怎么跑的（可复现）
 
@@ -10,7 +35,7 @@
 2. Homebrew Python PEP668 外部管理，建 venv：`python3 -m venv .venv && .venv/bin/pip install docling`
 3. 抽取（技术书模式，docling 保表格/公式）：`.venv/bin/python scripts/extract.py k3_tech_report.pdf --mode technical`
    - 结果：47 页 → 28,602 词 / ~38K token / 检测 17 章，输出 `$TMPDIR/book_skill_work/{full_text.txt,metadata.json}`
-4. 按其 SKILL.md 方法论（"提取结构非摘要"）蒸馏成 skill：核心 `SKILL.md`(~3.5k token) + 按章 `chapters/` + 速查 + 术语表。产物见同目录 `kimi-k3-tech-report/`。
+4. 按其 SKILL.md 方法论（"提取结构非摘要"）蒸馏成 skill。仓库最终只保留核心 `SKILL.md` 与一篇 KDA 章节样本；速查写在 `SKILL.md` 内，未单独提交术语表和其它章节。
 
 ## 二、实测发现（一手，非听说）
 
@@ -23,6 +48,7 @@
 - **编号公式全丢**：docling 对 K3 报告的独立公式块（Eq.1–6）输出 `<!-- formula-not-decoded -->` 占位——**公式主体没抽出来**。对 KDA 这种靠公式讲清的机制，蒸馏出的章节只能靠行内符号 + 人工补全。→ **对公式密集的学术论文，它会丢最硬核的部分。**
 - **无 ToC 时章节靠标题扫描**：K3 报告没 ToC，工具 WARN 章节映射可能漏/重。
 - **"蒸馏"这步本质是 LLM 干的**：工具 = `extract.py`(抽取) + 一套喂给 agent 的 prompt(SKILL.md)。质量下限取决于抽取，上限取决于跑它的模型。它不是"确定性程序"。
+- **复现 receipt 缺失**：没有保存 Python、docling 精确版本、上游 checkout HEAD 和 `pip freeze`。结论可由已提交产物支持，但无法做到依赖级完全复现。
 
 ## 三、能否优化 EverAgent 学习类项目？——分场景结论
 

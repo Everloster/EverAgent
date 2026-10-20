@@ -4,6 +4,7 @@ domain: "podcast-learning"
 report_type: episode_summary
 source: bilibili
 source_url: https://www.bilibili.com/video/BV1tXKi6NE4b/
+source_locator: "Bilibili BV1tXKi6NE4b；报告以本地 whisper 转写与 B 站官方字幕双源对校。"
 show: "课代表立正（B站对谈频道）"
 episode: "单期"
 host: "课代表立正"
@@ -11,8 +12,14 @@ guest: "Jove（温哥华，Cresta 公司 FDE 团队负责人；前 Splunk/EMC �
 duration: "41m41s"
 duration_seconds: 2501
 published: "2026-07-29"
-updated_on: "2026-07-29"
+published_on: "2026-07-29"
+updated_on: "2026-10-20"
 status: archived
+polished: true
+polished_by: "Kimi K3；B 站官方字幕对校"
+polished_at: "2026-07-29"
+transcript_path: reports/transcripts/2026-07-29_bilibili-kedaibiao-lizheng_jove-fde.transcript.txt
+polished_transcript_path: reports/transcripts/2026-07-29_bilibili-kedaibiao-lizheng_jove-fde.polished.txt
 semantic_tags: ["fde", "agent_harness", "enterprise_ai"]
 ---
 

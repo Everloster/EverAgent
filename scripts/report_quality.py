@@ -609,6 +609,96 @@ def validate_evidence_manifest(
     if len(claim_ids) != len(set(claim_ids)):
         findings.append(QualityFinding("error", "EVM030", "claim id 重复"))
 
+    coverage = manifest.get("source_coverage")
+    report_depth = str(metadata.get("report_depth") or "")
+    requires_coverage = str(metadata.get("domain") or "") == "podcast-learning" and report_depth in {
+        "standard",
+        "deep",
+    }
+    if requires_coverage and (not isinstance(coverage, list) or len(coverage) < 3):
+        findings.append(
+            QualityFinding(
+                "error",
+                "EVM036",
+                "standard/deep 播客报告至少登记 3 个 source_coverage 单元",
+            )
+        )
+        coverage = []
+    elif coverage is None:
+        coverage = []
+    elif not isinstance(coverage, list):
+        findings.append(QualityFinding("error", "EVM037", "source_coverage 必须为数组"))
+        coverage = []
+
+    coverage_ids: list[str] = []
+    core_coverage = 0
+    for item in coverage:
+        if not isinstance(item, dict):
+            findings.append(QualityFinding("error", "EVM038", "source_coverage 单元必须为对象"))
+            continue
+        for key in ("id", "title", "importance", "status"):
+            findings.extend(_required_string(item, key, "EVM039"))
+        coverage_id = str(item.get("id") or "")
+        if coverage_id:
+            coverage_ids.append(coverage_id)
+        importance = str(item.get("importance") or "")
+        status = str(item.get("status") or "")
+        if importance not in {"core", "supporting"}:
+            findings.append(QualityFinding("error", "EVM040", f"coverage {coverage_id} 的 importance 无效"))
+        if status not in {"included", "omitted"}:
+            findings.append(QualityFinding("error", "EVM041", f"coverage {coverage_id} 的 status 无效"))
+        refs = item.get("source_ids")
+        if not isinstance(refs, list) or not refs:
+            findings.append(QualityFinding("error", "EVM042", f"coverage {coverage_id} 必须绑定来源"))
+            refs = []
+        unknown = sorted(set(map(str, refs)) - known_sources)
+        if unknown:
+            findings.append(
+                QualityFinding(
+                    "error",
+                    "EVM043",
+                    f"coverage {coverage_id} 引用了未知 source：{', '.join(unknown)}",
+                )
+            )
+        if importance == "core":
+            core_coverage += 1
+            if status != "included":
+                findings.append(
+                    QualityFinding("error", "EVM044", f"核心 coverage {coverage_id} 不得省略")
+                )
+        if status == "included":
+            anchor = str(item.get("report_anchor") or "")
+            if not anchor or anchor not in report_text:
+                findings.append(
+                    QualityFinding(
+                        "error",
+                        "EVM045",
+                        f"coverage {coverage_id} 的 report_anchor 未出现在报告中",
+                    )
+                )
+        elif not str(item.get("omission_reason") or "").strip():
+            findings.append(
+                QualityFinding("error", "EVM046", f"省略 coverage {coverage_id} 必须写 omission_reason")
+            )
+    if len(coverage_ids) != len(set(coverage_ids)):
+        findings.append(QualityFinding("error", "EVM047", "source_coverage id 重复"))
+    if requires_coverage and core_coverage < 3:
+        findings.append(QualityFinding("error", "EVM048", "standard/deep 播客至少登记 3 个核心内容单元"))
+    declared_chapters_match = re.match(r"\d+", str(metadata.get("chapters") or ""))
+    if (
+        requires_coverage
+        and str(metadata.get("source_shownotes_chapters") or "").lower() == "true"
+        and declared_chapters_match
+        and len(coverage_ids) < int(declared_chapters_match.group(0))
+    ):
+        findings.append(
+            QualityFinding(
+                "error",
+                "EVM049",
+                "source_coverage 少于 frontmatter 声明的 shownotes 章节数；每章都需登记为 included 或 omitted",
+            )
+        )
+
     limitations = manifest.get("limitations")
     if not isinstance(limitations, list) or not any(str(item).strip() for item in limitations):
         findings.append(QualityFinding("error", "EVM031", "limitations 至少记录一项边界或未确认事项"))
@@ -627,6 +717,7 @@ def validate_evidence_manifest(
         "claim_ids": claim_ids,
         "critical_claim_ids": critical_claim_ids,
         "critical_source_ids": sorted(critical_source_ids),
+        "coverage_unit_ids": coverage_ids,
         "generator_model": normalize_model(str(generator.get("model") or ""), policy),
         "generator_run_id": str(generator.get("run_id") or ""),
         "generator_explicit_override": generator.get("explicit_model_override") is True,
@@ -686,6 +777,7 @@ def validate_review_record(
     required_claims = set(evidence_summary["critical_claim_ids"])
     required_sources = set(evidence_summary["critical_source_ids"])
     required_requirements = set(evidence_summary["requirement_ids"])
+    required_coverage = set(evidence_summary.get("coverage_unit_ids") or [])
     review_scores: list[float] = []
     dimension_values: dict[str, list[float]] = {key: [] for key in policy["dimensions"]}
     reviewer_models: list[str] = []
@@ -764,11 +856,127 @@ def validate_review_record(
             "source_ids_checked": required_sources,
             "requirement_ids_checked": required_requirements,
         }
+        requires_source_map = str(metadata.get("domain") or "") == "podcast-learning" and str(
+            metadata.get("report_depth") or ""
+        ) in {"standard", "deep"}
+        if requires_source_map:
+            checks["coverage_unit_ids_checked"] = required_coverage
         for field, required in checks.items():
             actual = item.get(field)
             if not isinstance(actual, list) or not required.issubset(set(map(str, actual))):
                 missing = sorted(required - set(map(str, actual or [])))
                 findings.append(QualityFinding("error", "REV016", f"review #{index} 的 {field} 缺少：{', '.join(missing)}"))
+
+        if requires_source_map:
+            source_content_map = item.get("source_content_map")
+            declared_chapters_match = re.match(r"\d+", str(metadata.get("chapters") or ""))
+            minimum_map_units = max(3, len(required_coverage))
+            if (
+                str(metadata.get("source_shownotes_chapters") or "").lower() == "true"
+                and declared_chapters_match
+            ):
+                minimum_map_units = max(minimum_map_units, int(declared_chapters_match.group(0)))
+            if not isinstance(source_content_map, list) or len(source_content_map) < minimum_map_units:
+                findings.append(
+                    QualityFinding(
+                        "error",
+                        "REV028",
+                        f"review #{index} 的 source_content_map 至少需要 {minimum_map_units} 个独立来源单元",
+                    )
+                )
+                source_content_map = []
+
+            map_ids: list[str] = []
+            mapped_coverage_ids: set[str] = set()
+            known_source_ids = set(evidence_summary["source_ids"])
+            for map_item in source_content_map:
+                if not isinstance(map_item, dict):
+                    findings.append(QualityFinding("error", "REV029", f"review #{index} 的 source_content_map 单元必须为对象"))
+                    continue
+                for field in ("id", "title", "importance", "assessment", "notes"):
+                    if not isinstance(map_item.get(field), str) or not str(map_item[field]).strip():
+                        findings.append(
+                            QualityFinding(
+                                "error",
+                                "REV029",
+                                f"review #{index} 的 source_content_map 单元缺少非空字段 {field}",
+                            )
+                        )
+                map_id = str(map_item.get("id") or "")
+                if map_id:
+                    map_ids.append(map_id)
+                importance = str(map_item.get("importance") or "")
+                assessment = str(map_item.get("assessment") or "")
+                if importance not in {"core", "supporting"} or assessment not in {
+                    "covered",
+                    "partial",
+                    "missing",
+                }:
+                    findings.append(
+                        QualityFinding(
+                            "error",
+                            "REV030",
+                            f"review #{index} 的 source_content_map {map_id or '<unknown>'} 分类无效",
+                        )
+                    )
+                source_refs = map_item.get("source_ids")
+                if not isinstance(source_refs, list) or not source_refs:
+                    findings.append(
+                        QualityFinding(
+                            "error",
+                            "REV031",
+                            f"review #{index} 的 source_content_map {map_id or '<unknown>'} 必须绑定来源",
+                        )
+                    )
+                    source_refs = []
+                unknown_sources = sorted(set(map(str, source_refs)) - known_source_ids)
+                if unknown_sources:
+                    findings.append(
+                        QualityFinding(
+                            "error",
+                            "REV031",
+                            f"review #{index} 的 source_content_map {map_id or '<unknown>'} 引用了未知 source：{', '.join(unknown_sources)}",
+                        )
+                    )
+                coverage_refs = map_item.get("matched_coverage_unit_ids")
+                if not isinstance(coverage_refs, list):
+                    findings.append(
+                        QualityFinding(
+                            "error",
+                            "REV032",
+                            f"review #{index} 的 source_content_map {map_id or '<unknown>'} 缺少 matched_coverage_unit_ids",
+                        )
+                    )
+                    coverage_refs = []
+                unknown_coverage = sorted(set(map(str, coverage_refs)) - required_coverage)
+                if unknown_coverage:
+                    findings.append(
+                        QualityFinding(
+                            "error",
+                            "REV032",
+                            f"review #{index} 的 source_content_map {map_id or '<unknown>'} 匹配了未知 coverage：{', '.join(unknown_coverage)}",
+                        )
+                    )
+                mapped_coverage_ids.update(map(str, coverage_refs))
+                if importance == "core" and (assessment != "covered" or not coverage_refs):
+                    findings.append(
+                        QualityFinding(
+                            "error",
+                            "REV033",
+                            f"review #{index} 的核心来源单元 {map_id or '<unknown>'} 未被完整覆盖",
+                        )
+                    )
+            if len(map_ids) != len(set(map_ids)):
+                findings.append(QualityFinding("error", "REV034", f"review #{index} 的 source_content_map id 重复"))
+            unmapped_coverage = sorted(required_coverage - mapped_coverage_ids)
+            if unmapped_coverage:
+                findings.append(
+                    QualityFinding(
+                        "error",
+                        "REV035",
+                        f"review #{index} 的独立来源地图未映射 coverage：{', '.join(unmapped_coverage)}",
+                    )
+                )
         for field in ("unsupported_claims", "missing_requirements", "hard_failures"):
             value = item.get(field)
             if not isinstance(value, list):
@@ -889,6 +1097,7 @@ def evaluate_report(report: Path, policy: dict[str, Any] | None = None) -> dict[
         "claim_ids": [],
         "critical_claim_ids": [],
         "critical_source_ids": [],
+        "coverage_unit_ids": [],
         "generator_model": "",
         "generator_run_id": "",
         "generator_explicit_override": False,
@@ -1019,6 +1228,7 @@ def initialize_quality_artifacts(
         "task": {"summary": "", "requirements": []},
         "sources": [],
         "claims": [],
+        "source_coverage": [],
         "limitations": [],
     }
     review = {
@@ -1102,6 +1312,8 @@ def append_review_template(
             "scores": {dimension: None for dimension in policy["dimensions"]},
             "score_reasons": {dimension: "" for dimension in policy["dimensions"]},
             "critical_claim_ids_checked": [],
+            "coverage_unit_ids_checked": [],
+            "source_content_map": [],
             "source_ids_checked": [],
             "requirement_ids_checked": [],
             "unsupported_claims": [],
@@ -1165,13 +1377,15 @@ def reviewer_prompt(report: Path) -> str:
 质量等级：{tier}
 
 要求：
-1. 实际打开报告、证据账本，以及所有关键 claim 对应的一手来源。
-2. 逐项确认关键 claim、来源和用户需求；发现 unsupported claim、遗漏需求或硬错误时如实记录。
-3. 按 0–100 分填写：{dimensions}，并为每一维填写 `score_reasons`。评分锚点：{score_bands}。
-4. 不直接改报告。先完成复核记录，再由生成者依据问题清单修订。
-5. 完成后运行 `python3 scripts/report_quality.py check {report_relative_path(report)}`，不得自行宣称通过。
-6. 报告修订后先运行 `python3 scripts/report_quality.py new-revision {report_relative_path(report)}`，再创建新一轮 Reviewer 记录。
-7. 硬失败只使用这些代码：{hard_failures}。
+1. 先读原始来源，不先接受报告或 evidence 的内容选择；把独立识别出的核心问题、论证、案例和反方逐项写入 `source_content_map`。若有 shownotes 章节，每章至少对应一个地图单元。
+2. 再打开报告与证据账本，把每个独立地图单元映射到 `matched_coverage_unit_ids`，填写 `assessment: covered | partial | missing`，并把已实际复核的单元 id 填入 `coverage_unit_ids_checked`。生成者完全省略的核心内容即使没有 claim id，也要作为遗漏需求记录；standard/deep 播客遗漏核心单元时使用 `core_requirement_missing`。
+3. 检查报告是否可独立阅读，不能因为 polished 保存了细节就允许报告只剩索引或速览。
+4. 播客报告必须运行 `python3 podcast-learning/scripts/audit_transcript.py <transcript> --json` 或核对同等机器收据；头尾抽查不能替代时间戳单调性检查。
+5. 按 0–100 分填写：{dimensions}，并为每一维填写 `score_reasons`。评分锚点：{score_bands}。
+6. 不直接改报告。先完成复核记录，再由生成者依据问题清单修订。
+7. 完成后运行 `python3 scripts/report_quality.py check {report_relative_path(report)}`，不得自行宣称通过。
+8. 报告修订后先运行 `python3 scripts/report_quality.py new-revision {report_relative_path(report)}`，再创建新一轮 Reviewer 记录。
+9. 硬失败只使用这些代码：{hard_failures}。
 """
 
 

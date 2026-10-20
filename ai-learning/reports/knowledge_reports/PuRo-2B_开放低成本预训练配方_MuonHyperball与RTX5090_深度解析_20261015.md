@@ -3,7 +3,7 @@ title: "PuRo-2B 开放低成本预训练配方深度解析：MuonHyperball、FP8
 domain: "ai-learning"
 report_type: "knowledge_report"
 status: "completed"
-updated_on: "2026-10-15"
+updated_on: "2026-10-20"
 quality_schema: "report-v2"
 quality_tier: "important"
 semantic_tags: ["pretraining", "muon_optimizer", "fp8_training", "cost_scaling_law", "curriculum_learning", "model_averaging", "open_recipe", "consumer_gpu"]
@@ -18,7 +18,7 @@ related_entities: ["tsinghua_pacman", "nvidia"]
 ## 0. 一页结论
 
 1. **定位**：PuRo-2B（普罗-2B）补上了「开放配方」谱系的最后一环——**可复现 ≠ 可负担**。OLMo/SmolLM3 等开放了数据与代码，但 SmolLM3-3B 用了 384 张 H100、复现要 $700K+；PuRo 用三级开放度框架（closed → open-weight → open-recipe）定位自己，主张 open-recipe 还必须**成本可达**（S=p25-26, §5）。
-2. **账本**（口径见 §1）：生产版 $6.9K 达到接近 Qwen2.5-1.5B；标度律拟合给出 $4.4K 即达 Qwen2-1.5B 水平，且该档位（Uniform-Phase2-1of2）实测 55.54 已越过 55.14 线（15 benchmark 无权平均）（S=p1 摘要, p26 §6, p53）。
+2. **账本**（口径见 §1）：生产版 $6.9K 达到接近 Qwen2.5-1.5B；$4.4K 的 Uniform-Phase2-1of2 是真实中间 checkpoint，实测 55.54 已越过 Qwen2-1.5B 的 55.14，论文再用拟合曲线概括这一交点（15 benchmark 无权平均；PuRo 档位见 Table 19, S=p53，对比模型见 Table 7, S=p39）。
 3. **四大杠杆**：① RTX 5090 的 FP8 成本效率是 H200 的 ~2.7×（$0.31/h 摊销价 vs $4.00/h，EFLOP/USD 口径）；② 改 NVIDIA 驱动解锁消费卡的 PCIe P2P 与 GPUDirect RDMA（软件禁制而非硬件限制）；③ blockwise FP8 全程训练（72% 计算走 FP8，吞吐 1.36×，质量净收益 1.34×）；④ MuonHyperball 使**有效学习率变成显式超参**——这是全文理论核心（S=p8-13）。
 4. **理论灵魂**：MuonH 把每个权重矩阵钉在初始化半径的球面上，使有效学习率 ρ_t **数值上等于**学习率超参本身；论文用 170M 对照实验证明 MuonH 相对普通 Muon 的收益主要来自有效 LR schedule 的可控性，而非球面投影本身（普通 Muon 对齐有效 LR 后 3.030 ≈ MuonH 3.029 << 不对齐 3.073）（S=p12-14, Figure 5）。
 5. **数据方法论**：不迷信单一样本级质量分，而是用「proxy benchmarking」——每个候选数据切片从同一 Qwen3-0.6B checkpoint 续训 2000 步、15 benchmark 出**能力向量**，用能力向量（含 PCA 投影）指导选源、源内分位过滤与两阶段配比（S=p17-19, §3.6）。
@@ -297,7 +297,7 @@ PuRo-2B 超 Qwen2-1.5B 3.21 分、距 Qwen2.5-1.5B 4.02 分；同代对标里 Qw
 6. **理论侧的可追问点**：MuonH vs Muon 的归因实验在 170M BF16 上做，2B FP8 生产配置上是否同构未单独验证；参数路由（哪些矩阵进 MuonH）凭尺度不变性直觉选择、未见逐类路由消融；「逻辑矩阵」分别 NS 的收益同样缺独立消融（仅作为生产配置出现）。
 7. **开放度的裂缝比摘要说的更宽：四类资产四种 license**。论文摘要称「data, code, and model weights under Apache 2.0」（S=p1），实测：HF 模型卡 Apache 2.0（权重）✓；HF 数据集卡 license=other——混合上游条款，Apache 2.0 仅覆盖项目自产的文档/manifest/处理产物，**NVIDIA 控制的 Nemotron-CC-v2 与 Nemotron-Pretraining-Code-v1 Synthetic-Code 分区禁止原始再分发**；GitHub Puro-Megatron=Other/NOASSERTION；GitHub Kaiyuan-Spark=Apache-2.0。且 SFT/curriculum 代码、评测套件明确排除在公开仓外（R=ORIGIN_COMMITS.md:45-53）——「全流程开放」中后训练一段只有论文与 checkpoint，没有代码。
 8. **$4.4K 的精确身份**：HF 模型卡口径比论文摘要严——$4.4K 对应 **Uniform-Phase2-1of2 中间 checkpoint**（非 canonical 终点）；「$5090」标题数字与账本无严格对应（最接近的是 CMA Phase 2 的 $5.05K），是 RTX 5090 谐音的品牌化选择 [推测]。
-9. **元数据级瑕疵**：HF 两卡 bibtex 与 v2 PDF 题名页作者名单不一致（PDF 含 Chengxia Li 无 Kaiyue Wen；HF bibtex 反之——MuonH 原作者 Wen 在 PDF 中只出现在致谢与引文 [99]）；引用该项目时以 PDF 题名页为准。
+9. **元数据级瑕疵**：HF 两张模型卡的 bibtex 与 v2 PDF 题名页作者名单不一致（PDF 含 Chengxia Li、无 Kaiyue Wen；HF bibtex 反之——MuonH 原作者 Wen 在 PDF 中只出现在致谢与引文 [99]）。2026-10-15 的 arXiv API 元数据已经与 PDF 一致，无法复现早期“arXiv 也不一致”的说法；引用时以 PDF 题名页或当前 arXiv 元数据为准。
 10. **HF 评论区独有事实**：pszemraj 质疑 419 TFLOPS 是 FP32-accumulate 口径（消费级 Blackwell sm120 上半速）、问是否试过 FP16 累积；作者答「明显伤害模型性能」但无论文数字——此问答只存在于 HF papers 页，正文无 FP16-acc 消融。
 
 ### 11.1 外部反响速写

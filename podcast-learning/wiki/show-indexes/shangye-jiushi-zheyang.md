@@ -1,10 +1,11 @@
 # 商业就是这样 — 全量单集索引
 
-> 来源：官方 RSS（<http://www.ximalaya.com/album/46587439.xml>）｜ 最近拉取：2026-10-16 ｜ 总集数：373
+> 来源：官方 RSS（<http://www.ximalaya.com/album/46587439.xml>）｜ 最近拉取：2026-10-19 ｜ 总集数：374
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-10-18 | 9m07s | [商业小样51 \| 为什么办公椅越贵，对老板反而越合算？](https://www.ximalaya.com/sound/1025246112)<!--g:xmly_track_1025246112--> | — |
 | — | 2026-10-14 | 43m24s | [Vol.277 2026“金字招牌”特辑：有效创新](https://www.ximalaya.com/sound/1024269284)<!--g:xmly_track_1024269284--> | — |
 | — | 2026-10-13 | 1h27m | [特番｜从会开车到会做事：AI如何进入真实世界](https://www.ximalaya.com/sound/1024049105)<!--g:xmly_track_1024049105--> | — |
 | — | 2026-10-07 | 59m32s | [城市就是这样22｜中国的“中位数城市”是哪座？](https://www.ximalaya.com/sound/1021674577)<!--g:xmly_track_1021674577--> | — |

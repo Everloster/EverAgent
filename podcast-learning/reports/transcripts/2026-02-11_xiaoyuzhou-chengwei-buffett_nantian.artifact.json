@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "request_id": "req_podcast_chengweibuffett_ep27",
+  "status": "succeeded",
+  "device": "razer",
+  "silent": true,
+  "interactive_browser": false,
+  "audio_playback": false,
+  "artifact": {
+    "artifact_id": "pod_e578b576ef3045eb26f75381",
+    "source_host": "www.xiaoyuzhoufm.com",
+    "source_sha256": "bca2db8b0f476cf28db002b15066b0a40b7f1e1065cf90610a661ac8653daf18",
+    "audio_size": 1198915688,
+    "language": "zh",
+    "segments": 3970,
+    "service_version": "whisper.cpp-v1.9.1-sm120",
+    "transcript_size": 188663,
+    "transcript_sha256": "394c8cf5ecc70f116244da5dcb0c4c4cc7be3e945f1ea2b03fb0316d2e6abdf7",
+    "quality": {
+      "repetition_guard": {
+        "passed": true,
+        "max_consecutive_identical": 2
+      }
+    }
+  },
+  "transfer": {
+    "mode": "eacli pull",
+    "atomic": true,
+    "parts": 2,
+    "local_path": "podcast-learning/reports/transcripts/2026-02-11_xiaoyuzhou-chengwei-buffett_nantian.transcript.txt",
+    "verified_sha256": true
+  }
+}

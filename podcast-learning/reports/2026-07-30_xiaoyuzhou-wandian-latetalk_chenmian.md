@@ -4,10 +4,15 @@ domain: "podcast-learning"
 report_type: episode_summary
 source: 小宇宙播客
 source_url: https://www.xiaoyuzhoufm.com/episode/6a6ac940981aef4c4aaf68a8
+source_urls:
+  - "https://podcast.latepost.com/175"
+  - "https://www.xiaoyuzhoufm.com/episode/6a6ac940981aef4c4aaf68a8"
+source_locator: "晚点聊 LateTalk 第 175 期；官方节目页含章节时间戳，小宇宙页为分发入口。"
 show: "晚点聊 LateTalk"
 episode: "175（对话 Evoken 创始人陈冕）"
 host: "《晚点 LatePost》记者（小晚）"
 guest: "陈冕（演语科技 Evoken 创始人，旗下 Liblib / Lovart / LibTV）"
+published_on: 2026-07-30
 duration: "2h08m"
 duration_seconds: 7709
 transcript_segments: 4979
@@ -15,21 +20,22 @@ hanzi_chars_raw: 38135
 audio_size_mb: 123
 speech_rate_cjk: "约 300 字/min"
 polished: false
-polished_by: "whisper.cpp / ggml-large-v3（未做全文逐段润色，报告基于关键区段精读 + shownotes 校验）"
+polished_reason: "未生成逐段 polished 文件；报告只精读关键区段，并用官方节目页的 shownotes 与章节时间戳校验专名和结构。"
 status: completed
 created: 2026-07-31
-updated_on: 2026-07-31
+updated_on: 2026-10-20
 transcript_path: reports/transcripts/2026-07-30_xiaoyuzhou-wandian-latetalk_chenmian.transcript.txt
 pipeline: yt-dlp → whisper.cpp / ggml-large-v3 / Metal（MBP，2h08m→约8min）→ WebFetch shownotes 校验
 source_shownotes_chapters: true
 notable_correction: "whisper 误识别 陈冕→陈敏、Lovart→Lavarte/老弯子、Seedance→Cdance/Sedans、Nano Banana→Norbanana、逐鹿中原→逐渐中原（依 shownotes + 常识修正）"
-related_report: ai-learning/reports/knowledge_reports（07-29 Evoken 陈冕访谈精读，本期为其完整版）
+related_report: ../../ai-learning/reports/knowledge_reports/Evoken陈冕晚点访谈_AI应用生存策略_20260729.md
 total_chars_raw: 161146
+semantic_tags: ["ai_applications", "startup_strategy", "pricing", "survival"]
 ---
 
 # 对话 Evoken 陈冕：模型吞噬应用的时代，独立应用公司如何 survive
 
-> 《晚点聊 LateTalk》175 期 · 2h08m · 嘉宾陈冕（演语科技 Evoken 创始人）。7 小时长采访剪成 2 小时版。
+> [《晚点聊 LateTalk》175 期官方节目页](https://podcast.latepost.com/175) · 2h08m · 嘉宾陈冕（演语科技 Evoken 创始人）。7 小时长采访剪成 2 小时版。
 > 本期是 **07-29 ai-learning《Evoken 陈冕访谈精读》节选版的完整版**——多出创业史、管理反思、survive 战略比喻、个人性格四大块。
 > 转写：MBP 本地 whisper.cpp（4979 段，38071 汉字）；人名/术语误识别依 shownotes + 官方图文版校验（见 Limitations）。
 
@@ -151,7 +157,7 @@ total_chars_raw: 161146
 
 ## 八、Limitations（诚实标注）
 
-1. **未做全文逐段润色**：转写 4979 段，我精读了**关键区段**（开篇定价/毛利、中段 idea/judgment/LibTV 数字、后段逐鹿中原完整战略、结尾个人），非逐字通读全部 4979 段。核心论点、金句、数字、战略比喻已覆盖；但个别过渡细节可能有遗漏。
+1. **未做全文逐段润色**：没有对应 polished 文件。转写 4979 段，本报告只精读了**关键区段**（开篇定价/毛利、中段 idea/judgment/LibTV 数字、后段逐鹿中原完整战略、结尾个人），并用官方节目页的 shownotes 与时间戳校验；个别过渡细节可能遗漏。
 2. **whisper 误识别（已依 shownotes/常识修正，转写原文未改）**：
    - 人名：**陈敏→陈冕**（贯穿全场）
    - 产品：Lovart→"Lavarte/老弯子/Love World"、Seedance→"Cdance/Sedans/Sedans2"、Nano Banana→"Norbanana"、Manus→"Manners"

@@ -10,8 +10,8 @@ audit_reports.py — podcast-learning 报告质量审计（防复发机制，202
   过渡期   2026-09-22 <= created < V2_SINCE：查文件存在/压缩比/必填字段，违规=WARN
   legacy   created < 2026-09-22：豁免（历史形态，仅统计）
 
-检查项（v2）：v2 六章节｜压缩比声明 vs 实测(≤2pp)｜transcript/polished 文件存在｜
-  duration vs 转写末段(±120s)｜必填字段｜chapters 数字开头｜wikilink 目标存在｜
+检查项（v2）：按 report_depth 检查章节｜压缩比声明 vs 实测(≤2pp)｜transcript/polished 文件存在｜
+  transcript 时间戳/重复审计｜duration vs 转写末段(±120s)｜必填字段｜chapters 数字开头｜wikilink 目标存在｜
   数字表首列格式
 
 用法：
@@ -21,6 +21,8 @@ audit_reports.py — podcast-learning 报告质量审计（防复发机制，202
   python3 scripts/audit_reports.py <file.md>  # 只审一篇
 """
 import re, sys, pathlib
+
+from audit_transcript import audit as audit_transcript_file
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent      # podcast-learning/
 REPO = ROOT.parent                                         # EverAgent/
@@ -53,7 +55,7 @@ def audit_file(path, link_idx, fix=False):
     name_date = m_nd.group(1) if m_nd else created
     # 分期判据：SKILL v2 显式声明（pipeline/polished_by）或文件名日期 >= V2_SINCE；
     # created frontmatter 不可信（2026-10 批量回填污染过，见 2026-10-14 review）
-    is_v2 = ('SKILL v2' in t) or name_date >= V2_SINCE
+    is_v2 = ('quality_schema: "report-v2"' in t) or ('quality_schema: report-v2' in t) or ('SKILL v2' in t) or name_date >= V2_SINCE
     is_transition = (not is_v2) and name_date >= TRANSITION_SINCE
     if not (is_v2 or is_transition):
         return errors, warns, notes + ['legacy 豁免']
@@ -97,6 +99,10 @@ def audit_file(path, link_idx, fix=False):
     # --- duration vs 转写末段 ---
     dur, tp = fm(t, 'duration_seconds'), fm(t, 'transcript_path')
     if dur and tp and tp.startswith('reports/') and (ROOT / tp).exists():
+        transcript_result = audit_transcript_file((ROOT / tp).resolve(), max_consecutive=3)
+        if not transcript_result['ok']:
+            details = '; '.join(transcript_result['errors'])
+            (err if is_v2 else warn)(f'transcript 审计失败 → {details}')
         stamps = [int(h) * 3600 + int(m) * 60 + int(s)
                   for h, m, s in re.findall(r'\[(\d+):(\d+):(\d+) ->', (ROOT / tp).read_text(encoding='utf-8'))]
         if stamps and abs(stamps[-1] - int(dur)) > DURATION_TOL_S:
@@ -113,7 +119,13 @@ def audit_file(path, link_idx, fix=False):
         ch = fm(t, 'chapters')
         if ch and not re.match(r'\d+', ch):
             err(f'chapters 非数字开头（疑似模板残留）→ {ch[:40]}')
-        for sec in V2_SECTIONS:
+        report_depth = fm(t, 'report_depth')
+        required_sections = (
+            ['⚡ 速览', '## 内容地图', '## Limitations', '## 思考与追问']
+            if report_depth in ('standard', 'deep')
+            else V2_SECTIONS
+        )
+        for sec in required_sections:
             if sec == '⚡ 速览':
                 if '速览' not in t: err(f'缺 v2 章节 "{sec}"')
             elif sec not in t: err(f'缺 v2 章节 "{sec}"')

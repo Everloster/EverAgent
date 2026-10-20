@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "job_id": "job_podcast_126a07ab78d4356c25559406",
+  "status": "succeeded",
+  "device": "razer",
+  "silent": true,
+  "interactive_browser": false,
+  "audio_playback": false,
+  "duration_ms": 236063,
+  "artifact": {
+    "artifact_id": "pod_3c872498f455f475f50a82f1",
+    "source_host": "www.ximalaya.com",
+    "source_sha256": "9b0663f20c5a1aa37d5605925d27dc4c0f2d0f4ef295eefe089a617376c733ba",
+    "audio_size": 1039470918,
+    "language": "zh",
+    "segments": 3669,
+    "service_version": "whisper.cpp-v1.9.1-sm120",
+    "transcript_size": 165108,
+    "transcript_sha256": "84a47fe51e75dc4023cd27bc98f8f7f425d874e71a6b55321847022cbfa5e09d",
+    "quality": {
+      "repetition_guard": {
+        "passed": true,
+        "max_consecutive_identical": 2
+      }
+    }
+  },
+  "transfer": {
+    "mode": "eacli pull",
+    "atomic": true,
+    "local_path": "podcast-learning/reports/transcripts/2026-08-13_ximalaya-bannatie-gushipian_jiangzhushan.transcript.txt",
+    "verified_sha256": true
+  }
+}

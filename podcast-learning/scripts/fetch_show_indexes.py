@@ -10,10 +10,14 @@
   stdout 汇总打印 NEW 行；某节目新增占比 > 30% 判为疑似链接变更，降级 SUSPECT 不计入 NEW
 - 幂等；失败节目跳过并在结尾汇总，不静默
 
-用法：python3 fetch_show_indexes.py
+用法：
+  python3 fetch_show_indexes.py
+  python3 fetch_show_indexes.py --show crossing --dry-run --json
 """
 
+import argparse
 import html
+import json
 import pathlib
 import re
 import sys
@@ -156,11 +160,52 @@ def render(show, feed, rows, today):
     return "\n".join(lines) + "\n"
 
 
-def main():
+def build_parser():
+    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    parser.add_argument(
+        "--show",
+        action="append",
+        default=[],
+        metavar="SLUG_OR_TITLE",
+        help="只刷新指定节目，可重复；接受 show-index slug 或 OPML 完整标题",
+    )
+    parser.add_argument("--dry-run", action="store_true", help="只抓取和比较，不写索引文件")
+    parser.add_argument("--json", action="store_true", help="只输出一份机器可读 JSON 摘要")
+    return parser
+
+
+def select_shows(shows, requested, parser=None):
+    if not requested:
+        return shows
+    wanted = set(requested)
+    selected = []
+    matched = set()
+    for title, feed in shows:
+        slug = SLUGS.get(title.strip()) or "show-" + re.sub(r"\W", "", title)[:20]
+        keys = {title, title.strip(), slug}
+        if keys & wanted:
+            selected.append((title, feed))
+            matched.update(keys & wanted)
+    missing = sorted(wanted - matched)
+    if missing:
+        message = "未知节目：" + ", ".join(missing)
+        if parser is not None:
+            parser.error(message)
+        raise ValueError(message)
+    return selected
+
+
+def main(argv=None):
+    parser = build_parser()
+    args = parser.parse_args(argv)
+
     shows = parse_opml(OPML)
+    shows = select_shows(shows, args.show, parser)
     today = time.strftime("%Y-%m-%d")
-    OUT_DIR.mkdir(exist_ok=True)
+    if not args.dry_run:
+        OUT_DIR.mkdir(exist_ok=True)
     failures, all_new, suspects = [], [], []
+    results = []
     for i, (title, feed) in enumerate(shows, 1):
         slug = SLUGS.get(title.strip()) or "show-" + re.sub(r"\W", "", title)[:20]
         dest = OUT_DIR / f"{slug}.md"
@@ -189,27 +234,66 @@ def main():
                 all_new.extend((title, t, link) for t, link, _ in show_new)
             # 新→旧：有集数按集数，无集数按日期字符串
             rows.sort(key=lambda r: (r[0].isdigit() and int(r[0]) or 0, r[1]), reverse=True)
-            dest.write_text(render(title, feed, rows, today), encoding="utf-8")
-            print(f"[{i}/{len(shows)}] {title} → {slug}.md（{len(rows)} 集）")
+            rendered = render(title, feed, rows, today)
+            old_text = dest.read_text(encoding="utf-8") if dest.exists() else ""
+            changed = old_text != rendered
+            if changed and not args.dry_run:
+                dest.write_text(rendered, encoding="utf-8")
+            results.append({
+                "title": title,
+                "slug": slug,
+                "episodes": len(rows),
+                "changed": changed,
+                "new_episodes": [
+                    {"title": item_title, "url": link, "published_on": date}
+                    for item_title, link, date in show_new
+                ],
+            })
+            if not args.json:
+                mode = "[dry-run] " if args.dry_run else ""
+                suffix = "有变化" if changed else "无变化"
+                print(f"[{i}/{len(shows)}] {mode}{title} → {slug}.md（{len(rows)} 集，{suffix}）")
         except Exception as e:  # noqa: BLE001
             failures.append((title, str(e)))
-            print(f"[{i}/{len(shows)}] {title} 失败: {e}", file=sys.stderr)
+            if not args.json:
+                print(f"[{i}/{len(shows)}] {title} 失败: {e}", file=sys.stderr)
         time.sleep(0.3)
-    print()
-    if all_new:
-        print("=== 新增单集 ===")
-        for show, t, link in all_new:
-            print(f"NEW | {show} | {t} | {link}")
+
+    summary = {
+        "schema_version": 1,
+        "dry_run": args.dry_run,
+        "requested_shows": args.show,
+        "processed": len(results),
+        "changed": sum(1 for item in results if item["changed"]),
+        "shows": results,
+        "new_episodes": [
+            {"show": show, "title": title, "url": link}
+            for show, title, link in all_new
+        ],
+        "suspects": [
+            {"show": title, "new_count": count, "total": total, "example": first}
+            for title, count, total, first in suspects
+        ],
+        "failures": [{"show": title, "error": error} for title, error in failures],
+    }
+    if args.json:
+        print(json.dumps(summary, ensure_ascii=False, indent=2))
     else:
-        print("=== 无新增单集 ===")
-    if suspects:
-        print("=== 疑似链接变更（新增占比>30%，已降级，请人工核对）===")
-        for t, n, total, first in suspects:
-            print(f"SUSPECT | {t} | {n}/{total} 集判定新增，如 {first}")
-    if failures:
-        print("=== 失败节目 ===")
-        for t, e in failures:
-            print(f"FAIL | {t} | {e}")
+        print()
+        if all_new:
+            print("=== 新增单集 ===")
+            for show, title, link in all_new:
+                print(f"NEW | {show} | {title} | {link}")
+        else:
+            print("=== 无新增单集 ===")
+        if suspects:
+            print("=== 疑似链接变更（新增占比>30%，已降级，请人工核对）===")
+            for title, count, total, first in suspects:
+                print(f"SUSPECT | {title} | {count}/{total} 集判定新增，如 {first}")
+        if failures:
+            print("=== 失败节目 ===")
+            for title, error in failures:
+                print(f"FAIL | {title} | {error}")
     return 1 if failures else 0
 
 

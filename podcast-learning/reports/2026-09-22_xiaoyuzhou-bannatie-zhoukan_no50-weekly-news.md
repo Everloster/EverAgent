@@ -10,7 +10,7 @@ host: "潇磊、刘飞"
 guest: "无（双主持周刊，本期与财新联动话题）"
 duration: "1h38m15s"
 duration_seconds: 5895
-transcript_segments: 3481
+transcript_segments: 3482
 hanzi_chars_raw: 28028
 hanzi_chars_polished: 0
 total_chars_raw: 113395
@@ -23,17 +23,25 @@ polished_by: null
 polished_at: null
 status: archived
 created: 2026-10-04
-updated_on: 2026-10-04
+updated_on: 2026-10-20
 transcript_path: reports/transcripts/2026-09-22_xiaoyuzhou-bannatie-zhoukan_no50-weekly-news.transcript.txt
 polished_transcript_path: null
-pipeline: eacli podcast plan/run → Razer whisper.cpp v1.9.1 / ggml-large-v3 / CUDA sm_120 / Silero VAD / max-context=0（job_podcast_9f1884b57128192ff30ab09b，245s 完成，约 24× 实时，重复段守卫通过）→ shownotes（eacli tool invoke 被本会话权限面拦截，降级 MCP web_reader 拉取，已记录）→ Claude 按 11 章重构；transcript 副本经会话通道逐段落盘（Bash 复制通道被拦，见 Limitations）
+pipeline: eacli podcast plan/run → Razer whisper.cpp v1.9.1 / ggml-large-v3 / CUDA sm_120 / Silero VAD / max-context=0（job_podcast_9f1884b57128192ff30ab09b，重复段守卫通过）→ eacli pull（2026-10-20 补拉，SHA-256 对齐）→ shownotes → 11 章重构
+transcript_artifact: "pod_77370f9f9fd9cbc4c60c5fd6"
+transcript_sha256: "712be4bb9869aab5faa58f1c8bdfda4d5d08c77200103a53862b34f2f112309a"
+transcription_service: "whisper.cpp-v1.9.1-sm120"
+transcription_quality: "3482 段；00:00:08—01:38:15；repetition_guard passed; max_consecutive_identical=2"
+transcript_artifact_receipt: reports/transcripts/2026-09-22_xiaoyuzhou-bannatie-zhoukan_no50-weekly-news.artifact.json
 source_shownotes_chapters: true
 notable_correction: "whisper 误识别 40+ 处依 shownotes/上下文修正（半拿铁→班达铁/半达铁、潇磊→萧雷/小蕾、钟薛高→中学高/中雪糕、华立科技→华丽科技、长鑫→长兴、3B大战→三臂大战、朱丹蓬→朱丹鹏、林盛→林胜、太盟→泰盟、遂宁→穗宁、甘井子→干井子、秦皇岛→青黄岛、东营→东瀛、原平→元平、李楠→李南、薅羊毛→豪杨毛、头文字D→投文字D、顺为→顺维、萍乡→平乡、怀化→淮化、售罄→受庆、钉钉→丁丁 等，全清单见 Limitations）；字数为估算值"
+semantic_tags: ["weekly_news", "platform_governance", "doubao_phone", "data_compliance"]
 ---
 
 # 半拿铁·周刊 No.50：六条新闻里的「价格」与「边界」
 
 > 本库《半拿铁·周刊》第 4 期（前接 No.22 豆包 AI 手机、No.47、No.49）。本期六条新闻有一条暗线：**名义价格与真实价格的背离**——刷量的「每千个收藏 3 块钱」背后是入刑的员工、倒贴卖货的便利店员工背后是失真的经营数据、钟薛高从 66 元降到 6.9 元砍掉的是渠道成本不是产品成本、豆包手机加价千元抢购的背后是系统调度权的定价。两条 AI 相关话题（豆包手机二代/SAEP 协议）与 AI 主线直接相关，已沉淀 concept 页。
+>
+> **证据口径**：除明确链接到 shownotes 中法规、上市公司公告或新闻原文的项目外，金额、门店数、刑期、销量和协议细节均先视为**节目转述**。本报告保存节目如何组织新闻，不替代法律意见、财务尽调或产品官方说明。
 
 ## 一、概览
 
@@ -206,12 +214,12 @@ shownotes 给出约 60 条参考资料（财新系列调查、媒体跟进、政
 
 ## 九、Limitations
 
-1. **润色稿未产出**（polished: false）：本集 1h38m/3482 段，会话输出预算与写通道受限（见下条），优先保证 transcript 原文落盘与报告质量；引用均直接取自带时间戳的原始转写并经 shownotes 校正。本仓库近例（2026-08-13 半拿铁·故事篇等 3 期）同为 polished: false。
-2. **transcript 副本为会话通道重打落盘**：Bash 复制通道（cp/python3/重定向）被本会话权限面拦截，/srv artifact 无法直接 cp，改由 Read→Write 分 6 片重打。已做行数核对（3492 行=3482 段+10 行头）并修正 3 处已知笔误，但**不排除个别行级抄写偏差**；canonical 原文在 Razer `/srv/everagent/artifacts/podcast/pod_77370f9f9fd9cbc4c60c5fd6.transcript.txt`（sha256 `712be4bb9869aab5faa58f1c8bdfda4d5d08c77200103a53862b34f2f112309a`），如需逐字引用请以该文件为准。
+1. **润色稿未产出**（polished: false）：本集 1h38m/3482 段，报告直接依据带时间戳原始转写与 shownotes；精确引语应回查 transcript。
+2. **原始工件已补拉**：2026-10-20 用 eacli pull 替换早期人工分片重录件，仓内 transcript 的大小与 SHA-256 已与 Razer 工件完全一致；公开报告不再保留远端内部路径。
 3. **whisper 误识别清单**（依 shownotes/上下文修正，transcript 内保留原貌）：班达铁/半达铁/万达铁→半拿铁；萧雷/小蕾→潇磊；半拿铁周干→半拿铁·周刊；中学高/中雪糕→钟薛高；华丽科技→**华立科技**（上市公司，shownotes 证实）；长兴→长鑫（LPDDR5X）；三臂大战→3B大战；朱丹鹏→朱丹蓬；林胜→林盛；泰盟→太盟；珠海万达商馆→商管；穗宁→遂宁；普西→浦西；干井子→甘井子；包头9元→九原；五月广场→吾悦广场；苍山→仓山；青黄岛→秦皇岛；东瀛市→东营市；元平→原平；汉兵场→旱冰场；投文字D→头文字D；顺维→顺为；平乡→萍乡；淮化→怀化；受庆→售罄；豪杨毛→薅羊毛；丁丁群→钉钉群；残委会→残奥委；向兆伦→项兆伦（时任文化部副部长）；李南→李楠；挥产/回产→灰产；款待→宽带；金人房→健身房；纸板机→直板机；折叠瓶→折叠屏；Kair→Care；游完成/电完成→电玩城；事与科技→世宇科技[?]（游艺设备商，19 年招股书，凭上下文推断）；维军→魏军[?]；疏容→[?]（大玩家法定代表人名，无法核实）；6一次→6亿次；残委会→残奥委；「读记事恩开关的」→[?]（业务拆细免责的例句，无法还原）；「要吧要吧黄金眼」→[?]；「第57傻青」→[?]（片尾致谢段 whisper 幻觉）；「变成中间一局」→[?]（遂宁万达新股东名，无法核实）；「天红」渠道→[?]；中雪糕品牌管理上海有限公司「这个雪是下雪的雪」→主理人口播明示新公司注册名用「雪」字（与原品牌「薛」不同），注册全名以工商登记为准[?]；努比亚「Navix Ultra」→[?]（机型全名 shownotes 未给，保留转写原文）。
 4. **说话人区分缺失**：whisper.cpp 无 diarization，双主持对谈的归属依上下文推断，个别「刘飞说/潇磊说」可能互换。
 5. **数字吞字风险**：whisper 对关键数字有吞字前科（如「6亿次」→「6一次」已修正）；上表数字凡无法经 shownotes 交叉验证且上下文存疑者已尽量标注，但仍有残余风险。
-6. **字数为估算**：本会话无法跑统计脚本（python3 被拦），hanzi_chars_raw≈22000、total_chars_raw≈26500 为按字节数折算的估算值；speech_rate≈224 字/min，低于对话节目常态（300-400），部分原因是片头广告/片尾曲/读评论的停顿——不据此怀疑转写完整性（3482 段、重复段守卫通过）。
+6. **字数与语速是旧估算**：原始 transcript 已恢复且结构审计通过，但 frontmatter 的汉字数/语速仍沿用旧估算；这些统计不承载新闻结论。
 7. **7-11 换购事件本身证据链不完整**：刘飞在节目中明示（无小票照片/支付记录、周边门店否认有此考核）；本报告按「报道存在+存疑」口径转述。
 
 ## 十、思考与追问

@@ -3,10 +3,12 @@ title: "Laya：把「反射性决策」从 LLM 里拆出来——421M 非自回�
 domain: "ai-learning"
 report_type: "knowledge_report"
 status: "completed"
-updated_on: "2026-10-09"
+updated_on: "2026-10-20"
+source_commit: "https://github.com/NandhaKishorM/laya/commit/1adc59f7e371deb601fcfa18a14e25db238addcc"
 tags: [System1, 非自回归, RLCD, 校准, 决策模型, ModernBERT, 部署实测, 路由, Jev, OpenAI-Decisions-API, 源码深读, v0.4.1]
 difficulty: ⭐⭐⭐
 source_trigger: "微信公众号 ModelScope《Laya 开源：比Jev快4倍！421M参数，33毫秒完成 System 1 决策》（mp.weixin.qq.com/s/9SJf3nhK25rZcZwQNTg7mw）——用户要求：AI 研究学习 + 能否部署使用 + 双仓场景"
+semantic_tags: ["system1_models", "decision_models", "discriminative_ai", "laya"]
 ---
 
 # Laya：把「反射性决策」从 LLM 里拆出来（v0.4.1 续深版）
@@ -17,6 +19,8 @@ source_trigger: "微信公众号 ModelScope《Laya 开源：比Jev快4倍！421M
 > - **f(x)**：接受 f 后，决策层的成本结构被重写（10-30ms、$0、零幻觉），但「校准」大部分来自事后温度拟合而非 RL 训练（#741 实测），零样本能力低于 majority 基线——**它是「微调后用于垂域的快速底座」，不是开箱即用的决策引擎**。该结论已被本机实测（09-22）+ 源码深读（10-09）双重验证。
 
 > **一句话**：Laya 是一个 421M 参数的非自回归决策模型——不生成任何文本，一次前向传播输出「选择/评分/布尔」三类判断及其**数学校准的概率**，本机 Mac MPS 实测 4 问 34.5ms / 1 问 10.7ms。它攻击的是每个 AI 流水线里最浪费的一环：**用 8B-70B 的生成式 LLM 回答"这封邮件该给谁"**。本报告 = 原理解析 + 官方宣称的本机核验 + 双仓（EverAgent / EverAgent-infra）场景评估；**10-09 续篇**追加 v0.4.1 源码深读、Jev→OpenAI 行业博弈全景、社区争议实录与理论定位。
+
+> **与 GitHub 报告的职责边界**：本文拥有“机制解释 + 本机实测 + 适用场景”；[`research_NandhaKishorM_laya.md`](../../../github-trending-analyzer/reports/research_NandhaKishorM_laya.md) 拥有“仓库结构 + 社区活跃度 + 竞品快照”。两者源码统一固定在公开 commit [`1adc59f`](https://github.com/NandhaKishorM/laya/tree/1adc59f7e371deb601fcfa18a14e25db238addcc)，避免各自滚动到不同版本。
 
 ---
 
@@ -136,9 +140,9 @@ source_trigger: "微信公众号 ModelScope《Laya 开源：比Jev快4倍！421M
 
 ---
 
-# 续篇（2026-10-09 · v0.4.1 · 31,848 stars 时代）
+# 续篇（2026-10-09 快照 · v0.4.1 · 31,848 stars）
 
-> 初版报告三周后回访。期间发生的事：仓库从 9,984 → **31,848 stars**（3.2x）、821 PR、100 贡献者；版本 v0.3.5 → v0.4.1（20 天 29+ 正式版）；两个 checkpoint → 三个（新增 `laya-typed-decisions`）；OpenAI 入场。本续篇基于**本地 clone 源码深读**（pin `1adc59f`，2026-10-08）+ Wikipedia/Fortune/HN 交叉核验，完整 7 章研究报告另见 `github-trending-analyzer/reports/research_NandhaKishorM_laya.md`。[API]
+> 初版报告三周后回访。**以下 stars、PR、贡献者和版本号都是 2026-10-09 快照，不是当前值**：仓库从 9,984 → 31,848 stars、821 PR、100 贡献者；版本 v0.3.5 → v0.4.1；两个 checkpoint → 三个。本续篇基于公开源码 commit [`1adc59f`](https://github.com/NandhaKishorM/laya/tree/1adc59f7e371deb601fcfa18a14e25db238addcc) + Wikipedia/Fortune/HN 交叉核验；滚动统计统一由 GitHub 姊妹报告维护。[API]
 
 ## 7. 行业叙事完整版：三周内的三方博弈
 
@@ -226,11 +230,11 @@ HN 1,363 分主帖的 77 条评论里，批评与赞美同样有信息量 [Web]�
    - 跟踪 OpenAI Decisions API 的第三方评测，一个月后回访这条产品线。
 
 ## 来源（续篇追加）
-- 本地 clone 源码：`NandhaKishorM/laya@1adc59f`（2026-10-08，v0.4.1）——`train.py`/`calibrate.py`/`common.py`/`agent.py`/`router.py`/`shortlist.py`/`pyproject.toml` 逐文件精读 [代码]
+- 公开源码：[NandhaKishorM/laya@1adc59f](https://github.com/NandhaKishorM/laya/tree/1adc59f7e371deb601fcfa18a14e25db238addcc)（2026-10-08，v0.4.1）——`train.py`/`calibrate.py`/`common.py`/`agent.py`/`router.py`/`shortlist.py`/`pyproject.toml` 逐文件精读 [代码]
 - GitHub API（2026-10-09 实测）：stars/contributors/releases/commit_activity/pulls（821 PR）/languages [API]
 - Wikipedia: *Jev (AI model)*（2026-10 快照：TypeSafe 创始团队/$40M DCVC 种子轮/技术规格/RLCD 未公开）https://en.wikipedia.org/wiki/Jev_(AI_model)；Fortune 2026-10-08（OpenAI Decisions API 10-06 发布、Almeida 专访）https://fortune.com/2026/10/08/jev-an-ai-for-making-quick-decisions-has-been-a-viral-hit-in-silicon-valley-but-openai-is-hot-on-its-heels；HN show 帖 https://news.ycombinator.com/item?id=49765348（1,363 分主帖+评论，经 Algolia API）；TypeSafe 官方博客 https://typesafe.ai/blog/introducing-system-one-models-and-jev（经搜索摘要）[Web]（eacli web.read 于 10-09 抓取；HN Algolia API 直取——eacli 对该 URL 解析失败的记录降级）
 - 竞品 gh 实测（2026-10-09）：urchade/GLiNER 4,067★、huggingface/setfit 2,836★、sentence-transformers 19,161★、AbdelStark/jev-benchmarks 25★、nibzard/decision-model-benchmark 11★ [API]
-- 姊妹报告：`github-trending-analyzer/reports/research_NandhaKishorM_laya.md`（7 章完整版，同日）
+- 姊妹报告：[GitHub 仓库研究](../../../github-trending-analyzer/reports/research_NandhaKishorM_laya.md)（7 章，负责滚动统计与仓库生态）
 
 ## 来源（2026-09-22 初版）
 - 触发文章：ModelScope 公众号《Laya 开源：比Jev快4倍！421M 参数，33 毫秒完成 System 1 决策》（mp.weixin.qq.com/s/9SJf3nhK25rZcZwQNTg7mw，全文经 web-reader 抓取）

@@ -4,6 +4,9 @@ domain: "podcast-learning"
 report_type: cross_episode
 source: 张小珺152（小宇宙）+ 晚点聊177（RSS）
 source_url: https://www.xiaoyuzhoufm.com/episode/6a8eadd61352af56ff3c6017
+source_urls:
+  - "https://www.xiaoyuzhoufm.com/episode/6a8eadd61352af56ff3c6017"
+  - "https://podcast.latepost.com/177"
 show: "张小珺Jùn｜商业访谈录 × 晚点聊 LateTalk"
 episode: "152 × 177"
 host: "张小珺 × 曼祺"
@@ -21,18 +24,33 @@ polished_by: "Claude (GLM-5.3) 27 章并行润色 + 对照 agent（Workflow，�
 polished_at: 2026-09-02
 status: archived
 created: 2026-09-02
-updated_on: 2026-09-02
-transcript_path: 见两份单期报告
-polished_transcript_path: 见两份单期报告
+updated_on: 2026-10-20
+transcript_path: reports/transcripts/2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report.transcript.txt
+transcript_paths:
+  - "reports/transcripts/2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report.transcript.txt"
+  - "reports/transcripts/2026-08-04_rss-wandian-latetalk_kimi-k3.transcript.txt"
+polished_transcript_path: reports/transcripts/2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report.polished.txt
+polished_transcript_paths:
+  - "reports/transcripts/2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report.polished.txt"
+  - "reports/transcripts/2026-08-04_rss-wandian-latetalk_kimi-k3.polished.txt"
 pipeline: 双期转写润色（同日）→ 各期要素提取 → 对照 agent 交叉分析（factual_diffs 含外部核验）
 source_shownotes_chapters: true
-companion_report: "[[2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report]]、[[2026-08-04_rss-wandian-latetalk_kimi-k3]]"
+companion_reports:
+  - "reports/2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report.md"
+  - "reports/2026-08-04_rss-wandian-latetalk_kimi-k3.md"
 notable_correction: "两期互相修正：张小珺期'K3 前最大开源 72B'系口误须剔除；晚点聊期 shownotes 38B 与正文 48B 冲突取 48B；6.3 倍解码加速属 Kimi Linear 而非 K3 报告"
+semantic_tags: ["kimi_k3", "model_architecture", "inference_systems", "cross_episode"]
 ---
 
 # Kimi K3 一鱼两吃：张小珺152 × 晚点聊177 对照精读
 
-> 同一个模型（Kimi K3，2.8T 开源 MoE，2026-07-16 官宣 / 07-27 权重+47 页报告），两期节目、三种嘉宾、两条路线：**学术谱系学**（孙宇涛逐节领读技术报告、串十多篇论文）× **工业生态学**（赵晨阳推理系统工程 + 曾致远算法与评测，含开源大辩论）。本报告是对照层——两份单期报告见互链。
+> 同一个模型（Kimi K3，2.8T 开放权重 MoE，2026-07-16 官宣 / 07-27 权重+47 页报告），两期节目、三种嘉宾、两条路线：**学术谱系学**（孙宇涛逐节领读技术报告、串十多篇论文）× **工业生态学**（赵晨阳推理系统工程 + 曾致远算法与评测，含开放权重讨论）。本报告只负责比较两期的互补、冲突与合成判断；逐期内容、时间戳、原话和完整数字分别回到[张小珺 152 单期报告](./2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report.md)与[晚点聊 177 单期报告](./2026-08-04_rss-wandian-latetalk_kimi-k3.md)复核。
+
+### 证据与职责边界
+
+- 两份 transcript 与 polished 文件在 frontmatter 中逐项列出；本报告没有第三份“合并转写”。
+- 单期报告承担节目复述、时间锚点与原话定位；本报告承担跨期比较。两者结论冲突时，以原始转写、K3 官方技术报告和可公开核验材料为准。
+- “体感对标”“科技史观”“护城河”等判断来自嘉宾或本报告综合，不能外推成对 K3 全场景性能、Moonshot 内部流程或整个开放模型生态的事实结论。
 
 ## 一、两期在六个维度上各怎么说
 
@@ -92,6 +110,14 @@ notable_correction: "两期互相修正：张小珺期'K3 前最大开源 72B'�
 - **读 B 重点听三段**：推理系统工程（白板缓存/1KB 重放/Flash KDA）、MOPD 与 RL 环境（组织解耦/隔离哲学反转/harness 防过拟合）、开源大辩论（护城河逻辑链）。坑：6.3 倍来自 Kimi Linear；38B/48B 取 48B。
 - **同比喻两幅 temperament（对读彩蛋）**：两期各自用了忒修斯之船但落点相反——孙宇涛落"没有本质创新"（所以离场），曾致远落"可组合性远超想象"（所以谨慎乐观）。这是两期最有意思的镜像。
 - **用途分工**：A 可当带讲解的参考文献清单（想复现/写综述的人）；B 可当产业议题清单（做选型/投资/政策判断的人）。
+
+## Limitations
+
+- 两期节目均围绕同一份官方材料展开，观点来源并非统计独立；“两位嘉宾都同意”不能当作额外的外部验证。
+- 表中的 benchmark、参数和发布日期以节目制作时可见的 K3 官方材料为基准；排名只对官方给出的模型集合、评测版本和 harness 成立。
+- 赵晨阳、曾致远与孙宇涛分别从推理系统、研究和个人选择出发，样本只有三位嘉宾。报告中的“学术路线/工业路线”是便于阅读的归纳，不代表学界或产业界整体分布。
+- “开源”在节目口语中混指代码、权重与生态；本文在可区分处改用“开放权重”。训练数据、完整训练流水线和内部环境并未随权重全部开放。
+- 外部核验只用于解决具体事实冲突，没有对两期节目涉及的每个产业、地缘和估值判断做全面复核。
 
 ## 思考与追问（对照层）
 

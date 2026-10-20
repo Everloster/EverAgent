@@ -1,7 +1,19 @@
+---
+title: "trycua/cua 深度研究（源码视角）"
+domain: "github-trending-analyzer"
+report_type: "repo_deep_research"
+source_url: "https://github.com/trycua/cua"
+snapshot_commit: "9bbfa7dd3e27ca7f1861ede70aaca390174493f9"
+snapshot_on: "2026-09-20"
+status: "completed"
+updated_on: "2026-10-20"
+semantic_tags: ["computer-use", "virtualization", "agent-infrastructure", "mcp"]
+---
+
 # trycua/cua 深度研究报告（源码视角 · refer）
 
 > 换视角报告（sourcecode）。同 repo 主报告：[[research_trycua_cua]]（68 天前）。本报告的视角是**源码级架构与模块地图**——给"要改它/用它/学它"的人一张文件+行号级的图纸。
-> 源码基线：本地 clone `~/workspace/cua`，commit `9bbfa7dd3`（2026-09-19）。所有 [代码] 证据的路径行号以此为准。
+> 源码基线：公开仓 commit [`9bbfa7dd3`](https://github.com/trycua/cua/tree/9bbfa7dd3e27ca7f1861ede70aaca390174493f9)（2026-09-19）。所有 [代码] 证据的路径行号以该快照为准。
 
 ## 1. 项目概述
 
@@ -135,3 +147,7 @@ cua 是 Cua AI 的开源 computer-use 平台："Give AI agents computers they ca
 ---
 *报告生成时间: 2026-09-20*
 *研究方法: github-deep-research 多轮深度研究（R2 为本地源码 4 组并行勘察）*
+
+[API]: https://api.github.com/repos/trycua/cua
+[README]: https://github.com/trycua/cua/blob/9bbfa7dd3e27ca7f1861ede70aaca390174493f9/README.md
+[代码]: https://github.com/trycua/cua/tree/9bbfa7dd3e27ca7f1861ede70aaca390174493f9

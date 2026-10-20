@@ -187,7 +187,7 @@
 
 ### 2026-10-09（二）中优先批次：4 项全处理
 
-- **课代表立正·职业方法论九讲（存量专题）**：立正说 217/218/221-225 + 对话 327/328/329（2022-03~2023-08，transistor feed 回灌的存量视频片段，10 集批量本地转写 1208 段）
+- **课代表立正·职业方法论十讲（存量专题）**：立正说 217/218/221-225 + 对话 327/328/329（2022-03~2023-08，transistor feed 回灌的存量视频片段，10 集批量本地转写 1208 段）
   - 路径：`reports/2026-10-09_rss-kedaibiao-lizheng_career-methods-series.md`（cross_episode；transcripts 前缀 `lizheng-career-series_` 共 10 件）
   - 内容：7+1 职业选择框架/AlphaGo 决策法/认知余裕（90% 工作无意义）/失败的期权/L6→L7 的 2-3 年/Simple vs Easy 榨汁机/不当韭菜三原则/大学生三问/correlation→causality/网红经济学
   - 关键修正：阿富汗/After Goal→AlphaGo；学书界→学术界；企号→起号

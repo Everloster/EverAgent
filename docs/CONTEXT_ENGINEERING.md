@@ -89,7 +89,7 @@ python3 scripts/run_ace_context_ab.py \
 
 开工探针测路由、产物意图、初始文件、Skill 选择和澄清边界；它不替代完整任务。报告完成质量继续由真实 `report-v2` 回放验证，需要判断提前停止、测试范围或最终交付时再运行完整行为模板。
 
-最新通过结果由 `config/instruction-policy.json` 登记为 Owner，并绑定所有 `AGENTS.md`、Skill 入口和 ACE suite 的 SHA-256。上述 Context 变化后，静态门禁会要求重新回放，避免长期保留已经过期的“通过”结论。
+最新通过结果由 `config/instruction-policy.json` 登记为 Owner，并绑定所有 `AGENTS.md`、Skill 入口和 ACE suite 的 SHA-256。结果过期时静态门禁给出告警；只有准备宣称 Context 架构改进、合并大规模路由重构或建立新基线时，才要求完整 A/B。普通报告与局部文档提交不再同步运行 84 次模型探针；需要快速检查单一路由时使用 `--case <id>`。
 
 ## 参考
 

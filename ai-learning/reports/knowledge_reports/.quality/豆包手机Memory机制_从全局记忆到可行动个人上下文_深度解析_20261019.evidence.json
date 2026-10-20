@@ -1,0 +1,177 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/豆包手机Memory机制_从全局记忆到可行动个人上下文_深度解析_20261019.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-19",
+  "generator": {
+    "model": "gpt-6",
+    "harness": "codex",
+    "run_id": "codex-doubao-memory-20261019",
+    "explicit_model_override": false,
+    "override_reason": ""
+  },
+  "task": {
+    "summary": "了解 EverAgent-infra 中豆包手机逆向研究的近期进展，并在公开仓形成一份深入浅出、严格隔离私有信息的 Memory 机制报告。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "准确总结最新受控研究的新增边界与纠偏，不把组件或接口存在写成完整运行闭环。"
+      },
+      {
+        "id": "R02",
+        "text": "使用豆包手机助手官方材料与 Agent Memory 原始论文解释写入、提炼、检索、行动和治理机制。"
+      },
+      {
+        "id": "R03",
+        "text": "报告深入浅出，明确区分公开事实、厂商声明、受控研究摘要与分析模型，并给出评估方法。"
+      },
+      {
+        "id": "R04",
+        "text": "公开仓不得包含个人设备、账号、网络、用户内容、内部标识、原始逆向产物或可执行访问路径。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "official",
+      "title": "豆包手机助手隐私安全白皮书",
+      "locator": "https://o.doubao.com/whitepaper",
+      "accessed_on": "2026-10-19"
+    },
+    {
+      "id": "S02",
+      "kind": "official",
+      "title": "屏幕自动化操作声明协议应用开发接入文档",
+      "locator": "https://o.doubao.com/SAEP_Protocol",
+      "accessed_on": "2026-10-19"
+    },
+    {
+      "id": "S03",
+      "kind": "official",
+      "title": "豆包记忆功能 FAQ",
+      "locator": "https://www.doubao.com/legal/memory_faq",
+      "accessed_on": "2026-10-19"
+    },
+    {
+      "id": "S04",
+      "kind": "primary",
+      "title": "Generative Agents: Interactive Simulacra of Human Behavior",
+      "locator": "https://arxiv.org/abs/2304.03442",
+      "accessed_on": "2026-10-19"
+    },
+    {
+      "id": "S05",
+      "kind": "primary",
+      "title": "MemGPT: Towards LLMs as Operating Systems",
+      "locator": "https://arxiv.org/abs/2310.08560",
+      "accessed_on": "2026-10-19"
+    },
+    {
+      "id": "S06",
+      "kind": "primary",
+      "title": "Cognitive Architectures for Language Agents",
+      "locator": "https://arxiv.org/abs/2309.02427",
+      "accessed_on": "2026-10-19"
+    },
+    {
+      "id": "S07",
+      "kind": "primary",
+      "title": "Memory in the Age of AI Agents: A Survey",
+      "locator": "https://arxiv.org/abs/2512.13564",
+      "accessed_on": "2026-10-19"
+    },
+    {
+      "id": "S08",
+      "kind": "primary",
+      "title": "Evaluating Very Long-Term Conversational Memory of LLM Agents",
+      "locator": "https://arxiv.org/abs/2402.17753",
+      "accessed_on": "2026-10-19"
+    },
+    {
+      "id": "S09",
+      "kind": "official",
+      "title": "Permission-based access control to exported components",
+      "locator": "https://developer.android.com/privacy-and-security/risks/access-control-to-exported-components",
+      "accessed_on": "2026-10-19"
+    },
+    {
+      "id": "S10",
+      "kind": "execution",
+      "title": "受控本地静态与只读行为研究的脱敏复核",
+      "locator": "private-evidence-withheld:doubao-memory-research-2026-10-18",
+      "accessed_on": "2026-10-19"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "豆包手机全局记忆应被理解为带授权、存储、提炼、检索和用户控制的个人上下文生命周期，而不是单一向量数据库。",
+      "report_anchor": "个人上下文生命周期",
+      "support": "derived",
+      "source_ids": ["S01", "S04", "S06", "S07"],
+      "evidence": "白皮书给出全局记忆的数据生命周期与用户控制；Agent Memory 论文把记忆建模为形成、演化、检索和行动协同的系统。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "手机全局记忆与豆包 App 对话记忆的公开范围不同，不能互相直接外推。",
+      "report_anchor": "手机“全局记忆”与豆包 App“对话记忆”不是同一概念",
+      "support": "direct",
+      "source_ids": ["S01", "S03"],
+      "evidence": "白皮书讨论手机全局记忆、本地信息与系统安全；FAQ 明确限定豆包 App 从对话文本和语音转写文本提炼记忆的范围。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "记录、检索使用和依据记忆执行动作是三类不同权限，检索命中不能自动授权外部动作。",
+      "report_anchor": "把三个权限拆开",
+      "support": "derived",
+      "source_ids": ["S01", "S02", "S06"],
+      "evidence": "SAEP 将 Agent 身份、系统基线、应用策略和用户授权组合为动作决策；CoALA 将记忆与行动空间、决策过程分开。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "端侧优先不等于完全不上云，官方公开的是受保护的端云协同架构。",
+      "report_anchor": "本地优先，但不要写成“全部本地”",
+      "support": "direct",
+      "source_ids": ["S01"],
+      "evidence": "白皮书同时描述本地算法、个人记忆数据库加密、云端推理、传输与存储加密、假名化及处理后删除声明。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "当前受控研究未证明普通 App 可持续读取全局记忆，也未证明端侧 RAG、完整迁移和删除同步已经形成可复现闭环。",
+      "report_anchor": "最新研究进展的价值主要是纠偏",
+      "support": "direct",
+      "source_ids": ["S10"],
+      "evidence": "脱敏复核只确认静态实现、权限门、派生快照及候选导出链；真实记录、多页增量、普通 App 接入、删除 feed 和恢复均未完成。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "Android 组件 exported 不代表任意第三方应用都可读取，仍可能存在代码级 UID、签名或权限检查。",
+      "report_anchor": "“组件可导出”不等于普通 App 可读",
+      "support": "direct",
+      "source_ids": ["S09", "S10"],
+      "evidence": "Android 官方安全文档明确要求对 exported 组件继续使用 manifest 或代码级权限控制；受控观察符合这一模型。",
+      "critical": true
+    },
+    {
+      "id": "C07",
+      "claim": "手机 Memory 的评估必须覆盖写入、检索、演化一致性、行动安全和用户控制，单一检索命中率不足以证明系统可靠。",
+      "report_anchor": "至少应建立以下五组指标",
+      "support": "derived",
+      "source_ids": ["S01", "S02", "S07", "S08"],
+      "evidence": "LoCoMo 覆盖单跳、多跳、时间与对抗问题；白皮书和 SAEP 增加授权、删除、行动与审计要求。",
+      "critical": true
+    }
+  ],
+  "limitations": [
+    "官方白皮书和 SAEP 能证明公开承诺与接口，不能替代独立安全审计。",
+    "受控研究原始证据保留于私有环境，公开读者无法完整复现产品内部结论。",
+    "本轮没有读取真实用户记忆正文，也未验证普通 App 接入、删除事件流、重启持久性或跨设备恢复。",
+    "报告中的分层架构和公式是分析模型，不代表豆包官方精确实现。"
+  ]
+}

@@ -23,12 +23,13 @@ polished_by: "Kimi (kimi-cli-k3)，12 章并行分章润色"
 polished_at: 2026-08-23
 status: archived
 created: 2026-08-23
-updated_on: 2026-08-23
+updated_on: 2026-10-20
 transcript_path: reports/transcripts/2026-08-04_rss-guigu101_shengying.transcript.txt
 polished_transcript_path: reports/transcripts/2026-08-04_rss-guigu101_shengying.polished.txt
 pipeline: yt-dlp → whisper.cpp / ggml-large-v3 / Metal / --vad（silero）/ 约7.5min墙钟 → Fireside shownotes（12 章节时间戳）→ 12 章并行分章润色 → 组装
 source_shownotes_chapters: true
 notable_correction: "首跑无 VAD 时 whisper 在音乐/过场段陷入循环幻觉（约 39 分钟起整段报废），--vad 重跑恢复；SGLang/RadixArk/盛颖/Elon 等系统性误识别约 200 处已修；Accel 被听成 Axial/Excel，依官方新闻稿修正"
+semantic_tags: ["xai", "sglang", "ai_infrastructure", "open_models"]
 ---
 
 # 对话盛颖：SGLang 发起人谈 Infra 的浪漫、xAI 往事与「世间的美好是存在的」
@@ -70,10 +71,10 @@ notable_correction: "首跑无 VAD 时 whisper 在音乐/过场段陷入循环�
 |---|---|---|
 | **盛颖（Ying Sheng）** | RadixArk 联创&CEO；SGLang 发起人；LMSYS 联创 | 嘉宾 |
 | **朱邦华（Banghua Zhu）** | RadixArk 联创（官方新闻稿确认） | 共同创业 |
-| **连铭[?]**（疑为 Lianmin Zheng 郑连民） | LMSYS/SGLang 联创；盛颖丈夫（节目中自述），同在 xAI | 家人+长期搭档 |
+| **Lianmin Zheng（郑连民）** | LMSYS/SGLang 联创；与盛颖的家庭关系和同在 xAI 经节目自述 | 家人+长期搭档 |
 | **Ion Stoica** | 伯克利教授、Databricks 联创 | 她的「lifetime mentor」；也是 vLLM/Inferact 的导师与创始人 |
 | **Clark Barrett** | 斯坦福教授（形式化验证/SMT，cvc5） | PhD 导师，「教科书般完美的导师」；低谷期「从来没有断过我的经费」 |
-| **Wei-Lin**（疑为 Wei-Lin Chiang） | 把 LM Arena 做成公司的人 | LMArena 归属叙事 |
+| **Wei-Lin Chiang** | Arena（原 LMArena）联合创始人兼 CTO | LMArena 公司化与品牌演进 |
 | 提及 | Elon Musk、John Schulman、陈立武（Lip-Bu Tan）、Hock Tan、Hinton/LeCun/Bengio（拒评未接触过的人） | — |
 
 ## 四、主要话题
@@ -85,7 +86,7 @@ notable_correction: "首跑无 VAD 时 whisper 在音乐/过场段陷入循环�
 - **day zero 兼容是市场驱动**：用户「第一天就要用上」的人性沿 用户→inference provider→SGLang→模型厂商 链条式传递。DeepSeek V4 架构创新大，SGLang 花了特别大精力做到 feature set 第一天全兼容，并**首次做到 RL 的 day zero**（Miles 框架大部分代码重写）。
 - **infra 是浪漫的（本期题眼）**：「infra 不是一个 support 角色，infra 本身在我眼中就是产品」；「没有人会说希望 infra 击中人性，但从我的视角看，infra 也是击中人性的」——taste = 不只关注 end goal，还关注系统是 well-designed 跑起来的还是豆腐渣工程跑起来的。大厂 infra team 是 supporter 角色、在美感上妥协；RadixArk 反过来：training job 可以 pause、刷 benchmark 不是 urgency，问题要 systematically 解决而非打 patch。
 - **SGLang 的初心是 language**：当年以 agent 为入口设计，还设计了 frontend 语言；后来因 inference 效率挑战更突出转向 runtime，但「有一天我们会 revisit，最终它还是应该是一个 language 的形式」。
-- **inference 市场「没有输家」**：Fireworks/Together 等 provider 多年共存且全部同步增长。（陈茜口述的市场数字：Baseten[?] 3 亿美元融资估值过 10 亿、Fireworks 估值 40 亿、Together 寻求 10 亿新融资——主持人口述未独立核实。）
+- **inference 市场「没有输家」**：Fireworks/Together 等 provider 多年共存且同步增长。主持人随后口述了 Baseten、Fireworks、Together 的融资数字，但没有给出处，本报告不再把这些数字作为市场规模证据。
 - **latent space 推理若成熟**，推理引擎很多东西会变，但「这本来就是你写推理引擎的一环，我觉得这个不是变革；真正的难点从来都还是在回归人和团队本身」。
 - **RadixArk 的野心**：「我认为 RadixArk 最终使命是要做下一代 AI」——不是模型，是「现代世界上还不存在的东西」（拒绝透露）；inference/infra 只是起点。SGLang 归 LMSYS 社区，公司无 private fork，不靠开源制造差异获利。
 
@@ -146,10 +147,17 @@ SGLang / RadixAttention / prefix caching / KV cache / Miles（RL 框架）/ day 
 
 - **首跑转写曾整段报废**：无 VAD 时 whisper 在音乐/过场段陷入循环幻觉（约 00:39 起循环输出前一期小宇宙广告词），`--vad`（silero）重跑后全量正常。此教训已写入 AGENTS.md 转写经验。音频实际内容完好（volumedetect 各段 -18dB 正常语音电平）。
 - **whisper 系统性误识别约 200 处已修**（分章校正清单合计）：`SG Lane/SGMA/Edgeland`→SGLang、`ReddixArc/Radi Shark/Red Sox`→RadixArk、`施琳/摄影`→盛颖、`一浪`→Elon、`Young Stoica`→Ion Stoica、`PSC`→PhD、`Taxbook`→textbook 等。
-- **约 60 处 [?] 不确定项保留原文**，重要的：`连铭[?]`（盛颖丈夫，疑为 Lianmin Zheng 郑连民，汉字写法未确认）、`Wei-Lin[?]`（LMArena 公司化主导者，疑为 Wei-Lin Chiang）、ch8 的 `Coconut[?]/Cola[?]`（latent 推理工作所指）、若干处语义存疑。
+- **约 60 处 [?] 不确定项保留原文**。其中人名已用公开资料校正为 Lianmin Zheng（郑连民）与 Wei-Lin Chiang；ch8 的 `Coconut[?]/Cola[?]` 等 latent 推理工作名仍无法确认。
 - **身份更正**：我最初给润色 agent 的简介写「清华→哥大→斯坦福」，转写原文为**上海交大 ACM 荣誉班**，以转写为准（已改）。
-- **主持人口述未核实**：Baseten/Fireworks/Together 的融资估值数字、片尾「xAI 被 SpaceX 收并购且上市」的表述（指 2026 年 SpaceX 收购 xAI 及 SpaceX IPO 语境，未独立核实）。
+- **主持人口述未核实**：Baseten/Fireworks/Together 的融资估值数字已从正文结论中移除；片尾关于 xAI/SpaceX 资本事件的口述与本期主题无关，也不作为事实收录。
 - 陈茜在 ch8 口述「vLLM 核心团队年初商业化成立 Inferact，融资 1.5 亿美元、估值 8 亿」——与公开报道一致（见游凯超期报告），已交叉验证。
+
+## 外部核验来源
+
+- [RadixArk 官方：$100M Seed、$400M post-money valuation](https://radixark.ai/blog/radixark-launches-100m-seed)
+- [BusinessWire：RadixArk 融资与投资人名单](https://www.businesswire.com/news/home/20260505077157/en/)
+- [Wei-Lin Chiang 个人页](https://infwinston.github.io/)
+- [Bloomberg：Inferact $150M seed / $800M valuation](https://www.bloomberg.com/news/articles/2026-01-22/andreessen-backed-inferact-raises-150-million-in-seed-round)
 
 ## 十、思考与追问
 

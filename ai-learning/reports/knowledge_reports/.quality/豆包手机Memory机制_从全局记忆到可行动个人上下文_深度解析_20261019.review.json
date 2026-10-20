@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/豆包手机Memory机制_从全局记忆到可行动个人上下文_深度解析_20261019.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "independent-review-doubao-memory-20261019",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 93,
+        "request_coverage": 97,
+        "reasoning_quality": 93,
+        "readability": 92,
+        "limitations": 97
+      },
+      "score_reasons": {
+        "evidence_fidelity": "已实际核验全部十项来源及七项关键 claim。官方材料、原始论文和受控研究依据均支持核心结论，产品事实、厂商声明与分析模型的边界总体准确。轻微问题是个别句子把综合推断写得接近官方直接结论，且 Android 权限文档与受控研究各自支持的检查类型可分开归因。",
+        "request_coverage": "R01–R04 均完整覆盖：报告总结了最新受控研究的新增边界，解释了写入、提炼、检索、行动与治理，给出评估方法，并保持公开信息与私有依据隔离。",
+        "reasoning_quality": "从公开事实、通用 Agent Memory 研究到手机场景的授权与行动边界，推理链完整；对空结果、派生视图、静态实现、导出与迁移等常见误判给出了替代解释。少数架构性判断可更明确标为综合分析。",
+        "readability": "一页结论、类比、架构图、公式、表格和纠偏章节形成清晰的阅读路径，术语解释充分，可脱离对话独立阅读。篇幅较长但与深度解析定位相符。",
+        "limitations": "明确披露官方材料不是独立安全审计、受控研究不可公开复现、真实记录和完整闭环尚未验证、公式与分层架构属于分析模型，并指出版本变化需要重新核验。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07"
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "核心结论可通过。建议后续修订时把三类权限明确写为综合分析模型，并将 Android 官方文档支持的通用权限控制与受控研究支持的具体调用方检查分开归因。未发现关键事实错误、核心需求遗漏或隐私安全问题。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 94.05,
+    "evaluated_on": "2026-10-19",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "aee6dd34ce2a17202322898048571b518b122419f0be1e30109de4ee27d4331a",
+    "evidence_sha256": "9b13da8a2bfb9888b6936ba6ab77e027b3f98b71513f11f6f38d2bba84dd1529"
+  }
+}

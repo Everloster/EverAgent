@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "job_id": "job_podcast_9469dd9e2ea46bdbe996a1ac",
+  "status": "succeeded",
+  "device": "razer",
+  "silent": true,
+  "interactive_browser": false,
+  "audio_playback": false,
+  "duration_ms": 246416,
+  "artifact": {
+    "artifact_id": "pod_029081cf09f05e2eed5e5531",
+    "source_host": "www.xiaoyuzhoufm.com",
+    "source_sha256": "a76217345105b591161dc21e103045c0444fb723771dfc6249085a8747bd7cbe",
+    "audio_size": 577437774,
+    "language": "zh",
+    "segments": 2229,
+    "service_version": "whisper.cpp-v1.9.1-sm120",
+    "transcript_size": 104373,
+    "transcript_sha256": "ed7e00f50771a07210ba5c4bd9580d5d71a4bb6e283d55fac2a516ab8c7583d0",
+    "quality": {
+      "repetition_guard": {
+        "passed": true,
+        "max_consecutive_identical": 1
+      }
+    }
+  },
+  "transfer": {
+    "mode": "eacli pull",
+    "atomic": true,
+    "local_path": "podcast-learning/reports/transcripts/2026-10-17_xiaoyuzhou-42zhangjing_articuler-jason.transcript.txt",
+    "verified_sha256": true
+  }
+}

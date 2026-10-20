@@ -1,6 +1,18 @@
+---
+title: "NandhaKishorM/laya 深度研究：非自回归 System 1 决策引擎"
+domain: "github-trending-analyzer"
+report_type: "repo_deep_research"
+source_url: "https://github.com/NandhaKishorM/laya"
+snapshot_commit: "1adc59f7e371deb601fcfa18a14e25db238addcc"
+snapshot_on: "2026-10-09"
+status: "completed"
+updated_on: "2026-10-20"
+semantic_tags: ["decision-model", "non-autoregressive", "classification", "system-1"]
+---
+
 # Laya（NandhaKishorM/laya）深度研究报告
 
-> 非自回归 System 1 决策引擎：Jev 的开源对标，三周 31.8k stars 背后的技术、生态与争议
+> 非自回归 System 1 决策引擎：Jev 的开源对标，三周 31.8k stars 背后的技术、生态与争议。源码证据固定在 commit [`1adc59f`](https://github.com/NandhaKishorM/laya/tree/1adc59f7e371deb601fcfa18a14e25db238addcc)；Stars、PR、版本与竞品数据均为 2026-10-09 快照。
 
 ---
 
@@ -141,3 +153,8 @@ Laya 是一个**非自回归（non-autoregressive）System 1 决策引擎**：�
 
 *报告生成时间: 2026-10-09*
 *研究方法: github-deep-research 多轮深度研究（R1 元数据 / R2 本地 clone 源码深读 pin 1adc59f / R3 竞品 gh 实测 + Wikipedia/Fortune/HN / R4 量化信号 + 暴涨归因）*
+
+[API]: https://api.github.com/repos/NandhaKishorM/laya
+[README]: https://github.com/NandhaKishorM/laya/blob/1adc59f7e371deb601fcfa18a14e25db238addcc/README.md
+[代码]: https://github.com/NandhaKishorM/laya/tree/1adc59f7e371deb601fcfa18a14e25db238addcc
+[Web]: https://news.ycombinator.com/item?id=49765348

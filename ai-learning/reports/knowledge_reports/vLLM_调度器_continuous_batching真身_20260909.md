@@ -3,14 +3,18 @@ title: "vLLM 调度器：continuous batching 的真身（课论断 ↔ 源码对
 domain: "ai-learning"
 report_type: "knowledge_report"
 status: "completed"
-updated_on: "2026-09-09"
+updated_on: "2026-10-20"
+source_commit: "https://github.com/vllm-project/vllm/commit/6e448d0ea9bf3d88d898b65449ca6dc2aec170ac"
+semantic_tags: ["vllm", "continuous_batching", "scheduler", "llm_inference"]
 ---
 
 # vLLM 调度器：continuous batching 的真身（课论断 ↔ 源码对照篇）
 
 > 本文是 vLLM 源码级学习长线（计划见 `roadmap/vLLM_源码级学习计划_20260821.md`）的**阶段 1 产出**。
-> **版本坐标**：本地 clone `../vllm`，checkout 在 **v0.27.1**（commit `6e448d0`）。所有 `file:line` 证据以该 tag 为准；三路并行源码勘察 + 主会话汇总复核。
+> **版本坐标**：[vLLM v0.27.1 / commit `6e448d0`](https://github.com/vllm-project/vllm/tree/6e448d0ea9bf3d88d898b65449ca6dc2aec170ac)。所有 `file:line` 证据以该公开快照为准。
 > **读法**：本报告配合 OpenMAIC 第二节概念课《调度器：continuous batching 的真身》（`quhgC1KncC`）食用——课给了直觉地图，本文逐条把地图对到源码地形上。**最大的发现写在前面：课的方向全对，但相当一部分机制细节是 V0 时代的心智模型**，v0.27.1 的 V1 已经长成了另一副更锋利的骨架。
+
+**公开源码导航**：[`scheduler.py`](https://github.com/vllm-project/vllm/blob/6e448d0ea9bf3d88d898b65449ca6dc2aec170ac/vllm/v1/core/sched/scheduler.py) · [`core.py`](https://github.com/vllm-project/vllm/blob/6e448d0ea9bf3d88d898b65449ca6dc2aec170ac/vllm/v1/engine/core.py) · [`request.py`](https://github.com/vllm-project/vllm/blob/6e448d0ea9bf3d88d898b65449ca6dc2aec170ac/vllm/v1/request.py) · [`output_processor.py`](https://github.com/vllm-project/vllm/blob/6e448d0ea9bf3d88d898b65449ca6dc2aec170ac/vllm/v1/engine/output_processor.py) · [`gpu_model_runner.py`](https://github.com/vllm-project/vllm/blob/6e448d0ea9bf3d88d898b65449ca6dc2aec170ac/vllm/v1/worker/gpu_model_runner.py) · [`config/scheduler.py`](https://github.com/vllm-project/vllm/blob/6e448d0ea9bf3d88d898b65449ca6dc2aec170ac/vllm/config/scheduler.py) · [`request_queue.py`](https://github.com/vllm-project/vllm/blob/6e448d0ea9bf3d88d898b65449ca6dc2aec170ac/vllm/v1/core/sched/request_queue.py) · [`async_scheduler.py`](https://github.com/vllm-project/vllm/blob/6e448d0ea9bf3d88d898b65449ca6dc2aec170ac/vllm/v1/core/sched/async_scheduler.py)。
 
 ---
 

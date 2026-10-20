@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-18_ximalaya-ailianjinshu_xiaohui-renxin-ai-startup.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "review-xiaohui-r2-20261019",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 94,
+        "request_coverage": 95,
+        "reasoning_quality": 92,
+        "readability": 94,
+        "limitations": 93
+      },
+      "score_reasons": {
+        "evidence_fidelity": "实际读取更新后的报告、evidence/review、原始 transcript、polished、shownotes、artifact receipt，以及 Treg、Articuler.ai 和 REPORT_WORKFLOW。逐项反查 C01-C05、全部数字表和四条引文：1000 倍/100 倍、4 周/5 万元、两个问题、3-5 小时、3 个月/12 次、7 天 5 更、10-100 倍、3-5 人及效率乘以三均与转写口径一致；引文现已恢复为连续原话，袋鼠引文使用省略号跨段但未改字、改序或补词。artifact receipt 的 job、三片大小与 SHA-256、234593 字节重组结果可独立复核，实际文件 SHA-256 为 8d493730a31f7cf6e294202c391a2b15c92a2e6f4d81eca1e75d8475893c2ee1，与回执和 frontmatter 一致。轻微扣分：Articuler.ai 对照中的“先在线下活动交付，再把可重复部分做成平台”比被引报告的原表述更概括，但其方向受线下活动场景、客户交付和平台化材料支持，且不属于 manifest critical claim。",
+        "request_coverage": "R01-R03 均已覆盖。R01 可由唯一 source_url/slug、Razer silent artifact receipt、split_job_id、三片大小与哈希及 verified_sha256 回查，仓内搜索未发现第二份同源报告；R02 的先卖再做、测试集、产品化门槛、关公司和企业 AI 转型均有专节；R03 已把节目观点连接到播客报告质量门和 ACE，并用口播估计、示例及 [推测] 明确区分事实与分析。首轮要求补齐的 S05-S08 已进入 evidence sources。",
+        "reasoning_quality": "从执行供给变便宜推出需求验证前移，从付费、毛利、复制性推出产品化门槛，从已证伪假设区分使命、假设与组织，以及从组织阻力分析权力和局部理性，均有清楚的来源起点、边界和反例。首轮未标注的 ACE 类比、context 策展结论和三层创业复盘已补 [推测]，避免把报告分析冒充节目事实。跨期 Treg 与 Articuler.ai 对照提供了有用参照；Articuler 一句略有概括性压缩，因此未给满分。",
+        "readability": "报告可脱离对话独立阅读，速览、概览、七条增量观点、数字表、原话、Limitations 与三问层次清楚。修订后的原话可以在转写中按顺序直接命中，数字表也分别注明个人估计、口播口径、建议规模或示例，读者不易误把修辞当统计结果。",
+        "limitations": "已披露 5.5% 精编压缩、ASR 专名风险、100 倍/10-100 倍/下月便宜 50% 等口播估计、企业服务缺少留存退款毛利和复制结果、受访者利益相关及组织建议不具普适性。artifact receipt 补齐了上一轮缺失的分片与重组 provenance；跨报告来源也已登记。剩余不确定性主要来自访谈自述本身，正文已作适当限制。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05"
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S05",
+        "S06",
+        "S07",
+        "S08"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "Revision 2 独立复核确认首轮四类问题均已修复：①第一条与袋鼠引文符合逐字引用及省略号拼接规则；② evidence 已登记 artifact receipt、Treg、Articuler.ai 与 REPORT_WORKFLOW；③ ACE/context/使命-假设-组织三层框架均标为 [推测]；④ R01 已补 job、artifact、三片大小与哈希及重组校验。S04 单集网页未另行联网重读，本次以 S03 保存的页面标题、发布日期、完整 shownotes 和来源 URL 核验，critical claims 均由 S01-S03 直接支持。未发现伪造来源、关键数字错配、核心要求遗漏或安全问题；五维加权分约 93.7，达到 important 门槛。按任务要求只追加 review，不写 decision、不 finalize。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 93.7,
+    "evaluated_on": "2026-10-19",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "d768f62131d0c8fb579c1f130fc952cdfd79efb65b412ca1eecd80d4bace6700",
+    "evidence_sha256": "53c20ce53c7285f059cb784b0c5e49fe4c5ebe032382d19df9a7721dc307d799"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex",
+            "run_id": "review-xiaohui-20261019",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 86,
+            "request_coverage": 88,
+            "reasoning_quality": 86,
+            "readability": 92,
+            "limitations": 85
+          },
+          "score_reasons": {
+            "evidence_fidelity": "实际读取原始转写全 4767 段、精编稿和 shownotes，逐项核验 C01-C05。1000 倍/100 倍、4 周/5 万元、2 个问题、3-5 小时、3 个月/12 次、7 天 5 更、10-100 倍、3-5 人和 3 倍等数字均命中原始口播，报告也正确区分了估计、示例和早期实验；五个 critical claims 的实质均受来源支持。扣分点：关键观点中“你应该先卖，卖完再做，先把钱或订单收了”把分段原话压缩改写，“袋鼠去了新西兰……”整句则是多段内容的概括，却都使用逐字引号，违反原话不得改字/补词的纪律；此外 Treg、Articuler.ai 与仓内 ACE 是正文论证来源，却未登记进 evidence sources。",
+            "request_coverage": "R02 要求的先卖再做、测试集、产品化、关公司和企业转型全部覆盖，R03 也把主要口播估计、事实与两处明确推测分开，并连接到本次播客任务机制。R01 中未重复处理可由 source_url/slug 与仓内现有报告核查，transcript 也经确定性审计确认 4767 段、8071 秒、无异常重复；但“三片拉回并做 SHA-256 重组校验”只有 frontmatter 的结果性自述，evidence 没有 job/artifact、分片名或哈希值，尚未达到可独立追溯。",
+            "reasoning_quality": "从供给贬值推出需求验证前移、用付费/毛利/复制性区分服务与产品，以及把使命、假设、组织分层复盘，均有清楚的节目事实起点；企业转型中的权力和局部理性分析也忠实保留了对谈中的反例。主要不足是“与 Generator-Reflector-Curator 一致”“直接支持 context 只策展稳定经验”和创业复盘三层框架属于报告自己的类比或外推，却未标 [推测]；跨期 Articuler/Treg 连接虽大体合理，也未进入证据账本，论证可追溯性弱于正文强度。",
+            "readability": "速览、概览、七条增量观点、数字表、关键观点、Limitations 和三问层次清楚，长节目被压缩成可独立阅读的紧凑报告；数字口径和利益相关提示容易扫描。主要可信度瑕疵是两条改写内容仍以逐字引语呈现，读者会误以为能在转写中原样命中。",
+            "limitations": "已明确披露 5.5% 压缩、100 倍/10-100 倍/50% 等口播估计、企业服务缺留存退款毛利与复制结果、受访者利益相关及 ASR 专名风险，覆盖主要事实与外推边界。仍缺两项：分片和 SHA-256 重组缺少可复核 provenance；Treg、Articuler.ai 与仓内 ACE 的跨报告类比没有在 evidence 或 Limitations 中说明来源和适用边界。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05"
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "独立复核实际读取报告、evidence、原始 transcript 全 4767 段、polished、shownotes、质量门禁、当前策略、被引用的 Treg 与 Articuler.ai 报告及仓内 ACE 工作流；未接触生成者推理。五个 manifest critical claims 与关键数字均有来源支持，无伪造来源、关键数字错配、核心要求完全遗漏或安全问题。当前不宜 finalize：evidence_fidelity 86 低于 important 门槛 90，五维加权约 87.2 也低于总分 88。建议修订：①把第一条引文恢复为转写逐字内容或改成无引号转述；第四条袋鼠引文必须改为转述，或按 00:48:24-00:50:44 选取连续原话；②在 evidence 登记 Treg、Articuler.ai 和仓内 ACE/REPORT_WORKFLOW 作为分析来源，或降低相关表述强度；③给“ACE 生活化版本”“context 只策展稳定经验”和使命/假设/组织三层框架补 [推测] 或明确为报告分析；④为 R01 补 Razer job/artifact、三片标识与原始/重组 SHA-256，至少提供可独立回查的 provenance。S04 单集网页未单独联网复读，本次以含来源 URL、标题、日期和完整 shownotes 的 S03 核验，未把 S04 列入 checked。"
+        }
+      ],
+      "decision": {}
+    }
+  ]
+}

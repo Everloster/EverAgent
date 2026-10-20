@@ -23,14 +23,18 @@ polished_by: "Claude (GLM)"
 polished_at: 2026-10-10
 status: archived
 created: 2026-10-10
-updated_on: 2026-10-10
-transcript_path: /srv/everagent/artifacts/podcast/pod_e578b576ef3045eb26f75381.transcript.txt
-transcript_artifact_sha256: "394c8cf5ecc70f116244da5dcb0c4c4cc7be3e945f1ea2b03fb0316d2e6abdf7"
-transcript_repo_copy: "无（本会话沙箱拒绝 cp，原始带时间戳转写留存于 Razer artifact；详见 Limitations）"
+updated_on: 2026-10-20
+transcript_path: reports/transcripts/2026-02-11_xiaoyuzhou-chengwei-buffett_nantian.transcript.txt
+transcript_artifact: "pod_e578b576ef3045eb26f75381"
+transcript_sha256: "394c8cf5ecc70f116244da5dcb0c4c4cc7be3e945f1ea2b03fb0316d2e6abdf7"
+transcription_service: "whisper.cpp-v1.9.1-sm120"
+transcription_quality: "3970 段；00:00:00—01:44:04；repetition_guard passed; max_consecutive_identical=2"
+transcript_artifact_receipt: reports/transcripts/2026-02-11_xiaoyuzhou-chengwei-buffett_nantian.artifact.json
 polished_transcript_path: reports/transcripts/2026-02-11_xiaoyuzhou-chengwei-buffett_nantian.polished.txt
 pipeline: eacli podcast（Razer yt-dlp → whisper.cpp large-v3/CUDA/Silero VAD/max-context=0，257s，重复段守卫通过 max_consecutive_identical=2）→ shownotes：eacli web.read（智谱 webReader）→ Claude 按话题重组润色（shownotes 无章节时间戳）
 source_shownotes_chapters: false
 notable_correction: "南田/南天→南添｜邓白诗/邓白士/邓白市→邓白氏｜目的→穆迪｜会遇/汇域→惠誉｜白世公司→Bradstreet｜克兰特→格兰特｜PayCentral→Penn Central｜100个VP→100个BP｜CIO→CRO｜封控→风控｜民盛→明晟｜福利→复利｜独幸→读信｜问完周→孟晚舟｜一请后→疫情后 等全表见 polished 头部；12 处 [?] 保留原音"
+semantic_tags: ["credit_rating", "value_investing", "moody_s", "business_history"]
 ---
 
 # 成为巴菲特27：买珠还椟——从邓白氏到穆迪，商业信用的权力与秩序
@@ -40,7 +44,7 @@ notable_correction: "南田/南天→南添｜邓白诗/邓白士/邓白市→�
 ## 概览
 
 - **一笔"该死的完美"交易（芒格语 damn perfect）**：BRK 70 年代末买入邓白氏（D&B）→ 80 年代初因不喜欢多元化卖出 → 90 年代末为分拆套利重新买回 → 2000 年邓白氏分拆穆迪上市，BRK 以 4.99 亿美元成本获得 2400 万股穆迪 + 1200 万股新邓白氏；当年卖掉新邓白氏收回 4 亿成本，穆迪成本约 $10/股、上市首日开盘 $28、年底 $44。持仓 2009-2013 减持近半后稳定在 2467 万股至今，是 BRK 前十大持仓。
-- **25 年分岔的"买珠还椟"**：2000 年邓白氏市值 50 亿美元、静态 PE 约 16 倍拆成两半；25 年后穆迪市值约 950 亿-1000 亿美元，而"新邓白氏"2025 年被私有化时市值仍是 50 亿——分拆出去的一半涨了 19 倍，留下的原地踏步。
+- **25 年分岔的"买珠还椟"**：2000 年邓白氏约 50 亿美元的整体被拆分；到 2025 年，穆迪市值已约 950 亿-1000 亿美元，而 Clearlake 收购新邓白氏的**股权价值约 41 亿美元、含债交易价值 77 亿美元**。旧稿写“私有化时市值仍是 50 亿”只在数量级上接近，口径不准确。
 - **信用生意的两条价值路线（本期核心框架）**：邓白氏卖**使用价值**（DUNS 编码=企业身份证，8000 元/年的入库刚需，成本导向）；穆迪卖**安全感**（评级=信用背书，直接压低融资成本几十个 BP，价值导向）。穆迪评级关注"预期损失（你会亏多少）"而非"违约概率"，把冰冷的概率翻译成焦虑与安全感的语言——这是它公信力强于标普的语言学根源。
 - **评级业百年权力史**：邓白氏（1841，商业征信所）→ 标普前身（1860，Henry Poor）→ 穆迪（1900 手册，1907 恐慌破产卖掉手册业务，**1909 发明 Aaa 评级符号**）→ 惠誉（1913）。1929 大崩盘→1934 SEC→1940 法规引用"公认评级手册"→1970 宾州中央铁路破产→1975 SEC 设 NRSRO 认定制——每次危机都把"信息采集者"推向"标准制定者"，最终成为"我说谁行谁就行"的**无冕之王**与主权信用担保人。
 - **1997 韩国的阳谋标本**：IMF 谈判期间韩国主权评级被调降 → 按美元秩序内监管规则（非投资级资产不计入资本充足率）全球机构被迫抛售 → 韩国一揽子接受开放条款换救援；降级信号实现"高卖低买"。评级是价格信号之外的第二权力通道。
@@ -88,7 +92,7 @@ notable_correction: "南田/南天→南添｜邓白诗/邓白士/邓白市→�
 
 ### 2. 评级业的权力发生学：从信息采集者到无冕之王
 
-需求起点：铁路西进 → 跨距离商业 → 债券融资 → 信息不对称。关键洞察（南添）：**当时财务会计准则尚未标准化，评级公司在给铁路债券评级的过程中，反向统一了美国"投资视角"的财务语言**（科目口径、固定资产、度量衡）——先有市场自然演进，后有 SEC 披露标准（"不是监管想统一就统一"）。制度跃迁链：1929 崩盘→1934 SEC→1940 法规禁止机构持有"公认评级手册"确定的投机级证券（评级从此进入监管条文）→1970 宾州中央铁路破产（震惊全美，投资级机构债违约）→1975 SEC 设 NRSRO 认定制（口述首批认定 10 家，两巨头+惠誉胜出，十家之外出局——"裁判证你没有，还当什么裁判"）。2008 后 NRSRO 不再强制，但**惯性与转换成本已固化**：巴菲特的答案是找"没有监管、老百姓也不会改主意"的公司。
+需求起点：铁路西进 → 跨距离商业 → 债券融资 → 信息不对称。关键洞察（南添）：**当时财务会计准则尚未标准化，评级公司在给铁路债券评级的过程中，反向统一了美国"投资视角"的财务语言**。制度跃迁链：1929 崩盘→1934 SEC→1940 法规引用评级→1970 宾州中央铁路破产→1975 SEC 在净资本规则中采用 NRSRO 概念。SEC 的历史材料显示，1975 年最初被全国使用的是 **S&P、Moody's 与 Fitch 三家**；节目所说“首批 10 家”不准确，之后才陆续通过 no-action letters 增加其他机构。
 
 ### 3. 生意机制：谁付钱、怎么赚、三家差异
 
@@ -118,7 +122,7 @@ IMF 谈判期间韩国主权评级被降 → 70/75 年确立的监管规则（�
 
 ### 7. 2008 信任危机：商业模式 vs 短期声誉
 
-次贷产品大量 3A 评级曝光 → 民众诉讼/要求 CEO 下课 → 股价跌 70% 至 $10 → 最终 8 亿美金和解（对照所罗门 2 亿多，"高高举起轻轻放下"），**关键是保住 NRSRO 牌照**。巴菲特表态支持管理层配合调查："投资是投资商业模式，而不是短期的声誉。"BRK 2009-2013 减持近半后稳定 2467 万股至今——危机中减持与"长期持有"并存的完整记录。今日市值对照：穆迪约 1000 亿 vs S&P Global 约 1500 亿（后者用指数/ETF 秩序再造了一条"玩标准的只赢不输"的路，与美债秩序并列）。
+次贷产品大量 3A 评级曝光 → 诉讼与监管调查 → 股价大跌。2017 年美国司法部与州政府达成的正式和解金额是 **近 8.64 亿美元**，解决其 RMBS/CDO 评级相关指控。BRK 2009-2013 减持后长期持有 24,669,778 股；该数字可在 Berkshire 2018-2020 年报与 SEC 13F 中定位。节目对巴菲特动机和“保住牌照”的解释仍属于分析，不是监管文件结论。
 
 ### 8. 中国为什么出不了穆迪（南添的否定式回答）
 
@@ -169,7 +173,7 @@ IMF 谈判期间韩国主权评级被降 → 70/75 年确立的监管规则（�
 | 8000+ 元/年 | 艾勇公司购买 DUNS 编码入卡夫亨氏供应商库的实际支出（一手经历） |
 | 4 任总统 | 林肯/格兰特/克利夫兰/麦金莱曾任邓白氏前身信用调查员 |
 | 80% / 10%+ | 穆迪+标普合计市占 / 惠誉（两超一强） |
-| 1934 / 1940 / 1970 / 1975 | SEC 成立 / 法规引用"公认评级手册" / 宾州中央破产 / NRSRO 设立（口述首批 10 家） |
+| 1934 / 1940 / 1970 / 1975 | SEC 成立 / 法规引用评级 / 宾州中央破产 / NRSRO 概念进入净资本规则；最初全国使用 S&P、Moody's、Fitch |
 | 100 BP | 正常情形高评级 vs 非高评级长期融资成本差；当前 IG 公司债对国债仅十几个 BP（异常） |
 | 60%+ | 评级业务 operating margin（口述） |
 | +20% | 惠誉平均评级高于两大（抢生意定价，口述） |
@@ -180,19 +184,27 @@ IMF 谈判期间韩国主权评级被降 → 70/75 年确立的监管规则（�
 | $10 → $28 → $44 → 10 亿 | 穆迪成本价 → 首日开盘 → 2000 年底 → 当年持仓市值 |
 | 2467 万股 | BRK 现持穆迪股数（2009-13 减持近半后稳定至今） |
 | ~120 亿 / 950-1000 亿 / ~1500 亿 | BRK 穆迪持仓市值 / 穆迪总市值 / S&P Global 市值（口述） |
-| 50 亿 → 950 亿 vs 50 亿 | 2000 拆成两半后 25 年：穆迪 vs 新邓白氏（2025 私有化市值仍是 50 亿） |
+| 约 50 亿 → 950-1000 亿 vs 41 亿股权/77 亿交易价值 | 2000 分拆前整体、2025-26 穆迪市值、2025 新邓白氏私有化的不同口径 |
 | 62% / 8%+ / 4%+ / 两位数 | 全球非本币债务中美元占比 / 几十年年化增速 / 美国政府借款增速 / 2025 全球债务增速（均口述） |
-| -70% → $10 / 8 亿 / 2 亿多 | 2008 穆迪股价跌幅 / 穆迪和解金 / 所罗门罚金对照 |
+| -70% → $10 / 8.64 亿美元 | 节目口述股价跌幅与低点 / 2017 DOJ 和解金额 |
 | 2002 / 2005 / 2011-16 / 2017 / 33 亿 | KMV / Wall Street Analytics / Copal+Amba / BvD / BvD 收购价 |
 | ~40× | 穆迪当前 P/E（口述，以发行周期两位数增长辩护） |
 | 16h / 40 万 / 30%+ | 南添《无人知晓》马拉松时长 / 收听 / 完播率 |
 
 ## Limitations
 
-- **原始带时间戳 transcript 未落仓**：本会话沙箱拒绝 `cp`（/srv 读取路径受限），whisper 原始转写（3970 段，sha256 `394c8cf5…bdf7`）留存于 Razer artifact `/srv/everagent/artifacts/podcast/pod_e578b576ef3045eb26f75381.transcript.txt`，未能按三件套惯例复制为 `reports/transcripts/*.transcript.txt`。本仓 `.polished.txt` 为全量文本的话题重组版（去掉时间戳、去片尾广告、修同音误识别），原始输出以 artifact 哈希为准。hanzi/total 字数均为按文件字节估算，非精确统计。
+- **原始 transcript 已补仓**：2026-10-20 通过 eacli 分片拉回 3970 段原始转写，SHA-256 与 Razer 工件一致；见 frontmatter 的 transcript 与 receipt。`.polished.txt` 仍是话题重组版，精确引语优先回查带时间戳原稿。
 - **whisper 误识别极多**（人名/机构名/术语系统性出错），全表见 polished 头部修正清单；**12 处 [?] 保留原音未定**：木墙[?]、爱刀刀的老灯[?]、路易[?]、路伯克[?]（疑"拉我入坑"）、玩人[?]（疑"完人"）、日本论录[?]、毛[?]（疑"由头/抓手"）、亨氏总的权[?]、洪斌老师[?]、头没骨头[?]、牵手之道[?]、"一一"[?]（疑"信任/疑义"）、IMS 的系统[?]。
-- **转写内部矛盾**：①97 韩国降级主体先说"穆迪"后说"标普"，未细究（保持两处原样）；②标普/穆迪主权业务主语在转写中疑似错乱，polished 已按后文口径校正并原位标注；③BRK 持股"拆股 2400→4800 万"与"最多时接近 20%"均为口述，与公开 13F 口径（2467 万股）的对应关系未联网核验。
-- **数字均为主播/嘉宾口述，未逐一外部核实**：NRSRO 首批 10 家（公开常见口径为 7-8 家[待验证]）、邓白氏收购价与年份、三任 CEO 任期（口述 McDaniel 15 年，公开口径约 2004-2022[待验证]）、62%/8%/4% 等债务数据无来源标注。穆迪 8 亿美金和解与公开口径（2017 年 DOJ 8.64 亿）量级一致[依模型知识，未联网复核]。
+- **转写内部矛盾**：97 韩国降级主体先说“穆迪”后说“标普”；报告不再选择其一，精确时点仍需回到评级公告与 IMF 档案。BRK “拆股 2400→4800 万”和“最多接近 20%”仍为节目口述，持股表采用 SEC/Berkshire 可定位的 24,669,778 股。
+- **仍未核实的节目数字**：邓白氏早期并购价、CEO 任期、美元债 62%/年化 8%+、惠誉平均高 20% 等缺少一手来源，继续按口播观点处理。
+
+## 外部核验来源
+
+- [SEC：信用评级机构与 NRSRO 历史报告](https://www.sec.gov/news/studies/credratingreport0103.pdf)
+- [U.S. DOJ：2017 Moody's 近 8.64 亿美元和解](https://www.justice.gov/archives/opa/pr/justice-department-and-state-partners-secure-nearly-864-million-settlement-moody-s-arising)
+- [Berkshire Hathaway 2020 Annual Report](https://www.berkshirehathaway.com/2020ar/2020ar.pdf)
+- [SEC：Berkshire Hathaway 13F filings](https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001067983&type=13F)
+- [Dun & Bradstreet：Clearlake 收购公告](https://www.dnb.com/en-us/newsroom/press-releases/dun-bradstreet-enters-a-definitive-agreement-to-be-acquired-by-clearlake-capital-group.html)
 - **无说话人分离**：对谈归属按上下文推断，个别插话归属可能有误。
 - 本期 shownotes 为主理人来信体，**无章节时间戳与书单**，分节为话题重组而非官方章节。
 

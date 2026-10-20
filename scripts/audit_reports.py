@@ -46,6 +46,7 @@ except ImportError:  # Direct script execution.
 
 QUALITY_SCHEMA = CURRENT_REPORT_SCHEMA
 REQUIRED_FIELDS = ("title", "domain", "report_type", "status", "updated_on")
+PODCAST_DEPTH_SINCE = "2026-10-20"
 CANONICAL_STATUSES = {
     "completed",
     "in_progress",
@@ -96,6 +97,26 @@ def _git_paths(command: list[str]) -> set[Path]:
     return {ROOT / item for item in proc.stdout.split("\0") if item}
 
 
+def _git_ref(ref: str) -> str:
+    proc = subprocess.run(
+        ["git", "rev-parse", "--verify", ref],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    return proc.stdout.strip() if proc.returncode == 0 else ""
+
+
+def _git_is_ancestor(ancestor: str, descendant: str) -> bool:
+    return subprocess.run(
+        ["git", "merge-base", "--is-ancestor", ancestor, descendant],
+        cwd=ROOT,
+        capture_output=True,
+        check=False,
+    ).returncode == 0
+
+
 def _reports_from_paths(paths: set[Path]) -> list[Path]:
     reports: set[Path] = set()
     for path in paths:
@@ -142,6 +163,17 @@ def _has_frontmatter_close(text: str) -> bool:
 
 def _valid_date(value: object) -> bool:
     return bool(re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(value or "")))
+
+
+def _date_on_or_after(value: object, threshold: str) -> bool:
+    text = str(value or "")
+    return bool(_valid_date(text) and text >= threshold)
+
+
+def _prose_for_placeholder_scan(text: str) -> str:
+    """Ignore code examples when looking for unfinished template markers."""
+    without_fences = re.sub(r"```.*?```|~~~.*?~~~", "", text, flags=re.DOTALL)
+    return re.sub(r"`[^`\n]+`", "", without_fences)
 
 
 def _local_link_issues(path: Path, text: str, enforce: bool) -> list[Issue]:
@@ -218,7 +250,7 @@ def audit_file(path: Path, *, enforce: bool, wikilinks: dict[str, list[Path]]) -
         issues.append(_issue(_severity(enforce), "STRUCT001", path, "缺少 H1 标题"))
     if len(text.encode("utf-8")) < 2000:
         issues.append(_issue("warning", "STRUCT002", path, "正文短于 2,000 bytes，需确认不是未完成草稿"))
-    if completed and PLACEHOLDER_RE.search(text):
+    if completed and PLACEHOLDER_RE.search(_prose_for_placeholder_scan(text)):
         issues.append(_issue(_severity(enforce), "STRUCT003", path, "completed 报告仍含模板占位符"))
 
     if collection.id in LEARNING_DOMAINS and "思考与追问" not in text:
@@ -235,6 +267,37 @@ def audit_file(path: Path, *, enforce: bool, wikilinks: dict[str, list[Path]]) -
         for section in ("## Limitations", "思考与追问"):
             if section not in text:
                 issues.append(_issue("error", "POD001", path, f"播客报告缺少 {section}"))
+        report_depth = str(metadata.get("report_depth") or "")
+        depth_contract_required = strict_selection and _date_on_or_after(
+            metadata.get("updated_on"), PODCAST_DEPTH_SINCE
+        )
+        if depth_contract_required and not report_depth:
+            issues.append(_issue("error", "POD002", path, "新增播客报告缺少 report_depth"))
+        if report_depth and report_depth not in {"brief", "standard", "deep"}:
+            issues.append(_issue("error", "POD002", path, f"未知 report_depth：{report_depth}"))
+        if (depth_contract_required or report_depth) and metadata.get("reader_contract") != "standalone":
+            issues.append(_issue("error", "POD003", path, "播客报告需声明 reader_contract: standalone"))
+        if report_depth in {"standard", "deep"}:
+            if "## 内容地图" not in text:
+                issues.append(_issue("error", "POD004", path, "standard/deep 播客缺少内容地图"))
+            if len(re.findall(r"^###\s+\S", text, re.MULTILINE)) < 3:
+                issues.append(_issue("error", "POD005", path, "standard/deep 播客至少展开 3 个主线小节"))
+            duration = metadata.get("duration_seconds")
+            try:
+                duration_seconds = int(str(duration))
+            except (TypeError, ValueError):
+                duration_seconds = 0
+            body = text.split("\n---\n", 1)[-1]
+            body_hanzi = len(re.findall(r"[\u3400-\u9fff]", body))
+            if duration_seconds >= 3600 and body_hanzi < 3500:
+                issues.append(
+                    _issue(
+                        "warning",
+                        "POD006",
+                        path,
+                        f"60 分钟以上 standard/deep 报告仅 {body_hanzi} 汉字，需人工检查内容召回",
+                    )
+                )
 
     issues.extend(_local_link_issues(path, text, enforce))
     for target in WIKILINK_RE.findall(text):
@@ -340,6 +403,40 @@ def main() -> int:
     parser.add_argument("--summary-only", action="store_true", help="print totals without individual warnings")
     parser.add_argument("paths", nargs="*", help="explicit report paths")
     args = parser.parse_args()
+
+    if args.all:
+        head = _git_ref("HEAD")
+        remote = _git_ref("origin/main")
+        if head and remote and not _git_is_ancestor(remote, head):
+            message = (
+                "current HEAD does not contain origin/main; full audit would miss remote reports. "
+                f"HEAD={head[:8]} origin/main={remote[:8]}. Audit the target ref in an isolated worktree."
+            )
+            if args.json:
+                print(
+                    json.dumps(
+                        {
+                            "reports_scanned": 0,
+                            "errors": 1,
+                            "warnings": 0,
+                            "metadata_missing": 0,
+                            "issues": [
+                                {
+                                    "severity": "error",
+                                    "code": "SCOPE001",
+                                    "path": ".",
+                                    "message": message,
+                                }
+                            ],
+                        },
+                        ensure_ascii=False,
+                        indent=2,
+                    )
+                )
+            else:
+                print("审计 0 篇：ERROR 1｜WARN 0｜缺 frontmatter 0")
+                print(f"  ✗ SCOPE001 .: {message}")
+            return 1
 
     new_paths: set[Path] = set()
     if args.paths:

@@ -1,6 +1,18 @@
+---
+title: "yetone/magpie 深度研究：多 Agent 模型路由中枢"
+domain: "github-trending-analyzer"
+report_type: "repo_deep_research"
+source_url: "https://github.com/yetone/magpie"
+snapshot_commit: "5b14ebf49ada6d46458bb06e5bfd4ec3a3de6a39"
+snapshot_on: "2026-10-12"
+status: "completed"
+updated_on: "2026-10-20"
+semantic_tags: ["llm-gateway", "model-routing", "coding-agent", "multi-provider"]
+---
+
 # magpie 深度研究报告（yetone/magpie）
 
-> 2026-10-12 首次研究（事A 全量）。三周龄新仓，数据截至当日。
+> 2026-10-12 首次研究（事A 全量）。三周龄新仓，数据截至当日；源码判断固定在 commit [`5b14ebf`](https://github.com/yetone/magpie/tree/5b14ebf49ada6d46458bb06e5bfd4ec3a3de6a39)。Stars、Issues、版本号与贡献数均为当日快照，不代表当前值。
 
 ## 1. 项目概述
 
@@ -80,3 +92,7 @@ magpie 是 yetone（avante.nvim 作者）做的**多 agent 模型路由中枢**�
 ---
 *报告生成时间: 2026-10-12*
 *研究方法: github-deep-research 多轮深度研究（R1 元数据 / R2 代码 [代码]×6 / R3 竞品 gh 实测×3 / R4 提交+issue 量化）*
+
+[API]: https://api.github.com/repos/yetone/magpie
+[README]: https://github.com/yetone/magpie/blob/5b14ebf49ada6d46458bb06e5bfd4ec3a3de6a39/README.md
+[代码]: https://github.com/yetone/magpie/tree/5b14ebf49ada6d46458bb06e5bfd4ec3a3de6a39

@@ -6,9 +6,15 @@ source: B站视频
 source_url: https://www.bilibili.com/video/BV1Ygt96VEJg/
 show: "北美运动学博士Bruce_PhD"
 guest: "无（UP 主单人科普）"
-transcript: reports/transcripts/2026-09-03_bilibili-bruce-phd_energy-boost.transcript.txt
-status: "completed"
-updated_on: 2026-10-15
+duration: "17m24s"
+duration_seconds: 1044
+transcript_segments: 468
+transcript_path: reports/transcripts/2026-09-03_bilibili-bruce-phd_energy-boost.transcript.txt
+polished_transcript_path: reports/transcripts/2026-09-03_bilibili-bruce-phd_energy-boost.polished.txt
+pipeline: "eacli podcast（Razer Whisper）→ B 站官方字幕核对 → 忠实润色 → report-v2"
+notable_correction: "辅酶 Q10、谷氨酸、三磷酸腺苷、腺苷、HIIT 等专名已按官方字幕与上下文校正；字幕与 Whisper 同错的三处高置信推断以 ※ 标出，仍不把字幕当人工校订真值。"
+status: "archived"
+updated_on: 2026-10-20
 quality_schema: "report-v2"
 quality_tier: "important"
 semantic_tags: ["energy_management", "mitochondria", "coenzyme_q10", "caffeine", "decision_fatigue", "conflict_management", "hiit"]
@@ -50,7 +56,7 @@ related_concepts: ["circadian_rhythm"]
 - **「攻击性」是整集的框架级概念，但证据层最薄**：前三件事有明确的生化机制链（谷氨酸→ATP→腺苷），第四件只有蔡格尼克 + HPA 轴两个间接机制，中间缺了「表达攻击性 → 降低皮质醇」的直接证据；UP 主用个人故事（草坪对峙）替代了这一环。另外「外耗」策略的适用边界未被讨论——对面子文化下的职场关系，直接冲突的社交成本可能转嫁为另一种慢性压力 [推测]。
 - **广告与科普的缠绕方式值得警惕**：辅酶 Q10 段的文献铺垫（08 年实验、荟萃分析）与 GNC 广告无缝衔接，且"20 岁后逐年下降、上班族莫名乏力"的恐诉式收尾在广告话术里。辅酶 Q10 对健康年轻人抗疲劳的证据强度，与他口播的笃定程度之间存在落差 [推测]——本仓 biology-learning 的睡眠线（[[circadian_rhythm]]）反复确认过：多数"怎么都累"的主因是睡眠时相与睡眠结构，而非补剂缺口。
 
-## 数字表
+## 关键数字
 
 | 数字 | 含义 | 来源层级 |
 |---|---|---|
@@ -72,7 +78,7 @@ related_concepts: ["circadian_rhythm"]
 
 - 本集无 shownotes 类一手材料，校验源为 B 站官方 ASR 字幕；两处保留 [?]：「纵向链接强度」（疑为线粒体网络融合指标，字幕与 whisper 一致但语义未确认）、「区区谁」（疑为「cue 谁」，不影响理解）。
 - 所有研究数字均为 UP 主口播转述，无一给出可查文献题目；辅酶 Q10 段存在明确商业利益（GNC 广告），相关结论的独立证据强度应打折看待。
-- 转写质量总体良好（whisper 尾部无幻觉循环）；同音误识别 20+ 处已按字幕修正（见润色稿头部清单）。
+- 转写质量总体良好（whisper 尾部无幻觉循环）；同音误识别 20+ 处已与字幕逐项对照，其中「外耗型」「700kg」「高认知负荷组」三处是字幕同样识错后的上下文推断，已在润色稿用 `※` 明标。
 
 ## 思考与追问
 

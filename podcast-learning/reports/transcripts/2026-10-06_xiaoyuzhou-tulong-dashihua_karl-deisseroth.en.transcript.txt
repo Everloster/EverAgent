@@ -1,0 +1,898 @@
+[00:00:00 -> 00:00:02] Dear readers, I'm Yang Ying.
+[00:00:03 -> 00:00:05] My name is Tu Long's Yan Zhi Jing.
+[00:00:05 -> 00:00:09] Today, I interviewed the author of The Light of the Broken
+[00:00:09 -> 00:00:11] Heart, Dr. Carol Desirous.
+[00:00:11 -> 00:00:14] She is also the inventor of the very famous technology,
+[00:00:14 -> 00:00:19] light and
+[00:00:19 -> 00:00:29] 这本新书我觉得是我从事脑科学行业以来看的最有趣的一本书。
+[00:00:29 -> 00:00:31] 为什么说它是最有趣的一本书呢?
+[00:00:32 -> 00:00:35] 以它的学术地位,它在斯坦福发明了光遗传,
+[00:00:35 -> 00:00:41] 它可以写一本非常学术向的,非常技术向的书,
+[00:00:42 -> 00:00:43] 但是它选择不这样写,
+[00:00:44 -> 00:00:47] 它把这本书写成了一个又一个故事,
+[00:00:47 -> 00:00:56] 把所有的精神类的疾病,所有的大脑的疾病都用故事去呈现。
+[00:00:56 -> 00:01:03] 在你读这些故事的过程中,你就会发现,哦,原来大脑是这样运作的。
+[00:01:03 -> 00:01:11] 你可以通过大脑会怎么得病来看出来大脑是怎么行使它的功能的。
+[00:01:11 -> 00:01:15] 同时,在我们的访谈中,他也非常详细地论述,
+[00:01:15 -> 00:01:25] 这些疾病都是因为我们的大脑在进化的过程中被推到了自然的极限。
+[00:01:25 -> 00:01:35] 在很短的一段演化时期,我们人类大脑不论从体积、形态还是功能上都是非常爆发式的进化。
+[00:01:35 -> 00:01:41] 在这个爆发式进化的过程中,有很多基因,比如说自闭症的基因,
+[00:01:41 -> 00:01:45] 当它没有达到疾病的程度的时候,是帮助我们人类思考的。
+[00:01:46 -> 00:01:50] 所以说有很多得了大脑或是精神疾病的人,
+[00:01:51 -> 00:01:54] 这些人是为我们这整个的种群的演化和大发展,
+[00:01:54 -> 00:01:57] 承担了很多我们种群的负担。
+[00:01:57 -> 00:02:01] 所以这个是我们对整个精神疾病的理解。
+[00:02:01 -> 00:02:09] 在这个过程中,他也讲了光遗传是怎么能够通过改变一些大脑细胞的基因,
+[00:02:10 -> 00:02:14] 来帮助我们非常精确的测量大脑中的这些通路,
+[00:02:15 -> 00:02:25] 以及我们人类的一些复杂的行为,比如说吃饭呀,比如说这个给幼儿喂食呀,很多的这些行为是怎么进行的。
+[00:02:25 -> 00:02:36] 所以我觉得它是一本非常有意思的书,是一本即便你不是脑科学行业,生物学行业,或者是这个精神病行业,你也能读懂的一本书,同
+[00:02:36 -> 00:02:40] 时你对人性有非常深刻的理解。
+[00:02:40 -> 00:02:43] 所以我觉得它是一本非常有趣的书。
+[00:02:43 -> 00:02:45] 而且如果你想了解人性的话,
+[00:02:46 -> 00:02:53] 你就要从一个研究底层精神疾病的科学家的嘴里来看这些故事。
+[00:02:53 -> 00:02:56] 希望大家能够像我喜欢这本书一样,
+[00:02:56 -> 00:02:58] 像我欣赏这本书一样,
+[00:02:59 -> 00:03:01] 像我觉得它是一个有趣的书一样,
+[00:03:01 -> 00:03:02] 喜欢这本书。
+[00:03:02 -> 00:03:04] Hello, Dr. Desiros.
+[00:03:05 -> 00:03:08] And first of all, I would like to congratulate on your book
+[00:03:08 -> 00:03:08] ,
+[00:03:09 -> 00:03:13] because I read both the version and the Chinese version, I
+[00:03:13 -> 00:03:15] think it's beautifully written and
+[00:03:15 -> 00:03:20] it's very elegantly translated. So I want to congratulate
+[00:03:20 -> 00:03:24] you and the translators. I would
+[00:03:24 -> 00:03:29] like to say that it's very much out of my expectation
+[00:03:29 -> 00:03:32] because given your background,
+[00:03:32 -> 00:03:38] I thought it would be very sciencey, very scientific about
+[00:03:38 -> 00:03:40] advanced technology,
+[00:03:40 -> 00:03:43] But it's very humanity.
+[00:03:43 -> 00:03:46] It's composed of little stories.
+[00:03:48 -> 00:03:52] So I would like you to elaborate on that to our audience.
+[00:03:52 -> 00:03:53] Why is that?
+[00:03:53 -> 00:03:57] Why do you think it's best to be written new stories in
+[00:03:57 -> 00:04:00] human stories rather than scientific
+[00:04:00 -> 00:04:00] terms?
+[00:04:02 -> 00:04:03] That's a great question.
+[00:04:03 -> 00:04:07] And I'm really, first of all, so glad to be here talking
+[00:04:07 -> 00:04:09] with you about the book.
+[00:04:09 -> 00:04:14] And also, I'm so glad to hear that the translation was good
+[00:04:14 -> 00:04:19] . I have no way of knowing, but it means so much to hear
+[00:04:19 -> 00:04:24] that from you and to know that the spirit of the book was
+[00:04:24 -> 00:04:28] also captured in the translation. So thank you for that.
+[00:04:30 -> 00:04:35] And yes, the style of the book was a bit of a risk for me,
+[00:04:35 -> 00:04:41] a bit of a step outside of the space I usually inhabit.
+[00:04:43 -> 00:04:48] And that was done for really two reasons.
+[00:04:48 -> 00:04:53] One is I just I found that I could convey the inner world
+[00:04:53 -> 00:04:59] of human beings more accurately if I could let myself be
+[00:04:59 -> 00:05:05] more literary about it and to use more freedom with the
+[00:05:05 -> 00:05:11] words and to capture, for example, in the chapter about
+[00:05:11 -> 00:05:16] bipolar disorder or mania to really use the words that were
+[00:05:16 -> 00:05:21] pressured and intense and exuberant to capture the feeling
+[00:05:21 -> 00:05:21] of
+[00:05:21 -> 00:05:25] of mania and in this chapter on schizophrenia to have
+[00:05:25 -> 00:05:29] things fragmented and loose and tangential
+[00:05:29 -> 00:05:34] and to capture the inner workings that way. And so for me,
+[00:05:34 -> 00:05:36] it was in some ways the only
+[00:05:36 -> 00:05:43] good strategy to convey even the science of psychiatry was
+[00:05:43 -> 00:05:46] to tell it from the point of
+[00:05:46 -> 00:05:53] view of the patient's inner subjective world. And so that's
+[00:05:53 -> 00:05:55] why that was the first main reason I
+[00:05:55 -> 00:05:59] took that strategy, because even though not conventionally
+[00:05:59 -> 00:06:01] scientific, in my view, it was
+[00:06:01 -> 00:06:05] more accurate because it let me convey what was going on
+[00:06:05 -> 00:06:09] inside more fully. And the other reason
+[00:06:09 -> 00:06:14] was I find you can communicate better with human stories. I
+[00:06:14 -> 00:06:17] think I wanted to reach everybody. I
+[00:06:17 -> 00:06:21] didn't want to just reach scientists. Everybody's touched
+[00:06:21 -> 00:06:25] by mental health. It's our common heritage
+[00:06:25 -> 00:06:29] to have things go well and go not well in the mental health
+[00:06:29 -> 00:06:32] domain. We have friends, we have
+[00:06:32 -> 00:06:36] family, we have ourselves. I wanted to communicate with
+[00:06:36 -> 00:06:38] everybody and I didn't want to just have
+[00:06:38 -> 00:06:43] scientists or academics be able to read it. And so that was
+[00:06:43 -> 00:06:46] the other reason. Just telling human
+[00:06:46 -> 00:06:51] stories, I think, allows everybody to connect. It's very
+[00:06:51 -> 00:06:54] interesting because mental health and
+[00:06:54 -> 00:06:59] mental disorder, there's no way of describing the symptoms
+[00:06:59 -> 00:07:02] to an average person. If we have a fever,
+[00:07:02 -> 00:07:07] it's very easy to describe a fever, the temperature rising
+[00:07:07 -> 00:07:11] up, and there's no physical measure
+[00:07:11 -> 00:07:17] for mental disorder. Do you agree? I agree. And the only
+[00:07:17 -> 00:07:20] way to understand it is to feel it.
+[00:07:21 -> 00:07:25] In psychiatry, we have nothing to measure. There are no
+[00:07:25 -> 00:07:28] blood tests. There are no imaging
+[00:07:28 -> 00:07:34] studies. And although we have quantifiable measures, it's
+[00:07:34 -> 00:07:37] all questionnaires. It's all
+[00:07:37 -> 00:07:42] verbal assessments, which of course are subjective in many
+[00:07:42 -> 00:07:45] ways. And so at the very heart of it all,
+[00:07:46 -> 00:07:50] the only way to communicate the essence of these human
+[00:07:50 -> 00:07:53] interstates is to make or help somebody
+[00:07:53 -> 00:07:57] else feel the same thing. And that's hard, right? Because
+[00:07:57 -> 00:07:59] if you think about other states that
+[00:07:59 -> 00:08:03] people can enter into, not easy to help other people
+[00:08:03 -> 00:08:06] experience them. But with words, with
+[00:08:06 -> 00:08:13] literary writing, I hoped to achieve that. Thank you. So I
+[00:08:13 -> 00:08:17] would like to diverge our question a
+[00:08:17 -> 00:08:23] little bit about your personal experience. So I read that
+[00:08:23 -> 00:08:26] you were very interested in poems
+[00:08:26 -> 00:08:31] and creative writing early on. And then you were interested
+[00:08:31 -> 00:08:34] in the ideas of cells and trained in
+[00:08:34 -> 00:08:39] neurosurgery and you loved the neurosurgery and you said in
+[00:08:39 -> 00:08:41] your own words that's i'm quoting you
+[00:08:41 -> 00:08:46] it's invigorating the attention and the precision needed to
+[00:08:46 -> 00:08:50] conduct a neurosurgery and then you
+[00:08:50 -> 00:08:55] wrote you never could have thought of choosing psychiatry
+[00:08:55 -> 00:08:58] as your specialty but one one encounter
+[00:08:58 -> 00:09:02] with a patient that changed your life and you felt a union
+[00:09:02 -> 00:09:04] of science and art in one moment
+[00:09:04 -> 00:09:09] And you said it brought intellectual life fully together
+[00:09:09 -> 00:09:11] for the first time.
+[00:09:12 -> 00:09:15] And I would like you to talk a little bit about your
+[00:09:15 -> 00:09:20] calling because we have a lot of young audience, college
+[00:09:20 -> 00:09:24] students, graduate students, about how do you find your
+[00:09:24 -> 00:09:28] calling, your moment, and your career transitions?
+[00:09:28 -> 00:09:35] Yes. Well, this is such an interesting thing to talk about,
+[00:09:35 -> 00:09:39] and it matters so much for the young people to hear that
+[00:09:39 -> 00:09:44] your true calling might not be clear to you for some time,
+[00:09:44 -> 00:09:47] but then it can become very clear.
+[00:09:48 -> 00:09:51] The only way to get to that moment, though, is with human
+[00:09:51 -> 00:09:55] experience. You have to put yourself into the moments and
+[00:09:55 -> 00:09:59] the places where that can come to you, that information,
+[00:09:59 -> 00:10:02] that meaning, that calling can come to you.
+[00:10:02 -> 00:10:07] So I had always loved reading and poetry. I loved how words
+[00:10:07 -> 00:10:12] could make me feel different in surprising ways that a few
+[00:10:12 -> 00:10:16] words could cause an emotion in me. I loved that. I loved
+[00:10:16 -> 00:10:19] writing. I loved thinking about how that worked.
+[00:10:19 -> 00:10:24] And then I became interested in science and I became
+[00:10:24 -> 00:10:27] interested in, I thought, a quite separate thing. I became
+[00:10:27 -> 00:10:33] interested in the precision of science and the biology of
+[00:10:33 -> 00:10:38] the brain. I was very curious, as a biologist might be, as
+[00:10:38 -> 00:10:40] to how the physical brain was working.
+[00:10:40 -> 00:10:44] But those were separate for me, and I didn't think they
+[00:10:44 -> 00:10:45] would come together.
+[00:10:45 -> 00:10:49] I didn't think I'd be able to approach these questions of
+[00:10:49 -> 00:10:52] how words create emotion as part
+[00:10:52 -> 00:10:54] of my life's work.
+[00:10:54 -> 00:10:58] So I was headed down the pure science medicine path, and I
+[00:10:58 -> 00:11:01] loved neurosurgery because it
+[00:11:01 -> 00:11:06] was so precise and powerful.
+[00:11:06 -> 00:11:07] You could do amazing things.
+[00:11:07 -> 00:11:13] You could help people in extremes of illness and
+[00:11:13 -> 00:11:16] dysfunction, and you could bring them back.
+[00:11:18 -> 00:11:20] And it was a wonderful thing.
+[00:11:21 -> 00:11:26] Something I realized later was that it didn't connect this
+[00:11:26 -> 00:11:31] other part of me, this love for words and emotion.
+[00:11:31 -> 00:11:36] And this question of how our inner subjective states are
+[00:11:36 -> 00:11:41] created and how interaction with other people can control
+[00:11:41 -> 00:11:45] them, how a few simple, well-chosen phrases can stir an
+[00:11:45 -> 00:11:46] emotion.
+[00:11:47 -> 00:11:49] I thought those were just separate.
+[00:11:49 -> 00:11:56] And then when I did my psychiatry training period during
+[00:11:56 -> 00:12:02] medical school, I was put into rooms with people who
+[00:12:02 -> 00:12:07] experienced emotion and the world in completely different
+[00:12:07 -> 00:12:10] ways, in stunningly different ways.
+[00:12:10 -> 00:12:14] Here were human beings who were physically intact. There
+[00:12:14 -> 00:12:18] was no blood test and no imaging test, no electrical
+[00:12:18 -> 00:12:22] measurements, nothing that you could do precisely would
+[00:12:22 -> 00:12:27] give any information about what was going on. And yet these
+[00:12:27 -> 00:12:32] people were so, so disordered that people who first made me
+[00:12:32 -> 00:12:37] see this were patients suffering from what we call schizo
+[00:12:37 -> 00:12:39] affective disorder.
+[00:12:39 -> 00:12:43] it's a mix of psychosis which is a break from reality and
+[00:12:43 -> 00:12:46] depression which is a very severe
+[00:12:46 -> 00:12:52] discounting of positive value in anything including one's
+[00:12:52 -> 00:12:56] own action and all these are
+[00:12:56 -> 00:12:59] tied up together in uh one individual at one time it's a
+[00:12:59 -> 00:13:03] terrible disorder and i saw this happening
+[00:13:03 -> 00:13:07] in front of me and i saw all these things come together i
+[00:13:07 -> 00:13:10] saw the words and the emotion and the
+[00:13:10 -> 00:13:13] inner world of a human being who needed help. And yet I
+[00:13:13 -> 00:13:16] knew from my medicine and science training
+[00:13:16 -> 00:13:21] that the brain was composed of cells, electrical cells that
+[00:13:21 -> 00:13:25] made and sent very precise electrical
+[00:13:25 -> 00:13:32] signals. And so for me in that moment, I realized I could
+[00:13:32 -> 00:13:35] bring these parts of my inspiration
+[00:13:35 -> 00:13:39] in life together in one thing, which was in psychiatry. So
+[00:13:39 -> 00:13:42] a totally unexpected turn of
+[00:13:42 -> 00:13:47] events, but, and it never would have happened if I didn't
+[00:13:47 -> 00:13:50] have that personal face-to-face
+[00:13:50 -> 00:13:53] encounter with psychiatric patients. So, so important to
+[00:13:53 -> 00:13:55] put yourself out there to experience
+[00:13:55 -> 00:14:00] things directly to make the right decisions in life, I
+[00:14:00 -> 00:14:04] think. So, I have two questions
+[00:14:04 -> 00:14:09] following on that. So, the first question is that when I
+[00:14:09 -> 00:14:13] was in graduate school learning about brain
+[00:14:13 -> 00:14:19] disorders and they would give you a description of the
+[00:14:19 -> 00:14:25] prototypical type of patients and teach
+[00:14:25 -> 00:14:33] you about what is autism, what is schizophrenia, what is
+[00:14:33 -> 00:14:34] the mania.
+[00:14:35 -> 00:14:39] And then years passed by, people began to say, oh, this is
+[00:14:39 -> 00:14:40] not enough.
+[00:14:40 -> 00:14:45] we need to have some mixture of symptoms and spectrum
+[00:14:45 -> 00:14:46] disorders.
+[00:14:46 -> 00:14:51] And I began to question, but I never say it aloud, but I
+[00:14:51 -> 00:14:52] began to question,
+[00:14:52 -> 00:14:57] do we really know the boundaries of different kinds of
+[00:14:57 -> 00:14:58] disorders?
+[00:14:58 -> 00:15:05] Or is it just a way of grouping symptoms together?
+[00:15:06 -> 00:15:08] Do you have any comments on that?
+[00:15:09 -> 00:15:12] Well, it's another great question.
+[00:15:12 -> 00:15:15] And this is another major theme of the book, which is I
+[00:15:15 -> 00:15:18] wanted to capture for everybody
+[00:15:18 -> 00:15:23] this basic question of why do mental illnesses exist in the
+[00:15:23 -> 00:15:25] human population?
+[00:15:25 -> 00:15:28] Is there a reason for it?
+[00:15:28 -> 00:15:30] Now, we know some diseases exist for a reason, believe it
+[00:15:30 -> 00:15:31] or not.
+[00:15:31 -> 00:15:34] You know, you probably know about sickle cell anemia, for
+[00:15:34 -> 00:15:35] example.
+[00:15:36 -> 00:15:38] This is a blood disorder.
+[00:15:38 -> 00:15:41] It's terrible if you have it, but it's definitely there for
+[00:15:41 -> 00:15:44] a reason because people
+[00:15:44 -> 00:15:48] who have one mutant gene are much more resistant to malaria
+[00:15:48 -> 00:15:51] , and people who have two mutant genes
+[00:15:51 -> 00:15:54] are the ones who suffer. And so we know why this gene
+[00:15:54 -> 00:15:56] exists in the human population. And so
+[00:15:56 -> 00:15:59] then you have to think about psychiatry, and you have to
+[00:15:59 -> 00:16:01] ask the same question. Why are these
+[00:16:01 -> 00:16:05] disorders so prevalent? Are they, at some level, doing
+[00:16:05 -> 00:16:08] something for us? And what I tried to convey
+[00:16:08 -> 00:16:11] in the book, that in many cases, this is definitely true,
+[00:16:11 -> 00:16:14] that these disorders exist on a spectrum,
+[00:16:14 -> 00:16:17] and that many people, not to take anything away from the
+[00:16:17 -> 00:16:20] suffering, the true pain, the true
+[00:16:20 -> 00:16:23] dysfunction that many people with every psychiatric
+[00:16:23 -> 00:16:27] disorder have. However, because they exist on a
+[00:16:27 -> 00:16:30] spectrum, we can look at this and think, oh, there's
+[00:16:30 -> 00:16:32] probably a reason that these genes are
+[00:16:32 -> 00:16:36] persisting in the human population. And you can actually
+[00:16:36 -> 00:16:38] look at several major classes of
+[00:16:38 -> 00:16:41] psychiatric disorder. And if you look at the whole
+[00:16:41 -> 00:16:46] population, people with these, there are three
+[00:16:46 -> 00:16:49] psychiatric disorders, at least for which this is true,
+[00:16:49 -> 00:16:52] known to be true. On average, people with
+[00:16:52 -> 00:16:56] these disorders do better than the general population in
+[00:16:56 -> 00:16:58] life. They have higher income,
+[00:16:58 -> 00:17:03] higher educational attainment, higher IQ. These three
+[00:17:03 -> 00:17:06] disorders are bipolar disorder,
+[00:17:07 -> 00:17:12] OK, anorexia, eating and eating disorder and autism.
+[00:17:12 -> 00:17:15] Not to say that there isn't terrible suffering at one end
+[00:17:15 -> 00:17:17] of the spectrum for all three of these.
+[00:17:17 -> 00:17:20] But as a whole, they actually do better than the general
+[00:17:20 -> 00:17:21] population.
+[00:17:21 -> 00:17:24] And so that makes you think also these are here for a
+[00:17:24 -> 00:17:25] reason.
+[00:17:26 -> 00:17:29] And so part of the book tries to capture that evolutionary
+[00:17:29 -> 00:17:34] perspective, how the human family, as we know it today,
+[00:17:34 -> 00:17:35] emerged.
+[00:17:35 -> 00:17:39] what are we carrying within us that helps us now or helps
+[00:17:39 -> 00:17:44] some of us now? And maybe even it's not
+[00:17:44 -> 00:17:46] something that's that helpful now, but maybe it was helpful
+[00:17:46 -> 00:17:48] in the past when we're evolving and
+[00:17:48 -> 00:17:50] we're still carrying the trace of that forward. And so a
+[00:17:50 -> 00:17:53] major theme in the book is exactly what
+[00:17:53 -> 00:17:57] you articulated so well is where do you draw the line? You
+[00:17:57 -> 00:18:00] can draw the line for illness today,
+[00:18:00 -> 00:18:03] but that might not have been where you would draw the line
+[00:18:03 -> 00:18:05] a thousand years ago or a hundred
+[00:18:05 -> 00:18:10] thousand years ago. And even today, if the situation
+[00:18:10 -> 00:18:12] changes, if the world changes,
+[00:18:13 -> 00:18:18] that line between illness and health could move. So I think
+[00:18:18 -> 00:18:21] it's an important realization. I think
+[00:18:21 -> 00:18:26] it helps us be more empathetic to people who are suffering
+[00:18:26 -> 00:18:29] because we know that there's a reason
+[00:18:29 -> 00:18:32] that they're suffering and they're carrying a burden in
+[00:18:32 -> 00:18:34] some ways for us, for the rest of the
+[00:18:34 -> 00:18:35] of the human family.
+[00:18:35 -> 00:18:40] So do you think that our human brain is pushing the, you
+[00:18:40 -> 00:18:43] know, sort of evolutionarily pushing
+[00:18:44 -> 00:18:50] the limits of nature, that because we have this giant brain
+[00:18:50 -> 00:18:52] that consumes very little
+[00:18:52 -> 00:18:59] energy and do a lot of computing, that we are pushing some
+[00:18:59 -> 00:19:02] boundaries of nature in the
+[00:19:02 -> 00:19:06] intelligence that give us some genes that can be
+[00:19:06 -> 00:19:09] potentially give some of us mental illness.
+[00:19:10 -> 00:19:14] I think it's very likely that the rapid growth of our brain
+[00:19:14 -> 00:19:17] , which has taken enormous
+[00:19:17 -> 00:19:21] quantum leaps forward in size in a very short evolutionary
+[00:19:21 -> 00:19:26] time, I'm quite sure that that was
+[00:19:26 -> 00:19:28] not an easy thing. And I'm quite sure that not all the
+[00:19:28 -> 00:19:31] problems have been solved with that.
+[00:19:31 -> 00:19:37] we know, for example, that in schizophrenia, where people
+[00:19:37 -> 00:19:39] have a break from reality, they
+[00:19:39 -> 00:19:43] express this break from reality in different ways.
+[00:19:43 -> 00:19:46] Sometimes they can hear voices in their head
+[00:19:46 -> 00:19:50] that are distressing. Sometimes they can feel as though
+[00:19:50 -> 00:19:53] part of their body is not their own.
+[00:19:53 -> 00:19:56] If they move their hand, they may feel like something else
+[00:19:56 -> 00:19:58] is controlling it. And if you
+[00:19:58 -> 00:20:02] look at all the symptoms of schizophrenia, they seem to
+[00:20:02 -> 00:20:04] have a theme, which is that
+[00:20:04 -> 00:20:07] one part of the brain doesn't know what another part of the
+[00:20:07 -> 00:20:09] brain is doing. There's a problem in
+[00:20:09 -> 00:20:14] communication across the brain. And so, for example, these
+[00:20:14 -> 00:20:17] voices that people with schizophrenia
+[00:20:17 -> 00:20:20] hear, very often they have the quality of a running
+[00:20:20 -> 00:20:23] commentary on the world. They'll be
+[00:20:23 -> 00:20:27] experiencing a voice commenting on, oh, that guy is looking
+[00:20:27 -> 00:20:30] at me funny. You should do something
+[00:20:30 -> 00:20:35] about that or and oh if that that you should punch that guy
+[00:20:35 -> 00:20:37] in the face he's he's he's really
+[00:20:37 -> 00:20:41] annoying now we all have these thoughts all the time of
+[00:20:41 -> 00:20:44] course but we know it's like inner speech
+[00:20:44 -> 00:20:48] right the normal inner speech yes and we're not surprised
+[00:20:48 -> 00:20:51] or perturbed by it because we know it's
+[00:20:51 -> 00:20:53] our own inner thoughts now suppose you didn't know that it
+[00:20:53 -> 00:20:55] was your own inner thoughts and suppose
+[00:20:55 -> 00:20:58] it it was as if it was being inserted into your brain that
+[00:20:58 -> 00:21:01] would be very distressing and so that's
+[00:21:01 -> 00:21:04] kind of what the situation is with schizophrenia is there's
+[00:21:04 -> 00:21:06] not good long-range communication
+[00:21:06 -> 00:21:10] across this enormous brain that we have and one part of the
+[00:21:10 -> 00:21:12] brain doesn't know is not warned
+[00:21:12 -> 00:21:17] is not uh looped in to the plan and it creates a lot of uh
+[00:21:17 -> 00:21:21] confusion and very bizarre uh perceptions
+[00:21:21 -> 00:21:24] and so i do think there are other examples of that and
+[00:21:24 -> 00:21:26] other psychiatric disorders but i think
+[00:21:26 -> 00:21:29] the rapid growth of the human brain is pushing the limits
+[00:21:29 -> 00:21:30] in many ways.
+[00:21:30 -> 00:21:37] Yeah. So that comes to, you know, that topic comes to your
+[00:21:37 -> 00:21:40] book title, Projection. And,
+[00:21:40 -> 00:21:45] you know, some audiences are outside neuroscience, or
+[00:21:45 -> 00:21:49] mental disorders or psychiatry. Could you
+[00:21:49 -> 00:21:57] explain Projection to these readers? So the title, in
+[00:21:57 -> 00:22:00] English, it's a very short and simple title
+[00:22:00 -> 00:22:05] because projections has a number of different connotations
+[00:22:05 -> 00:22:07] in English that all work together
+[00:22:07 -> 00:22:11] very well. I know that's not the case in every language. In
+[00:22:11 -> 00:22:14] fact, even in the United Kingdom,
+[00:22:14 -> 00:22:17] even though they speak English there, projections didn't
+[00:22:17 -> 00:22:19] have the full set of connotations there.
+[00:22:20 -> 00:22:23] So they changed the title to connections instead of
+[00:22:23 -> 00:22:28] projections. But that said, everything can be
+[00:22:28 -> 00:22:31] expressed in the following way, which is under the single
+[00:22:31 -> 00:22:33] word projections. And so I'll explain
+[00:22:33 -> 00:22:37] that a little bit. First, a projection is what neuroscient
+[00:22:37 -> 00:22:39] ists call the communication, the
+[00:22:39 -> 00:22:42] physical path of communication from one part of the brain
+[00:22:42 -> 00:22:45] to another, because the cells that live
+[00:22:45 -> 00:22:48] in one part of the brain, they receive very long, thin
+[00:22:48 -> 00:22:51] connections or projections that come from the
+[00:22:51 -> 00:22:56] other side of the brain that are like telephone wires or
+[00:22:56 -> 00:22:59] ethernet cables or fiber optics. They
+[00:22:59 -> 00:23:03] have very long thin structures and information is sent down
+[00:23:03 -> 00:23:06] them but like any yeah it's white
+[00:23:06 -> 00:23:10] matter i would like to yeah white matter in the brain yes
+[00:23:10 -> 00:23:12] it's the white matter exactly right
+[00:23:12 -> 00:23:16] that's where the projections are uh and that that's how one
+[00:23:16 -> 00:23:18] part of the brain tells another
+[00:23:18 -> 00:23:21] part of the brain what it's doing and it's those long-range
+[00:23:21 -> 00:23:24] connections that are not doing the job
+[00:23:24 -> 00:23:27] fully in in schizophrenia for example so that's one meaning
+[00:23:27 -> 00:23:29] of the word projection it's a neuroscience
+[00:23:29 -> 00:23:34] term. And the science is supporting this. This is very
+[00:23:34 -> 00:23:38] important for defining what our inner states
+[00:23:38 -> 00:23:42] are. What experience do we wrap into the perception of the
+[00:23:42 -> 00:23:45] self in the moment? Is it our body?
+[00:23:46 -> 00:23:49] Is it our principles, our priorities, our memories, our
+[00:23:49 -> 00:23:52] sense of self, our perception of the world?
+[00:23:52 -> 00:23:56] We're not conscious of everything all at once. We pick some
+[00:23:56 -> 00:23:58] things to be wrapped up and bound
+[00:23:58 -> 00:24:01] into the mental state of the moment, and that's controlled
+[00:24:01 -> 00:24:03] by projections. A part of the brain
+[00:24:03 -> 00:24:06] goes out and grabs different perceptions and brings them
+[00:24:06 -> 00:24:08] together and makes them active together,
+[00:24:08 -> 00:24:12] and that defines the moments that we have in life. Okay,
+[00:24:12 -> 00:24:14] that's one meaning of projections,
+[00:24:14 -> 00:24:19] but of course, it's a rich term and connotation. Projection
+[00:24:19 -> 00:24:21] is a word used in psychiatry a lot
+[00:24:21 -> 00:24:26] to convey this interpersonal aspect of communication.
+[00:24:27 -> 00:24:29] Very often in social interactions,
+[00:24:29 -> 00:24:33] it's so important to make a model of the other person in
+[00:24:33 -> 00:24:33] your mind
+[00:24:33 -> 00:24:35] because there's so many complexities.
+[00:24:35 -> 00:24:39] You don't know what another person's priorities are,
+[00:24:39 -> 00:24:42] what they want, what they don't want, what they're afraid
+[00:24:42 -> 00:24:42] of.
+[00:24:42 -> 00:24:46] It's very hard to have a normal interaction
+[00:24:46 -> 00:24:50] if you're not constantly modeling or imagining what the
+[00:24:50 -> 00:24:51] other person is thinking.
+[00:24:52 -> 00:24:59] So like my mental model of you and your mental model of me
+[00:24:59 -> 00:25:04] and my mental model of you trying to communicate with me
+[00:25:04 -> 00:25:05] and how do I react.
+[00:25:08 -> 00:25:08] Exactly.
+[00:25:08 -> 00:25:09] So that's the second.
+[00:25:09 -> 00:25:11] That's the second meaning is projection.
+[00:25:11 -> 00:25:15] Basically, what it is, is you create a model of the other
+[00:25:15 -> 00:25:18] person knowing what you know about yourself.
+[00:25:18 -> 00:25:19] I'm a human being.
+[00:25:20 -> 00:25:21] I know I have certain structures.
+[00:25:21 -> 00:25:23] I look at you.
+[00:25:23 -> 00:25:24] You're a human being.
+[00:25:24 -> 00:25:28] I'm going to project myself into you and I'm going to say,
+[00:25:28 -> 00:25:31] okay, let's at least have this
+[00:25:31 -> 00:25:36] as a hypothesis that you're somewhat like me and I'm going
+[00:25:36 -> 00:25:38] to use this as a map of sorts
+[00:25:38 -> 00:25:41] to help me predict what you're going to do.
+[00:25:41 -> 00:25:44] And I may also look at what you do and I may bring that
+[00:25:44 -> 00:25:47] into me and I may think, okay,
+[00:25:47 -> 00:25:51] this is something that I should compare to myself and maybe
+[00:25:51 -> 00:25:53] that'll help me understand
+[00:25:53 -> 00:25:54] myself better.
+[00:25:54 -> 00:25:57] And so in psychiatry, when people have what's called a
+[00:25:57 -> 00:26:03] projection, they are using their own feelings and they're
+[00:26:03 -> 00:26:05] attributing them to somebody else.
+[00:26:05 -> 00:26:07] Sometimes this is a healthy thing.
+[00:26:07 -> 00:26:10] Sometimes this actually helps you understand somebody
+[00:26:10 -> 00:26:11] better.
+[00:26:12 -> 00:26:14] Now, sometimes you're wrong about that, too.
+[00:26:14 -> 00:26:16] And so projections can become misleading.
+[00:26:17 -> 00:26:20] And this is something in psychiatry we teach people to be
+[00:26:20 -> 00:26:20] aware of.
+[00:26:21 -> 00:26:24] It's okay to do this, but you should be aware you're doing
+[00:26:24 -> 00:26:25] it because...
+[00:26:26 -> 00:26:28] The projection can be a problem as well.
+[00:26:28 -> 00:26:36] So even in normal people, if your projection of the other
+[00:26:36 -> 00:26:41] person is so out of your expectation, that their feelings
+[00:26:41 -> 00:26:45] and their values and their standpoint are so different from
+[00:26:45 -> 00:26:48] yours, you would feel so frustrated as well.
+[00:26:50 -> 00:26:52] Yes, that's right.
+[00:26:52 -> 00:26:58] And so that can be a source of friction and a source of
+[00:26:58 -> 00:26:59] anger.
+[00:26:59 -> 00:27:03] But what we try to do as psychiatrists is we try to tell
+[00:27:03 -> 00:27:08] people to recognize those moments where you feel that anger
+[00:27:08 -> 00:27:13] , where you feel that frustration, and to use it to realize,
+[00:27:13 -> 00:27:16] oh, yeah, something's not matching here.
+[00:27:17 -> 00:27:17] Why?
+[00:27:17 -> 00:27:21] Oh, it's because I did a projection, but it's not mapping
+[00:27:21 -> 00:27:23] exactly right.
+[00:27:24 -> 00:27:27] And so it's this difference that's making me angry.
+[00:27:28 -> 00:27:31] The projection maybe needs to be morphed a little bit to
+[00:27:31 -> 00:27:33] make it work very well.
+[00:27:33 -> 00:27:37] And so you can use the anger as a way to actually improve
+[00:27:37 -> 00:27:40] your understanding and your empathy.
+[00:27:40 -> 00:27:43] That's a really great point.
+[00:27:43 -> 00:27:48] I mean, it's very meaningful to all of us because I
+[00:27:48 -> 00:27:55] experienced so much frustration with mostly people online
+[00:27:55 -> 00:28:00] that I couldn't communicate with them.
+[00:28:00 -> 00:28:03] And I don't know what they're thinking behind their
+[00:28:03 -> 00:28:04] comments.
+[00:28:05 -> 00:28:08] And some of the comments are so out of this world.
+[00:28:09 -> 00:28:13] But I guess I need to bring this awareness that they don't
+[00:28:13 -> 00:28:15] have the same projection as I have.
+[00:28:15 -> 00:28:19] And of course, yeah.
+[00:28:19 -> 00:28:25] And also, you know, it's very interesting because we talked
+[00:28:25 -> 00:28:28] about the translation of the book.
+[00:28:28 -> 00:28:32] I mean, there are so many layers of translation in this
+[00:28:32 -> 00:28:33] book.
+[00:28:34 -> 00:28:39] One layer is the language translation that our Chinese
+[00:28:39 -> 00:28:43] audience are reading your book in a different language.
+[00:28:44 -> 00:28:48] And another layer is the translation of feeling into
+[00:28:48 -> 00:28:52] stories in the mental disorder.
+[00:28:53 -> 00:28:58] And when I was in graduate school, I think because I did a
+[00:28:58 -> 00:29:03] lot of language translation in the brain processing,
+[00:29:03 -> 00:29:08] And I think it's very interesting because different
+[00:29:08 -> 00:29:12] languages map different concepts, like the translation
+[00:29:12 -> 00:29:17] equivalents are not completely concept equivalents.
+[00:29:17 -> 00:29:22] So they have translation equivalents in the dictionary, but
+[00:29:22 -> 00:29:27] there is a minor difference between how they map the words
+[00:29:27 -> 00:29:29] in the human brain.
+[00:29:29 -> 00:29:33] And also, maybe there are some ambiguities in the
+[00:29:33 -> 00:29:35] storytelling.
+[00:29:37 -> 00:29:40] Like they are feeling something, you're touching their
+[00:29:40 -> 00:29:42] feeling, and you project their mental state.
+[00:29:42 -> 00:29:48] And then you're trying to use analogies and stories to tell
+[00:29:48 -> 00:29:49] us how they feel.
+[00:29:49 -> 00:29:53] So there are a lot of ambiguities in this book, and maybe
+[00:29:53 -> 00:29:56] in psychiatry as well.
+[00:29:56 -> 00:29:59] How do you feel about that?
+[00:29:59 -> 00:30:03] And how do you deal with that in your research?
+[00:30:04 -> 00:30:10] Yeah, I inhabit this strange space where my research is
+[00:30:10 -> 00:30:11] very precise.
+[00:30:11 -> 00:30:16] We control the action of brain cells with millisecond
+[00:30:16 -> 00:30:17] precision.
+[00:30:18 -> 00:30:19] We turn them on or off.
+[00:30:19 -> 00:30:23] We make precise measurements of activity of many cells and
+[00:30:23 -> 00:30:24] control them.
+[00:30:24 -> 00:30:27] And we make quantitative computational models.
+[00:30:27 -> 00:30:31] And all that is one part of my world. And then the other
+[00:30:31 -> 00:30:35] part of my world are these very subjective and imprecise,
+[00:30:35 -> 00:30:40] you know, interpersonal methods of communication.
+[00:30:42 -> 00:30:45] And what I have found is what helps me to help make sense
+[00:30:45 -> 00:30:51] of this is to realize that the interpersonal interaction
+[00:30:51 -> 00:30:55] and the use of language, if done right, is a very precise
+[00:30:55 -> 00:30:56] tool.
+[00:30:56 -> 00:31:01] And it's a way of of making a measurement and providing and
+[00:31:01 -> 00:31:06] collecting information that is actually astonishingly
+[00:31:06 -> 00:31:09] precise if if used well, if used carefully.
+[00:31:10 -> 00:31:14] And if it if it gets to the human being, if it gets to not
+[00:31:14 -> 00:31:19] just a download of information, but if it if it gets to the
+[00:31:19 -> 00:31:24] heart of the person, then it can be the most precise tool
+[00:31:24 -> 00:31:26] you can imagine if it's done well.
+[00:31:26 -> 00:31:30] And so there's a certain, people talk about the art of
+[00:31:30 -> 00:31:32] psychiatry or the art of therapy,
+[00:31:32 -> 00:31:35] and it is a bit of an art, but it's also a bit of a science
+[00:31:35 -> 00:31:38] because it's so important to use the
+[00:31:38 -> 00:31:42] right word, to convey the right emotion. Only then do you
+[00:31:42 -> 00:31:44] actually get the right information back.
+[00:31:45 -> 00:31:48] And in some key stories in the book, I try to convey this.
+[00:31:48 -> 00:31:51] There are moments when I realize
+[00:31:51 -> 00:31:54] I haven't been taking the right strategy. I haven't been
+[00:31:54 -> 00:31:56] collecting information in the right
+[00:31:56 -> 00:32:01] way. I haven't made myself open enough or vulnerable enough
+[00:32:01 -> 00:32:02] to allow the other person
+[00:32:02 -> 00:32:06] to communicate with me, or I haven't allowed enough space
+[00:32:06 -> 00:32:10] or enough time for them. And so a
+[00:32:10 -> 00:32:14] lot of the book is conveying my own journey, realizing how
+[00:32:14 -> 00:32:16] precise words actually can be.
+[00:32:17 -> 00:32:23] And that's, for me, it's been a lifelong, ongoing voyage of
+[00:32:23 -> 00:32:24] discovery.
+[00:32:24 -> 00:32:28] You were talking about the precision of measuring the
+[00:32:28 -> 00:32:31] cellular level electricity in the neuron.
+[00:32:32 -> 00:32:35] So I'd like you to talk about the technology of optogen
+[00:32:35 -> 00:32:36] etics.
+[00:32:37 -> 00:32:43] So to our readers, since you invented the optogenetic
+[00:32:43 -> 00:32:49] technology, how do you connect the light to the electricity
+[00:32:49 -> 00:32:55] at cellular level so they can get a sense about the idea?
+[00:32:55 -> 00:32:59] Yeah. Well, this is a very important part of the book, too,
+[00:32:59 -> 00:33:02] because I wanted to convey to the general public not only
+[00:33:02 -> 00:33:08] the essence of psychiatric illness, the inner states
+[00:33:08 -> 00:33:11] experienced by human beings, but I wanted to convey also
+[00:33:11 -> 00:33:15] what the current state of the science was, which has been
+[00:33:15 -> 00:33:16] very exciting.
+[00:33:16 -> 00:33:19] It's actually helping us to understand these inner states
+[00:33:19 -> 00:33:20] very deeply.
+[00:33:20 -> 00:33:25] And one thing that's allowed this to happen is a technology
+[00:33:25 -> 00:33:28] that we developed at Stanford called optogenetics.
+[00:33:29 -> 00:33:33] And what this is, is a way of using light, not in the way
+[00:33:33 -> 00:33:37] you usually think about light.
+[00:33:37 -> 00:33:40] So normally we think about light as a way of collecting
+[00:33:40 -> 00:33:44] information or observing and light bring information.
+[00:33:44 -> 00:33:50] What optogenetics is, it uses light to make things happen,
+[00:33:50 -> 00:33:56] to cause individual cells, individual types of neuron to be
+[00:33:56 -> 00:33:58] active or to be shut off.
+[00:33:58 -> 00:34:03] We can turn them on or off using light in the brains of
+[00:34:03 -> 00:34:10] behaving, living, moving, fighting, defending, drinking,
+[00:34:10 -> 00:34:14] eating animals, including human beings, by the way.
+[00:34:14 -> 00:34:21] but also fish and rats and monkeys and you name it.
+[00:34:22 -> 00:34:26] So it's a technology for turning cells on or off with light
+[00:34:26 -> 00:34:26] .
+[00:34:26 -> 00:34:28] And that's so important for the following reason.
+[00:34:29 -> 00:34:30] The brain is electrical.
+[00:34:31 -> 00:34:34] Everything, all the communications that are sent between
+[00:34:34 -> 00:34:35] cells are electrical.
+[00:34:35 -> 00:34:39] And every neuron is fundamentally an electrical device.
+[00:34:40 -> 00:34:43] But that is a problem to study them because if you put in
+[00:34:43 -> 00:34:45] an electrode into the brain
+[00:34:45 -> 00:34:50] and you send current in, it will stimulate all the cells,
+[00:34:50 -> 00:34:51] every single brain cell,
+[00:34:51 -> 00:34:54] no matter what the job of that cell is. And the brain as a
+[00:34:54 -> 00:34:58] whole, it's like stimulating a computer.
+[00:34:58 -> 00:35:00] You can't just put an electrode into a computer and send in
+[00:35:00 -> 00:35:02] current and expect anything to happen.
+[00:35:02 -> 00:35:05] Why? Because the computer is beautifully designed. It's got
+[00:35:05 -> 00:35:09] an incredible array of elements that are
+[00:35:09 -> 00:35:12] all small and sensitive and intertwined, and they send
+[00:35:12 -> 00:35:14] connections to each other.
+[00:35:14 -> 00:35:17] And they're all electrical, so you'll get nothing
+[00:35:17 -> 00:35:20] reasonable to happen if you just...
+[00:35:20 -> 00:35:22] You're measuring by perturbing it.
+[00:35:23 -> 00:35:26] You have to perturb it, but you want to perturb it
+[00:35:26 -> 00:35:27] precisely.
+[00:35:27 -> 00:35:30] You want to perturb it in a meaningful way.
+[00:35:31 -> 00:35:34] Okay, so if we can't use electricity to perturb it in a
+[00:35:34 -> 00:35:36] meaningful way, what could we do?
+[00:35:36 -> 00:35:40] Well, one thing we thought was none of the brain cells
+[00:35:40 -> 00:35:43] respond to light normally inside the brain.
+[00:35:43 -> 00:35:44] It's very dark in there.
+[00:35:44 -> 00:35:48] There's no reason for any brain cell to be light responsive
+[00:35:48 -> 00:35:49] .
+[00:35:50 -> 00:35:54] But we thought that's great because if we could then use a
+[00:35:54 -> 00:35:57] trick to make some of the
+[00:35:57 -> 00:36:00] cells respond to light, that would be a big difference.
+[00:36:00 -> 00:36:04] We'd have most of the cells not responding at all to light
+[00:36:04 -> 00:36:06] and a few of them responding
+[00:36:06 -> 00:36:06] to light.
+[00:36:07 -> 00:36:09] And that difference would give us the precision that we
+[00:36:09 -> 00:36:09] wanted.
+[00:36:10 -> 00:36:11] OK, so how do you do that?
+[00:36:11 -> 00:36:14] How do you make some cells that respond to light?
+[00:36:14 -> 00:36:21] Well, we took a gene, a bit of DNA from a plant, a very
+[00:36:21 -> 00:36:26] special kind of algae that is a free swimming algae.
+[00:36:26 -> 00:36:29] It's a single cell, but it has flagella so it can swim
+[00:36:29 -> 00:36:30] through the water.
+[00:36:30 -> 00:36:34] And it tries to find the right level of light to photosynth
+[00:36:34 -> 00:36:36] esize and to survive.
+[00:36:36 -> 00:36:40] And it does this with a very special protein called a
+[00:36:40 -> 00:36:42] channel rhodopsin.
+[00:36:42 -> 00:36:46] And what this is, it's a single biomolecule, a single
+[00:36:46 -> 00:36:49] protein, and it sits in the surface of cells.
+[00:36:49 -> 00:36:52] So you might have one of them right here.
+[00:36:53 -> 00:36:55] And it sits in the membrane of the cell.
+[00:36:55 -> 00:37:00] And if a photon of light hits it, it opens up a little hole
+[00:37:00 -> 00:37:05] and ions, charged particles, go across the membrane of the
+[00:37:05 -> 00:37:07] cell, which is electricity.
+[00:37:07 -> 00:37:10] If you move charged particles, that's what electrical
+[00:37:10 -> 00:37:11] current is.
+[00:37:11 -> 00:37:15] So basically, this was a way of delivering a single gene
+[00:37:15 -> 00:37:18] that would give the cells that
+[00:37:18 -> 00:37:22] got it the ability to turn light into electricity.
+[00:37:23 -> 00:37:24] And that is the essence of optogenetics.
+[00:37:25 -> 00:37:26] And so we used genetic tricks.
+[00:37:27 -> 00:37:30] So we only gave this gene to some cells, but not others.
+[00:37:30 -> 00:37:33] And then we used fiber optics to send in light.
+[00:37:33 -> 00:37:38] And only the cells that had the DNA got electrical current
+[00:37:38 -> 00:37:40] from the light because only they had
+[00:37:40 -> 00:37:43] this protein that turned light into electrical current.
+[00:37:43 -> 00:37:46] And then that way we could turn some cells on, but not
+[00:37:46 -> 00:37:50] others. And then we could very systematically go through
+[00:37:50 -> 00:37:53] the brain and turn cells on or off, depending on how we
+[00:37:53 -> 00:37:57] were doing it, and see what behaviors happened. What did
+[00:37:57 -> 00:38:00] the animals do? A lot of this work initially was done in
+[00:38:00 -> 00:38:01] mice.
+[00:38:01 -> 00:38:04] to the animals. We found cells that control hunger and
+[00:38:04 -> 00:38:08] thirst and maternal behavior,
+[00:38:08 -> 00:38:13] nurturing behavior, aggression, fighting, defensive
+[00:38:13 -> 00:38:16] behavior, motivation. And so relevant
+[00:38:16 -> 00:38:20] to questions like depression, you know, where does the will
+[00:38:20 -> 00:38:22] to act come from? The belief
+[00:38:22 -> 00:38:26] that actions might be useful or meaningful, that we found
+[00:38:26 -> 00:38:27] cells that control that.
+[00:38:29 -> 00:38:32] Relevant to autism, we found cells that control social
+[00:38:32 -> 00:38:32] behavior.
+[00:38:33 -> 00:38:36] Relevant to anorexia, we find the cells that intersect
+[00:38:36 -> 00:38:40] social drives and feeding drives.
+[00:38:40 -> 00:38:42] And we found social cells that inhibit feeding.
+[00:38:43 -> 00:38:49] And so we found this whole set of cells that we knew could
+[00:38:49 -> 00:38:53] cause very, very important internal
+[00:38:53 -> 00:38:55] states and very, very important psychiatry-relevant
+[00:38:55 -> 00:38:56] behaviors.
+[00:38:57 -> 00:38:58] And that's optogenetics.
+[00:38:58 -> 00:39:01] gave us, and I wanted to share that with the general
+[00:39:01 -> 00:39:04] audience too of the book, because it
+[00:39:04 -> 00:39:08] also helps us understand and it helps us empathize. All our
+[00:39:08 -> 00:39:10] actions, all our perceptions,
+[00:39:10 -> 00:39:14] our feelings, they come from the activity, the electrical
+[00:39:14 -> 00:39:17] activity of a few kinds of cells in
+[00:39:17 -> 00:39:20] our brain. And it's so helpful for people to realize if you
+[00:39:20 -> 00:39:21] 're looking at somebody and they're
+[00:39:21 -> 00:39:25] acting in a way that you don't like, they're being too
+[00:39:25 -> 00:39:28] aggressive or too passive, not to take
+[00:39:28 -> 00:39:30] anything away from personal responsibility and the idea
+[00:39:30 -> 00:39:32] that people can change. But still,
+[00:39:33 -> 00:39:36] the reason they're acting the way they are, there are some
+[00:39:36 -> 00:39:38] cells in their brain that are well
+[00:39:38 -> 00:39:43] defined, specific physical cells that are sending
+[00:39:43 -> 00:39:46] particular signals that cause them to act in a
+[00:39:46 -> 00:39:50] particular way. So it's an important insight. It helps us
+[00:39:50 -> 00:39:52] realize how physical we are, how
+[00:39:52 -> 00:39:56] biological our drives, our motivations, and our feelings
+[00:39:56 -> 00:40:00] really are. So let me check if I
+[00:40:00 -> 00:40:04] understand you correctly. So basically optical genetics is
+[00:40:04 -> 00:40:08] a way of sending the light controlling
+[00:40:08 -> 00:40:15] the cells so that by genetically engineering some of the
+[00:40:15 -> 00:40:19] neurons just by a few genes or one gene
+[00:40:19 -> 00:40:22] that it can respond to the light and then you can use the
+[00:40:22 -> 00:40:24] light to control these cells
+[00:40:24 -> 00:40:30] And then they can be turned on and off by experimental
+[00:40:30 -> 00:40:36] design so that you can turn on and off a lot of important
+[00:40:36 -> 00:40:41] neural pathways, including eating, feeding, maternal
+[00:40:41 -> 00:40:43] behavior, etc.
+[00:40:43 -> 00:40:48] So that we can study all these complex neural activities by
+[00:40:48 -> 00:40:51] this little light.
+[00:40:52 -> 00:40:53] That's exactly right. You got it.
+[00:40:54 -> 00:41:01] Okay. So by talking about that, what do you think of brain
+[00:41:01 -> 00:41:08] stimulation in general? Because I did brain computer
+[00:41:08 -> 00:41:14] interface. And when I went out of graduate school and I
+[00:41:14 -> 00:41:18] talked to some of my friends and relatives and I told them
+[00:41:18 -> 00:41:23] about brain computer interface, they always asked me about
+[00:41:23 -> 00:41:25] brain stimulation.
+[00:41:25 -> 00:41:32] What do you think? Should we do that? In common people's
+[00:41:32 -> 00:41:37] sense, do we do that to accelerate learning, to make us
+[00:41:37 -> 00:41:44] superhuman, or to suppress depression, to suppress bad
+[00:41:44 -> 00:41:47] feelings, to suppress fear?
+[00:41:48 -> 00:41:53] So, I mean, brain stimulation is a big mystery to a lot of
+[00:41:53 -> 00:41:57] people. So I would like to ask you, what do you think of
+[00:41:57 -> 00:41:58] brain stimulation?
+[00:41:58 -> 00:42:03] Well, first of all, it's a very interesting technology and
+[00:42:03 -> 00:42:04] it has helped many people.
+[00:42:05 -> 00:42:08] So if you take Parkinson's disease, for example, very
+[00:42:08 -> 00:42:13] serious illness, very can cause death.
+[00:42:13 -> 00:42:15] Many millions of people suffer from it.
+[00:42:15 -> 00:42:18] And people who wear medications have stopped working.
+[00:42:18 -> 00:42:21] You can insert an electrode in the brain into the parts of
+[00:42:21 -> 00:42:22] the brain that control movement.
+[00:42:23 -> 00:42:29] And about half of Parkinson's patients get major
+[00:42:29 -> 00:42:34] improvements with some of their symptoms for a pretty long
+[00:42:34 -> 00:42:37] period of time, can be many years, a decade or more.
+[00:42:37 -> 00:42:39] So it definitely helps many people.
+[00:42:40 -> 00:42:44] With Parkinson's, it also is helpful in some types of sp
+[00:42:44 -> 00:42:46] asticity and tremor.
+[00:42:46 -> 00:42:51] It's helpful even in obsessive compulsive disorder.
+[00:42:52 -> 00:42:56] But it hasn't yet really been shown to be helpful for most
+[00:42:56 -> 00:42:58] psychiatric disorders.
+[00:42:58 -> 00:43:02] It doesn't, and for neurological disorders in general.
+[00:43:02 -> 00:43:05] In most cases, it's not helpful.
+[00:43:05 -> 00:43:07] It doesn't help with schizophrenia.
+[00:43:07 -> 00:43:08] It doesn't help with autism.
+[00:43:08 -> 00:43:10] It doesn't help with anorexia.
+[00:43:10 -> 00:43:13] We haven't figured out how to make it help for mania.
+[00:43:13 -> 00:43:17] We haven't figured out how to have it be helpful for PTSD
+[00:43:17 -> 00:43:19] or anxiety or for most depression
+[00:43:19 -> 00:43:19] patients.
+[00:43:20 -> 00:43:22] So what's the problem?
+[00:43:22 -> 00:43:28] Well, the problem is that it's this electrical device that
+[00:43:28 -> 00:43:29] you're putting in.
+[00:43:29 -> 00:43:33] In most cases, that's not precise enough.
+[00:43:33 -> 00:43:37] You're just putting in current and you're shifting the
+[00:43:37 -> 00:43:38] balance of things.
+[00:43:38 -> 00:43:42] Wherever you put the electrode in, you're stimulating or
+[00:43:42 -> 00:43:44] inhibiting all the cells that
+[00:43:44 -> 00:43:45] are near the electrode.
+[00:43:47 -> 00:43:50] And the only way that ever helps is if the essence of the
+[00:43:50 -> 00:43:52] disorder is very simple.
+[00:43:52 -> 00:43:56] if it's just an imbalance where one part of the brain is a
+[00:43:56 -> 00:43:58] little too active and another part of
+[00:43:58 -> 00:44:01] the brain is not active enough and you can shift the
+[00:44:01 -> 00:44:05] balance and then things can get better i think
+[00:44:05 -> 00:44:08] what we're discovering is that for most things it's more
+[00:44:08 -> 00:44:11] complex than that there's more more to
+[00:44:11 -> 00:44:14] it than just a balance shift there's there's there's coding
+[00:44:14 -> 00:44:16] there's information there's complex
+[00:44:16 -> 00:44:22] uh interplays it's like a symphony where all the it's not
+[00:44:22 -> 00:44:25] as if every musician can do the same
+[00:44:25 -> 00:44:28] thing at the same time. The real music comes because they
+[00:44:28 -> 00:44:30] do different things at different
+[00:44:30 -> 00:44:37] times. So let's talk about your stories. So I think all of
+[00:44:37 -> 00:44:41] the stories must be your favorites,
+[00:44:41 -> 00:44:45] but if you can pick one story that is your favorite, number
+[00:44:45 -> 00:44:49] one favorite, what would that
+[00:44:49 -> 00:44:54] story be in your book? Well, they each stir different
+[00:44:54 -> 00:44:57] emotions in me. You know, the first
+[00:44:57 -> 00:45:01] chapter is really about grief and loss and depression. And
+[00:45:01 -> 00:45:05] that makes me sad. It's an
+[00:45:05 -> 00:45:10] important story. It's a human condition that we all share.
+[00:45:10 -> 00:45:12] The last chapter is about dementia
+[00:45:12 -> 00:45:17] and the loss of the self that comes with end of life neurod
+[00:45:17 -> 00:45:20] egenerative disease. That one also
+[00:45:20 -> 00:45:23] makes me sad. But that's also important. I do love both
+[00:45:23 -> 00:45:26] those chapters for their importance.
+[00:45:26 -> 00:45:31] In some ways, I like the bipolar chapter the most, the one
+[00:45:31 -> 00:45:32] about mania.
+[00:45:32 -> 00:45:37] It's called First Break, and it's about a patient I had who
+[00:45:37 -> 00:45:42] was a retirement age gentleman.
+[00:45:42 -> 00:45:45] He'd never had a psychiatric disorder his entire life.
+[00:45:45 -> 00:45:52] Very successful business guy, and nobody in his family had
+[00:45:52 -> 00:45:55] ever had a psychiatric disorder either.
+[00:45:55 -> 00:45:58] But then this was right around the time of 9-11.
+[00:45:59 -> 00:46:00] And this was.
+[00:46:00 -> 00:46:01] Oh, I remember that one.
+[00:46:02 -> 00:46:02] Yeah.
+[00:46:03 -> 00:46:07] So he, you know, it was obviously a very, you know,
+[00:46:07 -> 00:46:12] upsetting experience, which everybody, you know, felt upset
+[00:46:12 -> 00:46:13] .
+[00:46:13 -> 00:46:14] There was grief.
+[00:46:14 -> 00:46:15] There was mourning.
+[00:46:15 -> 00:46:15] There was anger.
+[00:46:16 -> 00:46:19] But he had a very interesting thing happen to him.
+[00:46:20 -> 00:46:26] About two weeks after 9-11, he became bipolar.
+[00:46:26 -> 00:46:33] He had a manic episode, and this is a very clear change
+[00:46:33 -> 00:46:36] that can happen in some people with bipolar disorder.
+[00:46:37 -> 00:46:40] He gradually, over the course of about a week, entered into
+[00:46:40 -> 00:46:45] a new state of being where he was not needing to sleep,
+[00:46:45 -> 00:46:49] full of energy, full of positive emotion, full of hope,
+[00:46:49 -> 00:46:53] full of motivation, believing that he could do anything,
+[00:46:53 -> 00:46:56] that anything was possible, that he was important, that he
+[00:46:56 -> 00:46:58] could save the country, that he could save the world.
+[00:46:59 -> 00:47:03] And he started training. He was in his 60s. He started
+[00:47:03 -> 00:47:06] training to join the army. He was running through the cany
+[00:47:06 -> 00:47:10] ons at night. He was rappelling down from the roof of his
+[00:47:10 -> 00:47:15] house on ropes. He was reading about military strategy. And
+[00:47:15 -> 00:47:20] his whole life was transformed in this extremely energetic
+[00:47:20 -> 00:47:22] way. But then it became a problem.
+[00:47:22 -> 00:47:26] He wasn't sleeping. He started to have some thoughts that
+[00:47:26 -> 00:47:31] were not helpful. He became sort of hyper religious. He
+[00:47:31 -> 00:47:34] started yelling at his family. They didn't understand what
+[00:47:34 -> 00:47:37] he was doing and he didn't understand why they didn't
+[00:47:37 -> 00:47:38] understand.
+[00:47:38 -> 00:47:41] And so it started to disrupt his whole family life.
+[00:47:42 -> 00:47:45] And it was at that point they brought him into the hospital
+[00:47:45 -> 00:47:48] and we were able to treat him.
+[00:47:48 -> 00:47:52] I gave him a psychiatric medication, a mood stabilizer.
+[00:47:53 -> 00:47:57] And it over a period of time, it brought him back down to
+[00:47:57 -> 00:47:58] his normal state.
+[00:48:00 -> 00:48:03] And but it made me think that that story made me think so
+[00:48:03 -> 00:48:07] much about what what psychiatric disorders really are and
+[00:48:07 -> 00:48:10] what mania specifically really was.
+[00:48:10 -> 00:48:14] and how it, in the right context, this would have been a
+[00:48:14 -> 00:48:16] good response.
+[00:48:16 -> 00:48:20] If there, you know, a threat to the community, a need for
+[00:48:20 -> 00:48:22] people to enter into a new state
+[00:48:22 -> 00:48:26] of being, to defend the community, to defend the village,
+[00:48:26 -> 00:48:29] to believe that they could against
+[00:48:29 -> 00:48:31] all odds, to think that they might be able to make
+[00:48:31 -> 00:48:33] something valuable happen.
+[00:48:34 -> 00:48:37] That's a pretty good thing to have in a time of crisis,
+[00:48:37 -> 00:48:37] right?
+[00:48:37 -> 00:48:40] And you could imagine if there are genes that allow that to
+[00:48:40 -> 00:48:44] happen, that those would do
+[00:48:44 -> 00:48:48] well in the human population for human evolution for some
+[00:48:48 -> 00:48:49] time.
+[00:48:50 -> 00:48:53] And so I like that story because it made me very clearly
+[00:48:53 -> 00:48:56] realize that we have to think
+[00:48:56 -> 00:48:58] carefully about what we call a disorder.
+[00:48:58 -> 00:49:00] Yes, it was a disorder for this guy.
+[00:49:00 -> 00:49:02] He was it was destroying his life.
+[00:49:02 -> 00:49:06] However, under the right set of circumstances, that would
+[00:49:06 -> 00:49:09] have been the exactly right response
+[00:49:09 -> 00:49:09] to have.
+[00:49:10 -> 00:49:13] And so I love that story because that patient, even in all
+[00:49:13 -> 00:49:17] his suffering, he made me realize this fundamental truth
+[00:49:17 -> 00:49:19] about psychiatric illness.
+[00:49:19 -> 00:49:25] Yeah. So his own disorder might make him, under the right
+[00:49:25 -> 00:49:29] circumstances in history, to be a hero, right?
+[00:49:29 -> 00:49:32] That's right. He could have become a great general, a
+[00:49:32 -> 00:49:37] savior of his tribe, of his family, of his community.
+[00:49:37 -> 00:49:37] Absolutely.
+[00:49:39 -> 00:49:43] So we're approaching the end of this interview,
+[00:49:43 -> 00:49:49] but I would like to do the traditional academia PI
+[00:49:49 -> 00:49:51] initiated thing.
+[00:49:51 -> 00:49:55] Like when we wrote funding,
+[00:49:55 -> 00:49:59] we want to address one question of our interest.
+[00:50:00 -> 00:50:07] So I would like to ask you to address one thing that of
+[00:50:07 -> 00:50:08] your interest,
+[00:50:08 -> 00:50:10] what would you like to say to the audience?
+[00:50:10 -> 00:50:20] Well, I'm someone who in the course of my work, I've always
+[00:50:20 -> 00:50:23] tried to help other people do their work better.
+[00:50:23 -> 00:50:28] I've tried to help bring my technology to other people to
+[00:50:28 -> 00:50:30] help them use it.
+[00:50:30 -> 00:50:33] And what I found is they've made discoveries that I couldn
+[00:50:33 -> 00:50:34] 't have imagined.
+[00:50:35 -> 00:50:38] And for me, that's been incredibly rewarding for me.
+[00:50:38 -> 00:50:46] And it's made me realize that also the best way to
+[00:50:46 -> 00:50:53] communicate is through making your own vulnerabilities
+[00:50:53 -> 00:50:54] clear.
+[00:50:55 -> 00:51:00] And it's very important for me when I write the book is I
+[00:51:00 -> 00:51:05] didn't want it to just be an analysis of psychiatric
+[00:51:05 -> 00:51:07] patients.
+[00:51:07 -> 00:51:10] I thought that would be unfair to them.
+[00:51:10 -> 00:51:14] And so what I did in the book was I also revealed some of
+[00:51:14 -> 00:51:19] my own frailties, you know, things, experiences I had that
+[00:51:19 -> 00:51:22] bordered on psychiatric illness.
+[00:51:22 -> 00:51:27] And sharing those experiences, I thought, was just as
+[00:51:27 -> 00:51:31] important as sharing our technologies, but in different
+[00:51:31 -> 00:51:32] ways.
+[00:51:32 -> 00:51:35] Sharing technologies helped other people do their work.
+[00:51:36 -> 00:51:42] But sharing my own weaknesses, I think, makes people
+[00:51:42 -> 00:51:48] connect more deeply with the stories.
+[00:51:48 -> 00:51:52] It's not as if I'm saying that here are some people who
+[00:51:52 -> 00:51:54] have some illnesses.
+[00:51:55 -> 00:51:57] Let's think about how they operate differently.
+[00:51:58 -> 00:52:02] I'm saying we're all flawed.
+[00:52:02 -> 00:52:05] We're all disordered in some way or another, myself
+[00:52:05 -> 00:52:06] included.
+[00:52:06 -> 00:52:09] The human family is disordered.
+[00:52:10 -> 00:52:14] The humanity, from some perspective, has weaknesses.
+[00:52:15 -> 00:52:18] We have, as a family, we have flaws.
+[00:52:19 -> 00:52:24] And healing comes from admitting that and sharing that and
+[00:52:24 -> 00:52:28] talking about it openly without barriers, without judgment,
+[00:52:28 -> 00:52:31] so we can understand each other better.
+[00:52:31 -> 00:52:37] And so I'd like to just share that as something that I
+[00:52:37 -> 00:52:41] learned in life, but also in writing the book, that it
+[00:52:41 -> 00:52:46] helps us to be honest about our own frailties, our own
+[00:52:46 -> 00:52:51] flaws, and deep understanding of each other comes from that
+[00:52:51 -> 00:52:52] .
+[00:52:54 -> 00:52:55] Thank you very much.
+[00:52:55 -> 00:53:00] I would like to present to my fans and all my audience to
+[00:53:00 -> 00:53:04] thank you for your time and your great comments on your
+[00:53:04 -> 00:53:05] book.
+[00:53:05 -> 00:53:09] And I would like to congratulate on your book again.
+[00:53:10 -> 00:53:15] And I would like to talk to my audience about your book.
+[00:53:16 -> 00:53:19] And it's fantastic and is a great read.
+[00:53:19 -> 00:53:19] Thank you.
+[00:53:20 -> 00:53:21] Thank you very much.
+[00:53:21 -> 00:53:25] It's been a real delight talking with you and happy to talk
+[00:53:25 -> 00:53:26] again if we ever have a chance.
+[00:53:27 -> 00:53:28] So thank you again.
+[00:53:28 -> 00:53:29] Thank you.
+[00:53:29 -> 00:53:30] Bye bye.

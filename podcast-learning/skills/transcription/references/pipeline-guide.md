@@ -21,8 +21,28 @@ eacli podcast result --job job_podcast_... --wait 3600 --json
 ```
 
 `result` 返回的 transcript 位于 Razer 系统盘
-`/srv/everagent/artifacts/podcast/`。执行任务的 Razer Agent 将其复制到当前隔离 worktree 的
-`reports/transcripts/`，再继续润色和报告。
+`/srv/everagent/artifacts/podcast/`。先按 artifact receipt 的路径、大小与 SHA-256 拉回：
+
+```bash
+eacli pull 'razer:/srv/everagent/artifacts/podcast/pod_....transcript.txt' \
+  'reports/transcripts/{slug}.transcript.txt' \
+  --request-id req_pull_<stable-id> --json
+```
+
+当前 `eacli pull` 单文件上限为 190KB。超过上限时使用仓内薄编排器，它仍只调用
+`eacli invoke` 与 `eacli pull`，会在 Razer 按 180KB 分片、逐片拉回、原子重组并核对原始
+SHA-256：
+
+```bash
+python3 podcast-learning/scripts/podcast_artifact_pull.py pull \
+  --remote-path '/srv/everagent/artifacts/podcast/pod_....transcript.txt' \
+  --sha256 '<artifact.transcript_sha256>' \
+  --size '<artifact.transcript_size>' \
+  --output 'podcast-learning/reports/transcripts/{slug}.transcript.txt' \
+  --request-id req_pull_<stable-id>
+```
+
+拉回完成后再继续润色和报告；不得用聊天输出复制大段转写，也不得跳过大小与 SHA-256 校验。
 
 本地文件，或明确隔离排障时，才使用本地脚本。它全程离线（除下载音频），不走云端 API：
 
@@ -66,11 +86,21 @@ opencli bilibili subtitle <BVID> -f yaml > /tmp/subtitles.yaml
 - ⚠️ 官方字幕**可能是英文 AI 翻译版而非中文原文**（实测 BV1krM46BEpn 全片英文字幕）——此时无法逐字校正同音误识别，只能做语义级校验；修正标注「依上下文+字幕语义」。
 - 视频发布日期用 API 拿（命名需要）：`curl -s "https://api.bilibili.com/x/web-interface/view?bvid=<BVID>"` 取 `pubdate`。
 
+拉回后统一运行本地确定性审计，不再临时拼 `tail` / `uniq` 命令：
+
+```bash
+python3 podcast-learning/scripts/audit_transcript.py \
+  podcast-learning/reports/transcripts/{slug}.transcript.txt --json
+```
+
+它检查段数、时间戳单调性、连续重复、尾部异常间隔，并返回头尾样本、大小与 SHA-256；
+仍需用 shownotes 抽查专名、数字和章节边界。
+
 ### whisper.cpp 已知故障：长音频尾部幻觉循环（2026-07-18 实测）
 
 95 分钟访谈转写中，whisper.cpp（large-v3）在约 86 分钟处陷入**重复幻觉循环**（同一句话重复约 570 段直至结束），且循环前部分句子重复 2–10 次。
 
-- **必查**：转写完成后 `tail` 检查尾部 + 抽查重复段（`uniq -d`），不要只看开头几段就交付。
+- **必查**：转写完成后运行 `audit_transcript.py`，并人工看返回的头尾样本；不要只看开头几段就交付。
 - **发现循环**：截断有效部分，丢失时段用官方字幕重构（哪怕是英文翻译版字幕，也能回译出内容骨架）；transcript 头部与报告 Limitations 必须如实标注故障区间。
 - Razer worker 固定启用 Silero VAD + `max-context=0`，并在落盘前检查连续重复段；同句连续
   超过 3 段即任务失败，不生成伪完成报告。

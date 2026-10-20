@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "request_id": "req_podcast_bannatie-zhoukan-no50",
+  "job_id": "job_podcast_9f1884b57128192ff30ab09b",
+  "status": "succeeded",
+  "device": "razer",
+  "silent": true,
+  "interactive_browser": false,
+  "audio_playback": false,
+  "artifact": {
+    "artifact_id": "pod_77370f9f9fd9cbc4c60c5fd6",
+    "source_host": "www.xiaoyuzhoufm.com",
+    "source_sha256": "ed398714f19e48dff5c894c99bd7bba7e50738465d663416b7861e9e38147388",
+    "audio_size": 1043726440,
+    "language": "zh",
+    "segments": 3482,
+    "service_version": "whisper.cpp-v1.9.1-sm120",
+    "transcript_size": 168501,
+    "transcript_sha256": "712be4bb9869aab5faa58f1c8bdfda4d5d08c77200103a53862b34f2f112309a",
+    "quality": {
+      "repetition_guard": {
+        "passed": true,
+        "max_consecutive_identical": 2
+      }
+    }
+  },
+  "transfer": {
+    "mode": "eacli pull",
+    "atomic": true,
+    "local_path": "podcast-learning/reports/transcripts/2026-09-22_xiaoyuzhou-bannatie-zhoukan_no50-weekly-news.transcript.txt",
+    "verified_sha256": true
+  }
+}

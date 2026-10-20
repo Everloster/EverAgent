@@ -41,8 +41,8 @@ reports/.quality/topic.evidence.json
 reports/.quality/topic.review.json
 ```
 
-- `evidence.json`：任务要求、生成模型与 Harness、来源、关键 claim、报告锚点和局限。
-- `review.json`：独立 Reviewer、已核验的要求/claim/来源、五维评分、未解决问题和最终判定所用策略版本。
+- `evidence.json`：任务要求、生成模型与 Harness、来源、关键 claim、报告锚点、局限，以及 standard/deep 播客的 `source_coverage` 内容覆盖表。
+- `review.json`：独立 Reviewer、来源优先生成的 `source_content_map`、已核验的要求/claim/来源、五维评分、未解决问题和最终判定所用策略版本。
 - JSON schema：[report-evidence-v1](../schemas/report-evidence-v1.schema.json)、[report-review-v1](../schemas/report-review-v1.schema.json)。
 
 `kind: local` 的来源使用仓库相对路径，并且必须指向仓内普通文件；绝对路径、越界路径和符号链接会被拒绝。
@@ -82,6 +82,10 @@ python3 scripts/report_quality.py review-prompt path/to/report.md
 
 把 `review-prompt` 的输出交给 Reviewer。Reviewer 必须实际读取关键来源，再填写 `.review.json`；生成者自己的同一 run 不能充当独立复核。
 
+Reviewer 的顺序固定为“来源优先”：先在不看报告结论的情况下，从原始材料独立列出核心内容/论证单元，并写入 `source_content_map`；再读报告与 evidence，把每个独立单元映射到 `source_coverage`，标记为 `covered / partial / missing`。只核对报告主动登记的 claim 会产生选择偏差——被生成者完全省略的内容不会出现在 claim 列表中。`standard/deep` 播客若声明有 shownotes 章节，evidence 与 Reviewer 地图必须逐章留痕；核心单元遗漏时记录 `core_requirement_missing`，即使其余 claim 全部准确也不能通过。
+
+播客 Reviewer 还必须运行 `podcast-learning/scripts/audit_transcript.py` 或核对同等机器收据；头尾抽查与重复率不能替代时间戳单调性检查。
+
 ### 判定
 
 ```bash
@@ -109,12 +113,14 @@ python3 scripts/report_quality.py new-revision path/to/report.md
 | 维度 | 权重 | Reviewer 核心问题 |
 |---|---:|---|
 | `evidence_fidelity` | 35 | 来源是否真的支持结论，数字、时间、口径是否准确 |
-| `request_coverage` | 20 | 用户明确要求是否全部回答 |
+| `request_coverage` | 20 | 用户明确要求是否全部回答；报告是否覆盖来源的核心内容，而非只覆盖生成者自行登记的要求 |
 | `reasoning_quality` | 20 | 推理链、反例、边界和替代解释是否成立 |
 | `readability` | 15 | 是否能脱离对话独立阅读，结构是否清楚 |
 | `limitations` | 10 | 不确定性、资料缺口和外推边界是否诚实 |
 
 Reviewer 必须为每一维填写评分理由；`unsupported_claims` 和 `missing_requirements` 使用 evidence manifest 中的 ID。多 Reviewer 时按最低总分与最低单项分判定，防止平均分掩盖某个 Reviewer 发现的严重问题。
+
+对于播客学习报告，`request_coverage` 的高分至少要求：Reviewer 的独立来源地图与原材料相符、核心案例和主要反方进入正文、报告可独立阅读。精编稿保存了细节，不能作为报告省略主线的理由。只填写 `coverage_unit_ids_checked` 而没有 `source_content_map`，不能证明执行过来源优先复核。
 
 ## 6. 配额策略
 
@@ -148,7 +154,7 @@ python3 scripts/report_quality.py sampling-status --json
 
 `evals/report-quality-replays.json` 固定了五篇真实报告，覆盖不同体裁与三个生成 Harness，其中两篇是重构后的真实生产样本。静态 context 评估会重新运行其 sidecar 与哈希绑定，防止质量门只在临时 fixture 中成立。
 
-Context 重构另用 `scripts/run_ace_context_ab.py` 运行全部 ACE case 的只读开工探针，自动采集初始文件、repo Skill、澄清边界、tokens 与耗时。开工探针用于快速发现路由和无关 Context 回归；完整行为模板仍负责最终完成、质量门与安全结果，二者不能互相替代。
+Context 重构另用 `scripts/run_ace_context_ab.py` 运行只读开工探针，自动采集初始文件、repo Skill、澄清边界、tokens 与耗时。单领域调整先用 `--case <id>` 定向检查；全部 case × 两套 Context × 三次重复只用于架构里程碑，不作为普通报告提交的同步门禁。完整行为模板仍负责最终完成、质量门与安全结果，二者不能互相替代。
 
 ```bash
 python3 scripts/eval_report_context.py --template > /tmp/glm-codex-run.json

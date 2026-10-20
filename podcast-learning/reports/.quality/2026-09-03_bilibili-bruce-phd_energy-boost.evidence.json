@@ -1,195 +1,195 @@
 {
- "schema_version": 1,
- "report_path": "podcast-learning/reports/2026-09-03_bilibili-bruce-phd_energy-boost.md",
- "quality_tier": "important",
- "created_on": "2026-10-15",
- "generator": {
-  "model": "glm-5.3",
-  "harness": "claude-code",
-  "run_id": "bruce-episode-20261015",
-  "explicit_model_override": false,
-  "override_reason": ""
- },
- "task": {
-  "summary": "B 站播客学习任务：BV1Ygt96VEJg《明明睡了很久,为什么每天还这么累｜如何提高精力？》（北美运动学博士Bruce_PhD，17.4 分钟）——eacli Razer 静默转写 → 官方字幕校验润色 → episode_summary 学习报告。",
-  "requirements": [
-   {
-    "id": "REQ1",
-    "text": "全程静默获取（Razer worker + 无 UI 字幕 adapter），失败返回原因而非开浏览器"
-   },
-   {
-    "id": "REQ2",
-    "text": "转写忠实、重复段检测、尾部幻觉检查；人名/术语/数字用官方字幕核验"
-   },
-   {
-    "id": "REQ3",
-    "text": "润色不改事实，同音误识别按字幕修正并列头部清单，存疑标 [?]"
-   },
-   {
-    "id": "REQ4",
-    "text": "报告按模板 v2：速览≤3行、增量观点不复述节目、数字表三级来源标注、wiki 双链≥1"
-   },
-   {
-    "id": "REQ5",
-    "text": "研究数字全部标注「口播转述」层级；广告利益相关单独标注"
-   },
-   {
-    "id": "REQ6",
-    "text": "思考与追问三问，问 2 全量汇入 open-questions"
-   }
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-09-03_bilibili-bruce-phd_energy-boost.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-15",
+  "generator": {
+    "model": "glm-5.3",
+    "harness": "claude-code",
+    "run_id": "bruce-episode-20261015",
+    "explicit_model_override": false,
+    "override_reason": ""
+  },
+  "task": {
+    "summary": "B 站播客学习任务：BV1Ygt96VEJg《明明睡了很久,为什么每天还这么累｜如何提高精力？》（北美运动学博士Bruce_PhD，17.4 分钟）——eacli Razer 静默转写 → 官方字幕校验润色 → episode_summary 学习报告。",
+    "requirements": [
+      {
+        "id": "REQ1",
+        "text": "全程静默获取（Razer worker + 无 UI 字幕 adapter），失败返回原因而非开浏览器"
+      },
+      {
+        "id": "REQ2",
+        "text": "转写忠实、重复段检测、尾部幻觉检查；人名/术语/数字用官方字幕核验"
+      },
+      {
+        "id": "REQ3",
+        "text": "润色不改事实，同音误识别按字幕修正并列头部清单，存疑标 [?]"
+      },
+      {
+        "id": "REQ4",
+        "text": "报告按模板 v2：速览≤3行、增量观点不复述节目、数字表三级来源标注、wiki 双链≥1"
+      },
+      {
+        "id": "REQ5",
+        "text": "研究数字全部标注「口播转述」层级；广告利益相关单独标注"
+      },
+      {
+        "id": "REQ6",
+        "text": "思考与追问三问，问 2 全量汇入 open-questions"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "TR",
+      "kind": "local",
+      "title": "whisper 转写稿（Razer 静默 worker，job_podcast_4d9e54279cc58101e9079a03）｜468 段，头尾完好，重复段检测零命中",
+      "locator": "podcast-learning/reports/transcripts/2026-09-03_bilibili-bruce-phd_energy-boost.transcript.txt",
+      "accessed_on": "2026-10-15"
+    },
+    {
+      "id": "PL",
+      "kind": "local",
+      "title": "润色稿（Claude 忠实润色 + B 站官方字幕校验）｜头部含 20+ 处同音修正清单",
+      "locator": "podcast-learning/reports/transcripts/2026-09-03_bilibili-bruce-phd_energy-boost.polished.txt",
+      "accessed_on": "2026-10-15"
+    },
+    {
+      "id": "SUB",
+      "kind": "primary",
+      "title": "B 站官方字幕（opencli bilibili subtitle，无 UI adapter）",
+      "locator": "/tmp/puro-study/subtitle-bruce.yaml（节选核验：焖子/散散步/10×10/假洋牌/由浅入深等）",
+      "accessed_on": "2026-10-15"
+    },
+    {
+      "id": "API",
+      "kind": "official",
+      "title": "B 站视频元信息 API",
+      "locator": "api.bilibili.com/x/web-interface/view?bvid=BV1Ygt96VEJg（标题/UP/时长 1044s/pubdate 2026-09-03）",
+      "accessed_on": "2026-10-15"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "四件事框架：减少决策（谷氨酸堆积机制）→增强线粒体（辅酶Q10+HIIT）→咖啡因时机无关（反驳 Huberman）→提高攻击性（蔡格尼克+HPA 轴）",
+      "report_anchor": "## 核心观点（四件事）",
+      "support": "direct",
+      "source_ids": [
+        "TR",
+        "PL"
+      ],
+      "evidence": "转写 01:29-16:52 全程",
+      "critical": true
+    },
+    {
+      "id": "C2",
+      "claim": "决策四步骤：工作记忆→冲突监测→风险评估→收益比较；每天约 35,000 个决定（口播转述，未给研究出处）",
+      "report_anchor": "任何决定都走工作记忆",
+      "support": "direct",
+      "source_ids": [
+        "TR"
+      ],
+      "evidence": "转写 01:45-02:49",
+      "critical": true
+    },
+    {
+      "id": "C3",
+      "claim": "2022 高认知负荷实验：高强度组的「前额叶谷氨酸浓度和扩散指标」远高于低强度组（口播转述）",
+      "report_anchor": "高认知负荷实验",
+      "support": "direct",
+      "source_ids": [
+        "TR"
+      ],
+      "evidence": "转写 02:52-03:24",
+      "critical": false
+    },
+    {
+      "id": "C4",
+      "claim": "辅酶 Q10 机制与证据：呼吸链电子转运+氧化磷酸化+脂溶性抗氧化；08 年 100/300mg×8 天实验、2022 年 13 篇荟萃（均口播转述）；GNC 广告段已单独标注",
+      "report_anchor": "辅酶 Q10 参与呼吸链电子转运与氧化磷酸化",
+      "support": "direct",
+      "source_ids": [
+        "TR",
+        "PL"
+      ],
+      "evidence": "转写 05:31-08:02（广告段 06:52-08:06）",
+      "critical": true
+    },
+    {
+      "id": "C5",
+      "claim": "HIIT vs 中等强度有氧（2025 研究口播转述）：6 周线粒体密度 +27%、纵向链接[?]强度 +50%；UP 主选格斗训练（每轮 3 分钟不停）",
+      "report_anchor": "6 周线粒体密度 +27%",
+      "support": "direct",
+      "source_ids": [
+        "TR"
+      ],
+      "evidence": "转写 08:30-09:17",
+      "critical": true
+    },
+    {
+      "id": "C6",
+      "claim": "咖啡因时机反驳：腺苷醒后以分钟为单位变化（JISSN 2024 综述口播转述）；160mg 不影响晨间皮质醇（2016 文献口播转述）；结论醒来就喝、拖越久越影响夜间睡眠",
+      "report_anchor": "腺苷醒后变化以分钟计",
+      "support": "direct",
+      "source_ids": [
+        "TR"
+      ],
+      "evidence": "转写 09:17-11:57",
+      "critical": true
+    },
+    {
+      "id": "C7",
+      "claim": "攻击性的机制引用：蔡格尼克效应（未完成任务记忆更深）+ 2000 文献（长期逃避压力→HPA 轴持续激活→皮质醇高位）（均口播转述）",
+      "report_anchor": "蔡格尼克效应",
+      "support": "direct",
+      "source_ids": [
+        "TR"
+      ],
+      "evidence": "转写 12:47-13:13",
+      "critical": false
+    },
+    {
+      "id": "C8",
+      "claim": "三阶段攻击性练习：不秒回短信/拒绝推销→拒绝熟人服从性测试（敬酒/表演才艺/接任务）→主动制止越界",
+      "report_anchor": "三阶段练习",
+      "support": "direct",
+      "source_ids": [
+        "TR",
+        "PL"
+      ],
+      "evidence": "转写 15:24-16:37",
+      "critical": false
+    },
+    {
+      "id": "C9",
+      "claim": "视频元信息：UP 北美运动学博士Bruce_PhD、2026-09-03 发布、1044 秒、单 P、结尾预告点赞 4.8 万解锁睡眠专期",
+      "report_anchor": "17.4 分钟",
+      "support": "direct",
+      "source_ids": [
+        "API",
+        "TR"
+      ],
+      "evidence": "B 站 API 实测 + 转写 16:57-17:15",
+      "critical": false
+    },
+    {
+      "id": "C10",
+      "claim": "润色校验记录：20+ 处同音误识别与官方字幕逐项对照；其中“外耗型”“700kg”“高认知负荷组”是字幕同样识错后的上下文推断，润色稿以 ※ 明标；两处 [?] 保留并注明",
+      "report_anchor": "同音误识别 20+ 处已与字幕逐项对照",
+      "support": "derived",
+      "source_ids": [
+        "SUB",
+        "PL"
+      ],
+      "evidence": "润色稿头部修正清单 + B 站官方字幕；三处超出字幕字面的修正已显式标为上下文推断",
+      "critical": true
+    }
+  ],
+  "limitations": [
+    "本集无 shownotes 类一手材料，校验源为 B 站官方 ASR 字幕（其自身也是 ASR 产物）",
+    "两处 [?]：「纵向链接强度」（疑为线粒体网络融合指标）、「区区谁」（疑为 cue 谁）——均已在报告 Limitations 注明",
+    "全部研究数字为 UP 主口播转述，未给可查文献题目；辅酶 Q10 段有 GNC 商业利益",
+    "「成年人 3.5 万个决定/天」在报告中标注 [推测] 疑似营销引用来源，未独立验证"
   ]
- },
- "sources": [
-  {
-   "id": "TR",
-   "kind": "local",
-   "title": "whisper 转写稿（Razer 静默 worker，job_podcast_4d9e54279cc58101e9079a03）｜468 段，头尾完好，重复段检测零命中",
-   "locator": "podcast-learning/reports/transcripts/2026-09-03_bilibili-bruce-phd_energy-boost.transcript.txt",
-   "accessed_on": "2026-10-15"
-  },
-  {
-   "id": "PL",
-   "kind": "local",
-   "title": "润色稿（Claude 忠实润色 + B 站官方字幕校验）｜头部含 20+ 处同音修正清单",
-   "locator": "podcast-learning/reports/transcripts/2026-09-03_bilibili-bruce-phd_energy-boost.polished.txt",
-   "accessed_on": "2026-10-15"
-  },
-  {
-   "id": "SUB",
-   "kind": "primary",
-   "title": "B 站官方字幕（opencli bilibili subtitle，无 UI adapter）",
-   "locator": "/tmp/puro-study/subtitle-bruce.yaml（节选核验：焖子/散散步/10×10/假洋牌/由浅入深等）",
-   "accessed_on": "2026-10-15"
-  },
-  {
-   "id": "API",
-   "kind": "official",
-   "title": "B 站视频元信息 API",
-   "locator": "api.bilibili.com/x/web-interface/view?bvid=BV1Ygt96VEJg（标题/UP/时长 1044s/pubdate 2026-09-03）",
-   "accessed_on": "2026-10-15"
-  }
- ],
- "claims": [
-  {
-   "id": "C1",
-   "claim": "四件事框架：减少决策（谷氨酸堆积机制）→增强线粒体（辅酶Q10+HIIT）→咖啡因时机无关（反驳 Huberman）→提高攻击性（蔡格尼克+HPA 轴）",
-   "report_anchor": "## 核心观点（四件事）",
-   "support": "direct",
-   "source_ids": [
-    "TR",
-    "PL"
-   ],
-   "evidence": "转写 01:29-16:52 全程",
-   "critical": true
-  },
-  {
-   "id": "C2",
-   "claim": "决策四步骤：工作记忆→冲突监测→风险评估→收益比较；每天约 35,000 个决定（口播转述，未给研究出处）",
-   "report_anchor": "任何决定都走工作记忆",
-   "support": "direct",
-   "source_ids": [
-    "TR"
-   ],
-   "evidence": "转写 01:45-02:49",
-   "critical": true
-  },
-  {
-   "id": "C3",
-   "claim": "2022 高认知负荷实验：高强度组的「前额叶谷氨酸浓度和扩散指标」远高于低强度组（口播转述）",
-   "report_anchor": "高认知负荷实验",
-   "support": "direct",
-   "source_ids": [
-    "TR"
-   ],
-   "evidence": "转写 02:52-03:24",
-   "critical": false
-  },
-  {
-   "id": "C4",
-   "claim": "辅酶 Q10 机制与证据：呼吸链电子转运+氧化磷酸化+脂溶性抗氧化；08 年 100/300mg×8 天实验、2022 年 13 篇荟萃（均口播转述）；GNC 广告段已单独标注",
-   "report_anchor": "辅酶 Q10 参与呼吸链电子转运与氧化磷酸化",
-   "support": "direct",
-   "source_ids": [
-    "TR",
-    "PL"
-   ],
-   "evidence": "转写 05:31-08:02（广告段 06:52-08:06）",
-   "critical": true
-  },
-  {
-   "id": "C5",
-   "claim": "HIIT vs 中等强度有氧（2025 研究口播转述）：6 周线粒体密度 +27%、纵向链接[?]强度 +50%；UP 主选格斗训练（每轮 3 分钟不停）",
-   "report_anchor": "6 周线粒体密度 +27%",
-   "support": "direct",
-   "source_ids": [
-    "TR"
-   ],
-   "evidence": "转写 08:30-09:17",
-   "critical": true
-  },
-  {
-   "id": "C6",
-   "claim": "咖啡因时机反驳：腺苷醒后以分钟为单位变化（JISSN 2024 综述口播转述）；160mg 不影响晨间皮质醇（2016 文献口播转述）；结论醒来就喝、拖越久越影响夜间睡眠",
-   "report_anchor": "腺苷醒后变化以分钟计",
-   "support": "direct",
-   "source_ids": [
-    "TR"
-   ],
-   "evidence": "转写 09:17-11:57",
-   "critical": true
-  },
-  {
-   "id": "C7",
-   "claim": "攻击性的机制引用：蔡格尼克效应（未完成任务记忆更深）+ 2000 文献（长期逃避压力→HPA 轴持续激活→皮质醇高位）（均口播转述）",
-   "report_anchor": "蔡格尼克效应",
-   "support": "direct",
-   "source_ids": [
-    "TR"
-   ],
-   "evidence": "转写 12:47-13:13",
-   "critical": false
-  },
-  {
-   "id": "C8",
-   "claim": "三阶段攻击性练习：不秒回短信/拒绝推销→拒绝熟人服从性测试（敬酒/表演才艺/接任务）→主动制止越界",
-   "report_anchor": "三阶段练习",
-   "support": "direct",
-   "source_ids": [
-    "TR",
-    "PL"
-   ],
-   "evidence": "转写 15:24-16:37",
-   "critical": false
-  },
-  {
-   "id": "C9",
-   "claim": "视频元信息：UP 北美运动学博士Bruce_PhD、2026-09-03 发布、1044 秒、单 P、结尾预告点赞 4.8 万解锁睡眠专期",
-   "report_anchor": "17.4 分钟",
-   "support": "direct",
-   "source_ids": [
-    "API",
-    "TR"
-   ],
-   "evidence": "B 站 API 实测 + 转写 16:57-17:15",
-   "critical": false
-  },
-  {
-   "id": "C10",
-   "claim": "润色校验记录：20+ 处同音误识别按官方字幕修正（辅煤/辅眉/腐霉→辅酶、外号型→外耗型、做时程时→做10×10、有潜入神→由浅入深等）；两处 [?] 保留并注明",
-   "report_anchor": "同音误识别 20+ 处已按字幕修正",
-   "support": "direct",
-   "source_ids": [
-    "SUB",
-    "PL"
-   ],
-   "evidence": "润色稿头部修正清单 + /tmp/puro-study/subtitle-bruce.yaml 抽查",
-   "critical": true
-  }
- ],
- "limitations": [
-  "本集无 shownotes 类一手材料，校验源为 B 站官方 ASR 字幕（其自身也是 ASR 产物）",
-  "两处 [?]：「纵向链接强度」（疑为线粒体网络融合指标）、「区区谁」（疑为 cue 谁）——均已在报告 Limitations 注明",
-  "全部研究数字为 UP 主口播转述，未给可查文献题目；辅酶 Q10 段有 GNC 商业利益",
-  "「成年人 3.5 万个决定/天」在报告中标注 [推测] 疑似营销引用来源，未独立验证"
- ]
 }

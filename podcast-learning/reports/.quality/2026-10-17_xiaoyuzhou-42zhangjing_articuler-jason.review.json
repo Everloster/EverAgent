@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-17_xiaoyuzhou-42zhangjing_articuler-jason.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "review-articuler-r2-20261019",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 96,
+        "request_coverage": 97,
+        "reasoning_quality": 95,
+        "readability": 96,
+        "limitations": 95
+      },
+      "score_reasons": {
+        "evidence_fidelity": "实际通读原始转写 2229 段、精编稿、shownotes、artifact receipt，并复核 Treg 与张帆两篇被引报告。C01-C04 均由登记来源直接支持；80%/15%-20%、20%-30%、7 万+/40%+、20 人、16 亿人次、200 场/周、3000 万美元 ARR、2 个月、1000 新增/周的数值、主体和口径均与转写一致，报告也分别标明自报、经验、目标、他人故事或未外部核验。四条引文现为转写连续原话，仅补标点与专名；C04 的正文锚点“按美国公司落地”已存在。首轮发现的现金流强度、引文改写、张帆立场和锚点问题均已修复。",
+        "request_coverage": "R01-R03 全部满足。source_url 与 slug 查重未发现另一篇重复报告；artifact receipt 的 2229 段、transcript SHA-256、服务版本和重复保护状态与正文元数据及本地文件一致，shownotes 与 polished 均存在且统计值吻合。正文完整覆盖会议场景/PMF 判断、行为数据飞轮、美国 GTM、TS 与现金流危机、2B 保命牌，并清楚区分嘉宾口径与报告分析，保留反例、限制和后续追问。",
+        "reasoning_quality": "“需求密度装置”“行为反馈形成增量资产”“长期问题稳定、短期方案可替换”等分析均能从转写和两篇对照报告推出。正文对贫穷和坚持叙事主动加入反例，对 Founder-led sales 的机制性外推显式标为[推测]；Treg 对照现准确写成三次方向调整体现快速放弃无效方案，张帆对照也准确呈现其 FDE 批判及能力沉淀风险。推理链有证据、有边界且没有把类比写成证明。",
+        "readability": "速览、概览、六条增量观点、数字表、连续原话、Limitations 与三问结构清楚，可脱离对话独立阅读。数字表同时交代主体和证据级别，跨期链接的显示文本与被引报告立场一致；关键 claim 的正文锚点均可直接定位。",
+        "limitations": "报告明确披露创始人数据缺少后台或第三方审计、匹配技术缺评测与隐私设计、成功叙事存在幸存者偏差，并补充说明会议场景成立和付费/留存属于创始人判断，缺 cohort 留存、主办方复购、收入结构与单位经济，不能独立确认 PMF。追问进一步覆盖真实连接结果、数据授权、获客成本和平台分发风险，外推边界充分。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04"
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S05",
+        "S06",
+        "S07"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "revision 2 独立复核结论：首轮列出的六项问题均已修复；重新核验后未发现未支持的 manifest claim、遗漏要求、关键数字错配、伪造来源或安全问题。S04 单集网页未单独联网复读，本次使用由该页面取得、含原 URL/标题/发布日期/完整时光机的 S03 shownotes，并以 S01 原始转写核验全部关键 claim，因此未把 S04 列入 source_ids_checked。未执行 finalize，也未修改报告或 evidence。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 95.9,
+    "evaluated_on": "2026-10-19",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "51d06928bb27931e2a8c0b4687cdaba467c504ee5a7ab06c969f1b3ec652095f",
+    "evidence_sha256": "e12e0dba5b8b155399cc0dc790c3632d8cbdb203b4cbfaa925693cafb1269221"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex",
+            "run_id": "review-articuler-20261019",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 87,
+            "request_coverage": 94,
+            "reasoning_quality": 88,
+            "readability": 92,
+            "limitations": 84
+          },
+          "score_reasons": {
+            "evidence_fidelity": "实际读取原始转写 2229 段、精编稿、shownotes，并逐项核验 C01-C04。80%/15%-20%、7 万出头/湾区 40%+、20-30% 出席率、20 人阈值、16 亿人次、200 场/周、2 个月、1000 新增/周等数字均有对应口播，且报告大体正确标为嘉宾自报、经验口径、目标或假设。四个关键 claim 的实质均受来源支持。扣分点：C04 的 report_anchor“把自己当本地公司”并未逐字出现在报告，确定性检查报 EVM021；概览把转写的“现金流快断了”升级为“现金流断裂”；金句区 3 条对原话做了压缩或拼接却仍使用逐字引号，其中“钱有时候是诅咒；账上钱太多，有些一线的事情你不会去干”加入了原话没有的“一线的事情”；跨期链接称“张帆的 FDE 实践”，但被引报告明确把张帆定位为 FDE 反方及替代方案创业者。",
+            "request_coverage": "R01-R03 均有覆盖：同一 source_url 与 slug 未发现既有重复报告，Razer transcript、shownotes、polished 三份产物存在，元数据统计与文件实测一致；正文覆盖会议 PMF、行为数据飞轮、美国 GTM、现金流危机和保命牌；创始人数据基本标出自报边界，并保留反例、Limitations 与三组追问。没有漏答核心要求。",
+            "reasoning_quality": "“需求密度装置”“行为反馈形成增量资产”“长期问题稳定、短期方案可替换”等分析能从转写推出，也主动反驳了把贫穷和坚持浪漫化的叙事。主要不足是分析段仅一处显式标 [推测]，其余跨期类比、因果判断与“机制成立”等评价主要依靠“增量观点”章节来区分，未完全执行逐项推断标签；Treg 类比基本成立，但张帆 FDE 对照的来源立场描述错误，削弱该段论证。",
+            "readability": "速览、概览、六条增量观点、数字表、金句、Limitations 和三问结构完整，可脱离对话阅读；数字表对自报、经验、目标、假设和未核验信息的分层清楚。金句并非严格逐字引用，以及 C04 anchor 与正文措辞不一致，降低了回查效率。",
+            "limitations": "已披露创始人数据缺少第三方审计、算法缺评测与隐私设计、成功叙事存在幸存者偏差，也在追问中提出复购、匹配结果和单位经济。仍需更明确说明“找到会议 PMF”只是创始人基于未披露的付费和留存数据所作判断，当前没有 cohort、复购、收入结构或单位经济证据；标题和正文多处直接使用“PMF”容易被理解为报告已验证。现金流状态也应保持“接近中断”而非“断裂”。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04"
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "独立复核结论：四个 manifest 关键 claim 与核心要求均有来源支持，无伪造来源、关键数字错配、核心要求遗漏或安全问题。当前不宜直接 finalize：evidence_fidelity 87 低于 important 门槛 90，且 report_quality check 明确报 C04 report_anchor 不存在（EVM021）。建议修订：①将 C04 anchor 改成正文真实锚点，或让正文出现对应短语；②把“现金流断裂”改回“现金流接近中断/快断”；③金句恢复转写原话，或去掉逐字引号并标为转述；④把“张帆的 FDE 实践”改为符合被引报告的“张帆对 FDE 的批判/替代方案”；⑤在 Limitations 明示 PMF、付费和留存均是创始人判断，缺 cohort、复购、收入结构及单位经济验证；⑥对其余分析性因果和跨期类比补 [推测] 或统一声明为报告分析。S04 单集 URL 未单独联网复读，本次核验使用由该页面取得且含 URL、标题、日期和完整时光机的 S03 shownotes；未把 S04 列入 checked。"
+        }
+      ],
+      "decision": {}
+    }
+  ]
+}

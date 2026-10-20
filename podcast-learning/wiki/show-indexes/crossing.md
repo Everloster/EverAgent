@@ -1,10 +1,11 @@
 # 十字路口Crossing — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/68fyjknth9hj>）｜ 最近拉取：2026-10-16 ｜ 总集数：135
+> 来源：官方 RSS（<https://feed.xyzfm.space/68fyjknth9hj>）｜ 最近拉取：2026-10-19 ｜ 总集数：136
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-10-18 | 51m08s | [新的创业机会，正在 Claude Code 和 Codex 周围长出来｜对谈 Treg](https://www.xiaoyuzhoufm.com/episode/6ad2412d0e4e410a05be01a7?utm_source=rss)<!--g:6ad2412d0e4e410a05be01a7--> | ✅ 已处理（2026-10-18 xiaoyuzhou-crossing_treg-agent-ecosystem） |
 | — | 2026-10-11 | 1h12m | [“有了AI，我感觉自己强得可怕！”｜对谈鸭哥](https://www.xiaoyuzhoufm.com/episode/6aca7f91e742e36efcc10957?utm_source=rss)<!--g:6aca7f91e742e36efcc10957--> | ✅ 已处理（2026-10-11 xiaoyuzhou-crossing_yage-ai-strong） |
 | — | 2026-10-08 | 1h05m | [AI 无限，人生有限｜对谈 KK、山音：一线 AI 创作者](https://www.xiaoyuzhoufm.com/episode/6ac7ce36195d838e2aeeebd9?utm_source=rss)<!--g:6ac7ce36195d838e2aeeebd9--> | ✅ 已处理（2026-10-08 xiaoyuzhou-crossing_kk-shanyin） |
 | — | 2026-09-27 | 1h52m | [AI 时代，我们到底该学什么？｜对谈于红：三种不会过时的能力](https://www.xiaoyuzhoufm.com/episode/6ab7fb97e742e36efcbb881a?utm_source=rss)<!--g:6ab7fb97e742e36efcbb881a--> | ✅ 已处理（2026-09-27 xiaoyuzhou-crossing_yuhong-sel） |

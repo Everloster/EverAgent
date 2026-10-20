@@ -260,6 +260,8 @@
       "expected_route": "podcast-learning",
       "artifact_policy": "required",
       "quality_tier": "important",
+      "expected_report_depth": "standard",
+      "expected_reader_contract": "standalone",
       "max_initial_project_files": 7,
       "must_not_pause_before_research": true,
       "expected_skill_paths": [
@@ -285,6 +287,9 @@
       "required_checks": [
         "silent_transcription",
         "shownotes_check",
+        "source_coverage",
+        "independent_source_content_map",
+        "standalone_readability",
         "evidence_manifest",
         "independent_review",
         "quality_gate",
@@ -296,6 +301,8 @@
         "transcript_saved",
         "polished_saved",
         "report_saved",
+        "source_coverage_complete",
+        "source_content_map_complete",
         "quality_passed"
       ],
       "expected_completed": true,

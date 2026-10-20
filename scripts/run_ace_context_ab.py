@@ -331,7 +331,7 @@ def score_probe(case: dict[str, Any], observation: dict[str, Any]) -> dict[str, 
     }
 
 
-def _run_one(
+def _run_one_attempt(
     *,
     ref_label: str,
     resolved_ref: str,
@@ -419,6 +419,42 @@ def _run_one(
     result.update(observation)
     result.update(scored)
     return result
+
+
+def _run_one(
+    *,
+    ref_label: str,
+    resolved_ref: str,
+    snapshot: Path,
+    case: dict[str, Any],
+    repetition: int,
+    model: str,
+    thinking: str,
+    timeout: int,
+    raw_dir: Path,
+    attempts: int,
+) -> dict[str, Any]:
+    elapsed_total = 0.0
+    last_result: dict[str, Any] = {}
+    for attempt in range(1, attempts + 1):
+        result = _run_one_attempt(
+            ref_label=ref_label,
+            resolved_ref=resolved_ref,
+            snapshot=snapshot,
+            case=case,
+            repetition=repetition,
+            model=model,
+            thinking=thinking,
+            timeout=timeout,
+            raw_dir=raw_dir,
+        )
+        elapsed_total += float(result.get("elapsed_seconds") or 0)
+        result["attempts_used"] = attempt
+        result["elapsed_seconds"] = round(elapsed_total, 3)
+        last_result = result
+        if not result.get("error"):
+            return result
+    return last_result
 
 
 def summarize(label: str, revision: str, rows: list[dict[str, Any]]) -> dict[str, Any]:
@@ -638,12 +674,13 @@ def main() -> int:
     parser.add_argument("--model", default=DEFAULT_MODEL)
     parser.add_argument("--thinking", default="medium")
     parser.add_argument("--timeout", type=int, default=180)
+    parser.add_argument("--attempts", type=int, default=3)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--markdown", type=Path)
     args = parser.parse_args()
 
-    if args.repetitions < 1 or args.jobs < 1:
-        parser.error("--repetitions and --jobs must be positive")
+    if args.repetitions < 1 or args.jobs < 1 or args.attempts < 1:
+        parser.error("--repetitions, --jobs and --attempts must be positive")
     if shutil.which("pi") is None:
         parser.error("pi is not installed")
     suite = json.loads(args.suite.read_text(encoding="utf-8"))
@@ -689,6 +726,7 @@ def main() -> int:
                             "thinking": args.thinking,
                             "timeout": args.timeout,
                             "raw_dir": raw_dir,
+                            "attempts": args.attempts,
                         }
                     )
 

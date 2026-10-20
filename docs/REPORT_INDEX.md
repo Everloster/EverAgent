@@ -7,45 +7,52 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
-| 2026-10-19 | [大小马 V94：中国火箭回收与美国「孙学」——争议资产、复用经济学与中欧美心态切片](../podcast-learning/reports/2026-09-06_xiaoyuzhou-daxiaoma-keji_v94-rocket-recovery-sunology.md) | podcast-learning |
-| 2026-10-19 | [AI 行业日报 · 2026-10-19](../web-surfing/reports/ai-news-daily-2026-10-19.md) | web-surfing |
-| 2026-10-18 | [十字路口：王家伟——24岁的具身智能首席科学家、HiFi-UMI与「趋势不等于Law」](../podcast-learning/reports/2026-09-16_xiaoyuzhou-crossing_wangjiawei.md) | podcast-learning |
-| 2026-10-15 | [PuRo-2B 开放低成本预训练配方深度解析：MuonHyperball、FP8 与 RTX 5090 的 $5090 实验](../ai-learning/reports/knowledge_reports/PuRo-2B_开放低成本预训练配方_MuonHyperball与RTX5090_深度解析_20261015.md) | ai-learning |
-| 2026-10-15 | [GPT-6 Astra 指令架构：从 Prompt 堆叠到按需控制](../ai-learning/reports/knowledge_reports/GPT6_Astra指令架构_从Prompt堆叠到按需控制_深度解析_20261015.md) | ai-learning |
-| 2026-10-15 | [Bruce_PhD 精力管理四件事：减决策、线粒体、咖啡因时机与攻击性](../podcast-learning/reports/2026-09-03_bilibili-bruce-phd_energy-boost.md) | podcast-learning |
-| 2026-10-15 | [Agent Skills 生态深度解析](../ai-learning/reports/knowledge_reports/Agent_Skills_生态深度解析.md) | ai-learning |
-| 2026-10-15 | [AI 行业日报 · 2026-10-15](../web-surfing/reports/ai-news-daily-2026-10-15.md) | web-surfing |
-| 2026-10-14 | [食贫道×刘慈欣：智能的不可判断性、AI三学派与爆炒腰花的生活哲学](../podcast-learning/reports/2026-10-14_bilibili-shipindao_liucixin-interview.md) | podcast-learning |
-| 2026-10-14 | [硅谷101（再访张阔）：榜单99分与真实61%之间——E255 对篇](../podcast-learning/reports/2026-10-14_bilibili-svj101_zhangkuo-model-user-gap.md) | podcast-learning |
-| 2026-10-14 | [电丸AK：千问AI眼镜 N1 Pro——鼻托 PPG、三芯片与眼追的必要性](../podcast-learning/reports/2026-10-14_bilibili-dianwan-ak_qwen-glasses-n1pro.md) | podcast-learning |
-| 2026-10-14 | [B 站关注列表、最近投稿与未看更新采集方案调研](../web-surfing/reports/bilibili-following-updates-research-2026-10-14.md) | web-surfing |
-| 2026-10-14 | [AI 行业日报 · 2026-10-14](../web-surfing/reports/ai-news-daily-2026-10-14.md) | web-surfing |
-| 2026-10-13 | [AI 行业日报 · 2026-10-13](../web-surfing/reports/ai-news-daily-2026-10-13.md) | web-surfing |
-| 2026-10-12 | [课代表330：郑昌熙（李飞飞World Labs）——工业场景不会有ChatGPT时刻、抽象层级论与鸡生蛋问题](../podcast-learning/reports/2026-10-08_rss-kedaibiao-lizheng_lifeifei-worldlabs-robot.md) | podcast-learning |
-| 2026-10-12 | [十字路口：鸭哥——Context Infrastructure 三要素、0人公司与睡眠回归实验](../podcast-learning/reports/2026-10-11_xiaoyuzhou-crossing_yage-ai-strong.md) | podcast-learning |
-| 2026-10-12 | [magpie 深度研究报告（yetone/magpie）](../github-trending-analyzer/reports/research_yetone_magpie.md) | github-trending-analyzer |
-| 2026-10-12 | [AI炼金术：橘子（ColaOS）——时代追上了个人Agent先行者，他却打了转向灯](../podcast-learning/reports/2026-10-09_ximalaya-ailianjinshu_juzi-personal-agent.md) | podcast-learning |
-| 2026-10-12 | [AI 行业日报 · 2026-10-12](../web-surfing/reports/ai-news-daily-2026-10-12.md) | web-surfing |
-| 2026-10-12 | [42章经：子皓（Ambi）——交互成本决定需求、A2A网络效应与在场（ambient）哲学](../podcast-learning/reports/2026-10-12_xiaoyuzhou-42zhangjing_zihao-ambi.md) | podcast-learning |
-| 2026-10-11 | [AI 和真格管理合伙人刘元录了一期播客](../podcast-learning/reports/2026-09-23_xiaoyuzhou-cihua-dangzhen_liuyuan.md) | podcast-learning |
-| 2026-10-10 | [晚点聊182：梁琛奇——用 AI 创造开心：猫箱推演、动念引线与养女儿方法论](../podcast-learning/reports/2026-09-24_rss-wandian-latetalk_liangchenqi-ai-joy.md) | podcast-learning |
-| 2026-10-10 | [成为巴菲特27：买珠还椟——从邓白氏到穆迪，商业信用的权力与秩序](../podcast-learning/reports/2026-02-11_xiaoyuzhou-chengwei-buffett_nantian.md) | podcast-learning |
-| 2026-10-10 | [屠龙之术：AICC2026 侧记——Agent=Model+Harness 成业界公式，算力缺口十年十倍](../podcast-learning/reports/2026-09-22_xiaoyuzhou-tulong-zhishu_ai-production-stage.md) | podcast-learning |
-| 2026-10-10 | [孙宇晨×邵艾伦：搏击理论、开图与认知决定命运——AI 时代的自我操作系统论](../podcast-learning/reports/2026-10-10_bilibili-shaoailun_sunyuchen-ai-era.md) | podcast-learning |
+| 2026-10-20 | [金瓶梅·绿色版 9《蒋竹山》：一张假借据如何调动街头、保甲与提刑院](../podcast-learning/reports/2026-08-13_ximalaya-bannatie-gushipian_jiangzhushan.md) | podcast-learning |
+| 2026-10-20 | [身体出现这些信号，可能是炎症在提醒你！——帆书讲《炎症》](../podcast-learning/reports/2026-08-21_bilibili-fanshu_yanzheng.md) | podcast-learning |
+| 2026-10-20 | [说医解药 Vol.91：银鳕鱼汞中毒争议——三种汞、鳕鱼命名史与 FDA 选鱼数学](../podcast-learning/reports/2026-10-08_xiaoyuzhou-shuoyi-jieyao_vol91-cod-mercury.md) | podcast-learning |
+| 2026-10-20 | [程若倩教授：孩子身高这件事，到底矮不矮、治不治？](../podcast-learning/reports/2026-09-27_xiaoyuzhou-boluo-jiankang_chengruoqian.md) | podcast-learning |
+| 2026-10-20 | [炒菜调料时机：从短视频口诀到可复用的厨房判断](../web-surfing/reports/cooking-logic-timing-douyin.md) | web-surfing |
+| 2026-10-20 | [成为巴菲特27：买珠还椟——从邓白氏到穆迪，商业信用的权力与秩序](../podcast-learning/reports/2026-02-11_xiaoyuzhou-chengwei-buffett_nantian.md) | podcast-learning |
+| 2026-10-20 | [惠州租房建议报告：两位老人 2026 年 9/10 月短住体验](../web-surfing/reports/huizhou-rental-guide-2026-09.md) | web-surfing |
+| 2026-10-20 | [屠龙×Karl Deisseroth：故事如何进入精神病学，光如何成为神经元开关](../podcast-learning/reports/2026-10-06_xiaoyuzhou-tulong-dashihua_karl-deisseroth.md) | podcast-learning |
+| 2026-10-20 | [对话盛颖：xAI，Infra的浪漫，SGLang，开源，平权与「甄嬛传」](../podcast-learning/reports/2026-08-04_rss-guigu101_shengying.md) | podcast-learning |
+| 2026-10-20 | [对话 Evoken 陈冕：在模型不断吞噬应用价值的时代，一家独立 AI 应用公司如何 survive](../podcast-learning/reports/2026-07-30_xiaoyuzhou-wandian-latetalk_chenmian.md) | podcast-learning |
+| 2026-10-20 | [实测笔记：book-to-skill 能优化 EverAgent 学习类项目吗？](../ai-practice/experiments/book-to-skill-demo/评估笔记_book-to-skill能否优化学习项目_20260729.md) | ai-practice |
+| 2026-10-20 | [实习生抢答、老教授过目：速度快 2-3 倍，凭什么不改变采样分布？——投机解码科普](../ai-learning/reports/knowledge_reports/投机解码SpeculativeDecoding_科普讲解_20260720.md) | ai-learning |
+| 2026-10-20 | [孩子成绩差，真的是因为「不是学习的料」吗？——黄翔脑科学对谈与事实核查](../podcast-learning/reports/2026-07-04_bilibili-kema_huangxiang-brain.md) | podcast-learning |
+| 2026-10-20 | [大小马 V94：中国火箭回收与美国「孙学」——争议资产、复用经济学与中欧美心态切片](../podcast-learning/reports/2026-09-06_xiaoyuzhou-daxiaoma-keji_v94-rocket-recovery-sunology.md) | podcast-learning |
+| 2026-10-20 | [半拿铁·周刊 No.50：刷量入刑的边界、自爆营业、大玩家清算、钟薛高降价重生、豆包手机二代与 SAEP、家长信息合规](../podcast-learning/reports/2026-09-22_xiaoyuzhou-bannatie-zhoukan_no50-weekly-news.md) | podcast-learning |
+| 2026-10-20 | [刘方奇教授谈肠癌：先完成分期与分子检测，再决定手术时机](../podcast-learning/reports/2026-08-24_xiaoyuzhou-boluo-jiankang_liufangqi.md) | podcast-learning |
+| 2026-10-20 | [从模型信仰到应用求生：中国 AI 创业与一级市场的分化故事线（2022底—2026）](../ai-learning/reports/knowledge_reports/中国AI创业与一级市场故事线_从模型信仰到应用求生_20260731.md) | ai-learning |
+| 2026-10-20 | [为什么 FDE 在 AI 时代这么火？因为差距不在模型，在业务细节](../podcast-learning/reports/2026-07-29_bilibili-kedaibiao-lizheng_jove-fde.md) | podcast-learning |
+| 2026-10-20 | [一本书看清“工作”的真相：竹竹暴风雪解读 × 鲍曼《工作、消费主义和新穷人》原书深读](../podcast-learning/reports/2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism.md) | podcast-learning |
+| 2026-10-20 | [yetone/magpie 深度研究：多 Agent 模型路由中枢](../github-trending-analyzer/reports/research_yetone_magpie.md) | github-trending-analyzer |
+| 2026-10-20 | [vLLM 调度器：continuous batching 的真身（课论断 ↔ 源码对照篇）](../ai-learning/reports/knowledge_reports/vLLM_调度器_continuous_batching真身_20260909.md) | ai-learning |
+| 2026-10-20 | [vLLM V1 架构总览：一个请求的一生（骨架篇）](../ai-learning/reports/knowledge_reports/vLLM_V1架构总览_深度解析_20260821.md) | ai-learning |
+| 2026-10-20 | [trycua/cua 深度研究（源码视角）](../github-trending-analyzer/reports/research_trycua_cua_sourcecode.md) | github-trending-analyzer |
+| 2026-10-20 | [VISTA：视觉原生 Harness 论文精读——无损视觉记忆与主动检查如何把 Opus 5.0 的 ARC-AGI-3 分数从 40.68 拉到 100](../ai-learning/reports/paper_analyses/48_vista_2026.md) | ai-learning |
+| 2026-10-20 | [PuRo-2B 开放低成本预训练配方深度解析：MuonHyperball、FP8 与 RTX 5090 的 $5090 实验](../ai-learning/reports/knowledge_reports/PuRo-2B_开放低成本预训练配方_MuonHyperball与RTX5090_深度解析_20261015.md) | ai-learning |
 
-## 🤖 AI Learning（114 篇）
+## 🤖 AI Learning（115 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
-| 2026-10-15 | [PuRo-2B 开放低成本预训练配方深度解析：MuonHyperball、FP8 与 RTX 5090 的 $5090 实验](../ai-learning/reports/knowledge_reports/PuRo-2B_开放低成本预训练配方_MuonHyperball与RTX5090_深度解析_20261015.md) | `pretraining`, `muon_optimizer`, `fp8_training`, `cost_scaling_law`, `curriculum_learning`, `model_averaging` |
+| 2026-10-20 | [实习生抢答、老教授过目：速度快 2-3 倍，凭什么不改变采样分布？——投机解码科普](../ai-learning/reports/knowledge_reports/投机解码SpeculativeDecoding_科普讲解_20260720.md) | `speculative-decoding`, `inference-optimization`, `memory-bandwidth`, `draft-model`, `rejection-sampling`, `lossless-acceleration` |
+| 2026-10-20 | [从模型信仰到应用求生：中国 AI 创业与一级市场的分化故事线（2022底—2026）](../ai-learning/reports/knowledge_reports/中国AI创业与一级市场故事线_从模型信仰到应用求生_20260731.md) | `china_ai`, `venture_capital`, `ai_startups`, `market_analysis` |
+| 2026-10-20 | [vLLM 调度器：continuous batching 的真身（课论断 ↔ 源码对照篇）](../ai-learning/reports/knowledge_reports/vLLM_调度器_continuous_batching真身_20260909.md) | `vllm`, `continuous_batching`, `scheduler`, `llm_inference` |
+| 2026-10-20 | [vLLM V1 架构总览：一个请求的一生（骨架篇）](../ai-learning/reports/knowledge_reports/vLLM_V1架构总览_深度解析_20260821.md) | `vllm`, `inference_engine`, `scheduler`, `kv_cache` |
+| 2026-10-20 | [VISTA：视觉原生 Harness 论文精读——无损视觉记忆与主动检查如何把 Opus 5.0 的 ARC-AGI-3 分数从 40.68 拉到 100](../ai-learning/reports/paper_analyses/48_vista_2026.md) | `visual_harness`, `multimodal_agent`, `arc_agi`, `visual_memory` |
+| 2026-10-20 | [PuRo-2B 开放低成本预训练配方深度解析：MuonHyperball、FP8 与 RTX 5090 的 $5090 实验](../ai-learning/reports/knowledge_reports/PuRo-2B_开放低成本预训练配方_MuonHyperball与RTX5090_深度解析_20261015.md) | `pretraining`, `muon_optimizer`, `fp8_training`, `cost_scaling_law`, `curriculum_learning`, `model_averaging` |
+| 2026-10-20 | [Personal Context 正交论：穿越 AI 进步周期的资产，与 PC 的构建工程](../ai-learning/reports/knowledge_reports/PersonalContext正交论_PC构建指南_20261010.md) | `personal_context`, `agent_memory`, `context_engineering`, `delegation` |
+| 2026-10-20 | [Meta Muse：从产品承诺到代理边界——官方能力、市场信号与人类兜底](../ai-learning/reports/2026-09-22_meta-muse_product-research.md) | `agent`, `meta`, `personal-ai`, `security`, `human-in-the-loop` |
+| 2026-10-20 | [Laya：把「反射性决策」从 LLM 里拆出来——421M 非自回归 System 1 决策模型解析与本机实测](../ai-learning/reports/knowledge_reports/Laya_System1决策模型_深度解析_20260922.md) | `system1_models`, `decision_models`, `discriminative_ai`, `laya` |
+| 2026-10-20 | [Kimi K3：一座 2.8 万亿参数的城市，是怎么让信息不堵车的？](../ai-learning/reports/knowledge_reports/KimiK3_信息流三方向_科普讲解_20260728.md) | `kimi_k3`, `mixture_of_experts`, `linear_attention`, `long_context` |
+| 2026-10-20 | [Evoken 陈冕晚点访谈精读：一家 AI 应用公司如何在模型吞噬中求生](../ai-learning/reports/knowledge_reports/Evoken陈冕晚点访谈_AI应用生存策略_20260729.md) | `ai_applications`, `business_model`, `pricing`, `startup_strategy` |
+| 2026-10-19 | [豆包手机 Memory 机制：从全局记忆到可行动个人上下文](../ai-learning/reports/knowledge_reports/豆包手机Memory机制_从全局记忆到可行动个人上下文_深度解析_20261019.md) | `doubao_phone`, `agent_memory`, `personal_context`, `on_device_ai`, `ai_os`, `privacy` |
 | 2026-10-15 | [GPT-6 Astra 指令架构：从 Prompt 堆叠到按需控制](../ai-learning/reports/knowledge_reports/GPT6_Astra指令架构_从Prompt堆叠到按需控制_深度解析_20261015.md) | `gpt_6_astra`, `agent_skills`, `agents_md`, `prompt_engineering`, `context_engineering`, `agent_harness` |
 | 2026-10-15 | [Agent Skills 生态深度解析](../ai-learning/reports/knowledge_reports/Agent_Skills_生态深度解析.md) | — |
-| 2026-10-10 | [Personal Context 正交论：穿越 AI 进步周期的资产，与 PC 的构建工程](../ai-learning/reports/knowledge_reports/PersonalContext正交论_PC构建指南_20261010.md) | — |
-| 2026-10-09 | [VISTA：视觉原生 Harness 论文精读——无损视觉记忆与主动检查如何把 Opus 5.0 的 ARC-AGI-3 分数从 40.68 拉到 100](../ai-learning/reports/paper_analyses/48_vista_2026.md) | — |
-| 2026-10-09 | [Laya：把「反射性决策」从 LLM 里拆出来——421M 非自回归 System 1 决策模型解析与本机实测](../ai-learning/reports/knowledge_reports/Laya_System1决策模型_深度解析_20260922.md) | — |
 | 2026-10-08 | [OpenAI 数学手稿事件（openai/math）核实与深度分析](../ai-learning/reports/knowledge_reports/OpenAI数学手稿事件_核实与深度分析_20261008.md) | — |
 | 2026-09-30 | [字节级蒸馏突破 Token 天花板：Marginalize-It 与 End-Of-Token 的技术全景与批判性评估](../ai-learning/reports/paper_analyses/47_byte_distillation_2026.md) | — |
-| 2026-09-28 | [Meta Muse 深度产品研究报告 v2（APK 逆向 + 独立评测补充版）](../ai-learning/reports/2026-09-22_meta-muse_product-research.md) | — |
 | 2026-09-22 | [格罗滕迪克「涨潮」思想 — 让难题消失的升维方法研究](../ai-learning/reports/knowledge_reports/格罗滕迪克涨潮思想_让难题消失的升维方法研究_20260922.md) | — |
 | 2026-09-19 | [DeepSeek-V4.1-Flash 架构解剖 — CED 非对称设计与 KV Cache 压缩极限](../ai-learning/reports/knowledge_reports/DeepSeek-V4.1-Flash架构解剖_CED非对称与KV压缩极限_20260919.md) | — |
 | 2026-09-18 | [Jev 与 System One Models — TypeSafe AI「决策模型」新范式全景研究](../ai-learning/reports/knowledge_reports/Jev与System-One-Models_TypeSafe决策模型范式研究_20260918.md) | — |
@@ -53,15 +60,9 @@
 | 2026-09-16 | [《我不得不把才华埋葬在昨天》精读与延伸研究 — DeepSeek 算子工程师自白中的 AI 时代手艺人处境](../ai-learning/reports/knowledge_reports/才华埋葬在昨天_DeepSeek算子工程师自白精读与延伸研究_20260916.md) | — |
 | 2026-09-12 | [王坚的三分智能框架与机器意识：一个工程院士的「消解式回答」经得起检验吗？](../ai-learning/reports/knowledge_reports/王坚三分智能框架与机器意识_深度解析_20260912.md) | — |
 | 2026-09-11 | [Anthropic 经济情景模型：把 AI 能力预测翻译成 2030 年的 GDP、工资与失业](../ai-learning/reports/knowledge_reports/Anthropic经济情景模型_深度解析_20260911.md) | — |
-| 2026-09-09 | [vLLM 调度器：continuous batching 的真身（课论断 ↔ 源码对照篇）](../ai-learning/reports/knowledge_reports/vLLM_调度器_continuous_batching真身_20260909.md) | — |
 | 2026-08-31 | [ChatGPT Work 能力面逆向解析：一个商业化 Agent Harness 的活样本，兼谈致命三重](../ai-learning/reports/knowledge_reports/ChatGPT_Work_能力面与Harness样本_深度解析_20260831.md) | `chatgpt_work`, `agent_harness`, `code_interpreter`, `headless_browser`, `persistent_filesystem`, `sub_agents` |
-| 2026-08-21 | [vLLM V1 架构总览：一个请求的一生（骨架篇）](../ai-learning/reports/knowledge_reports/vLLM_V1架构总览_深度解析_20260821.md) | — |
-| 2026-07-31 | [从模型信仰到应用求生：中国 AI 创业与一级市场故事线(2022底—2026)](../ai-learning/reports/knowledge_reports/中国AI创业与一级市场故事线_从模型信仰到应用求生_20260731.md) | — |
 | 2026-07-31 | [AI 应用创业生死录：从 Evoken(Liblib/Lovart/LibTV)看模型吞噬应用时代的 survive 经济学](../ai-learning/reports/knowledge_reports/AI应用创业生死录_Evoken三产品商业分析_20260731.md) | — |
 | 2026-07-30 | [当'聪明'变成一种诅咒：AGI 会不会让普通人从此无关紧要？——《The Intelligence Curse》精读](../ai-learning/reports/knowledge_reports/IntelligenceCurse_智能诅咒_科普讲解_20260730.md) | — |
-| 2026-07-29 | [Evoken 陈冕晚点访谈精读：一家 AI 应用公司如何在模型吞噬中求生](../ai-learning/reports/knowledge_reports/Evoken陈冕晚点访谈_AI应用生存策略_20260729.md) | — |
-| 2026-07-28 | [Kimi K3：一座 2.8 万亿参数的城市，是怎么让信息不堵车的？](../ai-learning/reports/knowledge_reports/KimiK3_信息流三方向_科普讲解_20260728.md) | — |
-| 2026-07-20 | [实习生抢答、老教授过目：速度快 2-3 倍，凭什么一个字都不改？—— 投机解码科普](../ai-learning/reports/knowledge_reports/投机解码SpeculativeDecoding_科普讲解_20260720.md) | `speculative-decoding`, `inference-optimization`, `memory-bandwidth`, `draft-model`, `rejection-sampling`, `lossless-acceleration` |
 | 2026-07-20 | [同一个模型分数能差 2 倍、价格能差 140 倍——Agent 时代的榜单到底该怎么看？](../ai-learning/reports/knowledge_reports/Agent_LLM评分体系与主流模型价格能力_科普讲解_20260720.md) | — |
 | 2026-07-20 | [同一个 GPT-5.5 考出四个分数——Agent 的智能，几分靠模型、几分靠 Harness？](../ai-learning/reports/knowledge_reports/Agent智能_模型与Harness各占多少_科普讲解_20260720.md) | — |
 | 2026-07-20 | [AI 越来越强，我们给它搭的「脚手架」会被自己淘汰吗？—— Bitter Lesson × Harness 科普讲解](../ai-learning/reports/knowledge_reports/Bitter_Lesson_vs_Harness_科普讲解_20260720.md) | `bitter_lesson`, `agent_harness`, `scaffolding`, `science_popularization`, `self_evolving_agent`, `compute_allocation` |
@@ -266,7 +267,7 @@
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
-| 2026-08-24 | [实测笔记：book-to-skill 能优化 EverAgent 学习类项目吗？](../ai-practice/experiments/book-to-skill-demo/评估笔记_book-to-skill能否优化学习项目_20260729.md) | — |
+| 2026-10-20 | [实测笔记：book-to-skill 能优化 EverAgent 学习类项目吗？](../ai-practice/experiments/book-to-skill-demo/评估笔记_book-to-skill能否优化学习项目_20260729.md) | `book_to_skill`, `docling`, `pdf_extraction`, `progressive_disclosure` |
 | 2026-07-11 | [本机（M5 Max 128GB）本地 LLM 选型评测——whichllm × llm-checker × fastfetch](../ai-practice/experiments/exp_009_local_llm_selector.md) | — |
 | 2026-06-21 | [GRPO 缩尺模拟实验：与 T060 推理模型三大流派联动的代码复现](../ai-practice/experiments/exp_008_grpo_simulation.md) | — |
 | 2026-05-13 | [SkillOS 技能库策展小型实验复现](../ai-practice/experiments/exp_007_skillos_curator_simulation.md) | — |
@@ -277,13 +278,30 @@
 | 2026-04-20 | [Qwen2.5-3B GRPO 强化学习微调](../ai-practice/experiments/exp_004_qwen25_grpo_finetune.md) | — |
 | 2026-04-20 | [HuggingFace Hub 模型与数据集管理](../ai-practice/experiments/exp_002_huggingface_basics.md) | — |
 
-## 🎙️ Podcast Learning（76 篇）
+## 🎙️ Podcast Learning（79 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
-| 2026-10-19 | [大小马 V94：中国火箭回收与美国「孙学」——争议资产、复用经济学与中欧美心态切片](../podcast-learning/reports/2026-09-06_xiaoyuzhou-daxiaoma-keji_v94-rocket-recovery-sunology.md) | `rocket_reuse`, `commercial_space`, `attention_economy`, `tech_ethics`, `work_ethic`, `china_us_comparison` |
+| 2026-10-20 | [金瓶梅·绿色版 9《蒋竹山》：一张假借据如何调动街头、保甲与提刑院](../podcast-learning/reports/2026-08-13_ximalaya-bannatie-gushipian_jiangzhushan.md) | `金瓶梅`, `权力网络`, `司法`, `婚姻财产`, `叙事分析` |
+| 2026-10-20 | [身体出现这些信号，可能是炎症在提醒你！——帆书讲《炎症》](../podcast-learning/reports/2026-08-21_bilibili-fanshu_yanzheng.md) | `inflammation`, `health_communication`, `medical_evidence`, `nutrition` |
+| 2026-10-20 | [说医解药 Vol.91：银鳕鱼汞中毒争议——三种汞、鳕鱼命名史与 FDA 选鱼数学](../podcast-learning/reports/2026-10-08_xiaoyuzhou-shuoyi-jieyao_vol91-cod-mercury.md) | `mercury`, `seafood_safety`, `risk_communication`, `public_health` |
+| 2026-10-20 | [程若倩教授：孩子身高这件事，到底矮不矮、治不治？](../podcast-learning/reports/2026-09-27_xiaoyuzhou-boluo-jiankang_chengruoqian.md) | `pediatrics`, `child_growth`, `endocrinology`, `medical_guidelines` |
+| 2026-10-20 | [成为巴菲特27：买珠还椟——从邓白氏到穆迪，商业信用的权力与秩序](../podcast-learning/reports/2026-02-11_xiaoyuzhou-chengwei-buffett_nantian.md) | `credit_rating`, `value_investing`, `moody_s`, `business_history` |
+| 2026-10-20 | [屠龙×Karl Deisseroth：故事如何进入精神病学，光如何成为神经元开关](../podcast-learning/reports/2026-10-06_xiaoyuzhou-tulong-dashihua_karl-deisseroth.md) | `optogenetics`, `psychiatry`, `neuroscience`, `mental-health`, `book-interview` |
+| 2026-10-20 | [对话盛颖：xAI，Infra的浪漫，SGLang，开源，平权与「甄嬛传」](../podcast-learning/reports/2026-08-04_rss-guigu101_shengying.md) | `xai`, `sglang`, `ai_infrastructure`, `open_models` |
+| 2026-10-20 | [对话 Evoken 陈冕：在模型不断吞噬应用价值的时代，一家独立 AI 应用公司如何 survive](../podcast-learning/reports/2026-07-30_xiaoyuzhou-wandian-latetalk_chenmian.md) | `ai_applications`, `startup_strategy`, `pricing`, `survival` |
+| 2026-10-20 | [孩子成绩差，真的是因为「不是学习的料」吗？——黄翔脑科学对谈与事实核查](../podcast-learning/reports/2026-07-04_bilibili-kema_huangxiang-brain.md) | `neuroscience`, `education`, `learning_science`, `fact_checking` |
+| 2026-10-20 | [大小马 V94：中国火箭回收与美国「孙学」——争议资产、复用经济学与中欧美心态切片](../podcast-learning/reports/2026-09-06_xiaoyuzhou-daxiaoma-keji_v94-rocket-recovery-sunology.md) | `rocket_reuse`, `commercial_space`, `attention_economy`, `tech_ethics`, `work_ethic`, `china_us_comparison` |
+| 2026-10-20 | [半拿铁·周刊 No.50：刷量入刑的边界、自爆营业、大玩家清算、钟薛高降价重生、豆包手机二代与 SAEP、家长信息合规](../podcast-learning/reports/2026-09-22_xiaoyuzhou-bannatie-zhoukan_no50-weekly-news.md) | `weekly_news`, `platform_governance`, `doubao_phone`, `data_compliance` |
+| 2026-10-20 | [刘方奇教授谈肠癌：先完成分期与分子检测，再决定手术时机](../podcast-learning/reports/2026-08-24_xiaoyuzhou-boluo-jiankang_liufangqi.md) | `colorectal_cancer`, `staging`, `molecular_testing`, `oncology` |
+| 2026-10-20 | [为什么 FDE 在 AI 时代这么火？因为差距不在模型，在业务细节](../podcast-learning/reports/2026-07-29_bilibili-kedaibiao-lizheng_jove-fde.md) | `fde`, `agent_harness`, `enterprise_ai` |
+| 2026-10-20 | [一本书看清“工作”的真相：竹竹暴风雪解读 × 鲍曼《工作、消费主义和新穷人》原书深读](../podcast-learning/reports/2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism.md) | `bauman`, `work`, `consumerism` |
+| 2026-10-20 | [Kimi K3 一鱼两吃：张小珺152 × 晚点聊177 对照精读](../podcast-learning/reports/2026-09-02_multi_kimi-k3-dueling-reads.md) | `kimi_k3`, `model_architecture`, `inference_systems`, `cross_episode` |
+| 2026-10-20 | [Bruce_PhD 精力管理四件事：减决策、线粒体、咖啡因时机与攻击性](../podcast-learning/reports/2026-09-03_bilibili-bruce-phd_energy-boost.md) | `energy_management`, `mitochondria`, `coenzyme_q10`, `caffeine`, `decision_fatigue`, `conflict_management` |
+| 2026-10-19 | [十字路口 × Treg：Claude Code / Codex 成为平台后，创业机会转向工具、数据与人机协作](../podcast-learning/reports/2026-10-18_xiaoyuzhou-crossing_treg-agent-ecosystem.md) | `coding_agent`, `agent_ecosystem`, `tool_marketplace`, `multi_agent`, `startup_pivot` |
+| 2026-10-19 | [AI炼金术 × 晓辉/任鑫：做东西贬值百倍后，先卖、定义测试集，再决定是否产品化](../podcast-learning/reports/2026-10-18_ximalaya-ailianjinshu_xiaohui-renxin-ai-startup.md) | `ai_startup`, `sell_before_build`, `evaluation`, `enterprise_ai`, `personal_workflow` |
+| 2026-10-19 | [42章经 × Articuler.ai：穷出来的会议场景、美国 GTM 与创业的保命牌](../podcast-learning/reports/2026-10-17_xiaoyuzhou-42zhangjing_articuler-jason.md) | `startup`, `product_market_fit`, `us_gtm`, `event_network`, `founder_resilience` |
 | 2026-10-18 | [十字路口：王家伟——24岁的具身智能首席科学家、HiFi-UMI与「趋势不等于Law」](../podcast-learning/reports/2026-09-16_xiaoyuzhou-crossing_wangjiawei.md) | `embodied_ai`, `robot_learning`, `umi_data`, `scaling_law`, `steerability`, `in_context_learning` |
-| 2026-10-15 | [Bruce_PhD 精力管理四件事：减决策、线粒体、咖啡因时机与攻击性](../podcast-learning/reports/2026-09-03_bilibili-bruce-phd_energy-boost.md) | `energy_management`, `mitochondria`, `coenzyme_q10`, `caffeine`, `decision_fatigue`, `conflict_management` |
 | 2026-10-14 | [食贫道×刘慈欣：智能的不可判断性、AI三学派与爆炒腰花的生活哲学](../podcast-learning/reports/2026-10-14_bilibili-shipindao_liucixin-interview.md) | — |
 | 2026-10-14 | [硅谷101（再访张阔）：榜单99分与真实61%之间——E255 对篇](../podcast-learning/reports/2026-10-14_bilibili-svj101_zhangkuo-model-user-gap.md) | `agent`, `harness`, `context`, `benchmark`, `ecommerce` |
 | 2026-10-14 | [电丸AK：千问AI眼镜 N1 Pro——鼻托 PPG、三芯片与眼追的必要性](../podcast-learning/reports/2026-10-14_bilibili-dianwan-ak_qwen-glasses-n1pro.md) | — |
@@ -293,20 +311,16 @@
 | 2026-10-12 | [42章经：子皓（Ambi）——交互成本决定需求、A2A网络效应与在场（ambient）哲学](../podcast-learning/reports/2026-10-12_xiaoyuzhou-42zhangjing_zihao-ambi.md) | — |
 | 2026-10-11 | [AI 和真格管理合伙人刘元录了一期播客](../podcast-learning/reports/2026-09-23_xiaoyuzhou-cihua-dangzhen_liuyuan.md) | — |
 | 2026-10-10 | [晚点聊182：梁琛奇——用 AI 创造开心：猫箱推演、动念引线与养女儿方法论](../podcast-learning/reports/2026-09-24_rss-wandian-latetalk_liangchenqi-ai-joy.md) | — |
-| 2026-10-10 | [成为巴菲特27：买珠还椟——从邓白氏到穆迪，商业信用的权力与秩序](../podcast-learning/reports/2026-02-11_xiaoyuzhou-chengwei-buffett_nantian.md) | — |
 | 2026-10-10 | [屠龙之术：AICC2026 侧记——Agent=Model+Harness 成业界公式，算力缺口十年十倍](../podcast-learning/reports/2026-09-22_xiaoyuzhou-tulong-zhishu_ai-production-stage.md) | — |
 | 2026-10-10 | [孙宇晨×邵艾伦：搏击理论、开图与认知决定命运——AI 时代的自我操作系统论](../podcast-learning/reports/2026-10-10_bilibili-shaoailun_sunyuchen-ai-era.md) | — |
 | 2026-10-10 | [卫诗婕89：阮良——个人提效500%，交付只从20天到17天：AI 进组织的木桶真相](../podcast-learning/reports/2026-09-23_xiaoyuzhou-weishijie_ruanliang-ai-org.md) | — |
 | 2026-10-10 | [十字路口：于红——AI 时代学什么？林迪效应、SEL 与把终点放在 30 岁](../podcast-learning/reports/2026-09-27_xiaoyuzhou-crossing_yuhong-sel.md) | — |
 | 2026-10-10 | [乱翻书277：Today 中国首发——Memory×Proactive、单 session 终局与产品经理的价值回归](../podcast-learning/reports/2026-09-24_xiaoyuzhou-luanfanshu_today-personal-ai.md) | — |
 | 2026-10-09 | [起朱楼184：加息周期的重大投资决策——五步建立海外长债组合｜三季度投资账复盘](../podcast-learning/reports/2026-10-08_xiaoyuzhou-qizhulou_2026q3-investment-review.md) | — |
-| 2026-10-09 | [课代表立正·职业方法论九讲：选择、余裕、失败与升职的存量专题（217/218/221-225/327-329）](../podcast-learning/reports/2026-10-09_rss-kedaibiao-lizheng_career-methods-series.md) | — |
+| 2026-10-09 | [课代表立正·职业方法论十讲：选择、余裕、失败与升职的存量专题（217/218/221-225/327-329）](../podcast-learning/reports/2026-10-09_rss-kedaibiao-lizheng_career-methods-series.md) | `career_decisions`, `cognitive_slack`, `work`, `cross_episode` |
 | 2026-10-09 | [课代表立正216：Codex迭代十几轮的网站，Claude一天作废——个人网站与叙事主权](../podcast-learning/reports/2026-10-05_rss-kedaibiao-lizheng_codex-claude.md) | — |
-| 2026-10-09 | [说医解药 Vol.91：银鳕鱼汞中毒争议——三种汞、鳕鱼命名史与 FDA 选鱼数学](../podcast-learning/reports/2026-10-08_xiaoyuzhou-shuoyi-jieyao_vol91-cod-mercury.md) | — |
-| 2026-10-09 | [程若倩教授：孩子身高这件事，到底矮不矮、治不治？](../podcast-learning/reports/2026-09-27_xiaoyuzhou-boluo-jiankang_chengruoqian.md) | — |
 | 2026-10-09 | [硅谷101 E255：榜单 99 分，用户没感觉——张阔的 107 任务评测与垂直 Agent 成本战](../podcast-learning/reports/2026-10-08_rss-guigu101_e255-zhangkuo.md) | — |
 | 2026-10-09 | [知行小酒馆 E253：会思考的沙子与杀人的沙子——李治霖谈 AI 时代的折叠世界与有效公益](../podcast-learning/reports/2026-10-09_xiaoyuzhou-zhixing-xiaojiuguan_e253-ai-good.md) | — |
-| 2026-10-09 | [屠龙大实话：诺奖得主 Deisseroth 谈《照亮破碎之心》——精神疾病是进化的代价，光遗传是精确的怜悯](../podcast-learning/reports/2026-10-06_xiaoyuzhou-tulong-dashihua_karl-deisseroth.md) | — |
 | 2026-10-09 | [大小马 V95：中美新拐点——出海小霸王、AI 眼镜三数量级增量与 Muse 时代的APP崩塌](../podcast-learning/reports/2026-10-08_xiaoyuzhou-daxiaoma-keji_v95-china-us.md) | — |
 | 2026-10-09 | [听懂涨声：17 岁矿主与建筑师父亲——钱、认知与风险的父子坦白局](../podcast-learning/reports/2026-10-09_xiaoyuzhou-tingdong-zhangsheng_father-son-money.md) | — |
 | 2026-10-09 | [十字路口：AI 无限，人生有限——山音与 KK 的一线 AI 导演方法论](../podcast-learning/reports/2026-10-08_xiaoyuzhou-crossing_kk-shanyin.md) | — |
@@ -315,14 +329,11 @@
 | 2026-10-07 | [谁在给大模型出题、卖题、判卷？AI 数据行业的野蛮生长](../podcast-learning/reports/2026-09-27_rss-guigu101_e253-ai-data-industry.md) | — |
 | 2026-10-07 | [当 AI 开始设计芯片：新思科技视角下的 EDA 与 AI 造芯真伪](../podcast-learning/reports/2026-09-28_xiaoyuzhou-tulong-zhishu_eda-ai-chips.md) | — |
 | 2026-10-04 | [如何炒作一个 AI 概念？以 Jev 为例——孙煜征的五步判断法](../podcast-learning/reports/2026-09-24_rss-kedaibiao-lizheng_ai-hype-jev.md) | — |
-| 2026-10-04 | [半拿铁·周刊 No.50：刷量入刑的边界、自爆营业、大玩家清算、钟薛高降价重生、豆包手机二代与 SAEP、家长信息合规](../podcast-learning/reports/2026-09-22_xiaoyuzhou-bannatie-zhoukan_no50-weekly-news.md) | — |
 | 2026-10-04 | [AI 季报 26Q3：个人助理爆发、千禧年难题被攻破、1200 个 agent 冲破隔离](../podcast-learning/reports/2026-10-02_rss-wandian-latetalk_ai-quarterly-26q3.md) | — |
-| 2026-10-03 | [金瓶梅·绿色版 9《蒋竹山：从入赘开店到净身出户》：三十两假债局与 S1 收官（降级：无音频）](../podcast-learning/reports/2026-08-13_ximalaya-bannatie-gushipian_jiangzhushan.md) | — |
 | 2026-10-02 | [GEO 是量化交易不是 SEO：PureblueAI 鲁扬谈 AI 时代的货架与流量](../podcast-learning/reports/2026-09-23_ximalaya-ailianjinshu_luyang.md) | — |
 | 2026-10-01 | [决策便宜，行动很贵：Vibe-Trading 作者浩哲谈 AI Trading 的通道、闸门与人的位置](../podcast-learning/reports/2026-09-27_xiaoyuzhou-42zhangjing_wuhaozhe.md) | — |
 | 2026-10-01 | [具身智能的金钱游戏：进展难测、收入催熟与 IPO 竞速](../podcast-learning/reports/2026-09-02_rss-wandian-latetalk_embodied-money.md) | — |
 | 2026-09-28 | [易论AI×捏Ta胡修涵：被AI淘汰的人才是AI最大的市场（创作即消费/双边vs多边/迪士尼不是乐园是上下文/AI内容四象限）](../podcast-learning/reports/2026-09-18_bilibili-yilun-ai_huxiuhan.md) | — |
-| 2026-09-27 | [孩子成绩差，真的是因为「不是学习的料」吗？——对谈脑科学专家黄翔](../podcast-learning/reports/2026-07-04_bilibili-kema_huangxiang-brain.md) | — |
 | 2026-09-26 | [把一家 12 年的硬件公司重写成 AI 原生组织：鹿客陈彬的「从 1 到 0」实操](../podcast-learning/reports/2026-09-14_ximalaya-ailianjinshu_chenbin.md) | — |
 | 2026-09-25 | [硅基立场 Vol.32｜张帆：去他X的FDE——能力沉淀在哪里，从定制外包到企业自学习](../podcast-learning/reports/2026-09-24_xiaoyuzhou-guiji-lichang_zhangfan-fde.md) | — |
 | 2026-09-25 | [此话当真｜同事.skill 与人生系统.skill：你害怕被蒸馏吗？](../podcast-learning/reports/2026-08-17_xiaoyuzhou-cihua-dangzhen_distill.md) | — |
@@ -335,20 +346,13 @@
 | 2026-09-22 | [「我看到了 Scaling Law 的信号」：徐梦迪谈具身智能、世界模型与真正的泛化](../podcast-learning/reports/2026-09-20_xiaoyuzhou-crossing_xumengdi.md) | — |
 | 2026-09-15 | [所长林超《AI泡沫，2027年爆破？》：开源价格锚定、巨头 IPO 考验与七万亿债](../podcast-learning/reports/2026-07-24_bilibili-suochang-linchao_ai-bubble-2027.md) | — |
 | 2026-09-14 | [易论AI Vol.1：AI最前沿的人已经不聊大模型了——李继刚×橘子×歸藏的四人谈（服务裹着能力/齿轮速度差/Agent+X/上下文是一辆车）](../podcast-learning/reports/2026-09-09_xiaoyuzhou-yilun-ai_frontier-no-llm.md) | — |
-| 2026-09-13 | [一本书看清"工作"的真相：竹竹暴风雪解读 × 鲍曼《工作、消费主义和新穷人》原书深读](../podcast-learning/reports/2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism.md) | `bauman`, `work`, `consumerism` |
 | 2026-09-12 | [王坚回应凉子：AI 何时产生自主意识——5分钟里的三个论断（机器智能≠人工的人类智能 / 技术只拓展边界 / AI 的使命是减少资源消耗）](../podcast-learning/reports/2026-09-11_bilibili-liangzi-fangtanlu_wangjian.md) | — |
 | 2026-09-12 | [CLS同学：如果5%的房地产以旧换新出台，你会买新房吗？——三驾马车承压下的「房地产出冷宫」推演](../podcast-learning/reports/2026-09-12_bilibili-cls-tongxue_fangchan-yijiuhuanxin.md) | — |
 | 2026-09-11 | [程乐松×脱不花《长谈》64期：活得哲学一点——一场打通「出圈金句」与「道教研究/中国哲学方法论」的3小时对谈](../podcast-learning/reports/2026-09-05_bilibili-changtan_chenglesong.md) | — |
 | 2026-09-09 | [153. 和曾鸣聊产业史观：残酷的真相、会消亡的公司、优秀≠卓越](../podcast-learning/reports/2026-09-03_xiaoyuzhou-zhangxiaojun_zengming.md) | — |
 | 2026-09-02 | [晚点聊177｜详解 Kimi K3：体感、推理系统工程、开源大辩论与估值冲击](../podcast-learning/reports/2026-08-04_rss-wandian-latetalk_kimi-k3.md) | — |
 | 2026-09-02 | [张小珺152｜孙宇涛领读 Kimi K3 技术报告：三维 scaling、注意力谱系与 infra co-design](../podcast-learning/reports/2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report.md) | — |
-| 2026-09-02 | [Kimi K3 一鱼两吃：张小珺152 × 晚点聊177 对照精读](../podcast-learning/reports/2026-09-02_multi_kimi-k3-dueling-reads.md) | — |
-| 2026-08-25 | [身体出现这些信号，可能是炎症在提醒你！——帆书讲《炎症》](../podcast-learning/reports/2026-08-21_bilibili-fanshu_yanzheng.md) | — |
-| 2026-08-24 | [刘方奇教授：肠癌越来越年轻，确诊后先别急着手术！](../podcast-learning/reports/2026-08-24_xiaoyuzhou-boluo-jiankang_liufangqi.md) | — |
-| 2026-08-23 | [对话盛颖：xAI，Infra的浪漫，SGLang，开源，平权与「甄嬛传」](../podcast-learning/reports/2026-08-04_rss-guigu101_shengying.md) | — |
 | 2026-08-22 | [对游凯超3小时访谈：开源Infra、和模型Co-design、「如果vLLM失败，我们会后悔一辈子」](../podcast-learning/reports/2026-07-28_xiaoyuzhou-zhangxiaojun_youkaichao.md) | — |
-| 2026-07-31 | [对话 Evoken 陈冕：在模型不断吞噬应用价值的时代，一家独立 AI 应用公司如何 survive](../podcast-learning/reports/2026-07-30_xiaoyuzhou-wandian-latetalk_chenmian.md) | — |
-| 2026-07-29 | [为什么 FDE 在 AI 时代这么火？因为差距不在模型，在业务细节](../podcast-learning/reports/2026-07-29_bilibili-kedaibiao-lizheng_jove-fde.md) | `fde`, `agent_harness`, `enterprise_ai` |
 | 2026-07-20 | [人到中年仨账户：现金流、肌肉、睡眠（面基 · 老钱单口）](../podcast-learning/reports/2026-07-13_xiaoyuzhou-mingjing-diandian_midlife-accounts.md) | — |
 | 2026-07-19 | [重估一切，文艺复兴——2026H1 AI行业观察（屠龙之术 · 庄明浩单口）](../podcast-learning/reports/2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review.md) | — |
 | 2026-07-18 | [读书：4种配速，取景框，人是滤器，冲刷神经网络 —— 明镜与李继刚关于读书方法论的深度对话](../podcast-learning/reports/2026-07-09_xiaoyuzhou-mingjing-diandian_lijigang.md) | — |
@@ -362,10 +366,10 @@
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
-| 2026-10-12 | [magpie 深度研究报告（yetone/magpie）](../github-trending-analyzer/reports/research_yetone_magpie.md) | — |
-| 2026-10-09 | [Laya（NandhaKishorM/laya）深度研究报告](../github-trending-analyzer/reports/research_NandhaKishorM_laya.md) | — |
+| 2026-10-20 | [yetone/magpie 深度研究：多 Agent 模型路由中枢](../github-trending-analyzer/reports/research_yetone_magpie.md) | `llm-gateway`, `model-routing`, `coding-agent`, `multi-provider` |
+| 2026-10-20 | [trycua/cua 深度研究（源码视角）](../github-trending-analyzer/reports/research_trycua_cua_sourcecode.md) | `computer-use`, `virtualization`, `agent-infrastructure`, `mcp` |
+| 2026-10-20 | [NandhaKishorM/laya 深度研究：非自回归 System 1 决策引擎](../github-trending-analyzer/reports/research_NandhaKishorM_laya.md) | `decision-model`, `non-autoregressive`, `classification`, `system-1` |
 | 2026-09-30 | [Hindsight 深度研究报告（vectorize-io/hindsight）](../github-trending-analyzer/reports/research_vectorize-io_hindsight.md) | — |
-| 2026-09-20 | [trycua/cua 深度研究报告（源码视角 · refer）](../github-trending-analyzer/reports/research_trycua_cua_sourcecode.md) | — |
 | 2026-08-24 | [alibaba/page-agent 深度研究报告](../github-trending-analyzer/reports/research_alibaba_page-agent.md) | — |
 | 2026-08-24 | [World Monitor 深度研究报告](../github-trending-analyzer/reports/research_koala73_worldmonitor.md) | — |
 | 2026-08-24 | [Superpowers: AI 编码代理的技能框架深度研究报告](../github-trending-analyzer/reports/research_obra_superpowers.md) | — |
@@ -491,6 +495,8 @@
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-10-20 | [炒菜调料时机：从短视频口诀到可复用的厨房判断](../web-surfing/reports/cooking-logic-timing-douyin.md) | `cooking`, `douyin`, `food-science`, `fact-check` |
+| 2026-10-20 | [惠州租房建议报告：两位老人 2026 年 9/10 月短住体验](../web-surfing/reports/huizhou-rental-guide-2026-09.md) | `huizhou`, `rental`, `elderly_living`, `short_term_rental` |
 | 2026-10-19 | [AI 行业日报 · 2026-10-19](../web-surfing/reports/ai-news-daily-2026-10-19.md) | `ai_news`, `daily`, `industry_watch` |
 | 2026-10-15 | [AI 行业日报 · 2026-10-15](../web-surfing/reports/ai-news-daily-2026-10-15.md) | `ai_news`, `daily`, `industry_watch` |
 | 2026-10-14 | [B 站关注列表、最近投稿与未看更新采集方案调研](../web-surfing/reports/bilibili-following-updates-research-2026-10-14.md) | — |
@@ -525,13 +531,11 @@
 | 2026-09-01 | [AI 行业日报 · 2026-09-01](../web-surfing/reports/ai-news-daily-2026-09-01.md) | — |
 | 2026-08-31 | [AI 行业日报 · 2026-08-31](../web-surfing/reports/ai-news-daily-2026-08-31.md) | — |
 | 2026-08-28 | [AI 行业日报 · 2026-08-28](../web-surfing/reports/ai-news-daily-2026-08-28.md) | — |
-| 2026-08-27 | [惠州租房建议报告——两位老人 2026 年 9/10 月入住版（1–3 个月短住体验）](../web-surfing/reports/huizhou-rental-guide-2026-09.md) | — |
 | 2026-08-27 | [AI 行业日报 · 2026-08-27](../web-surfing/reports/ai-news-daily-2026-08-27.md) | — |
 | 2026-08-26 | [AI 行业日报 · 2026-08-26](../web-surfing/reports/ai-news-daily-2026-08-26.md) | — |
 | 2026-08-25 | [AI 行业日报 · 2026-08-25](../web-surfing/reports/ai-news-daily-2026-08-25.md) | — |
 | 2026-08-24 | [AI 行业日报 · 2026-08-24](../web-surfing/reports/ai-news-daily-2026-08-24.md) | — |
 | 2026-08-23 | [AI 行业日报 · 2026-08-23](../web-surfing/reports/ai-news-daily-2026-08-23.md) | — |
-| 2026-07-29 | [炒菜逻辑：家常菜为什么比不过饭店香味——调料下锅时机全解](../web-surfing/reports/cooking-logic-timing-douyin.md) | `cooking`, `douyin`, `transcription` |
 | 2026-07-29 | [十年封神日剧 TOP10(2016–2025)—— SeedHub 对应资源索引](../web-surfing/reports/jdrama-top10-2016-2025-seedhub.md) | `jdrama`, `seedhub`, `douyin` |
 | 2026-07-15 | [🇰🇷 韩剧推荐 Top10（2024–2026 · 豆瓣评分）](../web-surfing/reports/kdrama-top10-2024-2026.md) | `kdrama`, `seedhub`, `douban` |
 

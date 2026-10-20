@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "job_id": "job_podcast_77eb9a62b0465e5789cd68f4",
+  "status": "succeeded",
+  "device": "razer",
+  "silent": true,
+  "interactive_browser": false,
+  "audio_playback": false,
+  "duration_ms": 137595,
+  "artifact": {
+    "artifact_id": "pod_c81dbaa0167f42749258d783",
+    "source_host": "www.xiaoyuzhoufm.com",
+    "source_sha256": "a92b9e58a481d50e598dfafc71ab9a983944f14623d879aceccca59c73281e3d",
+    "audio_size": 566423630,
+    "language": "en",
+    "segments": 898,
+    "service_version": "whisper.cpp-v1.9.1-sm120",
+    "transcript_size": 61052,
+    "transcript_sha256": "1d974f8282fdea80f3edf71841bcc9a43ef5462fd9aecf6c1b220cf1424afaa3",
+    "quality": {
+      "repetition_guard": {
+        "passed": true,
+        "max_consecutive_identical": 1
+      }
+    }
+  },
+  "transfer": {
+    "mode": "eacli pull",
+    "atomic": true,
+    "local_path": "podcast-learning/reports/transcripts/2026-10-06_xiaoyuzhou-tulong-dashihua_karl-deisseroth.en.transcript.txt",
+    "verified_sha256": true
+  }
+}

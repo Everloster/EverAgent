@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "job_id": "job_podcast_938b4f3d5e61f3a1cbc09320",
+  "status": "succeeded",
+  "device": "razer",
+  "silent": true,
+  "interactive_browser": false,
+  "audio_playback": false,
+  "duration_ms": 552940,
+  "artifact": {
+    "artifact_id": "pod_735cfa370eed8c8f3ff8eddf",
+    "source_host": "www.ximalaya.com",
+    "source_sha256": "2e454660891ba76ede9d3cfe9e257cc432e2d67b59fcfe09400992567e508174",
+    "audio_size": 1429442886,
+    "language": "zh",
+    "segments": 4767,
+    "service_version": "whisper.cpp-v1.9.1-sm120",
+    "transcript_size": 234593,
+    "transcript_sha256": "8d493730a31f7cf6e294202c391a2b15c92a2e6f4d81eca1e75d8475893c2ee1",
+    "quality": {
+      "repetition_guard": {
+        "passed": true,
+        "max_consecutive_identical": 2
+      }
+    }
+  },
+  "transfer": {
+    "mode": "eacli invoke split + eacli pull",
+    "split_job_id": "job_5ada304c2f3259c9a0414a83",
+    "chunk_size": 100000,
+    "parts": [
+      {
+        "size": 100000,
+        "sha256": "c98d9fbb1de1d56aead0219d1479b49883bda2b97edb5c540fd1ba3c06616ade"
+      },
+      {
+        "size": 100000,
+        "sha256": "9bf8c2a4cbcf108d1cff567bb23b6c72cc54b8806d27dc4fa518eb4f96a4e3ac"
+      },
+      {
+        "size": 34593,
+        "sha256": "b9bcca7421f5a4c88dc4df0a50cdf9e4b7bea2c98837afd7cd560fd15e4a19fc"
+      }
+    ],
+    "local_path": "podcast-learning/reports/transcripts/2026-10-18_ximalaya-ailianjinshu_xiaohui-renxin-ai-startup.transcript.txt",
+    "verified_sha256": true
+  }
+}
