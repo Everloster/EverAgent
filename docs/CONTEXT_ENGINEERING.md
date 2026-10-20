@@ -82,12 +82,13 @@ Context 或 Skill 大改时，先运行受控开工探针。它在重构前后 c
 ```bash
 python3 scripts/run_ace_context_ab.py \
   --baseline 4b3811a --candidate HEAD \
+  --full-suite \
   --repetitions 3 --jobs 3 \
   --output evals/results/ace-context-ab-YYYYMMDD.json \
   --markdown docs/ACE_CONTEXT_AB_YYYYMMDD.md
 ```
 
-开工探针测路由、产物意图、初始文件、Skill 选择和澄清边界；它不替代完整任务。报告完成质量继续由真实 `report-v2` 回放验证，需要判断提前停止、测试范围或最终交付时再运行完整行为模板。
+局部 Context 修改默认自动比较两个 snapshot，只运行命中变更领域或 Skill 的 case；根 `AGENTS.md`、`CLAUDE.md` 或任务集变化自动升级为全量。也可用 `--case <id>` 手工指定，或用 `--full-suite` 强制跑全部。开工探针测路由、产物意图、初始文件、Skill 选择和澄清边界；它不替代完整任务。报告完成质量继续由真实 `report-v2` 回放验证，需要判断提前停止、测试范围或最终交付时再运行完整行为模板。
 
 最新通过结果由 `config/instruction-policy.json` 登记为 Owner，并绑定所有 `AGENTS.md`、Skill 入口和 ACE suite 的 SHA-256。结果过期时静态门禁给出告警；只有准备宣称 Context 架构改进、合并大规模路由重构或建立新基线时，才要求完整 A/B。普通报告与局部文档提交不再同步运行 84 次模型探针；需要快速检查单一路由时使用 `--case <id>`。
 

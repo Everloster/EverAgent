@@ -670,6 +670,63 @@ semantic_tags: ["quality"]
         candidate["successful_runs"] = 41
         self.assertFalse(run_ace_context_ab.compare(baseline, candidate)["accepted"])
 
+    def test_ace_impact_selection_scopes_domain_changes(self):
+        cases = json.loads(
+            (ROOT / "evals" / "ace-report-tasks.json").read_text(encoding="utf-8")
+        )["cases"]
+
+        podcast = run_ace_context_ab.select_impacted_cases(
+            cases, ["podcast-learning/AGENTS.md"]
+        )
+        self.assertEqual(podcast["case_ids"], ["c_podcast"])
+        self.assertFalse(podcast["full_suite"])
+
+        paper_skill = run_ace_context_ab.select_impacted_cases(
+            cases, ["ai-learning/skills/paper_analysis/SKILL.md"]
+        )
+        self.assertEqual(
+            paper_skill["case_ids"],
+            [
+                "a_article_deep_analysis",
+                "a_paper_deep_read",
+                "a_existing_followup",
+                "a_brief_question",
+                "a_open_ended_learning_direction",
+            ],
+        )
+
+        root = run_ace_context_ab.select_impacted_cases(cases, ["AGENTS.md"])
+        self.assertTrue(root["full_suite"])
+        self.assertEqual(len(root["case_ids"]), len(cases))
+
+        uncovered = run_ace_context_ab.select_impacted_cases(
+            cases, ["web-surfing/skills/ai-tech-blog-radar/SKILL.md"]
+        )
+        self.assertEqual(
+            uncovered["uncovered_paths"],
+            ["web-surfing/skills/ai-tech-blog-radar/SKILL.md"],
+        )
+
+    def test_ace_context_diff_ignores_non_context_files(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            baseline = root / "baseline"
+            candidate = root / "candidate"
+            for snapshot, agents_text, readme_text in (
+                (baseline, "old", "before"),
+                (candidate, "new", "after"),
+            ):
+                agents = snapshot / "podcast-learning" / "AGENTS.md"
+                agents.parent.mkdir(parents=True)
+                agents.write_text(agents_text, encoding="utf-8")
+                (snapshot / "README.md").write_text(readme_text, encoding="utf-8")
+
+            changed = run_ace_context_ab.changed_behavior_context_paths(
+                baseline, candidate
+            )
+
+        self.assertEqual(changed, ["podcast-learning/AGENTS.md"])
+
     def test_ecommit_rejects_options_that_change_the_index_after_gate(self):
         proc = subprocess.run(
             ["bash", str(ROOT / "scripts" / "ecommit.sh"), "--all", "--dry-run"],

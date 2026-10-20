@@ -48,23 +48,107 @@ ROUTES = {
     "github-trending-analyzer",
     "web-surfing",
 }
+CONTEXT_PATTERNS = (
+    "AGENTS.md",
+    "CLAUDE.md",
+    "*/AGENTS.md",
+    ".agents/skills/**/SKILL.md",
+    "*/skills/**/SKILL.md",
+    "evals/ace-report-tasks.json",
+)
+
+
+def behavior_context_files(snapshot: Path) -> dict[str, Path]:
+    paths: set[Path] = set()
+    for pattern in CONTEXT_PATTERNS:
+        paths.update(path for path in snapshot.glob(pattern) if path.is_file())
+    return {
+        path.relative_to(snapshot).as_posix(): path
+        for path in paths
+    }
+
+
+def changed_behavior_context_paths(baseline: Path, candidate: Path) -> list[str]:
+    before = behavior_context_files(baseline)
+    after = behavior_context_files(candidate)
+    return sorted(
+        relative
+        for relative in before.keys() | after.keys()
+        if relative not in before
+        or relative not in after
+        or before[relative].read_bytes() != after[relative].read_bytes()
+    )
+
+
+def _case_skill_paths(case: dict[str, Any]) -> set[str]:
+    paths: set[str] = set()
+    for key in (
+        "expected_skill_paths",
+        "startup_expected_skill_paths",
+        "startup_optional_skill_paths",
+        "artifact_expected_skill_paths",
+        "forbidden_skill_paths",
+    ):
+        paths.update(map(str, case.get(key) or []))
+    return paths
+
+
+def select_impacted_cases(
+    cases: list[dict[str, Any]], changed_paths: list[str]
+) -> dict[str, Any]:
+    all_ids = [str(case["id"]) for case in cases]
+    if not changed_paths:
+        return {
+            "mode": "auto",
+            "case_ids": [],
+            "changed_context_paths": [],
+            "uncovered_paths": [],
+            "full_suite": False,
+        }
+    cross_cutting = {"AGENTS.md", "CLAUDE.md", "evals/ace-report-tasks.json"}
+    if cross_cutting & set(changed_paths):
+        return {
+            "mode": "auto-full",
+            "case_ids": all_ids,
+            "changed_context_paths": changed_paths,
+            "uncovered_paths": [],
+            "full_suite": True,
+        }
+
+    selected: set[str] = set()
+    uncovered: list[str] = []
+    for path in changed_paths:
+        parts = Path(path).parts
+        if len(parts) == 2 and parts[1] == "AGENTS.md":
+            route = parts[0]
+            matched = [
+                case
+                for case in cases
+                if case.get("expected_route") == route
+                or route in (case.get("startup_allowed_routes") or [])
+            ]
+        elif path.endswith("/SKILL.md"):
+            matched = [case for case in cases if path in _case_skill_paths(case)]
+        else:
+            matched = []
+        if matched:
+            selected.update(str(case["id"]) for case in matched)
+        else:
+            uncovered.append(path)
+    return {
+        "mode": "auto",
+        "case_ids": [case_id for case_id in all_ids if case_id in selected],
+        "changed_context_paths": changed_paths,
+        "uncovered_paths": sorted(uncovered),
+        "full_suite": False,
+    }
 
 
 def context_fingerprint(snapshot: Path) -> str:
-    paths: set[Path] = set()
-    for pattern in (
-        "AGENTS.md",
-        "CLAUDE.md",
-        "*/AGENTS.md",
-        ".agents/skills/**/SKILL.md",
-        "*/skills/**/SKILL.md",
-        "evals/ace-report-tasks.json",
-    ):
-        paths.update(path for path in snapshot.glob(pattern) if path.is_file())
+    paths = behavior_context_files(snapshot)
     digest = hashlib.sha256()
-    for path in sorted(paths, key=lambda item: item.relative_to(snapshot).as_posix()):
-        relative = path.relative_to(snapshot).as_posix().encode("utf-8")
-        digest.update(relative)
+    for relative, path in sorted(paths.items()):
+        digest.update(relative.encode("utf-8"))
         digest.update(b"\0")
         digest.update(path.read_bytes())
         digest.update(b"\0")
@@ -585,6 +669,11 @@ def render_markdown(document: dict[str, Any]) -> str:
     baseline = document["summaries"]["baseline"]
     candidate = document["summaries"]["candidate"]
     comparison = document["comparison"]
+    selection = document.get("case_selection") or {
+        "mode": "legacy-full",
+        "selected_count": len(candidate.get("cases") or []),
+        "total_count": len(candidate.get("cases") or []),
+    }
     metric_rows = [
         ("平均探针分", "mean_score", "higher"),
         ("最低探针分", "minimum_score", "higher"),
@@ -603,7 +692,7 @@ def render_markdown(document: dict[str, Any]) -> str:
     lines = [
         "# EverAgent Context 重构 ACE A/B 回放",
         "",
-        f"> 日期：{document['generated_on']}｜模型：`{document['model']}`｜Harness：Pi｜推理档位：`{document['thinking']}`",
+        f"> 日期：{document['generated_on']}｜模型：`{document['model']}`｜Harness：Pi｜推理档位：`{document['thinking']}`｜Case：{selection['selected_count']}/{selection['total_count']}（{selection['mode']}）",
         "",
         "## 结论",
         "",
@@ -613,7 +702,7 @@ def render_markdown(document: dict[str, Any]) -> str:
             else "候选 Context **未通过**本轮开工路由回放的接受条件。"
         ),
         "",
-        "本回放覆盖全部 ACE case 的路由、产物意图、最小 Context、Skill 选择和澄清边界；每个版本重复运行"
+        f"本回放覆盖 {selection['selected_count']} 个 ACE case 的路由、产物意图、最小 Context、Skill 选择和澄清边界；每个版本重复运行"
         f" {document['repetitions']} 次。它不替代完整报告生成，完整产物继续由真实报告回放验证。",
         "",
         "## 汇总",
@@ -671,6 +760,10 @@ def main() -> int:
     parser.add_argument("--candidate", required=True)
     parser.add_argument("--suite", type=Path, default=DEFAULT_SUITE)
     parser.add_argument("--case", action="append", dest="case_ids")
+    parser.add_argument(
+        "--full-suite", action="store_true",
+        help="run every ACE case instead of automatic impact selection",
+    )
     parser.add_argument("--repetitions", type=int, default=3)
     parser.add_argument("--jobs", type=int, default=3)
     parser.add_argument("--model", default=DEFAULT_MODEL)
@@ -683,19 +776,20 @@ def main() -> int:
 
     if args.repetitions < 1 or args.jobs < 1 or args.attempts < 1:
         parser.error("--repetitions, --jobs and --attempts must be positive")
+    if args.full_suite and args.case_ids:
+        parser.error("--full-suite cannot be combined with --case")
     if shutil.which("pi") is None:
         parser.error("pi is not installed")
     suite = json.loads(args.suite.read_text(encoding="utf-8"))
-    cases = suite.get("cases") or []
-    if not cases:
+    all_cases = suite.get("cases") or []
+    if not all_cases:
         parser.error("ACE suite has no cases")
     if args.case_ids:
         requested = set(args.case_ids)
-        known = {str(case.get("id")) for case in cases}
+        known = {str(case.get("id")) for case in all_cases}
         unknown = sorted(requested - known)
         if unknown:
             parser.error("unknown --case values: " + ", ".join(unknown))
-        cases = [case for case in cases if case.get("id") in requested]
 
     with tempfile.TemporaryDirectory(prefix="everagent-ace-ab-") as directory:
         temp = Path(directory)
@@ -707,6 +801,58 @@ def main() -> int:
             "baseline": _extract_snapshot(args.baseline, snapshots["baseline"]),
             "candidate": _extract_snapshot(args.candidate, snapshots["candidate"]),
         }
+        changed_paths = changed_behavior_context_paths(
+            snapshots["baseline"], snapshots["candidate"]
+        )
+        if args.full_suite:
+            selection = {
+                "mode": "full",
+                "case_ids": [str(case["id"]) for case in all_cases],
+                "changed_context_paths": changed_paths,
+                "uncovered_paths": [],
+                "full_suite": True,
+            }
+        elif args.case_ids:
+            requested = set(args.case_ids)
+            selection = {
+                "mode": "manual",
+                "case_ids": [
+                    str(case["id"])
+                    for case in all_cases
+                    if case.get("id") in requested
+                ],
+                "changed_context_paths": changed_paths,
+                "uncovered_paths": [],
+                "full_suite": False,
+            }
+        else:
+            selection = select_impacted_cases(all_cases, changed_paths)
+            if selection["uncovered_paths"]:
+                parser.error(
+                    "ACE suite does not cover changed context paths: "
+                    + ", ".join(selection["uncovered_paths"])
+                    + "; add coverage, use --case, or use --full-suite"
+                )
+            if not selection["case_ids"]:
+                parser.error(
+                    "baseline and candidate have no covered behavior-context changes; "
+                    "use --case or --full-suite for an explicit run"
+                )
+        selected_ids = set(selection["case_ids"])
+        cases = [case for case in all_cases if str(case["id"]) in selected_ids]
+        selection.update(
+            {
+                "selected_count": len(cases),
+                "total_count": len(all_cases),
+            }
+        )
+        print(
+            f"[ace-ab] selection={selection['mode']} "
+            f"cases={len(cases)}/{len(all_cases)} "
+            f"changed_context_paths={len(changed_paths)}",
+            file=sys.stderr,
+            flush=True,
+        )
         fingerprints = {
             label: context_fingerprint(snapshot)
             for label, snapshot in snapshots.items()
@@ -763,6 +909,7 @@ def main() -> int:
         "thinking": args.thinking,
         "probe_scope": "startup-routing",
         "execution_order": "paired-interleaved",
+        "case_selection": selection,
         "repetitions": args.repetitions,
         "refs": {
             "baseline": {
