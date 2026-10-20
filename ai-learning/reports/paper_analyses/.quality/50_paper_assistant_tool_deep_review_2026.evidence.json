@@ -1,0 +1,167 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/paper_analyses/50_paper_assistant_tool_deep_review_2026.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-20",
+  "generator": {
+    "model": "gpt-6",
+    "harness": "codex",
+    "run_id": "20261020-deep-read-3",
+    "explicit_model_override": true,
+    "override_reason": "当前协作运行时为 GPT-6，策略默认 glm-5.3 不适用本轮生成"
+  },
+  "task": {
+    "summary": "精读 Google Paper Assistant Tool 论文与 Deep Review 产品博客，解释分段、动态预算、局部深审和全局合成，并判断其评测和治理边界。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "解释 PAT/Deep Review 相对单次长上下文和独立 Pass@k 的架构增量。"
+      },
+      {
+        "id": "R02",
+        "text": "核对 SPOT、会议试点、作者 survey 和失败模式的数字及统计边界。"
+      },
+      {
+        "id": "R03",
+        "text": "提炼对 EverAgent 报告复核和双仓重构可借鉴的原则，同时保留人类责任。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "primary",
+      "title": "Towards Automating Scientific Review with Google’s Paper Assistant Tool",
+      "locator": "https://arxiv.org/abs/2606.28277",
+      "accessed_on": "2026-10-20"
+    },
+    {
+      "id": "S02",
+      "kind": "official",
+      "title": "Google Research — Analyzing technical documents with Deep Review",
+      "locator": "https://research.google/blog/analyzing-technical-documents-with-deep-review/",
+      "accessed_on": "2026-10-20"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "PAT/Deep Review 的核心流水线是语义分段、按复杂度动态预算、持有全局上下文的局部深审，以及带 grounding、去重和严重度判断的全局合成。",
+      "report_anchor": "PAT / Deep Review 的四阶段架构",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "论文系统章节与产品博客均描述 segmentation、adaptive compute、parallel deep review、global synthesis/grounding。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "SPOT 子集包含 26 篇论文和 29 个 equation/proof 错误，Gemini 3.1 Pro zero-shot detection 为 55.2%，PAT 为 89.7%。",
+      "report_anchor": "SPOT 实验：29 个真实错误",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "Table 2 与实验设置；报告把差值写为 34.5 个百分点，并说明不能与旧 grader 直接横比。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "论文阶段 STOC/ICML 试点审查超过 4,700 份文稿，而后续产品博客把覆盖更新为四个会议、超过 16,000 份 opt-in 文稿。",
+      "report_anchor": "真实试点：从 4,700 到 16,000 篇文稿",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "两个数字来自不同时间点和覆盖范围，报告明确未把后者外推为与论文同等效果数据。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "STOC/ICML survey 中认为反馈 Mostly/All grounded 的比例分别为 55.8% 和 64.8%，明显低于 helpful 比例。",
+      "report_anchor": "只有 **55.8% / 64.8%** 的反馈被认为大多或全部 grounded",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "Table 3；正文将其用于说明高满意度不能替代逐项核验。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "论文把 PAT 当前合适位置界定在作者和 reviewer 辅助角色，并讨论但没有证明全自动 peer review 已可用。",
+      "report_anchor": "作者认为 PAT 已适合 Role 1/2",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "治理章节提出 Role 1–4，并列出 Role 4 的集中化、deskilling、公平与责任风险。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "[推测] EverAgent 可将来源优先地图、风险分级预算和“局部 segment + 全局约束”用于报告与重构复核。",
+      "report_anchor": "与 EverAgent 报告机制的关系",
+      "support": "inference",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "工程建议由 Deep Review 的分段、动态预算和全局合成机制迁移而来，未宣称已被论文直接验证。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "单次长上下文、Pass@k 与验证注意力瓶颈",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "作者在解决什么问题"
+    },
+    {
+      "id": "U02",
+      "title": "分段、动态预算、Deep Review 与全局合成",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "report_anchor": "PAT / Deep Review 的四阶段架构"
+    },
+    {
+      "id": "U03",
+      "title": "SPOT、会议试点与作者反馈",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "report_anchor": "SPOT 实验：29 个真实错误"
+    },
+    {
+      "id": "U04",
+      "title": "失败模式、自动化角色与 EverAgent 迁移边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "report_anchor": "四级自动化角色与治理边界"
+    }
+  ],
+  "limitations": [
+    "SPOT 子集只有 29 个错误，grader 由作者设计并人工审计，缺少外部盲评与 critique precision。",
+    "会议试点是作者侧、预投稿、opt-in，survey 有选择偏差，也没有随机对照或最终接收质量比较。",
+    "PAT/Deep Review 是 proprietary pipeline，预算器、prompt、单位成本与完整误报率未公开。"
+  ]
+}

@@ -1,0 +1,570 @@
+{
+  "schema_version": 1,
+  "updated_on": "2026-10-20",
+  "description": "顶尖 AI 厂商与实验室官方技术源。must 直接进入更新雷达；watch 经过技术关键词过滤后进入。",
+  "research_report": "web-surfing/reports/ai-vendor-technical-sources-2026-10-20.md",
+  "defaults": {
+    "days": 7,
+    "limit": 30,
+    "workers": 4
+  },
+  "global_exclude_any": [
+    "funding",
+    "raises",
+    "office opening",
+    "hiring",
+    "career",
+    "customer story",
+    "webinar",
+    "event registration",
+    "award",
+    "融资",
+    "招聘",
+    "客户案例",
+    "办公室",
+    "获奖"
+  ],
+  "sources": [
+    {
+      "id": "openai-developer",
+      "name": "OpenAI Developer Blog",
+      "vendor": "OpenAI",
+      "tier": "must",
+      "enabled": true,
+      "homepage": "https://developers.openai.com/blog/",
+      "discovery": {
+        "kind": "search",
+        "query": "site:developers.openai.com/blog OpenAI Developer Blog"
+      },
+      "allow_domains": [
+        "developers.openai.com"
+      ],
+      "path_prefixes": [
+        "/blog/"
+      ],
+      "include_any": [],
+      "exclude_any": [],
+      "why": "Prompt、skills、eval、Codex 与 agent harness 的一手工程经验。"
+    },
+    {
+      "id": "anthropic",
+      "name": "Anthropic Engineering & Research",
+      "vendor": "Anthropic",
+      "tier": "must",
+      "enabled": true,
+      "homepage": "https://www.anthropic.com/engineering",
+      "discovery": {
+        "kind": "search",
+        "query": "site:anthropic.com/engineering OR site:anthropic.com/research Anthropic"
+      },
+      "allow_domains": [
+        "anthropic.com",
+        "www.anthropic.com"
+      ],
+      "path_prefixes": [
+        "/engineering/",
+        "/research/"
+      ],
+      "include_any": [],
+      "exclude_any": [],
+      "why": "Agent 工程、eval、interpretability、安全与真实失败模式。"
+    },
+    {
+      "id": "google-research",
+      "name": "Google Research Blog",
+      "vendor": "Google Research",
+      "tier": "must",
+      "enabled": true,
+      "homepage": "https://research.google/blog/",
+      "discovery": {
+        "kind": "rss",
+        "url": "https://research.google/blog/rss/"
+      },
+      "allow_domains": [
+        "research.google"
+      ],
+      "path_prefixes": [
+        "/blog/"
+      ],
+      "include_any": [],
+      "exclude_any": [],
+      "why": "基础研究、agent、安全、科学与系统方法。"
+    },
+    {
+      "id": "google-deepmind",
+      "name": "Google DeepMind Blog",
+      "vendor": "Google DeepMind",
+      "tier": "must",
+      "enabled": true,
+      "homepage": "https://deepmind.google/discover/blog/",
+      "discovery": {
+        "kind": "rss",
+        "url": "https://deepmind.google/blog/rss.xml"
+      },
+      "allow_domains": [
+        "deepmind.google"
+      ],
+      "path_prefixes": [
+        "/blog/"
+      ],
+      "include_any": [],
+      "exclude_any": [
+        "collaborate",
+        "partnership"
+      ],
+      "why": "前沿模型、科学突破、安全、隐私与系统架构。"
+    },
+    {
+      "id": "microsoft-research",
+      "name": "Microsoft Research Blog",
+      "vendor": "Microsoft Research",
+      "tier": "must",
+      "enabled": true,
+      "homepage": "https://www.microsoft.com/en-us/research/blog/",
+      "discovery": {
+        "kind": "rss",
+        "url": "https://www.microsoft.com/en-us/research/feed/"
+      },
+      "allow_domains": [
+        "microsoft.com",
+        "www.microsoft.com"
+      ],
+      "path_prefixes": [
+        "/en-us/research/blog/"
+      ],
+      "include_any": [],
+      "exclude_any": [],
+      "why": "Agent、评估、模型系统、人机协作与科学研究。"
+    },
+    {
+      "id": "apple-ml",
+      "name": "Apple Machine Learning Research",
+      "vendor": "Apple",
+      "tier": "must",
+      "enabled": true,
+      "homepage": "https://machinelearning.apple.com/",
+      "discovery": {
+        "kind": "rss",
+        "url": "https://machinelearning.apple.com/rss.xml"
+      },
+      "allow_domains": [
+        "machinelearning.apple.com"
+      ],
+      "path_prefixes": [
+        "/research/"
+      ],
+      "include_any": [],
+      "exclude_any": [],
+      "why": "论文摘要、端侧模型、隐私、多模态与 agent 架构。"
+    },
+    {
+      "id": "meta-fair",
+      "name": "Meta FAIR",
+      "vendor": "Meta",
+      "tier": "must",
+      "enabled": true,
+      "homepage": "https://ai.meta.com/blog/",
+      "discovery": {
+        "kind": "search",
+        "query": "site:ai.meta.com/blog Meta FAIR research model dataset benchmark"
+      },
+      "allow_domains": [
+        "ai.meta.com"
+      ],
+      "path_prefixes": [
+        "/blog/"
+      ],
+      "include_any": [
+        "fair",
+        "research",
+        "model",
+        "dataset",
+        "benchmark",
+        "open source"
+      ],
+      "exclude_any": [
+        "consumer",
+        "advertising"
+      ],
+      "why": "FAIR 研究、开放模型、数据集、机器人与多模态。"
+    },
+    {
+      "id": "ai2",
+      "name": "Ai2 Blog",
+      "vendor": "Ai2",
+      "tier": "must",
+      "enabled": true,
+      "homepage": "https://allenai.org/blog",
+      "discovery": {
+        "kind": "search",
+        "query": "site:allenai.org/blog Ai2 research model agent open"
+      },
+      "allow_domains": [
+        "allenai.org"
+      ],
+      "path_prefixes": [
+        "/blog/"
+      ],
+      "include_any": [],
+      "exclude_any": [],
+      "why": "开放训练 recipe、数据、checkpoint、agent 与 AI for Science。"
+    },
+    {
+      "id": "bytedance-seed",
+      "name": "ByteDance Seed",
+      "vendor": "ByteDance Seed",
+      "tier": "must",
+      "enabled": true,
+      "homepage": "https://seed.bytedance.com/en/",
+      "discovery": {
+        "kind": "search",
+        "query": "site:seed.bytedance.com/en/blog ByteDance Seed research model benchmark"
+      },
+      "allow_domains": [
+        "seed.bytedance.com"
+      ],
+      "path_prefixes": [
+        "/en/blog/",
+        "/blog/"
+      ],
+      "include_any": [],
+      "exclude_any": [
+        "campus recruitment",
+        "looking for talents",
+        "global talents"
+      ],
+      "why": "Frontier model、agent benchmark、视觉音频与 AI infra。"
+    },
+    {
+      "id": "tencent-hy",
+      "name": "Tencent HY Research",
+      "vendor": "Tencent",
+      "tier": "must",
+      "enabled": true,
+      "homepage": "https://hy.tencent.ai/research",
+      "discovery": {
+        "kind": "search",
+        "query": "site:hy.tencent.ai/research Tencent HY research"
+      },
+      "allow_domains": [
+        "hy.tencent.ai"
+      ],
+      "path_prefixes": [
+        "/research/",
+        "/research"
+      ],
+      "include_any": [],
+      "exclude_any": [],
+      "why": "Context learning、RL、scaffold、pretraining 与模型系统。"
+    },
+    {
+      "id": "qwen",
+      "name": "Qwen Blog",
+      "vendor": "Alibaba Qwen",
+      "tier": "must",
+      "enabled": true,
+      "homepage": "https://qwen.ai/blog",
+      "discovery": {
+        "kind": "search",
+        "query": "site:qwen.ai/blog OR site:qwenlm.github.io/blog Qwen model agent research"
+      },
+      "allow_domains": [
+        "qwen.ai",
+        "qwenlm.github.io"
+      ],
+      "path_prefixes": [
+        "/blog",
+        "/blog/"
+      ],
+      "include_any": [],
+      "exclude_any": [],
+      "why": "开放模型架构、训练、agent RL、多模态和 coding。"
+    },
+    {
+      "id": "kimi",
+      "name": "Kimi Research & Tech Blog",
+      "vendor": "Moonshot AI",
+      "tier": "must",
+      "enabled": true,
+      "homepage": "https://www.kimi.com/blog",
+      "discovery": {
+        "kind": "search",
+        "query": "site:kimi.com/blog Kimi research model benchmark agent"
+      },
+      "allow_domains": [
+        "kimi.com",
+        "www.kimi.com",
+        "platform.kimi.com"
+      ],
+      "path_prefixes": [
+        "/blog/",
+        "/blog"
+      ],
+      "include_any": [],
+      "exclude_any": [],
+      "why": "开放模型、attention 架构、agent、benchmark 与系统实验。"
+    },
+    {
+      "id": "nvidia-technical",
+      "name": "NVIDIA Technical Blog",
+      "vendor": "NVIDIA",
+      "tier": "watch",
+      "enabled": true,
+      "homepage": "https://developer.nvidia.com/blog/",
+      "discovery": {
+        "kind": "rss",
+        "url": "https://developer.nvidia.com/blog/feed/"
+      },
+      "allow_domains": [
+        "developer.nvidia.com"
+      ],
+      "path_prefixes": [
+        "/blog/"
+      ],
+      "include_any": [
+        "agent",
+        "llm",
+        "inference",
+        "training",
+        "cuda",
+        "kernel",
+        "model",
+        "reasoning",
+        "multimodal",
+        "robot"
+      ],
+      "exclude_any": [
+        "event",
+        "webinar"
+      ],
+      "why": "Kernel、CUDA、推理、训练、agent eval 与系统优化。"
+    },
+    {
+      "id": "huggingface",
+      "name": "Hugging Face Blog",
+      "vendor": "Hugging Face",
+      "tier": "watch",
+      "enabled": true,
+      "homepage": "https://huggingface.co/blog",
+      "discovery": {
+        "kind": "rss",
+        "url": "https://huggingface.co/blog/feed.xml"
+      },
+      "allow_domains": [
+        "huggingface.co"
+      ],
+      "path_prefixes": [
+        "/blog/"
+      ],
+      "include_any": [
+        "research",
+        "model",
+        "agent",
+        "training",
+        "inference",
+        "benchmark",
+        "dataset",
+        "open source",
+        "reproduc"
+      ],
+      "exclude_any": [
+        "welcome to hugging face"
+      ],
+      "why": "开源生态数据、复现实验、模型与工具链。"
+    },
+    {
+      "id": "amazon-science",
+      "name": "Amazon Science Blog",
+      "vendor": "Amazon Science",
+      "tier": "watch",
+      "enabled": true,
+      "homepage": "https://www.amazon.science/blog",
+      "discovery": {
+        "kind": "rss",
+        "url": "https://www.amazon.science/index.rss"
+      },
+      "allow_domains": [
+        "amazon.science",
+        "www.amazon.science"
+      ],
+      "path_prefixes": [
+        "/blog/"
+      ],
+      "include_any": [
+        "agent",
+        "machine learning",
+        "model",
+        "reasoning",
+        "inference",
+        "training",
+        "benchmark",
+        "architecture",
+        "research"
+      ],
+      "exclude_any": [
+        "award",
+        "initiative with"
+      ],
+      "why": "研究解释、ML systems、reasoning、agent 与科学应用。"
+    },
+    {
+      "id": "sakana",
+      "name": "Sakana AI Blog",
+      "vendor": "Sakana AI",
+      "tier": "watch",
+      "enabled": true,
+      "homepage": "https://sakana.ai/blog",
+      "discovery": {
+        "kind": "rss",
+        "url": "https://sakana.ai/feed.xml"
+      },
+      "allow_domains": [
+        "sakana.ai"
+      ],
+      "path_prefixes": [
+        "/"
+      ],
+      "include_any": [
+        "research",
+        "scientist",
+        "model",
+        "agent",
+        "learning",
+        "intelligence",
+        "benchmark",
+        "self-improvement",
+        "imitation"
+      ],
+      "exclude_any": [
+        "award",
+        "newsletter",
+        "welcoming"
+      ],
+      "why": "AI Scientist、collective intelligence 与原创研究方向。"
+    },
+    {
+      "id": "minimax",
+      "name": "MiniMax Blog",
+      "vendor": "MiniMax",
+      "tier": "watch",
+      "enabled": true,
+      "homepage": "https://www.minimax.io/blog",
+      "discovery": {
+        "kind": "search",
+        "query": "site:minimax.io/blog MiniMax technical research model"
+      },
+      "allow_domains": [
+        "minimax.io",
+        "www.minimax.io"
+      ],
+      "path_prefixes": [
+        "/blog/"
+      ],
+      "include_any": [
+        "model",
+        "research",
+        "architecture",
+        "agent",
+        "proof",
+        "training",
+        "attention",
+        "benchmark"
+      ],
+      "exclude_any": [
+        "business",
+        "partnership"
+      ],
+      "why": "模型架构、长上下文、数学证明与多模态技术文。"
+    },
+    {
+      "id": "mistral",
+      "name": "Mistral News",
+      "vendor": "Mistral AI",
+      "tier": "watch",
+      "enabled": true,
+      "homepage": "https://mistral.ai/news",
+      "discovery": {
+        "kind": "search",
+        "query": "site:mistral.ai/news Mistral technical report research architecture model"
+      },
+      "allow_domains": [
+        "mistral.ai"
+      ],
+      "path_prefixes": [
+        "/news/"
+      ],
+      "include_any": [
+        "technical",
+        "research",
+        "architecture",
+        "model",
+        "agent",
+        "open-weight",
+        "dataset",
+        "physics"
+      ],
+      "exclude_any": [
+        "funding",
+        "hub",
+        "partnership",
+        "summit"
+      ],
+      "why": "开放模型、Physics AI、架构和技术报告。"
+    },
+    {
+      "id": "zai",
+      "name": "Z.ai Blog",
+      "vendor": "Z.ai",
+      "tier": "watch",
+      "enabled": true,
+      "homepage": "https://z.ai/blog",
+      "discovery": {
+        "kind": "search",
+        "query": "site:z.ai/blog GLM technical research agent"
+      },
+      "allow_domains": [
+        "z.ai"
+      ],
+      "path_prefixes": [
+        "/blog/"
+      ],
+      "include_any": [
+        "glm",
+        "model",
+        "agent",
+        "coding",
+        "research",
+        "training",
+        "benchmark",
+        "architecture"
+      ],
+      "exclude_any": [
+        "pricing",
+        "subscription"
+      ],
+      "why": "GLM 模型、agentic engineering、RL infra 与能力评估。"
+    },
+    {
+      "id": "deepseek",
+      "name": "DeepSeek Research & News",
+      "vendor": "DeepSeek",
+      "tier": "watch",
+      "enabled": true,
+      "homepage": "https://www.deepseek.com/en/news",
+      "discovery": {
+        "kind": "sitemap",
+        "url": "https://www.deepseek.com/sitemap.xml"
+      },
+      "allow_domains": [
+        "deepseek.com",
+        "www.deepseek.com"
+      ],
+      "path_prefixes": [
+        "/en/news/"
+      ],
+      "include_any": [],
+      "exclude_any": [],
+      "why": "重大模型与论文发布信号；命中后继续读论文、模型卡和代码。"
+    }
+  ]
+}

@@ -9,6 +9,7 @@
 | 单一事实、页面或价格 | eacli typed capability | 直接答复 |
 | 公开清单或跨页整理 | 已有 `site-*` playbook；无匹配再选工具 | 有长期价值时归档 |
 | AI 新闻日报 | [ai-news-readability](./skills/ai-news-readability/SKILL.md) | 日报 |
+| 顶尖 AI 技术博客更新或渠道维护 | [ai-tech-blog-radar](./skills/ai-tech-blog-radar/SKILL.md) | 近期更新清单或渠道注册表变更 |
 | 需要登录态或页面交互 | 可用 adapter；必要时读 [opencli-playbook](./skills/opencli-playbook.md) | 按任务交付 |
 
 归档报告时使用根级 [`everagent-report`](../.agents/skills/everagent-report/SKILL.md)。不要为了可能复用而预先读取所有站点 playbook。

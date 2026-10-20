@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/GPT6软件维护_从广义侦察到证据驱动清理_深度解析_20261020.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "review-openai-maintenance-20261020",
+        "independent_context": true,
+        "explicit_model_override": true,
+        "override_reason": "important 报告采用策略 strong reviewer 做独立来源级复核"
+      },
+      "scores": {
+        "evidence_fidelity": 95,
+        "request_coverage": 91,
+        "reasoning_quality": 91,
+        "readability": 93,
+        "limitations": 95
+      },
+      "score_reasons": {
+        "evidence_fidelity": "已独立读取两个 OpenAI 官方来源及 S01 的 Markdown 原文。C01–C04 的方法、规模、成本、发现数与 CI 数字均与原文一致；92%、14%、48% 与 95% 的舍入也正确。报告将 OpenAI 自报、人工核验口径和无独立复现的边界明确写出。",
+        "request_coverage": "R01–R03 均已覆盖：报告重构了侦察、多源证据、小 PR、人工复核和反馈扩展闭环，核对了规模与性能数字，并给出双仓可执行推论。S02 的独特内容仅部分进入正文，未完整展开短 skill 描述、渐进披露、条件读取、安全权限和完成条件。",
+        "reasoning_quality": "报告区分原文主张与对 EverAgent 的工程推论，并把证据门槛、风险升级、收益排序和模型错误模式连成合理闭环。对 telemetry、owner、review 基础设施缺失时的外推风险有充分约束。",
+        "readability": "x → f → f(x)、一页结论、主题分节、数字表和独立的证据边界使报告可脱离对话阅读。结构清楚，少量内容在一页结论、章节和最终问答中重复，但不影响理解。",
+        "limitations": "明确列出了自报数据、无公开数据集与独立复现、缺少候选分母与 precision/recall、选择偏差、成本口径及对强内部基础设施的依赖；还指出全仓提示本身有省略，局限披露充分。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04"
+      ],
+      "source_content_map": [
+        {
+          "id": "SCM01",
+          "title": "广义死代码侦察必须综合仓库历史、协作上下文、项目跟踪与生产 profiling，并为每次删除解释理由",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01"
+          ],
+          "notes": "第 1 节准确重构了宽泛提示、多源证据选择、可证伪问题与进入 review 的条件。"
+        },
+        {
+          "id": "SCM02",
+          "title": "五人兼职两周、1400+ PR、删除 80 万+ 行及镜像和快照收益属于 OpenAI 自报的规模化结果",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02"
+          ],
+          "notes": "第 2 节完整保留规模、时间和收益数字，并立即说明缺少候选总量、拒绝、回滚和误删口径。"
+        },
+        {
+          "id": "SCM03",
+          "title": "陈旧实验需超越静态分析，用 safeguards、instrumentation、收益优先级和人工判断形成清理闭环",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01",
+            "U02"
+          ],
+          "notes": "第 3 节覆盖了生产配置、间接引用、kill switch、单个小 PR、禁止线上修改和 Permanent flag 的人工升级，0.42% CPU 数字正确。"
+        },
+        {
+          "id": "SCM04",
+          "title": "模型与 effort 的成本效果比较应保留审计范围、成本口径、接受发现数以及模型特有漏检模式",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02",
+            "U03"
+          ],
+          "notes": "第 4 节保留超过 6000 文件、100 万行与三种配置的完整表格，并解释常量 flag 作为其他 flag 依赖的 Astra/Sol 差异及反馈提示闭环。"
+        },
+        {
+          "id": "SCM05",
+          "title": "CI 优化与维护提示从短提示起步，约 30 个 PR 后 CI median、P90 和单 suite 时长均显著下降",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02"
+          ],
+          "notes": "第 5 节的 median 10 → 4.5 分钟、P90 12.5 → 6 分钟、592.6 → 29.8 秒与保留 63 个测试均与原文一致。"
+        },
+        {
+          "id": "SCM06",
+          "title": "落地路径是单个小任务、证据与小型 draft PR、比较模型配置、吸收 review 反馈后逐级扩大范围",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01",
+            "U04"
+          ],
+          "notes": "x → f → f(x)、一页结论和双仓工程推论均保留了 start small、review、吸收反馈和分阶段扩展的原文主线。"
+        },
+        {
+          "id": "SCM07",
+          "title": "模型升级后应清理过长技能与常驻指令，采用渐进披露、条件路由、明确安全权限和完成条件",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03",
+            "U04"
+          ],
+          "notes": "报告覆盖了新模型发布后重新审视旧提示、AGENTS.md 反事实 A/B 和按需加载的背景，但未系统展开 S02 的短描述、渐进披露、条件读取、安全授权和完成定义。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "核心主张与数字均通过官方原文复核，无硬失败。轻微缺口为 S02 的独立内容覆盖不完整；该来源在证据账本中为 supporting 单元，不影响 R01–R03 与报告核心结论。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 93.1,
+    "evaluated_on": "2026-10-20",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "f537d6b3a4919edf69686a29a669e680ceae82e37a249bffc69ee8b084de885c",
+    "evidence_sha256": "d7a3d8e5e210a0150dc3ed8770f2f4af4aa7da30c62f3edf7559d51325917450"
+  }
+}

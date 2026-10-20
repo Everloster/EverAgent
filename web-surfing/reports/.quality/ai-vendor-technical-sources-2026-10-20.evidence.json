@@ -1,0 +1,342 @@
+{
+  "schema_version": 1,
+  "report_path": "web-surfing/reports/ai-vendor-technical-sources-2026-10-20.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-20",
+  "generator": {
+    "model": "gpt-6",
+    "harness": "codex",
+    "run_id": "ai-vendor-sources-20261020",
+    "explicit_model_override": true,
+    "override_reason": "当前会话实际运行模型为 Codex GPT-6，用于本次厂商技术源调研"
+  },
+  "task": {
+    "summary": "调研顶级 AI 厂商与实验室的官方技术信息源，抽样验证内容质量、更新节奏与订阅通道，压缩成可用于后续定期雷达的必看/观察/不收名单。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "只评估厂商与实验室官方一手源，按必看、观察、不收三档给出约 15–20 个核心来源。"
+      },
+      {
+        "id": "R02",
+        "text": "每个核心来源核验代表内容、技术深度、更新特征和 RSS/sitemap/HTML/搜索订阅可行性。"
+      },
+      {
+        "id": "R03",
+        "text": "给出不过度复杂的后续订阅方案；本轮不实现脚本或定时任务。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "official",
+      "title": "OpenAI Developer Blog — Rethinking skills and prompts for GPT-6 Astra",
+      "locator": "https://developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra",
+      "accessed_on": "2026-10-20"
+    },
+    {
+      "id": "S02",
+      "kind": "official",
+      "title": "OpenAI Developer sitemap index",
+      "locator": "https://developers.openai.com/sitemap-index.xml",
+      "accessed_on": "2026-10-20"
+    },
+    {
+      "id": "S03",
+      "kind": "official",
+      "title": "OpenAI Developers RSS",
+      "locator": "https://developers.openai.com/rss.xml",
+      "accessed_on": "2026-10-20"
+    },
+    {
+      "id": "S04",
+      "kind": "official",
+      "title": "Anthropic Engineering — Effective harnesses for long-running agents",
+      "locator": "https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents",
+      "accessed_on": "2026-10-20"
+    },
+    {
+      "id": "S05",
+      "kind": "official",
+      "title": "Anthropic sitemap",
+      "locator": "https://www.anthropic.com/sitemap.xml",
+      "accessed_on": "2026-10-20"
+    },
+    {
+      "id": "S06",
+      "kind": "official",
+      "title": "Google Research Blog RSS",
+      "locator": "https://research.google/blog/rss/",
+      "accessed_on": "2026-10-20"
+    },
+    {
+      "id": "S07",
+      "kind": "official",
+      "title": "Google DeepMind Blog RSS",
+      "locator": "https://deepmind.google/blog/rss.xml",
+      "accessed_on": "2026-10-20"
+    },
+    {
+      "id": "S08",
+      "kind": "official",
+      "title": "Microsoft Research — SkillOpt",
+      "locator": "https://www.microsoft.com/en-us/research/blog/skillopt-agent-skills-as-trainable-parameters",
+      "accessed_on": "2026-10-20"
+    },
+    {
+      "id": "S09",
+      "kind": "official",
+      "title": "Apple Machine Learning Research RSS",
+      "locator": "https://machinelearning.apple.com/rss.xml",
+      "accessed_on": "2026-10-20"
+    },
+    {
+      "id": "S10",
+      "kind": "official",
+      "title": "Meta FAIR research release on agents, robustness and architecture",
+      "locator": "https://ai.meta.com/blog/meta-fair-updates-agents-robustness-safety-architecture/",
+      "accessed_on": "2026-10-20"
+    },
+    {
+      "id": "S11",
+      "kind": "official",
+      "title": "Ai2 — DR Tulu",
+      "locator": "https://allenai.org/blog/dr-tulu",
+      "accessed_on": "2026-10-20"
+    },
+    {
+      "id": "S12",
+      "kind": "official",
+      "title": "ByteDance Seed — EdgeBench",
+      "locator": "https://seed.bytedance.com/en/blog/edgebench-measuring-real-world-environment-learning-and-discovering-a-new-scaling-law",
+      "accessed_on": "2026-10-20"
+    },
+    {
+      "id": "S13",
+      "kind": "official",
+      "title": "Tencent HY Research",
+      "locator": "https://hy.tencent.ai/research",
+      "accessed_on": "2026-10-20"
+    },
+    {
+      "id": "S14",
+      "kind": "official",
+      "title": "Qwen3-Coder: Agentic Coding in the World",
+      "locator": "https://qwenlm.github.io/blog/qwen3-coder/",
+      "accessed_on": "2026-10-20"
+    },
+    {
+      "id": "S15",
+      "kind": "official",
+      "title": "Kimi K3 Tech Blog",
+      "locator": "https://www.kimi.com/blog/kimi-k3",
+      "accessed_on": "2026-10-20"
+    },
+    {
+      "id": "S16",
+      "kind": "official",
+      "title": "NVIDIA Technical Blog RSS",
+      "locator": "https://developer.nvidia.com/blog/feed/",
+      "accessed_on": "2026-10-20"
+    },
+    {
+      "id": "S17",
+      "kind": "official",
+      "title": "Hugging Face Blog RSS feed",
+      "locator": "https://huggingface.co/blog/feed.xml",
+      "accessed_on": "2026-10-20"
+    },
+    {
+      "id": "S18",
+      "kind": "official",
+      "title": "Amazon Science RSS",
+      "locator": "https://www.amazon.science/index.rss",
+      "accessed_on": "2026-10-20"
+    },
+    {
+      "id": "S19",
+      "kind": "official",
+      "title": "Sakana AI Atom feed",
+      "locator": "https://sakana.ai/feed.xml",
+      "accessed_on": "2026-10-20"
+    },
+    {
+      "id": "S20",
+      "kind": "official",
+      "title": "MiniMax M3 technical blog",
+      "locator": "https://www.minimax.io/blog/minimax-m3",
+      "accessed_on": "2026-10-20"
+    },
+    {
+      "id": "S21",
+      "kind": "official",
+      "title": "Mistral Physics AI research",
+      "locator": "https://mistral.ai/news/physics-ai-research",
+      "accessed_on": "2026-10-20"
+    },
+    {
+      "id": "S22",
+      "kind": "official",
+      "title": "Z.ai — GLM-5.3 technical blog",
+      "locator": "https://z.ai/blog/glm-5.3",
+      "accessed_on": "2026-10-20"
+    },
+    {
+      "id": "S23",
+      "kind": "official",
+      "title": "DeepSeek sitemap",
+      "locator": "https://www.deepseek.com/sitemap.xml",
+      "accessed_on": "2026-10-20"
+    },
+    {
+      "id": "S24",
+      "kind": "official",
+      "title": "DeepSeek V4 Preview release page",
+      "locator": "https://www.deepseek.com/en/news/v4-preview/",
+      "accessed_on": "2026-10-20"
+    },
+    {
+      "id": "S25",
+      "kind": "official",
+      "title": "OpenAI News RSS",
+      "locator": "https://openai.com/news/rss.xml",
+      "accessed_on": "2026-10-20"
+    },
+    {
+      "id": "S26",
+      "kind": "official",
+      "title": "NVIDIA — How to Evaluate AI Agents From Tool Calls to Task Completion",
+      "locator": "https://developer.nvidia.com/blog/how-to-evaluate-ai-agents-from-tool-calls-to-task-completion/",
+      "accessed_on": "2026-10-20"
+    },
+    {
+      "id": "S27",
+      "kind": "official",
+      "title": "Microsoft Research RSS",
+      "locator": "https://www.microsoft.com/en-us/research/feed/",
+      "accessed_on": "2026-10-20"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "厂商官方技术源适合建立长期雷达，但首期应压缩为 12 个必看和 8 个观察源，以栏目和路径为订阅单位。",
+      "report_anchor": "建议首期只保留 **20 个来源：12 个必看、8 个观察**",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S04",
+        "S06",
+        "S07",
+        "S08",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S19",
+        "S20",
+        "S21",
+        "S22",
+        "S24"
+      ],
+      "evidence": "对 25 个以上候选入口做官方域名检索，成功读取 44 个页面/样本；正文表格逐项记录代表内容、技术密度与订阅通道。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "20 个核心源中，当前有 Google Research、DeepMind、Microsoft Research、Apple ML、NVIDIA、Hugging Face、Amazon Science、Sakana 这 8 个目标栏目可通过官方 RSS/Atom 发现更新。",
+      "report_anchor": "当前有 8 个目标栏目能通过官方 RSS/Atom 发现更新",
+      "support": "direct",
+      "source_ids": [
+        "S06",
+        "S07",
+        "S27",
+        "S09",
+        "S16",
+        "S17",
+        "S18",
+        "S19"
+      ],
+      "evidence": "逐个检查官方 feed 的 RSS/Atom XML 根节点与条目；Microsoft Research 在 eacli 复核通道返回标准 RSS，本机直接访问偶发 403；OpenAI Developers RSS 不覆盖 Blog。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "OpenAI Developers RSS 是开发文档总 feed，实测 138 条中没有 /blog/ 条目，Developer Blog 应通过 sitemap 过滤 /blog/ 发现。",
+      "report_anchor": "实测 138 条中没有 Blog 文章",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "2026-10-20 解析 developers.openai.com/rss.xml 得到 138 个 item，链接中未发现 /blog/；robots.txt 指向 sitemap-index.xml，子 sitemap 含 Blog URL。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "高更新量源必须加主题与路径过滤：按 feed 可见条目，OpenAI 主站近 30 天约 65 条、NVIDIA 约 41 条、Hugging Face 约 21 条。",
+      "report_anchor": "OpenAI 的 <https://openai.com/news/rss.xml> 可以用于发现主站更新，但近 30 天可见约 65 条",
+      "support": "direct",
+      "source_ids": [
+        "S16",
+        "S17",
+        "S25"
+      ],
+      "evidence": "以 2026-10-20 为时点解析官方 feed 的发布日期；正文同时说明截断 feed 只能提供下限。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "OpenAI、Anthropic、Microsoft Research、Ai2、ByteDance Seed、Qwen、Kimi 等源能提供机制、失败模式、训练或评测细节；DeepSeek 当前新闻页更适合做发布信号，再追论文、模型卡和代码。",
+      "report_anchor": "命中新发布后继续读论文、GitHub 与 model card",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S04",
+        "S08",
+        "S11",
+        "S12",
+        "S14",
+        "S15",
+        "S20",
+        "S24",
+        "S26"
+      ],
+      "evidence": "抽读文章分别包含跨会话 failure modes、52 个评测单元、开放 recipe、134 个长任务、训练 token/agent RL、模型架构与系统实验；DeepSeek 两篇样本以简短规格、价格和 benchmark 图为主。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "[推测] 后续最小机制应只做发现、去重、三类分流和每周汇总，先半自动运行两周再决定是否写脚本。",
+      "report_anchor": "[推测] 暂时不需要新建庞大的评分体系",
+      "support": "inference",
+      "source_ids": [
+        "S02",
+        "S05",
+        "S06",
+        "S07",
+        "S16",
+        "S17",
+        "S18",
+        "S19",
+        "S23"
+      ],
+      "evidence": "RSS、sitemap 和列表页已能覆盖发现面；主要风险来自内容噪声和错误触发，因此先验证过滤命中率比扩展来源数更重要。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [],
+  "limitations": [
+    "本报告评估信息源质量与订阅可行性，不评估各厂商模型的绝对能力。",
+    "厂商 benchmark、成本和能力数字均为厂商自报，未在本报告中当成独立复现结论。",
+    "部分动态站点、WAF 和边缘节点会让同一 URL 在不同通道返回 200 或 403，长期自动化需在实际执行设备复测并保留 fallback。",
+    "RSS 近 30 天数量按 2026-10-20 feed 可见条目计算，截断 feed 只能提供下限。",
+    "本轮不覆盖个人研究者、Newsletter、媒体和社交账号。"
+  ]
+}

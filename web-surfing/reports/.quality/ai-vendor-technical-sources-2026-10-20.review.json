@@ -1,0 +1,356 @@
+{
+  "schema_version": 1,
+  "report_path": "web-surfing/reports/ai-vendor-technical-sources-2026-10-20.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "ai-vendor-sources-review-r2-20261020",
+        "independent_context": true,
+        "explicit_model_override": true,
+        "override_reason": "策略默认 glm-5.3 在当前协作运行时不可用，沿用 gpt-5.6-sol 复核修订版"
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 95,
+        "request_coverage": 96,
+        "reasoning_quality": 94,
+        "readability": 95,
+        "limitations": 96
+      },
+      "score_reasons": {
+        "evidence_fidelity": "Revision 2 已修复唯一阻断事实：C02 现将 Microsoft Research RSS（S27）纳入，8 个官方 RSS/Atom 的清单与前轮实测一致；Microsoft feed 在 eacli 可读、直接访问可能随边缘节点出现 200/403 的表述准确区分了“存在官方 feed”和“单通道稳定性”。OpenAI Developers 138 条且无 /blog/、OpenAI/NVIDIA/Hugging Face 近 30 天 65/41/21 等数字保持正确。Hugging Face 已统一称 RSS，未再误称 Atom。C01、C03–C05 的来源支持与 C06 推断未被修订破坏。",
+        "request_coverage": "R01–R03 完整满足。20 个核心源仍清楚分为 12 个必看、8 个观察；每个来源给出代表内容、技术深度、更新/噪声特征和 RSS/sitemap/HTML/搜索通道；最小方案已同步改为“8 个 RSS/Atom + sitemap + HTML 列表”，且仍明确本轮不实现脚本。C02/R02 的 Microsoft 订阅通道已在表格、专门清单、最小机制和 evidence 中一致修正。",
+        "reasoning_quality": "三档分类和订阅策略的推理保持一致，并将厂商自报与报告建议明确分离。Revision 2 不再把一次 403 外推成 feed 不存在，而是把 Microsoft RSS 作为主发现通道、HTML/官方搜索作为 fallback，正确处理边缘节点和 WAF 的可用性波动。先半自动运行两周再决定开发的建议仍有充分边界。",
+        "readability": "结论、12+8 表格、8 项 feed 清单和四步最小机制前后一致，读者可直接执行。Microsoft Research 行同时说明官方 RSS 与 fallback，Hugging Face 行统一使用 RSS；正文没有残留“7 个 feed”或“Hugging Face Atom”误称。",
+        "limitations": "正文和 evidence 已补充同一 URL 可能因 WAF/边缘节点在不同通道返回 200 或 403，要求实际设备复测并保留 fallback；同时继续保留厂商自报、时间窗口、feed 截断和范围边界。该修订正面覆盖了上一轮错误产生的原因。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05"
+      ],
+      "coverage_unit_ids_checked": [],
+      "source_content_map": [
+        {
+          "id": "SCM01",
+          "title": "机制、失败模式、训练与评测细节丰富的一手技术文",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S04",
+            "S08",
+            "S11",
+            "S12",
+            "S14",
+            "S15",
+            "S20",
+            "S22",
+            "S26"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "前轮已逐项直读核验；修订未改变这些来源的分档与技术价值表述。"
+        },
+        {
+          "id": "SCM02",
+          "title": "8 个目标栏目的官方 RSS/Atom 发现面",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S06",
+            "S07",
+            "S27",
+            "S09",
+            "S16",
+            "S17",
+            "S18",
+            "S19"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "Microsoft Research RSS 已以 S27 登记并纳入正文清单；其余七个 feed 延续前轮核验。Hugging Face 正确标为 RSS，Sakana 正确标为 Atom。"
+        },
+        {
+          "id": "SCM03",
+          "title": "OpenAI Developer Blog 需要 sitemap 而非 Developers 总 feed",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "Developers RSS 138 条且无 /blog/，sitemap 可发现 Blog；revision 2 表述无变化且仍准确。"
+        },
+        {
+          "id": "SCM04",
+          "title": "高更新量源必须按路径、作者和主题过滤",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S16",
+            "S17",
+            "S25"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "近 30 天 OpenAI 65、NVIDIA 41、Hugging Face 21 条保持与前轮按发布日期核验结果一致。"
+        },
+        {
+          "id": "SCM05",
+          "title": "发布信号与深度技术源采用不同阅读深度",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S10",
+            "S13",
+            "S21",
+            "S24"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "报告继续区分研究/开放产物与简短规格、价格和 benchmark 发布页，并为 DeepSeek 设置后续论文、模型卡和代码追踪。"
+        },
+        {
+          "id": "SCM06",
+          "title": "厂商自报与分析者建议的边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S14",
+            "S15",
+            "S20",
+            "S22",
+            "S24"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "正文局限明确把能力、成本和 benchmark 视为厂商自报，三档分类与订阅动作属于报告分析。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S19",
+        "S20",
+        "S21",
+        "S22",
+        "S24",
+        "S25",
+        "S26",
+        "S27"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "Revision 2 定向复核完成。前轮已通过 eacli Token Plan 读取全部 critical claim 官方源，并用只读 HTTP 复核 XML/feed；本轮对照修订后的报告与 evidence 重点检查 C02、R02 和旧 hard failures。S27 已登记为 Microsoft Research RSS，C02 改为 8 个目标栏目，正文的结论段、Microsoft 表格行、8 项 feed 清单、最小机制与 evidence 完全一致；对 200/403 波动的说明不再把单次 403 等同于 feed 不存在。正文与 evidence 当前无“7 个 feed”残留；Hugging Face 仅称 RSS，Atom 只用于 RSS/Atom 泛称和实际为 Atom 的 Sakana。上一轮 critical_claim_unsupported 与 key_number_mismatch 已消失，C02 现有充分支持。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 95.1,
+    "evaluated_on": "2026-10-20",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "4adc1e475bb98db2405eeead380cae6f1694b87ab7b8b2700317ec42f1dcee6d",
+    "evidence_sha256": "5731c552d8a6cd33b4e4d99b6acba2af78ca1862fc0ec5211ef8fa2f6283c300"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex",
+            "run_id": "ai-vendor-sources-review-20261020-sol",
+            "independent_context": true,
+            "explicit_model_override": true,
+            "override_reason": "父任务明确指定 gpt-5.6-sol 作为本轮独立 Reviewer"
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 84,
+            "request_coverage": 94,
+            "reasoning_quality": 92,
+            "readability": 94,
+            "limitations": 91
+          },
+          "score_reasons": {
+            "evidence_fidelity": "C01、C03、C04、C05 均经关键官方来源核验，C06 的推断也与来源发现面和噪声特征相符。重点数字中，OpenAI Developers RSS 为 138 条且 0 条链接含 /blog/，developer sitemap 子表含 39 个 /blog/ URL；按 2026-10-20 时点和 feed 的发布日期字段，OpenAI 主站、NVIDIA、Hugging Face 近 30 天分别为 65、41、21 条，均与报告一致。但 C02 的“只有 7 个专用 RSS/Atom”已被复核反证：Microsoft Research 官方 feed https://www.microsoft.com/en-us/research/feed/ 经 eacli web.read 成功读取，直接 GET 为 HTTP 200、application/rss+xml、RSS 根节点并含 10 个条目，因此核心数字应至少为 8，正文的“当前返回 403”也不成立。另有轻微格式误称：Hugging Face feed 的实测根节点是 RSS，不是 Atom。",
+            "request_coverage": "R01–R03 均有明确交付：20 个核心源被分成 12 个必看和 8 个观察，逐源给出代表内容、内容价值、更新/噪声特征及订阅方式，并提供不写脚本的四步最小雷达方案。xAI、Cohere Labs、国内研究机构和云工程博客也在“不收”段说明，未发现一个足以确定应替换现有核心席位的显著遗漏。扣分来自 R02 的 Microsoft Research 订阅通道核验错误，以及 evidence 未登记正文中多篇用于逐源判断的代表文章。",
+            "reasoning_quality": "三档标准围绕机制、实验、工程经验、开放产物、噪声和订阅可行性展开，必看/观察/不收的推理基本一致；DeepSeek 作为发布信号、NVIDIA/Hugging Face 需要主题过滤、先半自动运行两周再决定开发的建议均有来源特征支撑。报告也把厂商 benchmark 与分析者建议分开。主要缺陷是把一次 403 访问结果外推成 Microsoft feed 不可用，并据此形成“7 个”排他性结论，缺少带常规 User-Agent 的复测或第二通道核验。",
+            "readability": "结论、判断方法、12+8 表格、订阅通道和最小机制层次清楚，可脱离对话独立阅读；每个来源都能直接看到价值、噪声和建议动作。轻微问题是 Hugging Face 的 RSS 被称为 Atom，以及 Microsoft feed 错误在结论、表格和订阅章节重复出现，放大了单点核验错误。",
+            "limitations": "正文主动限定为官方厂商/实验室源，明确厂商能力与 benchmark 属自报，说明 WAF、动态站点、feed 截断和时间窗口边界，并把自动化建议标为推测。仍应补充：可访问性会随 User-Agent、边缘节点和时间变化，403 不能直接证明 feed 不可用；“只有 N 个 feed”应记录复测方法和时点。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05"
+          ],
+          "coverage_unit_ids_checked": [],
+          "source_content_map": [
+            {
+              "id": "SCM01",
+              "title": "机制、失败模式、训练与评测细节丰富的一手技术文",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S04",
+                "S08",
+                "S11",
+                "S12",
+                "S14",
+                "S15",
+                "S20",
+                "S22",
+                "S26"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "来源分别覆盖技能/提示设计、长任务 harness 失败模式、52 个评测单元、开放训练 recipe、134 个长任务、long-horizon RL、模型架构与系统实验、agent eval；报告将其映射到必看或需过滤的技术源。"
+            },
+            {
+              "id": "SCM02",
+              "title": "研究栏目与专用 feed 的稳定发现面",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S06",
+                "S07",
+                "S09",
+                "S16",
+                "S17",
+                "S18",
+                "S19"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "七个已登记 feed 均可解析且包含报告所列代表主题；但 Microsoft Research 另有可用官方 RSS，报告的“只有 7 个”结论需修订为至少 8 个并补登记该 feed。Hugging Face feed 根节点为 RSS。"
+            },
+            {
+              "id": "SCM03",
+              "title": "OpenAI Developer Blog 需要 sitemap 而非 Developers 总 feed",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "Developers RSS 共 138 条且无 /blog/ 链接；sitemap-index 指向的 sitemap-0 含 39 个 /blog/ URL，支持报告的发现策略。"
+            },
+            {
+              "id": "SCM04",
+              "title": "高更新量源必须按路径、作者和主题过滤",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S16",
+                "S17",
+                "S25"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "按发布日期核得近 30 天 OpenAI 主站 65、NVIDIA 41、Hugging Face 21 条；报告据此把三者放入补充或观察层并设计过滤。"
+            },
+            {
+              "id": "SCM05",
+              "title": "研究目录、开放产物与发布信号应采用不同阅读深度",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S10",
+                "S13",
+                "S21",
+                "S24"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "Meta FAIR、Tencent HY、Mistral 页面能发现研究与开放产物；DeepSeek V4 Preview 主要是规格、价格、benchmark 图和简短结构说明，支持“先提醒，再追论文/模型卡/代码”的处理。"
+            },
+            {
+              "id": "SCM06",
+              "title": "厂商自报与 Reviewer/报告建议的边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S14",
+                "S15",
+                "S20",
+                "S22",
+                "S24"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "这些页面包含大量厂商自报能力、benchmark、成本或效率数字；报告在局限中明确不当成独立复现，并把订阅和深读建议写成分析者判断。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S06",
+            "S07",
+            "S08",
+            "S09",
+            "S10",
+            "S11",
+            "S12",
+            "S13",
+            "S14",
+            "S15",
+            "S16",
+            "S17",
+            "S18",
+            "S19",
+            "S20",
+            "S21",
+            "S22",
+            "S24",
+            "S25",
+            "S26"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03"
+          ],
+          "unsupported_claims": [
+            "C02"
+          ],
+          "missing_requirements": [],
+          "hard_failures": [
+            "critical_claim_unsupported",
+            "key_number_mismatch"
+          ],
+          "notes": "已遵守 Token Plan-first：先运行 eacli tokenplan catalog、tool select(web.read/web.search) 和 doctor，再用 eacli web.read 实际读取全部 critical claim 涉及的 24 个已登记官方源。因 eacli 对大型 XML/feed 输出截断到 32,000 字符，随后用只读 HTTP 复核 10 个 XML/feed 的 Content-Type、根节点、条目、链接和发布日期；未绕过 typed capability 读取普通网页。C01–C06 与 R01–R03 均逐项检查。可确认的关键数字：Developers RSS 138 条且无 /blog/，OpenAI/NVIDIA/Hugging Face 近 30 天 65/41/21。阻断问题：Microsoft Research 官方 feed 在本轮 eacli 和直接 GET 均成功，HTTP 200，RSS 根节点，10 个条目；因此 C02、结论段、Microsoft 表格行和“7 个 feed”列表必须改为至少 8 个并将 Microsoft 加入，evidence 也应登记该 feed。建议同时把 Hugging Face 的“Atom”改为“RSS”。未发现需强制加入核心名单的显著遗漏；xAI、Cohere 等已被显式讨论，是否纳入属于可辩护的编辑判断。正文还引用多篇未进入 evidence sources 的代表文章，后续修订应最小补登记真正影响分档判断的页面。"
+        }
+      ],
+      "decision": {}
+    }
+  ]
+}

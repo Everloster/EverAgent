@@ -1,0 +1,404 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/paper_analyses/49_plan_retrieve_tool_discovery_2026.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "review-apple-tools-r2-20261020",
+        "independent_context": true,
+        "explicit_model_override": true,
+        "override_reason": "revision 2 采用全新 strong reviewer 做独立来源级复核"
+      },
+      "scores": {
+        "evidence_fidelity": 96,
+        "request_coverage": 97,
+        "reasoning_quality": 95,
+        "readability": 97,
+        "limitations": 98
+      },
+      "score_reasons": {
+        "evidence_fidelity": "先独立读取 arXiv 论文与 Apple 官方页，再核对报告和 evidence。RtP/PtR 公式、ToolBench 设置、Tables 1/3/8/10/11、全部报告所列 p 值、token 成本及跨模型边界均与原文一致。revision 2 已准确补入 gpt-oss-120b 的 G3 recall 反转 p=0.035。轻微扣分仅因正文未展开单样本与双样本 t-test 的区别，且 Table 10 的 divergence 取整叙述未点明该列只在 G1 子注册表上测量。",
+        "request_coverage": "R01–R03 均完整覆盖。报告解释两种架构和 Intent–Registry Coupling，保留主实验、成本与跨模型复现的精确数字，并明确 classifier、真实执行和企业工具外推尚未验证。指定 Tables 1/3/8/10/11 与 revision 2 的两个修复点均已复核。",
+        "reasoning_quality": "报告能把作者的受控实验结论、机制解释、候选路由信号与 EverAgent 工程假设分开，并设计 owner recall、无关读取、工具调用、token 和最终质量的本地回放。revision 2 的一句话总结已准确区分 always-RtP 主要损失复杂任务召回，而 always-PtR 同时损失简单任务质量并增加 token 与串行延迟。EverAgent 类比仍是待验证推论，正文虽用‘先实验、不能直接上线’限定，但未逐段显式标注 [推测]。",
+        "readability": "公式、实验设置、主结果、机制、成本、跨模型边界、局限和工程实验按因果顺序展开，表格易查，报告可脱离对话独立阅读。一句话总结在 revision 2 后已消除两类固定策略代价混写的问题。",
+        "limitations": "完整覆盖 retrieval proxy、未执行 API、参数与最终答案未评估、候选搜索宽度不对称、ToolBench 与企业工具分布差异、G3 模型依赖、未测真实端到端延迟，以及 classifier 和 stub calibration 未验证。对 EverAgent 的建议停在 A/B 回放方案，没有写成已验证结论。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04"
+      ],
+      "source_content_map": [
+        {
+          "id": "SCM01",
+          "title": "RtP 与 PtR 的受控架构及公式",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01"
+          ],
+          "notes": "报告准确给出 RtP 的 query-to-document TopK 与 PtR 的 S(q)、max-over-stubs 检索形式，并说明二者共用 embedding、index 和 planner。"
+        },
+        {
+          "id": "SCM02",
+          "title": "实验设计、数据口径与统计检验",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02"
+          ],
+          "notes": "46,984 API、50 类、G1/G2/G3 的 200/200/100、k=5、GTE-base、FAISS exact search、Gemini 2.5 Flash、4 次运行与 RtP retrieval 确定性均准确。正文未展开 precision/recall 的 one-sample t-test 与 pass rate 的 two-sample t-test，属轻微方法细节省略。"
+        },
+        {
+          "id": "SCM03",
+          "title": "Gemini 主实验的复杂度交叉与显著性",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02"
+          ],
+          "notes": "G1 RtP、G2 PtR 的显著优势以及 G3 recall 仅方向性领先且 p=0.080、pass rate 显著领先均被准确呈现。"
+        },
+        {
+          "id": "SCM04",
+          "title": "Table 1 检索预算消融",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02"
+          ],
+          "notes": "报告准确写出 k=1–20 均保持交叉方向、G1 在 k=5/k=20 的值，以及 G2 优势从 +0.014 增至 +0.066。"
+        },
+        {
+          "id": "SCM05",
+          "title": "Table 3 完整指标与 p 值",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02"
+          ],
+          "notes": "报告表内 G1/G2 的 recall、precision、pass rate 与 p 值全部正确；G3 recall 和 pass rate 正确。G3 precision 未列入摘要表，但正文未作与原表冲突的主张。"
+        },
+        {
+          "id": "SCM06",
+          "title": "stub hallucination 的双重作用与搜索宽度解释",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01",
+            "U03"
+          ],
+          "notes": "报告覆盖 proper noun 信号在 G1 被抽象损失、多 stub 对复杂意图的分解、stub 唯一率与命中率、正确和错误匹配 cosine 近似相同，以及 PtR 候选搜索更宽的边界。"
+        },
+        {
+          "id": "SCM07",
+          "title": "Table 8 token 成本与自适应路由",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03"
+          ],
+          "notes": "226/396、238/429、221/450，+75%/+80%/+104% 和 ΔR -0.072/+0.042/+0.017 均准确；16% 总 token 与 36% discovery-call overhead 的估算口径正确，top-1 similarity 被明确标为未验证候选信号。"
+        },
+        {
+          "id": "SCM08",
+          "title": "Table 10 registry scaling 边界",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02"
+          ],
+          "notes": "报告准确保留 1k–47k 范围内 G1/G2 交叉不变，并把 88.4%→97.5% 合理取整为 88%→98%。轻微省略是未说明 divergence 列测量的是 G1 子注册表，也未展开 G2 最小点为 1,048 个 gold-only API。"
+        },
+        {
+          "id": "SCM09",
+          "title": "Table 11 gpt-oss-120b 跨模型复制与 G3 反转",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04"
+          ],
+          "notes": "G1/G2 crossover、精确 recall 数字和 G3 反转均准确；revision 2 已补入 RtP 0.160 对 PtR 0.146±0.008 的 p=0.035，并正确得出 G3 具有模型依赖。G2 pass rate 和 G3 precision/pass rate 的不显著结果未展开，但不改变报告结论。"
+        },
+        {
+          "id": "SCM10",
+          "title": "trajectory 结果和端到端边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04"
+          ],
+          "notes": "报告正确使用至少 96% trajectory fidelity 支持 retrieval 约束 planner 选择，同时明确这不是参数正确性、真实 API 执行或最终答案质量。"
+        },
+        {
+          "id": "SCM11",
+          "title": "Apple 官方页的公开摘要",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02",
+            "U03",
+            "U04"
+          ],
+          "notes": "报告与 Apple 官方摘要对复杂度交叉、检索预算与规模稳健性、stub hallucination、约翻倍成本和复杂度自适应方向的概括一致，并以 arXiv 论文承担精确数字证据。"
+        },
+        {
+          "id": "SCM12",
+          "title": "EverAgent 工程外推的证据边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04"
+          ],
+          "notes": "EverAgent 路由被写成需通过现有 eval 回放验证的实验方案，保留产品名、路径、命令与显式 skill 名的建议有来源机制支撑；正文明确企业工具分布、真实执行、延迟和 classifier 均未验证。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "revision 2 的全新独立来源优先复核完成。先通过 eacli web.search/web.read 读取 Apple 官方页和 arXiv HTML；eacli 对 arXiv 返回在 32,000 字符处截断，未覆盖附录，因此为核对 Tables 3/8/10/11 最小降级下载同一 arXiv 官方 PDF 并用 pdftotext 提取。两项指定修复均准确：一句话总结区分 always-RtP 与 always-PtR 的不同代价；G3 gpt-oss recall 反转补入 p=0.035。未发现关键数字错配、未支持的登记 claim、核心要求遗漏或硬失败。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 96.35,
+    "evaluated_on": "2026-10-20",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "b4b8e3b8a3d73ed93b52706f8d1e5a71b193149c6b10e1b77dc29191aff9c298",
+    "evidence_sha256": "9e20ed8337bea4d22c2295851f66dcf529d751a77bc8151e4efa13a89d7d7b65"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex",
+            "run_id": "review-apple-tools-20261020",
+            "independent_context": true,
+            "explicit_model_override": true,
+            "override_reason": "important 报告采用策略 strong reviewer 做独立来源级复核"
+          },
+          "scores": {
+            "evidence_fidelity": 94,
+            "request_coverage": 93,
+            "reasoning_quality": 92,
+            "readability": 96,
+            "limitations": 96
+          },
+          "score_reasons": {
+            "evidence_fidelity": "已先行读取 arXiv 原文和 Apple 官方摘要页，并逐项复核公式、ToolBench 设置及 Tables 1/3/8/10/11。登记的 C01–C05 数字均与原文一致；Table 3 的 p 值也准确。轻微缺口是跨模型段未保留 Table 11 的显著性边界（G3 recall p=0.035，而 precision、pass rate 不显著），且开篇称统一架构会同时损失质量、token 和延迟，字面上对 always-RtP 过强。",
+            "request_coverage": "R01–R03 均有实质回答：公式、Intent–Registry Coupling、主实验、成本、跨模型复现及未验证 classifier 都已覆盖。Table 11 的统计注释和 pass-rate 结果只做了部分覆盖，但不影响 G1/G2 交叉及 G3 模型依赖的核心回答。",
+            "reasoning_quality": "能区分论文结果、作者建议和 EverAgent 实验假设，并用 proper noun 保留与多目标分解推导工程实验。主要扣分来自一句话总结对成本权衡的过度概括，以及从 ToolBench 到 owner/skill 路由仍属于待回放验证的类比。",
+            "readability": "结构从机制、设置、结果、成本、模型依赖推进到 EverAgent 假设；公式、表格和结论可独立阅读，术语解释清楚。",
+            "limitations": "明确写出 retrieval proxy、候选宽度不对称、ToolBench 分布外推、G3 模型依赖、未测真实延迟以及路由器未验证，覆盖了原文主要边界。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04"
+          ],
+          "source_content_map": [
+            {
+              "id": "SCM01",
+              "title": "RtP、PtR 与 Abstract Tool Stub 的数学定义",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01"
+              ],
+              "notes": "报告准确给出 RRtP、S(q)、RPtR 和 planner 形式，并解释 PtR 以多个 stub 的最大相似度合并、去重和重排候选。"
+            },
+            {
+              "id": "SCM02",
+              "title": "ToolBench 数据、受控设置与统计检验口径",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "46,984 个去重 endpoint、50 类、G1/G2/G3 的 200/200/100、k=5、GTE-base、FAISS flat、Gemini 2.5 Flash、4 次运行及 RtP retrieval 的确定性均已写入。报告未展开 one-sample 与 two-sample t-test 的区别，属于轻微统计方法省略。"
+            },
+            {
+              "id": "SCM03",
+              "title": "Tables 1/3 的复杂度交叉、精确结果与显著性",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "Table 3 的 G1/G2/G3 recall、precision、pass rate 及报告列出的 p 值均准确；Table 1 的 k=1–20 方向、k=5/k=20 数字和 G2 优势增量也准确。"
+            },
+            {
+              "id": "SCM04",
+              "title": "Intent–Registry Coupling 与 stub hallucination 的双重机制",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01",
+                "U03"
+              ],
+              "notes": "报告覆盖 proper noun 在 G1 的直接匹配、多 stub 在 G2/G3 的意图分解、stub 唯一率、匹配率及正确/错误 cosine 近似相同的关键证据。"
+            },
+            {
+              "id": "SCM05",
+              "title": "Table 8 token 成本、路由节省估算与候选信号",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "226/396、238/429、221/450 及 +75%/+80%/+104% 和 ΔR 均准确；约 16% 总 token、约 36% discovery-call overhead 的估算口径正确，并明确 top-1 similarity classifier 尚未验证。"
+            },
+            {
+              "id": "SCM06",
+              "title": "Table 10 registry scaling 与工具选择分歧",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "报告保留 1k–47k 的稳健方向，并将 divergence 88.4%→97.5% 合理取整为 88%→98%；没有误述 full-registry 与 5-seed 子注册表的结论。"
+            },
+            {
+              "id": "SCM07",
+              "title": "Table 11 gpt-oss-120b 跨模型复现",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S01",
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "报告准确保留 G1 RtP、G2 PtR 和 G3 recall 反转的数字及模型依赖结论；但省略 G3 recall 的 p=0.035、G3 precision/pass rate 不显著，以及 G2 pass rate 统计持平。"
+            },
+            {
+              "id": "SCM08",
+              "title": "retrieval proxy、trajectory fidelity 与外推边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "报告明确未执行 API、未评估参数与最终答案，并记录至少 96% fidelity 只能支持 retrieval 作为上界代理；企业工具、真实延迟和分类器仍需验证。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "来源优先复核完成。eacli web.read 成功读取 Apple 页面和 arXiv HTML/PDF，但两种 arXiv 读取都在 32,000 字符处截断，未覆盖附录；为核对 Tables 3/8/10/11，最小降级下载同一 arXiv PDF 并用 pdftotext 提取。未发现关键数字错配或不受支持的登记 claim。轻微缺陷：Table 11 统计边界覆盖不完整；一句话总结中‘统一使用一种架构会同时损失质量、token 和延迟’对 always-RtP 情形表述过强，因为 always-RtP 的直接代价是多工具质量，而非 token/延迟增加。"
+        }
+      ],
+      "decision": {}
+    }
+  ]
+}

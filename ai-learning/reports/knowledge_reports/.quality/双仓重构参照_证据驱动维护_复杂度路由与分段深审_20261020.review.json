@@ -1,0 +1,596 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/双仓重构参照_证据驱动维护_复杂度路由与分段深审_20261020.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "review-dual-repo-reference-r2-20261020",
+        "independent_context": true,
+        "explicit_model_override": true,
+        "override_reason": "revision 2 采用全新 strong reviewer 做独立来源级复核"
+      },
+      "scores": {
+        "evidence_fidelity": 94,
+        "request_coverage": 99,
+        "reasoning_quality": 96,
+        "readability": 97,
+        "limitations": 97
+      },
+      "score_reasons": {
+        "evidence_fidelity": "本轮先通过 eacli web.read 独立读取 S01–S05，再读取 S06–S11，最后核对 evidence 与综合报告。OpenAI 的多源证据侦察、小 draft PR、人工升级、收益排序与模型成本比较；Apple 的 G1/G2 复杂度交叉、proper noun 损失、多 stub 分解、75%–104% token 增幅、检索代理和 G3 模型依赖；Google 的语义分段、动态预算、局部聚焦但持有全文、全局合成/grounding 与 SPOT 口径；Astra 的最小路由器、渐进式披露、条件化 AGENTS.md 和完成条件均被准确合成。revision 2 的 C04 与正文都明确标为 [推测]，公开/私有边界由 S10 直接支持，S11 补充凭据和领域隔离。轻微扣分在于 P10 不下降与 hard failure 为零是 EverAgent 的精确准入设计，官方来源只支持收益排序、验证和不退化方向，不能证明这组阈值最优。",
+        "request_coverage": "R01–R04 全部完成：报告合成三份本轮深读、五份官方原始材料和既有 Astra 分析；给出双仓目标结构、Phase 0–4、三个任务合同与可观察指标；明确公开/私有事实隔离和不可外推项；附官方入口、公式、数字与流水线短锚点。S10/S11 的加入使边界要求有本地 owner 依据。",
+        "reasoning_quality": "报告把候选发现、复杂度路由、分段复核和行为验收组织成可执行闭环，并持续区分来源事实、工程迁移和待验证设计。它没有把 PtR 设为统一入口，也没有把多 Reviewer 等同于 Deep Review；对 OpenAI 组织前提、Apple retrieval proxy/G3 反转、Google 小样本与人工责任均保留边界。catalog→get/search→owner→action→verify 已作为推测而非来源结论，Phase 0–4 与准入阈值也被写成项目方案。",
+        "readability": "报告可独立阅读。参照表、一页闭环、三类来源分工、双仓结构、分阶段执行、任务合同、反外推清单和原文锚点层次清楚；术语与图表服务于重构决策，没有把私有事实带入示例。",
+        "limitations": "报告明确说明这是一份下一轮重构参照而非已验证结果，指出三类来源的组织、数据集与 Harness 差异，并列出 G3 反转、retrieval proxy、SPOT 26 篇/29 错误、opt-in 试点、grounded 满意度和人类责任。C04 的 [推测] 标记解决了协议形状可能被误读为已验证事实的问题。仍可在未来实施报告中把精确 P10/hard-failure 门槛显式链接到本地质量策略，并用真实双仓回放校准。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05"
+      ],
+      "source_content_map": [
+        {
+          "id": "SCM01",
+          "title": "OpenAI 的广义维护侦察与多源证据",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S06"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01"
+          ],
+          "notes": "原文围绕清理候选读取历史 PR、协作讨论、项目跟踪与生产 profiling，并逐项给出删除理由；综合报告准确迁移为候选、owner、调用、历史、风险、收益和可观察指标的证据合同。"
+        },
+        {
+          "id": "SCM02",
+          "title": "OpenAI 的 safeguard、人工升级与小步扩大",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S06"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01",
+            "U05"
+          ],
+          "notes": "报告保留 Permanent、kill switch、动态引用和线上配置等风险，要求小 workstream、小 diff、先审查后扩大，没有把 1,400 PR 或 80 万行删除当成双仓目标。"
+        },
+        {
+          "id": "SCM03",
+          "title": "OpenAI 的收益排序与模型成本校准",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S06"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01",
+            "U05"
+          ],
+          "notes": "报告用 token、墙钟时间、稀缺模型调用、返工与安全风险承接原文的 CPU、CI、镜像和 cost-per-finding 排序，并保留 Sol Ultra 14% 成本/92% findings 等短锚点。"
+        },
+        {
+          "id": "SCM04",
+          "title": "Apple 的 RtP/PtR 复杂度交叉",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S07"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02",
+            "U05"
+          ],
+          "notes": "报告准确迁移为明确单 owner 直接检索、复合任务再做 capability stub 分解，并要求先做路由 A/B，未把 PtR 部署成统一入口。"
+        },
+        {
+          "id": "SCM05",
+          "title": "Apple 的 proper noun 损失与多 stub 覆盖机制",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S07"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02"
+          ],
+          "notes": "报告要求路径、命令、skill、owner 与用户给出的专名原样保留，同时让多个 stub 分别定位独立子目标，准确对应 Intent–Registry Coupling 的两面机制。"
+        },
+        {
+          "id": "SCM06",
+          "title": "Apple 的成本、代理指标与跨模型边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S07"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02",
+            "U05"
+          ],
+          "notes": "报告保留 PtR 75%–104% token 开销、约 36% discovery overhead、未执行工具和未验证最终成功率，并明确 G3 在 gpt-oss-120b 上反转。"
+        },
+        {
+          "id": "SCM07",
+          "title": "Google 的四阶段分段深审流水线",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S03",
+            "S04",
+            "S08"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03"
+          ],
+          "notes": "报告完整覆盖语义分段、按信息密度与复杂度动态预算、每个 reviewer 聚焦 segment 但持有全局约束，以及最终去重、跨段一致性、严重度与 grounding。"
+        },
+        {
+          "id": "SCM08",
+          "title": "Google 对单次长调用与无编排 Pass@k 的反例",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S03",
+            "S08"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03"
+          ],
+          "notes": "综合报告准确说明一次通读会稀释验证注意力，简单并行会重复覆盖并放大误报，因此只有语义分工、预算和 synthesis 齐备时才接近 Deep Review。"
+        },
+        {
+          "id": "SCM09",
+          "title": "Google 的 SPOT 口径、试点与人类责任",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S03",
+            "S04",
+            "S08"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03",
+            "U05"
+          ],
+          "notes": "报告把 89.7% 限定为筛选后的 26 篇、29 个 proof/equation errors 上的 detection，区分 opt-in 作者侧试点和一般 review precision，并保留最终责任在人。"
+        },
+        {
+          "id": "SCM10",
+          "title": "Google 已观察到的复核失败模式",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "S03",
+            "S04",
+            "S08"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03",
+            "U05"
+          ],
+          "notes": "报告以 false critique、grounding、人工责任和不得自动合并覆盖治理含义，但没有逐项展开日期幻觉、PDF parsing 和错误宣称证明不成立；这些细节对当前双仓主线不是核心遗漏。"
+        },
+        {
+          "id": "SCM11",
+          "title": "Astra 的最小路由器与渐进式披露",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S05",
+            "S09"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04",
+            "U05"
+          ],
+          "notes": "报告将长期控制面限定为稳定不变量和条件路由，把具体工作流与资料按需加载，并要求每轮只改 AGENTS、skill、reference 或 script 的一层。"
+        },
+        {
+          "id": "SCM12",
+          "title": "Astra 的条件化 AGENTS.md、授权边界与完成定义",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S05",
+            "S09"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04",
+            "U05"
+          ],
+          "notes": "任务合同明确目标、证据、保留项、交付和停止条件；验证先聚焦受影响范围，再用真实回放决定是否保留规则，符合原文关于按任务读取与清楚完成条件的建议。"
+        },
+        {
+          "id": "SCM13",
+          "title": "根协议的最小上下文、唯一 owner 与公开私有隔离",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S10"
+          ],
+          "matched_coverage_unit_ids": [
+            "U05"
+          ],
+          "notes": "S10 明确要求 context 先目录再取最小切片、修改回到唯一 owner，EverAgent-infra 私有上下文不得复制进公开仓，且 F 类设备、网络、服务细节留在并排私有仓；C04 与正文已把共享协议形状标为 [推测]。"
+        },
+        {
+          "id": "SCM14",
+          "title": "通用协议的凭据安全、领域隔离与确定性门禁",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S11"
+          ],
+          "matched_coverage_unit_ids": [
+            "U05"
+          ],
+          "notes": "S11 禁止提交 .env、token 和私人凭据，要求领域修改不越界，并以 ecommit、hook、CI 与报告质量门提供确定性保障，支撑报告的边界与验证层设计。"
+        },
+        {
+          "id": "SCM15",
+          "title": "项目准入阈值属于待回放校准的本地设计",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "S01",
+            "S03",
+            "S04",
+            "S05",
+            "S06",
+            "S08",
+            "S09"
+          ],
+          "matched_coverage_unit_ids": [
+            "U05"
+          ],
+          "notes": "来源共同支持收益排序、关键错误优先、行为评估和人工责任；P10 不下降与 hard failure 为零的精确组合是 EverAgent 准入设计，报告已把它作为候选结构进入主线的规则，但 evidence 未登记本地质量策略为直接来源。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "revision 2 复核结论：C04 的推断性质和公开/私有边界已得到充分澄清，S10/S11 构成直接本地 owner 证据；六个 critical claims 均可接受，无伪造来源、关键数字错配、核心要求遗漏或安全/隐私问题。精确 P10/hard-failure 准入线应在后续实施材料中链接本地质量策略并以真实双仓回放验证，当前不影响本报告作为研究参照的可靠性。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 96.15,
+    "evaluated_on": "2026-10-20",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "0424f6c043af9671d9499d1fb9f63773a091cdaddb6f57c25774ecfd84a48f59",
+    "evidence_sha256": "8cee7b3024179b40543bd2e545315819e126689f6db5a225c63966b3b5eef5af"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex",
+            "run_id": "review-dual-repo-reference-20261020",
+            "independent_context": true,
+            "explicit_model_override": true,
+            "override_reason": "important 综合报告采用策略 strong reviewer 做独立来源级复核"
+          },
+          "scores": {
+            "evidence_fidelity": 93,
+            "request_coverage": 98,
+            "reasoning_quality": 94,
+            "readability": 96,
+            "limitations": 96
+          },
+          "score_reasons": {
+            "evidence_fidelity": "先独立读取五个官方原始来源，再读取四份本地深读报告，最后核对综合报告与 evidence。OpenAI 的广义侦察、多源证据、小 draft PR、人工升级与收益排序；Apple 的 G1/G2 复杂度交叉、proper noun 损失、stub 分解、成本与 G3 模型依赖；Google 的语义分段、动态预算、全文上下文、全局合成与 SPOT 口径；OpenAI Astra 的最小路由器、按需加载和完成条件均被准确合成。扣分点是‘唯一 owner’、具体 catalog 协议以及 P10/hard-failure 准入线属于 EverAgent 项目规则与工程设计，不是五份官方原文的直接结论；正文以目标结构、任务合同和验收准则呈现，没有伪装成原文实证结果。",
+            "request_coverage": "R01–R04 全部覆盖。报告纳入三份本轮深读与既有 Astra 分析，给出双仓目标结构、Phase 0–4、三个任务合同、行为指标和最终准入条件；公开/私有事实隔离被明确写入目标结构；五个官方入口与公式、数字、流水线等短锚点足以支持后续回读原文。",
+            "reasoning_quality": "四类材料被组织成候选发现、上下文路由、分段复核和行为验收的闭环，迁移链条清楚。报告没有把 PtR 设为统一入口，而是要求 A/B；没有把并行 Reviewer 等同于 Deep Review；高风险边界仍交给 owner、人类判断与确定性门禁。精确的 Phase 0–4 和准入阈值是合理的项目设计，但需要由真实双仓回放验证，不能被视为来源已经证明的最优流程。",
+            "readability": "报告可脱离对话独立阅读。参照表、总流程、三类来源分工、双仓结构、阶段、任务合同、反外推清单和原文锚点层次清晰；关键边界在正文与末尾准则中重复但不混乱。",
+            "limitations": "报告主动限定 OpenAI 大规模删除的组织前提、Apple G3 反转与 retrieval proxy、Google 89.7% 的 26 篇/29 错误口径、人类责任以及多 Reviewer 的编排条件，并说明本文不是已验证实施结果。还能更明确标注 exact P10/hard-failure 门槛来自 EverAgent 既有质量策略，并列出 PAT 已观察到的日期幻觉、PDF parsing 和错误批评，但这些省略不影响核心结论。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05"
+          ],
+          "source_content_map": [
+            {
+              "id": "SCM01",
+              "title": "OpenAI 的广义维护侦察与多源证据",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01"
+              ],
+              "notes": "原文要求模型围绕删除候选读取代码、历史 PR、协作讨论、项目跟踪和 production profiling/telemetry，并解释每项删除理由。综合报告把它准确迁移成‘候选 + 证据 + 风险 + 收益’的维护侦察。"
+            },
+            {
+              "id": "SCM02",
+              "title": "OpenAI 的 safeguards、小 draft PR 与逐步扩大",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01",
+                "U05"
+              ],
+              "notes": "报告保留 live configuration、git history、间接调用、killswitch/运营保护、不修改线上配置、一项清理一个小 PR、吸收 review feedback 后再扩大的关键结构，没有把 80 万行删除写成普遍目标。"
+            },
+            {
+              "id": "SCM03",
+              "title": "OpenAI 的收益排序与模型成本校准",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01",
+                "U05"
+              ],
+              "notes": "报告用 CPU、CI、token、墙钟时间、稀缺模型调用等指标承接原文的收益排序与模型/effort 比较，并保留 1,400+ PR、镜像缩减和 14% 成本/92% findings 等短锚点。"
+            },
+            {
+              "id": "SCM04",
+              "title": "Apple 的 RtP/PtR 复杂度交叉",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02",
+                "U05"
+              ],
+              "notes": "报告准确提炼为明确对象直接检索、复合多目标再做 capability stub 分解，并明确 G1/G2 结论更可靠、G3 在 gpt-oss-120b 上反转，不能推出所有复杂任务都先规划。"
+            },
+            {
+              "id": "SCM05",
+              "title": "Apple 的 proper noun 损失与多 stub 分解机制",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "报告保留路径、命令、skill 名和其他用户提供 proper nouns，并用多个 stub 覆盖复合子目标，准确对应原文对高耦合词面信号与低耦合多面意图的机制解释。"
+            },
+            {
+              "id": "SCM06",
+              "title": "Apple 的串行成本、候选路由信号与外推边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02",
+                "U05"
+              ],
+              "notes": "附件保留 PtR 75%–104% token 增幅与约 36% discovery overhead 估算；正文要求路由 A/B 而非直接上线，并明确论文未执行工具、未验证最终成功率。"
+            },
+            {
+              "id": "SCM07",
+              "title": "Google 的四阶段分段深审流水线",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "报告准确覆盖逻辑语义分段、按信息密度和复杂度动态预算、每个 reviewer 聚焦 segment 但持有全局约束、最终去重/严重度/跨段一致性/grounding 的 synthesis。将 owner 和风险作为双仓 segment 轴是合理工程迁移。"
+            },
+            {
+              "id": "SCM08",
+              "title": "Google 对单次长调用和无编排 Pass@k 的反例",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "报告准确说明一次性通读会稀释验证注意力，简单并行多个 Reviewer 会重复覆盖并制造误报；因此多 Reviewer 只有在语义分工、预算和最终合成存在时才接近 Deep Review。"
+            },
+            {
+              "id": "SCM09",
+              "title": "Google 的 SPOT 口径、试点与人类责任",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03",
+                "U05"
+              ],
+              "notes": "报告把 89.7% 限定为筛选后的 26 篇、29 个 proof/equation errors 上的 detection，而非一般 review precision；附件保留 opt-in 试点和 grounded 满意度，正文保留最终责任在人和 false critique 指标。"
+            },
+            {
+              "id": "SCM10",
+              "title": "Google 已观察到的复核失败模式",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03",
+                "U05"
+              ],
+              "notes": "综合报告通过 false critique、外部 grounding、人工责任和不得自动合并覆盖主要治理含义，但没有逐项写出日期幻觉、PDF parsing 和错误宣称证明不成立三类失败。该省略不改变本报告的重构主线。"
+            },
+            {
+              "id": "SCM11",
+              "title": "Astra 的最小路由器与渐进式披露",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S05"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "报告把长期控制面设计成稳定规则和条件路由，把细节放到按需 owner/skill/reference，与原文的短 skill description、minimal router 和 contextual AGENTS.md 一致。‘薄控制面’是准确概括，但不是原文正式术语。"
+            },
+            {
+              "id": "SCM12",
+              "title": "Astra 的决策边界、完成条件和指令审计",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S05"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04",
+                "U05"
+              ],
+              "notes": "三个任务合同写清目标、证据、保留项、交付和停止条件；Phase 1 扫描过期模型补丁，Phase 4 用真实行为回放验收，符合原文对旧脚手架、边界措辞和 persistence/completion definition 的建议。"
+            },
+            {
+              "id": "SCM13",
+              "title": "公开仓与私有仓的事实隔离",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S05",
+                "S09"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04",
+                "U05"
+              ],
+              "notes": "报告只描述两仓的职责类别与协议形状，没有出现具体设备、网络、账号、服务状态或凭据。该隔离主要来自 EverAgent 项目安全约束，而非 Astra 原文；报告没有反向把私有事实复制进公开层。"
+            },
+            {
+              "id": "SCM14",
+              "title": "Phase 0–4、行为指标与准入线的工程推导",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04",
+                "S05"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "冻结基线、先侦察、路由 A/B、分段小改与独立复核、最终行为验收的次序能由来源共同原则合理推出。P10 不下降、hard failure 为零和至少一项效率改善是 EverAgent 自定门槛，不是来源已实证的普适最优阈值。"
+            },
+            {
+              "id": "SCM15",
+              "title": "官方原文入口与短锚点",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04",
+                "S05"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01",
+                "U02",
+                "U03",
+                "U04",
+                "U05"
+              ],
+              "notes": "参照表和第 6 节提供全部官方入口，并为 OpenAI 保留提示结构与生产数字、为 Apple 保留公式/成本/交叉、为 Google 保留流水线/SPOT/grounded 边界；Astra 的短锚点主要位于参照表和正文，仍足够定位。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06",
+            "S07",
+            "S08",
+            "S09"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "独立来源优先复核完成：先通过 eacli Token Plan 选择并调用 web.read 读取 S01–S05；eacli 对两篇 arXiv HTML 的长结果在约 35KB 处截断，因此最小降级从 arXiv 官方 PDF 下载并用 pdftotext 补齐全文。随后读取 S06–S09，最后读取综合报告。提交 review 前再次读取 S07 revision 2 及其 evidence，确认 Gemini 主实验 G3 recall 为 p=0.080、不显著，而 gpt-oss-120b 的 G3 反转为 p=0.035；当前 S07 仅 frontmatter status 变为 completed，正文结论未变。未发现伪造来源、关键数字错配、核心要求遗漏、安全/隐私违规或关键 claim 无支持。非阻断改进：未来可在 evidence 中把项目安全协议和 REPORT_QUALITY_GATE 作为 C04/C05 的显式 provenance，并在正文更明确区分官方原文结论与 EverAgent 自定准入阈值。"
+        }
+      ],
+      "decision": {}
+    }
+  ]
+}

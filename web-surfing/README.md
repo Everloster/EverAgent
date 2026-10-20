@@ -30,8 +30,11 @@ web-surfing/
 ├── README.md                    # 本文件
 ├── reports/                     # 上网任务产出
 │   └── kdrama-top10-2024-2026.md   # 首个报告：SeedHub 韩剧 Top10
+├── sources/
+│   └── ai-tech-blogs.json       # 顶尖 AI 厂商技术源注册表
 ├── knowledge/                   # 可选：跨任务索引
 └── skills/
+    ├── ai-tech-blog-radar/      # 顶尖 AI 厂商技术博客更新与渠道维护
     ├── opencli-playbook.md      # opencli 通用手册（主力工具）
     ├── site-seeduck/SKILL.md    # SeedHub 站点沉淀（URL/命令/坑）
     └── site-bilibili/SKILL.md   # B 站关注、动态与学习收件箱（只读）
@@ -42,6 +45,7 @@ web-surfing/
 | 类型 | 名称 | 说明 |
 |------|------|------|
 | 通用手册 | `skills/opencli-playbook.md` | opencli 三大支柱 + 173 站速查 + 浏览器直驱模板 |
+| 资讯雷达 | `skills/ai-tech-blog-radar/` | 顶尖 AI 厂商技术博客更新查询，支持渠道增删改查 |
 | 站点技能 | `skills/site-seeduck/` | SeedHub 影视站：URL 结构 / 语言年份 tagId / 翻页解析脚本 |
 | 站点技能 | `skills/site-bilibili/` | B 站关注、动态、历史与学习候选收件箱（只读） |
 | 报告 | `reports/kdrama-top10-2024-2026.md` | 2024–2026 韩剧豆瓣评分 Top10（含链接） |

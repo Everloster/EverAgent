@@ -25,29 +25,33 @@
 | 2026-10-20 | [刘方奇教授谈肠癌：先完成分期与分子检测，再决定手术时机](../podcast-learning/reports/2026-08-24_xiaoyuzhou-boluo-jiankang_liufangqi.md) | podcast-learning |
 | 2026-10-20 | [从模型信仰到应用求生：中国 AI 创业与一级市场的分化故事线（2022底—2026）](../ai-learning/reports/knowledge_reports/中国AI创业与一级市场故事线_从模型信仰到应用求生_20260731.md) | ai-learning |
 | 2026-10-20 | [为什么 FDE 在 AI 时代这么火？因为差距不在模型，在业务细节](../podcast-learning/reports/2026-07-29_bilibili-kedaibiao-lizheng_jove-fde.md) | podcast-learning |
+| 2026-10-20 | [下一轮双仓重构参照：证据驱动维护、复杂度路由与分段深审](../ai-learning/reports/knowledge_reports/双仓重构参照_证据驱动维护_复杂度路由与分段深审_20261020.md) | ai-learning |
 | 2026-10-20 | [一本书看清“工作”的真相：竹竹暴风雪解读 × 鲍曼《工作、消费主义和新穷人》原书深读](../podcast-learning/reports/2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism.md) | podcast-learning |
 | 2026-10-20 | [yetone/magpie 深度研究：多 Agent 模型路由中枢](../github-trending-analyzer/reports/research_yetone_magpie.md) | github-trending-analyzer |
 | 2026-10-20 | [vLLM 调度器：continuous batching 的真身（课论断 ↔ 源码对照篇）](../ai-learning/reports/knowledge_reports/vLLM_调度器_continuous_batching真身_20260909.md) | ai-learning |
 | 2026-10-20 | [vLLM V1 架构总览：一个请求的一生（骨架篇）](../ai-learning/reports/knowledge_reports/vLLM_V1架构总览_深度解析_20260821.md) | ai-learning |
 | 2026-10-20 | [trycua/cua 深度研究（源码视角）](../github-trending-analyzer/reports/research_trycua_cua_sourcecode.md) | github-trending-analyzer |
 | 2026-10-20 | [VISTA：视觉原生 Harness 论文精读——无损视觉记忆与主动检查如何把 Opus 5.0 的 ARC-AGI-3 分数从 40.68 拉到 100](../ai-learning/reports/paper_analyses/48_vista_2026.md) | ai-learning |
-| 2026-10-20 | [PuRo-2B 开放低成本预训练配方深度解析：MuonHyperball、FP8 与 RTX 5090 的 $5090 实验](../ai-learning/reports/knowledge_reports/PuRo-2B_开放低成本预训练配方_MuonHyperball与RTX5090_深度解析_20261015.md) | ai-learning |
 
-## 🤖 AI Learning（115 篇）
+## 🤖 AI Learning（119 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
 | 2026-10-20 | [实习生抢答、老教授过目：速度快 2-3 倍，凭什么不改变采样分布？——投机解码科普](../ai-learning/reports/knowledge_reports/投机解码SpeculativeDecoding_科普讲解_20260720.md) | `speculative-decoding`, `inference-optimization`, `memory-bandwidth`, `draft-model`, `rejection-sampling`, `lossless-acceleration` |
 | 2026-10-20 | [从模型信仰到应用求生：中国 AI 创业与一级市场的分化故事线（2022底—2026）](../ai-learning/reports/knowledge_reports/中国AI创业与一级市场故事线_从模型信仰到应用求生_20260731.md) | `china_ai`, `venture_capital`, `ai_startups`, `market_analysis` |
+| 2026-10-20 | [下一轮双仓重构参照：证据驱动维护、复杂度路由与分段深审](../ai-learning/reports/knowledge_reports/双仓重构参照_证据驱动维护_复杂度路由与分段深审_20261020.md) | `dual_repo_refactor`, `context_engineering`, `agent_harness`, `tool_routing`, `deep_review` |
 | 2026-10-20 | [vLLM 调度器：continuous batching 的真身（课论断 ↔ 源码对照篇）](../ai-learning/reports/knowledge_reports/vLLM_调度器_continuous_batching真身_20260909.md) | `vllm`, `continuous_batching`, `scheduler`, `llm_inference` |
 | 2026-10-20 | [vLLM V1 架构总览：一个请求的一生（骨架篇）](../ai-learning/reports/knowledge_reports/vLLM_V1架构总览_深度解析_20260821.md) | `vllm`, `inference_engine`, `scheduler`, `kv_cache` |
 | 2026-10-20 | [VISTA：视觉原生 Harness 论文精读——无损视觉记忆与主动检查如何把 Opus 5.0 的 ARC-AGI-3 分数从 40.68 拉到 100](../ai-learning/reports/paper_analyses/48_vista_2026.md) | `visual_harness`, `multimodal_agent`, `arc_agi`, `visual_memory` |
 | 2026-10-20 | [PuRo-2B 开放低成本预训练配方深度解析：MuonHyperball、FP8 与 RTX 5090 的 $5090 实验](../ai-learning/reports/knowledge_reports/PuRo-2B_开放低成本预训练配方_MuonHyperball与RTX5090_深度解析_20261015.md) | `pretraining`, `muon_optimizer`, `fp8_training`, `cost_scaling_law`, `curriculum_learning`, `model_averaging` |
+| 2026-10-20 | [Plan or Retrieve First：大规模工具发现为何需要复杂度自适应路由](../ai-learning/reports/paper_analyses/49_plan_retrieve_tool_discovery_2026.md) | `tool_discovery`, `agent_routing`, `retrieval`, `plan_then_retrieve`, `toolbench` |
 | 2026-10-20 | [Personal Context 正交论：穿越 AI 进步周期的资产，与 PC 的构建工程](../ai-learning/reports/knowledge_reports/PersonalContext正交论_PC构建指南_20261010.md) | `personal_context`, `agent_memory`, `context_engineering`, `delegation` |
 | 2026-10-20 | [Meta Muse：从产品承诺到代理边界——官方能力、市场信号与人类兜底](../ai-learning/reports/2026-09-22_meta-muse_product-research.md) | `agent`, `meta`, `personal-ai`, `security`, `human-in-the-loop` |
 | 2026-10-20 | [Laya：把「反射性决策」从 LLM 里拆出来——421M 非自回归 System 1 决策模型解析与本机实测](../ai-learning/reports/knowledge_reports/Laya_System1决策模型_深度解析_20260922.md) | `system1_models`, `decision_models`, `discriminative_ai`, `laya` |
 | 2026-10-20 | [Kimi K3：一座 2.8 万亿参数的城市，是怎么让信息不堵车的？](../ai-learning/reports/knowledge_reports/KimiK3_信息流三方向_科普讲解_20260728.md) | `kimi_k3`, `mixture_of_experts`, `linear_attention`, `long_context` |
+| 2026-10-20 | [GPT-6 软件维护：从广义侦察到证据驱动清理](../ai-learning/reports/knowledge_reports/GPT6软件维护_从广义侦察到证据驱动清理_深度解析_20261020.md) | `gpt_6`, `codex`, `software_maintenance`, `agent_harness`, `evidence_driven_engineering` |
 | 2026-10-20 | [Evoken 陈冕晚点访谈精读：一家 AI 应用公司如何在模型吞噬中求生](../ai-learning/reports/knowledge_reports/Evoken陈冕晚点访谈_AI应用生存策略_20260729.md) | `ai_applications`, `business_model`, `pricing`, `startup_strategy` |
+| 2026-10-20 | [Deep Review 与 Paper Assistant Tool：把长文复核从 Pass@k 改造成分段推理系统](../ai-learning/reports/paper_analyses/50_paper_assistant_tool_deep_review_2026.md) | `deep_review`, `paper_review`, `multi_agent`, `adaptive_compute`, `scientific_validation` |
 | 2026-10-19 | [豆包手机 Memory 机制：从全局记忆到可行动个人上下文](../ai-learning/reports/knowledge_reports/豆包手机Memory机制_从全局记忆到可行动个人上下文_深度解析_20261019.md) | `doubao_phone`, `agent_memory`, `personal_context`, `on_device_ai`, `ai_os`, `privacy` |
 | 2026-10-15 | [GPT-6 Astra 指令架构：从 Prompt 堆叠到按需控制](../ai-learning/reports/knowledge_reports/GPT6_Astra指令架构_从Prompt堆叠到按需控制_深度解析_20261015.md) | `gpt_6_astra`, `agent_skills`, `agents_md`, `prompt_engineering`, `context_engineering`, `agent_harness` |
 | 2026-10-15 | [Agent Skills 生态深度解析](../ai-learning/reports/knowledge_reports/Agent_Skills_生态深度解析.md) | — |
@@ -491,12 +495,13 @@
 | 2026-03-17 | [AstrBotDevs/AstrBot](../github-trending-analyzer/reports/research_AstrBotDevs_AstrBot.md) | — |
 | 2026-03-17 | [666ghj/BettaFish 深度研究报告](../github-trending-analyzer/reports/research_666ghj_BettaFish.md) | — |
 
-## 🏄 Web Surfing（43 篇）
+## 🏄 Web Surfing（44 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
 | 2026-10-20 | [炒菜调料时机：从短视频口诀到可复用的厨房判断](../web-surfing/reports/cooking-logic-timing-douyin.md) | `cooking`, `douyin`, `food-science`, `fact-check` |
 | 2026-10-20 | [惠州租房建议报告：两位老人 2026 年 9/10 月短住体验](../web-surfing/reports/huizhou-rental-guide-2026-09.md) | `huizhou`, `rental`, `elderly_living`, `short_term_rental` |
+| 2026-10-20 | [AI 厂商官方技术源雷达：内容质量与订阅可行性实测](../web-surfing/reports/ai-vendor-technical-sources-2026-10-20.md) | `ai_sources`, `technical_blogs`, `vendor_research`, `rss`, `content_radar` |
 | 2026-10-19 | [AI 行业日报 · 2026-10-19](../web-surfing/reports/ai-news-daily-2026-10-19.md) | `ai_news`, `daily`, `industry_watch` |
 | 2026-10-15 | [AI 行业日报 · 2026-10-15](../web-surfing/reports/ai-news-daily-2026-10-15.md) | `ai_news`, `daily`, `industry_watch` |
 | 2026-10-14 | [B 站关注列表、最近投稿与未看更新采集方案调研](../web-surfing/reports/bilibili-following-updates-research-2026-10-14.md) | — |

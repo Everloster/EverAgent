@@ -1,0 +1,191 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/paper_analyses/50_paper_assistant_tool_deep_review_2026.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "review-google-deep-review-20261020",
+        "independent_context": true,
+        "explicit_model_override": true,
+        "override_reason": "important 报告采用策略 strong reviewer 做独立来源级复核"
+      },
+      "scores": {
+        "evidence_fidelity": 97,
+        "request_coverage": 96,
+        "reasoning_quality": 96,
+        "readability": 97,
+        "limitations": 98
+      },
+      "score_reasons": {
+        "evidence_fidelity": "先行读取 arXiv HTML/PDF 与 Google Research 博客后再核对报告。四阶段架构、SPOT 26 篇/29 个错误、21.1%/55.2%/89.7%、4,700 与 16,000 的不同时间口径、Table 3 全部数值、三类失败模式和 Role 1–4/3.5 均与原文一致；报告还准确保留了逻辑等价 grader、作者逐项人工审计和不可与原 SPOT 结果直接比较的边界。轻微省略是未写明 segment 必须覆盖全文，以及 synthesis 会做跨段一致性检查并在必要时重跑逻辑检查。",
+        "request_coverage": "R01–R03 均完整回答：报告解释了单次长上下文与独立 Pass@k 的缺陷和四阶段增量，逐项核对 SPOT、试点、survey、失败模式及统计边界，并将来源优先地图、风险预算和全局约束迁移到 EverAgent，同时保留 human owner 的最终责任。产品访问方式、保存期限及论文中的定性成功案例未展开，但不属于任务核心要求。",
+        "reasoning_quality": "报告清楚区分原始实验、作者治理主张和面向 EverAgent 的工程推断；把 89.7%-55.2%解释为 34.5 个百分点而非相对提升，并指出小样本、作者自建 grader、opt-in survey、无随机对照、缺少 critique precision 与 proprietary pipeline 等替代解释和外推边界。工程迁移建议与来源机制一致，且 evidence 将其标为 inference。",
+        "readability": "结构按问题、架构、实验、真实部署、反馈、失败模式、治理、工程迁移和局限递进；表格、流程图和术语说明使报告可脱离对话独立阅读，4,700 与 16,000 的口径区分尤其清楚。",
+        "limitations": "报告覆盖 SPOT 小样本和非外部盲评、作者侧 opt-in 与回复选择偏差、无接收质量对照、不可复现的 proprietary 细节、后续 16,000 文稿缺少同等效果数据，以及 precision、严重度校准、人工验证时间和漏检率等生产指标缺口；并明确 Role 3/4 是前瞻讨论而非已证实能力。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04"
+      ],
+      "source_content_map": [
+        {
+          "id": "SCM01",
+          "title": "科学验证瓶颈、单次调用与 Pass@k 的局限",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01"
+          ],
+          "notes": "报告准确说明生成吞吐与人工验证能力失衡，并覆盖单次调用的推理预算/跨段依赖问题及独立 Pass@k 的重复覆盖、幻觉和 precision 下降。"
+        },
+        {
+          "id": "SCM02",
+          "title": "四阶段 agentic 架构与推理预算调度",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02"
+          ],
+          "notes": "语义分段、Light/Medium/High 自适应预算、持有全文上下文的并行局部深审、综合、去重、severity checking 和 search grounding 均准确。轻微省略是博客要求 segments 覆盖全部输入内容，以及 synthesis 的跨段一致性检查和必要时重跑逻辑检查。"
+        },
+        {
+          "id": "SCM03",
+          "title": "SPOT 子集、grader 方法与 Table 2",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03"
+          ],
+          "notes": "报告完整保留 SPOT 原数据以多模态错误为主、筛选 Math/CS equation/proof 后为 26 篇和 29 个错误、逻辑等价 grader、作者逐项人工审计、与原 SPOT 不可直接横比，以及 21.1%/55.2%/89.7% 三组结果。"
+        },
+        {
+          "id": "SCM04",
+          "title": "会议 pilot 的用途、隔离方式与规模演进",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03"
+          ],
+          "notes": "报告明确区分论文中的 STOC/ICML 作者侧预投稿 pilot（4,700+）和后续博客中的 STOC/ICML/NeurIPS/ICLR 四会 opt-in pilot（16,000+），没有把后者误当作论文效果样本。"
+        },
+        {
+          "id": "SCM05",
+          "title": "Table 3 作者 survey 的样本、全表与统计边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03"
+          ],
+          "notes": "STOC n=124、ICML n=733 及七行 survey 数字全部准确，包括 grounded 55.8%/64.8%、理论缺口 11.6%/35.4% 和 ICML 新实验 31%；报告正确将其限定为 opt-in 用户的自愿反馈，而非随机对照或总体准确率。"
+        },
+        {
+          "id": "SCM06",
+          "title": "定性成功案例",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03"
+          ],
+          "notes": "报告概括 PAT 能发现关键错误和重大改进，但未展开论文列出的致命算法 bug、无效证明及 mathematically significant typos 等具体作者案例。该省略不影响评测或治理结论。"
+        },
+        {
+          "id": "SCM07",
+          "title": "试点观察到的失败模式",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04"
+          ],
+          "notes": "日期幻觉/知识过时、PDF parsing、推理失败或误解导致错误判定证明有误三类问题均准确；报告也合理区分前两类工程改进与第三类持续存在的模型局限，并保留高阶判断由人类负责。"
+        },
+        {
+          "id": "SCM08",
+          "title": "Role 1–4/3.5 的责任与治理风险",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04"
+          ],
+          "notes": "报告准确区分作者工具、reviewer 工具、独立 supporting reviewer/带评分建议和全自动审稿，并覆盖幻觉进入决策、观点集中、deskilling、算力不平等、对抗性 gaming 与责任归属；没有把 Role 3/4 写成已实证可用。"
+        },
+        {
+          "id": "SCM09",
+          "title": "Deep Review 产品化范围与数据政策",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04"
+          ],
+          "notes": "报告覆盖从论文审查扩展到技术文档和保留人类高阶判断，但未展开 PDF/纯文本、multi-file 计划、每周两次免费 review、API 接入，以及正式产品保存一年而 pilot 结束后及时删除的不同数据政策。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "来源优先复核完成。eacli web.read 分别读取了 arXiv HTML、同一论文 PDF 和 Google Research 博客；arXiv 两种输出均在 32,000 字符附近截断，但已覆盖正文、两张关键表、角色治理、结论和局限，博客内容完整。未发现关键数字错配、未支持的登记 claim 或核心要求遗漏。仅有轻微覆盖缺口：四阶段描述未显式写 segment 全文覆盖约束和 synthesis 的跨段复查/重跑；未展开定性成功案例和产品访问/保存政策。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 96.7,
+    "evaluated_on": "2026-10-20",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "11a5350bb3beb58cc19fcde857798e726856ae53c9a2c062d5a38081ec02b979",
+    "evidence_sha256": "184f839eb458fda8492e289c660de3bb681db3cd33a777123af675ca315d6a58"
+  }
+}

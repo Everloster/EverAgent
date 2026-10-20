@@ -1,0 +1,269 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/双仓重构参照_证据驱动维护_复杂度路由与分段深审_20261020.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-20",
+  "generator": {
+    "model": "gpt-6",
+    "harness": "codex",
+    "run_id": "20261020-deep-read-4",
+    "explicit_model_override": true,
+    "override_reason": "当前协作运行时为 GPT-6，策略默认 glm-5.3 不适用本轮生成"
+  },
+  "task": {
+    "summary": "把 OpenAI 软件维护、Apple 工具发现、Google Deep Review 与既有 Astra 指令架构合成为下一轮 EverAgent/EverAgent-infra 双仓重构参照，强调原文证据、公开私有隔离和行为评估。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "组合三份本轮深读报告与原文，并纳入既有 GPT-6 Astra 指令架构。"
+      },
+      {
+        "id": "R02",
+        "text": "给出下一次双仓重构的目标结构、执行阶段、任务合同和可观察验收指标。"
+      },
+      {
+        "id": "R03",
+        "text": "严格保持公开仓与私有仓事实隔离，说明不能从原文过度推出的结论。"
+      },
+      {
+        "id": "R04",
+        "text": "附官方原文入口和短锚点，让后续重构优先回读原文而不是只看二手总结。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "official",
+      "title": "OpenAI — Maintaining software with the GPT-6 family",
+      "locator": "https://developers.openai.com/blog/maintaining-software-with-the-gpt-6-family",
+      "accessed_on": "2026-10-20"
+    },
+    {
+      "id": "S02",
+      "kind": "primary",
+      "title": "Apple — Plan or Retrieve First?",
+      "locator": "https://arxiv.org/abs/2610.19068",
+      "accessed_on": "2026-10-20"
+    },
+    {
+      "id": "S03",
+      "kind": "primary",
+      "title": "Google — Towards Automating Scientific Review with Paper Assistant Tool",
+      "locator": "https://arxiv.org/abs/2606.28277",
+      "accessed_on": "2026-10-20"
+    },
+    {
+      "id": "S04",
+      "kind": "official",
+      "title": "Google Research — Analyzing technical documents with Deep Review",
+      "locator": "https://research.google/blog/analyzing-technical-documents-with-deep-review/",
+      "accessed_on": "2026-10-20"
+    },
+    {
+      "id": "S05",
+      "kind": "official",
+      "title": "OpenAI — Rethinking skills and prompts for GPT-6 Astra",
+      "locator": "https://developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra",
+      "accessed_on": "2026-10-20"
+    },
+    {
+      "id": "S06",
+      "kind": "local",
+      "title": "GPT-6 软件维护深度解析",
+      "locator": "ai-learning/reports/knowledge_reports/GPT6软件维护_从广义侦察到证据驱动清理_深度解析_20261020.md",
+      "accessed_on": "2026-10-20"
+    },
+    {
+      "id": "S07",
+      "kind": "local",
+      "title": "Plan or Retrieve First 论文分析",
+      "locator": "ai-learning/reports/paper_analyses/49_plan_retrieve_tool_discovery_2026.md",
+      "accessed_on": "2026-10-20"
+    },
+    {
+      "id": "S08",
+      "kind": "local",
+      "title": "Deep Review 与 Paper Assistant Tool 论文分析",
+      "locator": "ai-learning/reports/paper_analyses/50_paper_assistant_tool_deep_review_2026.md",
+      "accessed_on": "2026-10-20"
+    },
+    {
+      "id": "S09",
+      "kind": "local",
+      "title": "GPT-6 Astra 指令架构深度解析",
+      "locator": "ai-learning/reports/knowledge_reports/GPT6_Astra指令架构_从Prompt堆叠到按需控制_深度解析_20261015.md",
+      "accessed_on": "2026-10-20"
+    },
+    {
+      "id": "S10",
+      "kind": "local",
+      "title": "EverAgent 根协议",
+      "locator": "AGENTS.md",
+      "accessed_on": "2026-10-20"
+    },
+    {
+      "id": "S11",
+      "kind": "local",
+      "title": "EverAgent 通用安全与提交协议",
+      "locator": "docs/PROTOCOL_COMMON.md",
+      "accessed_on": "2026-10-20"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "下一轮重构应先要求每个删除或合并候选提供 owner、调用、历史、真实任务、确定性门禁、风险和收益证据，再进入实施。",
+      "report_anchor": "任何删除或合并都先证明它已失效",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S05",
+        "S06",
+        "S09"
+      ],
+      "evidence": "OpenAI 维护案例以多源证据与小 PR 降低误删；Astra 报告强调薄控制面、按需知识与确定性层。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "路由应区分明确单 owner 的直接检索与复合跨域任务的 capability stub 分解，同时保留用户提供的 proper nouns。",
+      "report_anchor": "路由不能只有一种",
+      "support": "derived",
+      "source_ids": [
+        "S02",
+        "S07"
+      ],
+      "evidence": "Apple G1/G2 的复杂度交叉支持自适应路由，PtR 对明确品牌词的损失支持 proper noun 保留规则。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "复核应按 owner、风险和信息密度语义分段，为关键边界分配更高预算，最后做跨 segment 全局合成。",
+      "report_anchor": "复核不能平均用力",
+      "support": "derived",
+      "source_ids": [
+        "S03",
+        "S04",
+        "S08"
+      ],
+      "evidence": "PAT/Deep Review 使用语义分段、动态预算、局部深审和全局 synthesis；报告将其迁移为双仓复核结构。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "[推测] 下一轮双仓可共享 catalog→get/search→owner→action→verify 的协议形状；公开仓不得保存私有设备、网络、账号、服务状态或凭据。",
+      "report_anchor": "[推测] 下一轮重构中，两仓可共享**协议形状**",
+      "support": "inference",
+      "source_ids": [
+        "S05",
+        "S09",
+        "S10",
+        "S11"
+      ],
+      "evidence": "协议形状来自按需 Context 与唯一 owner 原则；公开私有隔离由根协议和通用安全协议约束，本文只给公开层表述。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "候选结构只有在安全和 hard failure 为零、质量 P10 不下降，并至少改善一项成本或效率指标时才应进入主线。",
+      "report_anchor": "只有关键错误为零、P10 不下降，同时至少一项成本或效率改善",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S08",
+        "S09"
+      ],
+      "evidence": "结论综合 OpenAI 的收益排序、Deep Review 的验证边界与 Astra 的行为评估思想，是本参照的验收准则。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "三篇原文不能推出追求大规模删减、所有复杂任务都先规划、89.7% 等于一般 review precision，或多 Reviewer 天然等于 Deep Review。",
+      "report_anchor": "不应从三篇原文推出什么",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S06",
+        "S07",
+        "S08"
+      ],
+      "evidence": "逐项依据原文适用范围、G3 反转、SPOT 小样本与 Deep Review 协调结构限定过度外推。",
+      "critical": true
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "OpenAI 证据驱动维护侦察与收益排序",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S06"
+      ],
+      "report_anchor": "OpenAI 回答“怎样安全地产生重构候选”"
+    },
+    {
+      "id": "U02",
+      "title": "Apple 直接检索与 capability stub 的复杂度路由",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S07"
+      ],
+      "report_anchor": "Apple 回答“当前任务该取哪些上下文”"
+    },
+    {
+      "id": "U03",
+      "title": "Google 语义分段、动态预算和全局合成",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S03",
+        "S04",
+        "S08"
+      ],
+      "report_anchor": "Google 回答“怎样审查候选重构”"
+    },
+    {
+      "id": "U04",
+      "title": "Astra 薄控制面、按需加载与确定性保障",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S05",
+        "S09"
+      ],
+      "report_anchor": "参照材料"
+    },
+    {
+      "id": "U05",
+      "title": "双仓边界、执行阶段、任务合同和行为验收",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05"
+      ],
+      "report_anchor": "下一轮重构的执行顺序"
+    }
+  ],
+  "limitations": [
+    "本文是下一轮重构参照，不是已经验证的双仓实施结果。",
+    "OpenAI、Apple 与 Google 的数据集、组织和 Harness 不同，合成框架属于工程推导，必须用本项目真实任务回放校准。",
+    "为保护公开私有边界，本文没有读取或复述私有仓设备、服务、网络和凭据事实。",
+    "官方原文仅以链接和短锚点附上，未复制完整版权正文。"
+  ]
+}

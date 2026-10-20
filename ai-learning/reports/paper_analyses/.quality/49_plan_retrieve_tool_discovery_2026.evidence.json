@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/paper_analyses/49_plan_retrieve_tool_discovery_2026.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-20",
+  "generator": {
+    "model": "gpt-6",
+    "harness": "codex",
+    "run_id": "20261020-deep-read-2",
+    "explicit_model_override": true,
+    "override_reason": "当前协作运行时为 GPT-6，策略默认 glm-5.3 不适用本轮生成"
+  },
+  "task": {
+    "summary": "精读 Apple 的大规模工具发现论文，解释 RtP 与 PtR 的复杂度交叉、成本和模型依赖，并形成 EverAgent 路由实验假设。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "解释 Retrieve-then-Plan 与 Plan-then-Retrieve 的公式、机制和 Intent–Registry Coupling。"
+      },
+      {
+        "id": "R02",
+        "text": "保留数据集、样本、主结果、token 开销和跨模型复现的精确数字与统计边界。"
+      },
+      {
+        "id": "R03",
+        "text": "区分论文已验证结论与尚未验证的复杂度 classifier，并提出 EverAgent 的实验方法。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "primary",
+      "title": "Plan or Retrieve First? A Scale Study of Tool Discovery Architectures",
+      "locator": "https://arxiv.org/abs/2610.19068",
+      "accessed_on": "2026-10-20"
+    },
+    {
+      "id": "S02",
+      "kind": "official",
+      "title": "Apple Machine Learning Research — Plan or Retrieve First?",
+      "locator": "https://machinelearning.apple.com/research/plan-retrieve-tool-discovery",
+      "accessed_on": "2026-10-20"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "实验使用 ToolBench 去重后的 46,984 个 API endpoint，G1/G2/G3 样本分别为 200、200、100，主实验 k=5。",
+      "report_anchor": "ToolBench 去重后的 **46,984** 个 API endpoint",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "实验设置表按论文 Methods 与主实验设置整理。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "G1 单工具请求由 RtP 显著领先，而 G2 同类别多工具请求由 PtR 显著领先；G3 recall 的 PtR 优势不显著。",
+      "report_anchor": "核心结果：出现复杂度交叉",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "Table 3 中 G1 recall 0.372 vs 0.289，G2 0.143 vs 0.188，G3 0.160 vs 0.172 且 p=0.080。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "PtR 相比 RtP 在 G1/G2/G3 的 token 增幅约为 75%、80%、104%，且在 G1 同时降低 recall。",
+      "report_anchor": "PtR tokens",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "Table 8 的 token 与 recall 变化逐项录入报告。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "按 G1 走 RtP、G2/G3 走 PtR 的理想路由估算可节省约 16% 总推理 token，并减少约 36% PtR discovery-call 开销。",
+      "report_anchor": "可节省约 **16% 总推理 token**",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "数字来自论文的 routing cost estimate；报告明确 classifier 尚未训练或验证。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "gpt-oss-120b 复现保持 G1/G2 交叉，但 G3 轻微反转为 RtP 领先，说明跨类别结论有模型依赖。",
+      "report_anchor": "G3 却轻微反转为 RtP 领先",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "Table 11：G3 recall 0.160 vs 0.146±0.008，p=0.035。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "[推测] EverAgent 应对明确单 owner 请求直接检索，对复合跨域任务先保留 proper nouns 再生成 capability stubs，并用真实回放验证。",
+      "report_anchor": "下一轮重构应先实验，不能直接上线",
+      "support": "inference",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "建议由 G1/G2 交叉与 PtR 对 proper noun 的损失推导，正文明确要求先做 A/B。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "RtP/PtR 数学定义与抽象工具 stub",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "两种架构"
+    },
+    {
+      "id": "U02",
+      "title": "ToolBench 主实验与复杂度交叉",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "report_anchor": "核心结果：出现复杂度交叉"
+    },
+    {
+      "id": "U03",
+      "title": "Stub 幻觉、token 成本与候选路由器",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "成本：PtR 不是免费的“更聪明”"
+    },
+    {
+      "id": "U04",
+      "title": "跨模型复现、局限与 EverAgent 实验",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "report_anchor": "跨模型复现与不稳定部分"
+    }
+  ],
+  "limitations": [
+    "论文只在 ToolBench 与特定 API 命名分布上评估，不能直接代表企业工具、MCP 或 skills。",
+    "核心指标是 retrieval proxy，没有真实执行工具、参数校验或最终任务成功率。",
+    "复杂度路由器与 stub calibration 只是作者建议，尚未训练和验证。"
+  ]
+}

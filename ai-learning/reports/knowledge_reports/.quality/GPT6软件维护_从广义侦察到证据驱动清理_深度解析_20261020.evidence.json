@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/GPT6软件维护_从广义侦察到证据驱动清理_深度解析_20261020.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-20",
+  "generator": {
+    "model": "gpt-6",
+    "harness": "codex",
+    "run_id": "20261020-deep-read-1",
+    "explicit_model_override": true,
+    "override_reason": "当前协作运行时为 GPT-6，策略默认 glm-5.3 不适用本轮生成"
+  },
+  "task": {
+    "summary": "深入学习 OpenAI 关于 GPT-6 系列维护软件的生产经验，重构其论证、核对关键数字，并提炼可用于 EverAgent 双仓重构的工程边界。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "重构原文从广义维护侦察、多源证据、小型改动到反馈闭环的核心方法。"
+      },
+      {
+        "id": "R02",
+        "text": "核对规模、成本、性能与 CI 优化数字，并明确它们属于 OpenAI 自报。"
+      },
+      {
+        "id": "R03",
+        "text": "给出对 EverAgent 与私有基础设施仓可执行、但不越过安全边界的启示。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "official",
+      "title": "OpenAI — Maintaining software with the GPT-6 family",
+      "locator": "https://developers.openai.com/blog/maintaining-software-with-the-gpt-6-family",
+      "accessed_on": "2026-10-20"
+    },
+    {
+      "id": "S02",
+      "kind": "official",
+      "title": "OpenAI — Rethinking skills and prompts for GPT-6 Astra",
+      "locator": "https://developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra",
+      "accessed_on": "2026-10-20"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "OpenAI 把 agent 软件维护组织成广义侦察、多源证据、小型可审查改动、人类复核和反馈迭代的循环。",
+      "report_anchor": "把软件维护设计成“广义侦察 → 多源证据 → 小型可审查改动 → 人类复核 → 反馈改写提示 → 扩大范围”的循环",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "原文的 dead code、stale experiment、flaky test、AGENTS.md A/B 与 CI 优化案例均包含这一循环的不同环节。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "五名工程师约两周内合并 1,400 多个维护 PR、删除 80 多万行代码，并将一个服务镜像从 3.31 GB 降至 1.72 GB。",
+      "report_anchor": "超过 **1,400** 个",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "数字取自 OpenAI 原文结果汇总；报告同时明确没有候选分母、拒绝率和独立复现。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "同一 stale experiment 提示下，GPT-6.1 Sol Ultra 以 15.12 美元取得 131 个接受发现，达到 Astra Ultra 142 个发现的约 92%，成本约为后者 109.06 美元的 14%。",
+      "report_anchor": "Sol Ultra 取得 Astra Ultra **92%** 的发现数，只消耗 **14%** 的 API 成本",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "报告保留三种模型配置的原文成本与接受发现表，并说明 Astra 仍发现 Sol 漏掉的 flag 依赖模式。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "OpenAI 的 CI 优化把 median 从约 10 分钟降到 4.5 分钟、P90 从约 12.5 分钟降到 6 分钟，并把一个 63 测试 suite 从 592.6 秒降到 29.8 秒。",
+      "report_anchor": "median CI 完成时间约 **10 分钟 → 4.5 分钟**",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "三个数字来自原文 CI optimization 段落；报告将其作为按收益排序的案例，而不是一般性保证。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "把模型盲区写回窄提示或确定性工具，再由更便宜模型批量执行，是从原文案例推导出的成本校准策略。",
+      "report_anchor": "强模型发现盲区 → 人类归纳错误模式 → 提示/工具补丁 → 便宜模型批量执行",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "S01 明示用 Astra 的额外发现改进 Sol 提示；S02 提供模型升级后重新审视长期提示与按需控制的背景。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "维护侦察、证据合同与小型 PR",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "从“静态分析”转向“证据综合”"
+    },
+    {
+      "id": "U02",
+      "title": "规模、成本与 CI 性能数字",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "规模化清理取得了什么结果"
+    },
+    {
+      "id": "U03",
+      "title": "模型升级、Prompt A/B 与按需控制背景",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "report_anchor": "模型能力、成本与提示词不是固定绑定"
+    },
+    {
+      "id": "U04",
+      "title": "对双仓重构的工程推论与证据边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "report_anchor": "对 EverAgent 与私有基础设施仓的含义"
+    }
+  ],
+  "limitations": [
+    "生产数字、成本和效果均由 OpenAI 自报，缺少公开数据集与独立复现。",
+    "原文没有公开候选总量、拒绝率、返工率、回滚率或统一严重度，不能计算精确 precision/recall。",
+    "OpenAI 具备内部 telemetry、搜索、owner 与 review 基础设施，结论不能直接外推到缺少这些条件的仓库。"
+  ]
+}

@@ -2,6 +2,17 @@
 
 > 只用于 AI 新闻日报的阅读结构与呈现。普通网页调研、清单或单篇文章报告不使用本 playbook。
 
+## 固定输入
+
+在原有 AIHOT、GitHub Trending、AI Digest、Hacker News 基础上，每期必须运行：
+
+```bash
+python3 web-surfing/skills/ai-tech-blog-radar/scripts/radar.py \
+  updates --days 2 --limit 12 --format json
+```
+
+从结果中选 0–5 条当天或前一日发布、尚未在上一期日报出现的官方技术博客更新。正文固定保留“顶尖技术博客更新”一节；没有命中时明确写“本期未检出新的高价值技术文”。只做一两句导读，不在日报里展开完整学习报告。
+
 ## 路由
 
 - 设计页眉、TL;DR、头条、Trending、简讯、趋势与页脚时，按需读取 [layout-guide §一–§二](./references/layout-guide.md#一十条硬约束格式级)。

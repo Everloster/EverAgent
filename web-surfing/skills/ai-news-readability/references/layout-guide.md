@@ -20,7 +20,7 @@
 
 | # | 约束 | 违反信号 |
 |---|------|---------|
-| 1 | **页眉 ≤ 2 行**，四源用 ✅ ⚠️ ❌ 单符号表示状态，详情下沉 | 第 5 行一个 blockquote 塞 ≥200 字 |
+| 1 | **页眉 ≤ 2 行**，五类来源用 ✅ ⚠️ ❌ 单符号表示状态，详情下沉 | 第 5 行一个 blockquote 塞 ≥200 字 |
 | 2 | **TL;DR 每条 1 句、≤ 40 字、至多 1 个链接**，共 7–10 条 | 任一条 ≥ 2 行或含 `[转述]`/HN 分数 |
 | 3 | **头条结构固定四段**：三句话速读 + 关键事实（bullets）+ 细读与质疑（bullets）+ 来源 | 大段 prose 直接灰到底，证据嵌在正文 |
 | 4 | **正文禁止内嵌证据标签**（`[转述]`/`[仅标题级]`/`[检索快照，域名级]`/`[一手标注]`） | 发现任一 inline 粗体证据标签 |
@@ -51,7 +51,7 @@ semantic_tags: ["ai_news", "daily_digest"]
 
 # AI 行业日报 · {{DATE}}
 
-四源：AIHOT {{A}} · GitHub Trending {{B}} · AI Digest {{C}} · HN {{D}}（{{A}}/{{B}}/{{C}}/{{D}} 取 ✅ ⚠️ ❌）
+五源：AIHOT {{A}} · GitHub Trending {{B}} · AI Digest {{C}} · HN {{D}} · 技术博客 {{E}}（状态取 ✅ ⚠️ ❌）
 覆盖 {{DATE}}（含前日仍在前排的条目） · [上期日报 →](./ai-news-daily-{{PREV}}.md)
 ```
 
@@ -133,7 +133,21 @@ semantic_tags: ["ai_news", "daily_digest"]
 
 ---
 
-### 2.5 简讯模板
+### 2.5 顶尖技术博客更新模板
+
+```markdown
+## 顶尖技术博客更新
+
+- **[{{文章标题}}]({{官方 URL}})** · {{厂商/实验室}} · {{日期}}：{{一句话说明新机制、实验或工程价值}}
+- ...（0–5 条）
+```
+
+- 输入来自 `ai-tech-blog-radar updates --days 2 --limit 12 --format json`。
+- 只选官方原文；厂商 benchmark 写成“官方称”，不当成独立验证。
+- 已升为当期头条的文章不在此重复展开，只写“本期技术博客重点已升为头条 N”。
+- 无命中时保留章节，并写“本期未检出新的高价值技术文”。
+
+### 2.6 简讯模板
 
 ```markdown
 ## 简讯
@@ -147,7 +161,7 @@ semantic_tags: ["ai_news", "daily_digest"]
 
 ---
 
-### 2.6 趋势总结模板
+### 2.7 趋势总结模板
 
 ```markdown
 ## 趋势总结
@@ -173,13 +187,13 @@ semantic_tags: ["ai_news", "daily_digest"]
 
 ---
 
-### 2.7 页脚模板
+### 2.8 页脚模板
 
 ```markdown
 ---
 
 *报告生成时间：{{DATE}}*
-*主数据源：AIHOT · GitHub Trending · AI Digest · Hacker News*
+*主数据源：AIHOT · GitHub Trending · AI Digest · Hacker News · AI Tech Blog Radar*
 *检索通道：eacli Token Plan（web.search / web.read）*
 *说明：评分为站点标注值；以官方链接为准。*
 
@@ -189,6 +203,7 @@ semantic_tags: ["ai_news", "daily_digest"]
 - **GitHub Trending**：{{N 仓直读/折叠情况}}
 - **AI Digest 中文**：{{是否停更、最新一期日期}}
 - **Hacker News**：{{首页快照条数、item id 是否可提取}}
+- **顶尖技术博客**：{{20 个官方源成功数、入选条数、失败源与 XML fallback}}
 - **本期直读失败项**：{{列表，含失败原因}}
 - **本期一手直读项**：{{列表，含 URL 与时间戳}}
 
@@ -237,6 +252,7 @@ semantic_tags: ["ai_news", "daily_digest"]
 [ ] 单段链接 ≤ 2 个？
 [ ] 「冷读 N 连」是否全部改成 bullet？
 [ ] Trending 表格后是否 ≤ 5 条 bullet，无 "① ② ③" 单段？
+[ ] 是否保留“顶尖技术博客更新”章节，并去掉与头条重复的内容？
 [ ] 趋势总结是否 ≤ 3 节、每节有副标题？
 [ ] 页脚正文 ≤ 4 行，详情是否迁入 <details>？
 [ ] 每条头条 emoji 是否对齐分类映射表？
@@ -248,10 +264,10 @@ semantic_tags: ["ai_news", "daily_digest"]
 
 ## 六、什么没变
 
-- **章节清单**（TL;DR / 头条 / Trending / 简讯 / 趋势总结）保留
+- **章节清单**（TL;DR / 头条 / Trending / 顶尖技术博客更新 / 简讯 / 趋势总结）保留
 - **证据纪律**（分级、推测必标、无法验证坦诚写明）保留
 - **工具约束**（eacli Token Plan-first，禁止绕过 eacli 直调 provider 工具）保留
 - **仓内写入边界**（只允许写当天报告一个文件）保留
-- **四源**（AIHOT / GitHub Trending / AI Digest / HN）保留
+- **原四源**（AIHOT / GitHub Trending / AI Digest / HN）保留，并新增 AI Tech Blog Radar
 
 本宪章**只改呈现**，不改边界、不改严谨性门槛。
