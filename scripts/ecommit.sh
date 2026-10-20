@@ -50,8 +50,8 @@ export GIT_AUTHOR_EMAIL="${GIT_AUTHOR_EMAIL:-2820419+Everloster@users.noreply.gi
 
 # Committer：自动识别当前 agent 身份（whoami_agent.py，跨平台 mac/linux/win）。
 # 铁律（2026-07-28 用户定）：识别不出身份 = 禁止提交，绝不静默兜底。
-_NAME="$(python3 "$_D/whoami_agent.py" --name 2>/dev/null || true)"
-_EMAIL="$(python3 "$_D/whoami_agent.py" --email 2>/dev/null || true)"
+_IDENTITY="$(python3 "$_D/whoami_agent.py" --git-ident 2>/dev/null || true)"
+IFS=$'\t' read -r _NAME _EMAIL <<< "$_IDENTITY"
 if [ -z "${_NAME:-}" ] || [ -z "${_EMAIL:-}" ] || [[ "$_NAME" == *-unknown ]]; then
   echo "[ecommit] BLOCKED: 无法识别当前 agent 身份（name=${_NAME:-空}, email=${_EMAIL:-空}），已阻止提交。" >&2
   echo "  ① 优先：修 scripts/whoami_agent.py，让它覆盖当前 CLI/模型（加检测规则+厂商邮箱）。" >&2

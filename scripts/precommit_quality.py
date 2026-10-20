@@ -117,6 +117,12 @@ def main() -> int:
                 [sys.executable, "scripts/audit_reports.py", "--all", "--summary-only"],
             ),
         ]
+        if staged & {"scripts/whoami_agent.py", "scripts/git_identity.py", "scripts/ecommit.sh",
+                     "scripts/test_whoami_agent.py", "scripts/test_git_identity.py"}:
+            checks.append((
+                "agent identity regression",
+                [sys.executable, "-m", "unittest", "scripts.test_whoami_agent", "scripts.test_git_identity", "-q"],
+            ))
         if added_reports:
             checks.append(
                 (

@@ -18,6 +18,8 @@ jobs:
           python-version: "3.12"
       - name: Run report tooling tests
         run: python3 -m unittest tests.test_report_tooling
+      - name: Run agent identity tests
+        run: python3 -m unittest scripts.test_whoami_agent scripts.test_git_identity
       - name: Audit all reports
         run: python3 scripts/audit_reports.py --all --summary-only
       - name: Verify generated indexes

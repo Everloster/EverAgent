@@ -26,7 +26,7 @@ Task-Type: {project-optimization | new-project | task-execution}
 - `{task-type}` = `conversational-learning`（对话学习，默认）/ `project-optimization`（项目优化）/ `architecture-redesign`（架构）/ `maintenance`（维护）/ `chore`（杂务）
 - `{scope}` = `global` 或具体领域名（`ai-learning` / `cs-learning` / ...）
 - `{描述}` ≤ 72 字符，使用中文，简明扼要
-- `Agent:` 必须填当前运行模型名。Pre-commit hook 会校验 git 身份。
+- `Agent:` 填已经确认的当前模型；仅有默认配置时注明 `model-unverified` 与来源。Pre-commit hook 校验 Git 身份。
 - 严禁 commit message 包含 token / API key / 私人凭据
 
 ---
@@ -38,6 +38,12 @@ Task-Type: {project-optimization | new-project | task-execution}
 > `scripts/ecommit.sh` 是项目质量门的强制入口：它验证精确 staged snapshot，并拒绝会在门禁后改变提交树的 commit 参数。版本化 pre-commit hook 是额外防线；若设备已有外部 `core.hooksPath`，不要覆盖它，外部 hook 会在 `git commit` 阶段继续执行。
 > `.github/workflows/quality.yml` 在 push 与 PR 上复跑仓库级检查，避免本机 hook 配置差异成为唯一防线。
 > **身份识别失败 = 禁止提交（2026-07-28 铁律）**：whoami 返回 `*-unknown` 时 ecommit 直接退出、hook 同样拦截，绝不允许静默兜底提交。处理：① 优先修 `scripts/whoami_agent.py` 覆盖当前 CLI（加检测规则 + 厂商 noreply 邮箱）；② 应急与用户确认身份后显式指定：`AGENT_ID=<cli>-<model> AGENT_EMAIL=<厂商noreply> scripts/ecommit.sh -m "..."`。
+
+`whoami_agent.py --json` 给出 CLI、模型与各自来源；会话环境模型优先于配置默认值。
+`model_confidence=configured` 只表示默认配置，`current_model_confirmed=false` 时不得把它当成当前模型证明。
+提交包装通过 `--git-ident` 单次检测获取 name/email；既有配置提示仍可用于 Git 署名，未知身份继续拦截。
+进程检测只认调用方祖先链；Windows 断链不会借其他终端的进程补身份。
+Git validator 也消费同一 JSON owner；当前身份未知时，上一会话留下的 Git 配置不能放行提交。
 
 ```bash
 git add -A

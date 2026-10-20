@@ -5,16 +5,18 @@
   1) 身份名 = <cli/工具/ide>-<模型>，如 trae-openrouter-3o / codex-gpt-5.5 / claude-code-sonnet-4.6
   2) 邮箱   = 厂商官方 noreply（claude→anthropic、codex/chatgpt→openai、trae→trae.com …），识别不出兜底 noreply@everloster.com
 
-检测策略：优先环境变量（社区最佳实践，见 github.com/cli/cli internal/agents/detect.go
-与 crates.io/detect-coding-agent），跨平台且无需 ps；再读该 CLI 配置补模型名。
+检测策略：已知 CLI 的最近祖先优先，再用运行时环境；只读该 CLI 的模型字段。
+配置默认模型与未绑定当前会话的近期记录只作提示，不证明当前会话模型。
 
 用法：
   whoami_agent.py            # 输出两行：name=<...> / email=<...>
   whoami_agent.py --name     # 只输出 name
   whoami_agent.py --email    # 只输出 email
+  whoami_agent.py --json     # 身份、来源与可信度；配置默认模型不是会话证明
+  whoami_agent.py --git-ident # 单次检测，输出 name<TAB>email，供提交包装消费
 """
 from __future__ import annotations
-import os, re, sys, configparser
+import argparse, json, os, re, sys
 from pathlib import Path
 
 HOME = Path.home()
@@ -56,7 +58,7 @@ CLI_RULES = [
     ("amp",         lambda: _has("AMP_CURRENT_THREAD_ID") or _eq("AGENT", "amp")),
     # TRAE / coco：先于 codex 判——本机 CODEX_HOME 是 Orca 编排层全局设的干扰项，
     # 若 TRAE 会话信号在场则必是 trae（社区教训：勿用会被别的工具设置的变量判 CLI）。
-    ("trae",        lambda: _has("TRAECLI_SESSION_INBOX") or _proc_has("coco", "traecli")),
+    ("trae",        lambda: _has("TRAECLI_SESSION_INBOX")),
     # codex：只认 codex 运行时专有变量，不含 CODEX_HOME（它可能被编排层全局设置）。
     ("codex",       lambda: _has("CODEX_THREAD_ID", "CODEX_SANDBOX", "CODEX_CI")),
     ("gemini-cli",  lambda: _has("GEMINI_CLI")),
@@ -73,24 +75,34 @@ CLI_RULES = [
     ("claude-code", lambda: _has("CLAUDECODE", "CLAUDE_CODE")),
     ("goose",       lambda: _has("GOOSE_PROVIDER")),
     # qoderclicn（QoderCN CLI，CN 渠道）：专有环境变量 QODERCN_CLI，进程链 comm=qoderclicn 兜底。
-    ("qoderclicn",  lambda: _has("QODERCN_CLI") or _proc_has("qoderclicn")),
+    ("qoderclicn",  lambda: _has("QODERCN_CLI")),
     # zcode（ZCode 桌面 App 内嵌 CLI，厂商 z.ai）：专有 ZCODE_* 环境变量为主，
     # 进程链 comm=zcode-cli / zcode-host-* 兜底（首字母大写的 ZCode 主进程不参与匹配）。
-    ("zcode",       lambda: _has("ZCODE_APP_VERSION", "ZCODE_ENV", "ZCODE_PROCESS_LABEL")
-                        or _proc_has("zcode-cli", "zcode-host")),
-    # kimi-cli（Kimi Code CLI）：无专有环境变量，靠进程链判（comm=kimi）。放最后——
-    # 进程链判定优先级最低，嵌套场景下让 env 型 CLI 先匹配。
+    ("zcode",       lambda: _has("ZCODE_APP_VERSION", "ZCODE_ENV", "ZCODE_PROCESS_LABEL")),
+    # kimi-cli（Kimi Code CLI）：最近祖先的精确匹配见 PROCESS_RULES；环境仅作后续依据。
     # 注意命名：kimi = 桌面 App，kimi-cli = 命令行工具，二者身份须区分（2026-07-28 用户订正）。
-    ("kimi-cli",    lambda: _has("KIMI_CLI", "KIMI_CODE_CLI") or _proc_has("kimi")),
+    ("kimi-cli",    lambda: _has("KIMI_CLI", "KIMI_CODE_CLI")),
     # minimax-code（MiniMax Code 桌面 App，Electron）：进程链 comm=MiniMax Code Helper。
-    ("minimax-code", lambda: _has("MINIMAX_CODE") or _proc_has("MiniMax Code")),
+    ("minimax-code", lambda: _has("MINIMAX_CODE")),
     # pi（pi-coding-agent，OSS harness，官网 pi.dev）：会话环境自带 PI_CODING_AGENT=true
-    # 和 PI_SESSION_ID/PI_MODEL，专有且稳定，纯 env 判定即可——不加进程链兜底，
-    # 因 "pi" 二字太短，子串匹配会误中 pip 等进程。
+    # 和 PI_SESSION_ID/PI_MODEL；进程只精确匹配，避免 "pi" 误中 pip 等程序。
     # 放最后：PI_* 是环境继承型信号（pi 的 bash 工具会传给所有子进程），若别的
     # CLI 嵌套运行在 pi 内，应让它们自己的专有信号先命中（同 trae 嵌套让位原则）。
     ("pi",          lambda: _has("PI_CODING_AGENT", "PI_SESSION_ID")),
 ]
+
+# 仅匹配调用方祖先链，最近的已知 CLI 优先；其他终端里运行的 Agent 不是身份依据。
+PROCESS_RULES = (
+    ("codex", ("codex",)),
+    ("claude-code", ("claude", "claude-code")),
+    ("trae", ("coco", "traecli")),
+    ("qoderclicn", ("qoderclicn",)),
+    ("zcode", ("zcode-cli", "zcode-host")),
+    ("kimi-cli", ("kimi",)),
+    ("minimax-code", ("MiniMax Code",)),
+    ("pi", ("pi", "pi-coding-agent")),
+)
+_ANCESTORS: list[str] | None = None
 
 
 _WIN_SCAN: tuple[list[str], list[str], bool] | None = None
@@ -98,9 +110,8 @@ _WIN_SCAN: tuple[list[str], list[str], bool] | None = None
 
 def _win_scan() -> tuple[list[str], list[str], bool]:
     """Windows 进程扫描：ctypes Toolhelp32 快照（纯 stdlib、毫秒级、无 PowerShell 冷启动抖动）。
-    返回 (祖先链小写, 全快照进程名原始大小写, 祖先链是否正常走到根)。
-    实测坑（2026-08-09 ecommit 场景）：MSYS2 的 bash 脚本 exec 会弄死中间进程，
-    祖先链在两个 bash.exe 后即断（父 PID 已不在快照），此时须回落全快照匹配。"""
+    返回 (祖先链原始名称, 空的兼容字段, 祖先链是否正常走到根)。
+    MSYS2 exec 可能使祖先链截断；此时不把其他进程当成当前 Agent。"""
     global _WIN_SCAN
     if _WIN_SCAN is not None:
         return _WIN_SCAN
@@ -141,14 +152,13 @@ def _win_scan() -> tuple[list[str], list[str], bool]:
                 ok = k32.Process32NextW(snap, ctypes.byref(entry))
         finally:
             k32.CloseHandle(snap)
-        all_raw = [exe for _, exe in procs.values()]
         pid = os.getpid()
         for _ in range(16):
             info = procs.get(pid)
             if not info:
                 break  # 父进程已死（MSYS2 exec 截断）→ 链断
             ppid, exe = info
-            ancestors.append(exe.lower())
+            ancestors.append(exe)
             if ppid <= 0 or ppid == pid or exe.lower() in ("explorer.exe", "services.exe", "sshd.exe", "system"):
                 reached_root = True
                 break
@@ -160,49 +170,76 @@ def _win_scan() -> tuple[list[str], list[str], bool]:
     return _WIN_SCAN
 
 
-def _proc_has(*names) -> bool:
-    """进程链兜底：类 Unix 用 ps 向上爬；Windows 用 Toolhelp32 快照（2026-08-09 补）。
-    祖先链被 MSYS2 exec 截断时回落全快照精确匹配 `{name}.exe`（大小写敏感——
-    kimi.exe 是 CLI、Kimi.exe 是桌面 App，二者必须区分）。局限：多个 agent CLI
-    并存时全快照匹配可能误中，优先靠各 CLI 专有 env / AGENT_ID 显式指定。"""
+def _process_ancestors() -> list[str]:
+    """单次、有界的祖先链；Windows 断链时保持未知，不匹配全机其他进程。"""
+    global _ANCESTORS
+    if _ANCESTORS is not None:
+        return _ANCESTORS
     if os.name == "nt":
-        ancestors, all_raw, reached_root = _win_scan()
-        low = [n.lower() for n in names]
-        if any(n in a for a in ancestors for n in low):
-            return True
-        if reached_root:
-            return False
-        if os.environ.get("WHOAMI_DEBUG"):
-            print(f"[whoami] 祖先链截断 {ancestors}，回落全快照匹配 {names}", file=sys.stderr)
-        return any(raw == f"{n}.exe" for raw in all_raw for n in names)
+        _ANCESTORS = _win_scan()[0]
+        return _ANCESTORS
+    ancestors = []
     try:
         import subprocess
         pid = os.getpid()
-        for _ in range(8):
+        seen = set()
+        for _ in range(16):
+            if pid in seen:
+                break
+            seen.add(pid)
             out = subprocess.run(["ps", "-o", "ppid=,comm=", "-p", str(pid)],
-                                 capture_output=True, text=True, timeout=3).stdout.strip()
+                                 capture_output=True, text=True, timeout=1).stdout.strip()
             if not out:
                 break
             parts = out.split(None, 1)
             if len(parts) < 2:
                 break
             ppid, comm = parts[0], parts[1]
-            base = os.path.basename(comm)
-            if any(n in base for n in names):
-                return True
+            ancestors.append(os.path.basename(comm))
             pid = int(ppid) if ppid.isdigit() else 0
             if pid <= 1:
                 break
     except Exception:
         pass
-    return False
+    _ANCESTORS = ancestors
+    return ancestors
+
+
+def _matches_process(base: str, names: tuple[str, ...]) -> bool:
+    if os.name == "nt":
+        if base.lower().endswith(".exe"):
+            base = base[:-4]
+        return any(base == name if name == "kimi" else base.lower() == name.lower() for name in names)
+    return any(base == name or
+               (name == "zcode-host" and base.startswith("zcode-host-")) or
+               (name == "MiniMax Code" and base.startswith("MiniMax Code Helper"))
+               for name in names)
+
+
+def _proc_has(*names) -> bool:
+    return any(_matches_process(base, names) for base in _process_ancestors())
+
+
+def _detect_cli() -> tuple[str | None, str]:
+    for base in _process_ancestors():
+        for cli, names in PROCESS_RULES:
+            if _matches_process(base, names):
+                if cli == "claude-code" and _has("CLAUDE_CODE_IS_COWORK"):
+                    cli = "cowork"
+                return cli, "process-ancestry"
+    for cli, rule in CLI_RULES:
+        if rule():
+            return cli, "runtime-environment"
+    return None, "unresolved"
 
 
 def _toml_get(path: Path, key: str) -> str | None:
     """极简 toml 取顶层 key（不引三方库，跨平台）。"""
-    if not path.is_file():
+    if not path.is_file() or path.stat().st_size > 1024 * 1024:
         return None
     for line in path.read_text(encoding="utf-8", errors="ignore").splitlines():
+        if line.lstrip().startswith("["):
+            break
         m = re.match(rf'^\s*{re.escape(key)}\s*=\s*"?([^"#\n]+)"?', line)
         if m:
             return m.group(1).strip()
@@ -244,13 +281,13 @@ def _trae_session_model() -> str | None:
     except OSError:
         return None
 
-    for log_path in logs:
+    for log_path in logs[:4]:
         try:
             with log_path.open("rb") as handle:
                 handle.seek(0, os.SEEK_END)
                 size = handle.tell()
-                handle.seek(max(0, size - 8 * 1024 * 1024))
-                text = handle.read().decode("utf-8", errors="ignore")
+                handle.seek(max(0, size - 1024 * 1024))
+                text = handle.read(1024 * 1024).decode("utf-8", errors="ignore")
         except OSError:
             continue
 
@@ -285,13 +322,13 @@ def _zcode_session_model() -> str | None:
     except OSError:
         return None
 
-    for log_path in logs:
+    for log_path in logs[:4]:
         try:
             with log_path.open("rb") as handle:
                 handle.seek(0, os.SEEK_END)
                 size = handle.tell()
-                handle.seek(max(0, size - 8 * 1024 * 1024))
-                text = handle.read().decode("utf-8", errors="ignore")
+                handle.seek(max(0, size - 1024 * 1024))
+                text = handle.read(1024 * 1024).decode("utf-8", errors="ignore")
         except OSError:
             continue
 
@@ -308,8 +345,8 @@ def _opencode_session_model() -> str | None:
 
     opencode 不在配置文件里存全局模型（~/.config/opencode/opencode.json 无 model 键，
     模型是会话级选择），每条 assistant 消息把 providerID/modelID/path.cwd 存进 message
-    表（JSON 文本列）。取「cwd 与当前目录一致的最新一条」即当前会话事实源；cwd 无匹配
-    时退全局最新一条。只读模式打开（mode=ro，WAL 下不阻塞写入方），任何异常返回 None
+    表（JSON 文本列）。只取 cwd 与当前目录一致的模型提示，不读其他目录的消息。
+    同目录可能有多个会话，因此它不是当前会话证明。只读模式打开，任何异常返回 None
     让上层落 unknown（ecommit 拦 *-unknown，绝不静默猜）。
     """
     db = HOME / ".local" / "share" / "opencode" / "opencode.db"
@@ -322,69 +359,76 @@ def _opencode_session_model() -> str | None:
         con = sqlite3.connect(f"file:{db}?mode=ro", uri=True, timeout=2)
         try:
             rows = con.execute(
-                "SELECT data FROM message "
+                "SELECT json_extract(data,'$.modelID') FROM message "
                 "WHERE json_extract(data,'$.role')='assistant' "
-                "ORDER BY time_created DESC LIMIT 50"
+                "AND json_extract(data,'$.path.cwd')=? "
+                "ORDER BY time_created DESC LIMIT 1", (cwd,)
             ).fetchall()
         finally:
             con.close()
-        cwd_latest = global_latest = None
-        for (raw,) in rows:
-            try:
-                data = _json.loads(raw)
-            except Exception:
-                continue
-            model = data.get("modelID") or ""
-            if not model:
-                continue
-            if global_latest is None:
-                global_latest = model
-            if cwd_latest is None and (data.get("path") or {}).get("cwd") == cwd:
-                cwd_latest = model
-                break
-        return cwd_latest or global_latest
+        return rows[0][0] if rows and isinstance(rows[0][0], str) else None
     except Exception:
         return None
 
 
-def detect_model(cli: str) -> str:
-    """按 CLI 读其配置拿模型名。"""
+def model_evidence(cli: str) -> dict:
+    """会话环境优先；静态配置与近期日志明确标为提示。只返回模型字段。"""
+    def found(model, source, confidence):
+        if (not isinstance(model, str) or model.lower() == "unknown"
+                or not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9:./_-]{0,127}", model)):
+            model = None
+        return {"model": model or "unknown", "source": source,
+                "confidence": confidence if model else "unknown",
+                "current_model_confirmed": bool(model) and confidence in {
+                    "runtime-environment", "session-bound"}}
+    env_keys = {
+        "opencode": ("OPENCODE_MODEL",), "trae": ("TRAE_MODEL",),
+        "codex": ("CODEX_MODEL",),
+        "claude-code": ("ANTHROPIC_MODEL", "CLAUDE_MODEL"),
+        "cowork": ("ANTHROPIC_MODEL", "CLAUDE_MODEL"),
+        "gemini-cli": ("GEMINI_MODEL",), "cursor": ("CURSOR_MODEL",),
+        "cursor-cli": ("CURSOR_MODEL",), "pi": ("PI_MODEL",),
+        "zcode": ("ZCODE_MODEL",), "kimi-cli": ("KIMI_MODEL",),
+        "minimax-code": ("MINIMAX_MODEL",), "qoderclicn": ("QODERCN_MODEL",),
+    }
+    for key in (*env_keys.get(cli, ()), "AGENT_MODEL"):
+        if os.environ.get(key):
+            return found(os.environ[key], "env:" + key, "runtime-environment")
     if cli == "opencode":
-        # env 显式覆盖优先（编排层/测试可注入）；否则读本地会话库
-        return os.environ.get("OPENCODE_MODEL") or _opencode_session_model() or "unknown"
+        return found(_opencode_session_model(), "workspace-message-model", "workspace-hint")
     if cli == "trae":
         session_model = _trae_session_model()
         if session_model:
-            return session_model
+            return found(session_model, "thread-matched-runtime-log", "session-bound")
         t = HOME / ".trae" / "traecli.toml"
         prov = _toml_get(t, "model_provider") or ""
         model = _toml_get(t, "model") or ""
         # trae 已单列厂商，model 里带 provider 前缀反而重复；只取 model
-        return model or "unknown"
+        return found(model, "config-default", "configured")
     if cli == "codex":
         home = Path(os.environ.get("CODEX_HOME", HOME / ".codex"))
-        return _toml_get(home / "config.toml", "model") or os.environ.get("CODEX_MODEL", "unknown")
+        return found(_toml_get(home / "config.toml", "model"), "config-default", "configured")
     if cli in ("claude-code", "cowork"):
-        return os.environ.get("ANTHROPIC_MODEL") or os.environ.get("CLAUDE_MODEL", "unknown")
+        return found(None, "runtime-environment", "unknown")
     if cli == "gemini-cli":
-        return os.environ.get("GEMINI_MODEL", "unknown")
+        return found(None, "runtime-environment", "unknown")
     if cli in ("cursor", "cursor-cli"):
-        return os.environ.get("CURSOR_MODEL", "unknown")
+        return found(None, "runtime-environment", "unknown")
     if cli == "pi":
         # pi 会话环境直接携带当前模型（PI_MODEL，如 glm-5.3），harness 暴露的会话事实源
-        return os.environ.get("PI_MODEL") or "unknown"
+        return found(None, "runtime-environment", "unknown")
     if cli == "zcode":
         # env 可显式覆盖；默认读当日会话日志的真实模型（如 GLM-5.3）
-        return (os.environ.get("ZCODE_MODEL") or _zcode_session_model() or "unknown")
+        return found(_zcode_session_model(), "recent-runtime-log", "recent-log-hint")
     if cli == "kimi-cli":
         # ~/.kimi-code/config.toml 的 default_model 形如 "kimi-code/k3"，取 / 后段
         raw = _toml_get(HOME / ".kimi-code" / "config.toml", "default_model") or ""
-        return raw.split("/")[-1] if raw else os.environ.get("KIMI_MODEL", "unknown")
+        return found(raw.split("/")[-1] if raw else None, "config-default", "configured")
     if cli == "minimax-code":
         # ~/.minimax/config.yaml 的 defaultModel 形如 "minimax/MiniMax-M3"，取 / 后段并去 MiniMax- 前缀
         raw = _yaml_get(HOME / ".minimax" / "config.yaml", "defaultModel") or ""
         m = re.sub(r"^minimax-", "", raw.split("/")[-1], flags=re.I)
-        return m or os.environ.get("MINIMAX_MODEL", "unknown")
+        return found(m, "config-default", "configured")
     if cli == "qoderclicn":
         # ~/.qoder-cn/settings.json 的 model.name 形如 "qmodel_38max"（厂商内部模型键，非显示名）
         try:
@@ -393,24 +437,30 @@ def detect_model(cli: str) -> str:
             name = cfg.get("model", {}).get("name") or ""
         except Exception:
             name = ""
-        return name or os.environ.get("QODERCN_MODEL", "unknown")
+        return found(name, "config-default", "configured")
     # 通用兜底
-    return os.environ.get("AGENT_MODEL", "unknown")
+    return found(None, "unresolved", "unknown")
 
 
-def detect() -> tuple[str, str]:
+def detect_model(cli: str) -> str:
+    return model_evidence(cli)["model"]
+
+
+def inspect_identity() -> dict:
     # 显式覆盖：任意 CLI 可设 AGENT_ID / AGENT_EMAIL 直接指定
     if os.environ.get("AGENT_ID"):
-        return os.environ["AGENT_ID"], os.environ.get("AGENT_EMAIL", FALLBACK_EMAIL)
+        name = os.environ["AGENT_ID"]
+        email = os.environ.get("AGENT_EMAIL", FALLBACK_EMAIL)
+        valid = bool(re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]{0,160}", name)
+                     and re.fullmatch(r"[^\s<>@]+@[^\s<>@]+", email))
+        return {"schema_version": 1, "name": name if valid else "agent-unknown",
+                "email": email if valid else FALLBACK_EMAIL, "cli": None,
+                "cli_source": "explicit-override", "model": "unknown",
+                "model_source": "explicit-identity", "model_confidence": "declared",
+                "current_model_confirmed": False,
+                "resolved": valid and not name.endswith("-unknown")}
 
-    cli = None
-    for cid, rule in CLI_RULES:
-        try:
-            if rule():
-                cli = cid
-                break
-        except Exception:
-            continue
+    cli, cli_source = _detect_cli()
 
     if not cli:
         # 完全识别不出：进程名 + 兜底邮箱（ecommit 会拦 *-unknown，绝不静默提交）
@@ -424,23 +474,48 @@ def detect() -> tuple[str, str]:
             except Exception:
                 pass
         base = re.sub(r"[^A-Za-z0-9._-]+", "-", base).strip("-").lower()
-        return f"{base}-unknown", FALLBACK_EMAIL
+        return {"schema_version": 1, "name": f"{base}-unknown", "email": FALLBACK_EMAIL,
+                "cli": None, "cli_source": cli_source, "model": "unknown",
+                "model_source": "unresolved", "model_confidence": "unknown",
+                "current_model_confirmed": False, "resolved": False}
 
-    model = detect_model(cli)
+    evidence = model_evidence(cli)
+    model = evidence["model"]
     name = f"{cli}-{model}"
     # 清洗成 git 身份安全字符
     name = re.sub(r"[^A-Za-z0-9._-]+", "-", name).strip("-").lower()
     email = VENDOR_EMAIL.get(cli, FALLBACK_EMAIL)
-    return name, email
+    return {"schema_version": 1, "name": name, "email": email,
+            "cli": cli, "cli_source": cli_source, "model": model,
+            "model_source": evidence["source"], "model_confidence": evidence["confidence"],
+            "current_model_confirmed": evidence["current_model_confirmed"],
+            "resolved": not name.endswith("-unknown")}
+
+
+def detect() -> tuple[str, str]:
+    identity = inspect_identity()
+    return identity["name"], identity["email"]
 
 
 def main() -> int:
-    name, email = detect()
-    arg = sys.argv[1] if len(sys.argv) > 1 else ""
-    if arg == "--name":
+    parser = argparse.ArgumentParser(description=__doc__)
+    output = parser.add_mutually_exclusive_group()
+    output.add_argument("--name", action="store_true")
+    output.add_argument("--email", action="store_true")
+    output.add_argument("--json", action="store_true")
+    output.add_argument("--git-ident", action="store_true")
+    args = parser.parse_args()
+    identity = inspect_identity()
+    name, email = identity["name"], identity["email"]
+    if args.name:
         print(name)
-    elif arg == "--email":
+    elif args.email:
         print(email)
+    elif args.json:
+        print(json.dumps(identity, ensure_ascii=False))
+    elif args.git_ident:
+        print(f"{name}\t{email}")
+        return 0 if identity["resolved"] else 1
     else:
         print(f"name={name}")
         print(f"email={email}")
