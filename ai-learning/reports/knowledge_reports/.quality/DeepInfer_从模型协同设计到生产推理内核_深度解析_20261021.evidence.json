@@ -1,0 +1,283 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/DeepInfer_从模型协同设计到生产推理内核_深度解析_20261021.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-21",
+  "generator": {
+    "model": "gpt-5.6-sol",
+    "harness": "codex",
+    "run_id": "generator-994d192d8133",
+    "explicit_model_override": false,
+    "override_reason": ""
+  },
+  "task": {
+    "summary": "对 DeepSeek 新开源推理框架 DeepInfer 做源码优先的深度研究，结合关联论文、官方技术博客、公开 benchmark 与第三方分析，输出可独立阅读的 AI 学习报告。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "实际阅读固定 commit 的 DeepInfer 源码，解释架构、一次请求的执行链和核心实现。"
+      },
+      {
+        "id": "R02",
+        "text": "研究 DeepSeek V4.1 Flash 与 DSpark 原始论文、官方部署博客和现有高质量公开分析。"
+      },
+      {
+        "id": "R03",
+        "text": "明确区分本次开源 engine core 与未开源的完整生产 serving 系统。"
+      },
+      {
+        "id": "R04",
+        "text": "审计官方 benchmark 的计算口径、可复现性、局限与文档冲突。"
+      },
+      {
+        "id": "R05",
+        "text": "与 vLLM、SGLang、TensorRT-LLM 至少两个竞品比较，并给出采用边界、意义、局限和思考与追问。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "primary",
+      "title": "DeepSeek-AI — DeepInfer source repository at 774ce244",
+      "locator": "https://github.com/deepseek-ai/DeepInfer/tree/774ce244b87cc0eb8d4b94ab9f5de2ab22049f01",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S02",
+      "kind": "primary",
+      "title": "DeepSeek-V4.1-Flash: Pushing the Limits of KV Cache Compression",
+      "locator": "https://arxiv.org/abs/2609.19969",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S03",
+      "kind": "primary",
+      "title": "DSpark: Confidence-Scheduled Speculative Decoding with Semi-Autoregressive Generation",
+      "locator": "https://arxiv.org/abs/2607.05147",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S04",
+      "kind": "official",
+      "title": "DeepSeek V4.1 Flash 大规模推理部署实践",
+      "locator": "https://zhuanlan.zhihu.com/p/2095560295930508953",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S05",
+      "kind": "official",
+      "title": "DeepSeek-V4.1-Flash-1017 Model Card",
+      "locator": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S06",
+      "kind": "official",
+      "title": "vLLM README",
+      "locator": "https://github.com/vllm-project/vllm/blob/main/README.md",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S07",
+      "kind": "official",
+      "title": "SGLang README",
+      "locator": "https://github.com/sgl-project/sglang/blob/main/README.md",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S08",
+      "kind": "official",
+      "title": "NVIDIA TensorRT-LLM README",
+      "locator": "https://github.com/NVIDIA/TensorRT-LLM/blob/main/README.md",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S09",
+      "kind": "official",
+      "title": "GitHub REST API metadata for deepseek-ai/DeepInfer",
+      "locator": "https://api.github.com/repos/deepseek-ai/DeepInfer",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S10",
+      "kind": "secondary",
+      "title": "MarkTechPost — DeepSeek Open-Sources DeepInfer",
+      "locator": "https://www.marktechpost.com/2026/10/20/deepseek-deepinfer-open-source-inference-framework",
+      "accessed_on": "2026-10-21"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "DeepInfer 当前开源的是 offline inference engine core，不包含完整在线 API、外部 KV cache、VE/P/D 编排和跨副本负载均衡。",
+      "report_anchor": "这次开源很重要，但不是“完整 DeepSeek 云服务”",
+      "support": "direct",
+      "source_ids": ["S01", "S04"],
+      "evidence": "README 明列完整服务仍缺的三个组件；LLMEngine 文档写明没有 online-serving wrapper，P/D、KV 落盘与跨阶段发送函数在源码中为空钩子。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "DeepInfer 的 ZOS 将上一轮 CPU post-process 与下一轮 GPU forward 重叠，并通过 GPU remap 与 token 账本修正异步状态。",
+      "report_anchor": "`step()` 的真实流水线",
+      "support": "direct",
+      "source_ids": ["S01", "S04"],
+      "evidence": "worker.py 的执行顺序、_correct_seqlens_qk、Sequence KV token optimistic/commit 状态与官方异步调度说明一致。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "DSpark 使用每位置条件接受概率、前缀存活概率和实测 SPS(B) 曲线，为整个 batch 选择最大化期望 token throughput 的验证预算。",
+      "report_anchor": "DSpark：从“猜几个”升级为“算力投给谁”",
+      "support": "direct",
+      "source_ids": ["S01", "S02", "S03"],
+      "evidence": "DSpark 论文给出 confidence head、prefix scheduler 与 Theta=tau*SPS(B)，并说明生产实现因锯齿 SPS 曲线移除 early-stop、以 N-2 历史容量形成 causal barrier；mtp_varlen.hpp 实现 survival probability 排序、graph curve、在线时延估计和全候选扫描。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "CED、CSA2、FP4 KV 与 SWA Bounded Replay 共同决定 DeepInfer 的 cache 物理布局和 prefill/decode 执行路径。",
+      "report_anchor": "KV cache：把“存什么、重算什么”写进物理布局",
+      "support": "direct",
+      "source_ids": ["S01", "S02", "S04"],
+      "evidence": "V4.1 论文定义 Full/Reindex/Reuse 与 bounded replay；cache_engine.py 按 share-KV/share-index 切 tensor views，并将 StateBlock 分为 stored/dropped regions。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "README 的 fixed-nextn decode token/s 曲线由实测 avg_SPS 乘请求数和假设接受率折算，不是直接计数真实用户输出 token。",
+      "report_anchor": "最容易被误读的地方：Decode token/s 是推导值",
+      "support": "direct",
+      "source_ids": ["S01"],
+      "evidence": "examples/README.md 定义 decode throughput 公式；plot_pareto.py 用 tau=1+nextn*draft_acceptance 生成两个坐标轴。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "官方曲线与线上 155T tokens/day、38 美元/GPU-hour 等数字均为 DeepSeek 自报，当前没有公开独立复现或同硬件竞品对照。",
+      "report_anchor": "性能证据：哪些可信，哪些暂时只能参考",
+      "support": "direct",
+      "source_ids": ["S01", "S03", "S04", "S10"],
+      "evidence": "正文已将 155T tokens/day、38 美元/GPU-hour、3FS/SWA 存储规模与曲线坐标均标为官方自报，并说明发布曲线无 raw JSON；第三方文章复述官方数据且未运行框架。",
+      "critical": true
+    },
+    {
+      "id": "C07",
+      "claim": "研究时 DeepInfer 只有 3 个 commits、无 tag、版本 0.1.0，同时 GitHub 关注度已达约 12.3K stars。",
+      "report_anchor": "发布快照",
+      "support": "direct",
+      "source_ids": ["S01", "S09"],
+      "evidence": "固定源码仓的 git history、pyproject 与 GitHub API metadata 交叉核验。",
+      "critical": false
+    },
+    {
+      "id": "C08",
+      "claim": "与 DeepInfer 相比，vLLM、SGLang、TensorRT-LLM 当前提供更完整的通用 serving 与更广模型或生态覆盖；DeepInfer 的优势是 V4.1 专用模型系统协同。",
+      "report_anchor": "与 vLLM、SGLang、TensorRT-LLM 比较",
+      "support": "derived",
+      "source_ids": ["S01", "S06", "S07", "S08"],
+      "evidence": "四个项目的官方 README 分别给出模型、硬件、API、disaggregation 与专用优化范围。",
+      "critical": false
+    },
+    {
+      "id": "C09",
+      "claim": "[推测] 截至 2026-10-21，公开检索到的 DeepInfer 第三方文章主要是首发摘要，尚不足以替代源码与一手论文。",
+      "report_anchor": "第三方分析现状",
+      "support": "inference",
+      "source_ids": ["S01", "S10"],
+      "evidence": "检索 SemiAnalysis、Artificial Analysis、vLLM Blog、LMSYS/SGLang 官方渠道均无 DeepInfer 专文；已读的 MarkTechPost 内容主要映射到 README/Q&A。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "开源范围与完整生产系统边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": ["S01", "S04"],
+      "report_anchor": "研究对象：开源了哪一层"
+    },
+    {
+      "id": "U02",
+      "title": "源码分层、初始化与一次请求执行链",
+      "importance": "core",
+      "status": "included",
+      "source_ids": ["S01"],
+      "report_anchor": "源码架构：一次请求如何穿过 DeepInfer"
+    },
+    {
+      "id": "U03",
+      "title": "C++ Scheduler、抢占与 ZOS",
+      "importance": "core",
+      "status": "included",
+      "source_ids": ["S01", "S04"],
+      "report_anchor": "C++ Scheduler：公开的是 engine 内调度"
+    },
+    {
+      "id": "U04",
+      "title": "DSpark 模型、公式、hardware-aware scheduler 与生产收益",
+      "importance": "core",
+      "status": "included",
+      "source_ids": ["S01", "S02", "S03", "S04"],
+      "report_anchor": "DSpark：从“猜几个”升级为“算力投给谁”"
+    },
+    {
+      "id": "U05",
+      "title": "CED、CSA2、FP4 KV、SWA Bounded Replay 与 cache layout",
+      "importance": "core",
+      "status": "included",
+      "source_ids": ["S01", "S02", "S04"],
+      "report_anchor": "KV cache：把“存什么、重算什么”写进物理布局"
+    },
+    {
+      "id": "U06",
+      "title": "EPLB、并行、结构化输出与多模态相关实现",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": ["S01", "S04"],
+      "report_anchor": "EPLB：热点 expert 不只路由，还会复制和搬家"
+    },
+    {
+      "id": "U07",
+      "title": "官方 benchmark、evaluation、计算口径与证据局限",
+      "importance": "core",
+      "status": "included",
+      "source_ids": ["S01", "S03", "S04"],
+      "report_anchor": "性能证据：哪些可信，哪些暂时只能参考"
+    },
+    {
+      "id": "U08",
+      "title": "vLLM、SGLang、TensorRT-LLM 对比与采用边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": ["S01", "S06", "S07", "S08"],
+      "report_anchor": "与 vLLM、SGLang、TensorRT-LLM 比较"
+    },
+    {
+      "id": "U09",
+      "title": "第三方分析成熟度与独立复现缺口",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": ["S10"],
+      "report_anchor": "第三方分析现状"
+    },
+    {
+      "id": "U10",
+      "title": "系统演进意义、局限与思考追问",
+      "importance": "core",
+      "status": "included",
+      "source_ids": ["S01", "S02", "S03", "S04", "S06", "S07", "S08"],
+      "report_anchor": "它对推理系统演进意味着什么"
+    }
+  ],
+  "limitations": [
+    "未在 NVIDIA SM100 或 Huawei Ascend 950 上编译、运行 DeepInfer 或复现 benchmark，运行性能只采用官方自报与公开脚本口径。",
+    "README 曲线没有配套 raw results.jsonl、多次重复、误差条、功耗与具体硬件 SKU，不能做严格跨框架性能排名。",
+    "项目首发仅一天、3 个 commits、无 tag，社区 issue、维护节奏和兼容承诺尚未形成。",
+    "完整生产系统中的 3FS KV 存储、P/D/VE 编排、集群负载均衡和 autoscaling 未开源，无法做端到端源码审计。",
+    "当前中文官方博客与仓内英文 Q&A 的 Prefill EPLB 数字不一致，报告保留冲突而不猜测正确值。",
+    "对高质量独立分析缺失的判断基于 2026-10-21 的公开检索，后续可能很快过时。"
+  ]
+}

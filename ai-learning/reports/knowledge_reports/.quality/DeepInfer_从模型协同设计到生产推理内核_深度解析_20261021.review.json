@@ -1,0 +1,620 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/DeepInfer_从模型协同设计到生产推理内核_深度解析_20261021.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "glm-5.3",
+        "harness": "pi",
+        "run_id": "review-aa8d1599f516",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 95,
+        "request_coverage": 93,
+        "reasoning_quality": 94,
+        "readability": 93,
+        "limitations": 94
+      },
+      "score_reasons": {
+        "evidence_fidelity": "9 条 claim 逐条复核通过，R1 指出的三处账本-正文错位在修订版全部修复。Revision 2 重点核验项逐项与原始来源比对：(1) 155 万亿 tokens/天（单集群）与 38 美元/GPU-hour（谷价）单位、revenue 语义与知乎博客/Q&A 原文一致，报告明确标注『是官方收入口径，不是成本、利润或通用租卡价格』，杜绝了误读；(2) 3FS 约 100 PiB、峰值读 10 TiB/s、写 850 GiB/s、约 112 KiB block 粒度、Agent TTL 3 天/Chatbot 7 天（3 天损失 0.5%–1% 命中率）、SWA TTL≈180s/命中 98%+ 全部逐字核验准确；(3) autoscaling 段落（1 分钟宽限转发、配额占用>0.8 禁缩、EP failover 按健康卡重定 EP size、重启分钟级、容错靠冗余配额+重路由）与 Q&A/博客原文一致；(4) 图读数（60K→90K/730ms/25K@256/100/300 tok/s）与 MarkTechPost 读图一致，nextn=3、75% acceptance、冗余 expert 32→64 均明确标注为『官方图视觉读数』且声明无 raw results.jsonl 不能精确复算，τ=1+3×0.75=3.25 与 plot_pareto.py decode_tau/decode_axes 公式一致（本会话模型无图像能力，图中数值本身经二手交叉而非直接视觉复核，报告已诚实声明该口径）；(5) §4.2 early-break 对照与 DSpark 论文 §3.2.2/§5.2/Appendix A 逐点一致，mtp_varlen.hpp 逐行核验确为全候选扫描（acc_queue_for_bsz 循环无 break，update_best 只更新 best_bsz），N-2 轮定容量注释与论文 causal barrier 表述吻合。源码锚点抽查全部准确：HEAD=774ce244、ALL/ANY=70/100（environ.py L175-178）、worker.py ZOS 流水线与 prepare_zos_inputs/commit_processed_tokens、StateBlock stored/dropped、share-kv/share-index 不推进 offset、dflash.py markov/confidence head、EPLB 贪心、eval coverage_complete、has_issues=false、core 代码 52,261 行（deepinfer/+csrc/ 口径，与『约 5.2 万行』一致）。EPLB 中英文数字冲突仍如实并置。C03/C06 修订后的 evidence 描述与正文一致。无捏造来源、无关键数字错抄。",
+        "request_coverage": "R01–R05 全部达成。R1 复核的四条修订建议全部落实：§2.3 新增生产规模表格补入 155 万亿/38 美元/3FS/SWA TTL 与 autoscaling 段落（建议 2、4）；§5.1/§5.2/§7.5 显式标注图读数口径与 raw JSON 缺失（建议 1）；§4.2 补入论文 Algorithm 1 early-break 与生产/源码移除 break 的因果屏障对照（建议 3），C06 账本与正文不再错位。独立来源地图 17 单元中 15 个 covered、2 个 partial（V4.1 论文 post-training/DSec 章节与模型卡正文使用仍薄），均为 supporting 级且与『生产推理内核』主题正交。剩余可增强项：DSpark 论文 V4-Pro 生产数字（35 SLA +52%、匹配吞吐 57%–78%）与 offline 基准（对 Eagle3 +26.7%–30.9%、对 DFlash +16.3%–18.4%）仍可在 §5.3 一并给出以完整呈现收益区间；STS 校准仅在 §7.6 追问中隐含出现。这些不改变任何核心结论。",
+        "reasoning_quality": "推理链经修订后完整且准确：DSpark Θ=τ·SPS(B) 公式与源码实现的对应关系正确；新增的 early-break 对照是全报告最有价值的深化点之一——正确区分了论文算法层（break 保证 non-anticipating/无损，Appendix A 反例）与生产层（锯齿 SPS 下移除 break 做全局搜索，用 N-2 轮历史容量隔离当前轮 token 实现因果屏障、保持 exact target distribution），并经源码逐行验证；ZOS 下 N-1/N-2 双轮 confidence 的用途区分与源码注释一致；decode token/s 是接受率假设下的折算值而非实测用户 token 的判断有 plot_pareto.py 直接支撑；两组 DSpark 收益（vs MTP-1 的 60%–85% 与 dynamic vs fixed-5 的 +4%–11%）继续严格区分 baseline；Wide-EP 图『冗余 expert 32→64、非单变量』的判读依据（图副标题）已交代；661% 高 SLA 点的『不可作常规倍数解读』警告保留。EPLB 冲突不裁定、[推测]/[推断] 标签使用规范。",
+        "readability": "可完全脱离对话独立阅读。新增 §2.3 表格把六个生产数字配上『正确解读』列（如 38 美元的 revenue 语义澄清），信息密度高且不牺牲准确性；autoscaling 段落一段内完成机制+容错叙述；§4.2 early-break 段落从论文动机到源码验证逻辑连贯；图读数标注内嵌正文且在局限中重复声明。全文结构、公式、锚点、竞品表与阅读顺序建议均保持 R1 水准。",
+        "limitations": "局限披露在修订版更完整：§7.5 第 5 条明确列出『图中坐标、nextn=3、75% acceptance 与冗余 expert 变化属于视觉读图，缺少 raw JSON 精确复算』，正面回应 R1 建议；§2.3 表格逐行区分官方自报与开源可复现边界；账本 limitations 6 条与正文一致；验证边界（未在 SM100/Ascend 950 编译复现）front matter 声明保留。对近似算法能力边界（SWA replay/CSA2 selection）与文档首发漂移的披露诚实。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08",
+        "U09",
+        "U10"
+      ],
+      "source_content_map": [
+        {
+          "id": "M01",
+          "title": "S01 README 开源范围：offline inference、特性清单（DSpark/SWA replay/ZOS/batch-invariant/deterministic/SO）、完整服务三缺口（KV cache system/VE-P-D disaggregation/跨 DP 负载均衡）、SM100+Ascend 950、构建依赖、4 GPU prefill/64 GPU decode 基准、Apache 2.0、vLLM 血统",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01",
+            "U02"
+          ],
+          "notes": "§一/§2.1 逐项覆盖；三缺口与 README L33-42 一致；『Required for a complete inference service』清单原文核对无误。"
+        },
+        {
+          "id": "M02",
+          "title": "S01 engine 内部架构：C++ Scheduler 三队列三 engine type、ALL/ANY 投票（默认 70/100）、prefill 约束、抢占与 SO 请求不可重放、ZOS 流水线 forward(curr)→post-process(prev)→sample(curr)、prepare_zos_inputs/_correct_seqlens_qk/commit_processed_tokens、P/D 与 KV 落盘空钩子、无 online wrapper",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02",
+            "U03"
+          ],
+          "notes": "scheduler.hpp L296-318 投票语义、environ.py L175-178 默认 70/100、worker.py execute_model_step 步序、llm_engine.py L142『no online-serving wrapper』与 L800+ 空钩子全部独立核验。"
+        },
+        {
+          "id": "M03",
+          "title": "S01 mtp_varlen.hpp＝DSpark hardware-aware scheduler 生产实现：accept_rate 累乘 survival probability、两个队列全局降序排序、profile decode 曲线+forward slope+sampler 中位数在线估计、CUDA graph batch 对齐、全候选扫描无 break、N-2 轮定 best_bsz/N-1(或N-2)轮定 seqlen_q",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04"
+          ],
+          "notes": "逐行核验：`for (auto &acc : acc_queue_for_bsz)` 遍历全部候选、update_best 无提前退出；注释明确『永远用 N-2 轮的 accept_rate 去计算 best_bsz』。报告 §4.2 六步描述与源码一致。"
+        },
+        {
+          "id": "M04",
+          "title": "S01 cache 物理布局与 EPLB：StateBlock stored/dropped 分区、KVSTORE_GRAIN=128 对齐、share-kv/share-index tensor view 复用不推进 offset、SWA ring 窗口、EPLB 冗余物理专家+窗口统计+all-reduce+贪心复制与放置+symm_mem/IPC shuffle",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U05",
+            "U06"
+          ],
+          "notes": "cache_engine.py StateBlock 分区注释、share-kv/share-index 断言与复用路径、eplb/__init__.py 与 policy.py 贪心逻辑核验一致。"
+        },
+        {
+          "id": "M05",
+          "title": "S01 benchmark 方法论：prefill/decode 解耦、full-acceptance 口径 throughput=avg_SPS×requests×(1+nextn)/cp、plot_pareto τ=1+nextn×a 双轴、prefill 横轴实测窗口均值、profiler 小 batch 膨胀近 50%/退出后残留 7-11% 禁测 SPS、LB stats flush interval 剔除、--result_jsonl、FIXED_FIELDS 含 num_extra_experts、eval coverage_complete 才报 Pass@1",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U07"
+          ],
+          "notes": "examples/README.md 与 plot_pareto.py 原文逐条核对；报告 §5.2/§5.4 转述准确。"
+        },
+        {
+          "id": "M06",
+          "title": "S02 V4.1 模型架构：CED（decoder KV 由 encoder 末层投影、prefill 近半）、CSA2 Full/Reindex/Reuse、分层稀疏 indexer（2048 块×8=16384 候选）、FP4 main KV（E2M1+每16通道 E4M3 scale、RoPE 后量化、SWA 留 FP8）、890 B/token、persistent KV 1/8、552B/8B prefill/16B decode、40 层 20+20、MoE 1+384 激活 6、Reuse 层 15/11 kernels、Engram 196B、Single-Pass mHC/Mega-mHC",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U05"
+          ],
+          "notes": "报告覆盖与推理内核直接相关的全部要点；训练侧（Engram 训练、Sinkhorn、mHC 推导）作为背景一笔带过，符合报告选材。"
+        },
+        {
+          "id": "M07",
+          "title": "S02 inference system：SWA 不进持久缓存、10% host DRAM 内存池、global KV ≥72h、Encoder/Decoder SWA Bounded Replay（重算末 128 token、窗口截断、近似性、post-training 模拟）、§6 对 CSA2 selection error 与 SWA 近似重建的 limitations 承认",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U05",
+            "U10"
+          ],
+          "notes": "1/8、近乎减半、128 token 重算、近似代价与论文 limitations 转述准确；10% host DRAM 细节未进正文（博客亦未提，属论文侧可选细节）。"
+        },
+        {
+          "id": "M08",
+          "title": "S02 post-training 侧：DSec 大规模沙箱、agent 任务合成、异步 RL、reasoning effort（b=1-100、API max/high/low=100/75/50）、多智能体 Agent Team、Table 1/3/4 基准数字",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10"
+          ],
+          "notes": "报告主题为推理内核，post-training/评测章节正文基本未展开（仅竞品表间接引用模型能力）。对该主题属正交外围，不构成核心遗漏。"
+        },
+        {
+          "id": "M09",
+          "title": "S03 DSpark 方法侧：semi-AR（DFlash 并行 backbone+Markov 低秩串行头 r=256，RNN head 备选）、confidence head 与 prefix survival、STS 序贯温度校准（ECE 3-8%→~1%）、训练三损失（0.1/0.9/1.0 加权）、offline 基准对 Eagle3 +26.7~30.9%/对 DFlash +16.3~18.4%、串行头延迟开销 0.2%-1.3%、position-wise 分析（并行首 token 容量优势 vs 尾部衰减）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04"
+          ],
+          "notes": "报告覆盖架构、公式与调度主线；offline 基准数字与 STS 校准细节未进正文（STS 仅在 §7.6 追问隐含），属可接受省略。"
+        },
+        {
+          "id": "M10",
+          "title": "S03 DSpark 生产部署：MTP-1 基线（preview 后两周被替换）、V4-Flash 80 SLA +51%/120 SLA 名义 661%（附不可作常规倍数警告）/匹配吞吐 60%-85%、V4-Pro 35 SLA +52%/50 SLA 406%/匹配 57%-78%、验证预算 2→4-6 token、变长执行 flatten+marker tensor 仅改 index-attention/compress kernel、HAI-LLM 训练优化（hidden state 通信/anchor-bounded packing）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S03",
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04",
+            "U07",
+            "U10"
+          ],
+          "notes": "V4-Flash 三组数字与 661% 警告转述准确；V4-Pro 数字与 HAI-LLM 细节省略，属 supporting 级增强空间。"
+        },
+        {
+          "id": "M11",
+          "title": "S03 Algorithm 1/§3.2.2/Appendix A：hardware-aware prefix scheduler 的贪心+early-stop break、non-anticipating 无损性要求、无 break 的选择偏差反例（R=1/γ=2 数值反例）、§5.2 生产移除 break+锯齿 SPS+N-2 历史容量 causal barrier",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S03",
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04"
+          ],
+          "notes": "Revision 2 新增对照核验：报告 §4.2 的『论文有 break 保证不偷看未来、生产因锯齿曲线移除 break 全局搜索、N-2 轮历史 confidence 定容量 K 形成因果屏障』与论文逐点一致，源码确认无 break。此对照是本次修订最有价值的深化。"
+        },
+        {
+          "id": "M12",
+          "title": "S04 官方博客主线：EPD 架构、并行策略（P: EP2-8 尽量小/D: EP64-128 Wide-EP/VE 单卡）、四类 Load Balancer（PLB 分桶+compute-quota 二次模型反解、DLB 双维均衡、VELB patch 数、EPLB 冗余专家）、PD 比 1:1、最小 64+64、KV 两级存储、SWA Bounded Replay 两处应用、DSpark 变长 +6%、ZOS、SO、Recipe 编解码",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S04",
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01",
+            "U03",
+            "U06"
+          ],
+          "notes": "报告正确区分生产层描述与开源实现（compute_quota/二次方程调度不在源码、FlopsEstimator 仅统计）；PLB 四层机制与原文一致。"
+        },
+        {
+          "id": "M13",
+          "title": "S04 生产规模与存储运维数字：单集群 155 万亿 tokens/天、整体收入 38 美金/卡·小时（谷价）、3FS 约 100 PiB SSD/TTL agent 3 天 chatbot 7 天/chatbot 3 天损失 0.5-1% 命中率/block 约 112 KiB/峰值读 10 TiB/s 写 850 GiB/s、存储服务器 20×30.73TB、14.4 TB/GPU、跨 DC 400Gbps、SWA TTL≈180s 命中 98%+、autoscaling（未命中 token/请求数驱动、1min 宽限转发、0.8 配额禁缩、EP failover 重定 EP、重启分钟级）、Zero SWA Caching 未实际采用",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S04",
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U07",
+            "U10"
+          ],
+          "notes": "Revision 2 新增内容核验：§2.3 表格六行数字+autoscaling 段落全部与博客/Q&A 原文逐字一致，revenue 语义澄清准确；存储服务器规格与 14.4 TB/GPU、400Gbps 细节仍省略（可选增强）。"
+        },
+        {
+          "id": "M14",
+          "title": "S05 模型卡：V4.1-Flash-1017 为 minor update、11 项 benchmark 对比表（TB-4.0 42.3、DeepSWE 77.0 等）、无 Jinja 模板（encoding.py+deepseek-recipe）、采样参数 temp/top_p=1.0、1M context、≥256K max_tokens、MIT",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "S05"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02",
+            "U08"
+          ],
+          "notes": "模型卡登记为来源但正文仍几乎未直接引用（1017 为默认 checkpoint 的事实实际取自 README）。属未充分使用的来源，非错误；对推理内核主题影响小。"
+        },
+        {
+          "id": "M15",
+          "title": "S06/S07/S08 竞品官方定位：vLLM（200+ architectures、PagedAttention、OpenAI/Anthropic Messages/gRPC、disaggregated prefill/decode/encode、spec decoding n-gram/suffix/EAGLE/DFlash、多硬件插件）、SGLang（agentic/RL/rollout 定位、硬件表含 Ascend、SpecForge、llm-d/Dynamo 编排）、TRT-LLM（DeepSeek 系列博客、PD disaggregation、Wide-EP、LLM API+Triton/Dynamo、NVIDIA only）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S06",
+            "S07",
+            "S08"
+          ],
+          "matched_coverage_unit_ids": [
+            "U08"
+          ],
+          "notes": "竞品表逐格回查三家 README 均有原文支撑；『SGLang 生态完整/Agent workload』属温和概括，可接受。"
+        },
+        {
+          "id": "M16",
+          "title": "S09 GitHub API 收据：stars 12,312、forks 1,119、has_issues=false（open_issues_count=119 含 PR 计数）、created 2026-10-16、Apache 2.0、Python",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S09"
+          ],
+          "matched_coverage_unit_ids": [
+            "U09"
+          ],
+          "notes": "报告快照表（12.3K/1.1K/3 commits/0 tag/0.1.0 Beta/无 CI）与 API 收据及本地 git 核验一致；issues 关闭状态的表述避免了误读 119。"
+        },
+        {
+          "id": "M17",
+          "title": "S10 MarkTechPost 二手分析：边界结论（offline-only、硬件窄、缺 KV store/P-D-LB）、性能图读数（25K tok/s/GPU@256、60K→90K prefill、730ms、nextn=3/75%、EP64>EP8）、竞品对照表、FlashMLA 内部版快 5-10%/端到端≤5%",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S10"
+          ],
+          "matched_coverage_unit_ids": [
+            "U09"
+          ],
+          "notes": "报告将其定位为二手并回到一手复核；其图读数与报告 §5.1 一致，是图数值目前唯一可交叉旁证；FlashMLA 5-10% 数字亦见 Q&A 原文。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "Revision 2 独立复核（新会话，不沿用 R1 判断）。流程：先核验 S01 HEAD=774ce244b87cc0eb8d4b94ab9f5de2ab22049f01，通读 README/Q&A/inference_deployment_qa 与关键源码（mtp_varlen.hpp 全文、scheduler.hpp 投票段、worker.py ZOS、cache_engine.py StateBlock/share-map、eplb、examples/README+plot_pareto、dflash.py、environ.py、eval coverage_complete）；S02/S03 论文全文（含 Algorithm 1、§5.2、Appendix A 反例）；S04 博客全文；S05-S10 全读；独立建立 17 单元来源地图后再读报告与账本。播客 audit_transcript.py 不适用（repo_deep_research 体裁）。Revision 2 五个重点核验项全部通过：生产数字单位/语义、3FS/SWA 存储、autoscaling/容错、图读数标注、early-break 因果屏障（论文+源码双侧验证）。R1 的四条修订建议全部落实，C03/C06 账本与正文一致。加权总分 94.0（95/93/94/93/94），超过 important 门槛（88 且各维过线）。剩余非阻断增强项：① §5.3 可补 V4-Pro（+52%/57-78%）与 offline 基准（Eagle3/DFlash +16~31%）数字以完整呈现 DSpark 收益区间；② STS 校准可在 §4.2 或 §7.6 一句话说明（σ 温度缩放、ECE 3-8%→~1%）；③ 存储服务器规格（20×30.73TB、14.4 TB/GPU、400Gbps）可入 §2.3 表格；④ 模型卡 benchmark 表与 1017 增益可一笔带过。无硬失败：无捏造来源、无关键数字错抄、无核心要求缺失、无安全隐私问题。本会话模型无图像读取能力，图中数值未直接视觉复核，仅与 S10 二手读图交叉——报告自身已将该口径标为视觉读数并声明不可精确复算，此限制不构成扣分依据。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 94.0,
+    "evaluated_on": "2026-10-21",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "81a7af4981ee0ce9dc3a5930c14bb7ae643edc1ba88727e2be3cded4142637e5",
+    "evidence_sha256": "5c6f87f3309ae88aa8b01c4c92b0d5cec7cd480ec6f28516cb42d8d1c8e43be4"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "glm-5.3",
+            "harness": "pi",
+            "run_id": "review-9a3e96a703b6",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 92,
+            "request_coverage": 87,
+            "reasoning_quality": 90,
+            "readability": 93,
+            "limitations": 92
+          },
+          "score_reasons": {
+            "evidence_fidelity": "全部 9 条 claim 逐条复核通过。源码侧独立核验：git HEAD=774ce244b87cc0eb8d4b94ab9f5de2ab22049f01；52,261 行 Python/C++（报告称约 5.2 万行）✓；23 个文件标注 Derived from vLLM ✓；3 commits/0 tags/版本 0.1.0 Beta/无 .github/workflows ✓；README L33-L42、llm_engine.py L130-L142 与 L800-L856 空钩子、worker.py L88-L189 ZOS 流水线、scheduler.hpp L299-L318 投票（ALL=70/ANY=100，environ.py 默认 70/100）、mtp_varlen.hpp L133-L267、cache_engine.py StateBlock、plot_pareto.py τ=1+nextn×a 与双轴公式、eval coverage_complete、prepare_zos_inputs/commit_processed_tokens、compute_quota 不在开源码内——所有抽查的行号锚点与代码事实全部准确。DSpark 公式与 MTPVarlen 源码一致：累乘 survival probability（scheduler.hpp accept_rate*=confidence）、全局降序排序、profile 曲线+forward slope+sampler 中位数的吞吐最大化、N-2 轮定容量 N-1 轮定逐请求长度，均与论文 §5.2 生产化描述吻合。EPLB 中英文数字冲突（知乎 1.0320/1.0618 vs 英文 Q&A 1.045/1.074）经独立比对属实，报告如实并置不裁定 ✓；GitHub has_issues=false ✓；仓内确无 results.jsonl ✓。扣分项：(a) §5.2 'nextn=3/75%→τ=3.25' 与 §5.5 '冗余 expert 32→64' 是官方图副标题读数，仓库文本无法定位佐证，报告未标注该口径（公式本身与默认 32 已核验）；(b) 证据账本 C06 引用 '155T tokens/day、38 美元/GPU-hour' 但报告正文完全没有出现这两个数字，账本与正文存在轻微错位；(c) §5.1 的 60K/90K/730ms/25K/100/300 等 figure 读数本会话无法图像复核，仅与 S10 二手读数一致（[官方自报] 标签部分覆盖）。无捏造来源、无关键数字错抄。",
+            "request_coverage": "R01-R05 全部达成且质量高：R03 开源边界（空钩子+has_issues+README 三缺口逐一核验）是全报告最强部分；R04 审计了推导口径、raw JSON 缺失、非单变量、中英文冲突、80% 线下/线上比；R05 三家竞品表逐格核对官方 README（vLLM 200+ architectures/Anthropic Messages/gRPC、SGLang 硬件表、TRT-LLM disaggregation/Wide-EP 均有原文支撑）；DSpark vs MTP-1（60%-85%）与 dynamic vs fixed-5（+4~7%/-1.5%）两组收益明确区分不混淆。独立来源地图 15 单元中 13 个 covered。扣分项：官方博客旗舰生产数字（155 万亿 tokens/天、$38/GPU-hour）与 3FS 规格细节（100 PiB、10 TiB/s 读、SWA TTL≈180s/命中 98%、14.4 TB/GPU）完全未进正文；Q&A 的 autoscaling/容错机制（1min 宽限、0.8 配额线、EP failover 重定 EP 大小）与 DSpark 论文 offline 基准（对 Eagle3/DFlash +16~31%）及 V4-Pro 数字（+52%/57-78%）均省略；模型卡几乎未使用。这些属 supporting 级缺口，不构成 core_requirement_missing（报告主题为模型协同设计与 engine core，主线完整）。",
+            "reasoning_quality": "推理链整体扎实：独立复算 DSpark Θ=τ·SPS(B) 与源码实现一致并正确解释 ZOS 下 N-1/N-2 双轮 confidence 的因果屏障；正确识别 decode token/s 是 full-acceptance 推导值而非实测；正确指出 Wide-EP 图非严格单变量；EPLB 冲突并置不猜测；[推测]/[推断] 标签使用规范，661% 类高 SLA 点论文自带的『不可作常规倍数解读』警告被如实转述。小缺口：论文 Algorithm 1 的 early-stopping break 在生产/源码中被移除以规避锯齿 SPS 局部最优（论文 §5.2 明说，mtp_varlen.hpp 确实全量扫描无 break），报告未点出这一论文-实现差异，错过一个本可强化深度的对照点；Wide-EP 32→64 的判读依据（图副标题）未交代。",
+            "readability": "可完全脱离对话独立阅读：开头即定义五条核心判断与证据标签体系，二/三/四章从边界到架构到机制层层递进，公式用 LaTeX 呈现且符号自洽，每节附精确到行号的源码锚点，第六章给出分场景采用建议与阅读顺序，第七章提供意义、局限与追问。结构、术语、表格均清晰，无需回看原始材料即可理解全部结论。",
+            "limitations": "局限披露充分且诚实：front matter 写明验证边界（未在 SM100/Ascend 950 上编译复现）；§7.5 列 8 条局限覆盖版本新鲜度、硬件门槛、服务面缺口、模型专用性、自报性能、近似算法边界、文档漂移、治理早期；[推测] 段落明确说明检索不能证明不存在；账本 limitations 6 条与正文一致。唯一可加强处：figure 读数（含 nextn=3、32→64）应像 raw JSON 缺失一样显式列为不可文本复核项。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07",
+            "C08",
+            "C09"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07",
+            "U08",
+            "U09",
+            "U10"
+          ],
+          "source_content_map": [
+            {
+              "id": "M01",
+              "title": "README 划定的开源范围：offline inference、特性清单、完整服务三缺口（KV cache/VE-P-D 分离/负载均衡）、SM100+Ascend 950、构建依赖、4 卡 prefill/64 卡 decode 基准、Apache 2.0、vLLM 血统",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01",
+                "U02"
+              ],
+              "notes": "报告 §一/§二/§2.1 逐项覆盖，行号锚点 L33-L42 核验准确，三缺口表述与 README 原文一致。"
+            },
+            {
+              "id": "M02",
+              "title": "Engine 内部架构：C++ Scheduler 三队列三 engine type、ALL/ANY 投票（70/100）、prefill 约束、抢占与 SO 不可重算、ZOS 流水线 forward→post-process(prev)→sample、prepare_zos_inputs/commit_processed_tokens 修正账本、PD/KV 落盘空钩子、offline-only 无 online wrapper",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02",
+                "U03"
+              ],
+              "notes": "scheduler.hpp L299-L318、worker.py L88-L189、sequence.hpp L221、environ.py 默认值 70/100 全部独立核验，与报告 §3.4/§3.5/§4.1 一致；compute_quota 确不在开源码内，报告区分开源/生产调度的判断成立。"
+            },
+            {
+              "id": "M03",
+              "title": "MTPVarlen=DSpark hardware-aware scheduler 的源码实现：confidence 累乘 survival probability、全局降序排序、profile 曲线+forward slope+sampler 估计最大化吞吐、CUDA graph batch 对齐、N-2 轮定容量/N-1 轮定逐请求 seqlen_q、启动期 profile_decode_perf 喂曲线",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "mtp_varlen.hpp 与 scheduler.hpp process_MTPInfo 逐行核对，与报告 §4.2 六步求解描述一致；模型加载路径 profile_decode_perf→scheduler.decode_perf_curve 核验属实。"
+            },
+            {
+              "id": "M04",
+              "title": "cache 物理布局与 EPLB：StateBlock stored/dropped 分区、KVSTORE_GRAIN=128、share-KV/share-index tensor view、SWA ring 窗口 128+回退 6、EPLB 冗余副本贪心复制+逐层峰值负载贪心放置+all_reduce 统计+symm_mem/IPC shuffle",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05",
+                "U06"
+              ],
+              "notes": "cache_engine.py 与 eplb/policy.py 的贪心目标（最小化历史每步最大 rank 负载之和）与报告 §4.3/§4.4 描述一致。"
+            },
+            {
+              "id": "M05",
+              "title": "benchmark 方法论：prefill/decode 解耦、full-acceptance 口径 throughput=avg_SPS×requests×(1+nextn)/cp、plot τ=1+nextn×a 双轴、prefill 横轴用实测窗口均值、profiler 膨胀（小 batch 近 50%、退出后 7-11%）警告、result_jsonl、sweep FIXED_FIELDS 含 num_extra_experts（默认 32）、eval coverage_complete 才报 Pass@1",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U07"
+              ],
+              "notes": "报告 §5.2/§5.4 的公式与细节全部与 examples/README.md、plot_pareto.py、eval/README.md 原文一致；唯一未能文本核验的是图中 nextn=3/75% 具体取值（图副标题读数）。"
+            },
+            {
+              "id": "M06",
+              "title": "V4.1 论文模型侧：CED（decoder KV 由 encoder 末层投影、prefill 减半）、CSA2 Full/Reindex/Reuse 三模式、分层稀疏 indexer（2048 块×8=16384 候选）、FP4 main KV（E2M1+每 16 通道 E4M3 scale、RoPE 后量化、SWA 留 FP8）、890 B/token、persistent KV 为 V4 的 1/8、552B/8B prefill/16B decode、40 层 20+20、MoE 1+384/激活 6、Reuse 层 15/11 kernels、Engram 196B、Single-Pass mHC",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "报告覆盖了与推理内核直接相关的 CED/CSA2/FP4/replay 全部要点；Engram/mHC 仅作为训练侧背景一笔带过（add_request 的 CompressedTokenizer），符合报告以推理为核心的选材。"
+            },
+            {
+              "id": "M07",
+              "title": "V4.1 论文 inference system：SWA 不进持久缓存、10% host DRAM 内存池、global KV ≥72h、Encoder/Decoder SWA Bounded Replay（重算末 128 token、窗口截断、近似性）、论文 §6 对 CSA2 selection error 与 SWA 近似重建的 limitations 承认",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05",
+                "U10"
+              ],
+              "notes": "报告 §4.3 对 1/8、近乎减半、近似代价与论文 limitations 原文的转述均准确（论文 §6 原文核对一致）。"
+            },
+            {
+              "id": "M08",
+              "title": "DSpark 论文方法侧：semi-AR（DFlash 并行 backbone+Markov/RNN 低秩串行头 r=256）、confidence head（σ(w·[h;W1x])，标签 1-TV/2）、STS 序贯温度校准、训练三损失（ce/tv/conf 权重 0.1/0.9/1.0，位置加权 e^(-(k-1)/γ)）、offline 基准对 Eagle3 +26.7~30.9%、对 DFlash +16.3~18.4%、串行头延迟开销 0.2%-1.3%",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "报告覆盖架构与调度主线；offline 基准数字与 STS 校准细节未进正文（STS 仅在 §7.6 追问中出现），属可接受省略但不完整。"
+            },
+            {
+              "id": "M09",
+              "title": "DSpark 生产部署：V4-Flash/V4-Pro preview 引擎、MTP-1 基线（preview 发布两周后被替换、静态多 token 高并发必劣化）、80 SLA +51%/120 SLA 名义 661%/匹配吞吐 60%-85%、Pro 35 SLA +52%/50 SLA 406%/匹配 57%-78%、验证预算 2→4-6 token、ZOS 异步化（N-2 定截断 K、移除 early-break 全局搜索+因果屏障）、变长执行 flatten+marker tensor 仅改 index-attention/compress kernel、HAI-LLM 训练优化",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S03",
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04",
+                "U07",
+                "U10"
+              ],
+              "notes": "V4-Flash 三组数字与 661% 警告转述准确；V4-Pro 数字与 offline 部分省略；论文 Algorithm 1 有 break 而生产/源码无 break 的对照未点出（源码核实确无 break，与论文 §5.2 相符）。"
+            },
+            {
+              "id": "M10a",
+              "title": "官方部署博客主线：EPD 架构、并行策略（P: EP2-8 尽量小、D: EP64-128 Wide-EP、VE 单卡）、四类 Load Balancer（PLB 分桶/compute-quota 二次模型反解、DLB 双维均衡、VELB patch 数、EPLB 冗余专家）、PD 比例 1:1、最小 64+64、KV 两级存储结构、SWA Bounded Replay 两处应用、DSpark 变长 +6%、ZOS 流水线、结构化输出、Recipe 编解码",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S04",
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01",
+                "U03",
+                "U06"
+              ],
+              "notes": "报告正确区分了官方描述的生产层与开源实现（compute_quota/二次方程调度不在源码、FlopsEstimator 仅统计）；PLB 四层机制与 Q&A 原文一致。"
+            },
+            {
+              "id": "M10b",
+              "title": "官方部署博客的生产规模与运维数字：单集群 155 万亿 tokens/天、$38/GPU-hour（谷价）、3FS 约 100 PiB/TTL 3d agent 7d chatbot/chatbot 3d TTL 损失 0.5-1%/block 112 KiB/读 10 TiB/s 写 850 GiB/s、存储服务器 20×30.73TB、14.4 TB/GPU、跨 DC 400Gbps、SWA TTL≈180s 命中 98%+、autoscaling（1min 宽限转发、0.8 配额禁缩、EP failover 重定 EP 大小、重启分钟级）",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "U07",
+                "U10"
+              ],
+              "notes": "正文完全未出现 155 万亿/天与 $38/GPU-hour（且证据账本 C06 引用了这两个数字，账本-正文错位）；3FS 带宽/容量、SWA TTL/命中率、autoscaling 与容错细节均省略。对『生产推理内核』主题属支撑性缺口，建议修订时补一段生产规模与存储层速览。"
+            },
+            {
+              "id": "M11",
+              "title": "模型卡：V4.1-Flash-1017 是 minor update、benchmark 对比表、无 Jinja 模板（encoding.py+deepseek-recipe 替代）、采样参数 temp/top_p=1.0、1M context、≥256K max_tokens、MIT",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S05"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "模型卡在来源清单中登记但正文几乎未引用（1M context 经竞品表间接出现）；1017 为默认 checkpoint 的事实取自 README。属未充分使用的来源，非错误。"
+            },
+            {
+              "id": "M12",
+              "title": "竞品官方定位：vLLM（200+ architectures、OpenAI/Anthropic Messages/gRPC、disaggregated prefill/decode/encode、spec decoding n-gram/suffix/EAGLE/DFlash）、SGLang（硬件表 NVIDIA/AMD/TPU/Intel/Apple/Ascend、SpecForge）、TRT-LLM（DeepSeek-V4/V3.2/R1 博客、PD disaggregation、Wide-EP、LLM API+Triton/Dynamo）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S06",
+                "S07",
+                "S08"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08"
+              ],
+              "notes": "报告竞品表逐格回查三家官方 README，均有原文支撑，未写入官方材料不支持的内容；'SGLang 生态完整/Agent workload' 属温和概括，可接受。"
+            },
+            {
+              "id": "M13",
+              "title": "GitHub API 收据：stars 12,312、forks 1,119、has_issues=false（issue 区关闭，open_issues_count=119 实为含 PR 计数）、created 2026-10-16、Apache 2.0、Python",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S09"
+              ],
+              "matched_coverage_unit_ids": [
+                "U09"
+              ],
+              "notes": "报告快照表（12.3K/1.1K/3 commits/0 tag/0.1.0 Beta/无 CI）与 API 收据及本地 git 核验一致；对 issues 状态的表述（'在 GitHub API 中处于关闭状态'）准确且避免了误读 119。"
+            },
+            {
+              "id": "M14",
+              "title": "MarkTechPost 二手分析：边界结论正确（offline-only、硬件窄、缺 KV store/P-D-LB）、性能图读数（25K tok/s/GPU@256、60K→90K prefill、730ms、nextn=3/75%、EP64>EP8）、竞品对照表、FlashMLA 内部版快 5-10%/端到端≤5%",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S10"
+              ],
+              "matched_coverage_unit_ids": [
+                "U09"
+              ],
+              "notes": "报告将其定位为二手并回到一手复核，处理正确；其图读数与报告 §5.1 一致，是报告 figure 数字目前唯一可交叉的旁证。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06",
+            "S07",
+            "S08",
+            "S09",
+            "S10"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04",
+            "R05"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "独立复核流程：先按 S01→S10 顺序通读全部原始来源（源码仓 git rev-parse HEAD 核验为 774ce244b87cc0eb8d4b94ab9f5de2ab22049f01，读 README/Q&A/llm_engine.py/worker.py/scheduler.hpp/mtp_varlen.hpp/cache_engine.py/eplb//examples；两篇论文全文；博客；模型卡；三家竞品 README；GitHub API 收据；MarkTechPost），独立建立 15 单元来源地图后再开报告与账本。播客 audit_transcript.py 不适用（ai-learning repo_deep_research，非播客体裁）。总体判定：报告真实、可独立阅读、核心结论全部经一手核验，加权 90.75，达到 important 门槛（88 且各维过线）。修订建议（非阻断）：1) §5.1/§5.2/§5.5 的 figure 副标题读数（nextn=3/75%、冗余专家 32→64、60K/90K/730ms/25K/100/300）应显式标注'官方图读数，仓库文本不可复核'；2) 补入 155 万亿 tokens/天与 $38/GPU-hour 两个旗舰生产数字（或修正账本 C06 的 evidence 描述使其与正文一致）；3) 可补一句论文 Algorithm 1 early-break 与生产/源码无 break 的对照（源码已核实）；4) 生产存储层与 autoscaling 机制可加一小节速览。上述均为增强项，无硬失败：无捏造来源、无关键数字错抄（EPLB 冲突数字如实并置）、无核心要求缺失、无安全隐私问题。"
+        }
+      ],
+      "decision": {}
+    }
+  ]
+}
