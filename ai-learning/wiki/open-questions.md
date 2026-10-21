@@ -177,3 +177,16 @@
   - 来源：同上
 - **[消费卡复现门槛]** P2P/GDR 驱动修改因 EULA 不可传播，他人用 stock driver 复现时吞吐损失多少、最优并行配置是否改变（TP 是否重新变得必要）？论文只说「更低带宽」没给数。
   - 来源：同上 问 2/问 3
+
+## 2026-10-21 顶尖厂商技术博客 Top 5（新汇入）
+
+- **[MLX/RDMA 独立复现]** Apple 的 TTFT、decode、功耗与双线 mesh 收益在长期服务、并发请求和关闭 `MLX_METAL_FAST_SYNCH` 后分别剩多少？需要固定模型、context 和节点数做单机/pipeline/tensor parallel 对照。
+  - 来源：[[Apple_MLX_RDMA_Mac_Studio分布式大模型推理_深度解析_20261021]] 思考与追问
+- **[Mamba-2/cuTile 完整链路]** TileGym 何时公开博客中的 Mamba-2 kernel、raw benchmark 与 backward？相同 tile 设计在 H100/A100 上是否仍优于成熟 Triton 实现，还是优势依赖 Blackwell Tensor Memory/TMA？
+  - 来源：[[NVIDIA_CUDA_Tile_Mamba2高性能Kernel_深度解析_20261021]] 局限、思考与追问
+- **[学习型 Memory 评测]** 在真实 Agent 任务上，无 Memory、全部常驻、support 核心与按任务 Top-k 四组的成功率、Pass⁴、token、过期规则命中率和污染恢复成本如何变化？support 能否升级为带反例、版本和验证强度的可信度？
+  - 来源：[[ALTK_Evolve_学习型Memory与Agent服务任务_深度解析_20261021]] 思考与追问
+- **[自主湿实验室端到端]** VERID 是否能与 aptamer/protein binder 闭环真正连通，并连续多轮记录物理失败、人工干预、错误经验写入和每个有效候选的时间/成本？人类战略边界应在哪一层逐步下放？
+  - 来源：[[Google_自主湿实验室Agent_生物现实约束与闭环_深度解析_20261021]] 思考与追问
+- **[Agent 运行时安全]** capability lease + Policy Prover 能否在 EverAgent 的真实任务回放中同时降低越权率且不显著提高阻断率？Sentry 在 2027 年交付后需补独立红队、P50/P99 隔离延迟、旁路拓扑和完整 TCB 复核。
+  - 来源：[[NVIDIA_OpenShell_Sentry_Agent运行时安全架构_深度解析_20261021]] 评估与思考

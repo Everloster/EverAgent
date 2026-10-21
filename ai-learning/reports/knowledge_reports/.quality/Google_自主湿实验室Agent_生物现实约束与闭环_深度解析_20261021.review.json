@@ -1,0 +1,511 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/Google_自主湿实验室Agent_生物现实约束与闭环_深度解析_20261021.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "review-3afb086563184754",
+        "independent_context": true,
+        "explicit_model_override": true,
+        "override_reason": "本报告的独立 Reviewer 任务明确指定使用 gpt-5.6-sol。"
+      },
+      "scores": {
+        "evidence_fidelity": 98,
+        "request_coverage": 98,
+        "reasoning_quality": 98,
+        "readability": 97,
+        "limitations": 98
+      },
+      "score_reasons": {
+        "evidence_fidelity": "重新抽查 Google 博客、VERID、aptamer、epitope excision 与 PyLabRobot 原始材料后，C01–C12 的数字、实验口径和边界均准确。Revision 2 已精确写明 4,405 sequenced constructs 包含 supplementary Round 1b，并保留 72.0/71.2 mm、-28.6%、+4.9 µL/+40.6%、307→58 mnats、全部 aptamer hit/specificity/ROC-AUC/affinity、15 targets/3,666 designs、RMSD/ΔROC-AUC、FAP A/B/C 与 yeast-display K_D。",
+        "request_coverage": "R01–R05 与 U01–U08 全部得到实质覆盖。新增的人机分工表明确 S03 的 pull-down、PCR、sequencing 与数据回传由人类研究者执行；三层验证状态表明确三项目没有端到端组合，补齐上一轮仅隐含表达的操作边界。",
+        "reasoning_quality": "报告把物理执行、真实反馈、计算经济和人类战略分层，并通过 FAP A/B/C 与 B-variant 区分战略先验、战术优化、开放探索和评分装置效应。战略/战术结论已收窄为条件性判断并使用 [推测]，三层积木比喻也在句首标明 [推测]；事实、论文主张与本文推断边界清楚。",
+        "readability": "新增的 aptamer 分工表、FAP 战略/战术解释和三层验证状态表显著降低了误读风险。报告从一页结论到证据、机制、边界和下一步实验层次完整，可脱离对话独立阅读。",
+        "limitations": "染料测试床、人工 aptamer 湿实验、少量靶标、strict de novo affinity、apparent K_D、MSA/crop target dependence、单靶标 autonomy、B-variant、独立复现不足及三项目未集成均被明确披露；组件级证据没有被外推为已完成自主湿实验室。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08"
+      ],
+      "source_content_map": [
+        {
+          "id": "SCM01",
+          "title": "Google 将三项研究定位为自主湿实验室的独立 building blocks",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01",
+            "U08"
+          ],
+          "notes": "博客把 VERID、aptamer 闭环和 protein binder 设计并列呈现，并把结合这些线程列为 next step。正文在一页结论和三层验证状态表中明确写成尚未拼装的组件，而非端到端系统。"
+        },
+        {
+          "id": "SCM02",
+          "title": "VERID 是建立在 PyLabRobot 之上的持久化语义数字孪生与验证执行层",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S05"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02"
+          ],
+          "notes": "四项服务、状态实体树、仿真门、safe execution 与 trace dossier 均准确；正文正确区分 PyLabRobot 的 hardware-agnostic Python 控制基础和 VERID 的持久状态/验证层。"
+        },
+        {
+          "id": "SCM03",
+          "title": "VERID Case 1/2 展示系统偏差诊断、状态恢复与几何/流体约束",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03"
+          ],
+          "notes": "正文准确覆盖 1.92×–1.99× dilution、72.0 mm 对 71.2 mm trough、通信故障续跑、-28.6% deficit 移位和 +4.9 µL/+40.6% wall-film carryover。"
+        },
+        {
+          "id": "SCM04",
+          "title": "VERID self-play 的五倍改善是染料混合推断损失，而非生物发现性能",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03",
+            "U08"
+          ],
+          "notes": "307→58 mnats 与 sample-blind 经验迁移口径准确；正文反复限定三个 case 使用染料和去离子水，没有外推为复杂生物协议性能。"
+        },
+        {
+          "id": "SCM05",
+          "title": "Aptamer 闭环的周期、成本、构建体规模与人工湿实验执行",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04",
+            "U08"
+          ],
+          "notes": "正文采用论文约 10 天、约 $3/候选及约 1,000 候选/轮，精确说明 4,405 sequenced constructs 包含 supplementary Round 1b；新增表格准确写明 Agent 负责设计/分析，人类执行 pull-down、PCR、sequencing 并回传数据。"
+        },
+        {
+          "id": "SCM06",
+          "title": "Aptamer 两靶标三轮结果及不同失败模式",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04",
+            "U05"
+          ],
+          "notes": "α-thrombin 0.0%→26.0%→42.1% 与 98.5% specificity；myoglobin 10.2%→3.7%→33.5%、75.0%→19.1%→72.4% specificity，以及 97% cross-reactive binders 为 G4，均与原文分母和机制一致。"
+        },
+        {
+          "id": "SCM07",
+          "title": "Aptamer predictor benchmark 与 affinity 验证的边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U05"
+          ],
+          "notes": "12 metrics/9 tools、多数 ROC-AUC 约 0.36–0.52、ViennaRNA 0.729/0.763、Pearson r=0.90、known-motif 24.6–133 nM 与 strict de novo >1 µM onset 均准确，且未把 preliminary apparent K_D 写成成熟药物性质。"
+        },
+        {
+          "id": "SCM08",
+          "title": "Epitope excision 的结构保真、排序损失与适用边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06"
+          ],
+          "notes": "15 targets/3,666 designs、median Cα RMSD 0.37 Å、88.2% <1 Å、93.7% <2 Å、mean ΔROC-AUC -0.048 与 7/15 无加速均准确，并保留 halo/MSA 的 target-specific 退化。"
+        },
+        {
+          "id": "SCM09",
+          "title": "FAP A/B/C 对照区分人类战略、混合战术与全自主探索",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "U07"
+          ],
+          "notes": "A=5.06%/132.87 GPU-h/12.6/4 epitopes，B=9.33%/77.18/23.2/7，C=6.18%/124.43/14.5/13 均准确。新增战略/战术框架忠实反映论文分工；B-variant 仍被正确排除于 autonomy 因果比较。"
+        },
+        {
+          "id": "SCM10",
+          "title": "FAP yeast-display 验证支持强结合候选但不等于功能或药物有效性",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "U07",
+            "U08"
+          ],
+          "notes": "5,000-member library、三轮 FACS、四个代表性 clone apparent K_D=3.0–9.1 nM 得到覆盖；可溶表达、domain specificity、抑制、细胞、毒性和药代仍被列为未验证。"
+        },
+        {
+          "id": "SCM11",
+          "title": "安全架构依赖受控测试床、序列筛查、仿真门与人类监督",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U08"
+          ],
+          "notes": "正文准确使用 human-directed autonomous discovery，覆盖非感染测试床、biosecurity screening、simulation before execution、序列/协议审查和机器人运行监督。"
+        },
+        {
+          "id": "SCM12",
+          "title": "三项目尚未组成一个已验证的端到端自主湿实验室",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01",
+            "U08"
+          ],
+          "notes": "三层验证状态表逐项写明 VERID 未执行 aptamer/binder、aptamer 湿实验靠人手、epitope excision 是计算 campaign 加独立 yeast-display 验证；这与 Google 博客的 next step 完全一致。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "Revision 2 已解决上一轮 4,405/Round 1b 与 aptamer 人工湿实验执行两项精度问题；最终文案也统一使用 [推测] 并收窄 FAP 战略/战术外推。当前未发现 unsupported claim、missing requirement 或 hard failure，满足 important 报告质量门。本轮未改正文、evidence 或 history。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 97.85,
+    "evaluated_on": "2026-10-22",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "2532d4f00c922ae0e03f81b9791863f9f6b01e7e7c8132bc0b66e87675d3dfc6",
+    "evidence_sha256": "9573ef698b7e529f3beef40ff26e05e772b9a8f64fbc0ea4ab4f729780aa6013"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex",
+            "run_id": "review-c22ff36de94f4653",
+            "independent_context": true,
+            "explicit_model_override": true,
+            "override_reason": "独立 Reviewer 任务明确指定使用 gpt-5.6-sol。"
+          },
+          "scores": {
+            "evidence_fidelity": 95,
+            "request_coverage": 94,
+            "reasoning_quality": 95,
+            "readability": 96,
+            "limitations": 96
+          },
+          "score_reasons": {
+            "evidence_fidelity": "已逐项核验 Google 博客、VERID PDF、aptamer arXiv PDF、epitope excision PDF 与 PyLabRobot README。VERID 的 72.0/71.2 mm、-28.6%、+4.9 µL/+40.6%、307→58 mnats，aptamer 的周期、成本、4,405 构建体口径、hit rate、specificity、G4 诊断、ROC-AUC 与初步 affinity，以及 epitope excision 的 15 targets/3,666 designs、RMSD、ΔROC-AUC、FAP 各 arm 和 yeast-display K_D 均与原文一致。轻微精度问题是 C04/“为什么选 aptamer”把约 4,400 简写为三轮累计；Methods 的精确 4,405 还包含轮间的 supplementary Round 1b expansion pool。",
+            "request_coverage": "R01–R05 均得到回答，核心机制、关键数字、安全、人类监督、外推边界与三项目未端到端集成都有独立章节。非阻断遗漏是 S03 Methods 明确说明 pulldown、PCR、sequencing 与数据回传由人类研究者执行，正文虽正确判断尚未形成无人端到端系统，但未直接写出这一操作事实。",
+            "reasoning_quality": "报告清楚区分物理执行、实验反馈、算力经济与人类战略四类约束，并用 G4 proxy failure、FAP A/B/C 对照及 B-variant 将自主性收益与评分装置效应分开。推断以组件证据为基础，未把相关性、计算 hit 或 apparent K_D 外推为药效。",
+            "readability": "报告可脱离对话独立阅读，先给结论和来源边界，再按 VERID、aptamer、protein binder 展开；表格、数字口径和下一步实验使主线清楚。中英文术语较多但均服务于精确表达。",
+            "limitations": "对染料测试床、少量靶标、literature motif 与严格 de novo affinity 差异、apparent K_D、MSA/crop target dependence、单靶标 autonomy 对照、B-variant、缺少独立复现及未集成端到端系统均有明确限制，且安全部分保留人类授权和监督。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07",
+            "C08",
+            "C09",
+            "C10",
+            "C11",
+            "C12"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07",
+            "U08"
+          ],
+          "source_content_map": [
+            {
+              "id": "SCM01",
+              "title": "Google 将三项研究定位为自主湿实验室的独立 building blocks",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01",
+                "U08"
+              ],
+              "notes": "博客把 VERID、aptamer 闭环和 protein binder 设计并列呈现，并明确下一步才是把 VERID 的可追踪自动化与 protein discovery 的闭环学习连接起来；报告在“一页结论”“局限”和“下一步最关键的组合实验”中准确保留该边界。"
+            },
+            {
+              "id": "SCM02",
+              "title": "VERID 是建立在 PyLabRobot 之上的持久化语义数字孪生与验证执行层",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S05"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "原文四项服务是 queryable introspection、time-compressed simulation、trace persistence 与 safe execution；PyLabRobot 仅提供开源、hardware-agnostic 的 Python 设备控制基础。报告未把 PyLabRobot 本身误写为完整数字孪生。"
+            },
+            {
+              "id": "SCM03",
+              "title": "VERID Case 1/2 展示系统偏差诊断、状态恢复与几何/流体约束",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "报告准确覆盖 1.92×–1.99× dilution、8-tip 72.0 mm 对 71.2 mm trough、通信故障续跑、反转通道使 -28.6% deficit 移位，以及 +4.9 µL/+40.6% wall-film carryover。"
+            },
+            {
+              "id": "SCM04",
+              "title": "VERID self-play 的五倍改善是染料混合推断损失，而非生物发现性能",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03",
+                "U08"
+              ],
+              "notes": "原始 case 全部使用 aqueous dye 与 deionized water；MC-2A 最终 307 mnats，继承 sample-blind 经验的 MC-2B 达 58 mnats。报告明确把它限定为光学/流体物理规则，并拒绝外推到复杂生物系统。"
+            },
+            {
+              "id": "SCM05",
+              "title": "Aptamer 闭环的周期、成本、构建体规模与人工湿实验执行",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04",
+                "U08"
+              ],
+              "notes": "报告准确采用正文约 10 天、约 $3/候选及约 1,000 候选/轮，并用约 4,400 概括总规模。精确总数为 4,405 sequenced constructs，包含三轮 focal pools 之外的 supplementary Round 1b expansion；Methods 还明确由人类研究者执行 pulldown、PCR、sequencing 和数据回传，正文未直接写出该操作事实。"
+            },
+            {
+              "id": "SCM06",
+              "title": "Aptamer 两靶标三轮结果及不同失败模式",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04",
+                "U05"
+              ],
+              "notes": "α-thrombin 0.0%→26.0%→42.1% 源于修复 primer-core hybridization；myoglobin 10.2%→3.7%→33.5%，specificity 75.0%→19.1%→72.4%，97% cross-reactive binders 为 G4，均与原文及分母一致。"
+            },
+            {
+              "id": "SCM07",
+              "title": "Aptamer predictor benchmark 与 affinity 验证的边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "报告准确概括 12 metrics/9 tools 的多数 ROC-AUC 约 0.36–0.52，ViennaRNA 为 0.729/0.763；八个单克隆的 pooled enrichment 相关性 r=0.90，24.6–133 nM 来自 agent-stabilized literature motifs，严格 de novo 仅见 >1 µM onset，且 K_D 因未达 Bmax 属初步值。"
+            },
+            {
+              "id": "SCM08",
+              "title": "Epitope excision 的结构保真、排序损失与适用边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "15 targets/3,666 designs、median Cα RMSD 0.37 Å、88.2% <1 Å、93.7% <2 Å、mean ΔROC-AUC -0.048 均准确；报告也指出 7/15 小靶标无 token-bucket 加速，以及 halo/MSA 必须按靶标选择。"
+            },
+            {
+              "id": "SCM09",
+              "title": "FAP A/B/C 对照区分人类战略、混合战术与全自主探索",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "U07"
+              ],
+              "notes": "A=5.06%/132.87 GPU-h/12.6 hits per GPU-h/4 epitopes，B=9.33%/77.18/23.2/7，C=6.18%/124.43/14.5/13；报告正确把 B-variant 作为 apparatus/scoring control，而未纳入 autonomy 因果比较。"
+            },
+            {
+              "id": "SCM10",
+              "title": "FAP yeast-display 验证支持强结合候选但不等于功能或药物有效性",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "U07",
+                "U08"
+              ],
+              "notes": "5,000-member library、三轮 FACS、四个代表性 clone apparent K_D=3.0–9.1 nM 得到覆盖；报告还保留可溶表达、FAP domain specificity、酶抑制及更下游验证均未完成。"
+            },
+            {
+              "id": "SCM11",
+              "title": "安全架构依赖受控测试床、序列筛查、仿真门与人类监督",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08"
+              ],
+              "notes": "报告准确使用 human-directed autonomous discovery，未宣称无人值守；并把目标函数投机、trace、跨轮偏差与硬件故障列为序列筛查之外的控制问题。"
+            },
+            {
+              "id": "SCM12",
+              "title": "三项目尚未组成一个已验证的端到端自主湿实验室",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01",
+                "U08"
+              ],
+              "notes": "VERID 只验证染料物理执行，aptamer 闭环由人类完成湿实验步骤，FAP 是计算 campaign 后再做 yeast-display 验证；Google 博客明确把结合这些线程列为 next step。报告的组件级/端到端区分和组合实验建议成立。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04",
+            "R05"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "结论：可通过当前 important 质量门。两项非阻断精度建议均已定位：C04/“为什么选 aptamer”应在后续修订时说明精确 4,405 包含 supplementary Round 1b；C11/“Aptamer 闭环”可补一句 S03 的湿实验与数据回传由人类研究者执行。来源读取先按 Token Plan 使用 eacli；VERID PDF 的 web.read 后端返回 500、长 PDF/HTML 输出被 32,000 字符截断，因此最小降级为 curl 下载原始 PDF 并用 pdftotext 全文核验。"
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 95.05,
+        "evaluated_on": "2026-10-22",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "e432bb1c8b8949614b9d2781191078cd0073cfedccb6b997d5deabc8b6531fb4",
+        "evidence_sha256": "cc0a24c907233f18149bcd935efebb1f6665f2fd2e44909a73029679e1b8d1d9"
+      }
+    }
+  ]
+}

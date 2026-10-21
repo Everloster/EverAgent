@@ -1,0 +1,402 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/NVIDIA_CUDA_Tile_Mamba2高性能Kernel_深度解析_20261021.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-21",
+  "generator": {
+    "model": "gpt-6",
+    "harness": "codex",
+    "run_id": "20261021-nvidia-mamba2-cutile",
+    "explicit_model_override": false,
+    "override_reason": ""
+  },
+  "task": {
+    "summary": "深入学习 NVIDIA 使用 CUDA Tile（cuTile）实现并优化 Mamba-2 forward pass 的官方技术博客，结合 Mamba-2 原论文、官方代码与 cuTile 文档，解释 SSD 计算、三内核融合、性能口径、可移植性及对推理框架的意义。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "以 NVIDIA 官方博客为主线，结合 Mamba-2 原论文、官方代码和 CUDA Tile/cuTile 官方资料交叉核验。"
+      },
+      {
+        "id": "R02",
+        "text": "逐符号解释 Mamba-2/SSD forward 的递推、chunk boundary state 和 chunk output 公式。"
+      },
+      {
+        "id": "R03",
+        "text": "解释 chunk_cumsum、fwd_pass_state、compute_out 三个 kernel 的分解、fusion 与相对 Triton reference 的数据流差异。"
+      },
+      {
+        "id": "R04",
+        "text": "分析 tile 编程模型、全局内存与中间量、并行轴、Tensor Core/TMA、数据布局和数值精度设计。"
+      },
+      {
+        "id": "R05",
+        "text": "保留 benchmark 的 GPU、shape、dtype、baseline、软件栈和测量口径，并区分 kernel speedup 与端到端效果。"
+      },
+      {
+        "id": "R06",
+        "text": "评估 cuTile 的功能可移植性、性能可移植性、平台要求和当前限制。"
+      },
+      {
+        "id": "R07",
+        "text": "说明该 forward kernel 对训练、prefill、decode 与推理框架集成的实际意义。"
+      },
+      {
+        "id": "R08",
+        "text": "核对原文符号、数值稳定性和 TileGym 公开状态，明确资料缺口与待验证项。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "official",
+      "title": "NVIDIA — Accelerating Mamba-2 with High-Performance Forward Pass Kernels in NVIDIA CUDA Tile",
+      "locator": "https://developer.nvidia.com/blog/accelerating-mamba-2-with-high-performance-forward-pass-kernels-in-nvidia-cuda-tile",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S02",
+      "kind": "official",
+      "title": "NVIDIA — cuTile speedup over Triton benchmark figure",
+      "locator": "https://developer-blogs.nvidia.com/wp-content/uploads/2026/10/performance-cutile-mamba-2-forward-pass.webp",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S03",
+      "kind": "primary",
+      "title": "Dao & Gu — Transformers are SSMs: Structured State Space Duality",
+      "locator": "https://arxiv.org/pdf/2405.21060",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S04",
+      "kind": "official",
+      "title": "Tri Dao — State Space Duality Part III: The Algorithm",
+      "locator": "https://tridao.me/blog/2024/mamba2-part3-algorithm",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S05",
+      "kind": "primary",
+      "title": "state-spaces/mamba — Mamba2 module at e9594ce1",
+      "locator": "https://github.com/state-spaces/mamba/blob/e9594ce1c732d97440f0332fdc43170a2294dbfa/mamba_ssm/modules/mamba2.py",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S06",
+      "kind": "primary",
+      "title": "state-spaces/mamba — Triton SSD combined forward at e9594ce1",
+      "locator": "https://github.com/state-spaces/mamba/blob/e9594ce1c732d97440f0332fdc43170a2294dbfa/mamba_ssm/ops/triton/ssd_combined.py",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S07",
+      "kind": "primary",
+      "title": "state-spaces/mamba — Minimal SSD implementation at e9594ce1",
+      "locator": "https://github.com/state-spaces/mamba/blob/e9594ce1c732d97440f0332fdc43170a2294dbfa/mamba_ssm/modules/ssd_minimal.py",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S08",
+      "kind": "official",
+      "title": "NVIDIA — cuTile Python documentation",
+      "locator": "https://docs.nvidia.com/cuda/cutile-python/index.html",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S09",
+      "kind": "official",
+      "title": "NVIDIA — cuTile Execution Model",
+      "locator": "https://docs.nvidia.com/cuda/cutile-python/execution.html",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S10",
+      "kind": "official",
+      "title": "NVIDIA — cuTile Data Model",
+      "locator": "https://docs.nvidia.com/cuda/cutile-python/data.html",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S11",
+      "kind": "official",
+      "title": "NVIDIA — cuTile Quickstart",
+      "locator": "https://docs.nvidia.com/cuda/cutile-python/quickstart.html",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S12",
+      "kind": "official",
+      "title": "NVIDIA — cuTile Release Notes",
+      "locator": "https://docs.nvidia.com/cuda/cutile-python/generated/release_notes.html",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S13",
+      "kind": "official",
+      "title": "NVIDIA — Simplify GPU Programming with NVIDIA CUDA Tile in Python",
+      "locator": "https://developer.nvidia.com/blog/simplify-gpu-programming-with-nvidia-cuda-tile-in-python",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S14",
+      "kind": "primary",
+      "title": "NVIDIA/TileGym public main snapshot at 3a871364",
+      "locator": "https://github.com/NVIDIA/TileGym/tree/3a871364f1fbd59ef30b1afcc5a79fc3634888ce",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S15",
+      "kind": "official",
+      "title": "Tri Dao — State Space Duality Part IV: The Systems",
+      "locator": "https://tridao.me/blog/2024/mamba2-part4-systems",
+      "accessed_on": "2026-10-21"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "Mamba-2 每个 head 的官方参数化使用 A<0、dt>0，使 a_t=A·dt_t≤0；blog 中 dt 为负的表述与代码不符。",
+      "report_anchor": "原博客至少有两处符号表述需要按源码校正",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S03",
+        "S05"
+      ],
+      "evidence": "NVIDIA blog 将 dt 描述为负；Mamba2.py 明确使用 A=-exp(A_log)，并对 dt+dt_bias 做 softplus；论文输出递推以当前状态 h_t 为准。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "cuTile forward 由 chunk_cumsum、fwd_pass_state、compute_out 三个 kernel 组成，并把 canonical Triton 路径中的 chunk-state/state-passing 和 BMM/chunk-scan 分别融合。",
+      "report_anchor": "从 SSD 四步算法到三个 cuTile kernels",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S03",
+        "S06",
+        "S14"
+      ],
+      "evidence": "NVIDIA blog 与 TileGym 固定源码均展示 forward 的 chunk_cumsum、fwd_pass_state、compute_out；上游 combined forward 依次调用 cumsum、chunk_state、state_passing、bmm_chunk、chunk_scan。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "compute_out 在 tile 内构造 C@Bᵀ、衰减与 causal mask，避免把完整 chunk×chunk 交互矩阵写回全局内存。",
+      "report_anchor": "CB 不落全局内存",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S14"
+      ],
+      "evidence": "博客与 TileGym compute_out 源码都在 kernel 内生成/消费 cb_tile，未显式 store 完整 [B,n_chunks,Q,Q] 交互矩阵到 global array。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "官方优化包含 load/store latency hint、Blackwell MMA operand A/B 交换、dt/G 的 [batch,head,token] 连续布局与 shape-specific exhaustive autotune。",
+      "report_anchor": "cuTile 的承诺是让同一套 tile 语义跨 NVIDIA GPU 架构编译",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S09",
+        "S12"
+      ],
+      "evidence": "NVIDIA blog 的 performance optimization 小节逐项列出四类优化；执行模型与 release notes 给出 compiler hints 和 exhaustive_search 行为。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "在单张 B300 SXM6、特定 CUDA/cuTile/Triton 软件栈上，官方 forward kernel speedup 为 1.14×–1.82×，图覆盖 1K–256K tokens 与 state 64–512。",
+      "report_anchor": "官方公开的完整环境",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "博客正文列出硬件/软件栈并给出 1.14–1.82×；官方图轴与 legend 显示 9 个 token lengths、4 个 state sizes。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "官方 1.14×–1.82× 只适用于 forward kernel，不能外推为端到端训练或推理加速；TileGym 已公开 backward/perf harness，但未发布 backward speedup、绝对延迟、raw data、重复次数或误差分布。",
+      "report_anchor": "这些结果不能证明什么",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S14"
+      ],
+      "evidence": "NVIDIA 正文明确性能图是 kernel-level forward；S14 有 backward 与 perf harness，但仓库未附博客图 raw results 或端到端训练数据。",
+      "critical": true
+    },
+    {
+      "id": "C07",
+      "claim": "cuTile 隐藏 thread/warp 映射并提供跨 NVIDIA 架构的 tile 语义，但 tile shape、array aliasing、compiler specialization 和 target hints 仍构成硬约束。",
+      "report_anchor": "编程对象：array、tile、block",
+      "support": "direct",
+      "source_ids": [
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S13"
+      ],
+      "evidence": "官方文档定义 block-level execution、compile-time power-of-two tile shapes、无 pointer array model、重叠 array 未定义及 target-specific hints。",
+      "critical": false
+    },
+    {
+      "id": "C08",
+      "claim": "TileGym main@3a871364 已公开 Mamba-2 forward/backward、Mamba2ProblemSpec、正确性容差与 forward/backward perf harness；剩余缺口是博客图 raw results、误差分布和 B300 独立复现。",
+      "report_anchor": "TileGym 公开实现与剩余复现缺口",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S14"
+      ],
+      "evidence": "S14 的 src/tilegym/ops/cutile/mamba2.py 注册 mamba2_chunk_forward/backward；tests/ops/test_mamba2.py 含 reference、atol/rtol 与 T/S perf matrix。博客 common.benchmark(use_cupti=True) 与固定快照 common.benchmark_framework/CUDA Graph API 存在版本漂移。",
+      "critical": true
+    },
+    {
+      "id": "C09",
+      "claim": "[待验证] 新 forward 使用 chunk 内 prefix-sum differences 构造衰减；TileGym 已有 FP32 cumsum、forward/backward reference 与容差测试，但未公开长序列误差曲线、极端衰减压力测试或端到端训练稳定性。",
+      "report_anchor": "一个尚未闭合的数值问题",
+      "support": "inference",
+      "source_ids": [
+        "S01",
+        "S04",
+        "S07",
+        "S14"
+      ],
+      "evidence": "cuTile/TileGym 在有限 chunk 内使用 decay differences；Part III 警告全序列 cumulative-difference 可能不稳定；S14 证明存在测试门禁，但不能替代长度与训练稳定性评估。",
+      "critical": true
+    },
+    {
+      "id": "C10",
+      "claim": "[推测] 推理框架应让长序列 training/prefill 走 chunked SSD，让逐 token decode 走 recurrent state update，并为 shape/GPU/compiler 维护 autotune cache 与 fallback。",
+      "report_anchor": "应按 phase 路由，而不是“一把替换”",
+      "support": "inference",
+      "source_ids": [
+        "S03",
+        "S04",
+        "S05",
+        "S08"
+      ],
+      "evidence": "论文区分并行 chunk algorithm 与 O(N²) fixed-state inference；Mamba2.step 是独立递推路径。框架集成建议由这些计算边界推导。",
+      "critical": true
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "Mamba-2 recurrence、SSD duality 与逐符号公式",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S03",
+        "S05"
+      ],
+      "report_anchor": "先把数学对象摆正：Mamba-2 在算什么"
+    },
+    {
+      "id": "U02",
+      "title": "SSD 四步与 cuTile 三 kernel 的分解/fusion",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S03",
+        "S06",
+        "S07"
+      ],
+      "report_anchor": "从 SSD 四步算法到三个 cuTile kernels"
+    },
+    {
+      "id": "U03",
+      "title": "cuTile array/tile/block 编程模型与编译器边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S08",
+        "S09",
+        "S10",
+        "S13"
+      ],
+      "report_anchor": "cuTile 到底替开发者做了什么"
+    },
+    {
+      "id": "U04",
+      "title": "内存、并行、数据布局与数值稳定性",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S04",
+        "S09",
+        "S10",
+        "S14"
+      ],
+      "report_anchor": "内存、并行与数值设计"
+    },
+    {
+      "id": "U05",
+      "title": "B300 benchmark 环境、shape、dtype、baseline 与结论边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "report_anchor": "benchmark：哪些数字能信到什么程度"
+    },
+    {
+      "id": "U06",
+      "title": "平台、版本、架构与性能可移植性",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S11",
+        "S12",
+        "S13"
+      ],
+      "report_anchor": "可移植性与当前公开状态"
+    },
+    {
+      "id": "U07",
+      "title": "TileGym forward/backward 实现、正确性测试、perf harness 与剩余结果复现缺口",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S14"
+      ],
+      "report_anchor": "TileGym 公开实现与剩余复现缺口"
+    },
+    {
+      "id": "U08",
+      "title": "对训练、prefill、decode 和推理框架的意义",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S03",
+        "S04",
+        "S05",
+        "S15"
+      ],
+      "report_anchor": "对推理框架的实际意义"
+    }
+  ],
+  "limitations": [
+    "未在 NVIDIA B300 上执行或复现性能，所有 1.14×–1.82× 数字均为 NVIDIA/Jane Street 官方自报。",
+    "官方没有发布博客图逐点 raw benchmark、绝对延迟、重复次数、方差、完整 profiler breakdown 或长度分层误差分布。",
+    "TileGym 已公开 forward/backward 与 perf harness，但没有公开 backward speedup、完整 autograd 集成或端到端训练效果。",
+    "TileGym main@3a871364 可核对实现、测试容差与 harness；本报告没有 B300 环境实际运行这些测试。",
+    "性能只覆盖单张 B300 与特定 Triton reference，不能外推到其他 GPU、其他 Triton kernel 或多 GPU。",
+    "原博客关于 dt 符号与 h_t/h_{t-1} 索引有文字不一致；本文按原论文和官方代码校正。",
+    "chunk 内 cumulative-difference 与作者对全序列 stable segsum 的警告机制相关，但固定测试不能替代长序列和训练稳定性评估。",
+    "eacli typed capability 已优先使用；其 web.read 对 52 页 arXiv PDF 返回截断 JSON、部分 GitHub API 请求间歇失败，因此最小降级为从同一 arXiv 官方 URL 下载 PDF 后 pdftotext，并以公开 git 固定提交核验源码。"
+  ]
+}

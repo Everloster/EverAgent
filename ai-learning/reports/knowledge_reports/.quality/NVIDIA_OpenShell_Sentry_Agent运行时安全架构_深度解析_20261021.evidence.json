@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/NVIDIA_OpenShell_Sentry_Agent运行时安全架构_深度解析_20261021.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-21",
+  "generator": {
+    "model": "gpt-6.1-sol",
+    "harness": "codex",
+    "run_id": "gpt61sol-final-editor-openshell-r4-20261022",
+    "explicit_model_override": true,
+    "override_reason": "质量门为当前 revision 显式指定 GPT-6.1 Sol 做实质终稿编辑"
+  },
+  "task": {
+    "summary": "合并深读 NVIDIA OpenShell Reference Architecture 与 NVIDIA Sentry 两篇官方文章，并结合 OpenShell 公开仓库、BlueField/DOCA 一手资料，形成面向 Agent 运行时安全和 EverAgent 双仓迁移的深度学习报告。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "实际阅读两篇 2026-10-21 NVIDIA 官方文章及 OpenShell 官方仓库、架构文档和 policy prover 实现说明。"
+      },
+      {
+        "id": "R02",
+        "text": "覆盖威胁模型、OpenShell sandbox/policy/runtime、Sentry 带外监督与信任根，以及身份、网络、文件、工具和凭据治理。"
+      },
+      {
+        "id": "R03",
+        "text": "核验硬件依赖、开源边界、可用性、性能与隔离数字，并区分 NVIDIA 官方主张和分析者判断。"
+      },
+      {
+        "id": "R04",
+        "text": "提出对 EverAgent 公开/私有双仓、eacli 能力网关和多 Harness 的可采纳设计与分阶段采用建议。"
+      },
+      {
+        "id": "R05",
+        "text": "给出可执行的安全与效用评估任务集、限制、未解问题和后续研究入口。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "official",
+      "title": "How NVIDIA OpenShell Reference Architecture Secures and Governs AI Agent Workloads at Scale",
+      "locator": "https://developer.nvidia.com/blog/how-nvidia-openshell-reference-architecture-secures-and-governs-ai-agent-workloads-at-scale",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S02",
+      "kind": "official",
+      "title": "Inside NVIDIA Sentry: Secure AI Agents at Runtime",
+      "locator": "https://developer.nvidia.com/blog/inside-nvidia-sentry-secure-ai-agents-at-runtime",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S03",
+      "kind": "primary",
+      "title": "NVIDIA/OpenShell repository README",
+      "locator": "https://github.com/NVIDIA/OpenShell/blob/main/README.md",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S04",
+      "kind": "primary",
+      "title": "OpenShell Architecture",
+      "locator": "https://github.com/NVIDIA/OpenShell/blob/main/docs/about/architecture.mdx",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S05",
+      "kind": "primary",
+      "title": "OpenShell Apache License 2.0",
+      "locator": "https://github.com/NVIDIA/OpenShell/blob/main/LICENSE",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S06",
+      "kind": "primary",
+      "title": "OpenShell Network Rules",
+      "locator": "https://github.com/NVIDIA/OpenShell/blob/main/docs/how-it-works/policies/network-rules.mdx",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S07",
+      "kind": "primary",
+      "title": "OpenShell Policy Prover documentation",
+      "locator": "https://github.com/NVIDIA/OpenShell/blob/main/docs/how-it-works/policies/prover.mdx",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S08",
+      "kind": "primary",
+      "title": "openshell-prover README",
+      "locator": "https://github.com/NVIDIA/OpenShell/blob/main/crates/openshell-prover/README.md",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S09",
+      "kind": "primary",
+      "title": "OpenShell Security Best Practices",
+      "locator": "https://github.com/NVIDIA/OpenShell/blob/main/docs/security/best-practices.mdx",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S10",
+      "kind": "primary",
+      "title": "OpenShell Inference Providers",
+      "locator": "https://github.com/NVIDIA/OpenShell/blob/main/docs/how-it-works/inference.mdx",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S11",
+      "kind": "official",
+      "title": "NVIDIA Open Agent Safety Platform",
+      "locator": "https://www.nvidia.com/en-us/solutions/ai/agent-safety",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S12",
+      "kind": "official",
+      "title": "Add Runtime Controls to AI Agents with NVIDIA OpenShell",
+      "locator": "https://developer.nvidia.com/blog/add-runtime-controls-to-ai-agents-with-nvidia-openshell",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S13",
+      "kind": "official",
+      "title": "Advancing AI Infrastructure for Agentic AI with NVIDIA DOCA In-Silicon Security",
+      "locator": "https://developer.nvidia.com/blog/advancing-ai-infrastructure-for-agentic-ai-with-nvidia-doca-in-silicon-security",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S14",
+      "kind": "official",
+      "title": "NVIDIA DOCA: A Foundation for Zero Trust",
+      "locator": "https://developer.nvidia.com/blog/nvidia-introduces-bluefield-dpu-as-a-platform-for-zero-trust-security-with-doca-1-2",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S15",
+      "kind": "official",
+      "title": "NVIDIA Open Agent Safety Platform: A Reference for Continuous In-Silicon Agent Monitoring",
+      "locator": "https://developer.nvidia.com/blog/nvidia-open-agent-safety-platform-a-reference-for-continuous-in-silicon-agent-monitoring",
+      "accessed_on": "2026-10-21"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "OpenShell 的核心安全转变是把文件、进程、网络和凭据授权放到 Agent 工作负载之外，由运行时执行，而不是依赖 Agent 自我约束。",
+      "report_anchor": "结论先行",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S03",
+        "S04",
+        "S12"
+      ],
+      "evidence": "两篇架构文章与仓库架构均将 Agent 视为不可信工作负载；Supervisor 在边界外判定请求，workload 只能通过受控通道外连。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "OpenShell 的软件边界由 Gateway、compute runtime、可信 Supervisor、边界内 sandbox runtime、受限 Agent 与 policy prover 共同组成，不是单一容器。",
+      "report_anchor": "博客中的四组件，落到仓库后是什么",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S04"
+      ],
+      "evidence": "官方架构文档逐项描述各组件信任位置、Sandbox Protocol、外层网络 fence、各 runtime 的部署方式和认证关系。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "OpenShell 默认拒绝没有匹配 host/port/binary 规则的外连，而 L7 规则默认 audit 只记录违规；省略 protocol 或使用 tls: skip 会减少动作级检查，过宽 binary ancestor/glob 规则会扩大获准调用者集合。",
+      "report_anchor": "网络与工具边界：连接、地址、动作和回包分别检查什么",
+      "support": "direct",
+      "source_ids": [
+        "S06",
+        "S09"
+      ],
+      "evidence": "S06/S09 分别描述连接/请求检查、audit 与 enforce、无 protocol/tcp/TLS skip 的检查范围、ancestor authorization 与 SHA-256 TOFU pin；正文明确 audit 对请求规则违规放行但仍拒绝无法安全处理的请求。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "OpenShell 通过不透明凭据代称、provider profile、sandbox attachment 与 endpoint-bound proxy substitution，使真实凭据通常不进入 Agent 可读环境。",
+      "report_anchor": "凭据保护是这套架构最实用的设计之一",
+      "support": "direct",
+      "source_ids": [
+        "S10",
+        "S12"
+      ],
+      "evidence": "S10/S12 说明真实 credential 只在 profile endpoint 与 network policy 均通过后由可信代理替换；凭据代称发送到未授权目标不会在那里替换成真实 token。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "Policy Prover 只能证明已建模权限处于边界内，不判断任务语义、不证明运行时正确执行，并对 MCP、GraphQL、WebSocket 等当前未覆盖形态返回 unsupported。",
+      "report_anchor": "Policy Prover：证明的是能力上界，不是任务善意",
+      "support": "direct",
+      "source_ids": [
+        "S07",
+        "S08"
+      ],
+      "evidence": "Prover 文档列出 coverage、四态结果和 fail-closed 用法；源码 README 明列 semantic risk、cross-sandbox intent 与 runtime behavior 为非目标。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "Sentry 将 DOCA Flow/Tower 的网络控制、Argus 的带外内存观察、workload identity 和 attested telemetry 放到 BlueField-4 独立信任域，以覆盖主机失陷威胁。",
+      "report_anchor": "Sentry：为什么还要把监督移到 BlueField",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S13",
+        "S14"
+      ],
+      "evidence": "Sentry 文章逐项描述 Flow L4、Tower L7、Argus memory introspection、SPIFFE/SPIRE、DPU 侧记录与隔离；BlueField 材料说明硬件 root of trust 和独立 trust domain。",
+      "critical": true
+    },
+    {
+      "id": "C07",
+      "claim": "OpenShell 已是 Apache-2.0 公开实现且不要求 BlueField；Sentry 官方文章则写明计划 2027 年初可用，当前公开审计和成熟度不能与 OpenShell 等同。",
+      "report_anchor": "开源边界与硬件依赖",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S05",
+        "S11"
+      ],
+      "evidence": "仓库 LICENSE 与 README 证明 OpenShell 许可证和支持面；产品 FAQ 明确 BlueField 可选；Sentry 文章结尾给出 planned availability early next year。",
+      "critical": true
+    },
+    {
+      "id": "C08",
+      "claim": "Vera 最高 2× 为 NVIDIA 架构性能自述；sandbox startup >3×、20-task Terminal Bench 几何平均 1.8×、单 rack >11000 环境为 NVIDIA 转述 CoreWeave 测量。OPA <1 ms、Sentry 毫秒隔离及 DOCA 1000×/800 Gb/s 均按各自官方披露处理，不能合成为端到端安全或通用部署收益。",
+      "report_anchor": "性能与隔离数字：哪些能相信到什么程度",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S12",
+        "S13"
+      ],
+      "evidence": "S01 的 Vera 架构段落和 CoreWeave 测量段落分开登记；图中 startup 以 sandboxes per second 比较，20 项任务为 1.8× 几何平均，并报告机架并发密度。S02 的 OPA 时延依赖策略复杂度/配置，Sentry 毫秒 containment 未给完整端到端统计；S13 的检测/吞吐口径也不代表分类器或整个安全链。正文另保留 S12 两小时对抗案例的样本/方法缺口。",
+      "critical": true
+    },
+    {
+      "id": "C09",
+      "claim": "[推测] EverAgent 最应先迁移 capability lease、containment check、设备端凭据解析和 Harness 外审计，再按任务风险选择是否加入 OS sandbox。",
+      "report_anchor": "对 EverAgent 双仓与 Harness 的可采纳设计",
+      "support": "inference",
+      "source_ids": [
+        "S04",
+        "S07",
+        "S10",
+        "S02"
+      ],
+      "evidence": "该建议把 OpenShell 的 policy ceiling、provider attachment、Supervisor enforcement 与 Sentry 的外部审计映射到当前公开双仓协议，并明确未读取私仓事实。",
+      "critical": false
+    },
+    {
+      "id": "C10",
+      "claim": "[推测] BlueField/Sentry 当前不适合个人双仓直接部署，但 OpenShell 值得在运行未知仓库代码的高风险任务上进行小规模对抗验证。",
+      "report_anchor": "采用建议",
+      "support": "inference",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S09",
+        "S11"
+      ],
+      "evidence": "判断依据是 Sentry 尚未正式可用和专用硬件依赖，以及 OpenShell 已有本地/container/VM/Kubernetes 支持与公开安全控制。",
+      "critical": false
+    },
+    {
+      "id": "C11",
+      "claim": "OpenShell 默认阻止未声明、通配符、无 host 和 policy advisor 提案端点访问私网，运营者声明的精确主机名可显式访问私网，allowed_ips 限制每个解析地址；外发 loopback/link-local/unspecified 目标（含 169.254.169.254）不能被该字段放行，同 sandbox 的本地 loopback 服务不受这项外发限制。",
+      "report_anchor": "SSRF：获准主机名还要通过地址检查",
+      "support": "direct",
+      "source_ids": [
+        "S06",
+        "S09"
+      ],
+      "evidence": "S06 Restrict Destination Addresses 明确私网默认、精确 hostname 例外、allowed_ips 全地址检查和 sandbox-local loopback 例外；S09 SSRF Protection 明确 127.0.0.0/8、169.254.0.0/16、0.0.0.0 始终阻断，不能由 allowed_ips 覆盖。",
+      "critical": true
+    },
+    {
+      "id": "C12",
+      "claim": "OpenShell MCP 规则匹配 method/tool name，不匹配 arguments，也不解析服务器 response/SSE；WebSocket 规则检查 upgrade 和客户端完整文本消息，不检查二进制帧或服务器消息，携带 provider 凭据的客户端二进制帧默认断连、显式例外才继续中继。",
+      "report_anchor": "MCP、WebSocket：协议能解析到哪一层",
+      "support": "direct",
+      "source_ids": [
+        "S06",
+        "S09",
+        "S01"
+      ],
+      "evidence": "S06 Allow MCP Tools 和 Allow WebSocket Messages 明确参数、响应/SSE、客户端文本/二进制与服务器消息的解析范围，以及 allow_uninspected_credentials 例外和 MCP/JSON-RPC upgrade 拒绝。S01 的 Supervisor middleware 可增加请求/响应检查，正文将它与内建协议规则分开。",
+      "critical": true
+    },
+    {
+      "id": "C13",
+      "claim": "[推测] 采用时应让确定性规则规定最大权限，分类和运行态信号增加阻断/告警/复核，独立带外域保护监督与记录；分类结果不能单独扩大授权上界。",
+      "report_anchor": "确定性边界、行为分类和带外监督怎样配合",
+      "support": "inference",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S04"
+      ],
+      "evidence": "S01/S04 给出外部 policy enforcement，S02 区分 inline/out-of-band classification 并说明 BlueField 独立 trust domain。正文把三者作为分别核验的职责，并明确权限上界建议为 [推测]，不宣称 Sentry 已证明这种组合安全。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "两篇当日 NVIDIA 文章的核心问题、主张和分层架构",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "report_anchor": "两篇文章真正回答了什么"
+    },
+    {
+      "id": "U02",
+      "title": "Agent 运行时威胁模型、可信计算基和残余风险",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S04",
+        "S14"
+      ],
+      "report_anchor": "威胁模型：它在防谁，又默认信任谁"
+    },
+    {
+      "id": "U03",
+      "title": "OpenShell Gateway、Supervisor、sandbox、driver 与请求执行链",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "OpenShell：软件运行时怎样真正拦住动作"
+    },
+    {
+      "id": "U04",
+      "title": "文件/进程、SSRF、TLS、MCP/WebSocket 和回包检查的默认控制与未覆盖项",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S06",
+        "S09",
+        "S10",
+        "S12",
+        "S01"
+      ],
+      "report_anchor": "网络与工具边界：连接、地址、动作和回包分别检查什么"
+    },
+    {
+      "id": "U05",
+      "title": "Policy Prover 的 boundary/proposal 检查、coverage 和非目标",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S07",
+        "S08"
+      ],
+      "report_anchor": "Policy Prover：证明的是能力上界，不是任务善意"
+    },
+    {
+      "id": "U06",
+      "title": "Sentry 的确定性控制、行为分类、带外域、workload identity、审计和隔离机制",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S13",
+        "S14"
+      ],
+      "report_anchor": "Sentry：为什么还要把监督移到 BlueField"
+    },
+    {
+      "id": "U07",
+      "title": "OpenShell 与 Sentry 的开源边界、硬件依赖和可用性",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S05",
+        "S11"
+      ],
+      "report_anchor": "开源边界与硬件依赖"
+    },
+    {
+      "id": "U08",
+      "title": "NVIDIA Vera 自述与 CoreWeave 启动/任务/密度测量的分开归属，以及 OPA/Sentry/DOCA 局部性能口径",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S12",
+        "S13"
+      ],
+      "report_anchor": "性能与隔离数字：哪些能相信到什么程度"
+    },
+    {
+      "id": "U09",
+      "title": "EverAgent 双仓、eacli 能力网关和多 Harness 的迁移设计",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S04",
+        "S07",
+        "S10",
+        "S02"
+      ],
+      "report_anchor": "对 EverAgent 双仓与 Harness 的可采纳设计"
+    },
+    {
+      "id": "U10",
+      "title": "安全与效用评估、采用顺序、限制和后续问题",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S06",
+        "S07",
+        "S09",
+        "S13"
+      ],
+      "report_anchor": "如何评估重构是否真的更安全"
+    }
+  ],
+  "limitations": [
+    "核心材料及多数补充来源来自 NVIDIA，未找到可核验的第三方 Sentry 部署、独立红队、安全认证或性能复现。",
+    "本任务没有安装和运行 OpenShell，不能把文档支持面写成在具体 Linux、macOS、WSL2、Kubernetes 环境中的实测兼容性。",
+    "OpenShell 主分支仍快速变化，报告记录的是 2026-10-21 所读 0.1.x 文档与源码语义。",
+    "本次已读资料未提供完整 Sentry 硬件支持矩阵、license、DOCA Tower 插件边界、定价和 TCB；报告只记录已披露架构与计划时间。",
+    "EverAgent 迁移建议基于公开仓协议与抽象架构，没有读取或复制私仓设备、网络、账号、服务和凭据事实。",
+    "全部性能数字都是 NVIDIA 自述或其文章转述的合作方测量，已分开来源归属；公开材料仍缺采购、容量规划和端到端安全评估所需的完整 benchmark 方法。",
+    "SSRF、MCP arguments、WebSocket 与回包限制按已读文档登记，未做协议级故障注入；附加 middleware、分类器和服务器侧授权对具体业务的覆盖仍需部署验证。"
+  ]
+}

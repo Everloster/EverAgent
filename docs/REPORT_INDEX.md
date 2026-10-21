@@ -7,12 +7,17 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-10-22 | [Google 自主湿实验室 Agent：用物理现实、实验反馈与人类战略闭合科学发现](../ai-learning/reports/knowledge_reports/Google_自主湿实验室Agent_生物现实约束与闭环_深度解析_20261021.md) | ai-learning |
+| 2026-10-22 | [ALTK-Evolve：学习型 Memory 如何让 Agent 在服务任务中持续改进](../ai-learning/reports/knowledge_reports/ALTK_Evolve_学习型Memory与Agent服务任务_深度解析_20261021.md) | ai-learning |
 | 2026-10-21 | [高能量 238：全球资本市场为何开始集体缺钱——美债、AI CAPEX 与中国融资结构](../podcast-learning/reports/2026-10-20_xiaoyuzhou-gaonengliang_vol238-global-liquidity.md) | podcast-learning |
 | 2026-10-21 | [起朱楼 185：ETF 从复制市场到成为市场——被动投资的力量、激励与风险](../podcast-learning/reports/2026-10-20_xiaoyuzhou-qizhulou_vol185-etf-market.md) | podcast-learning |
 | 2026-10-21 | [硅谷101 E256：GPT-6 Astra 如何同时改写 Agent、机器人与 AI 制药](../podcast-learning/reports/2026-10-19_rss-guigu101_e256-astra-agent-robot-drug.md) | podcast-learning |
 | 2026-10-21 | [张小珺 155：科沃斯钱程谈企业接班、经营克制与机器人长期战](../podcast-learning/reports/2026-10-21_xiaoyuzhou-zhangxiaojun_vol155-qiancheng-ecovacs.md) | podcast-learning |
+| 2026-10-21 | [NVIDIA OpenShell 与 Sentry：把 Agent 安全从提示词移到运行时边界](../ai-learning/reports/knowledge_reports/NVIDIA_OpenShell_Sentry_Agent运行时安全架构_深度解析_20261021.md) | ai-learning |
+| 2026-10-21 | [NVIDIA CUDA Tile 加速 Mamba-2：从 SSD 分块到三内核融合](../ai-learning/reports/knowledge_reports/NVIDIA_CUDA_Tile_Mamba2高性能Kernel_深度解析_20261021.md) | ai-learning |
 | 2026-10-21 | [LinkStart 135：AI 眼镜与折叠屏的产品定义——设计如何决定 AI 硬件价值](../podcast-learning/reports/2026-10-21_xiaoyuzhou-linkstart_vol135-ai-hardware-design.md) | podcast-learning |
 | 2026-10-21 | [DeepInfer：从模型协同设计到生产推理内核](../ai-learning/reports/knowledge_reports/DeepInfer_从模型协同设计到生产推理内核_深度解析_20261021.md) | ai-learning |
+| 2026-10-21 | [Apple MLX + RDMA：把多台 Mac Studio 变成桌面级大模型推理集群](../ai-learning/reports/knowledge_reports/Apple_MLX_RDMA_Mac_Studio分布式大模型推理_深度解析_20261021.md) | ai-learning |
 | 2026-10-20 | [金瓶梅·绿色版 9《蒋竹山》：一张假借据如何调动街头、保甲与提刑院](../podcast-learning/reports/2026-08-13_ximalaya-bannatie-gushipian_jiangzhushan.md) | podcast-learning |
 | 2026-10-20 | [身体出现这些信号，可能是炎症在提醒你！——帆书讲《炎症》](../podcast-learning/reports/2026-08-21_bilibili-fanshu_yanzheng.md) | podcast-learning |
 | 2026-10-20 | [说医解药 Vol.91：银鳕鱼汞中毒争议——三种汞、鳕鱼命名史与 FDA 选鱼数学](../podcast-learning/reports/2026-10-08_xiaoyuzhou-shuoyi-jieyao_vol91-cod-mercury.md) | podcast-learning |
@@ -27,17 +32,17 @@
 | 2026-10-20 | [实习生抢答、老教授过目：速度快 2-3 倍，凭什么不改变采样分布？——投机解码科普](../ai-learning/reports/knowledge_reports/投机解码SpeculativeDecoding_科普讲解_20260720.md) | ai-learning |
 | 2026-10-20 | [孩子成绩差，真的是因为「不是学习的料」吗？——黄翔脑科学对谈与事实核查](../podcast-learning/reports/2026-07-04_bilibili-kema_huangxiang-brain.md) | podcast-learning |
 | 2026-10-20 | [大小马 V94：中国火箭回收与美国「孙学」——争议资产、复用经济学与中欧美心态切片](../podcast-learning/reports/2026-09-06_xiaoyuzhou-daxiaoma-keji_v94-rocket-recovery-sunology.md) | podcast-learning |
-| 2026-10-20 | [半拿铁·周刊 No.50：刷量入刑的边界、自爆营业、大玩家清算、钟薛高降价重生、豆包手机二代与 SAEP、家长信息合规](../podcast-learning/reports/2026-09-22_xiaoyuzhou-bannatie-zhoukan_no50-weekly-news.md) | podcast-learning |
-| 2026-10-20 | [刘方奇教授谈肠癌：先完成分期与分子检测，再决定手术时机](../podcast-learning/reports/2026-08-24_xiaoyuzhou-boluo-jiankang_liufangqi.md) | podcast-learning |
-| 2026-10-20 | [从模型信仰到应用求生：中国 AI 创业与一级市场的分化故事线（2022底—2026）](../ai-learning/reports/knowledge_reports/中国AI创业与一级市场故事线_从模型信仰到应用求生_20260731.md) | ai-learning |
-| 2026-10-20 | [为什么 FDE 在 AI 时代这么火？因为差距不在模型，在业务细节](../podcast-learning/reports/2026-07-29_bilibili-kedaibiao-lizheng_jove-fde.md) | podcast-learning |
-| 2026-10-20 | [下一轮双仓重构参照：证据驱动维护、复杂度路由与分段深审](../ai-learning/reports/knowledge_reports/双仓重构参照_证据驱动维护_复杂度路由与分段深审_20261020.md) | ai-learning |
 
-## 🤖 AI Learning（120 篇）
+## 🤖 AI Learning（125 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-10-22 | [Google 自主湿实验室 Agent：用物理现实、实验反馈与人类战略闭合科学发现](../ai-learning/reports/knowledge_reports/Google_自主湿实验室Agent_生物现实约束与闭环_深度解析_20261021.md) | `autonomous_wet_lab`, `scientific_agents`, `verid`, `lab_in_the_loop`, `aptamer_design`, `protein_binder_design` |
+| 2026-10-22 | [ALTK-Evolve：学习型 Memory 如何让 Agent 在服务任务中持续改进](../ai-learning/reports/knowledge_reports/ALTK_Evolve_学习型Memory与Agent服务任务_深度解析_20261021.md) | `agent_memory`, `memory_middleware`, `self_improving_agents`, `altk_evolve`, `tau2_bench`, `context_engineering` |
+| 2026-10-21 | [NVIDIA OpenShell 与 Sentry：把 Agent 安全从提示词移到运行时边界](../ai-learning/reports/knowledge_reports/NVIDIA_OpenShell_Sentry_Agent运行时安全架构_深度解析_20261021.md) | `agent_security`, `openshell`, `nvidia_sentry`, `sandbox`, `runtime_governance`, `bluefield` |
+| 2026-10-21 | [NVIDIA CUDA Tile 加速 Mamba-2：从 SSD 分块到三内核融合](../ai-learning/reports/knowledge_reports/NVIDIA_CUDA_Tile_Mamba2高性能Kernel_深度解析_20261021.md) | `mamba_2`, `structured_state_space_duality`, `cuda_tile`, `cutile`, `gpu_kernel`, `triton` |
 | 2026-10-21 | [DeepInfer：从模型协同设计到生产推理内核](../ai-learning/reports/knowledge_reports/DeepInfer_从模型协同设计到生产推理内核_深度解析_20261021.md) | `deepinfer`, `llm_inference`, `speculative_decoding`, `dspark`, `kv_cache`, `moe` |
+| 2026-10-21 | [Apple MLX + RDMA：把多台 Mac Studio 变成桌面级大模型推理集群](../ai-learning/reports/knowledge_reports/Apple_MLX_RDMA_Mac_Studio分布式大模型推理_深度解析_20261021.md) | `mlx`, `rdma`, `apple_silicon`, `distributed_inference`, `pipeline_parallelism`, `tensor_parallelism` |
 | 2026-10-20 | [实习生抢答、老教授过目：速度快 2-3 倍，凭什么不改变采样分布？——投机解码科普](../ai-learning/reports/knowledge_reports/投机解码SpeculativeDecoding_科普讲解_20260720.md) | `speculative-decoding`, `inference-optimization`, `memory-bandwidth`, `draft-model`, `rejection-sampling`, `lossless-acceleration` |
 | 2026-10-20 | [从模型信仰到应用求生：中国 AI 创业与一级市场的分化故事线（2022底—2026）](../ai-learning/reports/knowledge_reports/中国AI创业与一级市场故事线_从模型信仰到应用求生_20260731.md) | `china_ai`, `venture_capital`, `ai_startups`, `market_analysis` |
 | 2026-10-20 | [下一轮双仓重构参照：证据驱动维护、复杂度路由与分段深审](../ai-learning/reports/knowledge_reports/双仓重构参照_证据驱动维护_复杂度路由与分段深审_20261020.md) | `dual_repo_refactor`, `context_engineering`, `agent_harness`, `tool_routing`, `deep_review` |

@@ -1,0 +1,753 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/ALTK_Evolve_学习型Memory与Agent服务任务_深度解析_20261021.md",
+  "quality_tier": "important",
+  "revision_round": 4,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "review-altk-evolve-20261022-gpt56sol-r4",
+        "independent_context": true,
+        "explicit_model_override": true,
+        "override_reason": "用户延续指定由 gpt-5.6-sol 在 Codex 中执行 revision 4 独立复核"
+      },
+      "scores": {
+        "evidence_fidelity": 96,
+        "request_coverage": 97,
+        "reasoning_quality": 96,
+        "readability": 97,
+        "limitations": 96
+      },
+      "score_reasons": {
+        "evidence_fidelity": "Revision 3 的两处机制漂移已修复。§2.1 现准确写明 guideline 可由一个或多个轨迹产生；semantic facts、episodic/tool gists 与 procedural guidelines 都可被 retrieve 并进入上下文；provenance/ownership/visibility 是通用 entity metadata，category/rationale/steps/support count 为 guideline 特有；各 entity 通过 source task/session 回溯。§6 Admission 现与 S01/S02 一致，保留失败原因、反思、failure count、负面约束和 successful recovery 等多种信号。",
+        "request_coverage": "R02/R05 的受影响部分已完整恢复；C01/C07、U04/U06/U07 与正文 anchors 一致。R01/R03/R04 及其数字、口径和局限未被 revision 4 改动，沿用 history 中已通过的完整来源核验。当前无 missing requirement。",
+        "reasoning_quality": "quality-weighted admission 正确区分“不能把错误动作固化成正向策略”与“失败仍可提供负证据和修复经验”，successful recovery 只被写成高价值信号之一。typed memory 的角色也从互斥层级改为可共同影响上下文的不同表示，闭环推理不再建立在错误的唯一读路径上。",
+        "readability": "三形态表和紧随其后的解释现在能直接回答对象、生成方式、损失与角色；Admission 条目仍保持简洁。轻微可润色处是“事实与摘要是索引”可能让 semantic fact 看似只是指针，但下一句已明确它可直接被 retrieve 并进入上下文，不影响机制理解。",
+        "limitations": "本轮修订未削弱既有边界：held-out/full-base、PR open/custom/Unverified、trajectories 未重放、preliminary report、长期漂移、poisoning 与验证器依赖仍完整。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C09"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07"
+      ],
+      "source_content_map": [
+        {
+          "id": "SCM-R4-01",
+          "title": "typed memory、gist、guideline 与通用/特有 metadata",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04",
+            "U06",
+            "U07"
+          ],
+          "notes": "§2.1 已逐项落实 revision 3 finding：guideline 来源改为一个或多个轨迹；typed semantic facts、episodic/tool gists、procedural guidelines 都可检索并影响上下文；通用 provenance/ownership/visibility 与 guideline 特有字段分离；回溯直接绑定 source task/session，不再强制经过 gist。"
+        },
+        {
+          "id": "SCM-R4-02",
+          "title": "quality-weighted memory admission 与失败经验信号",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U07"
+          ],
+          "notes": "§6 Admission 现允许从失败原因、自我反思、failure count、负面约束和 successful recovery 学习，同时阻止把错误动作当作正向策略；这与 S01 的 successes and failures 及 S02 admission 议程的多信号加权一致。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "Revision 4 定向复核完成，只重新核验 revision 3 的两个 finding 及 C01/C07、U04/U06/U07、R02/R05；其余内容未变化并沿用 history 中的来源级核验。两项问题均闭环，无 unsupported claim、missing requirement 或 hard failure。非阻断润色建议：§2.1 的“事实与摘要是索引”可在未来改为“gist 是目录、semantic fact 是可直接使用的内容”，以消除一句话概括中的轻微歧义。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 96.35,
+    "evaluated_on": "2026-10-22",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "87823de3bdcc9834743744b442dee4c38b934a3feec364f9f5379ad35e4536cd",
+    "evidence_sha256": "8121d19f9c85d1faa0680b33bead61665a273df53dfb7c879b4c788df374b68b"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex",
+            "run_id": "review-altk-evolve-20261021-gpt56sol-r1",
+            "independent_context": true,
+            "explicit_model_override": true,
+            "override_reason": "用户明确指定由 gpt-5.6-sol 在 Codex 新会话中执行重要级独立复核"
+          },
+          "scores": {
+            "evidence_fidelity": 86,
+            "request_coverage": 84,
+            "reasoning_quality": 87,
+            "readability": 94,
+            "limitations": 84
+          },
+          "score_reasons": {
+            "evidence_fidelity": "S01 Table 1–5、S02 Table 2–3、S03 当前仓库和 S04 benchmark/leaderboard submission 规则均已来源优先核验。held-out 的 Retail/Airline、GPT-5.5、AppWorld、成本与轮次数字本身准确，Pass⁴ 与 lossless 的解释也正确。实质缺口是：§3.3 未说明 full base=train∪test 且包含用于提炼 guidelines 的 train tasks；PR 542/551 仍 open、属于 custom modified-prompts submission、预期 Unverified；§3.2 未明示成本表来自 full base、轮次表来自 test matched runs；§1/§7 又写缺少逐任务原始结果，但两项 leaderboard PR 已链接完整 trajectories。",
+            "request_coverage": "R01、R02、R05 完整；R04 大体完成。R03 的主要数字齐全，但 leaderboard 与 held-out 的数据独立性、成本/轮次表的不同样本口径没有完整交代，恰好是解释实验强度所需的核心边界，因此仍需修订。S04 的 reward 判定和模拟用户边界只做了概括，未影响主要机制说明。",
+            "reasoning_quality": "报告能区分权重更新与外部程序性记忆，正确指出 support count 不是概率、lossless 不是轨迹到 guideline 的无损压缩，并对 dosage、长链可靠性和生产外推给出合理边界。需要收紧两处推理：§3.3 用单一 Airline/GPT-5.5 设置“否定”外部 Memory 只补弱模型的解释，证据只足以提供反例；§6“规则只做索引”把论文的 purpose-directed gist（指向 durable original）与 consolidated guideline 混在了一起。",
+            "readability": "报告可独立阅读，x→f→f(x)、机制、两组 benchmark、误读、工程建议、局限和追问递进清楚，表格保留了单位与任务数。当前最大可读性风险是 67.5% 同时出现在 held-out 与 full-base retail，若不显式标注两套样本，读者很容易误以为是同一结果或独立泛化排名。",
+            "limitations": "报告已经覆盖小样本、模拟用户、厂商自报、共同模型偏差、stale memory、poisoning、明确验证器与 preliminary technical report 等主要局限。仍缺 leaderboard base split 的训练重叠、open/custom/Unverified 状态；“缺少逐任务公开原始运行记录”对 full-base leaderboard 不准确，应改成“本报告未复核公开 trajectories，博客未给 held-out 置信区间/独立复现”。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07",
+            "C09"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07"
+          ],
+          "source_content_map": [
+            {
+              "id": "SCM01",
+              "title": "客服实验控制：train 提炼、held-out 使用与 stock ReAct",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01"
+              ],
+              "notes": "§2.1 与 §3.1 准确说明从 train trajectories 提炼 guidelines，在 test 使用固定规则；GPT-4.1 agent、GPT-5.5 user simulator、stock ReAct scaffold 和仅追加 guideline block 均与 S01 一致。"
+            },
+            {
+              "id": "SCM02",
+              "title": "Pass⁴ 与 Mean Accuracy 的定义及 held-out 核心数字",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "§1 与 §3.1 正确把 Pass⁴ 解释为同一任务四次均成功，并准确列出 Retail 78.1/82.5、57.5/67.5 与 Airline 57.5/65.0、35.0/45.0/40.0 的 held-out 数字。"
+            },
+            {
+              "id": "SCM03",
+              "title": "guideline support、sup3/lossless 数量与领域 dosage",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "§2.2、§3.1 和 §5.2 准确解释 support≥3、lossless=consolidation 后保留全部 support≥1 guidelines，以及 Retail 31/292、Airline 14/101 和 Airline sup3 reliability 高于 lossless。"
+            },
+            {
+              "id": "SCM04",
+              "title": "成本与 assistant turns 的不同样本口径",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "§3.2 数字准确并说明只比较两侧都成功的匹配任务，但未说明 Table 3 是 full base split 上 agent+user simulator 的总成本，而 Table 4 是 test split 上同 task+seed 的 matched runs；也未保留 lossless 匹配样本 n=111/40。当前写法容易让读者认为成本和轮次来自同一总体。"
+            },
+            {
+              "id": "SCM05",
+              "title": "GPT-5.5 held-out Airline 结果",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "§3.3 准确列出 baseline、sup2 103 条、lossless 146 条的 Accuracy/Pass⁴。结论应从“否定弱模型补丁解释”收紧为“在该单一领域与模型设置中提供反例”。"
+            },
+            {
+              "id": "SCM06",
+              "title": "held-out 与 full-base leaderboard 的区分及 submission 状态",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S01",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "报告写明 leaderboard 是 full base split 和 2026-10-12 快照，但未解释 base=train∪test、其中 train tasks 已用于学习 guidelines。S04 PR 542/551 显示 Retail 114×4 Pass⁴=67.54%、Airline GPT-5.5 50×4=82.0%，同时披露 custom、modified_prompts=true、expected Unverified；截至复核时两 PR 均 open。§3.3/C08 必须加入这些限定，避免把非 held-out、未合并提交写成官方独立泛化结果。"
+            },
+            {
+              "id": "SCM07",
+              "title": "Memory middleware 六项系统挑战",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "§2.3 完整覆盖 two-sided pluggability、host-native interposition、多租户隔离、write-path consistency、sharing+provenance 与 lifecycle governance，并准确强调 middleware 管理行为影响而非只提供 save/search。"
+            },
+            {
+              "id": "SCM08",
+              "title": "参考架构、purpose-directed gisting 与 lossless 的不同含义",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04",
+                "U07"
+              ],
+              "notes": "capture→extract→generalize/consolidate→retrieve→inject 与 §5.2 的 lossless 解释正确。§6 第2点“保存原始轨迹，规则只做索引”混淆了两类对象：论文中 gist 是指向 durable original 的索引，guideline 是经过提炼和 consolidation 的程序性 entity。建议改为保留原始证据与 provenance/pointer，而非声称所有规则本身只是索引。"
+            },
+            {
+              "id": "SCM09",
+              "title": "参考实现当前覆盖与 open directions",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04",
+                "U06",
+                "U07"
+              ],
+              "notes": "报告正确提醒“愿景大于当前实现”，但 §1 对 S3 的“部分 UI/REST 治理能力仍延后”缺少精确来源且可能随当前仓库版本过时。应优先引用 S02 Table 2 的明确缺口：host/store standards、sidecars/uniform standard、hierarchical role scopes、formal semantics/transactions、federation policy/audit trails、retention/eviction policy。"
+            },
+            {
+              "id": "SCM10",
+              "title": "AppWorld Test-Normal 结果与 feasibility 边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "§4 的 69.6→73.2、50.0→64.3、Hard scenario 19.1→47.6 均与 S02 Table 3 一致，也保留 train/dev 提炼、held-out test-normal、同一 GPT-4.1 loop 与“feasibility signal, not complete evaluation”的边界。repo README 的 +8.9/+74% 是另一版结果摘要，报告没有误用。"
+            },
+            {
+              "id": "SCM11",
+              "title": "仓库中的 full/Lite 实现范围与运行边界",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06",
+                "U07"
+              ],
+              "notes": "报告覆盖 MCP、文件/pgvector/Milvus、namespace、visibility 和 provenance，但未说明 Lite 与 full Evolve 的能力差异，也未提当前 README 的 dashboard/API 无认证警告。后者不是报告核心要求，但若讨论生产治理，应作为实现边界而非默认能力。"
+            },
+            {
+              "id": "SCM12",
+              "title": "τ²-bench 评分、base split 与模拟用户边界",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01",
+                "U07"
+              ],
+              "notes": "§1 与 §5.3 已说明政策约束客服、工具操作、最终数据库状态和 LLM 模拟用户。未展开默认 reward_basis 的 DB×COMMUNICATE、action 只是参考路径，以及 leaderboard 推荐 base split/4+ trials；更关键的 base split 训练重叠已在 SCM06 构成 R03 修订项。"
+            },
+            {
+              "id": "SCM13",
+              "title": "生产外推、长期治理与验证器依赖",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "U07"
+              ],
+              "notes": "一页结论、§5.3、§7 和 §8 清楚限制了开放式“越用越聪明”、跨分布、长期遗忘、恶意经验、poisoning 与真实生产治理，并指出明确验证器是当前成功的重要条件。个别工程建议属于分析性建议，可继续保留，但应避免把未实现的 middleware guarantee 写成现状。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04",
+            "R05"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [
+            "R03"
+          ],
+          "hard_failures": [],
+          "notes": "来源优先复核完成。先独立读取 IBM 博客、arXiv 2609.32091 PDF、altk-evolve 当前仓库、τ²-bench 论文/README/evaluation/leaderboard guide，并交叉查看 PR 542/551 后，才读取报告和 evidence。eacli web.read 对论文 PDF 在 32,000 字符截断、repo.public 对新 ALTK 仓库返回 repo not found、GitHub PR 页面读取又出现网络错误，因此按根协议做最小降级：直接下载 PDF 后 pdftotext、浅克隆公开仓库、读取 GitHub API；未使用这些降级绕过已有成功能力。\n\n需修订项（精确 anchor）：\n1. [R03/C08，§3.3“强模型仍能从外部经验获益”] 明示 leaderboard full base=train∪test，包含 guideline 学习用 train tasks；加入 PR 542/551 的 open、custom、modified prompts、expected Unverified 状态。Retail held-out 与 full-base 均四舍五入为 67.5%，必须并列标清样本，不能让读者误认为同一口径或独立复现。\n2. [R03/C04，§3.2“成本增加在输入侧”] 标注成本表=full base、agent+simulator 总成本；轮次表=test split、同 task+seed 且两侧都成功的 matched runs，并补 lossless n=111/40 或明确样本量省略。\n3. [§1 来源表 S1；§7 局限第2项] full-base PR 已公开逐任务 trajectories，故“缺少逐任务原始结果”不准确。改为本报告未复核这些 trajectories，且博客未给 held-out 置信区间或第三方复现。\n4. [C05/R04，§3.3 首段后] “否定了……只是在给弱模型打补丁”超出单一 Airline/GPT-5.5 实验，改成“提供一个反例/在该设置中不支持该解释”并标分析边界。\n5. [§6 第2点；§5.2] 区分 gist 与 guideline：原文可回取的是 purpose-directed gist 背后的 durable original；lossless guideline 仅表示不过 support 阈值，不代表 guideline 是原始轨迹的无损索引。\n6. [§1 S3 边界；§2.3/§7] 用 S02 Table 2 的明确 open directions 代替容易过时的“部分 UI/REST 治理能力仍延后”，并可补 S03 当前 dashboard/API 无认证的实际运行边界。\n\n未发现伪造来源、关键数字错配、安全问题或关键 claim 无支持；因此无 hard failure，但 R03 未完整达到 important 报告下限。"
+        }
+      ],
+      "decision": {}
+    },
+    {
+      "revision_round": 2,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex",
+            "run_id": "review-altk-evolve-20261022-gpt56sol-r2",
+            "independent_context": true,
+            "explicit_model_override": true,
+            "override_reason": "用户延续指定由 gpt-5.6-sol 在 Codex 中执行 revision 2 独立复核"
+          },
+          "scores": {
+            "evidence_fidelity": 97,
+            "request_coverage": 96,
+            "reasoning_quality": 96,
+            "readability": 97,
+            "limitations": 97
+          },
+          "score_reasons": {
+            "evidence_fidelity": "Revision 1 的六项证据问题均已精确修复。C04 现明确区分 full-base Agent+simulator 成本与 held-out matched-success turns，并补 n=111/40；C08 现给出 base=train∪test、训练重叠、114×4/67.54% 与 50×4/82.0%，并披露 open/custom/modified-prompts/expected Unverified。2026-10-22 重新读取 GitHub API 后确认 PR #542/#551 仍 open、未合并，正文状态仍准确。trajectories、Table 2 open directions、dashboard/API 无认证和 gist/guideline 区分也与一手来源一致。",
+            "request_coverage": "R03 已补齐上一轮缺失的 leaderboard 独立性边界、成本与轮次总体、样本量和 submission 状态；R04 已把 GPT-5.5 结论收窄为单一设置的反例，并继续限制生产外推；R02/R05 的 gist、guideline、provenance 与实现边界现更准确。其余要求与关键数字在 revision 1 已完整核验，修订未改变。",
+            "reasoning_quality": "GPT-5.5 段不再从一个领域推广到所有强模型；full-base 排名明确与 held-out 泛化拆开；67.5% 的同值巧合得到解释；purpose-directed gist 与 consolidated guideline 被分成不同对象。推理链现在能从实验结果、benchmark 口径、实现现状到工程建议逐层限定，没有把项目方 submission、论文蓝图或缓存推断写成已验证生产事实。",
+            "readability": "§3.2 直接说明两个表不是同一总体，§3.3 将 held-out、full-base、PR 状态分段说明，并显式解释两个 67.5% 的样本差异；§6 用一句完整定义区分 gist 与 guideline。新增限定信息虽多，但位置紧邻对应数字，报告仍可独立顺畅阅读。",
+            "limitations": "局限现在准确写成 full-base trajectories 已公开但本报告未重放、held-out 缺置信区间与第三方复现，同时加入 train overlap 和 open/custom/Unverified 状态。S02 Table 2 的六类 open directions 与 S03 dashboard/API 无认证边界也进入正文；长期漂移、poisoning、验证器依赖和 preliminary report 等原有限制保持完整。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07",
+            "C09"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07"
+          ],
+          "source_content_map": [
+            {
+              "id": "SCM-R2-01",
+              "title": "full-base leaderboard 口径、训练重叠与 PR submission 状态",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S04",
+                "S05",
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "§3.3/C08 已明确 full base=train∪test、包含 guideline 学习用 train tasks；Retail 114×4/67.54%、Airline 50×4/82.0% 准确。2026-10-22 重新核验 PR #542/#551 仍 open、未 merged，custom、modified_prompts=true、expected Unverified 和公开 trajectories 均与 PR 原文一致。"
+            },
+            {
+              "id": "SCM-R2-02",
+              "title": "成本表与轮次表的 split、参与方和 matched 样本",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "§3.2/C04 现准确说明成本来自 full base 上 Agent+user simulator 合计；turns 来自 held-out test、同 task+seed 且两侧均成功的 matched runs，并补 lossless Retail n=111、Airline n=40。"
+            },
+            {
+              "id": "SCM-R2-03",
+              "title": "公开 trajectories 与未独立复现的证据边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S05",
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03",
+                "U07"
+              ],
+              "notes": "§3.3、§7 与 evidence limitations 不再声称缺少逐任务原始结果，而是准确写成 full-base PR 已附 trajectories、本报告未逐条重放，held-out 表缺置信区间和第三方复现。"
+            },
+            {
+              "id": "SCM-R2-04",
+              "title": "GPT-5.5 held-out 结果的推断强度",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "§3.3/C05 数字未变且准确；结论已收窄为单一 Airline/GPT-5.5 设置对“只补弱模型”解释的反例，并明确不能证明所有强模型与领域有同等收益。"
+            },
+            {
+              "id": "SCM-R2-05",
+              "title": "purpose-directed gist、durable original 与 consolidated guideline",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04",
+                "U07"
+              ],
+              "notes": "§5.2 继续准确解释 lossless 仅指不过 support 阈值；§6 第2点现区分 gist 是指向 durable original 的索引，guideline 是提炼与 consolidation 后的程序性实体，并只要求两者保留可追溯来源。"
+            },
+            {
+              "id": "SCM-R2-06",
+              "title": "论文 reference implementation 的 open directions 与当前仓库运行边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04",
+                "U06",
+                "U07"
+              ],
+              "notes": "§2.3 现按 S02 Table 2 列出 host/store standards、sidecar、层级角色权限、事务语义、federation/audit、retention/eviction 等未完成方向；§1 S3 边界同时准确引用当前 README 的 dashboard/API 无认证警告。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04",
+            "R05"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "Revision 2 定向复核完成：只重新核验 revision 1 的六项问题及对应 C04/C05/C07/C08、U02/U03/U04/U06/U07 和 limitations；C01/C02/C03/C06/C09 及 U01/U05 的正文未受影响，沿用 history 中 revision 1 的来源级核验结论。新增 S05/S06 为一手 PR 来源。eacli web.read 在 2026-10-22 再次读取两个 GitHub PR 时均返回 provider 网络错误，因此按 Token Plan-first 规则在 typed 调用失败后最小降级到 GitHub REST API，只核验当前 state、merged 状态和 PR body；结果确认两 PR 仍 open、未合并。六项修订全部闭环，无 unsupported claim、missing requirement 或 hard failure。"
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 96.6,
+        "evaluated_on": "2026-10-22",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "b5477b51fef4dba0d5457d57acdad53edc0dd545be22effef3e8a0d7f17c2773",
+        "evidence_sha256": "ab92f20c249fad39af22b6078a452fa93b3b29d936150c2253636881a27e01cb"
+      }
+    },
+    {
+      "revision_round": 3,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex",
+            "run_id": "review-altk-evolve-20261022-gpt56sol-r3",
+            "independent_context": true,
+            "explicit_model_override": true,
+            "override_reason": "用户延续指定由 gpt-5.6-sol 在 Codex 中执行 revision 3 独立复核"
+          },
+          "scores": {
+            "evidence_fidelity": 84,
+            "request_coverage": 87,
+            "reasoning_quality": 84,
+            "readability": 96,
+            "limitations": 95
+          },
+          "score_reasons": {
+            "evidence_fidelity": "C01–C09 的登记事实、全部 benchmark 数字、成本/轮次口径、PR 状态与 Table 2 open directions 均保持准确，anchors 也全部存在。事实漂移出现在新增 §2.1 三形态表：论文的 typed semantic/episodic/procedural memory 与 purpose-directed gist 都可被检索并影响上下文，guideline 不是唯一 Retrieve/Inject 对象；provenance、ownership、visibility 是所有 typed entity 的通用 metadata，只有 support count 等字段是 guideline 特有；guideline 也可来自单个 support=1 轨迹，不必由多个轨迹汇总，且论文没有规定 guideline 必须经 gist 才能回溯原始轨迹。",
+            "request_coverage": "R01、R03、R04、R05 完整，C02–C09 与 U02/U03/U05/U07 的数字和边界覆盖良好。R02 要求准确解释轨迹→guideline 和 middleware 与存储的区别；当前 §2.1 将客服实验中 guideline prompt injection 的特例推广成整个 middleware 唯一读路径，并错误收窄 provenance/governance 的适用对象，因此 R02 尚未完整达到 important 下限。",
+            "reasoning_quality": "三口径表、held-out/full-base 区分、GPT-5.5 反例、dosage 和生产外推均推理严谨。新增 Admission 闭环的方向合理，但“失败轨迹中只有成功修复值得学习”过于绝对：S01 明说从 successes and failures 提炼规则，S02 admission 议程要求对失败结果、自我反思、failure counts 与 successful recovery 等信号评分加权，并称 successful recovery 最有价值，而非唯一可学习对象。该表述会丢掉失败反思、负证据和禁行规则。",
+            "readability": "重写后的结构明显更紧凑；三口径表一眼区分两个 67.5%，Admission→Dosage→Governance→Evaluation 闭环降低了工程建议的重复度，anchors 与章节递进清楚。需要修改的是三形态表中的事实语义，不是版式或表达组织。",
+            "limitations": "厂商自报、held-out 样本、公开 trajectories 未重放、PR open/custom/Unverified、preliminary report、长期漂移、poisoning 和验证器依赖均保留，且没有因去重丢失。局限披露仍然充分。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07",
+            "C09"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07"
+          ],
+          "source_content_map": [
+            {
+              "id": "SCM-R3-01",
+              "title": "客服实验控制、轨迹提炼与 prompt guideline injection",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01"
+              ],
+              "notes": "§2.1 六步流水线与 §3.1 实验控制仍准确：train attempts 提炼 guideline，held-out test 固定注入，stock ReAct 只增加 guideline block，不更新权重或人工标注。"
+            },
+            {
+              "id": "SCM-R3-02",
+              "title": "Pass⁴、held-out Accuracy 与领域 dosage",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "Retail/Airline 的 40/20 tasks、Accuracy、Pass⁴、31/292 与 14/101 guideline 数量全部准确；C09 的 dosage 推测已按项目规范标注。"
+            },
+            {
+              "id": "SCM-R3-03",
+              "title": "full-base 成本与 held-out matched turns",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "§3.2 保留 full base Agent+simulator 成本、held-out test 同 task+seed matched runs、Retail n=111/Airline n=40 和 prompt caching 未实测边界，无口径回退。"
+            },
+            {
+              "id": "SCM-R3-04",
+              "title": "GPT-5.5 held-out 反例与 full-base leaderboard submission",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S04",
+                "S05",
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "三口径表准确区分 Retail held-out 67.5%、Retail full-base 67.54% 与 Airline full-base 82.0%；train overlap、114×4/50×4、open/custom/modified-prompts/expected Unverified 与 trajectories 未重放均保留。2026-10-22 已独立确认两 PR 仍 open、未合并。"
+            },
+            {
+              "id": "SCM-R3-05",
+              "title": "typed memory、gist 与 guideline 的角色及 metadata",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04",
+                "U06",
+                "U07"
+              ],
+              "notes": "表格正确区分 durable original、purpose-directed gist 和有损 guideline，也正确解释 lossless。需修正四点：guideline 可由一个或多个轨迹产生；semantic facts/episodic gists 等也可被 retrieve 并影响上下文，guideline 并非唯一对象；provenance/ownership/visibility 是通用 entity metadata，support count 才是 guideline 特有；guideline 可直接凭 source task/session provenance 回溯，不要求必经 gist。"
+            },
+            {
+              "id": "SCM-R3-06",
+              "title": "Memory middleware 六项关注点与 reference implementation 边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04",
+                "U06"
+              ],
+              "notes": "§2.3 六项关注点、已实现范围、Table 2 open directions 与 dashboard/API 无认证警告均准确，未把研究蓝图写成当前生产保证。"
+            },
+            {
+              "id": "SCM-R3-07",
+              "title": "AppWorld Test-Normal 结果与 feasibility 边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "69.6→73.2、50.0→64.3、Hard scenario 19.1→47.6 保持准确；同一 GPT-4.1 loop、train/dev 提炼、held-out test-normal 和“feasibility signal, not complete evaluation”边界仍在。"
+            },
+            {
+              "id": "SCM-R3-08",
+              "title": "τ²-bench 评分环境、模拟用户与外推限制",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01",
+                "U07"
+              ],
+              "notes": "报告继续说明政策约束客服、最终数据库状态验证、LLM 模拟用户与有限领域；未把 benchmark 成绩直接外推到真实客服或开放式知识工作。"
+            },
+            {
+              "id": "SCM-R3-09",
+              "title": "Admission→Dosage→Governance→Evaluation 运营闭环",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "U07"
+              ],
+              "notes": "dosage、namespace/visibility、版本过期、无 Memory 对照与反馈回流是合理且有来源依据的工程综合。Admission 中“只有成功修复值得学习”不符合 S01 从 successes and failures 提炼规则及 S02 quality-weighted admission；应改为失败轨迹需区分错误动作、失败原因、负面约束与成功恢复，并按 outcome/reflection/failure count/source quality 加权，successful recovery 是高价值信号而非唯一信号。"
+            },
+            {
+              "id": "SCM-R3-10",
+              "title": "生产外推、长期治理与开放问题",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "U07"
+              ],
+              "notes": "§5、§7、§8 仍覆盖权重更新误读、lossless 误读、验证器依赖、跨分布、stale memory、污染恢复、poisoning、遗忘代价和下一步对照实验。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04",
+            "R05"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [
+            "R02"
+          ],
+          "hard_failures": [],
+          "notes": "Revision 3 完整独立复核完成。沿用已来源优先建立的 S01–S06 内容地图，并重新读取 S01 IBM 博客及 S02 论文相关原文后，再逐项检查当前 C01–C09、U01–U07、R01–R05 与 anchors；所有 manifest anchor 均存在，generator 已真实记录为 glm-5.3/pi/pi-glm53-final-editor-20261022-topblogs。数字、实验口径、PR 状态与局限未漂移。\n\n需修订两处新增内容：\n1. [R02，§2.1 三形态表及其后段] 将 guideline 的产生改为“一个或多个轨迹”；删除“唯一被 Retrieve/Inject”“只有 guideline 会改变行为”和“provenance/治理才加在 guideline 上”。S02 §4.1–4.4 显示 semantic facts、episodic/tool gists 与 procedural guidelines 都是 typed entities，检索带 type filters；通用 metadata 包含 trigger、provenance、ownership、visibility，guideline 另有 category/rationale/steps/support。不要强制写成 guideline→gist→trajectory 链，直接保留 source task/session provenance 即可。\n2. [R02/R05，§6 Admission 第2点] 将“只有成功修复值得学习”改为 quality-weighted admission：失败中的错误动作不能当正向策略，但失败原因、自我反思、failure count、负面约束仍可形成可用记忆；successful recovery 是最有价值的信号之一，不是唯一信号。S01 明确写 distill successes and failures，S02 §6 列出 outcomes、self-reflection、failure counts 与 successful recovery。\n\n这两处属于实质机制漂移，导致 R02 未完整达标；未发现 fabricated source、关键数字错配、登记 critical claim 整体无支持或安全问题，因此 hard_failures 为空。"
+        }
+      ],
+      "decision": {}
+    }
+  ]
+}

@@ -1,0 +1,276 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/Apple_MLX_RDMA_Mac_Studio分布式大模型推理_深度解析_20261021.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "review-c997325d3dbe",
+        "independent_context": true,
+        "explicit_model_override": true,
+        "override_reason": "独立复核任务显式指定 gpt-5.6-sol 作为 primary reviewer。"
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 92,
+        "request_coverage": 95,
+        "reasoning_quality": 93,
+        "readability": 95,
+        "limitations": 94
+      },
+      "score_reasons": {
+        "evidence_fidelity": "已来源优先读取 S01–S09，并从 Apple 页面内嵌官方 MDX 数据独立提取 8,192/65,536 两档 Table 2/3。C01–C06、C08 的关键数字、基线与版本差异均可追溯，未发现数字错配。扣分来自少量未显式标注的派生解释：493GB 与理想 408GB 差额的具体成因、跨机 buffer/同步路径，以及公开跑分对 fast sync 的依赖程度。",
+        "request_coverage": "R01–R06 均有实质回答；统一内存、zero-copy 边界、RDMA 配置、pipeline/tensor、性能口径、个人设备与 EverAgent 决策、Limitations 和追问均完整。报告没有逐格转录 65,536 表格，但保留了结论所需的关键值、正确 context 和基线，不影响核心问题覆盖。",
+        "reasoning_quality": "容量、TTFT、decode、通信与拓扑成本的推理链清楚，能区分厂商事实、经典并行概念和本文判断；12 根线缆推导正确并标为推测。少量措辞偏强，例如将 JACCL 称为 tensor parallel 的“必要后端”，来源实际支持的是低延迟互联为必要条件。",
+        "readability": "报告可脱离对话独立阅读，先给结论，再解释模型容量、系统分层、两种并行、跑分边界和行动建议；公式、Mermaid、表格与决策步骤降低了理解成本。个别章节信息密度高，但结构和术语一致。",
+        "limitations": "对未复现、厂商自报、无 raw log/误差条、量化质量、尾延迟、TCO、fast sync 风险、训练论文外推边界及私有设备缺口说明充分。仍可补充 benchmark.py 不负责功耗采集、源码未固定 commit，以及 Apple 命令示例不能单独证明全部结果对 fast sync 的因果依赖。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C08"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08",
+        "U09",
+        "U10"
+      ],
+      "source_content_map": [
+        {
+          "id": "M01",
+          "title": "Apple 演示的系统组合、版本下限与核心结论",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01"
+          ],
+          "notes": "报告准确还原 M5 Ultra、512GB、macOS 26.2、MLX v0.30.1+、JACCL/RDMA 与两种并行的组合，并把 36.73 tok/s 限定为四机、8,192 context 的 Apple 自报。"
+        },
+        {
+          "id": "M02",
+          "title": "模型精度、参数规模与容量边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S05"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06"
+          ],
+          "notes": "816B/42B active、BF16 超过 1.6TB、NVFP4 约 493GB及运行时额外内存均覆盖；Qwen/Mistral 的精度与 65,536 context 内存也正确。"
+        },
+        {
+          "id": "M03",
+          "title": "benchmark 口径与可复现性边界",
+          "importance": "core",
+          "assessment": "partial",
+          "source_ids": [
+            "S01",
+            "S06"
+          ],
+          "matched_coverage_unit_ids": [
+            "U07",
+            "U10"
+          ],
+          "notes": "报告覆盖 -p/-g/-b、默认 5 trials、prefill step、缺少 raw log/方差等核心口径；未说明当前 benchmark.py 先 warmup、使用固定随机 token，且其输出不含 peak power，因此功耗另有未披露测量链。"
+        },
+        {
+          "id": "M04",
+          "title": "两种 context 的原始 TTFT 与 decode 表格",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U07"
+          ],
+          "notes": "独立提取了 Apple Table 2/3 的 8,192 与 65,536 两档数据。报告虽未逐格转录，但所有引用值与 context 对应正确：36.73/15.74/24.99 均为 8,192；40.6/50.5 为 65,536。"
+        },
+        {
+          "id": "M05",
+          "title": "图表 speedup 的基线与 context 对应关系",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U07"
+          ],
+          "notes": "Figure 2/3、6/7、8/9 的不同基线被正确处理；4.6× 对应 65,536 Qwen 的 199.4/43.7，约 1.8× 对应 65,536 Qwen pipeline 的 43.7/24.5。"
+        },
+        {
+          "id": "M06",
+          "title": "单节点计算、带宽与功耗观察",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S05"
+          ],
+          "matched_coverage_unit_ids": [
+            "U07"
+          ],
+          "notes": "TTFT compute-bound、decode memory-bandwidth-bound、1.2TB/s 对 819GB/s、约 200W/300W 均准确，并明确限定为 Apple 本次 batch-1 条件和 peak power。"
+        },
+        {
+          "id": "M07",
+          "title": "Pipeline parallel 的实现与长 prefill overlap",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S07",
+            "S08"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04"
+          ],
+          "notes": "连续层切分、decode 近单机、8,192-token chunk 的长 prefill overlap 与约 1.8×上限均覆盖；报告也正确限制 GPipe 只作为概念来源。"
+        },
+        {
+          "id": "M08",
+          "title": "Tensor parallel 的通信成本、dense/MoE 差异",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S09"
+          ],
+          "matched_coverage_unit_ids": [
+            "U05"
+          ],
+          "notes": "层内分片、逐层 collective、低延迟条件、dense 扩展更好及 Muse 65K 两机 TP 慢于 pipeline 的原因均完整呈现。"
+        },
+        {
+          "id": "M09",
+          "title": "JACCL/RDMA 启用、hostfile 与 launch 前提",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03"
+          ],
+          "notes": "Recovery 启用、ibverbs/RDMA device、全连接 mesh、SSH、hostfile、禁用 bridge、隔离网络、distributed_config 与免密 sudo 等条件均覆盖。"
+        },
+        {
+          "id": "M10",
+          "title": "MLX_METAL_FAST_SYNCH 的版本与时点冲突",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U08"
+          ],
+          "notes": "Apple v0.30.1+ 示例启用 fast sync；当前 0.32.x distributed 文档称其可能 deadlock/GPU wedged、默认关闭且 best left unset。报告正确把峰值复现与稳态部署分开。"
+        },
+        {
+          "id": "M11",
+          "title": "全连接 mesh 与双线缆数量推导",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03",
+            "U09"
+          ],
+          "notes": "官方事实与数学推导区分基本清楚：全连接需要 N(N-1)/2 对边，每对双线得 N(N-1) 根，四机 12 根、每机 6 个 link endpoint；扩展性结论标为推测。"
+        },
+        {
+          "id": "M12",
+          "title": "统一内存的节点内语义",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S04",
+            "S05"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02"
+          ],
+          "notes": "CPU/GPU 共用本机内存池、按 stream 选择设备、依赖由调度器插入，以及统一内存不跨 Mac 的关键澄清均覆盖。"
+        },
+        {
+          "id": "M13",
+          "title": "服务入口、适用边界与未回答问题",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S06"
+          ],
+          "matched_coverage_unit_ids": [
+            "U09",
+            "U10"
+          ],
+          "notes": "mlx_lm.server、OpenAI-compatible provider、真实任务评测、稳定性、回退、质量、并发、TCO 和后续追问均有独立分析与明确边界。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "结论：核心主张和关键数字可追溯，无硬失败。建议在后续轻量修订中精确收紧四处：（1）锚点“问题一：单台桌面设备能否承载‘大而长’的模型”（约第70行，C06），把 493GB 与 408GB 差额归因于 scale/元数据/对齐等改为“[推测] 可能包括”，因为 S01 只给出两组数值；（2）锚点“数据路径：不是‘GPU 直接隔空读另一台 GPU’”（约第145–156行，C02），将整段明确标为派生示意，公开材料没有逐步规定本地/远端 buffer 放置与同步实现；（3）锚点“问题三：桌面互联能否满足张量并行的延迟要求”（约第93行，C04），把“JACCL 是必要后端”改成“Apple 配置使用 JACCL，足够低延迟的互联是获得加速的必要条件”，避免排除其他低延迟后端；（4）锚点“benchmark 的证据缺口”（约第246、254行，C05/C08），当前 benchmark.py 已显示 warmup、默认五次和算术平均，真正缺的是实验使用的精确 commit、逐次日志和功耗测量链；Apple 示例命令启用 fast sync，但不足以单独证明所有公开数字对该开关的因果依赖。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 93.45,
+    "evaluated_on": "2026-10-22",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "04c9dcddb3e480664c59972a95fd439a57bbacecaa44f76adee2e246c3f878d1",
+    "evidence_sha256": "ed826a639b9baf81d90ec9a75b60f1c2f9bfb55e1959fc829fb7baae2e092739"
+  }
+}

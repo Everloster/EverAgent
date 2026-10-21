@@ -1,0 +1,1942 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/NVIDIA_OpenShell_Sentry_Agent运行时安全架构_深度解析_20261021.md",
+  "quality_tier": "important",
+  "revision_round": 4,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "primary-review-gpt56sol-openshell-r4-20261022-8f31c2ad",
+        "independent_context": true,
+        "explicit_model_override": true,
+        "override_reason": "revision 4 独立复核任务显式指定 reviewer model=gpt-5.6-sol、harness=codex。"
+      },
+      "scores": {
+        "evidence_fidelity": 99,
+        "request_coverage": 99,
+        "reasoning_quality": 98,
+        "readability": 98,
+        "limitations": 99
+      },
+      "score_reasons": {
+        "evidence_fidelity": "重新核对 S01–S15 后，C01–C13 均与一手材料一致。revision 4 准确登记了 SSRF 的精确主机名/私网例外、always-blocked 外发地址与 sandbox-local loopback 区分；准确登记 MCP 不匹配 arguments、response/SSE 不作 MCP policy parsing、WebSocket 不检查二进制帧和服务器消息以及 provider 凭据二进制帧的默认断连；也把 NVIDIA 自述的 Vera 最高 2× 与 NVIDIA 转述 CoreWeave 的 >3×、1.8×、>11,000 分开归属。Sentry/Vera 支持矩阵保留待核验边界，没有从平台级兼容表述外推 Sentry 的完整 CPU 支持。",
+        "request_coverage": "R01–R05、U01–U10 和全部 C01–C13 均已逐项核验。报告完整覆盖威胁模型、OpenShell 执行与协议边界、prover、Sentry 确定性控制/分类/带外域、身份网络文件工具凭据、开源和未发布边界、性能归属、EverAgent 迁移与分阶段采用、对抗测试和后续问题。省略的采用客户案例及 SDK/telemetry 细节属于非核心背景。",
+        "reasoning_quality": "修订版把连接授权、DNS 地址检查、协议动作解析、参数授权和回包检查拆成不同层，避免把“启用 L7”误写成端到端内容安全；把确定性最大权限、分类风险信号和带外可信位置明确分工，并禁止分类结果自行扩大授权上界。性能指标也按测量对象拆分，未拼接成端到端收益。EverAgent 建议均标为推测并给出进入下一阶段的可验证信号。",
+        "readability": "报告仍可独立阅读，新增 §4.4、§六、§八和采用表使默认值、协议盲区、数字归属与部署条件更容易查验。表格与小节较多但层次稳定，anchors 与 evidence 一致。",
+        "limitations": "Limitations 明确覆盖 NVIDIA 单一来源偏差、未部署 OpenShell、main/0.1.x 漂移、Sentry 完整支持矩阵/许可证/插件/商业交付缺口、私仓未读取、benchmark 方法不足，以及 SSRF/MCP/WebSocket/回包边界尚未做故障注入。正文也持续区分官方主张、公开实现与推测。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12",
+        "C13"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08",
+        "U09",
+        "U10"
+      ],
+      "source_content_map": [
+        {
+          "id": "M01",
+          "title": "长时 Agent 风险与工作负载外强制边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S12",
+            "S15"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01",
+            "U02"
+          ],
+          "notes": "来源共同说明长期工具使用、凭据和目标漂移使自我约束不足；报告以 enforcement 与 alignment 的区分完整覆盖。"
+        },
+        {
+          "id": "M02",
+          "title": "应用、运行时、基础设施分层与外部治理原则",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S11",
+            "S15"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01",
+            "U02",
+            "U09"
+          ],
+          "notes": "三层平台、可验证 policy、带外 enforcement、模型路径控制点与 shared responsibility 被准确转化为分层架构和迁移原则。"
+        },
+        {
+          "id": "M03",
+          "title": "OpenShell 组件、信任位置与控制平面职责",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S04",
+            "S12"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03"
+          ],
+          "notes": "Gateway、driver、Supervisor、边界内 sandbox runtime、Agent 和 prover 的职责及博客/仓库命名差异均已覆盖。"
+        },
+        {
+          "id": "M04",
+          "title": "受保护请求路径、运行时隔离与断连失败关闭",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03",
+            "U04"
+          ],
+          "notes": "TCP/DNS 截获、真实 executable、Sandbox Protocol、Supervisor 判定、runtime 外层 fence、CNI 条件与断连冻结均准确。"
+        },
+        {
+          "id": "M05",
+          "title": "文件系统与进程控制的默认值和失效条件",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S09"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04"
+          ],
+          "notes": "Landlock mandatory baseline、best_effort/hard_requirement、非 root、seccomp、静态更新边界及宿主支持与 guest 安全语义差异均已覆盖。"
+        },
+        {
+          "id": "M06",
+          "title": "网络连接、L7 audit、TLS 与调用程序范围",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S06",
+            "S09"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04"
+          ],
+          "notes": "deny-by-default、audit 默认继续转发、底层 malformed/authority 检查、protocol omission、tcp、tls: skip、ancestor 与 SHA-256 TOFU pin 均按原文呈现。"
+        },
+        {
+          "id": "M07",
+          "title": "SSRF 私网默认阻断、精确主机名例外与地址 allowlist",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S06",
+            "S09"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04",
+            "U10"
+          ],
+          "notes": "报告准确区分未声明/通配符/hostless/advisor 端点的私网阻断、精确主机名可解析私网、allowed_ips 对全部解析地址生效、always-blocked 外发地址和 sandbox-local loopback。"
+        },
+        {
+          "id": "M08",
+          "title": "MCP arguments、WebSocket 帧与服务回包检查边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S06",
+            "S09",
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04",
+            "U10"
+          ],
+          "notes": "MCP 只匹配 method/tool name、不匹配 arguments；response/SSE 直接中继；WebSocket 检查 upgrade/客户端完整文本、不检查二进制帧和服务器消息；附加 middleware 被正确写成额外层。"
+        },
+        {
+          "id": "M09",
+          "title": "Provider profile、attachment 与端点绑定凭据替换",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S04",
+            "S10",
+            "S12"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04"
+          ],
+          "notes": "不透明代称、网络 policy 与 endpoint binding 双条件、真实凭据留在可信侧，以及已授权端点和上游 token scope 的残余风险均覆盖。"
+        },
+        {
+          "id": "M10",
+          "title": "Policy Prover 两类检查、覆盖域与非目标",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S07",
+            "S08",
+            "S12"
+          ],
+          "matched_coverage_unit_ids": [
+            "U05"
+          ],
+          "notes": "boundary 与 proposal-risk 分开说明；within/unsupported/inconclusive 的 fail-closed 使用、当前协议 coverage、semantic risk/cross-sandbox/runtime behavior 非目标准确。"
+        },
+        {
+          "id": "M11",
+          "title": "Sentry 在 BlueField-4 独立信任域的定位与未发布边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S11",
+            "S15"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06",
+            "U07"
+          ],
+          "notes": "报告将 Sentry 写为可选硬件隔离强化层，并保留 planned availability、planned plugins 和尚不可按成熟开源组件审计的边界。"
+        },
+        {
+          "id": "M12",
+          "title": "DOCA Flow/Tower 的 L4/L7 与双向检查声明",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S13"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06"
+          ],
+          "notes": "L4 firewall、Envoy proxy、TLS termination、OPA/Rego 和 request/response inspection 均作为 NVIDIA 披露呈现，并要求核验实际过滤器与协议解析配置。"
+        },
+        {
+          "id": "M13",
+          "title": "Argus 内存观察、运行态上下文与 Vault 区分",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S13"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06"
+          ],
+          "notes": "selected volatile memory、process/container/library/file/network/hash 上下文准确；Argus 文件观察与 Vault inline 存储授权未被混为一谈。"
+        },
+        {
+          "id": "M14",
+          "title": "行为分类、身份、可信遥测与独立带外域的分工",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02",
+            "U06",
+            "U09"
+          ],
+          "notes": "inline/out-of-band 分类、available reasoning traces、SPIFFE/SPIRE、attested telemetry 和分类器不能自行扩大权限上界均清楚区分事实与推测。"
+        },
+        {
+          "id": "M15",
+          "title": "OpenShell 与 Sentry 的许可证、源码和成熟度边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03",
+            "S05",
+            "S11",
+            "S15"
+          ],
+          "matched_coverage_unit_ids": [
+            "U07"
+          ],
+          "notes": "Apache-2.0 OpenShell 与 Sentry 未给同等公开实现/许可证/完整交付信息的差异准确，且限定为本次已读材料范围。"
+        },
+        {
+          "id": "M16",
+          "title": "OpenShell 硬件可选性与 Sentry/Vera 支持矩阵边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S11",
+            "S15"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06",
+            "U07"
+          ],
+          "notes": "OpenShell 不要求 BlueField；披露的 Sentry 方案使用 BlueField-4 且参考架构运行在 Vera。平台级“兼容其他硬件”未被外推成 Sentry 的完整 CPU 支持矩阵。"
+        },
+        {
+          "id": "M17",
+          "title": "Vera 自述与 CoreWeave 三项测量的分开归属",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U08"
+          ],
+          "notes": "NVIDIA 自述的关键 workload 最高 2× 与 NVIDIA 转述 CoreWeave 的 sandbox startup >3×、20-task 几何平均 1.8×、单 rack >11,000 已严格分开，未相加或外推。"
+        },
+        {
+          "id": "M18",
+          "title": "OPA、Sentry containment、DOCA 与对抗实验的局部口径",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S12",
+            "S13"
+          ],
+          "matched_coverage_unit_ids": [
+            "U08",
+            "U10"
+          ],
+          "notes": "OPA <1 ms、Sentry 毫秒隔离、DOCA 1,000×/800 Gb/s 和两小时实验分别保留测量对象与缺失基线，没有拼成端到端安全保证。"
+        },
+        {
+          "id": "M19",
+          "title": "厂商来源价值与独立验证缺口",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S11",
+            "S12",
+            "S13"
+          ],
+          "matched_coverage_unit_ids": [
+            "U08",
+            "U10"
+          ],
+          "notes": "正文和 Limitations 均说明没有第三方 Sentry 部署、红队、认证、完整 benchmark 或协议级故障注入。"
+        },
+        {
+          "id": "M20",
+          "title": "Cadence、Slack 与 Gecko Robotics 采用案例",
+          "importance": "supporting",
+          "assessment": "missing",
+          "source_ids": [
+            "S12"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "报告未复述三项厂商采用案例；它们不是架构、安全机制、发布边界或 EverAgent 迁移判断的必要证据，且只有 NVIDIA 文章披露。"
+        },
+        {
+          "id": "M21",
+          "title": "OpenShell SDK、telemetry、prerelease 与免责声明",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U07"
+          ],
+          "notes": "报告使用 README 核验版本、平台与许可证，未展开 SDK、匿名 telemetry 和外部材料免责声明；不影响核心任务。"
+        },
+        {
+          "id": "M22",
+          "title": "BlueField 零信任基础与 DOCA 整体安全栈",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S13",
+            "S14"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02",
+            "U06",
+            "U08"
+          ],
+          "notes": "secure/measured boot、独立 trust domain、Argus/Vault/Flow 分工与性能主张均用于解释信任根或限定 DOCA 能力，没有被误写成 Sentry 已交付的全部功能。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "revision 4 独立复核结论：C01–C13、U01–U10、R01–R05 及其 anchors 均完成核验；未发现 fabricated_or_unread_source、critical_claim_unsupported、key_number_mismatch、core_requirement_missing 或 safety_or_privacy_violation。重点确认：C11 的 SSRF 私网/精确主机名/always-blocked 地址/sandbox-local loopback 边界准确；C12 的 MCP arguments、response/SSE、WebSocket 客户端文本/二进制帧/服务器消息与凭据例外准确；C08 已正确分开 NVIDIA Vera 2× 自述与 CoreWeave >3×/1.8×/>11,000 测量；Sentry/Vera 表格没有把平台级兼容表述外推为完整 Sentry 支持矩阵；C13 的确定性上界、分类信号和带外可信域分工合理。无需要阻断终稿的遗留问题。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 98.65,
+    "evaluated_on": "2026-10-22",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "0921a809621f3a4f39f523ca51f0209db00de9ab5e98826907f68759739aeb9c",
+    "evidence_sha256": "f2222efb1624f5d9586210e5c5b654b906bd9fd79432059923bc52ecae15ac28"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex",
+            "run_id": "primary-review-gpt56sol-openshell-20261021-a7d41c9e",
+            "independent_context": true,
+            "explicit_model_override": true,
+            "override_reason": "独立复核任务显式指定 reviewer model=gpt-5.6-sol、harness=codex。"
+          },
+          "scores": {
+            "evidence_fidelity": 96,
+            "request_coverage": 98,
+            "reasoning_quality": 96,
+            "readability": 97,
+            "limitations": 98
+          },
+          "score_reasons": {
+            "evidence_fidelity": "已实际读取 S01–S15。C01–C08 均能由对应官方文章、OpenShell 仓库文档、许可证或 prover 说明支持；报告准确保留 audit/enforce、protocol、TLS、ancestor binary、provider binding、prover coverage、Sentry planned availability 等关键限定，并把性能数字标成厂商或合作方自报。扣分仅因两处措辞可更严格：‘危险动作不会落到文件、网络或服务上’应限定为越过预授权边界的动作；‘Sentry 尚无同等公开实现’宜限定为本次已读官方材料范围。",
+            "request_coverage": "R01–R05 全部回答，且独立来源地图中的核心单元均能映射到 U01–U10。报告覆盖威胁模型、OpenShell 执行链与策略默认值、Sentry 信任域、身份/网络/文件/工具/凭据治理、开源和发布边界、所有关键数字、EverAgent 迁移方案、对抗任务集与采用顺序。未纳入的厂商采用案例和仓库 SDK/telemetry 细节属于非核心背景，不影响任务完成。",
+            "reasoning_quality": "报告持续区分 alignment 与 enforcement、身份与授权、形式化 capability containment 与任务语义、软件边界与 host-compromise 威胁，并明确列出 Sentry 保证成立所需的必经路径与 TCB 条件。EverAgent 建议从公开协议出发且标为推测，推导链完整。轻微问题是‘结果 f(x)’中的一句表述过强，容易短暂掩盖报告后文已经说明的‘授权范围内语义滥用’风险。",
+            "readability": "报告可脱离原对话独立阅读，研究时点、证据标签、架构图、请求链、对照表、性能口径、采用阶段和参考来源齐全。中英文技术词较多但语义稳定，章节之间递进清楚。",
+            "limitations": "Limitations 对 NVIDIA 单一来源偏差、未部署 OpenShell、main/0.1.x 漂移、Sentry 未发布与许可缺口、未读取私仓事实、benchmark 方法缺失均有明确说明；正文还补充分类器误报漏报、旁路拓扑、CNI、DPU 管理面和 prover 非目标，边界披露充分。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07",
+            "C08"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07",
+            "U08",
+            "U09",
+            "U10"
+          ],
+          "source_content_map": [
+            {
+              "id": "M01",
+              "title": "长时 Agent 的复合风险与外部强制边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S12",
+                "S15"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01",
+                "U02"
+              ],
+              "notes": "来源共同主张 Agent 的工具、凭据、长期执行和目标漂移使自我约束不足，安全控制需位于工作负载之外；报告在结论、问题 x 与威胁模型中完整重构。"
+            },
+            {
+              "id": "M02",
+              "title": "应用、运行时与基础设施三层安全平台及核心原则",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S11",
+                "S15"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01",
+                "U02",
+                "U09"
+              ],
+              "notes": "平台三层、可验证 policy、带外 enforcement、模型路径控制点与 shared responsibility 均被报告吸收到分层架构、威胁模型和迁移设计中。"
+            },
+            {
+              "id": "M03",
+              "title": "OpenShell 组件、信任位置与控制平面职责",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S04",
+                "S12"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "Gateway、compute driver、Supervisor、边界内 sandbox runtime、Agent workload 与 prover 的职责和命名差异均在 4.1 表格中明确说明。"
+            },
+            {
+              "id": "M04",
+              "title": "受保护请求路径、运行时隔离与失联失败关闭",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03",
+                "U04"
+              ],
+              "notes": "报告覆盖 TCP/DNS 截获、可信 executable 观察、Sandbox Protocol、Supervisor 判定、各 runtime 外层 fence、Kubernetes CNI 依赖和断连冻结。"
+            },
+            {
+              "id": "M05",
+              "title": "文件系统与进程控制的默认值、静态性和失效条件",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S09"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "Landlock ABI、mandatory baseline、best_effort/hard_requirement、非 root、seccomp、静态变更需重建及其非恶意代码检测器边界均已覆盖。"
+            },
+            {
+              "id": "M06",
+              "title": "网络规则的两阶段判定、默认 audit 与旁路风险",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S06",
+                "S09"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "报告准确覆盖 deny-by-default、host/port/binary、REST/GraphQL/WebSocket/MCP/JSON-RPC、audit/enforce、protocol omission、ancestor、SHA-256 TOFU pin 与 tls: skip。"
+            },
+            {
+              "id": "M07",
+              "title": "Provider profile、attachment 与端点绑定凭据替换",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S04",
+                "S10",
+                "S12"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "报告说明 workload 只见 placeholder、真实凭据需同时通过网络 policy 与 endpoint binding，并保留已授权端点可被用于数据外传和上游 scope 仍需最小化的反方。"
+            },
+            {
+              "id": "M08",
+              "title": "Policy Prover 的两类问题、形式化模型与不可证明范围",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S07",
+                "S08",
+                "S12"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "boundary check 与 proposal-risk check 被正确区分；报告还覆盖 within/unsupported/inconclusive 的 fail-closed 解释、当前协议覆盖以及 semantic risk、cross-sandbox intent、runtime behavior 三项非目标。"
+            },
+            {
+              "id": "M09",
+              "title": "Sentry 在 BlueField-4 独立信任域中的定位与发布状态",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S11",
+                "S15"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06",
+                "U07"
+              ],
+              "notes": "报告将 Sentry 定位为可选硬件隔离强化层，并突出 early next year planned availability、插件计划发布以及不能与已开源 OpenShell 等同。"
+            },
+            {
+              "id": "M10",
+              "title": "DOCA Flow 与 Tower 的 L4/L7 双层网络治理",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S13"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "L4 firewall、Envoy transparent proxy、TLS termination、OPA/Rego、双向 request/response inspection 与 MCP/A2A 治理均被准确呈现。"
+            },
+            {
+              "id": "M11",
+              "title": "Argus 带外内存观察、运行态上下文与 Vault 区分",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S13"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "报告覆盖 selected volatile memory、container/microVM/process/library/file/network/hash 映射，并明确 Argus 观察文件行为与 Vault inline 文件访问强制不是同一能力。"
+            },
+            {
+              "id": "M12",
+              "title": "行为分类、workload identity、可信遥测与企业安全集成",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "专用模型 inline/out-of-band 分类、SPIFFE/SPIRE、delegated authority、attested tamper-evident record、XDR/SIEM 集成及分类器缺少评测数据的局限均已覆盖。"
+            },
+            {
+              "id": "M13",
+              "title": "OpenShell 与 Sentry 的许可证、源码和成熟度边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S05",
+                "S11",
+                "S15"
+              ],
+              "matched_coverage_unit_ids": [
+                "U07"
+              ],
+              "notes": "Apache-2.0 OpenShell、可公开核对的 prover 与文档、Sentry 未给公共源码/许可证/完整交付信息、open reference design 不等于全栈开源，均有明确结论。"
+            },
+            {
+              "id": "M14",
+              "title": "硬件可选性、必经路径与硬件信任根条件",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S11",
+                "S14",
+                "S15"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02",
+                "U06",
+                "U07"
+              ],
+              "notes": "报告说明 OpenShell 不要求 Vera/BlueField，Sentry 需要 BlueField-4；并把唯一 I/O path、旁路、本地模型、DPU boot/firmware/管理面等列为强保证条件。"
+            },
+            {
+              "id": "M15",
+              "title": "性能、隔离延迟与对抗实验数字的证据口径",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S11",
+                "S12",
+                "S13"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08",
+                "U10"
+              ],
+              "notes": "2×、>3×、1.8×、11,000、<1 ms、毫秒隔离、1,000×、800 Gb/s、两小时对抗实验均被逐项保留口径并指出基线、样本、分位数、误报率或复现实验缺失。"
+            },
+            {
+              "id": "M16",
+              "title": "厂商一手材料的证据价值与独立验证缺口",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S11",
+                "S12",
+                "S13"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08",
+                "U10"
+              ],
+              "notes": "报告没有把官方架构主张升级为独立验证事实，并在开头证据边界、性能表和 Limitations 三处说明未真机部署、无第三方 Sentry 红队/认证/benchmark。"
+            },
+            {
+              "id": "M17",
+              "title": "Cadence、Slack 与 Gecko Robotics 的采用案例",
+              "importance": "supporting",
+              "assessment": "missing",
+              "source_ids": [
+                "S12"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "报告未复述三项厂商采用案例。它们不是本任务架构、安全机制、开源边界或迁移判断所必需的证据，且来源仅为 NVIDIA 营销文章，因此遗漏不构成需求缺口。"
+            },
+            {
+              "id": "M18",
+              "title": "OpenShell 仓库的 SDK、telemetry、prerelease 与免责声明",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U07"
+              ],
+              "notes": "报告使用 README 核验 0.1.x、平台支持与许可证，但未展开 SDK、匿名 telemetry 和外部材料免责声明；这些运营细节不影响所审核心结论。"
+            },
+            {
+              "id": "M19",
+              "title": "BlueField 零信任基础、secure/measured boot 与持续监控",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S14"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02",
+                "U06"
+              ],
+              "notes": "报告把 2021 年材料限定为解释硬件信任根的早期 BlueField 资料，没有误当作 Sentry/BlueField-4 的独立验证。"
+            },
+            {
+              "id": "M20",
+              "title": "DOCA Argus、Vault、Flow 的整体 AI factory 安全栈",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S13"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06",
+                "U08"
+              ],
+              "notes": "报告提取了与 Sentry 判断直接相关的 Argus、Vault、Flow 分工和性能主张，同时避免把 DOCA 家族全部能力算成 Sentry 已交付功能。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06",
+            "S07",
+            "S08",
+            "S09",
+            "S10",
+            "S11",
+            "S12",
+            "S13",
+            "S14",
+            "S15"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04",
+            "R05"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "独立复核结论：未发现 fabricated_or_unread_source、critical_claim_unsupported、key_number_mismatch、core_requirement_missing 或 safety_or_privacy_violation；C01–C08 与 R01–R05 均通过来源核验。两项非阻断性措辞建议：1）report anchor ‘结果 f(x)：从相信 Agent 变成限制影响半径’，关联 C01：将‘危险动作不会落到文件、网络或服务上’改为‘越过预先允许能力边界的动作应被阻断；已授权范围内的语义滥用仍可能发生’，与威胁模型表保持完全一致。2）report anchor ‘结论先行’/‘当前不能按完整开源栈理解’，关联 C07：将‘Sentry 尚无同等公开实现’统一限定为‘截至 2026-10-21，在本次已读 NVIDIA 官方材料中未找到与 OpenShell 同等可审计的公开实现’，避免把材料未披露扩大为全网不存在。"
+        },
+        {
+          "role": "escalation_review",
+          "reviewer": {
+            "model": "kimi-k3",
+            "harness": "kimi-cli",
+            "run_id": "cross-sample-kimi-k3-openshell-20261022",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "escalation_reason": "跨模型抽检达到每 5 篇阈值；生成器与首审均为 gpt-5.6-sol，按策略改用 Kimi K3。",
+          "scores": {
+            "evidence_fidelity": 96,
+            "request_coverage": 95,
+            "reasoning_quality": 96,
+            "readability": 95,
+            "limitations": 97
+          },
+          "score_reasons": {
+            "evidence_fidelity": "已实际读取 S01–S15 全部登记来源（NVIDIA 官方博客经 eacli web.read、OpenShell 固定仓库文件经 repo.public.read）。C01–C08 逐项核验均获直接支持：audit 为 L7 默认 enforcement（S06/S09 原文确认）、protocol 省略则放行任意 method/path、binary 祖先匹配与首次 SHA-256 TOFU pin（S09 原文逐字确认）、prover 五域 coverage 与 GraphQL/WebSocket/MCP/JSON-RPC 返回 unsupported（S07 原文确认）、三项非目标（S08 原文逐字确认）、Sentry planned availability early next year（S02 结尾确认，2026-10-21 发布即 2027 年初）、OpenShell 不要求 BlueField-4（S11 FAQ 确认）。首审建议的两处措辞收紧已在正文落实并核对：证据边界段只声称“本次已读 NVIDIA 官方材料中未找到 Sentry 同等公开实现”，结果 f(x) 段明确“越过预授权边界的动作应被阻断，已授权范围内语义滥用仍可能发生”。唯一口径瑕疵：性能表把 Vera“最高 2×”（S01 中 NVIDIA 自有架构主张）与 CoreWeave 实测的 3×/1.8×/11,000 并入同一“转述 CoreWeave 测量”来源行，归属略粗，但不改变“均为厂商或合作方自报”的证据等级结论。",
+            "request_coverage": "R01–R05 全部回答。独立来源地图 18 个单元中 13 个 covered、4 个 partial、1 个 missing：核心单元（威胁模型、OpenShell 执行链、四类策略默认值、prover 边界、Sentry 三路径与信任域、开源/硬件边界、性能口径、EverAgent 迁移、评估任务集）均完整进入正文。partial 项为次要细节：SSRF 私网/云元数据默认阻断与 DNS placeholder 细节未展开（K06）、S15 五原则中 shared responsibility 未逐字展开（K02）、README 的 SDK/telemetry/免责声明（K16）、Argus 遥测 PII 限制（K18）；missing 项为 Cadence/Slack/Gecko 采用案例（K15），属营销背景且任务未要求，不构成核心遗漏。",
+            "reasoning_quality": "报告持续区分 enforcement 与 alignment、身份/授权/任务语义/运行态完整性四层、形式化 containment 与任务善意、软件边界与 host-compromise 威胁，并把 Sentry 强保证拆解为必经路径、无旁路、DPU 自身受信三个拓扑条件，同时诚实标注官方未提供完整 TCB 与红队结果。EverAgent 第九章整体标注 [推测]，lease/containment/凭据收敛/外部审计四条建议的推导链清晰且与公开仓协议一致，未越界断言私仓事实。行为分类器未被当作确定性授权器，层级建议合理。",
+            "readability": "报告可脱离对话独立阅读：研究时点、证据标签体系、架构图、请求链、威胁模型表、组件对照表、性能口径表、分阶段采用建议和完整参考资料齐全。章节从问题、机制、威胁模型到迁移设计递进清楚；中英文术语混排密度较高但语义稳定，不影响独立理解。",
+            "limitations": "Limitations 如实披露六条边界：NVIDIA 单一来源偏差、未真机部署 OpenShell、main/0.1.x 快速漂移、Sentry 许可/交付/TCB 未公开、未读取私仓事实、性能数字缺 benchmark 方法。正文另补充分类器无误报漏报数据、闭源模型推理痕迹不可得、Kubernetes CNI 依赖、tls: skip 与过宽 binary 规则的失效条件，不确定性披露充分且位置准确。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07",
+            "C08"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07",
+            "U08",
+            "U09",
+            "U10"
+          ],
+          "source_content_map": [
+            {
+              "id": "K01",
+              "title": "长时 Agent 的复合风险与“Agent 不能自我治理”主张",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S15"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01",
+                "U02"
+              ],
+              "notes": "三处来源共同主张：长时自主执行带来权限面与未知行动路径扩大，Agent 目标导向不优先安全，治理必须位于 Agent 够不到的基础设施。报告在结论先行、2.1 问题 x 与威胁模型表中完整重构，并补充 S15 的 drift 概念。"
+            },
+            {
+              "id": "K02",
+              "title": "平台五项核心原则与 application/runtime/infrastructure 三层",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S15"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01",
+                "U02",
+                "U09"
+              ],
+              "notes": "原则 1（可验证 policy）、2（带外 enforcement）、3（模型路径即控制点/kill switch）、4（按推理可见性扩展权限）分别被报告 4.6、五章、威胁模型末行与 5.4 吸收；三层被重构为报告自己的四层图。原则 5（shared responsibility model）未逐字展开，仅以双仓分层设计间接体现。"
+            },
+            {
+              "id": "K03",
+              "title": "OpenShell 博客四组件与仓库真实信任位置",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S04",
+                "S12"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "S01/S12 的 Gateway/Supervisor/Sandbox/Prover 四组件与 S04 的六组件信任边界（含 compute driver、外层 fence）均被报告 4.1 表格准确呈现，命名混淆（Sandbox 整体 vs 边界内 broker）也按仓库口径纠正。"
+            },
+            {
+              "id": "K04",
+              "title": "受保护请求路径、Sandbox Protocol、各 runtime 围栏与失败关闭",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03",
+                "U04"
+              ],
+              "notes": "报告 4.2 与 S04 逐条对应：TCP/DNS 截获、可信进程观察识别 executable、互认证 HTTP/2、Docker/Podman 无网络、Kubernetes NetworkPolicy 仅放行 Supervisor（S03 明确 CNI 必须实施）、microVM 无网络设备、断连冻结且仅原 Supervisor 可恢复、每 generation 独立 Gateway/Sandbox JWT。"
+            },
+            {
+              "id": "K05",
+              "title": "静态控制：Landlock 基线 ABI 3、best_effort 默认、seccomp 与权限下降",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S09"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "S09 确认 mandatory Landlock 基线需 ABI 3+（Linux 6.2）、附加 filesystem policy 默认 best_effort、hard_requirement 选项、非 root 身份、seccomp 阻断 ptrace/mount/bpf/namespace/旁路 socket 及启动期实施顺序；报告 4.3 全部覆盖且未夸大。"
+            },
+            {
+              "id": "K06",
+              "title": "网络规则两阶段判定、audit 默认值与 TLS/ancestor/TOFU 失效条件",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S06",
+                "S09"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "报告 4.4 准确覆盖 deny-by-default、两阶段检查、audit 为默认 enforcement、protocol 省略放行任意 method/path、tls: skip 同时失效凭据重写与 L7、ancestor 授权与首次 SHA-256 TOFU pin。未覆盖 S06/S09 的 SSRF 私网默认阻断（loopback/link-local/169.254.169.254 永不授权）、DNS placeholder 与 wildcard 外传通道等次要细节。"
+            },
+            {
+              "id": "K07",
+              "title": "Provider profile、attachment 与端点绑定凭据替换",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S09",
+                "S10",
+                "S12"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "S10 确认真实凭据仅在 profile 派生网络策略与 endpoint binding 都通过后替换；S12 确认 placeholder 发往未授权目标会被拒、上游服务仍执行真实凭据自身权限。报告 4.5 及威胁模型凭据行完整保留两点反方（已授权端点仍可接收外传数据、上游 scope 需最小化）。"
+            },
+            {
+              "id": "K08",
+              "title": "Policy Prover 两类检查、五域 coverage、四态 fail-closed 与三项非目标",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S07",
+                "S08",
+                "S12"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "S07 确认 boundary check 与 proposal risk check 区分、coverage=filesystem/network_l4/network_rest/process/landlock、仅 within_boundary 通过、GraphQL/MCP 等返回 unsupported；S08 逐字确认 Z3 SMT、四类 proposal-risk 类目（link-local、带凭据 L7 bypass、凭据 reach 扩张、新 HTTP method）与 semantic risk/cross-sandbox intent/runtime behavior 三项非目标。报告 4.6 准确并将 S15 “不会逃出 operator intent” 的宣传语正确缩窄。"
+            },
+            {
+              "id": "K09",
+              "title": "Sentry 定位：BlueField-4 独立信任域、唯一模型路径与发布状态",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S15"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06",
+                "U07"
+              ],
+              "notes": "S02 确认 Sentry 构建于 DOCA、运行于 BlueField-4、位于节点唯一模型路径、host 失陷仍可监督、毫秒级 quarantine；S15 确认为 OpenShell 旁的可选层；S02 结尾确认 planned availability early next year（2027 年初）且核心插件仍处 planned。报告一章与 7.2 准确呈现，未把预告写成已交付。"
+            },
+            {
+              "id": "K10",
+              "title": "DOCA Flow/Tower/Argus 三条数据路径与 Vault 的区分",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S13"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "S02 确认 Flow L4 硅加速防火墙、Tower 基于 Envoy 透明代理与 TLS termination、OPA/Rego 本地评估可低于 1ms（取决于策略复杂度）、Argus 无 agent 读取选定 volatile host memory 并按 hash 映射容器/进程/库/文件/网络；S13 确认 Vault 才是文件存储 inline enforcement。报告 5.2 的“观察文件≠强制文件访问”区分与来源一致。"
+            },
+            {
+              "id": "K11",
+              "title": "行为分类、SPIFFE/SPIRE 身份、attested 遥测与企业集成",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "S02 确认专用模型基于 tool call 与 available reasoning traces 做 inline/out-of-band 分类、DOCA Tower 集成 SPIFFE/SPIRE、DPU 侧 attested tamper-evident record、XDR/SIEM 供给。报告 5.2/5.4 覆盖且保留两点诚实边界：官方未披露分类器评测数据、闭源模型不暴露隐藏思维链。"
+            },
+            {
+              "id": "K12",
+              "title": "开源边界：OpenShell Apache-2.0 全仓 vs Sentry 无公共实现",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S05",
+                "S11",
+                "S15"
+              ],
+              "matched_coverage_unit_ids": [
+                "U07"
+              ],
+              "notes": "S05 为 Apache-2.0 许可证原文，S03 确认全仓组件与 0.1.x；S11 自称 open reference design 且 FAQ 明确 BlueField 可选；S02/S15 均未提供 Sentry 公共源码、许可证或交付清单。报告证据边界段按首审建议限定为“本次已读 NVIDIA 官方材料中未找到同等公开实现”，范围表述正确。"
+            },
+            {
+              "id": "K13",
+              "title": "硬件需求矩阵：OpenShell 不需 BlueField，Sentry 为可选强化层",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S11"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02",
+                "U07"
+              ],
+              "notes": "S11 FAQ 逐字确认 OpenShell 不要求 BlueField-4；S01 的“reference architecture 中 OpenShell 运行在 Vera 上”被报告正确限定为参考架构而非依赖。报告 7.3 表格与来源一致。"
+            },
+            {
+              "id": "K14",
+              "title": "性能与对抗数字的证据口径",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S11",
+                "S12",
+                "S13"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08",
+                "U10"
+              ],
+              "notes": "逐项核对：Vera 最高 2×（S01，NVIDIA 自有架构主张）、sandbox startup >3×、单 rack >11,000、Terminal Bench 20 项几何平均 1.8×（S01，CoreWeave 测量）、OPA <1ms（S02，附复杂度限定）、毫秒级 quarantine（S02 能力主张）、1,000× 与 800 Gb/s（S13，up to 且仅对比 software-only agentless）、两小时对抗实验无受保护仓写入（S12）。报告均保留原始口径并指出基线/重复次数/误差/误报率缺失；仅 2× 的来源归属行略粗。"
+            },
+            {
+              "id": "K15",
+              "title": "Cadence、Slack、Gecko Robotics 采用案例",
+              "importance": "supporting",
+              "assessment": "missing",
+              "source_ids": [
+                "S12"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "报告未复述三例厂商采用案例。其来源为 NVIDIA 营销叙事，与本任务的安全机制、开源边界与迁移判断无关，遗漏不构成需求缺口。"
+            },
+            {
+              "id": "K16",
+              "title": "OpenShell 仓库运营面：SDK、telemetry、prerelease 与免责声明",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U07"
+              ],
+              "notes": "报告用 README 核验许可证、0.1.x 与平台支持面，未展开四类 SDK、匿名 telemetry 与外部材料免责声明；属运营细节，不影响核心结论。"
+            },
+            {
+              "id": "K17",
+              "title": "2021 年 BlueField 零信任基础：硬件信任根与独立信任域",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S14"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02",
+                "U06"
+              ],
+              "notes": "S14 确认 hardware root of trust、secure/measured boot、DICE attestation 与独立于 host 的信任域；报告 5.3 正确将其限定为解释信任根来源的早期材料，未当作 Sentry/BlueField-4 的独立验证。"
+            },
+            {
+              "id": "K18",
+              "title": "Argus 遥测导出与隐私边界",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S13"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "S13 说明 Argus 经 Fluent Bit/Vector 导出至 SIEM/SOAR/XDR 并限制遥测不含 PII；报告覆盖 XDR/SIEM 集成方向但未提 PII 限制细节，属次要运营信息。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06",
+            "S07",
+            "S08",
+            "S09",
+            "S10",
+            "S11",
+            "S12",
+            "S13",
+            "S14",
+            "S15"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04",
+            "R05"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "跨模型独立抽检结论（质量策略触发的每 5 篇抽样，非用户指定模型）：在全新 context 中先实读 S01–S15 并独立建立 18 单元来源地图，再核验报告与证据账本。未发现 fabricated_or_unread_source、critical_claim_unsupported、key_number_mismatch、core_requirement_missing 或 safety_or_privacy_violation；C01–C08、U01–U10、R01–R05 全部通过来源核验。任务特别核对项均成立：1）OpenShell 已开源（Apache-2.0 原文核对）与 Sentry planned availability early next year（2027 年初）的边界表述准确；2）L7 默认 audit 与 deny-by-default 的区别解释正确；3）prover 不理解任务语义、对 MCP/GraphQL/WebSocket 等 containment 返回 unsupported 与原文一致；4）OpenShell 不要求 BlueField（FAQ 逐字确认）；5）Sentry 带外保证的必经路径/无旁路/DPU 自受信三条件与 TCB 缺口披露诚实；6）全部性能数字均按厂商或合作方自报处理并逐项保留口径；7）EverAgent 迁移建议整章标注 [推测]。首审建议的两处措辞收紧已在当前文件落实并核对无误。非阻断性观察：a）性能表中 Vera 最高 2× 的来源归属应与 CoreWeave 实测数字分开标注；b）可在后续修订中补充 SSRF 私网默认阻断细节。与首审（96.75）结论一致：报告达到 important 档通过水平，本 Reviewer 加权总分 95.75，无需修订。"
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 96.75,
+        "evaluated_on": "2026-10-22",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "96f9dcec488ffb9e9e04004d76fd864efc87e2a21fed24ec49971b67ba25266e",
+        "evidence_sha256": "852b3c51cb5645e2398f92aaa701d5dd68c4b4bad360a9223840c9bfea045315"
+      }
+    },
+    {
+      "revision_round": 2,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-6.1-sol",
+            "harness": "codex",
+            "run_id": "primary-review-gpt61sol-openshell-r2-a28e3012431b",
+            "independent_context": true,
+            "explicit_model_override": true,
+            "override_reason": "质量门 revision 2 独立复核由协调器显式指定 gpt-6.1-sol"
+          },
+          "scores": {
+            "evidence_fidelity": 94,
+            "request_coverage": 96,
+            "reasoning_quality": 95,
+            "readability": 93,
+            "limitations": 97
+          },
+          "score_reasons": {
+            "evidence_fidelity": "通过 eacli 实读 S01–S15，逐项确认 C01–C08 的来源支撑：组件隔离、L7 audit、placeholder/端点绑定、Prover coverage/non-goals、BlueField 可选、Sentry 2027 年初计划可用和所有关键数字均与来源一致。轻微精度问题是§八首行将 NVIDIA 自述的关键 workload 最高 2× 与 CoreWeave 的启动/20-task 测量合并标为 CoreWeave；§七表中 Sentry 不要求 Vera 的结论尚缺正式 Sentry 支持矩阵，应视为架构推断。二者不改变软件可独立部署、Sentry 依赖 BlueField 的核心判断。",
+            "request_coverage": "R01–R05 与 U01–U10 全部核对。来源优先建立 18 个单元，再映射正文并拆出一个 supporting 细节单元；17 个 core 单元均完整覆盖。两篇主文核心架构、Prover 边界、TCB、凭据/身份/工具/文件治理、性能证据、EverAgent 迁移和对抗评估已回答。MCP 参数与响应/SSE 的解析限制未细展开，但属于 supporting 配置细节，不影响需求完成。",
+            "reasoning_quality": "报告把任务成功/授权、身份/权限/语义/完整性、runtime 能力/证明覆盖、软件隔离/独立硬件域分开论证。对 model-path kill switch 指出本地模型与旁路假设，对已授权语义滥用和 TCB 供应链保留反例。EverAgent lease、有限集合 containment、最终执行端凭据和外部审计的推导有公开架构依据，分阶段采用与反向 bypass 验证可执行。",
+            "readability": "可脱离对话阅读；证据标签、x→f→f(x)、威胁表、网络请求链、比较表和三问形成完整学习路径。较多重复重述运行时窄腰/信任移动，部分建议章节的 [推测] 属性依赖§一和§九的整体说明，降低少量表达精度，但没有影响理解的结构问题。",
+            "limitations": "如实披露没有安装/运行 OpenShell，没有独立 Sentry 实现、红队、误报/漏报或性能复现，main 文档会漂移，商业/许可证/支持面尚不完整。performance 的统计与比较缺口、available traces、必经 I/O 和 DPU 自受信假设均明确；迁移建议限定为公开协议上的 [推测]，未访问或复制私仓事实。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07",
+            "C08"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07",
+            "U08",
+            "U09",
+            "U10"
+          ],
+          "source_content_map": [
+            {
+              "id": "SC01",
+              "title": "长周期 Agent 漂移与基础设施独立治理",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S12",
+                "S15"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01",
+                "U02"
+              ],
+              "notes": "原始材料把工具、时间、授权扩张和含混任务视为复合风险；依赖 Agent 自述不足，需要运行时隔离、监控与持续治理。 §二和§三将任务成功与过程授权分开，覆盖长时漂移、子进程与外部治理动机。"
+            },
+            {
+              "id": "SC02",
+              "title": "OpenShell 当前开源与 Sentry 计划可用时间",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S05",
+                "S11",
+                "S12"
+              ],
+              "matched_coverage_unit_ids": [
+                "U07"
+              ],
+              "notes": "OpenShell 仓库与许可证确认 Apache-2.0，0.1.x 已可用；Sentry 技术博客发表于 2026-10-21，末段 planned availability early next year 指向 2027 年初，不能据此认定 Sentry 已开源或正式可用。 §一、§七和 Limitations 明确 OpenShell 公开实现/Apache-2.0 与 Sentry 计划交付的差别，未把未找到公开实现写成全网不存在。"
+            },
+            {
+              "id": "SC03",
+              "title": "Gateway、Supervisor、Sandbox 与 Prover 的责任分离",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S04",
+                "S12"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "Gateway 负责生命周期与策略；Supervisor 位于可信侧、判断出口并提供凭据；Sandbox 与不可信 Agent 共享边界、约束进程/文件并转发；Prover 检查建模权限而不承担执行。 §四 4.1 逐项标出可信/不可信位置，特意解释博客与仓库中 Sandbox 命名的差别。"
+            },
+            {
+              "id": "SC04",
+              "title": "单一受控出口与跨 runtime 的隔离契约",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S04",
+                "S09"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03",
+                "U04"
+              ],
+              "notes": "Docker/Podman 独立 Supervisor 容器和 Unix socket，Kubernetes 独立 Pod、mTLS 与 NetworkPolicy，VM 主机 Supervisor、vsock 与无网卡 guest；保护链路、outer fence 和断链冻结构成运行前确认/运行中 fail-closed 条件。 §四 4.2 覆盖受认证 HTTP/2 通道、无第二条出口、CNI/NetworkPolicy 依赖和 Supervisor 断链冻结。"
+            },
+            {
+              "id": "SC05",
+              "title": "L4 目的地与可执行程序身份边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S06",
+                "S09"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04",
+                "U02"
+              ],
+              "notes": "连接必须匹配 host、port 和二进制；真实解释器/祖先可执行身份与首次 SHA256 pin 是配置要点，通配符过宽会扩大授权。 §三威胁表与§四 4.4 准确说明 ancestor 授权和 TOFU pin 的收益/过宽风险。"
+            },
+            {
+              "id": "SC06",
+              "title": "L7 协议选择、audit 默认与 enforce 差异",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S06",
+                "S09",
+                "S12"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "REST、GraphQL、MCP 等配置协议提供请求限制；未配置协议/tcp 缺乏动作级规则；L7 audit 默认允许并记录违规，只有 enforce 阻断。tls: skip 关闭 TLS 终止、凭据替换和 L7 检查。MCP 工具名限制不等于参数语义验证。 §四 4.4 准确区分默认 deny-by-default 连接检查与默认 audit 请求检查，明确 protocol 和 TLS skip 的削弱条件。MCP 参数层限制作为独立 supporting 单元 SC19 记录。"
+            },
+            {
+              "id": "SC07",
+              "title": "端点绑定凭据代理及 native inference",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S04",
+                "S10",
+                "S12"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04",
+                "U09"
+              ],
+              "notes": "Agent 收到 opaque placeholder；网络授权与 profile 端点绑定均通过后由可信代理替换真实凭据。Provider attachment 决定每个 sandbox 权限；原生 client 负责模型、请求与 timeout，旧全局 inference route 已移除。 §四 4.5 正确叙述 profile/attachment/endpoint binding 双重授权，并保留已允许端点仍可被滥用与上游 token scope 风险；§六和§九完成迁移映射。旧路由迁移细节与本任务的安全架构结论无直接关系。"
+            },
+            {
+              "id": "SC08",
+              "title": "Boundary containment 与 proposal-risk 两种证明问题",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S07",
+                "S08",
+                "S12"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "Boundary CLI 检查 candidate 不超 operator boundary；Gateway legacy proposal-risk 检查 link-local、L7 bypass credentialed、credential reach expansion 与 HTTP method capability expansion，两者通过不相互蕴涵。 §四 4.6 正确区分两类检查及 proposal-risk 的四类发现，没有把 containment 与 proposal-risk 当成等价结果。"
+            },
+            {
+              "id": "SC09",
+              "title": "Prover 的 coverage、unsupported 与 inconclusive",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S07",
+                "S08"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05",
+                "U10"
+              ],
+              "notes": "Containment coverage 是 filesystem、network_l4、network_rest、process、landlock；只建模受支持策略。audit REST、MCP/GraphQL/WebSocket/JSON-RPC、部分路径/账户比较均 unsupported；timeout/resource limits 可 inconclusive，只有 within_boundary 可视为通过。 §四 4.6 和§十指出 runtime 支持面大于 formal model，未把 unsupported、timeout 或 inconclusive 当成通过。"
+            },
+            {
+              "id": "SC10",
+              "title": "形式化分析的非目标与安全天花板",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S07",
+                "S08",
+                "S12"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05",
+                "U02"
+              ],
+              "notes": "证明不保证任务语义正确、最小授权、runtime 实施无漏洞或跨 sandbox/cross-binary 组合安全；credential 模型粒度、binary registry 与用户写出的 boundary 构成外推边界。 §三、§四 4.6 明确任务语义、联合意图和真实执行为非目标，并收紧 S15 的 operator intent 宣传表述。"
+            },
+            {
+              "id": "SC11",
+              "title": "文件/进程静态限制与网络/凭据动态调整",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S04",
+                "S09",
+                "S12"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04",
+                "U03"
+              ],
+              "notes": "Landlock、seccomp、non-root 与启动顺序约束本地影响；文件/进程变化需重建，网络与 provider 可动态更新。Landlock mandatory baseline 与附加 best_effort/hard_requirement 有不同保证。 §四 4.3 区分静态/动态控制，说明 mandatory Landlock baseline 与附加 policy best_effort 的边界，也没有把宿主平台支持等同于原生 Linux 实施。"
+            },
+            {
+              "id": "SC12",
+              "title": "Sentry 的 DOCA Flow + Tower 拓扑与 TLS 前提",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S13"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06",
+                "U02"
+              ],
+              "notes": "Sentry 在 BlueField-4 独立域；Flow 先做硬件 L4 firewall，Tower/Envoy 对获准流量作 TLS 终止和 L7/OPA 检查。节点唯一到模型/外界路径以及 configured inspection 是覆盖前提。 §五 5.2–5.3 和§三威胁表将 Flow/Tower 路径与必经网络/模型拓扑、无旁路和 TLS 检查联系起来，没有把硬件独立域当成任意部署的自动保证。"
+            },
+            {
+              "id": "SC13",
+              "title": "Argus 选区内存观测与请求/进程关联",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S13"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "Argus 不装 host agent，通过选定 volatile memory 结构获取 process、container、library、file/network 等上下文，结合 hash/SBOM 和 Tower 连接作授权；不是读取一切内存或理解一切思维。 §五 5.2 保留 selected volatile memory、进程/容器/hash/SBOM 关联，并区分 Argus 文件观测与 Vault inline 存储强制。"
+            },
+            {
+              "id": "SC14",
+              "title": "专用模型 inline 与 out-of-band 行为分类",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S15"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06",
+                "U02"
+              ],
+              "notes": "分类器使用通信、tool calls 和 available reasoning traces；可在独立 GPU 本地或远端运行。inline 可在转发前阻断，out-of-band 在发现后响应；可见 traces 不能外推为完整内在思维。 §五 5.2、5.4 覆盖在线/带外分类、available reasoning traces 和分类器误报/漏报与评测缺口，没有承诺完整隐藏思维可见。"
+            },
+            {
+              "id": "SC15",
+              "title": "Identity、attested telemetry 与独立响应",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S13",
+                "S14"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06",
+                "U02"
+              ],
+              "notes": "Tower 可接 SPIFFE/SPIRE/伙伴 identity，OPA 将身份、资源与 runtime 证据结合；DPU 域保存 tamper-evident/attested 观测并送 XDR/SIEM，毫秒级 containment 是厂商声明。DPU secure/measured boot 与 attestation 自身需要可信根。 §五与§六覆盖身份/授权/运行态证据的区别、DPU 侧记录、XDR/SIEM 和响应；§五 5.3 说明 DPU 自身信任链仍需保护。"
+            },
+            {
+              "id": "SC16",
+              "title": "BlueField 可选和软件/硬件信任边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S04",
+                "S11",
+                "S14",
+                "S15"
+              ],
+              "matched_coverage_unit_ids": [
+                "U07",
+                "U02"
+              ],
+              "notes": "OpenShell 可在非 BlueField 的受支持基础设施运行；硬件层为需要附加保护者提供独立域。主机不可信时 DPU 控制可保持，但 DPU 本身的启动、认证、策略和被观测对象仍有信任前提。 §三、§五 5.3 和§七准确确认 OpenShell 不要求 BlueField，保持独立 DPU TCB 与策略供应链风险；Sentry 具体硬件支持矩阵仍应以未来正式披露为准。"
+            },
+            {
+              "id": "SC17",
+              "title": "Vera 性能、OPA 时延与隔离响应口径",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S11",
+                "S13"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08"
+              ],
+              "notes": "S01 的 CoreWeave sandbox startup >3x、单 rack >11000、20-task Terminal Bench 1.8x geometric mean；OPA sub-ms 依 policy complexity/configuration；Sentry ms containment 与 DOCA up-to 性能均是源方自报，不能代替独立性能/安全测量。 §八逐项核对 >3×、1.8× 几何平均、20 任务、>11000 环境、OPA 条件性 sub-ms、毫秒隔离、1000×/800 Gb/s 和两小时对抗实验；均限定为厂商或合作方自报。首行 2× 归属有非阻断性精度建议，见 notes。"
+            },
+            {
+              "id": "SC18",
+              "title": "共享责任与权限随可观测性提升的设计原则",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S15",
+                "S02",
+                "S12"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01",
+                "U09",
+                "U10"
+              ],
+              "notes": "原始材料区分 application/runtime/infrastructure 三层，强调 verifiable policy、out-of-band enforcement、model path control、inspection 随 authority 提升和 shared responsibility；这些是架构原则，不保证任意部署自动成立。 §二分层架构、§六治理对象、§九分层迁移与§十评估把权限、观察和责任划分落到执行点；EverAgent 设计在§一及§九明确标为 [推测]，没有引入私仓事实。"
+            },
+            {
+              "id": "SC19",
+              "title": "MCP 工具参数和服务器响应的运行时检查边界",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "来源明确 tool argument matching 不受支持，允许的 tool 可以接受服务器允许的任何参数，server responses/SSE 不作 MCP policy parsing。正文已准确说明 tool-name 管控及语义滥用风险，但未单列这两项细节；属于可在后续补充的局部配置知识，不构成 R02 的核心治理对象遗漏。此单元来自读报告前 SC06 记录中的 MCP 参数观察，现拆出以避免用 covered 隐藏细节未覆盖。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06",
+            "S07",
+            "S08",
+            "S09",
+            "S10",
+            "S11",
+            "S12",
+            "S13",
+            "S14",
+            "S15"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04",
+            "R05"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "revision 2 全新 context 独立复核：先执行 review-prompt；仅从 evidence 提取来源 locator，随后经 eacli web.read/repo.public.read 实读 S01–S15（稳定 request-id 前缀 openshell-sentry-r2-S），读报告前独立记录 18 单元来源地图，再核验 C01–C08、C09–C10、U01–U10、R01–R05。历史只用于最后核对上一轮发现是否仍存在，未复制评分。S01/S02 publishedTime 均为 2026-10-21，因此 S02 的 early next year 换算为 2027 年初准确。未发现五项 hard failure；所有核心单元完整覆盖。非阻断建议：①§八将 NVIDIA 的最高 2× 声明与 CoreWeave 的 >3×/1.8×/>11000 测量来源分开；②§七 Sentry 的 Vera 非必需加 [推测]/正式支持矩阵待确认限定；③后续配置扩展可补 MCP 参数和响应/SSE 不解析的边界（SC19）；④§十至§十一的建议可复述 [推测] 标记以减少读者跨章依赖。加权分 94.75，独立内容判断达到 important 门槛；最终状态以随后非 finalize check 输出为准。没有修改正文、evidence、history、索引或 decision，没有 finalize/commit/push。"
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 94.75,
+        "evaluated_on": "2026-10-22",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "96f9dcec488ffb9e9e04004d76fd864efc87e2a21fed24ec49971b67ba25266e",
+        "evidence_sha256": "852b3c51cb5645e2398f92aaa701d5dd68c4b4bad360a9223840c9bfea045315"
+      }
+    },
+    {
+      "revision_round": 3,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-6.1-sol",
+            "harness": "codex",
+            "run_id": "primary-review-gpt61sol-openshell-r3-68ed3d0c1f33",
+            "independent_context": true,
+            "explicit_model_override": true,
+            "override_reason": "质量门 revision 3 术语等义复核沿用协调器显式指定的 gpt-6.1-sol"
+          },
+          "scores": {
+            "evidence_fidelity": 94,
+            "request_coverage": 96,
+            "reasoning_quality": 95,
+            "readability": 93,
+            "limitations": 97
+          },
+          "score_reasons": {
+            "evidence_fidelity": "本次核对 7 处 placeholder→凭据代称，逐处检查不透明代称、真实凭据仅在可信代理端替换、端点绑定和未授权目的地不替换的含义；重新读取本 Reviewer 已取得的 S10/S12 原始内容，均保持一致。七处逆变换后的完整正文 SHA-256 与 revision 2 已核验快照精确相同，evidence 字节哈希未变，C01–C08 来源关系未受影响。revision 2 的轻微数字归属与 Sentry/Vera 支持矩阵限定观察仍适用，因此保持 94。",
+            "request_coverage": "七处替换涉及 U02/U04/U09/U10 的凭据表述和验证用例，未删除能力、限制、评估项或来源。逆变换与原始已核验正文精确相同，R01–R05、U01–U10 的覆盖没有变化，17 个 core 来源单元完整覆盖；MCP 参数/响应的 supporting 细节仍为 partial。",
+            "reasoning_quality": "替换后依然明确：Agent 只见代称，代理需要网络策略与 profile endpoint binding 双重许可，允许端点的语义滥用和上游 token scope 风险仍存在；没有把凭据代称当成真实 token、授权证明或加密算法。其余威胁模型、Prover/TCB 边界和 EverAgent 推导经逆变换哈希证明没有变化，保持原分项判断。",
+            "readability": "中文“凭据代称”在七处上下文中可以表达安全术语 placeholder，尤其 opaque 凭据代称和 endpoint-bound substitution 仍清楚说明用途；新增术语没有损害独立阅读。局部中英混排和重复论述仍存在，保持 93。",
+            "limitations": "全部事实、来源、性能口径、Sentry 可用性、未实测声明以及 EverAgent [推测] 范围保持不变。此次 review 明确限定为同一独立 Reviewer 对纯术语变更的等义复验，没有宣称新的真机实验、来源获取或全新上下文全量复核。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07",
+            "C08"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07",
+            "U08",
+            "U09",
+            "U10"
+          ],
+          "source_content_map": [
+            {
+              "id": "SC01",
+              "title": "长周期 Agent 漂移与基础设施独立治理",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S12",
+                "S15"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01",
+                "U02"
+              ],
+              "notes": "原始材料把工具、时间、授权扩张和含混任务视为复合风险；依赖 Agent 自述不足，需要运行时隔离、监控与持续治理。 §二和§三将任务成功与过程授权分开，覆盖长时漂移、子进程与外部治理动机。"
+            },
+            {
+              "id": "SC02",
+              "title": "OpenShell 当前开源与 Sentry 计划可用时间",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S05",
+                "S11",
+                "S12"
+              ],
+              "matched_coverage_unit_ids": [
+                "U07"
+              ],
+              "notes": "OpenShell 仓库与许可证确认 Apache-2.0，0.1.x 已可用；Sentry 技术博客发表于 2026-10-21，末段 planned availability early next year 指向 2027 年初，不能据此认定 Sentry 已开源或正式可用。 §一、§七和 Limitations 明确 OpenShell 公开实现/Apache-2.0 与 Sentry 计划交付的差别，未把未找到公开实现写成全网不存在。"
+            },
+            {
+              "id": "SC03",
+              "title": "Gateway、Supervisor、Sandbox 与 Prover 的责任分离",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S04",
+                "S12"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "Gateway 负责生命周期与策略；Supervisor 位于可信侧、判断出口并提供凭据；Sandbox 与不可信 Agent 共享边界、约束进程/文件并转发；Prover 检查建模权限而不承担执行。 §四 4.1 逐项标出可信/不可信位置，特意解释博客与仓库中 Sandbox 命名的差别。"
+            },
+            {
+              "id": "SC04",
+              "title": "单一受控出口与跨 runtime 的隔离契约",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S04",
+                "S09"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03",
+                "U04"
+              ],
+              "notes": "Docker/Podman 独立 Supervisor 容器和 Unix socket，Kubernetes 独立 Pod、mTLS 与 NetworkPolicy，VM 主机 Supervisor、vsock 与无网卡 guest；保护链路、outer fence 和断链冻结构成运行前确认/运行中 fail-closed 条件。 §四 4.2 覆盖受认证 HTTP/2 通道、无第二条出口、CNI/NetworkPolicy 依赖和 Supervisor 断链冻结。"
+            },
+            {
+              "id": "SC05",
+              "title": "L4 目的地与可执行程序身份边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S06",
+                "S09"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04",
+                "U02"
+              ],
+              "notes": "连接必须匹配 host、port 和二进制；真实解释器/祖先可执行身份与首次 SHA256 pin 是配置要点，通配符过宽会扩大授权。 §三威胁表与§四 4.4 准确说明 ancestor 授权和 TOFU pin 的收益/过宽风险。"
+            },
+            {
+              "id": "SC06",
+              "title": "L7 协议选择、audit 默认与 enforce 差异",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S06",
+                "S09",
+                "S12"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "REST、GraphQL、MCP 等配置协议提供请求限制；未配置协议/tcp 缺乏动作级规则；L7 audit 默认允许并记录违规，只有 enforce 阻断。tls: skip 关闭 TLS 终止、凭据替换和 L7 检查。MCP 工具名限制不等于参数语义验证。 §四 4.4 准确区分默认 deny-by-default 连接检查与默认 audit 请求检查，明确 protocol 和 TLS skip 的削弱条件。MCP 参数层限制作为独立 supporting 单元 SC19 记录。"
+            },
+            {
+              "id": "SC07",
+              "title": "端点绑定凭据代理及 native inference",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S04",
+                "S10",
+                "S12"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04",
+                "U09"
+              ],
+              "notes": "Agent 收到 opaque placeholder；网络授权与 profile 端点绑定均通过后由可信代理替换真实凭据。Provider attachment 决定每个 sandbox 权限；原生 client 负责模型、请求与 timeout，旧全局 inference route 已移除。 §四 4.5 正确叙述 profile/attachment/endpoint binding 双重授权，并保留已允许端点仍可被滥用与上游 token scope 风险；§六和§九完成迁移映射。旧路由迁移细节与本任务的安全架构结论无直接关系。 revision 3 将正文七处 placeholder 改为“凭据代称”；逐处与 S10/S12 对照，仍指 opaque placeholder，未改变双重授权或真实凭据替换条件。"
+            },
+            {
+              "id": "SC08",
+              "title": "Boundary containment 与 proposal-risk 两种证明问题",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S07",
+                "S08",
+                "S12"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "Boundary CLI 检查 candidate 不超 operator boundary；Gateway legacy proposal-risk 检查 link-local、L7 bypass credentialed、credential reach expansion 与 HTTP method capability expansion，两者通过不相互蕴涵。 §四 4.6 正确区分两类检查及 proposal-risk 的四类发现，没有把 containment 与 proposal-risk 当成等价结果。"
+            },
+            {
+              "id": "SC09",
+              "title": "Prover 的 coverage、unsupported 与 inconclusive",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S07",
+                "S08"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05",
+                "U10"
+              ],
+              "notes": "Containment coverage 是 filesystem、network_l4、network_rest、process、landlock；只建模受支持策略。audit REST、MCP/GraphQL/WebSocket/JSON-RPC、部分路径/账户比较均 unsupported；timeout/resource limits 可 inconclusive，只有 within_boundary 可视为通过。 §四 4.6 和§十指出 runtime 支持面大于 formal model，未把 unsupported、timeout 或 inconclusive 当成通过。"
+            },
+            {
+              "id": "SC10",
+              "title": "形式化分析的非目标与安全天花板",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S07",
+                "S08",
+                "S12"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05",
+                "U02"
+              ],
+              "notes": "证明不保证任务语义正确、最小授权、runtime 实施无漏洞或跨 sandbox/cross-binary 组合安全；credential 模型粒度、binary registry 与用户写出的 boundary 构成外推边界。 §三、§四 4.6 明确任务语义、联合意图和真实执行为非目标，并收紧 S15 的 operator intent 宣传表述。"
+            },
+            {
+              "id": "SC11",
+              "title": "文件/进程静态限制与网络/凭据动态调整",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S04",
+                "S09",
+                "S12"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04",
+                "U03"
+              ],
+              "notes": "Landlock、seccomp、non-root 与启动顺序约束本地影响；文件/进程变化需重建，网络与 provider 可动态更新。Landlock mandatory baseline 与附加 best_effort/hard_requirement 有不同保证。 §四 4.3 区分静态/动态控制，说明 mandatory Landlock baseline 与附加 policy best_effort 的边界，也没有把宿主平台支持等同于原生 Linux 实施。"
+            },
+            {
+              "id": "SC12",
+              "title": "Sentry 的 DOCA Flow + Tower 拓扑与 TLS 前提",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S13"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06",
+                "U02"
+              ],
+              "notes": "Sentry 在 BlueField-4 独立域；Flow 先做硬件 L4 firewall，Tower/Envoy 对获准流量作 TLS 终止和 L7/OPA 检查。节点唯一到模型/外界路径以及 configured inspection 是覆盖前提。 §五 5.2–5.3 和§三威胁表将 Flow/Tower 路径与必经网络/模型拓扑、无旁路和 TLS 检查联系起来，没有把硬件独立域当成任意部署的自动保证。"
+            },
+            {
+              "id": "SC13",
+              "title": "Argus 选区内存观测与请求/进程关联",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S13"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "Argus 不装 host agent，通过选定 volatile memory 结构获取 process、container、library、file/network 等上下文，结合 hash/SBOM 和 Tower 连接作授权；不是读取一切内存或理解一切思维。 §五 5.2 保留 selected volatile memory、进程/容器/hash/SBOM 关联，并区分 Argus 文件观测与 Vault inline 存储强制。"
+            },
+            {
+              "id": "SC14",
+              "title": "专用模型 inline 与 out-of-band 行为分类",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S15"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06",
+                "U02"
+              ],
+              "notes": "分类器使用通信、tool calls 和 available reasoning traces；可在独立 GPU 本地或远端运行。inline 可在转发前阻断，out-of-band 在发现后响应；可见 traces 不能外推为完整内在思维。 §五 5.2、5.4 覆盖在线/带外分类、available reasoning traces 和分类器误报/漏报与评测缺口，没有承诺完整隐藏思维可见。"
+            },
+            {
+              "id": "SC15",
+              "title": "Identity、attested telemetry 与独立响应",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S13",
+                "S14"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06",
+                "U02"
+              ],
+              "notes": "Tower 可接 SPIFFE/SPIRE/伙伴 identity，OPA 将身份、资源与 runtime 证据结合；DPU 域保存 tamper-evident/attested 观测并送 XDR/SIEM，毫秒级 containment 是厂商声明。DPU secure/measured boot 与 attestation 自身需要可信根。 §五与§六覆盖身份/授权/运行态证据的区别、DPU 侧记录、XDR/SIEM 和响应；§五 5.3 说明 DPU 自身信任链仍需保护。"
+            },
+            {
+              "id": "SC16",
+              "title": "BlueField 可选和软件/硬件信任边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S04",
+                "S11",
+                "S14",
+                "S15"
+              ],
+              "matched_coverage_unit_ids": [
+                "U07",
+                "U02"
+              ],
+              "notes": "OpenShell 可在非 BlueField 的受支持基础设施运行；硬件层为需要附加保护者提供独立域。主机不可信时 DPU 控制可保持，但 DPU 本身的启动、认证、策略和被观测对象仍有信任前提。 §三、§五 5.3 和§七准确确认 OpenShell 不要求 BlueField，保持独立 DPU TCB 与策略供应链风险；Sentry 具体硬件支持矩阵仍应以未来正式披露为准。"
+            },
+            {
+              "id": "SC17",
+              "title": "Vera 性能、OPA 时延与隔离响应口径",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S11",
+                "S13"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08"
+              ],
+              "notes": "S01 的 CoreWeave sandbox startup >3x、单 rack >11000、20-task Terminal Bench 1.8x geometric mean；OPA sub-ms 依 policy complexity/configuration；Sentry ms containment 与 DOCA up-to 性能均是源方自报，不能代替独立性能/安全测量。 §八逐项核对 >3×、1.8× 几何平均、20 任务、>11000 环境、OPA 条件性 sub-ms、毫秒隔离、1000×/800 Gb/s 和两小时对抗实验；均限定为厂商或合作方自报。首行 2× 归属有非阻断性精度建议，见 notes。"
+            },
+            {
+              "id": "SC18",
+              "title": "共享责任与权限随可观测性提升的设计原则",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S15",
+                "S02",
+                "S12"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01",
+                "U09",
+                "U10"
+              ],
+              "notes": "原始材料区分 application/runtime/infrastructure 三层，强调 verifiable policy、out-of-band enforcement、model path control、inspection 随 authority 提升和 shared responsibility；这些是架构原则，不保证任意部署自动成立。 §二分层架构、§六治理对象、§九分层迁移与§十评估把权限、观察和责任划分落到执行点；EverAgent 设计在§一及§九明确标为 [推测]，没有引入私仓事实。"
+            },
+            {
+              "id": "SC19",
+              "title": "MCP 工具参数和服务器响应的运行时检查边界",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "来源明确 tool argument matching 不受支持，允许的 tool 可以接受服务器允许的任何参数，server responses/SSE 不作 MCP policy parsing。正文已准确说明 tool-name 管控及语义滥用风险，但未单列这两项细节；属于可在后续补充的局部配置知识，不构成 R02 的核心治理对象遗漏。此单元来自读报告前 SC06 记录中的 MCP 参数观察，现拆出以避免用 covered 隐藏细节未覆盖。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06",
+            "S07",
+            "S08",
+            "S09",
+            "S10",
+            "S11",
+            "S12",
+            "S13",
+            "S14",
+            "S15"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04",
+            "R05"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "revision 3 专项等义复验，协调器明确限定此次改动为静态审计术语误报修正。本 Reviewer 与生成者保持独立，沿用 revision 2 已实际读过 S01–S15 的来源地图和关键结论核验；本次没有把同一 Reviewer 的持续上下文声称为新建的全新上下文。正文恰好 7 处“凭据代称”，剩余 placeholder 为 0；将七处逆变换后，完整正文 SHA-256 精确恢复为 revision 2 开始复核的 56767c1cb1e040c9689beb61d3988cba70135c988e703f300e2378d7a4812bbc，evidence SHA-256 仍为 852b3c51cb5645e2398f92aaa701d5dd68c4b4bad360a9223840c9bfea045315。重新读取已取得的 S10/S12 原始凭据描述并逐处核对：只见不透明代称、代理在授权端点替换、未授权端点不替换及测试目标均未变。C01–C08、C09–C10、U01–U10、R01–R05 的上轮结论继续适用，未发现新增 hard failure，分项与加权分 94.75 不变；SC19 及上轮四项非阻断建议仍保留。当前结果以非 finalize check 为准。未修改正文、evidence、history、索引或 decision，未 finalize/提交。"
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 94.75,
+        "evaluated_on": "2026-10-22",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "31bc1659482a27ef1c8428fa8d1be9f6af9f32cc0f72df7036d4cdb4f56de620",
+        "evidence_sha256": "852b3c51cb5645e2398f92aaa701d5dd68c4b4bad360a9223840c9bfea045315"
+      }
+    }
+  ]
+}

@@ -1,0 +1,276 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/ALTK_Evolve_学习型Memory与Agent服务任务_深度解析_20261021.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-21",
+  "generator": {
+    "model": "glm-5.3",
+    "harness": "pi",
+    "run_id": "pi-glm53-final-editor-20261022-topblogs",
+    "explicit_model_override": false,
+    "override_reason": ""
+  },
+  "task": {
+    "summary": "将近期最值得阅读的 IBM ALTK-Evolve 技术博客做成可独立阅读的 AI 深度学习报告，并结合配套论文、实现与 benchmark 分析学习型 Memory 的机制、证据、成本、边界和工程意义。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "实际读取 IBM 博客原文，并以配套论文、实现仓库和 benchmark 做一手交叉核验"
+      },
+      {
+        "id": "R02",
+        "text": "解释轨迹到 guideline、consolidation、retrieval、injection 的机制，以及 Memory middleware 与普通存储的区别"
+      },
+      {
+        "id": "R03",
+        "text": "保留 τ²-bench 与 AppWorld 的关键数字、口径、成本和实验边界"
+      },
+      {
+        "id": "R04",
+        "text": "区分厂商结论、本文推断与尚未证明的生产外推"
+      },
+      {
+        "id": "R05",
+        "text": "给出可执行的 Agent Context/Memory 设计启示、局限和思考与追问"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "primary",
+      "title": "IBM Research: ALTK-Evolve customer-service benchmark post",
+      "locator": "https://huggingface.co/blog/ibm-research/altk-evolve-bc",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S02",
+      "kind": "primary",
+      "title": "Memory as Middleware for Self-Improving AI Agents",
+      "locator": "https://arxiv.org/abs/2609.32091",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S03",
+      "kind": "primary",
+      "title": "AgentToolkit/altk-evolve",
+      "locator": "https://github.com/AgentToolkit/altk-evolve",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S04",
+      "kind": "primary",
+      "title": "Sierra Research τ²-bench",
+      "locator": "https://github.com/sierra-research/tau2-bench ; https://arxiv.org/abs/2506.07982",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S05",
+      "kind": "primary",
+      "title": "τ²-bench Retail leaderboard submission PR #542",
+      "locator": "https://github.com/sierra-research/tau2-bench/pull/542",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S06",
+      "kind": "primary",
+      "title": "τ²-bench Airline leaderboard submission PR #551",
+      "locator": "https://github.com/sierra-research/tau2-bench/pull/551",
+      "accessed_on": "2026-10-21"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "ALTK-Evolve 不更新模型权重，而是从训练任务轨迹自动提炼、合并并在后续任务中注入自然语言 guidelines。",
+      "report_anchor": "它学习的是程序性规则，不是模型权重",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "S01 说明同一 GPT-4.1 完成 guideline extraction 与执行、无权重更新和人工标注；S02 §4 描述 capture/extract/consolidate/store/retrieve/inject；S03 暴露 trajectory 与 entity MCP 工具。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "GPT-4.1 在 τ²-bench Retail held-out test 上，lossless guidelines 将 Mean Accuracy 从 78.1% 提到 82.5%，Pass⁴ 从 57.5% 提到 67.5%。",
+      "report_anchor": "GPT-4.1 held-out test 结果",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "S01 Table 2；40 个测试任务，每任务四次 trial。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "Airline 中 lossless 的 Accuracy 最高（57.5%→65.0%），但 14 条 sup3 guidelines 的 Pass⁴ 为 45.0%，高于 101 条 lossless 的 40.0%。",
+      "report_anchor": "GPT-4.1 held-out test 结果",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "S01 Table 1/2；Airline 20 个 held-out tasks，每任务四次 trial。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "Lossless guidelines 的 full-base Agent+用户模拟器成本为 Retail $0.084→$0.139（+65%）、Airline $0.081→$0.107（+32%）；test matched-success runs 的 assistant turns 略降，样本分别为 n=111/40。",
+      "report_anchor": "成本增加在输入侧，没有增加对话轮数",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "S01 Table 3 使用 full base split 上 Agent 与 user simulator 合计成本；Table 4 使用 test split 同 task+seed 且两侧均成功的 matched runs，lossless n=111/40。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "GPT-5.5 Airline held-out test 上，lossless guidelines 将 Accuracy 从 72.5% 提到 82.5%，Pass⁴ 从 55.0% 提到 70.0%。",
+      "report_anchor": "强模型仍能从外部经验获益",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "S01 Table 5；20 个 held-out tasks，每任务四次 trial。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "AppWorld Test-Normal 中，altk-evolve 将 aggregate task-goal completion 从 69.6% 提到 73.2%，scenario-goal 从 50.0% 提到 64.3%，Hard scenario-goal 从 19.1% 提到 47.6%。",
+      "report_anchor": "AppWorld 给了第二种验证",
+      "support": "direct",
+      "source_ids": [
+        "S02"
+      ],
+      "evidence": "S02 Table 3；同一 GPT-4.1 Agent 与 reasoning loop，guidelines 从 train/dev 轨迹提取，在 held-out test-normal 评测。",
+      "critical": true
+    },
+    {
+      "id": "C07",
+      "claim": "Memory middleware 的核心系统关注点包括双向可插拔、host-native interposition、多租户隔离、写路径一致性、带 provenance 的共享和生命周期治理。",
+      "report_anchor": "Memory Store",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "S02 §3、Table 2；S03 展示 namespaces、visibility、owner、published_at、creation_mode、source_task_id 及多后端。",
+      "critical": true
+    },
+    {
+      "id": "C08",
+      "claim": "IBM 的 leaderboard 数字使用 full base=train∪test，包含 guideline 学习用 train tasks；Retail PR #542 为 114×4、Pass⁴=67.54%，Airline GPT-5.5 PR #551 为 50×4、82.0%，截至复核时均 open/custom/modified-prompts/expected Unverified。",
+      "report_anchor": "强模型仍能从外部经验获益",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S04",
+        "S05",
+        "S06"
+      ],
+      "evidence": "S01 明确 full base 与 2026-10-12 快照；S05/S06 给出 task/trial 数、trajectory、custom、modified_prompts、Unverified 预期与 open PR 状态。",
+      "critical": false
+    },
+    {
+      "id": "C09",
+      "claim": "[推测] 更多 guidelines 并不恒定更好，Memory dosage 需要按领域、指标与成本做对照评估。",
+      "report_anchor": "一页结论",
+      "support": "inference",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "Retail lossless 在 Accuracy/Pass⁴ 均最佳；Airline sup3 的 Pass⁴ 高于 lossless，而 lossless Accuracy 更高。",
+      "critical": true
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "IBM 博客的问题设定、实验控制与 guideline 示例",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "ALTK-Evolve 到底怎样"
+    },
+    {
+      "id": "U02",
+      "title": "Retail/Airline guideline 数量、held-out Accuracy/Pass⁴、full-base 成本与 test matched turns",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "τ²-bench：提升发生在哪里"
+    },
+    {
+      "id": "U03",
+      "title": "GPT-5.5 held-out 结果与 full-base leaderboard submission 口径/状态",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S04",
+        "S05",
+        "S06"
+      ],
+      "report_anchor": "强模型仍能从外部经验获益"
+    },
+    {
+      "id": "U04",
+      "title": "Memory middleware 六项系统关注点与参考架构",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02"
+      ],
+      "report_anchor": "Memory Store"
+    },
+    {
+      "id": "U05",
+      "title": "AppWorld 评估及 feasibility 边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02"
+      ],
+      "report_anchor": "AppWorld 给了第二种验证"
+    },
+    {
+      "id": "U06",
+      "title": "开源实现的 MCP、后端、namespace、sharing 与 provenance",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S03"
+      ],
+      "report_anchor": "Memory Store"
+    },
+    {
+      "id": "U07",
+      "title": "工程落地、局限和未来实验",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "对实际 Agent 系统的可用设计"
+    }
+  ],
+  "limitations": [
+    "τ²-bench held-out 样本只有 Retail 40 个、Airline 20 个任务，且用户由 LLM 模拟。",
+    "full-base leaderboard PR 附有逐任务 trajectories，但本报告未逐条重放；held-out 表没有置信区间或第三方独立复现。",
+    "full base=train∪test，包含用于提炼 guidelines 的 train tasks；相关 PR 截至复核时仍 open/custom/modified-prompts/expected Unverified。",
+    "技术报告明确是 preliminary IBM Technical Report，愿景中的事务、层级权限、淘汰与审计等仍有大量 open directions。",
+    "没有验证长期在线学习、跨分布迁移、恶意经验或 memory poisoning 条件。",
+    "support count 只是重复出现次数，不能单独等同于规则正确概率。",
+    "AppWorld 与 τ²-bench 都有较强验证器，结论不能直接外推到开放式研究与写作任务。"
+  ]
+}

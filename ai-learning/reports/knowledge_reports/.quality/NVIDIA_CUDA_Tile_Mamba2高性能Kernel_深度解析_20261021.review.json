@@ -1,0 +1,768 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/NVIDIA_CUDA_Tile_Mamba2高性能Kernel_深度解析_20261021.md",
+  "quality_tier": "important",
+  "revision_round": 3,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "20261022-mamba2-cutile-r3-primary-gpt56sol",
+        "independent_context": true,
+        "explicit_model_override": true,
+        "override_reason": "用户明确指定 Revision 3 独立 Reviewer 使用 gpt-5.6-sol"
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 96,
+        "request_coverage": 95,
+        "reasoning_quality": 94,
+        "readability": 96,
+        "limitations": 94
+      },
+      "score_reasons": {
+        "evidence_fidelity": "当前正文相对已通过的 Revision 2 仅有两处逐字符差异：§7.3 新增 benchmark API 版本漂移说明，以及第九节标题调整。新增段落与 S01/S14 一致：博客示例传入 `use_cupti=True`，而 TileGym@3a871364 的测试使用 `benchmark_framework` 与 CUDA Graph 路径。C01–C10 的事实、数字和来源关系均保持上一轮已核验状态。",
+        "request_coverage": "R01–R08 继续完整满足。标题现改为静态审计要求的“九、局限、思考与追问”；新增 API 漂移说明还补齐了结果复现边界，没有删减任何原有要求。",
+        "reasoning_quality": "Revision 2 的算法、数值稳定性、资源映射和 benchmark 边界推理保持不变。新增段落进一步区分“公开 harness 存在”与“博客片段可逐字运行”，避免把版本不同的计时 API 混为同一复现路径。",
+        "readability": "章节标题符合静态审计措辞，结构与数学渲染未变化；上一轮已实测的 62 个 inline-math 与 5 个 display-math 仍对应相同公式正文。新增版本漂移段落位置明确，增强了独立复现说明。",
+        "limitations": "上一轮唯一轻微遗漏——博客 CUPTI 示例与固定快照 CUDA Graph benchmark API 的漂移——已在 §7.3 明确补充。其余局限继续准确区分代码/测试可读、结果未独立复现、无 raw latency/方差/profiler/误差分布及无端到端训练数据。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C08",
+        "C09",
+        "C10"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08"
+      ],
+      "source_content_map": [
+        {
+          "id": "R3-SM01",
+          "title": "Mamba-2 递推符号、A/dt 正负号与 h_t 输出索引",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S03",
+            "S05",
+            "S14"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01"
+          ],
+          "notes": "相关正文未变；A<0、dt>0 与更新后 h_t 的校正继续与原论文、Mamba2.py 和 TileGym 测试一致。"
+        },
+        {
+          "id": "R3-SM02",
+          "title": "SSD 四步、Triton 五阶段与 cuTile 三 kernel 映射",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S03",
+            "S04",
+            "S06",
+            "S07",
+            "S14"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02"
+          ],
+          "notes": "相关正文未变；fwd_pass_state 对步骤 2+3、compute_out 对步骤 1+4/BMM+chunk-scan 的融合映射继续准确。"
+        },
+        {
+          "id": "R3-SM03",
+          "title": "CB 全局内存边界与 tile 资源解释",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S09",
+            "S10",
+            "S14"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03",
+            "U04"
+          ],
+          "notes": "相关正文未变；CB 未显式写回 global array，64 KiB 仅表示逻辑数据量，物理映射由编译器决定。"
+        },
+        {
+          "id": "R3-SM04",
+          "title": "B300 benchmark 环境、图读数与外推边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S14"
+          ],
+          "matched_coverage_unit_ids": [
+            "U05"
+          ],
+          "notes": "硬件、软件、1.14×–1.82×、token/state 范围和视觉读数未变化并继续受到来源支持。"
+        },
+        {
+          "id": "R3-SM05",
+          "title": "TileGym forward/backward、reference、容差与 perf harness",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S14"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04",
+            "U07"
+          ],
+          "notes": "公开 symbols、Mamba2ProblemSpec、正确性容差和 T/S perf matrix 的陈述未变，继续与固定源码一致。"
+        },
+        {
+          "id": "R3-SM06",
+          "title": "博客 CUPTI 示例与固定快照 benchmark API 漂移",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S14"
+          ],
+          "matched_coverage_unit_ids": [
+            "U05",
+            "U07"
+          ],
+          "notes": "§7.3 新增段落准确说明博客 `use_cupti=True` 与快照 `benchmark_framework`/CUDA Graph 路径的差异，并提醒不能逐字复制博客片段。"
+        },
+        {
+          "id": "R3-SM07",
+          "title": "chunk 内 prefix-sum difference 的数值稳定性边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S04",
+            "S07",
+            "S14"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04"
+          ],
+          "notes": "相关正文未变；已公开测试门禁与尚缺长序列、极端衰减及端到端训练数据的边界继续准确。"
+        },
+        {
+          "id": "R3-SM08",
+          "title": "cuTile 编程模型、平台约束与可移植性",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S08",
+            "S09",
+            "S10",
+            "S11",
+            "S12",
+            "S13"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03",
+            "U06"
+          ],
+          "notes": "相关正文未变；array/tile/block、shape/alias/hint 约束及功能与性能可移植性区分继续准确。"
+        },
+        {
+          "id": "R3-SM09",
+          "title": "Part IV 与 training/prefill/decode 系统集成",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S03",
+            "S04",
+            "S05",
+            "S15"
+          ],
+          "matched_coverage_unit_ids": [
+            "U08"
+          ],
+          "notes": "相关正文与 S15 evidence 登记均未变化；phase 路由、state contract、packed boundaries、cache 与 fallback 仍符合来源边界。"
+        },
+        {
+          "id": "R3-SM10",
+          "title": "数学公式渲染与章节静态审计标题",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01",
+            "U02",
+            "U04"
+          ],
+          "notes": "公式正文与 Revision 2 完全一致；第九节标题已精确改为“局限、思考与追问”，满足静态审计要求。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07",
+        "R08"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "建议通过。利用上一轮保存的 Revision 2 全文逐字符比较后，当前报告实际有两处变化：新增 §7.3 benchmark API 漂移段落，以及第九节标题调整；除这两处外正文完全一致。新增事实已由 S01/S14 核验，且补齐上一轮唯一轻微建议。evidence 的 15 个来源、10 个 claims 和 8 个 coverage units 保持已通过的事实结构。未发现新的不支持 claim、遗漏要求或硬失败。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 95.2,
+    "evaluated_on": "2026-10-22",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "b0d02ec27c62b1cd849ef7bc71e362f215ddca05f3a6af49f23f7cbe725ec0d9",
+    "evidence_sha256": "2213e37d6aaf43dfd621be4e695951617138788ccef45be4288ff119fee7b942"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex",
+            "run_id": "20261021-mamba2-cutile-primary-gpt56sol",
+            "independent_context": true,
+            "explicit_model_override": true,
+            "override_reason": "用户明确指定独立 Reviewer 使用 gpt-5.6-sol"
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 72,
+            "request_coverage": 82,
+            "reasoning_quality": 80,
+            "readability": 76,
+            "limitations": 62
+          },
+          "score_reasons": {
+            "evidence_fidelity": "C01 的 A/dt 正负号与 h_t 索引校正准确，C02 的 SSD/Triton/cuTile 映射、C03 的 CB 不显式写回全局内存、C05–C06 的 B300 口径也得到一手来源支持。但 C08 与其唯一关键来源 S14 直接相反：固定提交明确含 Mamba-2 forward/backward 源码、测试和 benchmark harness；该错误贯穿结论、§7.3、局限与开放问题，属于关键来源误读。另有 Part IV 被正文列入参考资料却未登记进 evidence sources。",
+            "request_coverage": "R01–R07 均有实质回答，逐符号公式、四步/五阶段/三 kernel、内存与 benchmark 边界覆盖充分。R08 要求核对 TileGym 公开状态，但报告给出了与固定快照相反的结论，因此该核心要求未被正确满足。",
+            "reasoning_quality": "算法分解、phase 路由、benchmark 外推边界和数值稳定性疑问整体推理清楚。主要缺陷是没有基于实际 TileGym 源码更新判断：公开 backward 与正确性容差会改变“尚未发布/无 tolerance”的论证；§5.3 仍可保留为长序列独立验证问题，但需删除错误前提。§3.3 对 64 KiB tile 的物理资源压力属于合理分析，应明确编译器并不保证 tile 的具体物理存放。",
+            "readability": "结构、表格和术语解释优秀，62 处 `$...$` 行内数学在 GitHub GFM 中正常渲染。但 5 组核心展示公式使用 `\\[...\\]`，GitHub 实测生成 0 个 display-math 节点并把定界符显示为普通方括号，直接影响递推、chunk 闭式和 log-space 公式的阅读。",
+            "limitations": "对厂商自报、单卡 B300、无绝对延迟/raw result、kernel 与端到端差异的限制写得充分。但“backward 未公开”“TileGym main 无代码”“无法查看 tolerance/harness”等多项限制已被 S14 固定快照反证，导致本维度的事实可靠性明显不足。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C08",
+            "C09",
+            "C10"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07",
+            "U08"
+          ],
+          "source_content_map": [
+            {
+              "id": "SM01",
+              "title": "Mamba-2 单步递推的符号、正负号与输出状态索引",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S03",
+                "S05",
+                "S07",
+                "S14"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01"
+              ],
+              "notes": "原论文给出 y_t=C_t^T h_t；Mamba2.py 使用 A=-exp(A_log) 与 softplus(dt+dt_bias)，TileGym 测试同样生成 a<0、dt>0。报告 §2.1 与 §5.4 已正确校正 NVIDIA 博客中的 dt 符号和 h_{t-1} 索引笔误。"
+            },
+            {
+              "id": "SM02",
+              "title": "SSD 四步、Triton 五个前向阶段与 cuTile 三个前向 kernel 的映射",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S03",
+                "S04",
+                "S06",
+                "S07",
+                "S14"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "Minimal SSD 的四步为 intra-chunk output、chunk state、state passing、state-to-output；Triton combined forward 依次调用 cumsum、chunk_state、state_passing、bmm_chunk、chunk_scan；cuTile 的 fwd_pass_state 合并步骤 2+3，compute_out 合并 BMM/chunk-scan（数学步骤 1+4）。报告映射准确。"
+            },
+            {
+              "id": "SM03",
+              "title": "CB 中间矩阵、tile 抽象与物理资源解释",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S01",
+                "S09",
+                "S10",
+                "S14"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03",
+                "U04"
+              ],
+              "notes": "博客和固定源码都显示 cb_tile 在 compute_out 内生成、使用且未显式 store 到 global array；“CB 不落全局内存”成立。cuTile 文档同时说明 tile 不一定有物理内存表示，具体落在寄存器/TMEM/Shared Memory 由编译器决定；§3.3 对 64 KiB 逻辑 tile 的资源与 occupancy 压力应标为分析而非已测事实。"
+            },
+            {
+              "id": "SM04",
+              "title": "B300 benchmark 的硬件、软件、shape、图读数与外推边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S14"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05",
+                "U06"
+              ],
+              "notes": "官方文字支持单张 B300 SXM6、指定软件栈与 1.14×–1.82× forward-kernel speedup；图轴为 1K–256K tokens、state 64–512，未打印逐柱数值。报告的四行视觉读数与图相符并标注 ±0.02–0.03，且正确拒绝外推到端到端训练/推理。固定测试 harness 还确认 forward perf 配置使用 batch=4、groups=1、heads=8、head=64、chunk=128、BF16/FP32。"
+            },
+            {
+              "id": "SM05",
+              "title": "TileGym 固定主分支快照中的 Mamba-2 forward 实现",
+              "importance": "core",
+              "assessment": "missing",
+              "source_ids": [
+                "S14"
+              ],
+              "matched_coverage_unit_ids": [
+                "U07"
+              ],
+              "notes": "报告 C08、结论第 7 条与 §7.3 声称固定快照无 Mamba-2 文件/symbol；实际 tree@3a871364 含 src/tilegym/ops/cutile/mamba2.py、tests/ops/test_mamba2.py，且注册 mamba2_chunk_forward。该核心来源单元被反向陈述。"
+            },
+            {
+              "id": "SM06",
+              "title": "TileGym 已公开的 backward、正确性容差与性能测试 harness",
+              "importance": "core",
+              "assessment": "missing",
+              "source_ids": [
+                "S14"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04",
+                "U07"
+              ],
+              "notes": "同一固定快照注册 mamba2_chunk_backward，含 forward/backward reference、assert_close 容差（forward 2e-2、final state 1e-2；backward 若干输出最高 8e-2）及 T=2^10..2^18、S=64..512 的 perf tests。报告 §5.3、§6.3、§9 和 evidence limitations 中“backward/tolerance/harness 未公开”的表述需重写；仍可保留“未发布 raw benchmark 结果与长序列误差曲线”。"
+            },
+            {
+              "id": "SM07",
+              "title": "prefix-sum difference 的数值稳定性证据边界",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S01",
+                "S04",
+                "S07",
+                "S14"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "Part III 对全局 cumsum 差分的 catastrophic cancellation 警告真实，cuTile 也在 chunk 内使用 d_i-d_j，因此提出独立长序列验证合理。但固定源码已有 FP32 chunk cumsum、forward/backward reference 与容差测试；报告不应以“backward/tolerance 未发布”为论据，也不能把有限 chunk 的差分与被否定的全序列构造直接等同。"
+            },
+            {
+              "id": "SM08",
+              "title": "training/prefill/decode 与系统集成含义",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S03",
+                "S04",
+                "S05"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08"
+              ],
+              "notes": "论文与官方代码区分 chunked parallel forward 和单步 recurrent update，报告据此提出 prefill/decode 双路径、state contract、autotune cache 与 fallback，推断有明确标记且边界合理。Tri Dao Part IV 也已独立核验，但它未在 evidence sources 中取得独立 source id。"
+            },
+            {
+              "id": "SM09",
+              "title": "cuTile array/tile/block 模型、平台约束与版本漂移",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S08",
+                "S09",
+                "S10",
+                "S11",
+                "S12",
+                "S13"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03",
+                "U06"
+              ],
+              "notes": "block-level execution、compile-time power-of-two tile shape、global array/alias 约束、target hints、Quickstart 与 Hopper release-note 差异均被报告准确覆盖。"
+            },
+            {
+              "id": "SM10",
+              "title": "核心数学公式在 GitHub GFM 中的实际渲染",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01",
+                "U02",
+                "U04"
+              ],
+              "notes": "对当前报告全文调用 GitHub Markdown renderer：62 个 `$...$` 行内公式均生成 inline math；5 个 `\\[...\\]` 展示公式生成 0 个 display math 节点并显示为普通方括号文本。应改为 `$$...$$` 或 fenced `math`。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06",
+            "S07",
+            "S08",
+            "S09",
+            "S10",
+            "S11",
+            "S12",
+            "S13",
+            "S14"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04",
+            "R05",
+            "R06",
+            "R07",
+            "R08"
+          ],
+          "unsupported_claims": [
+            "C08"
+          ],
+          "missing_requirements": [
+            "R08"
+          ],
+          "hard_failures": [
+            "critical_claim_unsupported"
+          ],
+          "notes": "判定建议：revise。阻断项是 C08/S14 的直接矛盾，精确锚点为结论第 7 条、§7.3（“TileGym 发布缺口”）、§9 第 4 条及后续追问；固定快照实际含完整 forward/backward 源码和测试。连带修订 §5.3、§6.3、§9 与 evidence limitations 中“backward/tolerance/harness 未公开”的表述，只保留 raw result、绝对延迟、长序列误差曲线等真实缺口。渲染方面，行内 `$...$` 正常，5 组 `\\[...\\]` 块公式在 GitHub GFM 不渲染。其余核心技术内容，尤其 C01–C06 与 C10，整体可靠。审查优先使用 eacli typed capabilities；web.read 对长 PDF/源码截断、GitHub tree API 返回 500、vision.chart-analysis 超时后，才对相同官方 URL 做最小只读下载并核验固定提交。"
+        }
+      ],
+      "decision": {}
+    },
+    {
+      "revision_round": 2,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex",
+            "run_id": "20261022-mamba2-cutile-r2-primary-gpt56sol",
+            "independent_context": true,
+            "explicit_model_override": true,
+            "override_reason": "用户明确指定 Revision 2 独立 Reviewer 使用 gpt-5.6-sol"
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 94,
+            "request_coverage": 94,
+            "reasoning_quality": 93,
+            "readability": 96,
+            "limitations": 91
+          },
+          "score_reasons": {
+            "evidence_fidelity": "Revision 2 已纠正上一轮关键来源误读。C01 的 A<0/dt>0 与 h_t 索引、C02 的 SSD 四步/Triton 五阶段/cuTile 三 kernel 映射、C03 的 CB 不显式写回全局内存、C05–C06 的 B300 forward benchmark 口径均与一手来源一致。C08 现准确反映 TileGym@3a871364 已含 forward/backward、Mamba2ProblemSpec、容差和 perf harness；S15 Part IV 也已登记。仅余轻微复现细节：博客示例使用 `common.benchmark(..., use_cupti=True)`，而固定快照的 `tests/common.py` 已改为 CUDA Graph benchmark API、无该参数，说明示例与快照存在接口漂移。",
+            "request_coverage": "R01–R08 均被正确回答。报告逐符号解释递推和 chunk 公式，完整说明四步/五阶段/三 kernel 的融合关系，覆盖内存、并行、布局、数值、benchmark、可移植性、TileGym 公开状态与推理框架集成。R08 的公开状态和数值证据边界已按固定源码重写。",
+            "reasoning_quality": "报告把来源事实、厂商 benchmark 与分析推断区分清楚。数值稳定性章节现明确区分作者针对全序列 cumulative-difference 的警告与 cuTile 有限 chunk 差分，并纳入已公开 reference/tolerance 后再提出长序列、极端衰减和训练稳定性缺口。64 KiB 被限定为逻辑数据量，物理资源映射交给编译器，避免了把抽象 tile 直接等同于寄存器或 Shared Memory。",
+            "readability": "结构、符号表、流程表、代码路径和自测题使报告可独立阅读。GitHub GFM 实测生成 62 个 inline-math 节点和 5 个 display-math 节点；Revision 1 中不渲染的五组核心公式已全部修复。术语与事实/分析标记清晰。",
+            "limitations": "局限部分现准确保留真实缺口：未在 B300 独立复现、无博客图逐点 raw result/方差/profiler/误差分布、无 backward speedup 和端到端训练数据、不能跨 GPU 或跨 Triton 实现外推。同时明确公开源码、测试容差与 harness 已存在。轻微遗漏是未说明博客 CUPTI 示例与当前 TileGym benchmark API 的版本漂移。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C08",
+            "C09",
+            "C10"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07",
+            "U08"
+          ],
+          "source_content_map": [
+            {
+              "id": "R2-SM01",
+              "title": "Mamba-2 递推符号、A/dt 正负号与 h_t 输出索引",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S03",
+                "S05",
+                "S14"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01"
+              ],
+              "notes": "官方代码和 TileGym 测试均使用 A<0、dt>0，原论文输出读取更新后的 h_t；报告 §2.1、§5.4 与结论第 6 条准确。"
+            },
+            {
+              "id": "R2-SM02",
+              "title": "SSD 四步、Triton 五阶段与 cuTile 三个 forward kernel 的融合映射",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S03",
+                "S04",
+                "S06",
+                "S07",
+                "S14"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "fwd_pass_state 合并 chunk-state/state-passing，compute_out 合并 BMM/chunk-scan，对应数学步骤 2+3 与 1+4；报告映射和并行轴与源码一致。"
+            },
+            {
+              "id": "R2-SM03",
+              "title": "CB 中间量、全局内存边界与 tile 物理资源解释",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S09",
+                "S10",
+                "S14"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03",
+                "U04"
+              ],
+              "notes": "cb_tile 在 compute_out 内生成和消费，未显式 store 成 [B,chunks,Q,Q] global array。报告现将 Q=128 的 64 KiB 明确为逻辑数据量，并把寄存器/TMEM/Shared Memory 映射限定为编译器决策与分析推断。"
+            },
+            {
+              "id": "R2-SM04",
+              "title": "B300 forward benchmark 环境、图读数和外推边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S14"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "单张 B300、软件栈、1.14×–1.82×、1K–256K tokens 与 state 64–512 均准确；视觉读数注明误差，且未外推为端到端训练或推理收益。TileGym harness 补充了 shape matrix，但没有博客逐点结果。"
+            },
+            {
+              "id": "R2-SM05",
+              "title": "TileGym 固定快照中的 forward/backward、reference、容差与 perf harness",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S14"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04",
+                "U07"
+              ],
+              "notes": "§7.3、结论第 7 条、§5.3、§6.3 和局限均已按 `src/tilegym/ops/cutile/mamba2.py` 与 `tests/ops/test_mamba2.py` 校正。forward/backward symbols、Mamba2ProblemSpec、最高 8e-2 的梯度容差和 T/S perf matrix 均被正确陈述。"
+            },
+            {
+              "id": "R2-SM06",
+              "title": "TileGym benchmark harness 与博客示例的版本接口",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S01",
+                "S14"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05",
+                "U07"
+              ],
+              "notes": "固定快照公开 harness，并在 `tests/config.py` 定义 warmup/rep 默认值；但博客示例的 `use_cupti=True` 不属于该快照 `common.benchmark` 的参数，当前 tests 使用 CUDA Graph `benchmark_framework`。报告未指出这项轻微 API 漂移，不影响 kernel 与结果边界结论。"
+            },
+            {
+              "id": "R2-SM07",
+              "title": "chunk 内 prefix-sum difference 的数值稳定性边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S04",
+                "S07",
+                "S14"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "报告现纳入 FP32 cumsum、forward/backward reference 与容差测试，并把剩余疑问限定为长序列误差曲线、极端衰减与端到端训练稳定性；没有再把有限 chunk 差分直接等同于 Part III 否定的全序列构造。"
+            },
+            {
+              "id": "R2-SM08",
+              "title": "cuTile 编程模型、平台约束与性能可移植性",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S08",
+                "S09",
+                "S10",
+                "S11",
+                "S12",
+                "S13"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03",
+                "U06"
+              ],
+              "notes": "array/tile/block、compile-time tile shape、alias 约束、target hints、Quickstart 与 Hopper release-note 差异以及功能/性能可移植性边界均准确。"
+            },
+            {
+              "id": "R2-SM09",
+              "title": "Part IV 系统含义与 training/prefill/decode 集成",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S03",
+                "S04",
+                "S05",
+                "S15"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08"
+              ],
+              "notes": "S15 已登记。报告围绕当前主题提炼了长序列 chunked SSD、单步 recurrent decode、packed sequence boundaries、state contract、autotune cache 与 fallback；未展开 Part IV 的 TP/SP 全部细节不影响本报告主问题。"
+            },
+            {
+              "id": "R2-SM10",
+              "title": "核心数学公式的 GitHub GFM 渲染",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01",
+                "U02",
+                "U04"
+              ],
+              "notes": "对当前全文调用 GitHub Markdown renderer，得到 62 个 inline-math 和 5 个 display-math 节点，且无残留 `\\[` 定界符；递推、chunk 闭式和 log-space 公式均正常渲染。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06",
+            "S07",
+            "S08",
+            "S09",
+            "S10",
+            "S11",
+            "S12",
+            "S13",
+            "S14",
+            "S15"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04",
+            "R05",
+            "R06",
+            "R07",
+            "R08"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "Revision 2 已解决上一轮全部阻断问题，建议通过。C08/S14 现在一致，R08 已满足；C09 的数值稳定性论证已纳入公开 reference/tolerance 并缩小外推；S15 已登记；64 KiB 只作为逻辑数据量；GitHub GFM 的 5 组展示公式已实测正常。唯一轻微改进项是注明博客 `use_cupti=True` 示例与固定 TileGym 快照当前 CUDA Graph benchmark API 的版本漂移，以免读者误以为示例可逐字运行。该问题不影响报告的核心事实、数字或结论。"
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 93.8,
+        "evaluated_on": "2026-10-22",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "4078faa2ad16d8a1c5ac474a99a2cde40f24785b0f680a1489381c45a00b4e61",
+        "evidence_sha256": "2213e37d6aaf43dfd621be4e695951617138788ccef45be4288ff119fee7b942"
+      }
+    }
+  ]
+}

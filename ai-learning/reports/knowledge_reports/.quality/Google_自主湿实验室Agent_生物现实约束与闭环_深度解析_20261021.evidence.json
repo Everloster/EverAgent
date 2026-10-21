@@ -1,0 +1,313 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/Google_自主湿实验室Agent_生物现实约束与闭环_深度解析_20261021.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-21",
+  "generator": {
+    "model": "glm-5.3",
+    "harness": "pi",
+    "run_id": "pi-glm53-final-editor-20261022-topblogs",
+    "explicit_model_override": false,
+    "override_reason": ""
+  },
+  "task": {
+    "summary": "将 Google Research 自主湿实验室技术博客及三篇配套论文做成 AI 深度学习报告，解释物理执行、实验反馈、算力经济和人机分工如何组成科学 Agent 闭环。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "读取 Google 博客原文与 VERID、aptamer、epitope excision 三篇一手论文"
+      },
+      {
+        "id": "R02",
+        "text": "解释自主湿实验室的物理状态、仿真门、实验反馈和 Agent 决策机制"
+      },
+      {
+        "id": "R03",
+        "text": "保留关键实验样本、时间、成本、hit rate、specificity、算力和 affinity 数字及口径"
+      },
+      {
+        "id": "R04",
+        "text": "区分组件级结果、端到端能力、厂商叙事与本文推断，并覆盖安全边界"
+      },
+      {
+        "id": "R05",
+        "text": "形成可独立阅读的中文报告，包含局限与思考和追问"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "primary",
+      "title": "Google Research: Grounding AI agents in biological reality",
+      "locator": "https://research.google/blog/grounding-ai-agents-in-biological-reality-building-blocks-for-autonomous-wet-labs/",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S02",
+      "kind": "primary",
+      "title": "Semantic Representation for Agentic Self-Play in Automated Laboratories (VERID)",
+      "locator": "https://www.gstatic.com/science-ai/verid_semantic_lab.pdf",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S03",
+      "kind": "primary",
+      "title": "Aptamers as a sandbox for lab-in-the-loop agentic molecular discovery",
+      "locator": "https://arxiv.org/abs/2610.24806",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S04",
+      "kind": "primary",
+      "title": "Agent-guided epitope excision enables economical de novo binder design",
+      "locator": "https://www.gstatic.com/science-ai/epitope_excision.pdf",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S05",
+      "kind": "primary",
+      "title": "PyLabRobot",
+      "locator": "https://github.com/PyLabRobot/pylabrobot",
+      "accessed_on": "2026-10-21"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "VERID 是建立在 PyLabRobot 之上的持久化语义数字孪生，提供 introspection、simulation gate、safe execution 与同步 trace dossier。",
+      "report_anchor": "四项核心服务",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S05"
+      ],
+      "evidence": "S01/S02 对四项服务与 PyLabRobot 基础的描述；S02 Figure 1 与 §2.1–2.4。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "VERID 仿真发现 8 个吸头至少跨 72.0 mm，超过 71.2 mm 槽长；持久状态支持通信故障点恢复，factorial diagnostic 将偏差定位为 +4.9 µL/+40.6% tip-wall carryover。",
+      "report_anchor": "持久状态支持故障恢复和因果诊断",
+      "support": "direct",
+      "source_ids": [
+        "S02"
+      ],
+      "evidence": "S02 Case Study 2 与 Figure 3；包含反转 7-channel assignment 后约 −28.6% deficit 随干枪头通道移动。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "VERID 物理 self-play 将继承经验后的染料混合推断 loss 从 307 mnats 降到 58 mnats，改善超过五倍。",
+      "report_anchor": "物理 self-play 学到可迁移的实验规则",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "S02 Case Study 3/Figure 4；MC-2A 307 mnats、MC-2B 58 mnats；S01 概括为 more than fivefold。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "Aptamer 闭环约每轮 1,000 个候选、约 10 天、约 $3/候选；论文精确统计 4,405 个测序构建体，包含三轮主实验与 supplementary Round 1b expansion pool。",
+      "report_anchor": "为什么选 aptamer",
+      "support": "direct",
+      "source_ids": [
+        "S03"
+      ],
+      "evidence": "S03 Abstract、Introduction、Methods 与 Figure 1；博客给出 7–10 天，报告采用论文约 10 天/$3，并保留 4,405 的 Round 1b 口径。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "α-thrombin 新设计候选 hit rate 从 0.0%（0/167）升至 26.0%（54/208）和 42.1%（131/311），最终 specificity 为 98.5%。",
+      "report_anchor": "两个靶标，两种失败模式",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S03"
+      ],
+      "evidence": "S03 Abstract/Results R.2/R.3；S01 同口径概括。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "Myoglobin hit rate 为 10.2%→3.7%→33.5%，specificity 为 75.0%→19.1%→72.4%；Agent 从 Round 2 数据诊断 97% cross-reactive binders 为非特异 G4。",
+      "report_anchor": "两个靶标，两种失败模式",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S03"
+      ],
+      "evidence": "S03 Results R.2/R.3 与 Figure 3；Round 3 通过 bead subtraction、限制 unclamped G4 和转向非 G4 scaffold 恢复。",
+      "critical": true
+    },
+    {
+      "id": "C07",
+      "claim": "Round 3 Myoglobin 库上多数 target-conditioned 3D、inverse folding、foundation model 与 G4 指标 ROC-AUC 约 0.36–0.52，ViennaRNA 两项为 0.729/0.763。",
+      "report_anchor": "真实实验为何不可替代",
+      "support": "direct",
+      "source_ids": [
+        "S03"
+      ],
+      "evidence": "S03 Figure 2D 与 Results R.2；12 metrics spanning 9 open-license tools，N=1,441。",
+      "critical": true
+    },
+    {
+      "id": "C08",
+      "claim": "Epitope excision 在 15 targets/3,666 designs 上 median interface RMSD 0.37 Å，88.2% 低于 1 Å、93.7% 低于 2 Å，平均 ranking ΔROC-AUC 为 −0.048。",
+      "report_anchor": "技术动机",
+      "support": "direct",
+      "source_ids": [
+        "S04"
+      ],
+      "evidence": "S04 Abstract、Figure 2 与 Discussion；论文同时披露个别 target 与 MSA 条件下的退化。",
+      "critical": true
+    },
+    {
+      "id": "C09",
+      "claim": "FAP 裁剪将单 fold 从约 59.3 s 降到 6.9 s（约 88%）；固定预算下 human-agent hybrid hit rate 9.33%、77.18 GPU-h，优于 human 5.06%/132.87 GPU-h 与 agent alone 6.18%/124.43 GPU-h。",
+      "report_anchor": "FAP 上的算力与 autonomy 对照",
+      "support": "direct",
+      "source_ids": [
+        "S04"
+      ],
+      "evidence": "S04 Figure 5 与 Table 1；hit 定义和 132.87 GPU-h 上限一致，B-variant 因 apparatus 改动不纳入 autonomy 比较。",
+      "critical": true
+    },
+    {
+      "id": "C10",
+      "claim": "FAP yeast-display 实验的四个代表性 enriched clones apparent K_D 为 3.0–9.1 nM，但论文仍要求后续可溶表达、domain specificity 与 inhibition assay。",
+      "report_anchor": "FAP 上的算力与 autonomy 对照",
+      "support": "direct",
+      "source_ids": [
+        "S04"
+      ],
+      "evidence": "S04 Figure 6、Discussion；5,000-member library、三轮 FACS 后进行克隆滴定。",
+      "critical": true
+    },
+    {
+      "id": "C11",
+      "claim": "[推测] 三项研究共同支持分层闭环：物理验证、真实负反馈、计算经济与人类战略缺一不可，但尚未形成已验证的端到端无人自主湿实验室。",
+      "report_anchor": "三层合在一起，才接近自主实验室",
+      "support": "inference",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "evidence": "S02 只以染料验证 VERID；S03 的 pulldown/PCR/sequencing/数据回传由人类研究者执行；S03/S04 尚未与 VERID 端到端集成；S01 将组合列为 next step。",
+      "critical": true
+    },
+    {
+      "id": "C12",
+      "claim": "当前系统保留非感染测试床、biosecurity screening、仿真先于执行和人类授权监督，因此更准确的描述是 human-directed autonomous discovery。",
+      "report_anchor": "安全框架与现实边界",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "S01 Safety 三项措施；S02 §4 安全架构与 operator approval gate。",
+      "critical": true
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "Google 博客统一问题设定、三项目主线与安全措施",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "一页结论"
+    },
+    {
+      "id": "U02",
+      "title": "VERID 架构、四项服务与物理状态模型",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S05"
+      ],
+      "report_anchor": "VERID"
+    },
+    {
+      "id": "U03",
+      "title": "VERID 三个 dye case studies、故障恢复、factorial diagnosis 与 self-play",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02"
+      ],
+      "report_anchor": "三个 case study 揭示的真实价值"
+    },
+    {
+      "id": "U04",
+      "title": "Aptamer 实验设计、周期、成本与两靶标三轮结果",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S03"
+      ],
+      "report_anchor": "Aptamer 闭环：Agent 先走捷径，再被现实纠正"
+    },
+    {
+      "id": "U05",
+      "title": "G4 specificity collapse、counter-screen、单克隆验证与 predictor benchmark",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S03"
+      ],
+      "report_anchor": "真实实验为何不可替代"
+    },
+    {
+      "id": "U06",
+      "title": "Epitope excision 15-target 验证、MSA/halo 边界与 FAP compute economics",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S04"
+      ],
+      "report_anchor": "Epitope excision：把算力花在结合位点附近"
+    },
+    {
+      "id": "U07",
+      "title": "Human、hybrid、agent-alone autonomy 对照与 yeast-display 验证",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S04"
+      ],
+      "report_anchor": "FAP 上的算力与 autonomy 对照"
+    },
+    {
+      "id": "U08",
+      "title": "端到端组合判断、安全、局限与下一步实验",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "三层合在一起，才接近自主实验室"
+    }
+  ],
+  "limitations": [
+    "VERID 的三个核心 case study 使用染料和水，尚未验证复杂生物协议的长期运行。",
+    "Aptamer 研究只有少量靶标和三轮闭环，严格 de novo 候选的 affinity 明显弱于改造 literature motifs。",
+    "Pooled hit、yeast-display enrichment 和 apparent K_D 不能替代药效、选择性、毒理和临床验证。",
+    "Epitope excision 的 MSA 与 crop 策略存在 target-specific 退化，不能作为普遍无损加速。",
+    "FAP autonomy 对比只有一个大靶标、一个三螺旋 scaffold 类和一个 LLM controller。",
+    "三项研究尚未被连接成一个端到端系统，Google 博客明确把组合列为下一步。",
+    "材料均来自项目方一手论文/博客，未发现独立实验室复现。"
+  ]
+}

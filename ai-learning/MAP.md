@@ -11,9 +11,9 @@
 |------|--------|---------------------|------|
 | 数学与ML基础 | ✓ | 待统计 | 待补 |
 | 深度学习核心 | ✓ | 待统计 | 待补 |
-| 大语言模型与NLP | ✓ | 待统计 | 待补 |
-| 前沿专题(Agent/推理/多模态) | ✓ | Agent Harness 三大流派、自进化路径、AI 编码 Agent 终端；**进化式 harness 一手实证（paper 46）**；**Harness 请求全链路（报文级 function calling/tool use + agentic loop）**；**ChatGPT Work 能力面逆向解析（商业化 harness 活样本 + 七层映射表，08-31）**；**GPT-6 Astra 指令架构（skills/AGENTS.md/task prompt 分层、发现预算与指令债务，10-15）**；**豆包手机 Memory 机制（全局记忆、可行动个人上下文、端云协同与公开/私有证据边界，10-19）** | 进化循环的过拟合防护、reward 消融、跨家族迁移机制待补；Work 子 agent 上下文传递、Ultra 档委派机制、auto-review 抗注入实证待补；**skill 触发 precision/recall 与多模型共用协议的回放评测待补**；**手机 Personal Context 的写入、删除与行动安全回归评测待补** |
-| 可解释性 & AI 安全 | ✓ | J-space/J-lens 全局工作空间（paper 45） | 点火实验、机制可解释性系统方法（SAE 等）待补 |
+| 大语言模型与NLP | ✓ | **Apple MLX + RDMA 桌面分布式推理（统一内存、pipeline/tensor parallel 与 Thunderbolt mesh，10-21）**；**CUDA Tile 加速 Mamba-2（SSD 分块、三内核融合与 B300 benchmark 边界，10-21）** | MLX RDMA 独立复现、跨 GPU 架构的 cuTile 性能与 Mamba-2 backward 待补 |
+| 前沿专题(Agent/推理/多模态) | ✓ | Agent Harness 三大流派、自进化路径、AI 编码 Agent 终端；**进化式 harness 一手实证（paper 46）**；**Harness 请求全链路（报文级 function calling/tool use + agentic loop）**；**ChatGPT Work 能力面逆向解析（商业化 harness 活样本 + 七层映射表，08-31）**；**GPT-6 Astra 指令架构（skills/AGENTS.md/task prompt 分层、发现预算与指令债务，10-15）**；**豆包手机 Memory 机制（全局记忆、可行动个人上下文、端云协同与公开/私有证据边界，10-19）**；**ALTK-Evolve 学习型 Memory（轨迹蒸馏、dosage 与 middleware 治理，10-21）**；**Google 自主湿实验室 Agent（VERID、真实负反馈与人机闭环，10-21）** | 进化循环的过拟合防护、reward 消融、跨家族迁移机制待补；Work 子 agent 上下文传递、Ultra 档委派机制、auto-review 抗注入实证待补；**skill 触发 precision/recall 与多模型共用协议的回放评测待补**；**手机 Personal Context 的写入、删除与行动安全回归评测待补**；**学习型 Memory 的长期污染/遗忘与自主实验室端到端组合评测待补** |
+| 可解释性 & AI 安全 | ✓ | J-space/J-lens 全局工作空间（paper 45）；**NVIDIA OpenShell + Sentry Agent 运行时安全（软件沙箱、Policy Prover、凭据代理与 DPU 带外监督，10-21）** | 点火实验、机制可解释性系统方法（SAE 等）待补；Sentry 独立实现/红队与 capability lease 实测待补 |
 | **AI 行业与商业观察** | ✓ | 伪智力繁荣评论批判（07-13）、Anthropic 人才信号核实（07-14）、Evoken 陈冕访谈精读（07-29）、《Intelligence Curse》智能诅咒精读（07-30）、《AI应用创业生死录》Evoken三产品商业分析（07-31）、**《中国AI创业与一级市场故事线2022底-2026》从模型信仰到应用求生——三幕迁徙+全融资轮次表+机构视角(07-31)、**Anthropic《Economic Scenarios for Transformative AI》经济情景模型精读（09-11，wiki: anthropic_econ_scenarios）、**DeepSeek 算子工程师自白《我不得不把才华埋葬在昨天》精读与延伸研究（09-16，wiki: craft_displacement）**、**Personal Context 正交论：PC 五层解剖+构建工程+三段链条（10-10，用户今日思考驱动，wiki: personal-context-orthogonality；缝合乱翻书275四赌注/Laya Jevons/bitter_lesson）** | 「应用时代」信号追踪（2027-01）、薄毛利打穿点建模、judgment护城河证伪信号、国资接棒是续命还是改写规则、应用层估值洼地会否修复、IPO后二级市场重估、**经济情景模型 2027 判别点回访（modest 是否被排除）**、**"AI 写算子 ≥ 刘胜与"2027 年中回访**、**L5 委托层协议（DELEGATION.md 待建）/跨产品投影最小充分集/画像固化度量** |
 
 ---
@@ -33,6 +33,8 @@
 ---
 
 ## 更新日志
+
+- 2026-10-21：完成顶尖厂商技术博客 Top 5 深度学习批次。模型效率线新增 Apple MLX + RDMA（统一内存不等于跨机共享内存；pipeline 先扩容、tensor parallel 依赖低延迟 collective）与 NVIDIA CUDA Tile Mamba-2（SSD 分块到三 forward kernels，官方 B300 加速 1.14×–1.82× 但无 raw benchmark/backward）。Agent 线新增 IBM ALTK-Evolve（Retail Pass⁴ 57.5%→67.5%，Airline 证明 guideline dosage 需按领域评估；Memory 应有 admission、provenance、隔离和遗忘）与 Google 自主湿实验室（VERID 物理数字孪生、aptamer counter-screen 纠正 G4 捷径、FAP 上 human-agent hybrid 比全自主更高效）。AI 安全线新增 NVIDIA OpenShell/Sentry，明确 OpenShell 已开源、Sentry 仍属计划交付，并把 alignment、软件 enforcement 与 DPU 带外信任域分层。五篇均使用 report-v2 important 证据账本与独立复核。
 
 - 2026-10-15：Agent/Harness 工程线新增《GPT-6 Astra 指令架构：从 Prompt 堆叠到按需控制》。以 OpenAI 开发者博客为主材料，并用 GPT-6 提示指南、Build skills、AGENTS.md 官方文档交叉核对。增量：① skill description 定位为受预算约束的路由标签（默认初始清单 2% context，未知窗口 8,000 characters，过量会截短/省略）；② `AGENTS.md` 定位为常驻控制面，默认合并上限 32 KiB；③模型越强，旧脚手架越可能形成指令债务；④任务 prompt 应明确授权、完成定义与停止条件；⑤EverAgent 静态审计：根+AI 领域协议 21,482 bytes，占默认上限 65.6%，优先处理重复规则与常驻历史说明。同步纠偏旧《Agent Skills 生态深度解析》的“永不撑爆”表述，更新 skill_curation/agent_harness 概念页，三问汇入 open-questions。
 
