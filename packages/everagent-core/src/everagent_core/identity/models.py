@@ -18,7 +18,7 @@ ENV_KEYS = {
     "minimax-code": ("MINIMAX_MODEL",), "qoderclicn": ("QODERCN_MODEL",),
 }
 OBSERVATION_SOURCES = {
-    "codex-turn-context", "codex-thread-state", "pi-session-runtime", "trae-thread-runtime",
+    "codex-turn-context", "codex-thread-state", "pi-session-runtime", "trae-thread-runtime", "claude-session-runtime",
     "orca-agent-session", "herdr-agent-session", "desktop-session-api",
 }
 

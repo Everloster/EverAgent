@@ -48,10 +48,17 @@ App 身份或版本可见不代表当前模型可见；无法核实时保持 unk
 | Codex | 当前 thread 的 `turn_context.model`；长 turn 用精确 SQLite 运行态索引与同 thread 的新鲜 usage 元数据核对 |
 | Pi | shell 工具每次启动清除继承值，再从当前 session/model 注入的 `PI_SESSION_ID`、`PI_MODEL` |
 | TRAE | 精确 thread 的运行日志模型字段与请求时间；支持原有 thread alias，嵌套 Codex 不借外层 ID |
+| Claude Code | 精确 UUID session 的原生 assistant `message.model`；绑定当前调用方进程创建时间、cwd 和新鲜记录，不借配置中的模型 |
 
 读取器只取当前调用方元数据；Codex 日志尾部有 4 MiB 上限，SQLite 只读查询指定 thread 的模型字段。
 配置默认值、同目录的其他会话、全局最近日志与无来源的环境变量不构成核实。原生读取失败保留提示与未核实状态，
 未把观察接口定义本身当作覆盖证据。自动来源和未知回退都进入身份回归测试。
+
+Claude Code 从自身用户配置目录的 `projects/<cwd 编码>/<session UUID>.jsonl` 读取元数据。
+调用方需保留真实 `CLAUDE_CODE_SESSION_ID`；无人值守 wrapper 同时用原生 `--session-id` 启动对应 UUID。
+读取器只解码 session、cwd、时间、assistant UUID 与模型字段，跳过对话正文；文件尾部上限 4 MiB，
+单行上限 128 KiB。缺记录、关闭 session persistence、错误 cwd、sidechain、重启、过期或模型字段缺失
+均不核实。该规则不把普通 Python executor 识别为 Agent，也不允许静态 `AGENT_ID` 署名。
 
 模型声明要求 `--user-confirmed`，它表示用户本次明确指定，不能由 Agent 根据配置自行补旗标。
 receipt 仅存在本机用户状态目录；默认 4 小时，最长 12 小时。harness 进程或 session/terminal 改变、

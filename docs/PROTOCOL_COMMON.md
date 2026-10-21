@@ -40,7 +40,7 @@ Co-Authored-By: Aiden
 > 私仓 eacli 随包携带同源 core，绑定私仓门禁；安装态身份与会话无需相邻 checkout。
 
 **提交前必须有模型依据**：先自动读取运行时的精确会话证据；只有读取不到时才由用户明确指定。
-Codex 当前 thread、Pi 当前 shell context 与 TRAE thread 读取路径见 [身份契约](./AGENT_SESSION.md#模型证据与声明)。
+Codex 当前 thread、Pi 当前 shell context、TRAE thread 与 Claude Code UUID session 读取路径见 [身份契约](./AGENT_SESSION.md#模型证据与声明)。
 配置默认值、一般环境提示、全局最近日志、历史对话和 `AGENT_ID` 都不能自动放行。
 自动核实仍失败时，请用户给出当前模型 ID，再运行：
 

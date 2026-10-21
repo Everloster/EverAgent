@@ -160,6 +160,115 @@ class CodexObservationTests(unittest.TestCase):
         self.assertNotEqual(git.signing_evidence(value), git.signing_evidence({**value, "observation_ref": "new-turn"}))
 
 
+class ClaudeObservationTests(unittest.TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory(prefix="everagent-claude-model-")
+        self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name).resolve()
+        self.now = time.time()
+        patches = [patch.object(declarations, "safe_home", return_value=self.root),
+                   patch.object(observations.Path, "cwd", return_value=self.root),
+                   patch.object(models, "HOME", self.root),
+                   patch.object(processes, "process_chain", return_value=[owner("claude")]),
+                   patch.dict(os.environ, {"CLAUDE_CODE_SESSION_ID": THREAD,
+                                           "ANTHROPIC_MODEL": "misleading-default"}, clear=True)]
+        for item in patches:
+            item.start(); self.addCleanup(item.stop)
+        import re
+        project = re.sub(r"[^a-zA-Z0-9]", "-", str(self.root))
+        self.path = self.root / ".claude/projects" / project / (THREAD + ".jsonl")
+        self.path.parent.mkdir(parents=True)
+        self.write()
+
+    def record(self, model="observed-claude-model", **changes):
+        row = {"type": "assistant", "sessionId": THREAD, "cwd": str(self.root),
+               "isSidechain": False, "timestamp": stamp(self.now), "uuid": TURN,
+               "message": {"content": [{"type": "text", "text": 'PRIVATE-DIALOG-SENTINEL \\"model\\": \\"wrong-model\\" ] }'}],
+                           "model": model}}
+        row.update(changes)
+        return json.dumps(row) + "\n"
+
+    def write(self, model="observed-claude-model", **changes):
+        self.path.write_text(self.record(model, **changes))
+
+    def test_native_assistant_metadata_wins_over_configuration(self):
+        value = models.model_evidence("claude-code")
+        self.assertEqual(value["model"], "observed-claude-model")
+        self.assertEqual(value["source"], "claude-session-runtime")
+        self.assertTrue(value["current_model_confirmed"])
+        self.assertFalse(value["user_model_declared"])
+        self.assertNotIn("PRIVATE-DIALOG-SENTINEL", json.dumps(value))
+        self.assertNotIn(str(self.root), json.dumps(value))
+
+    def test_conversation_bodies_are_skipped_without_json_decoding(self):
+        original = json.loads
+        def metadata_only(text, *args, **kwargs):
+            self.assertNotIn("PRIVATE-DIALOG-SENTINEL", text)
+            return original(text, *args, **kwargs)
+        with patch.object(observations.json, "loads", side_effect=metadata_only):
+            self.assertTrue(models.model_evidence("claude-code")["current_model_confirmed"])
+
+    def test_same_observation_survives_gate_and_model_switch_changes_it(self):
+        before = models.model_evidence("claude-code")
+        self.assertEqual(before["observation_ref"], models.model_evidence("claude-code")["observation_ref"])
+        self.write("new-observed-model", uuid="new-turn")
+        after = models.model_evidence("claude-code")
+        self.assertEqual(after["model"], "new-observed-model")
+        self.assertNotEqual(before["observation_ref"], after["observation_ref"])
+
+    def test_foreign_session_checkout_and_sidechain_are_rejected(self):
+        for changes in ({"sessionId": "foreign-session"}, {"cwd": str(self.root / "other")},
+                        {"isSidechain": True}, {"isSidechain": None}):
+            with self.subTest(changes=changes):
+                self.write(**changes)
+                self.assertFalse(models.model_evidence("claude-code")["current_model_confirmed"])
+
+    def test_latest_missing_proof_cannot_fall_back_to_an_older_model(self):
+        for changes in ({"message": {}}, {"timestamp": None}, {"uuid": None},
+                        {"isSidechain": None}, {"message": {"model": "<synthetic>"}}):
+            with self.subTest(changes=changes):
+                self.path.write_text(self.record() + self.record(**changes))
+                self.assertFalse(models.model_evidence("claude-code")["current_model_confirmed"])
+
+    def test_stale_record_file_and_restarted_process_are_rejected(self):
+        self.write(timestamp=stamp(self.now - 301))
+        self.assertFalse(models.model_evidence("claude-code")["current_model_confirmed"])
+        self.write()
+        os.utime(self.path, (self.now - 301, self.now - 301))
+        self.assertFalse(models.model_evidence("claude-code")["current_model_confirmed"])
+        self.write()
+        with patch.object(processes, "process_chain", return_value=[owner("claude", self.now + 5)]):
+            self.assertFalse(models.model_evidence("claude-code")["current_model_confirmed"])
+
+    def test_nested_harness_and_missing_native_id_never_search_history(self):
+        with patch.object(processes, "process_chain", return_value=[owner("claude"), {**owner("claude"), "pid": 999}]):
+            self.assertFalse(models.model_evidence("claude-code")["current_model_confirmed"])
+        with patch.dict(os.environ, {"CLAUDE_CODE_SESSION_ID": ""}), patch.object(observations, "_claude") as lookup:
+            self.assertFalse(models.model_evidence("claude-code")["current_model_confirmed"])
+        lookup.assert_not_called()
+
+    def test_bounded_incomplete_or_oversized_latest_record_blocks_reuse(self):
+        for tail in ('{"type":"assistant",', '{"type":"assistant",}',
+                     self.record(message={"model": "new-model", "content": "x" * observations.MAX_RECORD_BYTES})):
+            with self.subTest(length=len(tail)):
+                self.path.write_text(self.record() + tail)
+                self.assertFalse(models.model_evidence("claude-code")["current_model_confirmed"])
+
+    def test_duplicate_metadata_and_escaped_body_keys_do_not_override_model(self):
+        self.path.write_text(self.record().replace('"model": "observed-claude-model"',
+                                                  '"model": "observed-claude-model", "model": "forged"'))
+        self.assertFalse(models.model_evidence("claude-code")["current_model_confirmed"])
+
+    def test_no_persistence_or_symlink_stays_unverified(self):
+        original = self.path.read_text()
+        self.path.unlink()
+        self.assertFalse(models.model_evidence("claude-code")["current_model_confirmed"])
+        other = self.root / "unrelated.jsonl"
+        other.write_text(original)
+        self.path.symlink_to(other)
+        self.assertFalse(models.model_evidence("claude-code")["current_model_confirmed"])
+
+
 class OtherRuntimeObservationTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory(prefix="everagent-other-model-")

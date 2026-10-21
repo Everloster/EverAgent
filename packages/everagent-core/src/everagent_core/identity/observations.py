@@ -206,9 +206,135 @@ def _trae(native: str, owner: dict, now: float) -> dict | None:
     return None
 
 
+def _json_value_end(text: str, start: int, limit: int) -> int:
+    """Skip one JSON value without materializing strings or nested bodies."""
+    stack, quoted, position = [], False, start
+    while position < limit:
+        char = text[position]
+        if quoted:
+            if char == "\\":
+                position += 2
+                continue
+            if char == '"':
+                quoted = False
+                if not stack:
+                    return position + 1
+        elif char == '"':
+            quoted = True
+        elif char in "{[":
+            stack.append("}" if char == "{" else "]")
+            if len(stack) > 32:
+                raise ValueError("metadata-nesting-limit")
+        elif char in "}]":
+            if not stack:
+                return position
+            if stack.pop() != char:
+                raise ValueError("metadata-invalid-delimiter")
+            if not stack:
+                return position + 1
+        elif not stack and (char in "," or char.isspace()):
+            return position
+        position += 1
+    if quoted or stack:
+        raise ValueError("metadata-incomplete-value")
+    return position
+
+
+def _json_object_spans(text: str, start: int = 0, limit: int | None = None) -> dict:
+    """Return top-level value spans; do not decode unselected values."""
+    limit = len(text) if limit is None else limit
+    position = start
+    while position < limit and text[position].isspace():
+        position += 1
+    if position >= limit or text[position] != "{":
+        raise ValueError("metadata-not-object")
+    position += 1
+    spans = {}
+    while position < limit:
+        while position < limit and text[position].isspace():
+            position += 1
+        if position < limit and text[position] == "}":
+            if text[position + 1:limit].strip():
+                raise ValueError("metadata-trailing-data")
+            return spans
+        if position >= limit or text[position] != '"':
+            raise ValueError("metadata-invalid-key")
+        key, position = json.decoder.scanstring(text, position + 1)
+        if key in spans:
+            raise ValueError("metadata-duplicate-key")
+        while position < limit and text[position].isspace():
+            position += 1
+        if position >= limit or text[position] != ":":
+            raise ValueError("metadata-missing-colon")
+        position += 1
+        while position < limit and text[position].isspace():
+            position += 1
+        end = _json_value_end(text, position, limit)
+        if end <= position:
+            raise ValueError("metadata-empty-value")
+        spans[key] = (position, end)
+        position = end
+        while position < limit and text[position].isspace():
+            position += 1
+        if position < limit and text[position] == ",":
+            position += 1
+            if text[position:limit].lstrip().startswith("}"):
+                raise ValueError("metadata-trailing-comma")
+        elif position >= limit or text[position] != "}":
+            raise ValueError("metadata-missing-delimiter")
+    raise ValueError("metadata-incomplete-object")
+
+
+def _claude_metadata(raw: bytes) -> dict:
+    """Select native routing/model metadata while skipping conversation bodies."""
+    text = raw.decode("utf-8")
+    spans = _json_object_spans(text)
+    row = {key: json.loads(text[start:end]) for key, (start, end) in spans.items()
+           if key in {"type", "sessionId", "cwd", "timestamp", "uuid", "isSidechain"}}
+    if row.get("type") == "assistant" and "message" in spans:
+        message = _json_object_spans(text, *spans["message"])
+        if "model" in message:
+            start, end = message["model"]
+            row["model"] = json.loads(text[start:end])
+    return row
+
+
+def _claude(native: str, owner: dict, now: float) -> dict | None:
+    home, started = declarations.safe_home(), _started_at(owner)
+    if home is None or started is None or not re.fullmatch(
+            r"[0-9a-fA-F]{8}(?:-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}", native):
+        return None
+    root = Path(os.environ.get("CLAUDE_CONFIG_DIR") or home / ".claude").expanduser()
+    cwd = Path.cwd().resolve()
+    project = re.sub(r"[^a-zA-Z0-9]", "-", str(cwd))
+    path = root / "projects" / project / (native + ".jsonl")
+    if (not _regular(path) or not path.resolve().is_relative_to(root.resolve())
+            or not 0 <= now - path.stat().st_mtime <= MAX_AGE_SECONDS):
+        return None
+    for raw in reversed(_tail(path)):
+        if len(raw) > MAX_RECORD_BYTES:
+            return None
+        try:
+            row = _claude_metadata(raw)
+        except (ValueError, UnicodeError):
+            return None
+        if row.get("type") != "assistant" or row.get("isSidechain") is True:
+            continue
+        # Never borrow another session, checkout, old process or older model
+        # when the newest native assistant metadata is incomplete.
+        at, model = _timestamp(row.get("timestamp")), _model(row.get("model"))
+        if (row.get("isSidechain") is not False or row.get("sessionId") != native or row.get("cwd") != str(cwd)
+                or not isinstance(row.get("uuid"), str) or not row["uuid"]
+                or at is None or at < started - 2
+                or not 0 <= now - at <= MAX_AGE_SECONDS or model is None):
+            return None
+        return {"model": model, "source": "claude-session-runtime", "turn": row["uuid"]}
+    return None
+
+
 def collect(harness: str, scope: dict | None) -> dict | None:
     """Return only a model observation bound to the exact current caller."""
-    if scope is None or harness not in {"codex", "pi", "trae"}:
+    if scope is None or harness not in {"codex", "pi", "trae", "claude-code"}:
         return None
     try:
         native = _native_id(harness)
@@ -222,7 +348,8 @@ def collect(harness: str, scope: dict | None) -> dict | None:
         if sum(processes.matches_row(row, names) for row in processes.process_chain()) != 1:
             return None
         now = time.time()
-        found = _codex(native, owner, now) if harness == "codex" else _trae(native, owner, now) if harness == "trae" else _pi(native)
+        readers = {"codex": _codex, "trae": _trae, "claude-code": _claude}
+        found = readers[harness](native, owner, now) if harness in readers else _pi(native)
         if found:
             return {"harness": harness, "scope": scope, "observed_at": now,
                     "model": found["model"], "source": found["source"],
