@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "request_id": "req_podcast_linkstart_135_segmented_fallback_20261021",
+  "job_id": "segmented-fallback-over-ssh-after-typed-failures",
+  "status": "succeeded",
+  "device": "razer",
+  "silent": true,
+  "interactive_browser": false,
+  "audio_playback": false,
+  "artifact": {
+    "artifact_id": "pod_linkstart135_segmented_20261021",
+    "source_host": "www.xiaoyuzhoufm.com",
+    "source_sha256": "e864da37435d0f211f578bdd94f0bcdf6cb3ce9c30d4682216db252cea465585",
+    "audio_size": 690368590,
+    "language": "zh",
+    "segments": 2227,
+    "service_version": "whisper.cpp-v1.9.1-sm120-segmented-fallback",
+    "transcript_size": 110871,
+    "transcript_sha256": "e9ffe4ded0de2a01761a627e532f3a062aac13cdbc7ee651382e2ceb4828e352",
+    "quality": {
+      "repetition_guard": {
+        "passed": true,
+        "max_consecutive_identical": 1,
+        "repeated_text_sha256": null
+      }
+    }
+  },
+  "fallback": {
+    "reason": "two typed whole-audio runs failed repetition guard",
+    "typed_failures": [
+      {
+        "job_id": "job_podcast_1f91f484e3b077a0901f010e",
+        "language": "zh",
+        "failure_code": "repetition_guard"
+      },
+      {
+        "job_id": "job_podcast_01b876b71a33fac61727260a",
+        "language": "auto",
+        "failure_code": "repetition_guard"
+      }
+    ],
+    "method": "Razer-only 10-minute WAV segmentation against the same loopback whisper.cpp service; exact adjacent tail “拜拜” repetitions deduplicated; all other chunks retained the >3 hard failure threshold.",
+    "segment_seconds": 600,
+    "chunks": [
+      {
+        "index": 0,
+        "size": 19200162,
+        "segments": 308,
+        "max_repeat": 1
+      },
+      {
+        "index": 1,
+        "size": 19200194,
+        "segments": 327,
+        "max_repeat": 1
+      },
+      {
+        "index": 2,
+        "size": 19200194,
+        "segments": 333,
+        "max_repeat": 1
+      },
+      {
+        "index": 3,
+        "size": 19200194,
+        "segments": 348,
+        "max_repeat": 1
+      },
+      {
+        "index": 4,
+        "size": 19200194,
+        "segments": 388,
+        "max_repeat": 1
+      },
+      {
+        "index": 5,
+        "size": 19200194,
+        "segments": 371,
+        "max_repeat": 1
+      },
+      {
+        "index": 6,
+        "size": 10036332,
+        "segments": 155,
+        "max_repeat": 4
+      }
+    ]
+  },
+  "transfer": {
+    "mode": "eacli pull",
+    "atomic": true,
+    "local_path": "podcast-learning/reports/transcripts/2026-10-21_xiaoyuzhou-linkstart_vol135-ai-hardware-design.transcript.txt",
+    "verified_sha256": true
+  }
+}

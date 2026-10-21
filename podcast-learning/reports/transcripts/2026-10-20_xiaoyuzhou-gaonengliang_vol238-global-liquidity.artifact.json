@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "request_id": "req_podcast_gaonengliang_238_20261021",
+  "job_id": "job_podcast_f6b1b3226b6d14e1d2a4560c",
+  "status": "succeeded",
+  "device": "razer",
+  "silent": true,
+  "interactive_browser": false,
+  "audio_playback": false,
+  "artifact": {
+    "artifact_id": "pod_cf82547149060deed670f6f9",
+    "source_host": "www.xiaoyuzhoufm.com",
+    "source_sha256": "d7a09e93c1745b671b2664cbf9b2599e98c26820db1c5105228a52ffccc51624",
+    "audio_size": 999628878,
+    "language": "zh",
+    "segments": 2934,
+    "service_version": "whisper.cpp-v1.9.1-sm120",
+    "transcript_size": 150274,
+    "transcript_sha256": "abc1a768c5cf1b656b4ade1e07446a7dfec153bf4f554f173104ffa9f34fee7a",
+    "quality": {
+      "repetition_guard": {
+        "passed": true,
+        "max_consecutive_identical": 2
+      }
+    }
+  },
+  "transfer": {
+    "mode": "eacli pull",
+    "atomic": true,
+    "local_path": "podcast-learning/reports/transcripts/2026-10-20_xiaoyuzhou-gaonengliang_vol238-global-liquidity.transcript.txt",
+    "verified_sha256": true
+  }
+}

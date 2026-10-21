@@ -1,0 +1,272 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-21_xiaoyuzhou-linkstart_vol135-ai-hardware-design.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-21",
+  "generator": {
+    "model": "gpt-5.6-sol",
+    "harness": "codex",
+    "run_id": "generator-3684c79f7b19",
+    "explicit_model_override": false,
+    "override_reason": ""
+  },
+  "task": {
+    "summary": "深度学习 LinkStart 135，分析 AI 眼镜、折叠屏和 AI Native 硬件中的产品定义与设计取舍。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "使用 Razer 静默转写，保存 transcript、shownotes、polished 与 artifact receipt，并通过时间戳和重复审计。"
+      },
+      {
+        "id": "R02",
+        "text": "形成 deep、standalone 报告，覆盖十个 shownotes 核心单元、案例、数字边界、Limitations 与思考追问。"
+      },
+      {
+        "id": "R03",
+        "text": "如实记录两次重复保护失败和 Razer 分段回退，不把口播市场数字写成独立事实。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "local",
+      "title": "原始转写（Razer 分段 fallback）",
+      "locator": "podcast-learning/reports/transcripts/2026-10-21_xiaoyuzhou-linkstart_vol135-ai-hardware-design.transcript.txt",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S02",
+      "kind": "local",
+      "title": "结构化精编稿",
+      "locator": "podcast-learning/reports/transcripts/2026-10-21_xiaoyuzhou-linkstart_vol135-ai-hardware-design.polished.txt",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S03",
+      "kind": "local",
+      "title": "官方 shownotes 存档",
+      "locator": "podcast-learning/reports/transcripts/2026-10-21_xiaoyuzhou-linkstart_vol135-ai-hardware-design.shownotes.md",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S04",
+      "kind": "primary",
+      "title": "LinkStart Vol.135 官方节目页",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/6ad6fb05a09b94f787eb2cae",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S05",
+      "kind": "local",
+      "title": "两次 typed 失败、分段回退与传输回执",
+      "locator": "podcast-learning/reports/transcripts/2026-10-21_xiaoyuzhou-linkstart_vol135-ai-hardware-design.artifact.json",
+      "accessed_on": "2026-10-21"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "硬件开发门槛下降后，竞争重点从能否制造转向产品定义、交互和用户理解。",
+      "report_anchor": "制造门槛下降以后",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "节目开场与 02:06 单元直接讨论供应链成熟、AI 工具和设计价值。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "Rabbit R1 的案例说明缺少现成品类隐喻会提高用户理解和沟通成本。",
+      "report_anchor": "Rabbit R1",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "07:32 单元明确讨论产品很酷但用户难理解用途。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "Meta 与 Even Realities 的差异表明屏幕、摄像头、重量、隐私和社会接受度属于同一产品定义权衡。",
+      "report_anchor": "AI 眼镜的关键取舍",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "10:39、43:45 等单元讨论感知优先、显示与无摄像头路线。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "设计可以通过降低理解、获客和学习成本进入硬件单位经济，但节目数字仅是客户案例和经验口径。",
+      "report_anchor": "设计进入商业模型",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "24:48 与收尾单元给出投流成本、点击和销量差异案例。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "节目主张 AI 最终应作为产品技术条件中的变量，完整问题仍是给谁用、在哪用和解决什么需求。",
+      "report_anchor": "AI 硬件成熟的标志",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "50:07 与收尾问答反复明确 AI 标签本身不构成产品定义。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "[推测] EverAgent 产品应把模型和 Skill 组织成用户可理解的能力，减少实现细节造成的选择负担。",
+      "report_anchor": "AI 硬件成熟的标志",
+      "support": "inference",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "由节目“技术隐藏、回到用户问题”的原则外推到本项目。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "AI Native 产品形态与开发门槛",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "制造门槛下降以后"
+    },
+    {
+      "id": "U02",
+      "title": "Rabbit R1 与用户隐喻",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "Rabbit R1"
+    },
+    {
+      "id": "U03",
+      "title": "Meta 眼镜感知优先",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "AI 眼镜的关键取舍"
+    },
+    {
+      "id": "U04",
+      "title": "工业设计参与产品定义",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "制造门槛下降以后"
+    },
+    {
+      "id": "U05",
+      "title": "折叠屏形态与工程取舍",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "折叠屏"
+    },
+    {
+      "id": "U06",
+      "title": "设计影响曝光、订阅和品牌",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "设计进入商业模型"
+    },
+    {
+      "id": "U07",
+      "title": "AI 化妆镜的摄像头、屏幕与隐私",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "摄像头、屏幕与隐私"
+    },
+    {
+      "id": "U08",
+      "title": "公共基因测序设备为何可去屏幕",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "摄像头、屏幕与隐私"
+    },
+    {
+      "id": "U09",
+      "title": "AI 硬件褪去科技感",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "AI 硬件成熟的标志"
+    },
+    {
+      "id": "U10",
+      "title": "AI 作为产品进化变量与人的关系",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "AI 硬件成熟的标志"
+    }
+  ],
+  "limitations": [
+    "两次整集 typed 转写因片尾“拜拜”重复触发保护，最终使用 Razer 同一服务分段转写并保留完整回执。",
+    "分段边界可能导致少量断句，shownotes 十个单元均可定位且本地审计通过。",
+    "市场份额、获客和销量数字为口播或客户案例，未独立核验。"
+  ]
+}

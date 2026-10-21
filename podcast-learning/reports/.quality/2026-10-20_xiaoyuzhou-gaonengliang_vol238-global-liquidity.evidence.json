@@ -1,0 +1,368 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-20_xiaoyuzhou-gaonengliang_vol238-global-liquidity.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-21",
+  "generator": {
+    "model": "gpt-5.6-sol",
+    "harness": "codex",
+    "run_id": "generator-38c052a1c98d",
+    "explicit_model_override": false,
+    "override_reason": ""
+  },
+  "task": {
+    "summary": "深度学习高能量宏观漫谈 112，重构全球流动性、美债、AI CAPEX 与中国融资结构的关系。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "使用 Razer 静默转写，保存 transcript、shownotes、polished 与 artifact receipt，并通过时间戳和重复审计。"
+      },
+      {
+        "id": "R02",
+        "text": "形成 deep、standalone 的单期学习报告，覆盖来源核心内容、关键案例、数字口径、Limitations 与思考追问。"
+      },
+      {
+        "id": "R03",
+        "text": "区分节目口播、嘉宾预测与分析者推断，并关联既有知识而不把二手转述写成独立事实。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "local",
+      "title": "原始转写（Razer worker）",
+      "locator": "podcast-learning/reports/transcripts/2026-10-20_xiaoyuzhou-gaonengliang_vol238-global-liquidity.transcript.txt",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S02",
+      "kind": "local",
+      "title": "结构化精编稿",
+      "locator": "podcast-learning/reports/transcripts/2026-10-20_xiaoyuzhou-gaonengliang_vol238-global-liquidity.polished.txt",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S03",
+      "kind": "local",
+      "title": "官方 shownotes 存档",
+      "locator": "podcast-learning/reports/transcripts/2026-10-20_xiaoyuzhou-gaonengliang_vol238-global-liquidity.shownotes.md",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S04",
+      "kind": "primary",
+      "title": "高能量 Vol.238 官方节目页",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/6ad73cbbef67611cac7972a7",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S05",
+      "kind": "local",
+      "title": "Razer artifact 与传输回执",
+      "locator": "podcast-learning/reports/transcripts/2026-10-20_xiaoyuzhou-gaonengliang_vol238-global-liquidity.artifact.json",
+      "accessed_on": "2026-10-21"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "9 月直接融资占比上升、财政落地偏慢和出口强于内需共同构成节目对中国经济结构的判断。",
+      "report_anchor": "中国数据的共同信号",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "由列出的 transcript、polished 与 shownotes 对应章节直接核对；分析性 claim 已标 inference。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "节目所谓全球集体缺钱，是高估值资产和新增融资需求争夺边际风险资金，而非货币物理消失。",
+      "report_anchor": "“集体缺钱”模型",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "由列出的 transcript、polished 与 shownotes 对应章节直接核对；分析性 claim 已标 inference。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "AI 技术长期趋势与公司估值必须分开，估值仍受现金流、资本开支和融资成本约束。",
+      "report_anchor": "AI 资本开支",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "由列出的 transcript、polished 与 shownotes 对应章节直接核对；分析性 claim 已标 inference。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "贸易顺差不会自动等量进入官方外储，企业持汇、结算方式、资本流动和估值变化都会影响结果。",
+      "report_anchor": "贸易顺差不等于外储同步增长",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "由列出的 transcript、polished 与 shownotes 对应章节直接核对；分析性 claim 已标 inference。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "新质生产力政策可理解为减少资本一窝蜂追逐少数热点并提高分层配置纪律。",
+      "report_anchor": "新质生产力",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "由列出的 transcript、polished 与 shownotes 对应章节直接核对；分析性 claim 已标 inference。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "债券股票融资占社融增量 49.48%",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "中国数据的共同信号"
+    },
+    {
+      "id": "U02",
+      "title": "政府债发行与财政支出偏慢",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "中国数据的共同信号"
+    },
+    {
+      "id": "U03",
+      "title": "出口超预期、消费弱恢复与投资偏弱",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "中国数据的共同信号"
+    },
+    {
+      "id": "U04",
+      "title": "非银存款减少与居民存款增加",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "中国数据的共同信号"
+    },
+    {
+      "id": "U05",
+      "title": "互联网助贷监管与居民短贷",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "中国数据的共同信号"
+    },
+    {
+      "id": "U06",
+      "title": "大型平台继续推广消费贷",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "中国数据的共同信号"
+    },
+    {
+      "id": "U07",
+      "title": "全球可调配资金接近不足假说",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "“集体缺钱”模型"
+    },
+    {
+      "id": "U08",
+      "title": "AI 估值受资金总量约束",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "AI 资本开支"
+    },
+    {
+      "id": "U09",
+      "title": "美联储与美国融资需求",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "“集体缺钱”模型"
+    },
+    {
+      "id": "U10",
+      "title": "强美元、美债与 AI 数据中心竞争",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "“集体缺钱”模型"
+    },
+    {
+      "id": "U11",
+      "title": "钱不够还是资产太贵",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "“集体缺钱”模型"
+    },
+    {
+      "id": "U12",
+      "title": "议息、科技财报和中期选举窗口",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "AI 资本开支"
+    },
+    {
+      "id": "U13",
+      "title": "AI 公司三季报看环比",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "AI 资本开支"
+    },
+    {
+      "id": "U14",
+      "title": "公募风格管理与仓位再平衡",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "中国资本市场"
+    },
+    {
+      "id": "U15",
+      "title": "中国明星科技股上市后波动",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "中国资本市场"
+    },
+    {
+      "id": "U16",
+      "title": "贸易顺差与外储不同步",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "贸易顺差不等于外储同步增长"
+    },
+    {
+      "id": "U17",
+      "title": "强制结汇与货币政策自主性",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "贸易顺差不等于外储同步增长"
+    },
+    {
+      "id": "U18",
+      "title": "国际贸易结算方式变化",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "贸易顺差不等于外储同步增长"
+    },
+    {
+      "id": "U19",
+      "title": "新质生产力政策与一级市场降温",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "新质生产力"
+    }
+  ],
+  "limitations": [
+    "宏观解释为嘉宾情景判断，不能替代因果识别。",
+    "shownotes 列出官方材料，但本报告未逐项重算全部数字。",
+    "强制结汇时间、部分估值单位和公司名在口播中存在冲突或误识别。"
+  ]
+}

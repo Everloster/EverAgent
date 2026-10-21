@@ -1,0 +1,246 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-21_xiaoyuzhou-zhangxiaojun_vol155-qiancheng-ecovacs.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-21",
+  "generator": {
+    "model": "gpt-5.6-sol",
+    "harness": "codex",
+    "run_id": "generator-6df35b1ce74e",
+    "explicit_model_override": false,
+    "override_reason": ""
+  },
+  "task": {
+    "summary": "深度学习张小珺对谈科沃斯钱程，分析企业接班、经营克制、品类培育和具身智能节奏。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "使用 Razer 静默转写，保存 transcript、shownotes、polished 与 artifact receipt，并通过时间戳和重复审计。"
+      },
+      {
+        "id": "R02",
+        "text": "形成 deep、standalone 的单期学习报告，覆盖来源核心内容、关键案例、数字口径、Limitations 与思考追问。"
+      },
+      {
+        "id": "R03",
+        "text": "区分节目口播、嘉宾预测与分析者推断，并关联既有知识而不把二手转述写成独立事实。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "local",
+      "title": "原始转写（Razer worker）",
+      "locator": "podcast-learning/reports/transcripts/2026-10-21_xiaoyuzhou-zhangxiaojun_vol155-qiancheng-ecovacs.transcript.txt",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S02",
+      "kind": "local",
+      "title": "结构化精编稿",
+      "locator": "podcast-learning/reports/transcripts/2026-10-21_xiaoyuzhou-zhangxiaojun_vol155-qiancheng-ecovacs.polished.txt",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S03",
+      "kind": "local",
+      "title": "官方 shownotes 存档",
+      "locator": "podcast-learning/reports/transcripts/2026-10-21_xiaoyuzhou-zhangxiaojun_vol155-qiancheng-ecovacs.shownotes.md",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S04",
+      "kind": "primary",
+      "title": "张小珺 155 官方节目页",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/6ad4dacd641ef406308d86e5",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S05",
+      "kind": "local",
+      "title": "Razer artifact 与传输回执",
+      "locator": "podcast-learning/reports/transcripts/2026-10-21_xiaoyuzhou-zhangxiaojun_vol155-qiancheng-ecovacs.artifact.json",
+      "accessed_on": "2026-10-21"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "接班不能只移除旧结构，还要识别旧结构由创始人长板补偿的功能并建立替代能力。",
+      "report_anchor": "接班的第一道难题",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "由列出的 transcript、polished 与 shownotes 对应章节直接核对；分析性 claim 已标 inference。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "钱程用农耕而非游牧描述品类战略，并建议 70%–80% 复制能力、20%–30% 提升能力。",
+      "report_anchor": "“农耕经营”",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "由列出的 transcript、polished 与 shownotes 对应章节直接核对；分析性 claim 已标 inference。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "科沃斯对具身智能采取预研和产业布局，嘉宾预测 B 端 3–5 年、家庭 5–10 年，暂不追热度下注。",
+      "report_anchor": "AI 与具身智能",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "由列出的 transcript、polished 与 shownotes 对应章节直接核对；分析性 claim 已标 inference。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "继任中的组织更新既包括年轻人进入关键岗位，也包括保留务实、稳健和长期经营文化。",
+      "report_anchor": "父子传承",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "由列出的 transcript、polished 与 shownotes 对应章节直接核对；分析性 claim 已标 inference。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "经营欲望逐渐从外部证明转向团队责任、自我实现和把企业带入下一时代。",
+      "report_anchor": "欲望从哪里来",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "由列出的 transcript、polished 与 shownotes 对应章节直接核对；分析性 claim 已标 inference。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "企二代性格、资源与早期失落",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "§1"
+    },
+    {
+      "id": "U02",
+      "title": "德国市场快速胜利与全局组织碰壁",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "§2"
+    },
+    {
+      "id": "U03",
+      "title": "成为 CEO 后对创始人长板和组织短板的反思",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "接班的第一道难题"
+    },
+    {
+      "id": "U04",
+      "title": "欲望、克制和能力不匹配风险",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "§3"
+    },
+    {
+      "id": "U05",
+      "title": "农耕式品类培育、能力复制与竞争",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "§3"
+    },
+    {
+      "id": "U06",
+      "title": "AI、具身智能和家庭机器人节奏",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "§4"
+    },
+    {
+      "id": "U07",
+      "title": "父子信任、旧部、年轻管理者和文化传承",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "§5"
+    },
+    {
+      "id": "U08",
+      "title": "企业全球化与未来十年目标",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "§6"
+    },
+    {
+      "id": "U09",
+      "title": "责任、自我实现和个人追寻",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "§6"
+    }
+  ],
+  "limitations": [
+    "德国份额、出货量和竞争数据为嘉宾自述，未回公司公告核验。",
+    "CEO 自述可能弱化员工、渠道和投资者的不同视角。",
+    "访谈较少讨论股权、董事会、授权和退出等制度问题。"
+  ]
+}

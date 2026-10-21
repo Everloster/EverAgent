@@ -75,7 +75,7 @@ RTX 5090 绝对吞吐远低于数据中心卡（FP32 累积下 Tensor Core 还�
 通信带宽受限 → 只用通信需求温和的并行维度（§3.1.3, S=p10）：
 
 - **DP**（主通信是优化器周边的 ReduceScatter/AllGather）+ **PP**（只在 stage 边界交换 hidden state），**不用 TP**（每层内部都有频繁集合通信）。
-- 自定义 **app-dp 排序**：把每个 PP 组放在节点内拓扑相近的 GPU 上，降低对通信延迟的敏感度——偏离 Megatron 默认 rank 排序。
+- 自定义 **pp-dp 排序**：把每个 PP 组放在节点内拓扑相近的 GPU 上，降低对通信延迟的敏感度——偏离 Megatron 默认 rank 排序。
 - 生产配置：Phase 1 用 24 卡（3 节点）、PP=2 layout (18|10)、DP=12，中位吞吐 238 TFLOP/s/卡；Phase 2 用 96 卡、PP=4 layout (9|9|9|1)、DP=24，192 TFLOP/s/卡（Amdahl 定律使梯度同步占比上升）。加权 MFU 约 73%——注意口径：混合精度加权峰值 P_eff=(0.72/419+0.28/209.5)⁻¹≈327 TFLOP/s，不是 BF16-only 满血 MFU（S=p11）。
 
 ### 3.2 三个细颗粒度的工程决策
@@ -164,14 +164,16 @@ $$\rho_t(W) = \frac{\eta_t \lVert u_t\rVert_F}{\lVert W_t\rVert_F}$$
 
 **生产 schedule**（右面板 Figure 6 + R=run_puro_2b.sh）：
 
-- **Phase 1（438.8B tokens）**：open-ended power 衰减 $\eta_t = min + (max-min)(1+t/\tau)^{-p}$，$p=0.5$、$\tau$=1.536M samples；effective LR 从 ~5e-2 降到 1.04e-2。不设衰减地平线，尾巴保留续训路径（数据分布演化时可以直接接着跑）（S=p15; R=puro-megatron-ext.md:95-107）。
-- **Phase 2（960.0B tokens）**：从 ~1e-2 接入**长线性衰减**（而非「稳定段+短尾降」）到 1e-5——把观察 1/2 落到生产：高初始 ELR + 长衰减，让 loss 下降发生在训练全程。
+- **Phase 1（438.8B tokens）**：open-ended power 衰减 $\eta_t = min + (max-min)(1+t/\tau)^{-p}$，$p=0.5$、$\tau$=1.536M samples；base LR 从 5e-3 降到 1.04e-3，对应 MuonH 矩阵的 effective LR 从 ~5e-2 降到 1.04e-2。不设衰减地平线，尾巴保留续训路径（数据分布演化时可以直接接着跑）（S=p15; R=puro-megatron-ext.md:95-107）。
+- **Phase 2（960.0B tokens）**：base LR 从 1.04e-3 接入**长线性衰减**（而非「稳定段+短尾降」）到 1e-5；按 m=10 换算，MuonH 矩阵的 ELR 是 1.04e-2→1e-4。这样才是同一口径下的“高初始 ELR + 长衰减”，让 loss 下降发生在训练全程。
 
 ## 7. 数据配方：proxy benchmarking 方法论
 
 ### 7.1 核心思想：用能力向量代替单一样本分
 
 跨领域可比的单一样本级质量分难以设计，论文改为对候选**数据切片**做受控续训实验（§3.6, S=p17-18, Figure 9）：每个切片从同一 Qwen3-0.6B checkpoint 续训 2000 步（约 8.4B tokens，candidate 占比爬升到 80%、86B base replay 递减），在固定 15 benchmark 上评测得**能力向量**（GSM8K/MATH/MBPP/HumanEval/C-Eval/WinoGrande/...）。
+
+这个 proxy 设计适合比较候选切片，却不能直接证明某个切片是性能变化的因果来源：HF 数据集卡明确提示实验没有额外的 base-only continuation 对照。因此能力向量应理解为同一配方下的筛选信号，而非脱离训练设置仍成立的因果质量分。
 
 三条切片采样规则（S=p18）：
 
@@ -216,7 +218,9 @@ $$\rho_t(W) = \frac{\eta_t \lVert u_t\rVert_F}{\lVert W_t\rVert_F}$$
 
 **课程构造**（组件内、保混合权重）：有分数组件按分数排序（分数只在源内解释，**不做全局排名**）、无分数组件随机序；按累计 token 质量算归一化 rank；切成 **376 个桶 × ~2.5B tokens**，每桶从每个组件抽 1/376——跨组件混合权重逐桶保持（S=p15-16, Figure 7）。
 
-**生产 CMA run**：从 step 218k 恢复、base LR 固定 4.08e-5（Hyperball LR = 4.08e-4 = MuonH 矩阵的 ELR），训至 222,569 步，对 steps 222,100/222,200/222,300/222,400/222,500/222,569 **六个 checkpoint 等权平均**（只平均模型参数、不平均优化器状态；窗口 469 步 ≈ 2.95B tokens，相邻间距 100 步 ≈ 0.63B）得到发布模型（S=p16, p56 §H.3）。与 `run_puro_2b.sh` 的 `phase2-constant-continuation` 分支逐参数对上：脚本 `--lr 4.077248127291725e-05` 即论文 4.08e-5 的未舍入值；步数自洽（341,867,221 samples ÷ GBS 1536 = 222,569.3，恰为最后一个被平均的 checkpoint 步号）（R=run_puro_2b.sh:150-171）。一个未解细节：脚本 `--non-persistent-ckpt-num-to-keep 4` 只保留 4 个非持久 checkpoint，六个平均输入如何凑齐（训练途中离线导出？）论文与 repo 均未说明。
+**生产 CMA run**：从 step 218k 恢复、base LR 固定 4.08e-5（Hyperball LR = 4.08e-4 = MuonH 矩阵的 ELR），训至 222,569 步，对 steps 222,100/222,200/222,300/222,400/222,500/222,569 **六个 checkpoint 等权平均**（只平均模型参数、不平均优化器状态；窗口 469 步 ≈ 2.95B tokens，相邻间距 100 步 ≈ 0.63B）得到发布模型（S=p16, p56 §H.3）。与 `run_puro_2b.sh` 的 `phase2-constant-continuation` 分支逐参数对上：脚本 `--lr 4.077248127291725e-05` 即论文 4.08e-5 的未舍入值；步数自洽（341,867,221 samples ÷ GBS 1536 ≈ 222,569.8，对应最后一个被平均的 222,569 checkpoint）（R=run_puro_2b.sh:150-171）。一个未解细节：脚本 `--non-persistent-ckpt-num-to-keep 4` 只保留 4 个非持久 checkpoint，六个平均输入如何凑齐（训练途中离线导出？）论文与 repo 均未说明。
+
+这里还要保留两个方法边界：论文引用的参考 CMA 方法默认使用 EMA，而 PuRo 对最后六个 checkpoint 做简单等权平均；215k 与 218k 两个续训起点也不是严格匹配消融，结果只能说明本次实验选择 218k 更好，不能证明它是普适最优点（S=p56 §H.3）。
 
 **消融**（15 benchmark 平均, S=p16, Figure 13b）：
 
@@ -246,7 +250,7 @@ $$\rho_t(W) = \frac{\eta_t \lVert u_t\rVert_F}{\lVert W_t\rVert_F}$$
 
 ### 10.1 评测口径
 
-15 benchmarks 两群：数学/代码（GSM8K、MATH、sanitized-MBPP、HumanEval，GEN greedy 解码 + 确定性后处理）与推理/知识（MMLU、MMLU-Pro、ARC-C/E、BoolQ、CSQA、HellaSwag、PIQA、SIQA、WinoGrande、BBH，PPL 评分）。OpenCompass 统一管线、固定 checkpoint/tokenizer revision 与数据快照；OLMES 惯例下 CF/MCF 双式**每模型独立取优**。总分 P = 15 项无权平均（§4.1, S=p20-21）。
+15 benchmarks 可按内容分成数学/代码与推理/知识两群，但评分方式另有一条边界：GSM8K、MATH、sanitized-MBPP、HumanEval、MMLU-Pro 与 BBH 共 6 项使用 GEN greedy 解码 + 确定性后处理，其余 9 项使用 PPL。OpenCompass 统一管线、固定 checkpoint/tokenizer revision 与数据快照；OLMES 惯例下 CF/MCF 双式**每模型独立取优**。总分 P = 15 项无权平均（§4.1, S=p20-21）。
 
 Math/Code 群（Table 4, S=p21）：
 
@@ -293,16 +297,17 @@ PuRo-2B 超 Qwen2-1.5B 3.21 分、距 Qwen2.5-1.5B 4.02 分；同代对标里 Qw
 2. **复现的软门槛被驱动修改卡住**。P2P/GDR 的带宽收益依赖修改版 NVIDIA 驱动（EULA 限制不可公开），他人复现只能用原厂驱动、跨节点带宽打折（S=p10）。加上 RTX 5090 无公开租赁渠道（$0.31/h 是 5 年摊销估计）——「可负担」的可达性对第三方要再打折扣。
 3. **评测是自家协议**。15 benchmark 集合、OLMES 双式取优、确定性后处理都是自家口径；与各家官方数字不可直接比。好在对所有对比模型一视同仁，且公开了管线。
 4. **代际选择**。「接近 Qwen2.5-1.5B」的对标是 2024 年模型；同代 Qwen3-1.7B-Base 在同一表里高 15 分。这不否定成本主张，但「性能对标」的表述要小心引用。
-5. **基准污染承认**。CD/CMA 的课程优势部分可能来自后期数据污染基准（作者自己指出，S=p16），靠「SFT 后优势保持」辩护。
+5. **基准污染承认**。CD/CMA 的课程优势部分可能来自后期数据污染基准（作者自己指出，S=p16），靠「SFT 后优势保持」辩护。发布表也没有把中文能力作为主要目标或单列中文 benchmark；虽然训练数据含中文，这份 15 项均分不能代表中文综合能力（S=p38 附录 A）。
 6. **理论侧的可追问点**：MuonH vs Muon 的归因实验在 170M BF16 上做，2B FP8 生产配置上是否同构未单独验证；参数路由（哪些矩阵进 MuonH）凭尺度不变性直觉选择、未见逐类路由消融；「逻辑矩阵」分别 NS 的收益同样缺独立消融（仅作为生产配置出现）。
 7. **开放度的裂缝比摘要说的更宽：四类资产四种 license**。论文摘要称「data, code, and model weights under Apache 2.0」（S=p1），实测：HF 模型卡 Apache 2.0（权重）✓；HF 数据集卡 license=other——混合上游条款，Apache 2.0 仅覆盖项目自产的文档/manifest/处理产物，**NVIDIA 控制的 Nemotron-CC-v2 与 Nemotron-Pretraining-Code-v1 Synthetic-Code 分区禁止原始再分发**；GitHub Puro-Megatron=Other/NOASSERTION；GitHub Kaiyuan-Spark=Apache-2.0。且 SFT/curriculum 代码、评测套件明确排除在公开仓外（R=ORIGIN_COMMITS.md:45-53）——「全流程开放」中后训练一段只有论文与 checkpoint，没有代码。
 8. **$4.4K 的精确身份**：HF 模型卡口径比论文摘要严——$4.4K 对应 **Uniform-Phase2-1of2 中间 checkpoint**（非 canonical 终点）；「$5090」标题数字与账本无严格对应（最接近的是 CMA Phase 2 的 $5.05K），是 RTX 5090 谐音的品牌化选择 [推测]。
-9. **元数据级瑕疵**：HF 两张模型卡的 bibtex 与 v2 PDF 题名页作者名单不一致（PDF 含 Chengxia Li、无 Kaiyue Wen；HF bibtex 反之——MuonH 原作者 Wen 在 PDF 中只出现在致谢与引文 [99]）。2026-10-15 的 arXiv API 元数据已经与 PDF 一致，无法复现早期“arXiv 也不一致”的说法；引用时以 PDF 题名页或当前 arXiv 元数据为准。
+9. **元数据级瑕疵**：HF 模型卡与数据集卡的 bibtex 与 v2 PDF 题名页作者名单不一致（PDF 含 Chengxia Li、无 Kaiyue Wen；HF bibtex 反之——MuonH 原作者 Wen 在 PDF 中只出现在致谢与引文 [99]）。2026-10-15 的 arXiv API 元数据已经与 PDF 一致，无法复现早期“arXiv 也不一致”的说法；引用时以 PDF 题名页或当前 arXiv 元数据为准。
 10. **HF 评论区独有事实**：pszemraj 质疑 419 TFLOPS 是 FP32-accumulate 口径（消费级 Blackwell sm120 上半速）、问是否试过 FP16 累积；作者答「明显伤害模型性能」但无论文数字——此问答只存在于 HF papers 页，正文无 FP16-acc 消融。
+11. **算力赞助也是成本解释的一部分**。论文致谢与脚注说明 Yanfu Investments 提供了 GPU 资源；这不改变 rental-equivalent 成本账，但提醒读者，团队真实获得硬件、机房与运维条件的路径不等于第三方按 $0.31/GPU-h 即可复现。
 
 ### 11.1 外部反响速写
 
-- **有实质内容的独立评论极少**（截至 2026-10-15）：kenashe.ai（2026-08-28）三点质疑——compute cost ≠ total cost、Qwen 对比只在自设 15 任务协议内成立、消费卡改变的是「谁能做实验」而非「谁自动赢」——并建议复用该配方做窄域课程实验而非再造通用弱模型（与本报告 §11.1/§11.3 的批判独立同构）。cctest.ai 强调 $4.4K 是本集合+本协议的拟合值。未发现 HN/Reddit 专题帖。
+- **有实质内容的独立评论极少**（截至 2026-10-15）：kenashe.ai（2026-08-28）三点质疑——compute cost ≠ total cost、Qwen 对比只在自设 15 任务协议内成立、消费卡改变的是「谁能做实验」而非「谁自动赢」——并建议复用该配方做窄域课程实验而非再造通用弱模型（与本报告 §11 第 1、3 条的批判独立同构）。cctest.ai 强调 $4.4K 是本集合+本协议的拟合值。未发现 HN/Reddit 专题帖。
 - **二次传播失真两例**：AlphaSignal 把「approaches Qwen2.5-1.5B」写成「matching」；hankli.space 用通用 TE per-tensor delayed scaling 讲 FP8（实际是 DeepSeek-V3 式细粒度 blockwise）。CSDN/ModelScope 长文转述与论文逐项吻合。引用二手材料时按此分层。
 - **作者侧定位**：吕凯峰（@vfleaking，通讯作者）的 X 帖强调科学动机——「我们不仅缺理论，也正在失去在大规模上做受控训练实验的能力」；Puro 建立在两项前作上（CMA 入选 ICLR 2026 Oral；Hyperball/MuonH 即 Wen et al.）。一作罗开荣：清华计算机系三年级博士、姚班本科、陈文光组，曾主导开元-2B（鹏城脑海）；BAAI TALK 第 386 期（2026-09-17）有专题报告。
 

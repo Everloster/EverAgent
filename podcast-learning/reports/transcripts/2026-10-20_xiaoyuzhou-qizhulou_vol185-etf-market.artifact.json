@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "request_id": "req_podcast_qizhulou_185_20261021",
+  "job_id": "job_podcast_3491b6978e65ed24128f030e",
+  "status": "succeeded",
+  "device": "razer",
+  "silent": true,
+  "interactive_browser": false,
+  "audio_playback": false,
+  "artifact": {
+    "artifact_id": "pod_afe5f4504b92cb0402cd7a51",
+    "source_host": "www.xiaoyuzhoufm.com",
+    "source_sha256": "79662cab194f8c9286fed340eca3a1883033cd624147150684988e5a0b4d8b13",
+    "audio_size": 746799182,
+    "language": "zh",
+    "segments": 2438,
+    "service_version": "whisper.cpp-v1.9.1-sm120",
+    "transcript_size": 120856,
+    "transcript_sha256": "58345c9bca0a4e3d0694a1263d2297504325f6729480d4a52e5aaa591b7b0406",
+    "quality": {
+      "repetition_guard": {
+        "passed": true,
+        "max_consecutive_identical": 1
+      }
+    }
+  },
+  "transfer": {
+    "mode": "eacli pull",
+    "atomic": true,
+    "local_path": "podcast-learning/reports/transcripts/2026-10-20_xiaoyuzhou-qizhulou_vol185-etf-market.transcript.txt",
+    "verified_sha256": true
+  }
+}

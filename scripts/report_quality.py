@@ -1425,13 +1425,28 @@ def cross_model_sampling_status(policy: dict[str, Any] | None = None) -> dict[st
             generator = normalize_model(
                 str((evidence.get("generator") or {}).get("model") or ""), active
             )
-            reviewer_models = [
+            current_reviewer_models = [
                 normalize_model(
                     str(((item.get("reviewer") or {}).get("model") or "")), active
                 )
                 for item in review.get("reviews") or []
                 if isinstance(item, dict)
             ]
+            history = review.get("history") or []
+            previous_reviewer_models: list[str] = []
+            if isinstance(history, list) and history:
+                previous = history[-1]
+                if isinstance(previous, dict):
+                    previous_reviewer_models = [
+                        normalize_model(
+                            str(((item.get("reviewer") or {}).get("model") or "")), active
+                        )
+                        for item in previous.get("reviews") or []
+                        if isinstance(item, dict)
+                    ]
+            reviewer_models = list(
+                dict.fromkeys([*current_reviewer_models, *previous_reviewer_models])
+            )
             cross_model = any(
                 reviewer in strong_reviewers and reviewer != generator
                 for reviewer in reviewer_models

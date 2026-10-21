@@ -135,6 +135,8 @@ Reviewer 必须为每一维填写评分理由；`unsupported_claims` 和 `missin
 
 `important` 报告默认仍可由 GLM 5.3 新会话复核，但每累计 5 篇尚未经过强模型跨模型复核的报告，就抽取一篇交给 Sol；Sol 与生成器相同时再使用 Kimi K3。这样估计同模型盲区，同时避免每篇消耗稀缺额度。达到阈值后 context 门禁会阻断提交，直到完成一次符合条件的跨模型复核。查看当前进度：
 
+抽样统计同时承认当前 revision 与紧邻上一 revision 的强模型复核。后者用于“强模型发现问题 → 生成者修订 → 常规模型复验”的闭环，避免修订后把刚完成的强审抹掉并重复消耗稀缺额度；更早的历史 revision 不计入当前抽样状态。
+
 ```bash
 python3 scripts/report_quality.py sampling-status --json
 ```

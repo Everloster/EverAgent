@@ -1,0 +1,484 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-19_rss-guigu101_e256-astra-agent-robot-drug.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-21",
+  "generator": {
+    "model": "gpt-5.6-sol",
+    "harness": "codex",
+    "run_id": "generator-09b18c4ded68",
+    "explicit_model_override": false,
+    "override_reason": ""
+  },
+  "task": {
+    "summary": "深度学习硅谷101 E256，分析 GPT-6 Astra 对 Agent、机器人与 AI 制药的差异化影响。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "使用 Razer 静默转写，保存 transcript、shownotes、polished 与 artifact receipt，并通过时间戳和重复审计。"
+      },
+      {
+        "id": "R02",
+        "text": "形成 deep、standalone 的单期学习报告，覆盖来源核心内容、关键案例、数字口径、Limitations 与思考追问。"
+      },
+      {
+        "id": "R03",
+        "text": "区分节目口播、嘉宾预测与分析者推断，并关联既有知识而不把二手转述写成独立事实。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "local",
+      "title": "原始转写（Razer worker）",
+      "locator": "podcast-learning/reports/transcripts/2026-10-19_rss-guigu101_e256-astra-agent-robot-drug.transcript.txt",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S02",
+      "kind": "local",
+      "title": "结构化精编稿",
+      "locator": "podcast-learning/reports/transcripts/2026-10-19_rss-guigu101_e256-astra-agent-robot-drug.polished.txt",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S03",
+      "kind": "local",
+      "title": "官方 shownotes 存档",
+      "locator": "podcast-learning/reports/transcripts/2026-10-19_rss-guigu101_e256-astra-agent-robot-drug.shownotes.md",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S04",
+      "kind": "primary",
+      "title": "硅谷101 E256 官方节目页",
+      "locator": "https://sv101.fireside.fm/270",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S05",
+      "kind": "local",
+      "title": "Razer artifact 与传输回执",
+      "locator": "podcast-learning/reports/transcripts/2026-10-19_rss-guigu101_e256-astra-agent-robot-drug.artifact.json",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S06",
+      "kind": "local",
+      "title": "GPT-6 Astra 指令架构深度报告",
+      "locator": "ai-learning/reports/knowledge_reports/GPT6_Astra指令架构_从Prompt堆叠到按需控制_深度解析_20261015.md",
+      "accessed_on": "2026-10-21"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "同一模型升级在 coding、生物医学和机器人中的边际价值不同，行业兑现速度受各自验证周期约束。",
+      "report_anchor": "共同变化：模型开始进入行动层",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "由列出的 transcript、polished 与 shownotes 对应章节直接核对；分析性 claim 已标 inference。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "消费 Agent 商业闭环同时依赖执行能力、可验证身份、商家许可和单任务经济性。",
+      "report_anchor": "Agent：真正稀缺的不是点击能力",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "由列出的 transcript、polished 与 shownotes 对应章节直接核对；分析性 claim 已标 inference。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "Astra 提升机器人高层规划、失败反思与仿真生成，但没有消除实时控制、安全和本体可靠性。",
+      "report_anchor": "机器人：Astra 提升了“脑”的上层",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "由列出的 transcript、polished 与 shownotes 对应章节直接核对；分析性 claim 已标 inference。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "AI 制药当前主要瓶颈从干实验逐步转向湿实验反馈、隐性数据、验证周期与责任。",
+      "report_anchor": "AI 制药：干实验趋向自动化",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "由列出的 transcript、polished 与 shownotes 对应章节直接核对；分析性 claim 已标 inference。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "[推测] 下一代 harness 需要把预算、权限、设备和真实反馈纳入资源调度。",
+      "report_anchor": "三个行业最终汇合",
+      "support": "inference",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S06"
+      ],
+      "evidence": "由列出的 transcript、polished 与 shownotes 对应章节直接核对；分析性 claim 已标 inference。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "《消费101》上线与节目入口",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "omission_reason": "纯节目宣发，不影响本期研究问题。"
+    },
+    {
+      "id": "U02",
+      "title": "9 月 AI 大事记与三问",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "共同变化"
+    },
+    {
+      "id": "U03",
+      "title": "三领域实测 Astra",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "共同变化"
+    },
+    {
+      "id": "U04",
+      "title": "生物医学遗留软件与 Computer Use",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "Agent：真正稀缺"
+    },
+    {
+      "id": "U05",
+      "title": "Computer Use 与 API 的区别",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "Agent：真正稀缺"
+    },
+    {
+      "id": "U06",
+      "title": "Meta Muse 与云端浏览器阻塞",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "Agent：真正稀缺"
+    },
+    {
+      "id": "U07",
+      "title": "软硬件结合与身份确认",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "Agent：真正稀缺"
+    },
+    {
+      "id": "U08",
+      "title": "个人助手 Agent 获客与运行成本",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "Agent：真正稀缺"
+    },
+    {
+      "id": "U09",
+      "title": "Grok Bot 与企业采用分化",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "Agent：真正稀缺"
+    },
+    {
+      "id": "U10",
+      "title": "AI for Science 的 token 消耗",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "Agent：真正稀缺"
+    },
+    {
+      "id": "U11",
+      "title": "小模型追逐 benchmark 的边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "Agent：真正稀缺"
+    },
+    {
+      "id": "U12",
+      "title": "机器人快决策与 Astra 慢推理",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "机器人：Astra"
+    },
+    {
+      "id": "U13",
+      "title": "筷子夹球与自研模型对照",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "机器人：Astra"
+    },
+    {
+      "id": "U14",
+      "title": "Astra 对 sim-to-real 与本体硬件的影响",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "机器人：Astra"
+    },
+    {
+      "id": "U15",
+      "title": "TAMP 到 Agentic 规划",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "机器人：Astra"
+    },
+    {
+      "id": "U16",
+      "title": "因果与直觉物理数据标注",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "机器人：Astra"
+    },
+    {
+      "id": "U17",
+      "title": "Astra 在机器人任务中的短板",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "机器人：Astra"
+    },
+    {
+      "id": "U18",
+      "title": "Jev 快系统的潜在价值",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "机器人：Astra"
+    },
+    {
+      "id": "U19",
+      "title": "实验设计完成度与缺口",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "AI 制药"
+    },
+    {
+      "id": "U20",
+      "title": "湿实验验证与数据积累",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "AI 制药"
+    },
+    {
+      "id": "U21",
+      "title": "AI 设计快、真实验证慢",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "AI 制药"
+    },
+    {
+      "id": "U22",
+      "title": "AlphaFold 开源与垂直数据护城河",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "AI 制药"
+    },
+    {
+      "id": "U23",
+      "title": "湿实验公司 MCP/API",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "AI 制药"
+    },
+    {
+      "id": "U24",
+      "title": "人类科学家转向定义问题",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "AI 制药"
+    },
+    {
+      "id": "U25",
+      "title": "无上限 benchmark",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "AI 制药"
+    },
+    {
+      "id": "U26",
+      "title": "ART 与短反馈周期领域",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "AI 制药"
+    },
+    {
+      "id": "U27",
+      "title": "蒸馏、人类价值与三个行业的核心问题",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "三个行业最终汇合"
+    },
+    {
+      "id": "U28",
+      "title": "主播后记：能力曲线与行业验证周期",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "共同变化：模型开始进入行动层"
+    }
+  ],
+  "limitations": [
+    "公司融资、模型价格、产品状态与行业时间表多为节目口播，未逐项核验。",
+    "新产品和生物公司专名误识别较多，未确认项未进入核心结论。",
+    "三位嘉宾来自特定团队，不代表行业系统抽样。"
+  ]
+}

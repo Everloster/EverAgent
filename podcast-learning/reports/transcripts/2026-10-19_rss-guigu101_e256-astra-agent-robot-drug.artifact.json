@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "request_id": "req_podcast_sv101_e256_20261021",
+  "job_id": "job_podcast_9347c4648d815163e5b08212",
+  "status": "succeeded",
+  "device": "razer",
+  "silent": true,
+  "interactive_browser": false,
+  "audio_playback": false,
+  "artifact": {
+    "artifact_id": "pod_58715d26957330367419eb3f",
+    "source_host": "www.xiaoyuzhoufm.com",
+    "source_sha256": "44b532e590c3eb32c80d3fe6ad85602d089d389ad2b6f559e036a1ede94e82df",
+    "audio_size": 917760408,
+    "language": "zh",
+    "segments": 2742,
+    "service_version": "whisper.cpp-v1.9.1-sm120",
+    "transcript_size": 141345,
+    "transcript_sha256": "269a53b2b07e3a0ac56e1e3cc990d682adb2d82c51da1f4c07af56c1ec29a74c",
+    "quality": {
+      "repetition_guard": {
+        "passed": true,
+        "max_consecutive_identical": 2
+      }
+    }
+  },
+  "transfer": {
+    "mode": "eacli pull",
+    "atomic": true,
+    "local_path": "podcast-learning/reports/transcripts/2026-10-19_rss-guigu101_e256-astra-agent-robot-drug.transcript.txt",
+    "verified_sha256": true
+  }
+}

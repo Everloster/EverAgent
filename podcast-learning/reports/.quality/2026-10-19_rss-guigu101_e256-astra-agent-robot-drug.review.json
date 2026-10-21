@@ -1,0 +1,1563 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-19_rss-guigu101_e256-astra-agent-robot-drug.md",
+  "quality_tier": "important",
+  "revision_round": 3,
+  "reviews": [
+    {
+      "role": "escalation_review",
+      "reviewer": {
+        "model": "kimi-k3",
+        "harness": "kimi-cli",
+        "run_id": "review-bc7cf9345aa2",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "escalation_reason": "revision 3 升级复核：round 2 遗留五项问题（Jev 反例方向相反、37:25 行业结构后半缺失、[推测] 未标注的推断句、evidence 账本 U01/U14 状态失实、chapters/hanzi 元数据漂移），需独立审稿人在全新 context 中回到原始来源确认修复真实性，不复用前轮评分。",
+      "scores": {
+        "evidence_fidelity": 93,
+        "request_coverage": 91,
+        "reasoning_quality": 90,
+        "readability": 93,
+        "limitations": 90
+      },
+      "score_reasons": {
+        "evidence_fidelity": "独立复核：C01–C05 逐条回到原始 transcript/polished/shownotes 核验，全部有直接支撑，C05 标 inference 正确。关键数字直接在原始转写中定位核对：Claude 21 小时（[00:02:24]）、Biohub 18 亿美元（[00:02:47]）、1 亿 token（[00:18:18]）、Astra 10/50 美元（[00:23:06] 起）、60%–70% 本地 token（[00:24:33]）、refuse to answer 与 Kimi K3（[00:29:12]/[00:29:17]）、双臂叠衣服（[00:43:54]）、45 分钟常数（[00:44:17]/[00:44:21]）、30% 完成度（[00:50:39]）、单人 2TB（[01:02:01]）、2028 年初与家庭 90%（[01:14:32]/[01:14:45]），全部一致且证据等级标注诚实。audit_transcript.py 本轮实际重跑：ok=true、sha256=269a53b2…与 artifact.transcript_sha256 一致、2742 段、4774s、时间戳单调、warnings/errors 为空。round 2 两处遗留归因问题已修复：§3 数据偏差句已标 [推测] 且措辞软化；Jev 新增整段实测反例（无图像输入需 VLM 转状态、叠方块摞不起或倒、OpenAI 带图像快系统传闻口径）与 [00:45:14]–[00:46:34] 逐句对应。evidence 账本已同步：U01 改 omitted 并给出理由、新增 U28 后记单元、U09/U13/U15/U14/U17/U18 等状态与正文事实一致。残留仅为压缩级瑕疵：§3“斯坦福团队在两周左右接入”把来源中“Astra 发布两三周”与“论文两周做出”两个时间合并，不影响结论。无伪造来源、无关键数字错配。",
+        "request_coverage": "R02（deep、standalone、覆盖核心内容）本轮达成。独立来源地图 E01–E29 按 shownotes 全部 29 个“你将听到”条目（28 个唯一时间戳）加片尾后记重建，逐单元对照：round 1/2 指出的整章缺失（U15 TAMP→Agentic、U09 Grok Bot、U13 筷子对照）与半章缺失（U11 生物医学侧、U14 hype 保留+行业结构、U17 双臂/45 分钟、U18 Jev 实测、U26/U02 ART 与 Biohub、U27 蒸馏三答、U28 后记）全部真实进入正文并经原文核对。报告可完全脱离原节目阅读，内容地图八行均有正文兑现，front matter chapters:28 与 shownotes 唯一时间戳数一致。残余缺口为章内细节级：40:19 章生/熟数据市场（石油/起量 vs 单价翻十倍）与 OpenAI 只卖不标注 rumor、47:10 章 human use 概念与饭店原材料比喻、58:24 章公司层证据（Adaptive Bio 40M、Anthropic 比赛、Jumper、Isomorphic 端到端）、30:19 章抖毛巾/<10B/200ms 一手细节、01:07:03 酶的工业落地例子。均属 deep 报告可接受的压缩，不构成整章缺失。",
+        "reasoning_quality": "统摄框架（能力发布日相同、价值兑现日不同）、三行业控制面对照表、反馈闭环时长决定兑现速度、五条增量观点均成立且有来源支撑。修订后的归因纪律良好：商业化条件乘式标 [推测] 并归报告自身；ART/Biohub 标明节目新闻回顾未独立核验；2028 预测降权为个人判断；hype 保留意见与 §1 正面价值形成平衡；Jev 段先给“快系统需要存在”再给“当前 Jev 不能承担该角色”，推理方向与证据一致。小扣分：§3 仍保留“Jev 这类只输出动作概率的‘系统一’模型，可能成为快路径的一部分”一句，虽被后文反例限定，单句抽出仍偏正面；§3“跨本体泛化会直接利好硬件质量较高的机器人”是合理概括但略强于来源的“可能连接 Astra 直接可以做一部分事情”。round 2 的“初稿”流程语言已清除。",
+        "readability": "速览—内容地图—五节核心分析—关键数字表—增量观点—Limitations—思考追问结构完整自洽；新增段落落在各章自然位置，TAMP、MCP、real-to-sim、系统一/二等术语均有上下文解释；数字表逐项给证据等级；无需收听原节目即可理解全部论证，standalone 成立。元数据漂移已修复（chapters:28 匹配 shownotes 28 个唯一时间戳；hanzi_chars_polished 15728 与 polished 头部一致）。",
+        "limitations": "Limitations 诚实具体：转写管线与审计结果、口播数字未逐项核验、专名误识别不入核心结论、三嘉宾非系统抽样、Astra 技术细节需回技术报告；ART/Biohub 自带“未独立核验”边界；Navier–Stokes 口径冲突数字明确不作支柱。evidence 账本 omissions 现与正文一致（U01 有 omission_reason）。未逐项声明的剩余压缩均为细节级，已在 request_coverage 计分。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08",
+        "U09",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16",
+        "U17",
+        "U18",
+        "U19",
+        "U20",
+        "U21",
+        "U22",
+        "U23",
+        "U24",
+        "U25",
+        "U26",
+        "U27",
+        "U28"
+      ],
+      "source_content_map": [
+        {
+          "id": "E01",
+          "title": "《消费101》新播客上线宣发（00:05）",
+          "importance": "supporting",
+          "assessment": "missing",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01"
+          ],
+          "notes": "纯宣发，与本期三问无关；evidence 已改标 omitted 并给出 omission_reason，省略属声明过的合理取舍。"
+        },
+        {
+          "id": "E02",
+          "title": "9 月 AI 大事记与本期三问（00:49）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02"
+          ],
+          "notes": "Astra 发布/AGI 宣称、Meta Muse 与 Instinct、Grok Bot 企业部署、Jev 系统一走红、Claude 21 小时 ART 新酶（[00:02:24]）、Biohub 18 亿美元虚拟细胞（[00:02:47]）均进入 §1–§3 或数字表；ART/Biohub 标注为节目新闻回顾未独立核验，处理诚实。"
+        },
+        {
+          "id": "E03",
+          "title": "三领域实测 Astra 体感与大节点分歧（04:18）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03"
+          ],
+          "notes": "许华哲（碰撞修正、画金门大桥迭代、插花捏窄、real-to-sim）、朱哲清（长程稳定、coding 非范式节点、24h 幻觉、审美）、王晟（大节点、切换 Astra、白天快模型晚上 Astra）三视角完整进入 §1。"
+        },
+        {
+          "id": "E04",
+          "title": "生物医学古董软件与 Computer Use、MultiQC demo（09:11）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04"
+          ],
+          "notes": "老软件无 API、跨学科使用成本、观察模型操作反学软件入 §2；MultiQC 在 §4 点名。"
+        },
+        {
+          "id": "E05",
+          "title": "Computer Use 定义、与 API 区别、Manus browser-use 循环与端侧观察（12:17）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U05"
+          ],
+          "notes": "视觉理解决定点击/输入、像人一样用电脑、第三方 App 不开 API、Manus→被 block→回 coding→又回 browser use 的循环与 mixture 结论入 §2；Bright Data/本地 sandbox 细节压缩合理。"
+        },
+        {
+          "id": "E06",
+          "title": "Meta Muse 云端虚拟机走 Manus 老路、亚马逊屏蔽（15:47）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06"
+          ],
+          "notes": "云端 VM=商用 IP、Manus 同路径被全 block、白领工作偏移、亚马逊已屏蔽 Muse 入 §2。"
+        },
+        {
+          "id": "E07",
+          "title": "软硬件结合与 identity：商家开 access 的 1:1 前提（17:31/19:37）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U07"
+          ],
+          "notes": "云端无法验证身份、一用户 20 个 agent 得不偿失、硬件属于用户即可确认代表行为、企业统一身份先落地入 §2。"
+        },
+        {
+          "id": "E08",
+          "title": "烧钱获客：token burn rate、Astra 定价、routing 传闻、60–70% 本地愿景（22:21）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U08"
+          ],
+          "notes": "1 亿 token≈100 美元、10/50 美元定价、一次难任务三四十美金、端侧/私有算力承担普通步骤入 §2 与数字表；routing 传闻按传闻口径处理。"
+        },
+        {
+          "id": "E09",
+          "title": "Grok Bot“走在后面的人”与企业采用分化（24:57）",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U09"
+          ],
+          "notes": "Grok Bot 多为尝鲜、Legal/Healthcare 困于 Copilot 与 Codex/Claude Code 授权、发布速度与组织节奏鸿沟入 §2 末段，与 [00:25:00] 前后一致。"
+        },
+        {
+          "id": "E10",
+          "title": "前沿 Lab 最烧 token 的是 AI for Science、Navier-Stokes 案例（25:44）",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10"
+          ],
+          "notes": "章级论断（消费任务非最大 token 消耗、AI for Science 数学与科学难题需大规模 agent 协作）入 §4；Navier-Stokes 具体数字因转写口径冲突明确不作支柱，处理正确。"
+        },
+        {
+          "id": "E11",
+          "title": "小模型追大模型可能追错 benchmark：biomedical 知识无提升、拒答变严、改用 Kimi K3、Kaggle 式退化（27:48）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11"
+          ],
+          "notes": "王晟批评段入 §2：Kaggle 式预测、提升来自 coding 而非生物医学理解、安全拒答、内部改用 Kimi K3、绕开提示，与 [00:28:42]–[00:29:40] 逐项一致；机器人侧 RoboDojo 击落入 §3。"
+        },
+        {
+          "id": "E12",
+          "title": "快慢双系统与分层下压：抖毛巾、16/24 倍速、直觉物理、<10B 与 200ms（30:19）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U12"
+          ],
+          "notes": "核心结论（高动态需低延迟快路径、Astra 慢推理做规划复盘、轻量模型/专用控制器）入 §3；抖毛巾、倍速、<10B、200ms 等一手细节压缩，未损结论。"
+        },
+        {
+          "id": "E13",
+          "title": "筷子夹小球：自研模型 vs Astra 对照（35:48）",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U13"
+          ],
+          "notes": "自研快且连续尝试、Astra 每步分析更像人类思考但慢且可能陷僵局、旋转对孔仍需反复尝试入 §3，与 [00:36:01]–[00:36:46] 原文逐句对应。"
+        },
+        {
+          "id": "E14",
+          "title": "Astra 冲击：sim-to-real hype 保留、利好本体硬件、斯坦福两周接入、大脑公司两派（37:25）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U14"
+          ],
+          "notes": "本章四要素全部入 §3：hype 保留（只提升 3D 外观、物理引擎未变准，[00:37:24]–[00:37:56]）、利好本体硬件、斯坦福课题组两周接入家庭任务（[00:38:01]–[00:38:23]）、大脑公司两派（学标注范式 vs 转部署，[00:38:24]–[00:39:07]）。round 2 的半章缺失已真实修复；“两周左右接入”对两个来源时间的合并为轻微压缩。"
+        },
+        {
+          "id": "E15",
+          "title": "从 TAMP 到 Agentic：机器人规划重回台前（39:07）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U15"
+          ],
+          "notes": "TAMP=规划+控制长程任务、过去显式前置条件逐步执行显古板、agentic 组合能力使规划重获价值入 §3 专段，与 [00:39:09]–[00:40:19] 一致；“规划被模型取代 vs 更多能力进入规划回路”的表述准确。"
+        },
+        {
+          "id": "E16",
+          "title": "数据标注新门槛：因果与直觉物理、OpenAI 只卖不标注 rumor、生/熟数据市场（40:19）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U16"
+          ],
+          "notes": "本章标题核心（标注因果与直觉物理：为什么滑、动作排序、接触风险）入 §3 并有 [推测] 标注的延伸句，与 [00:40:28]–[00:41:04] 一致；次级分支——生数据（石油/起量）vs 熟数据（单价翻十倍）市场结构与 OpenAI 只卖不标注 rumor——省略，与 E19/E23 的细节级压缩同档，未损章节主线。"
+        },
+        {
+          "id": "E17",
+          "title": "惊艳之后的短板：双臂/叠衣服、语言难描述任务、45 分钟时间常数（43:06）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U17"
+          ],
+          "notes": "双臂叠衣服几乎做不了、语言难描述任务弱、1h→45min 后恒定不再提速入 §3，与 [00:43:54]–[00:44:23] 原文对应；“榜单飞跃未消除原生模型训练价值”结论忠实。"
+        },
+        {
+          "id": "E18",
+          "title": "Jev“快系统”实测：无图像输入需 VLM 转状态、叠方块失败、OpenAI 快系统 rumor（45:12）",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U18"
+          ],
+          "notes": "§3 新增整段：只输出状态上动作概率、不能输入图像需视觉模型先转状态、破壳实测叠方块摞不起或倒、Astra 能观察倾斜并修正、许华哲认可需要快系统但不认为当前 Jev 能承担、OpenAI 带图像快系统属传闻——与 [00:45:14]–[00:46:34] 逐句对应。round 1/2 的方向相反问题已修复。"
+        },
+        {
+          "id": "E19",
+          "title": "实验设计完成度 30%、验证悖论、实验室资源利用（47:10）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U19"
+          ],
+          "notes": "30% 完成度（[00:50:39]）、需专家/technician 修改、设计快验证慢、端到端药物未成熟入 §4；资源利用思想经 §4 闭环与 §5 预算/资源表述间接覆盖；human use 概念与饭店原材料比喻省略，属可接受压缩。"
+        },
+        {
+          "id": "E20",
+          "title": "必须配备实验室、验证周期与实验室 redesign 闭环（51:39）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U20"
+          ],
+          "notes": "自有验证与数据积累、AI 预测后立即投料的闭环设计入 §4 可审计闭环表述。"
+        },
+        {
+          "id": "E21",
+          "title": "制药时间线：猴子 4 个月、license 1000 万+、AlphaFold 教训、数学 vs 生物（53:15）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U21"
+          ],
+          "notes": "设计快验证慢、上一波 AI 制药败于后期验证、反馈受自然规律限制入 §4；具体时间线与授权费按转述数字不入支柱，方式可接受。"
+        },
+        {
+          "id": "E22",
+          "title": "AlphaFold 开源与垂直公司数据护城河（55:01）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U22"
+          ],
+          "notes": "开源不等于内部数据公开、护城河从权重转向实验数据与反馈速度入 §4；“一条数据几万到几十万美金”量级省略。"
+        },
+        {
+          "id": "E23",
+          "title": "湿实验公司 MCP/API 直连：Adaptive Bio、前沿 lab 配湿实验、Isomorphic（58:24）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U23"
+          ],
+          "notes": "MCP/API 封装实验能力形成闭环、前沿实验室配置或合作湿实验入 §4；公司层证据（40M 融资、Anthropic 比赛以湿实验为标准、Jumper、Isomorphic 端到端）省略，主线未损。"
+        },
+        {
+          "id": "E24",
+          "title": "人类科学家转向定义问题、评价与背书（01:02:15）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U24"
+          ],
+          "notes": "问题定义清楚时 AI 强于单个科学家、人类负责定义问题/设计评价/承担背书入 §4 与增量观点 5；飞机驾驶员比喻省略。"
+        },
+        {
+          "id": "E25",
+          "title": "好的 benchmark 应无上限：杀伤率提升与数据飞轮（01:03:47）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U25"
+          ],
+          "notes": "“不断提高杀伤率、稳定性或疗效，而不是容易刷满的静态分类题”忠实转写杀 30%→40% 癌细胞（[01:04:07]）与避免简单分类任务的原意。"
+        },
+        {
+          "id": "E26",
+          "title": "ART 的启示：突破正比于实验周期、酶/蛋白质短周期最先跑出来（约 01:05:43）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U26"
+          ],
+          "notes": "§4 专段把 ART 定位为反馈周期假说的例证而非“已完成科学发现”，保留待验证边界，与 §1 大事记呼应；酶的工业落地例子（地沟油/洗衣粉）省略。"
+        },
+        {
+          "id": "E27",
+          "title": "蒸馏是否让普通人失去价值：三嘉宾三种回答（01:07:48）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U27"
+          ],
+          "notes": "许华哲（机器人每人都是生活专家、家常菜值得蒸馏）、王晟（反向蒸馏+不断提出新问题）、Bill（蒸馏从零学习的能力而非固定技能，一个月基础医生/三个月教授）三视角齐备入 §5，与 [01:08:13]–[01:11:07] 一致。"
+        },
+        {
+          "id": "E28",
+          "title": "三嘉宾各自最关心的问题：算力铺开、高度/广度、零样本部署与 2028 预测（01:11:51）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U27"
+          ],
+          "notes": "许华哲零样本部署（五个任意人 vs 五个博士驻厂三个月）与 2028 年初/家庭 90% 预测（[01:14:32]/[01:14:45]）入 §3 并降权为个人判断；王晟“AI prompt 真实世界、预算内 plan、仪器直接给 AI 信号”入 §5；Bill 算力铺开愿景经 §2 端侧论述间接覆盖。"
+        },
+        {
+          "id": "E29",
+          "title": "主播后记：AI 圈兴奋 vs 生物圈平淡、能力曲线 vs 落地周期（01:18:04）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U28"
+          ],
+          "notes": "后记核心概括完整进入 §1 结段并标注为节目结尾概括，与 [01:19:02]–[01:19:08] 原文一致；evidence 新增 U28 单元，账本与正文一致。Alignment 大会场景出处省略。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S05"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "独立升级复核流程（round 3）：未参考前两轮评分与结论，先读 shownotes 全部 29 个“你将听到”条目建立 29 单元来源地图（E01–E29，含片尾后记），再通读 polished 全文（261 行），并对全部争议章节回到原始 transcript 逐句核对：Jev 实测（[00:45:14]–[00:46:34]）、37:25 行业结构（[00:37:08]–[00:39:07]）、筷子对照（[00:36:01]–[00:36:46]）、短板与 45 分钟常数（[00:43:54]–[00:44:23]）、Kimi K3/拒答（[00:29:12]–[00:29:18]）、蒸馏三答（[01:07:54]–[01:11:07]）、后记（[01:18:04]–[01:19:34]）及全部关键数字（21h/18亿/1亿 token/10·50 美元/60–70%/30%/2TB/28 年初/90%）。audit_transcript.py 本轮亲自重跑：ok=true、sha256=269a53b2b07e…a74c 与 artifact.transcript_sha256 一致、2742 段、4774s、时间戳单调、max_consecutive_identical=2、warnings/errors 为空，机器收据成立。\n\n修订真实性结论：round 2 全部遗留项已真实修复——① Jev 反例整段补入且方向正确（许华哲认可快系统需求但不认为当前 Jev 能承担）；② 37:25 章利好本体、斯坦福两周接入、大脑公司两派全部入 §3；③ 数据偏差推断句已标 [推测]；④ evidence 账本同步：U01 改 omitted 附理由、新增 U28、各单元状态与正文一致；⑤ 元数据漂移修复（chapters:28 匹配 28 个唯一时间戳、hanzi_chars_polished 15728 与 polished 一致）；⑥ “初稿”流程语言已清除。\n\n剩余轻微缺陷（不构成硬失败）：§3 保留的“Jev 可能成为快路径的一部分”单句抽出仍偏正面（已被后文限定）；“斯坦福两周接入”合并了来源两个时间；E16 生/熟数据市场与 OpenAI 标注 rumor、E19 human use 比喻、E23 公司层证据等章内细节省略。硬失败五类代码均未触发：来源真实且已读、C01–C05 有支撑、关键数字无错配、无整章核心缺失、无安全隐私问题。加权总分 92.7（93/91/90/93/90 × 35/20/20/15/10）。\n\n[round 2 遗留 unsupported_claims 复核结果]\n- “Jev…可能成为快路径的一部分”：反例已补入同节后段，原句保留但被明确限定，不再构成与来源相反的单句结论——已修复\n- “模型自标数据…偏差”句：已加 [推测] 前缀并软化措辞——已修复\n- evidence U01/U14 状态失实：U01 改 omitted、U14 因正文补齐而 included 属实——已修复"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 91.7,
+    "evaluated_on": "2026-10-21",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "48a52359fe047505d7a611ca2c4680b3e8087be940f800177ca5c5ee582ffd7b",
+    "evidence_sha256": "5fa5311b17a1d5af71694038b396c4474811067068e8f18b702d610677b0ddce"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "glm-5.3",
+            "harness": "pi",
+            "run_id": "review-3b034ff391e6",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 85,
+            "request_coverage": 78,
+            "reasoning_quality": 85,
+            "readability": 94,
+            "limitations": 93
+          },
+          "score_reasons": {
+            "evidence_fidelity": "五个登记 claim（C01–C05）逐条回到 transcript/polished/shownotes 核验，全部有直接支撑，C05 已正确标 inference。关键数字全部与来源一致且口径标注诚实：8–24 小时长程任务（[00:10:43]）、Meta Muse 1 亿 token（[00:17:58]）、Astra 10/50 美元每百万 token（[00:23:13]，报告明确标注为嘉宾口播需核验）、60%–70% 本地 token（[00:24:35]）、实验设计完成度 30%（[00:50:39]）、单人数据 2TB（[01:02:01]）、药周期 5–10 年、2028 年初/家庭 90% 任务预测（[01:14:32]）。audit_transcript.py 实际运行通过：sha256 269a53b2…与 artifact 收据一致、2742 段、时间戳单调、时长 4774s，满足播客复核的机器收据要求。扣分点：evidence 的 source_coverage 将全部 27 个单元标为 included，其中 U01（消费101）、U09（Grok Bot）、U13（筷子夹球）、U15（TAMP→Agentic）在报告正文中完全不存在，U11/U14/U17/U18/U26/U27 实际只有部分覆盖——账本系统性高估覆盖，掩盖了选择偏差；报告另有若干句子把生成者概括以节目口吻呈现（见 unsupported_claims）。无伪造来源、无关键数字错配。",
+            "request_coverage": "R02 要求 deep、standalone 并覆盖来源核心内容。三问主线（Agent 商业化、机器人冲击、制药瓶颈）、三位嘉宾核心论点、主要张力与反例（企业先落地 vs 开放互联网、2028 预测降权处理）均进入正文，报告可完全脱离对话阅读，这部分合格。但独立来源地图显示整章缺失的有：TAMP→Agentic 规划重回台前（39:07，报告内容地图自己列了“规划”行却未交付）、Grok Bot 与企业采用分化（24:57）、筷子夹小球自研 vs Astra 对照实验（35:48）；实质性部分缺失的有：蒸馏辩论三位嘉宾的具体观点（01:07:48，仅保留王晟框架）、9 月大事记中 Claude 21 小时发现类 CRISPR 的 ART 新酶与 Biohub 18 亿美元虚拟细胞计划、biomedical knowledge benchmark 无提升+refuse to answer 越来越严+内部改用 Kimi K3（27:48）、Jev 在机器人上实测差且无图像输入（45:12）、双臂/叠衣服短板与 45 分钟时间常数（43:06）、许华哲对 real-to-sim/sim-to-real 的 hype 保留意见（37:25）。对 deep 播客报告而言核心案例覆盖不完整，故低于 important 档 85 分线。",
+            "reasoning_quality": "三行业“能力发布日相同、价值兑现日不同”的统摄框架、控制面对照表（身份/本体/湿实验三种现实约束）和“反馈闭环时长决定兑现速度”的增量观点均由来源直接支撑且推理成立；对许华哲 2028 年预测明确标注为个人判断而非行业共识，企业 Agent 先落地的解释链清晰；跨报告关联（GPT-6 Astra 指令架构）定位准确。扣分：§2 的“可执行能力 × 可验证身份 × 商家许可 × 单任务经济性”乘式是生成者形式化，却以“节目由此给出”归给节目；§4“剩余部分是采购材料、培养细胞、动物实验、设备排队、失败重做和合规验证”“论文更偏向发表成功结果”等生成者扩写以事实口吻呈现；§3“Jev 这类…可能成为快路径的一部分”省略了许华哲实测 Jev 在机器人上表现差、需 VLM 转状态的前提，弱化了来源中的反例。",
+            "readability": "速览—内容地图—五节核心分析—关键数字表—增量观点—Limitations—思考追问的结构完整自洽；每节先立论再给证据再划边界，专有名词有上下文，无需收听原节目即可理解全部论证；数字表附证据等级是可读性与可信度的双赢。仅内容地图个别行（如“规划”）承诺的覆盖在正文中未兑现，轻微误导导航。",
+            "limitations": "Limitations 一节诚实且具体：交代转写管线与审计结果、口播数字未逐项核验、专名误识别不入核心结论、三位嘉宾非系统抽样、分析边界与 Astra 技术细节需回技术报告。关键数字表逐项给出口播/预测/经验判断等级，处理规范。未主动披露的缺口主要是覆盖压缩本身（若干章节被省略未在 Limitations 中声明），已计入 request_coverage。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07",
+            "U08",
+            "U09",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14",
+            "U15",
+            "U16",
+            "U17",
+            "U18",
+            "U19",
+            "U20",
+            "U21",
+            "U22",
+            "U23",
+            "U24",
+            "U25",
+            "U26",
+            "U27"
+          ],
+          "source_content_map": [
+            {
+              "id": "m01",
+              "title": "《消费101》新播客上线宣发（00:05）",
+              "importance": "supporting",
+              "assessment": "missing",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01"
+              ],
+              "notes": "纯宣发章节，报告省略本身可接受；但 evidence U01 标 included/锚点“内容地图”与事实不符，报告无任何对应内容。"
+            },
+            {
+              "id": "m02",
+              "title": "9 月 AI 大事记与本期三问（00:49）",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "Astra 发布、GPT 时刻、Meta Muse/Instinct（§2 一句）、Jev（§3 一句+数字表）进入报告；但 Claude 21 小时发现类 CRISPR 的 ART 新酶系统（基因编辑公司股价下跌）与 Biohub 18 亿美元虚拟细胞计划两项 AI 制药大事完全缺失，大事记的铺垫功能被削弱。"
+            },
+            {
+              "id": "m03",
+              "title": "三领域实测 Astra 体感与“是否大节点”分歧（04:18）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "许华哲（碰撞修正、画金门大桥迭代、插花捏窄、real-to-sim）、朱哲清（长程/上下文稳定、coding 非范式节点、24h 幻觉仍发生、审美提升）、王晟（大节点、切换到 Astra、白天快模型晚上 Astra）三视角与分歧完整进入 §1。"
+            },
+            {
+              "id": "m04",
+              "title": "生物医学古董软件与 Computer Use 价值、MultiQC demo（09:11）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "古董软件无 API、跨学科使用成本、观察模型操作软件反学软件均进入 §2；MultiQC 在 §4 点名。"
+            },
+            {
+              "id": "m05",
+              "title": "Computer Use 定义、与 API 区别、Manus browser-use 循环与端侧观察（12:17）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "定义（视觉理解决定点/输入、像人一样用电脑）、Manus→被屏蔽→回 coding/API→又回 browser use 的循环进入 §2；Bright Data/IP proxy、本地 browser sandbox 细节被压缩但结论在。"
+            },
+            {
+              "id": "m06",
+              "title": "Meta Muse 云端虚拟机与 Manus 老路、亚马逊屏蔽（15:47）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "云端 VM=商用 IP、Manus 同路径被 block、转白领工作、亚马逊已屏蔽 Meta Muse 均进入 §2。"
+            },
+            {
+              "id": "m07",
+              "title": "软硬件结合与 identity：商家开 access 的前提（17:31/19:37）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U07"
+              ],
+              "notes": "云端无法验证用户身份、1 用户 20 个 agent 比价刷流量得不偿失、硬件属于用户即可确认代表行为、企业统一身份先落地均充分覆盖；“绕过苹果/终端安全”“与高通 Intel AMD 联想合作”细节省略，不影响结论。"
+            },
+            {
+              "id": "m08",
+              "title": "烧钱获客大战：token burn rate、Astra 定价、routing 传闻与 60-70% 本地愿景（22:21）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08"
+              ],
+              "notes": "§2 成本段+关键数字表覆盖核心；1 亿 token≈100 美元、10/50 美元定价、CPU 价格堪比 GPU、端侧承担普通步骤均有交代或入表。"
+            },
+            {
+              "id": "m09",
+              "title": "Grok Bot“走在后面的人”与企业采用分化（24:57）",
+              "importance": "supporting",
+              "assessment": "missing",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U09"
+              ],
+              "notes": "报告全文无 Grok Bot；传统企业困在 Copilot 泥潭、行业前后分化这一观察完全缺失。evidence U09 标 included 不实，报告的“企业 Agent 先落地”是生成者推断而非该章内容。"
+            },
+            {
+              "id": "m10",
+              "title": "前沿 Lab 最烧 token 的是 AI for Science、Navier-Stokes 案例（25:44）",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10"
+              ],
+              "notes": "数字表承认转述了 Navier–Stokes 消息数与 token 消耗但“未作论证支柱”；“2C agent token 花不了多少钱、前沿实验室竞争焦点是 AI for Science”这一判断未进入正文论证。"
+            },
+            {
+              "id": "m11",
+              "title": "小模型追大模型：差距缩小但可能追错 benchmark；biomedical 任务 refuse to answer（27:48）",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U11"
+              ],
+              "notes": "RoboDojo 等仿真 benchmark 被 Astra 击穿进入 §3；但本章生物医学侧实质内容全部缺失：提升来自 general coding 而非 biomedical knowledge（专测知识 benchmark 无提升）、模型对生物医学任务 refuse to answer 越来越严、内部改用 Kimi K3/MuleSpark、现有 benchmark 退化为 Kaggle 式 MLE-bench 比赛的批评。evidence 标 core+included，实际半章缺失。"
+            },
+            {
+              "id": "m12",
+              "title": "快慢双系统与分层下压：抖毛巾、16/24 倍速、直觉物理、<10B 与 200ms（30:19）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U12"
+              ],
+              "notes": "核心结论（低延迟决策/稳定控制归快路径、Astra 慢推理做规划复盘）完整进入 §3；“Astra 把分层边界下压到低层动作控制（往右伸两厘米/提线木偶）”、16/24 倍速、本地<10B、准静态 200ms 等具体证据被压缩。"
+            },
+            {
+              "id": "m13",
+              "title": "筷子夹小球：自研模型 vs Astra 的对照实验（35:48）",
+              "importance": "supporting",
+              "assessment": "missing",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U13"
+              ],
+              "notes": "报告无此实验：自研快/连续尝试 vs Astra 每步分析/陷僵局/分析错即停、旋转塞孔短板全部缺失。这是机器人章最直观的一手对照案例。evidence U13 标 included 不实。"
+            },
+            {
+              "id": "m14",
+              "title": "Astra 冲击：sim-to-real hype 保留意见、利好本体硬件、斯坦福接入、大脑公司两派（37:25）",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U14"
+              ],
+              "notes": "§1 呈现 real-to-sim 正面价值，但许华哲“只是 3D 外观好、物理引擎并未更准、对 sim-to-real 是 hype”的保留意见缺失，使 §1 侧只讲了一半；“利好本体、斯坦福课题组两周接入机器人、大脑公司两派（学标注/转部署）”的行业结构判断整体缺失。"
+            },
+            {
+              "id": "m15",
+              "title": "从 TAMP 到 Agentic：机器人规划重回台前（39:07）",
+              "importance": "core",
+              "assessment": "missing",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U15"
+              ],
+              "notes": "报告正文无 TAMP/Agentic 任何内容，仅 §3 一句“高层规划和任务适配路径”带过；而报告自己的内容地图行写着“机器人：3D 理解、real-to-sim、规划”。TAMP（规划+控制长程任务）因 agentic 范式焕发生机是许华哲关于“机器人研究方式被改写”的支撑论点之一，属 deep 报告应覆盖的一级章节。evidence U15 标 core+included 与事实不符。"
+            },
+            {
+              "id": "m16",
+              "title": "数据标注新门槛：标注因果与直觉物理、生/熟数据市场（40:19）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U16"
+              ],
+              "notes": "因果/失败原因/直觉物理标注（杯子滑、动作排序、接触风险）完整进入 §3；OpenAI 只卖不标注数据 rumor、生数据（石油/起量）vs 熟数据（单价翻十倍）市场结构省略；“模型自标数据易自我强化偏差”一句为生成者概括（见 unsupported_claims）。"
+            },
+            {
+              "id": "m17",
+              "title": "惊艳之后的明显短板：双臂/叠衣服、语言难描述任务、总结能力 45 分钟常数（43:06）",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U17"
+              ],
+              "notes": "§3 有结论性表述（未消除硬件可靠性、动作速度、现场安全），但本章全部具体证据（双臂任务几乎做不了、叠衣服完全叠不了、语言不好描述的任务弱、重复任务时间不缩短停在 45 分钟常数）缺失，短板论断失去一手支撑。"
+            },
+            {
+              "id": "m18",
+              "title": "Jev“快系统”实测：无图像输入需 VLM 转状态、机器人上表现差（45:12）",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U18"
+              ],
+              "notes": "报告仅一句“Jev 这类只输出动作概率的系统一模型，可能成为快路径的一部分”，且省略了许华哲实测 Jev 在机器人任务（摞方块）上表现差、不能输入图像的前提，把来源中的反例写成了正面可能性。"
+            },
+            {
+              "id": "m19",
+              "title": "实验设计完成度 30%、human use、验证悖论、实验室资源利用（47:10）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U19"
+              ],
+              "notes": "30% 完成度、需领域专家/technician 修改、干湿实验时间差与端到端药物未成熟进入 §4；“human use（AI 控制实验员）”概念与“饭店原材料”比喻省略；“剩余部分是采购材料…合规验证”为生成者扩写（见 unsupported_claims）。"
+            },
+            {
+              "id": "m20",
+              "title": "必须配备实验室、验证周期与实验室 redesign 闭环（51:39）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U20"
+              ],
+              "notes": "自有验证与数据积累、前置条件准备、AI 预测后立即投料的闭环设计进入 §4 的可审计闭环表述。"
+            },
+            {
+              "id": "m21",
+              "title": "制药时间线：猴子 4 个月、license 1000 万+、AlphaFold 1/2 教训、数学 vs 生物（53:15）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U21"
+              ],
+              "notes": "核心结论（设计快验证慢、上一波 AI 制药公司败于验证、反馈受自然规律限制）进入 §4；具体时间线与授权费数字按“转述数字未作支柱”处理，方式可接受。"
+            },
+            {
+              "id": "m22",
+              "title": "AlphaFold 开源与垂直公司数据护城河（55:01）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U22"
+              ],
+              "notes": "隐性数据不公开、护城河从权重转向数据与反馈速度进入 §4；“一条湿实验数据几万到几十万美金”量级省略；“论文更偏向发表成功结果”为生成者补充（见 unsupported_claims）。"
+            },
+            {
+              "id": "m23",
+              "title": "湿实验公司 MCP/API 直连：Adaptive Bio、Anthropic 比赛与湿实验布局（58:24）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U23"
+              ],
+              "notes": "MCP/API 封装实验能力、前沿实验室配置或合作湿实验的进入 §4；公司层证据（Adaptive Bio 融资 40M、Anthropic 蛋白质设计比赛以湿实验验证为标准、Jumper 加入 Anthropic、Isomorphic 端到端）省略。"
+            },
+            {
+              "id": "m24",
+              "title": "人类科学家转向定义问题、评价与背书（01:02:15）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U24"
+              ],
+              "notes": "问题已定义清楚时 AI 强于单个科学家、人类负责定义问题/设计评价/承担背书进入 §4 与增量观点 5；反向蒸馏、飞机驾驶员比喻细节省略。"
+            },
+            {
+              "id": "m25",
+              "title": "好的 benchmark 应无上限：杀伤率提升与数据飞轮（01:03:47）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U25"
+              ],
+              "notes": "“不断提高杀伤率、稳定性或疗效，而不是容易刷满的静态分类题”忠实转写了杀 30%→40% 癌细胞与避免简单分类任务的原意。"
+            },
+            {
+              "id": "m26",
+              "title": "ART 启示：突破正比于实验周期、酶/蛋白质短周期最先跑出来（约 01:05:43）",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U26"
+              ],
+              "notes": "“反馈周期越短进展越快、蛋白质和酶容易形成快速循环、衰老罕见病更慢”进入 §4；但 ART 案例本身（Claude 21 小时、类 CRISPR、股价下跌、验证未定）与“AI 圈兴奋 vs 生物圈平淡”的具体出处缺失——§1 借用了后记结论（能力曲线 vs 落地周期）却未交代其案例来源。"
+            },
+            {
+              "id": "m27",
+              "title": "蒸馏是否让普通人失去价值：三嘉宾三种回答（01:07:48）",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U27"
+              ],
+              "notes": "王晟框架（人定义问题、互相蒸馏）经 §5/增量观点 5 部分呈现；许华哲“机器人领域每个人都是生活专家、家常菜都值得被蒸馏、一两年后才轮到专家”与 Bill“要蒸馏的是人从零学习的能力而非表层技能（一个月基础医生/三个月教授）”两段有辨识度的观点完全缺失，尾声辩论只剩单一视角。"
+            },
+            {
+              "id": "m28",
+              "title": "三嘉宾各自最关心的问题与片尾后记（01:11:51/01:18:04）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U27"
+              ],
+              "notes": "许华哲零样本快速部署（五个任意人 vs 五个博士驻厂三个月）与 2028 预测进入 §3；王晟“AI prompt 真实世界、预算内 plan 复杂任务、仪器直接给 AI 信号”进入 §5；Bill 算力铺开愿景经 §2 端侧论述间接覆盖；片尾“能力曲线 vs 落地周期”在 §1 完整呈现。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S05"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [
+            "R02"
+          ],
+          "hard_failures": [
+            "core_requirement_missing"
+          ],
+          "notes": "独立复核流程：先完整通读 transcript（2742 段全文）、polished（262 行全文）、shownotes 与 artifact 收据，在未参考报告结论的情况下按 shownotes 29 个“你将听到”条目建立 28 单元来源地图（m01–m28）；随后逐单元对照报告正文与 evidence。audit_transcript.py 实际运行：ok=true、sha256 与 artifact.transcript_sha256 一致、2742 段、时长 4774s、时间戳单调无错误、max_consecutive_identical=2，机器收据成立。总体判断：报告是一篇可独立阅读、论证质量较高的深度综合，五维登记 claim 与全部关键数字核验通过，Limitations 处理规范；但作为 deep 播客报告存在实质覆盖缺口（至少 4 个章节整体缺失、6 个核心章节只剩结论无证据），且 evidence 的 source_coverage 以全量 included 掩盖了这些缺口，触发 core_requirement_missing（U15 为一级章节、报告自身内容地图承诺“规划”覆盖、evidence 自标 core）。建议修订方向：① 将 U15（TAMP→Agentic）、U13（筷子夹球对照）、U09（Grok Bot/企业分化）补入正文或明确降级并说明取舍；② 在 §1/§3 恢复 real-to-sim hype 保留意见、双臂/叠衣服与 45 分钟常数等一手短板证据，并在 §3 修正 Jev 表述；③ 在 §4 或大事记处补 ART 与 Biohub 两项，§5 补蒸馏辩论另外两位嘉宾观点；④ 按事实改写 evidence 的 source_coverage 状态；⑤ 将商业化条件公式等生成者综合改标为分析者推断。硬失败代码仅使用 core_requirement_missing，其余四类未发现。\n\n[unsupported_claims 明细（无对应登记 claim id，故记录于 notes）]\n- report§2 商业化条件乘式为生成者形式化，却以“节目由此给出”归给节目\n- report§4 “剩余部分是采购材料…合规验证”为生成者扩写，来源只说需专家/technician修改\n- report§4 “论文更偏向发表成功结果”来源无此论断\n- report§3 “模型自标数据自我强化偏差、需人类抽检”为生成者推断未标[推测]\n- report§3 Jev 表述省略其实测机器人表现差、无图像输入的反例\n\n[missing_requirements 明细（R02）]\n- U15（TAMP→Agentic，39:07）整章缺失，且报告内容地图自列“规划”行未兑现；evidence 标 core+included 不实\n- U09（Grok Bot 与企业采用分化，24:57）、U13（筷子夹小球对照，35:48）整章缺失，evidence 均标 included 不实\n- U11 生物医学侧（biomedical knowledge benchmark 无提升、refuse to answer、Kimi K3、MLE-bench 式批评）缺失；U14（real-to-sim hype 保留意见、利好本体、大脑公司两派）；U17（双臂/叠衣服、45分钟常数）；U27 蒸馏辩论许华哲与 Bill 观点；m02 中 ART 新酶与 Biohub 18 亿美元两项大事\n- evidence source_coverage 需按事实改写：U01/U09/U13/U15 应为 missing，U11/U14/U17/U18/U26/U27 应为 partial"
+        }
+      ],
+      "decision": {}
+    },
+    {
+      "revision_round": 2,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "glm-5.3",
+            "harness": "pi",
+            "run_id": "review-2aa6bba77509",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 88,
+            "request_coverage": 87,
+            "reasoning_quality": 87,
+            "readability": 92,
+            "limitations": 90
+          },
+          "score_reasons": {
+            "evidence_fidelity": "C01–C05 逐条回到 transcript/polished/shownotes 重新核验，全部有直接支撑，C05 标注 inference 正确。关键数字与新增文字逐项比对原始转写：Claude 21 小时（[00:02:24]）、Biohub 18 亿美元（[00:02:47]）、Kimi K3（[00:29:17]）、抖毛巾（[00:31:21]）、45 分钟常数（[00:44:17]）、28 年初预测（[01:14:32]）、双臂/叠衣服（[00:43:54]）、multi QC（[00:11:59]），全部一致；数字表口径与等级标注诚实。audit_transcript.py 实际运行通过：ok=true、sha256=269a53b2…与 artifact 一致、2742 段、4774s、时间戳单调、max_consecutive_identical=2。上一轮指出的三处归因问题已修两处（商业化条件乘式改标[推测]并归报告自身、'剩余部分'句改为有源表述），但两处未修：§3 Jev 句仍把来源反例写成正面可能性；'模型自标数据自我强化偏差/需人类抽检'仍是未标[推测]的生成者推断。另 evidence 账本未随修订更新（U01 仍标 included 但报告无对应内容，U14 included 实为 partial）。无伪造来源、无关键数字错配，故处于 85–94 档下沿偏上。",
+            "request_coverage": "R02（deep、standalone、覆盖核心内容）在本轮基本达成：上一轮全部整章缺失项经逐条验证确已进入正文——TAMP→Agentic（§3 新段）、Grok Bot/企业采用分化（§2 新段）、筷子夹小球对照（§3 新段）、ART 与 Biohub 两件大事（§1 新段）、biomedical benchmark 批评/拒答/Kimi K3（§2 新段）、sim-to-real hype 保留意见（§3 新段）、双臂/45 分钟短板（§3 新段）、蒸馏三嘉宾三答（§5 新段）。报告可完全脱离对话阅读，内容地图各行均有正文兑现。残余缺口为子章节级：Jev 45:12 章实测内容（无图像输入、叠方块失败、OpenAI 快系统 rumor）仍缺且现有单句方向偏正；37:25 章的利好本体硬件/斯坦福两周接入/大脑公司两派仍缺；25:44 章级论断（前沿 lab 最烧 token 在 AI for Science）未进正文。不足以再触发 core_requirement_missing，但压低分数。",
+            "reasoning_quality": "统摄框架（能力发布日相同、价值兑现日不同）、三行业控制面对照表与五条增量观点保留且成立；修订新增内容的归因纪律总体良好：ART/Biohub 明确标'节目新闻回顾、未独立核验'，2028 预测维持个人判断降权，企业采用分化的鸿沟表述是来源对比的合理概括。扣分：Jev 句在存在明确反例证据的情况下仍只给正面可能性，推理方向与证据相反且为上一轮已指出项；'模型自标数据偏差'推断句混入来源论断序列未标[推测]；'一个被初稿遗漏的核心变化'把修订流程语言写进正式报告，轻微削弱论证的独立性口吻。",
+            "readability": "速览—内容地图—五节核心分析—数字表—增量观点—Limitations—思考追问结构完整；新增段落均落在对应章节的自然位置，与内容地图承诺一致，本报告无需收听原节目即可理解全部论证，standalone 成立。仅 §3 '一个被初稿遗漏的核心变化'一处流程措辞会让独立读者困惑'初稿'所指；front matter chapters:27 与 shownotes 29 个'你将听到'条目（28 个唯一时间戳）存在轻微元数据漂移，不影响阅读。",
+            "limitations": "Limitations 诚实且具体：转写管线与审计结果、口播数字未逐项核验、专名误识别不入核心结论、三嘉宾非系统抽样、Astra 技术细节需回技术报告；数字表逐项给出口播/预测/经验等级；新增 ART/Biohub 段自带'未独立核验'边界。未声明项：Jev 实测反例与 37:25 章后半的省略未在 Limitations 中交代，属小扣分。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07",
+            "U08",
+            "U09",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14",
+            "U15",
+            "U16",
+            "U17",
+            "U18",
+            "U19",
+            "U20",
+            "U21",
+            "U22",
+            "U23",
+            "U24",
+            "U25",
+            "U26",
+            "U27"
+          ],
+          "source_content_map": [
+            {
+              "id": "RM01",
+              "title": "《消费101》上线宣发（00:05）",
+              "importance": "supporting",
+              "assessment": "missing",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01"
+              ],
+              "notes": "纯宣发章节，报告省略可接受；但 evidence U01 仍标 included、锚点'内容地图'，与正文无对应内容的事实不符。"
+            },
+            {
+              "id": "RM02",
+              "title": "9月大事记与本期三问：Astra/AGI、Muse、Instinct、Grok Bot、Jev、ART 新酶、Biohub 18亿（00:49）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "修订后 ART（Claude 约21小时、待实验确认）与 Biohub（虚拟细胞计划扩大到18亿美元）已入 §1 并注明'属节目新闻回顾、未独立核验'；Astra/GPT时刻、Muse/Instinct、Grok Bot、Jev 分别经 §1–§3 与数字表进入；三问框架完整。Instinct 估值口径、Jev 8.7亿融资细节按未核验转述处理，可接受。"
+            },
+            {
+              "id": "RM03",
+              "title": "三领域实测 Astra：许华哲（碰撞修正/画金门大桥迭代/插花捏窄/real-to-sim）、朱哲清（长程稳定/coding 非范式节点/24h 幻觉/审美）、王晟（切换 Astra/白天快晚上 Astra）（04:18）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "三位嘉宾体感分歧与各自证据完整进入 §1，逐项与 polished/transcript 对应段落一致。"
+            },
+            {
+              "id": "RM04",
+              "title": "生物医学古董软件与 Computer Use、MultiQC demo 出圈（09:11）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "老软件无 API、跨学科使用成本、观察模型操作软件反学软件入 §2；MultiQC 在 §4 点名，均与 [00:11:59] 转写一致。"
+            },
+            {
+              "id": "RM05",
+              "title": "Computer Use 定义、与 API 区别、Manus browser-use 循环、端侧本地 IP 观察（12:17）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "定义（视觉理解决定点/输入、像人一样用电脑）、第三方 App 不开 API、Manus→被 block→回 coding→又回 browser use 的循环、本地 IP 不被 block、mixture 结论入 §2；Bright Data/奢侈品网站细节压缩但结论忠实。"
+            },
+            {
+              "id": "RM06",
+              "title": "Meta Muse 云端虚拟机走 Manus 老路、亚马逊屏蔽、token/CPU 成本（15:47）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "云端 VM=商用 IP、Manus 同路径全被 block、白领工作偏移、亚马逊已屏蔽 Muse、token burn rate 与虚拟机 CPU 成本入 §2 与成本段。"
+            },
+            {
+              "id": "RM07",
+              "title": "软硬件结合与 identity：商家开 access 的 1:1 前提、20 个 agent 刷流量得不偿失（17:31/19:37）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U07"
+              ],
+              "notes": "云端无法验证身份、1 用户 1 agent 等价原有需求/20 个 agent 只有流量成本、硬件属于用户即可确认代表行为、企业统一身份先落地，完整进入 §2。"
+            },
+            {
+              "id": "RM08",
+              "title": "烧钱获客：Astra 10/50 美元定价、一次难任务 30–40 美金、100 美金 credits 亲历、routing 传闻、60–70% token 本地愿景（22:21）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08"
+              ],
+              "notes": "定价与量级、灾难性 cost 判断、端侧/私有算力承担普通步骤的出路入 §2 与数字表；与 [00:23:13]/[00:24:35] 附近转写一致。"
+            },
+            {
+              "id": "RM09",
+              "title": "Grok Bot'走在后面的人'与企业采用分化（24:57）",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U09"
+              ],
+              "notes": "修订验证：新增段落进入 §2——Grok Bot 多为尝鲜、Legal/Healthcare 传统企业困在 Copilot 与 Codex/Claude Code 授权问题、发布速度与组织节奏的鸿沟，与 [00:25:00] 前后一致。上一轮整章缺失已真正修复。"
+            },
+            {
+              "id": "RM10",
+              "title": "前沿 Lab 最烧 token 的是 AI for Science、Navier-Stokes 案例（25:44）",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10"
+              ],
+              "notes": "Navier–Stokes 消息数与 token 消耗在数字表下注明'转述、口径冲突、未作支柱'，处理诚实；但'2C agent token 花不了多少钱、前沿实验室竞争焦点是 AI for Science'这一章级论断仍未进入正文论证。"
+            },
+            {
+              "id": "RM11",
+              "title": "小模型追大模型：提升来自 coding/长程而非 biomedical knowledge、拒答变严、内部改用 Kimi K3、benchmark 退化为 Kaggle 式（27:48）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U11"
+              ],
+              "notes": "修订验证：§2 新增王晟批评段——Kaggle 式预测、提升不代表更懂生物医学、安全拒答、改用 Kimi K3、'这是 benchmark'绕开提示，逐项与 [00:28:42]–[00:29:40] 一致；机器人侧 RoboDojo 榜单击穿在 §3。上一轮该章生物医学侧整体缺失已修复。"
+            },
+            {
+              "id": "RM12",
+              "title": "快慢双系统与分层下压：抖毛巾、16/24 倍速、直觉物理、<10B 与 200ms、内耗 CoT（30:19）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U12"
+              ],
+              "notes": "核心结论（高动态需低延迟快路径、Astra 慢推理做规划复盘）完整；抖毛巾、倍速播放、<10B、200ms、CoT 冗余等一手细节仍被压缩，未损害结论。"
+            },
+            {
+              "id": "RM13",
+              "title": "筷子夹小球：自研快/连续尝试 vs Astra 每步分析/僵局/旋转塞孔短板（35:48）",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U13"
+              ],
+              "notes": "修订验证：§3 新增对照段，自研模型快且连续尝试、Astra 更像人类思考但慢且可能陷入僵局、旋转对孔仍需反复尝试，与 [00:36:00] 前后 polished 一致。上一轮整章缺失已修复。"
+            },
+            {
+              "id": "RM14",
+              "title": "Astra 冲击：sim-to-real hype 保留意见、利好本体硬件、斯坦福两周接入、大脑公司两派（37:25）",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U14"
+              ],
+              "notes": "修订验证：hype 保留意见（只提升 3D 外观、物理引擎未变准、'仿真复活'是 hype）已补入 §3，且与 §1 的 real-to-sim 正面价值形成平衡；但'利好本体/硬件'、斯坦福课题组两周接入（[00:38:01]）、大脑公司两派（继续做强具身模型 vs 转向部署）仍未覆盖，本章行业结构判断只剩一半。"
+            },
+            {
+              "id": "RM15",
+              "title": "从 TAMP 到 Agentic：规划重回台前（39:07）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U15"
+              ],
+              "notes": "修订验证：§3 新增专段——TAMP=规划+控制长程任务、过去显式前置条件逐步执行、agentic 组合能力使规划焕发生机，与 [00:39:09] 一致；'一个被初稿遗漏的核心变化'为流程语言泄漏（见 notes），不影响事实。上一轮一级章节缺失已修复。"
+            },
+            {
+              "id": "RM16",
+              "title": "数据标注新门槛：因果与直觉物理、OpenAI 只卖不标注 rumor、生/熟数据市场（40:19）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U16"
+              ],
+              "notes": "因果/失败原因/直觉物理标注（为什么滑、动作排序、接触风险）入 §3；生数据（石油/起量）vs 熟数据（单价翻十倍）市场结构与 OpenAI rumor 省略；'模型自标数据自我强化偏差'句为生成者推断（见 unsupported_claims）。"
+            },
+            {
+              "id": "RM17",
+              "title": "惊艳之后的短板：双臂/叠衣服、语言难描述任务弱、45 分钟时间常数（43:06）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U17"
+              ],
+              "notes": "修订验证：§3 新增'两项具体短板'——双臂叠衣服几乎做不了、1h→45min 后恒定 45min 不再提速，与 [00:43:54]/[00:44:17] 转写逐字对应。上一轮只剩结论无证据的问题已修复。"
+            },
+            {
+              "id": "RM18",
+              "title": "Jev'快系统'实测：无图像输入需 VLM 转状态、叠方块失败、OpenAI 快系统 rumor（45:12）",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U18"
+              ],
+              "notes": "修订未修复：§3 仍只有'Jev…可能成为快路径的一部分'一句正面可能，来源反例（许华哲实测 Jev 在机器人任务上很差、不能输入图像、叠方块摞不起来/倒，[00:45:14]–[00:46:30]）与 OpenAI 将出带图像快系统的 rumor 仍缺，单读该句会得出与嘉宾相反的印象。"
+            },
+            {
+              "id": "RM19",
+              "title": "实验设计完成度 30%、human use、'知道答案的问题不必研究'悖论、实验室资源利用（47:10）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U19"
+              ],
+              "notes": "30% 完成度、需 technician 级专家修改、干湿实验时间差与端到端药物未成熟入 §4；human use 概念与'饭店原材料'比喻省略，属可接受压缩。"
+            },
+            {
+              "id": "RM20",
+              "title": "必须配备实验室、验证周期 vs 模型代际、实验室 redesign 闭环（51:39）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U20"
+              ],
+              "notes": "自有验证与数据积累、前置条件准备、AI 预测后立即投料的闭环设计与'分割移交低效'入 §4 可审计闭环表述。"
+            },
+            {
+              "id": "RM21",
+              "title": "制药时间线：猴子 4 个月、license 1000 万+、AlphaFold 1/2 教训、数学可验证而生物受自然规律（53:15）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U21"
+              ],
+              "notes": "设计快验证慢、上一波 AI 制药公司败于后期验证、反馈受限于自然规律、'AI 完全开发药物至今没有'的根源均入 §4；具体时间线与授权费按转述数字处理不入支柱，方式可接受。"
+            },
+            {
+              "id": "RM22",
+              "title": "AlphaFold 开源与垂直公司数据护城河、一条湿实验数据的定义与价值（55:01）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U22"
+              ],
+              "notes": "开源不等于数据公开、护城河从权重转向实验数据与反馈速度入 §4；'一条数据几万到几十万美金'量级省略。"
+            },
+            {
+              "id": "RM23",
+              "title": "湿实验公司 MCP/API 直连：Adaptive Bio 与 Anthropic 合作、前沿 lab 配湿实验室、DeepMind/Isomorphic、Jumper（58:24）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U23"
+              ],
+              "notes": "MCP/API 封装实验能力、形成闭环、前沿实验室配置或合作湿实验入 §4；公司层证据（40M 融资、Anthropic 比赛以湿实验为标准、Jumper 加入 Anthropic、Isomorphic 端到端）省略，主线未损。"
+            },
+            {
+              "id": "RM24",
+              "title": "人类科学家转向定义问题、评价与背书（01:02:15）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U24"
+              ],
+              "notes": "问题定义清楚时 AI 强于单个科学家、人类负责定义问题/设计评价/承担背书入 §4 与增量观点 5；反向蒸馏入 §5 蒸馏段。"
+            },
+            {
+              "id": "RM25",
+              "title": "好的 benchmark 应无上限：杀伤率提升、数据飞轮、避免静态分类（01:03:47）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U25"
+              ],
+              "notes": "'不断提高杀伤率、稳定性或疗效，而不是容易刷满的静态分类题'忠实转写杀 30%→40% 癌细胞与避免简单分类的原意；'为何 AI 没有自己的药仍火=时间因素'经 §4 时间差论述间接覆盖。"
+            },
+            {
+              "id": "RM26",
+              "title": "ART 启示：突破正比于实验周期、酶/蛋白质快周期最先跑出来、衰老罕见病慢（约01:05:43）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U26"
+              ],
+              "notes": "修订验证：§4 新增 ART 案例定位段（反馈周期假说例证、非'已完成科学发现'证明、保留待验证边界），与 §1 事件呼应形成完整链条；酶的工业落地例子（地沟油/洗衣粉）省略。"
+            },
+            {
+              "id": "RM27",
+              "title": "蒸馏是否让普通人失去价值：三嘉宾三种回答（01:07:48）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U27"
+              ],
+              "notes": "修订验证：§5 新增三答段——许华哲（机器人每人都是生活专家）、王晟（反向蒸馏+不断提出新问题）、Bill（蒸馏从零学习的能力而非固定技能），三视角齐备，与 [01:08:13]–[01:09:50] 一致。上一轮只剩单一视角的问题已修复。"
+            },
+            {
+              "id": "RM28",
+              "title": "三嘉宾各自最关心的问题：Bill 算力铺开、王晟高度/广度、许华哲零样本部署与 2028 预测（01:11:51）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U27"
+              ],
+              "notes": "零样本部署（五个任意人 vs 五个博士驻厂三个月）、2028 年初/家庭 90% 预测明确降权为个人判断、王晟'AI prompt 真实世界/预算内 plan/仪器直接给 AI 信号'入 §3/§5；Bill 算力愿景经 §2 端侧与 §5 覆盖。"
+            },
+            {
+              "id": "RM29",
+              "title": "主播后记：AI 圈兴奋 vs 生物圈平淡、能力曲线 vs 落地周期（01:18:04）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U27"
+              ],
+              "notes": "'AI 圈看到的是能力曲线，行业从业者看到的是落地周期'完整进入 §1 结段并标注为节目结尾的概括，归因正确；Alignment 大会场景出处省略。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S05"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "独立复核流程（round 2）：先在未参考报告与上一轮判断的情况下完整通读 shownotes、polished 全文并抽查原始 transcript 关键时间戳，按 shownotes 全部 29 个'你将听到'条目独立重建 29 单元来源地图（RM01–RM29，含被上一轮拆分方式不同的后记单元）；随后逐单元对照修订后报告正文与 evidence。audit_transcript.py 实际运行：ok=true、sha256 与 artifact.transcript_sha256 一致、2742 段、4774s、时间戳单调、无 warnings/errors，机器收据成立。\n\n修订验证结论：上一轮 core_requirement_missing 的全部触发点已真实进入正文（U15 TAMP→Agentic、U09 Grok Bot、U13 筷子夹球、U11 生物医学侧、U14 hype 保留意见、U17 双臂/45分钟、m02 的 ART/Biohub、m27 蒸馏三答），且新增文字经逐项比对无归因错误与数字错误——21 小时、18 亿美元、10/50 美元、Kimi K3、45 分钟、30%、2TB、8–24h、60–70%、2028 年初均与来源一致；商业化条件乘式已正确改标 [推测] 并归属于报告自身。\n\n剩余问题（不构成硬失败）：① Jev 实测反例仍未补入且 §3 单句方向与来源相反（上一轮遗留）；② '模型自标数据自我强化偏差'推断句仍未标 [推测]（上一轮遗留）；③ 37:25 章后半（利好本体硬件、斯坦福两周接入、大脑公司两派）与 25:44 章级论断仍未覆盖；④ evidence 账本未随修订更新（U01/U14 状态失实）；⑤ '一个被初稿遗漏的核心变化'流程语言混入正文；⑥ front matter chapters:27 与 shownotes 29 条目、hanzi_chars_polished 15728 与 polished 头部 15730 存在轻微元数据漂移。硬失败五类代码均未触发：来源真实且通读、关键 claim 有支撑、关键数字无错配、核心章节无整章缺失、无安全隐私问题。加权总分 88.4（88/87/87/92/90 × 35/20/20/15/10），落在'整体可靠、仅不影响核心结论的轻微缺陷'档；上述遗留项建议在下一轮小修中一并处理，尤其 Jev 句与账本状态。\n\n[unsupported_claims 明细（无对应登记 claim id，C01–C05 均核验有支撑，故记录于 notes）]\n- report§3 'Jev 这类只输出动作概率的\"系统一\"模型，可能成为快路径的一部分'——来源反例（许华哲实测 Jev 在机器人任务上表现很差、叠方块摞不起来/倒、不能输入图像需 VLM 先转状态，[00:45:14]–[00:46:30]）在修订中仍未补入，该句单读会得出与嘉宾相反的印象；上一轮已指出，属未修复项\n- report§3 '模型可以帮助生成标签，但模型自标数据容易形成自我强化偏差，仍需要人类抽检和真实执行反馈'——生成者推断，来源仅讲人类标注因果与直觉物理，未标 [推测]；上一轮已指出，属未修复项\n- evidence.json source_coverage U01 标 included/锚点'内容地图'，但修订后报告全文仍无《消费101》内容；U14 标 included 实为 partial——账本未随报告修订同步更新"
+        }
+      ],
+      "decision": {}
+    }
+  ]
+}

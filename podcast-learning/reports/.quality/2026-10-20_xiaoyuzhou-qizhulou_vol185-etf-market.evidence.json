@@ -1,0 +1,271 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-20_xiaoyuzhou-qizhulou_vol185-etf-market.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-21",
+  "generator": {
+    "model": "gpt-5.6-sol",
+    "harness": "codex",
+    "run_id": "generator-548d8af727a9",
+    "explicit_model_override": false,
+    "override_reason": ""
+  },
+  "task": {
+    "summary": "深度学习起朱楼 185，分析 ETF 从复制市场、制造市场到成为市场的机制、激励和治理风险。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "使用 Razer 静默转写，保存 transcript、shownotes、polished 与 artifact receipt，并通过时间戳和重复审计。"
+      },
+      {
+        "id": "R02",
+        "text": "形成 deep、standalone 的单期学习报告，覆盖来源核心内容、关键案例、数字口径、Limitations 与思考追问。"
+      },
+      {
+        "id": "R03",
+        "text": "区分节目口播、嘉宾预测与分析者推断，并关联既有知识而不把二手转述写成独立事实。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "local",
+      "title": "原始转写（Razer worker）",
+      "locator": "podcast-learning/reports/transcripts/2026-10-20_xiaoyuzhou-qizhulou_vol185-etf-market.transcript.txt",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S02",
+      "kind": "local",
+      "title": "结构化精编稿",
+      "locator": "podcast-learning/reports/transcripts/2026-10-20_xiaoyuzhou-qizhulou_vol185-etf-market.polished.txt",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S03",
+      "kind": "local",
+      "title": "官方 shownotes 存档",
+      "locator": "podcast-learning/reports/transcripts/2026-10-20_xiaoyuzhou-qizhulou_vol185-etf-market.shownotes.md",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S04",
+      "kind": "primary",
+      "title": "起朱楼 185 官方节目页",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/6ad1b796641ef406308c86ef",
+      "accessed_on": "2026-10-21"
+    },
+    {
+      "id": "S05",
+      "kind": "local",
+      "title": "Razer artifact 与传输回执",
+      "locator": "podcast-learning/reports/transcripts/2026-10-20_xiaoyuzhou-qizhulou_vol185-etf-market.artifact.json",
+      "accessed_on": "2026-10-21"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "ETF 通过交易所份额交易、授权参与商创建赎回和套利机制降低申赎摩擦并约束价格偏离。",
+      "report_anchor": "复制市场",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "由列出的 transcript、polished 与 shownotes 对应章节直接核对；分析性 claim 已标 inference。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "主题 ETF 把投资观点包装为注意力产品，发行时点、收费激励和主题相关性可能偏离长期投资目标。",
+      "report_anchor": "制造市场",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "由列出的 transcript、polished 与 shownotes 对应章节直接核对；分析性 claim 已标 inference。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "指数纳入、剔除和权重规则在资金规模足够大时会直接改变底层市场交易。",
+      "report_anchor": "指数不是自然物",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "由列出的 transcript、polished 与 shownotes 对应章节直接核对；分析性 claim 已标 inference。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "非弹性市场假说认为被动资金可能削弱估值敏感资金的吸收能力并放大部分资金冲击。",
+      "report_anchor": "成为市场",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "由列出的 transcript、polished 与 shownotes 对应章节直接核对；分析性 claim 已标 inference。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "被动执行没有消除指数规则、产品设计和公司治理中的主动判断，投资者仍需保留元判断。",
+      "report_anchor": "被动投资的治理悖论",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "由列出的 transcript、polished 与 shownotes 对应章节直接核对；分析性 claim 已标 inference。",
+      "critical": true
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "一群 ETF 创造者的重聚",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "复制市场"
+    },
+    {
+      "id": "U02",
+      "title": "巴菲特与指数基金洞见",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "复制市场"
+    },
+    {
+      "id": "U03",
+      "title": "ETF 两层交易与套利机制",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "复制市场"
+    },
+    {
+      "id": "U04",
+      "title": "ETF 规模扩张的税收与需求因素",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "复制市场"
+    },
+    {
+      "id": "U05",
+      "title": "万物皆可 ETF 与注意力竞争",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "制造市场"
+    },
+    {
+      "id": "U06",
+      "title": "主题 ETF 偏离初心",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "制造市场"
+    },
+    {
+      "id": "U07",
+      "title": "指数制定者与成分规则",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "指数不是自然物"
+    },
+    {
+      "id": "U08",
+      "title": "GDXJ 调整如何制造市场",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "指数不是自然物"
+    },
+    {
+      "id": "U09",
+      "title": "被动投资与非弹性市场假说",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "成为市场"
+    },
+    {
+      "id": "U10",
+      "title": "金融稳定、治理与投票权",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "被动投资的治理悖论"
+    },
+    {
+      "id": "U11",
+      "title": "普通投资者的 ETF 行动框架",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "普通投资者的行动框架"
+    }
+  ],
+  "limitations": [
+    "演讲处于投资者教育与资产管理语境，不构成投资建议。",
+    "论文结果、基金规模和持股比例多为主播口播，未逐项复算。",
+    "非弹性市场是假说，不能解释全部市场波动。"
+  ]
+}

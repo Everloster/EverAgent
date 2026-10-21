@@ -7,6 +7,11 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-10-21 | [高能量 238：全球资本市场为何开始集体缺钱——美债、AI CAPEX 与中国融资结构](../podcast-learning/reports/2026-10-20_xiaoyuzhou-gaonengliang_vol238-global-liquidity.md) | podcast-learning |
+| 2026-10-21 | [起朱楼 185：ETF 从复制市场到成为市场——被动投资的力量、激励与风险](../podcast-learning/reports/2026-10-20_xiaoyuzhou-qizhulou_vol185-etf-market.md) | podcast-learning |
+| 2026-10-21 | [硅谷101 E256：GPT-6 Astra 如何同时改写 Agent、机器人与 AI 制药](../podcast-learning/reports/2026-10-19_rss-guigu101_e256-astra-agent-robot-drug.md) | podcast-learning |
+| 2026-10-21 | [张小珺 155：科沃斯钱程谈企业接班、经营克制与机器人长期战](../podcast-learning/reports/2026-10-21_xiaoyuzhou-zhangxiaojun_vol155-qiancheng-ecovacs.md) | podcast-learning |
+| 2026-10-21 | [LinkStart 135：AI 眼镜与折叠屏的产品定义——设计如何决定 AI 硬件价值](../podcast-learning/reports/2026-10-21_xiaoyuzhou-linkstart_vol135-ai-hardware-design.md) | podcast-learning |
 | 2026-10-21 | [DeepInfer：从模型协同设计到生产推理内核](../ai-learning/reports/knowledge_reports/DeepInfer_从模型协同设计到生产推理内核_深度解析_20261021.md) | ai-learning |
 | 2026-10-20 | [金瓶梅·绿色版 9《蒋竹山》：一张假借据如何调动街头、保甲与提刑院](../podcast-learning/reports/2026-08-13_ximalaya-bannatie-gushipian_jiangzhushan.md) | podcast-learning |
 | 2026-10-20 | [身体出现这些信号，可能是炎症在提醒你！——帆书讲《炎症》](../podcast-learning/reports/2026-08-21_bilibili-fanshu_yanzheng.md) | podcast-learning |
@@ -27,11 +32,6 @@
 | 2026-10-20 | [从模型信仰到应用求生：中国 AI 创业与一级市场的分化故事线（2022底—2026）](../ai-learning/reports/knowledge_reports/中国AI创业与一级市场故事线_从模型信仰到应用求生_20260731.md) | ai-learning |
 | 2026-10-20 | [为什么 FDE 在 AI 时代这么火？因为差距不在模型，在业务细节](../podcast-learning/reports/2026-07-29_bilibili-kedaibiao-lizheng_jove-fde.md) | podcast-learning |
 | 2026-10-20 | [下一轮双仓重构参照：证据驱动维护、复杂度路由与分段深审](../ai-learning/reports/knowledge_reports/双仓重构参照_证据驱动维护_复杂度路由与分段深审_20261020.md) | ai-learning |
-| 2026-10-20 | [一本书看清“工作”的真相：竹竹暴风雪解读 × 鲍曼《工作、消费主义和新穷人》原书深读](../podcast-learning/reports/2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism.md) | podcast-learning |
-| 2026-10-20 | [yetone/magpie 深度研究：多 Agent 模型路由中枢](../github-trending-analyzer/reports/research_yetone_magpie.md) | github-trending-analyzer |
-| 2026-10-20 | [vLLM 调度器：continuous batching 的真身（课论断 ↔ 源码对照篇）](../ai-learning/reports/knowledge_reports/vLLM_调度器_continuous_batching真身_20260909.md) | ai-learning |
-| 2026-10-20 | [vLLM V1 架构总览：一个请求的一生（骨架篇）](../ai-learning/reports/knowledge_reports/vLLM_V1架构总览_深度解析_20260821.md) | ai-learning |
-| 2026-10-20 | [trycua/cua 深度研究（源码视角）](../github-trending-analyzer/reports/research_trycua_cua_sourcecode.md) | github-trending-analyzer |
 
 ## 🤖 AI Learning（120 篇）
 
@@ -283,10 +283,15 @@
 | 2026-04-20 | [Qwen2.5-3B GRPO 强化学习微调](../ai-practice/experiments/exp_004_qwen25_grpo_finetune.md) | — |
 | 2026-04-20 | [HuggingFace Hub 模型与数据集管理](../ai-practice/experiments/exp_002_huggingface_basics.md) | — |
 
-## 🎙️ Podcast Learning（79 篇）
+## 🎙️ Podcast Learning（84 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-10-21 | [高能量 238：全球资本市场为何开始集体缺钱——美债、AI CAPEX 与中国融资结构](../podcast-learning/reports/2026-10-20_xiaoyuzhou-gaonengliang_vol238-global-liquidity.md) | `podcast`, `macro`, `liquidity`, `ai-capex`, `capital-markets` |
+| 2026-10-21 | [起朱楼 185：ETF 从复制市场到成为市场——被动投资的力量、激励与风险](../podcast-learning/reports/2026-10-20_xiaoyuzhou-qizhulou_vol185-etf-market.md) | `podcast`, `etf`, `passive-investing`, `market-structure`, `asset-allocation` |
+| 2026-10-21 | [硅谷101 E256：GPT-6 Astra 如何同时改写 Agent、机器人与 AI 制药](../podcast-learning/reports/2026-10-19_rss-guigu101_e256-astra-agent-robot-drug.md) | `podcast`, `gpt-6-astra`, `agent`, `robotics`, `ai-for-science` |
+| 2026-10-21 | [张小珺 155：科沃斯钱程谈企业接班、经营克制与机器人长期战](../podcast-learning/reports/2026-10-21_xiaoyuzhou-zhangxiaojun_vol155-qiancheng-ecovacs.md) | `podcast`, `robotics`, `ecovacs`, `succession`, `management` |
+| 2026-10-21 | [LinkStart 135：AI 眼镜与折叠屏的产品定义——设计如何决定 AI 硬件价值](../podcast-learning/reports/2026-10-21_xiaoyuzhou-linkstart_vol135-ai-hardware-design.md) | `podcast`, `ai-hardware`, `smart-glasses`, `industrial-design`, `product-definition` |
 | 2026-10-20 | [金瓶梅·绿色版 9《蒋竹山》：一张假借据如何调动街头、保甲与提刑院](../podcast-learning/reports/2026-08-13_ximalaya-bannatie-gushipian_jiangzhushan.md) | `金瓶梅`, `权力网络`, `司法`, `婚姻财产`, `叙事分析` |
 | 2026-10-20 | [身体出现这些信号，可能是炎症在提醒你！——帆书讲《炎症》](../podcast-learning/reports/2026-08-21_bilibili-fanshu_yanzheng.md) | `inflammation`, `health_communication`, `medical_evidence`, `nutrition` |
 | 2026-10-20 | [说医解药 Vol.91：银鳕鱼汞中毒争议——三种汞、鳕鱼命名史与 FDA 选鱼数学](../podcast-learning/reports/2026-10-08_xiaoyuzhou-shuoyi-jieyao_vol91-cod-mercury.md) | `mercury`, `seafood_safety`, `risk_communication`, `public_health` |
