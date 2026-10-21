@@ -1,0 +1,150 @@
+{
+  "decision": {
+    "status": "pass",
+    "score": 91.7,
+    "evaluated_on": "2026-10-22",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "f60d202a17e47e1ff7defbe0ccc586a6a971b882a2ded3cc838fd12c248c9003",
+    "evidence_sha256": "6529f6a566633aed39eef339949f4cc82d5ff8dc5a048be7ba60d77f72014e77"
+  },
+  "history": [
+    {
+      "decision": {
+        "evaluated_on": "2026-10-22",
+        "evidence_sha256": "e7bbb8b3c22e2207e2b69f9a3f79df3e61d84721c05a78012460fe8ef3900a16",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "972c9f4284919b63e51247c9f6c9f6b4d5d98ff427b8b6666167da3176b1898e",
+        "score": 90.6,
+        "status": "pass"
+      },
+      "reviews": [
+        {
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07"
+          ],
+          "escalation_reason": "",
+          "hard_failures": [],
+          "missing_requirements": [],
+          "notes": "独立会话来源优先复核：经 eacli tokenplan（web.read/web.search）直读 S01–S07、S10，复现 S09 拦截（MCP -400/code 1301，当日再触发）并确认 S08 为快照级登记（今日仅回占位内容）。S05/S07 首页按预期轮换，六条首页文以持久文章 URL 逐篇直读闭合，HN 条目经 Algolia API 交叉（Timestral 554 分/104 评论 @10-20T02:05 与快照 540/103 自洽）。C01–C07 全部核对：六条 critical claim 经原文逐数字核对零误差，含高风险口径（$0.22 AA 套件 vs 10-19 的 $0.20 DeepSWE 均值区分、$1,620 按 2027 定价、Timestral publishedTime 元数据异常复现确为 2026-07-15、「7–10 家」为匿名高管判断）；C07 周份额五项精确吻合，10-19 日榜数字经 10-20 涨幅反推闭合（4.15T/+15%⇒3.61T；3.91T/+272%⇒1.05T；1.26T/+17%⇒1.08T）。R01–R03 均核实：四源标记正确、结构完整、层级标注到位、三个一手直读兑现、去重边界与上期 13 仓表精确对账（8 存留+5 落榜、8+4=12），历史锚点（10-14 头条 1/6、10-15 趋势 2、10-19 头条 3）存在且内容对应。遗留未闭合项（不构成 hard failure）：(1) GitHub Trending 12 仓总星快照与今日 GitHub API 读数 11/12 相悖（当前低于快照 −1.0K 至 −50.2K，仅 ai-job-search 为 +3,498 自洽）；因仓库均真实、描述吻合（os-taxonomy 描述缺失属实）、两日快照序列单调自洽、报告 limitation 已声明快照不可复现，记为未闭合疑点而非伪造，建议后续日报对 Trending 补 API 时点留痕（stargazers_count+时间戳）使其可审计；(2) C07 中 10-19 日榜「前十中九席低价变体」构成与两条 HN 标题级分数（M3.1 375/163、Ask HN 246/389）页面轮换后不可复验，报告已按标题级/快照口径如实标注；(3) 证据账本 S02 描述含「reasoning 常开」，今日 GA 版页面无此表述，报告正文未依赖该说法，仅账本措辞瑕疵。",
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03"
+          ],
+          "reviewer": {
+            "explicit_model_override": false,
+            "harness": "claude-code",
+            "independent_context": true,
+            "model": "glm-5.3",
+            "override_reason": "",
+            "run_id": "ai-news-review-2026-10-20-006dd004"
+          },
+          "role": "primary_review",
+          "score_reasons": {
+            "evidence_fidelity": "六条 critical claim（C01–C06）经直读原始来源逐数字核对全部吻合，含高风险口径细节：M3.1 的 $0.22（AA 套件）与 10-19 记录约 $0.20（DeepSWE 官方均值）区分、$1,620 按 2027 年生效定价、Timestral 官方页 publishedTime 异常（复核确为 2026-07-15）、「7–10 家」为匿名高管预期。C07 周份额五项精确吻合，10-19 日榜数字经 10-20 涨幅反推闭合（4.15T/+15%⇒3.61T；3.91T/+272%⇒1.05T；1.26T/+17%⇒1.08T）。AIHOT 拦截（MCP -400/code 1301）今日复现，AI Digest 停更于 2026-08-24 属实。扣分：GitHub Trending 12 仓总星快照与今日 API 读数 11/12 低于快照（−1.0K 至 −50.2K，仅 ai-job-search 高于），无法判定虚高、平台清星或读取漂移（仓库名/语言/描述全部真实，10-19→10-20 序列内部单调自洽）；C07 的 10-19 日榜前十构成与两条 HN 标题级分数（375/163、246/389）页面轮换后不可复验。",
+            "limitations": "不确定性披露具体且经复核属实：AIHOT 失败模式带错误码与尝试次数、榜单与排名为时点快照事后不可复现、OpenRouter token 度量调用量而非质量、Timestral 发布日期多源口径冲突的处理过程（含官方元数据异常说明）、转述级条目在正文质疑段与详情块集中枚举待复核。未预见（生成时不可知）Trending 星数与当前 API 读数的异常，通用快照声明已覆盖大部分该风险，故仅小扣。",
+            "readability": "可完全脱离对话独立阅读：页眉四源状态行与期数链接、每条头条固定「三句话速读/关键事实/细读与质疑/来源」骨架、Trending 表含新旧上榜与存续标注、简讯与趋势总结分层清晰，details 折叠块集中给出直读清单/转述清单/去重说明，可审计性好。小扣分：HN 标题级简讯密度较高，个别条目仅一句且依赖未读正文。",
+            "reasoning_quality": "质疑段非套话：56% 事实正确率与 93% 幻觉率「同一枚硬币两面」、两种成本口径不可混用、605 次死亡说明「自主」含大量试错成本、Stripe 小基数倍数不等于规模、neocloud 定性为观点文且 7–10 家无实名来源、Timestral「全部第一」限定预训练+零样本类别、Kling 对比保留「下代才见分晓」的不确定性。趋势总结三条均为两端对读（价格战 vs 用量收敛、基建出清 vs 支付放量、协作里程碑 vs 判断力掉队），反例与替代解释在场，[推测] 标注使用得当（下一季度盯 Stripe 绝对值）。",
+            "request_coverage": "R01/R02/R03 全部满足且有交叉证据：页眉四源 ✅/❌ 标记与复核一致（AIHOT 拦截复现、AI Digest 停更属实）；今日要点、6 条结构完整头条、Trending、简讯、趋势总结齐备；直读/检索快照/转述/标题级逐条标注，三个一手直读（MiniMax 官方页、Mistral 公告、OpenRouter 排行）兑现；对照 10-19/10-15/10-14 去重边界逐项核实（上期 13 仓、8 存留+5 落榜、8+4=12 算术精确，历史锚点 10-14 头条 1/6、10-15 趋势 2 均存在且内容对应）；事实汇总与趋势分析分节。今日要点 8 条全部落到正文。"
+          },
+          "scores": {
+            "evidence_fidelity": 88,
+            "limitations": 90,
+            "readability": 92,
+            "reasoning_quality": 90,
+            "request_coverage": 95
+          },
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06",
+            "S07",
+            "S08",
+            "S09",
+            "S10"
+          ],
+          "unsupported_claims": []
+        }
+      ],
+      "revision_round": 1
+    }
+  ],
+  "quality_tier": "standard",
+  "report_path": "web-surfing/reports/ai-news-daily-2026-10-20.md",
+  "reviews": [
+    {
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C_RADAR_WINDOW"
+      ],
+      "escalation_reason": "",
+      "hard_failures": [],
+      "missing_requirements": [],
+      "notes": "独立会话来源优先复核（revision 3，覆盖新增雷达补核节）：经 eacli tokenplan（web.read/web.search，zhipu/razer）直读 S01、S03、S04、S10、S12–S14 与 S05 六条首页文的持久文章 URL（Minecraft/Stripe/neocloud/谈判规范/Kling 4.0/Taste-Bench；首页已轮换且当前被内容过滤拦截，与 round-1 处理方式一致）；S08 经检索确认 Reuters 报道真实存在（直读仅回占位，与快照级登记相符）；S09 两域拦截今日复现；S06 经仓库抽查（ai-job-search/headroom/Kronos 真实、描述吻合）、S07 经 Algolia API 闭合。C01–C07 与 C_RADAR_WINDOW 共 8 条 claim 全部核对：六条 critical 经原文逐数字核对零误差，含高风险口径（$0.22 AA 套件 vs 10-19 $0.20 DeepSWE 均值、$1,620 按 2027 定价、Timestral 元数据异常复现为 2026-07-15、「7–10 家」为匿名高管口径）；C07 经涨幅反推精确闭合并独立重构 M3.1 第 7、Opus 第 6 名次；三条 HN 头条分数经 Algolia 单调闭合（540/103→554/104、375/163→514/218、246/389→598/725），Ask HN 原题核实存在；10-15/10-16 多条小 HN 提交佐证 Timestral 约 10-16 发布口径。R01–R03 均核实：四源标记正确、结构完整、层级标注到位、三个一手直读兑现、Trending 两期对账 8+5+4=12 算术精确、历史锚点（10-19 头条 1/3、10-15 趋势 2、10-14 头条 1/6）全部存在且内容对应、本期首录条目前三篇零命中。遗留未闭合项（不构成 hard failure）：(1) GitHub Trending 总星快照不可复现，round-1 记录的与当日 API 读数 11/12 相悖的疑点本轮未能进一步解释（仓库真实、描述吻合、两日序列内部单调自洽，报告 limitation 已声明，维持未闭合疑点而非伪造的判定，建议后续 Trending 留 stargazers_count+时间戳收据）；(2) C07 日榜前十构成与部分 HN 标题级分数为快照口径不可复验，报告已按标题级/快照如实标注；(3) 证据账本 S02 描述含「reasoning 常开」，当前 GA 版页面无此表述，正文未依赖该说法（沿袭 round-1 认定）；(4) 头条 4 质疑段「微软退出原因原文未展开」与原文的电力供应背景（2030s 通电）略有出入，属措辞瑕疵不影响结论。另记操作面观察：zhipu web-reader 内容过滤本轮也拦截了 the-decoder.com 首页（MCP -400/code 1301），S05 类首页直读今后建议直接走持久文章 URL。无伪造来源、无关键数字失配、无核心要求缺失、无安全问题。",
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03"
+      ],
+      "reviewer": {
+        "explicit_model_override": false,
+        "harness": "claude-code",
+        "independent_context": true,
+        "model": "glm-5.3",
+        "override_reason": "",
+        "run_id": "ai-news-review-2026-10-20-960de295"
+      },
+      "role": "primary_review",
+      "score_reasons": {
+        "evidence_fidelity": "六条 critical claim（C01–C06）经持久 URL 全文直读逐数字核对零误差：C01 对 The Decoder 全文（AA 42/M3 29/GLM 追平/Gemini 41/DS 45、HLE 48%/43%、CritPt 22/15/18/24、Omniscience 56/28/43、$0.22 vs $0.26、189M vs 224M、$0.15/$0.60/$0.015、93% 幻觉、DeepSWE 73.7%<$0.30、10-23 开源、publishedTime 10-19T18:22Z）与 MiniMax 官方页双源吻合，Reuters 报道经检索确认存在；C02（27h14m/2,783/229/605/$1,620 按 2027 定价/Faldor 等）、C03（38x/20x/约70→约200 agent/$100 单笔/零售 36%/32%/旅行 28%/16 位卡号）、C05（CoreWeave 四分之一/Nscale 23,000 块/Firmus/7–10 家为 The Information 匿名高管/45%=$40B 七月季度）、C06（三类场景/Fellows 四个月 $100k–167k/五学科/Justin Curl 引语）均逐项吻合；C04 与 Mistral 官方公告逐项吻合，publishedTime 元数据异常（2026-07-15）今日复现确证。C07 经当前 OpenRouter 页（数据至 10-20）涨幅反推精确闭合（4.15T/+15%⇒3.61T、3.91T/+272%⇒1.05T、1.26T/+17%⇒1.08T）并独立重构 M3.1 第 7、Opus 第 6 名次，周份额五项（24.4/19.7/18.5/12.2/4.7+25%）逐字吻合。C_RADAR_WINDOW 三条 feed 条目标题逐字吻合、上海时区均落窗口内。HN 三条头条经 Algolia 闭合且单调自洽。扣分：Trending 总星快照不可复现（round-1 记录的 11/12 与 API 读数相悖疑点仍未闭合）；C07 日榜前十构成与部分标题级分数为快照口径不可复验；头条 4 质疑「微软退出原因原文未展开」与原文电力供应背景略有出入。",
+        "limitations": "不确定性披露具体且经本轮复核属实：AIHOT 失败模式带错误码与尝试次数（今日双域复现）；榜单与排名为时点快照事后不可完全复现（本轮 Trending/OpenRouter/HN 快照确不可直接复现，但 OpenRouter 经涨幅反推闭合、HN 经 Algolia 闭合，证明该 limitation 的边界划得准确）；OpenRouter token 度量调用量而非质量（与官方 How measured 说明一致）；Timestral 发布日期多源口径冲突的处理过程含官方元数据异常说明（本轮复现确为 2026-07-15）；雷达补核的时点、候选上限、窗口不完整与只读 HTTP 降级均明示，三条条目仅核实标题/feed 时间的边界与实际登记一致。未预见（生成时不可知）Trending 星数与 API 读数异常，通用快照声明已覆盖大部分该风险，故仅小扣。",
+        "readability": "可完全脱离对话独立阅读：页眉四源状态行与期数链接、每条头条固定「三句话速读/关键事实/细读与质疑/来源」骨架、Trending 表含新旧上榜与存续标注、简讯与趋势总结分层清晰，details 折叠块集中给出直读清单/转述清单/去重说明，可审计性好。小扣分：HN 标题级简讯密度较高，个别条目仅一句且依赖未读正文（已如实标注标题级）。",
+        "reasoning_quality": "质疑段经原文比对全部站得住且非套话：$0.22（AA 套件）与 10-19 约 $0.20（DeepSWE 官方均值）两种成本口径明确声明不可混用（经两篇原文确证为不同口径）；56% 事实正确率与 93% 幻觉率的「同一枚硬币两面」读法成立；$1,620 依赖 2027 定价、605 次死亡含大量试错成本；Stripe 小基数倍数不等于规模（原文自带该声明）；neocloud 定性为观点文且 7–10 家无实名来源；Timestral「全部第一」限定预训练+零样本类别与原文一致；Kling「不落下风也未拉开」保留「下代才见分晓」（原文有对应表述）。趋势总结三条均为两端对读（价格战 vs 用量收敛、基建出清 vs 支付放量、协作里程碑 vs 判断力掉队），反例与替代解释在场，[推测] 标注使用得当。小扣：Nscale 退出原因一处的「原文未展开」表述与原文电力背景略有出入。",
+        "request_coverage": "R01/R02/R03 全部满足且有交叉证据。R01：页眉四源 ✅/❌ 与本轮复核一致——AIHOT 两域拦截（MCP -400/code 1301）今日复现，AI Digest 停更于 2026-08-24 今日复证；今日要点 8 条全部落到正文，6 条结构完整头条、12 仓 Trending 表、简讯、趋势总结齐备，失败项如实标记未伪造。R02：直读/检索快照/转述/标题级四层标注贯穿全文，三个一手直读（MiniMax 官方页、Mistral 公告、OpenRouter 排行）本轮均实际可读且与正文一致，转述级条目在质疑段与 details 块集中枚举。R03：对照 10-19/10-15/10-14 逐项核实——历史锚点（10-19 头条 1/3、10-15 趋势 2、10-14 头条 1/6）全部存在且内容对应；上期 13 仓 8 存留+5 落榜（三平台插件/skills 目录与 llm-course）+4 新上榜=12 算术精确；本期首录条目（M3.1、Minecraft、Stripe、neocloud、谈判规范、Timestral、Kling 4.0、Taste-Bench）在前三篇中 grep 零命中；延续事件（DeepSeek 1017、Argon、RTX Spark）仅以新增量进条目并链历史线；事实汇总与趋势分析分节。小扣：Trending「六仓 Built by 含 @claude」等页面附属信息为快照级不可复验。"
+      },
+      "scores": {
+        "evidence_fidelity": 90,
+        "limitations": 92,
+        "readability": 92,
+        "reasoning_quality": 91,
+        "request_coverage": 95
+      },
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14"
+      ],
+      "unsupported_claims": []
+    }
+  ],
+  "revision_round": 1,
+  "schema_version": 1
+}

@@ -501,12 +501,13 @@
 | 2026-03-17 | [AstrBotDevs/AstrBot](../github-trending-analyzer/reports/research_AstrBotDevs_AstrBot.md) | — |
 | 2026-03-17 | [666ghj/BettaFish 深度研究报告](../github-trending-analyzer/reports/research_666ghj_BettaFish.md) | — |
 
-## 🏄 Web Surfing（44 篇）
+## 🏄 Web Surfing（45 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
 | 2026-10-20 | [炒菜调料时机：从短视频口诀到可复用的厨房判断](../web-surfing/reports/cooking-logic-timing-douyin.md) | `cooking`, `douyin`, `food-science`, `fact-check` |
 | 2026-10-20 | [惠州租房建议报告：两位老人 2026 年 9/10 月短住体验](../web-surfing/reports/huizhou-rental-guide-2026-09.md) | `huizhou`, `rental`, `elderly_living`, `short_term_rental` |
+| 2026-10-20 | [AI 行业日报 · 2026-10-20](../web-surfing/reports/ai-news-daily-2026-10-20.md) | `ai_news`, `daily`, `industry_watch` |
 | 2026-10-20 | [AI 厂商官方技术源雷达：内容质量与订阅可行性实测](../web-surfing/reports/ai-vendor-technical-sources-2026-10-20.md) | `ai_sources`, `technical_blogs`, `vendor_research`, `rss`, `content_radar` |
 | 2026-10-19 | [AI 行业日报 · 2026-10-19](../web-surfing/reports/ai-news-daily-2026-10-19.md) | `ai_news`, `daily`, `industry_watch` |
 | 2026-10-15 | [AI 行业日报 · 2026-10-15](../web-surfing/reports/ai-news-daily-2026-10-15.md) | `ai_news`, `daily`, `industry_watch` |

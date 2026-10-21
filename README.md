@@ -51,7 +51,7 @@
 | ⚗️ [AI Practice](./ai-practice/) | 10 篇 | 9/1/0 |
 | 🎙️ [Podcast Learning](./podcast-learning/) | 84 篇 | 58/53/0 |
 | 🔭 [GitHub Research](./github-trending-analyzer/) | 124 篇 | 0/0/0 |
-| 🏄 [Web Surfing](./web-surfing/) | 44 篇 | 0/0/0 |
+| 🏄 [Web Surfing](./web-surfing/) | 45 篇 | 0/0/0 |
 <!-- AUTO-OVERVIEW:END -->
 
 > 📖 抽空读报告？全部报告按更新时间索引 → [docs/REPORT_INDEX.md](./docs/REPORT_INDEX.md)（`reindex.py` 自动生成）

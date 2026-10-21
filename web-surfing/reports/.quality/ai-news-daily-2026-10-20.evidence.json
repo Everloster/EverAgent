@@ -1,0 +1,233 @@
+{
+  "claims": [
+    {
+      "claim": "MiniMax M3.1 Flash：AA 智能指数 42（前代 M3 为 29，追平 GLM-5.3-Flash、略超 Gemini 3.8 Flash 的 41、落后 DeepSeek V4.1 Flash 1017 的 45）；官方 DeepSWE v1.1 最高 73.7%、单任务 <$0.30；AA 套件口径每任务约 $0.22（输出 189M token vs DeepSeek 224M）；API $0.15/M 输入、$0.60/M 输出、缓存 $0.015/M；1M token 上下文、文本+图像输入；权重定于 10-23 开放；AA 测得 93% 幻觉率（从不弃答）。",
+      "critical": true,
+      "evidence": "The Decoder 10-19T18:22Z 全文直读给出全部基准、成本与定价数字（AA 指数、HLE 48%/43%、CritPt 22%/24%、Omniscience 56%/43%/28%、$0.22 vs $0.26、189M vs 224M、$0.15/$0.60/$0.015、10-23 开源、93% 幻觉率）；MiniMax 官方页直读确认模型定位、reasoning 常开与 MiniMax Code 入口；Reuters 快照交叉确认 10-19 发布事实。报告已注明基准为厂商自报 + AA 单家口径、开源为承诺未兑现、免费变体含引流因素。",
+      "id": "C01",
+      "report_anchor": "AA 智能指数 42（前代 M3 为 29）",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S08"
+      ],
+      "support": "direct"
+    },
+    {
+      "claim": "四个 Gemini 4 Argon agent 在随机生成的 Minecraft 世界全程无人工干预击败末影龙：27 小时 14 分钟，共写 2,783 个 JavaScript 程序、交换 229 条聊天消息、死亡 605 次，全程成本 $1,620（按 2027 年生效的标准 Argon 价格），论文署名 Faldor 等（Google DeepMind）。",
+      "critical": true,
+      "evidence": "The Decoder 首页全文口径直读（含配图说明 Faldor et al.）；报告质疑段已标注 DeepMind 原始论文未直读、$1,620 依赖 2027 年定价口径、「首次」为报道口径。",
+      "id": "C02",
+      "report_anchor": "27 小时 14 分",
+      "source_ids": [
+        "S05"
+      ],
+      "support": "direct"
+    },
+    {
+      "claim": "Stripe（经 Upstarts Media 报道）：9 月 agent 经 Link 的交易数增长 38 倍、支付量增长 20 倍；分析时约 70 个 agent、现约 200 个（含 Meta Muse 与 Grok Bot）；多数单笔约 $100，部分订机票/数千美元家具；零售占交易 36%/金额 32%，旅行占金额 28%；Link 发独立 16 位卡号并可设限额；Anthropic 与 OpenAI 用 Link 但未用于 agent 购买。",
+      "critical": true,
+      "evidence": "The Decoder 首页全文口径直读，注明转述 Upstarts Media；报告质疑段已标注绝对数未披露、小基数倍数不等于规模、单一支付渠道口径、原文未直读。",
+      "id": "C03",
+      "report_anchor": "交易数增长 38 倍",
+      "source_ids": [
+        "S05"
+      ],
+      "support": "direct"
+    },
+    {
+      "claim": "Mistral Timestral：首个时间序列基础模型家族，四档 5M/28M/123M/209M 参数；209M 档在 GIFT-Eval、TIME、fev-bench 的预训练零样本模型中全部第一（参数约为前 SOTA 三分之二）；28M 档胜约四倍大的 Chronos-2；CPU 推理（8 线程、三周 15 分钟历史预测一天）5M 档 10ms、209M 档 140ms；概率输出 21 分位；上下文 32,768 时间步；Modified MIT 许可、可 air-gapped 部署。",
+      "critical": true,
+      "evidence": "Mistral 官方公告全文直读（含全部规格表与 DHF/协变量注意力/合成数据/两阶段训练技术要点）；HN 首页快照确认 540 分/103 评论热度。报告已注明「全部第一」限预训练+零样本类别、自报成绩已提交公开榜、发布日期多源口径约 10-16 且官方页 publishedTime 元数据异常。",
+      "id": "C04",
+      "report_anchor": "GIFT-Eval、TIME、fev-bench",
+      "source_ids": [
+        "S03",
+        "S07"
+      ],
+      "support": "direct"
+    },
+    {
+      "claim": "neocloud 洗牌（The Decoder 观点文）：CoreWeave 市值缩水四分之一；微软退出与 Nscale 的 23,000 块 Nvidia 芯片交易；Firmus 撤回 IPO；匿名业内高管预计数百家 AI 云仅 7–10 家幸存；hyperscaler 之外客户占 Nvidia 数据中心收入 45%。",
+      "critical": true,
+      "evidence": "The Decoder 首页全文口径直读；报告已标注这是分析文而非单一事件报道、「7–10 家」为匿名高管预期、与 10-15 银行甩债同链、微软退出原因未展开。",
+      "id": "C05",
+      "report_anchor": "CoreWeave 市值缩水四分之一",
+      "source_ids": [
+        "S05"
+      ],
+      "support": "direct"
+    },
+    {
+      "claim": "Anthropic 谈判规范（FT 报道、The Decoder 转述）：就 agent 代用户砍价/投诉/合同改进咨询律所制定公平谈判规范；实验显示更强模型谈成更好交易、可能扩大不平等；Conceptual Reasoning Fellows 招律师，$100,000–167,000 聘期四个月，测 Claude 在法律/哲学/认知科学/经济学/政治学判断题；Justin Curl 称法律上「定义质量出了名地难」。",
+      "critical": true,
+      "evidence": "The Decoder 首页全文口径直读（转述 FT）；报告质疑段已标注 FT 原文未直读、规范处咨询早期、单方立规约束力未知。",
+      "id": "C06",
+      "report_anchor": "$100,000–167,000",
+      "source_ids": [
+        "S05"
+      ],
+      "support": "direct"
+    },
+    {
+      "claim": "OpenRouter（数据截至 10-19）：DeepSeek V4.1 Flash 1017 以 3.61T tokens（+19%）居日榜第一；MiniMax M3.1 Flash（free）1.05T 新上榜第 7；日榜前十除 Claude Opus 5.5（第 6，1.08T，+31%）外均为 Flash/免费/低价变体；DeepSeek 周请求份额 24.4% 居首（Google 19.7%、OpenAI 18.5%、Z.ai 12.2%、Anthropic 4.7%/+25%）。",
+      "critical": false,
+      "evidence": "OpenRouter Rankings 页全量直读（Today/This Week/This Month/Market Share 各表原文数字）；报告与详情块已注明数据日为 10-19、token 数不等同质量、免费变体含引流因素。",
+      "id": "C07",
+      "report_anchor": "3.61T tokens",
+      "source_ids": [
+        "S04"
+      ],
+      "support": "direct"
+    },
+    {
+      "claim": "AI Tech Blog Radar 补核返回的三条所选 feed 条目时间按 Asia/Shanghai 换算后落在 2026-10-19 至 2026-10-20，正文与性能结论未核实。",
+      "critical": false,
+      "evidence": "20/20 源成功，12 条候选；按 date_confidence=feed 与 published_at 换算到 Asia/Shanghai 后过滤，选择 NVIDIA Mamba-2、Hugging Face ALTK-Evolve 和 AnyLanguageModel。执行结果 SHA-256 6c22a982e9c5547a99f1d9783a074af5faa8270b6ee4ed3439212beab6064285",
+      "id": "C_RADAR_WINDOW",
+      "report_anchor": "### AI Tech Blog Radar · 2026-10-21 补核",
+      "source_ids": [
+        "S11",
+        "S12",
+        "S13",
+        "S14"
+      ],
+      "support": "direct"
+    }
+  ],
+  "created_on": "2026-10-20",
+  "generator": {
+    "explicit_model_override": false,
+    "harness": "claude-code",
+    "model": "glm-5.3",
+    "override_reason": "",
+    "run_id": "ai-news-2026-10-20"
+  },
+  "limitations": [
+    "AIHOT 当日不可用：两个域名共三次尝试均被 zhipu web-reader 内容过滤拦截（MCP -400/code 1301），web.search 亦未命中当期正文；中文聚合源缺口由 The Decoder 与多源检索补足，相关条目缺中文一手交叉，已按停止条件如实标记而非伪造补齐。",
+    "Stripe、Anthropic 谈判规范、Minecraft 通关、neocloud 洗牌、Kling 4.0、Taste-Bench 均为 The Decoder 首页/全文口径；FT、Upstarts Media、DeepMind 论文、Kling 官方、Taste-Bench 原论文均未直读，已在正文质疑段与详情块集中声明。",
+    "榜单与排名为时点快照（GitHub Trending 12 仓、HN 首页分数、OpenRouter 数据截至 10-19），事后不可完全复现；OpenRouter 的 token 数度量的是调用量而非质量或花费。",
+    "Timestral 发布时间多源口径约 10-16（Hugging Face/Reddit 快照），官方页 publishedTime 元数据异常（2026-07-15），本报告按多源口径记录并标注；当日 The Decoder 首页各文未逐篇抓取发布时间戳，仅 M3.1 一文有确切时间戳（10-19T18:22Z）。",
+    "AI Tech Blog Radar 于 2026-10-21 16:36 UTC（上海时间 10-22 00:36）补核；当前索引与 12 条候选上限不能复原完整 10-20 历史快照。三条所选官方 feed 条目仅核实标题、feed 时间和可用摘要，正文及性能结论未直读；相对日期检索条目、上海时间 10-21 的条目未纳入。部分 feed 在 eacli 未返回完整 XML 时使用了已记录原因的只读 HTTP XML 降级。"
+  ],
+  "quality_tier": "standard",
+  "report_path": "web-surfing/reports/ai-news-daily-2026-10-20.md",
+  "schema_version": 1,
+  "sources": [
+    {
+      "accessed_on": "2026-10-20",
+      "id": "S01",
+      "kind": "primary",
+      "locator": "https://the-decoder.com/minimax-m3-1-flash-shows-chinas-ai-price-race-has-no-floor-in-sight",
+      "title": "MiniMax M3.1 Flash shows China's AI price race has no floor in sight（The Decoder，10-19T18:22Z 全文直读，作者 Matthias Bastian）"
+    },
+    {
+      "accessed_on": "2026-10-20",
+      "id": "S02",
+      "kind": "official",
+      "locator": "https://agent.minimax.io/tools/m3-1-flash-preview",
+      "title": "M3.1-Flash-Preview: Coding & Research（MiniMax 官方模型页，全文直读）"
+    },
+    {
+      "accessed_on": "2026-10-20",
+      "id": "S03",
+      "kind": "official",
+      "locator": "https://mistral.ai/news/timestral",
+      "title": "Timestral: Mistral's First Family of Time-Series Foundation Models（Mistral 官方公告，全文直读）"
+    },
+    {
+      "accessed_on": "2026-10-20",
+      "id": "S04",
+      "kind": "primary",
+      "locator": "https://openrouter.ai/rankings",
+      "title": "OpenRouter LLM Rankings（日榜/周榜/月榜/份额全量直读，usage through Oct 19, 2026）"
+    },
+    {
+      "accessed_on": "2026-10-20",
+      "id": "S05",
+      "kind": "primary",
+      "locator": "https://the-decoder.com/",
+      "title": "The Decoder 首页（Minecraft 四 agent、Stripe agent 消费、neocloud 洗牌、Anthropic 谈判规范、Kling 4.0、Taste-Bench 六条首页全文口径直读）"
+    },
+    {
+      "accessed_on": "2026-10-20",
+      "id": "S06",
+      "kind": "primary",
+      "locator": "https://github.com/trending",
+      "title": "GitHub Trending 2026-10-20 快照（12 仓，总星/今日星/fork 直读）"
+    },
+    {
+      "accessed_on": "2026-10-20",
+      "id": "S07",
+      "kind": "primary",
+      "locator": "https://news.ycombinator.com/",
+      "title": "Hacker News 首页 30 条快照（2026-10-20；Timestral 540 分/103 评论、M3.1 Flash 375 分/163 评论、Ask HN 246 分/389 评论）"
+    },
+    {
+      "accessed_on": "2026-10-20",
+      "id": "S08",
+      "kind": "secondary",
+      "locator": "https://www.reuters.com/world/asia-pacific/chinas-minimax-launches-updated-ai-model-m31-flash-claims-major-improvements-2026-10-19",
+      "title": "Reuters：China's MiniMax launches updated AI model M3.1 Flash（检索快照，2026-10-19）"
+    },
+    {
+      "accessed_on": "2026-10-20",
+      "id": "S09",
+      "kind": "secondary",
+      "locator": "https://aihot.virxact.com/daily/2026-10-20",
+      "title": "AIHOT 2026-10-20 期（尝试直读失败：virxact 旧址两次与 aihot.news canonical 一次均被 zhipu web-reader 内容过滤拦截 MCP -400/code 1301；当日不可用，仅登记失败事实）"
+    },
+    {
+      "accessed_on": "2026-10-20",
+      "id": "S10",
+      "kind": "secondary",
+      "locator": "https://ai-digest.liziran.com/zh/",
+      "title": "AI Digest 中文首页（直读正常，最新一期仍为 2026-08-24，停更约 8 周，当日无内容可用）"
+    },
+    {
+      "accessed_on": "2026-10-21",
+      "id": "S11",
+      "kind": "execution",
+      "locator": "AI Tech Blog Radar updates --since 2026-10-19 --limit 12 --format json; UTC observation 2026-10-21T16:36:36Z; SHA-256 6c22a982e9c5547a99f1d9783a074af5faa8270b6ee4ed3439212beab6064285",
+      "title": "AI Tech Blog Radar 2026-10-21 补核；20/20 源成功、12 条候选"
+    },
+    {
+      "accessed_on": "2026-10-21",
+      "id": "S12",
+      "kind": "official",
+      "locator": "https://developer.nvidia.com/blog/accelerating-mamba-2-with-high-performance-forward-pass-kernels-in-nvidia-cuda-tile",
+      "title": "NVIDIA Technical Blog feed 条目：Accelerating Mamba-2 with High-Performance Forward Pass Kernels in NVIDIA CUDA Tile（仅标题、feed 日期和可用摘要；正文未直读）"
+    },
+    {
+      "accessed_on": "2026-10-21",
+      "id": "S13",
+      "kind": "official",
+      "locator": "https://huggingface.co/blog/ibm-research/altk-evolve-bc",
+      "title": "Hugging Face Blog feed 条目：ALTK-Evolve: How learned memory tops the τ²-bench leaderboard on customer service tasks without a frontier model（仅标题、feed 日期和可用摘要；正文未直读）"
+    },
+    {
+      "accessed_on": "2026-10-21",
+      "id": "S14",
+      "kind": "official",
+      "locator": "https://huggingface.co/blog/anylanguagemodel-1-0",
+      "title": "Hugging Face Blog feed 条目：AnyLanguageModel 1.0: One Year of Local Models on Apple Platforms（仅标题、feed 日期和可用摘要；正文未直读）"
+    }
+  ],
+  "task": {
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "检查四源（AIHOT、GitHub Trending、AI Digest、HN）并在页眉用 ✅/❌ 标记状态；产出含今日要点、结构完整头条、Trending、简讯与趋势总结的日报；源不可达时如实记录、不伪造补齐。"
+      },
+      {
+        "id": "R02",
+        "text": "标明直读、检索快照、转述与标题级边界；重要新闻尽量回查一手来源（MiniMax 官方模型页、Mistral 官方公告、OpenRouter 排行页均为本期直读）。"
+      },
+      {
+        "id": "R03",
+        "text": "对照最近三篇日报（10-19/10-15/10-14）去重；延续事件仅以新增量进入并链接历史日报；事实汇总与趋势分析分开。"
+      }
+    ],
+    "summary": "汇总 2026-10-20（含前日发布、今日仍在前排的条目）AI 行业动态，按可读性宪章成稿。AIHOT 当日被 provider 内容过滤拦截、AI Digest 停更，均如实标记，由 The Decoder 全文/首页、官方一手页与 OpenRouter 排行补足；保留来源层级、数字口径、去重边界与趋势判断。"
+  }
+}
