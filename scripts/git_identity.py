@@ -16,6 +16,12 @@ import subprocess
 import sys
 from pathlib import Path
 
+_SCRIPT_ROOT = Path(__file__).resolve().parent
+if str(_SCRIPT_ROOT) not in sys.path:
+    sys.path.insert(0, str(_SCRIPT_ROOT))
+import core_bootstrap  # noqa: E402,F401
+from everagent_core.git import CommitError, require_model  # noqa: E402
+
 
 # Defaults are intentionally loose:
 # - Name is agent-defined per runtime (do NOT hardcode a single model name).
@@ -27,8 +33,9 @@ ENV_NAME_KEYS = ("EVERAGENT_GIT_NAME", "AGENT_GIT_NAME")
 ENV_EMAIL_KEYS = ("EVERAGENT_GIT_EMAIL", "AGENT_GIT_EMAIL")
 
 # Dual identity: every commit's Author must be the repo owner (PROTOCOL_COMMON §C).
-EXPECTED_AUTHOR_NAME = "Everloster"
-EXPECTED_AUTHOR_EMAIL = "2820419+Everloster@users.noreply.github.com"
+_POLICY = json.loads((_SCRIPT_ROOT.parent / "config/git-policy.json").read_text(encoding="utf-8"))
+EXPECTED_AUTHOR_NAME = _POLICY["author"]["name"]
+EXPECTED_AUTHOR_EMAIL = _POLICY["author"]["email"]
 ENV_AUTHOR_NAME_KEYS = ("EVERAGENT_GIT_AUTHOR_NAME",)
 ENV_AUTHOR_EMAIL_KEYS = ("EVERAGENT_GIT_AUTHOR_EMAIL",)
 
@@ -76,14 +83,7 @@ def _whoami_email() -> str | None:
 
 
 def expected_author() -> tuple[str, str]:
-    name, email = EXPECTED_AUTHOR_NAME, EXPECTED_AUTHOR_EMAIL
-    for key in ENV_AUTHOR_NAME_KEYS:
-        if os.getenv(key):
-            name = os.environ[key]
-    for key in ENV_AUTHOR_EMAIL_KEYS:
-        if os.getenv(key):
-            email = os.environ[key]
-    return name, email
+    return EXPECTED_AUTHOR_NAME, EXPECTED_AUTHOR_EMAIL
 
 
 def read_author_ident() -> tuple[str, str]:
@@ -127,54 +127,21 @@ def command_show(args: argparse.Namespace) -> int:
 
 
 def command_validate(args: argparse.Namespace) -> int:
+    from everagent_core.git import validate_identity
     identity = _whoami_identity()
-    exp_name = expected_name(args.name)
-    exp_email = args.email or next((os.environ[key] for key in ENV_EMAIL_KEYS if os.getenv(key)), None)
-    if identity and identity.get("resolved") is True:
-        exp_name = exp_name or identity.get("name")
-        exp_email = exp_email or identity.get("email")
-    act_name = read_git_config("user.name")
-    act_email = read_git_config("user.email")
-
-    errors: list[str] = []
-    if not identity or identity.get("resolved") is not True:
-        errors.append("current agent identity is unresolved; fix scripts/whoami_agent.py before committing")
-    if not act_name:
-        errors.append("git user.name is unset")
-    elif act_name.endswith("-unknown"):
-        errors.append(
-            f"committer identity unresolved: '{act_name}' — fix scripts/whoami_agent.py to cover this CLI, "
-            "or set AGENT_ID/AGENT_EMAIL explicitly after confirming with the user"
-        )
-    elif exp_name and act_name != exp_name:
-        errors.append(f"git user.name mismatch: expected '{exp_name}', got '{act_name}'")
-
-    if not act_email:
-        errors.append("git user.email is unset")
-    else:
-        if "noreply@" not in act_email:
-            errors.append(f"git user.email must be a noreply address, got '{act_email}'")
-        elif exp_email and act_email != exp_email:
-            print(f"[WARN] git user.email differs from expected '{exp_email}': got '{act_email}'", file=sys.stderr)
-
-    exp_author = expected_author()
-    author = read_author_ident()
-    if author != exp_author:
-        errors.append(
-            f"dual-identity violated: commit Author must be repo owner "
-            f"'{exp_author[0]} <{exp_author[1]}>', got '{author[0]} <{author[1]}>'"
-        )
-
+    actual = (read_git_config("user.name"), read_git_config("user.email"))
+    errors = validate_identity(identity, committer=actual, author=read_author_ident(),
+                               expected_author=expected_author())
+    if args.name and actual[0] != args.name:
+        errors.append("explicit committer name assertion failed")
+    if args.email and actual[1] != args.email:
+        errors.append("explicit committer email assertion failed")
     if errors:
         for error in errors:
             print(f"[ERROR] {error}", file=sys.stderr)
-        hint_name = exp_name or "<agent-defined name>"
-        hint_email = exp_email or "<vendor noreply email>"
-        print(f"[HINT] Configure git with: git config user.name \"{hint_name}\" && git config user.email \"{hint_email}\"", file=sys.stderr)
-        print("[HINT] Commit via scripts/ecommit.sh (auto-sets Author=Everloster), see docs/PROTOCOL_COMMON.md §C", file=sys.stderr)
+        print("[HINT] 核实/声明当前模型，然后使用 scripts/ecommit.sh", file=sys.stderr)
         return 1
-
-    print(f"[PASS] Git identity OK: committer {act_name} <{act_email}>, author {author[0]} <{author[1]}>")
+    print(f"[PASS] Git identity OK: committer {actual[0]} <{actual[1]}>")
     return 0
 
 

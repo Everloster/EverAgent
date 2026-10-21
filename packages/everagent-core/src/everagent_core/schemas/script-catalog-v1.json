@@ -1,0 +1,163 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:everagent:script-catalog:1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "repository",
+    "scope",
+    "scripts"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "repository": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "string"
+    },
+    "scripts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "description",
+          "entrypoint",
+          "owner",
+          "kind",
+          "aliases",
+          "platforms",
+          "requirements",
+          "input",
+          "output",
+          "side_effects",
+          "authorization",
+          "scope"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9.-]{1,79}$"
+          },
+          "description": {
+            "type": "string",
+            "minLength": 8,
+            "maxLength": 240
+          },
+          "entrypoint": {
+            "type": "string"
+          },
+          "owner": {
+            "$ref": "#/$defs/reference"
+          },
+          "kind": {
+            "enum": [
+              "canonical",
+              "compatibility",
+              "internal"
+            ]
+          },
+          "aliases": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "path",
+                "description"
+              ],
+              "properties": {
+                "path": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "platforms": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "enum": [
+                "macos",
+                "linux",
+                "windows"
+              ]
+            }
+          },
+          "requirements": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "input": {
+            "type": "string"
+          },
+          "output": {
+            "type": "string"
+          },
+          "side_effects": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "authorization": {
+            "$ref": "#/$defs/authorization"
+          },
+          "scope": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository",
+        "path"
+      ],
+      "properties": {
+        "repository": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        }
+      }
+    },
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository",
+        "path",
+        "section"
+      ],
+      "properties": {
+        "repository": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "section": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

@@ -16,13 +16,14 @@ SPEC.loader.exec_module(whoami)
 
 
 class IdentityTests(unittest.TestCase):
-    def test_runtime_model_precedes_default(self):
+    def test_environment_model_precedes_default_but_is_not_current_proof(self):
         with patch.dict(os.environ, {"CODEX_MODEL": "runtime-model"}, clear=True), patch.object(
             whoami._identity.models, "_toml_get", return_value="default-model"
         ) as read_config:
             value = whoami.model_evidence("codex")
         self.assertEqual(value["model"], "runtime-model")
-        self.assertTrue(value["current_model_confirmed"])
+        self.assertFalse(value["current_model_confirmed"])
+        self.assertEqual(value["confidence"], "environment-hint")
         read_config.assert_not_called()
 
     def test_default_is_a_hint(self):
@@ -35,7 +36,7 @@ class IdentityTests(unittest.TestCase):
 
     def test_nearest_cli_wins_over_inherited_environment(self):
         with patch.dict(os.environ, {"CODEX_THREAD_ID": "inherited"}, clear=True), patch.object(
-            whoami._identity.processes, "_process_ancestors", return_value=["python3", "pi", "codex"]
+            whoami._identity.processes, "process_chain", return_value=[{"name": name} for name in ("python3", "pi", "codex")]
         ):
             self.assertEqual(whoami._identity.core._detect_cli(), ("pi", "process-ancestry"))
 
@@ -51,13 +52,13 @@ class IdentityTests(unittest.TestCase):
 
     def test_environment_without_process_match_is_supported(self):
         with patch.dict(os.environ, {"PI_CODING_AGENT": "true"}, clear=True), patch.object(
-            whoami._identity.processes, "_process_ancestors", return_value=[]
+            whoami._identity.processes, "process_chain", return_value=[]
         ):
             self.assertEqual(whoami._identity.core._detect_cli(), ("pi", "runtime-environment"))
 
     def test_codex_home_alone_is_not_cli_evidence(self):
         with patch.dict(os.environ, {"CODEX_HOME": "/example"}, clear=True), patch.object(
-            whoami._identity.processes, "_process_ancestors", return_value=[]
+            whoami._identity.processes, "process_chain", return_value=[]
         ):
             self.assertEqual(whoami._identity.core._detect_cli()[0], None)
 
@@ -75,11 +76,12 @@ class IdentityTests(unittest.TestCase):
         env = {**os.environ, "AGENT_ID": "test-model", "AGENT_EMAIL": "noreply@example.com"}
         def run(*args):
             return subprocess.run([sys.executable, str(SOURCE), *args], env=env,
-                                  capture_output=True, text=True, check=True).stdout.strip()
+                                  capture_output=True, text=True, check=False).stdout.strip()
         value = json.loads(run("--json"))
         self.assertEqual(run("--name"), value["name"])
         self.assertEqual(run("--email"), value["email"])
         self.assertEqual(run("--git-ident"), value["name"] + "\t" + value["email"])
+        self.assertFalse(value["commit_ready"])
 
 
 if __name__ == "__main__":

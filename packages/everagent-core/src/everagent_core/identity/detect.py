@@ -1,4 +1,4 @@
-"""Agent CLI selection and Git-safe identity; the single public decision owner."""
+"""Agent harness selection; reusable core with no repository policy."""
 from __future__ import annotations
 import os
 import re
@@ -9,7 +9,7 @@ from . import models, processes
 def _has(*keys):  return any(os.environ.get(k) for k in keys)
 def _eq(key, val): return os.environ.get(key) == val
 
-# CLI → 厂商官方 noreply 邮箱
+# CLI → 厂商命名空间署名地址（项目约定）
 VENDOR_EMAIL = {
     "claude-code": "noreply@anthropic.com",
     "cowork":      "noreply@anthropic.com",
@@ -28,6 +28,7 @@ VENDOR_EMAIL = {
     "qwen-code":   "noreply@alibabacloud.com",
     "amp":         "noreply@sourcegraph.com",
     "kimi-cli":    "noreply@moonshot.ai",
+    "kimi-desktop": "noreply@moonshot.ai",
     "minimax-code": "noreply@minimaxi.com",
     "qoderclicn":  "noreply@qoder.com.cn",
     "zcode":       "noreply@z.ai",
@@ -80,16 +81,17 @@ PROCESS_RULES = (
     ("claude-code", ("claude", "claude-code")),
     ("trae", ("coco", "traecli")),
     ("qoderclicn", ("qoderclicn",)),
-    ("zcode", ("zcode-cli", "zcode-host")),
+    ("zcode", ("zcode-cli", "zcode-host", "ZCode")),
     ("kimi-cli", ("kimi",)),
+    ("kimi-desktop", ("Kimi",)),
     ("minimax-code", ("MiniMax Code",)),
     ("pi", ("pi", "pi-coding-agent")),
 )
 
 def _detect_cli() -> tuple[str | None, str]:
-    for base in processes._process_ancestors():
+    for row in processes.process_chain():
         for cli, names in PROCESS_RULES:
-            if processes._matches_process(base, names):
+            if processes.matches_row(row, names):
                 if cli == "claude-code" and _has("CLAUDE_CODE_IS_COWORK"):
                     cli = "cowork"
                 return cli, "process-ancestry"
@@ -99,18 +101,21 @@ def _detect_cli() -> tuple[str | None, str]:
     return None, "unresolved"
 
 
-def inspect_identity() -> dict:
-    # 显式覆盖：任意 CLI 可设 AGENT_ID / AGENT_EMAIL 直接指定
+def inspect_identity(*, observation: dict | None = None) -> dict:
+    # Each inspection rechecks ancestry; a gate must not reuse a dead caller.
+    processes.reset_cache()
+    # Legacy identity overrides remain diagnostic; env is not proof of user confirmation.
     if os.environ.get("AGENT_ID"):
         name = os.environ["AGENT_ID"]
         email = os.environ.get("AGENT_EMAIL", FALLBACK_EMAIL)
         valid = bool(re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]{0,160}", name)
                      and re.fullmatch(r"[^\s<>@]+@[^\s<>@]+", email))
-        return {"schema_version": 1, "name": name if valid else "agent-unknown",
+        return {"schema_version": 2, "name": name if valid else "agent-unknown",
                 "email": email if valid else FALLBACK_EMAIL, "cli": None,
                 "cli_source": "explicit-override", "model": "unknown",
                 "model_source": "explicit-identity", "model_confidence": "declared",
                 "current_model_confirmed": False,
+                "harness_resolved": False, "user_model_declared": False, "commit_ready": False,
                 "resolved": valid and not name.endswith("-unknown")}
 
     cli, cli_source = _detect_cli()
@@ -127,22 +132,27 @@ def inspect_identity() -> dict:
             except Exception:
                 pass
         base = re.sub(r"[^A-Za-z0-9._-]+", "-", base).strip("-").lower()
-        return {"schema_version": 1, "name": f"{base}-unknown", "email": FALLBACK_EMAIL,
+        return {"schema_version": 2, "name": f"{base}-unknown", "email": FALLBACK_EMAIL,
                 "cli": None, "cli_source": cli_source, "model": "unknown",
                 "model_source": "unresolved", "model_confidence": "unknown",
-                "current_model_confirmed": False, "resolved": False}
+                "current_model_confirmed": False, "resolved": False, "harness_resolved": False,
+                "user_model_declared": False, "commit_ready": False}
 
-    evidence = models.model_evidence(cli)
+    evidence = models.model_evidence(cli, observation=observation)
     model = evidence["model"]
     name = f"{cli}-{model}"
     # 清洗成 git 身份安全字符
     name = re.sub(r"[^A-Za-z0-9._-]+", "-", name).strip("-").lower()
     email = VENDOR_EMAIL.get(cli, FALLBACK_EMAIL)
-    return {"schema_version": 1, "name": name, "email": email,
+    return {"schema_version": 2, "name": name, "email": email,
             "cli": cli, "cli_source": cli_source, "model": model,
             "model_source": evidence["source"], "model_confidence": evidence["confidence"],
             "current_model_confirmed": evidence["current_model_confirmed"],
-            "resolved": not name.endswith("-unknown")}
+            "user_model_declared": evidence["user_model_declared"],
+            "harness_resolved": True, "resolved": not name.endswith("-unknown"),
+            "commit_ready": evidence["current_model_confirmed"] or evidence["user_model_declared"],
+            **{key: evidence[key] for key in ("declaration", "scope_ref", "observed_at", "requested_model",
+                                           "configured_model", "observed_model", "user_declared_model", "observation_ref") if key in evidence}}
 
 
 def detect() -> tuple[str, str]:

@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:everagent:session:2",
+  "title": "Metadata for the exact caller session",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "observed_at",
+    "status",
+    "usage",
+    "actor",
+    "execution",
+    "caller",
+    "host",
+    "checkout",
+    "task",
+    "readiness"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "enum": [
+        "ok",
+        "partial",
+        "unknown-device"
+      ]
+    },
+    "usage": {
+      "enum": [
+        "interactive",
+        "worker",
+        "executor"
+      ]
+    },
+    "actor": {
+      "type": "object",
+      "required": [
+        "kind",
+        "harness",
+        "model"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "agent",
+            "executor-service",
+            "unresolved",
+            "user"
+          ]
+        },
+        "harness": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "model": {
+          "type": "object",
+          "required": [
+            "id",
+            "source",
+            "confidence",
+            "confirmed",
+            "user_declared"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "source": {
+              "type": "string"
+            },
+            "confidence": {
+              "enum": [
+                "session-bound",
+                "declared",
+                "environment-hint",
+                "configured",
+                "unknown"
+              ]
+            },
+            "confirmed": {
+              "type": "boolean"
+            },
+            "user_declared": {
+              "type": "boolean"
+            },
+            "declaration_id": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "execution": {
+      "type": "object",
+      "required": [
+        "known"
+      ],
+      "properties": {
+        "known": {
+          "type": "boolean"
+        }
+      }
+    },
+    "caller": {
+      "type": "object"
+    },
+    "host": {
+      "type": "object"
+    },
+    "checkout": {
+      "type": "object"
+    },
+    "task": {
+      "type": "object"
+    },
+    "readiness": {
+      "type": "object",
+      "required": [
+        "read_only",
+        "commit",
+        "reasons"
+      ],
+      "properties": {
+        "read_only": {
+          "type": "boolean"
+        },
+        "commit": {
+          "type": "boolean"
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "core": {
+      "type": "object"
+    }
+  }
+}

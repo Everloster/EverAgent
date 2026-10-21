@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "everagent-core"
+dynamic = ["version"]
+description = "Caller identity, session evidence, script contracts and Git primitives"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+everagent-identity = "everagent_core.identity.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["everagent_core*"]
+
+[tool.setuptools.dynamic]
+version = {attr = "everagent_core.__version__"}
+
+[tool.setuptools.package-data]
+everagent_core = ["schemas/*.json"]

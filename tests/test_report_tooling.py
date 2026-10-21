@@ -550,10 +550,27 @@ semantic_tags: ["quality"]
         self.assertEqual(result["quality_replays"], 5)
         self.assertTrue(result["commit_wrapper_guarded"])
         self.assertTrue(result["ci_quality_guarded"])
-        self.assertTrue(result["ace_context_ab_guarded"])
+        self.assertIn(result["ace_context_ab_status"], {"current", "context-changed"})
+        self.assertEqual(result["ace_context_ab_guarded"], result["ace_context_ab_status"] == "current")
         self.assertTrue(result["cross_model_sampling_guarded"])
         self.assertEqual(result["discoverable_skill_count"], 1)
         self.assertLessEqual(result["report_skill_description_chars"], 180)
+
+    def test_ab_context_fingerprint_change_is_pending_not_fresh_evidence(self):
+        with mock.patch.object(eval_report_context, "_behavior_context_sha256", return_value="0" * 64):
+            result = eval_report_context.static_evaluation()
+        self.assertFalse(result["ace_context_ab_guarded"])
+        self.assertEqual(result["ace_context_ab_status"], "context-changed")
+        self.assertTrue(any("上下文指纹已变化" in warning for warning in result["warnings"]))
+
+    def test_matching_ab_context_fingerprint_allows_complete_evidence(self):
+        owner = eval_report_context._load_instruction_policy()["owners"]["ace_context_ab_result"]
+        value = json.loads((ROOT / owner).read_text(encoding="utf-8"))
+        fingerprint = value["refs"]["candidate"]["context_sha256"]
+        with mock.patch.object(eval_report_context, "_behavior_context_sha256", return_value=fingerprint):
+            result = eval_report_context.static_evaluation()
+        self.assertTrue(result["ace_context_ab_guarded"])
+        self.assertEqual(result["ace_context_ab_status"], "current")
 
     def test_pi_trace_parser_uses_observed_repo_reads(self):
         with tempfile.TemporaryDirectory() as directory:

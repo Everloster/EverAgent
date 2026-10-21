@@ -1,17 +1,14 @@
-"""Public Agent identity API; no private device or runtime facts."""
-from . import detect as core, models, processes
-import hashlib
+"""Compatibility import. Implementation belongs to the installable public core."""
 from pathlib import Path
+import sys
 
-detect = core.detect
-inspect_identity = core.inspect_identity
-model_evidence = models.model_evidence
-detect_model = models.detect_model
-
-
-def source_sha256() -> str:
-    digest = hashlib.sha256()
-    root = Path(__file__).resolve().parent
-    for path in sorted(root.glob("*.py")):
-        digest.update(path.name.encode() + b"\0" + path.read_bytes() + b"\0")
-    return digest.hexdigest()
+_SCRIPTS = Path(__file__).resolve().parents[1]
+if str(_SCRIPTS) not in sys.path:
+    sys.path.insert(0, str(_SCRIPTS))
+import core_bootstrap  # noqa: E402,F401
+from everagent_core.identity import (  # noqa: E402,F401
+    core, models, processes, detect, inspect_identity, model_evidence,
+    detect_model, source_sha256,
+)
+for _name, _module in (("models", models), ("processes", processes), ("detect", core)):
+    sys.modules[__name__ + "." + _name] = _module

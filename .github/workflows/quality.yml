@@ -19,7 +19,9 @@ jobs:
       - name: Run report tooling tests
         run: python3 -m unittest tests.test_report_tooling
       - name: Run agent identity tests
-        run: python3 -m unittest scripts.test_whoami_agent scripts.test_git_identity scripts.test_git_commit
+        run: python3 -m unittest scripts.test_whoami_agent scripts.test_git_identity scripts.test_git_commit scripts.test_core_contracts scripts.test_model_observations
+      - name: Check script catalog and generated index
+        run: python3 scripts/script_catalog.py check
       - name: Audit all reports
         run: python3 scripts/audit_reports.py --all --summary-only
       - name: Verify generated indexes

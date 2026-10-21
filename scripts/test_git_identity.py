@@ -33,6 +33,9 @@ class GitIdentityTests(unittest.TestCase):
     def test_current_identity_uses_one_query(self):
         with patch.object(identity, "_whoami_identity", return_value={
             "resolved": True, "name": "fixture-model", "email": "noreply@example.com"
+            , "model": "fixture-model", "model_source": "user-declared",
+            "model_confidence": "declared", "user_model_declared": True,
+            "declaration": {"id": "a" * 64}
         }) as owner, patch.object(identity, "read_git_config", side_effect=lambda key: (
             "fixture-model" if key.endswith("name") else "noreply@example.com"
         )), patch.object(identity, "read_author_ident", return_value=identity.expected_author()), patch.dict(

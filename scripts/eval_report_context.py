@@ -214,6 +214,7 @@ def static_evaluation() -> dict[str, object]:
     warnings: list[str] = []
     errors: list[str] = []
     ace_context_ab_guarded = False
+    ace_context_ab_status = "missing"
     ace_context_ab_candidate_sha256 = ""
     cross_model_sampling_guarded = False
     cross_model_sampling_pending = 0
@@ -240,13 +241,17 @@ def static_evaluation() -> dict[str, object]:
                     or ""
                 )
                 if ace_result.get("schema_version") != 1:
+                    ace_context_ab_status = "invalid-schema"
                     errors.append("ACE Context A/B 结果 schema_version 必须为 1")
                 elif (ace_result.get("comparison") or {}).get("accepted") is not True:
+                    ace_context_ab_status = "unaccepted"
                     warnings.append("ACE Context A/B 最新结果未通过；仅在宣称 Context 架构改进前重跑")
                 elif int(ace_result.get("repetitions") or 0) < 3:
+                    ace_context_ab_status = "insufficient-repetitions"
                     warnings.append("ACE Context A/B 每个版本不足三次；仅在架构里程碑验收时要求补齐")
                 elif ace_context_ab_candidate_sha256 != _behavior_context_sha256():
-                    warnings.append("ACE Context A/B 结果已过期；下次 Context 架构里程碑验收时重跑")
+                    ace_context_ab_status = "context-changed"
+                    warnings.append("ACE Context A/B 上下文指纹已变化；下次 Context 架构里程碑验收时重跑")
                 else:
                     case_count = len(_load_suite().get("cases") or [])
                     expected_runs = case_count * int(ace_result["repetitions"])
@@ -258,10 +263,13 @@ def static_evaluation() -> dict[str, object]:
                         for label in ("baseline", "candidate")
                     )
                     if not complete:
+                        ace_context_ab_status = "incomplete"
                         warnings.append("ACE Context A/B 结果缺少完整成功运行；不能用于宣称架构改进")
                     else:
+                        ace_context_ab_status = "current"
                         ace_context_ab_guarded = True
             except (OSError, json.JSONDecodeError) as exc:
+                ace_context_ab_status = "unreadable"
                 errors.append(f"ACE Context A/B 结果无法读取：{exc}")
     for source in instruction_policy.get("basis", []):
         url = str(source.get("url") or "")
@@ -375,12 +383,11 @@ def static_evaluation() -> dict[str, object]:
         # scripts.test_git_commit in the staged gate and CI.
         engine_path = ECOMMIT.with_name("git_commit.py")
         engine_text = engine_path.read_text(encoding="utf-8") if engine_path.is_file() else ""
+        core_path = ROOT / "packages/everagent-core/src/everagent_core/git.py"
         required_guards = (
             ("wrapper delegates", "git_commit.py" in ecommit_text),
-            ("metadata-only parser", "def option_parts(" in engine_text),
-            ("staged tree before gate", 'before = git_value(["write-tree"]' in engine_text),
-            ("bound repository gate", "result = gate(target, env)" in engine_text),
-            ("index unchanged after gate", 'git_value(["write-tree"], cwd=cwd, env=env) != before' in engine_text),
+            ("core owner exists", core_path.is_file()),
+            ("core delegation", "from everagent_core import git as _core" in engine_text),
             ("public gate binding", "precommit_quality.py" in engine_text),
         )
         missing_guards = [label for label, present in required_guards if not present]
@@ -632,6 +639,7 @@ def static_evaluation() -> dict[str, object]:
         "commit_wrapper_guarded": commit_wrapper_guarded,
         "ci_quality_guarded": ci_quality_guarded,
         "ace_context_ab_guarded": ace_context_ab_guarded,
+        "ace_context_ab_status": ace_context_ab_status,
         "ace_context_ab_candidate_sha256": ace_context_ab_candidate_sha256,
         "cross_model_sampling_guarded": cross_model_sampling_guarded,
         "cross_model_sampling_pending": cross_model_sampling_pending,

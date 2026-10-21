@@ -120,11 +120,16 @@ def main() -> int:
         if staged & {"scripts/whoami_agent.py", "scripts/git_identity.py", "scripts/ecommit.sh",
                      "scripts/git_commit.py", "scripts/test_git_commit.py",
                      "scripts/test_whoami_agent.py", "scripts/test_git_identity.py"} or any(
-                         path.startswith("scripts/agent_identity/") for path in staged):
+                         path.startswith(("scripts/agent_identity/", "packages/everagent-core/"))
+                         or path in {"scripts/agent_identity.py", "scripts/agent_model_declare.py",
+                                     "scripts/core_bootstrap.py", "scripts/script-catalog.json",
+                                     "scripts/script_catalog.py", "scripts/test_core_contracts.py", "scripts/test_model_observations.py",
+                                     "config/git-policy.json"} for path in staged):
             checks.append((
                 "agent identity regression",
                 [sys.executable, "-m", "unittest", "scripts.test_whoami_agent",
-                 "scripts.test_git_identity", "scripts.test_git_commit", "-q"],
+                 "scripts.test_git_identity", "scripts.test_git_commit", "scripts.test_core_contracts",
+                 "scripts.test_model_observations", "-q"],
             ))
         if added_reports:
             checks.append(

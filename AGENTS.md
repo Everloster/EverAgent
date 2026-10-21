@@ -37,6 +37,7 @@
 | 报告流程与完成定义 | [REPORT_WORKFLOW.md](./docs/REPORT_WORKFLOW.md) |
 | 证据账本、独立复核与模型升级 | [REPORT_QUALITY_GATE.md](./docs/REPORT_QUALITY_GATE.md) |
 | Context 或 Harness 调整 | [CONTEXT_ENGINEERING.md](./docs/CONTEXT_ENGINEERING.md) |
+| 身份、会话与脚本契约 | [AGENT_SESSION.md](./docs/AGENT_SESSION.md) |
 | commit、push 或安全边界 | [PROTOCOL_COMMON.md](./docs/PROTOCOL_COMMON.md) |
 | 新增或迁移报告元数据 | [REPORT_METADATA.md](./docs/REPORT_METADATA.md) |
 
@@ -76,7 +77,7 @@
 - **语言**：项目沟通、报告正文和 commit 描述使用中文；代码、命令、专有名词与原文引用保持原样。
 - **证据**：未读内容不得推测；数字和知识截止后的事实必须可追溯；推断标 `[推测]` 或 `[待验证]`。
 - **安全**：遵守 [PROTOCOL_COMMON.md](./docs/PROTOCOL_COMMON.md) §A；公开仓不得写入私有设备、账号、网络或凭据信息。
-- **提交**：一律使用 `scripts/ecommit.sh`；身份识别为 `*-unknown` 时禁止提交。
+- **提交**：一律使用 `scripts/ecommit.sh`；身份未知、模型未核实且未获用户明确指定时禁止提交。
 - **工具**：做工具或代码前依次检查官方 CLI、官方 MCP/SDK、成熟开源方案，再考虑自写；联网遵守顶部 Token Plan-first。
 - **知识维护**：wiki 只随报告或明确请求做最小更新；PROFILE 只记录用户真实表达。
 

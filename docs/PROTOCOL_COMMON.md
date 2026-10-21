@@ -27,46 +27,54 @@ Co-Authored-By: Aiden
 - `{task-type}` = `conversational-learning`（对话学习，默认）/ `project-optimization`（项目优化）/ `architecture-redesign`（架构）/ `maintenance`（维护）/ `chore`（杂务）
 - `{scope}` = `global` 或具体领域名（`ai-learning` / `cs-learning` / ...）
 - `{描述}` ≤ 72 字符，使用中文，简明扼要
-- `Agent:` 填已经确认的当前模型；仅有默认配置时注明 `model-unverified` 与来源。Pre-commit hook 校验 Git 身份。
+- `Agent:` 填运行时已核实或用户明确指定的当前模型；默认配置、环境提示与历史对话不能授权署名。无法核实时先请用户明确指定。
 - 严禁 commit message 包含 token / API key / 私人凭据
 
 ---
 
 ## §C Push Flow（推送流程 · 全局统一）
 
-> **双身份**：每个 commit 的 **Author = 仓库主人 Everloster**（固定，显示其 GitHub 头像），**Committer = 当前运行的 Agent**（自动识别，谁跑就填谁）。
-> `scripts/ecommit.sh` 是解释器启动入口；公共 `scripts/git_commit.py` 拥有参数校验、双身份注入、trailer 和 index 不变检查。公开仓绑定 `precommit_quality.py`；私仓只桥接公共规则并绑定自己的质量门禁与站点导出校验。换 CLI/模型无需复制规则或修改 Git 配置。
-> `scripts/ecommit.sh` 是项目质量门的强制入口：它验证精确 staged snapshot，并拒绝会在门禁后改变提交树的 commit 参数。版本化 pre-commit hook 是额外防线；若设备已有外部 `core.hooksPath`，不要覆盖它，外部 hook 会在 `git commit` 阶段继续执行。
-> `.github/workflows/quality.yml` 在 push 与 PR 上复跑仓库级检查，避免本机 hook 配置差异成为唯一防线。
-> **身份识别失败 = 禁止提交（2026-07-28 铁律）**：whoami 返回 `*-unknown` 时 ecommit 直接退出、hook 同样拦截，绝不允许静默兜底提交。处理：① 优先修 `scripts/whoami_agent.py` 覆盖当前 CLI（加检测规则 + 厂商 noreply 邮箱）；② 应急与用户确认身份后显式指定：`AGENT_ID=<cli>-<model> AGENT_EMAIL=<厂商noreply> scripts/ecommit.sh -m "..."`。
+> **双身份**：Author 由 [`config/git-policy.json`](../config/git-policy.json) 拥有，Committer 是当前 harness 与模型。
+> `scripts/ecommit.sh` 是稳定入口；[`git_commit.py`](../scripts/git_commit.py) 绑定公开仓质量门禁，公共
+> [`everagent-core`](../packages/everagent-core/README.md) 拥有 Git 参数、身份注入、消息与 index 不变规则。
+> 私仓 eacli 随包携带同源 core，绑定私仓门禁；安装态身份与会话无需相邻 checkout。
 
-`whoami_agent.py --json` 给出 CLI、模型与各自来源；会话环境模型优先于配置默认值。
-`model_confidence=configured` 只表示默认配置，`current_model_confirmed=false` 时不得把它当成当前模型证明。
-提交包装单次调用同一结构化身份 API 获取 name/email；`--git-ident` 保留为兼容输出。
-`whoami_agent.py` 是稳定入口，内部 `scripts/agent_identity/` 分别拥有祖先链、模型证据和身份裁定。
-`source_sha256` 覆盖整组实现；既有配置提示仍可用于 Git 署名，未知身份继续拦截。
-进程检测只认调用方祖先链；Windows 断链不会借其他终端的进程补身份。
-Git validator 也消费同一 JSON owner；当前身份未知时，上一会话留下的 Git 配置不能放行提交。
-
-显式 `-m` / `-F` 消息由公共提交器规范化最终 trailer block，保留已有 trailer 并去重
-`Co-Authored-By: Aiden`。Git 原生编辑器与 reuse-message 模式继续使用其 trailer 机制；
-提交完成后检查最终消息。`--author` 必须符合已确认的仓库主人；`--reset-author` 会破坏双身份，入口拒绝。
+**提交前必须有模型依据**：先自动读取运行时的精确会话证据；只有读取不到时才由用户明确指定。
+Codex 当前 thread、Pi 当前 shell context 与 TRAE thread 读取路径见 [身份契约](./AGENT_SESSION.md#模型证据与声明)。
+配置默认值、一般环境提示、全局最近日志、历史对话和 `AGENT_ID` 都不能自动放行。
+自动核实仍失败时，请用户给出当前模型 ID，再运行：
 
 ```bash
-git add -A
-scripts/ecommit.sh -m "[{task-type}] {scope}: {描述}
-
-Agent: {模型名}
-Task-Type: {task-type}
-Co-Authored-By: Aiden"
-GIT_NO_OPTIONAL_LOCKS=1 git fetch origin main
-GIT_NO_OPTIONAL_LOCKS=1 git merge --ff-only FETCH_HEAD
-GIT_NO_OPTIONAL_LOCKS=1 git push origin main
+python3 scripts/agent_model_declare.py --model <用户明确指定的ID> --user-confirmed
 ```
 
-- `2820419+Everloster@users.noreply.github.com` 是 Everloster 账号的 GitHub noreply 邮箱（`{id}+{login}@users.noreply.github.com`），绑定后 GitHub 显示其头像并链接 profile。
-- Committer 邮箱必须含 `noreply@`，否则 pre-commit hook（`git_identity.py`）拦截。
-- GitHub 提交页会显示为 "Everloster authored and {Agent} committed"，两个头像并排。
+声明绑定 harness 进程创建身份和当前 session/terminal，默认 4 小时，最长 12 小时；重启、嵌套 harness、
+切换会话、模型提示变化或过期后失效。`user-declared` 与 `current_model_confirmed=true` 分开，声明不冒充实测。
+身份缺失只阻断提交，已获授权的只读和源码工作可以继续。当前证据与字段定义见
+[身份与会话契约](./AGENT_SESSION.md)。
+
+`agent_identity.py` 是 canonical 入口，`whoami_agent.py` 和旧 Python import 路径保持兼容。
+Git validator 消费同一公共 core；上一会话的 Git 配置不构成本会话证据。
+
+提交只消费显式暂存的 tree，拒绝 pathspec、`--all/--include/--only/--patch/--fixup` 等改变内容的参数。
+质量门禁前后核验 index，并重新读取当前身份。`-m/-F`、复用消息、amend 与原生编辑器的最终消息都规范化，
+保留其他 trailer，`Co-Authored-By: Aiden` 在最终 trailer block 恰好一次。内部 amend 作者重置仍绑定仓库 owner，
+不接受用户用 `--reset-author` 绕过双身份。
+
+项目提交器保留已有 `core.hooksPath`；外部 hook 正常执行。Git 返回后再次校验 commit tree、Author、Committer
+与 trailer；失败时保留现场并禁止继续推送，不自动回退或改史。CI 复跑同一行为测试。
+
+```bash
+git add <本次修改的文件>
+scripts/ecommit.sh -m "[architecture-redesign] global: 身份与会话契约收敛"
+git fetch origin main
+git merge --ff-only FETCH_HEAD
+git push origin main
+```
+
+安装态可在批准的双仓内使用 `eacli git commit`，它读取 checkout 自带的质量门禁；缺门禁硬失败。
+`eacli git push` 会 fetch、核验远端祖先关系并普通推送，分叉时要求先检查集成方案，禁止 force。
+提交和推送授权仍来自本会话的用户指令；上述例子不授予额外权限。
 
 ### 常见错误处理
 

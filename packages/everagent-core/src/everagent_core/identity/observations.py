@@ -1,0 +1,232 @@
+"""Read current harness model metadata without loading conversation bodies."""
+from __future__ import annotations
+
+from datetime import datetime
+from contextlib import closing
+import heapq
+import itertools
+import json
+import os
+from pathlib import Path
+import re
+import sqlite3
+import stat
+import time
+
+from . import declarations, processes
+
+MODEL_RE = declarations.MODEL_RE
+MAX_TAIL_BYTES = 4 * 1024 * 1024
+MAX_RECORD_BYTES = 128 * 1024
+MAX_AGE_SECONDS = 300
+_CODEX_ENVELOPE = re.compile(
+    rb'^\s*\{\s*"timestamp"\s*:\s*"[^"\n]+"'
+    rb'(?:\s*,\s*"ordinal"\s*:\s*\d+)?\s*,\s*"type"\s*:\s*"([^"]+)"\s*,\s*"payload"\s*:'
+)
+
+
+def _model(value) -> str | None:
+    return value if isinstance(value, str) and MODEL_RE.fullmatch(value) and value.lower() != "unknown" else None
+
+
+def _timestamp(value) -> float | None:
+    if not isinstance(value, str):
+        return None
+    try:
+        return datetime.fromisoformat(value.replace("Z", "+00:00")).timestamp()
+    except (ValueError, OverflowError, OSError):
+        return None
+
+
+def _started_at(row: dict) -> float | None:
+    try:
+        if os.name == "nt":
+            return int(row["started"]) / 10_000_000 - 11_644_473_600
+        return datetime.strptime(row["started"], "%a %b %d %H:%M:%S %Y").timestamp()
+    except (KeyError, TypeError, ValueError, OverflowError, OSError):
+        return None
+
+
+def _regular(path: Path) -> bool:
+    try:
+        info = path.lstat()
+        return (stat.S_ISREG(info.st_mode) and not path.is_symlink()
+                and (os.name == "nt" or info.st_uid == os.getuid()))
+    except OSError:
+        return False
+
+
+def _tail(path: Path, budget: int = MAX_TAIL_BYTES) -> list[bytes]:
+    if not _regular(path):
+        return []
+    with path.open("rb") as handle:
+        handle.seek(0, os.SEEK_END)
+        offset = max(0, handle.tell() - budget)
+        handle.seek(offset)
+        lines = handle.read(budget).splitlines()
+    return lines[1:] if offset else lines
+
+
+def _native_id(harness: str) -> str | None:
+    keys = declarations.SESSION_KEYS.get(harness, ())
+    if harness == "trae":
+        specific = keys[:2]
+        keys = specific if any(os.environ.get(k) for k in specific) else keys[2:]
+        if keys and keys[0] == "CODEX_THREAD_ID" and any(
+                processes.matches_row(row, ("codex",)) for row in processes.process_chain()):
+            return None
+    values = {os.environ[k] for k in keys if os.environ.get(k)}
+    if len(values) != 1:
+        return None
+    value = values.pop()
+    return value if re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._:-]{0,255}", value) else None
+
+
+def _codex_index(root: Path, native: str) -> dict | None:
+    for db in sorted(root.glob("state*.sqlite"), reverse=True)[:4]:
+        if not _regular(db):
+            continue
+        try:
+            with closing(sqlite3.connect(db.as_uri() + "?mode=ro", uri=True, timeout=0.25)) as connection:
+                deadline = time.monotonic() + 0.25
+                connection.set_progress_handler(lambda: int(time.monotonic() > deadline), 1000)
+                columns = {row[1] for row in connection.execute("PRAGMA table_info(threads)")}
+                if not {"id", "rollout_path"} <= columns:
+                    continue
+                selected = [key for key in ("rollout_path", "model", "archived", "updated_at", "updated_at_ms") if key in columns]
+                row = connection.execute("SELECT " + ",".join(selected) + " FROM threads WHERE id=? LIMIT 1", (native,)).fetchone()
+                if row:
+                    return dict(zip(selected, row))
+        except (OSError, sqlite3.Error):
+            continue
+    return None
+
+
+def _codex(native: str, owner: dict, now: float) -> dict | None:
+    home = declarations.safe_home()
+    explicit = os.environ.get("CODEX_HOME")
+    if not explicit and home is None:
+        return None
+    root = (Path(explicit) if explicit else home / ".codex").resolve()
+    index = _codex_index(root, native)
+    if index:
+        if index.get("archived"):
+            return None
+        path = Path(index["rollout_path"])
+    else:
+        matches = list(itertools.islice((root / "sessions").glob("*/*/*/rollout-*-" + native + ".jsonl"), 2))
+        if len(matches) != 1:
+            return None
+        path = matches[0]
+    if (not path.is_absolute() or not _regular(path)
+            or not path.resolve().is_relative_to(root / "sessions")
+            or not 0 <= now - path.stat().st_mtime <= MAX_AGE_SECONDS):
+        return None
+    started = _started_at(owner)
+    if started is None:
+        return None
+    with path.open("rb") as handle:
+        header = json.loads(handle.readline(MAX_RECORD_BYTES))
+    if header.get("type") != "session_meta" or header.get("payload", {}).get("id") != native:
+        return None
+    context, usage, active, ended = None, None, None, False
+    for line in _tail(path):
+        match = _CODEX_ENVELOPE.match(line[:512])
+        if not match or len(line) > MAX_RECORD_BYTES:
+            continue
+        kind = match[1]
+        if kind in (b"turn_context", b"token_usage_record"):
+            row = json.loads(line)
+            payload = row.get("payload", {})
+            if kind == b"turn_context":
+                context = {"model": _model(payload.get("model")), "turn": payload.get("turn_id"),
+                           "at": _timestamp(row.get("timestamp"))}
+            elif payload.get("thread_id") == native:
+                usage = {"turn": payload.get("turn_id"), "at": _timestamp(row.get("timestamp"))}
+        elif kind == b"event_msg":
+            # Lifecycle fields precede any message body. Never decode the body.
+            prefix = line[match.end():match.end() + 2048]
+            event = re.match(rb'\s*\{\s*"type"\s*:\s*"([^"]+)"', prefix)
+            if event and event[1] in (b"task_started", b"task_complete", b"turn_aborted", b"shutdown_complete"):
+                ended = event[1] != b"task_started"
+                turn = re.search(rb'"turn_id"\s*:\s*"([^"\n]+)"', prefix)
+                active = turn[1].decode("ascii") if turn and not ended else None
+    if ended:
+        return None
+    indexed = _model(index.get("model")) if index else None
+    if (context and context["model"] and context["at"] is not None
+            and context["at"] >= started - 2 and active and context["turn"] == active):
+        if indexed and indexed != context["model"]:
+            return None
+        return {"model": context["model"], "source": "codex-turn-context", "turn": active}
+    # The native index avoids rereading a long turn's transcript. Require a
+    # fresh response from this exact thread and current process incarnation.
+    updated = 0
+    if index:
+        updated = index["updated_at_ms"] / 1000 if "updated_at_ms" in index else index.get("updated_at", 0)
+    if (indexed and usage and usage["turn"] and usage["at"] is not None
+            and usage["at"] >= started - 2 and 0 <= now - usage["at"] <= MAX_AGE_SECONDS
+            and updated >= started - 2 and 0 <= now - updated <= MAX_AGE_SECONDS
+            and (active is None or usage["turn"] == active)
+            and (context is None or context["turn"] != usage["turn"] or context["model"] == indexed)):
+        return {"model": indexed, "source": "codex-thread-state", "turn": usage["turn"]}
+    return None
+
+
+def _pi(native: str) -> dict | None:
+    # Pi clears inherited PI_* values and injects ctx.model on each shell-tool
+    # spawn (resolveSpawnContext in the official Pi runtime).
+    model = _model(os.environ.get("PI_MODEL"))
+    if model and os.environ.get("PI_CODING_AGENT") == "true" and os.environ.get("PI_SESSION_ID") == native:
+        return {"model": model, "source": "pi-session-runtime"}
+    return None
+
+
+def _trae(native: str, owner: dict, now: float) -> dict | None:
+    home = declarations.safe_home()
+    if home is None:
+        return None
+    logs = heapq.nlargest(4, (home / ".trae/cli/log").glob("traecli*.log"), key=lambda path: path.stat().st_mtime)
+    thread = re.compile(rb'(?<![A-Za-z0-9_])thread_id=' + re.escape(native.encode()) + rb'(?![A-Za-z0-9._:-])')
+    started = _started_at(owner)
+    latest = None
+    for path in logs:
+        for line in reversed(_tail(path, 1024 * 1024)):
+            if len(line) > MAX_RECORD_BYTES or not thread.search(line):
+                continue
+            match = re.search(rb'\bconfig_name=([^\s]+)|\bserver reported model ([^\s]+)', line)
+            stamp = re.search(rb'\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:?\d{2})?', line[:256])
+            at = _timestamp(stamp[0].decode()) if stamp else None
+            model = _model((match[1] or match[2]).decode()) if match else None
+            if match and at is not None and (latest is None or at > latest[0]):
+                latest = (at, model)
+    if (latest and latest[1] and started is not None and latest[0] >= started - 2
+            and 0 <= now - latest[0] <= MAX_AGE_SECONDS):
+        return {"model": latest[1], "source": "trae-thread-runtime"}
+    return None
+
+
+def collect(harness: str, scope: dict | None) -> dict | None:
+    """Return only a model observation bound to the exact current caller."""
+    if scope is None or harness not in {"codex", "pi", "trae"}:
+        return None
+    try:
+        native = _native_id(harness)
+        if not native or scope.get("session_ref") != declarations.digest([harness, native])[:24]:
+            return None
+        owner = processes.caller_process(harness)
+        if owner is None or not owner.get("started"):
+            return None
+        from .detect import PROCESS_RULES
+        names = next(names for cli, names in PROCESS_RULES if cli == harness)
+        if sum(processes.matches_row(row, names) for row in processes.process_chain()) != 1:
+            return None
+        now = time.time()
+        found = _codex(native, owner, now) if harness == "codex" else _trae(native, owner, now) if harness == "trae" else _pi(native)
+        if found:
+            return {"harness": harness, "scope": scope, "observed_at": now,
+                    "model": found["model"], "source": found["source"],
+                    "observation_ref": declarations.digest([harness, native, found.get("turn"), found["model"]])[:24]}
+    except (OSError, ValueError, TypeError, AttributeError, sqlite3.Error, StopIteration):
+        pass
+    return None

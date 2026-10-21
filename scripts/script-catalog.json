@@ -1,0 +1,195 @@
+{
+  "schema_version": 1,
+  "repository": "EverAgent",
+  "scope": "identity-session-git",
+  "scripts": [
+    {
+      "id": "agent.identity",
+      "description": "识别当前 harness 和模型来源，未核实且未声明的模型不能用于提交。",
+      "entrypoint": "scripts/agent_identity.py",
+      "owner": {
+        "repository": "EverAgent",
+        "path": "packages/everagent-core/src/everagent_core/identity/detect.py"
+      },
+      "kind": "canonical",
+      "aliases": [
+        {
+          "path": "scripts/whoami_agent.py",
+          "description": "旧 whoami 名称；转交同一公共 core 身份实现。"
+        },
+        {
+          "path": "scripts/agent_identity/__init__.py",
+          "description": "旧 Python 包 import 路径；转交同一公共 core。"
+        }
+      ],
+      "platforms": [
+        "macos",
+        "linux",
+        "windows"
+      ],
+      "requirements": [
+        "Python >=3.10"
+      ],
+      "input": "inspect [--json|--name|--email|--git-ident]",
+      "output": "Agent identity v2 JSON; legacy name/email retained",
+      "side_effects": [],
+      "authorization": {
+        "repository": "EverAgent",
+        "path": "docs/PROTOCOL_COMMON.md",
+        "section": "A"
+      },
+      "scope": "当前调用方和 checkout"
+    },
+    {
+      "id": "agent.model-declaration",
+      "description": "记录用户明确指定的当前模型，声明绑定本会话并在有效期后失效。",
+      "entrypoint": "scripts/agent_model_declare.py",
+      "owner": {
+        "repository": "EverAgent",
+        "path": "packages/everagent-core/src/everagent_core/identity/declarations.py"
+      },
+      "kind": "canonical",
+      "aliases": [],
+      "platforms": [
+        "macos",
+        "linux",
+        "windows"
+      ],
+      "requirements": [
+        "Python >=3.10"
+      ],
+      "input": "--model <id> --user-confirmed [--ttl-seconds]",
+      "output": "Session-scoped model declaration v1",
+      "side_effects": [
+        "写本机模型声明 receipt"
+      ],
+      "authorization": {
+        "repository": "EverAgent",
+        "path": "docs/PROTOCOL_COMMON.md",
+        "section": "C"
+      },
+      "scope": "当前调用方和 checkout"
+    },
+    {
+      "id": "git.identity",
+      "description": "校验 Author、当前 Agent Committer 和模型确认依据。",
+      "entrypoint": "scripts/git_identity.py",
+      "owner": {
+        "repository": "EverAgent",
+        "path": "scripts/git_identity.py"
+      },
+      "kind": "canonical",
+      "aliases": [],
+      "platforms": [
+        "macos",
+        "linux",
+        "windows"
+      ],
+      "requirements": [
+        "Python >=3.10"
+      ],
+      "input": "show|validate",
+      "output": "Git identity validation exit code",
+      "side_effects": [],
+      "authorization": {
+        "repository": "EverAgent",
+        "path": "docs/PROTOCOL_COMMON.md",
+        "section": "A"
+      },
+      "scope": "当前调用方和 checkout"
+    },
+    {
+      "id": "git.commit",
+      "description": "提交已经暂存的 tree，校验身份、门禁、trailer 和 index 不变。",
+      "entrypoint": "scripts/git_commit.py",
+      "owner": {
+        "repository": "EverAgent",
+        "path": "packages/everagent-core/src/everagent_core/git.py"
+      },
+      "kind": "canonical",
+      "aliases": [
+        {
+          "path": "scripts/ecommit.sh",
+          "description": "兼容 Bash 入口；仅寻找 Python 并转交提交器。"
+        }
+      ],
+      "platforms": [
+        "macos",
+        "linux",
+        "windows"
+      ],
+      "requirements": [
+        "Python >=3.10"
+      ],
+      "input": "Git commit metadata arguments",
+      "output": "Git exit code; exact Aiden trailer",
+      "side_effects": [
+        "写 Git commit"
+      ],
+      "authorization": {
+        "repository": "EverAgent",
+        "path": "docs/PROTOCOL_COMMON.md",
+        "section": "C"
+      },
+      "scope": "当前调用方和 checkout"
+    },
+    {
+      "id": "scripts.catalog",
+      "description": "查看本族脚本的描述、owner、兼容名、平台和输入输出契约。",
+      "entrypoint": "scripts/script_catalog.py",
+      "owner": {
+        "repository": "EverAgent",
+        "path": "packages/everagent-core/src/everagent_core/catalog.py"
+      },
+      "kind": "canonical",
+      "aliases": [],
+      "platforms": [
+        "macos",
+        "linux",
+        "windows"
+      ],
+      "requirements": [
+        "Python >=3.10"
+      ],
+      "input": "list|show <id>|check|render [--json]",
+      "output": "script-catalog v1; generated SCRIPT_INDEX.md",
+      "side_effects": [
+        "render 写生成索引"
+      ],
+      "authorization": {
+        "repository": "EverAgent",
+        "path": "docs/PROTOCOL_COMMON.md",
+        "section": "C"
+      },
+      "scope": "当前调用方和 checkout"
+    },
+    {
+      "id": "core.bootstrap",
+      "description": "从当前公开 checkout 加载唯一公共 core，实现稳定脚本的源码运行。",
+      "entrypoint": "scripts/core_bootstrap.py",
+      "owner": {
+        "repository": "EverAgent",
+        "path": "scripts/core_bootstrap.py"
+      },
+      "kind": "internal",
+      "aliases": [],
+      "platforms": [
+        "macos",
+        "linux",
+        "windows"
+      ],
+      "requirements": [
+        "Python >=3.10"
+      ],
+      "input": "Python import",
+      "output": "Import path binding",
+      "side_effects": [],
+      "authorization": {
+        "repository": "EverAgent",
+        "path": "docs/PROTOCOL_COMMON.md",
+        "section": "A"
+      },
+      "scope": "当前调用方和 checkout"
+    }
+  ]
+}
