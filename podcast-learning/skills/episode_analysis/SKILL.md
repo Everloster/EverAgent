@@ -33,6 +33,8 @@ status: in_progress
 updated_on: YYYY-MM-DD
 quality_schema: "report-v2"
 quality_tier: "important"
+report_depth: "standard"
+reader_contract: "standalone"
 semantic_tags: ["podcast"]
 ---
 
@@ -66,6 +68,8 @@ semantic_tags: ["podcast"]
 ```
 
 `cross_episode` / `concept_tracking` 复用上面骨架，把「核心观点」换成跨期对比表或演变时间线。
+
+`standard/deep` 报告还需内容地图及至少 3 个展开的主线小节。按原始来源建立 evidence 的 `source_coverage`，由独立 Reviewer 留下 `source_content_map`；详细合同见 [report-guide §三](../report-writing/references/report-guide.md#三报告写作规范模板-v2)。
 
 > 观点成体系、摘要装不下推理路径时，改用 [qa_chain](../qa_chain/SKILL.md) 的问答链格式（`format: qa_chain`）。
 
