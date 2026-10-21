@@ -18,6 +18,7 @@
 | 2026-10-21 | [LinkStart 135：AI 眼镜与折叠屏的产品定义——设计如何决定 AI 硬件价值](../podcast-learning/reports/2026-10-21_xiaoyuzhou-linkstart_vol135-ai-hardware-design.md) | podcast-learning |
 | 2026-10-21 | [DeepInfer：从模型协同设计到生产推理内核](../ai-learning/reports/knowledge_reports/DeepInfer_从模型协同设计到生产推理内核_深度解析_20261021.md) | ai-learning |
 | 2026-10-21 | [Apple MLX + RDMA：把多台 Mac Studio 变成桌面级大模型推理集群](../ai-learning/reports/knowledge_reports/Apple_MLX_RDMA_Mac_Studio分布式大模型推理_深度解析_20261021.md) | ai-learning |
+| 2026-10-21 | [AI 行业日报 · 2026-10-21](../web-surfing/reports/ai-news-daily-2026-10-21.md) | web-surfing |
 | 2026-10-20 | [金瓶梅·绿色版 9《蒋竹山》：一张假借据如何调动街头、保甲与提刑院](../podcast-learning/reports/2026-08-13_ximalaya-bannatie-gushipian_jiangzhushan.md) | podcast-learning |
 | 2026-10-20 | [身体出现这些信号，可能是炎症在提醒你！——帆书讲《炎症》](../podcast-learning/reports/2026-08-21_bilibili-fanshu_yanzheng.md) | podcast-learning |
 | 2026-10-20 | [说医解药 Vol.91：银鳕鱼汞中毒争议——三种汞、鳕鱼命名史与 FDA 选鱼数学](../podcast-learning/reports/2026-10-08_xiaoyuzhou-shuoyi-jieyao_vol91-cod-mercury.md) | podcast-learning |
@@ -31,7 +32,6 @@
 | 2026-10-20 | [实测笔记：book-to-skill 能优化 EverAgent 学习类项目吗？](../ai-practice/experiments/book-to-skill-demo/评估笔记_book-to-skill能否优化学习项目_20260729.md) | ai-practice |
 | 2026-10-20 | [实习生抢答、老教授过目：速度快 2-3 倍，凭什么不改变采样分布？——投机解码科普](../ai-learning/reports/knowledge_reports/投机解码SpeculativeDecoding_科普讲解_20260720.md) | ai-learning |
 | 2026-10-20 | [孩子成绩差，真的是因为「不是学习的料」吗？——黄翔脑科学对谈与事实核查](../podcast-learning/reports/2026-07-04_bilibili-kema_huangxiang-brain.md) | podcast-learning |
-| 2026-10-20 | [大小马 V94：中国火箭回收与美国「孙学」——争议资产、复用经济学与中欧美心态切片](../podcast-learning/reports/2026-09-06_xiaoyuzhou-daxiaoma-keji_v94-rocket-recovery-sunology.md) | podcast-learning |
 
 ## 🤖 AI Learning（125 篇）
 
@@ -506,10 +506,11 @@
 | 2026-03-17 | [AstrBotDevs/AstrBot](../github-trending-analyzer/reports/research_AstrBotDevs_AstrBot.md) | — |
 | 2026-03-17 | [666ghj/BettaFish 深度研究报告](../github-trending-analyzer/reports/research_666ghj_BettaFish.md) | — |
 
-## 🏄 Web Surfing（45 篇）
+## 🏄 Web Surfing（46 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-10-21 | [AI 行业日报 · 2026-10-21](../web-surfing/reports/ai-news-daily-2026-10-21.md) | `ai_news`, `daily`, `industry_watch` |
 | 2026-10-20 | [炒菜调料时机：从短视频口诀到可复用的厨房判断](../web-surfing/reports/cooking-logic-timing-douyin.md) | `cooking`, `douyin`, `food-science`, `fact-check` |
 | 2026-10-20 | [惠州租房建议报告：两位老人 2026 年 9/10 月短住体验](../web-surfing/reports/huizhou-rental-guide-2026-09.md) | `huizhou`, `rental`, `elderly_living`, `short_term_rental` |
 | 2026-10-20 | [AI 行业日报 · 2026-10-20](../web-surfing/reports/ai-news-daily-2026-10-20.md) | `ai_news`, `daily`, `industry_watch` |
