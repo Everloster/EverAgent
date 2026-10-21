@@ -1,0 +1,526 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2024-12-25_ximalaya-daxiaoma-zhijia_v23-xiaomi-leica.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-20",
+  "generator": {
+    "model": "glm-5.3",
+    "harness": "claude-code",
+    "run_id": "podcast-daily-2024-12-25",
+    "explicit_model_override": false,
+    "override_reason": ""
+  },
+  "task": {
+    "summary": "基于《大小马智驾》V23（喜马拉雅单集）的 eacli 静默转写，产出小米×徕卡合作幕后的播客学习报告：合作机制（高管大师课、特殊时期双向驻场的嘉宾转述）、审美主张（还原与计算摄影之争）、手机/相机分野与收藏观；专名经 web.search 核验，并与大小马聊科技 V95 做跨期对照。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "所有事实和引语回到转写原文；专名按核验清单修正，未核清处保留 [?]/[推测] 并在 Limitations 说明。"
+      },
+      {
+        "id": "R02",
+        "text": "嘉宾身份与影赛评委等背景事实需有外部来源支撑，区分嘉宾口播、官方原始资料与媒体/百科二手材料；检索摘要不能冒充完整正文核验。"
+      },
+      {
+        "id": "R03",
+        "text": "区分嘉宾（小米员工）自述、外部核验事实与作者跨期分析；保留 Limitations 与思考与追问。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "local",
+      "title": "大小马智驾 V23 原始转写（Whisper large-v3，1405 段）",
+      "locator": "podcast-learning/reports/transcripts/2024-12-25_ximalaya-daxiaoma-zhijia_v23-xiaomi-leica.transcript.txt",
+      "accessed_on": "2026-10-20"
+    },
+    {
+      "id": "S02",
+      "kind": "primary",
+      "title": "喜马拉雅单集音频（eacli podcast 静默转写源）",
+      "locator": "https://www.ximalaya.com/sound/787503717",
+      "accessed_on": "2026-10-20",
+      "notes": "原转写的节目入口；本轮独立复核未重新解码音频或重听。"
+    },
+    {
+      "id": "S03",
+      "kind": "official",
+      "title": "大小马智驾官方 RSS 单集 shownotes（web.read，单集页 JS 渲染不可用的降级来源）",
+      "locator": "https://www.ximalaya.com/album/76366265.xml",
+      "accessed_on": "2026-10-20"
+    },
+    {
+      "id": "S04",
+      "kind": "secondary",
+      "title": "百度百科：韩冲（前战地摄影记者、清河摄影部主理人之一、2011 年起常驻中东）",
+      "locator": "https://baike.baidu.com/item/%E9%9F%A9%E5%86%B2/2173145",
+      "accessed_on": "2026-10-20",
+      "notes": "typed web.search 摘要的有限佐证；独立复核中 typed web.read 未取得完整正文，保留二手来源属性。"
+    },
+    {
+      "id": "S05",
+      "kind": "secondary",
+      "title": "凤凰网：小米徕卡2024影赛落幕（周轶君评委点评，佐证转写周一军/周毅君→周轶君）",
+      "locator": "https://i.ifeng.com/c/8fRm76eYPXH",
+      "accessed_on": "2026-10-20",
+      "notes": "typed web.search 摘要的有限佐证；独立复核中 typed web.read 未取得完整正文，保留二手来源属性。"
+    },
+    {
+      "id": "S06",
+      "kind": "official",
+      "title": "小米官网：小米徕卡全球影像大赛评委名单（严明：著名摄影家）",
+      "locator": "https://www.mi.com/visual/award",
+      "accessed_on": "2026-10-20",
+      "notes": "官方动态页读取仅得到页面壳，评委信息由 typed web.search 摘要作有限佐证，未取得完整正文。"
+    },
+    {
+      "id": "S07",
+      "kind": "secondary",
+      "title": "百度百科：小米徕卡影像大赛（2022 首届 27 万张作品 35 张获奖；2024 第三届超 65 万件）",
+      "locator": "https://baike.baidu.com/item/%E5%B0%8F%E7%B1%B3%E5%BE%95%E5%8D%A1%E5%BD%B1%E5%83%8F%E5%A4%A7%E8%B5%9B/66280721",
+      "accessed_on": "2026-10-20",
+      "notes": "typed web.search 摘要的有限佐证；独立复核中 typed web.read 未取得完整正文，保留二手来源属性。"
+    },
+    {
+      "id": "S08",
+      "kind": "secondary",
+      "title": "百度百科：ライカM4（中岛美雪 2015 专辑《组曲(Suite)》歌曲，佐证转写东岛美雪/来看M4）",
+      "locator": "https://baike.baidu.com/item/%E3%83%A9%E3%82%A4%E3%82%ABM4/62670195",
+      "accessed_on": "2026-10-20",
+      "notes": "typed web.search 摘要的有限佐证；独立复核中 typed web.read 未取得完整正文，保留二手来源属性。"
+    },
+    {
+      "id": "S09",
+      "kind": "local",
+      "title": "大小马聊科技 V95 报告（跨期对照：苹果长期主义 vs 小米一把手文化）",
+      "locator": "podcast-learning/reports/2026-10-08_xiaoyuzhou-daxiaoma-keji_v95-china-us.md",
+      "accessed_on": "2026-10-20",
+      "notes": "本库报告相关段落的跨期对照；本轮未重新复核该集转写或技术原始资料。"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "小米徕卡影像大赛自 2022 年开办，运营期八九个月（2 月征稿至 11 月结束），每年约十几万参赛者、几十万张投稿（口播口径）。",
+      "report_anchor": "十几万参赛者 / 几十万张投稿",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "转写 00:00:35-00:01:03（2022 年第一届、八九个月运营期）；00:01:07-00:01:12（十几万参赛者、几十万张）；00:01:17-00:01:20（2 月开始征稿、11 月结束）；二手量级对照见 C08。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "韩冲回忆，小米与徕卡合作后组织高管（含雷总、卢总）参加徕卡大师课；在他所说的特殊时期，双方互派工程师共同研发徕卡经典/徕卡生动双画质。具体时期与技术机制未独立证实。",
+      "report_anchor": "一把手二把手都是亲自带头去做的",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "转写 00:05:41-00:06:05（大师课与一把手文化）；00:06:39-00:07:14（特殊时期封锁、双向驻场、双画质研发，德方工程师曾被困园区但不影响进度）。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "韩冲入职后认为双画质并非简单套滤镜，并以晴天、阴天和夜晚的差异解释他对场景调教的理解；其关于最优结果的表述带有“我理解的是”“可能”，不能据此确认技术机制或最优性。",
+      "report_anchor": "并不是简单的套滤镜",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "转写 00:14:43–00:15:23（入职前后对滤镜的看法，晴天/阴天/夜晚适配举例）；00:15:24–00:15:33 明言“我理解的是更深层次的调教”“可能是它基于不同的场景”“我理解是非常大的”。direct 只表示转写直接支持嘉宾说过这一理解，不证明双画质的算法、最优性或是否使用滤镜。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "韩冲评判照片的第一标准是还原当时对场景的感受；大众用户还要求比真实好看一点点。",
+      "report_anchor": "有没有还原我当时对于那个场景的感受",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "转写 00:12:31-00:12:56（还原标准）；00:13:46-00:14:04（好看一点点及其拿捏难度）。",
+      "critical": false
+    },
+    {
+      "id": "C05",
+      "claim": "嘉宾韩冲为前战地摄影记者（2011 年起常驻中东）、播客《清河摄影部》主理人之一（与刘小川合作），录制时为小米影像运营部。",
+      "report_anchor": "前战地摄影记者",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S04"
+      ],
+      "evidence": "转写 00:00:31（清河摄影部主播韩冲）、00:02:46-00:03:13（驻外战乱地区经历与入职契机）、00:35:58-00:36:03（与刘小川一块做）；百度百科词条佐证履历。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "转写中的评委周一军/周毅君应为周轶君，系 2024 小米徕卡影像大赛评委、前战地记者。",
+      "report_anchor": "2024 小米徕卡影像大赛评委",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S05"
+      ],
+      "evidence": "转写 00:01:48/00:02:15/00:02:34 两种写法指同一人（圆桌派/锵锵三人行常客、文化界、战地记者同行）；凤凰网 2024-12-19 报道证实周轶君为该届评委并有点评记录。",
+      "critical": true
+    },
+    {
+      "id": "C07",
+      "claim": "韩冲的 Dream Camera 是 Leica M4（全机械无测光、快速上片改进、二手约一万多元），M6/M7 前脸设计沿袭 M4；中岛美雪有歌曲《莱卡M4》。",
+      "report_anchor": "Dream Camera 为 Leica M4",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S08"
+      ],
+      "evidence": "转写 00:29:55-00:30:00（Dream Camera=M4）、00:30:29-00:31:46（M3→M2→M4 演进与设计沿袭）、00:31:49-00:31:53（一万多元）、00:32:16-00:32:19（歌，转写东岛美雪/来看M4 经百度百科佐证为中岛美雪《ライカM4》）。",
+      "critical": false
+    },
+    {
+      "id": "C08",
+      "claim": "百度百科的二手检索摘要记载 2022 首届 27 万张作品、2024 第三届超 65 万件参赛作品；这里只与嘉宾口播做量级对照，未取得官方原始统计。",
+      "report_anchor": "2022 首届 27 万张",
+      "support": "direct",
+      "source_ids": [
+        "S07"
+      ],
+      "evidence": "S07 的 typed web.search 摘要；未取得完整百科正文或官方统计，不能将其标注为官方口径。参赛者与作品数、年度与届次不可混算。",
+      "critical": false
+    },
+    {
+      "id": "C09",
+      "claim": "韩冲个人判断：移动影像是不可逆潮流，手机拍照与相机用户不是一个量级；他以 Q/SL 等例子说明徕卡拥抱变化的看法。徕卡商业层面的担忧与具体经营资料未在本期证实。",
+      "report_anchor": "完全不是一个量级",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "转写 00:07:49-00:09:07（嘉宾先明言商业层面\"从商业的上面我不太清楚莱卡会不会有这个担忧\"，再以个人看法作答：不可逆潮流、用户量级之差、徕卡历史上拥抱变化、百年光学积淀；莱卡即徕卡，见报告 notable_correction）。",
+      "critical": false
+    },
+    {
+      "id": "C10",
+      "claim": "跨期对照（作者分析[推测]）：V95 的苹果十年 Security Enclave 长期主义与本集小米一把手组织学习、徕卡百年品牌积淀构成三种长期主义样本。",
+      "report_anchor": "技术布局（苹果）、组织学习（小米）、品牌积淀（徕卡）",
+      "support": "inference",
+      "source_ids": [
+        "S01",
+        "S09"
+      ],
+      "evidence": "本集转写的一把手文化（00:06:02-00:06:23）与 V95 报告的苹果长期主义章节对照，为报告作者的分析性连接，非嘉宾观点。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "影像大赛缘起、运营节奏与规模（00:00:34-00:01:39）：2022 年起第一届、八九个月运营期、2 月征稿至 11 月结束、十几万参赛者/几十万张投稿（口播）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S07"
+      ],
+      "report_anchor": "2022 年起办、八九个月运营期"
+    },
+    {
+      "id": "U02",
+      "title": "影赛评委构成与多元性（00:01:41-00:02:38）：摄影界（严明、顾正[?]）+文化界（周轶君）+技术类评委，兼顾专业性与非影像视角",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S05",
+        "S06"
+      ],
+      "report_anchor": "摄影界（严明等）+文化界（周轶君）+技术类评委构成"
+    },
+    {
+      "id": "U03",
+      "title": "韩冲履历与入职契机（00:02:43-00:04:30）：战地记者→国内办公室两年→KOL/样片摄影师合作（反馈进新品）→入职小米；徕卡用户十多年、认同人文审美",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S04"
+      ],
+      "report_anchor": "战地记者→样片摄影师→员工"
+    },
+    {
+      "id": "U04",
+      "title": "与雷总的当面交流与近距离印象（00:04:31-00:05:41）：以徕卡摄影师身份交流使用心得；印象谦虚谦逊",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "当面交流徕卡使用心得"
+    },
+    {
+      "id": "U05",
+      "title": "徕卡大师课与一把手文化（00:05:41-00:06:24）：影像高管含雷总卢总上大师课；做影像上大师课、做车考赛照",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "一把手二把手都是亲自带头去做的"
+    },
+    {
+      "id": "U06",
+      "title": "特殊时期双向驻场研发双画质的嘉宾回忆（00:06:39–00:07:14）：双方工程师互派与园区封锁；具体时期及技术机制未独立证实。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "特殊时期双向互派工程师"
+    },
+    {
+      "id": "U07",
+      "title": "嘉宾如何理解双画质与场景调教（00:14:37–00:15:53）：晴天/阴天/夜晚滤镜适配差异；“我理解的是”“可能”的限定词与工作量解释，不当作最优性或技术机制证明。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "并不是简单的套滤镜"
+    },
+    {
+      "id": "U08",
+      "title": "计算摄影审美之争（00:10:35-00:11:51）：过度锐化、过度 HDR、塑料味、夜景拍成白天、一亿像素与高饱和参数竞赛；徕卡经典的光学成像感",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "一亿像素参数竞赛"
+    },
+    {
+      "id": "U09",
+      "title": "评判照片的标准（00:12:13-00:14:03）：第一标准是还原当时对场景的感受；大众要好看一点点、度难拿捏；专业看操控与后期宽容度、大众看简单快速出片分享",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "有没有还原我当时对于那个场景的感受"
+    },
+    {
+      "id": "U10",
+      "title": "徕卡视角：拥抱而非对抗（00:07:36-00:09:07）：商业层面是否担忧不明言；个人判断移动影像是不可逆潮流、用户量级不同；徕卡历史上拥抱变化（Q/SL、运动相机合作）、百年光学与人文积淀",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "从商业的上面我不太清楚"
+    },
+    {
+      "id": "U11",
+      "title": "徕卡商务结构口播（00:07:41-00:07:46）：与小米合作赚服务费、此前与华为合作能赚钱（口播区分）",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "能赚到服务费"
+    },
+    {
+      "id": "U12",
+      "title": "徕卡给小米的最大价值（00:09:10-00:10:34）：人文领域关怀一致、坚定人文影像路线；获奖作品未必最好看但值得再看第二眼第三眼；徕卡生动是让人接受人文影像的创新",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "值得再看第二眼第三眼"
+    },
+    {
+      "id": "U13",
+      "title": "影像旗舰的厚与重及系统稳定性（00:16:45-00:18:43）：堆料必然厚重的通病；相机偶发卡死黑屏，嘉宾承认稳定性有待加强",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "系统的稳定性还是有待加强"
+    },
+    {
+      "id": "U14",
+      "title": "AI 摄影辅助的两个维度（00:17:48-00:19:55）：大众侧场景提示/帮拍/去杂物了无痕迹；专业侧服务创作、手机成为 AI 艺术家的画笔",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "AI 摄影辅助两个维度"
+    },
+    {
+      "id": "U15",
+      "title": "HyperOS 2.0 自动扫码识别（00:20:15-00:20:26）",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "S01"
+      ],
+      "omission_reason": "产品功能支线（AI 帮拍的铺垫闲谈），报告以 AI 摄影辅助概念概括，未展开该细节。"
+    },
+    {
+      "id": "U16",
+      "title": "Insta360 全景相机与 APP 自动剪辑支线（00:20:39-00:21:22）",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "S01"
+      ],
+      "omission_reason": "运动相机支线闲谈，与小米×徕卡合作主线关联弱，摘要体裁下省略。"
+    },
+    {
+      "id": "U17",
+      "title": "买机建议（00:22:19-00:24:47）：轻度用户标准版够用；拍得多/想创作试 Ultra；14 Ultra 一英寸主摄、专业模式与 RAW；手机可承载长期纪实项目",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "14 Ultra 四颗镜头覆盖超广角到长焦"
+    },
+    {
+      "id": "U18",
+      "title": "友商影像与风格差异（00:24:47-00:26:04）：主播用 OPPO Find X8 Pro 满意；OPPO×哈苏大师模式氛围感；嘉宾称国内厂商硬件大差不差、差异在审美方向（口播“军事”为“均势”[推测]）",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "OPPO×哈苏（大师模式、氛围感）"
+    },
+    {
+      "id": "U19",
+      "title": "雷总常夸特斯拉 Model 3（00:25:37-00:25:46，转写“特萨摩托三”依语境修正[推测]）",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "经常夸特斯拉 Model 3"
+    },
+    {
+      "id": "U20",
+      "title": "手机与相机分野（00:26:06-00:27:13、00:33:53-00:34:13）：严肃创作仍需相机、底大一级压死人；社会纪实与日常记录手机够；随身性带来拍摄机会；单反接 200/300mm 长焦、旁轴市场被单反取代",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "底大一级压死人"
+    },
+    {
+      "id": "U21",
+      "title": "收藏观与经典机型（00:27:13-00:28:43、00:28:50-00:29:00）：收藏看文化承载而非当下好用；开创时代/开山鼻祖/品牌经典；M3 五几年仍能拍、巴纳克到 M 系列；哈苏 500 系列与登上月球；Air Jordan 同构；工具→奢侈品；丘吉尔“能看到多久历史就能看到多远未来”（王兴引用）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "收藏价值在文化承载"
+    },
+    {
+      "id": "U22",
+      "title": "周杰伦 MV 中哈苏机型被炒价（00:28:15-00:28:24）",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "S01"
+      ],
+      "omission_reason": "收藏话题的即兴举例，报告以哈苏 500 系列与文化承载概括，未复述该个案。"
+    },
+    {
+      "id": "U23",
+      "title": "Dream Camera：Leica M4 详解（00:29:37-00:33:01）：M3→M2→M4 演进（取景器适配）；快速上片与斜肩回片拨杆；全机械无测光、玻璃加金属、快门布帘最脆弱；二手约一万多；承上启下、M6/M7 前脸沿袭；见证纸媒黄金年代；中岛美雪《莱卡M4》",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S08"
+      ],
+      "report_anchor": "Dream Camera 为 Leica M4"
+    },
+    {
+      "id": "U24",
+      "title": "二手 M4 购机指南（00:34:13-00:35:39）：闲鱼找口碑商家；避免磕碰、外观旧可接受；试拍一卷、逐档试快门速度再收货",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "购机指南"
+    },
+    {
+      "id": "U25",
+      "title": "《清河摄影部》停更与复更（00:35:39-00:37:42）：因影赛停更数月；收官后复更并预告周轶君（文化界评委）专场；主播自述为催更直接录本期",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "《清河摄影部》停更与复更"
+    },
+    {
+      "id": "U26",
+      "title": "影像运营职能四件套（00:04:50-00:05:24、00:37:42-00:38:31）：影赛运营+线下拍摄交流活动（跟用户交朋友）+小米影像公众号/小红书+收集摄影师反馈进研发",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "影赛+线下活动+账号运营+收集反馈"
+    },
+    {
+      "id": "U27",
+      "title": "小米15 电量与充电体验（00:22:55-00:23:24）",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "S01"
+      ],
+      "omission_reason": "主播个人用机体验支线，报告以买机建议（标准版均衡）概括，未展开电量细节。"
+    },
+    {
+      "id": "U28",
+      "title": "部门招聘与收尾（00:38:31-00:38:58）",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "S01"
+      ],
+      "omission_reason": "节目收尾寒暄（部门年轻、欢迎投简历），无长期学习价值。"
+    }
+  ],
+  "limitations": [
+    "无润色稿：没有另行生成 digest，报告以原始转写为主。转写统计由既有 fill_report_stats 从实际文件核对，不猜测压缩比。",
+    "嘉宾录制时为小米员工；体验评价与影赛规模为利益相关方口播。27 万张、超 65 万件为二手百科检索摘要，非官方原始统计；顾正等未核清专名保留 [?]。",
+    "12S Ultra 一英寸大底首个之说为口播带好像的模糊表述，未做全球首发核验；特萨摩托三→特斯拉 Model 3 为语境推断 [推测]。",
+    "本轮转写文件已按 SHA-256 绑定，独立强审完整读取并运行公共转写机器审计；未重新解码音频或独立重听。",
+    "双画质的最优结果是嘉宾带“我理解的是”“可能”的解释，技术机制、最优性和特殊时期所指仍待验证。",
+    "外部动态页面或受限正文不可用时只用 typed web.search 摘要作有限佐证，官方域名本身不等于已读完整官方材料。",
+    "跨期分析只核对 S09 报告相关段落，本轮未重新复核该集的原始来源。"
+  ],
+  "revision_provenance": {
+    "editor_model": "gpt-6.1-sol",
+    "harness": "codex",
+    "model_source": "codex-thread-state",
+    "base_report_sha256": "ff10f274e745f0b72f25aae626f2e7be6a1e3b1315af78f384680b089af4b736",
+    "independent_review_sha256": "ac0c7a244f008b6925ec6702a13045f5872394e78fd75b47a352b326e5853c15",
+    "changes": [
+      "保留嘉宾关于调教的限定词，未声称技术机制或最优性已证实。",
+      "保留特殊时期原措辞，纠正二手摘要被误标为官方来源。",
+      "明确外部正文与音频核验缺口、跨期报告对照范围，移除私人执行设备标签。"
+    ]
+  }
+}
