@@ -1,0 +1,278 @@
+{
+  "schema_version": 1,
+  "report_path": "web-surfing/reports/ai-news-daily-2026-10-21.md",
+  "quality_tier": "standard",
+  "created_on": "2026-10-22",
+  "generator": {
+    "model": "glm-5.3",
+    "harness": "claude-code",
+    "run_id": "ai-news-2026-10-21",
+    "explicit_model_override": false,
+    "override_reason": ""
+  },
+  "task": {
+    "summary": "汇总 2026-10-21（含前日发布、今日仍在前排的条目）AI 行业动态，按 ai-news-readability 宪章成稿。五源中 AI Digest 停更标 ❌，AIHOT 10-21 期恢复直读（10-20 期曾被内容过滤拦截）。DeepInfer 仓库、PyTorch 官方博文、Anthropic 蝎毒研究页与 Mistral Voxtral 3 官方页为本期一手直读；Mercury 3 官方发布页未检出、ECHOTRIBBLE/OpenAI 融资/SpaceX/DHS 等为转述或检索快照级并集中声明边界；10-20 因 AIHOT 被拦截漏收的 DHS 移除令本期经 AIHOT 前一日栏补录。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "检查五源（AIHOT、GitHub Trending、AI Digest 中文、Hacker News、AI Tech Blog Radar）并在页眉用 ✅/❌ 标记状态；产出含今日要点、至少 3 条结构完整头条、Trending、顶尖技术博客更新、简讯、趋势总结与折叠详情块的日报；源不可达或未更新时如实记录、不伪造补齐。"
+      },
+      {
+        "id": "R02",
+        "text": "事实、数字、引语和链接不得编造；聚合站与一手来源冲突时以一手为准并说明边界；重要新闻尽量回查官方公告、论文或项目仓库（本期直读 DeepInfer 仓库 README、PyTorch 官方博文、Anthropic 研究页、Mistral Voxtral 3 官方页）。"
+      },
+      {
+        "id": "R03",
+        "text": "至少 5 条有效新闻有独立证据链接；证据账本至少登记本任务要求、来源、两个关键 claim 和局限。"
+      },
+      {
+        "id": "R04",
+        "text": "对照最近三篇日报（10-20/10-19/10-15）去重；延续事件必须提供新增量并链接历史日报；10-20 漏收事件（DHS 移除令）补录并注明缘由。"
+      },
+      {
+        "id": "R05",
+        "text": "技术博客雷达按 updates --since 2026-10-20 --limit 12 运行，只选发布时间换算到 Asia/Shanghai 后落在 2026-10-20 至 2026-10-21 的官方厂商/实验室新技术文（0–5 条）；当前索引查询不能冒充当时快照，条数上限、无法复现的历史窗口和未直读正文记入局限。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "accessed_on": "2026-10-21",
+      "id": "S01",
+      "kind": "primary",
+      "locator": "https://aihot.virxact.com/daily/2026-10-21",
+      "title": "AIHOT 2026-10-21 期（第 183 期）全文直读：12 件大事、11 来源、5 件一手，publishedTime 2026-10-21T00:00:33.717Z；canonical 指向 aihot.news/daily/2026-10-21"
+    },
+    {
+      "accessed_on": "2026-10-21",
+      "id": "S02",
+      "kind": "official",
+      "locator": "https://github.com/deepseek-ai/DeepInfer",
+      "title": "deepseek-ai/DeepInfer 仓库页（README 全文直读：Apache 2.0、支持 V4.1-Flash、SM100 与昇腾 950、缺件清单、构建于 vLLM 之上）"
+    },
+    {
+      "accessed_on": "2026-10-21",
+      "id": "S03",
+      "kind": "official",
+      "locator": "https://pytorch.org/blog/introducing-torchtpu",
+      "title": "Introducing TorchTPU（PyTorch 官方博文全文直读：Google+Meta 合作、2025 年中启动、eager 优化/torch.compile/原生加速、vLLM/SGLang/TorchTitan 验证集成）"
+    },
+    {
+      "accessed_on": "2026-10-21",
+      "id": "S04",
+      "kind": "official",
+      "locator": "https://www.anthropic.com/research/claude-scorpion-toxin-binder-design",
+      "title": "How Claude designed protein binders against scorpion neurotoxins（Anthropic 官方研究页全文直读；article:published_time 2026-10-20T00:00Z、modified 16:04Z）"
+    },
+    {
+      "accessed_on": "2026-10-21",
+      "id": "S05",
+      "kind": "official",
+      "locator": "https://mistral.ai/news/voxtral-3",
+      "title": "Voxtral 3（Mistral 官方公告全文直读，publishedTime 2026-10-20T12:00:22Z：转写 50+ 语言、TTS 35+ 语言 50+ 方言、LiveKit voice agent SDK、价目表）"
+    },
+    {
+      "accessed_on": "2026-10-21",
+      "id": "S06",
+      "kind": "primary",
+      "locator": "https://github.com/trending",
+      "title": "GitHub Trending 快照（UTC 10-21 约 19:00 直读，12 仓，总星/今日星/fork/语言均可读）"
+    },
+    {
+      "accessed_on": "2026-10-21",
+      "id": "S07",
+      "kind": "primary",
+      "locator": "https://news.ycombinator.com/",
+      "title": "Hacker News 首页 30 条快照（DeepInfer 2237 分/854 评论、Voxtral 3 642 分/164 评论、TorchTPU 330 分/74 评论、SlopCodeBench 247 分、Muse 泄密 137 分）"
+    },
+    {
+      "accessed_on": "2026-10-21",
+      "id": "S08",
+      "kind": "official",
+      "locator": "https://www.inceptionlabs.ai/blog",
+      "title": "Inception Labs 首页与博客索引（本期直读：最新条目为 10-15 Mercury 2 上 TIME 榜与 9-29 Mercury Voice，均未见 Mercury 3；/news/mercury-3 返回 404）"
+    },
+    {
+      "accessed_on": "2026-10-21",
+      "id": "S09",
+      "kind": "secondary",
+      "locator": "https://www.reuters.com/world/openai-seeks-accelerate-fundraising-ahead-anthropic-ipo-sources-say-2026-10-19",
+      "title": "Reuters 10-19 独家：OpenAI seeks to accelerate fundraising ahead of Anthropic IPO（检索快照：~$30B、>$1.4T、3 月 $852B）"
+    },
+    {
+      "accessed_on": "2026-10-21",
+      "id": "S10",
+      "kind": "secondary",
+      "locator": "https://www.reuters.com/business/finance/investors-temper-anthropic-ipo-valuation-expectations-over-revenue-growth-2026-10-15",
+      "title": "Reuters 10-15：Investors temper Anthropic IPO valuation expectations（检索快照：Q3 营收 $16.8B、投资者讨论 ~$1.5T）"
+    },
+    {
+      "accessed_on": "2026-10-21",
+      "id": "S11",
+      "kind": "official",
+      "locator": "https://openai.com/index/openai-to-acquire-orchestra-bio",
+      "title": "OpenAI acquires Orchestra Bio（OpenAI 官方公告页，检索快照摘要级：并入 Rosalind；pharmtech 快照称 10-20 交割）"
+    },
+    {
+      "accessed_on": "2026-10-21",
+      "id": "S12",
+      "kind": "secondary",
+      "locator": "https://www.scmp.com/news/us/article/3371431/us-orders-deepseek-removed-federal-systems-citing-national-security-risks",
+      "title": "SCMP：US orders DeepSeek removed from federal systems, citing national security risks（检索快照，10-20 事件）"
+    },
+    {
+      "accessed_on": "2026-10-21",
+      "id": "S13",
+      "kind": "secondary",
+      "locator": "https://www.ghacks.net/2026/10/20/us-homeland-security-orders-federal-civilian-agencies-to-stop-using-and-remove-deepseek-ai-products",
+      "title": "gHacks：DHS orders federal civilian agencies to stop using and remove DeepSeek AI products（检索快照，10-20 事件，与 WSJ/SCMP/cyberscoop 多源交叉）"
+    },
+    {
+      "accessed_on": "2026-10-21",
+      "id": "S14",
+      "kind": "secondary",
+      "locator": "https://zerohunt.ai/blog/us-army-echotribble-autonomous-attack-agents",
+      "title": "zerohunt：US Army ECHOTRIBBLE autonomous attack agents（检索快照；原始信源为 The Intercept 获取的 ARCYBER 文件，经 The Decoder→AIHOT 传播，原文未直读）"
+    },
+    {
+      "accessed_on": "2026-10-21",
+      "id": "S15",
+      "kind": "secondary",
+      "locator": "https://ai-digest.liziran.com/zh/",
+      "title": "AI Digest 中文首页（直读正常，最新一期仍为 2026-08-24，停更约 8.5 周，当日无内容可用）"
+    },
+    {
+      "accessed_on": "2026-10-21",
+      "id": "S16",
+      "kind": "secondary",
+      "locator": "https://aipolix.com/en-us/news/inception-mercury-3-diffusion-llm-launch",
+      "title": "aipolix：Inception launches Mercury 3（检索快照：matches GPT-6 Luna 与 Claude Haiku 5.5、>1,000 tokens/s；与 AIHOT「超过」口径分歧）"
+    },
+    {
+      "accessed_on": "2026-10-21",
+      "id": "S17",
+      "kind": "execution",
+      "locator": "python3 web-surfing/skills/ai-tech-blog-radar/scripts/radar.py updates --since 2026-10-20 --limit 12 --format json; generated_at 2026-10-21T18:54:19Z（上海 10-22 02:54）; 20/20 源成功、12 条候选、0 失败",
+      "title": "AI Tech Blog Radar 运行记录（--since 2026-10-20；部分 feed 使用已记录原因的只读 HTTP XML 降级）"
+    },
+    {
+      "accessed_on": "2026-10-21",
+      "id": "S18",
+      "kind": "official",
+      "locator": "https://www.amazon.science/blog/strengthening-ai-safety-evaluation-through-independent-third-party-review",
+      "title": "Amazon Science feed 条目：Strengthening AI safety evaluation through independent third-party review（published_at 2026-10-20T17:57:55Z，上海 10-21 01:57；仅标题/日期/摘要，正文未直读）"
+    },
+    {
+      "accessed_on": "2026-10-21",
+      "id": "S19",
+      "kind": "official",
+      "locator": "https://developer.nvidia.com/blog/inside-nvidia-sentry-secure-ai-agents-at-runtime",
+      "title": "NVIDIA Technical Blog feed 条目：Inside NVIDIA Sentry（published_at 2026-10-21T09:52:16Z，上海 10-21 17:52；仅标题/日期/摘要，正文未直读）"
+    },
+    {
+      "accessed_on": "2026-10-21",
+      "id": "S20",
+      "kind": "official",
+      "locator": "https://developer.nvidia.com/blog/how-nvidia-openshell-reference-architecture-secures-and-governs-ai-agent-workloads-at-scale",
+      "title": "NVIDIA Technical Blog feed 条目：OpenShell Reference Architecture（published_at 2026-10-21T09:50:14Z，上海 10-21 17:50；仅标题/日期/摘要，正文未直读）"
+    },
+    {
+      "accessed_on": "2026-10-21",
+      "id": "S21",
+      "kind": "official",
+      "locator": "https://developer.nvidia.com/blog/design-proteins-with-rfd4-proteina-using-reward-guided-inference-time-search",
+      "title": "NVIDIA Technical Blog feed 条目：RFD4-Proteina reward-guided inference-time search（published_at 2026-10-21T12:30:00Z，上海 10-21 20:30；仅标题/日期/摘要，正文未直读）"
+    },
+    {
+      "accessed_on": "2026-10-21",
+      "id": "S22",
+      "kind": "official",
+      "locator": "https://developer.nvidia.com/blog/developing-an-ai-factory-digital-twin-with-an-agent-assisted-workflow",
+      "title": "NVIDIA Technical Blog feed 条目：AI Factory Digital Twin（published_at 2026-10-21T09:38:49Z，上海 10-21 17:38；仅标题/日期/摘要，正文未直读）"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "DeepSeek 将内部推理框架 DeepInfer 开源（Apache 2.0），README 自述其支撑 DeepSeek 大规模生产服务、本次放出离线推理核心；首发适配 DeepSeek-V4.1-Flash（默认 checkpoint 为 V4.1-Flash-1017），支持 NVIDIA SM100 GPU 与华为昇腾 950 NPU；官方明示 KV cache、Prefill/Decode 分离与跨副本负载均衡不在本次 release；项目最初主要构建于 vLLM 之上；HN 条目 2237 分 / 854 评论。",
+      "critical": true,
+      "evidence": "deepseek-ai/DeepInfer 仓库页 README 全文直读给出全部工程细节与缺件清单；HN 首页快照确认 2237 分/854 评论；AIHOT 10-21 期头条收录（含 deepseek-recipe 组件，仓库未直读已标注）。报告质疑段已注明性能图为仓库自报、昇腾/SM100 均无实测数据、HN 热度不等于采用。",
+      "report_anchor": "README 自述该框架支撑其大规模生产服务",
+      "source_ids": ["S02", "S01", "S07"],
+      "support": "direct"
+    },
+    {
+      "id": "C02",
+      "claim": "Google 与 Meta 合作开源 TorchTPU：原生 PyTorch TPU 后端，模型迁移只需把 .to(\"cuda\") 改为 .to(\"tpu\")；项目 2025 年中启动，接替 Lazy Tensor 路线的 PyTorch/XLA（XLA 仓定于 11-15 归档）；官方验证过 vLLM、SGLang、TorchTitan 集成并配 Ray 编排；官方同时注明峰值 TPU 性能不能只靠改一行获得；HN 330 分 / 74 评论。",
+      "critical": true,
+      "evidence": "pytorch.org 官方博文全文直读（TL;DR、启动时间、迁移口径、峰值性能边界、验证集成清单）；仓库 google-pytorch/torch_tpu 与 XLA 归档口径为检索快照级；HN 分数以首页快照为准（item id 50169053 经检索命中）。Apache 2.0 许可与 PyPI 0.2.0 为第三方口径，官方博文未载，已在正文标注。",
+      "report_anchor": "模型迁移只需把 `.to(\"cuda\")` 改成 `.to(\"tpu\")`",
+      "source_ids": ["S03", "S01", "S07"],
+      "support": "direct"
+    },
+    {
+      "id": "C03",
+      "claim": "Anthropic 内部研究模型在 Claude Science 中主要自主运行 64 小时设计蝎神经毒素迷你结合剂：生成 318,484 个设计、64 小时时给出 180 个最终设计，团队协助补 31 个共 211 个送测，Adaptyv Bio 与 Twist Bioscience 双 CRO 以 SPR 独立测结合，17 个达标（全部单毒素：Cn2 7、AaH II 4、AaH I 4、LqhIII 2）；使用 12 个设计工具、共折叠筛选 553,052 对、约 10,000 GPU 时；最强 Cn2-B1/B2 个位数纳摩尔亲和力；只验证重组毒素结合、未做细胞/动物中和实验、不声称抗毒血清；全部 211 设计与数据已开放。",
+      "critical": true,
+      "evidence": "Anthropic 官方研究页全文直读，全部数字、CRO 双验证流程、严格达标判据（双端命中、KD≤1µM、CLEC12A 无粘附）与官方自述边界均出自原文；HF 数据集与 The Decoder 报道为检索快照交叉。报告质疑段已注明「主要自主」含 4 次人类追问、发布时间为上海 10-20 08:00（10-20 日报未及收录）。",
+      "report_anchor": "生成 318,484 个设计、筛出 180 个",
+      "source_ids": ["S04"],
+      "support": "direct"
+    },
+    {
+      "id": "C04",
+      "claim": "Reuters 10-19 独家（匿名信源）：OpenAI 赶在 Anthropic 预计 11 月中 IPO 前加速完成约 300 亿美元融资，估值超 1.4 万亿美元，较 3 月的 8,520 亿美元至少高 64%；Reuters 10-15 另报 Anthropic Q3 营收 168 亿美元、投资者讨论约 1.5 万亿估值；$30B/$1.4T 目标 9-29 已有 Bloomberg 口径，本期增量是「提前于 Anthropic IPO 加速」的时点信息。",
+      "critical": true,
+      "evidence": "Reuters 两篇均为检索快照级（标题+摘要），数字链 $30B/>$1.4T/$852B/≥+64% 与 $16.8B/~$1.5T 逐项对得上；雅虎「$2T IPO」为聚合标题口径。报告质疑段已标注匿名信源、非公司公告、$1.5T 与 $2T 两说并存、Reuters 全文未直读。",
+      "report_anchor": "估值超 1.4 万亿美元，较 3 月的 8,520 亿至少高 64%",
+      "source_ids": ["S09", "S10", "S01"],
+      "support": "direct"
+    },
+    {
+      "id": "C05",
+      "claim": "Inception Labs 发布扩散 LLM Mercury 3：AIHOT 以官方博客一手标注收录，称速度 1068 tokens/秒、参数量较 Mercury 1 放大 40 倍以上、多项基准超过 GPT-6 Luna 与 Claude Haiku 5.5；第三方英文快照口径为「matches」；官方发布页本期未能直读（/news/mercury-3 404，官网首页与博客索引均无该条目）。",
+      "critical": true,
+      "evidence": "AIHOT 10-21 期直读给出全部数字（一手标注口径）；Inception 官网首页与博客索引本期直读确认「无 Mercury 3 条目」这一边界事实；aipolix/streamcode 快照交叉发布时间（约 10-20）与「matches」口径。报告质疑段已列「超过 vs 匹敌」分歧、缓存滞后假设与 Mercury 2.5 ~1100 tokens/s 旧口径不可比。",
+      "report_anchor": "速度 1068 tokens/秒",
+      "source_ids": ["S01", "S08", "S16"],
+      "support": "direct"
+    },
+    {
+      "id": "C06",
+      "claim": "DHS 于 10-20 下令美国联邦文职机构从 IT 系统移除 DeepSeek 及基于其开发的产品并禁止后续采购，理由为国家安全与数据风险，中方批驳；该事件 10-20 当日因 AIHOT 被 provider 内容过滤拦截而漏收，本期经 AIHOT 10-21 期「前一日栏」补录。",
+      "critical": true,
+      "evidence": "AIHOT 10-21 期直读（前一日栏标题）+ SCMP/ghacks 检索快照交叉（WSJ、cyberscoop、securitymagazine 等多源同向）；报道口径分歧（一处快照提及 7 月旧令）已按多源 10-20 口径记录。报告简讯已注明快照级与补录缘由，并链接 10-19 中国出口管制草案历史线。",
+      "report_anchor": "联邦文职机构从 IT 系统移除 DeepSeek 及基于其开发的产品并禁止后续采购",
+      "source_ids": ["S01", "S12", "S13"],
+      "support": "direct"
+    },
+    {
+      "id": "C07",
+      "claim": "AI Tech Blog Radar 于上海 10-22 02:54（UTC 10-21 18:54）运行，20 个已登记源 20 个成功返回、12 条候选；入选 5 条 feed 时间换算 Asia/Shanghai 后落在 2026-10-20 至 2026-10-21 窗口且未见于 10-20 日报（Amazon AVERI、NVIDIA Sentry、OpenShell、RFD4-Proteina、AI Factory Digital Twin）；正文均未直读。",
+      "critical": false,
+      "evidence": "radar.py updates --since 2026-10-20 --limit 12 --format json 执行输出直读（generated_at 2026-10-21T18:54:19.831490+00:00、sources_succeeded 20、items 12、failures 空）；换算后落在 10-22 的 MSR KLS（00:00 整）、Google 产妇超声（00:23）、Dharma vocabx（01:35）、NVIDIA Kumo（02:26）不入选，ALTK-Evolve 与 AnyLanguageModel 落窗但已见于 10-20 日报不重复，边界已写入正文。",
+      "report_anchor": "20 个已登记源 20 个成功返回，保留 12 条候选",
+      "source_ids": ["S17", "S18", "S19", "S20", "S21", "S22"],
+      "support": "direct"
+    },
+    {
+      "id": "C08",
+      "claim": "GitHub Trending 快照（UTC 10-21 约 19:00）12 仓：cloudflare/security-audit-skill 新上榜居首（35,506 总星 / +1,997）；上期 12 仓仅 5 仓存留（orca、headroom、ComfyUI、Kronos、ai-memory），7 仓新上榜；上期居首二连的 ai-job-search 落榜；ponytail 总星 171,186 / +2,051；12 仓中 5 仓 Built by 列表含 @claude。",
+      "critical": false,
+      "evidence": "github.com/trending 直读，12 仓的名称、语言、总星、fork、今日星与描述逐仓核对；快照时刻与「今日星为站点当时口径」已在正文来源行与详情块声明。AI/agent 浓度 11/12 的判断基于各仓自述描述。",
+      "report_anchor": "上期 10-20 为 12 仓",
+      "source_ids": ["S06"],
+      "support": "direct"
+    }
+  ],
+  "source_coverage": [],
+  "limitations": [
+    "Mercury 3 官方发布页未能直读：inceptionlabs.ai/news/mercury-3 返回 404，官网首页与博客索引（本期直读）均无该条目，疑 Framer 站点缓存滞后；全部数字为厂商自报经 AIHOT 一手标注转载，且与 aipolix「matches」口径存在分歧，基准明细未见，正文已按待复核处理。",
+    "ECHOTRIBBLE 全部细节为 The Intercept 独家文件经 The Decoder/AIHOT 的二手转述，原文未直读；zerohunt/aiweekly 快照为三方复述，solicitation（招标征集）不等于已部署能力，该主张单源。",
+    "OpenAI 融资（Reuters）、SpaceX Q3 与 Anthropic S-1（TechCrunch/WSJ 经 AIHOT）、DHS 移除令（WSJ/SCMP/ghacks）、Orchestra Bio（官方页仅快照摘要）、Locked Chats/MedHELM/METR/Perplexity（AIHOT 一手标注转述）均未回查原文全文，为快照或转述级，已在正文与详情块集中声明。",
+    "时点快照不可完全复现：GitHub Trending 与 HN 首页快照取于上海 10-22 凌晨（UTC 10-21 约 19:00），「今日星」与分数为站点当时口径；HN 首页无 item id（TorchTPU 的 50169053 系检索命中）；AI Digest 停更约 8.5 周致中文聚合源缺口，本期由 AIHOT 补足。",
+    "AI Tech Blog Radar 运行时刻（上海 10-22 02:54）晚于覆盖窗口结束，当前索引查询不能复原当时完整快照，且受 12 条候选上限约束；入选 5 条仅核实官方 feed 的标题、日期与摘要，正文与性能结论未直读；部分 feed 在 eacli 未保留完整 XML 时使用了已记录原因的只读 HTTP XML 降级。",
+    "zread（repo.public.read）对 deepseek-ai/DeepInfer 与 google-pytorch/torch_tpu 仓 README 均返回 repo not found：前者改经 web.read 直读仓库页成功，后者保持检索快照级；deepseek-recipe 仓库未定位到，仅保留 AIHOT 一手标注口径。",
+    "Anthropic 蝎毒研究页与 Mistral Voxtral 3 官方页的 publishedTime 均为上海 10-20（08:00 / 20:00），按「前日发布、今日仍在前排」规则收入本期并已在正文注明；HN 各条目发帖时间由快照相对时间（hours ago）换算，存在小时级误差。"
+  ]
+}

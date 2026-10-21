@@ -1,0 +1,88 @@
+{
+  "decision": {
+    "status": "pass",
+    "score": 94.2,
+    "evaluated_on": "2026-10-22",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "2f105ef7e2445889913753f4767f786ba7815f790b115fbf23deb3b81a22b213",
+    "evidence_sha256": "3d1c718b94667b3aaeec28e6d55752f1d9d008c270de4588af72202e626f16bb"
+  },
+  "quality_tier": "standard",
+  "report_path": "web-surfing/reports/ai-news-daily-2026-10-21.md",
+  "reviews": [
+    {
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08"
+      ],
+      "escalation_reason": "",
+      "hard_failures": [],
+      "missing_requirements": [],
+      "notes": "独立会话按 REPORT_QUALITY_GATE.md 复核：经 eacli web.read 实际读取 S01–S05、S08–S16、S18–S22 全文/主要正文；S06/S07 为时点快照，以当前页交叉验证；S17 为执行记录，以本地 radar.py 存在性与时间换算核验。6 个 critical claim 的全部核心数字在一手全文逐项精确核到（DeepInfer README 缺件清单/V4.1-Flash-1017/SM100+昇腾950/vLLM 谱系；Anthropic 页 318,484/180+31=211/17 且 7+4+4+2、11/60=18%、553,052、~10k GPU 时、KD≤1µM+CLEC12A、4 次追问、publishedTime 10-20T00:00Z；PyTorch 博文 2025 年中启动、一行迁移与峰值性能 caveat、vLLM/SGLang/TorchTitan+Ray；Reuters 两篇全文 $30B/>$1.4T/3月$852B/Q3 $16.8B/~$1.5T 对 $2T；Voxtral 3 LiveKit/50+/35+50/三档价格/10-20T12:00:22Z；AIHOT 183 期全文含前一日栏 DHS）。S18–S22 实存且描述相符；HN 可复现项（TorchTPU 330/74、eMudhra 899、teach-my-son 378/452、item 50169053）当前页精确一致；上期 12 仓 5 存留 7 落榜算术与 10-20 日报核对无误；10-20 日报详情块证实 AIHOT 当日被内容过滤拦截，DHS 补录叙事成立。未发现伪造引用或关键数字不可追溯；报告自报的直读/快照/待复核边界与实际核验一致。轻微问题（不影响核心结论，建议下轮修订）：(1) C06 及简讯「中方批驳」未能从已登记来源可见正文直接核验（SCMP 可见文本仅「未立即回应」，文章 person 标签含刘鹏宇，疑在未抓取部分），建议补出处或删；(2) DHS 令 SCMP 报道签署日 7-24、公告见报跨 10-19/10-20，报告统一记「10-20 事件」，账本已记 7 月旧令分歧但正文未展开；(3) Mercury 3 发布时间 aipolix 正文称 10-19 宣布、报告仅引 10-20 口径，宜注明并存；(4) AI Digest 停更 8-24→10-21 实约 8.3 周，报告写约 8.5 周。加权总分 94.2，standard 档全部门槛通过，判定 pass。",
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05"
+      ],
+      "reviewer": {
+        "explicit_model_override": false,
+        "harness": "claude-code",
+        "independent_context": true,
+        "model": "glm-5.3",
+        "override_reason": "",
+        "run_id": "ai-news-review-2026-10-21"
+      },
+      "role": "primary_review",
+      "score_reasons": {
+        "evidence_fidelity": "6 个 critical claim 核心数字全部经一手全文直读逐项复核：DeepInfer README（Apache 2.0、官方缺件清单、默认 checkpoint V4.1-Flash-1017、SM100+昇腾 950、4/64 卡基准、构建于 vLLM 之上）；Anthropic 页（318,484/180+31=211/17 达标且 Cn2 7+AaH II 4+AaH I 4+LqhIII 2、11/60=18%、553,052、约 10,000 GPU 时、双 CRO SPR、KD≤1µM+CLEC12A、4 次追问、publishedTime 10-20T00:00Z）；PyTorch 博文（2025 年中启动、.to(\"tpu\") 迁移与峰值性能 caveat 并列原文、vLLM/SGLang/TorchTitan+Ray）；Reuters 两篇全文（~$30B、>$1.4T、3 月 $852B、Q3 $16.8B 环比+45%、~$1.5T 对 desired $2T、mid-November IPO）；Voxtral 3（LiveKit、50+/35+ 语言 50+ 方言、$0.0035/min、$13/1M、$0.04/min、10-20T12:00:22Z）；AIHOT 183 期全文（SpaceX 52%/146 亿/44 亿/1.7 GW、ECHOTRIBBLE、前一日栏 DHS 逐条对上）。S18–S22 实存且与一句话描述一致；HN 可复现项（TorchTPU 330/74、eMudhra 899、teach-my-son 378/452、item 50169053=TorchTPU）当前页精确一致；上期 12 仓 5 存留 7 落榜算术经 10-20 日报本地核对无误。扣分：(1) C06 内「中方批驳」未能从已登记来源可见正文直接核验——SCMP 可见正文仅「使馆未立即回应」（文章标签含刘鹏宇，疑在未抓取部分）；(2) DHS 令据 SCMP 由部长 7-24 签署、公告跨 10-19/10-20，报告简化为「10-20 事件」（evidence 已记 7 月旧令分歧但正文未展开）。均为关键 claim 内外围细节，不影响结论成立。",
+        "limitations": "局限登记密度高且诚实：Mercury 3 官方页 404 与 Framer 缓存滞后假设（假设性质已标「疑」）、ECHOTRIBBLE 单源二手链路、Trending/HN 时点快照不可复现、雷达运行时刻晚于覆盖窗口结束且受 12 条候选上限约束、zread repo not found 的降级路径、publishedTime 边界规则（蝎毒/Voxtral 按前日规则首录并注明）、HN 相对时间换算小时级误差，全部同时落在正文边界段与账本 limitations（7 条）；快照/转述级条目在来源行逐条标注级别，无夸大或遮掩，且经本轮核验与实际相符。",
+        "readability": "可脱离对话独立阅读：页眉声明覆盖窗口与「前日仍在前排」规则，要点区 10 条带锚点索引，头条固定四段式（三句话速读/关键事实/细读与质疑/来源）降低检索成本，Trending 表格化并标注快照时刻与新上榜状态，简讯逐条带来源与级别标注（直读/快照/标题级），折叠详情块集中承载 provenance、直读失败项与去重说明；历史线链接指向的标题与实际 10-19/10-20 日报逐一对得上。中文行文符合项目约定，专有名词与原文保留。",
+        "reasoning_quality": "每条头条的「细读与质疑」论点可查证且多为有效反直觉质疑：DeepInfer「开源底座≠可用服务」直接锚定官方缺件清单、HN 热度≠生产采用并同日接 DHS 阻力；TorchTPU 一行迁移与峰值性能官方分开表述、点出 XLA 存量迁移成本官方「前几步较慢」口径；OpenAI 全部数字标注匿名信源、$1.5T–$2T 区间宽度本身作为不确定性呈现并与 S-1 简讯对读；Mercury「超过 vs matches」分歧、1068 与 2.5 代 ~1100 tokens/s 跨口径不可比、速度主张须绑定硬件与批大小；ECHOTRIBBLE solicitation≠已部署、单源提醒；蛋白设计「主要自主」拆解为初始 prompt+4 次追问并与 18% 命中率并读。趋势总结仅一处外推且已标 [推测]。扣分：Mercury 3 发布时间三方口径 10-19（aipolix 正文）与 10-20 并存，报告只引 10-20 一侧未完全对齐（该条整体已按待复核处理，影响有限）。",
+        "request_coverage": "R01–R05 全覆盖：页眉五源 ✅/❌ 状态齐备，AI Digest 停更如实标 ❌（首页直读确认最新期仍为 2026-08-24）；结构完整（10 条要点、6 条结构完整头条、Trending 表、博客雷达 5 条、简讯、趋势总结、折叠详情块）。R02 一手优先兑现：4 个官方页全文直读，聚合/一手口径冲突（AIHOT「超过」vs aipolix「matches」、Apache 2.0/PyPI 0.2.0 第三方口径）均在正文标注边界。R03 远超下限：有效新闻均带独立证据链接，账本登记 5 要求、22 来源、8 claim（6 critical）、7 局限。R04 去重对照 10-20/10-19/10-15 逐一给出增量或历史线链接且锚点与实际日报标题逐一对上（10-20 头条 3/4/6、10-19 头条 3/6）；DHS 补录缘由成立——10-20 日报详情块证实当日 AIHOT 被 provider 内容过滤拦截。R05 雷达按 updates --since 2026-10-20 --limit 12 运行（S17 记录 generated_at 2026-10-21T18:54:19Z 与正文上海 10-22 02:54 换算一致），入选 5 条窗口换算正确，不可复现性、12 条上限与 HTTP XML 降级均入局限。"
+      },
+      "scores": {
+        "evidence_fidelity": 93,
+        "limitations": 96,
+        "readability": 95,
+        "reasoning_quality": 93,
+        "request_coverage": 96
+      },
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S19",
+        "S20",
+        "S21",
+        "S22"
+      ],
+      "unsupported_claims": []
+    }
+  ],
+  "revision_round": 1,
+  "schema_version": 1
+}

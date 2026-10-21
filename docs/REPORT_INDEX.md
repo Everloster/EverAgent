@@ -13,6 +13,7 @@
 | 2026-10-21 | [张小珺 155：科沃斯钱程谈企业接班、经营克制与机器人长期战](../podcast-learning/reports/2026-10-21_xiaoyuzhou-zhangxiaojun_vol155-qiancheng-ecovacs.md) | podcast-learning |
 | 2026-10-21 | [LinkStart 135：AI 眼镜与折叠屏的产品定义——设计如何决定 AI 硬件价值](../podcast-learning/reports/2026-10-21_xiaoyuzhou-linkstart_vol135-ai-hardware-design.md) | podcast-learning |
 | 2026-10-21 | [DeepInfer：从模型协同设计到生产推理内核](../ai-learning/reports/knowledge_reports/DeepInfer_从模型协同设计到生产推理内核_深度解析_20261021.md) | ai-learning |
+| 2026-10-21 | [AI 行业日报 · 2026-10-21](../web-surfing/reports/ai-news-daily-2026-10-21.md) | web-surfing |
 | 2026-10-20 | [金瓶梅·绿色版 9《蒋竹山》：一张假借据如何调动街头、保甲与提刑院](../podcast-learning/reports/2026-08-13_ximalaya-bannatie-gushipian_jiangzhushan.md) | podcast-learning |
 | 2026-10-20 | [身体出现这些信号，可能是炎症在提醒你！——帆书讲《炎症》](../podcast-learning/reports/2026-08-21_bilibili-fanshu_yanzheng.md) | podcast-learning |
 | 2026-10-20 | [说医解药 Vol.91：银鳕鱼汞中毒争议——三种汞、鳕鱼命名史与 FDA 选鱼数学](../podcast-learning/reports/2026-10-08_xiaoyuzhou-shuoyi-jieyao_vol91-cod-mercury.md) | podcast-learning |
@@ -31,7 +32,6 @@
 | 2026-10-20 | [刘方奇教授谈肠癌：先完成分期与分子检测，再决定手术时机](../podcast-learning/reports/2026-08-24_xiaoyuzhou-boluo-jiankang_liufangqi.md) | podcast-learning |
 | 2026-10-20 | [从模型信仰到应用求生：中国 AI 创业与一级市场的分化故事线（2022底—2026）](../ai-learning/reports/knowledge_reports/中国AI创业与一级市场故事线_从模型信仰到应用求生_20260731.md) | ai-learning |
 | 2026-10-20 | [为什么 FDE 在 AI 时代这么火？因为差距不在模型，在业务细节](../podcast-learning/reports/2026-07-29_bilibili-kedaibiao-lizheng_jove-fde.md) | podcast-learning |
-| 2026-10-20 | [下一轮双仓重构参照：证据驱动维护、复杂度路由与分段深审](../ai-learning/reports/knowledge_reports/双仓重构参照_证据驱动维护_复杂度路由与分段深审_20261020.md) | ai-learning |
 
 ## 🤖 AI Learning（120 篇）
 
@@ -501,10 +501,11 @@
 | 2026-03-17 | [AstrBotDevs/AstrBot](../github-trending-analyzer/reports/research_AstrBotDevs_AstrBot.md) | — |
 | 2026-03-17 | [666ghj/BettaFish 深度研究报告](../github-trending-analyzer/reports/research_666ghj_BettaFish.md) | — |
 
-## 🏄 Web Surfing（45 篇）
+## 🏄 Web Surfing（46 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-10-21 | [AI 行业日报 · 2026-10-21](../web-surfing/reports/ai-news-daily-2026-10-21.md) | `ai_news`, `daily`, `industry_watch` |
 | 2026-10-20 | [炒菜调料时机：从短视频口诀到可复用的厨房判断](../web-surfing/reports/cooking-logic-timing-douyin.md) | `cooking`, `douyin`, `food-science`, `fact-check` |
 | 2026-10-20 | [惠州租房建议报告：两位老人 2026 年 9/10 月短住体验](../web-surfing/reports/huizhou-rental-guide-2026-09.md) | `huizhou`, `rental`, `elderly_living`, `short_term_rental` |
 | 2026-10-20 | [AI 行业日报 · 2026-10-20](../web-surfing/reports/ai-news-daily-2026-10-20.md) | `ai_news`, `daily`, `industry_watch` |
