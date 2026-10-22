@@ -10,6 +10,7 @@
 | 2026-10-22 | [大小马智驾 V23：小米×徕卡合作幕后——从高管大师课到 Leica M4](../podcast-learning/reports/2024-12-25_ximalaya-daxiaoma-zhijia_v23-xiaomi-leica.md) | podcast-learning |
 | 2026-10-22 | [Google 自主湿实验室 Agent：用物理现实、实验反馈与人类战略闭合科学发现](../ai-learning/reports/knowledge_reports/Google_自主湿实验室Agent_生物现实约束与闭环_深度解析_20261021.md) | ai-learning |
 | 2026-10-22 | [ALTK-Evolve：学习型 Memory 如何让 Agent 在服务任务中持续改进](../ai-learning/reports/knowledge_reports/ALTK_Evolve_学习型Memory与Agent服务任务_深度解析_20261021.md) | ai-learning |
+| 2026-10-22 | [AI 行业日报 · 2026-10-22](../web-surfing/reports/ai-news-daily-2026-10-22.md) | web-surfing |
 | 2026-10-21 | [高能量 238：全球资本市场为何开始集体缺钱——美债、AI CAPEX 与中国融资结构](../podcast-learning/reports/2026-10-20_xiaoyuzhou-gaonengliang_vol238-global-liquidity.md) | podcast-learning |
 | 2026-10-21 | [起朱楼 185：ETF 从复制市场到成为市场——被动投资的力量、激励与风险](../podcast-learning/reports/2026-10-20_xiaoyuzhou-qizhulou_vol185-etf-market.md) | podcast-learning |
 | 2026-10-21 | [硅谷101 E256：GPT-6 Astra 如何同时改写 Agent、机器人与 AI 制药](../podcast-learning/reports/2026-10-19_rss-guigu101_e256-astra-agent-robot-drug.md) | podcast-learning |
@@ -31,7 +32,6 @@
 | 2026-10-20 | [对话盛颖：xAI，Infra的浪漫，SGLang，开源，平权与「甄嬛传」](../podcast-learning/reports/2026-08-04_rss-guigu101_shengying.md) | podcast-learning |
 | 2026-10-20 | [对话 Evoken 陈冕：在模型不断吞噬应用价值的时代，一家独立 AI 应用公司如何 survive](../podcast-learning/reports/2026-07-30_xiaoyuzhou-wandian-latetalk_chenmian.md) | podcast-learning |
 | 2026-10-20 | [实测笔记：book-to-skill 能优化 EverAgent 学习类项目吗？](../ai-practice/experiments/book-to-skill-demo/评估笔记_book-to-skill能否优化学习项目_20260729.md) | ai-practice |
-| 2026-10-20 | [实习生抢答、老教授过目：速度快 2-3 倍，凭什么不改变采样分布？——投机解码科普](../ai-learning/reports/knowledge_reports/投机解码SpeculativeDecoding_科普讲解_20260720.md) | ai-learning |
 
 ## 🤖 AI Learning（125 篇）
 
@@ -507,10 +507,11 @@
 | 2026-03-17 | [AstrBotDevs/AstrBot](../github-trending-analyzer/reports/research_AstrBotDevs_AstrBot.md) | — |
 | 2026-03-17 | [666ghj/BettaFish 深度研究报告](../github-trending-analyzer/reports/research_666ghj_BettaFish.md) | — |
 
-## 🏄 Web Surfing（46 篇）
+## 🏄 Web Surfing（47 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-10-22 | [AI 行业日报 · 2026-10-22](../web-surfing/reports/ai-news-daily-2026-10-22.md) | `ai_news`, `daily`, `industry_watch` |
 | 2026-10-21 | [AI 行业日报 · 2026-10-21](../web-surfing/reports/ai-news-daily-2026-10-21.md) | `ai_news`, `daily`, `industry_watch` |
 | 2026-10-20 | [炒菜调料时机：从短视频口诀到可复用的厨房判断](../web-surfing/reports/cooking-logic-timing-douyin.md) | `cooking`, `douyin`, `food-science`, `fact-check` |
 | 2026-10-20 | [惠州租房建议报告：两位老人 2026 年 9/10 月短住体验](../web-surfing/reports/huizhou-rental-guide-2026-09.md) | `huizhou`, `rental`, `elderly_living`, `short_term_rental` |

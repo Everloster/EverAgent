@@ -1,0 +1,91 @@
+{
+  "decision": {
+    "status": "pass",
+    "score": 95.25,
+    "evaluated_on": "2026-10-22",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "dfa5fc39ea98de166b78fdd55467db8f0dd31ab72b3df56d7c7c6a175a47ca4d",
+    "evidence_sha256": "2feb6f66ccf2b8bab5037b9d6d41b35147281c42ea58516f8da0b9d2dab8ec80"
+  },
+  "quality_tier": "standard",
+  "report_path": "web-surfing/reports/ai-news-daily-2026-10-22.md",
+  "reviews": [
+    {
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08"
+      ],
+      "escalation_reason": "",
+      "hard_failures": [],
+      "missing_requirements": [],
+      "notes": "独立会话复核,判定 pass(加权 95.3)。核验分层:(1) 经 MCP web-reader 直读 11 个来源(S01 AIHOT、S02 OpenAI Patch the Planet 官方帖、S03 Alignment 失准报告单页、S05 Wiz LiteLLM 全文、S06 OpenAI×Google Cloud 帖、S07 GitHub Trending、S08 HN 首页、S10 PHP Foundation 博文、S16 CNBC、S17 Google Cloud 博文、S21 Microsoft KLS 博文),与报告及证据账本逐项比对,零冲突零编造:四版本号、双 CVE、CVSS 9.2(博文辟谣泄露版 10.0)、$1B Daybreak、五阶段框架、82 条消息、no_notify=True、monitor_ctx 断言、否认原话、v1.106.2、时间线与窃取面、Microsoft 主伙伴引语、12 仓星数/Built by @claude 6 仓、HN 七条主帖及七条备查分数、KLS published_time 精确匹配、IPO 三数与 SpaceX 四数逐字一致;(2) S11/S12/S13 快照承载的关键事实经 S10 一手博文独立交叉验证全部正确,S22-S24 时间戳经 10-21 日报独立记录与 S21 三方吻合;(3) S04/S09/S14/S15/S18/S19/S25 为报告自声明未直读的快照级来源,仅做一致性检查未发现矛盾;S20 为脚本执行记录,只读审计未重跑,输出与正文/账本三方自洽。critical claim 为 C01-C05、C08 全部直验通过;C06/C07 非关键亦逐项核过,故 checked 数组含全部 8 个。轻微问题(不构成 unsupported):U01 PHP 博文的披露受扰子线(CVE 提前泄露、错误 CVSS 10.0 传播、Chainguard 07:41 UTC 提前破禁、发布提前至 10-21 14:00 UTC)未进正文,报告已声明博文未读并登记局限;头条 5 将 Google Cloud 官方博文正文的型号清单(GPT-Astra/GPT-6.1 Sol/GPT-6 Luna)保守归为第三方快照口径,内容无误;Claude Duet 的 iOS/Android 平台范围仅一手标注级,CNBC 交叉确认其余全部要点。审计环境:本会话 Bash(eacli)与 WebFetch 均被权限拒绝,来源读取经环境提供的 MCP web-reader(项目 zhipu web-reader 同通道)降级完成并在此记录,符合 AGENTS.md 最小降级要求。建议(非阻断):下期补录 PHP 泄露与破禁子线;官方页恢复后将 Claude Duet 升级为一手核验。未修改任何文件。",
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05"
+      ],
+      "reviewer": {
+        "explicit_model_override": false,
+        "harness": "claude-code",
+        "independent_context": true,
+        "model": "glm-5.3",
+        "override_reason": "",
+        "run_id": "ai-news-review-2026-10-22"
+      },
+      "role": "primary_review",
+      "score_reasons": {
+        "evidence_fidelity": "直读 11 个来源逐项比对:OpenAI 官方帖(Calif/GPT-5.6 Sol、Wiz 双报、$1B、五阶段框架、SISF/ONCD/CISA、Codex skill 逐句吻合,publishedTime 异常属实)、Alignment 报告(10-3/10-6、82 条消息、no_notify、monitor_ctx 断言、否认原话、非 P0、updated 10-20 全吻合)、Wiz 全文(11:39/13:20/13:53 UTC、v1.106.2、双持久化、16 模块、LIMIT 500、加密外传、Berri-AI 10 commit、LLMjacking 逐项吻合)、Google Cloud 帖逐字吻合、Trending 12 仓星数与 @claude 6 仓完全一致、HN 七条主帖与备查分数精确匹配、KLS published_time 精确一致、AIHOT 快讯数字逐字吻合。零伪造引用、零关键数字错误;证据等级标注与实际来源状态相符且偏保守。扣分:13 个快照级来源未逐个抓取(关键事实已由 PHP Foundation 一手博文交叉确认正确);头条 5 将官方博文型号清单归为第三方快照口径;PHP『基金会发布』与博文『PHP 项目发布』措辞微偏。",
+        "limitations": "7 条局限覆盖准确且可操作:官方页四经尝试失败、PHP 博文未读及替代交叉链、元数据异常的替代定位、快照不可复现与今日星口径、雷达窗口边界与正文未读、转述级逐项列举、时间窗口首录规则。经直读 PHP Foundation 博文验证:报告对未读来源的全部保守转述(版本、CVE、CVSS 9.2、OOM 起点)无一差错,局限登记与实际状态一致,无隐瞒或夸大。",
+        "readability": "可完全脱离对话独立阅读:页眉五源状态与覆盖窗口、10 条要点、头条三段式(速读/关键事实/细读与质疑/来源)、Trending 表格、简讯带信源标注与历史线链接、折叠详情块的直读/快照级分级与去重说明构成完整 provenance;与 10-21 期格式连续,历史锚链接经本地核对有效。",
+        "reasoning_quality": "五条头条质疑段有据:Defender's Window 识别为单方叙事并给 HN 反驳帖(96/39 经直读证实)、LiteLLM 归因链不完整与 LLM 辅助开发推断性质、Duet 与失准通报对读、publishedTime 异常的三信号交叉定位法成立;[推测]/[待验证] 纪律好(零换血归因、今日星滚动口径)。三条趋势主线多源支撑且事实与推测分层。扣分:头条 5 未区分 GCP 侧 private preview 与 OpenAI 侧 GA 数周的层级;Claude Duet 的 iOS/Android 范围未获独立核验(已按快照声明)。",
+        "request_coverage": "R01 五源状态标记与全部结构要件齐备,AI Digest 停更与 Claude Duet 官方页不可达如实记录;R02 四篇官方页回查 + Gemini 4 Argon 分歧标注正确;R03 独立证据链接与账本登记(5 要求/25 来源/8 claim/7 局限)远超下限;R04 六条历史线经 10-21 日报逐条核对属实且增量明确;R05 雷达参数、上海窗口、4/5 条上限、边界声明均合规,四条时间戳与 10-21 日报及 Microsoft 官方页三方吻合。扣分:PHP 博文含当日重要子线(CVE 泄露与错误 CVSS 10.0、Calif 视频误发、Chainguard 提前破禁)未进正文,报告已声明未读并登记局限,但客观上该一手来源部分核心叙事缺席。"
+      },
+      "scores": {
+        "evidence_fidelity": 95,
+        "limitations": 96,
+        "readability": 96,
+        "reasoning_quality": 94,
+        "request_coverage": 96
+      },
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S19",
+        "S20",
+        "S21",
+        "S22",
+        "S23",
+        "S24",
+        "S25"
+      ],
+      "unsupported_claims": []
+    }
+  ],
+  "revision_round": 1,
+  "schema_version": 1
+}
