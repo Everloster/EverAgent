@@ -2,7 +2,8 @@
 """Reindex EverAgent knowledge base.
 
 Counts reports and wiki pages per learning domain and refreshes the
-overview table in the root README.md (between the AUTO markers).
+recent-report and overview tables in the root README.md (between the
+AUTO markers).
 Also rebuilds docs/REPORT_INDEX.md — the reading entry point that lists
 every report by update time, parsed from report frontmatter (see
 docs/REPORT_METADATA.md).
@@ -20,16 +21,31 @@ import re
 from pathlib import Path
 
 try:
-    from .report_catalog import COLLECTIONS, ROOT, iter_reports, report_info
+    from .report_catalog import (
+        COLLECTION_BY_ID,
+        COLLECTIONS,
+        ROOT,
+        iter_reports,
+        report_info,
+    )
 except ImportError:  # Direct script execution.
-    from report_catalog import COLLECTIONS, ROOT, iter_reports, report_info
+    from report_catalog import (
+        COLLECTION_BY_ID,
+        COLLECTIONS,
+        ROOT,
+        iter_reports,
+        report_info,
+    )
 
 INDEX_PATH = ROOT / "docs" / "REPORT_INDEX.md"
 RECENT_TOP = 25
+README_RECENT_TOP = 5
 MAX_TAGS = 6
 
-MARKER_START = "<!-- AUTO-OVERVIEW:START -->"
-MARKER_END = "<!-- AUTO-OVERVIEW:END -->"
+OVERVIEW_MARKER_START = "<!-- AUTO-OVERVIEW:START -->"
+OVERVIEW_MARKER_END = "<!-- AUTO-OVERVIEW:END -->"
+RECENT_MARKER_START = "<!-- AUTO-RECENT:START -->"
+RECENT_MARKER_END = "<!-- AUTO-RECENT:END -->"
 
 
 def count_md(path: Path) -> int:
@@ -63,6 +79,39 @@ def build_table() -> str:
             f"| {collection.emoji} [{collection.title}](./{collection.id}/) | {s['reports']} 篇 | {wiki} |"
         )
     return "\n".join(rows)
+
+
+def all_reports_sorted(by_domain: dict[str, list[dict]]) -> list[dict]:
+    reports = [report for reports in by_domain.values() for report in reports]
+    reports.sort(
+        key=lambda report: (report["updated_on"], report["title"]), reverse=True
+    )
+    return reports
+
+
+def build_readme_recent(by_domain: dict[str, list[dict]]) -> str:
+    rows = [
+        "| 日期 | 报告 | 领域 |",
+        "|------|------|------|",
+    ]
+    for report in all_reports_sorted(by_domain)[:README_RECENT_TOP]:
+        target = os.path.relpath(report["path"], ROOT)
+        collection = COLLECTION_BY_ID.get(report["domain"])
+        domain = (
+            f"{collection.emoji} {collection.title}" if collection else report["domain"]
+        )
+        rows.append(
+            f"| {report['updated_on']} | [{_md_cell(report['title'])}](./{target}) | {domain} |"
+        )
+    return "\n".join(rows)
+
+
+def replace_generated_block(text: str, start: str, end: str, content: str) -> str:
+    if start not in text or end not in text:
+        return text
+    pre, remainder = text.split(start, 1)
+    _old, post = remainder.split(end, 1)
+    return f"{pre}{start}\n{content}\n{end}{post}"
 
 
 def indexed_fallback_dates() -> dict[Path, str]:
@@ -113,8 +162,7 @@ def build_index(by_domain: dict[str, list[dict]]) -> str:
         "> 数据源：各报告 frontmatter（约定见 [REPORT_METADATA.md](./REPORT_METADATA.md)）。",
         "",
     ]
-    all_reports = [r for rs in by_domain.values() for r in rs]
-    all_reports.sort(key=lambda r: (r["updated_on"], r["title"]), reverse=True)
+    all_reports = all_reports_sorted(by_domain)
 
     out += [
         f"## 最近更新（Top {RECENT_TOP}）",
@@ -159,22 +207,32 @@ def main() -> int:
     args = parser.parse_args()
 
     table = build_table()
+    reports_by_domain = collect_reports(indexed_fallback_dates())
+    recent = build_readme_recent(reports_by_domain)
     readme = ROOT / "README.md"
     text = readme.read_text(encoding="utf-8")
-    block = f"{MARKER_START}\n{table}\n{MARKER_END}"
-    if MARKER_START in text and MARKER_END in text:
-        pre = text.split(MARKER_START)[0]
-        post = text.split(MARKER_END)[1]
-        expected_readme = pre + block + post
-    else:
-        expected_readme = text
+    required_markers = (
+        RECENT_MARKER_START,
+        RECENT_MARKER_END,
+        OVERVIEW_MARKER_START,
+        OVERVIEW_MARKER_END,
+    )
+    markers_present = all(marker in text for marker in required_markers)
+    expected_readme = replace_generated_block(
+        text, RECENT_MARKER_START, RECENT_MARKER_END, recent
+    )
+    expected_readme = replace_generated_block(
+        expected_readme, OVERVIEW_MARKER_START, OVERVIEW_MARKER_END, table
+    )
 
-    expected_index = build_index(collect_reports(indexed_fallback_dates()))
+    expected_index = build_index(reports_by_domain)
 
     if args.check:
         stale = []
-        if expected_readme != text:
-            stale.append("README.md overview")
+        if not markers_present:
+            stale.append("README.md generated markers")
+        elif expected_readme != text:
+            stale.append("README.md generated blocks")
         current_index = INDEX_PATH.read_text(encoding="utf-8") if INDEX_PATH.exists() else ""
         if current_index != expected_index:
             stale.append(str(INDEX_PATH.relative_to(ROOT)))
@@ -185,12 +243,14 @@ def main() -> int:
         print("[reindex] indexes are current.")
         return 0
 
-    if MARKER_START in text and MARKER_END in text:
+    if not markers_present:
+        print("[reindex] README generated markers are missing.")
+        return 1
+    if expected_readme != text:
         readme.write_text(expected_readme, encoding="utf-8")
-        print("[reindex] README overview updated.")
+        print("[reindex] README generated blocks updated.")
     else:
-        print("[reindex] markers not found in README; printing table:\n")
-        print(block)
+        print("[reindex] README generated blocks are current.")
 
     INDEX_PATH.write_text(expected_index, encoding="utf-8")
     print(f"[reindex] {INDEX_PATH.relative_to(ROOT)} rebuilt.")

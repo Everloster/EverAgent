@@ -1,40 +1,38 @@
 # 🧠 EverAgent — 个人学习与研究工作台
 
-> 用 AI Agent 驱动的个人知识库：AI 帮我快速研究一个新领域/概念，产出高质量报告，我抽空阅读。
-> 覆盖 AI 技术、计算机科学、哲学、心理学、生物学、ML 工程、播客与开源生态。
+> 把“我想了解 X”变成可长期复用、可追溯的报告、实验和知识索引。
+> AI 负责读原文、查证、运行必要实验与整理；我负责提出问题、阅读和继续追问。
 
-> **AI 使用本仓库？** → 先读 [AGENTS.md](./AGENTS.md)；只有研究与报告任务再按其中路由读取 [METHODOLOGY.md](./METHODOLOGY.md)。本文件供人类阅读。
+![EverAgent 学习与研究全景图](./docs/assets/everagent-horizontal.jpg)
 
-> **换机 / 首次拉取？** → 读 [docs/WORKSPACE_SETUP.md](./docs/WORKSPACE_SETUP.md)：本仓（公开）+ 私有仓 `EverAgent-infra`（F 类设备家底）如何并排搭建、更新、协作。
+EverAgent 保存可以公开分享的知识资产；设备、网络和服务等私有上下文由并排的 `EverAgent-infra` 管理，并通过 eacli 按需读取。
 
-> **查已有个人上下文？** → 并排私仓和 eacli 可用时，先运行 `eacli context catalog`，再用
-> `eacli context get --domain <id>` 或 `eacli context search --query <关键词>` 获取带来源的最小切片。
-> 本仓继续拥有公开知识正文；私有设备/网络内容不会复制到这里。
+## 直接这样用
 
-**横版全景**
+| 你说 | EverAgent 会做什么 |
+|---|---|
+| “顶尖技术博客最近有什么更新？” | 扫描厂商信源，筛选并解释最值得看的内容 |
+| “把最值得看的 5 篇都做 AI 学习任务” | 阅读原文、交叉核验，形成可独立阅读的深度报告 |
+| “这个 GitHub repo 值得用吗？” | 先快速讲清；明确要深挖时再研究源码、论文与竞品 |
+| “小宇宙精选播客最近有什么更新？” | 检查新集，按需转写、核验并整理学习报告 |
+| “用一个最小 Demo 讲清这项技术” | 运行真实代码，保存输出、失败记录与实验笔记 |
+| “这个设备或服务出问题了，帮我查” | 转入私有基础设施仓实测、修复并沉淀档案 |
 
-![EverAgent 横版学习与研究全景图](./docs/assets/everagent-horizontal.jpg)
+只需描述目标，Agent 会按意图选择项目和工作流。
 
-**初版概念海报**
+## 最近产出
 
-![EverAgent launch poster](./docs/assets/everagent-launch-poster.png)
+<!-- AUTO-RECENT:START -->
+| 日期 | 报告 | 领域 |
+|------|------|------|
+| 2026-10-22 | [大小马智驾 V23：小米×徕卡合作幕后——从高管大师课到 Leica M4](./podcast-learning/reports/2024-12-25_ximalaya-daxiaoma-zhijia_v23-xiaomi-leica.md) | 🎙️ Podcast Learning |
+| 2026-10-22 | [Google 自主湿实验室 Agent：用物理现实、实验反馈与人类战略闭合科学发现](./ai-learning/reports/knowledge_reports/Google_自主湿实验室Agent_生物现实约束与闭环_深度解析_20261021.md) | 🤖 AI Learning |
+| 2026-10-22 | [ALTK-Evolve：学习型 Memory 如何让 Agent 在服务任务中持续改进](./ai-learning/reports/knowledge_reports/ALTK_Evolve_学习型Memory与Agent服务任务_深度解析_20261021.md) | 🤖 AI Learning |
+| 2026-10-22 | [AI 行业日报 · 2026-10-22](./web-surfing/reports/ai-news-daily-2026-10-22.md) | 🏄 Web Surfing |
+| 2026-10-21 | [高能量 238：全球资本市场为何开始集体缺钱——美债、AI CAPEX 与中国融资结构](./podcast-learning/reports/2026-10-20_xiaoyuzhou-gaonengliang_vol238-global-liquidity.md) | 🎙️ Podcast Learning |
+<!-- AUTO-RECENT:END -->
 
----
-
-## 六类项目
-
-| 类 | 项目 | 工作模式 |
-|----|------|---------|
-| **A 知识研究** | ai / cs / philosophy / psychology / biology | 对话启发式学习，真读原文，产出高质量报告 |
-| **B 代码实践** | ai-practice | 各类 AI 技术的低成本可运行 demo + 教学笔记 |
-| **C 播客学习** | podcast-learning | 发链接 → Razer 静默转写 → 润色 → 总结/讨论 → 报告 |
-| **D 开源研究** | github-trending-analyzer | 发 repo 链接 → 默认轻量介绍（口头讲清，不落文件）；明确要"出报告/深挖"才跑真 repo 研究（自带脚本与协议） |
-| **E 上网冲浪** | web-surfing | 发上网需求 → opencli 抓公开数据 → 清单/报告；沉淀站点技能 |
-| **F 基础设施与设备** | infra + VPS 档案（🔒 私有仓 EverAgent-infra） | 设备/VPS 出问题 → 实测修复 → 设备档案沉淀 |
-
-> 不属于以上 5 类的杂事（工具/一次性调研/流程），**按意图判定后直接在根目录处理**，不新建"杂物"项目；反复出现再升级为正式领域。搜索/联网一律 eacli Token Plan-first（见根 AGENTS.md），eacli 不可用先修 eacli。
-
----
+[浏览全部报告 →](./docs/REPORT_INDEX.md)
 
 ## 项目全景
 
@@ -54,75 +52,39 @@
 | 🏄 [Web Surfing](./web-surfing/) | 47 篇 | 0/0/0 |
 <!-- AUTO-OVERVIEW:END -->
 
-> 📖 抽空读报告？全部报告按更新时间索引 → [docs/REPORT_INDEX.md](./docs/REPORT_INDEX.md)（`reindex.py` 自动生成）
+## 质量如何保证
 
----
+- **原始材料优先**：先读文章、论文、源码或转写，再写结论；新事实和关键数字必须可追溯。
+- **证据与观点分开**：区分来源事实、作者主张和分析者推断，缺口明确标注。
+- **独立质量门**：重要报告配套证据账本，由独立 Reviewer 复核并通过机器检查后完成。
+- **按需加载上下文**：只读取当前任务需要的 Owner，避免旧提示、无关历史和私有信息污染结果。
 
-## 核心理念
+研究原则见 [METHODOLOGY.md](./METHODOLOGY.md)，报告流程见 [REPORT_WORKFLOW.md](./docs/REPORT_WORKFLOW.md)，跨模型质量门见 [REPORT_QUALITY_GATE.md](./docs/REPORT_QUALITY_GATE.md)。
 
-这是一个**知识库**，不是任务管理系统。工作循环很简单：
+## 知识如何积累
 
-```
-我："帮我学 X"  →  AI 研究并归档  →  我抽空读报告  →  有新问题继续问  →  循环
-```
+- `reports/` 保存可以脱离对话阅读的长期产出。
+- `wiki/` 连接概念、人物、机构、综合理解与未解问题。
+- 知识学习项目通过 `PROFILE.md`、`MAP.md` 和 `CONTEXT.md` 记录读者偏好、覆盖缺口与已有产出；工具型项目采用自己的轻量结构。
 
-三个支撑：
+工作循环很简单：
 
-1. **方法论**（[METHODOLOGY.md](./METHODOLOGY.md)）— 先规定怎么读、怎么查、怎么验证，再谈输出。这是真正的核心：让 AI 真读原文、标注证据、不编造。
-2. **知识层** — 每个领域的 `reports/`（我读的东西）+ `wiki/`（概念/实体/综合/未解问题的索引）。
-3. **画像层** — 每个领域的 `PROFILE.md`（我会什么、偏好什么）+ `MAP.md`（覆盖与缺口），让 AI 不重复讲我会的、知道下一步学什么。
-
-报告生产采用按需 context：统一入口见 [REPORT_WORKFLOW.md](./docs/REPORT_WORKFLOW.md)，跨模型质量门见 [REPORT_QUALITY_GATE.md](./docs/REPORT_QUALITY_GATE.md)，模型与 Harness 的分层及 ACE 评估见 [CONTEXT_ENGINEERING.md](./docs/CONTEXT_ENGINEERING.md)，机器可读预算与 Owner 见 [`config/instruction-policy.json`](./config/instruction-policy.json)，真实报告回放见 [`evals/report-quality-replays.json`](./evals/report-quality-replays.json)，最近一次 Context A/B 结果见 [ACE_CONTEXT_AB_20261021.md](./docs/ACE_CONTEXT_AB_20261021.md)。
-本轮全库审计、基线数据与落地清单见 [REPORT_SYSTEM_REVIEW_20261015.md](./docs/REPORT_SYSTEM_REVIEW_20261015.md)。
-
----
-
-## 每个领域的结构
-
-各领域共享下述公共骨架；此外各域**可按需自建**子目录，不强制统一（常见扩展见骨架下方说明）。
-
-```
-{domain}-learning/
-├── AGENTS.md          # 领域边界 + 特化要求
-├── PROFILE.md         # 学习者画像（兴趣/水平/偏好/追问队列）
-├── CONTEXT.md         # 项目上下文：已有报告/实验台账 + 防幻觉边界
-├── MAP.md             # 领域地图（想覆盖什么、已覆盖什么、缺口）
-├── reports/           # 报告产出（ai-practice 无此目录，产出在 experiments/）
-├── wiki/
-│   ├── concepts/      # 核心概念页
-│   ├── entities/      # 人物/机构/模型页
-│   ├── syntheses/     # 跨报告综合理解
-│   └── open-questions.md  # 未解问题池（持续学习的拉力）
-└── skills/            # 由领域 AGENTS.md 按需加载的 playbook
+```text
+提出问题 → AI 研究并归档 → 阅读报告 → 继续追问 → 更新长期理解
 ```
 
-> **PROFILE 与 CONTEXT 的命名二分**（每个领域两者都有，勿混用）：`PROFILE.md` = **学习者画像**，描绘"人"（兴趣/水平/偏好）；`CONTEXT.md` = **项目上下文**，登记"已有产出"的台账与防重复研究边界（运行状态类文件）。
->
-> 各域其余目录按需设置，常见的有：`knowledge/`（离线知识库入口，各域皆有）、`papers/`（论文 PDF + 索引）、`books/`、`roadmap/`（学习路线）、`images/`；ai-learning 另有 `courses/`、`notes/`；ai-practice 另有 `experiments/`、`notebooks/`、`src/`、`data/`；podcast-learning 另有 `scripts/`（本地转写）与 `wiki/show-indexes/`（周更单集索引）。
+## 入口
 
----
+| 目的 | 从这里开始 |
+|---|---|
+| 阅读已有成果 | [报告索引](./docs/REPORT_INDEX.md) |
+| 让 Agent 在本仓工作 | [AGENTS.md](./AGENTS.md) |
+| 首次拉取或换机 | [WORKSPACE_SETUP.md](./docs/WORKSPACE_SETUP.md) |
+| 理解 Context 与 Harness 架构 | [CONTEXT_ENGINEERING.md](./docs/CONTEXT_ENGINEERING.md) |
+| 查看提交、安全与协作规则 | [PROTOCOL_COMMON.md](./docs/PROTOCOL_COMMON.md) |
 
-## 工具
+EverAgent 2.0 采用知识优先架构。早期多 Agent 编排框架保存在 `legacy-v1-multiagent` 分支。
 
-```bash
-python3 scripts/reindex.py                    # 刷新本 README 计数 + 重建 docs/REPORT_INDEX.md 阅读索引
-python3 scripts/report_quality.py policy      # 查看模型路由与质量等级
-python3 scripts/report_quality.py check <报告> # 校验 report-v2 证据与独立复核
-python3 scripts/audit_reports.py --changed    # 新增/修改报告质量门
-python3 scripts/audit_reports.py --all --json # 全库报告审计
-python3 scripts/eval_report_context.py        # 指令预算、skill 路由与 ACE 任务集静态评估
-python3 scripts/reindex.py --check            # 验证索引未漂移
-python3 scripts/git_identity.py validate      # 提交身份校验
-```
+*“能随算力扩展的通用方法，长期总是赢。” — Rich Sutton, The Bitter Lesson (2019)*
 
----
-
-## 版本说明
-
-EverAgent 2.0（知识优先架构）。早期的多 Agent 编排框架（任务状态机、项目锁、事件溯源、Dashboard、自进化引擎）已归档到 `legacy-v1-multiagent` 分支——单用户学习场景不需要那套机器。
-
----
-
-*"能随算力扩展的通用方法，长期总是赢。" — Rich Sutton, The Bitter Lesson (2019)*
-
-> 本仓库收录的学术论文 PDF 仅供个人学习使用，版权归原作者及出版机构所有。详见 [DISCLAIMER.md](./DISCLAIMER.md)。
+> 仓库中的学术论文 PDF 仅供个人学习使用，版权归原作者及出版机构所有。详见 [DISCLAIMER.md](./DISCLAIMER.md)。
