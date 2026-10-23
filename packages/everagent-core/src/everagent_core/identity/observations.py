@@ -23,6 +23,15 @@ _CODEX_ENVELOPE = re.compile(
     rb'^\s*\{\s*"timestamp"\s*:\s*"[^"\n]+"'
     rb'(?:\s*,\s*"ordinal"\s*:\s*\d+)?\s*,\s*"type"\s*:\s*"([^"]+)"\s*,\s*"payload"\s*:'
 )
+# ZCode appends one record per completed model request; request metadata precedes
+# the conversation body, so only the prefix is ever inspected.
+_ZCODE_ENVELOPE = re.compile(
+    rb'^\s*\{\s*"completedAt"\s*:\s*"([^"\n]+)"\s*,\s*"durationMs"\s*:\s*\d+\s*,'
+    rb'\s*"requestId"\s*:\s*"([^"\n]{1,128})"\s*,\s*"attempt"\s*:\s*\d+\s*,'
+    rb'\s*"model"\s*:\s*\{\s*"modelId"\s*:\s*"([^"\n]+)"'
+)
+_ZCODE_STARTUP = re.compile(r"/\.zcode/cli/exec/bash-startup/([A-Za-z0-9][A-Za-z0-9._-]{0,127})/")
+_SHELLS = {"bash", "zsh", "sh", "fish", "cmd.exe", "powershell.exe", "pwsh.exe", "pwsh"}
 
 
 def _model(value) -> str | None:
@@ -332,23 +341,86 @@ def _claude(native: str, owner: dict, now: float) -> dict | None:
     return None
 
 
+def _zcode_session_token(owner: dict) -> str | None:
+    """The conversation tag rides in an ancestor shell's bash-startup path.
+
+    Hook wrappers (sh, git, ecommit) sit between the probe and the tagged
+    execution shell, so every ancestor shell is probed, not just the nearest.
+    """
+    if os.name != "posix":
+        return None
+    import subprocess
+    for row in processes.process_chain():
+        if row is owner or row.get("pid") == owner.get("pid"):
+            return None
+        if row.get("name", "").casefold() in _SHELLS and isinstance(row.get("pid"), int):
+            try:
+                result = subprocess.run(["ps", "-o", "args=", "-p", str(row["pid"])],
+                                        capture_output=True, text=True, encoding="utf-8",
+                                        errors="replace", timeout=1,
+                                        env={**os.environ, "LC_ALL": "C"})
+            except (OSError, ValueError, subprocess.SubprocessError):
+                continue
+            if result.returncode == 0:
+                match = _ZCODE_STARTUP.search(result.stdout)
+                if match:
+                    return match.group(1)
+    return None
+
+
+def _zcode(native: str, owner: dict, now: float) -> dict | None:
+    home = declarations.safe_home()
+    if home is None:
+        return None
+    root = (home / ".zcode" / "cli" / "rollout").resolve()
+    path = root / f"model-io-{native}.jsonl"
+    if not _regular(path) or not path.resolve().is_relative_to(root):
+        return None
+    if not 0 <= now - path.stat().st_mtime <= MAX_AGE_SECONDS:
+        return None
+    started = _started_at(owner)
+    if started is None:
+        return None
+    for raw in reversed(_tail(path)):
+        match = _ZCODE_ENVELOPE.match(raw[:640])
+        if not match:
+            # Non-request records (tool schemas etc.) never carry request metadata.
+            continue
+        at = _timestamp(match[1].decode("ascii", "replace"))
+        model = _model(match[3].decode("ascii", "replace"))
+        # The newest completed request must belong to this CLI incarnation and stay fresh.
+        if at is None or model is None or at < started - 2 or not 0 <= now - at <= MAX_AGE_SECONDS:
+            return None
+        return {"model": model, "source": "zcode-model-io", "turn": match[2].decode("ascii", "replace")}
+    return None
+
+
 def collect(harness: str, scope: dict | None) -> dict | None:
     """Return only a model observation bound to the exact current caller."""
-    if scope is None or harness not in {"codex", "pi", "trae", "claude-code"}:
+    if scope is None or harness not in {"codex", "pi", "trae", "claude-code", "zcode"}:
         return None
     try:
-        native = _native_id(harness)
-        if not native or scope.get("session_ref") != declarations.digest([harness, native])[:24]:
-            return None
         owner = processes.caller_process(harness)
         if owner is None or not owner.get("started"):
             return None
         from .detect import PROCESS_RULES
         names = next(names for cli, names in PROCESS_RULES if cli == harness)
-        if sum(processes.matches_row(row, names) for row in processes.process_chain()) != 1:
-            return None
+        if harness == "zcode":
+            # zcode-cli is per conversation; the resident zcode-host above it is
+            # structural, so the nearest match must be the session CLI itself.
+            if owner.get("name") != "zcode-cli" or "execution_ref" not in scope:
+                return None
+            native = _zcode_session_token(owner)
+            if not native:
+                return None
+        else:
+            native = _native_id(harness)
+            if not native or scope.get("session_ref") != declarations.digest([harness, native])[:24]:
+                return None
+            if sum(processes.matches_row(row, names) for row in processes.process_chain()) != 1:
+                return None
         now = time.time()
-        readers = {"codex": _codex, "trae": _trae, "claude-code": _claude}
+        readers = {"codex": _codex, "trae": _trae, "claude-code": _claude, "zcode": _zcode}
         found = readers[harness](native, owner, now) if harness in readers else _pi(native)
         if found:
             return {"harness": harness, "scope": scope, "observed_at": now,

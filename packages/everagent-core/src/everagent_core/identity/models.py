@@ -19,7 +19,7 @@ ENV_KEYS = {
 }
 OBSERVATION_SOURCES = {
     "codex-turn-context", "codex-thread-state", "pi-session-runtime", "trae-thread-runtime", "claude-session-runtime",
-    "orca-agent-session", "herdr-agent-session", "desktop-session-api",
+    "orca-agent-session", "herdr-agent-session", "desktop-session-api", "zcode-model-io",
 }
 
 

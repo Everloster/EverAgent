@@ -2,9 +2,11 @@
 from __future__ import annotations
 
 import copy
+from datetime import datetime, timezone
 import json
 import os
 from pathlib import Path
+import subprocess
 import sys
 import tempfile
 import time
@@ -196,6 +198,117 @@ class SessionContracts(unittest.TestCase):
         missing = copy.deepcopy(value)
         missing["scripts"][0]["owner"]["path"] = "missing.py"
         self.assertTrue(catalog.validate_catalog(missing, roots={"EverAgent": root}))
+
+
+class ZcodeModelObservationTests(unittest.TestCase):
+    """ZCode has no env session key; the conversation tag rides in the shell args."""
+
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory(prefix="everagent-zcode-fixture-")
+        self.home = Path(self.temp.name)
+        now = time.time()
+        self.now = now
+        # The CLI process starts when the conversation opens, before any request.
+        owner_started = time.strftime("%a %b %d %H:%M:%S %Y", time.localtime(now - 900))
+        self.chain = [
+            {"pid": 901, "parent": 902, "name": "python3", "started": owner_started, "image": "python3"},
+            {"pid": 902, "parent": 903, "name": "zsh", "started": owner_started, "image": "/bin/zsh"},
+            {"pid": 903, "parent": 904, "name": "zcode-cli", "started": owner_started, "image": "/fixture/zcode-cli"},
+            {"pid": 904, "parent": 1, "name": "zcode-host-local-1", "started": owner_started, "image": "/fixture/zcode-host"},
+        ]
+        self.scope = {"harness": "zcode", "process_ref": "fixture", "execution_ref": "fixture-shell"}
+        self.args = ("/bin/zsh -c . '/fixture/.zcode/cli/exec/bash-startup/sess_fixture-session/"
+                     "embedded-search-startup-fixture.sh'\ntrue\n")
+        self.rollout = self.home / ".zcode/cli/rollout/model-io-sess_fixture-session.jsonl"
+        self.rollout.parent.mkdir(parents=True)
+
+    def tearDown(self):
+        self.temp.cleanup()
+
+    @staticmethod
+    def _iso(when):
+        return datetime.fromtimestamp(when, tz=timezone.utc).isoformat().replace("+00:00", "Z")
+
+    def _record(self, completed_at, model="GLM-5.3", request_id="req-fixture-1", body_bytes=64):
+        prefix = ('{"completedAt":"%s","durationMs":1234,"requestId":"%s","attempt":1,'
+                  '"model":{"modelId":"%s","providerId":"fixture"}' % (completed_at, request_id, model))
+        return (prefix + ',"request":{"body":{"filler":"' + "x" * body_bytes + '"}}}\n').encode()
+
+    def _collect(self, owner_row=None, scope=None):
+        patches = [
+            patch.dict(os.environ, {}, clear=True),
+            patch.object(processes, "process_chain", return_value=self.chain),
+            patch.object(processes, "caller_process", return_value=owner_row or self.chain[2]),
+            patch.object(declarations, "safe_home", return_value=self.home),
+            patch("subprocess.run", return_value=subprocess.CompletedProcess([], 0, stdout=self.args)),
+        ]
+        with patches[0], patches[1], patches[2], patches[3], patches[4]:
+            import everagent_core.identity.observations as observations
+            return observations.collect("zcode", scope if scope is not None else self.scope)
+
+    def test_observation_binds_execution_shell_and_current_conversation(self):
+        self.rollout.write_bytes(self._record(self._iso(self.now - 600), request_id="req-old")
+                                 + self._record(self._iso(self.now - 30), request_id="req-new", body_bytes=200000))
+        observation = self._collect()
+        self.assertIsNotNone(observation)
+        self.assertEqual(observation["model"], "GLM-5.3")
+        self.assertEqual(observation["source"], "zcode-model-io")
+        self.assertEqual(observation["scope"], self.scope)
+        with patch.object(declarations, "caller_scope", return_value=self.scope):
+            evidence = models.model_evidence("zcode", observation=observation)
+        self.assertTrue(evidence["current_model_confirmed"])
+        self.assertEqual(evidence["model"], "GLM-5.3")
+
+    def test_hook_wrapper_shells_do_not_hide_the_tagged_execution_shell(self):
+        self.rollout.write_bytes(self._record(self._iso(self.now - 30)))
+        hook_chain = [
+            {"pid": 901, "parent": 905, "name": "python3", "started": self.chain[0]["started"], "image": "python3"},
+            # sh runs the pre-commit hook; its command line carries no conversation tag.
+            {"pid": 905, "parent": 902, "name": "sh", "started": self.chain[1]["started"], "image": "/bin/sh"},
+            {"pid": 902, "parent": 903, "name": "zsh", "started": self.chain[1]["started"], "image": "/bin/zsh"},
+            self.chain[2], self.chain[3],
+        ]
+        by_pid = {902: self.args, 905: "/bin/sh /repo/.git/hooks/pre-commit\n"}
+        def fake_run(command, **kwargs):
+            pid = int(command[-1])
+            return subprocess.CompletedProcess(command, 0, stdout=by_pid.get(pid, ""))
+        with patch.dict(os.environ, {}, clear=True), \
+                patch.object(processes, "process_chain", return_value=hook_chain), \
+                patch.object(processes, "caller_process", return_value=hook_chain[3]), \
+                patch.object(declarations, "safe_home", return_value=self.home), \
+                patch("subprocess.run", side_effect=fake_run):
+            import everagent_core.identity.observations as observations
+            observation = observations.collect("zcode", self.scope)
+        self.assertIsNotNone(observation)
+        self.assertEqual(observation["model"], "GLM-5.3")
+
+    def test_stale_records_or_files_do_not_verify(self):
+        self.rollout.write_bytes(self._record(self._iso(self.now - 400)))
+        self.assertIsNone(self._collect())
+        self.rollout.write_bytes(self._record(self._iso(self.now - 30)))
+        os.utime(self.rollout, (self.now - 400, self.now - 400))
+        self.assertIsNone(self._collect())
+
+    def test_foreign_conversation_or_missing_shell_tag_does_not_verify(self):
+        self.rollout.write_bytes(self._record(self._iso(self.now - 30)))
+        with patch("subprocess.run", return_value=subprocess.CompletedProcess([], 0, stdout="/bin/zsh -c true\n")):
+            import everagent_core.identity.observations as observations
+            with patch.object(processes, "process_chain", return_value=self.chain), \
+                    patch.object(processes, "caller_process", return_value=self.chain[2]), \
+                    patch.object(declarations, "safe_home", return_value=self.home), \
+                    patch.dict(os.environ, {}, clear=True):
+                self.assertIsNone(observations.collect("zcode", self.scope))
+        scope_without_shell = {k: v for k, v in self.scope.items() if k != "execution_ref"}
+        self.assertIsNone(self._collect(scope=scope_without_shell))
+
+    def test_owner_must_be_the_session_cli_not_the_resident_host(self):
+        self.rollout.write_bytes(self._record(self._iso(self.now - 30)))
+        self.assertIsNone(self._collect(owner_row=self.chain[3]))
+
+    def test_unusable_newest_request_does_not_borrow_an_older_model(self):
+        self.rollout.write_bytes(self._record(self._iso(self.now - 90), request_id="req-old")
+                                 + self._record(self._iso(self.now - 30), model="unknown", request_id="req-new"))
+        self.assertIsNone(self._collect())
 
 
 if __name__ == "__main__":

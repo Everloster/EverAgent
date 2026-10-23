@@ -49,6 +49,7 @@ App 身份或版本可见不代表当前模型可见；无法核实时保持 unk
 | Pi | shell 工具每次启动清除继承值，再从当前 session/model 注入的 `PI_SESSION_ID`、`PI_MODEL` |
 | TRAE | 精确 thread 的运行日志模型字段与请求时间；支持原有 thread alias，嵌套 Codex 不借外层 ID |
 | Claude Code | 精确 UUID session 的原生 assistant `message.model`；绑定当前调用方进程创建时间、cwd 和新鲜记录，不借配置中的模型 |
+| ZCode | 当前会话 `model-io-<会话标签>` 请求记录前缀的 `modelId`；会话标签取自本执行 shell 启动命令的 bash-startup 路径，绑定 zcode-cli 进程创建时间与新鲜完成记录 |
 
 读取器只取当前调用方元数据；Codex 日志尾部有 4 MiB 上限，SQLite 只读查询指定 thread 的模型字段。
 配置默认值、同目录的其他会话、全局最近日志与无来源的环境变量不构成核实。原生读取失败保留提示与未核实状态，
@@ -59,6 +60,14 @@ Claude Code 从自身用户配置目录的 `projects/<cwd 编码>/<session UUID>
 读取器只解码 session、cwd、时间、assistant UUID 与模型字段，跳过对话正文；文件尾部上限 4 MiB，
 单行上限 128 KiB。缺记录、关闭 session persistence、错误 cwd、sidechain、重启、过期或模型字段缺失
 均不核实。该规则不把普通 Python executor 识别为 Agent，也不允许静态 `AGENT_ID` 署名。
+
+ZCode Desktop 无会话环境变量；会话标签出现在 Bash 工具 shell 启动命令的
+`~/.zcode/cli/exec/bash-startup/<会话标签>/` 路径中。读取器沿调用方祖先链逐个用 `ps` 读 shell 命令行，
+直到找到携带会话标签的执行 shell（hook 包装层 sh/git 不带标签），再在
+`~/.zcode/cli/rollout/model-io-<会话标签>.jsonl` 尾部（4 MiB 上限）按字段顺序锚定请求记录前缀
+（completedAt/durationMs/requestId/attempt/model.modelId），从不解码 `request` 正文。会话标签缺失、
+rollout 或记录过期（>5 分钟）、记录早于 zcode-cli 进程创建时间、模型字段非法或最近请求记录不可用
+均不核实；常驻 zcode-host 不是会话 owner，进程链最近匹配必须是会话级 zcode-cli。
 
 模型声明要求 `--user-confirmed`，它表示用户本次明确指定，不能由 Agent 根据配置自行补旗标。
 receipt 仅存在本机用户状态目录；默认 4 小时，最长 12 小时。harness 进程或 session/terminal 改变、
