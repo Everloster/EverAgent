@@ -10,6 +10,7 @@
 | 写学习报告 | [report-writing](./skills/report-writing/SKILL.md)，再按体裁读取 [episode_analysis](./skills/episode_analysis/SKILL.md) 或 [qa_chain](./skills/qa_chain/SKILL.md) |
 | 继续讨论 | 原报告、对应润色稿和追问涉及的原始片段 |
 | 催更或刷新节目 | `scripts/sync_index_status.py` 与 `scripts/fetch_show_indexes.py` |
+| 顶尖/SOTA AI 技术播客更新或渠道维护 | [ai-tech-podcast-radar](./skills/ai-tech-podcast-radar/SKILL.md) |
 
 长期报告同时使用根级 [`everagent-report`](../.agents/skills/everagent-report/SKILL.md)。通过 eacli `knowledge.podcasts` 定位已有内容；仅在需要跨域检索时查询 `knowledge.index`。
 

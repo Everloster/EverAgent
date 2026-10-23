@@ -2,6 +2,7 @@
 
 > 58 档精选播客（56 档附公开 RSS）。全量单集索引见 [show-indexes/](./show-indexes/)（由 `scripts/fetch_show_indexes.py` 按需刷新——用户催更时跑，见 AGENTS.md）。
 > 源文件：[curated-podcasts.opml](./curated-podcasts.opml)（OPML 2.0，可导入任意播客客户端）。
+> 中英文 SOTA AI 技术节目使用独立的 [`ai-tech-podcast-radar`](../skills/ai-tech-podcast-radar/SKILL.md)；它按技术相关性与已学习状态筛选，不改变这份个人综合精选。
 > 收录：2026-08-23 首批 51 档（小宇宙 OPML 导出）；2026-09-25 增补 7 档——小宇宙 OPML 导出对分享合集中部分节目会丢档（本次丢 7 档），经「我也在听的品质播客」collection 链接 API 补齐，其中 5 档 RSS 由 Apple iTunes 反查，2 档（窦文涛的聊客、职场有话说）小宇宙独播未暴露公开 feed、待补。
 
 ## AI / 科技

@@ -12,7 +12,8 @@
 1. 先用 `eacli knowledge.podcasts` 或仓内 URL/标题检索查重；需要刷新节目单时只跑目标节目：
    `python3 scripts/fetch_show_indexes.py --show <slug> --dry-run --json`。确认要写回后再去掉
    `--dry-run`；不要为查一集默认刷新全部节目。随后运行 `sync_index_status.py` 核对状态列
-   （✅ = 跳过）。
+   （✅ = 跳过）。技术播客雷达中尚未进入个人精选 OPML 的节目不运行该脚本，直接按单集
+   `source_url` 查重并保留雷达来源信息。
 2. shownotes **先于润色**拿到（智谱 web.read；对含"加息/投资/金融"字样的小宇宙 URL 会触发 1301 审查误判 → curl 公开页面降级并记录）
 3. 转写通道判定：小宇宙域名走 Razer eacli podcast；transistor/fireside 直链走本地 `transcribe.py`（Razer 白名单不批）；中英混合音频（外文回答）当前 pipeline 无法正确转写——提前决定"转译大意版"策略并在 frontmatter 标注
 4. 转写完成必跑 `python3 podcast-learning/scripts/audit_transcript.py <transcript> --json`

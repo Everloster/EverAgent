@@ -102,7 +102,8 @@
 
 ## 节目索引（选题库）
 
-- [[curated-podcasts|精选播客清单]] — 51 档精选播客（附公开 RSS + OPML 源文件）
+- [[curated-podcasts|精选播客清单]] — 58 档个人综合精选（56 档附公开 RSS + OPML 源文件）
+- `skills/ai-tech-podcast-radar/` — 24 档中英文 SOTA AI 技术节目，支持近期更新、已学习去重、渠道回测与 OPML 导出
 - `show-indexes/` — 每档节目的全量单集索引（新→旧），由 `scripts/fetch_show_indexes.py` 拉取/周更刷新；挑集数即可发起转写
 
 ## Entities（人物 / 机构）

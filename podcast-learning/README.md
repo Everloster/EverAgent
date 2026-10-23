@@ -30,11 +30,13 @@ podcast-learning/
 ├── SETUP.md               # Razer 主路径与本地 fallback 依赖
 ├── scripts/
 │   └── transcribe.py      # 本地文件/隔离排障 fallback
+├── sources/               # SOTA 技术播客渠道注册表
 ├── reports/
 │   ├── transcripts/       # 转写原文(.transcript.txt) + 润色稿(.polished.txt)
 │   └── *.md               # 单期总结 / 跨期专题 / 概念追踪
 ├── wiki/                  # concepts / entities / syntheses / open-questions.md
 └── skills/
+    ├── ai-tech-podcast-radar/ # 技术播客更新、渠道评估与 OPML 导出
     ├── transcription/     # 转写 + 润色规范
     └── episode_analysis/  # 总结/报告模板
 ```
@@ -44,6 +46,10 @@ podcast-learning/
 ## 快速开始
 
 ```bash
+# 发现：查询最近 7 天的 SOTA AI 技术播客
+python3 podcast-learning/skills/ai-tech-podcast-radar/scripts/radar.py \
+  updates --days 7 --format md
+
 # URL：先检查 Razer worker，再 plan/run/result
 eacli podcast status
 eacli podcast plan --source "https://www.xiaoyuzhoufm.com/episode/xxxx"
