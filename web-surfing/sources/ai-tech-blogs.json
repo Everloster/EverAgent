@@ -1,12 +1,13 @@
 {
   "schema_version": 1,
-  "updated_on": "2026-10-20",
-  "description": "顶尖 AI 厂商与实验室官方技术源。must 直接进入更新雷达；watch 经过技术关键词过滤后进入。",
+  "updated_on": "2026-10-23",
+  "description": "顶尖 AI 厂商、实验室、官方工程项目与发布信号。must 直接进入更新雷达；watch 经过技术关键词过滤后进入。",
   "research_report": "web-surfing/reports/ai-vendor-technical-sources-2026-10-20.md",
   "defaults": {
     "days": 7,
     "limit": 30,
-    "workers": 4
+    "workers": 4,
+    "per_source": 3
   },
   "global_exclude_any": [
     "funding",
@@ -44,7 +45,88 @@
       ],
       "include_any": [],
       "exclude_any": [],
-      "why": "Prompt、skills、eval、Codex 与 agent harness 的一手工程经验。"
+      "why": "Prompt、skills、eval、Codex 与 agent harness 的一手工程经验。",
+      "source_class": "engineering",
+      "topics": [],
+      "discovery_fallbacks": []
+    },
+    {
+      "id": "openai-news",
+      "name": "OpenAI Product & Research Updates",
+      "vendor": "OpenAI",
+      "source_class": "release",
+      "tier": "must",
+      "enabled": true,
+      "homepage": "https://openai.com/news/",
+      "discovery": {
+        "kind": "rss",
+        "url": "https://openai.com/news/rss.xml"
+      },
+      "discovery_fallbacks": [
+        {
+          "kind": "search",
+          "query": "site:openai.com/index OpenAI API model agent safety research eval"
+        }
+      ],
+      "allow_domains": [
+        "openai.com",
+        "www.openai.com"
+      ],
+      "path_prefixes": [
+        "/index/",
+        "/news/"
+      ],
+      "include_any": [
+        "api",
+        "agent",
+        "model",
+        "research",
+        "safety",
+        "eval",
+        "codex",
+        "reasoning",
+        "inference",
+        "decisions",
+        "developer"
+      ],
+      "exclude_any": [
+        "customer story",
+        "partnership",
+        "education",
+        "business transformation"
+      ],
+      "topics": [
+        "agent_harness",
+        "eval_safety"
+      ],
+      "why": "补充 Developer Blog 会漏掉的 API、模型、安全与研究型主站更新；只作发布信号。",
+      "title_include_any": [
+        "api",
+        "research",
+        "safety",
+        "eval",
+        "codex",
+        "reasoning",
+        "inference",
+        "decisions",
+        "vulnerability",
+        "model card",
+        "system card",
+        "open source",
+        "biological data",
+        "security"
+      ],
+      "title_exclude_any": [
+        "with openai",
+        "brings chatgpt",
+        "answers questions faster",
+        "puts ai agents to work",
+        "triples signups",
+        "all employees",
+        "customer story"
+      ],
+      "hydrate_search_results": true,
+      "hydrate_limit": 3
     },
     {
       "id": "anthropic",
@@ -67,7 +149,10 @@
       ],
       "include_any": [],
       "exclude_any": [],
-      "why": "Agent 工程、eval、interpretability、安全与真实失败模式。"
+      "why": "Agent 工程、eval、interpretability、安全与真实失败模式。",
+      "source_class": "lab",
+      "topics": [],
+      "discovery_fallbacks": []
     },
     {
       "id": "google-research",
@@ -88,7 +173,22 @@
       ],
       "include_any": [],
       "exclude_any": [],
-      "why": "基础研究、agent、安全、科学与系统方法。"
+      "why": "基础研究、agent、安全、科学与系统方法。",
+      "source_class": "lab",
+      "topics": [],
+      "discovery_fallbacks": [
+        {
+          "kind": "search",
+          "query": "site:research.google/blog agent privacy security review AI"
+        },
+        {
+          "kind": "search",
+          "query": "site:research.google/blog model systems science"
+        }
+      ],
+      "hydrate_search_results": true,
+      "hydrate_limit": 3,
+      "require_topic_lane": true
     },
     {
       "id": "google-deepmind",
@@ -112,7 +212,77 @@
         "collaborate",
         "partnership"
       ],
-      "why": "前沿模型、科学突破、安全、隐私与系统架构。"
+      "why": "前沿模型、科学突破、安全、隐私与系统架构。",
+      "source_class": "lab",
+      "topics": [],
+      "discovery_fallbacks": [
+        {
+          "kind": "search",
+          "query": "site:deepmind.google/blog DeepMind research model safety architecture"
+        }
+      ],
+      "hydrate_search_results": true,
+      "hydrate_limit": 3
+    },
+    {
+      "id": "google-developers-ai",
+      "name": "Google Developers Blog · AI Engineering",
+      "vendor": "Google",
+      "source_class": "engineering",
+      "tier": "watch",
+      "enabled": true,
+      "homepage": "https://developers.googleblog.com/",
+      "discovery": {
+        "kind": "search",
+        "query": "site:developers.googleblog.com -inurl:search vLLM SGLang TPU AI inference"
+      },
+      "discovery_fallbacks": [
+        {
+          "kind": "search",
+          "query": "site:developers.googleblog.com -inurl:search harness engineering AI agent skills"
+        },
+        {
+          "kind": "search",
+          "query": "site:developers.googleblog.com -inurl:search Gemini robotics edge AI model"
+        }
+      ],
+      "allow_domains": [
+        "developers.googleblog.com"
+      ],
+      "path_prefixes": [
+        "/"
+      ],
+      "include_any": [
+        "agent",
+        "harness",
+        "inference",
+        "vllm",
+        "sglang",
+        "tpu",
+        "model",
+        "gemini",
+        "machine learning",
+        " ai "
+      ],
+      "exclude_any": [
+        "android studio",
+        "firebase",
+        "google maps",
+        "chrome extension"
+      ],
+      "topics": [
+        "agent_harness",
+        "inference_systems"
+      ],
+      "why": "补齐 Harness Engineering、TPU 推理与开发者工具的一手工程文章。",
+      "include_undated": false,
+      "exclude_path_prefixes": [
+        "/search",
+        "/en/search"
+      ],
+      "hydrate_search_results": true,
+      "hydrate_limit": 4,
+      "discovery_mode": "merge"
     },
     {
       "id": "microsoft-research",
@@ -134,7 +304,18 @@
       ],
       "include_any": [],
       "exclude_any": [],
-      "why": "Agent、评估、模型系统、人机协作与科学研究。"
+      "why": "Agent、评估、模型系统、人机协作与科学研究。",
+      "source_class": "lab",
+      "topics": [],
+      "discovery_fallbacks": [
+        {
+          "kind": "search",
+          "query": "site:microsoft.com/en-us/research/blog AI agent model systems"
+        }
+      ],
+      "hydrate_search_results": true,
+      "hydrate_limit": 3,
+      "require_topic_lane": true
     },
     {
       "id": "apple-ml",
@@ -155,7 +336,17 @@
       ],
       "include_any": [],
       "exclude_any": [],
-      "why": "论文摘要、端侧模型、隐私、多模态与 agent 架构。"
+      "why": "论文摘要、端侧模型、隐私、多模态与 agent 架构。",
+      "source_class": "lab",
+      "topics": [],
+      "discovery_fallbacks": [
+        {
+          "kind": "search",
+          "query": "site:machinelearning.apple.com/research Apple machine learning research"
+        }
+      ],
+      "hydrate_search_results": true,
+      "hydrate_limit": 3
     },
     {
       "id": "meta-fair",
@@ -186,7 +377,10 @@
         "consumer",
         "advertising"
       ],
-      "why": "FAIR 研究、开放模型、数据集、机器人与多模态。"
+      "why": "FAIR 研究、开放模型、数据集、机器人与多模态。",
+      "source_class": "lab",
+      "topics": [],
+      "discovery_fallbacks": []
     },
     {
       "id": "ai2",
@@ -207,7 +401,10 @@
       ],
       "include_any": [],
       "exclude_any": [],
-      "why": "开放训练 recipe、数据、checkpoint、agent 与 AI for Science。"
+      "why": "开放训练 recipe、数据、checkpoint、agent 与 AI for Science。",
+      "source_class": "lab",
+      "topics": [],
+      "discovery_fallbacks": []
     },
     {
       "id": "bytedance-seed",
@@ -233,7 +430,10 @@
         "looking for talents",
         "global talents"
       ],
-      "why": "Frontier model、agent benchmark、视觉音频与 AI infra。"
+      "why": "Frontier model、agent benchmark、视觉音频与 AI infra。",
+      "source_class": "lab",
+      "topics": [],
+      "discovery_fallbacks": []
     },
     {
       "id": "tencent-hy",
@@ -255,7 +455,10 @@
       ],
       "include_any": [],
       "exclude_any": [],
-      "why": "Context learning、RL、scaffold、pretraining 与模型系统。"
+      "why": "Context learning、RL、scaffold、pretraining 与模型系统。",
+      "source_class": "lab",
+      "topics": [],
+      "discovery_fallbacks": []
     },
     {
       "id": "qwen",
@@ -278,7 +481,10 @@
       ],
       "include_any": [],
       "exclude_any": [],
-      "why": "开放模型架构、训练、agent RL、多模态和 coding。"
+      "why": "开放模型架构、训练、agent RL、多模态和 coding。",
+      "source_class": "vendor",
+      "topics": [],
+      "discovery_fallbacks": []
     },
     {
       "id": "kimi",
@@ -302,7 +508,127 @@
       ],
       "include_any": [],
       "exclude_any": [],
-      "why": "开放模型、attention 架构、agent、benchmark 与系统实验。"
+      "why": "开放模型、attention 架构、agent、benchmark 与系统实验。",
+      "source_class": "vendor",
+      "topics": [],
+      "discovery_fallbacks": []
+    },
+    {
+      "id": "vllm",
+      "name": "vLLM Blog",
+      "vendor": "vLLM Project",
+      "source_class": "project",
+      "tier": "must",
+      "enabled": true,
+      "homepage": "https://vllm.ai/blog/",
+      "discovery": {
+        "kind": "rss",
+        "url": "https://vllm.ai/blog/rss.xml"
+      },
+      "discovery_fallbacks": [
+        {
+          "kind": "search",
+          "query": "site:vllm.ai/blog vLLM inference kernel model support"
+        }
+      ],
+      "allow_domains": [
+        "vllm.ai"
+      ],
+      "path_prefixes": [
+        "/blog/"
+      ],
+      "include_any": [],
+      "exclude_any": [
+        "meetup",
+        "office hours"
+      ],
+      "topics": [
+        "inference_systems",
+        "kernels_hardware"
+      ],
+      "why": "开放推理引擎的一手性能、kernel、并行与 Day-0 模型适配记录。",
+      "hydrate_search_results": true,
+      "hydrate_limit": 3
+    },
+    {
+      "id": "pytorch",
+      "name": "PyTorch Blog",
+      "vendor": "PyTorch Foundation",
+      "source_class": "project",
+      "tier": "watch",
+      "enabled": true,
+      "homepage": "https://pytorch.org/blog/",
+      "discovery": {
+        "kind": "rss",
+        "url": "https://pytorch.org/feed/"
+      },
+      "discovery_fallbacks": [
+        {
+          "kind": "search",
+          "query": "site:pytorch.org/blog training inference compiler distributed GPU TPU"
+        }
+      ],
+      "allow_domains": [
+        "pytorch.org"
+      ],
+      "path_prefixes": [
+        "/blog/"
+      ],
+      "include_any": [],
+      "exclude_any": [
+        "conference",
+        "ambassador",
+        "foundation welcomes",
+        "new members",
+        "event recap",
+        "joins the pytorch foundation"
+      ],
+      "topics": [
+        "training_models",
+        "inference_systems"
+      ],
+      "why": "训练、分布式、编译器、TorchTitan/TitanRL 与多硬件后端的官方工程入口。",
+      "hydrate_search_results": true,
+      "hydrate_limit": 3
+    },
+    {
+      "id": "amd-rocm",
+      "name": "AMD ROCm Blogs",
+      "vendor": "AMD",
+      "source_class": "vendor",
+      "tier": "watch",
+      "enabled": true,
+      "homepage": "https://rocm.blogs.amd.com/blog.html",
+      "discovery": {
+        "kind": "rss",
+        "url": "https://rocm.blogs.amd.com/blog/atom.xml"
+      },
+      "discovery_fallbacks": [
+        {
+          "kind": "search",
+          "query": "site:rocm.blogs.amd.com AI inference kernel ROCm GPU"
+        }
+      ],
+      "allow_domains": [
+        "rocm.blogs.amd.com"
+      ],
+      "path_prefixes": [
+        "/artificial-intelligence/",
+        "/software-tools-optimization/",
+        "/ecosystems-and-partners/"
+      ],
+      "include_any": [],
+      "exclude_any": [
+        "event",
+        "webinar"
+      ],
+      "topics": [
+        "kernels_hardware",
+        "inference_systems"
+      ],
+      "why": "补齐非 NVIDIA GPU 的 kernel、编译器、MoE 训练与推理优化。",
+      "hydrate_search_results": true,
+      "hydrate_limit": 3
     },
     {
       "id": "nvidia-technical",
@@ -337,7 +663,17 @@
         "event",
         "webinar"
       ],
-      "why": "Kernel、CUDA、推理、训练、agent eval 与系统优化。"
+      "why": "Kernel、CUDA、推理、训练、agent eval 与系统优化。",
+      "source_class": "vendor",
+      "topics": [],
+      "discovery_fallbacks": [
+        {
+          "kind": "search",
+          "query": "site:developer.nvidia.com/blog AI inference kernel agent evaluation"
+        }
+      ],
+      "hydrate_search_results": true,
+      "hydrate_limit": 3
     },
     {
       "id": "huggingface",
@@ -370,7 +706,127 @@
       "exclude_any": [
         "welcome to hugging face"
       ],
-      "why": "开源生态数据、复现实验、模型与工具链。"
+      "why": "开源生态数据、复现实验、模型与工具链。",
+      "source_class": "platform",
+      "topics": [],
+      "discovery_fallbacks": [
+        {
+          "kind": "search",
+          "query": "site:huggingface.co/blog AI model inference agent research"
+        }
+      ],
+      "hydrate_search_results": true,
+      "hydrate_limit": 3,
+      "publisher_path_index": 1,
+      "publisher_path_min_segments": 3,
+      "preferred_publishers": [
+        "microsoft",
+        "nvidia",
+        "ibm-research",
+        "allenai",
+        "google",
+        "meta",
+        "openai",
+        "amazon",
+        "sakana-ai"
+      ]
+    },
+    {
+      "id": "github-ai-ml",
+      "name": "GitHub Blog · AI & ML",
+      "vendor": "GitHub",
+      "source_class": "engineering",
+      "tier": "watch",
+      "enabled": true,
+      "homepage": "https://github.blog/ai-and-ml/",
+      "discovery": {
+        "kind": "rss",
+        "url": "https://github.blog/ai-and-ml/feed/"
+      },
+      "discovery_fallbacks": [
+        {
+          "kind": "search",
+          "query": "site:github.blog/ai-and-ml agent harness benchmark code review model security"
+        }
+      ],
+      "allow_domains": [
+        "github.blog"
+      ],
+      "path_prefixes": [
+        "/ai-and-ml/"
+      ],
+      "include_any": [
+        "agent",
+        "harness",
+        "benchmark",
+        "review",
+        "security",
+        "secret",
+        "model",
+        "evaluation",
+        "inference",
+        "mcp"
+      ],
+      "exclude_any": [
+        "beginners",
+        "productivity",
+        "customer story",
+        "how to continue"
+      ],
+      "topics": [
+        "agent_harness",
+        "eval_safety"
+      ],
+      "why": "Copilot Harness、代码评测、安全检测与开发者工具实验的一手工程文章。",
+      "hydrate_search_results": true,
+      "hydrate_limit": 3
+    },
+    {
+      "id": "cloudflare-ai",
+      "name": "Cloudflare Blog · AI Systems",
+      "vendor": "Cloudflare",
+      "source_class": "engineering",
+      "tier": "watch",
+      "enabled": true,
+      "homepage": "https://blog.cloudflare.com/",
+      "discovery": {
+        "kind": "rss",
+        "url": "https://blog.cloudflare.com/rss/"
+      },
+      "discovery_fallbacks": [
+        {
+          "kind": "search",
+          "query": "site:blog.cloudflare.com AI agent Workers AI inference MCP gateway"
+        }
+      ],
+      "allow_domains": [
+        "blog.cloudflare.com"
+      ],
+      "path_prefixes": [
+        "/"
+      ],
+      "include_any": [
+        "workers ai",
+        "ai gateway",
+        "agent",
+        "llm",
+        "inference",
+        "vectorize",
+        "mcp",
+        "webmcp",
+        "model"
+      ],
+      "exclude_any": [
+        "compliance certification",
+        "certificate compromise"
+      ],
+      "topics": [
+        "agent_harness",
+        "inference_systems"
+      ],
+      "why": "生产级 Agent 网络边界、Workers AI、AI Gateway、MCP 与推理基础设施。",
+      "hydrate_search_results": true,
+      "hydrate_limit": 3
     },
     {
       "id": "amazon-science",
@@ -405,7 +861,22 @@
         "award",
         "initiative with"
       ],
-      "why": "研究解释、ML systems、reasoning、agent 与科学应用。"
+      "why": "研究解释、ML systems、reasoning、agent 与科学应用。",
+      "source_class": "lab",
+      "topics": [],
+      "discovery_fallbacks": [
+        {
+          "kind": "search",
+          "query": "site:amazon.science/blog Trainium PyTorch agent safety evaluation"
+        },
+        {
+          "kind": "search",
+          "query": "site:amazon.science/blog AI machine learning research systems"
+        }
+      ],
+      "hydrate_search_results": true,
+      "hydrate_limit": 3,
+      "require_topic_lane": true
     },
     {
       "id": "sakana",
@@ -440,7 +911,17 @@
         "newsletter",
         "welcoming"
       ],
-      "why": "AI Scientist、collective intelligence 与原创研究方向。"
+      "why": "AI Scientist、collective intelligence 与原创研究方向。",
+      "source_class": "lab",
+      "topics": [],
+      "discovery_fallbacks": [
+        {
+          "kind": "search",
+          "query": "site:sakana.ai research model agent experiment"
+        }
+      ],
+      "hydrate_search_results": true,
+      "hydrate_limit": 3
     },
     {
       "id": "minimax",
@@ -474,7 +955,10 @@
         "business",
         "partnership"
       ],
-      "why": "模型架构、长上下文、数学证明与多模态技术文。"
+      "why": "模型架构、长上下文、数学证明与多模态技术文。",
+      "source_class": "vendor",
+      "topics": [],
+      "discovery_fallbacks": []
     },
     {
       "id": "mistral",
@@ -509,7 +993,10 @@
         "partnership",
         "summit"
       ],
-      "why": "开放模型、Physics AI、架构和技术报告。"
+      "why": "开放模型、Physics AI、架构和技术报告。",
+      "source_class": "vendor",
+      "topics": [],
+      "discovery_fallbacks": []
     },
     {
       "id": "zai",
@@ -542,7 +1029,10 @@
         "pricing",
         "subscription"
       ],
-      "why": "GLM 模型、agentic engineering、RL infra 与能力评估。"
+      "why": "GLM 模型、agentic engineering、RL infra 与能力评估。",
+      "source_class": "vendor",
+      "topics": [],
+      "discovery_fallbacks": []
     },
     {
       "id": "deepseek",
@@ -564,7 +1054,17 @@
       ],
       "include_any": [],
       "exclude_any": [],
-      "why": "重大模型与论文发布信号；命中后继续读论文、模型卡和代码。"
+      "why": "重大模型与论文发布信号；命中后继续读论文、模型卡和代码。",
+      "source_class": "vendor",
+      "topics": [],
+      "discovery_fallbacks": [
+        {
+          "kind": "search",
+          "query": "site:deepseek.com/en/news DeepSeek model research release"
+        }
+      ],
+      "hydrate_search_results": true,
+      "hydrate_limit": 3
     }
   ]
 }

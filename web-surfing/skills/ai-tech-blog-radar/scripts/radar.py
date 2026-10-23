@@ -4,6 +4,7 @@
 常用命令：
   python3 radar.py updates --days 7 --format json
   python3 radar.py channels list --format md
+  python3 radar.py channels evaluate --days 14 --format md
   python3 radar.py channels validate --live --format json
   python3 radar.py channels update deepseek --set tier=must
 """
@@ -14,8 +15,10 @@ import argparse
 import concurrent.futures
 import datetime as dt
 import email.utils
+import gzip
 import hashlib
 import html
+import io
 import json
 import os
 import pathlib
@@ -23,6 +26,7 @@ import re
 import subprocess
 import sys
 import tempfile
+import urllib.error
 import urllib.parse
 import urllib.request
 from typing import Any
@@ -34,6 +38,35 @@ UA = "Mozilla/5.0 (compatible; EverAgentAITechRadar/1.0)"
 
 TIERS = {"must", "watch"}
 DISCOVERY_KINDS = {"rss", "search", "sitemap"}
+SOURCE_CLASSES = {"lab", "vendor", "project", "engineering", "platform", "release"}
+
+TOPIC_LANES = {
+    "agent_harness": {
+        "agent", "agents", "agentic", "harness", "tool use", "tool calling", "mcp",
+        "workflow", "memory", "swarm", "coding agent", "智能体", "工具调用", "记忆",
+    },
+    "eval_safety": {
+        "eval", "evaluation", "benchmark", "review", "test", "testing", "safety",
+        "security", "red team", "verification", "评测", "基准", "安全", "验证",
+    },
+    "inference_systems": {
+        "inference", "serving", "vllm", "sglang", "decode", "prefill", "throughput",
+        "latency", "kv cache", "distributed", "tensor parallel", "expert parallel",
+        "推理", "服务", "吞吐", "延迟", "分布式",
+    },
+    "training_models": {
+        "training", "pretraining", "post-training", "fine-tuning", "distillation",
+        "reinforcement learning", "rl", "model", "checkpoint", "训练", "模型", "蒸馏",
+    },
+    "kernels_hardware": {
+        "kernel", "cuda", "rocm", "gpu", "tpu", "trainium", "compiler", "collective",
+        "flashinfer", "triton", "cutile", "硬件", "编译器", "算子",
+    },
+    "science_multimodal": {
+        "protein", "biology", "science", "robotics", "vision", "multimodal",
+        "world model", "drug", "蛋白质", "生物", "科学", "机器人", "多模态",
+    },
+}
 
 MECHANISM_TERMS = {
     "architecture", "mechanism", "algorithm", "method", "training", "post-training",
@@ -90,6 +123,19 @@ def load_registry(path: pathlib.Path) -> dict[str, Any]:
     return value
 
 
+def validate_discovery(discovery: Any, label: str, errors: list[str]) -> None:
+    if not isinstance(discovery, dict):
+        errors.append(f"{label} 必须为 object")
+        return
+    kind = discovery.get("kind")
+    if kind not in DISCOVERY_KINDS:
+        errors.append(f"{label}.kind 必须是 rss/search/sitemap")
+    if kind in {"rss", "sitemap"} and not discovery.get("url"):
+        errors.append(f"{label}.url 缺失")
+    if kind == "search" and not discovery.get("query"):
+        errors.append(f"{label}.query 缺失")
+
+
 def validate_registry(registry: Any) -> list[str]:
     errors: list[str] = []
     if not isinstance(registry, dict):
@@ -117,22 +163,69 @@ def validate_registry(registry: Any) -> list[str]:
                 errors.append(f"{label}.{key} 必须为非空字符串")
         if source.get("tier") not in TIERS:
             errors.append(f"{label}.tier 必须是 must/watch")
+        if source.get("source_class", "vendor") not in SOURCE_CLASSES:
+            errors.append(
+                f"{label}.source_class 必须是 " + "/".join(sorted(SOURCE_CLASSES))
+            )
         if not isinstance(source.get("enabled"), bool):
             errors.append(f"{label}.enabled 必须是 boolean")
-        discovery = source.get("discovery")
-        if not isinstance(discovery, dict):
-            errors.append(f"{label}.discovery 必须为 object")
+        if not isinstance(source.get("include_undated", False), bool):
+            errors.append(f"{label}.include_undated 必须是 boolean")
+        if not isinstance(source.get("hydrate_search_results", False), bool):
+            errors.append(f"{label}.hydrate_search_results 必须是 boolean")
+        if not isinstance(source.get("require_topic_lane", False), bool):
+            errors.append(f"{label}.require_topic_lane 必须是 boolean")
+        if source.get("discovery_mode", "fallback") not in {"fallback", "merge"}:
+            errors.append(f"{label}.discovery_mode 必须是 fallback/merge")
+        hydrate_limit = source.get("hydrate_limit", 5)
+        if not isinstance(hydrate_limit, int) or not 1 <= hydrate_limit <= 20:
+            errors.append(f"{label}.hydrate_limit 必须是 1-20 的整数")
+        publisher_path_index = source.get("publisher_path_index")
+        if publisher_path_index is not None and (
+            not isinstance(publisher_path_index, int)
+            or not 0 <= publisher_path_index <= 10
+        ):
+            errors.append(f"{label}.publisher_path_index 必须是 0-10 的整数")
+        publisher_path_min_segments = source.get("publisher_path_min_segments")
+        if publisher_path_min_segments is not None and (
+            not isinstance(publisher_path_min_segments, int)
+            or not 1 <= publisher_path_min_segments <= 20
+        ):
+            errors.append(
+                f"{label}.publisher_path_min_segments 必须是 1-20 的整数"
+            )
+        validate_discovery(source.get("discovery"), f"{label}.discovery", errors)
+        fallbacks = source.get("discovery_fallbacks", [])
+        if not isinstance(fallbacks, list):
+            errors.append(f"{label}.discovery_fallbacks 必须为 array")
         else:
-            kind = discovery.get("kind")
-            if kind not in DISCOVERY_KINDS:
-                errors.append(f"{label}.discovery.kind 必须是 rss/search/sitemap")
-            if kind in {"rss", "sitemap"} and not discovery.get("url"):
-                errors.append(f"{label}.discovery.url 缺失")
-            if kind == "search" and not discovery.get("query"):
-                errors.append(f"{label}.discovery.query 缺失")
+            for fallback_index, fallback in enumerate(fallbacks):
+                validate_discovery(
+                    fallback,
+                    f"{label}.discovery_fallbacks[{fallback_index}]",
+                    errors,
+                )
         for key in ("allow_domains", "path_prefixes", "include_any", "exclude_any"):
             if not isinstance(source.get(key), list) or not all(isinstance(x, str) for x in source[key]):
                 errors.append(f"{label}.{key} 必须为 string array")
+        for key in (
+            "exclude_path_prefixes", "title_include_any", "title_exclude_any",
+            "preferred_publishers",
+        ):
+            if key in source and (
+                not isinstance(source[key], list)
+                or not all(isinstance(x, str) for x in source[key])
+            ):
+                errors.append(f"{label}.{key} 必须为 string array")
+        topics = source.get("topics", [])
+        if not isinstance(topics, list) or not all(isinstance(x, str) for x in topics):
+            errors.append(f"{label}.topics 必须为 string array")
+        else:
+            unknown_topics = sorted(set(topics) - set(TOPIC_LANES))
+            if unknown_topics:
+                errors.append(
+                    f"{label}.topics 含未知主题：" + ", ".join(unknown_topics)
+                )
     defaults = registry.get("defaults", {})
     if not isinstance(defaults, dict):
         errors.append("defaults 必须为 object")
@@ -144,7 +237,7 @@ def clean_text(value: str | None) -> str:
         return ""
     value = re.sub(r"<!\[CDATA\[(.*?)\]\]>", r"\1", value, flags=re.S)
     value = re.sub(r"<[^>]+>", " ", value)
-    value = html.unescape(value)
+    value = html.unescape(html.unescape(value))
     return re.sub(r"\s+", " ", value).strip()
 
 
@@ -224,7 +317,25 @@ def source_accepts_url(source: dict[str, Any], url: str) -> bool:
     prefixes = source.get("path_prefixes", [])
     if prefixes and not any(parsed.path.startswith(prefix) for prefix in prefixes):
         return False
+    excluded_prefixes = source.get("exclude_path_prefixes", [])
+    if any(parsed.path.startswith(prefix) for prefix in excluded_prefixes):
+        return False
     return True
+
+
+def publisher_from_url(source: dict[str, Any], url: str) -> str:
+    index = source.get("publisher_path_index")
+    if index is None:
+        return source["vendor"]
+    parts = [
+        urllib.parse.unquote(part)
+        for part in urllib.parse.urlsplit(url).path.split("/")
+        if part
+    ]
+    minimum = int(source.get("publisher_path_min_segments", index + 1))
+    if len(parts) < minimum:
+        return source["vendor"]
+    return parts[index] if index < len(parts) else source["vendor"]
 
 
 def parse_inner_result(stdout: str) -> Any:
@@ -256,11 +367,11 @@ def run_eacli(args: list[str], timeout: int = 45) -> str:
 
 def prepare_token_plan(capabilities: set[str]) -> dict[str, Any]:
     evidence: dict[str, Any] = {"catalog": "ok", "selections": {}}
-    run_eacli(["eacli", "tokenplan", "catalog", "--json"], timeout=30)
+    run_eacli(["eacli", "tokenplan", "catalog", "--json"], timeout=60)
     for capability in sorted(capabilities):
         stdout = run_eacli(
             ["eacli", "tool", "select", "--capability", capability, "--device", "auto", "--json"],
-            timeout=30,
+            timeout=60,
         )
         payload = json.loads(stdout)
         selected = payload.get("result", {}).get("selected", {})
@@ -304,15 +415,39 @@ def extract_web_read_content(result: Any) -> str:
 
 
 def http_get(url: str, timeout: int = 20) -> str:
-    request = urllib.request.Request(
-        url,
-        headers={
-            "User-Agent": UA,
-            "Accept": "application/rss+xml,application/atom+xml,application/xml,text/xml,text/html;q=0.8,*/*;q=0.5",
-        },
-    )
-    with urllib.request.urlopen(request, timeout=timeout) as response:
-        return response.read(1_500_000).decode("utf-8", errors="replace")
+    last_error: Exception | None = None
+    for attempt in range(2):
+        request = urllib.request.Request(
+            url,
+            headers={
+                "User-Agent": UA,
+                "Accept": "application/rss+xml,application/atom+xml,application/xml,text/xml,text/html;q=0.8,*/*;q=0.5",
+                "Accept-Encoding": "identity",
+                "Connection": "close",
+            },
+        )
+        try:
+            with urllib.request.urlopen(request, timeout=timeout) as response:
+                payload = response.read(1_500_000)
+                if payload.startswith(b"\x1f\x8b"):
+                    with gzip.GzipFile(fileobj=io.BytesIO(payload)) as compressed:
+                        payload = compressed.read(5_000_001)
+                    if len(payload) > 5_000_000:
+                        raise RadarError("gzip 解压后超过 5 MB 上限")
+                return payload.decode("utf-8", errors="replace")
+        except urllib.error.HTTPError:
+            raise
+        except (urllib.error.URLError, TimeoutError, OSError) as exc:
+            last_error = exc
+            message = str(exc).lower()
+            retryable = any(
+                marker in message
+                for marker in ("reset", "temporarily", "remote end", "errno 54", "errno 22")
+            )
+            if attempt or not retryable:
+                raise
+    assert last_error is not None
+    raise last_error
 
 
 def xml_field(block: str, names: list[str]) -> str:
@@ -352,6 +487,7 @@ def parse_feed_text(text: str, source: dict[str, Any], since: dt.datetime) -> li
                 "url": normalize_url(link),
                 "published_at": published.isoformat() if published else None,
                 "summary": trim(summary),
+                "publisher": publisher_from_url(source, link),
                 "discovered_via": "rss",
                 "date_confidence": "feed" if published else "unknown",
             }
@@ -359,8 +495,10 @@ def parse_feed_text(text: str, source: dict[str, Any], since: dt.datetime) -> li
     return entries
 
 
-def fetch_rss(source: dict[str, Any], since: dt.datetime) -> tuple[list[dict[str, Any]], list[str]]:
-    url = source["discovery"]["url"]
+def fetch_rss(
+    source: dict[str, Any], discovery: dict[str, Any], since: dt.datetime
+) -> tuple[list[dict[str, Any]], list[str]]:
+    url = discovery["url"]
     notes: list[str] = []
     try:
         result = eacli_invoke("web.read", {"url": url}, source["id"] + "-rss")
@@ -390,24 +528,55 @@ def search_rows(result: Any) -> list[dict[str, Any]]:
 
 
 def fetch_search(
-    source: dict[str, Any], since: dt.datetime, include_undated: bool
+    source: dict[str, Any], discovery: dict[str, Any], since: dt.datetime,
+    include_undated: bool,
 ) -> tuple[list[dict[str, Any]], list[str]]:
     date_hint = since.date().isoformat()
-    query = f"{source['discovery']['query']} after:{date_hint}"
+    query = f"{discovery['query']} after:{date_hint}"
     result = eacli_invoke("web.search", {"query": query}, source["id"] + "-search")
     entries: list[dict[str, Any]] = []
+    notes: list[str] = []
+    hydrated = 0
     for row in search_rows(result):
         title = clean_text(str(row.get("title") or row.get("name") or ""))
         url = str(row.get("link") or row.get("url") or "").strip()
         summary = clean_text(str(row.get("content") or row.get("snippet") or row.get("description") or ""))
-        published = parse_date(str(row.get("date") or summary))
-        if published and published < since:
-            continue
-        if not published and not include_undated:
-            continue
         if not title or not url or not source_accepts_url(source, url):
             continue
         if normalize_url(url) == normalize_url(source["homepage"]):
+            continue
+        published = parse_date(str(row.get("date") or summary))
+        if (
+            not published
+            and source.get("hydrate_search_results", False)
+            and hydrated < int(source.get("hydrate_limit", 5))
+        ):
+            hydrated += 1
+            try:
+                page = eacli_invoke(
+                    "web.read", {"url": url}, source["id"] + "-hydrate"
+                )
+                if isinstance(page, dict):
+                    metadata = page.get("metadata") or {}
+                    published = parse_date(
+                        str(
+                            page.get("publishedTime")
+                            or page.get("published_at")
+                            or metadata.get("article:published_time")
+                            or metadata.get("date")
+                            or ""
+                        )
+                    )
+                    page_summary = clean_text(
+                        str(page.get("description") or page.get("summary") or "")
+                    )
+                    if page_summary:
+                        summary = page_summary
+            except Exception as exc:  # noqa: BLE001
+                notes.append(f"回读发布日期失败：{normalize_url(url)}：{exc}")
+        if published and published < since:
+            continue
+        if not published and not include_undated:
             continue
         entries.append(
             {
@@ -415,11 +584,13 @@ def fetch_search(
                 "url": normalize_url(url),
                 "published_at": published.isoformat() if published else None,
                 "summary": trim(summary),
+                "publisher": publisher_from_url(source, url),
                 "discovered_via": "search",
                 "date_confidence": "result" if published else "search-window",
+                "observed_at": now_utc().isoformat(),
             }
         )
-    return entries, []
+    return entries, notes
 
 
 def parse_sitemap_text(text: str) -> list[tuple[str, dt.datetime | None]]:
@@ -438,8 +609,10 @@ def title_from_url(url: str) -> str:
     return words[:1].upper() + words[1:] if words else url
 
 
-def fetch_sitemap(source: dict[str, Any], since: dt.datetime) -> tuple[list[dict[str, Any]], list[str]]:
-    url = source["discovery"]["url"]
+def fetch_sitemap(
+    source: dict[str, Any], discovery: dict[str, Any], since: dt.datetime
+) -> tuple[list[dict[str, Any]], list[str]]:
+    url = discovery["url"]
     notes: list[str] = []
     try:
         result = eacli_invoke("web.read", {"url": url}, source["id"] + "-sitemap")
@@ -462,8 +635,10 @@ def fetch_sitemap(source: dict[str, Any], since: dt.datetime) -> tuple[list[dict
             {
                 "title": title_from_url(link),
                 "url": normalize_url(link),
-                "published_at": published.isoformat() if published else None,
+                "published_at": None,
+                "updated_at": published.isoformat() if published else None,
                 "summary": "",
+                "publisher": publisher_from_url(source, link),
                 "discovered_via": "sitemap",
                 "date_confidence": "lastmod" if published else "unknown",
             }
@@ -479,16 +654,33 @@ def matched_terms(text: str, terms: set[str] | list[str]) -> list[str]:
     )
 
 
+def topic_lanes(text: str) -> list[str]:
+    return sorted(
+        lane
+        for lane, terms in TOPIC_LANES.items()
+        if matched_terms(text, terms)
+    )
+
+
 def classify_entry(
     source: dict[str, Any], entry: dict[str, Any], global_excludes: list[str]
 ) -> dict[str, Any] | None:
     text = f"{entry['title']} {entry.get('summary', '')} {entry.get('url', '')}".lower()
+    title = entry["title"].lower()
     include_any = source.get("include_any", [])
     if include_any and not any(term.lower() in text for term in include_any):
+        return None
+    title_include_any = source.get("title_include_any", [])
+    if title_include_any and not any(term.lower() in title for term in title_include_any):
+        return None
+    if any(term.lower() in title for term in source.get("title_exclude_any", [])):
         return None
     mechanism = matched_terms(text, MECHANISM_TERMS)
     evidence = matched_terms(text, EVIDENCE_TERMS)
     artifacts = matched_terms(text, ARTIFACT_TERMS)
+    lanes = topic_lanes(text)
+    if source.get("require_topic_lane", False) and not lanes:
+        return None
     categories = sum(bool(items) for items in (mechanism, evidence, artifacts))
     source_noise = matched_terms(text, source.get("exclude_any", []))
     if source_noise:
@@ -496,18 +688,29 @@ def classify_entry(
     noise = matched_terms(text, global_excludes)
     if noise and categories < 2:
         return None
+    preferred_publishers = {
+        publisher.lower() for publisher in source.get("preferred_publishers", [])
+    }
+    publisher_bonus = (
+        6 if entry.get("publisher", "").lower() in preferred_publishers else 0
+    )
     release = matched_terms(text, RELEASE_TERMS)
-    if categories >= 2:
+    if categories >= 2 or (publisher_bonus and categories >= 1):
         kind = "deep_read_candidate"
     elif release:
         kind = "release_signal"
     else:
         kind = "technical_update"
-    published = parse_date(entry.get("published_at"))
+    published = parse_date(entry.get("published_at") or entry.get("updated_at"))
     age_bonus = 0
     if published:
         age_bonus = max(0, 14 - max(0, (now_utc() - published).days))
-    score = (30 if source["tier"] == "must" else 10) + categories * 8 + age_bonus
+    score = (
+        (30 if source["tier"] == "must" else 10)
+        + categories * 8
+        + age_bonus
+        + publisher_bonus
+    )
     reasons = []
     if mechanism:
         reasons.append("机制/架构")
@@ -515,6 +718,8 @@ def classify_entry(
         reasons.append("实验/评测")
     if artifacts:
         reasons.append("代码/论文/开放产物")
+    if publisher_bonus:
+        reasons.append("可信机构作者")
     if kind == "release_signal" and not reasons:
         reasons.append("重要发布")
     entry.update(
@@ -522,10 +727,13 @@ def classify_entry(
             "source_id": source["id"],
             "source_name": source["name"],
             "vendor": source["vendor"],
+            "source_class": source.get("source_class", "vendor"),
             "tier": source["tier"],
             "kind": kind,
             "score": score,
             "reasons": reasons or ["官方技术更新"],
+            "topic_lanes": lanes,
+            "source_topics": source.get("topics", []),
         }
     )
     return entry
@@ -534,21 +742,76 @@ def classify_entry(
 def fetch_source(
     source: dict[str, Any], since: dt.datetime, global_excludes: list[str], include_undated: bool
 ) -> dict[str, Any]:
+    notes: list[str] = []
+    discoveries = [source["discovery"], *source.get("discovery_fallbacks", [])]
+    discovery_mode = source.get("discovery_mode", "fallback")
+    entries: list[dict[str, Any]] = []
+    discoveries_used: list[str] = []
+    errors: list[str] = []
+    for index, discovery in enumerate(discoveries):
+        try:
+            kind = discovery["kind"]
+            if kind == "rss":
+                route_entries, route_notes = fetch_rss(source, discovery, since)
+            elif kind == "search":
+                route_entries, route_notes = fetch_search(
+                    source,
+                    discovery,
+                    since,
+                    include_undated or source.get("include_undated", False),
+                )
+            else:
+                route_entries, route_notes = fetch_sitemap(source, discovery, since)
+            notes.extend(route_notes)
+            discoveries_used.append(kind)
+            if index and discovery_mode == "fallback":
+                notes.append(
+                    f"主发现通道失败后使用备用 {kind} 通道"
+                )
+            if discovery_mode == "merge":
+                entries.extend(route_entries)
+                continue
+            if index and not route_entries and index < len(discoveries) - 1:
+                notes.append(
+                    f"备用 {kind} 通道返回 0 条，继续下一备用通道"
+                )
+                continue
+            entries = route_entries
+            break
+        except Exception as exc:  # noqa: BLE001
+            errors.append(f"{discovery.get('kind', 'unknown')}：{exc}")
+            if index < len(discoveries) - 1:
+                notes.append(
+                    f"发现通道 {discovery.get('kind', 'unknown')} 失败，尝试备用通道：{exc}"
+                )
+    if not discoveries_used:
+        return {
+            "source_id": source["id"],
+            "source_name": source["name"],
+            "ok": False,
+            "items": [],
+            "notes": notes,
+            "error": "；".join(errors) or "所有发现通道均失败",
+            "degraded": True,
+            "discovery_errors": errors,
+        }
+    if discovery_mode == "merge":
+        merged: dict[str, dict[str, Any]] = {}
+        for entry in entries:
+            merged[normalize_url(entry["url"])] = entry
+        entries = list(merged.values())
     try:
-        kind = source["discovery"]["kind"]
-        if kind == "rss":
-            entries, notes = fetch_rss(source, since)
-        elif kind == "search":
-            entries, notes = fetch_search(source, since, include_undated)
-        else:
-            entries, notes = fetch_sitemap(source, since)
         classified = []
         for entry in entries:
             item = classify_entry(source, entry, global_excludes)
             if item:
                 classified.append(item)
         classified.sort(
-            key=lambda item: (item["published_at"] or "", item["score"]), reverse=True
+            key=lambda item: (
+                item.get("published_at") or item.get("updated_at") or "",
+                item["score"],
+            ),
+            reverse=True,
         )
         return {
             "source_id": source["id"],
@@ -556,6 +819,11 @@ def fetch_source(
             "ok": True,
             "items": classified,
             "notes": notes,
+            "raw_count": len(entries),
+            "selected_count": len(classified),
+            "discovery_used": "+".join(discoveries_used),
+            "degraded": bool(errors),
+            "discovery_errors": errors,
         }
     except Exception as exc:  # noqa: BLE001
         return {
@@ -563,8 +831,10 @@ def fetch_source(
             "source_name": source["name"],
             "ok": False,
             "items": [],
-            "notes": [],
+            "notes": notes,
             "error": str(exc),
+            "degraded": True,
+            "discovery_errors": errors,
         }
 
 
@@ -587,11 +857,19 @@ def select_sources(
 def collect_updates(
     registry: dict[str, Any], sources: list[dict[str, Any]], since: dt.datetime,
     limit: int, per_source: int, workers: int, include_undated: bool = False,
+    topic_filters: set[str] | None = None,
 ) -> dict[str, Any]:
     capabilities = set()
-    if any(source["discovery"]["kind"] == "search" for source in sources):
+    discoveries = [
+        discovery
+        for source in sources
+        for discovery in [source["discovery"], *source.get("discovery_fallbacks", [])]
+    ]
+    if any(discovery["kind"] == "search" for discovery in discoveries):
         capabilities.add("web.search")
-    if any(source["discovery"]["kind"] in {"rss", "sitemap"} for source in sources):
+    if any(discovery["kind"] in {"rss", "sitemap"} for discovery in discoveries):
+        capabilities.add("web.read")
+    if any(source.get("hydrate_search_results", False) for source in sources):
         capabilities.add("web.read")
     token_plan = prepare_token_plan(capabilities) if capabilities else {}
     global_excludes = registry.get("global_exclude_any", [])
@@ -604,13 +882,53 @@ def collect_updates(
     items: list[dict[str, Any]] = []
     failures = []
     notes = []
+    source_stats = []
+    source_by_id = {source["id"]: source for source in sources}
     for result in results:
+        source_meta = source_by_id[result["source_id"]]
         if not result["ok"]:
             failures.append(
                 {"source_id": result["source_id"], "source_name": result["source_name"], "error": result["error"]}
             )
+            source_stats.append(
+                {
+                    "source_id": result["source_id"],
+                    "source_name": result["source_name"],
+                    "source_class": source_meta.get("source_class", "vendor"),
+                    "tier": source_meta["tier"],
+                    "ok": False,
+                    "raw_count": 0,
+                    "selected_count": 0,
+                    "discovery_used": None,
+                    "degraded": True,
+                    "sample": [],
+                }
+            )
             continue
         items.extend(result["items"][:per_source])
+        source_stats.append(
+            {
+                "source_id": result["source_id"],
+                "source_name": result["source_name"],
+                "source_class": source_meta.get("source_class", "vendor"),
+                "tier": source_meta["tier"],
+                "ok": True,
+                "raw_count": result.get("raw_count", 0),
+                "selected_count": result.get("selected_count", 0),
+                "discovery_used": result.get("discovery_used"),
+                "degraded": result.get("degraded", False),
+                "sample": [
+                    {
+                        "title": item["title"],
+                        "url": item["url"],
+                        "publisher": item.get("publisher"),
+                        "kind": item["kind"],
+                        "score": item["score"],
+                    }
+                    for item in result["items"][:3]
+                ],
+            }
+        )
         for note in result["notes"]:
             notes.append({"source_id": result["source_id"], "note": note})
     deduped: dict[str, dict[str, Any]] = {}
@@ -620,7 +938,40 @@ def collect_updates(
         if previous is None or item["score"] > previous["score"]:
             deduped[key] = item
     items = list(deduped.values())
-    items.sort(key=lambda item: (item["score"], item["published_at"] or ""), reverse=True)
+    title_deduped: dict[str, dict[str, Any]] = {}
+    for item in items:
+        title_key = re.sub(r"[^a-z0-9\u4e00-\u9fff]+", "", item["title"].lower())
+        previous = title_deduped.get(title_key)
+        if previous is None:
+            title_deduped[title_key] = item
+            continue
+        winner, alternate = (
+            (item, previous) if item["score"] > previous["score"] else (previous, item)
+        )
+        alternates = list(winner.get("alternate_sources", []))
+        alternates.append(
+            {
+                "source_id": alternate["source_id"],
+                "source_name": alternate["source_name"],
+                "url": alternate["url"],
+            }
+        )
+        winner["alternate_sources"] = alternates
+        title_deduped[title_key] = winner
+    items = list(title_deduped.values())
+    if topic_filters:
+        items = [
+            item
+            for item in items
+            if topic_filters.intersection(item.get("topic_lanes", []))
+        ]
+    items.sort(
+        key=lambda item: (
+            item["score"],
+            item.get("published_at") or item.get("updated_at") or "",
+        ),
+        reverse=True,
+    )
     items = items[:limit]
     return {
         "schema_version": 1,
@@ -628,9 +979,14 @@ def collect_updates(
         "since": since.isoformat(),
         "sources_requested": len(sources),
         "sources_succeeded": len(sources) - len(failures),
+        "sources_degraded": sum(
+            1 for stat in source_stats if stat.get("ok") and stat.get("degraded")
+        ),
         "items": items,
         "failures": failures,
         "transport_notes": notes,
+        "source_stats": source_stats,
+        "topic_filters": sorted(topic_filters or []),
         "token_plan": token_plan,
     }
 
@@ -640,7 +996,8 @@ def markdown_updates(summary: dict[str, Any]) -> str:
         "# 顶尖 AI 技术博客更新",
         "",
         f"> 时间窗：{summary['since'][:10]} 至 {summary['generated_at'][:10]}｜"
-        f"来源：{summary['sources_succeeded']}/{summary['sources_requested']} 成功",
+        f"来源：{summary['sources_succeeded']}/{summary['sources_requested']} 成功｜"
+        f"降级：{summary['sources_degraded']}",
     ]
     groups = [
         ("deep_read_candidate", "值得重点看"),
@@ -653,9 +1010,19 @@ def markdown_updates(summary: dict[str, Any]) -> str:
             continue
         lines.extend(["", f"## {title}", ""])
         for item in rows:
-            date = item["published_at"][:10] if item.get("published_at") else "日期未解析"
+            if item.get("published_at"):
+                date = item["published_at"][:10]
+            elif item.get("updated_at"):
+                date = item["updated_at"][:10] + "（页面更新）"
+            elif item.get("date_confidence") == "search-window":
+                date = "时间窗内发现（日期未核实）"
+            else:
+                date = "日期未解析"
             reasons = "、".join(item["reasons"])
-            lines.append(f"- **[{item['title']}]({item['url']})** · {item['source_name']} · {date} · {reasons}")
+            source_label = item["source_name"]
+            if item.get("publisher") and item["publisher"].lower() != item["vendor"].lower():
+                source_label += f" · {item['publisher']}"
+            lines.append(f"- **[{item['title']}]({item['url']})** · {source_label} · {date} · {reasons}")
             if item.get("summary"):
                 lines.append(f"  {item['summary']}")
     if not summary["items"]:
@@ -673,16 +1040,57 @@ def markdown_updates(summary: dict[str, Any]) -> str:
 
 def channels_markdown(sources: list[dict[str, Any]]) -> str:
     lines = [
-        "| ID | 渠道 | 档位 | 状态 | 发现方式 | 入口 |",
-        "|---|---|---|---|---|---|",
+        "| ID | 渠道 | 类型 | 档位 | 状态 | 发现方式 | 备用 | 入口 |",
+        "|---|---|---|---|---|---|---:|---|",
     ]
     for source in sources:
         discovery = source["discovery"]
         endpoint = discovery.get("url") or discovery.get("query") or ""
         lines.append(
-            f"| `{source['id']}` | {source['name']} | {source['tier']} | "
-            f"{'启用' if source['enabled'] else '停用'} | {discovery['kind']} | {endpoint} |"
+            f"| `{source['id']}` | {source['name']} | {source.get('source_class', 'vendor')} | "
+            f"{source['tier']} | {'启用' if source['enabled'] else '停用'} | "
+            f"{discovery['kind']} | {len(source.get('discovery_fallbacks', []))} | {endpoint} |"
         )
+    return "\n".join(lines) + "\n"
+
+
+def scorecard_markdown(
+    registry: dict[str, Any], summary: dict[str, Any]
+) -> str:
+    sources = {source["id"]: source for source in registry["sources"]}
+    lines = [
+        "# 技术博客渠道评分卡",
+        "",
+        f"> 时间窗：{summary['since'][:10]} 至 {summary['generated_at'][:10]}｜"
+        f"来源：{summary['sources_succeeded']}/{summary['sources_requested']} 成功｜"
+        f"降级：{summary['sources_degraded']}",
+        "",
+        "| 渠道 | 类型 | 档位 | 原始 | 入选 | 筛选率 | 发现 | 代表文章 |",
+        "|---|---|---|---:|---:|---:|---|---|",
+    ]
+    for stat in summary["source_stats"]:
+        source = sources[stat["source_id"]]
+        raw = stat["raw_count"]
+        selected = stat["selected_count"]
+        rate = f"{selected / raw:.0%}" if raw else "—"
+        sample = (
+            "；".join(
+                item["title"].replace("|", "\\|")
+                for item in stat.get("sample", [])[:2]
+            )
+            or "—"
+        )
+        discovery = stat.get("discovery_used") or "失败"
+        if stat.get("degraded"):
+            discovery += "（降级）"
+        lines.append(
+            f"| `{source['id']}` | {source.get('source_class', 'vendor')} | {source['tier']} | "
+            f"{raw} | {selected} | {rate} | {discovery} | {sample} |"
+        )
+    if summary["failures"]:
+        lines.extend(["", "## 获取失败", ""])
+        for failure in summary["failures"]:
+            lines.append(f"- {failure['source_name']}：{failure['error']}")
     return "\n".join(lines) + "\n"
 
 
@@ -749,9 +1157,10 @@ def cmd_updates(args: argparse.Namespace) -> int:
         sources,
         since,
         args.limit if args.limit is not None else int(defaults.get("limit", 30)),
-        args.per_source,
+        args.per_source if args.per_source is not None else int(defaults.get("per_source", 3)),
         args.workers if args.workers is not None else int(defaults.get("workers", 4)),
         args.include_undated,
+        set(args.topic),
     )
     output(summary if args.format == "json" else markdown_updates(summary), args.format)
     return 2 if sources and summary["sources_succeeded"] == 0 else 0
@@ -835,8 +1244,10 @@ def cmd_channels_validate(args: argparse.Namespace) -> int:
         result["live"] = {
             "requested": probe["sources_requested"],
             "succeeded": probe["sources_succeeded"],
+            "degraded": probe["sources_degraded"],
             "failures": probe["failures"],
             "transport_notes": probe["transport_notes"],
+            "source_stats": probe["source_stats"],
         }
         if probe["failures"]:
             result["valid"] = False
@@ -847,10 +1258,42 @@ def cmd_channels_validate(args: argparse.Namespace) -> int:
         lines.extend(f"- {error}" for error in errors)
         if result.get("live"):
             live = result["live"]
-            lines.append(f"联网检查：{live['succeeded']}/{live['requested']} 成功")
+            lines.append(
+                f"联网检查：{live['succeeded']}/{live['requested']} 成功，"
+                f"{live['degraded']} 个降级"
+            )
             lines.extend(f"- {item['source_name']}：{item['error']}" for item in live["failures"])
         output("\n".join(lines) + "\n", "md")
     return 0 if result["valid"] else 1
+
+
+def cmd_channels_evaluate(args: argparse.Namespace) -> int:
+    registry = load_registry(args.registry)
+    sources = select_sources(registry, args.source, args.tier)
+    since = now_utc() - dt.timedelta(days=args.days)
+    summary = collect_updates(
+        registry,
+        sources,
+        since,
+        limit=max(1, len(sources) * args.per_source),
+        per_source=args.per_source,
+        workers=args.workers,
+        include_undated=False,
+    )
+    value = {
+        "schema_version": 1,
+        "generated_at": summary["generated_at"],
+        "since": summary["since"],
+        "sources_requested": summary["sources_requested"],
+        "sources_succeeded": summary["sources_succeeded"],
+        "sources_degraded": summary["sources_degraded"],
+        "source_stats": summary["source_stats"],
+        "failures": summary["failures"],
+        "transport_notes": summary["transport_notes"],
+        "token_plan": summary["token_plan"],
+    }
+    output(value if args.format == "json" else scorecard_markdown(registry, summary), args.format)
+    return 2 if sources and summary["sources_succeeded"] == 0 else 0
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -864,9 +1307,13 @@ def build_parser() -> argparse.ArgumentParser:
     updates.add_argument("--source", action="append", default=[], help="只查指定 source id，可重复")
     updates.add_argument("--tier", choices=["all", "must", "watch"], default="all")
     updates.add_argument("--limit", type=int, help="总条数上限")
-    updates.add_argument("--per-source", type=int, default=5, help="每源条数上限")
+    updates.add_argument("--per-source", type=int, help="每源条数上限，默认读取 registry")
     updates.add_argument("--workers", type=int, help="并发数")
     updates.add_argument("--include-undated", action="store_true", help="包含搜索结果中无法解析日期的条目")
+    updates.add_argument(
+        "--topic", action="append", default=[], choices=sorted(TOPIC_LANES),
+        help="只保留指定技术主题，可重复",
+    )
     updates.add_argument("--format", choices=["json", "md"], default="md")
     updates.set_defaults(func=cmd_updates)
 
@@ -907,6 +1354,17 @@ def build_parser() -> argparse.ArgumentParser:
     channel_validate.add_argument("--workers", type=int, default=4)
     channel_validate.add_argument("--format", choices=["json", "md"], default="md")
     channel_validate.set_defaults(func=cmd_channels_validate)
+
+    channel_evaluate = channel_sub.add_parser(
+        "evaluate", help="回测渠道的产出量、筛选率与代表文章"
+    )
+    channel_evaluate.add_argument("--days", type=int, default=14)
+    channel_evaluate.add_argument("--source", action="append", default=[])
+    channel_evaluate.add_argument("--tier", choices=["all", "must", "watch"], default="all")
+    channel_evaluate.add_argument("--per-source", type=int, default=20)
+    channel_evaluate.add_argument("--workers", type=int, default=4)
+    channel_evaluate.add_argument("--format", choices=["json", "md"], default="md")
+    channel_evaluate.set_defaults(func=cmd_channels_evaluate)
     return parser
 
 

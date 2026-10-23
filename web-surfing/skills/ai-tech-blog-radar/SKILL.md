@@ -1,6 +1,6 @@
 ---
 name: ai-tech-blog-radar
-description: 查询顶尖 AI 厂商与实验室官方技术博客的近期更新，或增删改查这份渠道清单；用户说“顶尖技术博客最近有什么更新”“AI 技术博客更新”“更新技术博客渠道”时使用。普通 AI 新闻日报、个人博客调研和单篇文章深度分析不使用。
+description: 查询顶尖 AI 厂商、实验室与官方工程项目的技术博客近期更新，或增删改查和回测这份渠道清单；用户说“顶尖技术博客最近有什么更新”“AI 技术博客更新”“更新技术博客渠道”时使用。普通 AI 新闻日报、个人博客调研和单篇文章深度分析不使用。
 ---
 
 # 顶尖 AI 技术博客雷达
@@ -14,6 +14,10 @@ description: 查询顶尖 AI 厂商与实验室官方技术博客的近期更新
 ```bash
 python3 web-surfing/skills/ai-tech-blog-radar/scripts/radar.py \
   updates --days 7 --format json
+
+# 只看 Agent/Harness 或推理系统
+python3 web-surfing/skills/ai-tech-blog-radar/scripts/radar.py \
+  updates --days 7 --topic agent_harness --topic inference_systems --format json
 ```
 
 - 用户给了时间范围时换成 `--days N` 或 `--since YYYY-MM-DD`。
@@ -28,6 +32,7 @@ SCRIPT=web-surfing/skills/ai-tech-blog-radar/scripts/radar.py
 
 python3 "$SCRIPT" channels list --format md
 python3 "$SCRIPT" channels get openai-developer
+python3 "$SCRIPT" channels evaluate --days 14 --format md
 python3 "$SCRIPT" channels update deepseek --set tier=must
 python3 "$SCRIPT" channels validate --live --format json
 python3 "$SCRIPT" channels add --file /tmp/new-source.json
@@ -36,6 +41,7 @@ python3 "$SCRIPT" channels remove source-id --yes
 
 - 用户明确指定新增、修改、停用或删除时直接执行。
 - 用户只说“更新一下渠道”时，先做 live validate，再研究失效源与新候选；只有一手内容质量或订阅可用性发生实际变化才修改。
+- 新渠道先用 `channels evaluate` 回测 14 天，检查原始条数、筛选率和代表文章；通过后再决定 `must/watch`，不要只凭品牌知名度升级。
 - `must` 表示默认进入更新雷达；`watch` 表示需经过技术关键词过滤。不要为凑数量扩充名单。
 - 修改注册表后运行非联网 `channels validate`。
 
@@ -44,6 +50,7 @@ python3 "$SCRIPT" channels remove source-id --yes
 ## 访问与证据边界
 
 - 普通网页搜索与读取由脚本通过 eacli Token Plan 执行。
-- RSS/sitemap 先走 eacli `web.read`；只有内容被截断、XML 结构丢失或访问失败时，才降级到只读 HTTP 解析，并在输出中记录原因。
-- 只收厂商或实验室官方源。个人、媒体、Newsletter 和通用 AI 新闻走其它任务。
+- RSS/sitemap 先走 eacli `web.read`；只有内容被截断、XML 结构丢失或访问失败时，才降级到只读 HTTP 解析，并在输出中记录原因。主发现通道失败时，按注册表中的备用通道降级。
+- 只收厂商、实验室、官方开源项目和一手工程团队。个人、媒体、Newsletter 和通用 AI 新闻走其它任务。
+- Sitemap `lastmod` 只记录为页面更新时间，不能冒充文章发布日期；搜索结果缺日期时，只有显式启用正文回读并核验出日期后才进入时间窗。
 - 厂商 benchmark 属厂商自报；更新汇报只说明“官方称”，不能写成独立验证结论。
