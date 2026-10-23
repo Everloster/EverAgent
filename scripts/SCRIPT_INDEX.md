@@ -1,7 +1,7 @@
 # 脚本目录
 
 > Generated from script-catalog.json; do not edit by hand.
-> source-sha256: `ab097419a76244b35a13d03b3f332a461c12483e07644935320cb16e5baf9c33`
+> source-sha256: `96dc21a31f2352cf0c47ba0f99b2aa4e241426c41cf6f04be025db8c67bac722`
 > generator-sha256: `a62b18e2c1d16f8ba9f57e556b7863565c858570b49a63d3ac19c890a520962b`
 
 | ID | 入口 | 描述 | 范围 |
@@ -15,3 +15,4 @@
 | ↳ compatibility | `scripts/ecommit.sh` | 兼容 Bash 入口；仅寻找 Python 并转交提交器。 | 同 canonical |
 | `scripts.catalog` | `scripts/script_catalog.py` | 查看本族脚本的描述、owner、兼容名、平台和输入输出契约。 | 当前调用方和 checkout |
 | `core.bootstrap` | `scripts/core_bootstrap.py` | 从当前公开 checkout 加载唯一公共 core，实现稳定脚本的源码运行。 | 当前调用方和 checkout |
+| `evaluation.harness-experiment` | `scripts/harness_selection.py` | 消费可信评测器记录，按硬门和 Pareto 前沿选择最多三个 context 候选；不执行或发布。 | 可信评测记录与一次有界实验 |

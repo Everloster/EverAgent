@@ -190,6 +190,34 @@
         "section": "A"
       },
       "scope": "当前调用方和 checkout"
+    },
+    {
+      "id": "evaluation.harness-experiment",
+      "description": "消费可信评测器记录，按硬门和 Pareto 前沿选择最多三个 context 候选；不执行或发布。",
+      "entrypoint": "scripts/harness_selection.py",
+      "owner": {
+        "repository": "EverAgent",
+        "path": "scripts/harness_selection.py"
+      },
+      "kind": "canonical",
+      "aliases": [],
+      "platforms": [
+        "macos",
+        "linux",
+        "windows"
+      ],
+      "requirements": [
+        "Python >=3.10"
+      ],
+      "input": "--help",
+      "output": "Harness selection v1; production_apply=false",
+      "side_effects": [],
+      "authorization": {
+        "repository": "EverAgent",
+        "path": "docs/PROTOCOL_COMMON.md",
+        "section": "A"
+      },
+      "scope": "可信评测记录与一次有界实验"
     }
   ]
 }
