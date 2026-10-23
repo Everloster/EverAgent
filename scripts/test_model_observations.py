@@ -335,6 +335,112 @@ class ClaudeObservationTests(unittest.TestCase):
                                                   '"model": "observed-claude-model", "model": "forged"'))
         self.assertFalse(models.model_evidence("claude-code")["current_model_confirmed"])
 
+    def test_partial_tail_retries_same_file_and_observes_the_new_model(self):
+        self.path.write_text(self.record() + '{"type":"assistant","message":')
+        def finish(_delay):
+            self.path.write_text(self.record() + self.record("new-model", uuid="new-turn"))
+        with patch.object(observations.time, "sleep", side_effect=finish) as settle:
+            value = diagnostics.diagnose()
+        self.assertEqual(value["identity"]["model"], "new-model")
+        self.assertTrue(value["identity"]["current_model_confirmed"])
+        self.assertFalse(value["identity"]["user_model_declared"])
+        self.assertEqual(value["automatic_probe"]["retry_count"], 1)
+        settle.assert_called_once_with(observations.CLAUDE_READ_SETTLE_SECONDS)
+        self.assertNotIn("PRIVATE-DIALOG-SENTINEL", json.dumps(value))
+        self.assertNotIn(str(self.root), json.dumps(value))
+
+    def test_persistent_partial_tail_is_bounded_and_never_borrows_old_model(self):
+        self.path.write_text(self.record() + '{"type":"assistant",')
+        with patch.object(observations.time, "sleep") as settle, patch.object(
+                observations, "_claude_tail", wraps=observations._claude_tail) as read:
+            value = diagnostics.diagnose()
+        self.assertFalse(value["identity"]["current_model_confirmed"])
+        self.assertFalse(value["commit_allowed"])
+        self.assertEqual(value["automatic_probe"]["reason_code"], "native-observation-in-progress")
+        self.assertEqual(value["automatic_probe"]["retry_count"], observations.CLAUDE_READ_ATTEMPTS - 1)
+        self.assertEqual(read.call_count, observations.CLAUDE_READ_ATTEMPTS)
+        self.assertEqual(settle.call_count, observations.CLAUDE_READ_ATTEMPTS - 1)
+
+    def test_complete_malformed_tail_does_not_retry_or_reuse(self):
+        invalid = self.record().replace('"model": "observed-claude-model"',
+                                       '"model": "observed-claude-model", "model": "forged"')
+        for tail in (invalid, invalid.rstrip(), '{"type":"assistant",}\n'):
+            with self.subTest(tail=tail), patch.object(observations.time, "sleep") as settle:
+                self.path.write_text(self.record() + tail)
+                value = diagnostics.diagnose()
+                self.assertFalse(value["commit_allowed"])
+                self.assertEqual(value["automatic_probe"]["reason_code"], "native-metadata-invalid")
+                settle.assert_not_called()
+
+    def test_partial_completion_with_missing_or_foreign_proof_stays_unverified(self):
+        for changes in ({"message": {}}, {"sessionId": "foreign"}, {"cwd": str(self.root / "other")},
+                        {"isSidechain": None}, {"timestamp": None}):
+            with self.subTest(changes=changes):
+                self.path.write_text(self.record() + '{"type":"assistant",')
+                def finish(_delay):
+                    self.path.write_text(self.record() + self.record(**changes))
+                with patch.object(observations.time, "sleep", side_effect=finish):
+                    value = diagnostics.diagnose()
+                self.assertFalse(value["commit_allowed"])
+                self.assertEqual(value["automatic_probe"]["reason_code"], "native-assistant-binding-invalid")
+
+    def test_concurrent_snapshot_write_is_retried_before_any_model_is_used(self):
+        old = self.record().encode().splitlines()
+        new = self.record("new-model", uuid="new-turn").encode().splitlines()
+        with patch.object(observations, "_claude_tail", side_effect=[(old, True, False), (new, True, True)]) as read, patch.object(
+                observations.time, "sleep") as settle:
+            value = diagnostics.diagnose()
+        self.assertEqual(value["identity"]["model"], "new-model")
+        self.assertEqual(read.call_count, 2)
+        settle.assert_called_once()
+
+    def test_fresh_clock_after_settle_handles_concurrent_mtime(self):
+        os.utime(self.path, (self.now + 1, self.now + 1))
+        probe = {}
+        with patch.object(observations.time, "time", return_value=self.now + 2), patch.object(
+                observations.time, "sleep") as settle:
+            value = observations._claude(THREAD, owner("claude", self.now - 10), self.now, diagnostics=probe)
+        self.assertEqual(value["model"], "observed-claude-model")
+        self.assertEqual(value["observed_at"], self.now + 2)
+        self.assertEqual(probe["retry_count"], 1)
+        settle.assert_called_once()
+
+    def test_future_mtime_remains_unverified_after_bounded_retry(self):
+        os.utime(self.path, (self.now + 5, self.now + 5))
+        probe = {}
+        with patch.object(observations.time, "time", return_value=self.now), patch.object(
+                observations.time, "sleep") as settle:
+            value = observations._claude(THREAD, owner("claude", self.now - 10), self.now, diagnostics=probe)
+        self.assertIsNone(value)
+        self.assertEqual(probe["reason_code"], "native-observation-in-progress")
+        self.assertEqual(settle.call_count, observations.CLAUDE_READ_ATTEMPTS - 1)
+
+    def test_oversized_record_is_not_retried_or_skipped(self):
+        self.path.write_text(self.record() + self.record(message={"model": "new-model", "content": "x" * observations.MAX_RECORD_BYTES}))
+        with patch.object(observations.time, "sleep") as settle:
+            value = diagnostics.diagnose()
+        self.assertFalse(value["commit_allowed"])
+        self.assertEqual(value["automatic_probe"]["reason_code"], "native-record-oversized")
+        settle.assert_not_called()
+
+    def test_partial_utf8_tail_can_settle_without_decoding_conversation_body(self):
+        self.path.write_bytes(self.record().encode() + b'{"type":"user","message":{"content":"' + "中".encode()[:1])
+        def finish(_delay):
+            self.path.write_text(self.record() + json.dumps({"type":"user", "message":{"content":"PRIVATE-DIALOG-SENTINEL"}}) + "\n")
+        with patch.object(observations.time, "sleep", side_effect=finish) as settle:
+            value = diagnostics.diagnose()
+        self.assertTrue(value["commit_allowed"])
+        self.assertNotIn("PRIVATE-DIALOG-SENTINEL", json.dumps(value))
+        settle.assert_called_once()
+
+    def test_claude_snapshot_retains_eof_and_stays_within_the_tail_budget(self):
+        self.path.write_bytes(b"x" * (observations.MAX_TAIL_BYTES + 42) + b"\n" + self.record().encode())
+        lines, terminated, stable = observations._claude_tail(self.path)
+        self.assertEqual(lines, self.record().encode().splitlines())
+        self.assertTrue(terminated)
+        self.assertTrue(stable)
+        self.assertTrue(models.model_evidence("claude-code")["current_model_confirmed"])
+
     def test_no_persistence_or_symlink_stays_unverified(self):
         original = self.path.read_text()
         self.path.unlink()

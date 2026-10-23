@@ -19,6 +19,8 @@ MODEL_RE = declarations.MODEL_RE
 MAX_TAIL_BYTES = 4 * 1024 * 1024
 MAX_RECORD_BYTES = 128 * 1024
 MAX_AGE_SECONDS = 300
+CLAUDE_READ_ATTEMPTS = 3
+CLAUDE_READ_SETTLE_SECONDS = 0.02
 _CODEX_ENVELOPE = re.compile(
     rb'^\s*\{\s*"timestamp"\s*:\s*"[^"\n]+"'
     rb'(?:\s*,\s*"ordinal"\s*:\s*\d+)?\s*,\s*"type"\s*:\s*"([^"]+)"\s*,\s*"payload"\s*:'
@@ -275,19 +277,30 @@ def _json_object_spans(text: str, start: int = 0, limit: int | None = None) -> d
             if text[position + 1:limit].strip():
                 raise ValueError("metadata-trailing-data")
             return spans
-        if position >= limit or text[position] != '"':
+        if position >= limit:
+            raise ValueError("metadata-incomplete-key")
+        if text[position] != '"':
             raise ValueError("metadata-invalid-key")
-        key, position = json.decoder.scanstring(text, position + 1)
+        try:
+            key, position = json.decoder.scanstring(text, position + 1)
+        except json.JSONDecodeError as exc:
+            if exc.msg.startswith("Unterminated string"):
+                raise ValueError("metadata-incomplete-key") from exc
+            raise
         if key in spans:
             raise ValueError("metadata-duplicate-key")
         while position < limit and text[position].isspace():
             position += 1
-        if position >= limit or text[position] != ":":
+        if position >= limit:
+            raise ValueError("metadata-incomplete-colon")
+        if text[position] != ":":
             raise ValueError("metadata-missing-colon")
         position += 1
         while position < limit and text[position].isspace():
             position += 1
         end = _json_value_end(text, position, limit)
+        if end <= position and end == limit:
+            raise ValueError("metadata-incomplete-value")
         if end <= position:
             raise ValueError("metadata-empty-value")
         spans[key] = (position, end)
@@ -298,7 +311,9 @@ def _json_object_spans(text: str, start: int = 0, limit: int | None = None) -> d
             position += 1
             if text[position:limit].lstrip().startswith("}"):
                 raise ValueError("metadata-trailing-comma")
-        elif position >= limit or text[position] != "}":
+        elif position >= limit:
+            raise ValueError("metadata-incomplete-delimiter")
+        elif text[position] != "}":
             raise ValueError("metadata-missing-delimiter")
     raise ValueError("metadata-incomplete-object")
 
@@ -317,37 +332,80 @@ def _claude_metadata(raw: bytes) -> dict:
     return row
 
 
-def _claude(native: str, owner: dict, now: float) -> dict | None:
+def _claude_tail(path: Path) -> tuple[list[bytes], bool, bool]:
+    """Read one bounded snapshot, retaining EOF and concurrent-write evidence."""
+    with path.open("rb") as handle:
+        before = os.fstat(handle.fileno())
+        offset = max(0, before.st_size - MAX_TAIL_BYTES)
+        handle.seek(offset)
+        data = handle.read(MAX_TAIL_BYTES)
+        after = os.fstat(handle.fileno())
+    lines = data.splitlines()
+    stable = (before.st_size, before.st_mtime_ns) == (after.st_size, after.st_mtime_ns)
+    return (lines[1:] if offset else lines), data.endswith(b"\n"), stable
+
+
+def _claude(native: str, owner: dict, now: float, *, diagnostics: dict | None = None) -> dict | None:
+    def unavailable(reason):
+        if diagnostics is not None:
+            diagnostics["reason_code"] = reason
+        return None
+
     home, started = declarations.safe_home(), _started_at(owner)
     if home is None or started is None or not re.fullmatch(
             r"[0-9a-fA-F]{8}(?:-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}", native):
-        return None
+        return unavailable("native-session-binding-unavailable")
     root = Path(os.environ.get("CLAUDE_CONFIG_DIR") or home / ".claude").expanduser()
     cwd = Path.cwd().resolve()
     project = re.sub(r"[^a-zA-Z0-9]", "-", str(cwd))
     path = root / "projects" / project / (native + ".jsonl")
-    if (not _regular(path) or not path.resolve().is_relative_to(root.resolve())
-            or not 0 <= now - path.stat().st_mtime <= MAX_AGE_SECONDS):
-        return None
-    for raw in reversed(_tail(path)):
-        if len(raw) > MAX_RECORD_BYTES:
-            return None
-        try:
-            row = _claude_metadata(raw)
-        except (ValueError, UnicodeError):
-            return None
-        if row.get("type") != "assistant" or row.get("isSidechain") is True:
-            continue
-        # Never borrow another session, checkout, old process or older model
-        # when the newest native assistant metadata is incomplete.
-        at, model = _timestamp(row.get("timestamp")), _model(row.get("model"))
-        if (row.get("isSidechain") is not False or row.get("sessionId") != native or row.get("cwd") != str(cwd)
-                or not isinstance(row.get("uuid"), str) or not row["uuid"]
-                or at is None or at < started - 2
-                or not 0 <= now - at <= MAX_AGE_SECONDS or model is None):
-            return None
-        return {"model": model, "source": "claude-session-runtime", "turn": row["uuid"]}
-    return None
+    for attempt in range(CLAUDE_READ_ATTEMPTS):
+        if diagnostics is not None:
+            diagnostics["retry_count"] = attempt
+        if not _regular(path) or not path.resolve().is_relative_to(root.resolve()):
+            return unavailable("native-session-file-unavailable")
+        age = now - path.stat().st_mtime
+        if age > MAX_AGE_SECONDS:
+            return unavailable("native-session-file-stale")
+        transient = age < 0
+        if not transient:
+            lines, terminated, stable = _claude_tail(path)
+            transient = not stable
+            if stable:
+                for index, raw in enumerate(reversed(lines)):
+                    if len(raw) > MAX_RECORD_BYTES:
+                        return unavailable("native-record-oversized")
+                    try:
+                        row = _claude_metadata(raw)
+                    except (ValueError, UnicodeError) as exc:
+                        # Retry only an unfinished final JSON object. Complete
+                        # malformed records still fail; never skip to an older model.
+                        incomplete = str(exc).startswith("metadata-incomplete") or (
+                            isinstance(exc, UnicodeDecodeError) and exc.reason == "unexpected end of data")
+                        if index == 0 and not terminated and incomplete:
+                            transient = True
+                            break
+                        return unavailable("native-metadata-invalid")
+                    if row.get("type") != "assistant" or row.get("isSidechain") is True:
+                        continue
+                    at, model = _timestamp(row.get("timestamp")), _model(row.get("model"))
+                    if (row.get("isSidechain") is not False or row.get("sessionId") != native
+                            or row.get("cwd") != str(cwd) or not isinstance(row.get("uuid"), str)
+                            or not row["uuid"] or at is None or at < started - 2 or model is None):
+                        return unavailable("native-assistant-binding-invalid")
+                    if now - at > MAX_AGE_SECONDS:
+                        return unavailable("native-assistant-stale")
+                    if at > now:
+                        transient = True
+                        break
+                    return {"model": model, "source": "claude-session-runtime", "turn": row["uuid"],
+                            "observed_at": now}
+                if not transient:
+                    return unavailable("native-current-assistant-unavailable")
+        if attempt + 1 < CLAUDE_READ_ATTEMPTS:
+            time.sleep(CLAUDE_READ_SETTLE_SECONDS)
+            now = time.time()
+    return unavailable("native-observation-in-progress")
 
 
 def _zcode_session_token(owner: dict) -> str | None:
@@ -519,7 +577,12 @@ def collect(harness: str, scope: dict | None, *, diagnostics: dict | None = None
             if sum(processes.matches_row(row, names) for row in processes.process_chain()) != 1:
                 return unavailable("ambiguous-harness-ancestry")
         now = time.time()
-        if harness == "minimax-code":
+        detail = {}
+        if harness == "claude-code":
+            found = _claude(native, owner, now, diagnostics=detail)
+            if diagnostics is not None:
+                diagnostics.update(detail)
+        elif harness == "minimax-code":
             found = _minimax(owner, now)
         else:
             readers = {"codex": _codex, "trae": _trae, "claude-code": _claude, "zcode": _zcode}
@@ -528,11 +591,11 @@ def collect(harness: str, scope: dict | None, *, diagnostics: dict | None = None
             reference = found.get("session") or native
             if diagnostics is not None:
                 diagnostics.update(status="observed", reason_code=None, source=found["source"])
-            return {"harness": harness, "scope": scope, "observed_at": now,
+            return {"harness": harness, "scope": scope, "observed_at": found.get("observed_at", now),
                     "model": found["model"], "source": found["source"],
                     "observation_ref": declarations.digest([harness, reference, found.get("turn"), found["model"]])[:24]}
     except (OSError, ValueError, TypeError, AttributeError, sqlite3.Error, StopIteration) as exc:
         if diagnostics is not None:
             diagnostics["error_type"] = type(exc).__name__
         return unavailable("automatic-probe-error")
-    return unavailable("native-metadata-unavailable-or-invalid")
+    return unavailable(detail.get("reason_code", "native-metadata-unavailable-or-invalid"))

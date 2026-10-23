@@ -77,6 +77,13 @@ Claude Code 从自身用户配置目录的 `projects/<cwd 编码>/<session UUID>
 单行上限 128 KiB。缺记录、关闭 session persistence、错误 cwd、sidechain、重启、过期或模型字段缺失
 均不核实。该规则不把普通 Python executor 识别为 Agent，也不允许静态 `AGENT_ID` 署名。
 
+Claude 原件正在追加、末行 JSON/UTF-8 尚未写完，或读取时钟早于并发写入时，读取器只对同一路径最多
+重读三次，两次之间等待 20 ms 并重新取时间。持续未完成返回 `native-observation-in-progress`；不跳过
+末行借用旧模型。完整畸形记录、超大记录或缺少最新 assistant 绑定分别给出
+`native-metadata-invalid`、`native-record-oversized`、`native-assistant-binding-invalid`，不自动重试或放行。
+`automatic_probe.retry_count` 记录实际重读次数。复现某种输入失败不等于证明历史失败原因；缺当时原件时
+保留待验证，不能用当前重试成功代替历史证据。
+
 ZCode Desktop 无会话环境变量；会话标签出现在 Bash 工具 shell 启动命令的
 `~/.zcode/cli/exec/bash-startup/<会话标签>/` 路径中。读取器沿调用方祖先链逐个用 `ps` 读 shell 命令行，
 直到找到携带会话标签的执行 shell（hook 包装层 sh/git 不带标签），再在
