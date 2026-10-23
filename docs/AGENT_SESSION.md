@@ -50,6 +50,7 @@ App 身份或版本可见不代表当前模型可见；无法核实时保持 unk
 | TRAE | 精确 thread 的运行日志模型字段与请求时间；支持原有 thread alias，嵌套 Codex 不借外层 ID |
 | Claude Code | 精确 UUID session 的原生 assistant `message.model`；绑定当前调用方进程创建时间、cwd 和新鲜记录，不借配置中的模型 |
 | ZCode | 当前会话 `model-io-<会话标签>` 请求记录前缀的 `modelId`；会话标签取自本执行 shell 启动命令的 bash-startup 路径，绑定 zcode-cli 进程创建时间与新鲜完成记录 |
+| MiniMax Code | 本地运行时的 turn 租约绑定的会话元数据：租约 owner 的 pid 必须是当前调用方的祖先进程，再取该会话最新一条模型计量记录 |
 
 读取器只取当前调用方元数据；Codex 日志尾部有 4 MiB 上限，SQLite 只读查询指定 thread 的模型字段。
 配置默认值、同目录的其他会话、全局最近日志与无来源的环境变量不构成核实。原生读取失败保留提示与未核实状态，
@@ -69,8 +70,16 @@ ZCode Desktop 无会话环境变量；会话标签出现在 Bash 工具 shell �
 rollout 或记录过期（>5 分钟）、记录早于 zcode-cli 进程创建时间、模型字段非法或最近请求记录不可用
 均不核实；常驻 zcode-host 不是会话 owner，进程链最近匹配必须是会话级 zcode-cli。
 
-模型声明要求 `--user-confirmed`，它表示用户本次明确指定，不能由 Agent 根据配置自行补旗标。
-receipt 仅存在本机用户状态目录；默认 4 小时，最长 12 小时。harness 进程或 session/terminal 改变、
+MiniMax Code Desktop 同样没有会话环境变量，且 Bash 工具起的是普通 `/bin/bash -c`，命令行不含会话标签。
+运行时把正在执行的 turn 租给对应进程：`~/.minimax/v2/sqlite/runtime-state.sqlite` 的
+`local_runtime_session_locks` 以 `session_id` 为主键，`owner_id` 形如 `turn-lease:<pid>:<uuid>`。
+读取器只接受 owner 的 pid 属于当前调用方祖先链且租约未过期的记录；租约必须唯一命中一个会话，
+否则视为无法区分而不核实。随后取该会话 `local_runtime_token_usage` 中最新一条模型计量记录，
+要求时间在 5 分钟内、不早于调用方进程创建时间，模型字段去掉供应商前缀后按模型 ID 校验。
+读取器只读运行时元数据表，从不打开会话记录与对话正文。租约缺失、过期、归属他人进程、
+同时命中两个会话、计量记录过期或模型字段非法均不核实。
+
+模型声明要求 `--user-confirmed`，它表示用户本次明确指定，不能由 Agent 根据配置自行补旗标。receipt 仅存在本机用户状态目录；默认 4 小时，最长 12 小时。harness 进程或 session/terminal 改变、
 嵌套 harness、模型提示变化、过期或记录损坏都会使声明失效。声明一直保持
 `current_model_confirmed=false`，通过 `user_model_declared=true` 单独表达依据。
 Desktop 缺原生 conversation ID 时，即使继承了 terminal 环境变量，也只在 App 下的当前执行 shell 内复用；

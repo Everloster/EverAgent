@@ -32,6 +32,9 @@ _ZCODE_ENVELOPE = re.compile(
 )
 _ZCODE_STARTUP = re.compile(r"/\.zcode/cli/exec/bash-startup/([A-Za-z0-9][A-Za-z0-9._-]{0,127})/")
 _SHELLS = {"bash", "zsh", "sh", "fish", "cmd.exe", "powershell.exe", "pwsh.exe", "pwsh"}
+# The MiniMax Code runtime leases a conversation to the process that executes
+# its turn, so the lease owner carries the pid of that process.
+_MINIMAX_LEASE = re.compile(r"^turn-lease:(\d+):")
 
 
 def _model(value) -> str | None:
@@ -395,9 +398,77 @@ def _zcode(native: str, owner: dict, now: float) -> dict | None:
     return None
 
 
+def _minimax(owner: dict, now: float) -> dict | None:
+    """MiniMax Code Desktop records the running conversation in its own store.
+
+    The Desktop app exposes no conversation environment variable and its Bash
+    tool spawns a plain shell, so the session is bound through the runtime's
+    turn lease: the lease owner carries the pid that executes the turn, and
+    that pid is an ancestor of the caller. Only runtime metadata is read; the
+    conversation transcript is never opened.
+    """
+    home = declarations.safe_home()
+    if home is None:
+        return None
+    root = (home / ".minimax" / "v2").resolve()
+    database = root / "sqlite" / "runtime-state.sqlite"
+    if not _regular(database) or not database.resolve().is_relative_to(root):
+        return None
+    started = _started_at(owner)
+    if started is None:
+        return None
+    pids = {row["pid"] for row in processes.process_chain() if isinstance(row.get("pid"), int)}
+    if not pids:
+        return None
+    now_ms = int(now * 1000)
+    try:
+        with closing(sqlite3.connect(database.as_uri() + "?mode=ro", uri=True, timeout=0.25)) as connection:
+            deadline = time.monotonic() + 0.25
+            connection.set_progress_handler(lambda: int(time.monotonic() > deadline), 1000)
+            lock_columns = {row[1] for row in connection.execute(
+                "PRAGMA table_info(local_runtime_session_locks)")}
+            if not {"session_id", "owner_id", "owner_kind", "expires_at_ms"} <= lock_columns:
+                return None
+            usage_columns = {row[1] for row in connection.execute(
+                "PRAGMA table_info(local_runtime_token_usage)")}
+            if not {"session_id", "model", "ts", "turn_id"} <= usage_columns:
+                return None
+            held = []
+            for session_id, owner_id, expires_at_ms in connection.execute(
+                    "SELECT session_id, owner_id, expires_at_ms FROM local_runtime_session_locks"
+                    " WHERE owner_kind = 'turn'"):
+                match = _MINIMAX_LEASE.match(owner_id if isinstance(owner_id, str) else "")
+                if not match or int(match[1]) not in pids:
+                    continue
+                if not isinstance(expires_at_ms, int) or expires_at_ms <= now_ms:
+                    continue
+                held.append(session_id)
+            if len(held) != 1:
+                # Two live conversations cannot be told apart from one runtime.
+                return None
+            session = held[0]
+            usage = connection.execute(
+                "SELECT model, ts, turn_id FROM local_runtime_token_usage"
+                " WHERE session_id = ? ORDER BY ts DESC LIMIT 1", (session,)).fetchone()
+    except (OSError, sqlite3.Error):
+        return None
+    if usage is None:
+        return None
+    model, ts, turn_id = usage
+    at = ts / 1000 if isinstance(ts, (int, float)) and not isinstance(ts, bool) else None
+    if at is None or at < started - 2 or not 0 <= now - at <= MAX_AGE_SECONDS:
+        return None
+    # The runtime records a provider-qualified id such as 'minimax/MiniMax-M3.1-Flash'.
+    name = _model(model.rsplit("/", 1)[-1]) if isinstance(model, str) else None
+    if name is None:
+        return None
+    return {"model": name, "source": "minimax-session-runtime",
+            "turn": turn_id if isinstance(turn_id, str) else None, "session": session}
+
+
 def collect(harness: str, scope: dict | None) -> dict | None:
     """Return only a model observation bound to the exact current caller."""
-    if scope is None or harness not in {"codex", "pi", "trae", "claude-code", "zcode"}:
+    if scope is None or harness not in {"codex", "pi", "trae", "claude-code", "zcode", "minimax-code"}:
         return None
     try:
         owner = processes.caller_process(harness)
@@ -413,6 +484,12 @@ def collect(harness: str, scope: dict | None) -> dict | None:
             native = _zcode_session_token(owner)
             if not native:
                 return None
+        elif harness == "minimax-code":
+            # The Desktop app has no conversation environment variable; the
+            # session is bound by the runtime turn lease instead of a native id.
+            if "execution_ref" not in scope:
+                return None
+            native = None
         else:
             native = _native_id(harness)
             if not native or scope.get("session_ref") != declarations.digest([harness, native])[:24]:
@@ -420,12 +497,16 @@ def collect(harness: str, scope: dict | None) -> dict | None:
             if sum(processes.matches_row(row, names) for row in processes.process_chain()) != 1:
                 return None
         now = time.time()
-        readers = {"codex": _codex, "trae": _trae, "claude-code": _claude, "zcode": _zcode}
-        found = readers[harness](native, owner, now) if harness in readers else _pi(native)
+        if harness == "minimax-code":
+            found = _minimax(owner, now)
+        else:
+            readers = {"codex": _codex, "trae": _trae, "claude-code": _claude, "zcode": _zcode}
+            found = readers[harness](native, owner, now) if harness in readers else _pi(native)
         if found:
+            reference = found.get("session") or native
             return {"harness": harness, "scope": scope, "observed_at": now,
                     "model": found["model"], "source": found["source"],
-                    "observation_ref": declarations.digest([harness, native, found.get("turn"), found["model"]])[:24]}
+                    "observation_ref": declarations.digest([harness, reference, found.get("turn"), found["model"]])[:24]}
     except (OSError, ValueError, TypeError, AttributeError, sqlite3.Error, StopIteration):
         pass
     return None

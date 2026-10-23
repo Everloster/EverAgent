@@ -269,6 +269,132 @@ class ClaudeObservationTests(unittest.TestCase):
         self.assertFalse(models.model_evidence("claude-code")["current_model_confirmed"])
 
 
+class MinimaxObservationTests(unittest.TestCase):
+    """MiniMax Code Desktop binds its conversation through the runtime turn lease."""
+
+    RUNTIME = 4242
+    SESSION = "mvs_fixture_minimax_session"
+
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory(prefix="everagent-minimax-model-")
+        self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name)
+        self.now = time.time()
+        (self.root / ".minimax").mkdir(parents=True)
+        (self.root / ".minimax/config.yaml").write_text("defaultModel: minimax/misleading-default\n")
+        self.database = self.root / ".minimax/v2/sqlite/runtime-state.sqlite"
+        self.database.parent.mkdir(parents=True)
+        created = time.strftime("%a %b %d %H:%M:%S %Y", time.localtime(self.now - 60))
+        self.chain = [
+            {"pid": 1234, "name": "python3", "started": created, "image": "python3"},
+            {"pid": 1235, "name": "bash", "started": created, "image": "/bin/bash"},
+            {"pid": self.RUNTIME, "name": "MiniMax Code Helper", "started": created,
+             "image": "/Applications/MiniMax Code.app/Contents/MacOS/MiniMax Code Helper"},
+        ]
+        patches = [patch.object(declarations, "safe_home", return_value=self.root),
+                   patch.object(models, "HOME", self.root),
+                   patch.object(processes, "process_chain", return_value=self.chain),
+                   patch.dict(os.environ, {}, clear=True)]
+        for item in patches:
+            item.start(); self.addCleanup(item.stop)
+        self.write()
+
+    def write(self, *, model="minimax/MiniMax-M3.1-Flash", ts=None, turn="fixture-turn",
+              lease_pid=None, expires_in=900, usage=True, extra_lease=False, transcript=True):
+        session = self.SESSION
+        lease_pid = self.RUNTIME if lease_pid is None else lease_pid
+        at = self.now if ts is None else ts
+        with closing(sqlite3.connect(self.database)) as connection:
+            connection.execute("CREATE TABLE IF NOT EXISTS local_runtime_session_locks ("
+                               "session_id TEXT PRIMARY KEY, owner_id TEXT NOT NULL, owner_kind TEXT NOT NULL,"
+                               " acquired_at_ms INTEGER NOT NULL, expires_at_ms INTEGER NOT NULL)")
+            connection.execute("CREATE TABLE IF NOT EXISTS local_runtime_token_usage ("
+                               "id INTEGER PRIMARY KEY AUTOINCREMENT, session_id TEXT NOT NULL,"
+                               " agent_name TEXT NOT NULL, framework_type TEXT NOT NULL, turn_id TEXT,"
+                               " model TEXT, ts INTEGER NOT NULL)")
+            connection.execute("DELETE FROM local_runtime_session_locks")
+            connection.execute("DELETE FROM local_runtime_token_usage")
+            connection.execute("INSERT INTO local_runtime_session_locks VALUES (?,?,?,?,?)", (
+                session, "turn-lease:%d:fixture-uuid" % lease_pid, "turn",
+                int((self.now - 60) * 1000), int((self.now + expires_in) * 1000)))
+            if extra_lease:
+                connection.execute("INSERT INTO local_runtime_session_locks VALUES (?,?,?,?,?)", (
+                    "mvs_fixture_second_session", "turn-lease:%d:fixture-uuid" % lease_pid, "turn",
+                    int((self.now - 60) * 1000), int((self.now + expires_in) * 1000)))
+            if usage:
+                connection.execute(
+                    "INSERT INTO local_runtime_token_usage"
+                    " (session_id, agent_name, framework_type, turn_id, model, ts) VALUES (?,?,?,?,?,?)",
+                    (session, "mavis", "pi-agent", turn, model, int(at * 1000)))
+            connection.commit()
+        if transcript:
+            path = self.root / ".minimax/v2/sessions/2026/01/01/messages.jsonl"
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(json.dumps({"message": {"role": "assistant", "model": "transcript-model",
+                                                    "content": "PRIVATE-DIALOG-SENTINEL"}}) + "\n")
+
+    def test_current_turn_is_automatically_verified_before_default(self):
+        value = models.model_evidence("minimax-code")
+        self.assertEqual(value["model"], "MiniMax-M3.1-Flash")
+        self.assertEqual(value["source"], "minimax-session-runtime")
+        self.assertTrue(value["current_model_confirmed"])
+        self.assertFalse(value["user_model_declared"])
+        self.assertEqual(value["configured_model"], "misleading-default")
+        self.assertNotIn("PRIVATE-DIALOG-SENTINEL", json.dumps(value))
+
+    def test_transcript_is_never_read_as_model_evidence(self):
+        self.assertEqual(models.model_evidence("minimax-code")["model"], "MiniMax-M3.1-Flash")
+
+    def test_lease_from_another_process_does_not_verify(self):
+        self.write(lease_pid=9999)
+        self.assertFalse(models.model_evidence("minimax-code")["current_model_confirmed"])
+
+    def test_expired_lease_does_not_verify(self):
+        self.write(expires_in=-30)
+        self.assertFalse(models.model_evidence("minimax-code")["current_model_confirmed"])
+
+    def test_two_leased_conversations_stay_ambiguous(self):
+        self.write(extra_lease=True)
+        self.assertFalse(models.model_evidence("minimax-code")["current_model_confirmed"])
+
+    def test_stale_usage_or_missing_turn_does_not_verify(self):
+        self.write(ts=self.now - 301)
+        self.assertFalse(models.model_evidence("minimax-code")["current_model_confirmed"])
+        self.write(usage=False)
+        self.assertFalse(models.model_evidence("minimax-code")["current_model_confirmed"])
+
+    def test_unusable_model_never_falls_back_to_the_config_default(self):
+        for model in ("unknown", "", "not a model"):
+            with self.subTest(model=model):
+                self.write(model=model)
+                value = models.model_evidence("minimax-code")
+                self.assertFalse(value["current_model_confirmed"])
+                self.assertEqual(value["model"], "misleading-default")
+
+    def test_restarted_runtime_does_not_borrow_an_older_turn(self):
+        restarted = time.strftime("%a %b %d %H:%M:%S %Y", time.localtime(self.now + 5))
+        chain = [dict(row, started=restarted) for row in self.chain]
+        with patch.object(processes, "process_chain", return_value=chain):
+            self.assertFalse(models.model_evidence("minimax-code")["current_model_confirmed"])
+
+    def test_scope_without_execution_shell_does_not_verify(self):
+        scope = declarations.caller_scope("minimax-code")
+        self.assertIn("execution_ref", scope)
+        without = {key: value for key, value in scope.items() if key != "execution_ref"}
+        self.assertIsNone(observations.collect("minimax-code", without))
+
+    def test_model_switch_changes_the_signing_evidence(self):
+        before = models.model_evidence("minimax-code")
+        self.write(model="minimax/New-Model", turn="fixture-turn-2")
+        after = models.model_evidence("minimax-code")
+        self.assertEqual(after["model"], "New-Model")
+        self.assertNotEqual(before["observation_ref"], after["observation_ref"])
+
+    def test_missing_runtime_store_stays_unverified(self):
+        self.database.unlink()
+        self.assertFalse(models.model_evidence("minimax-code")["current_model_confirmed"])
+
+
 class OtherRuntimeObservationTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory(prefix="everagent-other-model-")
