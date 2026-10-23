@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "request_id": "req_podcast_ryan_20261023_cdn",
+  "job_id": "job_0075e51519095387a751eef5",
+  "status": "succeeded",
+  "device": "razer",
+  "silent": true,
+  "interactive_browser": false,
+  "audio_playback": false,
+  "duration_ms": 328545,
+  "artifact": {
+    "artifact_id": "pod_c642097b849f7717612871ae",
+    "source_host": "api.substack.com",
+    "source_sha256": "9b5518c9d3de32bd19725353749320030a05aef144a7e7bb9d0cb9530b5534ae",
+    "audio_size": 1402642326,
+    "language": "en",
+    "segments": 3780,
+    "service_version": "whisper.cpp-v1.9.1-sm120",
+    "transcript_size": 245203,
+    "transcript_sha256": "dfac97520132c177b4c29c9716e98187c622c2e18b359e14d9c01fe13df8fb50",
+    "quality": {
+      "repetition_guard": {
+        "passed": true,
+        "max_consecutive_identical": 2,
+        "repeated_text_sha256": null
+      }
+    }
+  },
+  "fallback": {
+    "reason": "official episode page and Apple Podcast URLs could not be acquired by yt-dlp; token-plan has no podcast transcription capability and the installed typed allowlist did not cover the official RSS audio CDN",
+    "method": "hash-bound eacli invoke on Razer using the repository podcast runner with the installed worker receipt/model/VAD/yt-dlp/loopback checks preserved and an exact official-CDN host allowlist",
+    "script_sha256": "457e2763180b2646d320101afe9b04195561609a6959e20db95e807f333832ae"
+  },
+  "transfer": {
+    "mode": "eacli invoke split + eacli pull",
+    "parts": 2,
+    "atomic": true,
+    "local_path": "podcast-learning/reports/transcripts/2026-08-11_rss-dwarkesh_ryan-greenblatt-ai-rnd-automation.transcript.txt",
+    "verified_sha256": true
+  }
+}

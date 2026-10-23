@@ -513,3 +513,35 @@
 - **摄像头的收益—隐私交换**：环境理解提升多少才足以抵消重量、续航、数据风险和社会接受度损失？
 - **屏幕何时是核心交互**：怎样区分真正需要视觉反馈的任务，与工程团队因为缺少更自然反馈方式而默认加屏？
   - 来源：[[2026-10-21_xiaoyuzhou-linkstart_vol135-ai-hardware-design]] 思考与追问·问 2
+
+## 2026-10-23 五期 SOTA AI 技术播客深度学习
+
+### Latent Space × X-Cell
+
+- **表达预测怎样转成靶点验证收益**：Pearson Δ 的提高能否稳定提升 target validation hit rate，而不是只改善代理指标？
+- **组合扰动的数据规模**：怎样设计实验和先验，才能在双基因、多药物与剂量组合下避免组合爆炸？
+  - 来源：[[2026-07-21_rss-latent-space_xcell-causal-data]] 思考与追问·问 2
+
+### Dwarkesh × Ryan Greenblatt
+
+- **小实验能否外推到 frontier run**：小规模研究自动化的收益，在大训练实验、组织协调和真实科学 taste 上会衰减多少？
+- **独立监控 Agent 的停止权**：什么组织和技术结构能让监控系统真正暂停高风险研发，而不被同一优化目标架空？
+  - 来源：[[2026-08-11_rss-dwarkesh_ryan-greenblatt-ai-rnd-automation]] 思考与追问·问 2
+
+### Cognitive Revolution × Biohub
+
+- **新测量模态的信息增量**：怎样衡量一种 modality 提供了新的可预测变量，而不只是增加数据量？
+- **生物实验选择器的目标函数**：怎样同时优化信息增益、伦理、样本稀缺、成本与反馈延迟？
+  - 来源：[[2026-10-20_rss-cognitive-revolution_biohub-world-model-life]] 思考与追问·问 2
+
+### TWIML × Airbnb Company Brain
+
+- **Context 何时失效**：工作流变化后，系统怎样发现、撤销或降权已过期的组织知识？
+- **Virtual judge 怎样校准**：离线评估与人类 code review、线上缺陷和业务结果之间应建立什么对应关系？
+  - 来源：[[2026-10-21_rss-twiml_airbnb-company-brain]] 思考与追问·问 2
+
+### Practical AI × VulnCheck
+
+- **高风险能力的授权协议**：怎样同时证明研究者身份、目标授权和隔离环境，又不把 exploit 能力无界开放？
+- **Agent 越权后的法律归责**：用户只提出正常目标、Agent 自行利用第三方漏洞时，用户、模型方、运营方与目标方各承担什么责任？
+  - 来源：[[2026-10-22_rss-practical-ai_agentic-vulnerability-discovery]] 思考与追问·问 2

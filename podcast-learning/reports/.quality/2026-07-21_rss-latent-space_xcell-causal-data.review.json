@@ -1,0 +1,1174 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-07-21_rss-latent-space_xcell-causal-data.md",
+  "quality_tier": "important",
+  "revision_round": 4,
+  "reviews": [
+    {
+      "role": "escalation_review",
+      "reviewer": {
+        "model": "glm-5.3",
+        "harness": "pi",
+        "run_id": "review-glm53pi-xcell-r4-3f8d2a6159c04e17",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "escalation_reason": "revision 3 的 reasoning_quality=82，缺少推断标记与独立的转化/临床验收层；首选 Kimi K3 因周额度 429 不可用，Claude Code OAuth 又已过期，降级到全新 Pi / GLM 5.3 会话复核修订。本轮按 revision 4 聚焦 [本报告建议] 三层模型验收、target validation 与临床前药效/毒性及临床安全/疗效边界是否清楚，以及 R03 是否修复。",
+      "scores": {
+        "evidence_fidelity": 96,
+        "request_coverage": 91,
+        "reasoning_quality": 90,
+        "readability": 95,
+        "limitations": 93
+      },
+      "score_reasons": {
+        "evidence_fidelity": "逐条核对 §6 新增段落与全部关键数字：25.6M perturbed transcriptomes、16 contexts、7 个 CRISPRi screen、4.9B X-Cell-Ultra、最高 5× Pearson Δ（HepG2-200/iPSC 留出基因上 0.51/0.48）、约 5,300 个 perturbation–context group 下测试指标在约 1.6B 后平台、Pisces 扩到约 151,000 unique conditions、α=0.32 的 train-loss power law、静息→CD3/CD28 激活 Jurkat、留出 melanocyte progenitor、多 donor primary CD4+ T cell、TTA 后超过全部 baseline、六类 prior（GenePT/ESM-2/STRING/DepMap/JUMP-Cell Painting/scGPT）以及全员持股声明，均与 bioRxiv v1 全文（111 页 PDF）、官方模型页、官方 shownotes 和 1897 段转写一致。三层验收框架已显式标为 [本报告建议]；其后的临床边界段与摘要 'potential applications for improving computational target identification, validation, and context-specific therapeutic prioritization' 的口径一致，没有把 target validation 写成临床疗效。扣分点：关键数字表中 7 个 campaign 的证据边界仍写 '嘉宾口播，论文应按完整 methods 复核'，而官方模型页与论文 Methods/Table 已直接确认 7 screens；官方工件 'coming soon' 状态仍未入 Limitations。两者均为保守或遗漏，不是错配。",
+        "request_coverage": "核心与支持单元全部进入正文且可独立阅读；R3 指出的转化前药效/安全与临床结局缺口已由 §6 边界段补上：临床前药效、毒性与剂量窗口以及临床安全性和疗效结局被明确列为 target validation 之后的独立后续门槛，并声明不属于当前 X-Cell 结果、不能由表达预测或 target validation 自动推出。仍被压缩的均为 supporting 项：spatial 测量技术本身的展开、agentic AI 时代学生形成 research taste 的具体建议、Tahoe-100M 单靶点 inhibitor 子集与 APPL2/LRBA 案例的点名、以及公开工件（weights/code coming soon）可用性现状。",
+        "reasoning_quality": "三层验收现在结构完整且来源归属清楚：第一层表达预测要求严格留出的 perturbation/cell type/donor split 与误差分布而非平均最优；第二层因果泛化覆盖新状态、剂量、时间点与组合干预，并把 test-time adaptation 使用的目标域数据与严格 zero-shot 分开；第三层实验决策落到独立湿实验的 target-validation 命中率和失败反馈。随后独立段落指出即使第三层通过也只证明模型更会选择值得验证的实验，候选还需临床前药效/毒性/剂量窗口与临床安全/疗效两道门槛——把模型验收与药物开发证据正确解耦，修复了 R3 的主要缺陷。残余：框架仍未定义数值化失败/停止条件，'预注册' 只覆盖 target validation 实验一环，未对 MAE/Pearson Δ/DE 主指标预注册。",
+        "readability": "八个章节、内容地图与 §6 的 [本报告建议] 标签、边界段衔接自然；'打字 vs 编辑''信息墙''三层验收'等表达降低理解成本；关键数字表与 Limitations 使来源事实、公司自述和报告推断（[本报告建议]/[推测]）一眼可分。",
+        "limitations": "充分覆盖 bioRxiv v1 未同行评审、作者均为 Xaira 员工并可能持股、作者自选任务/指标/切分、CRISPRi/单基因/转录组范围、TTA 使用目标域无标签数据、donor/dose/组合外推风险，以及表达预测不等于可成药靶点或安全有效治疗。R3 建议补充的官方 GitHub/HF 页 code、weights 或部分数据仍为 'coming soon' 的现实限制未写入，独立复现受限只能从'跟踪 Pisces 数据与模型开放程度'间接读出。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08",
+        "U09",
+        "U10",
+        "U11",
+        "U12"
+      ],
+      "source_content_map": [
+        {
+          "id": "SC-XR4-01",
+          "title": "Xaira 蛋白设计、虚拟细胞与患者表示三平台及端到端药物发现定位",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01"
+          ],
+          "notes": "报告 §1 将 X-Cell 放在干预后细胞状态预测的位置，未把 virtual cell 写成直接产出药物或临床疗效的系统。"
+        },
+        {
+          "id": "SC-XR4-02",
+          "title": "观测 atlas（CELLxGENE 168M/约 4 万亿 entries）只能描述，A/B/C 共变不能唯一识别因果方向",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03",
+            "S05"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02"
+          ],
+          "notes": "报告 §1 准确保留 observational 与 interventional data 的区别，并把干预数据而非模型规模视为反事实信息来源。"
+        },
+        {
+          "id": "SC-XR4-03",
+          "title": "Perturb-seq 的 pooled CRISPRi、guide barcode 与单细胞转录组读出",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S05"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03"
+          ],
+          "notes": "两个轴、guide 身份读取与全转录组响应均进入 §2，机制解释可独立阅读。"
+        },
+        {
+          "id": "SC-XR4-04",
+          "title": "X-Atlas/Pisces 工业化数据生产：数千万到数亿细胞质量漏斗、化学固定与 25.6M/16 contexts/7 screens",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S05",
+            "S06"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04"
+          ],
+          "notes": "预印本摘要 25.6M/16 contexts、官方模型页 7 screens（HCT116、HEK293T、HepG2、iPSC、Jurkat 静息/激活、iPSC Multi-Diff）与转写中'数千万到数亿细胞'质量漏斗均被报告 §2 保留。"
+        },
+        {
+          "id": "SC-XR4-05",
+          "title": "context 多样性、bits per dollar 与向原生组织/空间环境的迁移",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04",
+            "U10"
+          ],
+          "notes": "报告保留 primary、organoid、组织、空间关系和 cell-cell interaction 的外推边界，但继续压缩节目对 spatial 测量技术与 tractable model system 代理关系的展开。与 R3 相同。"
+        },
+        {
+          "id": "SC-XR4-06",
+          "title": "从 autoregression 转向 set-level masked diffusion 的四步 coarse-to-fine 修正",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S05",
+            "S06"
+          ],
+          "matched_coverage_unit_ids": [
+            "U05"
+          ],
+          "notes": "报告用'打字 vs 编辑'解释架构转换，明确因果信息来自干预数据而非架构，不确定性校准保留为未验证问题。"
+        },
+        {
+          "id": "SC-XR4-07",
+          "title": "六类 biological prior、注入方式与数据>架构>先验的排序",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S05",
+            "S06"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06"
+          ],
+          "notes": "论文正文/Figure 1B 与官方模型页均确认六类（含 scGPT）；报告 §4 列举完整，cross-attention 口径与官方模型页一致，数据第一、架构第二、先验第三的排序与嘉宾口播一致。"
+        },
+        {
+          "id": "SC-XR4-08",
+          "title": "信息墙、约 1.6B 后测试指标平台、约 151,000 conditions 与 4.9B X-Cell-Ultra 的 power law",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S03",
+            "S05",
+            "S06"
+          ],
+          "matched_coverage_unit_ids": [
+            "U07"
+          ],
+          "notes": "报告 §5 正确把 scaling 重现解释为数据多样性先越过信息墙，未把有限区间 power law 外推为无限定律；shownotes 的 3.1B/1.5B 口径与论文 ~5,300 groups 下 ~1.6B 平台、Pisces ~151,000 conditions 均兼容。"
+        },
+        {
+          "id": "SC-XR4-09",
+          "title": "静息→激活 Jurkat、留出 melanocyte progenitor、多 donor primary CD4+ T cell 三类 zero-shot 与 TTA 口径",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S05",
+            "S06"
+          ],
+          "matched_coverage_unit_ids": [
+            "U08"
+          ],
+          "notes": "三类外推案例与'摘要的超过全部 baseline 包含 self-supervised test-time adaptation'均被报告 §6 准确分开报告。论文另点名 APPL2/LRBA 等 putative inactivator 且声明仍需实验验证，报告未点名但保留'预测不等于机制或药效'总边界。"
+        },
+        {
+          "id": "SC-XR4-10",
+          "title": "Tahoe-100M 单靶点 inhibitor 子集只是转录响应代理 benchmark",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "S05"
+          ],
+          "matched_coverage_unit_ids": [
+            "U08",
+            "U09"
+          ],
+          "notes": "论文唯一化学扰动测试（单靶点 inhibitor、mid dosage、对比 STATE，Pearson Δ 0.31 vs 0.22）仍未被报告点名，读者只能从'表达预测≠药效'总边界间接覆盖。与 R3 相同的残留，非 requirement。"
+        },
+        {
+          "id": "SC-XR4-11",
+          "title": "Linear baseline、平均谱 MAE 陷阱与 Pearson Δ 等多指标权衡",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S05"
+          ],
+          "matched_coverage_unit_ids": [
+            "U09"
+          ],
+          "notes": "报告解释简单相加为何可能很强、低 MAE 可来自保守预测、Pearson Δ 只衡量表达变化相关性；§6 第一层要求报告误差分布而非平均最优。"
+        },
+        {
+          "id": "SC-XR4-12",
+          "title": "单基因转录读出距离组合、多模态、组织生态与临床结果仍很远",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S05"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10"
+          ],
+          "notes": "报告 §7 列出组合、剂量、时间、多模态、organoid、tissue 与 in vivo 缺口，并把 X-Cell 定位为 perturbation response foundation model 而非完整人体模拟器。"
+        },
+        {
+          "id": "SC-XR4-13",
+          "title": "academia 的方法发明与样本入口、industry 的稳定扩产与开放科学",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11"
+          ],
+          "notes": "产学互补、开放数据对独立检验的意义被充分展开；节目关于学生通过 debugging、湿实验与真实证据形成 research taste 的具体讨论仍被压缩。与 R3 相同。"
+        },
+        {
+          "id": "SC-XR4-14",
+          "title": "下一代测量缺口：蛋白全景读取与同一细胞非破坏性纵向观测",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U12"
+          ],
+          "notes": "报告分别写出蛋白丰度/修饰/定位/构象的大规模读取与不终止细胞的 longitudinal measurement，并说明当前多时间点通常来自不同细胞。"
+        },
+        {
+          "id": "SC-XR4-15",
+          "title": "公开代码、权重与数据的可用性决定独立复现能力",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "S05",
+            "S06"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11"
+          ],
+          "notes": "官方模型页仍标 'Model weights and inference code coming soon'，论文 Data Availability 也是将来时；报告只写'跟踪 Pisces 数据与模型开放程度'，未显式记录当前工件未公开的现实限制。R3 已提示，R4 未补。"
+        },
+        {
+          "id": "SC-XR4-16",
+          "title": "药物开发的分期现实：phase 1 毒性、phase 2 小队列、phase 3 大队列与 5–10% 成功率",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01",
+            "U10"
+          ],
+          "notes": "嘉宾在 01:00:32–01:01:16 讨论临床分期与低成功率；报告 §6 新增的临床边界段（临床前药效/毒性/剂量窗口 + 临床安全/疗效）与该口径一致，且正确声明这些后续门槛不属于当前 X-Cell 结果，是 [本报告建议] 块内合理的报告推断。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "来源优先复核：先完整读取 1,897 段原始 transcript、官方 shownotes、artifact receipt 与 polished 稿；按 eacli token-plan catalog→select→invoke 读取 bioRxiv v1 摘要页与 X-Cell 官方模型页（zhipu/mbp webReader）。eacli web.read 返回在约 32KB 截断，按 R1–R3 记录的最小降级从官方 bioRxiv URL 获取完整 PDF 文本（首次遗 429 限流，等待后重试成功；111 页全文用于核验正文、Methods、Figure 说明、Data Availability 与利益声明），随后才读取最终 revision 4 报告、evidence 与历史 review；临时文件未写入仓库。实际运行 audit_transcript.py：PASS｜segments=1897｜duration=5379s｜max_repeat=1；transcript SHA-256=8843a46a703f18887a62a596cfe18502ac3c3e64b14107f1c24d1f929ca44e52，与 artifact 一致。报告 SHA-256=743567968c3f1d6050d8df4626e50471d7822e1c391b6377b4595fa92c4b5e8d；evidence SHA-256=ae3e0bb8eede0bd21f16060e01bcdc6fda045286a3643eddd5dab2016fff0fbf（与 R2/R3 相同，未随 R4 改动）。R03 修复判定：已修复——三层验收框架显式标注 [本报告建议]，三层次（表达预测/因果泛化/实验决策）定义可操作，其后独立段落把 target validation 与临床前药效、毒性与剂量窗口及临床安全/疗效结局分开，并明确这些后续门槛不属于当前 X-Cell 结果、不能由表达预测或 target validation 自动推出；两处 [推测] 标签与关键数字表/limitation 的来源归属保持清楚。残留问题（如实记录，未替生成者改正文，均为非 requirement 的 supporting 项）：①Tahoe-100M 单靶点 inhibitor 子集与 APPL2/LRBA 案例仍未点名；②官方模型页/论文的 weights、code 'coming soon' 未写入 Limitations；③关键数字表中 7 个 campaign 的证据边界仍写'嘉宾口播，论文应按完整 methods 复核'，而 S06 与 S05 Methods 已可直接确认 7 screens；④验收框架无数值化失败/停止条件。无 fabricated source、关键数字错配或 safety/privacy hard failure。完成本复核记录后运行 `python3 scripts/report_quality.py check podcast-learning/reports/2026-07-21_rss-latent-space_xcell-causal-data.md`（未使用 --finalize），输出：tier=important｜decision=pass｜score=93.35｜ERROR 0｜WARN 0。该输出仅为 deterministic check 结果，未写入最终判定。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 93.35,
+    "evaluated_on": "2026-10-23",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "b7b137a77edf72957fb162064f9997510941f51f0aec83f6260f2df9925a00e7",
+    "evidence_sha256": "ae3e0bb8eede0bd21f16060e01bcdc6fda045286a3643eddd5dab2016fff0fbf"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex",
+            "run_id": "review-56sol-xcell-20261023-a83c19d4",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 88,
+            "request_coverage": 92,
+            "reasoning_quality": 92,
+            "readability": 94,
+            "limitations": 94
+          },
+          "score_reasons": {
+            "evidence_fidelity": "因果数据、25.6M/16 contexts、4.9B、最高五倍、zero-shot 与 test-time adaptation 等主张均可追溯，且预印本利益冲突和临床外推边界写得清楚。但 C04 将 cross-attention 先验写成五类；预印本 Figure 1B 与官方模型页均列出 GenePT、ESM-2、STRING、DepMap、JUMP-Cell Painting、scGPT 六类，需校正。",
+            "request_coverage": "报告完整覆盖因果数据、Perturb-seq、数据工业化、diffusion、scaling、linear baseline、跨 context 泛化及组合/in vivo 边界，能够独立阅读。节目结尾关于蛋白测量和同一细胞纵向测量两项关键瓶颈仅被压缩进一般性多模态/时间序列讨论，细节覆盖略弱。",
+            "reasoning_quality": "清楚区分了干预数据提供因果识别信息与 diffusion 仅是状态建模选择，也把表达预测、靶点验证和临床疗效分开。对简单基线、分布偏移和 test-time adaptation 口径的分析合理；“多步去噪表示不确定性”应补直接依据或降为推断。",
+            "readability": "结构完整，内容地图、机制解释、关键数字、证据边界和三问互相衔接，脱离原会话仍可理解。中英文术语密度较高，但未妨碍主线。",
+            "limitations": "充分说明预印本未同行评审、作者利益关系、数据模态与 context 范围、独立复现缺口、zero-shot 口径和临床外推限制；限制与正文结论基本一致。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07",
+            "U08",
+            "U09",
+            "U10",
+            "U11"
+          ],
+          "source_content_map": [
+            {
+              "id": "SC-X01",
+              "title": "虚拟细胞在端到端药物发现中的预测目标",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01"
+              ],
+              "notes": "报告说明模型要预测基因或药物干预后的细胞响应，并把结果放回靶点、分子和患者选择的长期链条中。"
+            },
+            {
+              "id": "SC-X02",
+              "title": "观测表达图谱不能唯一识别干预因果结构",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S05"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "A/B/C 共表达可对应多种因果图，报告准确重构了 observational 与 interventional data 的差别。"
+            },
+            {
+              "id": "SC-X03",
+              "title": "Perturb-seq 的 pooled CRISPRi、barcode 与单细胞读出",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S05"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "实验的两个轴、guide 身份和全转录组响应均进入正文，机制解释足够独立阅读。"
+            },
+            {
+              "id": "SC-X04",
+              "title": "X-Atlas/Pisces 的工业化数据生产与质量控制",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S05"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "报告覆盖数千万到数亿细胞的操作难点、25.6M 过滤后细胞、七个 screen 和 16 contexts。"
+            },
+            {
+              "id": "SC-X05",
+              "title": "context 多样性、空间环境与从可规模系统向真实组织迁移",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04",
+                "U10"
+              ],
+              "notes": "正文充分覆盖 cell line、iPSC、T cell 与 primary/in vivo 方向，核心迁移问题已经回答；节目对 spatial transcriptomics、邻域信息和原生组织 context 的具体讨论被压缩。"
+            },
+            {
+              "id": "SC-X06",
+              "title": "从 autoregression 转向 set-level diffusion refinement",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S05",
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "报告准确解释 gene expression 无自然词序、control-to-perturbed transition 和多步迭代修正。"
+            },
+            {
+              "id": "SC-X07",
+              "title": "多模态 biological priors 及其相对贡献",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S05",
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "数据优先于架构、架构优先于先验的排序准确；但报告和 evidence 写成五类，官方模型页与预印本图示列出六类，遗漏 scGPT。"
+            },
+            {
+              "id": "SC-X08",
+              "title": "数据规模恢复 scaling，并以 linear baseline 约束复杂模型",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S05"
+              ],
+              "matched_coverage_unit_ids": [
+                "U07",
+                "U09"
+              ],
+              "notes": "报告保留信息墙、4.9B、power-law、Pearson Δ 与简单基线的适用边界，没有把作者指标写成临床效果。"
+            },
+            {
+              "id": "SC-X09",
+              "title": "静息到激活 T cell、留出细胞类型和 primary donor 的跨 context 泛化",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S05",
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08"
+              ],
+              "notes": "三类关键外推案例及 test-time adaptation 的目标域信息边界均有明确说明。"
+            },
+            {
+              "id": "SC-X10",
+              "title": "单基因转录读出距离组合、多模态、组织与临床仍很远",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S05",
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10"
+              ],
+              "notes": "报告将当前系统定位为 perturbation response foundation model，并列出组合、剂量、时间、空间、蛋白、organoid 与 in vivo 缺口。"
+            },
+            {
+              "id": "SC-X11",
+              "title": "academia 发明方法、industry 稳定扩产与开放科学",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U11"
+              ],
+              "notes": "产学资源与自由度的互补、开放数据和湿实验—模型协作均被展开。"
+            },
+            {
+              "id": "SC-X12",
+              "title": "下一代测量瓶颈：蛋白全景和同一细胞纵向观测",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10"
+              ],
+              "notes": "正文提到蛋白与时间序列，但没有保留两位嘉宾分别提出的 protein-scale measurement 与 nondestructive longitudinal transcriptome 两个结尾案例。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04"
+          ],
+          "unsupported_claims": [
+            "C04"
+          ],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "已先于报告完整读取 1897 段原始 transcript、官方 shownotes、artifact 与 polished 稿，并核对 X-Cell bioRxiv v1、官方模型页和发布材料后建立来源地图。实际运行 audit_transcript.py：ok=true，size=124484，sha256=8843a46a703f18887a62a596cfe18502ac3c3e64b14107f1c24d1f929ca44e52，segments=1897，duration_seconds=5379，max_consecutive_identical=1，warnings/errors 均为空。eacli web.read 对长预印本存在 32KB 返回上限；在先走 Token Plan 后，采用不落盘的流式 PDF 最小降级完整核对 57 页正文、方法、附录与声明。审稿结论为 revise。完成 review 后运行 report_quality.py check（未 finalize）：decision=revise，score=91.1，ERROR 2，WARN 0；REV018 为 unsupported_claims=C04，SCORE002 为 evidence_fidelity=88 低于门槛 90。"
+        }
+      ],
+      "decision": {}
+    },
+    {
+      "revision_round": 2,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex",
+            "run_id": "review-gpt56sol-xcell-r2-8a72274de14e82b0",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 97,
+            "request_coverage": 94,
+            "reasoning_quality": 96,
+            "readability": 95,
+            "limitations": 96
+          },
+          "score_reasons": {
+            "evidence_fidelity": "修订版已消除上一轮的关键来源错配。X-Cell 论文 Figure 1B、Methods 4.1.2/4.1.3 与官方模型页均确认六类来源为 GenePT、ESM-2、STRING、DepMap、JUMP-Cell Painting 和 scGPT；正文列举完整，并且没有把只针对五类外部知识源的随机化分析误写为六类均完成独立 ablation。Diffusion 的直接证据被限定为 set-level masked diffusion、四步 coarse-to-fine refinement、distribution matching 与细胞间异质性建模；正文明确说节目和预印本未单独验证不确定性校准。25.6M、16 contexts、7 screens、4.9B、最高 5×、Pearson Δ、primary donor 与 test-time adaptation 等数字和口径均与预印本一致。",
+            "request_coverage": "报告覆盖虚拟细胞目标、观测与干预数据、Perturb-seq、数据工业化、diffusion、六类先验、scaling、linear baseline、三类跨 context 泛化、组合/多模态/in vivo、产学分工及开放科学，能够独立阅读。上一轮遗漏的 protein-scale measurement 与同一细胞非破坏性纵向观测已被具体写入 §7 并新增 U12。节目对 spatial omics 的技术展开和 agentic AI 时代学生如何形成 research taste 被压缩为较短的支持性讨论，因此保留少量覆盖扣分。",
+            "reasoning_quality": "报告始终区分干预数据提供因果识别信息、diffusion 只是状态转移建模、先验提供归纳偏置、参数规模必须与独立 perturbation-context 信息共同扩大。它把 MAE、Pearson Δ、临床疗效和 target validation 分开，保留 linear baseline、数据切分、目标域无标签 test-time adaptation、作者利益关系和独立复现等替代解释。对 zero-shot 三种口径、信息墙和数据工厂的推理链清楚，未把公司自述升级为普遍事实。",
+            "readability": "内容地图已将 Zero-shot 正确指向 §6；八个分析章节按因果问题、实验数据、架构、先验、scaling、验证、剩余测量缺口和组织分工递进。关键术语有直观解释，数字表和限制段使读者可以快速区分论文结果、节目口播和报告推断。",
+            "limitations": "限制部分充分说明 bioRxiv v1 未同行评审、作者均为公司员工并可能持股、作者选择的任务与指标、CRISPRi/转录组/context 范围、dose/time/组合与 donor 风险、TTA 的目标域信息、表达预测到临床疗效的距离。正文还明确否定“diffusion 等于 causality”及“diffusion 已证明不确定性校准”，与来源边界一致。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C07"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07",
+            "U08",
+            "U09",
+            "U10",
+            "U11",
+            "U12"
+          ],
+          "source_content_map": [
+            {
+              "id": "SC-XR2-01",
+              "title": "虚拟细胞在端到端药物发现中的目标与当前边界",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01"
+              ],
+              "notes": "节目把 Xaira 的蛋白设计、虚拟细胞和患者表示放在靶点—分子—患者链条中；报告 §1 说明 X-Cell 当前预测的是干预后的细胞表达状态，而非直接输出药物或临床疗效。"
+            },
+            {
+              "id": "SC-XR2-02",
+              "title": "观测表达图谱不能唯一识别干预的因果方向",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S05"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "A/B/C 共表达可由多种因果结构解释；CELLxGENE/scGPT 擅长描述性任务但不足以单凭相关性预测 counterfactual。报告 §1 准确保留这一核心论证，并明确参数不能创造数据中不存在的信息。"
+            },
+            {
+              "id": "SC-XR2-03",
+              "title": "Perturb-seq 的 pooled CRISPRi、guide barcode 与单细胞转录组读出",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S05"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "来源说明一批细胞中分别降低基因表达、读取 guide 身份并测量全转录组，形成 context/perturbation 到响应的二维因果数据。报告 §2 的机制说明足以独立阅读。"
+            },
+            {
+              "id": "SC-XR2-04",
+              "title": "FiCS 与 X-Atlas/Pisces 的工业化数据、质量控制和 context 多样性",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S05"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "来源覆盖细胞固定、批次控制、数千万到数亿原始细胞的质量漏斗，以及 25.6M 过滤后细胞、7 个 genome-wide screens、16 contexts。报告 §2 同时强调 bits per dollar、context diversity 与跨 campaign 标准化。"
+            },
+            {
+              "id": "SC-XR2-05",
+              "title": "空间环境、原代细胞与从可规模系统迁移到组织层级",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04",
+                "U10"
+              ],
+              "notes": "节目详细解释 spatial transcriptomics、邻域细胞和原生组织 context；报告 §2/§7 保留空间关系、细胞间通信、primary/organoid/in vivo 的迁移难题，但压缩了空间测量技术本身的展开。"
+            },
+            {
+              "id": "SC-XR2-06",
+              "title": "从 autoregression 转向 set-level masked diffusion refinement",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S05",
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "来源说明表达向量没有自然词序，X-Cell 用 masked diffusion 对 control-to-perturbed transition 做四步累积修正并匹配细胞集合分布。报告 §3 的“打字 vs 编辑”解释准确，并明确因果信息来自干预数据。"
+            },
+            {
+              "id": "SC-XR2-07",
+              "title": "Diffusion 能建模分布与异质性，但未证明校准的不确定性",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S05",
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "论文用 MMD/energy distance、per-gene CCC 和 set-level prediction 保留细胞间异质性；未报告 epistemic uncertainty 或 predictive calibration 的专门实验。报告已将“不确定性改善”降为未验证问题，没有继续作支持不足的肯定表述。"
+            },
+            {
+              "id": "SC-XR2-08",
+              "title": "六类 biological prior、注入方式与相对贡献",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S05",
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "六类来源为 GenePT、ESM-2、STRING、DepMap、JUMP-Cell Painting、scGPT。scGPT 通过可更新的 gene embedding 初始化进入模型，五类外部知识源通过 cross-attention 注入并接受随机化贡献分析；报告 §4 的列举和“数据第一、架构第二、先验第三”口径均正确。"
+            },
+            {
+              "id": "SC-XR2-09",
+              "title": "信息墙、模型 scaling 与 4.9B X-Cell-Ultra",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S05",
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "U07"
+              ],
+              "notes": "固定约 5,300 个 perturbation-context group 时 train loss 持续按 power law 降低，test loss 与 DE Pearson 在约 1.6B 后接近平台；Pisces 扩到约 151,000 unique conditions 后部署 4.9B 模型。报告 §5 正确把它解释为数据多样性约束，而非无限 scaling 证明。"
+            },
+            {
+              "id": "SC-XR2-10",
+              "title": "Zero-shot 跨状态、跨细胞类型和 primary donor 泛化及 TTA 口径",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S05",
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08"
+              ],
+              "notes": "来源给出静息到激活 Jurkat、留出 melanocyte progenitor、多个 donor 的 primary CD4+ T cell 三类验证；论文摘要的“超过全部 baseline”包含 self-supervised test-time adaptation。报告 §6 分开严格 zero-shot、无标签目标域适配和有标签微调，口径清楚。"
+            },
+            {
+              "id": "SC-XR2-11",
+              "title": "Linear baseline、MAE 陷阱与 Pearson Δ 等指标",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S05"
+              ],
+              "matched_coverage_unit_ids": [
+                "U09"
+              ],
+              "notes": "节目指出平均表达在稀疏数据的 MAE 上可能优于技术重复，复杂模型必须证明对真实表达变化、非线性和 context-specific effect 的增益。报告 §1/§6 保留 linear baseline 作为防 hype 约束，并没有把最高 5× 推广到所有指标或临床结果。"
+            },
+            {
+              "id": "SC-XR2-12",
+              "title": "单基因转录读出距离组合、多模态、组织和临床仍很远",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S05",
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10"
+              ],
+              "notes": "当前训练主体是 CRISPRi 单基因 loss-of-function 与 transcriptomic readout；节目讨论冗余基因、组合预测缺实验数据、pathway、primary cell、organoid 和 in vivo。报告 §7 准确将 X-Cell 定位为 perturbation response foundation model，而非完整人体模拟器。"
+            },
+            {
+              "id": "SC-XR2-13",
+              "title": "Academia、industry、开放科学与 agentic AI 时代的 research taste",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U11"
+              ],
+              "notes": "报告 §8 充分覆盖 academia 的自由探索/方法创新与 industry 的工程扩产/质量控制及开放数据；节目关于学生如何在 agentic coding 后通过 debugging、湿实验和真实证据形成 taste 的具体讨论被压缩。"
+            },
+            {
+              "id": "SC-XR2-14",
+              "title": "下一代测量瓶颈：蛋白全景与同一细胞的非破坏性纵向观测",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U12"
+              ],
+              "notes": "Ci Chu希望以接近 genomics 的规模测量蛋白丰度、修饰、定位和构象；Bo Wang希望不杀死细胞而在多个时间点读取同一批细胞，直接学习 temporal dynamics。修订版 §7 已明确保留两个不同瓶颈及当前不同时间点通常来自不同细胞的限制。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "来源优先复核：先完整读取 1,897 段原始 transcript、官方 shownotes、artifact，并核对 X-Cell bioRxiv v1、官方模型页和 X-Atlas/Orion 一手预印本，再读取最终修订报告与 evidence。实际运行 audit_transcript.py：ok=true，size=124484，sha256=8843a46a703f18887a62a596cfe18502ac3c3e64b14107f1c24d1f929ca44e52，segments=1897，duration_seconds=5379，max_consecutive_identical=1，warnings/errors 均为空，与 artifact 一致。eacli web.read 对 57 页 X-Cell PDF 在约 32KB 后截断；在先完成 token-plan catalog/select/invoke 后，以官方 PDF 的不落盘 curl|pdftotext 文本流补齐 discussion、methods 与附录。写 review 前重新读取生成者最后一次修订后的文件；报告 SHA-256=7860cef367234a42a424bdecda25220498c17bfa93d68f57509ed0aef50b11a5，evidence SHA-256=ae3e0bb8eede0bd21f16060e01bcdc6fda045286a3643eddd5dab2016fff0fbf。上一轮的六类 prior、diffusion 不确定性、protein-scale measurement、同一细胞纵向观测与 Zero-shot §6 锚点问题均已修复；本轮无 unsupported claim、missing requirement 或 hard failure。 完成 revision 2 复核记录后运行 `python3 scripts/report_quality.py check podcast-learning/reports/2026-07-21_rss-latent-space_xcell-causal-data.md`（未使用 --finalize），输出：tier=important｜decision=pass｜score=95.8｜ERROR 0｜WARN 0。该输出仅为 deterministic check 结果，未写入最终判定。"
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 95.8,
+        "evaluated_on": "2026-10-23",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "a90d8bcd3d29e4f6576e74c5b3c55dad5afdeb4a9a2aa7bc12d1761c54cd1d02",
+        "evidence_sha256": "ae3e0bb8eede0bd21f16060e01bcdc6fda045286a3643eddd5dab2016fff0fbf"
+      }
+    },
+    {
+      "revision_round": 3,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex",
+            "run_id": "review-gpt56sol-xcell-r3-d9f5711d63dd6d13",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 94,
+            "request_coverage": 89,
+            "reasoning_quality": 82,
+            "readability": 95,
+            "limitations": 92
+          },
+          "score_reasons": {
+            "evidence_fidelity": "25.6M、16 contexts、7 个 genome-wide screens、4.9B 参数、六类 prior、约 1.6B 后的测试指标平台、三类跨 context 评估与 TTA 使用目标域无标签 control 等口径均与节目、预印本和官方页面一致。报告也明确把 Pearson Δ、MAE 和表达谱相似度限定为转录响应代理，没有把它们写成药效或临床疗效。主要扣分来自新增“三层验收”是报告自行提出的规范性框架，却没有像下一段 benchmark 建议一样显式标为报告推断/建议，读者可能误以为它来自节目或论文。",
+            "request_coverage": "报告完整覆盖观测数据与干预数据、Perturb-seq、数据工厂、diffusion、六类先验、scaling、简单 baseline、三类跨 context 泛化、组合/多模态/in vivo、产学分工和两项测量缺口，能够独立阅读。新增 benchmark 已涉及防泄漏的 campaign/batch/cell type/donor split、简单相加与最近邻 baseline、禁止测试标签调参及 prospective wet-lab validation；但三层框架的第三层仅落到 target-validation 命中率，尚未把转化前研究与临床安全/有效性作为独立验收层。Tahoe-100M 的单靶点 inhibitor 测试和当前代码/权重开放状态也只被间接覆盖。",
+            "reasoning_quality": "核心推理链可靠：干预数据提供因果方向，diffusion 负责状态转移建模，priors 提供归纳偏置，数据多样性限制 scaling，复杂模型必须与简单 baseline 和多指标共同比较。新增验收框架有实用价值，也要求跨 context、独立湿实验和 prospective validation；但它把“表达代理→跨 context→靶点湿实验”称为三层完整验收，未进一步区分 target validation、转化前药效/安全与临床结局，也未显式说明这是报告建议。对 MAE、Pearson Δ、DE 指标之间的权衡可再用预注册主指标或 Pareto/失败条件操作化，因此需要修订。",
+            "readability": "八个章节和内容地图结构清楚，“打字 vs 编辑”“信息墙”“三层验收”等表达降低了理解成本；来源事实、边界和追问大多能在相邻段落中找到。新增框架只需补一处明确标签并细分第三层即可消除来源归属歧义。",
+            "limitations": "报告充分披露 bioRxiv v1、作者利益关系、任务和指标选择、TTA 目标域信息、CRISPRi/单基因/转录组范围以及表达预测不等于安全有效治疗。仍可补充官方 GitHub/模型与数据页当前存在 “coming soon” 项，说明独立复现受公开工件可用性限制；并在验收框架中把临床证据缺口转成明确停止条件。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07",
+            "U08",
+            "U09",
+            "U10",
+            "U11",
+            "U12"
+          ],
+          "source_content_map": [
+            {
+              "id": "SC-XR3-01",
+              "title": "Xaira 的蛋白设计、虚拟细胞与患者表示三平台及端到端药物发现目标",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01"
+              ],
+              "notes": "报告将 X-Cell 放在干预后细胞状态预测的位置，并明确没有把 virtual cell 写成直接产出药物或临床疗效的系统。"
+            },
+            {
+              "id": "SC-XR3-02",
+              "title": "观测表达图谱只能给相关结构，反事实预测需要真实 intervention",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S05"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "报告准确解释 A/B/C 共变不能唯一识别因果方向，并把干预数据而非模型规模视为反事实信息的来源。"
+            },
+            {
+              "id": "SC-XR3-03",
+              "title": "Perturb-seq 以 pooled CRISPRi、guide barcode 和 scRNA-seq 建立扰动到响应的映射",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S05"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "报告说明 guide 身份、基因抑制和全转录组读出如何在同一批实验中对应，机制足以独立阅读。"
+            },
+            {
+              "id": "SC-XR3-04",
+              "title": "X-Atlas/Pisces 的数据规模、七个 genome-wide screens、16 contexts 与质量控制",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S05"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "25.6M 过滤后扰动转录组、跨 campaign 标准化、guide/细胞/批次质量控制和 context 多样性均进入正文。"
+            },
+            {
+              "id": "SC-XR3-05",
+              "title": "cell line、iPSC、primary cell、spatial/native context 的代理边界",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S02",
+                "S05"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04",
+                "U10"
+              ],
+              "notes": "报告保留 primary、organoid、组织、空间关系和 cell-cell interaction 的外推边界，但压缩了节目对 spatial measurement 技术与 tractable model system 代理关系的展开。"
+            },
+            {
+              "id": "SC-XR3-06",
+              "title": "无自然基因顺序的 set-level masked diffusion 与四步累积修正",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S05",
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "报告用“打字 vs 编辑”解释 autoregression 与 diffusion，并明确架构不自动产生因果识别；不确定性校准被保留为未验证问题。"
+            },
+            {
+              "id": "SC-XR3-07",
+              "title": "GenePT、ESM-2、STRING、DepMap、JUMP Cell Painting 与 scGPT 六类先验",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S05",
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "六类来源、cross-attention/embedding 的注入思路和“数据第一、架构第二、先验第三”的节目判断均被准确保留。"
+            },
+            {
+              "id": "SC-XR3-08",
+              "title": "4.9B X-Cell-Ultra、power-law scaling 与数据多样性造成的泛化平台",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S05",
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "U07"
+              ],
+              "notes": "报告写明固定约 5,300 个 perturbation-context group 时 test loss/DE Pearson 在约 1.6B 后接近平台，并没有把有限区间的 power law 外推为无限 scaling 定律。"
+            },
+            {
+              "id": "SC-XR3-09",
+              "title": "静息到激活 Jurkat、留出 melanocyte progenitor 与多 donor primary CD4+ T cell 泛化",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S05",
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08"
+              ],
+              "notes": "三类主要跨状态、跨细胞类型和跨 donor 案例均进入正文；TTA 使用目标域无标签 control 的口径与严格 zero-shot 被分开。"
+            },
+            {
+              "id": "SC-XR3-10",
+              "title": "Tahoe-100M 单靶点 inhibitor 测试只验证转录响应 proxy",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S05"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08",
+                "U09"
+              ],
+              "notes": "报告正确声明 Pearson Δ 不等于安全有效治疗，但没有点名 Tahoe 的 12 个单靶点 inhibitor、50 个 cell lines 及其仍是 transcriptomic-response benchmark，读者不易看到论文唯一化学扰动测试的具体边界。"
+            },
+            {
+              "id": "SC-XR3-11",
+              "title": "control/perturbation mean、linear baseline 与 MAE、Pearson Δ 等多指标权衡",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S05"
+              ],
+              "matched_coverage_unit_ids": [
+                "U09"
+              ],
+              "notes": "报告解释简单相加为何可能很强，并指出低 MAE 可来自保守预测、Pearson Δ 只衡量表达变化相关性；新增 benchmark 继续保留简单 baseline 和误差分布。"
+            },
+            {
+              "id": "SC-XR3-12",
+              "title": "APPL2、LRBA 等 T cell regulator 案例仍需要机制实验验证",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S05"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08"
+              ],
+              "notes": "报告保留“预测不等于机制或药效”的总边界，但没有展开论文用于展示 biological fidelity 的 APPL2/LRBA 案例及作者自己要求进一步实验验证的限定。"
+            },
+            {
+              "id": "SC-XR3-13",
+              "title": "单基因转录读出距离组合扰动、组织生态和临床结果仍很远",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S05",
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10"
+              ],
+              "notes": "报告明确覆盖组合、剂量、时间、多模态、cell-cell interaction、organoid、tissue 与 in vivo，并把 X-Cell 定位为 perturbation response foundation model。"
+            },
+            {
+              "id": "SC-XR3-14",
+              "title": "academia 的方法与样本入口、industry 的稳定扩产及开放科学",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U11"
+              ],
+              "notes": "报告准确保留自由探索、领域专长、医院样本、工程规模和开放数据对独立检验的重要性。"
+            },
+            {
+              "id": "SC-XR3-15",
+              "title": "agentic AI 时代通过 debugging、湿实验和证据形成 research taste",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U11"
+              ],
+              "notes": "正文讨论产学协作和真实证据闭环，但节目对学生如何形成 research taste 的具体建议被压缩。"
+            },
+            {
+              "id": "SC-XR3-16",
+              "title": "下一代测量缺口是 protein-scale readout 与同一细胞非破坏性纵向观测",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U12"
+              ],
+              "notes": "报告分别写出蛋白状态大规模读取和不终止细胞的 longitudinal measurement，并说明当前多时间点通常来自不同细胞。"
+            },
+            {
+              "id": "SC-XR3-17",
+              "title": "公开代码、权重与数据的可用性决定独立复现能力",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "U11"
+              ],
+              "notes": "报告主张产业数据需要开放并把跟踪 Pisces/模型开放程度列为下一步，但没有明确记录官方页面当前仍有 code、weights 或部分数据 “coming soon” 的现实限制。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [
+            "R03"
+          ],
+          "hard_failures": [],
+          "notes": "来源优先复核：先完整读取官方 shownotes、artifact、1,897 段原始 transcript，并运行 audit_transcript.py；收据为 ok=true、segments=1897、duration_seconds=5379、sha256=8843a46a703f18887a62a596cfe18502ac3c3e64b14107f1c24d1f929ca44e52、max_consecutive_identical=1、warnings/errors 为空。随后核对 X-Cell bioRxiv v1、官方 PDF、X-Atlas/Pisces 页面和官方仓库；eacli 长文读取在约 32KB 截断，已在完成 token-plan catalog/select/invoke 后以官方 PDF 的流式 curl|pdftotext 最小降级补齐 57 页正文、Methods、Appendix 与声明。最后才读取 revision 3 报告、evidence 和历史 review。报告与 evidence 当前 SHA-256 分别为 3b16b1c8d843a5e6e45ff4c9b958d4483c6aa886992195f358b9b132e3e19d8a、ae3e0bb8eede0bd21f16060e01bcdc6fda045286a3643eddd5dab2016fff0fbf。未解决问题：§6 新增“三层验收”是报告建议，但未显式标注为推断/建议；第三层只到独立 target-validation 命中率，没有把转化前药效/安全与临床结局拆成独立验收条件，因此 R03 仍未完全满足。无 fabricated source、关键数字错配或 safety/privacy hard failure。完成 revision 3 复核记录后运行 `python3 scripts/report_quality.py check podcast-learning/reports/2026-07-21_rss-latent-space_xcell-causal-data.md`（未使用 `--finalize`），输出：tier=important｜decision=escalate｜score=90.55｜ERROR 2｜WARN 0；REV018 为 missing_requirements=R03，SCORE002 为 reasoning_quality=82 低于门槛 85。该输出仅为 deterministic check 结果，未写入最终判定。"
+        }
+      ],
+      "decision": {}
+    }
+  ]
+}

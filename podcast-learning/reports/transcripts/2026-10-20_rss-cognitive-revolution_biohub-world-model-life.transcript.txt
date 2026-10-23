@@ -1,0 +1,1173 @@
+[00:00:00 -> 00:00:03] and welcome back to The Cognitive Revolution. Today, my
+[00:00:03 -> 00:00:06] guest is Alex Reeves, formerly co-founder
+[00:00:06 -> 00:00:09] and chief scientist at Evolutionary Scale, makers of the ES
+[00:00:09 -> 00:00:12] M series of models, and currently head
+[00:00:12 -> 00:00:15] of science at Biohub. The Chan Zuckerberg Initiative backed
+[00:00:15 -> 00:00:17] Moonshot with the inspiring
+[00:00:17 -> 00:00:21] mission to cure or prevent all disease, which just
+[00:00:21 -> 00:00:25] announced a $1.8 billion expansion of the
+[00:00:25 -> 00:00:28] Virtual Biology Initiative, a day-to-generation effort that
+[00:00:28 -> 00:00:30] brings together the Department of
+[00:00:30 -> 00:00:35] Energy, the NIH, Google DeepMind, Isomorphic, and Meta. I
+[00:00:35 -> 00:00:39] opened by asking Alex what curing all
+[00:00:39 -> 00:00:41] disease means to him, and if I should expect to live much
+[00:00:41 -> 00:00:43] longer than the standard human lifespan.
+[00:00:45 -> 00:00:47] Calling himself a practical person in response, Alex
+[00:00:47 -> 00:00:50] described not immortality, but a world
+[00:00:50 -> 00:00:53] without cancer, without infectious disease, and without
+[00:00:53 -> 00:00:55] chronic or degenerative conditions.
+[00:00:56 -> 00:00:59] From there, we get Alex's perspective on why today's
+[00:00:59 -> 00:01:02] virtual cell models have not revolutionized
+[00:01:02 -> 00:01:05] medicine. The heart of the issue, Alex says, is that our
+[00:01:05 -> 00:01:08] ability to observe what matters in biology
+[00:01:08 -> 00:01:11] is still very limited by the measurement technology we have
+[00:01:11 -> 00:01:13] available. And as a result,
+[00:01:13 -> 00:01:16] we simply don't have the quality of data needed to
+[00:01:16 -> 00:01:18] represent the fine-grained causal structure
+[00:01:18 -> 00:01:22] that models presumably would be very happy to learn. Better
+[00:01:22 -> 00:01:24] architectures built on clever
+[00:01:24 -> 00:01:27] inductive biases can help make the most of scarce data,
+[00:01:27 -> 00:01:29] such as in the extremely thoughtful use of
+[00:01:29 -> 00:01:33] physics in alpha-fold style models. And we do see real
+[00:01:33 -> 00:01:35] progress in next-token modeling of the
+[00:01:35 -> 00:01:38] biological code, but the available data is still failing to
+[00:01:38 -> 00:01:41] capture critical information about how
+[00:01:41 -> 00:01:45] cells and tissues work. It's on this basis that Biohub is
+[00:01:45 -> 00:01:49] investing so heavily in data. By opening
+[00:01:49 -> 00:01:52] new modalities, as they did with the laser phase plate, and
+[00:01:52 -> 00:01:54] advance in microscopy, that's allowing
+[00:01:54 -> 00:01:57] scientists to begin to see directly how individual proteins
+[00:01:57 -> 00:02:00] and other macromolecules interact inside
+[00:02:00 -> 00:02:04] the cell, and also by systematically building cell atlases
+[00:02:04 -> 00:02:06] that link molecular and imaging
+[00:02:06 -> 00:02:10] datasets across hundreds of billions of cells, representing
+[00:02:10 -> 00:02:12] both healthy and diseased states.
+[00:02:14 -> 00:02:17] The goal over the next few years is to build an information
+[00:02:17 -> 00:02:19] -theoretic model of the cell,
+[00:02:19 -> 00:02:22] which effectively encodes the physical programs that run
+[00:02:22 -> 00:02:25] life, starting with a transition
+[00:02:25 -> 00:02:27] function that takes a cell or tissue state and a set of
+[00:02:27 -> 00:02:29] inputs and predicts a distribution
+[00:02:29 -> 00:02:32] of cell states at the next timestamp.
+[00:02:32 -> 00:02:36] ultimately building toward what Alex calls a world model of
+[00:02:36 -> 00:02:37] life.
+[00:02:38 -> 00:02:42] This, of course, would support the use case that I always
+[00:02:42 -> 00:02:42] dream of,
+[00:02:42 -> 00:02:43] which is answering the question,
+[00:02:44 -> 00:02:47] how do I push a pathological state back to a healthy one?
+[00:02:47 -> 00:02:51] Or in other words, how do I effectively treat this disease?
+[00:02:53 -> 00:02:56] Along the way, Alex describes how the LLM training paradigm
+[00:02:56 -> 00:02:57] applies to biology.
+[00:02:57 -> 00:03:01] His vision for RLVR for biology with lab verification.
+[00:03:02 -> 00:03:04] He reacts to my proposal for a million Brian Johnsons,
+[00:03:05 -> 00:03:07] and he ponders whether biological and language-latent
+[00:03:07 -> 00:03:10] spaces will ever become deeply fused
+[00:03:10 -> 00:03:13] or will remain separated by tool calls. Noting that the
+[00:03:13 -> 00:03:16] things we most want to know about biology
+[00:03:16 -> 00:03:20] today are novel concepts for which we don't yet have words
+[00:03:20 -> 00:03:24] and names. Finally, I asked Alex how
+[00:03:24 -> 00:03:28] he tracks his own health. He answered that he's so focused
+[00:03:28 -> 00:03:30] on Biohub research that he barely thinks
+[00:03:30 -> 00:03:34] about it. Which surprised me, until I considered that if he
+[00:03:34 -> 00:03:35] and the Biohub team are successful
+[00:03:35 -> 00:03:39] in creating the data layer needed to train highly general
+[00:03:39 -> 00:03:40] izable biofoundation models,
+[00:03:41 -> 00:03:44] a little bit of timely, relevant personal health context
+[00:03:44 -> 00:03:47] might indeed be all you need.
+[00:03:48 -> 00:03:51] With that, I hope you enjoy this look ahead toward a world
+[00:03:51 -> 00:03:52] model of life
+[00:03:52 -> 00:03:56] with Alex Reeves, Head of Science at Biohub.
+[00:03:56 -> 00:04:00] Alex Reeves, Head of Science at Biohub.
+[00:04:01 -> 00:04:02] Welcome to the Cognitive Revolution.
+[00:04:03 -> 00:04:04] Thank you. Great to be here, Nathan.
+[00:04:04 -> 00:04:06] Yeah, I'm excited for this conversation.
+[00:04:07 -> 00:04:08] So let's start with the big picture.
+[00:04:09 -> 00:04:13] Biohub has this grandiose mission, which I'm excited about,
+[00:04:13 -> 00:04:15] of curing all diseases.
+[00:04:16 -> 00:04:17] What does that mean to you?
+[00:04:17 -> 00:04:20] Should I think of that as synonymous with another phrase
+[00:04:20 -> 00:04:22] people sometimes use as solving biology?
+[00:04:22 -> 00:04:24] Should I think of it as applying to aging?
+[00:04:24 -> 00:04:27] Are we living forever in your vision of the future?
+[00:04:27 -> 00:04:30] How grand does this vision ultimately get?
+[00:04:30 -> 00:04:31] Yeah, that's a great question.
+[00:04:31 -> 00:04:32] How do we define this?
+[00:04:32 -> 00:04:34] Well, I think I'm a practical person, right?
+[00:04:34 -> 00:04:37] So I think about, you know, kind of what is going to be
+[00:04:37 -> 00:04:39] possible, I think, in a realistic
+[00:04:39 -> 00:04:40] time frame.
+[00:04:40 -> 00:04:43] And I think, you know, a good place to set our sights is to
+[00:04:43 -> 00:04:45] say that, you know, what
+[00:04:45 -> 00:04:48] we want to do is really live in a world without disease.
+[00:04:48 -> 00:04:49] Like, what would that mean?
+[00:04:49 -> 00:04:52] That would mean, you know, a world where there's not cancer
+[00:04:52 -> 00:04:53] , a world where there's not infectious
+[00:04:53 -> 00:04:56] disease, a world where there is not chronic disease or
+[00:04:56 -> 00:04:58] degenerative disease or, you know,
+[00:04:58 -> 00:05:02] all the kinds of inflictions that have been, you know,
+[00:05:02 -> 00:05:04] really fundamental to the human
+[00:05:04 -> 00:05:07] condition for a very long time. And, you know, I think
+[00:05:07 -> 00:05:10] about that from a fundamental standpoint,
+[00:05:10 -> 00:05:13] like, you know, how do we build the science that will, you
+[00:05:13 -> 00:05:16] know, really give us an understanding
+[00:05:16 -> 00:05:20] of biology at a very deep and fundamental level that will
+[00:05:20 -> 00:05:23] allow us to understand how disease works,
+[00:05:23 -> 00:05:26] that will allow us to really identify the core mechanisms,
+[00:05:26 -> 00:05:29] that will allow us to understand how
+[00:05:29 -> 00:05:34] how to detect disease, how to intervene appropriately, and
+[00:05:34 -> 00:05:36] also kind of the technology,
+[00:05:37 -> 00:05:40] right? So how can we go beyond kind of the current medical
+[00:05:40 -> 00:05:42] paradigm, which is, you know, kind of,
+[00:05:42 -> 00:05:46] and I guess the therapeutic paradigm of kind of pills, of
+[00:05:46 -> 00:05:49] molecules, you know, can we really go
+[00:05:49 -> 00:05:54] beyond that to far more programmable medicines that will
+[00:05:54 -> 00:05:56] allow us to really get to the fundamentals
+[00:05:56 -> 00:05:59] of disease and really start to think about that as being
+[00:05:59 -> 00:06:02] able to read and write the programs of
+[00:06:02 -> 00:06:05] biology. So sometimes when I've thought about this in the
+[00:06:05 -> 00:06:08] past, I've tried to break this grand
+[00:06:08 -> 00:06:12] challenge down into two slightly less grand challenges. One
+[00:06:12 -> 00:06:14] of them is just understanding
+[00:06:14 -> 00:06:19] the causal structure of what's going on inside our bodies
+[00:06:19 -> 00:06:21] so that we could know what leads to
+[00:06:21 -> 00:06:24] problems and therefore what our targets for intervention
+[00:06:24 -> 00:06:26] should be. And then the other one
+[00:06:26 -> 00:06:28] is like having identified a target, figuring out something
+[00:06:28 -> 00:06:30] that can actually have the desired
+[00:06:30 -> 00:06:33] effect. How would you, you know, is that a good taxonomy?
+[00:06:33 -> 00:06:35] How would you break that taxonomy of
+[00:06:35 -> 00:06:38] challenges down further if you want to? And which ones do
+[00:06:38 -> 00:06:41] we have kind of the most traction on and
+[00:06:41 -> 00:06:44] where do we need to catch up? I mean, I think that's really
+[00:06:44 -> 00:06:47] the classic framework of drug
+[00:06:47 -> 00:06:51] development. So if you kind of think about, you know, how
+[00:06:51 -> 00:06:53] we think about creating a drug today,
+[00:06:53 -> 00:06:57] You know, we think about physiology and disease. We try to
+[00:06:57 -> 00:07:01] identify really kind of a cause at the molecular level
+[00:07:01 -> 00:07:04] because that's where we can actually intervene today with
+[00:07:04 -> 00:07:07] the technology that we have. And then we really think about
+[00:07:07 -> 00:07:10] that problem of kind of, you know, finding and designing
+[00:07:10 -> 00:07:11] the intervention.
+[00:07:12 -> 00:07:17] And so, you know, that's kind of, I think, one paradigm.
+[00:07:17 -> 00:07:20] And I think, you know, there's a lot of progress that's
+[00:07:20 -> 00:07:23] still possible in that paradigm. So, you know, I think that
+[00:07:23 -> 00:07:27] 's kind of where we are today, of course. And I think AI,
+[00:07:27 -> 00:07:30] you know, is giving us, I think, really new potential to
+[00:07:30 -> 00:07:33] kind of look at each of the parts of solving the, when you
+[00:07:33 -> 00:07:36] break the problem down that way, kind of each of the parts
+[00:07:36 -> 00:07:39] of solving it from that standpoint.
+[00:07:39 -> 00:07:44] But I mean, I think there's kind of also this kind of, you
+[00:07:44 -> 00:07:46] know, more, I guess, like information
+[00:07:46 -> 00:07:49] theoretic view on it that you might take, where you can
+[00:07:49 -> 00:07:51] kind of think about, you know,
+[00:07:52 -> 00:07:54] life as a program, right?
+[00:07:54 -> 00:07:58] You can think about cells as building living organisms.
+[00:07:58 -> 00:08:02] And you can really think about, you know, that as a system
+[00:08:02 -> 00:08:03] of rules, of code.
+[00:08:04 -> 00:08:07] And you can think about, you know, what are the programs,
+[00:08:07 -> 00:08:08] right?
+[00:08:08 -> 00:08:12] And like, you know, how could we read those programs? How
+[00:08:12 -> 00:08:17] could we start to rewrite those programs? And I think, you
+[00:08:17 -> 00:08:21] know, kind of thinking in that way opens up a wider
+[00:08:21 -> 00:08:24] aperture to solving these problems.
+[00:08:24 -> 00:08:27] And I think a big part of kind of where we're trying to get
+[00:08:27 -> 00:08:31] with Biohub is to really, you know, think about biology in
+[00:08:31 -> 00:08:34] that way, kind of create the tools for programmable biology
+[00:08:34 -> 00:08:38] , create the models that will allow us to understand biology
+[00:08:38 -> 00:08:42] in that context, you know, to really, really start to
+[00:08:42 -> 00:08:45] understand how the cell works, both down to the molecular
+[00:08:45 -> 00:08:49] level, but also, you know, kind of zooming out the cell in
+[00:08:49 -> 00:08:53] context and the, you know, the programs that it runs to
+[00:08:53 -> 00:08:55] build a living cell.
+[00:08:55 -> 00:08:58] organism. And I think, you know, you can really think of
+[00:08:58 -> 00:09:00] disease as kind of a part of that,
+[00:09:00 -> 00:09:04] right? It's really a part of the program. And if you think
+[00:09:04 -> 00:09:06] about it, you know, disease
+[00:09:06 -> 00:09:10] often unfolds in very regular ways. So if we could kind of
+[00:09:10 -> 00:09:12] really understand that,
+[00:09:12 -> 00:09:16] I think it gives us really fundamentally new tools to think
+[00:09:16 -> 00:09:18] about how to make progress.
+[00:09:18 -> 00:09:21] So I know you guys are working toward virtual cell models.
+[00:09:21 -> 00:09:22] Of course, there have been
+[00:09:22 -> 00:09:27] virtual cell models for a while. My general understanding
+[00:09:27 -> 00:09:28] of the state of play right now
+[00:09:28 -> 00:09:33] is like they don't work super well, largely. And people
+[00:09:33 -> 00:09:35] have kind of said or have advanced
+[00:09:35 -> 00:09:37] different hypotheses, I guess, let's say, for why that
+[00:09:37 -> 00:09:39] would be the case. The one that I have found
+[00:09:39 -> 00:09:44] the most compelling is basically the data we have is just
+[00:09:44 -> 00:09:47] not that high of quality such that it may
+[00:09:47 -> 00:09:52] not contain the signals that the ML models would really
+[00:09:52 -> 00:09:56] need to learn what's really going on.
+[00:09:57 -> 00:10:01] How would you react to that hypothesis? Like, where do you
+[00:10:01 -> 00:10:02] think everything that's happened
+[00:10:02 -> 00:10:04] so far, like, why hasn't it taken us further than it has
+[00:10:04 -> 00:10:08] today? Yeah, the, you know, the cell is
+[00:10:08 -> 00:10:10] incredibly complex. So I think, I think you have to start
+[00:10:10 -> 00:10:13] there. You know, it's, it's, it's, it's
+[00:10:13 -> 00:10:17] kind of like the right, maybe mesoscale for thinking about
+[00:10:17 -> 00:10:19] biology. But, you know, if you
+[00:10:19 -> 00:10:24] think about the cell, it's constituted by this just
+[00:10:24 -> 00:10:28] incredibly complex dynamic collection of
+[00:10:28 -> 00:10:32] matter, you know, where kind of down to the level of
+[00:10:32 -> 00:10:36] individual atoms and the interactions between
+[00:10:36 -> 00:10:42] molecules, you know, those events are determining of what
+[00:10:42 -> 00:10:46] happens at the larger scale of the cell.
+[00:10:46 -> 00:10:51] And so there's that kind of perspective, you know, building
+[00:10:51 -> 00:10:54] up from, you know, the atomic resolution, kind of the first
+[00:10:54 -> 00:10:57] physical and chemical first principles.
+[00:10:57 -> 00:11:02] And then you can also kind of then think about the cell as
+[00:11:02 -> 00:11:06] embedded within a living system, right? Within tissue,
+[00:11:06 -> 00:11:10] within physiology, within an organism, and sort of the
+[00:11:10 -> 00:11:14] complex programs that cells are able to execute, to sense
+[00:11:14 -> 00:11:18] and respond to their environment, to communicate with each
+[00:11:18 -> 00:11:21] other, to really do these incredibly complicated and
+[00:11:21 -> 00:11:23] dynamic things.
+[00:11:23 -> 00:11:28] things. And so it's an immense, immense challenge. And I
+[00:11:28 -> 00:11:31] think there are a number of limitations.
+[00:11:32 -> 00:11:35] So one is kind of, I think, the models themselves, right?
+[00:11:35 -> 00:11:38] And just kind of having the right
+[00:11:38 -> 00:11:43] modeling approach and the right modeling paradigm. And we
+[00:11:43 -> 00:11:47] have the transformer in other areas of AI,
+[00:11:47 -> 00:11:50] but the transformer kind of doesn't have that kind of multi
+[00:11:50 -> 00:11:54] -scale structure that could represent
+[00:11:54 -> 00:11:57] those different levels of complexity.
+[00:11:57 -> 00:11:59] So there's kind of a question
+[00:11:59 -> 00:12:01] of what's the right modeling paradigm.
+[00:12:02 -> 00:12:05] But then I think even more fundamental,
+[00:12:06 -> 00:12:08] there's the question of observation,
+[00:12:09 -> 00:12:10] observability, and measurement.
+[00:12:10 -> 00:12:13] And so much about the cell,
+[00:12:14 -> 00:12:16] we just really can't measure.
+[00:12:17 -> 00:12:19] Sometimes we can't see it at all.
+[00:12:20 -> 00:12:21] And in many cases,
+[00:12:21 -> 00:12:23] kind of generating data at scale
+[00:12:23 -> 00:12:24] would be really hard.
+[00:12:25 -> 00:12:28] And so if you think about kind of many of the advances in
+[00:12:28 -> 00:12:29] science and biology, you know,
+[00:12:29 -> 00:12:32] they really come from kind of having a new technology that,
+[00:12:32 -> 00:12:34] you know, that changes what
+[00:12:34 -> 00:12:36] we can measure, what we can observe.
+[00:12:36 -> 00:12:41] You know, the new powers to see and observe biology, you
+[00:12:41 -> 00:12:44] know, can really open up a new
+[00:12:44 -> 00:12:45] understanding of it.
+[00:12:45 -> 00:12:48] And so I really think there's kind of three parts to really
+[00:12:48 -> 00:12:50] solving this problem.
+[00:12:50 -> 00:12:52] There's the modeling part.
+[00:12:52 -> 00:12:58] There's the part of generating data at scale that's going
+[00:12:58 -> 00:13:01] to really reveal the information
+[00:13:01 -> 00:13:05] architecture and the programs of the cell in its kind of
+[00:13:05 -> 00:13:07] statistical structure.
+[00:13:07 -> 00:13:11] And then it's really, you know, the tools that we have to
+[00:13:11 -> 00:13:13] actually observe the cell
+[00:13:13 -> 00:13:17] and actually measure the things that matter.
+[00:13:17 -> 00:13:20] And I think you need to see progress on all three of those.
+[00:13:20 -> 00:13:23] And so, you know, the models that are being called virtual
+[00:13:23 -> 00:13:26] cells today, you know, I just I don't I don't think they
+[00:13:26 -> 00:13:29] meet that that definition of a model that that could
+[00:13:29 -> 00:13:33] actually simulate the cell in a meaningful way and actually
+[00:13:33 -> 00:13:37] really serve as an oracle for experimental biology.
+[00:13:37 -> 00:13:42] Let's do one more beat on how you imagine modeling evolving
+[00:13:42 -> 00:13:43] .
+[00:13:43 -> 00:13:46] I guess my naive sort of outside view, just based on all
+[00:13:46 -> 00:13:49] the success that we've seen in AI and language modeling and
+[00:13:49 -> 00:13:53] otherwise, is just like, if we had enough good data, it
+[00:13:53 -> 00:13:57] feels to me like today's techniques would probably work.
+[00:13:57 -> 00:13:59] Maybe you would disagree with that.
+[00:13:59 -> 00:14:02] But if you would disagree with that, what sort of future
+[00:14:02 -> 00:14:04] model do you envision?
+[00:14:05 -> 00:14:08] You know, how do you think we sort of encode the right
+[00:14:08 -> 00:14:13] inductive priors and and sort of how how much of a like
+[00:14:13 -> 00:14:16] actual Rube Goldberg machine is the model?
+[00:14:16 -> 00:14:18] Is it like trying to match up the actual cell with like all
+[00:14:18 -> 00:14:21] the little proteins bopping around and interacting with
+[00:14:21 -> 00:14:23] each other and modeling all those like microstates?
+[00:14:24 -> 00:14:28] Or, you know, a kind of naive black box thing would be like
+[00:14:28 -> 00:14:31] , I have a cell, I perturb it, like, what's the next state?
+[00:14:32 -> 00:14:34] You know, kind of more of an input output without worrying
+[00:14:34 -> 00:14:37] about all the detailed mechanisms inside.
+[00:14:37 -> 00:14:40] Where do you think we land on modeling when this really
+[00:14:40 -> 00:14:40] starts to work?
+[00:14:41 -> 00:14:42] Yeah, that's a great question.
+[00:14:42 -> 00:14:45] So I should start by saying that, you know, I really think
+[00:14:45 -> 00:14:48] that kind of in the limit of, you know, data and the limit
+[00:14:48 -> 00:14:50] of infinite data and compute,
+[00:14:50 -> 00:14:53] if you're thinking in limits, kind of all model architect
+[00:14:53 -> 00:14:56] ures probably kind of end up being the
+[00:14:56 -> 00:14:58] same, right? They're just kind of function approximators,
+[00:14:58 -> 00:15:00] right? And so if you have the
+[00:15:00 -> 00:15:03] right inputs and the outputs and you learn a very, very
+[00:15:03 -> 00:15:05] good general function approximator,
+[00:15:06 -> 00:15:09] then in that sense, in those limits, kind of the model
+[00:15:09 -> 00:15:11] architecture itself falls away.
+[00:15:12 -> 00:15:16] But I think in biology, we're very far from that point. We
+[00:15:16 -> 00:15:18] 're very far, with some exceptions,
+[00:15:18 -> 00:15:21] right? Like with protein biology, you know, we have gene
+[00:15:21 -> 00:15:22] sequencing at scale, you know, we really
+[00:15:22 -> 00:15:26] can kind of, you know, get closer and closer to kind of
+[00:15:26 -> 00:15:29] that limit of infinite data. But for
+[00:15:29 -> 00:15:33] cellular biology, you know, we're just so far from that
+[00:15:33 -> 00:15:35] right now. And I think historically,
+[00:15:36 -> 00:15:39] when you're far from that limit, you know, inductive bias
+[00:15:39 -> 00:15:41] becomes really important.
+[00:15:42 -> 00:15:46] When I think about, you know, a model, I mean, I think
+[00:15:46 -> 00:15:49] where do we ultimately want to get,
+[00:15:49 -> 00:15:52] we want to get to a model of the cell. It's kind of what I
+[00:15:52 -> 00:15:55] was saying before. It has that complexity
+[00:15:55 -> 00:15:59] at the molecular level. It has a representation of that.
+[00:15:59 -> 00:16:02] Imagine kind of being able to project out
+[00:16:02 -> 00:16:07] the state of the cell down to the level of atomically
+[00:16:07 -> 00:16:11] resolved structures of its components.
+[00:16:11 -> 00:16:15] We would have that. It would also really be able to model
+[00:16:15 -> 00:16:17] the cell at the level of its programs,
+[00:16:17 -> 00:16:22] And it would be able to predict, it would be able to allow
+[00:16:22 -> 00:16:29] development to unfold, to allow the interactions within
+[00:16:29 -> 00:16:33] tissue to unfold and tell you what would happen.
+[00:16:34 -> 00:16:36] So in that sense, you could think of it as a world model,
+[00:16:36 -> 00:16:36] right?
+[00:16:36 -> 00:16:41] Kind of a world model of life, a world model of biology.
+[00:16:41 -> 00:16:43] I think we're very far from that.
+[00:16:43 -> 00:16:49] So what I think is possible now is an information theoretic
+[00:16:49 -> 00:16:57] model of the cell. And I think that there are, you know,
+[00:16:57 -> 00:17:04] really these programs that run life. They're encoded in the
+[00:17:04 -> 00:17:05] genome.
+[00:17:06 -> 00:17:11] And I think it's historically, you know, there's been these
+[00:17:11 -> 00:17:13] kind of two dual ways to think about biology. One is this
+[00:17:13 -> 00:17:16] kind of bottoms up first principles approach, kind of
+[00:17:16 -> 00:17:20] trying to build it from the basic chemical and physical
+[00:17:20 -> 00:17:21] principles.
+[00:17:21 -> 00:17:24] But I think the other view that's been really productive is
+[00:17:24 -> 00:17:28] to kind of really think about the emergent level of the
+[00:17:28 -> 00:17:32] informational model of the cell.
+[00:17:32 -> 00:17:35] You know, the cell is an information processing machine
+[00:17:35 -> 00:17:38] which has a genome which encodes the programs that run life
+[00:17:38 -> 00:17:38] .
+[00:17:39 -> 00:17:44] And I think that's the level of understanding of the cell
+[00:17:44 -> 00:17:50] that could be attainable via AI in kind of the next five
+[00:17:50 -> 00:17:52] years, let's say.
+[00:17:52 -> 00:17:57] I think that we really have, you know, we're in the age of
+[00:17:57 -> 00:18:01] information theory at scale. And in a sense, you know, we
+[00:18:01 -> 00:18:05] have these incredibly powerful methods which can perform,
+[00:18:05 -> 00:18:08] you know, they do pre-training, they use self-supervised
+[00:18:08 -> 00:18:11] learning on these, you know, vast data sets.
+[00:18:11 -> 00:18:17] And from statistical patterns that link inputs to outputs,
+[00:18:17 -> 00:18:20] they're able to capture really high fidelity
+[00:18:20 -> 00:18:24] representations of the underlying latent variables that are
+[00:18:24 -> 00:18:28] driving the relationship between input and output.
+[00:18:28 -> 00:18:31] And so you can imagine generating data on the cell that
+[00:18:31 -> 00:18:36] could really start to reveal how information at the genetic
+[00:18:36 -> 00:18:40] level, at the transcriptomic level, at the molecular
+[00:18:40 -> 00:18:44] protein level would link to the programs and responses of
+[00:18:44 -> 00:18:48] the cell that can be observed through different molecular
+[00:18:48 -> 00:18:52] readouts, such as transcriptomics and gene sequencing and
+[00:18:52 -> 00:18:54] epigenetic measurements,
+[00:18:54 -> 00:18:57] but also through imaging and the power of just being able
+[00:18:57 -> 00:19:00] to see how the cell responds.
+[00:19:00 -> 00:19:03] So I think you were exactly right to kind of think about it
+[00:19:03 -> 00:19:05] as one of the first things that
+[00:19:05 -> 00:19:08] we can really think about doing is really learning this
+[00:19:08 -> 00:19:10] transition function that takes us
+[00:19:10 -> 00:19:15] from a state and a set of inputs to the next state. And it
+[00:19:15 -> 00:19:17] 's really a probabilistic function.
+[00:19:17 -> 00:19:20] It's not going to be deterministic. The cell is going to
+[00:19:20 -> 00:19:22] transition, I think,
+[00:19:22 -> 00:19:25] to a distribution of possible downstream states.
+[00:19:25 -> 00:19:27] So it's a very complex problem to learn.
+[00:19:28 -> 00:19:29] But I think today, you know,
+[00:19:29 -> 00:19:31] we kind of have the technologies now
+[00:19:31 -> 00:19:32] that are gonna make it possible
+[00:19:32 -> 00:19:34] to create that kind of model.
+[00:19:34 -> 00:19:37] Hey, we'll continue our interview in a moment
+[00:19:37 -> 00:19:38] after a word from our sponsors.
+[00:19:54 -> 00:19:57] like me, your agents are often conducting hundreds of
+[00:19:57 -> 00:19:59] searches per day. And while the unit cost is
+[00:19:59 -> 00:20:02] small, over time, this does start to add up. Before
+[00:20:02 -> 00:20:05] starting to use Parallel, I calculated
+[00:20:05 -> 00:20:08] that my agent search bill would total roughly $500 this
+[00:20:08 -> 00:20:11] year. The good news is that I just had
+[00:20:11 -> 00:20:14] my agents conduct a systematic test, and I found that Par
+[00:20:14 -> 00:20:17] allel's fast mode, which costs just $1
+[00:20:17 -> 00:20:20] per thousand queries, worked just as well as my previous
+[00:20:20 -> 00:20:22] default provider. And switching to it
+[00:20:22 -> 00:20:25] will save me roughly 80% of my search bill going forward.
+[00:20:25 -> 00:20:28] Parallels infrastructure is enterprise
+[00:20:28 -> 00:20:31] grade, and their suite of APIs offers a range of Pareto
+[00:20:31 -> 00:20:33] optimal options that allow you to choose
+[00:20:33 -> 00:20:36] the right balance of quality, cost, and speed for your
+[00:20:36 -> 00:20:39] needs. So whether you're building voice
+[00:20:39 -> 00:20:42] agents that need 200 millisecond latency or long horizon
+[00:20:42 -> 00:20:44] agents that need deep research,
+[00:20:45 -> 00:20:48] adding Parallel to your agent's toolkit is a no-brainer.
+[00:20:48 -> 00:20:51] Get started for free at parallel.ai
+[00:20:51 -> 00:20:59] slash TCR. That's parallel.ai slash TCR. This episode of
+[00:20:59 -> 00:21:00] The Cognitive Revolution
+[00:21:00 -> 00:21:03] is brought to you by OutSystems, the leading agentic
+[00:21:03 -> 00:21:05] systems platform.
+[00:21:06 -> 00:21:09] We've all seen the headlines. Companies are pouring money
+[00:21:09 -> 00:21:11] into AI. But the big question
+[00:21:11 -> 00:21:14] on every executive's mind right now isn't just how fast can
+[00:21:14 -> 00:21:17] we adopt this? It's where is the ROI?
+[00:21:17 -> 00:21:21] We're seeing a real trend toward AI chaos.
+[00:21:22 -> 00:21:24] You've got teams deploying standalone coding tools, random
+[00:21:24 -> 00:21:27] agent builders, and experimental scripts.
+[00:21:27 -> 00:21:30] It sounds innovative, but in reality, it's creating a
+[00:21:30 -> 00:21:31] massive headache.
+[00:21:32 -> 00:21:35] Fragmented tools, ungoverned data, serious security blind
+[00:21:35 -> 00:21:38] spots, and costs that are spiraling out of control.
+[00:21:39 -> 00:21:41] If you don't bring those agentic applications under control
+[00:21:41 -> 00:21:44] now, while they're still embedding into your core processes
+[00:21:44 -> 00:21:44] ,
+[00:21:44 -> 00:21:47] you are looking at broken systems and damaged customer
+[00:21:47 -> 00:21:49] trust down the road.
+[00:21:50 -> 00:21:52] That's where OutSystems comes in.
+[00:21:52 -> 00:21:55] OutSystems is the leading agentic systems platform for the
+[00:21:55 -> 00:21:56] enterprise.
+[00:21:57 -> 00:21:59] Instead of managing a patchwork of disconnected tools,
+[00:22:00 -> 00:22:03] OutSystems lets your team engineer, orchestrate, and govern
+[00:22:03 -> 00:22:08] your entire agentic ecosystem on one open, unified platform
+[00:22:08 -> 00:22:08] .
+[00:22:08 -> 00:22:10] It's built for the speed of AI,
+[00:22:10 -> 00:22:13] but with the reliability and security that enterprises
+[00:22:13 -> 00:22:14] actually require.
+[00:22:14 -> 00:22:18] We're talking about real results, like KeyBank, who used
+[00:22:18 -> 00:22:22] OutSystems to deploy a customer-facing app that delivered
+[00:22:22 -> 00:22:24] 75% faster onboarding times.
+[00:22:24 -> 00:22:27] Or the global logistics leaders who built Agentix Systems
+[00:22:27 -> 00:22:31] to completely eliminate their engineering bottlenecks.
+[00:22:32 -> 00:22:34] You don't have to choose between speed and control.
+[00:22:35 -> 00:22:37] Whether you're a small team or a massive enterprise, OutS
+[00:22:37 -> 00:22:41] ystems helps you engineer, orchestrate, and deploy Agentix
+[00:22:41 -> 00:22:43] Systems that actually scale.
+[00:22:43 -> 00:22:47] Stop chasing the hype and start owning your agentic future.
+[00:22:48 -> 00:22:51] You can see how it works and learn more at OutSystems.com
+[00:22:51 -> 00:22:53] slash TCR.
+[00:22:53 -> 00:22:57] That's OutSystems.com slash TCR.
+[00:22:57 -> 00:23:00] So you guys just made some news this week with an
+[00:23:00 -> 00:23:03] announcement of a $1.8 billion initiative
+[00:23:03 -> 00:23:06] with some partners, BioHeb, and a couple other major
+[00:23:06 -> 00:23:07] institutions.
+[00:23:08 -> 00:23:11] Maybe tell us a little bit about that partnership and what
+[00:23:11 -> 00:23:13] the money is going to go toward.
+[00:23:13 -> 00:23:16] And I understand it's largely about creating new data, but,
+[00:23:16 -> 00:23:18] you know, unpack that and tell us what kinds of data are
+[00:23:18 -> 00:23:20] going to be the top priorities.
+[00:23:20 -> 00:23:23] Yeah, we're incredibly excited about this.
+[00:23:23 -> 00:23:26] So in April, we announced the Virtual Biology Initiative,
+[00:23:26 -> 00:23:30] which with a group of leading scientific institutions and
+[00:23:30 -> 00:23:31] consortia,
+[00:23:32 -> 00:23:35] and, you know, really said that we're going to go out and
+[00:23:35 -> 00:23:39] we're going to really build the data sets to enable virtual
+[00:23:39 -> 00:23:40] biology broadly.
+[00:23:41 -> 00:23:44] And, you know, really the key goal there to start is to
+[00:23:44 -> 00:23:48] really have this kind of, you know, universal or general
+[00:23:48 -> 00:23:50] model of cellular biology.
+[00:23:50 -> 00:23:55] And, you know, so we've been working over the summer and we
+[00:23:55 -> 00:23:59] announced, I guess it was just the day before yesterday,
+[00:23:59 -> 00:24:02] you know, really a flagship partnership with the Department
+[00:24:02 -> 00:24:08] of Energy, with the NIH, and with Google DeepMind isomorph
+[00:24:08 -> 00:24:09] ic meta,
+[00:24:09 -> 00:24:12] really to come together and coordinate an effort to
+[00:24:12 -> 00:24:14] generate this data.
+[00:24:15 -> 00:24:16] So it's incredibly exciting.
+[00:24:17 -> 00:24:20] You know, we're collaborating with a broad scientific
+[00:24:20 -> 00:24:21] community.
+[00:24:21 -> 00:24:23] You know, we've really put out a call.
+[00:24:23 -> 00:24:26] We're inviting the worldwide scientific community to be a
+[00:24:26 -> 00:24:29] part of this, for other funders to join it.
+[00:24:29 -> 00:24:32] But, you know, there's a core group that's really focused
+[00:24:32 -> 00:24:33] on just, you know,
+[00:24:33 -> 00:24:39] How can we have a more coordinated effort across science to
+[00:24:39 -> 00:24:40] do this?
+[00:24:41 -> 00:24:45] And, you know, the team is convening, you know, to kind of
+[00:24:45 -> 00:24:48] create that longer-term roadmap.
+[00:24:48 -> 00:24:51] But I think some of the things that are really clear that
+[00:24:51 -> 00:24:55] are going to come out of that is just, you know, dramatic
+[00:24:55 -> 00:24:59] expansion of these kind of maps, contextual maps of
+[00:24:59 -> 00:25:00] cellular biology.
+[00:25:00 -> 00:25:04] So things like spatial biology, where you're really able to
+[00:25:04 -> 00:25:06] see the cell in the context
+[00:25:06 -> 00:25:10] of tissue of surrounding cells, be able to link molecular
+[00:25:10 -> 00:25:12] level measurements to imaging,
+[00:25:12 -> 00:25:17] and really be able to do that at the scale of hundreds of
+[00:25:17 -> 00:25:19] billions or more cells.
+[00:25:20 -> 00:25:23] And the goal is really to move fast here and to kind of
+[00:25:23 -> 00:25:26] create the first data sets that
+[00:25:26 -> 00:25:29] will allow us to start training these contextual
+[00:25:29 -> 00:25:31] information theoretic models of the cell.
+[00:25:32 -> 00:25:35] In the context of self-driving cars, there's, of course,
+[00:25:35 -> 00:25:39] this longstanding debate of like fancy, you know, more
+[00:25:39 -> 00:25:44] expensive LiDAR type sensors versus just cheap cameras.
+[00:25:44 -> 00:25:47] Right. And like, how much does it matter that the data will
+[00:25:47 -> 00:25:50] be richer versus we can get more of it?
+[00:25:50 -> 00:25:53] I know you guys also had a recent result in microscopy that
+[00:25:53 -> 00:25:54] I don't fully understand,
+[00:25:54 -> 00:25:57] but basically made the promise of like just being able to
+[00:25:57 -> 00:25:59] look inside the cell at higher
+[00:25:59 -> 00:26:02] resolution and even kind of start to see macro molecules
+[00:26:02 -> 00:26:05] like in position and to some extent,
+[00:26:05 -> 00:26:08] I guess, like how they are interacting with each other.
+[00:26:08 -> 00:26:11] How do you see this in biology?
+[00:26:11 -> 00:26:13] Like on the one hand, we can, you know, do super expensive
+[00:26:13 -> 00:26:15] stuff, not as much of it.
+[00:26:15 -> 00:26:17] You know, alternatively, what are the cheaper techniques?
+[00:26:18 -> 00:26:20] And how do you think about kind of building the right
+[00:26:20 -> 00:26:22] portfolio of different modalities of data?
+[00:26:22 -> 00:26:25] Earlier this year, we announced the laser phase plate.
+[00:26:25 -> 00:26:27] And it's a really exciting project.
+[00:26:28 -> 00:26:29] It's decades in the making.
+[00:26:29 -> 00:26:33] Holger Mueller at Berkeley imagined it many decades ago.
+[00:26:34 -> 00:26:36] Biohub started investing in it years ago.
+[00:26:37 -> 00:26:40] And basically what it is, is it's phase contrast for
+[00:26:40 -> 00:26:42] electron microscopy.
+[00:26:42 -> 00:26:44] And so it's truly high technology.
+[00:26:44 -> 00:26:48] So basically, it's the most powerful standing wave laser in
+[00:26:48 -> 00:26:48] the world.
+[00:26:48 -> 00:26:53] So a beam of light, which interferes with the electron beam
+[00:26:53 -> 00:26:55] to shift its phase so that
+[00:26:55 -> 00:26:58] you can have phase contrast in electron microscopy.
+[00:26:58 -> 00:27:03] And so what this really gets you is the ability to look.
+[00:27:04 -> 00:27:08] And so the big application is cryo-electron tomography,
+[00:27:08 -> 00:27:10] which is basically sectioning
+[00:27:10 -> 00:27:15] the cell and really now using electron microscopy to see
+[00:27:15 -> 00:27:18] all the proteins and other
+[00:27:18 -> 00:27:22] macromolecules in situ and in their living context. And so
+[00:27:22 -> 00:27:24] the contrast is really critical there
+[00:27:24 -> 00:27:29] because the observations are incredibly, incredibly noisy.
+[00:27:29 -> 00:27:31] And that contrast allows you
+[00:27:31 -> 00:27:34] to start to make out the individual molecules and
+[00:27:34 -> 00:27:37] understand what they are, how they're interacting.
+[00:27:37 -> 00:27:40] And I think it's just going to open up a totally new
+[00:27:40 -> 00:27:44] understanding of kind of the dynamic structural biology of
+[00:27:44 -> 00:27:50] the living cell. So I think this gets back to really one of
+[00:27:50 -> 00:27:55] the core principles of Biohub, which is this idea of the
+[00:27:55 -> 00:28:00] power of new technologies for measurement and observation
+[00:28:00 -> 00:28:04] to change how we understand the world, to change the
+[00:28:04 -> 00:28:07] science that we can do.
+[00:28:07 -> 00:28:12] And so many historic paradigm shifts in science have really
+[00:28:12 -> 00:28:16] come from new technologies for measurement. So I think, you
+[00:28:16 -> 00:28:21] know, biology is just so, you know, there are incredible
+[00:28:21 -> 00:28:26] parallels to other domains where we're developing AI.
+[00:28:26 -> 00:28:30] But there are also things that make biology fundamentally
+[00:28:30 -> 00:28:35] different. And I think the biggest difference is the limits
+[00:28:35 -> 00:28:41] in our ability to observe, see, and measure what matters.
+[00:28:41 -> 00:28:47] And so much of biology has been driven by the development
+[00:28:47 -> 00:28:49] of new tools to do that.
+[00:28:49 -> 00:28:54] And as we have more and more powerful tools that allow us
+[00:28:54 -> 00:28:58] to see more and more of biology, we have the ability to
+[00:28:58 -> 00:29:01] build richer and richer models for it.
+[00:29:01 -> 00:29:04] And so, you know, that's really kind of how we think about
+[00:29:04 -> 00:29:08] this problem is how can we drive up the number of
+[00:29:08 -> 00:29:10] parameters that we can measure in every cell? How can we
+[00:29:10 -> 00:29:14] expand the field of view and the number of cells that we
+[00:29:14 -> 00:29:17] can observe simultaneously? How can we open up the temporal
+[00:29:17 -> 00:29:21] dimension to see cells over time? And how can we open up
+[00:29:21 -> 00:29:24] the molecular dimension to really see what's actually
+[00:29:24 -> 00:29:28] happening inside them down at the most fundamental levels?
+[00:29:28 -> 00:29:32] So tell me more about that, because I think like a big
+[00:29:32 -> 00:29:35] question I had as I was preparing for this is like, to what
+[00:29:35 -> 00:29:39] degree does the unit of a cell or even, you know, maybe a
+[00:29:39 -> 00:29:44] few cells tell us what we really need to know? Obviously,
+[00:29:44 -> 00:29:47] there's like, you know, quite a few orders of magnitude
+[00:29:47 -> 00:29:49] from cells to tissues, the systems to organisms.
+[00:29:50 -> 00:29:54] And I could imagine that like, you know, everything's
+[00:29:54 -> 00:29:57] connected would be kind of one story and maybe, you know,
+[00:29:57 -> 00:29:59] one random cell in my body because it's all so integrated
+[00:29:59 -> 00:30:01] and information is flowing everywhere.
+[00:30:01 -> 00:30:05] Maybe that has enough information to make a good prediction
+[00:30:05 -> 00:30:08] about my overall well-being or maybe it doesn't.
+[00:30:08 -> 00:30:10] And, you know, probably sometimes it varies.
+[00:30:11 -> 00:30:15] So how do you think about kind of bridging these scales and
+[00:30:15 -> 00:30:19] , you know, what and what new do we have the techniques we
+[00:30:19 -> 00:30:21] need to do that or do we need new techniques?
+[00:30:21 -> 00:30:25] I was thinking about things like microbiopsies or, you know
+[00:30:25 -> 00:30:27] , what would it look like to have like a million Brian Johns
+[00:30:27 -> 00:30:29] ons, you know, who are like measured, you know, in all these
+[00:30:29 -> 00:30:31] different ways with all the data linked.
+[00:30:31 -> 00:30:32] Yeah.
+[00:30:32 -> 00:30:33] How do you think about that challenge?
+[00:30:33 -> 00:30:35] And what are the techniques you think are kind of most
+[00:30:35 -> 00:30:36] promising to get over those humps?
+[00:30:37 -> 00:30:39] Yeah, it's a really great question.
+[00:30:39 -> 00:30:43] I think it really gets to, you know, what is so hard and so
+[00:30:43 -> 00:30:46] difficult about this problem.
+[00:30:46 -> 00:30:53] It's that it's really a multi-scale problem, and complexity
+[00:30:53 -> 00:30:58] down to the molecular level can influence events of the
+[00:30:58 -> 00:31:03] macro scale, right? A single point mutation in a gene can
+[00:31:03 -> 00:31:05] cause disease.
+[00:31:05 -> 00:31:10] And so, you know, you really ultimately are going to need
+[00:31:10 -> 00:31:14] to have an understanding that bridges those vast divides in
+[00:31:14 -> 00:31:19] scale. And it is a technology problem. I think it is very
+[00:31:19 -> 00:31:21] much a technology problem.
+[00:31:21 -> 00:31:27] I think in the near future, kind of the ability to identify
+[00:31:27 -> 00:31:32] the entire system down to the molecular level is not
+[00:31:32 -> 00:31:36] possible. You know, maybe someday in the future, you know,
+[00:31:36 -> 00:31:40] something like that would be possible. But, you know, today
+[00:31:40 -> 00:31:46] we can look at tissue, we can look at cells within tissue.
+[00:31:46 -> 00:31:50] And I think so we can see that kind of mesoscale of the
+[00:31:50 -> 00:31:51] cellular biology.
+[00:31:51 -> 00:31:56] But what I do think is we can use these informational
+[00:31:56 -> 00:32:01] principles to bridge the gap. I think you have to be clear.
+[00:32:01 -> 00:32:05] When I talk about the cell and I talk about a model of the
+[00:32:05 -> 00:32:08] cell, I don't mean the cell in isolation.
+[00:32:08 -> 00:32:12] And biologists, they do often think about the cell in
+[00:32:12 -> 00:32:17] isolation and culture systems. They think about these kind
+[00:32:17 -> 00:32:21] of laboratory proxies for in situ biology.
+[00:32:21 -> 00:32:26] But, you know, I think that a real complete model of the
+[00:32:26 -> 00:32:34] cell, you know, it would have to include the understanding
+[00:32:34 -> 00:32:38] of the cell in its context in these living systems.
+[00:32:38 -> 00:32:42] Because, you know, living systems are created by the
+[00:32:42 -> 00:32:44] interaction between cells.
+[00:32:45 -> 00:32:48] And, you know, really in a certain sense, you know, the
+[00:32:48 -> 00:32:51] interfaces that they have with each other, the input-output
+[00:32:51 -> 00:32:54] relations and the transitions in state that they can
+[00:32:54 -> 00:32:54] undergo.
+[00:32:54 -> 00:32:58] So I think you can learn a lot kind of at this mesoscale
+[00:32:58 -> 00:33:02] that's going to be really, really informative to kind of
+[00:33:02 -> 00:33:05] the complete picture of the system.
+[00:33:05 -> 00:33:08] But you really have to think about the complexity levels.
+[00:33:09 -> 00:33:11] And so you can think about the complexity of the cell in
+[00:33:11 -> 00:33:12] isolation.
+[00:33:12 -> 00:33:15] And that's going to be really valuable because, you know,
+[00:33:15 -> 00:33:18] so you can learn a great deal about
+[00:33:18 -> 00:33:21] cellular biology from, you know, a cell and culture, from
+[00:33:21 -> 00:33:23] cells that are transformed.
+[00:33:23 -> 00:33:27] They may be very different from the states of cells in situ
+[00:33:27 -> 00:33:29] and tissue, but they still,
+[00:33:30 -> 00:33:32] you know, they still have that core machinery and those
+[00:33:32 -> 00:33:33] core programs, right?
+[00:33:34 -> 00:33:36] And so you can learn a lot about them, you know, even if
+[00:33:36 -> 00:33:38] you're looking at the cell kind
+[00:33:38 -> 00:33:42] of in a very, in a poor proxy, like a culture system.
+[00:33:43 -> 00:33:46] But we can learn even more if we start to really look at
+[00:33:46 -> 00:33:50] the cell at that next level of context where we can see it
+[00:33:50 -> 00:33:52] in tissue or systems.
+[00:33:53 -> 00:33:56] And, you know, we're really working to address those kind
+[00:33:56 -> 00:33:58] of gaps, right?
+[00:33:58 -> 00:34:01] So at Biohub, we have an imaging institute that's really
+[00:34:01 -> 00:34:04] kind of building technologies at each of these complexity
+[00:34:04 -> 00:34:05] levels.
+[00:34:05 -> 00:34:10] So, you know, the laser phase plate is kind of opening up
+[00:34:10 -> 00:34:12] the atomic resolution view.
+[00:34:12 -> 00:34:16] But you can really only see that for a part of the cell.
+[00:34:16 -> 00:34:18] You know, it's not going to give you the picture for an
+[00:34:18 -> 00:34:19] entire tissue.
+[00:34:20 -> 00:34:23] We're building technologies that allow us to see kind of
+[00:34:23 -> 00:34:25] fields of cells to be able
+[00:34:25 -> 00:34:28] to perturb those cells, understand their responses, and
+[00:34:28 -> 00:34:30] measure that statistically
+[00:34:30 -> 00:34:33] across many cells in culture.
+[00:34:33 -> 00:34:36] And then we're also, you know, really developing whole
+[00:34:36 -> 00:34:39] organism level imaging, which is really
+[00:34:39 -> 00:34:40] incredible.
+[00:34:40 -> 00:34:44] And so we do a lot of work with zebrafish, which are, you
+[00:34:44 -> 00:34:46] know, transparent fish, which
+[00:34:46 -> 00:34:49] means you can really image, you can image them and you can
+[00:34:49 -> 00:34:50] actually see every single
+[00:34:50 -> 00:34:50] cell.
+[00:34:51 -> 00:34:54] And so we have microscopes that allow us, for example, to
+[00:34:54 -> 00:34:56] track a developing zebrafish
+[00:34:56 -> 00:35:01] embryo over time and actually see and track every single
+[00:35:01 -> 00:35:04] cell, you know, how that system
+[00:35:04 -> 00:35:07] goes from one cell all the way, you know, to a fully
+[00:35:07 -> 00:35:09] developed organism.
+[00:35:09 -> 00:35:13] We have systems where, you know, you can label different
+[00:35:13 -> 00:35:14] cell types.
+[00:35:14 -> 00:35:16] So, for example, all the immune cells.
+[00:35:16 -> 00:35:20] So you can look in a, you know, a living fish and track and
+[00:35:20 -> 00:35:22] follow all the immune systems
+[00:35:22 -> 00:35:25] and see how they move and traffic and interact with each
+[00:35:25 -> 00:35:28] other and the surrounding tissue.
+[00:35:29 -> 00:35:32] So, you know, I think it's possible to get information at
+[00:35:32 -> 00:35:34] each of these different scales.
+[00:35:34 -> 00:35:37] And then what you really need to do is kind of build that
+[00:35:37 -> 00:35:40] model that can integrate across
+[00:35:40 -> 00:35:44] the hierarchies of biological complexity. Hey, we'll
+[00:35:44 -> 00:35:46] continue our interview in a moment
+[00:35:46 -> 00:35:49] after a word from our sponsors. The Cognitive Revolution is
+[00:35:49 -> 00:35:51] brought to you and powered by
+[00:35:51 -> 00:35:55] Tasklet. I've been running Tasklet agents for almost a year
+[00:35:55 -> 00:35:57] , and they've become a major part
+[00:35:57 -> 00:36:01] of how the show gets made. Before every recording, one
+[00:36:01 -> 00:36:03] agent researches the guest and sends me a
+[00:36:03 -> 00:36:06] suggested outline of questions, complete with links to all
+[00:36:06 -> 00:36:09] sources. Meanwhile, another agent
+[00:36:09 -> 00:36:12] scores the overwhelming number of pitches that I'm getting
+[00:36:12 -> 00:36:14] from PR firms. And that's really the
+[00:36:14 -> 00:36:18] core idea behind Tasklet. Run your business on agents by
+[00:36:18 -> 00:36:21] giving them real jobs to do on an
+[00:36:21 -> 00:36:25] ongoing basis. Setup is incredibly easy. Just describe the
+[00:36:25 -> 00:36:27] work in plain English,
+[00:36:27 -> 00:36:30] research a new sales lead, update the CRM, and draft a
+[00:36:30 -> 00:36:33] personalized reply. Tasklet connects to
+[00:36:33 -> 00:36:36] your business tools and can run around the clock, on a
+[00:36:36 -> 00:36:38] schedule, or when something happens, like a
+[00:36:38 -> 00:36:42] email arrives. Each agent works with your tools and
+[00:36:42 -> 00:36:45] business context and remembers useful
+[00:36:45 -> 00:36:49] information across threads. You can also share agents,
+[00:36:49 -> 00:36:50] connections, and reusable skills with
+[00:36:50 -> 00:36:53] your team, so the workflows that one person figures out
+[00:36:53 -> 00:36:55] become something the whole company
+[00:36:55 -> 00:37:00] can use. No developer needed. You decide what agents can do
+[00:37:00 -> 00:37:01] on their own and what needs
+[00:37:01 -> 00:37:05] your approval, and there are no per-seat fees. You pay for
+[00:37:05 -> 00:37:08] usage, not for adding teammates.
+[00:37:08 -> 00:37:11] Start with one recurring job, like researching the people
+[00:37:11 -> 00:37:15] you're meeting, and then just keep building from there.
+[00:37:16 -> 00:37:20] Visit Tasklet.ai and use code COGREV for $50 in free
+[00:37:20 -> 00:37:21] credits.
+[00:37:21 -> 00:37:25] That's code COGREV at Tasklet.ai.
+[00:37:25 -> 00:37:29] To these model organisms, I'm interested to hear your
+[00:37:29 -> 00:37:32] perspective on the role that they will play.
+[00:37:32 -> 00:37:36] Obviously, the old joke is most of the time when you read
+[00:37:36 -> 00:37:39] an exciting headline from biology or medicine, you should
+[00:37:39 -> 00:37:42] mentally append in mice to the end of it.
+[00:37:42 -> 00:37:42] Yeah.
+[00:37:43 -> 00:37:46] And it seems like, you know, you look at these headline
+[00:37:46 -> 00:37:49] stats of just like how much DNA do we share with mice and,
+[00:37:49 -> 00:37:52] you know, how much of the kind of core mechanisms of the
+[00:37:52 -> 00:37:53] cells are conserved.
+[00:37:53 -> 00:37:55] And it's like an awful lot.
+[00:37:55 -> 00:37:55] Right.
+[00:37:55 -> 00:38:00] So it seems like it should be the case that the treatments
+[00:38:00 -> 00:38:03] that we develop to like, you know, treat mouse cancer or
+[00:38:03 -> 00:38:06] mouse Alzheimer's or whatever should work in humans more
+[00:38:06 -> 00:38:09] often than it seems like they actually do.
+[00:38:09 -> 00:38:16] And I'm a little confused by that gap and how you think
+[00:38:16 -> 00:38:19] about closing that gap.
+[00:38:19 -> 00:38:23] Is it something where, you know, we somehow need linked
+[00:38:23 -> 00:38:26] data sets between the model organisms and humans?
+[00:38:27 -> 00:38:29] Or, you know, because the other story I could imagine
+[00:38:29 -> 00:38:32] telling is like, in the end, we're just going to need a ton
+[00:38:32 -> 00:38:33] of human data.
+[00:38:33 -> 00:38:36] And, you know, there's like no amount of zebrafish data
+[00:38:36 -> 00:38:39] that's ultimately going to add up to the level of insight
+[00:38:39 -> 00:38:41] that we really want to have into humans to get us where we
+[00:38:41 -> 00:38:42] want to go.
+[00:38:42 -> 00:38:44] But what's your take on all that?
+[00:38:44 -> 00:38:48] Yeah, I mean, I think it's important to start by, you know,
+[00:38:48 -> 00:38:50] recognizing that kind of most
+[00:38:50 -> 00:38:53] of the fundamental advances in kind of our molecular
+[00:38:53 -> 00:38:55] understanding of disease and, you
+[00:38:55 -> 00:38:59] know, the biological pathways that are core to that have
+[00:38:59 -> 00:39:01] come from experiments in model
+[00:39:01 -> 00:39:04] systems and model organisms, you know, and even experiments
+[00:39:04 -> 00:39:05] in yeast, which is the simplest
+[00:39:05 -> 00:39:09] eukaryote, you know, have revealed really important
+[00:39:09 -> 00:39:11] mechanisms that are relevant to
+[00:39:11 -> 00:39:13] human biology and human disease.
+[00:39:13 -> 00:39:16] So model organisms have played, you know, really a
+[00:39:16 -> 00:39:18] fundamental role in the development
+[00:39:18 -> 00:39:22] of molecular biology and just our understanding of biology.
+[00:39:22 -> 00:39:25] But I think you're right to point out that they're not
+[00:39:25 -> 00:39:27] perfect proxies by any means.
+[00:39:28 -> 00:39:31] And, you know, overly relying on them, I mean, it can lead
+[00:39:31 -> 00:39:32] to two things, right?
+[00:39:32 -> 00:39:35] It can lead to like, you know, you think this is a cure to
+[00:39:35 -> 00:39:36] cancer, but it only works in
+[00:39:36 -> 00:39:36] mice.
+[00:39:37 -> 00:39:39] It can also lead to, you know, you really missed a
+[00:39:39 -> 00:39:42] mechanism that's relevant in humans
+[00:39:42 -> 00:39:46] because you don't have a good proxy for it in mice.
+[00:39:46 -> 00:39:51] So you can really, I think, make that mistake in both ways.
+[00:39:52 -> 00:39:56] And, you know, there's no simple solution to this problem,
+[00:39:56 -> 00:39:56] right?
+[00:39:56 -> 00:39:59] I mean, I think there's kind of a constant push in biology
+[00:39:59 -> 00:40:03] to have kind of better and better experimental proxies for
+[00:40:03 -> 00:40:04] the human biology.
+[00:40:04 -> 00:40:07] And I think, you know, kind of the latest advance there is
+[00:40:07 -> 00:40:08] really organoids,
+[00:40:08 -> 00:40:11] which allow you to kind of recapitulate more and more of
+[00:40:11 -> 00:40:12] kind of the level,
+[00:40:12 -> 00:40:17] the complexity of tissues in a culture system. But I think
+[00:40:17 -> 00:40:20] this is also where AI can play a role.
+[00:40:20 -> 00:40:24] And so I kind of think about, and I guess I come from this
+[00:40:24 -> 00:40:26] background of thinking about protein
+[00:40:26 -> 00:40:30] biology and building models of proteins. And I think one
+[00:40:30 -> 00:40:32] thing that's really interesting to
+[00:40:32 -> 00:40:37] observe there is ESM and AlphaFold did not come from
+[00:40:37 -> 00:40:40] training a model just on human proteins.
+[00:40:41 -> 00:40:45] They really came from training a model across, you know,
+[00:40:45 -> 00:40:46] all of evolution.
+[00:40:47 -> 00:40:52] And what that says is there's really information across
+[00:40:52 -> 00:40:56] evolution that's relevant to making
+[00:40:56 -> 00:40:59] predictions for and understanding human biology.
+[00:40:59 -> 00:41:01] And it's not even that it's relevant.
+[00:41:01 -> 00:41:02] It's essential.
+[00:41:02 -> 00:41:05] If you train a model just on the human proteins, you know,
+[00:41:05 -> 00:41:07] you wouldn't get an accurate predictive
+[00:41:07 -> 00:41:08] model.
+[00:41:09 -> 00:41:13] And so there's, I think, something really powerful in this
+[00:41:13 -> 00:41:16] idea of generalization and transfer.
+[00:41:17 -> 00:41:21] And so much of biology is conserved across, you know, all
+[00:41:21 -> 00:41:23] across life, across all the different
+[00:41:23 -> 00:41:26] domains of life. And then, you know, as you get closer and
+[00:41:26 -> 00:41:28] closer to humans, and even if you just
+[00:41:28 -> 00:41:31] think about the vertebrates, so much of the core molecular
+[00:41:31 -> 00:41:34] machinery there, the transcription
+[00:41:34 -> 00:41:38] factors, the way that they interact with enhancers and
+[00:41:38 -> 00:41:41] promoters, just kind of that language
+[00:41:41 -> 00:41:44] is preserved. And what's happened is the programs have been
+[00:41:44 -> 00:41:47] rewired. So the programs are completely
+[00:41:47 -> 00:41:50] rewired, but they're kind of built with the same building
+[00:41:50 -> 00:41:53] blocks. So I think you can really,
+[00:41:53 -> 00:41:55] you know, you can really look broadly and there's a lot to
+[00:41:55 -> 00:41:57] learn from all of these different
+[00:41:57 -> 00:42:00] systems. And I think it's very different to kind of think
+[00:42:00 -> 00:42:03] about building a model that's going to
+[00:42:03 -> 00:42:05] capture and integrate and learn from all of that
+[00:42:05 -> 00:42:08] information versus trying to create a perfect
+[00:42:08 -> 00:42:12] experimental proxy, which really just isn't going to be
+[00:42:12 -> 00:42:17] possible. But I think that there's a power
+[00:42:17 -> 00:42:19] in kind of trying to build a predictive model that can use
+[00:42:19 -> 00:42:20] all of that information to make
+[00:42:20 -> 00:42:25] far better predictions for human biology. So in the context
+[00:42:25 -> 00:42:26] of language modeling,
+[00:42:27 -> 00:42:30] there was a time, and we've kind of grown out of it now,
+[00:42:30 -> 00:42:32] where the overwhelming amount of
+[00:42:32 -> 00:42:36] compute was just going into simple pre-training on data of
+[00:42:36 -> 00:42:38] like kind of unknown quality and
+[00:42:38 -> 00:42:41] relevance. And then you do a little like instruction, you
+[00:42:41 -> 00:42:42] know, following at the end,
+[00:42:42 -> 00:42:44] and all of a sudden you have like a pretty helpful
+[00:42:44 -> 00:42:47] assistant. What do you think that
+[00:42:47 -> 00:42:52] recipe is going to look like in biology? Like, can we just
+[00:42:52 -> 00:42:54] take tons and tons of raw,
+[00:42:54 -> 00:42:58] but kind of not that great data and then use that to build
+[00:42:58 -> 00:43:00] up these representations that we then
+[00:43:00 -> 00:43:04] sort of elicit what we want at the end? Or is it going to
+[00:43:04 -> 00:43:06] be sort of a different path that you
+[00:43:06 -> 00:43:10] think for whatever reason? Yeah, that's also an amazing
+[00:43:10 -> 00:43:14] question. I really think that the
+[00:43:14 -> 00:43:16] principles in biology are going to be shared with all the
+[00:43:16 -> 00:43:18] other domains where we're seeing progress
+[00:43:18 -> 00:43:21] in AI. And so I actually think, you know, we're fortunate
+[00:43:21 -> 00:43:23] in biology because we have kind of the
+[00:43:23 -> 00:43:26] opportunity to see how those principles have played out in
+[00:43:26 -> 00:43:28] different fields and really identify
+[00:43:28 -> 00:43:32] the parts there that are generalizable. But I think this
+[00:43:32 -> 00:43:35] core idea of the power of self-supervision
+[00:43:35 -> 00:43:39] or representation learning, you know, the pre-training, you
+[00:43:39 -> 00:43:41] know, that's really critical
+[00:43:41 -> 00:43:45] because, you know, that gets you beyond. And, you know,
+[00:43:45 -> 00:43:47] this was the dream of Hinton and Jan
+[00:43:47 -> 00:43:50] LeCun and Bengio and kind of the other deep learning
+[00:43:50 -> 00:43:52] pioneers is the idea that you didn't
+[00:43:52 -> 00:43:55] have to know all the relevant variables. You didn't have to
+[00:43:55 -> 00:43:57] encode all of them and know the
+[00:43:57 -> 00:44:01] settings for the parameters that, you know, you could learn
+[00:44:01 -> 00:44:03] all of that with a neural network.
+[00:44:03 -> 00:44:07] And so that's just, you know, proving out over decades. And
+[00:44:07 -> 00:44:08] the scaling laws are really,
+[00:44:08 -> 00:44:13] I think, the latest or the most clear expression of that
+[00:44:13 -> 00:44:16] now. But so we have pre-training in
+[00:44:16 -> 00:44:20] biology. Certainly, we're seeing that playing out with
+[00:44:20 -> 00:44:22] proteins right now, of course. And we,
+[00:44:23 -> 00:44:28] I think that will play out for cellular biology too.
+[00:44:29 -> 00:44:33] And I think it's going to be similar.
+[00:44:33 -> 00:44:38] You know, there's a phase of really learning from
+[00:44:38 -> 00:44:41] statistical patterns to build a model
+[00:44:41 -> 00:44:45] of the underlying system that's driving those statistical
+[00:44:45 -> 00:44:46] patterns.
+[00:44:46 -> 00:44:50] And then the stage of elicitation where you're really now
+[00:44:50 -> 00:44:53] bringing out the part of that model,
+[00:44:53 -> 00:44:55] which is relevant to the problem that you're trying to
+[00:44:55 -> 00:44:57] solve. And I think that it's going
+[00:44:57 -> 00:45:00] to be possible to have RLVR for biology and to have
+[00:45:00 -> 00:45:04] feedback. And ultimately, where we need to
+[00:45:04 -> 00:45:08] get is to really build empirical AI and kind of build
+[00:45:08 -> 00:45:11] systems where AI can ask the question,
+[00:45:12 -> 00:45:14] perform the experiment, learn from the experiment, improve
+[00:45:14 -> 00:45:15] its understanding,
+[00:45:15 -> 00:45:19] propose a better experiment, and really complete that cycle
+[00:45:19 -> 00:45:23] repeatedly so that you have a recursive
+[00:45:23 -> 00:45:26] improvement. And I think all of that's going to be possible
+[00:45:26 -> 00:45:29] in biology. It's going to need to be
+[00:45:29 -> 00:45:34] built differently. It's going to need to work with models
+[00:45:34 -> 00:45:37] that can accurately represent the
+[00:45:37 -> 00:45:41] multi-scale nature and the complexity of biology in the
+[00:45:41 -> 00:45:44] relevant ways. And the biggest challenge
+[00:45:44 -> 00:45:48] for biology is it's empirical, right? And so we're seeing
+[00:45:48 -> 00:45:50] so much rapid progress with RLVR
+[00:45:50 -> 00:45:53] are in areas, you know, where we can really do fast
+[00:45:53 -> 00:45:56] verification computationally. So, you know,
+[00:45:56 -> 00:45:59] mathematics, coding, you know, reasoning and things like
+[00:45:59 -> 00:46:02] that. With biology, you know, we have to
+[00:46:02 -> 00:46:05] build the systems that actually, you know, allow us, allow
+[00:46:05 -> 00:46:07] verification in the laboratory.
+[00:46:08 -> 00:46:12] How do you think about timescales? I mean, that's another
+[00:46:12 -> 00:46:13] way in which there's like
+[00:46:13 -> 00:46:17] orders of magnitude problems, right? It's one thing to
+[00:46:17 -> 00:46:19] perturb a cell, look at it an hour later,
+[00:46:19 -> 00:46:22] a day later. But what I really care about is like, how am I
+[00:46:22 -> 00:46:24] going to live to be 120? Right. And that's
+[00:46:24 -> 00:46:30] a very long term question. So how how do you think about
+[00:46:30 -> 00:46:34] this kind of prediction? This kind of goes
+[00:46:34 -> 00:46:37] back to the like, you know, million Brian Johnson's idea.
+[00:46:37 -> 00:46:40] Do we have enough right now to go on to say
+[00:46:40 -> 00:46:43] like this cell state, you know, predicts good outcomes? Or
+[00:46:43 -> 00:46:45] is that also like a, you know,
+[00:46:45 -> 00:46:50] big part of a climb of the grand challenge? Yeah, I think
+[00:46:50 -> 00:46:52] that's still a really big,
+[00:46:52 -> 00:46:58] big part of the climb. But I think at the same time, it's a
+[00:46:58 -> 00:47:00] scaling challenge. I think it's one
+[00:47:00 -> 00:47:04] that can be addressed with technology that we have today. I
+[00:47:04 -> 00:47:07] mean, I guess what I really think
+[00:47:07 -> 00:47:11] about is kind of creating atlases of cellular biology in
+[00:47:11 -> 00:47:13] the context of health and disease.
+[00:47:14 -> 00:47:17] And I think that we, you know, the technology that could
+[00:47:17 -> 00:47:19] really allow us to do that is just
+[00:47:19 -> 00:47:22] starting to really become scalable. This is a big part of
+[00:47:22 -> 00:47:23] what we're trying to do with the
+[00:47:23 -> 00:47:28] Virtual Biology Initiative, is, you know, see cells across,
+[00:47:28 -> 00:47:30] you know, this wide range of
+[00:47:30 -> 00:47:35] physiological contexts and really understand, you know,
+[00:47:35 -> 00:47:38] what differentiates disease from health
+[00:47:38 -> 00:47:41] at a cellular level. And I think, you know, that's going to
+[00:47:41 -> 00:47:43] really start to show us, you know, both
+[00:47:43 -> 00:47:47] both, you know, what makes different diseases unique, but
+[00:47:47 -> 00:47:49] also shared common causes across
+[00:47:49 -> 00:47:52] different classes of disease. So I think that's really
+[00:47:52 -> 00:47:55] within reach. I think first drafts of that
+[00:47:55 -> 00:47:58] within the next one or two years, within five years with a
+[00:47:58 -> 00:48:01] really focused, coordinated effort,
+[00:48:01 -> 00:48:05] we can have a pretty comprehensive map there. And that
+[00:48:05 -> 00:48:08] would have enormous value, not just for AI,
+[00:48:08 -> 00:48:12] just for kind of classical analysis. And I imagine a lot of
+[00:48:12 -> 00:48:15] analysis is going to be agentic in the
+[00:48:15 -> 00:48:18] future. So also you can really imagine just kind of scaling
+[00:48:18 -> 00:48:20] analysis to these very large,
+[00:48:20 -> 00:48:24] classical analysis to these very large data sets. But also
+[00:48:24 -> 00:48:26] I think you can start to build a model
+[00:48:26 -> 00:48:30] from that that's going to really identify precisely the
+[00:48:30 -> 00:48:32] different cell states that are
+[00:48:32 -> 00:48:36] relevant to disease. And if you have that model, then what
+[00:48:36 -> 00:48:38] you can start to do is ask the question,
+[00:48:38 -> 00:48:43] How do I intervene to reverse a state that's pathologic and
+[00:48:43 -> 00:48:47] bring it into a healthy state?
+[00:48:48 -> 00:48:53] So I think that's something, you know, those are questions
+[00:48:53 -> 00:48:55] that we'll really start to be
+[00:48:55 -> 00:48:57] able to tackle in the next five years.
+[00:48:58 -> 00:49:01] How big of a deal do you think just like human health
+[00:49:01 -> 00:49:04] records will be as a part of that mix?
+[00:49:04 -> 00:49:07] Like, would you anticipate yourself, maybe you're already
+[00:49:07 -> 00:49:08] even doing this, I don't know,
+[00:49:08 -> 00:49:12] but, you know, kind of going out to EHR companies and
+[00:49:12 -> 00:49:14] trying to do deals to get,
+[00:49:14 -> 00:49:16] and I don't know the rules around this, I know it can be
+[00:49:16 -> 00:49:18] quite complicated, but like,
+[00:49:18 -> 00:49:21] you don't want personal information, but you do need to
+[00:49:21 -> 00:49:24] like meaningfully connect a trajectory
+[00:49:24 -> 00:49:27] of a person's health story to like, you know, specific
+[00:49:27 -> 00:49:30] states of cells. Like does the regulatory
+[00:49:30 -> 00:49:34] environment allow for that? Can, you know, are there, are
+[00:49:34 -> 00:49:36] there other practical barriers that
+[00:49:36 -> 00:49:39] would stand in the way? Or do you think that isn't in fact
+[00:49:39 -> 00:49:40] going to be part of the
+[00:49:40 -> 00:49:43] story is sort of all these cells, but also linked to human
+[00:49:43 -> 00:49:45] health stories?
+[00:49:46 -> 00:49:49] Yeah. You know, to be honest, I haven't thought about that
+[00:49:49 -> 00:49:52] question as much. And so maybe,
+[00:49:52 -> 00:49:56] you know, why, why not? I think, I guess, I guess, you know
+[00:49:56 -> 00:49:58] , for one, I've, I've been more
+[00:49:58 -> 00:50:02] focused at kind of trying to get to that fundamental level.
+[00:50:02 -> 00:50:03] And I think what, what I,
+[00:50:03 -> 00:50:08] worry about if you don't have, I think about like kind of
+[00:50:08 -> 00:50:10] what's the right basis for solving the
+[00:50:10 -> 00:50:15] problem. And I think that because if you don't have the
+[00:50:15 -> 00:50:17] right basis, basically what you're going
+[00:50:17 -> 00:50:21] to learn is a bunch of correlations. And so, you know, what
+[00:50:21 -> 00:50:23] I would worry is that we're going to,
+[00:50:23 -> 00:50:27] you know, we're going to have, you know, tons of models of
+[00:50:27 -> 00:50:29] patient health histories,
+[00:50:29 -> 00:50:33] but we're not really going to have a way to link those back
+[00:50:33 -> 00:50:37] to kind of the deeper causal factors
+[00:50:37 -> 00:50:42] in the underlying biology. And that's the part I think that
+[00:50:42 -> 00:50:45] we really have to be able to do
+[00:50:45 -> 00:50:51] if we're going to make this kind of step change advancement
+[00:50:51 -> 00:50:54] in both our understanding of disease,
+[00:50:54 -> 00:50:57] but also in our ability to treat it. So I think you can
+[00:50:57 -> 00:50:58] probably go a long way
+[00:50:58 -> 00:51:04] through health records and getting better care to patients,
+[00:51:04 -> 00:51:06] kind of getting the right drugs and
+[00:51:06 -> 00:51:09] mechanisms that already exist to the right people, maybe
+[00:51:09 -> 00:51:12] opening up people who might benefit from
+[00:51:12 -> 00:51:15] drugs that exist, but we kind of didn't know that that
+[00:51:15 -> 00:51:17] mechanism could be relevant there.
+[00:51:17 -> 00:51:20] So I think there could be a lot of progress through that. I
+[00:51:20 -> 00:51:21] think that's a really
+[00:51:21 -> 00:51:24] important problem. But it doesn't get down to the
+[00:51:24 -> 00:51:26] fundamentals where I think you really have
+[00:51:26 -> 00:51:30] to make progress to kind of get this real step change. So
+[00:51:30 -> 00:51:33] Biohub is really focused on that part
+[00:51:33 -> 00:51:36] of the problem, like the fundamental science and how do we
+[00:51:36 -> 00:51:38] go to the point where, you know,
+[00:51:38 -> 00:51:40] there really is no disease anymore.
+[00:51:40 -> 00:51:46] And that's, you know, the only way to get there is going to
+[00:51:46 -> 00:51:49] be by really focusing on
+[00:51:49 -> 00:51:53] the kind of the deep biology and kind of building the
+[00:51:53 -> 00:51:56] technology that can allow us to understand
+[00:51:56 -> 00:52:01] how that is determining for health and disease and, you
+[00:52:01 -> 00:52:03] know, how we can effectively intervene.
+[00:52:03 -> 00:52:09] Do you anticipate a future where language and biological
+[00:52:09 -> 00:52:16] modalities will be co-trained into joint latent spaces in
+[00:52:16 -> 00:52:19] the way that we now obviously have like text and image?
+[00:52:19 -> 00:52:22] You know, I say this all the time, so listeners have heard
+[00:52:22 -> 00:52:24] it, but just to motivate the intuition one more time, like
+[00:52:24 -> 00:52:27] it's clear now that when I put an image into a model and I
+[00:52:27 -> 00:52:31] give instructions, the model both sees the image in like
+[00:52:31 -> 00:52:34] visual terms and understands my instructions.
+[00:52:34 -> 00:52:37] And that creates a new kind of magic that like just having
+[00:52:37 -> 00:52:40] a language model call via, you know, sort of arm's length
+[00:52:40 -> 00:52:44] tool call to an image generation model like couldn't quite
+[00:52:44 -> 00:52:44] do.
+[00:52:44 -> 00:52:49] So do you think that reasoning through language and kind of
+[00:52:49 -> 00:52:54] biology models stay arm's length tool call relationships
+[00:52:54 -> 00:52:55] long term?
+[00:52:55 -> 00:52:58] Or do we ultimately see like bio encoders that feed into
+[00:52:58 -> 00:53:03] the same reasoning space that we're developing in language?
+[00:53:04 -> 00:53:06] Yeah, it's a really interesting question.
+[00:53:06 -> 00:53:11] I think that the truth is, I'm not sure. I think that
+[00:53:11 -> 00:53:17] language is really powerful for reasoning. You know, it's a
+[00:53:17 -> 00:53:21] substrate for reasoning, for thinking. And the power that
+[00:53:21 -> 00:53:28] language also gives us is to tap into the model of biology
+[00:53:28 -> 00:53:32] that's been created through centuries of kind of human
+[00:53:32 -> 00:53:35] empirical investigation.
+[00:53:35 -> 00:53:40] And all of that is represented in language. It's learnable
+[00:53:40 -> 00:53:46] through language. And I think this very, let's say,
+[00:53:46 -> 00:53:51] expressive full system of knowledge can, I think, really be
+[00:53:51 -> 00:53:57] materialized and leveraged through reasoning systems.
+[00:53:57 -> 00:54:03] I think the challenge will be that the things that we most
+[00:54:03 -> 00:54:08] want to know about biology, they're not represented in text
+[00:54:08 -> 00:54:09] .
+[00:54:09 -> 00:54:14] And they cannot be derived from first principles or from
+[00:54:14 -> 00:54:17] what we already know.
+[00:54:18 -> 00:54:22] So they're empirical facts that can only be derived by
+[00:54:22 -> 00:54:24] performing experiments.
+[00:54:24 -> 00:54:31] And so it's from thinking about this, I think, this like
+[00:54:31 -> 00:54:35] core aspect of what makes biology different, I think, than
+[00:54:35 -> 00:54:42] other areas where we're building AI that I think will make
+[00:54:42 -> 00:54:46] predictive models of biology critical here.
+[00:54:46 -> 00:54:53] Now, I think I'm not then strongly opinionated or convicted
+[00:54:53 -> 00:54:57] right now on, you know, is there like a latent fusion of
+[00:54:57 -> 00:55:00] these models? Are they going to interact with each other in
+[00:55:00 -> 00:55:03] some system or, you know, kind of ultimately what the end
+[00:55:03 -> 00:55:06] state is of how that works? Is there one latent space where
+[00:55:06 -> 00:55:08] all of that is fused together?
+[00:55:09 -> 00:55:14] I'm not sure. And I can see advantages to doing it that way
+[00:55:14 -> 00:55:16] . I think at the beginning, that will
+[00:55:16 -> 00:55:19] be hard simply because you're going to need a lot of kind
+[00:55:19 -> 00:55:21] of bridging data to fuse those
+[00:55:21 -> 00:55:25] spaces together. And we just don't have a lot of it right
+[00:55:25 -> 00:55:29] now. But could we get there eventually?
+[00:55:29 -> 00:55:33] Probably. And that could be very interesting to have a f
+[00:55:33 -> 00:55:36] used latent space. I mean, I think the
+[00:55:36 -> 00:55:39] other really interesting thing to think about is kind of
+[00:55:39 -> 00:55:41] all those features in biology that we
+[00:55:41 -> 00:55:44] don't yet have language or words to describe. I mean, I
+[00:55:44 -> 00:55:46] think protein biology is such a beautiful
+[00:55:46 -> 00:55:50] example of this. You know, we have billions of proteins
+[00:55:50 -> 00:55:52] that have been sequenced across life on
+[00:55:52 -> 00:55:56] earth. And, you know, we don't know the function for the
+[00:55:56 -> 00:55:58] vast majority of them. And so we don't
+[00:55:58 -> 00:56:02] even really have a language to describe all of that. So,
+[00:56:02 -> 00:56:04] you know, what's kind of interesting
+[00:56:04 -> 00:56:08] about training a protein language model
+[00:56:08 -> 00:56:10] is that it develops these features
+[00:56:10 -> 00:56:13] that represent protein biology at large.
+[00:56:13 -> 00:56:15] And there are features
+[00:56:15 -> 00:56:17] that represent unknown protein biology.
+[00:56:17 -> 00:56:19] And you can imagine those are novel concepts
+[00:56:19 -> 00:56:22] that we don't have words and names for yet.
+[00:56:23 -> 00:56:26] So there's a great deal, I think,
+[00:56:27 -> 00:56:30] to be learned just through kind of the structure
+[00:56:30 -> 00:56:31] of these spaces.
+[00:56:32 -> 00:56:33] Okay, no, we're almost out of time.
+[00:56:33 -> 00:56:35] I'll do two more quick ones if we can.
+[00:56:35 -> 00:56:35] Okay.
+[00:56:36 -> 00:56:39] One, not to be a dog with a bone on this million Brian
+[00:56:39 -> 00:56:42] Johnson's question, you know, that would be pretty
+[00:56:42 -> 00:56:43] expensive.
+[00:56:43 -> 00:56:46] But if money were no object and, you know, for some, you
+[00:56:46 -> 00:56:49] know, rare philanthropist, money is maybe close to no
+[00:56:49 -> 00:56:51] object in pursuit of the cure of all diseases.
+[00:56:51 -> 00:56:54] Is that like a promising paradigm?
+[00:56:54 -> 00:56:57] I mean, would it be really helpful to just have people who
+[00:56:57 -> 00:57:01] submit to microbiopsies on the regular and just like wear
+[00:57:01 -> 00:57:05] all the sensors and do all the things and, you know, track
+[00:57:05 -> 00:57:08] every dimension that they can track?
+[00:57:08 -> 00:57:11] Is that the shape of data that you think ultimately will
+[00:57:11 -> 00:57:15] really move the needle and it's just too hard to get?
+[00:57:15 -> 00:57:19] Or do you think there is, for more scientific reasons, like
+[00:57:19 -> 00:57:23] just a more direct path through like scaling cells?
+[00:57:24 -> 00:57:27] I mean, again, I, you know, I think I just come at it.
+[00:57:27 -> 00:57:29] We just come at it from this like kind of frame of really
+[00:57:29 -> 00:57:32] thinking about the fundamental mechanisms.
+[00:57:32 -> 00:57:36] But I don't I think that data would be immensely valuable.
+[00:57:37 -> 00:57:41] I just see that, I think, as more likely to happen.
+[00:57:42 -> 00:57:44] I think over time that will happen.
+[00:57:44 -> 00:57:48] I mean, there are some really interesting, you know, things
+[00:57:48 -> 00:57:49] that can move the needle
+[00:57:49 -> 00:57:52] there, which is developing the technologies for this kind
+[00:57:52 -> 00:57:54] of continuous monitoring over
+[00:57:54 -> 00:57:56] time and actually having those technologies be able to
+[00:57:56 -> 00:57:58] measure more parameters and more
+[00:57:58 -> 00:58:01] molecular level parameters so that you can start to, you
+[00:58:01 -> 00:58:03] know, link that kind of bottom
+[00:58:03 -> 00:58:05] up and kind of top down view.
+[00:58:05 -> 00:58:08] So I think there's, you know, that kind of work is
+[00:58:08 -> 00:58:11] immensely valuable and there's likely, you know, over time
+[00:58:11 -> 00:58:13] kind of convergence there.
+[00:58:13 -> 00:58:17] And, you know, we just think about where as an institution
+[00:58:17 -> 00:58:20] we can really kind of move the needle and we really see
+[00:58:20 -> 00:58:23] ourselves at that kind of technology layer.
+[00:58:23 -> 00:58:24] Yeah, interesting.
+[00:58:24 -> 00:58:27] Maybe less neglected than it seems to me from my outside
+[00:58:27 -> 00:58:27] position.
+[00:58:27 -> 00:58:28] All right.
+[00:58:28 -> 00:58:30] Last one, personal health advice.
+[00:58:31 -> 00:58:35] What are you doing to build up the data set that you need
+[00:58:35 -> 00:58:38] for yourself to be able to take advantage of these future
+[00:58:38 -> 00:58:38] technologies?
+[00:58:38 -> 00:58:42] And what, if anything, do you feel is important for people
+[00:58:42 -> 00:58:45] who want to make sure they're in good position to take
+[00:58:45 -> 00:58:47] advantage of all the things that Biohub and others are
+[00:58:47 -> 00:58:49] going to discover to be doing today?
+[00:58:50 -> 00:58:52] You know, I'm not the right person to ask for that kind of
+[00:58:52 -> 00:58:53] advice.
+[00:58:53 -> 00:58:56] And, you know, I'm just so focused on my research right now
+[00:58:56 -> 00:58:58] that I barely think about that at all.
+[00:58:59 -> 00:59:00] So no, you're not tracking anything?
+[00:59:01 -> 00:59:03] No regular blood tests?
+[00:59:03 -> 00:59:05] I have a watch that tracks my sleep.
+[00:59:05 -> 00:59:07] That's about as far as it gets.
+[00:59:07 -> 00:59:08] All right.
+[00:59:08 -> 00:59:10] Well, we'll check back in with you and see if maybe that's
+[00:59:10 -> 00:59:12] changed as we get closer to
+[00:59:12 -> 00:59:16] the promised land and we're climbing this monumental hill
+[00:59:16 -> 00:59:17] of figuring out how it all
+[00:59:17 -> 00:59:20] works and how we can cure all the diseases.
+[00:59:20 -> 00:59:21] This has been great.
+[00:59:21 -> 00:59:23] I really appreciate the opportunity.
+[00:59:23 -> 00:59:25] Alex Reeves, thank you for being part of the Cognitive
+[00:59:25 -> 00:59:25] Revolution.
+[00:59:26 -> 00:59:27] Thank you, Nathan.
+[00:59:27 -> 00:59:28] Yeah, this is really fun.
+[01:03:11 -> 01:03:12] Any value in the show?
+[01:03:12 -> 01:03:14] We'd appreciate it if you'd take a moment to share it with
+[01:03:14 -> 01:03:17] friends, post online, write a review on Apple Podcasts or
+[01:03:17 -> 01:03:19] Spotify, or just leave us a comment on YouTube.
+[01:03:19 -> 01:03:22] Of course, we always welcome your feedback, guest and topic
+[01:03:22 -> 01:03:25] suggestions, and sponsorship inquiries, either via our
+[01:03:25 -> 01:03:28] website, CognitiveRevolution.ai, or by DMing me on your
+[01:03:28 -> 01:03:29] favorite social network.
+[01:03:29 -> 01:03:33] The Cognitive Revolution is part of the Turpentine Network,
+[01:03:33 -> 01:03:36] a network of podcasts, which is now part of A16Z, where
+[01:03:36 -> 01:03:40] experts talk technology, business, economics, geopolitics,
+[01:03:40 -> 01:03:41] culture, and more.
+[01:03:42 -> 01:03:45] were produced by AI Podcasting. If you're looking for
+[01:03:45 -> 01:03:47] podcast production help for everything from
+[01:03:47 -> 01:03:49] the moment you stop recording to the moment your audience
+[01:03:49 -> 01:03:51] starts listening, check them out and see
+[01:03:51 -> 01:03:56] my endorsement at AIpodcast.ing. And thank you to everyone
+[01:03:56 -> 01:03:58] who listens for being part of the
+[01:03:58 -> 01:03:59] cognitive revolution.

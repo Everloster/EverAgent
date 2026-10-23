@@ -1,0 +1,314 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-20_rss-cognitive-revolution_biohub-world-model-life.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-23",
+  "generator": {
+    "model": "gpt-5.6-sol",
+    "harness": "codex",
+    "run_id": "generator-5444ea2635f3",
+    "explicit_model_override": false,
+    "override_reason": ""
+  },
+  "task": {
+    "summary": "深度研究 Biohub 的生命世界模型、虚拟细胞、测量瓶颈、开放数据与生物学 RLVR。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "必须使用 Razer 全量转写并保留可核验的 artifact、时间戳与转写审计证据。"
+      },
+      {
+        "id": "R02",
+        "text": "产出可脱离对话独立阅读的 deep 播客研究报告，覆盖核心论证、案例、关键数字和反方。"
+      },
+      {
+        "id": "R03",
+        "text": "区分节目主张、外部一手证据与报告推断，不把预测或公司自述写成已验证事实。"
+      },
+      {
+        "id": "R04",
+        "text": "写明限制、未解问题和下一步研究方向。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "primary",
+      "title": "Cognitive Revolution 官方节目页",
+      "locator": "https://www.cognitiverevolution.ai/a-world-model-of-life-biohub-s-alex-rives-on-virtual-cells-measurement-the-1-8b-data-push",
+      "accessed_on": "2026-10-23"
+    },
+    {
+      "id": "S02",
+      "kind": "local",
+      "title": "Razer 全量转写",
+      "locator": "podcast-learning/reports/transcripts/2026-10-20_rss-cognitive-revolution_biohub-world-model-life.transcript.txt",
+      "accessed_on": "2026-10-23"
+    },
+    {
+      "id": "S03",
+      "kind": "local",
+      "title": "官方 shownotes 快照",
+      "locator": "podcast-learning/reports/transcripts/2026-10-20_rss-cognitive-revolution_biohub-world-model-life.shownotes.md",
+      "accessed_on": "2026-10-23"
+    },
+    {
+      "id": "S04",
+      "kind": "execution",
+      "title": "Razer artifact receipt",
+      "locator": "podcast-learning/reports/transcripts/2026-10-20_rss-cognitive-revolution_biohub-world-model-life.artifact.json",
+      "accessed_on": "2026-10-23"
+    },
+    {
+      "id": "S05",
+      "kind": "official",
+      "title": "Biohub VBI 18 亿美元扩展公告",
+      "locator": "https://biohub.org/news/virtual-biology-initiative-expansion",
+      "accessed_on": "2026-10-23"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "Rives 将当前虚拟细胞的瓶颈拆为模型、数据规模和测量可观测性。",
+      "report_anchor": "### 2. 虚拟细胞的三重瓶颈：模型、数据与测量",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "Rives 将当前虚拟细胞的瓶颈拆为模型、数据规模和测量可观测性。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "近期可行目标是学习细胞状态与输入到下一状态分布的概率 transition function。",
+      "report_anchor": "### 3. “生命世界模型”不是今天就原子级模拟整个人体",
+      "support": "direct",
+      "source_ids": [
+        "S02"
+      ],
+      "evidence": "近期可行目标是学习细胞状态与输入到下一状态分布的概率 transition function。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "VBI 的 18 亿美元是多机构资金、数据、计算和测量技术的合计承诺。",
+      "report_anchor": "### 4. 18 亿美元计划建设的是 AI-ready biology 基础设施",
+      "support": "direct",
+      "source_ids": [
+        "S05"
+      ],
+      "evidence": "VBI 的 18 亿美元是多机构资金、数据、计算和测量技术的合计承诺。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "Biohub 用 laser phase plate 说明新测量模态可能打开过去不可观察的细胞结构。",
+      "report_anchor": "### 4. 18 亿美元计划建设的是 AI-ready biology 基础设施",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "Biohub 用 laser phase plate 说明新测量模态可能打开过去不可观察的细胞结构。",
+      "critical": false
+    },
+    {
+      "id": "C05",
+      "claim": "生物学 RLVR 必须把真实实验、测量延迟和反馈吞吐纳入训练循环。",
+      "report_anchor": "### 6. 生物学 RLVR：验证器是实验室，延迟决定进步速度",
+      "support": "derived",
+      "source_ids": [
+        "S02",
+        "S05"
+      ],
+      "evidence": "生物学 RLVR 必须把真实实验、测量延迟和反馈吞吐纳入训练循环。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "语言能组织既有知识，但关键生物事实和新概念仍需实验产生。",
+      "report_anchor": "### 7. 语言负责已知知识，生物模型负责产生尚无名字的概念",
+      "support": "direct",
+      "source_ids": [
+        "S02"
+      ],
+      "evidence": "语言能组织既有知识，但关键生物事实和新概念仍需实验产生。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "治愈所有疾病的可操作定义",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "从药物靶点转向“生命程序”"
+    },
+    {
+      "id": "U02",
+      "title": "生命是程序的信息论视角",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "生命是程序的信息论视角"
+    },
+    {
+      "id": "U03",
+      "title": "当前虚拟细胞为何不够用",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "当前虚拟细胞为何不够用"
+    },
+    {
+      "id": "U04",
+      "title": "架构与 inductive bias",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "架构与 inductive bias"
+    },
+    {
+      "id": "U05",
+      "title": "信息论细胞模型与 transition function",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "信息论细胞模型与 transition function"
+    },
+    {
+      "id": "U06",
+      "title": "18 亿美元 Virtual Biology Initiative",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "18 亿美元 Virtual Biology Initiative"
+    },
+    {
+      "id": "U07",
+      "title": "laser phase plate 与多模态测量",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "laser phase plate 与多模态测量"
+    },
+    {
+      "id": "U08",
+      "title": "ESM/AlphaFold 的跨演化学习",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "ESM/AlphaFold 的跨演化学习"
+    },
+    {
+      "id": "U09",
+      "title": "生物学 RLVR 与实验闭环",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "生物学 RLVR 与实验闭环"
+    },
+    {
+      "id": "U10",
+      "title": "健康/疾病图谱与干预",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "健康/疾病图谱与干预"
+    },
+    {
+      "id": "U11",
+      "title": "语言与生物 latent space",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "语言与生物 latent space"
+    },
+    {
+      "id": "U12",
+      "title": "个体纵向数据与百万 Bryan Johnson",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "百万个 Bryan Johnson"
+    },
+    {
+      "id": "U13",
+      "title": "多尺度成像与透明斑马鱼",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "Biohub 的多尺度成像把“细胞必须在 context 中理解”变成具体工程"
+    },
+    {
+      "id": "U14",
+      "title": "模型生物与类器官的双向偏差",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "模型生物会同时制造假阳性和假阴性"
+    },
+    {
+      "id": "U15",
+      "title": "EHR 的价值与因果边界",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "EHR 可以改善照护，却不能替代因果基础"
+    }
+  ],
+  "limitations": [
+    "Whisper 转写可能保留少量专名或断句误差，关键术语已用 shownotes 或一手材料校正。",
+    "访谈中的预测、内部统计和公司自述不等于独立验证结果。",
+    "外部论文或公告只用于核验对应主张，不能替代节目完整语境。"
+  ]
+}

@@ -44,4 +44,5 @@ python3 "$SCRIPT" channels export-opml --output /tmp/sota-ai-podcasts.opml
 
 - RSS 先走 eacli `web.read`；内容被清洗、截断或访问失败时，降级到只读 HTTP XML，再降级到 Apple Podcasts 节目页。输出必须记录降级。
 - Apple 页面没有稳定单集 URL 时，链接回节目页并标记 `apple_page`，后续学习任务需重新解析单集来源。
+- Apple 的日期可能是重发或列表更新时间；已有报告时按报告文件名恢复首发日，未学习单集进入“优先深挖”前必须再核对官方单集页的原始发布日期。
 - 厂商、实验室和投资机构节目中的自报数据按一手主张处理，不能当作独立验证结论。

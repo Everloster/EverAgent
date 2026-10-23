@@ -1,0 +1,49 @@
+【结构化精编】依据 Razer whisper.cpp large-v3 全量转写整理；按总字符计约为原始转写的 2.3%。保留因果数据、Perturb-seq、扩散模型、先验、泛化和产学分工主线。专名与数字按官方 shownotes、X-Cell bioRxiv 预印本校正：X-Atlas/Pisces、X-Cell、CRISPRi、Perturb-seq、scGPT。
+
+## 1. 描述细胞不等于预测干预（00:10–00:23）
+
+Bo Wang 与 Ci Chu 区分 observational atlas 和 causal perturbation data。CELLxGENE 一类数据告诉模型不同细胞和状态中哪些基因共同表达，却无法仅凭相关性判断上游、下游和干预后的变化。同一观测分布可能对应许多因果结构。
+
+药物发现真正需要的是 counterfactual 问题：降低某个基因、加入药物或改变通路后，细胞会怎样响应。过去不少复杂深度模型在这类任务上没有稳定胜过简单 linear baseline，说明参数规模不能补回信息缺口。
+
+## 2. Perturb-seq 把实验变成可扩展的因果数据工厂（00:23–00:40）
+
+Perturb-seq 把 pooled CRISPR perturbation 和 single-cell RNA-seq 结合。在同一批细胞中投放带 barcode 的 guide RNA，读出每个细胞受到的基因扰动和全转录组响应。它不需要逐个培养皿做实验，因此能系统性 knock down 大量基因并同时读取数百万细胞。
+
+难点从原理转向工业化：guide 设计、感染效率、细胞培养、批次一致性、测序深度和质量控制都要在数千万到数亿细胞上稳定。X-Atlas/Pisces 最终发布 25.6 million 个严格过滤后的 perturbation transcriptome，覆盖 16 个生物学 context；节目强调数据来自七个 genome-wide campaign，而非单一细胞系。
+
+团队不仅扩大基因数量，也扩大细胞状态：癌细胞系、iPSC、分化过程、静息与激活 T cell 等。目标是让模型区分 context-universal effect 和 context-specific response。
+
+## 3. 为什么从 autoregression 转向 diffusion language model（00:40–00:47）
+
+scGPT 沿用了 autoregressive 思路，像逐字打字一样按顺序预测 token。基因表达更像同时存在的高维状态，没有自然的单向词序；扰动预测又要求把一个 control state 整体变成 perturbed state。
+
+X-Cell 使用 diffusion language model，把任务类比为反复编辑：从含噪状态出发，在多步中同时修正整组 gene expression，直到形成扰动后的分布。模型通过 cross-attention 接收 perturbation 与 biological prior，学习 control-to-perturbed transition。
+
+扩散并不自动产生因果性。它更贴合无序、高维向量的建模方式；真正提供因果识别信息的仍是干预数据。
+
+## 4. 六类先验帮助稀疏 context，但数据仍排第一（00:47–00:54）
+
+预印本与官方模型页列出 GenePT、ESM-2、STRING、DepMap、JUMP-Cell Painting 和 scGPT 六类先验。它们给模型提供基因知识、蛋白表示、相互作用、遗传依赖、形态表型和单细胞表达线索，使未见 context 中的预测更有依据。
+
+团队也能分析不同 context 对先验的依赖程度。某些细胞类型明显受益，另一些改善较小。Bo Wang 对重要性的排序是：高质量数据的规模优先，其次是 architecture，再其次是 prior。先验是数据不足时的补偿与归纳偏置，不是替代真实干预。
+
+## 5. 关键评估是跨 context 的 zero-shot，而不是训练集拟合（00:54–01:06）
+
+节目介绍三类外推。其一，从静息 T cell 的 perturbation 学习，预测激活 T cell 中的响应；其二，训练时留出一种 iPSC 分化细胞，再预测其中数千个 perturbation；其三，把模型应用到来自不同 donor 的 primary human CD4+ T cell。
+
+预印本报告 X-Cell 在 Pearson Δ 等指标上最高可比既有模型提高五倍，X-Cell-Ultra 扩展到 4.9B 参数，并观察到 perturbation prediction 的 power-law scaling。模型在 self-supervised test-time adaptation 后超过基线。以上均来自作者预印本，尚不等于药物或临床结果。
+
+节目还强调 linear baseline 必须认真对待。若简单地把两个已知 effect 相加就能预测新 context，复杂模型只有在真正改善未见条件、并在实验 ground truth 中稳定复现时才有意义。
+
+## 6. 从单基因、体外细胞走向组合与 in vivo（01:06–01:11）
+
+当前数据以 single-gene loss-of-function 和 transcriptomic readout 为主。真实药物常作用于多个靶点，组织环境又包含细胞间互作。团队希望扩展到 combinatorial perturbation、更多 modality 和 in vivo screen。
+
+PPI 等先验让模型可以对训练中未直接测过的组合提出 in silico 假设，但这只是候选生成。组合效应、毒性、剂量和组织环境仍需实验验证。
+
+## 7. Academia 发明方法，industry 把数据生产变成可靠系统（01:11–01:29）
+
+嘉宾认为 industry 的优势是算力、工程、跨团队资源和大规模稳定执行；academia 的优势是自由探索、深领域知识、医院与特殊样本入口，以及承担尚不适合产品化的高风险问题。CRISPR、单细胞技术和早期 Perturb-seq 都来自学术创新。
+
+对 AI 生物学，理想分工不是 academia 与 industry 互相替代。学术界探索新测量和因果问题，产业界把实验 robustify、standardize 并扩到 AI 所需规模，再把开放数据和模型反馈给研究社区。双方都需要能跨湿实验、计算和模型训练的人才。

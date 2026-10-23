@@ -1,0 +1,326 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-21_rss-twiml_airbnb-company-brain.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "review-gpt56sol-codex-airbnb-20261023-7a91c4e2",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "scores": {
+        "evidence_fidelity": 94,
+        "request_coverage": 93,
+        "reasoning_quality": 94,
+        "readability": 95,
+        "limitations": 94
+      },
+      "score_reasons": {
+        "evidence_fidelity": "关键主张均可回到全量转写、官方 shownotes 或已读取的 Airbnb 一手页面；92%–93%、约 50%、约一万次 tool call 与一万美元等数字均保留了口播或举例边界。Airbnb Q2 2026 公告使用“近 45% 的、从 AI assistant 开始的问题”这一不同时间与分母口径，报告已把访谈中的 50% 明确限定为 CTO 口播并提示不可直接比较。",
+        "request_coverage": "Everest、context poisoning、真实任务 eval、生产力度量、客服多方调解、agentic search 与 build-vs-buy 七条指定主线均有展开，报告也能独立阅读。较轻的遗漏是跨职能直接进入原型的工作方式变化，以及窄任务小模型、post-training、延迟和 QPS 的工程细节。",
+        "reasoning_quality": "从知识捕获到策展、路由、评估的推理链完整；能区分 token、PR 与 roadmap 的观测层级，并把双边客服建模为带政策与证据约束的部分可观测调解问题。推断段落有明确语气或标记，未把架构猜测写成 Airbnb 已验证结论。",
+        "readability": "结构由速览、内容地图、七条主线、数字边界、增量观点与追问组成，术语在正文中得到解释，脱离会话仍可理解。少量内部 wiki 链接不影响主线，但读者若追踪链接会依赖仓库上下文。",
+        "limitations": "完整写明转写质量、公司单方口径、Everest 未公开架构与效果、客服统计分母、隐私治理缺口及工程迁移的推测性质。对外部 45% 与访谈 50% 的时间和分母差异还可在后续修订中补充得更明确，但不影响当前结论。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08",
+        "U09",
+        "U10",
+        "U11"
+      ],
+      "source_content_map": [
+        {
+          "id": "A01",
+          "title": "Airbnb 的三条 AI 主线：内部生产力、marketplace 平台能力、guest/host 体验",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01"
+          ],
+          "notes": "报告 §1 明确列出三条主线，并用 craft 作为共同约束。"
+        },
+        {
+          "id": "A02",
+          "title": "Craft 与 velocity：用缺陷、可靠性和体验约束速度指标",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02",
+            "U07"
+          ],
+          "notes": "报告区分 adoption、产出与结果，准确说明 token 和 PR 不能单独证明业务价值。"
+        },
+        {
+          "id": "A03",
+          "title": "“MCP 整家公司”与任务附近的代码、工具、政策和法规 context",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03"
+          ],
+          "notes": "支付和定价域的例子被用于说明代码之外的政策、监管与团队做法。"
+        },
+        {
+          "id": "A04",
+          "title": "Project Everest 从工作流捕获隐性知识并从工程扩展到其他角色",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04"
+          ],
+          "notes": "报告完整呈现 shared context pool/company context graph 的来源、初始用户和扩展方向。"
+        },
+        {
+          "id": "A05",
+          "title": "用定价规则等真实任务判断 Everest 是否提高速度与正确性",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04",
+            "U06"
+          ],
+          "notes": "报告 §4 保留了 pricing domain 例子和“仍处早期、任务改善才算资产”的边界。"
+        },
+        {
+          "id": "A06",
+          "title": "企业记忆的数据结构仍未定型：database、Markdown、vector、graph 与混合路由",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04",
+            "U05"
+          ],
+          "notes": "报告没有把任一存储方案写成最终架构，并强调以任务表现裁定。"
+        },
+        {
+          "id": "A07",
+          "title": "Context poisoning 与 progressive disclosure",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U05"
+          ],
+          "notes": "旧或错误知识、纯文件堆积与一次暴露过多 context 的风险均被准确展开。"
+        },
+        {
+          "id": "A08",
+          "title": "AirChat、多模型选择与成本—质量—速度内部 eval",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06",
+            "U11"
+          ],
+          "notes": "报告覆盖 multi-model shop、自建 harness 和开放/闭源模型的持续比较。"
+        },
+        {
+          "id": "A09",
+          "title": "Virtual judge 分数聚集及 eval 分离度问题",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06"
+          ],
+          "notes": "92%–93% 聚集、模型已足够好或 eval/judge 太弱的两种解释都被保留。"
+        },
+        {
+          "id": "A10",
+          "title": "Token、PR throughput、roadmap 与混杂因素的生产力度量",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U07"
+          ],
+          "notes": "报告准确区分采用、产出和业务结果，并承认没有完美因果指标。"
+        },
+        {
+          "id": "A11",
+          "title": "PM、设计、法务和政策角色直接进入代码与原型的工作方式变化",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U07"
+          ],
+          "notes": "报告概括了工作流变化，但未展开节目中从串行 artifact 交接转向共同原型的具体例子。"
+        },
+        {
+          "id": "A12",
+          "title": "离线 marketplace Agent 用于支付争议、欺诈和行程质量",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U08"
+          ],
+          "notes": "报告把这些用途置于信任、支付和质量的双边市场背景中。"
+        },
+        {
+          "id": "A13",
+          "title": "客服是对抗性的多方调解：证据难验证、政策需公平、最难 case 仍需人类",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U09"
+          ],
+          "notes": "照片可被修改、平台不能选边、退款政策与人工判断等关键约束均进入正文。"
+        },
+        {
+          "id": "A14",
+          "title": "客服 Agent 的生产部署、透明告知、转人工与用户拒绝 AI",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U08",
+            "U09"
+          ],
+          "notes": "报告谨慎处理约 50% 口播，并说明 action card、透明身份和心理信任边界。"
+        },
+        {
+          "id": "A15",
+          "title": "Agentic search 应保留多模态探索、多人协作和用户选择权",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10"
+          ],
+          "notes": "聊天框摩擦、自然语言入口、多方案展示、数周决策过程和高价值交易均有覆盖。"
+        },
+        {
+          "id": "A16",
+          "title": "个人 Agent/MCP 接口与平台支付、保险、客服信任之间的权衡",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10"
+          ],
+          "notes": "报告区分筛选、可逆规划和最终交易，并保留 case-by-case 的产品判断。"
+        },
+        {
+          "id": "A17",
+          "title": "Build vs buy：开源/闭源模型、开源框架、自建组件与持续 rebasing",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11"
+          ],
+          "notes": "报告 §7 准确呈现混合策略、可替换模型和自建 harness 的职责边界。"
+        },
+        {
+          "id": "A18",
+          "title": "高 QPS 窄任务采用小模型、蒸馏和 post-training 以满足延迟与成本",
+          "importance": "supporting",
+          "assessment": "missing",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11"
+          ],
+          "notes": "节目后段的重要工程补充未进入正文；它不改变 build-vs-buy 主结论，但可提升完整性。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "已先完整读取 1202 段全量转写、官方 shownotes 快照与 artifact，再读取报告/evidence；另核验 Airbnb CTO 任命公告、Airbnb Tech 2025 回顾、Airbnb Q2 2026 财报与 2026 Summer Release，并读取 AirChat 一手演讲整理。实际运行 audit_transcript.py：ok=true，duration_seconds=3118，segments=1202，SHA-256 与 artifact 一致，时间戳单调、max_consecutive_identical=2、无 warnings/errors。独立来源地图确认七条指定主线全部覆盖；仅两项 supporting 细节为 partial/missing。运行 python3 scripts/report_quality.py check（未使用 --finalize）的结果：decision=pass，score=93.95，ERROR 0，WARN 0。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 93.95,
+    "evaluated_on": "2026-10-23",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "633a98d412f7190b06260ca3024386cd64f189b36f8b78774e5947047f0969fd",
+    "evidence_sha256": "683533dabd530df74885d329511dc97626740e19833478d344225566fc339502"
+  }
+}

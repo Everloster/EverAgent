@@ -1,0 +1,1202 @@
+[00:00:01 -> 00:00:03] Security teams don't need another list of alerts.
+[00:00:04 -> 00:00:07] They need to know which vulnerabilities are actually reach
+[00:00:07 -> 00:00:09] able, exposed, and safe to fix.
+[00:00:09 -> 00:00:12] That's what hyperscale remediation from Blitzy does.
+[00:00:12 -> 00:00:15] Blitzy understands your entire software estate,
+[00:00:16 -> 00:00:18] then finds known and previously undiscovered
+[00:00:18 -> 00:00:20] vulnerabilities in your codebase.
+[00:00:20 -> 00:00:23] It traces each one through the execution paths,
+[00:00:23 -> 00:00:26] checks the dependencies, and validates the fix.
+[00:00:26 -> 00:00:28] Your engineers approve the plan,
+[00:00:28 -> 00:00:32] And Blitzy delivers batches of tested pull requests ready
+[00:00:32 -> 00:00:33] to review.
+[00:00:33 -> 00:00:37] Less alert noise, faster remediation, and confidence that
+[00:00:37 -> 00:00:40] fixes are validated as safe before you review them.
+[00:00:41 -> 00:00:43] Visit Blitzy.com to see it in action.
+[00:00:43 -> 00:00:46] That's B-L-I-T-Z-Y dot com.
+[00:00:46 -> 00:00:52] Your company knows a lot more than what's written down.
+[00:00:52 -> 00:00:55] Experienced employees know why a system works a certain way
+[00:00:55 -> 00:00:58] , which decisions apply, and how to ask when the
+[00:00:58 -> 00:00:59] documentation falls short.
+[00:01:00 -> 00:01:03] Giving AI agents access to that knowledge is a much harder
+[00:01:03 -> 00:01:06] problem than just connecting them to a code base.
+[00:01:06 -> 00:01:09] Ahmed Aldale helped build the original iPhone at Apple and
+[00:01:09 -> 00:01:11] led the team behind Lama at Meta.
+[00:01:11 -> 00:01:14] Now, as Airbnb's CTO, he's tackling that problem by
+[00:01:14 -> 00:01:17] building what he calls a company brain.
+[00:01:17 -> 00:01:21] The system, Everest, captures institutional knowledge from
+[00:01:21 -> 00:01:24] employees' workflows and makes it available to agents.
+[00:01:25 -> 00:01:28] But as that shared knowledge grows, how do you keep agents
+[00:01:28 -> 00:01:30] from learning the wrong lessons?
+[00:01:30 -> 00:01:33] I think if you aren't careful, markdown files could be
+[00:01:33 -> 00:01:36] exactly the kind of problem that I was referring to, where
+[00:01:36 -> 00:01:39] you have like, it's difficult to find and there's a lot of
+[00:01:39 -> 00:01:43] like context poisoning that's happening. One person uses it
+[00:01:43 -> 00:01:46] , we extract a thing, we put it down a markdown file, and
+[00:01:46 -> 00:01:49] then the model is like very good at finding the thing that
+[00:01:49 -> 00:01:52] 's old or wrong. Because the biggest mistake you can make is
+[00:01:52 -> 00:01:55] you reveal too much context too quickly to the model,
+[00:01:55 -> 00:01:58] versus you try to give it enough context to move one step
+[00:01:58 -> 00:02:00] forward to then ask for more context.
+[00:02:00 -> 00:02:03] I'm Sam Charrington, and this is the TwiML AI podcast. For
+[00:02:03 -> 00:02:06] over a decade, I've been exploring the ideas and
+[00:02:06 -> 00:02:09] innovations shaping the future of AI through conversations
+[00:02:09 -> 00:02:13] like this one that help you understand what's real, what's
+[00:02:13 -> 00:02:15] next, and what matters. Let's jump in.
+[00:02:21 -> 00:02:29] When you arrived at Airbnb, talk a little bit about the AI
+[00:02:29 -> 00:02:34] landscape that you encountered and how you've seen that
+[00:02:34 -> 00:02:37] evolve since you joined.
+[00:02:37 -> 00:02:39] So the good news is there was a lot of momentum already.
+[00:02:39 -> 00:02:42] There was a lot of pretty decent foundation, I would say.
+[00:02:42 -> 00:02:46] And I think it's both the timing that I joined because
+[00:02:46 -> 00:02:50] really, agentic coding had just begun to like become
+[00:02:50 -> 00:02:55] something that people could really leverage. So that the
+[00:02:55 -> 00:02:58] moment and timing of the capability was right. But also, I
+[00:02:58 -> 00:03:02] think the Airbnb culture and Airbnb has had a long lineage
+[00:03:02 -> 00:03:06] of working on AI and MLOps and all sorts of things.
+[00:03:06 -> 00:03:09] So it had a strong sort of infrastructure investment.
+[00:03:10 -> 00:03:12] So what I've been able to help the company do is just
+[00:03:12 -> 00:03:17] really accelerate the adoption of AI across like maybe
+[00:03:17 -> 00:03:19] three frontiers or three boundaries.
+[00:03:20 -> 00:03:22] The first one is like AI for productivity.
+[00:03:22 -> 00:03:25] How do we how does the average engineer use AI to move
+[00:03:25 -> 00:03:26] faster?
+[00:03:26 -> 00:03:30] That turns out to be like you have to sort of engineer your
+[00:03:30 -> 00:03:35] platform to make it easy to facilitate AI agents in your
+[00:03:35 -> 00:03:36] infrastructure.
+[00:03:37 -> 00:03:39] And then the second one is, you know, how do we deploy AI
+[00:03:39 -> 00:03:41] agents to the marketplace?
+[00:03:41 -> 00:03:43] These are things that maybe the user doesn't see that
+[00:03:43 -> 00:03:46] really add a lot of accretive value to our platform.
+[00:03:47 -> 00:03:51] It either builds more trust, more reliability, quality, etc
+[00:03:51 -> 00:03:51] .
+[00:03:51 -> 00:03:53] These are things that you do in an offline fashion.
+[00:03:54 -> 00:03:57] And then how do we deploy AI agents to improve both the
+[00:03:57 -> 00:04:01] guest experience or the host experience?
+[00:04:01 -> 00:04:04] So these are kind of like the three frontiers we pushed on.
+[00:04:05 -> 00:04:07] And each one's made like a tremendous amount of progress in
+[00:04:07 -> 00:04:09] a really short amount of time.
+[00:04:09 -> 00:04:12] When you think about that first pillar and AI for
+[00:04:12 -> 00:04:17] engineering productivity, you mentioned you kind of came on
+[00:04:17 -> 00:04:20] just as agentic coding was taking place.
+[00:04:21 -> 00:04:25] You know, when you think about like how to help engineers
+[00:04:25 -> 00:04:28] be productive today with AI coding tools, like there are
+[00:04:28 -> 00:04:30] lots of different ways that you could come about that.
+[00:04:31 -> 00:04:34] I see lots of different philosophies about AI coding in the
+[00:04:34 -> 00:04:35] marketplace today.
+[00:04:35 -> 00:04:39] I'm not sure we've like fully nailed this is the right way
+[00:04:39 -> 00:04:40] to do it or the one way to do it.
+[00:04:40 -> 00:04:44] How do you describe the Airbnb way to do it?
+[00:04:44 -> 00:04:48] Or even is there an Airbnb way to do it or an Ahmed way to
+[00:04:48 -> 00:04:48] do it?
+[00:04:48 -> 00:04:50] Or is it team by team?
+[00:04:50 -> 00:04:53] Well, I mean, every company has a culture or set of
+[00:04:53 -> 00:04:56] principles they're a bit curious to.
+[00:04:56 -> 00:05:00] So, you know, some companies will say like move fast.
+[00:05:00 -> 00:05:02] You know, that's kind of the mantra.
+[00:05:02 -> 00:05:06] So what you'll find is the way that AI is being deployed
+[00:05:06 -> 00:05:08] for productivity is really about velocity.
+[00:05:08 -> 00:05:12] I think Airbnb really focuses on craft, which I think is
+[00:05:12 -> 00:05:14] actually really, really good.
+[00:05:14 -> 00:05:16] It's aligned to how I think about things.
+[00:05:16 -> 00:05:20] And so because we're very focused on craft, it's not just a
+[00:05:20 -> 00:05:22] velocity or speed question.
+[00:05:22 -> 00:05:24] Velocity actually has a heading, which is good.
+[00:05:24 -> 00:05:27] It's really also about quality.
+[00:05:27 -> 00:05:30] So we kind of have to balance the equities of both.
+[00:05:30 -> 00:05:33] And so when we look at productivity, we don't just look at,
+[00:05:33 -> 00:05:37] you know, PR throughputs or token rates or things like that
+[00:05:37 -> 00:05:42] . We also look at defect ratios, reliability metrics. So we
+[00:05:42 -> 00:05:46] try to guardrail the velocity with craft and judgment to
+[00:05:46 -> 00:05:51] make sure that we are sort of continuing to stay on track.
+[00:05:51 -> 00:05:54] That way, when you get exponential use of AI in your system
+[00:05:54 -> 00:05:57] , you're also pretty much
+[00:05:57 -> 00:06:00] reinforcing a culture that you kind of need to maintain the
+[00:06:00 -> 00:06:02] quality of your system as
+[00:06:02 -> 00:06:02] well.
+[00:06:02 -> 00:06:05] So I think that's one of the very high-level things that
+[00:06:05 -> 00:06:06] stays true everywhere.
+[00:06:06 -> 00:06:09] But I think there's some common truths in how to deploy AI
+[00:06:09 -> 00:06:11] agents for your own productivity
+[00:06:11 -> 00:06:13] that are consistent at every company.
+[00:06:14 -> 00:06:18] So how do you basically MCP your entire company so that an
+[00:06:18 -> 00:06:21] agent can sort of access what it
+[00:06:21 -> 00:06:21] needs?
+[00:06:22 -> 00:06:26] based on any generic task? How do you construct context in
+[00:06:26 -> 00:06:28] your code base or documentation within
+[00:06:28 -> 00:06:31] your code base so that agents are able to specialize on the
+[00:06:31 -> 00:06:33] work that they need to do?
+[00:06:33 -> 00:06:37] So if I am a product engineer and I need to work on a PR
+[00:06:37 -> 00:06:39] that lands in the payment stack,
+[00:06:39 -> 00:06:42] which is complicated and regulated and kind of gnarly, is
+[00:06:42 -> 00:06:44] there enough documentation to inform
+[00:06:44 -> 00:06:46] the agent so that your PR is actually kind of reasonable
+[00:06:46 -> 00:06:48] for the payments team to review?
+[00:06:49 -> 00:06:51] These are all things that you kind of need to build out in
+[00:06:51 -> 00:06:54] order to get like velocity at the end, like to actually get
+[00:06:54 -> 00:06:57] more productive and also maintain some level of quality.
+[00:06:57 -> 00:07:00] And then the last one is like institutional knowledge,
+[00:07:00 -> 00:07:03] which isn't embedded in your organization and really
+[00:07:03 -> 00:07:07] figuring out how to extract institutional knowledge and
+[00:07:07 -> 00:07:09] code it so that agents can learn from it.
+[00:07:09 -> 00:07:12] This is like underexplored, but something that we've been
+[00:07:12 -> 00:07:13] working on.
+[00:07:13 -> 00:07:16] So we have something that we call Project Everest, which is
+[00:07:16 -> 00:07:20] effectively kind of like the company brain.
+[00:07:20 -> 00:07:23] So as people use AI and as they use Everest, it's able to
+[00:07:23 -> 00:07:26] sort of collect a lot of institutional knowledge from
+[00:07:26 -> 00:07:27] everybody using it.
+[00:07:27 -> 00:07:29] So we have a shared context pool of how people do things
+[00:07:29 -> 00:07:31] that maybe isn't in the documentation.
+[00:07:32 -> 00:07:35] What's the organizing principle there? Is it primarily for
+[00:07:35 -> 00:07:40] engineering and engineers? Is it workflow based? Is it very
+[00:07:40 -> 00:07:41] free form?
+[00:07:42 -> 00:07:43] No, it's for engineers.
+[00:07:44 -> 00:07:45] It started, actually, let me be clear.
+[00:07:45 -> 00:07:47] It started for product engineers,
+[00:07:47 -> 00:07:50] but it is now dispersing across the company.
+[00:07:50 -> 00:07:52] So we even have product managers,
+[00:07:52 -> 00:07:54] which we call actually product marketers at Airbnb
+[00:07:54 -> 00:07:56] that are actually also using it.
+[00:07:57 -> 00:07:58] Eventually, design will use it.
+[00:07:58 -> 00:08:03] And we'll kind of bring this as the company context graph
+[00:08:03 -> 00:08:06] that is more about everybody's workflows
+[00:08:06 -> 00:08:08] and learning from everyone's workflows.
+[00:08:09 -> 00:08:09] Interesting.
+[00:08:09 -> 00:08:11] Yeah, that makes me think about,
+[00:08:12 -> 00:08:15] and many moons ago,
+[00:08:15 -> 00:08:18] I worked in kind of the knowledge management field
+[00:08:18 -> 00:08:20] and like knowledge management and collaboration
+[00:08:20 -> 00:08:25] are these perpetual challenges within large enterprises.
+[00:08:25 -> 00:08:28] Like people, you know, create a lot of documents,
+[00:08:29 -> 00:08:31] but there's a lot of implicit knowledge
+[00:08:31 -> 00:08:32] that never gets written down.
+[00:08:33 -> 00:08:37] And, you know, certainly AI and agents change all that
+[00:08:37 -> 00:08:40] because the agents can do some of that documenting for us
+[00:08:40 -> 00:08:43] then they can pull it from, you know, places where the work
+[00:08:43 -> 00:08:47] happens as opposed to, you know, being told to do it per se
+[00:08:47 -> 00:08:47] .
+[00:08:48 -> 00:08:51] But at the same time, you know, at the same time, the
+[00:08:51 -> 00:08:54] agents can create a lot of documentation
+[00:08:54 -> 00:08:58] and too much documentation or documentation about the wrong
+[00:08:58 -> 00:09:01] things kind of reduces the value of the city.
+[00:09:01 -> 00:09:03] It poisons the well. Yeah. Yeah.
+[00:09:03 -> 00:09:06] Yeah, so talk a little bit about how you've kind of managed
+[00:09:06 -> 00:09:07] that challenge
+[00:09:07 -> 00:09:14] and how Everest approaches, you know, kind of curation or
+[00:09:14 -> 00:09:16] prioritization,
+[00:09:16 -> 00:09:18] you know, however you think about that.
+[00:09:18 -> 00:09:21] I mean, ultimately, the best way to keep your system on
+[00:09:21 -> 00:09:22] track
+[00:09:22 -> 00:09:24] is to have a really strong evals.
+[00:09:24 -> 00:09:26] So one of the things that we do with Everest is we have
+[00:09:26 -> 00:09:27] like consistent tasks
+[00:09:27 -> 00:09:28] that we look at doing.
+[00:09:29 -> 00:09:35] Are we trying to benchmark those on, you know, are we, if
+[00:09:35 -> 00:09:38] you use Everest, are you able to complete the task in a
+[00:09:38 -> 00:09:41] shorter number and is it more accurate?
+[00:09:41 -> 00:09:43] So is Everest adding value?
+[00:09:43 -> 00:09:44] What's an example of one of those tasks?
+[00:09:44 -> 00:09:48] To take a, take what a product engineer would do in our
+[00:09:48 -> 00:09:50] pricing domain.
+[00:09:50 -> 00:09:56] If they need to land a PR in our pricing domain with a
+[00:09:56 -> 00:09:58] prompt and they're like,
+[00:09:58 -> 00:10:04] apply a new pricing rule change to the pricing domain, is
+[00:10:04 -> 00:10:07] it able to complete that task given
+[00:10:07 -> 00:10:10] that pricing engineers have been working with Everest,
+[00:10:10 -> 00:10:12] giving it context and doing their work
+[00:10:12 -> 00:10:16] with it? Is it able to land a PR that is faster and more
+[00:10:16 -> 00:10:19] accurate, as an example?
+[00:10:20 -> 00:10:22] So it's complicated because there's a lot of policies
+[00:10:22 -> 00:10:26] and a lot of very specific ways of working with pricing.
+[00:10:26 -> 00:10:28] It's probably one of our most complicated domains.
+[00:10:28 -> 00:10:32] So is Evers able to let people work in the pricing domain,
+[00:10:32 -> 00:10:34] encoding a lot of the institutional know-how
+[00:10:34 -> 00:10:36] of how to work with something that's as complicated as
+[00:10:36 -> 00:10:37] pricing,
+[00:10:37 -> 00:10:39] as an example of it?
+[00:10:39 -> 00:10:40] So the idea in that particular domain,
+[00:10:40 -> 00:10:43] you've got a lot of existing code
+[00:10:43 -> 00:10:48] that illustrates how the pricing aspects of your system
+[00:10:48 -> 00:10:48] work,
+[00:10:48 -> 00:10:49] but the code isn't everything.
+[00:10:50 -> 00:10:54] there's also regulation and policy and other things.
+[00:10:54 -> 00:10:58] And the idea is to make that available to agents as well.
+[00:10:58 -> 00:10:59] That's right.
+[00:10:59 -> 00:11:01] I mean, that's the, like, we want to get there.
+[00:11:01 -> 00:11:04] I think it's early, but I think this is, to be clear,
+[00:11:04 -> 00:11:06] like, it's not that Everest has, like,
+[00:11:06 -> 00:11:08] completely solved everything for us,
+[00:11:08 -> 00:11:10] but I think it is the beginnings of something
+[00:11:10 -> 00:11:13] that could eventually become, you know,
+[00:11:13 -> 00:11:15] empowering to every engineer
+[00:11:15 -> 00:11:16] who isn't an expert in everything
+[00:11:16 -> 00:11:19] to basically move faster.
+[00:11:20 -> 00:11:24] And do you think of that as a database of some sort or a
+[00:11:24 -> 00:11:27] collection of markdown files of some sort or something else
+[00:11:27 -> 00:11:27] ?
+[00:11:28 -> 00:11:29] It's a database of sorts. Yeah.
+[00:11:30 -> 00:11:32] There's a question of what's the right way to structure it.
+[00:11:32 -> 00:11:35] I think markdown files are really good because frontier
+[00:11:35 -> 00:11:38] models have been trained to navigate file systems.
+[00:11:38 -> 00:11:40] So actually, you can get pretty far.
+[00:11:40 -> 00:11:42] There's a question of like, what's the best structure for
+[00:11:42 -> 00:11:43] something like memory?
+[00:11:43 -> 00:11:44] I mean, this is kind of what it is.
+[00:11:44 -> 00:11:46] It's a little bit of a memory structure.
+[00:11:46 -> 00:11:48] And, you know, there's a question.
+[00:11:48 -> 00:11:50] So we're experimenting with the right data structure.
+[00:11:50 -> 00:11:53] if it's a database, is a better approach,
+[00:11:53 -> 00:11:56] or if actually a markdown file with like,
+[00:11:56 -> 00:11:58] and a harness kind of deciding
+[00:11:58 -> 00:12:00] what the directory structure needs to be
+[00:12:00 -> 00:12:00] is the right approach.
+[00:12:01 -> 00:12:02] So I don't think we've like,
+[00:12:03 -> 00:12:04] I don't, I'm not convicted
+[00:12:04 -> 00:12:07] that we have the right architecture for it yet.
+[00:12:07 -> 00:12:11] Do you think of it as primarily collecting the context
+[00:12:11 -> 00:12:14] and letting the agent figure out
+[00:12:14 -> 00:12:15] what to do with the context?
+[00:12:15 -> 00:12:18] Or do you believe that kind of extracting
+[00:12:18 -> 00:12:20] some degree of structure
+[00:12:20 -> 00:12:23] and making that structure available to the agents
+[00:12:23 -> 00:12:26] is something that is a promising direction.
+[00:12:26 -> 00:12:28] I guess I'm wondering, you know,
+[00:12:28 -> 00:12:30] you're kind of creating vector embeddings on it
+[00:12:30 -> 00:12:35] and using embeddings to allow the agents to find context.
+[00:12:35 -> 00:12:37] Are you doing like graph kinds of things
+[00:12:37 -> 00:12:39] to allow the agents to navigate this?
+[00:12:39 -> 00:12:43] Or is it, you know, here's a bunch of files
+[00:12:43 -> 00:12:46] or a way to like list a bunch of files
+[00:12:46 -> 00:12:47] in an area in a database.
+[00:12:47 -> 00:12:49] And, you know, you'll think the agents
+[00:12:49 -> 00:12:51] as they get more and more powerful
+[00:12:51 -> 00:12:52] will be able to figure out
+[00:12:52 -> 00:12:53] what they need to do with it.
+[00:12:54 -> 00:12:56] The short answer on this, I think,
+[00:12:56 -> 00:13:01] is like, I think we're going to end up
+[00:13:01 -> 00:13:02] looking at all of these
+[00:13:02 -> 00:13:04] to figure out which one works best.
+[00:13:04 -> 00:13:07] If you're not, I find it hard to believe
+[00:13:07 -> 00:13:09] like a vector search is going to scale
+[00:13:09 -> 00:13:12] to where we need it to work.
+[00:13:13 -> 00:13:15] Where like the whole company is using it.
+[00:13:15 -> 00:13:17] I think if you aren't careful,
+[00:13:17 -> 00:13:18] markdown files could be exactly
+[00:13:18 -> 00:13:20] the kind of problem that I was referring to
+[00:13:20 -> 00:13:23] where you have like, it's difficult to find
+[00:13:23 -> 00:13:26] and there's a lot of like context poisoning
+[00:13:26 -> 00:13:27] that's happening.
+[00:13:27 -> 00:13:29] One person uses it and we extract a thing,
+[00:13:29 -> 00:13:30] we put it down a marked out file
+[00:13:30 -> 00:13:32] and then the model's like very good
+[00:13:32 -> 00:13:35] at finding the thing that's old or wrong.
+[00:13:35 -> 00:13:38] So I think we're going to end up
+[00:13:38 -> 00:13:39] like finding some hybrid
+[00:13:39 -> 00:13:42] where actually there's some intelligence in between
+[00:13:42 -> 00:13:44] that is figuring out how to search,
+[00:13:44 -> 00:13:47] how to do like progressive disclosure of context.
+[00:13:47 -> 00:13:49] Because the biggest mistake you can make
+[00:13:49 -> 00:13:51] is you reveal too much context too quickly to the model.
+[00:13:51 -> 00:13:54] Versus you try to give it enough context to move one step
+[00:13:54 -> 00:13:56] forward to then ask for more context.
+[00:13:57 -> 00:13:59] Kind of like a progressive disclosure approach.
+[00:14:00 -> 00:14:03] And I think that is still kind of open.
+[00:14:04 -> 00:14:08] In terms of the kind of tech stack or platforms that you
+[00:14:08 -> 00:14:11] use for agentic coding,
+[00:14:11 -> 00:14:13] like have you talked about what that is?
+[00:14:14 -> 00:14:18] Like are you an X shop or a Y shop or does everybody use
+[00:14:18 -> 00:14:19] their own thing?
+[00:14:19 -> 00:14:25] We started as one shop at some point, but we've quickly
+[00:14:25 -> 00:14:28] learned, like, given the pace of the industry, it's a
+[00:14:28 -> 00:14:30] little crazy to be an X shop.
+[00:14:31 -> 00:14:36] So we've, at least my strong inclination was like, we need
+[00:14:36 -> 00:14:40] to be a multi-model shop.
+[00:14:40 -> 00:14:43] So actually, if you look across the company, you know, for
+[00:14:43 -> 00:14:45] internal productivity, we have something called AirChat,
+[00:14:45 -> 00:14:50] which basically wraps other harnesses with our MCPs, but we
+[00:14:50 -> 00:14:53] 're able to sort of select which one we want to use.
+[00:14:53 -> 00:14:55] And it's kind of nice because Codex is also open source.
+[00:14:56 -> 00:14:59] It's nice of OpenAI to open source stuff.
+[00:15:00 -> 00:15:03] So generally, we're like pretty open and flexible with
+[00:15:03 -> 00:15:05] engineer preference.
+[00:15:05 -> 00:15:10] Like people can kind of pick which agentic tools they want
+[00:15:10 -> 00:15:11] to use.
+[00:15:11 -> 00:15:16] And then for product, we actually also have our own set of
+[00:15:16 -> 00:15:18] harnesses that we deploy.
+[00:15:19 -> 00:15:23] And we also use a lot of open source stuff that has our own
+[00:15:23 -> 00:15:27] modifications to it to make it work for our systems.
+[00:15:27 -> 00:15:29] What are you doing around evals?
+[00:15:29 -> 00:15:33] That's an area that a lot of companies really struggle with
+[00:15:33 -> 00:15:36] to ensure that they're able to kind of get that data fly
+[00:15:36 -> 00:15:38] wheel going.
+[00:15:38 -> 00:15:41] One of the systems that I mentioned earlier,
+[00:15:41 -> 00:15:44] Zipline, was feature engineering.
+[00:15:45 -> 00:15:48] And feature engineering plays a similar kind of data fly
+[00:15:48 -> 00:15:49] wheel role
+[00:15:49 -> 00:15:55] in the MLOps platform as eval tooling does today.
+[00:15:55 -> 00:16:00] How is the way Airbnb thinks about eval tooling
+[00:16:00 -> 00:16:04] and kind of closing the loop from interactions
+[00:16:04 -> 00:16:08] to kind of intelligence?
+[00:16:08 -> 00:16:09] How has that evolved?
+[00:16:10 -> 00:16:13] For agentic tasks, we've worked with a set of engineers.
+[00:16:13 -> 00:16:15] We have a council of senior engineers,
+[00:16:15 -> 00:16:18] and we have a set of tasks or prompts that people want to
+[00:16:18 -> 00:16:19] complete.
+[00:16:20 -> 00:16:24] The difficulty is the challenge with the evals.
+[00:16:24 -> 00:16:27] You could argue there's a very binary outcome,
+[00:16:27 -> 00:16:29] like did it build the thing or didn't it?
+[00:16:29 -> 00:16:32] But there's also a lot of subtleness to the correctness of
+[00:16:32 -> 00:16:32] the solution
+[00:16:32 -> 00:16:34] and the quality of the solution.
+[00:16:35 -> 00:16:41] And so, you know, we have built like agentic evals that
+[00:16:41 -> 00:16:44] look at engineering, Airbnb engineering tasks.
+[00:16:44 -> 00:16:47] I can't think of like stuff off the top of my head, but
+[00:16:47 -> 00:16:51] there are like a set of tasks that we've worked across
+[00:16:51 -> 00:16:53] various teams to engineer.
+[00:16:54 -> 00:16:58] And then we run those evals against all of the models, both
+[00:16:58 -> 00:17:02] open source and closed source, to have a sense of the Pare
+[00:17:02 -> 00:17:05] to between the cost of the model and the quality and the
+[00:17:05 -> 00:17:06] performance.
+[00:17:06 -> 00:17:11] And the hardest part is like really trying to push the Pare
+[00:17:11 -> 00:17:11] to down.
+[00:17:11 -> 00:17:14] So like you're trying to not saturate because everything
+[00:17:14 -> 00:17:19] clusters around like 92, 93% or something like that, which
+[00:17:19 -> 00:17:21] a virtual judge is giving you the score.
+[00:17:21 -> 00:17:24] So we calibrated a virtual judge to basically say, given
+[00:17:24 -> 00:17:28] this task, given the execution, like what's the quality?
+[00:17:29 -> 00:17:30] So we get a percentage.
+[00:17:31 -> 00:17:34] And so we have this like chart that we use that basically
+[00:17:34 -> 00:17:36] shows cost versus accuracy.
+[00:17:37 -> 00:17:40] And then we look at all of the open source models and we
+[00:17:40 -> 00:17:40] decide.
+[00:17:41 -> 00:17:45] It sounds like without a lot of care, what you're seeing is
+[00:17:45 -> 00:17:48] that the model will generally say, oh, that's about 90%
+[00:17:48 -> 00:17:48] good.
+[00:17:49 -> 00:17:51] Yeah, yeah. That's the hard part.
+[00:17:52 -> 00:17:55] Exactly. And getting enough separation between them is like
+[00:17:55 -> 00:17:58] sometimes a chore, which actually either says one of two
+[00:17:58 -> 00:17:59] things.
+[00:17:59 -> 00:18:01] Either your evals aren't good or the models are actually
+[00:18:01 -> 00:18:04] probably good enough for a lot of stuff that we're doing.
+[00:18:05 -> 00:18:07] And then it becomes like a cost and efficiency trade-off,
+[00:18:08 -> 00:18:09] and a speed trade-off, really.
+[00:18:11 -> 00:18:15] But I think most of the time I'm very suspicious that evals
+[00:18:15 -> 00:18:15] ,
+[00:18:15 -> 00:18:18] if we're not able to get some separation between frontier
+[00:18:18 -> 00:18:19] and non-frontier.
+[00:18:19 -> 00:18:20] Are these hard enough?
+[00:18:20 -> 00:18:24] Are we really calibrating the judge to look for enough
+[00:18:24 -> 00:18:25] signal
+[00:18:25 -> 00:18:26] in the implementation or the completion?
+[00:18:27 -> 00:18:32] Let's dig into the model costs versus capability a bit
+[00:18:32 -> 00:18:33] deeper.
+[00:18:33 -> 00:18:37] You know, there have been kind of some famous examples in,
+[00:18:37 -> 00:18:42] well, you know, Uber, you know, for example, you know, told
+[00:18:42 -> 00:18:44] all their engineers to go to town on agentic coding.
+[00:18:45 -> 00:18:47] And then like some period of time later was like, whoa, you
+[00:18:47 -> 00:18:49] guys really went to town on agentic coding.
+[00:18:49 -> 00:18:50] This is expensive.
+[00:18:50 -> 00:18:50] Yeah.
+[00:18:51 -> 00:18:57] How do you think about kind of cost versus value versus,
+[00:18:57 -> 00:19:01] for obvious reasons, the topic of routing has gotten very
+[00:19:01 -> 00:19:04] popular nowadays, which is essentially like, how do we get
+[00:19:04 -> 00:19:06] the right tasks to the right model?
+[00:19:06 -> 00:19:10] Like, what have you done to try to optimize there?
+[00:19:11 -> 00:19:14] I fundamentally think that engineers are problem solvers
+[00:19:14 -> 00:19:18] and you just have to inspire the objective, not constrain
+[00:19:18 -> 00:19:21] the execution.
+[00:19:22 -> 00:19:27] So like things that I adhere to is like we didn't have
+[00:19:27 -> 00:19:30] token leader, like we didn't really focus on token leader
+[00:19:30 -> 00:19:30] boards.
+[00:19:30 -> 00:19:33] The only thing that tokens tell me is if someone's not
+[00:19:33 -> 00:19:38] using any tokens, that is probably something to work on.
+[00:19:38 -> 00:19:41] And if someone's using a lot of tokens, we should try to
+[00:19:41 -> 00:19:43] understand what they're doing.
+[00:19:43 -> 00:19:45] And either, by the way, we found like two cases, one case
+[00:19:45 -> 00:19:48] where people needed help to better understand how to build
+[00:19:48 -> 00:19:50] efficiency into their workflows.
+[00:19:51 -> 00:19:54] And others where actually they're doing really great mig
+[00:19:54 -> 00:19:55] rations
+[00:19:55 -> 00:19:56] and it's actually really valuable.
+[00:19:57 -> 00:19:58] And like, go hemp.
+[00:19:58 -> 00:20:03] And so I like didn't apply a draconian token limit to
+[00:20:03 -> 00:20:03] everybody.
+[00:20:03 -> 00:20:05] I didn't really say token max.
+[00:20:05 -> 00:20:07] We didn't do any of those, fall into any of those pitfalls.
+[00:20:08 -> 00:20:11] What we did was try to apply nuance to understanding the
+[00:20:11 -> 00:20:12] shape of adoption.
+[00:20:13 -> 00:20:16] The thing is like my theory on the right way to approach it
+[00:20:16 -> 00:20:16] is,
+[00:20:16 -> 00:20:20] you know, people who aren't using it need help and need
+[00:20:20 -> 00:20:20] support.
+[00:20:22 -> 00:20:24] People are using a lot of it.
+[00:20:24 -> 00:20:25] We need to understand.
+[00:20:25 -> 00:20:26] And people who are using,
+[00:20:26 -> 00:20:27] and you look for other signals,
+[00:20:27 -> 00:20:30] like, you know, people who are using one model pinned.
+[00:20:30 -> 00:20:32] Imagine you're using, you know,
+[00:20:32 -> 00:20:35] name your favorite frontier at maximum thinking.
+[00:20:35 -> 00:20:36] Fable or...
+[00:20:36 -> 00:20:36] Yeah.
+[00:20:36 -> 00:20:39] And it's like these large, you know,
+[00:20:39 -> 00:20:42] you're caught 10,000 tool calls
+[00:20:42 -> 00:20:45] and every sub-agent is like your frontier model.
+[00:20:45 -> 00:20:47] And it's like, at some point you're like,
+[00:20:47 -> 00:20:49] hey, like, that's slow.
+[00:20:50 -> 00:20:51] You know, that's slow.
+[00:20:51 -> 00:20:51] Right.
+[00:20:51 -> 00:20:54] And also, like, are you sure you need that much?
+[00:20:55 -> 00:20:57] And so, you know, we kind of look for those outliers
+[00:20:57 -> 00:20:59] and help bring them into the shape
+[00:20:59 -> 00:21:00] that we're actually going for.
+[00:21:01 -> 00:21:04] In terms of, like, impact,
+[00:21:05 -> 00:21:06] I mean, this is like what the whole industry
+[00:21:06 -> 00:21:07] is trying to figure out.
+[00:21:07 -> 00:21:09] I don't know that we've, like, completely nailed it,
+[00:21:10 -> 00:21:12] which is like, okay, so you're using all these tokens.
+[00:21:12 -> 00:21:14] Are they accretive?
+[00:21:14 -> 00:21:17] Are they actually adding, you know, growth or velocity?
+[00:21:18 -> 00:21:20] What we try to do is not anchor on usage.
+[00:21:20 -> 00:21:23] we try to anchor on the downstream metrics.
+[00:21:24 -> 00:21:27] So we have a pretty rigorous way of looking at,
+[00:21:27 -> 00:21:29] okay, for software engineers,
+[00:21:29 -> 00:21:32] do we see PR throughput increasing?
+[00:21:34 -> 00:21:37] Because that shows that the output is increasing,
+[00:21:37 -> 00:21:39] which is a good sign that they're producing more.
+[00:21:39 -> 00:21:42] But it's not a sign that they're producing more useful
+[00:21:42 -> 00:21:42] stuff.
+[00:21:42 -> 00:21:43] It's just they're producing more.
+[00:21:44 -> 00:21:47] And then I think we look at actual roadmaps.
+[00:21:47 -> 00:21:50] The best indicator that you're using AI well
+[00:21:50 -> 00:21:53] is your roadmap is shifting to the right and compressing.
+[00:21:54 -> 00:21:55] And so like we track that
+[00:21:55 -> 00:21:57] and I think we actually shared stats around it.
+[00:21:57 -> 00:21:59] There are so many confounding factors
+[00:21:59 -> 00:22:01] in everything you're saying though.
+[00:22:01 -> 00:22:02] It is, 100%.
+[00:22:02 -> 00:22:06] Like PR granularity, roadmap distance, like.
+[00:22:06 -> 00:22:08] Yeah, oh yeah, totally, totally.
+[00:22:09 -> 00:22:10] But I think what we feel like,
+[00:22:10 -> 00:22:14] what matters is that we feel that we're able to do more
+[00:22:14 -> 00:22:16] in shorter amounts of time.
+[00:22:16 -> 00:22:18] And I think that has been true.
+[00:22:19 -> 00:22:23] But to your point, there is no perfect metric on whether
+[00:22:23 -> 00:22:26] your AI use is resulting in business impact.
+[00:22:26 -> 00:22:29] But there is like trend lines that you can look at that
+[00:22:29 -> 00:22:32] like, again, the confounding factors almost don't matter.
+[00:22:32 -> 00:22:36] If you're able to shift more faster, AI has contributed.
+[00:22:36 -> 00:22:40] I also think, by the way, we underestimate how much there's
+[00:22:40 -> 00:22:41] been a shift in how we work.
+[00:22:41 -> 00:22:43] It's not just about, oh, yeah, I'm using lots of tokens.
+[00:22:44 -> 00:22:47] But like now, you know, when you think about product
+[00:22:47 -> 00:22:48] development,
+[00:22:48 -> 00:22:51] the old days used to be like, you have like an MLE,
+[00:22:52 -> 00:22:54] and the MLE would work with a product engineer,
+[00:22:54 -> 00:22:55] who would then work with a designer,
+[00:22:55 -> 00:22:58] who would then work with a product manager,
+[00:22:59 -> 00:23:00] and then the legal, and then the policy.
+[00:23:01 -> 00:23:04] And, you know, each one's producing like a different
+[00:23:04 -> 00:23:04] artifact
+[00:23:04 -> 00:23:08] that needs to be cascaded across each other.
+[00:23:08 -> 00:23:11] But now you can just jump straight to the prototype.
+[00:23:11 -> 00:23:13] Everyone's just like right in code,
+[00:23:13 -> 00:23:15] including the designers, including the PMs,
+[00:23:15 -> 00:23:16] including policy, including legal,
+[00:23:17 -> 00:23:18] like everybody could just jump in
+[00:23:18 -> 00:23:20] to better understand what is the implementation
+[00:23:20 -> 00:23:23] versus trying to pre-negotiate
+[00:23:23 -> 00:23:25] what might be at the end.
+[00:23:25 -> 00:23:28] And then like slowly kind of going through that.
+[00:23:28 -> 00:23:30] Every time I hear you say the roadmap pull in,
+[00:23:30 -> 00:23:33] like I feel like the roadmap should be expanding
+[00:23:33 -> 00:23:34] because you can be bolder
+[00:23:34 -> 00:23:37] and think bigger about what you want to build.
+[00:23:38 -> 00:23:40] And if it's pulling in.
+[00:23:40 -> 00:23:42] That is true of companies
+[00:23:42 -> 00:23:45] that don't have more things to do than people.
+[00:23:46 -> 00:23:50] got it so your roadmap is so deep
+[00:23:50 -> 00:23:56] like the most i can do is pull it in and try to get it done
+[00:23:56 -> 00:24:00] so um there's a lot to do there's a
+[00:24:00 -> 00:24:03] lot to do um and so we feel we you're you're right i mean
+[00:24:03 -> 00:24:06] there's two ways to look at it are we doing
+[00:24:06 -> 00:24:09] more or are we like pulling things in i think we have a
+[00:24:09 -> 00:24:11] large ambition i mean airbnb wants to
+[00:24:11 -> 00:24:14] reinvent itself our roadmap is like pretty insane we're
+[00:24:14 -> 00:24:17] trying to move from you know a core marketplace
+[00:24:17 -> 00:24:21] of stays to like, you know, everything that you can do in
+[00:24:21 -> 00:24:24] the physical world is now on our platform
+[00:24:24 -> 00:24:29] to kind of reinventing the entire tech stack and the like
+[00:24:29 -> 00:24:32] platform to support all of that,
+[00:24:32 -> 00:24:34] but also to become more AI native. And also there are
+[00:24:34 -> 00:24:36] things that we will introduce hopefully
+[00:24:36 -> 00:24:41] soon that kind of almost shape what the company can become.
+[00:24:41 -> 00:24:43] So I don't know how much more ambitious
+[00:24:43 -> 00:24:45] we could possibly be than that.
+[00:24:46 -> 00:24:49] So yeah, for us, it's really like
+[00:24:49 -> 00:24:50] we got so much to do.
+[00:24:50 -> 00:24:51] Can we do it faster?
+[00:24:51 -> 00:24:52] Can we do it faster?
+[00:24:52 -> 00:24:54] And that's like our main energy.
+[00:24:54 -> 00:24:56] But yeah, I mean, some companies
+[00:24:56 -> 00:24:58] should be asking themselves questions
+[00:24:58 -> 00:25:00] of like, are we ambitious enough
+[00:25:00 -> 00:25:01] in the age of AI?
+[00:25:02 -> 00:25:04] So we've talked quite a bit about AI
+[00:25:04 -> 00:25:06] for your engineers
+[00:25:06 -> 00:25:08] and then helping them be more productive.
+[00:25:08 -> 00:25:11] Certainly there's a lot more detail
+[00:25:11 -> 00:25:12] we can dig into there.
+[00:25:12 -> 00:25:15] But I'd also like to hear about some of the other ways you
+[00:25:15 -> 00:25:19] mentioned that you're applying agents in particular to the
+[00:25:19 -> 00:25:22] marketplace and the guest host experience.
+[00:25:22 -> 00:25:25] Like what comes to mind in those domains in terms of
+[00:25:25 -> 00:25:29] concrete things that you've been able to achieve with
+[00:25:29 -> 00:25:29] agents?
+[00:25:30 -> 00:25:33] Most people see like the guest side of Airbnb.
+[00:25:33 -> 00:25:37] It's kind of like my best description of it is like an
+[00:25:37 -> 00:25:40] iceberg where at the top you see like the booking engine
+[00:25:40 -> 00:25:44] and the UI that most people use, which is the guest
+[00:25:44 -> 00:25:45] experience.
+[00:25:45 -> 00:25:49] But then underneath that surface is an incredibly complex
+[00:25:49 -> 00:25:53] like two-sided marketplace where like the main thing that
+[00:25:53 -> 00:25:57] we trade in is trust and payments and quality.
+[00:25:58 -> 00:26:00] And there's just like this very complicated operational
+[00:26:00 -> 00:26:01] problem.
+[00:26:01 -> 00:26:03] Customer support, insurance.
+[00:26:04 -> 00:26:06] There's a lot that goes behind supply and demand.
+[00:26:07 -> 00:26:09] You know, there's like a whole host side.
+[00:26:09 -> 00:26:13] There are millions of hosts that we have to support.
+[00:26:13 -> 00:26:16] And we have to like, they're almost, you know, they're a
+[00:26:16 -> 00:26:17] core part of our ecosystem.
+[00:26:18 -> 00:26:20] And so, you know, we build a whole bunch of stuff for them.
+[00:26:20 -> 00:26:25] So there's a whole very, very complicated like stack that
+[00:26:25 -> 00:26:27] lives below what most people see.
+[00:26:28 -> 00:26:31] And so, you know, when we think about AI deployment, a lot
+[00:26:31 -> 00:26:33] of what we've been able to do,
+[00:26:33 -> 00:26:35] even in an offline fashion,
+[00:26:35 -> 00:26:39] is help support the core tenets of what Airbnb is,
+[00:26:39 -> 00:26:40] which is a trusted marketplace.
+[00:26:41 -> 00:26:43] And so examples, payments,
+[00:26:46 -> 00:26:53] can we use AI agents to help identify payment disputes
+[00:26:53 -> 00:26:55] or fraud?
+[00:26:55 -> 00:27:00] Or can we use AI agents to support
+[00:27:00 -> 00:27:04] better guest host experiences?
+[00:27:05 -> 00:27:08] Can we detect quality issues, bad on-trip experiences?
+[00:27:08 -> 00:27:10] And these are like, can be done at scale
+[00:27:10 -> 00:27:12] in an offline fashion to help the platform
+[00:27:12 -> 00:27:15] improve its service, but it's kind of like
+[00:27:15 -> 00:27:18] behind the scenes can run large scale,
+[00:27:18 -> 00:27:21] you know, in a large scale fashion
+[00:27:21 -> 00:27:23] without actually getting in front of the user
+[00:27:23 -> 00:27:26] and trying to render anything to them.
+[00:27:26 -> 00:27:28] And then for customer support, I mean,
+[00:27:29 -> 00:27:31] it is a massive operational challenge, right?
+[00:27:31 -> 00:27:33] We have to bring people, we have to train them,
+[00:27:34 -> 00:27:36] We have to develop some level of consistency.
+[00:27:37 -> 00:27:39] And so most people can easily say,
+[00:27:39 -> 00:27:41] well, customer support can be an AI problem.
+[00:27:41 -> 00:27:44] But actually, we don't see it that way.
+[00:27:44 -> 00:27:46] We see it as how can it be a quality improvement?
+[00:27:47 -> 00:27:49] And so we do want to make sure that AI is actually,
+[00:27:50 -> 00:27:53] if you have a very simple task,
+[00:27:53 -> 00:27:57] I don't want to call, wait for 45 minutes just to ask,
+[00:27:57 -> 00:27:58] can I move my reservation?
+[00:27:58 -> 00:27:59] I just want the answer.
+[00:28:00 -> 00:28:05] So AI has a really powerful place to solve for that.
+[00:28:05 -> 00:28:08] And actually, I would argue there's a whole bunch of
+[00:28:08 -> 00:28:10] reasons for why that's probably one of the hardest problems
+[00:28:10 -> 00:28:10] .
+[00:28:10 -> 00:28:14] It is actually a frontier in a really interesting way to
+[00:28:14 -> 00:28:17] basically build for a two-sided marketplace customer
+[00:28:17 -> 00:28:18] support problem.
+[00:28:18 -> 00:28:19] Because we don't own the product.
+[00:28:20 -> 00:28:23] If you are unhappy with something, it tends to be a med
+[00:28:23 -> 00:28:27] iation versus like you dealing with a company.
+[00:28:27 -> 00:28:29] You're actually dealing with another person through a
+[00:28:29 -> 00:28:30] company.
+[00:28:31 -> 00:28:34] And like two-sided mediation is literally having, you know,
+[00:28:34 -> 00:28:37] a person in between and two very unhappy people.
+[00:28:37 -> 00:28:40] And you're trying to get to a very happy outcome, which
+[00:28:40 -> 00:28:44] ends up being like a very complicated problem to deal with.
+[00:28:44 -> 00:28:47] And so, you know, that turns out to be one of the hardest
+[00:28:47 -> 00:28:50] problems that we're working on that is AI related.
+[00:28:51 -> 00:28:54] What makes it so hard besides the kind of the broader
+[00:28:54 -> 00:28:58] context that you outlined of like a lack of control?
+[00:28:59 -> 00:29:00] Like, do you think of it as fundamentally like an
+[00:29:00 -> 00:29:03] experience or user interface type of problem?
+[00:29:03 -> 00:29:06] Is it like a game theoretical kind of algorithmic thing?
+[00:29:06 -> 00:29:07] Is it something altogether?
+[00:29:07 -> 00:29:10] Like, what makes it so gnarly?
+[00:29:10 -> 00:29:11] It's all the above.
+[00:29:11 -> 00:29:12] It's very adversarial.
+[00:29:12 -> 00:29:14] It can be very adversarial, right?
+[00:29:14 -> 00:29:18] So you have like two parties with almost like a bounty that
+[00:29:18 -> 00:29:20] they're optimizing for, right?
+[00:29:20 -> 00:29:22] It's an outcome they're optimizing for.
+[00:29:23 -> 00:29:28] You have like a difficult evidentiary track record.
+[00:29:28 -> 00:29:31] So you can ask each entity to produce its evidence or
+[00:29:31 -> 00:29:32] artifacts,
+[00:29:33 -> 00:29:36] but you can't really verify the accuracy of them.
+[00:29:36 -> 00:29:38] Like I can easily take a picture of a table,
+[00:29:39 -> 00:29:41] work with AI to like modify the table and say,
+[00:29:41 -> 00:29:43] well, I came to this place and look at the table.
+[00:29:43 -> 00:29:44] It's missing a leg.
+[00:29:45 -> 00:29:46] But is it missing a leg?
+[00:29:46 -> 00:29:47] Is it not missing a leg?
+[00:29:47 -> 00:29:48] I can't go inspect it physically.
+[00:29:49 -> 00:29:51] So it turns out to be like a really hard adversarial
+[00:29:51 -> 00:29:52] problem.
+[00:29:52 -> 00:29:53] Did you saw that leg off?
+[00:29:54 -> 00:29:57] Yeah, exactly.
+[00:29:58 -> 00:30:01] And so, you know, it's a really, if you think about it from
+[00:30:01 -> 00:30:03] like a machine learning perspective, you have an AI agent
+[00:30:03 -> 00:30:06] and you have these two parties that you're trying to
+[00:30:06 -> 00:30:09] resolve, but you also have your own policies, right?
+[00:30:09 -> 00:30:12] So if you, if you're, you know, if the company, if you, if
+[00:30:12 -> 00:30:15] you bought a, a stay or experience and it had a policy of
+[00:30:15 -> 00:30:18] like non-refundable and you're trying to find a reason to
+[00:30:18 -> 00:30:21] refund it, like you also have to stick to the rules that
+[00:30:21 -> 00:30:23] everybody plays on the marketplace.
+[00:30:23 -> 00:30:27] Like it's, it has to be a fair, equitable relationship that
+[00:30:27 -> 00:30:29] you have with the company.
+[00:30:29 -> 00:30:30] so we can't take sides.
+[00:30:30 -> 00:30:33] We have to be very deliberate to applying our policy.
+[00:30:34 -> 00:30:37] And you have two adversarial entities
+[00:30:37 -> 00:30:38] that you're trying to move forward.
+[00:30:39 -> 00:30:41] And so it is actually a very complicated,
+[00:30:42 -> 00:30:43] how do you solve it?
+[00:30:43 -> 00:30:44] It's a frontier problem.
+[00:30:44 -> 00:30:46] The models today can't really do a great job
+[00:30:46 -> 00:30:50] of mediating between me and you.
+[00:30:50 -> 00:30:52] And then if I'm Airbnb,
+[00:30:52 -> 00:30:54] and then Airbnb and the host,
+[00:30:54 -> 00:30:55] and let's say you're the guest,
+[00:30:55 -> 00:31:00] it is quite a complex multi-party mediation problem.
+[00:31:00 -> 00:31:01] People talk about multiplayer,
+[00:31:02 -> 00:31:04] you know, we're all putting agents inside of group chats
+[00:31:04 -> 00:31:07] and it barely works. Now imagine if you and
+[00:31:07 -> 00:31:10] I had to, had a, like a financial dispute and we stick on,
+[00:31:10 -> 00:31:12] stick an AI agent between our chat,
+[00:31:12 -> 00:31:15] like is the AI agent going to really resolve it or is it
+[00:31:15 -> 00:31:19] going to like not? And we, and it's a
+[00:31:19 -> 00:31:23] physical interaction. You cannot observe it. Right. Right.
+[00:31:23 -> 00:31:26] And so, you know, you're not saying
+[00:31:26 -> 00:31:29] that you're not using agents there. You're saying you're
+[00:31:29 -> 00:31:31] using agents or at least thinking about
+[00:31:31 -> 00:31:34] using agents and it's hard.
+[00:31:34 -> 00:31:36] Like, how are you approaching it?
+[00:31:36 -> 00:31:37] We're in like research and development
+[00:31:37 -> 00:31:40] to deal with the hardest use cases
+[00:31:40 -> 00:31:41] that I'm referring to.
+[00:31:41 -> 00:31:43] But we still apply a lot of human judgment
+[00:31:43 -> 00:31:45] to those use cases
+[00:31:45 -> 00:31:47] where we can train humans
+[00:31:47 -> 00:31:49] to have the human touch,
+[00:31:49 -> 00:31:50] to have the interaction,
+[00:31:50 -> 00:31:53] to like really like make sure we get,
+[00:31:53 -> 00:31:55] again, Airbnb is all about like making sure
+[00:31:55 -> 00:31:57] that we give the best quality experience
+[00:31:57 -> 00:31:58] that we possibly can.
+[00:31:58 -> 00:32:00] So we don't feel like it's ready
+[00:32:00 -> 00:32:01] for the hardest use cases.
+[00:32:01 -> 00:32:03] there is a large tail of use cases
+[00:32:03 -> 00:32:04] where it is incredibly useful.
+[00:32:05 -> 00:32:06] So we've already deployed, you know,
+[00:32:06 -> 00:32:09] AI agents into production for customer support.
+[00:32:09 -> 00:32:15] And, you know, we resolve about 50%
+[00:32:15 -> 00:32:18] of all chats with AI.
+[00:32:19 -> 00:32:21] So our agentic solution is already resolving a lot.
+[00:32:21 -> 00:32:23] 50% of support chats in particular?
+[00:32:24 -> 00:32:25] Yes, yes, all tickets.
+[00:32:26 -> 00:32:28] Is the user, guest or host,
+[00:32:28 -> 00:32:30] interacting directly with an agent?
+[00:32:30 -> 00:32:32] Or are they interacting with someone
+[00:32:32 -> 00:32:33] that appears to be a person,
+[00:32:33 -> 00:32:35] but that person is really an agent
+[00:32:35 -> 00:32:36] or supported by an agent?
+[00:32:36 -> 00:32:39] We have a philosophy of being very transparent.
+[00:32:40 -> 00:32:42] We're not putting an AI in front of a person
+[00:32:42 -> 00:32:43] and saying it's a person.
+[00:32:43 -> 00:32:45] We're putting an AI in front of a person
+[00:32:45 -> 00:32:46] and saying it's an AI.
+[00:32:46 -> 00:32:49] So we're pretty transparent about that.
+[00:32:50 -> 00:32:54] But the 50% is purely AI,
+[00:32:55 -> 00:32:56] excuse me, resolved tickets.
+[00:32:56 -> 00:32:57] So like we're not,
+[00:32:58 -> 00:33:01] this isn't like a human assisted AI
+[00:33:01 -> 00:33:02] and I'm talking to a human
+[00:33:02 -> 00:33:04] and the AI is assisting the human to close a ticket.
+[00:33:04 -> 00:33:08] This is 50% AI to human resolution rate.
+[00:33:08 -> 00:33:10] And it's a hill climbing problem, right?
+[00:33:10 -> 00:33:12] So there's a set,
+[00:33:12 -> 00:33:14] like informational queries turn out to be really easy.
+[00:33:14 -> 00:33:15] That's not the full 50%.
+[00:33:15 -> 00:33:17] Those are pretty easy.
+[00:33:17 -> 00:33:19] And actually it's way more convenient.
+[00:33:19 -> 00:33:21] Like if I'm calling Airbnb
+[00:33:21 -> 00:33:22] and I'm asking like an informational query,
+[00:33:23 -> 00:33:25] just give me the answer and I'll have my merry way.
+[00:33:25 -> 00:33:26] Don't put me on hold.
+[00:33:26 -> 00:33:27] I don't want to wait for a person.
+[00:33:28 -> 00:33:28] Like I just want the answer.
+[00:33:29 -> 00:33:31] And by the way, we also give like cards,
+[00:33:31 -> 00:33:33] action cards for people to resolve directly.
+[00:33:33 -> 00:33:35] So you can take action.
+[00:33:35 -> 00:33:37] It's not just information queries,
+[00:33:37 -> 00:33:38] but it's also agentic,
+[00:33:38 -> 00:33:41] which covers like, you know, a lot of use cases.
+[00:33:41 -> 00:33:44] But there's still some portion of use cases
+[00:33:44 -> 00:33:45] that are extremely hard
+[00:33:45 -> 00:33:47] that as we hill climb to the frontier,
+[00:33:48 -> 00:33:50] like that is where, you know,
+[00:33:50 -> 00:33:51] we really need to push the boundaries
+[00:33:51 -> 00:33:54] and we really need to be quite innovative to solve.
+[00:33:54 -> 00:33:55] It's interesting.
+[00:33:55 -> 00:34:00] My personal experience as a guest and host with Airbnb,
+[00:34:00 -> 00:34:04] Like, I don't feel like I've run into AI usage that has
+[00:34:04 -> 00:34:08] shifted significantly over the past, like, two, three years
+[00:34:08 -> 00:34:08] .
+[00:34:08 -> 00:34:13] Like, if I need to go to the support site, it'll, I feel
+[00:34:13 -> 00:34:14] like the flow's the same.
+[00:34:15 -> 00:34:16] Like, what stay is it about?
+[00:34:16 -> 00:34:17] You know, is it a guest issue?
+[00:34:17 -> 00:34:18] Is it a host issue?
+[00:34:18 -> 00:34:20] And it kind of walks me through that, but it's been doing
+[00:34:20 -> 00:34:21] that for a long time.
+[00:34:21 -> 00:34:25] And I've never had an agent answer or get involved in the
+[00:34:25 -> 00:34:25] chat.
+[00:34:25 -> 00:34:29] I have noticed the, in the chat, like, in chat card
+[00:34:29 -> 00:34:30] moderation.
+[00:34:30 -> 00:34:33] oh, it seems like you're trying to do like a change request
+[00:34:33 -> 00:34:33] .
+[00:34:33 -> 00:34:36] Here's the card, click the button, which is cool.
+[00:34:36 -> 00:34:39] I'm wondering like, you know,
+[00:34:39 -> 00:34:41] one says that's a really good thing.
+[00:34:41 -> 00:34:43] Like, because most of the time when I think about
+[00:34:43 -> 00:34:45] like a company forcing me to use AI for support,
+[00:34:45 -> 00:34:47] it's like not a very good experience.
+[00:34:48 -> 00:34:49] I see that as a success metric.
+[00:34:49 -> 00:34:52] The goal isn't to shove AI in front of people.
+[00:34:52 -> 00:34:54] It is to meet people where they are.
+[00:34:55 -> 00:34:58] But there is a chat customer support agent
+[00:34:58 -> 00:34:59] that you can initialize.
+[00:34:59 -> 00:35:02] if you say contact you know um customer support via chat i
+[00:35:02 -> 00:35:04] think what you're referring to is like
+[00:35:04 -> 00:35:07] our help center which again people who are using our help
+[00:35:07 -> 00:35:09] center are actually looking for a
+[00:35:09 -> 00:35:11] particular experience they're not looking to just call air
+[00:35:11 -> 00:35:13] bnb or text airbnb with a problem right
+[00:35:13 -> 00:35:17] um and so uh those workflows still exist and there's still
+[00:35:17 -> 00:35:19] a lot we should be doing with the
+[00:35:19 -> 00:35:22] help center so that's going to happen but yeah uh the
+[00:35:22 -> 00:35:24] volume of our tickets actually happen
+[00:35:24 -> 00:35:26] via chat.
+[00:35:26 -> 00:35:27] And if you do, by the way,
+[00:35:27 -> 00:35:29] if you get into a customer support chat
+[00:35:29 -> 00:35:30] and you say like,
+[00:35:30 -> 00:35:30] give me a human,
+[00:35:31 -> 00:35:33] the AI will like escalate
+[00:35:33 -> 00:35:34] and we'll route it to a human.
+[00:35:34 -> 00:35:36] So we don't force people.
+[00:35:37 -> 00:35:38] I don't know if you've ever used
+[00:35:38 -> 00:35:40] those like terrible call centers
+[00:35:40 -> 00:35:43] where like it just like traps you.
+[00:35:44 -> 00:35:47] Sorry, you have to press like zero 18 times
+[00:35:47 -> 00:35:49] before I get you to a human.
+[00:35:49 -> 00:35:50] Or maybe if you yell at me enough,
+[00:35:50 -> 00:35:51] I'll get you there.
+[00:35:51 -> 00:35:52] Like we're pretty careful
+[00:35:52 -> 00:35:53] about getting you to a human
+[00:35:53 -> 00:35:55] if that is what you prefer.
+[00:35:55 -> 00:35:58] I was just talking to someone about how difficult it is now
+[00:35:58 -> 00:36:01] because like I've been trained to say agent with like
+[00:36:01 -> 00:36:04] increasing urgency when I want to talk to a human.
+[00:36:04 -> 00:36:04] Yeah.
+[00:36:04 -> 00:36:06] But now like, what's the agent?
+[00:36:07 -> 00:36:08] Yeah, exactly.
+[00:36:08 -> 00:36:09] Exactly.
+[00:36:09 -> 00:36:09] Oh, you want an agent?
+[00:36:09 -> 00:36:11] Well, let me introduce you to this new agent.
+[00:36:11 -> 00:36:13] I was like, human, human, human.
+[00:36:13 -> 00:36:13] Human.
+[00:36:14 -> 00:36:14] Yeah.
+[00:36:15 -> 00:36:15] Yeah.
+[00:36:15 -> 00:36:18] And, you know, if you look at the call volume, like if you
+[00:36:18 -> 00:36:21] actually look at the number of people, there's people who
+[00:36:21 -> 00:36:22] have zero interest.
+[00:36:23 -> 00:36:24] And it's not an insignificant.
+[00:36:24 -> 00:36:27] We're talking about tens of percent of people who will like
+[00:36:27 -> 00:36:28] immediately look.
+[00:36:28 -> 00:36:31] That might change, you know, as we get better systems, we
+[00:36:31 -> 00:36:32] get more natural systems, as we
+[00:36:32 -> 00:36:35] get more capable systems, people might shift.
+[00:36:35 -> 00:36:38] But there is like a non-insignificant number of people that
+[00:36:38 -> 00:36:40] just have no interest in talking
+[00:36:40 -> 00:36:41] to an AI and just one human.
+[00:36:42 -> 00:36:44] Even if their ticket, even if their item is just
+[00:36:44 -> 00:36:45] informational, even whatever, they're
+[00:36:45 -> 00:36:47] just, get me to a person.
+[00:36:47 -> 00:36:50] And those are going to be the hardest ones to resolve for
+[00:36:50 -> 00:36:52] because it is really, it's
+[00:36:52 -> 00:36:53] like us, it's psychological.
+[00:36:53 -> 00:36:54] It's not capability based.
+[00:36:55 -> 00:36:59] we veered into like personal experiences with Airbnb, I
+[00:36:59 -> 00:37:01] think one of the domains where I'd be
+[00:37:01 -> 00:37:07] most excited to see interesting AI things is like in terms
+[00:37:07 -> 00:37:11] of agentic search. And I know you've
+[00:37:11 -> 00:37:15] worked a lot historically on like trying to capture user
+[00:37:15 -> 00:37:17] preferences, but it seems like I
+[00:37:17 -> 00:37:20] often have to do like the same mental filter for what I
+[00:37:20 -> 00:37:23] really care about. And it'd be great to,
+[00:37:23 -> 00:37:26] you know be able and there are also there is a lot of
+[00:37:26 -> 00:37:28] information that you have about properties
+[00:37:28 -> 00:37:32] that you don't expose via you know amenities or search
+[00:37:32 -> 00:37:34] filters or something like that it'd be
+[00:37:34 -> 00:37:37] great to be deeply embedded in the imagery it's also
+[00:37:37 -> 00:37:39] embedded in the reviews it's embedded in a
+[00:37:39 -> 00:37:42] lot of a lot of context i mean we have a part of why you
+[00:37:42 -> 00:37:45] trust uh to book book these homes is
+[00:37:45 -> 00:37:47] because we have all these additional signals that make you
+[00:37:47 -> 00:37:49] comfortable to book them right and those
+[00:37:49 -> 00:37:52] signals are just as useful to a person to absorb or an AI
+[00:37:52 -> 00:37:55] to help match to a person.
+[00:37:55 -> 00:37:58] And, you know, like search is like a, is, is such an
+[00:37:58 -> 00:38:01] important part of how people experience
+[00:38:01 -> 00:38:02] our platform.
+[00:38:03 -> 00:38:05] And we're really very deliberate.
+[00:38:05 -> 00:38:08] So we've experimented a lot with what to do here.
+[00:38:08 -> 00:38:13] And despite your personal preference, there is a, there is
+[00:38:13 -> 00:38:15] like a, there is like a broader,
+[00:38:16 -> 00:38:19] you know, like broader kind of non-consistent
+[00:38:19 -> 00:38:22] user base behavior
+[00:38:22 -> 00:38:26] that we've been trying to better understand.
+[00:38:26 -> 00:38:29] So like people don't want a blinking box
+[00:38:29 -> 00:38:31] where it's like chat.
+[00:38:32 -> 00:38:37] They just, it's like the text back and forth
+[00:38:37 -> 00:38:39] is like, it's friction.
+[00:38:39 -> 00:38:41] You know, I know where I'm going to want to stay.
+[00:38:41 -> 00:38:42] I know how many people are going.
+[00:38:42 -> 00:38:43] Give me my options.
+[00:38:43 -> 00:38:46] And I don't want to type like a 45 sentence query.
+[00:38:46 -> 00:38:48] You know, we've run tests where people are like...
+[00:38:48 -> 00:38:49] I don't want that either.
+[00:38:49 -> 00:38:49] I agree.
+[00:38:50 -> 00:38:50] Yeah.
+[00:38:50 -> 00:38:50] Yeah.
+[00:38:50 -> 00:38:52] So we've,
+[00:38:52 -> 00:38:52] so,
+[00:38:52 -> 00:38:53] so something we've,
+[00:38:53 -> 00:38:54] we've like,
+[00:38:54 -> 00:38:54] we're recently,
+[00:38:55 -> 00:38:57] I think it just announced it or like we're,
+[00:38:57 -> 00:38:58] we're testing,
+[00:38:58 -> 00:38:59] but we're testing a lot of variants.
+[00:38:59 -> 00:39:01] But one of the things that we're testing is like just a
+[00:39:01 -> 00:39:02] natural language box
+[00:39:02 -> 00:39:04] where you can just type where you're going,
+[00:39:04 -> 00:39:06] where you're going with and like why you're going,
+[00:39:06 -> 00:39:08] what you're looking for and we should be able to return the
+[00:39:08 -> 00:39:09] results.
+[00:39:09 -> 00:39:10] But it's still very multimodal.
+[00:39:10 -> 00:39:11] You still have a lot of options.
+[00:39:12 -> 00:39:12] You're still in control.
+[00:39:13 -> 00:39:15] I'm not getting an AI to go pick the one property and sorry
+[00:39:15 -> 00:39:16] ,
+[00:39:16 -> 00:39:17] that's like the one or the two or three.
+[00:39:18 -> 00:39:20] I'm still giving you the ability to sort of transpose and
+[00:39:20 -> 00:39:22] like look at different cuts.
+[00:39:22 -> 00:39:25] One of the things you see in how people operate these
+[00:39:25 -> 00:39:27] platforms is they don't,
+[00:39:27 -> 00:39:30] you don't, it's not like a straight line to a booking
+[00:39:30 -> 00:39:31] actually.
+[00:39:31 -> 00:39:31] Yeah.
+[00:39:31 -> 00:39:34] It takes like weeks for people to book and they like get
+[00:39:34 -> 00:39:35] inspired.
+[00:39:35 -> 00:39:38] They come, they search, they click around a lot and then
+[00:39:38 -> 00:39:40] they like don't come back
+[00:39:40 -> 00:39:43] for like three more days because I guess they go talk to
+[00:39:43 -> 00:39:44] their partner and they're like,
+[00:39:44 -> 00:39:45] hey, I don't know.
+[00:39:45 -> 00:39:47] Because these trips are like social and they're like
+[00:39:47 -> 00:39:48] multiplayer.
+[00:39:48 -> 00:39:51] So, you know, you end up like going on our platform,
+[00:39:51 -> 00:39:52] finding some stuff, maybe you heart
+[00:39:52 -> 00:39:53] some stuff and then you go back.
+[00:39:54 -> 00:39:57] You got to figure out some other things like logistics,
+[00:39:57 -> 00:39:59] timing, travel, like there's so
+[00:39:59 -> 00:40:00] much to figure out.
+[00:40:00 -> 00:40:03] And then you come back and then you click on some more and
+[00:40:03 -> 00:40:05] then you end up like, you
+[00:40:05 -> 00:40:07] know, maybe removing some hearts, adding some new ones.
+[00:40:07 -> 00:40:10] And it takes weeks before someone's like, all right, I'm
+[00:40:10 -> 00:40:13] going to spend $10,000 on a
+[00:40:13 -> 00:40:15] trip with the company.
+[00:40:15 -> 00:40:18] So you don't want AI to sort of remove that agency and
+[00:40:18 -> 00:40:20] exploration process.
+[00:40:20 -> 00:40:23] you want to enhance it. So part of what we're trying to do
+[00:40:23 -> 00:40:25] with our agentic search is like
+[00:40:25 -> 00:40:29] accommodate for that journey that people go through when
+[00:40:29 -> 00:40:30] they actually decide what they want.
+[00:40:31 -> 00:40:35] In some ways, for some trips at least, because I think one
+[00:40:35 -> 00:40:36] of the things that you're
+[00:40:36 -> 00:40:39] identifying is that, you know, even for me, not all trips
+[00:40:39 -> 00:40:42] are the same. And so for one type of trip,
+[00:40:42 -> 00:40:44] I'm just going to put in the city and find the first thing
+[00:40:44 -> 00:40:45] that meets the criteria and
+[00:40:45 -> 00:40:48] balance. And then for others, it's like this wishlist
+[00:40:48 -> 00:40:49] process and like,
+[00:40:49 -> 00:40:51] oh, hey, check these out, babe.
+[00:40:52 -> 00:40:55] You know, and weeks later, we settle on something.
+[00:40:56 -> 00:40:58] For some kind of trips, you know,
+[00:40:58 -> 00:41:02] I might not even want to interact with the Airbnb
+[00:41:02 -> 00:41:03] experience.
+[00:41:03 -> 00:41:07] I'd want Airbnb to be like an MCP server
+[00:41:07 -> 00:41:09] to a world of places I could stay
+[00:41:09 -> 00:41:14] and like have my agent sift through all of the things.
+[00:41:14 -> 00:41:19] And, you know, historically, like this has been,
+[00:41:19 -> 00:41:24] whether Airbnb exposes an API of properties, for example.
+[00:41:24 -> 00:41:27] Historically, this has been not a
+[00:41:27 -> 00:41:31] technical issue, but a political kind of business issue. Do
+[00:41:31 -> 00:41:33] we want to lose control of the customer?
+[00:41:33 -> 00:41:36] Do we want to let people scrape our information? All these
+[00:41:36 -> 00:41:39] kinds of things. But it does strike me
+[00:41:39 -> 00:41:42] that that argument is starting to disintegrate because of
+[00:41:42 -> 00:41:44] computer use. And I could still have
+[00:41:44 -> 00:41:48] my agent do it, it's just like harder and takes a lot more
+[00:41:48 -> 00:41:50] time. So why not just give me the MCP
+[00:41:50 -> 00:41:53] access? Like, how do you think about that? I come back to
+[00:41:53 -> 00:41:55] like consumer companies and their DNA and
+[00:41:55 -> 00:41:58] what they need to focus on. Like fundamentally, you need to
+[00:41:58 -> 00:42:00] focus on like what is the best user
+[00:42:00 -> 00:42:03] experience to experience our platform. And I think you kind
+[00:42:03 -> 00:42:05] of need to evaluate on a case per case
+[00:42:05 -> 00:42:08] basis and like what makes sense and what doesn't. And so I
+[00:42:08 -> 00:42:10] think that is the lens upon which we will
+[00:42:10 -> 00:42:14] make all of our decisions. I do want to, I do think though,
+[00:42:14 -> 00:42:18] that like travel is kind of a unique
+[00:42:18 -> 00:42:21] animal in a lot of ways relative to a lot of other things
+[00:42:21 -> 00:42:23] that you could be doing in the context of
+[00:42:23 -> 00:42:29] like convenience isn't key, trust is. And like a booking
+[00:42:29 -> 00:42:33] isn't just a booking. It's like you have,
+[00:42:33 -> 00:42:35] first of all, you have the inspiration question, which
+[00:42:35 -> 00:42:37] obviously, you know, AI with its world
+[00:42:37 -> 00:42:40] knowledge and its web hooks and like the fact that it can
+[00:42:40 -> 00:42:41] search the internet and aggregate all this
+[00:42:41 -> 00:42:45] it's like useful but it is not like it's not the only thing
+[00:42:45 -> 00:42:46] they use for inspiration lots of people
+[00:42:46 -> 00:42:49] get inspired by going to like instagram and watching videos
+[00:42:49 -> 00:42:50] and there's like all kinds of
+[00:42:50 -> 00:42:54] ways people get inspired about where to go yeah including
+[00:42:54 -> 00:42:56] talking to friends or events or there's
+[00:42:56 -> 00:43:00] all agents or agents oh yeah ai is definitely huge and like
+[00:43:00 -> 00:43:02] i think you know 40 or something
+[00:43:02 -> 00:43:07] like that of like humans in in the u.s use ai for uh for
+[00:43:07 -> 00:43:10] inspiration but when you come to book like
+[00:43:10 -> 00:43:15] there's the booking and then there's like going on trip and
+[00:43:15 -> 00:43:16] then there's like everything that
+[00:43:16 -> 00:43:19] happens in between and the trust that you have when you do
+[00:43:19 -> 00:43:21] book so we think that that's going
+[00:43:21 -> 00:43:24] to be something like the best user experience is going to
+[00:43:24 -> 00:43:26] be the one that you trust the most
+[00:43:26 -> 00:43:29] and it because it's such a high judgment high value
+[00:43:29 -> 00:43:32] purchase you really want to trust what
+[00:43:32 -> 00:43:35] you're booking and who you're booking with um and so that's
+[00:43:35 -> 00:43:37] kind of i think one of our our main
+[00:43:37 -> 00:43:40] strengths as a company it's a platform that you can trust
+[00:43:40 -> 00:43:42] if you you know we have a insurance we
+[00:43:42 -> 00:43:46] have like payments and a payment stack you can trust we
+[00:43:46 -> 00:43:49] have um a customer support we we will
+[00:43:49 -> 00:43:54] deal with like issues um uh versus like a random you know m
+[00:43:54 -> 00:43:57] cp server somewhere that you're like
+[00:43:57 -> 00:44:01] booking a ten thousand dollar trip with yeah so i think i
+[00:44:01 -> 00:44:03] don't think that i'd want to like i don't
+[00:44:03 -> 00:44:06] think i'd want like some agentic commerce thing where the
+[00:44:06 -> 00:44:08] agent just books to stay i think yeah
+[00:44:08 -> 00:44:12] I'd want the agent to help with screening, you know, just
+[00:44:12 -> 00:44:15] the same way your natural language text box would.
+[00:44:15 -> 00:44:18] But presumably the agent can know and store my preferences
+[00:44:18 -> 00:44:20] and kind of get through that more quickly.
+[00:44:20 -> 00:44:22] Yeah, yeah, yeah.
+[00:44:22 -> 00:44:25] And I think that's what I meant by like case by case is
+[00:44:25 -> 00:44:27] like we have a bar for what we want people to feel
+[00:44:27 -> 00:44:30] experientially when they see what we're providing.
+[00:44:31 -> 00:44:33] And again, a home, for example, is like very personal to
+[00:44:33 -> 00:44:37] you, which is why the preferences thing really matters.
+[00:44:37 -> 00:44:40] but also finding the right skew that works for you
+[00:44:40 -> 00:44:42] is like a deeply multimodal thing.
+[00:44:42 -> 00:44:45] I wouldn't want our product to be a bunch of text
+[00:44:45 -> 00:44:47] that a user picks.
+[00:44:47 -> 00:44:49] I would want them to be able to experience it
+[00:44:49 -> 00:44:50] in the right way.
+[00:44:50 -> 00:44:52] So when we feel like there's a way
+[00:44:52 -> 00:44:54] to deliver the right experience to people,
+[00:44:54 -> 00:44:55] we'll work with them.
+[00:44:55 -> 00:44:58] But I think that's kind of very important to us.
+[00:44:58 -> 00:45:02] We talked a bit about some of the tooling
+[00:45:02 -> 00:45:06] and tech stack on the engineering productivity
+[00:45:06 -> 00:45:07] side of things.
+[00:45:07 -> 00:45:12] when you are deploying agents for kind of, you know,
+[00:45:12 -> 00:45:14] marketplace, guest hosts, is that all,
+[00:45:15 -> 00:45:18] you know, what are kind of some of the platforms or tech
+[00:45:18 -> 00:45:19] stacks that you're,
+[00:45:19 -> 00:45:22] you know, using and building? What are some of the, are you
+[00:45:22 -> 00:45:24] big consumers of open source? Are you
+[00:45:24 -> 00:45:27] using commercial agent platforms? Have you built everything
+[00:45:27 -> 00:45:28] from the ground up?
+[00:45:28 -> 00:45:35] It's a mix. I mean, we, let's see, we are users of open and
+[00:45:35 -> 00:45:37] closed source models.
+[00:45:38 -> 00:45:42] We have definitely leveraged open source frameworks.
+[00:45:43 -> 00:45:46] And we've also built where we feel we need to,
+[00:45:47 -> 00:45:48] where we feel we can innovate
+[00:45:48 -> 00:45:50] and where it's actually valuable for us to build.
+[00:45:51 -> 00:45:54] So take customer support, for example.
+[00:45:54 -> 00:45:56] Some of the agent frameworks there,
+[00:45:56 -> 00:45:58] we started building before there were a lot
+[00:45:58 -> 00:46:00] of open source frameworks available.
+[00:46:00 -> 00:46:01] So it was more out of like,
+[00:46:01 -> 00:46:03] we were ahead of where the industry is
+[00:46:03 -> 00:46:06] and we built what we think we needed to build
+[00:46:06 -> 00:46:07] because there wasn't anything there.
+[00:46:08 -> 00:46:12] Arguably, we always evaluate whether the open source
+[00:46:12 -> 00:46:14] community has built something that's further ahead than
+[00:46:14 -> 00:46:15] what we have.
+[00:46:15 -> 00:46:18] If it did, we have no qualms with rebasing on the open
+[00:46:18 -> 00:46:21] source or migrating to the open source solution and then
+[00:46:21 -> 00:46:23] contributing, actually, to open source.
+[00:46:25 -> 00:46:27] So my stance on open source is well-known.
+[00:46:27 -> 00:46:31] I am a big proponent to basically build in the open where
+[00:46:31 -> 00:46:31] we can.
+[00:46:31 -> 00:46:38] And then on the model side, we're an experiential company.
+[00:46:39 -> 00:46:42] There's a strong Pareto that we've been really focused on,
+[00:46:42 -> 00:46:44] which is the speed of our interactions.
+[00:46:44 -> 00:46:46] We don't want people to,
+[00:46:46 -> 00:46:48] we have like very, very tight latency requirements.
+[00:46:48 -> 00:46:52] And given our scale, like for certain use cases,
+[00:46:52 -> 00:46:55] it makes no sense to use large models
+[00:46:55 -> 00:46:57] for very specialized tasks.
+[00:46:57 -> 00:46:58] And for that, you know,
+[00:46:58 -> 00:47:00] we have our own post-training infrastructure
+[00:47:00 -> 00:47:04] that we, or our own like RL environments, et cetera,
+[00:47:04 -> 00:47:07] so that we can like take more efficient,
+[00:47:07 -> 00:47:11] smaller, faster models that could really kind of beat the
+[00:47:11 -> 00:47:14] frontier at the narrow benchmark that we
+[00:47:14 -> 00:47:17] care about, right? So like if you have use cases where, you
+[00:47:17 -> 00:47:19] know, you have a narrow thing you're
+[00:47:19 -> 00:47:22] trying to do, you're dealing with like customer support and
+[00:47:22 -> 00:47:24] adherence to a policy, I don't have
+[00:47:24 -> 00:47:28] to worry about regression on mathematics or regression on
+[00:47:28 -> 00:47:29] some other domain that I don't
+[00:47:29 -> 00:47:32] care about, then you can actually post train a model to be
+[00:47:32 -> 00:47:33] really good at it. I would actually
+[00:47:33 -> 00:47:36] say that's that was why my hot take was like the models are
+[00:47:36 -> 00:47:38] good enough for a lot of consumer
+[00:47:38 -> 00:47:41] experiences because right now we're kind of focused on the
+[00:47:41 -> 00:47:42] jagged edge of like i have now
+[00:47:42 -> 00:47:48] solved uh a millennium enterprise problem versus can i do
+[00:47:48 -> 00:47:52] reliable computer use on a on a travel
+[00:47:52 -> 00:47:56] website or whatever like that feels less you know you need
+[00:47:56 -> 00:47:59] a 10 trillion parameter model to to
+[00:47:59 -> 00:48:03] achieve right um and actually that applies at very like
+[00:48:03 -> 00:48:06] like various scales and so the more
+[00:48:06 -> 00:48:09] you're able to if you have narrow use cases which which we
+[00:48:09 -> 00:48:11] have examples of like our search is a
+[00:48:11 -> 00:48:14] good example um where we take like the smallest model
+[00:48:14 -> 00:48:16] possible because our qps is so high that we
+[00:48:16 -> 00:48:20] like really post train and specialize and distill that
+[00:48:20 -> 00:48:22] model to be really good at what it needs to
+[00:48:22 -> 00:48:24] be good at doing i mean we're already starting to see a lot
+[00:48:24 -> 00:48:26] of people train different types of
+[00:48:26 -> 00:48:28] models that are just like focused on very narrow things
+[00:48:28 -> 00:48:30] like the jeb example is a good one where
+[00:48:30 -> 00:48:33] yeah where people basically like trained a model for
+[00:48:33 -> 00:48:35] decision making which is awesome but it's like
+[00:48:35 -> 00:48:37] a very simple model that focuses
+[00:48:37 -> 00:48:39] on something really, really high leverage
+[00:48:39 -> 00:48:41] for a lot of places. And so we've learned that
+[00:48:41 -> 00:48:43] and that's why we have our own investments in post-training
+[00:48:43 -> 00:48:45] open models.
+[00:48:46 -> 00:48:47] And do you have a favorite
+[00:48:47 -> 00:48:50] small model
+[00:48:50 -> 00:48:51] that's kind of a go-to?
+[00:48:52 -> 00:48:53] There's a lot of good ones. There's like
+[00:48:53 -> 00:48:55] Nematron from NVIDIA.
+[00:48:55 -> 00:48:56] There's a bunch.
+[00:48:56 -> 00:48:59] There's a bunch that we look at.
+[00:49:00 -> 00:49:02] We're pretty open. We evaluate everything.
+[00:49:02 -> 00:49:05] I'm imagining same as the case
+[00:49:05 -> 00:49:06] for the larger open weights models.
+[00:49:06 -> 00:49:09] you just kind of have a stable that you, you know,
+[00:49:09 -> 00:49:11] eval everything against and you choose the one
+[00:49:11 -> 00:49:12] that makes the most sense at the time.
+[00:49:13 -> 00:49:14] Yeah, that's right. That's right.
+[00:49:14 -> 00:49:17] Any thoughts on kind of where you see this all going at
+[00:49:17 -> 00:49:18] Airbnb?
+[00:49:18 -> 00:49:22] Like, what are maybe some of the big challenges ahead for
+[00:49:22 -> 00:49:22] you
+[00:49:22 -> 00:49:25] and how do you think AI will help you solve them?
+[00:49:26 -> 00:49:28] Of the three things we're doing, you know,
+[00:49:28 -> 00:49:31] I think we did a good job sort of reshaping the company
+[00:49:31 -> 00:49:31] to be AI native.
+[00:49:32 -> 00:49:35] I mean, like Brian Down, everybody's using AI.
+[00:49:35 -> 00:49:39] Brian famously, I think, just shared at a conference that
+[00:49:39 -> 00:49:41] he has a second brain that
+[00:49:41 -> 00:49:44] helps him run the company where it's been trained on.
+[00:49:44 -> 00:49:48] He has built a context graph, which is local to his machine
+[00:49:48 -> 00:49:49] that is almost like it's been
+[00:49:49 -> 00:49:50] trained on.
+[00:49:50 -> 00:49:52] It has like every document that's ever come to him.
+[00:49:53 -> 00:49:57] It has every vision document, manifesto, email, et cetera,
+[00:49:57 -> 00:49:59] piece of communication he's ever
+[00:49:59 -> 00:49:59] written.
+[00:50:00 -> 00:50:04] And he uses that to help reason through his day, which he's
+[00:50:04 -> 00:50:04] using.
+[00:50:04 -> 00:50:07] So if the CEO and the founder is doing that,
+[00:50:07 -> 00:50:12] you can imagine the company is very, very excited about it.
+[00:50:12 -> 00:50:14] So I think we're on the right clip.
+[00:50:14 -> 00:50:15] I don't know if it's a challenge,
+[00:50:15 -> 00:50:17] but there's a lot of complexity
+[00:50:17 -> 00:50:19] that comes from a lot of AI use.
+[00:50:19 -> 00:50:22] Like Everest, is Everest going to be useful
+[00:50:22 -> 00:50:23] or is it going to become problematic?
+[00:50:24 -> 00:50:25] Are we going to corrupt it as we scale it?
+[00:50:26 -> 00:50:26] We don't know.
+[00:50:27 -> 00:50:29] Do we even have the right architecture for it?
+[00:50:29 -> 00:50:30] Are we going to have to rewrite it?
+[00:50:30 -> 00:50:32] But this is all work,
+[00:50:33 -> 00:50:35] not when you're trying to do it from zero to one,
+[00:50:35 -> 00:50:38] it's much harder than going from like where we are
+[00:50:38 -> 00:50:41] to just keep pushing to stay at the bleeding edge.
+[00:50:43 -> 00:50:44] And then I think for the marketplace,
+[00:50:44 -> 00:50:45] I also feel really comfortable.
+[00:50:45 -> 00:50:47] I think we still, we're working on it,
+[00:50:47 -> 00:50:50] but I think there's still a lot of degrees of freedom
+[00:50:50 -> 00:50:52] on how we shape the user experience
+[00:50:52 -> 00:50:55] that people have with Airbnb using AI
+[00:50:55 -> 00:50:58] while staying true to what we are as a company.
+[00:50:58 -> 00:51:00] I think that is actually, like I said,
+[00:51:00 -> 00:51:02] it's a frontier of interaction.
+[00:51:03 -> 00:51:05] And one of the things that's exciting to me
+[00:51:05 -> 00:51:06] is like travel is very complicated.
+[00:51:07 -> 00:51:10] you know, like, you know, whoever's watching this can go
+[00:51:10 -> 00:51:11] try to vibe code something.
+[00:51:11 -> 00:51:14] It looks great. Try to use it for a few days. And you
+[00:51:14 -> 00:51:16] realize like, oh my God, I can't use it. I
+[00:51:16 -> 00:51:19] want to, I want to, I don't, you know, itineraries. I want
+[00:51:19 -> 00:51:21] to be able to share with other people. I
+[00:51:21 -> 00:51:24] want to be, it turns into this like bloated mess. Um, so
+[00:51:24 -> 00:51:26] actually the interaction model and the,
+[00:51:26 -> 00:51:28] and the design of how that comes to life is actually really
+[00:51:28 -> 00:51:30] , really hard. And then, you know,
+[00:51:30 -> 00:51:34] for, for customer support and for this like multi-agent
+[00:51:34 -> 00:51:36] problem, multi, multi, uh, person
+[00:51:36 -> 00:51:39] problem? How do you deploy
+[00:51:39 -> 00:51:41] agents that can actually resolve
+[00:51:41 -> 00:51:42] things in a constructive way?
+[00:51:43 -> 00:51:46] How do we get to 100%? That sounds like a
+[00:51:46 -> 00:51:47] meaty challenge to dig into there.
+[00:51:48 -> 00:51:50] Yeah. Awesome. Well, Ahmed, thanks so much
+[00:51:50 -> 00:51:52] for jumping on and sharing a bit about
+[00:51:52 -> 00:51:54] what you're up to there. Yeah, thanks
+[00:51:54 -> 00:51:56] for having me, Sam. This was fun. Thank you.
+[00:51:56 -> 00:51:58] Thank you.

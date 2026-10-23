@@ -1451,36 +1451,78 @@ def cross_model_sampling_status(policy: dict[str, Any] | None = None) -> dict[st
                 reviewer in strong_reviewers and reviewer != generator
                 for reviewer in reviewer_models
             )
+            decision_dates = [
+                str((review.get("decision") or {}).get("evaluated_on") or "")
+            ]
+            if isinstance(history, list):
+                decision_dates.extend(
+                    str((item.get("decision") or {}).get("evaluated_on") or "")
+                    for item in history
+                    if isinstance(item, dict)
+                )
+            sampling_on = (
+                str(evidence.get("created_on") or "")
+                or min((value for value in decision_dates if value), default="")
+                or updated_on
+            )
             eligible.append(
                 {
                     "report": report_relative_path(report),
                     "updated_on": updated_on,
+                    "sampling_on": sampling_on,
                     "generator_model": generator,
                     "reviewer_models": reviewer_models,
                     "cross_model_audited": cross_model,
                 }
             )
 
-    eligible.sort(key=lambda item: (item["updated_on"], item["report"]))
+    eligible.sort(key=lambda item: (item["sampling_on"], item["report"]))
     pending = [item for item in eligible if not item["cross_model_audited"]]
+    sampling_windows: list[dict[str, Any]] = []
+    uncovered_windows: list[list[dict[str, Any]]] = []
+    if interval > 0:
+        for start in range(0, len(eligible), interval):
+            reports = eligible[start:start + interval]
+            complete = len(reports) == interval
+            covered = any(item["cross_model_audited"] for item in reports)
+            sampling_windows.append(
+                {
+                    "start": start + 1,
+                    "end": start + len(reports),
+                    "complete": complete,
+                    "covered": covered,
+                    "reports": [item["report"] for item in reports],
+                }
+            )
+            if complete and not covered:
+                uncovered_windows.append(reports)
     configured_order = list(sampling.get("reviewer_order") or [])
     normalized_order = [normalize_model(item, active) for item in configured_order]
     recommended: dict[str, Any] | None = None
-    if pending:
+    due_candidates = (
+        [item for item in uncovered_windows[0] if not item["cross_model_audited"]]
+        if uncovered_windows
+        else []
+    )
+    if due_candidates:
         def reviewer_rank(item: dict[str, Any]) -> tuple[int, str, str]:
             generator = str(item["generator_model"])
             rank = next(
                 (index for index, reviewer in enumerate(normalized_order) if reviewer != generator),
                 len(normalized_order),
             )
-            return rank, str(item["updated_on"]), str(item["report"])
+            return rank, str(item["sampling_on"]), str(item["report"])
 
-        recommended = min(pending, key=reviewer_rank)
-    recommended_reviewers = [
-        configured_order[index]
-        for index, reviewer in enumerate(normalized_order)
-        if recommended is None or reviewer != recommended["generator_model"]
-    ]
+        recommended = min(due_candidates, key=reviewer_rank)
+    recommended_reviewers = (
+        [
+            configured_order[index]
+            for index, reviewer in enumerate(normalized_order)
+            if reviewer != recommended["generator_model"]
+        ]
+        if recommended is not None
+        else []
+    )
     return {
         "schema_version": 1,
         "policy_id": active["policy_id"],
@@ -1490,9 +1532,16 @@ def cross_model_sampling_status(policy: dict[str, Any] | None = None) -> dict[st
         "eligible_reports": len(eligible),
         "cross_model_audited_reports": len(eligible) - len(pending),
         "pending_same_model_reports": len(pending),
-        "sample_due": enabled and interval > 0 and len(pending) >= interval,
+        "complete_windows": sum(1 for item in sampling_windows if item["complete"]),
+        "covered_windows": sum(
+            1 for item in sampling_windows if item["complete"] and item["covered"]
+        ),
+        "uncovered_windows": len(uncovered_windows),
+        "tail_reports": len(eligible) % interval if interval > 0 else 0,
+        "sample_due": enabled and bool(uncovered_windows),
         "recommended_report": recommended["report"] if recommended else None,
         "recommended_reviewers": recommended_reviewers,
+        "sampling_windows": sampling_windows,
         "reports": eligible,
     }
 

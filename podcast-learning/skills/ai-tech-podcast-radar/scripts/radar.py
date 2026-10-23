@@ -760,7 +760,7 @@ def parse_apple_page(text: str, source: dict[str, Any]) -> list[dict[str, Any]]:
                 "author": "",
                 "summary": summary,
                 "discovered_via": "apple_page",
-                "date_confidence": "relative" if published else "unknown",
+                "date_confidence": "apple_listing" if published else "unknown",
             }
         )
     return episodes
@@ -855,6 +855,47 @@ def load_studied_index() -> tuple[dict[str, str], dict[str, str]]:
     return urls, titles
 
 
+def match_studied_title(title: str, studied_titles: dict[str, str]) -> str | None:
+    """匹配报告标题，兼容 Apple 给旧单集追加 emoji、嘉宾与职位的情况。"""
+    fingerprint = title_fingerprint(title)
+    exact = studied_titles.get(fingerprint)
+    if exact:
+        return exact
+    matches: list[tuple[int, str]] = []
+    for studied_fingerprint, report_path in studied_titles.items():
+        shorter = min(len(fingerprint), len(studied_fingerprint))
+        if shorter < 32:
+            continue
+        if studied_fingerprint in fingerprint or fingerprint in studied_fingerprint:
+            matches.append((shorter, report_path))
+    return max(matches, default=(0, ""))[1] or None
+
+
+def canonicalize_apple_studied_date(
+    episode: dict[str, Any], studied_titles: dict[str, str]
+) -> dict[str, Any]:
+    """Apple 会把重发/重编排日期显示成“刚更新”；已有报告日期优先代表首发日。"""
+    if episode.get("discovered_via") != "apple_page":
+        return episode
+    report_path = match_studied_title(episode.get("title", ""), studied_titles)
+    if not report_path:
+        return episode
+    match = re.search(r"(?:^|/)(\d{4}-\d{2}-\d{2})_", report_path)
+    if not match:
+        return episode
+    canonical = parse_date(match.group(1))
+    listing = parse_date(episode.get("published_at"))
+    if canonical is None or listing is None or abs((listing - canonical).days) <= 1:
+        return episode
+    normalized = dict(episode)
+    normalized["apple_listing_published_at"] = episode.get("published_at")
+    normalized["published_at"] = canonical.isoformat()
+    normalized["date_confidence"] = "studied_report_filename"
+    normalized["date_note"] = "Apple 备用页显示重发/列表更新时间；首发日按已有报告文件名校正"
+    normalized["studied_report_hint"] = report_path
+    return normalized
+
+
 def classify_episode(
     source: dict[str, Any], episode: dict[str, Any], global_excludes: list[str],
     studied_urls: dict[str, str], studied_titles: dict[str, str],
@@ -914,7 +955,12 @@ def classify_episode(
     if not reasons and lanes:
         reasons.append("前沿主题")
     episode_url = normalize_url(episode.get("url", ""))
-    report_path = studied_urls.get(episode_url) or studied_titles.get(title_fingerprint(episode["title"]))
+    report_path = (
+        episode.get("studied_report_hint")
+        or studied_urls.get(episode_url)
+        or match_studied_title(episode["title"], studied_titles)
+    )
+    episode.pop("studied_report_hint", None)
     episode.update(
         {
             "source_id": source["id"],
@@ -940,6 +986,7 @@ def fetch_source(
 ) -> dict[str, Any]:
     try:
         episodes, notes, discovery, degraded = fetch_episodes(source)
+        episodes = [canonicalize_apple_studied_date(item, studied_titles) for item in episodes]
         latest = max(
             (parse_date(item.get("published_at")) for item in episodes if item.get("published_at")),
             default=None,
@@ -1155,7 +1202,14 @@ def markdown_updates(summary: dict[str, Any]) -> str:
         for item in rows:
             date = item.get("published_at", "")[:10] or "日期未解析"
             flags = "、".join(item["reasons"])
-            route = " · Apple 备用" if item.get("discovered_via") == "apple_page" else ""
+            if item.get("discovered_via") == "apple_page":
+                route = (
+                    " · Apple 备用，首发日已校正"
+                    if item.get("date_confidence") == "studied_report_filename"
+                    else " · Apple 备用，日期待核"
+                )
+            else:
+                route = ""
             studied = " · 已学习" if item.get("studied") else ""
             lines.append(
                 f"- **[{item['title']}]({item['url']})** · {item['source_name']} · "

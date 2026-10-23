@@ -1,0 +1,1897 @@
+[00:00:00 -> 00:00:03] And what really blew my mind away is when I saw the model
+[00:00:03 -> 00:00:05] make prediction, just print out the heat map of the gene
+[00:00:05 -> 00:00:06] description changes.
+[00:00:07 -> 00:00:10] Look at the actual raw data and line up the linear baseline
+[00:00:10 -> 00:00:14] prediction, the ground truth, and the XL prediction all
+[00:00:14 -> 00:00:15] together.
+[00:00:15 -> 00:00:18] It's visually very clear to see that XL prediction is much
+[00:00:18 -> 00:00:22] more similar to ground truth than the linear baseline.
+[00:00:22 -> 00:00:25] This is a wow moment I was talking about in the beginning.
+[00:00:25 -> 00:00:27] This is the first time that someone can put together not
+[00:00:27 -> 00:00:30] just one perturbs, but seven genome-wide perturbs campaigns
+[00:00:30 -> 00:00:30] together.
+[00:00:31 -> 00:00:34] Something that jumped out to us biologists right away is
+[00:00:34 -> 00:00:39] that some of the perturbations are context universal.
+[00:00:39 -> 00:00:44] Hi, I'm RJ Haneke, CTO of MiraOmics.
+[00:00:44 -> 00:00:48] This is Brandon Anderson, who builds RNA therapeutics at At
+[00:00:48 -> 00:00:48] omic AI.
+[00:00:49 -> 00:00:52] And this is the Latent Space AI for Science podcast.
+[00:00:52 -> 00:00:56] One of the themes that has run through the podcast is how
+[00:00:56 -> 00:01:01] the lab and experimentation and the real world have
+[00:01:01 -> 00:01:06] probably the biggest impact and have the most relevance to
+[00:01:06 -> 00:01:09] whether something is AI for science or something like B2B
+[00:01:09 -> 00:01:10] SaaS.
+[00:01:11 -> 00:01:15] We're really happy to have in the studio with us today Bo
+[00:01:15 -> 00:01:19] Wang and C. Chu from Zara Therapeutics.
+[00:01:20 -> 00:01:23] At Xera, they're building with a bunch of other people, a
+[00:01:23 -> 00:01:26] AI drug discovery platform.
+[00:01:26 -> 00:01:31] They're using high throughput experimentation system to
+[00:01:31 -> 00:01:33] collect very large data sets and
+[00:01:33 -> 00:01:37] then training AI models that can predict the way that your
+[00:01:37 -> 00:01:40] cells in your body will respond
+[00:01:40 -> 00:01:42] to drugs and therapeutics.
+[00:01:42 -> 00:01:44] Really happy to have you.
+[00:01:44 -> 00:01:45] Big fan of your work.
+[00:01:46 -> 00:01:49] Why don't you two introduce yourselves to the listeners?
+[00:01:50 -> 00:01:51] Hello, everyone.
+[00:01:51 -> 00:01:52] My name is Bowen.
+[00:01:52 -> 00:01:56] I'm SVP and head of biomedical AI at Zara Therapeutic.
+[00:01:56 -> 00:01:58] Joined Zara about eight months ago.
+[00:01:58 -> 00:02:01] And before that, I was associate professor at the
+[00:02:01 -> 00:02:02] University of Toronto in Canada.
+[00:02:03 -> 00:02:04] And I'm Cicciu.
+[00:02:05 -> 00:02:07] My first name is incredibly difficult to pronounce unless
+[00:02:07 -> 00:02:09] you speak Mandarin.
+[00:02:09 -> 00:02:12] So I go by Chu, as in Chewbacca or Pikachu.
+[00:02:12 -> 00:02:14] I think it's my favorite fictional character.
+[00:02:15 -> 00:02:18] I'm the SVP of AI enabled discovery at Zara.
+[00:02:18 -> 00:02:21] I joined about more than two years ago when it was still in
+[00:02:21 -> 00:02:21] stealth mode.
+[00:02:22 -> 00:02:25] And here I lead the high-throughput biology group,
+[00:02:25 -> 00:02:27] generating the kind of data that will
+[00:02:27 -> 00:02:30] feed our AI models and also think about their applications.
+[00:02:31 -> 00:02:36] Before this, I spent about a decade at the intersection of
+[00:02:36 -> 00:02:39] AI and big data and biology.
+[00:02:39 -> 00:02:42] So previously, I worked at InCitro, leading the in vitro
+[00:02:42 -> 00:02:44] discovery platform there.
+[00:02:45 -> 00:02:47] And before that, I was at Verily, which spun out of Google
+[00:02:47 -> 00:02:48] X.
+[00:02:48 -> 00:02:53] Okay, so you're at Zara, the company which is on the Pareto
+[00:02:53 -> 00:02:56] frontier of confusing names and mega rounds.
+[00:02:57 -> 00:03:02] So Zara is, I think, kind of came out of stealth like a few
+[00:03:02 -> 00:03:06] years ago and this really big org kind of out of nothing.
+[00:03:06 -> 00:03:09] So I'm curious if you can explain a little bit about what
+[00:03:09 -> 00:03:11] is Zara's mission?
+[00:03:11 -> 00:03:12] What is their thesis statement?
+[00:03:12 -> 00:03:15] Like what is special about Zara and kind of where you're
+[00:03:15 -> 00:03:17] going in the future?
+[00:03:18 -> 00:03:22] Yeah, Xero is an AI-enabled drug discovery company.
+[00:03:23 -> 00:03:27] And at the core of our mission, we're using AI platforms to
+[00:03:27 -> 00:03:30] generate better therapeutics to advance patient care.
+[00:03:30 -> 00:03:34] And so we will be making drugs using different AI
+[00:03:34 -> 00:03:35] capabilities.
+[00:03:36 -> 00:03:39] There are three main AI platforms that we're building here.
+[00:03:39 -> 00:03:43] The first one is protein design, work that spun out of our
+[00:03:43 -> 00:03:46] co-founder, Dr. David Baker's group from UW.
+[00:03:47 -> 00:03:50] A lot of the current generation of protein designers are
+[00:03:50 -> 00:03:52] here in the company.
+[00:03:52 -> 00:03:56] So there, the thinking is to use advanced AI technology to
+[00:03:56 -> 00:04:01] develop molecules against previously un-drugable targets.
+[00:04:02 -> 00:04:04] The second AI platform I guess we'll spend a lot of time
+[00:04:04 -> 00:04:07] talking about today is the one that Bill and I have been
+[00:04:07 -> 00:04:10] working on for quite some time and just released a preprint
+[00:04:10 -> 00:04:10] on.
+[00:04:10 -> 00:04:13] That's the virtual cell or foundation model of biology work
+[00:04:13 -> 00:04:13] .
+[00:04:14 -> 00:04:17] There, the hope is to build an AI model to predict biology.
+[00:04:17 -> 00:04:22] exactly like you said, and predict what genes and drug
+[00:04:22 -> 00:04:24] molecules will affect cell biology.
+[00:04:24 -> 00:04:27] And the third piece, which we're beginning to build now, is
+[00:04:27 -> 00:04:28] patient representation models.
+[00:04:28 -> 00:04:31] And the goal there is to have AI models that can understand
+[00:04:31 -> 00:04:34] which patients will respond to which therapeutics.
+[00:04:35 -> 00:04:38] So hopefully together, these platform technology will help
+[00:04:38 -> 00:04:40] us make better drugs faster
+[00:04:40 -> 00:04:43] and with a higher success rate than previous technologies
+[00:04:43 -> 00:04:46] to transform what used to be artisanal,
+[00:04:47 -> 00:04:48] trial and error in the past,
+[00:04:48 -> 00:04:51] into more and more into an engineering discipline.
+[00:04:51 -> 00:04:54] I think what sets Xero different
+[00:04:54 -> 00:04:58] is not just the 1 billion floating around,
+[00:04:59 -> 00:05:02] but also I think Xero is one of the very few
+[00:05:02 -> 00:05:05] AI-native companies for drug discovery
+[00:05:05 -> 00:05:07] that works from end to end
+[00:05:07 -> 00:05:09] of all sections of drug discovery.
+[00:05:09 -> 00:05:12] From as early as, you know,
+[00:05:12 -> 00:05:16] target ID and the protein design, small molecules, and to
+[00:05:16 -> 00:05:18] phase one, two, three clinical trials,
+[00:05:19 -> 00:05:22] we aim to use AI to accelerate every part of the drug
+[00:05:22 -> 00:05:25] discovery so that not only we increase the
+[00:05:25 -> 00:05:30] success rate of developing drugs, but also greatly reduce
+[00:05:30 -> 00:05:33] the cycle time so that we can have
+[00:05:33 -> 00:05:37] new drugs instead of every 10, 20 years. So hopefully we
+[00:05:37 -> 00:05:39] can have the cycle time so we have
+[00:05:39 -> 00:05:41] more useful drugs for patients.
+[00:05:42 -> 00:05:42] That's really interesting.
+[00:05:43 -> 00:05:45] I know there's a lot of interest right now
+[00:05:45 -> 00:05:46] in that third thing,
+[00:05:47 -> 00:05:49] maybe called translation
+[00:05:49 -> 00:05:51] from the lab to the clinic.
+[00:05:52 -> 00:05:53] Where are the bottlenecks?
+[00:05:53 -> 00:05:54] You have these three models.
+[00:05:54 -> 00:05:55] What are the bottlenecks
+[00:05:55 -> 00:05:56] that you're addressing?
+[00:05:56 -> 00:05:57] And sort of like,
+[00:05:57 -> 00:05:58] how are you doing that?
+[00:05:58 -> 00:05:59] Why are you doing it that way?
+[00:05:59 -> 00:06:02] There is an AI native company.
+[00:06:02 -> 00:06:05] Almost every part of the sections
+[00:06:05 -> 00:06:06] of drug discovery,
+[00:06:07 -> 00:06:08] we're trying to use AI
+[00:06:08 -> 00:06:11] to revolutionize how we develop drugs.
+[00:06:11 -> 00:06:15] So the early part, we build causal foundation models
+[00:06:15 -> 00:06:17] or sometimes we call it virtual cell.
+[00:06:17 -> 00:06:22] Proteins, we have state-of-the-art protein engineering
+[00:06:22 -> 00:06:22] models,
+[00:06:23 -> 00:06:26] and we have also patient representation learning models.
+[00:06:27 -> 00:06:31] And I think what Zara is trying to do is not only we
+[00:06:31 -> 00:06:32] develop AI models,
+[00:06:32 -> 00:06:36] but also we create the right data sets to empower these
+[00:06:36 -> 00:06:37] models.
+[00:06:38 -> 00:06:42] And I think what really makes me excited to work at Zara is
+[00:06:42 -> 00:06:47] we always aim to connect three AI models together instead
+[00:06:47 -> 00:06:50] of letting them work individually by their own.
+[00:06:50 -> 00:06:54] So when we design virtual cell models, we look for
+[00:06:54 -> 00:06:56] connections to that.
+[00:06:56 -> 00:07:00] Can we find targets that are easier to apply the protein
+[00:07:00 -> 00:07:01] engineering models?
+[00:07:02 -> 00:07:04] And then even when we design the cellular causal models,
+[00:07:04 -> 00:07:07] can we connect to patient representations?
+[00:07:07 -> 00:07:11] What are the right patient data to connect to the cellular
+[00:07:11 -> 00:07:15] models so that we have something to show clinical utilities
+[00:07:15 -> 00:07:15] ?
+[00:07:15 -> 00:07:20] So I think what really makes me excited is, before I joined
+[00:07:20 -> 00:07:24] Zara, I'm kind of a professor in computational biology
+[00:07:24 -> 00:07:27] department or computer science department, where we're
+[00:07:27 -> 00:07:29] mostly working on computers.
+[00:07:29 -> 00:07:32] We look at the data, look at arrays, et cetera.
+[00:07:32 -> 00:07:36] But once coming to Xera, what really excites me is that I
+[00:07:36 -> 00:07:38] get to talk to people like you,
+[00:07:38 -> 00:07:43] lots of drug hunters, extremely experienced drug hunters,
+[00:07:43 -> 00:07:45] to really understand their pinpoint.
+[00:07:45 -> 00:07:48] So when we design AI models, we think about questions that
+[00:07:48 -> 00:07:50] really excite biologists.
+[00:07:51 -> 00:07:54] So later, maybe we can talk about how one of the rewarding
+[00:07:54 -> 00:07:57] signals I receive after we develop Excel
+[00:07:57 -> 00:08:01] is that it's a wow moment from biologists that this is the
+[00:08:01 -> 00:08:02] first time biologists
+[00:08:02 -> 00:08:07] actually find the model can predict exactly how these
+[00:08:07 -> 00:08:10] unseen cell lines kind of respond to
+[00:08:10 -> 00:08:14] different perturbations. So that's kind of the part really
+[00:08:14 -> 00:08:16] excites me is the integration of
+[00:08:16 -> 00:08:20] kind of dry lab or AI models to wet lab or the biology or
+[00:08:20 -> 00:08:23] even eventually to the clinical side.
+[00:08:24 -> 00:08:27] With this clinical model, I know you guys are aiming to,
+[00:08:27 -> 00:08:30] you know, take a drug all the way to
+[00:08:30 -> 00:08:34] to FDA approval and beyond. Where do we stand now? I don't
+[00:08:34 -> 00:08:35] know if you're able to talk about this,
+[00:08:35 -> 00:08:39] but are you able to collect data from clinical trials and
+[00:08:39 -> 00:08:41] tie that back yet?
+[00:08:41 -> 00:08:44] As Beau said, I think if you think about drug discovery
+[00:08:44 -> 00:08:46] process, it's easy, right? You just
+[00:08:46 -> 00:08:49] need to find the right target, make the right molecule, and
+[00:08:49 -> 00:08:51] find the right patients to give
+[00:08:51 -> 00:08:54] them to. Of course, each of those steps are incredibly
+[00:08:54 -> 00:08:56] difficult to get right. And so far,
+[00:08:56 -> 00:08:57] like I said just now,
+[00:08:58 -> 00:09:00] it realized a lot of untrodden error in guesswork.
+[00:09:01 -> 00:09:03] And the main issue, I think,
+[00:09:03 -> 00:09:05] is that we don't have the right biological data,
+[00:09:06 -> 00:09:08] really the power, the training of a predictive model.
+[00:09:09 -> 00:09:11] And in protein design space,
+[00:09:12 -> 00:09:13] I think that's where we have seen
+[00:09:13 -> 00:09:15] the most rapid progress so far.
+[00:09:16 -> 00:09:18] That's partially because we have a lot of data,
+[00:09:18 -> 00:09:19] high quality data,
+[00:09:20 -> 00:09:22] over 70 years curated by the entire community.
+[00:09:23 -> 00:09:24] People deposit protein structures
+[00:09:24 -> 00:09:26] into a database called PDB.
+[00:09:27 -> 00:09:30] We also have a lot of sequence data collected over the
+[00:09:30 -> 00:09:33] years from different genomes that can help inform the model
+[00:09:33 -> 00:09:33] as well.
+[00:09:34 -> 00:09:38] And it's these high quality data that are collected and
+[00:09:38 -> 00:09:41] accumulated that ushered in this revolution in protein
+[00:09:41 -> 00:09:45] design and alpha fold and other folding models.
+[00:09:45 -> 00:09:49] In the other domains, such as clinical model prediction,
+[00:09:49 -> 00:09:53] such as virtual cell, we are nowhere near the same kind of
+[00:09:53 -> 00:09:55] massive data that are high quality.
+[00:09:56 -> 00:09:58] And I think it's mainly a data limitation issue.
+[00:09:59 -> 00:10:02] So to your question, that's where we're very invested in
+[00:10:02 -> 00:10:05] generating this data, particularly causal data in cell
+[00:10:05 -> 00:10:07] biology in a lab.
+[00:10:07 -> 00:10:10] And that's, I think, what made it possible to innovate on
+[00:10:10 -> 00:10:13] the algorithm side as well to usher in virtual cell models.
+[00:10:13 -> 00:10:16] On the patient side, it's a very interesting question.
+[00:10:16 -> 00:10:19] Perhaps that's one of the hardest data to get because
+[00:10:19 -> 00:10:23] getting access to high quality patient samples is difficult
+[00:10:23 -> 00:10:24] in itself.
+[00:10:25 -> 00:10:28] getting it matched to the right clinical annotation
+[00:10:28 -> 00:10:31] so that you can actually learn the difference,
+[00:10:32 -> 00:10:35] the bridge between molecular data and clinical response,
+[00:10:35 -> 00:10:36] that's even harder.
+[00:10:36 -> 00:10:40] And you might be able to do that across different disease
+[00:10:40 -> 00:10:40] severities,
+[00:10:41 -> 00:10:44] but it will be harder to collect the right data
+[00:10:44 -> 00:10:48] to predict which drug treatment will or will not respond
+[00:10:48 -> 00:10:51] in a particular patient or not.
+[00:10:51 -> 00:10:55] And so that takes a lot of thought and a lot of careful cur
+[00:10:55 -> 00:10:55] ation
+[00:10:55 -> 00:10:57] to generate data out of.
+[00:10:57 -> 00:10:59] So we're beginning to go into that area,
+[00:11:00 -> 00:11:02] but hopefully we'll be able to share more soon.
+[00:11:02 -> 00:11:02] Awesome.
+[00:11:03 -> 00:11:04] Maybe we should switch gears now.
+[00:11:04 -> 00:11:07] You just released XCell.
+[00:11:07 -> 00:11:09] Why don't you guys describe it?
+[00:11:09 -> 00:11:10] I'll butcher it.
+[00:11:10 -> 00:11:13] XCell is Xera's first virtual cell models.
+[00:11:13 -> 00:11:19] It is an AI model that can predict the response to genetic
+[00:11:19 -> 00:11:20] perturbations.
+[00:11:20 -> 00:11:23] Certainly we can extend it to other types of interventions,
+[00:11:23 -> 00:11:27] such as drug perturbations, chemical perturbations, etc.
+[00:11:27 -> 00:11:31] So can you just describe for the non-biologists that are
+[00:11:31 -> 00:11:34] listening, what is a perturbation?
+[00:11:35 -> 00:11:35] What do you mean by that?
+[00:11:36 -> 00:11:40] In our cells, when we talk about genetic perturbations, our
+[00:11:40 -> 00:11:43] human cell typically has 20,000 genes.
+[00:11:44 -> 00:11:47] Not all cells express every gene equally.
+[00:11:48 -> 00:11:51] That's why your eye cell, your skin cell, your heart cell,
+[00:11:51 -> 00:11:53] even though they share the same genome, they function very
+[00:11:53 -> 00:11:54] differently.
+[00:11:54 -> 00:11:57] A lot of that is determined by selective gene expression
+[00:11:57 -> 00:11:59] that determine the type and the
+[00:11:59 -> 00:12:01] state of the cell.
+[00:12:01 -> 00:12:07] So what we do is to build a model that you can in silico ab
+[00:12:07 -> 00:12:10] late certain genes from the
+[00:12:10 -> 00:12:13] cell that is a in silico perturbation.
+[00:12:13 -> 00:12:17] That's to say, if I reduce the expression of this gene in a
+[00:12:17 -> 00:12:20] cell, what is the implication
+[00:12:20 -> 00:12:21] for the rest of the cells?
+[00:12:21 -> 00:12:22] What's the biological consequence?
+[00:12:22 -> 00:12:25] So you basically turned the knob down on one gene.
+[00:12:25 -> 00:12:26] That's right.
+[00:12:26 -> 00:12:29] And then what happens to all the other genes in that cell?
+[00:12:29 -> 00:12:29] Correct.
+[00:12:30 -> 00:12:32] And the hope is, of course, to predict the effect on all
+[00:12:32 -> 00:12:34] the other genes, but maybe even more things than gene
+[00:12:34 -> 00:12:36] expression, such as the function of the cell.
+[00:12:37 -> 00:12:37] Okay.
+[00:12:37 -> 00:12:40] And that's important, that's therapeutically relevant,
+[00:12:40 -> 00:12:42] because a lot of drugs are inhibitors.
+[00:12:42 -> 00:12:45] And they function through exactly that, turning down the
+[00:12:45 -> 00:12:47] activity of a protein or a gene.
+[00:12:47 -> 00:12:50] And so we can start with gene perturbation prediction.
+[00:12:51 -> 00:12:53] The hope is that we can also go to pathway inhibition
+[00:12:53 -> 00:12:55] prediction, so on and so forth.
+[00:12:55 -> 00:12:59] So a pathway is just a set of genes that all kind of talk
+[00:12:59 -> 00:13:02] to each other by this gene expresses a protein.
+[00:13:02 -> 00:13:06] That protein has some impact on another gene and so forth
+[00:13:06 -> 00:13:07] and so on.
+[00:13:07 -> 00:13:11] There's this long chain reaction of genes and proteins.
+[00:13:11 -> 00:13:13] And then so that that's called a pathway.
+[00:13:13 -> 00:13:16] And so if you interrupt that or somehow change it, then
+[00:13:16 -> 00:13:21] that has an impact on the larger phenotype of the cell,
+[00:13:21 -> 00:13:22] what the cell looks like, does, etc.
+[00:13:23 -> 00:13:23] That's exactly right.
+[00:13:24 -> 00:13:24] Yeah.
+[00:13:24 -> 00:13:27] So you have what you call the virtual cell or you're
+[00:13:27 -> 00:13:32] creating a virtual cell and virtual cells are very popular.
+[00:13:32 -> 00:13:34] A lot of people are interested in this concept, but I think
+[00:13:34 -> 00:13:37] your approach is somewhat unique or separate from what
+[00:13:37 -> 00:13:38] other people are doing.
+[00:13:39 -> 00:13:43] Can you explain what do broadly people mean when they say
+[00:13:43 -> 00:13:44] virtual cells?
+[00:13:44 -> 00:13:46] What are some of the distinct other strategies?
+[00:13:46 -> 00:13:49] And then what is your specific strategy that you're going
+[00:13:49 -> 00:13:49] for?
+[00:13:49 -> 00:13:53] Certainly virtual cell is a very high level term to
+[00:13:53 -> 00:13:59] describe an AI model that is able to predict or describe
+[00:13:59 -> 00:14:03] what cell looks like or predict the cell expressions or
+[00:14:03 -> 00:14:06] cell functions after certain interventions.
+[00:14:06 -> 00:14:09] It's a very high level concept.
+[00:14:09 -> 00:14:14] And it was, first of all, it was not a novel idea.
+[00:14:14 -> 00:14:19] We had virtual cell project almost 20 years ago, but back
+[00:14:19 -> 00:14:20] then, sometimes we call it virtual
+[00:14:20 -> 00:14:26] cell 1.0, is that people are trying to derive differential
+[00:14:26 -> 00:14:29] equations to try to use mathematics
+[00:14:29 -> 00:14:32] to describe what's the response for certain pathway
+[00:14:32 -> 00:14:35] interventions, as you just mentioned,
+[00:14:35 -> 00:14:40] and by feeding these equations to different observations.
+[00:14:40 -> 00:14:44] And largely speaking, that was a failed attempt in the
+[00:14:44 -> 00:14:47] sense that the biology is just way too complicated to write
+[00:14:47 -> 00:14:50] in a few predefined set of differential equations.
+[00:14:51 -> 00:14:56] Moving forward, with the rise of language models, I think
+[00:14:56 -> 00:15:00] that the idea of using AI models to mimic how cell responds
+[00:15:00 -> 00:15:05] to different interventions by data-driven approach started
+[00:15:05 -> 00:15:06] to get popular.
+[00:15:06 -> 00:15:11] And I think three years ago, almost just four months after
+[00:15:11 -> 00:15:15] ChaiGB was released, our lab at University of Toronto
+[00:15:15 -> 00:15:18] published one of the early foundation models of single-cell
+[00:15:18 -> 00:15:20] genomics, called SCGBT.
+[00:15:21 -> 00:15:25] You can kind of interpret it as a GPT-like model for single
+[00:15:25 -> 00:15:25] cells.
+[00:15:26 -> 00:15:30] And it quickly become very popular in the sense that for
+[00:15:30 -> 00:15:32] the first time we have a foundation model that is able to
+[00:15:32 -> 00:15:36] tackle different downstream tasks using the same model,
+[00:15:36 -> 00:15:39] such as we can use the same model to integrate different
+[00:15:39 -> 00:15:41] batches of single-cell RNA-seq.
+[00:15:41 -> 00:15:44] We can use the same model to predict multi-omic integr
+[00:15:44 -> 00:15:44] ations.
+[00:15:45 -> 00:15:46] Let's define those things.
+[00:15:46 -> 00:15:50] So batches integrate different batches of RNA-seq.
+[00:15:50 -> 00:15:52] So you have different equipment.
+[00:15:53 -> 00:15:54] You're all collecting.
+[00:15:54 -> 00:15:55] Maybe you're collecting the same.
+[00:15:55 -> 00:15:56] Different labs.
+[00:15:56 -> 00:15:59] Yeah, different labs, different time of day, different
+[00:15:59 -> 00:16:01] phase of the moon, whatever.
+[00:16:01 -> 00:16:04] And those actually have a big impact on the data that you
+[00:16:04 -> 00:16:05] collect.
+[00:16:05 -> 00:16:09] And so there's a big problem of how do I even compare this
+[00:16:09 -> 00:16:12] data set to that data set when there's all these other
+[00:16:12 -> 00:16:14] differences that have nothing to do with the gene
+[00:16:14 -> 00:16:16] expression and just how I measured it.
+[00:16:17 -> 00:16:18] We call that batch effect.
+[00:16:18 -> 00:16:21] We certainly want to remove the batch effect while
+[00:16:21 -> 00:16:24] preserving the cell types, which are more important biology
+[00:16:24 -> 00:16:26] we want to reserve.
+[00:16:26 -> 00:16:29] So this is sort of like analogous to the tank problem in
+[00:16:29 -> 00:16:33] image classifiers, for example, as sort of the models pick
+[00:16:33 -> 00:16:36] up on these crazy spurious features, which have nothing to
+[00:16:36 -> 00:16:38] do with what you actually care about, the underlying
+[00:16:38 -> 00:16:38] biology.
+[00:16:38 -> 00:16:42] Exactly. Certainly the core idea of integrating different
+[00:16:42 -> 00:16:46] batches is to kind of keep the biological signals while
+[00:16:46 -> 00:16:48] removing the batch effect.
+[00:16:49 -> 00:16:53] And before these foundation models, what happens in single-
+[00:16:53 -> 00:16:56] cell domain is that for every task, biologists have to
+[00:16:56 -> 00:17:00] choose the so-called specialist state-of-the-art approaches
+[00:17:00 -> 00:17:00] .
+[00:17:01 -> 00:17:05] And with foundation models such as SGBD or gene formers,
+[00:17:05 -> 00:17:09] what we hope to bring is that one model that solves all the
+[00:17:09 -> 00:17:11] tasks in single cells.
+[00:17:12 -> 00:17:15] And with the popularity of foundation model, lots of
+[00:17:15 -> 00:17:18] researchers come together under CZI,
+[00:17:18 -> 00:17:21] Chan Zuckerberg Institute, and we published a perspective
+[00:17:21 -> 00:17:24] paper as journal cell to coin,
+[00:17:24 -> 00:17:27] for the first time, coin the term virtual cell, almost
+[00:17:27 -> 00:17:30] virtual cell 2.0, in the sense that let's
+[00:17:30 -> 00:17:33] use data-driven approaches. If we cannot describe, let's
+[00:17:33 -> 00:17:36] learn it. So that's the idea of virtual cell,
+[00:17:37 -> 00:17:41] so that GenoSpin can build a language model or language
+[00:17:41 -> 00:17:42] type of model
+[00:17:42 -> 00:17:45] to predict what the cell types look like,
+[00:17:46 -> 00:17:48] how the cell responds to different interventions,
+[00:17:49 -> 00:17:53] and eventually we can replace all the cellular experiments
+[00:17:53 -> 00:17:56] by simply running simulations on computer
+[00:17:56 -> 00:17:59] without even running the actual experiments.
+[00:17:59 -> 00:18:02] Maybe for a bit more context, you can think about this as,
+[00:18:02 -> 00:18:05] so a virtual cell is just a general concept,
+[00:18:05 -> 00:18:09] But you think cells have 20,000 genes in them.
+[00:18:10 -> 00:18:14] And in most human cells, I think roughly 4,000 to 5,000 are
+[00:18:14 -> 00:18:17] usually active at any given time or expressed at reasonable
+[00:18:17 -> 00:18:17] levels.
+[00:18:18 -> 00:18:20] So you look at a normal cell, you might have 4,000 to 5,000
+[00:18:20 -> 00:18:21] genes doing things.
+[00:18:21 -> 00:18:27] And so your question is, in many cases, the way medicine
+[00:18:27 -> 00:18:31] works is you target a protein or you target some sort of
+[00:18:31 -> 00:18:35] something which makes proteins more common or less common.
+[00:18:36 -> 00:18:39] or they stop the protein from doing something. And your
+[00:18:39 -> 00:18:42] goal is given this, you know, some number
+[00:18:42 -> 00:18:45] of genes, which are in a cell, every cell has a different
+[00:18:45 -> 00:18:48] composition of genes. What is going to
+[00:18:48 -> 00:18:52] change? You know, will some, some pathway die off or some
+[00:18:52 -> 00:18:55] pathway grow? And how does this,
+[00:18:55 -> 00:18:58] you know, from this, you could predict how medicine is
+[00:18:58 -> 00:19:00] going to work by just understanding
+[00:19:00 -> 00:19:04] how changing one specific gene or some cluster of genes
+[00:19:04 -> 00:19:06] could change everything.
+[00:19:06 -> 00:19:08] Is that a correct understanding?
+[00:19:08 -> 00:19:11] Yeah, that's a correct high-level understanding about
+[00:19:11 -> 00:19:11] virtual cell.
+[00:19:12 -> 00:19:14] What's happening for this field is that we are lacking a
+[00:19:14 -> 00:19:16] concrete definition of virtual cells.
+[00:19:17 -> 00:19:23] And people almost equate foundation model with virtual cell
+[00:19:23 -> 00:19:23] .
+[00:19:23 -> 00:19:27] But in my view, virtual cell is probably a much broader
+[00:19:27 -> 00:19:29] concept than just foundation models.
+[00:19:30 -> 00:19:34] Foundation models mostly provide a reliable, semantic,
+[00:19:34 -> 00:19:36] meaningful representation of cells.
+[00:19:36 -> 00:19:40] But I think virtual cell is more dynamic in the sense that
+[00:19:40 -> 00:19:44] can we build AI models, even predict the development of
+[00:19:44 -> 00:19:48] different cell states across different times?
+[00:19:48 -> 00:19:52] Or can we even describe the spatial changes at the cells,
+[00:19:52 -> 00:19:54] different cellular resolutions?
+[00:19:55 -> 00:19:58] In my understanding is that we are really at the early
+[00:19:58 -> 00:20:02] stage to develop such comprehensive virtual cell models.
+[00:20:03 -> 00:20:06] And the foundation model is really just the starting point.
+[00:20:06 -> 00:20:08] AI models always begin with the data.
+[00:20:09 -> 00:20:12] You are building a high throughput experiment or have built
+[00:20:12 -> 00:20:14] and are continuing to develop a high throughput
+[00:20:14 -> 00:20:16] experimentation system.
+[00:20:16 -> 00:20:20] Can you, that sounds really cool and really complicated.
+[00:20:20 -> 00:20:22] Can you tell us what that entails?
+[00:20:22 -> 00:20:23] Like, what are you doing?
+[00:20:23 -> 00:20:25] What are the experiments that you're running?
+[00:20:25 -> 00:20:30] How does that inform the building of an AI model?
+[00:20:30 -> 00:20:34] And why do this rather than pick up the CellX gene database
+[00:20:34 -> 00:20:38] , which is a collection of gene expression data that has
+[00:20:38 -> 00:20:40] been aggregated over the public data sets?
+[00:20:41 -> 00:20:41] Yeah, great question.
+[00:20:42 -> 00:20:44] I want to pick up where Bill left off.
+[00:20:44 -> 00:20:47] I think Bill said something pretty profound, going from a
+[00:20:47 -> 00:20:50] representation model, the foundation model of biology, to a
+[00:20:50 -> 00:20:51] virtual cell.
+[00:20:51 -> 00:20:55] And the key difference there is perturbation prediction or
+[00:20:55 -> 00:20:58] dynamic processes in biology.
+[00:20:58 -> 00:21:01] That's a causal concept.
+[00:21:01 -> 00:21:03] For that, I think we need causal data.
+[00:21:05 -> 00:21:09] And if you look at cell by gene, that's a fantastic data
+[00:21:09 -> 00:21:12] set that curated, in the beginning, more than 33 million
+[00:21:12 -> 00:21:14] cells, now a lot more than that.
+[00:21:14 -> 00:21:20] And at the time when SGPT was trained on that data set
+[00:21:20 -> 00:21:24] coming out of Bose Lab in Toronto, that was mostly an
+[00:21:24 -> 00:21:26] observational profiling data set.
+[00:21:26 -> 00:21:31] It's descriptive data, not causal, and mostly profiling
+[00:21:31 -> 00:21:32] healthy human donors.
+[00:21:32 -> 00:21:37] And so the model that was trained on this data set is very,
+[00:21:37 -> 00:21:40] very good at doing descriptive tasks, such as harmonizing
+[00:21:40 -> 00:21:44] across batch effects, removing effects from different labs,
+[00:21:44 -> 00:21:46] different technologies.
+[00:21:46 -> 00:21:49] But I think both us and many others in the field have found
+[00:21:49 -> 00:21:53] that these models that are trained on descriptive data do
+[00:21:53 -> 00:21:56] not yet outperform linear models on causal tasks, perturb
+[00:21:56 -> 00:21:59] ational tasks, what we call counterfactual tasks.
+[00:22:00 -> 00:22:03] If I did this to the cell, then what would happen?
+[00:22:03 -> 00:22:07] That makes intuitive sense to a biologist because the
+[00:22:07 -> 00:22:11] correlation data in the descriptive data set can be fit
+[00:22:11 -> 00:22:14] with many, many possible causal structures.
+[00:22:14 -> 00:22:18] In a very simplistic case, let's say you observe gene A, B,
+[00:22:18 -> 00:22:22] C all go up and down together in your descriptive data set.
+[00:22:23 -> 00:22:26] You can infer that A regulate B and C.
+[00:22:26 -> 00:22:28] That's why when A goes up, B and C also go up.
+[00:22:29 -> 00:22:31] You might also say that B regulate A and C, and that will
+[00:22:31 -> 00:22:33] be perfectly reasonable as well.
+[00:22:33 -> 00:22:37] You could also say that A regulates B and C is completely
+[00:22:37 -> 00:22:38] regulated by something different.
+[00:22:39 -> 00:22:40] You see the problem there.
+[00:22:40 -> 00:22:42] And there's n number of ways to fit a causal regulatory
+[00:22:42 -> 00:22:44] network into this group of data.
+[00:22:44 -> 00:22:47] Fundamentally, we believe ultra-original data are under
+[00:22:47 -> 00:22:49] powered to learn causality truly.
+[00:22:50 -> 00:22:54] And this is why we realized pretty early on that we need to
+[00:22:54 -> 00:22:57] really start building causal data set to train a causal
+[00:22:57 -> 00:22:58] model.
+[00:22:58 -> 00:23:00] So what are the ways to do that?
+[00:23:00 -> 00:23:06] I think the field has come of age to do these at scale
+[00:23:06 -> 00:23:08] techniques that we call high-throughput biology.
+[00:23:09 -> 00:23:11] And there are many ways to generate these causal data at
+[00:23:11 -> 00:23:12] scale.
+[00:23:12 -> 00:23:14] The technique that we have focused on is something called
+[00:23:14 -> 00:23:15] perturb-seq.
+[00:23:15 -> 00:23:18] So for the listeners who are not familiar with that
+[00:23:18 -> 00:23:22] technology, it combines high-throughput pooled CRISPR
+[00:23:22 -> 00:23:26] perturbation together with single-cell RNA-seq technology
+[00:23:26 -> 00:23:27] to build 2D datasets.
+[00:23:27 -> 00:23:28] Let me break that down.
+[00:23:28 -> 00:23:29] Please.
+[00:23:31 -> 00:23:34] So we just talked about in a cell, there are at least 20,
+[00:23:34 -> 00:23:36] 000 analytes to measure.
+[00:23:36 -> 00:23:37] These are the genes.
+[00:23:37 -> 00:23:40] These are both the features to measure.
+[00:23:40 -> 00:23:43] These are also the lever to perturb the cells with.
+[00:23:43 -> 00:23:48] So for clarity, let's call them perturbations and gene
+[00:23:48 -> 00:23:49] expressions.
+[00:23:50 -> 00:23:54] For perturbation on one axis and the features that you
+[00:23:54 -> 00:23:56] measure that describe the cell on the other axis.
+[00:23:58 -> 00:24:01] Perturbsig is a technique that leverages the latest
+[00:24:01 -> 00:24:06] breakthrough in lab biology, CRISPR-Cas9.
+[00:24:06 -> 00:24:10] These are bacterially derived enzymes that allows you to
+[00:24:10 -> 00:24:14] disrupt gene expression in mammalian cells, in human cells,
+[00:24:14 -> 00:24:15] for example.
+[00:24:16 -> 00:24:20] And we can do so in one at a time fashion.
+[00:24:20 -> 00:24:22] So I can take out one gene at a time.
+[00:24:22 -> 00:24:26] Of course, that would be incredibly difficult to scale if I
+[00:24:26 -> 00:24:28] want to do all 20,000 gene expression
+[00:24:28 -> 00:24:29] knockout in one single experiment.
+[00:24:29 -> 00:24:33] Probably need a huge factory, a lot of robots to do that.
+[00:24:33 -> 00:24:35] Or you can do them in a pooled fashion.
+[00:24:36 -> 00:24:37] And I love pooled experiments.
+[00:24:37 -> 00:24:38] These are hyperscalable.
+[00:24:39 -> 00:24:44] So we have lab tricks that allow us to disrupt one gene per
+[00:24:44 -> 00:24:47] cell, but do all 20,000 genes
+[00:24:47 -> 00:24:50] across many, many cells in one single pooled experiment.
+[00:24:51 -> 00:24:52] Perfectly scrambled.
+[00:24:52 -> 00:24:53] So there's no batch effects.
+[00:24:53 -> 00:24:55] There's no play-to-play differences.
+[00:24:55 -> 00:24:58] So that's all of the perturbation throughput.
+[00:24:58 -> 00:25:01] Basically use some sort of commutatorial trick to first
+[00:25:01 -> 00:25:04] perturb all the different genes in different combinations.
+[00:25:04 -> 00:25:07] And then you can read them out and do some math on it.
+[00:25:07 -> 00:25:10] And you basically pull out a whole bunch of different
+[00:25:10 -> 00:25:12] experiments in one experiment.
+[00:25:12 -> 00:25:14] Correct. It requires barcoding technology.
+[00:25:14 -> 00:25:18] And that barcode is actually achieved by directly reading
+[00:25:18 -> 00:25:22] out what kind of CRISPR guide RNA is present in which cell.
+[00:25:23 -> 00:25:26] So for CRISPR-Cas9, this bacterially derived machinery to
+[00:25:26 -> 00:25:29] work in mammalian cells, you just have to deliver two
+[00:25:29 -> 00:25:30] things to each cell.
+[00:25:30 -> 00:25:33] You have to deliver the protein, the Cas9 protein, that
+[00:25:33 -> 00:25:34] does the job.
+[00:25:35 -> 00:25:38] And you have to deliver an address barcode encoded by a
+[00:25:38 -> 00:25:41] short piece of RNA called a guide RNA.
+[00:25:42 -> 00:25:45] And the guide RNA tells the protein where to go in the cell
+[00:25:45 -> 00:25:49] purely via lots of quick-based pairing, ATCG.
+[00:25:50 -> 00:25:52] So it matches a part of the gene.
+[00:25:53 -> 00:25:56] It's sufficiently long to say this will match the correct
+[00:25:56 -> 00:25:57] gene.
+[00:25:57 -> 00:26:02] And then that guides it to connect to the right and reduce
+[00:26:02 -> 00:26:05] the expression of that particular gene in the cell.
+[00:26:05 -> 00:26:06] Correct.
+[00:26:06 -> 00:26:08] We designed this guide to go to the promoter part of a gene
+[00:26:08 -> 00:26:09] .
+[00:26:09 -> 00:26:11] And that's the beginning stretch of every gene before the
+[00:26:11 -> 00:26:13] transcription starts.
+[00:26:13 -> 00:26:16] And if we bring the Cas9 protein to there, armed with the
+[00:26:16 -> 00:26:20] right effector, the silencer, that promoter will get shut
+[00:26:20 -> 00:26:20] off.
+[00:26:20 -> 00:26:22] And that gene will never be transcribed out of again.
+[00:26:22 -> 00:26:25] So effectively, we tune down the expression level of that
+[00:26:25 -> 00:26:25] gene.
+[00:26:26 -> 00:26:29] And so all you have to know is figure out which guide RNA
+[00:26:29 -> 00:26:29] is in which cell.
+[00:26:30 -> 00:26:32] And that can be done using genomic readouts.
+[00:26:32 -> 00:26:33] That's the barcode.
+[00:26:34 -> 00:26:37] And you can then infer which gene is being silenced in
+[00:26:37 -> 00:26:38] which cell.
+[00:26:39 -> 00:26:42] So that's the way you scale throughput on the perturbation
+[00:26:42 -> 00:26:42] side.
+[00:26:43 -> 00:26:45] On the readout side, it's a 2D data set, right?
+[00:26:45 -> 00:26:47] So we just talk about one of the dimensions.
+[00:26:47 -> 00:26:50] On the readout side, we leverage single-cell RNA-seq
+[00:26:50 -> 00:26:51] technologies.
+[00:26:51 -> 00:26:55] So these are also recent technologies in the last decade
+[00:26:55 -> 00:26:57] that have been scaled that can let you read out the
+[00:26:57 -> 00:27:01] expression level of all 20,000 genes simultaneously from
+[00:27:01 -> 00:27:02] each cell.
+[00:27:02 -> 00:27:06] So armed with both high throughput CRISPR perturbation and
+[00:27:06 -> 00:27:09] high throughput single RNA-seq technologies, all of a
+[00:27:09 -> 00:27:12] sudden we can generate these 2D datasets where we
+[00:27:12 -> 00:27:15] systematically perturb or knock out, knock down every
+[00:27:15 -> 00:27:18] single gene in the human genome in a cell type.
+[00:27:18 -> 00:27:22] And we read out this impact on every other genes in the
+[00:27:22 -> 00:27:23] same cells.
+[00:27:23 -> 00:27:27] So we generate these 2D rich data set, not that different
+[00:27:27 -> 00:27:29] than the size, the type of
+[00:27:29 -> 00:27:31] PDB data that trained alpha phone models, right?
+[00:27:31 -> 00:27:34] If you think about that, that's hundreds of thousands of
+[00:27:34 -> 00:27:35] protein entries.
+[00:27:35 -> 00:27:39] If those are the rows, columns are the XYZ coordinate of
+[00:27:39 -> 00:27:40] every single amino acid.
+[00:27:41 -> 00:27:42] That's also a 2D data set.
+[00:27:42 -> 00:27:46] And I think it's these type of rich 2D data sets that power
+[00:27:46 -> 00:27:47] the training of foundation
+[00:27:47 -> 00:27:48] models of biology.
+[00:27:49 -> 00:27:53] I find it really fun how you have turned a fairly
+[00:27:53 -> 00:27:58] straightforward assay and using, this is NGS sequencing,
+[00:27:58 -> 00:27:58] right?
+[00:27:58 -> 00:28:00] Next generation sequencing, very high throughput.
+[00:28:00 -> 00:28:04] You've used this to scale a simple perturbation response,
+[00:28:04 -> 00:28:08] which is individually maybe not all that interesting to
+[00:28:08 -> 00:28:12] this massive scale of over basically an arbitrary number of
+[00:28:12 -> 00:28:13] cells.
+[00:28:13 -> 00:28:15] I think you did 25 million or something.
+[00:28:16 -> 00:28:17] So it's actually a lot more than that.
+[00:28:17 -> 00:28:20] So 25 million is what came out of the most stringent
+[00:28:20 -> 00:28:21] quality filtering.
+[00:28:22 -> 00:28:24] It's actually as much of a scientific challenge to figure
+[00:28:24 -> 00:28:26] out how to do CRISPR and single-cell RNA-seq as it is an
+[00:28:26 -> 00:28:28] engineering challenge.
+[00:28:29 -> 00:28:32] In the first part of the experiment, oftentimes we have to
+[00:28:32 -> 00:28:35] harvest tens if not hundreds of millions of cells.
+[00:28:35 -> 00:28:39] And they go through various quality funnels to arrive to
+[00:28:39 -> 00:28:42] give Bo and team the highest quality data at the end.
+[00:28:42 -> 00:28:45] That's incredibly difficult to do because, as you can
+[00:28:45 -> 00:28:47] imagine, all of these techniques
+[00:28:47 -> 00:28:51] have been published by academia before, and they work very
+[00:28:51 -> 00:28:53] well in small-scale experiments.
+[00:28:53 -> 00:28:55] But when you think about scaling them to a genome-wide
+[00:28:55 -> 00:28:57] perturbation, we're talking about
+[00:28:57 -> 00:28:59] handling hundreds of millions of cells.
+[00:29:00 -> 00:29:02] Techniques that are published in academia used to be all
+[00:29:02 -> 00:29:03] about handling fresh cells.
+[00:29:04 -> 00:29:05] Cells are still alive.
+[00:29:06 -> 00:29:08] And that may be okay if your entire experiment takes only
+[00:29:08 -> 00:29:09] an hour or two.
+[00:29:10 -> 00:29:14] it's not quite easy to handle cells across a 14-hour day
+[00:29:14 -> 00:29:17] that's hundreds of millions of cells.
+[00:29:17 -> 00:29:19] And so by the end of the day,
+[00:29:19 -> 00:29:22] you can easily detect stress signals from the cells
+[00:29:22 -> 00:29:24] and from your scientists in the lab.
+[00:29:25 -> 00:29:29] And quickly we realized that's not the way to do this data
+[00:29:29 -> 00:29:29] generation.
+[00:29:30 -> 00:29:32] Machine learning is very quality dependent,
+[00:29:33 -> 00:29:36] and we want to give the highest quality data to our AI
+[00:29:36 -> 00:29:37] teams.
+[00:29:37 -> 00:29:39] So we're putting a lot of engineering thought
+[00:29:39 -> 00:29:42] and industrialize the whole workflow step-by-step,
+[00:29:42 -> 00:29:43] introduce chemical fixations
+[00:29:43 -> 00:29:46] so that we lock the state of the cells in
+[00:29:46 -> 00:29:47] at the beginning of this experiment,
+[00:29:48 -> 00:29:50] but figure out ways that it doesn't disrupt
+[00:29:50 -> 00:29:53] all of the molecular biology steps afterwards.
+[00:29:53 -> 00:29:54] It doesn't impact data quality
+[00:29:54 -> 00:29:57] so that we can do all of these data generation
+[00:29:57 -> 00:29:59] in a time-shifted operational manner
+[00:29:59 -> 00:30:03] that's very not prone to batch effects.
+[00:30:03 -> 00:30:05] One thing that you didn't mention
+[00:30:05 -> 00:30:08] is that you're using some sort of stem cells.
+[00:30:09 -> 00:30:13] And so obviously, like you don't have, you know, like brain
+[00:30:13 -> 00:30:15] cells or or or blood cells.
+[00:30:15 -> 00:30:17] Or if you did, then you would have a big combinatorial
+[00:30:17 -> 00:30:18] effect on that.
+[00:30:18 -> 00:30:23] So how are you why are you convinced that working on stem
+[00:30:23 -> 00:30:28] cells, which are, you know, my understanding is that there
+[00:30:28 -> 00:30:31] are actually blood cells that have been sort of the stem
+[00:30:31 -> 00:30:34] cell behavior has been unlocked on them.
+[00:30:34 -> 00:30:38] And that causes some some sort of stress on the cell as
+[00:30:38 -> 00:30:38] well.
+[00:30:38 -> 00:30:43] So you have these sort of not quite blood cells that are
+[00:30:43 -> 00:30:44] stressed.
+[00:30:44 -> 00:30:49] And then why are we convinced that that is a good proxy for
+[00:30:49 -> 00:30:52] a brain cell or whatever you're studying?
+[00:30:52 -> 00:30:53] Yeah, not quite.
+[00:30:53 -> 00:30:57] So we didn't actually start with stem cells.
+[00:30:57 -> 00:30:59] That was more of a later development.
+[00:31:00 -> 00:31:02] When we started data generation, so we put out the method
+[00:31:02 -> 00:31:05] that I talk about, as well as the first two data sets,
+[00:31:05 -> 00:31:08] which is the world's largest perturbsic data release at the
+[00:31:08 -> 00:31:08] time.
+[00:31:09 -> 00:31:12] Last June, in the preprint, we called it XLS Orion.
+[00:31:13 -> 00:31:15] That was actually generated from two cell lines.
+[00:31:16 -> 00:31:18] A lot of this field's early work started with cell lines.
+[00:31:19 -> 00:31:20] These are cells.
+[00:31:21 -> 00:31:22] One of them is a cancer cell line.
+[00:31:22 -> 00:31:24] The other is just a cell line.
+[00:31:24 -> 00:31:26] These are immortalized cells.
+[00:31:27 -> 00:31:29] Some of them are derived from cancers, hence cancer cell
+[00:31:29 -> 00:31:29] lines.
+[00:31:30 -> 00:31:32] Others are just derived from primary cells but have been
+[00:31:32 -> 00:31:32] immortalized.
+[00:31:32 -> 00:31:36] Many times grown for many, many years in various labs.
+[00:31:37 -> 00:31:40] People start with these cell lines in the beginning, as you
+[00:31:40 -> 00:31:42] can imagine, because those are easy to do.
+[00:31:42 -> 00:31:45] It's easy to scale, easy to grow a lot of cells out of.
+[00:31:45 -> 00:31:47] Turns out the ability to grow millions of cells is actually
+[00:31:47 -> 00:31:49] critical for doing these large experiments.
+[00:31:50 -> 00:31:52] So we started there first.
+[00:31:52 -> 00:31:55] And they actually still capture the characteristics of the
+[00:31:55 -> 00:31:59] cell types that are derived from colorectal cancer, as well
+[00:31:59 -> 00:32:02] as hematopoietic cells.
+[00:32:03 -> 00:32:07] But later on, in the most recent preprint, we actually
+[00:32:07 -> 00:32:10] expanded to many more cell types.
+[00:32:10 -> 00:32:12] Now, some of these are still cell lines or T cells.
+[00:32:13 -> 00:32:15] We chose to use cell lines, but some of these have now gone
+[00:32:15 -> 00:32:17] into primary cells.
+[00:32:17 -> 00:32:19] So we did one experiment in iPSC.
+[00:32:19 -> 00:32:21] These are induced pluripotent stem cells.
+[00:32:21 -> 00:32:24] And another experiment in, and we think this is the most
+[00:32:24 -> 00:32:28] ambitious and coolest screen that we've done to date.
+[00:32:28 -> 00:32:32] This is a pen differentiation multi-cell type stem cell
+[00:32:32 -> 00:32:33] project.
+[00:32:34 -> 00:32:37] So effectively, we differentiate iPSC into 10 different
+[00:32:37 -> 00:32:40] cell types in one single experiment without restriction.
+[00:32:41 -> 00:32:43] And we did a genome scale perturbation across them.
+[00:32:44 -> 00:32:46] So you can imagine, instead of just generating 10,000
+[00:32:46 -> 00:32:51] different biological experiments, we did 10,000 by 10 cell
+[00:32:51 -> 00:32:51] types.
+[00:32:51 -> 00:32:53] So it's almost a library on library experiment.
+[00:32:54 -> 00:32:55] Why are we doing this?
+[00:32:55 -> 00:33:00] We think that in the beginning phase of data collection, as
+[00:33:00 -> 00:33:03] both said, I think we're just in the early days of virtual
+[00:33:03 -> 00:33:06] cell building, context and diversity and richness of the
+[00:33:06 -> 00:33:07] data matters.
+[00:33:08 -> 00:33:10] It's not just the total number of cells or total number of
+[00:33:10 -> 00:33:11] sequencing reads.
+[00:33:12 -> 00:33:15] It's about bits per dollar and information content.
+[00:33:15 -> 00:33:19] So we want to scale not only in the genetic perturbation
+[00:33:19 -> 00:33:21] landscape, but we also want to scale across biological
+[00:33:21 -> 00:33:25] contexts so that we can give our AI teams the best rich
+[00:33:25 -> 00:33:29] data set to build a generalizable model on.
+[00:33:29 -> 00:33:33] Is there any thinking about, so you say context, but
+[00:33:33 -> 00:33:36] obviously these cells in these experiments have been sort
+[00:33:36 -> 00:33:39] of D, I forget the term, but they've been separated from
+[00:33:39 -> 00:33:41] their cohorts, right?
+[00:33:41 -> 00:33:44] Is there thinking about using spatial transcriptomics or
+[00:33:44 -> 00:33:48] other, you know, sort of technologies, imaging based
+[00:33:48 -> 00:33:52] technologies to build models with perturbations, but in the
+[00:33:52 -> 00:33:55] context of the cells that it lives near?
+[00:33:56 -> 00:33:56] Great question.
+[00:33:56 -> 00:33:58] So we're thinking about that in a couple of ways.
+[00:33:59 -> 00:34:02] Number one, that's actually exactly why we want to build a
+[00:34:02 -> 00:34:04] virtual cell model in the first place.
+[00:34:04 -> 00:34:07] You might think that, well, you can already do exhaustive
+[00:34:07 -> 00:34:09] screening in these cell lines.
+[00:34:09 -> 00:34:10] Why do you still need a model?
+[00:34:10 -> 00:34:13] You can just do the experiment and generate that data.
+[00:34:13 -> 00:34:16] Certainly, if your query is just about cell biology and
+[00:34:16 -> 00:34:18] cell lines, you're right.
+[00:34:18 -> 00:34:19] We don't need a model, right?
+[00:34:20 -> 00:34:22] At least for genetic screening, we can just do the
+[00:34:22 -> 00:34:23] experiment.
+[00:34:23 -> 00:34:26] But you're also correct that oftentimes good targets,
+[00:34:26 -> 00:34:29] biological insights are not about cell lines.
+[00:34:29 -> 00:34:32] These are about primary cells, about cells in their native
+[00:34:32 -> 00:34:34] physiological context in organs,
+[00:34:34 -> 00:34:37] or even multi-organ coming together and have some emergent
+[00:34:37 -> 00:34:38] properties.
+[00:34:38 -> 00:34:40] A lot of immunological diseases are that way.
+[00:34:41 -> 00:34:45] You cannot do exhaustive high-throughput experimentation in
+[00:34:45 -> 00:34:47] animal systems or in organs
+[00:34:47 -> 00:34:50] or in all of these complex translational models.
+[00:34:51 -> 00:34:53] You can do some experiments, and these are expensive and
+[00:34:53 -> 00:34:54] high-stake.
+[00:34:54 -> 00:34:57] The ability to build a model that can be trained on massive
+[00:34:57 -> 00:34:59] data where it is possible to scale,
+[00:35:00 -> 00:35:03] and be trained in a way that can be fine-tuned and
+[00:35:03 -> 00:35:03] transferred
+[00:35:03 -> 00:35:06] to make high-quality causal predictions in these complex
+[00:35:06 -> 00:35:07] models
+[00:35:07 -> 00:35:10] so that we can go into the lab and have the highest quality
+[00:35:10 -> 00:35:12] hypothesis possible to validate.
+[00:35:12 -> 00:35:14] I think that's the whole point about building a virtual
+[00:35:14 -> 00:35:15] cell model.
+[00:35:15 -> 00:35:18] But from AI side, I think you're absolutely right that I
+[00:35:18 -> 00:35:21] believe the future virtual cell model
+[00:35:21 -> 00:35:24] should be able to incorporate multiple modalities, not just
+[00:35:24 -> 00:35:26] RNA expressions.
+[00:35:27 -> 00:35:31] Spatial single-cell RNC is already a popular technology.
+[00:35:32 -> 00:35:34] Even for SHBT, we actually have an extended version.
+[00:35:34 -> 00:35:36] We call it SHBT spatial.
+[00:35:37 -> 00:35:39] That is specifically designed for spatial single-cell RMX.
+[00:35:40 -> 00:35:45] And we also have papers on early attempts to try to take
+[00:35:45 -> 00:35:47] the HNE images,
+[00:35:47 -> 00:35:49] try to predict the gene expressions.
+[00:35:49 -> 00:35:51] There's already some signals you can find.
+[00:35:52 -> 00:35:57] So eventually what I predict is that a virtual cell model
+[00:35:57 -> 00:36:00] will be able to integrate not only RNC,
+[00:36:00 -> 00:36:04] but it can integrate more functionally related, for example
+[00:36:04 -> 00:36:09] , proteomics or other regulatory side of omics,
+[00:36:09 -> 00:36:13] such as AtacSig, to overall combine all your descriptive om
+[00:36:13 -> 00:36:17] ics datasets to predict the future states of the cellular
+[00:36:17 -> 00:36:18] functions.
+[00:36:19 -> 00:36:22] I think that's probably the future for virtual cell model.
+[00:36:23 -> 00:36:26] We had Ron Alpha and Dan Baer from Noetic as guests
+[00:36:26 -> 00:36:26] recently.
+[00:36:26 -> 00:36:29] And viewers who want to hear a little bit more about that,
+[00:36:29 -> 00:36:32] I think we go quite in depth there.
+[00:36:32 -> 00:36:34] So if you want to get some background, you can go to that.
+[00:36:34 -> 00:36:36] But can you explain a little bit about what spatial
+[00:36:36 -> 00:36:39] transcriptomics and spatial proteomics are?
+[00:36:40 -> 00:36:42] So maybe a bit of a history lesson here.
+[00:36:42 -> 00:36:45] Before we had single RNA-seq, we had RNA-seq.
+[00:36:45 -> 00:36:47] And before that, we have microarray technologies.
+[00:36:47 -> 00:36:51] What RNA-seq and microarray used to do is take a chunk of
+[00:36:51 -> 00:36:55] my tissue, grind it all up, put it in a blender, imagine
+[00:36:55 -> 00:36:57] make a smoothie out of it, and take all of the RNA from
+[00:36:57 -> 00:37:01] different cells in that piece of tissue and measure all of
+[00:37:01 -> 00:37:02] their expression levels.
+[00:37:03 -> 00:37:04] It is great.
+[00:37:04 -> 00:37:07] For the first time, you can measure gene expression all 20,
+[00:37:07 -> 00:37:08] 000 at a time.
+[00:37:08 -> 00:37:11] And we used to have to do them one at a time.
+[00:37:11 -> 00:37:14] But it is not great in that we don't know which RNA came
+[00:37:14 -> 00:37:16] from which cell.
+[00:37:16 -> 00:37:18] And this is particularly a problem if you're dealing with a
+[00:37:18 -> 00:37:20] multicellular piece of tissue.
+[00:37:20 -> 00:37:23] You want to attribute RNA to the immune cell, to the skin
+[00:37:23 -> 00:37:25] cell, to the fibroblast, to the
+[00:37:25 -> 00:37:27] keratinocytes, but you can't because you've gone everything
+[00:37:27 -> 00:37:28] up in a smoothie.
+[00:37:29 -> 00:37:31] What single cell technology allows you to do is analyze
+[00:37:31 -> 00:37:32] them cell by cell.
+[00:37:32 -> 00:37:37] So now I can attribute RNA gene expression to the cell that
+[00:37:37 -> 00:37:38] they originate from.
+[00:37:39 -> 00:37:40] But there's still a problem.
+[00:37:41 -> 00:37:44] I don't know spatially where these signals come from.
+[00:37:45 -> 00:37:47] And for many diseases, it matters, right?
+[00:37:47 -> 00:37:51] In immunology, for example, you want to know when T cells
+[00:37:51 -> 00:37:55] are close to a tumor cells or when a T cell is not able to
+[00:37:55 -> 00:37:58] penetrate the solid tumor, what is the difference between
+[00:37:58 -> 00:37:59] them?
+[00:37:59 -> 00:38:02] Or when a T cell is attacking the tumor cell, when a T cell
+[00:38:02 -> 00:38:05] is not, what is the difference about that?
+[00:38:05 -> 00:38:08] And for that, you need spatial information.
+[00:38:08 -> 00:38:11] You need to observe cell in situ in their context.
+[00:38:11 -> 00:38:14] And so now there are different technologies that solve that
+[00:38:14 -> 00:38:14] problem.
+[00:38:15 -> 00:38:17] Essentially, take that chunk of tissue.
+[00:38:18 -> 00:38:19] I don't have to grind it up anymore.
+[00:38:20 -> 00:38:23] I just make a cross-section, lay it down in a piece of
+[00:38:23 -> 00:38:23] slide,
+[00:38:24 -> 00:38:27] and I can measure its morphology using standard techniques
+[00:38:27 -> 00:38:28] like H&E staining.
+[00:38:28 -> 00:38:32] I can then also measure many protein expressions using
+[00:38:32 -> 00:38:33] multiplex IF assays,
+[00:38:34 -> 00:38:35] immunofluorescence assays.
+[00:38:36 -> 00:38:38] Ultimately, I can also look at the gene expression up to
+[00:38:38 -> 00:38:39] genome-wide
+[00:38:39 -> 00:38:43] in all of these cells in their native spatial coordinates
+[00:38:43 -> 00:38:46] by using some of the latest spatial omics assays.
+[00:38:47 -> 00:38:51] So you have the XY coordinates of every cell,
+[00:38:51 -> 00:38:53] but also all of the molecular analyze that we talked about
+[00:38:53 -> 00:38:54] earlier.
+[00:38:54 -> 00:38:57] And that's an exciting new direction for genomics field.
+[00:38:57 -> 00:39:02] I certainly can imagine that the spatial omics adds more
+[00:39:02 -> 00:39:04] difficulty to AI modeling
+[00:39:04 -> 00:39:07] because you have, instead of looking at the individual
+[00:39:07 -> 00:39:08] cells,
+[00:39:08 -> 00:39:11] you have to look at the neighboring niche cells
+[00:39:11 -> 00:39:14] to better learn the representation that is spatially
+[00:39:14 -> 00:39:15] cohesive.
+[00:39:15 -> 00:39:19] That is the challenge the current spatial foundation model
+[00:39:19 -> 00:39:20] are facing.
+[00:39:20 -> 00:39:25] But that context is going to be crucial for understanding,
+[00:39:25 -> 00:39:26] let's say, cancer,
+[00:39:26 -> 00:39:29] where the interaction of immune cells and cancer cells and
+[00:39:29 -> 00:39:31] non-immune or cancer cells.
+[00:39:32 -> 00:39:33] Yeah, that is absolutely right.
+[00:39:33 -> 00:39:37] You can extract spatial-aware biomarkers to predict some of
+[00:39:37 -> 00:39:38] the clinical response.
+[00:39:39 -> 00:39:42] I think that would be extremely important to build such
+[00:39:42 -> 00:39:43] models.
+[00:39:43 -> 00:39:49] Getting back to Excel, this presumably can inform a spatial
+[00:39:49 -> 00:39:50] model as well, right?
+[00:39:50 -> 00:39:54] Because you have one cell in one place.
+[00:39:54 -> 00:39:56] You can imagine, okay, I can just throw away the
+[00:39:56 -> 00:40:00] coordinates and just do inferences on one cell at a time.
+[00:40:01 -> 00:40:03] And now I can create a more complicated model that does
+[00:40:03 -> 00:40:06] that, but it also knows who its neighbors are or something.
+[00:40:07 -> 00:40:07] You're absolutely right.
+[00:40:08 -> 00:40:11] But the current version we were releasing, we're not
+[00:40:11 -> 00:40:12] dealing with spatial omics.
+[00:40:12 -> 00:40:16] However, definitely our ongoing work and the next version
+[00:40:16 -> 00:40:20] of Excel will be able to infer the spatially aware
+[00:40:20 -> 00:40:22] representations for different cells.
+[00:40:23 -> 00:40:25] I see. We've talked about the data collection a bit.
+[00:40:25 -> 00:40:29] Let's talk about the architecture, get some red meat for
+[00:40:29 -> 00:40:31] the AI engineers listening in.
+[00:40:32 -> 00:40:35] Sure. Let's get to the history of virtual cell modeling,
+[00:40:35 -> 00:40:37] particularly virtual cell 2.0.
+[00:40:37 -> 00:40:42] I think our SCGB kind of sets the foundation for most of
+[00:40:42 -> 00:40:44] foundation models of single cells
+[00:40:44 -> 00:40:49] is that we adopted kind of autoregressive training,
+[00:40:50 -> 00:40:53] extremely similar to how ChagBt is trained on languages,
+[00:40:53 -> 00:40:54] right?
+[00:40:54 -> 00:40:57] We use its next word, next token predictions.
+[00:40:58 -> 00:41:02] So we mimics the way how ChagBt is trained on languages
+[00:41:02 -> 00:41:05] to train the single cell foundation model on cells.
+[00:41:05 -> 00:41:09] By doing that, you have to assume an inherent order of
+[00:41:09 -> 00:41:09] genes.
+[00:41:10 -> 00:41:13] The way we assume the order of genes is by attention
+[00:41:13 -> 00:41:13] mechanism.
+[00:41:14 -> 00:41:16] There's many other methods that are using different orders
+[00:41:16 -> 00:41:17] of genes,
+[00:41:17 -> 00:41:20] some as simple as just ranking the genes based on the
+[00:41:20 -> 00:41:21] expression values.
+[00:41:22 -> 00:41:25] There's also more complicated kind of methods to rank
+[00:41:25 -> 00:41:26] different genes.
+[00:41:26 -> 00:41:29] But inherently, you have to assume an order of genes.
+[00:41:29 -> 00:41:33] And just to be clear, so when you talk about genes, those
+[00:41:33 -> 00:41:37] are intrinsically ordered, right?
+[00:41:37 -> 00:41:40] They're a sentence spelled out in ATGC, right?
+[00:41:40 -> 00:41:44] So genes themselves have the nucleotides and there's this
+[00:41:44 -> 00:41:47] long chain, and that makes a lot of sense to have an order
+[00:41:47 -> 00:41:48] to them.
+[00:41:48 -> 00:41:50] But what we're talking about is something different.
+[00:41:50 -> 00:41:53] That's the expression data, the expression levels.
+[00:41:53 -> 00:41:58] So the expression level means how it's just a count for
+[00:41:58 -> 00:42:02] each gene of how many of these genes did I see when I was
+[00:42:02 -> 00:42:02] measuring.
+[00:42:03 -> 00:42:06] For DNA sequences, the order of ATG makes total sense to us
+[00:42:06 -> 00:42:07] , right?
+[00:42:07 -> 00:42:10] But for expression data, they're literally just matrices.
+[00:42:10 -> 00:42:15] So it's really hard to assume an inherent order of genes.
+[00:42:15 -> 00:42:18] Even if we shuffle the order of genes, I think the biology
+[00:42:18 -> 00:42:19] doesn't change much.
+[00:42:19 -> 00:42:23] However, because of the way kind of language model is
+[00:42:23 -> 00:42:27] trained, everybody has kind of preset tricks to train such
+[00:42:27 -> 00:42:28] a model.
+[00:42:28 -> 00:42:31] So it's easy to adopt. That's how all the foundation models
+[00:42:31 -> 00:42:33] are started for single cells.
+[00:42:33 -> 00:42:37] And then I quickly realized that with diffusion language
+[00:42:37 -> 00:42:41] models, we actually don't need to assume the order of genes
+[00:42:41 -> 00:42:42] .
+[00:42:42 -> 00:42:47] Instead, we can have a bidirectional diffusion process to
+[00:42:47 -> 00:42:51] generate such high-dimensional gene expression datasets.
+[00:42:52 -> 00:42:53] So just to think about it, what's the difference between
+[00:42:53 -> 00:42:56] autoregressive training versus diffusion language models?
+[00:42:57 -> 00:43:01] You can think of autoregressive training as typing.
+[00:43:02 -> 00:43:05] For example, I like coffee, I have to type I and then I
+[00:43:05 -> 00:43:06] like coffee.
+[00:43:06 -> 00:43:07] There's inherent orders.
+[00:43:08 -> 00:43:10] But diffusion language model, you can treat it as editing.
+[00:43:10 -> 00:43:15] You iteratively generate a sentence from a very vague, very
+[00:43:15 -> 00:43:20] rough sentence, and then you can iteratively refine it.
+[00:43:20 -> 00:43:21] So same thing with gene expressions.
+[00:43:22 -> 00:43:24] You can generate a very rough representation of the gene
+[00:43:24 -> 00:43:28] expressions and then iteratively from noisy representation
+[00:43:28 -> 00:43:31] to more refined representations.
+[00:43:31 -> 00:43:34] So you kind of iteratively edit the gene expression
+[00:43:34 -> 00:43:37] predictions until it minimizes the losses.
+[00:43:37 -> 00:43:42] So this is a very different philosophy to generatively
+[00:43:42 -> 00:43:44] predict the response after perturbation.
+[00:43:45 -> 00:43:48] And it turns out it actually fits more to a single-cell RN-
+[00:43:48 -> 00:43:49] SIC.
+[00:43:49 -> 00:43:53] So that's why we switched from a CGPT-like model to the
+[00:43:53 -> 00:43:56] current Excel model, which is using diffusion language
+[00:43:56 -> 00:43:56] models.
+[00:43:57 -> 00:43:59] When I think of transformers, they are fundamentally
+[00:43:59 -> 00:44:01] objects which operate on sets.
+[00:44:02 -> 00:44:03] The community spends a lot of time trying to make them
+[00:44:03 -> 00:44:06] things which have some sort of causal ordering to them.
+[00:44:07 -> 00:44:10] But if you just naively take a transformer, it's a set
+[00:44:10 -> 00:44:11] operation, right?
+[00:44:11 -> 00:44:15] So given that, why think about this in terms of diffusion
+[00:44:15 -> 00:44:19] or autoregressive LLMs?
+[00:44:19 -> 00:44:23] Why not have your initial prediction strategy be something
+[00:44:23 -> 00:44:28] like take just a set of genes, each of which has its own
+[00:44:28 -> 00:44:31] kind of one hot encoded identity, and then use that as sort
+[00:44:31 -> 00:44:33] of a prediction?
+[00:44:33 -> 00:44:35] That seems like a much more natural architecture to me.
+[00:44:35 -> 00:44:37] And it's not just your work.
+[00:44:37 -> 00:44:39] A lot of people work on things like this.
+[00:44:39 -> 00:44:42] And I have been somewhat confused why there's this bias in
+[00:44:42 -> 00:44:43] the community about this.
+[00:44:44 -> 00:44:47] So I think what you were referring to is more related to
+[00:44:47 -> 00:44:49] representation learning,
+[00:44:49 -> 00:44:52] where you can take sets of genes and try to project to low-
+[00:44:52 -> 00:44:54] dimensional latent space.
+[00:44:55 -> 00:44:58] But what we care about for building generative modeling for
+[00:44:58 -> 00:44:59] virtual sales,
+[00:44:59 -> 00:45:02] because you want to predict the dynamics of sales.
+[00:45:02 -> 00:45:03] So we want to have a generative model.
+[00:45:03 -> 00:45:07] So that's why we're mostly using decoder-only architectures
+[00:45:07 -> 00:45:11] in order to generate the full transcriptomics instead of
+[00:45:11 -> 00:45:14] just predict a predefined small set of genes.
+[00:45:15 -> 00:45:18] Because you want to model the whole gene-regulatory
+[00:45:18 -> 00:45:21] networks, which are extremely kind of high dimensional,
+[00:45:21 -> 00:45:22] right?
+[00:45:22 -> 00:45:27] So just to be clear, input is genes plus a perturbation.
+[00:45:27 -> 00:45:30] Output is new gene expression levels.
+[00:45:30 -> 00:45:33] Is that gene expression levels plus perturbation is input?
+[00:45:33 -> 00:45:35] Plus times cells, number of cells.
+[00:45:35 -> 00:45:36] Like for each cell.
+[00:45:36 -> 00:45:36] Correct.
+[00:45:36 -> 00:45:37] That is correct.
+[00:45:37 -> 00:45:37] Right.
+[00:45:38 -> 00:45:38] Okay.
+[00:45:38 -> 00:45:45] And so the way that I think about diffusion language models
+[00:45:45 -> 00:45:47] , and you can correct me here
+[00:45:47 -> 00:45:49] because I don't know a lot about them, but the way I think
+[00:45:49 -> 00:45:50] about them is they're like
+[00:45:50 -> 00:45:52] BERT, but you do it over and over again.
+[00:45:52 -> 00:45:55] Is that kind of a good way to think about it?
+[00:45:55 -> 00:45:55] Yeah.
+[00:45:55 -> 00:45:58] That is a rough understanding of how diffusion language
+[00:45:58 -> 00:45:58] model works.
+[00:45:59 -> 00:45:59] Yeah.
+[00:45:59 -> 00:46:05] So you just apply the diffusion processes, like basically
+[00:46:05 -> 00:46:09] unmasking or editing over and over again.
+[00:46:09 -> 00:46:13] Similar to how an image diffusion model kind of refines the
+[00:46:13 -> 00:46:15] image over and over again.
+[00:46:15 -> 00:46:17] In this case, I'm using BERT.
+[00:46:17 -> 00:46:18] So it is a transformer, basically.
+[00:46:19 -> 00:46:20] It is a transformer.
+[00:46:20 -> 00:46:27] But it's like repeatedly updating the sentence in this case
+[00:46:27 -> 00:46:31] , which is a bunch of expression levels over and over again.
+[00:46:31 -> 00:46:31] That is correct.
+[00:46:32 -> 00:46:35] Actually, in our paper, we show that as the number of
+[00:46:35 -> 00:46:40] diffusion steps goes on, the loss function keeps decreasing
+[00:46:40 -> 00:46:40] .
+[00:46:40 -> 00:46:44] The fitness of the partition to the ground tubes keeps
+[00:46:44 -> 00:46:45] increasing.
+[00:46:45 -> 00:46:49] So this, which means the model start to understand how iter
+[00:46:49 -> 00:46:51] atively refine the predictions.
+[00:46:52 -> 00:46:52] I see.
+[00:46:52 -> 00:46:55] We're talking about diffusion versus autoregressive.
+[00:46:56 -> 00:47:00] I noticed in the paper, there's a bunch of discussion of
+[00:47:00 -> 00:47:03] preconditioning using a whole bunch of stuff.
+[00:47:03 -> 00:47:04] Can you want to talk a little bit about that?
+[00:47:04 -> 00:47:07] Another major innovation we made in Excel is the way we
+[00:47:07 -> 00:47:10] incorporate prior knowledge into the model.
+[00:47:10 -> 00:47:15] So incorporating biological priors has always been a good
+[00:47:15 -> 00:47:16] idea in biology in general,
+[00:47:17 -> 00:47:21] because biologists spend decades to understand some of the
+[00:47:21 -> 00:47:23] biologists already.
+[00:47:23 -> 00:47:26] How do we tell the model some of the prior knowledge, some
+[00:47:26 -> 00:47:28] metadata about the cells?
+[00:47:28 -> 00:47:33] Before Excel, what people do is they try to incorporate a
+[00:47:33 -> 00:47:35] single type of priors.
+[00:47:35 -> 00:47:38] For example, GEAR, using gene recognition network as a
+[00:47:38 -> 00:47:40] prior to predict the predispositions.
+[00:47:40 -> 00:47:45] SCGPT sometimes trying to incorporate PPI as a prior as
+[00:47:45 -> 00:47:45] well.
+[00:47:46 -> 00:47:50] Excel, to my knowledge, is one of the first models
+[00:47:50 -> 00:47:54] in trying to incorporate an extremely diverse set of
+[00:47:54 -> 00:47:55] biological priors.
+[00:47:56 -> 00:48:01] So in our preprint, we incorporate five types of priors,
+[00:48:01 -> 00:48:05] including literatures, as simple as just ask SCGPT, tell me
+[00:48:05 -> 00:48:06] everything about this gene.
+[00:48:06 -> 00:48:10] And then we embed the output as the embedding.
+[00:48:10 -> 00:48:11] That's like gene PT.
+[00:48:11 -> 00:48:12] Exactly. That's a gene PT.
+[00:48:13 -> 00:48:16] And we also incorporate PPI, protein-protein interaction
+[00:48:16 -> 00:48:17] networks.
+[00:48:17 -> 00:48:21] We also incorporate DevMap, which is cancer-related
+[00:48:21 -> 00:48:25] essential gene informations, morphology informations.
+[00:48:25 -> 00:48:29] We're even trying to incorporate SGBT embeddings, which is
+[00:48:29 -> 00:48:30] basically cell types.
+[00:48:31 -> 00:48:35] So with a set of prior knowledge as conditions to the model
+[00:48:35 -> 00:48:36] ,
+[00:48:36 -> 00:48:41] the models start to have more accuracy in terms of context-
+[00:48:41 -> 00:48:42] specific predictions.
+[00:48:43 -> 00:48:47] And what's more interesting to us is that by looking at the
+[00:48:47 -> 00:48:49] weights of different priors,
+[00:48:49 -> 00:48:51] we can actually understand which prior knowledge are more
+[00:48:51 -> 00:48:53] important to these particular cell types.
+[00:48:53 -> 00:48:57] So it adds more interpretability to the models.
+[00:48:57 -> 00:49:01] So we find that combining diffusion language model plus a
+[00:49:01 -> 00:49:03] very diverse set of prior knowledges,
+[00:49:04 -> 00:49:08] Excel does much better in generalizing to unseen contexts.
+[00:49:09 -> 00:49:13] So this is some of the AI innovations we made for Excel.
+[00:49:13 -> 00:49:17] Do you now need to provide all of that context in order for
+[00:49:17 -> 00:49:18] the model to work?
+[00:49:18 -> 00:49:21] Or those are like preconditioning that it can also do
+[00:49:21 -> 00:49:23] without if you want?
+[00:49:23 -> 00:49:26] We don't need to incorporate this prior knowledge anymore
+[00:49:26 -> 00:49:29] because these are already learnable parameters inside the
+[00:49:29 -> 00:49:30] models.
+[00:49:30 -> 00:49:34] However, what you suggest is more prompt or in-context
+[00:49:34 -> 00:49:35] learning for virtual sales.
+[00:49:35 -> 00:49:39] We can do that as well, basically by adding more conditions
+[00:49:39 -> 00:49:41] into the prior knowledges
+[00:49:41 -> 00:49:44] so that to prompt the model to predict towards certain
+[00:49:44 -> 00:49:45] directions.
+[00:49:45 -> 00:49:48] In other words, the model now takes advantage of the
+[00:49:48 -> 00:49:53] learning using the priors that you provided during training
+[00:49:53 -> 00:49:56] and doesn't need them, but has some advantage because you
+[00:49:56 -> 00:49:58] provide them during training.
+[00:49:58 -> 00:50:01] But you can even get more advantage if you are able to
+[00:50:01 -> 00:50:04] provide those priors during inference.
+[00:50:04 -> 00:50:04] Yeah.
+[00:50:05 -> 00:50:06] Nice.
+[00:50:06 -> 00:50:08] How much does that matter?
+[00:50:08 -> 00:50:10] I mean, whenever I see big machine learning papers with
+[00:50:10 -> 00:50:13] tons of things thrown in, I'm always wondering, where's
+[00:50:13 -> 00:50:15] like the big alpha and where's the little alpha?
+[00:50:15 -> 00:50:18] How much are, you know, is this just some, are these adding
+[00:50:18 -> 00:50:20] this little bit of incremental performance boost?
+[00:50:20 -> 00:50:22] Or, I mean, are all these actually crucial to general
+[00:50:22 -> 00:50:23] generalization?
+[00:50:24 -> 00:50:26] So there's multiple factors we have to consider.
+[00:50:26 -> 00:50:30] How much contribution the data contributed?
+[00:50:30 -> 00:50:33] How much of the contribution the AI architectures
+[00:50:33 -> 00:50:34] contributed?
+[00:50:34 -> 00:50:38] Even for the architecture, what's the delta from switching
+[00:50:38 -> 00:50:41] to autoregressive training to diffusion language?
+[00:50:41 -> 00:50:44] What's the delta from the prior knowledges?
+[00:50:44 -> 00:50:48] Suddenly all of these needs very specific ablation studies.
+[00:50:48 -> 00:50:53] From empirical experiments, we find that the qualities, the
+[00:50:53 -> 00:50:56] amount of the datasets matters the most.
+[00:50:56 -> 00:51:01] This is why we were extremely excited to publish the Pisces
+[00:51:01 -> 00:51:07] datasets, which has 16 different cell types and across 25
+[00:51:07 -> 00:51:08] million cells.
+[00:51:09 -> 00:51:10] And it's genome-wide.
+[00:51:10 -> 00:51:13] It's kind of a huge tensor, if you really think about it
+[00:51:13 -> 00:51:15] from a computer perspective.
+[00:51:16 -> 00:51:18] Genome-wide perturbation, genome-wide transcriptomics, plus
+[00:51:18 -> 00:51:21] number of cells, plus a times number of conditions.
+[00:51:21 -> 00:51:23] So it's a massive tensor.
+[00:51:23 -> 00:51:28] and because of the poor screening technology,
+[00:51:28 -> 00:51:29] we don't have batch effects.
+[00:51:30 -> 00:51:33] So you don't need the model to climb the hill of batch
+[00:51:33 -> 00:51:34] effect.
+[00:51:34 -> 00:51:36] That's already an advantage.
+[00:51:36 -> 00:51:39] So we find that trend on perturbation datasets,
+[00:51:40 -> 00:51:41] high-quality perturbation datasets,
+[00:51:41 -> 00:51:43] already gives a big boost to the models.
+[00:51:44 -> 00:51:48] We also did a belief that if we train all the virtual cell
+[00:51:48 -> 00:51:49] models out there,
+[00:51:49 -> 00:51:52] including state cell descendants,
+[00:51:52 -> 00:51:54] original STG video on the same datasets,
+[00:51:54 -> 00:51:56] what's the data we are observing.
+[00:51:57 -> 00:51:59] We reported the results there as well.
+[00:52:00 -> 00:52:02] We find that switching from autoregressive training
+[00:52:02 -> 00:52:05] to division language models
+[00:52:05 -> 00:52:07] give a significant improvement
+[00:52:07 -> 00:52:11] over some of the harder tasks,
+[00:52:11 -> 00:52:13] particularly generalized to unseen tasks.
+[00:52:14 -> 00:52:15] And the prior knowledge,
+[00:52:16 -> 00:52:18] more or less condition-specific.
+[00:52:19 -> 00:52:20] For certain cell types,
+[00:52:21 -> 00:52:23] some of the prior knowledge make a huge difference,
+[00:52:23 -> 00:52:25] but for certain cell types,
+[00:52:26 -> 00:52:28] the delta seems to be marginal.
+[00:52:29 -> 00:52:33] We are thinking about how to better incorporate the prior
+[00:52:33 -> 00:52:34] knowledge.
+[00:52:34 -> 00:52:39] We still believe that letting the model know a big chunk of
+[00:52:39 -> 00:52:40] existing biology
+[00:52:40 -> 00:52:45] should be helpful, but maybe it's the way we incorporate
+[00:52:45 -> 00:52:45] the prior knowledge
+[00:52:45 -> 00:52:50] through cross-attention limited the scope of the metadata.
+[00:52:50 -> 00:52:53] But I think it's certainly a research topic.
+[00:52:53 -> 00:52:56] But overall, if we have to give an order,
+[00:52:56 -> 00:53:00] My order would be the quality among scale of the datasets,
+[00:53:00 -> 00:53:04] and then the architecture, and then the prior knowledge.
+[00:53:05 -> 00:53:07] Personally, this only applies to our Excel.
+[00:53:08 -> 00:53:10] I'm sure there's different choices of architecture, have
+[00:53:10 -> 00:53:13] different ranks of contributions.
+[00:53:13 -> 00:53:16] First of all, this is really fascinating, very cool model.
+[00:53:17 -> 00:53:18] I hope everyone has a chance to look at the paper.
+[00:53:20 -> 00:53:22] There's a lot of, obviously, a lot of resources that were
+[00:53:22 -> 00:53:24] put into doing this.
+[00:53:24 -> 00:53:26] I don't know if you guys can disclose how much.
+[00:53:26 -> 00:53:29] It's a lot of money, whatever it was operating wet lab,
+[00:53:29 -> 00:53:32] probably very complicated training runs.
+[00:53:32 -> 00:53:36] I think there's a couple four billion parameter model. Is
+[00:53:36 -> 00:53:36] that right?
+[00:53:37 -> 00:53:39] Four point nine. Yeah. Four or five billion parameter model
+[00:53:39 -> 00:53:39] .
+[00:53:39 -> 00:53:44] So much larger model probably took a lot of GPUs to train.
+[00:53:45 -> 00:53:48] What's the lift that you get from this effort versus let's
+[00:53:48 -> 00:53:53] just put the money into like wet lab work and the sort of
+[00:53:53 -> 00:53:58] traditional pipeline that, you know, basically has been the
+[00:53:58 -> 00:54:00] status quo up until now?
+[00:54:00 -> 00:54:05] Biology is a multi-scale discipline. There are cells, there
+[00:54:05 -> 00:54:09] are DNA sequences on the most fundamental level. There are
+[00:54:09 -> 00:54:13] cells, there are multicellular pieces of tissues, co-cult
+[00:54:13 -> 00:54:14] ures.
+[00:54:14 -> 00:54:17] you have tissues you have animal systems and finally you
+[00:54:17 -> 00:54:20] have human i think we would like to
+[00:54:20 -> 00:54:23] be able to do causal prediction towards the right of this
+[00:54:23 -> 00:54:25] spectrum ultimately do causal prediction
+[00:54:25 -> 00:54:28] human know what drugs will work in which patients but that
+[00:54:28 -> 00:54:30] 's very difficult to collect high throughput
+[00:54:30 -> 00:54:35] data on and so the whole vision of virtual cell is to
+[00:54:35 -> 00:54:38] generate data where it is possible so that
+[00:54:38 -> 00:54:41] we can transfer the causality prediction towards the right
+[00:54:41 -> 00:54:43] towards the more translational the more
+[00:54:43 -> 00:54:48] complex systems. Certainly, you can mine the data already.
+[00:54:48 -> 00:54:50] We generated a lot of data, as Bo said,
+[00:54:50 -> 00:54:53] seven screens, 16 different biological contexts, genome
+[00:54:53 -> 00:54:56] scale perturbation. There's a lot of good
+[00:54:56 -> 00:55:00] ideas in that already. There is a figure that we put out in
+[00:55:00 -> 00:55:01] a preprint that just look into
+[00:55:01 -> 00:55:05] inactivation of T cells. We already saw some, you know, we
+[00:55:05 -> 00:55:08] saw known biology, TCR complex. We also
+[00:55:08 -> 00:55:11] saw some punitive new biology, which we're very excited to
+[00:55:11 -> 00:55:12] validate in the lab.
+[00:55:13 -> 00:55:17] Some of that were actually also called out in a very recent
+[00:55:17 -> 00:55:19] screen last December published
+[00:55:19 -> 00:55:21] from Alex Marson Lab, also in the Bay Area.
+[00:55:21 -> 00:55:23] So very excited to see that.
+[00:55:24 -> 00:55:27] But the hope is to not just mine the existing data.
+[00:55:27 -> 00:55:31] The hope is that the model can generalize and we will be
+[00:55:31 -> 00:55:34] able to do an in silico experiment
+[00:55:34 -> 00:55:34] into the future.
+[00:55:35 -> 00:55:40] Nobody knows before how much data and what kind of data are
+[00:55:40 -> 00:55:41] needed to do that.
+[00:55:41 -> 00:55:44] With the whole field is waiting for the demonstration that
+[00:55:44 -> 00:55:47] the model can beat linear baseline in perturbation
+[00:55:47 -> 00:55:48] prediction.
+[00:55:48 -> 00:55:51] And it can generalize out of context, not just within a
+[00:55:51 -> 00:55:54] cell line you have training data on, but out of that
+[00:55:54 -> 00:55:54] context.
+[00:55:54 -> 00:55:56] That's why you need a model.
+[00:55:57 -> 00:56:00] So what's very exciting for us is that in this preprint, we
+[00:56:00 -> 00:56:03] saw that generalization capability.
+[00:56:04 -> 00:56:04] A few demonstrations.
+[00:56:05 -> 00:56:08] We first did in T cells.
+[00:56:08 -> 00:56:12] We actually generated the data expressly for this purpose.
+[00:56:13 -> 00:56:16] We generated a resting T cell perturbation screen.
+[00:56:16 -> 00:56:19] So these are T cells in their baseline condition, not
+[00:56:19 -> 00:56:20] activated.
+[00:56:21 -> 00:56:24] And then we have an activated T cell perturbseq.
+[00:56:25 -> 00:56:28] So just T cell activation means I'm trying to kill
+[00:56:28 -> 00:56:29] something.
+[00:56:29 -> 00:56:31] No, these are regulatory T cells.
+[00:56:31 -> 00:56:34] But yes, we activate their receptors so that they're
+[00:56:34 -> 00:56:35] starting to proliferate.
+[00:56:36 -> 00:56:37] They become more active.
+[00:56:37 -> 00:56:40] They can do their physical job.
+[00:56:41 -> 00:56:44] And we only, critically, we only train the model on the
+[00:56:44 -> 00:56:46] resting T cell.
+[00:56:47 -> 00:56:50] And we told the model, hey, this is how the active T cell
+[00:56:50 -> 00:56:51] looks like.
+[00:56:51 -> 00:56:53] Now go and predict what all of the perturbation are going
+[00:56:53 -> 00:56:55] to do in this active T cell.
+[00:56:55 -> 00:56:58] And the model have not seen how perturbation working active
+[00:56:58 -> 00:56:59] T cells.
+[00:57:00 -> 00:57:02] And we set up a couple of rigorous tests.
+[00:57:02 -> 00:57:04] One, linear baseline.
+[00:57:04 -> 00:57:08] Took the perturbational delta in the resting case, just
+[00:57:08 -> 00:57:12] transpose that linearly onto the active T cell, and that's
+[00:57:12 -> 00:57:13] our linear baseline.
+[00:57:13 -> 00:57:16] Essentially, think about this as a combinatorial perturb
+[00:57:16 -> 00:57:17] ation prediction problem.
+[00:57:18 -> 00:57:20] One of the perturbation is activation of the cell.
+[00:57:21 -> 00:57:22] The other is all of the genomic perturbations.
+[00:57:23 -> 00:57:25] Can I just linearly add the two effects together?
+[00:57:25 -> 00:57:27] That would be a linear baseline.
+[00:57:28 -> 00:57:31] And second, we apply other models from the field.
+[00:57:32 -> 00:57:34] And last, but we applied Excel.
+[00:57:34 -> 00:57:38] critically X cell has not seen active T cells, and it's
+[00:57:38 -> 00:57:40] able to make accurate prediction,
+[00:57:40 -> 00:57:43] not only on the known biology, the T cell complex,
+[00:57:43 -> 00:57:45] predicting their effect accurately,
+[00:57:45 -> 00:57:48] that these are going to inactivate the T cells, which is
+[00:57:48 -> 00:57:49] exactly what we would expect to see,
+[00:57:50 -> 00:57:53] but also it predicted the putative T cell inactivators that
+[00:57:53 -> 00:57:54] we found in the screen
+[00:57:54 -> 00:57:58] correctly as well. So that's very exciting to us, and that
+[00:57:58 -> 00:57:59] suggests the possibility
+[00:57:59 -> 00:58:02] that we might be able to use these virtual cell models
+[00:58:02 -> 00:58:03] completely out of context,
+[00:58:03 -> 00:58:06] in an unseen context and predict new biology.
+[00:58:07 -> 00:58:10] And so we're very excited to follow up on those hits and
+[00:58:10 -> 00:58:11] validate them in the lab.
+[00:58:12 -> 00:58:14] Just very briefly, a couple other cases that we saw
+[00:58:14 -> 00:58:16] exciting generalizing capability of
+[00:58:16 -> 00:58:17] this model.
+[00:58:17 -> 00:58:20] Remember, we did a multi-cell type differentiated IPSC
+[00:58:20 -> 00:58:21] experiment.
+[00:58:22 -> 00:58:26] There we specifically held out one cell type from training.
+[00:58:27 -> 00:58:29] So the model has not seen that cell type.
+[00:58:29 -> 00:58:31] Train on the other cell types as well as the rest of the
+[00:58:31 -> 00:58:32] data sets.
+[00:58:32 -> 00:58:35] the model made very good prediction across thousands of
+[00:58:35 -> 00:58:37] genes, thousands of perturbations
+[00:58:37 -> 00:58:41] in that unseen cell type. So again, suggesting the model's
+[00:58:41 -> 00:58:42] ability to generalize out of cell type.
+[00:58:43 -> 00:58:46] And the last experiment I think we're very excited is that
+[00:58:46 -> 00:58:48] we trained this on T-cell cell line,
+[00:58:49 -> 00:58:53] but there was just very recently a primary T-cell perturbs
+[00:58:53 -> 00:58:56] ic published from Alex Marsden's lab.
+[00:58:57 -> 00:58:59] That's an impressive amount of work. It's not easy to do
+[00:58:59 -> 00:59:02] this scaled screening in primary cells.
+[00:59:03 -> 00:59:05] Very few labs have that kind of capabilities.
+[00:59:05 -> 00:59:08] Much easier to do that in T cell lines.
+[00:59:09 -> 00:59:12] Again, the model is able to generalize out of cell lines
+[00:59:12 -> 00:59:15] into primary cells and make accurate predictions there.
+[00:59:15 -> 00:59:20] So they actually perturbed primary cells, not cell lines?
+[00:59:20 -> 00:59:22] Primary T cells harvested from donors.
+[00:59:24 -> 00:59:26] And we were able, from multiple donors, an X cell trained
+[00:59:26 -> 00:59:28] on just one T cell cell line
+[00:59:28 -> 00:59:32] is able to make predictions across multiple donors from
+[00:59:32 -> 00:59:33] primary T cell experiments.
+[00:59:34 -> 00:59:36] This is a validation of the whole theory, right?
+[00:59:36 -> 00:59:40] That you can train on these slightly weird cells and that
+[00:59:40 -> 00:59:41] it will be good
+[00:59:41 -> 00:59:45] because you're covering the domain well enough or whatever
+[00:59:45 -> 00:59:46] it is,
+[00:59:46 -> 00:59:49] that you're able to actually predict in real cells that
+[00:59:49 -> 00:59:52] come directly from real people.
+[00:59:52 -> 00:59:52] That's right.
+[00:59:53 -> 00:59:55] I think building virtual cell is not to replace biological
+[00:59:55 -> 00:59:57] experiments, as you mentioned.
+[00:59:57 -> 01:00:01] What we're trying to do, really the holy grail of virtual
+[01:00:01 -> 01:00:05] cell is to have a model to generalize to unseen context
+[01:00:05 -> 01:00:09] that is harder or even impossible to conduct biological
+[01:00:09 -> 01:00:11] experiments on, right?
+[01:00:11 -> 01:00:15] So far, Excel focusing on cell lines.
+[01:00:15 -> 01:00:18] And eventually, we want to extend to more complicated
+[01:00:18 -> 01:00:21] biological systems such as animals, organoids, and
+[01:00:21 -> 01:00:26] eventually, as we mentioned before, to patients, to human
+[01:00:26 -> 01:00:27] biology, right?
+[01:00:28 -> 01:00:32] And bearing a few numbers, 90% of disease has no cure.
+[01:00:33 -> 01:00:38] And most of the drug failed at the phase three clinical
+[01:00:38 -> 01:00:39] trials on patients.
+[01:00:40 -> 01:00:43] And the success rate of these three trials is as low as 5%
+[01:00:43 -> 01:00:44] to 10%.
+[01:00:44 -> 01:00:45] And phase three means?
+[01:00:45 -> 01:00:48] The final stage on the patient trials.
+[01:00:48 -> 01:00:53] So that's when you generalize from toxicity in phase two to
+[01:00:53 -> 01:00:55] efficacy in phase three, right?
+[01:00:55 -> 01:00:56] From a small cohort.
+[01:00:56 -> 01:00:57] Yeah, from a small cohort.
+[01:00:57 -> 01:00:58] Into a much larger cohort.
+[01:00:58 -> 01:01:00] Oh, sorry. Toxicity is one.
+[01:01:00 -> 01:01:00] Phase one.
+[01:01:00 -> 01:01:01] Two is small cohort.
+[01:01:02 -> 01:01:03] And so a lot of...
+[01:01:03 -> 01:01:04] To a large cohort.
+[01:01:04 -> 01:01:07] So the generalization problem, okay, this drug, I've very
+[01:01:07 -> 01:01:10] carefully selected my patients, and it works pretty well.
+[01:01:10 -> 01:01:13] And now I get a bunch more patients, and suddenly it doesn
+[01:01:13 -> 01:01:14] 't work very well.
+[01:01:14 -> 01:01:16] And that's the big problem that you're...
+[01:01:16 -> 01:01:19] Certainly the promise of virtual cell is that can we build
+[01:01:19 -> 01:01:24] such a model that learns all the causality of biology
+[01:01:24 -> 01:01:28] so that it can be grounded to predict the response
+[01:01:28 -> 01:01:29] eventually on patients.
+[01:01:29 -> 01:01:33] So that we can, for certain drugs, we can select the right
+[01:01:33 -> 01:01:36] patients to conduct the clinical trial zone.
+[01:01:36 -> 01:01:40] So this is a long-term vision, but we already see some
+[01:01:40 -> 01:01:45] early hopes that Excel trend on diverse set of causal data
+[01:01:45 -> 01:01:45] sets
+[01:01:45 -> 01:01:48] can already generalize to some unseen cell types.
+[01:01:49 -> 01:01:51] So certainly there's a lot of experiments to be done
+[01:01:51 -> 01:01:53] to validate this model,
+[01:01:53 -> 01:01:55] so even continuously finding this model.
+[01:01:56 -> 01:01:59] But I think that we certainly see some early hopes.
+[01:02:00 -> 01:02:01] So you were talking about linear models,
+[01:02:01 -> 01:02:05] and this brings up this famous or infamous ARC challenge
+[01:02:05 -> 01:02:06] about, you know, perturbation.
+[01:02:07 -> 01:02:09] And there's been this theme
+[01:02:09 -> 01:02:11] about complicated foundation models
+[01:02:11 -> 01:02:14] oftentimes not beating linear baselines.
+[01:02:14 -> 01:02:18] And I'd like to get your take about that in terms of, first
+[01:02:18 -> 01:02:22] of all, is this different?
+[01:02:22 -> 01:02:24] I mean, I think some of maybe your own models might also
+[01:02:24 -> 01:02:26] have had trouble beating linear baselines in the past.
+[01:02:27 -> 01:02:30] Is there something different about your current data
+[01:02:30 -> 01:02:34] strategy or where you're going and where's the field going?
+[01:02:34 -> 01:02:38] And what is the role of foundation models versus virtual
+[01:02:38 -> 01:02:42] cell models versus these simple baselines?
+[01:02:42 -> 01:02:44] Yeah, a few things.
+[01:02:44 -> 01:02:47] First of all, those benchmarks, as you mentioned, are
+[01:02:47 -> 01:02:51] conducted on reprogl data sets, which are very small data
+[01:02:51 -> 01:02:51] sets.
+[01:02:52 -> 01:02:56] And the metrics people report are mostly MAE.
+[01:02:56 -> 01:03:00] Certainly, you can imagine, because single-cell data sets
+[01:03:00 -> 01:03:05] are so sparse, the average profiles of all the cells,
+[01:03:05 -> 01:03:11] certainly, you can imagine, is a great local optimum to
+[01:03:11 -> 01:03:13] minimize the MAEs.
+[01:03:13 -> 01:03:17] This is why sometimes the average profile of cells has
+[01:03:17 -> 01:03:20] lower MAs even than technical replicates,
+[01:03:21 -> 01:03:24] which are considered off-ground truth for perturbation
+[01:03:24 -> 01:03:26] experiments.
+[01:03:26 -> 01:03:30] So that itself shows that that metric is not reliable.
+[01:03:30 -> 01:03:34] However, most of these benchmarks are still comparing
+[01:03:34 -> 01:03:35] foundation models
+[01:03:35 -> 01:03:39] that trend on static expression datasets, such as cell-by-
+[01:03:39 -> 01:03:39] genes.
+[01:03:40 -> 01:03:42] SGBT is often benchmarked against.
+[01:03:42 -> 01:03:45] Internally, we also find that when it comes to MAE,
+[01:03:45 -> 01:03:49] sometimes SGB kind of fail to outperform linear models just
+[01:03:49 -> 01:03:51] because of the reasons I just stated.
+[01:03:51 -> 01:03:55] And what sets Excel different from these static expression
+[01:03:55 -> 01:03:59] models such as SGB or gene formers is that we actually,
+[01:03:59 -> 01:04:02] instead of training on gene expression datasets, we train
+[01:04:02 -> 01:04:03] on causal datasets.
+[01:04:04 -> 01:04:07] We train on massive amount of genome-wide perturbation
+[01:04:07 -> 01:04:10] datasets so that it learns better about the dynamics of the
+[01:04:10 -> 01:04:11] interventions.
+[01:04:12 -> 01:04:15] And in our preprint, we extensively compare with linear
+[01:04:15 -> 01:04:16] model as well.
+[01:04:17 -> 01:04:21] And as Chu mentioned, linear model totally failed to extend
+[01:04:21 -> 01:04:23] to unseen cell types.
+[01:04:23 -> 01:04:24] You can quickly imagine why.
+[01:04:24 -> 01:04:29] And I believe that foundation model or other more
+[01:04:29 -> 01:04:32] complicated AI models that train on the right data will out
+[01:04:32 -> 01:04:37] perform these linear models in harder tasks, particularly in
+[01:04:37 -> 01:04:39] generalization tasks.
+[01:04:40 -> 01:04:44] And that's why I keep mentioning the right data set with
+[01:04:44 -> 01:04:47] the right AI model will lead to huge improvements.
+[01:04:48 -> 01:04:52] But I think the field still needs to see more biological
+[01:04:52 -> 01:04:56] validations to be more convincing that the virtual cell
+[01:04:56 -> 01:04:58] direction is the right one.
+[01:04:58 -> 01:05:01] Yeah, I think the field suffered from a lack of consistent
+[01:05:01 -> 01:05:03] and uniformly accepted benchmarks.
+[01:05:03 -> 01:05:05] What gets measured will get improved.
+[01:05:06 -> 01:05:11] And in our paper, we measured, I think, one of the metrics
+[01:05:11 -> 01:05:16] that we put a lot of thought into and saw the model really
+[01:05:16 -> 01:05:19] shine is metrics around gene expression changes.
+[01:05:21 -> 01:05:23] So, you know, Pearson Delta, the similarity between
+[01:05:23 -> 01:05:26] predicted changes and ground truth changes upon the perturb
+[01:05:26 -> 01:05:27] ation.
+[01:05:27 -> 01:05:29] That's very hard to cheat on.
+[01:05:30 -> 01:05:31] You have to really get the changes right.
+[01:05:31 -> 01:05:35] And what really blew my mind away is when I saw the model
+[01:05:35 -> 01:05:37] make prediction, just print out the heat map of the gene
+[01:05:37 -> 01:05:41] expression changes, look at the actual raw data, and line
+[01:05:41 -> 01:05:45] up the linear baseline prediction, the ground truth, and
+[01:05:45 -> 01:05:47] the XL prediction all together.
+[01:05:47 -> 01:05:51] It's visually very clear to see that XL prediction is very
+[01:05:51 -> 01:05:54] much more similar to ground truth than the linear baseline.
+[01:05:55 -> 01:05:58] This is a wow moment I was talking about in the beginning.
+[01:05:58 -> 01:05:58] That's right.
+[01:05:58 -> 01:06:00] And it's not hard to understand why.
+[01:06:00 -> 01:06:03] When we put, so this is the first time that someone can put
+[01:06:03 -> 01:06:05] together not just one perturbs
+[01:06:05 -> 01:06:08] but seven genome-wide perturbs campaigns together.
+[01:06:08 -> 01:06:12] Something that jumped out to us biologists right away is
+[01:06:12 -> 01:06:14] that some of the perturbations
+[01:06:14 -> 01:06:17] are context universal, meaning that the genes do the same
+[01:06:17 -> 01:06:19] thing in regards of the cell types
+[01:06:19 -> 01:06:20] you experiment in.
+[01:06:20 -> 01:06:24] It might not be surprising to you that these are your
+[01:06:24 -> 01:06:26] housekeeping genes, right?
+[01:06:26 -> 01:06:28] Of course they do the same thing in every cell.
+[01:06:28 -> 01:06:30] then there are all of these other clusters of genes that
+[01:06:30 -> 01:06:33] have very context-specific functions.
+[01:06:33 -> 01:06:35] They do different things in different cells. Again, not
+[01:06:35 -> 01:06:38] hard to imagine why. In iPSCs in our
+[01:06:38 -> 01:06:41] stem cells, we saw developmentally relevant genes, genes
+[01:06:41 -> 01:06:42] that are important for neuronal
+[01:06:42 -> 01:06:45] differentiation. They only light up in iPSC experiments, of
+[01:06:45 -> 01:06:47] course, right? That makes sense.
+[01:06:48 -> 01:06:51] So if you think about biology, it's so complicated. You
+[01:06:51 -> 01:06:53] have to capture these, you know,
+[01:06:53 -> 01:06:55] context-universal perturbation effects. You also have to
+[01:06:55 -> 01:06:57] somehow learn the context-dependent
+[01:06:57 -> 01:07:00] perturbational effects. It's not hard to then see why a
+[01:07:00 -> 01:07:03] very sophisticated nonlinear model
+[01:07:03 -> 01:07:06] is able to capture and learn all of those biology much
+[01:07:06 -> 01:07:07] better.
+[01:07:08 -> 01:07:11] Are your perturbations always single gene perturbations or
+[01:07:11 -> 01:07:13] do you have more? Because
+[01:07:13 -> 01:07:17] my understanding of regulatory networks is oftentimes it
+[01:07:17 -> 01:07:18] can be a single gene does a ton
+[01:07:18 -> 01:07:22] of things. For example, I think males are just differenti
+[01:07:22 -> 01:07:25] ated due to one gene being enabled at
+[01:07:25 -> 01:07:28] like day seven of embryo development or something, and that
+[01:07:28 -> 01:07:29] differentiates everything is this
+[01:07:29 -> 01:07:31] one gene.
+[01:07:31 -> 01:07:33] But then sometimes you have large networks of genes, which
+[01:07:33 -> 01:07:35] all are very redundant, which
+[01:07:35 -> 01:07:39] allows for more subtle feedback mechanisms and so on.
+[01:07:39 -> 01:07:44] So I could imagine a lot of single gene perturbations as
+[01:07:44 -> 01:07:47] being kind of irrelevant and that you might
+[01:07:47 -> 01:07:51] want to start having a more combinatorial strategy here.
+[01:07:51 -> 01:07:53] Yeah, that's a great question.
+[01:07:53 -> 01:07:55] And Bo and I have thought about this a lot.
+[01:07:55 -> 01:07:58] Actually, it's interesting that you brought up reproductive
+[01:07:58 -> 01:07:58] biology.
+[01:07:58 -> 01:08:03] I study a lot in female cells, the dosage compensation
+[01:08:03 -> 01:08:04] mechanisms.
+[01:08:06 -> 01:08:08] There, female cells have two X chromosomes.
+[01:08:08 -> 01:08:10] Male cells have one X chromosome.
+[01:08:10 -> 01:08:14] To match the dosage output from the X chromosomes,
+[01:08:14 -> 01:08:18] a strategy that the mammalian cells employ is one gene that
+[01:08:18 -> 01:08:19] produces a RNA
+[01:08:19 -> 01:08:22] that does not encode for any protein, just a non-coding RNA
+[01:08:22 -> 01:08:23] .
+[01:08:23 -> 01:08:28] That RNA wraps around one of the female X chromosomes and
+[01:08:28 -> 01:08:30] turns down most of the gene
+[01:08:30 -> 01:08:33] expression from that chromosome, shove it away in a corner
+[01:08:33 -> 01:08:35] of the nucleus, and it's
+[01:08:35 -> 01:08:35] called the bar body.
+[01:08:36 -> 01:08:37] It is never heard from again.
+[01:08:38 -> 01:08:40] And so I absolutely agree with you.
+[01:08:40 -> 01:08:41] One gene can do a lot.
+[01:08:41 -> 01:08:43] But in biology, you also have redundancy.
+[01:08:44 -> 01:08:44] You have compensation.
+[01:08:44 -> 01:08:47] You have all kinds of mechanisms where knocking down one
+[01:08:47 -> 01:08:49] gene is not sufficient to always
+[01:08:49 -> 01:08:49] see a phenotype.
+[01:08:50 -> 01:08:53] What if four genes redundantly do the same thing, right?
+[01:08:54 -> 01:08:55] Taking out one is not going to be sufficient.
+[01:08:56 -> 01:09:00] So where we started with one cell type at a time,
+[01:09:01 -> 01:09:03] loss of function, single gene perturbation,
+[01:09:04 -> 01:09:06] and look at only RNA expression as the output,
+[01:09:07 -> 01:09:09] we're expanding the platform along all of those axes.
+[01:09:10 -> 01:09:13] So that's what we do today to build a scaffold of the data
+[01:09:13 -> 01:09:15] for training models like Excel.
+[01:09:16 -> 01:09:19] We are now beginning to grow in all three axes of the
+[01:09:19 -> 01:09:20] platform,
+[01:09:20 -> 01:09:24] going beyond transcopyptomics alone to like a multimodal
+[01:09:24 -> 01:09:25] data,
+[01:09:25 -> 01:09:29] going beyond just one gene perturbation alone to look at
+[01:09:29 -> 01:09:31] also pathway activation and inactivations,
+[01:09:32 -> 01:09:36] turning on and off entire cascade of gene chain reactions,
+[01:09:37 -> 01:09:39] and also going beyond just cell lines,
+[01:09:39 -> 01:09:43] monocultures into more and more complex translationally
+[01:09:43 -> 01:09:44] relevant systems,
+[01:09:44 -> 01:09:48] into primary cells, into organoids, and doing even direct
+[01:09:48 -> 01:09:49] in vivo perturbation screens.
+[01:09:50 -> 01:09:52] So we believe with all of that expansion, the data will be
+[01:09:52 -> 01:09:54] all the more exciting to train models on.
+[01:09:54 -> 01:09:59] This is also why we incorporate PPI networks as a prior
+[01:09:59 -> 01:10:00] knowledge into our model.
+[01:10:01 -> 01:10:04] And although the model right now are trained on single gene
+[01:10:04 -> 01:10:05] perturbations, but once the model is
+[01:10:05 -> 01:10:09] trained, you can actually predict combinatorial perturb
+[01:10:09 -> 01:10:11] ations just on the model in only silico,
+[01:10:11 -> 01:10:15] right? So in the sense that we can just perturb the tokens
+[01:10:15 -> 01:10:17] of two genes at the same time and see
+[01:10:17 -> 01:10:21] what's the response. Certainly without training the actual
+[01:10:21 -> 01:10:23] combinatorial perturbation data sets,
+[01:10:23 -> 01:10:26] The accuracy may not be there, but at least with the
+[01:10:26 -> 01:10:30] existence of such models, we can start to generate
+[01:10:30 -> 01:10:32] hypotheses using in silico perturbations.
+[01:10:32 -> 01:10:38] How do you see the role of the scientists changing in the
+[01:10:38 -> 01:10:39] age of AI?
+[01:10:39 -> 01:10:42] And you may, because you're not using, your focus is not
+[01:10:42 -> 01:10:46] language models themselves and agentic science and things
+[01:10:46 -> 01:10:49] like that, then you may have a different, slightly
+[01:10:49 -> 01:10:50] different take.
+[01:10:50 -> 01:10:53] You're building these very specific models.
+[01:10:53 -> 01:10:57] But still, one, how are you and your students able to
+[01:10:57 -> 01:10:59] maintain such a high pace?
+[01:10:59 -> 01:11:02] And I suspect it may have something to do with generative
+[01:11:02 -> 01:11:03] AI partly.
+[01:11:03 -> 01:11:07] But also, and how do you see the role of the scientists,
+[01:11:07 -> 01:11:09] the academic changing?
+[01:11:09 -> 01:11:10] Yeah, that's a great question.
+[01:11:10 -> 01:11:15] So my official split of time is 80% on Zara, 20% on my
+[01:11:15 -> 01:11:18] university affiliations.
+[01:11:18 -> 01:11:21] But turns out the reality is 100% on Zara, 100% on the
+[01:11:21 -> 01:11:22] university office.
+[01:11:23 -> 01:11:25] You invented a time machine.
+[01:11:25 -> 01:11:26] That's the answer.
+[01:11:27 -> 01:11:34] So the way I try to keep up is my lab uses lots of agentic
+[01:11:34 -> 01:11:38] AI trying to monitor all the AI papers every day.
+[01:11:39 -> 01:11:41] And every week we have lab meetings.
+[01:11:41 -> 01:11:45] We try to discuss different topics in AI for biology, AI
+[01:11:45 -> 01:11:47] for healthcare, etc.
+[01:11:48 -> 01:11:52] And to be very frank, even as a professor, I find it's
+[01:11:52 -> 01:11:54] extremely hard to catch up.
+[01:11:54 -> 01:11:57] the pace of AI is just so incredibly fast.
+[01:11:58 -> 01:12:01] And to the point that sometimes I feel anxiety.
+[01:12:01 -> 01:12:03] Waking up says, oh my God,
+[01:12:03 -> 01:12:05] there's so many people published
+[01:12:05 -> 01:12:08] and what happened to our existing unpublished work?
+[01:12:09 -> 01:12:10] And certainly you can imagine
+[01:12:10 -> 01:12:13] students probably face 10X anxiety.
+[01:12:14 -> 01:12:17] So sometimes I try to encourage students
+[01:12:17 -> 01:12:20] to really kind of using different tools,
+[01:12:20 -> 01:12:22] trying to stay focused.
+[01:12:22 -> 01:12:28] find the niche area that we become experts on. But with the
+[01:12:28 -> 01:12:32] era of generative AI, now agentic AI,
+[01:12:32 -> 01:12:37] I find the way people, at least academics, do science are
+[01:12:37 -> 01:12:39] extremely different now.
+[01:12:39 -> 01:12:44] Overall, most professors or students in academics start to
+[01:12:44 -> 01:12:48] be very struggling in terms of funding,
+[01:12:48 -> 01:12:52] in terms of the pace of publications. And that's why you
+[01:12:52 -> 01:12:54] can see lots of major breakthroughs come
+[01:12:54 -> 01:12:58] from industry, right? Like AlphaFold, for example. So how
+[01:12:58 -> 01:13:02] academics survive or even thrive at such
+[01:13:02 -> 01:13:05] era of agentic AI is certainly something everybody is
+[01:13:05 -> 01:13:09] thinking about. We see lots of faculties left
+[01:13:09 -> 01:13:13] university and join industry simply for the reasons of
+[01:13:13 -> 01:13:17] resources, right? If you are doing
+[01:13:17 -> 01:13:20] research on AI, do you have enough GPUs at your school? It
+[01:13:20 -> 01:13:23] 's the first question you should ask
+[01:13:23 -> 01:13:27] When a student joins a professor's lab, the first question
+[01:13:27 -> 01:13:29] they often ask is, how many GPUs do you have?
+[01:13:30 -> 01:13:34] So certainly in that sense, industry has a major advantage
+[01:13:34 -> 01:13:36] over academic labs.
+[01:13:36 -> 01:13:42] But I think what academic labs have advantages on is really
+[01:13:42 -> 01:13:49] the pace of innovations and also the niche areas of these
+[01:13:49 -> 01:13:52] specific academic labs can be extremely expert on.
+[01:13:53 -> 01:13:58] So also having the freedom of thinking sometimes also make
+[01:13:58 -> 01:14:02] you easier to innovate on ideas that maybe industry people
+[01:14:02 -> 01:14:03] didn't even think about.
+[01:14:03 -> 01:14:07] Overall, I think the whole field needs to be a lot more
+[01:14:07 -> 01:14:08] innovative to catch up.
+[01:14:09 -> 01:14:14] And hopefully with the help of different tools and
+[01:14:14 -> 01:14:17] hopefully the government start to invest more into academic
+[01:14:17 -> 01:14:22] because I still deeply believe that academic is the main
+[01:14:22 -> 01:14:25] source of innovation for the whole field.
+[01:14:25 -> 01:14:27] And particularly when it comes to biotech.
+[01:14:27 -> 01:14:31] So hopefully we see more investment into academic so that
+[01:14:31 -> 01:14:33] we stay afloat.
+[01:14:33 -> 01:14:34] I agree with you.
+[01:14:34 -> 01:14:35] But why?
+[01:14:35 -> 01:14:38] Why do you think that it why why shouldn't money just go to
+[01:14:38 -> 01:14:39] industry?
+[01:14:39 -> 01:14:43] Why should the government put any money into academia?
+[01:14:43 -> 01:14:47] I still believe the power of academic freedom.
+[01:14:48 -> 01:14:51] This is actually the original motivation we have,
+[01:14:51 -> 01:14:55] such the existence of academic professors who not only we
+[01:14:55 -> 01:14:57] teach, but also we do research.
+[01:14:58 -> 01:15:02] And there's also benefits of teaching and research at the
+[01:15:02 -> 01:15:03] same time,
+[01:15:03 -> 01:15:06] in the sense that when you teach a subject, you actually
+[01:15:06 -> 01:15:08] have to become the experts on it.
+[01:15:08 -> 01:15:11] And that forces you to keep updating your knowledge base
+[01:15:11 -> 01:15:15] and then find easy ways to convey your knowledge to
+[01:15:15 -> 01:15:16] students.
+[01:15:16 -> 01:15:19] And by doing that, you actually start to innovate on
+[01:15:19 -> 01:15:20] different ideas.
+[01:15:21 -> 01:15:25] And myself, for example, I teach a big class in University
+[01:15:25 -> 01:15:29] of Toronto about deep learning and neural networks.
+[01:15:30 -> 01:15:33] It's a gigantic class with 600 students every year.
+[01:15:33 -> 01:15:37] And by teaching that, it forces me to update the slides,
+[01:15:37 -> 01:15:39] lectures every year.
+[01:15:40 -> 01:15:43] And myself reading lots of materials, trying to update
+[01:15:43 -> 01:15:47] myself so that I can find ways to convey some of the
+[01:15:47 -> 01:15:49] knowledge to students.
+[01:15:49 -> 01:15:52] So that's how I keep updating myself whenever there's a
+[01:15:52 -> 01:15:53] chance.
+[01:15:53 -> 01:15:56] I remember vividly we have GPT-2, we updated the lecture.
+[01:15:56 -> 01:16:00] Then different language models, how the multi-thread GPU
+[01:16:00 -> 01:16:04] communication is used in training larger scale neural
+[01:16:04 -> 01:16:05] networks, etc.
+[01:16:05 -> 01:16:08] So I forced myself to just update the models.
+[01:16:09 -> 01:16:13] And by talking to different students, we really generated
+[01:16:13 -> 01:16:17] lots of novel ideas to apply the cutting edge AI models to
+[01:16:17 -> 01:16:21] very specific niche areas in biology or in healthcare.
+[01:16:22 -> 01:16:25] Maybe it's unique to Canadian academic system.
+[01:16:26 -> 01:16:30] By being a professor in academic, we also have access to
+[01:16:30 -> 01:16:32] lots of healthcare data sets,
+[01:16:32 -> 01:16:37] which are very hard for industry to access due to many
+[01:16:37 -> 01:16:39] illegal reasons or regulatory reasons.
+[01:16:40 -> 01:16:43] And that's why you see some of the papers we publish
+[01:16:43 -> 01:16:46] through academic hospitals in Canada,
+[01:16:46 -> 01:16:49] where we develop some of the state-of-the-art foundation
+[01:16:49 -> 01:16:51] model for ultrasound images.
+[01:16:52 -> 01:16:55] So that's what I mean that there's a certain level of
+[01:16:55 -> 01:16:59] freedom of academic thinking that really drives lots of
+[01:16:59 -> 01:17:00] innovations.
+[01:17:01 -> 01:17:06] And I still believe, maybe it's biased, but myself still
+[01:17:06 -> 01:17:10] believe that having a certain level of freedom of academic
+[01:17:10 -> 01:17:11] thinking
+[01:17:11 -> 01:17:16] really leads to lots of innovations that are unsinkable in
+[01:17:16 -> 01:17:17] industries.
+[01:17:17 -> 01:17:19] I 100% agree with Bo there.
+[01:17:19 -> 01:17:23] So, you know, just thinking about the lab workflow that we
+[01:17:23 -> 01:17:26] do, a lot of these are building upon innovations that were
+[01:17:26 -> 01:17:28] first pioneered in academia as well.
+[01:17:29 -> 01:17:31] CRISPR, of course, was discovered in academia.
+[01:17:32 -> 01:17:34] CRISPR applied to mammalian high-throughput screening, also
+[01:17:34 -> 01:17:36] demonstrated in academia first.
+[01:17:36 -> 01:17:39] Singles RNA-seq, this kind of droplet-encapsulated singles
+[01:17:39 -> 01:17:42] RNA-seq first demonstrated in academia.
+[01:17:42 -> 01:17:44] Then different companies tried to build it up into
+[01:17:44 -> 01:17:46] commercial offerings.
+[01:17:47 -> 01:17:49] putting all of these together to do perturb seek at first,
+[01:17:49 -> 01:17:51] also pioneered in academia, right?
+[01:17:52 -> 01:17:54] Chris Bach's lab, Jonathan Weissman's lab,
+[01:17:54 -> 01:17:56] Evie Rigev's lab, many of the pioneers in academia.
+[01:17:57 -> 01:18:00] And then I think these, especially on the lab side,
+[01:18:01 -> 01:18:02] these innovation takes so long
+[01:18:02 -> 01:18:05] and the discovery process can be so accidental, right?
+[01:18:05 -> 01:18:11] That it's perhaps not ideal for pure industry to take on.
+[01:18:12 -> 01:18:14] But once they show early promise,
+[01:18:15 -> 01:18:18] scaling them and robustifying them
+[01:18:18 -> 01:18:21] and generating data that's not only massive,
+[01:18:21 -> 01:18:24] but high quality, especially for AI scale.
+[01:18:24 -> 01:18:27] I think that's something that can be very well done
+[01:18:27 -> 01:18:29] in industry, both the mindset
+[01:18:29 -> 01:18:32] as well as the kind of the resources
+[01:18:32 -> 01:18:34] that we can support.
+[01:18:35 -> 01:18:38] That sometimes can be hard for academia labs to match.
+[01:18:39 -> 01:18:40] Zara has been very generous
+[01:18:40 -> 01:18:43] with releasing your data sets and your models.
+[01:18:43 -> 01:18:45] You seem to be very committed to open science.
+[01:18:45 -> 01:18:48] Given some of the things you were just talking about and
+[01:18:48 -> 01:18:53] the discussion about what is the best, most important data
+[01:18:53 -> 01:18:57] strategies for virtual cells or understanding human biology
+[01:18:57 -> 01:19:03] , where do you think academia should go next, now and next?
+[01:19:03 -> 01:19:08] since Zara has probably a budget comparable to probably
+[01:19:08 -> 01:19:11] dozens or hundreds of bio labs right now.
+[01:19:12 -> 01:19:15] What do you think that if you are an academic, a professor,
+[01:19:15 -> 01:19:16] especially in a wet lab,
+[01:19:17 -> 01:19:20] what would you want to be focusing on?
+[01:19:20 -> 01:19:23] First of all, myself is a deep believer of open science.
+[01:19:23 -> 01:19:28] That's why all the models we talk about here that are open
+[01:19:28 -> 01:19:28] source,
+[01:19:28 -> 01:19:32] you can find all the data weights from my lab GitHub.
+[01:19:32 -> 01:19:33] It's very thorough.
+[01:19:33 -> 01:19:33] Yeah, thank you.
+[01:19:34 -> 01:19:37] And the reason I believe open science is that, as Chu
+[01:19:37 -> 01:19:40] mentioned, most of the time academic lab, we started an
+[01:19:40 -> 01:19:42] idea and we prototype it.
+[01:19:42 -> 01:19:43] It's not scalable.
+[01:19:43 -> 01:19:45] It's not even a good product.
+[01:19:45 -> 01:19:47] And industry can take it to scale things up.
+[01:19:47 -> 01:19:51] This is also why SGBT quickly become one of the most widely
+[01:19:51 -> 01:19:55] used single cell foundation model in pharma companies.
+[01:19:56 -> 01:19:58] So that's very encouraging to us.
+[01:19:58 -> 01:20:03] And this is why Zara is also start to open source some of
+[01:20:03 -> 01:20:04] the data sets, some of the models.
+[01:20:05 -> 01:20:08] Part of the reason is that we believe virtual sale is such
+[01:20:08 -> 01:20:13] an early field and it doesn't help to withhold certain data
+[01:20:13 -> 01:20:16] sets or certain models because it's so early.
+[01:20:16 -> 01:20:20] A better win-win situation is everybody gets to in this
+[01:20:20 -> 01:20:22] field, start to contribute data together, start to
+[01:20:22 -> 01:20:26] contribute models together to exchange ideas so that this
+[01:20:26 -> 01:20:30] field can move forward in a much faster pace.
+[01:20:30 -> 01:20:33] We see successful examples in protein space, right?
+[01:20:33 -> 01:20:36] Because of the availability of open source data sets in PDB
+[01:20:36 -> 01:20:40] s, therefore we have models such as AlphaFold, RosettaFold.
+[01:20:40 -> 01:20:43] Again, AlphaFold to also open source, therefore we can
+[01:20:43 -> 01:20:45] quickly iterate different models.
+[01:20:45 -> 01:20:48] That's why you see kind of a booming situation in protein
+[01:20:48 -> 01:20:49] space.
+[01:20:49 -> 01:20:52] We want to do the same thing for virtual cells.
+[01:20:52 -> 01:20:54] Let's put all the data sets together.
+[01:20:54 -> 01:20:57] Let's have the same standard protocols to generate high
+[01:20:57 -> 01:20:58] quality data sets.
+[01:20:58 -> 01:21:01] Let's put all the resources together to generate next
+[01:21:01 -> 01:21:03] generation of virtual cell models.
+[01:21:04 -> 01:21:06] When it comes to academic labs,
+[01:21:06 -> 01:21:09] something Chu can comment on, how wet lab academics can
+[01:21:09 -> 01:21:09] survive.
+[01:21:10 -> 01:21:15] But from DryLab perspective, I do encourage all the DryLab
+[01:21:15 -> 01:21:17] AI researchers in universities
+[01:21:17 -> 01:21:20] to start to collaborate with industries so that they can
+[01:21:20 -> 01:21:24] get more resources to develop their own ideas.
+[01:21:25 -> 01:21:30] And with the era of agentic AI, now everybody can code.
+[01:21:30 -> 01:21:35] So it's more important to have the right taste about your
+[01:21:35 -> 01:21:35] project
+[01:21:35 -> 01:21:40] so that you don't just burn tokens without purpose, right?
+[01:21:40 -> 01:21:44] So we want more academic students, academic professors to
+[01:21:44 -> 01:21:47] have higher taste of research
+[01:21:47 -> 01:21:53] so that we make the right utility of agentic AIs.
+[01:21:53 -> 01:21:57] As a professor, your job is to have taste, obviously.
+[01:21:57 -> 01:22:01] But as a student, how do you develop taste in a world where
+[01:22:01 -> 01:22:04] so much of the thinking scientific
+[01:22:04 -> 01:22:08] process could be essentially outsourced to an LLM or, you
+[01:22:08 -> 01:22:11] know, there's not a world where
+[01:22:11 -> 01:22:14] you're forced to bang your head against something and learn
+[01:22:14 -> 01:22:15] taste by the hard way.
+[01:22:15 -> 01:22:19] This is why we need academic training where you get into a
+[01:22:19 -> 01:22:21] field you know nothing about
+[01:22:21 -> 01:22:25] and hopefully after you graduate, become the expert about
+[01:22:25 -> 01:22:27] this particular topic in the
+[01:22:27 -> 01:22:28] world, right?
+[01:22:28 -> 01:22:30] This is why you have to go through different programs to
+[01:22:30 -> 01:22:32] talk to your peers, talk to your
+[01:22:32 -> 01:22:36] professors to get an idea about what's a good research
+[01:22:36 -> 01:22:38] taste to begin with.
+[01:22:38 -> 01:22:42] And, but more importantly, I always teach students that the
+[01:22:42 -> 01:22:43] best way to learn
+[01:22:43 -> 01:22:45] something is to just program it.
+[01:22:45 -> 01:22:48] By programming, you kind of know what's the details hidden
+[01:22:48 -> 01:22:51] in all the mathematical
+[01:22:51 -> 01:22:54] equations in the paper, which often you omit.
+[01:22:54 -> 01:22:59] But in the era of agentic AI, it seems slightly different
+[01:22:59 -> 01:23:00] in the sense that we
+[01:23:00 -> 01:23:04] used to spend lots of time coding, a little bit of time
+[01:23:04 -> 01:23:05] just debugging.
+[01:23:05 -> 01:23:09] But now we let the agent do most of the coding, but we
+[01:23:09 -> 01:23:12] spend most of the time debugging, which
+[01:23:12 -> 01:23:14] seems to be definitely interesting to me.
+[01:23:14 -> 01:23:19] And we had lots of discussion with the students in the lab,
+[01:23:19 -> 01:23:21] what's the best way to spot bugs
+[01:23:21 -> 01:23:22] by AIs.
+[01:23:23 -> 01:23:28] So how do you find places where AI is particularly good at?
+[01:23:29 -> 01:23:33] Also, how do you find places AI are still limited at?
+[01:23:34 -> 01:23:37] It's kind of, you need lots of China era as well.
+[01:23:38 -> 01:23:41] And in the end, you still need to kind of validate your
+[01:23:41 -> 01:23:43] model using real world evidence, right?
+[01:23:43 -> 01:23:48] So that's why collaboration with wet labs, collaboration
+[01:23:48 -> 01:23:50] with clinical teams to validate your model,
+[01:23:50 -> 01:23:55] provide a feedback signals to your taste, as we discussed,
+[01:23:55 -> 01:23:58] is a very important training program.
+[01:23:59 -> 01:24:02] On the wet lab side, academic has extremely important roles
+[01:24:02 -> 01:24:02] to play.
+[01:24:03 -> 01:24:07] I think we'll enter a field of an era of symbiotic
+[01:24:07 -> 01:24:10] innovation and cross-pollination of ideas.
+[01:24:10 -> 01:24:12] Just like in AI field, I think we have great ideas coming
+[01:24:12 -> 01:24:14] out of academia still all the time.
+[01:24:14 -> 01:24:19] But industry now increasingly are contributing new ideas on
+[01:24:19 -> 01:24:21] architecture, on all of that as well.
+[01:24:22 -> 01:24:25] In the wet lab side, certainly industry seems to be able to
+[01:24:25 -> 01:24:28] scale this type of data generation quite well.
+[01:24:28 -> 01:24:33] But biology is so much more than just cell-based perturb-se
+[01:24:33 -> 01:24:34] q.
+[01:24:34 -> 01:24:38] Beyond RNA-seq, we would like to measure many other analyt
+[01:24:38 -> 01:24:38] es, right?
+[01:24:39 -> 01:24:44] Proteins, metabolites, lipids, protein-protein interactions
+[01:24:44 -> 01:24:44] .
+[01:24:45 -> 01:24:46] How do we do that at scale?
+[01:24:47 -> 01:24:50] Beyond individual cells, we would like to be able to
+[01:24:50 -> 01:24:51] measure cell-cell interaction,
+[01:24:51 -> 01:24:56] spatial, cell in their native context, or even whole animal
+[01:24:56 -> 01:24:57] level in vivo perturbations.
+[01:24:58 -> 01:25:00] Again, how do we do that at scale with lots of great
+[01:25:00 -> 01:25:01] innovation coming out of academia?
+[01:25:02 -> 01:25:03] Actually, just one great paper last week.
+[01:25:04 -> 01:25:06] And so how do we connect all of these together?
+[01:25:07 -> 01:25:09] I think we have many years of work ahead of us to fully
+[01:25:09 -> 01:25:11] crack data generation for all biology.
+[01:25:12 -> 01:25:14] And that I think we need to scale the industrialization,
+[01:25:14 -> 01:25:16] the innovation from industry.
+[01:25:17 -> 01:25:19] We also need that from academia.
+[01:25:19 -> 01:25:23] I think we'll together move this field to the next level.
+[01:25:23 -> 01:25:26] One question that we've been trying to ask everyone is in
+[01:25:26 -> 01:25:32] your field, which you could say maybe is AI and, you know,
+[01:25:32 -> 01:25:36] sort of high throughput experimentation or however you want
+[01:25:36 -> 01:25:36] to define it.
+[01:25:37 -> 01:25:40] If you could wave your magic wand and have a bottleneck
+[01:25:40 -> 01:25:45] removed for you or a key problem solved, what would that be
+[01:25:45 -> 01:25:45] ?
+[01:25:46 -> 01:25:46] Protein.
+[01:25:46 -> 01:25:50] Okay. If there is a way to do protein sequencing or high
+[01:25:50 -> 01:25:51] throughput protein measurement,
+[01:25:52 -> 01:25:54] the same scale that we can do genomics, that will be
+[01:25:54 -> 01:25:57] amazing. I'm training genomics field,
+[01:25:57 -> 01:26:00] but if I can do that, I would incorporate that technology
+[01:26:00 -> 01:26:01] in a heartbeat.
+[01:26:02 -> 01:26:05] RNA is amazing. It foreshadows which proteins are going to
+[01:26:05 -> 01:26:08] get made, but protein by and large
+[01:26:08 -> 01:26:10] are the functional units in a cell. Not only does their
+[01:26:10 -> 01:26:13] abundance matter, their post-translational
+[01:26:13 -> 01:26:17] modification matter, their localization in a cell matter.
+[01:26:17 -> 01:26:20] If you can measure all of those things, their conform
+[01:26:20 -> 01:26:22] ational states, their modifications,
+[01:26:22 -> 01:26:26] their abundances, their localizations at scale, single cell
+[01:26:26 -> 01:26:29] or even spatially, I think such
+[01:26:29 -> 01:26:31] data sets would be incredibly useful to train the next
+[01:26:31 -> 01:26:33] generation of initial models.
+[01:26:33 -> 01:26:35] I know there's a lot of innovations in that direction.
+[01:26:36 -> 01:26:38] Can't wait to see that become come of age.
+[01:26:38 -> 01:26:42] My hope is, I hope to see a breakthrough in sequencing
+[01:26:42 -> 01:26:43] technology.
+[01:26:44 -> 01:26:47] Not just the reduced cost, but sequencing technologies that
+[01:26:47 -> 01:26:50] can sequence the same cells at different time points.
+[01:26:51 -> 01:26:53] I think this is much lacking right now because in order to
+[01:26:53 -> 01:26:55] sequence the cell, you have to kill the cell.
+[01:26:55 -> 01:27:00] So can we have a technology that can measure the cell
+[01:27:00 -> 01:27:04] states at different time points for the same set of cells?
+[01:27:05 -> 01:27:08] I think that will bring a very different dimension to the
+[01:27:08 -> 01:27:12] data set so that we can start to measure the temporal
+[01:27:12 -> 01:27:13] dynamics of cells.
+[01:27:14 -> 01:27:16] So far, everything we measure, everything we model is
+[01:27:16 -> 01:27:18] extremely static.
+[01:27:19 -> 01:27:22] So can we have a technology that measures different cell
+[01:27:22 -> 01:27:26] response at different time points for the same set of cells
+[01:27:26 -> 01:27:26] ?
+[01:27:26 -> 01:27:30] We unlock massive opportunity to kind of model the dynamics
+[01:27:30 -> 01:27:31] of cells.
+[01:27:31 -> 01:27:33] To me, that is a real virtual cell.
+[01:27:34 -> 01:27:35] That's a really interesting idea.
+[01:27:35 -> 01:27:37] I never would have thought about that.
+[01:27:37 -> 01:27:41] Wow. Would you be okay with even just partial, like small
+[01:27:41 -> 01:27:44] snippets of genes or maybe three prime regions of a small
+[01:27:44 -> 01:27:45] number of transcripts?
+[01:27:45 -> 01:27:49] Yeah, we can start with a small set of gene panels to begin
+[01:27:49 -> 01:27:50] with, right?
+[01:27:50 -> 01:27:56] But eventually, since we're talking about the magic one,
+[01:27:56 -> 01:28:00] eventually, if we can have a system that observes how cells
+[01:28:00 -> 01:28:03] evolve at different time points,
+[01:28:03 -> 01:28:08] and we have enough data to actually model such development,
+[01:28:08 -> 01:28:11] I think that would be real virtual cell modeling.
+[01:28:11 -> 01:28:16] There's small attempts in, or earlier attempts in just, for
+[01:28:16 -> 01:28:17] example,
+[01:28:17 -> 01:28:20] sucking out portions of the cells, taking almost biopsies
+[01:28:20 -> 01:28:21] from the cell
+[01:28:21 -> 01:28:25] to do a fraction of the cytoplasm measurements.
+[01:28:25 -> 01:28:27] So that might be similar to the idea you talk about.
+[01:28:27 -> 01:28:31] There's also work from Paul Blinley's lab to have the cells
+[01:28:31 -> 01:28:34] secrete little vesicles
+[01:28:34 -> 01:28:37] and they harvest that in the cell culture media
+[01:28:37 -> 01:28:41] to measure what the cells are producing longitudinally.
+[01:28:42 -> 01:28:43] But there hasn't been technology
+[01:28:43 -> 01:28:46] that can actually measure the entire cell's transcriptome
+[01:28:46 -> 01:28:47] while still keeping the cell.
+[01:28:47 -> 01:28:48] You can't have the cake and eat it.
+[01:28:49 -> 01:28:50] Cool.
+[01:28:50 -> 01:28:52] Yeah, thank you for taking the time to chat with us.
+[01:28:52 -> 01:28:53] It's been great.
+[01:28:53 -> 01:28:53] We learned a lot.
+[01:28:53 -> 01:28:56] It was a lot of really interesting discussions.
+[01:28:56 -> 01:28:57] And I especially really appreciate
+[01:28:57 -> 01:28:58] your commitment to open science
+[01:28:58 -> 01:29:01] and all of the cool models and data you've released.
+[01:29:02 -> 01:29:05] Is there any last thoughts you have or anything you'd like
+[01:29:05 -> 01:29:06] the audience to know?
+[01:29:08 -> 01:29:11] Overall, I think virtual sales is such a new and fast-mo
+[01:29:11 -> 01:29:12] ving field.
+[01:29:12 -> 01:29:15] We hope to have more and more people join us.
+[01:29:15 -> 01:29:17] And our Excel paper is out.
+[01:29:18 -> 01:29:21] And we look forward to receiving your comments and feedback
+[01:29:21 -> 01:29:21] s.
+[01:29:22 -> 01:29:23] And also, we're hiring.
+[01:29:23 -> 01:29:26] Yeah, we are always looking for talented engineers, techn
+[01:29:26 -> 01:29:29] ologists, biologists, drug hunters, AI scientists,
+[01:29:29 -> 01:29:31] computational biologists.
+[01:29:31 -> 01:29:34] look on Zara.com, look for
+[01:29:34 -> 01:29:36] the open roles, we'll be happy
+[01:29:36 -> 01:29:38] to chat with you. Thank you. Thank you very much.
+[01:29:38 -> 01:29:39] Great, thank you.

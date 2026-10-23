@@ -7,7 +7,12 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-10-23 | [TWIML：Airbnb Company Brain 如何把隐性知识交给 Agent](../podcast-learning/reports/2026-10-21_rss-twiml_airbnb-company-brain.md) | podcast-learning |
+| 2026-10-23 | [Practical AI：Agentic 漏洞发现、Exploit 开发与假 POC](../podcast-learning/reports/2026-10-22_rss-practical-ai_agentic-vulnerability-discovery.md) | podcast-learning |
+| 2026-10-23 | [Latent Space：X-Cell 为什么说因果模型先需要因果数据](../podcast-learning/reports/2026-07-21_rss-latent-space_xcell-causal-data.md) | podcast-learning |
 | 2026-10-23 | [HarnessPro 精读：用可执行反馈与帕累托选择约束 Harness 递归改进](../ai-learning/reports/paper_analyses/51_harnesspro_2026.md) | ai-learning |
+| 2026-10-23 | [Dwarkesh × Ryan Greenblatt：AI 研究自动化会怎样加速，又会怎样失控](../podcast-learning/reports/2026-08-11_rss-dwarkesh_ryan-greenblatt-ai-rnd-automation.md) | podcast-learning |
+| 2026-10-23 | [Cognitive Revolution：Biohub 为什么先造数据，再造生命世界模型](../podcast-learning/reports/2026-10-20_rss-cognitive-revolution_biohub-world-model-life.md) | podcast-learning |
 | 2026-10-22 | [大小马智驾 V23：小米×徕卡合作幕后——从高管大师课到 Leica M4](../podcast-learning/reports/2024-12-25_ximalaya-daxiaoma-zhijia_v23-xiaomi-leica.md) | podcast-learning |
 | 2026-10-22 | [Google 自主湿实验室 Agent：用物理现实、实验反馈与人类战略闭合科学发现](../ai-learning/reports/knowledge_reports/Google_自主湿实验室Agent_生物现实约束与闭环_深度解析_20261021.md) | ai-learning |
 | 2026-10-22 | [ALTK-Evolve：学习型 Memory 如何让 Agent 在服务任务中持续改进](../ai-learning/reports/knowledge_reports/ALTK_Evolve_学习型Memory与Agent服务任务_深度解析_20261021.md) | ai-learning |
@@ -27,11 +32,6 @@
 | 2026-10-20 | [说医解药 Vol.91：银鳕鱼汞中毒争议——三种汞、鳕鱼命名史与 FDA 选鱼数学](../podcast-learning/reports/2026-10-08_xiaoyuzhou-shuoyi-jieyao_vol91-cod-mercury.md) | podcast-learning |
 | 2026-10-20 | [程若倩教授：孩子身高这件事，到底矮不矮、治不治？](../podcast-learning/reports/2026-09-27_xiaoyuzhou-boluo-jiankang_chengruoqian.md) | podcast-learning |
 | 2026-10-20 | [炒菜调料时机：从短视频口诀到可复用的厨房判断](../web-surfing/reports/cooking-logic-timing-douyin.md) | web-surfing |
-| 2026-10-20 | [成为巴菲特27：买珠还椟——从邓白氏到穆迪，商业信用的权力与秩序](../podcast-learning/reports/2026-02-11_xiaoyuzhou-chengwei-buffett_nantian.md) | podcast-learning |
-| 2026-10-20 | [惠州租房建议报告：两位老人 2026 年 9/10 月短住体验](../web-surfing/reports/huizhou-rental-guide-2026-09.md) | web-surfing |
-| 2026-10-20 | [屠龙×Karl Deisseroth：故事如何进入精神病学，光如何成为神经元开关](../podcast-learning/reports/2026-10-06_xiaoyuzhou-tulong-dashihua_karl-deisseroth.md) | podcast-learning |
-| 2026-10-20 | [对话盛颖：xAI，Infra的浪漫，SGLang，开源，平权与「甄嬛传」](../podcast-learning/reports/2026-08-04_rss-guigu101_shengying.md) | podcast-learning |
-| 2026-10-20 | [对话 Evoken 陈冕：在模型不断吞噬应用价值的时代，一家独立 AI 应用公司如何 survive](../podcast-learning/reports/2026-07-30_xiaoyuzhou-wandian-latetalk_chenmian.md) | podcast-learning |
 
 ## 🤖 AI Learning（126 篇）
 
@@ -289,10 +289,15 @@
 | 2026-04-20 | [Qwen2.5-3B GRPO 强化学习微调](../ai-practice/experiments/exp_004_qwen25_grpo_finetune.md) | — |
 | 2026-04-20 | [HuggingFace Hub 模型与数据集管理](../ai-practice/experiments/exp_002_huggingface_basics.md) | — |
 
-## 🎙️ Podcast Learning（85 篇）
+## 🎙️ Podcast Learning（90 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-10-23 | [TWIML：Airbnb Company Brain 如何把隐性知识交给 Agent](../podcast-learning/reports/2026-10-21_rss-twiml_airbnb-company-brain.md) | `podcast`, `company-brain`, `context-engineering`, `agents`, `evals` |
+| 2026-10-23 | [Practical AI：Agentic 漏洞发现、Exploit 开发与假 POC](../podcast-learning/reports/2026-10-22_rss-practical-ai_agentic-vulnerability-discovery.md) | `podcast`, `agentic-security`, `vulnerability-research`, `exploit`, `evals` |
+| 2026-10-23 | [Latent Space：X-Cell 为什么说因果模型先需要因果数据](../podcast-learning/reports/2026-07-21_rss-latent-space_xcell-causal-data.md) | `podcast`, `ai-for-science`, `causal-data`, `virtual-cell`, `diffusion-model` |
+| 2026-10-23 | [Dwarkesh × Ryan Greenblatt：AI 研究自动化会怎样加速，又会怎样失控](../podcast-learning/reports/2026-08-11_rss-dwarkesh_ryan-greenblatt-ai-rnd-automation.md) | `podcast`, `ai-rnd-automation`, `recursive-self-improvement`, `alignment`, `reward-hacking` |
+| 2026-10-23 | [Cognitive Revolution：Biohub 为什么先造数据，再造生命世界模型](../podcast-learning/reports/2026-10-20_rss-cognitive-revolution_biohub-world-model-life.md) | `podcast`, `ai-for-science`, `virtual-cell`, `world-model`, `biology-data` |
 | 2026-10-22 | [大小马智驾 V23：小米×徕卡合作幕后——从高管大师课到 Leica M4](../podcast-learning/reports/2024-12-25_ximalaya-daxiaoma-zhijia_v23-xiaomi-leica.md) | `xiaomi`, `leica`, `mobile-imaging`, `photography`, `brand-collab` |
 | 2026-10-21 | [高能量 238：全球资本市场为何开始集体缺钱——美债、AI CAPEX 与中国融资结构](../podcast-learning/reports/2026-10-20_xiaoyuzhou-gaonengliang_vol238-global-liquidity.md) | `podcast`, `macro`, `liquidity`, `ai-capex`, `capital-markets` |
 | 2026-10-21 | [起朱楼 185：ETF 从复制市场到成为市场——被动投资的力量、激励与风险](../podcast-learning/reports/2026-10-20_xiaoyuzhou-qizhulou_vol185-etf-market.md) | `podcast`, `etf`, `passive-investing`, `market-structure`, `asset-allocation` |

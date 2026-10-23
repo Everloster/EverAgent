@@ -1,0 +1,300 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-07-21_rss-latent-space_xcell-causal-data.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-23",
+  "generator": {
+    "model": "gpt-5.6-sol",
+    "harness": "codex",
+    "run_id": "generator-4eb580a94405",
+    "explicit_model_override": false,
+    "override_reason": ""
+  },
+  "task": {
+    "summary": "深度研究 X-Cell 的因果扰动数据、Perturb-seq 数据工厂、扩散模型、先验与跨 context 泛化。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "必须使用 Razer 全量转写并保留可核验的 artifact、时间戳与转写审计证据。"
+      },
+      {
+        "id": "R02",
+        "text": "产出可脱离对话独立阅读的 deep 播客研究报告，覆盖核心论证、案例、关键数字和反方。"
+      },
+      {
+        "id": "R03",
+        "text": "区分节目主张、外部一手证据与报告推断，不把预测或公司自述写成已验证事实。"
+      },
+      {
+        "id": "R04",
+        "text": "写明限制、未解问题和下一步研究方向。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "primary",
+      "title": "Latent Space 官方节目页",
+      "locator": "https://www.latent.space/p/xaira",
+      "accessed_on": "2026-10-23"
+    },
+    {
+      "id": "S02",
+      "kind": "local",
+      "title": "Razer 全量转写",
+      "locator": "podcast-learning/reports/transcripts/2026-07-21_rss-latent-space_xcell-causal-data.transcript.txt",
+      "accessed_on": "2026-10-23"
+    },
+    {
+      "id": "S03",
+      "kind": "local",
+      "title": "官方 shownotes 快照",
+      "locator": "podcast-learning/reports/transcripts/2026-07-21_rss-latent-space_xcell-causal-data.shownotes.md",
+      "accessed_on": "2026-10-23"
+    },
+    {
+      "id": "S04",
+      "kind": "execution",
+      "title": "Razer artifact receipt",
+      "locator": "podcast-learning/reports/transcripts/2026-07-21_rss-latent-space_xcell-causal-data.artifact.json",
+      "accessed_on": "2026-10-23"
+    },
+    {
+      "id": "S05",
+      "kind": "primary",
+      "title": "X-Cell bioRxiv v1",
+      "locator": "https://www.biorxiv.org/content/10.64898/2026.03.18.712807v1",
+      "accessed_on": "2026-10-23"
+    },
+    {
+      "id": "S06",
+      "kind": "official",
+      "title": "X-Cell 模型页",
+      "locator": "https://huggingface.co/Xaira-Therapeutics/X-Cell",
+      "accessed_on": "2026-10-23"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "观测表达图谱不足以识别 perturbation 的因果响应，真实干预数据是核心信息来源。",
+      "report_anchor": "### 1. 观测图谱回答“是什么”，药物发现需要“改了会怎样”",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S05"
+      ],
+      "evidence": "观测表达图谱不足以识别 perturbation 的因果响应，真实干预数据是核心信息来源。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "X-Atlas/Pisces 含 25.6 million 个扰动单细胞转录组并覆盖 16 个 context。",
+      "report_anchor": "### 2. X-Atlas/Pisces 的关键资产是一条干预数据生产线",
+      "support": "direct",
+      "source_ids": [
+        "S05"
+      ],
+      "evidence": "X-Atlas/Pisces 含 25.6 million 个扰动单细胞转录组并覆盖 16 个 context。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "X-Cell 用 diffusion language model 对 control-to-perturbed gene expression 进行整体、多步修正。",
+      "report_anchor": "### 3. Diffusion language model 更贴合无序、高维状态转移",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S05"
+      ],
+      "evidence": "X-Cell 用 diffusion language model 对 control-to-perturbed gene expression 进行整体、多步修正。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "六类 biological prior 提供归纳偏置，但嘉宾把数据质量和规模排在架构与先验之前。",
+      "report_anchor": "### 4. Biological prior 是稀疏数据下的归纳偏置",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S05"
+      ],
+      "evidence": "六类 biological prior 提供归纳偏置，但嘉宾把数据质量和规模排在架构与先验之前。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "预印本报告 4.9B X-Cell-Ultra、最高五倍指标提升及跨 context zero-shot generalization。",
+      "report_anchor": "### 5. Scaling 重新出现，是因为数据先越过了信息墙",
+      "support": "direct",
+      "source_ids": [
+        "S05"
+      ],
+      "evidence": "预印本报告 4.9B X-Cell-Ultra、最高五倍指标提升及跨 context zero-shot generalization。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "Test-time adaptation 使用目标域无标签数据，应与严格 zero-shot 分开报告。",
+      "report_anchor": "### 6. Zero-shot generalization 必须和简单基线一起验",
+      "support": "derived",
+      "source_ids": [
+        "S05"
+      ],
+      "evidence": "Test-time adaptation 使用目标域无标签数据，应与严格 zero-shot 分开报告。",
+      "critical": false
+    },
+    {
+      "id": "C07",
+      "claim": "当前结果仍主要限于 CRISPRi、单基因与 transcriptomic readout，不能等同完整虚拟细胞。",
+      "report_anchor": "### 7. 距离完整虚拟细胞还隔着组合、多模态和 in vivo",
+      "support": "derived",
+      "source_ids": [
+        "S02",
+        "S05"
+      ],
+      "evidence": "当前结果仍主要限于 CRISPRi、单基因与 transcriptomic readout，不能等同完整虚拟细胞。",
+      "critical": true
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "虚拟细胞与药物发现目标",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "虚拟细胞与药物发现目标"
+    },
+    {
+      "id": "U02",
+      "title": "Observational 与 causal data",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "Observational 与 causal data"
+    },
+    {
+      "id": "U03",
+      "title": "Perturb-seq 原理",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "Perturb-seq 原理"
+    },
+    {
+      "id": "U04",
+      "title": "X-Atlas/Pisces 数据工程",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "X-Atlas/Pisces 数据工程"
+    },
+    {
+      "id": "U05",
+      "title": "Autoregression 到 diffusion",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "Autoregression 到 diffusion"
+    },
+    {
+      "id": "U06",
+      "title": "六类 biological prior",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "六类 biological prior"
+    },
+    {
+      "id": "U07",
+      "title": "Scaling 与 4.9B X-Cell-Ultra",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "Scaling 与 4.9B X-Cell-Ultra"
+    },
+    {
+      "id": "U08",
+      "title": "Zero-shot context generalization",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "Zero-shot context generalization"
+    },
+    {
+      "id": "U09",
+      "title": "Linear baseline 争议",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "Linear baseline 争议"
+    },
+    {
+      "id": "U10",
+      "title": "组合扰动与 in vivo",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "组合扰动与 in vivo"
+    },
+    {
+      "id": "U11",
+      "title": "Academia 与 industry",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "Academia 与 industry"
+    },
+    {
+      "id": "U12",
+      "title": "蛋白全景与同一细胞纵向观测",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S02"
+      ],
+      "report_anchor": "节目结尾把测量缺口具体化为两个尚未解决的问题"
+    }
+  ],
+  "limitations": [
+    "Whisper 转写可能保留少量专名或断句误差，关键术语已用 shownotes 或一手材料校正。",
+    "访谈中的预测、内部统计和公司自述不等于独立验证结果。",
+    "外部论文或公告只用于核验对应主张，不能替代节目完整语境。"
+  ]
+}

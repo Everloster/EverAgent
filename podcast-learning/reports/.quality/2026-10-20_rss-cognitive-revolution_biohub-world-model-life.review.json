@@ -1,0 +1,681 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-20_rss-cognitive-revolution_biohub-world-model-life.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "review-gpt56sol-codex-biohub-r2-20261023-49d0a73c",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "scores": {
+        "evidence_fidelity": 93,
+        "request_coverage": 96,
+        "reasoning_quality": 94,
+        "readability": 95,
+        "limitations": 92
+      },
+      "score_reasons": {
+        "evidence_fidelity": "模型、数据和测量三重瓶颈、概率 transition function、18 亿美元混合资源口径、laser phase plate 的当前证据边界、模型生物双向偏差、organoid、EHR 与 Bryan Johnson 均已回到 transcript、shownotes 或官方一手材料核验。唯一需保留的轻微边界是：访谈口播把斑马鱼系统描述为可追踪每个细胞直至完整个体，而公开 Zebrahub 页面严格记录的是透明胚胎首 24 小时的大多数细胞成像及十个时间点、逾 12 万细胞的转录组；报告忠实复述口播，但最好把它明确归因于访谈或采用公开口径。",
+        "request_coverage": "revision 2 已补齐上一轮遗漏：透明斑马鱼多尺度成像、模型生物的假阳性与假阴性、organoid、更完整的 EHR 相关性/因果边界、百万 Bryan Johnson 与个人睡眠追踪均进入正文。所有核心论证、案例、关键数字、反方和 15 个 evidence coverage unit 均得到覆盖；广告与收尾按 supporting/covered-by-omission 处理。",
+        "reasoning_quality": "报告把可观测性、数据规模、inductive bias、实验验证和状态干预串成清晰因果链，区分远期原子级 world model 与近期概率状态模型。对模型生物、EHR、纵向个人数据和统一 latent space 的边界处理平衡，推断部分有明确标记或分析语气。",
+        "readability": "报告可脱离会话独立阅读，内容地图与七节分析互相对应；数字表清楚区分现金、既有数据、计算和测量资源，术语均在首次出现处解释。少量内部 wiki 链接不妨碍主线理解。",
+        "limitations": "限制章节准确写明转写、shownotes 截断、组织方叙事、混合承诺、专家时间预测、批次效应和临床转化不足。尚可增加一条 Zebrahub 公开数据口径与访谈更宽口播之间的差异，以及 laser phase plate 已验证小蛋白/细菌、完整细胞 cryo-ET 仍在推进的证据层级；现有正文已对后者保持谨慎。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08",
+        "U09",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15"
+      ],
+      "source_content_map": [
+        {
+          "id": "SC-R2-01",
+          "title": "00:00 节目导言：测量瓶颈、VBI、世界模型与 Bryan Johnson 的总览",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03",
+            "U06",
+            "U12"
+          ],
+          "notes": "正文没有机械重复导言，但其四条预告主线均在对应章节展开。"
+        },
+        {
+          "id": "SC-R2-02",
+          "title": "03:58 无疾病世界、可编程医学与经典靶点框架",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01"
+          ],
+          "notes": "报告准确区分消除疾病与永生，并说明传统因果靶点—干预框架仍有价值。"
+        },
+        {
+          "id": "SC-R2-03",
+          "title": "生命作为程序的信息论视角及其非字面边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02"
+          ],
+          "notes": "正文用概率状态与规则解释该比喻，同时提醒生命不等同确定性软件。"
+        },
+        {
+          "id": "SC-R2-04",
+          "title": "09:18 当前虚拟细胞的模型、数据规模和可观测性三重瓶颈",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03",
+            "U04"
+          ],
+          "notes": "Transformer 缺少天然多尺度结构、无限数据极限与现实 inductive bias 的差别均得到覆盖。"
+        },
+        {
+          "id": "SC-R2-05",
+          "title": "13:37 远期生命世界模型与近期概率 transition function",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U05"
+          ],
+          "notes": "报告保留原子结构、组织发育终点离现实很远，以及五年尺度信息模型的严格区分。"
+        },
+        {
+          "id": "SC-R2-06",
+          "title": "19:35/22:58 VBI 的 5 亿美元起点、18 亿美元扩展、开放数据与伙伴分工",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03",
+            "S05"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06"
+          ],
+          "notes": "DOE 新投入、NIH 既有投资数据协调和三家企业合计投入的口径均准确，没有写成单一训练预算。"
+        },
+        {
+          "id": "SC-R2-07",
+          "title": "19:40 Parallel 与 OutSystems 广告",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06"
+          ],
+          "notes": "广告不含节目科学论证，省略属合理的 covered-by-omission。"
+        },
+        {
+          "id": "SC-R2-08",
+          "title": "25:50 laser phase plate、cryo-EM/cryo-ET 与测量先行",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U07"
+          ],
+          "notes": "正文准确解释相位衬度和潜在新模态；独立读取 Biohub 一手页面确认，小蛋白与细菌是已完成 proof-of-principle，复杂完整细胞的 cryo-ET 应用仍在测试，报告使用“更可能”“可能打开”而未越界。"
+        },
+        {
+          "id": "SC-R2-09",
+          "title": "29:29 从原子、细胞、组织到完整生命体的多尺度 context",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03",
+            "U05",
+            "U13"
+          ],
+          "notes": "报告说明培养细胞仍有价值但不是完整代理，并把不同尺度的对应关系作为模型任务。"
+        },
+        {
+          "id": "SC-R2-10",
+          "title": "透明斑马鱼的 whole-organism imaging 与发育细胞追踪",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U13"
+          ],
+          "notes": "revision 2 已加入该案例。访谈口播称可看见并追踪每个细胞、从单细胞到完整个体；公开 Zebrahub 的可复核口径更窄，为透明胚胎首 24 小时的大多数细胞加十个时间点的转录组，因此后续可加归因以消除口径歧义。"
+        },
+        {
+          "id": "SC-R2-11",
+          "title": "35:44/37:26 模型生物会同时产生假阳性疗效与漏掉人类机制",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U14"
+          ],
+          "notes": "上一轮遗漏的双向偏差已明确写入 §5。"
+        },
+        {
+          "id": "SC-R2-12",
+          "title": "Organoid 作为更接近组织复杂度、但仍不完整的培养代理",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U14"
+          ],
+          "notes": "revision 2 准确保留 organoid 的改进作用和非完整人体边界。"
+        },
+        {
+          "id": "SC-R2-13",
+          "title": "ESM/AlphaFold 跨演化学习、保守积木与重接线程序",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U08",
+            "U14"
+          ],
+          "notes": "报告没有把模型生物当完美 proxy，而是把跨物种信息用于学习可迁移结构。"
+        },
+        {
+          "id": "SC-R2-14",
+          "title": "35:49 Tasklet 广告",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U14"
+          ],
+          "notes": "广告不含节目科学论证，省略属合理的 covered-by-omission。"
+        },
+        {
+          "id": "SC-R2-15",
+          "title": "42:24 生物预训练、elicitation、RLVR 与实验室验证器",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03",
+            "S05"
+          ],
+          "matched_coverage_unit_ids": [
+            "U09"
+          ],
+          "notes": "self-supervision、任务 elicitation、提出实验—执行—学习—再提问的经验 AI 闭环均完整进入正文。"
+        },
+        {
+          "id": "SC-R2-16",
+          "title": "健康—疾病细胞图谱、1–2/5 年预测与病理状态逆转",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10"
+          ],
+          "notes": "报告保留时间预测的不确定性，并连接图谱、状态识别和干预问题。"
+        },
+        {
+          "id": "SC-R2-17",
+          "title": "EHR 可改善匹配与照护，但缺少 causal basis 会主要学习相关性",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U15"
+          ],
+          "notes": "revision 2 已补回 Rives 的平衡观点：不否定 EHR 的实际价值，也不让它替代底层生物机制。"
+        },
+        {
+          "id": "SC-R2-18",
+          "title": "52:04 语言—生物 latent space、桥接数据与尚无名字的特征",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11"
+          ],
+          "notes": "Rives 的不确定态度、文本只承载已知知识以及蛋白模型学习无名概念均被保留。"
+        },
+        {
+          "id": "SC-R2-19",
+          "title": "56:32 百万个 Bryan Johnson、连续监测和 Biohub 的技术层杠杆",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U12",
+            "U15"
+          ],
+          "notes": "正文明确承认高密度纵向人体数据“很有价值”，同时说明它需与分子、细胞和干预数据连接，Biohub 选择推进通用测量技术。"
+        },
+        {
+          "id": "SC-R2-20",
+          "title": "58:28 个人健康追踪：仅用手表记录睡眠",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U12"
+          ],
+          "notes": "上一轮省略的结尾反差已进入正文。"
+        },
+        {
+          "id": "SC-R2-21",
+          "title": "59:30/01:03:11 节目收尾与制作信息",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U12"
+          ],
+          "notes": "不含新增科学论证，省略属合理的 covered-by-omission。"
+        },
+        {
+          "id": "SC-R2-22",
+          "title": "两个上一轮失败 anchor 的修正：U01 与 U12",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01",
+            "U12"
+          ],
+          "notes": "已逐字验证 evidence 的“从药物靶点转向‘生命程序’”和“百万个 Bryan Johnson”两个 report_anchor 均实际出现在 revision 2 正文；其余 coverage anchor 也全部可命中。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "已按来源优先顺序完整读取 1173 段原始 transcript、32KB 截断的官方 shownotes 快照和 artifact，独立建立内容地图后再读取 revision 2 报告与 evidence。另通过 eacli 核验 Biohub VBI 5 亿/18 亿美元公告、laser phase plate 官方技术页面和 Zebrahub 官方页面。实际运行 audit_transcript.py：ok=true，size=80611，sha256=c8617242c919b978bc9bc8759e653afe6acf7b7bdd825030854154969a1a47a9，segments=1173，duration_seconds=3839，max_consecutive_identical=1，warnings/errors 均为空。上一轮缺失的透明斑马鱼、模型生物双向偏差、organoid、EHR 和 Bryan Johnson 内容均已补齐；U01/U12 两个修正 anchor 及其余 evidence anchor 全部命中。Zebrahub 的公开数据口径比访谈口播更窄，已作为轻微证据边界记录，不构成关键主张不支持。运行 python3 scripts/report_quality.py check（未使用 --finalize）的结果：decision=pass，score=94.0，ERROR 0，WARN 0。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 94.0,
+    "evaluated_on": "2026-10-23",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "6cbe7287e2f330851d6a6760a11c631210392bff4f4f756706f722228da94990",
+    "evidence_sha256": "781498597b0756ea00d044081a550cd96a6afac316db7f21d5b1cba6aa0c22ae"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex",
+            "run_id": "review-56sol-biohub-20261023-f21e7b60",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 94,
+            "request_coverage": 82,
+            "reasoning_quality": 92,
+            "readability": 94,
+            "limitations": 91
+          },
+          "score_reasons": {
+            "evidence_fidelity": "模型/数据/测量三重瓶颈、概率 transition function、VBI 18 亿美元构成、数千亿细胞目标与 1–2/5 年时间判断均与 transcript 和官方公告一致。laser phase plate 被写成打开新模态的潜力而非已完成的整细胞模拟，证据措辞总体克制。",
+            "request_coverage": "核心主线和多数 shownotes 章节已覆盖，但 29:29 多尺度章节的 zebrafish whole-organism imaging 案例被省略；35:44/37:26 模型生物章节只保留跨演化 transfer，遗漏模型生物会同时制造假阳性和假阴性、organoid 作为更接近人类 proxy 的反方；49:00 左右 EHR 可改善照护但缺少因果 basis 的完整限定未进入正文。deep 报告因此未达到完整来源覆盖。",
+            "reasoning_quality": "把可观测性、实验吞吐和验证延迟纳入 AI 系统的推理链清楚，也区分长期 world model 与近期信息论模型。对语言、专用生物表示和实验事实的分工分析稳健；如果补上模型生物与 EHR 反例，论证会更平衡。",
+            "readability": "结构清楚，关键概念、资金口径、机制、推断和三问组织良好，报告可以脱离会话独立阅读。少量 wiki 风格链接不影响主线。",
+            "limitations": "明确区分官方组织方叙事、混合资源承诺、专家时间预测和真实完成度，也指出批次、代表性、伦理及临床转化不足。对 laser phase plate 当前单粒子/厚样本证据与未来 cryo-ET 愿景的区分还可更具体。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07",
+            "U08",
+            "U09",
+            "U10",
+            "U11",
+            "U12"
+          ],
+          "source_content_map": [
+            {
+              "id": "SC-B01",
+              "title": "03:58 治愈所有疾病、可编程医学与生命程序",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01",
+                "U02"
+              ],
+              "notes": "报告准确区分无疾病世界与永生，并说明传统靶点框架和信息论视角的关系。"
+            },
+            {
+              "id": "SC-B02",
+              "title": "09:18 当前虚拟细胞的模型、数据和测量瓶颈",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03",
+                "U04"
+              ],
+              "notes": "三重瓶颈、transformer 缺乏多尺度结构以及可观测性更根本的判断均进入正文。"
+            },
+            {
+              "id": "SC-B03",
+              "title": "13:37 远期生命世界模型与近期概率 transition function",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "报告保留原子级终点、五年尺度的信息模型和状态分布而非确定性输出。"
+            },
+            {
+              "id": "SC-B04",
+              "title": "19:35/22:58 VBI 扩展、资金构成与开放数据路线",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S05"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "18 亿美元的资金、既有数据、计算和测量资源口径及 DOE、NIH、三家企业的组成均准确，未误写为单一现金基金。"
+            },
+            {
+              "id": "SC-B05",
+              "title": "25:50 laser phase plate：测量突破先于模型突破",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U07"
+              ],
+              "notes": "报告准确说明相位衬度、cryo-ET 潜力和新模态价值；独立核对的 Biohub 公告与 xLPP 预印本也支持这种谨慎表述。"
+            },
+            {
+              "id": "SC-B06",
+              "title": "29:29 细胞必须置于组织、多尺度和 whole-organism context",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03",
+                "U05",
+                "U07"
+              ],
+              "notes": "正文已完整解释跨原子—细胞—组织尺度和培养皿 proxy 的局限；没有保留 Biohub 逐尺度成像及透明 zebrafish 追踪每个细胞的具体案例。"
+            },
+            {
+              "id": "SC-B07",
+              "title": "35:44/37:26 模型生物的双向失真、organoid 与跨演化 transfer",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08"
+              ],
+              "notes": "报告充分写了 ESM/AlphaFold 依靠跨演化信息和 conserved building blocks，但遗漏模型生物既会产生只在鼠中有效的假阳性，也会隐藏人类机制的假阴性，以及 organoid 作为改进 proxy 的讨论。"
+            },
+            {
+              "id": "SC-B08",
+              "title": "42:24 生物预训练、elicitation 与经验验证",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08",
+                "U09"
+              ],
+              "notes": "self-supervision、elicitation 和 biology 需要实验验证器的差别均被准确重构。"
+            },
+            {
+              "id": "SC-B09",
+              "title": "经验 AI 闭环：提问、实验、学习和递归改进",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S05"
+              ],
+              "matched_coverage_unit_ids": [
+                "U09"
+              ],
+              "notes": "正文把实验吞吐、反馈延迟、测量噪声和自动化实验室视为训练系统组成，推理成立。"
+            },
+            {
+              "id": "SC-B10",
+              "title": "健康—疾病细胞图谱、1–2/5 年时间表与状态逆转",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10"
+              ],
+              "notes": "报告将时间表明确标为嘉宾预测，并把图谱、病理状态识别和干预问题连成一条可验证路线。"
+            },
+            {
+              "id": "SC-B11",
+              "title": "EHR 能改善匹配与照护，但缺少生物因果 basis 会停留在相关性",
+              "importance": "supporting",
+              "assessment": "missing",
+              "source_ids": [
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "节目在约 49–52 分钟给出明确限定：病历模型可能有实际价值，但难以替代底层因果机制；报告没有呈现这一平衡观点。"
+            },
+            {
+              "id": "SC-B12",
+              "title": "52:04 语言与生物 latent space、桥接数据和无名概念",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U11"
+              ],
+              "notes": "Rives 的不确定态度、桥接数据缺口和蛋白模型学习尚无名称特征均被保留。"
+            },
+            {
+              "id": "SC-B13",
+              "title": "56:32 百万个 Bryan Johnson、连续监测与技术层定位",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U12"
+              ],
+              "notes": "报告承认纵向人体数据价值，同时说明 Biohub 选择在测量技术与基础机制层发力。"
+            },
+            {
+              "id": "SC-B14",
+              "title": "59:30 个人健康追踪与节目结尾反差",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U12"
+              ],
+              "notes": "报告没有保留 Rives 只用手表追踪睡眠的具体结尾，但这不影响技术主线。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [
+            "R02"
+          ],
+          "hard_failures": [],
+          "notes": "已先于报告完整读取 1173 段原始 transcript、官方 shownotes、artifact 与 polished 稿，并核对 Biohub VBI 5 亿/18 亿美元公告、laser phase plate 官方公告及 xLPP 一手预印本后建立来源地图。实际运行 audit_transcript.py：ok=true，size=80611，sha256=c8617242c919b978bc9bc8759e653afe6acf7b7bdd825030854154969a1a47a9，segments=1173，duration_seconds=3839，max_consecutive_identical=1，warnings/errors 均为空。PubMed web.read 两次返回上游网络错误，已用 Biohub 官方公告和对应 bioRxiv 一手预印本完成最小降级核验。审稿结论为 revise：R02 的来源覆盖仍不完整。完成 review 后运行 report_quality.py check（未 finalize）：decision=blocked，score=90.9，ERROR 4，WARN 0；EVM045 指出 evidence 既有 coverage U01、U12 的 report_anchor 未出现在报告中，REV018 为 missing_requirements=R02，SCORE002 为 request_coverage=82 低于门槛 85。blocked 还受到上述 evidence anchor 错误影响。"
+        }
+      ],
+      "decision": {}
+    }
+  ]
+}

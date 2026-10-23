@@ -26,11 +26,11 @@ EverAgent 保存可以公开分享的知识资产；设备、网络和服务等�
 <!-- AUTO-RECENT:START -->
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-10-23 | [TWIML：Airbnb Company Brain 如何把隐性知识交给 Agent](./podcast-learning/reports/2026-10-21_rss-twiml_airbnb-company-brain.md) | 🎙️ Podcast Learning |
+| 2026-10-23 | [Practical AI：Agentic 漏洞发现、Exploit 开发与假 POC](./podcast-learning/reports/2026-10-22_rss-practical-ai_agentic-vulnerability-discovery.md) | 🎙️ Podcast Learning |
+| 2026-10-23 | [Latent Space：X-Cell 为什么说因果模型先需要因果数据](./podcast-learning/reports/2026-07-21_rss-latent-space_xcell-causal-data.md) | 🎙️ Podcast Learning |
 | 2026-10-23 | [HarnessPro 精读：用可执行反馈与帕累托选择约束 Harness 递归改进](./ai-learning/reports/paper_analyses/51_harnesspro_2026.md) | 🤖 AI Learning |
-| 2026-10-22 | [大小马智驾 V23：小米×徕卡合作幕后——从高管大师课到 Leica M4](./podcast-learning/reports/2024-12-25_ximalaya-daxiaoma-zhijia_v23-xiaomi-leica.md) | 🎙️ Podcast Learning |
-| 2026-10-22 | [Google 自主湿实验室 Agent：用物理现实、实验反馈与人类战略闭合科学发现](./ai-learning/reports/knowledge_reports/Google_自主湿实验室Agent_生物现实约束与闭环_深度解析_20261021.md) | 🤖 AI Learning |
-| 2026-10-22 | [ALTK-Evolve：学习型 Memory 如何让 Agent 在服务任务中持续改进](./ai-learning/reports/knowledge_reports/ALTK_Evolve_学习型Memory与Agent服务任务_深度解析_20261021.md) | 🤖 AI Learning |
-| 2026-10-22 | [AI 行业日报 · 2026-10-22](./web-surfing/reports/ai-news-daily-2026-10-22.md) | 🏄 Web Surfing |
+| 2026-10-23 | [Dwarkesh × Ryan Greenblatt：AI 研究自动化会怎样加速，又会怎样失控](./podcast-learning/reports/2026-08-11_rss-dwarkesh_ryan-greenblatt-ai-rnd-automation.md) | 🎙️ Podcast Learning |
 <!-- AUTO-RECENT:END -->
 
 [浏览全部报告 →](./docs/REPORT_INDEX.md)
@@ -48,7 +48,7 @@ EverAgent 保存可以公开分享的知识资产；设备、网络和服务等�
 | 🧠 [Psychology Learning](./psychology-learning/) | 17 篇 | 13/13/0 |
 | 🧬 [Biology Learning](./biology-learning/) | 18 篇 | 14/9/0 |
 | ⚗️ [AI Practice](./ai-practice/) | 10 篇 | 9/1/0 |
-| 🎙️ [Podcast Learning](./podcast-learning/) | 85 篇 | 58/54/0 |
+| 🎙️ [Podcast Learning](./podcast-learning/) | 90 篇 | 58/54/0 |
 | 🔭 [GitHub Research](./github-trending-analyzer/) | 124 篇 | 0/0/0 |
 | 🏄 [Web Surfing](./web-surfing/) | 47 篇 | 0/0/0 |
 <!-- AUTO-OVERVIEW:END -->

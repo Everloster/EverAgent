@@ -1,0 +1,275 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-21_rss-twiml_airbnb-company-brain.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-23",
+  "generator": {
+    "model": "gpt-5.6-sol",
+    "harness": "codex",
+    "run_id": "generator-c30b864a4dbe",
+    "explicit_model_override": false,
+    "override_reason": ""
+  },
+  "task": {
+    "summary": "深度研究 Airbnb Project Everest 的 Company Brain、Context 策展、Evals、生产力和市场 Agent。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "必须使用 Razer 全量转写并保留可核验的 artifact、时间戳与转写审计证据。"
+      },
+      {
+        "id": "R02",
+        "text": "产出可脱离对话独立阅读的 deep 播客研究报告，覆盖核心论证、案例、关键数字和反方。"
+      },
+      {
+        "id": "R03",
+        "text": "区分节目主张、外部一手证据与报告推断，不把预测或公司自述写成已验证事实。"
+      },
+      {
+        "id": "R04",
+        "text": "写明限制、未解问题和下一步研究方向。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "primary",
+      "title": "TWIML 官方节目页",
+      "locator": "https://twimlai.com/podcast/twimlai/airbnb-building-company-brain-ai-agents",
+      "accessed_on": "2026-10-23"
+    },
+    {
+      "id": "S02",
+      "kind": "local",
+      "title": "Razer 全量转写",
+      "locator": "podcast-learning/reports/transcripts/2026-10-21_rss-twiml_airbnb-company-brain.transcript.txt",
+      "accessed_on": "2026-10-23"
+    },
+    {
+      "id": "S03",
+      "kind": "local",
+      "title": "官方 shownotes 快照",
+      "locator": "podcast-learning/reports/transcripts/2026-10-21_rss-twiml_airbnb-company-brain.shownotes.md",
+      "accessed_on": "2026-10-23"
+    },
+    {
+      "id": "S04",
+      "kind": "execution",
+      "title": "Razer artifact receipt",
+      "locator": "podcast-learning/reports/transcripts/2026-10-21_rss-twiml_airbnb-company-brain.artifact.json",
+      "accessed_on": "2026-10-23"
+    },
+    {
+      "id": "S05",
+      "kind": "official",
+      "title": "Airbnb CTO 任命公告",
+      "locator": "https://news.airbnb.com/airbnb-announces-ahmad-al-dahle-as-chief-technology-officer",
+      "accessed_on": "2026-10-23"
+    },
+    {
+      "id": "S06",
+      "kind": "official",
+      "title": "Airbnb Tech 2025 year in review",
+      "locator": "https://airbnb.tech/infrastructure/academic-publications-airbnb-tech-2025-year-in-review",
+      "accessed_on": "2026-10-23"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "Project Everest 从员工使用 AI 的工作流中捕获未进入正式文档的 institutional knowledge。",
+      "report_anchor": "### 2. Everest 把隐性工作方式转成 Agent 可用的 context",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "Project Everest 从员工使用 AI 的工作流中捕获未进入正式文档的 institutional knowledge。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "Airbnb 认为旧或错误内容会造成 context poisoning，倾向通过 progressive disclosure 按需展开。",
+      "report_anchor": "### 3. Context poisoning 说明“更多上下文”会降低能力",
+      "support": "direct",
+      "source_ids": [
+        "S02"
+      ],
+      "evidence": "Airbnb 认为旧或错误内容会造成 context poisoning，倾向通过 progressive disclosure 按需展开。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "Airbnb 用真实内部任务和 virtual judge 比较模型的成本、质量与速度，但评分分离度仍是难点。",
+      "report_anchor": "### 4. Evals 既筛模型，也评估知识是否真的有用",
+      "support": "direct",
+      "source_ids": [
+        "S02"
+      ],
+      "evidence": "Airbnb 用真实内部任务和 virtual judge 比较模型的成本、质量与速度，但评分分离度仍是难点。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "Token 用量只适合观察 adoption，生产力还需结合 PR、缺陷、可靠性与 roadmap。",
+      "report_anchor": "### 4. Evals 既筛模型，也评估知识是否真的有用",
+      "support": "direct",
+      "source_ids": [
+        "S02"
+      ],
+      "evidence": "Token 用量只适合观察 adoption，生产力还需结合 PR、缺陷、可靠性与 roadmap。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "Al-Dahle 口播称约 50% 客服 ticket 已由 AI 直接解决，复杂多方纠纷仍需人类。",
+      "report_anchor": "### 5. 双边市场把客服 Agent 变成部分可观测的调解系统",
+      "support": "direct",
+      "source_ids": [
+        "S02"
+      ],
+      "evidence": "Al-Dahle 口播称约 50% 客服 ticket 已由 AI 直接解决，复杂多方纠纷仍需人类。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "Agentic search 应增强多模态探索与筛选，而非自动替用户完成高价值交易。",
+      "report_anchor": "### 6. Agentic search 的目标是减少摩擦，而不是夺走选择权",
+      "support": "derived",
+      "source_ids": [
+        "S02"
+      ],
+      "evidence": "Agentic search 应增强多模态探索与筛选，而非自动替用户完成高价值交易。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "Airbnb 的 AI 三条主线",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "Airbnb 的 AI 三条主线"
+    },
+    {
+      "id": "U02",
+      "title": "craft 与 velocity",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "craft 与 velocity"
+    },
+    {
+      "id": "U03",
+      "title": "MCP 整家公司",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "MCP 整家公司"
+    },
+    {
+      "id": "U04",
+      "title": "Project Everest",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "Project Everest"
+    },
+    {
+      "id": "U05",
+      "title": "Context poisoning 与 progressive disclosure",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "Context poisoning 与 progressive disclosure"
+    },
+    {
+      "id": "U06",
+      "title": "Multi-model 与内部 eval",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "Multi-model 与内部 eval"
+    },
+    {
+      "id": "U07",
+      "title": "工程生产力度量",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "工程生产力度量"
+    },
+    {
+      "id": "U08",
+      "title": "支付、欺诈与客服",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "支付、欺诈与客服"
+    },
+    {
+      "id": "U09",
+      "title": "多方纠纷与证据真实性",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "多方纠纷与证据真实性"
+    },
+    {
+      "id": "U10",
+      "title": "Agentic search 与产品界面",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "Agentic search 与产品界面"
+    },
+    {
+      "id": "U11",
+      "title": "Build vs buy",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "Build vs buy"
+    }
+  ],
+  "limitations": [
+    "Whisper 转写可能保留少量专名或断句误差，关键术语已用 shownotes 或一手材料校正。",
+    "访谈中的预测、内部统计和公司自述不等于独立验证结果。",
+    "外部论文或公告只用于核验对应主张，不能替代节目完整语境。"
+  ]
+}

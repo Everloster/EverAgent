@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "request_id": "req_podcast_airbnb_20261023_cdn",
+  "job_id": "job_837ec3f35d255f239f4433f2",
+  "status": "succeeded",
+  "device": "razer",
+  "silent": true,
+  "interactive_browser": false,
+  "audio_playback": false,
+  "duration_ms": 368334,
+  "artifact": {
+    "artifact_id": "pod_9e4332791619da4196d30253",
+    "source_host": "traffic.megaphone.fm",
+    "source_sha256": "4b7571d27e098cd328f88c37fe1ec6de7b4244b95a488a51d35217648b397bd7",
+    "audio_size": 551614782,
+    "language": "en",
+    "segments": 1202,
+    "service_version": "whisper.cpp-v1.9.1-sm120",
+    "transcript_size": 76960,
+    "transcript_sha256": "28f242f8e81b628cea766c4d03611a87219e11e0cbe2044849b32d3b8e5562e6",
+    "quality": {
+      "repetition_guard": {
+        "passed": true,
+        "max_consecutive_identical": 2,
+        "repeated_text_sha256": null
+      }
+    }
+  },
+  "fallback": {
+    "reason": "official episode page and Apple Podcast URLs could not be acquired by yt-dlp; token-plan has no podcast transcription capability and the installed typed allowlist did not cover the official RSS audio CDN",
+    "method": "hash-bound eacli invoke on Razer using the repository podcast runner with the installed worker receipt/model/VAD/yt-dlp/loopback checks preserved and an exact official-CDN host allowlist",
+    "script_sha256": "457e2763180b2646d320101afe9b04195561609a6959e20db95e807f333832ae"
+  },
+  "transfer": {
+    "mode": "eacli pull",
+    "atomic": true,
+    "local_path": "podcast-learning/reports/transcripts/2026-10-21_rss-twiml_airbnb-company-brain.transcript.txt",
+    "verified_sha256": true
+  }
+}

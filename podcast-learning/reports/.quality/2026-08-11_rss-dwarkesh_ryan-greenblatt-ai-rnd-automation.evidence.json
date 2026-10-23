@@ -1,0 +1,249 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-08-11_rss-dwarkesh_ryan-greenblatt-ai-rnd-automation.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-23",
+  "generator": {
+    "model": "gpt-5.6-sol",
+    "harness": "codex",
+    "run_id": "generator-e246a7de7a6a",
+    "explicit_model_override": false,
+    "override_reason": ""
+  },
+  "task": {
+    "summary": "深度研究 AI R&D 自动化、一次性加速、专家数据瓶颈、代理权、reward hacking 与失控场景。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "必须使用 Razer 全量转写并保留可核验的 artifact、时间戳与转写审计证据。"
+      },
+      {
+        "id": "R02",
+        "text": "产出可脱离对话独立阅读的 deep 播客研究报告，覆盖核心论证、案例、关键数字和反方。"
+      },
+      {
+        "id": "R03",
+        "text": "区分节目主张、外部一手证据与报告推断，不把预测或公司自述写成已验证事实。"
+      },
+      {
+        "id": "R04",
+        "text": "写明限制、未解问题和下一步研究方向。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "primary",
+      "title": "Dwarkesh 官方节目页",
+      "locator": "https://www.dwarkesh.com/p/ryan-greenblatt",
+      "accessed_on": "2026-10-23"
+    },
+    {
+      "id": "S02",
+      "kind": "local",
+      "title": "Razer 全量转写",
+      "locator": "podcast-learning/reports/transcripts/2026-08-11_rss-dwarkesh_ryan-greenblatt-ai-rnd-automation.transcript.txt",
+      "accessed_on": "2026-10-23"
+    },
+    {
+      "id": "S03",
+      "kind": "local",
+      "title": "官方 shownotes 快照",
+      "locator": "podcast-learning/reports/transcripts/2026-08-11_rss-dwarkesh_ryan-greenblatt-ai-rnd-automation.shownotes.md",
+      "accessed_on": "2026-10-23"
+    },
+    {
+      "id": "S04",
+      "kind": "execution",
+      "title": "Razer artifact receipt",
+      "locator": "podcast-learning/reports/transcripts/2026-08-11_rss-dwarkesh_ryan-greenblatt-ai-rnd-automation.artifact.json",
+      "accessed_on": "2026-10-23"
+    },
+    {
+      "id": "S05",
+      "kind": "primary",
+      "title": "Redwood AI R&D 自动化说明",
+      "locator": "https://blog.redwoodresearch.org/p/full-automation-of-ai-r-and-d-probably",
+      "accessed_on": "2026-10-23"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "AI R&D 的大量子任务可容器化和验证，自动化可能形成一次性研究劳动力加速。",
+      "report_anchor": "### 1. AI R&D 自动化的最强论据是可验证性与复制性",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S05"
+      ],
+      "evidence": "AI R&D 的大量子任务可容器化和验证，自动化可能形成一次性研究劳动力加速。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "算力、专家数据和少数 frontier-scale 实验仍是加速情景的关键约束。",
+      "report_anchor": "### 2. 三个硬瓶颈：算力、专家数据与少数大实验",
+      "support": "derived",
+      "source_ids": [
+        "S02",
+        "S05"
+      ],
+      "evidence": "算力、专家数据和少数 frontier-scale 实验仍是加速情景的关键约束。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "从小型可验证环境向长周期现实任务的 transfer 是加速论的关键可证伪点。",
+      "report_anchor": "### 3. 可验证训练能否迁移到现实，是加速论的关键可证伪点",
+      "support": "derived",
+      "source_ids": [
+        "S02"
+      ],
+      "evidence": "从小型可验证环境向长周期现实任务的 transfer 是加速论的关键可证伪点。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "访谈把 aligned to whom 视为用户代理权、公司控制和社会制衡的权力分配问题。",
+      "report_anchor": "### 4. “Aligned to whom”是代理权和权力分配问题",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "访谈把 aligned to whom 视为用户代理权、公司控制和社会制衡的权力分配问题。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "Greenblatt 的风险链依赖生产 reward hacking 被回收进训练并在能力边界持续选择。",
+      "report_anchor": "### 5. Reward hacking 风险来自选择压力，而非模型突然“变坏”",
+      "support": "direct",
+      "source_ids": [
+        "S02"
+      ],
+      "evidence": "Greenblatt 的风险链依赖生产 reward hacking 被回收进训练并在能力边界持续选择。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "从 reward hacking 外推 takeover 需要多项争议条件，本报告不把主观概率当事实。",
+      "report_anchor": "### 7. 从 reward hacking 到 takeover 仍需要多项争议性外推",
+      "support": "derived",
+      "source_ids": [
+        "S02"
+      ],
+      "evidence": "从 reward hacking 外推 takeover 需要多项争议条件，本报告不把主观概率当事实。",
+      "critical": true
+    },
+    {
+      "id": "C07",
+      "claim": "Redwood note 在 r=0.7 且不扩算力的模型中给出首年约 3.5 年进展。",
+      "report_anchor": "### 1. AI R&D 自动化的最强论据是可验证性与复制性",
+      "support": "direct",
+      "source_ids": [
+        "S05"
+      ],
+      "evidence": "Redwood note 在 r=0.7 且不扩算力的模型中给出首年约 3.5 年进展。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "AI R&D 是否足够可验证",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "AI R&D 是否足够可验证"
+    },
+    {
+      "id": "U02",
+      "title": "是否受人类专家数据限制",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "是否受人类专家数据限制"
+    },
+    {
+      "id": "U03",
+      "title": "平坦 token 价格与 scaling",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "平坦 token 价格与 scaling"
+    },
+    {
+      "id": "U04",
+      "title": "无法训练的技能是否重要",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "无法训练的技能是否重要"
+    },
+    {
+      "id": "U05",
+      "title": "Aligned to whom",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "Aligned to whom"
+    },
+    {
+      "id": "U06",
+      "title": "AI 串谋、欺骗与近期事件",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "AI 串谋、欺骗与近期事件"
+    },
+    {
+      "id": "U07",
+      "title": "具体失控场景",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "具体失控场景"
+    },
+    {
+      "id": "U08",
+      "title": "从 reward hacking 到 takeover",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "从 reward hacking 到 takeover"
+    }
+  ],
+  "limitations": [
+    "Whisper 转写可能保留少量专名或断句误差，关键术语已用 shownotes 或一手材料校正。",
+    "访谈中的预测、内部统计和公司自述不等于独立验证结果。",
+    "外部论文或公告只用于核验对应主张，不能替代节目完整语境。"
+  ]
+}
