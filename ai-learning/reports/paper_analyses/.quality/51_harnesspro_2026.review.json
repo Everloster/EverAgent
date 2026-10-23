@@ -1,0 +1,574 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/paper_analyses/51_harnesspro_2026.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "glm-5.3",
+        "harness": "opencode",
+        "run_id": "ses_e97351078ffeFkQa4nvlyDqdAo",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 97,
+        "request_coverage": 95,
+        "reasoning_quality": 96,
+        "readability": 96,
+        "limitations": 97
+      },
+      "score_reasons": {
+        "evidence_fidelity": "来源优先复核：先通读论文全部 41 页文本层（主文、Algorithm 1、Figure 2、Table 2/3、附录 A–D 与全部 runtime listings）、微信正文、arXiv 元数据、RHO/SkillMOO 摘要，再对照报告；随后在固定 commit 8ae622eb4a4923dbb4b515be7ded614f88fd4f38 的本地源码上核验全部代码类 claim。Table 2 两模型全部单元格、Figure 2 混淆矩阵（Judge [[8,0],[7,5]]、生成测试 [[7,1],[2,10]]）、Table 3 七行、SWE Medium 53.0%（1−1.26/2.68）、TB2 Heavy 4.5pp/33.9%、Program Lite 延迟反例 985 对 669 秒（+47.2%）均与原文一致。代码侧逐项证实：TB2 medium standard 阈值 14/26/44 且 deny 条件为 count>finalize（第 45 次起拒绝）、Program finalize 76 加 max(8,reminder) grace 后 85 起拒绝、Program 三个 hook 逐字节相同且 medium/heavy policy 相同（lite 不同）、TB2 lite 将 deep/research effort 降为 medium、SWE lean 置信度低于 0.9 覆盖为 standard、RTK 窄 allowlist 且源注释确认 rg --files/find -print 语义破坏历史、_read_json 损坏回空对象、splits.py 30/rest/test 空、orchestrators 仅 solve/_util/__init__ 且全库检索无 Pareto/DPP/TestSynth 多代控制链、docs 明示 GLM-5.2 快照不随 release 提供、classifier 独立请求不随 solver 切换、h_<12位> 内容 digest 仅含路径与字节。报告引用的 PDF SHA-256 与本轮独立计算一致。未发现任何关键数字错配或无支持的登记 claim。唯一轻微保留：报告未直接引用论文摘要的聚合口径（对 RHO 平均 +2.0 个百分点、平均每任务成本 −26.1%）；分基准数据已完整呈现且方向一致，属可接受的省略而非事实缺陷。",
+        "request_coverage": "R01–R05 均完整回答。R01：§1 固定来源与版本、§2 微信论证重构加逐项口径纠正表（无标签边界、validation 选择 vs held-out test、四 Agent 中 Test Synthesizer 只生成一次、53% 的 79.0 对 80.0 上下文、44 次拦截的 off-by-one、251 万 token 为累计输入、缓存前缀为设计而非已证保证），全部与原文和源码一致。R02：§5 完整给出双模型 Table 2、实验设计表（59/100/100 held-out、G=3、3/3/2 次重复、sample SD、ProgramBench 宏平均口径）、可复算算式与延迟反例。R03：§6.4–6.5 的计量完整性、缓存边界、evaluation release 缺完整进化入口均经源码静态证实。R04：§8 区分复用/适配/暂缓并给出晋级证据要求，保持独立 Reviewer 与现有质量门。R5：§7 十二条局限、§9 六个追问、S1–S10 可追溯。轻微缺口（supporting 级）：摘要聚合数字（+2.0pp/−26.1%）未引用（分基准数据已完整呈现，方向一致）；Figure 4 逐代动态仅在局限 12 作为边界引用，未列具体数字；§5.2 表省略 Dynamic Cheatsheet/ReasoningBank/Sleep-time Compute 三行基线（论文 Table 2 有，结论不受影响）。",
+        "reasoning_quality": "报告全程区分三类证据：论文实验结果、固定快照源码静态事实、面向本仓的工程推断（C18 标注 inference）；§8 开头即声明「以下是基于研究的工程提案，不是已测得的项目收益」，建议表按复用/适配/暂缓区分并逐项给出晋级所需证据，未把任何目标数值当成已测收益陈述。推理亮点经独立复核成立：hook 计数为 attempted calls 且 count>finalize 才拒绝的 off-by-one 语义；「九个目录不等于九种独立机制」由 hook/policy 逐字节比对证实；「提醒拼接在工具结果末尾是缓存友好设计，论文未单独证明缓存命中」准确保留证据边界；ProgramBench 延迟反例防止「省 token 即更快」的外推；SkillMOO 先例用于收窄微信「首次帕累托」表述而非否定论文定位；RHO+Iteration 对照防止把收益全部归因迭代次数。方案侧与既有 owner 的分层（诊断引用、固定反馈、质量底线、非劣候选）与论文机制一一对应且未夸大。",
+        "readability": "独立可读性达标：一句话总结带口径限定，§2 纠正表逐行给出「文章表述—原文/源码核对—应采用解释」，§4 方法深读配流程图，§5 数据表统一「通过率/美元/秒」格式并附可复算算式，§6–8 机制—边界—建议层层递进，S1–S10 锚点贯穿全文。术语（宏平均、sample SD、attempted calls、history token limit 的每输出语义）首次出现处均有解释。",
+        "limitations": "§7 十二条覆盖：预印本与单快照、未复现 benchmark、生成反馈的模型来源与共有盲区、validation 选择过拟合、小样本（10 任务/20 样本/2–3 重复）、ProgramBench 口径不可平均、执行成本 vs 研发总拥有成本、API 价格 vs 套餐账单、延迟反例、GLM 快照缺失与 classifier 不随 backend 切换、宽权限与 Docker 假设不可直接迁入、多机制消融不等于因果分解、held-out 不得回流。与 evidence limitations 账本一致，且每条均可回溯到本轮核验的原文或源码事实。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17",
+        "C18"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08",
+        "U09",
+        "U10",
+        "U11",
+        "U12"
+      ],
+      "source_content_map": [
+        {
+          "id": "SCM01",
+          "title": "问题设定：RSI 的性能—成本矛盾与 harness 双目标优化（式 1、三指标定义、质量底线约束）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02",
+            "U06"
+          ],
+          "notes": "报告 §3 固定模型/harness 搜索对象的三层记账与 §4.5 的 P≥P0 约束、Pareto 支配定义与原文 §3 一致；pass rate/cost/latency 三指标口径（latency 为辅助指标）在 §5.1 保留。"
+        },
+        {
+          "id": "SCM02",
+          "title": "四角色多智能体循环：Analyzer 联合 G=3 rollout 诊断（64K 汇总上限、轨迹路径+事件范围证据）、Planner 三方向 I1–I3 与候选 diff、Editor 隔离 workspace+Git、Algorithm 1 的有界候选集（≤3 父代、每父 3 案、合并 ≤12、set 去重）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1"
+          ],
+          "matched_coverage_unit_ids": [
+            "U05"
+          ],
+          "notes": "报告 §4.3–4.4 全部细节与 Algorithm 1 及 §4.2 原文一致，包括 Planner 默认不读全轨迹、validation/test 对 Planner 隐藏、代表可能重复。"
+        },
+        {
+          "id": "SCM03",
+          "title": "Label-free 固定生成测试：S(x) 一次生成并冻结、Figure 2 失败召回 41.7%→83.3%（20 样本）、附录 C.3 十个 unittest 与 MCP 校验工具的证据边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03",
+            "U08"
+          ],
+          "notes": "报告 §4.1 与 §5.4 的矩阵重构、status=ok/passed=false 语义、不得从被冻结产物推导 expected 均与附录 C.3 一致；20 样本的统计边界如实保留。"
+        },
+        {
+          "id": "SCM04",
+          "title": "DPP 困难性加权 coreset：难度分 r∈[0,10]、去专名失败指纹、ε=0.1/θ=0.7、贪心最大 determinant 近似（明确不按 k-DPP 分布采样）、k=10 冻结",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04"
+          ],
+          "notes": "报告 §4.2 四步复述与式 10–12 逐项一致，「论文介绍概率形式但实际贪心」的区分准确。"
+        },
+        {
+          "id": "SCM05",
+          "title": "Pareto 过滤与归一化加权平方距离选择：式 7–9、d_perf/d_cost 归一化、(α,β)=(1,2)/(1,1)/(2,1) 固定跨代、退化情形留白",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06"
+          ],
+          "notes": "报告 §4.5 公式块与附录 A.2 权重一致；并正确指出论文未交代零极差/完全并列的实现细节，把 tie-break、退化维度列为复用时的实现建议而非论文事实。"
+        },
+        {
+          "id": "SCM06",
+          "title": "Table 2 双模型主结果：GPT-5.5/Codex 与 GLM-5.2/Claude Code 全表、摘要聚合口径（平均 +2.0pp / −26.1% vs RHO）、Lite 17.7–57.4% 节省、RHO+Iteration 对照、SWE 延迟 520→412 秒与 ProgramBench 延迟反例",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1"
+          ],
+          "matched_coverage_unit_ids": [
+            "U07"
+          ],
+          "notes": "报告两表所有单元格与原文逐格一致，延迟反例（Program Lite 985 vs 669）单独成点。轻微省略：摘要聚合数字（+2.0pp/−26.1%）未直接引用；Figure 4 逐代动态数字（如 TB2 heavy 74.6→80.8、SWE medium 70.0→77.0→79.0）未展开，仅在局限 12 引用其中间点仅作可视化的边界。分基准数据完整，不影响结论。"
+        },
+        {
+          "id": "SCM07",
+          "title": "Table 3 消融：去 Planner/去 Test Synthesizer 的退化（3.4–10.0pp）、RHO+动态路由/预算 hooks/low effort 单策略移植均被支配、CoP 口径",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1"
+          ],
+          "matched_coverage_unit_ids": [
+            "U09"
+          ],
+          "notes": "报告 §5.5 SWE 七行与 TB2 三组数字逐项与 Table 3 一致；「组合效果不等于因果分解」的边界保留。"
+        },
+        {
+          "id": "SCM08",
+          "title": "进化产物机制：五档 profile 动态路由 rubric、runtime hook 三阶段提醒与预算拒绝（14/26/44）、提醒附于工具结果保护缓存前缀、RTK/重复行折叠与 head/tail 截断、history token limit 每输出语义、ProgramBench 固定 high profile 无路由",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S4",
+            "S6"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10"
+          ],
+          "notes": "报告 §6.1–6.3 与附录 D 及实际源码互相印证：TB2 lite 覆盖 rubric 文字但 policy 降 effort、SWE confidence override、Program hook 相同而指令可能不同，均经本地快照逐字节/逐字段核实。"
+        },
+        {
+          "id": "SCM09",
+          "title": "微信文章传播口径核对：53%、44 次拦截、251 万 token、四 Agent 流水线、「测试集验证」、「全场最高通过率/延迟」、首次帕累托、团队与开源链接",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S3",
+            "S8"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01"
+          ],
+          "notes": "报告 §2 八行纠正表逐项与原文及源码对上；251 万对应 Mailman run 2 的 2,517,861 累计输入 token；「首次帕累托」经 SkillMOO 先例（NSGA-II、Pareto 输出）合理收窄为范围更广的 harness 组件组合定位。"
+        },
+        {
+          "id": "SCM10",
+          "title": "开源 release 边界与源码静态事实：evaluation-only 包、无完整进化控制器入口、GLM-5.2 快照缺失、TB2 默认 splitter 30/rest/test 空、hook fail-open 与计数重置风险、计量 indeterminate、缓存回放边界、权限/Docker 假设",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S4",
+            "S5",
+            "S6"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11"
+          ],
+          "notes": "本轮在固定 commit 上独立复核：orchestrators 仅 solve/_util/__init__；全库无 Pareto/DPP/TestSynth 控制链；docs/claude-code.md 明示 GLM-5.2 快照未包含且 classifier 独立；splits.py 与 _read_json 行为与报告描述一致；trajectory_cost_summary 仅在完整计量时填 total。报告的「静态发现、未执行复现」限定如实。"
+        },
+        {
+          "id": "SCM11",
+          "title": "相关工作谱系：Table 1 中 AFlow/SkillMOO/RHO/AHE 与 HarnessPro 的目标、范围、反馈、迭代、输出对比",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "S1",
+            "S7",
+            "S8"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02"
+          ],
+          "notes": "报告以 RHO 与 SkillMOO 摘要级对照满足新颖性边界论证，但未提及 Table 1 中的 AFlow、AHE（及正文提及的 HarnessFix/HarnessX）。对本报告的使用目的（工程借鉴边界）影响有限，属可接受的省略。"
+        },
+        {
+          "id": "SCM12",
+          "title": "作者声明与研究边界：AI Use Statement、Reproducibility Statement、Under review 状态、epoch 中间 test 点仅可视化",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "matched_coverage_unit_ids": [
+            "U12"
+          ],
+          "notes": "报告 §1 明确预印本定位与「未复现、不作为同行评审通过」；§7 局限 12 保留 Figure 4 中间点不用于选择的边界；AI use/可复现性声明未逐字引用但定位一致。"
+        }
+      ],
+      "source_ids_checked": [
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8",
+        "S9",
+        "S10"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "独立来源复核（fresh context，不继承生成者会话）。流程：先读论文全部 41 页文本层、微信正文、arXiv 元数据、RHO/SkillMOO 摘要建立独立内容地图，再读报告与 evidence 账本；全部 18 条 critical claim（含 C18 的 inference 定位）、12 个覆盖单元、5 条 requirement 逐项核验，并在固定 commit 8ae622eb4a4923dbb4b515be7ded614f88fd4f38 本地源码上复核了 C13–C17 及报告 §6 的全部代码类陈述（policy 字段、hook 行为、sha 级文件比对、orchestrators 入口、docs 边界、_tree_digest 字节语义）；报告引用的 PDF SHA-256 独立重算一致。未发现关键数字错配、无支持 claim 或核心要求遗漏；轻微覆盖缺口见 SCM06/SCM11（摘要聚合数字、Figure 4 逐代数字、AFlow/AHE 谱系、三行记忆类基线，均 supporting 级）。身份与门禁：本 review 由独立 OpenCode 会话（run_id=ses_e97351078ffeFkQa4nvlyDqdAo，harness=opencode）完成；模型身份 glm-5.3 的证据为实际会话导出元数据（原生 session export，sha256=d1de3538d98d62d2bfcc7fae28d96d2cdd96ad7f3997c46f3ef1c0f596b39a7b）：session_model 为 providerID=zhipu、id=glm-5.3，且本复核首轮产生的全部 32 条 assistant 消息逐条为 providerID=zhipu、id=glm-5.3、variant=default，created 时间戳单调（2026-10-23T12:44:52Z–12:49:11Z），首条 messageID 与并行记录的会话流一致；该证据强于单独启动参数，但仍不证明供应商网关内部实际权重，此为已知限制；父进程/设备级身份服务报告的默认 actor 与本会话不一致且未确认，未用作本复核身份依据。记录修正：本记录评分理由经一轮有界续审修正——移除了对另一份交付物（非本报告）行号瑕疵的引用，并纠正一处目标数值的章节归属（约 10% 的初轮工程目标不在本公开报告 §8）；修正仅涉及复核记录自身，正文与 evidence 未变，评分维持复核者原判。确定性门禁：填写本记录前运行 report_quality.py check 观察到模板空值导致 blocked（REV000/015/016/023/027），属预期；本 Reviewer 不自宣称门禁通过，最终判定由主导者运行 check 计算。"
+    },
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex-collaboration",
+        "run_id": "/root/harnesspro_sampling_review",
+        "independent_context": true,
+        "fresh_context": true,
+        "explicit_model_override": true,
+        "override_reason": "EverAgent 跨模型抽样策略要求每 5 篇尚未强审的 important 报告使用 gpt-5.6-sol；本次由独立 collaboration 任务显式覆盖模型。"
+      },
+      "scores": {
+        "evidence_fidelity": 97,
+        "request_coverage": 95,
+        "reasoning_quality": 96,
+        "readability": 95,
+        "limitations": 97
+      },
+      "score_reasons": {
+        "evidence_fidelity": "逐项核对论文主文、公式、Algorithm 1、Figure 2、Tables 2/3、附录运行时 listings、二手文章、固定 commit 源码与发布文档。18 个 critical claim 的数字、口径和源码锚点均成立；报告明确区分论文结果、源码静态发现与分析者建议。",
+        "request_coverage": "R01–R05 均有明确回答：传播口径纠正、方法与公式、完整核心实验和消融、源码/release 边界、EverAgent 迁移建议、局限及追问齐全。支持性分析中 Figure 4 的逐代具体数值和 Table 4 的具体历史单价未展开，但递归趋势、held-out 边界、缓存计价口径和成本外推限制均已覆盖，不影响核心要求。",
+        "reasoning_quality": "报告持续区分相关性、消融支持与因果分解，识别 validation 选择过拟合、不同成功口径、模型/Harness 混杂、搜索成本摊销、缓存与延迟反例，并把项目建议标为待验证假说。Pareto 退化维度、tie-break 和无可行候选等实现边界也被主动指出。",
+        "readability": "报告可脱离对话独立阅读，先给结论和关键口径，再按传播纠偏、机制、实验、源码、局限和迁移建议展开；表格和流程图有效降低信息密度。篇幅较长且源码段落较密，但章节导航清楚，没有依赖未展示的生成过程。",
+        "limitations": "预印本、未复现实验、20 样本 Figure 2、10 个训练任务、2–3 次最终重复、不同成功定义、历史 API 价格、完整进化成本、release 缺口、GLM 快照缺失、权限风险和 held-out 污染风险均被明确限制；没有把论文收益承诺为 EverAgent 的实际收益。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17",
+        "C18"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08",
+        "U09",
+        "U10",
+        "U11",
+        "U12"
+      ],
+      "source_content_map": [
+        {
+          "id": "SC01",
+          "title": "研究问题与双目标：固定模型下让 Harness 同时提高任务表现并降低执行成本",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02",
+            "U06",
+            "U07"
+          ],
+          "notes": "报告准确解释搜索对象是 Harness 而非模型权重，并把质量、成本和延迟分开记账。"
+        },
+        {
+          "id": "SC02",
+          "title": "无标签边界与固定合成测试：进化阶段不接触官方答案，最终仍用官方 held-out 验收",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01",
+            "U03",
+            "U04"
+          ],
+          "notes": "报告纠正了二手文章把 validation 写成测试集的表述，并说明测试只生成一次、初始产物不是答案 oracle。"
+        },
+        {
+          "id": "SC03",
+          "title": "递归闭环：多 rollout 诊断、三种优先级规划、隔离编辑与候选回流",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1"
+          ],
+          "matched_coverage_unit_ids": [
+            "U05"
+          ],
+          "notes": "Analyzer、Planner、Editor 的输入、证据路径、G=3 和最多 3 父代/9 新候选均被准确解释。"
+        },
+        {
+          "id": "SC04",
+          "title": "质量底线、Pareto 支配与归一化加权平方距离选择",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06"
+          ],
+          "notes": "Eq. 7–9、Lite/Medium/Heavy 权重和代表可重复的边界均正确；报告额外指出零极差和 tie-break 未定义。"
+        },
+        {
+          "id": "SC05",
+          "title": "DPP coreset 与 train/validation/test 隔离",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04",
+            "U07"
+          ],
+          "notes": "难度权重、去专名失败指纹、theta/epsilon、贪心 determinant 和十任务固定 coreset 均有公式级覆盖。"
+        },
+        {
+          "id": "SC06",
+          "title": "三基准、两组模型/Harness 的 Table 2 结果与不同成功口径",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1"
+          ],
+          "matched_coverage_unit_ids": [
+            "U07"
+          ],
+          "notes": "两组完整核心表格、59/100/100 held-out、3/3/2 重复、sample SD、Program 宏平均及成本/延迟反例均准确。"
+        },
+        {
+          "id": "SC07",
+          "title": "Figure 2：生成测试提高失败召回但仍有漏判与误判",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03",
+            "U08"
+          ],
+          "notes": "20 个样本的两个混淆矩阵、41.7% 到 83.3% recall、2 个漏失败和 1 个误判成功均被复算。"
+        },
+        {
+          "id": "SC08",
+          "title": "Figure 4：跨 epoch 的 Pareto 前沿演化与 test 点仅作事后可视化",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "S1"
+          ],
+          "matched_coverage_unit_ids": [
+            "U07",
+            "U12"
+          ],
+          "notes": "报告覆盖递归设计、RHO+Iteration 对照及中间 test 点不得反馈给 Planner 的边界，但没有展开 TB2/SWE/Program 的逐代具体数值。"
+        },
+        {
+          "id": "SC09",
+          "title": "Table 3 消融：Planner、Test Synthesizer 与单独路由/预算/low effort 的贡献边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1"
+          ],
+          "matched_coverage_unit_ids": [
+            "U09"
+          ],
+          "notes": "SWE 和 TB2 的关键消融值、CoP 定义及不能精确分离机制因果的限制均有覆盖。"
+        },
+        {
+          "id": "SC10",
+          "title": "运行时机制：任务路由、分阶段 tool budget、可恢复输出压缩与窄 RTK 改写",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S4",
+            "S6"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10",
+            "U11"
+          ],
+          "notes": "TB2 第 45 次 deny、Program 76+8 grace、raw 路径、typed image 适配、policy 优先于 rubric 文字和 RTK allowlist 均经固定源码核验。"
+        },
+        {
+          "id": "SC11",
+          "title": "成本与缓存口径：cached/uncached/output 分价、完整计量和结果 cache 区别",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "S1",
+            "S4"
+          ],
+          "matched_coverage_unit_ids": [
+            "U07",
+            "U11"
+          ],
+          "notes": "报告准确说明历史 API 价格、缓存输入口径、prompt cache 与结果 replay cache 的区别及 indeterminate 规则；未列出 Table 4 的四个具体单价，属支持性省略。"
+        },
+        {
+          "id": "SC12",
+          "title": "开源 release 的复现范围：九套 Harness 与评测 runner，不等于完整多代进化控制器",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S4",
+            "S5",
+            "S6"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11"
+          ],
+          "notes": "固定 commit 的 pyproject、docs、orchestrators、全仓入口检索、GLM 快照缺失、classifier 独立 transport 和 TB2 split 差异均支持报告结论。"
+        },
+        {
+          "id": "SC13",
+          "title": "相近方法与新颖性边界：RHO 的 self-preference 与 SkillMOO 的技能多目标优化",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S7",
+            "S8"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01",
+            "U02"
+          ],
+          "notes": "报告如实限定为摘要级比较，没有把 SkillMOO 或 RHO 摘要写成全文复现。"
+        },
+        {
+          "id": "SC14",
+          "title": "二手传播的关键夸张与误读：53%、测试集、44 次、251 万 token、缓存与延迟",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S3",
+            "S4"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01"
+          ],
+          "notes": "报告逐项收窄为相近性能、validation 选择、第 45 次拒绝、累计请求输入、缓存友好设计和存在延迟反例。"
+        },
+        {
+          "id": "SC15",
+          "title": "论文与项目外推限制：小样本、选择过拟合、研发成本、权限和跨模型迁移",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S4",
+            "S5",
+            "S9",
+            "S10"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11",
+            "U12"
+          ],
+          "notes": "报告给出十二项具体限制，并把 EverAgent 方向限定为固定模型、固定验收的有界试点和待验证工程假说。"
+        }
+      ],
+      "source_ids_checked": [
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8",
+        "S9",
+        "S10"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "强模型跨模型抽样复核。来源优先读取范围：论文 page-01 至 page-41（重点复核主文 1–14、诊断/规划 15–21、测试合成 22–23、runtime 24–41）、微信正文、arXiv/RHO/SkillMOO 摘要、本仓报告流程与 Context owner，以及 HarnessPro commit 8ae622eb4a4923dbb4b515be7ded614f88fd4f38 的相关源码和发布文档。未读取并未受 GLM 当前 review 影响。未发现需要生成者修订的实质问题；SC08、SC11 是不影响核心结论的支持性简略项。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 96.1,
+    "evaluated_on": "2026-10-23",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "e5e7c41eaf776fd43f27c047a78539550e0be5d2425608f02c99fcb4016be021",
+    "evidence_sha256": "6af33b5ed9b8c2e23f61f8a145f250a1523561a964b85476a53d0c6be05cc190"
+  }
+}

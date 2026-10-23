@@ -7,6 +7,7 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-10-23 | [HarnessPro 精读：用可执行反馈与帕累托选择约束 Harness 递归改进](../ai-learning/reports/paper_analyses/51_harnesspro_2026.md) | ai-learning |
 | 2026-10-22 | [大小马智驾 V23：小米×徕卡合作幕后——从高管大师课到 Leica M4](../podcast-learning/reports/2024-12-25_ximalaya-daxiaoma-zhijia_v23-xiaomi-leica.md) | podcast-learning |
 | 2026-10-22 | [Google 自主湿实验室 Agent：用物理现实、实验反馈与人类战略闭合科学发现](../ai-learning/reports/knowledge_reports/Google_自主湿实验室Agent_生物现实约束与闭环_深度解析_20261021.md) | ai-learning |
 | 2026-10-22 | [ALTK-Evolve：学习型 Memory 如何让 Agent 在服务任务中持续改进](../ai-learning/reports/knowledge_reports/ALTK_Evolve_学习型Memory与Agent服务任务_深度解析_20261021.md) | ai-learning |
@@ -31,12 +32,12 @@
 | 2026-10-20 | [屠龙×Karl Deisseroth：故事如何进入精神病学，光如何成为神经元开关](../podcast-learning/reports/2026-10-06_xiaoyuzhou-tulong-dashihua_karl-deisseroth.md) | podcast-learning |
 | 2026-10-20 | [对话盛颖：xAI，Infra的浪漫，SGLang，开源，平权与「甄嬛传」](../podcast-learning/reports/2026-08-04_rss-guigu101_shengying.md) | podcast-learning |
 | 2026-10-20 | [对话 Evoken 陈冕：在模型不断吞噬应用价值的时代，一家独立 AI 应用公司如何 survive](../podcast-learning/reports/2026-07-30_xiaoyuzhou-wandian-latetalk_chenmian.md) | podcast-learning |
-| 2026-10-20 | [实测笔记：book-to-skill 能优化 EverAgent 学习类项目吗？](../ai-practice/experiments/book-to-skill-demo/评估笔记_book-to-skill能否优化学习项目_20260729.md) | ai-practice |
 
-## 🤖 AI Learning（125 篇）
+## 🤖 AI Learning（126 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-10-23 | [HarnessPro 精读：用可执行反馈与帕累托选择约束 Harness 递归改进](../ai-learning/reports/paper_analyses/51_harnesspro_2026.md) | `harnesspro`, `recursive_self_improvement`, `pareto_optimization`, `context_engineering`, `agent_evaluation` |
 | 2026-10-22 | [Google 自主湿实验室 Agent：用物理现实、实验反馈与人类战略闭合科学发现](../ai-learning/reports/knowledge_reports/Google_自主湿实验室Agent_生物现实约束与闭环_深度解析_20261021.md) | `autonomous_wet_lab`, `scientific_agents`, `verid`, `lab_in_the_loop`, `aptamer_design`, `protein_binder_design` |
 | 2026-10-22 | [ALTK-Evolve：学习型 Memory 如何让 Agent 在服务任务中持续改进](../ai-learning/reports/knowledge_reports/ALTK_Evolve_学习型Memory与Agent服务任务_深度解析_20261021.md) | `agent_memory`, `memory_middleware`, `self_improving_agents`, `altk_evolve`, `tau2_bench`, `context_engineering` |
 | 2026-10-21 | [NVIDIA OpenShell 与 Sentry：把 Agent 安全从提示词移到运行时边界](../ai-learning/reports/knowledge_reports/NVIDIA_OpenShell_Sentry_Agent运行时安全架构_深度解析_20261021.md) | `agent_security`, `openshell`, `nvidia_sentry`, `sandbox`, `runtime_governance`, `bluefield` |

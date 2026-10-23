@@ -1,0 +1,480 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/paper_analyses/51_harnesspro_2026.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-23",
+  "generator": {
+    "model": "gpt-6.1-sol",
+    "harness": "codex",
+    "run_id": "harnesspro-20261023-25b40fdb",
+    "explicit_model_override": true,
+    "override_reason": "用户要求当前主导 Agent 亲自承担关键研究，本轮 session-bound 身份为 gpt-6.1-sol。"
+  },
+  "task": {
+    "summary": "精读用户提供的微信文章与 HarnessPro 论文，结合固定源码核对方法、数字和边界，交付 EverAgent AI 学习报告；完整任务还包括私仓源码 reference 和双仓 RSI 可行性提案。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "深读文章与论文全文，重构方法并纠正传播口径。"
+      },
+      {
+        "id": "R02",
+        "text": "提供精确实验数字、评测设计、误差和适用边界。"
+      },
+      {
+        "id": "R03",
+        "text": "结合固定源码说明开源能力和完整 RSI 的实现缺口。"
+      },
+      {
+        "id": "R04",
+        "text": "提出公开可迁移的项目建议，并保留独立验收、模型与隐私边界。"
+      },
+      {
+        "id": "R05",
+        "text": "形成独立可读的学习报告，包含局限、思考与追问和可追溯来源。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "kind": "primary",
+      "title": "HarnessPro v1 — 全部41页论文",
+      "locator": "https://arxiv.org/pdf/2610.26770v1",
+      "accessed_on": "2026-10-23",
+      "read_scope": "全部41页，含公式、实验、附录；Figure 2及Tables 2/3另核对页面图。"
+    },
+    {
+      "id": "S2",
+      "kind": "official",
+      "title": "arXiv版本与提交元数据",
+      "locator": "https://arxiv.org/abs/2610.26770v1",
+      "accessed_on": "2026-10-23",
+      "read_scope": "版本、作者、提交时间与摘要。"
+    },
+    {
+      "id": "S3",
+      "kind": "secondary",
+      "title": "梦晨/量子位：HarnessPro文章",
+      "locator": "https://mp.weixin.qq.com/s/1nbncYhO5xZ7HAk6F3N0Dw",
+      "accessed_on": "2026-10-23",
+      "read_scope": "已读取正文；不声明已核实发布时间或全部微信嵌图。"
+    },
+    {
+      "id": "S4",
+      "kind": "primary",
+      "title": "HarnessPro固定源码快照",
+      "locator": "https://github.com/pzs19/HarnessPro/tree/8ae622eb4a4923dbb4b515be7ded614f88fd4f38",
+      "accessed_on": "2026-10-23",
+      "read_scope": "下载固定SHA；runtime、hooks、adapter、stores、observability、qualification与三runner关键路径。"
+    },
+    {
+      "id": "S5",
+      "kind": "official",
+      "title": "HarnessPro evaluation/Claude release边界",
+      "locator": "https://github.com/pzs19/HarnessPro/blob/8ae622eb4a4923dbb4b515be7ded614f88fd4f38/docs/evaluation.md",
+      "accessed_on": "2026-10-23",
+      "read_scope": "evaluation.md与同快照docs/claude-code.md全文；后者明确独立classifier不随solver切换。"
+    },
+    {
+      "id": "S6",
+      "kind": "primary",
+      "title": "TB2与Program实际runtime hooks",
+      "locator": "https://github.com/pzs19/HarnessPro/blob/8ae622eb4a4923dbb4b515be7ded614f88fd4f38/harnesses/terminal-bench-2/medium/runtime/hook.py",
+      "accessed_on": "2026-10-23",
+      "read_scope": "TB2 Medium hook全文、Program hook/policy、Claude shim；边界与grace静态核验。"
+    },
+    {
+      "id": "S7",
+      "kind": "primary",
+      "title": "RHO v2摘要",
+      "locator": "https://arxiv.org/abs/2606.05922v2",
+      "accessed_on": "2026-10-23",
+      "read_scope": "仅摘要及版本元数据，未全文复现。"
+    },
+    {
+      "id": "S8",
+      "kind": "primary",
+      "title": "SkillMOO v2摘要",
+      "locator": "https://arxiv.org/abs/2604.09297v2",
+      "accessed_on": "2026-10-23",
+      "read_scope": "仅摘要及版本元数据，未深读其源码。"
+    },
+    {
+      "id": "S9",
+      "kind": "local",
+      "title": "EverAgent报告流程与证据质量owner",
+      "locator": "docs/REPORT_WORKFLOW.md",
+      "accessed_on": "2026-10-23",
+      "read_scope": "本仓流程；REPORT_QUALITY_GATE.md与当前质量policy用于真实完成。"
+    },
+    {
+      "id": "S10",
+      "kind": "local",
+      "title": "EverAgent Context架构",
+      "locator": "docs/CONTEXT_ENGINEERING.md",
+      "accessed_on": "2026-10-23",
+      "read_scope": "按需披露、指令分层、候选实验与完成边界。"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "HarnessPro在固定模型下修改Harness，以生成测试反馈和质量/成本Pareto选择迭代。",
+      "report_anchor": "RSI 改什么",
+      "support": "direct",
+      "source_ids": [
+        "S1"
+      ],
+      "evidence": "§3–4、Algorithm1：搜索对象为Harness，非模型权重。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "论文v1于2026-10-19提交，41页，Under review。",
+      "report_anchor": "来源、版本与实际阅读范围",
+      "support": "direct",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "evidence": "v1提交元数据为2026-10-19 17:27:38 UTC；PDF页眉Under review。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "SWE/GPT5.5 Medium相对RHO成本降约53%，质量79.0%对80.0%，下降1pp。",
+      "report_anchor": "GPT-5.5 / Codex：Table 2 核心数据",
+      "support": "derived",
+      "source_ids": [
+        "S1"
+      ],
+      "evidence": "Table2：1−1.26/2.68=52.985%;79−80=−1pp。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "TB2 Heavy比RHO高4.5pp，成本降约33.9%。",
+      "report_anchor": "GPT-5.5 / Codex：Table 2 核心数据",
+      "support": "derived",
+      "source_ids": [
+        "S1"
+      ],
+      "evidence": "Table2：80.8−76.3=4.5pp；1−.72/1.09=33.945%。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "Program Lite比Vanilla便宜但更慢：985对669秒。",
+      "report_anchor": "GPT-5.5 / Codex：Table 2 核心数据",
+      "support": "derived",
+      "source_ids": [
+        "S1"
+      ],
+      "evidence": "Table2：成本2.18对2.65；985/669−1=47.235%。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "Figure2有20样本，失败recall从5/12到10/12，仍漏2失败、误判1成功。",
+      "report_anchor": "Figure 2：生成测试改善失败召回",
+      "support": "derived",
+      "source_ids": [
+        "S1"
+      ],
+      "evidence": "p6矩阵：Judge [[8,0],[7,5]]，生成测试[[7,1],[2,10]]。",
+      "critical": true
+    },
+    {
+      "id": "C07",
+      "claim": "初始测试生成一次，初始validation成功率固定为底线，官方test在最终冻结后使用。",
+      "report_anchor": "先固定任务、反馈与质量底线",
+      "support": "direct",
+      "source_ids": [
+        "S1"
+      ],
+      "evidence": "Algorithm1行1–3、17–22；Appendix C3说明冻结初始产物不是答案oracle。",
+      "critical": true
+    },
+    {
+      "id": "C08",
+      "claim": "训练每任务每父代3独立rollout，Planner不默认读取全轨迹。",
+      "report_anchor": "Analyzer：同时诊断失败和成功中的浪费",
+      "support": "direct",
+      "source_ids": [
+        "S1"
+      ],
+      "evidence": "§4.2及p5：G=3，聚合诊断超64K才总结，Planner默认消费诊断/指标/diff。",
+      "critical": true
+    },
+    {
+      "id": "C09",
+      "claim": "最多3父代、9新候选与12个合并候选；代表可能重复。",
+      "report_anchor": "Planner 与 Editor：同一问题，三种方向",
+      "support": "derived",
+      "source_ids": [
+        "S1"
+      ],
+      "evidence": "Algorithm1：每父3提案；At最多三代表，set去重。",
+      "critical": true
+    },
+    {
+      "id": "C10",
+      "claim": "DPP coreset由难度和去专名失败指纹形成，实际贪心选10而非随机采样。",
+      "report_anchor": "用困难性与多样性选择十个训练任务",
+      "support": "direct",
+      "source_ids": [
+        "S1"
+      ],
+      "evidence": "Appendix A1 Eq10–12：epsilon .1、theta .7、贪心最大det。",
+      "critical": true
+    },
+    {
+      "id": "C11",
+      "claim": "实验held-out为59/100/100，Program成功率是每任务测试比例宏平均，最终重复3/3/2。",
+      "report_anchor": "实验设计",
+      "support": "direct",
+      "source_ids": [
+        "S1"
+      ],
+      "evidence": "§5.1及Appendix A；所有±为sample SD，时间排除grader。",
+      "critical": true
+    },
+    {
+      "id": "C12",
+      "claim": "SWE消融去Planner为73%/$1.42，去Synth为69%/$1.37；单抄路由/预算/low effort有退化。",
+      "report_anchor": "Table 3：组合搜索有效",
+      "support": "direct",
+      "source_ids": [
+        "S1"
+      ],
+      "evidence": "Table3：完整Medium79/1.26；RHO策略分别76/2.13、75/1.75、59/1.08。",
+      "critical": true
+    },
+    {
+      "id": "C13",
+      "claim": "TB2标准profile finalize44，hook第45次开始deny；Program finalize76+8 grace。",
+      "report_anchor": "分阶段提醒，硬限制必须有完成语义",
+      "support": "direct",
+      "source_ids": [
+        "S1",
+        "S6"
+      ],
+      "evidence": "TB2 _pre_tool_use先计数且count>finalize；Program hard_stop=finalize+max(8,reminder)。",
+      "critical": true
+    },
+    {
+      "id": "C14",
+      "claim": "Program Medium/Heavy公开policy相同，三个Program hook相同；原始输出恢复与typed image需要协议适配。",
+      "report_anchor": "进化产物与源码",
+      "support": "direct",
+      "source_ids": [
+        "S4",
+        "S6"
+      ],
+      "evidence": "Program两个policy SHA相同、三hook SHA相同；TB2 _post_tool_use与Claude shim显式处理协议和image。",
+      "critical": true
+    },
+    {
+      "id": "C15",
+      "claim": "当前开源为evaluation release；未发现完整可启动进化控制器，且缺GLM5.2进化快照。",
+      "report_anchor": "公开代码的复现边界",
+      "support": "direct",
+      "source_ids": [
+        "S4",
+        "S5"
+      ],
+      "evidence": "pyproject包描述；orchestrators只solve/_util/__init__；docs/evaluation:124、docs/claude-code:8–11。",
+      "critical": true
+    },
+    {
+      "id": "C16",
+      "claim": "成本缺usage/price或结果集不完整时，源码区分indeterminate和部分观测下界。",
+      "report_anchor": "不完整测量不能进入效率晋级",
+      "support": "direct",
+      "source_ids": [
+        "S4"
+      ],
+      "evidence": "observability.trajectory_cost_summary、qualification.qualify_metrics、pricing历史价表。",
+      "critical": true
+    },
+    {
+      "id": "C17",
+      "claim": "TB2默认splitter是30/rest且test为空，与论文实验三段协议不同。",
+      "report_anchor": "公开代码的复现边界",
+      "support": "direct",
+      "source_ids": [
+        "S4",
+        "S5"
+      ],
+      "evidence": "datasets/terminal_bench_2/splits.py:6–24与evaluation --heldout-ids示例。",
+      "critical": true
+    },
+    {
+      "id": "C18",
+      "claim": "[待验证] 项目首个试点优先固定模型/effort，测试按需读取及可恢复输出，复用独立报告质量门。",
+      "report_anchor": "对 EverAgent 的可行方向",
+      "support": "inference",
+      "source_ids": [
+        "S1",
+        "S4",
+        "S9",
+        "S10"
+      ],
+      "evidence": "工程提案，未跑项目RSI；不是论文测得的项目收益。",
+      "critical": true
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "文章传播论证及口径纠正",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S3",
+        "S8"
+      ],
+      "report_anchor": "微信文章的论证与需要收窄的表述"
+    },
+    {
+      "id": "U02",
+      "title": "固定模型与Harness对象、方法谱系",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S7",
+        "S8"
+      ],
+      "report_anchor": "RSI 改什么"
+    },
+    {
+      "id": "U03",
+      "title": "冻结生成测试与公开oracle边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1"
+      ],
+      "report_anchor": "先固定任务、反馈与质量底线"
+    },
+    {
+      "id": "U04",
+      "title": "DPP与训练/验证/测试分离",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1"
+      ],
+      "report_anchor": "用困难性与多样性选择十个训练任务"
+    },
+    {
+      "id": "U05",
+      "title": "Analyzer/Planner/Editor与三个方向",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1"
+      ],
+      "report_anchor": "Analyzer：同时诊断失败和成功中的浪费"
+    },
+    {
+      "id": "U06",
+      "title": "Pareto、归一化、代表与边界情况",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1"
+      ],
+      "report_anchor": "先过滤，再选帕累托代表"
+    },
+    {
+      "id": "U07",
+      "title": "Table2两模型完整核心数据与成本/延迟",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1"
+      ],
+      "report_anchor": "实验与数字：成绩、成本、延迟分别看"
+    },
+    {
+      "id": "U08",
+      "title": "Figure2混淆矩阵与统计边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1"
+      ],
+      "report_anchor": "Figure 2：生成测试改善失败召回"
+    },
+    {
+      "id": "U09",
+      "title": "Table3消融与组合效果边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1"
+      ],
+      "report_anchor": "Table 3：组合搜索有效"
+    },
+    {
+      "id": "U10",
+      "title": "附录诊断/规划/合成器/实际hooks",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S4",
+        "S6"
+      ],
+      "report_anchor": "进化产物与源码"
+    },
+    {
+      "id": "U11",
+      "title": "开源能力、计量、缓存和跨模型/权限边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S4",
+        "S5",
+        "S6"
+      ],
+      "report_anchor": "公开代码的复现边界"
+    },
+    {
+      "id": "U12",
+      "title": "局限、可行建议与学习追问",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S9",
+        "S10"
+      ],
+      "report_anchor": "Limitations"
+    }
+  ],
+  "limitations": [
+    "论文为预印本；本轮未复现benchmark。",
+    "Figure2仅20样本，训练10任务，最终重复仅2–3次。",
+    "生成测试有错误oracle/覆盖不足/共有盲区；固定反馈不消除validation过拟合。",
+    "Program宏平均测试比例与另外两基准全任务通过率不同。",
+    "历史API执行成本不含完整进化研发开销，不等于Token Plan账单或项目收益。",
+    "release缺完整进化入口和GLM5.2快照；换backend不自动换classifier。",
+    "原件长文reader截断后补固定PDF；未声称全部微信图片已读。",
+    "本项目RSI与跨模型迁移仍是待验证提案。"
+  ],
+  "acquisition": {
+    "strategy": "eacli Token Plan first; official Git/PDF minimal fallback",
+    "paper_version": "2610.26770v1",
+    "paper_pages": 41,
+    "paper_sha256": "da167e436b2f2c2b5898789d27c22820b92ccb922a8d420e51c341227d9c8676",
+    "repo_commit": "8ae622eb4a4923dbb4b515be7ded614f88fd4f38",
+    "typed_repo_failure": "new public repo not indexed",
+    "typed_long_reader_failure": "inner JSON text cut at 32000 characters despite outer ok=true",
+    "benchmark_reproduced": false
+  }
+}
