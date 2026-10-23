@@ -2,12 +2,12 @@
 import argparse
 import json
 import sys
-from . import inspect_identity, source_sha256
+from . import diagnose_identity, inspect_identity, source_sha256
 
 
 def main(arguments=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", nargs="?", choices=("inspect", "declare-model"), default="inspect")
+    parser.add_argument("command", nargs="?", choices=("inspect", "diagnose", "declare-model"), default="inspect")
     parser.add_argument("--model")
     parser.add_argument("--user-confirmed", action="store_true",
                         help="只在用户明确指定当前模型后使用")
@@ -16,6 +16,11 @@ def main(arguments=None) -> int:
     for flag in ("json", "name", "email", "git-ident"):
         output.add_argument("--" + flag, action="store_true")
     args = parser.parse_args(arguments)
+    if args.command == "diagnose":
+        if args.model or args.user_confirmed or args.name or args.email or args.git_ident:
+            parser.error("diagnose 只返回当前调用方诊断；使用 --json，不接受声明或 Git 身份输出参数")
+        print(json.dumps({**diagnose_identity(), "source_sha256": source_sha256()}, ensure_ascii=False))
+        return 0
     value = {**inspect_identity(), "source_sha256": source_sha256()}
     if args.command == "declare-model":
         from . import declarations, models

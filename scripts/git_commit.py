@@ -14,7 +14,6 @@ import core_bootstrap  # noqa: E402,F401
 from everagent_core import git as _core  # noqa: E402
 
 CommitError = _core.CommitError
-TRAILER = _core.TRAILER
 option_parts = _core.option_parts
 normalize_message = _core.normalize_message
 message_arguments = _core.message_arguments

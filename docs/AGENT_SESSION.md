@@ -25,7 +25,7 @@ Session v2 区分 `actor`（harness 与模型）、`execution`（当前执行设
 个人桌面场景支持命令行和 Desktop。**Kimi Desktop 是独立的 macOS/Windows App**，身份为
 `kimi-desktop`；Kimi Code CLI 身份为 `kimi-cli`。ZCode、MiniMax Code 也作为 Desktop 宿主识别。
 Windows 的 Kimi 分类使用调用方可执行文件的产品目录与路径，不能仅靠文件名大小写。
-App 身份或版本可见不代表当前模型可见；无法核实时保持 unknown/configured，等待用户明确指定。
+App 身份或版本可见不代表当前模型可见；核实失败保持 unknown/configured，Agent 先诊断并修复可行的自动路径，用户指定作为取证不可行时的兜底。
 
 基础设施工作场景只消费已有原生任务元数据；环境 task ID 是 hint。任务确认要求精确 caller 和原生 owner
 记录一致；普通 executor 不冒充 Agent。没有现成任务绑定时报告 unbound/unverified，不另建 controller 或 ledger。
@@ -41,7 +41,7 @@ App 身份或版本可见不代表当前模型可见；无法核实时保持 unk
 | unknown | 无依据 | 否 |
 
 原生观测必须来自受支持 adapter，绑定 harness、进程创建身份、session/terminal 并通过新鲜度检查。
-**先自动核实，只有自动路径没有当前会话证据时才请用户指定。** 重构必须保留已核实的读取能力。
+**自动核实 → Agent 诊断及可行的源码修复 → 用户明确指定兜底。** 重构必须保留已核实的读取能力。
 
 | 自动来源 | 核实依据 |
 |---|---|
@@ -55,6 +55,21 @@ App 身份或版本可见不代表当前模型可见；无法核实时保持 unk
 读取器只取当前调用方元数据；Codex 日志尾部有 4 MiB 上限，SQLite 只读查询指定 thread 的模型字段。
 配置默认值、同目录的其他会话、全局最近日志与无来源的环境变量不构成核实。原生读取失败保留提示与未核实状态，
 未把观察接口定义本身当作覆盖证据。自动来源和未知回退都进入身份回归测试。
+
+### 自动核实失败的修复路径
+
+`eacli session diagnose --json` 或 `python3 scripts/agent_identity.py diagnose --json` 返回当前调用方的
+`automatic_probe`、原因码、公共 owner、复验入口和最后的用户兜底条件。安装 core 使用
+`everagent-identity diagnose --json`。成功的常规 inspect 保持原有精简输出，诊断按需展开。
+
+Agent 可以在任务授权内修复 harness 分类、进程/session 绑定或原生模型读取器；先读诊断所指 owner，
+以当前会话元数据或独立合成 fixture 为依据，补针对性回归并复验。读取器失败只提供实际能判断的原因，
+`native-metadata-unavailable-or-invalid` 不推断更具体的文件、租约或记录问题。不得为排障扫描全局最近对话、
+读取对话正文、借另一会话的模型、把配置升级为实测或自行设置用户确认。
+
+模型未核实阻断提交，已授权的源码修复与只读工作继续。没有可信原生字段、当前来源不可访问或修复后仍
+无法核实时，才请求用户给出模型 ID；harness 本身未识别时先修分类，不能借声明伪造 harness。
+诊断元数据和 `repair.order` 不构成模型证据，也不授权安装、权限或生产配置变更。
 
 Claude Code 从自身用户配置目录的 `projects/<cwd 编码>/<session UUID>.jsonl` 读取元数据。
 调用方需保留真实 `CLAUDE_CODE_SESSION_ID`；无人值守 wrapper 同时用原生 `--session-id` 启动对应 UUID。

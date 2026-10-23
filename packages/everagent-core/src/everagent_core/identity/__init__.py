@@ -9,6 +9,11 @@ model_evidence = models.model_evidence
 detect_model = models.detect_model
 
 
+def diagnose_identity() -> dict:
+    from .diagnostics import diagnose
+    return diagnose()
+
+
 def source_sha256() -> str:
     digest = hashlib.sha256()
     root = Path(__file__).resolve().parent

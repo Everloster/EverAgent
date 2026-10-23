@@ -21,13 +21,13 @@
 
 Agent: {模型名}
 Task-Type: {project-optimization | new-project | task-execution}
-Co-Authored-By: Aiden
 ```
 
 - `{task-type}` = `conversational-learning`（对话学习，默认）/ `project-optimization`（项目优化）/ `architecture-redesign`（架构）/ `maintenance`（维护）/ `chore`（杂务）
 - `{scope}` = `global` 或具体领域名（`ai-learning` / `cs-learning` / ...）
 - `{描述}` ≤ 72 字符，使用中文，简明扼要
-- `Agent:` 填运行时已核实或用户明确指定的当前模型；默认配置、环境提示与历史对话不能授权署名。无法核实时先请用户明确指定。
+- `Agent:` 填运行时已核实或用户明确指定的当前模型；默认配置、环境提示与历史对话不能授权署名。核实失败先诊断并修复可行的自动路径，确实无法取证才由用户指定。
+- `Co-Authored-By` 按实际共同参与者显式填写；项目提交器不自动添加或强制指定姓名，已有 trailer 与显式 `--trailer` 沿用 Git 原生语义。
 - 严禁 commit message 包含 token / API key / 私人凭据
 
 ---
@@ -39,10 +39,13 @@ Co-Authored-By: Aiden
 > [`everagent-core`](../packages/everagent-core/README.md) 拥有 Git 参数、身份注入、消息与 index 不变规则。
 > 私仓 eacli 随包携带同源 core，绑定私仓门禁；安装态身份与会话无需相邻 checkout。
 
-**提交前必须有模型依据**：先自动读取运行时的精确会话证据；只有读取不到时才由用户明确指定。
+**提交前必须有模型依据**：先自动读取运行时的精确会话证据；失败时 Agent 先诊断并修复可行的识别路径，确实无法取证才由用户明确指定。
 Codex 当前 thread、Pi 当前 shell context、TRAE thread 与 Claude Code UUID session 读取路径见 [身份契约](./AGENT_SESSION.md#模型证据与声明)。
 配置默认值、一般环境提示、全局最近日志、历史对话和 `AGENT_ID` 都不能自动放行。
-自动核实仍失败时，请用户给出当前模型 ID，再运行：
+诊断入口是 `eacli session diagnose --json`；源码兜底为
+`python3 scripts/agent_identity.py diagnose --json`。按诊断核对当前调用方绑定，回公共 core owner 修复
+读取器或 adapter、补针对性回归，再复验当前会话。已授权的源码修复与只读工作可继续；仅配置值不能提交。
+确实无法取得当前会话证据时，请用户给出当前模型 ID，再运行：
 
 ```bash
 python3 scripts/agent_model_declare.py --model <用户明确指定的ID> --user-confirmed
@@ -57,12 +60,12 @@ python3 scripts/agent_model_declare.py --model <用户明确指定的ID> --user-
 Git validator 消费同一公共 core；上一会话的 Git 配置不构成本会话证据。
 
 提交只消费显式暂存的 tree，拒绝 pathspec、`--all/--include/--only/--patch/--fixup` 等改变内容的参数。
-质量门禁前后核验 index，并重新读取当前身份。`-m/-F`、复用消息、amend 与原生编辑器的最终消息都规范化，
-保留其他 trailer，`Co-Authored-By: Aiden` 在最终 trailer block 恰好一次。内部 amend 作者重置仍绑定仓库 owner，
+质量门禁前后核验 index，并重新读取当前身份。`-m/-F`、复用消息、amend 与原生编辑器保留调用方消息及
+显式 trailer，只补必要的末尾换行。内部 amend 作者重置仍绑定仓库 owner，
 不接受用户用 `--reset-author` 绕过双身份。
 
-项目提交器保留已有 `core.hooksPath`；外部 hook 正常执行。Git 返回后再次校验 commit tree、Author、Committer
-与 trailer；失败时保留现场并禁止继续推送，不自动回退或改史。CI 复跑同一行为测试。
+项目提交器保留已有 `core.hooksPath`；外部 hook 正常执行。Git 返回后再次校验 commit tree、Author、Committer；
+失败时保留现场并禁止继续推送，不自动回退或改史。CI 复跑同一行为测试。
 
 ```bash
 git add <本次修改的文件>

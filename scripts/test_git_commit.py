@@ -2,7 +2,9 @@
 import importlib.util
 import os
 from pathlib import Path
+import shlex
 import subprocess
+import sys
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -87,15 +89,16 @@ class CommitTests(unittest.TestCase):
         name, email = commit.owned_module("git_identity").expected_author()
         self.assertEqual(self.git("show", "-s", "--format=%an <%ae>"), f"{name} <{email}>")
         self.assertEqual(self.git("show", "-s", "--format=%cn <%ce>"), "fixture-model <noreply@example.com>")
-        self.assertEqual(self.git("show", "-s", "--format=%B").count(commit.TRAILER), 1)
+        self.assertNotIn("Co-Authored-By:", self.git("show", "-s", "--format=%B"))
 
-    def test_existing_trailers_survive_and_aiden_is_deduplicated(self):
-        message = "fixture\n\nAgent: fixture\nCo-Authored-By: Other <other@example.com>\n" + commit.TRAILER + "\n" + commit.TRAILER
+    def test_existing_trailers_and_explicit_git_trailer_survive(self):
+        message = "fixture\n\nAgent: fixture\nCo-Authored-By: Other <other@example.com>\nReviewed-By: Reviewer <review@example.com>\n"
         self.assertEqual(self.run_commit("-q", "--no-gpg-sign", "-m", message,
-                                         "--trailer", commit.TRAILER), 0)
+                                         "--trailer", "Tested-By: Runner <runner@example.com>"), 0)
         body = self.git("show", "-s", "--format=%B")
-        self.assertEqual(body.count(commit.TRAILER), 1)
         self.assertIn("Co-Authored-By: Other <other@example.com>", body)
+        self.assertIn("Reviewed-By: Reviewer <review@example.com>", body)
+        self.assertIn("Tested-By: Runner <runner@example.com>", body)
         self.assertIn("Agent: fixture", body)
 
     def test_file_message_and_literal_shell_characters(self):
@@ -105,7 +108,7 @@ class CommitTests(unittest.TestCase):
         body = self.git("show", "-s", "--format=%B")
         self.assertIn("`literal` $(literal)", body)
         self.assertIn("中文提交", body)
-        self.assertEqual(body.count(commit.TRAILER), 1)
+        self.assertNotIn("Co-Authored-By:", body)
 
     def test_environment_configuration_is_extended_without_persistence(self):
         base = {"GIT_CONFIG_COUNT": "1", "GIT_CONFIG_KEY_0": "example.key", "GIT_CONFIG_VALUE_0": "value"}
@@ -114,29 +117,41 @@ class CommitTests(unittest.TestCase):
         self.assertEqual(value["GIT_CONFIG_KEY_0"], "example.key")
         self.assertNotIn("GIT_AUTHOR_NAME", base)
 
-    def test_amend_no_edit_keeps_one_aiden_and_owner_author(self):
+    def test_amend_no_edit_preserves_message_and_owner_author(self):
         self.assertEqual(self.run_commit("-q", "--no-gpg-sign", "-m", "fixture"), 0)
         self.assertEqual(self.run_commit("-q", "--no-gpg-sign", "--amend", "--no-edit"), 0)
-        self.assertEqual(self.git("show", "-s", "--format=%B").count(commit.TRAILER), 1)
+        self.assertNotIn("Co-Authored-By:", self.git("show", "-s", "--format=%B"))
         name, email = commit.owned_module("git_identity").expected_author()
         self.assertEqual(self.git("show", "-s", "--format=%an <%ae>"), f"{name} <{email}>")
 
     def test_reuse_and_reedit_normalize_message_and_retain_other_trailers(self):
-        self.assertEqual(self.run_commit("-q", "--no-gpg-sign", "-m", "fixture\n\nAgent: fixture"), 0)
+        message = "fixture\n\nAgent: fixture\nCo-Authored-By: Other <other@example.com>"
+        self.assertEqual(self.run_commit("-q", "--no-gpg-sign", "-m", message), 0)
         for flag in ("-C", "-c"):
             with self.subTest(flag=flag), patch.dict(os.environ, {"GIT_EDITOR": ":"}):
                 self.assertEqual(self.run_commit("-q", "--no-gpg-sign", "--allow-empty", flag, "HEAD"), 0)
             body = self.git("show", "-s", "--format=%B")
             self.assertIn("Agent: fixture", body)
-            self.assertEqual(body.count(commit.TRAILER), 1)
+            self.assertIn("Co-Authored-By: Other <other@example.com>", body)
 
-    def test_native_editor_message_is_normalized_before_commit(self):
+    def test_native_editor_changes_preserve_explicit_trailers(self):
         message = self.root / "template.txt"
-        message.write_text("fixture\n\nAgent: fixture\n" + commit.TRAILER + "\n" + commit.TRAILER + "\n")
+        message.write_text("fixture\n\nAgent: fixture\nCo-Authored-By: Other <other@example.com>\n")
+        editor = self.root / "editor.py"
+        editor.write_text("from pathlib import Path\nimport sys\np = Path(sys.argv[1])\n"
+                          "p.write_text(p.read_text() + '\\nEditor-Note: fixture\\n')\n")
+        self.git("config", "commit.template", str(message))
+        with patch.dict(os.environ, {"GIT_EDITOR": shlex.join([
+                str(Path(sys.executable)).replace("\\", "/"), str(editor).replace("\\", "/")])}):
+            self.assertEqual(self.run_commit("-q", "--no-gpg-sign"), 0)
+        self.assertIn("Co-Authored-By: Other <other@example.com>", self.git("show", "-s", "--format=%B"))
+
+    def test_unchanged_editor_template_retains_git_abort(self):
+        message = self.root / "template.txt"
+        message.write_text("fixture\n\nAgent: fixture\n")
         self.git("config", "commit.template", str(message))
         with patch.dict(os.environ, {"GIT_EDITOR": ":"}):
-            self.assertEqual(self.run_commit("-q", "--no-gpg-sign"), 0)
-        self.assertEqual(self.git("show", "-s", "--format=%B").count(commit.TRAILER), 1)
+            self.assertNotEqual(self.run_commit("-q", "--no-gpg-sign"), 0)
 
     def test_identity_switch_or_expiry_after_gate_blocks_commit(self):
         for changed in ({**IDENTITY, "name": "another-model"},

@@ -15,7 +15,7 @@ from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import core_bootstrap  # noqa: E402,F401
-from everagent_core.identity import declarations, models, observations, processes  # noqa: E402
+from everagent_core.identity import declarations, diagnostics, models, observations, processes  # noqa: E402
 from everagent_core import git  # noqa: E402
 
 THREAD = "00000000-0000-4000-8000-000000000042"
@@ -46,6 +46,8 @@ class CodexObservationTests(unittest.TestCase):
         self.env.start(); self.addCleanup(self.env.stop)
         self.chain = patch.object(processes, "process_chain", return_value=[owner()])
         self.chain.start(); self.addCleanup(self.chain.stop)
+        self.home = patch.object(declarations, "safe_home", return_value=self.root)
+        self.home.start(); self.addCleanup(self.home.stop)
         self.now = time.time()
         self.write()
 
@@ -84,6 +86,41 @@ class CodexObservationTests(unittest.TestCase):
         self.assertFalse(value["user_model_declared"])
         self.assertNotIn("PRIVATE-DIALOG-SENTINEL", json.dumps(value))
         self.assertNotIn(str(self.root), json.dumps(value))
+
+    def test_diagnose_preserves_automatic_verification_without_declaration(self):
+        with patch.object(declarations, "declare_model") as declaration:
+            value = diagnostics.diagnose()
+        self.assertEqual(value["automatic_probe"]["status"], "observed")
+        self.assertEqual(value["identity"]["model"], "observed-model")
+        self.assertTrue(value["identity"]["current_model_confirmed"])
+        self.assertFalse(value["identity"]["user_model_declared"])
+        self.assertTrue(value["commit_allowed"])
+        self.assertEqual(value["user_fallback"]["role"], "last-resort")
+        declaration.assert_not_called()
+        self.assertNotIn("PRIVATE-DIALOG-SENTINEL", json.dumps(value))
+        self.assertNotIn(str(self.root), json.dumps(value))
+
+    def test_diagnose_failure_does_not_authorize_configured_model(self):
+        self.write(index_model="misleading-default")
+        with patch.object(declarations, "declare_model") as declaration:
+            value = diagnostics.diagnose()
+        self.assertEqual(value["status"], "repair-needed")
+        self.assertEqual(value["automatic_probe"]["reason_code"], "native-metadata-unavailable-or-invalid")
+        self.assertFalse(value["identity"]["current_model_confirmed"])
+        self.assertFalse(value["identity"]["user_model_declared"])
+        self.assertFalse(value["commit_allowed"])
+        self.assertTrue(value["authorized_source_repair_allowed"])
+        self.assertFalse(value["diagnostics_are_model_evidence"])
+        self.assertEqual(value["repair"]["order"][-1], "request-explicit-user-model-if-unverifiable")
+        declaration.assert_not_called()
+
+    def test_diagnose_missing_binding_does_not_scan_history(self):
+        with patch.dict(os.environ, {"CODEX_THREAD_ID": "", "CODEX_SESSION_ID": ""}), patch.object(
+                observations, "_codex_index") as lookup:
+            value = diagnostics.diagnose()
+        self.assertEqual(value["automatic_probe"]["reason_code"], "current-caller-scope-unavailable")
+        self.assertFalse(value["commit_allowed"])
+        lookup.assert_not_called()
 
     def test_older_envelope_without_ordinal_is_supported(self):
         self.write(ordinal=False)
@@ -158,6 +195,45 @@ class CodexObservationTests(unittest.TestCase):
         value = {"model_source": "codex-turn-context", "current_model_confirmed": True,
                  "scope_ref": "scope", "observation_ref": "current-turn"}
         self.assertNotEqual(git.signing_evidence(value), git.signing_evidence({**value, "observation_ref": "new-turn"}))
+
+
+class IdentityDiagnosticTests(unittest.TestCase):
+    def test_unknown_harness_stops_before_automatic_reader(self):
+        unresolved = {"harness_resolved": False, "commit_ready": False}
+        with patch.object(diagnostics, "_detect_cli", return_value=(None, "unresolved")), patch.object(
+                diagnostics, "inspect_identity", return_value=unresolved), patch.object(
+                observations, "collect") as reader, patch.object(declarations, "declare_model") as declaration:
+            value = diagnostics.diagnose()
+        self.assertEqual(value["automatic_probe"]["reason_code"], "current-harness-unresolved")
+        self.assertFalse(value["user_fallback"]["available"])
+        self.assertFalse(value["commit_allowed"])
+        reader.assert_not_called()
+        declaration.assert_not_called()
+
+    def test_unsupported_reader_does_not_probe_another_harness(self):
+        probe = {}
+        with patch.object(processes, "caller_process") as caller:
+            self.assertIsNone(observations.collect("kimi-desktop", {"execution_ref": "fixture"}, diagnostics=probe))
+        self.assertEqual(probe["status"], "unsupported")
+        self.assertEqual(probe["reason_code"], "automatic-reader-not-implemented")
+        caller.assert_not_called()
+
+    def test_probe_error_reports_only_exception_type(self):
+        probe = {}
+        with patch.object(processes, "caller_process", side_effect=OSError("PRIVATE-ERROR-SENTINEL")):
+            self.assertIsNone(observations.collect("codex", {"session_ref": "fixture"}, diagnostics=probe))
+        self.assertEqual(probe["reason_code"], "automatic-probe-error")
+        self.assertEqual(probe["error_type"], "OSError")
+        self.assertNotIn("PRIVATE-ERROR-SENTINEL", json.dumps(probe))
+
+    def test_zcode_reports_unsupported_platform_before_reading_metadata(self):
+        probe = {}
+        with patch.object(processes, "caller_process", return_value=owner("zcode-cli")), patch.object(
+                observations.os, "name", "nt"), patch.object(observations, "_zcode_session_token") as source:
+            self.assertIsNone(observations.collect("zcode", {"execution_ref": "fixture"}, diagnostics=probe))
+        self.assertEqual(probe["reason_code"], "automatic-reader-platform-unsupported")
+        self.assertEqual(probe["status"], "unsupported")
+        source.assert_not_called()
 
 
 class ClaudeObservationTests(unittest.TestCase):

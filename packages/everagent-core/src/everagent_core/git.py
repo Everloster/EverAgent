@@ -11,7 +11,6 @@ import tempfile
 from typing import Callable
 from .identity.declarations import MODEL_RE
 
-TRAILER = "Co-Authored-By: Aiden"
 VALUE_OPTIONS = {
     "-m", "-F", "-C", "-c", "--message", "--file", "--reuse-message",
     "--reedit-message", "--author", "--date", "--cleanup", "--squash", "--trailer",
@@ -74,7 +73,9 @@ def require_model(identity: dict) -> None:
                 and isinstance(identity.get("declaration"), dict))
     if (not isinstance(model, str) or not MODEL_RE.fullmatch(model)
             or model.lower() == "unknown" or not (observed or declared)):
-        raise CommitError("当前模型未核实，也没有用户明确指定；请用户声明后再提交", 1)
+        raise CommitError("当前模型未核实；先运行 eacli session diagnose --json 或 "
+                          "python3 scripts/agent_identity.py diagnose --json，按诊断修复自动识别并复验；"
+                          "确实无法取得当前会话证据时，才请用户明确指定。已授权的源码修复和只读工作可继续", 1)
 
 
 def validate_identity(identity: dict | None, *, committer: tuple[str, str],
@@ -102,7 +103,9 @@ def identity_environment(identity: dict, base: dict[str, str], *, author: tuple[
             or not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]{0,160}", name)
             or name.endswith("-unknown") or not isinstance(email, str)
             or not re.fullmatch(r"noreply@[^\s<>@]+", email)):
-        raise CommitError("当前 Agent 身份未识别；请修复 whoami_agent.py owner 后重试", 1)
+        raise CommitError("当前 Agent 身份未识别；先运行 eacli session diagnose --json 或 "
+                          "python3 scripts/agent_identity.py diagnose --json，修复诊断指向的公共 core owner 后重试；"
+                          "已授权的源码修复和只读工作可继续", 1)
     require_model(identity)
     env = dict(base)
     author_name, author_email = author
@@ -123,21 +126,8 @@ def identity_environment(identity: dict, base: dict[str, str], *, author: tuple[
 
 
 def normalize_message(message: str, *, cwd: Path) -> str:
-    """Use Git's trailer parser, retaining other authors and one Aiden entry."""
-    proc = subprocess.run(
-        ["git", "interpret-trailers", "--if-exists", "addIfDifferent", "--trailer", TRAILER],
-        input=message, cwd=cwd, text=True, encoding="utf-8", capture_output=True, check=False)
-    if proc.returncode:
-        raise CommitError("无法规范化 commit trailer")
-    lines = proc.stdout.rstrip().splitlines()
-    start = len(lines)
-    while start and lines[start - 1].strip():
-        start -= 1
-    final = [line for line in lines[start:]
-             if not re.fullmatch(r"Co-Authored-By\s*:\s*Aiden\s*", line, re.IGNORECASE)]
-    body = [line for line in lines[:start]
-            if not re.fullmatch(r"Co-Authored-By\s*:\s*Aiden\s*", line, re.IGNORECASE)]
-    return "\n".join([*body, *final, TRAILER]) + "\n"
+    """Preserve the caller's message and explicit trailers; add only a final newline."""
+    return message if not message or message.endswith("\n") else message + "\n"
 
 
 def message_arguments(parts: list[tuple[str, str | None]], *, cwd: Path,
@@ -171,9 +161,6 @@ def message_arguments(parts: list[tuple[str, str | None]], *, cwd: Path,
     forwarded = []
     for key, value in parts:
         if message is not None and key in {"-m", "--message", "-F", "--file", "-C", "-c", "--reuse-message", "--reedit-message"}:
-            continue
-        if key == "--trailer" and re.fullmatch(
-                r"(?:Co-Authored-By|aiden)\s*[:=]\s*Aiden\s*", value or "", re.IGNORECASE):
             continue
         forwarded.append(key)
         if value is not None:
@@ -268,28 +255,18 @@ def commit(arguments: list[str], *, gate: Callable[[Path, dict[str, str]], int],
                 raise CommitError("quality gate 期间仓库 Author 策略已变化，请重新核实", 3)
             if preflight:
                 preflight(target, fresh)
-            command = ["git", "-c", "trailer.aiden.key=Co-Authored-By",
-                       "-c", "trailer.aiden.ifexists=addIfDifferent",
-                       "-c", "trailer.co-authored-by.ifexists=addIfDifferent",
-                       "commit", *forwarded, "--trailer", "aiden: Aiden"]
+            command = ["git", "commit", *forwarded]
             code = subprocess.run(command, cwd=cwd, env=env, check=False).returncode
             if code or any(key == "--dry-run" for key, _ in parts):
                 return code
             # Hooks may change an index or message after our gate. Report a failed
             # postcondition; never reset or rewrite the resulting commit silently.
             actual_tree = git_value(["rev-parse", "HEAD^{tree}"], cwd=cwd, env=env)
-            body = git_value(["show", "-s", "--format=%B", "HEAD"], cwd=cwd, env=env)
-            parsed = subprocess.run(["git", "interpret-trailers", "--parse"], input=body,
-                                    cwd=cwd, env=env, capture_output=True, text=True, encoding="utf-8", check=False)
-            trailer_lines = [line for line in body.splitlines()
-                             if re.fullmatch(r"Co-Authored-By\s*:\s*Aiden\s*", line, re.IGNORECASE)]
             actual_author = git_value(["show", "-s", "--format=%an <%ae>", "HEAD"], cwd=cwd, env=env)
             actual_committer = git_value(["show", "-s", "--format=%cn <%ce>", "HEAD"], cwd=cwd, env=env)
-            if (actual_tree != before or trailer_lines != [TRAILER]
-                    or parsed.returncode or parsed.stdout.splitlines().count(TRAILER) != 1
-                    or actual_author != expected_author
+            if (actual_tree != before or actual_author != expected_author
                     or actual_committer != f"{identity['name']} <{identity['email']}>"):
-                raise CommitError("commit 已生成，但 tree/身份/trailer 后置校验失败；保留现场，先 review，禁止推送", 3)
+                raise CommitError("commit 已生成，但 tree/身份后置校验失败；保留现场，先 review，禁止推送", 3)
             return 0
     except CommitError as exc:
         emit_error(f"[ecommit] BLOCKED: {exc}")

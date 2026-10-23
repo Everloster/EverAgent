@@ -35,6 +35,12 @@ _SHELLS = {"bash", "zsh", "sh", "fish", "cmd.exe", "powershell.exe", "pwsh.exe",
 # The MiniMax Code runtime leases a conversation to the process that executes
 # its turn, so the lease owner carries the pid of that process.
 _MINIMAX_LEASE = re.compile(r"^turn-lease:(\d+):")
+AUTOMATIC_READERS = {
+    "codex": ("codex-turn-context", "codex-thread-state"),
+    "pi": ("pi-session-runtime",), "trae": ("trae-thread-runtime",),
+    "claude-code": ("claude-session-runtime",), "zcode": ("zcode-model-io",),
+    "minimax-code": ("minimax-session-runtime",),
+}
 
 
 def _model(value) -> str | None:
@@ -466,36 +472,52 @@ def _minimax(owner: dict, now: float) -> dict | None:
             "turn": turn_id if isinstance(turn_id, str) else None, "session": session}
 
 
-def collect(harness: str, scope: dict | None) -> dict | None:
+def collect(harness: str, scope: dict | None, *, diagnostics: dict | None = None) -> dict | None:
     """Return only a model observation bound to the exact current caller."""
-    if scope is None or harness not in {"codex", "pi", "trae", "claude-code", "zcode", "minimax-code"}:
+    if diagnostics is not None:
+        diagnostics.update(harness=harness, readers=list(AUTOMATIC_READERS.get(harness, ())))
+
+    def unavailable(reason: str, *, status: str = "unavailable"):
+        if diagnostics is not None:
+            diagnostics.update(status=status, reason_code=reason)
         return None
+
+    if harness not in AUTOMATIC_READERS:
+        return unavailable("automatic-reader-not-implemented", status="unsupported")
+    if scope is None:
+        return unavailable("current-caller-scope-unavailable")
     try:
         owner = processes.caller_process(harness)
         if owner is None or not owner.get("started"):
-            return None
+            return unavailable("current-caller-process-unavailable")
         from .detect import PROCESS_RULES
         names = next(names for cli, names in PROCESS_RULES if cli == harness)
         if harness == "zcode":
             # zcode-cli is per conversation; the resident zcode-host above it is
             # structural, so the nearest match must be the session CLI itself.
-            if owner.get("name") != "zcode-cli" or "execution_ref" not in scope:
-                return None
+            if os.name != "posix":
+                return unavailable("automatic-reader-platform-unsupported", status="unsupported")
+            if owner.get("name") != "zcode-cli":
+                return unavailable("current-caller-is-not-session-owner")
+            if "execution_ref" not in scope:
+                return unavailable("current-execution-scope-unavailable")
             native = _zcode_session_token(owner)
             if not native:
-                return None
+                return unavailable("native-session-binding-unavailable")
         elif harness == "minimax-code":
             # The Desktop app has no conversation environment variable; the
             # session is bound by the runtime turn lease instead of a native id.
             if "execution_ref" not in scope:
-                return None
+                return unavailable("current-execution-scope-unavailable")
             native = None
         else:
             native = _native_id(harness)
-            if not native or scope.get("session_ref") != declarations.digest([harness, native])[:24]:
-                return None
+            if not native:
+                return unavailable("native-session-binding-unavailable")
+            if scope.get("session_ref") != declarations.digest([harness, native])[:24]:
+                return unavailable("native-session-scope-mismatch")
             if sum(processes.matches_row(row, names) for row in processes.process_chain()) != 1:
-                return None
+                return unavailable("ambiguous-harness-ancestry")
         now = time.time()
         if harness == "minimax-code":
             found = _minimax(owner, now)
@@ -504,9 +526,13 @@ def collect(harness: str, scope: dict | None) -> dict | None:
             found = readers[harness](native, owner, now) if harness in readers else _pi(native)
         if found:
             reference = found.get("session") or native
+            if diagnostics is not None:
+                diagnostics.update(status="observed", reason_code=None, source=found["source"])
             return {"harness": harness, "scope": scope, "observed_at": now,
                     "model": found["model"], "source": found["source"],
                     "observation_ref": declarations.digest([harness, reference, found.get("turn"), found["model"]])[:24]}
-    except (OSError, ValueError, TypeError, AttributeError, sqlite3.Error, StopIteration):
-        pass
-    return None
+    except (OSError, ValueError, TypeError, AttributeError, sqlite3.Error, StopIteration) as exc:
+        if diagnostics is not None:
+            diagnostics["error_type"] = type(exc).__name__
+        return unavailable("automatic-probe-error")
+    return unavailable("native-metadata-unavailable-or-invalid")

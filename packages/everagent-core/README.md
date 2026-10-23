@@ -25,8 +25,9 @@ private eacli 的随包副本由 generator 生成并锁定 source commit 和文�
 源码入口：`python3 scripts/agent_identity.py --json`；旧 `whoami_agent.py` 保持兼容。
 安装包入口：`everagent-identity inspect --json`，无需相邻仓库。
 
-先自动核实 Codex 当前 thread、Pi 当前 shell context、TRAE 精确 thread 与 Claude Code 原生 UUID session；只有无法核实时，
-才由用户明确指定，再用 `declare-model --model <id> --user-confirmed`。
+先自动核实当前会话；失败时用 `everagent-identity diagnose --json` 定位公开 owner，Agent 先修复可行的
+读取器与绑定并复验。Codex、Pi、TRAE、Claude Code、ZCode 与 MiniMax Code 的现有自动来源继续保留回归。
+确实无法核实时才由用户明确指定，再用 `declare-model --model <id> --user-confirmed`。
 配置提示和 `AGENT_ID` 不能授权 Git 署名；声明有会话范围与有效期，不标为 runtime verified。
 
 完整规则见 [身份与会话契约](../../docs/AGENT_SESSION.md)、

@@ -5,7 +5,7 @@
   "scripts": [
     {
       "id": "agent.identity",
-      "description": "识别当前 harness 和模型来源，未核实且未声明的模型不能用于提交。",
+      "description": "自动核实当前 harness/model；失败先诊断并修复可行读取路径，用户指定兜底。",
       "entrypoint": "scripts/agent_identity.py",
       "owner": {
         "repository": "EverAgent",
@@ -30,8 +30,8 @@
       "requirements": [
         "Python >=3.10"
       ],
-      "input": "inspect [--json|--name|--email|--git-ident]",
-      "output": "Agent identity v2 JSON; legacy name/email retained",
+      "input": "inspect [--json|--name|--email|--git-ident] | diagnose --json",
+      "output": "Agent identity v2 JSON | current-caller diagnosis v1; neither diagnosis nor configuration authorizes a model",
       "side_effects": [],
       "authorization": {
         "repository": "EverAgent",
@@ -42,7 +42,7 @@
     },
     {
       "id": "agent.model-declaration",
-      "description": "记录用户明确指定的当前模型，声明绑定本会话并在有效期后失效。",
+      "description": "自动核实和可行修复仍无法取证时，记录用户明确指定的当前模型，绑定本会话并在有效期后失效。",
       "entrypoint": "scripts/agent_model_declare.py",
       "owner": {
         "repository": "EverAgent",
@@ -100,7 +100,7 @@
     },
     {
       "id": "git.commit",
-      "description": "提交已经暂存的 tree，校验身份、门禁、trailer 和 index 不变。",
+      "description": "提交已经暂存的 tree，校验身份、门禁和 index 不变；共同作者显式填写。",
       "entrypoint": "scripts/git_commit.py",
       "owner": {
         "repository": "EverAgent",
@@ -122,7 +122,7 @@
         "Python >=3.10"
       ],
       "input": "Git commit metadata arguments",
-      "output": "Git exit code; exact Aiden trailer",
+      "output": "Git exit code; explicit trailers preserved by Git",
       "side_effects": [
         "写 Git commit"
       ],
