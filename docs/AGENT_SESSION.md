@@ -51,8 +51,9 @@ App 身份或版本可见不代表当前模型可见；核实失败保持 unknow
 | Claude Code | 精确 UUID session 的原生 assistant `message.model`；绑定当前调用方进程创建时间、cwd 和新鲜记录，不借配置中的模型 |
 | ZCode | 当前会话 `model-io-<会话标签>` 请求记录前缀的 `modelId`；会话标签取自本执行 shell 启动命令的 bash-startup 路径，绑定 zcode-cli 进程创建时间与新鲜完成记录 |
 | MiniMax Code | 本地运行时的 turn 租约绑定的会话元数据：租约 owner 的 pid 必须是当前调用方的祖先进程，再取该会话最新一条模型计量记录 |
+| Kimi Desktop | 活动 turn 经原生 `backgroundTasks.list` 的 running Bash PID 与启动时间绑定当前执行 shell，再以精确会话 wire 的 `usage.record` 和 `llm.request` 交叉核对模型 |
 
-读取器只取当前调用方元数据；Codex 日志尾部有 4 MiB 上限，SQLite 只读查询指定 thread 的模型字段。
+读取器只取当前调用方元数据；Codex 与 Kimi Desktop 的记录尾部有 4 MiB 上限，SQLite 只读查询指定会话的元数据字段。
 配置默认值、同目录的其他会话、全局最近日志与无来源的环境变量不构成核实。原生读取失败保留提示与未核实状态，
 未把观察接口定义本身当作覆盖证据。自动来源和未知回退都进入身份回归测试。
 
@@ -100,6 +101,23 @@ MiniMax Code Desktop 同样没有会话环境变量，且 Bash 工具起的是�
 要求时间在 5 分钟内、不早于调用方进程创建时间，模型字段去掉供应商前缀后按模型 ID 校验。
 读取器只读运行时元数据表，从不打开会话记录与对话正文。租约缺失、过期、归属他人进程、
 同时命中两个会话、计量记录过期或模型字段非法均不核实。
+
+Kimi Desktop 也无会话环境变量。读取器从 `KIMI_SHARE_DIR` 或平台用户数据目录定位
+`daimon/agents/main/runner.state.json`，要求 runtime 正在运行、控制端点为 loopback WebSocket，
+且 endpoint/daemon PID 一致并属于当前调用方祖先。只枚举其中有界的 `activeKernelTurns`，
+不按最近更新时间、active conversation 或 focused pane 猜会话。随包 Node runtime 在内存中使用控制令牌调用
+`backgroundTasks.list`（`activeOnly=true`）。Python 不向 Node 传令牌，令牌不进入命令行、查询输入或输出；
+Python 只接收任务元数据。
+同一运行 Bash 任务的 PID 必须命中 App 之前的祖先 shell，任务与 shell 启动时间相差不超过 2 秒，
+且任务不早于活动 turn；所有候选合计必须恰好一个绑定。并行会话、重复绑定、他人或结束任务均不核实。
+
+绑定后按 agent、conversation key 与 kernel session 精确查询只读 `conversations.sqlite`，要求 workspace
+包含当前 cwd，记录文件是 wire 根内符合 `<workspace>/<session>/agents/main/wire.jsonl` 形状的普通文件，
+拒绝 symlink 和越界路径。只扫描尾部 4 MiB，按记录前缀定位最新的 `usage.record` 与 `llm.request`，
+只解码 allowlist 标量字段，不解析工具记录和对话正文；单条相关记录上限 128 KiB，最新相关记录损坏或
+超大时不借旧模型。计量必须属于 turn，请求必须为 `loop`/`kimi`，两者模型一致且时间相差不超过 2 秒；
+模型时间须在 5 分钟内，不早于活动 turn 或 App 创建时间。model alias 若存在必须合法，但不要求与模型同名。
+这些原生记录没有请求级关联 ID，因此不声称有该证据；配置默认值与其他会话记录均不兜底。
 
 模型声明要求 `--user-confirmed`，它表示用户本次明确指定，不能由 Agent 根据配置自行补旗标。receipt 仅存在本机用户状态目录；默认 4 小时，最长 12 小时。harness 进程或 session/terminal 改变、
 嵌套 harness、模型提示变化、过期或记录损坏都会使声明失效。声明一直保持

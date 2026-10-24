@@ -213,7 +213,7 @@ class IdentityDiagnosticTests(unittest.TestCase):
     def test_unsupported_reader_does_not_probe_another_harness(self):
         probe = {}
         with patch.object(processes, "caller_process") as caller:
-            self.assertIsNone(observations.collect("kimi-desktop", {"execution_ref": "fixture"}, diagnostics=probe))
+            self.assertIsNone(observations.collect("kimi-cli", {"execution_ref": "fixture"}, diagnostics=probe))
         self.assertEqual(probe["status"], "unsupported")
         self.assertEqual(probe["reason_code"], "automatic-reader-not-implemented")
         caller.assert_not_called()
@@ -575,6 +575,236 @@ class MinimaxObservationTests(unittest.TestCase):
     def test_missing_runtime_store_stays_unverified(self):
         self.database.unlink()
         self.assertFalse(models.model_evidence("minimax-code")["current_model_confirmed"])
+
+
+class KimiDesktopObservationTests(unittest.TestCase):
+    """Kimi Desktop binds an active turn through its own running Bash task."""
+
+    APP = 17131
+    RUNTIME = 17359
+    SHELL = 21969
+    SESSION = "conv-fixture-kimi"
+    CONVERSATION = "agent:main:main:conversation:fixture"
+
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory(prefix="everagent-kimi-model-")
+        self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name).resolve()
+        self.share = self.root / "share"
+        self.workspace = self.root / "workspace"
+        self.workspace.mkdir(parents=True)
+        self.now = time.time()
+        created = lambda at: time.strftime("%a %b %d %H:%M:%S %Y", time.localtime(at))
+        self.chain = [
+            {"pid": 21970, "name": "python3", "started": created(self.now - 6), "image": "python3"},
+            {"pid": self.SHELL, "name": "bash", "started": created(self.now - 5), "image": "/bin/bash"},
+            {"pid": self.RUNTIME, "name": "Kimi Helper", "started": created(self.now - 60),
+             "image": "/Applications/Kimi.app/Kimi Helper"},
+            {"pid": self.APP, "name": "Kimi", "started": created(self.now - 61),
+             "image": "/Applications/Kimi.app/Kimi"},
+        ]
+        self.state = self.share / "daimon/agents/main/runner.state.json"
+        self.state.parent.mkdir(parents=True)
+        self.database = self.share / "daimon/agents/main/sessions/hosted-logical/conversations.sqlite"
+        self.database.parent.mkdir(parents=True)
+        self.wire = (self.share / "daimon/runtime/kimi-code/home/sessions/wd_fixture" /
+                     self.SESSION / "agents/main/wire.jsonl")
+        self.wire.parent.mkdir(parents=True)
+        patches = [patch.object(declarations, "safe_home", return_value=self.root),
+                   patch.object(models, "HOME", self.root),
+                   patch.object(processes, "process_chain", return_value=self.chain),
+                   patch.object(observations.Path, "cwd", return_value=self.workspace),
+                   patch.dict(os.environ, {"KIMI_SHARE_DIR": str(self.share),
+                                           "KIMI_DESKTOP_RUNTIME_NODE": str(self.root / "node"),
+                                           "AGENT_MODEL": "misleading-default"}, clear=True)]
+        for item in patches:
+            item.start(); self.addCleanup(item.stop)
+        control = patch.object(observations, "_kimi_background_tasks", side_effect=lambda *_: self.tasks)
+        control.start(); self.addCleanup(control.stop)
+        self.write()
+
+    def write(self, *, model="observed-kimi-model", request_model=None, usage_at=None, request_at=None,
+              usage_scope="turn", turn="5", turn_at=None, task_status="running", task_pid=None,
+              task_at=None, task_kind="bash", extra_turn=False, duplicate_task=False,
+              lifecycle="running", state_pid=None, workspace=None, records=None,
+              request_kind="loop", provider="kimi", model_alias=None, usage=True, request=True,
+              long_turn=False, tail=""):
+        session = self.SESSION
+        turn_at = self.now - 10 if turn_at is None else turn_at
+        usage_at = self.now if usage_at is None else usage_at
+        request_at = usage_at if request_at is None else request_at
+        active = {"operationId": "fixture-operation", "ownerAgentId": "main", "kernelSessionId": session,
+                  "conversationKey": self.CONVERSATION, "turnId": turn, "startedAt": stamp(turn_at)}
+        turns = [active]
+        if extra_turn:
+            turns.append({**active, "operationId": "fixture-operation-2", "kernelSessionId": "conv-fixture-other",
+                          "conversationKey": self.CONVERSATION + "-other", "turnId": "1"})
+        self.state.write_text(json.dumps({
+            "schemaVersion": 1, "lifecycleStatus": lifecycle,
+            "daemonGeneration": {"pid": self.RUNTIME if state_pid is None else state_pid},
+            "control": {"endpoint": {"url": "ws://127.0.0.1:4567/control", "host": "127.0.0.1", "port": 4567,
+                                      "pid": self.RUNTIME if state_pid is None else state_pid,
+                                      "auth": {"mode": "bearer", "token": "PRIVATE-TOKEN-SENTINEL"}}},
+            "activeKernelTurns": turns,
+        }))
+        task = {"kind": task_kind, "status": task_status,
+                "pid": self.SHELL if task_pid is None else task_pid,
+                "startedAtMs": int(((self.now - 5) if task_at is None else task_at) * 1000)}
+        self.tasks = {session: [task] * (2 if duplicate_task else 1)}
+        if extra_turn:
+            self.tasks["conv-fixture-other"] = [dict(task)]
+        with closing(sqlite3.connect(self.database)) as connection:
+            connection.execute("CREATE TABLE IF NOT EXISTS conversations ("
+                               "agent_id TEXT, conversation_key TEXT, kernel_session_id TEXT,"
+                               " kernel_records_path TEXT, workspace_path TEXT)")
+            connection.execute("DELETE FROM conversations")
+            connection.execute("INSERT INTO conversations VALUES (?,?,?,?,?)", (
+                "main", self.CONVERSATION, session, str(self.wire if records is None else records),
+                str(self.workspace if workspace is None else workspace)))
+            connection.commit()
+        rows = [
+            {"type": "usage.record", "model": "old-model", "usage": {"output": 1},
+             "usageScope": "turn", "time": int((self.now - 20) * 1000)},
+            {"type": "llm.request", "kind": "loop", "provider": "kimi", "model": "old-model",
+             "modelAlias": "old-model", "time": int((self.now - 20) * 1000)},
+            {"type": "tool.result", "result": {"content": "PRIVATE-DIALOG-SENTINEL",
+                                                "padding": "x" * (observations.MAX_TAIL_BYTES + 1024) if long_turn else ""}},
+        ]
+        if usage:
+            rows.append({"type": "usage.record", "model": model, "usage": {"output": 1},
+                         "usageScope": usage_scope, "time": int(usage_at * 1000)})
+        if request:
+            rows.append({"type": "llm.request", "kind": request_kind, "provider": provider,
+                         "model": model if request_model is None else request_model,
+                         "modelAlias": model if model_alias is None else model_alias,
+                         "time": int(request_at * 1000)})
+        self.wire.write_text("\n".join(json.dumps(row) for row in rows) + "\n" + tail)
+
+    def test_active_turn_is_automatically_verified_before_configuration(self):
+        value = models.model_evidence("kimi-desktop")
+        self.assertEqual(value["model"], "observed-kimi-model")
+        self.assertEqual(value["source"], "kimi-desktop-session-runtime")
+        self.assertEqual(value["configured_model"], "misleading-default")
+        self.assertTrue(value["current_model_confirmed"])
+        self.assertFalse(value["user_model_declared"])
+        serialized = json.dumps(value)
+        self.assertNotIn("PRIVATE-DIALOG-SENTINEL", serialized)
+        self.assertNotIn("PRIVATE-TOKEN-SENTINEL", serialized)
+        self.assertNotIn(str(self.root), serialized)
+
+    def test_conversation_bodies_are_never_json_decoded(self):
+        original = json.loads
+        def metadata_only(text, *args, **kwargs):
+            if isinstance(text, str):
+                self.assertNotIn("PRIVATE-DIALOG-SENTINEL", text)
+            return original(text, *args, **kwargs)
+        with patch.object(observations.json, "loads", side_effect=metadata_only):
+            self.assertTrue(models.model_evidence("kimi-desktop")["current_model_confirmed"])
+
+    def test_long_turn_uses_only_the_bounded_current_wire_tail(self):
+        self.write(long_turn=True)
+        self.assertEqual(models.model_evidence("kimi-desktop")["model"], "observed-kimi-model")
+
+    def test_foreign_finished_or_non_bash_tasks_do_not_verify(self):
+        for changes in ({"task_pid": 9999}, {"task_status": "completed"},
+                        {"task_status": "exited"}, {"task_kind": "exec"}):
+            with self.subTest(changes=changes):
+                self.write(**changes)
+                self.assertFalse(models.model_evidence("kimi-desktop")["current_model_confirmed"])
+
+    def test_task_must_match_the_shell_creation_time(self):
+        self.write(task_at=self.now - 2)
+        self.assertFalse(models.model_evidence("kimi-desktop")["current_model_confirmed"])
+
+    def test_parallel_sessions_and_duplicate_bindings_stay_ambiguous(self):
+        self.write(extra_turn=True)
+        self.assertFalse(models.model_evidence("kimi-desktop")["current_model_confirmed"])
+        self.write(duplicate_task=True)
+        self.assertFalse(models.model_evidence("kimi-desktop")["current_model_confirmed"])
+
+    def test_two_active_turns_for_one_session_stay_ambiguous(self):
+        state = json.loads(self.state.read_text())
+        state["activeKernelTurns"].append({**state["activeKernelTurns"][0], "turnId": "6"})
+        self.state.write_text(json.dumps(state))
+        self.assertFalse(models.model_evidence("kimi-desktop")["current_model_confirmed"])
+
+    def test_wrong_workspace_or_unbound_runtime_does_not_verify(self):
+        self.write(workspace=self.root / "other")
+        self.assertFalse(models.model_evidence("kimi-desktop")["current_model_confirmed"])
+        for changes in ({"lifecycle": "stopped"}, {"state_pid": 9999}):
+            with self.subTest(changes=changes):
+                self.write(**changes)
+                self.assertFalse(models.model_evidence("kimi-desktop")["current_model_confirmed"])
+
+    def test_wire_outside_the_session_root_or_symlink_does_not_verify(self):
+        outside = self.root / "outside.jsonl"
+        outside.write_bytes(self.wire.read_bytes())
+        self.write(records=outside)
+        self.assertFalse(models.model_evidence("kimi-desktop")["current_model_confirmed"])
+        self.write()
+        outside.write_bytes(self.wire.read_bytes())
+        self.wire.unlink()
+        self.wire.symlink_to(outside)
+        self.assertFalse(models.model_evidence("kimi-desktop")["current_model_confirmed"])
+
+    def test_stale_future_or_previous_turn_usage_does_not_verify(self):
+        for at in (self.now - 301, self.now + 5, self.now - 20):
+            with self.subTest(at=at):
+                self.write(usage_at=at)
+                self.assertFalse(models.model_evidence("kimi-desktop")["current_model_confirmed"])
+        self.write()
+        os.utime(self.wire, (self.now - 301, self.now - 301))
+        self.assertFalse(models.model_evidence("kimi-desktop")["current_model_confirmed"])
+
+    def test_restarted_app_does_not_borrow_an_active_turn_from_the_future(self):
+        restarted = [dict(row) for row in self.chain]
+        restarted[-1]["started"] = time.strftime("%a %b %d %H:%M:%S %Y", time.localtime(self.now + 5))
+        with patch.object(processes, "process_chain", return_value=restarted):
+            self.assertFalse(models.model_evidence("kimi-desktop")["current_model_confirmed"])
+
+    def test_non_turn_scope_and_unusable_models_never_use_the_default(self):
+        self.write(usage_scope="session")
+        self.assertFalse(models.model_evidence("kimi-desktop")["current_model_confirmed"])
+        for model in ("unknown", "", "not a model", None):
+            with self.subTest(model=model):
+                self.write(model=model)
+                value = models.model_evidence("kimi-desktop")
+                self.assertFalse(value["current_model_confirmed"])
+                self.assertEqual(value["model"], "misleading-default")
+
+    def test_missing_latest_usage_or_request_does_not_borrow_the_old_pair(self):
+        self.write(usage=False)
+        self.assertFalse(models.model_evidence("kimi-desktop")["current_model_confirmed"])
+        self.write(request=False)
+        self.assertFalse(models.model_evidence("kimi-desktop")["current_model_confirmed"])
+
+    def test_request_model_kind_provider_and_alias_are_cross_checked(self):
+        for changes in ({"request_model": "conflicting-model"}, {"request_kind": "sidechain"},
+                        {"provider": "other"}, {"model_alias": "not a model"}):
+            with self.subTest(changes=changes):
+                self.write(**changes)
+                self.assertFalse(models.model_evidence("kimi-desktop")["current_model_confirmed"])
+
+    def test_malformed_or_oversized_latest_record_cannot_reuse_old_model(self):
+        oversized = json.dumps({"type": "usage.record", "model": "new-model", "usageScope": "turn",
+                                "time": int(self.now * 1000), "padding": "x" * observations.MAX_RECORD_BYTES})
+        for tail in ('{"type":"usage.record","model":', '{"type":"llm.request","kind":', oversized):
+            with self.subTest(length=len(tail)):
+                self.write(tail=tail)
+                self.assertFalse(models.model_evidence("kimi-desktop")["current_model_confirmed"])
+
+    def test_scope_without_execution_shell_does_not_verify(self):
+        scope = declarations.caller_scope("kimi-desktop")
+        self.assertIn("execution_ref", scope)
+        without = {key: value for key, value in scope.items() if key != "execution_ref"}
+        self.assertIsNone(observations.collect("kimi-desktop", without))
+
+    def test_model_switch_changes_the_signing_evidence(self):
+        before = models.model_evidence("kimi-desktop")
+        self.write(model="new-observed-model")
+        after = models.model_evidence("kimi-desktop")
+        self.assertEqual(after["model"], "new-observed-model")
+        self.assertNotEqual(before["observation_ref"], after["observation_ref"])
 
 
 class OtherRuntimeObservationTests(unittest.TestCase):

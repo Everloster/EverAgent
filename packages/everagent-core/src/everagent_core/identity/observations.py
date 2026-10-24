@@ -42,6 +42,7 @@ AUTOMATIC_READERS = {
     "pi": ("pi-session-runtime",), "trae": ("trae-thread-runtime",),
     "claude-code": ("claude-session-runtime",), "zcode": ("zcode-model-io",),
     "minimax-code": ("minimax-session-runtime",),
+    "kimi-desktop": ("kimi-desktop-session-runtime",),
 }
 
 
@@ -530,6 +531,284 @@ def _minimax(owner: dict, now: float) -> dict | None:
             "turn": turn_id if isinstance(turn_id, str) else None, "session": session}
 
 
+_KIMI_ID = re.compile(r"[A-Za-z0-9][A-Za-z0-9._:-]{0,255}")
+_KIMI_ENVELOPE = re.compile(rb'^\s*\{\s*"type"\s*:\s*"(usage\.record|llm\.request)"')
+_KIMI_STATE_MAX_BYTES = 1024 * 1024
+_KIMI_ACTIVE_TURN_LIMIT = 16
+# The packaged Node runtime keeps the control token in its own process. Python
+# supplies only public candidate metadata on stdin; no token enters argv/output.
+_KIMI_TASK_QUERY = r"""
+const fs = require('node:fs');
+const fail = () => process.exit(1);
+let state, candidates;
+try {
+  if (fs.statSync(process.argv[1]).size > 1048576) fail();
+  state = JSON.parse(fs.readFileSync(process.argv[1], 'utf8'));
+  candidates = JSON.parse(fs.readFileSync(0, 'utf8'));
+} catch (_) { fail(); }
+if (!Array.isArray(candidates) || candidates.length < 1 || candidates.length > 16) fail();
+const endpoint = state?.control?.endpoint;
+const url = endpoint?.url;
+const token = endpoint?.auth?.token;
+if (typeof url !== 'string' || typeof token !== 'string' || !token) fail();
+function query(candidate, index) {
+  return new Promise((resolve, reject) => {
+    const id = 'everagent-identity-' + index;
+    const socket = new WebSocket(url, { headers: { Authorization: 'Bearer ' + token } });
+    let done = false;
+    const finish = (callback, value) => {
+      if (done) return;
+      done = true;
+      clearTimeout(timer);
+      socket.close();
+      callback(value);
+    };
+    const timer = setTimeout(() => finish(reject, new Error('timeout')), 2000);
+    socket.addEventListener('open', () => {
+      try {
+        socket.send(JSON.stringify({ jsonrpc: '2.0', id, method: 'backgroundTasks.list',
+          params: { agentId: candidate.agentId, kernelSessionId: candidate.kernelSessionId,
+            activeOnly: true, limit: 100 } }));
+      } catch (error) { finish(reject, error); }
+    });
+    socket.addEventListener('message', (event) => {
+      let frame;
+      try { frame = JSON.parse(String(event.data)); } catch (error) { finish(reject, error); return; }
+      if (frame.id !== id) return;
+      if (frame.error) { finish(reject, new Error('control query failed')); return; }
+      const result = frame.result ?? {};
+      if (result.kernelSessionId !== candidate.kernelSessionId || !Array.isArray(result.tasks)
+          || result.tasks.length > 100) {
+        finish(reject, new Error('invalid control response'));
+        return;
+      }
+      finish(resolve, { kernelSessionId: result.kernelSessionId, tasks: result.tasks.map((task) => ({
+        kind: task?.kind, status: task?.status, pid: task?.pid, startedAtMs: task?.startedAtMs,
+      })) });
+    });
+    socket.addEventListener('error', () => finish(reject, new Error('control connection failed')));
+  });
+}
+Promise.all(candidates.map(query)).then(
+  (rows) => process.stdout.write(JSON.stringify(rows)),
+  () => process.exit(1),
+);
+"""
+
+
+def _kimi_root() -> Path | None:
+    explicit = os.environ.get("KIMI_SHARE_DIR")
+    home = declarations.safe_home()
+    if explicit:
+        root = Path(explicit).expanduser()
+    elif home is not None and os.name == "nt":
+        root = Path(os.environ.get("APPDATA") or home / "AppData/Roaming") / "kimi-desktop/daimon-share"
+    elif home is not None:
+        root = home / "Library/Application Support/kimi-desktop/daimon-share"
+    else:
+        return None
+    return root.resolve() if root.is_absolute() else None
+
+
+def _kimi_active_turns(state_path: Path, pids: set[int]) -> list[dict] | None:
+    """Read bounded runtime state without exposing its control credential."""
+    from urllib.parse import urlsplit
+    if not _regular(state_path) or state_path.stat().st_size > _KIMI_STATE_MAX_BYTES:
+        return None
+    state = json.loads(state_path.read_text(encoding="utf-8"))
+    if not isinstance(state, dict) or state.get("schemaVersion") != 1 or state.get("lifecycleStatus") != "running":
+        return None
+    endpoint = state.get("control", {}).get("endpoint", {})
+    daemon = state.get("daemonGeneration", {})
+    pid = endpoint.get("pid")
+    parsed = urlsplit(endpoint.get("url") if isinstance(endpoint.get("url"), str) else "")
+    if (parsed.scheme != "ws" or parsed.hostname not in {"127.0.0.1", "localhost", "::1"}
+            or parsed.username is not None or parsed.password is not None
+            or not isinstance(parsed.port, int) or not 1 <= parsed.port <= 65535
+            or type(pid) is not int or pid <= 1 or pid not in pids or daemon.get("pid") != pid
+            or not isinstance(endpoint.get("auth", {}).get("token"), str)
+            or not endpoint.get("auth", {}).get("token")):
+        return None
+    turns = state.get("activeKernelTurns")
+    if not isinstance(turns, list) or not 1 <= len(turns) <= _KIMI_ACTIVE_TURN_LIMIT:
+        return None
+    candidates, sessions = [], set()
+    for raw in turns:
+        if not isinstance(raw, dict):
+            continue
+        session, agent = raw.get("kernelSessionId"), raw.get("ownerAgentId")
+        conversation, turn = raw.get("conversationKey"), raw.get("turnId")
+        turn = str(turn) if type(turn) is int else turn
+        at = _timestamp(raw.get("startedAt"))
+        if (not all(isinstance(value, str) and _KIMI_ID.fullmatch(value)
+                    for value in (session, agent, conversation, turn)) or at is None):
+            continue
+        if session in sessions:
+            # One session with two active turns has no unambiguous observation_ref.
+            return None
+        sessions.add(session)
+        candidates.append({"agent": agent, "session": session, "conversation": conversation,
+                           "turn": turn, "at": at})
+    return candidates or None
+
+
+def _kimi_background_tasks(state_path: Path, candidates: list[dict]) -> dict[str, list] | None:
+    import subprocess
+    node = os.environ.get("KIMI_DESKTOP_RUNTIME_NODE")
+    executable = Path(node).expanduser() if node else None
+    if executable is None or not executable.is_absolute() or not executable.is_file() or not os.access(executable, os.X_OK):
+        return None
+    payload = json.dumps([{"agentId": row["agent"], "kernelSessionId": row["session"]} for row in candidates])
+    env = {**os.environ, "ELECTRON_RUN_AS_NODE": "1"}
+    env.pop("NODE_OPTIONS", None)
+    try:
+        result = subprocess.run([str(executable), "-e", _KIMI_TASK_QUERY, str(state_path)], input=payload,
+                                capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=4, env=env)
+    except (OSError, ValueError, subprocess.SubprocessError):
+        return None
+    if result.returncode != 0 or len(result.stdout) > 1024 * 1024:
+        return None
+    rows = json.loads(result.stdout)
+    expected = {row["session"] for row in candidates}
+    if not isinstance(rows, list) or len(rows) != len(expected):
+        return None
+    found = {}
+    for row in rows:
+        if not isinstance(row, dict):
+            return None
+        session, tasks = row.get("kernelSessionId"), row.get("tasks")
+        if session not in expected or session in found or not isinstance(tasks, list) or len(tasks) > 100:
+            return None
+        found[session] = tasks
+    return found if set(found) == expected else None
+
+
+def _kimi_model_record(raw: bytes) -> dict:
+    """Decode only allowlisted scalar fields from a model metadata record."""
+    text = raw.decode("utf-8")
+    spans = _json_object_spans(text)
+    fields = {"type", "model", "time", "usageScope", "kind", "provider", "modelAlias"}
+    return {key: json.loads(text[start:end]) for key, (start, end) in spans.items() if key in fields}
+
+
+def _kimi_wire_model(root: Path, turn: dict, owner: dict, now: float) -> str | None:
+    database = root / "daimon/agents/main/sessions/hosted-logical/conversations.sqlite"
+    wire_root = root / "daimon/runtime/kimi-code/home/sessions"
+    if not _regular(database):
+        return None
+    try:
+        with closing(sqlite3.connect(database.as_uri() + "?mode=ro", uri=True, timeout=0.25)) as connection:
+            deadline = time.monotonic() + 0.25
+            connection.set_progress_handler(lambda: int(time.monotonic() > deadline), 1000)
+            columns = {row[1] for row in connection.execute("PRAGMA table_info(conversations)")}
+            required = {"agent_id", "conversation_key", "kernel_session_id", "kernel_records_path", "workspace_path"}
+            if not required <= columns:
+                return None
+            rows = connection.execute(
+                "SELECT kernel_records_path, workspace_path FROM conversations"
+                " WHERE kernel_session_id=? AND conversation_key=? AND agent_id=? LIMIT 2",
+                (turn["session"], turn["conversation"], turn["agent"])).fetchall()
+    except (OSError, sqlite3.Error):
+        return None
+    if len(rows) != 1 or not all(isinstance(value, str) for value in rows[0]):
+        return None
+    records, workspace = Path(rows[0][0]), Path(rows[0][1])
+    if not records.is_absolute() or not workspace.is_absolute() or not _regular(records):
+        return None
+    records, workspace, cwd = records.resolve(), workspace.resolve(), Path.cwd().resolve()
+    if not records.is_relative_to(wire_root) or not cwd.is_relative_to(workspace):
+        return None
+    relative = records.relative_to(wire_root)
+    if (len(relative.parts) != 5 or relative.parts[1] != turn["session"]
+            or relative.parts[2:] != ("agents", "main", "wire.jsonl")):
+        return None
+    if not -2 <= now - records.stat().st_mtime <= MAX_AGE_SECONDS:
+        return None
+    latest = {}
+    for raw in reversed(_tail(records)):
+        match = _KIMI_ENVELOPE.match(raw[:128])
+        if match:
+            kind = match[1].decode("ascii")
+            if kind not in latest and len(raw) <= MAX_RECORD_BYTES:
+                latest[kind] = raw
+            elif kind not in latest:
+                return None
+        if len(latest) == 2:
+            break
+    if set(latest) != {"usage.record", "llm.request"}:
+        return None
+    try:
+        usage = _kimi_model_record(latest["usage.record"])
+        request = _kimi_model_record(latest["llm.request"])
+    except (ValueError, UnicodeError):
+        return None
+    model = _model(usage.get("model"))
+    usage_at = usage.get("time") / 1000 if type(usage.get("time")) in (int, float) else None
+    request_at = request.get("time") / 1000 if type(request.get("time")) in (int, float) else None
+    started = _started_at(owner)
+    if (usage.get("type") != "usage.record" or request.get("type") != "llm.request"
+            or usage.get("usageScope") != "turn" or request.get("kind") != "loop"
+            or request.get("provider") != "kimi" or model is None or _model(request.get("model")) != model
+            or ("modelAlias" in request and _model(request["modelAlias"]) is None)
+            or usage_at is None or request_at is None or started is None
+            or abs(usage_at - request_at) > 2 or not -2 <= now - usage_at <= MAX_AGE_SECONDS
+            or usage_at < turn["at"] - 2 or request_at < turn["at"] - 2 or usage_at < started - 2):
+        return None
+    return model
+
+
+def _kimi(owner: dict, now: float) -> dict | None:
+    """Bind Kimi's running Bash task to one active turn and its exact wire."""
+    root = _kimi_root()
+    if root is None:
+        return None
+    state_path = root / "daimon/agents/main/runner.state.json"
+    chain = processes.process_chain()
+    pids = {row["pid"] for row in chain if type(row.get("pid")) is int}
+    turns = _kimi_active_turns(state_path, pids)
+    if not turns:
+        return None
+    queries = _kimi_background_tasks(state_path, turns)
+    if queries is None:
+        return None
+    shells = []
+    for row in chain:
+        if row.get("pid") == owner.get("pid"):
+            break
+        if row.get("name", "").casefold() in _SHELLS and _started_at(row) is not None:
+            shells.append(row)
+    started = _started_at(owner)
+    if started is None:
+        return None
+    bindings = []
+    for turn in turns:
+        if not started - 2 <= turn["at"] <= now + 2:
+            continue
+        for task in queries.get(turn["session"], []):
+            if not isinstance(task, dict) or task.get("kind") != "bash" or task.get("status") != "running":
+                continue
+            pid, at_ms = task.get("pid"), task.get("startedAtMs")
+            if type(pid) is not int or type(at_ms) not in (int, float):
+                continue
+            at = at_ms / 1000
+            if not turn["at"] - 2 <= at <= now + 2:
+                continue
+            if any(row["pid"] == pid and abs(at - _started_at(row)) <= 2 for row in shells):
+                bindings.append(turn)
+    if len(bindings) != 1:
+        # Parallel sessions and duplicate task bindings are not distinguishable.
+        return None
+    turn = bindings[0]
+    current = _kimi_active_turns(state_path, pids)
+    if current is None or turn not in current:
+        return None
+    model = _kimi_wire_model(root, turn, owner, now)
+    if model is None:
+        return None
+    return {"model": model, "source": "kimi-desktop-session-runtime",
+            "turn": turn["turn"], "session": turn["session"]}
+
+
 def collect(harness: str, scope: dict | None, *, diagnostics: dict | None = None) -> dict | None:
     """Return only a model observation bound to the exact current caller."""
     if diagnostics is not None:
@@ -562,9 +841,9 @@ def collect(harness: str, scope: dict | None, *, diagnostics: dict | None = None
             native = _zcode_session_token(owner)
             if not native:
                 return unavailable("native-session-binding-unavailable")
-        elif harness == "minimax-code":
-            # The Desktop app has no conversation environment variable; the
-            # session is bound by the runtime turn lease instead of a native id.
+        elif harness in ("minimax-code", "kimi-desktop"):
+            # These Desktop apps have no conversation environment variable;
+            # their own runtime binds the current execution shell to a session.
             if "execution_ref" not in scope:
                 return unavailable("current-execution-scope-unavailable")
             native = None
@@ -584,6 +863,8 @@ def collect(harness: str, scope: dict | None, *, diagnostics: dict | None = None
                 diagnostics.update(detail)
         elif harness == "minimax-code":
             found = _minimax(owner, now)
+        elif harness == "kimi-desktop":
+            found = _kimi(owner, now)
         else:
             readers = {"codex": _codex, "trae": _trae, "claude-code": _claude, "zcode": _zcode}
             found = readers[harness](native, owner, now) if harness in readers else _pi(native)
