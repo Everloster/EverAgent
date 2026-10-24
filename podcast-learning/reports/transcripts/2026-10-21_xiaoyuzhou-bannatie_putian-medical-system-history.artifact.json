@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "status": "succeeded",
+  "silent": true,
+  "interactive_browser": false,
+  "audio_playback": false,
+  "duration_ms": 296065,
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/6ad8260fef67611cac79bf12?utm_source=rss",
+  "artifact": {
+    "source_host": "www.xiaoyuzhoufm.com",
+    "audio_size": 553345128,
+    "language": "zh",
+    "segments": 4290,
+    "service_version": "whisper.cpp-v1.9.1-sm120",
+    "transcript_size": 201507,
+    "transcript_sha256": "dced8c62a7f94b74f2322922074957e7c9094db370d664ebc4117d5df0d49392",
+    "quality": {
+      "repetition_guard": {
+        "passed": true,
+        "max_consecutive_identical": 2
+      }
+    }
+  },
+  "transfer": {
+    "mode": "chunked（podcast_artifact_pull.py，2 片）",
+    "atomic": true,
+    "local_path": "podcast-learning/reports/transcripts/2026-10-21_xiaoyuzhou-bannatie_putian-medical-system-history.transcript.txt",
+    "verified_sha256": true
+  },
+  "audit": {
+    "script": "podcast-learning/scripts/audit_transcript.py",
+    "ok": true,
+    "lines": 4290,
+    "segments": 4290,
+    "size": 201507,
+    "sha256": "dced8c62a7f94b74f2322922074957e7c9094db370d664ebc4117d5df0d49392",
+    "duration_seconds": 7388,
+    "max_consecutive_identical": 2,
+    "warnings": [],
+    "errors": []
+  },
+  "reference": {
+    "show_duration_label": "123 分钟（单集页标注）",
+    "transcript_last_timestamp": "02:03:08（片尾音乐识别与制作人口播）",
+    "source": "小宇宙单集页 shownotes（8 条章节时间轴，01:15–01:57:13；22 篇主要参考资料）"
+  },
+  "runner": "eacli-podcast-remote"
+}

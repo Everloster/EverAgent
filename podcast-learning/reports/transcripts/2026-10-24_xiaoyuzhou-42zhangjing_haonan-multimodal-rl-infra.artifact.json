@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "status": "succeeded",
+  "silent": true,
+  "interactive_browser": false,
+  "audio_playback": false,
+  "duration_ms": 145882,
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/6ada2be4c96c8942ec10cb1e?utm_source=rss",
+  "artifact": {
+    "source_host": "www.xiaoyuzhoufm.com",
+    "source_sha256": "0b7cd3b548a5f57f24f7a62d50bc701ff4b85627830c8b892de792a2a583bbc0",
+    "audio_size": 572108878,
+    "language": "zh",
+    "segments": 2411,
+    "service_version": "whisper.cpp-v1.9.1-sm120",
+    "transcript_size": 111189,
+    "transcript_sha256": "c749712bba0473f5d5d9693f1230977c03490a1cfd8a1815365d7a6971560585",
+    "quality": {
+      "repetition_guard": {
+        "passed": true,
+        "max_consecutive_identical": 1,
+        "repeated_text_sha256": null
+      }
+    }
+  },
+  "transfer": {
+    "mode": "eacli pull",
+    "atomic": true,
+    "local_path": "podcast-learning/reports/transcripts/2026-10-24_xiaoyuzhou-42zhangjing_haonan-multimodal-rl-infra.transcript.txt",
+    "verified_sha256": true,
+    "pull_request_id": "req_pull_42zhangjing_haonan_20261024"
+  },
+  "audit": {
+    "script": "podcast-learning/scripts/audit_transcript.py",
+    "ok": true,
+    "lines": 2411,
+    "segments": 2411,
+    "size": 111189,
+    "sha256": "c749712bba0473f5d5d9693f1230977c03490a1cfd8a1815365d7a6971560585",
+    "duration_seconds": 3196,
+    "max_consecutive_identical": 1,
+    "warnings": [],
+    "errors": []
+  },
+  "runner": "eacli-podcast-remote"
+}

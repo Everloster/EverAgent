@@ -1,10 +1,11 @@
 # 说医解药 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/34eqplbv6ptd>）｜ 最近拉取：2026-10-19 ｜ 总集数：95
+> 来源：官方 RSS（<https://feed.xyzfm.space/34eqplbv6ptd>）｜ 最近拉取：2026-10-25 ｜ 总集数：96
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-10-22 | 36m23s | [光遗传学拿下诺奖后，这两位华人科学家的故事值得了解 Vol.93](https://www.xiaoyuzhoufm.com/episode/6ad824a1b381c0fcba1954f6?utm_source=rss)<!--g:6ad824a1b381c0fcba1954f6--> | — |
 | — | 2026-10-15 | 39m54s | [从黑死病到花生酱味的疫苗：人类如何制服鼠疫 Vol.92](https://www.xiaoyuzhoufm.com/episode/6ad059d1e742e36efcc34225?utm_source=rss)<!--g:6ad059d1e742e36efcc34225--> | — |
 | — | 2026-10-08 | 53m04s | [高档儿童辅食银鳕鱼陷入汞中毒争议：为何“鳕”鱼是非多？我们该如何辨别水产的汞风险 Vol.91](https://www.xiaoyuzhoufm.com/episode/6ac68d62195d838e2aee5bda?utm_source=rss)<!--g:6ac68d62195d838e2aee5bda--> | ✅ 已处理（2026-10-08 xiaoyuzhou-shuoyi-jieyao_vol91-cod-mercury） |
 | — | 2026-10-01 | 30m40s | [罐车混运导致美国最大食物中毒事件后，一个草台班子的逆袭 Vol.90](https://www.xiaoyuzhoufm.com/episode/6abdd537195d838e2aec43dc?utm_source=rss)<!--g:6abdd537195d838e2aec43dc--> | — |

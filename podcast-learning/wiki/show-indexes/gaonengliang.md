@@ -1,10 +1,11 @@
 # 高能量 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/jhfuba3dahq8>）｜ 最近拉取：2026-10-19 ｜ 总集数：237
+> 来源：官方 RSS（<https://feed.xyzfm.space/jhfuba3dahq8>）｜ 最近拉取：2026-10-25 ｜ 总集数：238
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-10-20 | 1h26m | [Vol.238 宏观漫谈112｜全球资本市场，集体“缺钱”？](https://www.xiaoyuzhoufm.com/episode/6ad73cbbef67611cac7972a7?utm_source=rss)<!--g:6ad73cbbef67611cac7972a7--> | ✅ 已处理（2026-10-20 xiaoyuzhou-gaonengliang_vol238-global-liquidity） |
 | — | 2026-10-16 | 3h05m | [Vol.237 对话冯仑：做一个有益于人民的老登](https://www.xiaoyuzhoufm.com/episode/6ad1296c0e4e410a05bd8be2?utm_source=rss)<!--g:6ad1296c0e4e410a05bd8be2--> | — |
 | — | 2026-10-01 | 1h21m | [Vol.236 宏观漫谈111｜中美元首会谈、AI发展边界与全球资金的“蓄水池”逻辑](https://www.xiaoyuzhoufm.com/episode/6abdb921e742e36efcbd55a8?utm_source=rss)<!--g:6abdb921e742e36efcbd55a8--> | — |
 | — | 2026-09-16 | 2h23m | [Vol.235 从理想、沐曦到宇树：跟经纬王华东聊硬科技投资逻辑](https://www.xiaoyuzhoufm.com/episode/6aa96f2d9d3264778169b6bf?utm_source=rss)<!--g:6aa96f2d9d3264778169b6bf--> | — |

@@ -1,0 +1,309 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/Amazon_TorchNeuron_Trainium原生PyTorch后端_深度解析_20261025.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-6",
+        "harness": "codex",
+        "run_id": "review-amazon-torchneuron-20261025-gpt6",
+        "independent_context": true,
+        "explicit_model_override": false
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 96,
+        "request_coverage": 96,
+        "reasoning_quality": 94,
+        "readability": 91,
+        "limitations": 97
+      },
+      "score_reasons": {
+        "evidence_fidelity": "来源优先回读 Amazon Science、PyTorch 发布文、AWS Neuron 页面，以及固定 commit 的 README、API 兼容表、分布式契约、lowering 验收和统计文档；另以 PyTorch 2.14 torch.compiler 与 PyTorch/XLA 官方文档校准替代路线。逐表重算确认 2,447=1,857+436+154、核心 torch APIs 472=362+94+16、436 条 fallback 仅两条明确写 decomposition、数值差异短语命中 22 行。已删除原文没有的 UltraServer 配置、默认 AOT 与易漂移仓库计数。",
+        "request_coverage": "R01–R06 均有可观察交付：原文与官方/仓库来源、三条执行路径、兼容与 fallback、自动微分、分布式、性能口径、替代路线、迁移启示、Limitations 与思考追问均有独立章节；报告和 sidecar 未包含设备名、私有路径或编排标识。",
+        "reasoning_quality": "报告能把厂商主张、代码文档、机械统计与分析者推断分开。修订后不再把 API 总表当 native kernel 覆盖率，不再把 dynamic=False 错归因于 AOTAutograd，也不再把 TorchInductor 写成 NVIDIA 专属；Pipeline Parallelism、public/closed Beta 与两代同名包均保留为文档差异。",
+        "readability": "结论前置，执行路径图、分节统计、数字核对表和部署清单便于定位。全文较长，覆盖度、风险和思考章节有少量重复，但重复分别承担事实解释、决策检查与方法迁移，主线仍可独立阅读。",
+        "limitations": "清楚说明未跑 Trainium、未读源码、未取到两张关键图数值、S06 为仓库内 AI 说明文档、22 行短语检索不等于去重 kernel 清单、替代路线没有同机实测、社区复现未系统检索；typed repo reader 失败后的固定 commit 降级也有记录。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C11",
+        "C12"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08",
+        "U09",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16",
+        "U17",
+        "U18",
+        "U19",
+        "U20",
+        "U21",
+        "U22",
+        "U23",
+        "U24",
+        "U25",
+        "U26",
+        "U27",
+        "U28",
+        "U29"
+      ],
+      "source_content_map": [
+        {
+          "id": "SCM01",
+          "title": "TorchNeuron 通过 PrivateUse1 与 torch.accelerator 注册成 PyTorch 设备，并提供 eager、compiled 与 adaptive eager 路径",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01",
+            "U03",
+            "U05",
+            "U06",
+            "U07",
+            "U08",
+            "U10"
+          ],
+          "notes": "开头、§2–§3 区分官方定位、执行机制与分析者推断；adaptive eager 的 experimental 状态和源码关联约束均保留。"
+        },
+        {
+          "id": "SCM02",
+          "title": "NEFF 缓存与共享编译服务的精确口径是单机 64 进程 LLM 的首训练步约降三分之一",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04",
+            "U09",
+            "U20",
+            "U21"
+          ],
+          "notes": "已删除 S01 不含的 UltraServer/Graviton/16–144 芯片描述，并明确该数字衡量冷启动而非吞吐。"
+        },
+        {
+          "id": "SCM03",
+          "title": "API 兼容表横跨 29 节、2,447 条记录，三值统计不能直接作为原生算子覆盖率",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S05"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11",
+            "U12",
+            "U13",
+            "U17",
+            "U20",
+            "U24",
+            "U25"
+          ],
+          "notes": "全文与分节数字已机械重算；Y 的 host-only、N 的后端专属/removed APIs、两条 decomposition 和 22 行数值差异短语均有边界说明。"
+        },
+        {
+          "id": "SCM04",
+          "title": "上游测试与 10 万模型盲扫把兼容性拆成 enabled、skip、unsupported 与模型组合效果",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U14",
+            "U15",
+            "U21",
+            "U24",
+            "U27"
+          ],
+          "notes": "154K/69K/30K/39K/22K、100k/99.9% 与三组 skip 均回到原文；图内通过率和 fallback 分布仍列为缺失。"
+        },
+        {
+          "id": "SCM05",
+          "title": "自动微分、dtype 与 NKI 训练边界来自 AOTAutograd、register_autograd 和官方 dtype 声明",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03",
+            "S05"
+          ],
+          "matched_coverage_unit_ids": [
+            "U16",
+            "U17",
+            "U25"
+          ],
+          "notes": "不再把 dynamic=False 因果归因给 AOTAutograd；数值限制被扩展为分散条目，而非只看两项 N。"
+        },
+        {
+          "id": "SCM06",
+          "title": "分布式后端以 CUSTOM 类型注册，collective 进入 StableHLO，barrier 路径有 xfail，DTensor SDPA 有四种分片",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03",
+            "S06"
+          ],
+          "matched_coverage_unit_ids": [
+            "U18",
+            "U22",
+            "U25"
+          ],
+          "notes": "PP 支持在 S02 与 S03 间冲突，正文没有选择性消除差异；S06 的 AI 生成属性被列入限制。"
+        },
+        {
+          "id": "SCM07",
+          "title": "Streams/Events 与惰性分配器改变错误暴露和内存统计语义",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S08"
+          ],
+          "matched_coverage_unit_ids": [
+            "U19",
+            "U25",
+            "U27"
+          ],
+          "notes": "非默认流复用硬件队列、同步点抛错与读取 stats 前 synchronize 的要求均覆盖。"
+        },
+        {
+          "id": "SCM08",
+          "title": "仓库的 aten-op-lowering 工作流用确定性证据、限制批准和 draft PR 约束 agent 产出",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S07"
+          ],
+          "matched_coverage_unit_ids": [
+            "U26",
+            "U27"
+          ],
+          "notes": "exit code、runner、registry、coverage、autograd、skip/xfail 和人工批准边界均与原文一致。"
+        },
+        {
+          "id": "SCM09",
+          "title": "TorchInductor 与 PyTorch/XLA 只提供架构路线对照，不能替代 Trainium 同条件实测",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S04",
+            "S10",
+            "S11"
+          ],
+          "matched_coverage_unit_ids": [
+            "U22",
+            "U23",
+            "U29"
+          ],
+          "notes": "已修正初稿把 Inductor 写成 NVIDIA 专属的问题；旧 XLA 版、默认 Inductor 与 TPU 路线均按官方定位比较。"
+        },
+        {
+          "id": "SCM10",
+          "title": "公开性能证据只有共享编译冷启动与 Deepgram 客户业务指标，缺少吞吐、延迟和同条件基准",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U20",
+            "U21",
+            "U24",
+            "U28"
+          ],
+          "notes": "报告没有把客户 60% 口径当 AWS benchmark，也没有从测试覆盖数字外推性能。"
+        },
+        {
+          "id": "SCM11",
+          "title": "部署建议和研究限制对应动态形状、fallback、数值差异、版本代际、Beta 漂移与未复现边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06",
+            "S08",
+            "S10",
+            "S11"
+          ],
+          "matched_coverage_unit_ids": [
+            "U25",
+            "U26",
+            "U28",
+            "U29"
+          ],
+          "notes": "最小验证方案可逐步否决迁移；Limitations 对固定 commit、typed reader 降级和社区证据缺口均有说明。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "独立复核按来源优先执行。初稿存在会改变主结论的 API 表列位误读、S01 硬件配置幻入、默认 AOT 外推、fallback 普遍 decomposition、数值差异只计两项、Inductor 错写为 NVIDIA 专属、动态形状错误因果归因、NKI 反向来源误标和易漂移仓库计数；均已修订并重新核验。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 94.95,
+    "evaluated_on": "2026-10-25",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "371ec441f2f2d9e20b1f69d696d6ca3770a3df9ec8ab70c1a401bb1347fb156d",
+    "evidence_sha256": "8720f06d44615c634f18b5259f3072b2ccc779081b35fd05a8fb56477ce1a499"
+  }
+}

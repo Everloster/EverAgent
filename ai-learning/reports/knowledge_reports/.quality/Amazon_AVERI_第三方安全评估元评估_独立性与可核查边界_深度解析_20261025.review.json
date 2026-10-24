@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/Amazon_AVERI_第三方安全评估元评估_独立性与可核查边界_深度解析_20261025.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-6",
+        "harness": "codex",
+        "run_id": "review-amazon-averi-20261025-gpt6",
+        "independent_context": true,
+        "explicit_model_override": false
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 95,
+        "request_coverage": 95,
+        "reasoning_quality": 94,
+        "readability": 92,
+        "limitations": 97
+      },
+      "score_reasons": {
+        "evidence_fidelity": "来源优先回读 Amazon 主文、Amazon 的 PRISM/ActiveFence 对照文、AVERI 双盲试点页、机构主页，并下载核对 arXiv:2601.11699 的 16 页 PDF 全文。初稿把 Amazon 写成出资方、把样本提供等同于控制随机化、把未披露访问写成未发生，均已改为公开材料能支持的边界；BET 与 ActiveFence 数字、AAL 要求和 point-in-time 原文已逐项核对。",
+        "request_coverage": "R01–R04 全部覆盖：对象、独立性、威胁模型、样本与方法、结果数字、披露边界、利益冲突、路线比较、EverAgent 迁移方案、反方解释、Limitations 与追问均有独立章节。R05 的公开信息边界也满足，正文与 sidecar 未出现设备、远端路径或编排标识。",
+        "reasoning_quality": "报告能把「评模型」与「评测试集」分开，并用 AVERI 自己的审计框架反向约束结论。修订后不再把未知的财务、抽样和披露治理写成既成事实，也不再把单个双盲试点泛化为机构标准实践；对 Goodhart、保密与外部红队替代解释的讨论保留了可证伪边界。",
+        "readability": "结论前置、来源标签贯穿、表格对照清楚，读者可脱离会话理解。篇幅较长，§8–§11 对独立性边界有少量重复，但重复承担了披露、比较和迁移三个不同用途，未妨碍主线。",
+        "limitations": "清楚说明没有样本量、抽样框、随机化方法、判据、原始报告与底层数据，也区分了「公开材料未显示」和「事实没有发生」。对照数字被明确标为 Amazon 转述，AAL 对照只用于说明公开证据不足，不被包装成对本次合作的正式等级判定。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08",
+        "U09",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14"
+      ],
+      "source_content_map": [
+        {
+          "id": "SCM01",
+          "title": "Amazon 公布的工作对象是内部安全评估 prompt 样本，而非模型输出；检查维度为多样性、难度校准与方法可靠性",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01",
+            "U02",
+            "U05"
+          ],
+          "notes": "正文 §1–§2 与 §5 明确对象和定性方法边界。"
+        },
+        {
+          "id": "SCM02",
+          "title": "Amazon 称样本随机，并称 AVERI 未获其评估团队输入；随机化执行者、抽样框和财务关系未披露",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03",
+            "U08"
+          ],
+          "notes": "正文已把「被描述为随机样本」与「谁执行随机化」分开，不再断言 Amazon 控制抽样或出资。"
+        },
+        {
+          "id": "SCM03",
+          "title": "AVERI 框架定义四个 AAL，并要求深度访问、独立性保障、可追溯方法和标准化结果沟通",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03",
+            "U08",
+            "U09",
+            "U10"
+          ],
+          "notes": "已用 PDF 全文核对 AAL-1/2 建议、AAL-3/4 可行性、财务关系披露、标准条款、冷却期、指标自治与报告结构。"
+        },
+        {
+          "id": "SCM04",
+          "title": "Amazon 转述三项确认、四项改进和四项内部落地，但没有给出样本量、判据或量化结果",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04",
+            "U06",
+            "U07"
+          ],
+          "notes": "正文逐条保留厂商自述，并把落实效果列为未独立验证。"
+        },
+        {
+          "id": "SCM05",
+          "title": "AVERI 双盲试点使用安全飞地隔离 prompt、输出与模型权重，并向 Google DeepMind 交付机密报告",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03",
+            "U08",
+            "U09"
+          ],
+          "notes": "正文把它作为单个披露形态对照，未泛化为 AVERI 的全部标准实践。"
+        },
+        {
+          "id": "SCM06",
+          "title": "PRISM BET 与 ActiveFence 提供另一条模型行为测试路线，但公开数字仍来自 Amazon 文章",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "U07",
+            "U09"
+          ],
+          "notes": "steps to elicit 与 3P flag rate 数字全部核对，并加入模型预算、严重度与原始报告未公开的限制。"
+        },
+        {
+          "id": "SCM07",
+          "title": "公开证据只支持评估执行环节的独立性，无法判断委托、随机化和披露治理的结构独立性",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03",
+            "U08",
+            "U11"
+          ],
+          "notes": "正文以「不可核查」表述未知项，没有把潜在利益冲突写成已证实事实。"
+        },
+        {
+          "id": "SCM08",
+          "title": "元评估思路可迁移到 evidence claim 抽样、难度分层、定期维护和表层通过反例检查",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10",
+            "U11"
+          ],
+          "notes": "正文同时核对了现有公开 review sidecar 的真实能力，迁移建议是增量字段而非重复建设。"
+        },
+        {
+          "id": "SCM09",
+          "title": "报告的可验证边界包括未公开原始报告、底层数据、抽样过程、财务关系和改进效果",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11",
+            "U12",
+            "U13",
+            "U14"
+          ],
+          "notes": "Limitations 与附录速查对缺失项、主动省略项和来源性质均有说明。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "独立复核按来源优先执行。修订了模板残留、出资关系无证据、随机样本控制权过度归因、访问范围反事实、单个试点泛化、公开 sidecar 事实错误以及 point-in-time 拼写；修订后重新核验所有 critical claims。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 94.55,
+    "evaluated_on": "2026-10-25",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "c5743e5c59d12c1725a4fb1c8ab2d3311958e9b9274dbf01372ca97388ce0e70",
+    "evidence_sha256": "9546d5844ee0b33ff56ed6f46dc0e450fe3002cea0819978b7445a4e56e248a9"
+  }
+}

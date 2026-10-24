@@ -1,0 +1,555 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/MiniMax_M3_1_Flash_Agent模型与vLLM_Day0支持_深度解析_20261025.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-25",
+  "generator": {
+    "model": "minimax-m3.1-flash",
+    "harness": "pi",
+    "run_id": "generator-920be79a006f",
+    "explicit_model_override": true,
+    "override_reason": "用户明确指定本轮研究优先使用 MiniMax M3.1 Flash（额度耗尽后切 GLM-5.3）"
+  },
+  "task": {
+    "summary": "深读 MiniMax 官方《MiniMax M3.1 Flash》技术文章与 vLLM Day-0 支持文章，以及两文直接链接的模型卡、MSA/DSpark 论文、MSA kernel 仓库、vLLM Recipes 与 PR；重构训练与推理设计（稀疏注意力/MoE、QAT 量化、投机解码、多硬件）、逐项核对关键 benchmark 的任务/基线/口径与厂商自报属性，形成面向技术读者的中文 important 报告，并评估对 Agent harness 选型的可迁移启示与限制。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "读取 MiniMax 官方《MiniMax M3.1 Flash》技术文章（英文与中文版）并重构其论证主线，区分原文事实与厂商主张。"
+      },
+      {
+        "id": "R02",
+        "text": "读取 vLLM Day-0 支持文章及其直接链接的技术材料（模型卡、MSA 论文、DSpark 论文、Recipes、kernel 仓库、PR）。"
+      },
+      {
+        "id": "R03",
+        "text": "重构训练与推理设计：MSA 稀疏注意力、MoE 路由专家、量化感知训练、投机解码与多硬件支持之间的关系。"
+      },
+      {
+        "id": "R04",
+        "text": "逐项核对关键 benchmark 的任务定义、基线、评测脚手架口径，并标注厂商自报属性与口径冲突。"
+      },
+      {
+        "id": "R05",
+        "text": "提供关键数字表、至少一个机制示意，以及代码或 PR 证据。"
+      },
+      {
+        "id": "R06",
+        "text": "与替代方案做有边界比较（不夸大领先范围），并评估对 Agent harness 选型的可迁移启示与限制。"
+      },
+      {
+        "id": "R07",
+        "text": "写明 Limitations 与思考与追问；不得把厂商 benchmark 写成独立复现。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "official",
+      "title": "MiniMax — MiniMax M3.1 Flash: Redefining Agent Performance and Cost",
+      "locator": "https://www.minimax.io/blog/minimax-m31f",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S02",
+      "kind": "official",
+      "title": "MiniMax — MiniMax M3.1 Flash（中文版，同题发布）",
+      "locator": "https://www.minimax.cn/blog/minimax-m31f",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S03",
+      "kind": "official",
+      "title": "Hugging Face — MiniMaxAI/MiniMax-M3.1-Flash 模型卡",
+      "locator": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S04",
+      "kind": "official",
+      "title": "vLLM — vLLM Delivers Day-0 Support for MiniMax-M3.1-Flash",
+      "locator": "https://vllm.ai/blog/2026-10-23-minimax-m31-flash",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S05",
+      "kind": "official",
+      "title": "vLLM Recipes — MiniMaxAI/MiniMax-M3.1-Flash 部署文档",
+      "locator": "https://recipes.vllm.ai/MiniMaxAI/MiniMax-M3.1-Flash",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S06",
+      "kind": "primary",
+      "title": "arXiv:2606.13392 — MiniMax Sparse Attention (v2)",
+      "locator": "https://arxiv.org/abs/2606.13392",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S07",
+      "kind": "primary",
+      "title": "arXiv:2607.05147 — DSpark: Confidence-Scheduled Speculative Decoding with Semi-Autoregressive Generation",
+      "locator": "https://arxiv.org/abs/2607.05147",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S08",
+      "kind": "primary",
+      "title": "MSA kernel 仓库（vLLM 项目镜像 / MiniMax 上游）",
+      "locator": "https://github.com/vllm-project/MSA",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S09",
+      "kind": "primary",
+      "title": "vLLM PR 集合（GitHub API 读取标题、状态、时间与变更文件名）",
+      "locator": "https://github.com/vllm-project/vllm/pulls?q=is%3Apr+minimax+m3.1",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S10",
+      "kind": "secondary",
+      "title": "VentureBeat — MiniMax's new M3.1 Flash beats DeepSeek and Opus 5 on a key business benchmark at lower cost but with a high hallucination rate（转述 Artificial Analysis）",
+      "locator": "https://venturebeat.com/technology/minimaxs-new-m3-1-flash-beats-deepseek-and-opus-5-on-a-key-business-benchmark-at-lower-cost-but-with-a-high-hallucination-rate",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S11",
+      "kind": "primary",
+      "title": "Artificial Analysis — MiniMax-M3.1-Flash model analysis page",
+      "locator": "https://artificialanalysis.ai/models/minimax-m3-1-flash",
+      "accessed_on": "2026-10-25"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "MiniMax 的官方发布文本身不包含任何架构名词：MSA、MoE、NVFP4、投机解码均未出现，全部技术内容被折叠为一句「more aggressive sparsity」；真正的机制分布在模型卡、MSA 论文、vLLM 博客、部署 recipe、kernel 仓库与 PR 六个层次中。",
+      "report_anchor": "2.1 MiniMax 到底在回答什么问题",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "S01/S02 全文无架构术语，仅有「more aggressive sparsity」与速度/成本表述；S03《What's New》才给出三条结构性变化（稀疏注意力全覆盖、QAT、DSpark）。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "MSA 的稀疏性由可训练的 Index Branch 提供：每个 GQA 组一个 index query head、全局共用一个 index key head，块级 max-pooling 后取 top-k 块并强制保留局部块；Main Branch 在选中块上做精确 softmax，使其 K/V 读取与计算从 O(N) 降为 O(k·B_k)，但 Index Branch 仍保留一个轻量的 O(N) 全上下文扫描项。",
+      "report_anchor": "3.1.1 机制",
+      "support": "direct",
+      "source_ids": [
+        "S06",
+        "S04"
+      ],
+      "evidence": "S06 机制定义与 S04 工程 primer 一致：Main Branch 只读 top-16×128 个 token；S04 同时明确每步仍扫描全上下文 index keys（128 B/token/layer），因此整层不是严格常数复杂度。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "MSA 的稀疏选择不可导，因此用 KL 对齐损失训练 Index Branch，并以 Gradient Detach、Indexer Warmup 与 forced Local Block 三重机制稳定；论文称在 109B MoE、3T token、原生多模态对照实验中与 GQA 持平，1M 上下文每 token 注意力计算量降 28.4×，H800 上 prefill 14.2× / decode 7.6× 加速。",
+      "report_anchor": "3.1.2 训练目标",
+      "support": "direct",
+      "source_ids": [
+        "S06"
+      ],
+      "evidence": "S06 §3.2 首段与摘要原文；论文级结论属论文作者自报，未在本报告中复现。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "M3.1 的 NVFP4 是量化感知训练出来的原生格式：checkpoint 从 M3 MXFP8 的 451.5 GB 降到 250.1 GB（−44.6%），NVFP4 KV 34,560 B/token vs FP8 61,440 B/token（−43.75%），在 4×B300、DEP4、256K 序列下可并发 76 条而 M3（FP8 KV）仅 28 条，约 2.7×。",
+      "report_anchor": "3.2 量化感知训练",
+      "support": "direct",
+      "source_ids": [
+        "S04",
+        "S03"
+      ],
+      "evidence": "S03《What's New》明确 QAT 覆盖 routed experts 与 attention paths；S04《What is new in the MiniMax-M3.1 architecture》给出三个数字及其测试配置。均为 vLLM/厂商自报。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "M3.1 用 DSpark 替代 M3 时代的 EAGLE-like MTP 作为投机解码方案，checkpoint 内置 dspark/ draft head；DSpark 由 Peking University 与 DeepSeek-AI 团队提出，机制是半自回归 drafter + confidence head + 按请求置信度调度验证长度，其 DeepSeek-V4 生产数据相对 MTP-1 基线每用户提速 60–85%，MiniMax 是采用方。",
+      "report_anchor": "3.3 DSpark",
+      "support": "direct",
+      "source_ids": [
+        "S03",
+        "S05",
+        "S07"
+      ],
+      "evidence": "S03 原文「DSpark replaces the earlier EAGLE-like MTP approach」；S05 指出 checkpoint 内置 dspark/ 目录；S07 摘要给出机制与 DeepSeek-V4 生产对比。DSpark 论文作者机构未在所读摘要中标明，属未决疑点。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "「Day-0 支持」不等于上游已合：截至 2026-10-25，vLLM 提供预构建镜像 vllm/vllm-openai:minimax-m31-flash 与 rocm 变体，但核心模型 PR #63232 仍为 open 且带 needs-rebase 标签，文档/Recipe 类 PR（#63236、#63244、#63257、#63428）已合并，ROCm 拆分 PR（#63490、#63491）仍 open。",
+      "report_anchor": "4.7 Day-0 支持的成熟度",
+      "support": "direct",
+      "source_ids": [
+        "S04",
+        "S09"
+      ],
+      "evidence": "S04 明说模型只在代码评审并合入上游后才进 nightly PyPI（约一周）；GitHub API 返回的 PR 状态、标签、创建/合并时间见 §4.7 表。",
+      "critical": true
+    },
+    {
+      "id": "C07",
+      "claim": "同一份权重在不同硬件上走不同的降级路径：Blackwell/Rubin 原生 NVFP4 专家权重与 NVFP4 KV，Hopper 降为 FP8 KV + FP8 indexer + Marlin 上的 NVFP4 MoE 且不启用投机解码，AMD MI350 加载时把 NVFP4 专家重量化为 MXFP8；因此跨硬件的吞吐与成本不可直接比较。",
+      "report_anchor": "6.4 量化路线",
+      "support": "direct",
+      "source_ids": [
+        "S05",
+        "S04"
+      ],
+      "evidence": "S05 Prereqs 与各启动命令明确 Hopper 用 fp8 KV/indexer、--moe-backend marlin、不启用 DSpark；AMD 用 --quantization-config.moe mxfp8；S04 给出 NVFP4→FP16（Rubin）与查表反量化（CDNA4）的 kernel 路径。",
+      "critical": true
+    },
+    {
+      "id": "C08",
+      "claim": "vLLM 的 day-0 性能数字全部是厂商自报且带合成假设：AgentX 使用 7 个投机 token 与「合成接受长度 3.16–3.26」（GB300/Rubin）、3 与 2.45（AMD），因此 tok/s per user、tok/s per GPU、tokens per dollar 都不能当作独立复现，也不反映真实接受长度。",
+      "report_anchor": "5.3 推理效率",
+      "support": "direct",
+      "source_ids": [
+        "S04"
+      ],
+      "evidence": "S04 Figure 4/5/6 图注分别写明 synthetic acceptance lengths 3.16–3.26、c1/c4 用 3.2 其余用 2.45；blog 另说明 AgentX 细节在「上一篇博文」，本报告未读。",
+      "critical": true
+    },
+    {
+      "id": "C09",
+      "claim": "厂商 benchmark 之间存在口径不可比与数值不一致：模型卡 Automation-Bench v1.0.6 为 62.8，而 VentureBeat 转述 MiniMax 为 62.2；HLE 在模型卡为「无工具纯文本 2,158 题」43.4，Artificial Analysis 为另一口径的 48%；空白单元格是「无官方结果」而非 0；部分列使用模型内部复现而非统一官方结果。",
+      "report_anchor": "5.5 厂商自身数字之间的不一致",
+      "support": "direct",
+      "source_ids": [
+        "S03",
+        "S10",
+        "S11"
+      ],
+      "evidence": "S03 Evaluation Notes 逐条注明脚手架版本、judge 模型、上下文长度与「Blank = no official result … not zero」；S10 给出 62.2 与 48% 的转述；S11 显示当前 Intelligence Index 版本与指标定义，说明榜单会持续更新。",
+      "critical": true
+    },
+    {
+      "id": "C10",
+      "claim": "本次材料中的独立评估显示 M3.1 Flash 的 Artificial Analysis Intelligence Index 在发布报道时为 42、当前模型页为 43，每任务成本报道约 $0.22；AA-Omniscience 报道答对率约 56%、幻觉率 93%（非正确回答中错答而非部分回答/拒答的比例）。该数值是版本化风险信号，不是恒定模型属性。",
+      "report_anchor": "5.4 独立评估与反例",
+      "support": "direct",
+      "source_ids": [
+        "S10",
+        "S11"
+      ],
+      "evidence": "S10 转述发布时分数、成本与 93% 定义；S11 直接确认当前 Index 43 与 AA-Omniscience 的计分原则（正确奖励、幻觉惩罚、拒答不罚），但未公开完整逐题记录。",
+      "critical": true
+    },
+    {
+      "id": "C11",
+      "claim": "[推测] MSA 的块级 max-pooling 用「块内最强 token 的分数」代表整块，可能在关键信息藏于块内非最强 token 时系统性损失精细检索召回；论文称下游持平，但未覆盖 needle-in-a-haystack 类探针，故该风险未被排除。",
+      "report_anchor": "6.2 稀疏注意力路线",
+      "support": "inference",
+      "source_ids": [
+        "S06"
+      ],
+      "evidence": "由 S06 Eq.6 的 max-pool 定义与 Eq.7 的 top-k 块选择推导；论文未提供 NIAH 类消融结果（本报告未读全文，见 Limitations 第 2 条）。",
+      "critical": false
+    },
+    {
+      "id": "C12",
+      "claim": "[推测] 把 MSA 论文在 109B 模型上的「质量持平」结论外推到 428B/23B 激活的 M3.1-Flash 属合理但未经直接验证的推断，且 M3.1 相对 M3 额外把前三层 full attention 也换成稀疏，该改动的质量影响在两篇官方材料中均无单独评测。",
+      "report_anchor": "7.2 限制",
+      "support": "inference",
+      "source_ids": [
+        "S06",
+        "S03"
+      ],
+      "evidence": "S06 摘要的对齐实验规模为 109B MoE / 3T token；S03 仅一句「the first three full-attention layers are replaced with sparse attention」，未给该改动的单独消融。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "MiniMax 官方发布文的核心主张、Space Bunny、数据与速度/成本表述",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "report_anchor": "2.1 MiniMax 到底在回答什么问题"
+    },
+    {
+      "id": "U02",
+      "title": "官方定价（美元与人民币两版）与 70% 降本的基线缺失",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "report_anchor": "5.2 推理效率"
+    },
+    {
+      "id": "U03",
+      "title": "模型卡：参数规模、上下文、输入模态、MSA/DSpark/QAT 三项变化",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S03"
+      ],
+      "report_anchor": "一、一手来源清单与读法"
+    },
+    {
+      "id": "U04",
+      "title": "模型卡完整 benchmark 表与逐项 Evaluation Notes 口径",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S03"
+      ],
+      "report_anchor": "5.1 能力与 Agent 任务"
+    },
+    {
+      "id": "U05",
+      "title": "模型卡的推理框架建议、采样参数、reasoning_effort 五档与权重发布状态",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S03",
+        "S05"
+      ],
+      "report_anchor": "3.4 多硬件支持"
+    },
+    {
+      "id": "U06",
+      "title": "vLLM 博文：MSA primer（块 128、top-16、128B vs 1024B、12.5% 流量）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S04"
+      ],
+      "report_anchor": "3.1.4 稀疏注意力到底省了多少带宽"
+    },
+    {
+      "id": "U07",
+      "title": "vLLM 博文：QAT 产物、checkpoint 与 KV 字节数、2.7× 并发对比",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S04"
+      ],
+      "report_anchor": "3.2 量化感知训练"
+    },
+    {
+      "id": "U08",
+      "title": "vLLM 博文：Blackwell QMUL4、NVFP4 MegaMoE 与提前释放 TMEM、QKV 融合、PrimiTS",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S04",
+        "S09"
+      ],
+      "report_anchor": "4.2 NVFP4 MegaMoE"
+    },
+    {
+      "id": "U09",
+      "title": "vLLM 博文：Indexer DCP（NVIDIA 与 AMD 两侧）、SP+DBO、mono kernel、Rubin 优化",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S04"
+      ],
+      "report_anchor": "4.3 Indexer DCP"
+    },
+    {
+      "id": "U10",
+      "title": "vLLM 博文：AgentX 三平台数据及其合成接受长度口径、Day-0 RL 设置与 AIME 结果",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S04"
+      ],
+      "report_anchor": "4.8 Day-0 RL"
+    },
+    {
+      "id": "U11",
+      "title": "vLLM 博文：nightly 镜像与上游合入约一周的说明、致谢与协作方",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S04"
+      ],
+      "report_anchor": "4.7 Day-0 支持的成熟度"
+    },
+    {
+      "id": "U12",
+      "title": "vLLM Recipes：硬件矩阵、block-size 128 强制、parser 名、PD 分离与 HugeTLB、benchmark 命令",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S05"
+      ],
+      "report_anchor": "6.4 量化路线"
+    },
+    {
+      "id": "U13",
+      "title": "MSA 论文：两阶段形式化、Index/Main 分支公式、KL 对齐训练与三重稳定机制",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S06"
+      ],
+      "report_anchor": "3.1.1 机制"
+    },
+    {
+      "id": "U14",
+      "title": "MSA 论文：kernel 协同设计（exp-free Top-k、KV-outer、LSE 融合、load balancing）与 109B 对照结论",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S06"
+      ],
+      "report_anchor": "3.1.2 训练目标"
+    },
+    {
+      "id": "U15",
+      "title": "MSA kernel 仓库：MIT、双 JIT 栈、sparse_topk_select 接口与 page_size 128 / topk 16",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S08"
+      ],
+      "report_anchor": "4.1 MSA kernel 家族"
+    },
+    {
+      "id": "U16",
+      "title": "DSpark 论文：半自回归 drafter、confidence head、置信度调度验证与 DeepSeek-V4 生产收益",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S07"
+      ],
+      "report_anchor": "6.3 投机解码路线"
+    },
+    {
+      "id": "U17",
+      "title": "vLLM PR：模型支持 PR 的 open/needs-rebase 状态、已合并的 Recipe PR 与未合并的 ROCm 拆分 PR、变更文件名",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S09"
+      ],
+      "report_anchor": "4.7 Day-0 支持的成熟度"
+    },
+    {
+      "id": "U18",
+      "title": "第三方评估：Intelligence Index 42/29、每任务成本、HLE、CritPt、输出 token 量",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S10",
+        "S11"
+      ],
+      "report_anchor": "5.4 独立评估与反例"
+    },
+    {
+      "id": "U19",
+      "title": "第三方评估：AA-Omniscience 答对率 56%、93% 幻觉率定义与总分 16",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S10",
+        "S11"
+      ],
+      "report_anchor": "5.4 独立评估与反例"
+    },
+    {
+      "id": "U20",
+      "title": "厂商数字之间的不一致：Automation-Bench 62.8 vs 62.2、AA 42 vs 43、HLE 与 CyberGym 的口径差异",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S03",
+        "S10",
+        "S01",
+        "S11"
+      ],
+      "report_anchor": "5.5 厂商自身数字之间的不一致"
+    },
+    {
+      "id": "U21",
+      "title": "与替代方案的有边界比较：同代模型能力形状、稀疏注意力路线、投机解码路线、量化路线分工",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S03",
+        "S06",
+        "S07",
+        "S05"
+      ],
+      "report_anchor": "六、与替代方案的有边界比较"
+    },
+    {
+      "id": "U22",
+      "title": "对 Agent harness 选型的可迁移启示与不可迁移边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S03",
+        "S04",
+        "S05",
+        "S10",
+        "S11"
+      ],
+      "report_anchor": "七、对 Agent harness 选型的可迁移启示与限制"
+    },
+    {
+      "id": "U23",
+      "title": "研究缺口、未解决疑点、未核实线索与资料时点",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S03",
+        "S04",
+        "S06",
+        "S07",
+        "S09",
+        "S10",
+        "S11"
+      ],
+      "report_anchor": "八、Limitations"
+    },
+    {
+      "id": "U24",
+      "title": "思考与追问：理解、未解问题与下一步入口",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S03",
+        "S04",
+        "S06",
+        "S07",
+        "S10",
+        "S11"
+      ],
+      "report_anchor": "九、思考与追问"
+    }
+  ],
+  "limitations": [
+    "未运行任何模型、kernel 或 benchmark；报告中所有性能与能力数字均为来源转述，厂商自报与第三方评估已在正文逐条标注，无一条经本报告独立复现。",
+    "未读 MSA 论文（arXiv:2606.13392）全文，仅读摘要与 HTML 前半部分（至 §3.2 KL loss 开头）；其消融、NIAH 类检索实验与训练稳定性数据未核实，§3.1 关于块级 max-pooling 检索风险的表述为推测。",
+    "DSpark 论文只核对摘要、作者机构与生产部署相关章节，未逐表复核全部离线实验；其 Peking University / DeepSeek-AI 归属已确认。",
+    "未读 MiniMax 官方 API 文档、模型权重与 config.json，428B/23B/1M 等规格仅依据模型卡自述，未与权重核对。",
+    "未 diff vLLM PR 的具体实现，仅通过 GitHub API 读取标题、状态、时间与变更文件名；未验证 fmha_sm100.cmake、fused_minimax_m3_qknorm_rope_kv_insert_kernel.cu 等文件在 PR 中的实际改动内容。",
+    "未读 vLLM 上一篇 AgentX 博文（MiniMax M3 Day-0），因此 AgentX 的请求分布、并发阶梯定义与是否含工具调用未知；S04 的 tok/s 数字无法被完整复现条件锚定。",
+    "厂商自身数字冲突未解决：Automation-Bench v1.0.6 模型卡 62.8 与 VentureBeat 转述的 62.2；Artificial Analysis Intelligence Index 的 42 与 43。",
+    "S04 未说明 12.5% 带宽数字对应的 indexer 量化格式（128 B/token/layer 未标 dtype，而 M3.1 的 indexer cache 本身是 NVFP4），该比例的可迁移性未被验证（正文 §3.1.4）。",
+    "93% 幻觉率的精确值主要来自 VentureBeat 与 Artificial Analysis 官方公开摘要；已直接访问 AA 模型页核对当前 Index 与 AA-Omniscience 定义，但完整逐题记录不可得。",
+    "搜索结果中出现的第三方线索（称 DSpark/DFlash 在量化目标下存在未关闭的确定性 bug）未读原文，仅登记为待核，未用于任何结论。",
+    "未评估 MiniMax 的服务稳定性、SLA、数据处理条款与合规属性，这些是 Agent harness 落地的必要条件但不在两篇原文的讨论范围内。",
+    "资料时点为 2026-10-25（UTC 约 16:00–16:40）；模型、镜像、PR 状态、榜单与定价均可能随后变化。"
+  ]
+}

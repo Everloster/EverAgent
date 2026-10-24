@@ -1,10 +1,11 @@
 # 菠萝健康派 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/qe8egag9eycv>）｜ 最近拉取：2026-10-19 ｜ 总集数：132
+> 来源：官方 RSS（<https://feed.xyzfm.space/qe8egag9eycv>）｜ 最近拉取：2026-10-25 ｜ 总集数：133
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-10-21 | 52m16s | [师永刚：中美抗癌10年，我看到了哪些真相？vol.133](https://www.xiaoyuzhoufm.com/episode/6ad8cb5aef67611cac7a1d50?utm_source=rss)<!--g:6ad8cb5aef67611cac7a1d50--> | ✅ 已处理（2026-10-21 xiaoyuzhou-boluo-jiankang_shiyonggang-cn-us-cancer-decade） |
 | — | 2026-10-18 | 59m11s | [余科达教授：乳腺癌真和情绪有关吗？科学治疗和复查是关键！vol.132](https://www.xiaoyuzhoufm.com/episode/6ad440bd0e4e410a05be813d?utm_source=rss)<!--g:6ad440bd0e4e410a05be813d--> | — |
 | — | 2026-10-11 | 1h09m | [何继业教授：想要生活有尊严，肌肉从今天开始练！vol.131](https://www.xiaoyuzhoufm.com/episode/6acb13cb195d838e2af00dba?utm_source=rss)<!--g:6acb13cb195d838e2af00dba--> | — |
 | — | 2026-10-07 | 56m38s | [马春来教授：药不能乱吃！这些用药误区，很多人都中招了vol.130](https://www.xiaoyuzhoufm.com/episode/6ac615a6195d838e2aee2f0a?utm_source=rss)<!--g:6ac615a6195d838e2aee2f0a--> | — |

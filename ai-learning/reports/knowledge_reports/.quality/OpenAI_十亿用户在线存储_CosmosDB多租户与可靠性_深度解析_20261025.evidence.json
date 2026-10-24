@@ -1,0 +1,520 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/OpenAI_十亿用户在线存储_CosmosDB多租户与可靠性_深度解析_20261025.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-25",
+  "generator": {
+    "model": "minimax-m3.1-flash",
+    "harness": "pi",
+    "run_id": "generator-920be79a006f",
+    "explicit_model_override": true,
+    "override_reason": "用户明确指定本轮研究优先使用 MiniMax M3.1 Flash（额度耗尽后切 GLM-5.3）"
+  },
+  "task": {
+    "summary": "深读 OpenAI Engineering 2026-10-23《Rapidly scaling online storage to serve over 1 billion ChatGPT users (Part II)》，并回读同系列 Part I、Azure Cosmos DB 官方限额/分区/serverless/吞吐再分配文档；重构 ChatGPT 在线存储从早期架构到十亿级用户的容量、分区、多租户、热点、限流、故障与恢复决策；逐项核验 20M QPS 等关键数字、事故时间线与迁移权衡；区分 OpenAI 自述、云厂商事实与分析者推断；给出对 Agent 状态存储、memory、context service、隔离与灾备的可迁移启示及适用边界。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "深读 Part II 与其直接关联的 Part I、Azure Cosmos DB 官方材料和文中可定位的一手架构资料。"
+      },
+      {
+        "id": "R02",
+        "text": "重构在线存储从早期架构到十亿级用户的容量、分区、多租户、热点、限流、故障与恢复决策。"
+      },
+      {
+        "id": "R03",
+        "text": "逐项核验 20M QPS 等关键数字、事故时间线和迁移权衡的定义与口径。"
+      },
+      {
+        "id": "R04",
+        "text": "正文包含原文问题链、架构/数据流示意、关键数字与事故表、至少两个被放弃方案或权衡、与替代存储路线的有边界比较。"
+      },
+      {
+        "id": "R05",
+        "text": "给出对 Agent 状态存储、memory、context service、隔离与灾备的可迁移启示及适用边界。"
+      },
+      {
+        "id": "R06",
+        "text": "区分 OpenAI 自述、云厂商事实、代码/文档证据与分析者推断；不得把单一厂商事后复盘写成普适定律；不得补写未读内容。"
+      },
+      {
+        "id": "R07",
+        "text": "写明 Limitations 与思考与追问；report-v2 important、status=in_progress；不 finalize、不更新索引、不提交不推送。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "official",
+      "title": "OpenAI Engineering — Rapidly scaling online storage to serve over 1 billion ChatGPT users (Part II)",
+      "locator": "https://openai.com/index/scaling-storage-one-billion-users-part-two",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S02",
+      "kind": "official",
+      "title": "OpenAI Engineering — Rapidly scaling online storage to serve over 1 billion ChatGPT users (Part I)",
+      "locator": "https://openai.com/index/scaling-storage-one-billion-users-part-one",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S03",
+      "kind": "official",
+      "title": "Microsoft Learn — Service quotas and default limits（更新于 2026-08-25）",
+      "locator": "https://learn.microsoft.com/en-us/azure/cosmos-db/concepts-limits",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S04",
+      "kind": "official",
+      "title": "Microsoft Learn — Redistribute throughput across partitions（preview，更新于 2026-04-29）",
+      "locator": "https://learn.microsoft.com/en-us/azure/cosmos-db/how-to-redistribute-throughput-across-partitions",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S05",
+      "kind": "official",
+      "title": "Microsoft Learn — Serverless consumption-based account type（更新于 2026-04-27）",
+      "locator": "https://learn.microsoft.com/en-us/azure/cosmos-db/serverless",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S06",
+      "kind": "official",
+      "title": "Microsoft Learn — Partitioning and horizontal scaling（更新于 2026-06-15）",
+      "locator": "https://learn.microsoft.com/en-us/azure/cosmos-db/partitioning",
+      "accessed_on": "2026-10-25"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "Cosmos DB 的 10,000 RU/s 限额实际在物理分区执行而非逻辑分区，逻辑分区与同物理分区的其它逻辑分区共享该限额；容器预配吞吐近似均分到各物理分区，因此数据增长导致分区分裂时，每个分区的有效吞吐反而下降（弱分区）。",
+      "report_anchor": "3.2 Cosmos DB 分层与",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S03",
+        "S06"
+      ],
+      "evidence": "S01 原文 'logical partitions are unable to reach 10,000 RU/s. Instead, they share the physical partition's limits with every other logical partition key colocated on that physical partition' 与 weak partitions 段落；S03 官方限额表 'Maximum RUs per partition (logical & physical) 10,000'；S06 摘要确认吞吐在物理分区间近似均分。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "OpenAI 的多租户走过单租户→多租户的循环：Phase I 单一默认容器依赖 10K RU/s 逻辑分区上限做背压，出现分区键碰撞、noisy neighbor 与弱分区三类故障；Phase II 改为每用例独占容器换取隔离，但因失去稳定聚合增长与容量规划的组织成本而在上线日开 SEV 房间；Phase III 回到多租户，靠与 Azure 联合开发的热点键限流、请求分级 QoS 与改造版 serverless 三件武器支撑。",
+      "report_anchor": "4.1 多租户三阶段",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "S01 三阶段小节原文，包括 'we went through a circular journey from using one multi-tenant Azure Cosmos DB container to provisioning single-tenant backing containers to reverting to a multi-tenant container by default'、'we'd sit in SEV rooms on launch day' 与三件武器的机制描述。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "OpenAI 的三阶段循环表明，多租户能否成为默认形态取决于细粒度隔离手段与组织成本：早期内建原语不足以控制热点/noisy neighbor，全面单租户又把预扩容与容量规划成本推给产品团队；热点键限流、分级 QoS 与新的 serverless 机制加入后，默认多租户才重新可行，而关键负载仍可保留物理隔离。",
+      "report_anchor": "2.2 Part II 的问题链",
+      "support": "derived",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "由 S01 对 Phase I/II/III 失败原因与新增能力的因果叙述推导；原文未以该形式陈述，故作为分析者推断登记。",
+      "critical": false
+    },
+    {
+      "id": "C04",
+      "claim": "改造版 serverless 让每个物理分区可扩到 10K RU/s 并引入基于 RU 用量的分裂，而公开的 Cosmos DB serverless 文档仍写明每个物理分区上限为 5,000 RU/s；该增强在公开文档中未查到，疑为定向增强或预览能力。",
+      "report_anchor": "5.3 一处必须标注的云厂商事实缺口",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S05"
+      ],
+      "evidence": "S01 描述 'allowed every physical partition to scale up to 10K RU/s and introduced RU-usage-based splits'；S05 官方文档 'Each physical partition within a serverless container can handle up to 5,000 RU/s'。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "OpenAI 披露两次区域级事故：2024 年底主 Azure 区域电力故障，最大账号切到次区域需数小时且该规模此前未测试；约一个月后把账号切回原区域时因 gateway 模式客户端的 failover 行为怪癖导致连接踩踏，压垮原区域 Gateway，尽管当时只有部分物理分区迁回。",
+      "report_anchor": "六、事故时间线与恢复",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "S01 'Better reliability as co-managed services' 一节原文，含 'would take several hours to fail over to a secondary region, something neither our team nor the Azure Cosmos DB team had tested at our scale' 与 'A connection stampede to the original region overwhelmed the original region's Azure Cosmos DB gateway'。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "读路径采用三层策略：就近放置（受物理云容量、电力与制冷限制）、只广泛复制最小最敏感的数据集（部分账号复制到全部 40 个 Azure 区域）、其余靠集成式 Valkey lookaside 缓存；缓存失效由 Cosmos DB change feed 做 CDC 在全球数秒内传播，而非纯 TTL 或写时显式失效。",
+      "report_anchor": "4.2 读路径：三层策略与其容量天花板",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "S01 'Improving performance at a global scale' 一节三小节原文，含 change feed 失效与 Meta TAO 的类比；CDC 机制另见 S01 'Scaling Change Data Capture'。",
+      "critical": true
+    },
+    {
+      "id": "C07",
+      "claim": "全球读 p50 从约 120 ms 降到约 10 ms（12×），是三项设计变更（就近放置/复制策略、Valkey 缓存 + CDC 失效、Rust 代理层）的合并结果；原文未给出三者的贡献拆分，也未给出缓存命中率与未命中路径延迟。",
+      "report_anchor": "5.1 规模与性能数字",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "S01 'Together, these changes have reduced our overall global read p50 from roughly 120 ms to roughly 10 ms, a 12x improvement since we began focusing on performance earlier this year' 及 Figure 05 图注 'Three major design changes improved read latency'。",
+      "critical": true
+    },
+    {
+      "id": "C08",
+      "claim": "规模数字为 70,000,000+ req/s、500 PB+ 数据、超过 10 亿（Part I 口径为每周活跃人数）、近 40 个地理区域；其中 more than 20M QPS 仅指最大的单个 Cosmos DB 账号。公开的 1,000,000 RU/s 是可申请提高的默认容器/数据库限额，平均 RU/请求、容器数与定制配额未知，因此不能从 QPS 反推容器拓扑。",
+      "report_anchor": "5.1 规模与性能数字",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "S01/S02 给出平台与最大账号规模；S03 明确 1,000,000 RU/s 为默认上限且可通过支持请求提高。原文未给平均 RU/请求、容器数量或定制配额，报告据此撤销“至少 20 个容器”的过度推断。",
+      "critical": true
+    },
+    {
+      "id": "C09",
+      "claim": "OpenAI 的下一步是自研 exabyte 级在线存储系统：采用 Rockset 的 RocksDB Cloud 内核加 Raft 复制，实现与 Cosmos DB 相同的文档模型，用存算分离与物理复制降低所需闪存容量，代价是更低的峰值 QPS。",
+      "report_anchor": "八、与替代存储路线的有边界比较",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "S01 'Looking ahead' 一节原文 'This in-development system combines the RocksDB Cloud core from Rockset with Raft-based replication ... uses disaggregated storage and physical replication to reduce the amount of flash capacity needed, in exchange for a lower peak qps'。",
+      "critical": false
+    },
+    {
+      "id": "C10",
+      "claim": "Part I 记录了 Python 服务的尾延迟根因是 asyncio 调度延迟（GIL 使并发不等于 CPU 并行，叠加路由/压缩/加密/校验/健康检查/影子/hedging 等 CPU 密集工作），其解法是每进程只服务很少并发并靠海量进程横向扩展；2026 Q2 由 2 名工程师借助 Codex 与 GPT-5.5 完成 Rust 重写，新服务处理 95% 生产请求，CPU 效率 6×、内存效率 15×。",
+      "report_anchor": "2.1 Part I 的问题链",
+      "support": "direct",
+      "source_ids": [
+        "S02"
+      ],
+      "evidence": "S02 'Tracking the asyncio delay' 与 'Migrate from Python to Rust' 两节原文，含 'up to hundreds of milliseconds and in some edge cases several seconds'、'just 2 engineers, Codex, and GPT-5.5'、'6x more CPU efficient and 15x more memory efficient'。",
+      "critical": false
+    },
+    {
+      "id": "C11",
+      "claim": "Python aiohttp TCPConnector 默认 LIFO 复用连接，在突发流量下形成亚稳态失效（慢服务更晚归还连接因而更频繁被选中，流量正反馈集中到已过载的 pod）；改为 FIFO 打破回路后稳态方差也下降，今天主要依赖 Istio 与 Envoy 做连接池与服务端负载感知均衡。",
+      "report_anchor": "4.5 Rust 重写与代理层开销",
+      "support": "direct",
+      "source_ids": [
+        "S02"
+      ],
+      "evidence": "S02 'Balancing loads and managing connection pools' 一节原文，含 metastable failure 描述、LIFO/FIFO 图示与 'Today, we mostly depend on Istio and Envoy to provide connection pooling and better server-load-aware balancing strategies'。",
+      "critical": false
+    },
+    {
+      "id": "C12",
+      "claim": "Azure 官方提供跨分区吞吐再分配能力：物理分区最多 10,000 RU/s，可对目标分区设到最多 20,000 RU/s，超过 10,000 会触发自动分裂并把吞吐均分给新分区；OpenAI 所述'按容器物理分区数同步总吞吐以管理弱分区'的控制面脚本极可能是对该能力的封装，原文未明说其实现。",
+      "report_anchor": "3.2 Cosmos DB 分层与",
+      "support": "derived",
+      "source_ids": [
+        "S04",
+        "S01"
+      ],
+      "evidence": "S04 'Physical partitions can only contain up to 10,000 RU/s. Users can set throughput of a target partition to a maximum value of 20,000 RU/s' 与分裂均分示例；S01 描述 OpenAI 的弱分区管理脚本。两者关联属分析者推断。",
+      "critical": false
+    },
+    {
+      "id": "C13",
+      "claim": "[推测] 对 Agent 状态存储的可迁移要点是：服务端而非客户端决定分区键合成、离线负载与交互请求分级、限流粒度下沉到热点键；需要同时追求高缓存命中与低陈旧度时使用可回放变更事件并以 TTL 兜底；failback 作为独立变更灰度压测。物理隔离、短 TTL 或不缓存仍应按合规、爆炸半径和规模保留。",
+      "report_anchor": "九、对 Agent 状态存储 / memory / context service 的可迁移启示",
+      "support": "inference",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "由 S01 的分区键撞车、请求分级 QoS、hot key throttling、CDC 失效与回切踩踏，以及 S02 的连接池与亚稳态失效结论，逐项映射到 Agent harness 场景；原文未讨论 Agent 场景，故全部标为分析者推断。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "两篇文章的定位、总体结论与 make it work/fast/cheap 的优先级",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "report_anchor": "开头三行"
+    },
+    {
+      "id": "U02",
+      "title": "一手来源清单与读法（OpenAI 自述 vs 云厂商事实的交叉验证规则）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06"
+      ],
+      "report_anchor": "一、一手来源清单与读法"
+    },
+    {
+      "id": "U03",
+      "title": "Part I 的问题链：客户端库→服务化、Python 尾延迟、Rust 重写",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02"
+      ],
+      "report_anchor": "2.1 Part I 的问题链"
+    },
+    {
+      "id": "U04",
+      "title": "Part II 的问题链：多租户三阶段循环与共管模式",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "2.2 Part II 的问题链"
+    },
+    {
+      "id": "U05",
+      "title": "整体架构与三条数据通道（请求/响应、读缓存、CDC 失效）示意",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "report_anchor": "3.1 Habitat 在整体中的位置"
+    },
+    {
+      "id": "U06",
+      "title": "Cosmos DB 分层、官方限额表、限额的真实执行位置与弱分区机制示意",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S03",
+        "S06",
+        "S01"
+      ],
+      "report_anchor": "3.2 Cosmos DB 分层与"
+    },
+    {
+      "id": "U07",
+      "title": "多租户三阶段的具体故障模式、被放弃方案与组织性代价",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "4.1 多租户三阶段"
+    },
+    {
+      "id": "U08",
+      "title": "读路径三层策略（就近放置、受限广泛复制、集成缓存）及其容量天花板",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "4.2 读路径：三层策略与其容量天花板"
+    },
+    {
+      "id": "U09",
+      "title": "缓存失效的取舍：TTL vs 写时失效 vs CDC 秒级失效",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "4.3 缓存失效"
+    },
+    {
+      "id": "U10",
+      "title": "CDC 平台的规模、控制面与可靠性工程清单",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "4.4 CDC 平台"
+    },
+    {
+      "id": "U11",
+      "title": "Rust 重写收益、连接池 LIFO→FIFO 与亚稳态失效、Envoy fan-in",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "report_anchor": "4.5 Rust 重写与代理层开销"
+    },
+    {
+      "id": "U12",
+      "title": "关键数字表与每项的口径核对（含 RU/s 与 QPS 的换算缺口）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S05"
+      ],
+      "report_anchor": "5.1 规模与性能数字"
+    },
+    {
+      "id": "U13",
+      "title": "请求速率、吞吐单位与延迟三类数量的口径陷阱",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S03"
+      ],
+      "report_anchor": "5.2 数字背后的"
+    },
+    {
+      "id": "U14",
+      "title": "两项 Azure 增强在公开文档中的缺口标注",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S05"
+      ],
+      "report_anchor": "5.3 一处必须标注的云厂商事实缺口"
+    },
+    {
+      "id": "U15",
+      "title": "事故时间线：2024 年底区域断电、约一个月后的回切踩踏，以及共管与联合修复机制",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "六、事故时间线与恢复"
+    },
+    {
+      "id": "U16",
+      "title": "至少六个被放弃的方案及其保留代价（多租户/单租户、旧 serverless、Python、客户端库、强 API、纯 TTL）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "report_anchor": "七、关键设计决策与被放弃的方案"
+    },
+    {
+      "id": "U17",
+      "title": "与自建分布式存储、Postgres、DynamoDB 类、S3+自建索引、自研存算分离的有边界比较",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "report_anchor": "八、与替代存储路线的有边界比较"
+    },
+    {
+      "id": "U18",
+      "title": "对 Agent 状态存储与会话/线程状态的可迁移要点",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "9.1 状态存储：会话与线程状态"
+    },
+    {
+      "id": "U19",
+      "title": "对 memory 与 context service 的可迁移要点（变更流驱动失效、小工作集、长上下文分层）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "9.2 Memory 与 context service"
+    },
+    {
+      "id": "U20",
+      "title": "隔离与多租户的可迁移要点及容量规划的组织性教训",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "9.3 隔离与多租户"
+    },
+    {
+      "id": "U21",
+      "title": "灾备与恢复的可迁移要点（failback 作为独立变更、托管服务边界、直通联系人）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "9.4 灾备与恢复"
+    },
+    {
+      "id": "U22",
+      "title": "不可照搬项与适用边界清单",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S03"
+      ],
+      "report_anchor": "9.5 适用边界：哪些不能照搬"
+    },
+    {
+      "id": "U23",
+      "title": "研究缺口、来源可获取性受限与资料时点",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06"
+      ],
+      "report_anchor": "十、Limitations"
+    },
+    {
+      "id": "U24",
+      "title": "理解、未解问题与下一步入口",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "十一、思考与追问"
+    }
+  ],
+  "limitations": [
+    "未运行任何服务、未复现任何 benchmark、未接触 OpenAI 内部系统；全部数字为来源转述，OpenAI 自述与云厂商文档已分别标注。",
+    "OpenAI 页面读取有 32KB 返回上限：Part I 本轮已完整取得正文，Part II 的返回在外部元数据区被截断，但正文已读到 Looking ahead 结尾；嵌入图 Figure 01–05 未做像素级视觉复核。",
+    "Microsoft Learn 当前页面已完整读取；1,000,000 RU/s 是可申请提高的默认容器/数据库限额，不能用它反推 OpenAI 的定制拓扑。",
+    "20M QPS 对应的平均 RU/请求、容器数量和定制配额未知，公开材料不足以推算容器布局。",
+    "OpenAI 所述改造版 serverless 与 Gateway failover 行为修正未在公开 Azure 文档中找到，可用性与实现方式不明。",
+    "未核对 2024 年底区域断电事故的第三方或 Azure 侧事后复盘，事故描述来自 OpenAI 单方叙述。",
+    "未讨论 Habitat 的安全性设计细节；Part I 仅概述集中访问控制、审计日志和底层资源收口。",
+    "两篇文章同时是工程复盘与招聘/平台能力展示材料，存在厂商叙事与成功案例选择偏差。",
+    "日期元数据不一致：Part II 页面 publishedTime 为 2026-10-21；Part I 页面为 2026-08-25，而搜索索引显示 2026-09-11，订阅雷达记录 Part II 为 2026-10-23T17:00:00Z；正文不把任一项当作唯一首发日期。"
+  ]
+}

@@ -82,6 +82,8 @@ python3 scripts/report_quality.py review-prompt path/to/report.md
 
 把 `review-prompt` 的输出交给 Reviewer。Reviewer 必须实际读取关键来源，再填写 `.review.json`；生成者自己的同一 run 不能充当独立复核。
 
+跨 worktree、跨设备或异步派发时，`review-prompt` 中的报告与 evidence SHA-256 是审阅快照绑定。Reviewer 开始前必须在实际目录核对两者；不匹配就停止并在回执与 review notes/escalation 中报告 `wrong_target_snapshot`，不能自行改审另一份同名文件。该情况是调度错误，不进入内容级 `hard_failures`。协调者只接受预期工作区里真实存在的 review 文件，并再次运行 `report_quality.py check`；`worker_done` 或聊天中的“已通过”不能替代文件与哈希验收。
+
 Reviewer 的顺序固定为“来源优先”：先在不看报告结论的情况下，从原始材料独立列出核心内容/论证单元，并写入 `source_content_map`；再读报告与 evidence，把每个独立单元映射到 `source_coverage`，标记为 `covered / partial / missing`。只核对报告主动登记的 claim 会产生选择偏差——被生成者完全省略的内容不会出现在 claim 列表中。`standard/deep` 播客若声明有 shownotes 章节，evidence 与 Reviewer 地图必须逐章留痕；核心单元遗漏时记录 `core_requirement_missing`，即使其余 claim 全部准确也不能通过。
 
 播客 Reviewer 还必须运行 `podcast-learning/scripts/audit_transcript.py` 或核对同等机器收据；头尾抽查与重复率不能替代时间戳单调性检查。

@@ -1,11 +1,12 @@
 # 张小珺Jùn｜商业访谈录 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/dk4yh3pkpjp3>）｜ 最近拉取：2026-10-19 ｜ 总集数：157
+> 来源：官方 RSS（<https://feed.xyzfm.space/dk4yh3pkpjp3>）｜ 最近拉取：2026-10-25 ｜ 总集数：158
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
-| 154 | 2026-10-15 | 2h51m | [154. 对Dyna创始人Lindon的3小时访谈：机器人世界的迷雾、分歧与抉择，修心、《沉思录》与王阳明](https://www.xiaoyuzhoufm.com/episode/6acf81f0195d838e2af1e281?utm_source=rss)<!--g:6acf81f0195d838e2af1e281--> | — |
+| 155 | 2026-10-21 | 1h59m | [155. 和科沃斯钱程聊，父与子、企二代接班的样本与肌理、机器人，和我内心的追寻](https://www.xiaoyuzhoufm.com/episode/6ad4dacd641ef406308d86e5?utm_source=rss)<!--g:6ad4dacd641ef406308d86e5--> | ✅ 已处理（2026-10-21 xiaoyuzhou-zhangxiaojun_vol155-qiancheng-ecovacs） |
+| 154 | 2026-10-15 | 2h51m | [154. 对Dyna创始人Lindon的3小时访谈：机器人世界的迷雾、分歧与抉择，修心、《沉思录》与王阳明](https://www.xiaoyuzhoufm.com/episode/6acf81f0195d838e2af1e281?utm_source=rss)<!--g:6acf81f0195d838e2af1e281--> | ✅ 已处理（2026-10-15 xiaoyuzhou-zhangxiaojun_vol154-dyna-lindon） |
 | 153 | 2026-09-03 | 2h34m | [153. 和曾鸣聊产业史观：残酷的真相、会消亡的公司、优秀≠卓越、“OAI、Anth大概率不是原生时代大赢家”](https://www.xiaoyuzhoufm.com/episode/6a97f287f03e74ee6b03ea5b?utm_source=rss)<!--g:6a97f287f03e74ee6b03ea5b--> | ✅ 已处理（2026-09-03 xiaoyuzhou-zhangxiaojun_zengming） |
 | 152 | 2026-08-26 | 2h04m | [152. 领读Kimi K3技术报告：从架构创新聊起，注意力美学、多教师蒸馏和开源MoE](https://www.xiaoyuzhoufm.com/episode/6a8eadd61352af56ff3c6017?utm_source=rss)<!--g:6a8eadd61352af56ff3c6017--> | ✅ 已处理（[[2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report| ✅ 已处理（2026-09-02 multi_kimi-k3-dueling-reads） |
 | 151 | 2026-08-19 | 1h09m | [151. 17岁被2026年ICML收录论文的小少年：我bet开心！开心！开心！](https://www.xiaoyuzhoufm.com/episode/6a8472b95aeb2a5712e8de78?utm_source=rss)<!--g:6a8472b95aeb2a5712e8de78--> | — |

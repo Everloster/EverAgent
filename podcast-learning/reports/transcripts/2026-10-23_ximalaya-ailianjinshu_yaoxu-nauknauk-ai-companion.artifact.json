@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "status": "succeeded",
+  "silent": true,
+  "interactive_browser": false,
+  "audio_playback": false,
+  "duration_ms": 242465,
+  "source_url": "https://www.ximalaya.com/sound/1026998207",
+  "notes": "首个无 UI 获取尝试因下载器未取得音频而失败；按生成类任务不自动重放的规则，使用新的显式请求重新执行后成功。",
+  "artifact": {
+    "source_host": "www.ximalaya.com",
+    "audio_size": 1087172934,
+    "language": "zh",
+    "segments": 3881,
+    "service_version": "whisper.cpp-v1.9.1-sm120",
+    "transcript_size": 183871,
+    "transcript_sha256": "1b6eba529015f1af983414879336996e5ec7326eca4f051933a7808a2a15305b",
+    "quality": {
+      "repetition_guard": {
+        "passed": true,
+        "max_consecutive_identical": 2
+      }
+    }
+  },
+  "transfer": {
+    "mode": "eacli pull",
+    "atomic": true,
+    "local_path": "podcast-learning/reports/transcripts/2026-10-23_ximalaya-ailianjinshu_yaoxu-nauknauk-ai-companion.transcript.txt",
+    "verified_sha256": true
+  },
+  "audit": {
+    "script": "podcast-learning/scripts/audit_transcript.py",
+    "ok": true,
+    "lines": 3881,
+    "segments": 3881,
+    "size": 183871,
+    "sha256": "1b6eba529015f1af983414879336996e5ec7326eca4f051933a7808a2a15305b",
+    "duration_seconds": 6161,
+    "max_consecutive_identical": 2,
+    "warnings": [],
+    "errors": []
+  },
+  "reference": {
+    "itunes_duration": "1:42:43",
+    "enclosure_length_bytes": 98610860,
+    "source": "AI炼金术 官方 RSS https://www.ximalaya.com/album/74194808.xml（item guid xmly_track_1026998207）"
+  },
+  "runner": "eacli-podcast-remote"
+}

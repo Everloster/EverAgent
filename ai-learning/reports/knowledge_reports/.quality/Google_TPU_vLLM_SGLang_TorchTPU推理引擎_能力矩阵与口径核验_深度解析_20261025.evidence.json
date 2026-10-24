@@ -1,0 +1,419 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/Google_TPU_vLLM_SGLang_TorchTPU推理引擎_能力矩阵与口径核验_深度解析_20261025.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-25",
+  "generator": {
+    "model": "minimax-m3.1-flash",
+    "harness": "pi",
+    "run_id": "generator-tpu-engines-20261025",
+    "explicit_model_override": true,
+    "override_reason": "用户指定使用 MiniMax M3.1 Flash。说明：本次会话内没有可用的 reasoning effort 控制入口，无法核实或声明 effort 已被调至 max；未出现 quota exhausted 或 rate limit 不可用证据，因此未切换 GLM-5.3。"
+  },
+  "task": {
+    "summary": "深读 Google 2026-10 官方博客《Announcing new vLLM and SGLang inference engines on TPU》，并实际读取 vllm-torchtpu、sglang-torchtpu、google/tpu-sync、torch_tpu 四个仓库 README 与 Google Cloud 的 TorchTPU 开源博客，解释 TorchTPU 的抽象与平台插件式设计、七类工作负载支持矩阵、TPU Sync 的 KV 搬运与分层机制、CI 覆盖与代际支持差异，逐项核验「2.01 美分/百万 token」「Kimi K3 megakernel >700 tok/s」「AgentX SOTA」等性能声明的口径缺口，比较 GPU 版本与 TPU 原生路线的可移植边界，并评估对 EverAgent 的方法价值。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "完整读取原文并交叉核对 Google Cloud/TPU 官方文档、vLLM/SGLang/JetStream 或相关开源实现与可定位的论文/benchmark。"
+      },
+      {
+        "id": "R02",
+        "text": "解释 TPU 执行模型、连续批处理、KV cache、P/D 或服务路径如何映射到 vLLM/SGLang。"
+      },
+      {
+        "id": "R03",
+        "text": "逐项核验性能数字的 TPU 型号、模型、精度、batch、延迟/吞吐口径，比较 GPU 版本与 TPU 原生路线，明确厂商自报与实际可移植边界。"
+      },
+      {
+        "id": "R04",
+        "text": "评估对 EverAgent 的方法价值。"
+      },
+      {
+        "id": "R05",
+        "text": "公开产物禁写私有设备、路径、任务/派发/终端 ID；不 commit/push、不改索引/MAP；review 只初始化为空。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "official",
+      "title": "Google Developers Blog (2026-10) — Announcing new vLLM and SGLang inference engines on TPU",
+      "locator": "https://developers.googleblog.com/announcing-new-vllm-and-sglang-inference-engines-on-tpu",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S02",
+      "kind": "primary",
+      "title": "vllm-project/vllm-torchtpu README（out-of-tree 平台插件定位、Pallas kernel 清单、代际 CI 覆盖差异、XLA 编译缓存、支持的模型家族）",
+      "locator": "https://raw.githubusercontent.com/vllm-project/vllm-torchtpu/main/README.md",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S03",
+      "kind": "primary",
+      "title": "sgl-project/sglang-torchtpu README（prefix caching、HiCache I/O 后端、disaggregation 与 TP resharding、低精度与投机解码组合、硬件徽章）",
+      "locator": "https://raw.githubusercontent.com/sgl-project/sglang-torchtpu/main/README.md",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S04",
+      "kind": "primary",
+      "title": "google/tpu-sync README（零拷贝 PJRT、GIL 无关线程、~200 GB/s 双向 PCIe、Tier-2 主机 DRAM、/dev/shm warm-boot、lkg.version、Torch wheel 性能门禁与 PyPI 发布状态）",
+      "locator": "https://raw.githubusercontent.com/google/tpu-sync/main/README.md",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S05",
+      "kind": "official",
+      "title": "Google Cloud 博客 — TorchTPU is now open source: Run native PyTorch on TPUs（eager→torch.compile 混合路径、Transformers/Diffusers 集成、llm-d 跨 TPU 与 GPU 路由、Zenteiq 数字、TorchTitan 最高 52% MFU）",
+      "locator": "https://cloud.google.com/blog/topics/ai-infrastructure/torchtpu-is-now-open-source-run-native-pytorch-on-tpus",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S06",
+      "kind": "primary",
+      "title": "google-pytorch/torch_tpu README（PyTorch 原生 TPU 后端定位、XLA 编译缓存、torch.compile 图模式、共享 XLA/MLIR 构建）",
+      "locator": "https://raw.githubusercontent.com/google-pytorch/torch_tpu/main/README.md",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S07",
+      "kind": "primary",
+      "title": "SemiAnalysis InferenceX — AgentX Methodology and Datasets（基准方法学：393 会话、median 142k/444、闭源回放、1 小时窗口、固定接受长度、DRAM 配额、只测服务性能）",
+      "locator": "https://inferencex.semianalysis.com/agentx",
+      "accessed_on": "2026-10-25"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "本次发布的动机是开发者熟悉度而非性能：两个引擎早已通过 JAX 后端在 TPU 上运行，Google 官方称因开发者希望在 PyTorch 中定制与调试 serving 栈，才先做 TorchTPU 再在其上构建新的 vLLM/SGLang 引擎；原 tpu-inference 更名为 vLLM JAX 并保留，用于服务纯 JAX 模型实现，而服务 PyTorch 模型定义推荐 vllm-torchtpu。",
+      "report_anchor": "1. 问题定义：为什么要在 TPU 上再做一套 PyTorch 原生引擎",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "S01「Both engines already run on TPU through JAX-based backends, but we kept hearing from developers that they wanted to customize and debug their serving stack in PyTorch」与「Our goal is for the PyTorch community to bring models to TPU」；S02 NOTE 说明 vLLM JAX 保留与 vllm-torchtpu 为推荐路径。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "TorchTPU 把 TPU 变成原生 PyTorch 设备：标准 PyTorch 张量位于 tpu 设备、无 wrapper 类型，代码可 eager 执行或经 torch.compile 用 XLA 编译，集合通信走 torch.distributed；由于每个设备运行自己的 PyTorch 进程，两个引擎得以完整保留上游框架的 worker 模型、调度器、KV cache 管理器与 API server，TPU 定制集中在 kernel 与 layer 实现层。",
+      "report_anchor": "2. TPU 执行模型与 TorchTPU 的抽象",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S06"
+      ],
+      "evidence": "S01 Engine Overview 段的原文（标准张量、无 wrapper、eager 或 torch.compile/XLA、torch.distributed、「Because each device runs its own PyTorch process, both engines keep each framework's worker model, scheduler, KV cache manager, API server and so forth, with TPU implementations underneath」）与「platform-plugin design」表述；S06 README 对 torch_tpu 定位、XLA 编译缓存与 torch.compile 图模式的说明。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "vLLM-TorchTPU 的仓库事实表明其是 out-of-tree 平台插件（包名 vllm-torchtpu），提供 Ragged Paged Attention、dense/sparse MLA、Gated DeltaNet、fused MoE（含 SparseCore offload）、FP8/INT8/MXFP4 量化 matmul 等 Pallas kernel；并按代际给出支持强度——v7x Ironwood 推荐且每个 PR 与 nightly 都在 CI 验证，v6e 支持但不在 CI 覆盖内，v5e/v5p 为实验性且无 CI；首次启动为配置 shape 编译 TPU graph 可能需数分钟，可用 VLLM_XLA_CACHE_PATH 持久化编译产物。",
+      "report_anchor": "3.2 vLLM-TorchTPU 的定位",
+      "support": "direct",
+      "source_ids": [
+        "S02"
+      ],
+      "evidence": "S02 README 的 About 段（out-of-tree 平台插件与 kernel 清单）、Supported hardware 表（代际与 CI 覆盖）、Install/启动提示（首启编译时长与 VLLM_XLA_CACHE_PATH）。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "官方能力矩阵覆盖七类工作负载，并把每类映射到具体引擎机制：Agentic & Multi-Turn（自动前缀缓存含 hybrid 模型、经 TPU Sync 做 KV offload 到主机内存与 Managed Lustre、tool calling、结构化输出）、Interactive & Low Latency（MTP/EAGLE-3/DFlash/DSpark/n-gram 投机解码）、High-throughput Batch（DP attention + expert parallelism）、Long Context（prefill 与 decode 的 context parallelism、FP8 KV cache、主机 KV offload）、Disaggregated Serving（prefill 与 decode 分主机经 TPU Sync，含不同并行布局之间）、Multimodal、超大模型（跨主机 TP/DP/EP/PP/CP 与 FP8/FP4(MXFP4, NVFP4)/INT8/INT4）。",
+      "report_anchor": "4. 工作负载支持矩阵与机制映射",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S03",
+        "S04",
+        "S05"
+      ],
+      "evidence": "S01「Workload support」一节的七条清单原文；S03 README 的 prefix caching、HiCache I/O 后端、disaggregation + TP resharding、低精度与投机解码组合；S05 Google Cloud 官方博客明确写明 SGLang uses RadixAttention to reuse KV cache across requests；S04 说明主机缓存目标是提升 RadixAttention / prefix-cache 命中率。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "TPU Sync 的实现要点在仓库层面可核：零拷贝 PJRT 内存别名（直接取原生 PjRtBuffer 描述符、绕过 CPU 中转，实现零拷贝 H2D/D2H/H2H reshard）、GIL 无关的原生 C++ 线程池流水线、按 extractor 对齐的传输流水线在生产规模 KV-cache block 维度上达到约 ~200 GB/s 双向 PCIe 带宽、主机 DRAM 作为 Tier-2 前缀缓存（LRU 淘汰 + page-locked 异步 DMA）、以 /dev/shm 做 warm-boot 持久化（进程崩溃重启后 TB 级已 offload KV 仍在）、支持 v7x 与 v6e，并含单主机/多主机分离式服务、主机 KV offload 与无框架开销的 DMA 微基准示例。",
+      "report_anchor": "5. TPU Sync：KV cache 搬运与分层",
+      "support": "direct",
+      "source_ids": [
+        "S04"
+      ],
+      "evidence": "S04 README 的 Key Architectural Features 逐条（含 ~200 GB/s 双向 PCIe 数字）、Supported Hardware 与 Playing with TPU Sync 示例清单、Persistent Shared Memory Cache 一节。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "存在与官方博客「已在生产大规模运行」相张力的成熟度警示：TPU Sync README 写明尚不推荐一般用途，main 可能暂时不稳定并用 lkg.version 发布最近验证稳定的 commit；Torch wheel 发布尚未由端到端性能测试门控（torch path is still maturing）；预构建 tpu_sync wheel 尚未公开上 PyPI，当前经 Google Artifact Registry 认证安装；另有 JAX 版本与重建约束。",
+      "report_anchor": "成熟度警示",
+      "support": "direct",
+      "source_ids": [
+        "S04",
+        "S01"
+      ],
+      "evidence": "S04 README 开头的 IMPORTANT 提示、lkg.version、Torch wheel release process、预构建 wheel 安装与构建约束小节；S01「Both engines are already running at scale in production with preview customers」的并置形成对照。",
+      "critical": true
+    },
+    {
+      "id": "C07",
+      "claim": "官方给出的性能声明只有三处且口径要素大面积缺失：每百万 token 最低总成本 2.01 美分（Qwen 3.5、Ironwood TPU v7x，但未披露模型版本、精度、长度分布、吞吐与延迟口径、价格表与利用率假设、对比集合）；向 AgentX 提交了 SOTA 结果且「Ironwood 领先大部分 Pareto 前沿」（未给出模型、并发、分位延迟与对比模型清单）；Kimi K3（2.8T 参数）Pallas megakernel 把整个 decode step 跑成一个 kernel、在 Ironwood TPU 上对单用户服务超过 700 tok/s（已给模型规模、硬件、并发与指标，缺精度、上下文长度与对照倍数）。",
+      "report_anchor": "6. 性能与 benchmark 的口径逐项核验",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "S01「Running today in production & public benchmarks」与 Inferact 合作段的原文；缺失要素为已读材料的直接观察。",
+      "critical": true
+    },
+    {
+      "id": "C08",
+      "claim": "AgentX 口径决定这些声明的读法：基准使用 393 个 Claude Code 会话（median 输入 142k、输出 444 token）、闭源回放（更快配置完成更多请求并遇到略有不同的负载混合）、固定 seed 决定采样、起点与合成内容，每条 replay lane 用 primer 与 10 个 warmup 请求预热，正式指标覆盖 1 小时 profiling 窗口且不含 warmup，并按模型与投机配置固定接受长度；无标准化 DRAM 配置的服务器按 3 TB 封顶，而标准 GB200 NVL72、GB300 NVL72 与 TPUv7 按实际装机容量计算，并按加速器配额限制可访问内存；基准只测服务系统性能而不支持模型质量评估。官方把可核验部分交给公开的 SemiAnalysis InferenceX 排行榜，但本文未读取该排行榜，故未引用任何名次或领先幅度。",
+      "report_anchor": "6.2 AgentX 口径",
+      "support": "direct",
+      "source_ids": [
+        "S07",
+        "S01"
+      ],
+      "evidence": "S07 AgentX 方法学页的数据集统计、deterministic replay 与 warmup 规则、闭环负载与计量规则、标准化/非标准化 DRAM 规则及「只测服务系统性能」声明；S01 关于以 InferenceX 公开 benchmark 与持续更新性能概况的表述。",
+      "critical": true
+    },
+    {
+      "id": "C09",
+      "claim": "GPU 路线与 TPU 路线的可移植边界是「模型定义可移植、性能不可移植」：框架层（调度器、API server 语义、prefix caching 接口、投机解码框架、多维并行策略、量化配置入口、模型定义）可白拿上游实现；而注意力、MoE、量化 matmul 需以 Pallas 重写，KV 搬运层需以 TPU Sync 替换 GPU 上的传输路径，编译与缓存管理需处理 XLA 整图编译与首启编译开销。",
+      "report_anchor": "7. GPU 版本 vs TPU 原生路线：可移植边界",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "evidence": "S01 的平台插件式描述与七类能力矩阵、S02 的 kernel 清单与编译缓存提示、S03 的 TPU Sync/HiCache 后端定位、S04 的搬运与分层实现，构成可移植/不可移植划分的原始事实；边界总结为本报告分析并已标注。",
+      "critical": false
+    },
+    {
+      "id": "C10",
+      "claim": "生产与生态层面有具名第三方引述可交叉：Meta 称 SGLang-TorchTPU 已在 Meta 生产环境运行（三方合作为 Meta、Google 与 SGLang 团队）；Zenteiq.ai 称在 GKE Inference Gateway（llm-d）上合成数据生成的聚合推理吞吐提升 4 倍以上、每 1,000 个 TPU v6e 的日生成 token 从 14.7 亿增至 59.7 亿；vLLM 同时启动面向引擎贡献者的免费 TPU 算力池，TorchTPU 还与 llm-d 实现跨 TPU 与 GPU 的 Kubernetes 原生 fleet routing。",
+      "report_anchor": "8. 生产落地与生态",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S05"
+      ],
+      "evidence": "S01 的 Meta / RadixArk / Inferact 引述与「community contribution TPU capacity pool」段；S05 的 Zenteiq 引述（4×、1.47B→5.97B tokens per 1,000 TPU v6e）、llm-d fleet routing 与 TorchTitan 最高 52% MFU / 最多 8,192 Ironwood TPUs。",
+      "critical": false
+    },
+    {
+      "id": "C11",
+      "claim": "对 EverAgent 的方法价值集中在四条可迁移方法：平台插件式（保留上游框架层、只换执行层）映射为「provider 只实现接口、不重写 harness」并需声明能力矩阵；能力矩阵本身作为公开的「我们要什么」清单；分层 KV（热前缀在快层、老材料在慢层、命中优于重算）映射为「已解析原始材料作为可复用资产」；以及性能声明必须落到公共可核验来源上。另记两条不可迁移但应记住的边界：编译/解析缓存需作为一等资产，以及底层库可能尚未推荐一般用途却已被生产依赖的供应链成熟度风险。",
+      "report_anchor": "9. 对 EverAgent 的方法价值",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S04",
+        "S07"
+      ],
+      "evidence": "S01 的平台插件式设计与七类能力矩阵、S02 的编译缓存机制、S04 的 Tier-2 与 warm-boot 思路、S07 的公共基准纪律构成迁移来源；四条落地形态与两条边界为本报告设计并已标注为推断。",
+      "critical": false
+    },
+    {
+      "id": "C12",
+      "claim": "反方解释有六条：原生收益可能主要来自开发者熟悉度而非性能；SOTA 可能是榜单时效快照；TPU Sync 的成熟度警示可能才是真实约束；2.01 美分的成本优势可能主要来自定价而非工程；性能验证链条绕过了自己（Kimi K3 megakernel 与首次 AgentX 提交均由合作方 Inferact 主导）；保留上游框架也可能是约束（长期积累兼容层税），其优劣需更长时间尺度判断。",
+      "report_anchor": "10. 反方解释",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S04"
+      ],
+      "evidence": "各条反方的原始依据分别为 S01 的动机陈述与伙伴归述、S04 的成熟度警示、S02 的「保留上游框架」定位与代际 CI 差异；归纳为本报告分析并逐条标注。",
+      "critical": false
+    },
+    {
+      "id": "C13",
+      "claim": "生成模型记录：本次会话使用的模型为 MiniMax M3.1 Flash（用户指定），会话内没有可用的 reasoning effort 控制入口，因此无法核实或声明 effort 已被调至 max；未出现 quota exhausted 或 rate limit 不可用证据，故未切换 GLM-5.3。",
+      "report_anchor": "Limitations",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "evidence 文件 generator 字段与报告 Limitations 第 10 条的如实记录；本条用于满足「如实记录实际值、不伪称」的约束。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "问题定义与生态定位（JAX 路线已存在、PyTorch 原生的动机、vLLM JAX 更名保留）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "report_anchor": "1. 问题定义"
+    },
+    {
+      "id": "U02",
+      "title": "TorchTPU 抽象与 TPU 执行模型（原生设备、eager/compile、每设备一进程、SPMD）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S06"
+      ],
+      "report_anchor": "2. TPU 执行模型与 TorchTPU 的抽象"
+    },
+    {
+      "id": "U03",
+      "title": "平台插件式设计与两引擎的 kernel 清单、代际 CI 覆盖差异",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "3. 平台插件式设计"
+    },
+    {
+      "id": "U04",
+      "title": "七类工作负载支持矩阵与到引擎机制的映射",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S03"
+      ],
+      "report_anchor": "4. 工作负载支持矩阵与机制映射"
+    },
+    {
+      "id": "U05",
+      "title": "TPU Sync 的搬运与分层实现、带宽数字、warm-boot 与成熟度警示",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S04",
+        "S01"
+      ],
+      "report_anchor": "5. TPU Sync"
+    },
+    {
+      "id": "U06",
+      "title": "性能与 benchmark 的口径逐项核验（2.01 美分、AgentX SOTA、Kimi K3 megakernel）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S07"
+      ],
+      "report_anchor": "6. 性能与 benchmark 的口径逐项核验"
+    },
+    {
+      "id": "U07",
+      "title": "GPU 路线 vs TPU 原生路线的可移植边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "7. GPU 版本 vs TPU 原生路线"
+    },
+    {
+      "id": "U08",
+      "title": "生产落地与生态（Meta、RadixArk、Inferact、Zenteiq、贡献者算力池、llm-d）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S05"
+      ],
+      "report_anchor": "8. 生产落地与生态"
+    },
+    {
+      "id": "U09",
+      "title": "对 EverAgent 的方法价值与两条不可迁移边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S04",
+        "S07"
+      ],
+      "report_anchor": "9. 对 EverAgent 的方法价值"
+    },
+    {
+      "id": "U10",
+      "title": "反方解释、Limitations 与思考与追问",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S04",
+        "S07"
+      ],
+      "report_anchor": "10. 反方解释"
+    },
+    {
+      "id": "U11",
+      "title": "数字与事实速查表",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S07"
+      ],
+      "report_anchor": "附录 B"
+    },
+    {
+      "id": "U12",
+      "title": "InferenceX 排行榜的具体名次、分数与对比模型清单",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "",
+      "omission_reason": "本次未读取公开排行榜页面，因此不引用任何具体名次或领先幅度；改为在正文中说明「可核验但本文未核」，避免把官方「SOTA / 领先大部分 Pareto 前沿」的定性表述转述为已验证的排名结论。"
+    },
+    {
+      "id": "U13",
+      "title": "JetStream 与 TorchTPU 的历史路线、TPU v6e/v7x 芯片级规格表",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "report_anchor": "",
+      "omission_reason": "相关官方文档页在本次抓取中未能取得可引用正文（多次网络错误），而芯片级规格不是本报告的论证依赖；报告因此只使用仓库与博客中可核实的代际支持与 CI 覆盖信息，不引入未核实的芯片参数。"
+    }
+  ],
+  "limitations": [
+    "官方博客几乎没有数字：模型版本、精度、batch、长度分布、延迟分位、吞吐、价格假设与对比集合几乎全部缺失，无法对其性能声明做同口径核验。",
+    "本文未读取 InferenceX 排行榜页面，因此没有引用任何具体名次或领先幅度；文中「SOTA」仅为官方表述转述。",
+    "本文未在任何 TPU 上运行，未复现任何数字。",
+    "成熟度信息来自 TPU Sync README 的一句警示，未进一步核对其实际使用范围；该张力按厂商叙事与仓库自述并列呈现。",
+    "TPU 执行模型部分为本文的结构性解释，其中「每设备一个 PyTorch 进程」「Pallas kernel 作为 compiled graph 内 custom operator」有官方原文支撑，其余为基于这些事实的推断。",
+    "客户引述属第三方口吻但由厂商博客转述，客户名与配置未完整披露；Zenteiq 的数字仅见于同一篇官方博客。",
+    "「行业领先 2.01 美分」的比较集合未给出，无法判断是同硬件对比还是跨硬件对比。",
+    "上下文并行、P/D 跨并行布局、Managed Lustre 三级存储等能力的实现细节官方未展开，本文不对其性能做推断。",
+    "生成模型记录：模型为 MiniMax M3.1 Flash（用户指定）；会话内没有可用的 reasoning effort 控制入口，无法核实或声明 effort 已调至 max；未出现 quota exhausted 或 rate limit 证据，未切换 GLM-5.3。",
+    "本报告标注为【本报告推断】的部分（可移植边界总结、三层执行模型映射、四条迁移方法、六条反方解释）均为推断而非原文陈述。"
+  ]
+}

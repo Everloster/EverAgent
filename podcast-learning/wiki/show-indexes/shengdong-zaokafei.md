@@ -1,11 +1,15 @@
 # 声动早咖啡 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/q88qwmydeuw8>）｜ 最近拉取：2026-10-19 ｜ 总集数：1072
+> 来源：官方 RSS（<https://feed.xyzfm.space/q88qwmydeuw8>）｜ 最近拉取：2026-10-25 ｜ 总集数：1076
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
 | 22 | 2025-07-01 | 12m33s | [22.8 元袋装冰块进驻山姆，农夫山泉为何也盯上冰块生意？](https://www.xiaoyuzhoufm.com/episode/6863f40393fd2d72b80338a6?utm_source=rss)<!--g:6863f40393fd2d72b80338a6--> | — |
+| — | 2026-10-22 | 14m48s | [咖啡豆｜山姆限购、黄牛加价，开心果为什么变得紧俏？](https://www.xiaoyuzhoufm.com/episode/6ada1bffc96c8942ec10c3e9?utm_source=rss)<!--g:6ada1bffc96c8942ec10c3e9--> | — |
+| — | 2026-10-21 | 11m07s | [低价城际大巴吸引乘客，AI 短剧算力用量引发争议](https://www.xiaoyuzhoufm.com/episode/6ad8c67db381c0fcba19b2d0?utm_source=rss)<!--g:6ad8c67db381c0fcba19b2d0--> | — |
+| — | 2026-10-20 | 15m20s | [欧洲青旅一边关店一边扩张，这门生意发生了什么改变？](https://www.xiaoyuzhoufm.com/episode/6ad77e93ef67611cac799788?utm_source=rss)<!--g:6ad77e93ef67611cac799788--> | — |
+| — | 2026-10-19 | 10m48s | [千余家影院直播体育赛事，上半年国内金饰消费量下跌三成](https://www.xiaoyuzhoufm.com/episode/6ad625fd66729f5c712df259?utm_source=rss)<!--g:6ad625fd66729f5c712df259--> | — |
 | — | 2026-10-18 | 17m07s | [海外航司纷纷拥抱星链，免费 Wi-Fi 为何逐渐成为航司新标配？](https://www.xiaoyuzhoufm.com/episode/6ad4d0fd641ef406308d80fa?utm_source=rss)<!--g:6ad4d0fd641ef406308d80fa--> | — |
 | — | 2026-10-15 | 18m06s | [高洁丝｜咖啡豆：从万圣节限定到常年项目，环球影城为何押注「惊吓体验」？](https://www.xiaoyuzhoufm.com/episode/6ad0dc1a0e4e410a05bd77e5?utm_source=rss)<!--g:6ad0dc1a0e4e410a05bd77e5--> | — |
 | — | 2026-10-14 | 11m11s | [高洁丝｜豆包增加水电缴费功能，瑞幸引入奶茶品类](https://www.xiaoyuzhoufm.com/episode/6acf79bee742e36efcc2f773?utm_source=rss)<!--g:6acf79bee742e36efcc2f773--> | — |

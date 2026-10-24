@@ -1,10 +1,11 @@
 # 屠龙大实话 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/fp7wecdfhgyq>）｜ 最近拉取：2026-10-19 ｜ 总集数：98
+> 来源：官方 RSS（<https://feed.xyzfm.space/fp7wecdfhgyq>）｜ 最近拉取：2026-10-25 ｜ 总集数：99
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| 64 | 2026-10-21 | 58m31s | [64. 为什么人类总在为不平等愤怒？讲讲不平等的进化史](https://www.xiaoyuzhoufm.com/episode/6ad88be5ef67611cac79fc26?utm_source=rss)<!--g:6ad88be5ef67611cac79fc26--> | ✅ 已处理（2026-10-21 xiaoyuzhou-tulong-dashihua_inequality-evolution） |
 | 63 | 2026-09-10 | 1h08m | [63. 西方体系下的年轻人 如何融入主流老登社会](https://www.xiaoyuzhoufm.com/episode/6aa216829d3264778166d270?utm_source=rss)<!--g:6aa216829d3264778166d270--> | — |
 | 62 | 2026-08-31 | 1h25m | [62. 如何避免“精英白女综合症”？](https://www.xiaoyuzhoufm.com/episode/6a94fa2da0210c197dcad5a6?utm_source=rss)<!--g:6a94fa2da0210c197dcad5a6--> | — |
 | 61 | 2026-07-30 | 1h49m | [61.商业评论采访两小时超长版（一剪子没剪），超多商业故事](https://www.xiaoyuzhoufm.com/episode/6a6b644856a3f3491ba7a241?utm_source=rss)<!--g:6a6b644856a3f3491ba7a241--> | — |

@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/OpenAI_千Agent并行生物数据研究_证据聚合与科学发现_深度解析_20261025.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-6",
+        "harness": "codex",
+        "run_id": "review-openai-bio-agents-20261025-gpt6",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 94,
+        "request_coverage": 97,
+        "reasoning_quality": 95,
+        "readability": 93,
+        "limitations": 96
+      },
+      "score_reasons": {
+        "evidence_fidelity": "独立回读 OpenAI 官方文章、21 页 bioRxiv 主论文 PDF、源数据论文摘要与利益冲突、R&D World 的 DCTN1/4.3 分转述，以及论文明确给出的 jinlabneurogenomics/distributed_agent 仓库。初稿因网页截断而误称仓库未定位、标签占比与盲评设计缺失；已补齐 420/636/101/362、45/10/5、39,185/16,445、公开 MCP/10.8GB 数据准备等一手事实并同步修订 evidence。",
+        "request_coverage": "R01–R08 全部覆盖：原文与论文/代码、拆题与证据聚合、案例三层状态、数字口径、四层贡献分解、替代路径、双仓 harness/eval 迁移、Limitations 和追问均有完整章节；新增公开复现路径使 R01/R05/R07 更完整。",
+        "reasoning_quality": "报告把数据内观察、机制假说和湿实验验证严格分层，正确识别并行化保护检索深度、证据标签与冲突上抛的核心价值，也保留厂商自评、利益相关方和无独立复现边界。修订后对可复现性的判断从“仓库缺失”更新为“浏览/图表复现已公开，完整重跑仍受数据、模型与成本约束”。",
+        "readability": "结构紧凑，x→f→f(x)、三层状态表、工作流图、案例表和多口径数字表使复杂生物研究可独立阅读。术语和案例较多但都配有边界说明。",
+        "limitations": "当前局限已准确写明：未运行 agent、未下载数据、未读全部补充材料/源数据论文全文、711×口径冲突、75% 缺置信区间、GPT-Rosalind 版本关系、无第三方复现及商业动机边界。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08",
+        "U09",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16",
+        "U17",
+        "U18",
+        "U19",
+        "U20"
+      ],
+      "source_content_map": [],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S06",
+        "S07",
+        "S08",
+        "S10"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07",
+        "R08"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "eacli 对 bioRxiv 网页/PDF 均只返回约 32k 字符，且本机直取 PDF 遇到 429；按最小降级规则从远端只读环境下载官方 PDF，完成 pdftotext 与 Fig.4 页面渲染核验。完整论文明确给出 GitHub 仓库 URL，随后用 eacli web.read 核对 README。修订了仓库可用性、标签分布、盲评样本和复现门槛四类实质问题。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 94.85,
+    "evaluated_on": "2026-10-25",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "9f89f8f437513c83c92c8f02ee036e58e32b8f0fe443d46e4618d90157e3056a",
+    "evidence_sha256": "459434202100f35ae60db99ac7f13fcbed57e84c505893506250d56cf05a0fb2"
+  }
+}

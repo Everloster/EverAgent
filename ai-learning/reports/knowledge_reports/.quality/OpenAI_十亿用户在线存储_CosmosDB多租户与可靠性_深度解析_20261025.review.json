@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/OpenAI_十亿用户在线存储_CosmosDB多租户与可靠性_深度解析_20261025.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-6",
+        "harness": "codex",
+        "run_id": "review-openai-cosmos-habitat-r2-20261025-gpt6",
+        "independent_context": true,
+        "explicit_model_override": true,
+        "override_reason": "用户明确要求本机独立 review 与验收远端 MiniMax 初稿"
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 94,
+        "request_coverage": 96,
+        "reasoning_quality": 95,
+        "readability": 94,
+        "limitations": 96
+      },
+      "score_reasons": {
+        "evidence_fidelity": "独立重读 Part I/II 正文与 Microsoft Learn 当前配额、分区、serverless、吞吐再分配页面。70M req/s、500PB、20M+ QPS、120→10ms、分区上限、弱分区与 serverless 5K 均可追溯。复核发现关键过度推断：1M RU/s 是可申请提高的默认上限，不能由 20M QPS 推出至少 20 个容器；已撤销并同步 evidence。",
+        "request_coverage": "R01–R07 完整满足：两篇原文问题链、架构图、多租户三阶段、读路径、CDC、Rust、数字表、事故与恢复、被放弃方案、替代路线、Agent memory/context 迁移边界、Limitations 与追问齐全。",
+        "reasoning_quality": "报告能从技术机制推到组织成本和 failback 变更管理，并持续区分 OpenAI 自述、Azure 文档与分析者推断。修订后把“必须用多租户/必须用变更流”收窄为按规模、爆炸半径和新鲜度目标选择，避免把极端规模经验写成普适定律。",
+        "readability": "x→f→f(x)、分层架构图、数字表、事故时间线和权衡表使长文易于查阅；术语密度较高，但每个机制先解释再迁移，且关键数字均附口径。",
+        "limitations": "明确披露厂商单方复盘、无 benchmark 复现、图未做视觉核验、20M QPS 无 RU/拓扑、定向 Azure 增强未公开、事故无第三方复盘、安全细节缺失和日期元数据冲突。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08"
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "Revision 2 只修正附录的 Part I 日期说明，使其与正文 Limitations 一致：页面 publishedTime 为 2026-08-25，搜索索引显示 2026-09-11；同时保留 Part II 页面/订阅时间差异。已重新核对报告、evidence 与来源，不改变任何技术结论或评分。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 94.8,
+    "evaluated_on": "2026-10-25",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "069b0cc23a27595e855705cd8be1165896e5299a0e62ee30a4739dd818603ec6",
+    "evidence_sha256": "791a40ff7659ce0bb1b556783237dbbbd498f2746878226f46bf59a4de694fe8"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-6",
+            "harness": "codex",
+            "run_id": "review-openai-cosmos-habitat-20261025-gpt6",
+            "independent_context": true,
+            "explicit_model_override": true,
+            "override_reason": "用户明确要求本机独立 review 与验收远端 MiniMax 初稿"
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 94,
+            "request_coverage": 96,
+            "reasoning_quality": 95,
+            "readability": 94,
+            "limitations": 96
+          },
+          "score_reasons": {
+            "evidence_fidelity": "独立重读 Part I/II 正文与 Microsoft Learn 当前配额、分区、serverless、吞吐再分配页面。70M req/s、500PB、20M+ QPS、120→10ms、分区上限、弱分区与 serverless 5K 均可追溯。复核发现关键过度推断：1M RU/s 是可申请提高的默认上限，不能由 20M QPS 推出至少 20 个容器；已撤销并同步 evidence。",
+            "request_coverage": "R01–R07 完整满足：两篇原文问题链、架构图、多租户三阶段、读路径、CDC、Rust、数字表、事故与恢复、被放弃方案、替代路线、Agent memory/context 迁移边界、Limitations 与追问齐全。",
+            "reasoning_quality": "报告能从技术机制推到组织成本和 failback 变更管理，并持续区分 OpenAI 自述、Azure 文档与分析者推断。修订后把“必须用多租户/必须用变更流”收窄为按规模、爆炸半径和新鲜度目标选择，避免把极端规模经验写成普适定律。",
+            "readability": "x→f→f(x)、分层架构图、数字表、事故时间线和权衡表使长文易于查阅；术语密度较高，但每个机制先解释再迁移，且关键数字均附口径。",
+            "limitations": "明确披露厂商单方复盘、无 benchmark 复现、图未做视觉核验、20M QPS 无 RU/拓扑、定向 Azure 增强未公开、事故无第三方复盘、安全细节缺失和日期元数据冲突。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07",
+            "C08"
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04",
+            "R05",
+            "R06",
+            "R07"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "复核完成三类实质修订：撤销由默认 RU 上限反推容器数量；把多租户与 CDC 的绝对化迁移结论改为有条件选择；更新为当前 Microsoft Learn 文档并澄清 Part I/II 页面、索引和订阅日期元数据冲突。"
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 94.8,
+        "evaluated_on": "2026-10-25",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "2ade309ec111e260cdd9e908fa1b0ecbcac2eb031a0108e051f2757c37f9f3a9",
+        "evidence_sha256": "791a40ff7659ce0bb1b556783237dbbbd498f2746878226f46bf59a4de694fe8"
+      }
+    }
+  ]
+}

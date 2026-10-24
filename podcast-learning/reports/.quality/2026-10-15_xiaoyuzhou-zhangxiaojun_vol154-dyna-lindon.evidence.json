@@ -1,0 +1,411 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-15_xiaoyuzhou-zhangxiaojun_vol154-dyna-lindon.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-24",
+  "generator": {
+    "model": "minimax-m3.1-flash",
+    "harness": "pi",
+    "run_id": "generator-2026-10-25_zhangxiaojun_vol154-20261024",
+    "explicit_model_override": true,
+    "override_reason": "用户明确指定继续使用 MiniMax M3.1 Flash（user:2026-10-24:podcast-blog-until-1100）；本次会话未收到 quota exhausted 或 rate limit 的不可用证据，故未切换到 GLM-5.3"
+  },
+  "task": {
+    "summary": "完整转写并精编《张小珺Jùn｜商业访谈录》第 154 期（Dyna Robotics 创始人 Lindon Gao 三小时访谈），产出 transcript/polished/artifact 回执、standalone 的 report-v2/important/deep 深度报告与完整 evidence sidecar；重点覆盖 Product Research、从任务到工作流、预训练与 post-training、deployment flywheel、中美供应链、组织与创始人决策，并拆分 Caper 与 Dyna 的公司时间线。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "先全仓查重；音频与转写必须通过 eacli podcast 的远端静默 worker，禁止本机转写。"
+      },
+      {
+        "id": "R02",
+        "text": "产出 transcript、polished、artifact 回执、深度报告与 .quality evidence/review；review 只初始化为空。"
+      },
+      {
+        "id": "R03",
+        "text": "完整覆盖机器人世界模型、数据/仿真/真机闭环、公司路线分歧、创业判断与个人哲学。"
+      },
+      {
+        "id": "R04",
+        "text": "区分嘉宾观点、主持人追问、外部事实与分析者推断；对人物、机构、年份与数字用一手外部资料核验。"
+      },
+      {
+        "id": "R05",
+        "text": "公开产物禁写私有设备、路径、任务/派发/终端 ID；不 commit/push、不改索引/MAP；status=in_progress。"
+      },
+      {
+        "id": "R06",
+        "text": "生成/精编使用 MiniMax M3.1 Flash + pi 并记录真实模型；只有明确额度耗尽错误才切 GLM-5.3。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "primary",
+      "title": "《张小珺Jùn｜商业访谈录》154 期原始转写（远端静默 worker，5195 段 / 10271 秒）",
+      "locator": "podcast-learning/reports/transcripts/2026-10-15_xiaoyuzhou-zhangxiaojun_vol154-dyna-lindon.transcript.txt",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S02",
+      "kind": "primary",
+      "title": "第 154 期结构化精编稿（polished，头部标注压缩比、专名校正表与 [?]）",
+      "locator": "podcast-learning/reports/transcripts/2026-10-15_xiaoyuzhou-zhangxiaojun_vol154-dyna-lindon.polished.txt",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S03",
+      "kind": "primary",
+      "title": "小宇宙单集页 shownotes（简介、嘉宾简介、5 条 OUTLINE 章节时间轴）",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/6acf81f0195d838e2af1e281",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S04",
+      "kind": "local",
+      "title": "本期转写与传输回执（公开安全格式：时长、段数、文本量、SHA-256、审计与头尾覆盖）",
+      "locator": "podcast-learning/reports/transcripts/2026-10-15_xiaoyuzhou-zhangxiaojun_vol154-dyna-lindon.artifact.json",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S05",
+      "kind": "official",
+      "title": "Dyna Robotics 官网首页（Commercial-Grade Robots for the Real World；hospitality/logistics/factory 端到端工作流定位）",
+      "locator": "https://www.dyna.co",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S06",
+      "kind": "official",
+      "title": "Dyna Robotics research 文章：Not Just a Model, But a Product（2026-08；机器人跨过 ROI 门槛、Din Tai Fung 铺开、Deployment is the eval）",
+      "locator": "https://www.dyna.co/research/scaling-customer-deployments",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S07",
+      "kind": "official",
+      "title": "Dyna Robotics insights 文章：What 10 Months in Production Taught Us About the Robotics Bubble（2026-08；235 笔交易、年度融资 28.6 亿→87.6 亿美元、Unitree IPO 口径、马斯克电话会表述）",
+      "locator": "https://www.dyna.co/news/robotics-bubble",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S08",
+      "kind": "secondary",
+      "title": "科创板日报：机器人初创 Dyna Robotics 完成 1.2 亿美元 A 轮，估值突破 6 亿美元，英伟达参与（2025-09-16）",
+      "locator": "https://www.cls.cn/detail/2146560",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S09",
+      "kind": "official",
+      "title": "Dyna Robotics 公司通稿：2350 万美元种子轮，CRV 与 First Round Capital 联合领投（2025-03-25）",
+      "locator": "https://www.prnewswire.com/news-releases/dyna-robotics-raises-23-5-million-to-commercialize-embodied-ai-with-low-cost-robots-302410263.html",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S10",
+      "kind": "official",
+      "title": "Instacart 官方新闻稿：2021 年收购 Caper AI；Lindon Gao 为联合创始人兼 CEO",
+      "locator": "https://company.instacart.com/pressreleases/instacart-acquires-caper-ai-a-leader-in-smart-cart-and-smart-checkout-technology-creating-a-unified-online-and-in-store-commerce-solution-for-retailers",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S11",
+      "kind": "official",
+      "title": "Dyna Robotics 官方：1.2 亿美元新融资 / Series A，列出 Robostrategy、CRV、First Round、NVentures、Amazon 等投资方",
+      "locator": "https://www.dyna.co/news/series-a",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S12",
+      "kind": "primary",
+      "title": "Eureka: Human-Level Reward Design via Coding Large Language Models（Yecheng Jason Ma 等，arXiv:2310.12931）",
+      "locator": "https://arxiv.org/abs/2310.12931",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S13",
+      "kind": "official",
+      "title": "Dyna Robotics 官方：Dyna-2 — A 1-Million-Hour Scaling Law for World-Action Models",
+      "locator": "https://www.dyna.co/dyna-2",
+      "accessed_on": "2026-10-25"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "嘉宾拒绝「大脑派 vs 身体派」的二分，定位自己是 Product Research 派：以产品闭环作为研究的度量衡与探针，研究方向由工作流落地中暴露的瓶颈反向决定。",
+      "report_anchor": "主线三：技术主线",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S06"
+      ],
+      "evidence": "转写 00:03:04、00:44:45–00:45:53（「我们的 research 导向是有 product guardrails 在这里面的」「用产品闭环去探我们 research 接下来的方向」）、01:26:10–01:26:35（落地场景须在智能体智能范围内）；外部可对照官网《Not Just a Model, But a Product》与「Deployment is the eval」定位。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "嘉宾给出的 2025 年 product research 目标为“成功率 99%、速度为人 50%–60%”，DYNA-1 折叠餐巾达 24 小时、99% 以上成功率；部署阶段的产能缺口为客户日需 1300 张 vs 机器 24 小时 850 张。",
+      "report_anchor": "成功率拉到 99%",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "转写 00:46:46–00:47:07（目标设定）、00:47:26–00:47:38（Dyna One 数字）、00:54:24–00:55:31（1300 张/850 张/单张 20 秒/抓两张解 2 分钟）。均为嘉宾自述，节目内未给独立验证。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "嘉宾因「机器人需要保姆」（补料空窗、员工需设闹钟更换餐巾）判定折叠场景未形成完整商业闭环，并据此放弃 scale 该场景。",
+      "report_anchor": "机器人需要保姆",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "转写 00:59:22–01:00:25（空窗半小时、员工设闹钟、客户反馈「机器人没达标」）与 00:58:53–00:59:21（「我只做到了任务，没有把整个工作做完」）。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "嘉宾在 2025 年底把预训练策略从「all in on high quality data」转向「用最低质量数据提取可 scale 的部分」，并判断机器人数据最终形态是 egocentric 与 exocentric，称在 1 million hours 人体第一视角数据上发现 scaling law。",
+      "report_anchor": "最低质量数据",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S05",
+        "S13"
+      ],
+      "evidence": "转写 01:29:22–01:30:13（转向与前提条件）、01:28:32–01:29:20（数据形态判断、1M 小时与 scaling law 自述）、01:32:36–01:33:12（拒绝仿真/真机站队）。S05/S13 能核对官网“DYNA-2 / over one million hours / World Action Model”口径；scaling law 与效果仍为公司自报。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "嘉宾把机器人商业化的价值指标从「比人快」改为「比人久」：目标是机器人 24 小时的工作量等于一个人 8 小时，自述目前已超出。",
+      "report_anchor": "做得更久",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "转写 01:11:41–01:12:20（「不是要做得比人快，而是要做得更久」「一个机器人做一天 24 个小时的工作，可以达到一天一个人做八个小时的工作」「现在已经超出了」）。",
+      "critical": false
+    },
+    {
+      "id": "C06",
+      "claim": "嘉宾描述的 Dyna 组织形态为不到 200 人、美国以 research 为主而中国以 hardware 为主、层级被 AI 显著压平，管理理念是“找最近的人做最重要的事情”；公开资料可核对三位联合创始人为 Lindon Gao、York Yang、Jason Ma。",
+      "report_anchor": "找最近的人做最重要的事情",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "转写 02:19:47–02:23:38（10–11 层→扁平、团队规模、两地分工、管理理念、小组织为阶段性状态）。",
+      "critical": false
+    },
+    {
+      "id": "C07",
+      "claim": "嘉宾给出的中美比较是：大脑是机器人的下限、本体是上限；十年后供应链更重要，并预期一两年内行业出现更收敛的模式。",
+      "report_anchor": "大脑是下限",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S05"
+      ],
+      "evidence": "转写 02:04:01–02:09:09（大脑/本体上下限、供应链与成本质量战）、02:08:11–02:08:28（收敛判断）；官网定位与业务场景可作方向性对照。",
+      "critical": false
+    },
+    {
+      "id": "C08",
+      "claim": "外部资料应拆成两条公司时间线：Instacart 官方确认 2021 年收购 Caper AI，Lindon Gao 为联合创始人兼 CEO；Dyna 则在 2025-03 宣布 2350 万美元种子轮、2025-09 宣布 1.2 亿美元新融资，媒体报道称估值超过 6 亿美元。节目中 2019 年“60 多个投资人、Lux 一千多万美元”属于 Caper，不能与 Dyna 2025 年融资比较。",
+      "report_anchor": "Dyna 的融资",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S08",
+        "S09",
+        "S10",
+        "S11"
+      ],
+      "evidence": "S01 00:09–00:20 的公司上下文为上一家无人零售公司；S10 官方确认公司名 Caper AI、Lindon Gao 身份与 Instacart 收购，但未披露价格；S09 为 Dyna 2350 万美元种子轮公司通稿，并自述 Lindon Gao 与 York Yang 以 3.5 亿美元退出 Caper AI；S11 为 Dyna 1.2 亿美元融资官方稿；S08 媒体给出超过 6 亿美元估值。两家公司时间线已拆开。",
+      "critical": true
+    },
+    {
+      "id": "C09",
+      "claim": "嘉宾自述去年的具体错误是战略方向不清晰、文化打理不足、凝聚力不够，被市场带节奏；其根源之一是「不能犯错的 CEO」包袱，并称度过该状态后第一个情绪是感恩。",
+      "report_anchor": "不犯错的 CEO",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "转写 02:38:34–02:39:17（包袱与「为了不犯错而做决策本质上就不是好决策」）、02:40:52–02:42:18（错误清单与被市场带节奏）、02:39:47–02:40:52（感恩）。",
+      "critical": true
+    },
+    {
+      "id": "C10",
+      "claim": "[推测] 「用产品闭环反推研究」是一条有效的工程纪律，但也内建了盲区：它只产出当前智能边界内可解的问题，而下一阶段的战略方向恰好在该边界之外，因此该方法难以独立回答智能本身如何跃迁。",
+      "report_anchor": "替代解释一",
+      "support": "inference",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "本报告基于转写 01:26:10–01:26:35（落地场景须在智能范围内）与 01:26:37–01:27:04（下一步=智能范围外）的对照做的推断，节目未提出此批评。",
+      "critical": false
+    },
+    {
+      "id": "C11",
+      "claim": "01:41–02:00 的核心内容继续属于 Product Research：以 Anthropic coding agent 为例说明广泛 pre-training 与工作流 post-training 并行，产品形态要匹配当前智能；deployment flywheel 还包括硬件、软件、模型、运控、observability、support 与 maintenance，可能需要两三年，闭环的价值是提供研究反馈。",
+      "report_anchor": "主线三·第五层",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S06"
+      ],
+      "evidence": "原始转写 01:41:07–01:42:50（Anthropic coding agent 类比、广泛 pre-training 与工作流 post-training 并行）、01:42:50–01:49:29（智能不必先达到通用、产品形态匹配能力）、01:49:29–01:58:36（80–90% capacity、工作流、deployment infrastructure/observability/support/maintenance）、01:58:36–02:00:08（两三年与闭环反馈）。S06 的 deployment flywheel、自动标签与 observability 为后续公司口径对照。",
+      "critical": true
+    },
+    {
+      "id": "C12",
+      "claim": "快问快答中 ASR 的“Jason 的 Uriga”可核为 Jason Ma 等人的 Eureka: Human-Level Reward Design via Coding Large Language Models（arXiv:2310.12931），而非 π0/UMI。",
+      "report_anchor": "组织形态的变化与快问快答",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S12"
+      ],
+      "evidence": "S01 02:49:56–02:50:12 的发音为 Eureka 近似音，并称是认识 Jason 的主要论文、重新定义机器人自我学习；S12 作者首位为 Yecheng Jason Ma，方法以 LLM 自动设计 reward 并训练复杂机器人技能，语义与口播描述吻合。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "SC01",
+      "title": "00:01:41 蟑螂与被拒百次：创业史、150 个超市老板调研、融资与出售",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线一"
+    },
+    {
+      "id": "SC02",
+      "title": "00:24:49 方向感与团队画像：闻得到钱、research taste、战略分歧与解法",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线二"
+    },
+    {
+      "id": "SC03",
+      "title": "00:40:32–01:41:27 机器人路线图：目标数字、DYNA-1、工作流与 99^n、系统分层、数据转向",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线三"
+    },
+    {
+      "id": "SC04",
+      "title": "02:00:08 中国：供应链、量产台数、SysID/sim-to-real、同行评价与收敛判断",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线四"
+    },
+    {
+      "id": "SC05",
+      "title": "02:13:01 丢下包袱：Dyna 1.0/2.0 公司阶段、组织形态、修心与强直性脊柱炎自述、不犯错的 CEO、快问快答",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线五"
+    },
+    {
+      "id": "SC06",
+      "title": "单集页 OUTLINE、嘉宾简介与节目说明",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S03"
+      ],
+      "report_anchor": "概览"
+    },
+    {
+      "id": "SC07",
+      "title": "公司官网首页、research/insights、Dyna-2 与融资稿（一手公司材料）",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S05",
+        "S06",
+        "S07",
+        "S11",
+        "S13"
+      ],
+      "report_anchor": "事实核验"
+    },
+    {
+      "id": "SC08",
+      "title": "Caper 收购、Dyna 融资、估值报道与 Eureka 论文核验",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12"
+      ],
+      "report_anchor": "事实核验"
+    },
+    {
+      "id": "SC09",
+      "title": "01:41:27–02:00:08 pre-training/post-training、产品形态、deployment flywheel、observability 与闭环反馈",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S06"
+      ],
+      "report_anchor": "主线三·第五层"
+    }
+  ],
+  "limitations": [
+    "本报告以本期音频和 shownotes 为主，外部材料只用于核对公司名、融资、产品发布与论文，不足以验证嘉宾的全部历史叙述。",
+    "客户数、量产规模、团队规模、机器人工时、成功率与数据集效果多为嘉宾自述；官网能印证 100 万小时训练与部署方向，但仍是公司口径。",
+    "2019 年 60 多位投资人、Lux Capital 与一千多万美元属于 Caper；Dyna 的公开融资是 2025 年 2350 万美元种子轮与 1.2 亿美元新融资，两家公司不能按同一 A 轮比较。",
+    "235 笔交易、28.6 亿到 87.6 亿美元、Unitree 73.6%/约 9% 与零台 Optimus 只核到 Dyna insights 页及其转述，未逐份读取底层数据库、招股书和电话会。",
+    "强直性脊柱炎与转念后调好属个人叙事，不构成诊断、治疗或因果证据。",
+    "嘉宾未公开下一阶段战略与最终产品形态，相关判断需等待后续产品验证。",
+    "原始 transcript 已通过时间戳、重复率、哈希和头尾审计；精编稿为 digest。独立复核发现并删除一段跨节目污染的医疗行业内容，01:41–02:00 已按 raw transcript 重建，报告以 raw transcript 为最终依据。"
+  ]
+}

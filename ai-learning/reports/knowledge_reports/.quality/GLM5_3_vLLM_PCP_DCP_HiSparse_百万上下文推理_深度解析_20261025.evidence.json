@@ -1,0 +1,391 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/GLM5_3_vLLM_PCP_DCP_HiSparse_百万上下文推理_深度解析_20261025.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-25",
+  "generator": {
+    "model": "minimax-m3.1-flash",
+    "harness": "pi",
+    "run_id": "generator-glm53-vllm-20261025",
+    "explicit_model_override": true,
+    "override_reason": "用户明确要求优先使用 MiniMax M3.1 Flash（额度耗尽后才切 GLM-5.3）"
+  },
+  "task": {
+    "summary": "深读 vLLM《GLM-5.3 Optimizations, Part 2: PCP, DCP, and Hybrid HiSparse on 16 H200s》，补读 Part 1、GLM-5.3 官方模型材料与文章直接关联的 vLLM 文档/实现/PR，解释 PCP、DCP、prefill/decode 分离、Hybrid HiSparse、通信拓扑与 1M context 的组合关系，重算 1.7–3.2× 的口径并说明前提，区分模型创新、引擎优化与硬件调优，给出对 Agent 长上下文工作负载与 harness 设计的可迁移启示。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "用白话与必要技术细节解释 PCP、DCP、prefill/decode 分离、Hybrid HiSparse、通信拓扑与 1M context 如何组合。"
+      },
+      {
+        "id": "R02",
+        "text": "重算或交叉核验 1.7–3.2× 等关键结果的口径，说明 16×H200 等前提。"
+      },
+      {
+        "id": "R03",
+        "text": "区分模型创新、推理引擎优化和特定硬件调优。"
+      },
+      {
+        "id": "R04",
+        "text": "分析对 Agent 长上下文工作负载与 harness 设计的可迁移启示。"
+      },
+      {
+        "id": "R05",
+        "text": "不得把厂商或项目自报 benchmark 写成独立验证；不得使用模型记忆补原文。"
+      },
+      {
+        "id": "R06",
+        "text": "只完成初稿与 evidence，不填写独立 review、不 finalize、不更新 MAP/wiki/全局索引、不提交、不推送。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "primary",
+      "title": "vLLM Blog — GLM-5.3 Optimizations, Part 2: PCP, DCP, and Hybrid HiSparse on 16 H200s (2026-10-23)",
+      "locator": "https://vllm.ai/blog/2026-10-23-glm53-part2-pcp-dcp-hisparse",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S02",
+      "kind": "primary",
+      "title": "vLLM Blog — GLM 5.3 Optimizations, Part 1: Hybrid HiSparse Offloading in vLLM (2026-09-08)",
+      "locator": "https://vllm.ai/blog/2026-09-08-glm53-part1-hybrid-sparse-offloading",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S03",
+      "kind": "official",
+      "title": "vLLM 官方文档 — Context Parallel Deployment",
+      "locator": "https://docs.vllm.ai/en/latest/serving/context_parallel_deployment",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S04",
+      "kind": "primary",
+      "title": "vLLM Blog — Efficient Decode Context Parallelism with vLLM for Long-context Workloads (2026-08-07)",
+      "locator": "https://vllm.ai/blog/2026-08-07-decode-context-parallelism",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S05",
+      "kind": "official",
+      "title": "vLLM Recipes — zai-org/GLM-5.3",
+      "locator": "https://recipes.vllm.ai/zai-org/GLM-5.3",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S06",
+      "kind": "primary",
+      "title": "vLLM GitHub Issue #25749 — [RFC]: Support Prefill Context Parallel (PCP)",
+      "locator": "https://github.com/vllm-project/vllm/issues/25749",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S07",
+      "kind": "primary",
+      "title": "vLLM Blog — Model Runner V2: A Modular and Faster Core for vLLM (2026-03-24)",
+      "locator": "https://vllm.ai/blog/2026-03-24-mrv2",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S08",
+      "kind": "official",
+      "title": "z.ai 官方博客 — GLM-5.3: Frontier Coding with Emergent Cyber Capabilities (2026-08-14)",
+      "locator": "https://z.ai/blog/glm-5.3",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S09",
+      "kind": "official",
+      "title": "智谱开放文档 — GLM-5.3",
+      "locator": "https://docs.bigmodel.cn/cn/guide/models/text/glm-5.3",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S10",
+      "kind": "official",
+      "title": "HuggingFace — zai-org/GLM-5.3 模型卡",
+      "locator": "https://huggingface.co/zai-org/GLM-5.3",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S11",
+      "kind": "primary",
+      "title": "arXiv:2602.15763 — GLM-5: from Vibe Coding to Agentic Engineering",
+      "locator": "https://arxiv.org/abs/2602.15763",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S12",
+      "kind": "primary",
+      "title": "arXiv:2411.01783 — Context Parallelism for Scalable Million-Token Inference",
+      "locator": "https://arxiv.org/abs/2411.01783",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S13",
+      "kind": "primary",
+      "title": "SemiAnalysis InferenceX — AgentX Methodology and Datasets",
+      "locator": "https://inferencex.semianalysis.com/agentx",
+      "accessed_on": "2026-10-25"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "PCP 按 token（query）切分 prefill 而非按 head 切分，并用 16 段两两配对（GPU g 拿第 g 段与第 15−g 段）做负载均衡；其收益机制是 indexer 不再在每卡复制、以及每行 KV 服务全部 64 个 head，使稀疏 MLA 算术强度由约 26 升到约 191 FLOPs/byte（H200 平衡点约 206）。",
+      "report_anchor": "机制一 PCP：切的是 query，不是 head",
+      "support": "direct",
+      "source_ids": ["S01", "S12"],
+      "evidence": "Part 2 正文与脚注 1/2 给出 16 段 V 形配对、2,048 行 × 660 B、8 head ≈26 与 64 head ≈191 FLOPs/byte、H200 989 dense BF16 TFLOP/s ÷ 4.8 TB/s ≈ 206；负载均衡分片引自 arXiv:2411.01783。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "PCP 不解决显存问题：新 KV 每层 all-gather 后每卡仍存完整 KV；原文称约 250K token 之后 PCP8 单独已装不下 KV cache，必须叠加 DCP。",
+      "report_anchor": "机制一 PCP：切的是 query，不是 head",
+      "support": "direct",
+      "source_ids": ["S01"],
+      "evidence": "Part 2 明确写出 PCP 的两个代价（权重不切、KV 仍复制）以及「Beyond roughly 250K tokens, PCP8 alone cannot hold the KV cache」。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "DCP 把 KV 按 token round-robin 分片（token i 落在 GPU i mod 8），使 1M token 的 53.4 GiB FP8 KV 从每卡装不下变为每卡 6.7 GiB；代价是每层 all-gather 缓存上下文，2K chunk 下开销约 6%（≤64K 上下文）到 15%（248K）。",
+      "report_anchor": "机制二 DCP：把 KV 也切开",
+      "support": "direct",
+      "source_ids": ["S01"],
+      "evidence": "Part 2 Figure 2/4 与脚注 3 给出每 token 54,728 B（78×656 + 21×132 + 788）、1,048,576 token ≈ 53.4 GiB、53.4/8 = 6.7 GiB，以及 6%/15% 开销曲线。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "DCP 的数据流方向随角色反转：decode 侧把 query 发到 KV 所在卡并用 log-sum-exp 合并部分结果（cp_lse_ag_out_rs），Part 2 的 prefill 引擎则每层 all-gather 分片成临时全上下文副本、算完即释放，只有持久 KV 被 ÷8。",
+      "report_anchor": "机制二 DCP：把 KV 也切开",
+      "support": "direct",
+      "source_ids": ["S01", "S04"],
+      "evidence": "Part 2 原文描述两种方向；vLLM DCP 博客给出 AllGather Q → Compute → AllGather + ReduceScatter 节奏与 online-softmax 合并。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "Hybrid HiSparse 在稀疏 MLA 下把未被 indexer 选中的 KV 下放主机内存、indexer KV 留显存，并在显存宽裕时不做 offload；hot buffer 是从同一 HMA 池租借的普通 KV block、与常驻页共享同一 KV tensor，融合 top-K resolver 不引入 CPU 决策，保持 CUDA-graph 可捕获；带 MTP 时 hot buffer 需按 (num_speculative_tokens+2)×top-K 定容。",
+      "report_anchor": "机制三 Hybrid HiSparse：让 KV 在显存与主机内存之间流动",
+      "support": "direct",
+      "source_ids": ["S02"],
+      "evidence": "Part 1 给出 full/mixed/no 三态驻留、hot buffer 与 HMA 的关系、proactive copy、CUDA-graph 可捕获与 MTP hot buffer 公式；并说明 HiSparse 目前仅支持 NVIDIA GPU。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "报告的部署形态是 16×H200 两个 8 卡节点：prefill 节点为 PCP8×DCP8×EP8 加 512 GiB CPU KV offload，decode 节点为 8 个 DP rank×EP8 加 Hybrid HiSparse（每 rank 48 GiB host pool + 16 GiB offload，合计 512 GiB），两节点间用 llm-d 前缀感知路由与 NIXL connector 搬运并重排 KV 布局，全链路 FP8 KV + MTP3。",
+      "report_anchor": "拓扑：16×H200 到底怎么摆",
+      "support": "direct",
+      "source_ids": ["S01"],
+      "evidence": "Part 2 的 The deployment 一节逐条给出两节点的引擎配置、主机内存预算、路由与 NIXL、MTP3。",
+      "critical": true
+    },
+    {
+      "id": "C07",
+      "claim": "「1.7–3.2×」的口径是：在 16×H200、AgentX 回放、142K 上下文扫描、c≤32 的 prefill 受限区间、两侧都开 HiSparse 的条件下，PCP8×DCP8 prefill 相对 DP8 prefill 在相同系统吞吐下带来的每用户交互性（P90 E2E 归一化 output tok/s per user）提升；同期中位 TTFT 从 1.5–5.2 s 降到 0.8–0.9 s。",
+      "report_anchor": "1.7–3.2× 的口径重算与交叉核验",
+      "support": "direct",
+      "source_ids": ["S01", "S13"],
+      "evidence": "Part 2 Results 一节原句给出 interactivity 定义（AgentX P90 E2E 归一化 output tok/s per user）、at the same throughput 限定与 c≤32 限定；AgentX 方法学页给出 393 会话、median 142k 输入 / 444 输出、闭源回放、1 小时窗口与「报告 throughput + TTFT + interactivity」的要求。",
+      "critical": true
+    },
+    {
+      "id": "C08",
+      "claim": "该数字不能被读作端到端吞吐提升、不能外推到 1M 上下文（1M 扫描里 DP8 装不下单个 1M token 请求，没有可比基线），也不能跨硬件、跨引擎、跨模型推广；全部结果为 vLLM 项目方自报，无独立第三方复现。",
+      "report_anchor": "1.7–3.2× 的口径重算与交叉核验",
+      "support": "derived",
+      "source_ids": ["S01", "S03", "S04", "S05"],
+      "evidence": "Part 2 只在 142K 扫描给出与 DP8 的比较，1M 处明确 DP8 与纯 offload decode 都装不下；官方文档说明 PCP 两种策略仍在开发中；DCP 博客的对照是 B200 + Kimi K2.6；官方 recipe 显示 8×B200 单机即可达完整 1M，说明结论具硬件特异性。",
+      "critical": true
+    },
+    {
+      "id": "C09",
+      "claim": "[推测] 报告用三条交叉核验说明各数字彼此自洽：交互性提升幅度（1.7–3.2×）小于 TTFT 改善幅度（1.9–5.8×）符合物理直觉；c64 的 8,340 logical tok/s/GPU 与 29.6 tok/s/user 相差约 70 倍，源于 logical tok/s 计入前缀缓存命中的输入 token，两指标度量对象不同；250K×54,728 B≈12.8 GiB 与「约 15 GiB 可用 KV」在量级上自洽。",
+      "report_anchor": "1.7–3.2× 的口径重算与交叉核验",
+      "support": "inference",
+      "source_ids": ["S01"],
+      "evidence": "三者均由 Part 2 原始数字推导得到，属分析者推导而非原文陈述，报告已逐处标注。",
+      "critical": false
+    },
+    {
+      "id": "C10",
+      "claim": "[推测] DCP 在 1M 上下文处的通信开销未被测量：由 6%（≤64K）与 15%（248K）粗略线性外推约为 60% 量级；54,728 B/token 是整模型 KV 而非单层数据，按 DCP8 重建全量上下文的朴素量级估算，最终 prefill 步每张 GPU 跨全部层接收的远端分片约 46.7 GiB，而真实流量与耗时仍取决于实现和通信重叠。",
+      "report_anchor": "11.5 交叉核验 D：DCP 开销随长度的外推",
+      "support": "inference",
+      "source_ids": ["S01"],
+      "evidence": "Part 2 只报告到 248K 的开销点，并称 all-gather 与计算重叠的优化仍在进行中；1M 处的开销与流量未在原文出现。53.4 GiB 来自 1,048,576×54,728 B 的整模型 KV，DCP8 的 7/8 远端份额约 46.7 GiB；报告已标注为[推测]。",
+      "critical": false
+    },
+    {
+      "id": "C11",
+      "claim": "三层归因必须分开：模型侧（DSA 稀疏 top-2048、MLA 64 head 共享 latent KV、IndexShare 78 层中 21 层 indexer、MTP）提供「稀疏可分层」的前提；引擎侧（PCP、DCP、Hybrid HiSparse、Model Runner V2、P/D 组合工程）提供实现；硬件侧（H200 的 989 TFLOP/s 与 4.8 TB/s、141 GB HBM、660 B 的 fp8_ds_mla 行布局、每节点 512 GiB 主机内存、单机 8 卡 NVLink 域）决定收益边界。",
+      "report_anchor": "三层归因：模型创新 / 推理引擎优化 / 硬件调优",
+      "support": "derived",
+      "source_ids": ["S01", "S02", "S03", "S05", "S09", "S10", "S11"],
+      "evidence": "分层依据来自 Part 2 脚注与正文（稀疏/MLA/indexer/显存数字）、Part 1（IndexShare、hot buffer）、官方文档（PCP/DCP 语义）、官方 recipe（参数量与 FP8 checkpoint）与 GLM-5.3 官方材料（DSA、1M 窗口）。",
+      "critical": true
+    },
+    {
+      "id": "C12",
+      "claim": "对 Agent 长上下文工作负载与 harness 设计的可迁移启示是结构性的四条（prefill 是第一瓶颈、交互性与吞吐应分别设 SLO、前缀复用是经济性前提、KV 驻留/上下文分层应是一等公民），并附带投机解码放大 KV 预算、「能服务 ≠ 能用」需自建长上下文质量回归、评测须每并发点重起部署与固定投机接受长度等方法论建议。",
+      "report_anchor": "对 Agent 长上下文工作负载与 harness 设计的可迁移启示",
+      "support": "derived",
+      "source_ids": ["S01", "S02", "S13"],
+      "evidence": "prefill 受限结论来自 Part 2「Up to c32, the deployment is mostly prefill-bound」；交互性/吞吐双指标定义来自 Part 2 与 AgentX 方法学；前缀复用与 offload 预算来自两篇博客；评测建议来自 AgentX 的闭源回放与固定接受长度要求。",
+      "critical": false
+    },
+    {
+      "id": "C13",
+      "claim": "文章之间存在两处需要读者注意的不一致：官方文档称 PCP 的两种策略「都还在活跃开发中」，而 Part 2 已给出 PCP×DCP 的生产级部署；Part 1 的预告段说 Part 2 将组合 adaptive verification，但 Part 2 正文从未提及 adaptive verification（[待验证]）。",
+      "report_anchor": "Limitations",
+      "support": "direct",
+      "source_ids": ["S01", "S02", "S03"],
+      "evidence": "文档 Context Parallel Deployment 的 Prefill Context Parallel 一节结尾原文「Both approaches are under active development.」；Part 1 的 Part 2 预告段列出「PCP, DCP, adaptive verification, and Hybrid HiSparse」，Part 2 正文无 adaptive verification 字样。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "Part 2 的问题设定：KV 内存线与 prefill 速度线，以及为什么不用 TP/DP",
+      "importance": "core",
+      "status": "included",
+      "source_ids": ["S01"],
+      "report_anchor": "1. 原文在回答什么问题"
+    },
+    {
+      "id": "U02",
+      "title": "PCP 的机制：按 token 切 query、V 形负载均衡、算术强度与 indexer 交叉点",
+      "importance": "core",
+      "status": "included",
+      "source_ids": ["S01", "S12"],
+      "report_anchor": "机制一 PCP：切的是 query，不是 head"
+    },
+    {
+      "id": "U03",
+      "title": "DCP 的机制：KV 分片、decode/prefill 两种数据流方向、LSE 合并与 all-gather 开销",
+      "importance": "core",
+      "status": "included",
+      "source_ids": ["S01", "S03", "S04", "S06"],
+      "report_anchor": "机制二 DCP：把 KV 也切开"
+    },
+    {
+      "id": "U04",
+      "title": "Hybrid HiSparse 的三态驻留、hot buffer 与 HMA 关系、MTP 下的定容",
+      "importance": "core",
+      "status": "included",
+      "source_ids": ["S02"],
+      "report_anchor": "机制三 Hybrid HiSparse：让 KV 在显存与主机内存之间流动"
+    },
+    {
+      "id": "U05",
+      "title": "16×H200 两节点拓扑、P/D 分离、路由与 NIXL 布局重排、Model Runner V2",
+      "importance": "core",
+      "status": "included",
+      "source_ids": ["S01", "S07"],
+      "report_anchor": "拓扑：16×H200 到底怎么摆"
+    },
+    {
+      "id": "U06",
+      "title": "AgentX 基准方法学与 Part 2 的指标口径（throughput / interactivity / TTFT）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": ["S01", "S13"],
+      "report_anchor": "关键 benchmark 与逐列口径"
+    },
+    {
+      "id": "U07",
+      "title": "硬件与软件前提：H200 规格、主机内存预算、模型与 checkpoint、vLLM 版本与启动参数",
+      "importance": "core",
+      "status": "included",
+      "source_ids": ["S01", "S05"],
+      "report_anchor": "硬件与软件前提清单"
+    },
+    {
+      "id": "U08",
+      "title": "GLM-5.3 模型侧事实：同基座后训练、1M 窗口、128K 输出、DSA/IndexShare/MTP",
+      "importance": "core",
+      "status": "included",
+      "source_ids": ["S08", "S09", "S10", "S11"],
+      "report_anchor": "1.3 与模型侧的关系"
+    },
+    {
+      "id": "U09",
+      "title": "对比基线与公平性：对齐了什么、变化了什么、缺失哪些对照",
+      "importance": "core",
+      "status": "included",
+      "source_ids": ["S01", "S04", "S13"],
+      "report_anchor": "对比基线与公平性评估"
+    },
+    {
+      "id": "U10",
+      "title": "1.7–3.2× 的口径重算与交叉核验",
+      "importance": "core",
+      "status": "included",
+      "source_ids": ["S01", "S13"],
+      "report_anchor": "1.7–3.2× 的口径重算与交叉核验"
+    },
+    {
+      "id": "U11",
+      "title": "三层归因：模型创新 / 推理引擎优化 / 硬件调优",
+      "importance": "core",
+      "status": "included",
+      "source_ids": ["S01", "S02", "S03", "S05", "S09", "S10", "S11"],
+      "report_anchor": "三层归因：模型创新 / 推理引擎优化 / 硬件调优"
+    },
+    {
+      "id": "U12",
+      "title": "对 Agent 长上下文工作负载与 harness 设计的可迁移启示",
+      "importance": "core",
+      "status": "included",
+      "source_ids": ["S01", "S02", "S13"],
+      "report_anchor": "对 Agent 长上下文工作负载与 harness 设计的可迁移启示"
+    },
+    {
+      "id": "U15",
+      "title": "Limitations 与思考与追问",
+      "importance": "core",
+      "status": "included",
+      "source_ids": ["S01", "S02", "S03", "S13"],
+      "report_anchor": "Limitations"
+    },
+    {
+      "id": "U13",
+      "title": "Part 1 的 OpenHands 基准口径（用于说明与 Part 2 不可直接比较）",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": ["S02"],
+      "report_anchor": "8.4 Part 1 的口径（不可与 Part 2 直接比较）"
+    },
+    {
+      "id": "U14",
+      "title": "模型厂商自报能力基准（Terminal Bench / CyberGym 等）",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": ["S08", "S09", "S10"],
+      "report_anchor": "",
+      "omission_reason": "本次任务是推理引擎机制与口径核验；厂商自报的能力榜单与本报告结论无关，且属于自报数据，引用会稀释证据边界；仅保留与推理系统直接相关的模型侧规格（1M 窗口、128K 输出、thinking 档位、DSA/IndexShare）。"
+    }
+  ],
+  "limitations": [
+    "全部性能数字为 vLLM 项目方自报（Part 1、Part 2 与 AgentX 测试数据），本次研究未做独立复现，也无第三方独立验证。",
+    "「1.7–3.2×」仅在 c≤32、142K 上下文扫描、两侧都开 HiSparse、相同吞吐的条件下成立，不能读作端到端吞吐提升，也不能外推到 1M 上下文。",
+    "TP8 只有理论论证而无实测基线；未与其它推理引擎、其它硬件、其它模型对比。",
+    "1M 上下文下没有任何质量评估；AgentX 官方明确其只测服务性能、不支持模型质量评价。",
+    "每个并发点只跑一次 1 小时，无误差条、重复实验与失败率统计。",
+    "DCP 在 1M 处的通信开销未被测量；报告中的 ~60% 外推与 ~4.2 TB/步 流量均为[推测]。",
+    "AgentX 为闭源回放，更快的配置会完成更多请求并遇到不同负载混合，本身带来方法论噪声。",
+    "官方文档称 PCP 两种策略仍在开发中，与博客给出的组合部署存在成熟度差；Part 1 预告的 adaptive verification 未在 Part 2 出现。",
+    "版本锚点会漂移：Part 1 用 e8ef1e07bd 并称计划在 v0.30 可用，Part 2 需要 v0.32.0+ 且实测于 main 9e38b4111a。",
+    "HiSparse 目前仅支持 NVIDIA GPU；Part 2 只测 16×H200 两节点，未测多节点 context parallel 与非 NVIDIA 加速器。",
+    "报告中 191/26 FLOPs/byte 复算、15 GiB KV 空间粗算、c64 两吞吐数字相除等均为[分析者推导]，未经实测。",
+    "本次研究未在本机执行任何 benchmark，硬件条件不具备；附录 B 的命令与版本号均转录自原文。"
+  ]
+}

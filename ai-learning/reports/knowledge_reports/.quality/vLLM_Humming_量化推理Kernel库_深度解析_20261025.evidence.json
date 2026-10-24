@@ -1,0 +1,491 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/vLLM_Humming_量化推理Kernel库_深度解析_20261025.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-25",
+  "generator": {
+    "model": "minimax-m3.1-flash",
+    "harness": "pi",
+    "run_id": "generator-humming-20261025",
+    "explicit_model_override": true,
+    "override_reason": "用户明确要求优先使用 MiniMax M3.1 Flash（额度耗尽后才切 GLM-5.3）"
+  },
+  "task": {
+    "summary": "深读 vLLM 官方《Announcing Humming: Fast, Flexible Kernels for Quantized Inference》，并实际读取 Humming 官方仓库固定 commit 的 README、docs/config.md、schema/jit/testing/ops/forward/dtypes/layer 源码、benchmarks 脚本与目录树，以及 vLLM 侧的 quantization/humming.py 与 utils/humming.py；解释其要解决的量化格式碎片化、硬件代际分裂与 kernel 维护成本，重构 API 抽象与数据流、支持矩阵、代码路径、正确性门与性能证据，逐口径核对 benchmark 并与 Marlin/FlashInfer/DeepGEMM/Triton 做有边界比较，分析对推理引擎插件化与跨硬件可维护性的启示。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "解释 Humming 要解决的量化格式碎片化、硬件代际分裂与 kernel 维护成本。"
+      },
+      {
+        "id": "R02",
+        "text": "重构其 API/抽象、dense 与 MoE 路径、支持的 dtype/量化格式/GPU、代码生成或调度机制、正确性门与性能证据。"
+      },
+      {
+        "id": "R03",
+        "text": "逐项核对官方 benchmark 的 GPU、shape、batch、量化格式、baseline 与测量口径，并与 Marlin、FlashInfer、Triton/torch.compile 等替代路径做有边界比较。"
+      },
+      {
+        "id": "R04",
+        "text": "分析其对推理引擎插件化与跨硬件可维护性的启示。"
+      },
+      {
+        "id": "R05",
+        "text": "不得把项目方 benchmark 写成独立验证；不得仅复述博客而不读代码；不得写私有设备/网络/账号/额度信息。"
+      },
+      {
+        "id": "R06",
+        "text": "只写初稿与 evidence，保留 review 为空；不 finalize、不改 MAP/wiki/索引、不提交、不推送。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "primary",
+      "title": "vLLM Blog — Announcing Humming: Fast, Flexible Kernels for Quantized Inference (2026-10-21)",
+      "locator": "https://vllm.ai/blog/2026-10-21-humming",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S02",
+      "kind": "primary",
+      "title": "vllm-project/humming — README（固定 commit db930afa2256cba49b3e46c0589323c3e80b0bfb）",
+      "locator": "https://raw.githubusercontent.com/vllm-project/humming/db930afa2256cba49b3e46c0589323c3e80b0bfb/README.md",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S03",
+      "kind": "primary",
+      "title": "vllm-project/humming — docs/config.md（LayerConfig / ComputeConfig / TuningConfig 权威说明，同一 commit）",
+      "locator": "https://raw.githubusercontent.com/vllm-project/humming/db930afa2256cba49b3e46c0589323c3e80b0bfb/docs/config.md",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S04",
+      "kind": "primary",
+      "title": "vllm-project/humming — humming/schema/humming.py（Humming 标准格式定义，同一 commit）",
+      "locator": "https://raw.githubusercontent.com/vllm-project/humming/db930afa2256cba49b3e46c0589323c3e80b0bfb/humming/schema/humming.py",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S05",
+      "kind": "primary",
+      "title": "vllm-project/humming — humming/jit/compiler.py（JIT 签名、缓存与 NVRTC/NVCC 后端，同一 commit）",
+      "locator": "https://raw.githubusercontent.com/vllm-project/humming/db930afa2256cba49b3e46c0589323c3e80b0bfb/humming/jit/compiler.py",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S06",
+      "kind": "primary",
+      "title": "vllm-project/humming — humming/testing/runner.py（正确性测试框架，同一 commit）",
+      "locator": "https://raw.githubusercontent.com/vllm-project/humming/db930afa2256cba49b3e46c0589323c3e80b0bfb/humming/testing/runner.py",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S07",
+      "kind": "primary",
+      "title": "vllm-project/humming — humming/ops/gemm.py 与 humming/forward.py（对外算子与输入量化路径，同一 commit）",
+      "locator": "https://raw.githubusercontent.com/vllm-project/humming/db930afa2256cba49b3e46c0589323c3e80b0bfb/humming/ops/gemm.py",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S08",
+      "kind": "primary",
+      "title": "vllm-project/humming — benchmarks/bench_humming.py 与 benchmarks/ 目录（微基准脚本与竞品对照脚本，同一 commit）",
+      "locator": "https://raw.githubusercontent.com/vllm-project/humming/db930afa2256cba49b3e46c0589323c3e80b0bfb/benchmarks/bench_humming.py",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S09",
+      "kind": "primary",
+      "title": "vLLM main — vllm/model_executor/layers/quantization/humming.py（vLLM 侧集成实现）",
+      "locator": "https://raw.githubusercontent.com/vllm-project/vllm/main/vllm/model_executor/layers/quantization/humming.py",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S10",
+      "kind": "primary",
+      "title": "vLLM main — vllm/utils/humming.py（懒加载 facade）",
+      "locator": "https://raw.githubusercontent.com/vllm-project/vllm/main/vllm/utils/humming.py",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S11",
+      "kind": "primary",
+      "title": "vllm-project/humming — 仓库目录树、目录清单与提交记录（GitHub API，commit db930afa…）",
+      "locator": "https://api.github.com/repos/vllm-project/humming/git/trees/main?recursive=1",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S12",
+      "kind": "official",
+      "title": "vLLM 官方 API 文档 — humming 工具模块页",
+      "locator": "https://docs.vllm.ai/en/stable/api/vllm/utils/humming",
+      "accessed_on": "2026-10-25"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "Humming 的核心抽象是把复杂度从「kernel 数量」转移到「配置数量 + 组件数量」：统一量化表示（schema）、执行配置（LayerConfig / ComputeConfig / TuningConfig）、JIT 生成、按架构启发式调度四层分离。",
+      "report_anchor": "2. 抽象：Humming 的四层结构与数据流",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S03",
+        "S04",
+        "S05",
+        "S07"
+      ],
+      "evidence": "博客描述「把量化描述与执行选择分离、由共享组件组合 kernel」；docs/config.md 明确三配置划分与「影响存储的改动需重新 transform 权重」的分层原则；代码中 schema/humming.py（标准格式）、config/（三配置）、jit/compiler.py（生成与缓存）、tune/（按架构启发式）一一对应。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "统一量化表示的落点是 HummingWeightSchema：字段含 b_dtype/bs_dtype/scale 粒度与次级 scale/zero-point/hadamard，并用 KWARGS_ALIAS 把不同导出工具的字段名映射到统一名；仓库 schema/ 下有 awq、gptq、autoround、quark、modelopt、compressed-tensors、fp8、mxfp4、bitnet、gpt_oss_mxfp4 共十个适配器。",
+      "report_anchor": "2.3 「统一量化表示」在代码里长什么样",
+      "support": "direct",
+      "source_ids": [
+        "S04",
+        "S11",
+        "S01"
+      ],
+      "evidence": "schema/humming.py 中 KWARGS_ALIAS 映射表与自动推导逻辑（group_size_n>1→block；group_size==0→channel；否则 group；BLOCK 强制 bs_dtype=float32）；目录清单显示 schema/ 的十个适配器文件；博客称「把支持的导出格式转成 Humming 标准格式」。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "JIT 层以内容寻址缓存保证正确性：编译签名包含编译后端、kernel 表达式、编译 flag、生成的 CUDA 源码以及所有 .cuh 头文件的最后修改时间，hash 后落到缓存目录，用 FileLock 与 os.replace 原子替换；提供 NVRTC 与 NVCC 两条路径。",
+      "report_anchor": "2.4 JIT 编译与缓存",
+      "support": "direct",
+      "source_ids": [
+        "S05"
+      ],
+      "evidence": "humming/jit/compiler.py 中 Compiler.compile 的 signature 拼接、cuh_last_update_time、hash_to_hex、FileLock、os.replace，以及 NVRTCCompiler 的 ctypes nvrtcVersion 调用与标准头 shim。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "支持矩阵是「激活类型 × 设备 SM 下限 × 权重类型」的三维约束表：FP16/INT8 自 SM75 起、BF16/INT4 自 SM80 起、FP8(e4m3/e5m2) 自 SM89 起、FP4(e2m1) 自 SM120 起；权重侧覆盖对称 INT1–8、带动态 zero point 的 INT1–8/1–7/1–4/1–3/1–2 以及任意有符号 FP。",
+      "report_anchor": "3.1 README 给出的激活 × 设备 × 权重类型表",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S01"
+      ],
+      "evidence": "README 支持矩阵逐行给出；博客称「从 Turing 起的每种架构都完整支持」并补充 T-Head 玄武 810E。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "Humming 支持 Blackwell Tensor Core 的隐藏格式 float4e0m3 与 float8e3m4（不在 PTX 类型系统暴露），以及零指数位浮点格式（float8e0m7 等）；博客声明 Rubin 不支持这两种隐藏格式，仓库 tune/ 下亦无 Rubin 专用文件。",
+      "report_anchor": "3.2 特殊数值格式",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S11",
+        "S02"
+      ],
+      "evidence": "dtypes.py 定义 float4e0m3/float8e3m4/float8e0m7 等常量；config/mma.py 提供 supports_undocumented_fp_dtypes / uses_undocumented_fp_operand；博客明确「Rubin 不支持这两个隐藏 Tensor Core 格式」；tune/ 目录只有 sm75/sm8x/sm90/sm90_h20/sm100/sm120/sm121/ppu_sm80。",
+      "critical": false
+    },
+    {
+      "id": "C06",
+      "claim": "MoE 路径由 ComputeConfig.gemm_type 的四种输入组织方式覆盖：dense、indexed（按 routing 索引散读散写）、grouped_contiguous（每专家输入行维连续）、grouped_masked（固定容量 + 有效行数）；四者在 TMA 支持、tile 对齐与输出处理上不同。",
+      "report_anchor": "3.3 GEMM 类型",
+      "support": "direct",
+      "source_ids": [
+        "S03",
+        "S01"
+      ],
+      "evidence": "docs/config.md 的 gemm_type 表与原文说明「普通层可自动选 dense；MoE 必须显式指定并提供路由/专家布局数据」；博客说明 Indexed 与 Grouped 路径用于 token 分布到专家的负载变化场景。",
+      "critical": false
+    },
+    {
+      "id": "C07",
+      "claim": "正确性门是库内自测：以「反量化后 FP32 matmul」为参考实现，用 torch.testing.assert_close(rtol=0.01, atol=0.05) 比较，非有限值走 atol=2*atol 分支并统计 outlier，另有 assert_kernel_test_shape_coverage 强制 shape 覆盖；测试资产包括 tests/test_jit_infrastructure.py、test_tuning_candidates.py、test_sm90_heuristics.py、test_sm90_h20_heuristics.py、test_sm8x_heuristics.py 与 tests/kernels/humming/、tests/native/。",
+      "report_anchor": "5. 正确性门：Humming 怎么保证 kernel 算对",
+      "support": "direct",
+      "source_ids": [
+        "S06",
+        "S11"
+      ],
+      "evidence": "humming/testing/runner.py 的 KernelTestCase 默认 rtol/atol、_matmul_reference / make_reference、assert_close 与 outlier 统计、assert_kernel_test_shape_coverage；目录清单显示 tests/ 下的测试文件与 kernels 子目录。",
+      "critical": true
+    },
+    {
+      "id": "C08",
+      "claim": "微基准口径为：由 vLLM 社区执行；M 覆盖 1–8192 的每个 2 的幂；kernel 完全预热、冷 L2、独立计时、样本间短暂停顿；MoE 加速比 = Gateup + Down 两个 GEMM 延迟之和；每张图标注 baseline、量化格式、矩阵维度与软件版本；脚本默认 M 列表实为 2^0…2^14。",
+      "report_anchor": "6.1 微基准的测量口径",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S08"
+      ],
+      "evidence": "博客 Performance 一节原文；benchmarks/bench_humming.py 中 default_shape_m_list = [2**i for i in range(15)]、逐 shape 调用 get_heuristics_config、may_process_input 生成 scale、save_benchmark_result 落盘；脚本默认区间比博客所述上限多一个点（分析者推导）。",
+      "critical": true
+    },
+    {
+      "id": "C09",
+      "claim": "唯一的端到端 serving 证据是 DeepSeek-V4.1-Flash 在 8×H20、TP=8 下保持 MXFP4 权重不变、仅把 MoE 执行由 vLLM Marlin W4A16（BF16 激活）换成 Humming W4A8（tokenwise FP8 激活）的对照：输出吞吐 88.30→100.77 tok/s（c1, +14.1%）到 442.37→633.94 tok/s（c64, +43.3%），TTFT 543.13→383.80 ms（−29.3%）到 5467.35→3882.94 ms（−29.0%），TPOT 降幅 −8.5%…−30.5%。",
+      "report_anchor": "6.3 端到端 serving 数字",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "博客 End-to-End Inference Performance 一节的完整表格与正文口径描述（8×H20、TP=8、同 MXFP4 权重、Marlin W4A16 BF16 激活 vs Humming W4A8 tokenwise FP8 激活）。",
+      "critical": true
+    },
+    {
+      "id": "C10",
+      "claim": "[推测] 端到端表中的输入/输出吞吐百分比逐行相同且绝对值约为 32:1，说明两列很可能由固定 token 配比下的同一请求完成率派生，并非两份独立证据；吞吐收益随并发从 14.1% 升至 43.3%，只能说明收益对 workload shape / 有效 batch 敏感，无法从该表归因到 kernel 利用率、权重流量、batching 或排队调度中的某一项；对照还同时改变了激活精度。",
+      "report_anchor": "6.3 端到端 serving 数字",
+      "support": "inference",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "由博客表格逐行相同百分比、约 32:1 的输入/输出吞吐比与随并发变化趋势推导，属分析者推断。并发 1 时 TTFT 已下降 29.3%、TPOT 下降 8.5%，因此原先“主要来自排队而非单请求更快”的归因不成立；对照的激活精度差异来自博客正文。",
+      "critical": false
+    },
+    {
+      "id": "C11",
+      "claim": "与竞品的比较有明确边界：基线是各格式的强项（Marlin 对 W4A16、DeepGEMM 对 W8A8、FlashInfer CUTLASS 对 SM12x），Hopper 的 W4A8 面板以 DeepGEMM W8A8 为基线因而混入「权重搬运减半」的物理优势，MoE 微基准只计 Gateup+Down GEMM 延迟而不含 EP 通信与调度，且未与 TensorRT-LLM/SGLang 做同口径对比。",
+      "report_anchor": "7. 竞品比较",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S08"
+      ],
+      "evidence": "博客各图注的 baseline 声明与「MoE speedups use the sum of Gateup and Down GEMM latencies」；仓库同时保留 bench_marlin.py、bench_cutlass_w8a8.py、bench_torch.py、bench_triton_moe.py 作为对照脚本。",
+      "critical": true
+    },
+    {
+      "id": "C12",
+      "claim": "vLLM 侧已合并的集成包括：vLLM 0.29.0 起 CUDA 安装自带 humming 依赖、vllm/utils/humming.py 的懒加载 facade、--linear-backend/--moe-backend 两个后端开关、--quantization humming 兼容路径（定位为 GPTQ INT3 等格式的兼容层）、schema 归一与在线量化/force requant、min capability 75；仍属计划或实验性的包括 autotune、量化 All-to-All（EP）、更多 PPU 设备与 Rubin Locality Domains。",
+      "report_anchor": "8. vLLM 集成：哪些能力已合并、哪些仍是实验性",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S09",
+        "S10",
+        "S11"
+      ],
+      "evidence": "博客 Usage 与 Future Plans；vLLM 源码中的 HummingConfig（get_min_capability=75、override_quantization_method 对 gpt_oss+mxfp4 报错改用 --moe-backend）、HummingLinearMethod/HummingMoEMethod、在线量化与 UnquantizedLinearMethod 回退、pad_n_to_multiple=256 / pad_k_to_multiple=128、create_humming_locks；仓库 tune/candidate.py 存在候选配置代码而博客把 autotune 列为未来工作。",
+      "critical": true
+    },
+    {
+      "id": "C13",
+      "claim": "对推理引擎的可迁移启示是抽象层级的选择：把「后端」抽象为（语义描述，执行参数）而非整套 kernel 文件、用内容寻址的 JIT 缓存把多格式×多设备的维护成本从 kernel 数量转移到组件数量、按架构文件隔离启发式、以统一格式 + 多适配器收敛生态碎片化，并把 batch invariance 这类数值稳定性作为显式开关管理。",
+      "report_anchor": "9. 对推理引擎插件化与跨硬件可维护性的启示",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S03",
+        "S05",
+        "S09"
+      ],
+      "evidence": "由三配置分层与 use_batch_invariant 约束（需关闭 Stream-K 且 warp_shape_k == block_shape_k）推得；vLLM 侧的 --linear-backend/--moe-backend 与 schema 适配器是已落地的同构形态。",
+      "critical": false
+    },
+    {
+      "id": "C14",
+      "claim": "证据边界明确：所有性能数字为项目方与 vLLM 社区自报，无独立第三方复现；微基准图表的逐点数值不可从正文取得（须查 benchmarks/results/<device>/ 产物）；正确性门只验证实现符合自身参考语义，不构成端到端模型质量评估；博客发布次日仓库仍有多次提交，博客数字不一定对应当前主分支。",
+      "report_anchor": "10. Limitations",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S06",
+        "S08",
+        "S11"
+      ],
+      "evidence": "博客自述由 vLLM 社区跑微基准、性能图为图片；runner.py 的参考实现与容差；提交记录显示 db930afa（2026-10-22）之后仍有 #160、#157 等修复提交。",
+      "critical": true
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "博客的问题定义：量化格式碎片化、硬件代际分裂、kernel 维护成本",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "1. 问题定义：三种碎片化同时发生"
+    },
+    {
+      "id": "U02",
+      "title": "Humming 的统一量化表示与三配置抽象（LayerConfig / ComputeConfig / TuningConfig）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "2. 抽象：Humming 的四层结构与数据流"
+    },
+    {
+      "id": "U03",
+      "title": "JIT 编译、缓存键与调度（按 M 区间选配置的启发式）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S05",
+        "S08",
+        "S11"
+      ],
+      "report_anchor": "2.4 JIT 编译与缓存"
+    },
+    {
+      "id": "U04",
+      "title": "支持矩阵：激活类型 × 设备 SM 下限 × 权重类型、特殊浮点格式、GEMM 类型",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S11"
+      ],
+      "report_anchor": "3. 支持矩阵"
+    },
+    {
+      "id": "U05",
+      "title": "代码路径：各模块职责与关键实现细节",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S11"
+      ],
+      "report_anchor": "4. 代码路径：仓库里各文件到底负责什么"
+    },
+    {
+      "id": "U06",
+      "title": "正确性门：参考实现、容差、outlier 与 shape 覆盖",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S06",
+        "S11"
+      ],
+      "report_anchor": "5. 正确性门"
+    },
+    {
+      "id": "U07",
+      "title": "微基准测量口径与各主题倍数",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S08"
+      ],
+      "report_anchor": "6. benchmark 逐口径核对"
+    },
+    {
+      "id": "U08",
+      "title": "端到端 serving 对照表（DeepSeek-V4.1-Flash / 8×H20 / TP=8）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "6.3 端到端 serving 数字"
+    },
+    {
+      "id": "U09",
+      "title": "编译时间对比与预热期批量编译",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S05"
+      ],
+      "report_anchor": "6.2 关键数字与其口径"
+    },
+    {
+      "id": "U10",
+      "title": "竞品比较与比较边界（Marlin / DeepGEMM / FlashInfer / CUTLASS / Triton）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S08"
+      ],
+      "report_anchor": "7. 竞品比较"
+    },
+    {
+      "id": "U11",
+      "title": "vLLM 集成形态与已合并/仍实验性清单",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S09",
+        "S10",
+        "S12"
+      ],
+      "report_anchor": "8. vLLM 集成"
+    },
+    {
+      "id": "U12",
+      "title": "对引擎插件化与跨硬件可维护性的启示",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S03",
+        "S05",
+        "S09"
+      ],
+      "report_anchor": "9. 对推理引擎插件化与跨硬件可维护性的启示"
+    },
+    {
+      "id": "U13",
+      "title": "Limitations 与思考与追问",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S06",
+        "S08",
+        "S11"
+      ],
+      "report_anchor": "10. Limitations"
+    },
+    {
+      "id": "U14",
+      "title": "博客中的量化模型能力榜单与生态叙事（如 SOTA 表述、致谢与灵感来源列表）",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "",
+      "omission_reason": "属项目方自述的宣传性内容，与本报告要回答的机制、口径与可维护性问题无直接关系；博客中「多数场景达到 SOTA」的定性主张已在 Limitations 中作为未验证表述处理，无需单列章节。"
+    }
+  ],
+  "limitations": [
+    "所有性能数字为项目方与 vLLM 社区自报，无独立第三方复现；本次研究未在任何 CUDA GPU 上运行 Humming。",
+    "博客性能图的具体点值不可从正文取得，本文只引用正文可唯一对应的数值；逐点数据需查 benchmarks/results/<device>/ 产物。",
+    "端到端表未披露请求长度分布、输出长度、prefix caching、投机解码、采样参数、调度策略、重复次数与误差条。",
+    "端到端对照同时把激活精度从 BF16 换成 tokenwise FP8，收益未在 kernel 实现与数值格式之间拆分。",
+    "MoE 微基准口径只计 Gateup+Down GEMM 延迟，不含 EP 通信与调度，不能换算为端到端 MoE 加速。",
+    "Hopper W4A8 面板以 DeepGEMM W8A8 为基线，混入了权重搬运量减半的物理优势。",
+    "编译时间对比依赖「禁用缓存」条件且只测单一 W4A16 kernel，CUTLASS 的编译成本高度依赖模板参数。",
+    "未与 TensorRT-LLM、SGLang 等引擎做同口径对比，也未把各竞品在同一 shape 下统一排行。",
+    "正确性门只验证实现符合自身参考语义（rtol 0.01 / atol 0.05），不是端到端模型质量评估；量化精度影响无数据。",
+    "autotune 尚未落地，启发式在部分 shape 上未必最优（博客自述）。",
+    "本文读取的仓库 commit 为 db930afa2256cba49b3e46c0589323c3e80b0bfb（2026-10-22），博客发布于 2026-10-21，其后仓库持续迭代，博客数字不一定对应当前主分支。",
+    "包体口径不一致：博客称 wheel 约 500 KB，README 称 100+KB，官方未说明两者所指。",
+    "T-Head 玄武 810E 仅有定性支持声明，缺少量化格式矩阵与性能数据；本文只以仓库 tune/ppu_sm80.py 作为间接证据。",
+    "报告中标注为 [分析者推导] 的结论（微基准 M 区间差异、输入/输出吞吐同比例、收益随并发上升的来源、包体口径差异）均为推断而非官方陈述。"
+  ]
+}

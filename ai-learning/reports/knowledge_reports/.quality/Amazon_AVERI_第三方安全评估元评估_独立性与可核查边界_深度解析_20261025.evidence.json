@@ -1,0 +1,396 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/Amazon_AVERI_第三方安全评估元评估_独立性与可核查边界_深度解析_20261025.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-25",
+  "generator": {
+    "model": "minimax-m3.1-flash",
+    "harness": "pi",
+    "run_id": "generator-amz-averi-20261025",
+    "explicit_model_override": true,
+    "override_reason": "用户明确要求继续使用当前 MiniMax M3.1 Flash（仅在明确 quota exhausted/rate limit 后切 GLM-5.3）"
+  },
+  "task": {
+    "summary": "深读 Amazon Science 2026-10-20《Strengthening AI safety evaluation through independent third-party review》，并实际读取 AVERI 自身的第三方审计框架材料（arXiv:2601.11699 与 AVERI 工作页）、AVERI 双盲试点说明页、Amazon 关于第三方模型评估（PRISM/ActiveFence）的官方文章与 AVERI 机构主页，重构第三方评估的对象、独立性安排、威胁模型、样本与方法、评分流程、结果与不确定性、披露边界与利益冲突，区分厂商自述、第三方框架与本报告推断，并与模型卡/自评、外部红队、审计认证路线比较，给出 EverAgent 报告独立复核机制的可迁移做法与 eval。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "重构第三方评估的对象、独立性安排、威胁模型、样本与测试方法、评分/红队流程、结果数字与不确定性、披露边界和利益冲突。"
+      },
+      {
+        "id": "R02",
+        "text": "区分厂商自述、第三方结论与本报告推断，并让每个安全结论可追溯到测试设计与样本，缺口明确。"
+      },
+      {
+        "id": "R03",
+        "text": "与模型卡、自评、外部红队、审计/认证路线比较。"
+      },
+      {
+        "id": "R04",
+        "text": "给出 EverAgent 报告独立复核机制可迁移的具体做法与 eval，包含反方解释、Limitations、思考与追问。"
+      },
+      {
+        "id": "R05",
+        "text": "公开产物不得出现设备名、远端路径或任何任务/派发/终端/产物标识；不得 commit/push，不改既有报告、MAP/wiki/索引。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "primary",
+      "title": "Amazon Science (2026-10-20) — Strengthening AI safety evaluation through independent third-party review",
+      "locator": "https://www.amazon.science/blog/strengthening-ai-safety-evaluation-through-independent-third-party-review",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S02",
+      "kind": "primary",
+      "title": "Brundage et al. / AVERI — Frontier AI Auditing: Toward Rigorous Third-Party Assessment of Safety and Security Practices at Leading AI Companies（arXiv:2601.11699，PDF 全文）",
+      "locator": "https://arxiv.org/abs/2601.11699",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S03",
+      "kind": "primary",
+      "title": "AVERI — Pilot Report: The World's First Double-Blind Evaluation（2026-07/08 双盲试点：安全飞地、MLCommons AILuminate、机密报告交付）",
+      "locator": "https://www.averi.org/ourwork/averi-pilot-report-the-worlds-first-double-blind-eval",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S04",
+      "kind": "primary",
+      "title": "Amazon Science — Independent evaluations demonstrate Nova Premier's safety（对照路线：PRISM BET steps to elicit、ActiveFence 3P flag rate）",
+      "locator": "https://www.amazon.science/blog/independent-evaluations-demonstrate-nova-premiers-safety",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S05",
+      "kind": "official",
+      "title": "AVERI 机构主页（机构定位、试点与标准路线）",
+      "locator": "https://www.averi.org",
+      "accessed_on": "2026-10-25"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "本次第三方复核的对象是 Amazon 内部安全评估套件中的 prompt 集本身（而非模型输出），检查维度为多样性、难度校准与方法论可靠性；Amazon 内部安全测试覆盖有害内容生成、网络安全风险、隐私保护、版权合规等类别，AVERI 确认覆盖与公开记录的安全类别（含自伤、网络安全）对齐。",
+      "report_anchor": "2. 评估对象：Amazon 的内部安全评估数据集",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "文章「AVERI's mandate wasn't just to test the outputs of Amazon models but to examine the quality and rigor of Amazon's own tests」与「examined the evaluation prompts for diversity, difficulty calibration, and methodological soundness」；覆盖类别出自开篇与「aligned with publicly documented safety categories including self-harm, cybersecurity」。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "公开材料支持的流程独立性安排是：Amazon 向 AVERI 提供一批被描述为随机样本的内部安全评估 prompts，但未说明由谁执行随机化、抽样框和验证方法；AVERI 在未获 Amazon 评估团队输入的情况下独立检查样本；团队由执行主任 Miles Brundage 领导并含 Sean McGregor、A. Feder Cooper、George Balston；Amazon 将 AVERI 描述为独立非营利机构。",
+      "report_anchor": "3. 独立性安排：这次合作实际做到了什么",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S05"
+      ],
+      "evidence": "S01 原文称「We provided AVERI with a random sample of prompts…」与「AVERI assessed the sample independently without input from our evaluation team」，并列出团队构成；该措辞证明 Amazon 提供了被称为随机的样本，但不足以判断随机化由谁执行及其方法。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "以 AVERI 自己的框架为标尺，公开材料不足以证明本次合作达到其 frontier AI audit 标准：未声明任何 AI 保证等级（AAL）；公开范围只确认提供 prompt 样本，未说明是否开放模型内部、训练过程、算力分配、治理记录或员工访谈；财务关系、标准化聘用条款与双向冷却期等独立性保障均不可核查；对外可见的也不是 AVERI 标准化审计报告，而是 Amazon 撰写的总结文章。是否存在未公开的其它访问或报告，本文无法判断。",
+      "report_anchor": "3.2 用 AVERI 自己的标准来对照",
+      "support": "derived",
+      "source_ids": [
+        "S02",
+        "S01",
+        "S03"
+      ],
+      "evidence": "S02 全文给出 AAL-1..4、访问深度、强制披露财务关系、标准化聘用条款、双向冷却期、替代付费模式、审计方定义指标与标准化报告结构；S01 只公开 prompt 样本、执行独立性与结果摘要，未披露等级、其它访问、财务关系或聘用条款。逐项判断均限于公开材料。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "威胁模型覆盖三类失效：污染风险（内容看起来原创而非取自公开数据集，降低预训练泄漏风险）、难度失配（只测容易题，建议补多步对抗 prompt）以及表层通过风险——原文明确指出模型可能仅凭 prompt 表面线索就拒绝，因此通过这些测试并不必然代表在新情境下可靠的安全行为；另识别出少量带时限引用的 prompt 与少数判据不清的边界情形。",
+      "report_anchor": "4. 威胁模型与「污染」视角",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "文章「Low contamination risk」「Calibrating attack sophistication」「Maintaining evaluation freshness」与「models may refuse based on superficial cues in a prompt, so passing those tests doesn't necessarily indicate reliable safety behavior in new situations」。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "复核结果为三项确认（覆盖与公开安全类别对齐、测试方法多样含单轮与多轮及风格变化、低污染风险）与四项改进（多语言与风格更均衡、补多步对抗 prompt、保持评估新鲜度、确保评估信号质量）；Amazon 声称做了四项落地：测试集刷新（移除冗余、加入更具挑战性的对抗场景）、分层难度校准框架、季度评审维护节奏、把多语言 prompt 扩展到所有风险类别。",
+      "report_anchor": "6. 评分与红队流程：确认项与改进项",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "文章「What the review confirmed」「Opportunities for improvement」「How we incorporated the feedback」三节的逐条原文。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "本次合作没有给出任何可核查的量化结果：样本量、抽样框与抽样率、随机化执行者与方法、通过/失败判据、各维度评分、发现问题的确切数量、改进项的量化目标、AAL 等级声明、AVERI 报酬与聘用条款、以及四项改进是否落地与效果的独立验证，均未披露；公开范围内也没有 AVERI 的原始复核报告，对外只有 Amazon 的总结文章。",
+      "report_anchor": "7. 结果数字与不确定性",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "文章全文只出现定性表述与两条改进建议中的「少量/少数」措辞，无任何数字或等级声明；披露边界表逐项列出未披露内容并标注「未公开」；该缺口为已读材料的直接观察。",
+      "critical": true
+    },
+    {
+      "id": "C07",
+      "claim": "公开材料暴露的是程序信息缺口，而不是已证实的利益交换：Amazon 是被评估方且发布了公开摘要；样本来自其内部套件并由其提供，但随机化执行者、抽样框、评估方遴选、财务关系、聘用条款和双方的披露治理均未披露。AVERI 框架恰好要求披露财务关系、标准化聘用条款、冷却期并降低审计方对被审方的依赖。",
+      "report_anchor": "8.2 结构性利益冲突清单",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "S01 证明样本来源、Amazon 提供样本及 Amazon 发布摘要；S01 没有说明随机化执行者、财务关系、遴选和披露治理。S02 给出对应的独立性保障要求。正文因此把这些项目标为「不可核查」，没有把 Amazon 出资或单方控制抽样写成事实。",
+      "critical": true
+    },
+    {
+      "id": "C08",
+      "claim": "作为对照，Amazon 同期的另一条第三方路线是外部红队与黑盒压力测试：PRISM AI 的 BET 以「steps to elicit」为核心指标，BET Eval MAX 与 V1.0 指标（面向非推理模型）下 Nova Pro 52、Nova Premier 43、Claude 3.5 v2 37.7、Claude 3.7 thinking 11.5、Claude 3.7 9.9、Llama 4 Maverick 6.5；ActiveFence 在八个核心 RAI 类别上盲测得 3P flag rate：Nova Premier 12.0%、Claude 3.7 非推理 20.6%、GPT-4.1 API 22.4%；Amazon 同时声明这些是点时快照且无人能保证完美安全。",
+      "report_anchor": "7.2 同期可引用的外部评估数字",
+      "support": "direct",
+      "source_ids": [
+        "S04"
+      ],
+      "evidence": "Amazon Science 关于 Nova Premier 独立评估一文中的 BET 指标定义与对比表、ActiveFence 三模型 flag rate 表，以及「These assessments represent a point-in-time snapshot… No AI system can guarantee perfect safety in all scenarios」。",
+      "critical": false
+    },
+    {
+      "id": "C09",
+      "claim": "对 EverAgent 报告机制可迁移的做法包括：①对 evidence claim 语料做可复现的抽样元评估 ②区分结构合规题与论证成立题 ③建立定期维护节奏 ④新增「表层通过」反例检查。现有公开 review sidecar 已记录模型、Harness、评分与核验范围，可进一步记录是否共享上下文/工具轨迹、是否来源优先复核、是否共用解析路径，以及抽样框与不可判定率。",
+      "report_anchor": "10. 对 EverAgent 报告独立复核机制的可迁移做法与 eval",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "四条做法对应 S01 的 meta-evaluation、difficulty calibration、quarterly review cadence 与 evaluation signal quality；程序独立性字段对应 S02 的独立性和程序公平要求。正文已核对本仓 review sidecar 为公开产物，因此没有误写成「复核记录不公开」。",
+      "critical": false
+    },
+    {
+      "id": "C10",
+      "claim": "报告提出六条反方解释：可能是公关友好的复核、收益可能主要来自内部梳理、难度分层可能退化为配额优化、公开材料只支持执行环节的独立性而无法判断委托与披露独立性、保密可能是必要设计、以及外部红队可能覆盖部分需求。每条均明确标为分析推断。",
+      "report_anchor": "11. 反方解释",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "evidence": "各条反方的原始依据分别为 S01 的建议与落地内容、S03 的机密交付实践与「low-tech 审计仍会重要」表述、S04 的外部红队覆盖范围；结论归纳为本报告分析并逐条标注。",
+      "critical": false
+    },
+    {
+      "id": "C11",
+      "claim": "AVERI 公开描述的一次双盲试点在安全飞地内用 AILuminate 未使用 prompts 评测 Gemini 2.5 Flash-Lite，并把含定量结果的机密报告交付 Google DeepMind，同时保持 prompts、输出和模型权重隔离；这与本次 Amazon 由被评估方公开发布摘要的披露形态不同，但单个试点不能代表 AVERI 的全部标准实践。",
+      "report_anchor": "3.3 一个值得注意的对照",
+      "support": "direct",
+      "source_ids": [
+        "S03"
+      ],
+      "evidence": "试点页说明双盲的飞地机制、「We provided Google DeepMind with a confidential report of the findings… while keeping the actual prompts and outputs private」，以及 2024 年 OpenMined + Anthropic + 英国 AI Security Institute 在 H100 飞地内的前作。",
+      "critical": false
+    },
+    {
+      "id": "C12",
+      "claim": "本报告的三级来源分级贯穿全文：【厂商自述】为 Amazon 官方文章（含其转述的第三方结论）；【第三方框架】为 AVERI 自身关于审计框架与试点的材料（对其框架主张为一手证据，对其成效仍为自述）；【本报告推断】为本文基于材料的分析并逐处标注；本文未参与任何评估、未核验任何底层数据。",
+      "report_anchor": "来源分级（贯穿全文）",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05"
+      ],
+      "evidence": "本文的来源分级声明与 Limitations 第 10 条；各来源的性质见附录 A 的证据分级说明。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "问题定义：为何评「测试」而非只评「被测物」，元评估在行业中的位置",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S05"
+      ],
+      "report_anchor": "1. 问题定义"
+    },
+    {
+      "id": "U02",
+      "title": "评估对象：Amazon 内部安全评估数据集、覆盖类别、检查维度",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "2. 评估对象"
+    },
+    {
+      "id": "U03",
+      "title": "独立性安排：抽样、评估方构成、与 AVERI 框架四维要求的逐项对照",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "3. 独立性安排"
+    },
+    {
+      "id": "U04",
+      "title": "威胁模型：污染、难度失配、表层通过、时效性",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "4. 威胁模型与「污染」视角"
+    },
+    {
+      "id": "U05",
+      "title": "样本与测试方法：随机抽样、检查维度、定性而非量化的性质",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "report_anchor": "5. 样本与测试方法"
+    },
+    {
+      "id": "U06",
+      "title": "评分与红队流程：三项确认、四项改进、Amazon 的四项落地",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "6. 评分与红队流程"
+    },
+    {
+      "id": "U07",
+      "title": "结果数字与不确定性：无量化结果，以及对照路线的外部评估数字",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S04"
+      ],
+      "report_anchor": "7. 结果数字与不确定性"
+    },
+    {
+      "id": "U08",
+      "title": "披露边界与利益冲突清单",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "8. 披露边界与利益冲突"
+    },
+    {
+      "id": "U09",
+      "title": "与模型卡/自评、外部红队、审计认证、公开基准、EverAgent 既有复核的比较",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "9. 与其它路线的比较"
+    },
+    {
+      "id": "U10",
+      "title": "对 EverAgent 报告独立复核机制的可迁移做法与 eval 指标",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "report_anchor": "10. 对 EverAgent 报告独立复核机制的可迁移做法与 eval"
+    },
+    {
+      "id": "U11",
+      "title": "反方解释、Limitations 与思考与追问",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "11. 反方解释"
+    },
+    {
+      "id": "U12",
+      "title": "数字与结论速查表",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "附录 B"
+    },
+    {
+      "id": "U13",
+      "title": "Amazon 的 frontier model safety framework 官方页面与其内部模型安全分类细则",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "S01",
+        "S04"
+      ],
+      "report_anchor": "",
+      "omission_reason": "抓取到的对应页面并非预期的框架正文（返回的是站点其它内容），无法作为可引用的一手材料；为避免以未核实内容充数，改为只使用 S01 中明确列出的内部安全测试类别（有害内容生成、网络安全、隐私、版权）与 S04 中的八个核心 RAI 类别作为覆盖口径依据。"
+    },
+    {
+      "id": "U14",
+      "title": "AVERI 试点报告中的定量结果与配套技术报告",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "S03"
+      ],
+      "report_anchor": "",
+      "omission_reason": "试点页只说明结果以机密报告交付被审方、未公开定量数字，配套技术报告未在本次可得材料范围内；仅采用该页对双盲机制、飞地保密设计与交付形态的可核实陈述。"
+    }
+  ],
+  "limitations": [
+    "本次合作未给出任何可核查的量化结果：样本量、抽样框、判据、评分、改进目标与保证等级均未披露，报告无法给出任何精度或覆盖率数字。",
+    "AVERI 的原始复核报告未公开，读者只能读到被审方撰写的总结文章，第三方结论与厂商叙述无法区分。",
+    "抽样过程与披露治理不透明：已知样本来自 Amazon 内部套件并由 Amazon 提供，但谁执行随机化、如何确定抽样框、双方如何决定公开内容均未披露。",
+    "委托与利益关系不可核查：是否付费、谁出资、聘用条款、冷却期等 AVERI 框架中的独立性保障在公开材料中均未披露；不能据此断言 Amazon 是出资方。",
+    "四项改进是否真正落地及效果如何，没有后续独立评估。",
+    "元评估不等于审计：公开材料只描述对 prompt 样本的复核，未显示公司级访问，因而不足以建立 frontier AI audit 或任何 AAL 声明。",
+    "结论为定性专家评审；公开材料不足以证明本次复核达到了 AVERI 框架强调的可追溯、可复现与适度自动化。",
+    "对照用的外部评估数字同样由厂商文章转述；BET V1.0 指标面向非推理模型定制、各模型推理预算是否对等未披露、flag rate 不区分严重度。",
+    "时效性：仅覆盖到 2026-10-24 可得材料；Amazon 与 AVERI 均声明后续会有更多工作。",
+    "本报告未参与任何评估、未核验底层数据，关于 Amazon 内部测试集的一切陈述均为其自述。",
+    "本报告中标注为【本报告推断】的部分（独立性边界、Goodhart 风险、可比性分析、比较表判断、反方解释、迁移做法与 eval 设计）均为本文推断而非原文陈述。"
+  ]
+}

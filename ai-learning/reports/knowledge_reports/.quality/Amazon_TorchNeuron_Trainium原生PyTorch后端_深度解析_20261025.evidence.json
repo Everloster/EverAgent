@@ -1,0 +1,678 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/Amazon_TorchNeuron_Trainium原生PyTorch后端_深度解析_20261025.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-25",
+  "generator": {
+    "model": "minimax-m3.1-flash",
+    "harness": "pi",
+    "run_id": "generator-920be79a006f",
+    "explicit_model_override": true,
+    "override_reason": "用户明确指定生成器使用 MiniMax M3.1 Flash + pi；仅在出现明确额度耗尽错误时才切 GLM-5.3（本次全程未出现该证据）"
+  },
+  "task": {
+    "summary": "深读 Amazon Science 2026-10-22《The science behind TorchNeuron, Amazon's new PyTorch backend for AWS Trainium chips》，并交叉核对 PyTorch 官方发布文、AWS Neuron 官方文档、固定 commit 的 aws-neuron/torch-neuronx README/API 兼容表/分布式契约/算子 lowering/统计文档，以及 PyTorch 2.14 torch.compiler 与 PyTorch/XLA 官方文档；用白话解释 eager/compiled/adaptive eager 三条路径、API 兼容与 fallback、自动微分、分布式训练边界，逐条核实性能数字的基线/硬件/精度/任务口径，标明官方自报与客户口径，与旧 XLA 版、默认 torch.compile+TorchInductor、PyTorch/XLA on TPU 做有边界比较，并提炼对开源框架与异构后端设计的可迁移启示。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "先查重；完整读取原文至结尾，并交叉核对 TorchNeuron/Neuron SDK 官方文档或源码、PyTorch backend/compile 接口与 Trainium 架构资料。"
+      },
+      {
+        "id": "R02",
+        "text": "用白话解释 eager/graph/compile 路径、算子覆盖、fallback、自动微分、分布式训练边界。"
+      },
+      {
+        "id": "R03",
+        "text": "核实所有性能数字的基线、硬件、精度和任务，明确哪些属于官方自报。"
+      },
+      {
+        "id": "R04",
+        "text": "比较 XLA、torch.compile/Inductor、TorchTPU 等路线。"
+      },
+      {
+        "id": "R05",
+        "text": "提炼对开源框架和异构后端设计的可迁移启示；包含 Limitations 与思考与追问。"
+      },
+      {
+        "id": "R06",
+        "text": "产出 report-v2 / important / deep / standalone 报告与完整 evidence sidecar；review 仅初始化为空，不自行复核、不 finalize；不 commit/push，不修改索引与 MAP。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "official",
+      "title": "Amazon Science — The science behind TorchNeuron, Amazon's new PyTorch backend for AWS Trainium chips（Robert Hundt）",
+      "locator": "https://www.amazon.science/blog/the-science-behind-torchneuron-amazons-new-pytorch-backend-for-aws-trainium-chips",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S02",
+      "kind": "official",
+      "title": "PyTorch 官方博客 — Introducing TorchNeuron: Native PyTorch backend for AWS Trainium（Ebba Simpson）",
+      "locator": "https://pytorch.org/blog/introducing-torchneuron-native-pytorch-backend-for-aws-trainium",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S03",
+      "kind": "official",
+      "title": "AWS Neuron 文档 — Native PyTorch for AWS Trainium",
+      "locator": "https://awsdocs-neuron.readthedocs-hosted.com/en/latest/frameworks/torch/pytorch-native-overview.html",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S04",
+      "kind": "primary",
+      "title": "aws-neuron/torch-neuronx @ 50b1417 — README.md（安装与版本钉、四条能力线、torch.compile 参数支持表）",
+      "locator": "https://github.com/aws-neuron/torch-neuronx/blob/50b14171affaa365f1df6aa015232427336f6a4d/README.md",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S05",
+      "kind": "primary",
+      "title": "aws-neuron/torch-neuronx @ 50b1417 — docs/torch_api_compatibility.md（PyTorch API 三值兼容表）",
+      "locator": "https://github.com/aws-neuron/torch-neuronx/blob/50b14171affaa365f1df6aa015232427336f6a4d/docs/torch_api_compatibility.md",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S06",
+      "kind": "primary",
+      "title": "aws-neuron/torch-neuronx @ 50b1417 — docs/AI-distributed.md（分布式后端注册与实现契约、已知 xfail）",
+      "locator": "https://github.com/aws-neuron/torch-neuronx/blob/50b14171affaa365f1df6aa015232427336f6a4d/docs/AI-distributed.md",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S07",
+      "kind": "primary",
+      "title": "aws-neuron/torch-neuronx @ 50b1417 — docs/aten_lowering_agent.md（ATen lowering skill 的确定性验收契约）",
+      "locator": "https://github.com/aws-neuron/torch-neuronx/blob/50b14171affaa365f1df6aa015232427336f6a4d/docs/aten_lowering_agent.md",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S08",
+      "kind": "primary",
+      "title": "aws-neuron/torch-neuronx @ 50b1417 — docs/statistics/torch_neuronx_stats_readme.md（统计与显存口径、惰性分配器语义）",
+      "locator": "https://github.com/aws-neuron/torch-neuronx/blob/50b14171affaa365f1df6aa015232427336f6a4d/docs/statistics/torch_neuronx_stats_readme.md",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S09",
+      "kind": "primary",
+      "title": "aws-neuron/torch-neuronx 固定 commit 50b1417 的仓库快照与目录树",
+      "locator": "https://github.com/aws-neuron/torch-neuronx/tree/50b14171affaa365f1df6aa015232427336f6a4d",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S10",
+      "kind": "official",
+      "title": "PyTorch 2.14 官方文档 — torch.compiler",
+      "locator": "https://docs.pytorch.org/docs/2.14/user_guide/torch_compiler/torch.compiler.html",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S11",
+      "kind": "official",
+      "title": "PyTorch/XLA 官方文档",
+      "locator": "https://docs.pytorch.org/xla/master/",
+      "accessed_on": "2026-10-25"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "TorchNeuron 不是新框架，而是通过 PyTorch 官方扩展点（PrivateUse1 设备后端与 torch.accelerator API）把 Trainium 注册为一个标准 PyTorch 设备，torch.nn、torch.tensor、torch.autocast、torch.distributed、torch.profiler 原样可用；.to('neuron') 即可切换设备，torch.compile 用 backend=\"neuron\"。",
+      "report_anchor": "开头三行",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S04",
+        "S03"
+      ],
+      "evidence": "S02 'TorchNeuron registers Trainium through PrivateUse1, PyTorch's official extension point for custom hardware, so the standard APIs work as written' 与 Getting started 的 .to('neuron')、torch.compiler.set_default_backend(\"neuron\") 说明；S04 README 的 Quick Start 示例；S03 'integrates through PyTorch's standard PrivateUse1 device backend mechanism'。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "执行分三条路径：eager（每算子单独编译出 NEFF、逐个下发、中间结果经 HBM 搬运）、compiled（TorchDynamo 捕获 FX 图 → AOTAutograd 前置 trace 反向图 → Neuron 后端经 Torch-MLIR 降到 StableHLO → Neuron 编译器产出 NEFF），以及可选的 adaptive eager（CPU 侧解释器累积算子分派成小图、并行编译、与已编译片段的执行重叠），后者被官方标注为 experimental。",
+      "report_anchor": "3.1 三种模式",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "S02 Eager 段 'each operation compiles its own Neuron Executable File Format (NEFF) file, launches it on device, and moves its intermediates through HBM'、torch.compile 段的 TorchDynamo/AOTAutograd/Torch-MLIR/StableHLO 链路与 'adaptive eager mode (experimental)'；S01 adaptive eager 一节；S03 的编译流程四步与 Adaptive Eager Execution 定义。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "adaptive eager 的机制核心是：编译耗时与累积图的大小、其中的算子数与输入张量形状直接相关，因此由智能自适应算法动态选择子图，以最大化编译时间与已编译片段执行的重叠，从而对相当多的模型'完全隐藏编译时间'；同时刻意保留与源码行的准确关联以不破坏 eager 的调试体验。",
+      "report_anchor": "3.2 adaptive eager 的核心洞见",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "S01 原文 'the accumulated graphs, their individual operations, and their input tensor shapes correlate directly with compile time... a smart, adaptive algorithm dynamically selects the right subgraphs to maximize the overlap of compile time with the execution of already compiled snippets, effectively hiding all compile time for a great variety of models' 与 'We didn't want to disrupt this experience, so TorchNeuron's adaptive-eager mode maintains accurate source correlation'。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "TorchNeuron 异步排队 PyTorch 操作，Neuron 编译器在后台把 eager 的单个操作或 torch.compile 的捕获区域编译成 NEFF；NEFF 有内存与磁盘缓存。单机分布式训练通过共享编译服务让相同操作每台机器只编译一次；官方在一个大语言模型、单机 64 个进程的测试中报告，到首个训练 step 的时间减少约三分之一。",
+      "report_anchor": "3.4 NEFF 与缓存",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "S01 Caching 一节原文：eager 每个操作一个 NEFF、torch.compile 每个捕获区域一个 NEFF；内存与持久磁盘缓存；共享编译服务每台机器只编译一次。测试口径原文为 “a large language model spread across 64 processes on a single machine”，time to first training step 减少约三分之一。原文未给 UltraServer/Graviton/16–144 Trainium 配置，也未称整套栈默认 AOT。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "固定 commit 的 API 兼容文档用 Y、CPU_FALLBACK、N 标记 PyTorch API；全文 29 个章节、2,447 条记录中有 1,857 Y、436 CPU_FALLBACK、154 N，核心 torch APIs 章节为 362/94/16。该统计是 API 兼容状态而非 native operator coverage，因为 Y 包含 host-only，N 包含其它后端专属、CPU-only 和 removed APIs。436 条 fallback 中仅 torch.range 与 torch.logspace 明确写有 torch.compile decomposition；限制列中保守检索 differ(s) from CPU 命中 22 行，但含别名且不保证完整。",
+      "report_anchor": "4.2 覆盖度数字",
+      "support": "derived",
+      "source_ids": [
+        "S05"
+      ],
+      "evidence": "对 S05 固定 commit 的 Markdown 表按第 3 列机械统计：全文 2,447=1,857+436+154；torch APIs 472=362+94+16。按二级标题分组共 29 节。限制术语明示 Y 可为 Native 或 Host-only；Removed APIs 一节含 8 条 N。对 436 条 CPU_FALLBACK 搜索 decomposition 仅命中 torch.range 与 torch.logspace；对 limitations 搜索 differ(s) from CPU 命中 22 行，含 API 别名与重复入口。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "PyTorch 上游测试（ATen、Dynamo、distributed、profiler）2026 年 8 月一次运行约 154K 条结果，其中约 69K 被跳过；约 30K 属 PyTorch 自身 eligibility 检查（CUDA-only / CPU-only，非 Neuron 特有），剩余约 39K 为 Neuron 主动跳过，分三组：最大一组约 22K 是尚无 native Neuron lowering 的算子（elementwise、reduction、foreach、advanced-indexing、advanced-linalg 的边角情形与 fused LSTM/GRU cell），其次是 CUDA 专属测试，第三组是首版明确选择不支持的特性（含稀疏张量、NestedTensor、前向模式自动微分 JVP、原生多头注意力的任意 attention mask、per-channel 量化、torch.signal windows、bilinear/bicubic up sample、动态与符号形状等）。",
+      "report_anchor": "4.4 上游测试",
+      "support": "direct",
+      "source_ids": [
+        "S02"
+      ],
+      "evidence": "S02 'Testing methodology and results' 一节原文，含 154K / 69K / 30K / 39K / 22K 数字与三组跳过的完整清单。",
+      "critical": true
+    },
+    {
+      "id": "C07",
+      "claim": "覆盖度还被动态观测：持续运行 10 万个 Hugging Face 模型（按下载量覆盖 99.9% 真实使用），在 Trainium 上以缩减但有代表性的配置运行，逐个记录是否加载、forward/backward 是否跑通、是否编译，以及哪些算子在设备上执行、哪些回退 CPU；截至 2026 年 9 月仍有缺口待关闭。",
+      "report_anchor": "4.5 10 万模型盲扫",
+      "support": "direct",
+      "source_ids": [
+        "S02"
+      ],
+      "evidence": "S02 'Blind Sweep (Broad testing at scale)' 段原文，含 100k / 99.9% / 记录项与 'as of September, 2026' 的图注说明；图内具体数值本报告未取到。",
+      "critical": true
+    },
+    {
+      "id": "C08",
+      "claim": "torch.compile 路径上 dynamic 仅支持 False（动态形状与符号整数不支持）、mode 仅支持 default、options 只读少量 Neuron 专用键且 Inductor 选项不生效（编译器 flag 需走 NEURON_CC_FLAGS）；因此 CUDA/其它 Inductor 后端上的编译调优参数不能直接迁移到 Trainium。",
+      "report_anchor": "4.3 fallback 的代价与编译期限制",
+      "support": "direct",
+      "source_ids": [
+        "S04"
+      ],
+      "evidence": "S04 README 的 torch.compile 参数支持表原文：dynamic “False only. Dynamic shapes and symbolic integers are not supported”；mode “default only”；options “Limited... Inductor options have no effect. Pass compiler flags in NEURON_CC_FLAGS”。报告只据此判断调优参数不可直接迁移，不再声称所有策略都会静默失败。",
+      "critical": true
+    },
+    {
+      "id": "C09",
+      "claim": "分布式通过自定义 torch.distributed 后端 \"neuron\" 实现（C++ 侧 NeuronBackend/NeuronWork/NeuronWatchdog），集合通信经 lower_collective_hlo 回调在 Torch-MLIR 中 trace 成 StableHLO；已知边界是经 extended-API 注册后 PyTorch 标记为 BackendType.CUSTOM，而 CUSTOM 不携带设备感知，通用 ProcessGroup::barrier() 路径被 xfail；DTensor 的 SDPA 支持 replicate、TP、batch 与序列 context-parallel 四种分片策略。",
+      "report_anchor": "5.3 分布式训练",
+      "support": "direct",
+      "source_ids": [
+        "S06"
+      ],
+      "evidence": "S06 'Registration & the single-backend contract'、'Collective lowering (contract)' 与 DTensor 分片段落原文，含 'CUSTOM carries no device awareness, so generic ProcessGroup::barrier() paths are xfailed' 与四种 SDPA 策略说明。",
+      "critical": true
+    },
+    {
+      "id": "C10",
+      "claim": "自动微分在编译路径上由 AOTAutograd 前置 trace 反向图，与前向 FX 图一并交给后端降级；自定义 NKI 算子若参与训练，必须用 register_autograd() 提供反向实现。",
+      "report_anchor": "5.1 自动微分",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "S02 “AOTAutograd traces the backward graph ahead of time” 与 NKI 段的 “using the PyTorch recommended register_autograd style”；S03 “Training models that include NKI kernels requires a backward version of the custom op, implemented using the register_autograd() function”。报告不再把 dynamic=False 因果归因给 AOTAutograd。",
+      "critical": false
+    },
+    {
+      "id": "C11",
+      "claim": "本次发布几乎没有受控性能数字：既无吞吐、延迟、tokens/s，也无与 CUDA/XLA 的同条件对比、无稳态训练步时间或 MFU、无 TTFT、无编译时间绝对值、无统一精度对比表。公开材料只有两类性能口径：共享编译服务让单机 64 进程 LLM 到首个训练 step 的时间减少约三分之一（厂商自测，冷启动/编译成本），以及 Deepgram 客户口径的每美元多处理约 60% 输入音频秒（非 AWS 基准）。",
+      "report_anchor": "6.2 明确缺失的部分",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "S01 与 S02 全文逐段核对：S01 只有一处性能类数字（单机 64 进程上的 LLM，time to first training step 减少约三分之一）；S02 的数字集中在测试覆盖（154K/69K/39K/22K、100k 盲扫、841 模型）上；Deepgram 引语见 S02 “about 60% more input audio seconds per dollar than our existing GPU baselines”。缺口清单由本报告逐项整理。",
+      "critical": true
+    },
+    {
+      "id": "C12",
+      "claim": "官方材料之间存在三处口径冲突：可用状态（S02/S04 称 2026-10-20 起 public Beta 且可 pip 安装，S03 称仅 closed Beta 需联系支持代表）、Pipeline Parallelism 支持与否（S02 列为支持，S03 称 will be available soon）、以及同名包的两个世代（早期 torch-neuronx 是 XLA 版产品，本仓库是原生版），版本钉错会装到另一套栈上。",
+      "report_anchor": "6.3 官方口径之间的三处冲突",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "evidence": "S03 'TorchNeuron is currently only available as part of a closed Beta program' 与 'Pipeline Parallelism (PP) will be available soon'；S02 把 pipeline parallelism 列入支持清单并称 'going live as public Beta on Oct. 20'；S04 'If you use the XLA-based torch-neuronx (PyTorch/XLA)... This repository is the PyTorch-native backend' 与 'Earlier torch-neuronx versions are the XLA-based product'。",
+      "critical": true
+    },
+    {
+      "id": "C13",
+      "claim": "仓库自带的 ATen 算子 lowering 工作流为 AI agent 驱动的工程流程设定了确定性验收闸门：一次只降低一个算子；必须产出聚焦测试退出码、上游 runner 结果、registry 快照、覆盖率数据与 autograd 数据；新增一个 skip 或 xfail 默认导致验收失败；每个 node ID 与 limitation ID 需人工批准才能通过 --accept-limitation；未获明确用户批准不得开 PR，只能开 draft PR。",
+      "report_anchor": "十、对开源框架与异构后端设计的可迁移启示",
+      "support": "direct",
+      "source_ids": [
+        "S07"
+      ],
+      "evidence": "S07 'Acceptance' 一节原文，含 'A new skip or xfail fails acceptance by default'、'A human must approve each exact node ID and limitation ID before the workflow passes --accept-limitation' 与 'It does not open a pull request without explicit user approval. After approval, it opens only a draft pull request.'",
+      "critical": false
+    },
+    {
+      "id": "C14",
+      "claim": "[推测] TorchNeuron 真正的可迁移价值在边界披露方法论而非性能数字：用带限制列的三值 API 兼容表、上游测试跳过清单与按设计特征分类的模型普查，把“这个异构后端成熟吗”拆成可逐项核对的问题；静态兼容总数本身不能当作 native operator coverage，其性能价值仍需另行实测。",
+      "report_anchor": "12.1 我真正理解了什么",
+      "support": "inference",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S05"
+      ],
+      "evidence": "由 S05 的三值兼容表及限制术语、S02 的上游测试与盲扫方法、S01 的 841 代表模型与 shape registry 方法学共同推出；报告同时用 S05 的结构说明为何 2,447 条全局状态不能直接形成覆盖率。原文未以该结论表述，属分析。",
+      "critical": false
+    },
+    {
+      "id": "C15",
+      "claim": "[推测] dynamic 形状不支持与原生 MHA 不支持任意 attention mask 这两条，对以变长上下文与长生成序列为主的 Agent 负载构成比性能更早出现的硬边界，需要在数据侧做形状固定化（bucketing/padding）才能进入性能讨论。",
+      "report_anchor": "9.1 部署风险",
+      "support": "inference",
+      "source_ids": [
+        "S02",
+        "S04"
+      ],
+      "evidence": "S04 的 dynamic 仅 False 与 S02 的明确不支持清单（dynamic and symbolic shapes、arbitrary attention masks in native multi-head attention，no-mask 与 causal 支持）推导；原文未讨论 agent 负载，故标为推断。",
+      "critical": false
+    },
+    {
+      "id": "C16",
+      "claim": "替代路线的官方边界是：TorchInductor 是默认 torch.compile 编译器，为多种加速器和后端生成代码；PyTorch/XLA 则把 XLA 实现为 PyTorch backend，并以熟悉的 PyTorch API 支持 TPU 训练。TorchNeuron 使用自定义 neuron backend，因此比较只能用于解释编译后端路线，不能替代同硬件、同模型 benchmark。",
+      "report_anchor": "七、与替代路线的有边界比较",
+      "support": "direct",
+      "source_ids": [
+        "S04",
+        "S10",
+        "S11"
+      ],
+      "evidence": "S10 原文：TorchInductor is the default torch.compile deep learning compiler that generates fast code for multiple accelerators and backends；S11 原文：torch_xla is a Python package that implements XLA as a backend for PyTorch，并说明可用熟悉 API 在 TPU 上训练；S04 明确原生 TorchNeuron 与早期 XLA-based torch-neuronx 为两代产品。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "整体论证（问题、扩展点路线、三层结论）与本报告的核心判断",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S05"
+      ],
+      "report_anchor": "开头三行"
+    },
+    {
+      "id": "U02",
+      "title": "来源清单与读法（科学叙事 / 产品发布 / 实现契约 / 替代路线校准）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11"
+      ],
+      "report_anchor": "一、一手来源清单与读法"
+    },
+    {
+      "id": "U03",
+      "title": "两篇官方材料的信息集分工与不重叠之处",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "report_anchor": "2.1 两篇官方材料讲的是两件不同的事"
+    },
+    {
+      "id": "U04",
+      "title": "Amazon Science 原文的论证链：agent 普查、模型分类、841 代表模型、shape registry、三层回归",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "2.2 S01 的论证链"
+    },
+    {
+      "id": "U05",
+      "title": "PyTorch 官方文的论证链：扩展点优先、一致体验主张与上游 PR 协作",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02"
+      ],
+      "report_anchor": "2.3 S02 的论证链"
+    },
+    {
+      "id": "U06",
+      "title": "eager / compiled / adaptive eager 三种模式的机制与定位",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "3.1 三种模式"
+    },
+    {
+      "id": "U07",
+      "title": "adaptive eager 的编译-执行重叠机制与源码关联约束",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "3.2 adaptive eager 的核心洞见"
+    },
+    {
+      "id": "U08",
+      "title": "编译链路：TorchDynamo → AOTAutograd → Torch-MLIR → StableHLO → Neuron IR → NEFF",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S06"
+      ],
+      "report_anchor": "3.3 编译链路"
+    },
+    {
+      "id": "U09",
+      "title": "NEFF、内存与磁盘缓存、共享编译服务、单机 64 进程与首个训练步 -1/3",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "3.4 NEFF 与缓存"
+    },
+    {
+      "id": "U10",
+      "title": "三条执行路径与缓存、共享编译服务的机制示意",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "report_anchor": "3.5 机制示意"
+    },
+    {
+      "id": "U11",
+      "title": "API 兼容表的三值语义与限制术语",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S05"
+      ],
+      "report_anchor": "4.1 API 兼容表的三值语义"
+    },
+    {
+      "id": "U12",
+      "title": "固定 commit 的 API 兼容文档统计：2,447/1,857/436/154、核心章节分组与不可当作 native coverage 的原因",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S05"
+      ],
+      "report_anchor": "4.2 覆盖度数字"
+    },
+    {
+      "id": "U13",
+      "title": "fallback 定义、仅两条明确 decomposition、torch.compile 参数支持表与 Inductor 选项失效",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S04",
+        "S05"
+      ],
+      "report_anchor": "4.3 fallback 的代价与编译期限制"
+    },
+    {
+      "id": "U14",
+      "title": "上游测试 154K/69K/30K/39K/22K 与三组跳过的完整清单",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02"
+      ],
+      "report_anchor": "4.4 上游测试"
+    },
+    {
+      "id": "U15",
+      "title": "10 万模型盲扫的规模、覆盖定义与记录项",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02"
+      ],
+      "report_anchor": "4.5 10 万模型盲扫"
+    },
+    {
+      "id": "U16",
+      "title": "自动微分：AOTAutograd 前置反向 trace 与 NKI 自定义算子的反向要求",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "5.1 自动微分"
+    },
+    {
+      "id": "U17",
+      "title": "dtype 与 autocast 支持、FP8 私有 Beta 状态、与 CPU 的数值差异条目",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S05"
+      ],
+      "report_anchor": "5.2 精度与 dtype"
+    },
+    {
+      "id": "U18",
+      "title": "分布式支持面、实现契约、collective lowering、DTensor 四种分片与 CUSTOM backend 的 xfail",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S06"
+      ],
+      "report_anchor": "5.3 分布式训练"
+    },
+    {
+      "id": "U19",
+      "title": "Streams/Events 的硬件队列映射、错误抛出版本与惰性分配器导致的显存统计语义差异",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S08"
+      ],
+      "report_anchor": "5.4 Streams 与 Events"
+    },
+    {
+      "id": "U20",
+      "title": "有数字的部分逐项登记（单机 64 进程首训练步 -1/3、测试与跳过计数、盲扫规模、841 模型、2,447 条兼容记录、客户口径 60%）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S05"
+      ],
+      "report_anchor": "6.1 有数字的部分"
+    },
+    {
+      "id": "U21",
+      "title": "明确缺失的数字清单（吞吐、同条件对比、训练步时间、TTFT、编译绝对时间、统一精度表、盲扫图数值、配方配置）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "report_anchor": "6.2 明确缺失的部分"
+    },
+    {
+      "id": "U22",
+      "title": "官方口径之间的三处冲突（可用状态、PP 支持、XLA 与原生两代）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "6.3 官方口径之间的三处冲突"
+    },
+    {
+      "id": "U23",
+      "title": "四条路线的有边界比较（原生 TorchNeuron / 旧 XLA 版 / 默认 TorchInductor / PyTorch-XLA on TPU）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S04",
+        "S10",
+        "S11"
+      ],
+      "report_anchor": "七、与替代路线的有边界比较"
+    },
+    {
+      "id": "U24",
+      "title": "官方自报 vs 可核对事实（含固定 commit 与兼容表口径）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S04",
+        "S05",
+        "S09"
+      ],
+      "report_anchor": "八、官方自报 vs 事实核对"
+    },
+    {
+      "id": "U25",
+      "title": "部署风险清单（动态形状、编译选项、分散的数值差异、明确不支持项、CUSTOM backend、fallback 陷阱、版本代际、Beta 状态、无性能数据）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S04",
+        "S05",
+        "S06"
+      ],
+      "report_anchor": "9.1 部署风险"
+    },
+    {
+      "id": "U26",
+      "title": "最小验证方案（API 差分、回退率、数值回归、形状固定化、分阶段编译路径、分布式验证、缺口反馈）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S05",
+        "S07"
+      ],
+      "report_anchor": "9.2 最小验证方案"
+    },
+    {
+      "id": "U27",
+      "title": "八条对开源框架与异构后端设计的可迁移启示（含 agent 验收闸门与分类-注册表方法学）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S05",
+        "S07",
+        "S08"
+      ],
+      "report_anchor": "十、对开源框架与异构后端设计的可迁移启示"
+    },
+    {
+      "id": "U28",
+      "title": "研究缺口：图内数值未取到、未读源码与多数 docs、未做同条件实测、未核实生态插件、未系统检索社区复现",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11"
+      ],
+      "report_anchor": "十一、Limitations"
+    },
+    {
+      "id": "U29",
+      "title": "理解、未解问题与下一步入口",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S04",
+        "S05",
+        "S07"
+      ],
+      "report_anchor": "十二、思考与追问"
+    }
+  ],
+  "limitations": [
+    "未运行任何 PyTorch 模型、未在 Trainium 上执行任何代码、未复现任何测试结果或性能数字；全部结论为来源转述与文档/仓库阅读所得。",
+    "Amazon Science 原文已读至结尾，但页面内图片（PyTorch-Trainium 栈图、流程图）的图内细节未取到。",
+    "PyTorch 官方文中'10 万模型盲扫'与'Llama 3 8B loss 曲线'两张图只有图注式描述，具体数值未取到，故无法给出通过率、编译成功率或回退算子分布。",
+    "未读 TorchNeuron 源码实现，只读 docs/ 文档与目录树，机制描述为文档级。",
+    "未读 AI-compilation-kernels.md、AI-python-ops.md、AI-dynamo-backend.md、decompositions.md、environment_variables.md、numa_optimization.md、packed_int64_design.md、docs/src、ops.html 以及 examples/tests/testing 目录；API 兼容统计不等于模型级覆盖。",
+    "docs/AI-distributed.md 本身是 AI 生成的代码库说明文档，本报告把它作为'仓库作者自己的记录'引用，其'应当如何'的描述未经第三方验证。",
+    "API 兼容统计来自固定 commit 的机械解析：2,447 条记录中 1,857 Y、436 CPU_FALLBACK、154 N；表内混合 host-only、模块、Tensor 方法、后端专属和 removed APIs，不能当作 native operator coverage。",
+    "对 limitations 列检索 differ(s) from CPU 命中 22 行；结果含别名与重复入口，也可能漏掉其它措辞，因此不构成完整或去重后的数值差异清单。",
+    "未做与默认 TorchInductor、旧 XLA 版或 PyTorch/XLA on TPU 的同条件实测，第七章只比较官方架构定位，不构成性能排名。",
+    "未核实 NKI-lib、vLLM Neuron / vLLM Omni Neuron 插件与 torchtitan-neuron 仓库的实际内容与性能。",
+    "未系统检索社区复现、issue 讨论或生产使用报告；不使用随时变化的 star、fork、open issue 数判断成熟度。",
+    "Token Plan 的 typed repository reader 对该仓返回 repo not found；仓库文档因此最小降级为固定 commit 的 raw GitHub 读取，并逐文件核对与本地快照一致。",
+    "资料时点为 2026-10-25；PyTorch 官方文 publishedTime 2026-10-19（modified 2026-10-20），Amazon Science 原文 2026-10-22；仓库文档固定在 commit 50b14171affaa365f1df6aa015232427336f6a4d。"
+  ]
+}

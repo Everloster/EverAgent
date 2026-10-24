@@ -1,0 +1,221 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-21_xiaoyuzhou-bannatie_putian-medical-system-history.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-6",
+        "harness": "codex",
+        "run_id": "review-putian-medical-history-20261025-gpt6",
+        "independent_context": true,
+        "explicit_model_override": true,
+        "override_reason": "用户明确要求本机独立 review 与验收远端 MiniMax 初稿"
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 94,
+        "request_coverage": 95,
+        "reasoning_quality": 94,
+        "readability": 93,
+        "limitations": 95
+      },
+      "score_reasons": {
+        "evidence_fidelity": "先读 8 条 shownotes、完整精编稿与转写审计，再核对报告。无锡虹桥由国家医保局两份文件逐项核验；银川与遵义判决分别由法院信息转载和央视核验；长江医院处罚由南方周末报道转载核验。发现并修正 7.4/39.3 的比例错误：应为 18.8%，不是六分之一。",
+        "request_coverage": "2 小时节目 8 个来源单元全部覆盖，包含起源、三板斧、监管与处罚、涉恶案件、百度/魏则西、转型、骗保和民营医院经营现状；报告还提供关系图、时间线、证据状态、反方解释、Limitations 与追问。",
+        "reasoning_quality": "报告没有把地域标签当作解释，而是提炼获客、借牌、导流和刚性需求四类机制，并以监管工具、平台分发、医保约束和重资产回报分析迁移路径。修订后把“监管更薄”收窄为“约束结构不同”，并把 2016 年军队医院背景限定为历史语境。",
+        "readability": "速览、内容地图、五条主线、四方关系图与时间线能承载长节目；个别段落仍较长，但关键信息用粗体、时间戳和证据表分层，读者无需回看 polished 即可理解。",
+        "limitations": "明确披露节目未逐句绑定 22 篇参考资料、工商/股权关系未独立穿透、100 亿与八成等传闻不可引用、标签污名风险、2025–2026 数据时点，以及虹桥最终罚款/吊证尚缺本轮读取的决定全文。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08"
+      ],
+      "coverage_unit_ids_checked": [
+        "SC01",
+        "SC02",
+        "SC03",
+        "SC04",
+        "SC05",
+        "SC06",
+        "SC07",
+        "SC08"
+      ],
+      "source_content_map": [
+        {
+          "id": "RM01",
+          "title": "01:15 莆田系医疗起源与早期发展",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC01"
+          ],
+          "notes": "东庄、陈德良、疥疮药水、詹国团与地方亲缘创业史完整覆盖；节目中的两个起源版本和祖师爷争议仍保留。"
+        },
+        {
+          "id": "RM02",
+          "title": "14:31 承包科室、设备分成、跨院导流与两轮舆论危机",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S09",
+            "S10"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC02"
+          ],
+          "notes": "三板斧、王海/太原调查和承包禁令均有落点；“技术合作”被明确为规避方式而非合法化。"
+        },
+        {
+          "id": "RM03",
+          "title": "25:05 不孕不育乱象、长江医院与处罚工具缺口",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S13"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC03"
+          ],
+          "notes": "诊断不当、过度检查/治疗、8000 元处罚和自主定价背景已用南方周末报道转载交叉核验；孕 19 天的限定被保留。"
+        },
+        {
+          "id": "RM04",
+          "title": "39:06 上海协和、遵义与银川欧亚男科案件",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S08",
+            "S11",
+            "S12"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC04"
+          ],
+          "notes": "吊证、恶势力犯罪集团、主犯 20 年与 610/920 万罚金均核对；报告区分已判决、移交线索和节目引述。"
+        },
+        {
+          "id": "RM05",
+          "title": "01:07:02 新安国际、和美医疗、退市与医美转型",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC05"
+          ],
+          "notes": "重资产综合医院、妇儿专科上市退市、白子湾停业和医美路线完整覆盖；100 亿营收与占比传闻未被当作事实。"
+        },
+        {
+          "id": "RM06",
+          "title": "01:41:27 无锡虹桥医院骗保案",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S05",
+            "S06"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC06"
+          ],
+          "notes": "官方 2228.4/1179.2 万元、虚假住院、专业造假、提成与对抗检查逐项吻合；5800 多万与吊证保留为节目口径。"
+        },
+        {
+          "id": "RM07",
+          "title": "01:48:12 民营医院数量、诊疗体量与经营压力",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S07"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC07"
+          ],
+          "notes": "26481 家、39.3 亿与 7.4 亿均核对；初稿把 18.8% 写成六分之一，已改为略低于五分之一。"
+        },
+        {
+          "id": "RM08",
+          "title": "01:57:13 读评论、标签反思与结语",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC08"
+          ],
+          "notes": "节目对籍贯标签、80% 传闻和同乡创业类比的自我限制已进入概览、反方与 Limitations。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "复核修复一处关键数字口径错误（7.4/39.3=18.8%）、两处过度概括（“技术合作”不等于合法、军队医院治理仅限历史背景），并收窄“向监管更薄领域迁移”的推断。公开产物中的设备名、内部标识与远端路径已清除。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 94.15,
+    "evaluated_on": "2026-10-25",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "8451ddd6ea8724c0b5a7f186ea948c51f7f85f1f1c9d4a1533fa493c7c76bbf4",
+    "evidence_sha256": "a1058cd5900d3ccc6888a772ab70b0276b30e295ec8a00eddee2c17ce19e7ab6"
+  }
+}

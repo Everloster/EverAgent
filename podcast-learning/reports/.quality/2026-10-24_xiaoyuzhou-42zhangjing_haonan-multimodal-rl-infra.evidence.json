@@ -1,0 +1,534 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-24_xiaoyuzhou-42zhangjing_haonan-multimodal-rl-infra.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-24",
+  "generator": {
+    "model": "minimax-m3.1-flash",
+    "harness": "pi",
+    "run_id": "generator-2026-10-24_xiaoyuzhou-42zhangjing_haonan-20261024",
+    "explicit_model_override": true,
+    "override_reason": "用户明确指定：模型优先 MiniMax M3.1 Flash，额度耗尽后才切 GLM-5.3（user:2026-10-24:podcast-blog-until-1100）"
+  },
+  "task": {
+    "summary": "用 eacli podcast 远端静默 worker 下载并转写小宇宙《42章经》2026-10-24 单集（对谈前混元多模态 RL Infra 负责人淏楠），产出忠实转写、结构化精编、artifact 回执与一篇 standalone 的 report-v2 深度中文报告。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "确认仓内未重复处理，并完全静默地用 eacli podcast 远端静默 worker 下载转写，按 artifact receipt 的路径、大小与 SHA-256 拉回转写。"
+      },
+      {
+        "id": "R02",
+        "text": "运行 audit_transcript.py，检查头尾、时间戳单调性、重复与尾部异常。"
+      },
+      {
+        "id": "R03",
+        "text": "忠实润色，不补写事实；用 shownotes 与公开一手材料核验人名、机构、技术词和数字，不确定处标 [?]。"
+      },
+      {
+        "id": "R04",
+        "text": "基于完整转写写一篇 report-v2 / important / standalone 的深度中文报告，重构嘉宾在 Agent、多模态 RL Infra、具身与组织/职业选择上的主要论证。"
+      },
+      {
+        "id": "R05",
+        "text": "报告正文包含来源内容地图、至少 3 条展开主线、关键数字/引文及时间戳、Limitations、思考与追问；引文和数字必须能回到转写时间戳，外部背景单独标来源。"
+      },
+      {
+        "id": "R06",
+        "text": "只完成初稿与 evidence：不填写独立 review、不 finalize、不更新 wiki/全局索引、不提交、不推送。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "primary",
+      "title": "《42章经》2026-10-24 单集原始转写（eacli podcast 远端 whisper.cpp worker，2411 段 / 3196 秒）",
+      "locator": "podcast-learning/reports/transcripts/2026-10-24_xiaoyuzhou-42zhangjing_haonan-multimodal-rl-infra.transcript.txt",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S02",
+      "kind": "primary",
+      "title": "《42章经》2026-10-24 单集结构化精编稿（polished，头部标注压缩比与专名校正表）",
+      "locator": "podcast-learning/reports/transcripts/2026-10-24_xiaoyuzhou-42zhangjing_haonan-multimodal-rl-infra.polished.txt",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S03",
+      "kind": "primary",
+      "title": "小宇宙单集页 shownotes（章节「时光机」22 条、嘉宾简介、发布时间）",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/6ada2be4c96c8942ec10cb1e",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S04",
+      "kind": "local",
+      "title": "本期 artifact 与传输回执（大小 / SHA-256 / 审计结果）",
+      "locator": "podcast-learning/reports/transcripts/2026-10-24_xiaoyuzhou-42zhangjing_haonan-multimodal-rl-infra.artifact.json",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S05",
+      "kind": "official",
+      "title": "腾讯混元 UniRL 开源多模态 RL 后训练框架官方仓库与介绍（含 Flow-DPPO、DRPO 与支持模型清单）",
+      "locator": "https://github.com/Tencent-Hunyuan/UniRL",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S06",
+      "kind": "official",
+      "title": "MiniMax H3 官方发布说明（2026-07-31 通用多模态生成模型）",
+      "locator": "https://www.minimax.io/blog/minimax-h3",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S07",
+      "kind": "secondary",
+      "title": "新浪财经：GPT-6 Astra 直接控制机器人的成功率报道（对照 Fable 5.1）",
+      "locator": "https://finance.sina.com.cn/stock/t/2026-09-22/doc-inissuic8823692.shtml",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S08",
+      "kind": "local",
+      "title": "硅谷101 E256：GPT-6 Astra 如何同时改写 Agent、机器人与 AI 制药（对照报告）",
+      "locator": "podcast-learning/reports/2026-10-19_rss-guigu101_e256-astra-agent-robot-drug.md",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S09",
+      "kind": "secondary",
+      "title": "钛媒体：代季峰离职 MiroMind 与后续创业的公开报道（用于核对嘉宾早年在 MiroMind 的背景）",
+      "locator": "https://www.tmtpost.com/7965984.html",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S10",
+      "kind": "local",
+      "title": "《42章经》Articuler.ai 单集报告（用于对照「先活下来再谈方向」的相反创业叙事）",
+      "locator": "podcast-learning/reports/2026-10-17_xiaoyuzhou-42zhangjing_articuler-jason.md",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S11",
+      "kind": "official",
+      "title": "fal — MiniMax H3 Max model and speed benchmark page",
+      "locator": "https://fal.ai/minimax-h3-max",
+      "accessed_on": "2026-10-25"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "嘉宾在腾讯混元负责多模态 RL Infra、主导推出开源多模态强化学习框架 UniRL，现于某具身智能公司负责基模预训练。",
+      "report_anchor": "主导推出开源多模态强化学习框架 UniRL",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "转写 00:00:22–00:00:57 自述身份与 UniRL；shownotes 嘉宾简介写「前腾讯混元多模态 RL infra 负责人、主导开源多模态强化学习框架 UniRL……现于某具身智能公司负责基模预训练」。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "嘉宾退出 language agent 的理由是：若继续做 agent，大概率以造数据为主干一整年，对个人积累与成长不利。",
+      "report_anchor": "以造数据为主干一整年",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "转写 00:04:22–00:04:34「大概率是以造数据为主干一整年……对个人的积累或者成长可能不是特别有利」「对我来说不够有趣」；00:04:44–00:04:52 补充 agent 数据与 MCP 定义当时都不清晰。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "嘉宾判断视频生成不存在比较 efficient 的 scaling law，当前的视频能力更依赖 pre-training 阶段的能力提升。",
+      "report_anchor": "并不存在比较 efficient 的 scaling law",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "转写 00:13:54–00:14:10「我们当时其实年初他是认为有的，然后后来做了半年发现不行，就是它并不存在比较 efficient 的 scanning load」；00:15:14–00:15:17「更拼的还是 Pray Training 的」。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "嘉宾给出当前最强视频生成模型的能力打分约为 60/100，并认为后续空间很大。",
+      "report_anchor": "60/100 分",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "转写 00:18:49–00:19:08「如果他们能做到 100 分的话，那他们现在应该做到了 60 分差不多」。属嘉宾主观打分，无公开评测支撑，报告已标注为口播口径。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "嘉宾判断具身公司最终会变成两个系统：直接操控本体的 System 1 与语言/思考能力极强的 System 2（通用大脑）。",
+      "report_anchor": "两个系统",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "转写 00:32:18–00:32:24「你大概率最后变成两个系统，就是上面套一个底下再套一个」；00:41:19–00:41:37「0 和 1 是一个，然后 2 是一个……1、2 直接操控本体的那个，和一个贼大个的……上面的大脑」。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "嘉宾认为真机数据不会因为仿真成熟而失去价值，并用以中指食指捏取替代五指贴合抓取的例子说明仿真与真实执行之间的 gap。",
+      "report_anchor": "拿中指和食指",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "转写 00:39:05–00:39:45「你还是得拿真正 exactly 的那个数据去 train 去调……最后可能拿中指和食指给你捏起来了，但其实不符合你想要的效果，这是我觉得最后仿真环境那个 gap」。",
+      "critical": true
+    },
+    {
+      "id": "C07",
+      "claim": "嘉宾把接管轨迹回流称为 recovery 数据，判定其价值最高、最可能被具身厂而非大厂做成（软蒸馏），而硬蒸馏成本过高没有必要。",
+      "report_anchor": "recovery",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "转写 00:50:39–00:50:49「这些也叫 recovery，其实是数据里非常有价值的，就是失败了情况下怎么回来」；00:51:31–00:51:41「成本过高，就是没必要」；00:52:06–00:52:14「大概率不是大厂在做，是具身厂在做」。",
+      "critical": true
+    },
+    {
+      "id": "C08",
+      "claim": "嘉宾认为大厂难以做成具身，原因是具身赚钱性弱、产业链长且大厂对产业链控制力弱，因此真做就要下沉到一线动手。",
+      "report_anchor": "扎根基层",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "转写 00:11:33–00:12:01「巨深它不太够赚钱……更像一个车或者手机行业，产业链非常长的行业」；00:12:15–00:12:22「那你就扎根基层，看看这些素材怎么弄的，你就真是上手去摇操」。",
+      "critical": true
+    },
+    {
+      "id": "C09",
+      "claim": "嘉宾把具身系统的成功路径设计为「本体小模型 fast path + 大模型接管」的管线，并通过接管数据把 7B/8B 模型成功率从 60 提升到 80。",
+      "report_anchor": "scale-off 的逻辑",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "转写 00:48:55–00:51:03 描述 50%–60% 起步、及时让 GPT 接管、留存遥操数据、把成功率从 60 拉到 80、数台人盯的接管梯度；00:50:23–00:50:49 引入 speculative decoding 形态。",
+      "critical": false
+    },
+    {
+      "id": "C10",
+      "claim": "外部公开报道显示 GPT-6 Astra 于 2026 年 9 月发布，并在某机器人控制任务中达到 95% 成功率（对照 Fable 5.1 的 40%）。",
+      "report_anchor": "95%",
+      "support": "derived",
+      "source_ids": [
+        "S07",
+        "S08"
+      ],
+      "evidence": "新浪财经 2026-09-22 报道给出上述对比；本报告在「关键数字」表中标为外部背景，与嘉宾口径分开，未混入节目主张。",
+      "critical": false
+    },
+    {
+      "id": "C11",
+      "claim": "UniRL 是腾讯混元开源的多模态统一 RL 后训练框架，支持扩散与自回归等多类模型，并开源 Flow-DPPO 与 DRPO 两个算法。",
+      "report_anchor": "Flow-DPPO",
+      "support": "derived",
+      "source_ids": [
+        "S05"
+      ],
+      "evidence": "UniRL 官方仓库与官方博客介绍该框架的模块化架构、支持模型清单与两个自研算法；用于为报告中嘉宾所称「我在混元最主力的推进的这个 work」提供外部对照。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "SC01",
+      "title": "02:03 为什么从 MiroMind 的 Agent 转去混元做多模态 RL infra",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线一"
+    },
+    {
+      "id": "SC02",
+      "title": "06:13 国内外 RL 的差距到底在哪",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线一"
+    },
+    {
+      "id": "SC03",
+      "title": "07:45 Agent 和多模态的关系其实可以很紧密",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线一"
+    },
+    {
+      "id": "SC04",
+      "title": "08:56 做 Agent 和做多模态，其实都是围城",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线一"
+    },
+    {
+      "id": "SC05",
+      "title": "11:32 大厂不太能做具身",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线五"
+    },
+    {
+      "id": "SC06",
+      "title": "12:37 多模态最后只有两条变现途径",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线二 / 主线五"
+    },
+    {
+      "id": "SC07",
+      "title": "14:11 Seedance 到底为啥这么好",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线二"
+    },
+    {
+      "id": "SC08",
+      "title": "15:14 多模态的竞争可能没那么激烈",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线二"
+    },
+    {
+      "id": "SC09",
+      "title": "16:26 视频生成现在发展到什么程度了",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线二"
+    },
+    {
+      "id": "SC10",
+      "title": "19:20 「抽卡」依然会存在，但概念可能会发生变化",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线二"
+    },
+    {
+      "id": "SC11",
+      "title": "21:37 视频生成继续发展下去，可能会解锁什么样的机会",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线二"
+    },
+    {
+      "id": "SC12",
+      "title": "22:22 MiniMax H3 到底什么水平",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S06",
+        "S11"
+      ],
+      "report_anchor": "主线三"
+    },
+    {
+      "id": "SC13",
+      "title": "23:54 实时互动的技术真的成熟了吗",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S06",
+        "S11"
+      ],
+      "report_anchor": "主线三"
+    },
+    {
+      "id": "SC14",
+      "title": "27:45 好多人做世界模型都做迷茫了",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线四"
+    },
+    {
+      "id": "SC15",
+      "title": "30:55 做具身的两种正确路线",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线四"
+    },
+    {
+      "id": "SC16",
+      "title": "32:22 为什么 Astra 给具身圈带来了比较大的震动",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S07"
+      ],
+      "report_anchor": "主线四"
+    },
+    {
+      "id": "SC17",
+      "title": "37:27 聊聊具身训练的 reward 和数据",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线四"
+    },
+    {
+      "id": "SC18",
+      "title": "40:12 具身的「大脑」，最后会变成大模型厂商的竞争吗",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线四 / 主线五"
+    },
+    {
+      "id": "SC19",
+      "title": "41:59 在现在这个时间节点去做具身，是不是 49 年入国军",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线五"
+    },
+    {
+      "id": "SC20",
+      "title": "45:24 Agent 开发的场景还是不够多",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线一"
+    },
+    {
+      "id": "SC21",
+      "title": "46:42 多模态还有创业公司的机会吗",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线二 / 主线五"
+    },
+    {
+      "id": "SC22",
+      "title": "47:38 具身里可能迎来了 GPT-3 时刻",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线四 / 主线五"
+    }
+  ],
+  "limitations": [
+    "转写由 whisper.cpp large-v3 + Silero VAD 生成，audit_transcript.py 无 warning/error，但专名误识别明显（浩南→淏楠、巨深→具身、2L→RL、MareMind→MiroMind 等），已在精编稿头部集中列出订正表。",
+    "未消解的不确定项：H3 水平对标的 3.0/2.0 在转写中摇摆；讲 SYSM0/SYSM1/SYSM2 的主页主人；被口播为「家爪」「零销售」的两类机器人本体；「SFC」是否即 SFT；「生成一体化」对应的自造术语。正文均以 [?] 标出，未做猜测性填补。",
+    "本期只有 shownotes 可用于交叉验证人名、机构与技术词，没有官方字幕或逐字稿；所有引文只能回到音频时间戳。",
+    "60/100 能力分、200 亿人民币估值、卡差距「加俩零」等均为嘉宾口播口径，无公开数据源与统计口径支撑。",
+    "嘉宾对 OAI 内部具身路线与 Astra 训练数据的描述为转述（二手），节目未提供一手材料。",
+    "外部背景（UniRL、MiniMax H3、GPT-6 Astra 机器人控制表现、MiroMind 沿革）单独标注来源，与节目主张分开；两者不可互相替代。"
+  ]
+}

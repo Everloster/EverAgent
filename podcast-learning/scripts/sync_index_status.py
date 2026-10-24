@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """已处理状态回填：reports frontmatter → wiki/show-indexes 状态列。
 
-事实源是 `reports/*.md` 的 frontmatter `source_url`（100% 覆盖）；本脚本把
-它与 `wiki/show-indexes/{slug}.md` 的单集链接匹配，回填「✅ 已处理（日期 slug）」。
+事实源是 `reports/*.md` 中状态为 `completed` / `archived` 的报告及其
+frontmatter `source_url`；本脚本把它与 `wiki/show-indexes/{slug}.md` 的
+单集链接匹配，回填「✅ 已处理（日期 slug）」。草稿和待复核报告不算已处理。
 
 - 链接规范化：去 query（utm 等）+ 去尾斜杠，与 fetch_show_indexes.py 同款
 - 幂等：匹配到的行统一写标准状态（重跑不变）；未匹配的行**不动**——
@@ -35,8 +36,28 @@ def norm(url: str) -> str:
     return url.split("?")[0].rstrip("/")
 
 
+def source_urls(block: str) -> list[str]:
+    """只读取 frontmatter 的 source_url/source_urls，避免其它说明链接误标单集。"""
+    urls: list[str] = []
+    in_list = False
+    for line in block.splitlines():
+        if re.match(r"^source_urls:\s*", line):
+            in_list = True
+            urls.extend(URL_RE.findall(line))
+            continue
+        if in_list:
+            if re.match(r"^\s+-\s+", line):
+                urls.extend(URL_RE.findall(line))
+                continue
+            if line and not line[0].isspace():
+                in_list = False
+        if re.match(r"^source_url:\s*", line):
+            urls.extend(URL_RE.findall(line))
+    return urls
+
+
 def load_reports() -> dict[str, tuple[str, str]]:
-    """规范化链接 → (报告日期, slug)。frontmatter 内所有 URL 都算（覆盖系列多集）。"""
+    """规范化链接 → (报告日期, slug)。只读取完成/归档报告；系列多集 URL 全部算。"""
     by_url: dict[str, tuple[str, str]] = {}
     for path in sorted(glob.glob(str(REPORTS / "*.md"))):
         stem = pathlib.Path(path).stem
@@ -45,7 +66,10 @@ def load_reports() -> dict[str, tuple[str, str]]:
         text = pathlib.Path(path).read_text(encoding="utf-8", errors="replace")
         fm = re.match(r"^---\n(.*?)\n---", text, re.S)
         block = fm.group(1) if fm else ""
-        for url in URL_RE.findall(block):
+        status_match = re.search(r'^status:\s*["\']?([a-z_]+)', block, re.M | re.I)
+        if not status_match or status_match.group(1).lower() not in {"completed", "archived"}:
+            continue
+        for url in source_urls(block):
             by_url[norm(url)] = (date, slug)
     return by_url
 
@@ -101,7 +125,7 @@ def sync(dry_run: bool) -> int:
         text = pathlib.Path(path).read_text(encoding="utf-8", errors="replace")
         fm = re.match(r"^---\n(.*?)\n---", text, re.S)
         block = fm.group(1) if fm else ""
-        urls = [norm(u) for u in URL_RE.findall(block)]
+        urls = [norm(u) for u in source_urls(block)]
         if urls and not any(u in idx_urls for u in urls):
             miss.append(pathlib.Path(path).name)
     if miss:

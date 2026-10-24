@@ -1,0 +1,320 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/Flint_interactive_交互式数据可视化语言_语义事件与更新算子_深度解析_20261025.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "review-flint-interactive-20261025-gpt56sol",
+        "independent_context": true,
+        "explicit_model_override": false
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 95,
+        "request_coverage": 96,
+        "reasoning_quality": 94,
+        "readability": 92,
+        "limitations": 95
+      },
+      "score_reasons": {
+        "evidence_fidelity": "独立回读两篇 Microsoft Research 博客、Flint 论文完整 PDF、当前 main 的 interaction spec/design/overview/introduction、interaction agent skill、capability roadmap、preset readiness，并核对 GitHub API 与官方 Git 远端。初稿的仓库时间错位、过期 stars/issues、论文截断与未知量表等问题已修正；当前关键机制和数字可回到一手材料。",
+        "request_coverage": "R01–R07 全部覆盖：原文问题链、语义事件与 ChartUpdate、三文档模型、预设/能力/准入/告警、编译与宿主路径、相邻方案、静态论文评测、交互就绪度、Agent UI 迁移、反例与限制均有明确章节。",
+        "reasoning_quality": "能把 Flint 的价值定位为语义层和编译期可判定性，并区分静态论文证据、交互挂载测试、用户/成本未证明三种证据强度。修订后不再断言 Flint 完全替换 Vega-Lite selection，也不把 80%/95% 设计目标当实测。",
+        "readability": "结构、表格、端到端图与标注体系清楚，机制细节虽多但能独立阅读。篇幅较长，预设目录和后文证据表有一定重复；对深度技术报告尚可接受。",
+        "limitations": "局限明确包含未运行 Flint、未重跑 315 问题、未取得 grader 原始记录、未读实现源码与部分文档、未逐项审阅 PR/issues、交互无用户/成本/性能实证、工程 sweep 缺第三方复现与相邻方案比较资料不足。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C15"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08",
+        "U09",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16",
+        "U17",
+        "U18",
+        "U19",
+        "U20",
+        "U21",
+        "U22",
+        "U23",
+        "U24",
+        "U25",
+        "U26",
+        "U27",
+        "U28",
+        "U29",
+        "U30"
+      ],
+      "source_content_map": [
+        {
+          "id": "SCM01",
+          "title": "10 月博客把交互生成问题定位为成本、可靠性与高层表达语言缺口",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01",
+            "U03",
+            "U05",
+            "U20"
+          ],
+          "notes": "正文重构三段问题链、三种使用路径和四个图例，并明确博客本身没有量化评测。"
+        },
+        {
+          "id": "SCM02",
+          "title": "Flint-interactive 以语义事件和 ChartUpdate 分离视觉逻辑与交互逻辑",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S07"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04",
+            "U14"
+          ],
+          "notes": "原始手势、语义目标、handler、更新和宿主事件的四步链路准确。"
+        },
+        {
+          "id": "SCM03",
+          "title": "chart/theme/interaction 三文档由 assembler 与交互面分别消费",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S04",
+            "S05"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06",
+            "U07"
+          ],
+          "notes": "静态 assembler 不执行 interaction_spec、mountChart 在组装后挂载、状态外置等边界均有覆盖。"
+        },
+        {
+          "id": "SCM04",
+          "title": "preset 通过八类 capability、模板声明、数据确认与 admission 决定能否挂载",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S04",
+            "S05"
+          ],
+          "matched_coverage_unit_ids": [
+            "U08",
+            "U10",
+            "U11"
+          ],
+          "notes": "36 个模板块、_interactionSemantics、spec 告警降级与 code 抛异常的非对称失败方式均准确。"
+        },
+        {
+          "id": "SCM05",
+          "title": "ChartUpdate 提供七种操作、三类目标寻址与统一的宿主/手势变更语言",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S05",
+            "S08"
+          ],
+          "matched_coverage_unit_ids": [
+            "U09",
+            "U12",
+            "U13"
+          ],
+          "notes": "正文保留 set-style/annotation/viewport/order/overlay/freeform/data 及 selector 语义，未把 DOM 操作混入 handler。"
+        },
+        {
+          "id": "SCM06",
+          "title": "面向 agent 的 skill 强制受控词表、按请求选择产物并限制 MCP 中的 bespoke 行为",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S08"
+          ],
+          "matched_coverage_unit_ids": [
+            "U13",
+            "U24"
+          ],
+          "notes": "no invented names、无代码宿主时说明最接近 preset 的边界和渲染前校验均准确。"
+        },
+        {
+          "id": "SCM07",
+          "title": "静态 Flint 是语义驱动、多后端的三阶段可视化 IR",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S03",
+            "S06"
+          ],
+          "matched_coverage_unit_ids": [
+            "U15",
+            "U17",
+            "U23"
+          ],
+          "notes": "semantic type、resolve semantics、layout、template instantiate 与五后端输出均覆盖。"
+        },
+        {
+          "id": "SCM08",
+          "title": "静态论文用 315 题比较 Flint 与 DirectVL，并披露均值、方差、胜负与 p 值",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U19"
+          ],
+          "notes": "63 表/51 主题/10 图类、20 分量表、GPT-5.1 统一 grader、三组均值/SD/wins/ties/p 值和 grader mistake 均写入正文；没有外推到交互层。"
+        },
+        {
+          "id": "SCM09",
+          "title": "当前 main 在发布前已合并交互文档与技能，仓库不存在初稿所称时间错位",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S09"
+          ],
+          "matched_coverage_unit_ids": [
+            "U21"
+          ],
+          "notes": "官方 Git 远端与 GitHub API 交叉确认 a794557/PR #153 和 pushed_at；正文同时记录 typed 仓库索引的旧 master 新鲜度风险。"
+        },
+        {
+          "id": "SCM10",
+          "title": "项目方 readiness 记录给出 407 组合、主要 preset 39 ready case 和明确 unsupported 残余",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S11"
+          ],
+          "matched_coverage_unit_ids": [
+            "U22",
+            "U23",
+            "U26",
+            "U28"
+          ],
+          "notes": "报告正确把它当项目方工程 sweep，不当用户研究或独立复现。"
+        },
+        {
+          "id": "SCM11",
+          "title": "roadmap 将交互分四层并给出 80% preset / 95% composition 目标",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S10"
+          ],
+          "matched_coverage_unit_ids": [
+            "U22",
+            "U25",
+            "U27"
+          ],
+          "notes": "正文明确这是目标而非测量值，并保留宿主负责导航、取数和业务数据变更的边界。"
+        },
+        {
+          "id": "SCM12",
+          "title": "交互目前仅在 Vega-Lite surface 执行，静态后端与其它后端不执行 interaction_spec",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S04",
+            "S05",
+            "S07",
+            "S08"
+          ],
+          "matched_coverage_unit_ids": [
+            "U15",
+            "U18",
+            "U27",
+            "U28"
+          ],
+          "notes": "正文没有把静态多后端支持误写成交互多后端；与原生 Vega-Lite selection 的内部复用关系保留为未核实。"
+        },
+        {
+          "id": "SCM13",
+          "title": "未证明项包括 agent 成本、用户收益、响应性能、异构 judge 一致性与独立工程复现",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S03",
+            "S10",
+            "S11"
+          ],
+          "matched_coverage_unit_ids": [
+            "U20",
+            "U22",
+            "U26",
+            "U29",
+            "U30"
+          ],
+          "notes": "Limitations、追问和下一步均把这些缺口转成可执行实验。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "来源优先复核。eacli web.read 对论文正文只返回前 32k 字符，repo.public.read 一度读取旧 master 并把当前 main 文件误报为不存在；按 Token Plan 的最小降级规则，使用 arXiv 官方 PDF、GitHub 官方 Git 远端与 gh API 核验。由此修正论文口径和仓库时点，并新增 roadmap/readiness 证据。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 94.55,
+    "evaluated_on": "2026-10-25",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "f64509117c4b503274eadf9e55f89ccadf7075c7ce0055e5cee5e163fd43d0c0",
+    "evidence_sha256": "cf0b7ecdf5094d9412859ab10beae58b06412eca0573878c2aebf3b4137ddf71"
+  }
+}

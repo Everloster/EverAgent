@@ -1,0 +1,569 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/OpenAI_千Agent并行生物数据研究_证据聚合与科学发现_深度解析_20261025.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-25",
+  "generator": {
+    "model": "minimax-m3.1-flash",
+    "harness": "pi",
+    "run_id": "generator-920be79a006f",
+    "explicit_model_override": true,
+    "override_reason": "用户明确指定本轮研究优先使用 MiniMax M3.1 Flash（额度耗尽后切 GLM-5.3）"
+  },
+  "task": {
+    "summary": "深读 OpenAI 官方《Using thousands of AI agents to uncover new leads in biological data》，并继续读取其直接链接的 bioRxiv 预印本、原始数据论文、数据卡、合作方新闻稿与相关代码仓库；重构分布式生物推理如何拆题、并行派发 agent、检索与合并证据、处理冲突并交给专家复核；逐个案例说明原始生物问题、agent 结论、验证方式与未证实之处；逐项核对 'thousands'、耗时/成本、对照组、命中率与专家评估等数字的定义；区分工作流创新、模型能力、工具与数据基础、人类科学家的贡献；与单 agent、传统 pipeline、文献综述 agent、自主湿实验室做有边界比较，并给出对 EverAgent 双仓 agent harness/eval 的可迁移启示。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "读取 OpenAI 官方文章，并继续读取文章直接链接的论文、实验材料、数据集、代码或合作方一手说明。"
+      },
+      {
+        "id": "R02",
+        "text": "重构系统如何拆问题、并行派发数千 agent、检索/分析生物数据、合并证据、处理冲突并交给专家复核。"
+      },
+      {
+        "id": "R03",
+        "text": "逐个案例说明原始生物问题、agent 产出的候选结论、验证方式与尚未证实之处。"
+      },
+      {
+        "id": "R04",
+        "text": "核对 'thousands'、耗时/成本、对照组、命中率或专家评估等所有数字的定义与口径。"
+      },
+      {
+        "id": "R05",
+        "text": "区分工作流创新、模型能力、工具/数据基础和人类科学家的贡献。"
+      },
+      {
+        "id": "R06",
+        "text": "与单 agent、传统生物信息学 pipeline、文献综述 agent 或自主湿实验室做有边界比较。"
+      },
+      {
+        "id": "R07",
+        "text": "分析对可靠大规模 agent orchestration、科学证据聚合和评估机制，以及对双仓 agent harness/eval 的可迁移启示。"
+      },
+      {
+        "id": "R08",
+        "text": "写明 Limitations 与思考与追问；明确区分线索/假说/验证三层状态；不得把厂商自述写成独立复现，不得把新线索写成已证实生物发现。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "official",
+      "title": "OpenAI — Using thousands of AI agents to uncover new leads in biological data",
+      "locator": "https://openai.com/index/scaling-ai-research-for-complex-biological-data",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S02",
+      "kind": "primary",
+      "title": "Sun A., Park J.J., DeTomaso D., et al. — Distributed AI agents enable comprehensive discovery of biological insights at scale (bioRxiv, 未同行评审, CC-BY 4.0)",
+      "locator": "https://www.biorxiv.org/content/10.64898/2026.10.15.759436v1",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S03",
+      "kind": "primary",
+      "title": "Shi T., Korshunova M., Kim S., et al. — Genome-scale functional mapping of the mammalian whole brain with in vivo Perturb-seq (bioRxiv)",
+      "locator": "https://www.biorxiv.org/content/10.64898/2026.03.16.711480v1",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S04",
+      "kind": "official",
+      "title": "PerturbAI — PerturbAI and OpenAI Unveil First-of-Its-Kind AI Reasoning Agents（合作方新闻稿）",
+      "locator": "https://perturb.ai/news/perturbai-launches-ai-reasoning-agents",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S05",
+      "kind": "official",
+      "title": "Hugging Face 数据卡 — perturbai/wholebrain_crispr_atlas（门控访问）",
+      "locator": "https://huggingface.co/datasets/perturbai/wholebrain_crispr_atlas",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S06",
+      "kind": "secondary",
+      "title": "R&D World — OpenAI runs 1,946 GPT-Rosalind agents on a mouse brain atlas（Brian Buntz）",
+      "locator": "https://www.rdworldonline.com/openai-deploys-nearly-2000-gpt-rosalind-agents-to-generate-biological-research-leads-in-32-minutes",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S07",
+      "kind": "secondary",
+      "title": "Unite.AI — OpenAI Unveils Mouse Brain Reasoning Atlas From GPT-Rosalind Agents",
+      "locator": "https://www.unite.ai/openai-unveils-mouse-brain-reasoning-atlas-from-gpt-rosalind-agents",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S08",
+      "kind": "official",
+      "title": "OpenAI — Introducing GPT-Rosalind for life sciences research",
+      "locator": "https://openai.com/index/introducing-gpt-rosalind",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S09",
+      "kind": "primary",
+      "title": "GitHub — jinlabneurogenomics/wholebrainperturbseq（数据论文分析代码仓库）",
+      "locator": "https://github.com/jinlabneurogenomics/wholebrainperturbseq",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S10",
+      "kind": "primary",
+      "title": "GitHub — jinlabneurogenomics/distributed_agent（agent runtime、corpus tooling、论文 notebook 与复现说明，MIT）",
+      "locator": "https://github.com/jinlabneurogenomics/distributed_agent",
+      "accessed_on": "2026-10-25"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "该工作的实际 agent 数量是 1,946（一个扰动一个 agent），标题中的 'thousands' 属修辞；OpenAI 官方口径为 'nearly 2,000'，与预印本一致。",
+      "report_anchor": "5.1 工作量与规模",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S04",
+        "S06"
+      ],
+      "evidence": "预印本正文 'We ran 1,946 AI agents independently and in parallel'；PerturbAI 新闻稿引 OpenAI 的 Joy Jiao 表述 'Running nearly 2,000 agents in parallel'；R&D World 标题与正文同样为 1,946。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "'人类耗时 months to a year' 是构造出来的估计值而非实测：假设为 $22/小时、每个扰动 15 分钟解读、每篇文献 10 分钟；论文图注明确标注 'this is not a measured human performance'。",
+      "report_anchor": "5.1 工作量与规模",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S01",
+        "S04",
+        "S06"
+      ],
+      "evidence": "预印本 Fig. 2D 图注原文列出三项假设并声明不是实测人类表现；OpenAI 官方与 PerturbAI 新闻稿均沿用同一估计口径。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "并行度收益来自检索预算的分配：模型、提示、工具、数据访问全部固定时，单 agent 在 893 个扰动负载下只引用 11 篇文献，分布式 agent 保留 711 倍以上的引用，且单 agent 的 'no-literature' 标签随负载上升而占主导。",
+      "report_anchor": "3.3 文献检索：并行度如何转化为覆盖度",
+      "support": "direct",
+      "source_ids": [
+        "S02"
+      ],
+      "evidence": "预印本 Fig. 2E–F 与正文 'At 893 perturbations, the single agent cited 11 references, while the distributed agents retained 711x more references'；媒体转述为 7,586 篇。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "系统用四类证据链接标签约束 agent 输出：1,519 条发现中 agree 420（27.6%）、inferred 636（41.9%）、disagree 101（6.6%）、no literature 362（23.8%）；其中 no literature 明确定义为检索缺口而非不存在相关研究的证明。",
+      "report_anchor": "3.2 每个 agent 的产出",
+      "support": "direct",
+      "source_ids": [
+        "S02"
+      ],
+      "evidence": "预印本正文与 Fig. 2B 给出四类精确数量和比例，并写明 no literature 'denotes a retrieval gap, not proof that no relevant study exists'；Fig. 2C 另给出 39,185 次论文阅读与 16,445 条保留引用。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "污染控制是显式设计：agent 未获得源论文与其结论，且所用 GPT-Rosalind-5.5 的知识截止（2025-12）早于源论文发布（2026-03），使结论恢复率成为有意义的指标。",
+      "report_anchor": "3.1 任务分解",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "预印本正文 'the source manuscript and conclusions were withheld: we used GPT-Rosalind-5.5, whose stated knowledge cutoff was December 2025, preceding the release of the source manuscript in March 2026'；源论文 bioRxiv Posted March 18, 2026。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "不提供源论文时，agent 从源论文 71 条发现中恢复 35 条 matched、13 条 refined、9 条 partially recovered、14 条未覆盖；其中 55 条可直接检验的发现里 48 条 matched 或 refined、4 条 partially recovered。",
+      "report_anchor": "5.2 评估结果",
+      "support": "direct",
+      "source_ids": [
+        "S02"
+      ],
+      "evidence": "预印本 Fig. 1C 图注与正文给出上述分组与分母。",
+      "critical": true
+    },
+    {
+      "id": "C07",
+      "claim": "Wdr26 案例显示 agent 会把成纤维细胞 GID-AMPK 文献外推到神经元而得出与观察相反的结论，该外推被人工复核以后续研究否定——是本工作中 'disagree' 标签拦下错误机制外推的直接证据。",
+      "report_anchor": "四、案例证据表",
+      "support": "direct",
+      "source_ids": [
+        "S02"
+      ],
+      "evidence": "预印本正文记录 Wdr26 与 Tsc2 的 cosine similarity=0.629、agent 打出 'disagreement' 标签、其外推来自 GID 成纤维细胞研究，随后 'Our human manual review showed ... WDR26 loss did not suppress mTORC in a subsequent study'。",
+      "critical": true
+    },
+    {
+      "id": "C08",
+      "claim": "本工作没有产出任何经实验验证的生物发现：Tsc1/Tsc2 小脑差异属数据内可复现观察（L1），DCTN1-胆固醇连接属机制假说（L2），L3 验证需要后续湿实验；论文本身把相关关系明确称为 'remain hypotheses for investigations'。",
+      "report_anchor": "2.2 三层状态",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S01"
+      ],
+      "evidence": "预印本对 Tsc2 小脑结果写 'these relationships remain hypotheses for investigations'，对 Nup93 机制写 'remains a hypothesis'；OpenAI 官方文章把产出定位为 'help prioritize further experiments needed to test the proposed biological mechanisms'。",
+      "critical": true
+    },
+    {
+      "id": "C09",
+      "claim": "DCTN1-胆固醇这条被广泛引用的线索并非分布式并行独有：R&D World 报道称单 agent baseline 也独立产生了该发现，3 位盲评者给出平均 follow-up priority 4.3/5。",
+      "report_anchor": "四、案例证据表",
+      "support": "direct",
+      "source_ids": [
+        "S06",
+        "S01"
+      ],
+      "evidence": "R&D World 正文 'The study's single-agent baseline also generated a lead that interested the experts ... Three blinded reviewers gave the finding an average follow-up priority score of 4.3 out of 5'；OpenAI 官方文章则表述为 'The agents found one such lead in DCTN1'。",
+      "critical": true
+    },
+    {
+      "id": "C10",
+      "claim": "盲评由 30 位博士级生物学家完成：60 份报告每份获 3 次评价；20 组分布式/单 agent 配对共产生 60 个选择，其中分布式 45（75%）、单 agent 10（16.7%）、平局 5（8.3%）。该结果衡量偏好与排序一致性，不等于科学正确性，且论文未给 75% 的置信区间或独立复验。",
+      "report_anchor": "7.2 有效性上明显薄弱的地方",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S01",
+        "S04",
+        "S06"
+      ],
+      "evidence": "预印本 Fig. 4H–K 与正文给出 30 位专家、每人 6 份、每报告 3 次评价、20 组配对和 45/10/5 的选择结果；OpenAI 与 PerturbAI 官方文章均转述为 75%。",
+      "critical": true
+    },
+    {
+      "id": "C11",
+      "claim": "评估全部由利益相关方完成：预印本作者含 OpenAI 与 PerturbAI 员工，Grace Zheng 与 Xin Jin 是 PerturbAI 联合创始人，源数据论文的利益冲突声明另列出 NVIDIA 员工与 BioMarin 资助；本工作没有独立第三方复现。",
+      "report_anchor": "7.2 有效性上明显薄弱的地方",
+      "support": "direct",
+      "source_ids": [
+        "S03",
+        "S07",
+        "S02"
+      ],
+      "evidence": "源论文 Competing Interest Statement 列出 NVIDIA/PerturbAI 雇员与 BioMarin 资助；Unite.AI 转述预印本利益冲突细项（六位 OpenAI 员工、两位 PerturbAI 员工、两位 PerturbAI 联合创始人）；本报告未检索到针对本工作的独立复现或批评。",
+      "critical": true
+    },
+    {
+      "id": "C12",
+      "claim": "贡献可分解为四层：工作流创新（按扰动分解、证据链接标签、冲突上抛、并行度与打乱对照、多层评估）可自由复用；模型能力无法归因（论文无模型消融）；软件、论文 notebook 与只读 MCP 已公开，但完整重跑仍受 10.8 GB pinned 数据、约 31 GB 准备产物、限定模型与真实运行成本约束；人类科学家的评审与人工复核不可替代。",
+      "report_anchor": "5.5 贡献分解",
+      "support": "derived",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S05",
+        "S08",
+        "S10"
+      ],
+      "evidence": "工作流与评估设计来自预印本；论文仅固定模型做并行度对照而无模型消融；S10 公开 MIT 仓库、托管 MCP、Codex CLI、本地数据准备与 notebook 复现路径；S05/S08 约束数据与模型访问；预印本记录人工复核案例与 30 位盲评者。",
+      "critical": false
+    },
+    {
+      "id": "C13",
+      "claim": "[推测] 多 agent 场景下的污染风险高于单 agent：agent 之间互相引用可能让同一错误被复制多份，因此可迁移的 harness 需要让证据可追溯到一手来源，并标记共享上下文中的未独立验证结论。",
+      "report_anchor": "8.2 需要改造才能迁移",
+      "support": "inference",
+      "source_ids": [
+        "S02"
+      ],
+      "evidence": "由预印本用知识截止日期防污染的做法反推：单 agent 尚需该控制，多 agent 共享上下文时同一污染会被放大；本报告未找到直接研究该问题的来源。",
+      "critical": false
+    },
+    {
+      "id": "C14",
+      "claim": "该工作与传统生物信息学 pipeline 不是替代关系：agent 接收的输入本身就是 pipeline 产出的细胞类型分辨 DEG 谱，pipeline 负责产生信号，agent 负责解释与排序。",
+      "report_anchor": "六、与替代路径的有边界比较",
+      "support": "derived",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "预印本写 'Each agent received cell-type-resolved differentially expressed gene (DEG) profiles'；源论文摘要写 'Traditional statistical analyses applied to these datasets yield lists of differential expression, modules, and perturbation similarities, but the biological interpretation ... requires integrating ... literature'。",
+      "critical": false
+    },
+    {
+      "id": "C15",
+      "claim": "[待验证] 论文使用 'GPT-Rosalind-5.5'，而 OpenAI 官方 GPT-Rosalind 发布页描述的是 2026-04 首发版本，二者关系在所读材料中未说明。",
+      "report_anchor": "八、对 EverAgent 双仓 agent harness / eval 的可迁移启示",
+      "support": "inference",
+      "source_ids": [
+        "S02",
+        "S08"
+      ],
+      "evidence": "预印本写所用模型为 GPT-Rosalind-5.5；官方发布页仅称 'the first release in our GPT-Rosalind life sciences model series'，未列出 5.5 版本号。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "OpenAI 官方文章的问题设定、论证主线、reasoning atlas 定义与 'leads 而非 discoveries' 的定位",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "2.1 OpenAI 到底在回答什么问题"
+    },
+    {
+      "id": "U02",
+      "title": "线索/假说/验证三层状态的定义、实例与判定者",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "report_anchor": "2.2 三层状态"
+    },
+    {
+      "id": "U03",
+      "title": "按扰动切分任务、每个 agent 的输入与工具、污染控制与知识截止日期",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02"
+      ],
+      "report_anchor": "3.1 任务分解"
+    },
+    {
+      "id": "U04",
+      "title": "证据链接标签体系（agree/inferred/disagree/no literature）与 agent 报告结构（含 caveats 与建议实验）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02"
+      ],
+      "report_anchor": "3.2 每个 agent 的产出"
+    },
+    {
+      "id": "U05",
+      "title": "文献覆盖度的负载实验：固定模型/提示/工具/数据访问，11 篇 vs 711×，no-literature 标签上升",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S06"
+      ],
+      "report_anchor": "3.3 文献检索"
+    },
+    {
+      "id": "U06",
+      "title": "合并为 reasoning atlas 的机制，以及 MIT 仓库、托管 MCP corpus 服务与 Codex CLI 本地复现路径",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S10"
+      ],
+      "report_anchor": "3.4 合并"
+    },
+    {
+      "id": "U07",
+      "title": "端到端工作流示意（输入层→并行 agent 层→合并层→评估层→三层产出层）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02"
+      ],
+      "report_anchor": "3.5 工作流机制示意"
+    },
+    {
+      "id": "U08",
+      "title": "三层对照设计：单 agent 负载实验、扰动身份打乱对照、held-out 预测的多基线比较",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02"
+      ],
+      "report_anchor": "3.6 对照组设计"
+    },
+    {
+      "id": "U09",
+      "title": "逐案例的原始问题、agent 结论、层级、验证方式与未证实之处（Tsc1/Tsc2、DCTN1、Grin2a/b、Wdr26、Rab7、Psmb4/SWI-SNF、held-out 预测、Nup93）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S01",
+        "S03",
+        "S06"
+      ],
+      "report_anchor": "四、案例证据表"
+    },
+    {
+      "id": "U10",
+      "title": "工作量与规模数字的逐项口径：agent 数、32 分钟、人类耗时估计的构造方式、细胞数 7.7M vs 8M、sgRNA/mRNA/体积",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07"
+      ],
+      "report_anchor": "5.1 工作量与规模"
+    },
+    {
+      "id": "U11",
+      "title": "评估结果数字：71/55 条发现恢复、1,519 条标签、893 负载、引用量、75% 盲评、4.3/5、balanced accuracy 0.705、38 个 depletion",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S04",
+        "S06"
+      ],
+      "report_anchor": "5.2 评估结果"
+    },
+    {
+      "id": "U12",
+      "title": "OpenAI/PerturbAI/媒体/论文四方口径的一致与冲突清单，含 711× vs 7,586/11 与 DCTN1 线索归属",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S04",
+        "S06",
+        "S07"
+      ],
+      "report_anchor": "5.3 厂商自述与第三方转述的一致与冲突"
+    },
+    {
+      "id": "U13",
+      "title": "独立复现的缺位，以及不得借用其他模型评测的耸动指标来暗示本工作",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02"
+      ],
+      "report_anchor": "5.4 独立复现的缺位"
+    },
+    {
+      "id": "U14",
+      "title": "贡献分解：工作流创新 / 模型能力 / 工具与数据基础 / 人类科学家",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S05",
+        "S07",
+        "S08"
+      ],
+      "report_anchor": "5.5 贡献分解"
+    },
+    {
+      "id": "U15",
+      "title": "与单 agent、传统 pipeline、文献综述 agent、自主湿实验室的有边界比较及上下游关系",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S07"
+      ],
+      "report_anchor": "六、与替代路径的有边界比较"
+    },
+    {
+      "id": "U16",
+      "title": "科学有效性上做得扎实之处与薄弱之处（污染控制、对照、基线、人工推翻错误 vs 利益相关方自评、缺成本、缺标签占比）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S04",
+        "S07"
+      ],
+      "report_anchor": "七、科学有效性与可复现性边界"
+    },
+    {
+      "id": "U17",
+      "title": "可复现性边界：门控原始数据、公开 agent 仓库与 notebook、托管只读 MCP、10.8 GB pinned benchmark 数据、限定模型和完整重跑门槛",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S05",
+        "S08",
+        "S09",
+        "S10"
+      ],
+      "report_anchor": "7.3 可复现性边界"
+    },
+    {
+      "id": "U18",
+      "title": "对双仓 agent harness/eval 的可迁移启示：可直接迁移项、需改造项、不可迁移与需警惕项",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S05",
+        "S07",
+        "S08"
+      ],
+      "report_anchor": "八、对 EverAgent 双仓 agent harness / eval 的可迁移启示"
+    },
+    {
+      "id": "U19",
+      "title": "本研究的缺口、未解决数字冲突与资料时点",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10"
+      ],
+      "report_anchor": "九、Limitations"
+    },
+    {
+      "id": "U20",
+      "title": "理解、未解问题与下一步入口",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S04",
+        "S05",
+        "S06",
+        "S07"
+      ],
+      "report_anchor": "十、思考与追问"
+    }
+  ],
+  "limitations": [
+    "未运行任何 agent、未访问门控原始数据、未复现任何评估；报告中所有性能与科学结果数字均为来源转述。",
+    "已补读 21 页 bioRxiv 主论文 PDF并核对 Fig. 1–4、标签分布、盲评设计、held-out 与 depletion 指标，但未逐项审计 supplementary methods、supplementary tables 和仓库中的全部 saved runs/notebook 实现。",
+    "未读源数据论文（Shi et al. 2026）全文，只读摘要、标题与利益冲突声明；agent 侧 55 条可直接检验发现的分母判定未与源论文逐条核对。",
+    "已定位并读取 jinlabneurogenomics/distributed_agent 仓库 README，确认 MIT、托管 MCP、Codex CLI、本地数据准备与 notebook 入口；未实际调用 MCP、下载 10.8 GB benchmark 数据或运行 prepare-manuscript。",
+    "数据卡的 7,739,370 行 / 205 GB 仍仅来自二手转述；仓库公开的 10.8 GB pinned Parquet 和约 31 GB 准备产物属于复现数据口径，不能与完整原始资产直接等同。",
+    "711× 与媒体口径 7,586÷11≈690 的不一致未解决。",
+    "75% 偏好的样本设计已核对为 20 组配对、60 次判断中的 45 次，但论文未报告该比例的置信区间、预注册或独立复验。",
+    "GPT-Rosalind 的公开评测（BixBench、LABBench2）只读到描述性段落，未核对具体分数与对照模型；论文所用 GPT-Rosalind-5.5 与官方首发版本的关系未说明。",
+    "未发现针对本工作的独立第三方复现或批评；本报告只检索到报道与作者团队公开材料。",
+    "未评估合作方的商业动机对线索优先级的影响；PerturbAI 明确将本工作导向联合药物靶点发现。",
+    "资料时点为 2026-10-25；论文、仓库、托管站点与模型访问策略可能随后变化。"
+  ]
+}

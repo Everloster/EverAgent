@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/GLM5_3_vLLM_PCP_DCP_HiSparse_百万上下文推理_深度解析_20261025.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "review-glm53-vllm-20261025-gpt56sol",
+        "independent_context": true,
+        "explicit_model_override": true,
+        "override_reason": "用户要求本机独立 review 与验收 远端 MiniMax 初稿"
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 95,
+        "request_coverage": 96,
+        "reasoning_quality": 94,
+        "readability": 93,
+        "limitations": 96
+      },
+      "score_reasons": {
+        "evidence_fidelity": "独立回读 vLLM Part 2/Part 1、Context Parallel 文档、GLM-5.3 recipe、DCP 与 Model Runner V2 文章、AgentX 方法页、GLM 官方博客/模型卡/技术报告及 Context Parallel 原论文，C01–C08、C11 的关键数字和限定均可回到原文。初稿曾把整模型 53.4 GiB KV 误当成单层流量并重复乘 78；复核已同步修正正文与 C10 evidence，当前没有未解决的关键数字错配。",
+        "request_coverage": "R01–R06 全部覆盖：PCP、DCP、P/D 分离、Hybrid HiSparse、16×H200 拓扑、benchmark 口径、三层归因、Agent harness 启示均有独立章节；初稿保持 in_progress，未改共享索引或提交。",
+        "reasoning_quality": "报告能把“算、存、分层驻留”三类约束串成完整因果链，并区分同吞吐 Pareto 比较、1M 可服务性与模型质量。交叉核验大多可复算；DCP 1M 开销仍只保留为明确标注的粗略推测，没有再把量级估算写成原文事实。",
+        "readability": "结构清晰，术语表、数据流图、两节点拓扑、逐口径表格和结论边界降低了阅读成本；599 行略长，但章节之间职责明确，重复主要用于防止 1.7–3.2× 被误读，尚未形成实质冗余。",
+        "limitations": "局限部分完整覆盖自报数据、无误差条、无 TP/跨引擎/跨硬件/跨模型对照、1M 质量未评估、闭源回放漂移、DCP 1M 测点缺失、版本成熟度与 adaptive verification 缺口；推导和待验证项均显式标注。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C11"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08",
+        "U09",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15"
+      ],
+      "source_content_map": [],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "独立复核先读原始来源，再对照报告与 evidence。eacli web.read 对 S09 智谱文档返回空内容，按 Token Plan 降级规则使用只读 HTTP 的官方 .md/HTML 页面核验；其 1M/128K/reasoning_effort 规格也与 S08/S10 一致。初稿发现并修复一处整模型 KV 流量重复计数错误，修复后重新评分。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 94.8,
+    "evaluated_on": "2026-10-25",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "d4e233f7d7e158200a4965fd416d89225dbad059176e902301d2e521b0bd785e",
+    "evidence_sha256": "e14e6ebd751449a61677bcca92850c7e7043ed85b248612817f4ce7c0f0d8e1b"
+  }
+}

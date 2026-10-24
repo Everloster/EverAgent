@@ -67,6 +67,7 @@
 ### Independent Reviewer：独立复核
 
 - 使用全新会话，只提供任务、报告、证据账本和原始来源，不提供生成者的推理过程。
+- 跨 worktree 或跨设备复核时，把 `review-prompt` 给出的 report/evidence SHA-256 写入任务；Reviewer 先核对快照，协调者再从预期工作区读取 review 文件验收。
 - 逐项复核用户要求、关键 claim 与来源支持关系，填写五维评分和未解决问题。
 - Reviewer 的默认选择、升级顺序、稀缺与禁用模型只从 `config/report-quality-policy.json` 读取；运行 `python3 scripts/report_quality.py policy --json` 查看当前值。
 - Reviewer 不直接宣称通过；最终判定由 `report_quality.py check` 计算。

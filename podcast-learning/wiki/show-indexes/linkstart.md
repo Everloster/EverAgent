@@ -1,10 +1,11 @@
 # 开始连接 LinkStart — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/q9a6lueucj6a>）｜ 最近拉取：2026-10-19 ｜ 总集数：134
+> 来源：官方 RSS（<https://feed.xyzfm.space/q9a6lueucj6a>）｜ 最近拉取：2026-10-25 ｜ 总集数：135
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-10-21 | 1h05m | [Vol.135｜对话 UDL：AI 眼镜、折叠屏，以及技术背后的设计取舍](https://www.xiaoyuzhoufm.com/episode/6ad6fb05a09b94f787eb2cae?utm_source=rss)<!--g:6ad6fb05a09b94f787eb2cae--> | ✅ 已处理（2026-10-21 xiaoyuzhou-linkstart_vol135-ai-hardware-design） |
 | — | 2026-10-14 | 1h13m | [Vol.134｜GPT-6 之后，机器人创业还剩下什么？](https://www.xiaoyuzhoufm.com/episode/6ace096ee742e36efcc25e5a?utm_source=rss)<!--g:6ace096ee742e36efcc25e5a--> | — |
 | — | 2026-10-08 | 1h49m | [Vol.133｜和开发者、投资人聊 Agent 游戏：AI 改变了游戏生产，能颠覆游戏本身吗？](https://www.xiaoyuzhoufm.com/episode/6abb7be1e742e36efcbca77f?utm_source=rss)<!--g:6abb7be1e742e36efcbca77f--> | — |
 | — | 2026-09-28 | 1h04m | [Vol.132｜Jev 爆火：AI 的下一步，可能不是把模型做得更大](https://www.xiaoyuzhoufm.com/episode/6aba47b6195d838e2aeb2225?utm_source=rss)<!--g:6aba47b6195d838e2aeb2225--> | — |

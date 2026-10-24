@@ -1,0 +1,298 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/TensorRT_GlobalPerformanceTuner_可搜索build_route与精度感知调优_深度解析_20261025.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "review-tensorrt-gpt-20261025-gpt56sol",
+        "independent_context": true,
+        "explicit_model_override": false
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 95,
+        "request_coverage": 96,
+        "reasoning_quality": 95,
+        "readability": 93,
+        "limitations": 96
+      },
+      "score_reasons": {
+        "evidence_fidelity": "独立回读 NVIDIA Part 1/Part 2、TensorRT 11.1 Global Performance Tuning 文档和官方 samples README。1.14×–1.63×、10 负载、200+ knob、C++/Python API、精度门、缓存恢复与 9 条 caveat 均可核对。复核修正了 Caveat 数量、Python 能力边界、跨 SKU 风险比较和验收门槛，并显式保留两份官方材料对 mixed + dryRun 的冲突。",
+        "request_coverage": "完整覆盖单 route 问题、数学框架、knob/route/search、精度感知、benchmark 口径、工程成本、确定性、动态 shape/硬件/部署、替代路线、最小验证、反方解释、限制和 API 速查；用户要求的机制、数字、边界与落地均有答案。",
+        "reasoning_quality": "报告抓住候选空间 B 与搜索 A 的区分、局部 profiling 和端到端失配、精度先筛选再按性能排序三条核心因果链。修订后的采用门槛以基线噪声和业务收益为准，避免把固定百分比当统计结论。",
+        "readability": "开头结论、术语落地、逐口径表、Caveat 清单和七步验证方案清楚；数学章节较长，但与后续工程决策相连，没有成为孤立推导。",
+        "limitations": "完整披露厂商自报不可复现、无绝对量/构建成本、精度阈值可操纵、引擎非 bit 确定、route 被覆盖、版本/硬件/shape 绑定、机会性收益、Python 边界、无跨方案同基准、TensorRT-LLM 缺口与 dryRun 官方冲突。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08",
+        "U09",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14"
+      ],
+      "source_content_map": [
+        {
+          "id": "SCM01",
+          "title": "TensorRT 调度是包含图变换、融合、实现、布局与量化的多解编译问题",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01",
+            "U02"
+          ],
+          "notes": "正文准确重构 heuristic sprawl、performance-accuracy entanglement、customization 与 A/B 数学框架。"
+        },
+        {
+          "id": "SCM02",
+          "title": "局部 tactic profiling 不能代表完整引擎端到端性能",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02",
+            "U09"
+          ],
+          "notes": "Blackwell adaptive grid 例子和 B* 比 A* 更根本的结论均有覆盖，且未声称 GPT 已消除该失配。"
+        },
+        {
+          "id": "SCM03",
+          "title": "knob 组合定义可搜索 build route，但不完整决定最终 engine",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03"
+          ],
+          "notes": "默认 route、builder 约束覆盖 knob、tactic selection 仍运行、set/get/getAllBuildRoutes 均准确。"
+        },
+        {
+          "id": "SCM04",
+          "title": "trtexec 逐 route 构建、校验、测端到端性能并选最快合格 engine",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03",
+            "U06"
+          ],
+          "notes": "崩溃和精度失败的候选排除、200+ knob、缓存与恢复流程均覆盖。"
+        },
+        {
+          "id": "SCM05",
+          "title": "官方唯一性能图是 10 负载相对默认 route 的 1.14×–1.63×",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04"
+          ],
+          "notes": "报告持续标注模型、GPU、shape、绝对延迟和版本未披露，未把厂商相对量写成可复现承诺。"
+        },
+        {
+          "id": "SCM06",
+          "title": "精度定义候选资格，性能只在合格集合内排序",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U05",
+            "U06"
+          ],
+          "notes": "ε 思想实验、16 个候选、loadInputs/refOutputs/threshold/refPair/algorithm 与失败候选缓存语义完整。"
+        },
+        {
+          "id": "SCM07",
+          "title": "fast/mixed/full 平衡搜索成本，官方材料对 mixed + dryRun 互相冲突",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06",
+            "U13"
+          ],
+          "notes": "Part 2 明确 mixed 不支持 dryRun，当前文档泛称 any search mode；正文没有擅自调和，而要求按目标版本验证 CLI。"
+        },
+        {
+          "id": "SCM08",
+          "title": "tuning cache、continue、timeout 与 engine artifacts 让长 sweep 可恢复和审计",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06",
+            "U08",
+            "U13"
+          ],
+          "notes": "continue 只能带 cache、JSONL 字段、saveAllEngines 磁盘代价和 saveEngine 约束均准确。"
+        },
+        {
+          "id": "SCM09",
+          "title": "9 条 Caveat 限定收益、可迁移性、确定性与保证范围",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U07",
+            "U08",
+            "U10"
+          ],
+          "notes": "机会性收益、内部覆盖、版本/模型/硬件、阈值、跨版本回退、engine indeterminism、accuracy scope 全部覆盖。"
+        },
+        {
+          "id": "SCM10",
+          "title": "Python route API 已存在，Torch-TensorRT 2.15 计划对应同类调优实现",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03",
+            "U12"
+          ],
+          "notes": "正文已区分 config.build_route/all_build_routes 与完整自动 tuner loop，不再写成 Python 完全不可用。"
+        },
+        {
+          "id": "SCM11",
+          "title": "官方开源参考入口是 trtexec，samples 无独立 GPT 样例",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "U12"
+          ],
+          "notes": "报告把它写成参考实现与扩展入口，没有从样例清单夸大代码成熟度。"
+        },
+        {
+          "id": "SCM12",
+          "title": "最佳 route 绑定模型、shape、GPU 与软件栈，换环境必须重调",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U07",
+            "U08"
+          ],
+          "notes": "正文保留所有触发条件，并撤销没有来源支持的“跨 SKU 风险高于跨 shape”排序。"
+        },
+        {
+          "id": "SCM13",
+          "title": "采用非默认 route 需要统计噪声、绝对收益、精度和复现共同过门",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U08",
+            "U10",
+            "U11"
+          ],
+          "notes": "七步方案中的接受门槛清楚标为分析者建议，不再以固定 10% 错误解释 1.14×。"
+        },
+        {
+          "id": "SCM14",
+          "title": "上层 TensorRT-LLM 与其它 autotuner 没有同基准证据",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U09",
+            "U11",
+            "U14"
+          ],
+          "notes": "报告将比较限定为作用层级与承诺范围，并把上层栈交互列为 omitted/待验证。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "来源优先复核。发现并修订：正文称 8 条 Caveat 但列表和官方文档均为 9 条；Part 2 与当前文档对 mixed + --dryRun 表述冲突；TensorRT Python route API 已存在；跨 SKU 风险高于跨 shape 没有来源；固定 10% 门槛无法排除 1.14×。修订后重新核验全部 critical claim。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 95.0,
+    "evaluated_on": "2026-10-25",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "20bfee94b1878b00fd24127abda63fabed0abf84a1fd7bd2118f672057631532",
+    "evidence_sha256": "e30a5407bbd7de9de2b13208702a4015017d9d5fda5207441351faff4a0b3219"
+  }
+}

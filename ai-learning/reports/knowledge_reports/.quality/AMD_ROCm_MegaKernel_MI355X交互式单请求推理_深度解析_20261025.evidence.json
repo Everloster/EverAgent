@@ -1,0 +1,614 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AMD_ROCm_MegaKernel_MI355X交互式单请求推理_深度解析_20261025.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-25",
+  "generator": {
+    "model": "minimax-m3.1-flash",
+    "harness": "pi",
+    "run_id": "generator-920be79a006f",
+    "explicit_model_override": true,
+    "override_reason": "用户明确要求本轮继续使用 MiniMax M3.1 Flash；仅在出现明确 quota exhausted / rate limit 不可用证据后才切换 GLM-5.3（本次全程未出现该证据）"
+  },
+  "task": {
+    "summary": "深读 AMD ROCm 2026-10-20 技术博客《Bringing Ultra-Fast, Interactive LLM Inference to AMD Instinct MI355X GPUs》并继续读取其直接相关的一手代码、文档与论文（Fleet 论文 arXiv:2604.15379、MPK 论文 arXiv:2512.22219、AITER/ATOM/Fleet 的临时仓库与 FlyDSL 上游），重构 MegaKernel 的问题定义、kernel fusion 与持久化执行与调度机制、交互式短请求与吞吐的权衡、硬件与软件版本、全部性能数字口径与可复现条件，并与 vLLM/SGLang/TensorRT-LLM/传统 multi-kernel 等路线做有边界比较，给出部署风险、最小验证方案、反方解释、Limitations 与思考追问。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "先查重，完整读取原文至结尾，以及至少 3 个一手/官方来源且包含实现或复现材料。"
+      },
+      {
+        "id": "R02",
+        "text": "拆清 MegaKernel 的问题定义、kernel fusion / 持久化执行 / 调度机制。"
+      },
+      {
+        "id": "R03",
+        "text": "拆清交互式短请求与吞吐的权衡、硬件与软件版本、所有性能数字口径与可复现条件。"
+      },
+      {
+        "id": "R04",
+        "text": "与 vLLM/SGLang/TensorRT-LLM/传统 multi-kernel 路线做有边界比较，并给出部署风险与最小验证方案。"
+      },
+      {
+        "id": "R05",
+        "text": "包含反方解释、Limitations 与思考与追问；关键数字须带硬件、模型、输入输出长度、并发与比较基准，缺失项明确列出。"
+      },
+      {
+        "id": "R06",
+        "text": "产出 report-v2/important 中文独立可读报告与完整 evidence sidecar；初始化 review sidecar 但不自行复核或 finalize；不 commit/push，不改既有报告、MAP、wiki 或索引。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "official",
+      "title": "AMD ROCm Blogs — Bringing Ultra-Fast, Interactive LLM Inference to AMD Instinct MI355X GPUs（Aditya Nandakumar, Sangeeta Chowdhary, Rohan Doshi, Shubham Sharma, Paul Merolla）",
+      "locator": "https://rocm.blogs.amd.com/software-tools-optimization/megakernel-intro/README.html",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S02",
+      "kind": "primary",
+      "title": "arXiv:2604.15379 — Fleet: Hierarchical Task-based Abstraction for Megakernels on Multi-Die GPUs（Sangeeta Chowdhary 等 10 人，2026-04-15，cs.AR）",
+      "locator": "https://arxiv.org/abs/2604.15379",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S03",
+      "kind": "primary",
+      "title": "arXiv:2512.22219 — MPK: A Compiler and Runtime for Mega-Kernelizing Tensor Programs（Xinhao Cheng 等 21 人，v2 2026-06-10）",
+      "locator": "https://arxiv.org/abs/2512.22219",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S04",
+      "kind": "primary",
+      "title": "GitHub — proaditya/aiter（AITER 临时镜像；分支 main / aitermk-qwen38 / aitermk-gpt-oss；MIT；创建 2026-10-18）",
+      "locator": "https://github.com/proaditya/aiter",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S05",
+      "kind": "primary",
+      "title": "GitHub — proaditya/ATOM（ATOM 临时镜像；MIT；创建 2026-10-12）",
+      "locator": "https://github.com/proaditya/ATOM",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S06",
+      "kind": "primary",
+      "title": "GitHub — sangeeta0201/fleet-chiplet-megakernel（Fleet 临时仓库；Apache-2.0；默认分支 amd_mi350；创建 2026-07-29）",
+      "locator": "https://github.com/sangeeta0201/fleet-chiplet-megakernel",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S07",
+      "kind": "primary",
+      "title": "GitHub — ROCm/FlyDSL（FlyDSL 上游 Python 前端；302 stars / 131 forks；创建 2025-11-23）",
+      "locator": "https://github.com/ROCm/FlyDSL",
+      "accessed_on": "2026-10-25"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "MegaKernel 路线要解决的问题被 AMD 定义为低并发下的延迟而非吞吐：一个 token 通常要穿过每层的数百个 kernel，每个 kernel 的 launch 与同步开销在单请求场景下无法被隐藏。",
+      "report_anchor": "2.1 问题定义",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "S01 原文 'AI inference is no longer just a throughput problem... Users notice seconds, not tokens per second. Lowering time per output token (TPOT) is now critical' 与 'Normally each operator of each layer is its own GPU kernel, and one token passes through hundreds of them, each with launch and synchronization overhead that a lone request cannot hide.'",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "megakernel 的机制是持久化 kernel：一个 workgroup 常驻每个 compute unit，workgroup 之间通过内存手递手传递数据；Qwen3.8-27B 与 GPT-OSS-120B 把整个 forward pass 跑成一个 kernel，Qwen3.8-Flash-Next 每 decoder layer 一个 kernel、层间约 1.7 µs 是唯一的 grid-wide 同步；内部大多数阶段边界是 value 与 sequence tag 打包进一次 64-bit store 的 producer-to-consumer 交接，消费者只轮询自己需要的数据，并配合 per-chiplet release words 与权重预取。",
+      "report_anchor": "3.1 从 kernel-per-operator 到持久化内核",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "S01 'A megakernel is a persistent kernel: one workgroup stays resident on each compute unit, and the workgroups hand data to one another through memory'、三模型融合粒度描述与 'a value and its sequence tag arrive in one 64-bit store, so a consumer polls exactly the data it needs'、'Per-chiplet release words'、'idle compute units preload upcoming weights'、'synchronization only where data is actually shared'。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "AMD 给出的可复算度量模型是 speed ≈ 每轮接受 token 数 × 1000 / 每轮毫秒，并给出各模型的每轮接受数与每轮耗时（Qwen3.8-27B 5.6 token/5.11 ms；Flash-Next 3.04/4.27 ms，常规路径 14.10 ms；GPT-OSS-120B DFlash 4.25/3.52 ms，stock vLLM 4.43/5.65 ms；EAGLE3 3.53/2.46 ms）。",
+      "report_anchor": "5.2 逐轮度量模型",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "S01 Test Configuration 中 'speed ≈ tokens accepted per round x 1,000 / ms per round; each model's figures below let you rescale to other acceptance rates' 与各模型 Per round 条目。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "主结果为单张 MI355X、batch=1、GSM8K 128 条提示下的 1.9×–3.3× decode 加速：Qwen3.8-27B 约 1,100 tok/s（对 ATOM 常规路径同 MXFP4 权重同 drafter，ROCm 10.0 为 2.0×、ROCm 7.2.4 为 2.3×）、Qwen3.8-Flash-Next 约 750 tok/s（MTP 3 drafts，3.3×）、GPT-OSS-120B 1,472 对 784 tok/s（1.9×，对 stock vLLM 0.31.0）。",
+      "report_anchor": "5.1 主结果表",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "S01 Key Takeaways 与各模型 Test Configuration 的具体 tok/s 数字（1,091/913/824 对 535/443/412；1,105/924/846 对 481/406/368；689 对 227；1,472 对 784），以及 ROCm 7.2.4 下 2.3× 与 ROCm 10.0 下 2.0× 的差异说明。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "同一模型同一 drafter 同一权重，声明的加速倍数会因 ROCm 版本不同而从 2.3× 变为 2.0×，原因是 ROCm 10 需要的 GPU_MAX_HW_QUEUES=1 也加速了 ATOM 常规路径，因此 AMD 引用的是两侧都被调优后的一对；HIP 默认四队列时优化路径慢 10–25%。",
+      "report_anchor": "5.1 主结果表",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "S01 Qwen3.8-27B 的 Software 与 Baseline 条目：'with HIP's default of four, the optimized path runs 10-25% slower, and one queue also speeds up ATOM's regular path, so we quote the tuned pair'，以及两套 ROCm 容器下的实测数字。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "数据放置的收益由一个受控反事实实验量化：同一二进制同一输出，把一半权重放进另一半的 HBM、强制每次权重读取跨 die，使每个解码 token 多耗时约 28%；默认模式下每层沿关键路径多花 1.4 µs，其中 86% 是搬数据、14% 是阶段等待；DPX+NPS2 仅放置带来 7.5–8% 提升，配合投机为 16–20%，GSM8K 上 placement 1.08× 与 speculation 1.27× 合计约 1.36×。",
+      "report_anchor": "4.4 数据放置",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "S01 Data Locality 一节原文，含受控实验描述、86%/14% 分解、逐阶段加速（Q/K/V 交接 25%、top-k 专家路由 17%、输出投影合并与注意力释放 11%、专家权重流 4%）、以及专家并集 11.7 vs 7 的说明与 1.08×/1.27× 复合。",
+      "critical": true
+    },
+    {
+      "id": "C07",
+      "claim": "GPT-OSS-120B 的质量数据存在一处已公开但未解决的异常：5-shot 原始文本 GSM8K 上 megakernel 无投机为 42.8%、有投机为 35.5%–39.3%，而 vLLM 加 AMD MXFP4×FP8 checkpoint 为 43.8%、BF16 attention 权重为 49%–56%；AMD 称投机本身是精确的，分数差异源于注意力 kernel 切分上下文的方式，正在排查。",
+      "report_anchor": "5.4 质量数据与一处必须标出的异常",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "S01 GPT-OSS-120B 的 Quality evals 条目原文数字与说明 'speculation itself is exact: the score follows how the attention kernel splits the context, which we are investigating'；同一模型在 chat 格式下 GSM8K 94.8–95.4%、MMLU-Pro 74.4% 对 73.2%。",
+      "critical": true
+    },
+    {
+      "id": "C08",
+      "claim": "GPT-OSS-120B 的加速比较不是同配置比较，且两侧计时方式不同：分区模式、精度与 drafter 三项都不同，AMD 明说比较的是完整 decode 配置而非 kernel 本身；megakernel 由客户端经 vllm serve 计时，stock vLLM 用测得的 decode step 离线计时、不含服务开销，AMD 明说这偏向 stock vLLM；插件尚不支持批量 prompt 处理，因此只比较 decode。",
+      "report_anchor": "5.5 口径缺口清单",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "S01 GPT-OSS-120B 的 Setup / Baseline / Prompts and metric 条目原文，含 'these compare complete decode setups rather than the kernel alone'、'which favors stock vLLM' 与 'the plugin does not yet batch prompt processing'；AMD 另给出两组更接近精度的对照（1.55–3.3× 与 1.85–3.5×）。",
+      "critical": true
+    },
+    {
+      "id": "C09",
+      "claim": "承载相关实现的三个个人仓库在读取时均为 0 star：proaditya/aiter 创建于 2026-10-18，含 aitermk-qwen38 与 aitermk-gpt-oss 分支；proaditya/ATOM 创建于 2026-10-12；sangeeta0201/fleet-chiplet-megakernel 创建于 2026-07-29，默认分支 amd_mi350。AMD 自述部分代码将在未来几周迁往长期归属地，Fleet README 指向 AMD-RAD/fleet 的 amd_mi350 分支。",
+      "report_anchor": "六、代码与复现材料证据",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S04",
+        "S05",
+        "S06"
+      ],
+      "evidence": "S01 明确称部分代码位于 interim repositories 并会迁移；GitHub API 元数据分别给出三个仓库的创建日期、0 star/0 fork 与默认分支，分支列表确认 aitermk-qwen38 / aitermk-gpt-oss；S06 README 指向 AMD-RAD/fleet。正文不再把 2026-07 创建的 Fleet 仓库误写为「近三周创建」。",
+      "critical": true
+    },
+    {
+      "id": "C10",
+      "claim": "megakernel 并非凭空出现：MPK 提供了把多算子推理自动降为单个 mega-kernel 的编译器与运行时路线（SM 级图表示、跨算子软件流水、SM 间去中心化调度，宣称最多 1.7× 更低端到端推理延迟），Fleet 提供了 chiplet 级任务抽象与 per-chiplet 调度（MI350 + Qwen3-8B 上 batch 1–8 比 vLLM decode 延迟低 1.3–1.5×；更大 batch 上协作式权重分块把 L2 命中率从 12% 提到 54%（BS32）、39% 提到 61%（BS64），HBM 流量最多降 37%）。",
+      "report_anchor": "3.5 学术谱系",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S06"
+      ],
+      "evidence": "S02 摘要的 Chiplet-tasks 定义与量化结果；S03 摘要的 SM-level graph representation、decentralized scheduling 与 'up to 1.7× lower end-to-end inference latency'；S06 README 的 Mirage 对照表（BS1 7.993→7.076/7.012；BS32 15.186→12.357；BS64 23.343→18.176）与 MI350 硬件参数（248 CU / 8 XCD / 4 MB L2 each / 256 MB MALL / HBM3 5.3 TB/s / ROCm 7.0+）。",
+      "critical": true
+    },
+    {
+      "id": "C11",
+      "claim": "drafter 的选择应按 tokens per millisecond 而非 acceptance 单独判断：GPT-OSS-120B 上 DFlash 的 8-position block 每 pass 接受更多 token，但 confidence-gated 的 EAGLE3 pass 短约 30% 因而整体更快；最优 draft 长度还依赖工作负载，可预测的数学文本适合长 draft，密集对话文本一次最好。",
+      "report_anchor": "4.2 drafter 的选择",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "S01 原文 'When choosing a drafter, measure tokens per millisecond, not acceptance alone... a confidence-gated EAGLE3, which stops guessing once it is unsure, has a pass about 30% shorter than DFlash's and is therefore faster overall. The best draft length also depends on the workload'。",
+      "critical": false
+    },
+    {
+      "id": "C12",
+      "claim": "实现层面，Qwen 内核用 FlyDSL（Python DSL 编译为 AMD GPU 代码，同时保留对矩阵指令、内存传输与顺序的控制），GPT-OSS 内核仍是手写 HIP C++；Qwen 内核最初也以 HIP C++ 起步；AMD 说明这些路径由工程师与 AI 编码 agent 共同完成了数百次优化实验。",
+      "report_anchor": "3.4 实现语言",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S07"
+      ],
+      "evidence": "S01 'The Qwen kernels are written in FlyDSL... they began as HIP C++, as the GPT-OSS kernel still is' 与 'Developed through hundreds of optimization experiments by AMD engineers and AI coding agents'；S07 的仓库元数据（FlyDSL 上游、302 stars/131 forks、许可字段 NOASSERTION）。",
+      "critical": false
+    },
+    {
+      "id": "C13",
+      "claim": "稀疏注意力在 megakernel 内部仍需自行解决全局归约：Qwen3.8-Flash-Next 对全上下文打分并选 top-512 块，把选择切成并行块再合并 winners，使 250K token 的稀疏注意力层从 262 µs 降到 126 µs，最终 250K 处单个 token 3.0 ms（ATOM 常规路径 10.2 ms）。",
+      "report_anchor": "3.3 稀疏注意力的块选择并行化",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "S01 原文 'splitting that selection into parallel chunks and merging their winners cut a sparse-attention layer at 250K tokens from 262 to 126 µs; with further tuning, a token at 250K now takes 3.0 ms, against 10.2 ms on ATOM's regular path'。",
+      "critical": false
+    },
+    {
+      "id": "C14",
+      "claim": "[推测] megakernel 路线的收益随并发上升而收敛：其机理是消除低并发下无法被摊薄的 launch 与同步开销，而 AMD 只提供 4 请求批量（Flash-Next，3.1× per user）一个数据点，且 'Larger batches' 仍在路线图上，因此真实多 Agent 并发下的净增益很可能显著小于单请求数字。",
+      "report_anchor": "7.1 与多 Agent 负载的关系",
+      "support": "inference",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "由 S01 的问题定义（launch 开销在单请求下无法隐藏）、4 请求数据点与 What's Next 中的 'Larger batches' 推导；AMD 未提供更高并发的曲线，属本报告的推断。",
+      "critical": false
+    },
+    {
+      "id": "C15",
+      "claim": "[推测] 1.9–3.3× 是持久化执行、投机解码、低精度和数据放置相对各引擎完整优化配置的复合结果，公开数据不足以分解单项贡献。GPT-OSS-120B 相对倍数从两侧均无投机时的 3.6×，降到 EAGLE3 条件的 2.3×和同 DFlash 条件的 1.6×，只说明投机与两条路径存在耦合，不能把 3.6× 归因为「常规路径没有投机」。",
+      "report_anchor": "9.1 反方解释",
+      "support": "inference",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "S01 明确称比较反映 complete optimized setup，并给出 3.6× without speculation、2.3× with EAGLE3、1.6× with the same DFlash drafter。正文据此只判断相对差距随条件变化，不再声称已分解 megakernel 或投机的独立贡献。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "整体论证（问题、四个杠杆、三层结论）与可迁移内核",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S03"
+      ],
+      "report_anchor": "开头三行"
+    },
+    {
+      "id": "U02",
+      "title": "来源清单与读法（官方口径披露 / 学术坐标 / 落地形态三分）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07"
+      ],
+      "report_anchor": "一、来源清单与读法"
+    },
+    {
+      "id": "U03",
+      "title": "问题定义：TPOT 取代吞吐、单请求下 launch 与同步无法被隐藏",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "2.1 问题定义"
+    },
+    {
+      "id": "U04",
+      "title": "四个技术杠杆的分工与 AMD 的'权重读取是硬下界'度量纪律",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "2.2 四个技术杠杆的分工"
+    },
+    {
+      "id": "U05",
+      "title": "AMD 自身的限定（早期结果、比较的是完整配置、非任务级加速、代码在临时仓库）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "2.3 AMD 自己的限定"
+    },
+    {
+      "id": "U06",
+      "title": "持久化内核定义、三模型融合粒度与手递手同步机制",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "3.1 从 kernel-per-operator 到持久化内核"
+    },
+    {
+      "id": "U07",
+      "title": "64-bit store + sequence tag、per-chiplet release words、权重预取与同步最小化",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "3.2 手递手同步"
+    },
+    {
+      "id": "U08",
+      "title": "稀疏注意力块选择的并行化与 262→126 µs、3.0 ms vs 10.2 ms",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "3.3 稀疏注意力的块选择并行化"
+    },
+    {
+      "id": "U09",
+      "title": "FlyDSL 与手写 HIP 的分工、DSL 化与 agent 参与 kernel 优化的关系、许可状态",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S07"
+      ],
+      "report_anchor": "3.4 实现语言"
+    },
+    {
+      "id": "U10",
+      "title": "学术谱系 MPK→Fleet→产品化，三组数字的不可混读说明与 MI350 硬件参数",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S06"
+      ],
+      "report_anchor": "3.5 学术谱系"
+    },
+    {
+      "id": "U11",
+      "title": "从 kernel-per-operator 到持久化内核的机制示意与三条数据流",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S03"
+      ],
+      "report_anchor": "3.6 机制示意"
+    },
+    {
+      "id": "U12",
+      "title": "权重读取下界、MXFP4 权重与 262K KV cache 装入单卡",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "4.1 权重读取是 decode 的硬下界"
+    },
+    {
+      "id": "U13",
+      "title": "drafter 选择按 tokens/ms 的规则与工作负载依赖性",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "4.2 drafter 的选择"
+    },
+    {
+      "id": "U14",
+      "title": "线性注意力用 per-token 记录重放替代状态副本",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "4.3 线性注意力的状态"
+    },
+    {
+      "id": "U15",
+      "title": "数据放置的反事实实验（+28%）、逐层与逐阶段归因、与投机的复合",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "4.4 数据放置"
+    },
+    {
+      "id": "U16",
+      "title": "GPU_MAX_HW_QUEUES=1 与 10–25% 的默认配置损失",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "4.5 一个容易被忽略的硬件细节"
+    },
+    {
+      "id": "U17",
+      "title": "主结果表：三模型、两基线、ROCm 版本差异与提示集条件",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "5.1 主结果表"
+    },
+    {
+      "id": "U18",
+      "title": "逐轮度量公式与各模型每轮接受数/耗时",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "5.2 逐轮度量模型"
+    },
+    {
+      "id": "U19",
+      "title": "硬件与软件版本、容器 tag、commit、提示集、样本量与度量定义",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S06"
+      ],
+      "report_anchor": "5.3 硬件与软件版本"
+    },
+    {
+      "id": "U20",
+      "title": "质量数据与 GPT-OSS-120B 投机版本精度异常",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "5.4 质量数据与一处必须标出的异常"
+    },
+    {
+      "id": "U21",
+      "title": "口径缺口清单（基线不同、计时方式不同、仅 decode、批量与上下文样本量、无第三方复现）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "5.5 口径缺口清单"
+    },
+    {
+      "id": "U22",
+      "title": "代码与复现材料证据表（可用性矩阵、复现脚本、基准客户端、仓库与分支、许可）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S04",
+        "S05",
+        "S06",
+        "S07"
+      ],
+      "report_anchor": "六、代码与复现材料证据"
+    },
+    {
+      "id": "U23",
+      "title": "六条路线（megakernel / multi-kernel + graph capture / 模型专用融合 / MPK 编译器 / Fleet 拓扑感知 / NVIDIA 专用栈）的有边界比较",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S06"
+      ],
+      "report_anchor": "七、与替代路线的有边界比较"
+    },
+    {
+      "id": "U24",
+      "title": "与多 Agent 负载的关系：decode 之外的开销与并发收敛推断",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "7.1 与多 Agent 负载的关系"
+    },
+    {
+      "id": "U25",
+      "title": "部署风险清单（临时仓库、版本敏感、配置依赖、许可、精度、功能覆盖、生态）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S04",
+        "S05",
+        "S06",
+        "S07"
+      ],
+      "report_anchor": "8.1 部署风险清单"
+    },
+    {
+      "id": "U26",
+      "title": "最小验证方案（先建基线、换算公式重建、精度两档、prefill 占比、并发曲线、版本留存）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "8.2 最小验证方案"
+    },
+    {
+      "id": "U27",
+      "title": "三种反方解释（复合效应无法直接拆分、并发增益可能收敛、跨论文数字不可用于估算单项贡献）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "9.1 反方解释"
+    },
+    {
+      "id": "U28",
+      "title": "本研究的缺口（未运行、未读源码与脚本、论文仅摘要、无跨框架实测、无社区复现检索）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06"
+      ],
+      "report_anchor": "9.2 Limitations"
+    },
+    {
+      "id": "U29",
+      "title": "对 Agent harness 的七条可迁移启示",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "十、对 Agent harness 的可迁移启示"
+    },
+    {
+      "id": "U30",
+      "title": "理解、未解问题与下一步入口",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S06"
+      ],
+      "report_anchor": "十一、思考与追问"
+    }
+  ],
+  "limitations": [
+    "未运行任何 kernel、未在任何 MI355X/MI350 上测量、未复现任何数字；全部结论为来源转述与文档/仓库阅读所得。",
+    "博客正文已读至结尾（含 What's Next、Summary、Additional Resources 与 Disclaimers），但 Figure 1–5 的图内坐标与数值未取到，报告只引用正文与图注中可核对的数字。",
+    "未读 megakernel 源码（aiter 的 aitermk-* 分支内容、fleet-chiplet-megakernel 的 src/ python/ include/），机制描述全部来自博客与 README 文字，未做实现级验证。",
+    "未读 ATOM 与 AITER 的复现 README 与 build_and_repro.sh 脚本内容，'复现门槛低'是基于脚本与容器 tag 的存在性的推断，未实测步骤数与耗时。",
+    "Fleet（arXiv:2604.15379）与 MPK（arXiv:2512.22219）论文均只读摘要，方法细节、评测设置与倍数口径未核实。",
+    "未做跨框架同条件实测，第七章的比较基于各来源自述与公开能力边界，不构成性能排名。",
+    "未检索社区复现与生产案例；未发现第三方复现，但也未系统检索。",
+    "未核对同期其他厂商的同类数字，无法判断 1.9–3.3× 在行业中的相对水位。",
+    "未评估'用 AI 编码 agent 做 kernel 优化'这一方法本身的有效性（贡献比例、成功率、失败模式均未公开）。",
+    "资料时点为 2026-10-25（UTC 约 17:51–18:20）；博客发布于 2026-10-20，三个个人仓库在读取时均为 0 star，但创建日期分别为 2026-10-12、2026-10-18 与 2026-07-29；AMD 明说数字与代码位置会继续更新。"
+  ]
+}

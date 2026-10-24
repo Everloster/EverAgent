@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/Microsoft_ThinkingBox_数据库评分转RL奖励与Agent后训练_深度解析_20261025.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-6",
+        "harness": "codex",
+        "run_id": "review-microsoft-thinkingbox-20261025-gpt6",
+        "independent_context": true,
+        "explicit_model_override": true,
+        "override_reason": "用户明确要求本机独立 review 与验收远端 MiniMax 初稿"
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 95,
+        "request_coverage": 97,
+        "reasoning_quality": 96,
+        "readability": 95,
+        "limitations": 96
+      },
+      "score_reasons": {
+        "evidence_fidelity": "独立读取两篇 Hugging Face/Microsoft 博客、arXiv 摘要、README、tb_interpret.py 与 data-preparation.md。51.70→60.78、38→107、453→446、成本表、训练配置、Jeffreys 分桶、固定训练池与 parser parity 均与一手材料一致。复核发现初稿把 pass@20 与 pass^20 的含义写反，已按官方定义修正。",
+        "request_coverage": "R01–R07 完整满足：从终态评分到二值奖励、六阶段流程、任务选择、训练配置、数字与成本、代码实现、防污染、reward hacking、六类替代路线、EverAgent 最小迁移实验和 eval 均有回答。",
+        "reasoning_quality": "报告最强处是把“可靠性提升但 breadth 未增”与“可执行奖励不等于业务价值”同时保留，并把 parity、UID 排除、重复通过率迁移到报告机制。修订后明确 453→446 只是 20 次 campaign 的观察值，避免把抽样变化写成真实支持面永久收缩。",
+        "readability": "目录、数据流、数字表、代码证据、风险清单和迁移实验层次清楚；指标解释已改为“至少一次”与“20/20 全部通过”的直白表述，降低符号误读。",
+        "limitations": "充分披露项目方自报、单一模型/算法/规模、训练与探针成本排除、合成数据与弱 OOD、judge 比例未知、reward hacking 无量化、私有任务池不可复现、难度不重探和 20 次观测无样本外置信区间。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C09"
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "复核修复一处会把结论读反的指标错误：官方定义 pass@20=至少一次成功，pass^20/Observed 20/20=全部成功。另把“覆盖变窄”收窄为本轮 20 次评测观察到的 breadth 略降，并补充抽样波动边界。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 95.7,
+    "evaluated_on": "2026-10-25",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "39a3f57d765d02fe639c00846e898c7bd0b12aa236bd1caa156bb348d048e134",
+    "evidence_sha256": "d550ac02f733c340b3e1b83e686defd10c35cc074b80e1b5b166a8c677b53521"
+  }
+}

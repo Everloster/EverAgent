@@ -1,10 +1,11 @@
 # 人文清华播客：对话清华学者 — 全量单集索引
 
-> 来源：官方 RSS（<https://www.ximalaya.com/album/54649472.xml>）｜ 最近拉取：2026-10-19 ｜ 总集数：142
+> 来源：官方 RSS（<https://www.ximalaya.com/album/54649472.xml>）｜ 最近拉取：2026-10-25 ｜ 总集数：143
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-10-22 | 2h24m | [143 对话陶瓷艺术家白明：在火与泥之间，让作品慢慢长成作者的样子](https://www.ximalaya.com/sound/1020672580)<!--g:xmly_track_1020672580--> | — |
 | — | 2026-10-08 | 1h56m | [142 日常生活里的中国长啥样？来自一个历史学家的视角](https://www.ximalaya.com/sound/1020671303)<!--g:xmly_track_1020671303--> | — |
 | — | 2026-08-28 | 1h33m | [141 一个新闻人的三十年：当人人都能传播，新闻何以专业](https://www.ximalaya.com/sound/1009449002)<!--g:xmly_track_1009449002--> | — |
 | — | 2026-08-13 | 1h31m | [140 对话哲学教授夏莹：别急着把自己活成一个确定的人](https://www.ximalaya.com/sound/1005857462)<!--g:xmly_track_1005857462--> | — |

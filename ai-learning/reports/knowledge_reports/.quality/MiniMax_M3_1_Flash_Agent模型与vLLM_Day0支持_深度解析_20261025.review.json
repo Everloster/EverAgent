@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/MiniMax_M3_1_Flash_Agent模型与vLLM_Day0支持_深度解析_20261025.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "review-minimax31-20261025-gpt56sol",
+        "independent_context": true,
+        "explicit_model_override": true,
+        "override_reason": "用户要求本机独立 review 与验收 远端 MiniMax 初稿"
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 94,
+        "request_coverage": 96,
+        "reasoning_quality": 94,
+        "readability": 92,
+        "limitations": 95
+      },
+      "score_reasons": {
+        "evidence_fidelity": "独立回读 MiniMax 中英文发布文、模型卡、vLLM Day-0 博客与 Recipes、MSA/DSpark arXiv 页面及 DSpark 机构/生产章节、Artificial Analysis 原始模型页，并用 GitHub API复核核心 PR #63232 仍 open/needs-rebase。初稿曾把 Main Branch 的常数窗口写成整层 O(1)、把 256K 并发结果外推到 1M、未确认 DSpark 归属；已同步修正正文与 evidence，当前关键 claim 均有来源与限定。",
+        "request_coverage": "R01–R07 全部覆盖：发布叙事、MSA/QAT/DSpark、多硬件路径、Day-0 kernel 与 PR、benchmark 口径、替代方案、harness 启示、Limitations 和追问均有独立章节，且保留厂商自报与独立评测层级。",
+        "reasoning_quality": "报告把训练稀疏、低比特存储、投机解码和硬件 kernel 串成一条服务链，能解释为何同一权重在 Blackwell、Rubin、Hopper、AMD 上得到不同经济性。修订后明确 Index Branch 的 O(N) 项、Hopper 仍保留权重压缩、AA 分数版本漂移，推理边界更稳健。",
+        "readability": "514 行内容密度高但层次清楚，x→f→f(x)、机制图、硬件矩阵、PR 表和分口径 benchmark 表能支持独立阅读。个别章节数字很多，读者需要较强背景，因此可读性略低于其证据与覆盖得分。",
+        "limitations": "局限明确列出未运行模型/kernel、论文未逐表审计、PR 未做源码 diff、AgentX 复现条件不全、第三方评测记录不完整、API/SLA/合规未评估和资料时点；对 93% 幻觉率、MSA 质量持平和 1M 外推均已降格处理。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08",
+        "U09",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16",
+        "U17",
+        "U18",
+        "U19",
+        "U20",
+        "U21",
+        "U22",
+        "U23",
+        "U24"
+      ],
+      "source_content_map": [],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S09",
+        "S10",
+        "S11"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "复核先读来源再读报告。eacli web.read 对 DSpark 与 VentureBeat 一度因 Token Plan quota/429 失败，按仓库最小降级规则使用 arXiv 官方 HTML、eacli web.search、Artificial Analysis 原始模型页与只读 GitHub API 补证。修订了 MSA 复杂度、256K→1M 外推、DSpark 归属和 Hopper 路径四处实质问题。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 94.2,
+    "evaluated_on": "2026-10-25",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "544607b15f105cc9b4f8b503ae5027c5a67201432bb964f7789ff8bdd7e6ee24",
+    "evidence_sha256": "e7c637b73dd31241a59dc660cd7dba281f47ee213fde1523ad33162f31e4b8e7"
+  }
+}

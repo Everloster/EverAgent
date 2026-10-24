@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/6ad88be5ef67611cac79fc26",
+  "show": "屠龙大实话",
+  "episode": "64. 为什么人类总在为不平等愤怒？讲讲不平等的进化史",
+  "published_on": "2026-10-21",
+  "status": "succeeded",
+  "silent": true,
+  "interactive_browser": false,
+  "audio_playback": false,
+  "transcription": {
+    "language": "zh",
+    "segments": 2548,
+    "duration_seconds": 3502,
+    "transcript_size_bytes": 118901,
+    "transcript_sha256": "1f101c1c5e6009329bb6fa4086fbcf1c12a881278d7e5fbecd6731ee3dde55db",
+    "engine": "whisper.cpp large-v3（CUDA，Silero VAD）",
+    "repetition_guard": {
+      "passed": true,
+      "max_consecutive_identical": 2
+    }
+  },
+  "transfer": {
+    "mode": "single-file pull",
+    "atomic": true,
+    "verified_sha256": true,
+    "local_path": "podcast-learning/reports/transcripts/2026-10-21_xiaoyuzhou-tulong-dashihua_inequality-evolution.transcript.txt"
+  },
+  "audit": {
+    "script": "podcast-learning/scripts/audit_transcript.py",
+    "ok": true,
+    "lines": 2548,
+    "segments": 2548,
+    "size_bytes": 118901,
+    "duration_seconds": 3502,
+    "max_consecutive_identical": 2,
+    "warnings": [],
+    "errors": [],
+    "head_coverage": "[00:00:05] 开场问候 → [00:00:12] 进入主题",
+    "tail_coverage": "[00:58:21] 结束语 → [00:58:22] 片尾"
+  },
+  "reference": {
+    "duration_label": "约 58 分钟",
+    "source": "小宇宙单集页 shownotes（4 个 Part、20 条章节时间轴；含节目引用的视频与论文）"
+  }
+}

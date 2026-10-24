@@ -1,10 +1,12 @@
 # 忽左忽右 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/cv4bkgpuglwp>）｜ 最近拉取：2026-10-19 ｜ 总集数：648
+> 来源：官方 RSS（<https://feed.xyzfm.space/cv4bkgpuglwp>）｜ 最近拉取：2026-10-25 ｜ 总集数：650
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-10-23 | 1h26m | [510 泰国侨批沉浮录：下南洋浪潮中的跨国华人经济网络](https://www.xiaoyuzhoufm.com/episode/6adb27a497726cd4675696ad?utm_source=rss)<!--g:6adb27a497726cd4675696ad--> | — |
+| — | 2026-10-20 | 1h09m | [509 通往战时陪都之路：卢作孚建设重庆北碚往事](https://www.xiaoyuzhoufm.com/episode/6ad72c1ff80d9814a6e11f31?utm_source=rss)<!--g:6ad72c1ff80d9814a6e11f31--> | — |
 | — | 2026-10-16 | 1h35m | [508 相蓝欣谈国际关系视野下的中美欧今昔：从「斯坦佛小集团」到「军事凯恩斯主义」](https://www.xiaoyuzhoufm.com/episode/6ad1e13c0e4e410a05bdd935?utm_source=rss)<!--g:6ad1e13c0e4e410a05bdd935--> | — |
 | — | 2026-10-13 | 1h03m | [507 葡萄酒盲品漫话：「神童」安德烈眼中的世锦赛、风土与掌故](https://www.xiaoyuzhoufm.com/episode/6acdee13195d838e2af13466?utm_source=rss)<!--g:6acdee13195d838e2af13466--> | — |
 | — | 2026-10-09 | 1h13m | [506 亿万美元间谍：托卡契夫与冷战晚期美苏情报大案](https://www.xiaoyuzhoufm.com/episode/6ac8a47fe742e36efcc052a9?utm_source=rss)<!--g:6ac8a47fe742e36efcc052a9--> | — |

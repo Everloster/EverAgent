@@ -11,8 +11,8 @@
 |------|--------|---------------------|------|
 | 数学与ML基础 | ✓ | 待统计 | 待补 |
 | 深度学习核心 | ✓ | 待统计 | 待补 |
-| 大语言模型与NLP | ✓ | **Apple MLX + RDMA 桌面分布式推理（统一内存、pipeline/tensor parallel 与 Thunderbolt mesh，10-21）**；**CUDA Tile 加速 Mamba-2（SSD 分块、三内核融合与 B300 benchmark 边界，10-21）** | MLX RDMA 独立复现、跨 GPU 架构的 cuTile 性能与 Mamba-2 backward 待补 |
-| 前沿专题(Agent/推理/多模态) | ✓ | Agent Harness 三大流派、自进化路径、AI 编码 Agent 终端；**进化式 harness 一手实证（paper 46）**；**Harness 请求全链路（报文级 function calling/tool use + agentic loop）**；**ChatGPT Work 能力面逆向解析（商业化 harness 活样本 + 七层映射表，08-31）**；**GPT-6 Astra 指令架构（skills/AGENTS.md/task prompt 分层、发现预算与指令债务，10-15）**；**豆包手机 Memory 机制（全局记忆、可行动个人上下文、端云协同与公开/私有证据边界，10-19）**；**ALTK-Evolve 学习型 Memory（轨迹蒸馏、dosage 与 middleware 治理，10-21）**；**Google 自主湿实验室 Agent（VERID、真实负反馈与人机闭环，10-21）**；**[HarnessPro 可验证 Harness 改进](./reports/paper_analyses/51_harnesspro_2026.md)（固定生成测试、Pareto 选择、成本与延迟边界，10-23）** | 进化循环的过拟合防护、reward 消融、跨家族迁移机制待补；Work 子 agent 上下文传递、Ultra 档委派机制、auto-review 抗注入实证待补；**skill 触发 precision/recall 与多模型共用协议的回放评测待补**；**手机 Personal Context 的写入、删除与行动安全回归评测待补**；**学习型 Memory 的长期污染/遗忘与自主实验室端到端组合评测待补**；**有界 RSI 的独立质量与完整效率对照待实测** |
+| 大语言模型与NLP | ✓ | **Apple MLX + RDMA 桌面分布式推理（统一内存、pipeline/tensor parallel 与 Thunderbolt mesh，10-21）**；**CUDA Tile 加速 Mamba-2（SSD 分块、三内核融合与 B300 benchmark 边界，10-21）**；**2026-10-25 推理系统/Kernel 批次：TorchNeuron、ROCm MegaKernel、FlyDSL、Humming、TensorRT GlobalPerformanceTuner、vLLM DeepSeek-V4.1/GLM-5.3、Google TPU vLLM/SGLang、TorchTitan、MiniMax M3.1 Flash Day-0** | MLX RDMA 独立复现、跨 GPU 架构的 cuTile 性能与 Mamba-2 backward 待补；跨厂商同口径复现、TPU/FlyDSL 生产成熟度与长上下文端到端成本待补 |
+| 前沿专题(Agent/推理/多模态) | ✓ | Agent Harness 三大流派、自进化路径、AI 编码 Agent 终端；**进化式 harness 一手实证（paper 46）**；**Harness 请求全链路（报文级 function calling/tool use + agentic loop）**；**ChatGPT Work 能力面逆向解析（商业化 harness 活样本 + 七层映射表，08-31）**；**GPT-6 Astra 指令架构（skills/AGENTS.md/task prompt 分层、发现预算与指令债务，10-15）**；**豆包手机 Memory 机制（全局记忆、可行动个人上下文、端云协同与公开/私有证据边界，10-19）**；**ALTK-Evolve 学习型 Memory（轨迹蒸馏、dosage 与 middleware 治理，10-21）**；**Google 自主湿实验室 Agent（VERID、真实负反馈与人机闭环，10-21）**；**[HarnessPro 可验证 Harness 改进](./reports/paper_analyses/51_harnesspro_2026.md)（固定生成测试、Pareto 选择、成本与延迟边界，10-23）**；**2026-10-25 Agent/数据/评估批次：OpenAI Decisions API、Cosmos DB 多租户、千 Agent 生物研究、ThinkingBox、LitPivot、Cloudflare AI code review、Amazon AVERI、Flint interactive** | 进化循环的过拟合防护、reward 消融、跨家族迁移机制待补；Work 子 agent 上下文传递、Ultra 档委派机制、auto-review 抗注入实证待补；**skill 触发 precision/recall 与多模型共用协议的回放评测待补**；**手机 Personal Context 的写入、删除与行动安全回归评测待补**；**学习型 Memory 的长期污染/遗忘与自主实验室端到端组合评测待补**；**有界 RSI 的独立质量与完整效率对照待实测** |
 | 可解释性 & AI 安全 | ✓ | J-space/J-lens 全局工作空间（paper 45）；**NVIDIA OpenShell + Sentry Agent 运行时安全（软件沙箱、Policy Prover、凭据代理与 DPU 带外监督，10-21）** | 点火实验、机制可解释性系统方法（SAE 等）待补；Sentry 独立实现/红队与 capability lease 实测待补 |
 | **AI 行业与商业观察** | ✓ | 伪智力繁荣评论批判（07-13）、Anthropic 人才信号核实（07-14）、Evoken 陈冕访谈精读（07-29）、《Intelligence Curse》智能诅咒精读（07-30）、《AI应用创业生死录》Evoken三产品商业分析（07-31）、**《中国AI创业与一级市场故事线2022底-2026》从模型信仰到应用求生——三幕迁徙+全融资轮次表+机构视角(07-31)、**Anthropic《Economic Scenarios for Transformative AI》经济情景模型精读（09-11，wiki: anthropic_econ_scenarios）、**DeepSeek 算子工程师自白《我不得不把才华埋葬在昨天》精读与延伸研究（09-16，wiki: craft_displacement）**、**Personal Context 正交论：PC 五层解剖+构建工程+三段链条（10-10，用户今日思考驱动，wiki: personal-context-orthogonality；缝合乱翻书275四赌注/Laya Jevons/bitter_lesson）** | 「应用时代」信号追踪（2027-01）、薄毛利打穿点建模、judgment护城河证伪信号、国资接棒是续命还是改写规则、应用层估值洼地会否修复、IPO后二级市场重估、**经济情景模型 2027 判别点回访（modest 是否被排除）**、**"AI 写算子 ≥ 刘胜与"2027 年中回访**、**L5 委托层协议（DELEGATION.md 待建）/跨产品投影最小充分集/画像固化度量** |
 
@@ -33,6 +33,8 @@
 ---
 
 ## 更新日志
+
+- 2026-10-25：完成顶尖厂商技术博客与论文扩展批次，新增 17 篇 report-v2 深度报告，覆盖推理后端、Kernel DSL、长上下文服务、训练栈、低延迟决策、在线存储、Agent 科研、后训练奖励、动态上下文、安全评估和交互式数据语言；全部使用 evidence sidecar 与独立复核，厂商性能数字统一保留口径和未复现边界。
 
 - 2026-10-23：精读 HarnessPro v1 全部 41 页与量子位文章，结合固定开源快照核对反馈冻结、DPP、三方向候选与 Pareto 选择。明确 53% 是特定基准的执行成本比较、Program 成功率口径不同、生成测试仍有误判，公开 evaluation release 缺完整多代控制器。新增 [学习报告](./reports/paper_analyses/51_harnesspro_2026.md)；后续优先固定模型研究按需读取与可恢复输出，不把 token 降低等同于任务完成。
 

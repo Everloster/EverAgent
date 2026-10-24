@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "status": "succeeded",
+  "silent": true,
+  "interactive_browser": false,
+  "audio_playback": false,
+  "duration_ms": 128653,
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/6ad8cb5aef67611cac7a1d50?utm_source=rss",
+  "artifact": {
+    "source_host": "www.xiaoyuzhoufm.com",
+    "audio_size": 553345128,
+    "language": "zh",
+    "segments": 2011,
+    "service_version": "whisper.cpp-v1.9.1-sm120",
+    "transcript_size": 94572,
+    "transcript_sha256": "3476eaad290ca978212d8ab0a9b1b05cff5577bf173fd610f970f33e081ebc81",
+    "quality": {
+      "repetition_guard": {
+        "passed": true,
+        "max_consecutive_identical": 2
+      }
+    }
+  },
+  "transfer": {
+    "mode": "eacli pull",
+    "atomic": true,
+    "local_path": "podcast-learning/reports/transcripts/2026-10-21_xiaoyuzhou-boluo-jiankang_shiyonggang-cn-us-cancer-decade.transcript.txt",
+    "verified_sha256": true
+  },
+  "audit": {
+    "script": "podcast-learning/scripts/audit_transcript.py",
+    "ok": true,
+    "lines": 2011,
+    "segments": 2011,
+    "size": 94572,
+    "sha256": "3476eaad290ca978212d8ab0a9b1b05cff5577bf173fd610f970f33e081ebc81",
+    "duration_seconds": 3034,
+    "max_consecutive_identical": 2,
+    "warnings": [],
+    "errors": []
+  },
+  "reference": {
+    "show_duration_label": "52分钟（单集页标注）",
+    "transcript_last_timestamp": "00:50:34（shownotes 章节时间轴最后一节为 48:36，单集页标注时长 52 分钟）",
+    "source": "小宇宙单集页 shownotes（11 条章节时间轴，00:00–48:36）"
+  },
+  "runner": "eacli-podcast-remote"
+}

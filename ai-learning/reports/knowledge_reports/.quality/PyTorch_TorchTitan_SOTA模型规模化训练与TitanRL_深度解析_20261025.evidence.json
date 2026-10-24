@@ -1,0 +1,640 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/PyTorch_TorchTitan_SOTA模型规模化训练与TitanRL_深度解析_20261025.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-25",
+  "generator": {
+    "model": "minimax-m3.1-flash",
+    "harness": "pi",
+    "run_id": "generator-920be79a006f",
+    "explicit_model_override": true,
+    "override_reason": "用户明确指定本轮研究优先使用 MiniMax M3.1 Flash（额度耗尽后切 GLM-5.3）"
+  },
+  "task": {
+    "summary": "深读 PyTorch 2026-10 官方博客《TorchTitan Update: New SOTA Models, Performance at Scale, TitanRL》，并继续读取 pytorch/torchtitan 仓库的 RL 设计文档、批不变性机制文档、分布式模块地图、配置系统文档、TorchFT 容错说明、benchmark 提交规范与仓库目录树；重构 TorchTitan 的并行化、容错、checkpoint、训练配方、模型覆盖与 RL 训练路径；逐项核验 SOTA/规模化性能主张的硬件、模型、并行策略、基线与测量口径；说明 TitanRL 与普通预训练/后训练框架的关系，并评估对多 Agent 训练、eval 与研究 harness 的可迁移启示。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "深读原文、TorchTitan/TitanRL 官方仓库与直接链接的设计文档、benchmark 或 PR。"
+      },
+      {
+        "id": "R02",
+        "text": "重构 TorchTitan 的并行化、容错、checkpoint、训练配方、模型覆盖和 RL 训练路径。"
+      },
+      {
+        "id": "R03",
+        "text": "逐项核验 SOTA/规模化性能主张的硬件、模型、并行策略、基线与测量口径。"
+      },
+      {
+        "id": "R04",
+        "text": "说明 TitanRL 与普通预训练/后训练框架的关系。"
+      },
+      {
+        "id": "R05",
+        "text": "评估对多 Agent 训练、eval 与研究 harness 的可迁移启示与适用边界。"
+      },
+      {
+        "id": "R06",
+        "text": "正文包含系统架构与数据流、并行/容错/checkpoint 机制、TitanRL 训练循环、关键 benchmark 逐口径表、代码/PR 证据、至少 3 个替代方案比较、Limitations、思考与追问。"
+      },
+      {
+        "id": "R07",
+        "text": "不得把项目方 benchmark 当独立复现，不得仅凭 README 推断实现，不写入私有设备/网络/账号/额度；不 finalize、不改索引、不提交推送。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "official",
+      "title": "PyTorch — TorchTitan Update: New SOTA Models, Performance at Scale, TitanRL（作者 Ebba Simpson）",
+      "locator": "https://pytorch.org/blog/torchtitan-update-new-sota-models-performance-at-scale-titanrl",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S02",
+      "kind": "primary",
+      "title": "pytorch/torchtitan — torchtitan/rl/README.md（TitanRL 设计、模型支持矩阵、依赖规则）",
+      "locator": "https://github.com/pytorch/torchtitan/blob/main/torchtitan/rl/README.md",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S03",
+      "kind": "primary",
+      "title": "pytorch/torchtitan — torchtitan/rl/BITWISE_PARITY.md（批不变性机制）",
+      "locator": "https://github.com/pytorch/torchtitan/blob/main/torchtitan/rl/BITWISE_PARITY.md",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S04",
+      "kind": "primary",
+      "title": "pytorch/torchtitan — torchtitan/distributed/README.md（并行与技术的模块地图）",
+      "locator": "https://github.com/pytorch/torchtitan/blob/main/torchtitan/distributed/README.md",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S05",
+      "kind": "primary",
+      "title": "pytorch/torchtitan — torchtitan/config/OVERRIDE.md（可组合配置系统完整设计文档）",
+      "locator": "https://github.com/pytorch/torchtitan/blob/main/torchtitan/config/OVERRIDE.md",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S06",
+      "kind": "primary",
+      "title": "pytorch/torchtitan — torchtitan/experiments/torchft/README.md（TorchFT 容错配置与启动）",
+      "locator": "https://github.com/pytorch/torchtitan/blob/main/torchtitan/experiments/torchft/README.md",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S07",
+      "kind": "primary",
+      "title": "pytorch/torchtitan — docs/benchmarks/README.md（社区 benchmark 提交规范）",
+      "locator": "https://github.com/pytorch/torchtitan/blob/main/docs/benchmarks/README.md",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S08",
+      "kind": "primary",
+      "title": "GitHub API — pytorch/torchtitan 仓库元数据与目录树（目录结构、模型清单、提交时间）",
+      "locator": "https://github.com/pytorch/torchtitan",
+      "accessed_on": "2026-10-25"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "TorchTitan 的 5D 并行为 TP/PP/DP/EP/CP（VPP 是 PP 的调度参数），由 parallelism_context.py 的命名 mesh 轴与 config/parallelism.py 承载；博客在两张表里分别展示了不同的轴集合但未明说 '5D' 的定义。",
+      "report_anchor": "3.2 5D 并行",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S04",
+        "S05"
+      ],
+      "evidence": "博客 DSV3 表给出 PP/VPP/DP/EP，Muse Spark 表给出 PP1/DP16/TP4/CP4/EP64；S04 模块表列出 parallelism_context.py 'Device mesh construction and named mesh axes for every parallelism'、context_parallel.py、deepep/、pipeline_parallel.py、fsdp.py；S05 确认 config/parallelism.py 存在。'5D' 的具体组合属分析者推断。",
+      "critical": false
+    },
+    {
+      "id": "C02",
+      "claim": "TitanRL 的核心是把训练侧与推理侧统一到同一份模型定义（trainer 与 vLLM 内跑基本相同的 TorchTitan 模型，attention 模块不同但用同样的底层 kernel），并把两者数值一致性做成可验证的逐位相同，而不是仅靠'应该一致'。",
+      "report_anchor": "5.1 它要解决的具体痛点",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "博客原文指出多数 RL 栈有 separate training and inference implementations，出问题时难以区分是 reward、算法还是两份实现分歧；S02 写明 'runs (mostly) the same TorchTitan model inside the trainer and vLLM (the attention modules differ, but use the same underlying kernels)'，并给出统一模型、批不变性、一栈到底三条卖点。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "批不变性针对的是浮点累加顺序随 batch 形状变化导致的 logprob 漂移，修复分四类：固定 tile 顺序的 batch_invariant_ops Triton kernel 覆盖 mm/addmm/_log_softmax/mean.dim、强制 FA3 num_splits=1、强制 NCCL 单通道 tree 并在 init_process_group 前设置、关闭 TF32 与降精度归约；generator 侧还要把 vLLM 的融合 kernel 路由回 trainer 的实现。",
+      "report_anchor": "5.3 批不变性",
+      "support": "direct",
+      "source_ids": [
+        "S03"
+      ],
+      "evidence": "BITWISE_PARITY.md 原文给出问题定义（GEMM/softmax/reductions/collectives 累加顺序变化，'Even tiny drift can flip top-k expert routing in MoE models'）、开关位置（DebugConfig(batch_invariant=True, deterministic=True)、set_batch_invariance()）与四类修复的具体实现与环境变量，以及 generator-only 补丁（Varlen 走 CUSTOM backend、FlexAttention 钉 BLOCK_M=BLOCK_N=16 与 TRITON backend、GPT-OSS 的 attention sink rescale）。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "TitanRL 的 RL 模型支持面明显窄于其预训练模型覆盖：仓库文档的矩阵中 DeepSeek V3 与 Kimi K2.7 为 Not supported，DeepSeek V4 与 Kimi K3 为 coming soon，FLUX 不支持；仅 Llama 3、Muse Glimmer、Qwen 3、Qwen 3.5/3.6/3.8（标注 text only）与 GPT-OSS 已完成端到端 RL 运行验证，且 generator 序列并行被禁用。",
+      "report_anchor": "5.4 RL 的模型支持矩阵",
+      "support": "direct",
+      "source_ids": [
+        "S02"
+      ],
+      "evidence": "torchtitan/rl/README.md 的 Model support 表逐项给出支持等级，并写明支持等级对应 'completed a two-step end-to-end RL run'、'Generator DP and TP were tested together at degree 2; EP was tested at degree 4 ... Generator sequence parallelism was disabled'。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "博客宣称 TitanRL 可在 MoE 与 dense 模型上稳定训练数百步（含长上下文、代码执行、compaction、harness、自博弈），但其展示曲线使用的是 Qwen3.5-35B-A3B base（SWE-Rebench easy，64K 上下文，40×GB300；terminal-bench 2.1，128K 上下文，20×GB300）；博客两张图的曲线数值与 baseline 未取到，且 'text only' 标注含义未在文档中定义。",
+      "report_anchor": "5.4 RL 的模型支持矩阵",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "博客 Figure 1/2 图注给出模型、上下文长度与 GPU 数；模型支持矩阵中的 Qwen 3.5/3.6/3.8 标注为 'Supported (text only)'；图像内坐标与 baseline 曲线本报告未取到（正文 Limitations 第 2 条已登记）。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "DSV3 671B+MTP1 在自建 GB300 集群、只扩展 PP/DP/EP、MXFP8 量化下的五个配置中，最高 5,324.21 TPS/GPU 与 1,362,998 global TPS 来自 PP2-256；同为 512 GPU 时 PP2→PP8 的单卡 TPS 与 TFLOPs/GPU 均下降 9.16%，而 PP2 从 256 卡扩到 512 卡单卡 TPS 下降 1.16%、global TPS 接近翻倍。各行 LBS/microbatches 同时变化，不能把差异只归因于 PP 深度。",
+      "report_anchor": "6.1 DSV3 671B + MTP1",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "博客 Results 表逐行给出 Run/GPUs/PP-VPP-DP-EP/LBS-microbatches/TPS per GPU/Global TPS/TFLOPs per GPU/Peak HBM 与 'on the MLPerf training benchmark on our internal GB300 cluster scaling only the PP, DP and EP axes. The quantization scheme used is MXFP8'。趋势百分比为分析者依表计算。",
+      "critical": true
+    },
+    {
+      "id": "C07",
+      "claim": "Muse Spark 1.2 OSS 的扩展表中，强制均衡路由比学习到的路由快约 18%–23%，MFU 报为 25.84%–37.17%；但博客未给出 MFU 的定义（FLOPs 公式与分母峰值），且强制均衡路由并非真实路由策略，两组数字不可被解读为模型或框架快慢。",
+      "report_anchor": "6.2 Muse Spark 1.2 OSS",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "博客 Muse Spark 表并列 'Learned' 与 'Forced balanced' 两组行，含 TPS/GPU、Global TPS、TFLOPS/GPU、MFU 与 Peak HBM；原文未定义 MFU 口径，未说明 forced balanced 的含义。百分比差为本报告依表计算。",
+      "critical": true
+    },
+    {
+      "id": "C08",
+      "claim": "博客的三张性能表共同缺少可复现口径：无完整 resolved 配置、无依赖版本与日期、无与其它框架的同条件对照、无 MLPerf 官方提交记录、无训练时长/收敛性、MFU 公式未定义，且 checkpoint 表用的是 512×H100 而性能表用 GB300；而 TorchTitan 自己的 docs/benchmarks/README.md 恰恰要求提交必须包含硬件、--print-config 的完整解析配置（因默认值会随时间变化）、依赖版本与日期。",
+      "report_anchor": "6.5 口径缺口清单",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S07"
+      ],
+      "evidence": "博客三表内容与 S07 提交规范逐条比对；S07 明写 'complete resolved configs, printed by passing --print-config to run_train.sh (preferred because defaults can change over time)' 与 'The versions and date/time of torchtitan, torch, torchao'。差异清单为本报告的比对结论。",
+      "critical": true
+    },
+    {
+      "id": "C09",
+      "claim": "torch_checkpointing 去掉 DCPv1 每次保存的重型 metadata/GLOO 同步；博客先称首次保存后不再有 collective，随后又称每次保存仍运行 lightweight barrier，公开表述内部矛盾，不能据此断言保存阶段完全零 collective。在 512×H100、DSv3 671B、checkpoint interval 50 下，官方自测把 trainer 阻塞时间从平均 841.2 ms 降到 34.1 ms、写入时间从 384.4 s 降到 13.1 s，非重分片加载从 194.7 s 降到 79 s。",
+      "report_anchor": "4.3 Checkpoint",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "博客 Checkpointing 一节给出三张对比表（trainer blocking / checkpoint write / non-resharding load，各含平均与 P99）及测试条件，并说明动机是超过 16k ranks 后 GLOO 集体同步扩展性差。倍数为本报告依表计算。",
+      "critical": true
+    },
+    {
+      "id": "C10",
+      "claim": "容错分两层：TorchFT 以多副本组（每个是独立 TorchTitan 实例、经 lighthouse 组队）提供副本组级故障容忍，且文档自述为 ongoing development；TrainingEngine 另负责 GC、SDC replay（静默数据损坏重放）与 CUDA graphs。",
+      "report_anchor": "4.1 容错",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S06",
+        "S08"
+      ],
+      "evidence": "torchft/README.md 给出 replica group 机制、--min_replicas/--quorum_tick_ms/--join_timeout_ms 的 lighthouse 启动与两实例 run_train.sh 方式，并写明 'This is an ongoing development effort'；S02 与 S08 显示 torchtitan/training_engine.py 拥有 GC、SDC replay 与 CUDA graphs。SDC replay 的触发条件本报告未读实现。",
+      "critical": false
+    },
+    {
+      "id": "C11",
+      "claim": "博客未定义 'out-of-the-box performance improvements' 的比较基线，也未提供跨框架同条件对照；因此其性能数字只能读作'在某个未完全披露的配置下的绝对吞吐'，不能回答 TorchTitan 比其它框架快多少。",
+      "report_anchor": "6.5 口径缺口清单",
+      "support": "derived",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "博客仅给出自身前后与自身配置间的表格，未出现任何其它框架名称或对照数字；本报告在 §6.5 逐项列出缺失口径并据此限定结论强度。",
+      "critical": false
+    },
+    {
+      "id": "C12",
+      "claim": "[推测] TorchTitan 的多模型覆盖能力来自'同骨架、多参数化'的配置可组合设计，而非每个模型一份 fork：仓库 models/ 目录下 qwen3 与 qwen3_5/3_6/3_8、kimi_k2_7 与 kimi_k3 两代并存，配合 config/ 的 transforms 与 override 机制。",
+      "report_anchor": "2.3 新模型支持",
+      "support": "inference",
+      "source_ids": [
+        "S01",
+        "S08"
+      ],
+      "evidence": "S08 的 torchtitan/models/ 目录清单与 S01 'without maintaining separate model forks' 的表述；具体实现方式本报告未读源码，故标为推测。",
+      "critical": false
+    },
+    {
+      "id": "C13",
+      "claim": "[推测] 对多 Agent 训练最可迁移的三项是：训练侧与执行侧同一份模型定义、在受支持的 on-policy 配置中用批不变模式进行 trainer/generator 精确归因、以及把 policy age 与 straggler 容忍度做成显式参数（target_offpolicy_steps / windowed_fifo_batches）。S03 的 Search-R1 对照显示批不变模式使 generator decode 慢 2.6×、trainer fwd/bwd 慢 2.9×、full-step throughput 慢 1.2×，但该编排主导负载的 wall-clock/step 约不变；不能据此外推 compute-bound 训练。",
+      "report_anchor": "10.1 多 Agent 训练",
+      "support": "inference",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "前两项直接来自 S02 的卖点与 S03 的机制；policy age 与 straggler 参数来自 S02 的 RolloutGroupWorkBuffer 描述；'以吞吐换精确'来自 S02 'Batch invariance trades throughput for exact numerics'。映射到多 Agent 场景属本报告的推断。",
+      "critical": false
+    },
+    {
+      "id": "C14",
+      "claim": "TorchTitan 自己规定的社区 benchmark 提交规范（实体、模型/主题、硬件设置、训练配置与 --print-config 解析结果、依赖版本与日期、复现备注，以及 [model]_[hardware]_[date]_[entity].md 命名格式）构成可直接移植到 EverAgent eval 报告的'口径契约'。",
+      "report_anchor": "10.2 Eval 与研究 harness",
+      "support": "derived",
+      "source_ids": [
+        "S07",
+        "S08"
+      ],
+      "evidence": "S07 逐条列出六项提交要求与命名格式，并给出仓库中三个已提交示例文件；迁移到本项目 eval 报告规范属本报告的推断。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "原文定位、三条主线与本报告的核心结论（可迁移内核与口径缺口）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "开头三行"
+    },
+    {
+      "id": "U02",
+      "title": "一手来源清单与'项目方自述 vs 实现契约 vs 结构事实'的读法",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08"
+      ],
+      "report_anchor": "一、一手来源清单与读法"
+    },
+    {
+      "id": "U03",
+      "title": "TorchTitan 的定位、仓库目录结构与模型目录清单",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S08"
+      ],
+      "report_anchor": "2.1 TorchTitan 是什么"
+    },
+    {
+      "id": "U04",
+      "title": "本次更新的六条主线",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "2.2 这次更新的四条主线"
+    },
+    {
+      "id": "U05",
+      "title": "新模型支持与可组合配置系统：typed recipes / transforms / override 的注册、FQN 定位、claim/冲突检查与版本边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S05",
+        "S08"
+      ],
+      "report_anchor": "2.3 新模型支持"
+    },
+    {
+      "id": "U06",
+      "title": "训练栈全景示意（配置层 / 5D 并行层 / TrainingEngine / RL 与预训练双路径）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S04",
+        "S08"
+      ],
+      "report_anchor": "3.1 训练栈全景"
+    },
+    {
+      "id": "U07",
+      "title": "5D 并行的轴定义与承载模块",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S04",
+        "S05"
+      ],
+      "report_anchor": "3.2 5D 并行"
+    },
+    {
+      "id": "U08",
+      "title": "性能三支柱与五件武器（local_compile、torch_remat、Dist-MoE、pipeline parallel 重写、overrides）、首次 optimizer 的 CUDA cache workaround、TP 的 record_stream 问题",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S04"
+      ],
+      "report_anchor": "3.3 性能三支柱"
+    },
+    {
+      "id": "U09",
+      "title": "容错路径：TorchFT 副本组、lighthouse、启动命令与'ongoing'状态声明",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S06"
+      ],
+      "report_anchor": "4.1 容错"
+    },
+    {
+      "id": "U10",
+      "title": "SDC replay（静默数据损坏重放）及其与 TorchFT 的分工",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S08"
+      ],
+      "report_anchor": "4.2 SDC replay"
+    },
+    {
+      "id": "U11",
+      "title": "torch_checkpointing 去掉重型 per-save metadata/GLOO 同步、原文对 collective/barrier 的矛盾表述、16k ranks 动机与三组对比数字",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "4.3 Checkpoint"
+    },
+    {
+      "id": "U12",
+      "title": "GraphTrainer 图模式与 eager 模式的 bitwise 等价声明及其代码位置",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S08"
+      ],
+      "report_anchor": "4.4 GraphTrainer"
+    },
+    {
+      "id": "U13",
+      "title": "TitanRL 要解决的痛点与三大卖点（含统一模型性能的可诚实变体）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "report_anchor": "5.1 它要解决的具体痛点"
+    },
+    {
+      "id": "U14",
+      "title": "TitanRL 三层架构、Monarch/TorchStore 依赖、policy age 与 straggler 旋钮、依赖边界规则",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02"
+      ],
+      "report_anchor": "5.2 三层架构与数据流"
+    },
+    {
+      "id": "U15",
+      "title": "批不变性的问题定义、四类修复、generator 侧 kernel 路由、Search-R1 性能交换率与适用边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S03",
+        "S01"
+      ],
+      "report_anchor": "5.3 批不变性"
+    },
+    {
+      "id": "U16",
+      "title": "RL 模型支持矩阵、测试条件与博客主张之间的张力",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S01"
+      ],
+      "report_anchor": "5.4 RL 的模型支持矩阵"
+    },
+    {
+      "id": "U17",
+      "title": "DSV3 671B+MTP1 五配置表及同为 512 GPU 的 PP2/PP8 趋势与混杂变量",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "6.1 DSV3 671B + MTP1"
+    },
+    {
+      "id": "U18",
+      "title": "Muse Spark 1.2 OSS 扩展表、learned 与 forced balanced 的差距、MFU 口径缺口",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "6.2 Muse Spark 1.2 OSS"
+    },
+    {
+      "id": "U19",
+      "title": "checkpoint 三组对比数字与收益来源的区分（阻塞 vs 写入 vs 加载）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "6.3 Checkpoint"
+    },
+    {
+      "id": "U20",
+      "title": "FlexShard 的 Owned/BlockShard placement、DistMuon 与分块量化 AllGather 的收益",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S04"
+      ],
+      "report_anchor": "6.4 FlexShard"
+    },
+    {
+      "id": "U21",
+      "title": "三张性能表的口径缺口清单与结论强度限定",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S07"
+      ],
+      "report_anchor": "6.5 口径缺口清单"
+    },
+    {
+      "id": "U22",
+      "title": "代码与 PR 证据：目录结构对照表、RL 三个参考实验、benchmark 提交规范与示例、RL 环境安装与 FA 版本选择",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S07",
+        "S08"
+      ],
+      "report_anchor": "七、代码与 PR 证据"
+    },
+    {
+      "id": "U23",
+      "title": "TitanRL 与预训练框架（Megatron/NeMo 系）的维度对照",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "report_anchor": "8.1 与预训练框架"
+    },
+    {
+      "id": "U24",
+      "title": "TitanRL 与 veRL/OpenRLHF/TRL 的分工与生态关系",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "report_anchor": "8.2 与其它 RL 框架"
+    },
+    {
+      "id": "U25",
+      "title": "与自建 Agent RL 训练器的关系：哪些是难以自研正确的部分",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02"
+      ],
+      "report_anchor": "8.3 与"
+    },
+    {
+      "id": "U26",
+      "title": "五个替代方案（TorchTitan / Megatron 系 / NeMo 系 / 自建栈 / 纯 RL 推理栈）的有边界比较",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "report_anchor": "九、与替代方案的比较"
+    },
+    {
+      "id": "U27",
+      "title": "对多 Agent 训练的可迁移要点（统一模型、批不变性、policy age、权重同步、两层容错）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S06"
+      ],
+      "report_anchor": "10.1 多 Agent 训练"
+    },
+    {
+      "id": "U28",
+      "title": "对 eval 与研究 harness 的可迁移要点（口径契约、基线声明、执行模式等价性、推理能力差异）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S07"
+      ],
+      "report_anchor": "10.2 Eval 与研究 harness"
+    },
+    {
+      "id": "U29",
+      "title": "不可照搬项与适用边界（含 checkpoint 表述矛盾、批不变性能耗与 compute-bound 外推限制）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "10.3 适用边界"
+    },
+    {
+      "id": "U30",
+      "title": "研究缺口、图片未取到、源码未实测与资料时点",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08"
+      ],
+      "report_anchor": "十一、Limitations"
+    },
+    {
+      "id": "U31",
+      "title": "理解、未解问题与下一步入口",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S07"
+      ],
+      "report_anchor": "十二、思考与追问"
+    }
+  ],
+  "limitations": [
+    "未运行任何训练、未复现任何 benchmark、未访问内部 GB300 集群；全部性能数字为项目方自测结果，不是 MLPerf 官方分数也不是第三方复现。",
+    "博客正文已完整读取（含结尾），但 Figure 1（SWE-Rebench）与 Figure 2（terminal-bench）两张 RL 训练曲线的坐标与 baseline 数值未取到，因此无法核对 RL 训练的收敛性与对照位置。",
+    "未逐个读取源码实现，只读了仓库文档与 GitHub API 元数据；local_compile、torch_remat、pipeline parallel 重写、Dist-MoE、GraphTrainer、SDC replay 的实现细节未核对。",
+    "torch_checkpointing 的仓库位置未确认（按 pytorch/torch_checkpointing 路径检索返回 404），相关描述全部来自博客转述。",
+    "torchtitan/config/OVERRIDE.md 已完整读取，但未逐项核对 override.py 实现与测试；正文对注册、claim 收集、冲突检查和替换顺序的描述属于官方设计契约，不等同于运行验证。",
+    "博客提到的批不变性联合研究、Attention Gym 的 Gated DeltaNet / Kimi Delta Attention / 稀疏注意力 kernel、Helion fused RoPE，以及 Miles / Meshy / Areal Archon 的集成细节，均未读到一手来源。",
+    "未在 MLPerf Training 官方结果库核对 DSV3 671B 的提交记录，无法判断博客表格是否对应某个官方提交及其完整配置。",
+    "第 9 章与其它框架的对比全部基于二手知识与项目定位推断，未读 Megatron-Core / NeMo / veRL 的同期文档与 benchmark，不构成同条件性能比较。",
+    "未评估项目治理与商业动机；'开箱即用性能'叙事带有明显的框架竞争属性。",
+    "资料时点为 2026-10-25（UTC 约 17:02–17:30）；仓库最近推送 2026-10-24T16:58Z，模型目录已比博客多出 qwen3_6 / qwen3_8，代码演进快于博客。"
+  ]
+}

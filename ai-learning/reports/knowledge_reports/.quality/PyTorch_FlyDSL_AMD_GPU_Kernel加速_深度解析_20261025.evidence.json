@@ -1,0 +1,573 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/PyTorch_FlyDSL_AMD_GPU_Kernel加速_深度解析_20261025.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-25",
+  "generator": {
+    "model": "minimax-m3.1-flash",
+    "harness": "pi",
+    "run_id": "generator-920be79a006f",
+    "explicit_model_override": true,
+    "override_reason": "任务指定生成器为 MiniMax M3.1 Flash；当前终端的 reasoning effort 实际值为 high（本会话由 PI_REASONING_LEVEL 在启动时固定为 high，切换到 max 需新起 pi 进程并会中断本次派发会话，因此未执行；模型目录中 MiniMax-M3.1-Flash 的 thinkingLevelMap 确实含 max 映射）。未出现额度耗尽或 rate limit 不可用证据，故未切换 GLM-5.3。"
+  },
+  "runtime": {
+    "model": "minimax-m3.1-flash",
+    "harness": "pi",
+    "reasoning_effort_requested": "max",
+    "reasoning_effort_actual": "high",
+    "reasoning_effort_note": "本会话的思考强度由启动时的 PI_REASONING_LEVEL=high 固定；pi 的 --model <provider/model>:max 只对新进程生效，或需 TUI 内切换命令，均无法在不放弃当前派发会话的前提下完成。因此如实记录实际值为 high，未伪称 max。",
+    "model_switch": "none",
+    "model_switch_reason": "未出现明确 quota exhausted / rate limit 不可用证据"
+  },
+  "task": {
+    "summary": "深读 PyTorch 官方博客《Accelerating PyTorch on AMD GPUs with FlyDSL》（2026-10-21），并交叉核对 AMD ROCm 官方博客（2026-03-30）、ROCm/FlyDSL 仓库的 README、架构指南、kernel authoring 指南与目录结构、ROCm/aotriton 仓库元数据；用白话解释 FlyDSL 的 DSL、IR/代码生成、调度与 kernel authoring 模型，逐项核验所有性能数字的 GPU、kernel、shape、精度、基线与测量协议，比较 Triton、Composable Kernel、HIP/CUDA DSL 等路线，说明可移植性、维护成本、成熟度与对推理/训练 kernel 开发的现实意义。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "先查重；完整读取 PyTorch 原文，并继续读取 FlyDSL 官方仓库/论文/文档与相关 AMD/ROCm 及 PyTorch 编译接口材料。"
+      },
+      {
+        "id": "R02",
+        "text": "用白话解释其 DSL、IR/代码生成、调度与 kernel authoring 模型。"
+      },
+      {
+        "id": "R03",
+        "text": "逐项核验所有性能数字的 GPU、kernel、shape、精度、基线和测量协议。"
+      },
+      {
+        "id": "R04",
+        "text": "比较 Triton、Composable Kernel、HIP/CUDA DSL 等路线，说明可移植性、维护成本、成熟度与现实意义。"
+      },
+      {
+        "id": "R05",
+        "text": "产出 report-v2 / important / deep / standalone 报告与完整 evidence sidecar；review 仅初始化为空；不 commit/push，不改索引与 MAP。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "official",
+      "title": "PyTorch 官方博客 — Accelerating PyTorch on AMD GPUs with FlyDSL（Ebba Simpson，2026-10-21）",
+      "locator": "https://pytorch.org/blog/accelerating-pytorch-on-amd-gpus-with-flydsl",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S02",
+      "kind": "official",
+      "title": "AMD ROCm 官方博客 — FlyDSL: Expert GPU Kernel Development with the Ease of Python（2026-03-30）",
+      "locator": "https://rocm.blogs.amd.com/software-tools-optimization/flydsl-python-native/README.html",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S03",
+      "kind": "primary",
+      "title": "ROCm/FlyDSL — README.md（项目分层、核心 IR 类型、仓库结构、构建前提）",
+      "locator": "https://github.com/ROCm/FlyDSL/blob/main/README.md",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S04",
+      "kind": "primary",
+      "title": "ROCm/FlyDSL — docs/architecture_guide.md（编译器组件与阶段、Fly/FlyROCDL 方言结构）",
+      "locator": "https://github.com/ROCm/FlyDSL/blob/main/docs/architecture_guide.md",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S05",
+      "kind": "primary",
+      "title": "ROCm/FlyDSL — docs/kernel_authoring_guide.md（@flyc.kernel / @flyc.jit / launch 与同步原语）",
+      "locator": "https://github.com/ROCm/FlyDSL/blob/main/docs/kernel_authoring_guide.md",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S06",
+      "kind": "primary",
+      "title": "GitHub API — ROCm/FlyDSL 仓库元数据与目录树（kernels/ 家族、docs/ 谱系、issue 计数、许可字段）",
+      "locator": "https://github.com/ROCm/FlyDSL",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S07",
+      "kind": "primary",
+      "title": "GitHub API — ROCm/aotriton 仓库元数据（AOT Triton Math Library，SDPA 派发方）",
+      "locator": "https://github.com/ROCm/aotriton",
+      "accessed_on": "2026-10-25"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "FlyDSL 被定位为 Triton 的补充而非替代：Triton 面向主流开发者的块级编程，FlyDSL 面向追求 roofline 性能或从事编译器基础设施的专家的线程级与 IR 级控制；AMD 官方博客明确其与 OpenAI 共同推进的 Triton 是生态主流，FlyDSL 不取代它。",
+      "report_anchor": "2.2 AMD 那篇在回答什么",
+      "support": "direct",
+      "source_ids": [
+        "S02"
+      ],
+      "evidence": "S02 'A Complementary Tool, not a Replacement for Triton' 一节原文：'Triton: block-level programming for mainstream developers / FlyDSL: thread-level and IR-level control for expert developers seeking roofline performance or working on compiler infrastructure'，以及 'AMD and OpenAI actively collaborate on Triton as the primary block level kernel DSL for most developers'。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "FlyDSL 由三层构成：Python DSL 前端（控制流经 AST 变换转成 MLIR）、Fly dialect（一等布局 IR，含 !fly.int_tuple / !fly.layout / !fly.coord_tensor / !fly.memref 与 composition/product/divide/partition 代数及坐标映射算子）、以及 FlyROCDL 与 MLIR→ROCDL→HSACO 的可组合下降管线；数学基础是 AMD 称为形式化验证过的 CuTe 布局代数。",
+      "report_anchor": "3.1 三层结构",
+      "support": "direct",
+      "source_ids": [
+        "S03",
+        "S04",
+        "S02"
+      ],
+      "evidence": "S03 README 的 'FlyDSL is the Python front-end ... the Fly dialect—a first-class layout IR with explicit algebra and coordinate mapping, plus a composable lowering pipeline to GPU/ROCDL' 与核心类型清单；S04 架构指南的组件表与 Fly/FlyROCDL 的 TableGen 结构（FlyOps.td、FlyTypeDefs.td、CopyAtom.td、MmaAtom.td）；S02 'Built on CuTe Layout Algebra' 一节。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "在 PyTorch 侧，FlyDSL 以三条通路接入：eager 下合格 RMSNorm 与 TopK 自动分派；torch.compile 下 TorchInductor 过滤合格的 Dense/Grouped/MXFP GEMM 候选、与 ATen 和 Triton 并行实测并缓存每个负载的胜者；注意力经 AOTriton 用离线算子调优数据库在 FlyDSL、Triton 与 AITER ASM 之间逐负载派发；不支持的负载保留既有实现。",
+      "report_anchor": "四、PyTorch 集成",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S07"
+      ],
+      "evidence": "S01 'Why FlyDSL as a PyTorch Backend' 一节的三段机制原文与 Figure 1 图注；S07 的 aotriton 仓库元数据（'Ahead of Time (AOT) Triton Math Library'，MIT）。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "官方支持的算子面很窄且模式受限：Dense GEMM / MXFP scaled GEMM / Grouped GEMM 仅走 torch.compile，RMSNorm 仅前向且 backward 仍走 PyTorch 既有实现，TopK 仅 FP32，Attention 经 AOTriton 支持 head dim 32–512 但不支持 FP32；MXFP 要求 K 为 128 的倍数、不支持 fast accumulation，且 Inductor 的布局约束（沿 K unit stride）先于后端选择生效，不兼容时会插入 layout copy；torch.nn.attention.flex_attention 是另一条路径，由 Inductor 编译成自己的 Triton kernel、不走 AOTriton。",
+      "report_anchor": "4.1 支持矩阵",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "S01 'Supported Features' 一节的逐字支持矩阵表与其后各段约束说明（K 多重 128、optional bias、fast accumulation not supported、Inductor layout constraint / layout copy、FP32 attention not supported、RMSNorm backward continues through PyTorch's existing implementation、flex_attention 被 Inductor 编译为自有 Triton kernel）。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "算子级结果为：BF16 dense GEMM 在 15 个 NT 形状上相对'每个形状中更快的 ATen/Triton'取得 1.10× 几何均值（10 胜 3 平 2 负，±1% 平局带；64×4096×4096 为 1.33×）；MXFP8 在 17 形状上对 ATen 为 1.58×（范围 1.31×–2.23×）、MXFP4 为 1.68×（1.31×–2.96×）且全部用例均胜；grouped GEMM 在 24 个用例上对 Triton 1.20×、对 ATen 1.95×，其中原文明写投影维度为 5 例；RMSNorm 在 22 个用例上为 1.17×–3.66×（对齐维度约 1.2×–1.5×，差一位形状可达 3.66×）；小 K TopK 的 10 个用例在关闭确定性算法时为 4.82×、开启时 4.02×。",
+      "report_anchor": "5.2 算子级数字",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "S01 Figure 3/5/7/9/11 正文与图注：BF16 dense 15 形状 10 胜/3 平/2 负；MXFP8/4 各 17 形状与范围；grouped GEMM 24 例分为 uniform 14、projection dimensions 5、ragged 5 并给出各自几何均值；RMSNorm 22 例与 4097 特定 FP16 峰值；TopK 小 K 明写 10 cases、图注聚合 33 个报告用例。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "注意力部分的 0.92×–2.34×（forward）与 0.93×–2.47×（backward）是 AOTriton 0.14.2b 相对 0.13b 的版本间对比，官方明确说明该对比同时包含 Triton、AITER 与调优数据库的更新，因而不是 FlyDSL 与 Triton 的隔离对比。",
+      "report_anchor": "5.3 Attention 的数字是",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "S01 'Attention: FMHA Kernels Through AOTriton' 一节原文与 Figure 14 图注：'This release-to-release comparison also includes updated Triton, AITER, and tuning databases, so it is not an isolated FlyDSL-versus-Triton measurement.'",
+      "critical": true
+    },
+    {
+      "id": "C07",
+      "claim": "端到端 vLLM A/B 的协议是：vllm bench serve、单张 MI355X（TP=1）、Llama-3.1-8B-Instruct / Qwen3-32B / Llama-3.3-70B-Instruct、256 token 输入与固定 512 token 输出、并发 8–256、基线与处理组同 serving 配置与 per-model KV cache、只改 Inductor GEMM 候选列表；BF16 相对 ATen+Triton 的峰值分别为 1.13×（8B）、1.06×（32B），70B 多数测点处于 1.79% 的实测噪声地板内，报告至少两次 ABBA 交错重复的中位数；MXFP8 与 MXFP4 相对 ATen(hipBLASLt) 的 18 个模型×并发组合全部改善（1.04×–2.04× 与 1.25×–3.01×），但每格仅一次测量。",
+      "report_anchor": "5.4 端到端 vLLM",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "S01 'End-to-End vLLM Inference' 一节的协议原文与 BF16 / MXFP8 A8W8 / MXFP4 A4W4 三段结果，含 'MXFP8 and MXFP4 each have one measured run per cell, so small differences should not be treated as variance-qualified results'。",
+      "critical": true
+    },
+    {
+      "id": "C08",
+      "claim": "官方自陈的收益前提是'被支持的操作在模型运行时间中占显著份额'；这与端到端数据的落差一致——算子级 1.6× 对端到端 BF16 1.13×，而低精度路径才有 1.04×–3.01× 的量级。",
+      "report_anchor": "开头三行",
+      "support": "derived",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "S01 首段 'These gains are most relevant when the supported operations account for a significant share of model runtime' 与 §5.4 端到端数据的并置；该并置解释属本报告的分析。",
+      "critical": true
+    },
+    {
+      "id": "C09",
+      "claim": "TopK 存在语义级而非性能级的不一致：关闭确定性算法时 radix 路径用 atomic slot 分配，相等值的索引可能变化；寄存器 kernel 在两种模式下可复现但 tie 顺序可能与 ATen 不同；NaN 被规范化到同一 ordinal，因此即使确定性模式下精确 NaN payload 与索引选择也可能与 ATen 不同。",
+      "report_anchor": "7.4 TopK 的确定性",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "S01 'TopK: Faster Selection for Small and Large K' 一节关于 determinism 的原文段落。",
+      "critical": false
+    },
+    {
+      "id": "C10",
+      "claim": "成熟度信号互相矛盾：ROCm/FlyDSL 仓库有 302 stars / 131 forks 但 140 个 open issue、许可字段为 NOASSERTION（非标准 SPDX），从源码构建需先从源码编译 LLVM/MLIR；而 AMD 博客自述 FlyDSL 算子已在大规模推理生产中采用、Python 侧却仍列有 FlexAttention 后端、attention kernel 迁回上游、GEMM epilogue fusion、更广 backward 覆盖与 AOTInductor 支持等待办项。",
+      "report_anchor": "7.3 成熟度",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S01",
+        "S03",
+        "S06"
+      ],
+      "evidence": "S06 的仓库元数据（stars/forks/open_issues/license NOASSERTION/created/pushed）与 S03 的构建脚本说明；S02 的 'entered early production adoption for large-scale inference workloads'；S01 'What's Next' 的六项待办。",
+      "critical": true
+    },
+    {
+      "id": "C11",
+      "claim": "PyTorch 侧的当前硬件目标只有 AMD MI350 系列（gfx950），AOTriton 另发 RDNA4（gfx1201）的 attention kernel，MI450 系列在路线图上；因此 AMD 博客所称的'跨 GPU 架构可移植性'目前是抽象层的设计主张而非既成能力。",
+      "report_anchor": "7.1 可移植性",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "S01 'Current support targets AMD MI350-series GPUs with the gfx950 architecture'、'AOTriton also ships FlyDSL attention kernels for RDNA4 (gfx1201)' 与 What's Next 的 MI450 条目；S02 的 'Portability across GPU architectures' 表述。",
+      "critical": false
+    },
+    {
+      "id": "C12",
+      "claim": "[推测] FlyDSL 在异构 kernel 生态中的独特位置是'同时提供布局代数与 Python 生产力、并且已接入 PyTorch 主流算子路径'：Triton 更易用但抽象层更低，CK/CuTe DSL 抽象等价但迭代成本高，HIP/CUDA C++ 成本全担；但其当前仅服务 AMD 硬件抽象、成熟度指标指向早期但真实的状态。",
+      "report_anchor": "六、与替代路线的有边界比较",
+      "support": "inference",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S06"
+      ],
+      "evidence": "综合 S01 的定位段、S02 的 Triton/CK 对比段、S03 的分层与构建说明、S06 的成熟度信号的比较性结论；原文未做跨路线横向比较，属本报告的分析。",
+      "critical": false
+    },
+    {
+      "id": "C13",
+      "claim": "[推测] 对做 Agent 推理栈的团队，最可迁移的工程判断不是 FlyDSL 本身，而是'不要自维护一份推理实现，而是设法让优化过的 kernel 落进框架已有的分派路径'（Inductor 候选列表、AOTriton 调优库），从而让收益自动覆盖所有走该 API 的模型；其失败模式是'不被选中'而不是'让用户跑不起来'。",
+      "report_anchor": "八、对推理/训练 kernel 开发的现实意义",
+      "support": "inference",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "由 S01 的三条分派机制（Inductor 实测缓存胜者、AOTriton 按调优库派发、不支持者保留既有实现）推导的工程结论；原文未讨论 agent 栈，属本报告的建议。",
+      "critical": false
+    },
+    {
+      "id": "C14",
+      "claim": "PyTorch 官方把各 kernel 的速度来源具体归因于：Dense GEMM 的多级 LDS 与 HTI 错相 wave 流水；MXFP 的 operand/scale 独立 slot 与生命周期匹配；Grouped GEMM 的 persistent grid、跨 expert 调度与 XCD-aware swizzle；RMSNorm 的寄存器驻留和 Wave64+小 LDS 归约；TopK 的小 K 寄存器路径与大 K radix 阈值路径；Attention 的 dual-wave 软件流水和 wide-head 分时/分 wave 拆分。上述是实现机制说明，不是独立消融归因。",
+      "report_anchor": "4.2 为什么快",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "S01 Dense GEMM、MXFP Scaled GEMM、Grouped GEMM、RMSNorm、TopK、Attention 各节的实现说明与 Figure 2/4/6/8/10/12–13 图注；报告将其压缩为六行机制表，并在正文与 Limitations 明确没有硬件计数器或消融证明单项贡献。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "整体论证（问题、与 Triton 的互补定位、三层结论）与算子级到端到端的落差",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S04"
+      ],
+      "report_anchor": "开头三行"
+    },
+    {
+      "id": "U02",
+      "title": "来源清单与读法（怎么接进 PyTorch / 为什么这么设计 / 到底长什么样）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07"
+      ],
+      "report_anchor": "一、一手来源清单与读法"
+    },
+    {
+      "id": "U03",
+      "title": "PyTorch 官方文的定位：可加的后端、由框架自动实测选择、不改用户代码",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "2.1 PyTorch 那篇在回答什么"
+    },
+    {
+      "id": "U04",
+      "title": "AMD 官方文的设计动机：CuTe/CUTLASS 迁移路径、模板 HIP C++ 的替代、与 Triton 的互补",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02"
+      ],
+      "report_anchor": "2.2 AMD 那篇在回答什么"
+    },
+    {
+      "id": "U05",
+      "title": "两篇官方材料的支持面与措辞分歧",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "report_anchor": "2.3 两篇的分歧点"
+    },
+    {
+      "id": "U06",
+      "title": "三层结构与核心 IR 类型（布局代数白话解释）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "3.1 三层结构"
+    },
+    {
+      "id": "U07",
+      "title": "编译与代码生成：AST 变换、Fly/FlyROCDL 方言、MLIR→ROCDL→HSACO、JIT 与 AOT 导出",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "3.2 编译与代码生成"
+    },
+    {
+      "id": "U08",
+      "title": "kernel authoring 模型：装饰器、launch、硬件索引、同步与 buffer 原语、布局代数写法示例",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S05",
+        "S02"
+      ],
+      "report_anchor": "3.3 kernel authoring 模型"
+    },
+    {
+      "id": "U09",
+      "title": "从 Python 到 HSACO 的编译与缓存机制示意",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "3.4 机制示意"
+    },
+    {
+      "id": "U10",
+      "title": "PyTorch 三条接入通路与分派主体（Inductor 候选、AOTriton 调优库、eager 自动分派）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S07"
+      ],
+      "report_anchor": "四、PyTorch 集成"
+    },
+    {
+      "id": "U11",
+      "title": "支持矩阵逐字与关键约束（K%128、无 fast accumulation、layout copy、FP32 attention、RMSNorm backward、flex_attention 走 Triton）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "4.1 支持矩阵"
+    },
+    {
+      "id": "U12",
+      "title": "官方明写的测量协议（三套计时方式、稳态、排除编译与初次 autotune、MXFP 从已量化操作数起算、几何均值口径）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "5.1 测量协议"
+    },
+    {
+      "id": "U13",
+      "title": "各算子级数字逐项登记（形状数、基线、几何均值、范围与细节）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "5.2 算子级数字"
+    },
+    {
+      "id": "U14",
+      "title": "Attention 数字的性质澄清：版本间对比而非 FlyDSL-vs-Triton",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "5.3 Attention 的数字是"
+    },
+    {
+      "id": "U15",
+      "title": "端到端 vLLM A/B 协议与 BF16/MXFP8/MXFP4 三组结果及测量强度",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "5.4 端到端 vLLM"
+    },
+    {
+      "id": "U16",
+      "title": "口径缺口清单（attention 隔离对比缺失、MXFP 单次测量、BF16 重复数、覆盖面、无训练与显存数据等）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "5.5 口径缺口清单"
+    },
+    {
+      "id": "U17",
+      "title": "官方自述 vs 可核对事实的逐条判定表",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S06",
+        "S07"
+      ],
+      "report_anchor": "5.6 官方自述 vs 可核对"
+    },
+    {
+      "id": "U18",
+      "title": "六条替代路线（FlyDSL / Triton / CK / HIP-CUDA / CUTLASS-CuTe DSL / TileLang）的有边界比较",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "六、与替代路线的有边界比较"
+    },
+    {
+      "id": "U19",
+      "title": "可移植性的两层区分（DSL 层现状 vs 抽象层主张）与硬件目标",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "report_anchor": "7.1 可移植性"
+    },
+    {
+      "id": "U20",
+      "title": "维护成本：自建 LLVM/MLIR、issue 计数、许可字段 NOASSERTION、内嵌 MLIR 绑定",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S03",
+        "S06"
+      ],
+      "report_anchor": "7.2 维护成本"
+    },
+    {
+      "id": "U21",
+      "title": "成熟度：What's Next 六项待办与 AMD 生产采用自述的并存关系",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "report_anchor": "7.3 成熟度"
+    },
+    {
+      "id": "U22",
+      "title": "TopK 确定性语义缺口（tie 顺序与 NaN 选择）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "7.4 TopK 的确定性"
+    },
+    {
+      "id": "U23",
+      "title": "对推理/训练 kernel 开发的七条现实意义与选型判断",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "八、对推理/训练 kernel 开发的现实意义"
+    },
+    {
+      "id": "U24",
+      "title": "研究缺口：未编译未运行、图内数值未取到、未读源码与多数 docs、未验证生产采用与许可原文等",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07"
+      ],
+      "report_anchor": "九、Limitations"
+    },
+    {
+      "id": "U25",
+      "title": "理解、未解问题与下一步入口",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S07"
+      ],
+      "report_anchor": "十、思考与追问"
+    },
+    {
+      "id": "U26",
+      "title": "S01 What Drives the Speedup：Dense/MXFP/Grouped GEMM、RMSNorm、TopK 与 Attention 的 kernel 级调度机制",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "4.2 为什么快"
+    }
+  ],
+  "limitations": [
+    "未编写、未编译、未运行任何 FlyDSL kernel，未在 MI355X 上测量，未复现任何官方 benchmark；全部结论为来源转述与文档/仓库阅读所得。",
+    "两篇官方文均已读至结尾，但正文多张图（编译流、HTI wave、HTI 缓冲、各算子加速条形图、AOTriton 吞吐、vLLM 端到端曲线）的图内数值未取到，报告只引用正文与图注中可核对的数字。",
+    "未读 FlyDSL 源码实现，只读 README、架构指南、kernel authoring 指南与目录树；对布局代数如何落到 MFMA/Copy atom 的理解来自文档与示例推断。",
+    "未读 layout_system_guide、cute_layout_algebra_guide、autotune_guide、kernel_tuning_guide、ktrace_guide、prebuilt_kernels_guide、testing_benchmarking_guide、api_stability、extern_integration_guide、extension、tutorials、language 等文档，也未读 examples/tests/tools；对 autotune 空间、API 稳定性与扩展机制的判断不完整。",
+    "未验证 AMD 博客的'生产采用'自述、'formally validated CuTe layout algebra'说法及其引用文献，也未核实 Inductor 候选列表与 AOTriton 调优库的实现。",
+    "未做与 CK / AITER / Triton 的同条件实测；第六章为定性比较，不构成性能排名，且本报告所有性能数字均为 PyTorch 官方自测。",
+    "未检索社区复现、issue 讨论或第三方 benchmark；仅读取 issue 计数（FlyDSL 140、aotriton 41），未读 issue 内容。",
+    "未读取 LICENSE 原文，故不对 NOASSERTION 许可对应的具体条款作判断。",
+    "未核对 'AMD and OpenAI actively collaborate on Triton' 的当前状态，也未评估 Triton 上游吸收类似能力对 FlyDSL 定位的影响。",
+    "资料时点为 2026-10-25（UTC 约 18:39–19:05）；PyTorch 官方文 publishedTime 2026-10-21T17:45:40Z，AMD 官方文 2026-03-30，ROCm/FlyDSL 最近推送 2026-10-24。",
+    "§4.2 的 kernel 调度机制来自 PyTorch 官方实现说明；本轮未读相应源码、硬件计数器或消融，不能把观测加速量独立归因到某一个机制。"
+  ]
+}

@@ -1,0 +1,668 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/Flint_interactive_交互式数据可视化语言_语义事件与更新算子_深度解析_20261025.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-25",
+  "generator": {
+    "model": "minimax-m3.1-flash",
+    "harness": "pi",
+    "run_id": "generator-920be79a006f",
+    "explicit_model_override": true,
+    "override_reason": "用户本轮明确要求继续使用 MiniMax M3.1 Flash，仅在收到明确 quota exhausted / rate limit 不可用证据时才切换 GLM-5.3；本次全程未出现额度耗尽证据"
+  },
+  "task": {
+    "summary": "深读 Microsoft Research 2026-10-22《Flint-interactive: A language for creating interactive data visualizations》，并继续读取其直接链接的一手材料：2026-07 前作博客、arXiv:2607.20775 论文、microsoft/flint-chart 仓库的 interaction-spec / design-interactions / overview / interaction-introduction 等文档、agent-skills 里的 flint-interaction-author skill、interaction capability roadmap、preset readiness 测试记录，以及仓库元数据与目录树；重构原文论证，解释 Flint-interactive 的语言设计、交互/状态/组合机制，与 Vega-Lite、Observable 等相邻方案的实质差异、适用边界、可复现实例与代码证据、静态论文完整评测口径、交互实现就绪度与用户研究口径，并给出对 AI 数据分析与 agent UI 的价值、反例、限制与思考追问。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "先查重，并完整读取原文与关键一手材料（原文、一手论文、代码仓库、项目文档）。"
+      },
+      {
+        "id": "R02",
+        "text": "重构原文论证，解释 Flint-interactive 的语言设计、交互/状态/组合机制。"
+      },
+      {
+        "id": "R03",
+        "text": "与 Vega-Lite / Observable 等相邻方案做实质差异比较。"
+      },
+      {
+        "id": "R04",
+        "text": "给出适用边界、可复现实例或代码证据、性能/用户研究口径（若原文有）。"
+      },
+      {
+        "id": "R05",
+        "text": "评估对 AI 数据分析与 agent UI 的价值，并给出反例、限制与思考与追问。"
+      },
+      {
+        "id": "R06",
+        "text": "产出 report-v2/important 中文独立可读报告与完整 evidence sidecar；初始化 review sidecar 但不自行复核或 finalize。"
+      },
+      {
+        "id": "R07",
+        "text": "不得出现设备名、远端路径、任务/派发/终端/产物 ID；不得 commit/push；不得改动既有报告、MAP、wiki 或索引。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "official",
+      "title": "Microsoft Research — Flint-interactive: A language for creating interactive data visualizations（作者 Brenda Potts）",
+      "locator": "https://www.microsoft.com/en-us/research/blog/flint-interactive-a-language-for-creating-interactive-data-visualizations",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S02",
+      "kind": "official",
+      "title": "Microsoft Research — Flint: A visualization language for the AI era（前作，2026-07-08）",
+      "locator": "https://www.microsoft.com/en-us/research/blog/flint-a-visualization-language-for-the-ai-era",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S03",
+      "kind": "primary",
+      "title": "arXiv:2607.20775 — Flint: A Semantics-Driven Data Visualization Intermediate Language（完整 PDF，含方法、评测与附录）",
+      "locator": "https://arxiv.org/abs/2607.20775",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S04",
+      "kind": "primary",
+      "title": "microsoft/flint-chart — docs/interaction-spec.md（声明式交互规格与预设目录）",
+      "locator": "https://github.com/microsoft/flint-chart/blob/main/docs/interaction-spec.md",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S05",
+      "kind": "primary",
+      "title": "microsoft/flint-chart — docs/design-interactions.md（三文档模型、能力与准入、流水线、宿主与发现）",
+      "locator": "https://github.com/microsoft/flint-chart/blob/main/docs/design-interactions.md",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S06",
+      "kind": "primary",
+      "title": "microsoft/flint-chart — docs/overview.md（Flint IR 输入输出与三阶段编译器）",
+      "locator": "https://github.com/microsoft/flint-chart/blob/main/docs/overview.md",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S07",
+      "kind": "primary",
+      "title": "microsoft/flint-chart — docs/interaction-introduction.md（交互四步模型与双向通信）",
+      "locator": "https://github.com/microsoft/flint-chart/blob/main/docs/interaction-introduction.md",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S08",
+      "kind": "primary",
+      "title": "microsoft/flint-chart — agent-skills/flint-interaction-author/SKILL.md（面向 agent 的产出契约）",
+      "locator": "https://github.com/microsoft/flint-chart/blob/main/agent-skills/flint-interaction-author/SKILL.md",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S09",
+      "kind": "primary",
+      "title": "GitHub API + 官方 Git 远端 — microsoft/flint-chart 仓库元数据、main 提交与目录树",
+      "locator": "https://github.com/microsoft/flint-chart",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S10",
+      "kind": "primary",
+      "title": "microsoft/flint-chart — docs/interaction-capability-roadmap.md（四层模型、覆盖目标与残余缺口）",
+      "locator": "https://github.com/microsoft/flint-chart/blob/main/docs/interaction-capability-roadmap.md",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S11",
+      "kind": "primary",
+      "title": "microsoft/flint-chart — docs/interaction-preset-readiness.md（Vega-Lite 预设挂载测试记录）",
+      "locator": "https://github.com/microsoft/flint-chart/blob/main/docs/interaction-preset-readiness.md",
+      "accessed_on": "2026-10-25"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "Flint-interactive 的核心设计是把视觉逻辑与交互逻辑分开：编译器把原始手势解析成语义事件并把更新算子翻译成画布变更，用户/agent 只声明语义事件到更新算子的映射；事件指向语义数据（国家、记录集、可视域），而不是 SVG 路径或渲染器特定的 mark 索引。",
+      "report_anchor": "2.2 原文给出的答案",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S07"
+      ],
+      "evidence": "S01 'How it works' 一节的 visual logic / interaction logic 定义；S07 给出四步模型并写明 'The event refers to semantic data rather than SVG paths or renderer-specific mark indices. For example, a click can identify a country; a brush can identify matching records; a zoom can report visible domains.'",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "一个 Flint 图表是 ChartAssemblyInput 里的三份文档（chart_spec 说图表是什么、theme_spec 说长什么样、interaction_spec 说怎么表现）；assemblers 从不读 interaction_spec，静态渲染完全不受其影响，只有 mountChart() 在组装之后才读它。",
+      "report_anchor": "3.1 三文档模型",
+      "support": "direct",
+      "source_ids": [
+        "S05",
+        "S04",
+        "S08"
+      ],
+      "evidence": "S05 §1 表格与 'The assemblers never read interaction_spec. A static render is untouched by it. Only mountChart() does, after the chart is assembled.'；S04 'Static assemblers do not execute them; validateChart reports interaction_spec as ignored for static backends.'；S08 'Everything here runs on the Vega-Lite backend; a static render and the other backends leave interaction_spec and updates untouched.'",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "交互能力由一张可计算的事实表决定：8 种能力（elements / cartesian-region / angular-region / navigation / reorder / legend / discrete-axis / index），图表类型在模板的 interactionSupport 块中静态声明（全部 36 个模板块），数据在组装期确认，_interactionSemantics 中的 capabilities 是准入的唯一权威。",
+      "report_anchor": "3.5 能力与准入",
+      "support": "direct",
+      "source_ids": [
+        "S05"
+      ],
+      "evidence": "S05 §5.1 八能力表、§5.2 'An absent key means never... the block is the gate'、§5.3 'capabilities is the single authority admission reads; no second reading of the plan exists' 与附录 36 个模板块声明表。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "准入的两种失败方式刻意不对称：spec 中图表无法支持的交互条目被丢弃并给出告警、图表照常渲染；而代码定义中无法支持的交互直接抛异常，因为开发者能看到异常。",
+      "report_anchor": "3.5 能力与准入",
+      "support": "direct",
+      "source_ids": [
+        "S05"
+      ],
+      "evidence": "S05 §1 原文 'A spec entry the chart cannot honor is dropped with a warning, and the chart renders. A code definition the chart cannot honor throws, because a developer sees the exception.'",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "更新语言是声明式的且与渲染后端解耦：handler 不得触碰 DOM，只返回 ChartUpdate { id, ops }；ops 有 set-style / set-annotation / set-viewport / set-order / set-overlay / set-freeform-overlay / set-data 七种，目标寻址有元素引用、按行键选择与按条件选择三种形式，宿主通过 applyUpdate / setUpdates 施加同一套语言，因此叙述步骤与用户点击产生同类变更。",
+      "report_anchor": "3.4 交互模型",
+      "support": "direct",
+      "source_ids": [
+        "S05"
+      ],
+      "evidence": "S05 §2.3 'A handle never touches the DOM. It returns a ChartUpdate, { id, ops }' 与更新算子表、目标寻址三形式，以及 'Hosts apply the same language from outside... so a story step and a click produce the same kind of change.'",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "状态不在 spec 里：当前显示的强调、标注、视口、顺序都以 ChartUpdate 形式经 applyUpdate / setUpdates 或 mountChart 的 updates 选项注入，MCP 工具把同一列表作为 updates 参数接收；交互通过 flint-interaction 事件回流宿主。",
+      "report_anchor": "3.2 `interaction_spec` 的形状",
+      "support": "direct",
+      "source_ids": [
+        "S04",
+        "S07"
+      ],
+      "evidence": "S04 'State is not part of the spec... arrives as a ChartUpdate through the surface (applyUpdate, setUpdates) or as the updates option of mountChart()'；S07 描述 chart→app 的 flint-interaction 事件与 app→chart 的更新 API。",
+      "critical": true
+    },
+    {
+      "id": "C07",
+      "claim": "交互面向 agent 的表达空间被明确限定：agent 只能使用文档中存在的预设与算子名字（'no invented names'），只在被要求时才添加行为，且在无代码宿主的 MCP 视图里无法创造预设之外的交互，只能给出最接近的预设并说明其缺什么。",
+      "report_anchor": "3.8 面向 agent 的产出契约",
+      "support": "direct",
+      "source_ids": [
+        "S08"
+      ],
+      "evidence": "agent-skills/flint-interaction-author/SKILL.md 的 description 与 'What you produce (and what you do NOT)' 表、'DO use only the names in this skill'、'A static image or a bare spec gets no interaction_spec'、'A bespoke interaction needs a host that runs code. In the MCP view, the answer is the closest preset and what it leaves out.'",
+      "critical": true
+    },
+    {
+      "id": "C08",
+      "claim": "agent 生成交互前存在渲染前校验通路：validateChart() 跑解析与准入并返回与真正挂载相同的告警，格式错误报 invalid_interaction_spec，带 options.updates 时逐个算子检查，使 agent 在图被画出之前就知道什么不会生效；MCP 视图在每次提交变更后把图表状态送给模型。",
+      "report_anchor": "3.7 宿主与发现",
+      "support": "direct",
+      "source_ids": [
+        "S05"
+      ],
+      "evidence": "S05 §8 'validateChart() runs the resolver and admission against the assembled semantics and returns the same warnings the mount would, before anything renders... so an agent learns what will not apply before the chart is drawn' 与 'The MCP view sends the state to the model after each committed change'。",
+      "critical": true
+    },
+    {
+      "id": "C09",
+      "claim": "Flint 静态层是编译到多后端的中间语言：输入为 data + semantic_types + chart_spec，输出分别为 Vega-Lite v6 spec、ECharts option、Chart.js config（另有 Plotly 与原生 Excel 图表产物），编译器分三阶段（resolveChannelSemantics → computeLayout → template.instantiate）；语义类型被提升为一等对象，因为表层推断会产生误导性可视化。",
+      "report_anchor": "5.1 与 Vega-Lite 本身",
+      "support": "direct",
+      "source_ids": [
+        "S06",
+        "S03"
+      ],
+      "evidence": "S06 §3、§4 的输入输出表与三阶段表；S03 摘要与引言 'Unlike prior systems that infer default configurations from surface-level data representations, often producing brittle choices, Flint introduces a hierarchical data semantic model' 及误例（integer date、非可加度量堆叠、发散字段顺序色带）。",
+      "critical": true
+    },
+    {
+      "id": "C10",
+      "claim": "2026-10-22 发布文本身不含性能、延迟、token 成本或用户研究数据；静态 Flint 的量化证据来自 2026-07 前作与论文：TidyTuesday 2025 的 63 张表、51 个主题、315 个问题、10 类图，GPT-5.1 统一评分四维各 0–5 分（总分 20）。Flint 对 DirectVL 的均值差为 0.36–0.57；配对结果 GPT-5-mini p=0.001、GPT-4.1 p=0.004、GPT-5.1 p=0.05，且论文承认个别 grader mistake。这些结果只覆盖静态图生成，不能支持 Flint-interactive 的成本或用户收益。",
+      "report_anchor": "6.1 有数字的部分",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "S01 全文无量化或用户研究；S02 给三组均值；S03 完整 PDF §6、Appendix D/E 给出 63 表、51 主题、315 问题、10 类图、20 分量表、均值/SD、wins/ties、p 值、统一 GPT-5.1 grader 与 grader mistake。",
+      "critical": true
+    },
+    {
+      "id": "C11",
+      "claim": "microsoft/flint-chart 为 MIT 项目；2026-10-25 GitHub 快照为 4,439 stars、256 forks、37 open issues，创建于 2026-05-13，pushed_at 为 2026-10-22T10:43:03Z，main 的 a794557 在发布文前合并 PR #153。当前 main 已包含 Flint-interactive 的文档、agent skill、roadmap 与 readiness 记录，因此不存在初稿所称 main 停在 9 月、发布内容可能尚未合并的时间错位。",
+      "report_anchor": "6.3 仓库与生态的客观数据",
+      "support": "direct",
+      "source_ids": [
+        "S09"
+      ],
+      "evidence": "GitHub API 的仓库元数据、git ls-remote/clone 读取的官方 main a794557 与目录树；eacli 仓库后端曾返回较旧 master 视图，已以官方远端交叉纠正。",
+      "critical": false
+    },
+    {
+      "id": "C12",
+      "claim": "[推测] Flint-interactive 与 Vega-Lite 的实质差异在交互定义层：Vega-Lite 以图形语法组织 selection/condition，Flint 以语义事件、能力准入和 ChartUpdate 组织交互。设计文档展示 Flint 自己的 instrument → mountVegaInteractions 运行时路径，但本报告未读实现代码，不能断言完全不复用 Vega-Lite selection，也未核实二者共存时的冲突处理。",
+      "report_anchor": "5.1 与 Vega-Lite 本身",
+      "support": "derived",
+      "source_ids": [
+        "S05",
+        "S06",
+        "S07"
+      ],
+      "evidence": "由 S07 的语义事件定义、S06 的多后端编译结构与 S05 的 addVegaLiteInteractions / mountVegaInteractions 两段式运行时推导；Flint 文档未做此比较，故标为分析者结论。",
+      "critical": false
+    },
+    {
+      "id": "C13",
+      "claim": "[推测] 与 Observable 一类响应式方案相比，Flint 的差异在于把交互做成可在渲染前校验的声明式产物，代价是表达力被预设目录与能力表限死；该比较缺少 Observable 的一手材料支撑，仅为推断。",
+      "report_anchor": "5.2 与 Observable Plot",
+      "support": "inference",
+      "source_ids": [
+        "S04",
+        "S05"
+      ],
+      "evidence": "由 S05 §8 的 validateChart 渲染前告警与 S04 的预设目录词表推导；本报告未读 Observable 现行文档，已在正文与 Limitations 中标注。",
+      "critical": false
+    },
+    {
+      "id": "C14",
+      "claim": "[推测] Flint 最可迁移到其他系统的部分不是可视化本身，而是能力—准入—告警这一框架：把'这个对象能做什么'变成可计算的事实表，让 AI 生成的声明在被执行前就能被判定与降级。",
+      "report_anchor": "8.2 我的推断部分",
+      "support": "inference",
+      "source_ids": [
+        "S05",
+        "S08"
+      ],
+      "evidence": "由 S05 §5 的能力与准入机制与 S08 的受控词表纪律推导；迁移到 EverAgent 的具体形式属本报告建议，原文与文档均未涉及。",
+      "critical": false
+    },
+    {
+      "id": "C15",
+      "claim": "项目方的 preset readiness 记录称：407 个 chart/preset 挂载组合没有意外 runtime error；click highlight/group highlight/annotate、rectangle select、X/Y brush 和 stateful X/Y brush 各有 39 个 ready case、0 个显式不支持；angular brush 为 3 ready / 34 unsupported。roadmap 的 80% preset / 95% custom composition 是设计目标而非测量结果，且仍有 Choropleth shape-bounds、复杂 Bar reorder 等残余限制。",
+      "critical": true,
+      "source_ids": [
+        "S10",
+        "S11"
+      ],
+      "evidence": "S11 Coverage summary、407 mount combinations 与 Residual work；S10 Goal、Presets 与 Missing update coverage。",
+      "report_anchor": "6.4 仓库已有的实现就绪度证据",
+      "support": "direct"
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "整体论证（问题、机制、三层结论）与可迁移内核",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S05",
+        "S07"
+      ],
+      "report_anchor": "开头三行"
+    },
+    {
+      "id": "U02",
+      "title": "来源清单与读法（叙事 / 实现契约 / 学术动机的分工）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09"
+      ],
+      "report_anchor": "一、来源清单与读法"
+    },
+    {
+      "id": "U03",
+      "title": "原文的问题陈述（生成成本、可靠性、表达力缺口及其语言层归因）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "2.1 原文的问题陈述"
+    },
+    {
+      "id": "U04",
+      "title": "原文给出的答案（视觉逻辑/交互逻辑分离、语义事件四步模型）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S07"
+      ],
+      "report_anchor": "2.2 原文给出的答案"
+    },
+    {
+      "id": "U05",
+      "title": "三种使用路径（聊天 MCP、Canvas 应用、bespoke 编程 API）与四个图例",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "2.3 三种用法与四个图例"
+    },
+    {
+      "id": "U06",
+      "title": "三文档模型与 assembler / mountChart 的读写边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S04",
+        "S05",
+        "S08"
+      ],
+      "report_anchor": "3.1 三文档模型"
+    },
+    {
+      "id": "U07",
+      "title": "interaction_spec 的字段语义、选项嵌套纪律、状态外置规则",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S04"
+      ],
+      "report_anchor": "3.2 `interaction_spec` 的形状"
+    },
+    {
+      "id": "U08",
+      "title": "预设目录（读者动作 / 需要的能力 / 默认复位）与最少能力需求表",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S04",
+        "S05"
+      ],
+      "report_anchor": "3.3 预设目录"
+    },
+    {
+      "id": "U09",
+      "title": "交互模型：CanvasInteractionDef / ExternalInteractionDef、三类事件源、七种更新算子与三种目标寻址",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S05"
+      ],
+      "report_anchor": "3.4 交互模型"
+    },
+    {
+      "id": "U10",
+      "title": "八种能力、36 个模板块、_interactionSemantics 权威性、准入的两种失败方式",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S05"
+      ],
+      "report_anchor": "3.5 能力与准入"
+    },
+    {
+      "id": "U11",
+      "title": "编译流水线图与'事实决定在哪一层'对照表",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S05"
+      ],
+      "report_anchor": "3.6 编译流水线"
+    },
+    {
+      "id": "U12",
+      "title": "宿主与发现：mountChart、getState/onChange、validateChart、预设枚举与覆盖矩阵",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S05"
+      ],
+      "report_anchor": "3.7 宿主与发现"
+    },
+    {
+      "id": "U13",
+      "title": "面向 agent 的产出契约、请求分派表与三条纪律",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S08",
+        "S04"
+      ],
+      "report_anchor": "3.8 面向 agent 的产出契约"
+    },
+    {
+      "id": "U14",
+      "title": "端到端机制示意（编译期准入 → 运行时语义事件与更新算子 → agent 回路）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S05",
+        "S04",
+        "S08"
+      ],
+      "report_anchor": "四、机制示意"
+    },
+    {
+      "id": "U15",
+      "title": "与 Vega-Lite 的差异（语义层 vs 语法层、Flint IR 与多后端）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S06",
+        "S03",
+        "S05",
+        "S07"
+      ],
+      "report_anchor": "5.1 与 Vega-Lite 本身"
+    },
+    {
+      "id": "U16",
+      "title": "与 Observable 一类响应式方案的差异（推断）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S04",
+        "S05"
+      ],
+      "report_anchor": "5.2 与 Observable Plot"
+    },
+    {
+      "id": "U17",
+      "title": "与'让 LLM 直接写 Vega-Lite / ECharts'的差异（脆弱规格与误导性推断）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "5.3 与"
+    },
+    {
+      "id": "U18",
+      "title": "与图表库内置交互（ECharts 事件、Chart.js 插件）的差异",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S07",
+        "S01"
+      ],
+      "report_anchor": "5.4 与图表库内置交互"
+    },
+    {
+      "id": "U19",
+      "title": "2026-07 静态 Flint 对 DirectVL 的完整论文口径：63 表/51 主题/315 问题、20 分量表、均值/SD、wins/ties 与 p 值",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "6.1 有数字的部分"
+    },
+    {
+      "id": "U20",
+      "title": "2026-10 原文缺少性能与用户研究数据这一事实",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "6.2 没有数字的部分"
+    },
+    {
+      "id": "U21",
+      "title": "仓库规模、包结构、当前 main 提交与 10 月发布材料已合并的时间关系",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S09"
+      ],
+      "report_anchor": "6.3 仓库与生态的客观数据"
+    },
+    {
+      "id": "U22",
+      "title": "交互证据与口径缺口：项目方 407 组合挂载记录、性能/用户/成本缺失、独立复现与 schema 版本化",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S10",
+        "S11"
+      ],
+      "report_anchor": "6.5 口径缺口清单"
+    },
+    {
+      "id": "U23",
+      "title": "代码与文档证据对照表（含 roadmap 目标与 preset readiness 测试记录）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S10",
+        "S11"
+      ],
+      "report_anchor": "七、代码与文档证据"
+    },
+    {
+      "id": "U24",
+      "title": "对 AI 数据分析与 agent UI 的已支撑价值（状态代替截图、渲染前校验、受控词表、跨视图联动）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S05",
+        "S08",
+        "S01"
+      ],
+      "report_anchor": "8.1 已由一手材料支撑的部分"
+    },
+    {
+      "id": "U25",
+      "title": "推断层的价值（可移植框架、语义事件作为中间表示、对 EverAgent 的最小可行路径）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S05",
+        "S07"
+      ],
+      "report_anchor": "8.2 我的推断部分"
+    },
+    {
+      "id": "U26",
+      "title": "明确未被证明的部分（成本、可靠性、性能、用户偏好）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "report_anchor": "8.3 明确没有被证明的部分"
+    },
+    {
+      "id": "U27",
+      "title": "反例（自由绘制、流式数据、非 VL 后端、宿主跳转、agent 新交互、静默降级）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S04",
+        "S05",
+        "S08"
+      ],
+      "report_anchor": "9.1 反例"
+    },
+    {
+      "id": "U28",
+      "title": "文档中明确承认的限制与适用边界表",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S04",
+        "S05"
+      ],
+      "report_anchor": "9.2 限制"
+    },
+    {
+      "id": "U29",
+      "title": "研究缺口：交互无用户/成本评测、源码与测试未实跑、PR/issues 未逐项审阅、商业动机未评估",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S03",
+        "S05",
+        "S09",
+        "S10",
+        "S11"
+      ],
+      "report_anchor": "十、Limitations"
+    },
+    {
+      "id": "U30",
+      "title": "理解、未解问题与下一步入口",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S05",
+        "S09"
+      ],
+      "report_anchor": "十一、思考与追问"
+    }
+  ],
+  "limitations": [
+    "未运行 Flint、未复现任何评测、未构建任何交互图表；全部结论为文档、论文与仓库结构层面的阅读所得。",
+    "arXiv:2607.20775 已通过完整 PDF 核对方法、评测与附录，但未重跑 315 个问题，也未取得生成输出、grader 原始记录或多次随机重复。",
+    "2026-10 原文本身不含任何性能、延迟、token 成本或用户研究数据，因此无法评估交互层的质量主张，只能记录其论证结构与机制契约。",
+    "仓库已读 7 份关键文档（interaction spec/design/overview/introduction、agent skill、capability roadmap、preset readiness）；interaction-api、components、linked charts、semantics、architecture、后端参考、中文文档与 test-harness 源码仍未读，覆盖不是穷尽。",
+    "未读任何源码（packages/flint-js/src/、core/、vegalite/、echarts/、chartjs/），本报告的'代码证据'实为文档与目录结构证据。",
+    "已核对官方远端分支、main 提交与 GitHub API，确认发布材料已进入 main；未逐项审阅 PR #153、37 个 open issues 或 release tag，无法评估缺陷分布与维护响应。",
+    "未读 flint-mcp 与 flint-py 文档，MCP Apps 集成、Python 侧能力与两套实现是否等价未核实。",
+    "与 Observable 一类的比较没有一手材料支撑（未读其现行文档），相关表述已标为推断。",
+    "工程成熟度证据仍由项目方自己提供：407 个挂载组合与 ready/unsupported 汇总没有第三方复现，37 个 open issues 也不能直接换算成质量。",
+    "资料时点为 2026-10-25（UTC 约 17:41–18:05）；博客、仓库与 arXiv 版本均可能随后更新。"
+  ]
+}

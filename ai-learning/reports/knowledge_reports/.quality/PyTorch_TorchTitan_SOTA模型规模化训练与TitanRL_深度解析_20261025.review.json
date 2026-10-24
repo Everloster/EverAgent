@@ -1,0 +1,303 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/PyTorch_TorchTitan_SOTA模型规模化训练与TitanRL_深度解析_20261025.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "review-torchtitan-20261025-gpt56sol",
+        "independent_context": true,
+        "explicit_model_override": false
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 94,
+        "request_coverage": 96,
+        "reasoning_quality": 94,
+        "readability": 91,
+        "limitations": 96
+      },
+      "score_reasons": {
+        "evidence_fidelity": "独立回读 PyTorch 博客、TitanRL README、BITWISE_PARITY、distributed 模块地图、OVERRIDE 完整设计文档、TorchFT 说明与 benchmark 提交规范。初稿的 PP 趋势跨 256/512 GPU 比较、checkpoint collective/barrier 口径、批不变性能耗与 OVERRIDE 未读声明均已修正；当前关键数字和限定可回到原文。",
+        "request_coverage": "R01–R07 全部覆盖：六条更新主线、5D 并行与性能机制、容错/checkpoint、TitanRL 三层循环、支持矩阵、三组 benchmark、代码与配置证据、替代方案、Harness 迁移与边界均有独立章节。",
+        "reasoning_quality": "报告能把统一模型定义、policy age/straggler、数值一致性和权重同步串成完整 RL 故障模型，也能反向用项目自己的 benchmark 规范审视博客表格。修订后不再把批不变性泛化为所有 RL 的地基，并明确 PP 行之间仍有 LBS/microbatch 混杂变量。",
+        "readability": "架构图、逐口径表、支持矩阵和标注体系清楚，读者能区分项目方自述、文档事实和分析者推断。篇幅较长且结论在开头、§10、§12 有少量重复，但技术密度与可独立阅读性良好。",
+        "limitations": "完整列出未运行 benchmark、RL 曲线未取数、源码未实测、torch_checkpointing 仓库未定位、外部集成未核验、MLPerf 未查和替代框架未同条件比较；新修订也明确 OVERRIDE 仅完成设计文档核验、批不变性能耗仅来自单个 Search-R1 配置。"
+      },
+      "critical_claim_ids_checked": [
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08",
+        "U09",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16",
+        "U17",
+        "U18",
+        "U19",
+        "U20",
+        "U21",
+        "U22",
+        "U23",
+        "U24",
+        "U25",
+        "U26",
+        "U27",
+        "U28",
+        "U29",
+        "U30",
+        "U31"
+      ],
+      "source_content_map": [
+        {
+          "id": "SCM01",
+          "title": "博客把更新组织为新模型、TitanRL、性能、生态、分布式基础设施和 checkpoint 六条主线",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01",
+            "U04"
+          ],
+          "notes": "正文按六条主线重构，并在开头将可核验数字与口径缺口分开。"
+        },
+        {
+          "id": "SCM02",
+          "title": "可组合配置以 typed recipe、transform 和显式 component override 减少模型 fork",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S05",
+            "S08"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03",
+            "U05",
+            "U07"
+          ],
+          "notes": "正文补入 OVERRIDE 的显式 import、FQN 定位、derive、claim 收集、冲突检查、顺序无关替换与第三方版本兼容边界。"
+        },
+        {
+          "id": "SCM03",
+          "title": "规模化性能由 local_compile、torch_remat、Dist-MoE、重写 PP、override 与通信/显存机制共同构成",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06",
+            "U08"
+          ],
+          "notes": "正文说明各机制职责，并把 Blackwell、NCCL 与实现未核对边界列入限制。"
+        },
+        {
+          "id": "SCM04",
+          "title": "TitanRL 统一模型定义并以三层控制器/数据流/分布式执行组织异步 RL",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U13",
+            "U14",
+            "U16"
+          ],
+          "notes": "统一模型的 mostly same 限定、Monarch/TorchStore、policy age、windowed FIFO 和模型支持矩阵均有覆盖。"
+        },
+        {
+          "id": "SCM05",
+          "title": "批不变模式消除 trainer/generator 的 batch 形状数值漂移，但有明确适用范围与性能代价",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U15",
+            "U27",
+            "U29"
+          ],
+          "notes": "四类 shared 修复、generator patch、8×H100 Search-R1 的 2.4–2.9× raw compute 代价与 wall-clock 被编排掩盖的限定均已进入正文。"
+        },
+        {
+          "id": "SCM06",
+          "title": "DSV3 671B 与 Muse Spark 表格给出项目方自测吞吐，但缺 resolved config、基线和独立复现",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S07"
+          ],
+          "matched_coverage_unit_ids": [
+            "U17",
+            "U18",
+            "U21"
+          ],
+          "notes": "正文逐行保留硬件和并行轴，PP 趋势改为同为 512 GPU 的 9.16%，并标明 LBS/microbatch 混杂与 MFU 公式缺失。"
+        },
+        {
+          "id": "SCM07",
+          "title": "torch_checkpointing 的公开描述同时出现首次后无 collective 与每次 lightweight barrier",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11",
+            "U19",
+            "U29"
+          ],
+          "notes": "正文不再把表述强行调和为零 collective，仅下结论为去掉重型 metadata/GLOO 同步，并完整保留阻塞、写入和加载三组数字。"
+        },
+        {
+          "id": "SCM08",
+          "title": "FlexShard、GraphTrainer 与新 NCCL 后端扩展训练系统的布局、执行和通信能力",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S04",
+            "S08"
+          ],
+          "matched_coverage_unit_ids": [
+            "U12",
+            "U20",
+            "U22"
+          ],
+          "notes": "Owned/BlockShard、DistMuon、量化 AllGather、graph/eager bitwise 声明和通信模块均覆盖，未把目录存在写成已运行验证。"
+        },
+        {
+          "id": "SCM09",
+          "title": "TorchFT 通过 replica group 与 lighthouse 提供仍在开发中的副本组容错",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S06"
+          ],
+          "matched_coverage_unit_ids": [
+            "U09",
+            "U10"
+          ],
+          "notes": "启动方式、quorum、ongoing 状态以及与 SDC replay 的分工被分别说明。"
+        },
+        {
+          "id": "SCM10",
+          "title": "TorchTitan 的 benchmark 贡献规范要求硬件、resolved config、依赖版本、日期和复现说明",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S07"
+          ],
+          "matched_coverage_unit_ids": [
+            "U21",
+            "U22",
+            "U28"
+          ],
+          "notes": "正文把这套规范作为 eval 口径契约，并用于指出官方博客表格自身披露不足。"
+        },
+        {
+          "id": "SCM11",
+          "title": "生态集成与替代框架比较只能说明定位，不能构成同条件性能结论",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U23",
+            "U24",
+            "U25",
+            "U26"
+          ],
+          "notes": "正文比较 Megatron、NeMo、veRL、自建栈与纯推理栈，明确它们不是同期 benchmark。"
+        },
+        {
+          "id": "SCM12",
+          "title": "研究边界包括自报 benchmark、图片未取数、源码未实测、快速演进和治理动机",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06",
+            "S07",
+            "S08"
+          ],
+          "matched_coverage_unit_ids": [
+            "U30",
+            "U31"
+          ],
+          "notes": "Limitations 与后续问题均有可操作入口，没有把待验证事项包装成结论。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "独立复核先阅读原始来源，再对照报告与 evidence。复核中修正四类问题：checkpoint 对 collective/barrier 的矛盾表述；PP 趋势跨 GPU 规模比较；BITWISE_PARITY 已披露的性能交换率；OVERRIDE 完整文档已读而非仅确认存在。修订后重新核验所有 critical claim。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 94.15,
+    "evaluated_on": "2026-10-25",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "5a40c6f6b9b53c9431dd1026e1e7d045ceba559834b6cb07b91642b9d03d79fd",
+    "evidence_sha256": "45f51a9959527ba93cd57ec030535722bbea59c78a81b30eaa8c0abd5fae738f"
+  }
+}

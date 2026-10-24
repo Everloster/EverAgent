@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/OpenAI_Decisions_API_低延迟决策与响应式应用_深度解析_20261025.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-6",
+        "harness": "codex",
+        "run_id": "review-openai-decisions-api-20261025-gpt6",
+        "independent_context": true,
+        "explicit_model_override": true,
+        "override_reason": "用户明确要求本机独立 review 与验收远端 MiniMax 初稿"
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 95,
+        "request_coverage": 97,
+        "reasoning_quality": 95,
+        "readability": 94,
+        "limitations": 96
+      },
+      "score_reasons": {
+        "evidence_fidelity": "独立重读官方博客、Decisions 指南、完整 Create decision API 参考与定价页，并用官方搜索片段核对 system→developer、input_json 仅 user 等细节。1–400 题、逐题 refusal、30m TTL、cache_write_tokens、10× 厂商声明和价格均与一手材料一致。发现原成本公式漏算首次缓存写入，已加入 W30/W12 并限定同模型、同档位、同缓存状态。",
+        "request_coverage": "R01–R07 完整满足：问题定义、请求/响应、状态流、GPT-Live、三类问题、最小伪代码、限制矩阵、性能与成本、六类替代路线、适用性、EverAgent 迁移实验和 eval 都有明确回答。",
+        "reasoning_quality": "报告持续区分官方事实、厂商宣传和分析者推导；把 Decisions 定位为判定层而非 agent，并用规则基线、两级路由、概率校准和拒答处理约束迁移。修订后去掉“小模型千分之一成本/90%”等无来源精确数字。",
+        "readability": "从一句话结论到字段速查层级完整，机制图、伪代码、表格和选型纪律便于工程读者使用；篇幅较长但信息密度高，且同一限制在首次出现处就给出口径。",
+        "limitations": "完整披露未实测、10× 无方法学、指南抓取截断、12h TTL 冲突、输入上限与长上下文计价未明确、概率未校准、错误码缺失、案例选择偏差、图像上限未知，以及成本公式适用条件。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C08",
+        "C12"
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "复核未发现 shell 展开污染（$0.10 等价格均原样保留）。修复三类问题：成本公式漏掉缓存写入费用；“替代路线 5 条”实际为 6 条；“不带工具”改为更精确的“不能请求工具，但可把既有工具调用/输出作为证据”。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 95.35,
+    "evaluated_on": "2026-10-25",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "5cf04cf2935199d4f34e22a815cbbf0a9c4756846ab46201e6aeda736994d991",
+    "evidence_sha256": "e6ecc20306125d7ab93973c842de49f8aeec88db6e666ff391f0af3aca59f628"
+  }
+}

@@ -1,0 +1,527 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/Google_TPU_vLLM_SGLang_TorchTPU推理引擎_能力矩阵与口径核验_深度解析_20261025.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "glm-5.3",
+        "harness": "pi",
+        "run_id": "review-glm53-tpu-r2-20261025",
+        "independent_context": true,
+        "explicit_model_override": true,
+        "override_reason": "MiniMax M3.1 Flash 已明确返回 429 Token Plan 用量上限；按用户指示切换 GLM-5.3 high 完成修订复验"
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 95,
+        "request_coverage": 91,
+        "reasoning_quality": 90,
+        "readability": 93,
+        "limitations": 95
+      },
+      "score_reasons": {
+        "evidence_fidelity": "对 revision 2 的精确快照复验：先核对 report SHA=bcc2e82b…5491 与 evidence SHA=c6a14fa4…5a1e 均匹配、revision_round=2 且 history 保存首轮 92.05 复核，再基于本轮会话中已完整读取的 S01–S07 原文复查差异。首轮提出的四处非阻断问题全部被正确修复：(1) RadixAttention 归属——§3.3 现写明『仓库 README 明写 prefix caching 与 HiCache，Google Cloud 官方博客进一步把这套跨请求 KV 复用机制明确称为 RadixAttention』，§4 映射列同步更新，与 S03（只写 prefix caching/HiCache、不归名）+ S05（明文 SGLang uses RadixAttention to reuse KV cache across requests）+ S04（主机缓存目标写为提升 RadixAttention/prefix-cache 命中率）三方原文完全一致；evidence C04 的 evidence 注同步订正并把 S05 加入 source_ids；(2) §6.2 措辞——原『每个并发点重跑』的过强转述已替换为『固定 seed 决定会话采样、起点与合成内容；每条 replay lane 先做 primer 请求和 10 个 warmup 请求，正式指标只覆盖 1 小时 profiling 窗口，不含 warmup』，与 S07 的 Deterministic replay、Primer requests and 10 additional warmup requests per replay lane、one-hour profiling window not warmup 逐点对应；(3) §2.2 表格第三行的【Google 官方】标签已移入单元格内，排版修复；(4) 首轮证据侧注释失准已消除。回归检查：C01–C08 全部 report_anchor 仍在正文、关键数字（2.01 美分、Kimi K3 2.8T 单用户 >700 tok/s、393/142k/444、~200 GB/s PCIe、TorchTitan 最高 52% MFU@Qwen3 8B/8,192 Ironwood、lkg.version、torch wheel 尚无端到端性能门禁、PyPI 尚未公开、AgentX DRAM 3TB/装机容量规则）无一改动，『对应论文』表述仍为零命中，无设备名/私有路径/内部 ID。相对首轮 93 分的提升来自两处实修：evidence C04 注的事实性失准被订正、RadixAttention 的 S05 一手确认被纳入正文与 evidence。",
+        "request_coverage": "与首轮一致：R01–R05 全部满足，U01–U11 included、U12/U13 诚实 omitted；revision 2 未引入新的需求缺口。首轮已指出的范围取舍维持不变：S05 的训练生态面（VeRL GRPO、Ray 一等加速器、LiteRT 入 PyTorch 生态、HF Transformers v5 device_map=tpu、TPU agent suite preview）仍未进入正文，S01 Roadmap 的 Day 0 表述仍只经 S02 模型家族清单间接覆盖——以本报告『推理引擎能力矩阵与口径核验』的标题范围衡量属合理取舍而非遗漏，故维持 91 不因修订加分（修订不应改变范围判断）。",
+        "reasoning_quality": "与首轮一致：『模型定义可移植、性能不可移植』的边界推断、生产叙事与 README 成熟度警示的张力框架、三处性能声明的可核验性分层、六条反方解释均未在修订中被改动且依然成立；RadixAttention 归属修复实际强化了 §3.3/§4 的论证链（该机制的身份从『S03 未归名+S04 间接提及』升级为『S05 一手明确』），无推理回归。",
+        "readability": "较首轮 92 提升 1 分：§2.2 表格第三行来源标签排版修复使该表三行结构一致；其余结构（一句话结论、来源分级图例、目录、13 节、附录 A/B）未动，standalone 阅读性保持。",
+        "limitations": "与首轮一致：未读排行榜、未运行任何 TPU、成熟度信息来源范围、客户引述转述性质、比较集合缺失、推断标注与模型 effort 记录等十项 Limitations 完整保留且未被修订削弱。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08",
+        "U09",
+        "U10",
+        "U11",
+        "U12",
+        "U13"
+      ],
+      "source_content_map": [
+        {
+          "id": "SCM01",
+          "title": "S01 动机与背景：JAX 后端已存在、开发者要在 PyTorch 定制调试、先做 TorchTPU 再建引擎",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01"
+          ],
+          "notes": "revision 2 未改动 §1；首轮结论维持（原文直引+推断分层正确）。"
+        },
+        {
+          "id": "SCM02",
+          "title": "S01 Engine Overview + S06 torch_tpu：原生设备、无 wrapper、eager/torch.compile、每设备一进程、platform-plugin、Pallas custom operator",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S06"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02",
+            "U03"
+          ],
+          "notes": "§2.2 表格排版修复后三行结构一致，来源标签全部位于单元格内；内容未变，首轮结论维持。"
+        },
+        {
+          "id": "SCM03",
+          "title": "S02 vLLM-TorchTPU：out-of-tree 插件、kernel 清单、v7x/v6e/v5e-v5p CI 分级、首启编译与 VLLM_XLA_CACHE_PATH、tpu-inference→vLLM JAX 更名",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01",
+            "U03"
+          ],
+          "notes": "未改动，首轮逐项核对结论维持。"
+        },
+        {
+          "id": "SCM04",
+          "title": "S03 SGLang-TorchTPU：prefix caching、HiCache、disaggregation+TP resharding、低精度、EAGLE3/DFlash/DFlash2/DSPark/MTP、TPU7x 徽章",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03",
+            "U04"
+          ],
+          "notes": "本轮重点复查点：S03 原文确实只写 prefix caching/HiCache 而不归名 RadixAttention；revision 2 的 §3.3 现在正确地把它表述为『仓库 README 明写 prefix caching 与 HiCache』并把 RadixAttention 命名归给 S05，归属修复精确。"
+        },
+        {
+          "id": "SCM05",
+          "title": "S05 RadixAttention 明确归属：SGLang uses RadixAttention to reuse KV cache across requests（以及 Zenteiq 4×/1.47B→5.97B、TorchTitan 52% MFU、llm-d）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S05"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04",
+            "U08"
+          ],
+          "notes": "本轮重点复查点：S05 原文该句在 §3.3 与 §4 被准确引用（『Google Cloud 官方博客进一步把这套跨请求 KV 复用机制明确称为 RadixAttention』），未超出原文语义；TorchTitan 最高 52% MFU@Qwen3 8B/最多 8,192 Ironwood 与 Zenteiq 数字在附录未变。首轮『partial』中的『S05 未被用于 RadixAttention 归属』一项已消除，其余训练生态内容仍按报告范围取舍保留在范围之外。"
+        },
+        {
+          "id": "SCM06",
+          "title": "S01 七类工作负载清单与 agentic 多特性判断",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04"
+          ],
+          "notes": "§4 七行未变；映射列中 SGLang 侧新增 S05 RadixAttention 引用使映射更完整，无能力项增删。"
+        },
+        {
+          "id": "SCM07",
+          "title": "S04 TPU Sync 架构要点与成熟度四信号（含 lkg.version、torch wheel 无端到端性能门禁、PyPI 尚未公开、JAX 版本约束、Raiden 毕业）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "U05"
+          ],
+          "notes": "本轮重点复查点：§5.2/§5.3 的 lkg.version、『torch wheel 的发布尚未由端到端性能测试门控』、『预构建 tpu_sync wheel 尚未公开发布到 PyPI、经 Google Artifact Registry 认证安装』三处与 S04 原文逐字一致，未回归。"
+        },
+        {
+          "id": "SCM08",
+          "title": "S01 性能声明：2.01 美分（Qwen 3.5/Ironwood）、AgentX SOTA+大部分 Pareto 前沿、Kimi K3 2.8T megakernel 单用户 >700 tok/s、Inferact 主导首次提交",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06"
+          ],
+          "notes": "§6.1 五条声明与缺失口径表未变，数字零错配。"
+        },
+        {
+          "id": "SCM09",
+          "title": "S07 AgentX 方法学：deterministic replay（固定 seed）、primer+10 warmup 请求/lane、1 小时 profiling 窗口不含 warmup、393/142k/444、DRAM 规则、只测服务性能",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S07"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06"
+          ],
+          "notes": "本轮重点复查点：revision 2 的 §6.2 已按原文重写为『固定 seed 决定会话采样、起点与合成内容；每条 replay lane 先做 primer 请求和 10 个 warmup 请求，正式指标只覆盖 1 小时 profiling 窗口，不含 warmup』，与 S07 的 Deterministic replay / Primer requests and 10 additional warmup requests per replay lane / Reported metrics cover only the one-hour profiling window, not warmup 逐点对应；首轮『每个并发点重跑』的过强转述已消除。"
+        },
+        {
+          "id": "SCM10",
+          "title": "S01 合作伙伴与生态：Meta 生产、三方协作、RadixArk/Inferact 引述、vLLM 贡献算力池、JAX 运行时保留",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01",
+            "U08"
+          ],
+          "notes": "§8 未变，首轮结论维持。"
+        },
+        {
+          "id": "SCM11",
+          "title": "S05 训练与生态面（VeRL、Ray、LiteRT、HF Transformers v5、TPU agent suite）",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "S05"
+          ],
+          "matched_coverage_unit_ids": [
+            "U08"
+          ],
+          "notes": "维持首轮判断：属『推理引擎』报告范围的合理取舍，非核心遗漏；Revision 2 未试图扩展此面（正确——扩展会引入新的核验负担）。"
+        },
+        {
+          "id": "SCM12",
+          "title": "S06 torch_tpu 定位与共享 XLA/MLIR 构建",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S06"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02",
+            "U03"
+          ],
+          "notes": "未改动，首轮结论维持。"
+        },
+        {
+          "id": "SCM13",
+          "title": "S01 Roadmap（Day 0 支持、更多模型家族）",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U08"
+          ],
+          "notes": "维持首轮判断：模型家族经 S02 覆盖，Day 0 表述未单独成段，次要。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "revision 2 精确快照复验（同会话、来源优先）：开始前核对预期 worktree、report SHA=bcc2e82b9e30878b7f37a033f1feec03e1ffd4c1cb32fc227bff6954cdbb5491、evidence SHA=c6a14fa44d959751b480ff6d27a2b3498f03c9aeaff3646b13bb95e3b1485a1e 均匹配，revision_round=2 且 history 含首轮 92.05 复核；未读取其他 worktree 的同名文件。四处修复结论：(A) RadixAttention 归属——修复正确，§3.3/§4 现按 S03（prefix caching/HiCache 不归名）+S05（明确 RadixAttention）+S04（命中率目标）三方原文精确分层，evidence C04 注同步订正并补 S05；(B) §6.2 S07 措辞——修复正确，deterministic replay/固定 seed、primer+10 warmup/lane、1 小时窗口不含 warmup 均逐点对应原文，过强转述消除；(C) §2.2 表格排版——修复正确，来源标签入单元格；(D) evidence C04 注失准——修复正确。回归检查：C01–C08 anchor 全在、关键数字零变动、『对应论文』零命中、status=in_progress、无设备名/私有路径/内部 ID；root audit 仅 META009（未 finalize，预期）。遗留：仅剩首轮已判为范围取舍的两项 partial（S05 训练生态、S01 Day 0），无阻断问题。本 review 由 glm-5.3 / pi / thinking=high 完成（MiniMax M3.1 Flash 明确 429 后用户指定切换；非 max）。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 92.9,
+    "evaluated_on": "2026-10-25",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "87c712b371c3156261bea18e3f986293f65c09eac6529e8b32e1ff8e2cedc331",
+    "evidence_sha256": "c6a14fa44d959751b480ff6d27a2b3498f03c9aeaff3646b13bb95e3b1485a1e"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "glm-5.3",
+            "harness": "pi",
+            "run_id": "review-tpu-engines-20261025-glm53-high",
+            "independent_context": true,
+            "explicit_model_override": true,
+            "override_reason": "MiniMax M3.1 Flash 出现明确 429 用量上限后由用户指定切换至 glm-5.3，并按指示保持最高可用思考档位 high（非 max，本任务明确禁止声称 max）。切换指令来自用户/协调者终端声明，本会话环境变量无法直接核验 harness 实际生效模型，如实记录。"
+          },
+          "scores": {
+            "evidence_fidelity": 93,
+            "request_coverage": 91,
+            "reasoning_quality": 90,
+            "readability": 92,
+            "limitations": 95
+          },
+          "score_reasons": {
+            "evidence_fidelity": "来源优先复核通过：我在读报告前完整读取 S01–S07 原文，C01–C08 全部关键 claim 逐条核对均与原文一致——S01 的动机原话（JAX 后端已存在、开发者要在 PyTorch 里定制调试）、TorchTPU 抽象原话（标准张量在 tpu 设备、无 wrapper、eager 或 torch.compile/XLA、torch.distributed、每设备一个 PyTorch 进程保留 worker/调度器/KV 管理器/API server、platform-plugin design）、S02 的 out-of-tree 插件定位与 kernel 清单及 v7x/v6e/v5e-v5p 三级 CI 覆盖表与 VLLM_XLA_CACHE_PATH、S01 七类工作负载逐条（含 MTP/EAGLE-3/DFlash/DSpark/n-gram 的 S01 拼写）、S04 的全部架构要点（PjRtBuffer 零拷贝、GIL 无关 C++ 线程池、~200 GB/s 双向 PCIe、Tier-2 LRU+page-locked DMA、/dev/shm warm-boot、v7x+v6e）、S04 成熟度四信号（不推荐一般用途、lkg.version、torch wheel 尚无端到端性能门禁、PyPI 尚未公开+Artifact Registry 认证安装）、S01 三处性能声明（2.01 美分/Qwen 3.5/Ironwood、AgentX SOTA+领先大部分 Pareto 前沿、Kimi K3 2.8T megakernel 单用户 >700 tok/s）、S07 AgentX 口径（393 会话、median 142k/444、闭源回放负载漂移、1 小时窗口、SPEED-Bench 固定接受长度、非标准化 DRAM 3TB 封顶 vs GB200/GB300/TPUv7 按装机容量并按配额比例、只测服务性能）——数字无一错配。任务点名的七处核验点全部成立：报告已无任何『对应论文』表述（grep 论文/paper/arXiv 为空）；SGLang prefix caching 归属处理正确（§3.3 如实写 S03 README 未归名 RadixAttention，§4 把 RadixAttention 命中率表述归于 S04，与两份原文一致）；AgentX DRAM 规则、lkg.version、torch wheel 无性能门禁、PyPI 未公开、TorchTitan 最高 52% MFU（Qwen 3 8B、最多 8,192 Ironwood）均与 S07/S04/S05 逐字吻合。扣分点为三处小瑕疵：(a) evidence C04 的 evidence 注写『RadixAttention 一词只在 S04 出现』，但 S05 明文写『SGLang uses RadixAttention to reuse KV cache across requests』——该注对来源集的陈述不准确（报告正文未犯此错，属 evidence 侧注释失准）；(b) §6.2『每个并发点重跑』比 S07『profiled for one hour across a sweep of concurrent clients』的原文略强；(c) 报告未利用 S05 的 RadixAttention 明确归属来补强 §3.3，使该小节略弱于来源集允许的证据强度。",
+            "request_coverage": "R01–R05 全部满足：原文完整读取并有六来源交叉（S01 博客+S02/S03/S04/S06 四仓库+S05 Cloud 博客+S07 基准方）；R02 的 TPU 执行模型、连续批处理语义、KV cache 与 P/D 映射在 §2/§3/§4/§5 覆盖（连续批处理以『保留上游调度器』的方式处理，属合理粒度）；R03 的逐项口径核验（§6.1 表逐条列缺失要素、§6.3 逐项判定）与厂商自报 vs 可移植边界（§7）到位；R04 的 EverAgent 迁移价值（§9 四条方法+两条边界+一条纪律）明确标注推断。source_coverage U01–U11 全部 included，U12（排行榜名次）与 U13（芯片规格）omitted 且理由诚实（未读取排行榜故不引用名次，正是纪律要求的做法）。我独立构建的来源内容地图（15 个单元）与报告映射基本重合：S01 的 Roadmap 段（Day 0 支持、更多模型家族）只经由 S02 的模型家族清单间接覆盖、S05 的训练生态（VeRL、Ray、LiteRT、HF Transformers v5 device_map=tpu、TPU agent suite）未进入正文——这两块属报告『推理引擎』范围的合理取舍而非核心遗漏，故记 partial 而非 missing。",
+            "reasoning_quality": "推理链质量高且纪律好：『模型定义可移植、性能不可移植』的边界判断（§7.2）从平台插件事实（框架层保留、kernel 列表、TPU Sync 替换搬运层、XLA 编译缓存）推出并全程标注【本报告推断】；§5.3 把『生产大规模运行』（S01）与『尚不推荐一般用途』（S04）正确框定为张力而非矛盾，并给出可检验解读（生产依赖特定 commit/镜像/内部仓库）；§6.3 对三处性能声明的可核验性分层（不可核/可核但未核/可核但需限定）与 AgentX 闭源回放、DRAM 规则的口径含义（为何无法同口径比较）衔接自洽；§10 六条反方解释各自落在原文事实上（动机、榜单时效、成熟度、定价、验证链条绕过自己、兼容层税）。§7.3 的五条机制映射中 SPMD/ICI 等术语为推断层，报告在 Limitations 第 5 条如实声明了支撑边界。",
+            "readability": "standalone 成立：开头一句话结论给出全貌与来源分级图例，目录完整，13 节+两附录结构清晰；§4 矩阵表『官方能力清单→映射到引擎机制→本报告备注』三列设计让官方声明与作者解释严格分栏；附录 B 的数字速查表把全部数字与缺失口径压缩为一页可核对视图；引文块+表格+分层图混排但每段都带来源标签，读者可随时回到原文。小瑕疵：§2.2 表格第三行结尾的标签列排版略乱（【Google 官方】落在表格外侧），不影响理解。",
+            "limitations": "Limitations 一节是本报告的强项：如实披露未读排行榜（并因此拒绝引用任何名次）、未在任何 TPU 上运行、成熟度信息仅来自 README 自述、客户引述的转述性质与配置未披露、『行业领先』比较集合缺失、实现细节未展开故不做性能推断、TPU 执行模型部分为结构性解释并标明哪两句有原文支撑、以及生成模型 effort 记录（模型已记、effort 不可核实、未作相反声明）。覆盖了我复核中发现的全部实质性不确定点，无粉饰。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07",
+            "C08"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07",
+            "U08",
+            "U09",
+            "U10",
+            "U11",
+            "U12",
+            "U13"
+          ],
+          "source_content_map": [
+            {
+              "id": "SCM01",
+              "title": "S01 动机与背景：JAX 后端已存在、开发者要在 PyTorch 定制调试、先做 TorchTPU 再建引擎、PyTorch 社区目标",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01"
+              ],
+              "notes": "报告 §1.1 引用官方动机原话，§1.2 的动机链还原单独标注【本报告推断】，原文陈述与推断分层正确。"
+            },
+            {
+              "id": "SCM02",
+              "title": "S01 Engine Overview：原生 PyTorch 设备、无 wrapper、eager/torch.compile(XLA)、torch.distributed、每设备一进程保留框架组件、platform-plugin、Pallas custom operator",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02",
+                "U03"
+              ],
+              "notes": "§2.1 为原文直引；§2.2 的三个结构性后果与 §3.1 分层图中除『每设备一进程』『Pallas 作为 custom operator』外均为推断，报告已声明。S06 的 ATen kernel/编译缓存/torch.compile 定位在 §3.1 与附录 A 得到使用。"
+            },
+            {
+              "id": "SCM03",
+              "title": "S02 vLLM-TorchTPU：out-of-tree 平台插件、kernel 清单（Ragged Paged Attention/dense-sparse MLA/Gated DeltaNet/fused MoE+SparseCore offload/FP8-INT8-MXFP4 matmul）、v7x/v6e/v5e-v5p CI 分级、首启编译与 VLLM_XLA_CACHE_PATH、tpu-inference→vLLM JAX 更名",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01",
+                "U03"
+              ],
+              "notes": "§2.3 与 §3.2 逐项与 README 一致；『CI 只覆盖推荐代』的可移植性解读标注为推断，成立。"
+            },
+            {
+              "id": "SCM04",
+              "title": "S03 SGLang-TorchTPU：prefix caching、HiCache、disaggregation+TP resharding、FP8/MXFP4/INT4 W4A16/FP8 KV、EAGLE3/DFlash/DFlash2/DSPark/MTP、TPU7x 徽章、Google-Meta-RadixArk-SGLang 联合",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03",
+                "U04"
+              ],
+              "notes": "§3.3 完整覆盖且正确指出 S03 未把 prefix caching 归名 RadixAttention；投机解码清单用了 S03 自己的拼写（含 DFlash2），与 §4 用 S01 拼写（DSpark、无 DFlash2）分列，归属纪律好。"
+            },
+            {
+              "id": "SCM05",
+              "title": "S01 七类工作负载支持清单与『agentic 需同时满足多特性/前缀留在 HBM+老前缀迁主机』判断",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "§4 矩阵七行与 S01 七条 bullet 逐条对应，能力项无一增删；映射列明确到 vLLM KV connector / SGLang HiCache / TPU Sync。"
+            },
+            {
+              "id": "SCM06",
+              "title": "S01 TPU Sync 角色：分离式 P/D 与分层 offload 两个特性、传输必须与计算重叠、vLLM 经 KV connector 暴露 / SGLang 作 disagg 传输与 HiCache I/O 后端",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "§5.1 覆盖；『必须重叠否则直接加延迟』的原话保留。"
+            },
+            {
+              "id": "SCM07",
+              "title": "S04 TPU Sync 架构要点与成熟度：PjRtBuffer 零拷贝、C++ 线程池、~200 GB/s PCIe、Tier-2 LRU+DMA、/dev/shm warm-boot、RL 支持、v7x/v6e、四类示例；IMPORTANT 警示、lkg.version、torch wheel 无端到端性能门禁、PyPI 未公开、JAX 版本表与重建约束、Raiden 毕业",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "§5.2 表逐行对应（含 RL 训练行与示例清单）；§5.3 的四条成熟度信号+Raiden+JAX 版本约束全部有 README 原文支撑，任务点名的 lkg.version/性能门禁/PyPI 三处表述与原文逐字一致。"
+            },
+            {
+              "id": "SCM08",
+              "title": "S01 性能声明与生产叙述：preview customers 生产运行、2.01 美分（Qwen 3.5/Ironwood）、AgentX SOTA+大部分 Pareto 前沿、Kimi K3 2.8T megakernel 单用户 >700 tok/s、Inferact 主导首次 AgentX 提交",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "§6.1 表的五条声明（含『本文未读排行榜故不引名次』的自注）与原文一致；『三处量化声明』的计数经我核对 S01 全文成立（全文仅 2.01 美分、2.8T、700 tok/s 三个数字）。"
+            },
+            {
+              "id": "SCM09",
+              "title": "S07 AgentX 方法学：393 会话/142k/444/44% subagent、闭源回放与负载漂移、1 小时窗口、SPEED-Bench 固定接受长度、DRAM 3TB 封顶 vs 标准 GB200/GB300/TPUv7 按装机容量+配额比例、只测服务性能",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S07"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "§6.2 逐条与 S07 一致；任务点名的标准化/非标准化 DRAM 规则复述准确。唯一小出入是『每个并发点重跑』比原文 sweep of concurrent clients 略强（见 notes 末尾）。"
+            },
+            {
+              "id": "SCM10",
+              "title": "S01 合作伙伴与引述：RadixArk/SGLang 在 Meta 生产、三方协作（Meta/Google/SGLang）、RadixArk 与 Inferact 引述、vLLM 社区贡献 TPU 算力池、JAX 运行时保留",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01",
+                "U08"
+              ],
+              "notes": "§8 表逐条对应并正确标注『具名客户引述（第三方口吻、厂商博客转述）』；S03 的 joint effort（Google/Meta/RadixArk/SGLang）与 §8 一致。"
+            },
+            {
+              "id": "SCM11",
+              "title": "S05 TorchTPU 开源与生态：eager→torch.compile 混合、llm-d 1.0（CNCF/Red Hat/IBM/500+ 贡献者）、Zenteiq 4×与 1.47B→5.97B tokens/1,000 TPU v6e、TorchTitan 最高 52% MFU（Qwen 3 8B）与最多 8,192 Ironwood、以及 VeRL/Ray/LiteRT/HF Transformers v5/TPU agent suite",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S05"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08"
+              ],
+              "notes": "任务点名的 TorchTitan 最高 52% MFU 在附录 A/B 精确引用（up to 52% MFU on Qwen 3 8B、8,192 Ironwood），Zenteiq 两个数字与 llm-d 路由亦准确；但 S05 的训练/生态面（VeRL GRPO recipe、Ray 一等加速器、LiteRT 入 PyTorch 生态、HF Transformers v5 device_map=tpu、TPU agent suite preview）未进入正文——以本报告『推理引擎』范围衡量属合理取舍，故记 partial 而非 missing。另：S05 明文『SGLang uses RadixAttention to reuse KV cache across requests』，报告未用此句补强 §3.3 的 RadixAttention 归属，是一个可用而未用的证据点。"
+            },
+            {
+              "id": "SCM12",
+              "title": "S06 torch_tpu 定位：PyTorch TPU 后端、ATen kernel、XLA 编译缓存、torch.compile 图模式、共享 XLA/MLIR 构建（wheel_common/libxla_base.so）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02",
+                "U03"
+              ],
+              "notes": "§2/§3.1 与附录 A 使用了定位、编译缓存与共享 XLA/MLIR 构建三点；README 的 Python 3.11+/PyPI 0.2.0 等安装细节未展开，非论证依赖。"
+            },
+            {
+              "id": "SCM13",
+              "title": "S01 Roadmap：更多模型家族与 Day 0 支持、社区调优工具与算力",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S01",
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08"
+              ],
+              "notes": "模型家族经 S02 的支持清单（Qwen3/3.5、DeepSeek-V3/R1/V4、Kimi-K2.5/K3、GLM-5、Llama 3/4、GPT-OSS、Gemma 3/4、Mixtral、VL、diffusion）进入 §3.2；『Day 0 支持』的路线图表述未单独成段，属次要遗漏。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06",
+            "S07"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04",
+            "R05"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "来源优先复核：先独立读取 S01–S07 全文并构建内容地图（SCM01–SCM13），再读报告与 evidence；未参考生成者或先前预审的推理。结论：C01–C08 八条 critical claim 全部有原文逐字支撑，无错配数字，无未读来源被引用（U12 排行榜被诚实省略而非编造）。任务点名的七处核验点逐项判定：(1)『对应论文』删除已核实——报告与 evidence 中 grep 论文/paper/arXiv 均无命中，无任何论文归属残留；(2) SGLang prefix caching 归属正确——§3.3 如实写 S03 README 未归名 RadixAttention、§4 把 RadixAttention 表述归于 S04 的主机缓存目标，与两份原文一致；(3) AgentX DRAM 规则复述准确（非标准化 3TB 封顶、GB200/GB300/TPUv7 按装机容量、按配额比例访问）；(4) lkg.version 表述准确；(5) torch wheel 尚无端到端性能门禁（torch path is still maturing）表述准确；(6) 预构建 wheel 尚未公开上 PyPI、经 Artifact Registry 认证安装表述准确；(7) TorchTitan 最高 52% MFU（Qwen 3 8B、最多 8,192 Ironwood）引用准确。四个供协调者参考的修订建议（均非阻断）：A. evidence C04 的 evidence 注『RadixAttention 一词只在 S04 出现』与 S05 不符（S05 明文 SGLang uses RadixAttention），若协调者修订 evidence 时可一并订正该注，并可用 S05 在报告 §3.3/§4 补一句 SGLang 前缀缓存即 RadixAttention 的一手确认；B. §6.2『每个并发点重跑』宜改贴近原文的『跨并发客户端扫描、每配置 1 小时窗口』；C. §2.2 表格第三行来源标签排版可修正；D. S05 的 VeRL/Ray/LiteRT/HF 集成如后续有训练主题报告可另行覆盖。unresolved issues：无阻断性问题；上述 A 为唯一的事实性小失准且位于 evidence 注释层，不动摇 claim 本体。本 review 由 glm-5.3 / pi / thinking=high 完成（用户在 MiniMax M3.1 Flash 明确 429 后指定切换，非 max）。"
+        }
+      ],
+      "decision": {}
+    }
+  ]
+}

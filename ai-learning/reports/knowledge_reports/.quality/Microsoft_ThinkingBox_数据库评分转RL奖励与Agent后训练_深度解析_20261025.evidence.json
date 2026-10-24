@@ -1,0 +1,390 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/Microsoft_ThinkingBox_数据库评分转RL奖励与Agent后训练_深度解析_20261025.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-25",
+  "generator": {
+    "model": "minimax-m3.1-flash",
+    "harness": "pi",
+    "run_id": "generator-thinkingbox-20261025",
+    "explicit_model_override": true,
+    "override_reason": "用户明确要求优先使用 MiniMax M3.1 Flash（额度耗尽后才切 GLM-5.3）"
+  },
+  "task": {
+    "summary": "深读 Hugging Face / Microsoft 2026-10《Turning Database Grading into RL Rewards: Post-Training Agents with ThinkingBox》，并实际读取 arXiv:2608.19741 摘要、microsoft/thinkingbox-training 的 README、trainer/core/tb_interpret.py 与 docs/data-preparation.md，以及第一篇博客，重构如何把数据库终态可执行评分器变为 RL 奖励、六阶段数据流、GRPO 零方差约束下的离线策略相对难度分桶、两条奖励路径与二值奖励定义，核对 benchmark、模型、数据、基线、训练配置与成本口径，并评估 reward hacking 与污染风险、6 条替代路线及对 EverAgent 报告质量门与 eval 的可迁移价值。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "重构如何把数据库任务的可执行评分器变成 RL reward，训练循环如何处理环境、轨迹、验证、奖励稀疏与 reward hacking。"
+      },
+      {
+        "id": "R02",
+        "text": "逐项核对 benchmark、模型、数据、基线、训练成本与泛化范围。"
+      },
+      {
+        "id": "R03",
+        "text": "与静态单测、LLM judge、RLVR、GRPO/PPO、离线轨迹蒸馏等路线做有边界比较。"
+      },
+      {
+        "id": "R04",
+        "text": "评估对 EverAgent 报告质量门、数据库/代码任务 eval 与多 Agent harness 的可迁移价值。"
+      },
+      {
+        "id": "R05",
+        "text": "不得把可执行 reward 等同真实世界目标，不得忽略 reward hacking 与测试集污染，不得写私有信息。"
+      },
+      {
+        "id": "R06",
+        "text": "只完成初稿、evidence、空白 review；不复核、不 finalize、不改 MAP/wiki/索引、不提交推送；不修改同 worktree 既有报告。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "primary",
+      "title": "Hugging Face × Microsoft 联合博客 (2026-10) — Turning Database Grading into RL Rewards: Post-Training Agents with ThinkingBox",
+      "locator": "https://huggingface.co/blog/microsoft/thinkingbox-training",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S02",
+      "kind": "primary",
+      "title": "arXiv:2608.19741 — One Success Isn't Reliability: Thinkingbox, a Sandbox and Benchmark for Agents in Stateful Business Workflows（摘要）",
+      "locator": "https://arxiv.org/abs/2608.19741",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S03",
+      "kind": "primary",
+      "title": "microsoft/thinkingbox-training — README（训练栈、结果速览、三仓 pin、VeRL 补丁与 dry-run、评测命令）",
+      "locator": "https://raw.githubusercontent.com/microsoft/thinkingbox-training/main/README.md",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S04",
+      "kind": "primary",
+      "title": "microsoft/thinkingbox-training — trainer/core/tb_interpret.py（训练/评测解释一致性实现）",
+      "locator": "https://raw.githubusercontent.com/microsoft/thinkingbox-training/main/trainer/core/tb_interpret.py",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S05",
+      "kind": "primary",
+      "title": "microsoft/thinkingbox-training — docs/data-preparation.md（加载器契约、公开样本与数据 pin、prepare_data.py 的探针/难度/排除流程）",
+      "locator": "https://raw.githubusercontent.com/microsoft/thinkingbox-training/main/docs/data-preparation.md",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S06",
+      "kind": "primary",
+      "title": "Hugging Face × Microsoft 博客 — The Agent Said It Was Done. The Database Disagreed.（第一篇：指标定义、18 模型横评、成本口径）",
+      "locator": "https://huggingface.co/blog/microsoft/thinkingbox",
+      "accessed_on": "2026-10-25"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "ThinkingBox 的核心转折是把评分器读成奖励函数：评测只检查数据库终态记录（错误的、缺失的、多余的副作用都失败），判据是「需要正确的那条后端记录」而非特定工具调用序列；该可执行判定随后被搬到与基准不相交的训练任务上作为二值奖励（1 或 0），奖励与轨迹无关。",
+      "report_anchor": "1. 问题定义：从「评分器」到「奖励函数」的那一步",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "博客「This can be a reward function」「Nothing about the trajectory. The reward is the task's own executable verdict」与两条奖励路径；论文摘要「task-specific executable checks that accept valid trajectories while rejecting wrong, missing, or extra effects」；README「checks inspect the resulting database state and side effects, then return a binary reward」。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "训练任务的选择是整篇工作的关键工程：GRPO 在全 0 或全 1 的组内中心化后无任务奖励优势（零梯度），因此必须先对基座策略做离线探针，用 Jeffreys 后验 Beta(k+½, n−k+½) 把候选任务分桶为 Rarely solved/Difficult/Intermediate/Frequently solved/Nearly always solved（边界 0.08/0.40/0.60/0.90），只保留中间三桶，并在整个训练中固定该池；官方示例为 3/8 成功 → Beta(3.5,5.5) → Difficult（质量 54.0%）。",
+      "report_anchor": "离线策略相对难度",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S05"
+      ],
+      "evidence": "博客「If all eight rollouts fail, the reward vector is [0,…,0]… centering within the group produces no task-reward advantage」、后验公式、分桶表与示例；data-preparation.md 说明 prepare_data.py 聚合策略探针、以 Jeffreys 后验分类并可加参考模型闸门。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "训练结果的关键数字为：Qwen3.8-27B 全参 RL 微调（token-mean GRPO，187 任务，18 groups×8 rollouts=144 episodes，24×H100，AdamW lr 1e-6 / wd 0，50 步，DAPO 零方差组替换，系统错误组 refill）后，pass@1 由 51.70%（5,242/10,140）升至 60.78%（6,163），Observed 20/20 由 38（7.50%）升至 107（21.10%）；20 次里至少成功一次的任务数由 453 降至 446，这是该 campaign 观察到的 breadth 变化，不能单凭 20 次样本断言真实支持面永久收缩。",
+      "report_anchor": "4.4 训练配置",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S03"
+      ],
+      "evidence": "博客 Table 1 与训练循环章节的配置段落；README 结果速览表与 requirements。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "成本口径为「相对服务指数」而非账单：20 次 campaign 估算成本 $925.80→$855.58（−7.6%），每次成功尝试 $0.177→$0.139（−21.4%），每条可靠任务（campaign 成本 ÷ 20/20 任务数）$24.36→$8.00（−67.2%）；官方明确该计算包含模型推理成本，但排除训练运行成本与策略探针成本，且服务微调 checkpoint 与基座推理成本相同。",
+      "report_anchor": "4.3 成本",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S06"
+      ],
+      "evidence": "博客 Table 3 与「The dollar values are a comparative serving index, not invoice or cloud bills… excludes training run and policy-probe cost」；第一篇博客的成本公式「estimated cost for 507 attempts ÷ (507 × pass@1)」。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "污染控制包括：507 个基准任务全部不进训练池（UID 排除机制 --exclude-uids）、用更强参考模型 GPT-5.4 做可解性筛查、训练池固定不在训练中重探、公开样本仅 39 个开发任务且与基准不相交；官方同时自陈转移声明受限——训练池与基准共享框架、模拟用户机制、可执行终态评分、部分通用工具与相似任务风格，且全部基准任务为合成重建、客户并非真实。",
+      "report_anchor": "6. Reward hacking 与污染评估",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S05",
+        "S03"
+      ],
+      "evidence": "博客「No ThinkingBox-Bench task was included in the RL training pool」与「These shared elements limit the scope of the transfer claim」及合成数据声明；data-preparation.md 的 UID 排除、39 个公开选择器与数据 revision pin；README 的「Keep training selectors disjoint from the public benchmark」。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "reward hacking 的核心风险是「奖励与轨迹无关」：只检查终态记录意味着形式正确而实质缺位的过程也可能得 1；此外还存在针对检查器模式的优化、judge 偏差（比例未量化）、零方差组 refill 的浪费，以及「难度是相对基座策略估计、训练中不重探」带来的分布失真；可执行奖励验证的是可观测状态，并不等于真实业务目标。",
+      "report_anchor": "6.3 Reward hacking 风险清单",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "博客「Nothing about the trajectory」与脚注关于 refill 付费；论文指出响应/工具调用级信号不是端到端完成度的清晰代理、但未主张可执行信号等于真实目标；judge 比例与一致性、hacking 量化在官方材料中缺失。风险清单为本文据机制推导并逐条标注。",
+      "critical": true
+    },
+    {
+      "id": "C07",
+      "claim": "代码证据显示「训练与评测必须逐字节一致地解释模型输出」：trainer/core/tb_interpret.py 复现评测端 vLLM 的 reasoning parser（qwen3）与 tool-call parser（qwen3_xml），并按工具 schema 把 string 型 XML 参数强制转换为 JSON 类型（XML 线格式无法承载 JSON 类型，引用 QwenLM/Qwen3.6#187）；若直接用 VeRL 自带的独立重实现，训练时对话会与基座被测时的对话分歧。",
+      "report_anchor": "5.1 `trainer/core/tb_interpret.py`",
+      "support": "direct",
+      "source_ids": [
+        "S04"
+      ],
+      "evidence": "tb_interpret.py 模块 docstring 逐条列出四步解释链路、VeRL 重实现导致分歧的原因、XML 无法承载 JSON 类型的引用，以及 coerce_arguments 的类型强制与失败回退行为。",
+      "critical": true
+    },
+    {
+      "id": "C08",
+      "claim": "数据侧证据显示防污染是被工具化的：data-preparation.md 规定 loader 契约（module:function + iter_cases_by_names 严格水合）、公开样本为 39 个选择器并 pin 在公开数据 revision 49eacaa530b07177d99acd1d0570ee117d43a20b 且不与 507 任务列表重叠，prepare_data.py 依次执行探针聚合 → Jeffreys 难度分类 → 可选参考模型闸门 → 基准 UID 排除 → train/test 划分，并要求所有输出写在仓库之外。",
+      "report_anchor": "5.2 `docs/data-preparation.md`",
+      "support": "direct",
+      "source_ids": [
+        "S05",
+        "S03"
+      ],
+      "evidence": "docs/data-preparation.md 全文（加载器契约、5 个公开开发文件、skip 标记处理、revision pin、prepare_data.py 能力清单、输出目录要求）。",
+      "critical": false
+    },
+    {
+      "id": "C09",
+      "claim": "结果解读必须区分三种指标：pass@1 是所有尝试的平均成功率，pass@20 是 20 次里至少成功一次的任务比例，Observed 20/20（论文摘要写作 pass^20）是 20 次全部成功的任务比例。平均成功率与全成功率给出不同排序；@ 与上标 ^ 只差一个符号但语义相反，跨文引用必须写清。",
+      "report_anchor": "读表要点",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S06"
+      ],
+      "evidence": "第一篇博客明确表格：pass@20 = tasks solved at least once，Observed 20/20 = all 20 recorded attempts，并注明 no estimator, no smoothing；训练博客 Table 1 重复同一定义；论文摘要报告 66.50% pass@1 与 47.53% pass^20。GPT-5.6 Sol/RLFT 与 Opus 5/5.5 的排序差异来自项目表格。",
+      "critical": false
+    },
+    {
+      "id": "C10",
+      "claim": "六条替代路线的取舍是：静态单测零成本但只测已知行为；LLM judge 可评不可执行维度但与 agent 自评同源偏差；RLVR 是本工作的领域化实例（verifier 为有状态数据库终态）；GRPO 免 critic 但本文未与 PPO 对照；离线轨迹蒸馏成本低但只模仿已有成功轨迹、不探索新解；工程侧优化（改检查器/路由/提示）与 RL 正交且往往更便宜。",
+      "report_anchor": "7. 替代路线比较",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S03"
+      ],
+      "evidence": "博客对 GRPO 零方差与 refill 成本的论证、README 中 VeRL 集成与工程栈要求构成各条路线的原始事实；各路线的取舍判断与选型规则为本文整理，其中选型判断已标注为分析者推导。",
+      "critical": false
+    },
+    {
+      "id": "C11",
+      "claim": "对 EverAgent 的可迁移价值首先在判据设计与度量方式而非训练本身：报告质量门的确定性检查（evidence schema 校验、critical claim 是否有 source_ids/locator、章节完整性、git diff --check）可直接构成二值可执行 rubric；度量上应补上 ThinkingBox 式「可重复通过率」（同一批报告 N 次独立复核的 k/k 通过数）而非只看单次通过率；迁移实验可按成本排序为 A 记录重复通过率、B 清单化可执行 rubric、C 构造报告修复 RL 任务、D 做解释一致性 parity 断言。",
+      "report_anchor": "8. 对 EverAgent 的最小迁移实验与 eval",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S03",
+        "S04"
+      ],
+      "evidence": "ThinkingBox 的核心度量（observed k/k）与可执行判据思路，加上本仓现有 report_quality.py / audit_reports.py 的确定性检查与 tb_interpret.py 的 parity 纪律，构成迁移方案的直接来源；具体清单与实验设计为本文提出。",
+      "critical": false
+    },
+    {
+      "id": "C12",
+      "claim": "迁移边界必须写明：可执行奖励只能覆盖可被脚本判定的维度，EverAgent 报告的「论证是否充分、是否值得读」不可执行；结构合规不等于有价值，ThinkingBox 自己已证明「动作合法 + 终止干净」仍可能失败；训练任务必须与评测集不相交并保留 UID 排除；难度是策略相对的，策略迭代后需重新探针；成本表必须计入训练与探针成本，而官方口径恰恰排除了这两项。",
+      "report_anchor": "8.4 迁移边界",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S05"
+      ],
+      "evidence": "论文关于响应级信号不可靠的论断、博客的成本口径排除项与「难度是策略相关的」原则、data-preparation.md 的 UID 排除流程共同支撑上述边界；与本仓报告流程的对应关系为本文分析。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "问题定义：从「完成声明」到「可执行判据」再到「奖励函数」",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "report_anchor": "1. 问题定义"
+    },
+    {
+      "id": "U02",
+      "title": "ThinkingBox 三件套（环境 / 基准数据 / 训练栈）与六阶段数据流、GRPO 零梯度论证",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S03",
+        "S02"
+      ],
+      "report_anchor": "2. ThinkingBox 三件套与任务/环境/奖励/数据流"
+    },
+    {
+      "id": "U03",
+      "title": "评分器与奖励函数拆解：两条奖励路径、二值奖励、模拟用户不参与打分、政策约束样本",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S03"
+      ],
+      "report_anchor": "3. 评分器与奖励函数拆解"
+    },
+    {
+      "id": "U04",
+      "title": "关键数字：训练前后对比、模型横评、成本口径、训练配置、难度分桶",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S06",
+        "S03"
+      ],
+      "report_anchor": "4. 关键数字表（含口径）"
+    },
+    {
+      "id": "U05",
+      "title": "代码与配置证据：tb_interpret.py 解释一致性、data-preparation.md 数据契约、README 运行栈",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S04",
+        "S05",
+        "S03"
+      ],
+      "report_anchor": "5. 代码与配置证据"
+    },
+    {
+      "id": "U06",
+      "title": "Reward hacking 与污染评估（控制措施、共享元素限制、风险清单、可执行≠真实）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S05"
+      ],
+      "report_anchor": "6. Reward hacking 与污染评估"
+    },
+    {
+      "id": "U07",
+      "title": "替代路线比较（静态单测 / LLM judge / RLVR / GRPO-PPO / 离线蒸馏 / 工程侧优化）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S03"
+      ],
+      "report_anchor": "7. 替代路线比较"
+    },
+    {
+      "id": "U08",
+      "title": "对 EverAgent 的最小迁移实验、eval 指标与迁移边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "8. 对 EverAgent 的最小迁移实验与 eval"
+    },
+    {
+      "id": "U09",
+      "title": "Limitations 与思考与追问",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S05",
+        "S06"
+      ],
+      "report_anchor": "9. Limitations"
+    },
+    {
+      "id": "U10",
+      "title": "第一篇博客的 18 模型横评与指标定义（observed 20/20 的字面计数性质、成本公式）",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S06"
+      ],
+      "report_anchor": "4.2 模型横评"
+    },
+    {
+      "id": "U11",
+      "title": "ThinkingBox 环境内部实现（Typesense、MCP Session Proxy、OpenEnv 装配细节）",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S03"
+      ],
+      "report_anchor": "2.1 组件"
+    },
+    {
+      "id": "U12",
+      "title": "模型卡与许可细节（MIT 代码、CDLA-Permissive-2.0 数据、合成重建声明的完整法律与治理段落）",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "S01",
+        "S03"
+      ],
+      "report_anchor": "",
+      "omission_reason": "许可与免责原文已在正文以要点形式保留（MIT / CDLA-Permissive-2.0 / 合成数据、客户非真实），完整法律段落对研究结论无增量，故不单列。"
+    }
+  ],
+  "limitations": [
+    "全部结果为项目方自报，无独立复现；本次研究未运行训练或评测。",
+    "单一模型、单一算法与单一规模：Qwen3.8-27B、token-mean GRPO、50 步、187 任务、24×H100；未与 PPO 或其它优化器对照。",
+    "训练成本与策略探针成本被官方明确排除在成本表外，「每条可靠任务 −67.2%」是运行侧口径。",
+    "美元数值为相对服务指数而非账单；服务微调 checkpoint 与基座推理成本相同。",
+    "pass@20（20 次里至少一次）由 453 降至 446，说明该 campaign 观察到的 breadth 略降；sharpening 是官方解释，但 20 次样本也可能包含抽样波动。",
+    "官方自陈转移声明受限：训练池与基准共享框架、模拟用户机制、可执行评分、部分工具与任务风格；基准全为合成重建、客户非真实，域仅 5 类。",
+    "judge 参与比例未量化，也未报告 judge 与人工的一致率；reward hacking 无量化结果。",
+    "Observed 20/20 是 20 次观测的字面计数（no estimator, no smoothing）；论文摘要用 pass^20 表示同方向的全成功指标，但未给样本外可靠性的置信区间或平滑估计。",
+    "难度带边界是超参且训练中不重探；187 任务从多少候选筛出、探针成本多少均未披露；私有池不公开，外部只能用 39 个公开开发任务验证接口。",
+    "本文标注为 [分析者推导] 的内容（选型判断、迁移实验与 eval 设计、hacking 面清单、替代路线取舍）均为推断而非原文陈述；pass@20 与 pass^20 的定义来自项目原文。"
+  ]
+}

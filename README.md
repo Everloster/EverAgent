@@ -26,11 +26,11 @@ EverAgent 保存可以公开分享的知识资产；设备、网络和服务等�
 <!-- AUTO-RECENT:START -->
 | 日期 | 报告 | 领域 |
 |------|------|------|
-| 2026-10-23 | [TWIML：Airbnb Company Brain 如何把隐性知识交给 Agent](./podcast-learning/reports/2026-10-21_rss-twiml_airbnb-company-brain.md) | 🎙️ Podcast Learning |
-| 2026-10-23 | [Practical AI：Agentic 漏洞发现、Exploit 开发与假 POC](./podcast-learning/reports/2026-10-22_rss-practical-ai_agentic-vulnerability-discovery.md) | 🎙️ Podcast Learning |
-| 2026-10-23 | [Latent Space：X-Cell 为什么说因果模型先需要因果数据](./podcast-learning/reports/2026-07-21_rss-latent-space_xcell-causal-data.md) | 🎙️ Podcast Learning |
-| 2026-10-23 | [HarnessPro 精读：用可执行反馈与帕累托选择约束 Harness 递归改进](./ai-learning/reports/paper_analyses/51_harnesspro_2026.md) | 🤖 AI Learning |
-| 2026-10-23 | [Dwarkesh × Ryan Greenblatt：AI 研究自动化会怎样加速，又会怎样失控](./podcast-learning/reports/2026-08-11_rss-dwarkesh_ryan-greenblatt-ai-rnd-automation.md) | 🎙️ Podcast Learning |
+| 2026-10-25 | [菠萝健康派 × 师永刚：中美抗癌十年，就医路径、费用真相与「被看见」的病人](./podcast-learning/reports/2026-10-21_xiaoyuzhou-boluo-jiankang_shiyonggang-cn-us-cancer-decade.md) | 🎙️ Podcast Learning |
+| 2026-10-25 | [张小珺 × Lindon Gao（Dyna Robotics）：机器人长跑里的闭环、推论与「不犯错的 CEO」包袱](./podcast-learning/reports/2026-10-15_xiaoyuzhou-zhangxiaojun_vol154-dyna-lindon.md) | 🎙️ Podcast Learning |
+| 2026-10-25 | [半拿铁 No.223：“莆田系”医事——从电线杆到手术台，以及一门擅长招徕却难建信誉的生意](./podcast-learning/reports/2026-10-21_xiaoyuzhou-bannatie_putian-medical-system-history.md) | 🎙️ Podcast Learning |
+| 2026-10-25 | [vLLM 在 GB300 NVL72 上服务 DeepSeek-V4.1-Flash：P/D 分离 + Wide-EP 的机制拆解与口径核验](./ai-learning/reports/knowledge_reports/vLLM_DeepSeek-V4.1-Flash_PD分离与Wide-EP机架级服务_深度解析_20261025.md) | 🤖 AI Learning |
+| 2026-10-25 | [vLLM Humming：量化推理 GEMM Kernel 库的设计、支持矩阵与证据边界](./ai-learning/reports/knowledge_reports/vLLM_Humming_量化推理Kernel库_深度解析_20261025.md) | 🤖 AI Learning |
 <!-- AUTO-RECENT:END -->
 
 [浏览全部报告 →](./docs/REPORT_INDEX.md)
@@ -42,13 +42,13 @@ EverAgent 保存可以公开分享的知识资产；设备、网络和服务等�
 <!-- AUTO-OVERVIEW:START -->
 | 项目 | 报告 | Wiki(概念/实体/综合) |
 |------|------|----------------------|
-| 🤖 [AI Learning](./ai-learning/) | 126 篇 | 54/30/1 |
+| 🤖 [AI Learning](./ai-learning/) | 144 篇 | 54/30/1 |
 | 💻 [CS Learning](./cs-learning/) | 33 篇 | 24/17/1 |
 | 📚 [Philosophy Learning](./philosophy-learning/) | 22 篇 | 20/14/1 |
 | 🧠 [Psychology Learning](./psychology-learning/) | 17 篇 | 13/13/0 |
 | 🧬 [Biology Learning](./biology-learning/) | 18 篇 | 14/9/0 |
 | ⚗️ [AI Practice](./ai-practice/) | 10 篇 | 9/1/0 |
-| 🎙️ [Podcast Learning](./podcast-learning/) | 90 篇 | 58/54/0 |
+| 🎙️ [Podcast Learning](./podcast-learning/) | 96 篇 | 58/54/0 |
 | 🔭 [GitHub Research](./github-trending-analyzer/) | 124 篇 | 0/0/0 |
 | 🏄 [Web Surfing](./web-surfing/) | 47 篇 | 0/0/0 |
 <!-- AUTO-OVERVIEW:END -->

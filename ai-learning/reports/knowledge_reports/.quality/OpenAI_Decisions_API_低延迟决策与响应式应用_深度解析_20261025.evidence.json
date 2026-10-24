@@ -1,0 +1,412 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/OpenAI_Decisions_API_低延迟决策与响应式应用_深度解析_20261025.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-25",
+  "generator": {
+    "model": "minimax-m3.1-flash",
+    "harness": "pi",
+    "run_id": "generator-openai-decisions-20261025",
+    "explicit_model_override": true,
+    "override_reason": "用户明确要求优先使用 MiniMax M3.1 Flash（额度耗尽后才切 GLM-5.3）"
+  },
+  "task": {
+    "summary": "深读 OpenAI 2026-10《Build more responsive apps with the Decisions API》，并实际读取官方开发指南《Decisions》《Connect voice to Decisions》、POST /v1/decisions 的 API 参考、官方 Changelog 与定价页，重构该端点的问题定义、请求/响应模型、状态与拒答语义、三种问题类型与最小集成伪代码、能力与限制矩阵、官方性能与成本口径，并与 Responses API + Structured Outputs、function calling、Predicted Outputs/Batch 等官方路线及传统规则引擎、客户端预测缓存、自托管小模型做有边界比较，评估其对 EverAgent harness、日报/播客分流、异步任务状态与前端响应性的迁移实验与 eval 指标。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "明确 Decisions API 解决的真实问题、请求与响应模型、状态/流式/工具或策略执行路径、延迟与成本口径、失败与回退语义。"
+      },
+      {
+        "id": "R02",
+        "text": "用机制图和最小伪代码解释典型集成。"
+      },
+      {
+        "id": "R03",
+        "text": "逐项核对官方 benchmark、支持范围、SDK/版本和限制。"
+      },
+      {
+        "id": "R04",
+        "text": "与 Responses API、Realtime API、传统规则引擎、客户端预测或缓存等替代路线做有边界比较。"
+      },
+      {
+        "id": "R05",
+        "text": "评估其对 Agent harness、日报/播客交互、异步任务状态和前端响应性的可迁移价值与必要 eval。"
+      },
+      {
+        "id": "R06",
+        "text": "不得依据标题臆测 API 语义，不得把产品可用性宣传当独立性能验证，不得写入私有设备、网络、账号或额度信息。"
+      },
+      {
+        "id": "R07",
+        "text": "只完成初稿与 evidence、空白 review；不做独立复核、不 finalize、不更新 MAP/wiki/全局索引、不提交、不推送；不修改同 worktree 的 Cloudflare、Humming 或 GLM 报告。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "official",
+      "title": "OpenAI 官方博客 — Build more responsive apps with the Decisions API (2026-10)",
+      "locator": "https://openai.com/index/decisions-api",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S02",
+      "kind": "official",
+      "title": "OpenAI 官方开发指南 — Decisions（请求模型、三种问题类型、JSON 与图像输入、会话历史评估、GA 新增能力）",
+      "locator": "https://developers.openai.com/api/docs/guides/decisions",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S03",
+      "kind": "official",
+      "title": "OpenAI 官方 API 参考 — Create decision (POST /v1/decisions)：响应 schema、usage、缓存参数、问题数与输入条目限制",
+      "locator": "https://developers.openai.com/api/reference/resources/decisions/methods/create",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S04",
+      "kind": "official",
+      "title": "OpenAI 官方指南 — Connect voice to Decisions（GPT-Live 原生集成、session.triggers、decision.event 语义）",
+      "locator": "https://developers.openai.com/api/docs/guides/decisions-voice",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S05",
+      "kind": "official",
+      "title": "OpenAI 官方 Changelog（Oct 6 公测、Oct 15 GPT-Live 原生集成、Oct 20 12 小时 prompt caching）",
+      "locator": "https://developers.openai.com/api/docs/changelog",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S06",
+      "kind": "official",
+      "title": "OpenAI 官方定价页（gpt-6-luna 标准档短/长上下文价格）",
+      "locator": "https://developers.openai.com/api/docs/pricing",
+      "accessed_on": "2026-10-25"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "Decisions API 解决的是「工作流中大量小决策的延迟与成本累加」，而非提升模型能力：端点只返回三种有类型答案（predicate 的 probability、choice 的选择值、score 的档位概率加权平均），不生成自由文本、不执行动作，应用自己执行答案所选择的行为。",
+      "report_anchor": "1. 问题定义：它到底解决什么",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "博客开篇「Applications and agents make many small decisions… At scale, their latency and cost add up」；指南「your application runs any actions those answers select」；API 参考的答案类型联合 Predicate/Choice/Score/Refusal。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "请求模型为三段式：model（目前唯一支持 gpt-6-luna）、input（共享证据，可为文本或消息/工具调用/工具输出的有序数组）、questions（1–400 个，每个带 type/instructions/name，choice 带 choices、score 带有序 levels）；响应为按问题顺序返回的 answers 数组。",
+      "report_anchor": "2. 请求与响应模型",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "指南「A request has three parts」表与 API 参考「Ask 1–400 questions about the input… Answers come back in the same order」。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "失败与回退语义是「逐题拒答」而非整次请求失败：任何问题都可能返回 type=\"refusal\" 的答案并携带该问题的 name（未命名则为 null），官方明确其它问题仍会拿到答案；因此应用必须为单题 refusal 单独设计兜底分支。",
+      "report_anchor": "3. 请求生命周期与状态机",
+      "support": "direct",
+      "source_ids": [
+        "S03",
+        "S02"
+      ],
+      "evidence": "API 参考「Any question can return a refusal instead of an answer; other questions can still receive answers」与 Refusal 对象定义；指南说明 refusal 只对单题生效。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "能力与限制的关键事实为：只支持 gpt-6-luna；输入侧不支持文件、音频与 item 引用；system 消息仅支持输入文本且被当作 developer 消息；input_json 仅支持 user 角色；questions 上限 400（公测期 200）；prompt_cache_options.ttl 目前仅支持 30m；implicit 模式为 1 个隐式断点加最近 3 个显式断点、explicit 模式最多 4 个显式断点、匹配最多考虑最近 80 个断点。",
+      "report_anchor": "5. 能力与限制矩阵",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S01"
+      ],
+      "evidence": "指南的输入内容矩阵与 What's new 清单（400 题、JSON 输入、托管图像输入、会话历史、用量上报、Private Link）；API 参考的缓存参数定义与「currently, only gpt-6-luna」。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "成本口径为只按输入侧计费且无输出 token 费用：普通输入 $0.10/百万、缓存命中 $0.01/百万、30 分钟缓存写入 $0.125/百万；定价页另列 12 小时写入 $0.25/百万但 Decisions 是否支持该 TTL 未明确。只有在同模型、同处理档位、同上下文档位与同缓存状态下，Decisions 相对 Responses API 的结构性节省才可写为 O×$0.50/百万；首次填充缓存不能漏算写入费用。",
+      "report_anchor": "6. 官方性能与成本数字的口径表",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S06",
+        "S03"
+      ],
+      "evidence": "博客给出 Decisions 输入 $0.10/百万、缓存输入 $0.01/百万且无输出收费；定价页 gpt-6-luna 标准档为 input $0.10 / output $0.50 / cached $0.01 / 30m write $0.125 / 12h write $0.25；API usage 含 cached_tokens、cache_write_tokens 与 output_tokens。正文成本式已显式加入 W30/W12，并把 O×$0.50/百万限定为同档位同缓存状态的分析者推导。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "「快最多 10×」是厂商自报且缺乏可复现口径：官方三处（博客、指南、Changelog Oct 6）只给出上限值，未披露基线任务输入规模、端到端还是首 token、P50/P95/P99、并发条件、缓存命中与测试日期地区，因此不能当作可复现的性能承诺或独立验证。",
+      "report_anchor": "6. 官方性能与成本数字的口径表",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S05"
+      ],
+      "evidence": "三处原文均为「up to 10x faster」/「about 10x faster」，无方法学说明；指南与 Changelog 无附加条件。",
+      "critical": true
+    },
+    {
+      "id": "C07",
+      "claim": "GPT-Live 集成提供两种接入：native delegation（Live 直接调用 Decisions，省掉 Live→应用→Decisions 的一次往返）与 custom delegation（Live 通知应用，由应用调用）；事件驱动方式为在 session.triggers 上挂 session.input_transcript.delta 或 session.output_transcript.delta，结果经 decision.event（event.type=decision.completed）按 question name 读取，答案 none 表示该动作不执行；会话内改题需先发 session.update 并等待 session.updated，delegation 类型在创建会话时固定。",
+      "report_anchor": "3. 请求生命周期与状态机",
+      "support": "direct",
+      "source_ids": [
+        "S04",
+        "S01"
+      ],
+      "evidence": "《Connect voice to Decisions》的两种接入、triggers 配置与事件读取段落；博客给出 session.triggers 的头像表情示例与 decision.event 说明。",
+      "critical": false
+    },
+    {
+      "id": "C08",
+      "claim": "官方明确把 Decisions 与 Responses API 的两种用法分工：需要符合自定义 JSON schema 的对象或书面解释时用 Structured Outputs，需要模型带参数请求工具时用 function calling；Decisions 只提供三种答案类型，不提供自由文本或结构化抽取。",
+      "report_anchor": "7. 替代路线比较（6 条）",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S01"
+      ],
+      "evidence": "指南「Use Structured Outputs with the Responses API when you need to generate an object that follows your own JSON schema… or function calling when you need a model to request a tool call with arguments」。",
+      "critical": true
+    },
+    {
+      "id": "C09",
+      "claim": "与官方文档并列的另外四条替代路线各有边界：Predicted Outputs / Fast mode / Background / Batch 复用既有 Responses API 管线但保留其延迟与成本结构；传统规则引擎与判别式分类器确定、零边际成本但无语义；客户端预测与本地缓存零延迟但依赖本地状态；自托管小模型边际成本极低但需运维——其中与规则引擎、自托管小模型的同表对比在官方文档中缺失，属选型时必须自建基线的空白。",
+      "report_anchor": "7. 替代路线比较（6 条）",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S06"
+      ],
+      "evidence": "官方文档索引中存在 Predicted Outputs / Fast mode / Background mode / Batch API 等独立指南；官方从未把 Decisions 与规则引擎或自托管模型放进同一张延迟成本表（对比表缺失为已读材料的直接观察）。路线分析为本文整理并标注边界。",
+      "critical": false
+    },
+    {
+      "id": "C10",
+      "claim": "[推测] 官方 SDK 层面把答案实现为可类型分派的联合类型（Go 示例中 DecisionAnswerScore、DecisionAnswerRefusal 等），说明 typed answer 是 SDK 层强类型承诺而非仅 JSON 约定；官方示例覆盖 Python / Node / Go / Java 四种语言。",
+      "report_anchor": "4.3 官方示例中已验证的调用形态",
+      "support": "inference",
+      "source_ids": [
+        "S02"
+      ],
+      "evidence": "开发指南中的 curl / Node / Go / Java 示例，Go 示例使用 decision.Answers[0].AsAny() 做类型分派并命中 openai.DecisionAnswerScore 与 openai.DecisionAnswerRefusal；强类型结论为分析者据示例推导。",
+      "critical": false
+    },
+    {
+      "id": "C11",
+      "claim": "对 EverAgent 的迁移价值集中在「判定密集」处（候选材料入库分流、日报条目筛选、多 agent harness 的下一步动作选择、报告证据强度辅助标注、交互式追问分流），且最关键的边界是 Decisions 只能产出判定而不能产出可追溯证据，因此不能替代 report-v2 要求的 evidence sidecar；建议 eval 指标包含一致率与 Cohen's κ、漏判/误纳混淆矩阵、概率校准（Brier/可靠性曲线）、延迟 P50/P95、每判定与每被采纳条目成本、refusal 率与拒答质量、单位有效产出成本与固化回归集。",
+      "report_anchor": "9. 对 EverAgent 的迁移实验与 eval 指标",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "候选场景由官方用例（分类交易描述、按主题分类并打分、降低响应时间）与本仓报告流程的证据要求推得；eval 指标为本文提出的方法学建议并已与本仓 report-v2 门禁对齐。",
+      "critical": false
+    },
+    {
+      "id": "C12",
+      "claim": "存在若干官方材料未明确、必须标注为待验证的点：Decisions 是否支持 12 小时缓存 TTL（博客提及 12h 写入定价而 API 参考限定 ttl 仅 30m）、输入规模上限与长上下文是否分档计价、probability/confidence 的校准方式、请求图像数量上限，以及端点专属错误码与重试语义（未在已读段落中出现）。",
+      "report_anchor": "10. Limitations",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S03",
+        "S02"
+      ],
+      "evidence": "博客「For 30-minute and 12-hour cached writes, read our pricing guide」与 API 参考「The ttl defaults to 30m, which is currently the only supported value」并存；定价页存在 12h 写价而 Changelog Oct 20 记录 12 小时缓存是 Responses API 能力；指南只说图像共享请求上限未给数字；已读材料无 Decisions 专属错误码段落。",
+      "critical": true
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "问题定义：定位、解决的真实问题与明确不解决的问题",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "report_anchor": "1. 问题定义：它到底解决什么"
+    },
+    {
+      "id": "U02",
+      "title": "请求与响应模型（三段式、答案类型联合、输入内容矩阵、JSON 输入）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "2. 请求与响应模型"
+    },
+    {
+      "id": "U03",
+      "title": "请求生命周期与状态机：缓存查找 → 评估 → typed answers → 应用执行；拒答与回退语义",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "3. 请求生命周期与状态机"
+    },
+    {
+      "id": "U04",
+      "title": "三种问题类型语义与最小集成伪代码（含 SDK 调用形态）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "4. 三种问题类型与最小集成伪代码"
+    },
+    {
+      "id": "U05",
+      "title": "能力与限制矩阵（GA 新增能力、模型唯一性、输入限制、缓存参数、区域与 ZDR）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "5. 能力与限制矩阵"
+    },
+    {
+      "id": "U06",
+      "title": "官方性能与成本数字的口径表与成本模型",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S03",
+        "S05",
+        "S06"
+      ],
+      "report_anchor": "6. 官方性能与成本数字的口径表"
+    },
+    {
+      "id": "U07",
+      "title": "替代路线比较（Responses+Structured Outputs / function calling / Predicted Outputs 与 Batch / 规则引擎 / 客户端预测缓存 / 自托管小模型）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S06"
+      ],
+      "report_anchor": "7. 替代路线比较"
+    },
+    {
+      "id": "U08",
+      "title": "适合与不适合的场景",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "8. 适合与不适合的场景"
+    },
+    {
+      "id": "U09",
+      "title": "对 EverAgent 的迁移实验与 eval 指标",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "9. 对 EverAgent 的迁移实验与 eval 指标"
+    },
+    {
+      "id": "U10",
+      "title": "Limitations 与思考与追问",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S05",
+        "S06"
+      ],
+      "report_anchor": "10. Limitations"
+    },
+    {
+      "id": "U11",
+      "title": "时间线：公测、GA 相关能力、GPT-Live 原生集成与 12 小时缓存的归属",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S05",
+        "S01"
+      ],
+      "report_anchor": "5.1 GA 相对公测新增的能力"
+    },
+    {
+      "id": "U12",
+      "title": "字段速查表（请求/响应/Live 事件字段与取值）",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "附录 B"
+    },
+    {
+      "id": "U13",
+      "title": "官方内部团队与客户案例的详细业务背景与结果指标",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "",
+      "omission_reason": "官方仅以定性方式列出 dots / Personal Finance / Communications 三个内部用例与两个客户案例，未给出任何可核对的量化结果（延迟、成本、准确率），写进正文只能增加宣传性内容；已在 §1.3 以表格形式保留其判定形态。"
+    }
+  ],
+  "limitations": [
+    "「快 10×」为厂商自报且无可复现口径（无基线任务、无延迟分布、无负载与并发条件、无测试日期地区），不构成独立性能验证。",
+    "本次研究未调用该 API、未测延迟、未核算真实成本，所有性能与成本数字均为 OpenAI 官方口径。",
+    "官方开发指南页面的读取被工具在约 30KB 处截断，已读到请求/响应模型、三种问题类型、JSON 与图像输入、会话历史评估；未读到指南后半部分（prompt caching 章节全文、用量监控、限制章节），相关事实以 API 参考与博客交叉补足，可能存在遗漏。",
+    "未读到 Decisions 端点专属的错误码与重试语义（官方另有独立的 Error codes 指南），应用需自建兜底。",
+    "Decisions 是否支持 12 小时缓存 TTL 未明确（博客提及 12h 写入定价，API 参考限定 ttl 仅 30m）。",
+    "输入规模上限、是否分长/短上下文计价、图像数量上限均未公布。",
+    "只支持 gpt-6-luna，无模型选择空间；也未公布 probability/confidence 的校准方式或可跨问题比较性。",
+    "答案类型受限：无自由文本、无自定义 JSON schema 抽取、不能请求工具、输入不支持文件/音频。",
+    "官方展示的内部与客户用例均为精选成功案例，无失败案例或对照基线；与规则引擎、自托管小模型的同表对比在官方文档中缺失。",
+    "「无输出计费」不等于无输出成本：usage 仍报告 output_tokens，计费结构可能调整。",
+    "本报告中标注为 [分析者推导] 的内容（SDK 强类型、成本模型推导、迁移场景与 eval 建议、替代路线的边界判断）均为本文推断而非官方明文。",
+    "成本公式只适用于同处理档位、同上下文档位和同缓存状态的对照；真实账单还可能包含缓存写入、区域加价与不同处理模式价格，首次缓存填充不能按命中价计算。"
+  ]
+}

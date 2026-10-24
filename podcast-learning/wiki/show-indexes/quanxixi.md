@@ -1,10 +1,11 @@
 # 全嘻嘻 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/ptewvlwcgb8n>）｜ 最近拉取：2026-10-19 ｜ 总集数：173
+> 来源：官方 RSS（<https://feed.xyzfm.space/ptewvlwcgb8n>）｜ 最近拉取：2026-10-25 ｜ 总集数：174
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-10-22 | 2h21m | [论网红教授的专业素养【全嘻嘻 x 沈奕斐】](https://www.xiaoyuzhoufm.com/episode/6ad9d72b97726cd4675612c7?utm_source=rss)<!--g:6ad9d72b97726cd4675612c7--> | — |
 | — | 2026-10-15 | 1h12m | [四年前跟沈奕斐老师的聊天【全嘻嘻 x 沈奕斐】](https://www.xiaoyuzhoufm.com/episode/6ad0ab72641ef406308c2a16?utm_source=rss)<!--g:6ad0ab72641ef406308c2a16--> | — |
 | — | 2026-10-08 | 25m17s | [2026 年，30岁流水线工人生存现状调研【全嘻嘻】](https://www.xiaoyuzhoufm.com/episode/6ab5ac50e742e36efcbaface?utm_source=rss)<!--g:6ab5ac50e742e36efcbaface--> | — |
 | — | 2026-09-29 | 55m42s | [观众裁判们，这些丑东西值得买吗？【全嘻嘻 x 姐友聊天】](https://www.xiaoyuzhoufm.com/episode/6ab49dd793d5eb3bdc7a1c77?utm_source=rss)<!--g:6ab49dd793d5eb3bdc7a1c77--> | — |

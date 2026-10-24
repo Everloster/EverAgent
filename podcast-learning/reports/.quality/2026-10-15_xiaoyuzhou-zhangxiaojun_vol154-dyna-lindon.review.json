@@ -1,0 +1,617 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-15_xiaoyuzhou-zhangxiaojun_vol154-dyna-lindon.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "glm-5.3",
+        "harness": "pi",
+        "run_id": "reviewer-20261025-dyna-vol154-r3",
+        "independent_context": true,
+        "explicit_model_override": true,
+        "override_reason": "用户在 MiniMax M3.1 Flash 明确 429 后指定 GLM-5.3 并保持思考档位 high（该模型最高档，如实记录，不声称 max）。本轮为 revision 2 快照复验：先匹配 report/evidence SHA 与 revision_round=2 及 history 首轮 91.3 记录，再仅复查五处修订差异与原始来源；未修改任何被审文件。"
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 93,
+        "request_coverage": 94,
+        "reasoning_quality": 89,
+        "readability": 91,
+        "limitations": 92
+      },
+      "score_reasons": {
+        "evidence_fidelity": "快照绑定：report 13d4632b…、evidence d2172622… 与任务期望一致；review 文件 revision_round=2 且 history 保存首轮 91.3 复核（glm-5.3/pi）；transcript SHA e2ae46e9… 未变，本轮重跑 audit_transcript.py 为 PASS（5195 段、10271 秒、max_repeat=2）。五处修订逐项核验通过：①「两位主持人」已改为「主持人的两次追问」（替代解释四），与单主持事实（02:04:57、02:06:27 均为张小珺）一致；②第五层现明确点名「Anthropic 先把 coding agent 做通、再把同一套广泛能力落到其它场景」为例证，与 transcript 01:41:14–01:42:50 逐点对应，且 C11 已同步登记该例证；③「智能不必先达到通用，就可能让每个人用上」保留在第五层（01:44:45–01:45:12 原话支撑）；④3.5 亿美元退出价现按 Dyna 2025 种子轮官方通稿的公司自述引用（主线一、数字表、事实核验 #2 三处一致），并诚实标注「比收购方新闻稿多了价格信息，但仍是 Dyna 的公司口径」——与首轮实际重取的种子轮稿原文（sold Caper AI for $350 million）一致；⑤比较表「全战派」已标 [报告概括]。C01–C12 逐条复查仍全部有据，SC01–SC09 锚点全部有效；首轮验证的 20+ 关键数字与锚点基于同一 transcript SHA 继续成立。残留纳米级备注（不扣分项）：主线一「管理三百多人」可再注 directly+indirectly（00:31:48–52）。",
+        "request_coverage": "R01/R02/R05/R06 流程性要求由 artifact 与 frontmatter 佐证（SHA 链、audit 通过、生成模型如实记录）。R03 完整覆盖：五个 shownotes 章节（01:41/24:49/40:32/2:00:08/2:13:01）在主线一至主线五落地，内容地图 9 行与 SC01–SC09 一一对应且锚点本轮全部命中；01:41:27–02:00:08 窗口经第五层 + SC09 + C11 完整覆盖，revision 2 又补强了 Anthropic 例证点名与智能不必通用表述。R04 四层区分维持到位，五处修订反而强化了归属标注（公司口径 vs 收购方稿、报告概括 vs 嘉宾原话）。",
+        "reasoning_quality": "六条替代解释与首轮一致且有依据；本轮修订使两处归因更严谨：全战派标注 [报告概括] 消除了归因含糊，3.5 亿的卖方口径提示保留了正确的证据分级。第五层与许孟迪一期的跨节目张力对照（链接目标真实存在）仍是有信息量的增量。替代解释三仍未用官网 research 页做方向性收窄（与首轮相同，非新增问题）。",
+        "readability": "standalone 成立，结构与首轮一致；本轮修订全部是精确性改进：单主持表述、Anthropic 例证点名、3.5 亿三处口径一致、报告概括标签，读者误读空间进一步缩小。数字表的 Caper/Dyna 归属注仍是最有效的防误读设计。",
+        "limitations": "七条 Limitations 维持首轮的诚实度：单集来源、自述数字、Caper/Dyna 时间线拆分、行业数字只核到 Dyna 文章、医疗不外推、未来战略未公开、转写/精编边界（含精编稿污染删除与以 raw 为准的披露）。3.5 亿的卖方口径提示是本轮新增的正确降级。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12"
+      ],
+      "coverage_unit_ids_checked": [
+        "SC01",
+        "SC02",
+        "SC03",
+        "SC04",
+        "SC05",
+        "SC06",
+        "SC07",
+        "SC08",
+        "SC09"
+      ],
+      "source_content_map": [
+        {
+          "id": "M01",
+          "title": "Ch1【00:01:41】蟑螂与被拒百次：早期生意与学历投行",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC01"
+          ],
+          "notes": "r2 未改动区域；数字与锚点经首轮对同一 transcript SHA 验证，本轮抽验维持。"
+        },
+        {
+          "id": "M02",
+          "title": "Ch1 Caper 无人零售全链：150 老板调研→购物车→YC/天使/种子→2019 A 轮→3.5 亿出售 Instacart",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S09",
+            "S10"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC01",
+            "SC08"
+          ],
+          "notes": "r2 修订点④：3.5 亿现引 Dyna 种子轮通稿公司自述并标注卖方口径，主线一/数字表/事实核验 #2 三处一致；通稿原文（sold Caper AI for $350 million）经首轮实际重取核对。"
+        },
+        {
+          "id": "M03",
+          "title": "Ch1 产品方法论：ROI 判据、average basket size、PMF 纠偏",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S09"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC01"
+          ],
+          "notes": "r2 未改动。"
+        },
+        {
+          "id": "M04",
+          "title": "Ch2【00:24:49】自律、Instacart/Instagram 履历、闻得到钱、York Yang 与 Jason Ma 画像",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S09"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC02"
+          ],
+          "notes": "r2 未改动；三创始人名单经种子轮通稿核对（首轮）。"
+        },
+        {
+          "id": "M05",
+          "title": "Ch2 2025 底分歧与「一个员工」解法",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC02"
+          ],
+          "notes": "r2 未改动。"
+        },
+        {
+          "id": "M06",
+          "title": "Ch3【00:40:32】2025 目标、折叠容错、十多场景 zero-shot",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC03"
+          ],
+          "notes": "r2 未改动。"
+        },
+        {
+          "id": "M07",
+          "title": "Ch3 DYNA-1 数字与部署三问题（850 vs 1300、20s/2min、闹钟保姆）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC03"
+          ],
+          "notes": "r2 未改动。"
+        },
+        {
+          "id": "M08",
+          "title": "Ch3 任务→工作流 99ⁿ、System 0/1/2、泛化两维度、24h=8h",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC03"
+          ],
+          "notes": "r2 未改动。"
+        },
+        {
+          "id": "M09",
+          "title": "Ch3 预训练转向：低质可 scale、egocentric/exocentric、1M hours、仿真真机不站队",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S07"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC03"
+          ],
+          "notes": "r2 未改动。"
+        },
+        {
+          "id": "M10",
+          "title": "【01:41:27–02:00:08】Anthropic coding agent 例证、GPT-3→ChatGPT 类比、智能不必通用、deployment flywheel、有闭环才有反馈",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC09"
+          ],
+          "notes": "r2 修订点②③：Anthropic 例证已点名并进 C11；「智能不必先达到通用，就可能让每个人用上」在第五层；与 transcript 01:41:07–02:00:08 逐点对应。"
+        },
+        {
+          "id": "M11",
+          "title": "Ch4【02:00:08】中国团队、百台量产、中美路线、SysID/sim-to-real、智元、收敛",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC04"
+          ],
+          "notes": "r2 修订点①⑤的相关区域：替代解释四改单主持；比较表全战派标 [报告概括]；SysID/sim-to-real 维持首轮修正。"
+        },
+        {
+          "id": "M12",
+          "title": "Ch5【02:13:01】组织、强直性脊柱炎、修心、不犯错 CEO、快问快答（Eureka/Infrastructure/语言即世界）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S12",
+            "S13"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC05"
+          ],
+          "notes": "r2 未改动；Eureka=arXiv:2310.12931（首轮检索核验）维持。"
+        },
+        {
+          "id": "M13",
+          "title": "外部材料：Instacart 收购稿、Dyna 种子轮/A 轮稿、dyna.co、Eureka 论文、估值报道",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S03",
+            "S05",
+            "S06",
+            "S07",
+            "S08",
+            "S09",
+            "S10",
+            "S11",
+            "S13"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC06",
+            "SC07",
+            "SC08"
+          ],
+          "notes": "种子轮稿的 3.5 亿美元自述为本轮修订的核心外部依据，与报告三处引用一致。"
+        },
+        {
+          "id": "M14",
+          "title": "五处修订差异与污染专项复核",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S09"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC06",
+            "SC09"
+          ],
+          "notes": "①单主持 ✓（02:04:57/02:06:27 同一主持人）；②Anthropic 例证 ✓；③智能不必通用 ✓；④3.5 亿公司自述口径 ✓；⑤全战派 [报告概括] ✓；《无国界病人》/无锡虹桥污染维持零命中（首轮验证，r2 报告未回退）。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06"
+      ],
+      "unsupported_claims": [],
+      "hard_failures": [],
+      "missing_requirements": [],
+      "notes": "复验范围声明：本轮为 revision 2 快照复验，非全文重审——先匹配 report 13d4632b…/evidence d2172622…/revision_round=2/history 首轮 91.3，transcript SHA e2ae46e9… 未变故首轮对同一 SHA 的数字与锚点验证继续成立；本轮完整重跑 transcript audit（PASS）、复查五处修订差异及其原始来源（transcript 相应时间窗 + 种子轮通稿公司自述）、并确认 C01–C12/SC01–SC09/五章节未回退。五处修订全部落实且无新引入问题；唯一残留为纳米级备注（三百多人宜注 directly+indirectly），不构成修订要求。首轮四条建议全部闭环：①单主持 ✓②Anthropic 点名 ✓③3.5 亿改引官方通稿 ✓④全战派标签 ✓。模型记录：glm-5.3（思考档位 high，该模型最高档，未声称 max）、pi。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 92.0,
+    "evaluated_on": "2026-10-25",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "f25f05170aaf575a4503a9c7adf451345c991619a22ebad554396941593c2ccf",
+    "evidence_sha256": "d217262270aff0c28939895d1cde6a6df34c51c650642f97f9c6e71c7c429638"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "glm-5.3",
+            "harness": "pi",
+            "run_id": "reviewer-20261025-dyna-vol154-r2",
+            "independent_context": true,
+            "explicit_model_override": true,
+            "override_reason": "用户在 MiniMax M3.1 Flash 出现明确 429 后指定使用 GLM-5.3 并保持思考档位 high（GLM-5.3 最高档为 high，如实记录，不声称 max）。本轮为 SHA 绑定后的全新来源优先复核，未复用旧 worktree 的任何结论。"
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 92,
+            "request_coverage": 94,
+            "reasoning_quality": 88,
+            "readability": 90,
+            "limitations": 92
+          },
+          "score_reasons": {
+            "evidence_fidelity": "SHA 绑定确认后按来源优先复核：报告 75ffda88…、evidence b02a1208…、transcript e2ae46e9…、polished 672e463d… 四个哈希逐一匹配任务期望。C01–C12 的关键引文与数字逐条回到 transcript 核对，全部真实有据且锚点精确：99%/24h（00:47:26–34）、1300 vs 850（00:54:19/38）、单张 20 秒与抓两张 2 分钟及 10% double fold（00:55:14–40）、闹钟保姆（00:59:26–43）、十多个场景 zero-shot（00:52:02）、1 million hours scaling law（01:28:32–49，ASR 作 skill and law 实为 scaling law，报告正确还原）、80–90% capacity（01:51:15–21）、四五十人与百台量产（02:00:27–40）、不到 200 人（02:21:04）、三女儿 1/2/3 岁与 30 岁结婚（02:49:31–41）、七千刀烧两年半（00:14:16–24）、Instacart/Instagram 各三年与三百多人 VP（00:28:31/00:29:52/00:31:48–52）、150 超市老板（00:11:13）、YC 30 万（00:13:15）、一千多天使（00:15:45）、3.5 亿（00:19:37）、闻得到钱（00:36:18）、说话太宏观（00:37:06）、稀有的技术天才（00:38:31）、一个员工（01:53:00）、感恩（02:39:54）、Infrastructure（02:50:16）。外部核对本轮实际重取五份一手材料并全部通过：Instacart 2021-10-19 官方新闻稿（点名 Lindon Gao 为 Caper AI Co-Founder and CEO、智能购物车、average basket sizes，未披露价格）；Dyna 2025-03-25 种子轮通稿（2350 万美元、CRV 与 First Round 联合领投、三位创始人 Lindon Gao / York Yang / Jason Ma、并公开写明 Caper 以 3.5 亿美元出售）；Dyna Series A 官方页（1.2 亿美元、Robostrategy/CRV/First Round 与 NVIDIA Ventures、Amazon Innovation Fund 等）；dyna.co 首页（Commercial-Grade Robots / hospitality、logistics、factory）；Eureka 论文 arXiv:2310.12931（真实存在、标题与作者 Yecheng Jason Ma 相符、被引 1170+，与快问快答『Jason 的 Uriga』02:49:58 及『重新定义机器人自我学习形态』的描述吻合）。修订项全部落实：报告与 polished 对《无国界病人》《中活》与无锡虹桥/骗保内容 grep 零命中，Limitations 第 7 条如实披露精编稿曾含不属于本期的医疗行业内容并已按 raw 重建；主线四正确写为 SysID 与 sim-to-real gap 并在 notable_correction 记录改写依据；Caper 与 Dyna 两条融资时间线在事实核验 #3、Limitations #3、C08 与数字表注中拆开并显式警告不得混比。残留小瑕（不构成扣项级错误，列为修订建议）：①替代解释四『两位主持人的追问』——本节目为张小珺单主持（02:04:57、02:06:27 两处追问均出自同一主持人），应改为『主持人的追问』；②01:41–02:00 窗口的『广泛 pre-training 与工作流 post-training 并行』已被第五层覆盖，但嘉宾所举 Anthropic coding agent 例证（01:41:14–01:42:50）未点名，点名可增强溯源；③3.5 亿一项目前标注『媒体报道、官方稿未披露价格』，更强的外部确认其实存在——Dyna 自己的种子轮通稿公开写明 sold Caper AI for $350 million，可直接引用。",
+            "request_coverage": "R01/R02/R05/R06 流程性要求由 artifact（SHA 链、audit ok、5195 段、头尾覆盖）与 frontmatter（生成模型 minimax-m3.1-flash + pi + explicit override + 未收到额度耗尽证据的如实记录）佐证。R03 完整覆盖：五个 shownotes 章节在主线一至主线五逐段落地，内容地图 9 行与 SC01–SC09 一一对应；上一版的缺口 01:41:27–02:00:08 窗口本轮已由内容地图第 4 行、SC09、C11 与主线三·第五层共同覆盖——广泛 pre-training 与工作流 post-training 并行、GPT-3→ChatGPT 产品形态类比、『智能不必先无限提高，产品形态要匹配当时的能力』、deployment flywheel 的组成（硬件、软件、模型、运控、observability、support、maintenance）、两三年时间线与『有闭环才有反馈』均与 transcript 01:41:07–02:00:08 段逐点对上。R04 四层区分执行到位；本轮专项核对的专名全部通过：SysID/sim-to-real（主线四）、Eureka（主线五 + C12 + 外部来源链接 + arXiv 核验）、智能不必通用（第五层）、Caper/Dyna 拆分（C08 + 事实核验 #2/#3）；三位联合创始人姓名经 Dyna 种子轮通稿公开核对（Lindon Gao、York Yang、Jason Ma，其中 Jason Ma 为前 DeepMind 研究科学家）；跨节目双链 [[2026-09-20_xiaoyuzhou-crossing_xumengdi]] 的目标文件真实存在。",
+            "reasoning_quality": "六条替代解释均有节目内依据并逐条标 [推测]，构成对单一叙事的真实对冲：产品闭环反推研究的智能边界盲区（01:26:10–35 原话支撑）、低质数据转向的后见之明风险、不 scale 的主动/被动歧义、中美判断的条件性、修心叙事的不可证伪性、失败处理方式作为本期真正落点。新增的两处判断质量高：一是把 Caper 与 Dyna 融资拆成两条时间线并显式警告『不能按同一 A 轮比较』，修正了上一版的口径混淆；二是第五层结尾与 2026-09-20 许孟迪一期的张力对照（部署定义 research frontier vs 能力评测不可被训练 loss 替代）是有信息量的跨节目增量，且链接目标真实。轻微扣分：替代解释三承认需要外部数据（客户扩单、竞品产能）但未利用已核对的官网 research 页（Din Tai Fung 铺开、DYNA-2）做哪怕方向性收窄；『全战派』一词为报告自造、未标注是否嘉宾原话（transcript 中无此词），放在『嘉宾自己的位置』列里略有归因含糊。",
+            "readability": "standalone 成立：速览—概览—内容地图（9 行）—五条主线（第三主线分五层）—比较表—数字表（带口径列与公司归属注）—事实核验（9 项）—争议与替代解释—证据质量—Limitations—外部来源（6 条真实链接）—思考追问—下一步，结构完整且各节互相引用一致。时间戳锚点密度高，本轮抽验全部命中。四层陈述分层声明被执行。数字表对 Caper/Dyna 归属的显式标注（『这是上一家公司 Caper 的融资，不是 Dyna 融资』）对读者防误读非常有效。轻微问题：比较表『全战派』未标来源属性；『两位主持人』表述与单主持事实不符（见 evidence_fidelity）。",
+            "limitations": "七条 Limitations 诚实且具体：单集来源边界、自述数字范围、Caper/Dyna 时间线必须拆开的显式警告、行业数字只核到 Dyna 文章而不冒称独立成立（正确降级）、医疗不外推、未来战略未公开、以及新增的转写/精编边界条——如实披露复核中发现并删除了不属于本期的医疗行业内容、01:41–02:00 按 raw 重建、『报告引用以 raw transcript 为最终依据』。这一条直接回应了上一轮复核发现的 polished 污染问题，处理方式（披露+以 raw 为准）符合本仓『精编稿不能作为省略主线理由』的对称原则。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07",
+            "C08",
+            "C09",
+            "C10",
+            "C11",
+            "C12"
+          ],
+          "coverage_unit_ids_checked": [
+            "SC01",
+            "SC02",
+            "SC03",
+            "SC04",
+            "SC05",
+            "SC06",
+            "SC07",
+            "SC08",
+            "SC09"
+          ],
+          "source_content_map": [
+            {
+              "id": "M01",
+              "title": "Ch1【00:01:41】蟑螂与被拒百次：自我介绍、理想/务实、早期生意（游戏账号、珠宝 2C→2B）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC01"
+              ],
+              "notes": "金句、11 岁赴美、14 岁上万美金、珠宝近十年十几二十万美金在主线一，数字与 transcript 一致。"
+            },
+            {
+              "id": "M02",
+              "title": "Ch1 学历投行、YC 倒数与 30 万、Caper 无人零售（150 老板调研→购物车转向→1000+ 天使→First Round 种子→2019 A 轮 Lux→3.5 亿出售 Instacart）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S09",
+                "S10"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC01",
+                "SC08"
+              ],
+              "notes": "全部数字核对一致；收购方与年份经 Instacart 官方稿核对（2021、Lindon Gao Co-Founder/CEO、未披露价格），报告如实区分自述 3.5 亿与官方稿口径。"
+            },
+            {
+              "id": "M03",
+              "title": "Ch1 产品方法论：最本质的事、ROI 判据、average basket size、PMF 纠偏",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S09"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC01"
+              ],
+              "notes": "average basket size 亦被 Instacart 稿印证；150 老板调研被识别为最具体的一手样本。"
+            },
+            {
+              "id": "M04",
+              "title": "Ch2【00:24:49】自律与 CEO 三件事、Instacart/Instagram 各三年与 VP 三百人、闻得到钱、York Yang 与 Jason Ma 的 research taste",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S09"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC02"
+              ],
+              "notes": "报告补上 polished 曾遗漏的 Instacart/Instagram 履历；三位联合创始人姓名经种子轮通稿公开核对；『管理三百多人』宜注 directly+indirectly（00:31:48–52），轻微。"
+            },
+            {
+              "id": "M05",
+              "title": "Ch2 2025 底团队分歧（落地 vs research）与『一个员工』解法",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC02"
+              ],
+              "notes": "transcript 00:40:52『去年年底』与报告『2025 年底』对应正确；一个员工（01:53:00）锚点命中。"
+            },
+            {
+              "id": "M06",
+              "title": "Ch3【00:40:32】2025 目标（99%/50–60% 速度）、折叠容错与 technology-market fit、十多场景 zero-shot",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC03"
+              ],
+              "notes": "与 C02 一致。"
+            },
+            {
+              "id": "M07",
+              "title": "Ch3 DYNA-1 数字与部署三问题：24h/99%、850 vs 1300、20s/2min/10% double fold、流程折中、闹钟保姆→不 scale",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC03"
+              ],
+              "notes": "全部数字与时间戳核对一致；『6 月到 9 月』部署窗口命中。"
+            },
+            {
+              "id": "M08",
+              "title": "Ch3 任务→工作流：99ⁿ 指数、语言 bin 与 VLA language following 归因、System 0/1/2、泛化两维度、24h=8h『更久』",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC03"
+              ],
+              "notes": "99ⁿ、系统分层与两维度入主线三；C05 登记。"
+            },
+            {
+              "id": "M09",
+              "title": "Ch3 预训练转向：高质量→低质可 scale、internet-scale 前提、egocentric/exocentric、robot hands 工程问题、1M hours scaling law、仿真/真机不站队",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S07"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC03"
+              ],
+              "notes": "C04 登记；官网 DYNA-2 的 100 万小时表述被如实标注为公司自报。"
+            },
+            {
+              "id": "M10",
+              "title": "【01:41:27–02:00:08 窗口】广泛 pre-training 与工作流 post-training 并行（Anthropic coding agent 例证）、GPT-3→ChatGPT 产品形态类比、智能不必先达通用、deployment flywheel 组成与两三年时间线、有闭环才有反馈",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC09"
+              ],
+              "notes": "上一版 partial 的窗口本轮由内容地图第 4 行、SC09、C11 与主线三·第五层完整覆盖；逐点与 transcript 01:41:07–02:00:08 对上。Anthropic 例证（01:41:14–01:42:50）被 paraphrase 为『广泛 pre-training 与工作流级 post-training 并不冲突』而未点名，属可选增强而非缺失。"
+            },
+            {
+              "id": "M11",
+              "title": "Ch4【02:00:08】中国团队四五十人、百台量产、中美路线（大脑下限/本体上限）、宇树 SysID 与 sim-to-real gap、智元、不竞争、1–2 年收敛",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC04"
+              ],
+              "notes": "专名修正本轮通过：transcript 02:05:21–25『SysID 和……Syntagirl Gap』正确还原为 SysID 与 sim-to-real gap 并记入 notable_correction。"
+            },
+            {
+              "id": "M12",
+              "title": "Ch5【02:13:01】Dyna 1.0/2.0、资金、扁平组织 <200 人、agentic coding 4x、强直性脊柱炎与转念、沉思录/王阳明、自由与内耗、成功失败定义、投行 120h、不犯错 CEO、承认错误、快问快答（拌面扁肉/必读书/Eureka 论文/Infrastructure/语言即世界）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S12"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC05"
+              ],
+              "notes": "C09、C06 核对一致；Eureka（原 ASR Uriga）经 arXiv:2310.12931 核验为真论文且作者 Jason Ma 与第三创始人身份吻合（C12）；感恩、直播、Infrastructure 锚点命中。"
+            },
+            {
+              "id": "M13",
+              "title": "外部材料：单集页 OUTLINE；Instacart 收购稿；Dyna 种子轮/A 轮通稿；dyna.co 首页/research/insights/DYNA-2；Eureka 论文；估值报道",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S03",
+                "S04",
+                "S05",
+                "S06",
+                "S07",
+                "S08",
+                "S09",
+                "S10",
+                "S11",
+                "S13"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC06",
+                "SC07",
+                "SC08"
+              ],
+              "notes": "本轮实际重取 Instacart 稿、种子轮稿、Series A 页、dyna.co 首页并检索核验 Eureka，全部与报告事实核验一致；估值报道（>6 亿美元）未重取，报告已按媒体口径标注。"
+            },
+            {
+              "id": "M14",
+              "title": "污染与专名专项：无国界病人/中活、无锡虹桥医院、Eureka（预期词）、SysID/sim-to-real",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC06"
+              ],
+              "notes": "报告与 polished 对污染词 grep 零命中；Limitations 第 7 条如实披露 polished 曾含跨节目医疗内容并已重建、以 raw 为最终依据；Eureka 与 SysID/sim-to-real 两个专名本轮均核验通过。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06",
+            "S07",
+            "S08",
+            "S09",
+            "S10",
+            "S11",
+            "S12",
+            "S13"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04",
+            "R05",
+            "R06"
+          ],
+          "unsupported_claims": [],
+          "hard_failures": [],
+          "missing_requirements": [],
+          "notes": "SHA 绑定记录：进入复核前逐一计算并匹配四个期望哈希——report 75ffda88…、evidence b02a1208…、transcript e2ae46e9…、polished 672e463d…；evidence 计数 12 claims（C01–C12）/ 9 source_coverage（SC01–SC09），全部匹配后才开始。流程：artifact（audit ok、5195 段、头尾覆盖）→ polished 全文（含专名校正表）→ transcript 抽验（关键数字 grep + 01:41–01:52/01:43/01:50–01:56/02:04–02:06/02:18/02:39–02:50 多窗逐段）→ 重取 Instacart/Dyna 三份官方稿与 dyna.co 首页并检索核验 Eureka → 形成上表 14 单元 source_content_map → 之后读报告与 evidence。上一轮旧 worktree 复核发现的全部问题在本版均已修复且经本轮独立验证：捏造书名归属已删除（grep 零命中）、SysID/sim-to-real 已正确写入、01:41–02:00 窗口已完整覆盖、Eureka 已核验、polished 污染已删除并在 Limitations 披露、Caper/Dyna 时间线已拆开并经官方稿外部核对。修订建议（非阻断，供协调者酌情采纳）：①替代解释四『两位主持人』改为『主持人』（本节目为张小珺单主持）；②第五层可点名 Anthropic coding agent 例证以增强对 01:41:14–01:42:50 的溯源；③3.5 亿可直接引用 Dyna 种子轮通稿的『sold Caper AI for $350 million』作为官方确认（比媒体转述更强）；④比较表『全战派』标注为报告概括而非嘉宾原话。模型记录：glm-5.3（思考档位 high，该模型最高档，未声称 max）、pi。"
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 91.3,
+        "evaluated_on": "2026-10-25",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "75ffda88a69d0c0b0598f6edc35d64e639a86c5fe062be7dddb2d2729983d3f1",
+        "evidence_sha256": "b02a120864c035e99ed1e6a65390e758b22a8175b32389fd3829f3d07815c277"
+      }
+    }
+  ]
+}

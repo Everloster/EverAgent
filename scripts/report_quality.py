@@ -1366,6 +1366,8 @@ def reviewer_prompt(report: Path) -> str:
     evidence_errors = [item.message for item in evidence_findings if item.severity == "error"]
     if evidence_errors:
         raise ValueError("evidence manifest is incomplete: " + "; ".join(evidence_errors))
+    report_digest = hashlib.sha256(report.read_bytes()).hexdigest()
+    evidence_digest = hashlib.sha256(evidence_path.read_bytes()).hexdigest()
     dimensions = "、".join(f"{name}（权重 {weight}%）" for name, weight in policy["dimensions"].items())
     score_bands = "；".join(f"{name.replace('_', '–')}：{text}" for name, text in policy.get("score_bands", {}).items())
     hard_failures = "、".join(policy.get("hard_failure_codes", []))
@@ -1374,18 +1376,21 @@ def reviewer_prompt(report: Path) -> str:
 报告：{report_relative_path(report)}
 证据账本：{evidence_path.relative_to(ROOT)}
 复核记录：{review_path.relative_to(ROOT)}
+报告 SHA-256：{report_digest}
+证据账本 SHA-256：{evidence_digest}
 质量等级：{tier}
 
 要求：
-1. 先读原始来源，不先接受报告或 evidence 的内容选择；把独立识别出的核心问题、论证、案例和反方逐项写入 `source_content_map`。若有 shownotes 章节，每章至少对应一个地图单元。
-2. 再打开报告与证据账本，把每个独立地图单元映射到 `matched_coverage_unit_ids`，填写 `assessment: covered | partial | missing`，并把已实际复核的单元 id 填入 `coverage_unit_ids_checked`。生成者完全省略的核心内容即使没有 claim id，也要作为遗漏需求记录；standard/deep 播客遗漏核心单元时使用 `core_requirement_missing`。
-3. 检查报告是否可独立阅读，不能因为 polished 保存了细节就允许报告只剩索引或速览。
-4. 播客报告必须运行 `python3 podcast-learning/scripts/audit_transcript.py <transcript> --json` 或核对同等机器收据；头尾抽查不能替代时间戳单调性检查。
-5. 按 0–100 分填写：{dimensions}，并为每一维填写 `score_reasons`。评分锚点：{score_bands}。
-6. 不直接改报告。先完成复核记录，再由生成者依据问题清单修订。
-7. 完成后运行 `python3 scripts/report_quality.py check {report_relative_path(report)}`，不得自行宣称通过。
-8. 报告修订后先运行 `python3 scripts/report_quality.py new-revision {report_relative_path(report)}`，再创建新一轮 Reviewer 记录。
-9. 硬失败只使用这些代码：{hard_failures}。
+1. 开始前在实际审阅目录核对报告与 evidence 的 SHA-256；任一不匹配就停止，在任务回执和 review notes/escalation 中报告 `wrong_target_snapshot`，不得改审另一份同名文件或其它 worktree；它是调度错误，不得写入 `hard_failures`。
+2. 先读原始来源，不先接受报告或 evidence 的内容选择；把独立识别出的核心问题、论证、案例和反方逐项写入 `source_content_map`。若有 shownotes 章节，每章至少对应一个地图单元。
+3. 再打开报告与证据账本，把每个独立地图单元映射到 `matched_coverage_unit_ids`，填写 `assessment: covered | partial | missing`，并把已实际复核的单元 id 填入 `coverage_unit_ids_checked`。生成者完全省略的核心内容即使没有 claim id，也要作为遗漏需求记录；standard/deep 播客遗漏核心单元时使用 `core_requirement_missing`。
+4. 检查报告是否可独立阅读，不能因为 polished 保存了细节就允许报告只剩索引或速览。
+5. 播客报告必须运行 `python3 podcast-learning/scripts/audit_transcript.py <transcript> --json` 或核对同等机器收据；头尾抽查不能替代时间戳单调性检查。
+6. 按 0–100 分填写：{dimensions}，并为每一维填写 `score_reasons`。评分锚点：{score_bands}。
+7. 不直接改报告。先完成复核记录，再由生成者依据问题清单修订。
+8. 完成后运行 `python3 scripts/report_quality.py check {report_relative_path(report)}`，不得自行宣称通过。
+9. 报告修订后先运行 `python3 scripts/report_quality.py new-revision {report_relative_path(report)}`，再创建新一轮 Reviewer 记录。
+10. 硬失败只使用这些代码：{hard_failures}。
 """
 
 

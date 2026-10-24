@@ -1,0 +1,407 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-21_xiaoyuzhou-boluo-jiankang_shiyonggang-cn-us-cancer-decade.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-24",
+  "generator": {
+    "model": "minimax-m3.1-flash",
+    "harness": "pi",
+    "run_id": "generator-2026-10-21_boluo_shiyonggang-20261024",
+    "explicit_model_override": true,
+    "override_reason": "用户明确指定：模型优先 MiniMax M3.1 Flash，额度耗尽后才切 GLM-5.3（user:2026-10-24:podcast-blog-until-1100）"
+  },
+  "task": {
+    "summary": "用 eacli podcast 远端静默 worker 下载并转写《菠萝健康派》vol.133（2026-10-21，师永刚谈中美抗癌十年），产出忠实转写、结构化精编、artifact 回执与一篇 standalone 的 report-v2 深度中文报告。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "先确认仓内未重复处理，再完全静默地用 eacli podcast 远端静默 worker 下载转写，按 转写回执中的大小与 SHA-256 校验拉回。"
+      },
+      {
+        "id": "R02",
+        "text": "运行 audit_transcript.py，检查头尾、时间戳单调性、重复与尾部异常。"
+      },
+      {
+        "id": "R03",
+        "text": "忠实润色并保留 [?]，不补写事实；人名、机构、技术词与数字用 shownotes 与公开一手材料核验。"
+      },
+      {
+        "id": "R04",
+        "text": "基于完整转写写 report-v2 / important / standalone 深度报告，重构就医路径、诊断与治疗决策、医患沟通、费用与保险、信息差、心理与家庭支持，以及中美医疗体系比较。"
+      },
+      {
+        "id": "R05",
+        "text": "把个人经历、医生建议、主持人表述、公开医学共识与分析者推断分层；具体癌种、药物、检查、存活期、费用与统计数字优先用指南、监管机构、医院或论文核验；不从个案外推疗效，不给个体诊疗建议。"
+      },
+      {
+        "id": "R06",
+        "text": "只写转写/精编/报告/evidence/空白 review，不 finalize、不改 wiki/索引、不提交、不推送。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "primary",
+      "title": "《菠萝健康派》vol.133 原始转写（eacli podcast 远端静默 worker，2011 段 / 3034 秒）",
+      "locator": "podcast-learning/reports/transcripts/2026-10-21_xiaoyuzhou-boluo-jiankang_shiyonggang-cn-us-cancer-decade.transcript.txt",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S02",
+      "kind": "primary",
+      "title": "《菠萝健康派》vol.133 结构化精编稿（polished，头部标注压缩比、专名校正表与 [?]）",
+      "locator": "podcast-learning/reports/transcripts/2026-10-21_xiaoyuzhou-boluo-jiankang_shiyonggang-cn-us-cancer-decade.polished.txt",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S03",
+      "kind": "primary",
+      "title": "小宇宙单集页 shownotes（本期简介、嘉宾简介、11 条章节时间轴、听众评论中的中美门诊量对照）",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/6ad8cb5aef67611cac7a1d50",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S04",
+      "kind": "local",
+      "title": "本期转写与传输回执（大小、SHA-256、审计结果、时长标注差异）",
+      "locator": "podcast-learning/reports/transcripts/2026-10-21_xiaoyuzhou-boluo-jiankang_shiyonggang-cn-us-cancer-decade.artifact.json",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S05",
+      "kind": "official",
+      "title": "《米托坦治疗肾上腺皮质癌专家共识（2021）》（北京协和医院罕见病多学科协作组，《协和医学杂志》）",
+      "locator": "https://xhyxzz.pumch.cn/article/doi/10.12290/xhyxzz.2021-0554",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S06",
+      "kind": "official",
+      "title": "国家卫生健康委办公厅关于印发软骨发育不全等 86 个罕见病诊疗指南的通知（第二批罕见病目录配套指南）",
+      "locator": "https://www.nhc.gov.cn/yzygj/c100068/202507/5b3f41180a42465eb9eec34597bacaf2.shtml",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S07",
+      "kind": "secondary",
+      "title": "科学网报道国家癌症中心数据：2022 年中国约 482.47 万新发癌症病例、257.42 万死亡病例",
+      "locator": "https://news.sciencenet.cn/htmlnews/2024/2/517216.shtm",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S08",
+      "kind": "secondary",
+      "title": "新华社：2025 年新版医保药品目录中罕见病用药数量超过 100 种、覆盖病种超 50 种",
+      "locator": "https://www.news.cn/politics/20251216/102475f3336f46288b2506dcb637b674/c.html",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S09",
+      "kind": "secondary",
+      "title": "2024 年中国癌症负担估计：新发约 515.06 万例、死亡约 258.22 万例（用于核对节目口播的 515 万 / 258 万口径）",
+      "locator": "https://www.hkioc.com.hk/zh-hans/%E4%B8%AD%E5%9B%BD%E7%99%8C%E7%97%87%E8%B4%9F%E6%8B%85%E6%8C%81%E7%BB%AD%E5%8A%A0%E9%87%8D%EF%BC%9A%E6%AF%8F%E5%B9%B4%E8%B6%85515%E4%B8%87%E6%96%B0%E5%8F%91%E7%97%85%E4%BE%8B%EF%BC%8C%E6%97%A9",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S10",
+      "kind": "secondary",
+      "title": "《医疗机构发起的细胞治疗临床研究管理及伦理审查的实践与思考》（国内 IST/IIT 细胞治疗规范现状）",
+      "locator": "https://lifescience.sinh.ac.cn/202511/20251108.htm",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S11",
+      "kind": "secondary",
+      "title": "新华社：我国发布第二批罕见病目录，收录 86 种罕见病",
+      "locator": "http://www.news.cn/politics/2023-09/20/c_1129873844.htm",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S12",
+      "kind": "official",
+      "title": "美国国家癌症研究所（NCI）：Who Pays for Clinical Trials?（临床试验费用分为常规诊疗、研究与额外支出）",
+      "locator": "https://www.cancer.gov/research/participate/clinical-trials/paying",
+      "accessed_on": "2026-10-25"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "嘉宾所患罕见癌按其自述与书名为肾上腺皮质癌（ACC）；米托坦是 FDA 与 EMA 批准适应证为 ACC 的唯一药物，2018 年欧洲内分泌学会指南建议高复发风险患者术后辅助米托坦。",
+      "report_anchor": "ACC 的药物治疗背景",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S05"
+      ],
+      "evidence": "转写 00:02:36–00:02:47「化疗还缺一个重要的一个药，就是那个米托坦」、00:37:53–00:38:06「肾上腺皮质癌在美中两个国家全部完整的过程」；外部核对《米托坦治疗肾上腺皮质癌专家共识（2021）》：米托坦为 FDA/EMA 批准适应证为 ACC 的唯一药物，2018 ESE 指南建议 ENSAT Ⅲ 期、R1–RX 切除或 Ki-67>10% 的高危患者术后辅助米托坦。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "嘉宾对当前求医者的建议是「国内有药就不要出国」，改为由国内主治医生加美国两位顶尖医生的远程会诊（其估算约一万人民币），因为国外大医院对指南的遵循并不比国内更冒险，差异主要在临床试验可及性。",
+      "report_anchor": "国内有药就不要出国",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "转写 00:00:42–00:00:45、00:19:22–00:20:01「国内有药的时候，我建议你不要出国……我建议你做一个远程会诊……用这个一万人民币会诊就下来了」；00:18:53–00:19:22「他原则上不冒险。他冒险在什么地方？比如 MD Anderson 最强的地方，是他临床试验」。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "嘉宾赴美治疗的个人账单量级为：中介报价 40 万美元（另有人称 100 万）、医院开口检查费 3.5 万美元、首次门诊 600 美元且谈 1.5 小时、第一年 17–18 万美元、第二年下半年累计 45 万美元，现金耗尽后卖房。",
+      "report_anchor": "第一年 17–18 万美元",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "转写 00:14:24–00:14:36（中介报价 40 万、他人称 100 万）、00:15:29–00:16:02（三万五千美金检查费、首诊六百美金、一个半小时）、00:16:51–00:17:45（第一年十七万到十八万美金、四十五万美金、卖房）。属单人账单，不构成价格基准。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "嘉宾提出的反「时间不够」论证是：梅奥与 MD Anderson 的病人数多于协和，仍能一对一沟通；因此问题在流程与考核（主张「病人五问／医生五答」强制标准流程、医生年薪制、以口碑而非工作量考核）。",
+      "report_anchor": "五问",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "转写 00:25:43–00:28:40（梅奥病人是协和两倍、MD Anderson 病人更多、「病人必须要提的五个问题、医生必须要回答的最少五个问题」、「很多医生应该是年薪制，而不应该是 KPI」）。注：转写中该处为「五问/五答」表述，本报告 anchor 用「五问」指向同一主张。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "节目中「出国治疗 10%–20% 能活下来」「出国者 99% 在国内已无方案」是嘉宾的个人观感，嘉宾本人明确表示不知道有没有统计，因此不能作为统计引用。",
+      "report_anchor": "10%–20% 能活下来",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "转写 00:20:47–00:20:53「其实我不知道有没有统计，就是有多少比例的」，00:20:55–00:21:12「我认为在美国治疗那个 10% 到 20% 的……去国外治疗的 99% 都是在国内没有治疗方案」。本报告据此在正文与证据分层中标注为「嘉宾口径（未经统计）」。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "节目以一位胰腺癌患者被推荐付费“疫苗”并被告知 99% 有效率为例；报告把该数字限定为缺少终点、样本、对照与随访定义的危险信号，同时明确节目所说 20%–40% 只是经验性警戒，不能作为跨癌种阈值。",
+      "report_anchor": "缺少定义的异常高有效率",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "转写 00:00:00–00:00:24 为主持人的经验性警戒；00:33:24–00:34:06 记录付费“疫苗”、99% 宣称及追问后改口“我们估计是这样”。报告只据此要求核对终点、样本、对照与随访，不把 20%–40% 提升为医学通则。",
+      "critical": false
+    },
+    {
+      "id": "C07",
+      "claim": "中国罕见病用药的可及性自 2018 年起显著扩展：第一批罕见病目录收录 121 种，第二批（2023）收录 86 种并于 2025 年 7 月由国家卫健委配套发布诊疗指南；2025 年新版医保目录中罕见病用药超过 100 种、覆盖病种超 50 种——这支持嘉宾「不出国也能拿到药」的方向性判断，但 ACC 是否已列入目录本报告未核实。",
+      "report_anchor": "第二批（2023）收录 86 种",
+      "support": "derived",
+      "source_ids": [
+        "S06",
+        "S08",
+        "S11",
+        "S01"
+      ],
+      "evidence": "国家卫健委 2025-07 印发第二批罕见病目录 86 个病种诊疗指南；新华社报道 2025 年新版医保目录罕见病用药超 100 种、覆盖病种超 50 种；节目 00:18:19–00:18:39「好多罕见病药包括一些新药大批量进入中国……你可以不用出国就可以拿到」。",
+      "critical": false
+    },
+    {
+      "id": "C08",
+      "claim": "节目口播的中国癌症负担数字（每年约 515 万新发、258 万死亡）与公开估计一致：国家癌症中心公布 2022 年新发约 482.47 万例、死亡约 257.42 万例；2024 年估计新发约 515.06 万例、死亡约 258.22 万例。",
+      "report_anchor": "482.47 万",
+      "support": "derived",
+      "source_ids": [
+        "S07",
+        "S09",
+        "S01"
+      ],
+      "evidence": "国家癌症中心 2022 年数据（科学网报道）与 2024 年估计值（IGI 报道）；节目 00:41:13–00:41:19 菠萝说「我们现在每年有 515 万人」，并把「每年去世 258 万人」与失独家庭规模并列——后者在节目中未给出推导依据。",
+      "critical": false
+    },
+    {
+      "id": "C09",
+      "claim": "[推测] 本报告的核心方法论边界：节目中的个案（五癌女病患、18 岁患者、湖南转移七处生存五年、PD-1 一周肿块消失等）不得外推为疗效证据，方案不得当作诊疗建议，「99% 有效率」判据只可作为怀疑起点。",
+      "report_anchor": "不得从个案外推疗效",
+      "support": "inference",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S05"
+      ],
+      "evidence": "本报告依据节目自身在 00:20:14–00:20:35 对「幸存者偏差」的拆解、ACC 属罕见癌且标准治疗证据有限的共识背景，以及 00:39:25 嘉宾「你没有办法非常理性地来判断」的判断，提出三条外推禁令（分析者推断）。",
+      "critical": true
+    },
+    {
+      "id": "C10",
+      "claim": "“正规临床试验一定免费”并不准确：NCI 将费用分为常规诊疗费用、纯研究费用与交通食宿等额外费用，可能分别由保险、研究资助方和患者承担；未上市且直接收费可以触发警惕，但收费本身不能单独裁定研究是否正规。",
+      "report_anchor": "是否收费不能单独证明",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S12"
+      ],
+      "evidence": "节目 00:34:09–00:34:25 给出“未上市且收费要打问号”的警戒；NCI 官方页面明确临床试验中常规诊疗、研究和额外费用有不同承担方，患者可能仍有自付费用。报告据此收窄节目表述。",
+      "critical": true
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "SC01",
+      "title": "00:00 开场",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "概览 / 主线一"
+    },
+    {
+      "id": "SC02",
+      "title": "02:05 患病之后，如何面对自己",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线一 / 主线五"
+    },
+    {
+      "id": "SC03",
+      "title": "06:39 确诊癌症后，别再反复问「为什么是我」",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线一"
+    },
+    {
+      "id": "SC04",
+      "title": "09:14 作为癌症患者的小迷信",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线一"
+    },
+    {
+      "id": "SC05",
+      "title": "13:17 卖房出国治疗，究竟值不值得",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线二"
+    },
+    {
+      "id": "SC06",
+      "title": "17:46 今天的癌症患者，还需要出国看病吗",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S06",
+        "S08",
+        "S11"
+      ],
+      "report_anchor": "中美路径比较表"
+    },
+    {
+      "id": "SC07",
+      "title": "23:10 手术，是个良心活",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线三"
+    },
+    {
+      "id": "SC08",
+      "title": "32:35 高价细胞治疗、癌症疫苗……患者该怎么避坑",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S10",
+        "S12"
+      ],
+      "report_anchor": "主线四"
+    },
+    {
+      "id": "SC09",
+      "title": "38:27 为什么要写一本属于中国癌症患者的书",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线五"
+    },
+    {
+      "id": "SC10",
+      "title": "40:48 失去独子，年过六旬的父母选择重新养育一个孩子 / 43:54 伴侣去世，想重启生活却被责难",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线五"
+    },
+    {
+      "id": "SC11",
+      "title": "48:36 大病一场之后，人真的会彻底想开吗",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线五"
+    }
+  ],
+  "limitations": [
+    "转写由 whisper.cpp large-v3 + Silero VAD 生成，audit_transcript.py 无 warning/error，但专名误识别密集（施永刚→师永刚、波罗→菠萝、米托塔→米托坦、安德森→MD Anderson、中活/中火→《中活》、严洪威→严洪蔚等），已在精编稿头部集中列出订正表。",
+    "未消解的不确定项：「卢敏教授」姓名、休斯顿慈善组织（「关于社」）、《时代周刊》批评 MD Anderson 的「一万两千美金」原始口径、「O 药」具体所指、「EP 蛋抗」、天台医院神经外科医生「郝树怡」、新安医院、副镇长案例、「拜基森州」、失独夫妇再生育方式的转写含糊处，均以 [?] 或原样引号标出，未做猜测性填补。",
+    "本期只有 shownotes 可交叉验证人名与机构，无官方字幕或逐字稿；单集页标注 52 分钟，实际音频 50 分 34 秒，章节时间轴最后一节为 48:36。",
+    "嘉宾既是经历者也是写作者，访谈形式强化成功叙事；节目无国内医生、医保管理者或第三方患者组织出镜回应其对流程、KPI 与排队机制的批评。",
+    "「10%–20% 能活下来」「梅奥病人是协和两倍」「来华 CAR-T 没有想象中多」「自体细胞回输几乎无用」等均为嘉宾个人观感或个别接触案例，节目未提供统计来源，不可作为统计或疗效引用。",
+    "ACC 的标准治疗与可及性在 2013—2026 年间显著变化；本报告引用的共识、目录与医保信息为核验时点（2026-10-24）的公开资料，使用前应确认最新版本；ACC 是否已列入国家罕见病目录本报告未核实。",
+    "本报告不提供任何个体诊疗建议；节目中的个案、方案与数字不构成疗效证据，不得外推到其他患者。",
+    "节目把“未上市且收费”作为反骗警戒有实用价值，但不同临床试验对研究费用、常规诊疗费用与交通食宿的承担不同；报告已用 NCI 官方说明收窄为“逐项核对费用与试验注册”，不能用是否收费单独裁定正规性。"
+  ]
+}

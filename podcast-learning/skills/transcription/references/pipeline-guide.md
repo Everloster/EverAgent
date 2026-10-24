@@ -44,6 +44,15 @@ python3 podcast-learning/scripts/podcast_artifact_pull.py pull \
 
 拉回完成后再继续润色和报告；不得用聊天输出复制大段转写，也不得跳过大小与 SHA-256 校验。
 
+若为公开仓保存 artifact receipt，需从运行态回执生成最小公开视图：保留 `source_url/source_host`、音频与转写的大小和 SHA-256、语言、段数、时长、服务版本、静默/无播放器标志、传输原子性与审计结果；删除执行设备名、远端绝对路径、`job_id`、`plan_id`、`artifact_id`、账号和网络信息。报告与 evidence 使用“eacli podcast 远端静默 worker”，不要把私有执行拓扑写进知识产物。
+
+### 获取失败的证据顺序
+
+1. 固定本次 `source → plan → request → job` 绑定，只读取该 job 的 `result/state`；相邻任务的时长、日志或错误不能拿来补当前 artifact。
+2. `nonzero_exit` 只是包装层结果，不是根因。继续读取 helper 的结构化错误，再区分主机白名单、重定向/CDN、下载器、临时文件、worker RPC 或转写本体。
+3. 若 `plan` 接受来源而执行 helper 拒绝同一来源，优先判定控制面与部署 helper 的合同漂移；先修一致性与错误透传，不重复生成任务。
+4. 生成类失败不自动重放。修复后重新生成 plan，并使用新的稳定 request id；旧失败记录保留原貌。
+
 本地文件，或明确隔离排障时，才使用本地脚本。它全程离线（除下载音频），不走云端 API：
 
 ```bash

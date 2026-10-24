@@ -1,0 +1,512 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-21_xiaoyuzhou-tulong-dashihua_inequality-evolution.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-24",
+  "generator": {
+    "model": "minimax-m3.1-flash",
+    "harness": "pi",
+    "run_id": "generator-2026-10-21_tulong_inequality-20261024",
+    "explicit_model_override": true,
+    "override_reason": "用户明确指定当前会话继续使用 MiniMax M3.1 Flash（user:2026-10-24:podcast-blog-until-1100）；本次会话未收到 quota exhausted 或 rate limit 的不可用证据，故未切换到 GLM-5.3"
+  },
+  "task": {
+    "summary": "用 eacli podcast 远端静默 worker 获取《屠龙大实话》第 64 期（2026-10-21，为什么人类总在为不平等愤怒）音频与转写，产出忠实转写、结构化精编、artifact 回执与一篇 standalone 的 report-v2 深度中文报告。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "先全仓查重；必须使用 eacli podcast 远端静默 worker，禁止本地转写。"
+      },
+      {
+        "id": "R02",
+        "text": "产出 transcript、polished、artifact 回执、深度报告与完整 evidence sidecar；初始化 review sidecar 但不自行复核或 finalize。"
+      },
+      {
+        "id": "R03",
+        "text": "先从完整转写/shownotes 建立 source_coverage 内容地图，再写报告。"
+      },
+      {
+        "id": "R04",
+        "text": "覆盖节目核心论证、关键案例/人物/数据、事实核验、争议与替代解释；区分节目陈述、公开事实与分析者推断。"
+      },
+      {
+        "id": "R05",
+        "text": "公开产物不得出现设备名、远端路径或任何内部运行标识；不得 commit/push，不得改动既有报告、MAP/wiki/索引。"
+      },
+      {
+        "id": "R06",
+        "text": "记录实际使用的模型与原因；只有收到明确 quota exhausted/rate limit 不可用证据才切换 GLM-5.3。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "primary",
+      "title": "《屠龙大实话》第 64 期原始转写（远端静默 worker，2548 段 / 3502 秒）",
+      "locator": "podcast-learning/reports/transcripts/2026-10-21_xiaoyuzhou-tulong-dashihua_inequality-evolution.transcript.txt",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S02",
+      "kind": "primary",
+      "title": "第 64 期结构化精编稿（polished，头部标注压缩比、专名校正表与 [?]）",
+      "locator": "podcast-learning/reports/transcripts/2026-10-21_xiaoyuzhou-tulong-dashihua_inequality-evolution.polished.txt",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S03",
+      "kind": "primary",
+      "title": "小宇宙单集页 shownotes（简介、4 个 Part、20 条章节时间轴、节目引用的视频与论文）",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/6ad88be5ef67611cac79fc26",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S04",
+      "kind": "local",
+      "title": "本期转写与传输回执（公开安全格式：时长、段数、文本量、SHA-256、审计与头尾覆盖）",
+      "locator": "podcast-learning/reports/transcripts/2026-10-21_xiaoyuzhou-tulong-dashihua_inequality-evolution.artifact.json",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S05",
+      "kind": "secondary",
+      "title": "Brosnan & de Waal 综述：How primates (including us!) respond to inequity（灵长类不平等反应范式的边界与后续研究）",
+      "locator": "https://ideas.repec.org/h/eme/aheszz/s0731-2199(08)20005-1.html",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S06",
+      "kind": "secondary",
+      "title": "GovExec：The myth of the $600 hammer（对美军采购锤子传说的专门质疑）",
+      "locator": "https://www.govexec.com/federal-news/1998/12/the-myth-of-the-600-hammer/5271",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S09",
+      "kind": "secondary",
+      "title": "Al Jazeera：Paris left reeling as student-led protests turn chaotic（政府 55 万、组织方 80 万、近 1800 人被捕）",
+      "locator": "https://www.aljazeera.com/news/2026/10/18/paris-left-reeling-as-student-led-protests-turn-chaotic",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S10",
+      "kind": "secondary",
+      "title": "东方财富早读：法国 80 万人上街抗议生活成本高、已逮捕约 1800 人（2026-10-19）",
+      "locator": "https://wap.eastmoney.com/a/202610193899241930.html",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S11",
+      "kind": "official",
+      "title": "国家统计局统计百科：什么是购买力平价（以巨无霸为例的 PPP 说明）",
+      "locator": "https://www.stats.gov.cn/zs/tjws/tjbk/202301/t20230101_1912952.html",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S12",
+      "kind": "official",
+      "title": "世界银行：China PPP conversion factor, GDP（PA.NUS.PPP；2023–2025）",
+      "locator": "https://api.worldbank.org/v2/country/CHN/indicator/PA.NUS.PPP?format=json&per_page=10",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S14",
+      "kind": "secondary",
+      "title": "21 世纪经济报道：1583 亿美元薪酬，到手 0 元！马斯克被曝 2025 年考核全没达标",
+      "locator": "https://www.21jingji.com/article/20260502/herald/f1226aef4e2e8405512a38a490c4595e.html",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S15",
+      "kind": "secondary",
+      "title": "东方财富：1583 亿美元一分没拿到？马斯克的“天价薪酬”怎么算",
+      "locator": "https://emwap.eastmoney.com/a/202610203901639214.html",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S16",
+      "kind": "official",
+      "title": "Project Gutenberg：The Communist Manifesto（1888 Engels-edited English edition）",
+      "locator": "https://www.gutenberg.org/files/61/61-h/61-h.htm",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S17",
+      "kind": "primary",
+      "title": "Van Wolkenten, Brosnan & de Waal — Inequity responses of monkeys modified by effort（PNAS 2007）",
+      "locator": "https://www.pnas.org/doi/10.1073/pnas.0707182104",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S18",
+      "kind": "primary",
+      "title": "Brosnan & de Waal — Evolution of responses to (un)fairness（Science 2014 / PMC）",
+      "locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4451566",
+      "accessed_on": "2026-10-25"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "节目引用的是 Van Wolkenten、Brosnan 与 de Waal 的 PNAS 2007 卷尾猴实验。13 只猴子的 token-exchange 设计排除了“只因看见更好食物的贪婪”和“上一轮曾吃到葡萄后的挫败”两种解释，并显示 effort 会调节 disadvantageous inequity response；后续综述强调这不是人类完整意义上的公平感，不能直接外推现代政治不平等。",
+      "report_anchor": "without joint benefits, joint actions could never have evolved",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S05",
+        "S17",
+        "S18"
+      ],
+      "evidence": "转写/精编与 shownotes；PNAS 原文摘要、方法、greed/frustration 控制与 effort 结果；Science 2014 和 Brosnan 2008 综述对 disadvantageous IA、合作关系与“非完整人类公平感”的限定。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "节目提出的核心解释是：人类从未经历完全平等的社会，阶级与私有制是随生产力增长、为避免争抢流血而演化出的冲突管理制度。",
+      "report_anchor": "阶级是一个避免流血冲突的制度",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "转写 00:08:17–00:09:25（无阶级→争抢伤亡→生产力上升→阶级与私有制→避免流血冲突，『当奴隶虽然苦，但是死了更难受』），属节目解释框架而非文献结论。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "节目逐段朗读《共产党宣言》（1848）关于阶级对立简单化、国家政权是管理资产阶级共同事务的委员会、全球化的世界性生产与精神产品、以及危机时期『社会瘟疫』与『消灭大量生产力、掠夺新的市场』等段落，并以其作为解释 2026 年欧洲抗议的结构性框架。",
+      "report_anchor": "社会瘟疫",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S16"
+      ],
+      "evidence": "转写 00:12:19–00:23:52 与 00:54:15–00:55:56 的中文朗读；Project Gutenberg 的 1888 英译本逐段核对 committee、world market、paid wage labourers、over-production、destruction of productive forces 与 conquest of new markets。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "节目用“6 美元锤子经美军采购涨到 400 美元”说明治理成本。GovExec 的复盘称，约 15 美元锤子被均摊约 420 美元研发开销而形成约 435 美元会计成本行，后来被媒体放大为 600 美元；它可说明成本分摊与政府会计失真，不能证明一把零售锤子的字面成交价、回扣或腐败。",
+      "report_anchor": "6美元锤子在美军采购后涨到400美元",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S06"
+      ],
+      "evidence": "转写 00:43:47–00:44:05；GovExec 1998《The myth of the $600 hammer》对 accounting artifact、$15 + $420 overhead 与后续媒体放大的解释。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "节目引用法国总工会 80 万人抗议；Al Jazeera 与上观新闻转载页同时列出 2026-10-17 政府口径 55 万、组织方口径 80 万，巴黎约 11 万、近 1800 人被捕，因此 80 万并非虚构，但必须标注为组织方口径。",
+      "report_anchor": "法国总工会口径",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S09",
+        "S10"
+      ],
+      "evidence": "转写 00:00:34–00:00:39；Al Jazeera 2026-10-18 与上观新闻早读转载页 2026-10-19 的政府/组织方并列口径。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "节目说马斯克 2025 年给自己发了 1583 亿美元薪酬。报道显示 1583.59 亿美元是股票奖励的会计公允价值，不是现金到账；SEC “实际支付薪酬”口径为 103.7 亿美元，而特斯拉补充披露的“已实现薪酬”为 0 美元，相关股权尚未解锁。",
+      "report_anchor": "1583 亿美元",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S14",
+        "S15"
+      ],
+      "evidence": "转写 00:40:38–00:40:47；21 世纪经济报道与东方财富转载上海证券报对总薪酬、公允价值、SEC compensation actually paid 与 realized compensation 的区分。",
+      "critical": true
+    },
+    {
+      "id": "C07",
+      "claim": "节目用“人民币对美元购买力平价约 3.5”说明口径差异。世界银行 GDP PPP 转换因子中，中国 2023/2024/2025 年分别约 3.64/3.53/3.40 元每国际元；国家统计局以巨无霸单品举例得 4.6。因此 3.5 接近近年 GDP PPP，但不能与单品 PPP 或市场汇率混用。",
+      "report_anchor": "购买力平价",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S11",
+        "S12"
+      ],
+      "evidence": "转写 00:39:22–00:39:54；世界银行 PA.NUS.PPP 官方 API 的 2023–2025 数值；国家统计局统计百科的巨无霸示例。",
+      "critical": false
+    },
+    {
+      "id": "C08",
+      "claim": "[推测] 节目把治理难归因于『谁治理谁傻』的囚徒困境，但它自身给出的制度性解释（既存法律与补贴一环套一环、砍预算须逐项立法）提示更硬的约束在立法交易成本与路径依赖，而不在观念转变；这意味着政策着力点应更偏向降低治理成本而非期待精英共情。",
+      "report_anchor": "一环套一环",
+      "support": "inference",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "本报告基于节目 00:41:14–00:42:28（囚徒困境）、00:44:45–00:47:36（波士顿品茶协会、朝鲜战争羊毛补贴、逐项立法、联邦雇员与预算占比）做的因果再定位，属分析者推断，非节目原话。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "SC01",
+      "title": "00:00:13 法国骚乱与抗议规模",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "概览 / 主线五"
+    },
+    {
+      "id": "SC02",
+      "title": "02:59 猴子、黄瓜、葡萄实验",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线一"
+    },
+    {
+      "id": "SC03",
+      "title": "04:45 合作动物监控奖赏",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线一"
+    },
+    {
+      "id": "SC04",
+      "title": "07:55 人类与猿猴的共同祖先",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线一"
+    },
+    {
+      "id": "SC05",
+      "title": "08:51 阶级与私有制的起源",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线二"
+    },
+    {
+      "id": "SC06",
+      "title": "11:56 《共产党宣言》是哲学论述",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线二"
+    },
+    {
+      "id": "SC07",
+      "title": "14:06 资产阶级从被压迫到掌权",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线二 / 主线三"
+    },
+    {
+      "id": "SC08",
+      "title": "16:54 宗教虔诚与尊严变成交换价值",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线二"
+    },
+    {
+      "id": "SC09",
+      "title": "19:52 全球化与精神偶像统一",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线三"
+    },
+    {
+      "id": "SC10",
+      "title": "23:12 劳动强度上升与收入下降",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线二"
+    },
+    {
+      "id": "SC11",
+      "title": "25:53 资本主义续命靠科技与战争",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线三"
+    },
+    {
+      "id": "SC12",
+      "title": "27:54 买英国小孩教材研究母语教学",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线三"
+    },
+    {
+      "id": "SC13",
+      "title": "30:24 英国语文书教航海",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线三"
+    },
+    {
+      "id": "SC14",
+      "title": "32:22 伊丽莎白一世与东印度公司",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线三"
+    },
+    {
+      "id": "SC15",
+      "title": "36:59 殖民地 2.0 与韩国案例",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线三"
+    },
+    {
+      "id": "SC16",
+      "title": "43:50 6 美元锤子与戈尔改革",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线四"
+    },
+    {
+      "id": "SC17",
+      "title": "48:10 赚钱是门专业，尊重有余",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线四 / 主线五"
+    },
+    {
+      "id": "SC18",
+      "title": "52:59 AI 不是救世主",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线五"
+    },
+    {
+      "id": "SC19",
+      "title": "54:56 社会瘟疫与生产过剩",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线五"
+    },
+    {
+      "id": "SC20",
+      "title": "57:22 马克思关于新市场的预言",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线五"
+    }
+  ],
+  "limitations": [
+    "转写由远端静默 worker 的 whisper.cpp large-v3（CUDA、Silero VAD）生成，audit_transcript.py 无 warning/error；专名误识别密集（Friend of Wow→Frans de Waal、道治/Riggo→戈尔 Al Gore、Island Degeneres→Ellen DeGeneres、马格斯→马克思、邦工→帮工等），已在精编稿头部集中列出订正表。",
+    "未消解的不确定项：节目口播提到的书名（「负重体缘」，疑为讲马尔萨斯贫困陷阱的书，未能核实）；「老北京六点节」所指具体节庆；「羊驼卖 50 万美元」的版本；三星股权结构的比例；英国小学教材页与 70 多卷采矿著作的说法。这些以 [?] 或原样引号标出，未做猜测性填补。",
+    "本期为单一口径来源：节目未标注多数历史叙述的原始出处，也无反方提问者；「事实核验」一节只检验可核验项，不构成对整期论证的全面评估。",
+    "《共产党宣言》已用 Project Gutenberg 的 1888 英译本核对核心段落；中文译文仍可能因版本不同而有措辞差异。",
+    "“6 美元/400 美元锤子”应解释为被均摊研发开销形成的会计成本争议，不能证明字面成交价或回扣；马斯克 1583.59 亿美元是股票奖励公允价值而非现金到账；法国 80 万是组织方口径，政府口径 55 万。",
+    "抗议人数、购买力平价、马斯克资产与薪酬均为时点数据，引用须注意录制与发布时点（2026 年 10 月）。",
+    "分析者标注的『需核验/有争议』针对具体数字与轶事，不等于否定节目承载的结构性论证；后者仍按节目主张呈现。"
+  ]
+}

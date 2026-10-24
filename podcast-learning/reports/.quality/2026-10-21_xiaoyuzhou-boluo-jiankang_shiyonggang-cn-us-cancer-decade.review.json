@@ -1,0 +1,262 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-21_xiaoyuzhou-boluo-jiankang_shiyonggang-cn-us-cancer-decade.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-6",
+        "harness": "codex",
+        "run_id": "review-cn-us-cancer-podcast-20261025-gpt6",
+        "independent_context": true,
+        "explicit_model_override": true,
+        "override_reason": "用户明确要求本机独立 review 与验收远端 MiniMax 初稿"
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 93,
+        "request_coverage": 95,
+        "reasoning_quality": 94,
+        "readability": 94,
+        "limitations": 96
+      },
+      "score_reasons": {
+        "evidence_fidelity": "先读 11 条 shownotes、完整精编稿和转写审计，再核对报告与 evidence；抽查所有关键时间窗。ACC/米托坦由协和 2021 共识核验，罕见病指南由国家卫健委核验，临床试验费用由 NCI 官方页核验。主持人 20%–40% 与“试验不收费”两处过度概括已收窄；癌症负担 2024 数字仍依赖二手来源，正文已保留口径说明。",
+        "request_coverage": "从确诊心理、出国费用与路径、手术和问诊流程、细胞治疗骗局、患者写作到失独与再伴侣共 11 个内容单元全部覆盖；报告提供中美路径表、数字口径、证据分级、反方解释、Limitations 和思考追问，可独立阅读。",
+        "reasoning_quality": "报告把个人成功叙事重构为“药—医生—试验—费用与陪护—信息”的决策链，并主动拆解幸存者偏差、支付结构和分级诊疗差异。修订后没有把高有效率、是否收费或单个病人结局当成通用疗效判据。",
+        "readability": "速览、内容地图、五条主线、中美比较表和证据等级层次清楚；医疗风险提示放在首次出现处而非只留到结尾，关键数字均带时间戳和口径。",
+        "limitations": "明确披露 ASR 专名风险、嘉宾自述偏差、无国内医生/医保方回应、无统计的 10%–20% 与 99%、个案不可外推、指南时效和试验费用拆分；外部来源与节目叙事分层充分。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C09",
+        "C10"
+      ],
+      "coverage_unit_ids_checked": [
+        "SC01",
+        "SC02",
+        "SC03",
+        "SC04",
+        "SC05",
+        "SC06",
+        "SC07",
+        "SC08",
+        "SC09",
+        "SC10",
+        "SC11"
+      ],
+      "source_content_map": [
+        {
+          "id": "RM01",
+          "title": "00:00 开场：99% 有效率宣称与全期问题",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC01"
+          ],
+          "notes": "开场警戒与全期主题均在速览和主线四出现；复核后已把 20%–40% 收窄为经验性警戒。"
+        },
+        {
+          "id": "RM02",
+          "title": "02:05 患病后如何面对自己与无效安慰",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC02"
+          ],
+          "notes": "嘉宾身份、安慰边界和写作/患者双重视角在主线一与主线五覆盖。"
+        },
+        {
+          "id": "RM03",
+          "title": "06:39 不反复追问“为什么是我”与信息黑洞",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC03"
+          ],
+          "notes": "王梦林、p53 亚型与患者信息焦虑被作为个案呈现，没有外推疗效。"
+        },
+        {
+          "id": "RM04",
+          "title": "09:14 小迷信、复查焦虑与复发预案",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC04"
+          ],
+          "notes": "复查焦虑和信息预案完整覆盖，并明确方案不能代替主诊医生。"
+        },
+        {
+          "id": "RM05",
+          "title": "13:17 卖房出国治疗：费用、接待与单人账单",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC05"
+          ],
+          "notes": "40 万美元报价、3.5 万检查、600 美元首诊与累计费用均保留为个人账单而非价格基准。"
+        },
+        {
+          "id": "RM06",
+          "title": "17:46 今天是否还要出国：远程会诊、临床试验与幸存者偏差",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S06",
+            "S08",
+            "S11"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC06"
+          ],
+          "notes": "“国内有药”被收窄为有可及方案且有医生执行；10%–20% 和 99% 出国者均明确无统计。"
+        },
+        {
+          "id": "RM07",
+          "title": "23:10 手术、问诊流程、医生考核与反方结构差异",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC07"
+          ],
+          "notes": "五问五答、年薪制和手术质量主张完整覆盖，同时加入门诊结构、支付与转诊制度的替代解释。"
+        },
+        {
+          "id": "RM08",
+          "title": "32:35 高价细胞治疗、癌症疫苗与临床试验费用",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S10",
+            "S12"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC08"
+          ],
+          "notes": "节目个案与监管担忧均覆盖；NCI 官方材料用于纠正“正规试验一定免费”的过度概括。"
+        },
+        {
+          "id": "RM09",
+          "title": "38:27 写作、患者教育与幸存者服务",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC09"
+          ],
+          "notes": "两本书、ACC 细节和长期照护缺口在主线五覆盖，St. Jude 运营未被无证据扩写。"
+        },
+        {
+          "id": "RM10",
+          "title": "40:48 失独家庭与 43:54 伴侣重启生活",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC10"
+          ],
+          "notes": "两组家庭叙事与网暴讨论完整覆盖，转写含糊的生育方式保留 [?]，未猜测。"
+        },
+        {
+          "id": "RM11",
+          "title": "48:36 大病之后是否真的想开",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC11"
+          ],
+          "notes": "嘉宾“一半”的克制回答、记忆过滤和作家身份均在报告结尾呈现。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S08",
+        "S10",
+        "S11",
+        "S12"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "复核发现两处医学表述需修订：速览和正文把节目中的“20%–40%”写得过于接近通用阈值；“正规临床研究一般不收费”忽略常规诊疗与额外费用。现已用 NCI 官方材料收窄并补入 evidence，同时移除流程状态文字与公开产物中的私有执行标识。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 94.05,
+    "evaluated_on": "2026-10-25",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "2357ac9101daa557f34504e2ffc82278eb8dd848a4da24b6c3c6c9672d5224e1",
+    "evidence_sha256": "97da61061f2d3e52d45869943eaeec21db92b8be524ffcd29e17538d584e08ae"
+  }
+}

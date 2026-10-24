@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/vLLM_Humming_量化推理Kernel库_深度解析_20261025.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-6",
+        "harness": "codex",
+        "run_id": "review-humming-20261025-gpt6",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 94,
+        "request_coverage": 96,
+        "reasoning_quality": 93,
+        "readability": 92,
+        "limitations": 96
+      },
+      "score_reasons": {
+        "evidence_fidelity": "独立回读 vLLM Humming 官方博客、固定 commit 的 README/config/schema/compiler/testing/benchmark 源码、vLLM 集成实现与 lazy facade，并核对 GitHub 提交时间线。支持矩阵、三配置、缓存键、正确性容差、benchmark 数字与 vLLM padding/SM75 门槛均能回到来源。初稿把并发收益过度归因于排队/调度，并对部分竞品覆盖与 Triton 性能作了过宽概括；已同步修正正文和 C10 evidence。",
+        "request_coverage": "R01–R05 全部覆盖：问题定义、四层抽象、dense/MoE 与 dtype/设备矩阵、代码路径、正确性门、微基准/端到端口径、竞品边界、vLLM 集成和可维护性启示均有独立章节；R06 是生成阶段边界，当前由独立 reviewer 完成质量闭环。",
+        "reasoning_quality": "报告能把量化语义、存储布局、执行后端和 JIT 调度串成一条因果链，并明确跨精度 baseline、MoE 微基准不含 EP、正确性门不等于模型质量。修订后不再把随并发增长的收益单因归到 scheduler，而是保留 kernel shape、batching、权重流量和排队交互的多重可能。",
+        "readability": "472 行但章节职责清楚，四层结构图、支持矩阵、文件职责表、端到端完整表和限制清单让报告可独立阅读。少量 kernel 术语密度较高，故未给满分。",
+        "limitations": "局限完整覆盖项目自报、无独立 GPU 复现、端到端对照同时换激活精度、图表逐点值不可得、质量未评估、autotune 未落地、包体口径冲突、PPU 深度未知和版本漂移。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C07",
+        "C08",
+        "C09",
+        "C11",
+        "C12",
+        "C14"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08",
+        "U09",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14"
+      ],
+      "source_content_map": [],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "复核先读来源再读报告。eacli web.read 覆盖博客与固定源码；GitHub commits API 经 Token Plan 后端返回 500，按最小降级规则使用只读官方 GitHub API核对提交时间线。修订了并发收益归因和竞品过度概括两处实质问题。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 94.1,
+    "evaluated_on": "2026-10-25",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "bf1ba9818e60c4f3874aee846d2e116a940401942a3272a1704cd80049989b9e",
+    "evidence_sha256": "020022adcca6e28210d5f4209311c2da54286ab2d37aa522f157096e2ed17be7"
+  }
+}

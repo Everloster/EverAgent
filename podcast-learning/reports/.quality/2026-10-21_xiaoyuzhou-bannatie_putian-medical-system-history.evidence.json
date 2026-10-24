@@ -1,0 +1,366 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-21_xiaoyuzhou-bannatie_putian-medical-system-history.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-24",
+  "generator": {
+    "model": "minimax-m3.1-flash",
+    "harness": "pi",
+    "run_id": "generator-2026-10-21_bannatie_putian-20261024",
+    "explicit_model_override": true,
+    "override_reason": "用户明确指定：模型优先 MiniMax M3.1 Flash，额度耗尽后才切 GLM-5.3（user:2026-10-24:podcast-blog-until-1100）"
+  },
+  "task": {
+    "summary": "用 eacli podcast 远端静默 worker 下载并转写《半拿铁｜商业沉浮录》No.223（2026-10-21，“莆田系”医事：从电线杆到手术台），产出忠实转写、结构化精编、artifact 回执与一篇 standalone 的 report-v2 深度中文报告。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "先去重，再完全静默地用 eacli podcast 远端静默 worker 转写、校验 SHA-256、运行 audit_transcript.py、忠实精编。"
+      },
+      {
+        "id": "R02",
+        "text": "重构莆田民营医疗网络的起源、广告与承包科室模式、监管与平台责任、医疗信息不对称、典型事件和转型路径。"
+      },
+      {
+        "id": "R03",
+        "text": "把主播叙事、公开记录、法律/政策事实、个案和分析者推断分层；对人物、机构、事件、年份、监管政策、司法或官方结论用权威来源核验。"
+      },
+      {
+        "id": "R04",
+        "text": "避免把地域身份泛化为群体标签；争议指控必须标来源与裁决状态。"
+      },
+      {
+        "id": "R05",
+        "text": "只完成产物、evidence、空白 review，不复核、不 finalize、不改 wiki/索引、不提交推送。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "primary",
+      "title": "《半拿铁｜商业沉浮录》No.223 原始转写（eacli podcast 远端静默 worker，4290 段 / 7388 秒）",
+      "locator": "podcast-learning/reports/transcripts/2026-10-21_xiaoyuzhou-bannatie_putian-medical-system-history.transcript.txt",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S02",
+      "kind": "primary",
+      "title": "No.223 结构化精编稿（polished，头部标注压缩比、专名校正表与 [?]）",
+      "locator": "podcast-learning/reports/transcripts/2026-10-21_xiaoyuzhou-bannatie_putian-medical-system-history.polished.txt",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S03",
+      "kind": "primary",
+      "title": "小宇宙单集页 shownotes（简介、8 条章节时间轴、22 篇主要参考资料、听众评论）",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/6ad8260fef67611cac79bf12",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S04",
+      "kind": "local",
+      "title": "本期转写与传输回执（分片拉取 2 片、SHA-256、审计结果）",
+      "locator": "podcast-learning/reports/transcripts/2026-10-21_xiaoyuzhou-bannatie_putian-medical-system-history.artifact.json",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S05",
+      "kind": "official",
+      "title": "国家医疗保障局《关于江苏省无锡虹桥医院飞行检查情况的通报》（2024-10-08）",
+      "locator": "https://www.nhsa.gov.cn/art/2024/10/8/art_14_14102.html",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S06",
+      "kind": "official",
+      "title": "国家医疗保障局办公室关于做好无锡虹桥医院欺诈骗保案后续处置的通知（2024-10-08）",
+      "locator": "https://www.nhsa.gov.cn/art/2024/10/8/art_14_14104.html",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S07",
+      "kind": "official",
+      "title": "国家卫生健康委《2025 年我国卫生健康事业发展统计公报》PDF（医院数量与诊疗人次）",
+      "locator": "https://www.nhc.gov.cn/guihuaxxs/c100133/202608/1b45959033524f48867d90e822be5394/files/2025%E5%B9%B4%E6%88%91%E5%9B%BD%E5%8D%AB%E7%94%9F%E5%81%A5%E5%BA%B7%E4%BA%8B%E4%B8%9A%E5%8F%91%E5%B1%95%E7%BB%9F%E8%AE%A1%E5%85%AC%E6%8A%A5-20260828105402342.pdf?browser=yes",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S08",
+      "kind": "official",
+      "title": "新华网上海协和医院专题页（收录新华社《是手术还是骗术？——上海协和医院妇科诊疗案调查》）",
+      "locator": "http://bj.xinhuanet.com/zt/xieheyiyuan/xiehe.htm",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S09",
+      "kind": "secondary",
+      "title": "21世纪经济报道《揭秘公立医院科室外包前世今生》（2004 年卫生部严禁出租承包科室）",
+      "locator": "https://m.21jingji.com/article/20160503/herald/4a6d095108b4f5ddc4d9aa274bbbc824.html",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S10",
+      "kind": "secondary",
+      "title": "君合律师事务所《医疗合作与科室承包的区别及法律风险防范》（《医疗健康促进法》第三十九条：医疗卫生机构不得对外出租、承包医疗科室）",
+      "locator": "https://www.junhe.com/law-reviews/1600",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S11",
+      "kind": "official",
+      "title": "银川欧亚男健医院苏益雄等 48 人恶势力犯罪集团一案一审公开宣判（银川法院信息经人民网宁夏频道发布）",
+      "locator": "http://nx.people.com.cn/n2/2020/0820/c192493-34240984.html",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S12",
+      "kind": "official",
+      "title": "央视：遵义欧亚医院恶势力犯罪案二审维持原判（主犯 20 年、罚金 920 万）",
+      "locator": "http://m.news.cctv.com/2020/08/08/ARTIgx4JRThSmNPFPG0bK1rm200808.shtml",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S13",
+      "kind": "secondary",
+      "title": "《上海卫生局全面调查长江医院戳穿送子神话》（南方周末报道转载，含 8000 元处罚与“无法可依”说明）",
+      "locator": "http://news.enorth.com.cn/system/2006/03/02/001246064_01.shtml",
+      "accessed_on": "2026-10-25"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "节目叙事的主线是：从莆田东庄镇的膏药与疥疮药水起家，经承包公立医院科室、买设备分成、跨院导流提成，到自建综合医院、上市妇儿医院与转向医美。",
+      "report_anchor": "从电线杆到手术台",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "转写 00:00:13–00:18:57（起源与三板斧）、01:06:57–01:37:31（转型）与 00:25:06–00:48:24（个案）；章节轴 01:15/14:31/01:07:02。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "上海长江医院被官方认定存在诊断不当、过度检查和过度治疗，行政处罚为罚款约 8000 元；节目同时说明处罚轻的直接原因是营利性医院部分收费项目可自行定价、监管缺少可直接适用的罚则。",
+      "report_anchor": "诊断不当、过度检查和过度治疗",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S13"
+      ],
+      "evidence": "转写 00:30:35–00:31:23（官方认定）、00:35:47–00:37:47（罚款 8000 元与「缺少可以直接拿来罚他的法律依据」）。 南方周末报道转载页记录上海市卫生局认定与 8000 元处罚，并说明处罚针对医疗废物和放射设备等项目；对过度检查、过度治疗本身当时称“无法可依”。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "上海协和医院（民办）因违反诊疗常规、消毒管理、医疗废物管理与医疗广告管理规定被吊销医疗机构执业许可证并摘牌；药监部门另称其涉嫌珍稀中药材诈骗问题已移交公安机关。",
+      "report_anchor": "吊销医疗机构执业许可证",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S08"
+      ],
+      "evidence": "转写 00:44:48–00:48:24（央视调查、上海市卫生局处理决定、药监局移交线索），并可与新华网上海协和专题页所载新华社《是手术还是骗术？——上海协和医院妇科诊疗案调查》相互印证。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "遵义与银川欧亚男科按恶势力犯罪集团判决：银川案认定 2015 年 7 月至 2019 年 5 月非法敛财一个亿，48 名被告人，主犯苏益雄判 20 年并处罚金 610 万；同期当地至少四名卫健与市场监管干部因充当保护伞被纪委查处。",
+      "report_anchor": "按恶势力犯罪集团判",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S11",
+        "S12"
+      ],
+      "evidence": "转写 00:52:54–00:59:52（遵义判罚、男科模式、投诉与保护伞、银川判决细节）。 人民网宁夏频道发布的一审宣判信息核对银川案 48 人、主犯 20 年及 610 万罚金；央视核对遵义案二审维持主犯 20 年及 920 万罚金。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "无锡虹桥医院骗保案由院内放射科医生发现虚假影像并实名举报引发，国家医保局飞行检查组会同公安机关进驻后认定其以免费体检名义拉拢老人虚假住院、编造病历并复制他人影像制作假报告。",
+      "report_anchor": "国家医保局飞行检查组",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S05",
+        "S06"
+      ],
+      "evidence": "转写 01:40:08–01:44:36（医生发现、同分钟同机两次核磁、通报内容、处罚）；国家医保局 2024-10-08 通报及后续处置通知为官方出处。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "2016 年魏则西事件后，联合调查组认定百度商业推广存在竞价权重过高、标志不清等问题并客观影响其选择医院；节目同时指出制度漏洞：2000 年后的禁令只禁白纸黑字的承包合同，改名技术合作即可继续，且武警与军队医院不归地方卫生局管。",
+      "report_anchor": "武警二院",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S09",
+        "S10"
+      ],
+      "evidence": "转写 01:03:46–01:05:40；外部核对：2004 年卫生部已发通知严禁出租承包科室，《医疗健康促进法》第三十九条亦规定医疗卫生机构不得对外出租、承包医疗科室，说明改名「技术合作」属规避而非合法路径。",
+      "critical": false
+    },
+    {
+      "id": "C07",
+      "claim": "截至 2025 年底全国民营医院 26481 家、约占医院总数七成；2025 年民营医院诊疗人次 7.4 亿，约为公立医院 39.3 亿的 18.8%（略低于五分之一），且民营医院数量与床位同比减少。",
+      "report_anchor": "26481",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S07"
+      ],
+      "evidence": "国家卫健委《2025 年我国卫生健康事业发展统计公报》列出公立医院 11678 家、民营医院 26481 家，公立医院诊疗 39.3 亿人次、民营医院 7.4 亿人次；7.4/39.3=18.8%。节目 01:46:46–01:48:36 提供同组数字与趋势。",
+      "critical": true
+    },
+    {
+      "id": "C08",
+      "claim": "节目自身明确把「莆田系占八成」「美莱 100 亿营收」等说法标为模糊或不可统计的传闻，并指出该标签本身是人为造出的概念、组织性远不如外界想象。",
+      "report_anchor": "它没有那么人格化",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "转写 01:29:18–01:31:08（概念与分散性）、01:32:33–01:34:10（100 亿争议与艺星、华韩对照）、01:38:05–01:39:44（「八成」「半壁江山」是模糊概念，听过即事实）。",
+      "critical": true
+    },
+    {
+      "id": "C09",
+      "claim": "[推测] 节目呈现的历史可概括为：违规收益上升 → 监管发现率上升 → 违规收益下降 → 资本迁移到约束结构不同、效果更难核验的领域（军队与武警体系、平台竞价、医美与消费医疗），因此部分资本在传统医疗受挫后改变了形态。",
+      "report_anchor": "迁移到约束结构不同的领域",
+      "support": "inference",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S05",
+        "S07"
+      ],
+      "evidence": "本报告基于节目提供的制度性因素（自主定价可备案、军队体系独立、投诉被退回、医保支付趋严）与转型案例（新安→和美→医美→消费医疗）做的结构性推断，非节目原话，亦未经统计检验。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "SC01",
+      "title": "01:15 莆田系医疗起源与早期发展",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线一 / 主线二"
+    },
+    {
+      "id": "SC02",
+      "title": "14:31 承包科室模式扩张与舆论危机",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线二 / 主线三"
+    },
+    {
+      "id": "SC03",
+      "title": "25:05 不孕不育医疗乱象与监管困境",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线三"
+    },
+    {
+      "id": "SC04",
+      "title": "39:06 上海伪协和与银川欧亚男健的覆灭",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线三 / 主线四"
+    },
+    {
+      "id": "SC05",
+      "title": "01:07:02 莆田系医疗的多种转型尝试",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线五"
+    },
+    {
+      "id": "SC06",
+      "title": "01:41:27 无锡虹桥医院骗保案",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线四"
+    },
+    {
+      "id": "SC07",
+      "title": "01:48:12 民营医院的经营现状",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线五 / 主线六"
+    },
+    {
+      "id": "SC08",
+      "title": "01:57:13 读评论",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "概览"
+    }
+  ],
+  "limitations": [
+    "转写由 whisper.cpp large-v3 + Silero VAD 生成，audit_transcript.py 无 warning/error，但专名误识别密集（张国团→詹国团、南科→男科、公妇腔联合镜→宫腹腔联合镜、何美→和美、横贫磁共振→核磁共振、一星→艺星、华涵→华韩、美来→美莱等），已在精编稿头部集中列出订正表。",
+    "未消解的不确定项：节目提到的口腔品牌「土八兔」；被指与詹、林两家族相关的「威林医疗」；虹桥医院背后集团名（口播「美的亚」，节目写作美迪亚）；北京白子湾/百子湾；以及美迪亚与艺星、虹桥与和美之间的股权关系，均只有口播陈述、未附工商或判决文书链接。",
+    "本期为主播讲述型节目，shownotes 列出 22 篇参考资料但未逐句标注出处，音频无法直接回溯到具体报道；本报告只对可独立核验的条目给出官方来源，其余标注为「节目引述的媒体报道」。",
+    "「莆田系占八成」「医美半壁江山」「美莱 100 亿营收」等为传闻或单一媒体口径，无可核验统计；节目与主播均已声明其不可靠，不得作为事实引用。",
+    "核心事实跨度 1999—2026 年，医美与民营医院经营状况仍在变化，引用须注意时点。",
+    "本报告避免把籍贯与违法等同，所有案例落到具体机构与时间；「莆田系」作为传播标签本身具争议，节目已提示其可脱离证据独立存在。",
+    "本轮读取的两份国家医保局文件确认虹桥医院涉嫌违法违规 2228.4 万元、其中涉嫌欺诈骗保 1179.2 万元，并载明解除医保协议与启动处罚程序；节目所称“罚 5800 多万、吊销执照”缺最终决定全文，报告保留为节目口径。"
+  ]
+}

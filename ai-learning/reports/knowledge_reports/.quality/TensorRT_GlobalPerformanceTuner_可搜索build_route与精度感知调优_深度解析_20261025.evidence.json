@@ -1,0 +1,383 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/TensorRT_GlobalPerformanceTuner_可搜索build_route与精度感知调优_深度解析_20261025.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-25",
+  "generator": {
+    "model": "minimax-m3.1-flash",
+    "harness": "pi",
+    "run_id": "generator-trt-gpt-20261025",
+    "explicit_model_override": true,
+    "override_reason": "用户明确指定当前会话继续使用 MiniMax M3.1 Flash（只有收到明确 quota exhausted/rate limit 证据才切换 GLM-5.3）"
+  },
+  "task": {
+    "summary": "深读 NVIDIA 2026-10-23 官方技术博客《Scaling NVIDIA TensorRT Performance Optimization Beyond a Single Build Route with the Global Performance Tuner, Part 1》并补读其官方续篇 Part 2 与 TensorRT 官方文档《Global Performance Tuning》，重构单一 build route 的三类局限（启发式膨胀、性能-精度纠缠、性能定制化）、数学框架（模型/解空间、运行时间函数、builder 与 searching 算法、build route 复合）、GPT 的 knob/build route 搜索与精度感知选择机制、基准设计口径、工程接入成本、确定性与可复现性、动态 shape/不同 GPU/部署流水线的边界，并与常规 builder、手工 tactic 与其它自动调优路线做证据约束的比较，给出最小验证方案、反方解释、Limitations 与思考与追问。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "完整读取博客结尾并拆清单一路径 builder 优化的局限、GPT 的搜索空间/测量/缓存/选择机制。"
+      },
+      {
+        "id": "R02",
+        "text": "核对基准设计与所有关键数字口径，数字带单位、硬件、版本与比较基准。"
+      },
+      {
+        "id": "R03",
+        "text": "说明工程接入成本、确定性与可复现性，以及对动态 shape、不同 GPU、部署流水线的边界。"
+      },
+      {
+        "id": "R04",
+        "text": "与常规 TensorRT builder、手工 tactic 选择和可比自动调优方案做证据约束的比较。"
+      },
+      {
+        "id": "R05",
+        "text": "包含可操作的最小验证方案、反方解释、Limitations、思考与追问。"
+      },
+      {
+        "id": "R06",
+        "text": "公开产物不得出现设备名、远端路径、task/dispatch/terminal/artifact ID；不得 commit/push；不得改动本 worktree 既有报告、MAP/wiki/索引。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "official",
+      "title": "NVIDIA 官方开发者博客 (2026-10-23) — Scaling NVIDIA TensorRT Performance Optimization Beyond a Single Build Route with the Global Performance Tuner, Part 1",
+      "locator": "https://developer.nvidia.com/blog/scaling-nvidia-tensorrt-performance-optimization-beyond-a-single-build-route-with-the-global-performance-tuner-part-1",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S02",
+      "kind": "official",
+      "title": "NVIDIA 官方开发者博客 — 同系列续篇 Part 2（knob/build route 机制、API、调优循环、1.14×–1.63× 基准、精度–性能纠缠思想实验、最佳实践）",
+      "locator": "https://developer.nvidia.com/blog/scaling-nvidia-tensorrt-performance-optimization-beyond-a-single-build-route-with-the-global-performance-tuner-part-2",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S03",
+      "kind": "official",
+      "title": "NVIDIA TensorRT 官方文档 — Global Performance Tuning（knob 数据库 API、trtexec 标志全集、精度感知校验、调优缓存与恢复、Caveats）",
+      "locator": "https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/tuning.html",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S04",
+      "kind": "primary",
+      "title": "NVIDIA TensorRT 官方示例仓库 README（samples/README.md：确认调优实现位于开源 trtexec 而非独立样例）",
+      "locator": "https://raw.githubusercontent.com/NVIDIA/TensorRT/main/samples/README.md",
+      "accessed_on": "2026-10-25"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "Part 1 的问题设定是：TensorRT 建引擎时的调度（图 IR 变换、融合、实现选择、内存布局、量化）是互相依赖的编译决策，不同调度可保持模型语义却产生显著不同的端到端性能，且这些耦合效果通常只有在完整引擎构建并测量后才显现；官方把扩展性难题归纳为启发式膨胀、性能–精度纠缠、性能定制化三类。",
+      "report_anchor": "1. 问题定义：单一 build route 的三种局限",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "Part 1 开篇「It is a compilation problem with many legitimate answers」「This process is called scheduling」，以及「Heuristic sprawl / Performance-accuracy entanglement / Performance customization」三条列表与厨師类比图注。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "Part 1 的数学框架把编译器抽象为算法二元组 (A, B)：builder B 从模型空间映射到满足精度容差 ε 的候选解集合，searching A 在其中取运行时间最小者；次优的两个来源是搜索期启发式剪枝（被过滤的 tactic 可能正是最优解的组成部分）与局部 profiling 与端到端执行不匹配（孤立 kernel 与图内 kernel 执行环境不同，例如 Blackwell 的自适应网格尺寸），并明确构造 B* 比构造 A* 更根本，因此路径是渐进扩展可用 build route 集合。",
+      "report_anchor": "2. 数学框架：编译器性能优化的抽象",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "Part 1 的 Mathematical theory 一节：T:S→R+、B:M→2^S 的精度条件、A:2^S→S、两个次优来源原文、∀A,B,∀m∈M 的不等式，以及「Constructing B* is the more fundamental challenge」。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "GPT 的机制是：knob 是改变编译流水线某个方面的有限取值配置项，build route 是 knob 取值组合；未指定时使用所有 knob 取默认值的默认 route；knob 组合只是 build route 的规格说明，TensorRT 仍会执行剩余引擎构建阶段（含 tactic 选择）并可能为满足网络约束覆盖个别 knob。C++ 接口为 IBuilderConfig::setBuildRoute / getBuildRoute / getAllBuildRoutes；trtexec 按 searching 算法把 route 表达式展开为具体 route 列表，逐条建引擎并测精度与性能，崩溃或精度失败的 route 被排除，最终选出实测端到端性能最好的引擎。",
+      "report_anchor": "3. GPT 的机制：knob、build route、搜索与选择",
+      "support": "direct",
+      "source_ids": [
+        "S02"
+      ],
+      "evidence": "Part 2 的 Designing 一节（knob 与 build route 定义、「knob combination is a build-route specification, not a complete description of the resulting engine」、三个 C++ API、trtexec 的三步循环与「more than 200 knobs」）。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "官方唯一的量化结果是：10 个工作负载上，默认 TensorRT build route 各自归一化为 1.0×，调优找到的最佳合格 route 带来 1.14×–1.63× 的端到端提升；博客未披露 GPU 型号、模型名称、输入 shape、绝对延迟与软件版本，因此该数字是厂商自报且不可独立复现。",
+      "report_anchor": "4. 基准设计与关键数字口径",
+      "support": "direct",
+      "source_ids": [
+        "S02"
+      ],
+      "evidence": "Part 2 的 Figure 1 与正文「compares the default TensorRT build route, normalized to 1.0x for each workload, with the best eligible route found during tuning. Across these ten evaluated workloads, tuning delivered performance improvements ranging from 1.14x to 1.63x」；博客与官方文档中均无负载清单、硬件与绝对值。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "精度感知是 GPT 的核心机制：官方文档要求 --loadInputs、--loadRefOutputs（激活校验的必需项）与 --accuracyThreshold（存在参考输出时必需），支持 --refPair=N 分组多对样本且每次迭代对所有 pair 校验，并可用 --accuracyAlgorithm 指定非负、越小越好的损失度量；精度失败的迭代仍写入调优缓存但不具备最佳引擎候选资格；Part 2 用 ε 思想实验说明「精度决定哪些候选可接受、性能对可接受者排序」，并以 ε=+∞ 时可能选中「什么都不算、运行时间为零的空解」论证性能本身不是充分的优化目标。",
+      "report_anchor": "3.5 精度感知调优",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "官方文档 Accuracy-Aware Tuning 一节（各标志必需性、refPair、accuracyAlgorithm、失败迭代仍记录但不合格）与 Part 2 的 ε 三种情形及「accuracy determines which candidate solutions are acceptable; performance ranks the acceptable candidate solutions」。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "搜索与运行控制包含 fast（逐 knob 单变量扫描）、mixed（先 fast 再探索有改进的取值组合）、full（完整笛卡尔积），以及 --dryRun、--tuningCacheFile、--continue、--tuningTimeOut、--saveAllEngines、--saveEngine。Part 2 明确说 --dryRun 只用于 fast/full、mixed 因第二阶段依赖实测而不支持；当前官方文档却写成可与 any search mode 组合，两份官方材料冲突，实际自动化必须按目标 TensorRT 版本验证 CLI。",
+      "report_anchor": "3.4 搜索策略与运行控制",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "Part 2 Best practices 的 fast/mixed/full 与 mixed 不支持 --dryRun；当前 Global Performance Tuning 文档 Choosing a Search Algorithm 的 \"Combine any search mode with --dryRun\"；其余标志语义来自同一官方文档。",
+      "critical": false
+    },
+    {
+      "id": "C07",
+      "claim": "确定性与可复现性存在明确的边界：官方 Caveats 指出引擎构建并非 bit 确定性（同一 route 两次构建的 kernel 选择可能不同），因此必须把保存下来的 engine 文件当作事实来源而不是 route 字符串；同时 builder 可能在编译期覆盖个别 knob、knob 与默认值随版本变化、最佳 route 依赖模型/shape/GPU SKU/驱动/CUDA、非默认 route 跨 TensorRT 大版本无性能保证、精度阈值过严会否掉所有 route，且只有经 GPT 发现并校验的 route 才带精度与不崩溃保证。",
+      "report_anchor": "6. 确定性与可复现性",
+      "support": "direct",
+      "source_ids": [
+        "S03",
+        "S02"
+      ],
+      "evidence": "官方文档 Caveats 一节的逐条原文（含 Engine indeterminism、Internal knob overrides、Version dependence、Model dependence、Hardware dependence、Accuracy threshold sensitivity、Performance regression risk、Accuracy guarantee scope）与 Part 2 Best practices 第五节的重调优要求。",
+      "critical": true
+    },
+    {
+      "id": "C08",
+      "claim": "工程接入成本由官方机制推得且未给出量化：每条 route 需独立构建完整引擎并测量，full 搜索为笛卡尔积规模，官方只提供 --tuningTimeOut 做时间封顶而未给出任何典型构建耗时或 sweep 总时长；此外需要准备代表生产的输入与参考输出、选择损失度量与阈值（阈值过严会否掉所有 route）、--saveAllEngines 占用大量磁盘，并且换模型/shape/硬件/CUDA/版本后需重新调优。",
+      "report_anchor": "5. 工程接入成本",
+      "support": "derived",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "官方文档各标志语义、Accuracy-Aware Tuning 的必需标志、Caveats 的依赖性条目与 Part 2 的最佳实践构成成本项的原始事实；「未给出构建耗时」为已读材料的直接缺口观察。",
+      "critical": false
+    },
+    {
+      "id": "C09",
+      "claim": "与其它路线的比较必须受证据约束：官方从未把 GPT 与其它自动调优方案放入同一对照表，因此只能按作用层级与承诺范围做定性比较——GPT 的独特处是「引擎级 + 端到端 + 用户定义的精度边界」三者组合；它与 kernel 级 autotune 正交（Part 1 明确局部 profiling 之和不等于端到端耗时）；它与传统 tactic 搜索正交（GPT 调的是 knob，tactic 搜索在 route 内进行）；它与专家启发式是补充关系，官方明确默认 route 建立在大量内部启发式之上。",
+      "report_anchor": "8. 与常规 builder、手工 tactic 与其它自动调优方案的比较",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "Part 1 的局部/端到端失配论证、Part 2 的「knob 组合只是 build route 规格说明…TensorRT 仍会执行剩余阶段包括 tactic 选择」、官方文档关于默认 route 反映大量内部启发式的 Caveat；比较表为本文按层级整理并已在正文标明为定性比较。",
+      "critical": false
+    },
+    {
+      "id": "C10",
+      "claim": "官方文档的 Caveats 与 Part 2 的机会性收益自陈共同说明：GPT 的收益是机会性的，默认 build route 对很多网络可能已经最优；1.14×–1.63× 的区间跨度本身即被官方用作「单一默认策略无法为每个模型实现最佳性能」的证据；同时 GPT 不替代启发式，而是把「默认值不匹配」变成可测量、可审计的工程过程。",
+      "report_anchor": "10. 反方解释",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "官方文档 Caveats「Opportunistic gain」；Part 2「The variation across workloads is central to the result… a single default scheduling strategy cannot be expected to realize every model's best performance」与「tuning provides a scalable complement to heuristic optimization」。",
+      "critical": false
+    },
+    {
+      "id": "C11",
+      "claim": "对 EverAgent 的最小验证方案可建立在官方标志之上：先用 --helpBuildRoute 取 knob 数据库，用 --dryRun 估算 fast/full sweep（mixed 支持性需按目标版本核验），准备代表生产的输入与参考输出并设 --accuracyThreshold 与 --refPair，再用 --tuningCacheFile 加 --continue 分段恢复，必要时用 --saveAllEngines 定位精度回归，用 --setBuildRoute 调试单条 route，最终分发 engine 文件并把模型/shape/硬件/版本变更列为重调优触发条件；采用门槛应同时超过基线噪声上界和业务收益门槛，不能用固定 10% 代替统计与经济判断。",
+      "report_anchor": "9. 最小验证方案",
+      "support": "derived",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "官方标志、冲突的 dry-run 说明与重调优清单构成流程来源；“超过基线噪声上界与业务收益门槛”是本文建议并在正文标为分析者推导。",
+      "critical": false
+    },
+    {
+      "id": "C12",
+      "claim": "官方仓库没有独立 Global Performance Tuner 样例，Part 2 与文档把开源 trtexec 作为可扩展参考实现。TensorRT 11.1 文档已经提供 config.build_route / all_build_routes Python 属性；Part 2 另称同类 Python 调优实现计划在 Torch-TensorRT 2.15 发布，因此应区分现有 route 配置 API 与完整自动调优循环，不能概括为 Python 完全不可用。",
+      "report_anchor": "7.3 部署流水线",
+      "support": "direct",
+      "source_ids": [
+        "S04",
+        "S02",
+        "S03"
+      ],
+      "evidence": "samples/README.md 的样例清单、Part 2 的 open source trtexec 与 Torch-TensorRT 2.15 计划、Global Performance Tuning 文档的 Python API 代码段。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "Part 1 全文：调度作为编译问题、厨師类比、三类扩展性问题",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "1. 问题定义：单一 build route 的三种局限"
+    },
+    {
+      "id": "U02",
+      "title": "Part 1 的数学框架：模型/解空间、决定性原理、T、B/A、次优来源、可定制 build route",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "2. 数学框架"
+    },
+    {
+      "id": "U03",
+      "title": "Part 2 的机制：knob/build route、C++ API、trtexec 循环、200+ knob 与 Torch-TensorRT 2.15 计划",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02"
+      ],
+      "report_anchor": "3. GPT 的机制"
+    },
+    {
+      "id": "U04",
+      "title": "Part 2 的量化结果：10 个工作负载、默认 route 归一化 1.0×、1.14×–1.63×",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02"
+      ],
+      "report_anchor": "4. 基准设计与关键数字口径"
+    },
+    {
+      "id": "U05",
+      "title": "Part 2 的 ε 思想实验与「精度定边界、性能做排序」的角色分离",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02"
+      ],
+      "report_anchor": "3.6 「性能–精度纠缠」的思想实验"
+    },
+    {
+      "id": "U06",
+      "title": "官方文档：C++/Python route API、trtexec 标志、精度校验、缓存恢复及 dry-run 表述冲突",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S03"
+      ],
+      "report_anchor": "3.4 搜索策略与运行控制"
+    },
+    {
+      "id": "U07",
+      "title": "官方文档 Caveats：机会性收益、knob 覆盖、版本/模型/硬件依赖、阈值敏感、跨版本无保证、引擎非 bit 确定性、保证范围",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S03"
+      ],
+      "report_anchor": "6. 确定性与可复现性"
+    },
+    {
+      "id": "U08",
+      "title": "工程接入成本、最佳实践与重调优触发条件",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "5. 工程接入成本"
+    },
+    {
+      "id": "U09",
+      "title": "与常规 builder、手工 tactic、kernel 级 autotune 等路线的定性比较",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "8. 与常规 builder"
+    },
+    {
+      "id": "U10",
+      "title": "反方解释与官方机会性收益自陈",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "10. 反方解释"
+    },
+    {
+      "id": "U11",
+      "title": "Limitations 与思考与追问",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "11. Limitations"
+    },
+    {
+      "id": "U12",
+      "title": "官方仓库现状：开源 trtexec 为参考入口、无独立 GPT 样例、Python route API 与完整 tuner loop 的边界",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S04"
+      ],
+      "report_anchor": "7.3 部署流水线"
+    },
+    {
+      "id": "U13",
+      "title": "标志与 API 速查表",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "附录 B"
+    },
+    {
+      "id": "U14",
+      "title": "TensorRT-LLM 等上层推理栈与 GPT knob 的交互",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "report_anchor": "",
+      "omission_reason": "两篇博客与官方文档均未讨论上层栈（如 TensorRT-LLM）与 GPT knob 的交互，无法从一手材料获得可核对的事实；仅在 Limitations 中作为 [待验证] 缺口标注，不做推测性展开。"
+    }
+  ],
+  "limitations": [
+    "唯一的量化结果（10 个工作负载、默认 route 归一化 1.0×、1.14×–1.63×）缺少 GPU 型号、模型名称、shape、绝对延迟与软件版本，不可独立复现，本文一律标注为厂商自报。",
+    "本次研究未在任何 GPU 上运行 benchmark，全部性能数字来自 NVIDIA 官方口径。",
+    "官方未给出任何 route 的典型构建耗时或 sweep 总时长，也未给出候选数量与命中分布，因此无法计算回本门槛。",
+    "精度边界由用户定义且可被放宽；博客数字中精度让步与性能提升的配比不可见。",
+    "引擎构建非 bit 确定性，且 builder 可能覆盖显式 route 的部分 knob，route 字符串不可作为事实来源。",
+    "knob 集合与默认值随版本变化，最佳 route 依赖模型/shape/GPU SKU/驱动/CUDA，跨环境迁移不成立。",
+    "官方自陈机会性收益：默认 route 对很多网络可能已经最优，GPT 不是普适推荐路径。",
+    "TensorRT 11.1 文档已有 build-route Python 属性，而 Part 2 说同类自动调优实现计划在 Torch-TensorRT 2.15 发布；本文未安装验证，完整 Python tuner loop 的边界仍需按实物确认。",
+    "官方未把 GPT 与任何其它自动调优方案放入同一对照表，本文第 8 节为层级与承诺范围的定性比较而非跑分对比。",
+    "TensorRT-LLM 等上层栈与 GPT knob 的交互在已读材料中无数据，标注为 [待验证]。",
+    "GPT 在搜索中如何处理「局部 profiling 与端到端失配」在已读材料中未说明，标注为 [待验证]。",
+    "本文标注为 [分析者推导] 的内容（归一化掩盖绝对量、判定门槛建议、六条反方解释中的推论、成本与回本分析、比较表的层级归类）均为推断而非官方陈述。",
+    "Part 2 与当前官方文档对 mixed search 是否支持 --dryRun 表述冲突；本文采用保守流程并要求按目标版本实测 CLI。"
+  ]
+}

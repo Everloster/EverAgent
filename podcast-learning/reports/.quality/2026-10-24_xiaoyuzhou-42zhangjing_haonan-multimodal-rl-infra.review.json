@@ -1,0 +1,434 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-24_xiaoyuzhou-42zhangjing_haonan-multimodal-rl-infra.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "review-haonan-podcast-20261025-gpt56sol",
+        "independent_context": true,
+        "explicit_model_override": true,
+        "override_reason": "用户要求由独立会话复核并验收 MiniMax 初稿"
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 94,
+        "request_coverage": 96,
+        "reasoning_quality": 94,
+        "readability": 95,
+        "limitations": 94
+      },
+      "score_reasons": {
+        "evidence_fidelity": "独立读取 shownotes、完整精编稿、22 个章节起点的原始转写窗口，并逐项抽查 C01–C08 的原始时间戳；transcript SHA、大小、段数与 audit_transcript.py 结果一致。初稿中的私有执行设备/绝对路径已从报告、evidence 与 artifact receipt 清除；H3 Max 与 Astra 的外部数字也重新绑定到 fal 一手页面和明确标注的二手报道。",
+        "request_coverage": "R01–R06 完整满足：静默转写、SHA 回执、转写审计、忠实精编、22 单元内容地图、五条展开主线、关键数字与时间戳、反方边界、Limitations、思考与追问均存在，报告可脱离 polished 独立阅读。",
+        "reasoning_quality": "报告没有停在节目摘要，而是用“个人积累”“能力分与 taste”“伪实时/真实时”“System 1/2 + recovery”“组织结构”五条因果主线重构访谈；分析者推断与嘉宾主张分开，口播估值、卡量级和 60 分均未冒充事实。",
+        "readability": "53 分钟节目被压缩成 283 行报告，速览、内容地图、主线、数字表和反方边界层级清晰；大量专名订正集中在元数据与精编头部，正文保留必要 [?]，没有用模板化短摘要替代论证。",
+        "limitations": "明确披露 ASR 专名风险、五类未消解词、无官方字幕、从业者单一视角、口播数字无统计口径、Astra 内部信息为转述与时间点保质期；外部 H3/Astra 数字已标一手自测或二手特定任务，未与节目主张混用。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08"
+      ],
+      "coverage_unit_ids_checked": [
+        "SC01",
+        "SC02",
+        "SC03",
+        "SC04",
+        "SC05",
+        "SC06",
+        "SC07",
+        "SC08",
+        "SC09",
+        "SC10",
+        "SC11",
+        "SC12",
+        "SC13",
+        "SC14",
+        "SC15",
+        "SC16",
+        "SC17",
+        "SC18",
+        "SC19",
+        "SC20",
+        "SC21",
+        "SC22"
+      ],
+      "source_content_map": [
+        {
+          "id": "RM01",
+          "title": "02:03 为什么从 MiroMind 的 Agent 转去混元做多模态 RL infra",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC01"
+          ],
+          "notes": "已对照 shownotes 章节、原始转写时间窗与报告锚点“主线一”；该单元的核心观点或 supporting 语境均在正文中有可追溯落点。"
+        },
+        {
+          "id": "RM02",
+          "title": "06:13 国内外 RL 的差距到底在哪",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC02"
+          ],
+          "notes": "已对照 shownotes 章节、原始转写时间窗与报告锚点“主线一”；该单元的核心观点或 supporting 语境均在正文中有可追溯落点。"
+        },
+        {
+          "id": "RM03",
+          "title": "07:45 Agent 和多模态的关系其实可以很紧密",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC03"
+          ],
+          "notes": "已对照 shownotes 章节、原始转写时间窗与报告锚点“主线一”；该单元的核心观点或 supporting 语境均在正文中有可追溯落点。"
+        },
+        {
+          "id": "RM04",
+          "title": "08:56 做 Agent 和做多模态，其实都是围城",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC04"
+          ],
+          "notes": "已对照 shownotes 章节、原始转写时间窗与报告锚点“主线一”；该单元的核心观点或 supporting 语境均在正文中有可追溯落点。"
+        },
+        {
+          "id": "RM05",
+          "title": "11:32 大厂不太能做具身",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC05"
+          ],
+          "notes": "已对照 shownotes 章节、原始转写时间窗与报告锚点“主线五”；该单元的核心观点或 supporting 语境均在正文中有可追溯落点。"
+        },
+        {
+          "id": "RM06",
+          "title": "12:37 多模态最后只有两条变现途径",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC06"
+          ],
+          "notes": "已对照 shownotes 章节、原始转写时间窗与报告锚点“主线二 / 主线五”；该单元的核心观点或 supporting 语境均在正文中有可追溯落点。"
+        },
+        {
+          "id": "RM07",
+          "title": "14:11 Seedance 到底为啥这么好",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC07"
+          ],
+          "notes": "已对照 shownotes 章节、原始转写时间窗与报告锚点“主线二”；该单元的核心观点或 supporting 语境均在正文中有可追溯落点。"
+        },
+        {
+          "id": "RM08",
+          "title": "15:14 多模态的竞争可能没那么激烈",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC08"
+          ],
+          "notes": "已对照 shownotes 章节、原始转写时间窗与报告锚点“主线二”；该单元的核心观点或 supporting 语境均在正文中有可追溯落点。"
+        },
+        {
+          "id": "RM09",
+          "title": "16:26 视频生成现在发展到什么程度了",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC09"
+          ],
+          "notes": "已对照 shownotes 章节、原始转写时间窗与报告锚点“主线二”；该单元的核心观点或 supporting 语境均在正文中有可追溯落点。"
+        },
+        {
+          "id": "RM10",
+          "title": "19:20 「抽卡」依然会存在，但概念可能会发生变化",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC10"
+          ],
+          "notes": "已对照 shownotes 章节、原始转写时间窗与报告锚点“主线二”；该单元的核心观点或 supporting 语境均在正文中有可追溯落点。"
+        },
+        {
+          "id": "RM11",
+          "title": "21:37 视频生成继续发展下去，可能会解锁什么样的机会",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC11"
+          ],
+          "notes": "已对照 shownotes 章节、原始转写时间窗与报告锚点“主线二”；该单元的核心观点或 supporting 语境均在正文中有可追溯落点。"
+        },
+        {
+          "id": "RM12",
+          "title": "22:22 MiniMax H3 到底什么水平",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S06",
+            "S11"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC12"
+          ],
+          "notes": "已对照 shownotes 章节、原始转写时间窗与报告锚点“主线三”；该单元的核心观点或 supporting 语境均在正文中有可追溯落点。"
+        },
+        {
+          "id": "RM13",
+          "title": "23:54 实时互动的技术真的成熟了吗",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S06",
+            "S11"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC13"
+          ],
+          "notes": "已对照 shownotes 章节、原始转写时间窗与报告锚点“主线三”；该单元的核心观点或 supporting 语境均在正文中有可追溯落点。"
+        },
+        {
+          "id": "RM14",
+          "title": "27:45 好多人做世界模型都做迷茫了",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC14"
+          ],
+          "notes": "已对照 shownotes 章节、原始转写时间窗与报告锚点“主线四”；该单元的核心观点或 supporting 语境均在正文中有可追溯落点。"
+        },
+        {
+          "id": "RM15",
+          "title": "30:55 做具身的两种正确路线",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC15"
+          ],
+          "notes": "已对照 shownotes 章节、原始转写时间窗与报告锚点“主线四”；该单元的核心观点或 supporting 语境均在正文中有可追溯落点。"
+        },
+        {
+          "id": "RM16",
+          "title": "32:22 为什么 Astra 给具身圈带来了比较大的震动",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S07"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC16"
+          ],
+          "notes": "已对照 shownotes 章节、原始转写时间窗与报告锚点“主线四”；该单元的核心观点或 supporting 语境均在正文中有可追溯落点。"
+        },
+        {
+          "id": "RM17",
+          "title": "37:27 聊聊具身训练的 reward 和数据",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC17"
+          ],
+          "notes": "已对照 shownotes 章节、原始转写时间窗与报告锚点“主线四”；该单元的核心观点或 supporting 语境均在正文中有可追溯落点。"
+        },
+        {
+          "id": "RM18",
+          "title": "40:12 具身的「大脑」，最后会变成大模型厂商的竞争吗",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC18"
+          ],
+          "notes": "已对照 shownotes 章节、原始转写时间窗与报告锚点“主线四 / 主线五”；该单元的核心观点或 supporting 语境均在正文中有可追溯落点。"
+        },
+        {
+          "id": "RM19",
+          "title": "41:59 在现在这个时间节点去做具身，是不是 49 年入国军",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC19"
+          ],
+          "notes": "已对照 shownotes 章节、原始转写时间窗与报告锚点“主线五”；该单元的核心观点或 supporting 语境均在正文中有可追溯落点。"
+        },
+        {
+          "id": "RM20",
+          "title": "45:24 Agent 开发的场景还是不够多",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC20"
+          ],
+          "notes": "已对照 shownotes 章节、原始转写时间窗与报告锚点“主线一”；该单元的核心观点或 supporting 语境均在正文中有可追溯落点。"
+        },
+        {
+          "id": "RM21",
+          "title": "46:42 多模态还有创业公司的机会吗",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC21"
+          ],
+          "notes": "已对照 shownotes 章节、原始转写时间窗与报告锚点“主线二 / 主线五”；该单元的核心观点或 supporting 语境均在正文中有可追溯落点。"
+        },
+        {
+          "id": "RM22",
+          "title": "47:38 具身里可能迎来了 GPT-3 时刻",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC22"
+          ],
+          "notes": "已对照 shownotes 章节、原始转写时间窗与报告锚点“主线四 / 主线五”；该单元的核心观点或 supporting 语境均在正文中有可追溯落点。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S06",
+        "S07",
+        "S11"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "复核先读 shownotes 与原始转写，再打开报告和 evidence。发现并修复一处公开仓隐私边界问题：生成者把私有执行设备名和远端绝对路径写入公开产物；现仅保留远端静默 worker、SHA、大小、版本和审计结果。另移除无明确来源的 14.4% 动作步，并为 H3 Max 速度补 fal 一手自测来源。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 94.55,
+    "evaluated_on": "2026-10-25",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "d034ef1c328a81a0e05274fc84e24e5248167a29dade63ac92fd620d5dd0355d",
+    "evidence_sha256": "1e616486284148df3775258ba44c4c55a43e4e9ccfae9914b388c1541678d478"
+  }
+}

@@ -1,0 +1,260 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/vLLM_DeepSeek-V4.1-Flash_PD分离与Wide-EP机架级服务_深度解析_20261025.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-6",
+        "harness": "codex",
+        "run_id": "review-vllm-deepseek-v41-20261025-gpt6",
+        "independent_context": true,
+        "explicit_model_override": false
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 96,
+        "request_coverage": 97,
+        "reasoning_quality": 94,
+        "readability": 91,
+        "limitations": 96
+      },
+      "score_reasons": {
+        "evidence_fidelity": "独立回读两篇 vLLM 博客、DeepSeek 模型卡、固定 commit 的 DeepInfer README、AgentX 方法学与 InferenceX 指标词典，并直接读取 vLLM 三个交互图 HTML 的内嵌数组。修订后头条点的 64 GPU、并发 10,888、16×DEP2+DEP32、all-token/output-only、P90/TTFT、7.9×/9.9× 分母和 DeepInfer 逐点数据均可追溯。",
+        "request_coverage": "R01–R05 完整覆盖：模型结构、P/D、DEP、Wide-EP、EPLB、CPU 开销、专用路径、AgentX 口径、DeepInfer 对照、硬件前提、替代路线、双仓抽象价值、反方解释、限制和追问均有独立章节。",
+        "reasoning_quality": "报告能把机制、实测点、售价映射和项目推断分开。修订后不再把 closed-loop 误译为闭源，不再把 `$38.96` 当成本，不再把 7.9× 说成分母缺失或叠乘结果，也不再把 decode 对照写成不可归一化；仍保留同机同脚本复测缺失、共享血缘和 prefill 不可比等实质边界。",
+        "readability": "目录、数据流图、数字核对表和附录速查可帮助定位，但全文较长，§8–§12 的部分口径说明存在重复。技术密度高但主线仍清楚，适合作为长期参考。",
+        "limitations": "明确说明性能未独立复现、DeepInfer 点来自图片读取、prefill 设置不同、AgentX 闭环负载漂移、CPU 优化行不可相加、TCO/可靠性未覆盖。也准确区分了“交互图数据可审计”与“测量真实性已验证”。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C10",
+        "C11",
+        "C14"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08",
+        "U09",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16",
+        "U17"
+      ],
+      "source_content_map": [
+        {
+          "id": "SCM01",
+          "title": "DeepSeek-V4.1-Flash 的 CED、CSA2、KV 压缩、MoE/DSpark/Engram 结构决定服务瓶颈",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S04",
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01",
+            "U02"
+          ],
+          "notes": "模型卡与 vLLM 复述逐项核对，性能结论仍标为自报。"
+        },
+        {
+          "id": "SCM02",
+          "title": "vLLM 以 DEP2 prefill、Wide-EP decode、NIXL KV 传输和 EPLB 构成机架级 P/D 服务",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03",
+            "U04",
+            "U05"
+          ],
+          "notes": "部署形态已按头条点修正为 16×DEP2 + DEP32，共 64 GPU，而非把整台 NVL72 的 72 GPU 全部写成 decode ranks。"
+        },
+        {
+          "id": "SCM03",
+          "title": "prefill 三项优化与 DP 不均衡数字说明小 DEP 和长上下文 replay 的具体收益",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04"
+          ],
+          "notes": "各数字、PR 号和 128K cached prefix 条件均核对。"
+        },
+        {
+          "id": "SCM04",
+          "title": "Wide-EP 的递减收益、EPLB balancedness 与异构 target/draft 重排定义清楚",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U05"
+          ],
+          "notes": "DEP4→DEP32、0.35→0.94、0.21→0.89、3000/1000 step 窗口均覆盖。"
+        },
+        {
+          "id": "SCM05",
+          "title": "机架级 CPU 开销可反超 GPU 收益，四类修复来自不同设置不能相加",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06",
+            "U12"
+          ],
+          "notes": "NIXL、递归倍增、准入限流与长 prompt admission 四行效果和设置完整。"
+        },
+        {
+          "id": "SCM06",
+          "title": "AgentX 头条点与旧基线的完整逐点数据嵌在公开交互图中",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S05"
+          ],
+          "matched_coverage_unit_ids": [
+            "U08",
+            "U10",
+            "U16"
+          ],
+          "notes": "新点 954146.03/6865.90/196.46/7.974 与旧点 120679.53/692.92/171.53 可复算 7.9×/9.9×；并发和 P/D 配置不再列为缺失。"
+        },
+        {
+          "id": "SCM07",
+          "title": "$38.96/GPU-hour 是 Token Revenue per GPU Hour，不是基础设施成本",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S06"
+          ],
+          "matched_coverage_unit_ids": [
+            "U08",
+            "U11",
+            "U12"
+          ],
+          "notes": "InferenceX 词典明确把售价映射与 TCO tokens/$ 分开。"
+        },
+        {
+          "id": "SCM08",
+          "title": "DeepInfer decode 对照统一到 requests/GPU 与 output token/s/GPU，但参考点来自已发布图片",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U09",
+            "U13"
+          ],
+          "notes": "交互图公开两组 token/s/user 数组及 batch×tps 公式；同为 SM100 世代，但 32×GB200 与 64×SM100 不是同机同脚本复测。"
+        },
+        {
+          "id": "SCM09",
+          "title": "AgentX 是闭环合成回放，保留会话拓扑与 KV 复用但不测模型质量",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S05"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10",
+            "U11"
+          ],
+          "notes": "393 会话、142k/444 中位数、1 小时窗口、固定接受长度、DRAM 规则和负载漂移均覆盖。"
+        },
+        {
+          "id": "SCM10",
+          "title": "可迁移价值在负载分离、负载均衡、编排开销与缓存亲和，不在复刻 NVL72",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U14",
+            "U15"
+          ],
+          "notes": "正文删除了公开报告中的私人 provider/设备叙述，只保留任务形态层面的抽象。"
+        },
+        {
+          "id": "SCM11",
+          "title": "研究边界包括自报测量、共享血缘、prefill 不可比和缺少完整成本可靠性分析",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11",
+            "U15",
+            "U17"
+          ],
+          "notes": "反方解释和 Limitations 已按交互图新证据重写。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "来源优先复核发现并修复四个会改变主结论的问题：未读取交互图导致把已披露配置写成缺失；把 NVL72 机架写成 72 GPU 全参与头条点；把 closed-loop 误译为闭源；把 token revenue/GPU-hour 当作成本。另修正 7.9× 分母、output-only 9.9×、DeepInfer per-GPU 归一化与 nextn 配置。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 95.05,
+    "evaluated_on": "2026-10-25",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "883e78b2f76a9899575865bab1fc23336a18be3528ed88a9fe873f052b4a92ce",
+    "evidence_sha256": "ab305d7f872c20249178e78350660bb9ef9f937b50d0662ff991d980e0b9d2e9"
+  }
+}

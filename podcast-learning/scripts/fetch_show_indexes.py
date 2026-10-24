@@ -8,6 +8,8 @@
 - 新增单集检测：与旧文件按 **guid + 链接双键** diff（guid 藏在标题单元格的 HTML 注释里，
   防单集链接换域名时全量误报 NEW + 状态丢失——2026-08-31 硅谷101 sv101.net→fireside.fm 实例），
   stdout 汇总打印 NEW 行；某节目新增占比 > 30% 判为疑似链接变更，降级 SUSPECT 不计入 NEW
+- 版本化索引只在单集清单、元数据或状态真正变化时写入；单纯刷新日期不制造 diff。
+  同一单集页面链接未变时保留旧 guid，避免喜马拉雅等源轮换音频 CDN 地址造成无意义改动
 - 幂等；失败节目跳过并在结尾汇总，不静默
 
 用法：
@@ -114,13 +116,13 @@ def norm_link(link):
 
 
 def load_old_keys(path):
-    """旧索引的键 → 状态 映射，键含链接与 guid 两套（guid 在标题单元格 HTML 注释里）。
+    """读取旧索引的链接/guid 状态，并保存每个稳定页面链接对应的旧 guid。
 
     状态列可能含 |（如 [[wikilink|别名]]），不能用 split('|')，用正则按列取。
     """
-    by_link, by_guid = {}, {}
+    by_link, by_guid, guid_by_link = {}, {}, {}
     if not path.exists():
-        return by_link, by_guid
+        return by_link, by_guid, guid_by_link
     for line in path.read_text(encoding="utf-8").splitlines():
         # 链接后 [^|]* 段容纳 guid 注释；状态列用贪婪 (.*) 到行尾竖线——
         # 状态可含 [[wikilink|别名]] 的竖线，不能用 [^|]*（跨不过去会整行失配）
@@ -128,11 +130,18 @@ def load_old_keys(path):
         if not m:
             continue
         status = m.group(3).strip()
-        by_link[norm_link(m.group(1))] = status
+        link_key = norm_link(m.group(1))
+        by_link[link_key] = status
         g = re.search(r"<!--g:(.*?)-->", m.group(2))
         if g:
             by_guid[g.group(1)] = status
-    return by_link, by_guid
+            guid_by_link[link_key] = g.group(1)
+    return by_link, by_guid, guid_by_link
+
+
+def without_refresh_stamp(text):
+    """比较版本化内容时忽略“最近拉取”日期；真正有变化时仍写入本次日期。"""
+    return re.sub(r"(最近拉取：)\d{4}-\d{2}-\d{2}", r"\1<date>", text)
 
 
 def fetch(url):
@@ -214,7 +223,7 @@ def main(argv=None):
             items = re.findall(r"<item>(.*?)</item>", xml, re.S)
             if not items:
                 raise ValueError("RSS 无 item")
-            old_by_link, old_by_guid = load_old_keys(dest)
+            old_by_link, old_by_guid, old_guid_by_link = load_old_keys(dest)
             has_old = bool(old_by_link or old_by_guid)
             rows, show_new = [], []
             for it in items:
@@ -222,9 +231,12 @@ def main(argv=None):
                 guid = field(it, "guid")
                 date, dur = fmt_date(field(it, "pubDate")), fmt_dur(field(it, "itunes:duration"))
                 m = re.match(r"(\d+)\s*[\.、]", t)
-                known = guid in old_by_guid or norm_link(link) in old_by_link
-                status = old_by_guid.get(guid) or old_by_link.get(norm_link(link), "—")
-                rows.append((m.group(1) if m else "—", date, dur, t, link, status, guid))
+                link_key = norm_link(link)
+                known = guid in old_by_guid or link_key in old_by_link
+                status = old_by_guid.get(guid) or old_by_link.get(link_key, "—")
+                # 页面链接稳定时，旧 guid 比会轮换的 enclosure/CDN 地址更适合作为版本化标识。
+                stable_guid = old_guid_by_link.get(link_key, guid)
+                rows.append((m.group(1) if m else "—", date, dur, t, link, status, stable_guid))
                 if has_old and not known:
                     show_new.append((t, link, date))
             # 护栏：新增占比过高 → 疑似链接变更，降级不计入 NEW
@@ -236,7 +248,7 @@ def main(argv=None):
             rows.sort(key=lambda r: (r[0].isdigit() and int(r[0]) or 0, r[1]), reverse=True)
             rendered = render(title, feed, rows, today)
             old_text = dest.read_text(encoding="utf-8") if dest.exists() else ""
-            changed = old_text != rendered
+            changed = without_refresh_stamp(old_text) != without_refresh_stamp(rendered)
             if changed and not args.dry_run:
                 dest.write_text(rendered, encoding="utf-8")
             results.append({

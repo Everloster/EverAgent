@@ -1,10 +1,11 @@
 # 听懂涨声 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/lulbgftcj6vw>）｜ 最近拉取：2026-10-19 ｜ 总集数：114
+> 来源：官方 RSS（<https://feed.xyzfm.space/lulbgftcj6vw>）｜ 最近拉取：2026-10-25 ｜ 总集数：115
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-10-23 | 1h02m | [从“大结果”到“大红果”：年轻人为什么不想再卷了？](https://www.xiaoyuzhoufm.com/episode/6adb3c3c97726cd46756a0f6?utm_source=rss)<!--g:6adb3c3c97726cd46756a0f6--> | — |
 | — | 2026-10-19 | 1h20m | [好消息是新政终于来了，坏消息是买房人还在等](https://www.xiaoyuzhoufm.com/episode/6ad22523641ef406308cbdcb?utm_source=rss)<!--g:6ad22523641ef406308cbdcb--> | — |
 | — | 2026-10-09 | 1h28m | [中国家庭最缺的一课：一对父子关于钱、认知与风险的坦白局](https://www.xiaoyuzhoufm.com/episode/6ac77fd3e742e36efcbfdde6?utm_source=rss)<!--g:6ac77fd3e742e36efcbfdde6--> | ✅ 已处理（2026-10-09 xiaoyuzhou-tingdong-zhangsheng_father-son-money） |
 | — | 2026-09-14 | 53m06s | [对话趋势动物Nick：我一个长居上海的人，怎么就跑到新疆买房了呢？](https://www.xiaoyuzhoufm.com/episode/6aa7aed99d3264778168e66c?utm_source=rss)<!--g:6aa7aed99d3264778168e66c--> | — |

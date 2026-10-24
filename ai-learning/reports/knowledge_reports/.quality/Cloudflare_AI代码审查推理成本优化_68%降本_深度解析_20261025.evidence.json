@@ -1,0 +1,406 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/Cloudflare_AI代码审查推理成本优化_68%降本_深度解析_20261025.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-25",
+  "generator": {
+    "model": "minimax-m3.1-flash",
+    "harness": "pi",
+    "run_id": "generator-cloudflare-cost-20261025",
+    "explicit_model_override": true,
+    "override_reason": "用户明确要求优先使用 MiniMax M3.1 Flash（额度耗尽后才切 GLM-5.3）"
+  },
+  "task": {
+    "summary": "深读 Cloudflare 2026-10-19《Cutting our inference bill by 68% by being obsessive about optimization》，并实际读取其直接链接的一手材料（Cloudflare 2026-04-20 两篇博客与 Anthropic 官方 Prompt Caching 文档），重构 AI code reviewer 单次成本从 2.43 美元降到 0.77 美元的优化链：计量口径、模型与 effort 路由、prompt/context 压缩、缓存、并发与工具调用、取消与超时治理、质量门与回归评估；核验 68% 的分母、时间窗口、样本与混淆项，拆成可复现的成本方程与优先级，并给出对 EverAgent 报告生产、日报、播客与多 Agent harness 的可迁移项、必要 eval 与失效条件。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "重构优化链：计量口径、模型与 effort 路由、prompt/context 压缩、缓存、并发、工具调用、质量门与回归评估。"
+      },
+      {
+        "id": "R02",
+        "text": "逐项核验 68% 的分母、时间窗口、样本与是否同时改变质量/模型/工作负载。"
+      },
+      {
+        "id": "R03",
+        "text": "把各优化拆成可复现的成本方程和优先级。"
+      },
+      {
+        "id": "R04",
+        "text": "评估对 EverAgent 报告生产、日报、播客和多 Agent harness 的可迁移项、必要 eval 与失效条件。"
+      },
+      {
+        "id": "R05",
+        "text": "不得把相关性写成因果，不得把平均成本当尾部成本，不得把质量未下降的厂商自述当独立验证，不得写入私有设备、网络、账号或额度信息。"
+      },
+      {
+        "id": "R06",
+        "text": "只完成初稿与 evidence、空白 review；不做独立复核、不 finalize、不更新 MAP/wiki/全局索引、不提交、不推送。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "primary",
+      "title": "Cloudflare Blog (2026-10-19) — Cutting our inference bill by 68% by being obsessive about optimization",
+      "locator": "https://blog.cloudflare.com/obsessive-inference-optimization",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S02",
+      "kind": "primary",
+      "title": "Cloudflare Blog (2026-04-20) — Orchestrating AI Code Review at scale",
+      "locator": "https://blog.cloudflare.com/ai-code-review",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S03",
+      "kind": "primary",
+      "title": "Cloudflare Blog (2026-04-20) — The AI engineering stack we built internally, on the platform we ship",
+      "locator": "https://blog.cloudflare.com/internal-ai-engineering-stack",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S04",
+      "kind": "official",
+      "title": "Anthropic 官方文档 — Prompt Caching",
+      "locator": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching",
+      "accessed_on": "2026-10-25"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "成本可写成四段方程：未缓存输入 + 缓存写(1.25×基准输入价) + 缓存读(0.1×) + 输出；由于每次调用都重发整段会话，总成本≈调用次数×上下文规模×四段加权，因此只有三个可动把手：缓存命中率、调用次数、单位 token 价与 effort。",
+      "report_anchor": "1.1 先把「成本」写成方程",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S04"
+      ],
+      "evidence": "1.25×/0.1× 与 TTL 规则来自 Anthropic 官方文档价格与缓存说明；「每次调用都把整段会话作为上下文重发」「16.6 次调用、每次写 72k 读 1.08M token」来自 Cloudflare 原文；方程形式为分析者据两者构造。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "优化前 AI review 花费构成为输出约 23%、缓存写约 43%、缓存读约 34%（未缓存输入≈0），即绝大多数支出花在模型已看过或即将再看一遍的上下文上。",
+      "report_anchor": "1.2 优化前钱花在哪",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "原文「Right before we started focusing on cost optimization, our AI review spend was split by: output tokens making up about 23%, cache writes cost 43%, and cache reads cost 34%」。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "成本从 1.19 涨到约 2.43 的主因被原文归为模型与 effort 变更：8 月初全部 reviewer 切到 Anthropic 模型使每次 job 从 1.38 美元升到 2.03 美元，内部标准审查器换到 Claude Opus 4.7 使其从约 0.25 美元升到 0.88 美元；full 档占比从 59% 升到 65% 被归为小头且原文称之为相关性而非受控结论。",
+      "report_anchor": "2.2 涨价的两个来源",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "原文「At the start of August we moved every reviewer onto Anthropic models, which raised the cost per job from $1.38 to $2.03」「Codex … took it from about $0.25 per review to $0.88 in August」以及 59%→65% 的档位占比。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "缓存命中率提高本身不足以降本：命中率从 4 月 85.7% 升到 9 月 97%，但每次 review 的 token 数从 0.91M 涨到 2.99M，原文明确「高命中率乘以三倍的 token，依然要花很多钱」。",
+      "report_anchor": "2.3 一个容易被忽略的事实",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "原文「The cache hit rate also increased, going from 85.7% in April to 97% by September, while the number of tokens per review more than tripled, from 0.91 million to 2.99 million. A high hit rate on three times as many tokens still costs a lot more」。",
+      "critical": false
+    },
+    {
+      "id": "C05",
+      "claim": "最大单笔收益来自 2026-09-16 的前缀结构改造：OpenCode v1 把 agent prompt 与含工作目录和日期的环境段合成一个 block 且只在该 block 末尾设缓存断点，导致跨仓库无法复用；改造后首个请求的缓存读取率从 14–26% 升到 91–99.5%，与把 Codex 参考索引移入 prompt（LLM 调用 15.9→9.6、成本 1.12→0.72 美元）合计把每次 review 从 2.47 降到 2.02 美元。",
+      "report_anchor": "3.2 2026-09-16：把共享前缀从易变内容后面挪出来",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "原文说明 v1 的 block 结构与唯一断点位置、9/14 的哈希与用量埋点、9/16 的标记切分与禁用 skills 列表/冻结工具描述、命中率 14–26%→91–99.5% 的图注，以及 Codex 的调用与成本变化与「$2.47 down to $2.02」。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "2026-09-21/23 的六项措施单独收益小、合计约 0.20 美元/review：移除子 reviewer 用不到的工具（57%–76% 会话尝试调用被拒工具并多花一次调用，每个子 reviewer 请求少 2.9k token 工具定义）、并行读文件（64% 回合只有一次工具调用，改为首轮读至最多 150 KB）、重审跳过无变化 reviewer（AGENTS.md 56%、performance 23%、documentation 13%）、发布后停止（约 0.07 美元/job）、区分慢与坏（security 超时率 1.8%→几乎为零）、取消自检（446 个取消 job 样本中 358 个仍跑到结束，改为每 15 秒自查）。",
+      "report_anchor": "3.3 2026-09-21 与 09-23",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "原文表格逐行给出问题描述与效果数值。",
+      "critical": true
+    },
+    {
+      "id": "C07",
+      "claim": "三个 reviewer 共享同一首请求（一个写缓存、两个读）每个 reviewer 省约 9 美分，代价是后两个最多等第一个响应开始流式返回 20 秒；Anthropic 官方文档确认缓存条目在写入它的响应开始流式返回前不可被读取。",
+      "report_anchor": "3.4 三 reviewer 共享同一首请求",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S04"
+      ],
+      "evidence": "原文描述共享前缀机制、20 秒等待与「saves about nine cents per reviewer」；Anthropic 文档说明缓存条目在被读取前需等写入它的响应开始流式返回（caches the prefix once the response begins）。",
+      "critical": false
+    },
+    {
+      "id": "C08",
+      "claim": "模型与 effort 变更的收益被原文判定为大于代码改动：Sonnet 5.5 与 Sonnet 5 每 token 同价，5.5 每次运行便宜 62%/58%/47%（code quality/performance/security）因此收益全部来自更少 token；code quality 调用数从 6.2 降到 1.7（medium）/3.4（high）；high 相对 medium 每次运行贵 61% 而 critical+warning findings 多 58%（约 2 美分/review）；自 9 月初起缓存读 −82%、缓存写 −54%、输出 −67%。",
+      "report_anchor": "3.5 模型与 effort 变更",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "原文模型/effort 段落与「Opus 5.5 is cheaper per token than Opus 5, but price is only responsible for about $0.20 of the drop. The rest comes from sending and generating fewer tokens」以及 token 结构变化句。",
+      "critical": true
+    },
+    {
+      "id": "C09",
+      "claim": "[推测] 68% 的分母是优化前最贵的两周平均 2.43 美元，而 2026-04 公布的平均值为 1.19 美元、中位 0.98 美元；因此以四月基线计降幅约 35%，68% 是相对峰值窗口的最大降幅。",
+      "report_anchor": "4.1 分母核验",
+      "support": "inference",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "S01 明确「down 68% from the $2.43 it averaged over our two most expensive weeks before we started」；S02 给出四月平均 $1.19 / 中位 $0.98。35% 为分析者依两数推算，报告已标注。",
+      "critical": true
+    },
+    {
+      "id": "C10",
+      "claim": "各措施的收益不能作因果归因：原文自述每一步都是「比较变更前后的工作日小时数，这不是统计上受控的实验」；且「代码 0.65 美元 / 模型与 effort 1.06 美元」的合计与总差值 1.66–1.67 美元之间存在 0.04–0.05 美元的四舍五入出入。",
+      "report_anchor": "4.3 金额加总与四舍五入的不一致",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "原文原句「Each step compares the weekday hours before a change with the hours after it, so this isn't a statistically sound controlled experiment」与「Code changes account for $0.65 of the $1.67, and model and effort changes for $1.06」；差值比较为分析者推算。",
+      "critical": true
+    },
+    {
+      "id": "C11",
+      "claim": "2.43→0.77 是代码优化、模型与 effort 变更、OpenCode v1→v2 换代与工作负载漂移（full 档占比 59%→65%、每 review token 0.91M→2.99M）的合并结果；且优化后只公布平均成本与耗时分位数，未公布成本分位数，四月 P99/平均约 3.7× 的长尾是否保留未知。",
+      "report_anchor": "是否同时改变了质量、模型与工作负载",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "S01 给出模型切换、effort 变更、v2 影子模式与 token/档位变化，并只公布成本均值与耗时分位；S02 给出四月成本分位数。合并归因与长尾推论为分析者结论，报告已标注。",
+      "critical": true
+    },
+    {
+      "id": "C12",
+      "claim": "质量用两条独立路径评估：行为代理（作者是否修改被标记的行，基线为邻近 30–40 行约 15% 的偶然改动，code quality 采纳率 34%→59%，每 1,000 次 review 产生改动的严重 findings 132 vs 145 处于误差范围内，四个 reviewer 合计 229→321）与跨厂商盲评（657 条 findings 盲化样本，两家厂商模型评审加第三方仲裁，important findings 0.28→0.30，严重度虚高 0.46→0.14）；但 performance 在 medium effort 下确实丢失真实发现（important −64%，约每 24 次 full 档 review 少一条），security 疑似 −1/4 且不显著。",
+      "report_anchor": "5. 质量与延迟评估",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "原文两个质量章节给出上述全部数值与方法，并明确 performance「judges found about 64% fewer important performance issues per review」、security 下降不显著、以及「code quality at medium led to roughly a quarter as many acted-on findings as at high」。",
+      "critical": true
+    },
+    {
+      "id": "C13",
+      "claim": "质量与可靠性证据自带的限定为：每组仅 35–66 条 findings、「现在」窗口仅一天、评审者本身也是模型、作者改动被标记行只说明行为不证明正确性；可靠性方面无结论 review 从 0.79% 降到 0.27%、security 重试率从 3.5% 降到 0.04%，延迟中位从 4m09s 降到 1m32s、P99 从 15m20s 降到 4m41s、超过 5 分钟的 review 占比从 37.9% 降到 0.7%。",
+      "report_anchor": "可靠性与延迟",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "原文「Neither method is perfect…」段落与可靠性/延迟两节的具体数值。",
+      "critical": true
+    },
+    {
+      "id": "C14",
+      "claim": "至少存在四个可对照的替代降本路径：规则/静态分析优先（把可判定检查移出 LLM）、把负载下沉到自托管低成本推理（Cloudflare 的 Workers AI 承接约 15% reviewer 流量、Kimi K2.5 便宜 77%、安全 agent 每天 70 亿 token）、用 Code Mode 折叠工具 schema（34 个工具约 15,000 token/请求 → 2 个 portal 工具）、以及用上下文压缩替代缓存（在前缀无法共享时更适用但有信息损失），另加尾部资源治理（取消的 job 仍照常计费）。",
+      "report_anchor": "6. 替代方案",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "Workers AI 15%、Kimi 77%、安全 agent 70 亿 token/天与 Code Mode 的 34 工具/15,000 token/7.5% 数字来自 S03；取消 job 仍在跑的样本来自 S01；规则优先与压缩替代为本文提出的对照方案并标注各自边界。",
+      "critical": false
+    },
+    {
+      "id": "C15",
+      "claim": "对 EverAgent 的可迁移性受工作负载形态限制：Cloudflare 的最大收益依赖跨仓库共享同一份 agent prompt 与同一工具集，而 EverAgent 的多数任务上下文各不相同，因此「共享前缀」类措施需改造才成立；其质量结论建立在依赖数十万次真实 review 之上，EverAgent 的报告量级只会产生小样本统计。",
+      "report_anchor": "7. 对 EverAgent 的可执行迁移清单",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "S01/S02 显示共享前缀的可复用性来自跨 5,169 仓库的同一 11k–21k token agent prompt 与冻结工具描述；样本规模数字来自 S02。迁移判断为分析者结论，报告已给出逐项适用性与失效条件。",
+      "critical": false
+    },
+    {
+      "id": "C16",
+      "claim": "缓存类优化有明确失效条件：默认 5 分钟 TTL 下长于 5 分钟才读取的条目等于从未命中（Anthropic 另提供 1 小时 TTL 选项），且前缀中任何易变内容（时间戳、工作目录、随机 ID、动态技能列表）都会使共享前缀失效；因此缓存是时序依赖且必须与 token 总量、取消/超时浪费同时监控。",
+      "report_anchor": "8. 失效条件",
+      "support": "direct",
+      "source_ids": [
+        "S04",
+        "S01"
+      ],
+      "evidence": "Anthropic 文档给出 5 分钟默认 TTL 与 1 小时选项及 5m/1h 写入价差异；Cloudflare 原文说明为保持共享前缀稳定而禁用 skills 列表、禁止工具描述变化，以及「每 5 分钟才读取」的 TTL 语义与缓存条目写入后需被读取才刷新。",
+      "critical": true
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "问题定义、成本方程与优化前的花费构成",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S04"
+      ],
+      "report_anchor": "1. 问题定义与成本方程"
+    },
+    {
+      "id": "U02",
+      "title": "成本上升的时间线与归因（模型/effort 变更、档位构成、缓存命中与 token 量）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "report_anchor": "2. 优化前：成本为什么从 1.19 涨到 2.43"
+    },
+    {
+      "id": "U03",
+      "title": "优化链逐项拆解：前缀切分、单请求措施、三 reviewer 共享前缀、模型与 effort 路由、OpenCode v2",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "3. 优化链逐项拆解（按发布日期）"
+    },
+    {
+      "id": "U04",
+      "title": "68% 的口径核验：分母、时间窗、样本、加总不一致与混淆项",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "report_anchor": "4. 68% 的口径核验"
+    },
+    {
+      "id": "U05",
+      "title": "质量评估（行为代理 + 跨厂商盲评 + 负面结论）与延迟/可靠性",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "5. 质量与延迟评估"
+    },
+    {
+      "id": "U06",
+      "title": "至少两个替代降本方案及其边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "6. 替代方案"
+    },
+    {
+      "id": "U07",
+      "title": "对 EverAgent 报告生产/日报/播客/多 Agent harness 的可执行迁移清单与反方边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "7. 对 EverAgent 的可执行迁移清单"
+    },
+    {
+      "id": "U08",
+      "title": "失效条件",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S04"
+      ],
+      "report_anchor": "8. 失效条件"
+    },
+    {
+      "id": "U09",
+      "title": "Limitations 与思考与追问",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "9. Limitations"
+    },
+    {
+      "id": "U10",
+      "title": "四月博客中的系统架构细节：风险分层、模型分层、插件化、超时与熔断、共享 MR 上下文、AGENTS.md reviewer",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S02"
+      ],
+      "report_anchor": "附录 B"
+    },
+    {
+      "id": "U11",
+      "title": "内部 AI 工程栈：Workers AI 承接比例、Kimi K2.5 成本、Code Mode 工具折叠",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S03"
+      ],
+      "report_anchor": "附录 B"
+    },
+    {
+      "id": "U12",
+      "title": "Cloudflare 的其它 Agent 产品线（Agent Memory、Code Orange 计划、background agents）",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "S03"
+      ],
+      "report_anchor": "",
+      "omission_reason": "与「AI code reviewer 推理成本优化」这一研究问题无直接关系，且属于产品叙事；仅保留与成本/质量/路由直接相关的部分（Workers AI 占比、Kimi 成本、Code Mode token 节省）。"
+    }
+  ],
+  "limitations": [
+    "全部数字为 Cloudflare 自报，无独立第三方复现；本次研究未运行任何被测系统。",
+    "68% 的分母是优化前最贵的两周；以四月平均 1.19 美元为基线则约 −35%（分析者推算），原文另出现 2.32/2.44/2.46/2.47 多个 8 月数值。",
+    "原文自述各步骤均为「变更前后工作日小时数」比较，非统计受控实验，收益不可相加作因果归因；代码 0.65 与模型/effort 1.06 的合计与总差值存在 0.04–0.05 美元出入。",
+    "优化后未公布成本分位数，只公布了耗时分位数；四月 P99/平均约 3.7× 的成本长尾是否保留未知（不得以平均成本代表尾部）。",
+    "模型、effort、agent 框架（OpenCode v1→v2）与工作负载构成（full 档占比、token 总量）同时变化，2.43→0.77 不可归因给单一措施。",
+    "质量证据规模有限：盲评 657 条样本、每组 35–66 条、「现在」窗口仅一天；评审者为模型；作者改动被标记行只证明行为不证明正确性。",
+    "存在明确的负面结论：performance 在 medium effort 下 important findings 约 −64%，security 疑似 −1/4 且不显著；原文称下一步测 high effort。",
+    "未披露的口径：优化后成本分位数、缓存写入失败率、模型输出方差、缓存条目被驱逐比例、各 tier 成本分解、人工复核率。",
+    "「Opus 5.5 每 token 比 Opus 5 更便宜」为 Cloudflare 转述的定价信息，本文未独立核对 Anthropic 官方价目表。",
+    "可迁移性受限：其最大收益依赖跨仓库共享同一份 agent prompt 与冻结工具集的前提，EverAgent 多数任务不具备；模型与 effort 组合需在本工作负载重新测。",
+    "报告中标注为 [分析者推导] 的判断（替代基线 35%、四舍五入不一致、P99/平均比、混合归因与迁移判断）均为推断而非原文陈述。"
+  ]
+}

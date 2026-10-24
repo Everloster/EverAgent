@@ -11,9 +11,9 @@
 | — | 2026-09-02 | 1h02m | [180: 具身智能的金钱游戏：进展难测、收入催熟与 IPO 竞速](https://podcast.latepost.com/180)<!--g:68e222fe-2a2e-43ee-811a-dfdb445a9deb--> | ✅ 已处理（2026-09-02 rss-wandian-latetalk_embodied-money） |
 | — | 2026-08-17 | 49m33s | [179: 蒸馏风暴：一场无人公开谈论的技术竞赛](https://podcast.latepost.com/179)<!--g:da707393-af0f-4607-9712-93f469508667--> | — |
 | — | 2026-08-07 | 1h29m | [178: 与田渊栋聊 RSI：模型自进化如何到来？](https://podcast.latepost.com/178)<!--g:38fb4a6b-3eab-4c3e-b93c-7176ef17c668--> | — |
-| — | 2026-08-04 | 1h55m | [177: 详解Kimi K3：强到冲击Anthropic估值的模型什么样？](https://podcast.latepost.com/177)<!--g:460cc55b-c0f2-4898-95cf-f3372ece1eb2--> | ✅ 已处理（[[2026-08-04_rss-wandian-latetalk_kimi-k3| ✅ 已处理（2026-08-04 rss-wandian-latetalk_kimi-k3） |
+| — | 2026-08-04 | 1h55m | [177: 详解Kimi K3：强到冲击Anthropic估值的模型什么样？](https://podcast.latepost.com/177)<!--g:460cc55b-c0f2-4898-95cf-f3372ece1eb2--> | ✅ 已处理（[[2026-08-04_rss-wandian-latetalk_kimi-k3| ✅ 已处理（2026-09-02 multi_kimi-k3-dueling-reads） |
 | — | 2026-08-01 | 1h39m | [176: 姚顺雨，来到腾讯300天](https://podcast.latepost.com/176)<!--g:227e4d79-d5b7-4a39-a525-135cb9c6c111--> | — |
-| — | 2026-07-30 | 2h08m | [175: 对话Liblib陈冕：关于活下来，以及所有接近死亡的时刻](https://podcast.latepost.com/175)<!--g:f8201197-461a-4071-a1bd-7c8afc646978--> | — |
+| — | 2026-07-30 | 2h08m | [175: 对话Liblib陈冕：关于活下来，以及所有接近死亡的时刻](https://podcast.latepost.com/175)<!--g:f8201197-461a-4071-a1bd-7c8afc646978--> | ✅ 已处理（2026-07-30 xiaoyuzhou-wandian-latetalk_chenmian） |
 | — | 2026-07-28 | 1h31m | [174: AI冲击企业软件巨头？与SAP原欣聊大模型to B的颠覆与边界](https://podcast.latepost.com/174)<!--g:36e00501-28e2-47a2-9489-32bc7b788267--> | — |
 | — | 2026-07-22 | 2h55m | [173: 对话姚颂：深鉴、东方空间、再出发，「天才少年」十年后](https://podcast.latepost.com/173)<!--g:8cbbc05f-922d-49f2-9c3c-aef3b27cf18a--> | — |
 | — | 2026-07-15 | 2h03m | [172: Momenta IPO后再访曹旭东：就是想做没有尽头的AI](https://podcast.latepost.com/172)<!--g:88bdcde3-ba07-41d3-af81-61edbf4444a8--> | — |

@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/6acf81f0195d838e2af1e281",
+  "show": "张小珺Jùn｜商业访谈录",
+  "episode": "154. 对 Dyna 创始人 Lindon 的 3 小时访谈：机器人世界的迷雾、分歧与抉择，修心、《沉思录》与王阳明",
+  "published_on": "2026-10-15",
+  "status": "succeeded",
+  "silent": true,
+  "interactive_browser": false,
+  "audio_playback": false,
+  "transcription": {
+    "language": "zh",
+    "segments": 5195,
+    "duration_seconds": 10271,
+    "transcript_size_bytes": 260097,
+    "transcript_sha256": "e2ae46e944fc3b3d1ec7669c76345f3144298e8ac997adfb2b0e6fc67ed30cd3",
+    "engine": "whisper.cpp large-v3（CUDA，Silero VAD）",
+    "repetition_guard": {
+      "passed": true,
+      "max_consecutive_identical": 2
+    }
+  },
+  "transfer": {
+    "mode": "分片拉取并重组（2 片），按 SHA-256 校验",
+    "atomic": true,
+    "verified_sha256": true,
+    "local_path": "podcast-learning/reports/transcripts/2026-10-15_xiaoyuzhou-zhangxiaojun_vol154-dyna-lindon.transcript.txt"
+  },
+  "audit": {
+    "script": "podcast-learning/scripts/audit_transcript.py",
+    "ok": true,
+    "lines": 5195,
+    "segments": 5195,
+    "size_bytes": 260097,
+    "duration_seconds": 10271,
+    "max_consecutive_identical": 2,
+    "warnings": [],
+    "errors": [],
+    "head_coverage": "[00:00:00] 开场问候 → [00:00:09] 嘉宾自我介绍",
+    "tail_coverage": "[02:51:04] 结尾关于机器人感知世界与语言 → [02:51:11] 结束语"
+  },
+  "reference": {
+    "duration_label": "单集页标注 171 分钟；转写末段时间戳 02:51:11",
+    "source": "小宇宙单集页 shownotes（5 条 OUTLINE 章节：01:41 / 24:49 / 40:32 / 2:00:08 / 2:13:01）",
+    "note": "公开产物不记录远端路径、任务标识与内部运行标识。"
+  }
+}

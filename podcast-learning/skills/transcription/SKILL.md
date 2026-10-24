@@ -16,3 +16,5 @@
 - 转写不补写事实；无法确定的内容保留并标 `[?]`。
 - 人名、术语、数字和引文必须用 shownotes、字幕或其他一手材料核验。
 - 获取或转写失败时返回具体原因，不用有副作用的交互路径兜底。
+- `plan=ready` 后若 `run/result` 只返回 `nonzero_exit`，必须回到同一 job 的结构化错误核对真实失败层；不得把包装层错误直接猜成 CDN、网络或站点风控，也不得借用相邻 job 的时长或日志。
+- 提交到公开仓的报告、evidence 与 artifact receipt 只写“eacli podcast 远端静默 worker”，保留公开来源 URL、大小、SHA-256、段数、时长、服务版本与审计结果；不得复制执行设备名、远端绝对路径、job/plan/artifact 标识、账号或网络信息。

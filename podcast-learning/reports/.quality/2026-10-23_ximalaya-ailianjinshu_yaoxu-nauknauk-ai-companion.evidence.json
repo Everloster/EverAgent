@@ -1,0 +1,380 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-23_ximalaya-ailianjinshu_yaoxu-nauknauk-ai-companion.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-24",
+  "generator": {
+    "model": "minimax-m3.1-flash",
+    "harness": "pi",
+    "run_id": "generator-2026-10-23_ximalaya-ailianjinshu_yaoxu-20261024",
+    "explicit_model_override": true,
+    "override_reason": "用户明确指定：模型优先 MiniMax M3.1 Flash，额度耗尽后才切 GLM-5.3（user:2026-10-24:podcast-blog-until-1100）"
+  },
+  "task": {
+    "summary": "用 eacli podcast 远端静默 worker 下载并转写《AI炼金术》2026-10-23 单集（前小红书高管姚旭聊 NaukNauk），产出忠实转写、结构化精编、artifact 回执与一篇 standalone 的 report-v2 深度中文报告。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "先确认仓内未重复处理，再完全静默地用 eacli podcast 远端静默 worker 下载转写，按 转写回执中的大小与 SHA-256 校验拉回。"
+      },
+      {
+        "id": "R02",
+        "text": "运行 audit_transcript.py，检查头尾、时间戳单调性、重复与尾部异常。"
+      },
+      {
+        "id": "R03",
+        "text": "忠实润色并保留 [?]，不补写事实；用 shownotes 与公开一手材料核验人名、机构、技术词和数字。"
+      },
+      {
+        "id": "R04",
+        "text": "基于完整转写写 report-v2 / important / standalone 深度报告，重构姚旭从小红书等经历到 NaukNauk 的产品判断，解释「听普通人说话」的需求、AI 陪伴/倾诉的交互设计、用户洞察、商业化与增长假设、隐私/依赖/心理安全边界。"
+      },
+      {
+        "id": "R05",
+        "text": "区分嘉宾经验、产品自述、可验证事实与分析者推断；外部背景只用官方产品页、应用商店、公司/嘉宾一手公开资料及必要高质量研究核验，不把营销说法当效果证据；引文与数字必须回到转写时间戳；心理健康效果不得从个案外推。"
+      },
+      {
+        "id": "R06",
+        "text": "只写转写/润色/报告/evidence/空白 review，不 finalize、不改 wiki/索引、不提交、不推送。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "primary",
+      "title": "《AI炼金术》2026-10-23 单集原始转写（eacli podcast 远端静默 worker，3881 段 / 6161 秒）",
+      "locator": "podcast-learning/reports/transcripts/2026-10-23_ximalaya-ailianjinshu_yaoxu-nauknauk-ai-companion.transcript.txt",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S02",
+      "kind": "primary",
+      "title": "《AI炼金术》2026-10-23 单集结构化精编稿（polished，头部标注压缩比、专名校正表与 [?]）",
+      "locator": "podcast-learning/reports/transcripts/2026-10-23_ximalaya-ailianjinshu_yaoxu-nauknauk-ai-companion.polished.txt",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S03",
+      "kind": "primary",
+      "title": "喜马拉雅单集页 shownotes（本期简介、本期嘉宾、11 条章节时间轴）",
+      "locator": "https://www.ximalaya.com/sound/1026998207",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S04",
+      "kind": "local",
+      "title": "本期转写与传输回执（大小、SHA-256、审计结果、RSS enclosure 参考）",
+      "locator": "podcast-learning/reports/transcripts/2026-10-23_ximalaya-ailianjinshu_yaoxu-nauknauk-ai-companion.artifact.json",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S05",
+      "kind": "official",
+      "title": "NaukNauk 官方首页（产品定位与 Collect / Connect / Animate 功能结构）",
+      "locator": "https://nauknauk.io",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S06",
+      "kind": "official",
+      "title": "OpenAI 官方：Strengthening ChatGPT's responses in sensitive conversations（情感依赖类 undesired answers 下降 42%、自杀自伤类 52%）",
+      "locator": "https://openai.com/index/strengthening-chatgpt-responses-in-sensitive-conversations",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S07",
+      "kind": "secondary",
+      "title": "Nature 观点文章：Emotional risks of AI companions demand attention（模拟共情与情感依附的长期影响需跨学科研究）",
+      "locator": "https://www.nature.com/articles/s42256-025-01093-9",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S08",
+      "kind": "secondary",
+      "title": "Apple Podcasts：AI炼金术 单集列表（用于核对本期时长 1 小时 43 分钟）",
+      "locator": "https://podcasts.apple.com/hk/podcast/ai%E7%82%BC%E9%87%91%E6%9C%AF/id1671502201",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S09",
+      "kind": "official",
+      "title": "MIT Media Lab × OpenAI 研究项目页（语音交互降低孤独感，同时可能加深部分用户的情感依赖与社交孤立）",
+      "locator": "https://www.media.mit.edu/projects/mit-openai-study/updates",
+      "accessed_on": "2026-10-24"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "嘉宾主张普通人的表达诉求不是创作冲动，而是被压抑的自然表达；因此产品用用户已投入情感的载体（娃、宠物、收藏品）而非自己的脸作为表达入口。",
+      "report_anchor": "最后要的其实是我被看见",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "转写 00:08:44–00:09:47（诉求被压抑、figure 作为载体）与 01:07:51–01:08:02（「它只是一个借口……最后要的其实是我被看见」）。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "嘉宾给出的产品行为指标是：产品至今未开放私信，而一天活用户中约 20% 会做评论。",
+      "report_anchor": "一天活用户里 20% 会做评论",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "转写 00:23:51–00:24:00「我们到现在都没有私信，用户的评论率超高的，就是我们一天活用户里面有 20% 会做评论」。属产品自述，无外部核验。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "嘉宾明确反对用任何 agent 替代人本人，理由是没有价值判断或个性判断上的道理；其阶段二产品方向是 agent 与 agent 之间的社交（让用户的「娃」自己去认识新朋友）。",
+      "report_anchor": "我其实特别反对的一点是",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "转写 00:50:15–00:51:12（阶段二与红线），开场 00:00:19–00:00:25 再次表述同一立场。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "嘉宾把 C 端产品本身当作 benchmark：其内部评测只覆盖自有场景，因此能自循环；他称当年 Seedance 2.0 之前的 1.5/1.6 版本在其评估里进不了前三，而可灵 1.6「踢开了一扇门」。",
+      "report_anchor": "Kling 1.6",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "转写 00:27:07–00:28:18（C 端即 benchmark）与 00:31:05–00:32:36（C-Dance 2.0 之前的 1.5/1.6 进不了前三、Kling 1.6 值得被记住）。内部评测，无公开评测集与基线。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "嘉宾给出的成本与毛利口径是：视频推理成本约每秒 1–2 分人民币且不抽卡；frontier 模型推理毛利超过 80%（不含订阅制），价格折半后毛利仍有 60%，需「打成骨折」才降到约 20%；因此普通人场景的付费价格虚高，溢价被底层模型而非应用层吃掉。",
+      "report_anchor": "每秒一到两分人民币",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "转写 00:35:01–00:36:19（毛利口径与结论）与 00:39:06–00:39:25（每秒 1–2 分人民币、一次发布「两分七十」）。属嘉宾口径，未给出账单或第三方核验。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "嘉宾判断所有面向 consumer 的产品最终都应免费，并认为一旦 NaukNauk 达到百万 DAU，抖音/TikTok 一定会跟进并补贴。",
+      "report_anchor": "抖音一定会超",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "转写 00:40:24–00:40:50「一旦 knockknock 变成一个百万 DAU，我猜那抖音一定会超，TikTok 一定会超，它一定会补贴」。",
+      "critical": false
+    },
+    {
+      "id": "C07",
+      "claim": "嘉宾的核心战略判断是：可被标准化定义、可被巨头纳入的场景竞争最惨烈且易被模型层与分发优势吃掉；与「人」相关、真正 to consume、难定义的场景才适合创业公司，而这类场景过去 20–30 年死亡率最高却也长出过大生意。",
+      "report_anchor": "每一个产品里边都有自己的成长的边界",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "转写 01:17:37–01:19:19（微博/小红书与平台边界）、01:30:21–01:33:09（CPU 时代类比：Excel 为什么叫 Excel、Lotus 死了）、01:33:09–01:34:27（死亡率最高又出大生意）。",
+      "critical": true
+    },
+    {
+      "id": "C08",
+      "claim": "嘉宾用「心理上的老先于生理上的老」解释年龄焦虑，并自陈创业者普遍「激素水平太高」、处于高赫兹状态，因此从未吃到年龄红利。",
+      "report_anchor": "你他妈太老了",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "转写 01:36:45–01:37:56（两种老与心理先行）、01:38:16–01:39:10（神经病/激素/CPU 赫兹）、01:39:47–01:40:03（自嘲引语）。",
+      "critical": false
+    },
+    {
+      "id": "C09",
+      "claim": "外部公开研究显示，降低孤独感与制造情感依赖可能在同一条 AI 陪伴产品线上同时成立（OpenAI 与 MIT Media Lab 的语音交互研究提示部分用户可能因此加深依赖与社交孤立；Nature 观点文章要求对模拟共情的长期影响做跨学科研究）。",
+      "report_anchor": "情感依赖",
+      "support": "derived",
+      "source_ids": [
+        "S06",
+        "S07",
+        "S09"
+      ],
+      "evidence": "OpenAI 官方博客给出 GPT-5 相对 GPT-4o 在情感依赖类 undesired answers 下降 42%、自杀自伤类下降 52% 的专家评估结果；MIT Media Lab 项目页提示语音交互在降低孤独感的同时可能加深部分用户的情感依赖；Nature 观点文章呼吁跨学科研究长期影响。本报告仅用其界定风险边界，未据此评价该产品。",
+      "critical": true
+    },
+    {
+      "id": "C10",
+      "claim": "NaukNauk 官方首页把产品描述为把收藏品的照片即时转成动画视频，并组织为 Collect / Connect / Animate 三个部分，与节目中的「载体 → 表达 → 被同好看见」链条一致。",
+      "report_anchor": "Collect / Connect / Animate",
+      "support": "derived",
+      "source_ids": [
+        "S05",
+        "S01"
+      ],
+      "evidence": "nauknauk.io 官方首页文案与功能分区；节目 00:09:30–00:09:47 说明第一步是让用户已投入情感的载体表达故事。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "SC01",
+      "title": "00:00 开场",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "概览 / 主线一"
+    },
+    {
+      "id": "SC02",
+      "title": "01:20 姚旭和 NaukNauk",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S05"
+      ],
+      "report_anchor": "概览 / 主线一"
+    },
+    {
+      "id": "SC03",
+      "title": "06:39 用心爱的物件表达自己",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线一"
+    },
+    {
+      "id": "SC04",
+      "title": "14:43 人脸、AI Slop 与陌生人的共鸣",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线一 / 主线二"
+    },
+    {
+      "id": "SC05",
+      "title": "26:13 C 端即 benchmark：技术路线与 eval",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线三"
+    },
+    {
+      "id": "SC06",
+      "title": "33:21 卖 token 的生意与巨头补贴",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线三 / 主线四"
+    },
+    {
+      "id": "SC07",
+      "title": "48:03 屏幕时间之外：代理人社交与情绪消费",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线二"
+    },
+    {
+      "id": "SC08",
+      "title": "1:02:23 亚文化走进主流：孤独与被看见",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线二"
+    },
+    {
+      "id": "SC09",
+      "title": "1:13:17 人和人的共鸣：每个平台都有边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线四"
+    },
+    {
+      "id": "SC10",
+      "title": "1:22:06 AI 内容泛滥之后：新平台与品类之争",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线四 / 主线五"
+    },
+    {
+      "id": "SC11",
+      "title": "1:34:27 追 beta 还是 seeking alpha：心理上的老",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "主线五"
+    }
+  ],
+  "limitations": [
+    "转写由 whisper.cpp large-v3 + Silero VAD 生成，audit_transcript.py 无 warning/error，但专名误识别密集（KnockKnock→NaukNauk、GNZ→Gen Z、可林→可灵、Vigo→Veo、ASLOB→AI slop 等），已在精编稿头部集中列出订正表。",
+    "未消解的不确定项：「K-GIRL」（零售场景 20% kicker，口播前后矛盾）、「Legal Vigo」、「Cosmogen」、巨头产品名「DOTS」「MUSE」、融 20 亿美金的产品「Instinct」、毛利八九十的模型方「CNAS」、「Opus 5.5」「Triplane 3D」、Workday（口播作 Workbody）、frontier 模型去年 12 月推理成本「0.02 亿」、一次发布成本「两分七十」等；正文以 [?] 或原样引号标出，未做猜测性填补。",
+    "本期只有 shownotes 可交叉验证人名与机构，没有官方字幕或逐字稿；shownotes 的章节时间为人工标注，与转写时间轴存在轻微偏移。",
+    "嘉宾关于自身产品、成本、毛利、用户结构、评论率与内部评测的陈述均属自报，节目未提供第三方核验、评测集、留存曲线或收入构成。",
+    "心理健康相关案例（丧亲、孤独、职场 PWA）均为个案，不能外推为产品对用户心理状态的改善证据；本报告未把 20% 评论率当作任何心理效应指标。",
+    "外部研究（OpenAI、MIT Media Lab、Nature）仅用于界定「降低孤独感」与「情感依赖」可能并存的风险边界，不构成对 NaukNauk 的评价。",
+    "本期与仓库索引中未处理的硅基立场 2026-10-16 同题材单集（2h19m）可能是同一场访谈的不同剪辑版本，本报告未做跨版本比对。",
+    "本报告为初稿 + evidence，未做独立复核、未 finalize；review.json 仍为空白模板。"
+  ]
+}

@@ -1,0 +1,258 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-23_ximalaya-ailianjinshu_yaoxu-nauknauk-ai-companion.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-6",
+        "harness": "codex",
+        "run_id": "review-nauknauk-podcast-20261025-gpt6",
+        "independent_context": true,
+        "explicit_model_override": true,
+        "override_reason": "用户明确要求本机负责筛选、独立 review 与验收远端 MiniMax 初稿"
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 94,
+        "request_coverage": 95,
+        "reasoning_quality": 94,
+        "readability": 94,
+        "limitations": 95
+      },
+      "score_reasons": {
+        "evidence_fidelity": "先独立读取 11 条 shownotes、完整精编稿与转写审计，再核对报告；抽查核心时间窗与 C01–C10 一致。NaukNauk 官方页确认 Collect / Connect / Animate 与照片动画功能；OpenAI、MIT Media Lab 与 Nature 材料只用于心理安全边界。生成者写入公开产物的执行设备名、内部标识和远端路径已清除。",
+        "request_coverage": "R01–R06 均满足：静默转写、SHA 与机器审计、结构化精编、11 单元内容地图、五条展开主线、成本与商业判断、平台边界、隐私/依赖/心理安全、Limitations 与思考追问齐全，正文可脱离 polished 独立阅读。",
+        "reasoning_quality": "报告把两个小时访谈重构为“载体表达—被看见—自有 eval—平台边界—alpha 创业”五条因果主线，并持续区分嘉宾经验、产品自述、外部研究和分析者推断。成本、毛利、百万 DAU 与平台判断均未被提升成行业事实。",
+        "readability": "速览、内容地图、五条主线、关键数字、证据层级和反方边界顺序自然；长节目压缩充分而没有退化成提纲，重要例子和原话带时间锚点。",
+        "limitations": "明确披露 ASR 专名风险、嘉宾单一视角、产品指标不可外推、成本与毛利缺账单口径、心理效果无因果证据、平台历史类比可能失效，并给出可执行的后续核验方向。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C07",
+        "C09"
+      ],
+      "coverage_unit_ids_checked": [
+        "SC01",
+        "SC02",
+        "SC03",
+        "SC04",
+        "SC05",
+        "SC06",
+        "SC07",
+        "SC08",
+        "SC09",
+        "SC10",
+        "SC11"
+      ],
+      "source_content_map": [
+        {
+          "id": "RM01",
+          "title": "00:00 开场与节目问题：AI 卷工作后，谁接住普通人的表达",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC01"
+          ],
+          "notes": "开场明确访谈对象、问题和主持人挑战，报告在概览中交代。"
+        },
+        {
+          "id": "RM02",
+          "title": "01:20 姚旭履历、NaukNauk 定位与普通人表达",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S05"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC02"
+          ],
+          "notes": "履历、目标用户与产品官方功能均有正文落点；官方站只支持产品形态，不替代嘉宾自述。"
+        },
+        {
+          "id": "RM03",
+          "title": "06:39 用心爱的物件承载自我表达",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC03"
+          ],
+          "notes": "小兔子、暴风兵等案例及“载体先有情感投入”的因果链完整覆盖。"
+        },
+        {
+          "id": "RM04",
+          "title": "14:43 人脸、AI slop、评论率与陌生人共鸣",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC04"
+          ],
+          "notes": "报告同时覆盖人脸内容的第三者价值、自然表达和约 20% 评论率；数字保持嘉宾口径。"
+        },
+        {
+          "id": "RM05",
+          "title": "26:13 C 端即 benchmark：技术路线失败与自有 eval",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC05"
+          ],
+          "notes": "workflow/3D/rigging 路线失败、Kling/Seedance 内部评估与自循环 eval 均在主线三展开。"
+        },
+        {
+          "id": "RM06",
+          "title": "33:21 token 成本、模型毛利、后训练与免费终局",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC06"
+          ],
+          "notes": "成本、毛利和百万 DAU 后巨头补贴都被标为嘉宾判断，并写明缺少账单与样本口径。"
+        },
+        {
+          "id": "RM07",
+          "title": "48:03 代理人社交、屏幕之外体验与“不替代真人”",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC07"
+          ],
+          "notes": "agent-to-agent 的产品方向与反对 agent 替代真人的价值边界均有明确落点。"
+        },
+        {
+          "id": "RM08",
+          "title": "1:02:23 孤独、亚文化主流化与“被看见”",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S06",
+            "S07",
+            "S09"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC08"
+          ],
+          "notes": "节目主张与外部心理安全研究分层呈现，未把陪伴效果从个案外推。"
+        },
+        {
+          "id": "RM09",
+          "title": "1:13:17 作品共鸣、人际共鸣与平台成长边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC09"
+          ],
+          "notes": "TikTok/抖音/微博/小红书的例子被用于重构平台优化目标与边界，仍保留嘉宾经验性质。"
+        },
+        {
+          "id": "RM10",
+          "title": "1:22:06 AI 内容泛滥、新游戏平台与标准化工具竞争",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC10"
+          ],
+          "notes": "内容观感上升与价值下降、新游戏平台、换皮 ROI 竞争及标准化工具路线均完整覆盖。"
+        },
+        {
+          "id": "RM11",
+          "title": "1:34:27 追 beta、seeking alpha 与年龄焦虑",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC11"
+          ],
+          "notes": "消费创业的 alpha 判断、代际优势和“心理上的老”均在主线五呈现，生理解释未被报告当作科学结论。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S09"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "复核按来源优先顺序进行。修复了公开仓隐私边界：移除设备名、内部 job/plan/artifact/request 标识、远端绝对路径与 frontmatter artifact 标识；artifact receipt 只保留公开来源、哈希、大小、时长、服务版本和审计结果。未发现需要改变核心结论的事实错误。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 94.3,
+    "evaluated_on": "2026-10-25",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "6a51be159cf27c72f03af40ce025d1a9cb0be03f72c3a3510ac5a7f40838fb76",
+    "evidence_sha256": "861cd94dd2f69bf81d23e48c712f0969e18976da428bb891cce1594144691114"
+  }
+}

@@ -1,0 +1,418 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-21_xiaoyuzhou-tulong-dashihua_inequality-evolution.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "review-inequality-evolution-20261025-gpt56sol",
+        "independent_context": true,
+        "explicit_model_override": false
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 94,
+        "request_coverage": 97,
+        "reasoning_quality": 95,
+        "readability": 93,
+        "limitations": 96
+      },
+      "score_reasons": {
+        "evidence_fidelity": "完整抽查 raw/polished 转写并运行时间戳审计；独立读取小宇宙 shownotes、PNAS 2007 原文、2008/2014 灵长类综述、GovExec、Al Jazeera/上观转载、世界银行 API、国家统计局、两篇马斯克薪酬报道和 Project Gutenberg 宣言全文。初稿的锤子字面成交价、PPP 2.41 未核来源、马斯克“现金薪酬”、Manifesto 抓取失败、无来源 2025 灵长类扩展等均已修正。",
+        "request_coverage": "shownotes 的 4 Part / 20 章节全部进入内容地图和五条主线；实验、经典文本、历史叙事、当代数字、事实核验、替代解释、证据分层、Limitations 与追问均覆盖。",
+        "reasoning_quality": "报告没有顺着节目单一框架照抄，而是提出跨层级外推、阶级功能主义、全球化解释变量过宽、立法交易成本与能源双向因果等替代解释。事实核验与结构性观点分开，避免以个别数字错误推翻全部论证。",
+        "readability": "内容地图、五条主线、人物数字表、核验表和证据等级清楚；58 分钟节目被压成可独立阅读的报告，细节多但主线稳定。",
+        "limitations": "转写专名风险、未解书名/轶事、单一对谈口径、历史来源不足、时点数据与分析者分层边界均明确；修订后还具体限定了猴子实验只能支持合作情境下的 disadvantageous IA。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06"
+      ],
+      "coverage_unit_ids_checked": [
+        "SC01",
+        "SC02",
+        "SC03",
+        "SC04",
+        "SC05",
+        "SC06",
+        "SC07",
+        "SC08",
+        "SC09",
+        "SC10",
+        "SC11",
+        "SC12",
+        "SC13",
+        "SC14",
+        "SC15",
+        "SC16",
+        "SC17",
+        "SC18",
+        "SC19",
+        "SC20"
+      ],
+      "source_content_map": [
+        {
+          "id": "SCM01",
+          "title": "法国抗议是节目入口，80 万为组织方口径、55 万为政府口径",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S09",
+            "S10"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC01"
+          ],
+          "notes": "正文覆盖开场动机，并用 Al Jazeera 与上观转载页纠正为双口径；没有把 80 万写成官方定值。"
+        },
+        {
+          "id": "SCM02",
+          "title": "猴子黄瓜/葡萄实验的任务、奖励与 inequity response",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S17"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC02"
+          ],
+          "notes": "PNAS 题名、作者、13 只卷尾猴、token exchange 和差别奖励均准确。"
+        },
+        {
+          "id": "SCM03",
+          "title": "合作动物需要比较投入与回报，greed/frustration 控制与 effort 调节",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S05",
+            "S17",
+            "S18"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC03"
+          ],
+          "notes": "正文覆盖两类替代解释和合作假说，也补入“非人灵长类并非完整人类公平感”的综述边界。"
+        },
+        {
+          "id": "SCM04",
+          "title": "从共同祖先推到人类不平等感的脑科学基础",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S18"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC04"
+          ],
+          "notes": "准确呈现主播的弱化表述与自我限定；争议部分明确这是从实验室 disadvantageous IA 到政治情绪的跨层级外推。"
+        },
+        {
+          "id": "SCM05",
+          "title": "阶级与私有制作为避免流血冲突的制度",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC05"
+          ],
+          "notes": "正文忠实呈现为节目核心解释，速览已改成“节目主张”；替代解释指出其功能主义与分配权力盲点。"
+        },
+        {
+          "id": "SCM06",
+          "title": "《共产党宣言》不是口号而是结构性哲学论述",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S16"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC06"
+          ],
+          "notes": "节目个人阅读经历和文本定位均覆盖，经典文本核验不把主播评价当客观定论。"
+        },
+        {
+          "id": "SCM07",
+          "title": "资产阶级从受压迫群体到取得政治支配",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S16"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC07"
+          ],
+          "notes": "覆盖节目“小猴子”类比和君主立宪叙事；历史细节保留为主播解释，没有额外事实化。"
+        },
+        {
+          "id": "SCM08",
+          "title": "宗教虔诚、尊严与职业被转化为交换价值和雇佣劳动",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S16"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC08"
+          ],
+          "notes": "与 Gutenberg 1888 英译本 committee/cash payment/paid wage labourers 段落相符。"
+        },
+        {
+          "id": "SCM09",
+          "title": "全球市场使生产、消费和精神产品世界化",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S16"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC09"
+          ],
+          "notes": "Manifesto world market/intellectual production 段落准确，正文保留主播“一半一半”的自我折扣。"
+        },
+        {
+          "id": "SCM10",
+          "title": "机器与分工下劳动强度、工资和劳动者地位",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S16"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC10"
+          ],
+          "notes": "对应 appendage of machine、subsistence、burden of toil 等原文；没有把 19 世纪文本直接冒充当代统计。"
+        },
+        {
+          "id": "SCM11",
+          "title": "资本主义延续被节目归因于科技、殖民与战争",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC11"
+          ],
+          "notes": "完整呈现节目因果链并在证据分层中标为结构性主张，不当作已被单篇来源证明的历史定律。"
+        },
+        {
+          "id": "SCM12",
+          "title": "英国教材与第二语言教学的个人观察",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC12"
+          ],
+          "notes": "细节覆盖充分，明确是主播购书所见，未见教材页，未升级为英国教育体系的普遍事实。"
+        },
+        {
+          "id": "SCM13",
+          "title": "航海课文、海盗文化与科学服务殖民的叙述",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC13"
+          ],
+          "notes": "节目论证和案例均进入正文；替代解释指出“掠夺”变量过宽，证据等级为中低。"
+        },
+        {
+          "id": "SCM14",
+          "title": "伊丽莎白一世、特许公司、气象水文与采矿知识体系",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC14"
+          ],
+          "notes": "故事线完整但原始出处不足，报告没有把 70 多卷采矿书等数字写成已核实事实。"
+        },
+        {
+          "id": "SCM15",
+          "title": "殖民地 2.0、美元/软件依赖与韩国案例",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC15"
+          ],
+          "notes": "覆盖节目主张并保留其意识形态框架；替代解释以成本承担与选择权提出更可检验标准。"
+        },
+        {
+          "id": "SCM16",
+          "title": "6 美元锤子、戈尔改革与制度嵌套",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S06"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC16"
+          ],
+          "notes": "正文保留治理成本主线，同时修正为约 15 美元锤子均摊约 420 美元研发费的会计 artifact，未再把它当回扣或字面成交价。"
+        },
+        {
+          "id": "SCM17",
+          "title": "赚钱是专业、尊重有余而崇拜不足",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC17"
+          ],
+          "notes": "作为 supporting 价值判断进入主线四/五，没有外加事实主张。"
+        },
+        {
+          "id": "SCM18",
+          "title": "AI 提升生产力但不能自动解决能源与民生",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC18"
+          ],
+          "notes": "准确呈现为节目结论；报告没有补造 AI 效果数字。"
+        },
+        {
+          "id": "SCM19",
+          "title": "生产过剩被称为社会瘟疫",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S16"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC19"
+          ],
+          "notes": "与 Manifesto epidemic of over-production 段落一致，并被用于节目当代解释而非实证证明。"
+        },
+        {
+          "id": "SCM20",
+          "title": "危机通过消灭生产力、开拓新市场与加深旧市场剥削被缓解",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S16"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC20"
+          ],
+          "notes": "Gutenberg 文本可逐句对应；正文保留节目从经典文本到当代政治经济的解释边界。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "来源优先复核并重新运行 audit_transcript.py：2548 段、3502 秒、时间戳单调、无 warning/error。shownotes 实为 20 条章节，已修正 artifact 的 19 条笔误。复核后还收窄锤子会计 artifact、马斯克薪酬口径、PPP 年份指标、灵长类 fairness 外推和法国抗议双口径。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 94.85,
+    "evaluated_on": "2026-10-25",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "1e610fc4f21933322c5bf95bddfd92c3f6d60d13954d8c38b9eefd387eba8055",
+    "evidence_sha256": "02ea4b258e80cce53b5d40ac891ac98fc73212a417f274ad10c31825b8c6ae94"
+  }
+}

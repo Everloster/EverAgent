@@ -1,0 +1,291 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AMD_ROCm_MegaKernel_MI355X交互式单请求推理_深度解析_20261025.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-6",
+        "harness": "codex",
+        "run_id": "review-amd-megakernel-20261025-gpt6",
+        "independent_context": true,
+        "explicit_model_override": false
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 94,
+        "request_coverage": 96,
+        "reasoning_quality": 93,
+        "readability": 92,
+        "limitations": 97
+      },
+      "score_reasons": {
+        "evidence_fidelity": "来源优先核对 AMD 博客全文、Fleet 与 MPK 的 arXiv 摘要、Fleet README、AITER/ATOM/FlyDSL README、GitHub 仓库元数据和分支。主性能、逐轮换算、数据放置、质量异常与软件版本数字均能回到一手来源；修订了 Fleet 仓库创建时间、NOASSERTION 含义、投机贡献误归因和跨论文倍数过度外推。",
+        "request_coverage": "R01–R06 完整覆盖：问题定义、持久化机制、四个杠杆、交互延迟与吞吐权衡、全部主要数字与配置、复现材料、替代路线、部署风险、最小验证、反方解释、Limitations 和 Agent harness 迁移均有独立章节。",
+        "reasoning_quality": "报告把绝对 tok/s 拆成 accepted tokens 与 round time，把复合优化与单项机制分开，并主动保留精度异常和计时不一致。修订后不再把无投机 3.6× 错归因于单侧未开投机，也不再用 Fleet/MPK 的异构结果估算本博客的 megakernel 单项贡献；线性注意力回滚也从未经证明的复杂度结论收紧为可观察机制。",
+        "readability": "结论前置、表格密度高，版本与口径能快速查阅，机制图有助于理解。篇幅较长，§5、§8、§9 对边界有少量重复，但分别承担数据核对、部署决策和反方解释，整体仍可独立阅读。",
+        "limitations": "明确未跑 kernel、未读核心源码与复现脚本、论文只读摘要、没有跨框架同条件实测和第三方复现；也说明图内数字未取到、临时仓库与许可文件未核实、时点会快速过期。对厂商自测与分析者推断的区分充分。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08",
+        "U09",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16",
+        "U17",
+        "U18",
+        "U19",
+        "U20",
+        "U21",
+        "U22",
+        "U23",
+        "U24",
+        "U25",
+        "U26",
+        "U27",
+        "U28",
+        "U29",
+        "U30"
+      ],
+      "source_content_map": [
+        {
+          "id": "SCM01",
+          "title": "AMD 将问题定义为单请求 decode 延迟，四个杠杆共同产生 1.9–3.3× 的完整配置结果",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01",
+            "U03",
+            "U04",
+            "U05"
+          ],
+          "notes": "开头与 §2 保留早期结果、完整配置、非任务级加速等官方限定。"
+        },
+        {
+          "id": "SCM02",
+          "title": "持久化 kernel、三模型融合粒度、64-bit hand-off、per-chiplet release words 与预取构成执行机制",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06",
+            "U07",
+            "U08",
+            "U11"
+          ],
+          "notes": "机制均来自博客文字；报告明确未读源码，不把实现推断写成代码事实。"
+        },
+        {
+          "id": "SCM03",
+          "title": "低精度、投机解码与数据放置分别改变权重读取下界、每轮有效 token 和跨 die 代价",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U12",
+            "U13",
+            "U14",
+            "U15",
+            "U16"
+          ],
+          "notes": "线性注意力回滚只保留来源可支持的状态记录机制，删除了无证据的大 O 结论。"
+        },
+        {
+          "id": "SCM04",
+          "title": "三模型主结果、逐轮公式、提示集、容器与版本共同定义 benchmark 口径",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U17",
+            "U18",
+            "U19"
+          ],
+          "notes": "Qwen 与 GPT-OSS 的 tok/s、round time、ROCm 和硬件队列设置逐项核对。"
+        },
+        {
+          "id": "SCM05",
+          "title": "GPT-OSS 的配置与计时不一致、仅 decode 范围以及 5-shot 原始文本精度异常限制主结论",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U20",
+            "U21"
+          ],
+          "notes": "正文没有用 chat 格式正常结果掩盖 35.5–39.3% 的异常，也保留 AMD 正在排查的状态。"
+        },
+        {
+          "id": "SCM06",
+          "title": "MPK 提供自动 mega-kernel 编译运行时，Fleet 提供 chiplet-task 与 per-chiplet 调度",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02",
+            "U10",
+            "U23"
+          ],
+          "notes": "摘要中的 1.7×、1.3–1.5×、L2 命中率和 HBM 流量数字已核对；正文不再用异构结果分解本博客单项贡献。"
+        },
+        {
+          "id": "SCM07",
+          "title": "Fleet README 给出 Mirage 对照、MI350 参数、复现入口与 AMD-RAD/fleet 迁移方向",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S06"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10",
+            "U22",
+            "U25"
+          ],
+          "notes": "仓库创建于 2026-07，已修正初稿的「三个仓库均近三周创建」。"
+        },
+        {
+          "id": "SCM08",
+          "title": "AITER、ATOM 与 FlyDSL 的仓库事实显示实验分支、上游归属和许可元数据边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S04",
+            "S05",
+            "S07"
+          ],
+          "matched_coverage_unit_ids": [
+            "U09",
+            "U22",
+            "U25"
+          ],
+          "notes": "两个 2026-10 个人仓库与一个 2026-07 Fleet 仓库均为 0 star；NOASSERTION 只表示 API 无法断言许可证，不等于无许可证。"
+        },
+        {
+          "id": "SCM09",
+          "title": "替代路线比较应只陈述执行模型与成熟度边界，不能形成跨硬件性能排名",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06"
+          ],
+          "matched_coverage_unit_ids": [
+            "U23",
+            "U24",
+            "U27"
+          ],
+          "notes": "已把 CUDA 专属措辞改为 CUDA/HIP graph capture，并删除「直接借鉴」与收益量级外推。"
+        },
+        {
+          "id": "SCM10",
+          "title": "生产决策需要精度、prefill、多并发、版本锁定和真实 prompt 分布的最小验证",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U25",
+            "U26",
+            "U29",
+            "U30"
+          ],
+          "notes": "部署清单与验证方案直接对应公开缺口，没有把建议包装成已验证事实。"
+        },
+        {
+          "id": "SCM11",
+          "title": "研究边界包括未复现、未读源码、论文仅摘要、未系统检索第三方复现和快速变化的临时代码",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06",
+            "S07"
+          ],
+          "matched_coverage_unit_ids": [
+            "U28",
+            "U30"
+          ],
+          "notes": "Limitations 完整且与 evidence 一致。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "独立复核先读来源再对照正文。修正七类问题：四杠杆误写为三者；错误的状态回滚复杂度；三个临时仓库创建时点；CUDA 专属路线命名；未证明的 MPK/Fleet 直接借鉴；无投机 3.6× 的错误归因；用异构论文结果估算单项收益。修订后重新核验 C01–C10。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 94.2,
+    "evaluated_on": "2026-10-25",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "ae1523158e19d8312af95bf8f5abfe9d9f6422175a4e387683df4f412835970d",
+    "evidence_sha256": "6be56dbb057b1e82e3f203b252da198f6b351cb336085f6e8e1ac8e2b0874ad0"
+  }
+}

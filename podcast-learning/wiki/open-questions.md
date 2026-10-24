@@ -545,3 +545,9 @@
 - **高风险能力的授权协议**：怎样同时证明研究者身份、目标授权和隔离环境，又不把 exploit 能力无界开放？
 - **Agent 越权后的法律归责**：用户只提出正常目标、Agent 自行利用第三方漏洞时，用户、模型方、运营方与目标方各承担什么责任？
   - 来源：[[2026-10-22_rss-practical-ai_agentic-vulnerability-discovery]] 思考与追问·问 2
+## 2026-10-25 Dyna / Lindon：Product Research 与部署飞轮
+
+- **100 万小时 scaling law 的独立验证**：Dyna 已公开 100 万小时与 World Action Model 口径，但 held-out 任务、成功率曲线、数据质量和对照基线仍主要是公司自述；需要第三方复现或客户侧数据。
+- **Product Research 怎样跨出当前智能边界**：用产品闭环反推研究能持续暴露可解瓶颈，但下一阶段战略恰好位于当前能力范围外；什么信号能避免方法被既有产品形态锁死？
+- **“比人久”能否形成完整单位经济**：机器人 24 小时工作量对齐人类 8 小时只是产能指标，仍需把补料、observability、support、maintenance、停机和客户侧流程改造计入真实 ROI。
+  - 来源：[[2026-10-15_xiaoyuzhou-zhangxiaojun_vol154-dyna-lindon]] 思考与追问、Limitations

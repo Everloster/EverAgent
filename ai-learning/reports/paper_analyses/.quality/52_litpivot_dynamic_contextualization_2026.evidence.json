@@ -1,0 +1,325 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/paper_analyses/52_litpivot_dynamic_contextualization_2026.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-24",
+  "generator": {
+    "model": "minimax-m3.1-flash",
+    "harness": "pi",
+    "run_id": "generator-2026-10-24_litpivot_20261024",
+    "explicit_model_override": true,
+    "override_reason": "用户明确指定继续使用 MiniMax M3.1 Flash（user:2026-10-24:podcast-blog-until-1100）；本次会话未收到 quota exhausted 或 rate limit 的不可用证据，故未切换到 GLM-5.3"
+  },
+  "task": {
+    "summary": "完整读取 arXiv:2604.02600v3 全文与 Ai2 官方博客及其一手依赖代码、相关工具官方页面，产出中文独立可读的 report-v2 / important 深度报告（问题定义、文献表示与检索扩展、交互工作流、评测设计与全部数字、与传统综述检索/Connected Papers/Semantic Scholar/LLM deep research 的边界、失败模式、可复现条件、对 EverAgent 的可迁移价值、最小实验与 eval、反方解释）。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "先查重；完整读取原文结尾与其直接链接的论文、代码、数据与 demo 文档。"
+      },
+      {
+        "id": "R02",
+        "text": "产出中文独立可读的 report-v2/important 深度报告与完整 evidence sidecar；初始化 review sidecar 但不自行复核或 finalize。"
+      },
+      {
+        "id": "R03",
+        "text": "评测数字必须带样本、任务、基线与指标，缺口显式；不得把未获取的材料写成已获取。"
+      },
+      {
+        "id": "R04",
+        "text": "重点评估对 EverAgent 选题、证据地图、source-first review 与避免确认偏误的可迁移价值，给出最小实验和 eval。"
+      },
+      {
+        "id": "R05",
+        "text": "公开产物不得出现设备名、远端路径或任务/派发/终端/产物标识；不得 commit/push，不改既有报告、MAP/wiki/索引。"
+      },
+      {
+        "id": "R06",
+        "text": "继续使用当前 MiniMax M3.1 Flash；仅在明确 quota exhausted/rate limit 不可用后才切 GLM-5.3，并记录证据。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "primary",
+      "title": "LitPivot 论文全文（arXiv:2604.02600v3，HTML，UIST ’26 / CC BY 4.0）",
+      "locator": "https://arxiv.org/html/2604.02600v3",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S02",
+      "kind": "primary",
+      "title": "LitPivot 论文摘要页（arXiv:2604.02600v3，版本历史、作者、分类与 UIST DOI）",
+      "locator": "https://arxiv.org/abs/2604.02600v3",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S03",
+      "kind": "primary",
+      "title": "Ai2 官方博客：LitPivot — Developing research ideas through dynamic contextualization within the literature landscape（2026-10-23）",
+      "locator": "https://allenai.org/blog/litpivot",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S04",
+      "kind": "primary",
+      "title": "allenai/asta-paper-finder 仓库 README（LitPivot 的检索依赖，一手代码；自述为线上 agent 的快照且不再积极维护）",
+      "locator": "https://github.com/allenai/asta-paper-finder",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S05",
+      "kind": "primary",
+      "title": "Connected Papers 官方 About（约 5 万篇/图、共被引与文献耦合相似度、力导向图、基于 Semantic Scholar 语料）",
+      "locator": "https://www.connectedpapers.com/about",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S06",
+      "kind": "primary",
+      "title": "Semantic Scholar Academic Graph / Snippet Text API 文档（LitPivot 取全文与引用扩展所用接口）",
+      "locator": "https://api.semanticscholar.org/api-docs/graph",
+      "accessed_on": "2026-10-24"
+    },
+    {
+      "id": "S07",
+      "kind": "primary",
+      "title": "Semantic Scholar Snippet Text API 官方文档页（论文 §4.2.1 脚注 4 所引）",
+      "locator": "https://api.semanticscholar.org/api-docs/graph#tag/Snippet-Text",
+      "accessed_on": "2026-10-24"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "论文的核心机制是 literature-initiated pivot：接触文献促成对发展中想法的修订，而修订又改变哪些文献相关；LitPivot 用 problem/contribution/evaluation 三分面、动态文献聚类与基于二分图的差异化推理把它操作化。",
+      "report_anchor": "文献发起的转向",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "论文 §1（问题定义与三项贡献）、§4.1–4.3（facet 机制、align/differentiate/maintain consistency）、摘要与 Ai2 博客同述；博客另给出论文自身的两次 pivot 例子（音频幻觉→带引文文本→科学 RAG QA）。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "技术评估显示 LitPivot pipeline 相对 IdeaSynth 在建议质量上合并提升 +1.93 分（dz=1.04，n=30 配对判断），评估质量合并提升 +1.37（dz=0.58）；其中评估质量的 Rater 2 单独不显著，且跨条件评分者一致性低（Krippendorff's α −0.33~0.11）。",
+      "report_anchor": "dz=1.04",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "论文 §4.5：5 个种子想法 / 15 个片段、2 名盲评专家、1–7 Likert、语料与 LLM 恒定、源论文隐去；建议质量 Rater1 3.40→5.27（Rater2 3.73→5.73），合并 t(29)=5.71、p<1e−4、W=30、p=7.1e−5、dz=1.04；评估质量 Rater1 3.53→5.47（dz=0.75）、Rater2 3.60→4.40（p=.15，不显著），合并 dz=0.58、p=.004；脚注 8 给出 α 区间。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "用户研究（n=17，82% 博士生，90 分钟，75 美元）与基线（文本编辑器 + 对选中论文的 RAG 问答，约 100 篇同一语料、不允许自带论文、条件顺序反平衡）相比，专家盲评 groundedness 中位由 2 升至 5、均值 2.59→5.18（dz=1.29，p<.001），自评新颖性与效用提升显著、可行性提升不显著（p_corr=.152）。两名专家是论文最后两位作者，属于条件盲评而非外部独立评审。",
+      "report_anchor": "groundedness",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S03"
+      ],
+      "evidence": "论文 §5：17 名参与者（82% PhD，90 分钟，$75）、约 100 篇同一语料、反平衡顺序和禁止自带论文；§5.2 给出 groundedness 与自评结果。论文未披露这批语料的具体检索日期，参考文献中的 2025-08-22 是 Asta 页面访问日期。最后两位作者担任领域评分者并对条件盲。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "文献空间构建为四步循环：种子检索（Asta PaperFinder，按 Semantic Scholar ID）→ GPT-4o 抽取论文分面 → Sonnet-4 按分面聚类 → Asta Snippet Search 抽取被引片段扩展语料并回到抽取步骤；实现按延迟分配模型（GPT-4o 做低层任务、o3 做推理、Sonnet-4 做长上下文），温度均为 0.7。",
+      "report_anchor": "文献空间的构建",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S04"
+      ],
+      "evidence": "论文 §4.2（Figure 3 四步流程与脚注 3–6）、§4.2.1–4.2.2、§4.4（模型分工与温度）；S04 为检索依赖的一手仓库自述。",
+      "critical": false
+    },
+    {
+      "id": "C05",
+      "claim": "新颖性判据由二分图实现：论文贡献与其 limitations/future work 构成两侧节点，边表示贡献回应某条局限；只连到已处理条目判为增量/复现/扩展，连到未处理条目判为概念新颖；作者同时承认该定义无法捕捉通过重构问题产生的新颖性。",
+      "report_anchor": "二分图",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "论文 §4.3.2 与 §7.1 Limitations（novelty 定义窄、只覆盖未处理局限）。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "论文自陈的限制包括：效果依赖可及语料；只评估接地与差异化两维；不执行代码故无法验证可行性；未支持文献发现与内化；伦理上 grounding 可能把想法拉向既有文献、挤掉未成形方向；长期效应未研究。",
+      "report_anchor": "失败模式",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S03"
+      ],
+      "evidence": "论文 §7.1、§7.2、§7 伦理讨论；Ai2 博客提到其关联研究《Old Ideas, Novel Problems》展示自动化新颖性评估对提示词敏感。",
+      "critical": false
+    },
+    {
+      "id": "C07",
+      "claim": "可复现性受限：LitPivot 自身的代码与公开 demo 截至 2026-10-25 的定向检索未发现；可用公开代码是其依赖的 asta-paper-finder（自述为线上 agent 的快照、不再积极维护，且与线上版在交互与数据集上不同）；论文正文和附录披露了模型分工、提示词与研究方法，但实验语料具体检索日期、完整数据和可运行系统仍未获得。",
+      "report_anchor": "可复现条件",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S03",
+        "S04"
+      ],
+      "evidence": "论文与 Ai2 博客没有给出 LitPivot 仓库链接；定向 web search 只返回论文、博客与无关仓库。S04 明确公开 PaperFinder 与线上版本的差异。显式 arXiv v3 PDF/HTML 含提示词附录和方法，但约 100 篇实验语料的具体检索日期未披露。",
+      "critical": true
+    },
+    {
+      "id": "C08",
+      "claim": "[推测] 可迁移到 EverAgent 的核心是分面化证据地图（问题/贡献/评测各自拥有判据与证据集）、把 claim 与既有工作局限状态对照的机器初筛，以及显式保留反向证据以对冲 grounding 带来的确认偏误；对应价值必须用本报告提出的最小实验（12–20 选题、A/B 条件、claim 覆盖率、反向证据检出率、分面证据集中度、成本）验证。",
+      "report_anchor": "最小实验与 eval",
+      "support": "inference",
+      "source_ids": [
+        "S01",
+        "S03"
+      ],
+      "evidence": "本报告基于论文 §4.3 三类判据、§4.3.2 二分图、§7 伦理讨论与本库 source_coverage/source-first review 现状做的迁移推断；实验设计为分析者提出，尚未执行，文中已标注为待验证。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "SC01",
+      "title": "论文 Abstract 与 §1 Introduction（问题定义、三项贡献、自身两次 pivot）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "主线一"
+    },
+    {
+      "id": "SC02",
+      "title": "§2 Related Work（双空间搜索、文献理解工具、文献支持的构思工具）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "主线一 / 边界"
+    },
+    {
+      "id": "SC03",
+      "title": "§3 研究制品分析与形成性研究（21 次 pivot、CH1/CH2、DG1/DG2）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "主线一 / 失败模式"
+    },
+    {
+      "id": "SC04",
+      "title": "§4 System（facet、文献构建与扩展、三类评估、分面一致性、实现分工）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "主线二 / 主线三"
+    },
+    {
+      "id": "SC05",
+      "title": "§4.5 Technical Evaluation（对 IdeaSynth 的成对评估）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "评测表"
+    },
+    {
+      "id": "SC06",
+      "title": "§5 Study 1（n=17、被试、任务、基线、量表、H1/H2 结果）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "评测表 / 主线四"
+    },
+    {
+      "id": "SC07",
+      "title": "§6 Study 2（n=5 开放式使用）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "主线三 / 主线四"
+    },
+    {
+      "id": "SC08",
+      "title": "§7 Discussion、§7.1 Limitations、§7.2 Future Work、伦理讨论",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "主线四 / 失败模式"
+    },
+    {
+      "id": "SC09",
+      "title": "Ai2 官方博客（2026-10-23）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S03"
+      ],
+      "report_anchor": "概览 / 边界"
+    },
+    {
+      "id": "SC10",
+      "title": "allenai/asta-paper-finder 仓库 README",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S04"
+      ],
+      "report_anchor": "主线二 / 复现"
+    },
+    {
+      "id": "SC11",
+      "title": "Connected Papers 官方 About",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S05"
+      ],
+      "report_anchor": "边界表"
+    },
+    {
+      "id": "SC12",
+      "title": "Semantic Scholar Graph / Snippet Text API 文档",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S06",
+        "S07"
+      ],
+      "report_anchor": "边界表 / 复现"
+    }
+  ],
+  "limitations": [
+    "本报告未获得 LitPivot 的代码、在线 demo、完整实验语料与数据集，所有实验数字均为论文转述、未经本地复现；论文披露了模型分工、约 100 篇同一语料与基线实现，但未披露该语料的具体检索日期。",
+    "除 Ai2 博客与其依赖仓库外，未找到第三方对 LitPivot 的独立评估或复现报告；引证量与影响力本轮未核验。",
+    "该文属 HCI/交互系统研究，证据为用户研究与专家盲评，不是算法基准；除整条 pipeline 对 IdeaSynth 的整体对比外，没有组件级消融，无法拆分各机制贡献。",
+    "实验使用约 100 篇由 Asta PaperFinder 返回的同一语料，但论文未披露其具体检索日期；后续复现会受到索引、模型和全文可得性漂移影响。",
+    "不带版本号的 arXiv abs 页面在本轮读取时默认显示 v2；显式 v3 的 abs/HTML/PDF 均显示 2026-09-22 与 UIST DOI 10.1145/3830398.3830577。本报告固定使用显式 v3。",
+    "EverAgent 的迁移价值与最小实验方案均为分析者推断，尚未执行，不可当作已验证结论使用。",
+    "Study 1 的两名领域评分者是论文最后两位作者；虽对条件盲，但不是外部独立评审，且最终 α=0.804 来自三轮约 140 分钟的指南校准。"
+  ]
+}

@@ -1,0 +1,467 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/vLLM_DeepSeek-V4.1-Flash_PD分离与Wide-EP机架级服务_深度解析_20261025.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-25",
+  "generator": {
+    "model": "minimax-m3.1-flash",
+    "harness": "pi",
+    "run_id": "generator-ds41-pd-wideep-20261025",
+    "explicit_model_override": true,
+    "override_reason": "用户指定使用 MiniMax M3.1 Flash（仅在明确额度耗尽错误后切 GLM-5.3）；本次未出现额度耗尽证据"
+  },
+  "task": {
+    "summary": "深读 vLLM 2026-10-23 官方博客《DeepSeek-V4.1-Flash 大规模服务：P/D 分离 + Wide-EP》，并交叉核对第一篇同系列博客（单节点聚合基线）、DeepInfer 官方仓库 README、DeepSeek-V4.1-Flash 官方模型卡与 SemiAnalysis AgentX 方法学，解释 P/D 分离、Wide-EP、GB300 NVL72 的数据流与瓶颈，逐项判断「vLLM matches DeepInfer」与 954K tokens/s per GPU、P90 196 tok/s per user、7.9× 等数字是否同口径，划定厂商自报边界，并评估对 EverAgent 双仓的现实价值。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "完整读取 vLLM 原文并交叉核对 DeepInfer 仓库与论文、DeepSeek-V4.1-Flash 官方资料、AgentX 口径与硬件/网络资料。"
+      },
+      {
+        "id": "R02",
+        "text": "解释 P/D disaggregation、Wide-EP、GB300 NVL72 的数据流与瓶颈。"
+      },
+      {
+        "id": "R03",
+        "text": "逐项判断 vLLM matches DeepInfer 和 954K tokens/s/GPU、P90 196 tok/s/user、7.9× 等数字是否同口径，明确厂商自报边界。"
+      },
+      {
+        "id": "R04",
+        "text": "评估对 EverAgent 双仓的现实价值。"
+      },
+      {
+        "id": "R05",
+        "text": "公开产物禁写私有设备、路径、任务/派发/终端 ID；不 commit/push，不修改索引/MAP；review 仅初始化为空且不冒充独立复核。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "primary",
+      "title": "vLLM 官方博客 (2026-10-23) — DeepSeek-V4.1-Flash 大规模服务：P/D 分离 + Wide-EP",
+      "locator": "https://vllm.ai/blog/2026-10-23-deepseek-v41-flash-pd-wide-ep",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S02",
+      "kind": "primary",
+      "title": "vLLM 官方博客 (2026-10-07) — DeepSeek-V4.1-Flash on vLLM: 5x Agentic Throughput（「第一篇」单节点聚合基线）",
+      "locator": "https://vllm.ai/blog/2026-10-07-deepseek-v41-flash",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S03",
+      "kind": "primary",
+      "title": "deepseek-ai/DeepInfer README（固定 commit 774ce244b87cc0eb8d4b94ab9f5de2ab22049f01：benchmark 硬件、图表坐标、DSpark/replay 默认值、仍缺的 P/D 与负载均衡）",
+      "locator": "https://raw.githubusercontent.com/deepseek-ai/DeepInfer/774ce244b87cc0eb8d4b94ab9f5de2ab22049f01/README.md",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S04",
+      "kind": "official",
+      "title": "DeepSeek-V4.1-Flash 官方模型卡（552B backbone、CED、CS2、890 B/token KV、专家拓扑、DSpark、1M 上下文）",
+      "locator": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S05",
+      "kind": "primary",
+      "title": "SemiAnalysis InferenceX — AgentX Methodology and Datasets（393 会话、median 142k/444、闭环回放、1 小时窗口、固定接受长度、DRAM 配额）",
+      "locator": "https://inferencex.semianalysis.com/agentx",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S06",
+      "kind": "primary",
+      "title": "SemiAnalysis InferenceX Glossary — Tokens per dollar（区分 TCO tokens/$ 与 Token Revenue per GPU Hour）",
+      "locator": "https://inferencex.semianalysis.com/glossary/tokens-per-dollar",
+      "accessed_on": "2026-10-25"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "vLLM 的机架级结果建立在三个被明确测量的模型性质之上：全局 KV 仅 890 bytes/token；decode 在 128K 上下文、DEP4、每 rank 64 请求时由 MoE 主导（MegaMoE 占目标 step 62%，attention 与 indexer 合计 13%）；且上下文从 128K 增至 855K（6.7×）只让 DEP32 的目标 forward 增加 6.7%（8.93→9.53ms）。",
+      "report_anchor": "1.2 三个约束叠加",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S04"
+      ],
+      "evidence": "博客「Measure the model first」一节的三条结论与 128K→855K 对照表；模型卡的 890 bytes/token 与 KV 压缩设计。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "prefill 采用小 DEP 实例的依据是 DP 不均衡的实测代价：AgentX prefill-only 并发 256 时 DEP4 每 GPU 吞吐仅为 DEP2 的 83%（53.3K vs 64.4K tokens/s）；mirror→lag 回放显示 DEP2 损失 5.9%（138.7K→130.5K）、DEP4 损失 13.6%（267.6K→231.1K）。",
+      "report_anchor": "4. 机制一：prefill 用小 DEP 实例",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "博客 Prefill: DEP2 works best 一节的对比数字与 mirror/lag 表；脚注说明该不均衡代价测于更早构建、属 DEP 规模性质。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "三项新的 prefill 优化在 128K 缓存前缀之上把新 token 吞吐提升 35.6%–43.9%（4K–64K 范围），其中 SWA bounded replay 延伸到第 20 层 +19.9%、Engram 共享 host 表改用 2MB GPU 大页 +2.8%、prefill indexer 改用 DeepSelect top-k +15.6%；32K 处合计 +42.5%，64K 处从 71.2K 升到 102.5K tokens/s/GPU（+43.9%）。",
+      "report_anchor": "4.2 三个新优化",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "博客「Optimizations hidden behind the trace」一节的三项逐条收益、PR 号（#59894、#62359、#62240）与合计结论。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "Wide-EP decode 的收益随并行度递减并最终被通信抵消：DEP4→DEP32 时目标 MegaMoE 时间从 13.4ms 降到 6.0ms，其余工作稳定约 10ms，到 DEP32 草稿侧通信开销开始抵消更宽并行的收益；EPLB 每 3000 步按前 1000 步负载重排专家，把 balancedness 从 0.35 提升到 0.94（目标）与 0.21→0.89（草稿），回收约 97%/93% 的差距（均匀随机路由参考为 0.96/0.94）。",
+      "report_anchor": "5. 机制二：Wide-EP 与 EPLB",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "博客 The scaling of Wide-EP 与 EPLB 两节的数值、balancedness 定义与对照基准说明；#62009 的 symm_mem 后端与 #61395 的异构模型支持。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "在机架级 DEP32 decode 上 CPU 开销可反超 GPU 收益：未优化的 DEP32 每步 17.57ms 慢于 DEP16 的 13.84ms，尽管其 GPU 执行快 1.1ms；官方归因四类并给出修复与效果（KV 同步投递改 NIXL push+UCX scatter-gather：141K→440K tok/s per GPU、P90 ~40→159；Gloo all-reduce 改递归倍增：DP 同步 10.8→1.5ms/step；准入限流每步最多 4 次新 KV 加载：460K→516K tok/s per GPU、P90 109→153；855K prompt 的每次准入 CPU 38.8→6.0ms），并明确各行效果来自不同设置、不可相加。",
+      "report_anchor": "6. 机制三：CPU 开销在 NVL72 尺度上成为瓶颈",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "博客 Overcome CPU overhead in fast large-scale decode 一节的四行表格（原因/修复/PR/效果/设置）与「The effects come from different setups, so each row gives its own」说明。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "vLLM 的公开交互图给出头条点完整配置与原始值：16×DEP2 prefill + DEP32 decode，共 64 GPU，并发 10,888，954,146.03 all-token/s/GPU、6,865.90 output-token/s/GPU、P90 interactivity 196.46 token/s/user、P90 TTFT 7.974s；all-token 含 cached input、uncached input 和 output。$38.96/GPU-hour 是按 DeepSeek off-peak token 售价折算的 Token Revenue per GPU Hour，不是 GPU 成本、租金或 TCO。",
+      "report_anchor": "8. 关键数字与口径逐项核对",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S05",
+        "S06"
+      ],
+      "evidence": "S01 公开交互页 dsv41-pd-agentx-curve.html 内嵌 NEW 数组与配置字段（cfg/gpus/c/tput/out/x/ttft），并明确 all-token 定义；S05 说明每个配置 profiling 1 小时及 closed-loop 口径；S06 明确 Token Revenue per GPU Hour 使用规范化或公开 token 售价，与 TCO tokens/$ 是不同指标。",
+      "critical": true
+    },
+    {
+      "id": "C07",
+      "claim": "「7.9×」可以从公开交互图精确复算：新点为 954,146.03 all-token/s/GPU、P90 196.46；分母是第一篇 DEP2、并发 32 的 120,679.53 all-token/s/GPU、P90 171.53，比例 7.9×。同一图还给出 output-only 6,865.90 vs 692.92 token/s/GPU，即 9.9×。两者同为 per-GPU 口径，但比较的是不同规模与并发的选定 operating point，不是同配置消融。",
+      "report_anchor": "8. 关键数字与口径逐项核对",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "S01 Figure 1 的公开交互 HTML 内嵌 NEW/OLD 数组、headline point 与 baseline point 选择逻辑，并写明 tput/output 两种 ratio；S02 说明旧点来自第一篇已优化的单节点曲线。正文和 evidence 已不再声称分母缺失或归一化未知。",
+      "critical": true
+    },
+    {
+      "id": "C08",
+      "claim": "「vLLM matches DeepInfer」的 decode 比较可按公开交互图复算：vLLM DEP32 使用 32×GB200，DeepInfer 参考为 EP64DP64、64×SM100；两侧在 131K context、nextn=3、固定 3.25 accepted tokens/step 下比较 requests/GPU=8–256，并用 batch×token/s/user 得到 output token/s/GPU。vLLM 逐点相差在 6% 内，但 DeepInfer 点仍由其 README 图片读取，双方不是同机同脚本复测。Prefill 侧 EP4DP4/32 冗余专家/140-token replay/4×SM100 与 DEP2/无冗余专家/128-token replay/GB300/自有 prompts 不同，vLLM 明确不把曲线差距读作引擎加速比。",
+      "report_anchor": "9. 「vLLM matches DeepInfer」逐项判定",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S03"
+      ],
+      "evidence": "S01 的 decode 交互页公开 BS 数组、两组 token/s/user 数据、GPU/并行配置、per-GPU 换算与 within-6% 说明；S03 README 说明 4×SM100 prefill、64×SM100 decode。S01 对 prefill 设置差异与不作 speedup 解读有明确原句。",
+      "critical": true
+    },
+    {
+      "id": "C09",
+      "claim": "两个引擎「接近」存在血缘解释：vLLM 官方称 DeepInfer 最初构建于 vLLM 之上，而 vLLM 持续集成 DeepSeek 的 MegaAttn、MegaMoE、Mega-mHC 等 kernel；此外 DeepInfer README 明示其仍缺 VE/Prefill/Decode 分离与跨 DP 副本负载均衡，公开入口为 offline engine。",
+      "report_anchor": "9.3 双方的血缘关系",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S03"
+      ],
+      "evidence": "S01「The two engines land close because they share a lineage in both directions」；S03 README 的功能清单与 offline 定位。",
+      "critical": false
+    },
+    {
+      "id": "C10",
+      "claim": "模型侧事实来自 DeepSeek 官方且与 vLLM 博客复述一致：552B backbone、prefill 激活 8B / decode 16B、40 层 CED（20 encoder + 20 decoder）、CSA2 的 Full/Reindex/Reuse 三模式与层级稀疏 indexer、FP4 主 KV 下 890 bytes/token（约为 V4-Flash 的 1/4）、持久 KV 约为 V4-Flash 的 1/8、第 2/8/14 层 2× 压缩做全上下文索引、第 20 层只对最后 128 token 跑索引与 attention、第 21–39 层只处理这些 token、1 共享 + 384 路由专家 top-6、DSpark 草稿 128 专家 top-3、Engram 196B、1M 上下文。",
+      "report_anchor": "2. 模型侧前提：先把模型量清楚",
+      "support": "direct",
+      "source_ids": [
+        "S04",
+        "S01"
+      ],
+      "evidence": "S04 模型卡的 Architecture / CSA2 / SWA Bounded Replay / Additional components 段落；S01 博客对 890 B/token、层 2/8/14、layer 20 与 128 replay、384/top-6 与草稿 128/top-3 的复述，两者逐项一致。",
+      "critical": true
+    },
+    {
+      "id": "C11",
+      "claim": "AgentX 口径决定 954K 的读法：基准使用 393 个 Claude Code 会话（median 输入 142k、输出 444 token）、闭环回放、每个配置 1 小时 profiling 窗口、固定投机接受长度、DRAM 上限 3 TB 按 GPU 配额分配，并声明 AgentX 只测服务系统性能、不支持模型质量评估；更快配置会完成更多请求，从而遇到略有不同的负载混合。closed-loop 指到达过程依赖前序完成，不是 closed-source。",
+      "report_anchor": "10. AgentX 口径与 954K 的含义",
+      "support": "direct",
+      "source_ids": [
+        "S05",
+        "S01"
+      ],
+      "evidence": "AgentX 方法学页的数据集统计、回放与计量规则、DRAM 规则与「AgentX measures serving-system performance… does not support model-quality evaluation」「faster configurations complete more requests and can encounter a slightly different workload mix」；S01 的 Figure 1 说明其使用 AgentX。",
+      "critical": true
+    },
+    {
+      "id": "C12",
+      "claim": "对 EverAgent 双仓的现实判断是：机架级复刻不现实（工作负载以托管 API + 轻量本地工具为主、吞吐不是瓶颈），但四条结构性认识可迁移——prefill 与 decode 作为两类负载分开核算成本中心、worker 间负载不均需按实测负载调度（对应 DP 不均衡的 5.9%/13.6% 量化）、编排与重复读取等 CPU 侧开销可能盖过模型收益（对应 DEP32 vs DEP16 的反转）、以及跨轮次复用已解析材料以保持前缀局部性；对应可执行 eval 为编排开销占比、worker 不均衡代价、前缀复用率与每报告工具调用数。",
+      "report_anchor": "14. 对 EverAgent 双仓的现实价值",
+      "support": "derived",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "结论由 S01 的机制与代价清单抽象而来（DEP 不均衡代价、CPU 开销反转、session affinity 保 prefix 局部性、prefill 与 decode 的不同负载特征）；四条 eval 与落地形态为本报告设计，已在正文标注为推断。",
+      "critical": false
+    },
+    {
+      "id": "C13",
+      "claim": "反方解释包括：共享血缘使「6% 接近」不是独立路线收敛；DeepInfer 图片读数会给小于 6% 的差异带来不确定性；954K all-token 口径不能与纯计算吞吐混比；7.9× 比较的是新机架配置与第一篇已优化的 operating point，不能视为单项消融或简单与 5× 相乘归因；$38.96 是 token revenue/GPU-hour 而非成本或利润；Wide-EP 收益依赖足够规模，DEP32 草稿通信已开始抵消收益。",
+      "report_anchor": "15. 反方解释",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S06"
+      ],
+      "evidence": "依据分别来自 S01 的共享血缘、交互图数组、all-token 定义、Wide-EP 通信结论，S02 的旧曲线语境，S03 的 DeepInfer 硬件与功能边界，S06 的 revenue/TCO 指标区分；归纳均标为分析。",
+      "critical": false
+    },
+    {
+      "id": "C14",
+      "claim": "公开产物的边界：本次报告全部性能数字为 vLLM/DeepSeek 自报，无独立复现；模型规格与 DeepInfer 曲线为 DeepSeek 自报；AgentX 方法学为基准方自述；本文未在任何 GB300/GB200/B300 硬件上运行，也不涉及私有设备、网络或账号信息。",
+      "report_anchor": "11. 厂商自报边界清单",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06"
+      ],
+      "evidence": "各来源的自报性质见附录 A 的来源分级；报告的来源分级声明与 Limitations 各条。",
+      "critical": true
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "问题定义与三个模型侧约束、由此推出的策略",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S04"
+      ],
+      "report_anchor": "1. 问题定义"
+    },
+    {
+      "id": "U02",
+      "title": "模型侧前提（架构、KV 压缩、稀疏注意力层、专家拓扑、DSpark、Engram）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S04",
+        "S01"
+      ],
+      "report_anchor": "2. 模型侧前提"
+    },
+    {
+      "id": "U03",
+      "title": "部署形态与数据流（P/D、DEP 定义、NIXL 传输、Wide-EP、EPLB）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "3. 部署形态与数据流"
+    },
+    {
+      "id": "U04",
+      "title": "prefill：小 DEP 实例、DP 不均衡量化、三项新优化及其收益",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "4. 机制一"
+    },
+    {
+      "id": "U05",
+      "title": "decode：Wide-EP 扩展性、EPLB 效果与两项配套改动",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "5. 机制二"
+    },
+    {
+      "id": "U06",
+      "title": "CPU 开销在机架尺度的四类原因、修复与效果",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "6. 机制三"
+    },
+    {
+      "id": "U07",
+      "title": "专用 decode 路径与小批量低延迟（4×B300、并发 1）",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "7. 机制四"
+    },
+    {
+      "id": "U08",
+      "title": "关键数字与口径逐项核对（含交互图原始配置、all-token/output-only、7.9×/9.9× 与 revenue 指标）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S05",
+        "S06"
+      ],
+      "report_anchor": "8. 关键数字与口径逐项核对"
+    },
+    {
+      "id": "U09",
+      "title": "与 DeepInfer 的逐项判定（decode 6%、prefill「tracks」、血缘、DeepInfer 仍缺能力）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S03"
+      ],
+      "report_anchor": "9. 「vLLM matches DeepInfer」逐项判定"
+    },
+    {
+      "id": "U10",
+      "title": "AgentX 闭环口径、头条点公开配置与 954K 的正确读法",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S05",
+        "S01",
+        "S06"
+      ],
+      "report_anchor": "10. AgentX 口径与 954K 的含义"
+    },
+    {
+      "id": "U11",
+      "title": "厂商自报边界清单",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06"
+      ],
+      "report_anchor": "11. 厂商自报边界清单"
+    },
+    {
+      "id": "U12",
+      "title": "硬件与网络前提（GB300 NVL72、NVLink 域、UCX/NIXL、Gloo→递归倍增、host-NUMA cuMem、off-peak 价格）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S03",
+        "S06"
+      ],
+      "report_anchor": "12. 硬件与网络前提"
+    },
+    {
+      "id": "U13",
+      "title": "与其它路线比较（通用引擎+机架、DeepInfer offline、单节点聚合、专用小模型、KV 压缩、小规模部署）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "report_anchor": "13. 与其它路线的比较"
+    },
+    {
+      "id": "U14",
+      "title": "对 EverAgent 双仓的现实价值与可执行 eval",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "14. 对 EverAgent 双仓的现实价值"
+    },
+    {
+      "id": "U15",
+      "title": "反方解释、Limitations 与思考与追问",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S05",
+        "S06"
+      ],
+      "report_anchor": "15. 反方解释"
+    },
+    {
+      "id": "U16",
+      "title": "数字速查表",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06"
+      ],
+      "report_anchor": "附录 B"
+    },
+    {
+      "id": "U17",
+      "title": "DeepSeek-V4.1-Flash 技术报告与 DSpark 原始论文的算子级细节",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "S01",
+        "S03"
+      ],
+      "report_anchor": "",
+      "omission_reason": "本次已通过官方模型卡获取模型侧结构事实并与 vLLM 博客交叉核对；技术报告与 DSpark 论文的算子级细节属既有 DeepInfer 报告的覆盖范围（该报告已完成并聚焦 DeepInfer 源码与 DSpark），为避免与既有报告重复且在时限内无法完整核实，本文不展开，相关字段仅保留模型卡可核对的结论。"
+    }
+  ],
+  "limitations": [
+    "全部性能数字为 vLLM 与 DeepSeek 自报，无独立复现；本报告未在 GB300/GB200/B300 任何硬件上运行。",
+    "头条交互图已披露并发 10,888、16×DEP2+DEP32、64 GPU、P90 TTFT、all-token/output-only 吞吐和 7.9× 分母；仍缺 cached 与 uncached input 的拆分及 $38.96 的逐项价格权重。",
+    "954K 为含缓存命中输入的逻辑吞吐，不可读作纯计算效率，也不可与未统一口径的系统直接比较。",
+    "DeepInfer decode 对照已统一为 output token/s/GPU 且逐点数组公开，但参考点来自 README 图片、不是双方同机同脚本复测；prefill 设置差异过大，不能作引擎加速解读。",
+    "DeepInfer 图本身未标硬件，但 README 明确 prefill 4×SM100、decode 64×SM100；vLLM decode 对照使用 32×GB200，属同世代 per-GPU 比较而非同系统复测。",
+    "模型规格与 DeepInfer 曲线同为 DeepSeek 自报，本文仅核对其与 vLLM 博客的一致性，无第三方测量。",
+    "AgentX 方法学为基准方自述，本文未运行；其闭环回放存在负载漂移，更快配置会完成更多请求并遇到不同负载混合。",
+    "CPU 开销四因的效果来自不同设置，官方明确不可相加。",
+    "未涉及机架折旧、电费、运维、长期稳定性与故障恢复等成本与可靠性维度。",
+    "与本仓既有 DeepInfer 报告分工：该报告覆盖 DeepInfer 仓库/DSpark/CED 源码级细节，本报告只做机架级在线服务对照，不重复源码分析。",
+    "本报告标注为【本报告推断】的部分（口径影响、6% 结论强度、六条反方解释、双仓价值判断与四条 eval 设计）均为推断而非原文陈述。"
+  ]
+}

@@ -1,0 +1,504 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/paper_analyses/52_litpivot_dynamic_contextualization_2026.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "cross-model-sample-litpivot-20261025-gpt56sol",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 94,
+        "request_coverage": 96,
+        "reasoning_quality": 94,
+        "readability": 94,
+        "limitations": 96
+      },
+      "score_reasons": {
+        "evidence_fidelity": "独立核对 arXiv v3 正文、显式版本摘要页、Ai2 官方博客、Asta PaperFinder README、Connected Papers About 与 Semantic Scholar 官方 API 入口。技术评估的 +1.93/dz=1.04、+1.37/dz=0.58、低评分者一致性，Study 1 的 n=17、约 100 篇同语料、2.59→5.18、p_corr=.152、α 0.389→0.804，以及 Study 2 的 n=5 均与一手材料一致。负向代码公开状态仍是截至 2026-10-25 的定向检索结论，报告已按时间点限定。",
+        "request_coverage": "R01–R06 均被覆盖：显式固定 v3，主线、机制、完整评测数字、边界、失败模式、复现缺口、EverAgent 迁移、最小 A/B eval、反方解释和追问均存在；报告可脱离 evidence 独立阅读。",
+        "reasoning_quality": "报告把论文证据、官方传播和分析者推断分开，明确区分 groundedness、主观新颖性、可行性和长期影响，并提出写作对齐效应、需求特征、窄新颖性定义等替代解释。迁移建议先 pilot 后改 schema，推断强度与证据边界相称。",
+        "readability": "速览、内容地图、五条主线、评测表、边界表和最小实验形成清晰阅读路径；数字同时给出样本、基线、统计量与口径。正文较长但信息密度高，未用索引替代论证。",
+        "limitations": "明确披露无 LitPivot 可运行代码、demo、完整数据与固定语料快照，技术评估评分者一致性低，Study 1 评分者为作者且只评 groundedness，缺组件消融与长期研究，并把迁移方案标为待验证。对网页读取 32K 截断后的最小官方 HTML 降级也在本次复核 notes 中留痕。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C05",
+        "C07"
+      ],
+      "coverage_unit_ids_checked": [
+        "SC01",
+        "SC02",
+        "SC03",
+        "SC04",
+        "SC05",
+        "SC06",
+        "SC07",
+        "SC08",
+        "SC09",
+        "SC10",
+        "SC11",
+        "SC12"
+      ],
+      "source_content_map": [
+        {
+          "id": "XSM01",
+          "title": "论文定义 literature-initiated pivot，并用项目制品与形成性研究建立问题",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC01",
+            "SC03"
+          ],
+          "notes": "21 次 pivot、n=5 形成性研究、CH1/CH2 与 DG1/DG2 均进入问题主线。"
+        },
+        {
+          "id": "XSM02",
+          "title": "相关工作把固定文献理解与静态文献构思工具作为直接边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC02"
+          ],
+          "notes": "双空间搜索、文献理解和文献支持构思三组相关工作均有对应讨论。"
+        },
+        {
+          "id": "XSM03",
+          "title": "系统按 problem/contribution/evaluation 分面动态检索、扩展、聚类与重排",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC04"
+          ],
+          "notes": "Asta、Semantic Scholar、GPT-4o、o3 与 Sonnet-4 的职责和用户触发重排均覆盖。"
+        },
+        {
+          "id": "XSM04",
+          "title": "三类 facet 使用不同判据，贡献面以贡献×局限二分图定位增量",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC04",
+            "SC08"
+          ],
+          "notes": "报告同时保留论文对窄新颖性定义和范式约束的自我批评。"
+        },
+        {
+          "id": "XSM05",
+          "title": "技术评估对 IdeaSynth 比较 5 个想法、15 个片段和 2 名评者",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC05"
+          ],
+          "notes": "两项指标的逐评者与合并统计、效应量及低 Krippendorff α 均逐项核对。"
+        },
+        {
+          "id": "XSM06",
+          "title": "Study 1 在 n=17 条件内对比中提升文献理解与专家评 groundedness",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC06"
+          ],
+          "notes": "样本、任务、基线、约 100 篇同语料、作者盲评、主要统计量与不显著可行性均覆盖。"
+        },
+        {
+          "id": "XSM07",
+          "title": "Study 2 展示 n=5 研究者在不同研究阶段按 facet 调整文献和框架",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC07"
+          ],
+          "notes": "新想法核验、成熟框架重构、复用意愿和代表性案例均进入报告。"
+        },
+        {
+          "id": "XSM08",
+          "title": "论文限制与伦理讨论约束 groundedness、novelty、feasibility 和长期效果",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC08"
+          ],
+          "notes": "语料依赖、只评两维、窄新颖性、文献约束价值观、不能执行代码和缺长期研究均覆盖。"
+        },
+        {
+          "id": "XSM09",
+          "title": "Ai2 博客确认 UIST 2026、17 人研究结论与科研工具谱系",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC09"
+          ],
+          "notes": "官方博客仅承担传播口径和生态定位，不作为独立效果复现。"
+        },
+        {
+          "id": "XSM10",
+          "title": "公开 Asta PaperFinder 是依赖快照，区别于线上版本与 LitPivot 本体",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC10"
+          ],
+          "notes": "README 明示不再积极维护、是时间快照，并列出线上多轮、UI、数据集和配置差异。"
+        },
+        {
+          "id": "XSM11",
+          "title": "Connected Papers 以论文相似图而非想法 facet 为交互单位",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S05"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC11"
+          ],
+          "notes": "约 5 万篇候选、共被引/文献耦合、力导向图与 Semantic Scholar 语料均与官方 About 一致。"
+        },
+        {
+          "id": "XSM12",
+          "title": "Semantic Scholar Graph 与 Snippet Text API 是 LitPivot 的底层检索接口",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S06",
+            "S07"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC12"
+          ],
+          "notes": "官方 API 入口与论文 §4.2.1 脚注交叉核对；动态文档页只暴露入口，具体调用职责以论文正文为主。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "本次为每 5 篇 important 报告一次的强模型跨模型抽样复核。revision 2 审阅快照：报告 SHA-256=7e9f0ca7ecafdc73c251f545126afcbff1bd1adf223121f15849717e87dc6f55、evidence SHA-256=95741efa7b99966e220eaa3ca94798e00e72395fe22ede595a4808229c8155c3；new-revision 只把 frontmatter status 改为 in_progress，正文与先前已核对的 completed 快照逐字一致。先读一手来源再映射报告。eacli web.read 对 arXiv 长 HTML 在约 32K 字符处截断，故只为 §4.5、§5、§7 做一次官方 arXiv HTML 到 /tmp 的最小直接读取降级；其余来源均经 eacli typed capability 读取。未发现需要修订正文的实质缺陷。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 94.6,
+    "evaluated_on": "2026-10-25",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "0fb081cac34d423064125bb12553103a999e88aa2e07f78778cd3f73e074c0a6",
+    "evidence_sha256": "95741efa7b99966e220eaa3ca94798e00e72395fe22ede595a4808229c8155c3"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-6",
+            "harness": "codex",
+            "run_id": "review-litpivot-20261025-gpt6",
+            "independent_context": true,
+            "explicit_model_override": false
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 95,
+            "request_coverage": 97,
+            "reasoning_quality": 94,
+            "readability": 94,
+            "limitations": 97
+          },
+          "score_reasons": {
+            "evidence_fidelity": "独立读取显式 arXiv v3 PDF/HTML 到结论与附录，并核对 Ai2 博客、Asta PaperFinder README、Connected Papers About、Semantic Scholar API 页面及代码公开状态搜索。技术评估与 Study 1 的样本、统计量和效应量均可回到论文；修订了实验语料日期误归因、AI 工具频率翻译、旧 DOI 混入和作者评分者独立性表述。",
+            "request_coverage": "R01–R06 全部覆盖：问题形成、系统机制、文献检索与动态重组、三类判据、技术评估、两项用户研究、失败模式、可复现边界、竞品差异、EverAgent 迁移、最小 A/B eval、替代解释与追问均完整。",
+            "reasoning_quality": "报告把 groundedness 与客观新颖性、可行性和长期影响分开，也识别了基线强度、需求特征、分面价值观和文献约束的双刃效应。修订后，二分图只被建议用于主张方法增量的报告初筛，不再泛化成所有 source-first review 的机器等价物；schema 变更也改为先 pilot 后决策。",
+            "readability": "五条主线、评测表、边界表和最小实验让长文仍可快速定位；术语首次出现时有中文解释，关键数字都带样本与统计口径。少量迁移章节较密，但主线清楚且报告可独立阅读。",
+            "limitations": "明确说明没有 LitPivot 可运行代码、demo、完整数据与实验语料快照，技术评估评分者一致性低，Study 1 评分者是论文作者且只评单一 groundedness 标准，没有组件消融和长期效果。显式 v3 与默认 abs v2 的入口差异也已准确记录。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C05",
+            "C07"
+          ],
+          "coverage_unit_ids_checked": [
+            "SC01",
+            "SC02",
+            "SC03",
+            "SC04",
+            "SC05",
+            "SC06",
+            "SC07",
+            "SC08",
+            "SC09",
+            "SC10",
+            "SC11",
+            "SC12"
+          ],
+          "source_content_map": [
+            {
+              "id": "SCM01",
+              "title": "论文定义 literature-initiated pivot，并以三项前置研究建立问题与设计目标",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC01",
+                "SC02",
+                "SC03"
+              ],
+              "notes": "21 次 pivot、n=5 形成性研究、CH1/CH2 与 DG1/DG2 均进入主线一。"
+            },
+            {
+              "id": "SCM02",
+              "title": "LitPivot 以 problem/contribution/evaluation 分面动态检索、聚类、评估和重排文献",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC04"
+              ],
+              "notes": "Asta、Snippet API、GPT-4o、Sonnet-4、o3 与用户触发 re-rank 的职责均覆盖。"
+            },
+            {
+              "id": "SCM03",
+              "title": "贡献面用贡献×局限/未来工作的二分图判断已处理与未处理增量",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC04",
+                "SC08"
+              ],
+              "notes": "正文同时保留论文对该新颖性定义过窄的自我批评。"
+            },
+            {
+              "id": "SCM04",
+              "title": "技术评估对 IdeaSynth 比较 5 个想法、15 个片段和 2 名评者，建议质量效果大但评者一致性低",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC05"
+              ],
+              "notes": "两名评者及合并统计、非显著的评估质量 Rater 2 和 α 区间均完整报告。"
+            },
+            {
+              "id": "SCM05",
+              "title": "Study 1 的核心证据是 n=17 条件内对比下的文献理解与 groundedness 提升",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC06"
+              ],
+              "notes": "参与者、基线、约 100 篇同一语料、反平衡、专家评分和全部主要统计量均核对；语料具体检索日期未披露。"
+            },
+            {
+              "id": "SCM06",
+              "title": "Study 2 展示研究者对不同 facet 选择不同文献并发生实际框架转向",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC07"
+              ],
+              "notes": "n=5、2 人核验新想法、3 人重构成熟框架、4 人愿复用和 P2/P3 案例均覆盖。"
+            },
+            {
+              "id": "SCM07",
+              "title": "论文限制包括语料可得性、只评 grounding/差异化、无法验证可行性、范式约束与长期效应缺失",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC08"
+              ],
+              "notes": "报告将伦理讨论与方法限制纳入失败模式，没有把自评新颖性当作客观新颖性。"
+            },
+            {
+              "id": "SCM08",
+              "title": "Ai2 博客确认 UIST 2026、17 人研究结论和其科研工具谱系定位",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC09"
+              ],
+              "notes": "博客只作为官方传播与生态定位来源，不承担独立效果验证。"
+            },
+            {
+              "id": "SCM09",
+              "title": "公开的 Asta PaperFinder 是依赖快照而非 LitPivot 本体，且与线上版本存在显著差异",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC10"
+              ],
+              "notes": "不再把依赖代码的可运行性误当成 LitPivot 可复现。"
+            },
+            {
+              "id": "SCM10",
+              "title": "Connected Papers 与 Semantic Scholar 只能作为边界和基础设施来源",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S05",
+                "S06",
+                "S07"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC11",
+                "SC12"
+              ],
+              "notes": "约 5 万篇分析、共被引/文献耦合、力导向图等只用于对比交互单位。"
+            },
+            {
+              "id": "SCM11",
+              "title": "截至当前定向搜索没有发现 LitPivot 公开仓库或 demo，且版本入口必须显式固定 v3",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC08",
+                "SC09",
+                "SC10"
+              ],
+              "notes": "显式 v3 显示 2026-09-22 与正确 UIST DOI；默认无版本 abs 仍可能落到 v2。"
+            },
+            {
+              "id": "SCM12",
+              "title": "迁移到 EverAgent 的建议应先做小规模 A/B eval，再决定是否修改 schema",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC04",
+                "SC08"
+              ],
+              "notes": "报告给出 12–20 选题设计和 4 题 pilot，同时收紧为仅在方法增量型报告使用二分图初筛。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06",
+            "S07"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04",
+            "R05",
+            "R06"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "独立复核按来源优先执行。修订包括：删除把 Asta 页面访问日误作实验语料检索日；修正 AI 工具频率；明确作者评分者的独立性边界；删除无关 2023 DOI；收紧传统综述对比、二分图泛化和 schema 立即迁移建议；更新代码公开状态到 2026-10-25。"
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 95.25,
+        "evaluated_on": "2026-10-25",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "0fb081cac34d423064125bb12553103a999e88aa2e07f78778cd3f73e074c0a6",
+        "evidence_sha256": "95741efa7b99966e220eaa3ca94798e00e72395fe22ede595a4808229c8155c3"
+      }
+    }
+  ]
+}

@@ -1,0 +1,491 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/PyTorch_FlyDSL_AMD_GPU_Kernel加速_深度解析_20261025.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "glm-5.3",
+        "harness": "pi",
+        "run_id": "review-glm53-flydsl-r2-20261025",
+        "independent_context": true,
+        "explicit_model_override": true,
+        "override_reason": "用户声明 MiniMax M3.1 Flash 已 429 并指示使用 GLM-5.3（thinking high），属用户指定覆盖；本复核会话按指示执行。"
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 95,
+        "request_coverage": 92,
+        "reasoning_quality": 92,
+        "readability": 88,
+        "limitations": 92
+      },
+      "score_reasons": {
+        "evidence_fidelity": "快照复验：先核对 revision 2 双 SHA（报告 0a5c3cc9…、evidence e25d8aad…）与 revision_round=2 及 history 中首轮记录（92/86/90/86/90 → 加权 89.3、unsupported C05），随后以本会话新抓取的 S01 全文与既有 S02–S07 材料对两类改动做精确复核。改动一（首轮 C05）确认修复：报告 §5.2 改为『原文明写投影维度 5 例：1.23× / 1.73×』，与 S01 'Projection dimensions (five cases): G = 8 and M = 512 are fixed…' 及 'The projection-dimension cases reach 1.23x and 1.73x' 逐字对应，『24−14−5 推算/原文未明写计数』的错误来源陈述已删除；evidence C05 同步更新为『grouped GEMM 24 例分为 uniform 14、projection dimensions 5、ragged 5 并给出各自几何均值』，计数恢复一手直引。改动二（首轮 V03 机制缺口）确认补齐且逐点核验：新增 §4.2『为什么快：六类 kernel 分别在省什么』六行机制表，27 个机制要素全部在 S01 原文逐字定位——Dense GEMM 的 full-tile/HTI 双路径、configurable `STAGES`-deep K-tile ring（LDS）、phase-shifted barrier 错开两个四 wave 组、half-tile buffer reuse；MXFP 的 separate scale slots 跨多 K tile chunk、chunk 边界预取、full-tile 路径 scale 与 K tile 共用 stage index；Grouped GEMM 的 persistent grid 沿累计 tile offset 走 strided 序列并自动跳空 expert、compute-die-aware swizzle 分摊 8 个 XCD、N-major fallback 复用 B tile；RMSNorm 每行一个 CTA、128-bit 向量加载、Wave64 shuffle 归约+小 LDS 合并 partial、复用原值写输出与 backward 所需 `rstd`；TopK 小 K 寄存器内 bitonic+Butterfly merge、大 K 四轮 8-bit radix 找阈值后仅排序幸存候选（buffer 取整到下一 2 的幂）；Attention head dim≤256 dual-wave 软件流水（softmax VALU 与另一 tile 的 QK/PV MFMA 重叠）、head dim 512 双 tile 需约 272 KB 撞 160 KB LDS 上限故按时间经 LDS 分片并按 wave 拆输出 accumulator、backward 复用 forward 的 building blocks 而非另建 lane map。表中『272 KB 对 160 KB』『stage index 共用』等细粒度表述均与原文一致，无一处凭空推断被写成事实。归因边界处理正确：§4.2 首段明写『这些机制不是独立性能归因实验，而是 PyTorch 官方对实现的解释』，Limitations 第 6/11 条双重声明没有硬件计数器或消融可把加速量独立归因到单一机制——与任务要求的『官方机制说明而非独立消融归因』口径完全一致。C01–C13 在新快照下抽查关键锚点（Triton 互补定位、三层结构与 IR 类型、三条分派通路、支持矩阵约束、端到端协议与 ABBA/单次测量、attention 版本对比免责句、TopK 确定性语义、成熟度信号与 What's Next 六项、gfx950/gfx1201/MI450）全部仍与来源一致；14 条 claim 与 26 个 coverage 单元的 report_anchor 在正文中全部可解析（anchor misses = NONE）。未发现新的不实或夸大陈述。",
+        "request_coverage": "R01–R05 在 revision 2 全部达成：R01 查重与来源读取维持（7/7 来源实际核对）；R02 的首轮缺口已闭合——§4.2 以六行机制表补齐 kernel 级调度（HTI 错相流水、MXFP scale slot、persistent grid+XCD swizzle、RMSNorm wave 归约、TopK 双路径、dual-wave/宽头拆分），evidence 新增 C14（direct 支持）与 U26（included，锚 §4.2）使其进入账本而非仅正文；首轮指出的『读法说明承诺机制解释但未兑现』的内部不一致随 §4.2 落地而消除；DSL/IR/代码生成/authoring 模型与框架层调度在修订版保持完整。R03 性能数字逐口径核验、R04 六路线有边界比较、R05 可移植性/维护成本/成熟度/现实意义均维持首轮的充分水平。剩余轻微缺口（不构成 missing_requirement）：S02 Ecosystem Impact 段（Quack/Quark、TorchInductor CuTe 后端、DeepGEMM/FlashMLA/XFormers 迁移路径）仍只在 §六 比较表部分带过，属 supporting 级；R01 的查重动作仍未在正文/evidence 显式留痕（流程性）。",
+        "reasoning_quality": "修订把首轮缺失的『怎么快』层补进了推理链：§4.2 表后紧跟的推断段（『收益不是来自 Python 比 Triton 快，而是来自作者能把 wave、LDS、寄存器、scale 与 MFMA 的所有权写进 kernel 本身；能否兑现仍取决于 shape、dtype、布局与算子占比』）把机制层与首轮已建立的『算子占比摊薄』结论正确衔接，且保持推断标注。非归因纪律（官方机制说明≠消融证明）在正文与 Limitations 双处声明，避免了把机制解释误用为因果量化。首轮的三处数字设防（attention 版本对比、MXFP 单次测量、RMSNorm off-by-one 峰值）在修订版原样保留。六路线比较、部署风险与最小验证方案未受修订影响。",
+        "readability": "§4.2 的六行『调度机制/白话解释』双列表是全文可读性最好的增量之一：每行左列保留工程术语、右列用一句白话点出『省的是什么』，非 GPU 背景读者也能跨过术语门槛；位置（§4 支持矩阵之后、§5 数字之前）形成『能做什么→为什么快→快多少』的自然递进。首轮批评的 §5.2 单行过长问题依旧存在（胜负计数、极值与回归备注仍挤在一格），为小幅失分点；全文标注体系、目录、机制示意与判定表结构维持首轮水平，独立可读性完好。",
+        "limitations": "Limitations 从 10 条增至 11 条：新增第 11 条专门声明 §4.2 机制来自官方实现说明、本轮未读源码/硬件计数器/消融、不能把观测加速量独立归因到单一机制——这正是首轮复核要求的留痕；第 6 条同步补入『§4.2 的 kernel 调度解释同样来自官方实现说明』。图内数值未取到、源码未读、无同条件实测、许可原文未读、社区复现未检索等既有声明全部保留且与 evidence 侧 11 条一致。资料时点如实标注。剩余可改进空间极小（Ecosystem Impact 部分覆盖未在 Limitations 提及，属可选）。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C10"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08",
+        "U09",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16",
+        "U17",
+        "U18",
+        "U19",
+        "U20",
+        "U21",
+        "U22",
+        "U23",
+        "U24",
+        "U25",
+        "U26"
+      ],
+      "source_content_map": [
+        {
+          "id": "W01",
+          "title": "首轮 V01–V14 全部单元（集成模型、支持矩阵、算子数字、测量协议、attention 版本对比、端到端、What's Next、S02 动机与定位、Current Status/生产自述、DSL-IR-authoring 全链、仓库成熟度、TopK 确定性）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06",
+            "S07"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07",
+            "U08",
+            "U09",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14",
+            "U15",
+            "U16",
+            "U17",
+            "U18",
+            "U19",
+            "U20",
+            "U21",
+            "U22",
+            "U23",
+            "U24",
+            "U25"
+          ],
+          "notes": "首轮 14 单元中 12 covered 维持、V03 在本轮补齐、V11（Ecosystem Impact）仍为 partial（supporting 级，正文部分带过）。"
+        },
+        {
+          "id": "W02",
+          "title": "S01 What Drives the Speedup：Dense HTI/staged LDS、MXFP scale slots、Grouped persistent grid/XCD swizzle、RMSNorm 寄存器+wave/LDS 归约、TopK register/radix 双路径、Attention dual-wave/wide-head 拆分（首轮 V03 缺口）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U26"
+          ],
+          "notes": "27 个机制要素逐字核验全部命中（含 `STAGES`-deep K-tile ring 与 `rstd` 两处反引号原文）；报告压缩为六行表未引入失真；非归因边界在正文与 Limitations 双声明。"
+        },
+        {
+          "id": "W03",
+          "title": "首轮 unsupported C05 的修复：projection dimensions 计数与数值恢复为 S01 明文直引",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U13"
+          ],
+          "notes": "§5.2『原文明写投影维度 5 例』与 evidence C05 更新一致；『推算/原文未明写计数』表述已删除。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "复核方法：核对 SHA/轮次→以本会话 S01 新抓取全文（31376 字节）与既有 S02–S07 材料逐点复核两类改动→抽查 C01–C13 关键锚点→全量解析 14 claim 与 26 coverage 的 report_anchor（misses=NONE）→填写本 review。结论：首轮两项发现全部闭环——C05 由 unsupported 变为直引且数值不变；V03 kernel 机制缺口由 §4.2+C14+U26 补齐且 27 要素逐字可溯，非归因边界处理符合任务要求。总评 92（95×0.35+92×0.20+92×0.20+88×0.15+92×0.10=92.45），五维全部高于 important 门槛（90/85/85/80/80），unsupported_claims 与 missing_requirements 清零。遗留（非阻断、移交协调者酌情）：S02 Ecosystem Impact 的 Quack/Quark、TorchInductor CuTe 后端与 DeepGEMM/FlashMLA/XFormers 迁移路径仍只在比较表部分带过；R01 查重动作未显式留痕；§5.2 表格单行偏长；140 个 open issue 内容、LICENSE 原文、autotune 空间与首次成本、attention 相对 Triton 的隔离对比仍无人核验（报告 §12.2 已列）。",
+      "claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14"
+      ]
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 92.45,
+    "evaluated_on": "2026-10-25",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "1d9c5a041b5c2e4ab6b5d19f4add4181a6b41db20ec7e3af031d9eb16f9e0c11",
+    "evidence_sha256": "e25d8aada16067419ab7da1e239298ac4e5f929609ce0bdf7d34ef18a3803784"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "glm-5.3",
+            "harness": "pi",
+            "run_id": "review-flydsl-20261025",
+            "independent_context": true,
+            "explicit_model_override": true,
+            "override_reason": "用户明确声明 MiniMax M3.1 Flash 已出现 429 用量上限并指示切换 GLM-5.3、保持最高可用思考档位 high；本复核会话按指示使用 glm-5.3（thinking high），属用户指定覆盖。"
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 92,
+            "request_coverage": 86,
+            "reasoning_quality": 90,
+            "readability": 86,
+            "limitations": 90
+          },
+          "score_reasons": {
+            "evidence_fidelity": "来源优先复核：先重新抓取 S01（PyTorch 博客，31376 字节）与 S03（ROCm/FlyDSL README），再以本会话已存的 S02/S04/S05 全文与 S06/S07 GitHub API 元数据逐段比对，报告与 evidence 的全部关键数字均可在原文逐字定位。任务指定的七个重点核验项逐项判定：(1)『算子级多数占优而非全面占优』成立——S01 原文 'All 15 cases are shown: 10 wins, three ties, and two losses using a ±1% tie band'，报告开头与 §5.2 均如实写为 10 胜/3 平/2 负并注明两个最大方阵偏 ATen，未夸大为全面领先；(2) 70B 表述准确——原文 'Llama-3.3-70B remains mostly within the 1.79% measured noise floor'，报告译为『多数测点处于 1.79% 的实测噪声地板内』并在口径缺口中二次强调；(3) 小 K TopK 用例数准确——原文开篇明写 'the 10 small-K TopK cases'，报告 §5.2 写『小 K={2,4,8,16} 的 10 个用例』且同时保留『图注聚合全部 33 个报告用例』的双口径，4.82×/4.02× 与 1.40×–1.97× 均逐字核对一致；(4) MXFP 缩放规格逐字一致——原文 'one E8M0 scale per 32 values along the reduction dimension (BlockWise1x32)'，报告 §4.1 注记完全对应，K%128 与不支持 fast accumulation 亦同段核对；(5) CK 主张标注正确——S02 原文 'performance competitive with, or exceeding, CK-based implementations' 在报告 §2.3 被明确标为 AMD 自称且『没有给出可独立复核的同条件对照』，§5.5 口径缺口另列『无与 CK/AITER 的直接对比』；(6) Attention 定性准确——S01 原文免责句 'This release-to-release comparison also includes updated Triton, AITER, and tuning databases, so it is not an isolated FlyDSL-versus-Triton measurement' 被报告 §5.3 单列成节并三处复述（§5.6、§8.5），0.92×–2.34×/0.93×–2.47× 数值与适用范围（gfx950 聚合）一致；(7) 端到端协议与测量强度忠实——vllm bench serve、单卡 TP=1、三模型、256/512 token、并发 8–256、仅改 Inductor GEMM 候选列表、BF16 至少两次 ABBA 交错重复取中位数、MXFP8/MXFP4 每格一次测量及原文自警句均如实转述。C01–C13 逐条复核通过：C01/C02 的 Triton 互补定位与三层结构/IR 类型在 S02/S03 逐字可查（'!fly.int_tuple' 等、'a first-class layout IR' 于 README 出现两次）；C03 三条分派通路与 'caches the winner for each workload' 原文一致；C04 支持矩阵约束（含 flex_attention 走 Inductor 自有 Triton kernel、RMSNorm backward 留在 PyTorch）逐项核对；C06/C07 数字与口径全对；C08 的官方前提句 'These gains are most relevant when the supported operations account for a significant share of model runtime' 逐字核对；C09 TopK 确定性语义（prefix-sum vs atomic slot、NaN 规范化）与原文一致；C10 成熟度信号与仓库元数据一致（302★/131 forks/140 open issues/NOASSERTION 许可/创建 2025-11-23/最近推送 2026-10-24；aotriton MIT/102★/41 issues），S01 What's Next 六项（MI450、MXFP8 grouped GEMM 与 FlexAttention、attention kernel 迁回 kernels/attention/ 去 vendored、FlexAttention 后端、epilogue fusion 与更广 backward、AOTInductor）逐条在原文定位；C11 的 gfx950/gfx1201(RDNA4)/MI450 路线图核对无误。唯一发现的实质缺陷是一处来源转述失真（方向保守）：报告 §5.2 表格称 grouped GEMM『投影维度 5 例为 24−14−5 的推算，原文未明写计数』，但 S01 原文明确写有 'Projection dimensions (five cases): G = 8 and M = 512 are fixed…' 且 'The projection-dimension cases reach 1.23x and 1.73x' 亦为原文明文——计数与数值均为一手直引而非推算，报告对自身的证据等级做了不必要的降格，同时『原文未明写计数』这句对来源的描述本身不成立。该错误不影响任何数值正确性、未夸大任何主张，且 C05 的 evidence 字段本身未含此误标，故扣分有限。",
+            "request_coverage": "R01–R05 逐项判定：R01（查重+完整读取原文+交叉核对一手材料）达成——7 个登记来源中 5 个在本会话被重新或首次完整读取（S01/S03 新抓取，S02/S04/S05 全文在手），S06/S07 以 GitHub API 元数据核对，evidence 的 7 个来源均实际触及且用途与登记相符；查重为流程性动作，报告未显式记录查重结论属轻微留痕缺口。R02（白话解释 DSL、IR/代码生成、调度与 kernel authoring 模型）主体达成但有一处实质缺口：DSL 三层结构、Fly 方言四类 IR 类型与代数算子、AST 变换→Fly→ROCDL→HSACO 管线、@flyc.kernel/@flyc.jit/launch/barrier 原语与 vectorAdd 示例的白话拆解均到位且与 S03/S04/S05 逐点对应；框架层『调度』（eager 自动分派、Inductor 候选实测、AOTriton 调优库派发）覆盖完整；但 S01『What Drives the Speedup』的 kernel 级调度机制基本缺席——HTI 半瓦片交错（256×256 tile、8-wave workgroup、相位错开 barrier、半瓦片 LDS 复用）、MXFP scale-slot 分块、grouped GEMM 持久网格+XCD 感知 swizzle（全文『持久/persistent』零命中）、RMSNorm 每行一 CTA 的 wave 归约、TopK 寄存器路径（bitonic+ butterfly shuffle）与 radix 阈值路径的机制本身（仅在确定性与读法说明中顺带提及名词）、attention 双波流水线（softmax VALU 与 MFMA 重叠、head dim 512 的 LDS 272KB 对 160KB 上限拆分）均未展开；报告 §一 读法说明还承诺『S01 的每个性能数字都回到…机制描述里找解释（例如…寄存器路径与 radix 路径设计）』，但正文并未兑现该承诺，构成一处内部不一致。此外 S02 的 Ecosystem Impact 段（FlashInfer/FlashAttention/Dao Quack/Quark/TorchInductor CuTe 后端/TileLang 受益、DeepGEMM/FlashMLA/XFormers 迁移路径）仅在 §六 比较表中部分带过，『on-ramp』框架未完整进入正文。R03（逐项核验所有性能数字的 GPU/kernel/shape/精度/基线/测量协议）超额达成——§5.1–§5.6 与口径缺口清单是全文最强部分。R04（比较 Triton/CK/HIP-CUDA 等路线+可移植性/维护成本/成熟度）达成——六路线有边界比较 + §7 四小节。R05（对推理/训练 kernel 开发的现实意义+Limitations+思考追问）达成。综合：五项要求中四项充分、R02 有一个中等规模的源内容缺口（kernel 调度机制），评分 86（门槛 85，压线通过）。",
+            "reasoning_quality": "推理链整体严谨：(1) 最核心的分析判断——『算子级 1.6× 到端到端 1.13× 的落差源于算子占比摊薄』有原文前提句直接支撑，且报告用 BF16 70B 落入噪声地板作反证，逻辑自洽；(2) 对三处最易误读的数字（attention 版本对比、MXFP 每格一次测量、RMSNorm 3.66× 属 off-by-one 形状）均主动设防并给出原文依据；(3) 六路线比较承认无同条件实测、不构成性能排名，边界声明到位；(4) §8 七条现实意义逐条标注锚点与迁移条件，C12/C13 的推断性质在 evidence 中如实标为 inference；(5) §12.2 的未解问题（attention 隔离对比缺失、训练侧无数字、autotune 成本、140 issue 内容、许可条款）均指向真实缺口。扣分点：『同一份 kernel 在两条路线上的行为差异会集中在 kernel 效率、编译质量与内存搬运效率』等跨路线论断属合理但未验证的推断，报告已用【本报告推断】标注，处理得当；kernel 机制缺口（见 request_coverage）使部分数字缺少其承诺的机理解释，轻微削弱推理完整性。",
+            "readability": "独立可读性良好：开头三行 x→f→f(x) 给出问题-方法-结论闭环并前置最重要的『算子级 vs 端到端落差』判断；§3.4 机制示意、§4 通路表、§5 逐口径数字表、§5.5 缺口清单、§5.6 官方自述 vs 可核对判定表、§6 比较表、§8.1 部署风险与 §8.2 最小验证方案结构清晰；术语（HTI、NEFF 式编译产物、layout 代数）在首次出现处有白话解释；标注体系（官方自述/代码证据/分析者推断/推测/待验证）贯穿全文且使用一致。扣分点：§5.2 表格单行过长（一行内塞入胜负计数、极值与回归备注），阅读负担偏高；kernel 机制缺席使『为什么快』的叙事在 §3 与 §5 之间出现断层，读者只能看到『快多少』而看不到原文给出的『怎么快』；个别推断段（§7.2 维护成本）与 §5.6 判定表有少量信息重复。",
+            "limitations": "Limitations 章节诚实且具体：10 条逐项覆盖未运行任何 kernel、图内数值未取到、未读源码与多数 docs、API 统计仅文档级、S06 属 AI 生成文档的定位说明、无同条件实测、无社区复现检索、许可原文未读、未核对 AMD-OpenAI 协作现状、资料时点；其中『409/94/19 为本报告逐行机械统计』与『docs/AI-distributed.md 是仓库作者自己的记录』两处来源性质声明尤其负责。与证据侧 limitations（evidence 10 条）内容一致、无互相矛盾。扣分点：未声明『未读取 S01 What Drives the Speedup 一节的机制内容是否刻意省略』——即 kernel 调度机制缺口在 Limitations 中没有留痕，读者会以为机制层已被 §3 完整覆盖；S02 Ecosystem Impact 段的部分覆盖同样未在 Limitations 提及。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07",
+            "C08",
+            "C10"
+          ],
+          "claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07",
+            "C08",
+            "C09",
+            "C10",
+            "C11",
+            "C12",
+            "C13"
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06",
+            "S07"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04",
+            "R05"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07",
+            "U08",
+            "U09",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14",
+            "U15",
+            "U16",
+            "U17",
+            "U18",
+            "U19",
+            "U20",
+            "U21",
+            "U22",
+            "U23",
+            "U24",
+            "U25"
+          ],
+          "source_content_map": [
+            {
+              "id": "V01",
+              "title": "S01 集成模型：现有算子 API + 三条分派通路（eager RMSNorm/TopK、Inductor GEMM 候选实测缓存胜者、AOTriton SDPA 调优库派发）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10",
+                "U03"
+              ],
+              "notes": "三条通路与 'caches the winner for each workload' 原文一致；报告 §4 完整重构。"
+            },
+            {
+              "id": "V02",
+              "title": "S01 支持矩阵与全部约束（dtype/布局/模式、K%128、无 fast accumulation、Inductor unit-stride 与 layout copy、FP32 attention 不支持、flex_attention 走 Triton、RMSNorm backward 留在 PyTorch）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U11"
+              ],
+              "notes": "逐项核对一致。"
+            },
+            {
+              "id": "V03",
+              "title": "S01 kernel 级调度机制：HTI 半瓦片交错（256×256/8-wave/相位错开 barrier/半瓦片 LDS 复用）、MXFP scale-slot 分块、grouped GEMM 持久网格+XCD swizzle、RMSNorm 每行一 CTA wave 归约、TopK 寄存器+radix 双路径、attention 双波流水线与 head dim 512 LDS 拆分",
+              "importance": "core",
+              "assessment": "missing",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "报告全文『持久/persistent』零命中、『双波/VALU/272KB』零命中；仅在读法说明与 TopK 确定性段顺带提及名词。报告 §一 承诺『性能数字回到机制描述里找解释』但未兑现，构成内部不一致。这是本次复核发现的主要内容缺口。"
+            },
+            {
+              "id": "V04",
+              "title": "S01 全部算子级数字与胜负结构（dense 1.10× 10胜3平2负±1%、回归 1.12×、MXFP8 1.58×/1.31–2.23×、MXFP4 1.68×/1.31–2.96×、grouped 1.20×/1.95× 及三面板分解、RMSNorm 22 例 1.17–3.66×、TopK 10 小 K 例 4.82×/4.02× 与 33 例聚合）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U13"
+              ],
+              "notes": "全部数字与胜负/平局带结构逐字核对一致；唯一问题是投影维度 5 例被误标为推算（S01 原文明写 'Projection dimensions (five cases)' 与 1.23×/1.73×）。"
+            },
+            {
+              "id": "V05",
+              "title": "S01 测量协议（三套计时方式、稳态、排除编译与首次 autotune、MXFP 从已量化操作数起算、几何均值等权、逐图基准声明）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U12"
+              ],
+              "notes": "§5.1 逐条转述。"
+            },
+            {
+              "id": "V06",
+              "title": "S01 Attention 数字性质：AOTriton 0.14.2b vs 0.13b 版本对比（0.92–2.34×/0.93–2.47×）+ 官方免责句",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U14"
+              ],
+              "notes": "报告设专节并三处复述免责句，处理为全文最佳实践之一。"
+            },
+            {
+              "id": "V07",
+              "title": "S01 端到端 vLLM 协议与三组结果（BF16 峰值 1.13×/1.06×/70B 噪声地板、MXFP8 1.04–2.04×、MXFP4 1.25–3.01×、ABBA 与每格一次测量的强度差异）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U15"
+              ],
+              "notes": "协议要素与测量强度如实转述。"
+            },
+            {
+              "id": "V08",
+              "title": "S01 What's Next 六项待办与 Try It 前提（nightly、0.3.x runtime、gfx950）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U21",
+                "U19"
+              ],
+              "notes": "六项（MI450/MXFP8 grouped+FlexAttention/attention 迁回上游去 vendored/FlexAttention 后端/epilogue fusion+backward/AOTInductor）逐条核对。"
+            },
+            {
+              "id": "V09",
+              "title": "S02 设计动机三支（CuTe 迁移路径、CK 模板痛点、CuTe 布局代数）与 Triton 互补定位",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04",
+                "U03"
+              ],
+              "notes": "原文定位句与 CK 痛点句逐字核对；报告准确转述。"
+            },
+            {
+              "id": "V10",
+              "title": "S02 Current Status 与生产采用自述（算子清单、'competitive with or exceeding CK'、early production adoption/hyperscale）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "报告 §2.3 将其与 S01 的窄支持面并置，并把 CK 对比与生产采用都标为 AMD 自述无独立验证——处理正确。"
+            },
+            {
+              "id": "V11",
+              "title": "S02 Ecosystem Impact：FlashInfer/FlashAttention/Dao Quack·Quark/TorchInductor CuTe 后端/TileLang 受益方与 DeepGEMM/FlashMLA/XFormers 迁移路径（'on-ramp' 论述）",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U18"
+              ],
+              "notes": "FlashInfer/FlashAttention/TileLang 仅在 §六 比较表中带过，Quack/Quark、TorchInductor CuTe 后端、DeepGEMM/FlashMLA/XFormers 与『on-ramp』框架未进入正文。"
+            },
+            {
+              "id": "V12",
+              "title": "S02/S03/S05 的 DSL-IR-代码生成-kernel authoring 全链（分层、四类 IR 类型与代数、AST 变换、@flyc.kernel/@flyc.jit、launch/barrier/s_buffer_load 原语、vectorAdd 示例、内嵌 MLIR 绑定、自建 LLVM、autotune 模块）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04",
+                "S05"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06",
+                "U07",
+                "U08",
+                "U09"
+              ],
+              "notes": "报告 §3 白话拆解与原文逐点对应。"
+            },
+            {
+              "id": "V13",
+              "title": "S06 仓库成熟度信号（302★/131 forks/140 open issues/NOASSERTION/创建与推送时间、kernels/ 家族、docs/ 谱系）与 S07 AOTriton 元数据（MIT/102★/41 issues/AOT Math Library）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S06",
+                "S07"
+              ],
+              "matched_coverage_unit_ids": [
+                "U20",
+                "U10"
+              ],
+              "notes": "GitHub API 元数据逐项一致。"
+            },
+            {
+              "id": "V14",
+              "title": "TopK 确定性语义例外（prefix-sum vs atomic slot、寄存器路径 tie 顺序、NaN 规范化）",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U22"
+              ],
+              "notes": "报告 §7.4 单列，是唯一被识别出的语义级（非性能级）不一致。"
+            }
+          ],
+          "unsupported_claims": [
+            "C05"
+          ],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "复核方法与范围：先重抓 S01（31376 字节）与 S03（17485 字节）确认内容新鲜且与生成会话一致，再以本会话完整的 S02/S04/S05 文本与 S06/S07 元数据做来源优先比对，之后才读报告与 evidence；任务指定的七个重点核验项全部逐字定位并通过。总评：这是一篇口径纪律罕见的厂商技术博客解析——最易误读的三处数字（attention 版本对比、MXFP 单次测量、RMSNorm off-by-one 峰值）均被主动设防，官方自述与可核对事实的边界全程清晰，算子级『多数占优而非全面占优』的定性精确。两个实质问题均不改变核心结论：(1) 投影维度 5 例被误标为推算（来源明写计数，应升格为直引）；(2) S01 的 kernel 调度机制一节整体缺席，且报告自身承诺过要用机制解释数字。若做一轮修订：将 §5.2 该行改为直引、增设一小节白话拆解 HTI/持久网格/双波流水线/TopK 双路径（每条 3-5 句即可）、并在 Limitations 为机制缺口与 Ecosystem Impact 部分覆盖留痕，则两项扣分点均可消除。按当前策略阈值（important：总分≥88 且五维达标）计算：92×0.35+86×0.20+90×0.20+86×0.15+90×0.10 = 89.3，判定 pass；上述修订为建议而非阻断。未解问题移交协调者：S01 attention 机制（双波/宽头拆分）与 Ecosystem Impact 是否纳入由修订轮决定；140 个 open issue 的内容、LICENSE 原文、autotune 空间与首次成本仍无人核验（报告 §12.2 已列）。\n\n[unsupported_claims 明细] C05：报告 §5.2 表格称 grouped GEMM『投影维度 5 例为 24−14−5 的推算，原文未明写计数』——该来源描述不成立：S01 原文明确写有 'Projection dimensions (five cases): G = 8 and M = 512 are fixed…'，且 'The projection-dimension cases reach 1.23x and 1.73x' 亦为原文明文；计数与数值实为一手直引而非推算。数值本身无误、方向保守（对自身证据等级做了不必要的降格），但『原文未明写计数』是对来源的错误陈述；建议修订为直引并在 evidence C05 补注。此问题不构成 critical_claim_unsupported（C05 的数值与胜负结构全部核对成立，evidence 字段本身准确）。\n\n[missing_requirements 说明] R02 记为达成但带中等缺口（未达 core_requirement_missing）：kernel 级调度机制基本缺席（source_content_map V03）——HTI 半瓦片交错（256×256 tile/8-wave/相位错开 barrier/半瓦片 LDS 复用）、MXFP scale-slot 分块、grouped GEMM 持久网格+XCD swizzle（全文『持久/persistent』零命中）、RMSNorm 每行一 CTA 的 wave 归约、TopK 寄存器+radix 双路径机制本身、attention 双波流水线（softmax VALU 与 MFMA 重叠、head dim 512 的 272KB→160KB LDS 拆分）均未展开；报告 §一 读法说明承诺『S01 的每个性能数字都回到…机制描述里找解释（例如…寄存器路径与 radix 路径设计）』但正文未兑现，构成内部不一致。R02 其余四个成分（DSL/IR/代码生成/authoring 模型）覆盖充分、框架层调度完整，故按部分缺口计入 request_coverage=86 而非登记 missing_requirement；建议修订轮增设一小节白话拆解上述机制（每条 3–5 句即可），并在 Limitations 为机制缺口与 S02 Ecosystem Impact 的部分覆盖留痕。"
+        }
+      ],
+      "decision": {}
+    }
+  ]
+}
