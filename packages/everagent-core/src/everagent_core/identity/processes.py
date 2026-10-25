@@ -3,7 +3,9 @@ from __future__ import annotations
 
 import hashlib
 import os
+from pathlib import Path
 import subprocess
+import sys
 
 _ANCESTORS: list[str] | None = None
 _WIN_SCAN: tuple[list[str], list[str], bool] | None = None
@@ -177,3 +179,47 @@ def caller_anchor(harness: str) -> str | None:
         return None
     raw = f'{harness}:{row["pid"]}:{row["started"]}'.encode()
     return hashlib.sha256(raw).hexdigest()[:24]
+
+
+def current_directory(owner: dict) -> Path | None:
+    """Read one current ancestor's cwd, binding the lookup to its creation identity."""
+    if sys.platform != "darwin" and not sys.platform.startswith("linux"):
+        return None
+    identity = tuple(owner.get(key) for key in ("pid", "started", "name"))
+    pid, started, name = identity
+    if (type(pid) is not int or pid <= 1 or not isinstance(started, str) or not started
+            or not isinstance(name, str) or not name
+            or identity not in {tuple(row.get(key) for key in ("pid", "started", "name"))
+                                for row in process_chain()}):
+        return None
+
+    def same_process():
+        result = subprocess.run(["ps", "-o", "lstart=,comm=", "-p", str(pid)],
+                                stdin=subprocess.DEVNULL, capture_output=True, text=True,
+                                encoding="utf-8", errors="strict", timeout=1,
+                                env={**os.environ, "LC_ALL": "C"})
+        fields = result.stdout.strip().split(None, 5)
+        return (result.returncode == 0 and len(fields) == 6
+                and " ".join(fields[:5]) == started and os.path.basename(fields[5]) == name)
+
+    try:
+        if not same_process():
+            return None
+        if sys.platform == "darwin":
+            result = subprocess.run(["/usr/sbin/lsof", "-a", "-p", str(pid), "-d", "cwd", "-Fpfn"],
+                                    stdin=subprocess.DEVNULL, capture_output=True, text=True,
+                                    encoding="utf-8", errors="strict", timeout=1)
+            fields = result.stdout.splitlines()
+            if (result.returncode != 0 or len(fields) != 3 or fields[:2] != [f"p{pid}", "fcwd"]
+                    or not fields[2].startswith("n/")):
+                return None
+            value = fields[2][1:]
+        else:
+            value = os.readlink(f"/proc/{pid}/cwd")
+        path = Path(value)
+        if not path.is_absolute() or not path.is_dir():
+            return None
+        path = path.resolve(strict=True)
+        return path if same_process() else None
+    except (OSError, ValueError, subprocess.SubprocessError):
+        return None

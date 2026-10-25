@@ -7,11 +7,13 @@ import json
 import os
 from pathlib import Path
 import sqlite3
+import subprocess
 import sys
 import tempfile
 import time
 import unittest
 from unittest.mock import patch
+from types import SimpleNamespace
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import core_bootstrap  # noqa: E402,F401
@@ -246,6 +248,7 @@ class ClaudeObservationTests(unittest.TestCase):
                    patch.object(observations.Path, "cwd", return_value=self.root),
                    patch.object(models, "HOME", self.root),
                    patch.object(processes, "process_chain", return_value=[owner("claude")]),
+                   patch.object(processes, "current_directory", return_value=self.root),
                    patch.dict(os.environ, {"CLAUDE_CODE_SESSION_ID": THREAD,
                                            "ANTHROPIC_MODEL": "misleading-default"}, clear=True)]
         for item in patches:
@@ -275,6 +278,45 @@ class ClaudeObservationTests(unittest.TestCase):
         self.assertFalse(value["user_model_declared"])
         self.assertNotIn("PRIVATE-DIALOG-SENTINEL", json.dumps(value))
         self.assertNotIn(str(self.root), json.dumps(value))
+
+    def test_tool_cd_uses_only_the_current_harness_project(self):
+        checkout = self.root / "other-checkout"
+        checkout.mkdir()
+        with patch.object(observations.Path, "cwd", return_value=checkout), patch.object(
+                processes, "current_directory", return_value=self.root) as locate, patch.object(
+                Path, "glob", side_effect=AssertionError("global-project-scan")), patch.object(
+                Path, "rglob", side_effect=AssertionError("global-project-scan")):
+            value = models.model_evidence("claude-code")
+        self.assertEqual(value["model"], "observed-claude-model")
+        self.assertTrue(value["current_model_confirmed"])
+        self.assertFalse(value["user_model_declared"])
+        self.assertEqual(locate.call_args.args[0]["name"], "claude")
+        self.assertNotIn(str(self.root), json.dumps(value))
+
+    def test_tool_cd_without_process_binding_does_not_search_other_projects(self):
+        checkout = self.root / "other-checkout"
+        checkout.mkdir()
+        with patch.object(observations.Path, "cwd", return_value=checkout), patch.object(
+                processes, "current_directory", return_value=None), patch.object(
+                Path, "glob", side_effect=AssertionError("global-project-scan")):
+            value = diagnostics.diagnose()
+        self.assertFalse(value["commit_allowed"])
+        self.assertEqual(value["automatic_probe"]["reason_code"], "native-session-file-unavailable")
+
+    def test_tool_cd_still_requires_the_native_record_project(self):
+        checkout = self.root / "other-checkout"
+        checkout.mkdir()
+        self.write(cwd=str(checkout))
+        with patch.object(observations.Path, "cwd", return_value=checkout):
+            self.assertFalse(models.model_evidence("claude-code")["current_model_confirmed"])
+
+    def test_existing_invalid_session_is_not_replaced_by_process_directory_lookup(self):
+        self.path.write_text('{"type":"assistant",}\n')
+        with patch.object(processes, "current_directory") as locate:
+            value = diagnostics.diagnose()
+        self.assertFalse(value["commit_allowed"])
+        self.assertEqual(value["automatic_probe"]["reason_code"], "native-metadata-invalid")
+        locate.assert_not_called()
 
     def test_conversation_bodies_are_skipped_without_json_decoding(self):
         original = json.loads
@@ -449,6 +491,67 @@ class ClaudeObservationTests(unittest.TestCase):
         other.write_text(original)
         self.path.symlink_to(other)
         self.assertFalse(models.model_evidence("claude-code")["current_model_confirmed"])
+
+
+class ProcessDirectoryTests(unittest.TestCase):
+    """Native cwd lookup is limited to one creation-bound current ancestor."""
+
+    def setUp(self):
+        temporary = tempfile.TemporaryDirectory(prefix="everagent-process-directory-")
+        self.addCleanup(temporary.cleanup)
+        self.root = Path(temporary.name).resolve()
+        self.owner = owner("claude")
+        self.enterContext(patch.object(processes, "process_chain", return_value=[self.owner]))
+        self.process = SimpleNamespace(returncode=0, stdout=self.owner["started"] + " /synthetic/claude\n")
+        self.directory = SimpleNamespace(returncode=0, stdout=f"p1234\nfcwd\nn{self.root}\n")
+
+    def test_macos_reads_only_that_process_cwd_and_rechecks_creation(self):
+        with patch.object(processes.sys, "platform", "darwin"), patch.object(
+                processes.subprocess, "run", side_effect=[self.process, self.directory, self.process]) as run:
+            self.assertEqual(processes.current_directory(self.owner), self.root)
+        self.assertEqual(run.call_count, 3)
+        self.assertEqual(run.call_args_list[1].args[0],
+                         ["/usr/sbin/lsof", "-a", "-p", "1234", "-d", "cwd", "-Fpfn"])
+        self.assertTrue(all(call.kwargs["timeout"] == 1 for call in run.call_args_list))
+
+    def test_linux_reads_only_that_process_cwd_link(self):
+        with patch.object(processes.sys, "platform", "linux"), patch.object(
+                processes.os, "readlink", return_value=str(self.root)) as readlink, patch.object(
+                processes.subprocess, "run", return_value=self.process) as run:
+            self.assertEqual(processes.current_directory(self.owner), self.root)
+        readlink.assert_called_once_with("/proc/1234/cwd")
+        self.assertEqual(run.call_count, 2)
+
+    def test_foreign_process_is_not_queried(self):
+        with patch.object(processes.sys, "platform", "darwin"), patch.object(
+                processes.subprocess, "run") as run:
+            self.assertIsNone(processes.current_directory({**self.owner, "pid": 9999}))
+        run.assert_not_called()
+
+    def test_restart_during_lookup_does_not_return_the_old_directory(self):
+        restarted = SimpleNamespace(returncode=0, stdout="Mon Jan 1 00:00:00 2024 /synthetic/claude\n")
+        with patch.object(processes.sys, "platform", "darwin"), patch.object(
+                processes.subprocess, "run", side_effect=[self.process, self.directory, restarted]):
+            self.assertIsNone(processes.current_directory(self.owner))
+
+    def test_malformed_foreign_or_ambiguous_macos_records_are_rejected(self):
+        for output in (f"p9999\nfcwd\nn{self.root}\n", "p1234\nfcwd\nnrelative\n",
+                       f"p1234\nfcwd\nn{self.root}\nn{self.root}\n", f"p1234\nf0\nn{self.root}\n"):
+            with self.subTest(output=output), patch.object(processes.sys, "platform", "darwin"), patch.object(
+                    processes.subprocess, "run", side_effect=[self.process, SimpleNamespace(returncode=0, stdout=output)]):
+                self.assertIsNone(processes.current_directory(self.owner))
+
+    def test_process_or_tool_failure_remains_unavailable(self):
+        failures = (OSError("synthetic-unavailable"), subprocess.TimeoutExpired("ps", 1))
+        for failure in failures:
+            with self.subTest(failure=type(failure).__name__), patch.object(
+                    processes.sys, "platform", "darwin"), patch.object(processes.subprocess, "run", side_effect=failure):
+                self.assertIsNone(processes.current_directory(self.owner))
+
+    def test_unsupported_platform_does_not_attempt_another_process_probe(self):
+        with patch.object(processes.sys, "platform", "win32"), patch.object(processes.subprocess, "run") as run:
+            self.assertIsNone(processes.current_directory(self.owner))
+        run.assert_not_called()
 
 
 class MinimaxObservationTests(unittest.TestCase):

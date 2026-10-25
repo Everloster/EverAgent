@@ -360,6 +360,15 @@ def _claude(native: str, owner: dict, now: float, *, diagnostics: dict | None = 
     cwd = Path.cwd().resolve()
     project = re.sub(r"[^a-zA-Z0-9]", "-", str(cwd))
     path = root / "projects" / project / (native + ".jsonl")
+    # A tool shell may cd into another checkout while Claude keeps its session
+    # in the harness process's project. Resolve only that exact current ancestor;
+    # never scan projects or replace an existing invalid/stale session candidate.
+    if not path.exists() and not path.is_symlink():
+        harness_cwd = processes.current_directory(owner)
+        if harness_cwd is not None and harness_cwd != cwd:
+            cwd = harness_cwd
+            project = re.sub(r"[^a-zA-Z0-9]", "-", str(cwd))
+            path = root / "projects" / project / (native + ".jsonl")
     for attempt in range(CLAUDE_READ_ATTEMPTS):
         if diagnostics is not None:
             diagnostics["retry_count"] = attempt
