@@ -249,7 +249,15 @@
 - **硅谷101播客·张阔再访**（46:15/1694 段）：E255 对篇——107-task/61%/3.69 美元两播客口径逐项一致（同题双源交叉验证）；新增：难度爬坡 L1→L4（使用行为数据）/五大 use case/上云=basic vs 长程三分类（"跑一周不挂 means nothing"对子皓在场论的反驳）/15 岁冠军年销 100 万英镑。
 - **电丸AK·千问眼镜 N1 Pro**（50:40/1463 段）：鼻托 PPG（精度媲美 Apple Watch）"想把智能手表干掉"/三芯片架构（AR1+恒玄+5 毫瓦感知=被动记录→高光漫画）/眼追必要性成立精度在路上/VPU 振动麦（说话者身份证）/沉淀五判断（PPG=不亚于扬声器的必存功能）/"小厂玩不转拍摄=没模型"。
 - **食贫道×刘慈欣**（25:25/653 段）：智能不可判断论（蚂蚁悖论——给预测对补认识论第三视角）/AI 三学派（符号/进化/大数据；任一+大数据=一夜之间）/平淡无奇定律/"前一秒的生活抢不走"。
-- 路径：`reports/2026-10-14_bilibili-{svj101_zhangkuo,dianwan-ak_qwen-glasses,shipindao_liucixin}_*.md` ×3 + 三件套。
+- 路径：`reports/2026-10-14_bilibili-{svj101_zhangkuo,dianwan-ak_qwen-glasses,shipindao_liucxin}_*.md` ×3 + 三件套。
+
+### 2026-10-26 何思远方Siyuan 池化隐喻（B 站单集）
+
+- **何思远方Siyuan《我们正在把所有人训练成同一种人。》**（2026-09-28 发布，19m58s/630 段）：mean/max pooling 统摄 AI 训练、平台、心理与解法；GRPO vs TTT-Discover 对决是全片骨架。
+- 事实核验 5 项全落地：arXiv 2601.16175（TTT-Discover，转述忠实度高于一般科普，两处口径出入已标注）、NMI 7(3):400-411（Wang et al. 2025）、Graphite（AI 内容首超人类发生在 2024-11，UP 主把发布期当发生期，**推后**约 11 个月——注意方向词）、QuestMobile（抖音 1.55h/天吻合）、弗洛姆《人心》(1964) 中译。
+- 双 ASR 交叉修正 50+ 处；**论文摘要解谜 ASR** 的方法再次有效（ttt discover→TTT-Discover、EECODER/adcoder→AtCoder、区道→去噪），与 2026-08-25 帆书期"官方字幕交叉校验"一脉相承。
+- 报告走完 report-v2 两轮 revision（R1 双 reviewer 五维 92/94/93/93/92；R2 验证修订落实，五维 96/96/94/95/94）。润色契约首次用"高保真精编 92%"命名（非 digest 压缩，实测值声明）。正文为 6 主线小节 + 18 个 ### 展开子节。
+- 路径：`reports/2026-09-28_bilibili-hesiyuanfang_homogenization.md` + 三件套。
 - **本批改进（micro-retro）**：①**B 站转写通道打通**：eacli podcast plan/run 对 bilibili.com 视频页直投成功（孙宇晨期"Razer 双败"结论作废更新——当时可能是特定链接问题），plan→run（confirm=plan_id/razer）→pull 三步全链路跑通，三条全程 Razer（50 分钟视频转写约 2 分钟）；②选题来源首次走"关注收件箱"（opencli user-videos 精选 UP 轮询——B 站盲区 UP 补入催更视野）；③质量门首战立功：抓到 1 断链（shaoailen 拼错）+1 压缩比失准（25 分钟短视频 polished 密度高，实测 25.2%）。
 
 ## ⚠️ 边界（防幻觉）
@@ -297,4 +305,4 @@
 
 ---
 
-*Last updated: 2026-08-25 (added 帆书视频播客 49《炎症》讲书期 + 1 concept；官方字幕交叉校验流程首次完整走通)*
+*Last updated: 2026-10-26 (added 何思远方Siyuan 池化隐喻期：5 项事实核验 + report-v2 两轮 revision pass 92.75)*

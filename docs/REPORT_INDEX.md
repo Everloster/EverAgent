@@ -7,6 +7,7 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-10-26 | [何思远方Siyuan：我们正在把所有人训练成同一种人——池化隐喻下的 AI 同质化批判](../podcast-learning/reports/2026-09-28_bilibili-hesiyuanfang_homogenization.md) | podcast-learning |
 | 2026-10-25 | [菠萝健康派 × 师永刚：中美抗癌十年，就医路径、费用真相与「被看见」的病人](../podcast-learning/reports/2026-10-21_xiaoyuzhou-boluo-jiankang_shiyonggang-cn-us-cancer-decade.md) | podcast-learning |
 | 2026-10-25 | [晚点聊 184：Astra 之后，具身智能的护城河从大脑移到哪里](../podcast-learning/reports/2026-10-15_rss-wandian-latetalk_184-embodied-quarterly-26q3.md) | podcast-learning |
 | 2026-10-25 | [忽左忽右 510：侨批不是一封家书，而是一套跨国金融与亲缘基础设施](../podcast-learning/reports/2026-10-23_xiaoyuzhou-huzuo-huyou_ep510-thai-qiaopi-network.md) | podcast-learning |
@@ -31,7 +32,6 @@
 | 2026-10-25 | [LitPivot 深度分析：当文献不是被「读」，而是随想法重组——可迁移的证据地图设计](../ai-learning/reports/paper_analyses/52_litpivot_dynamic_contextualization_2026.md) | ai-learning |
 | 2026-10-25 | [Google 结核病筛查：从单点 CAD 工具到开放医疗基础模型](../ai-learning/reports/knowledge_reports/Google_TB筛查_从CAD工具到开放医疗基础模型_深度解析_20261025.md) | ai-learning |
 | 2026-10-25 | [Google TPU 上的新推理引擎：TorchTPU 上的 vLLM-TorchTPU 与 SGLang-TorchTPU 机制拆解与口径核验](../ai-learning/reports/knowledge_reports/Google_TPU_vLLM_SGLang_TorchTPU推理引擎_能力矩阵与口径核验_深度解析_20261025.md) | ai-learning |
-| 2026-10-25 | [GLM-5.3 在 16×H200 上的 PCP、DCP 与 Hybrid HiSparse：百万上下文推理的机制拆解与口径核验](../ai-learning/reports/knowledge_reports/GLM5_3_vLLM_PCP_DCP_HiSparse_百万上下文推理_深度解析_20261025.md) | ai-learning |
 
 ## 🤖 AI Learning（148 篇）
 
@@ -311,10 +311,11 @@
 | 2026-04-20 | [Qwen2.5-3B GRPO 强化学习微调](../ai-practice/experiments/exp_004_qwen25_grpo_finetune.md) | — |
 | 2026-04-20 | [HuggingFace Hub 模型与数据集管理](../ai-practice/experiments/exp_002_huggingface_basics.md) | — |
 
-## 🎙️ Podcast Learning（103 篇）
+## 🎙️ Podcast Learning（104 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-10-26 | [何思远方Siyuan：我们正在把所有人训练成同一种人——池化隐喻下的 AI 同质化批判](../podcast-learning/reports/2026-09-28_bilibili-hesiyuanfang_homogenization.md) | `homogenization`, `pooling_metaphor`, `grpo`, `ttt-discover`, `enshittification`, `erich_fromm` |
 | 2026-10-25 | [菠萝健康派 × 师永刚：中美抗癌十年，就医路径、费用真相与「被看见」的病人](../podcast-learning/reports/2026-10-21_xiaoyuzhou-boluo-jiankang_shiyonggang-cn-us-cancer-decade.md) | `podcast`, `cancer-care`, `medical-system`, `patient-advocacy`, `second-opinion`, `health-policy` |
 | 2026-10-25 | [晚点聊 184：Astra 之后，具身智能的护城河从大脑移到哪里](../podcast-learning/reports/2026-10-15_rss-wandian-latetalk_184-embodied-quarterly-26q3.md) | `podcast`, `embodied-ai`, `robotics`, `gpt-6-astra`, `physical-rsi`, `in-context-learning` |
 | 2026-10-25 | [忽左忽右 510：侨批不是一封家书，而是一套跨国金融与亲缘基础设施](../podcast-learning/reports/2026-10-23_xiaoyuzhou-huzuo-huyou_ep510-thai-qiaopi-network.md) | `podcast`, `qiaopi`, `overseas-chinese`, `remittance`, `thailand`, `migration-history` |

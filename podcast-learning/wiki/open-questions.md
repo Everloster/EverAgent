@@ -615,3 +615,11 @@
 - 高权限低自主 / 低权限高自主之外，多个 Agent 串联后如何计算组合权限？
 - 联邦优先权与州法失效之间是否存在节目所说的监管空窗，需以草案全文核验。
   - 来源：[[2026-10-24_rss-cognitive-revolution_ai-am-clean-neurons-gpu-credit]] 思考与追问、Limitations
+
+## 2026-10-26 何思远方Siyuan：池化隐喻与 AI 同质化
+
+- ANES 2020 对照研究的原文是哪篇：结论是「观点分布更窄」还是「子群体内过度泛化」？（报告四轮检索未锁定，soda-labo ANES+Zuobiao 对照为最近候选）
+- TTT-Discover「每题几百美元」（gpt-oss-120b + Tinker）与 GRPO 式大众模型训练的算力成本如何换算口径——「伟大的解」的成本隐喻对个人是否成立？
+- 罗萨「不受掌控/共鸣」与算法可控性诉求的理论对撞：加速社会理论能否为 enshittification 提供比 Doctorow 描述性三阶段更硬的解释？
+- 「+7% 单细胞去噪优于人类最佳」与 Erdős 问题具体幅度需读 arXiv 2601.16175 正文核对（摘要未含）。
+  - 来源：[[2026-09-28_bilibili-hesiyuanfang_homogenization]] 思考与追问、Limitations

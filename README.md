@@ -42,11 +42,11 @@ cd EverAgent
 <!-- AUTO-RECENT:START -->
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-10-26 | [何思远方Siyuan：我们正在把所有人训练成同一种人——池化隐喻下的 AI 同质化批判](./podcast-learning/reports/2026-09-28_bilibili-hesiyuanfang_homogenization.md) | 🎙️ Podcast Learning |
 | 2026-10-25 | [菠萝健康派 × 师永刚：中美抗癌十年，就医路径、费用真相与「被看见」的病人](./podcast-learning/reports/2026-10-21_xiaoyuzhou-boluo-jiankang_shiyonggang-cn-us-cancer-decade.md) | 🎙️ Podcast Learning |
 | 2026-10-25 | [晚点聊 184：Astra 之后，具身智能的护城河从大脑移到哪里](./podcast-learning/reports/2026-10-15_rss-wandian-latetalk_184-embodied-quarterly-26q3.md) | 🎙️ Podcast Learning |
 | 2026-10-25 | [忽左忽右 510：侨批不是一封家书，而是一套跨国金融与亲缘基础设施](./podcast-learning/reports/2026-10-23_xiaoyuzhou-huzuo-huyou_ep510-thai-qiaopi-network.md) | 🎙️ Podcast Learning |
 | 2026-10-25 | [张小珺 × Lindon Gao（Dyna Robotics）：机器人长跑里的闭环、推论与「不犯错的 CEO」包袱](./podcast-learning/reports/2026-10-15_xiaoyuzhou-zhangxiaojun_vol154-dyna-lindon.md) | 🎙️ Podcast Learning |
-| 2026-10-25 | [声东击西 #408：互联网增长的红利、代价与一个人的十年自我重建](./podcast-learning/reports/2026-10-22_rss-shengdong-jixi_ep408-lijing-internet-growth-self-reconstruction.md) | 🎙️ Podcast Learning |
 <!-- AUTO-RECENT:END -->
 
 [浏览全部报告 →](./docs/REPORT_INDEX.md)
@@ -64,7 +64,7 @@ cd EverAgent
 | 🧠 [Psychology Learning](./psychology-learning/) | 17 篇 | 13/13/0 |
 | 🧬 [Biology Learning](./biology-learning/) | 18 篇 | 14/9/0 |
 | ⚗️ [AI Practice](./ai-practice/) | 10 篇 | 9/1/0 |
-| 🎙️ [Podcast Learning](./podcast-learning/) | 103 篇 | 58/54/0 |
+| 🎙️ [Podcast Learning](./podcast-learning/) | 104 篇 | 58/54/0 |
 | 🔭 [GitHub Research](./github-trending-analyzer/) | 124 篇 | 0/0/0 |
 | 🏄 [Web Surfing](./web-surfing/) | 47 篇 | 0/0/0 |
 <!-- AUTO-OVERVIEW:END -->

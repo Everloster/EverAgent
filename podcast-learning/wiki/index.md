@@ -91,6 +91,7 @@
 
 ### 社会学 / 工作观
 
+- [[2026-09-28_bilibili-hesiyuanfang_homogenization|我们正在把所有人训练成同一种人：池化隐喻下的 AI 同质化批判]]（episode_summary · 发布 2026-09-28，归档 2026-10-26）— B 站「何思远方Siyuan」单人论述，19m58s，mean/max pooling 统摄 AI 训练（GRPO vs TTT-Discover，论文已核验）/ 观点多样性消失实证 / enshittification 与热寂 / 弗洛姆恋尸癖的算法时代重读 / 亚里士多德式勇敢的 max pooling 人生；报告含 5 项事实核验（arXiv 2601.16175、NMI 7(3):400-411、Graphite、QuestMobile、弗洛姆中译本）
 - [[2026-09-11_bilibili-shigerenwu_chenglesong|是个人物 EP22：程乐松——不要牛马，不要狗屁，要什么？]]（episode_summary · 发布 2026-09-11，归档 2026-09-23）— B 站视频播客，83m，北大哲学系系主任的"反卷"日常哲学：explain out vs explain away / 不狗屁的两个方向 / 脚踩西瓜皮（回望才有必然性）/ 安时而处顺；与鲍曼工作观线互补
 - [[2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism|一本书看清"工作"的真相：竹竹解读 × 鲍曼《工作、消费主义和新穷人》原书深读]]（episode_summary · 2026-08-14）— B 站「竹竹暴风雪」社会学领读 16 期（上）× 原书 166 页全文对照，18m19s，工作伦理被发明 / 生产者社会→消费者社会 / 消费美学 / 新穷人
 

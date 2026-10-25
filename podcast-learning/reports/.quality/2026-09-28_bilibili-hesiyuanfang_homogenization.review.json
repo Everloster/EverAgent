@@ -1,0 +1,452 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-09-28_bilibili-hesiyuanfang_homogenization.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "glm-5.3",
+        "harness": "claude-code",
+        "run_id": "review-c9513d0d50b0",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 96,
+        "limitations": 94,
+        "readability": 95,
+        "reasoning_quality": 94,
+        "request_coverage": 96
+      },
+      "score_reasons": {
+        "evidence_fidelity": "第 1 轮五项扣分全部消除且无新错：方向词已改「推后」并与增量观点统一；Graphite 范围限定（仅英文书面内容/约 6.5 万篇英文网络文章抽样）我经 eacli web.read 独立重抓 S05 原文逐字复现（原文「6.5万篇英文网络文章」「超半数的书面内容（英文）」），2024-11 首超、2025-05 达 52%、2025-10-28 发布亦全部吻合；金句第 5 条已恢复分句且与转写 18:28-18:38 逐字对应；「最快快」笔误消失，2× 统一为「up to 2 倍于先前最优」；新增六处时间戳（09:04-09:12、10:29-10:56、15:15-15:24、16:47-16:55、18:02-18:12、18:43-19:06）我逐一对照转写全部命中且引文无改字；SHA-256/34424 bytes/630 段/6212 汉字/92.7% 压缩比实测一致。残留微瑕：evidence.json S05 note 未同步登记 6.5 万与英文范围这两个新增数据点（报告本身准确，属账本滞后）；U6 内容地图边界（10:48）与 §4.1 引用至 10:56 有 8 秒级跨界；两处引用范围截尾 1-2 秒——均为可忽略级。",
+        "limitations": "6 条 Limitations 与修订后正文完全自洽：Xenia [推测] 现在正文 §4.1 与 Limitations 双处标注一致且列了替代可能；四轮检索口径全文统一（第 1 轮的不一致已消）；+7%/Erdős 幅度未逐字核正文、ANES [待验证]、UP 主自述层级、修正清单指引全部保留且未因补内容而过时。小扣：evidence.json S05 note 未随修订补充 6.5 万/仅英文两个已在报告中标「已核验」的数据点；「我还没搞懂什么」三条与 Limitations 的挂接（7% 数字）仍成立。",
+        "readability": "结构改造是实质改善而非装饰：18 个 ### 子节标题全部信息承载（如「2.3 核验结果（本报告完成，非视频内容）」「6.2 关卡的成立机制与亚里士多德的勇敢」），把第 1 轮指出「信息密度高、首读需回看」的 §2 拆成 2.1 机制-2.2 对决-2.3 核验-2.4 枢纽四个单主题单元，核验结论与口播内容不再交织；新增段落均带时间戳锚点，独立可读性保持（不读精编可重建全片主线）；未发现子节间内容重复或转场断裂，§5.3 关卡链条与 §6.2 关卡成立机制分工清晰无复述。微扣：个别子节仅 1 段（2.4、3.3），层级略碎；「1.3 我的理解」这类标题在知识报告里成立但风格稍跳。",
+        "reasoning_quality": "5 条增量观点维持第 1 轮水准且未被修订破坏：四环节证据层级剖析、「因果倒置一层」的 TTT-Discover 判读、双时间口径并置（现方向词统一后逻辑更顺）、理论谱系定位、「自带解药的模板」元评论均不越证据。新增内容的分析同样克制：§6.2 把 18:02-18:12 读作「社会建构论小论证——维系关卡的是集体信念，而信念原则上可拆」，前半是忠实的原文转述、后半标明为机制推论；§6.3 指出行动清单是「康德式人格准则的回声」并服务「个体化的道路」，为标注了出处的诠释而非事实断言。未发现把推断写成事实的新越界。",
+        "request_coverage": "R01-R07 逐项复核全满足：R02 哈希/字节数/段数/汉字数我全部实测吻合（56ac4073…c8d0d、34424B、630 段、6212/5756=92.7%）；R03 润色稿头部修正清单 50+ 处含 ※ 与 [?] 且新增修正（庸场→庸常等）已入列；R04 五项核验有 S03-S07 登记，其中 S05 我本轮独立重抓复现；R05 内容地图+6 主线小节+数字表三级来源标注+wiki 双链 3 处齐备；R06 92% 压缩比实测成立；R07 即本评审。覆盖面：第 1 轮指出的 4 个缺失 supporting 单元（三美德/行动清单/Xenia+焦土/关卡成立机制）与 2 处细节弱化（骑手两难/中段告诫）全部补入且时间戳逐一核实，U01-U09 无一漏登。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C04",
+        "C05",
+        "C08",
+        "C11"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08",
+        "U09"
+      ],
+      "source_content_map": [
+        {
+          "assessment": "covered",
+          "id": "M01",
+          "importance": "supporting",
+          "matched_coverage_unit_ids": [
+            "U01"
+          ],
+          "notes": "100 张人脸数字化叠加取像素平均得平均脸，心理学实验中平均脸胜过任何真实面孔；10 张 vs 3 张平均对比；迁移到观点/审美/选择 + 「未来五年最危险」（00:40，whisper 完整版，字幕截断——报告 §1.1 已注明双源差异）| 锚点 §1.1",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "title": "平均脸钩子：审美均值化开场"
+        },
+        {
+          "assessment": "covered",
+          "id": "M02",
+          "importance": "core",
+          "matched_coverage_unit_ids": [
+            "U02"
+          ],
+          "notes": "mean/max pooling 两算子定义 + 方法论宣告（01:22-01:39 我逐句核对转写原文，含「互联网平台的熵增（商增）」误识已修正）| 锚点 §1.2",
+          "source_ids": [
+            "S01"
+          ],
+          "title": "池化概念与全片方法论宣告"
+        },
+        {
+          "assessment": "covered",
+          "id": "M03",
+          "importance": "core",
+          "matched_coverage_unit_ids": [
+            "U03"
+          ],
+          "notes": "min E[L(f(θ,x),y)]、MSE 回归例、99+1 稀释、压缩即智能、「学习是记忆的反面」（04:39 转写核实）| 锚点 §2.1",
+          "source_ids": [
+            "S01"
+          ],
+          "title": "训练即均值化：期望损失/MSE/压缩即智能"
+        },
+        {
+          "assessment": "covered",
+          "id": "M04",
+          "importance": "core",
+          "matched_coverage_unit_ids": [
+            "U04"
+          ],
+          "notes": "GRPO 组基线（05:02-05:24 转写核实）；TTT-Discover 四条战绩与「参数分布被破坏」口播（06:03-06:44 转写核实）；商业推论 mean pooling 范式选择 | 锚点 §2.2-2.4，核验与两处口径出入在 §2.3（含新增 prior art 基线差标注，与转写 06:13-06:16「比人类最优解快两倍」对应准确）",
+          "source_ids": [
+            "S01",
+            "S03"
+          ],
+          "title": "GRPO vs TTT-Discover 对决与商业推论"
+        },
+        {
+          "assessment": "covered",
+          "id": "M05",
+          "importance": "core",
+          "matched_coverage_unit_ids": [
+            "U05"
+          ],
+          "notes": "ANES 2020 对照（扩规模无法缓解 + 08:05 情绪峰值插入语）；NMI Wang et al. 2025（4 模型/16 群体/3200 人，数字未确认已标注）；2025-10[?] AI 内容首超人类（08:41-08:47 whisper）；09:04-09:12 个体告诫（本轮新增，转写逐句核实）| 锚点 §3.1-3.3",
+          "source_ids": [
+            "S01",
+            "S04",
+            "S05"
+          ],
+          "title": "多样性消失实证：ANES + NMI + AI 内容首超 + 个体告诫"
+        },
+        {
+          "assessment": "covered",
+          "id": "M06",
+          "importance": "core",
+          "matched_coverage_unit_ids": [
+            "U06"
+          ],
+          "notes": "Doctorow 2022 三阶段（转写 09:25-10:21 核实）；热寂（10:05-10:08，热计→热寂 ※ 修正）；人均刷抖音 1.5h+（10:21-10:25，与 S06 QuestMobile 吻合）；焦土意象（10:29-10:42，本轮新增）；Xenia 典故（10:51-10:56，本轮新增，[推测] 标注正确且与 Limitations 一致）| 锚点 §4.1",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S06"
+          ],
+          "title": "enshittification 三阶段、热寂、焦土与 Xenia"
+        },
+        {
+          "assessment": "covered",
+          "id": "M07",
+          "importance": "core",
+          "matched_coverage_unit_ids": [
+            "U07"
+          ],
+          "notes": "网红经济两面性、网红脸/爆款/古城、aggregation 与 distribution 尾部（11:40 转写核实）、上海商场刺激有限、单极化与书单（马尔库塞/韩炳哲/罗萨）| 锚点 §4.2",
+          "source_ids": [
+            "S01"
+          ],
+          "title": "社会尺度均值化：网红经济/古城/商场/aggregation 尾部/书单"
+        },
+        {
+          "assessment": "covered",
+          "id": "M08",
+          "importance": "core",
+          "matched_coverage_unit_ids": [
+            "U08"
+          ],
+          "notes": "短期波动论与存在主义危机；弗洛姆三倾向与恋尸癖定义（S07 核验一致）；14:37-14:40 原文节选（转写核实）；996/打卡组织映射；骑手算法控制 + 15:15-15:24 两难观察（本轮新增，转写逐句核实）| 锚点 §5.1-5.3",
+          "source_ids": [
+            "S01",
+            "S07"
+          ],
+          "title": "替代焦虑诊断与弗洛姆恋尸癖重读"
+        },
+        {
+          "assessment": "covered",
+          "id": "M09",
+          "importance": "core",
+          "matched_coverage_unit_ids": [
+            "U08"
+          ],
+          "notes": "职场美德链条与高考叙事、文科自述与「感谢文科」；漫步百年 vs 关卡冲刺；「关卡就是牢狱，他人即地狱」（16:40 转写精确命中）；三美德对生命的爱/对人类的爱/个体化道路（16:47-16:55，本轮新增，转写逐句核实，为增量观点「个体化」补了正文出处）| 锚点 §5.3",
+          "source_ids": [
+            "S01"
+          ],
+          "title": "关卡社会、高考叙事、自述与弗洛姆三美德"
+        },
+        {
+          "assessment": "covered",
+          "id": "M10",
+          "importance": "core",
+          "matched_coverage_unit_ids": [
+            "U09"
+          ],
+          "notes": "tunnel view、2000 大卡底线、60 岁如 30 岁异质时间观、自由的代价；关卡成立机制「我们人人都相信」（18:02-18:12，本轮新增，转写核实）；亚里士多德勇敢论与金句（18:28-18:38 已恢复完整分句）；行动清单（18:43-19:06，本轮新增）；GRPO/TTT-Discover 收尾 callback 与「愿每个人都成为最大化的自己」（19:29）| 锚点 §6.1-6.3",
+          "source_ids": [
+            "S01"
+          ],
+          "title": "max pooling 的生活：管道视野/关卡机制/勇敢论/行动清单/callback"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "第 2 轮独立复核（全新会话，未参与生成与第 1 轮）。方法：直接读 630 段转写核对全部引用时间戳（00:40、01:22-01:39、04:39、08:05、09:04-09:12、10:05、10:29-10:56、11:40、14:37、15:15-15:24、16:40-16:55、18:02-18:12、18:28-18:38、18:43-19:06、19:29 全部命中且引文逐字吻合，两处边界差 1-2 秒属段级取整）；对新增事实性内容中唯一无法从本地核验的 Graphite 范围限定，经 eacli tool invoke web.read（request-id review2-graphite-s05-verify，zhipu/mbp，凭据未外传）重抓 S05 原文独立复现；实测 SHA-256 56ac4073…c8d0d、34424 bytes、630 段、6212/5756 汉字（92.7%）。结论：第 1 轮全部遗留问题（方向词、Graphite 范围、金句省略、笔误+基线差、四 supporting 单元缺失、两处细节弱化、轮次不统一）均已正确落实且与原文吻合，### 结构改造（实测 18 个子节，修订声明误称 17 个，为声明计数误差而非报告缺陷）无重复、无断裂、无信息遗漏，反而解决了第 1 轮 readability 唯一抱怨（§2 密度）。残留仅三处微瑕：evidence.json S05 note 未同步记录 6.5 万篇/仅英文口径（ledger 快照滞后，非报告错误）；内容地图 U6 边界（09:11-10:48）与 §4.1 Xenia 引用（至 10:56）有 8 秒级跨界；§4.1「认知能力损害」取 polished 版而 whisper 原文作「损坏」（同音级 ASR 变体）。均不影响任何 claim 成立。总分均值 95.0，important 档（总分≥88、evidence_fidelity≥90）通过，建议 decision: pass 并结束修订轮。 || revision_checks 13/13 done=true（详见 workflow journal wf_32ccb16f-0fd）。微修已落实：evidence S05 note 补 6.5 万篇/仅英文范围口径。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 95.25,
+    "evaluated_on": "2026-10-26",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "c308ae63dc8a99b131b1c1d8582d1e1f61d1354f9e01b88494f27fd54dfb9864",
+    "evidence_sha256": "f0a65c4562c04b235f0c51aeb47eb1fbf93e313b0cb21805f2163524213055b4"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "glm-5.3",
+            "harness": "claude-code",
+            "run_id": "review-84d217e07717",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 92,
+            "request_coverage": 94,
+            "reasoning_quality": 93,
+            "readability": 93,
+            "limitations": 92
+          },
+          "score_reasons": {
+            "evidence_fidelity": "大头项表现极好：两条 critical 外部核验我独立复核全部通过——arXiv 2601.16175 摘要（标题/TTT-Discover 方法名/『one great solution rather than many good ones on average』与『to solve this very problem rather than generalize to other problems』两条引文/四条战绩/11 位作者/v1 2026-01-22/gpt-oss-120b+Tinker+几百美元）逐项吻合，『+7% 不在摘要』的说法也正确；Graphite 来源 S05 实抓确认 2024-11 首超、2025-05 达 52%、2025-10-28 发布。金句 6 条对照转写全部存在、无改字补义；数字表 11 行来源层级无一错标；[?] 在报告引文中保留；SHA-256/34424 bytes/6212 汉字我实测与 S01 一致。扣分项：① §3『时间口径提前了约十一个月』方向词错误（UP 把 2024-11 的事件说成 2025-10，是推后而非提前；同报告增量观点处『推后了约一年』才对，自相矛盾）；② 转述 Graphite 时丢了『仅英文书面内容（6.5 万篇英文文章）』的范围限定，核验口径被静默放大到『互联网内容』；③ 金句第 5 条省略『知道从关卡中脱离的代价』分句未标省略号；④ §2『比先前最优最快快 2 倍』笔误且视频『人类最优』→摘要『prior art』的基线差未显式标注；⑤ 两处时间戳漂移 2-7 秒（可忽略）。",
+            "request_coverage": "R01-R07 逐项核对全部满足：R02 哈希/字节数实测吻合，R03 修正清单 50+ 处含 ※ 与 [?]，R04 五项核验有来源登记且我抽查两项全过，R05 内容地图+6 主线小节+数字三级标注+wiki 双链 3 夝（[[platform-algorithm-governance]]/[[work-ethic]]/[[consumer-society]]），R06 92% 压缩比声明引用 fill_report_stats（我复算 5756/6212=92.7%，『约 92%』成立），R07 即本评审。我独立画的 11 个 core 单元全部在报告有明确落点，U01-U09 与我的地图一一相容、无漏登；仅两处次级遗漏：弗洛姆三美德（对生命的爱/对人类的爱/个体化）未在正文明确列出（增量观点只间接用『个体化』），09:00 处『个体应小心 mean pooling/独特挑战不能用通用解应付』只在结尾 callback 间接体现。",
+            "reasoning_quality": "增量观点 5 条均有真增量且推断不越证据：『隐喻四环节证据层级不同（数学事实/统计性质/实证/观察）被「重演」焊在一起』是精确的强度剖析；『TTT-Discover 因果倒置』（设计目标 vs 牺牲叙事）我已独立证实其摘要原文依据，是全报告最锐利的一条；双时间口径并置（推后一年 vs 五年之期拉紧）有 hedge（『更可能反映近期里程碑效应』）；理论谱系定位（法兰克福学派-新生代）与收藏比元评论（『自带解药的模板』）均克制、标明推测属性。未发现把推断写成事实的越界。",
+            "readability": "独立可读性实测通过：不读精编可完整重建全片主线——速览/一句话总结/背景/内容地图表给出全局，六节按隐喻构造→训练层→实证层→平台层→心理哲学层→解法层递进，关键转场（商业推论作为技术到社会批判的枢纽、收尾 callback）都有交代；数字表/金句/思考与追问分层清晰。背景节的视频数据（收藏比 8.7%）为读者定位内容类型提供了额外价值。轻微不足：§2 核验段信息密度高，口播内容与核验结论交织，首读需回看。",
+            "limitations": "诚实度高：5 条 Limitations 覆盖 ANES 四轮未锁定（[待验证] 保留而非消掉）、两版 ASR 时间冲突与 Graphite 口径、Xenia [推测] 且列了替代可能、+7%/Erdős 幅度未逐字核正文、UP 主履历自述层级、转写质量与修正清单指引；『我还没搞懂什么』把未解问题转为下一步动作。小扣：§3 正文『两轮检索』与 Limitations/C06『四轮检索』不一致；Graphite 英文范围限定缺失（同 evidence_fidelity 项①）。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C04",
+            "C05",
+            "C08",
+            "C11"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07",
+            "U08",
+            "U09"
+          ],
+          "source_content_map": [
+            {
+              "id": "M01",
+              "title": "平均脸实验开场钩子",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01"
+              ],
+              "notes": "100 张人脸数字化叠加取像素平均值得到平均脸；心理学实验中平均脸与原始照片比好看程度，平均脸赢了，比任何一张真实存在过的脸都更接近好看; 10 张脸平均 vs 3 张脸平均的对比：10 张的更好看（口播未给出处）; 迁移宣言：把实验放到观点/审美/每个选择上——正在发生，推手是每天在用的东西 | 锚点: ## 1. 隐喻的构造：从平均脸到「两个词的重演」（对应 U01）"
+            },
+            {
+              "id": "M02",
+              "title": "池化 pooling：全片骨架隐喻的建立",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "池化 = 用一个数代表一组数；mean pooling 加总除以个数、突出值被平均盖过；max pooling 只取最大值代表整组其余舍弃; 方法论宣告（01:22-01:39）：AI 训练逻辑、平台熵增、被替代焦虑、心理问题、解法都是这两个词在不同维度/尺度的重演 | 锚点: ## 1. 隐喻的构造（对应 U02），含 01:22-01:39 原话引用"
+            },
+            {
+              "id": "M03",
+              "title": "AI 训练即均值化：期望损失/MSE/压缩即智能",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "训练目标 = 最小化损失 L(f(θ,x),y) 的期望 E（期望即平均）；100 样本中 1 个极端样本的方向在求平均时被多数稀释，每步更新只看平均梯度; 高中 MSE 回归例子：垂直距离平方加总取平均，梯度下降找最小 MSE 回归线；回归线即模型 f(θ,x)，大语言模型/图像生成模型同理; 为什么必须均值：不希望记住每个样本——全记住=无压缩=记忆检索器=固态硬盘；「压缩即智能」要求有损压缩掉杂音；「学习是记忆的反面」（04:39） | 锚点: ## 2. AI 训练层：均值化的必然性与两个范式的对决（对应 U03）"
+            },
+            {
+              "id": "M04",
+              "title": "GRPO vs TTT-Discover：两种训练范式对决与商业推论",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "GRPO（DeepSeek R1）：同题采样一组答案，组平均分为基线，高于均分强化、不够好惩罚；找到的不是最优解而是每次比平均更好; TTT-Discover（2026 年初 Stanford/NVIDIA 等）：Learning to Discover at Test Time；摘要金句 produce one great solution rather than many good ones on average；四条战绩：Erdős 最小重叠、GPUMode kernel 快约 2 倍、AtCoder、单细胞去噪好 7%; 代价：参数分布被破坏、只会解这一道题（UP 主口播表述）；GRPO=mean pooling 通用而平庸，TTT-Discover=max pooling 极致而失通用 | 锚点: ## 2. AI 训练层（对应 U04），含核验结果段与两处口径出入"
+            },
+            {
+              "id": "M05",
+              "title": "多样性消失：AI 替代人类受访者的两个实证 + AI 内容首超人类",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S04",
+                "S05"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "ANES 2020 对照研究：大模型回应比真实人类观点单一非常多、持续高估主流观点在子群体的普遍度、常抹掉少数派、扩规模无法缓解；插入语「废话当然没法缓解——训练目标不为代表少数而设计」（08:05 情绪峰值）; Nature Machine Intelligence（Wang et al. 2025, 7(3):400-411）：两个内在局限扭曲和拉平人群体代表性；4 大模型/16 人口群体/3200 真人参与者; 2025 年 10 月份[?]（whisper）AI 生成内容首超人类总和（字幕作 11 月，两源冲突） | 锚点: ## 3. 实证层：多样性消失的证据与口径（对应 U05）"
+            },
+            {
+              "id": "M06",
+              "title": "enshittification：平台三段熵增与推荐算法均值化",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "2015 年左右平台渗透生活，回不去了；2022 年 Cory Doctorow 提出 enshittification 三阶段：最好体验吸引用户→锁定后价值转给广告主/商家（少数群体不再被代表）→压榨商家、价值流向平台; 丰富多元充满偶然性的系统→均匀可预测的热寂状态；平台要可预测稳定变现的多数，正如 AI 要平均误差最小的答案（callback）; 2025 年人均刷抖音超 1.5 小时（仅平台之一）；巨头割据战把普通人的生活当战场，夺走时间与注意力，留下认知能力损坏的焦土 | 锚点: ## 4. 平台层：enshittification 与热寂（对应 U06）；Xenia 在 ## Limitations（C13）"
+            },
+            {
+              "id": "M07",
+              "title": "社会尺度均值化：网红经济/古城/商场/aggregation 与尾部价值",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U07"
+              ],
+              "notes": "网红经济两面性：地区特色被看见/脱贫致富 vs 模仿者被 mean pooling 吞噬——网红脸模板化、爆款视频模仿、古城经济（全国古镇卖的建的都差不多）; 均值池化作为社会机制隐含价值判断：差异越大越易被压缩；统计学叫 aggregation，社会表现为共识/主流意见/推荐算法/最佳实践；人的价值恰在 distribution 尾部——不能被平均掉的东西（11:42）; UP 主个人例子：上海商场逛两三次就腻（刺激人为制造、有限、可预期可控制因而无趣）→打工族普遍浩劫；多数人追求更大社会成就→生活目标单极化、审美模板化 | 锚点: ## 4. 平台层（对应 U07，网红经济/古城/商场/书单均在该节）"
+            },
+            {
+              "id": "M08",
+              "title": "被 AI 替代值得焦虑吗：短期波动论与存在主义危机",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08"
+              ],
+              "notes": "被 AI 替代是短期波动；成为自己/找最适合的事不可逃避、不可中断、不可妥协; 有天赋有兴趣者 AI 替代不了（学得更快、更懂用 AI 赋能）；混口饭吃者被替代反而是更早转向的机会; 预判「何不食肉糜」反弹：承认经历过痛苦，识别为本质性的存在主义危机，推动追寻直到不焦虑、创作出本视频 | 锚点: ## 5. 心理-哲学层首段（对应 U08 前半）"
+            },
+            {
+              "id": "M09",
+              "title": "弗洛姆恋尸癖与当代组织重演（996/骑手算法）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08"
+              ],
+              "notes": "弗洛姆《人心向善：行恶之禀赋》（The Heart of Man, 1964）三种最危险倾向：对死亡的爱（恋尸癖）、恶性自恋、共生乱伦固着; 恋尸癖=对机械/将死/可控秩序的迷恋、对可预测重复之物的依附（控制狂、越管越乱的管理者）；弗洛姆年代导致二战法西斯主义; 原文节选：聪明才智与性格在考验下整齐划一，优选平庸缺乏冒险精神之辈、摒弃创造性勇敢大胆的人（14:44） | 锚点: ## 5. 心理-哲学层（对应 U08 中段，引文完整收录）"
+            },
+            {
+              "id": "M10",
+              "title": "关卡社会、高考叙事与 UP 主人文教育自述",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08"
+              ],
+              "notes": "职场「美德」：不敢 gap year、大二实习、第一份工作必须干满一年；小升初/中考/高考「决定一生」的关卡链条——高考根本不决定任何东西（引上一期视频）; 自述：文科高考生因数学好玩成为机器学习 AI 算法工程师；本科社会学哲学文本赋予反思算法的素养；感谢文科如感谢数学; 人生本是漫步百年的坦途，社会观念分成关卡令我们冲刺-喘息-再冲刺；眼见过劳死同事、心理失常同学倒下；「关卡就是牢狱，他人即地狱」（16:40） | 锚点: ## 5. 心理-哲学层（对应 U08 后段；三美德仅在增量观点以「个体化」间接出现）"
+            },
+            {
+              "id": "M11",
+              "title": "过一个 max pooling 的生活：勇敢、自由的代价与收尾 callback",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U09"
+              ],
+              "notes": "tunnel view（管道视野）制造 AI 吞噬/失业/同龄人赚钱焦虑；对照物：智人每天 2000 大卡+一觉安眠即可换自由舒适时光；没人要求你 30 岁前成功——当然有，但那不重要; 异质时间观：别人 40 岁被拖垮、你 60 岁还有别人 30 岁的健壮即你的机会，且已拥有几十年闲适人生；「闲下来几十年太可怕」正是自由的代价; 亚里士多德《尼各马可伦理学》：勇敢是从平庸走向卓越的唯一道路；勇敢≠鲁莽，是明知代价仍信理性与道德坚定走向更高（18:28） | 锚点: ## 6. 解法层：max pooling 的生活（对应 U09）"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S05",
+            "S07"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04",
+            "R05",
+            "R06",
+            "R07"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "修订建议（按性价比排序）：1) 修 §3『时间口径提前了约十一个月』→『推后/滞后约十一个月』并与增量观点统一；顺手修 §2『比先前最优最快快 2 倍』笔误，并把视频『人类最优』vs 摘要『prior art (up to 2×)』的基线差标为一处小出入（现被静默改写为摘要口径）。2) Graphite 转述补上『仅英文书面内容（6.5 万篇）』范围限定；统一 §3 与 Limitations 的『两轮/四轮检索』。3) 金句第 5 条补省略号或恢复『知道从关卡中脱离的代价』分句；§5 或 §6 补一句弗洛姆三美德（对生命的爱/对人类的爱/个体化道路），使增量观点中『个体化』的用词在正文有出处。总体判断：报告无纪律红线问题（6 条金句全部可在转写定位、数字未改动、[?] 未被消掉），两个 critical 外部核验经我独立抓取全部复现，core 覆盖完整；上述均为措辞与限定级修补，不影响主线成立。 || 覆盖批评家（第二 reviewer）：core 18/18 全覆盖无硬伤；supporting 缺失 4 项——弗洛姆三美德、结尾行动清单、平台焦土/Xenia 典故、关卡成立机制（生成者已全部补入正文）；另 5 处已覆盖单元的细节弱化（standard 深度可接受，其中骑手两难观察与中段 mean pooling 告诫已顺手补入）。verdict：核心全覆盖（18/18 core 单元实质呈现且四处带核验增强，无硬伤）；4 个 supporting 单元整体缺失（弗洛姆三美德、结尾行动清单、平台焦土/Xenia 典故、关卡成立机制），另有约 5 处已覆盖单元的细节弱化——对 standard 深度报告属可接受的摘要式损耗，但三美德与行动清单两项建议补入 §5/§6，因其直接决定「解法层」的完整性。 || review 后修订记录：①§3「时间口径提前」方向词错误已改为「推后」（与增量观点统一）；②Graphite 口径已补「仅英文书面内容（约 6.5 万篇英文文章抽样）」范围限定（§3 与数字表）；③金句第 5 条已恢复被省略分句「知道从关卡中脱离的这些代价」；④§2「最快快」笔误已修并标注视频「人类最优」vs 论文「prior art」基线差；⑤补入弗洛姆三美德、结尾行动清单、Xenia 典故与焦土意象、关卡成立机制、骑手两难观察、中段 mean pooling 告诫；⑥§3/Limitations 检索轮次统一为四轮。"
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 92.75,
+        "evaluated_on": "2026-10-26",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "350a9d98cf688dd5edba4739f8dde8d80902fce62541077d3838f0b3eb86fd30",
+        "evidence_sha256": "0def9ad35b31299d090ecd0732728799378e2a2e026dcfc78a89bef23c287eb2"
+      }
+    }
+  ]
+}

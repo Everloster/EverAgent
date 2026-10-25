@@ -1,0 +1,370 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-09-28_bilibili-hesiyuanfang_homogenization.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-26",
+  "generator": {
+    "model": "glm-5.3",
+    "harness": "claude-code",
+    "run_id": "podcast-bilibili-bv1nkav6b7ea",
+    "explicit_model_override": false,
+    "override_reason": ""
+  },
+  "task": {
+    "summary": "把 B 站视频 BV1NKaV6bE7a（何思远方Siyuan《我们正在把所有人训练成同一种人。》，19m58s）做成 podcast-learning 学习任务：eacli podcast Razer 静默转写 → 官方字幕双源核对 → 高保真精编（92%）→ 事实核验（arXiv/NMI/Graphite/QuestMobile）→ 可独立阅读的 standard episode_summary 报告（report-v2）。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "全程静默获取：eacli podcast Razer worker 转写，无浏览器 UI、无播放器"
+      },
+      {
+        "id": "R02",
+        "text": "转写拉回核对大小与 SHA-256，audit_transcript 通过"
+      },
+      {
+        "id": "R03",
+        "text": "官方字幕作为专名修正源；双 ASR 同错处依上下文/论文摘要推断并标 ※"
+      },
+      {
+        "id": "R04",
+        "text": "知识截止后事实联网核验：TTT-Discover 论文、NMI 论文、AI 内容占比、抖音时长、弗洛姆书名"
+      },
+      {
+        "id": "R05",
+        "text": "报告 report-v2 standard 深度、独立可读：内容地图 + ≥3 主线小节 + 数字三级来源标注 + wiki 双链 ≥1"
+      },
+      {
+        "id": "R06",
+        "text": "润色契约：压缩比声明取 fill_report_stats 实测值（92%）"
+      },
+      {
+        "id": "R07",
+        "text": "独立 Reviewer 先从转写/精编画 source_content_map，再核对 source_coverage"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "primary",
+      "title": "视频转写全文（630 段，whisper large-v3）",
+      "locator": "podcast-learning/reports/transcripts/2026-09-28_bilibili-hesiyuanfang_homogenization.transcript.txt",
+      "accessed_on": "2026-10-26",
+      "note": "eacli podcast 远端静默 worker 产出；34424 bytes；SHA-256 56ac4073fa13a565d4a60e2ff9ef5b641f66e6c26c20e87b98011b81301c8d0d；audit 通过"
+    },
+    {
+      "id": "S02",
+      "kind": "primary",
+      "title": "B 站官方中文字幕（572 条，覆盖 4.5s-1174s）",
+      "locator": "opencli bilibili subtitle BV1NKaV6bE7a（无 UI adapter，落盘 /tmp/bv1nkav6b7ea_subtitles.yaml）",
+      "accessed_on": "2026-10-26",
+      "note": "专名修正源；自身亦为 ASR 产物"
+    },
+    {
+      "id": "S03",
+      "kind": "primary",
+      "title": "Learning to Discover at Test Time（TTT-Discover）论文摘要",
+      "locator": "https://arxiv.org/abs/2601.16175",
+      "accessed_on": "2026-10-26",
+      "note": "v1 2026-01-22；Yuksekgonul/Koceja/Sun 等 11 作者（Stanford+NVIDIA 等）；摘要含 'one great solution rather than many good ones on average'、Erdős' minimum overlap、GPUMode (up to 2×)、AtCoder、single-cell denoising"
+    },
+    {
+      "id": "S04",
+      "kind": "secondary",
+      "title": "Wang et al. 2025, Nature Machine Intelligence 7(3):400-411 论文条目",
+      "locator": "https://www.researchgate.net/publication/389069754",
+      "accessed_on": "2026-10-26",
+      "note": "Large language models that replace human participants can harmfully misportray and flatten identity groups；存在性与主题核验；4/16/3200 数字未从公开摘要确认"
+    },
+    {
+      "id": "S05",
+      "kind": "secondary",
+      "title": "Graphite 研究报道：AI 生成内容占比",
+      "locator": "https://finance.sina.com.cn/tech/roll/2025-10-28/doc-infvnafn9572243.shtml",
+      "accessed_on": "2026-10-26",
+      "note": "Graphite 研究（2025-10-28 发布）：AI 生成内容 2024-11 首超人类、2025-05 达 52%；范围限定：仅英文书面内容（约 6.5 万篇英文网络文章抽样，CommonCrawl）；用于校正口播时间口径与范围"
+    },
+    {
+      "id": "S06",
+      "kind": "secondary",
+      "title": "QuestMobile 抖音数据报道（2025-05）",
+      "locator": "https://finance.sina.com.cn（QuestMobile 2025 中国移动互联网春季报告报道）",
+      "accessed_on": "2026-10-26",
+      "note": "截至 2025-03 抖音系月活 10.01 亿、月人均使用时长 46.54h ≈ 1.55h/天"
+    },
+    {
+      "id": "S07",
+      "kind": "secondary",
+      "title": "弗洛姆 The Heart of Man (1964) 中译本核验",
+      "locator": "https://www.marxists.org/chinese/fromm/1964/index.htm 及百科词条",
+      "accessed_on": "2026-10-26",
+      "note": "通行中译《人心》（商务印书馆 1989）；三倾向（恋尸/恶性自恋/共生乱伦固着）与中译本一致"
+    },
+    {
+      "id": "S08",
+      "kind": "official",
+      "title": "B 站视频元数据 API",
+      "locator": "https://api.bilibili.com/x/web-interface/view?bvid=BV1NKaV6bE7a",
+      "accessed_on": "2026-10-26",
+      "note": "标题/UP 主/时长 1198s/pubdate 2026-09-28/播放 7.3 万、收藏 6359 等"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "全片主线：AI 训练逻辑、平台熵增、替代焦虑、心理问题与解法被 UP 主统摄为 mean/max pooling 在不同维度的重演",
+      "report_anchor": "## 1. 隐喻的构造：从平均脸到「两个词的重演」",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "critical": true,
+      "evidence": "转写 01:22-01:39 原话宣告方法论"
+    },
+    {
+      "id": "C02",
+      "claim": "训练目标为最小化期望损失（均值化）；「压缩即智能」「学习是记忆的反面」为口播转述的经典观点",
+      "report_anchor": "## 2. AI 训练层：均值化的必然性与两个范式的对决",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "critical": false,
+      "evidence": "转写 01:39-04:45"
+    },
+    {
+      "id": "C03",
+      "claim": "GRPO 用组平均分做基线：通用但平庸（DeepSeek R1 训练法的口播转述）",
+      "report_anchor": "## 2. AI 训练层：均值化的必然性与两个范式的对决",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "critical": false,
+      "evidence": "转写 04:42-05:24"
+    },
+    {
+      "id": "C04",
+      "claim": "TTT-Discover 论文存在且转述基本忠实：2026 年初 Stanford/NVIDIA 等；摘要原句、四条战绩（Erdős 最小重叠/GPUMode 2×/AtCoder/单细胞去噪）逐一对应",
+      "report_anchor": "### 2.3 核验结果（本报告完成，非视频内容）",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S03"
+      ],
+      "critical": true,
+      "evidence": "arXiv 2601.16175 摘要逐项对照"
+    },
+    {
+      "id": "C05",
+      "claim": "「参数分布被破坏、只会解一道题」是 UP 主对论文设计目标（专攻一题不 generalize）的通俗化/叙事化，方向一致但因果层级被修辞倒置",
+      "report_anchor": "## 增量观点（分析性内容）",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S03"
+      ],
+      "critical": true,
+      "evidence": "论文摘要 'to solve this very problem rather than generalize' vs 转写 06:28-06:44"
+    },
+    {
+      "id": "C06",
+      "claim": "ANES 2020 对照研究（观点单一/高估主流/抹掉少数/扩规模无效）经四轮检索未能唯一锁定标题，按 [待验证] 保留",
+      "report_anchor": "## 3. 实证层：多样性消失的证据与口径",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "critical": false,
+      "evidence": "转写 07:31-08:09 + 本报告检索记录（Limitations 第一条）"
+    },
+    {
+      "id": "C07",
+      "claim": "NMI 论文（Wang et al. 2025, 7(3):400-411）已核实存在且主题与口播吻合；4/16/3200 数字未确认",
+      "report_anchor": "## 3. 实证层：多样性消失的证据与口径",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S04"
+      ],
+      "critical": false,
+      "evidence": "论文标题 'misportray and flatten identity groups' 与口播『扭曲和拉平人群体的代表性』对应"
+    },
+    {
+      "id": "C08",
+      "claim": "口播「2025-10/11 AI 内容首超人类」与 Graphite 原口径（2024-11 首超、2025-05 达 52%）有出入；报告以核验口径为准",
+      "report_anchor": "## 关键数字",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S05"
+      ],
+      "critical": true,
+      "evidence": "两版 ASR 时间冲突（whisper 10 月/字幕 11 月）+ Graphite 口径校准"
+    },
+    {
+      "id": "C09",
+      "claim": "「2025 人均刷抖音超 1.5h」与 QuestMobile 口径吻合（46.54h/月 ≈ 1.55h/天）",
+      "report_anchor": "## 3. 实证层：多样性消失的证据与口径",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S06"
+      ],
+      "critical": false,
+      "evidence": "QuestMobile 2025 春季报告"
+    },
+    {
+      "id": "C10",
+      "claim": "enshittification 为 Doctorow 2022 年提出；平台三阶段论为口播转述；「热寂状态」为双 ASR 同错依上下文修正（※）",
+      "report_anchor": "## 4. 平台层：enshittification 与热寂",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "critical": false,
+      "evidence": "转写 09:25-10:11"
+    },
+    {
+      "id": "C11",
+      "claim": "弗洛姆三倾向（恋尸/恶性自恋/共生乱伦固着）及「整齐划一」引文出自《人心》(1964)；书单（马尔库塞/韩炳哲/罗萨）为口播转述",
+      "report_anchor": "## 5. 心理-哲学层：弗洛姆的恋尸癖与关卡社会",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S07"
+      ],
+      "critical": true,
+      "evidence": "中译本核验一致；引文为 UP 主节选口播"
+    },
+    {
+      "id": "C12",
+      "claim": "UP 主履历（文科高考、AI 算法工程师、上一期视频）均为视频内自述，按自述层级标注",
+      "report_anchor": "## 背景",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S08"
+      ],
+      "critical": false,
+      "evidence": "转写 15:49-16:08 自述；B 站 API 元数据"
+    },
+    {
+      "id": "C13",
+      "claim": "「奥德赛里 Xenia 的违背」为双源碎裂后的上下文推断 [推测]，Limitations 已列其他可能典故",
+      "report_anchor": "## Limitations",
+      "support": "inference",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "critical": false,
+      "evidence": "whisper 'Zenia'/字幕 'ZIA'，依奥德赛主题推断为 Xenia（宾客之礼）"
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "平均脸钩子（00:00-00:49）",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "## 1. 隐喻的构造：从平均脸到「两个词的重演」"
+    },
+    {
+      "id": "U02",
+      "title": "池化概念与全片方法论宣告（00:49-02:25）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "## 1. 隐喻的构造：从平均脸到「两个词的重演」"
+    },
+    {
+      "id": "U03",
+      "title": "训练即均值化：期望损失/MSE/压缩即智能（02:25-05:24）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "## 2. AI 训练层：均值化的必然性与两个范式的对决"
+    },
+    {
+      "id": "U04",
+      "title": "GRPO vs TTT-Discover 对决与商业推论（05:24-07:31）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S03"
+      ],
+      "report_anchor": "## 2. AI 训练层：均值化的必然性与两个范式的对决"
+    },
+    {
+      "id": "U05",
+      "title": "多样性消失实证：ANES + NMI + AI 内容占比（07:31-09:11）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S04",
+        "S05"
+      ],
+      "report_anchor": "## 3. 实证层：多样性消失的证据与口径"
+    },
+    {
+      "id": "U06",
+      "title": "enshittification 三阶段与平台割据战（09:11-10:48）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S06"
+      ],
+      "report_anchor": "## 4. 平台层：enshittification 与热寂"
+    },
+    {
+      "id": "U07",
+      "title": "社会尺度均值化：网红经济/古城/商场/单极化 + 书单（10:48-13:45）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "## 4. 平台层：enshittification 与热寂"
+    },
+    {
+      "id": "U08",
+      "title": "替代焦虑诊断 + 弗洛姆恋尸癖与关卡社会（13:45-16:59）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S07"
+      ],
+      "report_anchor": "## 5. 心理-哲学层：弗洛姆的恋尸癖与关卡社会"
+    },
+    {
+      "id": "U09",
+      "title": "max pooling 的生活：管道视野/勇敢论/收尾 callback（16:59-19:53）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "## 6. 解法层：max pooling 的生活"
+    }
+  ],
+  "limitations": [
+    "ANES 2020 对照论文四轮检索未能唯一锁定标题（存在多条高度相近研究），[待验证] 保留；NMI 论文数字（4/16/3200）未从公开摘要确认",
+    "「AI 内容首超人类」时间口径出入：口播 2025-10/11（两版 ASR 冲突）vs Graphite 2024-11；报告以核验口径为准，润色稿保留 whisper 版并标 [?]",
+    "「Xenia 的违背」为上下文推断（※），无法排除其他典故；「+7%」未逐字核对论文正文；「平均脸实验」未独立核验出处",
+    "UP 主履历与上一期视频结论均为自述；本片为上一期重制版，未看原版",
+    "转写专名误识 50+ 处已双源修正，十余处双 ASR 同错依上下文/论文摘要推断（※），完整清单在润色稿头部"
+  ]
+}
