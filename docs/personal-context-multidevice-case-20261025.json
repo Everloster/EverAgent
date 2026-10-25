@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "case_id": "personal-context-multidevice-retrieval-20261025",
+  "artifact_kind": "public_report_summary",
+  "source_date": "2026-10-25",
+  "visibility": "public_summary_only",
+  "private_evidence_withheld": true,
+  "problem": "多客户端的项目会话分散，需要按任务查找已有上下文。",
+  "architecture": "受限采集、中心文本归档与语义检索；正式事实仍由原始文档维护。",
+  "public_sources": {
+    "report": {
+      "path": "ai-learning/reports/knowledge_reports/个人Context与Memory三层架构_OpenViking_手机环境_APP跨对话_深度解析_20261025.md",
+      "sha256": "fb15f75d2bbf70e32834dc3902aa0dea9b07241a0739c5350453511c9028fa04"
+    },
+    "evidence": {
+      "path": "ai-learning/reports/knowledge_reports/.quality/个人Context与Memory三层架构_OpenViking_手机环境_APP跨对话_深度解析_20261025.evidence.json",
+      "sha256": "027125095862f69f72c031527485f4e18c9075088dccb837f827d0970dd5b248"
+    }
+  },
+  "reported_observations": [
+    {
+      "summary": "多设备负责采集和访问，中心实例负责归档与索引；不是离线多主数据库。",
+      "report_sections": [
+        "3.2"
+      ],
+      "evidence_claim_ids": [
+        "C02"
+      ],
+      "evidence_source_ids": [
+        "S15"
+      ]
+    },
+    {
+      "summary": "报告记载文本送达、归档、语义索引、重启后读取和隔离环境中的文本快照恢复。",
+      "report_sections": [
+        "3.3"
+      ],
+      "evidence_claim_ids": [
+        "C04"
+      ],
+      "evidence_source_ids": [
+        "S15"
+      ]
+    },
+    {
+      "summary": "改写查询仍有漏召回；移除来源头能改善部分结果，重复正文也会影响候选排名。",
+      "report_sections": [
+        "3.4"
+      ],
+      "evidence_source_ids": [
+        "S15"
+      ]
+    }
+  ],
+  "not_verified": [
+    "删除传播",
+    "完整向量灾备与完整记忆恢复",
+    "自动故障切换",
+    "总体 token 节省",
+    "可推广的任务收益或 RSI 收益"
+  ],
+  "quantitative_results_included": false,
+  "withheld_fields": [
+    "原始会话正文与查询",
+    "设备、客户端、账号和用户名",
+    "个人路径、URI、网络与访问入口",
+    "凭据、细粒度时间与逐设备结果"
+  ],
+  "verification_scope": "只核对摘要是否忠于所引公开报告与账本；原始运行资料未公开，本摘要不能用于独立重放或验证实际运行。",
+  "limitations": [
+    "source_date 是来源资料时点，不是本摘要的新实验日期。",
+    "公开来源没有完整量化检索结果表，本摘要不列样本量、命中率或提升比例。",
+    "报告原有评分只覆盖其绑定的报告与证据版本，不覆盖本摘要，也不是匿名性保证。",
+    "文件哈希用于识别所引版本，不证明原始试点结论真实或可推广。"
+  ]
+}

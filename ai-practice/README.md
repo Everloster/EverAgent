@@ -1,140 +1,59 @@
-# AI Practice — 各类 AI 技术的低成本 demo
+# AI Practice — AI 技术的小型实验
 
-> 用最小、可在个人机器（CPU / 单卡 / 缩尺模拟）跑起来的 demo，把一项 AI 技术讲透。
-> 类似"教学材料配套代码"：每个 demo 配一篇教学笔记，数值都来自实际运行。
-> 覆盖 Transformer/注意力、微调（LoRA/GRPO）、RAG、Agent、多模态、推理优化、扩散模型等——不限于 LLM 工程。
+这里保存 Transformer、MoE、Long Context、技能策展和 GRPO 等主题的教学代码与实验笔记。部分实验有历史运行输出，部分是 Notebook 教程或缩尺模拟；具体范围见[实验地图](./MAP.md)。
 
----
-
-## 现有主线（LLM 工程实践路径）
-
-从"手写 Transformer"到"微调大模型"的完整路径，4 个主阶段 + 架构/系统扩展实验：
-
-| 阶段 | 内容 | 技术栈 |
-|------|------|--------|
-| 1 — 原理 | 从零实现 Transformer 语言模型 | PyTorch、TikToken |
-| 1.5 — 扩展 | MoE Transformer 稀疏激活实验 | PyTorch、Top-K Router |
-| 1.6 — 系统 | Long Context 1M 缩尺模拟实验 | Python、Prompt Packing、KV Cache 成本模型 |
-| 2 — 工具 | Transformers 库三层 API | HuggingFace Transformers |
-| 3 — 生态 | HuggingFace Hub 模型与数据集管理 | huggingface_hub、datasets |
-| 4 — 微调 | Qwen2.5-3B GRPO 强化学习微调 | Unsloth、TRL、PEFT |
-
-> 新方向（RAG/Agent/多模态/推理优化等）按同样"低成本可运行 demo + 教学笔记"模式增量加入，见 [AGENTS.md](./AGENTS.md)。
-
----
+多数例子面向 CPU、单卡或缩尺环境，但依赖和硬件要求不同。RAG、多模态、扩散模型等可以作为后续方向，尚不属于这里已完成的实验覆盖。
 
 ## 快速开始
 
+只阅读笔记不需要配置环境。准备运行时，先按 [SETUP.md](./SETUP.md)安装所选实验的依赖，再从仓库根目录进入本目录：
+
 ```bash
-# 1. 检查你的硬件环境
-python src/check_hardware.py
-
-# 2. 阅读学习路径，选择入口
-cat LEARNING_PATH.md
-
-# 3. 配置环境（按各阶段需求安装）
-cat SETUP.md
-
-# 4. 打开第一个 Notebook
+cd ai-practice
+python3 src/check_hardware.py
 jupyter notebook notebooks/01_transformer_from_scratch.ipynb
 ```
 
----
+硬件检查输出只供本地选择环境，不应未经检查就原样提交。Notebook 按需运行；涉及下载模型、数据或 GPU 训练的单元，先核对其说明和资源要求。
+
+不想从 Notebook 开始，可以阅读[GRPO toy 实验](./experiments/exp_008_grpo_simulation.md)与[对应脚本](./src/grpo_simulation.py)。它用 NumPy 在 CPU 上模拟训练，并非真实 LLM 微调。重新运行时用 `--out-dir` 指定新的输出目录，避免覆盖已有历史结果。
+
+## 现有主线（LLM 工程实践路径）
+
+| 主题 | 入口 | 实现与边界 |
+|---|---|---|
+| Transformer 原理 | [exp_001](./experiments/exp_001_transformer_from_scratch.md)、[Notebook 01](./notebooks/01_transformer_from_scratch.ipynb) | PyTorch 教学实现，不是大规模预训练 |
+| Transformers API | [exp_003](./experiments/exp_003_transformers_library.md)、[Notebook 02](./notebooks/02_transformers_library.ipynb) | HuggingFace 库的使用示例 |
+| HuggingFace Hub | [exp_002](./experiments/exp_002_huggingface_basics.md)、[Notebook 03](./notebooks/03_huggingface_api.ipynb) | 模型与数据集管理示例 |
+| LoRA / GRPO 微调 | [exp_004](./experiments/exp_004_qwen25_grpo_finetune.md)、[Notebook 04](./notebooks/04_qwen25_grpo_finetuning.ipynb) | Qwen2.5-3B 路线；笔记仅展示早期训练点，不视为收敛验证 |
+| MoE | [exp_005](./experiments/exp_005_moe_transformer.md)、[Notebook 05](./notebooks/05_moe_transformer.ipynb) | 稀疏激活与路由的小规模实验 |
+| Long Context | [exp_006](./experiments/exp_006_long_context_1m_simulation.md)、[代码](./src/long_context_simulation.py) | 缩尺模拟与 KV Cache 成本模型，不是 1M 上下文真实训练 |
+| Skill 策展 | [exp_007](./experiments/exp_007_skillos_curator_simulation.md)、[代码](./src/skillos_curator_simulation.py) | 确定性任务流与技能增删改模拟 |
+| GRPO toy | [exp_008](./experiments/exp_008_grpo_simulation.md)、[代码](./src/grpo_simulation.py) | NumPy、2-token 策略，包含共享答案和不同答案的对照 |
+
+本地 LLM 选型的历史材料不作为当前性能基准；工具推荐与速度估算需要和实际推理测量分开。
 
 ## 前置知识
 
-**必须掌握**：
-- Python（列表、函数、类、文件操作）
-- PyTorch 基础（Tensor、`nn.Module`、梯度计算）
-
-**推荐了解**（不强制）：
-- 矩阵乘法和 softmax 函数
-- 什么是语言模型（predict next token）
-
-**不需要提前了解**：
-- Transformer 论文
-- HuggingFace 生态
-- GPU/CUDA
-
----
-
-## 目录结构
-
-```
-ai-practice/
-├── LEARNING_PATH.md          ← 从这里开始！学习路径和章节地图
-├── SETUP.md                  ← 环境配置指南
-├── CONTEXT.md                ← 已有实验清单（防重复）
-│
-├── notebooks/                ← 可运行的 Jupyter Notebooks
-│   ├── 01_transformer_from_scratch.ipynb   （阶段 1）
-│   ├── 05_moe_transformer.ipynb            （阶段 1.5）
-│   ├── 02_transformers_library.ipynb        （阶段 2）
-│   ├── 03_huggingface_api.ipynb             （阶段 3）
-│   └── 04_qwen25_grpo_finetuning.ipynb      （阶段 4）
-│
-├── src/                      ← 可复用的 Python 模块
-│   ├── model.py              # 完整 Transformer 实现（教学版）
-│   ├── moe_model.py          # MoE Transformer 实现（4 experts, top_k=2）
-│   ├── long_context_simulation.py # Long Context 1M 三阶段缩尺模拟
-│   ├── inference.py          # 交互式推理脚本
-│   ├── check_hardware.py     # 硬件兼容性检查
-│   └── load_local_dataset.py # 数据集加载工具
-│
-├── experiments/              ← 教学笔记（每个 notebook 对应一篇）
-│   ├── exp_001_transformer_from_scratch.md
-│   ├── exp_002_huggingface_basics.md
-│   ├── exp_003_transformers_library.md
-│   ├── exp_004_qwen25_grpo_finetune.md
-│   ├── exp_005_moe_transformer.md
-│   └── exp_006_long_context_1m_simulation.md
-│
-├── wiki/                     ← 概念知识库
-│   ├── index.md              # 概念索引
-│   └── concepts/             # 核心概念深度解析
-│       ├── transformer_from_scratch.md
-│       ├── mixture_of_experts.md
-│       ├── grpo.md
-│       ├── lora_peft.md
-│       ├── unsloth_framework.md
-│       ├── sft_vs_rlhf.md
-│       ├── long_context_simulation.md
-│       └── tokenization.md
-│
-├── data/                     ← 训练数据
-│   └── sales_textbook.txt    # 阶段 1 训练数据
-│
-└── images/                   ← 架构图
-    └── *.png
-```
-
----
+- 阅读或修改代码需要 Python 基础；
+- Transformer 和 MoE 实验需要了解 Tensor、`nn.Module` 与梯度计算；
+- 矩阵乘法、softmax 和 next-token prediction 有助于理解，但不要求先熟悉所有模型或 GPU 工具。
 
 ## 章节地图
 
+```text
+ai-practice/
+├── notebooks/     # 教学 Notebook
+├── src/           # 实现与辅助脚本
+├── experiments/   # 实验笔记与限制
+├── images/        # 图表及部分历史运行输出
+├── wiki/          # 概念索引
+└── data/          # 部分教学数据
 ```
-01_transformer_from_scratch ─┬─→ 05_moe_transformer
-                              ├─→ exp_006_long_context_1m_simulation
-                              ├─→ 02_transformers_library
-                              └─→ 03_huggingface_api ──→ 04_qwen25_grpo_finetuning
-```
-
-详见 [LEARNING_PATH.md](LEARNING_PATH.md)。
-
----
 
 ## 学习资源索引
 
-| 资源类型 | 链接 | 说明 |
-|---------|------|------|
-| 学习路径 | [LEARNING_PATH.md](LEARNING_PATH.md) | 4 阶段路径、时间估算、前置知识 |
-| 环境配置 | [SETUP.md](SETUP.md) | pip 安装命令、镜像配置、常见报错 |
-| 概念索引 | [wiki/index.md](wiki/index.md) | 核心概念快速查阅 |
-| Transformer 教学笔记 | [experiments/exp_001](experiments/exp_001_transformer_from_scratch.md) | 含思考题和参考资料 |
-| MoE Transformer 教学笔记 | [experiments/exp_005](experiments/exp_005_moe_transformer.md) | 稀疏激活、Router、Expert 负载均衡 |
-| Long Context 模拟实验 | [experiments/exp_006](experiments/exp_006_long_context_1m_simulation.md) | 预训练窗口、needle 后训练、full-context vs RAG、KV cache 成本 |
-| GRPO 教学笔记 | [experiments/exp_004](experiments/exp_004_qwen25_grpo_finetune.md) | 含实际训练数值 |
-
----
-
-*EverAgent 项目 `ai-practice` 子模块 | PracticeAgent 负责 | 执行协议见 `AGENTS.md`*
+- [LEARNING_PATH.md](./LEARNING_PATH.md)：早期四阶段 Notebook 路径；新增实验以本页和 MAP 为准。
+- [MAP.md](./MAP.md)：已有证据与待补问题。
+- [wiki/index.md](./wiki/index.md)：概念查询。
+- [AGENTS.md](./AGENTS.md)：本目录的执行约定。
