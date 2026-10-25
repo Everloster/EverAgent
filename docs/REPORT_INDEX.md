@@ -15,6 +15,7 @@
 | 2026-10-25 | [声东击西 #407：光遗传学怎样把情绪与精神疾病从相关推向因果](../podcast-learning/reports/2026-10-16_rss-shengdong-jixi_ep407-optogenetics-brain-mental-health.md) | podcast-learning |
 | 2026-10-25 | [半拿铁 No.223：“莆田系”医事——从电线杆到手术台，以及一门擅长招徕却难建信誉的生意](../podcast-learning/reports/2026-10-21_xiaoyuzhou-bannatie_putian-medical-system-history.md) | podcast-learning |
 | 2026-10-25 | [人民公园说AI：最贵 Token 干最脏的活，买的是模型还是注意力](../podcast-learning/reports/2026-10-23_xiaoyuzhou-renmingongyuan-ai_expensive-token-dirty-work.md) | podcast-learning |
+| 2026-10-25 | [个人 Context 与 Memory 三层架构：OpenViking 多设备、手机环境与 APP 跨对话记忆](../ai-learning/reports/knowledge_reports/个人Context与Memory三层架构_OpenViking_手机环境_APP跨对话_深度解析_20261025.md) | ai-learning |
 | 2026-10-25 | [vLLM 在 GB300 NVL72 上服务 DeepSeek-V4.1-Flash：P/D 分离 + Wide-EP 的机制拆解与口径核验](../ai-learning/reports/knowledge_reports/vLLM_DeepSeek-V4.1-Flash_PD分离与Wide-EP机架级服务_深度解析_20261025.md) | ai-learning |
 | 2026-10-25 | [vLLM Humming：量化推理 GEMM Kernel 库的设计、支持矩阵与证据边界](../ai-learning/reports/knowledge_reports/vLLM_Humming_量化推理Kernel库_深度解析_20261025.md) | ai-learning |
 | 2026-10-25 | [ThinkingBox：把数据库终态评分器变成 RL 奖励——Agent 后训练的可执行奖励链拆解](../ai-learning/reports/knowledge_reports/Microsoft_ThinkingBox_数据库评分转RL奖励与Agent后训练_深度解析_20261025.md) | ai-learning |
@@ -31,12 +32,12 @@
 | 2026-10-25 | [Google 结核病筛查：从单点 CAD 工具到开放医疗基础模型](../ai-learning/reports/knowledge_reports/Google_TB筛查_从CAD工具到开放医疗基础模型_深度解析_20261025.md) | ai-learning |
 | 2026-10-25 | [Google TPU 上的新推理引擎：TorchTPU 上的 vLLM-TorchTPU 与 SGLang-TorchTPU 机制拆解与口径核验](../ai-learning/reports/knowledge_reports/Google_TPU_vLLM_SGLang_TorchTPU推理引擎_能力矩阵与口径核验_深度解析_20261025.md) | ai-learning |
 | 2026-10-25 | [GLM-5.3 在 16×H200 上的 PCP、DCP 与 Hybrid HiSparse：百万上下文推理的机制拆解与口径核验](../ai-learning/reports/knowledge_reports/GLM5_3_vLLM_PCP_DCP_HiSparse_百万上下文推理_深度解析_20261025.md) | ai-learning |
-| 2026-10-25 | [FlyDSL × PyTorch：把 GPU kernel 写进 Python 的 CuTe 式布局路线深度解析](../ai-learning/reports/knowledge_reports/PyTorch_FlyDSL_AMD_GPU_Kernel加速_深度解析_20261025.md) | ai-learning |
 
 ## 🤖 AI Learning（148 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-10-25 | [个人 Context 与 Memory 三层架构：OpenViking 多设备、手机环境与 APP 跨对话记忆](../ai-learning/reports/knowledge_reports/个人Context与Memory三层架构_OpenViking_手机环境_APP跨对话_深度解析_20261025.md) | `context_engineering`, `agent_memory`, `openviking`, `multi_device`, `mobile_context`, `conversational_memory` |
 | 2026-10-25 | [vLLM 在 GB300 NVL72 上服务 DeepSeek-V4.1-Flash：P/D 分离 + Wide-EP 的机制拆解与口径核验](../ai-learning/reports/knowledge_reports/vLLM_DeepSeek-V4.1-Flash_PD分离与Wide-EP机架级服务_深度解析_20261025.md) | `vllm`, `deepseek-v4.1-flash`, `P-D-disaggregation`, `wide-EP`, `EPLB`, `DSpark` |
 | 2026-10-25 | [vLLM Humming：量化推理 GEMM Kernel 库的设计、支持矩阵与证据边界](../ai-learning/reports/knowledge_reports/vLLM_Humming_量化推理Kernel库_深度解析_20261025.md) | `vLLM`, `Humming`, `quantization`, `GEMM`, `kernel`, `JIT` |
 | 2026-10-25 | [ThinkingBox：把数据库终态评分器变成 RL 奖励——Agent 后训练的可执行奖励链拆解](../ai-learning/reports/knowledge_reports/Microsoft_ThinkingBox_数据库评分转RL奖励与Agent后训练_深度解析_20261025.md) | `ThinkingBox`, `RL`, `GRPO`, `reward-design`, `agent-eval`, `RLVR` |
@@ -81,7 +82,6 @@
 | 2026-10-20 | [GPT-6 软件维护：从广义侦察到证据驱动清理](../ai-learning/reports/knowledge_reports/GPT6软件维护_从广义侦察到证据驱动清理_深度解析_20261020.md) | `gpt_6`, `codex`, `software_maintenance`, `agent_harness`, `evidence_driven_engineering` |
 | 2026-10-20 | [Evoken 陈冕晚点访谈精读：一家 AI 应用公司如何在模型吞噬中求生](../ai-learning/reports/knowledge_reports/Evoken陈冕晚点访谈_AI应用生存策略_20260729.md) | `ai_applications`, `business_model`, `pricing`, `startup_strategy` |
 | 2026-10-20 | [Deep Review 与 Paper Assistant Tool：把长文复核从 Pass@k 改造成分段推理系统](../ai-learning/reports/paper_analyses/50_paper_assistant_tool_deep_review_2026.md) | `deep_review`, `paper_review`, `multi_agent`, `adaptive_compute`, `scientific_validation` |
-| 2026-10-19 | [豆包手机 Memory 机制：从全局记忆到可行动个人上下文](../ai-learning/reports/knowledge_reports/豆包手机Memory机制_从全局记忆到可行动个人上下文_深度解析_20261019.md) | `doubao_phone`, `agent_memory`, `personal_context`, `on_device_ai`, `ai_os`, `privacy` |
 | 2026-10-15 | [GPT-6 Astra 指令架构：从 Prompt 堆叠到按需控制](../ai-learning/reports/knowledge_reports/GPT6_Astra指令架构_从Prompt堆叠到按需控制_深度解析_20261015.md) | `gpt_6_astra`, `agent_skills`, `agents_md`, `prompt_engineering`, `context_engineering`, `agent_harness` |
 | 2026-10-15 | [Agent Skills 生态深度解析](../ai-learning/reports/knowledge_reports/Agent_Skills_生态深度解析.md) | — |
 | 2026-10-08 | [OpenAI 数学手稿事件（openai/math）核实与深度分析](../ai-learning/reports/knowledge_reports/OpenAI数学手稿事件_核实与深度分析_20261008.md) | — |

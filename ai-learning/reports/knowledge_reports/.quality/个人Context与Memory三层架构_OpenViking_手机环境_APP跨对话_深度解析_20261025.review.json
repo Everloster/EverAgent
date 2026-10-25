@@ -1,0 +1,317 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/个人Context与Memory三层架构_OpenViking_手机环境_APP跨对话_深度解析_20261025.md",
+  "quality_tier": "important",
+  "revision_round": 4,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "minimax-m3.1-flash",
+        "harness": "eacli-mmx",
+        "run_id": "minimax-context-memory-r4-review-20261025",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "escalation_reason": "GLM 5.3 and GLM 5.3 Flash Pi routes produced no review artifact; Codex configured models were unavailable before inference; completed via eacli MiniMax M3.1 Flash typed capability.",
+      "scores": {
+        "evidence_fidelity": 99,
+        "request_coverage": 98,
+        "reasoning_quality": 99,
+        "readability": 97,
+        "limitations": 98
+      },
+      "score_reasons": {
+        "evidence_fidelity": "报告明确区分官方主线文档、项目固定版本、公开产品能力、受控研究、论文事实与分析建议，关键声明、删除语义、容量规则和版本边界均有对应依据，未发现无依据外推。",
+        "request_coverage": "报告覆盖 R01-R06 的全部要求及 C01-C10 的关键声明，并完整检查 S1-S16 的来源，对记忆语义、身份隔离、行动治理、评估方法、隐私和版本限制均有说明。",
+        "reasoning_quality": "报告能够清楚区分观察事实、架构推论和设计建议，并对公开合同、运行闭环、验证边界及不同证据层级进行一致推理，结论与证据之间的关系严密。",
+        "readability": "报告层次清晰，职责模型、术语、命名空间、来源、哈希、版本和删除语义均有明确标注，关键事实与建议之间的措辞区分易于理解。",
+        "limitations": "报告明确披露未读取有效记忆正文、未验证端到端生命周期、私有实验不可复现、官方主线与固定版本存在差异，以及离线多主、冲突合并、故障切换等能力尚未获得证明。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10"
+      ],
+      "coverage_unit_ids_checked": [],
+      "source_content_map": [],
+      "source_ids_checked": [
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8",
+        "S9",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "报告 SHA=55a4ecbd18fbe546dcf151d19a856e9be76acd1371c4f27396bbcafa23022e45，evidence SHA=027125095862f69f72c031527485f4e18c9075088dccb837f827d0970dd5b248；审查结论：可通过。术语复核通过：报告明确写明“本文把 OpenViking 归纳为 Context Fabric”，因此 Context Fabric 被清楚标为本文分析术语，没有冒充 OpenViking 官方产品名。命名空间复核通过：peer 被正确写为 account 下 user 边界内的内容 scope，未被描述为跨 user 或跨 tenant 的独立身份。容量语义复核通过：条数上限和较新显式记忆覆盖较早显式记忆的规则只用于显式 Memory，没有外推为自动提炼记忆或手机全局记忆的容量合同。S13 标题复核通过：来源标题为“Memory in the Age of AI Agents”，与来源核验摘录一致；正文对 forms、functions、dynamics 分类的描述也有支持。项目配置标识复核通过：Markdown/Git Owner 被明确写为当前项目明确配置；来源清单、哈希和 URI 被明确写为当前项目受控导入设计；手机候选字段被明确标为受控静态数据合同而非已验证运行能力。公开与私有隔离复核通过：官方文档、厂商声明、论文、受控研究和分析推断的证据层级清楚；私有来源未公开原始语料、个人数据、路径或可执行访问步骤。版本边界复核通过：2026-10-25 官方主线与项目固定版本在检索、存储、队列和多写语义上明确分离，并要求升级后重新实测。删除与行动安全复核通过：报告区分实际公开删除语义与建议的删除传播要求，并明确记录权、使用权、行动权分离，高风险动作需独立权限门和用户确认。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 98.4,
+    "evaluated_on": "2026-10-25",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "fb15f75d2bbf70e32834dc3902aa0dea9b07241a0739c5350453511c9028fa04",
+    "evidence_sha256": "027125095862f69f72c031527485f4e18c9075088dccb837f827d0970dd5b248"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex",
+            "run_id": "independent-review-doubao-memory-20261019",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 93,
+            "request_coverage": 97,
+            "reasoning_quality": 93,
+            "readability": 92,
+            "limitations": 97
+          },
+          "score_reasons": {
+            "evidence_fidelity": "已实际核验全部十项来源及七项关键 claim。官方材料、原始论文和受控研究依据均支持核心结论，产品事实、厂商声明与分析模型的边界总体准确。轻微问题是个别句子把综合推断写得接近官方直接结论，且 Android 权限文档与受控研究各自支持的检查类型可分开归因。",
+            "request_coverage": "R01–R04 均完整覆盖：报告总结了最新受控研究的新增边界，解释了写入、提炼、检索、行动与治理，给出评估方法，并保持公开信息与私有依据隔离。",
+            "reasoning_quality": "从公开事实、通用 Agent Memory 研究到手机场景的授权与行动边界，推理链完整；对空结果、派生视图、静态实现、导出与迁移等常见误判给出了替代解释。少数架构性判断可更明确标为综合分析。",
+            "readability": "一页结论、类比、架构图、公式、表格和纠偏章节形成清晰的阅读路径，术语解释充分，可脱离对话独立阅读。篇幅较长但与深度解析定位相符。",
+            "limitations": "明确披露官方材料不是独立安全审计、受控研究不可公开复现、真实记录和完整闭环尚未验证、公式与分层架构属于分析模型，并指出版本变化需要重新核验。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07"
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06",
+            "S07",
+            "S08",
+            "S09",
+            "S10"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "核心结论可通过。建议后续修订时把三类权限明确写为综合分析模型，并将 Android 官方文档支持的通用权限控制与受控研究支持的具体调用方检查分开归因。未发现关键事实错误、核心需求遗漏或隐私安全问题。"
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 94.05,
+        "evaluated_on": "2026-10-19",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "aee6dd34ce2a17202322898048571b518b122419f0be1e30109de4ee27d4331a",
+        "evidence_sha256": "9b13da8a2bfb9888b6936ba6ab77e027b3f98b71513f11f6f38d2bba84dd1529"
+      }
+    },
+    {
+      "revision_round": 2,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "kimi-k3",
+            "harness": "kimi-code",
+            "run_id": "kimi-k3-context-memory-review-20261025",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "escalation_reason": "glm-5.3 reviewer route authenticated but did not complete and produced no review artifact; escalated to policy strong reviewer.",
+          "scores": {
+            "evidence_fidelity": 93,
+            "request_coverage": 95,
+            "reasoning_quality": 92,
+            "readability": 92,
+            "limitations": 95
+          },
+          "score_reasons": {
+            "evidence_fidelity": "独立复核了全部 16 个来源：OpenViking 官方 7 页（架构、上下文类型、检索、多租户、多写存储、事务、队列生命周期）经 eacli web.read 读取，Resource/Memory/Skill 三分、L0/L1/L2 渐进加载、commit 两阶段、递归层级检索、primary/backup 不自动提升、pending/processing/unacked 完成语义均与文档原文一致；豆包 FAQ 九项产品语义逐条命中原文；白皮书（SPA 内嵌 PDF）确认全局记忆的授权/开关/查看/删除控制；SAEP 确认身份、系统基线、应用策略、用户授权与接管机制；LongMemEval 三阶段五能力、LoCoMo 任务与人类差距、CoALA 记忆与行动空间分离、Android exported 组件权限控制均与原文一致；S15/S16 经 eacli context 最小脱敏切片核对，集中式试点边界、已验证/未验证项、exported 门禁、空返回解释、副作用接口纠偏均与报告一致。未达 95 的三处轻微缺陷：S13 引用标题多了 \": A Survey\" 后缀（arXiv 元数据标题为 Memory in the Age of AI Agents）；§5.1 把 FAQ 中限定于显式记忆的总量覆盖规则写得略宽泛；§3.2 将 peer 与 account/user 并列为隔离边界，官方口径中 peer 是 user 边界内的内容范围。均不影响核心结论。",
+            "request_coverage": "R01–R06 全部覆盖：§3 准确区分集中式 Context Fabric 与未证明的分布式能力并列出已验证项；§4 覆盖手机环境采集、提炼、检索、三道权限门与逆向证据边界；§5 逐条还原 APP 公开产品合同并区分四种状态；§6 给出统一 Envelope、冲突优先级与三条硬边界；§7 给出可操作的指标、场景与 A/B 方法，§8 给出五阶段落地路线；全文无私有设备、路径、账号或用户内容，私有研究仅以脱敏结论出现。报告可脱离对话独立阅读，不是索引或速览。",
+            "reasoning_quality": "Context/Memory/Source/Index/Action state 的概念分离清晰，update/select/decide 三动词框架贯穿全文；观察-情节-画像的分层例子（香菜）具体且正确；从 FAQ 公开语义反推四种状态的推理标注为分析模型而非官方实现；三道门与 execute 公式把检索与行动授权分离的论证严密；§4.4 六条纠偏均对应受控研究的真实误判风险。扣分点：\"Context Fabric\" 是报告自封的框架术语，OpenViking 官方自我定位是 context database，报告未显式标注这一措辞是作者概括；个别综合判断（如四层状态必然存在）措辞略强，但均在可接受范围。",
+            "readability": "一页结论先给分层定位，随后概念分离、三视角对比表、逐层深入、统一设计、评估与落地路线，结构完整；mermaid 图、表格、伪代码和公式服务于论证而非装饰；术语首次出现均有解释；可独立阅读。篇幅较长但与 important 级深度解析定位相符。",
+            "limitations": "§10 明确披露：官方主线与固定版本的版本差、私有证据不可公开重放、手机研究未读到有效记忆正文且无端到端闭环、APP 分层是分析模型、白皮书与 SAEP 不替代独立安全审计、未声称 token/RSI 收益与多主同步。与受控切片中记录的未验证项（删除传播、完整灾备、语义收益）一致，没有夸大已证明范围。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07",
+            "C08",
+            "C09",
+            "C10"
+          ],
+          "coverage_unit_ids_checked": [],
+          "source_content_map": [],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06",
+            "S07",
+            "S08",
+            "S09",
+            "S10",
+            "S11",
+            "S12",
+            "S13",
+            "S14",
+            "S15",
+            "S16"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04",
+            "R05",
+            "R06"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "审阅前已核对报告与证据账本 SHA-256，与调度给定值一致（无 wrong_target_snapshot）。本报告非播客、无 source_coverage，source_content_map 与 coverage_unit_ids_checked 按约定留空。16 个来源全部实际核验：公开来源经 eacli web.read（zhipu）读取，白皮书经其官网内嵌 PDF 核验；S15/S16 仅读取 eacli context 返回的最小脱敏 owner 切片，未将任何私有设备、路径、网络、账号或用户内容写入本记录。全部 10 条关键 claim 均有来源支持，无虚构来源、无关键数字错误、无隐私泄露。建议生成者修订三处轻微问题：1) S13 引用标题去掉 \": A Survey\" 后缀以匹配 arXiv 元数据；2) §5.1 总量覆盖规则限定为显式记忆（FAQ 原文口径）；3) §3.2 将 peer 表述为 user 边界内的内容范围而非与 account/user 平级的隔离边界，并可注明 \"Context Fabric\" 为本文分析术语（官方自我定位为 context database）。这些不影响核心结论，可由生成者在下一轮修订处理。"
+        }
+      ],
+      "decision": {}
+    },
+    {
+      "revision_round": 3,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "minimax-m3.1-flash",
+            "harness": "eacli-mmx",
+            "run_id": "minimax-context-memory-r3-review-20261025-r2",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "escalation_reason": "GLM 5.3/Flash Pi routes returned no artifact and Codex strong-model routes were unavailable before inference; reviewed via eacli MiniMax M3.1 Flash typed capability.",
+          "scores": {
+            "evidence_fidelity": 93,
+            "request_coverage": 99,
+            "reasoning_quality": 97,
+            "readability": 93,
+            "limitations": 99
+          },
+          "score_reasons": {
+            "evidence_fidelity": "C01-C10 的核心主张均能在给定 evidence 或来源核验摘录中找到直接或可推导依据，且报告正确区分了官方事实、受控研究结论和分析模型。扣分点是少量项目特定扩展断言没有在给定 S15/S16 脱敏切片中逐项落地。",
+            "request_coverage": "R01-R06 均有对应章节、表格、指标或路线覆盖：OpenViking 固定版本与分布式边界、手机研究边界、APP 公开记忆合同、统一生命周期、评估与实施路线以及公开仓隐私要求均得到实质回应。",
+            "reasoning_quality": "报告明确使用“已验证”“尚未证明”“分析模型”“建议”等强度区分，推理通常从观察追溯到能力边界，没有把检索命中推导为行动授权，也没有把删除 UI 状态直接等同于全链路删除。",
+            "readability": "结构完整、术语基本自洽、图表与正文互相补充，可以脱离生成过程独立阅读。轻微问题包括 eacli 未在正文定义、S13 仅列入来源而未进入论证，以及报告使用 S1、evidence 使用 S01 的编号格式不一致。",
+            "limitations": "局限章节具体覆盖版本差异、私有证据不可完整重放、未读取有效记忆正文、APP 分层属于分析模型、厂商材料不能替代安全审计，以及未证明 token、RSI、离线多主和自动故障切换等收益，边界充分。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07",
+            "C08",
+            "C09",
+            "C10"
+          ],
+          "coverage_unit_ids_checked": [],
+          "source_content_map": [],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06",
+            "S07",
+            "S08",
+            "S09",
+            "S10",
+            "S11",
+            "S12",
+            "S13",
+            "S14",
+            "S15",
+            "S16"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04",
+            "R05",
+            "R06"
+          ],
+          "unsupported_claims": [
+            "第 3.3 节关于“来源清单、原文哈希与检索 URI 可以建立对应关系”以及“确定性 context 路由可与语义检索并存”的具体断言，给定 S15 脱敏切片没有逐项确认；应补充证据或改写为受控试点观察。",
+            "第 3.2 节及后续架构判断将 Markdown/Git 表述为现有规范、报告和已核实事实的正式 Owner；给定 evidence 与 S15 切片未直接证明这一项目现状，宜标注为项目配置或设计假设。",
+            "第 4.1 节所列具体环境输入范围及记忆对象可关联来源、时间、编辑状态、历史版本和生成理由等细节，未被给定 S08、S09、S16 核验摘录完整覆盖；这些内容未与摘录直接冲突，但目前不能由公开材料独立复核。",
+            "L0/L1/L2 渐进加载、S06 中的 unacked 状态、APP 设置页逐条查看和删除以及清空后继续形成新记忆等细节，未在给定核验摘录中明确展开；若保留为事实性表述，宜回查原文或降低断言强度。"
+          ],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "快照报告 SHA：b3d1f68c7748c9f83e3d4748aa573cc53c352f9e5b9aefdd6e3a28e3b8890ab2；evidence SHA：39f3b3bade2632c7faca9cbf7dd28302847a564f280a7b9305b19168e22e0224。四类已知风险均已消除：Context Fabric 被明确标为本文归纳而非 OpenViking 官方术语；peer 被正确限定为 user 内的内容 scope，而非租户边界；条数覆盖规则仅用于显式记忆，没有泛化到全部记忆；S13 标题正确为“Memory in the Age of AI Agents”。未发现个人设备、网络、账号、真实用户内容、私有路径或可执行访问方式泄露，公开与私有证据边界清楚。结论：报告可通过；列出的 unsupported_claims 属于非阻断性的证据补强或措辞修订项，不构成硬失败。"
+        }
+      ],
+      "decision": {}
+    }
+  ]
+}

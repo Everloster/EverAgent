@@ -1,0 +1,297 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/个人Context与Memory三层架构_OpenViking_手机环境_APP跨对话_深度解析_20261025.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-19",
+  "generator": {
+    "model": "gpt-6",
+    "harness": "codex",
+    "run_id": "codex-context-memory-three-planes-20261025",
+    "explicit_model_override": false,
+    "override_reason": ""
+  },
+  "task": {
+    "summary": "结合 EverAgent-infra 的 OpenViking 多设备试点、豆包手机个人上下文研究和豆包 APP 公开记忆合同，形成一篇公开、深入浅出、可评估的三视角统一分析报告。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "准确解释 OpenViking 在当前项目中的多设备架构、已验证能力、固定版本边界与尚未证明的分布式能力。"
+      },
+      {
+        "id": "R02",
+        "text": "解释手机视角的环境采集、记忆提炼、检索、权限和行动机制，并保留逆向研究的证据边界。"
+      },
+      {
+        "id": "R03",
+        "text": "解释豆包 APP 跨对话记忆的公开产品语义，区分自动提炼、显式记忆、会话、检索注入和删除。"
+      },
+      {
+        "id": "R04",
+        "text": "提出三层统一的数据生命周期、职责分工、数据合同、冲突和删除传播设计。"
+      },
+      {
+        "id": "R05",
+        "text": "给出覆盖检索、更新、删除、隔离、行动安全、效率和恢复的评估方法与落地路线。"
+      },
+      {
+        "id": "R06",
+        "text": "公开仓不得包含个人设备、网络、账号、用户内容、私有路径或可执行访问方式；私有研究只保留脱敏架构结论。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "kind": "official",
+      "title": "OpenViking Architecture Overview",
+      "locator": "https://docs.openviking.ai/en/concepts/01-architecture",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S2",
+      "kind": "official",
+      "title": "OpenViking Context Types",
+      "locator": "https://docs.openviking.ai/en/concepts/02-context-types",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S3",
+      "kind": "official",
+      "title": "OpenViking Retrieval Mechanism",
+      "locator": "https://docs.openviking.ai/en/concepts/07-retrieval",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S4",
+      "kind": "official",
+      "title": "OpenViking Multi-Tenant",
+      "locator": "https://docs.openviking.ai/en/concepts/11-multi-tenant",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S5",
+      "kind": "official",
+      "title": "OpenViking Multi-Write Storage",
+      "locator": "https://docs.openviking.ai/en/concepts/14-multi-write-storage",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S6",
+      "kind": "official",
+      "title": "OpenViking Transaction Model and Queue Completion Semantics",
+      "locator": "https://docs.openviking.ai/en/concepts/09-transaction",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S7",
+      "kind": "official",
+      "title": "豆包记忆功能 FAQ",
+      "locator": "https://www.doubao.com/legal/memory_faq",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S8",
+      "kind": "official",
+      "title": "豆包手机助手隐私安全白皮书",
+      "locator": "https://o.doubao.com/whitepaper",
+      "accessed_on": "2026-10-19"
+    },
+    {
+      "id": "S9",
+      "kind": "official",
+      "title": "屏幕自动化操作声明协议应用开发接入文档",
+      "locator": "https://o.doubao.com/SAEP_Protocol",
+      "accessed_on": "2026-10-19"
+    },
+    {
+      "id": "S10",
+      "kind": "primary",
+      "title": "LongMemEval: Benchmarking Chat Assistants on Long-Term Interactive Memory",
+      "locator": "https://arxiv.org/abs/2410.10813",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S11",
+      "kind": "primary",
+      "title": "Evaluating Very Long-Term Conversational Memory of LLM Agents",
+      "locator": "https://arxiv.org/abs/2402.17753",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S12",
+      "kind": "primary",
+      "title": "Cognitive Architectures for Language Agents",
+      "locator": "https://arxiv.org/abs/2309.02427",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S13",
+      "kind": "primary",
+      "title": "Memory in the Age of AI Agents",
+      "locator": "https://arxiv.org/abs/2512.13564",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S14",
+      "kind": "official",
+      "title": "Permission-based access control to exported components",
+      "locator": "https://developer.android.com/privacy-and-security/risks/access-control-to-exported-components",
+      "accessed_on": "2026-10-19"
+    },
+    {
+      "id": "S15",
+      "kind": "execution",
+      "title": "OpenViking 多设备 Context 试点、固定版本源码与检索诊断的脱敏受控复核",
+      "locator": "private-evidence-withheld:openviking-context-trial-2026-10-25",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S16",
+      "kind": "execution",
+      "title": "豆包手机个人上下文静态研究与受控只读行为复核",
+      "locator": "private-evidence-withheld:doubao-personal-context-2026-10-21",
+      "accessed_on": "2026-10-25"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "OpenViking、手机和 APP 分别承担跨设备上下文检索、环境与行动、跨对话个性化三种不同职责，不应被当成同类数据库。",
+      "report_anchor": "三个视角不是三种同类数据库",
+      "support": "derived",
+      "source_ids": [
+        "S1",
+        "S7",
+        "S8",
+        "S12",
+        "S16"
+      ],
+      "evidence": "OpenViking 官方以 Resource/Memory/Skill 组织上下文；豆包 APP FAQ 限定对话记忆；手机材料与受控研究覆盖环境、全局记忆和行动治理。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "当前项目的 OpenViking 是多设备采集和访问、中心实例归档索引的集中式 Context Fabric，不是离线多主分布式数据库。",
+      "report_anchor": "多设备接入的集中式 Context Fabric",
+      "support": "direct",
+      "source_ids": [
+        "S15"
+      ],
+      "evidence": "试点部署与采集 owner 显示多设备文本进入一个中心实例；未实现设备侧可写副本、离线合并或多主冲突解决。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "OpenViking 当前官方主线描述的层级检索、多租户和多写存储不能直接外推到项目固定版本。",
+      "report_anchor": "主线文档不能替代固定版本实测",
+      "support": "direct",
+      "source_ids": [
+        "S3",
+        "S4",
+        "S5",
+        "S15"
+      ],
+      "evidence": "OpenViking 当前官方文档明确描述 L0/L1/L2、递归层级检索、多租户、primary/backup 与 pending/processing/unacked 完成语义；固定版本源码和实测采用不同检索与存储语义，不能直接外推。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "项目试点已验证文本送达、归档、索引、重启读取和文本快照恢复，但尚未证明删除传播、高可用、完整记忆恢复、token 节省或 RSI 收益。",
+      "report_anchor": "试点已经证明了什么",
+      "support": "direct",
+      "source_ids": [
+        "S15"
+      ],
+      "evidence": "脱敏项目 owner 确认多设备文本送达、durable 归档、索引、重启读取、文本快照恢复，以及来源清单/哈希/URI 核对和确定性 context 降级入口；同时保留召回、删除、完整灾备与收益缺口。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "手机 Context 的核心是环境事件、结构化记忆和行动能力，当前研究只证明实现线索与权限边界，没有证明有效记忆正文和端到端闭环。",
+      "report_anchor": "没有证明完整闭环",
+      "support": "direct",
+      "source_ids": [
+        "S8",
+        "S9",
+        "S16"
+      ],
+      "evidence": "公开材料覆盖全局记忆与行动治理；脱敏静态研究发现屏幕/应用/交互/时间位置等候选观察字段，以及情节、画像、主题、向量、反馈、版本和导出链，但未取得有效正文或端到端闭环。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "Android 组件 exported 不代表任意普通 APP 可读取，空返回也不能证明用户没有记忆。",
+      "report_anchor": "逆向研究目前最重要的价值是纠偏",
+      "support": "direct",
+      "source_ids": [
+        "S14",
+        "S16"
+      ],
+      "evidence": "Android 官方文档要求继续实施权限控制；受控研究观察到调用方身份、签名、开关、数据库状态与参数等额外门禁。",
+      "critical": true
+    },
+    {
+      "id": "C07",
+      "claim": "豆包 APP 的自动提炼与显式记忆是不同写入路径，关闭、删除聊天和删除记忆具有不同语义。",
+      "report_anchor": "豆包 APP 已公开的产品合同",
+      "support": "direct",
+      "source_ids": [
+        "S7"
+      ],
+      "evidence": "FAQ 明确说明自动刷新非实时、显式指令实时、显式记忆存在条数与覆盖规则、设置页可管理、关闭不删除、删聊天不等于删记忆、删除生效可能延迟，清空后开关仍开启会继续形成新记忆。",
+      "critical": true
+    },
+    {
+      "id": "C08",
+      "claim": "三层架构应该统一来源、身份、版本、权限和删除生命周期，而不是共享一个物理数据库。",
+      "report_anchor": "统一的是 Envelope，不是存储引擎",
+      "support": "derived",
+      "source_ids": [
+        "S1",
+        "S5",
+        "S7",
+        "S10",
+        "S12",
+        "S15",
+        "S16"
+      ],
+      "evidence": "三类系统拥有不同来源和生命周期；当前项目明确保留 Markdown/Git 为正式 Owner，OpenViking 为筛选归档与派生索引。统一 Envelope 能保持职责分离并支持检索、行动和删除审计。",
+      "critical": true
+    },
+    {
+      "id": "C09",
+      "claim": "长期 Memory 评估必须覆盖信息提取、多会话、时间、更新和拒答，并额外覆盖跨设备一致性、删除传播、权限隔离与行动安全。",
+      "report_anchor": "推荐指标",
+      "support": "derived",
+      "source_ids": [
+        "S10",
+        "S11",
+        "S8",
+        "S9",
+        "S15",
+        "S16"
+      ],
+      "evidence": "LongMemEval 与 LoCoMo覆盖长期对话能力；手机和多设备场景增加删除、隔离、恢复与动作风险。",
+      "critical": true
+    },
+    {
+      "id": "C10",
+      "claim": "检索命中不能自动授权手机或 APP 执行外部动作，记录权、使用权和行动权必须分开。",
+      "report_anchor": "可行动记忆需要三道门",
+      "support": "derived",
+      "source_ids": [
+        "S9",
+        "S12"
+      ],
+      "evidence": "SAEP 将身份、系统基线、应用策略和用户授权组合为动作决策；CoALA 将 Memory 与 Action Space 分开。",
+      "critical": true
+    }
+  ],
+  "limitations": [
+    "OpenViking 官方主线与项目固定版本不同，未来升级后需重新验证检索、存储和恢复语义。",
+    "OpenViking 与豆包手机的原始执行证据位于私有环境，公开读者无法独立重放全部结论。",
+    "豆包手机研究未成功读取有效记忆正文，也未完成同一记录的端到端写入、检索、更新和删除验证。",
+    "豆包 APP 内部分层是基于官方 FAQ 与通用研究构造的分析模型，不代表官方精确实现。",
+    "本文没有证明 OpenViking 已降低总体 token 成本、提升 RSI 或实现离线多主同步与自动故障切换。"
+  ]
+}
