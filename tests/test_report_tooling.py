@@ -903,13 +903,59 @@ semantic_tags: ["quality"]
         self.assertEqual(result["groups"][0]["premature_stop_rate"], 0)
 
     def test_cross_model_sampling_status_preserves_scarce_reviewer(self):
-        status = report_quality.cross_model_sampling_status()
+        reports_dir = ROOT / "ai-learning" / "reports"
+        with tempfile.TemporaryDirectory(dir=reports_dir) as directory:
+            root = Path(directory)
+            reports = []
+            generators = ["gpt-5.6-sol"] * 4 + ["glm-5.3"]
+            for index, generator in enumerate(generators):
+                report = root / f"sampling-{index}.md"
+                report.write_text(
+                    f"""---
+title: "Sampling {index}"
+domain: "ai-learning"
+report_type: "knowledge_report"
+status: "completed"
+updated_on: "2026-10-25"
+quality_schema: "report-v2"
+quality_tier: "important"
+semantic_tags: ["sampling"]
+---
+
+# Sampling {index}
+""",
+                    encoding="utf-8",
+                )
+                evidence_path, review_path = report_quality.quality_artifact_paths(report)
+                evidence_path.parent.mkdir(parents=True, exist_ok=True)
+                evidence_path.write_text(
+                    json.dumps(
+                        {
+                            "created_on": "2026-10-25",
+                            "generator": {"model": generator},
+                        }
+                    ),
+                    encoding="utf-8",
+                )
+                review_path.write_text(
+                    json.dumps(
+                        {
+                            "reviews": [{"reviewer": {"model": generator}}],
+                            "decision": {"evaluated_on": "2026-10-25"},
+                        }
+                    ),
+                    encoding="utf-8",
+                )
+                reports.append((None, report))
+
+            with mock.patch.object(report_quality, "iter_reports", return_value=reports):
+                status = report_quality.cross_model_sampling_status()
 
         self.assertEqual(status["interval"], 5)
-        self.assertEqual(status["pending_same_model_reports"], 3)
-        self.assertFalse(status["sample_due"])
-        self.assertIn("PuRo-2B", status["recommended_report"])
-        self.assertEqual(status["recommended_reviewers"][0], "gpt-5.6-sol")
+        self.assertEqual(status["pending_same_model_reports"], 5)
+        self.assertTrue(status["sample_due"])
+        self.assertTrue(status["recommended_report"].endswith("sampling-4.md"))
+        self.assertEqual(status["recommended_reviewers"], ["gpt-5.6-sol", "kimi-k3"])
 
     def test_github_summary_avoids_links_for_missing_reports(self):
         module = load_report_generator()
