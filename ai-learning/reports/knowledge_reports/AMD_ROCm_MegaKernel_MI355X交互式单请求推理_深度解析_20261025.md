@@ -11,7 +11,7 @@ semantic_tags: ["AMD", "ROCm", "MI355X", "MegaKernel", "持久化内核", "投�
 
 # AMD ROCm MegaKernel：MI355X 上交互式单请求推理的持久化内核路线深度解析
 
-**研究对象**：AMD ROCm 官方技术博客《Bringing Ultra-Fast, Interactive LLM Inference to AMD Instinct™ MI355X GPUs》（2026-10-20，作者 Aditya Nandakumar、Sangeeta Chowdhary、Rohan Doshi、Shubham Sharma、Paul Merolla），并继续读取其直接链接的一手实现与学术材料：arXiv:2604.15379《Fleet: Hierarchical Task-based Abstraction for Megakernels on Multi-Die GPUs》、arXiv:2512.22219《MPK: A Compiler and Runtime for Mega-Kernelizing Tensor Programs》、`proaditya/aiter`（AITER 的临时镜像，含 `aitermk-qwen38` / `aitermk-gpt-oss` 分支）、`proaditya/ATOM`、`sangeeta0201/fleet-chiplet-megakernel`（Fleet 临时仓库，分支 `amd_mi350`）、`ROCm/FlyDSL`。
+**研究对象**：AMD ROCm 官方技术博客《Bringing Ultra-Fast, Interactive LLM Inference to AMD Instinct™ MI355X GPUs》（2026-10-20，作者 Aditya Nandakumar、Sangeeta Chowdhary、Rohan Doshi、Shubham Sharma、Paul Merolla），并继续读取其直接链接的一手实现与学术材料：arXiv:2604.15379《Fleet: Hierarchical Task-based Abstraction for Megakernels on Multi-Die GPUs》、arXiv:2512.22219《MPK: A Compiler and Runtime for Mega-Kernelizing Tensor Programs》、`proaditya/aiter`（AITER 的临时镜像，含 `aitermk-qwen38` / `aitermk-gpt-oss` 分支）、`proaditya/ATOM`、`sangeeta0201/fleet-chiplet-megakernel`（Fleet 临时仓库，分支 `amd_mi350`）、`ROCm/FlyDSL`。替代路线部分另读取 NVIDIA/TensorRT-LLM 官方 README，只用于确认产品与平台边界。
 
 > **标注约定**（全文通用）
 > - `[AMD 自述]`：AMD 博客原文可直接核对的陈述与数字。
@@ -19,7 +19,7 @@ semantic_tags: ["AMD", "ROCm", "MI355X", "MegaKernel", "持久化内核", "投�
 > - `[代码证据]`：仓库结构、分支、提交与文档可核对事实（注明出处）。
 > - `[分析者推断]` / `[推测]` / `[待验证]`：本报告作者的推理与未决疑点。
 >
-> **阅读纪律**：本报告**未运行任何 kernel、未复现任何 benchmark、未在任何 MI355X 上测量**。所有性能数字均为 AMD 自测；其中**最关键的三处口径不一致与一处已确认的正确性异常**在 §6.4 与 §9 单独列出，不与"提速倍数"混读。
+> **阅读纪律**：本报告**未运行任何 kernel、未复现任何 benchmark、未在任何 MI355X 上测量**。所有性能数字均为 AMD 自测；其中**最关键的三处口径不一致与一处已确认的正确性异常**在 §5.4、§5.5 与 §9 单独列出，不与"提速倍数"混读。
 
 ---
 
@@ -42,6 +42,7 @@ semantic_tags: ["AMD", "ROCm", "MI355X", "MegaKernel", "持久化内核", "投�
 | S05 | `proaditya/ATOM`（ATOM 临时镜像；MIT；创建 2026-10-12） | 一手代码仓 | ATOM 引擎定位、模型覆盖、bench client 位置 |
 | S06 | `sangeeta0201/fleet-chiplet-megakernel`（Apache-2.0；默认分支 `amd_mi350`；创建 2026-07-29） | 一手代码仓 | Fleet 复现步骤、MI350 硬件参数、与 Mirage MPK 的对照数字、长期归属地指引 |
 | S07 | `ROCm/FlyDSL`（302 stars / 131 forks；创建 2025-11-23；GitHub 许可字段为 NOASSERTION） | 一手代码仓 | megakernel 所用 DSL 的上游地位与许可元数据边界 |
+| S08 | `NVIDIA/TensorRT-LLM` 官方 README | 官方代码文档 | 只核对其“专用 kernel + 推理 runtime + Python 框架”的产品定位和 CUDA / NVIDIA 平台边界，不引用性能数字 |
 
 **读法说明**：S01 是**完整的口径披露**（这一点值得肯定），S02/S03 是**学术坐标**（megakernel 不是凭空冒出的概念），S04–S07 是**落地形态与成熟度的证据**。本报告把"数字读法"与"可复现性读法"分开：前者看基线与条件，后者看仓库、版本与脚本。
 
@@ -55,7 +56,7 @@ semantic_tags: ["AMD", "ROCm", "MI355X", "MegaKernel", "持久化内核", "投�
 
 `[AMD 自述]` 同文对"megakernel 存在理由"的解释是本报告认为整篇文章最重要的一句：**"Normally each operator of each layer is its own GPU kernel, and one token passes through hundreds of them, each with launch and synchronization overhead that a lone request cannot hide."**（S01）
 
-`[分析者推断]` 这句话把问题的结构说透了：**launch 与同步开销是"单请求"的函数，不是"总吞吐"的函数**。在 batch=64 时，GPU 被充分喂饱，launch 开销被摊薄；batch=1 时，每个 kernel 的启动延迟、每条依赖边的同步延迟都**直接串在关键路径上**。因此"megakernel 更快"这个命题**只在低并发下成立**，把它当成吞吐方案是范畴错误。
+`[分析者推断]` 这句话把 batch=1 的问题结构说透了：**当一个请求无法隐藏开销时，launch 与同步会直接进入关键路径**。并发或 batch 上升后，常规路径可能把部分固定开销摊薄，但缓存复用、调度和数据局部性也会随之变化；S01 只给出 batch=1 主结果和 Flash-Next 的四请求单点，不能据此断言 megakernel 的优势只在低并发成立，或在高并发必然消失。更准确的结论是：这篇材料首先证明了**单请求 decode 延迟**的收益，更高并发下的方向与幅度仍需曲线验证。
 
 ### 2.2 四个技术杠杆的分工（AMD 自述）
 
@@ -220,10 +221,12 @@ semantic_tags: ["AMD", "ROCm", "MI355X", "MegaKernel", "持久化内核", "投�
 | **Qwen3.8-27B** | MXFP4 权重；MXFP8 DFlash2 drafter，7 drafts/轮；greedy；batch=1 | **1,091** tok/s（ROCm 10.0）／**1,105**（ROCm 7.2.4） | ATOM 常规路径，**相同 MXFP4 权重、相同 drafter**，但 LM head 与 drafter 保持 BF16 | **535**（ROCm 10.0）／**481**（ROCm 7.2.4） | **2.0×**（ROCm 10.0）／**2.3×**（ROCm 7.2.4） | GSM8K 128 条提示；reasoning effort xhigh；输出上限 2,048 token |
 | Qwen3.8-27B | 同上 | **913**／**924** tok/s | 同上 | 443／406 | 同上 | HumanEval 128 条 |
 | Qwen3.8-27B | 同上 | **824**／**846** tok/s | 同上 | 412／368 | 同上 | MT-Bench 80 条首轮 |
-| **Qwen3.8-Flash-Next** | MXFP4 权重；MTP 3 drafts/轮 | **~750** tok/s（MI355X）／**689**（MI350X） | ATOM 常规路径（同分支、同 MXFP4 权重、启用 MXFP4 kernel） | 227（MI350X） | **3.3×**（MTP）／**3.4–3.5×**（无投机） | 同上提示集；另有随机提示 1K/8K/128K/250K 上下文、1,024 输出 token |
+| **Qwen3.8-Flash-Next** | MXFP4 权重；MTP 3 drafts/轮 | **~750** tok/s（MI355X） | ATOM 常规路径（同分支、同 MXFP4 权重、同 MTP drafter；正文未单列其绝对 tok/s） | 正文未单列 | **3.3×** | GSM8K 128 条提示、batch=1；HumanEval / MT-Bench 与无投机、长上下文、四请求结果另见 S01 |
 | **GPT-OSS-120B** | vLLM 0.31.0 + megakernel 插件，**DPX+NPS2**，EAGLE3 | **1,472** tok/s | stock vLLM 0.31.0（DFlash，默认 SPX+NPS1） | **784** tok/s | **1.9×** | GSM8K 128 条、greedy、输出上限 256 token、忽略 EOS；**仅 decode** |
 
 `[分析者推断]` 这张表里最容易被误读的是 **Qwen3.8-27B 的 "2.0× vs 2.3×"**：**同一模型、同一 drafter、同一权重，仅仅因为 ROCm 版本不同（10.0 vs 7.2.4），声明的加速倍数就从 2.3× 变成 2.0×**。原因是 AMD 明确说明"ROCm 10 需要的硬件队列设置也加速了 ATOM 的常规路径，**所以我们引用调优后的一对**"——**基线也变强了**。这提醒我们：**跨软件版本引用倍数必须带上版本号**，否则一个 15% 的漂移会被误读成方法本身的差异。
+
+Flash-Next 的硬件口径也要分开：S01 的 headline 是 **MI355X 上约 750 tok/s、3.3×**，但正文没有单列该 MI355X 对照路径的绝对 tok/s；测试配置另给 **MI350X 上 689 对 227 tok/s（约 3.0×）**。后者只能作为跨卡复现信息，不能拿 689/227 反填或解释 MI355X 的 3.3×。
 
 ### 5.2 逐轮度量模型（AMD 给出的换算公式）
 
@@ -270,7 +273,9 @@ semantic_tags: ["AMD", "ROCm", "MI355X", "MegaKernel", "持久化内核", "投�
 
 `[AMD 自述]` AMD 对上述异常的原文说明是："**speculation itself is exact**: the score follows **how the attention kernel splits the context, which we are investigating**"（S01）。
 
-`[分析者推断]` **这是全文最重要的一处事实**：投机解码在定义上是**无损**的（target 验证保证输出分布不变），但这里"无投机 42.8% → 有投机 35.5–39.3%"的落差**说明 megakernel 的注意力上下文切分方式影响了结果**。AMD 把它归因于"注意力 kernel 切分上下文的方式"并声明正在排查——**这是正确的处理方式（公开 + 承认在查），但它同时意味着这条路线目前不能被当作"已验证无损"**。而且"BF16 attention 权重 49–56%"与 megakernel 的 42.8% 之间的差距（6–13 分）**远大于**"MXFP4 checkpoint 43.8%"与 BF16 的差距，指向**注意力路径本身**而非权重量化是主要来源。`[待验证]` AMD 未给出该差距的归因细节。
+`[分析者推断]` **这是全文最重要的一处事实**：投机解码按算法定义应由 target 验证保持精确，但这里"无投机 42.8% → 有投机 35.5–39.3%"的落差与 AMD 所说的**注意力 kernel 上下文切分方式**相关，且根因仍在排查。因此，这条路径在该 5-shot 原始文本口径下还不能被视为已经完成无损验证。
+
+现有数字**不足以完成因果归因**：BF16 attention 的 49%–56% 到 vLLM + AMD MXFP4×FP8 checkpoint 的 43.8%，差距为 **5.2–12.2 分**；同一 MXFP4×FP8 checkpoint 参照下，megakernel 无投机的 42.8% 再低 **1.0 分**；开启投机后又降到 35.5%–39.3%。这些路径同时改变了 attention 实现、上下文切分与投机条件，不能据此断言主要损失来自注意力路径或权重量化。能确定的只有：**量化 checkpoint 已解释了相对 BF16 的大部分可见差距，megakernel 与投机条件还引入了额外差距，而各自贡献仍待受控消融。**
 
 ### 5.5 口径缺口清单
 
@@ -296,7 +301,7 @@ semantic_tags: ["AMD", "ROCm", "MI355X", "MegaKernel", "持久化内核", "投�
 | 事实 | 出处 |
 |---|---|
 | 三个模型 × 三个引擎的可用性：Qwen3.8-27B 三者皆可用；Flash-Next 仅 ATOM 可用（SGLang/vLLM 计划中）；GPT-OSS-120B 仅 vLLM **preview** | S01 Get Started 表 |
-| Qwen3.8-27B 三条复现脚本：`blog_benchmark/build_and_repro.sh`（ATOM）、`aitermk/engine_adapters/sglang/scripts/build_and_repro.sh`（SGLang）、`aitermk/engine_adapters/vllm/scripts/build_and_repro.sh`（vLLM）、`aitermk/engine_adapters/qwen38_flash_mono/build_and_repro.sh`（Flash-Next） | S01 |
+| Qwen3.8-27B 三条复现脚本：`blog_benchmark/build_and_repro.sh`（ATOM）、`aitermk/engine_adapters/sglang/scripts/build_and_repro.sh`（SGLang）、`aitermk/engine_adapters/vllm/scripts/build_and_repro.sh`（vLLM）；Flash-Next 的 ATOM 脚本为 `scripts/qwen38_flash_mono/build_and_repro.sh` | S01 |
 | 基准客户端 `atom/benchmarks/single_request_bench.py` 可对任意 OpenAI 兼容服务运行 | S01 |
 | megakernel kernel 与引擎插件位于 **`proaditya/aiter`（AITER 临时镜像，MIT，创建 2026-10-18）**，分支为 `main` / `aitermk-qwen38` / `aitermk-gpt-oss` | S04 |
 | ATOM 位于 **`proaditya/ATOM`（临时镜像，MIT，创建 2026-10-12）**；其 README 内容与上游 `ROCm/ATOM` 一致，ATOM 定义为 "a lightweight vLLM-like implementation"，基于 AITER；上游还支持 Qwen3.8（`Qwen3_5MoeForCausalLM`，MoE，MXFP4 权重，单机 8 卡 MI355）、DeepSeek-V4-Pro **DSpark** 投机解码、GLM-5.2、Qwen3.5 多模态等 | S05 |
@@ -316,12 +321,12 @@ semantic_tags: ["AMD", "ROCm", "MI355X", "MegaKernel", "持久化内核", "投�
 
 | 路线 | 优势 | 劣势 | 有边界的适用区间 |
 |---|---|---|---|
-| **A. AMD megakernel 路线**（本报告对象） | 单请求低延迟极致（自测 1.9–3.3×）；长上下文 + 投机解码可共存（线性注意力状态重放）；数据放置可利用多 die 局部性；已可在 ATOM/SGLang/vLLM 三个引擎使用 | **仅 decode、仅单卡、仅低并发被验证**；GPT-OSS-120B 仍为 preview（≤32K token、一次一个贪心请求）；注意力路径存在未解释的精度落差；代码在临时仓库；依赖 `GPU_MAX_HW_QUEUES=1` 等非默认配置 | **单用户交互、模型放得下单卡、上下文长但 ≤ 数百 K、对话/编码/推理类任务** |
+| **A. AMD megakernel 路线**（本报告对象） | 单请求低延迟极致（自测 1.9–3.3×）；长上下文 + 投机解码可共存（线性注意力状态重放）；数据放置可利用多 die 局部性；已可在 ATOM/SGLang/vLLM 三个引擎使用 | **仅 decode、仅单卡，批量证据只有 Flash-Next 四请求单点**；GPT-OSS-120B 仍为 preview（≤32K token、一次一个贪心请求）；注意力路径存在未解释的精度落差；代码在临时仓库；依赖 `GPU_MAX_HW_QUEUES=1` 等非默认配置 | **单用户交互、模型放得下单卡、上下文长但 ≤ 数百 K、对话/编码/推理类任务** |
 | **B. 传统 multi-kernel + graph capture**（CUDA/HIP Graph；vLLM/SGLang 常规路径） | 通用、成熟、生态广；已支持批处理、TP、PD 分离；精度路径被更广泛使用 | batch=1 时仍可能保留多 kernel 依赖与同步；权重字节数与跨 die 读取成本不因 graph capture 自动消失 | 吞吐优先、多并发、需要批处理与弹性扩缩的线上服务 |
 | **C. 模型专用融合路径**（各家 monokernel / fused path） | 可减少 launch 并围绕单一模型做深度优化 | 融合粒度与数据流因实现而异，不能一概视为完整持久化执行模型；平台和模型绑定强 | 单一模型、单卡、愿意承担专用维护成本时 |
 | **D. 通用 mega-kernel 编译器**（MPK 路线，S03） | **自动**把多算子推理降成单个 mega-kernel，SM 级图表示、跨算子软件流水，宣称最多 1.7× 更低端到端延迟；保留既有编程模型的灵活性 | 需改造为可编译的 tensor program；对特定模型的极致优化不如手写 | 多个模型共享一套推理栈、希望**一次投入多处受益**的团队 |
 | **E. Chiplet-aware 持久化调度**（Fleet 路线，S02/S06） | 显式建模 chiplet 级局部性与同步；协作式权重分块把 L2 命中率 12%→54%（BS32）、39%→61%（BS64），HBM 流量最多 −37%；MI350 上 BS1–8 比 vLLM decode 延迟低 1.3–1.5× | 需要理解 XCD 拓扑与调度语义；收益集中在较大 batch 的 L2 复用上 | 多 die GPU 上的**大 batch 吞吐**（BS32–64）比单请求延迟更有价值 |
-| **F. TensorRT-LLM 等 NVIDIA 专用栈** | NVIDIA 生态内的极致优化与广泛验证 | **硬件绑定**，在 AMD MI355X 上不可用；本文所有数字都不适用于它 | NVIDIA 硬件上的同类问题 |
+| **F. TensorRT-LLM**（S08） | 官方 README 将其定义为以专用算子 kernel、推理 runtime 和 Python 框架优化 LLM / Visual Gen 推理，并提供 CUDA / NVIDIA 平台的工程入口 | 平台与本文 AMD 路线不同；本报告没有读取同模型、同精度、同负载的跨平台 benchmark，不能比较谁更快 | NVIDIA GPU 上需要完整 serving runtime、模型并行与专用 kernel 的场景；这里只比较产品边界，不做性能排名 |
 
 `[分析者推断]` 最有价值的比较其实是 **A 与 D/E 的关系**：本次产品路径是**手工、模型专用**的；MPK 是**自动化编译与运行时**路线；Fleet 是**拓扑感知的任务与调度**路线。三者共享持久化执行、细粒度任务和调度局部性的技术主题，但公开材料不足以证明本次实现直接复用了 MPK 或 Fleet。Fleet README 指向 `AMD-RAD/fleet`，说明其自身正迁往更稳定的项目归属；是否会进入这些模型专用路径仍待验证。
 
@@ -329,7 +334,7 @@ semantic_tags: ["AMD", "ROCm", "MI355X", "MegaKernel", "持久化内核", "投�
 
 `[AMD 自述]` S01 明确："**Decode rates are not whole-task speedups: prompt processing and tool calls add to an agent's task time.**"（S01）
 
-`[分析者推断]` 对多 Agent 负载，这条路线只在**每个 Agent 回合的"生成阶段"**有效；**工具调用往返、环境执行、上下文重新组装**都不在优化范围内。更关键的是：**Agent 场景常见的是"多会话并发"而非"单会话高吞吐"**，而 megakernel 的收益恰恰在低并发时最大——这看起来是匹配，但**多会话并发会把 GPU 重新填满，从而重新进入"launch 开销被摊薄"的 regime**，此时 megakernel 相对常规路径的增益会缩小（AMD 只测了 4 请求，且只在 Flash-Next 上，且是"per user"口径）。`[推测]` **在多 Agent 高并发场景下，这条路线的净收益很可能显著小于单请求数字**，这是本报告认为最需要实测的一点。
+`[分析者推断]` 对多 Agent 负载，这条路线只在**每个 Agent 回合的"生成阶段"**有效；**工具调用往返、环境执行、上下文重新组装**都不在优化范围内。多会话并发可能让常规路径摊薄 launch 开销，也可能改变 cache 复用、内存带宽和持久化调度的收益；Fleet 在较大 batch 上的缓存结果甚至提醒我们，趋势未必单调。AMD 只测了 Flash-Next 的四请求单点，而且使用 per-user 口径。`[推测]` **多 Agent 高并发下的净收益很可能不同于单请求数字，但现有证据不能判断一定缩小还是扩大**；需要 1 / 4 / 8 / 16 并发曲线同时报告 per-user 与 aggregate 指标。
 
 ---
 
@@ -368,10 +373,10 @@ semantic_tags: ["AMD", "ROCm", "MI355X", "MegaKernel", "持久化内核", "投�
 `[分析者推断]` **对"1.9–3.3×"最保守的解读**是：这不是"megakernel 快了 3 倍"，而是**"把三个各自为政的优化（持久化 kernel、投机解码、低精度）叠在一起，并且基线也用了同样的低精度权重"之后的复合效应**。拆解来看：
 
 - **投机会改变相对倍数，但不能据此分解贡献**：GPT-OSS-120B 的 "**3.6× stock vLLM 0.31.0 without speculation**, 2.3× with EAGLE3 and 1.6× with the same DFlash drafter"表明，当两侧加入投机后，相对差距缩小。无投机的 3.6× 是**两侧都未启用投机**的对照，不能归因于"只有常规路径没开投机"；更谨慎的解释是，投机加速了两条路径且与每轮耗时、drafter 精度和接受长度耦合，现有数字无法干净分解 megakernel 与投机各自贡献。
-- **低精度也贡献很大**：AMD 明说基线用的是同样的 MXFP4 权重，因此倍数已经是"同精度"对比——**这一点是加分项**，但也意味着**相对 BF16 基线的绝对收益比这些倍数更大**，读者容易把"1.9–3.3×"误当成"相对原版模型的收益"。
+- **"同精度基线"只适用于两条 Qwen 主比较**：AMD 明说 Qwen3.8-27B 与 Flash-Next 的常规路径使用相同 MXFP4 权重；GPT-OSS-120B 的 headline 比较则同时改变分区模式、attention / LM head 精度和 drafter，不能泛化成同精度对比。即便在 Qwen 上，"相同权重"也不等于所有组件位宽完全相同，27B 的 LM head 与 drafter 仍有差异。
 - **数据放置贡献 7.5–8%**（仅放置）到 16–20%（配合投机）——**占比不大**，但它是四项里唯一有干净反事实实验支撑的。
 
-`[分析者推断]` **对"megakernel 更快"最保守的解读**是：单请求 decode 的瓶颈在 **launch 与同步**，而这恰恰是**多 kernel 架构下最容易被摊薄**的开销。当 batch 从 1 升到 4（Flash-Next 的唯一批量数据点）时倍数已降到 3.1× per user；AMD 自己的路线图把 "**Larger batches**" 列为待做。`[推测]` **因此这条路线在"低并发"上的优势，会随着并发上升而收敛**；它解决的是"没人跟你抢 GPU"的问题，而不是"GPU 不够用"的问题。
+`[分析者推断]` **对"megakernel 更快"最保守的解读**是：S01 已证明单请求 decode 中 launch 与同步无法被隐藏，但没有给出足以判断并发趋势的数据。Flash-Next 的四请求结果是 **3.1× per user**，与 batch=1 的 3.3× 不是严格同一组输入和统计口径；它只能说明四请求下收益仍然存在，不能证明已经开始收敛。AMD 把 "**Larger batches**" 列为待做，而 Fleet 又显示大 batch 可能因 chiplet 缓存复用得到额外收益。`[待验证]` 因此应把"并发升高后相对收益缩小"保留为待测假说，而不是结论。
 
 `[分析者推断]` **对"这是重大突破"的反方解读**是：Fleet 在 MI350 + Qwen3-8B 上报告相对 vLLM 的 **1.3–1.5×** decode 延迟改善，MPK 报告最多 **1.7×** 端到端延迟改善，而本博客给出 1.9–3.3×。三组结果的模型、硬件、指标、基线和优化组合都不同，**既不能直接相减，也不能用前两组数字估算本博客中 megakernel 单项的贡献**。它们只能说明：持久化执行在不同系统里都能产生可观收益；本博客的复合倍数仍需同精度、同 drafter、同分区模式的消融才能拆解。
 
@@ -386,7 +391,8 @@ semantic_tags: ["AMD", "ROCm", "MI355X", "MegaKernel", "持久化内核", "投�
 7. **未检索社区复现与生产案例**；本报告未发现任何第三方复现，但也未系统检索。
 8. **未核对 AMD 与 OpenAI 等其他厂商在同期是否给出同类数字**，因此无法判断 1.9–3.3× 在行业中的相对水位。
 9. **未评估"用 AI coding agent 做 kernel 优化"这一方法本身的有效性**：S01 只说"hundreds of optimization experiments by AMD engineers and AI coding agents"，没有给出 agent 的贡献比例、成功率或失败模式。
-10. **资料时点**：网络读取发生于 2026-10-25（UTC 17:51–18:20 左右）；博客发布于 2026-10-20，临时仓库在读取时仍为 0 star 状态；AMD 明说数字会随周更新。
+10. **资料时点**：AMD/Fleet 主要网络证据读取发生于北京时间 2026-10-25 01:51–02:20（UTC 2026-10-24 17:51–18:20）；TensorRT-LLM README 于北京时间 08 时后补读。博客发布于 2026-10-20，临时仓库在读取时仍为 0 star 状态；AMD 明说数字会随周更新。
+11. **TensorRT-LLM 只读了官方 README**，没有读取同模型 benchmark、实现细节或在同硬件条件下实测；第七章只比较能力边界，不比较性能。
 
 ---
 
@@ -394,7 +400,7 @@ semantic_tags: ["AMD", "ROCm", "MI355X", "MegaKernel", "持久化内核", "投�
 
 `[分析者推断]` 本节面向 EverAgent 与同类 agent harness，不把 AMD 的倍数搬过来，只搬可迁移的判断与度量纪律。
 
-1. **低并发是 agent 的常态，而 agent 的瓶颈常常不在模型上。** 一个"用户等回答"的 agent 回合里，模型 decode 只占一部分；**launch/同步/串行等待这类"调度开销"在低并发下占比更高**。`[推测]` 因此评估"换模型能快多少"时，应同时问"我们的 harness 自己加了多少串行等待"。
+1. **单用户交互是 agent 的常见形态之一，而瓶颈常常不只在模型上。** 一个"用户等回答"的 agent 回合里，模型 decode 只占一部分；在低并发阶段，launch、同步和串行等待更容易暴露。多 Agent 调度是否仍属低并发，要看实际队列与批处理。评估"换模型能快多少"时，应同时问"我们的 harness 自己加了多少串行等待"。
 2. **把"每轮固定成本"与"每 token 边际成本"分开度量。** AMD 的 `speed ≈ accepted × 1000 / ms_per_round` 是一把很好的尺子；对应到 agent：**每个回合的固定成本（首 token 延迟、工具往返、上下文重建）与每 token 边际成本（decode）要分开报告**，否则"tok/s 提升 3×"会被误读成"任务快 3×"——AMD 自己就提醒了这一点。
 3. **投机解码的收益必须按"接受长度 × 每轮耗时"重算，并随负载重新标定。** AMD 明说最优 drafter 与 draft 长度**依赖工作负载**（可预测的数学文本适合长 draft，密集对话文本一次最好）。agent 任务的输出结构差异极大，**照抄别人的 drafter 配置很可能适得其反**。
 4. **上下文读取是硬下界，减字节数比减算力更值钱。** MXFP4 让"权重 + 262K KV cache"塞进一张卡——**这提示 agent harness：给模型塞更多上下文之前，先算清楚每 token 的存储与带宽成本**。
@@ -416,8 +422,8 @@ semantic_tags: ["AMD", "ROCm", "MI355X", "MegaKernel", "持久化内核", "投�
 ### 11.2 我还没搞懂什么
 
 - **注意力路径的精度落差到底来自哪里？** megakernel 在 5-shot 原始文本 GSM8K 上 42.8%，而 BF16 attention 权重是 49–56%——**6–13 分的差距没有被归因**。是注意力 kernel 的上下文切分、MXFP4 注意力投影、还是别的？AMD 只说"正在排查"。
-- **并发上升时倍数如何收敛？** 只有 Flash-Next 的 4 请求数据点（3.1× per user），且没有 8/16/32 的曲线。**这恰恰是 agent 部署最需要的形状。**
-- **megakernel 与投机解码的耦合有多紧？** GPT-OSS-120B 三个数（3.6× 无投机 / 2.3× EAGLE3 / 1.6× 同 DFlash）说明在两边都用投机时 kernel 优势缩小——**那么"megakernel + 投机"这个组合的**真实**增益是多少？需要同 drafter、同精度的三方对照。
+- **并发上升时倍数如何变化？** 只有 Flash-Next 的 4 请求数据点（3.1× per user），且没有 8/16/32 的曲线。**这恰恰是 agent 部署最需要的形状。**
+- **megakernel 与投机解码的耦合有多紧？** GPT-OSS-120B 三个数（3.6× 无投机 / 2.3× EAGLE3 / 1.6× 同 DFlash）说明相对倍数会随 drafter 与投机条件变化，但不能分解各自贡献。**那么"megakernel + 投机"这个组合的真实增益是多少？**需要同 drafter、同精度的三方对照。
 - **prefill 侧怎么办？** megakernel 路线只做 decode；长提示的 agent 负载里 prefill 占比可能很高，**端到端收益需要实测**。
 - **"用 AI coding agent 做 kernel 优化"的可复制性**：AMD 说"hundreds of optimization experiments by AMD engineers and AI coding agents"。**agent 在其中扮演什么角色、成功率如何、失败模式是什么**，公开材料未涉及——**而这恰恰是本仓库最关心的元问题**。
 - **Fleet 的 chiplet 调度何时能进入 megakernel 产品路径？** Fleet 是自动、拓扑感知的通用层；AMD 的 megakernel 是手写、模型专用的。**两者的合流点**（例如用 Fleet 的 chiplet 调度重写 Qwen megakernel）也许才是这条路线规模化的关键。

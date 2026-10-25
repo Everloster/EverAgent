@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "status": "succeeded",
+  "silent": true,
+  "interactive_browser": false,
+  "audio_playback": false,
+  "source_url": "https://podcast.latepost.com/184",
+  "artifact": {
+    "source_host": "podcasts.apple.com",
+    "source_sha256": "f0d225a6cea9c1a9d38e281413131bb29cf43958e0f0a9f5ede82e8f654b30f0",
+    "audio_size": 612912006,
+    "language": "zh",
+    "segments": 3460,
+    "service_version": "whisper.cpp-v1.9.1-sm120",
+    "transcript_size": 179590,
+    "transcript_sha256": "7a0b169f346f5a086a502229fced27355af4ed6f8fe7900ea20a2b0a9e47b152",
+    "quality": {
+      "repetition_guard": {
+        "passed": true,
+        "max_consecutive_identical": 1
+      }
+    }
+  },
+  "transfer": {
+    "mode": "eacli pull",
+    "atomic": true,
+    "local_path": "podcast-learning/reports/transcripts/2026-10-15_rss-wandian-latetalk_184-embodied-quarterly-26q3.transcript.txt",
+    "verified_sha256": true
+  },
+  "audit": {
+    "ok": true,
+    "lines": 3460,
+    "segments": 3460,
+    "size": 179590,
+    "sha256": "7a0b169f346f5a086a502229fced27355af4ed6f8fe7900ea20a2b0a9e47b152",
+    "duration_seconds": 6377,
+    "max_consecutive_identical": 1,
+    "warnings": [],
+    "errors": []
+  },
+  "runner": "eacli-podcast-remote"
+}

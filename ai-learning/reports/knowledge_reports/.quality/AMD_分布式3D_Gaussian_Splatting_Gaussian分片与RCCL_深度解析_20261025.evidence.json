@@ -1,0 +1,172 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AMD_分布式3D_Gaussian_Splatting_Gaussian分片与RCCL_深度解析_20261025.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-25",
+  "generator": {
+    "model": "minimax-m3.1-flash",
+    "harness": "eacli",
+    "run_id": "generator-amd-gsplat-m31-20261025",
+    "explicit_model_override": true,
+    "override_reason": "用户明确指定：Razer 优先使用 MiniMax M3.1 Flash，额度耗尽后才切 GLM-5.3。"
+  },
+  "task": {
+    "summary": "深度解析AMD/ROCm gsplat多GPU训练的内存模型、Gaussian/相机混合并行、RCCL通信、扩展口径与Grendel边界。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "实际读取AMD官方博客、ROCm/gsplat README与Grendel论文摘要。"
+      },
+      {
+        "id": "R02",
+        "text": "解释3DGS参数、Adam、梯度和tile intersection buffer的内存墙。"
+      },
+      {
+        "id": "R03",
+        "text": "重构Gaussian分片、相机汇集、all_to_all、camera并行和梯度返回的一次完整迭代。"
+      },
+      {
+        "id": "R04",
+        "text": "逐项核对四卡trace的五次collective、17.70ms预算、吞吐和冷启动。"
+      },
+      {
+        "id": "R05",
+        "text": "解释1至8卡结果中的容量、吞吐、固定步数和steps_scaler口径。"
+      },
+      {
+        "id": "R06",
+        "text": "区分AMD gsplat与Grendel，覆盖已知功能限制、反方、Limitations和追问。"
+      },
+      {
+        "id": "R07",
+        "text": "由Razer MiniMax M3.1 Flash生成，本机完成独立review、质量门和索引。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "official",
+      "title": "AMD ROCm — Scaling 3D Gaussian Splatting with Distributed Compute",
+      "locator": "https://rocm.blogs.amd.com/software-tools-optimization/scaling-gsplat/README.html",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S02",
+      "kind": "primary",
+      "title": "ROCm/gsplat README and implementation repository",
+      "locator": "https://github.com/ROCm/gsplat",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S03",
+      "kind": "primary",
+      "title": "On Scaling Up 3D Gaussian Splatting Training (Grendel)",
+      "locator": "https://arxiv.org/abs/2406.18533",
+      "accessed_on": "2026-10-25"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "默认SH degree 3下，每个Gaussian的参数与Adam状态合计约708字节；MI300X的271M与八卡2.17B是排除梯度和tile-intersection buffer的理论线。",
+      "report_anchor": "一、3DGS为什么先撞内存墙",
+      "support": "derived",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "由官方博客的参数数目、float32和Adam状态按字节复算，并保留其排除项。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "普通DDP复制完整场景，只扩吞吐不扩模型容量；gsplat在参数和优化器创建前对Gaussian分片。",
+      "report_anchor": "二、为什么普通DDP解决不了",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "博客与公开实现说明分片和可选DDP辅助模块。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "一次迭代由Gaussian-parallel投影、按相机all_to_all、camera-parallel rasterization和梯度反向交换构成，场景参数不做all_reduce。",
+      "report_anchor": "三、Gaussian分片到camera并行的一次完整迭代",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "AMD博客逐阶段代码与通信说明。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "厂商四卡trace在每个稳态迭代中记录两次all_gather和三次all_to_all；34.7秒capture中的唯一all-reduce位于训练结束后的评价/关闭阶段。",
+      "report_anchor": "四、4 GPU trace：五次 collective 与零训练期 all-reduce",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "博客trace表与API计数。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "四卡稳态为17.70ms/step和226 images/s，其中SSIM 33%、RCCL 9%、GPU无任务排队29%，因此这次小场景的首要问题不是通信。",
+      "report_anchor": "五、17.70 毫秒真正花在哪里",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "博客iteration budget与文字分析。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "固定max_steps时，8卡16分钟对单卡20分钟处理约8倍图像，吞吐约10倍；若要同样本量，应将steps_scaler设为1/world_size。",
+      "report_anchor": "六、1到8 GPU扩展数字该怎样读",
+      "support": "derived",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "由官方运行时间、每rank每step一视图和steps_scaler定义复算。",
+      "critical": true
+    },
+    {
+      "id": "C07",
+      "claim": "AMD gsplat的camera粒度混合并行不能等同于Grendel的稀疏all-to-all和动态负载均衡；Grendel的40.4M/16GPU/27.28与11.2M/单卡/26.28是另一套论文结果。",
+      "report_anchor": "八、与Grendel论文的关系",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S03"
+      ],
+      "evidence": "AMD博客实现描述与Grendel摘要。",
+      "critical": true
+    },
+    {
+      "id": "C08",
+      "claim": "[推测] 分布式评测应把容量、质量、吞吐、墙钟、冷启动、功能覆盖和rank负载分别报告。",
+      "report_anchor": "十、对EverAgent与分布式评测的启示",
+      "support": "inference",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "由三份来源的口径差异与限制综合。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [],
+  "limitations": [
+    "AMD博客和ROCm README均为实现方材料，不是独立benchmark。",
+    "四卡trace是小场景、dense exchange和固定软件配置，不能外推为所有Gaussian规模。",
+    "271M和2.17B只计参数与Adam，真实容量受梯度、相交列表和其它buffer限制。",
+    "AMD gsplat与Grendel没有同硬件、同数据、同高斯预算和同训练步数受控对照。",
+    "Grendel本轮只读取摘要页，未核对完整实验与消融。",
+    "报告没有在本地MI300X集群复现。"
+  ]
+}

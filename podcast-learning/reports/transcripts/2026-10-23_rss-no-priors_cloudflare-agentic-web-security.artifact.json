@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "source_url": "https://podcasts.apple.com/us/podcast/democratizing-security-for-the-agentic-web-with/id1668002688?i=1000797759714",
+  "source_kind": "official_apple_podcast",
+  "pipeline": "eacli podcast remote silent worker; managed eacli invoke fallback for installed allowlist drift",
+  "service_version": "whisper.cpp-v1.9.1-sm120",
+  "model": "ggml-large-v3.bin",
+  "language": "en",
+  "audio_size": 99395809,
+  "transcript_size": 59867,
+  "transcript_sha256": "c543e6ac4761ad7990340527aca80f725ac51af66c996114766f4089c4beb4f7",
+  "segments": 983,
+  "duration_seconds": 2481.39,
+  "max_consecutive_identical": 1,
+  "interactive_browser": false,
+  "audio_playback": false,
+  "audit": {
+    "warnings": 0,
+    "errors": 0
+  }
+}

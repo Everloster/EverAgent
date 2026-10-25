@@ -1,0 +1,501 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-24_rss-cognitive-revolution_ai-am-clean-neurons-gpu-credit.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-25",
+  "generator": {
+    "model": "minimax-m3.1-flash",
+    "harness": "eacli",
+    "run_id": "generator-ai-am-m31-remote-20261025",
+    "explicit_model_override": true,
+    "override_reason": "用户指定远端静默 worker 优先使用 MiniMax M3.1 Flash；完整转写后的分段精编由该模型生成，本机 GPT-6/Codex 依据逐字稿与一手材料完成证据核验、结构化编辑和最终验收。未出现额度耗尽或 rate limit 不可用证据，故未切换 GLM-5.3。"
+  },
+  "task": {
+    "summary": "完整学习并归档 The Cognitive Revolution 88 分钟 AI:AM 周报，覆盖 RSI、机制可解释性、监控探针、认知核心、网络安全、GPU 信贷、半导体供应链、HelpPeer 与联邦 AI 法案；用一手材料核验关键数字，区分节目事实、厂商自述、投资论点、预测与报告推断，并提炼对 EverAgent / Harness 的可迁移启示。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "实际读取完整转写、结构化精编、官方 shownotes 与执行收据，报告可脱离音频独立阅读。"
+      },
+      {
+        "id": "R02",
+        "text": "按官方章节建立完整来源覆盖表，广告可说明省略，所有核心章节必须进入正文。"
+      },
+      {
+        "id": "R03",
+        "text": "重构 RSI 与 2027 时间线的论证，明确指标、条件与预测属性。"
+      },
+      {
+        "id": "R04",
+        "text": "核验 Goodfire clean-neuron 比例、阈值边界及 probe detector 的硬件/编译条件，避免写成模型天然知道被监控。"
+      },
+      {
+        "id": "R05",
+        "text": "解释 cognitive core、Black October、GPU credit crunch、atoms over bits、HelpPeer 与联邦法案的主要分歧和反方。"
+      },
+      {
+        "id": "R06",
+        "text": "对 SF Compute 公司数字、Cambrian 投资论点和主持人利益披露作就地标注。"
+      },
+      {
+        "id": "R07",
+        "text": "提炼移动瓶颈模型及对 Context / Harness / Agent 权限设计的可执行启示，推断显式标记。"
+      },
+      {
+        "id": "R08",
+        "text": "写明转写、来源、复现、利益关系、时间线与外推限制，并保留思考与追问三问。"
+      },
+      {
+        "id": "R09",
+        "text": "完成 evidence、独立 review、播客审计、索引与报告质量门后才能标记完成。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "official",
+      "title": "The Cognitive Revolution 官方节目页与 AI-generated show notes 声明",
+      "locator": "https://www.cognitiverevolution.ai/ai-am-highlights-clean-neurons-black-october-the-gpu-credit-crunch-and-buying-the-supply-chain",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S02",
+      "kind": "local",
+      "title": "完整英文转写（1946 段，5315.88 秒）",
+      "locator": "podcast-learning/reports/transcripts/2026-10-24_rss-cognitive-revolution_ai-am-clean-neurons-gpu-credit.transcript.txt",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S03",
+      "kind": "local",
+      "title": "MiniMax M3.1 Flash 分段生成并经本机核验的结构化精编",
+      "locator": "podcast-learning/reports/transcripts/2026-10-24_rss-cognitive-revolution_ai-am-clean-neurons-gpu-credit.polished.txt",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S04",
+      "kind": "local",
+      "title": "官方简介、章节、披露与补读材料清单",
+      "locator": "podcast-learning/reports/transcripts/2026-10-24_rss-cognitive-revolution_ai-am-clean-neurons-gpu-credit.shownotes.md",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S05",
+      "kind": "execution",
+      "title": "eacli podcast 远端转写执行收据与 SHA-256 审计",
+      "locator": "podcast-learning/reports/transcripts/2026-10-24_rss-cognitive-revolution_ai-am-clean-neurons-gpu-credit.artifact.json",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S06",
+      "kind": "primary",
+      "title": "Nick Cammarata / Goodfire — Neural Networks Are Already Clean",
+      "locator": "https://already-clean.goodfire.com/",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S07",
+      "kind": "primary",
+      "title": "Sauers — watching-probe-detector 模型卡",
+      "locator": "https://huggingface.co/Sauers/watching-probe-detector",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S08",
+      "kind": "official",
+      "title": "San Francisco Compute sells $245M worth of compute",
+      "locator": "https://sfcompute.com/news/tcv-q3-2026",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S09",
+      "kind": "primary",
+      "title": "Lonis Hamaili — Cambrian thesis",
+      "locator": "https://loniss.com/cambrian-thesis?v=3",
+      "accessed_on": "2026-10-25"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "节目支持 AI 已在部分研发环节形成正反馈，但人均 Token、代码量、实验数和 CUDA 优化并不足以证明递归自我改进已跨越临界点；2027 与发布周期压缩属于 Zvi 的条件性预测。",
+      "report_anchor": "主线一",
+      "support": "derived",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "evidence": "04:58–09:49 的正反论证同时保留 1.6 次实验、公司指标、硬件优化不等于 RSI 及时间线预测。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "Goodfire 对 Qwen3-32B 的约 90% 单主要工作、7% 两个相关工作、2%–4% 未理解是初步且阈值敏感的作者估计，不是精确的网络洁净度定律。",
+      "report_anchor": "主线二",
+      "support": "direct",
+      "source_ids": [
+        "S06"
+      ],
+      "evidence": "原文明确给出三组比例，并说明弱激活阈值、深度、子电路密度与“一件事”的定义会改变数字。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "watching-probe-detector 在指定 L40S 条件为 128/128；其它 GPU 为 52%–77%，H100/A100 方向反转，信号来自 torch.compile 的 kernel 切分与舍入差异。",
+      "report_anchor": "模型“知道自己被监控”吗？",
+      "support": "direct",
+      "source_ids": [
+        "S07"
+      ],
+      "evidence": "模型卡 Results 与 Running it 逐项列出硬件、BF16、fullgraph、probe、原始模型 64/128、跨 GPU 泛化和诊断实验。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "Zvi 反对把智能简化为固定 cognitive core 加外接事实库，因为大量知识、模式和文化框架参与选择问题与形成推理；纯核心还把价值选择推给外部上下文。",
+      "report_anchor": "主线三",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "28:03–35:35 讨论明确区分少量实现代码与知识参与推理，并以“不要偷窃”说明外置价值的可替换性。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "Black October 段落最可靠的分析增量是区分可偿付性、记录完整性、身份与恢复风险，而非证明节目提及的具体安全事故。",
+      "report_anchor": "主线四",
+      "support": "derived",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "35:35–41:52 以 FDIC、账本损坏、CA、密钥和身份终局作场景推演；报告明确未逐案核验。",
+      "critical": false
+    },
+    {
+      "id": "C06",
+      "claim": "Evan 将 GPU 建设瓶颈解释为抵押物难估值导致的信用门槛；节目追问确认 SF Compute 今天尚不能显著减少 1000-GPU 初创公司的融资需求。",
+      "report_anchor": "主线五",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "41:52–46:22 明确三至五年合同、投资级客户、押金/预付要求，以及“today roughly the same”“several years”。",
+      "critical": true
+    },
+    {
+      "id": "C07",
+      "claim": "SF Compute 官方披露 $245M、两个 B300 集群、两份 36 个月 × $122.5M 合同，并自述客户平均通过转售回收 25% 算力支出。",
+      "report_anchor": "主线五",
+      "support": "direct",
+      "source_ids": [
+        "S08"
+      ],
+      "evidence": "公司 2026-09-10 新闻稿的合同与 resale 段落；正文明确标作公司自述。",
+      "critical": true
+    },
+    {
+      "id": "C08",
+      "claim": "Cambrian 的 atoms-over-bits 是有条件的投资论点：只有 AI 需求持续快于供给，高固定成本实体企业的经营杠杆才会转为优势；主持人已承诺投资。",
+      "report_anchor": "主线六",
+      "support": "derived",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S04",
+        "S09"
+      ],
+      "evidence": "52:02 后的估值、毛利、利用率和反方论证，与官方披露的主持人利益关系及 Cambrian thesis 相互对照。",
+      "critical": true
+    },
+    {
+      "id": "C09",
+      "claim": "节目区分了芯片设计与大规模制造：设计更易数字化，工厂、设备、良率和工程师默会知识迁移更慢，因此 AI 终局突破与过渡期供应链价值可以同时成立。",
+      "report_anchor": "主线六",
+      "support": "derived",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S09"
+      ],
+      "evidence": "58:59–01:03:53 以 200 万平方英尺 fab、缺少手册/RL 环境和工程师三十年经验说明制造侧约束。",
+      "critical": true
+    },
+    {
+      "id": "C10",
+      "claim": "HelpPeer 的操作原则是高权限低自主或低权限高自主，同一 Agent 不同时拥有两者；外发复核还会受到连续误报造成的审批疲劳。",
+      "report_anchor": "主线八",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "01:10:31–01:14:23 明确 laptop / Mac mini 两种模式、“no agent gets both”及约五次误报后的机械放行风险。",
+      "critical": true
+    },
+    {
+      "id": "C11",
+      "claim": "联邦法案争论围绕州法优先权的交换价值、立即失效与延迟实施造成的监管空窗、以及联邦应急权被过度限制的矛盾。",
+      "report_anchor": "主线九",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "01:14:23–01:25:59 的 Prakash 善意论证与 Zvi 三层反驳；正文声明未取得草案全文。",
+      "critical": true
+    },
+    {
+      "id": "C12",
+      "claim": "[推测] 移动瓶颈模型把认知、信用、物理供给、权限、组织采用与政治授权视为不同阶段的边际约束，不宣称某一瓶颈永久主导。",
+      "report_anchor": "综合判断",
+      "support": "inference",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S06",
+        "S07",
+        "S08",
+        "S09"
+      ],
+      "evidence": "由九条节目主线和四份一手材料的约束条件综合推导，并在表中逐层限定。",
+      "critical": true
+    },
+    {
+      "id": "C13",
+      "claim": "[推测] 对 Harness 的可迁移结论包括：评估环境属于模型输入；模型知识、检索事实和授权规则职责不同；权限与自主时间联合预算；审批门需评估疲劳。",
+      "report_anchor": "对 EverAgent / Harness 的可迁移启示",
+      "support": "inference",
+      "source_ids": [
+        "S02",
+        "S06",
+        "S07"
+      ],
+      "evidence": "由 probe 环境指纹、cognitive core 论证和 HelpPeer 权限/误报案例分别推导，正文均以适用条件限制。",
+      "critical": true
+    },
+    {
+      "id": "C14",
+      "claim": "Zvi 对 Anthropic 的结论是双面的：安全文化相对更强且愿意牺牲，但仍作为普通公司参与竞赛并在政策上多次未达到自身理想；“最负责”只是相对评价。",
+      "report_anchor": "主线九",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "01:23:44–01:25:43 先肯定更强安全文化、真实善意和牺牲，再批评扩张算力/芯片/电力及政策未践行理想，最后以 reality does not have a curve 收束。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "SC01",
+      "title": "00:00 Weekly episode preview",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "内容地图"
+    },
+    {
+      "id": "SC02",
+      "title": "04:58 Recursive self improvement (Part 1)",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线一"
+    },
+    {
+      "id": "SC03",
+      "title": "09:54 Sponsors: OutSystems | Parallel",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "S02",
+        "S04"
+      ],
+      "omission_reason": "商业广告，不影响节目论证。"
+    },
+    {
+      "id": "SC04",
+      "title": "13:06 Recursive self improvement (Part 2)",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线一"
+    },
+    {
+      "id": "SC05",
+      "title": "13:06 Clean neural networks (Part 1)",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S04",
+        "S06"
+      ],
+      "report_anchor": "主线二"
+    },
+    {
+      "id": "SC06",
+      "title": "26:25 Sponsor: Tasklet",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "S02",
+        "S04"
+      ],
+      "omission_reason": "商业广告；仅与 Agent 产品场景相关，不作为本报告事实源。"
+    },
+    {
+      "id": "SC07",
+      "title": "28:03 Clean neural networks (Part 2)",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S04",
+        "S06",
+        "S07"
+      ],
+      "report_anchor": "主线二"
+    },
+    {
+      "id": "SC08",
+      "title": "28:03 The cognitive core",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线三"
+    },
+    {
+      "id": "SC09",
+      "title": "35:35 Black October security",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线四"
+    },
+    {
+      "id": "SC10",
+      "title": "41:52 The GPU credit crunch",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S04",
+        "S08"
+      ],
+      "report_anchor": "主线五"
+    },
+    {
+      "id": "SC11",
+      "title": "51:58 Atoms over bits",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S04",
+        "S09"
+      ],
+      "report_anchor": "主线六"
+    },
+    {
+      "id": "SC12",
+      "title": "01:03:53 Rethinking industry bottlenecks",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线七"
+    },
+    {
+      "id": "SC13",
+      "title": "01:10:31 Introducing HelpPeer agents",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线八"
+    },
+    {
+      "id": "SC14",
+      "title": "01:14:23 Leaked federal bill",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线九"
+    },
+    {
+      "id": "SC15",
+      "title": "01:25:59 Episode Outro",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线九"
+    },
+    {
+      "id": "SC16",
+      "title": "01:27:49 Outro",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "S02",
+        "S04"
+      ],
+      "omission_reason": "节目网络、制作方与分享订阅口播，无研究内容。"
+    }
+  ],
+  "limitations": [
+    "完整英文转写通过时间戳、重复率和 SHA-256 审计，但未逐句人工回听；少量人名与专名依据官方页面和一手材料校正。",
+    "官方 shownotes 自称 AI 生成，只作章节导航，不能替代完整转写。",
+    "Goodfire 比例为作者初步、阈值敏感审计；节目提及的 backprop-free 社区实验和 Colorado neuron 未取得完整实验记录。",
+    "probe detector 的结果高度依赖 L40S、BF16、torch.compile graph 和特定 probe，跨 GPU 泛化弱且可反向。",
+    "SF Compute 的合同与 25% 回收率均来自公司披露，缺独立审计、违约率与压力期流动性数据。",
+    "Cambrian 是投资论点，Nathan 已承诺投资；节目估值倍数和供给预测未逐项复算。",
+    "Black October、发射份额、半导体合作、泄露法案与 Fable 处置等口播未逐项读取原始文件。",
+    "RSI、2027、超级智能、行业合并和监管后果属于预测，报告不为时间线背书。"
+  ]
+}

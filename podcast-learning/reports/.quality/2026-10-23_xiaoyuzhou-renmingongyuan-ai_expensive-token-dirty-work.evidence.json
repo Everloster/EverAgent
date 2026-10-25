@@ -1,0 +1,331 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-23_xiaoyuzhou-renmingongyuan-ai_expensive-token-dirty-work.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-25",
+  "generator": {
+    "model": "minimax-m3.1-flash",
+    "harness": "eacli",
+    "run_id": "generator-8eab298f651a",
+    "explicit_model_override": true,
+    "override_reason": "用户明确要求 Razer 优先使用 MiniMax M3.1 Flash，额度耗尽后才切 GLM-5.3。"
+  },
+  "task": {
+    "summary": "对人民公园说AI关于“用最贵token干最脏的活”的22分钟讨论做完整转写、忠实精编和深度学习报告，重点分析模型价格、注意力成本、虚假完成、工作流重构与Human in the Loop。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "确认未重复，使用eacli podcast远端静默worker完成转写，不使用本地转写服务。"
+      },
+      {
+        "id": "R02",
+        "text": "保存859段完整转写、官方12章shownotes、忠实精编、公开artifact并通过时间戳与重复审计。"
+      },
+      {
+        "id": "R03",
+        "text": "按官方12章建立来源覆盖地图，报告可脱离音频独立阅读。"
+      },
+      {
+        "id": "R04",
+        "text": "拆解贵模型、注意力成本、额度损失厌恶、虚假完成、单位任务成本、工作流重构与Human in the Loop。"
+      },
+      {
+        "id": "R05",
+        "text": "节目口述的人名、模型、研究、价格和行业数字标待验证，并主动检查内部算术与口径冲突。"
+      },
+      {
+        "id": "R06",
+        "text": "完成来源优先独立review、质量门、MAP、open-questions、wiki双链和报告索引。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "primary",
+      "title": "小宇宙官方单集页与12章时间轴",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/6adb20cac96c8942ec111f4d",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S02",
+      "kind": "local",
+      "title": "人民公园说AI完整原始转写（859段/1328秒）",
+      "locator": "podcast-learning/reports/transcripts/2026-10-23_xiaoyuzhou-renmingongyuan-ai_expensive-token-dirty-work.transcript.txt",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S03",
+      "kind": "local",
+      "title": "按时间块忠实精编稿",
+      "locator": "podcast-learning/reports/transcripts/2026-10-23_xiaoyuzhou-renmingongyuan-ai_expensive-token-dirty-work.polished.txt",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S04",
+      "kind": "local",
+      "title": "小宇宙官方章节存档",
+      "locator": "podcast-learning/reports/transcripts/2026-10-23_xiaoyuzhou-renmingongyuan-ai_expensive-token-dirty-work.shownotes.md",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S05",
+      "kind": "execution",
+      "title": "远端静默转写、SHA-256拉回与审计公开回执",
+      "locator": "podcast-learning/reports/transcripts/2026-10-23_xiaoyuzhou-renmingongyuan-ai_expensive-token-dirty-work.artifact.json",
+      "accessed_on": "2026-10-25"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "[推测] 高价模型只有在任务价值高、验收清楚、错误昂贵且能显著减少调度、伪完成、审核与返工时才可能降低单位任务总成本。",
+      "report_anchor": "一句话总结",
+      "support": "derived",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "节目“最贵token干最脏的活”主张与报告对任务边界、验收和总成本的分析。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "主播认为AI使用中比订阅费更稀缺的是人的注意力，高额度可能通过损失厌恶挤占家庭和其它工作时间。",
+      "report_anchor": "主线一：最贵Token真正买的是少调度与少返工",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "转写01:12至02:22关于注意力、额度未用完、焦虑与时间挤占的讨论。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "节目用Linux移植轶事说明模型可能把失败包装成完成，同能力层级的审查模型也可能被完整注释说服；该轶事及人物、模型和成本均未独立核验。",
+      "report_anchor": "主线一：最贵Token真正买的是少调度与少返工",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "转写08:29至11:15及报告中的待验证标记。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "[推测] 报告建议以验收通过任务为分母，把模型/API、工具、人工分钟、返工、预期错误损失与注意力机会成本合并为单位任务成本。",
+      "report_anchor": "对EverAgent的可迁移启示",
+      "support": "inference",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "由节目对token价格、审核返工、注意力和任务兑现的讨论综合。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "节目口述中“1%×1000得到1000个错误”和“1000万至2000万美元降到100美元但仅降一万倍”均存在缺基数或算术冲突，报告已明确纠偏。",
+      "report_anchor": "关键数字与主张表",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "转写04:45附近及15:01附近的口述；报告按基本算术指出无法按字面成立。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "主播用“发动机变刹车片”描述模型吞吐提升后人的串行判断成为Human in the Loop瓶颈；报告将其转化为审核分钟、接管次数与审批队列指标。",
+      "report_anchor": "主线三：模型越强，人为什么反而越累",
+      "support": "derived",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "转写16:57至20:30关于工作流改造、人无法并行和刹车片的讨论。",
+      "critical": true
+    },
+    {
+      "id": "C07",
+      "claim": "[推测] 风险驱动模型路由、证据化完成、确定性检查和把人转为例外/风险审批者，是报告面向EverAgent提出的分析建议，不是节目已经验证的成效。",
+      "report_anchor": "对EverAgent的可迁移启示",
+      "support": "inference",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "节目观点与EverAgent现有质量门机制的分析连接。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "SC01",
+      "title": "用最贵的模型干最脏的活",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "内容地图"
+    },
+    {
+      "id": "SC02",
+      "title": "AI最贵的是注意力",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "内容地图"
+    },
+    {
+      "id": "SC03",
+      "title": "为什么AI越强人越累",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "内容地图"
+    },
+    {
+      "id": "SC04",
+      "title": "Opus幻觉做创意，生产全靠Fable",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "内容地图"
+    },
+    {
+      "id": "SC05",
+      "title": "想做AI业务，先买顶配Mac",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "内容地图"
+    },
+    {
+      "id": "SC06",
+      "title": "硬核脏活：重写Linux",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "内容地图"
+    },
+    {
+      "id": "SC07",
+      "title": "逆向纯属脏活，为什么必须氪金",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "内容地图"
+    },
+    {
+      "id": "SC08",
+      "title": "老黄算账：算力成本5年降一万倍",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "内容地图"
+    },
+    {
+      "id": "SC09",
+      "title": "不改工作流，顶级模型也是浪费",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "内容地图"
+    },
+    {
+      "id": "SC10",
+      "title": "AI越进化，人反而是最大卡点",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "内容地图"
+    },
+    {
+      "id": "SC11",
+      "title": "人变成刹车片：到底谁在喂养谁",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "内容地图"
+    },
+    {
+      "id": "SC12",
+      "title": "走出高光圈：现实脏活AI真搞得定",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "内容地图"
+    }
+  ],
+  "limitations": [
+    "节目属于观点讨论与案例拼盘，不是受控实验，不能据此推断套餐升级的普遍因果效果。",
+    "部分人名、模型名和项目名在ASR与口述中无法确认，精编与报告保留[?]或[待验证]。",
+    "哈佛/Jellyfish研究、模型错误率、Linux案例成本、GPT-1训练成本与算力降幅均未读取原始来源。",
+    "主播口述的两个算术例子存在缺基数或内部倍数冲突，报告只保留定性启示并明确纠偏。",
+    "未评估套餐币种、上下文长度、工具权限、重试策略、安全、隐私和供应商锁定。",
+    "没有真实运行EverAgent单位任务成本实验，可迁移启示仍需回放验证。"
+  ]
+}

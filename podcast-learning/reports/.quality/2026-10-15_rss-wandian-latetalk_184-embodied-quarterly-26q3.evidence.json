@@ -1,0 +1,504 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-15_rss-wandian-latetalk_184-embodied-quarterly-26q3.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-25",
+  "generator": {
+    "model": "minimax-m3.1-flash",
+    "harness": "eacli",
+    "run_id": "generator-latetalk184-m31-20261025",
+    "explicit_model_override": true,
+    "override_reason": "用户明确指定：Razer 优先使用 MiniMax M3.1 Flash，额度耗尽后才切 GLM-5.3。"
+  },
+  "task": {
+    "summary": "在Razer上完整转写晚点聊184，基于节目、官方shownotes和机器人领域一手资料，形成Astra冲击、具身分工、ICL、World Labs、宇树与FCC的standalone深度报告。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "确认未重复处理，使用eacli podcast远端静默worker完整转写并按SHA-256原子拉回。"
+      },
+      {
+        "id": "R02",
+        "text": "运行transcript审计并保存不含设备名、任务ID、远端路径或凭据的公开回执。"
+      },
+      {
+        "id": "R03",
+        "text": "依据完整转写与官方shownotes忠实精编，保留机制、数字、分歧、反例、限定语和时间锚点。"
+      },
+      {
+        "id": "R04",
+        "text": "形成important/deep/standalone报告，覆盖21个shownotes章节并深入解释Astra三角色、VLA/WAM分工、护城河迁移、ICL和产业事件。"
+      },
+      {
+        "id": "R05",
+        "text": "用RoboDojo论文及AMD、GEN-1.5、S1、Gemini官方材料核验关键结论，区分论文结果、厂商自报、节目口径和报告推断。"
+      },
+      {
+        "id": "R06",
+        "text": "明确RoboDojo绝对成功率、真实部署、sim-to-real、速度、成本和容错边界；FCC与宇树未核验数字不得升级为事实。"
+      },
+      {
+        "id": "R07",
+        "text": "完成来源优先独立review、质量门、节目索引、MAP、open-questions与全局报告索引更新。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "primary",
+      "title": "晚点聊 184 官方节目页与 shownotes",
+      "locator": "https://podcast.latepost.com/184",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S02",
+      "kind": "primary",
+      "title": "晚点聊 184 完整原始转写（3460段 / 6377秒）",
+      "locator": "podcast-learning/reports/transcripts/2026-10-15_rss-wandian-latetalk_184-embodied-quarterly-26q3.transcript.txt",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S03",
+      "kind": "local",
+      "title": "晚点聊 184 结构化精编稿（约保留34.3%）",
+      "locator": "podcast-learning/reports/transcripts/2026-10-15_rss-wandian-latetalk_184-embodied-quarterly-26q3.polished.txt",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S04",
+      "kind": "local",
+      "title": "晚点聊 184 官方 shownotes 存档",
+      "locator": "podcast-learning/reports/transcripts/2026-10-15_rss-wandian-latetalk_184-embodied-quarterly-26q3.shownotes.md",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S05",
+      "kind": "execution",
+      "title": "静默转写、传输与审计公开回执",
+      "locator": "podcast-learning/reports/transcripts/2026-10-15_rss-wandian-latetalk_184-embodied-quarterly-26q3.artifact.json",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S06",
+      "kind": "primary",
+      "title": "An Unexpected Robot Policy: Early Evaluations of GPT-6 Astra on RoboDojo and Beyond",
+      "locator": "https://arxiv.org/html/2609.24170v1",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S07",
+      "kind": "official",
+      "title": "AMD to Acquire World Labs to Advance the Future of AI Compute",
+      "locator": "https://newsroom.amd.com/news/amd-acquire-world-labs",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S08",
+      "kind": "official",
+      "title": "GEN-1.5: Embodied Foundation Models are One-Shot Learners",
+      "locator": "https://generalistai.com/blog/gen-1.5",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S09",
+      "kind": "official",
+      "title": "Introducing S1: In-Context Learning for Robotics",
+      "locator": "https://www.skild.ai/blogs/s1",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S10",
+      "kind": "official",
+      "title": "Gemini Robotics 2 brings whole body intelligence to robots",
+      "locator": "https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots",
+      "accessed_on": "2026-10-25"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "Astra 的已展示增量主要是把通用模型推进到末端位姿与部分策略层，而不是替代高频控制、触觉力控、本体与安全体系。",
+      "report_anchor": "一、Astra 跨过的不是“所有机器人能力”，而是一条具体抽象边界",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S06"
+      ],
+      "evidence": "【00:04:51】【00:08:20】【00:09:10】；RoboDojo 论文协议与结果。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "RoboDojo 论文覆盖42项任务、2100次试验；Astra平均成功率22.48%、归一化Score 28.97，体现相对优势但绝对水平仍不足生产部署。",
+      "report_anchor": "一、Astra 跨过的不是“所有机器人能力”，而是一条具体抽象边界",
+      "support": "direct",
+      "source_ids": [
+        "S06"
+      ],
+      "evidence": "arXiv 2609.24170v1 的实验设计和结果表。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "Astra 可被组织为直接策略、监督纠偏和具身研究员三种角色；越靠近自主研发闭环，潜在价值越大，证据越弱。",
+      "report_anchor": "二、Astra 的三种角色：从执行者，到监督者，再到研究员",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "【00:17:32】【00:19:11】【00:20:48】。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "AMD 已签署约82亿美元全股票收购 World Labs 的最终协议，但交易仍待监管审批及惯常交割条件。",
+      "report_anchor": "六、AMD 收购 World Labs：买的是空间智能基础设施和实验室期权",
+      "support": "direct",
+      "source_ids": [
+        "S07"
+      ],
+      "evidence": "AMD 2026-09-28 官方公告。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "GEN-1.5 官方主张3–12秒示范可做无需梯度更新的ICL，同时承认任务仍偏简单和短程；S1的单视频、无后训练与约10分钟展示属于厂商自报。",
+      "report_anchor": "八、GEN-1.5 与 S1：ICL 把适配单位从“参数更新”变成“运行时上下文”",
+      "support": "direct",
+      "source_ids": [
+        "S08",
+        "S09"
+      ],
+      "evidence": "Generalist 与 Skild 官方发布页。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "[推测] 若基础策略能力逐步商品化，具身创业公司的价值会更多迁向接口、实时执行、独占失败数据、本体制造、场景闭环与客户交付。",
+      "report_anchor": "五、创业公司的护城河必须迁移，但市场未必缩小",
+      "support": "inference",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "基于【00:39:28】【00:40:29】【00:42:23】综合。",
+      "critical": false
+    },
+    {
+      "id": "C07",
+      "claim": "FCC 的2公斤、65%、旧型号继续销售等细节，以及宇树估值和财务数字，本轮没有一手文本支持，只能保留为节目口径和待核验事项。",
+      "report_anchor": "十、FCC 限制、供应链与 Q4 展望：政策变量不能替代一手核验",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "evidence": "【01:29:26—01:35:48】；本轮公开检索未取得对应正式规则和公司原件。",
+      "critical": true
+    },
+    {
+      "id": "C08",
+      "claim": "[推测] EverAgent 可借鉴通用模型、专用执行、监督与反馈闭环的分层设计，但软件 harness 不能被夸大为物理 RSI。",
+      "report_anchor": "对 EverAgent / Agent 系统的可迁移启示",
+      "support": "inference",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "由节目三角色、分层部署和DYNA完整工作流映射得出。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "SC01",
+      "title": "Q3五项进展：Astra、World Labs、宇树、ICL、FCC",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "一句话总结"
+    },
+    {
+      "id": "SC02",
+      "title": "Astra从规划层走向机器人策略",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "一、Astra 跨过的不是“所有机器人能力”，而是一条具体抽象边界"
+    },
+    {
+      "id": "SC03",
+      "title": "IROS“降临派”与“拯救派”",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "三、通用模型会不会吃掉 Robotics：一个必须加条件的答案"
+    },
+    {
+      "id": "SC04",
+      "title": "Astra的三种用法",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "二、Astra 的三种角色：从执行者，到监督者，再到研究员"
+    },
+    {
+      "id": "SC05",
+      "title": "Astra能力来源与特殊数据",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "四、Scaling 继续有效，但瓶颈从模型架构迁向数据管线"
+    },
+    {
+      "id": "SC06",
+      "title": "中国通用模型公司进入Robotics",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "五、创业公司的护城河必须迁移，但市场未必缩小"
+    },
+    {
+      "id": "SC07",
+      "title": "接口、闭环、硬件与垂直场景",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "五、创业公司的护城河必须迁移，但市场未必缩小"
+    },
+    {
+      "id": "SC08",
+      "title": "World Labs被收购及定价",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "六、AMD 收购 World Labs：买的是空间智能基础设施和实验室期权"
+    },
+    {
+      "id": "SC09",
+      "title": "SceniX、Atlas与收购前布局",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "六、AMD 收购 World Labs：买的是空间智能基础设施和实验室期权"
+    },
+    {
+      "id": "SC10",
+      "title": "Frontier Lab与机器人从业者的认知断层",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "四、Scaling 继续有效，但瓶颈从模型架构迁向数据管线"
+    },
+    {
+      "id": "SC11",
+      "title": "宇树IPO与估值锚变化",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "七、宇树与本体价值：模型可以商品化，可靠的身体不一定"
+    },
+    {
+      "id": "SC12",
+      "title": "Astra之后宇树本体价值增强",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "七、宇树与本体价值：模型可以商品化，可靠的身体不一定"
+    },
+    {
+      "id": "SC13",
+      "title": "具身IPO暂缓与市场错位",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "七、宇树与本体价值：模型可以商品化，可靠的身体不一定"
+    },
+    {
+      "id": "SC14",
+      "title": "ICL如何降低部署成本",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "八、GEN-1.5 与 S1：ICL 把适配单位从“参数更新”变成“运行时上下文”"
+    },
+    {
+      "id": "SC15",
+      "title": "GEN-1.5与S1的实现差异",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "八、GEN-1.5 与 S1：ICL 把适配单位从“参数更新”变成“运行时上下文”"
+    },
+    {
+      "id": "SC16",
+      "title": "DYNA 2.1与Gemini Robotics 2",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "九、DYNA 2.1、Gemini Robotics 2 与 Google：系统工程和组织能力同样重要"
+    },
+    {
+      "id": "SC17",
+      "title": "Google、Optimus与经验包袱",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "九、DYNA 2.1、Gemini Robotics 2 与 Google：系统工程和组织能力同样重要"
+    },
+    {
+      "id": "SC18",
+      "title": "FCC限制的设备范围",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "十、FCC 限制、供应链与 Q4 展望：政策变量不能替代一手核验"
+    },
+    {
+      "id": "SC19",
+      "title": "旧型号销售与产能出海",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "十、FCC 限制、供应链与 Q4 展望：政策变量不能替代一手核验"
+    },
+    {
+      "id": "SC20",
+      "title": "Q4：Physical RSI、模型入场与组织重塑",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "十、FCC 限制、供应链与 Q4 展望：政策变量不能替代一手核验"
+    },
+    {
+      "id": "SC21",
+      "title": "连点成线、产业分工与后续观察",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "我的思考与延伸"
+    }
+  ],
+  "limitations": [
+    "原始转写由whisper.cpp large-v3生成；审计3460段、6377秒、最大连续重复1、无warning/error，但专名、公司名和政策细节仍可能有ASR误差。",
+    "精编稿在100万小时EGO数据争议处没有记录具体反方论据，报告只保留争议存在，未补写缺失理由。",
+    "FCC的2公斤、65%、旧型号、企业申诉及宇树招股书细节未取得一手原文，均保留为节目口径。",
+    "宇树市值、营收、费用和解禁时间未完成交易所公告、招股书或财报交叉核验。",
+    "RoboDojo是特定协议下的代理评测，不能外推为家庭、工业长任务或不同硬件的生产成功率。",
+    "GEN-1.5、S1与Gemini Robotics 2的能力描述包含厂商自报或演示选择，缺少本轮独立复现。",
+    "报告没有系统纳入FCC法务专家、机器人安全认证方、客户与一线运维人员的反方意见。"
+  ]
+}

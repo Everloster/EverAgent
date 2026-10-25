@@ -1,0 +1,643 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-23_xiaoyuzhou-renmingongyuan-ai_expensive-token-dirty-work.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "review-dirtywork-r2-format-20261025",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 96,
+        "request_coverage": 98,
+        "reasoning_quality": 96,
+        "readability": 97,
+        "limitations": 98
+      },
+      "score_reasons": {
+        "evidence_fidelity": "已逐行读取 859 段原始转写、完整 polished、官方 shownotes、artifact，并通过 eacli 读取小宇宙官方页面。报告对节目主张、主播转述、报告推断和外部未核验事实的区分总体严格；人物、模型、研究、套餐、成本、错误率与时间预测均使用 `[待验证]` 或明确的转述边界。两处口述算术冲突也被正确纠偏：`1% × 1000` 缺少基数且不等于 1000 个错误；1000万–2000万美元降至100美元对应约10万–20万倍，不是1万倍。轻微扣分来自关键数字表把0.7%/7%的生产—创意比较与“便宜模型虚假完成”放在同一行推断，节目中这两条论证来自不同片段，虽整列已标 `[推测]`，仍可拆开以免读者误认直接因果。",
+        "request_coverage": "报告按官方 12 章逐章建立内容地图，且正文完整覆盖最贵 token、注意力成本、额度损失厌恶、机器提速后人更累、模型任务适配、Linux/逆向案例、算力成本口述冲突、工作流重构、Human in the Loop、刹车片与现实世界迁移边界。R01–R06 均有可观察证据；报告不是精编稿索引，而是能够独立阅读的完整分析。",
+        "reasoning_quality": "报告没有把“最高档普遍更好”当成结论，而是提出任务价值、可验收性、错误代价和监督成本四项条件，并给出最强反方：全公司最高档、额度必须用完并不自动创造价值。它把生成速度与交付速度、模型单价与单位验收成本、同模型互审与独立验证区分开，并把风险路由、证据契约和确定性检查明确标为报告建议。少量推断压缩了节目中分散的论据，但未越过证据边界。",
+        "readability": "标题、一句话总结、证据口径、12 章内容地图、三条主线、数字表、反方、EverAgent 启示、限制和追问形成完整阅读路径。每个未核验名字与数字都能在附近看到边界提示，两处算术冲突也以可复算形式呈现。内容较长但结构清晰，可脱离音频和对话理解。",
+        "limitations": "Limitations 充分披露节目是观点讨论而非受控实验、ASR 专名不确定、外部研究与数字未读原始来源、算术冲突、套餐和工具条件混杂、安全隐私与供应商锁定缺口，以及 EverAgent 建议尚未实测。报告还明确指出案例存在成功者偏差、能力下沉属于预测，未把节目经验升级为采购事实。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07"
+      ],
+      "coverage_unit_ids_checked": [
+        "SC01",
+        "SC02",
+        "SC03",
+        "SC04",
+        "SC05",
+        "SC06",
+        "SC07",
+        "SC08",
+        "SC09",
+        "SC10",
+        "SC11",
+        "SC12"
+      ],
+      "source_content_map": [
+        {
+          "id": "DW01",
+          "title": "00:00 用最贵的模型干最脏的活：先识别高价值、可验收的脏活",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC01"
+          ],
+          "notes": "报告把节目口号重构为任务价值、边界、验收与错误代价，而非无条件升级订阅。"
+        },
+        {
+          "id": "DW02",
+          "title": "01:24 AI 最贵的是注意力：额度焦虑、损失厌恶与家庭时间挤占",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC02"
+          ],
+          "notes": "主播的个人体验与报告的注意力机会成本分析均有明确主语和推断标签。"
+        },
+        {
+          "id": "DW03",
+          "title": "04:24 AI 越强人越累：吞吐放大后补货、审核和纠错成为新瓶颈",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC03"
+          ],
+          "notes": "报告保留机器人链条只是节目推演，并主动指出 1% 与 1000 的口述缺少可成立的计算基数。"
+        },
+        {
+          "id": "DW04",
+          "title": "06:19 生产与创意任务需要不同模型行为和错误率口径",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC04"
+          ],
+          "notes": "Opus、Fable、0.7% 与 7% 均标待验证；内容地图保留生产可靠性与创意发散的任务差异。数字表右栏把该比较与便宜模型虚假完成压缩在一起，属于轻微表达问题，但已整体标为推测。"
+        },
+        {
+          "id": "DW05",
+          "title": "07:36 顶配 Mac 与最高档模型是行动建议，不是业务成功的因果证据",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC05"
+          ],
+          "notes": "报告明确把先买硬件解释为节目式行动提醒，并用任务盘点代替订阅档位作为第一步。"
+        },
+        {
+          "id": "DW06",
+          "title": "09:48 Linux 轶事：低能力执行与同级审查可能共同制造伪完成",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC06"
+          ],
+          "notes": "DHH、Lex、项目、模型与成本均标待验证；报告只提炼“文字声明不能替代真实测试”的可迁移风险。"
+        },
+        {
+          "id": "DW07",
+          "title": "13:57 逆向和重复交付属于高价值脏活，但仍需要人的判断与验收",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC07"
+          ],
+          "notes": "团队案例被标待验证，报告没有把单个轶事推广为高价模型的普遍因果效果。"
+        },
+        {
+          "id": "DW08",
+          "title": "15:01 GPT-1 成本与“一万倍”说法存在内部算术冲突",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC08"
+          ],
+          "notes": "报告逐字保留1000万–2000万美元、100美元和1万倍三项口述，并计算出至少10万倍，明确禁止作为趋势或采购依据。"
+        },
+        {
+          "id": "DW09",
+          "title": "16:57 强模型要求先改造工具、审核和代理工作流",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC09"
+          ],
+          "notes": "报告将工作流改造作为固定投入单列，并提出摊销、幂等、日志、回滚和状态传递等明确标注的建议。"
+        },
+        {
+          "id": "DW10",
+          "title": "18:09 Human in the Loop：人的判断不可并行复制并成为卡点",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC10"
+          ],
+          "notes": "报告把个人体验转成审核分钟、接管次数、审批等待和单位注意力产出等待验证指标，没有宣称节目已证实。"
+        },
+        {
+          "id": "DW11",
+          "title": "19:48 发动机变刹车片与“喂养模型”的角色变化",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC11"
+          ],
+          "notes": "报告保留隐喻，并明确制作工具、提供上下文的具体技术效果没有被节目证明。"
+        },
+        {
+          "id": "DW12",
+          "title": "21:18 数字世界提效难以直接迁移到餐馆、仓储和线下现实",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC12"
+          ],
+          "notes": "扫地机器人、餐馆和传菜机器人均作为节目推演呈现，报告明确物理环境和 SOP 是迁移边界。"
+        },
+        {
+          "id": "DW13",
+          "title": "两处口述算术冲突需要与定性启示分开",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC03",
+            "SC08"
+          ],
+          "notes": "报告主动指出 1%×1000 与训练成本倍数问题，只保留自动化会放大异常、成本下降值得跟踪等定性启示。"
+        },
+        {
+          "id": "DW14",
+          "title": "节目中的模型、研究、人物、价格与时间预测均不得升级为外部事实",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC01",
+            "SC02",
+            "SC03",
+            "SC04",
+            "SC05",
+            "SC06",
+            "SC07",
+            "SC08",
+            "SC09",
+            "SC10",
+            "SC11",
+            "SC12"
+          ],
+          "notes": "报告在资料口径、内容地图、关键数字表和 Limitations 四处持续施加待验证边界，且审计回执证明转写来源完整。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "纯格式 revision 复核。开始前核对 report SHA-256=fdc4f30da68863bda9ddaeabeeeeb0c59fbddba1daa1081c28ce03afc22f6616、evidence SHA-256=82f22d1000fc5217ef573118f5c742a348319bdb870523092f5c8433856e1278，与调度快照一致。git diff 显示内容改动仅为编号列表行尾空格清理；另有 new-revision 将 status 从 completed 重置为 in_progress。忽略行尾空格、规范化 status 并移除多余 EOF 空行后，当前文件与 Git index 的 SHA-256 同为 9c8878feb3cc554d88b80b96092733c4384c8fc9ef3f834fee09c007b505c1f1，semantic_equal=true。因此最近一轮来源优先复核的 source_content_map、claim/coverage/source/requirement 核验和五维评分仍全部适用。本轮实际运行 audit_transcript.py：ok=true，segments=859，duration_seconds=1328，size=40902，sha256=959fa2ce12ff669606e6df6ce06fa480f07f1eb1af2d978bdd76d12c47bb9345，max_consecutive_identical=2，warnings/errors 均为空。未发现新增 unsupported claim、missing requirement 或 hard failure。 运行 report_quality.py check（未使用 --finalize）的首次结果：decision=pass，score=96.75，ERROR 0，WARN 0。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 96.75,
+    "evaluated_on": "2026-10-25",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "341ce727a604de859d576d9638ec2265042154e6139e01ce2e4bb3247ce03799",
+    "evidence_sha256": "82f22d1000fc5217ef573118f5c742a348319bdb870523092f5c8433856e1278"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex",
+            "run_id": "review-gpt56sol-dirtywork-r1-9c2589751e9bfa10",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 96,
+            "request_coverage": 98,
+            "reasoning_quality": 96,
+            "readability": 97,
+            "limitations": 98
+          },
+          "score_reasons": {
+            "evidence_fidelity": "已逐行读取 859 段原始转写、完整 polished、官方 shownotes、artifact，并通过 eacli 读取小宇宙官方页面。报告对节目主张、主播转述、报告推断和外部未核验事实的区分总体严格；人物、模型、研究、套餐、成本、错误率与时间预测均使用 `[待验证]` 或明确的转述边界。两处口述算术冲突也被正确纠偏：`1% × 1000` 缺少基数且不等于 1000 个错误；1000万–2000万美元降至100美元对应约10万–20万倍，不是1万倍。轻微扣分来自关键数字表把0.7%/7%的生产—创意比较与“便宜模型虚假完成”放在同一行推断，节目中这两条论证来自不同片段，虽整列已标 `[推测]`，仍可拆开以免读者误认直接因果。",
+            "request_coverage": "报告按官方 12 章逐章建立内容地图，且正文完整覆盖最贵 token、注意力成本、额度损失厌恶、机器提速后人更累、模型任务适配、Linux/逆向案例、算力成本口述冲突、工作流重构、Human in the Loop、刹车片与现实世界迁移边界。R01–R06 均有可观察证据；报告不是精编稿索引，而是能够独立阅读的完整分析。",
+            "reasoning_quality": "报告没有把“最高档普遍更好”当成结论，而是提出任务价值、可验收性、错误代价和监督成本四项条件，并给出最强反方：全公司最高档、额度必须用完并不自动创造价值。它把生成速度与交付速度、模型单价与单位验收成本、同模型互审与独立验证区分开，并把风险路由、证据契约和确定性检查明确标为报告建议。少量推断压缩了节目中分散的论据，但未越过证据边界。",
+            "readability": "标题、一句话总结、证据口径、12 章内容地图、三条主线、数字表、反方、EverAgent 启示、限制和追问形成完整阅读路径。每个未核验名字与数字都能在附近看到边界提示，两处算术冲突也以可复算形式呈现。内容较长但结构清晰，可脱离音频和对话理解。",
+            "limitations": "Limitations 充分披露节目是观点讨论而非受控实验、ASR 专名不确定、外部研究与数字未读原始来源、算术冲突、套餐和工具条件混杂、安全隐私与供应商锁定缺口，以及 EverAgent 建议尚未实测。报告还明确指出案例存在成功者偏差、能力下沉属于预测，未把节目经验升级为采购事实。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07"
+          ],
+          "coverage_unit_ids_checked": [
+            "SC01",
+            "SC02",
+            "SC03",
+            "SC04",
+            "SC05",
+            "SC06",
+            "SC07",
+            "SC08",
+            "SC09",
+            "SC10",
+            "SC11",
+            "SC12"
+          ],
+          "source_content_map": [
+            {
+              "id": "DW01",
+              "title": "00:00 用最贵的模型干最脏的活：先识别高价值、可验收的脏活",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC01"
+              ],
+              "notes": "报告把节目口号重构为任务价值、边界、验收与错误代价，而非无条件升级订阅。"
+            },
+            {
+              "id": "DW02",
+              "title": "01:24 AI 最贵的是注意力：额度焦虑、损失厌恶与家庭时间挤占",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC02"
+              ],
+              "notes": "主播的个人体验与报告的注意力机会成本分析均有明确主语和推断标签。"
+            },
+            {
+              "id": "DW03",
+              "title": "04:24 AI 越强人越累：吞吐放大后补货、审核和纠错成为新瓶颈",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC03"
+              ],
+              "notes": "报告保留机器人链条只是节目推演，并主动指出 1% 与 1000 的口述缺少可成立的计算基数。"
+            },
+            {
+              "id": "DW04",
+              "title": "06:19 生产与创意任务需要不同模型行为和错误率口径",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC04"
+              ],
+              "notes": "Opus、Fable、0.7% 与 7% 均标待验证；内容地图保留生产可靠性与创意发散的任务差异。数字表右栏把该比较与便宜模型虚假完成压缩在一起，属于轻微表达问题，但已整体标为推测。"
+            },
+            {
+              "id": "DW05",
+              "title": "07:36 顶配 Mac 与最高档模型是行动建议，不是业务成功的因果证据",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC05"
+              ],
+              "notes": "报告明确把先买硬件解释为节目式行动提醒，并用任务盘点代替订阅档位作为第一步。"
+            },
+            {
+              "id": "DW06",
+              "title": "09:48 Linux 轶事：低能力执行与同级审查可能共同制造伪完成",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC06"
+              ],
+              "notes": "DHH、Lex、项目、模型与成本均标待验证；报告只提炼“文字声明不能替代真实测试”的可迁移风险。"
+            },
+            {
+              "id": "DW07",
+              "title": "13:57 逆向和重复交付属于高价值脏活，但仍需要人的判断与验收",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC07"
+              ],
+              "notes": "团队案例被标待验证，报告没有把单个轶事推广为高价模型的普遍因果效果。"
+            },
+            {
+              "id": "DW08",
+              "title": "15:01 GPT-1 成本与“一万倍”说法存在内部算术冲突",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC08"
+              ],
+              "notes": "报告逐字保留1000万–2000万美元、100美元和1万倍三项口述，并计算出至少10万倍，明确禁止作为趋势或采购依据。"
+            },
+            {
+              "id": "DW09",
+              "title": "16:57 强模型要求先改造工具、审核和代理工作流",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC09"
+              ],
+              "notes": "报告将工作流改造作为固定投入单列，并提出摊销、幂等、日志、回滚和状态传递等明确标注的建议。"
+            },
+            {
+              "id": "DW10",
+              "title": "18:09 Human in the Loop：人的判断不可并行复制并成为卡点",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC10"
+              ],
+              "notes": "报告把个人体验转成审核分钟、接管次数、审批等待和单位注意力产出等待验证指标，没有宣称节目已证实。"
+            },
+            {
+              "id": "DW11",
+              "title": "19:48 发动机变刹车片与“喂养模型”的角色变化",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC11"
+              ],
+              "notes": "报告保留隐喻，并明确制作工具、提供上下文的具体技术效果没有被节目证明。"
+            },
+            {
+              "id": "DW12",
+              "title": "21:18 数字世界提效难以直接迁移到餐馆、仓储和线下现实",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC12"
+              ],
+              "notes": "扫地机器人、餐馆和传菜机器人均作为节目推演呈现，报告明确物理环境和 SOP 是迁移边界。"
+            },
+            {
+              "id": "DW13",
+              "title": "两处口述算术冲突需要与定性启示分开",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC03",
+                "SC08"
+              ],
+              "notes": "报告主动指出 1%×1000 与训练成本倍数问题，只保留自动化会放大异常、成本下降值得跟踪等定性启示。"
+            },
+            {
+              "id": "DW14",
+              "title": "节目中的模型、研究、人物、价格与时间预测均不得升级为外部事实",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04",
+                "S05"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC01",
+                "SC02",
+                "SC03",
+                "SC04",
+                "SC05",
+                "SC06",
+                "SC07",
+                "SC08",
+                "SC09",
+                "SC10",
+                "SC11",
+                "SC12"
+              ],
+              "notes": "报告在资料口径、内容地图、关键数字表和 Limitations 四处持续施加待验证边界，且审计回执证明转写来源完整。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04",
+            "R05",
+            "R06"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "严格来源优先复核。开始前核对 report SHA-256=606f764791f7c0de363933ca00c47aa9ef3e5f9c68fae86d017c0a3f63e8806c、evidence SHA-256=82f22d1000fc5217ef573118f5c742a348319bdb870523092f5c8433856e1278，与调度值一致。先完整读取 859 段 transcript、131 行 polished、官方 12 章 shownotes 和 artifact，再运行 `audit_transcript.py --json`：ok=true、segments=859、duration_seconds=1328、size=40902、sha256=959fa2ce12ff669606e6df6ce06fa480f07f1eb1af2d978bdd76d12c47bb9345、max_consecutive_identical=2、warnings/errors 为空；并通过 eacli web.read 核对官方页面标题、22:13 时长与 12 章。之后才读取报告、evidence 与 review 模板。报告主动纠正两处口述算术冲突，所有外部模型/人物/研究/价格/数字/预测均保留节目转述或 `[待验证]` 边界，12 个官方章节全部进入独立来源地图。唯一轻微问题是关键数字表把0.7%/7%的生产—创意比较与“便宜模型虚假完成”合并解释，虽右栏整体标为 `[推测]`，仍建议后续拆成两个论证。无 unsupported claim、missing requirement 或 hard failure。完成 review 后运行 `python3 scripts/report_quality.py check podcast-learning/reports/2026-10-23_xiaoyuzhou-renmingongyuan-ai_expensive-token-dirty-work.md`（未使用 `--finalize`），输出：tier=important｜decision=pass｜score=96.75｜ERROR 0｜WARN 0。该结果仅为 deterministic check，`decision` 保持空对象，未写入最终判定。"
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 96.75,
+        "evaluated_on": "2026-10-25",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "5c0c86491866765f0c5305600d6af67b3a88ff2bfcadc6127c8343769a56e036",
+        "evidence_sha256": "82f22d1000fc5217ef573118f5c742a348319bdb870523092f5c8433856e1278"
+      }
+    }
+  ]
+}

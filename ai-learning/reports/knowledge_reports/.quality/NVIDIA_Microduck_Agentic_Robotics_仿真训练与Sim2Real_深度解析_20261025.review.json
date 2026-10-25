@@ -1,0 +1,177 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/NVIDIA_Microduck_Agentic_Robotics_仿真训练与Sim2Real_深度解析_20261025.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-6",
+        "harness": "codex",
+        "run_id": "review-039e552c3e11",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 97,
+        "request_coverage": 98,
+        "reasoning_quality": 98,
+        "readability": 95,
+        "limitations": 98
+      },
+      "score_reasons": {
+        "evidence_fidelity": "逐项核对NVIDIA官方博客、HF/NVIDIA教程和microduck_rl README。4096环境、RTX PRO 6000 Blackwell、深度与机器人状态观测、800g/25cm、mjlab/MuJoCo Warp+PPO、50Hz、61/14接口、BAM、±1°齿隙、ONNX及1.25M steps/s均与各自来源一致，且没有跨路线拼接。",
+        "request_coverage": "完整解释Hermes、Nemotron、Astra、Isaac Sim、Isaac Lab、Newton与Omniverse职责，回答Agent与RL的分工、三条实现路线、Sim-to-Real、Physical RSI建议、工程适用性、反方、限制和追问。",
+        "reasoning_quality": "核心分层准确：Agent负责规划与资产，RL在物理反馈中更新策略；并行环境是吞吐而非可靠性；接口shape、物理后端、权重和benchmark不可互换。对执行器、接触、观测、时序和安全形成完整闭环。",
+        "readability": "从一句话结论、证据分级、x→f→f(x)、训练机制到实机门禁层次清楚，表格能快速区分三条路线；技术密度高但术语均有解释。",
+        "limitations": "明确承认厂商材料不是独立benchmark、只读README未做全仓复现、实机仅展示行走转向、障碍路线未实机验证、BAM与随机化覆盖有限、Physical RSI通过线是本文建议。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06"
+      ],
+      "coverage_unit_ids_checked": [],
+      "source_content_map": [
+        {
+          "id": "SCM01",
+          "title": "Agentic层负责计划、概念图、资产和交接",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "Hermes/Nemotron/Astra及FreeCAD、Blender、USD交付链得到准确覆盖，未写成策略参数由Agent直接学习。"
+        },
+        {
+          "id": "SCM02",
+          "title": "Isaac Sim、Isaac Lab、Newton与Omniverse构成不同仿真职责",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "场景与传感、RL训练、物理求解和渲染职责分开描述。"
+        },
+        {
+          "id": "SCM03",
+          "title": "官方障碍适配使用4096环境、Blackwell GPU与深度观测",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "报告同时指出官方没有训练时间、成功率、奖励曲线和消融。"
+        },
+        {
+          "id": "SCM04",
+          "title": "HF教程的61观测、14动作、Newton/MJWarp、BAM和实机部署",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "1.25M steps/s被正确限定为16 GPU特定配置的吞吐，不被写成策略质量。"
+        },
+        {
+          "id": "SCM05",
+          "title": "microduck_rl的独立mjlab/MuJoCo Warp/PPO路线",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "800g、25cm、50Hz、4096环境约1至2小时、ONNX与任务集合均准确，未冒充Isaac Lab实验。"
+        },
+        {
+          "id": "SCM06",
+          "title": "BAM、电池压降、摩擦、延迟与±1°齿隙的Sim-to-Real机制",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "报告进一步解释了被动backlash铰链与输出侧编码器读数，并诚实列出未覆盖误差。"
+        },
+        {
+          "id": "SCM07",
+          "title": "仿真障碍验证与实体行走演示的证据边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "实体图只支持行走和转向；官方障碍路线仍停留在仿真，不能推出生产安全。"
+        },
+        {
+          "id": "SCM08",
+          "title": "61/14相同shape不等于字段、归一化、动作缩放或checkpoint兼容",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "报告用逐字段合同和热切换安全条件限制跨实现外推。"
+        },
+        {
+          "id": "SCM09",
+          "title": "Physical RSI与Agent harness门禁是报告提出的工程建议",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "正文显式声明并非官方标准，并把版本冻结、实机辨识、分级放行和证据留痕写成建议。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "三份来源均已实际读取。报告准确区分NVIDIA障碍演示、HF/Isaac Lab教程与microduck_rl开源路线，未发现benchmark拼接或实机证据夸大。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 97.2,
+    "evaluated_on": "2026-10-25",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "52d939ce6ff45f4cd7fa52b487e1adbb2c6485e92bfc06fac27c97e4349604ee",
+    "evidence_sha256": "fdd1ce89ccd468722778aa517c1ce609c79aec22d68431a5ce85dd269033c05f"
+  }
+}

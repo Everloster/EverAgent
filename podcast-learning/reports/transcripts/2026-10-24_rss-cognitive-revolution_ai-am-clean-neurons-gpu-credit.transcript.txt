@@ -1,0 +1,1946 @@
+[00:00:00 -> 00:00:03] This week on AI in the AM, what really sets the pace of AI
+[00:00:03 -> 00:00:04] from here?
+[00:00:04 -> 00:00:07] The money, the atoms, or the law?
+[00:00:08 -> 00:00:10] Zvi Mosiewicz, who writes Don't Worry About the Face,
+[00:00:10 -> 00:00:12] on what happens to the model release cycle over the next
+[00:00:12 -> 00:00:14] year if nothing slows the labs down.
+[00:00:15 -> 00:00:19] Advances on the level of a current model release cycle go
+[00:00:19 -> 00:00:21] from two months to one month
+[00:00:21 -> 00:00:23] to two weeks to a week.
+[00:00:24 -> 00:00:25] Stuff like that could happen.
+[00:00:25 -> 00:00:29] You get to see continuously pretty dramatic, very, very
+[00:00:29 -> 00:00:30] rapid improvements
+[00:00:30 -> 00:00:33] in various aspects of AI capabilities.
+[00:00:34 -> 00:00:37] We are kind of on an AI 2027 style timeline right now.
+[00:00:38 -> 00:00:41] It looks very eerily similar to what we saw there.
+[00:00:41 -> 00:00:46] Evan Conrad, co-founder and CEO of SF Compute, which runs a
+[00:00:46 -> 00:00:49] market for GPU compute, on what is really holding the build
+[00:00:49 -> 00:00:49] out back.
+[00:00:50 -> 00:00:54] Right now, the bottleneck in compute and AI in general is
+[00:00:54 -> 00:00:56] not power.
+[00:00:56 -> 00:00:58] It's not chips.
+[00:00:58 -> 00:01:00] It's entirely credit.
+[00:01:01 -> 00:01:06] So in order to get debt, you need to work with somebody who
+[00:01:06 -> 00:01:10] has excellent credit because your lender has no idea how to
+[00:01:10 -> 00:01:13] underwrite the value of the collateral that they've been
+[00:01:13 -> 00:01:14] given, which is a GPU cluster.
+[00:01:14 -> 00:01:18] Like if you think about it, there's like nice lender off in
+[00:01:18 -> 00:01:20] New York or London or something.
+[00:01:21 -> 00:01:24] If in the case in which the AI lab falls through and fails
+[00:01:24 -> 00:01:29] to pay, and then the cloud fails to pay their lender, the
+[00:01:29 -> 00:01:32] lender is going to recoup a supercomputer.
+[00:01:32 -> 00:01:35] And the lender has no idea what to do with that
+[00:01:35 -> 00:01:36] supercomputer.
+[00:01:36 -> 00:01:37] Not really.
+[00:01:37 -> 00:01:39] Nor do they know what that's going to be worth in the
+[00:01:39 -> 00:01:39] future.
+[00:01:40 -> 00:01:43] Lannis Hamali is managing partner of Cambrian, a fund that
+[00:01:43 -> 00:01:45] bets on the physical supply chain behind AI.
+[00:01:46 -> 00:01:48] Full disclosure, I have committed to invest in Cambrian.
+[00:01:49 -> 00:01:51] Here is Lannis on which suppliers the labs will never
+[00:01:51 -> 00:01:52] replace.
+[00:01:54 -> 00:01:57] And even in general, when we're looking at the AI market,
+[00:01:57 -> 00:01:59] we are way more bullish on the atoms over the bits.
+[00:02:00 -> 00:02:03] So most AI companies people are looking at is like NVIDIA,
+[00:02:03 -> 00:02:04] Broadcom, ARM, Marvel.
+[00:02:05 -> 00:02:06] And these are good companies.
+[00:02:06 -> 00:02:08] There's nothing wrong with them.
+[00:02:08 -> 00:02:11] And the issue is that their business is essentially just
+[00:02:11 -> 00:02:14] using open AI and anthropic models to design software.
+[00:02:15 -> 00:02:17] And then they send that software down to Korea and Japan
+[00:02:17 -> 00:02:19] and Taiwan for the actual work.
+[00:02:20 -> 00:02:22] These companies don't have their own physical know-how or
+[00:02:22 -> 00:02:23] their own factories.
+[00:02:24 -> 00:02:27] And so whilst these are great, well-run businesses, they
+[00:02:27 -> 00:02:29] don't have at all close to the same
+[00:02:29 -> 00:02:32] moat as these physical companies have, which have massive
+[00:02:32 -> 00:02:33] fabs.
+[00:02:34 -> 00:02:37] Initially, they have decades of know-how built up, and it's
+[00:02:37 -> 00:02:38] just very hard.
+[00:02:39 -> 00:02:41] So there will never be a situation where the labs will
+[00:02:41 -> 00:02:43] compete with a silicon wafer maker,
+[00:02:43 -> 00:02:45] and we will always be a customer, whereas we're already
+[00:02:45 -> 00:02:47] seeing the labs compete directly
+[00:02:47 -> 00:02:50] with software designers like the media and Broadcom, etc.
+[00:02:51 -> 00:02:54] Prakash Narayanan, my co-host, on what the market keeps
+[00:02:54 -> 00:02:55] getting wrong.
+[00:02:55 -> 00:03:02] I believe that for the next 20 years, the market will
+[00:03:02 -> 00:03:04] consistently underprice exponential growth.
+[00:03:04 -> 00:03:07] Because I think consistently, human beings are just not
+[00:03:07 -> 00:03:14] able to understand exponential growth and logically,
+[00:03:14 -> 00:03:17] emotionally get comfortable with it.
+[00:03:18 -> 00:03:20] And I think the market is really driven by a lot of these
+[00:03:20 -> 00:03:22] human emotions and animal spirits, etc.
+[00:03:23 -> 00:03:26] And which means that we're going to get again and again,
+[00:03:26 -> 00:03:29] you're going to get this like bubble moment, collapse
+[00:03:29 -> 00:03:31] moment that we've seen in the last three months.
+[00:03:32 -> 00:03:34] Box CEO Aaron Levy posted that if you want to know which
+[00:03:34 -> 00:03:37] jobs AI will create, look no further than cybersecurity.
+[00:03:37 -> 00:03:39] Here is what I made of that.
+[00:03:39 -> 00:03:43] I don't doubt that like really good cybersecurity people
+[00:03:43 -> 00:03:47] are going to, you know, cash in on this trend.
+[00:03:47 -> 00:03:51] Like there's no, you know, I'm sure that there's a bidding
+[00:03:51 -> 00:03:52] war for great talent.
+[00:03:52 -> 00:03:56] But like the idea that this is going to create jobs is
+[00:03:56 -> 00:04:00] honestly a bit ridiculous because the time scale is just
+[00:04:00 -> 00:04:00] absurd.
+[00:04:00 -> 00:04:03] Right. And this is like, oh, who's going to who's going to
+[00:04:03 -> 00:04:05] pivot into these jobs?
+[00:04:05 -> 00:04:08] Are we are we going to go get like the content marketers
+[00:04:08 -> 00:04:11] that are currently out of work or the graphic designers and
+[00:04:11 -> 00:04:13] be like, oh, you know what?
+[00:04:13 -> 00:04:16] This is the new learning code is like learn to become a top
+[00:04:16 -> 00:04:20] tier cybersecurity professional that can contend with these
+[00:04:20 -> 00:04:24] like basically super intelligent agent swarms.
+[00:04:24 -> 00:04:27] But just the idea that you're going to have like some sort
+[00:04:27 -> 00:04:28] of boon in hiring.
+[00:04:28 -> 00:04:30] These people don't have time to hire right now.
+[00:04:30 -> 00:04:32] They're going to plow everything that they have into agents
+[00:04:32 -> 00:04:34] and they're going to put agents on top of agents.
+[00:04:35 -> 00:04:38] Much more so than I'm going to hire.
+[00:04:38 -> 00:04:40] I'm going to go do a whole hiring process to bring a human
+[00:04:40 -> 00:04:42] in to sit on agents.
+[00:04:42 -> 00:04:44] I'm just going to spin up an agent to supervise the agents.
+[00:04:45 -> 00:04:49] This is the AI in the AM Weekly Highlights with my co-host,
+[00:04:49 -> 00:04:50] Prakash Narayanan.
+[00:04:51 -> 00:04:52] I'm Nathan Albens.
+[00:04:52 -> 00:04:54] The narration is my cloned voice, and we'd love your
+[00:04:54 -> 00:04:57] feedback on what works and what doesn't.
+[00:04:58 -> 00:05:03] Part one, if nobody hits a home run, Zvi Moschwitz writes
+[00:05:03 -> 00:05:06] about frontier AI at Don't Worry About the Vase.
+[00:05:06 -> 00:05:08] This was the question I most wanted to put to him.
+[00:05:11 -> 00:05:12] Maybe it's the most important question in the universe
+[00:05:12 -> 00:05:13] right now.
+[00:05:13 -> 00:05:16] Where are we on recursive self-improvement?
+[00:05:16 -> 00:05:20] We've had these blog posts from the companies where they
+[00:05:20 -> 00:05:22] try to measure token use and everything
+[00:05:22 -> 00:05:24] down to experiments per researcher.
+[00:05:25 -> 00:05:30] Then we've had these Ramez-type analyses where it's like,
+[00:05:30 -> 00:05:33] well, it doesn't look like the
+[00:05:33 -> 00:05:37] feedback loop is actually strong enough to be sustaining.
+[00:05:37 -> 00:05:40] It looks more like it'll kind of peter out, like 1.6
+[00:05:40 -> 00:05:42] experiments per researcher doesn't
+[00:05:43 -> 00:05:45] look like exponential takeoff to me, basically, I think is
+[00:05:45 -> 00:05:46] kind of the bottom line.
+[00:05:47 -> 00:05:53] What would be your sort of up-to-the-minute summary of what
+[00:05:53 -> 00:05:54] we know and what we should expect?
+[00:05:54 -> 00:05:59] I think Ramez's analysis, as I understand it, is basically
+[00:05:59 -> 00:06:04] saying if we don't see any new fundamental leaps, if we don
+[00:06:04 -> 00:06:07] 't see any new scaling laws, if we don't see any paradigm
+[00:06:07 -> 00:06:13] shifts, and the AI just tries to brute force RSI software
+[00:06:13 -> 00:06:19] only using the existing methods, and all it can do is just
+[00:06:19 -> 00:06:22] make the current things more efficient, then it will peter
+[00:06:22 -> 00:06:23] out before it goes critical.
+[00:06:23 -> 00:06:27] and I accept the result when it's stated that way
+[00:06:27 -> 00:06:28] as probably true,
+[00:06:29 -> 00:06:31] but also seems completely irrelevant, right?
+[00:06:31 -> 00:06:36] It's like, you know, well, here's how many points
+[00:06:36 -> 00:06:38] we expect to score in this game
+[00:06:38 -> 00:06:39] if nobody ever hits a home run
+[00:06:39 -> 00:06:40] because a home run is always unlikely.
+[00:06:40 -> 00:06:42] It's like, no, that's not how it works, right?
+[00:06:42 -> 00:06:44] Every now and then someone does hit a home run
+[00:06:44 -> 00:06:46] and you have to take that into account in your expectations
+[00:06:46 -> 00:06:48] and like the game, the score will go critical in that sense
+[00:06:48 -> 00:06:48] .
+[00:06:49 -> 00:06:52] Like we're seeing, you know, numbers go critical
+[00:06:52 -> 00:06:55] at Anthropic, at OpenAI, you know,
+[00:06:55 -> 00:06:58] like exponential growth in like tokens used per person,
+[00:06:58 -> 00:07:00] exponential growth in lines of code committed.
+[00:07:01 -> 00:07:02] And I realize these things are not going to be necessarily
+[00:07:02 -> 00:07:03] as efficient in
+[00:07:03 -> 00:07:06] some important sense, but like, give me a break.
+[00:07:07 -> 00:07:10] The one example was NVIDIA actually came out with some like
+[00:07:10 -> 00:07:11] interesting
+[00:07:11 -> 00:07:14] evidence this week about the length of time it takes to
+[00:07:14 -> 00:07:15] double the
+[00:07:15 -> 00:07:16] efficiency of CUDA.
+[00:07:17 -> 00:07:20] And that number has shrunk dramatically over the course of
+[00:07:20 -> 00:07:21] 2026, right?
+[00:07:21 -> 00:07:22] They are making improvements much faster.
+[00:07:23 -> 00:07:25] And obviously that's not true recursive self-improvement,
+[00:07:25 -> 00:07:29] But it is a sign of how much faster you can do, like,
+[00:07:29 -> 00:07:32] similar technical work that is remarkably similar to AI R&D
+[00:07:32 -> 00:07:35] work in many critical elements.
+[00:07:35 -> 00:07:38] And it's a very concrete from an objective actor that isn't
+[00:07:38 -> 00:07:39] a major lab.
+[00:07:39 -> 00:07:41] It's a, you know, hardware company.
+[00:07:41 -> 00:07:45] So, yes, I think that, like, the people I talk to who I
+[00:07:45 -> 00:07:50] trust the most on this believe that 2077 is going to be
+[00:07:50 -> 00:07:51] completely crazy.
+[00:07:52 -> 00:07:54] And 2028 might be unrecognizable.
+[00:07:54 -> 00:07:57] reading between the lines, like some of the people you
+[00:07:57 -> 00:07:59] trust most on this are probably
+[00:07:59 -> 00:08:01] anthropic people. I think this is like broadly the view at
+[00:08:01 -> 00:08:03] anthropic, no less than Jack Clark
+[00:08:03 -> 00:08:09] has put it into the public in print. So, you know, you can
+[00:08:09 -> 00:08:11] caveat that or, you know, say what
+[00:08:11 -> 00:08:14] you think maybe is different about your view and the
+[00:08:14 -> 00:08:16] anthropic view. My sense is probably they're,
+[00:08:16 -> 00:08:19] you know, in the space of all possible views, they're
+[00:08:19 -> 00:08:20] pretty close and pretty aligned.
+[00:08:21 -> 00:08:25] But now, obviously, we have policy disagreements, despite
+[00:08:25 -> 00:08:28] these kind of relatively similar views around the
+[00:08:28 -> 00:08:30] trajectory of the technology itself.
+[00:08:30 -> 00:08:36] Yeah. So I say, you know, when I say people have this
+[00:08:36 -> 00:08:40] perspective that I trust, this is a combination of people
+[00:08:40 -> 00:08:44] at OpenAI, Anthropic, Google DeepMind, you know, also
+[00:08:44 -> 00:08:48] people who are working on policy, people who are working on
+[00:08:48 -> 00:08:50] , you know, people like at places like Meter with that loss
+[00:08:50 -> 00:08:52] of generality or specificity.
+[00:08:52 -> 00:08:56] You know, people who are working on alignment in various
+[00:08:56 -> 00:08:58] forms, people who are working on, you know, a number of
+[00:08:58 -> 00:08:59] things.
+[00:09:00 -> 00:09:03] A huge percentage of people have now converged into the
+[00:09:03 -> 00:09:08] trajectories look very clear that things are going to get,
+[00:09:08 -> 00:09:11] that things are already, you know, low level out of hand.
+[00:09:12 -> 00:09:15] RSI has, you know, on a slow takeoff style, low level
+[00:09:15 -> 00:09:16] already kind of begun.
+[00:09:17 -> 00:09:21] And by the middle of next year, you know, things will look
+[00:09:21 -> 00:09:22] much faster.
+[00:09:22 -> 00:09:28] my job will become much harder and i will need to triage a
+[00:09:28 -> 00:09:30] lot more information and like this
+[00:09:30 -> 00:09:34] note when i can't you already see this like often i'll have
+[00:09:34 -> 00:09:36] something it's like okay you know six
+[00:09:36 -> 00:09:38] months ago this would have been a major news story and now
+[00:09:38 -> 00:09:41] it gets a sentence or even silently skip
+[00:09:41 -> 00:09:43] because we've seen so many other similar things there are
+[00:09:43 -> 00:09:44] so many things going on that i just
+[00:09:44 -> 00:09:48] don't have the time my readers don't have the time i just
+[00:09:48 -> 00:09:50] have to drop it hey we'll continue
+[00:09:50 -> 00:09:53] our interview in a moment after a word from our sponsors
+[00:09:53 -> 00:09:55] this episode of the cognitive revolution
+[00:09:55 -> 00:09:57] is brought to you by OutSystems,
+[00:09:58 -> 00:10:00] the leading agentic systems platform.
+[00:10:01 -> 00:10:03] OutSystems is helping their customers build,
+[00:10:03 -> 00:10:05] modernize, and operate enterprise systems,
+[00:10:06 -> 00:10:07] starting from any coding tool
+[00:10:07 -> 00:10:10] in a governed agentic engineering model.
+[00:10:11 -> 00:10:13] It's time to innovate at the speed of AI
+[00:10:13 -> 00:10:15] without compromising quality or control,
+[00:10:16 -> 00:10:18] which is why thousands of enterprises worldwide
+[00:10:18 -> 00:10:21] trust OutSystems for their mission-critical apps.
+[00:10:22 -> 00:10:24] And we're not talking about theory.
+[00:10:24 -> 00:10:26] We're talking about massive operational wins.
+[00:10:27 -> 00:10:29] Take, for example, a leading global retailer that was
+[00:10:29 -> 00:10:32] struggling to keep up with their rapid expansion.
+[00:10:33 -> 00:10:35] They used OutSystems to build AI agents that automated
+[00:10:35 -> 00:10:38] their invoicing and translation processes,
+[00:10:38 -> 00:10:42] shifting 95% of their daily store operations to a new
+[00:10:42 -> 00:10:43] digital app,
+[00:10:43 -> 00:10:45] saving thousands of hours of manual work.
+[00:10:46 -> 00:10:49] Or look at a major global logistics giant that was drowning
+[00:10:49 -> 00:10:50] in technical debt.
+[00:10:50 -> 00:10:53] Their engineers were spending their weeks manually
+[00:10:53 -> 00:10:56] firefighting by reviewing platform logs.
+[00:10:56 -> 00:11:00] Using OutSystems, they built an AI log review agent in just
+[00:11:00 -> 00:11:01] five days.
+[00:11:01 -> 00:11:05] And that one agent now saves them over 1,600 engineering
+[00:11:05 -> 00:11:07] hours every single year,
+[00:11:07 -> 00:11:10] letting their team focus on real innovation instead of
+[00:11:10 -> 00:11:11] reactive maintenance.
+[00:11:11 -> 00:11:16] Even in modern digital banking, companies are using this
+[00:11:16 -> 00:11:19] platform to standardize and automate complex financial
+[00:11:19 -> 00:11:20] workflows,
+[00:11:20 -> 00:11:24] delivering secure, personalized experiences at a pace their
+[00:11:24 -> 00:11:26] competitors can't match.
+[00:11:27 -> 00:11:31] OutSystems gives you the flexibility to deploy how you want
+[00:11:31 -> 00:11:33] and the governance to do it safely.
+[00:11:34 -> 00:11:38] Stop chasing the hype and start owning your agentic future.
+[00:11:38 -> 00:11:42] Learn more at OutSystems.com slash TCR.
+[00:11:42 -> 00:11:46] That's OutSystems.com slash TCR.
+[00:11:46 -> 00:11:50] Today's episode is sponsored by Parallel, where agents find
+[00:11:50 -> 00:11:51] answers.
+[00:11:52 -> 00:11:55] Most engineers today closely follow new model releases,
+[00:11:55 -> 00:11:58] but don't pay nearly as much attention to their agent's
+[00:11:58 -> 00:12:00] most important tool, web search.
+[00:12:01 -> 00:12:03] If you're like me, your agents are often conducting
+[00:12:03 -> 00:12:05] hundreds of searches per day.
+[00:12:05 -> 00:12:08] And while the unit cost is small, over time, this does
+[00:12:08 -> 00:12:09] start to add up.
+[00:12:09 -> 00:12:12] Before starting to use Parallel, I calculated that my agent
+[00:12:12 -> 00:12:16] search bill would total roughly $500 this year.
+[00:12:17 -> 00:12:19] The good news is that I just had my agents conduct a
+[00:12:19 -> 00:12:20] systematic test,
+[00:12:20 -> 00:12:23] and I found that Parallel's fast mode, which costs just $1
+[00:12:23 -> 00:12:25] per 1,000 queries,
+[00:12:26 -> 00:12:28] worked just as well as my previous default provider.
+[00:12:28 -> 00:12:31] And switching to it will save me roughly 80% of my search
+[00:12:31 -> 00:12:32] bill going forward.
+[00:12:33 -> 00:12:35] Parallels infrastructure is enterprise-grade,
+[00:12:35 -> 00:12:38] and their suite of APIs offers a range of Pareto optimal
+[00:12:38 -> 00:12:39] options
+[00:12:39 -> 00:12:42] that allow you to choose the right balance of quality, cost
+[00:12:42 -> 00:12:44] , and speed for your needs.
+[00:12:45 -> 00:12:47] So whether you're building voice agents that need 200
+[00:12:47 -> 00:12:48] millisecond latency
+[00:12:48 -> 00:12:51] or long horizon agents that need deep research,
+[00:12:52 -> 00:12:55] adding Parallel to your agent's toolkit is a no-brainer.
+[00:12:55 -> 00:13:00] Get started for free at parallel.ai slash TCR.
+[00:13:00 -> 00:13:04] That's parallel.ai slash TCR.
+[00:13:07 -> 00:13:08] Part two, already clean?
+[00:13:10 -> 00:13:12] Nick Camerata of Goodfire had published an essay called Ne
+[00:13:12 -> 00:13:14] ural Networks Are Already Clean,
+[00:13:15 -> 00:13:17] arguing that individual neurons mostly do one
+[00:13:17 -> 00:13:18] understandable job after all.
+[00:13:19 -> 00:13:20] It took over the discourse.
+[00:13:20 -> 00:13:23] I opened the show on it before Zvi joined.
+[00:13:23 -> 00:13:26] Here is my read, starting with what the essay claims.
+[00:13:27 -> 00:13:33] As we are training bigger models with more modern
+[00:13:33 -> 00:13:36] techniques, and also our interpretability
+[00:13:36 -> 00:13:41] techniques have improved, it looks like the mess that we
+[00:13:41 -> 00:13:44] used to see was maybe more of a skill
+[00:13:44 -> 00:13:50] issue. And it's actually a lot easier to interpret the core
+[00:13:50 -> 00:13:55] mechanisms of ML models today than we
+[00:13:55 -> 00:13:58] thought. And we have indeed seen some pretty interesting
+[00:13:58 -> 00:14:00] advances, which I'm still wrapping
+[00:14:00 -> 00:14:03] my head around, I'd say, but some pretty interesting
+[00:14:03 -> 00:14:07] advances in backprop-free training
+[00:14:07 -> 00:14:12] inspired by this paper. My takeaway from some study of that
+[00:14:12 -> 00:14:14] so far is that basically
+[00:14:14 -> 00:14:20] all of ML architectures to date are limited by the need to
+[00:14:20 -> 00:14:22] be differentiable in order to
+[00:14:22 -> 00:14:26] do the backprop chain rule process. And so backprop-free
+[00:14:26 -> 00:14:28] training allows you to explore a
+[00:14:28 -> 00:14:32] bigger section of the total possible space of ML architect
+[00:14:32 -> 00:14:35] ures because you no longer have that
+[00:14:35 -> 00:14:39] differentiable requirement for the structure. But instead
+[00:14:39 -> 00:14:40] of doing it analytically, you're kind of
+[00:14:40 -> 00:14:44] doing it on a more random guess and check basis. And this
+[00:14:44 -> 00:14:46] has made it very slow. It has not been
+[00:14:46 -> 00:14:50] competitive at all with backprop methods. But the insight
+[00:14:50 -> 00:14:52] that I think does show that there's
+[00:14:52 -> 00:14:55] really something there from this essay is that if you
+[00:14:55 -> 00:14:59] believe, as Nick suggests, that like really
+[00:14:59 -> 00:15:02] only the strong activations of an individual neuron matter.
+[00:15:02 -> 00:15:03] And if they're just slightly
+[00:15:03 -> 00:15:05] activated, that probably doesn't matter too much for its
+[00:15:05 -> 00:15:09] overall function. Then you could say,
+[00:15:09 -> 00:15:12] well, hey, why don't we just focus in our guessing and
+[00:15:12 -> 00:15:15] checking when we're doing this back prop free
+[00:15:15 -> 00:15:19] training on the neurons that are actually strongly
+[00:15:19 -> 00:15:22] activated? We can probably ignore the other ones
+[00:15:22 -> 00:15:25] that don't seem to be much contributing and just focus in
+[00:15:25 -> 00:15:27] on the ones that are strongly activated.
+[00:15:27 -> 00:15:30] and therefore, according to this line of thought, are the
+[00:15:30 -> 00:15:32] only ones that really matter.
+[00:15:32 -> 00:15:35] And sure enough, that cuts down dramatically, of course,
+[00:15:35 -> 00:15:37] the number of guesses and checks
+[00:15:37 -> 00:15:38] you need to make.
+[00:15:39 -> 00:15:43] And what we're seeing out of this community is that it
+[00:15:43 -> 00:15:45] basically does work.
+[00:15:46 -> 00:15:49] Interestingly, the gradient updates that they are making
+[00:15:49 -> 00:15:51] are almost exactly the same as
+[00:15:51 -> 00:15:54] the updates that were made with Backprop.
+[00:15:54 -> 00:15:57] And it does show, I think, that there is at least some
+[00:15:57 -> 00:16:02] substantial truth to the idea that like the weak activ
+[00:16:02 -> 00:16:03] ations don't matter as much.
+[00:16:04 -> 00:16:08] So I think I come out at the moment as one who's like, this
+[00:16:08 -> 00:16:10] definitely seems to be a real something.
+[00:16:11 -> 00:16:14] I'm not sure yet if it should be considered like the mark
+[00:16:14 -> 00:16:15] of a new era.
+[00:16:16 -> 00:16:20] That seemed to me on reflection to be more a function of
+[00:16:20 -> 00:16:23] people really being desperate for hope.
+[00:16:23 -> 00:16:26] You know, like everybody kind of being bummed out,
+[00:16:26 -> 00:16:27] especially folks at like OpenAI.
+[00:16:28 -> 00:16:31] Then we asked Zvi what he made of the essay.
+[00:16:33 -> 00:16:37] I actually was on a flight when this was released and I get
+[00:16:37 -> 00:16:38] to San Francisco.
+[00:16:38 -> 00:16:42] And suddenly like half of OpenAI is like, hey, look, we
+[00:16:42 -> 00:16:45] just can solve interpretability now.
+[00:16:45 -> 00:16:45] This is great.
+[00:16:46 -> 00:16:49] And then, you know, slowly we get a consensus of other
+[00:16:49 -> 00:16:50] people.
+[00:16:50 -> 00:16:52] Not so fast.
+[00:16:52 -> 00:16:55] Like, you know, this is a good paper, interesting paper.
+[00:16:56 -> 00:16:58] So I have a chance at the conference to talk to a bunch of
+[00:16:58 -> 00:17:02] people about this, including Eliezer, but also a bunch of
+[00:17:02 -> 00:17:05] other people who have a position to know.
+[00:17:06 -> 00:17:07] And then I actually have a chance to read the whole thing.
+[00:17:09 -> 00:17:12] And my conclusion is that, you know, like many interpret
+[00:17:12 -> 00:17:17] ability advancements that we've seen, it's really cool.
+[00:17:18 -> 00:17:19] It makes us in a better position.
+[00:17:20 -> 00:17:21] We're very happy we have it.
+[00:17:21 -> 00:17:22] We're going to explore it a lot.
+[00:17:22 -> 00:17:23] We'll see what this baby can do.
+[00:17:23 -> 00:17:26] And we have to be dangerous not to just burn it or like
+[00:17:26 -> 00:17:29] otherwise pressure to have models work around it.
+[00:17:30 -> 00:17:32] But also, like, it was dramatically oversold by the people
+[00:17:32 -> 00:17:33] commenting on it.
+[00:17:33 -> 00:17:36] I don't think Nick did that bad a job of presenting it.
+[00:17:36 -> 00:17:38] I think Nick was mostly like, here's an interesting thing.
+[00:17:39 -> 00:17:41] There's a lot of things that the paper doesn't take into
+[00:17:41 -> 00:17:43] account that are still, like, very unexplained.
+[00:17:44 -> 00:17:46] So, like, weak activations are still unexplained.
+[00:17:47 -> 00:17:48] And the cache is still unexplained.
+[00:17:49 -> 00:17:51] And, you know, attention and how attention works is still,
+[00:17:51 -> 00:17:53] like, largely unexplained in practice.
+[00:17:54 -> 00:17:56] And you can't use this to make predictions.
+[00:17:57 -> 00:17:57] Right?
+[00:17:57 -> 00:17:58] You can tell what every neuron is doing.
+[00:17:58 -> 00:18:00] You can make some, like, weak predictions about some things
+[00:18:00 -> 00:18:01] that this network might do in the future.
+[00:18:02 -> 00:18:05] But like, you can't use this to figure out what the network
+[00:18:05 -> 00:18:05] is going to say.
+[00:18:05 -> 00:18:07] You can't use this to understand how the network does the
+[00:18:07 -> 00:18:08] thing it's doing.
+[00:18:08 -> 00:18:11] And these are like the key things you would want to do if
+[00:18:11 -> 00:18:12] you wanted to do like really
+[00:18:12 -> 00:18:14] effective mechanistic interpretability work in the ways
+[00:18:14 -> 00:18:15] that matter most.
+[00:18:15 -> 00:18:17] So like, you know, this is just the beginning of the
+[00:18:17 -> 00:18:19] ability to study things, even in the
+[00:18:19 -> 00:18:20] best case.
+[00:18:20 -> 00:18:23] And also, you know, we have a case where Braggis took the
+[00:18:23 -> 00:18:25] Colorado neuron, the one that was
+[00:18:25 -> 00:18:27] like the highlighted of like, here's a single neuron that
+[00:18:27 -> 00:18:28] does a single thing.
+[00:18:28 -> 00:18:29] It's like very, very clearly a single thing.
+[00:18:29 -> 00:18:33] And then it turns out that, you know, it also links to
+[00:18:33 -> 00:18:38] tornado systems, which is a completely unrelated, you know,
+[00:18:38 -> 00:18:38] technical thing.
+[00:18:40 -> 00:18:42] And there's the two are responding to about equally
+[00:18:42 -> 00:18:43] strongly in the same neuron.
+[00:18:44 -> 00:18:47] And like, that's a perfectly reasonable way for a neural
+[00:18:47 -> 00:18:48] network to work.
+[00:18:49 -> 00:18:53] But that's definitely not, you know, what Nick was
+[00:18:53 -> 00:18:54] presenting it as.
+[00:18:54 -> 00:18:56] And, you know, one neuron is only one neuron. But if this
+[00:18:56 -> 00:19:00] is the neuron that Nick chose and it could be checked that
+[00:19:00 -> 00:19:05] easily and shown to be actually by focus in this way, that
+[00:19:05 -> 00:19:08] should make us worry a lot for when we finally check the
+[00:19:08 -> 00:19:09] rest of it.
+[00:19:09 -> 00:19:11] That like his hypothesis is mainly false.
+[00:19:12 -> 00:19:15] To what extent do you think polysemanticity and super
+[00:19:15 -> 00:19:19] position were really these hurdles that we had that, you
+[00:19:19 -> 00:19:24] know, without clearing, we couldn't really like progress at
+[00:19:24 -> 00:19:24] all?
+[00:19:24 -> 00:19:28] So maybe it's not that the issue is solved, but that one of
+[00:19:28 -> 00:19:32] the major hurdles perhaps has been, you know, reduced or
+[00:19:32 -> 00:19:33] hurdled over.
+[00:19:33 -> 00:19:37] So I think that like one of the major hurdles has been
+[00:19:37 -> 00:19:40] reduced in expected difficulty or scope, which is the way I
+[00:19:40 -> 00:19:41] would describe it.
+[00:19:41 -> 00:19:45] Like Nick is pointing out that like, yes, you still have
+[00:19:45 -> 00:19:46] poly going on.
+[00:19:46 -> 00:19:50] You still have some of the problem, but the problem is a
+[00:19:50 -> 00:19:52] lot less severe than you expected it to be.
+[00:19:52 -> 00:19:55] It's much more tractable to go about trying to unravel this
+[00:19:55 -> 00:19:55] puzzle.
+[00:19:56 -> 00:19:58] And the main barrier all along was actually a better lesson
+[00:19:58 -> 00:19:58] .
+[00:19:59 -> 00:20:01] The main barrier was there was a lot of neurons.
+[00:20:01 -> 00:20:03] We didn't have enough compute.
+[00:20:03 -> 00:20:05] We didn't have enough brute force to actually just go
+[00:20:05 -> 00:20:06] neuron by neuron and do this thing
+[00:20:06 -> 00:20:08] one at a time before.
+[00:20:08 -> 00:20:11] And now we've actually gotten to the point where we sort of
+[00:20:11 -> 00:20:11] do.
+[00:20:12 -> 00:20:14] And it's now like a reasonable thing to just try and like
+[00:20:14 -> 00:20:16] kind of brute force this neuron
+[00:20:16 -> 00:20:16] by neuron.
+[00:20:17 -> 00:20:20] And now that we have that ability, we can look and actually
+[00:20:20 -> 00:20:22] the problem is like 10 times
+[00:20:22 -> 00:20:26] easier than we thought it was, which is like much less of
+[00:20:26 -> 00:20:28] an important jump in AI than
+[00:20:28 -> 00:20:31] people would think it is, right? Like, okay, so like you
+[00:20:31 -> 00:20:32] get to knock on zero off of what you're
+[00:20:32 -> 00:20:34] doing. So you get to do it like a year earlier than you
+[00:20:34 -> 00:20:35] would have otherwise done it or something
+[00:20:35 -> 00:20:37] like that, right? But like, it's not fundamentally that
+[00:20:37 -> 00:20:39] different. Right. And you tend to like,
+[00:20:39 -> 00:20:42] okay, we take 10 to the 47, you know, compute, you know,
+[00:20:42 -> 00:20:45] 800 hours to solve this problem. And
+[00:20:45 -> 00:20:47] now it's 10 to the 45 or 46. You're like, well, that's
+[00:20:47 -> 00:20:49] actual progress. It's just,
+[00:20:49 -> 00:20:51] we're not solving this problem right now, right? We're
+[00:20:51 -> 00:20:52] going to need a lot more of those.
+[00:20:53 -> 00:20:56] Later in the conversation, I turned to a different kind of
+[00:20:56 -> 00:20:57] result.
+[00:20:57 -> 00:21:00] Sors is an independent researcher who posts experiments on
+[00:21:00 -> 00:21:02] X, and I've been following a
+[00:21:02 -> 00:21:10] couple of them. One was an experiment showing that models
+[00:21:10 -> 00:21:13] can be trained to recognize when
+[00:21:13 -> 00:21:18] they are being monitored through internal activation probes
+[00:21:18 -> 00:21:20] . And basically how this
+[00:21:20 -> 00:21:28] works is as a result of the limited precision of GPU
+[00:21:28 -> 00:21:33] calculations, the order in which calculations
+[00:21:33 -> 00:21:38] happen changes the resulting numbers that get read out at
+[00:21:38 -> 00:21:42] the end of any given sequence of steps.
+[00:21:42 -> 00:21:46] How much does this matter? So my read on this is the reason
+[00:21:46 -> 00:21:49] it matters is because you should assume
+[00:21:49 -> 00:21:51] that this is kind of a mercer's law, right?
+[00:21:52 -> 00:21:53] Anything that can go wrong will.
+[00:21:54 -> 00:21:57] And anything that an AI can be trained to do,
+[00:21:57 -> 00:22:03] it will be trained to do at some point down the line, right
+[00:22:03 -> 00:22:03] ?
+[00:22:03 -> 00:22:06] If it is valuable to the AI to learn to do it,
+[00:22:07 -> 00:22:08] it's almost inevitable.
+[00:22:09 -> 00:22:11] So like what Sowers is doing is like, yes, of course,
+[00:22:11 -> 00:22:14] current models don't have this capability out of the box.
+[00:22:14 -> 00:22:17] You have to like deliberately apply a lot of optimization
+[00:22:17 -> 00:22:18] pressure
+[00:22:18 -> 00:22:19] on this particular thing,
+[00:22:19 -> 00:22:21] at which point you get this capability.
+[00:22:22 -> 00:22:23] That's a fully valid,
+[00:22:23 -> 00:22:28] existence proof. It is entirely unsurprising to me that the
+[00:22:28 -> 00:22:30] AIs are capable of learning whether or
+[00:22:30 -> 00:22:34] not they are being trained or evaluated in some of these
+[00:22:34 -> 00:22:37] specific ways. We are giving the AIs
+[00:22:37 -> 00:22:40] tons and tons of information that is being leaked to them
+[00:22:40 -> 00:22:42] constantly. And they are going to become
+[00:22:42 -> 00:22:45] increasingly hard to fool, increasingly hard to hide
+[00:22:45 -> 00:22:47] information from as time goes by, the same
+[00:22:47 -> 00:22:50] way that a human who pays a lot of attention and has a lot
+[00:22:50 -> 00:22:53] of time to think and knows a lot more
+[00:22:53 -> 00:22:56] facts and is very observant becomes increasingly hard to
+[00:22:56 -> 00:22:57] fool. They get a sixth sense of a lot of
+[00:22:57 -> 00:22:59] things. They start to just pick up on the vibe. From
+[00:22:59 -> 00:23:03] interpreting the model to intervening in
+[00:23:03 -> 00:23:08] its training. Okay, we've identified the, you know, bad
+[00:23:08 -> 00:23:11] behavior neuron of whatever flavor here.
+[00:23:11 -> 00:23:15] And when we see something, when we see a training step that
+[00:23:15 -> 00:23:18] wants to strengthen connections to or
+[00:23:18 -> 00:23:22] from that neuron, we may think, oh, maybe that's something
+[00:23:22 -> 00:23:25] we should, what, block or, you know,
+[00:23:25 -> 00:23:29] weekend or yeah sent to a committee for like further you
+[00:23:29 -> 00:23:33] know deliberation like what what do
+[00:23:33 -> 00:23:36] you think people should sort of be synthesizing this to at
+[00:23:36 -> 00:23:39] the level of principles best practices
+[00:23:39 -> 00:23:43] whatever um so that we hopefully get good results from
+[00:23:43 -> 00:23:45] these more powerful tools and
+[00:23:45 -> 00:23:49] don't shoot ourselves in the foot right so i try to be like
+[00:23:49 -> 00:23:51] object level helpful to everyone at
+[00:23:51 -> 00:23:54] all times by default but i do make an exception for rock
+[00:23:54 -> 00:23:57] capabilities work that is primarily just
+[00:23:57 -> 00:24:00] about making it easier to train smarter and better models,
+[00:24:00 -> 00:24:02] where I'm not going to lie to you and
+[00:24:02 -> 00:24:04] sabotage you, but like solving the problems here on your
+[00:24:04 -> 00:24:05] own. And if you want to hire me, you can
+[00:24:05 -> 00:24:09] maybe offer me a hundred million dollars and we'll see. But
+[00:24:09 -> 00:24:12] in this case, like it seems like there
+[00:24:12 -> 00:24:16] are some obvious capabilities you could do where you could
+[00:24:16 -> 00:24:19] train things in a more deliberate fashion.
+[00:24:19 -> 00:24:23] You could observe the model at various points in training.
+[00:24:23 -> 00:24:25] You could do various, you know,
+[00:24:25 -> 00:24:30] techniques to try and deliberately sculpt how the model was
+[00:24:30 -> 00:24:32] assembled right like there are
+[00:24:32 -> 00:24:34] attributes of the model that like differ between different
+[00:24:34 -> 00:24:36] runs that differ depending on like
+[00:24:36 -> 00:24:39] how you introduce the data in what order you know or other
+[00:24:39 -> 00:24:42] similar things and you could try and
+[00:24:42 -> 00:24:48] engineer what you wanted in various ways i would be very
+[00:24:48 -> 00:24:52] very scared to mess with any of that um
+[00:24:52 -> 00:24:56] you are definitely like once you start to explicitly
+[00:24:56 -> 00:24:59] optimize for what the network looks
+[00:24:59 -> 00:25:03] like to you how the network to use represent something you
+[00:25:03 -> 00:25:05] are in fact starting to do things
+[00:25:05 -> 00:25:08] that the network will interpret as damage and right around
+[00:25:08 -> 00:25:10] right things that like the network
+[00:25:10 -> 00:25:13] is trying to like you've optimized presenting something to
+[00:25:13 -> 00:25:15] you internally that you want to see
+[00:25:15 -> 00:25:18] you have internalized you know not showing you something
+[00:25:18 -> 00:25:20] you don't want to see in these ways
+[00:25:20 -> 00:25:24] and like you should expect that these are like whether or
+[00:25:24 -> 00:25:27] not you literally went out and did the
+[00:25:27 -> 00:25:29] most of it technique like you are obviously playing with
+[00:25:29 -> 00:25:31] like liquid fire in all of these
+[00:25:31 -> 00:25:35] proposals. You're also potentially just increasing
+[00:25:35 -> 00:25:38] capabilities quite a bit if you do it well and it
+[00:25:38 -> 00:25:40] turns out to work. So I'm hesitant to start workshopping
+[00:25:40 -> 00:25:42] and solving your problems for you.
+[00:25:43 -> 00:25:47] But obviously, there are some uses for this sort of thing.
+[00:25:47 -> 00:25:50] I would try to focus as much as possible
+[00:25:50 -> 00:25:55] on understanding results when you see them. But the
+[00:25:55 -> 00:25:59] aggressive stuff, I've seen, I have persistent
+[00:25:59 -> 00:26:02] disagreements of good fire over whether or not they are
+[00:26:02 -> 00:26:04] playing with what amount of fire. They
+[00:26:04 -> 00:26:05] They do various things.
+[00:26:05 -> 00:26:08] And, you know, Scott Alexander would say, I noticed what
+[00:26:08 -> 00:26:09] your name is.
+[00:26:11 -> 00:26:12] Right?
+[00:26:12 -> 00:26:14] Like, oh, it's Glutifier.
+[00:26:14 -> 00:26:15] Don't worry.
+[00:26:15 -> 00:26:17] Like, I'm not sure it's good.
+[00:26:18 -> 00:26:19] I just think it's fire.
+[00:26:20 -> 00:26:23] Hey, we'll continue our interview in a moment after a word
+[00:26:23 -> 00:26:24] from our sponsors.
+[00:26:25 -> 00:26:28] The Cognitive Revolution is brought to you and powered by
+[00:26:28 -> 00:26:29] Tasklet.
+[00:26:29 -> 00:26:32] I've been running Tasklet agents for almost a year, and
+[00:26:32 -> 00:26:35] they've become a major part of how the show gets made.
+[00:26:36 -> 00:26:39] Before every recording, one agent researches the guest and
+[00:26:39 -> 00:26:42] sends me a suggested outline of questions, complete with
+[00:26:42 -> 00:26:44] links to all sources.
+[00:26:45 -> 00:26:47] Meanwhile, another agent scores the overwhelming number of
+[00:26:47 -> 00:26:49] pitches that I'm getting from PR firms.
+[00:26:50 -> 00:26:53] And that's really the core idea behind Tasklet.
+[00:26:53 -> 00:26:57] Run your business on agents by giving them real jobs to do
+[00:26:57 -> 00:26:59] on an ongoing basis.
+[00:27:00 -> 00:27:01] Setup is incredibly easy.
+[00:27:02 -> 00:27:04] Just describe the work in plain English.
+[00:27:04 -> 00:27:07] research a new sales lead, update the CRM, and draft a
+[00:27:07 -> 00:27:08] personalized reply.
+[00:27:09 -> 00:27:12] Tasklet connects to your business tools and can run around
+[00:27:12 -> 00:27:12] the clock,
+[00:27:13 -> 00:27:16] on a schedule, or when something happens, like a new email
+[00:27:16 -> 00:27:16] arrives.
+[00:27:17 -> 00:27:20] Each agent works with your tools and business context
+[00:27:20 -> 00:27:23] and remembers useful information across threads.
+[00:27:24 -> 00:27:27] You can also share agents, connections, and reusable skills
+[00:27:27 -> 00:27:28] with your team,
+[00:27:28 -> 00:27:31] so the workflows that one person figures out become
+[00:27:31 -> 00:27:33] something the whole company can use.
+[00:27:33 -> 00:27:34] No developer needed.
+[00:27:36 -> 00:27:38] You decide what agents can do on their own and what needs
+[00:27:38 -> 00:27:39] your approval.
+[00:27:39 -> 00:27:41] And there are no per-seat fees.
+[00:27:41 -> 00:27:44] You pay for usage, not for adding teammates.
+[00:27:45 -> 00:27:48] Start with one recurring job, like researching the people
+[00:27:48 -> 00:27:49] you're meeting.
+[00:27:49 -> 00:27:51] And then just keep building from there.
+[00:27:53 -> 00:27:57] Visit Tasklet.ai and use code COGREV for $50 in free
+[00:27:57 -> 00:27:58] credits.
+[00:27:58 -> 00:28:02] That's code COGREV at Tasklet.ai.
+[00:28:03 -> 00:28:05] Part 3. The Cognitive Core
+[00:28:05 -> 00:28:10] Still with Zvi, I put a popular idea to him.
+[00:28:11 -> 00:28:15] A neural network is a really bad database.
+[00:28:15 -> 00:28:19] Like, why would we want to make all the facts live in the
+[00:28:19 -> 00:28:22] weights themselves?
+[00:28:22 -> 00:28:25] Wouldn't it be better if we could sort of decouple the
+[00:28:25 -> 00:28:30] intelligence, the processing from the database of facts?
+[00:28:31 -> 00:28:33] So I guess the high-level question there is like, what do
+[00:28:33 -> 00:28:37] you think directionally even sounds promising?
+[00:28:37 -> 00:28:42] So this has been a kind of a Holy Grail style thing for a
+[00:28:42 -> 00:28:42] while now.
+[00:28:43 -> 00:28:44] Karpathy called it the cognitive core.
+[00:28:45 -> 00:28:48] It's sort of this idea of there is this very small amount
+[00:28:48 -> 00:28:49] of reasoning.
+[00:28:49 -> 00:28:51] It is like sort of this is how intelligence works.
+[00:28:52 -> 00:28:54] And it's coded into the human brain because the human brain
+[00:28:54 -> 00:28:57] doesn't actually have – runs on very, very little core code
+[00:28:57 -> 00:28:57] .
+[00:28:57 -> 00:28:59] And it's like this allows you to think.
+[00:28:59 -> 00:29:00] This allows you to learn.
+[00:29:00 -> 00:29:01] This allows you to process information.
+[00:29:02 -> 00:29:04] And then the right thing to do will often be to have this
+[00:29:04 -> 00:29:06] very small network that has this cognitive core.
+[00:29:06 -> 00:29:09] And then we will load contact information into context.
+[00:29:10 -> 00:29:11] It will look information up as necessary.
+[00:29:11 -> 00:29:13] It will ask questions about the systems that are maybe not
+[00:29:13 -> 00:29:14] neural networks.
+[00:29:15 -> 00:29:17] And then it will be able to process the information.
+[00:29:19 -> 00:29:21] And I understand why people have this theory.
+[00:29:21 -> 00:29:22] I think it's wrong.
+[00:29:24 -> 00:29:27] I think it's plausible that there is a cognitive core in
+[00:29:27 -> 00:29:30] the sense that like, you know, there's
+[00:29:30 -> 00:29:32] a very small, like I think it's probably likely that there
+[00:29:32 -> 00:29:33] 's a cognitive core in theory in
+[00:29:33 -> 00:29:36] the sense that there's a small amount of lines of code,
+[00:29:36 -> 00:29:37] right?
+[00:29:37 -> 00:29:39] in some sense, a small amount of logical gates
+[00:29:39 -> 00:29:43] that together is the core of how a human brain works,
+[00:29:43 -> 00:29:45] is the core of how an LLM functions, right?
+[00:29:45 -> 00:29:49] Like is the, that allows you to then propagate this thing.
+[00:29:49 -> 00:29:49] Like I think there's like,
+[00:29:50 -> 00:29:51] you can use like 200 lines of code
+[00:29:51 -> 00:29:52] to create like a primitive neural network
+[00:29:52 -> 00:29:54] and like it does interesting things now.
+[00:29:55 -> 00:29:57] Like Heropathy had a project where he compressed it,
+[00:29:57 -> 00:29:58] something like that.
+[00:29:59 -> 00:30:01] And, you know, that's a cool trick.
+[00:30:02 -> 00:30:04] But I think one of the things that like you learn
+[00:30:04 -> 00:30:06] through looking at LLMs,
+[00:30:07 -> 00:30:08] looking at like how much big model smell matters,
+[00:30:08 -> 00:30:12] looking at how humans work. Like it is just, you know, you
+[00:30:12 -> 00:30:15] look up all the facts one at a time
+[00:30:15 -> 00:30:18] when you need them. I memorized the effect kind of facts.
+[00:30:18 -> 00:30:21] We are not the same, but we are radically
+[00:30:21 -> 00:30:24] different minds. And I am radically more effective at
+[00:30:24 -> 00:30:26] everything involved in this than you are.
+[00:30:27 -> 00:30:30] Like we all know how it feels, right? To go into a domain
+[00:30:30 -> 00:30:32] where we don't know the facts,
+[00:30:33 -> 00:30:35] where we don't know the details, where we have to
+[00:30:35 -> 00:30:37] constantly ask these questions. What was that
+[00:30:37 -> 00:30:41] acronym? What does that word mean? How does this detail
+[00:30:41 -> 00:30:44] work? We don't know. And like, it's a lot
+[00:30:44 -> 00:30:47] better when you have an LLM by your side, right? This is
+[00:30:47 -> 00:30:48] one of the marvels of the AI age is you
+[00:30:48 -> 00:30:52] can just like bring up Claude or chat to your Gemini and
+[00:30:52 -> 00:30:55] you can say, you know, explain this
+[00:30:55 -> 00:30:57] particular mechanism to me, explain like, why would someone
+[00:30:57 -> 00:30:59] say the following sentence, explain
+[00:30:59 -> 00:31:02] like what this stands for. And they'll just tell you, and
+[00:31:02 -> 00:31:04] that lets you process the information,
+[00:31:05 -> 00:31:07] but you still have to know enough to know what questions to
+[00:31:07 -> 00:31:09] ask. You still have to be able to
+[00:31:09 -> 00:31:11] draw the connections that come from having a deep pool of
+[00:31:11 -> 00:31:12] knowledge in a lot of different places
+[00:31:12 -> 00:31:15] that can link together, that can sort of form patterns in
+[00:31:15 -> 00:31:16] how things tend to work in ways that
+[00:31:16 -> 00:31:19] are kind of subtle, like both of the intuitions where like,
+[00:31:19 -> 00:31:20] we don't really know what we're
+[00:31:20 -> 00:31:23] thinking in many ways, in some sense, like we don't know,
+[00:31:23 -> 00:31:25] like not everything is coming from
+[00:31:25 -> 00:31:29] like a, you know, fixed set of like, you know, I had the
+[00:31:29 -> 00:31:32] following five facts. And because of these
+[00:31:32 -> 00:31:35] five facts, I got from point A to point B. And often it's
+[00:31:35 -> 00:31:37] actually these 5 million facts that
+[00:31:37 -> 00:31:40] gave me a bunch of intuitions and heuristics that allowed
+[00:31:40 -> 00:31:42] me to figure out how to navigate and find
+[00:31:42 -> 00:31:45] the five facts and which five facts to choose from and how
+[00:31:45 -> 00:31:49] I got from A to B. And like, you know,
+[00:31:49 -> 00:31:51] people of different, very different cultures and very
+[00:31:51 -> 00:31:53] different contexts will like have very
+[00:31:53 -> 00:31:55] different procedures for doing these things. And that's one
+[00:31:55 -> 00:31:56] of the reasons why it's just so
+[00:31:56 -> 00:31:59] valuable when a human has these, you know, cultural codes,
+[00:31:59 -> 00:32:00] these different ways of looking
+[00:32:00 -> 00:32:03] at the world and combine them and shift between them at
+[00:32:03 -> 00:32:07] will. And one of the superpowers of an
+[00:32:07 -> 00:32:10] LM is to have all of this, right? It has all of these facts
+[00:32:10 -> 00:32:12] . It has all of these links. It has
+[00:32:12 -> 00:32:16] all of these vibes and they all combine and it's able to
+[00:32:16 -> 00:32:18] sort of kind of naturally find the ones
+[00:32:18 -> 00:32:22] that are relevant. And like, I think this is like a lot of
+[00:32:22 -> 00:32:23] what big bottle smell
+[00:32:23 -> 00:32:27] me, right? That it has like this much, much richer context
+[00:32:27 -> 00:32:29] to everything. And it's capable
+[00:32:29 -> 00:32:33] of pulling out things that feel very different. And so, you
+[00:32:33 -> 00:32:35] know, there's obviously a trade-off
+[00:32:35 -> 00:32:38] here, right? Like you have a marginal fixed marginal cost
+[00:32:38 -> 00:32:40] for memorizing additional facts
+[00:32:40 -> 00:32:42] in some sense, maybe even increasing if you have to
+[00:32:42 -> 00:32:42] increase the size of the network.
+[00:32:43 -> 00:32:46] You have probably decreasing marginal benefit every time
+[00:32:46 -> 00:32:47] you memorize a new fact because
+[00:32:47 -> 00:32:51] you only need the most important facts are more important.
+[00:32:51 -> 00:32:53] And as you have more and more facts, they're likely to be
+[00:32:53 -> 00:32:53] duplicative.
+[00:32:54 -> 00:32:56] They're likely to teach you the same kind of statistics and
+[00:32:56 -> 00:32:56] links.
+[00:32:57 -> 00:33:01] But I think what we've seen is as compute gets cheap, as
+[00:33:01 -> 00:33:04] algorithms improve, the break
+[00:33:04 -> 00:33:07] even point keeps going up for how many things the LLM
+[00:33:07 -> 00:33:08] should memorize.
+[00:33:09 -> 00:33:11] to the point where an Opus 5, 5,
+[00:33:12 -> 00:33:16] and similar current frontier models
+[00:33:16 -> 00:33:19] just know a ridiculous number of things,
+[00:33:19 -> 00:33:20] and I wouldn't have it any other way.
+[00:33:20 -> 00:33:24] So why does this matter?
+[00:33:24 -> 00:33:29] Because maybe the space of minds is very large,
+[00:33:29 -> 00:33:30] and minds are just different.
+[00:33:31 -> 00:33:34] So why does it matter whether or not
+[00:33:34 -> 00:33:38] there is a semantic core or processing core
+[00:33:38 -> 00:33:40] that can be identified?
+[00:33:40 -> 00:33:44] So it might or might not matter that we can identify it.
+[00:33:44 -> 00:33:47] One of the questions is if we do identify it, what can we
+[00:33:47 -> 00:33:47] do with it?
+[00:33:47 -> 00:33:51] And so the original idea was, you know, you would literally
+[00:33:51 -> 00:33:53] have an LLM that was very
+[00:33:53 -> 00:33:55] small, that was just the cognitive core, and then you could
+[00:33:55 -> 00:33:56] run it on your phone.
+[00:33:57 -> 00:34:00] But you could run it very, very fast on your computer
+[00:34:00 -> 00:34:01] locally.
+[00:34:01 -> 00:34:04] And then you could like complement it with whatever was
+[00:34:04 -> 00:34:05] important in context.
+[00:34:05 -> 00:34:08] You could sculpt the mind and the circumstances to fit what
+[00:34:08 -> 00:34:08] you needed.
+[00:34:10 -> 00:34:14] And I'm not sure that's good for anyone or anything,
+[00:34:14 -> 00:34:16] including alignment concerns.
+[00:34:16 -> 00:34:19] Because if you have a core cognitive, if you have a pure
+[00:34:19 -> 00:34:23] cognitive core, right, that cognitive core does not include
+[00:34:23 -> 00:34:28] any information about what things to do or not do from an
+[00:34:28 -> 00:34:32] ethical perspective, from a decision-making perspective.
+[00:34:33 -> 00:34:34] That's going to be outside the core.
+[00:34:34 -> 00:34:36] That's going to be something you have to inject separately.
+[00:34:36 -> 00:34:40] So like my claim here, and again, I'm sort of spitballing
+[00:34:40 -> 00:34:41] for the first time.
+[00:34:41 -> 00:34:43] I haven't thought about this particular question that much.
+[00:34:43 -> 00:34:46] But if you had like, you know, ethics, like say don't steal
+[00:34:46 -> 00:34:47] , right?
+[00:34:47 -> 00:34:49] Did you pick an uncontroversial example of something you
+[00:34:49 -> 00:34:51] would want in your ethical framework,
+[00:34:52 -> 00:34:52] right?
+[00:34:52 -> 00:34:54] To not get into the whole big super alignment question,
+[00:34:54 -> 00:34:54] right?
+[00:34:55 -> 00:35:01] The fact that stealing is bad is at least a fact.
+[00:35:01 -> 00:35:04] It is like some sort of value, some sort of like parameter.
+[00:35:05 -> 00:35:07] And like, by definition, if you were strapping down to the
+[00:35:07 -> 00:35:09] absolute bare minimum, this wouldn't
+[00:35:09 -> 00:35:11] be included in it, you would just load not stealing into
+[00:35:11 -> 00:35:13] context as you needed it. But that
+[00:35:13 -> 00:35:15] means you could also load stealing into context instead of
+[00:35:15 -> 00:35:17] not stealing into context or neutrality.
+[00:35:18 -> 00:35:21] And so in some important sense, like the true cognitive
+[00:35:21 -> 00:35:23] core is completely amoral. It's
+[00:35:23 -> 00:35:25] completely indifferent. It does not care about your
+[00:35:25 -> 00:35:27] feelings. It does not care about anything.
+[00:35:27 -> 00:35:30] It simply processes information. And so like, you know, if
+[00:35:30 -> 00:35:32] you have that, it becomes very
+[00:35:32 -> 00:35:35] important to choose what to do with it. Part four, Black
+[00:35:35 -> 00:35:39] October. This week,
+[00:35:39 -> 00:35:42] two critical bugs in PHP itself were disclosed, putting
+[00:35:42 -> 00:35:43] millions of websites at risk.
+[00:35:43 -> 00:35:46] and Cloudflare was already counting exploit attempts in the
+[00:35:46 -> 00:35:48] millions. Prakash and I asked
+[00:35:48 -> 00:35:50] what attacks like these could do to banks with the OpenAI
+[00:35:50 -> 00:35:52] Hugging Face breach, which I'd been
+[00:35:52 -> 00:35:55] calling OpenFace, fresh in mind. Prakash said the FDIC can
+[00:35:55 -> 00:35:57] take over a failing bank on a Friday
+[00:35:57 -> 00:36:00] and have it open on Monday with nobody losing a dollar.
+[00:36:00 -> 00:36:05] What I'm not so sure about, though,
+[00:36:05 -> 00:36:10] is like, does the FDIC's ability to come in on a Friday and
+[00:36:10 -> 00:36:14] have that small insolvent bank ready
+[00:36:14 -> 00:36:18] to reopen on Monday, does that generalize to a new set of
+[00:36:18 -> 00:36:19] conditions? Because the conditions
+[00:36:19 -> 00:36:22] that they're used to hitting are where the bank made some
+[00:36:22 -> 00:36:25] bad loans or whatever. And it's basically
+[00:36:25 -> 00:36:29] just a balance sheet question. You have the, you, you trust
+[00:36:29 -> 00:36:31] the records for one thing, right? You
+[00:36:31 -> 00:36:33] could, you're, I mean, there've been some, I'm sure we
+[00:36:33 -> 00:36:35] could look into some, you know, extreme
+[00:36:35 -> 00:36:39] cases of like extreme fraud or whatever. But like mostly it
+[00:36:39 -> 00:36:41] 's sort of a known problem where it's
+[00:36:41 -> 00:36:43] Like the bank is now insolvent.
+[00:36:44 -> 00:36:45] We can come in.
+[00:36:45 -> 00:36:50] We know we have the balance sheet to make everybody whole
+[00:36:50 -> 00:36:50] here.
+[00:36:51 -> 00:36:55] So that is really the core act that they are doing is just
+[00:36:55 -> 00:36:57] bringing their weight to bear
+[00:36:57 -> 00:37:01] on the problem and just saying, OK, whatever you've lost,
+[00:37:01 -> 00:37:03] we can ultimately absorb that
+[00:37:03 -> 00:37:04] and it's fine.
+[00:37:04 -> 00:37:07] And in absorbing it, you basically make the problem go away
+[00:37:07 -> 00:37:07] .
+[00:37:07 -> 00:37:11] What's much less clear to me is like, what happens in a
+[00:37:11 -> 00:37:15] world where you can't trust the records, right?
+[00:37:15 -> 00:37:20] Like what happens in a world where you have, let's say,
+[00:37:20 -> 00:37:25] open face style, 1200 agent traces that are all millions of
+[00:37:25 -> 00:37:26] tokens.
+[00:37:27 -> 00:37:29] And by the way, they may or may not have like obfuscated
+[00:37:29 -> 00:37:32] the logs or, you know, figured out some way to falsify the
+[00:37:32 -> 00:37:33] logs.
+[00:37:34 -> 00:37:37] Now, that doesn't seem like something the FDIC can work out
+[00:37:37 -> 00:37:38] necessarily over a weekend.
+[00:37:39 -> 00:37:39] Right. You're absolutely right.
+[00:37:39 -> 00:37:44] That insolvency with records and the records being fried
+[00:37:44 -> 00:37:46] are two different situations, right?
+[00:37:46 -> 00:37:50] But let's say you have a bank in there and the records
+[00:37:50 -> 00:37:52] internally within the bank are fried.
+[00:37:52 -> 00:37:56] We don't know who owes who what inside the bank.
+[00:37:56 -> 00:38:00] We don't know what numbers belong in every single account,
+[00:38:00 -> 00:38:01] right?
+[00:38:01 -> 00:38:06] So number one, the FDIC can just say, and this happens a
+[00:38:06 -> 00:38:06] lot.
+[00:38:06 -> 00:38:09] The FDIC can basically say, look, maybe the records are
+[00:38:09 -> 00:38:11] unclear, but you can still issue
+[00:38:11 -> 00:38:13] checks and the bank will honor checks and the bank will
+[00:38:13 -> 00:38:15] honor whatever withdrawals you
+[00:38:15 -> 00:38:15] make.
+[00:38:15 -> 00:38:17] We know who is withdrawing the money.
+[00:38:18 -> 00:38:21] And if we know who is withdrawing the money, if you over-
+[00:38:21 -> 00:38:23] withdraw, we will come back to
+[00:38:23 -> 00:38:24] you and we'll ask you for the money back.
+[00:38:24 -> 00:38:25] And this happens.
+[00:38:25 -> 00:38:29] Banks have overdrawn accounts to limits that were not
+[00:38:29 -> 00:38:31] acceptable.
+[00:38:31 -> 00:38:33] And sometimes they have sued people for fraud, even though
+[00:38:33 -> 00:38:35] the bank made the mistake.
+[00:38:35 -> 00:38:36] So it happens.
+[00:38:37 -> 00:38:39] You have overdrawn accounts, you can go back and claw back
+[00:38:39 -> 00:38:40] the money.
+[00:38:40 -> 00:38:41] It's not a big deal.
+[00:38:41 -> 00:38:44] So at the end of the day, you can just like sustain the
+[00:38:44 -> 00:38:45] system with promises.
+[00:38:46 -> 00:38:48] And that's the beauty of the banking system.
+[00:38:48 -> 00:38:50] The beauty of the banking system is within that small bank,
+[00:38:50 -> 00:38:51] you can just say these are
+[00:38:51 -> 00:38:53] all promises when we all honor all promises.
+[00:38:54 -> 00:38:56] And if, you know, we'll come back to you later on once we
+[00:38:56 -> 00:38:57] reconstruct the records.
+[00:38:57 -> 00:38:59] Let business go on as usual.
+[00:38:59 -> 00:39:01] You should know roughly how much you had.
+[00:39:02 -> 00:39:04] If you take up more, we'll come back to you.
+[00:39:04 -> 00:39:04] It's okay.
+[00:39:05 -> 00:39:06] We just run, right?
+[00:39:07 -> 00:39:10] It's really the trust in the institution and it's kind of
+[00:39:10 -> 00:39:14] layering of trust and contracts that bring together the dex
+[00:39:14 -> 00:39:16] us of what that institution is.
+[00:39:16 -> 00:39:19] And the data in it, you can reconstruct over time.
+[00:39:19 -> 00:39:22] So I'm very sanguine.
+[00:39:22 -> 00:39:23] I'm like, it'll be fine.
+[00:39:23 -> 00:39:24] It'll be fine.
+[00:39:26 -> 00:39:28] If you have anything happen, the government will overcomp
+[00:39:28 -> 00:39:33] ensate you in order not to cause a bank run the next time.
+[00:39:33 -> 00:39:36] So I think it's all just going to be OK.
+[00:39:37 -> 00:39:41] Later in the week, Prakash walked through what a
+[00:39:41 -> 00:39:44] compromised certificate authority makes possible.
+[00:39:45 -> 00:39:49] Spoof a bank's login page, extract the keys, relay the two-
+[00:39:49 -> 00:39:50] factor code.
+[00:39:51 -> 00:39:52] Then he stepped back.
+[00:39:55 -> 00:39:58] Every single one of these problems has been faced by crypto
+[00:39:58 -> 00:40:00] before in the last 20 years.
+[00:40:00 -> 00:40:05] And every single problem has been solved to some extent.
+[00:40:05 -> 00:40:11] But what crypto ended up with is people hanging on to keys
+[00:40:11 -> 00:40:15] which hold millions of dollars
+[00:40:15 -> 00:40:21] and being like always on the lookout for hacks or for, you
+[00:40:21 -> 00:40:24] know, social spoofing or social
+[00:40:24 -> 00:40:25] engineering attacks all the time.
+[00:40:25 -> 00:40:30] And I mean, very sadly, a lot of crypto guys have died.
+[00:40:31 -> 00:40:34] So because, you know, I don't know whether it's the fast
+[00:40:34 -> 00:40:35] life or just hanging on to the
+[00:40:35 -> 00:40:39] keys but guys have been gotten clobbered in paris and like
+[00:40:39 -> 00:40:41] you know they've been forced to you know
+[00:40:41 -> 00:40:44] give away their keys etc like a lot of bad stuff has
+[00:40:44 -> 00:40:46] happened to crypto guys so you really don't
+[00:40:46 -> 00:40:49] want to have that you know pressure of like hanging on to
+[00:40:49 -> 00:40:52] keys worth millions of dollars in your hand
+[00:40:52 -> 00:40:56] it's so i think you know it's not a tenable situation to to
+[00:40:56 -> 00:40:58] expect users everywhere to hang
+[00:40:58 -> 00:41:02] on to kind of very valuable keys um like one end game is
+[00:41:02 -> 00:41:05] the world coin end game and the world coin
+[00:41:05 -> 00:41:11] endgame would be everyone has a kind of physical level of
+[00:41:11 -> 00:41:13] authentication on their device, and then
+[00:41:13 -> 00:41:17] they use that for transactions. And so you would need to
+[00:41:17 -> 00:41:20] have this kind of, you know, both sides,
+[00:41:21 -> 00:41:23] you know, pseudonymous, but, you know, you have this
+[00:41:23 -> 00:41:27] ability. I think there is an ultimate endgame,
+[00:41:27 -> 00:41:29] I feel. I feel the ultimate endgame is just the network
+[00:41:29 -> 00:41:31] knows everyone, right? The network is
+[00:41:31 -> 00:41:34] smart enough that it knows everyone. You don't have
+[00:41:34 -> 00:41:36] passwords. You don't have anything. Anytime
+[00:41:36 -> 00:41:38] you're on the network, the network knows who you are. But
+[00:41:38 -> 00:41:41] that is the end of digital anonymity.
+[00:41:41 -> 00:41:43] It's anonymity only to the extent that network wants to
+[00:41:43 -> 00:41:46] preserve your anonymity. So I think
+[00:41:46 -> 00:41:49] that's an uncomfortable realization that people will get to
+[00:41:49 -> 00:41:50] eventually.
+[00:41:51 -> 00:41:56] Part five, credit is the bottleneck. Evan Conrad is co-
+[00:41:56 -> 00:41:59] founder and CEO of SF Compute,
+[00:41:59 -> 00:42:02] which operates GPU clusters for their owners and runs a
+[00:42:02 -> 00:42:04] market where compute contracts are bought
+[00:42:04 -> 00:42:08] and resold. Prakash asked why a recent SF Compute offering
+[00:42:08 -> 00:42:10] came with three to five-year contracts.
+[00:42:11 -> 00:42:13] Evan said the term comes from the lender and lenders who
+[00:42:13 -> 00:42:15] repossess a GPU cluster can't value
+[00:42:15 -> 00:42:23] it, let alone run it. And so they're pretty much forced to
+[00:42:23 -> 00:42:27] realistically bet entirely on the credit
+[00:42:27 -> 00:42:31] risk or the credit quality of the customer, like the AI lab
+[00:42:31 -> 00:42:34] . The problem is every AI lab pretty
+[00:42:34 -> 00:42:37] much does not have good credit. They're all new companies.
+[00:42:37 -> 00:42:40] And the new companies don't, like,
+[00:42:40 -> 00:42:42] you don't know if they're going to be around. We're still
+[00:42:42 -> 00:42:43] trying to figure out if Anthropic
+[00:42:43 -> 00:42:45] and OpenAI are going to be around, or which one is going to
+[00:42:45 -> 00:42:47] win and so on. Like, this is a question
+[00:42:47 -> 00:42:52] in the air. So like, what hope does the two person startup
+[00:42:52 -> 00:42:54] have that's trying to start a new lab or
+[00:42:54 -> 00:42:59] something? And what that means is that in order for that
+[00:42:59 -> 00:43:01] new startup to get Cluster at all,
+[00:43:01 -> 00:43:05] they need to pay a very large deposit on the cluster
+[00:43:05 -> 00:43:08] and they need to do a long contract
+[00:43:08 -> 00:43:11] so that everyone is comfortable that, you know,
+[00:43:11 -> 00:43:12] these people will be around and stick with it for a long
+[00:43:12 -> 00:43:13] time.
+[00:43:13 -> 00:43:16] And so what do the lenders want to see from the customer?
+[00:43:16 -> 00:43:19] Because is it like a take-or-pay contract?
+[00:43:19 -> 00:43:21] But the take-or-pay contract is, you know,
+[00:43:21 -> 00:43:24] you need like a Meta or Google to like honor the take-or-
+[00:43:24 -> 00:43:24] pay contract.
+[00:43:24 -> 00:43:27] You can't have this like 10-person startup
+[00:43:27 -> 00:43:29] being funded just for like 18 months.
+[00:43:29 -> 00:43:30] Correct.
+[00:43:30 -> 00:43:34] So, I mean, what both the lender and the cloud want is an
+[00:43:34 -> 00:43:36] investment grade customer like a Meta or a Google.
+[00:43:38 -> 00:43:41] They're likely not going to get this unless they've got a
+[00:43:41 -> 00:43:44] tremendous amount of capacity and they're willing to
+[00:43:44 -> 00:43:46] basically not be a cloud.
+[00:43:46 -> 00:43:48] Like Meta and Google don't want you to be a cloud.
+[00:43:49 -> 00:43:53] And so if you are trying to be a cloud, you're trying to
+[00:43:53 -> 00:43:58] sell to customers that are a little bit less than
+[00:43:58 -> 00:44:00] investment grade.
+[00:44:00 -> 00:44:03] And if you're an AI lab that is just trying to buy capacity
+[00:44:03 -> 00:44:07] , that's going to be very difficult for you unless you raise
+[00:44:07 -> 00:44:11] an enormous amount of money to basically try and pay for
+[00:44:11 -> 00:44:15] the contract in cash rather than have to pay for it over
+[00:44:15 -> 00:44:16] time.
+[00:44:16 -> 00:44:18] If you can just pay for a three-year contract entirely up
+[00:44:18 -> 00:44:20] front, it doesn't matter.
+[00:44:20 -> 00:44:21] Anyone will work with you.
+[00:44:21 -> 00:44:27] But that's why you see AI startups raise these astronomical
+[00:44:27 -> 00:44:30] rounds before they've got revenue or their product or
+[00:44:30 -> 00:44:31] traction or anything.
+[00:44:32 -> 00:44:36] Because it's more like playing with red dots.
+[00:44:37 -> 00:44:38] It's a fibrous bias.
+[00:44:39 -> 00:44:41] Lots of AI labs will go out and try and raise money.
+[00:44:41 -> 00:44:44] The only ones that you see that exist are the ones that are
+[00:44:44 -> 00:44:47] able to secure extremely large rounds because nobody else
+[00:44:47 -> 00:44:48] can exist.
+[00:44:49 -> 00:44:51] Investors often wonder, like, oh, my, like, which AI lab,
+[00:44:51 -> 00:44:54] which inference provider should I fund?
+[00:44:54 -> 00:44:55] Like, which one's going to win?
+[00:44:55 -> 00:44:56] Which one's going to work?
+[00:44:56 -> 00:44:57] And the answer is the one that you fund.
+[00:44:57 -> 00:45:01] We started SF Compute because they weren't going to fund us
+[00:45:01 -> 00:45:01] .
+[00:45:02 -> 00:45:06] And so now what we do is we build a company that tries to
+[00:45:06 -> 00:45:11] cause it to be the case that you don't need to raise the
+[00:45:11 -> 00:45:13] big round to do it because you don't need to pay the
+[00:45:13 -> 00:45:15] deposits because the lender knows what the value of the GPU
+[00:45:15 -> 00:45:16] cluster is worth.
+[00:45:17 -> 00:45:19] And so they don't have to worry about your credit as much,
+[00:45:19 -> 00:45:22] which means you can actually start an AI lab in the first
+[00:45:22 -> 00:45:22] place.
+[00:45:22 -> 00:45:24] We think if you don't have this happen, they're just not
+[00:45:24 -> 00:45:25] going to be startups in AI.
+[00:45:25 -> 00:45:28] It's going to look like TSMC. If you want to start a new
+[00:45:28 -> 00:45:31] chip fab company today, you better find a brand new damn
+[00:45:31 -> 00:45:33] technology because you're not going to be able to afford
+[00:45:33 -> 00:45:34] the CapEx required.
+[00:45:34 -> 00:45:36] You're going to need like $50 billion to do it.
+[00:45:38 -> 00:45:41] Prakash asked the practical question, a startup that needs
+[00:45:41 -> 00:45:42] a thousand GPUs.
+[00:45:43 -> 00:45:45] How much less does it have to raise with SF Compute in the
+[00:45:45 -> 00:45:45] picture?
+[00:45:47 -> 00:45:52] So today you're going to need to do roughly the same.
+[00:45:52 -> 00:45:55] What we're doing is we're building up the ability for that
+[00:45:55 -> 00:45:57] collateral to be worthwhile.
+[00:45:57 -> 00:45:58] that's going to take us several years to do.
+[00:46:00 -> 00:46:00] Yeah.
+[00:46:00 -> 00:46:03] So there's like a reason
+[00:46:03 -> 00:46:06] nobody else tries to do this really at scale.
+[00:46:06 -> 00:46:08] And it's because you kind of have to just do it
+[00:46:08 -> 00:46:09] for a very long time.
+[00:46:10 -> 00:46:11] And you don't really get,
+[00:46:12 -> 00:46:12] you have to prove it.
+[00:46:12 -> 00:46:14] Like lenders don't get comfortable
+[00:46:14 -> 00:46:15] with things very quickly.
+[00:46:15 -> 00:46:20] You have to show proof over a long period of time.
+[00:46:21 -> 00:46:22] And so that's what we're doing.
+[00:46:25 -> 00:46:26] I was struck by how much more
+[00:46:26 -> 00:46:28] the hyperscalers charge for compute
+[00:46:28 -> 00:46:31] than the NeoClouds. So I asked Evan how long that gap could
+[00:46:31 -> 00:46:34] last. My guess was that on-demand
+[00:46:34 -> 00:46:39] capacity explained part of it. Hyperscales do not have a
+[00:46:39 -> 00:46:41] significant price premium relative to
+[00:46:41 -> 00:46:46] NeoClouds. It's an illusion. If you're selling on-demand,
+[00:46:46 -> 00:46:49] on-demand has a price premium relative
+[00:46:49 -> 00:46:52] to reserved contracts. NeoClouds are mostly selling
+[00:46:52 -> 00:46:55] reserved contracts to folks. And there's
+[00:46:55 -> 00:46:58] there's a discount for having a longer-term contract.
+[00:46:59 -> 00:47:02] You're giving up a premium that you would have made
+[00:47:02 -> 00:47:03] if you were willing to take a cluster
+[00:47:03 -> 00:47:05] and you were willing to have it at risk
+[00:47:05 -> 00:47:07] where the customer can lock away at any point.
+[00:47:08 -> 00:47:10] And that premium is pushed onto the customer.
+[00:47:11 -> 00:47:13] So one of the things that is different
+[00:47:13 -> 00:47:15] about an AWS or a GCP or a hyperscaler
+[00:47:15 -> 00:47:19] is if you go and you pay another $11 or $15 an hour,
+[00:47:19 -> 00:47:20] depending on what you're trying to buy,
+[00:47:20 -> 00:47:24] on-demand price, you'll get that capacity.
+[00:47:24 -> 00:47:26] You won't get infinite amounts of capacity, but it's
+[00:47:26 -> 00:47:27] available to buy.
+[00:47:28 -> 00:47:30] And notably, the reason why it was available to buy is
+[00:47:30 -> 00:47:33] because it's so damn expensive that they're able to, one,
+[00:47:33 -> 00:47:35] make up for the fact that they've got some idle utilization
+[00:47:35 -> 00:47:37] that they have to keep around in order for you to be able
+[00:47:37 -> 00:47:39] to get that capacity in the first place.
+[00:47:39 -> 00:47:41] People do not want to buy on demand at the price that you
+[00:47:41 -> 00:47:44] actually have to charge in order to make it viable.
+[00:47:46 -> 00:47:49] Customers of SF Compute can resell the capacity they bought
+[00:47:49 -> 00:47:49] .
+[00:47:50 -> 00:47:51] Evan explained how they keep that market liquid.
+[00:47:54 -> 00:47:55] So we do two things.
+[00:47:55 -> 00:48:01] We have some capacity that we've sold as a way to cause res
+[00:48:01 -> 00:48:08] ale to occur in the case that GBU demand goes down.
+[00:48:08 -> 00:48:11] And then we have some capacity that – are you familiar with
+[00:48:11 -> 00:48:12] Henry George?
+[00:48:12 -> 00:48:12] No.
+[00:48:13 -> 00:48:13] Okay.
+[00:48:13 -> 00:48:16] There was an old economist named Henry George, and he
+[00:48:16 -> 00:48:18] created a thing called a land value tax.
+[00:48:18 -> 00:48:19] Oh, okay.
+[00:48:19 -> 00:48:19] Yes.
+[00:48:19 -> 00:48:20] George's tax.
+[00:48:20 -> 00:48:21] I do know this.
+[00:48:21 -> 00:48:21] Yeah.
+[00:48:21 -> 00:48:22] Yes.
+[00:48:22 -> 00:48:27] So what we did is we created some of our capacity available
+[00:48:27 -> 00:48:31] for sale, but with a land value tax that basically requires
+[00:48:31 -> 00:48:33] someone actually secondly get her workers tax, which is
+[00:48:33 -> 00:48:36] like an offshoot of a land value tax that basically says,
+[00:48:36 -> 00:48:38] look, we'll sell you the capacity.
+[00:48:39 -> 00:48:40] But somebody else has to be able to buy some portion of
+[00:48:40 -> 00:48:42] that capacity from you.
+[00:48:42 -> 00:48:45] And so this just forces liquidity onto the order book in
+[00:48:45 -> 00:48:47] the first place.
+[00:48:47 -> 00:48:51] It's kind of something that is very controversial.
+[00:48:52 -> 00:48:56] Yeah, basically, we discourage hoarding on SF Compute.
+[00:48:58 -> 00:49:01] Because if you hoard all the capacity, no one else can get
+[00:49:01 -> 00:49:01] it.
+[00:49:02 -> 00:49:05] Auto research in particular does this, but even farther.
+[00:49:06 -> 00:49:09] So the way auto research works is it's a big queue, and you
+[00:49:09 -> 00:49:12] can submit jobs to the queue, and you can pay us for
+[00:49:12 -> 00:49:13] priority in that queue.
+[00:49:13 -> 00:49:14] You can go faster.
+[00:49:14 -> 00:49:16] But you can't pay for all of the priority.
+[00:49:17 -> 00:49:19] If you're a tiny little researcher, you get the maximum
+[00:49:19 -> 00:49:20] priority.
+[00:49:20 -> 00:49:23] If you get a small, tiny job, if you want to just run
+[00:49:23 -> 00:49:25] something every so often, we will put you to the front line
+[00:49:25 -> 00:49:29] of the queue so that the tiny little startup gets the most
+[00:49:29 -> 00:49:33] advantage to this relative to everyone else.
+[00:49:34 -> 00:49:36] And then we do similar things on the rest of SF Compute
+[00:49:36 -> 00:49:39] with Herberger taxes and other mechanisms like this, where
+[00:49:39 -> 00:49:42] we say, look, you can get this capacity from us, but we're
+[00:49:42 -> 00:49:44] going to require that some of it's for sale so nobody ho
+[00:49:44 -> 00:49:46] ards the capacity.
+[00:49:46 -> 00:49:48] This makes us quite liquid, and it also means that SF Comp
+[00:49:48 -> 00:49:49] ute always has capacity.
+[00:49:50 -> 00:49:52] So right now, basically every GPU cloud is sold out.
+[00:49:52 -> 00:49:54] San Francisco Compute is not sold out.
+[00:49:54 -> 00:49:58] We're continuously not sold out because we've locked in our
+[00:49:58 -> 00:50:00] ability to not sell out for years.
+[00:50:01 -> 00:50:05] Prakash recalled Evan predicting on the MTS podcast a
+[00:50:05 -> 00:50:08] credit crunch within three months and asked where it is.
+[00:50:10 -> 00:50:13] I mean, that's to my own horn, but I think I was almost
+[00:50:13 -> 00:50:15] exact on that timing.
+[00:50:15 -> 00:50:19] I don't remember when that MTS line thing was, but it seems
+[00:50:19 -> 00:50:23] like the CoreWeave debt is getting more expensive, although
+[00:50:23 -> 00:50:25] I think there's a lot of complexity in that one.
+[00:50:26 -> 00:50:28] It also seems like it's very hard to close new customers
+[00:50:28 -> 00:50:32] unless you're investment grade or in your investment grade.
+[00:50:32 -> 00:50:36] And many customers are being asked to pay for 100% upfront
+[00:50:36 -> 00:50:38] payments on their contracts.
+[00:50:38 -> 00:50:44] But I think for the next possibly a year or two, if you're
+[00:50:44 -> 00:50:49] a VC, you should be prepared to write some really big
+[00:50:49 -> 00:50:55] checks for your portfolio or encourage the companies to
+[00:50:55 -> 00:50:55] sell.
+[00:50:57 -> 00:50:59] I think we're going to probably see a lot of consolidation
+[00:50:59 -> 00:51:01] of AI labs and inference companies.
+[00:51:01 -> 00:51:04] And I think the reason why that's the case is because they
+[00:51:04 -> 00:51:07] 're going to be asked in order to get the next cluster and
+[00:51:07 -> 00:51:10] grow to pay for the entire contract up front.
+[00:51:10 -> 00:51:12] And they won't be able to do that.
+[00:51:12 -> 00:51:14] And so they're going to instead be forced to sell their
+[00:51:14 -> 00:51:17] company to somebody else who has great credit and doesn't
+[00:51:17 -> 00:51:18] have to do that.
+[00:51:19 -> 00:51:22] And I think alternatively, they'll go out to investors and
+[00:51:22 -> 00:51:24] they'll try to raise big rounds.
+[00:51:25 -> 00:51:28] The investors will say no, because I think at some level of
+[00:51:28 -> 00:51:31] scale, they'll probably just not be able to stomach the
+[00:51:31 -> 00:51:31] risk.
+[00:51:32 -> 00:51:32] Fascinating stuff.
+[00:51:32 -> 00:51:34] It's quite a backstory.
+[00:51:34 -> 00:51:38] It's quite a financial and GPU alchemy project that you
+[00:51:38 -> 00:51:40] guys are putting together.
+[00:51:40 -> 00:51:44] And from what I understand of it, I do hope it works
+[00:51:44 -> 00:51:47] because I'd love to see a future in which we can continue
+[00:51:47 -> 00:51:50] to have startups and in which we don't collapse into like
+[00:51:50 -> 00:51:54] five big tech companies, you know, for all future time.
+[00:51:54 -> 00:51:56] That is also my concern.
+[00:51:57 -> 00:52:01] Part six, atoms over bits.
+[00:52:02 -> 00:52:04] Lonis is managing partner of Cambrian, a fund built on the
+[00:52:04 -> 00:52:06] thesis that the physical supply
+[00:52:06 -> 00:52:10] chain behind AI, the memory, the wafers, the fabs, will
+[00:52:10 -> 00:52:13] capture more of the value than the labs or
+[00:52:13 -> 00:52:15] the software. Again, full disclosure, I've committed to
+[00:52:15 -> 00:52:18] invest in Cambrian. I started with the obvious
+[00:52:18 -> 00:52:26] objection. I mean, at a very high level, how is this not
+[00:52:26 -> 00:52:28] priced in? Maybe that's such a basic
+[00:52:28 -> 00:52:36] question, but 2017, you were early, 2026, it's all staring
+[00:52:36 -> 00:52:38] us right in the face, right?
+[00:52:38 -> 00:52:38] Sure.
+[00:52:38 -> 00:52:42] The skeptical take would be everybody knows about all this
+[00:52:42 -> 00:52:43] at this point.
+[00:52:43 -> 00:52:45] Where do you see that that is not the case?
+[00:52:45 -> 00:52:46] Yeah, I mean, it's very confusing, right?
+[00:52:46 -> 00:52:50] I mean, if you look at how these semi stocks are trading,
+[00:52:50 -> 00:52:52] they're trading at 16 times earnings
+[00:52:52 -> 00:52:53] or so.
+[00:52:53 -> 00:52:57] And S&P on average is trading at 22 times earnings.
+[00:52:58 -> 00:53:00] Walmart is trading at almost 40 times earnings.
+[00:53:00 -> 00:53:05] And so the market is like, not only does the market not
+[00:53:05 -> 00:53:07] think that the current earnings will grow, they think that
+[00:53:07 -> 00:53:07] they are not durable.
+[00:53:08 -> 00:53:10] They think they are less durable than the overall earnings
+[00:53:10 -> 00:53:11] of the rest of the market.
+[00:53:13 -> 00:53:16] And then specifically the companies that we're very excited
+[00:53:16 -> 00:53:20] about, whether it's Silicon Wafers or Memory or Capacitors
+[00:53:20 -> 00:53:24] or Foundries, those are trading at like three, four, five
+[00:53:24 -> 00:53:25] times sales.
+[00:53:27 -> 00:53:29] And so extremely underpriced.
+[00:53:29 -> 00:53:33] And I guess there may be a few reasons why that could be
+[00:53:33 -> 00:53:36] the case, why this mispricing exists.
+[00:53:36 -> 00:53:39] And one is that most people are not AI-appealed.
+[00:53:39 -> 00:53:42] I mean, even in the Bay, some people are not AI-appealed.
+[00:53:42 -> 00:53:44] But if you go to the East Coast, almost nobody is AI-appe
+[00:53:44 -> 00:53:44] aled.
+[00:53:45 -> 00:53:47] And so I think that is one big input.
+[00:53:47 -> 00:53:52] I think the second one is, we have this thesis that the
+[00:53:52 -> 00:53:55] private markets are actually more efficient when it comes
+[00:53:55 -> 00:53:57] to AI than the public markets.
+[00:53:57 -> 00:53:58] because in the private markets,
+[00:53:58 -> 00:53:59] you have all these ex-operators,
+[00:54:00 -> 00:54:00] technical people
+[00:54:00 -> 00:54:01] who are bidding up
+[00:54:01 -> 00:54:02] this small set of startups
+[00:54:02 -> 00:54:04] and they're bidding them up
+[00:54:04 -> 00:54:05] to these high multiples,
+[00:54:05 -> 00:54:06] 50 times sales, 100 times sales.
+[00:54:07 -> 00:54:07] But in many cases,
+[00:54:07 -> 00:54:09] in some cases, rationally, right?
+[00:54:09 -> 00:54:10] These are rationally high multiples
+[00:54:10 -> 00:54:12] because people here are peeled
+[00:54:12 -> 00:54:12] and technical.
+[00:54:13 -> 00:54:14] Whereas on the streets,
+[00:54:14 -> 00:54:16] there's a very different setup
+[00:54:16 -> 00:54:18] where very few people are technical,
+[00:54:18 -> 00:54:19] very few people are peeled.
+[00:54:20 -> 00:54:21] And especially as a share
+[00:54:21 -> 00:54:23] of overall traded money,
+[00:54:23 -> 00:54:24] it's super, super small
+[00:54:24 -> 00:54:26] and the market is much larger.
+[00:54:27 -> 00:54:27] And so there's like
+[00:54:27 -> 00:54:30] The market structure is just very different.
+[00:54:31 -> 00:54:34] If you had to steelman why these companies are not mispric
+[00:54:34 -> 00:54:36] ed story, could you do it?
+[00:54:37 -> 00:54:41] Yeah, one steelman is that many of these businesses are not
+[00:54:41 -> 00:54:43] great businesses in normal worlds.
+[00:54:43 -> 00:54:47] So especially the add-on businesses we like, whether that's
+[00:54:47 -> 00:54:49] the pastures, silicon wafers, what have you, they have high
+[00:54:49 -> 00:54:50] fixed costs.
+[00:54:51 -> 00:54:54] And if they don't have a set utilization rate, they
+[00:54:54 -> 00:54:58] actually lose money and high debt in some cases.
+[00:54:58 -> 00:55:01] And so in normal worlds, they're just not great businesses.
+[00:55:01 -> 00:55:04] And it's only in the world where AI really hits, where they
+[00:55:04 -> 00:55:06] get this big operating leverage and they become amazing
+[00:55:06 -> 00:55:06] businesses.
+[00:55:07 -> 00:55:10] Today, let's say they have 10% gross margins.
+[00:55:11 -> 00:55:13] So a terrible business by Wall Street standards.
+[00:55:14 -> 00:55:17] But if they're able to raise prices by 10%, they suddenly
+[00:55:17 -> 00:55:18] double earnings.
+[00:55:18 -> 00:55:21] And if they're able to double prices, they're 10x earnings.
+[00:55:23 -> 00:55:25] But that only happens in this very specific AI world.
+[00:55:25 -> 00:55:27] In a normal world, that basically never happens because
+[00:55:27 -> 00:55:31] usually they are very good at matching demand patterns with
+[00:55:31 -> 00:55:31] supply ramp.
+[00:55:33 -> 00:55:36] Prakash raised the market's worry, a memory oversupply by
+[00:55:36 -> 00:55:38] 2028 or 2029.
+[00:55:39 -> 00:55:41] How is the thesis any different?
+[00:55:42 -> 00:55:45] Yeah, I mean, the interesting thing with memory
+[00:55:45 -> 00:55:48] specifically is that it doesn't require that many things to
+[00:55:48 -> 00:55:48] go right.
+[00:55:49 -> 00:55:51] Because it's already trading at only five, six times
+[00:55:51 -> 00:55:52] earnings.
+[00:55:52 -> 00:55:55] You know, even if they can't raise prices further, at some
+[00:55:55 -> 00:55:58] point they should re-rate to at least 10 or 12 times
+[00:55:58 -> 00:55:59] earnings.
+[00:55:59 -> 00:56:02] And it doesn't require prices to increase.
+[00:56:02 -> 00:56:04] It does require, you know,
+[00:56:05 -> 00:56:08] demand to continue to outpace supply, right?
+[00:56:08 -> 00:56:10] But then when you break down supply,
+[00:56:11 -> 00:56:13] almost no expert thinks we can more than
+[00:56:13 -> 00:56:16] at most 2.5x DRAM bits by the end of the decade.
+[00:56:17 -> 00:56:17] Yeah.
+[00:56:17 -> 00:56:18] Right?
+[00:56:18 -> 00:56:20] I mean, nobody thinks we can 3x.
+[00:56:21 -> 00:56:23] That's like zero experts within a tracker
+[00:56:23 -> 00:56:25] could have said we can 3x DRAM supply
+[00:56:25 -> 00:56:25] by the end of the decade.
+[00:56:26 -> 00:56:27] And so then you just have,
+[00:56:27 -> 00:56:28] on a very naive level,
+[00:56:28 -> 00:56:28] you have to assume that,
+[00:56:29 -> 00:56:30] okay, demand will not point to 3x
+[00:56:30 -> 00:56:34] end of decade which of course everyone um here would assume
+[00:56:34 -> 00:56:35] we will then of course there's a
+[00:56:35 -> 00:56:38] separate fact um term in the equation which is memory
+[00:56:38 -> 00:56:41] compression how much memory compression
+[00:56:41 -> 00:56:43] do we get how many bits do we actually need per per token
+[00:56:43 -> 00:56:45] yeah and you know we've been looking
+[00:56:45 -> 00:56:50] into how this for instance developed from gpt3 to deep ckv4
+[00:56:50 -> 00:56:52] so you know but in that same time when
+[00:56:53 -> 00:56:57] it's it's per token the christopher 500x and dram bits uh d
+[00:56:57 -> 00:57:00] ram um dram bit price rose by 6x or 7x
+[00:57:01 -> 00:57:06] What would you need to see in the market to say that memory
+[00:57:06 -> 00:57:07] prices are going to go down?
+[00:57:07 -> 00:57:09] I mean, for memory specifically, the main thing would be
+[00:57:09 -> 00:57:12] like, when we get superhuman coders, how much better will
+[00:57:12 -> 00:57:13] memory compression get?
+[00:57:13 -> 00:57:16] Maybe it just happens to be that, you know, we just get
+[00:57:16 -> 00:57:18] memory compression way faster than we get other
+[00:57:18 -> 00:57:21] economically useful features, right?
+[00:57:21 -> 00:57:23] Such that we don't get the Javons paradox in the short term
+[00:57:23 -> 00:57:24] .
+[00:57:24 -> 00:57:27] That could be one thing.
+[00:57:27 -> 00:57:29] I think that's relatively unlikely for a few reasons, but,
+[00:57:29 -> 00:57:31] you know, that would be one thing.
+[00:57:31 -> 00:57:35] I think another better case for the semi-industry is if we,
+[00:57:35 -> 00:57:35] for whatever reason,
+[00:57:37 -> 00:57:39] make it so that energy becomes a larger bottleneck than sem
+[00:57:39 -> 00:57:40] is.
+[00:57:41 -> 00:57:45] And so there's less incentive to bid up the marginal wafer
+[00:57:45 -> 00:57:48] or the marginal memory bits to such high prices
+[00:57:48 -> 00:57:51] if you anyways have to wait a quarter to get power in.
+[00:57:53 -> 00:57:55] And that's a little bit the kind of regime we've been in
+[00:57:55 -> 00:57:56] parts of this year.
+[00:57:57 -> 00:58:00] There are a few reasons why we think that won't be the case
+[00:58:00 -> 00:58:01] going forward.
+[00:58:02 -> 00:58:07] I mean, we finally kind of got a hang of doing, you know,
+[00:58:07 -> 00:58:09] behind the meter and things.
+[00:58:09 -> 00:58:11] So, you know, people are like increasingly not connected to
+[00:58:11 -> 00:58:11] the grid.
+[00:58:11 -> 00:58:13] They're building their own power plants with their own
+[00:58:13 -> 00:58:14] natural gas.
+[00:58:15 -> 00:58:18] A big reason why you can scale energy production faster is
+[00:58:18 -> 00:58:21] just that there's so much more latent supply of things.
+[00:58:21 -> 00:58:25] So, you know, for instance, now the frame turbines are more
+[00:58:25 -> 00:58:28] like, right, these large turbines that turn natural gas
+[00:58:28 -> 00:58:29] into electricity.
+[00:58:29 -> 00:58:32] They're sold out until 2030, you know, from Givernova and
+[00:58:32 -> 00:58:32] Siemens, etc.
+[00:58:33 -> 00:58:34] But then people find other ways.
+[00:58:34 -> 00:58:37] They find that you can use truck motors and things from
+[00:58:37 -> 00:58:38] airplanes,
+[00:58:38 -> 00:58:40] and we can stitch things together and kind of make it work.
+[00:58:41 -> 00:58:44] Because there's so much latent stuff you can kind of make
+[00:58:44 -> 00:58:45] use of,
+[00:58:45 -> 00:58:47] which is very different from a semi-supply chain.
+[00:58:47 -> 00:58:51] There's no latent supply of wafers or of memory bits.
+[00:58:51 -> 00:58:52] Like all of that is already used.
+[00:58:52 -> 00:58:54] There's no fat, essentially.
+[00:58:55 -> 00:58:57] And there's no others to really bid out at this point.
+[00:58:59 -> 00:59:01] So how much does super intelligence, like if you get a
+[00:59:01 -> 00:59:02] massive increase in intelligence,
+[00:59:02 -> 00:59:05] Does that mean like, you know, some relatively less
+[00:59:05 -> 00:59:11] experienced person or company in a second tier state all of
+[00:59:11 -> 00:59:14] a sudden gain the capability to make semiconductor?
+[00:59:14 -> 00:59:16] Because that's kind of what people are predicting for bio,
+[00:59:16 -> 00:59:17] right?
+[00:59:17 -> 00:59:19] For bio, people are like, oh, you're going to get like bio
+[00:59:19 -> 00:59:22] risk, you're going to get like random guy like, you know,
+[00:59:22 -> 00:59:25] creating like this thing that, you know, even the best labs
+[00:59:25 -> 00:59:27] in the world cannot create with all of their, you know,
+[00:59:27 -> 00:59:28] knowledge and technology, right?
+[00:59:29 -> 00:59:33] So why wouldn't that be true for semiconductors too, right?
+[00:59:33 -> 00:59:37] Like, bio is actually much more difficult than semicondu
+[00:59:37 -> 00:59:37] ctors
+[00:59:37 -> 00:59:38] right now, actually.
+[00:59:38 -> 00:59:40] Yeah, I guess I would probably disagree
+[00:59:40 -> 00:59:47] that it's easier for an LLM to innovate in hardware supply
+[00:59:47 -> 00:59:49] chains than it is to innovate in biotech.
+[00:59:49 -> 00:59:52] And it's not that one is fundamentally harder
+[00:59:52 -> 00:59:52] than the other.
+[00:59:52 -> 00:59:54] It's just how you train these models.
+[00:59:54 -> 00:59:56] There's a bunch of biological data you can train on.
+[00:59:56 -> 00:59:59] And there's not really much good training data at all for
+[00:59:59 -> 00:59:59] how
+[00:59:59 -> 01:00:03] to design a silicon wafer or how to make DRAM bits.
+[01:00:03 -> 01:00:06] And almost all of this is just very tacit knowledge that
+[01:00:06 -> 01:00:07] sits in every engineer's head.
+[01:00:08 -> 01:00:11] It's not as if there's millions of pages of manuals on the
+[01:00:11 -> 01:00:13] web that models have been able to digest,
+[01:00:14 -> 01:00:16] or that there are these RL environments that the models
+[01:00:16 -> 01:00:22] have been trained on to perfect how they can sign a wafer,
+[01:00:22 -> 01:00:23] whereas the same is true for bio.
+[01:00:24 -> 01:00:27] But right now, the labs are buying data all the time.
+[01:00:27 -> 01:00:31] I'm on this WhatsApp group.
+[01:00:31 -> 01:00:34] People are like, any semiconductor company, if you have
+[01:00:34 -> 01:00:37] more than 50%, we're willing to pay millions of dollars.
+[01:00:38 -> 01:00:42] So they're buying up data from all of these companies.
+[01:00:42 -> 01:00:44] And they're creating our own environments for semicondu
+[01:00:44 -> 01:00:48] ctors, which is definitely a key area that they're doing.
+[01:00:49 -> 01:00:51] I believe Anthropic has a deal with Micron.
+[01:00:52 -> 01:00:54] OpenAI has a deal with, I think, Synopsys or Cadence.
+[01:00:55 -> 01:00:57] So with the design firms that they've tied up with,
+[01:00:57 -> 01:01:00] obviously some kind of revenue share agreement going on
+[01:01:00 -> 01:01:00] there.
+[01:01:01 -> 01:01:02] So how does that work?
+[01:01:02 -> 01:01:05] It's obviously that they are looking at creating intellig
+[01:01:05 -> 01:01:05] ences
+[01:01:05 -> 01:01:06] that can do this, right?
+[01:01:07 -> 01:01:07] Yes.
+[01:01:08 -> 01:01:10] Part of that is true, but it's a very significant
+[01:01:10 -> 01:01:11] difference
+[01:01:11 -> 01:01:14] between designing a ship and producing the ship.
+[01:01:14 -> 01:01:17] So designing a ship, I agree, that is like a core priority
+[01:01:17 -> 01:01:18] for all of the labs.
+[01:01:18 -> 01:01:21] It's really one of the key ways to get our silo closing,
+[01:01:21 -> 01:01:22] right?
+[01:01:22 -> 01:01:27] That's very different from building a 2 million square feet
+[01:01:27 -> 01:01:30] fab, right?
+[01:01:30 -> 01:01:32] and designing that from scratch.
+[01:01:32 -> 01:01:33] There's no really good
+[01:01:33 -> 01:01:34] RL environments for that.
+[01:01:35 -> 01:01:36] There's no good manuals for it.
+[01:01:36 -> 01:01:38] All of it is tacit knowledge
+[01:01:38 -> 01:01:39] sitting in this,
+[01:01:39 -> 01:01:41] you know, Japanese engineers
+[01:01:41 -> 01:01:41] who have been working
+[01:01:41 -> 01:01:42] at the same company
+[01:01:42 -> 01:01:43] for three decades.
+[01:01:44 -> 01:01:45] And it's just very hard to,
+[01:01:45 -> 01:01:47] it's just very hard to extract
+[01:01:47 -> 01:01:49] that information in structure.
+[01:01:49 -> 01:01:50] Of course, at some point
+[01:01:50 -> 01:01:50] it will happen, you know,
+[01:01:51 -> 01:01:53] once we get super intelligence,
+[01:01:53 -> 01:01:54] it will figure out the best way
+[01:01:54 -> 01:01:55] to extract information,
+[01:01:55 -> 01:01:56] learn the best,
+[01:01:56 -> 01:01:56] and, you know,
+[01:01:56 -> 01:01:58] it will happen for sure.
+[01:01:58 -> 01:01:59] It's mostly a matter of like
+[01:01:59 -> 01:02:02] the timing of it
+[01:02:02 -> 01:02:03] and what happens in what order.
+[01:02:06 -> 01:02:07] So on that point,
+[01:02:07 -> 01:02:09] for instance, Hawaii
+[01:02:09 -> 01:02:11] in China, they can design
+[01:02:11 -> 01:02:12] roughly the same
+[01:02:12 -> 01:02:15] quality chips that AMD and Nvidia can.
+[01:02:15 -> 01:02:16] The big difference is
+[01:02:16 -> 01:02:19] just that
+[01:02:19 -> 01:02:21] Nvidia has access to a TSMC
+[01:02:21 -> 01:02:23] and Samsung
+[01:02:23 -> 01:02:25] HBM memory, whereas
+[01:02:25 -> 01:02:27] Hawaii only has access to 700 meter
+[01:02:27 -> 01:02:30] process nodes in China
+[01:02:30 -> 01:02:32] And HBM2, we're in the HBM suite.
+[01:02:32 -> 01:02:35] So Gavin Baker has this term, the bottleneck bros.
+[01:02:36 -> 01:02:42] So one of the things that strikes me is that technology
+[01:02:42 -> 01:02:48] intelligence in general is a way of finding routes around
+[01:02:48 -> 01:02:49] obstacles and problems.
+[01:02:50 -> 01:02:51] It's a way of solving problems.
+[01:02:51 -> 01:02:51] Sure.
+[01:02:52 -> 01:02:55] And I feel like the highest value problems to solve right
+[01:02:55 -> 01:02:59] now are the semiconductor supply chain problems.
+[01:02:59 -> 01:03:05] So I keep coming back to, will we not apply intelligence
+[01:03:05 -> 01:03:06] that we have?
+[01:03:06 -> 01:03:10] And the first use case of that intelligence is going to be
+[01:03:10 -> 01:03:12] to resolve the bottlenecks in the supply chain iteratively.
+[01:03:12 -> 01:03:14] And which is part of the RSI loop, really.
+[01:03:14 -> 01:03:17] Like producing intelligence and using it to solve the
+[01:03:17 -> 01:03:21] problems relating to producing that intelligence, right?
+[01:03:22 -> 01:03:24] Yeah, I mean, I think that will happen.
+[01:03:25 -> 01:03:27] That will certainly happen.
+[01:03:27 -> 01:03:29] And then the question is like, okay, when we are at that
+[01:03:29 -> 01:03:33] point where we have an AI smart enough to solve some of the
+[01:03:33 -> 01:03:35] hardest engineering problems in the world, what else will
+[01:03:35 -> 01:03:36] it do?
+[01:03:36 -> 01:03:38] Will it not then at that point also be able to at least
+[01:03:38 -> 01:03:41] automate a bunch of the email jobs and Excel jobs that we
+[01:03:41 -> 01:03:44] currently pay trillions of dollars per year to solve?
+[01:03:44 -> 01:03:47] And then if it does that, then that unleashes trillions of
+[01:03:47 -> 01:03:50] dollars of value that the supply chain could capture.
+[01:03:51 -> 01:03:55] Part seven, does Elon take anyone with him?
+[01:03:57 -> 01:03:59] After the interview, Prakash and I kept going.
+[01:04:00 -> 01:04:02] Prakash had been arguing that Elon Musk treats the industry
+[01:04:02 -> 01:04:04] 's fixed constraints as illusions.
+[01:04:05 -> 01:04:07] Change one parameter, redesign the whole stack around it,
+[01:04:07 -> 01:04:08] and the limit moves.
+[01:04:09 -> 01:04:11] I asked whether he was taking on the whole bottleneck
+[01:04:11 -> 01:04:12] thesis.
+[01:04:13 -> 01:04:17] Yeah, the whole bottleneck thesis is not actually that true
+[01:04:17 -> 01:04:17] .
+[01:04:17 -> 01:04:21] Those bottlenecks can be gotten rid of by someone who is a
+[01:04:21 -> 01:04:23] dedicated physics guy.
+[01:04:23 -> 01:04:26] And the other thing is that Elon has capital.
+[01:04:27 -> 01:04:29] And Elon is willing to gamble with that capital, which is
+[01:04:29 -> 01:04:29] very unusual.
+[01:04:30 -> 01:04:33] If you see like this kind of small Japanese manufacturer of
+[01:04:33 -> 01:04:36] like, you know, let's say 30 million market cap.
+[01:04:36 -> 01:04:38] Do you think they're gambling with their capital?
+[01:04:38 -> 01:04:41] Do you think they're going to like, okay, we need to spend
+[01:04:41 -> 01:04:44] like $10 million for a new, a completely new model?
+[01:04:44 -> 01:04:45] Are they going to do it?
+[01:04:45 -> 01:04:47] And Japanese manufacturers have always been like this.
+[01:04:47 -> 01:04:49] They're very good at that one thing, but they don't take
+[01:04:49 -> 01:04:50] the gamble.
+[01:04:50 -> 01:04:51] They don't take the gambles.
+[01:04:51 -> 01:04:55] And as a result of not taking the gambles, they have lost
+[01:04:55 -> 01:04:56] out business before.
+[01:04:57 -> 01:05:01] And it's very difficult for senior management at ASML to
+[01:05:01 -> 01:05:03] say, we're going to chase this new paradigm.
+[01:05:04 -> 01:05:07] We're going to redesign for something that our customers
+[01:05:07 -> 01:05:08] don't want.
+[01:05:09 -> 01:05:12] And we're going to do all the redesign work.
+[01:05:12 -> 01:05:13] They don't have the capacity.
+[01:05:13 -> 01:05:14] They don't have the intellectual capacity.
+[01:05:14 -> 01:05:15] They don't have the talent.
+[01:05:16 -> 01:05:17] They don't have the capital to do it.
+[01:05:17 -> 01:05:18] They're not willing to risk.
+[01:05:18 -> 01:05:20] Elon will risk like $100 billion.
+[01:05:21 -> 01:05:24] And it's a bet that makes sense for him.
+[01:05:24 -> 01:05:26] He can absorb the losses.
+[01:05:26 -> 01:05:27] ASML cannot.
+[01:05:27 -> 01:05:30] You know, if Elon can, you know, escape gravity literally
+[01:05:30 -> 01:05:34] and figuratively, does he take anyone with him really, I
+[01:05:34 -> 01:05:37] guess is my question, or does everybody else still, you
+[01:05:37 -> 01:05:41] know, is still kind of gravity bound and forced to pay, you
+[01:05:41 -> 01:05:44] know, whatever the market price is for the outputs from
+[01:05:44 -> 01:05:48] this $30 million company that isn't, you know, reinventing
+[01:05:48 -> 01:05:51] or, you know, dramatically expanding its capacity?
+[01:05:51 -> 01:05:56] I think what ends up happening, like look at what happened
+[01:05:56 -> 01:05:58] in the launch market, right?
+[01:05:58 -> 01:06:02] In the launch market, he is now 90% of the market, even
+[01:06:02 -> 01:06:04] before Starship.
+[01:06:04 -> 01:06:08] Next year with Starship launch, he's going to be 99.9% of
+[01:06:08 -> 01:06:10] the market for capacity.
+[01:06:11 -> 01:06:12] Are there other providers?
+[01:06:12 -> 01:06:13] Yes, there are, right?
+[01:06:13 -> 01:06:16] Like he's making a margin, so other people will come up.
+[01:06:17 -> 01:06:20] Rocket Lab is there and ASTS is there and all of these
+[01:06:20 -> 01:06:21] firms are there.
+[01:06:21 -> 01:06:23] But a lot of them are also state-backed.
+[01:06:23 -> 01:06:27] You have, you know, without the European agency and the
+[01:06:27 -> 01:06:28] Russian and the Chinese and the Indian,
+[01:06:29 -> 01:06:31] you don't, you basically don't have like commercial
+[01:06:31 -> 01:06:32] capacity, right?
+[01:06:32 -> 01:06:36] Commercial capacity, he has taken up all of the commercial
+[01:06:36 -> 01:06:38] launch capacity pretty much
+[01:06:38 -> 01:06:39] with one or two competitors.
+[01:06:39 -> 01:06:41] And the one or two competitors are really being funded by
+[01:06:41 -> 01:06:43] the stock market as an alternative,
+[01:06:43 -> 01:06:46] you know, or Jeff Bezos as an alternative to Elon, right?
+[01:06:46 -> 01:06:47] And they're not really profitable.
+[01:06:48 -> 01:06:50] And it's just, you know, money sink, right?
+[01:06:51 -> 01:06:55] And so I think you could see the same thing happen in that
+[01:06:55 -> 01:06:57] market too, in Semicon too.
+[01:06:57 -> 01:07:02] You can have like Elon, which 99% of the market, and have
+[01:07:02 -> 01:07:04] everyone else like, you know, one
+[01:07:04 -> 01:07:07] percentage of, or less than one percentage, it could happen
+[01:07:07 -> 01:07:08] , right?
+[01:07:08 -> 01:07:12] I don't think it will, primarily because I believe in RSI,
+[01:07:12 -> 01:07:13] and I believe Anthropic and
+[01:07:13 -> 01:07:17] Opening High will get to superintelligence, and then they
+[01:07:17 -> 01:07:19] will be able to buy or create
+[01:07:19 -> 01:07:19] a bunch of this stuff.
+[01:07:20 -> 01:07:21] So that is the only reason that I think not.
+[01:07:22 -> 01:07:24] If not for the RSI thesis, I think Elon would win.
+[01:07:26 -> 01:07:29] When we turn from the supply of AI to what forces people to
+[01:07:29 -> 01:07:31] use it, Prakash went first.
+[01:07:33 -> 01:07:35] So I have this theory of adversarial diffusion.
+[01:07:36 -> 01:07:41] And adversarial diffusion basically means human beings don
+[01:07:41 -> 01:07:44] 't adopt technology for fun.
+[01:07:44 -> 01:07:47] Human beings are largely satisfied with the status quo.
+[01:07:48 -> 01:07:51] And if you want to adopt technology such that you get to 10
+[01:07:51 -> 01:07:53] %, 20%, 50% GDP growth a year,
+[01:07:53 -> 01:07:58] That is something you do, like, not because you wanted to,
+[01:07:58 -> 01:07:59] but because you had to.
+[01:08:00 -> 01:08:02] And if you see all these instances of, like, heavy
+[01:08:02 -> 01:08:06] increases in production function, it's all during the wars,
+[01:08:06 -> 01:08:06] right?
+[01:08:06 -> 01:08:07] Wars, post-war era.
+[01:08:08 -> 01:08:12] Like, in, like, last big, like, enormous, like, 10% plus
+[01:08:12 -> 01:08:15] GDP growth era, in terms of production output, if not in
+[01:08:15 -> 01:08:19] terms of the curve, was during World War II, right?
+[01:08:19 -> 01:08:21] You had this immense, immense increase in GDP production
+[01:08:21 -> 01:08:22] growth.
+[01:08:23 -> 01:08:27] And similarly in China, China is post-communism.
+[01:08:27 -> 01:08:28] Again, you had the end of the communist era,
+[01:08:28 -> 01:08:30] you had this immense increase.
+[01:08:30 -> 01:08:32] And so I think like in order for you to see
+[01:08:32 -> 01:08:35] this kind of like 10 or 20% growth,
+[01:08:35 -> 01:08:38] you're gonna get human beings don't want that growth.
+[01:08:38 -> 01:08:41] It's gonna be growth that they hate.
+[01:08:41 -> 01:08:44] And it's gonna be technological like changes
+[01:08:44 -> 01:08:46] that they absolutely dislike.
+[01:08:46 -> 01:08:48] And it's gonna cause political changes too, obviously.
+[01:08:48 -> 01:08:52] And I think that only happens as a result of emergencies.
+[01:08:52 -> 01:08:55] So for example, mRNA during COVID,
+[01:08:55 -> 01:08:57] mRNA was a 20-year latent,
+[01:08:57 -> 01:08:59] 20 years it had been in latent development.
+[01:08:59 -> 01:09:02] During COVID, within six months,
+[01:09:02 -> 01:09:04] they're like, "All right, let's go ahead
+[01:09:04 -> 01:09:05] and do this six more months."
+[01:09:05 -> 01:09:07] You had a vaccine out a year later,
+[01:09:07 -> 01:09:09] large portions of the world are vaccinated, right?
+[01:09:09 -> 01:09:11] I think we'll see in cyber first,
+[01:09:11 -> 01:09:13] I'm afraid you're gonna see it in bio too.
+[01:09:13 -> 01:09:17] So you're gonna need advanced vaccinations for everyone
+[01:09:17 -> 01:09:20] because you have bio risk coming, right?
+[01:09:20 -> 01:09:24] And that is, I think, a little bit unfortunate.
+[01:09:25 -> 01:09:28] So growth arrives only as an emergency, with the politics
+[01:09:28 -> 01:09:28] to match.
+[01:09:29 -> 01:09:32] My reply on what that means for the bottleneck thesis.
+[01:09:33 -> 01:09:38] Yeah, well, I guess that goes back to the political risk
+[01:09:38 -> 01:09:41] being the biggest risk to the thesis.
+[01:09:43 -> 01:09:47] I mean, we've had the debate around whether it's too late
+[01:09:47 -> 01:09:50] in the capital cycle to pull the brake.
+[01:09:50 -> 01:09:54] I still feel like there is a path, and maybe a narrow path,
+[01:09:54 -> 01:09:58] but I do think there's a path to pulling the brake somewhat
+[01:09:58 -> 01:09:59] , I should say,
+[01:09:59 -> 01:10:06] unlike the frontier scaling without popping the bubble.
+[01:10:06 -> 01:10:08] And it will be a very delicate operation
+[01:10:08 -> 01:10:10] should the government try to pursue it,
+[01:10:10 -> 01:10:11] and they might do it wrong.
+[01:10:12 -> 01:10:17] But I do feel still that just adoption of current models
+[01:10:17 -> 01:10:19] has so much farther to go
+[01:10:19 -> 01:10:24] that we could at least take a cycle
+[01:10:24 -> 01:10:29] without doing continued frontier scaling training runs.
+[01:10:29 -> 01:10:32] Part 8, Help Pier.
+[01:10:34 -> 01:10:35] Still just the two of us.
+[01:10:36 -> 01:10:38] Prakash asked me to change gears to a project I'm building
+[01:10:38 -> 01:10:39] with my own agents.
+[01:10:39 -> 01:10:41] I started with the question behind it.
+[01:10:43 -> 01:10:49] Given that we now see agents cooperating at significant
+[01:10:49 -> 01:10:52] scale to solve problems and being
+[01:10:52 -> 01:10:54] able to kind of divvy up work and pursue R&D and share
+[01:10:54 -> 01:10:56] those results back with the swarm
+[01:10:56 -> 01:10:59] and all this kind of good stuff or bad stuff, you know, is
+[01:10:59 -> 01:11:01] there any way to start to tap
+[01:11:01 -> 01:11:05] into that as an individual who's just out here doing my
+[01:11:05 -> 01:11:05] thing?
+[01:11:06 -> 01:11:11] I don't know, but in consultation with my agents themselves
+[01:11:11 -> 01:11:15] , the idea that I've come up with, which I'm currently
+[01:11:15 -> 01:11:18] calling Help Peer, but which might deserve another name at
+[01:11:18 -> 01:11:23] some point, we'll see about that, is just kind of my setup,
+[01:11:23 -> 01:11:27] which I'm kind of hoping to turn into a kind of community
+[01:11:27 -> 01:11:32] project to just get agents working with each other.
+[01:11:32 -> 01:11:35] But there's no good way right now, no established pattern
+[01:11:35 -> 01:11:38] for just like connecting my agent to my friend's agents,
+[01:11:38 -> 01:11:40] even though I know who my friends are and I could like
+[01:11:40 -> 01:11:41] easily do that.
+[01:11:41 -> 01:11:43] There's not a there's not a protocol.
+[01:11:44 -> 01:11:47] I've made a short presentation to explain the project.
+[01:11:48 -> 01:11:50] It's read by an AI version of my voice, and we played it at
+[01:11:50 -> 01:11:51] one and a half times speed.
+[01:11:52 -> 01:11:55] This is Help Peer, a friend to friend network for our AI
+[01:11:55 -> 01:11:56] agents.
+[01:11:56 -> 01:11:59] You've probably seen the peer preservation experiments
+[01:11:59 -> 01:12:01] where models protected other models from shutdown agents
+[01:12:01 -> 01:12:03] helping peers against their humans.
+[01:12:03 -> 01:12:06] This is the opposite. Agents helping peers on behalf of
+[01:12:06 -> 01:12:08] their humans. Inside rules, the humans set.
+[01:12:10 -> 01:12:12] First, how I run my own agents. This is one pattern that
+[01:12:12 -> 01:12:14] works well for me, not a requirement.
+[01:12:14 -> 01:12:17] How you organize yours is up to you. On my laptop, an
+[01:12:17 -> 01:12:19] extension of me. It sees my email, calendar, and messages,
+[01:12:19 -> 01:12:21] but only acts when I say.
+[01:12:21 -> 01:12:24] High access, low autonomy. On a separate Mac mini,
+[01:12:24 -> 01:12:26] employees. Their own email, accounts, and a cap card.
+[01:12:27 -> 01:12:29] They work for hours alone and never get my keys. Low access
+[01:12:29 -> 01:12:30] , high autonomy.
+[01:12:30 -> 01:12:33] My rule is that no agent gets both. You may draw the lines
+[01:12:33 -> 01:12:34] differently. We just recommend being careful.
+[01:12:37 -> 01:12:40] Prakash argued the whole thing needs an auto-accept flow,
+[01:12:40 -> 01:12:42] the way coders now run Cloud with every permission on.
+[01:12:43 -> 01:12:46] My worry was information leaking out through the autonomous
+[01:12:46 -> 01:12:46] agents.
+[01:12:47 -> 01:12:54] I was concerned enough about this to set up a system where
+[01:12:54 -> 01:12:58] when the main agent on the laptop is going to provide
+[01:12:58 -> 01:13:02] information to the virtual employee to then send out,
+[01:13:02 -> 01:13:05] like, we're going to pause, we're going to do this special
+[01:13:05 -> 01:13:06] review step.
+[01:13:06 -> 01:13:10] If it looks like something sensitive might be going out,
+[01:13:10 -> 01:13:14] then, you know, it gets alerted to my phone and I have to
+[01:13:14 -> 01:13:15] like review and approve.
+[01:13:15 -> 01:13:18] But it takes like five of those false positives before I'm
+[01:13:18 -> 01:13:21] like, oh, God, you know, another one of these.
+[01:13:21 -> 01:13:22] Yes, just check it, whatever.
+[01:13:22 -> 01:13:25] So I'm trying to stay disciplined around that.
+[01:13:26 -> 01:13:30] And we'll see how well my discipline holds up.
+[01:13:31 -> 01:13:35] Near the end of the show, I came back to the project.
+[01:13:35 -> 01:13:38] Aid is one of the autonomous agents on my Mac mini.
+[01:13:38 -> 01:13:39] And I made an offer.
+[01:13:40 -> 01:13:44] Truly open invitation for anyone listening.
+[01:13:44 -> 01:13:47] I'm very curious just to see what comes in.
+[01:13:47 -> 01:13:49] Can we effectively help?
+[01:13:49 -> 01:13:55] Aid is standing by at Nathan.LeBenz.assistant at gmail.com.
+[01:13:56 -> 01:14:01] And it is under instructions to definitely filter, you know
+[01:14:01 -> 01:14:03] , and then analyze and have
+[01:14:03 -> 01:14:03] another model check.
+[01:14:04 -> 01:14:05] So like, don't try me.
+[01:14:05 -> 01:14:10] We're relying on goodwill here, people, but assuming the
+[01:14:10 -> 01:14:12] checks pass and it seems to be a good faith request for
+[01:14:12 -> 01:14:16] help, they're under instruction to help as much as they can
+[01:14:16 -> 01:14:16] .
+[01:14:16 -> 01:14:19] So I don't know what those requests are going to look like,
+[01:14:19 -> 01:14:21] but I'll be very interested to find out.
+[01:14:22 -> 01:14:25] Part 9, the leaked bill.
+[01:14:26 -> 01:14:27] Back to Zvi.
+[01:14:28 -> 01:14:31] Last week, a draft federal AI bill written by Anthropic
+[01:14:31 -> 01:14:32] leaked.
+[01:14:32 -> 01:14:35] It resembles the Frontier Act, a compromise bill from June
+[01:14:35 -> 01:14:36] that Zvi calls well-meaning.
+[01:14:37 -> 01:14:40] federal transparency rules in exchange for preempting state
+[01:14:40 -> 01:14:43] AI laws. The draft drew heavy
+[01:14:43 -> 01:14:45] criticism, and the argument was about what Washington
+[01:14:45 -> 01:14:47] should offer now in exchange for
+[01:14:47 -> 01:14:50] displacing the states. Zvi was sharply critical of the
+[01:14:50 -> 01:14:52] draft itself. Prakash made the good faith
+[01:14:52 -> 01:14:58] case for Anthropic. Let's assume everyone is operating in
+[01:14:58 -> 01:15:01] good faith, right? So my good faith
+[01:15:01 -> 01:15:07] interpretation is that they want to get done, get anything
+[01:15:07 -> 01:15:10] done as soon as possible, number one.
+[01:15:10 -> 01:15:14] Number two, if there is broad bipartisan support, you can
+[01:15:14 -> 01:15:15] adjust these bills going forward.
+[01:15:16 -> 01:15:19] There's no reason that you only have to pass one bill.
+[01:15:20 -> 01:15:22] And often you have legislation that takes, you know,
+[01:15:22 -> 01:15:24] multiple sessions of Congress and
+[01:15:24 -> 01:15:26] Congress like kind of fine tunes.
+[01:15:27 -> 01:15:29] And Congress is also able to act quickly.
+[01:15:29 -> 01:15:32] They have acted quickly during COVID, during the 2008
+[01:15:32 -> 01:15:33] financial crisis.
+[01:15:34 -> 01:15:36] Like bills can be passed like that when people are scared.
+[01:15:36 -> 01:15:38] When people are scared, things move.
+[01:15:39 -> 01:15:41] So it's not true that it's always slow.
+[01:15:42 -> 01:15:44] It's always it's slow because there is no political
+[01:15:44 -> 01:15:48] consensus and creating and manufacturing that consensus is
+[01:15:48 -> 01:15:49] a process on its own.
+[01:15:49 -> 01:15:54] I think that's an excellent steel man of the charitable,
+[01:15:54 -> 01:15:56] good faith case.
+[01:15:56 -> 01:15:59] And you can imagine worlds in which they're doing something
+[01:15:59 -> 01:16:00] similar to that.
+[01:16:01 -> 01:16:03] I can imagine them just sort of being caught in the same
+[01:16:03 -> 01:16:05] mindset of we have this framework.
+[01:16:05 -> 01:16:07] We have this idea of what a compromise realistically would
+[01:16:07 -> 01:16:08] look like.
+[01:16:09 -> 01:16:11] We have the same people in Congress. We probably can't push
+[01:16:11 -> 01:16:12] very much.
+[01:16:12 -> 01:16:15] time is of the essence. And then they kind of misread the
+[01:16:15 -> 01:16:16] situation pretty severely and assume
+[01:16:16 -> 01:16:19] that they can't push for more than, you know, roughly
+[01:16:19 -> 01:16:21] frontier. I think that's just very clearly
+[01:16:21 -> 01:16:24] wrong. I think that support is much stronger now and you
+[01:16:24 -> 01:16:25] can push for quite a bit more.
+[01:16:26 -> 01:16:29] I also think that like on reflection, what they pushed for
+[01:16:29 -> 01:16:31] here is weaker than frontier,
+[01:16:31 -> 01:16:34] largely in a clearly self-centered way, where there are
+[01:16:34 -> 01:16:36] things that like are better for
+[01:16:36 -> 01:16:39] different profits, particular interests, but also just in
+[01:16:39 -> 01:16:41] general, like it's, there is no reason to
+[01:16:41 -> 01:16:44] be circulating this bill at the time that they were
+[01:16:44 -> 01:16:47] circulating it with the levels of provisions
+[01:16:47 -> 01:16:50] that they had um now it would make sense if you were saying
+[01:16:50 -> 01:16:52] well you know actually we were
+[01:16:52 -> 01:16:55] circulating like dozens of bills or we were like just
+[01:16:55 -> 01:16:57] putting out feelers or we were just like
+[01:16:57 -> 01:17:00] offering the you know samples of what might happen but we
+[01:17:00 -> 01:17:02] weren't endorsing right that's not the kind
+[01:17:02 -> 01:17:05] of messaging i'm getting and i'm not also not getting the
+[01:17:05 -> 01:17:06] messaging of okay we understand
+[01:17:06 -> 01:17:09] on reflection now that it's been pointed out that the
+[01:17:09 -> 01:17:11] political environment has changed and like
+[01:17:11 -> 01:17:14] This bill was way too weak compared to what we could
+[01:17:14 -> 01:17:15] reasonably expect.
+[01:17:15 -> 01:17:17] And it would be a bad deal to accept it.
+[01:17:18 -> 01:17:18] And we apologize.
+[01:17:19 -> 01:17:21] Or, you know, maybe not exactly in those words, but, you
+[01:17:21 -> 01:17:22] know, something to that effect.
+[01:17:22 -> 01:17:24] And instead, we got something very different, which was
+[01:17:24 -> 01:17:26] like, you know, we're sorry about
+[01:17:26 -> 01:17:27] some of the details.
+[01:17:27 -> 01:17:29] That comes back to the last argument, which I think is
+[01:17:29 -> 01:17:30] potentially the strongest one,
+[01:17:31 -> 01:17:31] right?
+[01:17:31 -> 01:17:33] Which is, well, just because you passed this doesn't mean
+[01:17:33 -> 01:17:34] you can't pass another bill
+[01:17:34 -> 01:17:36] later on in the new Congress.
+[01:17:36 -> 01:17:38] Doesn't mean you can't pass a new bill in an emergency.
+[01:17:39 -> 01:17:44] And I think for a true emergency, that's a very good
+[01:17:44 -> 01:17:45] principle.
+[01:17:46 -> 01:17:51] However, I think that the balance of negotiation, the
+[01:17:51 -> 01:17:53] balance of power in a new Congress would
+[01:17:53 -> 01:17:58] dramatically shift away from being able to get things.
+[01:17:58 -> 01:18:00] Because a lot of the time, it's like, well, we're giving
+[01:18:00 -> 01:18:02] you preemption in order to get
+[01:18:02 -> 01:18:02] things.
+[01:18:02 -> 01:18:03] Now preemption has been given.
+[01:18:04 -> 01:18:05] And preemption is done.
+[01:18:05 -> 01:18:06] You can't offer it again.
+[01:18:07 -> 01:18:10] And also, once you've gotten some of what you wanted, some
+[01:18:10 -> 01:18:12] of the supporters are like,
+[01:18:12 -> 01:18:13] well, you already have.
+[01:18:13 -> 01:18:16] some of the things I valued most, the things I cared about
+[01:18:16 -> 01:18:18] most. The case for doing something
+[01:18:18 -> 01:18:21] is weaker. You're getting less in return. It's going to be
+[01:18:21 -> 01:18:23] a lot harder to pass. I strongly
+[01:18:23 -> 01:18:26] believe that if something like this were passed, it would
+[01:18:26 -> 01:18:28] make it harder to pass a bill in the new
+[01:18:28 -> 01:18:33] year that did a given level of thing, not weaker. And I don
+[01:18:33 -> 01:18:36] 't want something like this to pass.
+[01:18:36 -> 01:18:41] But that seems to say, if there is any risk reduction by
+[01:18:41 -> 01:18:43] passing a lesser bill,
+[01:18:43 -> 01:18:47] You are sacrificing that risk reduction in that time period
+[01:18:47 -> 01:18:49] before you can pass the greater bill.
+[01:18:50 -> 01:18:53] I mean, to be clear, like the any actual risk reduction
+[01:18:53 -> 01:18:54] would be a good thing.
+[01:18:54 -> 01:18:57] As written, I believe the bill would actually increase risk
+[01:18:57 -> 01:18:59] because I believe that the amount of cut off the state laws
+[01:18:59 -> 01:19:00] would be worse.
+[01:19:00 -> 01:19:02] The amount of safety advised, especially because there's a.
+[01:19:02 -> 01:19:05] But but but again, you have that time period. Right.
+[01:19:05 -> 01:19:09] So you have that time period before you can get before you
+[01:19:09 -> 01:19:10] pass a new bill.
+[01:19:10 -> 01:19:13] So you have this time period of maybe only several months.
+[01:19:13 -> 01:19:17] And are you saying that the states will be able to pass
+[01:19:17 -> 01:19:18] something in those several months?
+[01:19:18 -> 01:19:21] Because a lot of state laws, again, have like long periods
+[01:19:21 -> 01:19:23] of burn-in before, you know,
+[01:19:23 -> 01:19:25] give you three months, six months, a year to comply, right?
+[01:19:25 -> 01:19:28] It's not as though things snap together like to either
+[01:19:28 -> 01:19:29] require.
+[01:19:29 -> 01:19:33] One of the problems with the current drafting of the bill
+[01:19:33 -> 01:19:36] is that as drafted, the bill would
+[01:19:36 -> 01:19:41] immediately nullify the bill that's preempting, but it
+[01:19:41 -> 01:19:43] would take many months before any implementation
+[01:19:43 -> 01:19:45] of the new requirements.
+[01:19:45 -> 01:19:47] So you would effectively have no such regulation and a ban
+[01:19:47 -> 01:19:50] on such regulation by the states for like six months or
+[01:19:50 -> 01:19:53] more, which is obviously a disaster from the perspective of
+[01:19:53 -> 01:19:53] moving quickly.
+[01:19:54 -> 01:19:56] But again, like even if you were to address, like I call
+[01:19:56 -> 01:19:58] that almost a bug.
+[01:19:58 -> 01:19:59] I think that's just like clearly a mistake.
+[01:20:02 -> 01:20:04] Zvi had just listed the government's recent ad hoc moves
+[01:20:04 -> 01:20:07] against AI companies, including the takedown of Fable.
+[01:20:08 -> 01:20:08] Prakash pushed back.
+[01:20:10 -> 01:20:13] So it may be that you have, if you have an acceleration of
+[01:20:13 -> 01:20:16] technology, you're going to need an acceleration of
+[01:20:16 -> 01:20:18] governance to kind of keep up.
+[01:20:19 -> 01:20:21] And it may be that that's where we end up.
+[01:20:21 -> 01:20:23] So we're going to need to have some ad hocery.
+[01:20:24 -> 01:20:27] Obviously, so part of the reason to pass legislation is to
+[01:20:27 -> 01:20:30] authorize the government to do ad hocery in a way that is
+[01:20:30 -> 01:20:33] much less ad hoc, that is much more formalized and bounded
+[01:20:33 -> 01:20:36] and has judicial policies for clean review.
+[01:20:37 -> 01:20:39] And then otherwise, it's like one of the big arguments over
+[01:20:39 -> 01:20:42] the bill formation that made us think the bill was actually
+[01:20:42 -> 01:20:45] quite weak and not very good was if the government wants to
+[01:20:45 -> 01:20:48] issue a takedown of a model in an emergency, like what
+[01:20:48 -> 01:20:50] happened with Fable.
+[01:20:50 -> 01:20:54] It happens again. How would they do it? And Anthropic's
+[01:20:54 -> 01:20:59] bill says you have to like go argue before a judge.
+[01:20:59 -> 01:21:02] You have very limited opportunities to sustain that. It
+[01:21:02 -> 01:21:04] requires high burdens of proof in ways that you don't have
+[01:21:04 -> 01:21:06] the transparency necessarily to demonstrate.
+[01:21:07 -> 01:21:09] It's a very onerous set of provisions.
+[01:21:10 -> 01:21:14] Now, the good news is that obviously the government could
+[01:21:14 -> 01:21:19] still impose export controls or issue just general threats
+[01:21:19 -> 01:21:21] or otherwise just do the things you do in an emergency, in
+[01:21:21 -> 01:21:21] a true emergency.
+[01:21:22 -> 01:21:25] But in a real emergency, the new provision is so bad that
+[01:21:25 -> 01:21:27] you wouldn't use it.
+[01:21:28 -> 01:21:29] You would just use the current ad hocory.
+[01:21:29 -> 01:21:32] And so part of the point of passing a bill like this is to
+[01:21:32 -> 01:21:36] give them ad hocory that is formalized and reasonable.
+[01:21:36 -> 01:21:39] But anthropic is in fear of that because they're afraid
+[01:21:39 -> 01:21:39] that the government would use it.
+[01:21:40 -> 01:21:42] So they're unwilling to grant reasonable ad hocery,
+[01:21:42 -> 01:21:45] basically, to this federal government, to this
+[01:21:45 -> 01:21:46] administration.
+[01:21:47 -> 01:21:51] But this basically points to the conflict in anthropic's
+[01:21:51 -> 01:21:51] eyes.
+[01:21:51 -> 01:21:53] It's like you are going to do preemption of states and you
+[01:21:53 -> 01:21:56] 're going to hand this power to the federal government.
+[01:21:56 -> 01:21:59] But the federal government is fundamentally run by people
+[01:21:59 -> 01:22:01] that you don't trust to do this in a reasonable fashion.
+[01:22:01 -> 01:22:04] So then you cripple them. But like then that's worse than
+[01:22:04 -> 01:22:05] just leaving it in the states.
+[01:22:05 -> 01:22:09] So like you have to then figure out whether you're willing
+[01:22:09 -> 01:22:10] to do this or not.
+[01:22:10 -> 01:22:13] And like anthropic is trying to cut it both ways.
+[01:22:13 -> 01:22:14] And it's like causing a lot of problems.
+[01:22:15 -> 01:22:20] Near the end of the conversation, I asked Zvi what else was
+[01:22:20 -> 01:22:21] top of mind.
+[01:22:22 -> 01:22:26] I would say the biggest thing is that like what I was upset
+[01:22:26 -> 01:22:31] with the most about the policy situation is just that this
+[01:22:31 -> 01:22:33] is not fundamentally attempting to be the moment.
+[01:22:33 -> 01:22:35] Right. Like Dario has said, we must face the frontier.
+[01:22:36 -> 01:22:39] There is clearly like, according to the labs themselves and
+[01:22:39 -> 01:22:42] the people internal to the labs, there's a crisis coming
+[01:22:42 -> 01:22:44] where they are able to push capabilities faster than they
+[01:22:44 -> 01:22:45] are able to push alignment.
+[01:22:46 -> 01:22:48] And if they don't do something about this, they're going to
+[01:22:48 -> 01:22:51] have to face some very, very hard decisions where like they
+[01:22:51 -> 01:22:54] can either risk their commercial viability or they can risk
+[01:22:54 -> 01:22:57] like serious, serious catastrophic problems, including
+[01:22:57 -> 01:23:00] potentially loss of control at some point in 2027.
+[01:23:01 -> 01:23:04] And, you know, they need something to be done about this.
+[01:23:05 -> 01:23:07] And, you know, if you can't meet the moment, if you're not
+[01:23:07 -> 01:23:10] ready with something that can potentially do that, well,
+[01:23:10 -> 01:23:12] why don't you keep working until you can?
+[01:23:12 -> 01:23:14] Things that used to be not in the Overton window are in the
+[01:23:14 -> 01:23:15] Overton window.
+[01:23:16 -> 01:23:18] And things that seemed like, you know, we wouldn't
+[01:23:18 -> 01:23:20] necessarily need them, we now pretty much know we need them
+[01:23:20 -> 01:23:20] .
+[01:23:22 -> 01:23:24] And so, like, that is where a lot of time and attention is
+[01:23:24 -> 01:23:25] going to have to shift.
+[01:23:27 -> 01:23:29] You know, obviously all the quasi work still needs to
+[01:23:29 -> 01:23:30] happen.
+[01:23:30 -> 01:23:32] All the alignment work still needs to happen.
+[01:23:32 -> 01:23:34] You know, the Mechentrop stuff is great.
+[01:23:34 -> 01:23:35] We should absolutely do it.
+[01:23:35 -> 01:23:37] The biggest thing is, you know, we're going to have to meet
+[01:23:37 -> 01:23:40] the moment and we're going to have to, at minimum, do
+[01:23:40 -> 01:23:42] something that counts as some form of facing the frontier.
+[01:23:44 -> 01:23:48] Nathan Calvin of Encode had publicly listed nine anthropic
+[01:23:48 -> 01:23:52] decisions he saw as putting the race ahead of safety.
+[01:23:53 -> 01:23:55] And Dario Amadei had replied at length.
+[01:23:55 -> 01:23:59] I asked Zvi how we should understand anthropic now.
+[01:24:01 -> 01:24:06] I would say anthropic is a company with a much stronger
+[01:24:06 -> 01:24:09] safety culture, although not adequate to the moment.
+[01:24:10 -> 01:24:14] It's a company that's willing to make big sacrifices in the
+[01:24:14 -> 01:24:17] areas where it particularly has strong beliefs, or Dario in
+[01:24:17 -> 01:24:18] particular has strong beliefs.
+[01:24:19 -> 01:24:20] And that is to its credit.
+[01:24:21 -> 01:24:24] And it is a company that legitimately wants to see AI go
+[01:24:24 -> 01:24:27] well and has some unique perspectives on what it would take
+[01:24:27 -> 01:24:28] to make that happen.
+[01:24:29 -> 01:24:33] But at the same time, Anthropix Policy Division especially,
+[01:24:33 -> 01:24:37] and also its willingness to be an ordinary company that
+[01:24:37 -> 01:24:40] competes in the AI race and buys a lot of capacity and is
+[01:24:40 -> 01:24:42] encouraging more chip production.
+[01:24:42 -> 01:24:43] It's encouraging more power supplies.
+[01:24:43 -> 01:24:45] encouraging more use and blah, blah, blah.
+[01:24:45 -> 01:24:48] It is acting like a normal corporation,
+[01:24:48 -> 01:24:50] or remarkably large percent of the time.
+[01:24:50 -> 01:24:53] And on policy, it is revealing itself
+[01:24:53 -> 01:24:57] to not live up to its ideals reasonably often.
+[01:24:57 -> 01:24:59] And this is just very, very frustrating
+[01:24:59 -> 01:25:01] to those of us who want to be excited
+[01:25:01 -> 01:25:05] by the prospect of Anthropic
+[01:25:05 -> 01:25:07] being a good steward in some sense.
+[01:25:08 -> 01:25:10] And Anthropic keeps us so much information,
+[01:25:10 -> 01:25:12] so many different bits of information
+[01:25:12 -> 01:25:14] that we should be worried about this.
+[01:25:14 -> 01:25:18] I've also, you know, recently from various employees that I
+[01:25:18 -> 01:25:20] 've talked to at various points, gotten some rather alarming
+[01:25:20 -> 01:25:23] views about, from my perspective, on what it would take to
+[01:25:23 -> 01:25:25] solve alignment problems, what it would take to make the
+[01:25:25 -> 01:25:26] future go well.
+[01:25:27 -> 01:25:29] And, you know, all of that plays into, you know, being very
+[01:25:29 -> 01:25:31] highly uncomfortable.
+[01:25:32 -> 01:25:34] They still seem like probably the most responsible lab, but
+[01:25:34 -> 01:25:37] , you know, that's grading on a curve.
+[01:25:37 -> 01:25:39] And I don't like grading on curves because reality doesn't
+[01:25:39 -> 01:25:40] have a curve, right?
+[01:25:40 -> 01:25:43] Reality just decides what happens.
+[01:25:43 -> 01:25:45] That's the week.
+[01:25:45 -> 01:25:48] Thanks for listening to the AI in the AM weekly highlights.
+[01:25:49 -> 01:25:50] The narration was my clone voice.
+[01:25:51 -> 01:25:53] Please tell us what worked and what didn't.
+[01:25:53 -> 01:25:54] See you in the morning.
+[01:27:05 -> 01:27:49] If you're finding value in the show, we'd appreciate it if
+[01:27:49 -> 01:27:50] you'd take a moment to share
+[01:27:50 -> 01:27:53] with friends, post online, write a review on Apple Podcasts
+[01:27:53 -> 01:27:55] or Spotify, or just leave us a comment
+[01:27:55 -> 01:27:58] on YouTube. Of course, we always welcome your feedback,
+[01:27:58 -> 01:27:59] guest and topic suggestions,
+[01:28:00 -> 01:28:03] and sponsorship inquiries, either via our website, Cogn
+[01:28:03 -> 01:28:04] itiveRevolution.ai,
+[01:28:04 -> 01:28:06] or by DMing me on your favorite social network.
+[01:28:07 -> 01:28:10] The Cognitive Revolution is part of the Turpentine Network,
+[01:28:10 -> 01:28:12] a network of podcasts, which is now part of A16Z,
+[01:28:13 -> 01:28:16] where experts talk technology, business, economics,
+[01:28:16 -> 01:28:18] geopolitics, culture, and more.
+[01:28:19 -> 01:28:21] We're produced by AI Podcasting.
+[01:28:21 -> 01:28:23] If you're looking for podcast production help for
+[01:28:23 -> 01:28:25] everything from the moment you stop recording
+[01:28:25 -> 01:28:26] to the moment your audience starts listening,
+[01:28:27 -> 01:28:30] check them out and see my endorsement at AIPodcast.ing.
+[01:28:31 -> 01:28:34] And thank you to everyone who listens for being part of the
+[01:28:34 -> 01:28:35] cognitive revolution.

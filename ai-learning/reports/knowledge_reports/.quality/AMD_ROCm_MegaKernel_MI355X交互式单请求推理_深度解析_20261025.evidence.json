@@ -88,6 +88,13 @@
       "title": "GitHub — ROCm/FlyDSL（FlyDSL 上游 Python 前端；302 stars / 131 forks；创建 2025-11-23）",
       "locator": "https://github.com/ROCm/FlyDSL",
       "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S08",
+      "kind": "official",
+      "title": "GitHub — NVIDIA/TensorRT-LLM README（专用 kernel、推理 runtime 与 Python 框架的官方定位）",
+      "locator": "https://github.com/NVIDIA/TensorRT-LLM/blob/master/README.md",
+      "accessed_on": "2026-10-25"
     }
   ],
   "claims": [
@@ -132,7 +139,7 @@
       "source_ids": [
         "S01"
       ],
-      "evidence": "S01 Key Takeaways 与各模型 Test Configuration 的具体 tok/s 数字（1,091/913/824 对 535/443/412；1,105/924/846 对 481/406/368；689 对 227；1,472 对 784），以及 ROCm 7.2.4 下 2.3× 与 ROCm 10.0 下 2.0× 的差异说明。",
+      "evidence": "S01 Key Takeaways 与各模型 Test Configuration 的具体 tok/s 数字（1,091/913/824 对 535/443/412；1,105/924/846 对 481/406/368；MI355X Flash-Next headline 约 750 tok/s、3.3×但正文未单列对照绝对值；另有 MI350X 689 对 227；GPT-OSS-120B 1,472 对 784），以及 ROCm 7.2.4 下 2.3× 与 ROCm 10.0 下 2.0× 的差异说明。报告将 MI355X headline 与 MI350X 成对数字分开呈现。",
       "critical": true
     },
     {
@@ -242,13 +249,14 @@
     },
     {
       "id": "C14",
-      "claim": "[推测] megakernel 路线的收益随并发上升而收敛：其机理是消除低并发下无法被摊薄的 launch 与同步开销，而 AMD 只提供 4 请求批量（Flash-Next，3.1× per user）一个数据点，且 'Larger batches' 仍在路线图上，因此真实多 Agent 并发下的净增益很可能显著小于单请求数字。",
+      "claim": "[推测] megakernel 路线在多 Agent 并发下的相对收益可能不同于 batch=1，但现有证据无法判断一定缩小还是扩大：常规路径可能摊薄 launch 开销，持久化调度与缓存局部性也可能产生新的收益；AMD 只提供 Flash-Next 四请求（3.1× per user）一个数据点，且 “Larger batches” 仍在路线图上。",
       "report_anchor": "7.1 与多 Agent 负载的关系",
       "support": "inference",
       "source_ids": [
-        "S01"
+        "S01",
+        "S02"
       ],
-      "evidence": "由 S01 的问题定义（launch 开销在单请求下无法隐藏）、4 请求数据点与 What's Next 中的 'Larger batches' 推导；AMD 未提供更高并发的曲线，属本报告的推断。",
+      "evidence": "由 S01 的问题定义（launch 开销在单请求下无法隐藏）、四请求数据点与 What’s Next 中的 “Larger batches” 推导，并用 S02 的较大 batch 缓存收益作为反例边界；AMD 未提供更高并发曲线，因此只登记待测假说。",
       "critical": false
     },
     {
@@ -260,6 +268,17 @@
         "S01"
       ],
       "evidence": "S01 明确称比较反映 complete optimized setup，并给出 3.6× without speculation、2.3× with EAGLE3、1.6× with the same DFlash drafter。正文据此只判断相对差距随条件变化，不再声称已分解 megakernel 或投机的独立贡献。",
+      "critical": false
+    },
+    {
+      "id": "C16",
+      "claim": "TensorRT-LLM 官方 README 将其定位为使用专用 kernel、推理 runtime 与 Python 框架优化 LLM 和 Visual Gen 推理的 NVIDIA 栈；本报告没有同模型、同硬件 benchmark，因此只比较产品与平台边界，不做性能排名。",
+      "report_anchor": "七、与替代路线的有边界比较",
+      "support": "direct",
+      "source_ids": [
+        "S08"
+      ],
+      "evidence": "S08 README 的项目摘要与 CUDA / NVIDIA 官方仓库入口；未引用其新闻列表中的厂商性能数字。",
       "critical": false
     }
   ],
@@ -287,7 +306,8 @@
         "S04",
         "S05",
         "S06",
-        "S07"
+        "S07",
+        "S08"
       ],
       "report_anchor": "一、来源清单与读法"
     },
@@ -502,24 +522,26 @@
     },
     {
       "id": "U23",
-      "title": "六条路线（megakernel / multi-kernel + graph capture / 模型专用融合 / MPK 编译器 / Fleet 拓扑感知 / NVIDIA 专用栈）的有边界比较",
+      "title": "六条路线（megakernel / multi-kernel + graph capture / 模型专用融合 / MPK 编译器 / Fleet 拓扑感知 / TensorRT-LLM）的有边界比较",
       "importance": "core",
       "status": "included",
       "source_ids": [
         "S01",
         "S02",
         "S03",
-        "S06"
+        "S06",
+        "S08"
       ],
       "report_anchor": "七、与替代路线的有边界比较"
     },
     {
       "id": "U24",
-      "title": "与多 Agent 负载的关系：decode 之外的开销与并发收敛推断",
+      "title": "与多 Agent 负载的关系：decode 之外的开销与并发趋势待验证假说",
       "importance": "core",
       "status": "included",
       "source_ids": [
-        "S01"
+        "S01",
+        "S02"
       ],
       "report_anchor": "7.1 与多 Agent 负载的关系"
     },
@@ -570,7 +592,8 @@
         "S03",
         "S04",
         "S05",
-        "S06"
+        "S06",
+        "S08"
       ],
       "report_anchor": "9.2 Limitations"
     },
@@ -609,6 +632,7 @@
     "未检索社区复现与生产案例；未发现第三方复现，但也未系统检索。",
     "未核对同期其他厂商的同类数字，无法判断 1.9–3.3× 在行业中的相对水位。",
     "未评估'用 AI 编码 agent 做 kernel 优化'这一方法本身的有效性（贡献比例、成功率、失败模式均未公开）。",
-    "资料时点为 2026-10-25（UTC 约 17:51–18:20）；博客发布于 2026-10-20，三个个人仓库在读取时均为 0 star，但创建日期分别为 2026-10-12、2026-10-18 与 2026-07-29；AMD 明说数字与代码位置会继续更新。"
+    "AMD/Fleet 主要网络证据读取发生于北京时间 2026-10-25 01:51–02:20（UTC 2026-10-24 17:51–18:20）；TensorRT-LLM README 于北京时间 2026-10-25 08 时后补读。博客发布于 2026-10-20，三个个人仓库读取时均为 0 star，但创建日期分别为 2026-10-12、2026-10-18 与 2026-07-29；AMD 明说数字与代码位置会继续更新。",
+    "TensorRT-LLM 只读取官方 README 的产品定位与平台入口，未读取其同模型 benchmark 或实现细节；第七章仅比较能力边界，不比较性能。"
   ]
 }

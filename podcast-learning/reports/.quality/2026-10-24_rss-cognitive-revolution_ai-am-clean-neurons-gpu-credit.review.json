@@ -1,0 +1,1031 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-24_rss-cognitive-revolution_ai-am-clean-neurons-gpu-credit.md",
+  "quality_tier": "important",
+  "revision_round": 3,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "review-ai-am-r3-format-20261025",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 97,
+        "request_coverage": 98,
+        "reasoning_quality": 96,
+        "readability": 96,
+        "limitations": 98
+      },
+      "score_reasons": {
+        "evidence_fidelity": "已逐项回到完整 transcript、polished、shownotes、执行收据和四份一手补读材料核验。Goodfire、probe detector、SF Compute 与 Cambrian 的数字、条件、来源性质和利益关系均准确。revision 2 新增的 C14 与 01:23:44–01:25:43 原文一致，报告同时保留肯定、批评、相对评价和个人判断边界。未取得原始文件的事故、合作与法案仍未被升级为已证实事实。",
+        "request_coverage": "独立来源地图的 16 个单元全部得到处理：12 个核心章节完整进入正文，两段广告和通用节目收尾按合理省略覆盖，SC15 已补齐 Anthropic 安全文化更强、愿意牺牲、仍参与竞赛、政策未达理想以及“最负责只是相对评价”的完整双面判断。C01–C14 与 R01–R09 均有对应正文或必要质量记录。",
+        "reasoning_quality": "移动瓶颈模型继续准确区分不同时间尺度和系统层级，并为 RSI、机制可解释性、信用、制造、权限与监管结论提供成立条件、反例和替代解释。新增 Anthropic 段没有把嘉宾评价写成事实审计结论，而是明确归因于 Zvi，并指出相对比较不能替代现实后果和独立审计。",
+        "readability": "报告可脱离音频与当前会话独立阅读。证据口径、内容地图、九条主线、综合模型、可迁移启示、限制与追问结构清楚；revision 2 将 SC15 的双面评价放在联邦法案段末，承接自然且无需读者回查精编稿。",
+        "limitations": "限制章节完整覆盖 ASR 未逐句回听、shownotes 的 AI 生成属性、Goodfire 样本与阈值、probe detector 环境依赖、公司自述、投资利益、未核验口播、预测时间线和外推风险；SC15 新段还就地说明这是 Zvi 的个人评价，不能替代对 Anthropic 行动的独立审计。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14"
+      ],
+      "coverage_unit_ids_checked": [
+        "SC01",
+        "SC02",
+        "SC03",
+        "SC04",
+        "SC05",
+        "SC06",
+        "SC07",
+        "SC08",
+        "SC09",
+        "SC10",
+        "SC11",
+        "SC12",
+        "SC13",
+        "SC14",
+        "SC15",
+        "SC16"
+      ],
+      "source_content_map": [
+        {
+          "id": "SCM-R2-01",
+          "title": "00:00 Weekly episode preview：资金、物理供给与法律约束的全期预告",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC01"
+          ],
+          "notes": "内容地图、一句话总结和移动瓶颈综合判断覆盖资金、原子与监管三条预告主线。"
+        },
+        {
+          "id": "SCM-R2-02",
+          "title": "04:58 Recursive self improvement Part 1：1.6 次实验、反馈耗尽模型与临界点",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC02"
+          ],
+          "notes": "主线一准确保留怀疑路线、模型成立条件和反馈可能在临界点前失速的结论。"
+        },
+        {
+          "id": "SCM-R2-03",
+          "title": "09:54 OutSystems 与 Parallel 广告",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC03"
+          ],
+          "notes": "广告不承载节目研究论证，省略合理，按 covered-by-omission 处理。"
+        },
+        {
+          "id": "SCM-R2-04",
+          "title": "13:06 Recursive self improvement Part 2：突破事件、公司指标与 2027 条件性时间线",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC04"
+          ],
+          "notes": "报告保留本垒打反例、人均 Token/代码/CUDA 指标的有限证据价值，并明确发布周期和 2027 属于预测。"
+        },
+        {
+          "id": "SCM-R2-05",
+          "title": "13:06 Clean neural networks Part 1：递归泛化、90%/7%/2%–4% 与 backprop-free 假说",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03",
+            "S04",
+            "S06"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC05"
+          ],
+          "notes": "主线二准确解释 Goodfire 主张、比例口径、阈值敏感性，以及社区实验远未能替代反向传播。"
+        },
+        {
+          "id": "SCM-R2-06",
+          "title": "26:25 Tasklet 广告",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC06"
+          ],
+          "notes": "广告只提供产品宣传，不构成 Agent 技术证据，省略合理，按 covered-by-omission 处理。"
+        },
+        {
+          "id": "SCM-R2-07",
+          "title": "28:03 Clean neural networks Part 2：解释行为的反方、Colorado neuron 与 probe detector",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03",
+            "S04",
+            "S06",
+            "S07"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC07"
+          ],
+          "notes": "报告保留解释神经元不等于预测网络、弱激活和组合机制等反方，并将 probe detector 限定为编译器 kernel 切分与舍入痕迹。"
+        },
+        {
+          "id": "SCM-R2-08",
+          "title": "28:03 The cognitive core：知识参与选择问题、外接事实库与价值注入",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC08"
+          ],
+          "notes": "主线三完整保留小核心直觉、知识参与推理论证、“不要偷窃”价值例子及即兴推演边界。"
+        },
+        {
+          "id": "SCM-R2-09",
+          "title": "35:35 Black October：可偿付性、账本完整性、身份与恢复风险",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC09"
+          ],
+          "notes": "主线四没有把未核验事故写成事实，而是提炼四类风险，并保留身份终局的规范与政治判断边界。"
+        },
+        {
+          "id": "SCM-R2-10",
+          "title": "41:52 The GPU credit crunch：长期合同、抵押物估值、预付与二级市场",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03",
+            "S04",
+            "S08"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC10"
+          ],
+          "notes": "主线五覆盖信贷机制、1000-GPU 追问、$245M 合同、25% 转售回收公司自述及长期合同的需求风险转移。"
+        },
+        {
+          "id": "SCM-R2-11",
+          "title": "51:58 Atoms over bits：估值、经营杠杆、供需条件及设计与制造非对称",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03",
+            "S04",
+            "S09"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC11"
+          ],
+          "notes": "主线六把 Cambrian 作为有条件投资论点，保留最强反方、制造默会知识、超级智能反例和主持人利益披露。"
+        },
+        {
+          "id": "SCM-R2-12",
+          "title": "01:03:53 Rethinking industry bottlenecks：资本移动约束、市场集中与对抗性扩散",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC12"
+          ],
+          "notes": "主线七覆盖资本移动瓶颈、市场集中、紧急状态推动采用和政治反弹，并保持预测与未核验口播边界。"
+        },
+        {
+          "id": "SCM-R2-13",
+          "title": "01:10:31 Introducing HelpPeer agents：高权限低自主、低权限高自主与审批疲劳",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC13"
+          ],
+          "notes": "主线八完整保留两种 Agent 配置、no agent gets both、连续误报后的机械放行风险及原型边界。"
+        },
+        {
+          "id": "SCM-R2-14",
+          "title": "01:14:23 Leaked federal bill：联邦优先权、一次性筹码、监管空窗与应急权",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC14"
+          ],
+          "notes": "主线九同时保留 Prakash 的善意解释与 Zvi 的三层反驳，并明确未取得草案全文。"
+        },
+        {
+          "id": "SCM-R2-15",
+          "title": "01:25:59 Episode outro：2027 风险选择与对 Anthropic 安全文化的复杂评价",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC15"
+          ],
+          "notes": "revision 2 已完整覆盖能力快于对齐与 2027 风险，以及安全文化更强、愿意牺牲、仍像普通公司参与竞赛、政策未达理想、“最负责”只是按曲线评分的双面评价；并明确这只是 Zvi 的个人判断。"
+        },
+        {
+          "id": "SCM-R2-16",
+          "title": "01:27:49 通用节目 outro：分享订阅、制作方与播客网络信息",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC16"
+          ],
+          "notes": "该段没有新增研究内容，省略合理，按 covered-by-omission 处理。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07",
+        "R08",
+        "R09"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "纯格式 revision 复核。开始前核对 report SHA-256=d244036e3dc86215b594790ba0abc0db72886dc0e540400f81957df81bf83ee3、evidence SHA-256=d68bfd6157405fd6654808769a5bdd83449265377c7206e4d8d4e45638faf42b，与调度快照一致。git diff 显示内容改动仅为删除一个多余 EOF 空行；另有 new-revision 将 status 从 completed 重置为 in_progress。忽略行尾空格、规范化 status 并移除多余 EOF 空行后，当前文件与 Git index 的 SHA-256 同为 c943489828d57b6ce56cad96c8b6755516e309dcca67e01f01c52c87c2da9c5a，semantic_equal=true。因此最近一轮来源优先复核的 source_content_map、claim/coverage/source/requirement 核验和五维评分仍全部适用。本轮实际运行 audit_transcript.py：ok=true，segments=1946，duration_seconds=5315，size=127879，sha256=02b26e4c786f750323701d81d03fdd2d842b9d4051bf9c1135adc4e8e1af56b5，max_consecutive_identical=1，warnings/errors 均为空。未发现新增 unsupported claim、missing requirement 或 hard failure。 运行 report_quality.py check（未使用 --finalize）的首次结果：decision=pass，score=96.95，ERROR 0，WARN 0。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 96.95,
+    "evaluated_on": "2026-10-25",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "5547f3400d82fbf2c6feb37b677ea74d5a1b6a90f07078c368e9207f656fcd7d",
+    "evidence_sha256": "d68bfd6157405fd6654808769a5bdd83449265377c7206e4d8d4e45638faf42b"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex",
+            "run_id": "review-ai-am-gpt56sol-r1-20261025",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 97,
+            "request_coverage": 94,
+            "reasoning_quality": 96,
+            "readability": 96,
+            "limitations": 98
+          },
+          "score_reasons": {
+            "evidence_fidelity": "已逐项回到完整 transcript、polished、shownotes、执行收据和四份一手补读材料核验。Goodfire 的 90%/7%/2%–4% 被准确限定为阈值敏感的初步审计；probe detector 的 L40S、BF16、torch.compile、128/128、跨 GPU 退化与方向反转均准确；SF Compute 数字明确归因于公司披露；Cambrian 明确标作投资论点并披露主持人利益。未独立取得原始文件的安全事故、商业发射份额、半导体合作和泄露法案没有被升级为已证实事实。",
+            "request_coverage": "官方 shownotes 的 12 个核心单元均进入正文，两段广告和通用节目收尾的省略合理。RSI、clean neurons、cognitive core、Black October、GPU 信贷、atoms over bits、产业瓶颈、HelpPeer 和联邦法案均保留主要论证、反方和边界。轻微缺口是 supporting 单元 SC15：正文保留了能力快于对齐及 2027 风险判断，但没有展开 Zvi 对 Anthropic 安全文化、竞赛行为和政策表现的完整双面评价。",
+            "reasoning_quality": "报告没有把节目观点拼成单一结论，而是用“移动瓶颈”解释不同时间尺度和系统层级，并持续给出成立条件、反例与替代解释。对 RSI 指标、解释神经元与预测行为的差别、GPU 合同风险转移、设计与制造非对称、Agent 权限与自主性乘积、联邦优先权的议价结构均有清晰推理链；跨材料推导均标记为推测或使用条件化措辞。",
+            "readability": "报告可脱离音频与当前会话独立阅读。证据口径、内容地图、九条主线、综合模型、EverAgent/Harness 启示、限制与追问的顺序清楚，关键术语和数字在首次出现处给出上下文。内容较密，但标题、列表和表格足以支撑快速定位。",
+            "limitations": "限制章节完整覆盖 ASR 未逐句回听、shownotes 的 AI 生成属性、Goodfire 样本与阈值、probe detector 的环境依赖、SF Compute 公司自述、Cambrian 利益关系、未核验口播、预测时间线和外推风险；正文还在相关段落就地重复关键边界。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07",
+            "C08",
+            "C09",
+            "C10",
+            "C11",
+            "C12",
+            "C13"
+          ],
+          "coverage_unit_ids_checked": [
+            "SC01",
+            "SC02",
+            "SC03",
+            "SC04",
+            "SC05",
+            "SC06",
+            "SC07",
+            "SC08",
+            "SC09",
+            "SC10",
+            "SC11",
+            "SC12",
+            "SC13",
+            "SC14",
+            "SC15",
+            "SC16"
+          ],
+          "source_content_map": [
+            {
+              "id": "SCM01",
+              "title": "00:00 Weekly episode preview：资金、物理供给与法律约束的全期预告",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC01"
+              ],
+              "notes": "报告未逐句复述编辑预告，但内容地图、一句话总结和移动瓶颈综合判断覆盖了资金、原子与监管三条预告主线。"
+            },
+            {
+              "id": "SCM02",
+              "title": "04:58 Recursive self improvement Part 1：1.6 次实验、反馈耗尽模型与临界点",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC02"
+              ],
+              "notes": "主线一准确保留了怀疑路线、模型成立条件和反馈可能在临界点前失速的结论。"
+            },
+            {
+              "id": "SCM03",
+              "title": "09:54 OutSystems 与 Parallel 广告",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC03"
+              ],
+              "notes": "广告不承载节目研究论证，报告省略合理，按 covered-by-omission 处理。"
+            },
+            {
+              "id": "SCM04",
+              "title": "13:06 Recursive self improvement Part 2：突破事件、公司指标与 2027 条件性时间线",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC04"
+              ],
+              "notes": "报告保留了本垒打反例、人均 Token/代码/CUDA 指标的有限证据价值，并明确发布周期和 2027 属于预测。"
+            },
+            {
+              "id": "SCM05",
+              "title": "13:06 Clean neural networks Part 1：递归泛化、90%/7%/2%–4% 与 backprop-free 假说",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04",
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC05"
+              ],
+              "notes": "主线二准确解释 Goodfire 主张、比例口径、阈值敏感性，以及社区实验远未能替代反向传播。"
+            },
+            {
+              "id": "SCM06",
+              "title": "26:25 Tasklet 广告",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC06"
+              ],
+              "notes": "广告只提供产品宣传，不构成 Agent 技术证据，报告省略合理，按 covered-by-omission 处理。"
+            },
+            {
+              "id": "SCM07",
+              "title": "28:03 Clean neural networks Part 2：解释行为的反方、Colorado neuron 与 probe detector",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04",
+                "S06",
+                "S07"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC07"
+              ],
+              "notes": "报告保留解释神经元不等于预测网络、弱激活和组合机制等反方，并用模型卡把 probe detector 限定为编译器 kernel 切分与舍入痕迹。"
+            },
+            {
+              "id": "SCM08",
+              "title": "28:03 The cognitive core：知识参与选择问题、外接事实库与价值注入",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC08"
+              ],
+              "notes": "主线三完整保留小核心直觉、Zvi 的知识参与推理论证、“不要偷窃”价值例子及其即兴推演边界。"
+            },
+            {
+              "id": "SCM09",
+              "title": "35:35 Black October：可偿付性、账本完整性、身份与恢复风险",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC09"
+              ],
+              "notes": "主线四没有把未核验事故写成事实，而是提炼四类风险，并保留身份终局属于规范与政治判断的边界。"
+            },
+            {
+              "id": "SCM10",
+              "title": "41:52 The GPU credit crunch：长期合同、抵押物估值、预付与二级市场",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04",
+                "S08"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC10"
+              ],
+              "notes": "主线五覆盖信贷机制、1000-GPU 创业公司的现实追问、$245M 两份合同、25% 转售回收公司自述，以及长期合同把需求风险转给客户的反面。"
+            },
+            {
+              "id": "SCM11",
+              "title": "51:58 Atoms over bits：估值、经营杠杆、供需条件及设计与制造非对称",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04",
+                "S09"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC11"
+              ],
+              "notes": "主线六把 Cambrian 作为有条件成立的投资论点，保留最强反方、制造默会知识、超级智能终局反例和主持人投资利益披露。"
+            },
+            {
+              "id": "SCM12",
+              "title": "01:03:53 Rethinking industry bottlenecks：资本移动约束、市场集中与对抗性扩散",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC12"
+              ],
+              "notes": "主线七覆盖马斯克/商业发射类比、高资本玩家造成集中、紧急状态推动采用及政治反弹，并把市场份额口播和预测保持为未核验判断。"
+            },
+            {
+              "id": "SCM13",
+              "title": "01:10:31 Introducing HelpPeer agents：高权限低自主、低权限高自主与审批疲劳",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC13"
+              ],
+              "notes": "主线八完整保留两种 Agent 配置、同一 Agent 不同时获得高权限与高自主性、约五次误报后的机械放行风险，并说明 HelpPeer 仍是个人原型。"
+            },
+            {
+              "id": "SCM14",
+              "title": "01:14:23 Leaked federal bill：联邦优先权、一次性筹码、监管空窗与应急权",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC14"
+              ],
+              "notes": "主线九同时保留 Prakash 的善意解释与 Zvi 的三层反驳，并明确未取得草案全文，不能独立判定条款。"
+            },
+            {
+              "id": "SCM15",
+              "title": "01:25:59 Episode outro：2027 风险选择与对 Anthropic 安全文化的复杂评价",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC15"
+              ],
+              "notes": "报告保留能力进展快于对齐、商业可行性与失控风险选择及 2027 时间线；内容地图也指出 Anthropic 评价。但正文没有展开“安全文化更强且愿意牺牲、同时仍像普通竞赛公司且政策未达理想、最负责也只是相对评价”的完整双面判断，因此记为 supporting/partial。"
+            },
+            {
+              "id": "SCM16",
+              "title": "01:27:49 通用节目 outro：分享订阅、制作方与播客网络信息",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC16"
+              ],
+              "notes": "该段没有新增研究内容，报告省略合理，按 covered-by-omission 处理。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06",
+            "S07",
+            "S08",
+            "S09"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04",
+            "R05",
+            "R06",
+            "R07",
+            "R08",
+            "R09"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "已按来源优先顺序完整读取 1946 段 transcript、结构化精编、官方 shownotes 与执行 artifact，独立建立 16 个内容单元后再核对报告和 evidence；并读取 Goodfire 原文、watching-probe-detector 模型卡、SF Compute 官方合同披露与 Cambrian thesis。报告 SHA-256=f7dc9aaf24ffcb2324ee9bc3e4852528b0aeec53101da2b830036178b48afb94，evidence SHA-256=7b5ac78aa2cb40521d7b3c6f33f2510ba29b83396f128022c68ae70b026e78e5，与派发快照一致。已核对 transcript 审计收据：ok=true，segments=1946，duration_seconds=5315，size=127879，sha256=02b26e4c786f750323701d81d03fdd2d842b9d4051bf9c1135adc4e8e1af56b5，max_consecutive_identical=1，warnings/errors 均为空。12 个核心单元全部 covered；SC15 为 supporting/partial，不影响任何 R01–R09 核心要求。 运行 python3 scripts/report_quality.py check（未使用 --finalize）的首次结果：decision=pass，score=96.15，ERROR 0，WARN 0。"
+        }
+      ],
+      "decision": {}
+    },
+    {
+      "revision_round": 2,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex",
+            "run_id": "review-ai-am-gpt56sol-r2-20261025",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 97,
+            "request_coverage": 98,
+            "reasoning_quality": 96,
+            "readability": 96,
+            "limitations": 98
+          },
+          "score_reasons": {
+            "evidence_fidelity": "已逐项回到完整 transcript、polished、shownotes、执行收据和四份一手补读材料核验。Goodfire、probe detector、SF Compute 与 Cambrian 的数字、条件、来源性质和利益关系均准确。revision 2 新增的 C14 与 01:23:44–01:25:43 原文一致，报告同时保留肯定、批评、相对评价和个人判断边界。未取得原始文件的事故、合作与法案仍未被升级为已证实事实。",
+            "request_coverage": "独立来源地图的 16 个单元全部得到处理：12 个核心章节完整进入正文，两段广告和通用节目收尾按合理省略覆盖，SC15 已补齐 Anthropic 安全文化更强、愿意牺牲、仍参与竞赛、政策未达理想以及“最负责只是相对评价”的完整双面判断。C01–C14 与 R01–R09 均有对应正文或必要质量记录。",
+            "reasoning_quality": "移动瓶颈模型继续准确区分不同时间尺度和系统层级，并为 RSI、机制可解释性、信用、制造、权限与监管结论提供成立条件、反例和替代解释。新增 Anthropic 段没有把嘉宾评价写成事实审计结论，而是明确归因于 Zvi，并指出相对比较不能替代现实后果和独立审计。",
+            "readability": "报告可脱离音频与当前会话独立阅读。证据口径、内容地图、九条主线、综合模型、可迁移启示、限制与追问结构清楚；revision 2 将 SC15 的双面评价放在联邦法案段末，承接自然且无需读者回查精编稿。",
+            "limitations": "限制章节完整覆盖 ASR 未逐句回听、shownotes 的 AI 生成属性、Goodfire 样本与阈值、probe detector 环境依赖、公司自述、投资利益、未核验口播、预测时间线和外推风险；SC15 新段还就地说明这是 Zvi 的个人评价，不能替代对 Anthropic 行动的独立审计。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07",
+            "C08",
+            "C09",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14"
+          ],
+          "coverage_unit_ids_checked": [
+            "SC01",
+            "SC02",
+            "SC03",
+            "SC04",
+            "SC05",
+            "SC06",
+            "SC07",
+            "SC08",
+            "SC09",
+            "SC10",
+            "SC11",
+            "SC12",
+            "SC13",
+            "SC14",
+            "SC15",
+            "SC16"
+          ],
+          "source_content_map": [
+            {
+              "id": "SCM-R2-01",
+              "title": "00:00 Weekly episode preview：资金、物理供给与法律约束的全期预告",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC01"
+              ],
+              "notes": "内容地图、一句话总结和移动瓶颈综合判断覆盖资金、原子与监管三条预告主线。"
+            },
+            {
+              "id": "SCM-R2-02",
+              "title": "04:58 Recursive self improvement Part 1：1.6 次实验、反馈耗尽模型与临界点",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC02"
+              ],
+              "notes": "主线一准确保留怀疑路线、模型成立条件和反馈可能在临界点前失速的结论。"
+            },
+            {
+              "id": "SCM-R2-03",
+              "title": "09:54 OutSystems 与 Parallel 广告",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC03"
+              ],
+              "notes": "广告不承载节目研究论证，省略合理，按 covered-by-omission 处理。"
+            },
+            {
+              "id": "SCM-R2-04",
+              "title": "13:06 Recursive self improvement Part 2：突破事件、公司指标与 2027 条件性时间线",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC04"
+              ],
+              "notes": "报告保留本垒打反例、人均 Token/代码/CUDA 指标的有限证据价值，并明确发布周期和 2027 属于预测。"
+            },
+            {
+              "id": "SCM-R2-05",
+              "title": "13:06 Clean neural networks Part 1：递归泛化、90%/7%/2%–4% 与 backprop-free 假说",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04",
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC05"
+              ],
+              "notes": "主线二准确解释 Goodfire 主张、比例口径、阈值敏感性，以及社区实验远未能替代反向传播。"
+            },
+            {
+              "id": "SCM-R2-06",
+              "title": "26:25 Tasklet 广告",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC06"
+              ],
+              "notes": "广告只提供产品宣传，不构成 Agent 技术证据，省略合理，按 covered-by-omission 处理。"
+            },
+            {
+              "id": "SCM-R2-07",
+              "title": "28:03 Clean neural networks Part 2：解释行为的反方、Colorado neuron 与 probe detector",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04",
+                "S06",
+                "S07"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC07"
+              ],
+              "notes": "报告保留解释神经元不等于预测网络、弱激活和组合机制等反方，并将 probe detector 限定为编译器 kernel 切分与舍入痕迹。"
+            },
+            {
+              "id": "SCM-R2-08",
+              "title": "28:03 The cognitive core：知识参与选择问题、外接事实库与价值注入",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC08"
+              ],
+              "notes": "主线三完整保留小核心直觉、知识参与推理论证、“不要偷窃”价值例子及即兴推演边界。"
+            },
+            {
+              "id": "SCM-R2-09",
+              "title": "35:35 Black October：可偿付性、账本完整性、身份与恢复风险",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC09"
+              ],
+              "notes": "主线四没有把未核验事故写成事实，而是提炼四类风险，并保留身份终局的规范与政治判断边界。"
+            },
+            {
+              "id": "SCM-R2-10",
+              "title": "41:52 The GPU credit crunch：长期合同、抵押物估值、预付与二级市场",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04",
+                "S08"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC10"
+              ],
+              "notes": "主线五覆盖信贷机制、1000-GPU 追问、$245M 合同、25% 转售回收公司自述及长期合同的需求风险转移。"
+            },
+            {
+              "id": "SCM-R2-11",
+              "title": "51:58 Atoms over bits：估值、经营杠杆、供需条件及设计与制造非对称",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04",
+                "S09"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC11"
+              ],
+              "notes": "主线六把 Cambrian 作为有条件投资论点，保留最强反方、制造默会知识、超级智能反例和主持人利益披露。"
+            },
+            {
+              "id": "SCM-R2-12",
+              "title": "01:03:53 Rethinking industry bottlenecks：资本移动约束、市场集中与对抗性扩散",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC12"
+              ],
+              "notes": "主线七覆盖资本移动瓶颈、市场集中、紧急状态推动采用和政治反弹，并保持预测与未核验口播边界。"
+            },
+            {
+              "id": "SCM-R2-13",
+              "title": "01:10:31 Introducing HelpPeer agents：高权限低自主、低权限高自主与审批疲劳",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC13"
+              ],
+              "notes": "主线八完整保留两种 Agent 配置、no agent gets both、连续误报后的机械放行风险及原型边界。"
+            },
+            {
+              "id": "SCM-R2-14",
+              "title": "01:14:23 Leaked federal bill：联邦优先权、一次性筹码、监管空窗与应急权",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC14"
+              ],
+              "notes": "主线九同时保留 Prakash 的善意解释与 Zvi 的三层反驳，并明确未取得草案全文。"
+            },
+            {
+              "id": "SCM-R2-15",
+              "title": "01:25:59 Episode outro：2027 风险选择与对 Anthropic 安全文化的复杂评价",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC15"
+              ],
+              "notes": "revision 2 已完整覆盖能力快于对齐与 2027 风险，以及安全文化更强、愿意牺牲、仍像普通公司参与竞赛、政策未达理想、“最负责”只是按曲线评分的双面评价；并明确这只是 Zvi 的个人判断。"
+            },
+            {
+              "id": "SCM-R2-16",
+              "title": "01:27:49 通用节目 outro：分享订阅、制作方与播客网络信息",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC16"
+              ],
+              "notes": "该段没有新增研究内容，省略合理，按 covered-by-omission 处理。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06",
+            "S07",
+            "S08",
+            "S09"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04",
+            "R05",
+            "R06",
+            "R07",
+            "R08",
+            "R09"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "已按来源优先顺序核对完整 1946 段 transcript、结构化精编、官方 shownotes、执行 artifact 及 Goodfire、watching-probe-detector、SF Compute、Cambrian 四份补读材料，先建立 16 单元地图，再核对 revision 2 报告与 evidence。报告 SHA-256=8bba286c7bb3b41daf3765b3c6a40a16626c73a34b2ce1fe61d2bdb5fe7f4310，evidence SHA-256=d68bfd6157405fd6654808769a5bdd83449265377c7206e4d8d4e45638faf42b，与派发快照一致。实际运行 audit_transcript.py：ok=true，segments=1946，duration_seconds=5315，size=127879，sha256=02b26e4c786f750323701d81d03fdd2d842b9d4051bf9c1135adc4e8e1af56b5，max_consecutive_identical=1，warnings/errors 均为空。revision 1 的唯一轻微缺口 SC15 已补齐；本轮 16 个单元均 covered，C01–C14、R01–R09、S01–S09 均完成核验。 运行 python3 scripts/report_quality.py check（未使用 --finalize）的首次结果：decision=pass，score=96.95，ERROR 0，WARN 0。"
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 96.95,
+        "evaluated_on": "2026-10-25",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "4a0681d26fb43722394f1fc615cdb53c9da8f8dc9e3f9d941a4264bb1bf5347e",
+        "evidence_sha256": "d68bfd6157405fd6654808769a5bdd83449265377c7206e4d8d4e45638faf42b"
+      }
+    }
+  ]
+}

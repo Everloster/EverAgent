@@ -1,0 +1,367 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-16_rss-shengdong-jixi_ep407-optogenetics-brain-mental-health.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-25",
+  "generator": {
+    "model": "minimax-m3.1-flash",
+    "harness": "eacli",
+    "run_id": "generator-etw407-m31-20261025",
+    "explicit_model_override": true,
+    "override_reason": "用户明确指定：Razer 优先使用 MiniMax M3.1 Flash，额度耗尽后才切 GLM-5.3。"
+  },
+  "task": {
+    "summary": "用 eacli podcast 远端静默 worker 完整转写声东击西 #407，基于节目、官方 shownotes、2026 诺奖官网及代表性原始论文，形成光遗传学、精神疾病因果研究与临床转化的 standalone 深度报告。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "确认未重复处理，使用 eacli podcast 远端静默 worker 完整转写并按 SHA-256 原子拉回。"
+      },
+      {
+        "id": "R02",
+        "text": "运行 transcript 审计并保存不含设备名、任务 ID、远端路径或凭据的公开回执。"
+      },
+      {
+        "id": "R03",
+        "text": "依据完整转写与官方 shownotes 忠实精编，保留实验机制、主持人追问、反例、临床边界和时间锚点。"
+      },
+      {
+        "id": "R04",
+        "text": "形成 important / deep / standalone 报告，覆盖 13 个 shownotes 核心章节、至少三条展开主线、关键事实、外部核验、增量分析、反方、Limitations 与思考追问。"
+      },
+      {
+        "id": "R05",
+        "text": "区分节目口播、动物实验、外部论文、临床事实与报告推断；不得把小鼠行为、视力恢复尝试或AI分类外推为精神疾病临床突破。"
+      },
+      {
+        "id": "R06",
+        "text": "完成独立 review、质量门、节目索引、MAP 与全局报告索引更新。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "primary",
+      "title": "声东击西 #407 官方节目页与 shownotes",
+      "locator": "https://etw.fm/2227-2026-noble-prize",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S02",
+      "kind": "primary",
+      "title": "声东击西 #407 完整原始转写（3297段 / 5979秒）",
+      "locator": "podcast-learning/reports/transcripts/2026-10-16_rss-shengdong-jixi_ep407-optogenetics-brain-mental-health.transcript.txt",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S03",
+      "kind": "local",
+      "title": "声东击西 #407 结构化精编稿（汉字压缩比41.8%）",
+      "locator": "podcast-learning/reports/transcripts/2026-10-16_rss-shengdong-jixi_ep407-optogenetics-brain-mental-health.polished.txt",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S04",
+      "kind": "local",
+      "title": "声东击西 #407 官方 shownotes 存档",
+      "locator": "podcast-learning/reports/transcripts/2026-10-16_rss-shengdong-jixi_ep407-optogenetics-brain-mental-health.shownotes.md",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S05",
+      "kind": "execution",
+      "title": "静默转写、传输与审计公开回执",
+      "locator": "podcast-learning/reports/transcripts/2026-10-16_rss-shengdong-jixi_ep407-optogenetics-brain-mental-health.artifact.json",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S06",
+      "kind": "official",
+      "title": "Nobel Prize in Physiology or Medicine 2026 — Popular information / Press release",
+      "locator": "https://www.nobelprize.org/prizes/medicine/2026/popular-information",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S07",
+      "kind": "primary",
+      "title": "Boyden et al. 2005 — Millisecond-timescale, genetically targeted optical control of neural activity",
+      "locator": "https://doi.org/10.1038/nn1525",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S08",
+      "kind": "primary",
+      "title": "Liu et al. 2012 — Optogenetic stimulation of a hippocampal engram activates fear memory recall",
+      "locator": "https://doi.org/10.1038/nature11028",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S09",
+      "kind": "primary",
+      "title": "Yang et al. 2018 — Ketamine blocks bursting in the lateral habenula to rapidly relieve depression",
+      "locator": "https://doi.org/10.1038/nature25509",
+      "accessed_on": "2026-10-25"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "光遗传学的核心增量是从观察神经活动与行为共现，推进到主动操控特定细胞或回路后检验行为是否变化。",
+      "report_anchor": "主线一：从粗暴干预到可控实验，精神医学缺的是因果工具",
+      "support": "derived",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S06",
+        "S07"
+      ],
+      "evidence": "【00:20:14】【00:24:13】【00:24:49】；诺奖官网与DOI 10.1038/nn1525。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "ChR2、病毒载体与光纤/激光构成指定细胞、指定时间、指定操控的实验闭环，但手术损伤和递送仍是临床转化障碍。",
+      "report_anchor": "主线二：光遗传学能证明什么，又不能证明什么",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S06",
+        "S07"
+      ],
+      "evidence": "【00:30:05】【00:31:47】【00:33:08】【00:35:00】【00:36:20】。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "重新激活恐惧条件化时活跃的海马细胞足以诱发小鼠freezing，但不能解释为复制完整主观恐惧或证明人类恐惧症的统一机制。",
+      "report_anchor": "主线二：光遗传学能证明什么，又不能证明什么",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S08"
+      ],
+      "evidence": "【00:37:46】【00:39:48】【00:41:57】；DOI 10.1038/nature11028。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "氯胺酮阻断外侧缰核NMDAR依赖爆发活动的证据来自特定抑郁样动物模型，不能升级为所有人类抑郁症的统一病因或DBS临床疗效。",
+      "report_anchor": "主线二：光遗传学能证明什么，又不能证明什么",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S09"
+      ],
+      "evidence": "【00:42:54】【00:44:20】【00:45:15】；DOI 10.1038/nature25509。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "精神疾病临床转化仍需跨越物种差异、递送、异质性、测量、长期安全、临床终点与患者自主性；视力恢复尝试不等于精神疾病已经可用。",
+      "report_anchor": "主线三：从小鼠回路到患者，中间隔着递送、异质性与自由意志",
+      "support": "derived",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S06"
+      ],
+      "evidence": "【01:02:17】【01:07:34】【01:08:48】【01:16:37】【01:17:19】。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "[推测] AI可辅助神经信号分类、检索和实验设计，但分类准确不等于机制解释，也不能跨越证据链替代精神科临床判断。",
+      "report_anchor": "主线四：精准精神医学需要测量、分型与伦理，而AI只是候选工具",
+      "support": "inference",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "基于【01:09:25】【01:10:36】【01:35:38】【01:36:14】综合。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "SC01",
+      "title": "吴承瀚与Deisseroth的交集",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "人物背景与跨学科问题"
+    },
+    {
+      "id": "SC02",
+      "title": "精神疾病治疗史",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线一：从粗暴干预到可控实验，精神医学缺的是因果工具"
+    },
+    {
+      "id": "SC03",
+      "title": "光遗传学把主观感受变成可检验问题",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线一：从粗暴干预到可控实验，精神医学缺的是因果工具"
+    },
+    {
+      "id": "SC04",
+      "title": "抗抑郁药有效不等于找到病因",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线一：从粗暴干预到可控实验，精神医学缺的是因果工具"
+    },
+    {
+      "id": "SC05",
+      "title": "藻类感光蛋白成为神经开关",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线二：光遗传学能证明什么，又不能证明什么"
+    },
+    {
+      "id": "SC06",
+      "title": "恐惧记忆与freezing",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线二：光遗传学能证明什么，又不能证明什么"
+    },
+    {
+      "id": "SC07",
+      "title": "抑郁回路与外侧缰核",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线二：光遗传学能证明什么，又不能证明什么"
+    },
+    {
+      "id": "SC08",
+      "title": "拆解焦虑的不同特征",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线三：从小鼠回路到患者，中间隔着递送、异质性与自由意志"
+    },
+    {
+      "id": "SC09",
+      "title": "标签、光谱与正常边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线四：精准精神医学需要测量、分型与伦理，而AI只是候选工具"
+    },
+    {
+      "id": "SC10",
+      "title": "治疗指标与自由意志",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线三：从小鼠回路到患者，中间隔着递送、异质性与自由意志"
+    },
+    {
+      "id": "SC11",
+      "title": "从光遗传学到新药和视力恢复",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线三：从小鼠回路到患者，中间隔着递送、异质性与自由意志"
+    },
+    {
+      "id": "SC12",
+      "title": "脑机接口与AI",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线四：精准精神医学需要测量、分型与伦理，而AI只是候选工具"
+    },
+    {
+      "id": "SC13",
+      "title": "痛苦测量与精准治疗",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线四：精准精神医学需要测量、分型与伦理，而AI只是候选工具"
+    }
+  ],
+  "limitations": [
+    "原始转写由whisper.cpp large-v3生成；审计3297段、5979秒、最大连续重复2、无warning/error，但专名与历史轶事仍有ASR不确定项。",
+    "节目中的精神病治疗史、10%至20%药物无效、约25%量表数字、FDA批准对象、MapLight业务与视网膜临床期别并未全部回到原始出处。",
+    "动物行为是研究者定义的代理指标，freezing、少吃甜食、躲角落等不能直接等同于人类主观恐惧、失乐或抑郁。",
+    "外部核验仅覆盖诺奖官网和三篇代表性原始论文，未形成系统综述，也未纳入全部失败复现、效应量和临床试验注册。",
+    "视力恢复的临床尝试与精神疾病回路干预的递送、终点、风险和伦理条件不同，不能相互替代。",
+    "报告未系统纳入患者、伦理学者、统计学争议、相反实验或不同文化背景的临床意见。"
+  ]
+}

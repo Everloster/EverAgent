@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "source_url": "https://www.cognitiverevolution.ai/ai-am-highlights-clean-neurons-black-october-the-gpu-credit-crunch-and-buying-the-supply-chain",
+  "source_kind": "official_rss_enclosure",
+  "pipeline": "eacli podcast remote silent worker; managed eacli invoke fallback for installed allowlist drift",
+  "service_version": "whisper.cpp-v1.9.1-sm120",
+  "model": "ggml-large-v3.bin",
+  "language": "en",
+  "audio_size": 170503981,
+  "transcript_size": 127879,
+  "transcript_sha256": "02b26e4c786f750323701d81d03fdd2d842b9d4051bf9c1135adc4e8e1af56b5",
+  "segments": 1946,
+  "duration_seconds": 5315.88,
+  "max_consecutive_identical": 1,
+  "interactive_browser": false,
+  "audio_playback": false,
+  "transfer": {
+    "mode": "eacli pull",
+    "atomic": true,
+    "verified_sha256": true
+  },
+  "audit": {
+    "warnings": 0,
+    "errors": 0,
+    "timestamps_monotonic": true
+  }
+}

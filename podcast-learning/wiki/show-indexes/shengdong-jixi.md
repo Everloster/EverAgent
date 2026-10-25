@@ -1,11 +1,12 @@
 # 声东击西 — 全量单集索引
 
-> 来源：官方 RSS（<https://www.etw.fm/rss>）｜ 最近拉取：2026-10-19 ｜ 总集数：433
+> 来源：官方 RSS（<https://www.etw.fm/rss>）｜ 最近拉取：2026-10-25 ｜ 总集数：434
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
-| — | 2026-10-16 | 1h40m | [#407   今年的诺奖让我们离理解大脑、情绪和精神疾病更近了吗？](https://etw.fm/2227-2026-noble-prize)<!--g:63a3f28a-fbeb-46b5-8fc8-eaeca8e235da--> | — |
+| — | 2026-10-22 | 1h47m | [#408  李晶：互联网增长的红利、代价与一个人的十年自我重建丨十周年特别节目](https://etw.fm/2228)<!--g:a9f77ddf-0b3c-40f4-8837-4eb19d13420e--> | ✅ 已处理（2026-10-22 rss-shengdong-jixi_ep408-lijing-internet-growth-self-reconstruction） |
+| — | 2026-10-16 | 1h40m | [#407   今年的诺奖让我们离理解大脑、情绪和精神疾病更近了吗？](https://etw.fm/2227-2026-noble-prize)<!--g:63a3f28a-fbeb-46b5-8fc8-eaeca8e235da--> | ✅ 已处理（2026-10-16 rss-shengdong-jixi_ep407-optogenetics-brain-mental-health） |
 | — | 2026-10-08 | 1h01m | [#406  从景山骑到三里屯：在街头寻找北京的十年痕迹丨十周年特别节目](https://etw.fm/2226)<!--g:2f9cb979-23b4-4112-b345-4cb9fd31014b--> | — |
 | — | 2026-09-17 | 1h15m | [#405  从地理边界到思维边界：我们如何被「划界」塑造？](https://etw.fm/2225)<!--g:16a80abc-0826-4ec8-8c94-54ecb79161ef--> | — |
 | — | 2026-09-10 | 2h27m | [#404  邵阳：一位华人市议员亲历的美国地方政治丨十周年特别节目](https://etw.fm/2224)<!--g:f96bdc7a-c667-4594-8719-2070d24f8231--> | — |

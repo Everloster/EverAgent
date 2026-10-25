@@ -1,0 +1,437 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/Google_TB筛查_从CAD工具到开放医疗基础模型_深度解析_20261025.md",
+  "quality_tier": "important",
+  "revision_round": 3,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "review-google-tb-r2-format-20261025",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 97,
+        "request_coverage": 98,
+        "reasoning_quality": 97,
+        "readability": 95,
+        "limitations": 98
+      },
+      "score_reasons": {
+        "evidence_fidelity": "本轮只移除行尾空格并由 new-revision 切换状态；index blob 精确对应历史 revision 2 的已通过报告 SHA，evidence SHA 未变。S01-S06 来源判断、C01-C06 与修订后的 S05 定量结果没有任何内容漂移，因此沿用最近一次通过的 97 分。",
+        "request_coverage": "报告正文、要求、来源和锚点均未变化；历史 revision 2 已完整补入前瞻性研究的阈值、敏感度、特异度与 WHO 目标差异。本轮没有新增或删除内容，R01-R07 仍完整覆盖。",
+        "reasoning_quality": "所有论证、边界与反方解释与已通过 revision 2 完全相同；清除行尾空格未改变推理链或事实关系。",
+        "readability": "只清理 Markdown 行尾空格，正文结构、表格、段落和标题未改变；可读性评分保持历史通过值。",
+        "limitations": "项目方口径、监管、地域、人群、经济性和临床外推限制均原样保留，且 S05 未达到 WHO 敏感度目标的限制仍在正文中。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06"
+      ],
+      "coverage_unit_ids_checked": [],
+      "source_content_map": [
+        {
+          "id": "SCM01",
+          "title": "Google官方回顾的研究、监管、部署与开放模型路线",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "2019主张、六国部署、40家机构、90名临床人员、25000张胸片、45秒、3000次免费筛查、MedGemma、印尼与HeAR均覆盖并标为官方口径。"
+        },
+        {
+          "id": "SCM02",
+          "title": "WHO自2021年推荐合格CAD用于成人TB筛查",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "正文准确限定为筛查/分诊工具和类别建议，并指出15岁以下尚无相同推荐边界。"
+        },
+        {
+          "id": "SCM03",
+          "title": "Google 2021公开的14名放射科医生比较与40%至80%成本模拟",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "Revision 2将预出版传播与2023正式论文区分，并明确成本为模拟而非真实卫生系统成效。"
+        },
+        {
+          "id": "SCM04",
+          "title": "Radiology 2023回顾性多国研究及2019年份冲突",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "样本、AUC、敏感度、特异度和成本模拟均准确；官方2019说法没有被强行与2023记录合并。"
+        },
+        {
+          "id": "SCM05",
+          "title": "NEJM AI 2024前瞻性多中心分诊验证的分指标结果",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S05"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "Revision 2完整补入样本构成、两个阈值、医生比较、异常胸片任务以及AI与医生均未达到WHO 90%敏感度目标。"
+        },
+        {
+          "id": "SCM06",
+          "title": "Stop TB与WHO政策背景中的CAD成人分诊定位",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S06"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "报告未把市场产品、独立评估或政策建议混成对Google单一版本的永久背书。"
+        },
+        {
+          "id": "SCM07",
+          "title": "开放医疗基础模型、本地部署和声学筛查的证据成熟度差异",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S05"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "CAD论文证据没有被借给MedGemma或HeAR；开放权重、数据主权与临床效用被分别讨论。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "纯格式 revision 复核。快照匹配：report=790c7225c546033d3d432d981ed6b6ce29ecc3f7bde45f462de4b5972ddc4802, evidence=2fcfd1eaad434ccc84b31a2a32eb26450066b2dcbc4042f2377431ee5a085d5f。语义等价证据：index blob SHA-256=a5bb69ae730453613e400d5fecb788f7c1692d99ecb8f4da14c743fcdff38250，与历史 revision 2 pass decision 完全一致；git diff --ignore-space-at-eol 只剩 new-revision 的 status: completed→in_progress。去除行尾空格并忽略 status 行后，index 与工作区字节完全一致。 git diff --check 通过；所有 evidence claim/report anchor 仍存在。沿用最近一次通过 revision 2 的 source_content_map、claims、coverage 与评分。无 unsupported_claims、missing_requirements 或 hard_failures。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 97.0,
+    "evaluated_on": "2026-10-25",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "9adf3f8578538031a4b120b21575270c67f39ce4b06e1d963176dabd949d0ae7",
+    "evidence_sha256": "2fcfd1eaad434ccc84b31a2a32eb26450066b2dcbc4042f2377431ee5a085d5f"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-6",
+            "harness": "codex",
+            "run_id": "review-c88dc3979927",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 88,
+            "request_coverage": 83,
+            "reasoning_quality": 91,
+            "readability": 94,
+            "limitations": 94
+          },
+          "score_reasons": {
+            "evidence_fidelity": "S01、S02、S03、S04与S06的口径大体准确，且2019/2023冲突处理诚实；但S05摘要给出的核心定量结果没有进入正文：高敏感阈值87%敏感度、70%特异度，未达到WHO 90%敏感度目标，并且相对放射科医生仅敏感度不劣、特异度不劣未成立。正文把它压缩成总体“不劣于放射科医生”，容易掩盖分指标结果。",
+            "request_coverage": "报告完整覆盖筛查、分诊、诊断、监管、部署、基础模型、治理和EverAgent启示，但对最强前瞻性证据缺少样本构成、阈值性能和未达WHO敏感度目标这一核心内容，因此深度证据链尚不完整。",
+            "reasoning_quality": "证据分层、部署数字边界、数据主权和单位经济推理清楚；主要缺陷来自前瞻性研究的结果压缩，而非整体逻辑错误。",
+            "readability": "结构清晰，可独立阅读，表格与反方边界有效；补入S05精确数字后会更便于读者判断“不劣”的真实含义。",
+            "limitations": "对项目方口径、监管、地域、人群、经济性和临床外推限制披露充分；但应把S05未达到WHO敏感度目标直接写入正文，而不能只以一般性阈值提醒替代。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06"
+          ],
+          "coverage_unit_ids_checked": [],
+          "source_content_map": [
+            {
+              "id": "SCM01",
+              "title": "Google官方回顾的证据阶梯与部署口径",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "2019基准主张、监管、六国部署、MedGemma、印尼与HeAR均进入正文，并明确标为官方或合作方口径。"
+            },
+            {
+              "id": "SCM02",
+              "title": "WHO自2021年推荐合格CAD用于成人TB筛查",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "正文正确限定为筛查/分诊工具和类别建议，没有写成Google产品背书或自主确诊许可。"
+            },
+            {
+              "id": "SCM03",
+              "title": "Google 2021研究的胸片筛查、14名放射科医生与40%至80%成本模拟",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "筛查用途和14名医生背景得到覆盖，但40%至80%成本模拟未进入正文；该数字不是本轮阻断项。"
+            },
+            {
+              "id": "SCM04",
+              "title": "Radiology 2023回顾性研究的样本、性能和成本模拟",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "正文准确保留正式发表年份2023并避免与Google所称2019记录合并，但未呈现88%/79%、AUC 0.89和40%至80%成本模拟；核心年份冲突已处理。"
+            },
+            {
+              "id": "SCM05",
+              "title": "NEJM AI 2024前瞻性多中心分诊验证的分指标结果",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S05"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "正文覆盖研究设计和总体分诊结论，却遗漏87%/70%、78%/82%、放射科医生76%/82%、仅敏感度不劣且未达到WHO 90%敏感度目标，必须修订。"
+            },
+            {
+              "id": "SCM06",
+              "title": "Stop TB对CAD作为成人分诊工具的政策背景",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "正文与WHO资料一致，未把市场产品列表当成普遍性能背书。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04",
+            "R05",
+            "R06",
+            "R07"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "首轮要求修订S05：把总体“不劣”拆成阈值、敏感度和特异度结果，并明确该研究中AI与放射科医生均未达到WHO 90%敏感度目标。"
+        }
+      ],
+      "decision": {}
+    },
+    {
+      "revision_round": 2,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-6",
+            "harness": "codex",
+            "run_id": "review-6c55eb61c52e",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 97,
+            "request_coverage": 98,
+            "reasoning_quality": 97,
+            "readability": 95,
+            "limitations": 98
+          },
+          "score_reasons": {
+            "evidence_fidelity": "Revision 2已补入Radiology 2023的165754张影像/22284人、四国测试集1236人、AUC 0.89、88%/79%及40%至80%成本模拟，并精确呈现NEJM AI 2024的1978/1910/1827样本链、87%/70%、78%/82%、医生76%/82%及未达到WHO 90%敏感度目标。2019/2023冲突、WHO类别建议和部署口径均准确。",
+            "request_coverage": "R01至R07全部完成：原始来源、CAD到基础模型路线、筛查/分诊/诊断、阈值与谱偏移、部署数字、年份冲突、治理与EverAgent边界均有实质覆盖。",
+            "reasoning_quality": "把研究性能、政策建议、监管认证、运营规模和基础模型生态分层；能够解释阈值权衡、患病率、下游确证瓶颈、数据主权和总拥有成本，也保留最强反方。",
+            "readability": "证据阶梯、部署数字表和责任矩阵清楚，修订后的分指标结果让“不劣”含义可直接判断；篇幅较长但导航明确。",
+            "limitations": "项目方口径、证书未独立核验、地域与人群代表性、临床指标缺口、数据治理、经济性和时间性均被披露；没有把开放权重或本地运行写成临床有效性。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06"
+          ],
+          "coverage_unit_ids_checked": [],
+          "source_content_map": [
+            {
+              "id": "SCM01",
+              "title": "Google官方回顾的研究、监管、部署与开放模型路线",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "2019主张、六国部署、40家机构、90名临床人员、25000张胸片、45秒、3000次免费筛查、MedGemma、印尼与HeAR均覆盖并标为官方口径。"
+            },
+            {
+              "id": "SCM02",
+              "title": "WHO自2021年推荐合格CAD用于成人TB筛查",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "正文准确限定为筛查/分诊工具和类别建议，并指出15岁以下尚无相同推荐边界。"
+            },
+            {
+              "id": "SCM03",
+              "title": "Google 2021公开的14名放射科医生比较与40%至80%成本模拟",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "Revision 2将预出版传播与2023正式论文区分，并明确成本为模拟而非真实卫生系统成效。"
+            },
+            {
+              "id": "SCM04",
+              "title": "Radiology 2023回顾性多国研究及2019年份冲突",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "样本、AUC、敏感度、特异度和成本模拟均准确；官方2019说法没有被强行与2023记录合并。"
+            },
+            {
+              "id": "SCM05",
+              "title": "NEJM AI 2024前瞻性多中心分诊验证的分指标结果",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S05"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "Revision 2完整补入样本构成、两个阈值、医生比较、异常胸片任务以及AI与医生均未达到WHO 90%敏感度目标。"
+            },
+            {
+              "id": "SCM06",
+              "title": "Stop TB与WHO政策背景中的CAD成人分诊定位",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "报告未把市场产品、独立评估或政策建议混成对Google单一版本的永久背书。"
+            },
+            {
+              "id": "SCM07",
+              "title": "开放医疗基础模型、本地部署和声学筛查的证据成熟度差异",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S05"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "CAD论文证据没有被借给MedGemma或HeAR；开放权重、数据主权与临床效用被分别讨论。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04",
+            "R05",
+            "R06",
+            "R07"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "Revision 2解决首轮对S05结果压缩的问题，并进一步补齐S03/S04的核心定量结果。当前未发现伪造引用、关键数字越界、核心要求遗漏或安全问题。"
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 97.0,
+        "evaluated_on": "2026-10-25",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "a5bb69ae730453613e400d5fecb788f7c1692d99ecb8f4da14c743fcdff38250",
+        "evidence_sha256": "2fcfd1eaad434ccc84b31a2a32eb26450066b2dcbc4042f2377431ee5a085d5f"
+      }
+    }
+  ]
+}

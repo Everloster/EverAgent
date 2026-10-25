@@ -1,0 +1,1781 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-15_rss-wandian-latetalk_184-embodied-quarterly-26q3.md",
+  "quality_tier": "important",
+  "revision_round": 4,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "review-wandian184-r4-format-20261025",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 94,
+        "request_coverage": 98,
+        "reasoning_quality": 96,
+        "readability": 91,
+        "limitations": 98
+      },
+      "score_reasons": {
+        "evidence_fidelity": "逐项核对官方节目页、3460段完整转写、精编稿、RoboDojo论文及AMD、GEN-1.5、S1、Gemini官方材料。42项任务、2100次试验、22.48%、28.97、82亿美元全股票、3–12秒与约10分钟等关键数字口径一致；FCC、宇树、银河通用、RoboCurve和百万小时数据均保留来源归属。轻微扣分来自节目仍含较多未回到原件的公司和政策细节，但报告已统一降级。 本轮另以 fill_report_stats 同一正则独立复算 transcript/polished，五个新增字段分别为 30732、118113、3460、10717、16610，与 frontmatter 完全一致。 本轮格式复核证明当前正文在忽略行尾空格并统一生命周期 status 后，与上一轮已逐源核验的精确快照逐字节一致；evidence 与 transcript 哈希均未变化。",
+        "request_coverage": "21个shownotes时间节点全部先在来源地图登记，再映射到十条核心论证及后续事实表；Astra三角色、VLA/WAM分工、护城河迁移、AMD/World Labs、宇树、ICL、DYNA、Gemini、FCC和Q4均完整覆盖。 当前 revision 只新增五个机器统计字段；删除这五行后的报告 SHA 与历史第二轮 Reviewer 绑定快照一致，正文、21 项来源地图与 evidence claims 未变化。 当前 revision 没有增删 21 个 shownotes 单元、正文内容、claims 或要求，历史来源地图仍完整适用。",
+        "reasoning_quality": "报告以抽象层边界而非公司胜负组织论证，能区分相对benchmark领先与生产可用、模型商品化与市场扩张、厂商demo与独立复现，并提出分层部署和可观察指标。EverAgent映射明确标为软件harness类比。 格式清理没有改变事实分级、推断、反方解释或证据边界。",
+        "readability": "约5.9万字节与106分钟高密度节目相称，内容地图、十条主线、数字表和证据等级清楚，可脱离转写独立阅读。部分观点在核心论证、数字表和证据分级中有必要重复，篇幅略长。 新增统计字段位于 frontmatter，不改变正文结构或阅读路径。 清除 9 行行尾空格降低格式噪声，正文结构与阅读路径未变化。",
+        "limitations": "明确写出ASR风险、EGO争议缺失反方、FCC和宇树原件缺口、RoboDojo外推边界、厂商自报、未独立复现、AMD未交割以及缺少法务/安全/客户视角。 元数据 revision 没有改变既有证据边界，历史披露继续完整适用。 既有 Limitations、统计字段和转写边界未受格式 revision 影响。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08"
+      ],
+      "coverage_unit_ids_checked": [
+        "SC01",
+        "SC02",
+        "SC03",
+        "SC04",
+        "SC05",
+        "SC06",
+        "SC07",
+        "SC08",
+        "SC09",
+        "SC10",
+        "SC11",
+        "SC12",
+        "SC13",
+        "SC14",
+        "SC15",
+        "SC16",
+        "SC17",
+        "SC18",
+        "SC19",
+        "SC20",
+        "SC21"
+      ],
+      "source_content_map": [
+        {
+          "id": "M01",
+          "title": "Q3五项进展与核心问题",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC01"
+          ],
+          "notes": "报告在顶部先给条件化结论，并把五项事件串成技术、资本与组织三条线。"
+        },
+        {
+          "id": "M02",
+          "title": "Astra从规划层进入末端位姿策略",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S06"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC02"
+          ],
+          "notes": "报告准确解释末端位姿、逆运动学与高频控制的边界。"
+        },
+        {
+          "id": "M03",
+          "title": "IROS三派争论及晚宴样本局限",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC03"
+          ],
+          "notes": "报告保留100多人和约三分之一的节目转述，并明确不能外推行业共识。"
+        },
+        {
+          "id": "M04",
+          "title": "Astra直接策略、监督纠偏、具身研究员三角色",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC04"
+          ],
+          "notes": "三角色的机制、价值与证据强弱均有独立展开。"
+        },
+        {
+          "id": "M05",
+          "title": "空间能力、Blender数据与Scaling来源",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC05"
+          ],
+          "notes": "报告将招聘和训练数据保留为嘉宾消息，没有升级为官方披露。"
+        },
+        {
+          "id": "M06",
+          "title": "中国通用模型公司进入Robotics",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC06"
+          ],
+          "notes": "报告覆盖入场趋势，同时把具体公司动作降级为方向判断。"
+        },
+        {
+          "id": "M07",
+          "title": "接口、闭环、硬件与垂直场景护城河",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC07"
+          ],
+          "notes": "报告给出旧价值主张到新价值的迁移表，并加入交付条件。"
+        },
+        {
+          "id": "M08",
+          "title": "AMD拟收购World Labs及82亿美元口径",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S07"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC08"
+          ],
+          "notes": "报告使用AMD官方公告核对全股票、监管和交割状态。"
+        },
+        {
+          "id": "M09",
+          "title": "Atlas、SceniX与空间仿真基础设施",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC09"
+          ],
+          "notes": "报告区分节目描述和协同推断，没有把协同收入写成事实。"
+        },
+        {
+          "id": "M10",
+          "title": "Frontier Lab与机器人研究者的认知断层",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC10"
+          ],
+          "notes": "报告把资源差距、算力估计和组织解释均保留为节目观点。"
+        },
+        {
+          "id": "M11",
+          "title": "宇树IPO、估值锚与财务数字",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC11"
+          ],
+          "notes": "所有数字均标节目口径和待核验，没有作为估值结论。"
+        },
+        {
+          "id": "M12",
+          "title": "通用模型增强后本体价值",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC12"
+          ],
+          "notes": "报告从一致性、可靠性、成本、返修和SDK解释本体价值。"
+        },
+        {
+          "id": "M13",
+          "title": "上市压力、收入催熟与研究方向偏移",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC13"
+          ],
+          "notes": "报告覆盖短期营收与长期路线冲突，并给出两类风险。"
+        },
+        {
+          "id": "M14",
+          "title": "ICL从参数更新变成运行时上下文",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S08",
+            "S09"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC14"
+          ],
+          "notes": "机制、fine-tune差异、时延和示范质量边界完整。"
+        },
+        {
+          "id": "M15",
+          "title": "GEN-1.5与S1差异",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S08",
+            "S09"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC15"
+          ],
+          "notes": "3–12秒、simple/short-horizon、单视频和约10分钟口径均按官方材料分级。"
+        },
+        {
+          "id": "M16",
+          "title": "DYNA 2.1完整工作流与数据争议",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S10"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC16"
+          ],
+          "notes": "报告覆盖洗衣房全流程和百万小时争议，没有补写缺失反方。"
+        },
+        {
+          "id": "M17",
+          "title": "Gemini Robotics 2、Google、Optimus与自动驾驶迁移",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S10"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC17"
+          ],
+          "notes": "官方发布事实与组织评价、demo能力、迁移判断分开处理。"
+        },
+        {
+          "id": "M18",
+          "title": "FCC限制范围与2公斤口径",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC18"
+          ],
+          "notes": "报告明确缺少正式规则文本，统一标节目口径/待核验。"
+        },
+        {
+          "id": "M19",
+          "title": "65%、旧型号、产能出海与供应链",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC19"
+          ],
+          "notes": "节目细节、政策机制和长期供应链推断分层清楚。"
+        },
+        {
+          "id": "M20",
+          "title": "Q4 Physical RSI、agentic与组织重塑",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC20"
+          ],
+          "notes": "报告把预测转成观察清单，并指出Physical RSI缺少统一定义。"
+        },
+        {
+          "id": "M21",
+          "title": "大脑、本体、关键部件分工与持续观察",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC21"
+          ],
+          "notes": "报告给出EverAgent类比、反方、限制、追问和可执行指标。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "独立复核格式 revision。开始前核对 report SHA-256=0a5d8c20668eda22abbf57c4eddb0f1c5fa68161dab3a1afc596d55a37407b63、evidence SHA-256=6bf76fc080cf4ac80495d38a07905ce5f54aae5b9ccc62a578a4d4d72a5f6fd2，与提示一致。git index 中上一轮已通过报告 SHA-256=426dc5eb34be4e038260515a41732592e7c7ecda442b40d206b18840cb7eaf08，与 history revision 3 decision 绑定哈希完全一致。git diff 显示本轮删除 9 行行尾空格，并由 new-revision 将 status 从 completed 切为 in_progress；工作树已无行尾空格。对 index 与 worktree 同时执行逐行 rstrip，并把 status 归一化后，全文逐字节相等（normalized_equal=true）。重新运行 transcript audit：ok=true，size=179590，SHA-256=7a0b169f346f5a086a502229fced27355af4ed6f8fe7900ea20a2b0a9e47b152，lines/segments=3460，duration_seconds=6377，max_consecutive_identical=1，warnings/errors 均为空。因此正文事实、S01–S10 来源判断、C01–C08 claims、SC01–SC21 章节覆盖与 R01–R07 要求均未变化；重新核验后沿用历史 21 项来源地图和评分。无 unsupported claim、missing requirement 或 hard failure。加权总分 94×0.35+98×0.20+96×0.20+91×0.15+98×0.10=95.15。\n\nreport_quality.py check 原始结果：\npodcast-learning/reports/2026-10-15_rss-wandian-latetalk_184-embodied-quarterly-26q3.md｜tier=important｜decision=pass｜score=95.15｜ERROR 0｜WARN 0"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 95.15,
+    "evaluated_on": "2026-10-25",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "5580430b9867f7398d33f921604e84824b77d3acfbf472a4e1245e31087b6315",
+    "evidence_sha256": "6bf76fc080cf4ac80495d38a07905ce5f54aae5b9ccc62a578a4d4d72a5f6fd2"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-6",
+            "harness": "codex",
+            "run_id": "reviewer-latetalk184-gpt6-20261025",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 94,
+            "request_coverage": 98,
+            "reasoning_quality": 96,
+            "readability": 91,
+            "limitations": 98
+          },
+          "score_reasons": {
+            "evidence_fidelity": "逐项核对官方节目页、3460段完整转写、精编稿、RoboDojo论文及AMD、GEN-1.5、S1、Gemini官方材料。42项任务、2100次试验、22.48%、28.97、82亿美元全股票、3–12秒与约10分钟等关键数字口径一致；FCC、宇树、银河通用、RoboCurve和百万小时数据均保留来源归属。轻微扣分来自节目仍含较多未回到原件的公司和政策细节，但报告已统一降级。",
+            "request_coverage": "21个shownotes时间节点全部先在来源地图登记，再映射到十条核心论证及后续事实表；Astra三角色、VLA/WAM分工、护城河迁移、AMD/World Labs、宇树、ICL、DYNA、Gemini、FCC和Q4均完整覆盖。",
+            "reasoning_quality": "报告以抽象层边界而非公司胜负组织论证，能区分相对benchmark领先与生产可用、模型商品化与市场扩张、厂商demo与独立复现，并提出分层部署和可观察指标。EverAgent映射明确标为软件harness类比。",
+            "readability": "约5.9万字节与106分钟高密度节目相称，内容地图、十条主线、数字表和证据等级清楚，可脱离转写独立阅读。部分观点在核心论证、数字表和证据分级中有必要重复，篇幅略长。",
+            "limitations": "明确写出ASR风险、EGO争议缺失反方、FCC和宇树原件缺口、RoboDojo外推边界、厂商自报、未独立复现、AMD未交割以及缺少法务/安全/客户视角。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07",
+            "C08"
+          ],
+          "coverage_unit_ids_checked": [
+            "SC01",
+            "SC02",
+            "SC03",
+            "SC04",
+            "SC05",
+            "SC06",
+            "SC07",
+            "SC08",
+            "SC09",
+            "SC10",
+            "SC11",
+            "SC12",
+            "SC13",
+            "SC14",
+            "SC15",
+            "SC16",
+            "SC17",
+            "SC18",
+            "SC19",
+            "SC20",
+            "SC21"
+          ],
+          "source_content_map": [
+            {
+              "id": "M01",
+              "title": "Q3五项进展与核心问题",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC01"
+              ],
+              "notes": "报告在顶部先给条件化结论，并把五项事件串成技术、资本与组织三条线。"
+            },
+            {
+              "id": "M02",
+              "title": "Astra从规划层进入末端位姿策略",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04",
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC02"
+              ],
+              "notes": "报告准确解释末端位姿、逆运动学与高频控制的边界。"
+            },
+            {
+              "id": "M03",
+              "title": "IROS三派争论及晚宴样本局限",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC03"
+              ],
+              "notes": "报告保留100多人和约三分之一的节目转述，并明确不能外推行业共识。"
+            },
+            {
+              "id": "M04",
+              "title": "Astra直接策略、监督纠偏、具身研究员三角色",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC04"
+              ],
+              "notes": "三角色的机制、价值与证据强弱均有独立展开。"
+            },
+            {
+              "id": "M05",
+              "title": "空间能力、Blender数据与Scaling来源",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC05"
+              ],
+              "notes": "报告将招聘和训练数据保留为嘉宾消息，没有升级为官方披露。"
+            },
+            {
+              "id": "M06",
+              "title": "中国通用模型公司进入Robotics",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC06"
+              ],
+              "notes": "报告覆盖入场趋势，同时把具体公司动作降级为方向判断。"
+            },
+            {
+              "id": "M07",
+              "title": "接口、闭环、硬件与垂直场景护城河",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC07"
+              ],
+              "notes": "报告给出旧价值主张到新价值的迁移表，并加入交付条件。"
+            },
+            {
+              "id": "M08",
+              "title": "AMD拟收购World Labs及82亿美元口径",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04",
+                "S07"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC08"
+              ],
+              "notes": "报告使用AMD官方公告核对全股票、监管和交割状态。"
+            },
+            {
+              "id": "M09",
+              "title": "Atlas、SceniX与空间仿真基础设施",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC09"
+              ],
+              "notes": "报告区分节目描述和协同推断，没有把协同收入写成事实。"
+            },
+            {
+              "id": "M10",
+              "title": "Frontier Lab与机器人研究者的认知断层",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC10"
+              ],
+              "notes": "报告把资源差距、算力估计和组织解释均保留为节目观点。"
+            },
+            {
+              "id": "M11",
+              "title": "宇树IPO、估值锚与财务数字",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC11"
+              ],
+              "notes": "所有数字均标节目口径和待核验，没有作为估值结论。"
+            },
+            {
+              "id": "M12",
+              "title": "通用模型增强后本体价值",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC12"
+              ],
+              "notes": "报告从一致性、可靠性、成本、返修和SDK解释本体价值。"
+            },
+            {
+              "id": "M13",
+              "title": "上市压力、收入催熟与研究方向偏移",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC13"
+              ],
+              "notes": "报告覆盖短期营收与长期路线冲突，并给出两类风险。"
+            },
+            {
+              "id": "M14",
+              "title": "ICL从参数更新变成运行时上下文",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04",
+                "S08",
+                "S09"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC14"
+              ],
+              "notes": "机制、fine-tune差异、时延和示范质量边界完整。"
+            },
+            {
+              "id": "M15",
+              "title": "GEN-1.5与S1差异",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04",
+                "S08",
+                "S09"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC15"
+              ],
+              "notes": "3–12秒、simple/short-horizon、单视频和约10分钟口径均按官方材料分级。"
+            },
+            {
+              "id": "M16",
+              "title": "DYNA 2.1完整工作流与数据争议",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04",
+                "S10"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC16"
+              ],
+              "notes": "报告覆盖洗衣房全流程和百万小时争议，没有补写缺失反方。"
+            },
+            {
+              "id": "M17",
+              "title": "Gemini Robotics 2、Google、Optimus与自动驾驶迁移",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04",
+                "S10"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC17"
+              ],
+              "notes": "官方发布事实与组织评价、demo能力、迁移判断分开处理。"
+            },
+            {
+              "id": "M18",
+              "title": "FCC限制范围与2公斤口径",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC18"
+              ],
+              "notes": "报告明确缺少正式规则文本，统一标节目口径/待核验。"
+            },
+            {
+              "id": "M19",
+              "title": "65%、旧型号、产能出海与供应链",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC19"
+              ],
+              "notes": "节目细节、政策机制和长期供应链推断分层清楚。"
+            },
+            {
+              "id": "M20",
+              "title": "Q4 Physical RSI、agentic与组织重塑",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC20"
+              ],
+              "notes": "报告把预测转成观察清单，并指出Physical RSI缺少统一定义。"
+            },
+            {
+              "id": "M21",
+              "title": "大脑、本体、关键部件分工与持续观察",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC21"
+              ],
+              "notes": "报告给出EverAgent类比、反方、限制、追问和可执行指标。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06",
+            "S07",
+            "S08",
+            "S09",
+            "S10"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04",
+            "R05",
+            "R06",
+            "R07"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "审阅前已核对报告SHA-256 4ec8e8d4870a53d3856523c2717870300d9454c8ca2ca4f5abd04e8b2768869f、evidence SHA-256 6bf76fc080cf4ac80495d38a07905ce5f54aae5b9ccc62a578a4d4d72a5f6fd2。transcript审计：3460段、6377秒、时间戳单调、最大连续重复1、warning/error均为0。来源优先建立21项内容地图后再核对报告和evidence；无核心遗漏或硬失败。"
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 95.15,
+        "evaluated_on": "2026-10-25",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "ab6c70841b699739b47ea70a37c33a13981a4b29383362390685522dfa9c46fc",
+        "evidence_sha256": "6bf76fc080cf4ac80495d38a07905ce5f54aae5b9ccc62a578a4d4d72a5f6fd2"
+      }
+    },
+    {
+      "revision_round": 2,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-6",
+            "harness": "codex",
+            "run_id": "reviewer-latetalk184-r2-gpt6-20261025",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 94,
+            "request_coverage": 98,
+            "reasoning_quality": 96,
+            "readability": 91,
+            "limitations": 98
+          },
+          "score_reasons": {
+            "evidence_fidelity": "逐项核对官方节目页、3460段完整转写、精编稿、RoboDojo论文及AMD、GEN-1.5、S1、Gemini官方材料。42项任务、2100次试验、22.48%、28.97、82亿美元全股票、3–12秒与约10分钟等关键数字口径一致；FCC、宇树、银河通用、RoboCurve和百万小时数据均保留来源归属。轻微扣分来自节目仍含较多未回到原件的公司和政策细节，但报告已统一降级。",
+            "request_coverage": "21个shownotes时间节点全部先在来源地图登记，再映射到十条核心论证及后续事实表；Astra三角色、VLA/WAM分工、护城河迁移、AMD/World Labs、宇树、ICL、DYNA、Gemini、FCC和Q4均完整覆盖。",
+            "reasoning_quality": "报告以抽象层边界而非公司胜负组织论证，能区分相对benchmark领先与生产可用、模型商品化与市场扩张、厂商demo与独立复现，并提出分层部署和可观察指标。EverAgent映射明确标为软件harness类比。",
+            "readability": "约5.9万字节与106分钟高密度节目相称，内容地图、十条主线、数字表和证据等级清楚，可脱离转写独立阅读。部分观点在核心论证、数字表和证据分级中有必要重复，篇幅略长。",
+            "limitations": "明确写出ASR风险、EGO争议缺失反方、FCC和宇树原件缺口、RoboDojo外推边界、厂商自报、未独立复现、AMD未交割以及缺少法务/安全/客户视角。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07",
+            "C08"
+          ],
+          "coverage_unit_ids_checked": [
+            "SC01",
+            "SC02",
+            "SC03",
+            "SC04",
+            "SC05",
+            "SC06",
+            "SC07",
+            "SC08",
+            "SC09",
+            "SC10",
+            "SC11",
+            "SC12",
+            "SC13",
+            "SC14",
+            "SC15",
+            "SC16",
+            "SC17",
+            "SC18",
+            "SC19",
+            "SC20",
+            "SC21"
+          ],
+          "source_content_map": [
+            {
+              "id": "M01",
+              "title": "Q3五项进展与核心问题",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC01"
+              ],
+              "notes": "报告在顶部先给条件化结论，并把五项事件串成技术、资本与组织三条线。"
+            },
+            {
+              "id": "M02",
+              "title": "Astra从规划层进入末端位姿策略",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04",
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC02"
+              ],
+              "notes": "报告准确解释末端位姿、逆运动学与高频控制的边界。"
+            },
+            {
+              "id": "M03",
+              "title": "IROS三派争论及晚宴样本局限",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC03"
+              ],
+              "notes": "报告保留100多人和约三分之一的节目转述，并明确不能外推行业共识。"
+            },
+            {
+              "id": "M04",
+              "title": "Astra直接策略、监督纠偏、具身研究员三角色",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC04"
+              ],
+              "notes": "三角色的机制、价值与证据强弱均有独立展开。"
+            },
+            {
+              "id": "M05",
+              "title": "空间能力、Blender数据与Scaling来源",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC05"
+              ],
+              "notes": "报告将招聘和训练数据保留为嘉宾消息，没有升级为官方披露。"
+            },
+            {
+              "id": "M06",
+              "title": "中国通用模型公司进入Robotics",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC06"
+              ],
+              "notes": "报告覆盖入场趋势，同时把具体公司动作降级为方向判断。"
+            },
+            {
+              "id": "M07",
+              "title": "接口、闭环、硬件与垂直场景护城河",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC07"
+              ],
+              "notes": "报告给出旧价值主张到新价值的迁移表，并加入交付条件。"
+            },
+            {
+              "id": "M08",
+              "title": "AMD拟收购World Labs及82亿美元口径",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04",
+                "S07"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC08"
+              ],
+              "notes": "报告使用AMD官方公告核对全股票、监管和交割状态。"
+            },
+            {
+              "id": "M09",
+              "title": "Atlas、SceniX与空间仿真基础设施",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC09"
+              ],
+              "notes": "报告区分节目描述和协同推断，没有把协同收入写成事实。"
+            },
+            {
+              "id": "M10",
+              "title": "Frontier Lab与机器人研究者的认知断层",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC10"
+              ],
+              "notes": "报告把资源差距、算力估计和组织解释均保留为节目观点。"
+            },
+            {
+              "id": "M11",
+              "title": "宇树IPO、估值锚与财务数字",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC11"
+              ],
+              "notes": "所有数字均标节目口径和待核验，没有作为估值结论。"
+            },
+            {
+              "id": "M12",
+              "title": "通用模型增强后本体价值",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC12"
+              ],
+              "notes": "报告从一致性、可靠性、成本、返修和SDK解释本体价值。"
+            },
+            {
+              "id": "M13",
+              "title": "上市压力、收入催熟与研究方向偏移",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC13"
+              ],
+              "notes": "报告覆盖短期营收与长期路线冲突，并给出两类风险。"
+            },
+            {
+              "id": "M14",
+              "title": "ICL从参数更新变成运行时上下文",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04",
+                "S08",
+                "S09"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC14"
+              ],
+              "notes": "机制、fine-tune差异、时延和示范质量边界完整。"
+            },
+            {
+              "id": "M15",
+              "title": "GEN-1.5与S1差异",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04",
+                "S08",
+                "S09"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC15"
+              ],
+              "notes": "3–12秒、simple/short-horizon、单视频和约10分钟口径均按官方材料分级。"
+            },
+            {
+              "id": "M16",
+              "title": "DYNA 2.1完整工作流与数据争议",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04",
+                "S10"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC16"
+              ],
+              "notes": "报告覆盖洗衣房全流程和百万小时争议，没有补写缺失反方。"
+            },
+            {
+              "id": "M17",
+              "title": "Gemini Robotics 2、Google、Optimus与自动驾驶迁移",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04",
+                "S10"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC17"
+              ],
+              "notes": "官方发布事实与组织评价、demo能力、迁移判断分开处理。"
+            },
+            {
+              "id": "M18",
+              "title": "FCC限制范围与2公斤口径",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC18"
+              ],
+              "notes": "报告明确缺少正式规则文本，统一标节目口径/待核验。"
+            },
+            {
+              "id": "M19",
+              "title": "65%、旧型号、产能出海与供应链",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC19"
+              ],
+              "notes": "节目细节、政策机制和长期供应链推断分层清楚。"
+            },
+            {
+              "id": "M20",
+              "title": "Q4 Physical RSI、agentic与组织重塑",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC20"
+              ],
+              "notes": "报告把预测转成观察清单，并指出Physical RSI缺少统一定义。"
+            },
+            {
+              "id": "M21",
+              "title": "大脑、本体、关键部件分工与持续观察",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC21"
+              ],
+              "notes": "报告给出EverAgent类比、反方、限制、追问和可执行指标。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06",
+            "S07",
+            "S08",
+            "S09",
+            "S10"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04",
+            "R05",
+            "R06",
+            "R07"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "审阅前已核对报告SHA-256 34d5958391567e1e8a84ca5bdf866f60a011335d05e0098c431eb674ba16c171、evidence SHA-256 6bf76fc080cf4ac80495d38a07905ce5f54aae5b9ccc62a578a4d4d72a5f6fd2。revision 2仅把“来源内容地图”改为领域审计要求的固定标题“内容地图”，正文事实、来源和21项覆盖映射未变化；重新核对转写审计、全部章节映射与关键claim，无核心遗漏或硬失败。"
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 95.15,
+        "evaluated_on": "2026-10-25",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "c3235616fbebe99c95d75bd9c7f18e3128a39caec79b40c024d86cacb7bc1b90",
+        "evidence_sha256": "6bf76fc080cf4ac80495d38a07905ce5f54aae5b9ccc62a578a4d4d72a5f6fd2"
+      }
+    },
+    {
+      "revision_round": 3,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex",
+            "run_id": "review-wandian184-gpt56sol-r2-stats-20261025",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 94,
+            "request_coverage": 98,
+            "reasoning_quality": 96,
+            "readability": 91,
+            "limitations": 98
+          },
+          "score_reasons": {
+            "evidence_fidelity": "逐项核对官方节目页、3460段完整转写、精编稿、RoboDojo论文及AMD、GEN-1.5、S1、Gemini官方材料。42项任务、2100次试验、22.48%、28.97、82亿美元全股票、3–12秒与约10分钟等关键数字口径一致；FCC、宇树、银河通用、RoboCurve和百万小时数据均保留来源归属。轻微扣分来自节目仍含较多未回到原件的公司和政策细节，但报告已统一降级。 本轮另以 fill_report_stats 同一正则独立复算 transcript/polished，五个新增字段分别为 30732、118113、3460、10717、16610，与 frontmatter 完全一致。",
+            "request_coverage": "21个shownotes时间节点全部先在来源地图登记，再映射到十条核心论证及后续事实表；Astra三角色、VLA/WAM分工、护城河迁移、AMD/World Labs、宇树、ICL、DYNA、Gemini、FCC和Q4均完整覆盖。 当前 revision 只新增五个机器统计字段；删除这五行后的报告 SHA 与历史第二轮 Reviewer 绑定快照一致，正文、21 项来源地图与 evidence claims 未变化。",
+            "reasoning_quality": "报告以抽象层边界而非公司胜负组织论证，能区分相对benchmark领先与生产可用、模型商品化与市场扩张、厂商demo与独立复现，并提出分层部署和可观察指标。EverAgent映射明确标为软件harness类比。",
+            "readability": "约5.9万字节与106分钟高密度节目相称，内容地图、十条主线、数字表和证据等级清楚，可脱离转写独立阅读。部分观点在核心论证、数字表和证据分级中有必要重复，篇幅略长。 新增统计字段位于 frontmatter，不改变正文结构或阅读路径。",
+            "limitations": "明确写出ASR风险、EGO争议缺失反方、FCC和宇树原件缺口、RoboDojo外推边界、厂商自报、未独立复现、AMD未交割以及缺少法务/安全/客户视角。 元数据 revision 没有改变既有证据边界，历史披露继续完整适用。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07",
+            "C08"
+          ],
+          "coverage_unit_ids_checked": [
+            "SC01",
+            "SC02",
+            "SC03",
+            "SC04",
+            "SC05",
+            "SC06",
+            "SC07",
+            "SC08",
+            "SC09",
+            "SC10",
+            "SC11",
+            "SC12",
+            "SC13",
+            "SC14",
+            "SC15",
+            "SC16",
+            "SC17",
+            "SC18",
+            "SC19",
+            "SC20",
+            "SC21"
+          ],
+          "source_content_map": [
+            {
+              "id": "M01",
+              "title": "Q3五项进展与核心问题",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC01"
+              ],
+              "notes": "报告在顶部先给条件化结论，并把五项事件串成技术、资本与组织三条线。"
+            },
+            {
+              "id": "M02",
+              "title": "Astra从规划层进入末端位姿策略",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04",
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC02"
+              ],
+              "notes": "报告准确解释末端位姿、逆运动学与高频控制的边界。"
+            },
+            {
+              "id": "M03",
+              "title": "IROS三派争论及晚宴样本局限",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC03"
+              ],
+              "notes": "报告保留100多人和约三分之一的节目转述，并明确不能外推行业共识。"
+            },
+            {
+              "id": "M04",
+              "title": "Astra直接策略、监督纠偏、具身研究员三角色",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC04"
+              ],
+              "notes": "三角色的机制、价值与证据强弱均有独立展开。"
+            },
+            {
+              "id": "M05",
+              "title": "空间能力、Blender数据与Scaling来源",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC05"
+              ],
+              "notes": "报告将招聘和训练数据保留为嘉宾消息，没有升级为官方披露。"
+            },
+            {
+              "id": "M06",
+              "title": "中国通用模型公司进入Robotics",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC06"
+              ],
+              "notes": "报告覆盖入场趋势，同时把具体公司动作降级为方向判断。"
+            },
+            {
+              "id": "M07",
+              "title": "接口、闭环、硬件与垂直场景护城河",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC07"
+              ],
+              "notes": "报告给出旧价值主张到新价值的迁移表，并加入交付条件。"
+            },
+            {
+              "id": "M08",
+              "title": "AMD拟收购World Labs及82亿美元口径",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04",
+                "S07"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC08"
+              ],
+              "notes": "报告使用AMD官方公告核对全股票、监管和交割状态。"
+            },
+            {
+              "id": "M09",
+              "title": "Atlas、SceniX与空间仿真基础设施",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC09"
+              ],
+              "notes": "报告区分节目描述和协同推断，没有把协同收入写成事实。"
+            },
+            {
+              "id": "M10",
+              "title": "Frontier Lab与机器人研究者的认知断层",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC10"
+              ],
+              "notes": "报告把资源差距、算力估计和组织解释均保留为节目观点。"
+            },
+            {
+              "id": "M11",
+              "title": "宇树IPO、估值锚与财务数字",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC11"
+              ],
+              "notes": "所有数字均标节目口径和待核验，没有作为估值结论。"
+            },
+            {
+              "id": "M12",
+              "title": "通用模型增强后本体价值",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC12"
+              ],
+              "notes": "报告从一致性、可靠性、成本、返修和SDK解释本体价值。"
+            },
+            {
+              "id": "M13",
+              "title": "上市压力、收入催熟与研究方向偏移",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC13"
+              ],
+              "notes": "报告覆盖短期营收与长期路线冲突，并给出两类风险。"
+            },
+            {
+              "id": "M14",
+              "title": "ICL从参数更新变成运行时上下文",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04",
+                "S08",
+                "S09"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC14"
+              ],
+              "notes": "机制、fine-tune差异、时延和示范质量边界完整。"
+            },
+            {
+              "id": "M15",
+              "title": "GEN-1.5与S1差异",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04",
+                "S08",
+                "S09"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC15"
+              ],
+              "notes": "3–12秒、simple/short-horizon、单视频和约10分钟口径均按官方材料分级。"
+            },
+            {
+              "id": "M16",
+              "title": "DYNA 2.1完整工作流与数据争议",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04",
+                "S10"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC16"
+              ],
+              "notes": "报告覆盖洗衣房全流程和百万小时争议，没有补写缺失反方。"
+            },
+            {
+              "id": "M17",
+              "title": "Gemini Robotics 2、Google、Optimus与自动驾驶迁移",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04",
+                "S10"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC17"
+              ],
+              "notes": "官方发布事实与组织评价、demo能力、迁移判断分开处理。"
+            },
+            {
+              "id": "M18",
+              "title": "FCC限制范围与2公斤口径",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC18"
+              ],
+              "notes": "报告明确缺少正式规则文本，统一标节目口径/待核验。"
+            },
+            {
+              "id": "M19",
+              "title": "65%、旧型号、产能出海与供应链",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC19"
+              ],
+              "notes": "节目细节、政策机制和长期供应链推断分层清楚。"
+            },
+            {
+              "id": "M20",
+              "title": "Q4 Physical RSI、agentic与组织重塑",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC20"
+              ],
+              "notes": "报告把预测转成观察清单，并指出Physical RSI缺少统一定义。"
+            },
+            {
+              "id": "M21",
+              "title": "大脑、本体、关键部件分工与持续观察",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC21"
+              ],
+              "notes": "报告给出EverAgent类比、反方、限制、追问和可执行指标。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06",
+            "S07",
+            "S08",
+            "S09",
+            "S10"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04",
+            "R05",
+            "R06",
+            "R07"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "独立复核当前哈希绑定快照：report SHA-256=b017859dbca5594545f6d6c65ab54f2aa692510c498f34578f7be3a00c0c02b8，evidence SHA-256=6bf76fc080cf4ac80495d38a07905ce5f54aae5b9ccc62a578a4d4d72a5f6fd2，均与审稿提示一致。本轮先读取官方 shownotes 与 polished 章节结构，并运行 transcript 确定性审计，再核对报告/evidence 与历史 review。audit_transcript.py 收据：ok=true，size=179590，SHA-256=7a0b169f346f5a086a502229fced27355af4ed6f8fe7900ea20a2b0a9e47b152，lines/segments=3460，duration_seconds=6377，max_consecutive_identical=1，warnings/errors 均为空；与 artifact.json 完全一致。五个新增字段通过两条独立路径核验：fill_report_stats.py --dry-run 返回“✓ 一致 / 0 篇存在差异”；按脚本正则直接计算得到 hanzi_chars_raw=30732、total_chars_raw=118113、transcript_segments=3460、hanzi_chars_polished=10717、total_chars_polished=16610。raw transcript SHA-256=7a0b169f346f5a086a502229fced27355af4ed6f8fe7900ea20a2b0a9e47b152；polished SHA-256=f40f0ddb76892adc0cda681c21f2f491e222b4d19f428af199d81ea04a1865e6。把当前报告仅删除上述五个 frontmatter 字段后，SHA-256=34d5958391567e1e8a84ca5bdf866f60a011335d05e0098c431eb674ba16c171，与历史第二轮 Reviewer notes 绑定的正文快照完全一致；evidence SHA 亦与历史两轮相同。因此正文事实、21 个 shownotes 章节映射、C01–C08 claims、S01–S10 来源判断及 R01–R07 要求均未受影响，在本轮重新核验后沿用上一轮 source_content_map 与五维评分。无 unsupported claim、missing requirement 或 hard failure。加权总分 94×0.35+98×0.20+96×0.20+91×0.15+98×0.10=95.15。\n\nreport_quality.py check 原始结果：\npodcast-learning/reports/2026-10-15_rss-wandian-latetalk_184-embodied-quarterly-26q3.md｜tier=important｜decision=pass｜score=95.15｜ERROR 0｜WARN 0"
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 95.15,
+        "evaluated_on": "2026-10-25",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "426dc5eb34be4e038260515a41732592e7c7ecda442b40d206b18840cb7eaf08",
+        "evidence_sha256": "6bf76fc080cf4ac80495d38a07905ce5f54aae5b9ccc62a578a4d4d72a5f6fd2"
+      }
+    }
+  ]
+}

@@ -2,31 +2,32 @@
   "schema_version": 1,
   "report_path": "ai-learning/reports/knowledge_reports/AMD_ROCm_MegaKernel_MI355X交互式单请求推理_深度解析_20261025.md",
   "quality_tier": "important",
-  "revision_round": 1,
+  "revision_round": 3,
   "reviews": [
     {
       "role": "primary_review",
       "reviewer": {
-        "model": "gpt-6",
+        "model": "gpt-5.6-sol",
         "harness": "codex",
-        "run_id": "review-amd-megakernel-20261025-gpt6",
+        "run_id": "review-gpt56sol-megakernel-r3-8d41b6f2c79a",
         "independent_context": true,
-        "explicit_model_override": false
+        "explicit_model_override": false,
+        "override_reason": ""
       },
       "escalation_reason": "",
       "scores": {
-        "evidence_fidelity": 94,
-        "request_coverage": 96,
-        "reasoning_quality": 93,
-        "readability": 92,
-        "limitations": 97
+        "evidence_fidelity": 96,
+        "request_coverage": 98,
+        "reasoning_quality": 96,
+        "readability": 95,
+        "limitations": 98
       },
       "score_reasons": {
-        "evidence_fidelity": "来源优先核对 AMD 博客全文、Fleet 与 MPK 的 arXiv 摘要、Fleet README、AITER/ATOM/FlyDSL README、GitHub 仓库元数据和分支。主性能、逐轮换算、数据放置、质量异常与软件版本数字均能回到一手来源；修订了 Fleet 仓库创建时间、NOASSERTION 含义、投机贡献误归因和跨论文倍数过度外推。",
-        "request_coverage": "R01–R06 完整覆盖：问题定义、持久化机制、四个杠杆、交互延迟与吞吐权衡、全部主要数字与配置、复现材料、替代路线、部署风险、最小验证、反方解释、Limitations 和 Agent harness 迁移均有独立章节。",
-        "reasoning_quality": "报告把绝对 tok/s 拆成 accepted tokens 与 round time，把复合优化与单项机制分开，并主动保留精度异常和计时不一致。修订后不再把无投机 3.6× 错归因于单侧未开投机，也不再用 Fleet/MPK 的异构结果估算本博客的 megakernel 单项贡献；线性注意力回滚也从未经证明的复杂度结论收紧为可观察机制。",
-        "readability": "结论前置、表格密度高，版本与口径能快速查阅，机制图有助于理解。篇幅较长，§5、§8、§9 对边界有少量重复，但分别承担数据核对、部署决策和反方解释，整体仍可独立阅读。",
-        "limitations": "明确未跑 kernel、未读核心源码与复现脚本、论文只读摘要、没有跨框架同条件实测和第三方复现；也说明图内数字未取到、临时仓库与许可文件未核实、时点会快速过期。对厂商自测与分析者推断的区分充分。"
+        "evidence_fidelity": "完整读取 S01 至 Disclaimers，并核对 S02/S03 摘要、S04–S07 GitHub README/API 元数据与 S08 TensorRT-LLM 官方 README。1.9×–3.3×、各模型 tok/s、逐轮接受数/耗时、跨 die +28%、1.4 µs、86%/14%、GPU_MAX_HW_QUEUES=1、质量分数与 GPT 计时偏向对照组等口径均与原文一致。§5.4 已把 BF16→MXFP4×FP8、checkpoint→megakernel 无投机及投机后的额外差距分开，未再把质量损失单因归给量化、注意力或投机。",
+        "request_coverage": "R01–R06 均已回答：报告覆盖问题定义、持久化执行/同步/调度、四项联合优化、版本与复现条件、全部 headline 数字、并发边界、质量异常、替代路线、部署风险与最小验证。U01–U30 全部映射。S08 已用于 TensorRT-LLM 产品与平台边界；修正后的 Flash-Next 复现路径经 GitHub API 确认为 ATOM qwen38-megakernels 分支的 scripts/qwen38_flash_mono/build_and_repro.sh。",
+        "reasoning_quality": "报告持续把 AMD 自测、论文摘要事实、代码元数据和分析者推断分开。它把 headline 倍数解释为 megakernel、投机、低精度与数据放置的复合结果；明确 GPT 主比较改变分区、精度、drafter 与计时方式；并发只形成需测量 per-user/aggregate 曲线的假说。Fleet、MPK 与本次产品实现的数字没有混算。少量路线表述仍带较强工程判断，例如通用编译器对单模型极致优化通常不如手写，但已有分析标签且不影响主结论。",
+        "readability": "报告可独立阅读，x→f→f(x)、机制图、结果表、逐轮公式、口径缺口、路线比较和最小验证形成清晰路径；§5.4、§5.5 与 §9 的内链已对应真实章节，未再出现旧的 §6.4。篇幅较长但导航充分。轻微编辑问题是附录“来源清单（可复核）”只列 S01–S07，漏列正文已使用的 S08 URL；顶部来源表与 evidence 仍可定位 S08。",
+        "limitations": "Limitations 明确披露未运行 kernel、未在 MI355X/MI350 测量、未读 megakernel 源码与复现脚本内容、S02/S03 仅摘要、图内细粒度数字未取、没有同条件跨框架实测或系统第三方复现检索，并限定 TensorRT-LLM 只读官方 README、不做性能排名。报告没有把 decode tok/s 等同端到端 Agent 任务加速，也没有用 chat 格式正常分数掩盖 raw few-shot 异常。"
       },
       "critical_claim_ids_checked": [
         "C01",
@@ -74,8 +75,8 @@
       ],
       "source_content_map": [
         {
-          "id": "SCM01",
-          "title": "AMD 将问题定义为单请求 decode 延迟，四个杠杆共同产生 1.9–3.3× 的完整配置结果",
+          "id": "MK-R3-01",
+          "title": "单请求 TPOT 问题、四项联合优化与 headline 的完整配置边界",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
@@ -87,27 +88,42 @@
             "U04",
             "U05"
           ],
-          "notes": "开头与 §2 保留早期结果、完整配置、非任务级加速等官方限定。"
+          "notes": "报告准确说明单请求无法隐藏 launch/sync，并把 1.9×–3.3× 限定为单张 MI355X、decode-only、各侧完整优化配置的 AMD 自测与 early results。"
         },
         {
-          "id": "SCM02",
-          "title": "持久化 kernel、三模型融合粒度、64-bit hand-off、per-chiplet release words 与预取构成执行机制",
+          "id": "MK-R3-02",
+          "title": "持久化执行、三模型融合粒度与细粒度手递手同步",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
-            "S01"
+            "S01",
+            "S03"
           ],
           "matched_coverage_unit_ids": [
             "U06",
             "U07",
-            "U08",
             "U11"
           ],
-          "notes": "机制均来自博客文字；报告明确未读源码，不把实现推断写成代码事实。"
+          "notes": "整个 forward 与每 decoder layer 两种融合粒度、约 1.7 µs 层边界、64-bit value+tag、release words、预取和同步最小化均与 S01 相符。"
         },
         {
-          "id": "SCM03",
-          "title": "低精度、投机解码与数据放置分别改变权重读取下界、每轮有效 token 和跨 die 代价",
+          "id": "MK-R3-03",
+          "title": "Flash-Next 稀疏注意力归约、FlyDSL/HIP 分工与 AI agent 参与优化",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S07"
+          ],
+          "matched_coverage_unit_ids": [
+            "U08",
+            "U09"
+          ],
+          "notes": "top-512、262→126 µs、250K 上 3.0 ms 对 10.2 ms，以及 Qwen 用 FlyDSL、GPT-OSS 仍用 HIP 的事实均准确；DSL 可维护性与 agent 适配被标为推断。"
+        },
+        {
+          "id": "MK-R3-04",
+          "title": "MXFP4 权重下界、投机解码 tokens/ms 规则与状态重放",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
@@ -117,127 +133,140 @@
             "U12",
             "U13",
             "U14",
+            "U18"
+          ],
+          "notes": "3.8× 权重字节、262K cache、drafter 选择规则、线性注意力拒绝后重放及 accepted×1000/ms 的逐轮换算均保留工作负载与实现边界。"
+        },
+        {
+          "id": "MK-R3-05",
+          "title": "MI355X 双 die 数据局部性、受控反事实与硬件队列配置",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
             "U15",
             "U16"
           ],
-          "notes": "线性注意力回滚只保留来源可支持的状态记录机制，删除了无证据的大 O 结论。"
+          "notes": "跨 die +28%、每层 +1.4 µs、86%/14%、逐阶段加速、placement 1.08× 与 speculation 1.27× 复合，以及默认四队列慢 10–25% 均逐项吻合。"
         },
         {
-          "id": "SCM04",
-          "title": "三模型主结果、逐轮公式、提示集、容器与版本共同定义 benchmark 口径",
+          "id": "MK-R3-06",
+          "title": "三模型 benchmark 的硬件、精度、drafter、负载、版本与计时口径",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
-            "S01"
-          ],
-          "matched_coverage_unit_ids": [
-            "U17",
-            "U18",
-            "U19"
-          ],
-          "notes": "Qwen 与 GPT-OSS 的 tok/s、round time、ROCm 和硬件队列设置逐项核对。"
-        },
-        {
-          "id": "SCM05",
-          "title": "GPT-OSS 的配置与计时不一致、仅 decode 范围以及 5-shot 原始文本精度异常限制主结论",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S01"
-          ],
-          "matched_coverage_unit_ids": [
-            "U20",
-            "U21"
-          ],
-          "notes": "正文没有用 chat 格式正常结果掩盖 35.5–39.3% 的异常，也保留 AMD 正在排查的状态。"
-        },
-        {
-          "id": "SCM06",
-          "title": "MPK 提供自动 mega-kernel 编译运行时，Fleet 提供 chiplet-task 与 per-chiplet 调度",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S02",
-            "S03"
-          ],
-          "matched_coverage_unit_ids": [
-            "U02",
-            "U10",
-            "U23"
-          ],
-          "notes": "摘要中的 1.7×、1.3–1.5×、L2 命中率和 HBM 流量数字已核对；正文不再用异构结果分解本博客单项贡献。"
-        },
-        {
-          "id": "SCM07",
-          "title": "Fleet README 给出 Mirage 对照、MI350 参数、复现入口与 AMD-RAD/fleet 迁移方向",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
+            "S01",
+            "S04",
+            "S05",
             "S06"
           ],
           "matched_coverage_unit_ids": [
-            "U10",
-            "U22",
-            "U25"
+            "U17",
+            "U19",
+            "U21"
           ],
-          "notes": "仓库创建于 2026-07，已修正初稿的「三个仓库均近三周创建」。"
+          "notes": "Qwen 27B、Flash-Next 与 GPT-OSS 的 tok/s、版本、提示集、样本量、计时和基线差异完整；Flash-Next 的 MI355X ~750/3.3× headline 与 MI350X 689/227 matched pair 已明确拆分。"
         },
         {
-          "id": "SCM08",
-          "title": "AITER、ATOM 与 FlyDSL 的仓库事实显示实验分支、上游归属和许可元数据边界",
+          "id": "MK-R3-07",
+          "title": "GPT-OSS 质量异常与未完成的因果归因",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
-            "S04",
-            "S05",
-            "S07"
+            "S01"
           ],
           "matched_coverage_unit_ids": [
-            "U09",
-            "U22",
-            "U25"
+            "U20"
           ],
-          "notes": "两个 2026-10 个人仓库与一个 2026-07 Fleet 仓库均为 0 star；NOASSERTION 只表示 API 无法断言许可证，不等于无许可证。"
+          "notes": "报告同时保留 chat 格式正常结果与 5-shot raw-text 异常，并分段量化 BF16、AMD checkpoint、megakernel 无投机和投机条件之间的差距；明确需要受控消融，未指定单一根因。"
         },
         {
-          "id": "SCM09",
-          "title": "替代路线比较应只陈述执行模型与成熟度边界，不能形成跨硬件性能排名",
+          "id": "MK-R3-08",
+          "title": "并发与多 Agent 负载只能形成待验证曲线",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
             "S01",
             "S02",
+            "S06"
+          ],
+          "matched_coverage_unit_ids": [
+            "U24",
+            "U27",
+            "U29"
+          ],
+          "notes": "Flash-Next 四请求 3.1× per-user 被正确视为单点；报告用 Fleet 的大 batch 缓存收益作为反向边界，不断言高并发收益必然收敛或扩大。"
+        },
+        {
+          "id": "MK-R3-09",
+          "title": "MPK 与 Fleet 的学术坐标、chiplet 调度及跨来源数字不可混读",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
             "S03",
+            "S06"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10",
+            "U23"
+          ],
+          "notes": "MPK 摘要的 SM 级图、跨算子流水和最多 1.7×，Fleet 的 1.3–1.5×、L2 命中率、HBM 流量与 Mirage 表均按各自硬件/模型/指标陈述，没有用来分解 AMD headline。"
+        },
+        {
+          "id": "MK-R3-10",
+          "title": "代码仓库形态、版本锁定、可用矩阵与复现入口",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S04",
+            "S05",
+            "S06",
+            "S07"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02",
+            "U22",
+            "U25"
+          ],
+          "notes": "GitHub API 复核了临时 fork 的创建时间、0 star、分支与许可元数据；ATOM qwen38-megakernels 分支 API 明确确认 Flash-Next 脚本路径为 scripts/qwen38_flash_mono/build_and_repro.sh。"
+        },
+        {
+          "id": "MK-R3-11",
+          "title": "TensorRT-LLM 的官方产品定位与 NVIDIA/CUDA 平台边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S08"
+          ],
+          "matched_coverage_unit_ids": [
+            "U23"
+          ],
+          "notes": "S08 官方 README 明确 specialized kernels、efficient runtime、Python framework 与 CUDA/NVIDIA 入口；报告只比较能力和平台边界，未引用异构性能数字。附录漏列 S08 URL 是轻微可读性问题。"
+        },
+        {
+          "id": "MK-R3-12",
+          "title": "部署前需验证精度、prefill、并发、版本和真实 prompt 分布",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
             "S04",
             "S05",
             "S06"
           ],
           "matched_coverage_unit_ids": [
-            "U23",
-            "U24",
-            "U27"
-          ],
-          "notes": "已把 CUDA 专属措辞改为 CUDA/HIP graph capture，并删除「直接借鉴」与收益量级外推。"
-        },
-        {
-          "id": "SCM10",
-          "title": "生产决策需要精度、prefill、多并发、版本锁定和真实 prompt 分布的最小验证",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S01"
-          ],
-          "matched_coverage_unit_ids": [
             "U25",
-            "U26",
-            "U29",
-            "U30"
+            "U26"
           ],
-          "notes": "部署清单与验证方案直接对应公开缺口，没有把建议包装成已验证事实。"
+          "notes": "风险表与六步最小验证直接对应来源暴露的配置、精度、功能覆盖和时点缺口，且给出可判定的 per-user/aggregate、开关投机与 TTFT/TPOT 测量。"
         },
         {
-          "id": "SCM11",
-          "title": "研究边界包括未复现、未读源码、论文仅摘要、未系统检索第三方复现和快速变化的临时代码",
+          "id": "MK-R3-13",
+          "title": "研究限制、可迁移启示、未解问题与下一步",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
@@ -247,13 +276,14 @@
             "S04",
             "S05",
             "S06",
-            "S07"
+            "S07",
+            "S08"
           ],
           "matched_coverage_unit_ids": [
             "U28",
             "U30"
           ],
-          "notes": "Limitations 完整且与 evidence 一致。"
+          "notes": "未复现、未读源码/脚本、论文摘要级、无同条件跨框架实测和未系统检索第三方复现均如实披露；下一步对应这些缺口。"
         }
       ],
       "source_ids_checked": [
@@ -263,7 +293,8 @@
         "S04",
         "S05",
         "S06",
-        "S07"
+        "S07",
+        "S08"
       ],
       "requirement_ids_checked": [
         "R01",
@@ -276,16 +307,913 @@
       "unsupported_claims": [],
       "missing_requirements": [],
       "hard_failures": [],
-      "notes": "独立复核先读来源再对照正文。修正七类问题：四杠杆误写为三者；错误的状态回滚复杂度；三个临时仓库创建时点；CUDA 专属路线命名；未证明的 MPK/Fleet 直接借鉴；无投机 3.6× 的错误归因；用异构论文结果估算单项收益。修订后重新核验 C01–C10。"
+      "notes": "独立来源优先复核。开始前核对 report SHA-256=78e7445a881487c4887cd40a0fee9a58d25f0471d30cc82f75e0307600ea621e、evidence SHA-256=36bc57f4403b6cebed4293c64b5813684e8b4eea53dd2a2b9cc84bdc4e649b12，与调度值一致。先执行 eacli tokenplan catalog 与 web.search/web.read/repo.public.* select；在未读报告与 evidence 前完整读取 S01 并独立建立问题、机制、数字、质量、并发、复现和限制地图，随后读取 S02/S03 arXiv 摘要、S04–S07 GitHub README/API 元数据和 S08 TensorRT-LLM 官方 README，再映射报告与 evidence。repo.public 对公开仓库返回 repo not found 后，使用同一 Token Plan 的 web.read 读取 GitHub/raw/API 页面；未直接绕过 eacli。重点核验结果：§5.4 对质量差距只做分段量化并拒绝单因归因；§5.5 完整列出 GPT 基线、计时、decode-only、批量与样本限制；并发章节同时保留 Flash-Next 四请求与 Fleet 大 batch 的双向证据；Flash-Next MI355X headline 与 MI350X matched pair 已拆开；S08 只支持 TensorRT-LLM 的产品/平台边界；GitHub API 确认 `proaditya/ATOM` 的 `qwen38-megakernels` 分支存在，且复现文件路径正是 `scripts/qwen38_flash_mono/build_and_repro.sh`；全文 §5.4、§5.5、§5.3、§8.2 等内部引用均指向现有章节，未见旧的 §6.4。未发现 unsupported claim、missing requirement 或 hard failure。轻微非阻断项：附录可复核 URL 清单漏列 S08；路线表中个别“手写通常优于通用编译器”等判断较强，但均有分析标签。加权总分 96×0.35+98×0.20+96×0.20+95×0.15+98×0.10=96.45。\n\nreport_quality.py check 原始结果：\nai-learning/reports/knowledge_reports/AMD_ROCm_MegaKernel_MI355X交互式单请求推理_深度解析_20261025.md｜tier=important｜decision=pass｜score=96.45｜ERROR 0｜WARN 0"
     }
   ],
   "decision": {
     "status": "pass",
-    "score": 94.2,
+    "score": 96.45,
     "evaluated_on": "2026-10-25",
     "policy_id": "report-quality-2026-10-18-r2",
     "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
-    "report_sha256": "ae1523158e19d8312af95bf8f5abfe9d9f6422175a4e387683df4f412835970d",
-    "evidence_sha256": "6be56dbb057b1e82e3f203b252da198f6b351cb336085f6e8e1ac8e2b0874ad0"
-  }
+    "report_sha256": "b354d2c654bc720692ea5c779094e139143ada150b34b6ca54555fde5766c05e",
+    "evidence_sha256": "36bc57f4403b6cebed4293c64b5813684e8b4eea53dd2a2b9cc84bdc4e649b12"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-6",
+            "harness": "codex",
+            "run_id": "review-amd-megakernel-20261025-gpt6",
+            "independent_context": true,
+            "explicit_model_override": false
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 94,
+            "request_coverage": 96,
+            "reasoning_quality": 93,
+            "readability": 92,
+            "limitations": 97
+          },
+          "score_reasons": {
+            "evidence_fidelity": "来源优先核对 AMD 博客全文、Fleet 与 MPK 的 arXiv 摘要、Fleet README、AITER/ATOM/FlyDSL README、GitHub 仓库元数据和分支。主性能、逐轮换算、数据放置、质量异常与软件版本数字均能回到一手来源；修订了 Fleet 仓库创建时间、NOASSERTION 含义、投机贡献误归因和跨论文倍数过度外推。",
+            "request_coverage": "R01–R06 完整覆盖：问题定义、持久化机制、四个杠杆、交互延迟与吞吐权衡、全部主要数字与配置、复现材料、替代路线、部署风险、最小验证、反方解释、Limitations 和 Agent harness 迁移均有独立章节。",
+            "reasoning_quality": "报告把绝对 tok/s 拆成 accepted tokens 与 round time，把复合优化与单项机制分开，并主动保留精度异常和计时不一致。修订后不再把无投机 3.6× 错归因于单侧未开投机，也不再用 Fleet/MPK 的异构结果估算本博客的 megakernel 单项贡献；线性注意力回滚也从未经证明的复杂度结论收紧为可观察机制。",
+            "readability": "结论前置、表格密度高，版本与口径能快速查阅，机制图有助于理解。篇幅较长，§5、§8、§9 对边界有少量重复，但分别承担数据核对、部署决策和反方解释，整体仍可独立阅读。",
+            "limitations": "明确未跑 kernel、未读核心源码与复现脚本、论文只读摘要、没有跨框架同条件实测和第三方复现；也说明图内数字未取到、临时仓库与许可文件未核实、时点会快速过期。对厂商自测与分析者推断的区分充分。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07",
+            "C08",
+            "C09",
+            "C10"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07",
+            "U08",
+            "U09",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14",
+            "U15",
+            "U16",
+            "U17",
+            "U18",
+            "U19",
+            "U20",
+            "U21",
+            "U22",
+            "U23",
+            "U24",
+            "U25",
+            "U26",
+            "U27",
+            "U28",
+            "U29",
+            "U30"
+          ],
+          "source_content_map": [
+            {
+              "id": "SCM01",
+              "title": "AMD 将问题定义为单请求 decode 延迟，四个杠杆共同产生 1.9–3.3× 的完整配置结果",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01",
+                "U03",
+                "U04",
+                "U05"
+              ],
+              "notes": "开头与 §2 保留早期结果、完整配置、非任务级加速等官方限定。"
+            },
+            {
+              "id": "SCM02",
+              "title": "持久化 kernel、三模型融合粒度、64-bit hand-off、per-chiplet release words 与预取构成执行机制",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06",
+                "U07",
+                "U08",
+                "U11"
+              ],
+              "notes": "机制均来自博客文字；报告明确未读源码，不把实现推断写成代码事实。"
+            },
+            {
+              "id": "SCM03",
+              "title": "低精度、投机解码与数据放置分别改变权重读取下界、每轮有效 token 和跨 die 代价",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U12",
+                "U13",
+                "U14",
+                "U15",
+                "U16"
+              ],
+              "notes": "线性注意力回滚只保留来源可支持的状态记录机制，删除了无证据的大 O 结论。"
+            },
+            {
+              "id": "SCM04",
+              "title": "三模型主结果、逐轮公式、提示集、容器与版本共同定义 benchmark 口径",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U17",
+                "U18",
+                "U19"
+              ],
+              "notes": "Qwen 与 GPT-OSS 的 tok/s、round time、ROCm 和硬件队列设置逐项核对。"
+            },
+            {
+              "id": "SCM05",
+              "title": "GPT-OSS 的配置与计时不一致、仅 decode 范围以及 5-shot 原始文本精度异常限制主结论",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U20",
+                "U21"
+              ],
+              "notes": "正文没有用 chat 格式正常结果掩盖 35.5–39.3% 的异常，也保留 AMD 正在排查的状态。"
+            },
+            {
+              "id": "SCM06",
+              "title": "MPK 提供自动 mega-kernel 编译运行时，Fleet 提供 chiplet-task 与 per-chiplet 调度",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02",
+                "U10",
+                "U23"
+              ],
+              "notes": "摘要中的 1.7×、1.3–1.5×、L2 命中率和 HBM 流量数字已核对；正文不再用异构结果分解本博客单项贡献。"
+            },
+            {
+              "id": "SCM07",
+              "title": "Fleet README 给出 Mirage 对照、MI350 参数、复现入口与 AMD-RAD/fleet 迁移方向",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10",
+                "U22",
+                "U25"
+              ],
+              "notes": "仓库创建于 2026-07，已修正初稿的「三个仓库均近三周创建」。"
+            },
+            {
+              "id": "SCM08",
+              "title": "AITER、ATOM 与 FlyDSL 的仓库事实显示实验分支、上游归属和许可元数据边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S04",
+                "S05",
+                "S07"
+              ],
+              "matched_coverage_unit_ids": [
+                "U09",
+                "U22",
+                "U25"
+              ],
+              "notes": "两个 2026-10 个人仓库与一个 2026-07 Fleet 仓库均为 0 star；NOASSERTION 只表示 API 无法断言许可证，不等于无许可证。"
+            },
+            {
+              "id": "SCM09",
+              "title": "替代路线比较应只陈述执行模型与成熟度边界，不能形成跨硬件性能排名",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04",
+                "S05",
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "U23",
+                "U24",
+                "U27"
+              ],
+              "notes": "已把 CUDA 专属措辞改为 CUDA/HIP graph capture，并删除「直接借鉴」与收益量级外推。"
+            },
+            {
+              "id": "SCM10",
+              "title": "生产决策需要精度、prefill、多并发、版本锁定和真实 prompt 分布的最小验证",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U25",
+                "U26",
+                "U29",
+                "U30"
+              ],
+              "notes": "部署清单与验证方案直接对应公开缺口，没有把建议包装成已验证事实。"
+            },
+            {
+              "id": "SCM11",
+              "title": "研究边界包括未复现、未读源码、论文仅摘要、未系统检索第三方复现和快速变化的临时代码",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04",
+                "S05",
+                "S06",
+                "S07"
+              ],
+              "matched_coverage_unit_ids": [
+                "U28",
+                "U30"
+              ],
+              "notes": "Limitations 完整且与 evidence 一致。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06",
+            "S07"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04",
+            "R05",
+            "R06"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "独立复核先读来源再对照正文。修正七类问题：四杠杆误写为三者；错误的状态回滚复杂度；三个临时仓库创建时点；CUDA 专属路线命名；未证明的 MPK/Fleet 直接借鉴；无投机 3.6× 的错误归因；用异构论文结果估算单项收益。修订后重新核验 C01–C10。"
+        },
+        {
+          "role": "escalation_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex",
+            "run_id": "review-87e033edcb60",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "escalation_reason": "important 报告固定抽样窗口的强模型跨模型复核，用于估计常规模型复核的共同盲区。",
+          "scores": {
+            "evidence_fidelity": 88,
+            "request_coverage": 90,
+            "reasoning_quality": 83,
+            "readability": 92,
+            "limitations": 95
+          },
+          "score_reasons": {
+            "evidence_fidelity": "通过 eacli 实读 S01 全文、S02/S03 摘要、S04-S07 的 GitHub 元数据与关键 README 后，C01-C10 的主要事实和数字均可追溯，未发现伪造来源或关键数字硬失败。但 §5.4 将 BF16 与 megakernel 的 6.2-13.2 分差描述为远大于 BF16 与 AMD MXFP4×FP8 checkpoint 的 5.2-12.2 分差，并据此把主要原因指向注意力路径而非量化；两组差距实际只相差约 1 分，来源不足以支持该因果判断。§9.1 还把 Qwen 的同 MXFP4 基线泛化到 GPT 主比较，§5.1 的 Flash-Next 行混列 MI355X headline 与 MI350 matched baseline，容易造成跨硬件倍数误读。",
+            "request_coverage": "R01-R06 均有实质回答：完整覆盖博客、机制、版本与口径、部署风险、验证方案、反方解释和 Limitations，并使用多项实现/复现材料。主要覆盖缺口是 R04 中 TensorRT-LLM 只有一行通用硬件绑定说明，来源清单没有 TensorRT-LLM 官方材料，因此该比较的证据深度明显低于 vLLM/SGLang/MPK/Fleet。",
+            "reasoning_quality": "报告能区分厂商自述、论文事实、代码证据与推断，并对完整配置比较、decode-only、样本量、精度异常和临时仓库做了良好约束。但存在两处需要修订的核心推理：一是把质量差距主要归因于注意力路径而排除量化，现有数字并不支持；二是断言 megakernel 更快只在低并发成立、把吞吐用途称为范畴错误，超出了 S01，且 S01 的四请求结果与 S02/S06 的高 batch 收益说明持久化/拓扑感知路线并非只能服务低并发。",
+            "readability": "结构完整，开头三行、机制图、结果表、口径缺口、风险和验证步骤都能独立阅读；术语与数值大多就地解释。篇幅较长且少量判断重复，但不妨碍定位与理解。",
+            "limitations": "Limitations 对未运行 kernel、未读源码/脚本、论文仅摘要、无跨框架实测、无系统社区复现检索和资料时点均有明确披露，边界意识很强。需补充承认 TensorRT-LLM 比较缺少一手来源，并把质量归因和并发收敛改为待验证假设。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07",
+            "C08",
+            "C09",
+            "C10"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07",
+            "U08",
+            "U09",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14",
+            "U15",
+            "U16",
+            "U17",
+            "U18",
+            "U19",
+            "U20",
+            "U21",
+            "U22",
+            "U23",
+            "U24",
+            "U25",
+            "U26",
+            "U27",
+            "U28",
+            "U29",
+            "U30"
+          ],
+          "source_content_map": [
+            {
+              "id": "SOL01",
+              "title": "单请求交互式推理的 TPOT 问题、四项联合优化与 headline 结果边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01",
+                "U03",
+                "U04",
+                "U05",
+                "U17"
+              ],
+              "notes": "报告覆盖低并发动机、四个杠杆、1.9×-3.3× headline 及 early results、完整配置比较和非任务级加速等限定。"
+            },
+            {
+              "id": "SOL02",
+              "title": "持久化 megakernel 的融合粒度、手递手同步、预取与稀疏注意力块选择",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06",
+                "U07",
+                "U08",
+                "U11"
+              ],
+              "notes": "三模型融合粒度、64-bit value+sequence tag、per-chiplet release words、权重预取与 262→126 µs 数据均与来源一致。"
+            },
+            {
+              "id": "SOL03",
+              "title": "投机解码、低精度、tokens/ms 选择规则与逐轮换算模型",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U12",
+                "U13",
+                "U14",
+                "U18"
+              ],
+              "notes": "accepted tokens × 1000 / ms、各模型逐轮数据、drafter 工作负载依赖和线性注意力重放均完整进入正文。"
+            },
+            {
+              "id": "SOL04",
+              "title": "MI355X 双 die 数据放置的受控反事实、逐阶段归因与系统配置依赖",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U15",
+                "U16"
+              ],
+              "notes": "+28%、1.4 µs、86%/14%、各阶段百分比、1.08××1.27×≈1.36× 与 GPU_MAX_HW_QUEUES=1 均已核对。"
+            },
+            {
+              "id": "SOL05",
+              "title": "三模型性能配置、基线差异、版本、提示集、计时口径与复现入口",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U17",
+                "U19",
+                "U21",
+                "U22"
+              ],
+              "notes": "大多数版本与口径准确，但 Flash-Next 主结果行把 MI355X ~750 tok/s headline 与 MI350X 689/227 matched pair 放在同一行，3.3× 的硬件对应关系不够清楚；§9.1 的同精度基线说法也没有排除 GPT 主比较。"
+            },
+            {
+              "id": "SOL06",
+              "title": "质量评测、GPT-OSS-120B 原始文本异常与尚未确定的归因",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U20"
+              ],
+              "notes": "原始数字与 AMD 正在排查的说明均覆盖，但正文把 BF16→MXFP4 checkpoint 的 5.2-12.2 分差弱化，并用仅约 1 分的额外差距断言注意力路径而非量化是主要来源，证据不足。"
+            },
+            {
+              "id": "SOL07",
+              "title": "可用性矩阵、早期预览限制、路线图、临时仓库与生产验证边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05",
+                "U21",
+                "U24",
+                "U25",
+                "U26",
+                "U28",
+                "U30"
+              ],
+              "notes": "decode-only、prefill/TP/大 batch 未完成、GPT preview、代码迁移与最小验证方案均有明确留痕。"
+            },
+            {
+              "id": "SOL08",
+              "title": "Fleet 的 chiplet-task 抽象、per-chiplet 调度、缓存复用与 MI350 复现数据",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10",
+                "U19",
+                "U23"
+              ],
+              "notes": "摘要的 1.3-1.5×、L2 命中率、HBM 流量与 README 的 1.13-1.28× 对 Mirage、硬件参数和复现步骤均被正确区分。"
+            },
+            {
+              "id": "SOL09",
+              "title": "MPK 的 SM 级任务图、跨算子流水、去中心化调度与自动 mega-kernel 化",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10",
+                "U23"
+              ],
+              "notes": "报告准确转述摘要并避免把 MPK 的最多 1.7× 与 AMD 博客的复合倍数直接混算。"
+            },
+            {
+              "id": "SOL10",
+              "title": "AITER、ATOM 与 Fleet 临时 fork 的创建时间、分支、许可、成熟度和迁移线索",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S04",
+                "S05",
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02",
+                "U22",
+                "U25"
+              ],
+              "notes": "eacli GitHub API/页面读取确认三个 fork 的创建日期、0 star/0 fork、默认分支及 aitermk-qwen38/aitermk-gpt-oss 分支可访问；Fleet README 指向 AMD-RAD/fleet amd_mi350。"
+            },
+            {
+              "id": "SOL11",
+              "title": "FlyDSL 的 Python/MLIR kernel DSL 定位、仓库结构与许可元数据边界",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S07"
+              ],
+              "matched_coverage_unit_ids": [
+                "U09",
+                "U22",
+                "U25"
+              ],
+              "notes": "README 与仓库结构支持 Python DSL、显式 layout/tiling、GPU/ROCDL lowering 等定位；报告正确把 GitHub API NOASSERTION 与实际无许可区分。"
+            },
+            {
+              "id": "SOL12",
+              "title": "替代路线、并发边界与跨论文数字不可混读",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "U23",
+                "U24",
+                "U27",
+                "U29"
+              ],
+              "notes": "MPK/Fleet/AMD 的边界区分清楚，但正文把 megakernel 优势限定为只在低并发成立，超出来源；TensorRT-LLM 行也没有对应一手来源，只能算最低限度覆盖。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06",
+            "S07"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04",
+            "R05",
+            "R06"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "独立来源优先复核。快照核对：report SHA-256=ae1523158e19d8312af95bf8f5abfe9d9f6422175a4e387683df4f412835970d，evidence SHA-256=6be56dbb057b1e82e3f203b252da198f6b351cb336085f6e8e1ac8e2b0874ad0，与 review-prompt 一致。Token Plan 收据：先执行 catalog 与 web.read/repo.public.* select；S01-S03、S04-S07 均经 eacli invoke 实读。repo.public.structure 对三个临时个人仓返回 repo not found，故在 eacli 内降级为 web.read 读取 GitHub API、raw README 与分支页面；ROCm/FlyDSL 的 repo.public.structure 成功。问题清单：P01 §5.4 对质量差距的因果归因不成立；P02 §2.1 把 megakernel 限定为只在低并发成立过强；P03 §9.1 将 Qwen 的同 MXFP4 基线泛化到 GPT 主比较；P04 §5.1 Flash-Next 行混列 MI355X headline 与 MI350 matched pair；P05 R04 的 TensorRT-LLM 比较缺少官方来源。无 fabricated_or_unread_source、critical_claim_unsupported、key_number_mismatch、core_requirement_missing 或 safety_or_privacy_violation。`python3 scripts/report_quality.py check <report> --json` 结果：score=88.7，dimension_scores={evidence_fidelity:88, request_coverage:90, reasoning_quality:83, readability:92, limitations:95}，decision=blocked；SCORE002：evidence_fidelity 低于 90、reasoning_quality 低于 85；QG013：既有 final decision 94.2 与新增强模型复核记录不一致。按任务要求保留既有 primary review 与 decision，未 finalize。"
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 94.2,
+        "evaluated_on": "2026-10-25",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "ae1523158e19d8312af95bf8f5abfe9d9f6422175a4e387683df4f412835970d",
+        "evidence_sha256": "6be56dbb057b1e82e3f203b252da198f6b351cb336085f6e8e1ac8e2b0874ad0"
+      }
+    },
+    {
+      "revision_round": 2,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex",
+            "run_id": "review-gpt56sol-megakernel-r2-1c67aee281d96c7b",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 95,
+            "request_coverage": 97,
+            "reasoning_quality": 96,
+            "readability": 94,
+            "limitations": 97
+          },
+          "score_reasons": {
+            "evidence_fidelity": "严格按来源优先顺序实读 S01 AMD 全文、S02/S03 摘要、S04-S07 关键 README/分支材料及 S08 TensorRT-LLM 官方 README 后，上一轮五项证据问题均已修复。§5.4 现在明确拆出 BF16→AMD MXFP4×FP8 checkpoint 的 5.2–12.2 分、checkpoint→megakernel 无投机的约 1 分及投机后的额外差距，并拒绝把损失单因归给注意力或量化；§9.1 只把同 MXFP4 权重基线用于 Qwen，不再泛化到 GPT；§5.1 将 MI355X headline 与 MI350X 689/227 分列。剩余轻微事实问题是 §6 表中 Flash-Next 脚本路径写成 `aitermk/engine_adapters/qwen38_flash_mono/build_and_repro.sh`，实际为 ATOM 分支的 `scripts/qwen38_flash_mono/build_and_repro.sh`。",
+            "request_coverage": "R01–R06 均得到完整回答：报告覆盖问题定义、持久化执行与调度、四项联合优化、所有 headline 数字与版本口径、精度异常、并发边界、代码成熟度、替代路线、部署风险和最小验证方案。S08 已补入来源清单，TensorRT-LLM 只按官方 README 比较专用 kernel、runtime、Python 框架及 NVIDIA 平台边界，没有形成跨硬件性能排名。来源地图覆盖 U01–U30；唯一缺陷是一个复现脚本路径的轻微笔误。",
+            "reasoning_quality": "修订版把 headline 倍数稳定地解释为 megakernel、投机解码、低精度与数据放置的复合结果，并明确 GPT 主比较还改变分区、精度和 drafter。并发推理也已收敛为可证伪假说：S01 的 batch=1 与 Flash-Next batch 4 只能证明收益仍在，S02/S06 的大 batch 局部性收益又说明趋势未必单调，因此要求同时测 per-user 与 aggregate 曲线。质量差距、同精度范围和跨论文数字均避免了不成立的因果外推。少量分析性判断仍较强，例如通用编译器对单模型极致优化通常不如手写，但已处于明确标注的分析章节，不影响主结论。",
+            "readability": "报告可脱离对话独立阅读，开头 x→f→f(x、机制示意、逐轮公式、主结果表、口径缺口、路线比较与验证清单形成清楚的阅读路径。硬件、模型、负载、并发、输入输出长度、版本和基线大多就地给出。篇幅较长但导航清楚；开头称质量异常见“§6.4”而实际为 §5.4，以及上述脚本路径笔误，构成轻微编辑扣分。",
+            "limitations": "Limitations 明确披露未运行 kernel、未复现 benchmark、未读源码、S02/S03 仅摘要、未做同条件跨框架实测、未系统检索第三方复现、资料时点和临时仓库迁移风险。它还单独限定 TensorRT-LLM 只读官方 README，不比较性能。报告没有用 chat 格式正常分数掩盖 raw few-shot 异常，也没有把 decode tok/s 等同端到端 Agent 任务加速，边界充分。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07",
+            "C08",
+            "C09",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "C16"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07",
+            "U08",
+            "U09",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14",
+            "U15",
+            "U16",
+            "U17",
+            "U18",
+            "U19",
+            "U20",
+            "U21",
+            "U22",
+            "U23",
+            "U24",
+            "U25",
+            "U26",
+            "U27",
+            "U28",
+            "U29",
+            "U30"
+          ],
+          "source_content_map": [
+            {
+              "id": "MK-R2-01",
+              "title": "单请求 TPOT 问题、四项联合优化与 1.9×–3.3× headline 的完整配置边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01",
+                "U03",
+                "U04",
+                "U05",
+                "U17"
+              ],
+              "notes": "报告准确保留 batch=1、单张 MI355X、decode-only、各侧最快完整配置、early results 和非任务级加速等限定。"
+            },
+            {
+              "id": "MK-R2-02",
+              "title": "持久化 megakernel 的融合粒度、64-bit hand-off、release words、预取与稀疏注意力归约",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S07"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06",
+                "U07",
+                "U08",
+                "U09",
+                "U11"
+              ],
+              "notes": "三模型不同融合粒度、层间 1.7 µs、262→126 µs、FlyDSL/HIP 分工及 agent 参与优化均与来源相符，推断与代码事实有显式标签。"
+            },
+            {
+              "id": "MK-R2-03",
+              "title": "MXFP4 权重下界、投机解码 tokens/ms 规则、状态重放与逐轮换算",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U12",
+                "U13",
+                "U14",
+                "U18"
+              ],
+              "notes": "accepted tokens × 1000 / ms、各模型 round 数据与工作负载依赖完整；未再为线性注意力回滚编造复杂度。"
+            },
+            {
+              "id": "MK-R2-04",
+              "title": "MI355X 双 die 数据放置的受控反事实、逐阶段归因与硬件队列配置",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U15",
+                "U16"
+              ],
+              "notes": "跨 die +28%、1.4 µs、86%/14%、各阶段加速、1.08× 与 1.27× 复合及 GPU_MAX_HW_QUEUES=1 均逐项核对。"
+            },
+            {
+              "id": "MK-R2-05",
+              "title": "三模型 benchmark 的硬件、精度、drafter、提示集、版本与计时口径",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S04",
+                "S05"
+              ],
+              "matched_coverage_unit_ids": [
+                "U17",
+                "U19",
+                "U21"
+              ],
+              "notes": "Flash-Next 已把 MI355X ~750 tok/s、3.3× headline 与 MI350X 689/227 matched pair 分开；GPT-OSS 的 serving/offline 计时、DPX/SPX、精度和 drafter 差异均明确。"
+            },
+            {
+              "id": "MK-R2-06",
+              "title": "GPT-OSS 质量异常及量化、megakernel、上下文切分和投机条件之间尚未完成的归因",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "U20"
+              ],
+              "notes": "修订稿分段列出可见分差，明确量化解释大部分 BF16 差距、megakernel/投机仍有额外差距，但拒绝在缺少受控消融时指定主要原因。"
+            },
+            {
+              "id": "MK-R2-07",
+              "title": "并发与多 Agent 负载只能形成待验证曲线，不能断言收益必然收敛或消失",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "U24",
+                "U27",
+                "U29"
+              ],
+              "notes": "报告同时使用 Flash-Next 四请求结果和 Fleet 大 batch 缓存收益作为双向边界，提出 1/4/8/16 并发下 per-user 与 aggregate 联合测量。"
+            },
+            {
+              "id": "MK-R2-08",
+              "title": "Fleet 的 chiplet-task、per-chiplet 调度、缓存复用与 MI350 量化结果",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10",
+                "U23"
+              ],
+              "notes": "S02 仅按摘要级证据转述 1.3–1.5×、L2 命中率和 HBM 流量；S06 的 Mirage 表与硬件参数另列，没有与 MI355X headline 混算。"
+            },
+            {
+              "id": "MK-R2-09",
+              "title": "MPK 的 SM 级任务图、跨算子流水、去中心化运行时与自动 mega-kernel 化",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10",
+                "U23"
+              ],
+              "notes": "报告严格停留在摘要支持的机制与最多 1.7× 端到端延迟主张，并明确公开材料不足以证明 AMD 产品路径直接复用 MPK。"
+            },
+            {
+              "id": "MK-R2-10",
+              "title": "AITER、ATOM、Fleet 与 FlyDSL 的仓库形态、复现入口、版本锁定和许可边界",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S01",
+                "S04",
+                "S05",
+                "S06",
+                "S07"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02",
+                "U22",
+                "U25",
+                "U28",
+                "U30"
+              ],
+              "notes": "临时仓库、分支、容器、基准客户端和迁移风险覆盖充分；但 §6 将 Flash-Next 的 ATOM 脚本误写到 `aitermk/engine_adapters/`，实际路径是 `scripts/qwen38_flash_mono/build_and_repro.sh`。该笔误不影响性能结论。"
+            },
+            {
+              "id": "MK-R2-11",
+              "title": "TensorRT-LLM 的官方产品定位与 NVIDIA/CUDA 平台边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S08"
+              ],
+              "matched_coverage_unit_ids": [
+                "U23"
+              ],
+              "notes": "报告新增官方 README，只陈述专用 kernels、推理 runtime、Python 框架、并行与生态入口，不引用异构性能数字。"
+            },
+            {
+              "id": "MK-R2-12",
+              "title": "生产部署需要精度、prefill、并发、版本和真实 prompt 分布的最小验证",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S04",
+                "S05",
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "U25",
+                "U26",
+                "U30"
+              ],
+              "notes": "六步验证方案直接对应公开缺口，并用明确的分析者推断标签呈现，能够形成可执行的 go/no-go 证据。"
+            },
+            {
+              "id": "MK-R2-13",
+              "title": "研究限制、Agent harness 启示与后续问题保持证据边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04",
+                "S05",
+                "S06",
+                "S07",
+                "S08"
+              ],
+              "matched_coverage_unit_ids": [
+                "U28",
+                "U29",
+                "U30"
+              ],
+              "notes": "未复现、未读源码、论文摘要级、无跨框架同条件实测及资料时点均披露；decode 与完整 Agent 回合的区别被持续保留。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06",
+            "S07",
+            "S08"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04",
+            "R05",
+            "R06"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "独立来源优先复核。开始前核对 report SHA-256=c083dfcae56796c8fe89934be9f015fab3bddbc5c69d68188f59d03623c18a3d、evidence SHA-256=36bc57f4403b6cebed4293c64b5813684e8b4eea53dd2a2b9cc84bdc4e649b12，与调度值完全一致。先执行 eacli tokenplan catalog 与 web.read/repo.public.* select，再实际读取 S01 AMD 全文、S02/S03 arXiv 摘要、S04-S07 关键 GitHub README/分支材料及 S08 TensorRT-LLM 官方 README，最后才打开报告、evidence 与历史 review。repo.public.search 对三个临时个人仓库返回 repo not found，改用同一 Token Plan 的 web.read 读取 GitHub/raw 页面；S01 的 web.read 不保留链接目标，故仅用流式 curl+rg 提取原文中的 GitHub href 后继续交给 eacli web.read，未绕过 eacli读取正文。上一轮五项问题均已解决：P01 质量差距归因改为分段量化并拒绝单因归因；P02 并发结论改为待测曲线；P03 同精度只限定 Qwen；P04 Flash-Next MI355X 与 MI350 分列；P05 新增 S08 官方来源且不做性能排名。剩余两处轻微问题：§6 的 Flash-Next 复现脚本路径应为 ATOM 的 `scripts/qwen38_flash_mono/build_and_repro.sh`；开头写“§6.4”应为“§5.4”。无 unsupported claim、missing requirement 或 hard failure。完成 review 后运行 `python3 scripts/report_quality.py check ai-learning/reports/knowledge_reports/AMD_ROCm_MegaKernel_MI355X交互式单请求推理_深度解析_20261025.md`（未使用 `--finalize`），输出：tier=important｜decision=pass｜score=95.65｜ERROR 0｜WARN 0。该结果仅为 deterministic check，`decision` 保持空对象，未写入最终判定。"
+        }
+      ],
+      "decision": {}
+    }
+  ]
 }

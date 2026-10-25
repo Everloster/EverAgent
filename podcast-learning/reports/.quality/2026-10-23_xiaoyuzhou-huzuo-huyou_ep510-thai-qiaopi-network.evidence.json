@@ -1,0 +1,383 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-23_xiaoyuzhou-huzuo-huyou_ep510-thai-qiaopi-network.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-25",
+  "generator": {
+    "model": "minimax-m3.1-flash",
+    "harness": "eacli",
+    "run_id": "generator-2026-10-23_xiaoyuzhou-huzuo-huyou_ep510-thai-qiaopi-network-m31-20261025",
+    "explicit_model_override": true,
+    "override_reason": "用户明确指定：Razer 优先使用 MiniMax M3.1 Flash，额度耗尽后才切 GLM-5.3。"
+  },
+  "task": {
+    "summary": "完整转写并深度解析忽左忽右510，以泰国侨批为入口研究跨国汇兑、邮政、贸易、熟人信用、国家治理、战争和移民家庭。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "确认未重复，使用eacli podcast远端静默worker完整转写并按SHA-256拉回。"
+      },
+      {
+        "id": "R02",
+        "text": "运行transcript审计并保存无设备/任务/远端路径的公开artifact。"
+      },
+      {
+        "id": "R03",
+        "text": "依据完整转写和14章shownotes忠实精编，保留机制、争议、人物、数字与时间锚点。"
+      },
+      {
+        "id": "R04",
+        "text": "形成important/deep/standalone报告，覆盖侨批机制、去中心化、国家冲突、战争、家庭与退出。"
+      },
+      {
+        "id": "R05",
+        "text": "区分嘉宾档案研究、节目转述、UNESCO外部核验与报告推断；遇刺归因和专名不确定不得补写。"
+      },
+      {
+        "id": "R06",
+        "text": "同时写金融创新与未兑付、挪用、投机、监管及家庭照护成本。"
+      },
+      {
+        "id": "R07",
+        "text": "完成来源优先独立review、质量门、节目索引、MAP与open-questions更新。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "primary",
+      "title": "忽左忽右510官方节目页与shownotes",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/6adb27a497726cd4675696ad",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S02",
+      "kind": "primary",
+      "title": "忽左忽右510完整原始转写（2783段/5157秒）",
+      "locator": "podcast-learning/reports/transcripts/2026-10-23_xiaoyuzhou-huzuo-huyou_ep510-thai-qiaopi-network.transcript.txt",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S03",
+      "kind": "local",
+      "title": "忽左忽右510结构化精编稿（汉字保留率58.8%）",
+      "locator": "podcast-learning/reports/transcripts/2026-10-23_xiaoyuzhou-huzuo-huyou_ep510-thai-qiaopi-network.polished.txt",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S04",
+      "kind": "local",
+      "title": "忽左忽右510官方shownotes存档",
+      "locator": "podcast-learning/reports/transcripts/2026-10-23_xiaoyuzhou-huzuo-huyou_ep510-thai-qiaopi-network.shownotes.md",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S05",
+      "kind": "execution",
+      "title": "静默转写、传输与审计公开回执",
+      "locator": "podcast-learning/reports/transcripts/2026-10-23_xiaoyuzhou-huzuo-huyou_ep510-thai-qiaopi-network.artifact.json",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S06",
+      "kind": "official",
+      "title": "UNESCO Memory of the World — Qiaopi and Yinxin Correspondence and Remittance Documents",
+      "locator": "https://www.unesco.org/en/memory-world/qiaopi-and-yinxin-correspondence-and-remittance-documents-overseas-chinese",
+      "accessed_on": "2026-10-25"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "侨批早期首先是银信合一的收据与家庭责任契约，浪漫家书只是其后来的部分形态。",
+      "report_anchor": "主线一：侨批先是收据和责任契约",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "evidence": "【00:02:24】【00:03:23】【00:03:44】。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "批局同时整合银行、邮政、物流、航运和贸易，通过银信分流、换汇、贸易对冲与连号节点完成跨国服务。",
+      "report_anchor": "主线二：批局是银行＋邮政＋物流＋航运＋贸易",
+      "support": "derived",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "【00:18:03—00:24:32】。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "方言帮群、熟人信用、曼谷—香港—汕头—侨乡节点和批脚构成无标准地址时代的最后一公里。",
+      "report_anchor": "主线五：熟人社会、方言帮群与最后一公里",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "【00:32:25—00:35:03】。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "现代国家把侨批视为走私信件和外汇流出，并通过邮政、银行、教育和身份制度收编跨国网络；节目把泰国路径概括为限制并吸纳。",
+      "report_anchor": "主线六：跨国网络为何必然与现代主权国家冲突",
+      "support": "derived",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "【00:24:47—00:42:10】。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "泰日同盟下的银行控制、东兴汇路和替代节点显示国家网络与民间网络并行竞争；蚁光炎、陈守明遇刺归因在节目中没有定论。",
+      "report_anchor": "主线八：泰日同盟下的金融控制与“东兴汇路”",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "【00:43:34—00:53:43】。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "汇差、贸易和客户资金创造利润与套利空间，也带来破产、挪用、未兑付与道德风险，不能只写成金融创新。",
+      "report_anchor": "主线九：暗杀悬案、汇差与客户资金的真实代价",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "【00:53:43—01:05:52】。",
+      "critical": true
+    },
+    {
+      "id": "C07",
+      "claim": "两头家、母系语言环境、学校教育与代际泰化重组了侨批需求；银行、邮政、航空和本地经济机会最终使批局功能迁移。",
+      "report_anchor": "主线十：两头家不是离散生活的缩影，而是家庭经济的基础设施",
+      "support": "derived",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "【01:00:51—01:12:35】。",
+      "critical": true
+    },
+    {
+      "id": "C08",
+      "claim": "[推测] 多语言档案对同一侨批网络给出家国、走私、战时控制和外部比较等不同视角，档案语言本身应进入证据分析。",
+      "report_anchor": "主线十三：多语言档案如何改变侨批史",
+      "support": "inference",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S06"
+      ],
+      "evidence": "【01:19:20—01:23:02】与UNESCO对档案类型的说明。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "SC01",
+      "title": "电影浪漫化之外，侨批更像收据",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线一：侨批先是收据和责任契约"
+    },
+    {
+      "id": "SC02",
+      "title": "福建商人与暹罗王室的贸易联姻",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "资料与证据口径"
+    },
+    {
+      "id": "SC03",
+      "title": "中国以大、日本以强、泰国以巧",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线六：跨国网络为何必然与现代主权国家冲突"
+    },
+    {
+      "id": "SC04",
+      "title": "外籍身份规避暹罗邮政监管",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线六：跨国网络为何必然与现代主权国家冲突"
+    },
+    {
+      "id": "SC05",
+      "title": "走私信件与外汇流出",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线六：跨国网络为何必然与现代主权国家冲突"
+    },
+    {
+      "id": "SC06",
+      "title": "无详细地址的信件投递",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线五：熟人社会、方言帮群与最后一公里"
+    },
+    {
+      "id": "SC07",
+      "title": "1930年代排华与同化",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线七：同化不是简单驱逐，而是把华人变成泰国人"
+    },
+    {
+      "id": "SC08",
+      "title": "泰日同盟时期日本控制汇兑",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线八：泰日同盟下的金融控制与“东兴汇路”"
+    },
+    {
+      "id": "SC09",
+      "title": "东兴汇路绕开战时封锁",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线八：泰日同盟下的金融控制与“东兴汇路”"
+    },
+    {
+      "id": "SC10",
+      "title": "蚁光炎、陈守明遇刺悬案",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线九：暗杀悬案、汇差与客户资金的真实代价"
+    },
+    {
+      "id": "SC11",
+      "title": "两头家与代际泰化",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线十：两头家不是离散生活的缩影，而是家庭经济的基础设施"
+    },
+    {
+      "id": "SC12",
+      "title": "汇差、贸易与战争财",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线九：暗杀悬案、汇差与客户资金的真实代价"
+    },
+    {
+      "id": "SC13",
+      "title": "批局转旅行社与行业退出",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线十一：银行、邮政、航空与批局的缓慢退场"
+    },
+    {
+      "id": "SC14",
+      "title": "新老番客的差异与误解",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线十二：旧番客与新出海者：不是同一种迁移"
+    }
+  ],
+  "limitations": [
+    "原始转写由whisper.cpp large-v3生成；审计2783段、5157秒、最大连续重复1、无warning/error，但泰语、局号、地名和人名仍可能误识。",
+    "报告未完整阅读汪玉姣原书和博士论文，泰国具体史主要依据她在节目中对档案和田野材料的陈述。",
+    "UNESCO只确认侨批档案类型、国际迁移价值和2013年登记，不能替节目证明泰国具体政策、汇路和人物事件。",
+    "潮汕人口比例、银行税负20至30倍、100万兑付60万、首相访华年份等数字均保留节目口径。",
+    "蚁光炎与陈守明遇刺归因、部分批局和钱庄名称、东兴汇路具体路线尚未取得原始档案核验。",
+    "“东盟十国除不丹”存在明显口误或ASR冲突，报告已明确纠正，不据此作事实推断。"
+  ]
+}

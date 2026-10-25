@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AMD_分布式3D_Gaussian_Splatting_Gaussian分片与RCCL_深度解析_20261025.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-6",
+        "harness": "codex",
+        "run_id": "review-adeeb9351534",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 97,
+        "request_coverage": 98,
+        "reasoning_quality": 97,
+        "readability": 95,
+        "limitations": 98
+      },
+      "score_reasons": {
+        "evidence_fidelity": "已核对AMD官方博客、ROCm/gsplat README、distributed.py原始代码和Grendel摘要。708字节、271M/2.17B排除项、五次collective、17.70ms预算、12.5→4.2GB、20→16分钟的固定step口径及40.4M/27.28对11.2M/26.28均准确；厂商自测与论文结果未拼接。",
+        "request_coverage": "完整覆盖内存墙、DDP失效、混合并行一次迭代、RCCL trace、扩展数字、超参缩放、Grendel差异、限制、反方、EverAgent迁移和追问。",
+        "reasoning_quality": "能够区分容量、吞吐、同样本量墙钟和质量收益；指出17.70ms中SSIM与idle比通信更大，并解释同步如何隐藏rank负载不均。对Grendel的1dB增益保留模型规模变化这一替代解释。",
+        "readability": "结构紧凑，通信表、iteration budget和扩展公式降低理解成本；个别后文会再次引用9%/29%以支撑评测建议，但重复有限且有用途。",
+        "limitations": "理论容量排除项、厂商自测、四卡小场景、功能缺口、Grendel摘要级阅读、无同口径对照与未本地复现均明确披露。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07"
+      ],
+      "coverage_unit_ids_checked": [],
+      "source_content_map": [
+        {
+          "id": "SCM01",
+          "title": "3DGS参数、Adam与临时buffer形成的内存墙",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "SH degree 2/3字节数、271M和2.17B理论线及排除项均进入正文。"
+        },
+        {
+          "id": "SCM02",
+          "title": "普通DDP复制场景而gsplat在优化器前分片",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "参数所有权、局部Adam/densification和可选辅助DDP被准确区分。"
+        },
+        {
+          "id": "SCM03",
+          "title": "Gaussian-parallel、all-to-all与camera-parallel的混合并行",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "前向投影、SH求值、方向路由、rasterization和反向梯度交换形成完整闭环。"
+        },
+        {
+          "id": "SCM04",
+          "title": "四卡trace中的五次collective和训练期零all-reduce",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "表格逐项覆盖，并正确限定唯一all-reduce发生在训练后。"
+        },
+        {
+          "id": "SCM05",
+          "title": "17.70ms稳态预算、冷启动与隐藏负载不均",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "SSIM、RCCL、idle、226 images/s、首十步和rank skew都得到机制解释。"
+        },
+        {
+          "id": "SCM06",
+          "title": "1到8卡的容量、吞吐和steps_scaler口径",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "固定step处理更多图像与同样本量缩短墙钟被分开，sqrt(BS)和Adam参数缩放也覆盖。"
+        },
+        {
+          "id": "SCM07",
+          "title": "分布式功能限制与适用场景",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "AbsGrad、颜色、batch_dims、无重平衡、camera粒度、通信暴露和viewer限制全部列出。"
+        },
+        {
+          "id": "SCM08",
+          "title": "Grendel稀疏通信、动态均衡和论文质量结果",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "报告明确不是AMD四卡复现，并保留模型规模与PSNR同时变化的解释边界。"
+        },
+        {
+          "id": "SCM09",
+          "title": "ROCm/gsplat README的安装与最高4×/15%自述",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "报告只引用4×/15%并正确标为厂商自测；系统安装细节与基础单卡benchmark不是本题核心，未展开。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "来源优先复核完成。额外读取distributed.py验证可微all_to_all与metadata helper；未发现关键数字失真或跨实现拼接。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 97.0,
+    "evaluated_on": "2026-10-25",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "11836a27a08138db56f4932cfa6729a25f3891fde91909a9749f8d1806e456b1",
+    "evidence_sha256": "d4364413c1a7fa9fd2ec183c2bdb444165350649a1b7549bb5b4610fa41f7a1d"
+  }
+}

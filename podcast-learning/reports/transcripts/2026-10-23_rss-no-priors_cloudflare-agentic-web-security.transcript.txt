@@ -1,0 +1,983 @@
+[00:00:00 -> 00:00:02] AI has become the tool that's causing this kind of security
+[00:00:02 -> 00:00:03] apocalypse.
+[00:00:03 -> 00:00:05] It is also the tool that can help us solve it faster as
+[00:00:05 -> 00:00:05] well.
+[00:00:05 -> 00:00:07] It went from how to get everyone just using AI.
+[00:00:08 -> 00:00:10] Now, all of a sudden, everyone's racing to figure out what
+[00:00:10 -> 00:00:11] AI security means.
+[00:00:11 -> 00:00:15] I've heard serious technical people say things like air gap
+[00:00:15 -> 00:00:16] , everything important.
+[00:00:16 -> 00:00:18] And we're like not going to be able to trust the Internet
+[00:00:18 -> 00:00:19] for a while.
+[00:00:19 -> 00:00:21] And we just assume all the critical infrastructure and
+[00:00:21 -> 00:00:23] government services fall down at some point.
+[00:00:23 -> 00:00:25] Is that your expectation for what happens?
+[00:00:34 -> 00:00:36] Dane, I'm so excited to do this with you.
+[00:00:36 -> 00:00:38] Yeah, thank you. Thanks for coming here, too.
+[00:00:38 -> 00:00:42] I'm sure I'm not the first person to make this joke, but
+[00:00:42 -> 00:00:45] your last name, Connect, that's pretty good for the Cloudfl
+[00:00:45 -> 00:00:46] are value prop.
+[00:00:47 -> 00:00:49] Yeah, yeah. There's been some jokes about renaming the show
+[00:00:49 -> 00:00:50] next year.
+[00:00:51 -> 00:00:54] So with everything that Cloudflare is doing, what are your
+[00:00:54 -> 00:00:57] top few priorities as CTR right now?
+[00:00:58 -> 00:01:01] Well, I mean, this past year, it feels like 10 years
+[00:01:01 -> 00:01:02] compacted into one.
+[00:01:02 -> 00:01:05] So those priorities are constantly shifting.
+[00:01:05 -> 00:01:07] But, you know, it all goes back to our mission of helping
+[00:01:07 -> 00:01:08] build a better internet.
+[00:01:08 -> 00:01:11] and that really hasn't changed over the last 15 years
+[00:01:11 -> 00:01:14] where we want to make sure that the internet's secure,
+[00:01:15 -> 00:01:18] that everyone has access to be able to get their content
+[00:01:18 -> 00:01:19] online easily
+[00:01:19 -> 00:01:21] and scale it up.
+[00:01:22 -> 00:01:27] And just over the arc of the AI changes in the past year,
+[00:01:27 -> 00:01:30] it went from how do you get everyone just using AI,
+[00:01:30 -> 00:01:33] how do you make it easy for them to deploy and their agents
+[00:01:33 -> 00:01:33] deploy,
+[00:01:34 -> 00:01:37] to like most technical transitions, security is kind of an
+[00:01:37 -> 00:01:38] afterthought.
+[00:01:38 -> 00:01:41] And now all of a sudden, everyone's racing to figure out
+[00:01:41 -> 00:01:43] what AI security means.
+[00:01:43 -> 00:01:47] And it means things are different sides of you kind of
+[00:01:47 -> 00:01:48] differently.
+[00:01:48 -> 00:01:51] You know, one side is, you know, as a company is how do you
+[00:01:51 -> 00:01:55] keep your data safe from AI leaking the data out?
+[00:01:56 -> 00:01:58] But it's also how do you keep people from getting in as
+[00:01:58 -> 00:01:59] well, too?
+[00:01:59 -> 00:02:03] And over the last, I would say, three to six months,
+[00:02:04 -> 00:02:05] just the number of vulnerabilities
+[00:02:05 -> 00:02:08] that are getting reported in CVEs
+[00:02:09 -> 00:02:11] has just gone up exponentially.
+[00:02:13 -> 00:02:14] Previously on the internet,
+[00:02:14 -> 00:02:16] we would see these log4j moments
+[00:02:16 -> 00:02:20] or these shell shock or type of incidents
+[00:02:20 -> 00:02:21] maybe once a year.
+[00:02:22 -> 00:02:24] And it would be all hands on deck internally at Cloudflare
+[00:02:24 -> 00:02:28] to make sure how we protect not just our enterprise
+[00:02:28 -> 00:02:29] customers,
+[00:02:29 -> 00:02:30] but also all of our free customers.
+[00:02:30 -> 00:02:33] because we view it as kind of a public good
+[00:02:33 -> 00:02:34] and making sure that the internet stays safe.
+[00:02:35 -> 00:02:36] These things are now happening weekly.
+[00:02:37 -> 00:02:39] Not all of them are publicly reported on,
+[00:02:39 -> 00:02:43] but there are things that are as serious
+[00:02:43 -> 00:02:45] as the log4j type things,
+[00:02:45 -> 00:02:48] but just happening at a greater frequency.
+[00:02:49 -> 00:02:51] I expect that the rest of this year
+[00:02:51 -> 00:02:53] and in the next year, by the next 18 months,
+[00:02:54 -> 00:02:57] the majority of Teams' time is going to be spent on
+[00:02:57 -> 00:02:57] security.
+[00:02:59 -> 00:03:01] I think there's a stat that was put up earlier today
+[00:03:01 -> 00:03:03] during one of our keynotes
+[00:03:03 -> 00:03:07] where it was showing that I think over 50%
+[00:03:07 -> 00:03:10] of engineering time is going to start to be spent
+[00:03:10 -> 00:03:12] on security.
+[00:03:12 -> 00:03:13] And I don't think that will last forever.
+[00:03:13 -> 00:03:15] I think that will be a short transition.
+[00:03:15 -> 00:03:17] You know, at some point,
+[00:03:17 -> 00:03:20] the AI will have surveyed majority of the code
+[00:03:20 -> 00:03:21] and found most of the bugs
+[00:03:21 -> 00:03:22] or found most of the shortcuts.
+[00:03:24 -> 00:03:27] You know, there's one that's kind of coming out today
+[00:03:27 -> 00:03:31] and has been started to be blogged about and tweeted about,
+[00:03:31 -> 00:03:33] where one of the keys on the internet
+[00:03:33 -> 00:03:38] that protects all TLS and WebPKI,
+[00:03:39 -> 00:03:40] which just secures all your connections,
+[00:03:41 -> 00:03:45] was secured by the number four.
+[00:03:45 -> 00:03:48] Literally, they basically used...
+[00:03:49 -> 00:03:50] You know about cryptography.
+[00:03:52 -> 00:03:54] It's all about randomness, right?
+[00:03:55 -> 00:03:56] That's why Cloudflare has our lava lamps
+[00:03:56 -> 00:03:59] so that you can get good randomness.
+[00:04:00 -> 00:04:04] And when a key out there is they use the seed,
+[00:04:04 -> 00:04:08] they use the initial thing to kind of create it
+[00:04:08 -> 00:04:10] with a single number four,
+[00:04:10 -> 00:04:13] it's going to be reverse engineered.
+[00:04:14 -> 00:04:16] You know, and AI can just do all these things,
+[00:04:16 -> 00:04:17] you know, it doesn't sleep.
+[00:04:17 -> 00:04:19] It's not like the one engineer you had
+[00:04:19 -> 00:04:21] that was red teaming things.
+[00:04:22 -> 00:04:24] You know, last week, I think OpenAI
+[00:04:24 -> 00:04:28] I found the seeds for the NIST curves
+[00:04:28 -> 00:04:32] that were back in 2000 that were released.
+[00:04:32 -> 00:04:35] So just, you know, these things are just moving so fast
+[00:04:35 -> 00:04:38] and the bar is going up
+[00:04:38 -> 00:04:40] and the models are just getting so good at, you know,
+[00:04:41 -> 00:04:42] cybersecurity.
+[00:04:43 -> 00:04:45] Mid-South was just kind of the tip of the iceberg there
+[00:04:45 -> 00:04:48] where, you know, and since then,
+[00:04:48 -> 00:04:50] it's not just been the models getting better,
+[00:04:51 -> 00:04:51] it's the harnesses.
+[00:04:51 -> 00:04:53] It's how people know how to,
+[00:04:53 -> 00:04:55] how humans know how to use them
+[00:04:55 -> 00:04:58] and use those frontier models in order to find those explo
+[00:04:58 -> 00:04:59] its.
+[00:04:59 -> 00:05:01] Given your, you know, visibility,
+[00:05:02 -> 00:05:06] what do you know about the humans behind, you know,
+[00:05:06 -> 00:05:09] these attacks and harnessing these models
+[00:05:09 -> 00:05:12] and taking the volume of vulnerability discovery up so
+[00:05:12 -> 00:05:13] quickly?
+[00:05:13 -> 00:05:16] Like, are they, you know, nation state actors?
+[00:05:17 -> 00:05:18] Are they script kiddies?
+[00:05:18 -> 00:05:24] Like, what can you say about how the attacker landscape has
+[00:05:24 -> 00:05:24] changed?
+[00:05:25 -> 00:05:28] Well, I actually think that some of these larger
+[00:05:28 -> 00:05:31] vulnerabilities that have come out more recently, actually,
+[00:05:31 -> 00:05:33] haven't been nation states.
+[00:05:33 -> 00:05:38] They've been, you know, high school kids even that are...
+[00:05:38 -> 00:05:39] We're going to call them agent kitties now.
+[00:05:39 -> 00:05:42] Yeah, that are just spending their time, you know, like
+[00:05:42 -> 00:05:45] they used to do, kind of capture the flag security contest.
+[00:05:46 -> 00:05:50] They're appointing their agents at an area and doing that.
+[00:05:50 -> 00:05:52] You know, there's also, you know, and there's just
+[00:05:52 -> 00:05:53] financial reward for them.
+[00:05:53 -> 00:05:57] There's bug bounties that they get paid out sizable amounts
+[00:05:57 -> 00:05:57] .
+[00:05:58 -> 00:06:01] But it's given the tools that, honestly, the nation states
+[00:06:01 -> 00:06:04] have had in some forms for much longer,
+[00:06:05 -> 00:06:08] either through agents or just through a sure number of
+[00:06:08 -> 00:06:09] people that were working on the problems,
+[00:06:10 -> 00:06:11] given it to the masses.
+[00:06:11 -> 00:06:16] This is the first time in 15 years I've heard serious
+[00:06:16 -> 00:06:19] technical people say things like,
+[00:06:20 -> 00:06:22] well, we should just air gap everything important.
+[00:06:23 -> 00:06:26] we're not going to be able to trust the internet for a
+[00:06:26 -> 00:06:26] while.
+[00:06:26 -> 00:06:28] And we just assume all the critical infrastructure
+[00:06:28 -> 00:06:31] and government services fall down at some point.
+[00:06:32 -> 00:06:34] Is that your expectation for what happens?
+[00:06:35 -> 00:06:36] Humans, we are pretty adaptable
+[00:06:36 -> 00:06:38] and we can move fast when we need to.
+[00:06:40 -> 00:06:44] And I've seen the industry kind of partner together.
+[00:06:45 -> 00:06:46] And when things like this happen,
+[00:06:46 -> 00:06:48] people that you usually think of competitors
+[00:06:48 -> 00:06:49] are no longer competitors.
+[00:06:49 -> 00:06:51] We're just literally protecting critical infrastructure,
+[00:06:51 -> 00:06:52] as you said.
+[00:06:53 -> 00:06:55] And I think when those kind of critical moments happen,
+[00:06:56 -> 00:07:00] people will rise to that challenge.
+[00:07:01 -> 00:07:02] So I'm a little less doomsday.
+[00:07:02 -> 00:07:04] I do think that a lot of the things
+[00:07:04 -> 00:07:06] that we've done over the past five to 10 years,
+[00:07:07 -> 00:07:09] moving away from a kind of a castle moat infrastructure
+[00:07:09 -> 00:07:12] for security to moving to more of a zero trust
+[00:07:12 -> 00:07:13] does put a lot of companies in a better position
+[00:07:13 -> 00:07:18] where you're not saying this office is completely air-g
+[00:07:18 -> 00:07:18] apped.
+[00:07:18 -> 00:07:20] You're saying these devices,
+[00:07:21 -> 00:07:24] these flows are secured in a different way.
+[00:07:26 -> 00:07:27] And everything's going to be tightened.
+[00:07:28 -> 00:07:31] What is it going to take for organizations
+[00:07:31 -> 00:07:33] to do what you're describing?
+[00:07:33 -> 00:07:37] Like 50% of engineers do not work on security right now.
+[00:07:37 -> 00:07:40] I had Greg Brockman from OpenAI
+[00:07:40 -> 00:07:44] on the No Priors podcast last week.
+[00:07:44 -> 00:07:47] And he said that he thought in 2027,
+[00:07:48 -> 00:07:49] people are going to spend as much money
+[00:07:49 -> 00:07:51] on tokens for security.
+[00:07:51 -> 00:07:55] as engineering, like you're saying, very related idea,
+[00:07:56 -> 00:07:58] what is going to drive that shift?
+[00:07:58 -> 00:07:59] Just emergency, right?
+[00:07:59 -> 00:08:01] So you're going to move forward all your security spend
+[00:08:01 -> 00:08:05] over the next 18 months, both from the red team side,
+[00:08:05 -> 00:08:07] which is more the offensive,
+[00:08:07 -> 00:08:09] trying to actively try to exploit things,
+[00:08:10 -> 00:08:14] as well as the defensive side, how you prepare things.
+[00:08:15 -> 00:08:18] But I don't think that's going to last forever.
+[00:08:18 -> 00:08:20] You know, I see a world in like 18 months
+[00:08:20 -> 00:08:25] where new software productivity goes way up
+[00:08:25 -> 00:08:27] because all those resources are back focused on that.
+[00:08:28 -> 00:08:30] But there's definitely this period
+[00:08:30 -> 00:08:34] where security needs to be on everybody's mind.
+[00:08:34 -> 00:08:39] What are some of the key elements of getting to a better
+[00:08:39 -> 00:08:39] place
+[00:08:39 -> 00:08:42] in terms of overall software and internet security?
+[00:08:43 -> 00:08:45] I think people discover, of course,
+[00:08:45 -> 00:08:49] that there are libraries and services everyone uses
+[00:08:49 -> 00:08:53] use that had vulnerabilities that took effort to discover
+[00:08:53 -> 00:08:54] and now do not.
+[00:08:55 -> 00:08:56] And I think we'll hit some of those.
+[00:08:56 -> 00:08:58] What else is important there?
+[00:08:58 -> 00:09:03] Because part of the concern that I have is the rate of
+[00:09:03 -> 00:09:04] software production is also going
+[00:09:04 -> 00:09:05] up a great deal, right?
+[00:09:05 -> 00:09:09] So to some degree, we got to go like patch everything that
+[00:09:09 -> 00:09:11] we have already made and then
+[00:09:11 -> 00:09:13] keep up and get ahead of the pace of delivery.
+[00:09:13 -> 00:09:14] Yeah.
+[00:09:14 -> 00:09:19] Also, I mean, for one, right now we're patching 70 years of
+[00:09:19 -> 00:09:22] software out there.
+[00:09:22 -> 00:09:24] So it is just catch up.
+[00:09:25 -> 00:09:28] And then on a go forward basis, you know, I think this, you
+[00:09:28 -> 00:09:29] know, the software development
+[00:09:29 -> 00:09:31] lifecycle, the agent development lifecycle is going to need
+[00:09:31 -> 00:09:32] to change.
+[00:09:33 -> 00:09:36] And, you know, luckily, the same way that we can use
+[00:09:36 -> 00:09:38] security right now for Red King
+[00:09:38 -> 00:09:40] and things like that, it'll just be built into the process
+[00:09:40 -> 00:09:40] every step of the way.
+[00:09:42 -> 00:09:45] And I think software will just get more secure over time.
+[00:09:46 -> 00:09:50] What have you learned about building secure production
+[00:09:50 -> 00:09:53] software internally already that you think people can learn
+[00:09:53 -> 00:09:54] from?
+[00:09:54 -> 00:09:55] Like, what does that mean?
+[00:09:55 -> 00:09:58] Shift left and like, can we...
+[00:09:58 -> 00:10:02] There are many theories of how to do this, including, you
+[00:10:02 -> 00:10:06] know, broader use of formal verification, using agents for
+[00:10:06 -> 00:10:09] security in the development process.
+[00:10:09 -> 00:10:12] What do you think is going to create better software from
+[00:10:12 -> 00:10:14] first delivery?
+[00:10:15 -> 00:10:17] I'm going to go back to first principles of there is you
+[00:10:17 -> 00:10:19] want to reduce your attack surface area.
+[00:10:20 -> 00:10:23] The easiest thing you can do is to give less places for
+[00:10:23 -> 00:10:25] there to be vulnerabilities.
+[00:10:26 -> 00:10:27] So looking at all your software and saying, how can I
+[00:10:27 -> 00:10:28] simplify this?
+[00:10:29 -> 00:10:33] How can I reduce the footprint, the code?
+[00:10:35 -> 00:10:38] And then beyond that, things like formal verification,
+[00:10:38 -> 00:10:42] and I think things that are safer programming languages
+[00:10:42 -> 00:10:44] and things that are kind of built into the runtimes
+[00:10:44 -> 00:10:46] that make everything safer will come.
+[00:10:46 -> 00:10:49] But I think it just starts with AI,
+[00:10:49 -> 00:10:53] at least the early AI is very verbose.
+[00:10:53 -> 00:10:55] It likes to create complexity.
+[00:10:55 -> 00:10:58] So AI, in a sense of what we've been dealing with,
+[00:10:58 -> 00:11:02] has actually not been kind of helping build
+[00:11:02 -> 00:11:04] a more secure stuff right now.
+[00:11:04 -> 00:11:05] but I think we'll get there.
+[00:11:05 -> 00:11:08] And I think that's where humans still come in
+[00:11:08 -> 00:11:10] and human judgment comes in
+[00:11:10 -> 00:11:12] and making sure that we design the software
+[00:11:12 -> 00:11:15] in a way that it can stand on its own securely.
+[00:11:16 -> 00:11:18] That was actually going to be my reaction
+[00:11:18 -> 00:11:22] when you say we want to reduce the surface area.
+[00:11:22 -> 00:11:24] I'm like, oh yes, of course, in principle.
+[00:11:24 -> 00:11:26] And that's not the natural inclination
+[00:11:26 -> 00:11:29] of today's models, right?
+[00:11:29 -> 00:11:31] And I asked you to do something
+[00:11:31 -> 00:11:31] and I'm like, well,
+[00:11:32 -> 00:11:36] like with one-tenth the complexity, please try again.
+[00:11:37 -> 00:11:40] Is that the role of engineering and security engineering
+[00:11:40 -> 00:11:40] today?
+[00:11:40 -> 00:11:42] Is that something that's going to be solved at the model
+[00:11:42 -> 00:11:42] level?
+[00:11:43 -> 00:11:44] The way that humans did before agents,
+[00:11:44 -> 00:11:46] it needs to be solved kind of at all levels.
+[00:11:46 -> 00:11:50] You need to train the engineers that are writing the code,
+[00:11:50 -> 00:11:51] the product engineers.
+[00:11:51 -> 00:11:53] The security teams still need to be involved
+[00:11:53 -> 00:11:56] in making sure that they're getting checked and balanced,
+[00:11:56 -> 00:11:57] a second set of eyes on things.
+[00:11:58 -> 00:11:59] You need to build in processes.
+[00:12:00 -> 00:12:05] We've gone to defining things a lot more internally
+[00:12:05 -> 00:12:07] on how we build at Cloudflare,
+[00:12:07 -> 00:12:09] writing down our principles.
+[00:12:09 -> 00:12:11] We have a document called the Codex,
+[00:12:11 -> 00:12:16] which is kind of like a buildup of a lot of RFCs
+[00:12:16 -> 00:12:17] that the teams have built for it.
+[00:12:17 -> 00:12:18] Here's how you build secure software at Cloudflare.
+[00:12:19 -> 00:12:20] Here's how you build available software at Cloudflare.
+[00:12:21 -> 00:12:22] Here's our best practices.
+[00:12:22 -> 00:12:23] And then it kind of gets boiled up
+[00:12:23 -> 00:12:26] into some 10 commandments that the agents know how to
+[00:12:26 -> 00:12:26] follow
+[00:12:26 -> 00:12:29] and use in every part of the review process
+[00:12:29 -> 00:12:32] that can help enforce those things.
+[00:12:32 -> 00:12:33] So you have agents out there
+[00:12:33 -> 00:12:35] that are just riding a lot of the slop
+[00:12:35 -> 00:12:37] and then you have deeper down the factory,
+[00:12:37 -> 00:12:41] you have people that are doing the performance runs
+[00:12:41 -> 00:12:42] and the security runs
+[00:12:42 -> 00:12:44] and just like how the company operated before,
+[00:12:44 -> 00:12:48] you need those adversarial reviews.
+[00:12:50 -> 00:12:52] When you zoom out a little bit
+[00:12:52 -> 00:12:55] and just look at overall traffic on the internet
+[00:12:55 -> 00:12:59] and how much of it has become agent-driven
+[00:12:59 -> 00:13:01] over the last year,
+[00:13:01 -> 00:13:03] I think it's outpaced
+[00:13:03 -> 00:13:04] most people's expectations.
+[00:13:05 -> 00:13:07] What has updated in your worldview
+[00:13:07 -> 00:13:10] of like what the web
+[00:13:10 -> 00:13:11] a year from now looks like,
+[00:13:11 -> 00:13:13] either from an economic model perspective
+[00:13:13 -> 00:13:16] or a security
+[00:13:16 -> 00:13:18] or requisite infrastructure perspective?
+[00:13:18 -> 00:13:19] Yeah, I mean,
+[00:13:19 -> 00:13:20] I kind of think of it as
+[00:13:20 -> 00:13:21] we're in the messy middle right now
+[00:13:21 -> 00:13:22] where humans and agents
+[00:13:22 -> 00:13:24] are riding the same rails
+[00:13:24 -> 00:13:26] on the internet,
+[00:13:26 -> 00:13:27] where, you know,
+[00:13:27 -> 00:13:28] agents are trying to
+[00:13:28 -> 00:13:30] parse a human web
+[00:13:30 -> 00:13:33] when it's just inefficient
+[00:13:33 -> 00:13:36] and was designed for humans
+[00:13:36 -> 00:13:36] that could do things
+[00:13:36 -> 00:13:38] at different speeds.
+[00:13:39 -> 00:13:40] Going to a website
+[00:13:40 -> 00:13:42] and being able to read
+[00:13:42 -> 00:13:45] and see the ads
+[00:13:45 -> 00:13:46] and participate in the
+[00:13:46 -> 00:13:47] more full economic model
+[00:13:47 -> 00:13:48] versus an agent
+[00:13:48 -> 00:13:49] that now can go to
+[00:13:49 -> 00:13:50] a thousand web pages
+[00:13:50 -> 00:13:52] in the same period of time,
+[00:13:52 -> 00:13:53] which is great.
+[00:13:54 -> 00:13:54] It's just you need to find
+[00:13:54 -> 00:13:55] a new economic model
+[00:13:55 -> 00:13:57] to support that.
+[00:13:57 -> 00:13:58] Do we get parallel webs?
+[00:13:58 -> 00:14:01] Is there like a human web and a machine web?
+[00:14:01 -> 00:14:03] Like everybody's trying to do, what's it called?
+[00:14:04 -> 00:14:05] AEO now?
+[00:14:06 -> 00:14:06] Yeah.
+[00:14:07 -> 00:14:09] I mean, yes, I think we do.
+[00:14:09 -> 00:14:13] I think we find ways to deliver the content
+[00:14:13 -> 00:14:16] and meet agents and humans where they are,
+[00:14:16 -> 00:14:18] as opposed to trying to meet them in the same place.
+[00:14:19 -> 00:14:23] And right now there's like translation layers.
+[00:14:23 -> 00:14:24] You know, there's a lot of companies that like,
+[00:14:24 -> 00:14:28] you know, help you, you know, an agent view a webpage.
+[00:14:29 -> 00:14:32] These are just all extra burning of tokens for things that
+[00:14:32 -> 00:14:34] probably don't need to happen.
+[00:14:34 -> 00:14:36] The website usually knows what data.
+[00:14:36 -> 00:14:37] And we've had things like this.
+[00:14:37 -> 00:14:41] We've had APIs, ways that computers talk to each other for
+[00:14:41 -> 00:14:41] years.
+[00:14:42 -> 00:14:44] APIs only covered a small fraction of the information on
+[00:14:44 -> 00:14:45] the Internet.
+[00:14:46 -> 00:14:50] And agents have a thirst to understand everything.
+[00:14:51 -> 00:14:53] And so they're going out and trying to explore the human
+[00:14:53 -> 00:14:54] Internet.
+[00:14:54 -> 00:14:57] And we need to make it easier for them.
+[00:14:57 -> 00:15:01] We need to make it less costly for the site owners.
+[00:15:01 -> 00:15:04] And we need to find a way for them to get compensated.
+[00:15:05 -> 00:15:09] I think in a world where you can get very simple,
+[00:15:10 -> 00:15:13] most like a content website, like a sub stack,
+[00:15:13 -> 00:15:16] they know what their CPM is for how much money they should
+[00:15:16 -> 00:15:20] be making on ads for that site.
+[00:15:20 -> 00:15:23] And so if an agent is reading that site,
+[00:15:23 -> 00:15:25] I think there is a world where you get to the point where
+[00:15:26 -> 00:15:29] an agent can decide whether or not they want to read the
+[00:15:29 -> 00:15:29] content,
+[00:15:30 -> 00:15:33] and then they can decide if they want to pay the CPM rate.
+[00:15:33 -> 00:15:36] And that's where you need to then get new payment rails for
+[00:15:36 -> 00:15:36] the internet
+[00:15:36 -> 00:15:40] that can millions of transactions a second
+[00:15:40 -> 00:15:43] for all these little micropayments.
+[00:15:44 -> 00:15:46] All these things that we've been talking about for years,
+[00:15:47 -> 00:15:50] micropayments, these are two years away.
+[00:15:50 -> 00:15:56] And I think agents will actually push that forward
+[00:15:56 -> 00:15:58] and actually I think we will see a world
+[00:15:58 -> 00:16:00] where actually there is a new economic model
+[00:16:00 -> 00:16:01] for content creators.
+[00:16:01 -> 00:16:03] Who do you think the players are?
+[00:16:03 -> 00:16:06] What are the variations of that infrastructure?
+[00:16:06 -> 00:16:09] I think obviously Cloudflare
+[00:16:09 -> 00:16:11] has an important role to play here,
+[00:16:11 -> 00:16:14] but the rise of personal agents
+[00:16:14 -> 00:16:16] like Instinct and Muse
+[00:16:16 -> 00:16:18] have also made this an immediate question
+[00:16:18 -> 00:16:19] from a transactional perspective.
+[00:16:20 -> 00:16:22] I don't think everyone knows
+[00:16:22 -> 00:16:23] on the other side
+[00:16:23 -> 00:16:25] what the business outcome is going to look like.
+[00:16:25 -> 00:16:27] Everyone's been through these transformations
+[00:16:27 -> 00:16:28] where the internet, you know,
+[00:16:28 -> 00:16:29] it thought it was going to kill Main Street.
+[00:16:29 -> 00:16:30] It didn't kill Main Street.
+[00:16:31 -> 00:16:34] There's small businesses that are still thriving.
+[00:16:35 -> 00:16:37] But, you know, there were people that were displaced.
+[00:16:37 -> 00:16:39] And so there's always kind of some skepticism there.
+[00:16:39 -> 00:16:41] And so, you know, there's some natural inclination
+[00:16:41 -> 00:16:43] to like just block them out, right?
+[00:16:44 -> 00:16:45] You know, you saw Amazon just say,
+[00:16:46 -> 00:16:49] no personal shopping there from an agent.
+[00:16:51 -> 00:16:52] I mean, I think these are all people
+[00:16:52 -> 00:16:56] that are, you know, that messy middle,
+[00:16:56 -> 00:16:59] where they're trying to figure out what that path forward
+[00:16:59 -> 00:17:00] is
+[00:17:00 -> 00:17:04] and trying to keep some of the negotiation leverage there.
+[00:17:05 -> 00:17:10] I think we will get to a place where Muse and Dots
+[00:17:10 -> 00:17:14] and all those personal agents will be able to accomplish
+[00:17:14 -> 00:17:15] tasks
+[00:17:15 -> 00:17:17] seamlessly as you as a human could do, even easier.
+[00:17:18 -> 00:17:21] But I don't know if the technology is quite caught up to
+[00:17:21 -> 00:17:21] that yet
+[00:17:21 -> 00:17:23] and the business models either.
+[00:17:23 -> 00:17:26] Is there anything you're personally excited about on the
+[00:17:26 -> 00:17:26] roadmap
+[00:17:26 -> 00:17:30] or just from a technical exploration perspective
+[00:17:30 -> 00:17:31] on the Cloudflare front
+[00:17:31 -> 00:17:35] that you feel like is going to enable this ecosystem
+[00:17:35 -> 00:17:36] in the future?
+[00:17:38 -> 00:17:39] Well, I mean, absolutely.
+[00:17:39 -> 00:17:41] On the content side,
+[00:17:41 -> 00:17:45] we've released a conference monetization gateway
+[00:17:45 -> 00:17:46] where we make it easy for people
+[00:17:46 -> 00:17:48] to put their sites behind us
+[00:17:48 -> 00:17:53] and take microtransactions for their content,
+[00:17:54 -> 00:17:58] including providing wallets for agents to use
+[00:17:58 -> 00:18:04] and a stable coin that's going to be able to help
+[00:18:04 -> 00:18:06] kind of facilitate that transaction as well.
+[00:18:07 -> 00:18:09] You know, we're also doing things with OpenAI,
+[00:18:10 -> 00:18:11] a project called Signals,
+[00:18:11 -> 00:18:15] where we're making it easier for agents
+[00:18:15 -> 00:18:16] to actually discover content
+[00:18:16 -> 00:18:17] instead of having to crawl the entire internet
+[00:18:17 -> 00:18:19] and continually go back to pages.
+[00:18:19 -> 00:18:23] We're making it easier for them to know what's new content
+[00:18:23 -> 00:18:24] and actually kind of more proactively do that.
+[00:18:25 -> 00:18:28] So it's a win for the AI labs
+[00:18:28 -> 00:18:30] as well as a win for the site owners
+[00:18:30 -> 00:18:32] not having to get constantly crawled
+[00:18:32 -> 00:18:33] and pay for that infrastructure.
+[00:18:34 -> 00:18:37] So there's a whole set of new laws on the internet
+[00:18:37 -> 00:18:39] that I think I'm really excited to see
+[00:18:39 -> 00:18:42] all those kind of grow,
+[00:18:42 -> 00:18:47] to see the X402 from when Stripe came out with it.
+[00:18:47 -> 00:18:51] I loved it because it went back to the 402 HTTP code,
+[00:18:52 -> 00:18:57] which was Tim Berners-Lee created 20 plus years ago,
+[00:18:57 -> 00:18:59] 30 plus years ago for payments.
+[00:18:59 -> 00:19:02] So you kind of always knew that you needed a better
+[00:19:02 -> 00:19:03] payments rail on the internet,
+[00:19:03 -> 00:19:06] but we haven't been able to kind of figure it out.
+[00:19:06 -> 00:19:09] And I think agents will lead us to that as well.
+[00:19:09 -> 00:19:15] When you think about these initial products that you've
+[00:19:15 -> 00:19:15] released,
+[00:19:16 -> 00:19:20] what would success for a content creator
+[00:19:20 -> 00:19:23] or somebody who ostensibly had a website on the internet
+[00:19:23 -> 00:19:25] that they were monetizing with ads before?
+[00:19:25 -> 00:19:29] What's the killer success case you guys need to see
+[00:19:29 -> 00:19:32] or show the world where it just becomes a default to do
+[00:19:32 -> 00:19:32] this?
+[00:19:33 -> 00:19:36] Well, I mean, I think instead of them paying us,
+[00:19:36 -> 00:19:37] we're paying them, right?
+[00:19:38 -> 00:19:40] Where it's covering their infrastructure costs,
+[00:19:40 -> 00:19:47] it's providing money that supports their livelihood.
+[00:19:48 -> 00:19:50] we can actually increase the number of content creators out
+[00:19:50 -> 00:19:51] there,
+[00:19:51 -> 00:19:56] which the last generation of the internet has done very
+[00:19:56 -> 00:19:56] well,
+[00:19:56 -> 00:19:58] like with YouTube and TikTok and X.
+[00:20:00 -> 00:20:02] We can actually make it even exponentially larger.
+[00:20:04 -> 00:20:09] When you look at the workspace OS release and ecosystem
+[00:20:09 -> 00:20:09] work
+[00:20:09 -> 00:20:11] that you guys have been doing,
+[00:20:11 -> 00:20:16] what are you hoping are the biggest use cases of it coming
+[00:20:16 -> 00:20:17] up?
+[00:20:17 -> 00:20:19] This is transitioning a little to a new release called
+[00:20:19 -> 00:20:20] Cloudflare OS.
+[00:20:21 -> 00:20:25] And Cloudflare OS is our internal platform for how our
+[00:20:25 -> 00:20:27] employees use AI every day.
+[00:20:28 -> 00:20:32] And it actually goes back to security roots where we were
+[00:20:32 -> 00:20:35] very worried about customer data,
+[00:20:35 -> 00:20:37] internal data leaking out.
+[00:20:37 -> 00:20:40] And we wanted to make sure that our employees could use all
+[00:20:40 -> 00:20:42] the new AI tools and models,
+[00:20:42 -> 00:20:46] but have a way to safely deploy them internally
+[00:20:46 -> 00:20:50] to understand how that data is being used and flowing
+[00:20:50 -> 00:20:54] and have good governance over that.
+[00:20:54 -> 00:20:57] In addition, the reason why we call it Cloudflare OS
+[00:20:57 -> 00:21:01] is we started to realize that as we have more and more
+[00:21:01 -> 00:21:01] agents,
+[00:21:02 -> 00:21:05] we need to be able to teach them what makes Cloudflare
+[00:21:05 -> 00:21:05] special,
+[00:21:06 -> 00:21:07] how we build a Cloudflare.
+[00:21:08 -> 00:21:10] For humans, we did that through Cloudflare University
+[00:21:10 -> 00:21:12] and the onboarding process.
+[00:21:12 -> 00:21:14] meeting your colleagues and working with them.
+[00:21:15 -> 00:21:17] But we needed to more clearly define that
+[00:21:17 -> 00:21:18] and document that for agents.
+[00:21:18 -> 00:21:21] And so, Cloud4OS is the platform
+[00:21:21 -> 00:21:23] where our employees can build anything that they want
+[00:21:23 -> 00:21:26] in a secure way without having security.
+[00:21:26 -> 00:21:28] It's not something they have to think about.
+[00:21:28 -> 00:21:31] The BR that's trying to create a call list,
+[00:21:31 -> 00:21:33] they don't have to worry about security.
+[00:21:34 -> 00:21:36] It's just built in there for them.
+[00:21:36 -> 00:21:38] But they also know that it's being done in a way
+[00:21:38 -> 00:21:41] that is consistent with the themes and values
+[00:21:41 -> 00:21:42] of how Cloud4OS works.
+[00:21:42 -> 00:21:43] And why release?
+[00:21:44 -> 00:21:45] I think of this as like somewhat different
+[00:21:45 -> 00:21:48] from the other products that Cloudflare offers today
+[00:21:48 -> 00:21:50] in that it is not infrastructure.
+[00:21:50 -> 00:21:53] It's like an end user facing product
+[00:21:53 -> 00:21:57] for managing AI use within the organization.
+[00:21:57 -> 00:21:58] Like why release it?
+[00:21:59 -> 00:22:00] Or do you think of it as a departure?
+[00:22:01 -> 00:22:04] Yeah, I mean, for one,
+[00:22:04 -> 00:22:07] it's kind of a reference architecture, really.
+[00:22:08 -> 00:22:10] It's, you know, over the past 10 years,
+[00:22:10 -> 00:22:12] we've built some, our developer platform
+[00:22:12 -> 00:22:13] where we started with just a simple
+[00:22:13 -> 00:22:15] serverless compute primitive
+[00:22:15 -> 00:22:17] and now over 100 different
+[00:22:17 -> 00:22:20] developer platform tools
+[00:22:20 -> 00:22:22] from storage to databases
+[00:22:22 -> 00:22:23] to durable objects.
+[00:22:24 -> 00:22:25] We wanted to show someone,
+[00:22:26 -> 00:22:26] show how you can build it
+[00:22:26 -> 00:22:28] completely on Cloudflare
+[00:22:28 -> 00:22:30] and how we build things internally
+[00:22:30 -> 00:22:34] and kind of give people the option
+[00:22:34 -> 00:22:36] to fork in and build
+[00:22:36 -> 00:22:39] their own version of their own company OS
+[00:22:39 -> 00:22:39] on top of it.
+[00:22:40 -> 00:22:42] And what is a way in which
+[00:22:42 -> 00:22:45] it is helping your people and your organization that you
+[00:22:45 -> 00:22:47] think is like clear success?
+[00:22:48 -> 00:22:52] It's actually used more by our go-to-market teams and our G
+[00:22:52 -> 00:22:55] &A teams than it is even used
+[00:22:55 -> 00:22:56] by our engineering teams.
+[00:22:56 -> 00:23:01] You know, it's, you know, giving them a very fast, you know
+[00:23:01 -> 00:23:03] , early on, I thought, you know,
+[00:23:04 -> 00:23:07] we saw training was the biggest gap for people using AI.
+[00:23:07 -> 00:23:14] And when you just point them at a chat interface or another
+[00:23:14 -> 00:23:16] by-putting tool, it's too much
+[00:23:16 -> 00:23:18] of a blank slate for them.
+[00:23:18 -> 00:23:22] And so this is a platform that you design everything for
+[00:23:22 -> 00:23:24] how your business works.
+[00:23:24 -> 00:23:27] And they immediately can go there and get access to all the
+[00:23:27 -> 00:23:28] data that they need.
+[00:23:28 -> 00:23:32] They can get guided and taken through where they quickly
+[00:23:32 -> 00:23:34] realize, "Oh, this is not trying
+[00:23:34 -> 00:23:36] to replace me.
+[00:23:36 -> 00:23:38] is trying to make me better at my job.
+[00:23:38 -> 00:23:40] And that's been really exciting to see
+[00:23:40 -> 00:23:42] just all the different ways
+[00:23:42 -> 00:23:44] people at the company have done that.
+[00:23:45 -> 00:23:46] You know, a lot of the,
+[00:23:46 -> 00:23:49] how this conference got put together,
+[00:23:49 -> 00:23:50] the marketing team,
+[00:23:50 -> 00:23:52] I mean, built hundreds of internal tools
+[00:23:52 -> 00:23:53] where previously, you know,
+[00:23:53 -> 00:23:54] they would have to go out
+[00:23:54 -> 00:23:57] and work with different agencies,
+[00:23:57 -> 00:23:58] but they can, you know,
+[00:23:58 -> 00:23:59] the speed that they can move
+[00:23:59 -> 00:24:00] with a smaller team now is just amazing.
+[00:24:00 -> 00:24:03] Assuming this is a continuation of,
+[00:24:03 -> 00:24:04] you know, starting in May,
+[00:24:04 -> 00:24:05] you guys did this restructuring to be,
+[00:24:06 -> 00:24:09] like a sort of AI-first organization.
+[00:24:09 -> 00:24:15] What else, reflecting on the last number of months,
+[00:24:15 -> 00:24:18] has worked or not worked that you would recommend to others
+[00:24:18 -> 00:24:18] ?
+[00:24:18 -> 00:24:23] Yeah, I mean, so the restructuring was hard.
+[00:24:24 -> 00:24:25] Saying goodbye to some of our colleagues
+[00:24:25 -> 00:24:27] was the first time Cloudflare ever did it.
+[00:24:28 -> 00:24:31] We had always been very careful not to overhire.
+[00:24:33 -> 00:24:35] But this was for different reasons.
+[00:24:35 -> 00:24:38] This is because we saw the way AI was transforming some
+[00:24:38 -> 00:24:39] teams and how they work.
+[00:24:41 -> 00:24:43] And we kind of thought of it as like a factory floor where
+[00:24:43 -> 00:24:46] you needed to actually rebuild, rethink how things happen.
+[00:24:47 -> 00:24:49] There were some processes.
+[00:24:49 -> 00:24:52] The way a product manager would send an email forward to
+[00:24:52 -> 00:24:54] customers involved three teams.
+[00:24:55 -> 00:24:58] It involved a team where you went to BI to go get a cohort
+[00:24:58 -> 00:25:02] of the people that you wanted to send an email to.
+[00:25:02 -> 00:25:05] You went to the marketing team to help you design the email
+[00:25:05 -> 00:25:06] and get the voice right.
+[00:25:07 -> 00:25:09] You went to the marketing operations team to get the email
+[00:25:09 -> 00:25:09] out.
+[00:25:11 -> 00:25:15] You're never going to be able to actually redesign that
+[00:25:15 -> 00:25:19] process unless you make some hard changes and force people
+[00:25:19 -> 00:25:22] to rethink what actually is the right way to do that.
+[00:25:23 -> 00:25:25] It might not involve those three teams at all.
+[00:25:25 -> 00:25:28] It might just involve a new way of doing things.
+[00:25:28 -> 00:25:31] So what came out of that was a tool where a product manager
+[00:25:31 -> 00:25:33] now goes in and describes the cohort.
+[00:25:33 -> 00:25:35] They write an email.
+[00:25:35 -> 00:25:37] It rewrites it in CloudFresh Voice.
+[00:25:37 -> 00:25:39] It sends it to their manager.
+[00:25:40 -> 00:25:42] And the manager can click approve if they like it.
+[00:25:43 -> 00:25:44] And it goes out.
+[00:25:45 -> 00:25:49] We didn't go from three teams getting faster at doing that.
+[00:25:49 -> 00:25:52] We went to one tool that can kind of let a product manager
+[00:25:52 -> 00:25:55] now have a superpower that they didn't have before.
+[00:25:55 -> 00:25:58] When you think of all of the different workflows and tasks
+[00:25:58 -> 00:26:01] within an organization that's got about 5,000 people like
+[00:26:01 -> 00:26:06] Cloudflare, how do you decide who the owner is of re
+[00:26:06 -> 00:26:08] thinking that process?
+[00:26:08 -> 00:26:12] And was it bottoms up from one of those teams in this case?
+[00:26:12 -> 00:26:14] Is it an organizational leader?
+[00:26:14 -> 00:26:17] When you have so many of these things that could change to
+[00:26:17 -> 00:26:19] be faster and make more sense, as you described.
+[00:26:19 -> 00:26:22] Yeah, I mean, Cloudflare has always had a thousand more
+[00:26:22 -> 00:26:25] things that we could ever do, whether it was products and
+[00:26:25 -> 00:26:27] features or things like this.
+[00:26:27 -> 00:26:29] And so we always look for people that are going to take
+[00:26:29 -> 00:26:31] initiative and ownership.
+[00:26:32 -> 00:26:34] And so it doesn't really matter if you're ordering it one
+[00:26:34 -> 00:26:36] to 100 and trying to prioritize it.
+[00:26:36 -> 00:26:39] Any one of those 100 things are probably safe if someone's
+[00:26:39 -> 00:26:40] passionate about it.
+[00:26:41 -> 00:26:44] So we kind of gave people at the beginning of last year the
+[00:26:44 -> 00:26:47] tools and started seeing how they were experimenting.
+[00:26:47 -> 00:26:51] And, you know, people quickly kind of broke out into
+[00:26:51 -> 00:26:53] different cohorts of people that were really leaning in and
+[00:26:53 -> 00:26:56] , you know, just naturally doing those things and taking
+[00:26:56 -> 00:26:57] ownership of them.
+[00:26:57 -> 00:27:02] So, you know, I think it was very bottoms up from the how
+[00:27:02 -> 00:27:05] we're going to do those things.
+[00:27:05 -> 00:27:09] It's been a major topic of conversation for organizations
+[00:27:09 -> 00:27:13] as to how they should think about token budgeting.
+[00:27:13 -> 00:27:13] Right.
+[00:27:13 -> 00:27:16] Like, you know, what's a reasonable amount to spend?
+[00:27:17 -> 00:27:19] How do I think about this versus human capital?
+[00:27:19 -> 00:27:22] We should get tokens even within our organization.
+[00:27:22 -> 00:27:24] What is your philosophy on this now?
+[00:27:25 -> 00:27:26] It's definitely changed.
+[00:27:27 -> 00:27:30] And each model kind of makes you rethink it
+[00:27:30 -> 00:27:31] as the cost dynamics change.
+[00:27:32 -> 00:27:37] But in general, I think it's kind of silly
+[00:27:37 -> 00:27:38] that we're actually asking humans
+[00:27:38 -> 00:27:40] to decide which model to do each task.
+[00:27:41 -> 00:27:42] Like it should be intelligently routed.
+[00:27:42 -> 00:27:44] Yeah, exactly.
+[00:27:44 -> 00:27:46] Humans just aren't going to ever be good at that.
+[00:27:46 -> 00:27:51] Right. Like, you know, but, you know, early on, you do it
+[00:27:51 -> 00:27:54] kind of brute force and, you know, you get people to
+[00:27:54 -> 00:27:57] experiment and you say, hey, well, you know, let's try for
+[00:27:57 -> 00:27:58] the planning part.
+[00:27:58 -> 00:28:01] Let's use the, you know, the top frontier models for that.
+[00:28:02 -> 00:28:04] And then, you know, once the plans run out and agreed upon
+[00:28:04 -> 00:28:07] and iterated on, then, you know, potentially some more of
+[00:28:07 -> 00:28:10] the open source models can go do that.
+[00:28:10 -> 00:28:13] And then you go back and you have a, one of the frontier
+[00:28:13 -> 00:28:16] models do the reviews and the red teaming and things like
+[00:28:16 -> 00:28:16] that.
+[00:28:16 -> 00:28:18] Now, all that today is fairly manual.
+[00:28:20 -> 00:28:22] But I think as we start to learn and experiment,
+[00:28:22 -> 00:28:23] I think people will become intelligent.
+[00:28:25 -> 00:28:30] And over time, there'll be more governance on that.
+[00:28:30 -> 00:28:35] Cloudflare has been in a place where largely we've let
+[00:28:35 -> 00:28:35] people
+[00:28:35 -> 00:28:41] use the models and tools that they see fit for the job.
+[00:28:41 -> 00:28:44] We don't have a token leaderboard.
+[00:28:45 -> 00:28:45] We don't encourage it.
+[00:28:45 -> 00:28:47] We encourage people to focus on the output.
+[00:28:47 -> 00:28:51] they're not graded on
+[00:28:51 -> 00:28:53] if they used it, they're graded on
+[00:28:53 -> 00:28:56] what they've shipped and what they've built.
+[00:28:57 -> 00:28:57] But then
+[00:28:57 -> 00:28:59] we do have some kind of
+[00:28:59 -> 00:29:02] giving people notices.
+[00:29:02 -> 00:29:04] If you happen to use $300
+[00:29:04 -> 00:29:06] a day, you'll just get an email.
+[00:29:06 -> 00:29:08] It says, hey, did you know? Because most of the
+[00:29:08 -> 00:29:10] time people didn't realize they were doing it.
+[00:29:10 -> 00:29:11] And they're like, oh, huh.
+[00:29:12 -> 00:29:14] And then I think if it gets to like $500,
+[00:29:14 -> 00:29:16] it goes to your manager. If it goes to $1,000,
+[00:29:16 -> 00:29:18] it goes to a VP in a day. But
+[00:29:18 -> 00:29:21] But those things rarely happen.
+[00:29:21 -> 00:29:25] And usually people are actually happy to get those notices.
+[00:29:26 -> 00:29:28] Where do you think you are in your overall evolution of
+[00:29:28 -> 00:29:32] like take things just for the current level of capabilities
+[00:29:32 -> 00:29:32] of models,
+[00:29:32 -> 00:29:36] assume no new development of, you know, rethinking the way
+[00:29:36 -> 00:29:39] different things at Cloudflare are done from go to market
+[00:29:39 -> 00:29:40] to engineering to be.
+[00:29:40 -> 00:29:43] Oh, I think we're still so early.
+[00:29:44 -> 00:29:46] You know, Comfort did something, you know, two years ago,
+[00:29:46 -> 00:29:48] we had about 200 interns.
+[00:29:48 -> 00:29:51] and what we saw was those interns
+[00:29:51 -> 00:29:55] were really the first fully kind of AI native.
+[00:29:57 -> 00:29:59] You took AI away from them,
+[00:29:59 -> 00:30:00] I don't think they would be able to work.
+[00:30:02 -> 00:30:03] Is that good?
+[00:30:03 -> 00:30:05] Actually, I think it is.
+[00:30:05 -> 00:30:07] I think they know how to use the tools better than us.
+[00:30:07 -> 00:30:09] It's just like you took Google away from me
+[00:30:09 -> 00:30:10] over the last 10 years.
+[00:30:11 -> 00:30:13] How would I learn anything, right?
+[00:30:14 -> 00:30:16] That's where they reached you first.
+[00:30:17 -> 00:30:19] And we actually saw the managers that had interns
+[00:30:19 -> 00:30:22] from that summer
+[00:30:22 -> 00:30:24] actually adopt AI faster.
+[00:30:24 -> 00:30:25] So then this past summer,
+[00:30:26 -> 00:30:26] this past year,
+[00:30:26 -> 00:30:27] we decided we were going to hire
+[00:30:27 -> 00:30:28] 1,000 interns.
+[00:30:29 -> 00:30:30] So that's, you know...
+[00:30:30 -> 00:30:31] For a 5,000-person company.
+[00:30:31 -> 00:30:31] Yes.
+[00:30:32 -> 00:30:32] Wow.
+[00:30:32 -> 00:30:34] Yeah, over the course of the year.
+[00:30:34 -> 00:30:34] Yeah, still.
+[00:30:35 -> 00:30:37] Yeah, and it's just been amazing
+[00:30:37 -> 00:30:38] because, you know,
+[00:30:38 -> 00:30:40] one, just the number of ideas
+[00:30:40 -> 00:30:41] that come from the interns.
+[00:30:41 -> 00:30:42] So, you know,
+[00:30:42 -> 00:30:43] that's something that, you know,
+[00:30:44 -> 00:30:44] with AI,
+[00:30:44 -> 00:30:45] it lets people experiment faster.
+[00:30:45 -> 00:30:46] And so having more ideas,
+[00:30:47 -> 00:30:47] getting more people in there,
+[00:30:47 -> 00:30:49] but also just seeing
+[00:30:49 -> 00:30:52] the way that they use AI.
+[00:30:52 -> 00:30:53] Like, you know,
+[00:30:54 -> 00:30:56] they need to fill out a form.
+[00:30:57 -> 00:30:58] They reach for AI.
+[00:30:59 -> 00:31:00] And I still find myself,
+[00:31:00 -> 00:31:01] you know, there's so many things
+[00:31:01 -> 00:31:02] where I'm like, oh, wait,
+[00:31:03 -> 00:31:04] I've just been doing this manually still.
+[00:31:05 -> 00:31:06] And then I'm like, yeah,
+[00:31:06 -> 00:31:07] oh, wait, I should be using AI.
+[00:31:08 -> 00:31:09] And I don't think that that's a natural
+[00:31:09 -> 00:31:12] for most of us yet.
+[00:31:14 -> 00:31:16] And I think that will take time.
+[00:31:16 -> 00:31:17] And so, yeah, I think we're still
+[00:31:17 -> 00:31:19] very early in our AI journey.
+[00:31:19 -> 00:31:20] I love it, though.
+[00:31:20 -> 00:31:21] the mass intern strategy.
+[00:31:22 -> 00:31:25] I run a very small partnership
+[00:31:25 -> 00:31:29] and we always have an intern or two
+[00:31:29 -> 00:31:31] floating around a team of about a dozen
+[00:31:31 -> 00:31:35] for ideas and intern energy and all that.
+[00:31:36 -> 00:31:37] But we just converted one of our
+[00:31:37 -> 00:31:39] in-college interns to full-time
+[00:31:39 -> 00:31:42] and had him drop out and everything.
+[00:31:43 -> 00:31:46] And I think that you're right
+[00:31:46 -> 00:31:48] where maybe the dial should be turned up
+[00:31:48 -> 00:31:49] on the amount of DNA
+[00:31:49 -> 00:31:51] that is really, really native to these tools.
+[00:31:51 -> 00:31:53] Yeah, I think it's great for them as well, too.
+[00:31:53 -> 00:31:56] I mean, you see these schools like Waterloo and Northe
+[00:31:56 -> 00:31:56] astern
+[00:31:56 -> 00:31:58] with these co-op programs.
+[00:32:00 -> 00:32:04] And from what we've seen is people that get that type of
+[00:32:04 -> 00:32:05] real work experience
+[00:32:05 -> 00:32:11] are some of our best employees many years in and go on to
+[00:32:11 -> 00:32:12] do great things.
+[00:32:13 -> 00:32:16] It is interesting or encouraging, though, that instead of
+[00:32:16 -> 00:32:17] it being like,
+[00:32:17 -> 00:32:18] hey, here's a master plan.
+[00:32:18 -> 00:32:20] We're going to map out every department
+[00:32:20 -> 00:32:22] and sub-department at Cloudflare
+[00:32:22 -> 00:32:24] and be like, here are the key workflows.
+[00:32:24 -> 00:32:25] We're going to try to re-engineer the workflows.
+[00:32:25 -> 00:32:28] It is instead a strategy of like,
+[00:32:28 -> 00:32:30] assume people are rational about their tokens
+[00:32:30 -> 00:32:32] if given information about their usage,
+[00:32:33 -> 00:32:34] hire a bunch of interns
+[00:32:34 -> 00:32:36] and assume high agency people we have here
+[00:32:36 -> 00:32:37] are going to go like,
+[00:32:38 -> 00:32:40] you know, shift those workflows
+[00:32:40 -> 00:32:42] to something more intelligent over time.
+[00:32:42 -> 00:32:44] And then brute force and just try things.
+[00:32:44 -> 00:32:45] You know, early on,
+[00:32:45 -> 00:32:49] we had an email alias called Agents at Cloudflare,
+[00:32:49 -> 00:32:53] where we, this is back in January of this year,
+[00:32:53 -> 00:32:56] where we just told people to, you know,
+[00:32:56 -> 00:32:58] you're curious, can I use AI for this?
+[00:32:58 -> 00:32:59] You know, email in your jobs to be done.
+[00:32:59 -> 00:33:04] And that email list would reply back to the skill file.
+[00:33:07 -> 00:33:09] And for a while, people thought it was actually,
+[00:33:09 -> 00:33:11] you know, thought it was all AI and automated.
+[00:33:11 -> 00:33:13] It was actually a bunch of interns
+[00:33:13 -> 00:33:17] that were helping people write skill files
+[00:33:17 -> 00:33:21] But that let us kind of get to see, you know, in a way that
+[00:33:21 -> 00:33:24] 's not going out and like, you know, hiring a consulting
+[00:33:24 -> 00:33:27] firm to come out and like catalog every single thing to be
+[00:33:27 -> 00:33:27] done.
+[00:33:27 -> 00:33:30] It's, you know, people that are recognizing, hey, this
+[00:33:30 -> 00:33:31] seems harder than it needs to be.
+[00:33:31 -> 00:33:32] I wonder if an agent can help me here.
+[00:33:33 -> 00:33:36] Is there anything else about the last year that's changed
+[00:33:36 -> 00:33:40] beyond the intern level, like your hiring philosophy, what
+[00:33:40 -> 00:33:42] you look for people to bring on?
+[00:33:44 -> 00:33:47] Well, I mean, one of the biggest things we've always looked
+[00:33:47 -> 00:33:48] for is curiosity.
+[00:33:48 -> 00:33:52] And so, you know, if people aren't using AI at home in
+[00:33:52 -> 00:33:55] their personal life and all that, I mean, that's a pretty
+[00:33:55 -> 00:33:55] big red flag.
+[00:33:56 -> 00:33:59] Like, I mean, just how can you not be embracing AI if you
+[00:33:59 -> 00:34:02] have, you know, a level of curiosity out there?
+[00:34:03 -> 00:34:07] So, you know, I think doubling down on some of those kind
+[00:34:07 -> 00:34:12] of key characteristics of, you know, drive and curiosity
+[00:34:12 -> 00:34:18] and empathy play even better for this next set of people.
+[00:34:19 -> 00:34:25] Well, I mean, I am a alpha user of all products and
+[00:34:25 -> 00:34:26] technology forever.
+[00:34:26 -> 00:34:30] But I think the answer is like fear and skepticism.
+[00:34:30 -> 00:34:30] Right.
+[00:34:31 -> 00:34:36] And so I guess implicit in this claim about like curiosity,
+[00:34:36 -> 00:34:40] including an experimentation with Frontier Tools is like
+[00:34:40 -> 00:34:44] that needs to be a core principle for people who work at
+[00:34:44 -> 00:34:46] that player.
+[00:34:46 -> 00:34:46] Yeah.
+[00:34:46 -> 00:34:48] I mean, a lot of things we're doing,
+[00:34:48 -> 00:34:49] we're not, you know,
+[00:34:49 -> 00:34:52] we're inventing new ways of doing things.
+[00:34:52 -> 00:34:54] I mean, the scale that we operate at
+[00:34:54 -> 00:34:57] for the number of sites behind us
+[00:34:57 -> 00:35:00] and the amount of free services we give away,
+[00:35:01 -> 00:35:03] it's just not possible with off-the-shelf technology.
+[00:35:04 -> 00:35:06] So you need people that can come in
+[00:35:06 -> 00:35:08] and literally invent new things.
+[00:35:08 -> 00:35:10] And that starts with curiosity.
+[00:35:11 -> 00:35:13] I have a couple of questions for you to close out.
+[00:35:13 -> 00:35:14] And it's mainly about security,
+[00:35:15 -> 00:35:16] and how to do that in a new way,
+[00:35:16 -> 00:35:19] both at Cloudflare and then how you think it's going to
+[00:35:19 -> 00:35:19] work
+[00:35:19 -> 00:35:21] in the broader ecosystem.
+[00:35:22 -> 00:35:26] What do you think is the process by which
+[00:35:26 -> 00:35:29] if half the engineering team is going to go work on
+[00:35:29 -> 00:35:29] security
+[00:35:29 -> 00:35:31] and just fix 70 years of vulnerability,
+[00:35:32 -> 00:35:35] how do you attack that problem?
+[00:35:35 -> 00:35:37] Internally, assuming that not all software is perfect,
+[00:35:37 -> 00:35:40] even amazing production, internet-scale software,
+[00:35:40 -> 00:35:41] and then we'll talk about the ecosystem.
+[00:35:41 -> 00:35:44] Yeah, I mean, I think largely, you know,
+[00:35:44 -> 00:35:46] today we have one red team.
+[00:35:47 -> 00:35:49] I think by the end of the year, next year,
+[00:35:49 -> 00:35:51] we will probably have four or five red teams.
+[00:35:52 -> 00:35:54] So, you know, break people out into groups
+[00:35:54 -> 00:35:58] that are actually, you know, being more adversarial
+[00:35:58 -> 00:35:59] and actually like going out
+[00:35:59 -> 00:36:02] and actively trying to find vulnerabilities.
+[00:36:04 -> 00:36:06] Why is that the approach when instead of like,
+[00:36:06 -> 00:36:09] oh, we're finally going to get like our patching systems,
+[00:36:09 -> 00:36:11] right, our processes, right?
+[00:36:12 -> 00:36:14] I mean, processes and those things can always be better.
+[00:36:15 -> 00:36:16] We have a volume process.
+[00:36:16 -> 00:36:17] We have a patching process.
+[00:36:18 -> 00:36:19] really perfect now.
+[00:36:20 -> 00:36:21] But, you know,
+[00:36:21 -> 00:36:22] the best way I found
+[00:36:22 -> 00:36:23] for those sorts of things
+[00:36:23 -> 00:36:24] to get better
+[00:36:24 -> 00:36:25] is to,
+[00:36:25 -> 00:36:26] out of crisis,
+[00:36:27 -> 00:36:27] kind of comes,
+[00:36:30 -> 00:36:31] that's how you get
+[00:36:31 -> 00:36:32] those things fixed.
+[00:36:32 -> 00:36:33] You know,
+[00:36:33 -> 00:36:34] when the volumes get too big
+[00:36:34 -> 00:36:35] for the engineering team
+[00:36:35 -> 00:36:36] to just do them
+[00:36:36 -> 00:36:37] using their normal processes,
+[00:36:37 -> 00:36:38] you know,
+[00:36:38 -> 00:36:40] engineers are inherently lazy
+[00:36:40 -> 00:36:41] in a good way.
+[00:36:41 -> 00:36:43] And so they will automate
+[00:36:43 -> 00:36:45] away those things
+[00:36:45 -> 00:36:47] as they need to,
+[00:36:47 -> 00:36:48] as they kind of realize
+[00:36:48 -> 00:36:50] that there's no other way to do that.
+[00:36:51 -> 00:36:53] So, you know, I think the focus
+[00:36:53 -> 00:36:54] needs to be on the discovery side.
+[00:36:55 -> 00:36:59] And, you know, people will do the right thing
+[00:36:59 -> 00:37:00] and figure out how to patch it
+[00:37:00 -> 00:37:01] in a scalable way over time.
+[00:37:02 -> 00:37:03] Do you express a philosophy
+[00:37:03 -> 00:37:06] on just prioritization of this
+[00:37:06 -> 00:37:08] versus like shipping new features?
+[00:37:09 -> 00:37:11] Because I guess my understanding of,
+[00:37:12 -> 00:37:14] it's not as if we didn't have a backlog
+[00:37:14 -> 00:37:15] of like vulnerabilities
+[00:37:15 -> 00:37:17] and every large piece of software to go fix.
+[00:37:17 -> 00:37:18] It was just like whether or not
+[00:37:18 -> 00:37:22] that was a priority for engineering teams previously
+[00:37:22 -> 00:37:24] as one common state?
+[00:37:25 -> 00:37:28] I mean, I think you need to figure out how to do both.
+[00:37:28 -> 00:37:30] You know, it might come at the expense
+[00:37:30 -> 00:37:33] of cost optimization or other things.
+[00:37:33 -> 00:37:35] But I mean, companies,
+[00:37:35 -> 00:37:37] if you're not shipping, you're dying.
+[00:37:37 -> 00:37:39] That's how we think about it.
+[00:37:39 -> 00:37:41] So it's not going to be a freeze in order to do this.
+[00:37:41 -> 00:37:43] Oh, no, absolutely not.
+[00:37:43 -> 00:37:46] You need to be able to continue
+[00:37:46 -> 00:37:48] building and shipping new things.
+[00:37:49 -> 00:37:52] but you need to be able to make sure that you're doing it,
+[00:37:52 -> 00:37:55] you know, securely and patching and fixing bugs.
+[00:37:55 -> 00:37:59] And I think if we do it right,
+[00:37:59 -> 00:38:02] we'll actually be able to do them both faster with AI.
+[00:38:02 -> 00:38:06] I mean, while AI has become the tool
+[00:38:06 -> 00:38:08] that's causing this kind of security apocalypse,
+[00:38:09 -> 00:38:11] lone apocalypse to happen,
+[00:38:12 -> 00:38:16] it is also the tool that can help us solve it faster as
+[00:38:16 -> 00:38:16] well.
+[00:38:16 -> 00:38:18] Right, so it's on both sides of it.
+[00:38:19 -> 00:38:24] So where do you fall in this debate of the role, like good
+[00:38:24 -> 00:38:27] and bad, of open and closed models on the cyber front?
+[00:38:27 -> 00:38:32] Right. Because the argument, the broad argument is, well,
+[00:38:32 -> 00:38:37] having defensive and offensive cyber vulnerabilities, cyber
+[00:38:37 -> 00:38:40] capabilities, you know, they're parallel in the same model,
+[00:38:40 -> 00:38:46] despite safety and guardrails being being built into them.
+[00:38:46 -> 00:38:49] And so you can't have open defensive models
+[00:38:49 -> 00:38:51] without them also being offensive.
+[00:38:51 -> 00:38:53] And then the argument, sort of,
+[00:38:53 -> 00:38:56] or the concern around only having security capabilities
+[00:38:56 -> 00:39:00] in a set of frontier closed models is,
+[00:39:00 -> 00:39:01] well, how are you going to release them?
+[00:39:01 -> 00:39:02] And you can't possibly get them out
+[00:39:02 -> 00:39:05] to the distributed set of actors that need to defend.
+[00:39:05 -> 00:39:06] Like, what do you think?
+[00:39:06 -> 00:39:08] Or did I characterize that correctly?
+[00:39:08 -> 00:39:11] Yeah, I mean, I think over time,
+[00:39:11 -> 00:39:12] it all has to be open
+[00:39:12 -> 00:39:14] because everyone's going to get access to it anyways.
+[00:39:16 -> 00:39:18] That's how open source tends to work, yes.
+[00:39:19 -> 00:39:22] The bad guys are going to find a way to get it.
+[00:39:22 -> 00:39:27] So all URs and the top companies will have a way of getting
+[00:39:27 -> 00:39:27] it as well.
+[00:39:27 -> 00:39:32] So you're just excluding a mass population
+[00:39:32 -> 00:39:36] that just doesn't have the access that probably needs it.
+[00:39:37 -> 00:39:39] And then, so final question,
+[00:39:39 -> 00:39:42] just because Cloudflare, very mission-oriented,
+[00:39:42 -> 00:39:45] does carry the weight of some, you know,
+[00:39:46 -> 00:39:49] internet resilience on its back.
+[00:39:49 -> 00:39:50] What about all of the people
+[00:39:50 -> 00:39:52] who can't afford to have four red teams
+[00:39:52 -> 00:39:54] or like never had a red team to begin with
+[00:39:54 -> 00:39:55] that run important systems?
+[00:39:55 -> 00:39:57] How do they protect themselves?
+[00:39:58 -> 00:40:00] So, you know, I would say
+[00:40:00 -> 00:40:02] put your sights behind Cloudflare.
+[00:40:02 -> 00:40:03] Put your infrastructure behind Cloudflare.
+[00:40:03 -> 00:40:04] Build on Cloudflare.
+[00:40:04 -> 00:40:07] You know, when these major vulnerabilities come out,
+[00:40:08 -> 00:40:10] like the React one last year,
+[00:40:11 -> 00:40:12] we don't just give it to our paid customers
+[00:40:12 -> 00:40:15] who have the advanced firewall and WAF capabilities,
+[00:40:16 -> 00:40:16] we give it to everyone.
+[00:40:17 -> 00:40:21] We do those kind of things as part of the utility that we
+[00:40:21 -> 00:40:21] offer.
+[00:40:22 -> 00:40:27] And we want to provide that,
+[00:40:27 -> 00:40:29] just like we want to provide performance for everyone.
+[00:40:30 -> 00:40:31] Before Cloudflare started,
+[00:40:32 -> 00:40:34] there were probably 3,000 sites in the world
+[00:40:34 -> 00:40:38] that had a large-scale CDN to cache their stuff at the edge
+[00:40:38 -> 00:40:38] .
+[00:40:38 -> 00:40:41] Now there's hundreds of millions of sites that do.
+[00:40:42 -> 00:40:45] So, you know, Copper's always viewed our goals providing,
+[00:40:45 -> 00:40:47] democratizing the security of performance for everyone.
+[00:40:48 -> 00:40:49] Awesome. Thanks so much for doing this, Dane.
+[00:40:49 -> 00:40:51] And you guys heard it first.
+[00:40:51 -> 00:40:55] We have the agent kitties and the vonpocalypse.
+[00:40:56 -> 00:40:57] Am I pronouncing that right?
+[00:40:57 -> 00:40:57] Yeah.
+[00:40:57 -> 00:40:59] Yeah, but it's resolvable.
+[00:41:00 -> 00:41:01] All right. Thanks so much, guys.
+[00:41:01 -> 00:41:01] Thanks.
+[00:41:01 -> 00:41:07] Find us on Twitter at NoPriorsPod.
+[00:41:07 -> 00:41:09] Subscribe to our YouTube channel if you want to see our
+[00:41:09 -> 00:41:10] faces.
+[00:41:10 -> 00:41:13] Follow the show on Apple Podcasts, Spotify, or wherever you
+[00:41:13 -> 00:41:14] listen.
+[00:41:14 -> 00:41:16] That way you get a new episode every week.
+[00:41:16 -> 00:41:19] and sign up for emails or find transcripts for every
+[00:41:19 -> 00:41:21] episode at no-priors.com.

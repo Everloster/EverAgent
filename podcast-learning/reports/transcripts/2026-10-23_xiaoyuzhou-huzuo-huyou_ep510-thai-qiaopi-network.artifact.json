@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "status": "succeeded",
+  "silent": true,
+  "interactive_browser": false,
+  "audio_playback": false,
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/6adb27a497726cd4675696ad",
+  "artifact": {
+    "source_host": "www.xiaoyuzhoufm.com",
+    "source_sha256": "06afd023b27685b983875ddb7dc6ae0261cecb8f75b70a9b4a1d58193cb64bed",
+    "audio_size": 910708840,
+    "language": "zh",
+    "segments": 2783,
+    "service_version": "whisper.cpp-v1.9.1-sm120",
+    "transcript_size": 141325,
+    "transcript_sha256": "e3839b6d159be7262158f2aaa45b934295a03ffee172ba6b90c413d7fce8e514",
+    "quality": {
+      "repetition_guard": {
+        "passed": true,
+        "max_consecutive_identical": 1
+      }
+    }
+  },
+  "transfer": {
+    "mode": "eacli pull",
+    "atomic": true,
+    "local_path": "podcast-learning/reports/transcripts/2026-10-23_xiaoyuzhou-huzuo-huyou_ep510-thai-qiaopi-network.transcript.txt",
+    "verified_sha256": true
+  },
+  "audit": {
+    "ok": true,
+    "lines": 2783,
+    "segments": 2783,
+    "size": 141325,
+    "sha256": "e3839b6d159be7262158f2aaa45b934295a03ffee172ba6b90c413d7fce8e514",
+    "duration_seconds": 5157,
+    "max_consecutive_identical": 1,
+    "warnings": [],
+    "errors": []
+  },
+  "runner": "eacli-podcast-remote"
+}

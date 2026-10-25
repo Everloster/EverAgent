@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "status": "succeeded",
+  "silent": true,
+  "interactive_browser": false,
+  "audio_playback": false,
+  "source_url": "https://etw.fm/2228",
+  "artifact": {
+    "source_host": "podcasts.apple.com",
+    "source_sha256": "a85fa19477fa95a1bca36ebc78c5adb7b71bc245fd44a28be53cdc0e5c790882",
+    "audio_size": 1132887314,
+    "language": "zh",
+    "segments": 3551,
+    "service_version": "whisper.cpp-v1.9.1-sm120",
+    "transcript_size": 174221,
+    "transcript_sha256": "ecfadb4b1c47ea61b28ee0a6219ad9525074b410a599661b8addb5702d259b87",
+    "quality": {
+      "repetition_guard": {
+        "passed": true,
+        "max_consecutive_identical": 2
+      }
+    }
+  },
+  "transfer": {
+    "mode": "eacli pull",
+    "atomic": true,
+    "local_path": "podcast-learning/reports/transcripts/2026-10-22_rss-shengdong-jixi_ep408-lijing-internet-growth-self-reconstruction.transcript.txt",
+    "verified_sha256": true
+  },
+  "runner": "eacli-podcast-remote",
+  "audit": {
+    "ok": true,
+    "lines": 3551,
+    "segments": 3551,
+    "size": 174221,
+    "sha256": "ecfadb4b1c47ea61b28ee0a6219ad9525074b410a599661b8addb5702d259b87",
+    "duration_seconds": 6399,
+    "max_consecutive_identical": 2,
+    "warnings": [],
+    "errors": []
+  }
+}

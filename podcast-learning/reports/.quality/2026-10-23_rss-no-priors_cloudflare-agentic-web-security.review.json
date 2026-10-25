@@ -1,0 +1,857 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-23_rss-no-priors_cloudflare-agentic-web-security.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "review-no-priors-r2-format-20261025",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 96,
+        "request_coverage": 98,
+        "reasoning_quality": 96,
+        "readability": 95,
+        "limitations": 97
+      },
+      "score_reasons": {
+        "evidence_fidelity": "本轮仅清理思考与追问列表的行尾空格并由 new-revision 切换状态；index blob 精确对应历史已通过报告 SHA，evidence SHA 未变。S01-S10、C01-C10 与 21 项来源地图仍逐字适用。transcript audit 再次得到 983 段、2481 秒、时间戳单调、最大连续重复 1、零 warning/error。",
+        "request_coverage": "正文、21 个 coverage 单元、R01-R08、外部收口与所有事实锚点均未变化；行尾空格清理没有造成内容遗漏。",
+        "reasoning_quality": "AI 安全、Zero Trust、ADLC、Agentic Web、支付、Cloudflare OS、组织重构和双重用途风险的推理链与历史通过版本完全一致。",
+        "readability": "仅移除编号列表行尾的 Markdown 空格，标题、内容地图、主线和问题列表文字未变化；可读性保持历史通过值。",
+        "limitations": "厂商材料边界、预测口径、音频终点冲突、Token 阈值、实习生计划与产品成效缺口均原样保留；重新审计未发现转写质量变化。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10"
+      ],
+      "coverage_unit_ids_checked": [
+        "SC01",
+        "SC02",
+        "SC03",
+        "SC04",
+        "SC05",
+        "SC06",
+        "SC07",
+        "SC08",
+        "SC09",
+        "SC10",
+        "SC11",
+        "SC12",
+        "SC13",
+        "SC14",
+        "SC15",
+        "SC16",
+        "SC17",
+        "SC18",
+        "SC19",
+        "SC20",
+        "SC21"
+      ],
+      "source_content_map": [
+        {
+          "id": "SCM01",
+          "title": "AI 同时扩大软件攻击面并提高持续发现与修复能力",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03",
+            "S04",
+            "S06"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC01"
+          ],
+          "notes": "报告以双刃剑作为开篇主线，并把漏洞频率上升限定为嘉宾口径，把防守案例限定为 Cloudflare 官方复述。"
+        },
+        {
+          "id": "SCM02",
+          "title": "CTO 当前优先级由一般 AI 转型转向安全过渡期",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC02"
+          ],
+          "notes": "一句话总结与主线一覆盖安全成为首要任务的原因，没有把优先级变化写成全行业统计。"
+        },
+        {
+          "id": "SCM03",
+          "title": "Agent kiddies、漏洞赏金与攻击能力大众化",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC03"
+          ],
+          "notes": "报告保留 script kiddies 双关与 ASR 不确定性，并将能力扩散写为带标记的推测。"
+        },
+        {
+          "id": "SCM04",
+          "title": "Air gap 悲观论与面向 Agent 的 Zero Trust 连续授权",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03",
+            "S04",
+            "S06"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC04"
+          ],
+          "notes": "主线二覆盖城堡护城河失效、逐设备/身份/流量保护及 Cloudflare 四阶段框架，并保留厂商适用边界。"
+        },
+        {
+          "id": "SCM05",
+          "title": "未来 18 个月安全前置与超过 50% 工程时间预测",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC05"
+          ],
+          "notes": "报告准确呈现两个时间与比例口径，并明确其为嘉宾预测、需由工程工时和修复周期验证。"
+        },
+        {
+          "id": "SCM06",
+          "title": "修补 70 年软件遗产并把 SDLC 扩展为 ADLC",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC06"
+          ],
+          "notes": "主线三覆盖遗留存量与 Agent Development Lifecycle，且把 70 年说明为概括而非经审计年限。"
+        },
+        {
+          "id": "SCM07",
+          "title": "减少攻击面、形式验证、安全语言与运行时控制",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC07"
+          ],
+          "notes": "报告完整列出安全生产软件的主要手段，并补充模型倾向生成复杂实现这一反向约束。"
+        },
+        {
+          "id": "SCM08",
+          "title": "Cloudflare Codex、Agent review 与人类判断的制衡",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03",
+            "S04",
+            "S07"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC08"
+          ],
+          "notes": "报告核对 60+ RFC、约 23 万偏差、近 1.6 万阻断、近 600 份设计及 approved/enforced 生命周期，并未据此宣称 Agent 独立完成安全判断。"
+        },
+        {
+          "id": "SCM09",
+          "title": "人与 Agent 共用 Web rails 的 messy middle 与机器原生接口",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC09"
+          ],
+          "notes": "主线四覆盖视觉页面反复转换、Token 消耗、结构化 API/机器视图和主动完成任务的变化。"
+        },
+        {
+          "id": "SCM10",
+          "title": "Monetization Gateway、HTTP 402/x402 与 Signals 发现机制",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03",
+            "S04",
+            "S08",
+            "S09"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC10"
+          ],
+          "notes": "报告准确区分结算与发现：S09 为 closed beta、Coinbase Facilitator、Base/USDC，S08 为约 1% cohort 和数亿新页面；没有把钱包等同于成熟身份。"
+        },
+        {
+          "id": "SCM11",
+          "title": "创作者收益、按请求收费与高价值内容按使用结算",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03",
+            "S04",
+            "S09"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC11"
+          ],
+          "notes": "主线五覆盖供给侧激励、Monetization Gateway 与 Pay Per Use 的不同经济单位，并指出收入与争议处理尚无独立成效数据。"
+        },
+        {
+          "id": "SCM12",
+          "title": "Cloudflare OS 的组织上下文、能力授权与数据去向治理",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03",
+            "S04",
+            "S10"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC12"
+          ],
+          "notes": "报告覆盖默认无权限、typed capability、凭据隔离、Gatekeeper、observation log、分享重验、外部副作用与成本归因，均与 S10 一致。"
+        },
+        {
+          "id": "SCM13",
+          "title": "AI-first 重构通过重画跨团队流程而非局部提速",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC13"
+          ],
+          "notes": "主线七覆盖 BI、营销、营销运营三团队流程重构、与部分员工告别及 bottoms-up ownership，没有弱化组织代价。"
+        },
+        {
+          "id": "SCM14",
+          "title": "Token 智能路由、无 leaderboard 与分级异常提醒",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC14"
+          ],
+          "notes": "报告准确写明前沿模型规划/复核、开源模型执行及 300/500/1000 美元通知层级，并强调提醒不是绩效排名。"
+        },
+        {
+          "id": "SCM15",
+          "title": "约 200 名到一年计划招聘 1000 名实习生",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC15"
+          ],
+          "notes": "报告保留时间基准、约 5000 人公司背景和计划性口径，没有把 1000 人误写为同期正式员工净增。"
+        },
+        {
+          "id": "SCM16",
+          "title": "好奇心与主动使用 AI 被视为招聘和适应信号",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC16"
+          ],
+          "notes": "关键数字与主张表、可迁移启示和结论均覆盖好奇心，同时把不用 AI 即红旗限定为价值判断。"
+        },
+        {
+          "id": "SCM17",
+          "title": "以更多主动红队处理遗留软件安全问题",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC17"
+          ],
+          "notes": "报告写明当前约一个红队、计划扩至四至五个及其计划属性，并在反方解释中讨论双重用途风险。"
+        },
+        {
+          "id": "SCM18",
+          "title": "新功能与安全债之间采用主动发现而非冻结开发",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC18"
+          ],
+          "notes": "主线七覆盖工程优先级选择，将遗留漏洞治理与继续交付新功能并置。"
+        },
+        {
+          "id": "SCM19",
+          "title": "开放与闭源模型都会扩散攻防能力",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC19"
+          ],
+          "notes": "报告保留 Dane 的预测属性，并给出开放降低防守门槛与攻击门槛、闭源便于审计但带来依赖的双向分析。"
+        },
+        {
+          "id": "SCM20",
+          "title": "把基础安全防护作为公共基础设施能力普惠提供",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC20"
+          ],
+          "notes": "报告覆盖免费 WAF 防护与 CDN 规模叙事，同时把数亿网站和普惠效果明确标为公司自述，并讨论可持续性与锁定风险。"
+        },
+        {
+          "id": "SCM21",
+          "title": "官方 41:29 Conclusion 超过音频与 ASR 终点",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03",
+            "S04",
+            "S05"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC21"
+          ],
+          "notes": "内容地图与 Limitations 如实登记 Apple 音频约 41:23、ASR 41:21 结束与 41:29 章节元数据的冲突，没有补写不存在的结论内容。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07",
+        "R08"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "纯格式 revision 复核。快照匹配：report=0119ba5900d64f8131f486e354c573e3dd769925d0de24e02351448baabd2f72, evidence=4c5772bf20e6ac97d51df2825fb776acffb450ffdf24919ffdbf8edd19ec1fbc。语义等价证据：index blob SHA-256=369292b606f4b983a8347756f07425fe06fa91576cbdf5e8d53b65c6dbd2ab9f，与历史 revision 1 pass decision 完全一致；git diff --ignore-space-at-eol 只剩 new-revision 的 status: completed→in_progress。去除行尾空格并忽略 status 行后，index 与工作区字节完全一致。 git diff --check 通过；所有 evidence claim/report anchor 仍存在。沿用最近一次通过 revision 1 的 source_content_map、claims、coverage 与评分。 transcript audit：ok=true，SHA-256=c543e6ac4761ad7990340527aca80f725ac51af66c996114766f4089c4beb4f7，segments=983，duration_seconds=2481，max_consecutive_identical=1，warnings=[]，errors=[]。无 unsupported_claims、missing_requirements 或 hard_failures。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 96.35,
+    "evaluated_on": "2026-10-25",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "3f7a80a73c9209e76c4e223ebfc5195ec29eaf55ae066b49fd153df41f0b842a",
+    "evidence_sha256": "4c5772bf20e6ac97d51df2825fb776acffb450ffdf24919ffdbf8edd19ec1fbc"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex",
+            "run_id": "review-no-priors-gpt56sol-r1-20261025-9f3c7a1d2e6b",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 96,
+            "request_coverage": 98,
+            "reasoning_quality": 96,
+            "readability": 95,
+            "limitations": 97
+          },
+          "score_reasons": {
+            "evidence_fidelity": "逐项核对 C01–C10 后，节目中的 18 个月、超过 50%、70 年、300/500/1000 美元、200→1000 名实习生、1→4/5 个红队等关键口径均与转写一致；S06–S10 支持报告引用的产品机制与厂商数字，且正文持续区分嘉宾预测、厂商自述和报告推断。未发现关键数字错配或无来源的核心结论。",
+            "request_coverage": "21 个官方 shownotes 章节均有独立来源地图单元，并一一映射到 SC01–SC21；核心案例、反方解释、关键数字和时间戳冲突均进入正文，报告可独立阅读。复核确认 podcast-learning/MAP.md、podcast-learning/wiki/open-questions.md 与 podcast-learning/wiki/log.md 已加入本报告链接及长期问题；docs/REPORT_INDEX.md/README 按仓库流程在质量门 finalize 后由 reindex 生成，不属于当前内容复核的循环阻塞。",
+            "reasoning_quality": "报告把漏洞增长、工程时间、实习生采用速度和公共品效果限定为预测或公司叙事；对 Signals、Monetization Gateway、Cloudflare OS 的职责边界推理成立，并给出 Token 治理、实习生规模、开放/闭源模型、红队扩张等替代解释，没有把相关性写成因果。",
+            "readability": "内容地图、七条主线、关键数字表、反方解释、可迁移启示和结论构成清晰阅读路径；术语首次出现时给出语境，长报告仍可脱离音频与精编稿理解。少量段落信息密度较高，但不妨碍主线。",
+            "limitations": "明确披露未逐句人工回听、外部材料均为 Cloudflare 官方来源、事故材料缺涉事方原始交叉核验、产品状态具有时间性、组织成效与成本统计口径缺失，并如实登记 41:29 章节时间戳超过音频/ASR 终点的冲突。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07",
+            "C08",
+            "C09",
+            "C10"
+          ],
+          "coverage_unit_ids_checked": [
+            "SC01",
+            "SC02",
+            "SC03",
+            "SC04",
+            "SC05",
+            "SC06",
+            "SC07",
+            "SC08",
+            "SC09",
+            "SC10",
+            "SC11",
+            "SC12",
+            "SC13",
+            "SC14",
+            "SC15",
+            "SC16",
+            "SC17",
+            "SC18",
+            "SC19",
+            "SC20",
+            "SC21"
+          ],
+          "source_content_map": [
+            {
+              "id": "SCM01",
+              "title": "AI 同时扩大软件攻击面并提高持续发现与修复能力",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04",
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC01"
+              ],
+              "notes": "报告以双刃剑作为开篇主线，并把漏洞频率上升限定为嘉宾口径，把防守案例限定为 Cloudflare 官方复述。"
+            },
+            {
+              "id": "SCM02",
+              "title": "CTO 当前优先级由一般 AI 转型转向安全过渡期",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC02"
+              ],
+              "notes": "一句话总结与主线一覆盖安全成为首要任务的原因，没有把优先级变化写成全行业统计。"
+            },
+            {
+              "id": "SCM03",
+              "title": "Agent kiddies、漏洞赏金与攻击能力大众化",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC03"
+              ],
+              "notes": "报告保留 script kiddies 双关与 ASR 不确定性，并将能力扩散写为带标记的推测。"
+            },
+            {
+              "id": "SCM04",
+              "title": "Air gap 悲观论与面向 Agent 的 Zero Trust 连续授权",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04",
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC04"
+              ],
+              "notes": "主线二覆盖城堡护城河失效、逐设备/身份/流量保护及 Cloudflare 四阶段框架，并保留厂商适用边界。"
+            },
+            {
+              "id": "SCM05",
+              "title": "未来 18 个月安全前置与超过 50% 工程时间预测",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC05"
+              ],
+              "notes": "报告准确呈现两个时间与比例口径，并明确其为嘉宾预测、需由工程工时和修复周期验证。"
+            },
+            {
+              "id": "SCM06",
+              "title": "修补 70 年软件遗产并把 SDLC 扩展为 ADLC",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC06"
+              ],
+              "notes": "主线三覆盖遗留存量与 Agent Development Lifecycle，且把 70 年说明为概括而非经审计年限。"
+            },
+            {
+              "id": "SCM07",
+              "title": "减少攻击面、形式验证、安全语言与运行时控制",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC07"
+              ],
+              "notes": "报告完整列出安全生产软件的主要手段，并补充模型倾向生成复杂实现这一反向约束。"
+            },
+            {
+              "id": "SCM08",
+              "title": "Cloudflare Codex、Agent review 与人类判断的制衡",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04",
+                "S07"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC08"
+              ],
+              "notes": "报告核对 60+ RFC、约 23 万偏差、近 1.6 万阻断、近 600 份设计及 approved/enforced 生命周期，并未据此宣称 Agent 独立完成安全判断。"
+            },
+            {
+              "id": "SCM09",
+              "title": "人与 Agent 共用 Web rails 的 messy middle 与机器原生接口",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC09"
+              ],
+              "notes": "主线四覆盖视觉页面反复转换、Token 消耗、结构化 API/机器视图和主动完成任务的变化。"
+            },
+            {
+              "id": "SCM10",
+              "title": "Monetization Gateway、HTTP 402/x402 与 Signals 发现机制",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04",
+                "S08",
+                "S09"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC10"
+              ],
+              "notes": "报告准确区分结算与发现：S09 为 closed beta、Coinbase Facilitator、Base/USDC，S08 为约 1% cohort 和数亿新页面；没有把钱包等同于成熟身份。"
+            },
+            {
+              "id": "SCM11",
+              "title": "创作者收益、按请求收费与高价值内容按使用结算",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04",
+                "S09"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC11"
+              ],
+              "notes": "主线五覆盖供给侧激励、Monetization Gateway 与 Pay Per Use 的不同经济单位，并指出收入与争议处理尚无独立成效数据。"
+            },
+            {
+              "id": "SCM12",
+              "title": "Cloudflare OS 的组织上下文、能力授权与数据去向治理",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04",
+                "S10"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC12"
+              ],
+              "notes": "报告覆盖默认无权限、typed capability、凭据隔离、Gatekeeper、observation log、分享重验、外部副作用与成本归因，均与 S10 一致。"
+            },
+            {
+              "id": "SCM13",
+              "title": "AI-first 重构通过重画跨团队流程而非局部提速",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC13"
+              ],
+              "notes": "主线七覆盖 BI、营销、营销运营三团队流程重构、与部分员工告别及 bottoms-up ownership，没有弱化组织代价。"
+            },
+            {
+              "id": "SCM14",
+              "title": "Token 智能路由、无 leaderboard 与分级异常提醒",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC14"
+              ],
+              "notes": "报告准确写明前沿模型规划/复核、开源模型执行及 300/500/1000 美元通知层级，并强调提醒不是绩效排名。"
+            },
+            {
+              "id": "SCM15",
+              "title": "约 200 名到一年计划招聘 1000 名实习生",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC15"
+              ],
+              "notes": "报告保留时间基准、约 5000 人公司背景和计划性口径，没有把 1000 人误写为同期正式员工净增。"
+            },
+            {
+              "id": "SCM16",
+              "title": "好奇心与主动使用 AI 被视为招聘和适应信号",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC16"
+              ],
+              "notes": "关键数字与主张表、可迁移启示和结论均覆盖好奇心，同时把不用 AI 即红旗限定为价值判断。"
+            },
+            {
+              "id": "SCM17",
+              "title": "以更多主动红队处理遗留软件安全问题",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC17"
+              ],
+              "notes": "报告写明当前约一个红队、计划扩至四至五个及其计划属性，并在反方解释中讨论双重用途风险。"
+            },
+            {
+              "id": "SCM18",
+              "title": "新功能与安全债之间采用主动发现而非冻结开发",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC18"
+              ],
+              "notes": "主线七覆盖工程优先级选择，将遗留漏洞治理与继续交付新功能并置。"
+            },
+            {
+              "id": "SCM19",
+              "title": "开放与闭源模型都会扩散攻防能力",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC19"
+              ],
+              "notes": "报告保留 Dane 的预测属性，并给出开放降低防守门槛与攻击门槛、闭源便于审计但带来依赖的双向分析。"
+            },
+            {
+              "id": "SCM20",
+              "title": "把基础安全防护作为公共基础设施能力普惠提供",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC20"
+              ],
+              "notes": "报告覆盖免费 WAF 防护与 CDN 规模叙事，同时把数亿网站和普惠效果明确标为公司自述，并讨论可持续性与锁定风险。"
+            },
+            {
+              "id": "SCM21",
+              "title": "官方 41:29 Conclusion 超过音频与 ASR 终点",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03",
+                "S04",
+                "S05"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC21"
+              ],
+              "notes": "内容地图与 Limitations 如实登记 Apple 音频约 41:23、ASR 41:21 结束与 41:29 章节元数据的冲突，没有补写不存在的结论内容。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06",
+            "S07",
+            "S08",
+            "S09",
+            "S10"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04",
+            "R05",
+            "R06",
+            "R07",
+            "R08"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "目标快照已核对：report SHA-256=3335e467adda64a060bff830fa4e8c850f7bec43b498658c615dfee3b9841b4e，evidence SHA-256=4c5772bf20e6ac97d51df2825fb776acffb450ffdf24919ffdbf8edd19ec1fbc。来源优先阶段先以 983 段 transcript、polished、shownotes 和 artifact 建立 21 单元内容地图，再映射报告与 evidence；随后通过 eacli web.read 核验 S06–S10。S08 明确约 1% cohort、数亿新页面及发现元数据不授予访问/训练许可；S09 明确 closed beta、四个生产案例、HTTP 402/x402、Coinbase Facilitator、Base/USDC，identity primitives 仍为后续计划；S10 明确默认无权限、typed capability、凭据隔离、Gatekeeper、observation log、分享与外部副作用重验以及成本归因。S01 Apple 页面在当前地区读取为通用中文落地页，节目实质内容以本地官方 shownotes、完整转写和执行回执交叉核对。transcript 审计收据：ok=true，segments=983，duration_seconds=2481，SHA-256=c543e6ac4761ad7990340527aca80f725ac51af66c996114766f4089c4beb4f7，max_consecutive_identical=1，warnings/errors 均为空。C01–C10 均有支持，C11 的三层职责划分作为推断也符合 S08–S10 边界；未发现内容型硬失败。R08 外部收口已复核：podcast-learning/MAP.md 已登记本报告与后续缺口，podcast-learning/wiki/open-questions.md 已加入 4 项长期问题并链接报告，podcast-learning/wiki/log.md 已写入 ingest 记录与报告链接。docs/REPORT_INDEX.md/README 由协调者在质量门 finalize 后运行 reindex 生成；in_progress 阶段有意排除，不再视为当前内容复核缺口。hard_failures 与 missing_requirements 均为空。加权总分 96×0.35+98×0.20+96×0.20+95×0.15+97×0.10=96.35。\n\nreport_quality.py check 原始结果：\npodcast-learning/reports/2026-10-23_rss-no-priors_cloudflare-agentic-web-security.md｜tier=important｜decision=pass｜score=96.35｜ERROR 0｜WARN 0"
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 96.35,
+        "evaluated_on": "2026-10-25",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "369292b606f4b983a8347756f07425fe06fa91576cbdf5e8d53b65c6dbd2ab9f",
+        "evidence_sha256": "4c5772bf20e6ac97d51df2825fb776acffb450ffdf24919ffdbf8edd19ec1fbc"
+      }
+    }
+  ]
+}

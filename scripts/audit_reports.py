@@ -280,7 +280,11 @@ def audit_file(path: Path, *, enforce: bool, wikilinks: dict[str, list[Path]]) -
         if report_depth in {"standard", "deep"}:
             if "## 内容地图" not in text:
                 issues.append(_issue("error", "POD004", path, "standard/deep 播客缺少内容地图"))
-            if len(re.findall(r"^###\s+\S", text, re.MULTILINE)) < 3:
+            subsection_count = len(re.findall(r"^###\s+\S", text, re.MULTILINE))
+            mainline_h2_count = len(
+                re.findall(r"^##\s+主线(?:[一二三四五六七八九十]+|\d+)(?:[:：]|\s)", text, re.MULTILINE)
+            )
+            if subsection_count + mainline_h2_count < 3:
                 issues.append(_issue("error", "POD005", path, "standard/deep 播客至少展开 3 个主线小节"))
             duration = metadata.get("duration_seconds")
             try:
@@ -300,7 +304,7 @@ def audit_file(path: Path, *, enforce: bool, wikilinks: dict[str, list[Path]]) -
                 )
 
     issues.extend(_local_link_issues(path, text, enforce))
-    for target in WIKILINK_RE.findall(text):
+    for target in WIKILINK_RE.findall(_prose_for_placeholder_scan(text)):
         stem = Path(target.strip()).stem
         if stem in {"...", "…"} or "{" in target:
             continue

@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/NVIDIA_Microduck_Agentic_Robotics_仿真训练与Sim2Real_深度解析_20261025.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-25",
+  "generator": {
+    "model": "minimax-m3.1-flash",
+    "harness": "eacli",
+    "run_id": "generator-NVIDIA_Microduck_Agentic_Robotics_仿真训练与Sim2Real_深度解析_20261025-m31-20261025",
+    "explicit_model_override": true,
+    "override_reason": "用户明确指定：Razer 优先使用 MiniMax M3.1 Flash，额度耗尽后才切 GLM-5.3。"
+  },
+  "task": {
+    "summary": "深度解析NVIDIA Microduck工作流，区分Agentic资产编排、RL策略学习、仿真底座和Sim-to-Real证据，并用开源仓库核对接口与执行器机制。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "实际读取NVIDIA官方博客、HF/NVIDIA教程与公开代码仓README。"
+      },
+      {
+        "id": "R02",
+        "text": "解释Hermes、Nemotron、Astra、Isaac Sim、Isaac Lab、Newton和Omniverse各自职责。"
+      },
+      {
+        "id": "R03",
+        "text": "明确Agent没有直接学会走路，策略能力来自RL与物理反馈。"
+      },
+      {
+        "id": "R04",
+        "text": "逐项核对4096环境、50Hz、61维观测、14关节、BAM、backlash与ONNX口径。"
+      },
+      {
+        "id": "R05",
+        "text": "严格区分Isaac Lab/Newton与microduck_rl/mjlab路线，不拼接benchmark。"
+      },
+      {
+        "id": "R06",
+        "text": "覆盖Sim-to-Real、Physical RSI最低证据、工程适用性、反方、Limitations与追问。"
+      },
+      {
+        "id": "R07",
+        "text": "完成独立review、质量门和索引更新。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "official",
+      "title": "NVIDIA — Using AI Agents to Teach Robots Like Microduck to Walk in Simulation",
+      "locator": "https://developer.nvidia.com/blog/using-ai-agents-to-teach-robots-like-microduck-to-walk-in-simulation",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S02",
+      "kind": "official",
+      "title": "Hugging Face/NVIDIA — Train in Simulation, Deploy on a Real Robot: Microduck with Isaac Lab 3.0",
+      "locator": "https://huggingface.co/blog/nvidia/microduck-isaac-lab-sim-to-real",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S03",
+      "kind": "primary",
+      "title": "pollen-robotics/microduck_rl README and implementation guide",
+      "locator": "https://github.com/pollen-robotics/microduck_rl/blob/master/README.md",
+      "accessed_on": "2026-10-25"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "Agentic模型负责规划、概念与资产准备；真正的步态和障碍策略仍由强化学习在物理仿真交互中更新参数。",
+      "report_anchor": "x→f→f(x)：必须区分两种不同的函数映射",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "NVIDIA六阶段工作流与Isaac Lab训练描述。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "NVIDIA障碍适配实验使用4096个并行环境、RTX PRO 6000 Blackwell、头部深度与机器人状态观测，但未披露成功率、训练时长和消融。",
+      "report_anchor": "四、4096并行环境里的RL策略怎样学会过坡和障碍",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "NVIDIA官方博客训练章节。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "microduck_rl公开路线为约800g/25cm双足、mjlab/MuJoCo Warp+PPO、50Hz、61维观测、14关节输出、ONNX部署。",
+      "report_anchor": "五、代码证据：真正决定Sim-to-Real的是执行器与观测合同",
+      "support": "direct",
+      "source_ids": [
+        "S03"
+      ],
+      "evidence": "仓库README Quickstart、Tasks、Conventions。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "BAM执行器、摩擦/电压/延迟随机化和每关节±1°齿隙建模用于缩小Sim-to-Real差异，但只覆盖部分物理误差。",
+      "report_anchor": "五、代码证据：真正决定Sim-to-Real的是执行器与观测合同",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "HF教程domain randomization与repo actuator/backlash章节。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "NVIDIA Isaac Lab/Newton演示、HF教程和microduck_rl/mjlab仓库是相关但不同路线，4096环境、61/14接口和性能数字不能混成同一benchmark。",
+      "report_anchor": "5.5 NVIDIA 官方博客、Hugging Face 教程与开源仓库不能混成同一 benchmark",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "三份来源的框架、物理后端、任务和数字口径逐项对比。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "官方材料只证明仿真障碍工作流和实体Microduck行走/转向演示，不能证明同一策略已稳定通过实体障碍路线或达到生产安全。",
+      "report_anchor": "六、Sim-to-Real 鸿沟：从“参数误差”转向“闭环误差”",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "NVIDIA明确称physical deployment仍需进一步refinement；HF为教程而非统计验证。",
+      "critical": true
+    },
+    {
+      "id": "C07",
+      "claim": "[推测] Physical RSI至少需要冻结接口、实机辨识、分级风险放行和跨版本实测改进；Agent harness属于治理层，不等于机器人获得物理能力。",
+      "report_anchor": "七、Physical RSI 最低验证标准",
+      "support": "inference",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "由sim-to-real接口合同、实机部署步骤与来源缺口综合。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [],
+  "limitations": [
+    "NVIDIA与Hugging Face材料均为厂商或协作教程，不是独立benchmark。",
+    "本轮只读取microduck_rl README，未完成全仓源码审计、依赖锁定或真实复现。",
+    "NVIDIA实机图只证明行走/转向，未证明实体障碍路线成功。",
+    "Isaac Lab/Newton与mjlab/MuJoCo Warp路线的checkpoint和性能不可互换。",
+    "BAM、随机化和±1°齿隙仍不能覆盖全部执行器、接触、结构与传感误差。",
+    "Physical RSI最低通过线是报告建议，不是官方或行业标准。"
+  ]
+}

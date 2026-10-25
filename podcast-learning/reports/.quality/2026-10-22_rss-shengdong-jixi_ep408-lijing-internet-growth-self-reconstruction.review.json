@@ -1,0 +1,783 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-22_rss-shengdong-jixi_ep408-lijing-internet-growth-self-reconstruction.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-6",
+        "harness": "codex",
+        "run_id": "reviewer-etw408-gpt6-r2-20261025",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "scores": {
+        "evidence_fidelity": 94,
+        "request_coverage": 97,
+        "reasoning_quality": 94,
+        "readability": 92,
+        "limitations": 97
+      },
+      "score_reasons": {
+        "evidence_fidelity": "逐项核对官方页面、完整转写、精编、回执和六条 claim；关键年份、倍数、团队规模、收入、旧同事样本、十个家庭、教学个案与20亿对比均能回到时间锚点。报告持续标明嘉宾口径，并将乘以7的数学口径单独校正。轻微扣分来自部分内容地图时间采用官方章节起点而非精确引文起点。",
+        "request_coverage": "19个来源单元全部覆盖；第二轮还补齐播客v2的速览、内容地图命名、五条主线层级、完整frontmatter统计和wiki双链，领域审计0 error / 0 warning。",
+        "reasoning_quality": "增长反馈回路、家庭外部性、反应链、自我觉察作为职业约束和价值尺度迁移均由多段材料推出，并明确标注分析或推测；反方能区分共现与因果、个案与总体、规模与价值。",
+        "readability": "结构清楚，顶部速览可在30秒内读完，五条主线统一归入展开区，数字表便于回查。报告篇幅约2.2万字符，与106分钟高密度节目相称；少量边界在正文和Limitations重复。",
+        "limitations": "完整写明ASR不确定、自述与回忆偏差、幸存者偏差、非随机旧同事样本、心理医学因果、教学个案外推和shownotes核验上限，没有把疗愈语言升级为临床证据。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06"
+      ],
+      "coverage_unit_ids_checked": [
+        "SC01",
+        "SC02",
+        "SC03",
+        "SC04",
+        "SC05",
+        "SC06",
+        "SC07",
+        "SC08",
+        "SC09",
+        "SC10",
+        "SC11",
+        "SC12",
+        "SC13",
+        "SC14",
+        "SC15",
+        "SC16",
+        "SC17",
+        "SC18",
+        "SC19"
+      ],
+      "source_content_map": [
+        {
+          "id": "M01",
+          "title": "十周年结构性变化导览与大厂标准越界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC01"
+          ],
+          "notes": "报告开场解释机会、标准与代价，并明确不是简单逃离叙事。"
+        },
+        {
+          "id": "M02",
+          "title": "从传统行业进入阿里",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC02"
+          ],
+          "notes": "主线一交代入职路径、时间与增长想象。"
+        },
+        {
+          "id": "M03",
+          "title": "乘以7与 dream goal",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC03"
+          ],
+          "notes": "主线一及数字表覆盖，并修正乘以7的数学口径。"
+        },
+        {
+          "id": "M04",
+          "title": "一年重组七次与高速工作节奏",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC04"
+          ],
+          "notes": "团队规模、招聘、重组、工时与组织机制均有展开。"
+        },
+        {
+          "id": "M05",
+          "title": "单身妈妈与全团队养大的孩子",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC05"
+          ],
+          "notes": "报告覆盖家庭照护被团队非正式吸收及其代价。"
+        },
+        {
+          "id": "M06",
+          "title": "财富冲击、金手铐与996",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC06"
+          ],
+          "notes": "主线一和主线二分别覆盖激励、退出成本与制度化。"
+        },
+        {
+          "id": "M07",
+          "title": "狼性文化重塑性格",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC07"
+          ],
+          "notes": "主线二覆盖资源争夺、强硬标签、裁员与角色内化。"
+        },
+        {
+          "id": "M08",
+          "title": "Airbnb、学校危机与辞职",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC08"
+          ],
+          "notes": "文化反差、通勤、学校事件与辞职因果链完整。"
+        },
+        {
+          "id": "M09",
+          "title": "Patty Wipfler倾听练习与第一次觉察",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC09"
+          ],
+          "notes": "练习方式、主持人追问、母亲认可驱动与转折均覆盖。"
+        },
+        {
+          "id": "M10",
+          "title": "慢性压力、安全感与儿童注意力",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC10"
+          ],
+          "notes": "报告写明嘉宾解释，也明确无对照、不可视作临床因果。"
+        },
+        {
+          "id": "M11",
+          "title": "再次创业且不复制阿里工作方式",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC11"
+          ],
+          "notes": "Parent Lab的工作时间、价值共识与生活边界有完整说明。"
+        },
+        {
+          "id": "M12",
+          "title": "互联网不可能三角与产品模式选择",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC12"
+          ],
+          "notes": "融资增长、知识产品、面对面服务、十个家庭与交出CEO均覆盖。"
+        },
+        {
+          "id": "M13",
+          "title": "瑞典治疗教育与面对面工作",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC13"
+          ],
+          "notes": "三年学习、社区、实习、收入下降和证据边界均覆盖。"
+        },
+        {
+          "id": "M14",
+          "title": "从养育到重建伴侣与母女关系",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC14"
+          ],
+          "notes": "应激仍在、看见允许选择、关系变化和医学边界均覆盖。"
+        },
+        {
+          "id": "M15",
+          "title": "重逢旧同事与身心代价",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC15"
+          ],
+          "notes": "样本数量、状况范围、非随机样本与不可外推均覆盖。"
+        },
+        {
+          "id": "M16",
+          "title": "如果重来是否还会拼",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC16"
+          ],
+          "notes": "仍会投入、时代差异、家庭边界与女性二选一均覆盖。"
+        },
+        {
+          "id": "M17",
+          "title": "延伸：Patty Wipfler与倾听伙伴",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC17"
+          ],
+          "notes": "来源地图与主线二说明专名和练习。"
+        },
+        {
+          "id": "M18",
+          "title": "延伸：社会地位、慢性压力与皮质醇",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC18"
+          ],
+          "notes": "来源地图记录入口；正文只作为嘉宾解释框架并在Limitations降级。"
+        },
+        {
+          "id": "M19",
+          "title": "延伸：Daniel Siegel",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC19"
+          ],
+          "notes": "来源地图保留入口，未补写节目之外的理论。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "第二轮在目标工作区核对 report SHA-256=9fe66357d40a8f7ccfdd3f65ac3e3052b3897523bf700ab04301600c972ad65c、evidence SHA-256=de35de18db6afe19ac2728e7ae4e2f15de0e275e171320ec05854a79e0ce115c；复核第一轮后的v2 frontmatter、速览、内容地图命名、五条主线层级、统计字段和wiki双链。podcast-learning/scripts/audit_reports.py 对本报告为0 error / 0 warning。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 94.6,
+    "evaluated_on": "2026-10-25",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "9897fb551204e2dafb541db2501d23e07b3a2ee6f6f3ec71e86746a2f54c4c97",
+    "evidence_sha256": "de35de18db6afe19ac2728e7ae4e2f15de0e275e171320ec05854a79e0ce115c"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-6",
+            "harness": "codex",
+            "run_id": "reviewer-etw408-gpt6-20261025",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "scores": {
+            "evidence_fidelity": 94,
+            "request_coverage": 96,
+            "reasoning_quality": 94,
+            "readability": 90,
+            "limitations": 97
+          },
+          "score_reasons": {
+            "evidence_fidelity": "逐项核对官方页面、完整转写、精编、回执和六条 claim；关键年份、倍数、团队规模、收入、旧同事样本、十个家庭、教学个案与20亿对比均能回到时间锚点。报告持续标明嘉宾口径，并将乘以7的数学口径单独校正。轻微扣分来自部分内容地图时间采用官方章节起点而非精确引文起点。",
+            "request_coverage": "19个来源单元全部覆盖，包含官方shownotes的全部主要章节与三个延伸入口；报告具备来源地图、五条主线、数字表、增量分析、反方、Limitations和追问，可脱离精编稿独立阅读。",
+            "reasoning_quality": "增长反馈回路、家庭外部性、反应链、自我觉察作为职业约束和价值尺度迁移均由多段材料推出，并明确标注分析或推测；反方能区分共现与因果、个案与总体、规模与价值。",
+            "readability": "结构清楚、标题具体、数字表便于回查，长播客得到与时长相称的展开。报告约2.2万字符，部分边界在主线、反方和Limitations中重复，因此未给更高分。",
+            "limitations": "完整写明ASR不确定、自述与回忆偏差、幸存者偏差、非随机旧同事样本、心理医学因果、教学个案外推和shownotes核验上限，没有把疗愈语言升级为临床证据。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06"
+          ],
+          "coverage_unit_ids_checked": [
+            "SC01",
+            "SC02",
+            "SC03",
+            "SC04",
+            "SC05",
+            "SC06",
+            "SC07",
+            "SC08",
+            "SC09",
+            "SC10",
+            "SC11",
+            "SC12",
+            "SC13",
+            "SC14",
+            "SC15",
+            "SC16",
+            "SC17",
+            "SC18",
+            "SC19"
+          ],
+          "source_content_map": [
+            {
+              "id": "M01",
+              "title": "十周年结构性变化导览与大厂标准越界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC01"
+              ],
+              "notes": "报告开场解释机会、标准与代价，并明确不是简单逃离叙事。"
+            },
+            {
+              "id": "M02",
+              "title": "从传统行业进入阿里",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC02"
+              ],
+              "notes": "主线一交代入职路径、时间与增长想象。"
+            },
+            {
+              "id": "M03",
+              "title": "乘以7与 dream goal",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC03"
+              ],
+              "notes": "主线一及数字表覆盖，并修正乘以7的数学口径。"
+            },
+            {
+              "id": "M04",
+              "title": "一年重组七次与高速工作节奏",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC04"
+              ],
+              "notes": "团队规模、招聘、重组、工时与组织机制均有展开。"
+            },
+            {
+              "id": "M05",
+              "title": "单身妈妈与全团队养大的孩子",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC05"
+              ],
+              "notes": "报告覆盖家庭照护被团队非正式吸收及其代价。"
+            },
+            {
+              "id": "M06",
+              "title": "财富冲击、金手铐与996",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC06"
+              ],
+              "notes": "主线一和主线二分别覆盖激励、退出成本与制度化。"
+            },
+            {
+              "id": "M07",
+              "title": "狼性文化重塑性格",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC07"
+              ],
+              "notes": "主线二覆盖资源争夺、强硬标签、裁员与角色内化。"
+            },
+            {
+              "id": "M08",
+              "title": "Airbnb、学校危机与辞职",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC08"
+              ],
+              "notes": "文化反差、通勤、学校事件与辞职因果链完整。"
+            },
+            {
+              "id": "M09",
+              "title": "Patty Wipfler倾听练习与第一次觉察",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC09"
+              ],
+              "notes": "练习方式、主持人追问、母亲认可驱动与转折均覆盖。"
+            },
+            {
+              "id": "M10",
+              "title": "慢性压力、安全感与儿童注意力",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC10"
+              ],
+              "notes": "报告写明嘉宾解释，也明确无对照、不可视作临床因果。"
+            },
+            {
+              "id": "M11",
+              "title": "再次创业且不复制阿里工作方式",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC11"
+              ],
+              "notes": "Parent Lab的工作时间、价值共识与生活边界有完整说明。"
+            },
+            {
+              "id": "M12",
+              "title": "互联网不可能三角与产品模式选择",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC12"
+              ],
+              "notes": "融资增长、知识产品、面对面服务、十个家庭与交出CEO均覆盖。"
+            },
+            {
+              "id": "M13",
+              "title": "瑞典治疗教育与面对面工作",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC13"
+              ],
+              "notes": "三年学习、社区、实习、收入下降和证据边界均覆盖。"
+            },
+            {
+              "id": "M14",
+              "title": "从养育到重建伴侣与母女关系",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC14"
+              ],
+              "notes": "应激仍在、看见允许选择、关系变化和医学边界均覆盖。"
+            },
+            {
+              "id": "M15",
+              "title": "重逢旧同事与身心代价",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC15"
+              ],
+              "notes": "样本数量、状况范围、非随机样本与不可外推均覆盖。"
+            },
+            {
+              "id": "M16",
+              "title": "如果重来是否还会拼",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC16"
+              ],
+              "notes": "仍会投入、时代差异、家庭边界与女性二选一均覆盖。"
+            },
+            {
+              "id": "M17",
+              "title": "延伸：Patty Wipfler与倾听伙伴",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC17"
+              ],
+              "notes": "来源地图与主线二说明专名和练习。"
+            },
+            {
+              "id": "M18",
+              "title": "延伸：社会地位、慢性压力与皮质醇",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC18"
+              ],
+              "notes": "来源地图记录入口；正文只作为嘉宾解释框架并在Limitations降级。"
+            },
+            {
+              "id": "M19",
+              "title": "延伸：Daniel Siegel",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC19"
+              ],
+              "notes": "来源地图保留入口，未补写节目之外的理论。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04",
+            "R05",
+            "R06"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "已在目标工作区核对 report SHA-256=6986a290d61931cbae21aa3a41fef326aa92d0518d8a64324cb41ca8e07262ef、evidence SHA-256=0bc53c8fa7295e70f31487baf8bb0fff1c82ad6f386e36a1a0481362a4bd64fd；转写审计3551段、6399秒、最大连续重复2、无warning/error。Reviewer未使用MiniMax生成者的推理过程。"
+        }
+      ],
+      "decision": {}
+    }
+  ]
+}

@@ -255,3 +255,21 @@
 - 三期查重均确认此前未处理；全程使用 Razer `whisper.cpp large-v3 + Silero VAD`，未调用本地转写：十字路口 × Treg（1799 段）、42章经 × Articuler.ai（2229 段）、AI炼金术 × 晓辉/任鑫（4767 段）。三份 transcript 的段数、时间戳、连续重复、大小与 SHA-256 审计均通过。
 - 报告：[[2026-10-18_xiaoyuzhou-crossing_treg-agent-ecosystem]]、[[2026-10-17_xiaoyuzhou-42zhangjing_articuler-jason]]、[[2026-10-18_ximalaya-ailianjinshu_xiaohui-renxin-ai-startup]]；独立复核分数依次为 93.75、95.9、93.7，均通过 `report-v2` 质量门并归档。
 - 实践暴露并修复三处流程断点：节目索引刷新增加目标节目、dry-run 与 JSON 模式；新增 transcript 确定性审计器；新增经 eacli 的大工件分片拉回与 SHA-256 原子重组 helper。234593 bytes 工件先以三片手工拉回，再以 helper 两片端到端复验，重组哈希一致。
+
+## [2026-10-25] ingest | No Priors × Cloudflare CTO
+
+- 《Democratizing Security for the Agentic Web》41m21s，983 段；eacli podcast 远端静默 worker 转写，时间戳、连续重复与 SHA-256 审计通过。
+- 报告：[[2026-10-23_rss-no-priors_cloudflare-agentic-web-security]]；覆盖 21 个官方章节，主线包括 Agentic Web 攻防、Zero Trust、Agent Development Lifecycle、Cloudflare Codex、HTTP 402/x402、Signals、Cloudflare OS、Token 异常提醒与 AI-first 组织重构。
+- 证据边界：安全事故、产品效果、实习生采用和公共品成效仍主要是 Cloudflare 自述；官方 Conclusion 时间戳超过音频与 ASR 终点，只记录冲突，不补写内容。open-questions +4。
+
+## [2026-10-25] ingest | 人民公园说AI：最贵 Token 干最脏的活
+
+- 22m08s ASR，859 段；eacli podcast 远端静默 worker 转写，时间戳、连续重复与 SHA-256 审计通过。
+- 报告：[[2026-10-23_xiaoyuzhou-renmingongyuan-ai_expensive-token-dirty-work]]；把节目主张重构为单位验收成本、风险驱动模型路由、伪完成证据契约、额度损失厌恶与 Human-in-the-Loop 审批瓶颈。
+- 证据边界：模型错误率、研究样本、Linux 案例、训练成本和能力下沉时间均属节目口述或转述；两处算术冲突已显式纠偏。open-questions +12。
+
+## [2026-10-25] ingest | The Cognitive Revolution AI:AM
+
+- 88m35s ASR，1946 段；eacli podcast 远端静默 worker 转写，SHA-256=`02b26e4…56b5`，时间戳单调、最大连续重复 1、无 warning/error。
+- 报告：[[2026-10-24_rss-cognitive-revolution_ai-am-clean-neurons-gpu-credit]]；覆盖 RSI、clean neurons、probe detector、cognitive core、Black October、GPU 信贷、atoms over bits、HelpPeer 与联邦法案，综合为“移动瓶颈”模型。
+- 补读 Goodfire、Sauers 模型卡、SF Compute 与 Cambrian 一手材料；明确 90%/7%/2%–4% 的阈值敏感性、L40S 128/128 的编译旁路条件、$245M 公司披露和 Cambrian 投资利益关系。open-questions +5。

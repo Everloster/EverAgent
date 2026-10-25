@@ -1,0 +1,651 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-23_xiaoyuzhou-huzuo-huyou_ep510-thai-qiaopi-network.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "review-qiaopi-gpt56sol-r2-stats-20261025",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 95,
+        "request_coverage": 98,
+        "reasoning_quality": 96,
+        "readability": 92,
+        "limitations": 98
+      },
+      "score_reasons": {
+        "evidence_fidelity": "Revision 2 仅新增五个 fill_report_stats 实测字段并由 new-revision 将状态切为 in_progress；移除五字段且恢复 status: \"completed\" 后可精确重建 revision 1 报告 SHA-256 36578b17f75bc2ad15ebeb739533a3f43312e8277ca7e9311c7ab8b224d23b77，evidence SHA-256 亦未变化。五项统计与 transcript/polished 独立重算完全一致；transcript audit 仍为 2783 段、5157 秒、时间戳单调、最大连续重复 1、零 warning/error。因此历史来源核验与 C01-C07 继续成立。",
+        "request_coverage": "正文与 evidence 未发生内容变化，14 个官方章节、侨批机制、贸易清算、最后一公里、国家治理、战争、家庭、金融风险、行业退出及新旧出海者仍保持完整覆盖。新增统计字段补齐了机器可读报告元数据，没有引入新的内容缺口。",
+        "reasoning_quality": "Revision 1 已核实的信用、清算、国家主权、战争节点、家庭照护及替代解释全部原样保留；本轮没有新增推理或结论。统计字段均直接来自文件计数，不涉及模型推断。",
+        "readability": "正文逐字未变，仍可脱离对话独立阅读；内容地图、主线、事实表、反方边界与 Limitations 清楚。新增 frontmatter 统计字段不影响阅读结构。",
+        "limitations": "原有未读原书、ASR 专名风险、单一档案例、路线下限、暗杀悬案、保存偏差与样本边界均原样保留。Revision 2 的统计和审计收据进一步明确了转写规模与机器检查结果，没有掩盖来源限制。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07"
+      ],
+      "coverage_unit_ids_checked": [
+        "SC01",
+        "SC02",
+        "SC03",
+        "SC04",
+        "SC05",
+        "SC06",
+        "SC07",
+        "SC08",
+        "SC09",
+        "SC10",
+        "SC11",
+        "SC12",
+        "SC13",
+        "SC14"
+      ],
+      "source_content_map": [
+        {
+          "id": "SCM01",
+          "title": "侨批首先是收据、汇款凭证与家庭责任契约",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC01"
+          ],
+          "notes": "报告在内容地图、开篇机制和主线一中覆盖，并解释电影式家书想象只代表部分后期材料。"
+        },
+        {
+          "id": "SCM02",
+          "title": "福建商人与暹罗王室及地方权力的贸易联姻",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC02"
+          ],
+          "notes": "报告把该段放入关系网络与地方嵌入背景，没有将节目叙述提升为独立核验史实。"
+        },
+        {
+          "id": "SCM03",
+          "title": "中国规模、日本强制与泰国吸纳的不同国家路径",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC03"
+          ],
+          "notes": "报告用国家治理主线重构三种能力来源，同时保留其为节目概括。"
+        },
+        {
+          "id": "SCM04",
+          "title": "借外籍身份与领事邮政规避暹罗监管",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC04"
+          ],
+          "notes": "报告覆盖外籍身份、邮政特权与国家主权冲突，未把规避路径写成无条件合法。"
+        },
+        {
+          "id": "SCM05",
+          "title": "走私信件、外汇流出与国家收编",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC05"
+          ],
+          "notes": "报告同时呈现邮政与外汇管制理由，以及民间网络的服务价值。"
+        },
+        {
+          "id": "SCM06",
+          "title": "熟人信用、方言帮群与无标准地址投递",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC06"
+          ],
+          "notes": "最后一公里、批脚、曼谷—香港—汕头—侨乡节点及声誉约束均得到覆盖。"
+        },
+        {
+          "id": "SCM07",
+          "title": "1930年代排华、教育与代际同化",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC07"
+          ],
+          "notes": "报告覆盖政策压力、语言学校和代际泰化，并反驳“文化自动消失”的绝对化结论。"
+        },
+        {
+          "id": "SCM08",
+          "title": "泰日同盟下的银行、换汇、运输和舆论控制",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC08"
+          ],
+          "notes": "报告明确限定1941年后的战时结构，专名不确定处未自行补写。"
+        },
+        {
+          "id": "SCM09",
+          "title": "东兴汇路与可替换的秘密节点",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC09"
+          ],
+          "notes": "报告覆盖已知四条路线的材料下限、冗余价值和责任追踪困难，没有把四条写成全部线路。"
+        },
+        {
+          "id": "SCM10",
+          "title": "蚁光炎、陈守明遇刺的相互指控与悬案",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC10"
+          ],
+          "notes": "正文明确保留归因不明，未替任何阵营补出结论。"
+        },
+        {
+          "id": "SCM11",
+          "title": "两头家、女性照护与代际泰化",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC11"
+          ],
+          "notes": "报告覆盖跨国家庭经济、两地妻子与当地女性角色，同时提示财产权和档案偏差。"
+        },
+        {
+          "id": "SCM12",
+          "title": "汇差、贸易、战争财与客户资金风险",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC12"
+          ],
+          "notes": "手续费、汇差、投机、破产、未兑付和道德风险均进入主线与事实表。"
+        },
+        {
+          "id": "SCM13",
+          "title": "批局转旅行社及银行邮政航空接管功能",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC13"
+          ],
+          "notes": "报告将退出解释为功能迁移，并保留行业组织终点仍需原始档案核验。"
+        },
+        {
+          "id": "SCM14",
+          "title": "旧番客与新出海者的资源、融入和责任差异",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC14"
+          ],
+          "notes": "报告覆盖生存型融入与资本技术出海差异，避免把华人身份视为天然互信。"
+        },
+        {
+          "id": "SCM15",
+          "title": "UNESCO侨批与银信档案登记的外部核验边界",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S06"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "正文准确写明2013年登记及信件、报告、账簿、汇款收据等档案类型，并明确它不能证明泰国具体政策、路线、暗杀或行业数字。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "Revision 2 元数据复核完成。快照匹配：report=4455f44d9dc5f6134f5f3ad7764361fb0677ab9e9aa48b8e47c5cbca6d5bb8c9，evidence=939d44338b123cbc66e727edab8363cf862263cb76eac65af1ef8ec08cf1a87f。内容等价性：删除 hanzi_chars_raw/total_chars_raw/transcript_segments/hanzi_chars_polished/total_chars_polished 并恢复 completed 状态后，报告 SHA 精确等于 revision 1 的 36578b17f75bc2ad15ebeb739533a3f43312e8277ca7e9311c7ab8b224d23b77；正文无漂移。统计核验：raw 汉字 24769、总字符 91779、2783 段；polished 汉字 14562、总字符 18156，fill_report_stats --dry-run 显示一致。audit_transcript：ok=true，SHA-256=e3839b6d159be7262158f2aaa45b934295a03ffee172ba6b90c413d7fce8e514，2783 段/5157 秒，时间戳单调，最大连续重复 1，warnings=[]，errors=[]。历史 15 项 source_content_map、C01-C07、SC01-SC14 与 R01-R07 均重新核对为仍适用；无 unsupported_claims、missing_requirements 或 hard_failures。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 95.65,
+    "evaluated_on": "2026-10-25",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "8ce41819fc80832a522644bf014b73cf8a80613a2315d542e16363ec8a8b4bb5",
+    "evidence_sha256": "939d44338b123cbc66e727edab8363cf862263cb76eac65af1ef8ec08cf1a87f"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-6",
+            "harness": "codex",
+            "run_id": "review-4b22c09a95b1",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 95,
+            "request_coverage": 98,
+            "reasoning_quality": 96,
+            "readability": 92,
+            "limitations": 98
+          },
+          "score_reasons": {
+            "evidence_fidelity": "已从完整转写、精编、shownotes和UNESCO页面逐项核对。报告把泰国政策、东兴汇路、暗杀归因、汇差与行业终点严格保留为嘉宾或节目口径；UNESCO仅用于确认档案类型与2013年登记。转写审计为2783段、5157秒、时间戳单调、最大连续重复1、无warning/error。",
+            "request_coverage": "14个官方章节全部进入内容地图和正文主线，侨批机制、贸易清算、最后一公里、国家治理、战争、家庭、金融风险、行业退出及新旧出海者均有实质覆盖，并包含关键数字、反方、限制与追问。",
+            "reasoning_quality": "报告没有把侨批浪漫化为家书，也没有把它简化为走私；以信用、清算、国家主权、战争节点和家庭照护重构机制，并对100万/60万差额、暗杀与路线规模给出替代解释和审计边界。",
+            "readability": "报告可脱离对话独立阅读，内容地图和主线清楚。篇幅较长且部分边界在正文、事实表和Limitations中重复，因此可读性略低于其它维度，但没有影响理解。",
+            "limitations": "明确披露未读原书、ASR专名风险、单个档案例、路线下限、暗杀悬案、档案保存偏差及新出海者样本边界；“东盟十国除不丹”也被识别为口误或ASR冲突。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07"
+          ],
+          "coverage_unit_ids_checked": [
+            "SC01",
+            "SC02",
+            "SC03",
+            "SC04",
+            "SC05",
+            "SC06",
+            "SC07",
+            "SC08",
+            "SC09",
+            "SC10",
+            "SC11",
+            "SC12",
+            "SC13",
+            "SC14"
+          ],
+          "source_content_map": [
+            {
+              "id": "SCM01",
+              "title": "侨批首先是收据、汇款凭证与家庭责任契约",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC01"
+              ],
+              "notes": "报告在内容地图、开篇机制和主线一中覆盖，并解释电影式家书想象只代表部分后期材料。"
+            },
+            {
+              "id": "SCM02",
+              "title": "福建商人与暹罗王室及地方权力的贸易联姻",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC02"
+              ],
+              "notes": "报告把该段放入关系网络与地方嵌入背景，没有将节目叙述提升为独立核验史实。"
+            },
+            {
+              "id": "SCM03",
+              "title": "中国规模、日本强制与泰国吸纳的不同国家路径",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC03"
+              ],
+              "notes": "报告用国家治理主线重构三种能力来源，同时保留其为节目概括。"
+            },
+            {
+              "id": "SCM04",
+              "title": "借外籍身份与领事邮政规避暹罗监管",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC04"
+              ],
+              "notes": "报告覆盖外籍身份、邮政特权与国家主权冲突，未把规避路径写成无条件合法。"
+            },
+            {
+              "id": "SCM05",
+              "title": "走私信件、外汇流出与国家收编",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC05"
+              ],
+              "notes": "报告同时呈现邮政与外汇管制理由，以及民间网络的服务价值。"
+            },
+            {
+              "id": "SCM06",
+              "title": "熟人信用、方言帮群与无标准地址投递",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC06"
+              ],
+              "notes": "最后一公里、批脚、曼谷—香港—汕头—侨乡节点及声誉约束均得到覆盖。"
+            },
+            {
+              "id": "SCM07",
+              "title": "1930年代排华、教育与代际同化",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC07"
+              ],
+              "notes": "报告覆盖政策压力、语言学校和代际泰化，并反驳“文化自动消失”的绝对化结论。"
+            },
+            {
+              "id": "SCM08",
+              "title": "泰日同盟下的银行、换汇、运输和舆论控制",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC08"
+              ],
+              "notes": "报告明确限定1941年后的战时结构，专名不确定处未自行补写。"
+            },
+            {
+              "id": "SCM09",
+              "title": "东兴汇路与可替换的秘密节点",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC09"
+              ],
+              "notes": "报告覆盖已知四条路线的材料下限、冗余价值和责任追踪困难，没有把四条写成全部线路。"
+            },
+            {
+              "id": "SCM10",
+              "title": "蚁光炎、陈守明遇刺的相互指控与悬案",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC10"
+              ],
+              "notes": "正文明确保留归因不明，未替任何阵营补出结论。"
+            },
+            {
+              "id": "SCM11",
+              "title": "两头家、女性照护与代际泰化",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC11"
+              ],
+              "notes": "报告覆盖跨国家庭经济、两地妻子与当地女性角色，同时提示财产权和档案偏差。"
+            },
+            {
+              "id": "SCM12",
+              "title": "汇差、贸易、战争财与客户资金风险",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC12"
+              ],
+              "notes": "手续费、汇差、投机、破产、未兑付和道德风险均进入主线与事实表。"
+            },
+            {
+              "id": "SCM13",
+              "title": "批局转旅行社及银行邮政航空接管功能",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC13"
+              ],
+              "notes": "报告将退出解释为功能迁移，并保留行业组织终点仍需原始档案核验。"
+            },
+            {
+              "id": "SCM14",
+              "title": "旧番客与新出海者的资源、融入和责任差异",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC14"
+              ],
+              "notes": "报告覆盖生存型融入与资本技术出海差异，避免把华人身份视为天然互信。"
+            },
+            {
+              "id": "SCM15",
+              "title": "UNESCO侨批与银信档案登记的外部核验边界",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "正文准确写明2013年登记及信件、报告、账簿、汇款收据等档案类型，并明确它不能证明泰国具体政策、路线、暗杀或行业数字。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04",
+            "R05",
+            "R06",
+            "R07"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "来源优先复核完成。公开artifact与audit_transcript机器收据一致；报告对14个官方章节全覆盖，未发现核心遗漏、伪造引用或关键数字越界。"
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 95.65,
+        "evaluated_on": "2026-10-25",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "36578b17f75bc2ad15ebeb739533a3f43312e8277ca7e9311c7ab8b224d23b77",
+        "evidence_sha256": "939d44338b123cbc66e727edab8363cf862263cb76eac65af1ef8ec08cf1a87f"
+      }
+    }
+  ]
+}

@@ -1,0 +1,351 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AMD_RDNA4_FP8_GEMM_WMMA与Tile搜索_深度解析_20261025.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "review-rdna4-r2-format-20261025",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 98,
+        "request_coverage": 98,
+        "reasoning_quality": 97,
+        "readability": 96,
+        "limitations": 98
+      },
+      "score_reasons": {
+        "evidence_fidelity": "已核对AMD博客、kernel.hip/configs.hpp/gemm_common.hpp原始代码和RDNA4 WMMA官方参考。v2int/v8float、四配置、LDS/VGPR、全部benchmark表、10+30计时和hipBLASLt口径准确；原表63KB与35840B的冲突被诚实保留。 本轮格式复核证明当前正文在忽略行尾空格并统一生命周期 status 后，与上一轮已逐源核验的精确快照逐字节一致；evidence SHA 亦未变化。",
+        "request_coverage": "覆盖FP8相对FP16的变化、四种配置、全部四组性能表、shape敏感性、特殊正确性测试、实验环境、手工/离线/在线调优、产品边界、反方、Limitations和追问。 当前 revision 没有增删正文、要求、claim 或覆盖单元，历史 9 项 source_content_map 仍完整适用。",
+        "reasoning_quality": "把数据宽度、LDS、FP32累加器寄存器压力、tile/K/wave和预取可达性组织成联合搜索问题；没有把小shape领先包装成普遍胜出，也指出启发式hipBLASLt并非穷尽调优空间。 格式清理没有改变任何公式、数字、推断、边界或因果关系。",
+        "readability": "先机制后配置再表格和边界，四张表完整且解释紧随其后；术语密度高但均在使用处定义。 唯一正文层变化是清除 1 行行尾空格，减少格式噪声；章节与表达未变。",
+        "limitations": "单卡、四shape、单dtype路径、均值无方差、±1特殊输入、厂商自测、原文数字冲突和未本地复现均明确披露。 既有 Limitations 与来源时点未受格式 revision 影响。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07"
+      ],
+      "coverage_unit_ids_checked": [],
+      "source_content_map": [
+        {
+          "id": "SCM01",
+          "title": "RDNA4 FP8 WMMA builtin、v2int输入与v8float累加",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "E4M3、每lane八值、两32-bit寄存器、FP32 accumulator和gfx12 builtin均准确。"
+        },
+        {
+          "id": "SCM02",
+          "title": "从FP16直接移植到FP8只释放LDS而不会自动重排Tile",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "128-bit搬运量、Config1剩余LDS和继续调优动机得到覆盖。"
+        },
+        {
+          "id": "SCM03",
+          "title": "四个Tile/K/Wave配置及预取、LDS和VGPR约束",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "四配置参数、58.5/54KB、210/235 VGPR和折叠约束准确。"
+        },
+        {
+          "id": "SCM04",
+          "title": "四组Transformer shape上的完整性能结果",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "所有表格数值完整；大shape落后与小shape领先口径正确。"
+        },
+        {
+          "id": "SCM05",
+          "title": "±1输入bit-exact验证与一般FP8误差的边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "报告准确解释整数部分和能抓实现错误，却不能覆盖scale、舍入和饱和。"
+        },
+        {
+          "id": "SCM06",
+          "title": "RX9070XT、ROCm10.0、TN与10 warmup/30均值实验方法",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "硬件、软件、计算类型、启发式参考和TFLOP/s公式均记录。"
+        },
+        {
+          "id": "SCM07",
+          "title": "原文FP16 LDS表格的算术冲突",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "报告没有选择性修正来源，列出尺寸直算35840B与63KB原值的冲突。"
+        },
+        {
+          "id": "SCM08",
+          "title": "手工Tile扫描与hipBLASLt离线/在线调优的关系",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "手工示例被定位为搜索空间切片，未写成全局最优。"
+        },
+        {
+          "id": "SCM09",
+          "title": "代码目录与实现文件结构",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "kernel、configs和common定义已直接读取，报告只使用与机制相关的实现事实。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "独立复核格式 revision。开始前核对 report SHA-256=b41d02360d97a7c151e0327d40b84778fd5f8eac51c27e5cab12e1b348d715a9、evidence SHA-256=636c3407585bcb368fcb93a2ce636c62415738dcad0d4c31c697a1db5da0ef4a，与提示一致。git index 中上一轮已通过报告 SHA-256=32fe94f201c61ef35e80cb812f4595fdcdde6d38fe8fd46f006929ab0bc8141f，与 history revision 1 decision 绑定哈希完全一致。git diff 显示本轮删除 1 行行尾空格，并由 new-revision 将 status 从 completed 切为 in_progress；工作树已无行尾空格。对 index 与 worktree 同时执行逐行 rstrip，并把 status 归一化为同一占位值后，全文逐字节相等（normalized_equal=true）。因此正文语义、S01–S07 来源支持、C01–C12 claims、U01–U19 覆盖单元与 R01–R07 要求均未变化；重新核验后沿用历史 9 项来源地图和评分。无 unsupported claim、missing requirement 或 hard failure。加权总分 98×0.35+98×0.20+97×0.20+96×0.15+98×0.10=97.50。\n\nreport_quality.py check 原始结果：\nai-learning/reports/knowledge_reports/AMD_RDNA4_FP8_GEMM_WMMA与Tile搜索_深度解析_20261025.md｜tier=important｜decision=pass｜score=97.5｜ERROR 0｜WARN 0"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 97.5,
+    "evaluated_on": "2026-10-25",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "dc49bee2990188f4a7642abde0f479781fc74ef8e12c32aa8b3ee0e883d51644",
+    "evidence_sha256": "636c3407585bcb368fcb93a2ce636c62415738dcad0d4c31c697a1db5da0ef4a"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-6",
+            "harness": "codex",
+            "run_id": "review-dd821bc9583e",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 98,
+            "request_coverage": 98,
+            "reasoning_quality": 97,
+            "readability": 96,
+            "limitations": 98
+          },
+          "score_reasons": {
+            "evidence_fidelity": "已核对AMD博客、kernel.hip/configs.hpp/gemm_common.hpp原始代码和RDNA4 WMMA官方参考。v2int/v8float、四配置、LDS/VGPR、全部benchmark表、10+30计时和hipBLASLt口径准确；原表63KB与35840B的冲突被诚实保留。",
+            "request_coverage": "覆盖FP8相对FP16的变化、四种配置、全部四组性能表、shape敏感性、特殊正确性测试、实验环境、手工/离线/在线调优、产品边界、反方、Limitations和追问。",
+            "reasoning_quality": "把数据宽度、LDS、FP32累加器寄存器压力、tile/K/wave和预取可达性组织成联合搜索问题；没有把小shape领先包装成普遍胜出，也指出启发式hipBLASLt并非穷尽调优空间。",
+            "readability": "先机制后配置再表格和边界，四张表完整且解释紧随其后；术语密度高但均在使用处定义。",
+            "limitations": "单卡、四shape、单dtype路径、均值无方差、±1特殊输入、厂商自测、原文数字冲突和未本地复现均明确披露。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07"
+          ],
+          "coverage_unit_ids_checked": [],
+          "source_content_map": [
+            {
+              "id": "SCM01",
+              "title": "RDNA4 FP8 WMMA builtin、v2int输入与v8float累加",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "E4M3、每lane八值、两32-bit寄存器、FP32 accumulator和gfx12 builtin均准确。"
+            },
+            {
+              "id": "SCM02",
+              "title": "从FP16直接移植到FP8只释放LDS而不会自动重排Tile",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "128-bit搬运量、Config1剩余LDS和继续调优动机得到覆盖。"
+            },
+            {
+              "id": "SCM03",
+              "title": "四个Tile/K/Wave配置及预取、LDS和VGPR约束",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "四配置参数、58.5/54KB、210/235 VGPR和折叠约束准确。"
+            },
+            {
+              "id": "SCM04",
+              "title": "四组Transformer shape上的完整性能结果",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "所有表格数值完整；大shape落后与小shape领先口径正确。"
+            },
+            {
+              "id": "SCM05",
+              "title": "±1输入bit-exact验证与一般FP8误差的边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "报告准确解释整数部分和能抓实现错误，却不能覆盖scale、舍入和饱和。"
+            },
+            {
+              "id": "SCM06",
+              "title": "RX9070XT、ROCm10.0、TN与10 warmup/30均值实验方法",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "硬件、软件、计算类型、启发式参考和TFLOP/s公式均记录。"
+            },
+            {
+              "id": "SCM07",
+              "title": "原文FP16 LDS表格的算术冲突",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "报告没有选择性修正来源，列出尺寸直算35840B与63KB原值的冲突。"
+            },
+            {
+              "id": "SCM08",
+              "title": "手工Tile扫描与hipBLASLt离线/在线调优的关系",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "手工示例被定位为搜索空间切片，未写成全局最优。"
+            },
+            {
+              "id": "SCM09",
+              "title": "代码目录与实现文件结构",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "kernel、configs和common定义已直接读取，报告只使用与机制相关的实现事实。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04",
+            "R05",
+            "R06",
+            "R07"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "eacli web.read对WMMA长文返回被截断后，按允许的最小只读fallback获取同一官方页面，并以raw GitHub源码交叉核对。当前无硬失败。"
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 97.5,
+        "evaluated_on": "2026-10-25",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "32fe94f201c61ef35e80cb812f4595fdcdde6d38fe8fd46f006929ab0bc8141f",
+        "evidence_sha256": "636c3407585bcb368fcb93a2ce636c62415738dcad0d4c31c697a1db5da0ef4a"
+      }
+    }
+  ]
+}

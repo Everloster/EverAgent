@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "status": "succeeded",
+  "silent": true,
+  "interactive_browser": false,
+  "audio_playback": false,
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/6adb20cac96c8942ec111f4d",
+  "artifact": {
+    "source_host": "www.xiaoyuzhoufm.com",
+    "source_sha256": "5ccf25178cff48dbdd74a88a0ff5a86f426127671a3e8efb545f9d6cb31502e4",
+    "audio_size": 235266126,
+    "language": "zh",
+    "segments": 859,
+    "service_version": "whisper.cpp-v1.9.1-sm120",
+    "transcript_size": 40902,
+    "transcript_sha256": "959fa2ce12ff669606e6df6ce06fa480f07f1eb1af2d978bdd76d12c47bb9345",
+    "quality": {
+      "repetition_guard": {
+        "passed": true,
+        "max_consecutive_identical": 2
+      }
+    }
+  },
+  "transfer": {
+    "mode": "eacli pull",
+    "atomic": true,
+    "local_path": "podcast-learning/reports/transcripts/2026-10-23_xiaoyuzhou-renmingongyuan-ai_expensive-token-dirty-work.transcript.txt",
+    "verified_sha256": true
+  },
+  "audit": {
+    "ok": true,
+    "lines": 859,
+    "segments": 859,
+    "size": 40902,
+    "sha256": "959fa2ce12ff669606e6df6ce06fa480f07f1eb1af2d978bdd76d12c47bb9345",
+    "duration_seconds": 1328,
+    "max_consecutive_identical": 2,
+    "warnings": [],
+    "errors": []
+  },
+  "runner": "eacli-podcast-remote"
+}

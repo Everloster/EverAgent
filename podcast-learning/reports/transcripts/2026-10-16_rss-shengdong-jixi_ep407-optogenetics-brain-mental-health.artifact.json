@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "status": "succeeded",
+  "silent": true,
+  "interactive_browser": false,
+  "audio_playback": false,
+  "source_url": "https://etw.fm/2227-2026-noble-prize",
+  "artifact": {
+    "source_host": "podcasts.apple.com",
+    "source_sha256": "3efee7b5ceec51c3733ab6ee6e209fae8014cbb000748a8437f5c1e9fb16c458",
+    "audio_size": 1058908178,
+    "language": "zh",
+    "segments": 3297,
+    "service_version": "whisper.cpp-v1.9.1-sm120",
+    "transcript_size": 162398,
+    "transcript_sha256": "76e4334756c3abcfd5fe3bb7ef34fab9051b8dd3138d3a47b34be4d6616a9903",
+    "quality": {
+      "repetition_guard": {
+        "passed": true,
+        "max_consecutive_identical": 2
+      }
+    }
+  },
+  "transfer": {
+    "mode": "eacli pull",
+    "atomic": true,
+    "local_path": "podcast-learning/reports/transcripts/2026-10-16_rss-shengdong-jixi_ep407-optogenetics-brain-mental-health.transcript.txt",
+    "verified_sha256": true
+  },
+  "audit": {
+    "ok": true,
+    "lines": 3297,
+    "segments": 3297,
+    "size": 162398,
+    "sha256": "76e4334756c3abcfd5fe3bb7ef34fab9051b8dd3138d3a47b34be4d6616a9903",
+    "duration_seconds": 5979,
+    "max_consecutive_identical": 2,
+    "warnings": [],
+    "errors": []
+  },
+  "runner": "eacli-podcast-remote"
+}

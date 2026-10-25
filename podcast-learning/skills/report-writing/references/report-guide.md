@@ -60,6 +60,7 @@
 
 ## 六、已知坑速查（持续追加）
 
+- MiniMax M3.1 Flash 对长篇“先分析再输出”任务可能把 `max_tokens` 全耗在强制 thinking，最终没有正文。60 分钟以上节目用 2–5 分钟或单章节切片，prompt 只要求“压缩翻译/整理，只输出正文”，单片 `max_tokens` 可设 9000；由协调器按逐字稿组装与核验。空 final 视为失败调用，生成能力不得自动重放。
 - 智谱 web.read 对小宇宙金融词 URL 误判 1301 → curl 降级
 - Razer artifact 拉回：`eacli pull` 当前单文件上限 190KB；更大 transcript 用
   `podcast-learning/scripts/podcast_artifact_pull.py pull` 自动走 `eacli invoke` 远程分片、

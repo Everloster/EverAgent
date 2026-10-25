@@ -5,7 +5,7 @@
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
-| — | 2026-10-15 | 1h46m | [184: 与陈哲的「具身季报26Q3」：Astra冲击后，通用模型会吃掉Robotics吗？](https://podcast.latepost.com/184)<!--g:1ba74c4b-43e4-416c-aafe-f191fcb44898--> | — |
+| — | 2026-10-15 | 1h46m | [184: 与陈哲的「具身季报26Q3」：Astra冲击后，通用模型会吃掉Robotics吗？](https://podcast.latepost.com/184)<!--g:1ba74c4b-43e4-416c-aafe-f191fcb44898--> | ✅ 已处理（2026-10-15 rss-wandian-latetalk_184-embodied-quarterly-26q3） |
 | — | 2026-10-02 | 2h07m | [183: 与Henry的「AI季报26Q3」：Muse引爆个人助理、Astra进入机器人、OpenAI收入猛增](https://podcast.latepost.com/183)<!--g:47e78c2f-c36f-4894-9124-dad5dcffc972--> | ✅ 已处理（2026-10-02 rss-wandian-latetalk_ai-quarterly-26q3） |
 | — | 2026-09-24 | 3h22m | [182: 对话梁琛奇：抖音、猫箱、创业，「他们都搞生产力，我想用 AI 创造开心」](https://podcast.latepost.com/182)<!--g:63e76d1a-c5bb-4103-8ef4-e235917367c6--> | ✅ 已处理（2026-09-24 rss-wandian-latetalk_liangchenqi-ai-joy） |
 | — | 2026-09-02 | 1h02m | [180: 具身智能的金钱游戏：进展难测、收入催熟与 IPO 竞速](https://podcast.latepost.com/180)<!--g:68e222fe-2a2e-43ee-811a-dfdb445a9deb--> | ✅ 已处理（2026-09-02 rss-wandian-latetalk_embodied-money） |

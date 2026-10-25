@@ -1,0 +1,185 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/Google_TB筛查_从CAD工具到开放医疗基础模型_深度解析_20261025.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-25",
+  "generator": {
+    "model": "minimax-m3.1-flash",
+    "harness": "eacli",
+    "run_id": "generator-Google_TB筛查_从CAD工具到开放医疗基础模型_深度解析_20261025-m31-20261025",
+    "explicit_model_override": true,
+    "override_reason": "用户明确指定：Razer 优先使用 MiniMax M3.1 Flash，额度耗尽后才切 GLM-5.3。"
+  },
+  "task": {
+    "summary": "深度解析Google将结核病胸片CAD从研究、独立评估、前瞻性验证和监管推进到开放医疗基础模型、国家数据主权与声学分诊的路线。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "实际读取Google官方原文，并定位WHO、Radiology、NEJM AI和Stop TB一手或权威来源。"
+      },
+      {
+        "id": "R02",
+        "text": "重构从专病CAD、临床验证和监管到开放基础模型与国家级部署的完整路线。"
+      },
+      {
+        "id": "R03",
+        "text": "区分筛查、分诊与确诊，解释灵敏度、特异度、阈值、谱偏移和前瞻性验证。"
+      },
+      {
+        "id": "R04",
+        "text": "逐项核对部署数字并标注Google/合作方自报，不能把规模写成临床结局。"
+      },
+      {
+        "id": "R05",
+        "text": "显式处理2019官方回顾与2023可定位论文的年份冲突。"
+      },
+      {
+        "id": "R06",
+        "text": "覆盖数据主权、偏差、运维、监管、隐私、单位经济、反方、Limitations与思考追问。"
+      },
+      {
+        "id": "R07",
+        "text": "完成独立review、质量门和索引更新。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "official",
+      "title": "Google Research — Bringing foundational models to the front lines of TB screening",
+      "locator": "https://research.google/blog/bringing-foundational-models-to-the-front-lines-of-tb-screening",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S02",
+      "kind": "official",
+      "title": "WHO — Use of computer-aided detection software for tuberculosis screening",
+      "locator": "https://www.who.int/publications/i/item/9789240110373",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S03",
+      "kind": "official",
+      "title": "Google 2021 — Tackling tuberculosis screening with AI",
+      "locator": "https://blog.google/innovation-and-ai/technology/health/tuberculosis-screening-ai-io-2021",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S04",
+      "kind": "primary",
+      "title": "Deep Learning Detection of Active Pulmonary Tuberculosis at Chest Radiography",
+      "locator": "https://pubs.rsna.org/doi/10.1148/radiol.212213",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S05",
+      "kind": "primary",
+      "title": "Prospective Multi-Site Validation of AI to Detect Tuberculosis and Chest X-Ray Abnormalities",
+      "locator": "https://pubmed.ncbi.nlm.nih.gov/39823016",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S06",
+      "kind": "official",
+      "title": "Stop TB Partnership — AI-powered CAD software and evaluations",
+      "locator": "https://www.stoptb.org/what-we-do/accelerate-tb-innovations/digital-health-technology-hub/ai-powered-computer-aided-detection-cad-software",
+      "accessed_on": "2026-10-25"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "胸片CAD输出的是活动性肺结核风险或分诊结果，不能替代微生物学确诊和临床责任链。",
+      "report_anchor": "一、先分清筛查、分诊与诊断",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S05"
+      ],
+      "evidence": "Google与WHO均把用途限定为screening/triage；NEJM AI研究为分诊验证。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "Google 2026回顾文所称“2019年在Radiology发表基准”与本轮可定位的2023年论文并不一致，不能直接合并为同一记录。",
+      "report_anchor": "二、官方回顾所称 2019→2021→2023/2024→监管→部署的证据阶梯",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S04"
+      ],
+      "evidence": "S01原文年份为2019；S04 DOI 10.1148/radiol.212213正式发表年份为2023。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "WHO自2021年起建议在结核病筛查和分诊中使用合格CAD，属于政策工具定位，不是对Google某一模型的普遍性能背书。",
+      "report_anchor": "二、官方回顾所称 2019→2021→2023/2024→监管→部署的证据阶梯",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S06"
+      ],
+      "evidence": "WHO官方CAD资料与Stop TB Partnership工具页。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "2024年NEJM AI多中心前瞻性研究在高TB/HIV负担人群中显示：高敏感阈值下TB AI为87%敏感度、70%特异度，只在敏感度上对放射科医生达到不劣，且AI与医生均未达到WHO 90%敏感度目标；论文总括结论仍将其用于活动性肺结核分诊时评为不劣于放射科医生。",
+      "report_anchor": "二、官方回顾所称 2019→2021→2023/2024→监管→部署的证据阶梯",
+      "support": "direct",
+      "source_ids": [
+        "S05"
+      ],
+      "evidence": "PubMed摘要报告1978名招募者、1910名分析者，以及87%/70%、78%/82%、放射科医生76%/82%和未达到WHO敏感度目标等分指标结果。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "六国、约40家机构、90多名临床人员、2.5万张胸片、45秒和3000次免费筛查是Google/合作方部署口径，不能当作敏感度、治疗结局或成本效益。",
+      "report_anchor": "三、六国、约40家机构、90多名临床人员、2.5万张影像、45秒和3000次免费筛查的正确读法",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "Google官方博客Frontline impact章节。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "MedGemma 4B/27B、本地运行、印尼每年5000万人筛查目标、HeAR使用3亿音频片段等均为官方项目主张，分别代表开放模型、数据主权和声学分诊方向。",
+      "report_anchor": "五、从单点 CAD 到开放医疗基础模型",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "Google官方博客HAI-DEF、Indonesia与HeAR章节。",
+      "critical": true
+    },
+    {
+      "id": "C07",
+      "claim": "[推测] 开放权重和本地部署能增强可替换性与数据主权，但必须以本地验证、版本治理和人工确认补足临床证据。",
+      "report_anchor": "九、对 AI 产品与 EverAgent 的可迁移启示",
+      "support": "inference",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S05"
+      ],
+      "evidence": "由官方部署路线、WHO用途边界和前瞻性验证要求综合。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [],
+  "limitations": [
+    "Google博客中的部署规模、MedGemma下载量、印尼目标、HeAR数据规模和资助金额均是项目方口径，未做独立审计。",
+    "本轮未取得Google回顾文中“2019年Radiology论文”的直接链接，不能确认它与2023年DOI 10.1148/radiol.212213的关系。",
+    "WHO建议适用于合格CAD和特定筛查/分诊用途，不应外推为自主诊断许可。",
+    "NEJM AI和Radiology结论受研究人群、设备、阈值、参考标准和工作流约束。",
+    "未获得完整国家部署协议、错误分布、最终确诊率、治疗启动率、成本效果和传播结局。",
+    "报告未独立审计Nexus AI证书、约40家机构清单或印度尼西亚项目执行进度。"
+  ]
+}

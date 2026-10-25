@@ -1,0 +1,318 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-16_rss-shengdong-jixi_ep407-optogenetics-brain-mental-health.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-6",
+        "harness": "codex",
+        "run_id": "reviewer-etw407-gpt6-20261025",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "scores": {
+        "evidence_fidelity": 93,
+        "request_coverage": 97,
+        "reasoning_quality": 95,
+        "readability": 93,
+        "limitations": 97
+      },
+      "score_reasons": {
+        "evidence_fidelity": "逐项核对官方节目页、3297段转写、精编、诺奖官网与三篇原始论文。报告修正了20/16/4为节目假设示例，区分freezing与主观恐惧、视力恢复与精神疾病临床成熟度。轻微扣分来自精神医学史、10%–20%、25%和临床期别仍只有节目口径，但均已显式降级。",
+        "request_coverage": "13个shownotes核心章节全部在内容地图和四条主线中落点；报告另含16项事实表、外部核验、分析、10条反方、Limitations和10个追问，可独立阅读。",
+        "reasoning_quality": "报告围绕相关—操控—动物行为—临床转化四层证据链组织，能区分必要/充分、构念效度、异质性、递送、临床终点和自主性，并对AI分类与机制解释做清楚分层。",
+        "readability": "顶部速览简短，内容地图、四条主线与事实表层级清楚。约2万字符与100分钟高密度节目相称；主线二和事实表存在少量必要重复。",
+        "limitations": "系统写明ASR、节目历史口径、动物代理指标、外部核验范围、视力与精神疾病差异、临床试验不足及缺少患者/伦理/反方视角。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06"
+      ],
+      "coverage_unit_ids_checked": [
+        "SC01",
+        "SC02",
+        "SC03",
+        "SC04",
+        "SC05",
+        "SC06",
+        "SC07",
+        "SC08",
+        "SC09",
+        "SC10",
+        "SC11",
+        "SC12",
+        "SC13"
+      ],
+      "source_content_map": [
+        {
+          "id": "M01",
+          "title": "吴承瀚与Deisseroth的交集",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC01"
+          ],
+          "notes": "人物经历只作背景，未升级为疗效证据。"
+        },
+        {
+          "id": "M02",
+          "title": "精神疾病治疗史",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC02"
+          ],
+          "notes": "历史口述保留节目口径，铁路工人细节标待验证。"
+        },
+        {
+          "id": "M03",
+          "title": "从相关观察到操控检验",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S06",
+            "S07",
+            "S08",
+            "S09"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC03"
+          ],
+          "notes": "报告准确区分相关、干预与跨物种外推。"
+        },
+        {
+          "id": "M04",
+          "title": "药物有效不等于病因成立",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC04"
+          ],
+          "notes": "SSRI和阿司匹林类比覆盖且未反推单一病因。"
+        },
+        {
+          "id": "M05",
+          "title": "ChR2与病毒/光纤机制",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S06",
+            "S07",
+            "S08",
+            "S09"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC05"
+          ],
+          "notes": "技术闭环、等待时间、手术损伤和递送边界完整。"
+        },
+        {
+          "id": "M06",
+          "title": "恐惧记忆与freezing边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S06",
+            "S07",
+            "S08",
+            "S09"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC06"
+          ],
+          "notes": "2012论文与节目分开核验，明确freezing不是完整恐惧。"
+        },
+        {
+          "id": "M07",
+          "title": "外侧缰核与抑郁样动物模型",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S06",
+            "S07",
+            "S08",
+            "S09"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC07"
+          ],
+          "notes": "2018论文与DBS个案分开，未外推统一病因。"
+        },
+        {
+          "id": "M08",
+          "title": "焦虑特征拆解",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC08"
+          ],
+          "notes": "呼吸、回避、感受三维覆盖，并标动物构念边界。"
+        },
+        {
+          "id": "M09",
+          "title": "标签、光谱与正常边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC09"
+          ],
+          "notes": "25%量表数字与诊断标签均降级为转述。"
+        },
+        {
+          "id": "M10",
+          "title": "治疗指标与患者自主性",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC10"
+          ],
+          "notes": "体重指标、死亡风险、价值判断和知情同意均覆盖。"
+        },
+        {
+          "id": "M11",
+          "title": "从研究到药物和视力恢复",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S06",
+            "S07",
+            "S08",
+            "S09"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC11"
+          ],
+          "notes": "明确视力恢复尝试与精神疾病临床成熟度不同。"
+        },
+        {
+          "id": "M12",
+          "title": "脑机接口与AI",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC12"
+          ],
+          "notes": "AI只作分类和辅助候选，未写成机制解释。"
+        },
+        {
+          "id": "M13",
+          "title": "痛苦测量与精准治疗",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC13"
+          ],
+          "notes": "疼痛量表、EEG/MEG/SEEG和精准终点均覆盖。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "目标快照已核对：report SHA-256=06ab94937db255562eee669cfda3b014d9045cdfdbbf012d5af954ecdf0c5537；evidence SHA-256=83745e4e5b8c47b3711ccd945bd0ff91bae3a3a8b5bfeb84757acf0039b5c3dd。转写审计3297段、5979秒、最大连续重复2、无warning/error。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 94.6,
+    "evaluated_on": "2026-10-25",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "3c49c8c475e15fe90cc0ea8a37831a966a1b3332971452ee9e1369631e0337ea",
+    "evidence_sha256": "83745e4e5b8c47b3711ccd945bd0ff91bae3a3a8b5bfeb84757acf0039b5c3dd"
+  }
+}

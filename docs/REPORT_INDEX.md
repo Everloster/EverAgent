@@ -8,32 +8,32 @@
 | 日期 | 报告 | 领域 |
 |------|------|------|
 | 2026-10-25 | [菠萝健康派 × 师永刚：中美抗癌十年，就医路径、费用真相与「被看见」的病人](../podcast-learning/reports/2026-10-21_xiaoyuzhou-boluo-jiankang_shiyonggang-cn-us-cancer-decade.md) | podcast-learning |
+| 2026-10-25 | [晚点聊 184：Astra 之后，具身智能的护城河从大脑移到哪里](../podcast-learning/reports/2026-10-15_rss-wandian-latetalk_184-embodied-quarterly-26q3.md) | podcast-learning |
+| 2026-10-25 | [忽左忽右 510：侨批不是一封家书，而是一套跨国金融与亲缘基础设施](../podcast-learning/reports/2026-10-23_xiaoyuzhou-huzuo-huyou_ep510-thai-qiaopi-network.md) | podcast-learning |
 | 2026-10-25 | [张小珺 × Lindon Gao（Dyna Robotics）：机器人长跑里的闭环、推论与「不犯错的 CEO」包袱](../podcast-learning/reports/2026-10-15_xiaoyuzhou-zhangxiaojun_vol154-dyna-lindon.md) | podcast-learning |
+| 2026-10-25 | [声东击西 #408：互联网增长的红利、代价与一个人的十年自我重建](../podcast-learning/reports/2026-10-22_rss-shengdong-jixi_ep408-lijing-internet-growth-self-reconstruction.md) | podcast-learning |
+| 2026-10-25 | [声东击西 #407：光遗传学怎样把情绪与精神疾病从相关推向因果](../podcast-learning/reports/2026-10-16_rss-shengdong-jixi_ep407-optogenetics-brain-mental-health.md) | podcast-learning |
 | 2026-10-25 | [半拿铁 No.223：“莆田系”医事——从电线杆到手术台，以及一门擅长招徕却难建信誉的生意](../podcast-learning/reports/2026-10-21_xiaoyuzhou-bannatie_putian-medical-system-history.md) | podcast-learning |
+| 2026-10-25 | [人民公园说AI：最贵 Token 干最脏的活，买的是模型还是注意力](../podcast-learning/reports/2026-10-23_xiaoyuzhou-renmingongyuan-ai_expensive-token-dirty-work.md) | podcast-learning |
 | 2026-10-25 | [vLLM 在 GB300 NVL72 上服务 DeepSeek-V4.1-Flash：P/D 分离 + Wide-EP 的机制拆解与口径核验](../ai-learning/reports/knowledge_reports/vLLM_DeepSeek-V4.1-Flash_PD分离与Wide-EP机架级服务_深度解析_20261025.md) | ai-learning |
 | 2026-10-25 | [vLLM Humming：量化推理 GEMM Kernel 库的设计、支持矩阵与证据边界](../ai-learning/reports/knowledge_reports/vLLM_Humming_量化推理Kernel库_深度解析_20261025.md) | ai-learning |
 | 2026-10-25 | [ThinkingBox：把数据库终态评分器变成 RL 奖励——Agent 后训练的可执行奖励链拆解](../ai-learning/reports/knowledge_reports/Microsoft_ThinkingBox_数据库评分转RL奖励与Agent后训练_深度解析_20261025.md) | ai-learning |
+| 2026-10-25 | [The Cognitive Revolution AI:AM：Clean Neurons、GPU 信贷与 AI 供应链的移动瓶颈](../podcast-learning/reports/2026-10-24_rss-cognitive-revolution_ai-am-clean-neurons-gpu-credit.md) | podcast-learning |
 | 2026-10-25 | [TensorRT Global Performance Tuner：从单一 build route 到可搜索的精度感知端到端调优](../ai-learning/reports/knowledge_reports/TensorRT_GlobalPerformanceTuner_可搜索build_route与精度感知调优_深度解析_20261025.md) | ai-learning |
 | 2026-10-25 | [PyTorch TorchTitan：新模型覆盖、规模化训练性能与 TitanRL 深度解析](../ai-learning/reports/knowledge_reports/PyTorch_TorchTitan_SOTA模型规模化训练与TitanRL_深度解析_20261025.md) | ai-learning |
 | 2026-10-25 | [OpenAI 千 Agent 并行生物数据研究：证据聚合与科学发现的深度解析](../ai-learning/reports/knowledge_reports/OpenAI_千Agent并行生物数据研究_证据聚合与科学发现_深度解析_20261025.md) | ai-learning |
 | 2026-10-25 | [OpenAI 十亿用户在线存储：Habitat × Azure Cosmos DB 的多租户、热点与可靠性深度解析](../ai-learning/reports/knowledge_reports/OpenAI_十亿用户在线存储_CosmosDB多租户与可靠性_深度解析_20261025.md) | ai-learning |
 | 2026-10-25 | [OpenAI Decisions API：低延迟决策端点的请求模型、能力边界与可迁移价值](../ai-learning/reports/knowledge_reports/OpenAI_Decisions_API_低延迟决策与响应式应用_深度解析_20261025.md) | ai-learning |
+| 2026-10-25 | [No Priors × Cloudflare CTO：Agentic Web 安全从补漏洞到重写 Web Rails](../podcast-learning/reports/2026-10-23_rss-no-priors_cloudflare-agentic-web-security.md) | podcast-learning |
+| 2026-10-25 | [NVIDIA Microduck Agentic Robotics：Agent 做准备，RL 学会走路，Sim-to-Real 才是难点](../ai-learning/reports/knowledge_reports/NVIDIA_Microduck_Agentic_Robotics_仿真训练与Sim2Real_深度解析_20261025.md) | ai-learning |
 | 2026-10-25 | [MiniMax M3.1 Flash：Agent 模型与 vLLM Day-0 支持深度解析](../ai-learning/reports/knowledge_reports/MiniMax_M3_1_Flash_Agent模型与vLLM_Day0支持_深度解析_20261025.md) | ai-learning |
 | 2026-10-25 | [LitPivot 深度分析：当文献不是被「读」，而是随想法重组——可迁移的证据地图设计](../ai-learning/reports/paper_analyses/52_litpivot_dynamic_contextualization_2026.md) | ai-learning |
+| 2026-10-25 | [Google 结核病筛查：从单点 CAD 工具到开放医疗基础模型](../ai-learning/reports/knowledge_reports/Google_TB筛查_从CAD工具到开放医疗基础模型_深度解析_20261025.md) | ai-learning |
 | 2026-10-25 | [Google TPU 上的新推理引擎：TorchTPU 上的 vLLM-TorchTPU 与 SGLang-TorchTPU 机制拆解与口径核验](../ai-learning/reports/knowledge_reports/Google_TPU_vLLM_SGLang_TorchTPU推理引擎_能力矩阵与口径核验_深度解析_20261025.md) | ai-learning |
 | 2026-10-25 | [GLM-5.3 在 16×H200 上的 PCP、DCP 与 Hybrid HiSparse：百万上下文推理的机制拆解与口径核验](../ai-learning/reports/knowledge_reports/GLM5_3_vLLM_PCP_DCP_HiSparse_百万上下文推理_深度解析_20261025.md) | ai-learning |
 | 2026-10-25 | [FlyDSL × PyTorch：把 GPU kernel 写进 Python 的 CuTe 式布局路线深度解析](../ai-learning/reports/knowledge_reports/PyTorch_FlyDSL_AMD_GPU_Kernel加速_深度解析_20261025.md) | ai-learning |
-| 2026-10-25 | [Flint-interactive：交互式数据可视化语言——语义事件与更新算子深度解析](../ai-learning/reports/knowledge_reports/Flint_interactive_交互式数据可视化语言_语义事件与更新算子_深度解析_20261025.md) | ai-learning |
-| 2026-10-25 | [Cloudflare AI 代码审查推理成本优化：从 2.43 美元到 0.77 美元的完整拆解与口径核验](../ai-learning/reports/knowledge_reports/Cloudflare_AI代码审查推理成本优化_68%降本_深度解析_20261025.md) | ai-learning |
-| 2026-10-25 | [Amazon × AVERI：把「评估集本身」交给第三方复核的元评估实践与其独立性边界](../ai-learning/reports/knowledge_reports/Amazon_AVERI_第三方安全评估元评估_独立性与可核查边界_深度解析_20261025.md) | ai-learning |
-| 2026-10-25 | [Amazon TorchNeuron：AWS Trainium 的原生 PyTorch 后端——执行路径、算子覆盖与分布式边界深度解析](../ai-learning/reports/knowledge_reports/Amazon_TorchNeuron_Trainium原生PyTorch后端_深度解析_20261025.md) | ai-learning |
-| 2026-10-25 | [AMD ROCm MegaKernel：MI355X 上交互式单请求推理的持久化内核路线深度解析](../ai-learning/reports/knowledge_reports/AMD_ROCm_MegaKernel_MI355X交互式单请求推理_深度解析_20261025.md) | ai-learning |
-| 2026-10-25 | [42章经 × 淏楠：Agent、多模态与具身的三次转向，以及一个 RL Infra 负责人的选择逻辑](../podcast-learning/reports/2026-10-24_xiaoyuzhou-42zhangjing_haonan-multimodal-rl-infra.md) | podcast-learning |
-| 2026-10-24 | [屠龙大实话 No.64：为什么人类总在为不平等愤怒——从猴子的黄瓜到资产阶级的续命术](../podcast-learning/reports/2026-10-21_xiaoyuzhou-tulong-dashihua_inequality-evolution.md) | podcast-learning |
-| 2026-10-24 | [AI炼金术 × 姚旭：让普通人被看见——NaukNauk 的表达、代理人与品类赌注](../podcast-learning/reports/2026-10-23_ximalaya-ailianjinshu_yaoxu-nauknauk-ai-companion.md) | podcast-learning |
-| 2026-10-23 | [TWIML：Airbnb Company Brain 如何把隐性知识交给 Agent](../podcast-learning/reports/2026-10-21_rss-twiml_airbnb-company-brain.md) | podcast-learning |
 
-## 🤖 AI Learning（144 篇）
+## 🤖 AI Learning（148 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
@@ -45,8 +45,10 @@
 | 2026-10-25 | [OpenAI 千 Agent 并行生物数据研究：证据聚合与科学发现的深度解析](../ai-learning/reports/knowledge_reports/OpenAI_千Agent并行生物数据研究_证据聚合与科学发现_深度解析_20261025.md) | `AI-for-Science`, `Agent`, `GPT-Rosalind`, `Perturb-seq`, `科学发现`, `证据聚合` |
 | 2026-10-25 | [OpenAI 十亿用户在线存储：Habitat × Azure Cosmos DB 的多租户、热点与可靠性深度解析](../ai-learning/reports/knowledge_reports/OpenAI_十亿用户在线存储_CosmosDB多租户与可靠性_深度解析_20261025.md) | `OpenAI`, `Habitat`, `Azure-Cosmos-DB`, `多租户`, `限流`, `缓存` |
 | 2026-10-25 | [OpenAI Decisions API：低延迟决策端点的请求模型、能力边界与可迁移价值](../ai-learning/reports/knowledge_reports/OpenAI_Decisions_API_低延迟决策与响应式应用_深度解析_20261025.md) | `OpenAI`, `Decisions-API`, `gpt-6-luna`, `classification`, `routing`, `latency` |
+| 2026-10-25 | [NVIDIA Microduck Agentic Robotics：Agent 做准备，RL 学会走路，Sim-to-Real 才是难点](../ai-learning/reports/knowledge_reports/NVIDIA_Microduck_Agentic_Robotics_仿真训练与Sim2Real_深度解析_20261025.md) | `robotics`, `agentic-ai`, `Microduck`, `Isaac-Lab`, `reinforcement-learning`, `sim-to-real` |
 | 2026-10-25 | [MiniMax M3.1 Flash：Agent 模型与 vLLM Day-0 支持深度解析](../ai-learning/reports/knowledge_reports/MiniMax_M3_1_Flash_Agent模型与vLLM_Day0支持_深度解析_20261025.md) | `MiniMax`, `M3.1-Flash`, `MSA`, `MoE`, `投机解码`, `vLLM` |
 | 2026-10-25 | [LitPivot 深度分析：当文献不是被「读」，而是随想法重组——可迁移的证据地图设计](../ai-learning/reports/paper_analyses/52_litpivot_dynamic_contextualization_2026.md) | `paper-analysis`, `hci`, `research-ideation`, `literature-review`, `evidence-mapping`, `llm-agents` |
+| 2026-10-25 | [Google 结核病筛查：从单点 CAD 工具到开放医疗基础模型](../ai-learning/reports/knowledge_reports/Google_TB筛查_从CAD工具到开放医疗基础模型_深度解析_20261025.md) | `medical-ai`, `tuberculosis`, `chest-x-ray`, `MedGemma`, `HAI-DEF`, `HeAR` |
 | 2026-10-25 | [Google TPU 上的新推理引擎：TorchTPU 上的 vLLM-TorchTPU 与 SGLang-TorchTPU 机制拆解与口径核验](../ai-learning/reports/knowledge_reports/Google_TPU_vLLM_SGLang_TorchTPU推理引擎_能力矩阵与口径核验_深度解析_20261025.md) | `TPU`, `TorchTPU`, `vLLM-TorchTPU`, `SGLang-TorchTPU`, `TPU-Sync`, `Pallas` |
 | 2026-10-25 | [GLM-5.3 在 16×H200 上的 PCP、DCP 与 Hybrid HiSparse：百万上下文推理的机制拆解与口径核验](../ai-learning/reports/knowledge_reports/GLM5_3_vLLM_PCP_DCP_HiSparse_百万上下文推理_深度解析_20261025.md) | `vLLM`, `GLM-5.3`, `context-parallel`, `DCP`, `PCP`, `HiSparse` |
 | 2026-10-25 | [FlyDSL × PyTorch：把 GPU kernel 写进 Python 的 CuTe 式布局路线深度解析](../ai-learning/reports/knowledge_reports/PyTorch_FlyDSL_AMD_GPU_Kernel加速_深度解析_20261025.md) | `FlyDSL`, `PyTorch`, `AMD`, `ROCm`, `MI355X`, `kernel` |
@@ -54,7 +56,9 @@
 | 2026-10-25 | [Cloudflare AI 代码审查推理成本优化：从 2.43 美元到 0.77 美元的完整拆解与口径核验](../ai-learning/reports/knowledge_reports/Cloudflare_AI代码审查推理成本优化_68%降本_深度解析_20261025.md) | `AI-code-review`, `cost-optimization`, `prompt-caching`, `model-routing`, `effort-routing`, `multi-agent` |
 | 2026-10-25 | [Amazon × AVERI：把「评估集本身」交给第三方复核的元评估实践与其独立性边界](../ai-learning/reports/knowledge_reports/Amazon_AVERI_第三方安全评估元评估_独立性与可核查边界_深度解析_20261025.md) | `AI-safety-evaluation`, `third-party-review`, `meta-evaluation`, `AVERI`, `Amazon`, `assurance-levels` |
 | 2026-10-25 | [Amazon TorchNeuron：AWS Trainium 的原生 PyTorch 后端——执行路径、算子覆盖与分布式边界深度解析](../ai-learning/reports/knowledge_reports/Amazon_TorchNeuron_Trainium原生PyTorch后端_深度解析_20261025.md) | `PyTorch`, `AWS-Trainium`, `TorchNeuron`, `异构后端`, `torch.compile`, `算子覆盖` |
+| 2026-10-25 | [AMD 分布式 3D Gaussian Splatting：Gaussian 分片、RCCL 通信与扩展口径](../ai-learning/reports/knowledge_reports/AMD_分布式3D_Gaussian_Splatting_Gaussian分片与RCCL_深度解析_20261025.md) | `3d-gaussian-splatting`, `distributed-training`, `gsplat`, `RCCL`, `MI300X`, `all-to-all` |
 | 2026-10-25 | [AMD ROCm MegaKernel：MI355X 上交互式单请求推理的持久化内核路线深度解析](../ai-learning/reports/knowledge_reports/AMD_ROCm_MegaKernel_MI355X交互式单请求推理_深度解析_20261025.md) | `AMD`, `ROCm`, `MI355X`, `MegaKernel`, `持久化内核`, `投机解码` |
+| 2026-10-25 | [AMD RDNA 4 FP8 GEMM：WMMA、LDS 预算与 Tile 搜索](../ai-learning/reports/knowledge_reports/AMD_RDNA4_FP8_GEMM_WMMA与Tile搜索_深度解析_20261025.md) | `RDNA4`, `FP8`, `GEMM`, `WMMA`, `LDS`, `hipBLASLt` |
 | 2026-10-23 | [HarnessPro 精读：用可执行反馈与帕累托选择约束 Harness 递归改进](../ai-learning/reports/paper_analyses/51_harnesspro_2026.md) | `harnesspro`, `recursive_self_improvement`, `pareto_optimization`, `context_engineering`, `agent_evaluation` |
 | 2026-10-22 | [Google 自主湿实验室 Agent：用物理现实、实验反馈与人类战略闭合科学发现](../ai-learning/reports/knowledge_reports/Google_自主湿实验室Agent_生物现实约束与闭环_深度解析_20261021.md) | `autonomous_wet_lab`, `scientific_agents`, `verid`, `lab_in_the_loop`, `aptamer_design`, `protein_binder_design` |
 | 2026-10-22 | [ALTK-Evolve：学习型 Memory 如何让 Agent 在服务任务中持续改进](../ai-learning/reports/knowledge_reports/ALTK_Evolve_学习型Memory与Agent服务任务_深度解析_20261021.md) | `agent_memory`, `memory_middleware`, `self_improving_agents`, `altk_evolve`, `tau2_bench`, `context_engineering` |
@@ -307,13 +311,20 @@
 | 2026-04-20 | [Qwen2.5-3B GRPO 强化学习微调](../ai-practice/experiments/exp_004_qwen25_grpo_finetune.md) | — |
 | 2026-04-20 | [HuggingFace Hub 模型与数据集管理](../ai-practice/experiments/exp_002_huggingface_basics.md) | — |
 
-## 🎙️ Podcast Learning（96 篇）
+## 🎙️ Podcast Learning（103 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
 | 2026-10-25 | [菠萝健康派 × 师永刚：中美抗癌十年，就医路径、费用真相与「被看见」的病人](../podcast-learning/reports/2026-10-21_xiaoyuzhou-boluo-jiankang_shiyonggang-cn-us-cancer-decade.md) | `podcast`, `cancer-care`, `medical-system`, `patient-advocacy`, `second-opinion`, `health-policy` |
+| 2026-10-25 | [晚点聊 184：Astra 之后，具身智能的护城河从大脑移到哪里](../podcast-learning/reports/2026-10-15_rss-wandian-latetalk_184-embodied-quarterly-26q3.md) | `podcast`, `embodied-ai`, `robotics`, `gpt-6-astra`, `physical-rsi`, `in-context-learning` |
+| 2026-10-25 | [忽左忽右 510：侨批不是一封家书，而是一套跨国金融与亲缘基础设施](../podcast-learning/reports/2026-10-23_xiaoyuzhou-huzuo-huyou_ep510-thai-qiaopi-network.md) | `podcast`, `qiaopi`, `overseas-chinese`, `remittance`, `thailand`, `migration-history` |
 | 2026-10-25 | [张小珺 × Lindon Gao（Dyna Robotics）：机器人长跑里的闭环、推论与「不犯错的 CEO」包袱](../podcast-learning/reports/2026-10-15_xiaoyuzhou-zhangxiaojun_vol154-dyna-lindon.md) | `podcast`, `robotics`, `embodied-ai`, `vla`, `startup`, `founders` |
+| 2026-10-25 | [声东击西 #408：互联网增长的红利、代价与一个人的十年自我重建](../podcast-learning/reports/2026-10-22_rss-shengdong-jixi_ep408-lijing-internet-growth-self-reconstruction.md) | `互联网大厂`, `阿里`, `工作文化`, `养育`, `自我重建`, `职业选择` |
+| 2026-10-25 | [声东击西 #407：光遗传学怎样把情绪与精神疾病从相关推向因果](../podcast-learning/reports/2026-10-16_rss-shengdong-jixi_ep407-optogenetics-brain-mental-health.md) | `podcast`, `optogenetics`, `neuroscience`, `mental-health`, `causal-inference`, `clinical-translation` |
 | 2026-10-25 | [半拿铁 No.223：“莆田系”医事——从电线杆到手术台，以及一门擅长招徕却难建信誉的生意](../podcast-learning/reports/2026-10-21_xiaoyuzhou-bannatie_putian-medical-system-history.md) | `podcast`, `private-healthcare`, `putian`, `medical-regulation`, `healthcare-platform`, `fraud` |
+| 2026-10-25 | [人民公园说AI：最贵 Token 干最脏的活，买的是模型还是注意力](../podcast-learning/reports/2026-10-23_xiaoyuzhou-renmingongyuan-ai_expensive-token-dirty-work.md) | `podcast`, `model-routing`, `token-budget`, `human-in-the-loop`, `workflow`, `verification` |
+| 2026-10-25 | [The Cognitive Revolution AI:AM：Clean Neurons、GPU 信贷与 AI 供应链的移动瓶颈](../podcast-learning/reports/2026-10-24_rss-cognitive-revolution_ai-am-clean-neurons-gpu-credit.md) | `podcast`, `recursive-self-improvement`, `mechanistic-interpretability`, `gpu-credit`, `semiconductor-supply-chain`, `agent-governance` |
+| 2026-10-25 | [No Priors × Cloudflare CTO：Agentic Web 安全从补漏洞到重写 Web Rails](../podcast-learning/reports/2026-10-23_rss-no-priors_cloudflare-agentic-web-security.md) | `podcast`, `agentic-web`, `cloudflare`, `cybersecurity`, `zero-trust`, `x402` |
 | 2026-10-25 | [42章经 × 淏楠：Agent、多模态与具身的三次转向，以及一个 RL Infra 负责人的选择逻辑](../podcast-learning/reports/2026-10-24_xiaoyuzhou-42zhangjing_haonan-multimodal-rl-infra.md) | `podcast`, `agent`, `multimodal-rl`, `embodied-ai`, `world-model`, `video-generation` |
 | 2026-10-24 | [屠龙大实话 No.64：为什么人类总在为不平等愤怒——从猴子的黄瓜到资产阶级的续命术](../podcast-learning/reports/2026-10-21_xiaoyuzhou-tulong-dashihua_inequality-evolution.md) | `podcast`, `inequality`, `cognitive-neuroscience`, `political-economy`, `marxism`, `inequality-evolution` |
 | 2026-10-24 | [AI炼金术 × 姚旭：让普通人被看见——NaukNauk 的表达、代理人与品类赌注](../podcast-learning/reports/2026-10-23_ximalaya-ailianjinshu_yaoxu-nauknauk-ai-companion.md) | `podcast`, `ai-companion`, `consumer-ai`, `creator-economy`, `social-product`, `seeking-alpha` |

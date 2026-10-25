@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AMD_RDNA4_FP8_GEMM_WMMA与Tile搜索_深度解析_20261025.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-25",
+  "generator": {
+    "model": "minimax-m3.1-flash",
+    "harness": "eacli",
+    "run_id": "generator-amd-rdna4-fp8-m31-20261025",
+    "explicit_model_override": true,
+    "override_reason": "用户明确指定：Razer 优先使用 MiniMax M3.1 Flash，额度耗尽后才切 GLM-5.3。"
+  },
+  "task": {
+    "summary": "深度解析AMD RDNA4 FP8 GEMM从WMMA操作数变化到LDS、VGPR、Tile/K/Wave联合搜索和hipBLASLt基线的工程边界。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "实际读取AMD官方博客、官方代码目录和RDNA4 dense WMMA官方参考。"
+      },
+      {
+        "id": "R02",
+        "text": "解释E4M3、fragment、packed 32-bit words、FP32 accumulator和无scale factor。"
+      },
+      {
+        "id": "R03",
+        "text": "逐项拆解四种Tile/K/Wave配置及LDS、VGPR和预取约束。"
+      },
+      {
+        "id": "R04",
+        "text": "完整保留四组Transformer GEMM benchmark和实验口径。"
+      },
+      {
+        "id": "R05",
+        "text": "识别原文FP16 LDS数字的算术疑点，不擅自修正。"
+      },
+      {
+        "id": "R06",
+        "text": "覆盖正确性验证边界、调优空间、产品适用性、反方、Limitations与追问。"
+      },
+      {
+        "id": "R07",
+        "text": "由Razer MiniMax M3.1 Flash生成，本机完成独立review、质量门和索引。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "official",
+      "title": "AMD ROCm — FP8 GEMM Optimization on AMD RDNA 4 Architecture",
+      "locator": "https://rocm.blogs.amd.com/software-tools-optimization/rdna-fp8-gemm/README.html",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S02",
+      "kind": "primary",
+      "title": "ROCm rocm-blogs RDNA FP8 GEMM example source directory",
+      "locator": "https://github.com/ROCm/rocm-blogs/tree/release/blogs/software-tools-optimization/rdna-fp8-gemm/src",
+      "accessed_on": "2026-10-25"
+    },
+    {
+      "id": "S03",
+      "kind": "official",
+      "title": "RDNA4 dense WMMA builtins reference",
+      "locator": "https://rocm-handbook.amd.com/projects/amd-rocm-optimization-guide/en/latest/compiler-builtins/rdna/rdna4-dense-wmma-builtins.html",
+      "accessed_on": "2026-10-25"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "RDNA4 FP8 WMMA使用E4M3一字节操作数、每lane 8字节fragment和两个packed 32-bit word，并以FP32累加且示例不含scale factor。",
+      "report_anchor": "二、FP8 WMMA 到底改变了什么",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S03"
+      ],
+      "evidence": "官方博客和WMMA参考的builtin、fragment与累加类型说明。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "FP8缩小LDS操作数，但FP32 accumulator增加寄存器压力，因此Tile、K深度和wave grid必须联合调整。",
+      "report_anchor": "三、四种 Tile/K/Wave 配置",
+      "support": "derived",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "四配置的LDS、fold、VGPR和预取约束。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "官方表中Config 1的FP16两片尺寸按算术相加为35840B，却列63KB；报告保留原值并标为来源疑点。",
+      "report_anchor": "Config 1：直接移植，128×96，K=64",
+      "support": "derived",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "由官方表列尺寸直接复算，原文未解释额外口径。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "在三组大shape上Config 4相对hipBLASLt落后4.1%至5.7%；在M=3072,N=4096,K=8192上Config 3领先25.7%，不存在跨shape单一最优Tile。",
+      "report_anchor": "四、四组Transformer GEMM Benchmark",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "官方四张性能表。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "benchmark只覆盖单卡RX 9070 XT/gfx1201、ROCm 10.0、FP8 E4M3到FP32 TN GEMM、10次warmup与30次均值。",
+      "report_anchor": "六、正确性验证与实验口径",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "官方System Configuration与methodology。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "±1输入与hipBLASLt bit-for-bit一致只验证特殊整数累加路径，不能代表一般FP8量化、舍入、饱和和scale误差。",
+      "report_anchor": "六、正确性验证与实验口径",
+      "support": "derived",
+      "source_ids": [
+        "S01"
+      ],
+      "evidence": "官方正确性构造及其未覆盖的数值范围。",
+      "critical": true
+    },
+    {
+      "id": "C07",
+      "claim": "手工四配置只是搜索空间切片，hipBLASLt offline/online tuning才面向更多shape、dtype与架构，不能把一次扫描写成全局最优。",
+      "report_anchor": "七、手工搜索与 hipBLASLt 调优",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "官方调优章节与代码目录。",
+      "critical": true
+    },
+    {
+      "id": "C08",
+      "claim": "[推测] Kernel Eval应固定调优预算、按shape/dtype/hardware分组，并保存失败和负收益配置。",
+      "report_anchor": "九、对Kernel自动调优与EverAgent Eval的启示",
+      "support": "inference",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "evidence": "由来源中的shape敏感性、资源约束和启发式基线综合。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [],
+  "limitations": [
+    "厂商博客与配套代码不是独立第三方benchmark。",
+    "实验只有单卡RX 9070 XT、四个固定shape和单一FP8 E4M3到FP32路径。",
+    "原文只报告均值，未提供方差、置信区间和逐次raw数据。",
+    "±1正确性输入不覆盖一般量化误差和生产scale处理。",
+    "原表63KB与列示尺寸存在未解释的算术冲突。",
+    "未在本地RDNA4硬件编译或复现。"
+  ]
+}
