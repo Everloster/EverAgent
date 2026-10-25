@@ -214,14 +214,31 @@ def git_value(arguments: list[str], *, cwd: Path, env: dict[str, str]) -> str:
     return proc.stdout.strip()
 
 
-def signing_evidence(identity: dict) -> tuple:
+def _signing_fields(identity: dict) -> dict:
     declaration = identity.get("declaration") or {}
     source = identity.get("model_source")
+    observation = identity.get("observation_ref")
+    scope = identity.get("scope_ref")
+    if (identity.get("cli") == "claude-code" and source == "claude-session-runtime"
+            and identity.get("current_model_confirmed") is True
+            and identity.get("model_confidence") == "session-bound"
+            and isinstance(scope, str) and re.fullmatch(r"[0-9a-f]{24}", scope)
+            and isinstance(observation, str) and re.fullmatch(r"[0-9a-f]{24}", observation)):
+        # Claude's observation includes an assistant *message* UUID, not a turn
+        # identity. A fresh message in the same verified process/session/terminal
+        # must not invalidate a long gate. Keep the reader and all signer/scope
+        # checks; other adapters' turn-bound references remain significant.
+        observation = ("claude-session",)
     if identity.get("current_model_confirmed") is True and identity.get("observation_ref"):
         source = "session-observation"
-    return (*(identity.get(key) for key in ("name", "email", "cli", "model")), source,
-            *(identity.get(key) for key in ("model_confidence", "current_model_confirmed", "user_model_declared")),
-            declaration.get("id"), declaration.get("scope_ref"), identity.get("scope_ref"), identity.get("observation_ref"))
+    return {**{key: identity.get(key) for key in ("name", "email", "cli", "model")}, "model_source": source,
+            **{key: identity.get(key) for key in ("model_confidence", "current_model_confirmed", "user_model_declared")},
+            "declaration.id": declaration.get("id"), "declaration.scope_ref": declaration.get("scope_ref"),
+            "scope_ref": scope, "observation_ref": observation}
+
+
+def signing_evidence(identity: dict) -> tuple:
+    return tuple(_signing_fields(identity).values())
 
 
 def commit(arguments: list[str], *, gate: Callable[[Path, dict[str, str]], int],
@@ -249,8 +266,11 @@ def commit(arguments: list[str], *, gate: Callable[[Path, dict[str, str]], int],
                 raise CommitError("quality gate 运行期间 Git index 已变化，请重新检查并重试", 3)
             fresh = identity_reader()
             fresh_env = identity_environment(fresh, os.environ, author=author_reader())
-            if signing_evidence(fresh) != signing_evidence(identity):
-                raise CommitError("quality gate 期间 Agent/模型身份已变化，请重新核实", 3)
+            original_fields, fresh_fields = _signing_fields(identity), _signing_fields(fresh)
+            changed_fields = [key for key in original_fields if original_fields[key] != fresh_fields[key]]
+            if changed_fields:
+                raise CommitError("quality gate 期间 Agent/模型身份已变化，请重新核实（变化字段："
+                                  + ", ".join(changed_fields) + "）", 3)
             if (fresh_env["GIT_AUTHOR_NAME"], fresh_env["GIT_AUTHOR_EMAIL"]) != (env["GIT_AUTHOR_NAME"], env["GIT_AUTHOR_EMAIL"]):
                 raise CommitError("quality gate 期间仓库 Author 策略已变化，请重新核实", 3)
             if preflight:

@@ -7,7 +7,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
 SPEC = importlib.util.spec_from_file_location("commit_test", Path(__file__).with_name("git_commit.py"))
 commit = importlib.util.module_from_spec(SPEC)
@@ -16,6 +16,10 @@ IDENTITY = {"name": "fixture-model", "email": "noreply@example.com", "resolved":
             "model": "fixture-model", "model_source": "user-declared",
             "model_confidence": "declared", "user_model_declared": True,
             "declaration": {"id": "a" * 64}}
+CLAUDE_IDENTITY = {"name": "claude-code-fixture-model", "email": "noreply@example.com", "resolved": True,
+                   "cli": "claude-code", "model": "fixture-model", "model_source": "claude-session-runtime",
+                   "model_confidence": "session-bound", "current_model_confirmed": True,
+                   "user_model_declared": False, "scope_ref": "a" * 24, "observation_ref": "b" * 24}
 
 
 class CommitTests(unittest.TestCase):
@@ -165,6 +169,57 @@ class CommitTests(unittest.TestCase):
                 reader = Mock(side_effect=[IDENTITY, changed])
                 self.assertIn(commit.commit(["-m", "fixture"], gate=lambda *args: 0, identity_reader=reader), (1, 3))
             self.assertEqual(self.git("log", "-1", check=False), "")
+
+    def test_claude_assistant_progress_during_gate_does_not_block_commit(self):
+        refreshed = {**CLAUDE_IDENTITY, "observation_ref": "c" * 24, "observed_at": 200}
+        reader = Mock(side_effect=[{**CLAUDE_IDENTITY, "observed_at": 100}, refreshed])
+        with patch.object(commit.Path, "cwd", return_value=self.root):
+            result = commit.commit(["-q", "--no-gpg-sign", "-m", "fixture\n\nCo-Authored-By: Aiden"],
+                                   gate=lambda *args: 0, identity_reader=reader)
+        self.assertEqual(result, 0)
+        self.assertEqual(reader.call_count, 2)
+        self.assertEqual(self.git("show", "HEAD:file.txt"), "staged")
+        self.assertEqual(self.git("show", "-s", "--format=%cn <%ce>"),
+                         "claude-code-fixture-model <noreply@example.com>")
+
+    def test_claude_observation_refresh_still_blocks_identity_and_binding_changes(self):
+        changes = ({"name": "other-agent"}, {"email": "noreply@other.example"}, {"cli": "codex"},
+                   {"model": "other-model"}, {"model_source": "desktop-session-api"},
+                   {"model_confidence": "configured"}, {"current_model_confirmed": False},
+                   {"user_model_declared": True}, {"scope_ref": "d" * 24}, {"scope_ref": None},
+                   {"observation_ref": None}, {"observation_ref": ""},
+                   {"declaration": {"id": "e" * 64, "scope_ref": "f" * 24}})
+        for change in changes:
+            with self.subTest(change=change), patch.object(commit.Path, "cwd", return_value=self.root):
+                fresh = {**CLAUDE_IDENTITY, "observation_ref": "c" * 24, **change}
+                result = commit.commit(["-m", "fixture\n\nCo-Authored-By: Aiden"], gate=lambda *args: 0,
+                                       identity_reader=Mock(side_effect=[CLAUDE_IDENTITY, fresh]))
+            self.assertIn(result, (1, 3))
+            self.assertEqual(self.git("log", "-1", check=False), "")
+
+    def test_observation_refresh_exception_requires_exact_native_claude_binding(self):
+        for change in ({"cli": "codex", "model_source": "codex-turn-context"},
+                       {"cli": "kimi-desktop", "model_source": "kimi-desktop-session-runtime"},
+                       {"model_source": "desktop-session-api"}, {"scope_ref": None},
+                       {"scope_ref": "invalid-reference"}, {"current_model_confirmed": False},
+                       {"model_confidence": "configured"}):
+            with self.subTest(change=change):
+                before = {**CLAUDE_IDENTITY, **change}
+                after = {**before, "observation_ref": "c" * 24}
+                self.assertNotEqual(commit._core.signing_evidence(before), commit._core.signing_evidence(after))
+
+    def test_identity_drift_error_names_fields_without_disclosing_values(self):
+        fresh = {**CLAUDE_IDENTITY, "model": "PRIVATE-MODEL-SENTINEL", "scope_ref": "f" * 24}
+        with patch.object(commit.Path, "cwd", return_value=self.root), patch.object(commit._core, "emit_error") as emit:
+            result = commit.commit(["-m", "fixture\n\nCo-Authored-By: Aiden"], gate=lambda *args: 0,
+                                   identity_reader=Mock(side_effect=[CLAUDE_IDENTITY, fresh]))
+        self.assertEqual(result, 3)
+        error = emit.call_args.args[0]
+        self.assertIn("model", error)
+        self.assertIn("scope_ref", error)
+        self.assertNotIn("PRIVATE-MODEL-SENTINEL", error)
+        self.assertNotIn(fresh["scope_ref"], error)
+        self.assertEqual(self.git("log", "-1", check=False), "")
 
 
 if __name__ == "__main__":

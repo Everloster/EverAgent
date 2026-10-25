@@ -83,6 +83,11 @@ cwd 定位同一 UUID 的唯一原生项目文件；分别使用精确 PID 的 `
 单行上限 128 KiB。缺记录、关闭 session persistence、错误 cwd、sidechain、重启、过期或模型字段缺失
 均不核实。该规则不把普通 Python executor 识别为 Agent，也不允许静态 `AGENT_ID` 署名。
 
+Claude 的 assistant UUID 标识单条回复，`observation_ref` 随新回复更新并保留为来源证据；它不是新的
+提交身份。提交门禁仍前后读取新鲜原件，仅在两次都由原生 Claude 读取器核实、模型与绑定
+进程/session/terminal 的 `scope_ref` 均未变化时允许回复推进。其他 adapter 的 turn 引用继续参与比较；
+失去核实、模型或绑定改变、声明变化仍阻断。身份变化错误只列出变化字段名，不输出模型、引用或私有原件值。
+
 Claude 原件正在追加、末行 JSON/UTF-8 尚未写完，或读取时钟早于并发写入时，读取器只对同一路径最多
 重读三次，两次之间等待 20 ms 并重新取时间。持续未完成返回 `native-observation-in-progress`；不跳过
 末行借用旧模型。完整畸形记录、超大记录或缺少最新 assistant 绑定分别给出

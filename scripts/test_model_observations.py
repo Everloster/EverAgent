@@ -334,6 +334,22 @@ class ClaudeObservationTests(unittest.TestCase):
         self.assertEqual(after["model"], "new-observed-model")
         self.assertNotEqual(before["observation_ref"], after["observation_ref"])
 
+    def test_assistant_uuid_refreshes_provenance_not_the_claude_signer(self):
+        def signer(value):
+            return {**value, "cli": "claude-code", "model_source": value["source"],
+                    "model_confidence": value["confidence"]}
+        before = models.model_evidence("claude-code")
+        self.path.write_text(self.record() + self.record(uuid="next-assistant-message"))
+        after = models.model_evidence("claude-code")
+        self.assertTrue(before["current_model_confirmed"])
+        self.assertTrue(after["current_model_confirmed"])
+        self.assertNotEqual(before["observation_ref"], after["observation_ref"])
+        self.assertEqual(before["scope_ref"], after["scope_ref"])
+        self.assertEqual(git.signing_evidence(signer(before)), git.signing_evidence(signer(after)))
+        self.write("changed-model", uuid="third-assistant-message")
+        self.assertNotEqual(git.signing_evidence(signer(before)),
+                            git.signing_evidence(signer(models.model_evidence("claude-code"))))
+
     def test_foreign_session_checkout_and_sidechain_are_rejected(self):
         for changes in ({"sessionId": "foreign-session"}, {"cwd": str(self.root / "other")},
                         {"isSidechain": True}, {"isSidechain": None}):
