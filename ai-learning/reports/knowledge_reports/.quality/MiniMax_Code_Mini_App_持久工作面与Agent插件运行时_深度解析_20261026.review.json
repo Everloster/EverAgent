@@ -1,0 +1,788 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/MiniMax_Code_Mini_App_持久工作面与Agent插件运行时_深度解析_20261026.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "glm-5.3",
+        "harness": "pi",
+        "run_id": "review-3de23e15fc06",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 96,
+        "request_coverage": 88,
+        "reasoning_quality": 91,
+        "readability": 93,
+        "limitations": 95
+      },
+      "score_reasons": {
+        "evidence_fidelity": "先在实际审阅目录核对快照哈希（报告 daaf00fd…50a4、evidence 2f94880a…51be2 均匹配），再独立通读全部 8 个来源文件后逐项对证。上一轮指出的两处问题均已修复且修复本身准确：(1) §2.2 mcpEndpoints 现表述为'引用 plugin.json.mcpServers 中已声明的 server，并为每个引用绑定唯一 path；公开契约没有进一步说明谁消费这些 endpoint'——与 S03 原文（server 必须指向 mcpServers 已声明项、安装时校验、server 与 path 各自唯一、未说明消费方）完全一致，越界推断已消除；(2) §2.3 新增 stdout/stdin 段落——'归 Host 所有、禁 console.log 或 process.stdout.write、日志走 context.logger、文档未证明 OS 层拦截'与 S04 原文相符，且把契约与强制执行证据分开表述，属正确标注的推断。本轮重新核对的数字与事实全部无误：发布日期 2026-10-22、3.0.73 版本锚定、包限制 1024 文件/16MiB 单文件/64MiB 总量、logger 4KiB 截断且仅 fields 键出进程、listen 固定 127.0.0.1+Host 端口、resolve 即 readiness、dispose 清单、Host 不清理派生子进程、dataDir 私有不透明、'runs on your machine as you' 引用、hello-miniapp 行为描述、输入框人工确认、Bot 源码未定位的证据边界。C01-C06 六个 claim 均有来源支撑。仅剩两处不影响结论的轻微压缩：console 禁用 API 只举两例未加'等'（原文还禁 info/debug/dir/table）；pluginRoot 表述'只用于读取插件自己的资源'略强于原文'Read your Client files from here'的指引语气。",
+        "request_coverage": "R01-R06 六项要求重新逐项核对均落地：产品问题与架构（§1、§2）、契约/runtime/安全/示例（§2.1-2.3、§6）、on-demand 与长期状态区分（§3 整节）、本地执行边界（§6）、Bot 叙事与可核验范围（§5）、迁移建议+实验+Limitations+追问（§7、§8）；报告可独立阅读，非索引或速览壳。上一轮 flagged 的两项准确性问题（mcpEndpoints、stdout）已修复；但四项 supporting 级覆盖建议均未采纳且本轮独立复查确认仍然缺失：官方应用案例（股票看板聚合 Zsxq/金门财经/腾讯文档、CadQuery Viewer 3D 标注回传、Self-drive Route Planner）完全缺席（SCM05 missing）；社区生态仅 §5 顺带提到两个 Token 看板，Git Commit Tree、Session Trajectory、心语岛、Anatomy Gallery 与 PR 贡献/能力愿望单机制未提（SCM08 partial）；S02 手动安装路径 ~/.minimax/plugins、GitHub 插件导入不支持 MiniApp 包、更新/卸载需退出客户端未提（SCM09 partial）；平台范围 macOS/Windows 与 marketplace 安装渠道未在正文说明（SCM18/SCM24 partial）。均为 supporting 级，不构成 core_requirement_missing，R01-R06 无遗漏。",
+        "reasoning_quality": "核心论证经独立复核依然成立且本轮更完整：§3 把'长期工作面/状态持续'与'Node 进程常驻'拆开，逐条对应 S04 Lifecycle 五个要点（on-demand、少量并发、随时停止、两次浏览间可重启、durable state 入 dataDir），是来源中最易被 long-running 营销叙事掩盖的事实，处理正确；§6 区分'公开规范'与'强制 sandbox 证据'，Host 只停入口进程、披露式而非机制性强制、代码以用户身份运行三点支撑'安装等同本地软件'结论；新增 stdout 段落把'明确契约 vs 未证明的 OS 层拦截'纳入同一区分框架，论证一致性增强；§2.4/§5 坚持证据边界（Agent API 未完整公开、Bot 源码未定位且给出三种解释而不冒充已核验）；§8 A/B 实验可操作。扣分：对'为何选 on-demand'缺少替代解释（桌面资源约束等）的讨论；§7 启示假定读者了解 EverAgent/Personal Context 背景，未与既有 IDE 插件/agent workspace 方案对比反方。",
+        "readability": "结构完整（速览→研究对象→四层架构→生命周期→creator→Bot→安全→启示→实验→Limitations→追问→参考来源），代码块与表格使用得当，[S1]-[S6] 锚点贯穿，术语首次出现有解释，脱离对话可独立阅读；§2.3 context 表、§6.1/6.2 正反清单尤佳。修订后 §2.2 mcpEndpoints 一句比上一轮更清晰（点明引用关系与'契约未说明消费方'的边界），§2.3 stdout 段落衔接自然。扣分：§7 仍假定读者了解 EverAgent 背景；官方案例缺席使 §4/§5 少了最直观的例证段落。",
+        "limitations": "六条 Limitations 与本轮独立核查缺口一一对应：未安装运行 3.0.73、博客无 /miniapp-creator 成功率与安全数据、安全文档是规范而非强制证明、最小样例不代表复杂应用、Bot 源码未定位、契约固定到 3.0.73 版本。'思考与追问'进一步承认隔离机制未知。诚实、具体、无夸大，修订未削弱该部分。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07"
+      ],
+      "source_content_map": [
+        {
+          "id": "SCM01",
+          "title": "产品问题与动机：任务被会话切碎、HTML 页面只是静态快照、人机交接反复发生",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01"
+          ],
+          "notes": "§1 三点与博客叙事一一对应，并抽象为'把任务状态从聊天文本提升为一等产品对象'。"
+        },
+        {
+          "id": "SCM02",
+          "title": "Mini App 定义与架构总览：插件形态 + miniapp.json + 前端 + Node server，hosted MCP 暴露功能，系统级关注点（进程、端口、认证、凭据、可回滚发布）归 Host",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01",
+            "U02",
+            "U04"
+          ],
+          "notes": "§2 四层架构覆盖主线；sidebar 展示与弹出独立窗口、rollback-capable publishing 两个 Host 职责细节仍未提，属细节级省略，不影响结论。"
+        },
+        {
+          "id": "SCM03",
+          "title": "发布三部分：runtime（Node 后端 + 持久 dataDir + hosted MCP + Agent API + Host Connectors + 页面内工具审批）、/miniapp-creator、官方 marketplace + 开源社区仓",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01",
+            "U04",
+            "U05"
+          ],
+          "notes": "三部分均落入报告（§2/§4/§5）；'tool approvals handled right in the page' 仅以 §2.4 输入框人工确认形式部分体现，marketplace 渠道未提。"
+        },
+        {
+          "id": "SCM04",
+          "title": "/miniapp-creator 流程：先对每个数据源只读查询确认真实数据 → 写页面与 Node 后端 → 发布并打开 → 内置浏览器截图检查",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U05"
+          ],
+          "notes": "§4 完整复述四步并指出博客未公开 prompt/成功率/失败分类的证据局限。"
+        },
+        {
+          "id": "SCM05",
+          "title": "官方 Mini App 案例：股票看板聚合 Zsxq/金门财经/腾讯文档、CadQuery Viewer 3D 标注回传对话、Self-drive Route Planner 组合地图/搜索/图像生成，部分由非工程同事构建",
+          "importance": "supporting",
+          "assessment": "missing",
+          "matched_coverage_unit_ids": [
+            "U05"
+          ],
+          "source_ids": [
+            "S01"
+          ],
+          "notes": "修订后仍完全未列举。这些案例是'持久工作面'论点最直观的证据，上一轮已建议补一段，本轮维持该建议；supporting 级，不阻断。"
+        },
+        {
+          "id": "SCM06",
+          "title": "MiniMax Bot 多 Agent 叙事：主 Bot 组队、长任务交后台 Agent 会话、审阅汇报，后台 Agent 反向调用 Bot 工具发消息/存取 memory，多数更新只需改插件",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U05"
+          ],
+          "notes": "§5 忠实复述并给出与普通 sub-agent 的流程差异对比；'多数更新只需插件变更'未显式提，细节级省略。"
+        },
+        {
+          "id": "SCM07",
+          "title": "证据边界：博客称 Bot 源码已进社区仓，但仓库 README 快照仅列 hello-miniapp 与两个 Token 用量看板，未见 Bot 目录",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U05"
+          ],
+          "notes": "§5 拒绝把'Bot 源码已可读'写成已核验事实并给出三种解释；与 S02 快照一致，本轮独立复核确认该处理正确。"
+        },
+        {
+          "id": "SCM08",
+          "title": "社区生态与贡献机制：两个 Token 用量看板、Git Commit Tree、Session Trajectory、心语岛、Anatomy Gallery；fork+复制 hello-miniapp 的 PR 流程、npm run check、能力愿望单置顶 issue",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U05"
+          ],
+          "notes": "报告仅在 §5 Bot 核查语境提到两个 Token 看板；其余社区作品、PR 流程与愿望单机制未提，与上一轮相同。"
+        },
+        {
+          "id": "SCM09",
+          "title": "仓库结构与手动安装：plugins/<username>/<plugin-id>/ 布局、作者目录安装时丢弃导致插件 ID 全仓唯一、复制到 <dataDir>/plugins（默认 ~/.minimax）、保留 .minimax-plugin、GitHub 插件导入不支持此类包、更新/卸载需先退出客户端",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02"
+          ],
+          "notes": "§2.1 覆盖'目录名=manifest name=安装 ID 一致'与未知字段拒绝；安装路径、GitHub 导入限制、更新/卸载流程仍未提，与上一轮相同。"
+        },
+        {
+          "id": "SCM10",
+          "title": "plugin.json manifest 契约：schemaVersion=1、name 正则、SemVer 版本、icon/darkIcon 真实图片、category 枚举、exampleQueries（Agent 按名打开）、mcpServers/skills/hooks/hostBindings、未知字段拒绝、apps 本地忽略",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02"
+          ],
+          "notes": "§2.1 覆盖身份/能力声明、未知字段拒绝与安装 ID 一致性；name 正则、SemVer 上限、category 枚举值等细则省略合理。"
+        },
+        {
+          "id": "SCM11",
+          "title": "package.json mcode 精确形状与 miniapp.json payload：artifacts 为被哈希安装的 payload 根、排除 node_modules、runtime kind/entry/lifecycle、surface.path 无 origin/query/fragment、mcpEndpoints 引用 mcpServers 且 server/path 各自唯一、hostConnectorAccess 安装时授予",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S03",
+            "S06"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02"
+          ],
+          "notes": "两个 JSON 片段与 S06 逐字一致；上一轮 mcpEndpoints'暴露给页面或 Agent'的越界表述已改为准确的引用关系+'契约未说明消费方'边界，本轮确认修复到位。"
+        },
+        {
+          "id": "SCM12",
+          "title": "可移植路径与包限制：ASCII/段与整路径字节长度/段数/Windows 保留名、禁 symlink/hardlink 与 . .. 段；≤1024 文件、单文件 ≤16MiB、总量 ≤64MiB、artifacts 路径须含已提交文件",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02"
+          ],
+          "notes": "§2.2 数字逐项核对无误（1024/16MiB/64MiB），'父目录跳转'对应 no ./.. segments；Windows 保留名归入'不具可移植性的路径'概括。"
+        },
+        {
+          "id": "SCM13",
+          "title": "Node runtime 加载与 start 语义：file: URL ESM 导入、命名 start 导出、入口真实路径在包内、resolve 即 readiness（无健康路由）、start 内不取业务数据、缺 dispose 被拒、端口冲突独立报错",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03"
+          ],
+          "notes": "§2.3 覆盖 readiness 契约与 dispose 返回值要求；ESM 加载细节、'不在 start 拉业务数据'未显式提及，属细节级省略。"
+        },
+        {
+          "id": "SCM14",
+          "title": "context 字段语义：pluginId、pluginRoot（读 Client 资源）、dataDir（私有、位置不透明、无受支持方式触达 Host 文件）、listen 固定 127.0.0.1+端口、signal AbortSignal、logger 4KiB 截断且仅 fields 键出进程、hostConnector 可缺席",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03"
+          ],
+          "notes": "§2.3 表格逐字段与 S04 一致（含 4KiB 与'字段值留在本地'）；pluginId 与 dataDir '不可触达 Host 文件'方向性说明省略，pluginRoot'只用于'措辞略强于原文指引，均不影响结论。"
+        },
+        {
+          "id": "SCM15",
+          "title": "dispose 与子进程边界：关闭 server/定时器/子进程/流/文件与数据库句柄；Host 只停止入口进程，不发现也不终止入口派生的进程",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03",
+            "U06"
+          ],
+          "notes": "§2.3 与 §6.2 两处正确复述，是'非强沙箱'论证的关键事实。"
+        },
+        {
+          "id": "SCM16",
+          "title": "stdout/stdin 归 Host：禁 console.log/info/debug/dir/table 与 process.stdout.write，所有日志走 context.logger",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03"
+          ],
+          "notes": "本轮修订新增 §2.3 专段：归属 Host、禁用列举、走 logger、并明确'文档未证明 OS 层拦截'的推断边界；与 S04 原文相符，仅列举未穷尽（未加'等'），上一轮 SCM16 missing 已修复。"
+        },
+        {
+          "id": "SCM17",
+          "title": "on-demand 生命周期与状态策略：进程按需启动、可能随时停止、同时仅少量运行、两次页面浏览间可能停止重启、durable state 必须入 dataDir 而非内存",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03"
+          ],
+          "notes": "§3 整节五点逐条对应 S04 Lifecycle；'长期的是工作面与状态、不是进程'是报告最有价值的判断且与博客 long-running 表面矛盾的化解成立。"
+        },
+        {
+          "id": "SCM18",
+          "title": "Client 模型与平台：静态 HTML 即完整 Client、页面只调 Node 入口路由；macOS/Windows 平台、用 node:path、避免 Unix-only 命令",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03"
+          ],
+          "notes": "页面服务模型经 §2.3 示例描述覆盖；平台范围 macOS/Windows 仍未在报告正文出现（仅 Limitations 提及未安装桌面端），与上一轮相同。"
+        },
+        {
+          "id": "SCM19",
+          "title": "进程边界与秘密：只绑定 listen 地址端口、不代理任意 URL/文件、逐参数校验、页面是不可信输入、secrets 只留在 Node 进程（不进 HTML/Client JS/日志/错误响应）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S05"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06"
+          ],
+          "notes": "§6.1 清单逐条对应 S05 Process boundary；博客凭据主张正确标注为'博客称'。"
+        },
+        {
+          "id": "SCM20",
+          "title": "状态与写文件规则：durable state 入 dataDir、浏览器存储只放视图偏好；写 dataDir 外文件需 README 披露、原子写（临时文件+rename）、保留 mode、串行化、文件变化时 Undo 拒绝、批量编辑前备份",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S05"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06"
+          ],
+          "notes": "§6.1 覆盖原子写/保 mode/串行/Undo 拒绝与 README 披露；'批量编辑前备份并说明位置'未显式提，细节级省略。"
+        },
+        {
+          "id": "SCM21",
+          "title": "子进程与网络披露：每条命令 README 披露、参数用数组不经 shell、用户输入不入命令行；每个 outbound host 披露、默认不联网",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S05"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06"
+          ],
+          "notes": "§6.1 与 §6.2 均正确复述，'默认不联网'口径与原文一致。"
+        },
+        {
+          "id": "SCM22",
+          "title": "示例代码核验：hello-miniapp miniapp.json 与契约一致；server.mjs 读 pluginRoot 下 index.html、GET /dashboard 返回 HTML、其余 404 JSON、按 context.listen 监听、AbortSignal 触发 dispose、返回 { dispose }、logger.info 记录 listening",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S06"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02",
+            "U03"
+          ],
+          "notes": "§2.3 行为描述与 server.mjs 逐行相符；'本地 Node 后端不是营销图抽象组件'的判断本轮复核成立。"
+        },
+        {
+          "id": "SCM23",
+          "title": "博客安全主张：凭据由 Host 持有且插件/页面不可读、Connector 与 Agent 权限 manifest 预声明、端口仅对自身页面与 Agent 开放、页面→Agent 内容先进输入框可审可改、代码以当前用户身份运行仅装可信来源",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04",
+            "U06"
+          ],
+          "notes": "§2.4 覆盖输入框人工确认及其防注入解读，§6.1/6.2 覆盖其余主张；'runs on your machine as you' 原文引用准确，'端口仅对自身页面与 Agent 开放'未显式复述，细节级省略。"
+        },
+        {
+          "id": "SCM24",
+          "title": "可用范围与获取渠道：桌面端 macOS/Windows 本地会话可用、marketplace 安装或对话内生成、下载与 quickstart 链接、PR 分享作品",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01",
+            "U05"
+          ],
+          "notes": "报告未说明平台范围与 marketplace/下载渠道；'本地会话'限定与开源分享机制（PR、愿望单）也未进入正文，supporting 级省略。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "第二轮独立复核。快照绑定：报告 SHA-256 daaf00fd…50a4 与 evidence SHA-256 2f94880a…51be2 在实际审阅目录核对均匹配，非 wrong_target_snapshot。方法：来源优先，独立通读 8 个来源文件（blog、readme-zh、package-contract、runtime、security、miniapp-json、server.mjs、example-package.json）重建 24 个来源单元（其中 5 个 supporting），再读修订后报告与 evidence，重新核对全部 R01-R06、C01-C06、U01-U07，未照抄上一轮结论。重点验证结果：(1) 上一轮 mcpEndpoints 消费者越界已消除——现表述只陈述契约事实（引用 mcpServers 已声明 server、绑定唯一 path）并明确'公开契约没有进一步说明谁消费这些 endpoint'，与 S03 一致；(2) 新增 stdout/stdin 表述准确——'归 Host 所有、禁 console.log/process.stdout.write、日志走 context.logger'与 S04 相符，'文档未证明 OS 层拦截'是正确标注的推断而非事实声明；(3) 全部数字与引文（2026-10-22、3.0.73、1024/16MiB/64MiB、4KiB、127.0.0.1、runs as you）重新核对无误；(4) §3、§6 的核心论证与 hello-miniapp 代码核验独立复核成立。非播客报告（ai-learning concept_deep_dive），audit_transcript 机器收据不适用。遗留的 supporting 级覆盖缺口（官方应用案例 SCM05 missing；社区生态/安装细节/平台渠道 SCM08/09/18/24 partial）与上一轮相同，生成者本轮选择只修准确性问题，属可接受取舍，不构成阻断。加权总分 92.85，各维度均过 important 门槛，无 unsupported claim、无 hard failure，建议 pass。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 92.85,
+    "evaluated_on": "2026-10-26",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "63f1812fc05652897fdf80ab8abae060164a52c109af3b46e4e82a0daa248dfa",
+    "evidence_sha256": "2f94880a88ff236e7ff1ce3c5f8ac39778ab5698a30c26c7201d1af282151be2"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "glm-5.3",
+            "harness": "pi",
+            "run_id": "review-16ec261e1b67",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 94,
+            "request_coverage": 88,
+            "reasoning_quality": 90,
+            "readability": 92,
+            "limitations": 95
+          },
+          "score_reasons": {
+            "evidence_fidelity": "先核对快照哈希（均匹配），再独立读 S01-S06 后逐项对证。发布日期 2026-10-22、包限制 1024 文件/16MiB 单文件/64MiB 总量、logger 4KiB 截断且仅 fields 键出进程、listen 固定 127.0.0.1+Host 端口、resolve 即 readiness 无健康路由、dispose 与 Host 不清理衍生子进程、dataDir 私有不透明、'runs on your machine as you' 引用均与来源一致；hello-miniapp 行为描述与 server.mjs 相符；Bot 开源声称的证据边界处理诚实（S02 README 快照确实只列两个 token 看板）。扣分点：§2.2 把 mcpEndpoints 表述为'暴露给页面或 Agent'，契约原文只定义 {server,path} 及对 plugin.json.mcpServers 的引用校验，未说明消费方是谁，属轻微超出原文的推断；博客中 sidebar/弹出窗口、rollback-capable publishing 等细节被省略但不影响结论。",
+            "request_coverage": "六项任务要求 R01-R06 全部落地：产品问题与架构（§1、§2）、契约/runtime/安全/示例代码（§2、§6、§2.3）、on-demand 与长期状态区分（§3）、本地执行边界（§6）、Bot 叙事与可核验范围（§5）、迁移建议+最小实验+Limitations+追问（§7、§8）。重点核对项全部到位且报告可独立阅读。扣分：官方应用案例（股票看板聚合 Zsxq/金门财经/腾讯文档、CadQuery Viewer、Self-drive Route Planner）完全未列举；社区作品（Git Commit Tree、Session Trajectory、心语岛、Anatomy Gallery）与 PR 贡献/愿望单机制未提；S02 的手动安装路径（~/.minimax/plugins、GitHub 插件导入不支持 MiniApp 包）、更新/卸载流程、平台与可用范围（macOS/Windows 本地会话）等 supporting 内容缺失。均为 supporting 级遗漏，不构成 core_requirement_missing。",
+            "reasoning_quality": "核心论证扎实：§3 把'长期工作面/状态持续'与'Node 进程常驻'拆开，逐条引用 S04 Lifecycle（on-demand、少量并发、两次浏览间可能重启、durable state 入 dataDir），这是来源中最容易被营销叙事掩盖的工程事实，报告处理正确；§6 区分'已公开的规范'与'强制 sandbox 证据'，准确指出 Host 只停入口进程、文档允许披露后写 Host/用户文件、代码以用户身份运行，结论'安装第三方 Mini App 等同安装本地软件'有据；§2.4 与 §5 坚持证据边界（Agent API 未完整公开、Bot 源码未定位）；§8 给出可操作的 A/B 对照实验设计。扣分：对'为什么选 on-demand'（桌面资源约束等替代解释）着墨少；§7 启示略简，未与既有 agent workspace / IDE 插件方案做对比反方。",
+            "readability": "结构清晰（速览→研究对象→四层架构→生命周期→creator→Bot→安全→启示→实验→Limitations→追问），表格与代码块使用得当，[S1]-[S6] 锚点完整，术语首次出现有解释，可脱离对话独立阅读；§2.3 的 context 表和 §6.1/6.2 的正反清单尤佳。扣分：§2.2 mcpEndpoints 一句带过、缺少机制解释；§7 假定读者了解 EverAgent/Personal Context 背景。",
+            "limitations": "六条 Limitations 与独立核查发现的缺口一致：未安装运行 3.0.73、博客无 /miniapp-creator 成功率与安全数据、安全文档是规范而非强制证明、最小样例不代表复杂应用、Bot 源码未定位、契约固定到 3.0.73 版本。'思考与追问'进一步承认隔离机制未知。诚实、具体、无夸大。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07"
+          ],
+          "source_content_map": [
+            {
+              "id": "SCM01",
+              "title": "产品问题与动机：对话切碎任务、HTML 页面只是静态快照、人机交接反复发生",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01"
+              ],
+              "notes": "报告 §1 三点与博客叙事一一对应，且指出'把任务状态提升为一等产品对象'的抽象。"
+            },
+            {
+              "id": "SCM02",
+              "title": "Mini App 定义与架构总览：插件形态 + miniapp.json + 前端 + Node server，hosted MCP 暴露给 Agent，系统级关注点归 Host",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01",
+                "U02",
+                "U04"
+              ],
+              "notes": "§2 四层架构覆盖主线；sidebar/弹出窗口、rollback-capable publishing 两个 Host 职责细节未提，属细节级省略。"
+            },
+            {
+              "id": "SCM03",
+              "title": "发布三部分：runtime（含 dataDir、Agent API、Host Connectors、页面内工具审批）、/miniapp-creator、官方 marketplace + 开源社区仓",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01",
+                "U04",
+                "U05"
+              ],
+              "notes": "三部分内容均在报告出现；'tool approvals handled right in the page' 仅以 §2.4 人工确认形式部分体现，marketplace 安装渠道未提。"
+            },
+            {
+              "id": "SCM04",
+              "title": "/miniapp-creator 流程：先对每个数据源只读查询确认真实数据→写页面与后端→发布打开→内置浏览器截图检查",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "§4 完整复述流程并指出博客未公开 prompt/成功率/失败分类的证据局限。"
+            },
+            {
+              "id": "SCM05",
+              "title": "官方 Mini App 案例：股票看板（Zsxq/金门财经/腾讯文档聚合）、CadQuery Viewer（3D 标注回传）、Self-drive Route Planner、部分由非工程同事构建",
+              "importance": "supporting",
+              "assessment": "missing",
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "source_ids": [
+                "S01"
+              ],
+              "notes": "报告完全未列举任何官方应用案例；这些例子最能具体说明'持久工作面'论点，建议修订时补一段。"
+            },
+            {
+              "id": "SCM06",
+              "title": "MiniMax Bot 多 Agent 叙事：主 Bot 组队、长任务交后台 Agent 会话、审阅汇报，后台 Agent 反向调用 Bot 工具发消息/存取 memory",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "§5 忠实复述并给出与普通 sub-agent 的产品差异对比。"
+            },
+            {
+              "id": "SCM07",
+              "title": "证据边界：博客称 Bot 源码已进社区仓，但仓库 README 快照仅列两个 Token 用量看板，未见 Bot 目录",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "§5 明确拒绝把'Bot 源码已可读'写成已核验事实，并给出三种可能解释；与 S02 快照一致，处理正确。"
+            },
+            {
+              "id": "SCM08",
+              "title": "社区生态：token 用量看板、Git Commit Tree、Session Trajectory、心语岛、Anatomy Gallery；PR 贡献流程与能力愿望单",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S01",
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "报告仅在 Bot 核查语境提到两个 token 看板；其余社区作品、PR 贡献机制与愿望单（issue #9）未提。"
+            },
+            {
+              "id": "SCM09",
+              "title": "仓库结构与手动安装：plugins/<username>/<plugin-id>/ 布局、作者目录安装时丢弃、复制到 <dataDir>/plugins（默认 ~/.minimax）、GitHub 插件导入不支持、更新/卸载需退出客户端、插件 ID 全仓唯一",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "§2.1 覆盖'目录名=manifest name=安装 ID'，但未说明安装路径 ~/.minimax/plugins、GitHub 导入不支持 MiniApp 包、更新卸载流程及 ID 全仓唯一的原因（安装时丢弃作者目录）。"
+            },
+            {
+              "id": "SCM10",
+              "title": "plugin.json manifest 契约：schemaVersion=1、name 规则、SemVer 版本、icon 真实图片、category 枚举、exampleQueries（Agent 按名打开）、mcpServers/skills/hooks/hostBindings、未知字段拒绝",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "§2.1 覆盖身份/能力声明与未知字段拒绝的要点；name 正则、SemVer 上限等细则省略合理。"
+            },
+            {
+              "id": "SCM11",
+              "title": "package.json mcode 精确形状与 miniapp.json payload：artifacts 为被哈希安装的 payload 根、排除 node_modules、runtime kind/entry/lifecycle、surface.path 规则、mcpEndpoints 引用校验、hostConnectorAccess",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S03",
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "§2.2 两个 JSON 片段与 S06 示例一致；唯一瑕疵是把 mcpEndpoints 概括为'暴露给页面或 Agent'，契约原文未说明消费方。"
+            },
+            {
+              "id": "SCM12",
+              "title": "可移植路径与包限制：ASCII/段与整路径字节长度/段数限制、Windows 保留名、禁 symlink/hardlink；≤1024 文件、单文件 ≤16MiB、总量 ≤64MiB",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "§2.2 数字逐项核对无误（1024/16MiB/64MiB），'拒绝符号链接、硬链接、父目录跳转'对应 no . / .. segments。"
+            },
+            {
+              "id": "SCM13",
+              "title": "Node runtime 加载与 start 语义：file: URL ESM 导入、命名 start 导出、resolve 即 readiness（无健康路由）、不在 start 拉业务数据、缺 dispose 被拒、端口冲突独立报错",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "§2.3 覆盖 readiness 与 dispose 契约；'不在 start 内取业务数据'未显式提及，属细节省略。"
+            },
+            {
+              "id": "SCM14",
+              "title": "context 字段语义：pluginRoot、dataDir（私有、位置不透明、无受支持方式触达 Host 文件）、listen 固定 127.0.0.1+端口、signal AbortSignal、logger 4KiB 且仅键出进程、hostConnector 可缺席",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "§2.3 表格逐字段与 S04 一致；'no supported way to reach Host files from it'这一 dataDir 方向性说明未显式转述，但不影响 §6 结论。"
+            },
+            {
+              "id": "SCM15",
+              "title": "dispose 与子进程语义：关闭 server/timers/子进程/流/文件与数据库句柄；Host 只停止入口进程，不发现也不终止入口派生的进程",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03",
+                "U06"
+              ],
+              "notes": "§2.3 与 §6.2 两处正确复述，是'非强沙箱'论证的关键事实之一。"
+            },
+            {
+              "id": "SCM16",
+              "title": "stdout/stdin 归 Host：禁止 console.log/info/debug/dir/table 与 process.stdout.write，必须走 context.logger",
+              "importance": "supporting",
+              "assessment": "missing",
+              "source_ids": [
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "报告未提及该进程级日志通道规则；supporting 级遗漏。"
+            },
+            {
+              "id": "SCM17",
+              "title": "on-demand 生命周期与状态策略：进程按需启动、可能随时停止、同时仅少量运行、两次页面浏览间可能停止重启、durable state 必须入 dataDir 而非内存",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "§3 整节以此为核心论点，与博客 long-running 表面矛盾的解释（长期的是工作面与状态，不是进程）是报告最有价值的判断。"
+            },
+            {
+              "id": "SCM18",
+              "title": "Client 模型与平台：静态 HTML 即完整 Client、页面只调 Node 入口路由；macOS/Windows、用 node:path",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "页面服务模型经 §2.3 示例描述间接覆盖；平台范围（macOS/Windows、仅本地会话）未在报告说明。"
+            },
+            {
+              "id": "SCM19",
+              "title": "进程边界与秘密：只绑定 listen 地址端口、不代理任意 URL/文件、每个参数都校验、页面是不可信输入、secrets 只留在 Node 进程（不进 HTML/Client JS/日志/错误响应）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S05"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "§6.1 清单逐条对应 S05 Process boundary 与博客凭据主张。"
+            },
+            {
+              "id": "SCM20",
+              "title": "状态与写文件规则：durable state 入 dataDir、浏览器存储只放视图偏好；写 dataDir 外文件需 README 披露、原子写（临时文件+rename）、保留 mode、串行化、文件变化时 Undo 拒绝、批量编辑前备份",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S05"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "§6.1 覆盖原子写/保 mode/串行/Undo 拒绝与 README 披露；'批量编辑前备份并说明位置'未显式提，细节级省略。"
+            },
+            {
+              "id": "SCM21",
+              "title": "子进程与网络披露：每条命令 README 披露、参数用数组不经 shell、用户输入不入命令行；每个 outbound host 披露、默认不联网",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S05"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "§6.1 与 §6.2 均正确复述，'默认不联网'口径一致。"
+            },
+            {
+              "id": "SCM22",
+              "title": "示例代码核验：hello-miniapp miniapp.json 与契约一致；server.mjs 读 pluginRoot 下 index.html、GET /dashboard、404 JSON、按 context.listen 监听、AbortSignal 触发 dispose、返回 {dispose}",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02",
+                "U03"
+              ],
+              "notes": "§2.3 的行为描述与 server.mjs 逐行相符，'本地 Node 后端不是营销图抽象组件'的判断成立。"
+            },
+            {
+              "id": "SCM23",
+              "title": "博客安全主张：凭据由 Host 持有且插件/页面不可读、Connector 与 Agent 权限 manifest 预声明、端口仅对自身页面与 Agent 开放、页面→Agent 内容先进输入框可审可改、代码以当前用户身份运行仅装可信来源",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04",
+                "U06"
+              ],
+              "notes": "§2.4 覆盖输入框人工确认及其防注入意义，§6.1/6.2 覆盖其余主张；'runs on your machine as you' 原文引用准确。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04",
+            "R05",
+            "R06"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "快照绑定：报告 SHA-256 fb577bba…83c8 与 evidence SHA-256 2f94880a…51be2 在实际审阅目录核对均匹配，非 wrong_target_snapshot。方法：来源优先——先独立读 S01-S06 重建 23 个来源单元（8 个案例/生态/安装类单元为 supporting），再读报告与 evidence 映射到 U01-U07，六项要求 R01-R06 与六个关键 claim C01-C06 全部核验。重点核对结论：(1) on-demand 与长期状态的区分是报告 §3 的主论点且与 S04 逐条相符；(2) 'Host 是否提供强沙箱'——报告 §6 正确区分规范与强制证据，Host 只停入口进程不清理子进程、代码以用户身份运行、安全文档靠披露而非机制强制，结论'安装等同本地软件'成立；(3) dataDir/listen/signal/dispose 语义与子进程边界逐字段核对无误；(4) 包限制 1024/16MiB/64MiB 数字准确；(5) 页面→Agent 输入框人工确认与防注入解读准确；(6) Bot 开源声称的证据边界处理诚实且与 S02 快照一致。非播客报告（ai-learning concept_deep_dive），audit_transcript 机器收据不适用。轻微问题（不阻断，建议修订时考虑）：a) 官方/社区应用案例完全缺席（SCM05 missing）；b) §2.2 mcpEndpoints '暴露给页面或 Agent'略超契约原文；c) S02 手动安装与 GitHub 导入限制、平台范围未提（SCM09/SCM18 partial）；d) stdout 禁用规则未提（SCM16 missing）。加权总分 91.8，各维度均过 important 门槛，无 hard failure，建议 pass。"
+        }
+      ],
+      "decision": {}
+    }
+  ]
+}

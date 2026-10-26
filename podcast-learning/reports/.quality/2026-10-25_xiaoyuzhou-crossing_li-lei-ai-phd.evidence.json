@@ -1,0 +1,458 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-25_xiaoyuzhou-crossing_li-lei-ai-phd.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-26",
+  "generator": {
+    "model": "gpt-5.6-sol",
+    "harness": "codex",
+    "run_id": "generator-58064a07099b",
+    "explicit_model_override": false,
+    "override_reason": ""
+  },
+  "task": {
+    "summary": "对《十字路口 Crossing》李磊访谈完成远端静默转写、shownotes 核验、结构化精编和深度报告；覆盖 PhD 研究方法、评价指标、冷启动、导师选择、MiMo 后训练直播、数据产业、RSI 与 Benchmark，并核验关键外部数字。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "使用 eacli podcast 远端静默 worker 转写，不在本机播放音频。"
+      },
+      {
+        "id": "R02",
+        "text": "保存完整转写、artifact receipt、shownotes 和结构化精编，并通过转写审计。"
+      },
+      {
+        "id": "R03",
+        "text": "报告独立覆盖官方 shownotes 19 个单元，不以 polished 代替正文。"
+      },
+      {
+        "id": "R04",
+        "text": "区分嘉宾观点、主持人口径、外部核验和分析者判断。"
+      },
+      {
+        "id": "R05",
+        "text": "核验 MiMo 直播、Video-MME、CS 入学变化与 MIT 专业统计的证据边界。"
+      },
+      {
+        "id": "R06",
+        "text": "提供对研究工作流的启发、Limitations 与思考与追问。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "official",
+      "title": "十字路口 Crossing 单集页与官方 shownotes",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/6add84e197726cd467573cf1",
+      "accessed_on": "2026-10-26"
+    },
+    {
+      "id": "S02",
+      "kind": "local",
+      "title": "完整转写",
+      "locator": "podcast-learning/reports/transcripts/2026-10-25_xiaoyuzhou-crossing_li-lei-ai-phd.transcript.txt",
+      "accessed_on": "2026-10-26"
+    },
+    {
+      "id": "S03",
+      "kind": "local",
+      "title": "结构化精编",
+      "locator": "podcast-learning/reports/transcripts/2026-10-25_xiaoyuzhou-crossing_li-lei-ai-phd.polished.txt",
+      "accessed_on": "2026-10-26"
+    },
+    {
+      "id": "S04",
+      "kind": "local",
+      "title": "shownotes 存档",
+      "locator": "podcast-learning/reports/transcripts/2026-10-25_xiaoyuzhou-crossing_li-lei-ai-phd.shownotes.md",
+      "accessed_on": "2026-10-26"
+    },
+    {
+      "id": "S05",
+      "kind": "official",
+      "title": "Xiaomi MiMo-V2.6 RL live metrics",
+      "locator": "https://mimo.xiaomi.com/rl",
+      "accessed_on": "2026-10-26"
+    },
+    {
+      "id": "S06",
+      "kind": "primary",
+      "title": "Video-MME paper and official project",
+      "locator": "https://arxiv.org/abs/2405.21075",
+      "accessed_on": "2026-10-26"
+    },
+    {
+      "id": "S07",
+      "kind": "official",
+      "title": "National Student Clearinghouse Enrollment Insights",
+      "locator": "https://nscresearchcenter.org/enrollment-insights",
+      "accessed_on": "2026-10-26"
+    },
+    {
+      "id": "S08",
+      "kind": "official",
+      "title": "MIT Undergraduate Majors Count",
+      "locator": "https://registrar.mit.edu/stats-reports/majors-count",
+      "accessed_on": "2026-10-26"
+    },
+    {
+      "id": "S09",
+      "kind": "official",
+      "title": "Lei Li public homepage",
+      "locator": "https://lilei-nlp.github.io/",
+      "accessed_on": "2026-10-26"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "节目方法论的核心是方向选择可以慢、最小假设反馈要快，并把问题重要性与难度共同作为选题标准。",
+      "report_anchor": "主线一：问题选择要慢，反馈循环要快",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "03:28–05:15、28:18–31:08。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "嘉宾反对把中稿作为唯一 reward，并以真实开源维护、使用与公开输出补充论文指标，同时承认所有指标都可能被 hack。",
+      "report_anchor": "主线二：评价指标越单一",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "08:07–16:50。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "节目把冷启动路径落到 GitHub 项目、harness、应用、研究博客和小实验，而不是等待先获得算力或头衔。",
+      "report_anchor": "3.2 冷启动靠公开产物",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "20:08–24:47。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "MiMo-V2.6 强化学习指标确实曾在小米官方页面公开展示，但节目和官方页面不足以证明完整训练环境、数据、代码与 reward 全部开放。",
+      "report_anchor": "4.1 后训练直播",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S03",
+        "S05"
+      ],
+      "evidence": "39:58–42:08 与 S05。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "嘉宾认为 RSI 已覆盖数据生成、训练与参数/算法搜索等局部环节，但尚缺定义重要问题的 taste，因此不能视为完整自主研究闭环。",
+      "report_anchor": "4.3 RSI 已经存在局部闭环",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "46:00–47:46。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "Video-MME 官方材料记录 900 个视频、254 小时、11 秒至 1 小时，支持节目所说的长视频能力维度；CS 四年制入学下降 8.4% 可追溯，MIT“大一最热门”口径只能部分支持。",
+      "report_anchor": "外部事实核验",
+      "support": "direct",
+      "source_ids": [
+        "S06",
+        "S07",
+        "S08"
+      ],
+      "evidence": "S06 项目/论文，S07 Enrollment Insights，S08 majors count。",
+      "critical": true
+    },
+    {
+      "id": "C07",
+      "claim": "嘉宾把博士训练分为独立做研究、从 generator 转为 critic 的 leadership、以及学术到工业转换三个里程碑，AI 可以辅助第一阶段但不能自动替代整条能力转变。",
+      "report_anchor": "3.1 博士训练有三个里程碑",
+      "support": "direct",
+      "source_ids": [
+        "S02",
+        "S03"
+      ],
+      "evidence": "16:55–20:13。",
+      "critical": true
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "00:23 身份与教育经历",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S09"
+      ],
+      "report_anchor": "概览"
+    },
+    {
+      "id": "U02",
+      "title": "02:29 EMNLP 最佳论文开局",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S09"
+      ],
+      "report_anchor": "主线一"
+    },
+    {
+      "id": "U03",
+      "title": "03:28 怎样读好 PhD",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线一"
+    },
+    {
+      "id": "U04",
+      "title": "08:07 论文洪水与顶会评审",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线二"
+    },
+    {
+      "id": "U05",
+      "title": "12:16 大粉理论",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线二"
+    },
+    {
+      "id": "U06",
+      "title": "16:50 博士训练阶段",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线三"
+    },
+    {
+      "id": "U07",
+      "title": "20:08 冷启动",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线三"
+    },
+    {
+      "id": "U08",
+      "title": "25:28 选学校还是导师",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线三"
+    },
+    {
+      "id": "U09",
+      "title": "28:12 慢科研与快科研",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线一"
+    },
+    {
+      "id": "U10",
+      "title": "31:08 地区差异",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线三"
+    },
+    {
+      "id": "U11",
+      "title": "35:27 导师创业",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线三"
+    },
+    {
+      "id": "U12",
+      "title": "36:52 是否需要 PhD",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线三"
+    },
+    {
+      "id": "U13",
+      "title": "39:58 MiMo 后训练直播",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05"
+      ],
+      "report_anchor": "主线四"
+    },
+    {
+      "id": "U14",
+      "title": "42:03 数据公司的价值",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线四"
+    },
+    {
+      "id": "U15",
+      "title": "46:00 RSI",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线四"
+    },
+    {
+      "id": "U16",
+      "title": "47:46 Benchmark",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S06"
+      ],
+      "report_anchor": "主线五"
+    },
+    {
+      "id": "U17",
+      "title": "49:00 CS 是否值得学",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S07",
+        "S08"
+      ],
+      "report_anchor": "主线五"
+    },
+    {
+      "id": "U18",
+      "title": "50:20 专业建议",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "主线五"
+    },
+    {
+      "id": "U19",
+      "title": "51:24 吃饭睡觉",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "report_anchor": "结尾"
+    }
+  ],
+  "limitations": [
+    "节目是个人经验，不是 PhD 系统调查。",
+    "转写虽通过审计，仍有专名误识别；无法确认者未用于结论。",
+    "MiMo 公开指标不等于完整训练可复现。",
+    "MIT 专业热度口径只获得部分支持。",
+    "MiniMax 精编生成请求超时且未重放、未采用。",
+    "有关 RSI 和数据公司的判断主要是嘉宾观点。"
+  ]
+}

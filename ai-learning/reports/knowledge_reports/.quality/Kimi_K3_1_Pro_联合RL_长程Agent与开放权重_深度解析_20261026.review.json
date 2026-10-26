@@ -1,0 +1,843 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/Kimi_K3_1_Pro_联合RL_长程Agent与开放权重_深度解析_20261026.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "glm-5.3",
+        "harness": "pi",
+        "run_id": "review-kimi-k31pro-r2-20261026",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 95,
+        "request_coverage": 90,
+        "reasoning_quality": 90,
+        "readability": 92,
+        "limitations": 90
+      },
+      "score_reasons": {
+        "evidence_fidelity": "在全新 context 中先读 S01/S02/S03 原文，再逐项核对报告与 evidence。C01–C08 全部 critical claims 有直接来源支持；正文中出现的每一个数字均与原文一致：Terminal-Bench 4.0 65.7/58.2/66.4、KCB 3.0 61.2/55.95、BenchCAD with tools 92.7/96.2/95.9 与 without tools 72.8/73.0/60.6（1000/17900 随机子集）、OfficeQA Pro v2 64.4、Frontier Finance 58.6、内部金融 57.6/50.4（+7.2）、70.4/58.8、37/8.9（≈4.2×）、Hallu 23.4→8.3 与 42.4%、walking 案例 167/420/36/11.2 秒、九专家三域三 effort/MOPD、AgentENV 133ms/49ms 与 51,219,741 沙箱/1,505,678 镜像、Tier 1 约 70% 确认与 16 未知漏洞、Tier 2 14/36 vs 8/36、UK AISI+NIST CAISI 0/41 ACE、xdev-bench-hard 90.5 vs 81.0 pass@3 及无 timeout 口径、KCB 2.0 双 harness 73.7/72.9 与 Coding Experience 59.9/56.6、权重 2026-11-04。上一轮两处引用结构问题已修复：参考文献仅 S1–S3 且与 evidence sources 一致（S4 已并入 S1），『截至 2026 年 10 月 26 日……已发布』的核验日表述不再把核验日当发布日。未发现捏造来源、关键数字错配或无依据断言。残留仅为取舍粒度（如 walking 案例未列 296/402 组件数、xdev 对照模型分数未列），不构成缺陷。",
+        "request_coverage": "R01–R06 全部满足，且上一轮列出的五类修订需求全部落实：(1) §3.2 新增 3D 能力线小节，含参数化建模、无 MCP 的 Blender/CAD 脚本与 3D Make 产品化信号，表格补齐 BenchCAD without-tools 72.8 一行；(2) §2.1 给出 K3 三域×三 effort 九专家 RL + MOPD 合并 + partial rollout 的基线对照，『K3 已有 vs K3.1 扩展』的论证结构成立；(3) §2.2 用外部 KV pool 写回、auto-throttling 三类信号与 AgentENV（Firecracker、133/49ms、51M 沙箱）支撑『长程 RL 是系统工程』判断；(4) §4.2 补入 K3 Tier 1/Tier 2 与 UK AISI+NIST CAISI 独立评估证据链；(5) 金融表补 Frontier Finance 58.6 与 Financial Modeling 57.6/50.4，S1 引用结构与日期措辞修复。残留缺口：S02 的 RL 环境与任务合成机制（统一白盒 harness 环境、知识图谱引导合成、kernel 任务与反 reward-hacking、mock 应用、AET）仍只在 §2.1 概念层提及而未引用具体机制；第三方验证与成本效率（AA 57.1、WebDev Arena #1、$2.03/task）及 K3 内部评测套件未纳入——后两者已在 Limitations 第 5/6 条声明为有意取舍。",
+        "reasoning_quality": "核心论证链本轮有据可依：先以 K3 九专家/MOPD 基线锚定『K3 已有什么』，再对照 S01 六项栈层优化主张并明确标注其不可验证性（无领域分布、reward、训练曲线、消融）；§2.2 的机制数字（KV 写回、动态并发、沙箱规模与延迟）使『RL 扩展瓶颈在环境供给与执行隔离』从博客复述升级为有既有系统证据的判断，且明确区分『K3 执行证据』与『K3.1 新消融』；§3.3 用 KCB 2.0 双 harness 数据支撑『Harness 是结果的一部分』；§4.2 以 K3 cyber 实证为先验、再评估 K3.1 数据移除实验并给出五点口径质疑；Highspeed 一节对『2–3×』不外推的克制解读正确。争议与替代解释四条（compute 混杂、内部基准偏差、迁移风险、长轨迹放大 harness 差异）仍然有效。扣分：RL 环境合成机制证据未使用，§2.1『环境供给、可判定终态、grader』论断本可由 S02 的具体环境设计支撑；属与 coverage 同源的次要论证留白。",
+        "readability": "独立可读性达标：不依赖外部材料即可理解 K3→K3.1 关系、post-trained、moment-arm、pass@3 等术语在上下文中自明；每张表格附口径列，速览、来源地图、章节锚点、Limitations 与思考追问结构完整；§2.2/§4.2 的机制描述与数字引用密度高但未空心化。轻微：§3.1 表格九行信息密，口径列文字较长，不影响理解。",
+        "limitations": "六条 Limitations 覆盖权重未发布、未运行模型、K3 报告不能排除 K3.1 未公开改动、RL 细节缺失、价格与延迟未比较、以及明确声明未展开的范围（预训练数据、全部案例、API 契约、第三方成本排名）。上一轮『没写与没查不可区分』的问题已通过第 5/6 条的范围声明解决；思考与追问三条具体可执行。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07"
+      ],
+      "source_content_map": [
+        {
+          "id": "M01",
+          "title": "S01 发布定位：K3.1 系列首个模型、最强 3T 级开放权重、1M 上下文、Highspeed 2–3×、四渠道上线、11-04 权重承诺",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01"
+          ],
+          "notes": "『研究对象与结论』与速览完整覆盖；日期表述已改为资料核验口径。"
+        },
+        {
+          "id": "M02",
+          "title": "S01 后训练定位与联合 RL 叙事：post-trained version of K3、更大后训练算力、数百下游领域、六项栈层优化、『稳定可预测回报』主张",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03"
+          ],
+          "notes": "§2.1 逐项列出六项并明确标注厂商主张与不可验证面。"
+        },
+        {
+          "id": "M03",
+          "title": "S01 关键 coding 数字：Terminal-Bench 4.0 65.7%（Astra 58.2/Opus 5.5 66.4）、KCB 3.0 Long-horizon 61.2 vs K3 55.95",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04"
+          ],
+          "notes": "数字与领先/落后关系转述准确，含 harness 与最大值口径注释。"
+        },
+        {
+          "id": "M04",
+          "title": "S01 长程案例与 coding 叙述：walking simulator（167 missions/420 reviews/open-loop probe 修正 36 处 moment-arm/11.2 秒交替行走）、Unity/Unreal/Godot 与前端/Three.js",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03"
+          ],
+          "notes": "§2.3 案例数字准确并抽象出闭环流程与不可复现边界；游戏引擎叙述未展开属可接受取舍。"
+        },
+        {
+          "id": "M05",
+          "title": "S01 3D 能力线：BenchCAD with/without tools 全组数字、Vision2Code 1000/17900 随机子集、参数化建模、无 MCP 的 Blender/CAD 脚本、3D Make 上线",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04"
+          ],
+          "notes": "上一轮 partial：本轮 §3.2 成节覆盖 without-tools 72.8、参数化建模、脚本能力与 3D Make 产品化信号，并保留『待独立复测』定位。已解决。"
+        },
+        {
+          "id": "M06",
+          "title": "S01 金融能力线：OfficeQA Pro v2 64.4（SOTA）、Frontier Finance 58.6、内部三项 57.6/50.4（+7.2）、70.4/58.8、37/8.9（≈4.2×）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04"
+          ],
+          "notes": "上一轮缺 Frontier Finance 58.6 与 Financial Modeling 57.6/50.4：本轮表格已补全，口径注释与 S01 脚注一致。已解决。"
+        },
+        {
+          "id": "M07",
+          "title": "S01 幻觉压力测试：claim-level 23.4%→8.3%、至少一错响应份额为前代 42.4%、压力测试免责声明",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U05"
+          ],
+          "notes": "§4.1 逐项准确，免责声明边界完整保留。"
+        },
+        {
+          "id": "M08",
+          "title": "S01 cyber 控制实验：能力来源追踪（mid-training 语料 + RL 环境混合）、两阶段移除、xdev-bench-hard 90.5→81.0 pass@3 及口径、开放权重两原则与防御性双用途论证",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U05"
+          ],
+          "notes": "§4.2 数字与五点口径质疑（内部策展、随机子集、无 timeout、pass@3、能力迁移）准确；两原则表述忠实。"
+        },
+        {
+          "id": "M09",
+          "title": "S01 benchmark 脚注口径：effort max/temp 1.0/top-p 0.95、Claude-Code harness、DeepSeek 内部复测、外部取最大报告值、在线找答案记 0 分规则",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04"
+          ],
+          "notes": "§3.1 表格口径列 + §3.3 五条混合口径覆盖关键项；BrowseComp/ExploitBench 等逐条脚注未全列属合理取舍。"
+        },
+        {
+          "id": "M10",
+          "title": "S01 可用性细节：API 型号名、Zero Data Retention、企业默认关闭、Kimi Work 3.1.0+ 门槛、HarmonyOS 渠道",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06"
+          ],
+          "notes": "报告覆盖四渠道与权重时间；ZDR 与企业默认关闭对『实际使用含义』有参考价值，未提及，次要。"
+        },
+        {
+          "id": "M11",
+          "title": "S02 K3 总体定位：双轴 scaling 论述、世界首个开放 3T 级、整体落后 Fable 5/GPT-5.6 Sol 但领先其余对比模型",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02"
+          ],
+          "notes": "§1 以『继承底座』框架承接，与来源定位一致。"
+        },
+        {
+          "id": "M12",
+          "title": "S02/S03 架构三轴与参数：3:1 KDA/Gated MLA 混合与末层全局注意力、AttnRes 选择性跨层读取、896 选 16 + 2 shared 的 Stable LatentMoE、MoonViT-V2、Per-Head Muon；模型卡参数表（93 层/69 KDA+24 MLA 等）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02"
+          ],
+          "notes": "§1 三轴表述与全部参数准确；SiTU-GLU/QB 等稳定化细节未展开，对该主题属可接受深度。"
+        },
+        {
+          "id": "M13",
+          "title": "S02 约 2.5× scaling efficiency 为架构+数据+配方合计拟合、无组件级消融；cosine vs WSD 调参口径",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02"
+          ],
+          "notes": "报告明确指出合计不可分解；cosine/WSD 未提，次要。"
+        },
+        {
+          "id": "M14",
+          "title": "S02 预训练数据与长上下文扩展：四域语料、NoPE 外推、8K→64K→256K→1M 四阶段、长文档上采样与合成拼接数据",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02"
+          ],
+          "notes": "报告未解释 1M 上下文如何获得；Limitations 第 6 条已声明不展开预训练数据，范围边界可辨认。"
+        },
+        {
+          "id": "M15",
+          "title": "S02 K3 后训练三阶段基线：SFT（XTML/QAT）→ RL（通用/Agent/coding 三域×low/high/max 共 9 专家、partial rollout、预算控制 τ、Agentic GRM）→ MOPD 多教师合并",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03"
+          ],
+          "notes": "上一轮 partial：本轮 §2.1 已给出三域三 effort 九专家 + MOPD + partial rollout 基线对照，『新在哪』论证成立；GRM/τ 细节未展开属可接受深度。已解决。"
+        },
+        {
+          "id": "M16",
+          "title": "S02 RL 环境与任务合成机制：统一白盒环境（可组合 harness 模块）、知识图谱引导任务合成、kernel 任务与反 reward-hacking 检测、mock 应用、AET verify-in-the-loop、web 开发任务",
+          "importance": "core",
+          "assessment": "partial",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03"
+          ],
+          "notes": "报告 §2.1 仅以『环境供给、可判定终态、grader』概念层承接，未引用任何具体环境合成机制；对『联合 RL 环境供给』主题是本可作为论证增强的既有证据，属次要残留而非需求缺失。"
+        },
+        {
+          "id": "M17",
+          "title": "S02 预训练基础设施：FlashKDA、KDA Context Parallelism、MoonEP 完美均衡 EP、内存高效训练、多模态编码器优化",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02"
+          ],
+          "notes": "预训练侧系统未展开；与 K3.1 后训练升级主题距离较远，Limitations 已声明预训练内容取舍。"
+        },
+        {
+          "id": "M18",
+          "title": "S02 1M agentic RL 基础设施：co-located RL、partial rollout、外部 KV cache pool 写回、auto-throttling 调度信号、gradient-buffer 复用、AgentENV microVM（Firecracker、133ms/49ms checkpoint、51,219,741 沙箱/1,505,678 镜像）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03"
+          ],
+          "notes": "上一轮 partial：本轮 §2.2 覆盖 KV 写回、auto-throttling 三类信号与 AgentENV 关键指标，并明确标注为 K3 执行证据而非 K3.1 消融。已解决。"
+        },
+        {
+          "id": "M19",
+          "title": "S02 推理服务与 fleet 调度：KDA-aware prefix cache（512-token hash 粒度）、专用 kernel、cache-aware affinity 与预算准入",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06"
+          ],
+          "notes": "服务侧未展开；KV pool（§2.2）已部分对应 S01 所称 long-context inference 优化，prefix cache 细节未引，次要。"
+        },
+        {
+          "id": "M20",
+          "title": "S02/S03 K3 评测与 harness 口径：双 harness KCB 2.0 73.7/72.9、Coding Experience 59.9/56.6、研究级推理差距（CritPt/HLE）、拒绝与 fallback 披露",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04"
+          ],
+          "notes": "§3.3 以双 harness 数字支撑『Harness 是结果的一部分』，引用准确；K3 其余榜单数字未展开属合理取舍。"
+        },
+        {
+          "id": "M21",
+          "title": "S02 内部评测套件：Swarm Bench/Deep Research Bench 领先、Agent Behavior/MIRA/24-7 ClawBench 落后、Webdev Bench +31.0",
+          "importance": "supporting",
+          "assessment": "missing",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U07"
+          ],
+          "notes": "K3 一代内部评测未纳入；对 K3.1 主题属可选对照，取舍可接受。"
+        },
+        {
+          "id": "M22",
+          "title": "S02 K3 cyber 评估证据链：Tier 1 数百候选约 70% 人审确认、6 项目 16 个先前未知漏洞、Tier 2 36 任务 14 vs GLM-5.2 8、四种失败模式、UK AISI+NIST CAISI 独立评估（0/41 ACE）、能力下界声明",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U05"
+          ],
+          "notes": "上一轮 partial：本轮 §4.2 已纳入确认率、未知漏洞数、Tier 2 对比与独立评估 0/41，作为 K3.1 数据移除决策的先验背景。已解决。"
+        },
+        {
+          "id": "M23",
+          "title": "S02 第三方验证与成本效率：AA Intelligence Index 57.1（#4/580）、Vals 74.7%（#2/39）、WebDev Arena 1678 Elo（首个开放模型登顶）、BrowseComp $2.03/task、KCB 2.0 38% 成本",
+          "importance": "supporting",
+          "assessment": "missing",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06"
+          ],
+          "notes": "未纳入；Limitations 第 5/6 条已声明价格与第三方成本排名未比较，边界可辨认。"
+        },
+        {
+          "id": "M24",
+          "title": "S02 案例研究：GPU 内核优化（AttnRes 283.6→114.4ms）、MiniTriton 编译器、48 小时芯片设计、I-Love-Q 天体物理、AI ASIC 42 年网站、GWTC-5、视频编辑",
+          "importance": "supporting",
+          "assessment": "missing",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03"
+          ],
+          "notes": "K3 一代案例未用作对照；Limitations 第 6 条声明取舍，可接受。"
+        },
+        {
+          "id": "M25",
+          "title": "S02/S03 使用契约与部署：XTML 模板、preserved thinking history 回传要求、reasoning_effort low/high/max、vLLM/SGLang/TokenSpeed、Kimi K3 License",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06"
+          ],
+          "notes": "报告 §5.3 涉及部署判断边界；API 契约未展开已在 Limitations 第 6 条声明。"
+        },
+        {
+          "id": "M26",
+          "title": "S03 模型卡量化与配置：MXFP4 权重/MXFP8 激活 QAT、上下文 1048576、Text+Image 模态",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02",
+            "U06"
+          ],
+          "notes": "§5.3 以『实际精度格式不能核对』承接 K3.1，未引用 K3 已公开的 MXFP4 QAT 先例作参照锚点；轻微。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "第二轮独立复核于全新 context 完成：先核对 SHA-256（报告 ec49e574…c8e38、evidence 4121cbfe…82b8b，均与任务指定值一致），再按顺序读 S01/S02/S03 原文，独立重建 26 个 source_content_map 单元后对照报告与 evidence。上一轮五类问题全部解决：① §2.1 给出 K3 三域三 effort 九专家 + MOPD + partial rollout 基线；② §2.2 补 KV 外部池写回、auto-throttling 信号与 AgentENV（133/49ms、51M 沙箱/1.5M 镜像）；③ §3.2 成节覆盖 3D 能力线且表格补 without-tools 行；④ §4.2 补 K3 Tier 1/Tier 2/AISI+CAISI 证据链；⑤ 金融表补 58.6 与 57.6/50.4，S4 引用并入 S1、日期改核验口径。C01–C08 与正文全部数字逐项核对无误，无捏造、无关键数字错配、无核心需求缺失，不触发硬失败。次要残留（不阻塞）：RL 环境合成机制（统一白盒环境/知识图谱任务合成/AET）仍为概念层引用；第三方成本效率与 K3 内部评测未纳入但已在 Limitations 声明；MXFP4 QAT 先例未用作 §5.3 参照。加权总分 92.05，高于 important 门槛 88，各维度均高于维度门槛。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 92.05,
+    "evaluated_on": "2026-10-26",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "40b4eed8439361ebd535212c0fd8789e5b587a3cddf4582d3cf8b268c03f6179",
+    "evidence_sha256": "4121cbfeb9397ebf79331748305353d0140a7eb78a589088c249214b19382b8b"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "glm-5.3",
+            "harness": "pi",
+            "run_id": "review-kimi-k31pro-20261026",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 92,
+            "request_coverage": 80,
+            "reasoning_quality": 84,
+            "readability": 90,
+            "limitations": 85
+          },
+          "score_reasons": {
+            "evidence_fidelity": "全部关键数字逐项对照三个来源核对一致：Terminal-Bench 4.0 65.7/58.2/66.4、KCB 3.0 61.2 vs 55.95、BenchCAD 92.7/96.2/95.9（随机 1000/17900 子集）、OfficeQA Pro v2 64.4、Internal Financial Research 70.4/58.8、Business Operation 37/8.9、Hallu 23.4→8.3 与 42.4%、xdev-bench-hard 90.5 vs 81.0 pass@3 及无 timeout 口径、KCB 2.0 双 harness 73.7/72.9、权重 2026-11-04，均与 S01/S02/S03 一致；C01–C06 六条 critical claims 全部有直接来源支持，无捏造。扣分点：报告把 S4 列为独立来源，实际是 S1 同一博客的 Benchmarks 脚注锚点，引用结构冗余且 evidence.json 的 sources 只登记 S01–S03，S4 游离在账本外；研究对象一节将『2026 年 10 月 26 日发布』当作博客发布日，该日实为资料核验日，S01 内文未标注发布日期（图片资源路径含 20261023，提示更早上线）。",
+            "request_coverage": "R01–R06 全部满足：区分后训练升级与预训练底座（§2）、解释 KDA/AttnRes/Stable LatentMoE 与规模（§1）、逐项 benchmark 与 harness 口径（§3）、cyber 移除与开放权重原则（§4）、可执行建议（§5）、Limitations 与追问齐备。相对来源核心内容的缺口：3D 建模是 K3.1 官方三大能力线之一（BenchCAD 细节、参数化建模、Blender/CAD 无 MCP 脚本、3D Make 上线），报告只剩一行表格数字；S02 的后训练方法（三域×三 effort 共 9 专家、MOPD 合并、partial rollout、Agentic GRM、预算控制）与 RL 环境/基础设施机制（统一白盒 harness 环境、知识图谱任务合成、AgentENV microVM 沙箱 51M 实例/133ms checkpoint、外部 KV 池、auto-throttling）恰是『联合 RL 与长程 Agent 训练基础设施』主题下最相关的既有证据，报告只转述了博客六个名词而未展开；K3 论文的 cyber 评估证据链（Tier 1 约 70% 人审确认与 16 个未知漏洞、Tier 2 14/36 vs GLM 8/36、UK AISI+NIST CAISI 独立评估 0/41 ACE）未纳入 §4/§6 的双用途风险论证。",
+            "reasoning_quality": "核心判断链清晰且诚实：post-trained 版本 vs 新底座的区分、『RL 瓶颈从算法转向环境供给与执行隔离』的解读、内部基准与 harness 口径不可作绝对排名、cyber 数据移除是能力控制实验而非安全认证、『更强模型使伪完成更难识别』对 EverAgent 的推论，均有实质推理；争议与替代解释四条（compute 混杂、内部基准偏差、迁移风险、长轨迹放大 harness 差异）有效。扣分：对『长程 Agent 训练基础设施』这一核心论断，报告未使用 S02 中可得的机制证据（沙箱指标、rollout 算法、KV 保留设计）支撑，判断停留在博客复述层面；§2.1 标题称『从单领域 RL 走向…』但未给出 K3 侧 RL 基线（三域九专家）作对照，论证薄。",
+            "readability": "独立可读性达标：不依赖外部材料即可理解 K3→K3.1 的关系、每个表格的口径注释、术语（post-trained、moment-arm、pass@3）在上下文中可理解；章节结构、来源地图、速览与锚点引用规范，正文无索引化空心问题。",
+            "limitations": "五条 Limitations 覆盖权重未发布、未运行模型、K3 报告不能排除未公开改动、RL 细节缺失、价格未比较；争议与追问具体。缺口：未声明 3D/金融部分数字（Frontier Finance 58.6、Financial Modeling 57.6/50.4）与 K3 成本效率、第三方验证、案例研究等内容被有意省略的范围边界，读者无法区分『没写』与『没查』。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07"
+          ],
+          "source_content_map": [
+            {
+              "id": "M01",
+              "title": "S01 发布定位：首个 K3.1 模型、3T 级最强开放权重、1M 上下文、Highspeed 2–3×、渠道与 11-04 权重计划",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01"
+              ],
+              "notes": "报告『研究对象与结论』与速览完整覆盖；日期措辞把核验日当发布日，需改为『资料核验于 2026-10-26』。"
+            },
+            {
+              "id": "M02",
+              "title": "S01 联合 RL 叙事：数百下游领域、六项栈层优化、『稳定可预测回报』主张及其不可验证性",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "§2.1 完整列出六项并明确标注为厂商主张；对机制本身无展开（见 M15/M17/M18）。"
+            },
+            {
+              "id": "M03",
+              "title": "S01 关键 coding benchmark：Terminal-Bench 4.0 65.7%（Astra 58.2/Opus 5.5 66.4）、KCB 3.0 Long-horizon 61.2% vs K3 55.95%",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "数字与排名关系（领先 Astra、微弱落后 Opus 5.5）转述准确。"
+            },
+            {
+              "id": "M04",
+              "title": "S01 walking simulator 长程案例：167 missions/420 reviews、open-loop probe 修正 36 处 moment-arm、11.2 秒交替行走",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "§2.2 案例数字准确并给出闭环抽象；未列 296 骨骼/402 肌肉等细节，可接受。"
+            },
+            {
+              "id": "M05",
+              "title": "S01 3D 建模能力线：BenchCAD with/without tools、17,900 例 Vision2Code、参数化建模、Blender/CAD 无 MCP 脚本、3D Make 上线",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "官方三大能力领域之一；报告仅保留 BenchCAD 一行表格（含 with-tools 数字与子集口径），without-tools 72.8、参数化建模、无 MCP 脚本能力与 3D Make 产品化信号全部缺失，正文无任何 3D 章节展开。"
+            },
+            {
+              "id": "M06",
+              "title": "S01 金融能力线：OfficeQA Pro v2 64.4 SOTA、Frontier Finance 58.6、内部三项 57.6/50.4、70.4/58.8、37/8.9（≈4.2×）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "表格含 OfficeQA Pro v2、Financial Research、Business Operation 及 4.2× 口径；Frontier Finance 58.6 与 Financial Modeling 57.6/50.4（+7.2）未列，属次要遗漏，建议补入表格。"
+            },
+            {
+              "id": "M07",
+              "title": "S01 幻觉压力测试：claim-level 23.4%→8.3%、至少一错响应份额为前代 42.4%、非日常错误率的免责声明",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "§4.1 逐项转述准确，免责声明边界保留完整。"
+            },
+            {
+              "id": "M08",
+              "title": "S01 cyber 控制实验：数据来源追踪（mid-training 语料 + RL 环境）、两阶段移除、xdev-bench-hard 90.5→81.0 pass@3、对照 K3 33.3/GLM 57.1/DeepSeek 85.7/GPT-5.6 Sol 100、开放权重两原则与防御性论证",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "§4.2 数字与口径（内部策展、随机子集、无 timeout、pass@3）准确；对照模型分数未列但不影响论证；『低于公开至少三个月的前沿专有模型』表述保留。"
+            },
+            {
+              "id": "M09",
+              "title": "S01 可用性细节：API 型号名、Zero Data Retention、企业默认关闭、Kimi Work 3.1.0+ 门槛",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "报告提到四渠道上线；ZDR 与企业默认关闭对 EverAgent『实际使用含义』章节有参考价值，未提及。"
+            },
+            {
+              "id": "M10",
+              "title": "S01 benchmark 脚注口径：effort max/temp 1.0/top-p 0.95、Claude-Code harness、DeepSeek 内部复测、外部取最大值、ALE/OfficeQA 记 0 分规则、BrowseComp 200K/500 步、ExploitBench/ExploitGym 设置",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "§3.2 抓住了五条关键口径；BrowseComp/ExploitBench/ExploitGym 等逐条脚注未全列，属合理取舍。"
+            },
+            {
+              "id": "M11",
+              "title": "S02 K3 定位：首个开放 3T 级、整体落后 Fable 5 与 GPT-5.6 Sol 但领先其余对比模型",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02",
+                "U07"
+              ],
+              "notes": "报告以『继承底座』框架呈现，未直接引用整体排名结论，但 §1 表述与来源一致。"
+            },
+            {
+              "id": "M12",
+              "title": "S02 架构三轴：3:1 KDA/Gated MLA 混合与末层全局注意力、AttnRes 选择性跨层读取、896 选 16 + 2 shared 的 Stable LatentMoE（SiTU-GLU/Quantile Balancing）、MoonViT-V2、Per-Head Muon",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "§1 三轴表述与参数准确；SiTU-GLU/QB/下界衰减等稳定化细节未展开，对 K3.1 主题属可接受深度。"
+            },
+            {
+              "id": "M13",
+              "title": "S02 2.5× scaling efficiency 为合计拟合、无组件级消融；cosine 优于 WSD 的调参口径",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "报告明确指出合计不可分解，判断准确；cosine/WSD 未提，次要。"
+            },
+            {
+              "id": "M14",
+              "title": "S02 预训练数据四域构成与长上下文扩展：NoPE 外推、8K→64K→256K→1M 四阶段、长文档上采样与合成拼接数据",
+              "importance": "supporting",
+              "assessment": "missing",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "报告未涉及 1M 上下文是如何获得的；对解释『长上下文推理』基础设施主题有补充价值，非核心缺口。"
+            },
+            {
+              "id": "M15",
+              "title": "S02 K3 后训练三阶段：SFT（XTML/QAT）→ RL（三域×三 effort 共 9 专家、partial rollout、per-problem 预算 τ、Agentic GRM 四步协议、verbosity 控制）→ MOPD 多教师合并",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "evidence.json 声称 S2 用途包含『后训练』，但报告正文未呈现任何 K3 后训练机制。§2.1 标题『从单领域 RL 走向跨数百领域联合 RL』缺少 K3 基线（三域九专家+MOPD 合并）作对照，导致『新在哪』的论证只剩博客复述。"
+            },
+            {
+              "id": "M16",
+              "title": "S02/S03 部署感知后训练：仅 MoE 专家权重 MXFP4/激活 MXFP8 的 QAT、rollout 与训练同量化、EAGLE-3 draft（MTP 层微调、LK loss）",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "§5.3 说『不能核对实际精度格式』，但未引用 K3 已公开的 MXFP4/MXFP8 QAT 先例作为部署判断的已知锚点，削弱了该节信息量。"
+            },
+            {
+              "id": "M17",
+              "title": "S02 RL 环境与任务合成：统一白盒 RL 环境（可组合 harness 模块、可实例化 Claude Code/Codex/Kimi Code 等）、知识图谱引导任务合成、kernel 任务与 hacking 检测、个人助理 mock 应用、AET verify-in-the-loop、web 开发任务",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "这是『联合 RL 环境供给』主题下最具体的既有证据：报告 §2.1 仅泛泛提到『环境供给、可判定终态、grader』，未使用任何 S02 机制细节（如环境如何跨 harness 组合、如何反 reward hacking）。"
+            },
+            {
+              "id": "M18",
+              "title": "S02 训练/推理基础设施：FlashKDA 与 KDA Context Parallelism、MoonEP、co-located RL + 外部 KV cache 池 + auto-throttling、AgentENV microVM 沙箱（Firecracker、133ms/49ms checkpoint、51,219,741 沙箱）、KDA-aware prefix cache",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "报告速览宣称『真正的新信号是…长程 Agent 训练基础设施』，但支撑该判断的机制证据（沙箱规模与延迟、KV 保留、rollout 调度设计）几乎全部可从 S02 获得而未被引用，核心卖点论证不足。"
+            },
+            {
+              "id": "M19",
+              "title": "S02 K3 评估：整体结果表、BrowseComp 91.2（300K 压缩）/90.4（1M 无管理）、研究级推理差距（CritPt 23.4、HLE 43.5/56.0）、KCB 2.0 双 harness 73.7/72.9 与 Coding Experience 59.9/56.6",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "§3.2 用双 harness 数字证明『Harness 是结果的一部分』，引用准确有效；其余 K3 数字未展开属合理取舍。"
+            },
+            {
+              "id": "M20",
+              "title": "S02 第三方验证与成本效率：AA Index 57.1（#4/580）、WebDev Arena 1678 Elo（#1/99，首个开放模型登顶）、Vals 74.7%（#2/39）、BrowseComp $2.03/task、KCB 2.0 38% 成本等",
+              "importance": "supporting",
+              "assessment": "missing",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06",
+                "U07"
+              ],
+              "notes": "对 §5.3 的部署与成本判断、§5.1 的 A/B 建议有直接参考价值（开放模型成本效率先例），报告完全未提；Limitations 声称『没有比较 API 价格』，但 K3 的公开成本效率证据本可部分回答。"
+            },
+            {
+              "id": "M21",
+              "title": "S02 K3 cyber 评估证据链：Tier 1 数百候选约 70% 人审确认、16 个先前未知漏洞（含 Linux 内核远程堆 OOB 与 RDMA Dirty-COW 类 LPE）、Tier 2 14/36 vs GLM-5.2 8/36、四种失败模式、UK AISI+NIST CAISI 独立评估（0/41 ACE）、能力下界声明",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "报告 §4.2/§6.3 的『通用 coding 迁移』与『风险未消失』论断方向正确，但缺少 K3 已有的具体证据（确认率、未知漏洞数、独立评估一致性），双用途风险一节的实证厚度不足。"
+            },
+            {
+              "id": "M22",
+              "title": "S02 案例研究：GPU 内核优化（AttnRes 283.6→114.4ms）、MiniTriton 编译器、48 小时芯片设计（8700+ tokens/s）、I-Love-Q 天体物理、AI ASIC 42 年网站、GWTC-5、视频编辑",
+              "importance": "supporting",
+              "assessment": "missing",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "K3 一代已有长程案例证据，可为『长程 Agent 能力不是 K3.1 独有』提供对照视角；报告仅用 K3.1 的 walking 案例，取舍可接受但少一个对比维度。"
+            },
+            {
+              "id": "M23",
+              "title": "S02/S03 使用契约：XTML 模板、preserved thinking history（多轮须回传 reasoning_content/tool_calls）、reasoning_effort low/high/max",
+              "importance": "supporting",
+              "assessment": "missing",
+              "source_ids": [
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "对 API 集成方是实操信息；报告范围外，可接受。"
+            },
+            {
+              "id": "M24",
+              "title": "S03 模型卡参数表：93 层/69 KDA+24 Gated MLA/96 heads/160K vocab/1048576 上下文/MXFP4-MXFP8/Text+Image",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "§1 抽取的规模与架构数字与模型卡一致。"
+            },
+            {
+              "id": "M25",
+              "title": "S03 K3 benchmark 表与脚注披露：评测参数、BrowseComp 双口径、SWE-Marathon H20 分支与 Fable 5 35% fallback、KCB 2.0 refusal/fallback 披露、ALE 榜单 harness 配对",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "报告 §3.2 的 harness 论证与这些披露一致，方向正确。"
+            },
+            {
+              "id": "M26",
+              "title": "S03 部署与许可：vLLM/SGLang/TokenSpeed 推理引擎、Kimi K3 License、下载量与生态",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "报告提到『推理框架兼容性不能核对』，未列出 K3 已支持的引擎清单作为参照；次要。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04",
+            "R05",
+            "R06"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [
+            "3D 建模能力线（M05）：官方三大能力领域之一，报告仅剩 BenchCAD 一行表格，无正文展开；深度解析应至少覆盖 without-tools 结果、参数化建模与无 MCP 脚本能力、3D Make 产品化信号之一。",
+            "联合 RL/长程训练基础设施的机制证据（M15/M17/M18）：报告速览与核心判断都建立在『长程 Agent 训练基础设施』上，但未使用 S02 中的 K3 后训练基线（三域九专家、MOPD）、统一白盒 RL 环境、AgentENV 沙箱指标（133ms checkpoint、51M 实例）、外部 KV 池与 auto-throttling 等既有证据支撑；evidence.json 声称 S2 用途含『后训练』，实际正文未兑现。",
+            "K3 cyber 评估证据链（M21）：§4.2/§6.3 的双用途风险论断缺 Tier 1 确认率、16 个未知漏洞与 UK AISI+NIST CAISI 独立评估等直接证据。",
+            "金融表格补充（M06）：Frontier Finance 58.6 与 Internal Financial Modeling 57.6/50.4（+7.2）未列。",
+            "引用结构（M01 相关）：S4 实为 S1 的脚注锚点，应并入 S1 或在 evidence sources 中登记；『2026-10-26 发布』应改为资料核验日表述。"
+          ],
+          "hard_failures": [],
+          "notes": "独立复核于全新 context 完成，先读 S01/S02/S03 原文构建 26 个 source content map 单元，再对照报告与 evidence。报告与 evidence SHA-256 均与任务指定值一致（报告 aab2776c…37c6，evidence e447a68a…9d7e）。全部 critical claims C01–C06 与报告中出现的数字逐项核对无误，无捏造来源、无关键数字错误、无核心需求缺失，故不触发硬失败。主要修订需求：(1) 补 3D 能力线小节或在覆盖面声明中明确取舍；(2) 用 S02 §4–§5 的机制证据充实『联合 RL 与训练基础设施』论证，给出 K3 九专家基线对照；(3) 在 cyber 一节补 K3 Tier 1/Tier 2 与独立评估证据；(4) 金融表格补两个数字；(5) 修正 S4 引用与发布日期措辞。修订后按流程运行 new-revision 并创建新一轮 Reviewer 记录。"
+        }
+      ],
+      "decision": {}
+    }
+  ]
+}

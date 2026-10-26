@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/6add84e197726cd467573cf1",
+  "source_host": "www.xiaoyuzhoufm.com",
+  "source_sha256": "2f74e2e7e8f67601c970f0c8e90de348854b11cafd27e6d5fb6e357415ed29ba",
+  "language": "zh",
+  "audio_size": 597233742,
+  "transcript_size": 97474,
+  "transcript_sha256": "d2e06c37b7fffc72e5016e6363b86b7f000b75d1a232b8d005fdbde9fb18f6b6",
+  "segments": 1973,
+  "duration_seconds": 3106,
+  "service_version": "whisper.cpp-v1.9.1-sm120",
+  "silent": true,
+  "interactive_browser": false,
+  "audio_playback": false,
+  "transfer": {
+    "atomic": true,
+    "size_verified": true,
+    "sha256_verified": true
+  },
+  "audit": {
+    "ok": true,
+    "max_consecutive_identical": 2,
+    "warnings": [],
+    "errors": []
+  }
+}

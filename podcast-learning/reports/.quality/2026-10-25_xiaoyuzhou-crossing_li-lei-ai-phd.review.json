@@ -1,0 +1,706 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-25_xiaoyuzhou-crossing_li-lei-ai-phd.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "glm-5.3",
+        "harness": "pi",
+        "run_id": "review-20261026-pi-glm53-lilei-02",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 94,
+        "request_coverage": 91,
+        "reasoning_quality": 92,
+        "readability": 92,
+        "limitations": 90
+      },
+      "score_reasons": {
+        "evidence_fidelity": "全新 context 按「来源优先」流程复核：报告与证据账本 SHA-256（a4eb50ab…5814f / 8297998b…7a349）与任务单一致；实机重跑 audit_transcript.py 通过（ok=true、1973 段、3106s、时间戳单调、无 warning/error、max_consecutive_identical=2、transcript sha256 d2e06c37…f6b6 与报告 frontmatter、artifact.json 三方一致；silent=true、audio_playback=false、transfer sha256_verified）。先读官方单集页快照与仓内 shownotes（19 章），再完整通读 1973 段转写，按 19 章独立建图后才读报告与账本。逐项核验 C01–C07：全部有据且锚点真实——C01（03:36–05:15、28:18–30:08、30:18–30:46）、C02（08:19–09:25、09:27–10:52、11:01–12:20）、C03（20:14–23:12）、C04（39:51–42:08 + S05 快照两个 run mimo-v2.6-pro/flash 与「Pro 与 Flash 两模型」表述一致）、C05（46:09–47:33）、C06（S06：900 视频/254 小时/11 秒–1 小时逐字一致；S07：四年制 Computer & Information Sciences 同比 -8.4% 逐字一致；S08：majors count 为全校口径、VI-3 626 > MechE，「大一最热门」确不能由此验证，「部分支持」判断成立）、C07（16:55–20:13 三里程碑齐全）。报告内 18 处时间戳逐一抽核全部命中。source_coverage 19/19 included 与正文一致——上一轮 U02/U06/U17/U18 的失实覆盖声明已随正文补齐而真实化；账本 sources、limitations 与 frontmatter notable_correction 相互印证。上轮点名的两处证据问题已修复：正文与账本均不再出现无证据的「built in public」；Triple AI 在订正表中保持「对应会议名未能可靠核对」，未被强行订正为 AAAI。「首次工业级直播」仍正确保留为社交媒体反馈。扣分项（轻微）：内容地图 U01 的 anchor 写「概览」，而教育轨迹与奖项实际在主线一（概览仅含身份句，anchor 偏松但非失实）；「金额挂在直播页面」属嘉宾口径且未进入核验表（正文已用「李磊说」归属，处理可接受但略欠一层标注）。",
+        "request_coverage": "R01（artifact.json 记 silent=true/audio_playback=false/atomic+sha256_verified）、R02（转写/收据/shownotes/精编四件套齐全且审计通过）、R03（19 个官方单元全部有正文实体内容，不以 polished 代替正文——上轮 U02/U03/U06/U12/U17/U18 的缺口全部补齐并逐段核到：读博决策与 EMNLP 开局在主线一第二段、焦虑谱系+锯齿状智能+具身毛刺在主线一末段、三阶段在 3.1、agent aha 在主线三末段、CS 回应与高三生建议在 5.1）、R04（「李磊说/主持人引用/外部核验显示/这是他的个人观察」分层一致）、R05（四项外部事实核验与边界完成）、R06（启发/Limitations/追问齐全）全部满足，missing_requirements 为空。独立 19 单元地图 18 covered、1 partial：U10（31:08 章，账本标 supporting）的地区优劣已覆盖，但章尾 33:27–35:34 的 package 焦虑、K 型分化与「AI 平权/鸿沟里的梯子」观点群未入正文——上轮已指出、本轮未修复，是唯一章级残留缺口；另有个别 supporting 级细节压缩（巴拉巴西成功定律两个发现、Eric Wallace 例子、苏建林/RoPE 路径、搏击理论、RSI benchmark「百花齐放无共识」、「直播像 R1 的大规模 RL」观察），对 deep 报告属可接受取舍。核心问题全部回答，无 core_requirement_missing，落在 85–94 档中部偏上。",
+        "reasoning_quality": "五主线综合忠实于来源且优于平铺：把「难而正确」重构为「方向慢/执行快」的层级区分、把锯齿状智能接到「亲手验证」的论证链（上轮断裂处已补全）、把大粉理论归入「单一指标→reward hacking」框架，均可在转写中找到对应依据，无过度引申。观点归属严格；边界判断保留优秀（直播≠完整开源、「首次工业级」不写成事实、8.4% 不单独归因 AI、MIT 口径部分支持、RSI 局部闭环≠端到端自主、agent aha 标注为个人观察）。与 loop-rsi-consensus、ADE-vs-harness 的交叉引用方向正确且未借题发挥。结论与证据强度匹配。轻微：3.4/5.1 均以「检查项/不是排行榜」收束，与主线一的选题方法论之间可再显式呼应；K 型分化段的「AI 平权」反方视角缺席使主线三对「地区选择」的论述少一个嘉宾自己的乐观面。",
+        "readability": "standalone 契约达成：不读 polished 也能完整理解 19 章内容与嘉宾论证；速览—概览—内容地图—五主线—外部核验表—启发—Limitations—追问—来源的层级清楚；时间戳、原话引用、核验表排版规范；结尾以原话收束有记忆点。上轮「概览缺嘉宾履历」的问题已在主线一补足（西电→北大→港大 + EMNLP Best Paper + 青云奖）。轻微：内容地图 19 行全 included 后信息量下降，可考虑标注 partial 单元；5.1 一节同时承载 CS 数据核验、嘉宾回应与高三生建议，略拥挤。",
+        "limitations": "六条 Limitations 具体、可核对且与正文实际缺陷对应（个人经验边界、专名误识别与弃用、直播≠可复现、MIT 口径部分支持、MiniMax 超时未重放未采用、RSI/数据公司属嘉宾观点），与 frontmatter notable_correction 及 polished 头部订正清单三方一致。轻微扣分：U10 尾段（K 型分化/AI 平权）未覆盖这一事实未列入 Limitations 或内容地图状态（地图仍标 included，严格说该单元正文为部分覆盖）；对「报告压缩了哪些 supporting 细节」没有总括披露。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08",
+        "U09",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16",
+        "U17",
+        "U18",
+        "U19"
+      ],
+      "source_content_map": [
+        {
+          "id": "M01",
+          "title": "快问快答与嘉宾履历（00:23 章）",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S04",
+            "S09"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01"
+          ],
+          "notes": "独立识别：28 岁、ENTJ、巨蟹座；2016 西电本科→2020 北大硕士→2023 港大 NLP Group 读博；小米大模型后训练研究员、MiMo V2.6 Pro/Flash 后训练直播幕后推动者；腾讯首届青云奖 15 位之一；EMNLP 顶会最佳论文。报告概览给身份、主线一补教育轨迹与奖项（S09 佐证：MSc PKU、Xidian、EMNLP 2023 Best Long Paper、Qingyun 2026）；MBTI/星座等琐碎项合理省略。上轮缺口已补。"
+        },
+        {
+          "id": "M02",
+          "title": "读博决策与 EMNLP 最佳论文开局（02:29 章）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S04",
+            "S09"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02"
+          ],
+          "notes": "独立识别：「十年后会不会后悔」决策测试与机会成本权衡；北大最后阶段与师弟合作，入学两个月参加第一个会议、自己有工作入选、师弟论文中 Best Paper（S09：Label Words are Anchors，李磊为第二作者，与「师弟的 paper」一致）；「出道即巅峰」焦虑及对后续方法论的定位作用。报告主线一第二段完整覆盖并点明「开局叙事是方法论的语境而非成功学」，上轮 missing 已修复。"
+        },
+        {
+          "id": "M03",
+          "title": "AI 时代怎样读好 PhD：打法、焦虑与锯齿状智能（03:28 章）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03"
+          ],
+          "notes": "独立识别：打法=快速迭代（intense 节奏+及时向社区/PS/senior 要反馈）+心态（difficulty×importance，重要问题小进展即里程碑、不会被苛责）；三大焦虑（publication/毕业、前沿模型出来后自己方向还有无意义、PhD→工作转换）；应对=评审体系有内在生命力 +「锯齿状智能」需亲手 coding/设计 harness/看数据验证、不被社交媒体 hype 吓住；具身毛刺例子（能力来源 trace、OpenAI 采购具身数据的猜测、simulator vs 真机/泛化 gap，自认非专家）。报告主线一将焦虑谱系、锯齿状智能、具身例子成段补入（【05:24–07:35】），论证链断裂问题已修复。"
+        },
+        {
+          "id": "M04",
+          "title": "论文洪水与顶会评审（08:07 章）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04"
+          ],
+          "notes": "独立识别：审稿人/AC 视角 2–3 篇→约 10 篇、DDL 战士致随机性增大；NeurIPS 三个会场；社区对策（限投稿、资深审稿人担责、AI 辅助、「两个 senior SPC 讨论」——会议名转写 Triple AI 不可靠，本轮正文与订正表均未强行点名，处理正确）；别把 accept 当最终 reward；SOTA 产 100 篇=DDoS；若真 solid 解决 100 个问题则投稿无所谓（OpenAI 数学证明例+人工核验成本）；publication 弱化为 nice to have、无 paper 的 outlier 反受青睐；开源/开源维护/HF 下载量可 hack 但代价不同。报告 2.1/2.2 覆盖主干，「月下载数十次」等例子省略可接受。"
+        },
+        {
+          "id": "M05",
+          "title": "大粉理论与自媒体运营（12:16 章）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U05"
+          ],
+          "notes": "独立识别：2.4 万粉丝>引用数的玩笑；大粉理论=「attention is all you need」的显化（会议四五千篇→依赖推荐分发→声量放大价值）；运营三原则=利他/坚持/做自己；高赞笔记（获奖、citation 破 1 万）、on-policy distillation 与戴志锋 RSI 分析等学术内容笔记；小红书是个人兴趣外化。报告 2.2 覆盖分发机制变化与三原则；具体粉丝数、「搏击理论」省略（健康观由 U19 与启发 #5 承接），属 supporting 级压缩。"
+        },
+        {
+          "id": "M06",
+          "title": "博士训练三阶段（16:50 章）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06"
+          ],
+          "notes": "独立识别：阶段一「会做研究」=basics（ML/统计、from scratch 实现 SVM、吴恩达 Coursera；泛化/overfit 概念仍运作；vLLM 的 PagedAttention 借操作系统概念）+knowledge sharing（写作/实验/justify 假设，AI 可当 reviewer/老师）+maximize impact（自媒体/开源/配套宣传），里程碑=独立做好一篇 paper 并获得影响力；阶段二 leadership（从 generator 变 critic、self-motivated 与需 intense supervision 两类 junior）；阶段三学术→工业转换。报告 3.1 三里程碑逐条覆盖并补充「AI 不能自动替代三次转变」的归纳（与 C07 一致），上轮 missing 已修复。"
+        },
+        {
+          "id": "M07",
+          "title": "没论文没实习的冷启动（20:08 章）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U07"
+          ],
+          "notes": "独立识别：发约十封 cold email 仅一封回复（孙老师）叩开门路；现在教授邮箱塞满、HC 受算力稀缺限制；路径=maximize output：GitHub 项目/harness/application→偏产品岗；偏研究岗=写好 fundamental research blog+小实验（苏建林推导→RoPE→Kimi 研究员例）；「只要一直 build 就有好事发生」；bubble sort 冒泡与巴拉巴西成功定律（诺奖论文无规律、博物馆流通网络关键节点）；首个 offer 金山（因博客被联系）；Eric Wallace 例（idea 简单但 position/timing 好）。报告 3.2 覆盖核心路径+冒泡/关键节点+博客带来实习；人物案例与苏建林例省略，例子厚度略降但主线完整。"
+        },
+        {
+          "id": "M08",
+          "title": "选学校还是选导师（25:28 章）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S09"
+          ],
+          "matched_coverage_unit_ids": [
+            "U08"
+          ],
+          "notes": "独立识别：选学校优先级「远远低于」选导师；师徒制；国内偏上下级、海外偏 collaborators；top30 vs top50 无本质区别、组间差距更大；看 alumni 成果+精神状态；快乐组例子（HKU NLP、北大计算语言学研究所）；公开信息不足、需实际合作半年以上、双向匹配；李磊上海 AI Lab 实习与 co-supervisor 合作半年确认 match（S09 佐证 Shanghai AI Lab 2022.07–2023.06、co-supervisor Lingpeng Kong）；建议先做 RA。报告 3.3 覆盖核心（快乐组专名省略）。"
+        },
+        {
+          "id": "M09",
+          "title": "慢科研与快科研（28:12 章）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "U09"
+          ],
+          "notes": "独立识别：慢研究倡议（100+ 中外老师研究员）与保研/升学考核的张力；李磊解读=不把 paper 当唯一筛选标准+讲清楚做了/为什么/怎么做+反对挂名与 sloppy 论文，不是不做科研；自己节奏=选方向慢（密集读论文+讨论）、执行快（maximize GPU utilization、AI 并行加速）；教训=曾花半年多调算法后发现假设错误→先抽 minimal hypothesis 用小实验证伪。报告主线一末段两处时间戳段落完整覆盖。"
+        },
+        {
+          "id": "M10",
+          "title": "内地/香港/美国与 K 型分化（31:08 章）",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10"
+          ],
+          "notes": "独立识别：内地优（更快进工业界）劣（师徒制+考核→横向压力、部分老师动作变形，需筛选、也有平衡好的组）；香港（融合密切+老师 profile 更有活力+生活压力）；美国（自认不了解；签证与 CPT 实习难；近硅谷与学术圈）；画像（耐得住美食寂寞 vs 压力下 balance）；章尾 33:27–35:34：package 焦虑与 final year 求职、K 型分化（AI 与非 AI 两个世界）、李磊反驳=AI 平权（Coursera/Stanford→ChatGPT/DeepSeek/MiMo；会用工具的人赢、会用火的智人比喻；鸿沟里有梯子、需各行业专家）。报告 3.4 覆盖地区优劣与「自认美国不了解」的边界，但 K 型分化/AI 平权观点群仍缺——上轮已指出，本轮未补，是该章（账本标 supporting）的残留缺口。"
+        },
+        {
+          "id": "M11",
+          "title": "导师创业的得与失（35:27 章）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11"
+          ],
+          "notes": "独立识别：融资环境+科技导向把前沿 researcher 推到前台；好处=公司实体更快聚齐买卡/招工程师/买数据（学校 funding 受限）、杠杆加速大 project；代价=拿了钱钱有要求、层层传导→学术外 dirty work；硬币两面、按阶段 trade off。报告 3.5 覆盖。"
+        },
+        {
+          "id": "M12",
+          "title": "本科进 AI Lab 后是否读 PhD 与 2026 aha（36:52 章）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U12"
+          ],
+          "notes": "独立识别：若为进大公司/AI Lab 则 PhD 不必要（Jason Wei 等本科生甚至高中生进 OG 实验室；牛不牛不由 degree 决定）；若想要完整时间脱产追问好奇心、补基础、学 maximize impact→有价值（人活 80 岁学 5 年不算什么）；2026 aha=agent 范式推到前台（分类→翻译→写作→agent+tool 触达生活角落→下一步 physical world）+直播里大规模 RL 像 R1 带来全面能力提升。报告主线三末段覆盖 PhD 必要性判断与 agent aha（并标注为个人观察）——上轮 partial 已修复；「像 R1 的大规模 RL」子点省略（轻微）。"
+        },
+        {
+          "id": "M13",
+          "title": "MiMo 为什么直播后训练（39:58 章）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S05"
+          ],
+          "matched_coverage_unit_ids": [
+            "U13"
+          ],
+          "notes": "独立识别：动机=回应 rumor/讨论对中国大模型形象的不利、正向引导、以 decent 透明方式展示「可以做且效果好」、配套该开源的开源、吸取 feedback 改进放大；反馈=国内最关心花费（金额挂直播页、「人民币在燃烧」）、海外震惊透明度（推特称「首次工业级」）、训练 dynamics 像金矿。报告 4.1 覆盖：动机与两类反馈齐全（【39:58–42:08】）；S05 快照证实 mimo-v2.6-pro/flash 两个 run 的训练指标公开（2026-09-15 起，含重启与离线评测动态），正文「Pro 与 Flash 两个 run」表述与快照一致；「首次工业级」保留为社媒反馈；明确「公开曲线≠完整开源」。上轮「built in public」无证据措辞已移除，核验通过。"
+        },
+        {
+          "id": "M14",
+          "title": "数据公司的高估值（42:03 章）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U14"
+          ],
+          "notes": "独立识别：大模型=算力+数据+人才皆不便宜；好数据+solid 算法+好 infra=好效果；专家数据生产复杂度与质量要求上升多个量级；估值是市场答案、自认不了解但不过分；持续性=能否持续产出高质量燃料；锯齿状边界找缝隙+规模化体系+激励体系+批量交付；模型公司可自建但分散精力、时间不可逆所以买数据；模型自产数据成本趋零则生意难做；数据难度相对特定模型；PR 价值 vs 经济价值取舍；source expert 建产线。报告 4.2 覆盖主干并正确弃用不可靠专名；PR/经济价值取舍子点省略（轻微）。"
+        },
+        {
+          "id": "M15",
+          "title": "RSI 的边界（46:00 章）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U15"
+          ],
+          "notes": "独立识别：信号越来越强；宽定义=模型产数据帮助自己改进也算；严定义=自己训练自己（post-train/ML bench 上找更好参数算法）；well-defined+擅长搜索+scale compute→进展非常迅速；缺口=taste（定义什么问题重要）→具备后才敢交端到端；现在只有数据/训练等环节 self-improvement、更前端研究决策未见提升；RSI benchmark 尚无共识、百花齐放。报告 4.3 覆盖定义、well-defined 迅速进展、taste 缺口与「局部闭环≠端到端自主」；「信号渐强/无共识」两句省略（轻微）；ASR 失真的一处模型名（「Capacity…蓝光级」）已按订正清单弃用。"
+        },
+        {
+          "id": "M16",
+          "title": "Video-MME 与好 Benchmark（47:46 章）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S06"
+          ],
+          "matched_coverage_unit_ids": [
+            "U16"
+          ],
+          "notes": "独立识别：好 benchmark 三条件=①测新而重要能力（Video-MME：早期多为数秒级视频理解时拉到最长一个多小时=全新维度）②数据来自真实 use case 而非 artificial（否则模型有 awareness 知道被测、与真实体验 gap 大）③impact=易用性（一键启动/一键测评、与主流套件适配、结果可复现；不少测评「对不起测评」）。S06 逐字佐证 900 视频/254 小时/11 秒至 1 小时、短中长三档、CVPR 2025。报告主线五覆盖三条件+外部数字；「RSI benchmark 无共识」省略（轻微）。"
+        },
+        {
+          "id": "M17",
+          "title": "AI 时代 CS 还值得学吗（49:00 章）",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S07",
+            "S08"
+          ],
+          "matched_coverage_unit_ids": [
+            "U17"
+          ],
+          "notes": "独立识别：主持人引用 MIT 大一机械工程最热+美国四年制本科 CS 入学同比 -8.4%；S07 确认四年制 Computer & Information Sciences 同比 -8.4%（另两年制 -11.2%，春季口径）；S08 为全校 majors count（VI-3 626 > MechE 228），不能直接支撑「大一最热门」。嘉宾回应=「一代版本一代神」、大规模下降可能另有因素、junior coding 需求被 AI 吃掉一部分、不主修也辅修一两门课确保 general 理解+AI 辅助 coding。报告 5.1 已把嘉宾回应补入正文并保留核验表的双重边界声明，上轮 partial 已修复。"
+        },
+        {
+          "id": "M18",
+          "title": "给高三生的专业建议（50:20 章）",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U18"
+          ],
+          "notes": "独立识别：平行世界亲弟弟高三小学霸的设问；不给具体专业建议；行行出状元；不必 top1%（太累）；和自己比、维持前 20%–30% 水位、每天有进步。报告 5.1 末段完整覆盖并给出「反对用短期行业排行榜代替个人积累」的归纳，上轮 missing 已修复。"
+        },
+        {
+          "id": "M19",
+          "title": "给 PhD 的最后建议（51:24 章）",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U19"
+          ],
+          "notes": "独立识别：「paper 迟早是会中的；饭还是得吃，觉还是得睡；没有什么大不了的；吃好喝好睡好然后再写 paper」。报告结尾以带时间戳的原话引用保留（【51:26–51:38】与转写逐句一致），并在启发 #5 升格为「健康是系统约束」。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "SHA-256 核对：报告 a4eb50ab…5814f、证据账本 8297998b…7a349，与任务单一致，未发生 wrong_target_snapshot。机器收据：audit_transcript.py 本轮实机重跑通过（ok=true、1973 段、3106s、时间戳单调、无 warning/error、max_consecutive_identical=2），transcript sha256 与报告 frontmatter、artifact.json（silent=true、audio_playback=false、transfer sha256_verified）三方一致，R01/R02 收据链完整。复核流程：先官方单集页快照与仓内 shownotes（19 章逐一确认），再完整通读 1973 段转写并独立建 19 单元地图，polished 仅用于辅助定位，最后读报告与账本；报告内 18 处时间戳逐一抽核全部命中。上一轮缺陷修复核验：(1) U02 读博决策/EMNLP 开局——已入主线一并点明其对方法论的语境作用；(2) U03 焦虑谱系/锯齿状智能/具身毛刺——已入主线一末段，论证链接通；(3) U06 博士训练三阶段——3.1 三里程碑逐条覆盖；(4) U12 agent aha——已入主线三末段并标注个人观察；(5) U17 嘉宾 CS 回应——已入 5.1；(6) U18 高三生建议——已入 5.1 末段；内容地图与 source_coverage 的 included 声明随正文补齐而真实化，逐单元核到 anchor。(7)「built in public」无证据措辞已移除；(8) Triple AI 不再被订正为 AAAI，订正表保持「未能可靠核对」。C01–C07 全部核验有据，无捏造来源、无关键数字失配、无 safety/privacy 问题。遗留问题（不构成硬失败，供下轮酌情处理）：① U10 章尾 33:27–35:34 的 K 型分化/AI 平权/「鸿沟里的梯子」观点群仍缺（上轮已指出、本轮未补，账本标 supporting；建议补一段或把内容地图/账本状态改 partial 以求一致）；② 内容地图 U01 anchor「概览」偏松（教育轨迹实在主线一）；③ 个别 supporting 细节压缩（巴拉巴西两发现、Eric Wallace、苏建林/RoPE、搏击理论、RSI benchmark 无共识、「像 R1 的大规模 RL」），deep 报告可接受。总判断：六维评分 90–94，加权约 92，整体可靠、核心结论不受剩余缺陷影响，无需再触发 core_requirement_missing；修订已达到可归档状态，若处理①则覆盖声明完全一致。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 92.3,
+    "evaluated_on": "2026-10-26",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "388e6dd0b0142515b4e6dc66cc58683e571fcdcd805f2037bdf1b74f0919457c",
+    "evidence_sha256": "8297998b17b7b99eba2faf9334573ab7cedbae5cb9985c6686bca696f6c7a349"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "glm-5.3",
+            "harness": "pi",
+            "run_id": "review-20261026-pi-glm53-lilei-01",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 78,
+            "request_coverage": 62,
+            "reasoning_quality": 80,
+            "readability": 88,
+            "limitations": 82
+          },
+          "score_reasons": {
+            "evidence_fidelity": "独立 context 按来源优先序先读官方单集页快照、仓库 shownotes、1973 段完整转写，再看报告与账本。实机运行 audit_transcript.py 通过（ok=true，1973 段，3106s，时间戳单调无告警，max_consecutive_identical=2，transcript sha256=d2e06c37…f6b6，与报告 frontmatter 及 artifact.json 完全一致）。逐项核验 C01–C06 全部有据：8.4%（NSC：四年制 Computer & Information Sciences 同比 -8.4%，另两年制 -11.2%）、Video-MME 900 视频/254 小时/11 秒至 1 小时（arXiv 摘要一致）、审稿量 2–3→约 10 篇、MiMo-V2.6 Pro 与 Flash 两款模型（与 mimo.xiaomi.com/rl 快照的 mimo-v2.6-pro/flash 两 run 一致，未误读为单一“Pro Flash”）、MIT 口径被正确降为“部分支持”（Registrar 表为全校 majors count，VI-3 CSE 626 > MechE 228，确实无法直接支撑“大一最热门”）。无捏造来源、无关键数字失配。重大扣分：source_coverage 与报告内容地图把 U02、U06、U17、U18 标为 included 并给出 report_anchor，但对应正文位置不存在这些内容——账本对 4/19 单元做出失实覆盖声明，属于需要修订的证据保真问题，不是轻微瑕疵。",
+            "request_coverage": "R01（远端静默 worker，artifact.json 记 silent=true/audio_playback=false/sha256_verified）、R02（四件套齐全且审计通过）、R04（嘉宾观点/主持人口径/外部核验/分析者判断分层清晰）、R05（四项外部事实的核验与边界均完成）、R06（启发/Limitations/追问齐全）满足；R03（独立覆盖官方 19 单元、不以 polished 代替正文）未满足：U06（16:50 博士训练三阶段：basics→knowledge sharing→maximize impact、leadership、学术转工业）完全缺失，U02（读博决策与 EMNLP 最佳论文开局叙事）完全缺失，U03/U12/U17 部分缺失（焦虑谱系与锯齿状智能、agent 范式 aha moment、嘉宾对 CS 热度下降的回应），U18 正文缺失。deep 播客报告遗漏官方核心章节，触发 core_requirement_missing，落入 0–69 档；因 11/19 单元 covered 且主干论证质量高，取 62。",
+            "reasoning_quality": "报告已覆盖部分的推理质量高：观点归属严格（“嘉宾把…”“李磊说…”“外部核验显示…”），边界判断出色（直播≠完整开源、“首次工业级”保留为社媒反馈、8.4% 不能单独归因 AI、MIT 口径部分支持、RSI 局部闭环≠端到端自主），时间戳抽核（03:36–05:15、08:19–09:25、39:58–42:08、47:46–49:36、51:26–51:38 等）全部命中；无法核验的数据公司专名与 RSI 模型名主动弃用，专名误识别未被不当采用。扣分：内容地图/账本声称 19/19 included 与正文脱节，是覆盖管理的完整性失误；主线一缺少“锯齿状智能→亲手验证”这一环后，选题方法论与“如何看 SOTA 模型”之间的论证链断裂；“built in public”措辞超出本次可核快照范围（rl 页快照只含面板数据），宜补证据或软化。",
+            "readability": "standalone 契约基本达成：速览—概览—五条主线—外部核验表—启发—Limitations—追问层次清楚，不依赖 polished 也可理解节目内容；关键时间戳、核验表、原话引用的排版规范，语言密度高但不堆砌。轻微扣分：概览缺嘉宾教育轨迹与奖项（读者无从独立了解其履历可信度），部分主线（主线五）以核验表替代了正文章节叙述。",
+            "limitations": "六条 Limitations 诚实且具体（个人经验边界、专名弃用、开源边界、MIT 口径、MiniMax 超时未重放、RSI/数据公司属嘉宾观点），与 frontmatter notable_correction 相互印证。扣分：未披露最真实的局限——四个官方章节未进入正文且内容地图声称已覆盖；此项不补，读者会被 19/19 included 的表格误导。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07",
+            "U08",
+            "U09",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14",
+            "U15",
+            "U16",
+            "U17",
+            "U18",
+            "U19"
+          ],
+          "source_content_map": [
+            {
+              "id": "M01",
+              "title": "快问快答与嘉宾履历（00:23 章）",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S04",
+                "S09"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01"
+              ],
+              "notes": "独立识别：28 岁、ENTJ、巨蟹座；2016 西电本科→2020 北大硕士→2023 港大 NLP Group 读博（四年级）；腾讯首届青云奖 15 位获奖者之一；合作论文获 EMNLP 最佳论文（S09 佐证：Label Words are Anchors，EMNLP 2023 Best Long Paper，共同一作）。报告仅 frontmatter 与概览一行身份，教育轨迹、青云奖与最佳论文均未入正文；快问快答细节可合理省略。"
+            },
+            {
+              "id": "M02",
+              "title": "读博决策与 EMNLP 最佳论文开局（02:29 章）",
+              "importance": "core",
+              "assessment": "missing",
+              "source_ids": [
+                "S02",
+                "S04",
+                "S09"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "独立识别：“十年后躺在床上会不会后悔”测试与机会成本权衡；北大最后阶段与师弟合作，入学两个月参加第一个会议、自己有工作入选、师弟论文中 EMNLP Best Paper（23 年 11–12 月，S09 记 2023/12），“巅峰开局、出道即巅峰”的焦虑。报告正文与账本均无此叙事，内容地图却标 included→主线一，失实。该章承载读博动机与嘉宾可信度背景，属核心省略。"
+            },
+            {
+              "id": "M03",
+              "title": "AI 时代怎样读好 PhD（03:28 章）",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "独立识别：打法=快速迭代（intense 节奏+及时向社区/PS/senior 要反馈）+心态（difficulty×importance，重要问题小进展即里程碑、不会被苛责）；PhD 三大焦虑（publication、Astra 出手领域被颠覆感、毕业→工作转换）；应对=评审体系有内在生命力+“锯齿状智能”需亲手 coding/看数据验证、不被社交媒体 hype 吓住；具身方向毛刺例子（能力来源 trace、OpenAI 采购具身数据之猜测、simulator vs 真机 gap，嘉宾自认非具身专家）。报告主线一覆盖选题方法论，但焦虑谱系、锯齿状智能与具身例子全部缺失，论证链少一环。"
+            },
+            {
+              "id": "M04",
+              "title": "论文洪水与顶会评审（08:07 章）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "独立识别：审稿人/AC 视角 2–3 篇→约 10 篇、DDL 战士致随机性增大；NeurIPS 三个会场；社区对策（限投稿、资深审稿人担责、AI 辅助审稿、两个 senior SPC 讨论——会议名转写 Triple AI 不确定）；“有人的地方就有随机性”、别把 accept 当最终 reward；SOTA 模型产 100 篇=对系统 DDoS；若真能 solid 解决 100 个问题则投稿无所谓（OpenAI 数学证明例+人工核验成本）；publication 弱化为 nice to have、无 paper 的 outlier 反受青睐；开源可 hack（挂 contributor）；筛选小指标=代码/数据开源、issue 维护、HF 下载量（hack 需真实存储、代价高）。报告 2.1/2.2 覆盖主干论证；会场细节与“月下载数十次”例子省略，可接受。"
+            },
+            {
+              "id": "M05",
+              "title": "大粉理论与自媒体运营（12:16 章）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "独立识别：2.4 万小红书粉丝>论文引用；自媒体=反馈快+推荐算法聚合同 research taste 人群；大粉理论=“attention is all you need”的显化（会议四五千篇看不完→依赖推荐分发→声量放大工作价值）；另一“搏击理论”（身心健康第一、换脑子）；运营三原则=利他/坚持/做自己（论文 note 不涨粉、引用-粉丝关系帖爆量）；高赞笔记（获奖、青云奖学金、citation 破 1 万）与 on-policy distillation 等范式笔记。报告 2.2 覆盖分发机制与三原则；粉丝数字与搏击理论省略（健康观由启发 #5 以 U19 口径部分回应）。"
+            },
+            {
+              "id": "M06",
+              "title": "博士训练三阶段（16:50 章）",
+              "importance": "core",
+              "assessment": "missing",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "独立识别：阶段一“会做研究”=basics（ML/统计、from scratch 实现 SVM、吴恩达 Coursera；泛化/overfit 概念仍运作；vLLM 的 PagedAttention 借操作系统概念）+knowledge sharing（写作/实验/justify 假设，AI 可当 reviewer/老师）+maximize impact（自媒体/开源/配套宣传），里程碑=能独立做好 paper 并获得影响力；阶段二 leadership（孙栩老师早提醒；从 generator 变 critic；junior 分 self-motivated 与需 intense supervision）；阶段三学术→工业转变（更现实、多维竞争）。官方“10 个关键问题”之一，报告正文完全缺失，内容地图与账本标 included→主线三，失实。"
+            },
+            {
+              "id": "M07",
+              "title": "没论文没实习的冷启动（20:08 章）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U07"
+              ],
+              "notes": "独立识别：大二升大三发约十封 cold email 仅一封回复（孙栩老师），实习叩开门路→发顶会→保研；现在更难（教授邮箱塞满、HC 受算力稀缺限制）；路径=maximize output：GitHub 项目/harness/application（算力需求小）→偏产品岗；偏研究岗=AI slop 时代写好 fundamental research blog+小实验（苏剑林博客推导→RoPE→Kimi 研究员例）；reach out+坚持输出；bubble sort 冒泡比喻；“只要一直 build 就有好事发生”；巴拉巴西成功定律（诺奖论文无规律须一直发、博物馆流通网络关键节点）；首个 offer 金山（因博客被联系，未去）；Eric Wallace 例（Berkeley 安全 PhD→OpenAI、HF Swarm 事件复盘、idea 简单但 position/timing 好）。报告 3.1 覆盖核心路径与冒泡/关键节点；人物案例与十封邮件故事省略，例子厚度下降但主线完整。"
+            },
+            {
+              "id": "M08",
+              "title": "选学校还是选导师（25:28 章）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S09"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08"
+              ],
+              "notes": "独立识别：选学校优先级“远远低于”选导师；师徒制；国内偏上下级、海外偏 collaborators；top30 vs top50 无本质区别、四大 vs top30 有差、组间差距更大；看 alumni 成果+精神状态、私下问在读/毕业生；快乐组例子=HKU NLP 与北大计算语言学研究所；导师公开面（Scholar/CSRankings/演讲）不足，需实际合作半年以上、双向匹配；李磊在上海 AI Lab 实习（S09：2022.07–2023.06）与 co-supervisor 孔令鹏合作半年确认 match；建议先做 RA。报告 3.2 覆盖核心（快乐组具体名字省略）。"
+            },
+            {
+              "id": "M09",
+              "title": "慢科研与快科研（28:12 章）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "U09"
+              ],
+              "notes": "独立识别：慢研究倡议（100+ 中外老师研究员，本科生别急发 paper）与保研/升学考核的 drama 张力；李磊解读=倡议是不把 paper 当唯一筛选标准+基础扎实讲清楚研究+反对挂名与 sloppy 论文，不是不做科研；自己节奏=选方向慢（密集读论文+讨论）、执行快（maximize GPU utilization、AI 并行加速）；教训=曾花半年多调算法后发现假设错误→此后先抽 minimal hypothesis 用小实验证伪。报告主线一末段与 3.1 时间戳段覆盖。"
+            },
+            {
+              "id": "M10",
+              "title": "内地/香港/美国与 K 型分化（31:08 章）",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10"
+              ],
+              "notes": "独立识别：内地优（更快进工业界）劣（传统师徒制+高校考核→横向压力、部分老师动作变形，需筛选、也有平衡好的组）；香港（与内地融合密切+港口优势吸引的老师 profile 更有活力+生活压力）；美国（嘉宾自认不了解；朋友反馈签证与 CPT 实习难；好处近硅谷与美国学术圈）；画像（去美国要耐得住美食寂寞/文化偏好 vs 内地香港要能压力下 balance）；K 型分化（AI 与非 AI 两个世界）与李磊反驳（AI 平权：原 Coursera/Stanford→现在 ChatGPT/DeepSeek/MiMo 知识储备高；会用工具的人赢、会用火的智人比喻；鸿沟里有梯子、需各行业专家帮助模型提升）。报告 3.3 只覆盖地区优劣与签证，K 型分化/AI 平权论证缺失。"
+            },
+            {
+              "id": "M11",
+              "title": "导师创业的得与失（35:27 章）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U11"
+              ],
+              "notes": "独立识别：融资环境+科技导向创业把前沿 researcher 推到前台；好处=公司实体更快聚齐买卡/招工程师/买数据（学校 funding 受限）、对大 project 起杠杆加速作用；代价=拿了钱钱有要求、层层传导给学生→学术外 dirty work；硬币两面、按阶段 trade off。报告 3.4 覆盖。"
+            },
+            {
+              "id": "M12",
+              "title": "本科进 AI Lab 后是否读 PhD 与 2026 aha（36:52 章）",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U12"
+              ],
+              "notes": "独立识别：若为进大公司/AI Lab 则 PhD 不必要（Jason Wei 等本科生甚至高中生进 OG 实验室；牛不牛不由 degree 决定）；若想要一段完整时间脱产追问好奇心、补知识、学 maximize impact→有价值（人活 80 岁学 5 年不算什么）；2026 aha moment=agent 范式推到前台（分类→翻译→写作→agent+tool 触达生活角落、下一步走向 physical world）+直播本身（大规模 RL 像 R1 带来全面能力提升）。报告 3.4 覆盖 PhD 必要性判断；agent 范式 aha moment 未入正文。"
+            },
+            {
+              "id": "M13",
+              "title": "MiMo 为什么直播后训练（39:58 章）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S05"
+              ],
+              "matched_coverage_unit_ids": [
+                "U13"
+              ],
+              "notes": "独立识别：MiMo-V2.6 的 Pro 与 Flash 两款模型后训练直播（S05 快照：mimo-v2.6-pro/flash 两个 run，2026-09-15 起，batch 1568、OOM/网络故障重启、DeepSWE 等离线评测动态），李磊是幕后推动者；动机=回应 rumor/讨论对中国大模型形象的不利、正向引导、以 decent 透明方式展示“可以做且效果好”、配套该开源的开源、吸取 feedback 改进放大；反馈=国内最关心花费（金额挂直播页、“人民币在燃烧”）、海外震惊透明度（推特称“首次工业级”直播）、训练 dynamics 像金矿可供研究者分析。报告 4.1 覆盖并正确保留“首次”为社媒反馈、明确直播≠完整开源；正文“Pro 与 Flash”两模型表述与快照一致。"
+            },
+            {
+              "id": "M14",
+              "title": "数据公司的高估值（42:03 章）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U14"
+              ],
+              "notes": "独立识别：国内高估值数据公司（转写 Unipad/Humanaia 等专名不可靠）；李磊：大模型=算力+数据+人才皆不便宜；好数据+solid 算法+好 infra=好效果；专家数据生产复杂度与质量要求上升多个量级；估值是市场答案、自认不了解但不过分（AI 占 GDP 比例→燃料占比）；持续性=能否持续产出高质量燃料；锯齿状能力边界找缝隙+规模化体系+激励体系+批量交付；模型公司可自建但分散精力浪费算力、时间不可逆所以买数据；若产不出高质量数据生意难做（模型自产数据成本趋零）；数据难度相对特定模型（太难学不会）；PR 价值 vs 经济价值取舍；source expert 建规模化产线。报告 4.2 覆盖主干，且对无法核对的专名正确弃用。"
+            },
+            {
+              "id": "M15",
+              "title": "RSI 的边界（46:00 章）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U15"
+              ],
+              "notes": "独立识别：信号渐强；宽定义=模型产数据帮助自己改进也算 RSI；严定义=模型自己训练自己（post-train/ML bench 上找更好参数算法）；well-defined+模型擅长搜索+scale compute→进展会非常迅速；缺口=taste（定义什么问题重要、下一阶段解决什么）→具备后才敢交端到端；现在只有数据/训练等环节 self-improvement、更前端的研究决策未见提升。报告 4.3 覆盖并恰当连接到“局部闭环≠端到端自主”。"
+            },
+            {
+              "id": "M16",
+              "title": "Video-MME 与好 Benchmark（47:46 章）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "U16"
+              ],
+              "notes": "独立识别：RSI benchmark 尚无共识、百花齐放；好 benchmark 三条件=①测新而重要能力（Video-MME：早期视频理解多为数秒级时拉到最长一个多小时=全新维度）②数据来自真实 use case 而非 artificial（否则模型有 awareness 知道被测、与真实体验 gap 大）③impact=易用性（一键启动/一键测评、与主流套件适配、结果可复现；不少测评“对不起测评”）。S06 佐证：900 视频/254 小时/11 秒至 1 小时，CVPR 2025 Highlight，李磊为合作者。报告主线五覆盖三条件与外部数字；“RSI benchmark 无共识”一句省略（轻微）。"
+            },
+            {
+              "id": "M17",
+              "title": "AI 时代 CS 还值得学吗（49:00 章）",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S02",
+                "S07",
+                "S08"
+              ],
+              "matched_coverage_unit_ids": [
+                "U17"
+              ],
+              "notes": "独立识别：主持人数据=MIT 大一新生机械工程成最热门专业+美国四年制本科 CS 入学同比 -8.4%；外部核验：S07 确认四年制 Computer & Information Sciences 同比 -8.4%（两年制 -11.2%）；S08 的 majors count 为全校各年级口径（VI-3 CSE 626 > MechE II 228），不能直接支撑“大一最热门”，报告核验表的“部分支持”判断正确。嘉宾观点=“一代版本一代神”、大规模下降可能另有因素、junior coding 需求会被 AI 吃掉一部分、不主修 CS 也应辅修一两门课确保 general 理解+AI 辅助 coding（应成必修课）。报告只把数字放进外部核验表，嘉宾回应未入正文，内容地图标 included→主线五失实。"
+            },
+            {
+              "id": "M18",
+              "title": "给高三生的专业建议（50:20 章）",
+              "importance": "supporting",
+              "assessment": "missing",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U18"
+              ],
+              "notes": "独立识别：平行世界亲弟弟高三小学霸的设问；不给具体专业建议；行行出状元；不必成为 top1%（太累）；和自己比、维持前 20%–30% 水位、每天有进步；每行都会有杰出成就与人才涌现。报告正文无此内容（启发 #5 只回应健康），内容地图标 included→主线五失实。"
+            },
+            {
+              "id": "M19",
+              "title": "给 PhD 的最后建议（51:24 章）",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U19"
+              ],
+              "notes": "独立识别：“paper 迟早是会中的；饭还是得吃，觉还是得睡；没有什么大不了的；吃好喝好睡好然后再写 paper”。报告结尾以带时间戳的原话引用保留，并在启发 #5 将其升格为“健康是系统约束”，覆盖到位。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06",
+            "S07",
+            "S08",
+            "S09"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04",
+            "R05",
+            "R06"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [
+            "R03"
+          ],
+          "hard_failures": [
+            "core_requirement_missing"
+          ],
+          "notes": "SHA-256 核对：报告 035fa5b6…2de7、证据账本 f0d5abc1…d07a，与任务单一致，未发生 wrong_target_snapshot。机器收据：audit_transcript.py 通过——ok=true、1973 段、duration 3106s、head/tail 与节目首尾一致、无 warning/error、max_consecutive_identical=2、transcript sha256 d2e06c37…f6b6 与报告 frontmatter 及 artifact.json（silent=true、audio_playback=false、transfer sha256_verified）三方一致；R01/R02 收据链完整。总判断：报告已写部分质量高（六条 critical claims 全部核验有据、关键数字无一失配、观点归属与证据边界处理优秀、专名误识别未被不当采用且不可靠专名主动弃用），但存在需要修订的覆盖缺陷：(1) U06 博士训练三阶段（官方 10 个关键问题之一）完全缺失；(2) U02 读博决策与 EMNLP 最佳论文开局叙事完全缺失；(3) U03 焦虑谱系/锯齿状智能/具身毛刺、U12 agent 范式 aha moment、U17 嘉宾对 CS 热度下降的回应、U18 高三生建议未入正文；(4) 报告内容地图与 evidence source_coverage 对 U02/U06/U17/U18 标 included 并给出 anchor，与正文不符——覆盖声明失实本身需修正。按 deep 播告规则记 core_requirement_missing 与 R03 未满足。修订建议：将 U06 三阶段与 U02 开局叙事补入正文（各一段即可），U17/U18 在主线五补嘉宾观点段，同步修正内容地图/账本的 covered 状态或补齐正文；次要项——“built in public”措辞需补可核证据或软化为“公开发布训练过程”；frontmatter 订正清单中 Triple AI→AAAI 实为不确定推断（正文未点名会议，无实害，但订正表宜标注不确定）；可顺手补 HF“月下载数十次”例子增强 2.2。"
+        }
+      ],
+      "decision": {}
+    }
+  ]
+}

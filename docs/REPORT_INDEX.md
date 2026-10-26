@@ -7,7 +7,10 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-10-26 | [十字路口 × 李磊：AI 时代读 PhD——从难而正确、公开输出到 RSI 的研究方法](../podcast-learning/reports/2026-10-25_xiaoyuzhou-crossing_li-lei-ai-phd.md) | podcast-learning |
 | 2026-10-26 | [何思远方Siyuan：我们正在把所有人训练成同一种人——池化隐喻下的 AI 同质化批判](../podcast-learning/reports/2026-09-28_bilibili-hesiyuanfang_homogenization.md) | podcast-learning |
+| 2026-10-26 | [MiniMax Code Mini App：持久工作面、Agent 插件运行时与安全边界深度解析](../ai-learning/reports/knowledge_reports/MiniMax_Code_Mini_App_持久工作面与Agent插件运行时_深度解析_20261026.md) | ai-learning |
+| 2026-10-26 | [Kimi K3.1 Pro：联合 RL、长程 Agent 与开放权重边界深度解析](../ai-learning/reports/knowledge_reports/Kimi_K3_1_Pro_联合RL_长程Agent与开放权重_深度解析_20261026.md) | ai-learning |
 | 2026-10-25 | [菠萝健康派 × 师永刚：中美抗癌十年，就医路径、费用真相与「被看见」的病人](../podcast-learning/reports/2026-10-21_xiaoyuzhou-boluo-jiankang_shiyonggang-cn-us-cancer-decade.md) | podcast-learning |
 | 2026-10-25 | [晚点聊 184：Astra 之后，具身智能的护城河从大脑移到哪里](../podcast-learning/reports/2026-10-15_rss-wandian-latetalk_184-embodied-quarterly-26q3.md) | podcast-learning |
 | 2026-10-25 | [忽左忽右 510：侨批不是一封家书，而是一套跨国金融与亲缘基础设施](../podcast-learning/reports/2026-10-23_xiaoyuzhou-huzuo-huyou_ep510-thai-qiaopi-network.md) | podcast-learning |
@@ -29,14 +32,13 @@
 | 2026-10-25 | [No Priors × Cloudflare CTO：Agentic Web 安全从补漏洞到重写 Web Rails](../podcast-learning/reports/2026-10-23_rss-no-priors_cloudflare-agentic-web-security.md) | podcast-learning |
 | 2026-10-25 | [NVIDIA Microduck Agentic Robotics：Agent 做准备，RL 学会走路，Sim-to-Real 才是难点](../ai-learning/reports/knowledge_reports/NVIDIA_Microduck_Agentic_Robotics_仿真训练与Sim2Real_深度解析_20261025.md) | ai-learning |
 | 2026-10-25 | [MiniMax M3.1 Flash：Agent 模型与 vLLM Day-0 支持深度解析](../ai-learning/reports/knowledge_reports/MiniMax_M3_1_Flash_Agent模型与vLLM_Day0支持_深度解析_20261025.md) | ai-learning |
-| 2026-10-25 | [LitPivot 深度分析：当文献不是被「读」，而是随想法重组——可迁移的证据地图设计](../ai-learning/reports/paper_analyses/52_litpivot_dynamic_contextualization_2026.md) | ai-learning |
-| 2026-10-25 | [Google 结核病筛查：从单点 CAD 工具到开放医疗基础模型](../ai-learning/reports/knowledge_reports/Google_TB筛查_从CAD工具到开放医疗基础模型_深度解析_20261025.md) | ai-learning |
-| 2026-10-25 | [Google TPU 上的新推理引擎：TorchTPU 上的 vLLM-TorchTPU 与 SGLang-TorchTPU 机制拆解与口径核验](../ai-learning/reports/knowledge_reports/Google_TPU_vLLM_SGLang_TorchTPU推理引擎_能力矩阵与口径核验_深度解析_20261025.md) | ai-learning |
 
-## 🤖 AI Learning（148 篇）
+## 🤖 AI Learning（150 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-10-26 | [MiniMax Code Mini App：持久工作面、Agent 插件运行时与安全边界深度解析](../ai-learning/reports/knowledge_reports/MiniMax_Code_Mini_App_持久工作面与Agent插件运行时_深度解析_20261026.md) | `minimax_code`, `mini_app`, `agent_runtime`, `plugin`, `mcp`, `human_agent_collaboration` |
+| 2026-10-26 | [Kimi K3.1 Pro：联合 RL、长程 Agent 与开放权重边界深度解析](../ai-learning/reports/knowledge_reports/Kimi_K3_1_Pro_联合RL_长程Agent与开放权重_深度解析_20261026.md) | `kimi_k3_1_pro`, `moonshot_ai`, `agentic_model`, `reinforcement_learning`, `open_weights`, `coding_agent` |
 | 2026-10-25 | [个人 Context 与 Memory 三层架构：OpenViking 多设备、手机环境与 APP 跨对话记忆](../ai-learning/reports/knowledge_reports/个人Context与Memory三层架构_OpenViking_手机环境_APP跨对话_深度解析_20261025.md) | `context_engineering`, `agent_memory`, `openviking`, `multi_device`, `mobile_context`, `conversational_memory` |
 | 2026-10-25 | [vLLM 在 GB300 NVL72 上服务 DeepSeek-V4.1-Flash：P/D 分离 + Wide-EP 的机制拆解与口径核验](../ai-learning/reports/knowledge_reports/vLLM_DeepSeek-V4.1-Flash_PD分离与Wide-EP机架级服务_深度解析_20261025.md) | `vllm`, `deepseek-v4.1-flash`, `P-D-disaggregation`, `wide-EP`, `EPLB`, `DSpark` |
 | 2026-10-25 | [vLLM Humming：量化推理 GEMM Kernel 库的设计、支持矩阵与证据边界](../ai-learning/reports/knowledge_reports/vLLM_Humming_量化推理Kernel库_深度解析_20261025.md) | `vLLM`, `Humming`, `quantization`, `GEMM`, `kernel`, `JIT` |
@@ -311,10 +313,11 @@
 | 2026-04-20 | [Qwen2.5-3B GRPO 强化学习微调](../ai-practice/experiments/exp_004_qwen25_grpo_finetune.md) | — |
 | 2026-04-20 | [HuggingFace Hub 模型与数据集管理](../ai-practice/experiments/exp_002_huggingface_basics.md) | — |
 
-## 🎙️ Podcast Learning（104 篇）
+## 🎙️ Podcast Learning（105 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-10-26 | [十字路口 × 李磊：AI 时代读 PhD——从难而正确、公开输出到 RSI 的研究方法](../podcast-learning/reports/2026-10-25_xiaoyuzhou-crossing_li-lei-ai-phd.md) | `podcast`, `phd`, `research_method`, `mimo`, `post_training`, `benchmark` |
 | 2026-10-26 | [何思远方Siyuan：我们正在把所有人训练成同一种人——池化隐喻下的 AI 同质化批判](../podcast-learning/reports/2026-09-28_bilibili-hesiyuanfang_homogenization.md) | `homogenization`, `pooling_metaphor`, `grpo`, `ttt-discover`, `enshittification`, `erich_fromm` |
 | 2026-10-25 | [菠萝健康派 × 师永刚：中美抗癌十年，就医路径、费用真相与「被看见」的病人](../podcast-learning/reports/2026-10-21_xiaoyuzhou-boluo-jiankang_shiyonggang-cn-us-cancer-decade.md) | `podcast`, `cancer-care`, `medical-system`, `patient-advocacy`, `second-opinion`, `health-policy` |
 | 2026-10-25 | [晚点聊 184：Astra 之后，具身智能的护城河从大脑移到哪里](../podcast-learning/reports/2026-10-15_rss-wandian-latetalk_184-embodied-quarterly-26q3.md) | `podcast`, `embodied-ai`, `robotics`, `gpt-6-astra`, `physical-rsi`, `in-context-learning` |

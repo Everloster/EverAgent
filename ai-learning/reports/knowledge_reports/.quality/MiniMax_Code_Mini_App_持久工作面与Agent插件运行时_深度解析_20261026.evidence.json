@@ -1,0 +1,248 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/MiniMax_Code_Mini_App_持久工作面与Agent插件运行时_深度解析_20261026.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-26",
+  "generator": {
+    "model": "gpt-5.6-sol",
+    "harness": "codex",
+    "run_id": "generator-89f0279a71ba",
+    "explicit_model_override": false,
+    "override_reason": ""
+  },
+  "task": {
+    "summary": "深读 MiniMax Code Mini App 官方发布文与公开社区仓，核对包契约、Node runtime、安全规则和最小代码；解释持久工作面、Agent 双向调用、生命周期与本地执行风险，并评估对 Personal Context 和长任务系统的启示。",
+    "requirements": [
+      {
+        "id": "R01",
+        "text": "读取 MiniMax 官方发布文，重构其产品问题与总体架构。"
+      },
+      {
+        "id": "R02",
+        "text": "读取官方 GitHub 仓库的 package contract、runtime、安全规则和真实示例代码。"
+      },
+      {
+        "id": "R03",
+        "text": "区分长期状态、页面持续与进程常驻，说明 on-demand 生命周期。"
+      },
+      {
+        "id": "R04",
+        "text": "核对权限、文件、网络、子进程与本地代码执行边界。"
+      },
+      {
+        "id": "R05",
+        "text": "分析 MiniMax Bot 多 Agent 叙事与公开源码可核验范围。"
+      },
+      {
+        "id": "R06",
+        "text": "提出对 Personal Context/长任务系统的迁移建议、最小实验、Limitations 与追问。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "official",
+      "title": "MiniMax — Introducing MiniMax Code Mini App",
+      "locator": "https://www.minimax.io/blog/minimax-code-mini-app-1792650729",
+      "accessed_on": "2026-10-26"
+    },
+    {
+      "id": "S02",
+      "kind": "primary",
+      "title": "MiniMax-AI/MiniMax-Code-MiniApps repository",
+      "locator": "https://github.com/MiniMax-AI/MiniMax-Code-MiniApps",
+      "accessed_on": "2026-10-26"
+    },
+    {
+      "id": "S03",
+      "kind": "primary",
+      "title": "Mini App package contract",
+      "locator": "https://github.com/MiniMax-AI/MiniMax-Code-MiniApps/blob/master/docs/package-contract.md",
+      "accessed_on": "2026-10-26"
+    },
+    {
+      "id": "S04",
+      "kind": "primary",
+      "title": "Mini App Node runtime",
+      "locator": "https://github.com/MiniMax-AI/MiniMax-Code-MiniApps/blob/master/docs/runtime.md",
+      "accessed_on": "2026-10-26"
+    },
+    {
+      "id": "S05",
+      "kind": "primary",
+      "title": "Mini App security rules",
+      "locator": "https://github.com/MiniMax-AI/MiniMax-Code-MiniApps/blob/master/docs/security.md",
+      "accessed_on": "2026-10-26"
+    },
+    {
+      "id": "S06",
+      "kind": "primary",
+      "title": "hello-miniapp miniapp.json and server.mjs",
+      "locator": "https://github.com/MiniMax-AI/MiniMax-Code-MiniApps/tree/master/examples/hello-miniapp",
+      "accessed_on": "2026-10-26"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "Mini App 是 MiniMax Plugin 上的 client + Node process + durable dataDir + Agent/MCP 接口，用于把任务状态从分散对话搬到可继续操作的页面。",
+      "report_anchor": "1. 它解决的不是“模型不会做”",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S03",
+        "S04"
+      ],
+      "evidence": "S01 产品定义；S03/S04 给出 manifest、payload 与 runtime。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "公开 runtime 使用 on-demand 生命周期，进程可随时停止，因此长期的是状态和工作面，不是 Node 进程常驻。",
+      "report_anchor": "3. “长时间运行”与“进程常驻”不是一回事",
+      "support": "direct",
+      "source_ids": [
+        "S04"
+      ],
+      "evidence": "S04 Lifecycle 明确进程可能停止并要求 durable state 写入 dataDir。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "Host 分配 loopback 地址和端口、dataDir、AbortSignal 与 logger；hello-miniapp 真实代码按该契约启动 HTTP server 并在停止信号后 dispose。",
+      "report_anchor": "2.3 Node runtime",
+      "support": "direct",
+      "source_ids": [
+        "S04",
+        "S06"
+      ],
+      "evidence": "S04 context/start/dispose；S06 server.mjs。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "公开安全文档要求声明写文件、命令和 outbound host，但插件代码仍以当前用户身份运行，规范不等于强沙箱证明。",
+      "report_anchor": "6. 安全边界",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S05"
+      ],
+      "evidence": "S01 明确 code runs on your machine as you；S05 给出规范。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "博客称 MiniMax Bot 源码已在社区仓，但本轮仓库结构未定位该目录，因此只能确认博客叙事，不能确认源码已可读。",
+      "report_anchor": "5. MiniMax Bot 展示了多 Agent 工作台方向",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "evidence": "S01 声称开源；S02 根目录结构仅见 hello 与两个 token dashboard。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "页面内容先进入用户输入框再发送给 Agent，是可见的人机交接点，但公开契约未完整给出 Agent API 的所有实现。",
+      "report_anchor": "2.4 Agent 与页面",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S03"
+      ],
+      "evidence": "S01 交互说明；S03 只详细定义 MCP/Connector/manifest。",
+      "critical": true
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "产品问题与总体架构",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "研究对象与核心结论"
+    },
+    {
+      "id": "U02",
+      "title": "Plugin/package/miniapp manifest 契约",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S03",
+        "S06"
+      ],
+      "report_anchor": "2. 四层架构"
+    },
+    {
+      "id": "U03",
+      "title": "Node runtime、dataDir 与 lifecycle",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S04",
+        "S06"
+      ],
+      "report_anchor": "2.3 Node runtime"
+    },
+    {
+      "id": "U04",
+      "title": "Agent/MCP 双向交互与人工确认",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S03"
+      ],
+      "report_anchor": "2.4 Agent 与页面"
+    },
+    {
+      "id": "U05",
+      "title": "miniapp-creator 与 MiniMax Bot",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "report_anchor": "4. `/miniapp-creator`"
+    },
+    {
+      "id": "U06",
+      "title": "安全规则与本地代码风险",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S05"
+      ],
+      "report_anchor": "6. 安全边界"
+    },
+    {
+      "id": "U07",
+      "title": "Personal Context 迁移、实验与限制",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S03",
+        "S04",
+        "S05"
+      ],
+      "report_anchor": "7. 对 Personal Context 与长期任务系统的启发"
+    }
+  ],
+  "limitations": [
+    "未安装或运行 MiniMax Code 3.0.73。",
+    "博客未给 miniapp-creator 成功率、安全测试或性能数据。",
+    "安全文档是规范，不证明强制 sandbox。",
+    "最小示例不能代表复杂多 Agent 应用稳定性。",
+    "MiniMax Bot 源码未在本轮仓库结构中定位。",
+    "契约可能随客户端版本变化。"
+  ]
+}
