@@ -2,7 +2,7 @@
 title: "Long Context Systems"
 type: concept
 domain: ai-learning
-updated_on: 2026-05-07
+updated_on: 2026-10-27
 source: reports/knowledge_reports/Long_Context_1M_三阶段深度解析_20260507.md
 ---
 
@@ -46,3 +46,11 @@ long context = 大上下文窗口 + 长序列训练 + 长上下文对齐 + 可�
 ## 一句话
 
 1M context 的价值不在于“输入框很大”，而在于模型和系统能在百万 token 级资料中稳定完成证据定位、综合推理和可控生成。
+
+## 多轮 Agent 的历史管理
+
+文档检索、综合推理与多轮行动需要分别评估。Gemini 2.5 报告中“显著超过 100k 后重复历史动作”是特定 Pokémon Agent 设置的经验观察，不能作为通用窗口阈值。
+
+Fork-and-Flush 保留累计工作区、清空对话后分支探索；Scaling Discovery Requires Forgetting 进一步清掉候选历史，只保留最好成果及其分数。两者的证据主要来自有评分器的研究和优化任务，迁移到阅读报告时仍要保护原始来源、反例与当前任务状态。
+
+来源：[上下文工程的失效与修复](../../reports/knowledge_reports/Context_Engineering_失败修复与战略性遗忘_深度解析_20261027.md) §5–8。本文建议的 Personal Context 重建尚未开展行为对比实验。

@@ -17,6 +17,12 @@
 | 哲学/人文访谈 | ✓ | **2026-09-11 长谈64 程乐松×脱不花（个体化评价/过度反思/道教三负责/从哲学史出发的中国哲学）**，与 philosophy-learning 程乐松专题联动 | 《留白》读后回填；《从哲学史出发的中国哲学》精读挂 A 类 |
 | 健康/营养科普 | ✓ | 2026-07-14 鹿哥Gustav 早餐的真相（观念考古 + 黎明现象，wiki: dawn-phenomenon）；**2026-07-13 面基仨账户·肌肉与睡眠两账（wiki: muscle-retirement-savings、sleep-cybernetics）** | 时间限制进食（TRE）/断食专题；睡眠专题可与 biology-learning 联动 |
 
+### 2026-10-27 AI 视频学习
+
+- [20VC × 纳德拉：企业智能](reports/2026-10-27_bilibili-nadella_enterprise-intelligence.md)：知识、反馈、模型选择、企业自有评价与 Agent 零信任治理。
+- [a16z × OpenAI：Computer Use](reports/2026-10-27_bilibili-openai_computer-use.md)：跨应用任务、状态与权限路径、网页商业模式、中小企业实施与结果验收。
+- [YC Paper Club：推理全链路](reports/2026-10-27_bilibili-krillinai_llm-inference-stack.md)：12x 的旧数据口径、算术强度、量化质量、编译搜索、混合模型缓存。
+
 ---
 
 ## 优先级队列

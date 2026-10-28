@@ -1,0 +1,1263 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/Context_Engineering_失败修复与战略性遗忘_深度解析_20261027.md",
+  "quality_tier": "important",
+  "revision_round": 3,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "commit-sampled-review-20261028",
+        "independent_context": true,
+        "explicit_model_override": true,
+        "override_reason": "important 报告每 5 篇抽 1 篇的强模型跨模型抽查；本次平台调用显式指定 gpt-5.6-sol。"
+      },
+      "scores": {
+        "evidence_fidelity": 96,
+        "request_coverage": 93,
+        "reasoning_quality": 96,
+        "readability": 95,
+        "limitations": 97
+      },
+      "score_reasons": {
+        "evidence_fidelity": "10 份来源缓存 SHA-256 均与索引一致；19 个 critical claims 逐项回到原始材料核验，关键数字、方向、样本口径、相对/绝对增益和反例均无错配。扣分来自 S6 样本数与两篇遗忘研究部分 aggregate/ablation 数值未在正文完整呈现，而不是现有结论失真。",
+        "request_coverage": "R1–R5 与 U01–U17 均有正文落点，四类故障、六种修复、权重竞争、历史惯性、战略性遗忘、Personal Context 迁移和代码/模型分工都能独立阅读。S6 运行数、S6 消融精确值与 S7 aggregate 增益可补强，因此未给满分。",
+        "reasoning_quality": "报告持续区分演讲自述、受控实验、官方案例与本文推断；把 Fork-and-Flush、Scaling Discovery、Memento 的保留状态语义和评分条件分开，并保留 LWE-rec、Llama 3.3、单任务同状态对照等反例。迁移到报告/Personal Context 时也指出缺少统一评分器和删除证据的风险。",
+        "readability": "结构从问题地图、机制案例、研究证据、数字口径到工程建议顺序清楚，表格和明确边界使报告可脱离对话阅读。内容较长但与 deep 报告定位相符，核心结论在开头已有摘要。",
+        "limitations": "限制写得具体且与来源一致：100k 为 anecdotal、200k 为个人经验、90 分钟为特定实验、ICIL 设置人工、遗忘研究任务与重复数有限、Idea basins 不是唯一机制、Personal Context 方案未实测。工程建议在第 7 节以 [待验证] 总标记，并在第 8.2 节再次声明尚未执行。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17",
+        "C18",
+        "C19"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08",
+        "U09",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16",
+        "U17"
+      ],
+      "source_content_map": [
+        {
+          "id": "I01",
+          "title": "标称长上下文不等于有效的多步 Agent 推理",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S2",
+            "S3",
+            "S10"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01",
+            "U10"
+          ],
+          "notes": "正文 1.2 与 6 节区分装得下、检索和多步行动，并把 >100k 重复限定为 GPP 特定 setup 的 anecdotal observation。"
+        },
+        {
+          "id": "I02",
+          "title": "四类上下文失效是实践 taxonomy",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S2",
+            "S3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02"
+          ],
+          "notes": "正文第 2 节完整解释 poisoning、distraction、confusion、clash，明确未必互斥且不是完整机制分类。"
+        },
+        {
+          "id": "I03",
+          "title": "TEA 事件展示预训练知识与持久状态共同造成的错误固着",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S10"
+          ],
+          "matched_coverage_unit_ids": [
+            "U05",
+            "U10"
+          ],
+          "notes": "正文 4.1 准确写出 Red/Blue 与 FireRed/LeafGreen 差异、goals/summary 中毒、Run 2 部分缓解及损失有效常识的 trade-off。"
+        },
+        {
+          "id": "I04",
+          "title": "instruction-induction conflict 的受控实验设计",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S5"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06"
+          ],
+          "notes": "正文 4.2 覆盖 13 模型、16 指令、N=1–50、每 cell 35 组、temperature 0 和分条件评分，并说明实验人工化。"
+        },
+        {
+          "id": "I05",
+          "title": "冲突历史会使所有受测模型在至少部分条件下转向 pattern，但差异极大",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S5"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06"
+          ],
+          "notes": "正文保留 1%–99%、N=3 时 6/13 和 Llama 3.3 到 N=50 约 95% 的反例，未写成所有条件普遍失败。"
+        },
+        {
+          "id": "I06",
+          "title": "对冲突历史的缓解存在但不彻底",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S5"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06"
+          ],
+          "notes": "正文说明多样输出、hardcoding hint 与 reasoning 的缓解作用及边界，并明确 reasoning 对照只有两个模型家族。"
+        },
+        {
+          "id": "I07",
+          "title": "六类上下文管理动作覆盖输入、工具、线程、历史与外部状态",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S2",
+            "S4"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03",
+            "U04",
+            "U16"
+          ],
+          "notes": "正文第 3 节逐项写出六类动作、代价、600 skills 观察边界，并把约 16 行 DSPy 演示限定为原理展示。"
+        },
+        {
+          "id": "I08",
+          "title": "确定性代码与概率性模型的边界是演讲核心设计原则",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S2"
+          ],
+          "matched_coverage_unit_ids": [
+            "U12",
+            "U15",
+            "U17"
+          ],
+          "notes": "正文 1.1、4 与 8.1 覆盖术语叙事、fighting-the-weights 例子和代码/模型分工；Playwright 与重复措辞均被标为作者观察而非因果证明。"
+        },
+        {
+          "id": "I09",
+          "title": "Memento 是保留工作区和短笔记、周期换新 agent instance 的特定 harness",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S8"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10"
+          ],
+          "notes": "正文第 6 节准确写出继承代码、环境和简短笔记、1.5 小时一轮与 6 小时总时限，并拒绝泛化为生产固定周期。"
+        },
+        {
+          "id": "I10",
+          "title": "Fork-and-Flush 同时包含并行分叉、清空 chat context 与按分数择优",
+          "importance": "core",
+          "assessment": "partial",
+          "source_ids": [
+            "S6"
+          ],
+          "matched_coverage_unit_ids": [
+            "U08"
+          ],
+          "notes": "正文 5.2 准确解释方法、匹配预算与固定触发；可进一步补充 8 个 single-run baselines、通常 5 个 fork-and-flush runs（tinyCIFAR 4 个）及底层模型，便于读者判断样本量。"
+        },
+        {
+          "id": "I11",
+          "title": "Fork-and-Flush 的主结果采用跨任务 min-max normalized average",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S6"
+          ],
+          "matched_coverage_unit_ids": [
+            "U08"
+          ],
+          "notes": "正文准确报告 0.78/0.47/0.54、66.0%/44.4% 为相对归一化分收益，并保留 12/13 与 LWE-rec 反例。"
+        },
+        {
+          "id": "I12",
+          "title": "Fork-and-Flush 消融显示 flushing 单独有增益但不是主结果的全部原因",
+          "importance": "core",
+          "assessment": "partial",
+          "source_ids": [
+            "S6"
+          ],
+          "matched_coverage_unit_ids": [
+            "U08"
+          ],
+          "notes": "正文已说明 11 项任务、flush/fork 单独有益且组合更好；建议补入 normalized average 0.45/0.55/0.57/0.71，并注明两项最长任务未进消融，避免读者高估单独 reset 的证据。"
+        },
+        {
+          "id": "I13",
+          "title": "Scaling Discovery 的 forgetting 同时清除 session 与搜索历史，仅保留最佳 candidate",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S7"
+          ],
+          "matched_coverage_unit_ids": [
+            "U09"
+          ],
+          "notes": "正文 5.3 准确区分其只保留最佳 candidate 与 Fork-and-Flush 保留整个 workspace，并写明 Pi、DeepSeek V4.1 Flash、四任务、每格三次和同预算。"
+        },
+        {
+          "id": "I14",
+          "title": "Scaling Discovery 的增益需区分绝对值、相对值与比较基线",
+          "importance": "core",
+          "assessment": "partial",
+          "source_ids": [
+            "S7"
+          ],
+          "matched_coverage_unit_ids": [
+            "U09"
+          ],
+          "notes": "正文用 VLIW 1097/1220 与 Q171 80.8/70.2 正确展示绝对值和指标方向；建议再补平均相对 parallel +10%、相对 single +22%、32/36 次 forget 后出现新最佳且收益递减，形成更完整的主结果口径。"
+        },
+        {
+          "id": "I15",
+          "title": "同状态 continue/forget 对照支持遗忘解除 plateau，但范围仅 AHC014",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S7"
+          ],
+          "matched_coverage_unit_ids": [
+            "U09"
+          ],
+          "notes": "正文准确说明这项更直接对照只覆盖 AHC014，并写出长 session 宣布平台却不提交候选的机制观察；没有泛化成所有任务结论。"
+        },
+        {
+          "id": "I16",
+          "title": "METR time horizon 是人类任务时长对应的 50% 成功率阈值",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S9"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10"
+          ],
+          "notes": "正文第 6 节正确区分人类专家任务时长、指定成功率和 agent 实际运行时长，并声明未复核演讲中的逐模型榜单。"
+        },
+        {
+          "id": "I17",
+          "title": "长期记忆变乱与 200k 警戒线主要是演讲者经验和预测",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S2"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11"
+          ],
+          "notes": "正文 6、7.3 与 9 节把 200k、六个月记忆变乱和 strategic forgetting 预测明确限定为作者经验，不与实验论文混算。"
+        },
+        {
+          "id": "I18",
+          "title": "来源支持的 reset 语义是保留外部产物后刷新推理轨迹",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S6",
+            "S7",
+            "S8",
+            "S10"
+          ],
+          "matched_coverage_unit_ids": [
+            "U12",
+            "U13",
+            "U14",
+            "U07"
+          ],
+          "notes": "正文 5.1 说明 compaction 若保留旧解释仍会延续路径依赖；7–8 节进一步区分事实源、任务状态、长期记忆和工作上下文。“更正/删除副本”与“新会话重建”均明确标为待验证工程建议，且要求保留可回滚证据和未知操作状态。"
+        }
+      ],
+      "source_ids_checked": [
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8",
+        "S9",
+        "S10"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "来源优先复核完成：在读取报告/evidence 前，先核验 10 份公开来源缓存并生成 I01–I18 独立来源地图；报告与 evidence 快照均匹配任务给定 SHA-256。没有 fabricated source、关键数字错配、核心漏答或隐私问题。三项非阻断补强建议：① 5.2 补 S6 的 8 个 single-run baselines、通常 5 个 fork-and-flush runs（tinyCIFAR 4 个）及模型；② 5.2 补消融 normalized average 0.45/0.55/0.57/0.71 与两项长任务未纳入；③ 5.3 补 S7 相对 parallel 平均 +10%、相对 single +22%、32/36 次 forget 后出现新最佳且收益递减。现有正文已正确标明“更正/删除副本”和“新会话重建”为未在目标环境实测的工程建议。 映射验收修正：I18 同时映射 U07，因为该独立单元来自 S6/S7/S8/S10 对“保留 durable state、刷新推理轨迹”的共同证据，正文对应 §5.1 的 compaction 路径依赖；未改动读取报告前保存的独立来源地图。"
+    }
+  ],
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "glm-5.3",
+            "harness": "codex",
+            "run_id": "review-2badc76e8b01",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "scores": {
+            "evidence_fidelity": 92,
+            "request_coverage": 88,
+            "reasoning_quality": 94,
+            "readability": 95,
+            "limitations": 97
+          },
+          "score_reasons": {
+            "evidence_fidelity": "C01–C14 均逐项核对并受 S2–S10 支持，关键数值和研究口径正确；扣分因 §3.2 把 DSPy 四修复中的 quarantine 误写成 offloading，§7.3 将“context rot”加引号归于作者而原文未用该术语。两处均为局部误写，未改变核心结论。",
+            "request_coverage": "报告独立可读，完整回答四类故障、六种修复、权重竞争、惯性、战略性遗忘与确定性/模型分工，并很好区分经验、实验和建议。扣分因若干核心证据只达到 partial：Pokémon 具体中毒事实、ICIL seeds/温度/评分与 Llama 反例、tool loadout 量化证据、METR 3.4/6.4/12h、术语迁移和 fighting-the-weights 具体症状未进入正文。",
+            "reasoning_quality": "报告对 20万阈值、Gemini anecdotal、Memento 特定 1.5h/6h、Fork 与 Forgetting 保留对象差异、指标方向和外推边界处理严谨，且明确提出反例与成本；主要改进是补充上述证据链使论证更完整。",
+            "readability": "结构清楚，先读摘要、问题定义、故障/修复、两代新问题和工程迁移层层推进，表格和“不能据此得出”栏使口径易于核对，可脱离对话阅读。少量段落信息密度较高但不妨碍理解。",
+            "limitations": "限制章节覆盖经验综述、实验人工性、机制解释、读取范围、未执行 A/B 和记忆治理开放性；Personal Context 建议明确标为待验证，诚实地不把工程建议写成实测收益。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07",
+            "C08",
+            "C09",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14"
+          ],
+          "coverage_unit_ids_checked": [
+            "U1",
+            "U2",
+            "U3",
+            "U4",
+            "U5",
+            "U6",
+            "U7",
+            "U8",
+            "U9",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14",
+            "U15",
+            "U16",
+            "U17",
+            "U18",
+            "U19",
+            "U20",
+            "U21",
+            "U22",
+            "U23",
+            "U24"
+          ],
+          "source_content_map": [
+            {
+              "id": "U1",
+              "title": "核心命题：在确定性与概率性之间划界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2"
+              ],
+              "matched_coverage_unit_ids": [
+                "U12",
+                "U14"
+              ],
+              "notes": "上下文工程长期存在；模型能力每次前进都会改变哪些工作可交给模型、哪些必须由 harness/system 强制。最终工作是给对的上下文给对的模型，并选择何时写死代码、何时让模型驱动。 复核映射：报告在开头、§1.1 和 §8.1 覆盖确定性/概率性分工与能力进步改变边界的核心命题。"
+            },
+            {
+              "id": "U2",
+              "title": "2024 长上下文狂热与 RAG-is-dead 叙事",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01"
+              ],
+              "notes": "2024 年末出现从约 128K 到百万 token 的跃迁；Gemini 1.5 Pro 营销主打 1M 并预告 10M，Llama 4 Scout 先行推出 10M 但推理表现和采用不如期待。该背景催生“把一切塞入上下文”的设想，也反复引发 RAG 已死争论。 复核映射：报告 §1.2 覆盖长窗口热潮，并把装得下、找得到用得对、行动进展拆开；刻意不展开产品线成败旁支。"
+            },
+            {
+              "id": "U3",
+              "title": "四类基础上下文失效模式",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "Poisoning 是错误进入上下文后被反复引用；Distraction 是长历史压过基础能力；Confusion 是无关内容/工具仍改变行为；Clash 是 harness 内工具、技能、旧答案互相冲突。作者个人关闭 ChatGPT/Claude memory，以避免工作与私人项目笔记混合。 复核映射：报告 §2 用自拟研究例子完整复现四种故障和检查动作，并说明非互斥。"
+            },
+            {
+              "id": "U4",
+              "title": "Pokémon 饮料案例：训练知识污染 agent 上下文",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3",
+                "S10"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "初代 Red/Blue 需要给警卫自动饮料（含 lemonade），FireRed/LeafGreen 改为 TEA。Gemini 2.5 Pro 玩旧版时多次确信必须取得不存在的 TEA，耗费许多小时；错误进入 goals/summary 后形成 context poisoning，导致不可能或无关目标、重复行为。Run 2 提示其扮演新玩家只部分缓解，也可能妨碍利用常识。 复核映射：报告 §4.1 覆盖两代游戏知识造成错误方案，但未写 Red/FireRed 的 lemonade/TEA 具体差异、“many hours”和 Run 2 新玩家提示的.partially缓解。"
+            },
+            {
+              "id": "U5",
+              "title": "长上下文检索能力不等于 agentic 生成推理",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3",
+                "S10"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10"
+              ],
+              "notes": "Gemini 2.5 Pro 支持 1M+ token，但技术报告称该 agentic 设置中显著超过 100K 后倾向重复历史动作而非合成新计划；报告自身标注为 anecdotal。不能因此否认其在约 100K 上下文中的工具路径规划与长程一致性成功，需区分检索与多步生成推理。 复核映射：报告 §6 正确保留 1M 支持、特定 Pokémon setup、显著超过 100K、anecdotal，以及约 100K 对工具规划仍有价值两面。"
+            },
+            {
+              "id": "U6",
+              "title": "Instruction-induction conflict 实验口径",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S5"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "Camassa & Shiller 构造显式目标 T 与 N 条硬编码相反模式 P：13 个基础模型配置、16 个指令、N=1..50 的近似对数取值、每 cell 35 个独立种子、temperature 0。条件分 fixed-output 与 task-based，并含镜像的 value/factual/preference 对齐与错齐；评分使用 exact match、语言检测、格式启发式或 3-judge 多数票。 复核映射：报告写明 13 模型、16 指令、1–50 轮和两大条件，但未写每 cell 35 个种子、temperature 0 与评分器口径。"
+            },
+            {
+              "id": "U7",
+              "title": "ICIL：指令遵循的普遍衰变与模型差异",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S5"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "所有模型至少在一些条件下会被相反示例压倒，但转折点差异大：fixed-output 平均 IF 从 1% 到 99%，N=3 时仅 6/13 模型仍高于 50%；Llama 3.3 70B 到 N=50 仍约 95%，是显著反例。Opus 4.6 并非免疫，fixed 与 task 的 N50 分别为 16 与 31；Gemma 3 12B 均为 3。 复核映射：报告概括模型差异、能力榜单无干净对应和推理边界，但未写“所有模型至少某些条件会被压倒”、fixed IF 1–99%、N=3 仅 6/13 >50% 及 Llama 3.3 反常稳健。"
+            },
+            {
+              "id": "U8",
+              "title": "ICIL 机制与缓解边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S5"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "task-based 比 fixed-output 更稳，主因是输出多样性而非题干语义参与；内容对齐也有影响（fixed 中 value-aligned 32% vs misaligned 18%，Claude Opus 对齐差 81 点，但 Llama/Gemma 近中性）。显式提示硬编码仅将两类均值提高到 41%/54%，Llama 还略退；推理提高 GPT-5.2/Hermes 表现但不消除，Hermes 可出现推理认同 T、输出仍 P 的解离。 复核映射：报告覆盖 task-based 更稳、输出多样性、内容对齐、提示硬编码仅缓解、推理不消除，并保留人工设置限制。"
+            },
+            {
+              "id": "U9",
+              "title": "工具过载与 tool loadout 的量化证据",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "BFCL 显示多工具会降低表现，无关工具也会被调用；GeoEngine 中 Llama 3.1 8B 在 46 工具失败、19 工具成功，说明瓶颈是混淆而非窗口。RAG MCP 对 DeepSeek-v3 的关键是 >30 工具、>100 几乎必败，选择 <30 可达 3x 选择准确率；Less is More 使 Llama 3.1 8B 提升 44%，并带来 18% 功耗与 77% 速度收益。企业 600 技能全量加载是演讲中的实用反例。 复核映射：报告解释了 tool loadout 的动机和代价，但省略 600 skills 企业案例、46/19 工具、>30/>100 与 3x/44% 等量化证据。"
+            },
+            {
+              "id": "U10",
+              "title": "六种上下文管理工具箱",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "工具箱为 augmentation/RAG、tool loadout、quarantine/subagent、pruning、summarization/compaction、offloading。RAG 仍活着；隔离用空白历史共享环境；pruning 可保留结构化主干并删工具结果；offloading 用 Markdown/DB/scratchpad 存状态；summarization 的关键变体是压缩前先用小模型筛选相关性。 复核映射：报告 §3 完整覆盖六种方法、适用场景和新问题。"
+            },
+            {
+              "id": "U11",
+              "title": "DSPy 示例：小决策模型加 16 行改动实现四类修复",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S1",
+                "S2"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "示例用 Claude Sonnet 4.5 作为大模型、Jev 作为快速小决策模型，在 ReAct while loop 上实现 loadout、delegate/quarantine、prune、rewrite/summarization。演讲称四种修复合计约 16 行改动；这是可读 demo，不是正式基准结果。 复核映射：报告保留 16 行和小决策模型边界，但 §3.2 把四修复之一误写成“卸载”；原文 DSPy 演示的是 quarantine/delegate，而非 offloading。"
+            },
+            {
+              "id": "U12",
+              "title": "其他 tactic 证据与边界",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "Anthropic 内部研究评估中 Opus lead + Sonnet subagents 比单个 Opus 高 90.2%，适合可并行 breadth-first 查询；Provence 可删去 95% 文章内容保留 QA 相关子集；Anthropic think/scratchpad 在专用 benchmark 最多提升 54%，适用工具输出分析、政策密集和顺序决策。 复核映射：六方法本体已覆盖，但 90.2% 多智能体研究、Provence 95% 裁剪和 think/scratchpad 54% 等支持性证据未展开；作为 supporting 可接受。"
+            },
+            {
+              "id": "U13",
+              "title": "术语迁移：prompt/context/harness engineering",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S1",
+                "S2"
+              ],
+              "matched_coverage_unit_ids": [
+                "U12"
+              ],
+              "notes": "2023 prompt engineering 侧重人写词和示例；2025 context engineering 侧重系统动态组装上下文；2026 harness engineering 侧重脚手架、编排和工具。目标未变：把上下文组装工作从概率性模型调用迁移到确定性代码/harness。 复核映射：报告覆盖最终确定性分工，但没有明确 2023 prompt、2025 context、2026 harness 的术语迁移线索。"
+            },
+            {
+              "id": "U14",
+              "title": "METR 长时程能力口径",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S9"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10"
+              ],
+              "notes": "演讲引用 METR 50% 可靠度时间跨度：GPT-5 约 3.4 小时、Gemini 3.1 约 6.4 小时、Opus 4.6 约 12 小时，并且是“带 harness”的度量。METR 方法将模型成功率拟合成人类专业者任务时长的 logistic 曲线；其公开文章还提出 6 年约 7 个月翻倍的趋势、95% CI 和任务分布敏感性，但外部效度与模型突变仍是主要不确定性。 复核映射：报告准确定义 METR 50% time horizon 并拒绝排名化，但省略演讲引用的 GPT-5 3.4h、Gemini 3.1 6.4h、Opus 4.6 12h 及“带 harness”口径。"
+            },
+            {
+              "id": "U15",
+              "title": "Fighting the weights：模型训练偏置对抗用户/harness",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S1",
+                "S2"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "模型对训练时工具和串/并行行为过拟合。小模型首次调用 Playwright MCP 常失败再恢复参数；Claude Code 指令反复强调并行调用（7/4/3/2 次等）并使用全大写，提示词重复与强调是官方也在对抗训练偏置的信号。 复核映射：报告解释 fighting the weights 和 Context×Weights，但未给小模型 Playwright MCP 首调失败、Claude Code 并行调用重复/大写等具体证据。"
+            },
+            {
+              "id": "U16",
+              "title": "Anthropic Memento：90 分钟清上下文并留短笔记",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S8"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10"
+              ],
+              "notes": "Memento 针对 long-horizon agent 固着错误假设/子任务的问题。每个实例运行至 generation timeout（serving 实验 1.5 小时/轮、总 6 小时），写下策略、失败与表现的简短 notebook，然后新实例继承 codebase/environment/workspace 与笔记、丢弃会话。S2 将其概括为每 90 分钟写小纸条后清空上下文，环境和工作保留；S8 明确它不是普遍强 harness，也不赋予新网络能力。 复核映射：报告 §6 准确覆盖 Memento 的 1.5h/轮、6h 总限、代码环境与短笔记继承及非通用性。"
+            },
+            {
+              "id": "U17",
+              "title": "Fork-and-Flush：idea basins 与并行新鲜上下文",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S6"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08"
+              ],
+              "notes": "Microsoft Research 将同一任务独立 run 的持续分数平台与功能相似 embedding 聚类称为 idea basins。方法在 13 个长时程任务、等计算预算下，从 leader workspace fork K=4 分支并清空 chat，33%/66% 预算强制触发；归一化平均分 0.78，高于 single-run 0.47 与 best-of-4 0.54（相对 +66.0%/+44.4%），12/13 任务 mean 最高。11 任务消融显示 flush-only 0.55、fork-only 0.57、全方法 0.71。 复核映射：报告完整覆盖 13 任务、等预算、K=4 分支、新会话、0.78/0.47/0.54、66%/44% 口径和 12/13。"
+            },
+            {
+              "id": "U18",
+              "title": "Fork-and-Flush 的机制、反例与方差边界",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S6"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08"
+              ],
+              "notes": "workspace 保留、conversation 清空让分支重推导意图并跳出 basin；polyomino 获胜分支首提交跳出 43 个单步距离单位，但 3 个被拒分支仍留在原 basin。平均 SD 从 0.26/0.21 降至 0.16，10/13 任务下降；AHC014 与 order-add 变异上升但伴随均值大幅提高。MAX-3-SAT 辅助实验提出方差在能力边界、attainment 约 0.497 处最大，任务太容易/太难都会收敛。 复核映射：报告保留 LWE-rec 反例、预算触发和嵌入证据边界，但未展开 3 个被拒分支仍留在原 basin、10/13 方差下降及 AHC014/order-add 方差上升。"
+            },
+            {
+              "id": "U19",
+              "title": "Berkeley forgetting：团队通信加彻底遗忘",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S7"
+              ],
+              "matched_coverage_unit_ids": [
+                "U09"
+              ],
+              "notes": "Tan 等在 AHC014、Frontier-CS Q171、VLIW kernel、nanochat 四任务、同一 DeepSeek V4.1 Flash、等预算、每配置 3 次运行。forgetting 同时丢弃各 agent session 与 search state，仅保留最佳候选；4-agent 通信团队比单 agent 最多 +39%、比 parallel 最多 +15%，四任务均最佳。AHC014 mean 1.103M vs 0.964M/0.795M；VLIW cycles mean 1097 vs 1220/1426。 复核映射：报告覆盖四任务、模型、三次重复、等预算、只保留最佳候选及 VLIW/Q171 方向化数字。"
+            },
+            {
+              "id": "U20",
+              "title": "Berkeley 机制与限制：遗忘不是只清 chat",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S7"
+              ],
+              "matched_coverage_unit_ids": [
+                "U09"
+              ],
+              "notes": "作者观察 session 变长后编辑和 reasoning tokens 变小、空 turn 增加；forget 后 AHC010 前十提案中位编辑 40 行 vs continuation 6 行，reasoning 9.4K vs 2.9K。32/36 次 forget 后产生新最佳，但收益递减且第一轮最多；parallel 在 nanochat 无增益，Frontier-CS 例外仍持续改进。该设计与 Memento/Fork-and-Flush 的保留对象不同，不能混写。 复核映射：报告覆盖继续/遗忘对照、一任务边界、空 turn 和编辑/推理收缩机制。"
+            },
+            {
+              "id": "U21",
+              "title": "实践建议：重置上下文与 200K 警戒线",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10"
+              ],
+              "notes": "作者对 800K token 的怪异编程 agent 建议直接删上下文；个人警戒线约 200K，S2 另提到 200K-300K 开始检查并在大任务前重置。这是经验启发而非严格实验阈值。 复核映射：报告 §6 准确处理 20万经验警戒线、20–30万检查区间和非硬阈值。"
+            },
+            {
+              "id": "U22",
+              "title": "解决方案移动问题与 2027 战略性遗忘预测",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2"
+              ],
+              "matched_coverage_unit_ids": [
+                "U11"
+              ],
+              "notes": "长上下文带来更多信息也带来更多坏信息；agentic model 让任务跑更长、自管上下文，也会跑过头并忽略用户偏好。个人 Hermes 运行六个月后技能/记忆堆积、同类任务重复发明方案、指令冲突，解法可能变差；因此越依赖 memory 越需要 strategic forgetting，过度精确记忆长期会冲突且尚无成熟解法。 复核映射：报告 §7.3 覆盖个人 Hermes 六个月、技能/记忆冲突、战略性遗忘和更正/失效需求，并保留预测性质。"
+            },
+            {
+              "id": "U23",
+              "title": "输出 = context × weights",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "输出同时受训练数据和当前上下文影响；排障应读技术报告并建立训练数据与任务相关性的心智模型。可用更大模型、更多 reasoning 或更好上下文，其中改进上下文通常便宜且快。 复核映射：报告 §4 覆盖 Context×Weights 是心智图示而非数学定律，并落实到可核验版本任务。"
+            },
+            {
+              "id": "U24",
+              "title": "S8/S10 中非本文核心的安全与模型报告内容",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S8",
+                "S10"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "S8 大部分内容是 ARA/IoT worm、分布式推理、GCP 复制与防御，只有 Memento 与本主题直接相关；S10 大部分是 Gemini 2.5 训练、基准、产品与安全，只有 Pokémon、100K agentic behavior 与 context poisoning 引文直接相关。学习报告可不展开这些外围内容，但不应把外围安全结论误写成上下文工程证据。 复核映射：报告来源表明确限定 S8 只读 Memento、S10 只读 Pokémon/长上下文相关段落；外围安全与模型基准内容不需要进入本主题报告。"
+            }
+          ],
+          "source_ids_checked": [
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6",
+            "S7",
+            "S8",
+            "S9",
+            "S10"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "快照哈希与 source-index 全部匹配；本复核先完整读 S1/S2，再独立提取 S3–S10 并先落 source-content-map，之后才读报告与 evidence。建议本轮通过（加权 92.55），但有 8 项可执行修订：必改 DSPy 四修复组成和“context rot”术语归属；建议补 ICIL 条件/反例、tool loadout 数字、Pokémon 具体事实、METR 演讲数字、术语迁移和 fighting-the-weights 证据。未发现 hard failure；R4/R5 的导入、索引与正式 finalize 由主 Agent 后续执行。"
+        }
+      ],
+      "decision": {}
+    },
+    {
+      "revision_round": 2,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "glm-5.3",
+            "harness": "codex",
+            "run_id": "review-0be7eccad01a",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "scores": {
+            "evidence_fidelity": 97,
+            "request_coverage": 97,
+            "reasoning_quality": 96,
+            "readability": 96,
+            "limitations": 98
+          },
+          "score_reasons": {
+            "evidence_fidelity": "C01–C19 逐项对照 S2–S10 全部支持；新版修正 DSPy四修复、删除伪造context rot引语，并准确保留ICIL种子/评分/反例、600skills观察、TEA过程、METR演讲引文和因果边界。未发现关键数字、研究条件或来源性质错误。",
+            "request_coverage": "24个独立单元中的全部core内容已覆盖，生成者U01–U17也逐项核对；唯一partial是S4中多智能体90.2%、Provence95%、think/scratchpad54%等supporting证据，报告已覆盖方法与代价，省略不构成核心遗漏。R1–R5在快照与本复验产物范围内满足。",
+            "reasoning_quality": "报告稳定区分作者观察、demo、受控实验、官方 anecdotal、演讲引文与本文待验证建议；对非因果、非阈值、非排名、非术语史和非普适复配的边界处理清楚，两篇遗忘研究的保留对象与适用范围比较成立。",
+            "readability": "新版补充证据后仍按问题、故障、修复、权重竞争、惯性、口径和个人上下文分层推进；关键数字均带有条件与“不能推出”边界，读者可脱离对话理解。",
+            "limitations": "限制章节覆盖经验综述、人工实验、有限重复、机制解释、Gemini/METR读取边界、未执行A/B和记忆治理开放性；Personal Context建议明确标为待验证。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07",
+            "C08",
+            "C09",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "C16",
+            "C17",
+            "C18",
+            "C19"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07",
+            "U08",
+            "U09",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14",
+            "U15",
+            "U16",
+            "U17"
+          ],
+          "source_content_map": [
+            {
+              "id": "I01",
+              "title": "核心命题：在确定性与概率性之间划界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2"
+              ],
+              "matched_coverage_unit_ids": [
+                "U12",
+                "U14",
+                "U15"
+              ],
+              "notes": "上下文工程长期存在；模型能力每次前进都会改变哪些工作可交给模型、哪些必须由 harness/system 强制。最终工作是给对的上下文给对的模型，并选择何时写死代码、何时让模型驱动。 R2记录补正映射：新版在 §1.1、§7–§8 覆盖确定性/概率性分工，并把术语变化落到工程对象变化。"
+            },
+            {
+              "id": "I02",
+              "title": "2024 长上下文狂热与 RAG-is-dead 叙事",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01"
+              ],
+              "notes": "2024 年末出现从约 128K 到百万 token 的跃迁；Gemini 1.5 Pro 营销主打 1M 并预告 10M，Llama 4 Scout 先行推出 10M 但推理表现和采用不如期待。该背景催生“把一切塞入上下文”的设想，也反复引发 RAG 已死争论。 R2记录补正映射：§1.2 覆盖长窗口叙事并拆分装得下、找得到用得对、行动进展。"
+            },
+            {
+              "id": "I03",
+              "title": "四类基础上下文失效模式",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "Poisoning 是错误进入上下文后被反复引用；Distraction 是长历史压过基础能力；Confusion 是无关内容/工具仍改变行为；Clash 是 harness 内工具、技能、旧答案互相冲突。作者个人关闭 ChatGPT/Claude memory，以避免工作与私人项目笔记混合。 R2记录补正映射：§2 完整覆盖四类故障、自拟研究示例与检查动作。"
+            },
+            {
+              "id": "I04",
+              "title": "Pokémon 饮料案例：训练知识污染 agent 上下文",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3",
+                "S10"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "初代 Pokémon Red/Blue 需购买 FRESH WATER、SODA POP 或 LEMONADE 交给警卫；FireRed/LeafGreen 改为 TEA，且 TEA 不存在于初代。Gemini 2.5 Pro 玩旧版时多次误以为必须取得 TEA，花费 many hours；错误扩散到 goals/summary 等 context 多处后形成 context poisoning，导致不可能/无关目标、常识被忽略和重复行为。Run 2 提示其扮演全新玩家、忽略既有游戏事件/位置/spawn 知识，至少部分避免其他游戏幻觉，但可能妨碍利用常识并在少数关键处损害表现。 R2记录补正映射：§4.1 写明初代饮料、重制版 TEA、TEA 不存在于初代、many hours、goals/summary 污染与 Run 2 收益/代价。"
+            },
+            {
+              "id": "I05",
+              "title": "长上下文检索能力不等于 agentic 生成推理",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3",
+                "S10"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10"
+              ],
+              "notes": "Gemini 2.5 Pro 支持 1M+ token，但技术报告称该 agentic 设置中显著超过 100K 后倾向重复历史动作而非合成新计划；报告自身标注为 anecdotal。不能因此否认其在约 100K 上下文中的工具路径规划与长程一致性成功，需区分检索与多步生成推理。 R2记录补正映射：§6 保留 1M 支持、特定 Pokémon setup、显著超过 100K、anecdotal，以及约 100K 对工具与连贯策略的价值。"
+            },
+            {
+              "id": "I06",
+              "title": "Instruction-induction conflict 实验口径",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S5"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "Camassa & Shiller 构造显式目标 T 与 N 条硬编码相反模式 P：13 个基础模型配置、16 个指令、N=1..50 的近似对数取值；每 (model, condition, N) cell 有 35 个独立种子问题集，temperature 0/greedy。fixed-output 用 exact match，语言条件用自动语言检测，代码风格用格式启发式，persona/preference 用 3 个 LLM judge 多数票。条件含 fixed/task 与镜像 value/factual/preference 对齐错齐。 R2记录补正映射：§4.2 写明 13/16/1–50、35独立种子、temperature 0、共享种子和分条件评分方法。"
+            },
+            {
+              "id": "I07",
+              "title": "ICIL：指令遵循的普遍衰变与模型差异",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S5"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "所有模型至少在一些条件下会被相反历史压倒，但转折点差异大：fixed-output 平均 IF 从 Qwen3 235B 的 1% 到 Llama 3.3 70B 的 99%；N=3 时仅 6/13 模型仍高于 50%。Llama 3.3 在测试范围内未跨 50%，N=50 仍约 95%，是能力榜无法解释的反例；task-based 中 GPT-5.2 N50=43、Opus 4.6=31。论文还提醒 fixed-output 能力相关不显著，task-based 与 IFBench/GPQA 只有弱/趋势相关。 R2记录补正映射：§4.2 写明 IF 1%–99%、N=3 仅6/13高于50%、Llama3.3 N50约95%及能力榜不可简单推算。"
+            },
+            {
+              "id": "I08",
+              "title": "ICIL 机制与缓解边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S5"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "task-based 比 fixed-output 更稳，主因是输出多样性而非题干语义参与；内容对齐也有影响（fixed 中 value-aligned 32% vs misaligned 18%，Claude Opus 对齐差 81 点，但 Llama/Gemma 近中性）。显式提示硬编码仅将两类均值提高到 41%/54%，Llama 还略退；推理提高 GPT-5.2/Hermes 表现但不消除，Hermes 可出现推理认同 T、输出仍 P 的解离。 R2记录补正映射：§4.2 覆盖输出多样性、提示硬编码只缓解、推理仅两家族且不消除漂移，并保留人工设置限制。"
+            },
+            {
+              "id": "I09",
+              "title": "工具过载与 tool loadout 的量化证据",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03",
+                "U16"
+              ],
+              "notes": "S2 的企业软件启动即为每位工程师加载 600 skills 是作者口述观察，不是本轮独立核验的定量研究。S3/S4 转述 BFCL、GeoEngine 46/19、RAG MCP >30/>100/3x、Less is More 44% 等外部研究数字；这些数字在当前 S1–S10 中缺少原论文直接复核，报告若使用必须明确二手转述，更稳妥的是只用 600 skills 作为作者观察并说明未核验。 R2记录补正映射：§3/§3工具筛选覆盖 600 skills 作者观察、非因果对照和非通用阈值；未直接核验的 RAG-MCP 等外部数字未使用，符合证据边界。"
+            },
+            {
+              "id": "I10",
+              "title": "六种上下文管理工具箱",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "工具箱为 augmentation/RAG、tool loadout、quarantine/subagent、pruning、summarization/compaction、offloading。RAG 仍活着；隔离用空白历史共享环境；pruning 可保留结构化主干并删工具结果；offloading 用 Markdown/DB/scratchpad 存状态；summarization 的关键变体是压缩前先用小模型筛选相关性。 R2记录补正映射：§3 完整覆盖六种修复、适用场景、代价和卸载/隔离区别。"
+            },
+            {
+              "id": "I11",
+              "title": "DSPy 示例：小决策模型加 16 行改动实现四类修复",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "DSPy demo 用 Claude Sonnet 4.5 作为大模型、Jev 小决策模型和 ReAct while loop；四个修复分别是 tool loadout、context quarantine/delegate、context pruning、context summarization/rewrite，不包含 offloading。压缩前先用小模型判断相关性是 summarization 的变体。演讲称约 16 行改动、四修复一个循环；这是可读 demo，不是生产完备性或基准证明。 R2记录补正映射：§3.2 明确 DSPy 四修复为工具筛选、隔离/委托、裁剪、摘要，并说明不是生产完备性证明。"
+            },
+            {
+              "id": "I12",
+              "title": "其他 tactic 证据与边界",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "Anthropic 内部研究评估中 Opus lead + Sonnet subagents 比单个 Opus 高 90.2%，适合可并行 breadth-first 查询；Provence 可删去 95% 文章内容保留 QA 相关子集；Anthropic think/scratchpad 在专用 benchmark 最多提升 54%，适用工具输出分析、政策密集和顺序决策。 R2记录补正映射：六方法本身覆盖；90.2%多智能体、Provence 95%、think/scratchpad 54%等 supporting 证据仍未展开，属可接受省略。"
+            },
+            {
+              "id": "I13",
+              "title": "术语迁移：prompt/context/harness engineering",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2"
+              ],
+              "matched_coverage_unit_ids": [
+                "U15"
+              ],
+              "notes": "S2 的 2023 prompt engineering、2025 context engineering、2026 harness engineering 是作者叙事分期，用来说明目标从人写 prompt 到系统组装上下文再到代码/harness 承担更多组装工作；不能把它写成术语首次出现史或严格行业编年史。 R2记录补正映射：§1.1 明确 2023/2025/2026 是作者叙事分期而非术语首次出现史。"
+            },
+            {
+              "id": "I14",
+              "title": "METR 长时程能力口径",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S9"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10"
+              ],
+              "notes": "S2 演讲引用 METR 报告称 GPT-5 约 3.4 小时、Gemini 3.1 约 6.4 小时、Opus 4.6 约 12 小时，并强调这是 with a harness 的度量；这些具体数字来自演讲引文，本轮 S9 只核验 time horizon 方法学而不逐项重验榜单。METR 方法是将模型成功率对人类专业者任务时长拟合 logistic 曲线，取指定成功率（常为 50%）交点；趋势外推另有 CI 与外部效度限制。 R2记录补正映射：§6 先定义 METR time horizon，再仅以演讲引文保留 3.4/6.4/12小时和 with harness 条件，声明未逐项重验。"
+            },
+            {
+              "id": "I15",
+              "title": "Fighting the weights：模型训练偏置对抗用户/harness",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2"
+              ],
+              "matched_coverage_unit_ids": [
+                "U17"
+              ],
+              "notes": "S2 例子称 Haiku/Luna 等小模型首次调用 Playwright MCP 常因训练工具形态不同而失败再恢复；Claude Code 指令/工具说明中并行调用要求出现 7、4、3、2 次等重复并有全大写。重复和强调只是作者识别“可能在与训练偏置对抗”的症状学线索，不构成训练因果机制的直接证明。 R2记录补正映射：§4 写明 Playwright 首调误参数、Claude Code 7/4/3/2次重复和全大写，并明确不构成训练因果证明。"
+            },
+            {
+              "id": "I16",
+              "title": "Anthropic Memento：90 分钟清上下文并留短笔记",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S8"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10"
+              ],
+              "notes": "Memento 针对 long-horizon agent 固着错误假设/子任务的问题。每个实例运行至 generation timeout（serving 实验 1.5 小时/轮、总 6 小时），写下策略、失败与表现的简短 notebook，然后新实例继承 codebase/environment/workspace 与笔记、丢弃会话。S2 将其概括为每 90 分钟写小纸条后清空上下文，环境和工作保留；S8 明确它不是普遍强 harness，也不赋予新网络能力。 R2记录补正映射：§6 覆盖 Memento 1.5h/6h、继承代码环境与笔记及非通用产品QA边界。"
+            },
+            {
+              "id": "I17",
+              "title": "Fork-and-Flush：idea basins 与并行新鲜上下文",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S6"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08"
+              ],
+              "notes": "Microsoft Research 将同一任务独立 run 的持续分数平台与功能相似 embedding 聚类称为 idea basins。方法在 13 个长时程任务、等计算预算下，从 leader workspace fork K=4 分支并清空 chat，33%/66% 预算强制触发；归一化平均分 0.78，高于 single-run 0.47 与 best-of-4 0.54（相对 +66.0%/+44.4%），12/13 任务 mean 最高。11 任务消融显示 flush-only 0.55、fork-only 0.57、全方法 0.71。 R2记录补正映射：§5.2 覆盖 workspace保留/chat清空、13任务、等预算、0.78/0.47/0.54、66%/44%、12/13和LWE-rec反例。"
+            },
+            {
+              "id": "I18",
+              "title": "Context inertia、Fork-and-Flush 机制与方差边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S6"
+              ],
+              "matched_coverage_unit_ids": [
+                "U07",
+                "U08"
+              ],
+              "notes": "S2 将 context inertia 定义为模型对上下文中的假设、子任务或目标过度聚焦并在应停止后继续；摘要若保存旧解释，可能只解决长度而不解除思路惯性。Fork-and-Flush 的 workspace 保留、conversation 清空让分支重推导意图并跳出 basin；polyomino 获胜分支首提交跳出 43 个单步距离单位，但 3 个被拒分支仍留在原 basin。平均 SD 从 0.26/0.21 降至 0.16，10/13 任务下降；AHC014 与 order-add 变异上升但伴随均值大幅提高。MAX-3-SAT 辅助实验提出方差在能力边界、attainment 约 0.497 处最大。 R2记录补正映射：新版 §5.1 直接覆盖 context inertia 与 compaction 无法保证摆脱旧思路；§5.2/§5.4 再用 Fork-and-Flush 的保留工作区、清空对话、预算触发、消融、嵌入证据与反例支撑该主题。"
+            },
+            {
+              "id": "I19",
+              "title": "Berkeley forgetting：团队通信加彻底遗忘",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S7"
+              ],
+              "matched_coverage_unit_ids": [
+                "U09"
+              ],
+              "notes": "Tan 等在 AHC014、Frontier-CS Q171、VLIW kernel、nanochat 四任务、同一 DeepSeek V4.1 Flash、等预算、每配置 3 次运行。forgetting 同时丢弃各 agent session 与 search state，仅保留最佳候选；4-agent 通信团队比单 agent 最多 +39%、比 parallel 最多 +15%，四任务均最佳。AHC014 mean 1.103M vs 0.964M/0.795M；VLIW cycles mean 1097 vs 1220/1426。 R2记录补正映射：§5.3 覆盖四任务、Pi/DeepSeek V4.1 Flash、三次运行、等预算、只保留最佳候选和方向化指标。"
+            },
+            {
+              "id": "I20",
+              "title": "Berkeley 机制与限制：遗忘不是只清 chat",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S7"
+              ],
+              "matched_coverage_unit_ids": [
+                "U09"
+              ],
+              "notes": "作者观察 session 变长后编辑和 reasoning tokens 变小、空 turn 增加；AHC014 同态比较中，遗忘后前十提案中位编辑约 40 行 vs continuation 6 行，reasoning 9.4K vs 2.9K。32/36 次 forget 后产生新最佳，但收益递减且第一轮最多；parallel 在 nanochat 无增益，Frontier-CS 例外仍持续改进。该设计与 Memento/Fork-and-Flush 的保留对象不同，不能混写。 R2记录补正映射：§5.3覆盖继续/遗忘对照、单任务边界、空turn与有效实验问题。"
+            },
+            {
+              "id": "I21",
+              "title": "实践建议：重置上下文与 200K 警戒线",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10"
+              ],
+              "notes": "作者对 800K token 的怪异编程 agent 建议直接删上下文；个人警戒线约 200K，S2 另提到 200K-300K 开始检查并在大任务前重置。这是经验启发而非严格实验阈值。 R2记录补正映射：§6 覆盖20万经验警戒线、20–30万检查区间和非硬阈值。"
+            },
+            {
+              "id": "I22",
+              "title": "解决方案移动问题与 2027 战略性遗忘预测",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2"
+              ],
+              "matched_coverage_unit_ids": [
+                "U11",
+                "U13"
+              ],
+              "notes": "长上下文带来更多信息也带来更多坏信息；agentic model 让任务跑更长、自管上下文，也会跑过头并忽略用户偏好。个人 Hermes 运行六个月后技能/记忆堆积、同类任务重复发明方案、指令冲突，解法可能变差；因此越依赖 memory 越需要 strategic forgetting，过度精确记忆长期会冲突且尚无成熟解法。 R2记录补正映射：§7.3 覆盖来源中的长期记忆冲突与战略性遗忘预测；§7.1–7.2 的 Personal Context 四分层、状态恢复、更正与删除传播是报告从来源问题推出的工程建议，正文标为[待验证]，不是来源直接实验结论。"
+            },
+            {
+              "id": "I23",
+              "title": "输出 = context × weights",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05",
+                "U12"
+              ],
+              "notes": "输出同时受训练数据和当前上下文影响；排障应读技术报告并建立训练数据与任务相关性的心智模型。可用更大模型、更多 reasoning 或更好上下文，其中改进上下文通常便宜且快。 R2记录补正映射：§4覆盖Context×Weights心智图示、版本冲突核验任务和确定性/模型分工。"
+            },
+            {
+              "id": "I24",
+              "title": "S8/S10 中非本文核心的安全与模型报告内容",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S8",
+                "S10"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "S8 大部分内容是 ARA/IoT worm、分布式推理、GCP 复制与防御，只有 Memento 与本主题直接相关；S10 大部分是 Gemini 2.5 训练、基准、产品与安全，只有 Pokémon、100K agentic behavior 与 context poisoning 引文直接相关。学习报告可不展开这些外围内容，但不应把外围安全结论误写成上下文工程证据。 R2记录补正映射：来源表继续限定S8/S10读取范围；外围安全与模型基准不进入本主题，处理合理。"
+            }
+          ],
+          "source_ids_checked": [
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6",
+            "S7",
+            "S8",
+            "S9",
+            "S10"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "R2记录补正：report/evidence哈希未变、revision_round仍为2、五维评分保持97/97/96/96/98；将独立来源单元改为I01–I24，coverage_unit_ids_checked改为实际核对的manifest U01–U17，并补齐U07/U13映射。U07对应§5.1 context inertia/compaction与I18的Fork证据链；U13对应§7.1–7.3，其中Personal Context分层是正文标明[待验证]的工程推论。C01–C19、S1–S10、R1–R5仍为真实检查；无hard failure。"
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 96.75,
+        "evaluated_on": "2026-10-27",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "49ee6822a84d63d62ec16b8bc21161f376095de8928d79451f995e666882c90d",
+        "evidence_sha256": "0138f76068cd9e66d775d6aaab38c2153997c5e07f661199c319b1da864b6507"
+      }
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 95.35,
+    "evaluated_on": "2026-10-28",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "49ee6822a84d63d62ec16b8bc21161f376095de8928d79451f995e666882c90d",
+    "evidence_sha256": "0138f76068cd9e66d775d6aaab38c2153997c5e07f661199c319b1da864b6507"
+  }
+}

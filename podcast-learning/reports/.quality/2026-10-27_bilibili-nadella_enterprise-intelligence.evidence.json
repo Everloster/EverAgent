@@ -1,0 +1,421 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-27_bilibili-nadella_enterprise-intelligence.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-27",
+  "generator": {
+    "model": "gpt-6.1-sol",
+    "harness": "codex",
+    "run_id": "generator-0484c61907d3",
+    "explicit_model_override": false,
+    "override_reason": ""
+  },
+  "task": {
+    "summary": "对 B 站推荐 1：20VC 纳德拉企业智能访谈，完成深度 AI 学习与来源优先独立复核。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "使用 eacli podcast 远端静默 worker 完成英文原声转写，查重后学习，不播放音视频或打开浏览器。"
+      },
+      {
+        "id": "R2",
+        "text": "保存完整转写、原始出处与 shownotes、中文结构化精编和脱敏执行收据，统计与转写审计真实。"
+      },
+      {
+        "id": "R3",
+        "text": "深度报告独立覆盖官方 shownotes 的 12 个问题、核心例子与边界，不要求以 polished 补读主线。"
+      },
+      {
+        "id": "R4",
+        "text": "区分口播、主持人转述、官方补充和推断，核验关键数字与名称。"
+      },
+      {
+        "id": "R5",
+        "text": "包含 Personal Context 与双仓启示、Limitations、三问及公开隐私边界。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "kind": "primary",
+      "title": "B 站转载：20VC 纳德拉访谈",
+      "locator": "https://www.bilibili.com/video/BV1S8HF6MEt9",
+      "accessed_on": "2026-10-27",
+      "read_scope": "实际对白使用 S8 完整英文原声 ASR；未把页面 reader 失败当已读网页"
+    },
+    {
+      "id": "S2",
+      "kind": "official",
+      "title": "20VC 官方单集与 12 个 shownotes 问题",
+      "locator": "https://www.thetwentyminutevc.com/satya-nadella",
+      "accessed_on": "2026-10-27",
+      "read_scope": "官方页面全文读取"
+    },
+    {
+      "id": "S3",
+      "kind": "official",
+      "title": "20VC 原 YouTube 视频定位",
+      "locator": "https://www.youtube.com/watch?v=24XUcWhqY_4",
+      "accessed_on": "2026-10-27",
+      "read_scope": "元数据与原始出处，非独立第二份完整对白"
+    },
+    {
+      "id": "S4",
+      "kind": "local",
+      "title": "shownotes 与时间定位",
+      "locator": "podcast-learning/reports/transcripts/2026-10-27_bilibili-nadella_enterprise-intelligence.shownotes.md",
+      "accessed_on": "2026-10-27"
+    },
+    {
+      "id": "S5",
+      "kind": "official",
+      "title": "Microsoft Agent 安全与 Project Perception",
+      "locator": "https://www.microsoft.com/en-us/security/blog/2026/10/19/agents-are-your-newest-insiders-security-must-move-at-their-speed/",
+      "accessed_on": "2026-10-27",
+      "read_scope": "全文读取，仅支持公开设计而非独立效果"
+    },
+    {
+      "id": "S6",
+      "kind": "official",
+      "title": "GitHub HydraFusion 研究预览",
+      "locator": "https://github.blog/ai-and-ml/github-copilot/project-hydrafusion-frontier-quality-via-multi-model-orchestration/",
+      "accessed_on": "2026-10-27",
+      "read_scope": "全文读取；编程 benchmark 不外推到报告"
+    },
+    {
+      "id": "S7",
+      "kind": "local",
+      "title": "中文结构化精编",
+      "locator": "podcast-learning/reports/transcripts/2026-10-27_bilibili-nadella_enterprise-intelligence.polished.txt",
+      "accessed_on": "2026-10-27"
+    },
+    {
+      "id": "S8",
+      "kind": "local",
+      "title": "完整英文转写",
+      "locator": "podcast-learning/reports/transcripts/2026-10-27_bilibili-nadella_enterprise-intelligence.transcript.txt",
+      "accessed_on": "2026-10-27"
+    },
+    {
+      "id": "S9",
+      "kind": "local",
+      "title": "脱敏转写收据",
+      "locator": "podcast-learning/reports/transcripts/2026-10-27_bilibili-nadella_enterprise-intelligence.artifact-receipt.json",
+      "accessed_on": "2026-10-27"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "纳德拉不再认为规模扩张会自动带来对齐，预训练对齐与后训练的判断是口播观点而非已验证定律。",
+      "report_anchor": "2.1 纳德拉改变的是一个假设",
+      "support": "direct",
+      "source_ids": [
+        "S1",
+        "S8"
+      ],
+      "evidence": "01:23–03:22",
+      "critical": true
+    },
+    {
+      "id": "C2",
+      "claim": "Agent 身份、权限和审计应由模型之外的系统管理，Project Perception 名称与公开职责经微软文章核验。",
+      "report_anchor": "2.2 Agent 有身份",
+      "support": "direct",
+      "source_ids": [
+        "S8",
+        "S5"
+      ],
+      "evidence": "03:22–04:45；Microsoft 文中 registry、identity 与权限调整",
+      "critical": true
+    },
+    {
+      "id": "C3",
+      "claim": "看见思维链不能证明真实动机；解释与另一模型同意不能自行扩权。",
+      "report_anchor": "2.3 看见思维链",
+      "support": "derived",
+      "source_ids": [
+        "S8",
+        "S5"
+      ],
+      "evidence": "04:46–05:40；由口播承认不忠实与外部授权边界推得",
+      "critical": true
+    },
+    {
+      "id": "C4",
+      "claim": "Own Your Intelligence 讨论知识、使用反馈、Context、traces 和评价，不推出每家公司都要训练基础模型。",
+      "report_anchor": "4. 企业智能包含什么",
+      "support": "derived",
+      "source_ids": [
+        "S8"
+      ],
+      "evidence": "08:55–14:13；注意载体与组织能力的区别",
+      "critical": true
+    },
+    {
+      "id": "C5",
+      "claim": "任务饱和须按具体任务判断，节目没有给开放或闭源未来流量比例。",
+      "report_anchor": "3.2 饱和是某类任务的现象",
+      "support": "direct",
+      "source_ids": [
+        "S8"
+      ],
+      "evidence": "07:05–08:55",
+      "critical": true
+    },
+    {
+      "id": "C6",
+      "claim": "HydraFusion 是研究预览，按请求选 Single、Cascade、Critique，离线编程结果不等于报告流程收益。",
+      "report_anchor": "3.3 HydraFusion",
+      "support": "direct",
+      "source_ids": [
+        "S6"
+      ],
+      "evidence": "官方 execution patterns、benchmark scope、research preview",
+      "critical": true
+    },
+    {
+      "id": "C7",
+      "claim": "Unilever order-to-cash / trade claims 为厂商口播案例，前沿模型、traces、MAI 与内部 IT 接管路径未附收益数字。",
+      "report_anchor": "5.1 Unilever",
+      "support": "direct",
+      "source_ids": [
+        "S8"
+      ],
+      "evidence": "12:17–14:13",
+      "critical": true
+    },
+    {
+      "id": "C8",
+      "claim": "千亿美元训练、研发占比和全球 GDP 年增长率约 2% 来自不同口播/转述，未作为已核财务数据或预算；GDP 年增长率不是 AI 开支占比。",
+      "report_anchor": "7. 数字与专名",
+      "support": "direct",
+      "source_ids": [
+        "S8"
+      ],
+      "evidence": "15:52–18:53",
+      "critical": true
+    },
+    {
+      "id": "C9",
+      "claim": "企业作为 AI benchmark 与全球扩散是访谈主张/愿景，不是增长因果实证。",
+      "report_anchor": "企业本身是 benchmark",
+      "support": "direct",
+      "source_ids": [
+        "S8"
+      ],
+      "evidence": "22:19–23:37",
+      "critical": true
+    },
+    {
+      "id": "C10",
+      "claim": "20VC 原单集日期 2026-10-26，shownotes 为 12 个没有时间戳的问题，时间来自转载版定位。",
+      "report_anchor": "1. 这期回答的是什么问题",
+      "support": "direct",
+      "source_ids": [
+        "S2",
+        "S4",
+        "S8"
+      ],
+      "evidence": "官方单集日期及问题列表",
+      "critical": true
+    },
+    {
+      "id": "C11",
+      "claim": "纳德拉将编程进步的重要原因归于预训练模型之上的 RL 与可验证奖励，非编程已有客服/供应链/营销订单流程例子；科学工程需求弹性是预测，未提供后训练消融或收益验证。",
+      "report_anchor": "6.2 编程较容易反馈",
+      "support": "direct",
+      "source_ids": [
+        "S8"
+      ],
+      "evidence": "18:55–20:44，尤其 19:36–20:13",
+      "critical": true
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "模型可能受攻击",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4",
+        "S8"
+      ],
+      "report_anchor": "2. 能力变强"
+    },
+    {
+      "id": "U02",
+      "title": "Agent 如何避免伤害",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4",
+        "S8"
+      ],
+      "report_anchor": "2.2 Agent 有身份"
+    },
+    {
+      "id": "U03",
+      "title": "思维链能否信任",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4",
+        "S8"
+      ],
+      "report_anchor": "2.3 看见思维链"
+    },
+    {
+      "id": "U04",
+      "title": "中国开放模型与安全",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4",
+        "S8"
+      ],
+      "report_anchor": "3.1 开放权重"
+    },
+    {
+      "id": "U05",
+      "title": "开放/闭源竞争与任务饱和",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4",
+        "S8"
+      ],
+      "report_anchor": "3.2 饱和"
+    },
+    {
+      "id": "U06",
+      "title": "企业拥有自己的智能",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4",
+        "S8"
+      ],
+      "report_anchor": "4.1 原始数据"
+    },
+    {
+      "id": "U07",
+      "title": "AI 原生企业与普及",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4",
+        "S8"
+      ],
+      "report_anchor": "4.3 AI 原生化"
+    },
+    {
+      "id": "U08",
+      "title": "实施经济与 Unilever",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4",
+        "S8"
+      ],
+      "report_anchor": "5.1 Unilever"
+    },
+    {
+      "id": "U09",
+      "title": "全栈与横向分工",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4",
+        "S8"
+      ],
+      "report_anchor": "5.3 多层分工"
+    },
+    {
+      "id": "U10",
+      "title": "千亿美元训练的经济约束",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4",
+        "S8"
+      ],
+      "report_anchor": "6.1 训练投入"
+    },
+    {
+      "id": "U11",
+      "title": "经济增长、全球普及与企业 benchmark",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4",
+        "S8"
+      ],
+      "report_anchor": "企业本身是 benchmark"
+    },
+    {
+      "id": "U12",
+      "title": "编程需求弹性、RL 与可验证奖励、非编程职能进展及科学工程预测",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4",
+        "S8"
+      ],
+      "report_anchor": "6.2 编程较容易反馈"
+    },
+    {
+      "id": "U13",
+      "title": "片头主持人自述与个人运动习惯",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "S8"
+      ],
+      "report_anchor": "内容地图",
+      "omission_reason": "只省略片头主持人自述与 20:45–21:33 的运动习惯；21:33 后的 alignment 重申、企业 eval 与全球普及均保留。"
+    },
+    {
+      "id": "U14",
+      "title": "21:33–22:10 快问快答重申 alignment 与 scaling 的区别",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S8"
+      ],
+      "report_anchor": "2.1 纳德拉改变的是一个假设"
+    },
+    {
+      "id": "U15",
+      "title": "22:10–22:24 五年后的企业自有 eval",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S8"
+      ],
+      "report_anchor": "企业本身是 benchmark"
+    }
+  ],
+  "limitations": [
+    "战略访谈与厂商案例没有独立收益验证",
+    "ASR 机械审计不等于词语准确；预算和预测未作定量基准",
+    "官方 shownotes 无时间戳，本文使用 B 站版定位",
+    "licensed weights 未提供完整合同/许可证",
+    "HydraFusion 是指定编程评估的研究预览，未验证报告收益",
+    "双仓启示为推断，没有本次部署实验"
+  ]
+}

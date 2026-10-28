@@ -1,0 +1,681 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-27_bilibili-openai_computer-use.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "glm-5.3",
+        "harness": "pi",
+        "run_id": "review-8cec1da8a623",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 94,
+        "request_coverage": 94,
+        "reasoning_quality": 92,
+        "readability": 93,
+        "limitations": 93
+      },
+      "score_reasons": {
+        "evidence_fidelity": "审前核对本轮快照 SHA-256 均匹配（报告 6a16e821…5402，evidence ecd5ac14…2c71）。C1–C14 逐条在新版正文定位并回查来源：第一轮两处失真已修复——§2.3 现按原声写明 Dots 控制本地与云电脑、自行登录 Sentry 拉日志分析，'喂 Codex'标注为被替代的旧手工环节（对应 C13，与 06:03–08:07 原文一致）；§5.2 棋盘游戏训练器改为'连成五子获胜'描述并注明 ASR 名称未核。新增内容逐项对声：§3.3 广告阵营'most places 计入不了真实收入/与 partnerships team 讨论'（11:56–12:47）如实转写且加口播限定；§5.3 四步'理解/连接/部署/服务'与 37:01–37:09 原文逐一对应，SF 泡沫批评与机会结论（37:12–37:28）齐全；§2.2 双轨、§5.2 语音+Astra 广告（~25:24）均属实。残余轻微问题：§2.2 引用区间 03:24–04:38 偏窄（'企业追赶/消费者探索'的收束句在 ~04:49–05:03），属定位标注不精确而非内容错误。",
+        "request_coverage": "R1–R5 重验通过（R1 收据不变：远端静默 worker、未开浏览器未播音频；R2 五产物齐全，精编修订后字符计数 1626/2849/3.80% 复算吻合且文件头已同步；R3 四章+餐厅+Atlas+共享 Context；R4 权限路径与口播限制保持；R5 反例/成本/启示/Limitations/三问保持）。第一轮五个 partial 全部实质修复且非换措辞：M04→§2.2 显式双轨（U13）、M05→§2.3 归属修正+本地云细节（U14）、M08→§3.3 广告阵营整段（U15）、M12→§5.2 三类含语音（U16）、M16→§5.3 四步鸿沟+机会结论（U17），evidence 同步新增对应 claim/coverage。残余为非核心小项：a16z 八月文章背景（M02，supporting）、多档位模型定价一句（M06 子点）、James 工匠精神论证的原文语气（M13 子点）仍未显式，均不动摇核心结论。",
+        "reasoning_quality": "新增段落与既有论证结构咬合良好：广告阵营段解释了'网站为何不一定欢迎自动化'并保留口播限定；四步鸿沟段把餐厅案例正确接到创业机会结论而非停留轶事；三类消费划分含'广告演示不能证明语音可靠性'的反向限定。三层状态模型、模型检查≠确定性边界、验收表、成本归集式等第一轮已确认的推理保持不变。扣分：§8 双仓启示与正文证据衔接仍偏松；§2.2 双轨段以并列陈述为主，未展开两轨交互含义（可接受的详略选择）。",
+        "readability": "§6.3 标题已改为'共享 Context 与 Atlas 的产品观察'，消除了第一轮标题与内容错位；其余导航结构、表格、流程图、关键数字表不变，standalone 契约继续成立。§5.2 三类消费一句话略密但可读。",
+        "limitations": "Limitations 六条与 evidence.limitations 逐条对应且未因修订而过时；新增内容（广告张力、四步鸿沟、语音形态）在正文均已就地标注口播/嘉宾判断性质，未引入新的未限定外推。"
+      },
+      "critical_claim_ids_checked": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08",
+        "U09",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16",
+        "U17"
+      ],
+      "source_content_map": [
+        {
+          "id": "M01",
+          "title": "冷开场预告（快过普通人、接近 superhuman、企业审计、对比 MCP）",
+          "importance": "supporting",
+          "matched_coverage_unit_ids": [
+            "U01",
+            "U05"
+          ],
+          "assessment": "covered",
+          "source_ids": [
+            "S8"
+          ],
+          "notes": "预告金句由 §1/§2.1/§4.2 承载。"
+        },
+        {
+          "id": "M02",
+          "title": "节目背景：a16z 八月 CUA 文章与嘉宾介绍",
+          "importance": "supporting",
+          "matched_coverage_unit_ids": [
+            "U01"
+          ],
+          "assessment": "partial",
+          "source_ids": [
+            "S2",
+            "S8"
+          ],
+          "notes": "§1 交代主持与嘉宾并核名；a16z 八月文章的提问立场背景仍未提及（supporting，不构成核心缺口）。"
+        },
+        {
+          "id": "M03",
+          "title": "Astra 边际改进：更快、Paint 创作、99% vs 97%、最对齐与游戏轶事",
+          "importance": "core",
+          "matched_coverage_unit_ids": [
+            "U01"
+          ],
+          "assessment": "covered",
+          "source_ids": [
+            "S8"
+          ],
+          "notes": "§2.1 覆盖速度/token/Paint/97%-99% 与基准缺失限定；对齐与 prompt injection 以 §4.2 alignment eval 承载；游戏轶事省略属可省口播。"
+        },
+        {
+          "id": "M04",
+          "title": "消费者 vs 企业双轨：企业需求显性化、消费者推前沿",
+          "importance": "core",
+          "matched_coverage_unit_ids": [
+            "U01",
+            "U13"
+          ],
+          "assessment": "covered",
+          "source_ids": [
+            "S8"
+          ],
+          "notes": "本轮 §2.2 新增显式双轨段（U13），并加'无统一收益排序'限定；引用区间略窄（收束句在 ~05:03），见 fidelity。"
+        },
+        {
+          "id": "M05",
+          "title": "Dots 两个一手工作流（漏掉的会议邀请、Slack+Sentry 反馈闭环）",
+          "importance": "core",
+          "matched_coverage_unit_ids": [
+            "U01",
+            "U14"
+          ],
+          "assessment": "covered",
+          "source_ids": [
+            "S8"
+          ],
+          "notes": "§2.3 本轮修正：三个例子齐全，Sentry 归属按原声改写（Dots 自行登录分析，Codex 为旧手工环节，对应 C13/U14），并补'控制本地与云电脑'；日历例含'先询问是否接受'。"
+        },
+        {
+          "id": "M06",
+          "title": "速度经济学：我本可以自己做门槛、superhuman 临界、多模型分层",
+          "importance": "core",
+          "matched_coverage_unit_ids": [
+            "U01",
+            "U05"
+          ],
+          "assessment": "covered",
+          "source_ids": [
+            "S8"
+          ],
+          "notes": "§2.1 覆盖速度阈值与监督失效悖论；多档位模型定价子点仍未提（非核心子点）。"
+        },
+        {
+          "id": "M07",
+          "title": "Guardian/auto-approve 与企业人机回路、可审计性",
+          "importance": "core",
+          "matched_coverage_unit_ids": [
+            "U05",
+            "U02"
+          ],
+          "assessment": "covered",
+          "source_ids": [
+            "S8"
+          ],
+          "notes": "§2.1+§4.2 准确处理，'模型检查≠确定性保证'限定保留。"
+        },
+        {
+          "id": "M08",
+          "title": "开放网络两阵营：广告商业模式受损 vs WebMCP 人机共站",
+          "importance": "core",
+          "matched_coverage_unit_ids": [
+            "U02",
+            "U15"
+          ],
+          "assessment": "covered",
+          "source_ids": [
+            "S8"
+          ],
+          "notes": "本轮 §3.3 新增广告出版商阵营整段（U15）：曝光不计真实收入、与 partnerships team 讨论、口播限定；WebMCP 阵营与官方文档核验保持。"
+        },
+        {
+          "id": "M09",
+          "title": "任务交接边界：flexible input、规格式需求、universal API 心智模型",
+          "importance": "core",
+          "matched_coverage_unit_ids": [
+            "U02",
+            "U07"
+          ],
+          "assessment": "covered",
+          "source_ids": [
+            "S8"
+          ],
+          "notes": "§4.1 澄清+规格+权限 dial；普遍性隐式承载；'发自本人'敏感例外与'简单到自己点更快'边界仍未显式（子点）。"
+        },
+        {
+          "id": "M10",
+          "title": "企业信任建设：sandbox、审批 dial、evals 展示、cursor 可见性",
+          "importance": "core",
+          "matched_coverage_unit_ids": [
+            "U02",
+            "U07"
+          ],
+          "assessment": "covered",
+          "source_ids": [
+            "S8"
+          ],
+          "notes": "§4.1/§4.2/§4.4 三分结构保持，'可见≠可撤销'限定保留。"
+        },
+        {
+          "id": "M11",
+          "title": "企业自动化两大类：采购/财务对账/销售/市场调研 + badminton 自建工具",
+          "importance": "core",
+          "matched_coverage_unit_ids": [
+            "U03",
+            "U08"
+          ],
+          "assessment": "covered",
+          "source_ids": [
+            "S8"
+          ],
+          "notes": "§5.1 三流程+验收表、§5.2 竞品体验回灌与创造性方向保持。"
+        },
+        {
+          "id": "M12",
+          "title": "消费者三类：drudgery、时间不可行项目、语音重定义软件形态",
+          "importance": "core",
+          "matched_coverage_unit_ids": [
+            "U09",
+            "U16"
+          ],
+          "assessment": "covered",
+          "source_ids": [
+            "S8"
+          ],
+          "notes": "本轮 §5.2 显式分三类（U16），第三类语音操作电脑+Astra 广告+形态变化就位，并加'广告演示不能证明可靠性'限定；棋盘游戏改描述式并注明 ASR 未核。"
+        },
+        {
+          "id": "M13",
+          "title": "Legacy 与新软件并存、个性化 craft software、UI 不消亡、B2B 控制面",
+          "importance": "core",
+          "matched_coverage_unit_ids": [
+            "U03"
+          ],
+          "assessment": "covered",
+          "source_ids": [
+            "S8"
+          ],
+          "notes": "§6.1 并存论+§5.2 训练器例覆盖；'very sad'工匠论证语气与 B2B 审计控制面仍为隐式（子点，结论已覆盖）。"
+        },
+        {
+          "id": "M14",
+          "title": "共享智能层：各站自建 agent 的碎片化反例",
+          "importance": "core",
+          "matched_coverage_unit_ids": [
+            "U03",
+            "U11"
+          ],
+          "assessment": "covered",
+          "source_ids": [
+            "S8"
+          ],
+          "notes": "§6.3 覆盖碎片化担忧并保留治理分析。"
+        },
+        {
+          "id": "M15",
+          "title": "创业者建议：两种 modality、通知节流、speed and pain 护城河",
+          "importance": "core",
+          "matched_coverage_unit_ids": [
+            "U04"
+          ],
+          "assessment": "covered",
+          "source_ids": [
+            "S8"
+          ],
+          "notes": "§7.3+§6.2 保持；通知节流由 §2.3 噪声分析承载。"
+        },
+        {
+          "id": "M16",
+          "title": "餐厅全链案例 + 中小企业四步鸿沟（理解/连接/部署/服务）",
+          "importance": "core",
+          "matched_coverage_unit_ids": [
+            "U10",
+            "U04",
+            "U17"
+          ],
+          "assessment": "covered",
+          "source_ids": [
+            "S8"
+          ],
+          "notes": "本轮 §5.3 新增四步鸿沟段（U17）：四步与原文逐一对应，含 SF 泡沫批评与'接成完整流程+持续服务'的机会结论（对应 C14）。"
+        },
+        {
+          "id": "M17",
+          "title": "前沿：superhuman、实时协作、多模态、四个浏览器一致性、主动性反转",
+          "importance": "core",
+          "matched_coverage_unit_ids": [
+            "U11",
+            "U06"
+          ],
+          "assessment": "covered",
+          "source_ids": [
+            "S8"
+          ],
+          "notes": "§3.2/§6.2 cookie 与 Context 割裂即四浏览器问题；实时多模态与主动性反转 §6.2/§6.3 覆盖。"
+        },
+        {
+          "id": "M18",
+          "title": "增长轨迹与 Atlas 复盘：并入全线、YC 级周增长、云端拐点、scaling moment",
+          "importance": "core",
+          "matched_coverage_unit_ids": [
+            "U12"
+          ],
+          "assessment": "covered",
+          "source_ids": [
+            "S8"
+          ],
+          "notes": "§6.3 Atlas 段保持准确并按 C12 限定；YC 级增长等口播数字继续未用（可省）。"
+        }
+      ],
+      "source_ids_checked": [
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8",
+        "S9",
+        "S10"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "第二轮复验（同来源优先独立会话）。流程：审前核对本轮指定快照 SHA-256 均匹配（报告 6a16e821…5402、evidence ecd5ac14…2c71），无 wrong_target_snapshot；history 未改动。独立地图沿用本会话打开报告前建立的版本（SHA 88e6a05f…346e，18 单元）。来源阅读说明：S8 完整转写（1145 行至 EOF）、S2–S7 缓存原文、S3/S10 均在本会话第一轮已全文读取，本轮对新增内容逐段回读原声对应区间（03:24–05:03、06:03–08:07、11:56–12:47、24:11–25:34、27:53–29:21、36:39–37:28、40:56–43:59）；S9 修订后已重新完整读取。机器收据：本轮重新运行 audit_transcript.py --json，ok=true、1139 段、2639 秒、sha256 b4c34bd1…9880 与第一轮一致（转写未改动）；frontmatter 新字符计数（1626/2849、3.80%）与精编文件头复算吻合。新增 claim C13/C14 已逐项查源属实。第一轮五项修订建议全部落实且经原文核对非表面换词；无新增 unsupported claim、无核心遗漏、无硬失败。残余改进项（非阻塞）：§2.2 引用区间收窄至 04:38（建议延至 ~05:03）；a16z 八月文章背景、多档位模型定价、工匠论证语气三个子点可在未来版本选择性补充。加权约 93.4（85–94 锚点：整体可靠、轻微缺陷不影响核心结论）。是否通过由协调者运行门禁决定。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 93.35,
+    "evaluated_on": "2026-10-27",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "d04bc371f393eaef95a3d50c11979bd62e6ef1005684e61d9b519ae40b1b5d47",
+    "evidence_sha256": "ecd5ac14c5c3a9a1e1f3d49832a695e50eed34f669e785a4be43c4675c232c71"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "glm-5.3",
+            "harness": "pi",
+            "run_id": "review-573c96a5c50a",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 92,
+            "request_coverage": 85,
+            "reasoning_quality": 88,
+            "readability": 92,
+            "limitations": 93
+          },
+          "score_reasons": {
+            "evidence_fidelity": "审前核验快照 SHA-256 均匹配（报告 70d77e9e…970e1，evidence 85569d26…0033e）。C1–C12 全部在报告正文逐条定位核对，且逐条回查 S2/S4/S5/S6/S7 缓存原文：97%/99% 降级为口播（§2.1）、driver/权限职责（§3.1）、会话状态分层（§3.2）、Browser Use 与原生 CU 路径差异（§4.3）、WebMCP 非可信内容（§3.3）、net60/net30 与保险电话反例（§5.1）、RSS 元数据（2026-10-26 10:00 UTC、45:19，与缓存一致）、a16z 榜单 2026-06 时点（§7.1）均属实。扣分点：§2.3『从 Sentry 日志发现问题后交给 Codex』是归属压缩——原声说 Dots 自己登录 Sentry、拉日志、分析、给反馈，『喂给 Codex』是被自动化掉的旧手工环节；§5.2『五子棋训练』把 ASR 存疑的游戏名（'connect five pebbles'，名称 garbled）写成确定事实而未加限定。均为可修正的轻微失真，不动摇核心结论。",
+            "request_coverage": "R1–R5 逐项核验：R1 经 S10 收据证实（eacli podcast 远端静默 worker，browser_ui_opened=false、audio_played=false）；R2 五件产物齐全且自洽（转写 sha 与我方独立运行 audit_transcript.py 的 b4c34bd1…9880 一致，1139 段/2639 秒；精编字符比 3.44% 复算吻合）；R3 四章均有实质落点，餐厅、Atlas、共享 Context 全部在场；R4 loop/WebMCP/Browser Use 与原生 CU 权限路径核验到位且限制外推；R5 反例、成本口径、双仓启示、Limitations、三问齐备。扣分点为四个次级缺口：开放网络中广告主/出版商阵营（agent 广告曝光不产生收入，11:36–13:51）报告未承载，而中文精编第二章有此内容；餐厅段后的中小企业四步鸿沟（理解/连接/部署/服务）被省略，该论点是 James 创业机会论的落点；消费者第三类『语音作为新界面』仅在 §6.1 隐含；消费推前沿 vs 企业追赶的双轨对比未显式成形。用户点名关注（创业、餐厅、共享 Context、Atlas）均在，无 core_requirement_missing。",
+            "reasoning_quality": "推理链总体严谨：三层状态模型（§3.2）、模型检查与确定性控制的责任划分（§4.2）、验收表把『动作成功』与『任务结果』分开（§5.1）、成本归集式明确标注 [推测] 且未填数（§7.2）、榜单时点与访谈口径不可比的处理（§7.1）均体现了来源性质区分。a16z 反例（延迟出现的外部成功信号）被正确用于限定访谈乐观叙述。扣分：WebMCP 一节因缺广告阵营使『开放网络张力』只呈现一半；Sentry/Codex 归属压缩说明个别推论未经原声逐句回查；§8 双仓启示与正文证据的衔接较松，属建议层。",
+            "readability": "standalone 契约成立：不看转写可理解全部论证；四章内容地图 + 锚点导航 + 表格 + 流程图降低检索成本；关键数字表逐项给出来源性质；术语首次出现有解释。速览三条偏抽象但正文有展开。轻微问题：§6.2/§6.3 小节标题与内容对应需读者自行拼接（共享 Context 与 Atlas 同处 §6.3 但标题只写共享 Context）。",
+            "limitations": "Limitations 六条覆盖访谈无实验数据、双版本时长差、ASR 语义风险、a16z 样本性质、文档 rollout 时效、未实测建议，与正文边界声明（§2.1 加粗、关键数字表）互相印证，且与 evidence.limitations 逐条对应。未发现夸大或漏报的重大限制。"
+          },
+          "critical_claim_ids_checked": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10",
+            "C11",
+            "C12"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07",
+            "U08",
+            "U09",
+            "U10",
+            "U11",
+            "U12"
+          ],
+          "source_content_map": [
+            {
+              "id": "M01",
+              "title": "冷开场预告（快过普通人、接近 superhuman、企业审计、对比 MCP）",
+              "importance": "supporting",
+              "matched_coverage_unit_ids": [
+                "U01",
+                "U05"
+              ],
+              "assessment": "covered",
+              "notes": "预告金句在 §1/§2.1/§4.2 正文均有承载，无需独立小节。",
+              "source_ids": [
+                "S8"
+              ]
+            },
+            {
+              "id": "M02",
+              "title": "节目背景：a16z 八月 CUA 文章与嘉宾介绍",
+              "importance": "supporting",
+              "matched_coverage_unit_ids": [
+                "U01"
+              ],
+              "assessment": "partial",
+              "notes": "§1 交代主持与嘉宾并核名，但未提 a16z 八月曾写 CUA 文章这一提问立场背景；影响轻微。",
+              "source_ids": [
+                "S2",
+                "S8"
+              ]
+            },
+            {
+              "id": "M03",
+              "title": "Astra 边际改进：更快、Paint 创作、99% vs 97%、最对齐与游戏轶事",
+              "importance": "core",
+              "matched_coverage_unit_ids": [
+                "U01"
+              ],
+              "assessment": "covered",
+              "notes": "§2.1 覆盖速度/thinking token/Paint/97%-99% 及基准缺失限定；对齐与 prompt injection 抵抗以 §4.2『alignment eval』承载；打游戏赢 5.6、30 小时通关 Fallout 等轶事省略（属可省的口播轶事）。",
+              "source_ids": [
+                "S8"
+              ]
+            },
+            {
+              "id": "M04",
+              "title": "消费者 vs 企业双轨：企业需求显性化、消费者推前沿",
+              "importance": "core",
+              "matched_coverage_unit_ids": [
+                "U01"
+              ],
+              "assessment": "partial",
+              "notes": "企业侧（legacy 软件、追赶理解）§2.2 覆盖；消费者推前沿 vs 企业追赶的显式双轨框架未成形，仅散见 §2.2/§6.2。",
+              "source_ids": [
+                "S8"
+              ]
+            },
+            {
+              "id": "M05",
+              "title": "Dots 两个一手工作流（漏掉的会议邀请、Slack+Sentry 反馈闭环）",
+              "importance": "core",
+              "matched_coverage_unit_ids": [
+                "U01"
+              ],
+              "assessment": "partial",
+              "notes": "三个例子都在 §2.3，且主动通知噪声分析到位；但『Sentry 日志交给 Codex』压缩了归属——原声是 Dots 自己登录 Sentry 拉日志分析，喂 Codex 是被替代的旧流程；『同时控制本地与云电脑』细节丢失。建议修订措辞。",
+              "source_ids": [
+                "S8"
+              ]
+            },
+            {
+              "id": "M06",
+              "title": "速度经济学：我本可以自己做门槛、superhuman 临界、多模型分层",
+              "importance": "core",
+              "matched_coverage_unit_ids": [
+                "U01",
+                "U05"
+              ],
+              "assessment": "covered",
+              "notes": "§2.1 完整覆盖速度阈值与监督失效悖论并限定口径；多档位模型/便宜模型渐进改进一点未提（轻微）。",
+              "source_ids": [
+                "S8"
+              ]
+            },
+            {
+              "id": "M07",
+              "title": "Guardian/auto-approve 与企业人机回路、可审计性",
+              "importance": "core",
+              "matched_coverage_unit_ids": [
+                "U05",
+                "U02"
+              ],
+              "assessment": "covered",
+              "notes": "§2.1『快到看不清每一步』+§4.2 Guardian/自动审批/alignment eval 与模型检查≠确定性保证的处理准确。",
+              "source_ids": [
+                "S8"
+              ]
+            },
+            {
+              "id": "M08",
+              "title": "开放网络两阵营：广告商业模式受损 vs WebMCP 人机共站",
+              "importance": "core",
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "assessment": "partial",
+              "notes": "WebMCP 阵营覆盖充分（§3.3 含非可信内容与支持范围）；但广告主/出版商阵营（agent 广告曝光不计入真实收入、与 partnerships team 持续处理）整段缺失——中文精编第二章已承载该点，属报告层遗漏，建议在 §3.3 或 §6.1 补一段。",
+              "source_ids": [
+                "S8"
+              ]
+            },
+            {
+              "id": "M09",
+              "title": "任务交接边界：flexible input、规格式需求、universal API 心智模型",
+              "importance": "core",
+              "matched_coverage_unit_ids": [
+                "U02",
+                "U07"
+              ],
+              "assessment": "covered",
+              "notes": "§4.1 澄清模糊目标+规格化+权限 dial；普遍性以 §1『UI 成为跨应用入口』隐式承载；『发自本人』的敏感例外与『简单到自己点更快』的边界未提（轻微）。",
+              "source_ids": [
+                "S8"
+              ]
+            },
+            {
+              "id": "M10",
+              "title": "企业信任建设：sandbox、审批 dial、evals 展示、cursor 可见性",
+              "importance": "core",
+              "matched_coverage_unit_ids": [
+                "U02",
+                "U07"
+              ],
+              "assessment": "covered",
+              "notes": "§4.1/§4.2/§4.4 三小节分别对应权限 dial、两层控制、可接管性，结构清晰且加了『可见≠可撤销』的合理限定。",
+              "source_ids": [
+                "S8"
+              ]
+            },
+            {
+              "id": "M11",
+              "title": "企业自动化两大类：采购/财务对账/销售/市场调研 + badminton 自建工具",
+              "importance": "core",
+              "matched_coverage_unit_ids": [
+                "U03",
+                "U08"
+              ],
+              "assessment": "covered",
+              "notes": "§5.1 采购链条/对账/CRM + §5.2 竞品体验回灌均在，且补了验收维度；第二类创造性方向（电路/建筑/硬件/游戏设计）§5.2 保留。",
+              "source_ids": [
+                "S8"
+              ]
+            },
+            {
+              "id": "M12",
+              "title": "消费者三类：drudgery、时间不可行项目、语音重定义软件形态",
+              "importance": "core",
+              "matched_coverage_unit_ids": [
+                "U09"
+              ],
+              "assessment": "partial",
+              "notes": "前两类 §5.2 覆盖（DMV/退订/Numbers/健身教练朋友一例未列但同类已在）；第三类『语音对话操作电脑、软件形态因此改变』仅在 §6.1『为新交互设计的软件』中隐含，Astra 广告语音交互点未显式出现，建议一句带过。",
+              "source_ids": [
+                "S8"
+              ]
+            },
+            {
+              "id": "M13",
+              "title": "Legacy 与新软件并存、个性化 craft software、UI 不消亡、B2B 控制面",
+              "importance": "core",
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "assessment": "covered",
+              "notes": "§6.1 并存论+§5.2 五子棋训练器承载个性化软件；James『互联网 agent 化会 very sad』的工艺/工匠论证与 B2B 审计日志控制面（为何付这笔款）未显式呈现，但结论（UI 不消亡、软件需更好）已覆盖。",
+              "source_ids": [
+                "S8"
+              ]
+            },
+            {
+              "id": "M14",
+              "title": "共享智能层：各站自建 agent 的碎片化反例",
+              "importance": "core",
+              "matched_coverage_unit_ids": [
+                "U03",
+                "U11"
+              ],
+              "assessment": "covered",
+              "notes": "§6.3 覆盖碎片化担忧并新增治理分析（有用/有权使用之分），是用户点名关注点，处理到位。",
+              "source_ids": [
+                "S8"
+              ]
+            },
+            {
+              "id": "M15",
+              "title": "创业者建议：两种 modality、通知节流、speed and pain 护城河",
+              "importance": "core",
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "assessment": "covered",
+              "notes": "§7.3 行业知识/法规/GTM/速度与产品判断 + §6.2 两种 modality 均在；通知摘要化设计以 §2.3 噪声分析部分承载。",
+              "source_ids": [
+                "S8"
+              ]
+            },
+            {
+              "id": "M16",
+              "title": "餐厅全链案例 + 中小企业四步鸿沟（理解/连接/部署/服务）",
+              "importance": "core",
+              "matched_coverage_unit_ids": [
+                "U10",
+                "U04"
+              ],
+              "assessment": "partial",
+              "notes": "餐厅链条（库存照片→客流预测→采购→ERP 排班）与边界分析 §5.3 完整；但随后『普通中小企业主理解/连接/部署/服务四步鸿沟 + SF 泡沫批评』被省略——这是该段创业机会论的结论句，也是 a16z 受众最相关的内容，建议补入 §5.3 或 §7.3。",
+              "source_ids": [
+                "S8"
+              ]
+            },
+            {
+              "id": "M17",
+              "title": "前沿：superhuman、实时协作、多模态、四个浏览器一致性、主动性反转",
+              "importance": "core",
+              "matched_coverage_unit_ids": [
+                "U11",
+                "U06"
+              ],
+              "assessment": "covered",
+              "notes": "§3.2/§6.2 cookie 与 Context 割裂（cloud/local/extension/in-app）正是四浏览器问题；实时多模态与 agent 适应人 §6.2/§6.3 覆盖。",
+              "source_ids": [
+                "S8"
+              ]
+            },
+            {
+              "id": "M18",
+              "title": "增长轨迹与 Atlas 复盘：并入全线、YC 级周增长、云端拐点、scaling moment",
+              "importance": "core",
+              "matched_coverage_unit_ids": [
+                "U12"
+              ],
+              "assessment": "covered",
+              "notes": "§6.3 Atlas 段准确复述『嵌入式入口 > 独立浏览器入口』教训并按 C12 限定无采用率指标；YC 级周增长、6–9 个月轨迹、scaling moment 措辞未用（均口播数字，可省）。",
+              "source_ids": [
+                "S8"
+              ]
+            }
+          ],
+          "source_ids_checked": [
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6",
+            "S7",
+            "S8",
+            "S9",
+            "S10"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "流程：审前核对报告与 evidence SHA-256 均与任务指定一致（报告 70d77e9e…970e1、evidence 85569d26…0033e），无 wrong_target_snapshot。独立地图（18 单元 + 元信息）在打开报告前完成，地图文件 SHA 88e6a05f…346e。来源优先核验：S8 完整英文转写 1145 行读至 EOF（末行 00:43:59），S2/S4/S5/S6/S7 为抓取原文缓存全文读取，S3/S9/S10 仓内文件读取；S1 视频本体未播放，对白以 S8 为准。机器收据：本会话独立运行 audit_transcript.py --json，ok=true、1139 段、2639 秒、sha256 b4c34bd1…9880、唯一 warning 为 5 行头部说明区无时间戳，与 S10 内嵌审计一致；frontmatter 字符计数（95/74877、1400/2573、3.44%）复算吻合。修订建议（不构成硬失败，供生成者下轮修订）：1) §2.3/精编同步修正 Sentry 闭环归属（Dots 自行登录分析，Codex 为被替代环节），并补『控制本地+云电脑』细节；2) §3.3 或 §6.1 补广告主/出版商阵营一句（agent 广告曝光不计真实收入）；3) §5.3 或 §7.3 补中小企业四步鸿沟（理解/连接/部署/服务）；4) §5.2 五子棋加『据口播描述推断』限定或注明 ASR 名称未核；5) §5.2 或 §6.1 一句带过语音交互（Astra 广告、形态改变）。评分锚点：各维落在 85–94 区间（整体可靠、轻微缺陷不动摇核心结论），加权约 90。是否通过由协调者运行门禁决定。 记录修正：为全部 source_content_map 单元补 source_ids 绑定（内容均出自完整转写 S8；M02 兼 RSS 核名 S2），并为 M17 补映射 U06（对话/浏览器/业务三类状态正对应 37:30–40:56 cookie 与 Context 割裂段）。M04/M05/M08/M12/M16 维持如实 partial 评定，不迎合通过；对应修订项见上。"
+        }
+      ],
+      "decision": {}
+    }
+  ]
+}

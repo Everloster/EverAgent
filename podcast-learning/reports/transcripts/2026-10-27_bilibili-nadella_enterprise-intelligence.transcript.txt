@@ -1,0 +1,575 @@
+# 20VC：纳德拉谈企业智能｜英文原声 ASR 转写
+来源：https://www.bilibili.com/video/BV1S8HF6MEt9
+原始出处：https://www.thetwentyminutevc.com/satya-nadella
+说明：语言 en；保留机器转写，不在此文件逐字改写。专名修正、观点归属与未核数字见中文精编及报告。
+版权：节目著作权归权利人；仅供个人学习，完整节目请前往原始平台。如版权方要求下架，请通过仓库 Issue 联系。
+
+[00:00:00 -> 00:00:04] Dario and Ilya and Sam and Greg and Elon were all, I guess,
+[00:00:04 -> 00:00:05] one happy family.
+[00:00:05 -> 00:00:07] They were really the believers in scaling laws.
+[00:00:07 -> 00:00:10] And that's what I believed in back in 2018, 2019.
+[00:00:10 -> 00:00:13] I think the biggest change now I have is I used to always
+[00:00:13 -> 00:00:15] think that Align will just fall out.
+[00:00:15 -> 00:00:16] I no longer believe that.
+[00:00:17 -> 00:00:20] Now, this show, honestly, is quite an emotional one for me.
+[00:00:20 -> 00:00:23] I started 20VC from my bedroom in London.
+[00:00:23 -> 00:00:24] I was 18 years old.
+[00:00:24 -> 00:00:25] I had no money.
+[00:00:25 -> 00:00:27] I had no contacts in my phone book.
+[00:00:27 -> 00:00:30] And today, I have the chance to sit down with Satya Nadella
+[00:00:30 -> 00:00:30] .
+[00:00:30 -> 00:00:34] CEO of Microsoft, one of the greatest companies of the last
+[00:00:34 -> 00:00:35] three or four decades.
+[00:00:35 -> 00:00:39] And I will just say on Satya, the warmth that he was able
+[00:00:39 -> 00:00:42] to imbue in this interview in such a short space of time
+[00:00:42 -> 00:00:44] was almost unlike anything I've seen before.
+[00:00:44 -> 00:00:48] The clarity of his arguments and his ideas, his ability to
+[00:00:48 -> 00:00:50] go very deep, very quickly.
+[00:00:50 -> 00:00:53] It was almost unlike anything I've ever seen before.
+[00:00:53 -> 00:00:56] It was a show I'll always remember, and I really hope you
+[00:00:56 -> 00:00:56] enjoy it.
+[00:00:58 -> 00:00:59] Ready to go?
+[00:01:04 -> 00:01:12] Satya, thank you so much for doing this with us.
+[00:01:12 -> 00:01:15] I would say, you know, thank you for coming to the studio,
+[00:01:15 -> 00:01:16] but you're actually hosting us here.
+[00:01:16 -> 00:01:18] So really appreciate you taking the time.
+[00:01:18 -> 00:01:20] Thank you so much for having me on the show, Harry.
+[00:01:20 -> 00:01:22] It's been a long time coming, but I'm finally glad we were
+[00:01:22 -> 00:01:23] able to do it.
+[00:01:23 -> 00:01:27] Now, you wrote a seminal piece 10 days ago or so, and you
+[00:01:27 -> 00:01:30] said that we should assume a model is compromised.
+[00:01:30 -> 00:01:32] And I just wanted to expand on that.
+[00:01:32 -> 00:01:35] Does that mean that we can't or shouldn't rely on the disc
+[00:01:35 -> 00:01:38] losures of the model provider companies?
+[00:01:38 -> 00:01:43] I think the challenge, the way I see it right now is the
+[00:01:43 -> 00:01:44] models are becoming more and more capable,
+[00:01:44 -> 00:01:48] right? Scaling laws are working, except one of the
+[00:01:48 -> 00:01:50] assumptions I had was that you'll have
+[00:01:50 -> 00:01:53] alignment just fall out of scaling, and it doesn't seem to
+[00:01:53 -> 00:01:54] be.
+[00:01:55 -> 00:01:58] In this more science challenges there that need to be tack
+[00:01:58 -> 00:01:59] led, right? And mechanistic
+[00:01:59 -> 00:02:02] understanding is also elusive. And so given that, I think
+[00:02:02 -> 00:02:04] the best posture to have,
+[00:02:04 -> 00:02:07] if you want to continue to use these sophisticated models,
+[00:02:07 -> 00:02:09] is to treat these models in a trust
+[00:02:09 -> 00:02:11] architecture. I mean, after all, zero trust is not
+[00:02:11 -> 00:02:14] something new, right? We've had zero trust
+[00:02:14 -> 00:02:18] architectural approaches. So the claim, at least I'm making
+[00:02:18 -> 00:02:21] , is let's create an engineered zero
+[00:02:21 -> 00:02:26] trust environment that can contain any malfunctioning agent
+[00:02:26 -> 00:02:28] before it does any harm,
+[00:02:28 -> 00:02:30] right? So that's the point. Because if you're really going
+[00:02:30 -> 00:02:32] to have agents that are more capable
+[00:02:32 -> 00:02:36] and yet less aligned, then you need to have a trust system
+[00:02:36 -> 00:02:38] that you can rely on.
+[00:02:38 -> 00:02:41] Can I ask, what does that trust system look like? Who's the
+[00:02:41 -> 00:02:43] architecture of it? Who's the arbiter of it?
+[00:02:43 -> 00:02:46] It's a great point. So that's why I kind of look at it and
+[00:02:46 -> 00:02:49] say, you leave AI safety outside of this, right? Because
+[00:02:49 -> 00:02:52] that alignment, for example, at least my take is that it
+[00:02:52 -> 00:02:55] really mostly has to show up in training, right?
+[00:02:55 -> 00:02:58] In fact, maybe even in pre-training, I don't think you can
+[00:02:58 -> 00:02:59] even RLE a way to alignment.
+[00:03:00 -> 00:03:04] You have to truly get alignment to be something that truly
+[00:03:04 -> 00:03:08] gets embedded in the weights right
+[00:03:08 -> 00:03:09] at the very beginning of it.
+[00:03:09 -> 00:03:12] And so that's the model itself, hopefully at some point we
+[00:03:12 -> 00:03:13] 'll get aligned.
+[00:03:14 -> 00:03:17] So if you leave AI safety, then the trust architecture is
+[00:03:17 -> 00:03:19] going to be just what a company
+[00:03:19 -> 00:03:22] like Microsoft does or all the cyber folks do.
+[00:03:22 -> 00:03:24] So what we have done, for example, is we built these two
+[00:03:24 -> 00:03:25] things, right?
+[00:03:25 -> 00:03:26] Agent 365 and perception, right?
+[00:03:26 -> 00:03:27] What does it do?
+[00:03:27 -> 00:03:29] It gives every agent an identity.
+[00:03:30 -> 00:03:33] It then logs all of its activity, all its tool calls.
+[00:03:33 -> 00:03:36] In fact, every model call and the COT unit.
+[00:03:36 -> 00:03:39] In fact, that's where I'm also asking that all the COT
+[00:03:39 -> 00:03:41] better be in English and not in new release.
+[00:03:42 -> 00:03:44] And then you can check using multiple models.
+[00:03:45 -> 00:03:46] It better be tamper-proof, right?
+[00:03:46 -> 00:03:50] You can't have the agent go modify its own logs.
+[00:03:51 -> 00:03:55] And then on that, you set policy, and then you behaviorally
+[00:03:55 -> 00:03:58] monitor the activity of the agents to confirm to the policy
+[00:03:58 -> 00:03:59] .
+[00:03:59 -> 00:04:01] So that's the architecture.
+[00:04:02 -> 00:04:03] We don't have that architecture today.
+[00:04:04 -> 00:04:06] Is that just symbolic of where we are in the profession?
+[00:04:06 -> 00:04:07] No, that architecture exists.
+[00:04:07 -> 00:04:12] So there are two, I think people conflate what I'll call an
+[00:04:12 -> 00:04:16] engineered security zero trust architectural system for
+[00:04:16 -> 00:04:18] containment and AI safety.
+[00:04:18 -> 00:04:21] Because I think people say, well, AI safety is hard and el
+[00:04:21 -> 00:04:24] usive and not yet achieved.
+[00:04:24 -> 00:04:26] So therefore, there must be nothing we can do on security.
+[00:04:27 -> 00:04:30] And I'm not saying that these two things are all got to
+[00:04:30 -> 00:04:32] come together at the same time.
+[00:04:32 -> 00:04:34] In fact, I would just say, hey, we have to deal with the
+[00:04:34 -> 00:04:35] situation as it exists.
+[00:04:35 -> 00:04:38] So let's build a trust system outside, in fact, of the
+[00:04:38 -> 00:04:40] model and then just be super
+[00:04:40 -> 00:04:44] aggressive in setting policy and monitoring for policy
+[00:04:44 -> 00:04:45] deviation.
+[00:04:46 -> 00:04:49] the monitoring side, if we think about chain of thought,
+[00:04:49 -> 00:04:51] how reliable is that?
+[00:04:51 -> 00:04:54] It's not, right? We know that the chain of thought itself
+[00:04:54 -> 00:04:56] can be unfaithful. And in fact,
+[00:04:56 -> 00:04:59] it can be made worse when the model company says, well, it
+[00:04:59 -> 00:05:01] 's unfaithful and I'm going to hide it.
+[00:05:02 -> 00:05:05] And so it becomes even more problematic. And that's where I
+[00:05:05 -> 00:05:07] think a little bit of the push
+[00:05:07 -> 00:05:11] for standardization and the COT, at least for trusted
+[00:05:11 -> 00:05:14] partners being available as is,
+[00:05:14 -> 00:05:18] so that it's inspectable, it's auditable, and I can check
+[00:05:18 -> 00:05:21] using multiple models and what have you, right?
+[00:05:21 -> 00:05:23] So that's going to be one of the, in fact, that's one of
+[00:05:23 -> 00:05:25] the things that may even drive more open weights, quite
+[00:05:25 -> 00:05:26] frankly.
+[00:05:26 -> 00:05:29] Because if you can't, it's funny, closed rate models are
+[00:05:29 -> 00:05:30] more powerful.
+[00:05:31 -> 00:05:34] But if they kind of don't recognize the need to be more
+[00:05:34 -> 00:05:35] transparent,
+[00:05:36 -> 00:05:39] especially as their trusted partners use it, then we may
+[00:05:39 -> 00:05:40] have a problem.
+[00:05:40 -> 00:05:43] Can I ask you, when we think about that rise of open source
+[00:05:43 -> 00:05:46] , I completely agree with you in terms of clothes being more
+[00:05:46 -> 00:05:49] powerful. Open source stays predominantly Chinese models.
+[00:05:49 -> 00:05:52] Is that a concern then when we think about safety being
+[00:05:52 -> 00:05:55] baked into pre-training, when we think about disclosures,
+[00:05:55 -> 00:05:58] as we said there, and then juxtaposed with the majority of
+[00:05:58 -> 00:06:00] open source being Chinese?
+[00:06:00 -> 00:06:02] Yeah, I mean, I think there are two sets of things. I do
+[00:06:02 -> 00:06:06] believe if you sort of step back, somehow AI safety not
+[00:06:06 -> 00:06:10] being there is not a good thing for China, it's not a good
+[00:06:10 -> 00:06:11] thing for the United States, it's not a good thing for the
+[00:06:11 -> 00:06:15] UK. So I think that there's a part of everyone, because
+[00:06:15 -> 00:06:18] this is not something that somehow an unaligned open way
+[00:06:18 -> 00:06:21] Chinese model will probably attack even China.
+[00:06:21 -> 00:06:25] So it's not like you can say, oh, the rest think that this
+[00:06:25 -> 00:06:26] will only be used as an attack vector.
+[00:06:26 -> 00:06:29] So setting that aside, I'm pretty pleased with some of the
+[00:06:29 -> 00:06:33] progress even the open weight models in the West are making
+[00:06:33 -> 00:06:33] .
+[00:06:33 -> 00:06:36] And I'm, you know, obviously, you know, Jensen's working on
+[00:06:36 -> 00:06:36] it.
+[00:06:36 -> 00:06:38] The other folks are working on it.
+[00:06:38 -> 00:06:42] We will have even the MAI models that will be not open
+[00:06:42 -> 00:06:42] weight.
+[00:06:43 -> 00:06:45] We'll talk, I think of it more as licensed weights.
+[00:06:45 -> 00:06:46] Think of it that way.
+[00:06:47 -> 00:06:49] I want to turn this into just a simple, straightforward
+[00:06:49 -> 00:06:52] software business as opposed to a network effects
+[00:06:52 -> 00:06:53] intelligence business.
+[00:06:53 -> 00:06:55] So I think there will be different business models.
+[00:06:55 -> 00:06:59] And I ultimately trust in your ability to use those models
+[00:06:59 -> 00:07:03] and control those models is what's going to determine what
+[00:07:03 -> 00:07:04] gets used.
+[00:07:05 -> 00:07:08] As a venture investor, I have to predict where traffic will
+[00:07:08 -> 00:07:10] go today between closed, open.
+[00:07:10 -> 00:07:12] When you think about the two different dimensions, which is
+[00:07:12 -> 00:07:16] like traffic and dollars, if we look forward, say, 24
+[00:07:16 -> 00:07:19] months, what percent of traffic goes through open versus
+[00:07:19 -> 00:07:20] closed?
+[00:07:20 -> 00:07:23] It's a great question. I think it depends on what the
+[00:07:23 -> 00:07:27] frontier looks like, which is I think most things seem to
+[00:07:27 -> 00:07:28] get saturated.
+[00:07:29 -> 00:07:33] And when it gets saturated, open weights or even just
+[00:07:33 -> 00:07:38] cheaper models of even closed weights seems to work.
+[00:07:38 -> 00:07:40] because especially one of the things is
+[00:07:40 -> 00:07:42] if you can train on your own traces,
+[00:07:43 -> 00:07:47] then you really don't need the latest model
+[00:07:47 -> 00:07:49] to be able to solve that same problem
+[00:07:49 -> 00:07:50] if the problem has not changed, right?
+[00:07:50 -> 00:07:53] So if you have an eval
+[00:07:53 -> 00:07:56] that you want to continuously keep moving forward,
+[00:07:56 -> 00:07:58] then you may want to pay.
+[00:07:58 -> 00:07:59] But even there, by the way,
+[00:07:59 -> 00:08:01] I'm very thrilled about this Hydrofusion stuff
+[00:08:01 -> 00:08:04] we now have in GitHub where-
+[00:08:04 -> 00:08:04] I just saw this.
+[00:08:04 -> 00:08:06] Yeah, because the cool thing there is it's a learned model.
+[00:08:06 -> 00:08:10] Anyway, we are now going into these agent swarms and
+[00:08:10 -> 00:08:12] multiple sub-agents.
+[00:08:13 -> 00:08:16] So I can call a lot of sub-agents that even happen to be
+[00:08:16 -> 00:08:17] local models.
+[00:08:18 -> 00:08:21] And so I think my suspicion is that there will always be a
+[00:08:21 -> 00:08:23] market for Frontier.
+[00:08:23 -> 00:08:25] There will always be some new thing.
+[00:08:25 -> 00:08:29] Science may be the next thing that Frontier is being set at
+[00:08:29 -> 00:08:29] .
+[00:08:30 -> 00:08:33] But I think predominantly token usage will be commodity
+[00:08:33 -> 00:08:34] token usage.
+[00:08:34 -> 00:08:36] Does that mean it's open source predominantly?
+[00:08:36 -> 00:08:40] It may be open rates, or as I said, it can also be cheap
+[00:08:40 -> 00:08:41] closed rates, right?
+[00:08:42 -> 00:08:44] Because there will be lots of price competition, let me put
+[00:08:44 -> 00:08:44] it that way, right?
+[00:08:44 -> 00:08:48] Because if you look at my own usage inside of Copilot, we
+[00:08:48 -> 00:08:54] use a lot of closed source, cheaper models along with open
+[00:08:54 -> 00:08:55] rate models.
+[00:08:55 -> 00:08:57] You said about kind of the importance of owning your own
+[00:08:57 -> 00:08:58] intelligence for some of your amazing customers that you
+[00:08:58 -> 00:08:59] have.
+[00:08:59 -> 00:09:00] You were talking about some in the UK.
+[00:09:00 -> 00:09:03] Is that the model environment that we have moving forward,
+[00:09:03 -> 00:09:06] specialized intelligence for companies with their own data?
+[00:09:07 -> 00:09:10] Yeah. So I think this is, to me, one of the most important
+[00:09:10 -> 00:09:13] things, which is what's the future of a firm in an era of
+[00:09:13 -> 00:09:15] intelligence, right?
+[00:09:15 -> 00:09:18] Because if you go back even to Hayek, his fundamental
+[00:09:18 -> 00:09:21] description of economy is local intelligence.
+[00:09:21 -> 00:09:24] Tacit knowledge is distributed throughout the economy,
+[00:09:24 -> 00:09:25] right?
+[00:09:25 -> 00:09:30] But without that, there can't be only one firm and it can't
+[00:09:30 -> 00:09:31] be one intelligence.
+[00:09:31 -> 00:09:33] And so that's sort of the foundational thing.
+[00:09:33 -> 00:09:36] In fact, capitalism works because of that.
+[00:09:36 -> 00:09:39] Price discovery works because of that.
+[00:09:39 -> 00:09:40] Pricing mechanism works because of that.
+[00:09:40 -> 00:09:45] So therefore, I think it'll be important for every firm to
+[00:09:45 -> 00:09:47] be able to accumulate knowledge
+[00:09:47 -> 00:09:51] at increasing scales using AI versus leak.
+[00:09:51 -> 00:09:53] why I called it the reverse information paradox, right?
+[00:09:53 -> 00:09:56] Which is, you know, Kenneth Arrow kind of
+[00:09:56 -> 00:10:01] described this paradox of information where if you're a
+[00:10:01 -> 00:10:04] seller and you disclose the secret
+[00:10:04 -> 00:10:07] without a patent or a trade secret protection or copyright
+[00:10:07 -> 00:10:09] protection, you leak the value.
+[00:10:10 -> 00:10:12] Now, for the first time, the buyer needs the protection
+[00:10:12 -> 00:10:15] because the buyer, even most people
+[00:10:15 -> 00:10:19] think of it as, oh, my data. It's even my exhaust of using
+[00:10:19 -> 00:10:21] it, right? Thumbs up, thumbs down signal.
+[00:10:22 -> 00:10:25] You're creating value for the model company versus
+[00:10:25 -> 00:10:29] capturing that value for yourself. So I think
+[00:10:29 -> 00:10:34] one of the things that at least I ascribe is that we need
+[00:10:34 -> 00:10:36] to have, for this to be stable,
+[00:10:37 -> 00:10:40] more of that surplus that gets created by use of
+[00:10:40 -> 00:10:43] intelligence to remain at the firm. And by the
+[00:10:43 -> 00:10:47] It doesn't need to be only by embedding your knowledge and
+[00:10:47 -> 00:10:47] weight.
+[00:10:48 -> 00:10:49] It can be in context.
+[00:10:49 -> 00:10:51] It can be in your evals, right?
+[00:10:51 -> 00:10:52] You may have a benchmark.
+[00:10:52 -> 00:10:55] In fact, one of the things that I'm very gung-ho about is
+[00:10:55 -> 00:10:57] we all become, every firm will have
+[00:10:57 -> 00:11:01] a private eval benchmark, which is their core IP.
+[00:11:02 -> 00:11:05] And every model comes in and tries to sort of hill climb on
+[00:11:05 -> 00:11:06] that eval.
+[00:11:06 -> 00:11:08] And that to me is how a firm works.
+[00:11:08 -> 00:11:11] I love this private evals, benchmarks for each company.
+[00:11:12 -> 00:11:16] This is for a rarefied air of companies that would seem
+[00:11:16 -> 00:11:19] your Harvey's or your Agora's or the kind of very forward
+[00:11:19 -> 00:11:20] thinking AI companies.
+[00:11:21 -> 00:11:24] Will that disperse to every company in the world?
+[00:11:24 -> 00:11:25] Yeah, it happens.
+[00:11:25 -> 00:11:26] Yeah, it happens.
+[00:11:26 -> 00:11:29] Harry always, right, which is, you know, there were there
+[00:11:29 -> 00:11:32] was a day when I remember in the late 80s, in the early 90s
+[00:11:32 -> 00:11:35] , that the few companies that had deployed PCs and were
+[00:11:35 -> 00:11:38] doing forecasting, which felt magical.
+[00:11:39 -> 00:11:41] They were able to put in Excel spreadsheets, send it in
+[00:11:41 -> 00:11:42] email.
+[00:11:42 -> 00:11:45] and avoid the fax machine and interoffice memos.
+[00:11:45 -> 00:11:47] And it felt like, oh, wow, when will this happen?
+[00:11:47 -> 00:11:50] And it took 10 years maybe, and it spread out throughout.
+[00:11:50 -> 00:11:53] This time around, what is considered, oh, I'm an AI-native
+[00:11:53 -> 00:11:55] company and I do this.
+[00:11:55 -> 00:11:58] I think five years from now, it'll be pretty passe, I would
+[00:11:58 -> 00:11:59] imagine.
+[00:11:59 -> 00:12:01] And then that's kind of what, I mean, these tech cycles
+[00:12:01 -> 00:12:03] always start like that, right?
+[00:12:03 -> 00:12:03] Which is even cloud.
+[00:12:03 -> 00:12:06] I remember in the beginning of cloud, it was like the big
+[00:12:06 -> 00:12:07] deal was, oh, who's cloud-native
+[00:12:07 -> 00:12:08] and who's not?
+[00:12:08 -> 00:12:11] And if you're not cloud-native, and now everybody is, right
+[00:12:11 -> 00:12:11] ?
+[00:12:11 -> 00:12:15] Even Lloyds, which is what, 500 years old, is cloud native.
+[00:12:15 -> 00:12:16] And so it happens.
+[00:12:17 -> 00:12:19] Do we move into an implementation economy then?
+[00:12:19 -> 00:12:21] Because when we think about these customers, as you said,
+[00:12:21 -> 00:12:22] some of your very big customers,
+[00:12:23 -> 00:12:26] they will need heavy FDE support, much more so than they
+[00:12:26 -> 00:12:27] have done in traditional years
+[00:12:27 -> 00:12:28] in the last 10 years.
+[00:12:29 -> 00:12:32] Will we have a very heavy implementation economy to
+[00:12:32 -> 00:12:34] transition existing customers into this?
+[00:12:34 -> 00:12:36] Yeah, it's interesting.
+[00:12:36 -> 00:12:39] The implementation economy, like systems integrators have
+[00:12:39 -> 00:12:39] always existed.
+[00:12:39 -> 00:12:44] Right. You know, we've depended on implementation economy
+[00:12:44 -> 00:12:47] for lots of other technology diffusion.
+[00:12:47 -> 00:12:49] So this one, I think, has different contours. Right.
+[00:12:49 -> 00:12:52] Because it's the combination of tech and business, if I
+[00:12:52 -> 00:12:53] could say.
+[00:12:53 -> 00:12:56] But it's not classic management consulting. It's not
+[00:12:56 -> 00:12:58] classic systems integration.
+[00:12:58 -> 00:13:01] And it's not classic sort of technology support. It's sort
+[00:13:01 -> 00:13:03] of like, for example, think about this. Right.
+[00:13:03 -> 00:13:06] You want to start. When I look at my FD engagements. Right.
+[00:13:06 -> 00:13:08] Even take the Unilever example I talked about at the
+[00:13:08 -> 00:13:09] keynote today.
+[00:13:09 -> 00:13:12] fascinating they they've built an agentic system to say hey
+[00:13:12 -> 00:13:14] we want to really have order to cash
+[00:13:14 -> 00:13:18] uh automated using an agentic system plus their trade
+[00:13:18 -> 00:13:21] claims um and by the way they started
+[00:13:21 -> 00:13:24] using a frontier model and then they substitute uh for in
+[00:13:24 -> 00:13:26] fact i think they're using currently
+[00:13:26 -> 00:13:30] an mai model uh for all the trade claims because it's sort
+[00:13:30 -> 00:13:31] of a lower cost uh and it's by the way
+[00:13:31 -> 00:13:34] they control it right because they're able to train on
+[00:13:34 -> 00:13:37] their traces um and so we had some fdes
+[00:13:37 -> 00:13:41] but a lot of who got deployed and now their IT team itself
+[00:13:41 -> 00:13:43] is managing it all.
+[00:13:44 -> 00:13:47] But it started with what's the business, what's the eval,
+[00:13:47 -> 00:13:49] what's the way to conceptualize the
+[00:13:49 -> 00:13:53] agentic architecture. So it's sort of business consulting
+[00:13:53 -> 00:13:55] combined with technical consulting.
+[00:13:55 -> 00:13:58] And I think, yeah, you're right in saying that there will
+[00:13:58 -> 00:14:00] be a new set of skills that'll get
+[00:14:00 -> 00:14:03] built in the ecosystem.
+[00:14:03 -> 00:14:06] Today, I think all of us have, quote unquote, our own FTEs.
+[00:14:06 -> 00:14:08] But FTEs will become like--
+[00:14:08 -> 00:14:11] traditional systems integration will become new FTE.
+[00:14:11 -> 00:14:13] You've mentioned, obviously, MIA a lot.
+[00:14:13 -> 00:14:14] MAI?
+[00:14:14 -> 00:14:17] MIA.
+[00:14:17 -> 00:14:19] But when we look at a lot of different players,
+[00:14:19 -> 00:14:21] it's kind of this realization that you
+[00:14:21 -> 00:14:25] need to be full stack, from chips to models to application.
+[00:14:25 -> 00:14:26] Is that the future?
+[00:14:26 -> 00:14:29] You have to have vertical ownership?
+[00:14:29 -> 00:14:30] And what does that mean?
+[00:14:30 -> 00:14:32] It all depends on the industry structure, right?
+[00:14:33 -> 00:14:37] You know, I think that I would say today, you know, there
+[00:14:37 -> 00:14:39] 'll be, who knows, five, six
+[00:14:39 -> 00:14:43] open weight, you know, closed models all competing, maybe
+[00:14:43 -> 00:14:45] five, six, you know, open weight models
+[00:14:45 -> 00:14:46] all competing.
+[00:14:46 -> 00:14:48] And so therefore, at some level, if you're building an
+[00:14:48 -> 00:14:50] application like agentic system,
+[00:14:50 -> 00:14:53] you could even have something like what I said, which is a
+[00:14:53 -> 00:14:54] router with even a decision
+[00:14:54 -> 00:14:56] engine built into it.
+[00:14:56 -> 00:14:58] And then you just route to the best model for a given task.
+[00:14:59 -> 00:15:00] So that's a possibility.
+[00:15:00 -> 00:15:03] Of course, there's always the risk that there could be one
+[00:15:03 -> 00:15:08] vertically integrated model and app tier and all the way to
+[00:15:08 -> 00:15:10] the silicon and system.
+[00:15:11 -> 00:15:12] It's unlikely to me, right?
+[00:15:12 -> 00:15:14] I thought at some point that that might be the case, that
+[00:15:14 -> 00:15:15] there will be one.
+[00:15:15 -> 00:15:18] If anything, it's going the other way, which is every day
+[00:15:18 -> 00:15:22] you wake up and you say, wow, there's more competition in
+[00:15:22 -> 00:15:25] every layer of the stack, whether it's in silicon, whether
+[00:15:25 -> 00:15:29] it's in systems to manage the silicon.
+[00:15:30 -> 00:15:32] in the model layer, in the app layer.
+[00:15:32 -> 00:15:35] And so I think that's a healthy sort of direction of travel
+[00:15:35 -> 00:15:35] ,
+[00:15:35 -> 00:15:36] but you never know, right?
+[00:15:36 -> 00:15:37] Because this is one of those things
+[00:15:37 -> 00:15:42] where it all depends on what becomes the dominant design.
+[00:15:43 -> 00:15:45] But my hope is that this becomes
+[00:15:45 -> 00:15:47] a little bit of a horizontal specialization
+[00:15:47 -> 00:15:49] with multiple winners in each layer,
+[00:15:49 -> 00:15:52] and then the ability for people to compose.
+[00:15:52 -> 00:15:54] The thing I didn't see is the depth of each layer.
+[00:15:54 -> 00:15:56] Like what I know now that I wish I'd known 12 months ago,
+[00:15:56 -> 00:15:58] it's just like the infinite demand for inference.
+[00:15:58 -> 00:15:59] Yeah.
+[00:15:59 -> 00:16:00] That's a great point.
+[00:16:00 -> 00:16:02] And I wish I'd known it 12 months ago, I would have done
+[00:16:02 -> 00:16:03] some very different investing.
+[00:16:03 -> 00:16:06] Speaking of that, we've had like Mustafa Suleiman saying
+[00:16:06 -> 00:16:09] training runs of 100 billion are coming and only a handful
+[00:16:09 -> 00:16:11] of labs can pay for that.
+[00:16:12 -> 00:16:14] 100 billion dollar training runs.
+[00:16:15 -> 00:16:19] Do we have the energy, infrastructure and power to enable
+[00:16:19 -> 00:16:21] this scale across the stack?
+[00:16:21 -> 00:16:22] But especially when we do.
+[00:16:22 -> 00:16:26] Yeah, I mean, the way I come at it is ultimately it has to
+[00:16:26 -> 00:16:29] come from the world GDP inflecting.
+[00:16:30 -> 00:16:34] And then that allowing someone to then have as a percentage
+[00:16:34 -> 00:16:36] of R&D, right?
+[00:16:36 -> 00:16:38] Because when somebody says training run, it's just a
+[00:16:38 -> 00:16:40] percentage of R&D, right?
+[00:16:40 -> 00:16:42] Sort of companies that are heavy R&D spend what?
+[00:16:43 -> 00:16:47] 15, 20% on R&D.
+[00:16:47 -> 00:16:50] And so therefore, yeah, at some point, if you have enough
+[00:16:50 -> 00:16:52] revenue, you can spend enough on training.
+[00:16:52 -> 00:16:54] And then, of course, you'll have enough revenue if you're
+[00:16:54 -> 00:16:57] contributing to the world economy growing so that you can
+[00:16:57 -> 00:16:59] get your fair share, so to speak.
+[00:16:59 -> 00:17:02] And then you also bring up the other side, which is the
+[00:17:02 -> 00:17:04] supply side, which is we have power shortages.
+[00:17:04 -> 00:17:05] We have silicon shortages.
+[00:17:06 -> 00:17:08] We have, you know, all kinds of things today.
+[00:17:09 -> 00:17:11] They will all, they're long lead items, right?
+[00:17:11 -> 00:17:14] You just can't, you know, snap your finger and have power
+[00:17:14 -> 00:17:16] generation or you can't have a new fab.
+[00:17:17 -> 00:17:20] And so now, interestingly enough, given the demand,
+[00:17:20 -> 00:17:20] everyone's building.
+[00:17:22 -> 00:17:24] And so the question is, when will all of this come online?
+[00:17:25 -> 00:17:26] What will be the demand supply?
+[00:17:26 -> 00:17:27] No one knows, right?
+[00:17:27 -> 00:17:29] Quite frankly, any one of us who are sitting here today
+[00:17:29 -> 00:17:30] will just be speculating.
+[00:17:30 -> 00:17:33] But my feeling is that if you start by thinking of the
+[00:17:33 -> 00:17:36] stable state would be just like today,
+[00:17:36 -> 00:17:36] right?
+[00:17:36 -> 00:17:38] Income statements are suddenly not going to be different,
+[00:17:38 -> 00:17:39] right, for a company.
+[00:17:39 -> 00:17:41] It's going to be, hey, I have some revenue.
+[00:17:41 -> 00:17:43] I have some cost of revenue.
+[00:17:43 -> 00:17:45] And I have to have some profit.
+[00:17:46 -> 00:17:50] And if that is going to be true, then the question is, what
+[00:17:50 -> 00:17:52] is the world GDP growth rate?
+[00:17:52 -> 00:17:53] That's the bigger thing for me.
+[00:17:54 -> 00:17:56] In terms of the inflection of GDP growth rate, the world
+[00:17:56 -> 00:18:00] has kind of stabilized 2% a year for a very large amount of
+[00:18:00 -> 00:18:00] time.
+[00:18:01 -> 00:18:04] Does AI have the ability to seriously inflect that in a
+[00:18:04 -> 00:18:05] short amount of time?
+[00:18:05 -> 00:18:10] I think so. And I somewhat hope so, because that is the
+[00:18:10 -> 00:18:12] point, right?
+[00:18:12 -> 00:18:16] When I look at it, let's take even as a percentage of any
+[00:18:16 -> 00:18:18] of our GDPs, the amount of money we spend in our health
+[00:18:18 -> 00:18:19] care.
+[00:18:19 -> 00:18:22] So that's why I look at even the deployment of co-pilot in
+[00:18:22 -> 00:18:27] NHS and say, wow, if it can improve patient outcomes and
+[00:18:27 -> 00:18:31] reduce cost in the health care, that is by definition
+[00:18:31 -> 00:18:34] helping the GDP of the United Kingdom.
+[00:18:34 -> 00:18:39] And so I think that there are these pockets of the economy
+[00:18:39 -> 00:18:44] which are ripe for adoption of AI and really, in fact,
+[00:18:44 -> 00:18:48] there's the least amount of displacement, the most amount
+[00:18:48 -> 00:18:49] of benefit.
+[00:18:50 -> 00:18:53] And so that I think is where I think we'll have to find the
+[00:18:53 -> 00:18:53] best fit.
+[00:18:55 -> 00:18:57] Software development is another one, right?
+[00:18:57 -> 00:19:02] It's fascinating to see how much the demand is elastic for
+[00:19:02 -> 00:19:03] software development, right?
+[00:19:03 -> 00:19:07] That means the IT backlogs were huge and none of us even
+[00:19:07 -> 00:19:09] recognized it.
+[00:19:09 -> 00:19:11] I was taught that you had to be the top one or two in a
+[00:19:11 -> 00:19:13] market to win in venture.
+[00:19:13 -> 00:19:17] We're in factory, which is fifth and it's winning. Fifth.
+[00:19:17 -> 00:19:20] This breaks all rules of venture.
+[00:19:20 -> 00:19:22] The question that I have, again, slightly naughty, not on
+[00:19:22 -> 00:19:24] schedule, but it's just like, well, we see the tipping in
+[00:19:24 -> 00:19:26] terms of capability advancement
+[00:19:26 -> 00:19:31] in alternative functions, finance, sales, marketing, that
+[00:19:31 -> 00:19:32] we've seen in coding?
+[00:19:32 -> 00:19:34] Because coding has been the mother load.
+[00:19:34 -> 00:19:35] I think that that's a good point.
+[00:19:36 -> 00:19:39] People talk a lot about, do you have a verifiable reward?
+[00:19:39 -> 00:19:42] And it's easy to do these because a lot of the magic has
+[00:19:42 -> 00:19:44] been RL on top of these pre-trained
+[00:19:44 -> 00:19:45] models.
+[00:19:45 -> 00:19:47] That is what has helped coding.
+[00:19:48 -> 00:19:49] Can we crack that?
+[00:19:49 -> 00:19:51] And knowledge work seems much harder.
+[00:19:52 -> 00:19:55] But again, all the examples I talked about sort of, you
+[00:19:55 -> 00:19:58] know, in contact centers, in the supply chain systems, in
+[00:19:58 -> 00:20:02] these marketing slash or cash to order systems, I think it
+[00:20:02 -> 00:20:05] 's possible and we're seeing it.
+[00:20:06 -> 00:20:08] Is the demand as elastic as coding?
+[00:20:09 -> 00:20:11] I think it may be science may be as elastic, right, or
+[00:20:11 -> 00:20:13] engineering in general.
+[00:20:13 -> 00:20:15] Like, by the way, you know, if I look at even what's
+[00:20:15 -> 00:20:17] happening inside, not just in software development, let's
+[00:20:17 -> 00:20:19] take silicon development.
+[00:20:19 -> 00:20:22] That's another thing that's going through a radical shift,
+[00:20:22 -> 00:20:22] right?
+[00:20:22 -> 00:20:24] your ability to tape out much faster,
+[00:20:25 -> 00:20:27] simulate everything in silico is much better.
+[00:20:28 -> 00:20:30] Your first spin can completely come out.
+[00:20:31 -> 00:20:33] But even just like optimization of maintenance reports,
+[00:20:33 -> 00:20:34] like you said with Rolls-Royce,
+[00:20:34 -> 00:20:35] which I would never...
+[00:20:35 -> 00:20:36] It's unbelievable.
+[00:20:36 -> 00:20:37] Like, I mean, it's a thing
+[00:20:37 -> 00:20:38] that they've been dealing with forever,
+[00:20:39 -> 00:20:40] just scheduled maintenance.
+[00:20:40 -> 00:20:41] And I had not realized that,
+[00:20:41 -> 00:20:43] wow, that's a big optimization problem
+[00:20:43 -> 00:20:44] that you can go now run.
+[00:20:45 -> 00:20:47] So I've watched many, many of your shows
+[00:20:47 -> 00:20:48] and we're going to do a quick fire round.
+[00:20:48 -> 00:20:48] Yeah.
+[00:20:49 -> 00:20:51] And people haven't asked some of these questions,
+[00:20:51 -> 00:20:52] which I've always wanted to know,
+[00:20:53 -> 00:20:54] and I think everyone wants to know,
+[00:20:54 -> 00:20:55] but people haven't asked them.
+[00:20:56 -> 00:20:57] What's the exercise routine
+[00:20:57 -> 00:20:59] given the travel schedule, Sacha?
+[00:20:59 -> 00:21:01] Well, I mean, you're in good shape.
+[00:21:01 -> 00:21:02] Well, I try to be.
+[00:21:02 -> 00:21:04] I don't know whether it's all well hidden.
+[00:21:05 -> 00:21:08] The one thing I've gotten into the habit,
+[00:21:08 -> 00:21:10] this has been maybe 25 years even on,
+[00:21:11 -> 00:21:12] which is every morning I get up
+[00:21:12 -> 00:21:14] and I used to be able to run.
+[00:21:15 -> 00:21:16] Unfortunately, my knees have gone away.
+[00:21:16 -> 00:21:19] And so now at least I walk with incline.
+[00:21:19 -> 00:21:21] Even this morning, I was able to get a half hour in.
+[00:21:21 -> 00:21:24] And so that's what, in spite of any jet lag,
+[00:21:24 -> 00:21:27] wherever I am, I get hit the gym every day.
+[00:21:28 -> 00:21:28] Love it.
+[00:21:28 -> 00:21:29] I too have bad knees.
+[00:21:30 -> 00:21:31] It's my age as well.
+[00:21:31 -> 00:21:33] What have you changed your mind on in the last 12 months?
+[00:21:34 -> 00:21:37] It might be because after all, I was one of the first,
+[00:21:37 -> 00:21:43] obviously when Dario and Ilya and Sam and Greg and Elon
+[00:21:43 -> 00:21:45] were all, I guess, one happy family,
+[00:21:45 -> 00:21:48] they were really the believers in scaling laws.
+[00:21:48 -> 00:21:50] And that's what I believed in.
+[00:21:50 -> 00:21:52] back in 2018, 2019.
+[00:21:54 -> 00:21:57] And I think the biggest change now I have is
+[00:21:57 -> 00:21:59] I used to always think that, you know,
+[00:21:59 -> 00:22:01] alignment will just fall out.
+[00:22:01 -> 00:22:02] I no longer believe that.
+[00:22:03 -> 00:22:04] So I think this alignment thing
+[00:22:04 -> 00:22:06] may be a harder, different problem.
+[00:22:07 -> 00:22:09] And so, yeah, that's the one thing
+[00:22:09 -> 00:22:10] I've changed my mind on.
+[00:22:10 -> 00:22:11] What looks crazy today,
+[00:22:12 -> 00:22:13] but will be incredibly common
+[00:22:13 -> 00:22:14] and accepted in five years?
+[00:22:15 -> 00:22:17] You know, it might be that thing
+[00:22:17 -> 00:22:18] that we just talked about,
+[00:22:18 -> 00:22:19] those evals, right?
+[00:22:19 -> 00:22:21] What is a firm?
+[00:22:21 -> 00:22:24] I think a firm would be an AI benchmark.
+[00:22:24 -> 00:22:25] Final one for you.
+[00:22:25 -> 00:22:27] There are many things to be excited about over the next 10
+[00:22:27 -> 00:22:28] years.
+[00:22:28 -> 00:22:32] For you specifically, for me, my mother's got MS.
+[00:22:32 -> 00:22:34] I'm so excited for the drug development that could be
+[00:22:34 -> 00:22:34] capable.
+[00:22:35 -> 00:22:36] What are you most excited for?
+[00:22:37 -> 00:22:39] I mean, that's a great one, I think.
+[00:22:39 -> 00:22:43] One of the things that I've always been, I'd say, been
+[00:22:43 -> 00:22:44] looking forward to
+[00:22:44 -> 00:22:48] is a general purpose technology, even as powerful as this.
+[00:22:49 -> 00:22:51] And people say, oh, this is not just another general
+[00:22:51 -> 00:22:53] purpose technology, whatever this is.
+[00:22:53 -> 00:22:59] I hope this spreads, diffuses throughout the world faster
+[00:22:59 -> 00:23:03] than anything else and throughout all sectors of the
+[00:23:03 -> 00:23:05] economy, unlike anything else.
+[00:23:06 -> 00:23:10] And truly, for once, there is a real shift in the frontier
+[00:23:10 -> 00:23:15] of that global growth that happens where it's not about
+[00:23:15 -> 00:23:19] just counting winners and losers,
+[00:23:19 -> 00:23:21] but it's kind of like everyone gets lifted.
+[00:23:21 -> 00:23:22] Like that's been my dream.
+[00:23:22 -> 00:23:24] In fact, my father was a development economist
+[00:23:24 -> 00:23:27] and it was always about convergence growth.
+[00:23:27 -> 00:23:29] When will the global South get something
+[00:23:29 -> 00:23:31] that just suddenly boosts that?
+[00:23:31 -> 00:23:32] I hope this is it.
+[00:23:33 -> 00:23:33] That's it.
+[00:23:33 -> 00:23:34] This has been such a joy to do.
+[00:23:34 -> 00:23:36] Thank you so much for taking the time.
+[00:23:36 -> 00:23:36] Absolutely.
+[00:23:36 -> 00:23:37] It's a pleasure, Harry.

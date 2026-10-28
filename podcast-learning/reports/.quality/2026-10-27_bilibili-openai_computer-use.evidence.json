@@ -1,0 +1,483 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-27_bilibili-openai_computer-use.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-27",
+  "generator": {
+    "model": "gpt-6.1-sol",
+    "harness": "codex",
+    "run_id": "generator-c2d695e4d481",
+    "explicit_model_override": false,
+    "override_reason": ""
+  },
+  "task": {
+    "summary": "对 B 站推荐 2：OpenAI Computer Use 访谈完成深度 AI 学习，按官方文档与配套研究核验执行和安全边界。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "使用 eacli podcast 远端静默 worker 完成英文原声转写，不开启浏览器或播放媒体。"
+      },
+      {
+        "id": "R2",
+        "text": "保存完整转写、官方出处/RSS 元数据、四章 shownotes、中文精编与脱敏收据，统计和审计可复核。"
+      },
+      {
+        "id": "R3",
+        "text": "报告独立覆盖四章：能力、企业控制、业务/软件、创业/本地云/普及；包含餐厅、Atlas 与共享 Context。"
+      },
+      {
+        "id": "R4",
+        "text": "核验 loop、WebMCP、Browser Use 与原生 Computer Use 权限路径，限制口播速度和成功率的外推。"
+      },
+      {
+        "id": "R5",
+        "text": "结合配套 a16z 研究提供反例、成本与结果评价、双仓启示、Limitations 和三问，保持公开边界。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "kind": "primary",
+      "title": "B 站 OpenAI Computer Use 原声",
+      "locator": "https://www.bilibili.com/video/BV16GxK6UEBh",
+      "accessed_on": "2026-10-27",
+      "read_scope": "完整对白通过 S8 ASR 读取"
+    },
+    {
+      "id": "S2",
+      "kind": "official",
+      "title": "The a16z Show 官方 RSS",
+      "locator": "https://feeds.simplecast.com/JGE3yC0V",
+      "accessed_on": "2026-10-27",
+      "read_scope": "公开 HTTP RSS 解析单集；typed reader 超过输出限制；单集页面未全文读取"
+    },
+    {
+      "id": "S3",
+      "kind": "local",
+      "title": "RSS 元数据与 B 站四章",
+      "locator": "podcast-learning/reports/transcripts/2026-10-27_bilibili-openai_computer-use.shownotes.md",
+      "accessed_on": "2026-10-27"
+    },
+    {
+      "id": "S4",
+      "kind": "official",
+      "title": "OpenAI Computer Use 指南",
+      "locator": "https://developers.openai.com/api/docs/guides/tools-computer-use",
+      "accessed_on": "2026-10-27",
+      "read_scope": "全文读取"
+    },
+    {
+      "id": "S5",
+      "kind": "official",
+      "title": "ChatGPT Work 本地安全",
+      "locator": "https://developers.openai.com/codex/enterprise/chatgpt-work-local-security",
+      "accessed_on": "2026-10-27",
+      "read_scope": "全文读取；结论限所读客户端文档范围"
+    },
+    {
+      "id": "S6",
+      "kind": "official",
+      "title": "OpenAI WebMCP",
+      "locator": "https://developers.openai.com/codex/webmcp",
+      "accessed_on": "2026-10-27",
+      "read_scope": "全文读取"
+    },
+    {
+      "id": "S7",
+      "kind": "primary",
+      "title": "a16z 配套研究：Can Agents Use a Computer Yet?",
+      "locator": "https://a16z.com/can-agents-use-a-computer-yet-weve-got-the-data/",
+      "accessed_on": "2026-10-27",
+      "read_scope": "全文读取；作者访谈案例、估算、二手榜单各自保留性质"
+    },
+    {
+      "id": "S8",
+      "kind": "local",
+      "title": "完整英文原声转写",
+      "locator": "podcast-learning/reports/transcripts/2026-10-27_bilibili-openai_computer-use.transcript.txt",
+      "accessed_on": "2026-10-27"
+    },
+    {
+      "id": "S9",
+      "kind": "local",
+      "title": "中文结构化精编",
+      "locator": "podcast-learning/reports/transcripts/2026-10-27_bilibili-openai_computer-use.polished.txt",
+      "accessed_on": "2026-10-27"
+    },
+    {
+      "id": "S10",
+      "kind": "local",
+      "title": "脱敏转写执行收据",
+      "locator": "podcast-learning/reports/transcripts/2026-10-27_bilibili-openai_computer-use.artifact-receipt.json",
+      "accessed_on": "2026-10-27"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "97%/99% 与快于普通人/接近专家是口播说明，未提供任务集和统一 benchmark，不作为实测成功率。",
+      "report_anchor": "2.1 速度改善",
+      "support": "direct",
+      "source_ids": [
+        "S8"
+      ],
+      "evidence": "00:51–08:07",
+      "critical": true
+    },
+    {
+      "id": "C2",
+      "claim": "应用负责 driver、运行环境、权限和清理；结构化 computer actions 与代码执行是不同接口。",
+      "report_anchor": "3.1 一个任务",
+      "support": "direct",
+      "source_ids": [
+        "S4"
+      ],
+      "evidence": "官方 Computer Use 指南应用职责和接口说明",
+      "critical": true
+    },
+    {
+      "id": "C3",
+      "claim": "API 对话延续不自动恢复 browser/runtime，业务状态与登录会话也需分别管理。",
+      "report_anchor": "3.2 对话、浏览器",
+      "support": "direct",
+      "source_ids": [
+        "S4",
+        "S8"
+      ],
+      "evidence": "官方指南；37:30–40:56 cookie 与 Context 割裂",
+      "critical": true
+    },
+    {
+      "id": "C4",
+      "claim": "Browser Use 的站点/capability 策略不自动覆盖原生 Computer Use 操作浏览器，原生应用文件权限也不同于本地 sandbox。",
+      "report_anchor": "4.3 官方文档",
+      "support": "direct",
+      "source_ids": [
+        "S5"
+      ],
+      "evidence": "官方 local security 的 Browser Use 与 Computer Use 边界",
+      "critical": true
+    },
+    {
+      "id": "C5",
+      "claim": "WebMCP 页面工具可随导航失效，定义和结果不可信，不能授予新权限。",
+      "report_anchor": "3.3 WebMCP",
+      "support": "direct",
+      "source_ids": [
+        "S6"
+      ],
+      "evidence": "官方 WebMCP limitations 和 safety",
+      "critical": true
+    },
+    {
+      "id": "C6",
+      "claim": "采购、财务、CRM、竞品体验、个性化软件和餐厅流程属于口播场景，未提供公开收益数据。",
+      "report_anchor": "5. 具体案例",
+      "support": "direct",
+      "source_ids": [
+        "S8"
+      ],
+      "evidence": "21:04–37:30",
+      "critical": true
+    },
+    {
+      "id": "C7",
+      "claim": "页面正常或显示收到，不足以验证付款期限正确或保险后续业务完成。",
+      "report_anchor": "5.1 采购、财务",
+      "support": "direct",
+      "source_ids": [
+        "S7"
+      ],
+      "evidence": "net 60/net 30、电话补材料反例",
+      "critical": true
+    },
+    {
+      "id": "C8",
+      "claim": "模型检查不能自行绕过确定性权限边界，用户授权需要覆盖真实执行路径。",
+      "report_anchor": "4.2 模型检查",
+      "support": "derived",
+      "source_ids": [
+        "S4",
+        "S5",
+        "S6",
+        "S8"
+      ],
+      "evidence": "由外部权限、网站非可信和口播审批讨论推得",
+      "critical": true
+    },
+    {
+      "id": "C9",
+      "claim": "官方 RSS 日期 2026-10-26 10:00 UTC、45:19，B 站为 44:14；本文时间戳只用 B 站版。",
+      "report_anchor": "1. 来源与问题",
+      "support": "direct",
+      "source_ids": [
+        "S2",
+        "S3",
+        "S8"
+      ],
+      "evidence": "RSS 单集元数据、转写末尾",
+      "critical": true
+    },
+    {
+      "id": "C10",
+      "claim": "配套文章与访谈速度陈述没有同一任务/模式/版本的比较，文中榜单为 2026 年 6 月资料，不作当前 SOTA。",
+      "report_anchor": "7.1 配套文章",
+      "support": "direct",
+      "source_ids": [
+        "S7",
+        "S8"
+      ],
+      "evidence": "a16z speed caveat 和榜单时点，访谈速度为经验判断",
+      "critical": true
+    },
+    {
+      "id": "C11",
+      "claim": "[推测] 成本应按验收任务归集模型、环境、失败重试、人工复核与维护；此处公式是建议，没有本仓实測值。",
+      "report_anchor": "7.2 每小时便宜",
+      "support": "inference",
+      "source_ids": [
+        "S7"
+      ],
+      "evidence": "基于文章成本/重试/人工升级讨论的分析",
+      "critical": false
+    },
+    {
+      "id": "C12",
+      "claim": "Atlas 采用观察和手机云电脑普及方向没有公开采用率与因果指标。",
+      "report_anchor": "6.3 共享 Context",
+      "support": "direct",
+      "source_ids": [
+        "S8"
+      ],
+      "evidence": "40:56–43:59",
+      "critical": true
+    },
+    {
+      "id": "C13",
+      "claim": "Dots 口播例子是自行控制本地/云电脑登录 Sentry、拉日志分析；喂给 Codex 是嘉宾旧手工环节，不能误归成 Dots 的转交职责。",
+      "report_anchor": "2.3 主动助手",
+      "support": "direct",
+      "source_ids": [
+        "S8"
+      ],
+      "evidence": "06:03–08:07",
+      "critical": true
+    },
+    {
+      "id": "C14",
+      "claim": "访谈中广告出版商的收入张力与中小企业理解/连接/部署/服务四步鸿沟是采用约束；均属嘉宾判断而非全行业规则或采用率核验。",
+      "report_anchor": "3.3 WebMCP",
+      "support": "direct",
+      "source_ids": [
+        "S8"
+      ],
+      "evidence": "11:56–12:47；36:39–37:28（另见 §5.3）",
+      "critical": true
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "00:00 能力、旧 ERP、个人助手与主动性",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S3",
+        "S8"
+      ],
+      "report_anchor": "2. 能力进步"
+    },
+    {
+      "id": "U02",
+      "title": "10:43 企业控制、WebMCP 与人机协作",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S3",
+        "S8"
+      ],
+      "report_anchor": "4. 安全控制"
+    },
+    {
+      "id": "U03",
+      "title": "20:22 企业案例、软件与共享 Context",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S3",
+        "S8"
+      ],
+      "report_anchor": "5. 具体案例"
+    },
+    {
+      "id": "U04",
+      "title": "32:38 创业、餐厅、本地云、实时协作、Atlas 与普及",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S3",
+        "S8"
+      ],
+      "report_anchor": "6. 旧软件"
+    },
+    {
+      "id": "U05",
+      "title": "速度、Guardian 与信任的边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S3",
+        "S8"
+      ],
+      "report_anchor": "4.2 模型检查"
+    },
+    {
+      "id": "U06",
+      "title": "对话/浏览器/业务三类状态",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S3",
+        "S8"
+      ],
+      "report_anchor": "3.2 对话、浏览器"
+    },
+    {
+      "id": "U07",
+      "title": "上传下载、新站点、权限与接管",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S3",
+        "S8"
+      ],
+      "report_anchor": "4. 安全控制"
+    },
+    {
+      "id": "U08",
+      "title": "采购、对账、销售与竞品体验",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S3",
+        "S8"
+      ],
+      "report_anchor": "5.1 采购、财务"
+    },
+    {
+      "id": "U09",
+      "title": "DMV、退订、Numbers、连五子类棋盘训练与新 UI",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S3",
+        "S8"
+      ],
+      "report_anchor": "5.2 体验软件"
+    },
+    {
+      "id": "U10",
+      "title": "餐厅多模态流程",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S3",
+        "S8"
+      ],
+      "report_anchor": "5.3 餐厅案例"
+    },
+    {
+      "id": "U11",
+      "title": "cookie、Context 割裂与实时多模态",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S3",
+        "S8"
+      ],
+      "report_anchor": "6.2 本地协作"
+    },
+    {
+      "id": "U12",
+      "title": "Atlas 使用与手机普及",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S3",
+        "S8"
+      ],
+      "report_anchor": "6.3 共享 Context"
+    },
+    {
+      "id": "U13",
+      "title": "消费推动体验前沿与企业集成部署的双轨",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S8"
+      ],
+      "report_anchor": "2.2 旧系统"
+    },
+    {
+      "id": "U14",
+      "title": "Dots 的邀请、Slack 与自行登录分析 Sentry 的闭环",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S8"
+      ],
+      "report_anchor": "2.3 主动助手"
+    },
+    {
+      "id": "U15",
+      "title": "广告出版商与欢迎 Agent 的网站两种商业立场",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S8"
+      ],
+      "report_anchor": "3.3 WebMCP"
+    },
+    {
+      "id": "U16",
+      "title": "消费三类与语音操作电脑的新软件形态",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S8"
+      ],
+      "report_anchor": "5.2 体验软件"
+    },
+    {
+      "id": "U17",
+      "title": "餐厅案例后的中小企业理解/连接/部署/服务四步鸿沟",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S8"
+      ],
+      "report_anchor": "5.3 餐厅案例"
+    }
+  ],
+  "limitations": [
+    "产品访谈案例未附公开实验结果",
+    "RSS 与 B 站版时长差异未逐帧解释，定位只用转载版",
+    "ASR 机械审计不能证明语义准确",
+    "a16z 研究含访谈、估算与二手榜单，不代表全行业随机样本",
+    "官方客户端边界随系统/rollout 变化，不泛化全部 Agent",
+    "未运行 demo、测量拦截率或部署收益，实施建议待验证"
+  ]
+}

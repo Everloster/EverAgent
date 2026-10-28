@@ -1,0 +1,84 @@
+YC Paper Club 推理全链路｜中文结构化精编
+精编比例：约为转写全文的 3.02%（两文件 Unicode 总字符数含头部与时间戳；跨语言字符比不代表语义保留率）。
+产物类型：digest，按六章和关键问答重组；不是全文翻译、不是逐句润色。
+原视频：https://www.youtube.com/watch?v=mHNKuH-9OxU
+B 站转载：https://www.bilibili.com/video/BV1fGxK6UEF9
+原频道：Y Combinator；原视频 2026-10-24，1:50:48；时间定位使用 B 站 1:50:49 版本。
+版权：著作权归原权利人，仅供个人学习。完整节目请前往原始平台；如版权方要求下架，请通过仓库 Issue 联系。
+术语修正：DeepSeq→DeepSeek；MLA→Multi-head Latent Attention（以论文为准）；log probes→logprobs（依语义）；relics/Redux tree→radix tree（依原论文和上下文）。未核数字保留口播性质。
+
+一、00:00–08:24｜推理成本与性能指标
+
+开场以 DeepSeek 的旧数据讨论推理的重要性：训练约 2.8M H800 GPU 小时，服务每天约 43K GPU 小时；乘一年得到约 5.6 倍、口头约 6 倍；再假设权重用两年，得到約 11.2 倍、口头约 12 倍。虽然主持人称 FLOPs，输入实际是 GPU 小时，不构成实测 FLOPs 比或智能价值比。
+
+一手核验：DeepSeek-V3 正式训练为 2.788M H800 GPU 小时，不含此前研究与消融；2025-02-27 12 时至 02-28 12 时（UTC+8）的 V3/R1 合并服务，平均 226.75 个八卡节点，对应 43,536 GPU 小时。分子分母模型范围不同，两年寿命也是假设。
+
+Prefill 处理输入，decode 逐步生成。TTFT、TPOT、吞吐、goodput、MFU/MBU 回答不同问题。端到端 TTFT 还包括排队、分词与网络，不只 prefill。
+
+算术强度指每搬运一字节数据能完成多少浮点运算。主持人用 RNN/图像扩散的重复计算与逐 token LLM 作对比，再提 diffusion LLM；这是负载类比，不能按模型标签断定瓶颈。Roofline 约束为峰值算力与“带宽×算术强度”中的较小者，batch、复用和矩阵形状会改变结果。
+
+主持人转述新 DeepSeek 数字：未命中缓存 prefill 约 60K token/s/GPU，输入命中约 96%，含命中约 1.5M；TTFT 约 400ms、P99 约 1s；decode 约 14K token/s/GPU；缓存保留 72h。对应新表未核到，不能用来评价当前服务；“yesterday”不能换成视频发布日期前一天。2025 原文的 73.7K/14.8K 是每节点，输入含命中；旧命中率 56.3%，两组不能混算。
+
+二、08:24–12:14｜三层创新
+
+模型层：MoE、SSM、MLA、量化与蒸馏等。内核/运行时层：attention、PagedAttention、RadixAttention、并行与调度。Harness 层：路由、推测解码、按需取长 Context、对话压缩等。分类服务于定位瓶颈，不是互斥的技术清单。
+
+MLA 压缩 keys/values 的潜在表示，不等于压缩整个序列。PagedAttention 管分页访问，RadixAttention 管前缀匹配与复用，可以共存。Harness 对话压缩可能改变语义，与后半的物理内存 compaction 不同。
+
+三、12:14–42:18｜Dan Fu：请求、内核、并行、量化
+
+12:14–16:12 是 Together AI 背景，随后讲请求生命周期：API 网络、cache-aware replica routing、分词与工具协议、排队/batch、prefill/cache、decode、反分词/流式返回及释放或保留缓存。权重之外的每一层都能改变速度或结果。
+
+21:56 后先列六项：kernels、prefill/decode 分离、parallelism、routing、speculative decoding、quantization，主讲内核、并行和量化。推测生成要花候选和验证成本，不是字面免费。Together Compiler 为内部 Agent 优化循环，结合真实流量、模型与硬件，尝试候选并验证；名字和产品形态可能变，不是已证明的无限自我改进。
+
+TP、PP、DP、EP 各有通信、容量、缓存和故障影响范围。EP 为同一专家聚合大量 token，使权重复用得到摊销，计算重新接近 GPU 擅长的大矩阵乘，提升算术强度。72-GPU 快速域提供机会，但负载和通信仍有约束；一张卡出故障可能影响整个 replica，可靠性要同时设计。
+
+量化从 BF16 到 FP8/4 不能只看权重大小。Flappy Bird 等 Agent 场景、公共 benchmark、activation KL 或参考输出、工具行为和真实失败回灌，用来检查不同质量风险。
+
+MiniMax NVFP4 案例来自口播，没有完整版本与配方。39:25–40:04 问答说明是 training-free，结合校准数据与 Scale Search，通常不自己再训练，以免遗忘。未读 Scale Search 论文，不还原未公开参数。
+
+后半问答还谈稀疏、SSM、diffusion/推测生成和 looped 等架构。闭源内部结构的传闻不作为已知事实，模型创新仍需配套 serving 与质量验证。
+
+四、42:18–1:04:31｜Jeff Morgan：同名开放模型的服务质量
+
+同一个模型名不保证同权重版本、精度、sampling、tokenizer、chat template、KV 精度、工具 parser、kernel 和硬件。长 Context 更容易放大差异。服务商最好/最差差距大于开闭模型差距，是讲者转引而未核到的研究，不作普遍结论。
+
+每步 10% 错误、15 步至少一次出错约 79.4%，只是在独立错误与无恢复假设下的思想实验，不是实际 Agent 失败率。
+
+五类检查：完整 eval（成本高）；专用 vendor verifier（模型/任务限定）；与 reference 的分布比较（需参考服务且根因不唯一）；logprobs 对基线漂移（便宜但基线可能本来错误、API 未必支持）；请求长度、重复、工具错误、截断等元数据（不能证明语义正确）。
+
+K2-Vendor-Verifier 官方 README 支持 trigger 与 schema 分开，并说明工具 ID/版本的工程差异；旧 K2 结果不能评价现在 K3 或 GLM 端点。
+
+行业建议：公开 serving stack，采用可追溯量化，parser 等上提 Harness，考虑 TEE 身份证明。版本指纹不等于任务正确。客户 holdout 抵抗公共 benchmark 过拟合。问答讨论长提示漂移、上下文上限、本地回归与云/本地混合；本地同样要检查。
+
+五、1:04:31–1:30:30｜Joe Fioti：编译搜索与数值边界
+
+Luminal 以约 15 个 primitive 表达模型。矩阵乘法可概念化为 broadcast、Mul、reduce，降低模型×硬件×精度的组合复杂度；执行不必物化整个广播中间张量。
+
+Equality saturation / egglog / e-graph 保留等价变换，再抽取候选实现。多层 IR 可以组合 CPU/库、threadblock 与 megakernel。融合不是越多越好；成熟库、寄存器压力、硬件形状都要比较。
+
+搜索结合 roofline 剪枝、genetic search 与真实硬件计时，有预算而非穷举，不证明全局最优。反复服务能摊销编译时间，短任务或频繁变化未必划算。缺完整计时口径的“每秒搜索次数”不作为性能事实。
+
+问答指出，受限的稠密线性代数 IR 可解析估计不同内存空间间的搬运字节，再提前剪枝；非图灵完备不等于一切性能和正确性性质都自动可证明。
+
+问答承认数值精度会影响 token。a×2÷2=a 依赖算术语义，浮点溢出、舍入和归约顺序可能改变结果。规则证明有助定位问题，不代替数值及任务验证。Luminal 主要优化 forward，spec decode 仍交给 vLLM/SGLang 等服务框架。
+
+公开 README 把约 80% 常用 PyTorch API 写为目标，部分后端仍在路线图；不能把台上更广商业能力说成开源全支持。源码与正确性对照未在本次执行。
+
+六、1:30:30–1:50:45｜Liangsheng Yin：Agent 缓存与混合状态
+
+SGLang 起初面向多次生成与控制流，前端提示与 runtime 协同帮助复用前缀。RadixAttention 按 token 前缀组织 KV 状态、匹配与淘汰；共享祖先尽量保留，运行请求仍引用的节点不能随意释放。cache-aware 排序减少 A/B 反复淘汰，但命中率需与延迟、公平性共同评价。
+
+CPU 准备与 GPU 执行 overlap，减少 device-host 同步与空隙。台上 Hopper 约 1.1×、特定 Blackwell 配置约 2×为口播，条件不完整。HiCache：L1 GPU、L2 host、L3 storage；L1/L2 在每个实例，L3 可跨实例，预取、写回、传输、布局与等待策略都有成本。TTFT 降约 56% 同样未核实验条件。官方 HiCache 的 MLA 误展开，以 DeepSeek 论文修正。
+
+Hybrid 的 full attention、sliding window、recurrent state 保留规则不同。复用到某个位置，需有该位置所需窗口与正确递归 checkpoint，最长 token 前缀不自动等于最长可复用状态。
+
+Unified Radix Tree 协调各组件匹配、锁定、淘汰与释放，组件仍有独立规则。Unified Memory Pool 根据负载动态分配，减少固定比例造成的容量浪费。具体同版本代码没有追踪完，只按台上设计解释。
+
+物理 compaction 搬页并更新映射，目标是保持逻辑状态与虚拟 ID；不等于总结或删除对话。95%→99% 命中使未命中 5%→1%，只在相同口径下减少这部分计算，不能说总成本五倍下降。
+
+最后 Miles/slime 将推理 rollout 接进后训练。官方 README 核验 Miles 从 slime fork，并用 SGLang 做 rollout。尾部没有前三段那样的独立问答，不补造。
+
+阅读提示
+
+KV cache 是模型相关的计算复用；Personal Context/Memory 还要管理知识、来源、更正、删除、权限和检索。缓存 TTL 不能替代记忆保留规则，命中率不能替代任务质量。报告另有关键数字表、反例、双仓参照、Limitations 与待验证问题。

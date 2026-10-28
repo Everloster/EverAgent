@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "source": {
+    "title": "20VC：纳德拉谈企业智能",
+    "url": "https://www.bilibili.com/video/BV1S8HF6MEt9",
+    "original_url": "https://www.thetwentyminutevc.com/satya-nadella",
+    "duration_seconds": 1429,
+    "duration_basis": "Bilibili version"
+  },
+  "execution": {
+    "route": "eacli podcast 远端静默 worker",
+    "status": "succeeded",
+    "language": "en",
+    "engine": "whisper.cpp-v1.9.1-sm120",
+    "asr_model": "large-v3",
+    "vad": "Silero VAD",
+    "elapsed_ms": 134400,
+    "browser_ui_opened": false,
+    "audio_played": false
+  },
+  "audio": {
+    "bytes": 274198606,
+    "sha256": "2b9e2eff2fe4deb17af4e9a10517065ce0d88dde51114829577db58727f0d5a6"
+  },
+  "transcript": {
+    "original_artifact_sha256": "1fc1c78bb5406581748b68160ddf2b5f8a48ffd5a37e1a836ddda3d1831cb221",
+    "original_artifact_bytes": 36465,
+    "repository_sha256": "750394a4a67865c8ad74c58d36d5b5849f4e52524435c8214a69b78f9ca57866",
+    "repository_bytes": 36939,
+    "segments": 569,
+    "modification": "prepended copyright and ASR provenance header; original timestamped body unchanged"
+  },
+  "audit": {
+    "schema_version": 1,
+    "results": [
+      {
+        "ok": true,
+        "size": 36939,
+        "sha256": "750394a4a67865c8ad74c58d36d5b5849f4e52524435c8214a69b78f9ca57866",
+        "lines": 575,
+        "segments": 569,
+        "duration_seconds": 1417,
+        "max_consecutive_identical": 2,
+        "head": [
+          "# 20VC：纳德拉谈企业智能｜英文原声 ASR 转写",
+          "来源：https://www.bilibili.com/video/BV1S8HF6MEt9",
+          "原始出处：https://www.thetwentyminutevc.com/satya-nadella"
+        ],
+        "tail": [
+          "[00:23:34 -> 00:23:36] Thank you so much for taking the time.",
+          "[00:23:36 -> 00:23:36] Absolutely.",
+          "[00:23:36 -> 00:23:37] It's a pleasure, Harry."
+        ],
+        "warnings": [
+          "5 non-empty lines lack transcript timestamps"
+        ],
+        "errors": []
+      }
+    ]
+  },
+  "semantic_validation": "machine audit does not establish word accuracy; names and critical claims checked against original-source context and first-party documents"
+}

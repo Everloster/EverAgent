@@ -1,0 +1,1145 @@
+# The a16z Show：OpenAI Computer Use｜英文原声 ASR 转写
+来源：https://www.bilibili.com/video/BV16GxK6UEBh
+原始出处：https://a16z.simplecast.com/episodes/openai-when-ai-agents-use-computers-faster-than-you-QLF23qpt
+说明：语言 en；保留机器转写，不在此文件逐字改写。专名修正、观点归属与未核数字见中文精编及报告。
+版权：节目著作权归权利人；仅供个人学习，完整节目请前往原始平台。如版权方要求下架，请通过仓库 Issue 联系。
+
+[00:00:00 -> 00:00:02] We've gotten computer use now to a place where it's faster
+[00:00:02 -> 00:00:03] than the average human.
+[00:00:03 -> 00:00:06] And I think we're getting really close where it is super
+[00:00:06 -> 00:00:07] human.
+[00:00:07 -> 00:00:09] What sorts of tasks do you think are ready to hand over to
+[00:00:09 -> 00:00:10] the agent
+[00:00:10 -> 00:00:12] versus the ones like, okay, it still requires some checking
+[00:00:12 -> 00:00:13] and correcting?
+[00:00:13 -> 00:00:16] Computer using agents now since Astra is now capable of
+[00:00:16 -> 00:00:18] doing anything that a person can do.
+[00:00:18 -> 00:00:20] We think a lot about what new consumer experiences can we
+[00:00:20 -> 00:00:22] enable with a faster, better model.
+[00:00:22 -> 00:00:24] And then on the enterprise side, that's kind of naturally
+[00:00:24 -> 00:00:25] why the safety becomes more interesting.
+[00:00:25 -> 00:00:29] How do we give the ability to control the amount of human
+[00:00:29 -> 00:00:31] the loop there is and then the auditability?
+[00:00:31 -> 00:00:34] It's unlike any other thing that we've built where the
+[00:00:34 -> 00:00:36] developer has to do some work to adopt it.
+[00:00:36 -> 00:00:38] Someone has to build a connector MCP server.
+[00:00:38 -> 00:00:40] You know, computer use works with everything.
+[00:00:40 -> 00:00:41] Now we have like capable models.
+[00:00:41 -> 00:00:44] They're getting cheap enough to run at scale.
+[00:00:44 -> 00:00:46] What should companies think of automating?
+[00:00:46 -> 00:00:47] I think of it as in two big categories.
+[00:00:48 -> 00:00:49] The first category is like.
+[00:00:51 -> 00:00:53] Welcome to the A16Z podcast.
+[00:00:53 -> 00:00:54] I'm Sima Amble.
+[00:00:54 -> 00:00:57] I'm joined by my colleague Fabrizio Serafini.
+[00:00:57 -> 00:01:01] In August, we wrote about computer using agents
+[00:01:01 -> 00:01:03] and how they're starting to do the real work inside
+[00:01:03 -> 00:01:04] companies.
+[00:01:05 -> 00:01:08] Today, I'm joined by Ari Weinstein and James Sun from Open
+[00:01:08 -> 00:01:08] AI,
+[00:01:09 -> 00:01:12] who are going to help unpack what is going on with computer
+[00:01:12 -> 00:01:15] using agents from their perspective and share some thoughts
+[00:01:15 -> 00:01:15] on the future.
+[00:01:15 -> 00:01:17] Ari, James, thanks for joining us.
+[00:01:17 -> 00:01:19] Of course, happy to be here. Yeah, thanks for having us.
+[00:01:19 -> 00:01:21] Ari, kick it off and tell us a little bit about
+[00:01:22 -> 00:01:26] what in Astra has made computer using agents move forward
+[00:01:26 -> 00:01:28] and what's really unlocked.
+[00:01:28 -> 00:01:29] Yeah.
+[00:01:29 -> 00:01:31] So Astra is an amazing model.
+[00:01:31 -> 00:01:33] It's good at so many things.
+[00:01:34 -> 00:01:38] Our computer use models were already so good before Astra.
+[00:01:38 -> 00:01:41] You know, like Sol itself is amazing at computer use.
+[00:01:41 -> 00:01:46] So Astra really helps with a few things around the edges
+[00:01:46 -> 00:01:47] in my sort of anecdotal experience.
+[00:01:47 -> 00:01:51] One is it is a little bit faster on average
+[00:01:51 -> 00:01:53] because it uses fewer thinking tokens to do the same task.
+[00:01:54 -> 00:01:56] It's better at certain kinds of creative work.
+[00:01:56 -> 00:01:59] Like, for example, we had this demo where in our launch
+[00:01:59 -> 00:02:02] video where you were talking to it and it's drawing things
+[00:02:02 -> 00:02:03] on Microsoft Paint.
+[00:02:03 -> 00:02:05] It's way better at that sort of thing, which I think
+[00:02:05 -> 00:02:07] probably transfers to other kinds of creative tasks also.
+[00:02:08 -> 00:02:11] And then the last thing I find is it's just more reliable
+[00:02:11 -> 00:02:12] around the edges.
+[00:02:12 -> 00:02:14] Like, you know, it's kind of I feel like I trust it a
+[00:02:14 -> 00:02:15] little more.
+[00:02:15 -> 00:02:17] Like it's sort of the kind of thing where there's a little
+[00:02:17 -> 00:02:20] difference that is hard to perceive, but really important
+[00:02:20 -> 00:02:23] between something being 99 percent reliable and 97 percent
+[00:02:23 -> 00:02:23] reliable.
+[00:02:23 -> 00:02:27] And I feel like it's sort of just a little higher
+[00:02:27 -> 00:02:29] in a way that feels pretty concrete.
+[00:02:29 -> 00:02:31] - Yeah, and I think adding on to some of those things,
+[00:02:31 -> 00:02:34] Astra is also our most aligned model, right?
+[00:02:34 -> 00:02:37] And so, you know, talking about trust a little bit,
+[00:02:37 -> 00:02:38] you know, if you look at the system card for it,
+[00:02:38 -> 00:02:42] it is much better at being resistant to prompt injection.
+[00:02:42 -> 00:02:45] It's much better at not taking any kind of
+[00:02:45 -> 00:02:46] unintended actions.
+[00:02:46 -> 00:02:49] And so when you think about it for like enterprise work,
+[00:02:49 -> 00:02:52] especially for companies using it for sensitive things,
+[00:02:52 -> 00:02:55] whether it's procurement or talking to vendors
+[00:02:55 -> 00:02:56] or talking to customers,
+[00:02:56 -> 00:02:58] it's going to be just,
+[00:02:58 -> 00:03:00] you're gonna feel a lot safer kind of using it.
+[00:03:00 -> 00:03:02] And that's really, really exciting.
+[00:03:02 -> 00:03:04] And then some fun things on the creative side,
+[00:03:04 -> 00:03:06] I think internally we had, you know,
+[00:03:06 -> 00:03:09] Astra play video games against, you know, 5.6
+[00:03:09 -> 00:03:11] and it wins every time.
+[00:03:11 -> 00:03:14] And so there's some cool tweets that people have made
+[00:03:14 -> 00:03:16] where, you know, Astra is able to beat Fallout
+[00:03:16 -> 00:03:18] in like 30 hours or something like that.
+[00:03:18 -> 00:03:20] And so it's also just really amazing at playing video games
+[00:03:20 -> 00:03:20] .
+[00:03:20 -> 00:03:22] So I don't know, that probably translates to something,
+[00:03:22 -> 00:03:24] but yeah, very exciting.
+[00:03:24 -> 00:03:27] - Maybe just to double-click on that point,
+[00:03:27 -> 00:03:30] consumer versus enterprise use cases of computer agents,
+[00:03:30 -> 00:03:34] very different implications around
+[00:03:34 -> 00:03:36] kind of like all the scaffolding around,
+[00:03:36 -> 00:03:39] I would say, the computer using agents.
+[00:03:39 -> 00:03:43] How do you guys think about where things are more exciting
+[00:03:43 -> 00:03:45] between consumer and enterprise if you were to pick?
+[00:03:45 -> 00:03:47] - I think our goal at OpenAI is really about
+[00:03:47 -> 00:03:49] building products that's useful for everyone.
+[00:03:49 -> 00:03:51] And so, you know, actually it's interesting
+[00:03:51 -> 00:03:53] because Ari is definitely more of a consumer guy here
+[00:03:53 -> 00:03:55] and I spend a little bit more time on the enterprise side.
+[00:03:56 -> 00:03:58] I think the consumer is always the place
+[00:03:58 -> 00:04:00] where we try to push the frontier when it's possible.
+[00:04:01 -> 00:04:03] You know, with Astra, like Ari mentioned,
+[00:04:03 -> 00:04:06] it's much faster compared to previous models.
+[00:04:06 -> 00:04:07] And so we think a lot about like
+[00:04:07 -> 00:04:09] what new consumer experiences can we enable
+[00:04:09 -> 00:04:11] with a faster, better model.
+[00:04:11 -> 00:04:12] And then on the enterprise side,
+[00:04:12 -> 00:04:14] that's kind of naturally why the safety becomes more
+[00:04:14 -> 00:04:15] interesting
+[00:04:15 -> 00:04:16] because I think the enterprise,
+[00:04:16 -> 00:04:18] whenever we talk to large companies,
+[00:04:19 -> 00:04:21] I think the use cases for computer use is actually fairly
+[00:04:21 -> 00:04:22] obvious, right?
+[00:04:22 -> 00:04:25] Inside enterprises, there's lots of legacy software that
+[00:04:25 -> 00:04:27] doesn't have any MCP tools.
+[00:04:27 -> 00:04:30] They are software that's been used for like 15, 20 years.
+[00:04:30 -> 00:04:33] And so there's, and, and, and a lot of times it's actually
+[00:04:33 -> 00:04:33] kind of
+[00:04:33 -> 00:04:35] hard to use for a normal person.
+[00:04:35 -> 00:04:35] Right.
+[00:04:35 -> 00:04:38] Lots of like UI that is like from the last, you know,
+[00:04:38 -> 00:04:38] decade.
+[00:04:38 -> 00:04:41] And so you don't even know how to operate some of the key,
+[00:04:41 -> 00:04:42] key, key things.
+[00:04:42 -> 00:04:44] And so we've seen companies build skills that kind of teach
+[00:04:44 -> 00:04:44] the
+[00:04:44 -> 00:04:46] model to be able to use them better.
+[00:04:46 -> 00:04:49] And so I think maybe the way to think about it is
+[00:04:49 -> 00:04:52] enterprise is where, you know, the capabilities have been
+[00:04:52 -> 00:04:55] there maybe for a little bit longer and the companies are
+[00:04:55 -> 00:04:57] catching up and trying to understand how to deal with it.
+[00:04:57 -> 00:05:00] And consumers where we're trying to figure out the next
+[00:05:00 -> 00:05:02] types of use cases that's not maybe possible today with
+[00:05:02 -> 00:05:03] software.
+[00:05:03 -> 00:05:04] Maybe you can share a little more.
+[00:05:05 -> 00:05:09] Yeah, I mean, the consumer use cases are so fun for me
+[00:05:09 -> 00:05:10] because it's kind of like,
+[00:05:11 -> 00:05:13] how can you put your agent to work doing the things in your
+[00:05:13 -> 00:05:15] daily life that are so annoying
+[00:05:15 -> 00:05:17] and save you tons of time and just have more time to focus
+[00:05:17 -> 00:05:20] on the things that you're excited about?
+[00:05:20 -> 00:05:24] I think it's been really fun to see DOT where, you know,
+[00:05:24 -> 00:05:26] each DOT gets its own computer
+[00:05:26 -> 00:05:28] and you can ask it to do things for you in the cloud.
+[00:05:28 -> 00:05:30] It gets a full web browser.
+[00:05:30 -> 00:05:32] It can buy things for you.
+[00:05:32 -> 00:05:37] and book haircut appointments and anything else you wanted
+[00:05:37 -> 00:05:37] to do.
+[00:05:37 -> 00:05:39] So that's been really fun.
+[00:05:39 -> 00:05:42] And I think there's a lot more on the horizon that's going
+[00:05:42 -> 00:05:42] to be really fun.
+[00:05:43 -> 00:05:46] Yeah, that was going to be my question on DOTS.
+[00:05:46 -> 00:05:50] I think, James, you probably use DOTS to walk through
+[00:05:50 -> 00:05:51] product feedback.
+[00:05:51 -> 00:05:53] It would be cool if you could share more about it.
+[00:05:53 -> 00:05:56] Or I'm just so curious to know on your end, guys, like how
+[00:05:56 -> 00:05:57] are you using DOTS
+[00:05:57 -> 00:06:01] And like, how does computer use play into kind of what you
+[00:06:01 -> 00:06:02] can do with them?
+[00:06:03 -> 00:06:03] Yeah.
+[00:06:03 -> 00:06:06] I mean, I think Dots is really cool for a few reasons,
+[00:06:06 -> 00:06:06] right?
+[00:06:06 -> 00:06:07] One is like really proactive.
+[00:06:07 -> 00:06:12] And so, um, I've been very surprised a lot of times when in
+[00:06:12 -> 00:06:13] both my personal life
+[00:06:13 -> 00:06:17] and work, when Dots will just flag something that, um, I
+[00:06:17 -> 00:06:18] just completely
+[00:06:18 -> 00:06:19] slipped through the cracks, right?
+[00:06:19 -> 00:06:20] It's just the other day.
+[00:06:20 -> 00:06:23] So internally, like on our, our email system, whenever we
+[00:06:23 -> 00:06:24] get an external
+[00:06:24 -> 00:06:26] email for an invite, it doesn't actually show up on our
+[00:06:26 -> 00:06:27] calendars.
+[00:06:27 -> 00:06:29] And so I end up missing a bunch of like, several meetings.
+[00:06:29 -> 00:06:32] And so Dots now is like catching these things for me.
+[00:06:32 -> 00:06:34] It's like, oh, there's this invite that's in your inbox.
+[00:06:34 -> 00:06:35] It's not on your calendar.
+[00:06:35 -> 00:06:37] Do you want me to like accept it in your Gmail so it shows
+[00:06:37 -> 00:06:37] up?
+[00:06:37 -> 00:06:38] So that's been a lifesaver.
+[00:06:38 -> 00:06:41] It's a small thing, but it matters a lot.
+[00:06:41 -> 00:06:43] But I also have it proactively kind of looking at
+[00:06:43 -> 00:06:45] I think it's really good at proactively looking for tasks
+[00:06:45 -> 00:06:46] where it's
+[00:06:46 -> 00:06:49] the shape of it is not super,
+[00:06:50 -> 00:06:52] let's say, concrete every single time.
+[00:06:52 -> 00:06:55] So an example that I also have is set up to do is we use
+[00:06:55 -> 00:06:57] Slack internally
+[00:06:57 -> 00:07:00] And there's a ton of messages that's going on at all times.
+[00:07:00 -> 00:07:04] And I used to have this Slack job using automations and
+[00:07:04 -> 00:07:04] codecs
+[00:07:04 -> 00:07:07] that's like every hour or every 30 minutes go and try to
+[00:07:07 -> 00:07:08] pull things.
+[00:07:08 -> 00:07:10] And I've just ended up tuning out a lot of the
+[00:07:10 -> 00:07:11] notifications
+[00:07:11 -> 00:07:14] because it's just like sometimes useful, sometimes not.
+[00:07:14 -> 00:07:16] With Dots, I can give kind of a high level goal.
+[00:07:16 -> 00:07:18] It's like, hey, anybody in my reporting chain says anything
+[00:07:18 -> 00:07:20] , flag it to me, right?
+[00:07:20 -> 00:07:22] If anybody who's giving some critical feedback, use your
+[00:07:22 -> 00:07:23] judgment
+[00:07:23 -> 00:07:25] about certain products, go for it.
+[00:07:25 -> 00:07:28] And then because it has a cloud computer, you know, I've
+[00:07:28 -> 00:07:30] had this pretty cool workflow where
+[00:07:30 -> 00:07:33] when someone reports, they usually have like a Sentry log.
+[00:07:33 -> 00:07:34] I could have it go use the cloud
+[00:07:34 -> 00:07:39] computer, you know, actually drive my local browser while
+[00:07:39 -> 00:07:41] the dots can control both your
+[00:07:41 -> 00:07:44] local computer as well as the cloud computer, log into Sent
+[00:07:44 -> 00:07:46] ry, pull the logs, analyze it,
+[00:07:46 -> 00:07:48] give me feedback. And so it's saving that entire loop of
+[00:07:48 -> 00:07:51] figuring out which feedback's important,
+[00:07:51 -> 00:07:54] looking at it, then going to Sentry, downloading the logs,
+[00:07:54 -> 00:07:55] feeding into Codex,
+[00:07:55 -> 00:07:58] asking for thoughts and all that can now just kind of be
+[00:07:58 -> 00:08:00] automated and so um yeah that's great for
+[00:08:00 -> 00:08:03] for at least these proactive and kind of long-running tasks
+[00:08:03 -> 00:08:04] where they're not the same
+[00:08:04 -> 00:08:07] shape every single time we talked a little bit about
+[00:08:07 -> 00:08:09] reliability speed token usage and efficiency
+[00:08:09 -> 00:08:12] how do you guys think about balancing all these things uh
+[00:08:12 -> 00:08:14] as you uh as you keep making improvements
+[00:08:14 -> 00:08:18] on what you're releasing i think we're really excited about
+[00:08:18 -> 00:08:19] computer use at openai we've
+[00:08:19 -> 00:08:23] invested in it a lot and we've gotten to a place where i
+[00:08:23 -> 00:08:26] think we have the fastest cheapest and
+[00:08:26 -> 00:08:29] most reliable computer use product. And I think there's
+[00:08:29 -> 00:08:31] actually so much further we can take that.
+[00:08:32 -> 00:08:35] We spent a lot of time looking at speed. You know, speed is
+[00:08:35 -> 00:08:37] really interesting because on one hand,
+[00:08:37 -> 00:08:39] the power of computer use is it can do tasks in the
+[00:08:39 -> 00:08:41] background. So in some cases, it doesn't matter
+[00:08:41 -> 00:08:43] how long it takes because you can be going and doing other
+[00:08:43 -> 00:08:45] things while it's accomplishing the
+[00:08:45 -> 00:08:47] task for you. But also sometimes you want to watch it to
+[00:08:47 -> 00:08:49] make sure it does it correctly. You need to
+[00:08:49 -> 00:08:51] wait for it because it needs to complete this before
+[00:08:51 -> 00:08:53] something else can happen. And so the
+[00:08:53 -> 00:08:57] speed is so important because you know you don't want to
+[00:08:57 -> 00:08:59] get this feeling like oh i could have just
+[00:08:59 -> 00:09:01] done that myself and it would have been so much easier so
+[00:09:01 -> 00:09:03] um you know we've gotten computer use
+[00:09:03 -> 00:09:06] now to a place where it's faster than the average human at
+[00:09:06 -> 00:09:08] using a computer and i think we're
+[00:09:08 -> 00:09:12] getting really close to a place where it is superhuman
+[00:09:12 -> 00:09:14] meaning it is faster than an expert
+[00:09:14 -> 00:09:17] computer user like probably one of us at this table and i
+[00:09:17 -> 00:09:19] think that's going to actually be a
+[00:09:19 -> 00:09:21] sea change when that happens i think it's going to change
+[00:09:21 -> 00:09:23] the way we all interact with computers
+[00:09:23 -> 00:09:26] because all of a sudden anything that you you know that you
+[00:09:26 -> 00:09:28] could do manually it could do faster so
+[00:09:28 -> 00:09:30] unless you really want to do it yourself for some reason
+[00:09:30 -> 00:09:32] which i think actually there may be many
+[00:09:32 -> 00:09:34] reasons people would want to do that but in a default case
+[00:09:34 -> 00:09:35] you probably just want the agent
+[00:09:35 -> 00:09:37] to do it for you and i think that's going to let us build
+[00:09:37 -> 00:09:38] all kinds of cool user experiences so
+[00:09:38 -> 00:09:41] speed is something we think about a lot and then obviously
+[00:09:41 -> 00:09:43] we have a strategy of offering multiple
+[00:09:43 -> 00:09:46] different models at multiple different you know qualities
+[00:09:46 -> 00:09:47] and price points and so for different
+[00:09:47 -> 00:09:50] use cases you may want to use a different model at the same
+[00:09:50 -> 00:09:53] time our our less expensive models
+[00:09:53 -> 00:09:56] are getting much better at computer use over time and so i
+[00:09:56 -> 00:09:57] think there will actually be more
+[00:09:57 -> 00:10:00] variation over time in which models people want to use for
+[00:10:00 -> 00:10:02] which tasks i think that's what i was
+[00:10:02 -> 00:10:05] saying like i think the other thought is like how do we
+[00:10:05 -> 00:10:07] give customers you know control over the
+[00:10:08 -> 00:10:12] safety reliability autonomy versus speed right like if you
+[00:10:12 -> 00:10:14] have like you know when the model
+[00:10:14 -> 00:10:17] slow you can kind of watch it do stuff but then you're
+[00:10:17 -> 00:10:18] limited to that to the tasks that you can
+[00:10:18 -> 00:10:21] do because you can't just sit here watching the thing doing
+[00:10:21 -> 00:10:23] it like it's actually less effective
+[00:10:23 -> 00:10:26] right because it's slower than you um but once you can get
+[00:10:26 -> 00:10:28] to a point where you can no longer observe
+[00:10:28 -> 00:10:31] and audit everything it's doing um how do we give
+[00:10:31 -> 00:10:34] especially enterprises and businesses the ability
+[00:10:34 -> 00:10:37] to control um the amount of human the loop there is and
+[00:10:37 -> 00:10:40] then the auditability right like i think
+[00:10:40 -> 00:10:43] a few months ago i was part of access a few months ago as
+[00:10:43 -> 00:10:45] part of astra you know we we kind of
+[00:10:45 -> 00:10:47] launched a set of enterprise controls that let um
+[00:10:47 -> 00:10:50] businesses choose one like how much human the loop
+[00:10:50 -> 00:10:53] is there like do they want the agent to automatically
+[00:10:53 -> 00:10:54] approve everything we have this
+[00:10:54 -> 00:10:57] really awesome system called guardian right or i think auto
+[00:10:57 -> 00:10:59] approve in the app that uh is a really
+[00:10:59 -> 00:11:02] smart model looking at every single action that the
+[00:11:02 -> 00:11:04] computer use agent is taking to decide if it's
+[00:11:04 -> 00:11:07] safe it's if it's aligned to their original intent um a
+[00:11:07 -> 00:11:09] consumer might be like i just wanted to do
+[00:11:09 -> 00:11:12] everything and i don't want to be asked for approval
+[00:11:12 -> 00:11:14] whereas an enterprise is able to kind
+[00:11:14 -> 00:11:17] of decide which type of actions actually go through and so
+[00:11:17 -> 00:11:19] i think the the control part
+[00:11:19 -> 00:11:22] becomes more and more important as our computer's agents
+[00:11:22 -> 00:11:24] become also superhuman in doing things
+[00:11:24 -> 00:11:27] totally i think as you try to you know roll out more
+[00:11:27 -> 00:11:29] enterprise use cases i think employers are
+[00:11:29 -> 00:11:32] excited about the efficiency but they're also you know wary
+[00:11:32 -> 00:11:34] of like what is what are what's
+[00:11:34 -> 00:11:36] sort of being unleashed yeah maybe even on the other side
+[00:11:36 -> 00:11:39] have you guys seen the response from
+[00:11:39 -> 00:11:43] application software around okay now there's computer using
+[00:11:43 -> 00:11:45] agents accessing my legacy
+[00:11:45 -> 00:11:48] workflow software and how do you do you guys think at all
+[00:11:48 -> 00:11:50] about that are you more focused on
+[00:11:50 -> 00:11:53] just the the agent that's being used by the you know
+[00:11:53 -> 00:11:56] consumer enterprise user yeah i think there's
+[00:11:56 -> 00:11:58] like i think this problem becomes really interesting on the
+[00:11:58 -> 00:11:59] open web actually i think when
+[00:11:59 -> 00:12:03] it's like within software that is like approved and used by
+[00:12:03 -> 00:12:05] the company it's actually more
+[00:12:05 -> 00:12:10] straightforward because it's like oh yeah 100 we want to
+[00:12:10 -> 00:12:13] have people automate and do work in here
+[00:12:13 -> 00:12:16] that they don't have to do tediously themselves but when it
+[00:12:16 -> 00:12:17] comes to the internet i think you
+[00:12:17 -> 00:12:21] kind of have a few different camps of folks right one is we
+[00:12:21 -> 00:12:25] run a business model is not in line with
+[00:12:25 -> 00:12:28] having agents use our product right you think about
+[00:12:28 -> 00:12:30] advertisers publishers whose business model
+[00:12:30 -> 00:12:33] is entirely on advertisement if the agent's using the
+[00:12:33 -> 00:12:36] website for them then where's that revenue
+[00:12:36 -> 00:12:39] coming from and i think most places a agent's ad impression
+[00:12:39 -> 00:12:41] does not actually count towards real
+[00:12:41 -> 00:12:43] uh revenue um and so that's an interesting question that we
+[00:12:43 -> 00:12:45] 're always working through
+[00:12:45 -> 00:12:47] and working with our partnerships team on um there's
+[00:12:47 -> 00:12:50] another question kind of around um
+[00:12:50 -> 00:12:52] for the companies who do really want to embrace having
+[00:12:52 -> 00:12:54] computer use agents using their sites a lot
+[00:12:54 -> 00:12:56] A lot of them are adopting kind of standards that let
+[00:12:56 -> 00:12:58] humans or people and
+[00:12:58 -> 00:13:00] agents to be able to use it together.
+[00:13:00 -> 00:13:03] So like WebMCP is a standard that we're really excited
+[00:13:03 -> 00:13:03] about.
+[00:13:03 -> 00:13:06] We, we add a support for in the in-app browser.
+[00:13:06 -> 00:13:09] And so you can kind of imagine these scenarios where the
+[00:13:09 -> 00:13:11] agent is elevating
+[00:13:11 -> 00:13:13] the experience of using the site, but it's not entirely
+[00:13:13 -> 00:13:14] replacing it.
+[00:13:14 -> 00:13:17] So like, I think browsing the internet is still very fun in
+[00:13:17 -> 00:13:18] my opinion.
+[00:13:18 -> 00:13:18] Right.
+[00:13:18 -> 00:13:19] I still like doing shopping.
+[00:13:19 -> 00:13:23] I still like looking at all the hotels and flights and
+[00:13:23 -> 00:13:24] places.
+[00:13:24 -> 00:13:28] And so, you know, you can imagine places where the agent
+[00:13:28 -> 00:13:31] does all the tedious work,
+[00:13:31 -> 00:13:34] but it kind of carves out an easier experience where you're
+[00:13:34 -> 00:13:34] doing the
+[00:13:34 -> 00:13:36] browsing, be like, okay, now I want to finish the
+[00:13:36 -> 00:13:38] transaction and then put
+[00:13:38 -> 00:13:39] in my credit card and do all this stuff.
+[00:13:39 -> 00:13:40] Then you can hand it back to the agent.
+[00:13:40 -> 00:13:43] And so WebMCP is kind of an interesting way where your
+[00:13:43 -> 00:13:44] interface with the website
+[00:13:44 -> 00:13:47] is still the site itself versus an API, but then the person
+[00:13:47 -> 00:13:49] is kind of using it together.
+[00:13:49 -> 00:13:51] And so those are some thoughts.
+[00:13:51 -> 00:13:53] - Shifting gears, I wanna double click a little bit
+[00:13:53 -> 00:13:55] on what it means to do the job
+[00:13:55 -> 00:13:57] or get the end to end job done.
+[00:13:59 -> 00:14:02] We'd love to hear a little bit from you guys around,
+[00:14:02 -> 00:14:03] what works well?
+[00:14:03 -> 00:14:07] How do you guys define the right narrow repeatable task?
+[00:14:08 -> 00:14:10] And what sorts of tasks do you think
+[00:14:10 -> 00:14:12] are ready to hand over to the agent
+[00:14:12 -> 00:14:13] versus the ones like, okay,
+[00:14:13 -> 00:14:15] it still requires some checking and correcting
+[00:14:15 -> 00:14:18] as the user side?
+[00:14:18 -> 00:14:21] I mean, generally I found the model to be pretty capable
+[00:14:21 -> 00:14:23] to do anything that you can do on a computer now.
+[00:14:23 -> 00:14:26] Like, and you know, one exercise
+[00:14:26 -> 00:14:28] that I try to force myself to do
+[00:14:28 -> 00:14:29] is that whenever I have a task,
+[00:14:29 -> 00:14:31] the first thing I think about is just,
+[00:14:31 -> 00:14:32] can I just have the agent do it?
+[00:14:32 -> 00:14:34] Now there are obviously some sensitivities around,
+[00:14:34 -> 00:14:35] you know, if I'm sending a message to someone,
+[00:14:35 -> 00:14:38] I wanna feel like it's coming from me.
+[00:14:38 -> 00:14:40] But in general, I think the way I think about it
+[00:14:40 -> 00:14:43] is the computer using agents now since Astra
+[00:14:43 -> 00:14:46] is now capable of doing anything that a person can do.
+[00:14:46 -> 00:14:51] And there are questions around, I think before of like,
+[00:14:51 -> 00:14:53] oh, there are some like squishiness around like
+[00:14:53 -> 00:14:55] specificity and requirements.
+[00:14:55 -> 00:14:57] I've generally found that the model is getting pretty good
+[00:14:57 -> 00:14:59] at whenever you're asking it to do something
+[00:14:59 -> 00:15:02] and there's some vagueness, it will actually,
+[00:15:02 -> 00:15:04] with Astra, I think we launched this flexible input, right?
+[00:15:04 -> 00:15:06] And so we'll actually ask you about,
+[00:15:06 -> 00:15:08] hey, I want some details.
+[00:15:08 -> 00:15:09] And if you don't answer it in time,
+[00:15:09 -> 00:15:11] we'll just keep going and then pull the context
+[00:15:11 -> 00:15:12] that's necessary.
+[00:15:12 -> 00:15:13] I think there are some things around,
+[00:15:13 -> 00:15:15] if you have repeatable workflows,
+[00:15:15 -> 00:15:20] It's nice to be able to kind of define the requirements
+[00:15:20 -> 00:15:20] early,
+[00:15:20 -> 00:15:22] similar to writing a product spec.
+[00:15:22 -> 00:15:26] But in general, I generally feel like unless there
+[00:15:26 -> 00:15:28] is something incredibly sensitive that you want to be in
+[00:15:28 -> 00:15:29] the loop for,
+[00:15:29 -> 00:15:32] I just reach for the computer use model for everything I do
+[00:15:32 -> 00:15:33] now.
+[00:15:33 -> 00:15:34] I'm curious if it's the same for you.
+[00:15:34 -> 00:15:36] MARK MANDEL: Yeah, it is.
+[00:15:36 -> 00:15:41] I'm trying to build that impulse to reach for it, because
+[00:15:41 -> 00:15:41] it's so good.
+[00:15:41 -> 00:15:44] And sometimes it's so easy to get locked into the old way
+[00:15:44 -> 00:15:45] of doing things.
+[00:15:45 -> 00:15:50] I think the really cool thing about computer use as a
+[00:15:50 -> 00:15:52] technology is the universality of it.
+[00:15:52 -> 00:15:54] You know, it works with every application.
+[00:15:54 -> 00:15:57] It's unlike any other thing that we've built where, you
+[00:15:57 -> 00:15:59] know, the developer has to do some
+[00:15:59 -> 00:16:00] work to adopt it.
+[00:16:00 -> 00:16:02] Someone has to build a connector, MCP server, you know,
+[00:16:02 -> 00:16:04] computer use works with everything.
+[00:16:04 -> 00:16:09] And it works by using the application the same way a human
+[00:16:09 -> 00:16:11] uses it, which I think is
+[00:16:11 -> 00:16:13] something worth understanding if you haven't spent much
+[00:16:13 -> 00:16:14] time with this technology.
+[00:16:14 -> 00:16:18] It's like it computer use uses computers the same way a
+[00:16:18 -> 00:16:19] human does.
+[00:16:19 -> 00:16:21] It makes the agent have all the capabilities you do,
+[00:16:22 -> 00:16:23] which I think is so powerful.
+[00:16:23 -> 00:16:23] Yeah.
+[00:16:23 -> 00:16:26] And I guess like adding on to Ari saying like part of it is
+[00:16:26 -> 00:16:26] like,
+[00:16:26 -> 00:16:29] I think over time I've stopped thinking about it as like,
+[00:16:29 -> 00:16:30] am I using them
+[00:16:30 -> 00:16:32] like a computer use task or a non-computer task?
+[00:16:32 -> 00:16:34] And frequently they're like connected, right?
+[00:16:34 -> 00:16:38] Like the way we think about computer use is that like
+[00:16:38 -> 00:16:39] computer use is not
+[00:16:39 -> 00:16:41] like a thing you pick up and just say, I want to do
+[00:16:41 -> 00:16:42] something with it.
+[00:16:42 -> 00:16:45] It's really like the universal kind of API that the model
+[00:16:45 -> 00:16:47] has to do whatever it takes.
+[00:16:47 -> 00:16:49] And so if you have an ambitious task and you want the agent
+[00:16:49 -> 00:16:53] to do it, likely the more complex it becomes, the more
+[00:16:53 -> 00:16:56] likely it will probably touch computer use at some point in
+[00:16:56 -> 00:16:57] that journey.
+[00:16:58 -> 00:17:01] And so like maybe the only time that I don't reach for
+[00:17:01 -> 00:17:05] computer use for some cases is if the task is so simple
+[00:17:05 -> 00:17:09] that then it's easier for me to just go and like click two
+[00:17:09 -> 00:17:10] buttons and do it.
+[00:17:10 -> 00:17:14] But as computer use gets faster, even faster, then the
+[00:17:14 -> 00:17:14] question becomes,
+[00:17:15 -> 00:17:16] maybe I don't need to do that.
+[00:17:16 -> 00:17:18] I just drive voice and it just uses the computer with me.
+[00:17:19 -> 00:17:20] So those are some interesting thoughts there too.
+[00:17:21 -> 00:17:24] Do you think there's anything you have to share with an
+[00:17:24 -> 00:17:25] enterprise user
+[00:17:25 -> 00:17:27] to get them comfortable with that?
+[00:17:27 -> 00:17:30] Obviously, you guys are totally pilled on computer use,
+[00:17:30 -> 00:17:33] but I think there's obviously hesitance sometimes on
+[00:17:33 -> 00:17:34] enterprise users
+[00:17:34 -> 00:17:36] of like, okay, well, yes, the human would click through it
+[00:17:36 -> 00:17:37] and probably do it worse.
+[00:17:38 -> 00:17:41] there is that feeling of like there's accountability
+[00:17:41 -> 00:17:44] and that person's trained
+[00:17:44 -> 00:17:47] and all the classic kind of rebuttals.
+[00:17:47 -> 00:17:49] I'm curious what you come to convince people around.
+[00:17:49 -> 00:17:51] - For sure, lots of conversation enterprises
+[00:17:51 -> 00:17:53] kind of over the last little bit.
+[00:17:53 -> 00:17:55] And I think the main thing is,
+[00:17:55 -> 00:17:57] we think about it as two layers, right?
+[00:17:57 -> 00:17:58] The first layer is like,
+[00:17:58 -> 00:17:59] how do we create deterministic controls?
+[00:17:59 -> 00:18:02] I think that's really what gives enterprises
+[00:18:02 -> 00:18:05] a lot of feeling of safety is when they can,
+[00:18:05 -> 00:18:08] even though our model is the most aligned ever,
+[00:18:08 -> 00:18:11] I think better, you know, better than most people, you know
+[00:18:11 -> 00:18:12] , protecting against
+[00:18:12 -> 00:18:15] prompt injections and unintended things because it's like
+[00:18:15 -> 00:18:15] just, you know, the
+[00:18:15 -> 00:18:16] intelligence is so smart.
+[00:18:17 -> 00:18:20] But, um, I think there is just a feeling of safety when the
+[00:18:20 -> 00:18:21] enterprise admins can
+[00:18:21 -> 00:18:24] basically say for certain tasks or for certain data sources
+[00:18:24 -> 00:18:25] , just too sensitive
+[00:18:25 -> 00:18:26] to be used.
+[00:18:26 -> 00:18:28] Um, and so we see kind of enterprises.
+[00:18:28 -> 00:18:30] So we launched was two things, right?
+[00:18:30 -> 00:18:33] One is the ability to be able to deterministic create a
+[00:18:33 -> 00:18:34] sandbox around your
+[00:18:34 -> 00:18:34] agent.
+[00:18:35 -> 00:18:37] So being able to say it can use certain apps, it can use
+[00:18:37 -> 00:18:38] other apps, it can use
+[00:18:38 -> 00:18:40] certain websites and not certain other websites.
+[00:18:40 -> 00:18:42] And then two is, you know,
+[00:18:42 -> 00:18:43] this kind of part of a human in the loop,
+[00:18:43 -> 00:18:46] like what type of actions does it require a human
+[00:18:46 -> 00:18:48] to be interviewing?
+[00:18:48 -> 00:18:50] And so we might say, okay, for any time there's like
+[00:18:50 -> 00:18:53] a download and upload, a person has to kind of approve it.
+[00:18:53 -> 00:18:55] Anytime it goes to a new website,
+[00:18:55 -> 00:18:56] a person has to approve it.
+[00:18:56 -> 00:18:58] Now, again, these are all like dials
+[00:18:58 -> 00:18:59] and enterprise can kind of go through.
+[00:18:59 -> 00:19:00] And so it's really like, that's one.
+[00:19:00 -> 00:19:04] And then two is really just showing the enterprise admins
+[00:19:04 -> 00:19:07] just how, you know, all the evals that we've run internally
+[00:19:07 -> 00:19:09] around how aligned these models are,
+[00:19:09 -> 00:19:10] even compared to like, you know,
+[00:19:10 -> 00:19:13] both internal and kind of third-party evals.
+[00:19:13 -> 00:19:15] - I think there's also some baseline stuff
+[00:19:15 -> 00:19:17] that we do across the board to just try
+[00:19:17 -> 00:19:20] to help people build trust with these kinds of products.
+[00:19:20 -> 00:19:21] You know, we know it's so new,
+[00:19:21 -> 00:19:24] it's such a magical and sometimes alien experience
+[00:19:24 -> 00:19:25] for people.
+[00:19:25 -> 00:19:27] And so, you know, we put a lot of work
+[00:19:27 -> 00:19:28] into the design of the product.
+[00:19:28 -> 00:19:30] So you can always see the cursor
+[00:19:30 -> 00:19:32] if you want to watch it perform a task
+[00:19:32 -> 00:19:34] and it sort of animates in a fun way,
+[00:19:34 -> 00:19:35] so it's not boring to watch.
+[00:19:35 -> 00:19:40] and then like james was saying this is very customizable
+[00:19:40 -> 00:19:42] for enterprises but also for a
+[00:19:42 -> 00:19:44] regular user you know we ask you for permission before
+[00:19:44 -> 00:19:46] using a new application or website
+[00:19:46 -> 00:19:50] depending on which sort of modes you're in and i think that
+[00:19:50 -> 00:19:52] helps people sort of not feel like
+[00:19:52 -> 00:19:55] it's gonna go do some runaway stuff on their computer you
+[00:19:55 -> 00:19:56] kind of want to have this trust
+[00:19:56 -> 00:19:59] building mode moment where you figure out what it feels
+[00:19:59 -> 00:20:01] like and what you want it to do for you and
+[00:20:01 -> 00:20:04] And then you sort of feel more comfortable over time.
+[00:20:04 -> 00:20:06] - The codex cursor is so cute.
+[00:20:06 -> 00:20:07] I love it.
+[00:20:07 -> 00:20:09] It's like such a, I know it's a small detail,
+[00:20:09 -> 00:20:11] but like watching it use the computer gives you
+[00:20:11 -> 00:20:13] like confidence and it makes the experience nice.
+[00:20:13 -> 00:20:17] So I think there's a kind of like a user experience point
+[00:20:18 -> 00:20:22] that's worth, that's definitely worth investing on.
+[00:20:22 -> 00:20:24] And I guess I'm curious, like in a broader sense,
+[00:20:24 -> 00:20:28] like, okay, now we have like capable models,
+[00:20:28 -> 00:20:32] they're getting like cheap enough to run at scale.
+[00:20:32 -> 00:20:36] In your view, what should companies think of automating?
+[00:20:36 -> 00:20:41] Where do you see the most promising use cases
+[00:20:41 -> 00:20:42] within enterprises?
+[00:20:42 -> 00:20:46] Are there some workflows, maybe something around the ERP,
+[00:20:46 -> 00:20:49] maybe something around how, again,
+[00:20:49 -> 00:20:51] humans and agents can work together to get tasks done,
+[00:20:51 -> 00:20:53] but if you had to pick,
+[00:20:53 -> 00:20:57] where are you most excited to see your models perform
+[00:20:57 -> 00:20:59] in the world?
+[00:20:59 -> 00:21:01] - Yeah, I guess from my perspective,
+[00:21:01 -> 00:21:01] I'd love to hear Ari's.
+[00:21:01 -> 00:21:04] I think of it as in two big categories.
+[00:21:04 -> 00:21:07] The first category is automating tedious workflows.
+[00:21:07 -> 00:21:09] That's the more boring one.
+[00:21:09 -> 00:21:11] And I'll give you some boring examples.
+[00:21:11 -> 00:21:12] - Boring as opportunity.
+[00:21:12 -> 00:21:14] - Boring as opportunity, yeah, exactly.
+[00:21:14 -> 00:21:16] Like ERPs is a really big one.
+[00:21:16 -> 00:21:19] And so all the acronyms you can think of,
+[00:21:19 -> 00:21:20] ERPs, CRMs.
+[00:21:20 -> 00:21:21] - All the systems of record.
+[00:21:21 -> 00:21:23] - Yeah, every single system of record, right?
+[00:21:23 -> 00:21:26] And so we've seen folks, procurement software.
+[00:21:26 -> 00:21:27] Like you're going to vendors
+[00:21:27 -> 00:21:31] and every year you're ordering a bunch of lab equipment
+[00:21:31 -> 00:21:33] instead of having this giant spreadsheet with like a
+[00:21:33 -> 00:21:36] thousand rows that then the ops team,
+[00:21:37 -> 00:21:39] it's like, you know, work-to-blend companies, like normally
+[00:21:39 -> 00:21:41] what they have done is they have
+[00:21:41 -> 00:21:43] this giant spreadsheet that gets filled out by the teams
+[00:21:43 -> 00:21:45] themselves. Then an ops team takes that
+[00:21:45 -> 00:21:48] giant spreadsheet, puts it into an internal, you know,
+[00:21:48 -> 00:21:51] procurement software, and then that gets
+[00:21:51 -> 00:21:55] like, you know, finalized as a bunch of lines. And then a
+[00:21:55 -> 00:21:57] sales team then goes, procurement team
+[00:21:57 -> 00:22:01] then takes that giant software output and then goes out and
+[00:22:01 -> 00:22:02] reaches out to vendors.
+[00:22:02 -> 00:22:04] Computers can automate all of that, right?
+[00:22:04 -> 00:22:05] And so like procurement is a big one.
+[00:22:05 -> 00:22:08] We see finance is another really interesting category we've
+[00:22:08 -> 00:22:08] seen.
+[00:22:08 -> 00:22:13] And so, you know, there's a lot of different ledgers within
+[00:22:13 -> 00:22:14] a company, right?
+[00:22:14 -> 00:22:16] And so you have like ledgers for expenses, ledgers, all
+[00:22:16 -> 00:22:17] these things.
+[00:22:17 -> 00:22:18] And so at the end of the month, there's a lot of
+[00:22:18 -> 00:22:19] reconciliation.
+[00:22:19 -> 00:22:23] And a lot of these financial software don't have APIs to be
+[00:22:23 -> 00:22:24] able to quickly pull things.
+[00:22:25 -> 00:22:28] And so the finance team being able to have computer use
+[00:22:28 -> 00:22:30] look through all these ledgers, reconcile,
+[00:22:30 -> 00:22:33] pull out anything that's like interesting
+[00:22:33 -> 00:22:36] to flag either to a person or then do some investigation,
+[00:22:36 -> 00:22:39] also a very boring but useful workflow.
+[00:22:39 -> 00:22:41] For our sales team, a lot of sales teams
+[00:22:41 -> 00:22:44] uses a lot of different software for like transcripts,
+[00:22:44 -> 00:22:46] for getting data, all these kinds of things.
+[00:22:46 -> 00:22:50] And so having computer use, go and do prospecting
+[00:22:50 -> 00:22:54] and then going and putting that into a CRM
+[00:22:54 -> 00:22:57] or some kind of like, you know, outreach software
+[00:22:57 -> 00:23:01] then all that so all the system records is the boring part
+[00:23:01 -> 00:23:02] um and then like market research
+[00:23:02 -> 00:23:05] another one that we see a lot um and so you know in my free
+[00:23:05 -> 00:23:07] time i've been building this like uh
+[00:23:07 -> 00:23:10] video annotation software for for badminton i pull out of
+[00:23:10 -> 00:23:12] badminton and like i like to film myself
+[00:23:12 -> 00:23:15] playing the game and then uh having the agent kind of go
+[00:23:15 -> 00:23:17] and and look at stuff and i was like okay
+[00:23:17 -> 00:23:19] how do i make this thing really useful there's some
+[00:23:19 -> 00:23:22] software out there for like pickleball for
+[00:23:22 -> 00:23:25] squash for tennis and so i just had computer use go log in
+[00:23:25 -> 00:23:27] create an account on these soft
+[00:23:27 -> 00:23:30] on these softwares try it take screenshots give me feedback
+[00:23:30 -> 00:23:32] and then try to build it back into the
+[00:23:32 -> 00:23:34] app and so these are all kind of like tedious workflows
+[00:23:34 -> 00:23:36] that could be done and then i think
+[00:23:36 -> 00:23:39] some of the more like interesting creative work of like
+[00:23:39 -> 00:23:41] enabling more ambitious work is like you
+[00:23:41 -> 00:23:44] know we talked about um the model now being really good
+[00:23:44 -> 00:23:47] with like visual visual design and so um
+[00:23:47 -> 00:23:50] circuit design you know being able like architecture work
+[00:23:50 -> 00:23:52] hardware engineering game
+[00:23:52 -> 00:23:55] design these are also areas that i i think we're really
+[00:23:55 -> 00:23:58] excited about where the astro can take um
+[00:23:58 -> 00:24:00] less you know less common for enterprise to think about
+[00:24:00 -> 00:24:02] those right now because they're thinking
+[00:24:02 -> 00:24:04] about the boring opportunities but i think as folks
+[00:24:04 -> 00:24:06] understand the capabilities of model more
+[00:24:06 -> 00:24:09] that's where um i think we'll kind of see more usage next
+[00:24:09 -> 00:24:11] but curious if any thoughts are yeah
+[00:24:11 -> 00:24:14] i think kind of similarly on the consumer side there's a
+[00:24:14 -> 00:24:16] lot of things where it's sort of
+[00:24:16 -> 00:24:18] automating drudgery or just doing things you don't want to
+[00:24:18 -> 00:24:21] do it's filling out dmv forms for you it's
+[00:24:21 -> 00:24:24] helping you unsubscribe from a bunch of emails in your
+[00:24:24 -> 00:24:24] inbox.
+[00:24:25 -> 00:24:28] And then I think there's also things that are more like
+[00:24:29 -> 00:24:31] I'm hearing from a lot of people, stories of people doing
+[00:24:31 -> 00:24:32] things
+[00:24:32 -> 00:24:33] that they just wouldn't have time.
+[00:24:33 -> 00:24:35] They wouldn't have had time or wouldn't have thought to do
+[00:24:35 -> 00:24:35] otherwise.
+[00:24:35 -> 00:24:39] Like, I don't for me personally, I'm
+[00:24:39 -> 00:24:41] maintaining spreadsheets about my finance and spreadsheets
+[00:24:41 -> 00:24:42] about meal planning.
+[00:24:42 -> 00:24:45] And I have a friend who's a personal trainer who's making
+[00:24:45 -> 00:24:46] customized
+[00:24:46 -> 00:24:47] things for his clients.
+[00:24:47 -> 00:24:50] And, you know, some of these things would just be so,
+[00:24:50 -> 00:24:54] so time prohibitive to do in your personal life, but this
+[00:24:54 -> 00:24:56] makes it so easy.
+[00:24:56 -> 00:24:58] I use Apple Numbers, which is like an obscure spreadsheet
+[00:24:58 -> 00:25:00] program, but the model still knocks
+[00:25:00 -> 00:25:01] it out of the park. I don't think I've ever heard someone
+[00:25:01 -> 00:25:02] use Apple Numbers.
+[00:25:02 -> 00:25:05] It's a surprisingly great spreadsheet software. And then I
+[00:25:05 -> 00:25:07] think there's a third category of
+[00:25:07 -> 00:25:11] thing, which I'm kind of the most excited about, which is
+[00:25:11 -> 00:25:12] just starting and I think
+[00:25:14 -> 00:25:18] on the horizon you know um which is really just having a
+[00:25:18 -> 00:25:21] different way to use your entire computer
+[00:25:21 -> 00:25:24] or interface with software i think you saw in our astra ad
+[00:25:24 -> 00:25:26] uh really cool examples of people just
+[00:25:26 -> 00:25:28] talk to their computer with their voice it's such a natural
+[00:25:28 -> 00:25:29] way to use your computer and i think
+[00:25:29 -> 00:25:32] over time we're going to see the form factor of software
+[00:25:32 -> 00:25:34] itself change due to this technology
+[00:25:34 -> 00:25:38] and i'm really excited about that on that point okay form
+[00:25:38 -> 00:25:41] factor of software changing um imagine
+[00:25:41 -> 00:25:45] if you're an enterprise user, you're used to using whatever
+[00:25:45 -> 00:25:49] clunky ERP from 30 years ago,
+[00:25:50 -> 00:25:54] there's a world in which you now unleash a set of agents
+[00:25:54 -> 00:25:56] that just operate that software and
+[00:25:56 -> 00:26:02] you don't really care. There's another world in which folks
+[00:26:02 -> 00:26:05] are a new AI native player is using
+[00:26:05 -> 00:26:08] a computer using agent. And I'm curious, do you think the
+[00:26:08 -> 00:26:10] world is going to go more in the
+[00:26:10 -> 00:26:14] direction of like keep the legacy folks um and just have
+[00:26:14 -> 00:26:17] this layer on top or do you think you
+[00:26:17 -> 00:26:19] know computer using agents can absolutely be part of uh new
+[00:26:19 -> 00:26:21] software players and this is something
+[00:26:21 -> 00:26:23] i think a lot about so i'm curious to get your guys's
+[00:26:23 -> 00:26:25] thoughts it is such an interesting moment
+[00:26:25 -> 00:26:28] where simultaneously the cost and complexity of creating
+[00:26:28 -> 00:26:30] new software is so much lower so you
+[00:26:30 -> 00:26:33] can't imagine software changing so much but also there
+[00:26:33 -> 00:26:36] exists so much legacy software in the world
+[00:26:36 -> 00:26:38] the computer use is so well suited to interact with. So I
+[00:26:38 -> 00:26:40] expect both of those things to continue
+[00:26:40 -> 00:26:42] for a long time. If you look at the software that's in
+[00:26:42 -> 00:26:44] production today, a lot of it was
+[00:26:44 -> 00:26:47] written 10, 20, 30, 40 years ago. And I don't think that
+[00:26:47 -> 00:26:49] that stuff's going to go away overnight.
+[00:26:49 -> 00:26:52] I do think that in some way, the existence of computer use
+[00:26:52 -> 00:26:57] may put more pressure on companies
+[00:26:57 -> 00:26:59] to make software work better with agents because all the
+[00:26:59 -> 00:27:01] software is going to work with agents
+[00:27:01 -> 00:27:04] by default. And I think WebMCP is a great example of this.
+[00:27:04 -> 00:27:05] And I think we'll see more stuff like
+[00:27:05 -> 00:27:10] that. So yeah, I sort of expect both to be to be super
+[00:27:10 -> 00:27:12] important. But I do think it'll like kind
+[00:27:12 -> 00:27:16] of shift over time. What do you think, James? Yeah, I agree
+[00:27:16 -> 00:27:17] with you. I think it's like,
+[00:27:19 -> 00:27:22] the way there's a lot of arts and crafts and you understand
+[00:27:22 -> 00:27:24] this because Ari built a beautiful
+[00:27:24 -> 00:27:28] product with his team. The cursor was all in. And so the I
+[00:27:28 -> 00:27:30] think there's like a lot of art and
+[00:27:30 -> 00:27:33] craft into building like great products that people can
+[00:27:33 -> 00:27:35] hold in their hand.
+[00:27:35 -> 00:27:38] And, um, I don't know, like for me, if we go, if the
+[00:27:38 -> 00:27:39] internet becomes just
+[00:27:39 -> 00:27:43] this like faceless, you know, thing that is just agents
+[00:27:43 -> 00:27:44] talking to each other
+[00:27:44 -> 00:27:47] and people are not using anything anymore, I would be very
+[00:27:47 -> 00:27:47] sad.
+[00:27:47 -> 00:27:50] Um, and, and I don't think it will be like that because
+[00:27:50 -> 00:27:51] like, there's like
+[00:27:51 -> 00:27:53] something about craftsmanship and art art artisan software
+[00:27:53 -> 00:27:54] that's like, just
+[00:27:54 -> 00:27:57] feels nice to use because the person who designed it really
+[00:27:57 -> 00:27:59] , really understands,
+[00:27:59 -> 00:28:03] um like the experience that the customer wants to have so
+[00:28:03 -> 00:28:07] like my wife loves is recently got into
+[00:28:07 -> 00:28:09] playing this like uh you know board game i forgot the name
+[00:28:09 -> 00:28:11] of it it's where you connect like five
+[00:28:11 -> 00:28:14] pebbles to like win i think it's like omak is the name of
+[00:28:14 -> 00:28:17] it and so anyway uh so she's trying to get
+[00:28:17 -> 00:28:19] good at it because she's playing online with friends and it
+[00:28:19 -> 00:28:20] 's getting her ass kicked and
+[00:28:20 -> 00:28:22] and so i was like all right i'm gonna build you like a
+[00:28:22 -> 00:28:26] tactical trainer for um you know going
+[00:28:26 -> 00:28:28] through different gambits so you can like get better at it
+[00:28:28 -> 00:28:29] like that's for example something
+[00:28:29 -> 00:28:33] that like i you know created a first version i was like oh
+[00:28:33 -> 00:28:35] i know like she likes to do it in a
+[00:28:35 -> 00:28:38] certain way she likes these type of uh ways to learn more
+[00:28:38 -> 00:28:39] than others and so i was able to like
+[00:28:39 -> 00:28:42] you know craft the software to be something like feels
+[00:28:42 -> 00:28:44] really good for her and like these kind of
+[00:28:44 -> 00:28:47] personalized software i know it's like a thing maybe today
+[00:28:47 -> 00:28:49] still feels like only really tech
+[00:28:49 -> 00:28:52] people will do but i think if you like think about this a
+[00:28:52 -> 00:28:55] few years out it's like if anybody can
+[00:28:55 -> 00:28:58] build anything and they can build these really craft
+[00:28:58 -> 00:29:00] software in a very short amount of time
+[00:29:00 -> 00:29:03] for like niche use cases that are like so well tailored for
+[00:29:03 -> 00:29:04] people.
+[00:29:04 -> 00:29:06] I think that's a beautiful world.
+[00:29:06 -> 00:29:09] And again, you know, at the end of her training, the
+[00:29:09 -> 00:29:12] lessons and mistakes she made, that could
+[00:29:12 -> 00:29:15] be an agent that summarizes it and gives her in text format
+[00:29:15 -> 00:29:15] .
+[00:29:15 -> 00:29:18] But when she's actually playing with the AI and trying to
+[00:29:18 -> 00:29:20] get better, that's something
+[00:29:20 -> 00:29:21] that the person has to do.
+[00:29:21 -> 00:29:25] I do think it's, it's, um, I I'm more, I'm bullish that I
+[00:29:25 -> 00:29:26] don't think UI is going away.
+[00:29:26 -> 00:29:29] And then, uh, and I think kind of at the low tangential to
+[00:29:29 -> 00:29:30] original question, but I do
+[00:29:30 -> 00:29:34] think that, um, the pressure of cheap software will make it
+[00:29:34 -> 00:29:36] so that software has to be better.
+[00:29:37 -> 00:29:38] Um, but I don't think it will just be like, yeah,
+[00:29:38 -> 00:29:40] everything will have an MCP and an API
+[00:29:40 -> 00:29:42] and, you know, computer use will never be useful.
+[00:29:43 -> 00:29:44] I love this point so much.
+[00:29:44 -> 00:29:46] I think that like humans are so hardwired for direct
+[00:29:46 -> 00:29:47] manipulation.
+[00:29:47 -> 00:29:50] You really want to go to, you know, move and do things with
+[00:29:50 -> 00:29:51] your own hands.
+[00:29:51 -> 00:29:51] Yeah.
+[00:29:52 -> 00:29:56] And I think that it's really exciting to think about how
+[00:29:56 -> 00:29:59] software in the past was so one size fits all.
+[00:29:59 -> 00:30:01] It had to be, you know, often a lot of the software we
+[00:30:01 -> 00:30:05] interact with every day is designed for millions, tens of
+[00:30:05 -> 00:30:07] millions, hundreds of millions, billions of people to use.
+[00:30:07 -> 00:30:10] And I think we will enter an era where any piece of
+[00:30:10 -> 00:30:13] software could be designed for 100 people or one person.
+[00:30:13 -> 00:30:17] And just how much more personal and unique that kind of
+[00:30:17 -> 00:30:19] software will be.
+[00:30:19 -> 00:30:22] Yeah, my mental model is I think there's probably two
+[00:30:22 -> 00:30:23] buckets.
+[00:30:23 -> 00:30:27] One is on the consumer side, you've got either something
+[00:30:27 -> 00:30:31] you just get joy out of, you enjoy using, or you learn from
+[00:30:31 -> 00:30:32] .
+[00:30:33 -> 00:30:34] It's not the utility of it.
+[00:30:34 -> 00:30:37] the joy of interacting or learning or whatever it is and
+[00:30:37 -> 00:30:40] you want to spend time on the on the b2b
+[00:30:40 -> 00:30:43] side you you may want your agent to complete a bunch of the
+[00:30:43 -> 00:30:45] tedious work but you also there's
+[00:30:45 -> 00:30:47] this concept of like the audit log like and you that could
+[00:30:47 -> 00:30:49] be personalized in how you want to
+[00:30:49 -> 00:30:53] interact but the product really is me as the human user
+[00:30:53 -> 00:30:56] setting the goal and then being able to like
+[00:30:56 -> 00:30:58] understand the logic but not necessarily need to run
+[00:30:58 -> 00:31:01] through like the entire chain of command of
+[00:31:01 -> 00:31:02] of how it happened.
+[00:31:02 -> 00:31:05] And so like any B2B user still needs to figure out,
+[00:31:05 -> 00:31:07] okay, like why did that payment get made
+[00:31:07 -> 00:31:09] and go back in and get a summary of what happened
+[00:31:09 -> 00:31:12] and be able to say, okay, pay this person at this time,
+[00:31:12 -> 00:31:16] yeah, at 30 days, this much discount should be applied,
+[00:31:16 -> 00:31:17] et cetera.
+[00:31:17 -> 00:31:19] They want the agent to take care of like the execution of
+[00:31:19 -> 00:31:19] it
+[00:31:19 -> 00:31:21] but they wanna be able to at some level,
+[00:31:21 -> 00:31:25] like some level of control still needs to be put in there.
+[00:31:25 -> 00:31:26] And I think that's like something
+[00:31:26 -> 00:31:29] that does require a UI of some sort.
+[00:31:29 -> 00:31:33] And it has to be, I think if we're moving more towards
+[00:31:33 -> 00:31:37] believing that AI will do more of this, that part has to be
+[00:31:37 -> 00:31:38] enjoyable to use too, right?
+[00:31:39 -> 00:31:39] Why not?
+[00:31:39 -> 00:31:41] Like, why should we settle for shitty software?
+[00:31:42 -> 00:31:45] I do think it'll be really interesting to see if we, and I
+[00:31:45 -> 00:31:50] 'm optimistic that we will see new kinds of software where
+[00:31:50 -> 00:31:53] it has traditional user interfaces, but is also using
+[00:31:53 -> 00:31:54] agents under the hood.
+[00:31:54 -> 00:31:57] And then maybe sometimes those agents are themselves using
+[00:31:57 -> 00:31:58] computer use to automate
+[00:31:58 -> 00:32:01] legacy software by giving you some much nicer, more purpose
+[00:32:01 -> 00:32:02] built experience.
+[00:32:02 -> 00:32:04] I'm like really excited for that class.
+[00:32:04 -> 00:32:04] Yeah.
+[00:32:04 -> 00:32:05] Yeah.
+[00:32:05 -> 00:32:08] It's kind of like the one where we like to use internalized
+[00:32:08 -> 00:32:09] , like the shared intelligence
+[00:32:09 -> 00:32:09] layer, right?
+[00:32:09 -> 00:32:12] Like you have your agent using legacy software somewhere
+[00:32:12 -> 00:32:14] else and doing things at other places.
+[00:32:16 -> 00:32:18] You like, if you're using an application, the application
+[00:32:18 -> 00:32:20] wants to get access to that
+[00:32:20 -> 00:32:20] context.
+[00:32:20 -> 00:32:22] So it's able to deliver a better experience.
+[00:32:22 -> 00:32:25] Like I think if we had every website has its own agent that
+[00:32:25 -> 00:32:26] doesn't talk to your agent,
+[00:32:27 -> 00:32:30] it's a very fragmented world. And so figuring out like how
+[00:32:30 -> 00:32:31] that plays together, where the agent can
+[00:32:31 -> 00:32:34] plug in and use your other software, I think it's going to
+[00:32:34 -> 00:32:36] be like a really interesting thing to
+[00:32:36 -> 00:32:40] play out for the next few months. I love that you guys talk
+[00:32:40 -> 00:32:40] about this,
+[00:32:40 -> 00:32:43] because I think it's so underappreciated the importance of
+[00:32:43 -> 00:32:44] like human AI interaction,
+[00:32:44 -> 00:32:47] especially if you want like a product to be successful. So
+[00:32:47 -> 00:32:48] like being thoughtful of like,
+[00:32:48 -> 00:32:52] How can I kind of like humans are used to collaborate.
+[00:32:52 -> 00:32:55] So you want any agent to be able to like kind of fit into
+[00:32:55 -> 00:32:55] the team.
+[00:32:56 -> 00:32:58] And just curious, like if you apply that to a new startup,
+[00:32:58 -> 00:32:59] let's say you're like,
+[00:32:59 -> 00:33:02] I don't know, starting a company tomorrow and you want to
+[00:33:02 -> 00:33:03] use computer
+[00:33:03 -> 00:33:07] use to like solve a workflow within the enterprise.
+[00:33:07 -> 00:33:08] How would you think about it?
+[00:33:08 -> 00:33:12] And would you be kind of what would be the things that jump
+[00:33:12 -> 00:33:13] to mind in terms of like,
+[00:33:13 -> 00:33:14] oh, I want to know when he fails?
+[00:33:14 -> 00:33:18] Well, I want it to be able to communicate with people
+[00:33:18 -> 00:33:20] or I want it to be like, I don't know, a black box.
+[00:33:20 -> 00:33:23] Just like maybe if you had to talk to founders right now,
+[00:33:23 -> 00:33:26] what advice would you give them as they try to use your
+[00:33:26 -> 00:33:27] models
+[00:33:27 -> 00:33:30] and capabilities to just solve problems for enterprises?
+[00:33:30 -> 00:33:35] In my mind, it depends on it depends so much on the mod
+[00:33:35 -> 00:33:36] ality of,
+[00:33:36 -> 00:33:41] you know, are you trying to are you a small team
+[00:33:41 -> 00:33:44] and you want sort of individual on the team to be able to
+[00:33:44 -> 00:33:45] use
+[00:33:45 -> 00:33:48] some piece of software that that you're that your team is
+[00:33:48 -> 00:33:49] using?
+[00:33:49 -> 00:33:50] but in a more efficient way?
+[00:33:52 -> 00:33:54] Or are you maybe building something
+[00:33:54 -> 00:33:58] that itself wants to interact with existing software,
+[00:33:58 -> 00:34:00] in which case maybe you have some, you know,
+[00:34:00 -> 00:34:02] machine in the cloud somewhere
+[00:34:02 -> 00:34:04] that's doing computer use in the background.
+[00:34:04 -> 00:34:06] I think that will really affect the modality
+[00:34:06 -> 00:34:09] of how you want the human agent collaboration to be, right?
+[00:34:10 -> 00:34:12] And yeah, you know, in the former case,
+[00:34:12 -> 00:34:15] I think a lot of our products are serving this use case,
+[00:34:15 -> 00:34:18] you know, where you sit down at ChatGBT
+[00:34:18 -> 00:34:21] and there's a lot of great collaboration you can have there
+[00:34:21 -> 00:34:21] .
+[00:34:22 -> 00:34:23] And in the other case,
+[00:34:24 -> 00:34:26] if you're building something with the API,
+[00:34:27 -> 00:34:31] you're doing your own computer use implementation,
+[00:34:31 -> 00:34:34] then yeah, then it really is interesting to figure out
+[00:34:34 -> 00:34:36] when do you want the human to be in the loop?
+[00:34:36 -> 00:34:38] Is the agent telling you when something's wrong?
+[00:34:38 -> 00:34:39] Is it telling you when something went right?
+[00:34:40 -> 00:34:42] Is something summarizing that
+[00:34:42 -> 00:34:44] so that you don't get bombarded with notifications saying,
+[00:34:44 -> 00:34:46] hey, this happened, this happened, this happened,
+[00:34:46 -> 00:34:47] which actually you're going to ignore.
+[00:34:48 -> 00:34:51] um um i don't know what do you think james yeah i mean i i
+[00:34:51 -> 00:34:53] you know both ari and i were startup
+[00:34:53 -> 00:34:55] founders before we joined open ai and so you know i'm still
+[00:34:55 -> 00:34:57] very bullish on startups you know i
+[00:34:57 -> 00:35:00] think the question right uh it kind of comes down to like
+[00:35:00 -> 00:35:02] what is there still mo right is there
+[00:35:02 -> 00:35:04] something that startups can still tackle while labs are
+[00:35:04 -> 00:35:06] doing things i mean in general i just
+[00:35:06 -> 00:35:08] think there's like like two things like one is like i think
+[00:35:08 -> 00:35:10] there's so many things to build right
+[00:35:10 -> 00:35:13] and like even though we're quite big now thousands of
+[00:35:13 -> 00:35:15] people we are still feeling very stretched thin
+[00:35:15 -> 00:35:18] internally and like you know it's like the teams are not
+[00:35:18 -> 00:35:19] very big for all the problems and so if
+[00:35:19 -> 00:35:22] you have a problem that you really deeply understand you
+[00:35:22 -> 00:35:24] have industry expertise you
+[00:35:24 -> 00:35:27] understand how regulatory works the go-to-market motion how
+[00:35:27 -> 00:35:30] to service those customers um it is
+[00:35:30 -> 00:35:33] still i think a very green field out there and um the tools
+[00:35:33 -> 00:35:36] that that you have through our apis like
+[00:35:36 -> 00:35:39] ari mentioned with computer use um i think i think will
+[00:35:39 -> 00:35:41] still let you accelerate and speed really i
+[00:35:41 -> 00:35:44] I think at the end of day, speed and pain is kind of the mo
+[00:35:44 -> 00:35:45] at that exists today.
+[00:35:46 -> 00:35:48] I think the other thing I think about a lot is like there
+[00:35:48 -> 00:35:49] are, in my opinion,
+[00:35:49 -> 00:35:52] still a lot of like vertical industries where the diffusion
+[00:35:52 -> 00:35:54] of AI is like much slower.
+[00:35:54 -> 00:35:58] And so, you know, I was talking to a company the other day
+[00:35:58 -> 00:36:02] who uses computer use to help restaurant groups to, you
+[00:36:02 -> 00:36:02] know,
+[00:36:02 -> 00:36:07] take pictures of like their back storage, you know, and
+[00:36:07 -> 00:36:08] then using that
+[00:36:09 -> 00:36:11] the vision looks at kind of like what is going to be
+[00:36:11 -> 00:36:12] missing
+[00:36:12 -> 00:36:13] based on a projection of tomorrow's traffic.
+[00:36:13 -> 00:36:17] And then it takes that to then use computer use to go to
+[00:36:17 -> 00:36:18] like a shoppy
+[00:36:18 -> 00:36:20] or some kind of like procurement software to then order
+[00:36:20 -> 00:36:22] your groceries for the next day.
+[00:36:22 -> 00:36:26] And then based on that, it will go into your ERP to adjust
+[00:36:26 -> 00:36:27] like the timetable
+[00:36:27 -> 00:36:30] for your like employees who are who you might need more
+[00:36:30 -> 00:36:31] people to help.
+[00:36:31 -> 00:36:35] Because in the last year, at this time of the day, there
+[00:36:35 -> 00:36:36] was a lot more traffic
+[00:36:36 -> 00:36:39] coming in from like a holiday or something like that.
+[00:36:39 -> 00:36:42] And so like, you know, those restaurant groups are probably
+[00:36:42 -> 00:36:42] not like tech
+[00:36:42 -> 00:36:47] companies that are super, you know, familiar with all the
+[00:36:47 -> 00:36:48] tools that are available.
+[00:36:48 -> 00:36:51] And so I think like, you know, living in San Francisco, we
+[00:36:51 -> 00:36:52] see a lot of thinking,
+[00:36:52 -> 00:36:54] wow, like the labs can do everything, the codecs and like,
+[00:36:54 -> 00:36:55] you know, why doesn't
+[00:36:55 -> 00:36:57] everybody just install codecs and just have it do stuff?
+[00:36:57 -> 00:37:00] But like for the average American and the average small,
+[00:37:00 -> 00:37:01] medium business owner,
+[00:37:01 -> 00:37:04] the average enterprise, even understanding what the tools
+[00:37:04 -> 00:37:05] are capable is one,
+[00:37:05 -> 00:37:07] connecting tools in a way that makes sense is two,
+[00:37:07 -> 00:37:09] deploying it is three, servicing is four.
+[00:37:09 -> 00:37:12] And so there's still a lot, in my opinion, where if there
+[00:37:12 -> 00:37:14] are complex workflows that require a lot
+[00:37:14 -> 00:37:17] of disparate software, computer use is a great way to join
+[00:37:17 -> 00:37:19] them, complete the entire Intend
+[00:37:19 -> 00:37:22] workflow, and then building it in a format and UI that
+[00:37:22 -> 00:37:25] feels good to hold for those customers,
+[00:37:25 -> 00:37:28] feels still like a really, really big opportunity that I
+[00:37:28 -> 00:37:30] think is still open.
+[00:37:30 -> 00:37:33] Right. Tell us about what's next. What are you excited
+[00:37:33 -> 00:37:35] about that's on the Frontier that
+[00:37:35 -> 00:37:38] that you can share around computer using agents?
+[00:37:38 -> 00:37:41] - Well, I've sort of gestured towards it already,
+[00:37:41 -> 00:37:43] but we're really excited about speed.
+[00:37:43 -> 00:37:46] We're really excited about making computer use superhuman.
+[00:37:46 -> 00:37:50] And we're really excited about things that blend together
+[00:37:50 -> 00:37:53] different kinds of interfaces that bring together
+[00:37:53 -> 00:37:56] sort of multimodal inputs and outputs.
+[00:37:56 -> 00:37:58] So you can have more kind of fluid experiences
+[00:37:58 -> 00:37:59] with your computer.
+[00:37:59 -> 00:38:00] I think right now, a lot of our computer use product
+[00:38:00 -> 00:38:02] is very background focused.
+[00:38:02 -> 00:38:05] It's very much like, let me give the agent a task
+[00:38:05 -> 00:38:07] So it can do that while I do something else,
+[00:38:07 -> 00:38:08] which is actually a tremendous strength, right,
+[00:38:08 -> 00:38:09] of the product.
+[00:38:09 -> 00:38:10] But I think that in the future,
+[00:38:10 -> 00:38:13] we'll also see more of this like real-time collaboration
+[00:38:13 -> 00:38:15] between you and the agent.
+[00:38:15 -> 00:38:18] So I'm really excited about this area.
+[00:38:19 -> 00:38:24] And otherwise just sort of better, cheaper,
+[00:38:24 -> 00:38:26] more available, easier to use.
+[00:38:26 -> 00:38:27] - More, yeah, exactly.
+[00:38:27 -> 00:38:29] Being able to actually access everything.
+[00:38:29 -> 00:38:29] - Yeah.
+[00:38:29 -> 00:38:32] - I think there's, you know, with DOTS, right,
+[00:38:32 -> 00:38:34] where we're giving folks these like computer in the cloud,
+[00:38:34 -> 00:38:36] ChatGP work also has a browser in the cloud.
+[00:38:36 -> 00:38:39] I think honestly, like for me,
+[00:38:39 -> 00:38:40] like one thing I'm excited about
+[00:38:40 -> 00:38:41] is just making the experience
+[00:38:41 -> 00:38:43] feel a little bit more coherent.
+[00:38:43 -> 00:38:46] Like, you know, today you can install the Chrome extension
+[00:38:46 -> 00:38:48] and that uses your like password manager
+[00:38:48 -> 00:38:50] and everything in Chrome.
+[00:38:50 -> 00:38:52] And then we have an in-app browser in the desktop app,
+[00:38:52 -> 00:38:54] which has a different set of cookies and different
+[00:38:54 -> 00:38:55] passwords.
+[00:38:55 -> 00:38:57] Your computer in the cloud also has different things.
+[00:38:57 -> 00:38:59] And for the average consumer, it's confusing.
+[00:38:59 -> 00:39:01] It's like, why do I have these four different browsers
+[00:39:01 -> 00:39:03] that all don't talk to each other?
+[00:39:03 -> 00:39:06] If I open up a tab in one, does it show up in the other?
+[00:39:06 -> 00:39:08] And so I think a lot of what I'm excited about
+[00:39:08 -> 00:39:12] is how do we make computer use go from this product
+[00:39:12 -> 00:39:14] that is used by enterprises
+[00:39:14 -> 00:39:18] and really hardcore tip of the spear kind of users
+[00:39:18 -> 00:39:21] to something that's actually understandable for people.
+[00:39:21 -> 00:39:22] It's kind of like an oxymoron
+[00:39:22 -> 00:39:24] because I think computer use is actually the most easy
+[00:39:24 -> 00:39:25] to understand AI product
+[00:39:25 -> 00:39:27] because it's an AI using your computer.
+[00:39:27 -> 00:39:30] But then because of the complexities
+[00:39:30 -> 00:39:32] of the different states you have to manage
+[00:39:32 -> 00:39:34] and the different places you're using it,
+[00:39:34 -> 00:39:36] the implementation details sometimes seep through,
+[00:39:36 -> 00:39:38] and then it becomes kind of hard to grok.
+[00:39:38 -> 00:39:41] And so being able to kind of make that consumer grade
+[00:39:41 -> 00:39:44] and easier to understand, more coherent,
+[00:39:44 -> 00:39:46] is something I'm really excited about for next quarter.
+[00:39:46 -> 00:39:47] - Yeah, and I think it comes back to the point
+[00:39:47 -> 00:39:50] that there is still a human that's setting off the agent,
+[00:39:50 -> 00:39:55] right, and they have to, the better the UI and controls
+[00:39:55 -> 00:39:57] and the easier and more enjoyable it is to use,
+[00:39:57 -> 00:39:58] the more they're gonna get out of it,
+[00:39:58 -> 00:40:01] and that's still principle. - Absolutely.
+[00:40:01 -> 00:40:05] On that point, one other thing I want to gesture towards is
+[00:40:05 -> 00:40:05] ,
+[00:40:05 -> 00:40:08] I think another challenge of the product today is,
+[00:40:08 -> 00:40:11] you have to put some thought into how you're going to use
+[00:40:11 -> 00:40:11] it
+[00:40:11 -> 00:40:13] and you have to remember to use it
+[00:40:13 -> 00:40:15] and you have to convince yourself to do things
+[00:40:15 -> 00:40:18] that are different from how you're used to doing them.
+[00:40:18 -> 00:40:23] And I do think dots, like James was talking about earlier,
+[00:40:23 -> 00:40:25] have this really powerful productivity
+[00:40:25 -> 00:40:28] where they can sort of come to you and identify situations
+[00:40:28 -> 00:40:31] and help you solve problems.
+[00:40:31 -> 00:40:34] I think we'll also see a lot more proactivity.
+[00:40:34 -> 00:40:36] I'm really excited about a world where the agent
+[00:40:36 -> 00:40:40] can sort of adapt to you instead of you adapting to it.
+[00:40:41 -> 00:40:44] And I think that we're gonna see a lot of that
+[00:40:44 -> 00:40:46] and I think it will make it a lot easier
+[00:40:46 -> 00:40:48] for people to actually like relate to
+[00:40:48 -> 00:40:51] and understand and incorporate this technology
+[00:40:51 -> 00:40:53] while also still being the one sort of setting
+[00:40:53 -> 00:40:56] and steering the goals, if that makes sense.
+[00:40:56 -> 00:40:58] - One of the things we haven't talked about yet
+[00:40:58 -> 00:41:01] is the momentum behind computer use and how much has
+[00:41:01 -> 00:41:03] changed and fabrizio and i chatted a little
+[00:41:03 -> 00:41:05] bit about this in our piece would love for you to just kind
+[00:41:05 -> 00:41:07] of talk about where it's you know how
+[00:41:07 -> 00:41:10] it's the trajectories uh so far and where things are headed
+[00:41:10 -> 00:41:12] yeah i mean james and i have been
+[00:41:12 -> 00:41:16] working on computer use for some time now yeah um at openai
+[00:41:16 -> 00:41:19] and it's been an incredibly exciting
+[00:41:19 -> 00:41:21] past like six to nine months right because we started
+[00:41:21 -> 00:41:23] working on these computer use products and
+[00:41:24 -> 00:41:28] um very few people were using them um the models um all of
+[00:41:28 -> 00:41:31] a sudden it felt to me became great at
+[00:41:31 -> 00:41:34] these kinds of tasks um earlier this year because of
+[00:41:34 -> 00:41:36] amazing work the research team did and then
+[00:41:36 -> 00:41:39] we've been working super hard with a bunch of teams
+[00:41:39 -> 00:41:41] internally on how to create actually good
+[00:41:41 -> 00:41:44] product experiences around this and then just in the past
+[00:41:44 -> 00:41:46] couple of months all of a sudden you know
+[00:41:46 -> 00:41:49] the product's growing like crazy and and people are really
+[00:41:49 -> 00:41:50] seeing the value in it um but i think
+[00:41:50 -> 00:41:54] it's still so early you know it's still the case that only
+[00:41:54 -> 00:41:56] um some you know portion of our user
+[00:41:56 -> 00:42:00] base is using computer use and um i think we're gonna see
+[00:42:00 -> 00:42:03] it uh grow quite a bit yeah totally i
+[00:42:03 -> 00:42:06] mean you know i joined openai in january and that was i
+[00:42:06 -> 00:42:08] joined working on the atlas product and
+[00:42:09 -> 00:42:12] love love atlas rip atlas but the uh the i think you know
+[00:42:12 -> 00:42:14] one of the things that we realized was
+[00:42:15 -> 00:42:18] um in the atlas product the agentic experience i think for
+[00:42:18 -> 00:42:20] a few reasons wasn't actually like a
+[00:42:20 -> 00:42:23] big selling point not many people used it partly because i
+[00:42:23 -> 00:42:25] think most people treat it like a normal
+[00:42:25 -> 00:42:27] browser um and over kind of the last few months because the
+[00:42:27 -> 00:42:29] model capabilities have gotten better
+[00:42:29 -> 00:42:32] we've now incorporated browser and browser use into kind of
+[00:42:32 -> 00:42:34] all of our existing products where
+[00:42:34 -> 00:42:37] there was already agentic usage we've we've just seen you
+[00:42:37 -> 00:42:39] know it's like yc level of growth week
+[00:42:39 -> 00:42:42] over week and then it always surprised by how fast it can
+[00:42:42 -> 00:42:44] go and i think this next like big inflection
+[00:42:44 -> 00:42:49] point is like cloud right like how do we like desktop is
+[00:42:49 -> 00:42:52] still very much a power user thing
+[00:42:52 -> 00:42:54] i know we probably use our desktop all the time but like
+[00:42:54 -> 00:42:56] most most consumers are on their phones
+[00:42:56 -> 00:43:00] right and so um how do you give every single chat to user
+[00:43:00 -> 00:43:02] how to give everybody who's just using
+[00:43:02 -> 00:43:05] their phone for their day-to-day life um a powerful
+[00:43:05 -> 00:43:07] computer that they don't even need to understand
+[00:43:07 -> 00:43:09] how to use that it just kind of makes things work for them
+[00:43:09 -> 00:43:11] and so i'm really excited about how that
+[00:43:11 -> 00:43:13] That kind of brings it to, you know, billion users.
+[00:43:14 -> 00:43:17] It feels like computer using agents have had a ton of
+[00:43:17 -> 00:43:18] momentum behind them.
+[00:43:18 -> 00:43:19] And now it's the moment of like, okay, how do we get it
+[00:43:19 -> 00:43:21] into more people's hands?
+[00:43:21 -> 00:43:22] They trust it.
+[00:43:22 -> 00:43:23] They feel like they can really use it.
+[00:43:23 -> 00:43:27] And to your point earlier about coherent experiences, like
+[00:43:27 -> 00:43:31] that's a real, I think once, as that gets a lot better, I
+[00:43:31 -> 00:43:33] think consumers will feel more comfortable using it and it
+[00:43:33 -> 00:43:34] 'll feel more natural.
+[00:43:35 -> 00:43:35] I think that's right.
+[00:43:36 -> 00:43:39] I think we're at the scaling moment of computer use,
+[00:43:39 -> 00:43:42] both for consumer and enterprise at the same time.
+[00:43:43 -> 00:43:45] And I'm really excited to see where it goes
+[00:43:45 -> 00:43:46] and what people build with it.
+[00:43:47 -> 00:43:47] Nice. Us too.
+[00:43:48 -> 00:43:48] All right.
+[00:43:48 -> 00:43:50] Well, thank you so much for joining us.
+[00:43:50 -> 00:43:50] This was awesome.
+[00:43:51 -> 00:43:52] We love talking about this topic
+[00:43:52 -> 00:43:54] and it was really fun to hear it from you guys directly.
+[00:43:54 -> 00:43:55] Thank you.
+[00:43:55 -> 00:43:56] A lot of fun as well.
+[00:43:56 -> 00:43:56] Yeah, thanks.
+[00:43:57 -> 00:43:57] Thank you.
+[00:43:58 -> 00:43:59] Thank you, guys.

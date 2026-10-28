@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "source": {
+    "title": "The a16z Show：OpenAI Computer Use",
+    "url": "https://www.bilibili.com/video/BV16GxK6UEBh",
+    "original_url": "https://a16z.simplecast.com/episodes/openai-when-ai-agents-use-computers-faster-than-you-QLF23qpt",
+    "duration_seconds": 2654,
+    "duration_basis": "Bilibili version"
+  },
+  "execution": {
+    "route": "eacli podcast 远端静默 worker",
+    "status": "succeeded",
+    "language": "en",
+    "engine": "whisper.cpp-v1.9.1-sm120",
+    "asr_model": "large-v3",
+    "vad": "Silero VAD",
+    "elapsed_ms": 215955,
+    "browser_ui_opened": false,
+    "audio_played": false
+  },
+  "audio": {
+    "bytes": 509505614,
+    "sha256": "2444a745ee252ae67548e9a6c9b182c66ff9524e19b5948736103899fdf49d65"
+  },
+  "transcript": {
+    "original_artifact_sha256": "b9b3f310d55236540e3486e7244c6dc007470e0894bfc2d6cda2e3c561dd9db2",
+    "original_artifact_bytes": 74571,
+    "repository_sha256": "b4c34bd1694e3def7a01086c734df32fcfa05d2d691f0f76c6a8cedc71c89980",
+    "repository_bytes": 75099,
+    "segments": 1139,
+    "modification": "prepended copyright and ASR provenance header; original timestamped body unchanged"
+  },
+  "audit": {
+    "schema_version": 1,
+    "results": [
+      {
+        "ok": true,
+        "size": 75099,
+        "sha256": "b4c34bd1694e3def7a01086c734df32fcfa05d2d691f0f76c6a8cedc71c89980",
+        "lines": 1145,
+        "segments": 1139,
+        "duration_seconds": 2639,
+        "max_consecutive_identical": 2,
+        "head": [
+          "# The a16z Show：OpenAI Computer Use｜英文原声 ASR 转写",
+          "来源：https://www.bilibili.com/video/BV16GxK6UEBh",
+          "原始出处：https://a16z.simplecast.com/episodes/openai-when-ai-agents-use-computers-faster-than-you-QLF23qpt"
+        ],
+        "tail": [
+          "[00:43:56 -> 00:43:56] Yeah, thanks.",
+          "[00:43:57 -> 00:43:57] Thank you.",
+          "[00:43:58 -> 00:43:59] Thank you, guys."
+        ],
+        "warnings": [
+          "5 non-empty lines lack transcript timestamps"
+        ],
+        "errors": []
+      }
+    ]
+  },
+  "semantic_validation": "machine audit does not establish word accuracy; names and critical claims checked against original-source context and first-party documents"
+}

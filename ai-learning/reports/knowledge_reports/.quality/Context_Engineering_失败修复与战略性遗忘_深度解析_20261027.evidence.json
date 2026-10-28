@@ -1,0 +1,521 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/Context_Engineering_失败修复与战略性遗忘_深度解析_20261027.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-27",
+  "generator": {
+    "model": "gpt-6.1-sol",
+    "harness": "codex",
+    "run_id": "generator-ccb5d8a86b7f",
+    "explicit_model_override": false,
+    "override_reason": ""
+  },
+  "task": {
+    "summary": "基于用户指定的微信文章及其英文原文完成深度 AI 学习；主 Agent 撰写修订，Razer 原生 Orca Codex 独立 review。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "完整读取指定微信文章和英文原文，沿关键研究补充一手证据。"
+      },
+      {
+        "id": "R2",
+        "text": "报告能独立阅读，解释四类故障、六种修复、权重竞争、历史惯性、战略性遗忘和确定性/模型分工。"
+      },
+      {
+        "id": "R3",
+        "text": "区分经验、演示、实验与本文建议；写明指标口径、研究条件、反例与限制。"
+      },
+      {
+        "id": "R4",
+        "text": "主 Agent 实现，使用 Razer 原生 Orca 的新 Codex 上下文独立来源优先 review；反馈修订后真实复验。"
+      },
+      {
+        "id": "R5",
+        "text": "保持公开边界，不复制完整来源或私有运行内容；完成质量记录、索引和最小知识维护。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "kind": "secondary",
+      "title": "上下文工程全景：何时写死代码，何时交给模型",
+      "locator": "https://mp.weixin.qq.com/s/WObu5DV2r11AyREz6P99uQ",
+      "accessed_on": "2026-10-27",
+      "read_scope": "完整读取；中文解读为二手材料"
+    },
+    {
+      "id": "S2",
+      "kind": "primary",
+      "title": "Drew Breunig: The State of Context Engineering",
+      "locator": "https://www.dbreunig.com/2026/10/24/the-state-of-context-engineering.html",
+      "accessed_on": "2026-10-27",
+      "read_scope": "完整演讲正文与幻灯片描述；作者经验、演示和二手引文保留性质"
+    },
+    {
+      "id": "S3",
+      "kind": "primary",
+      "title": "How Long Contexts Fail",
+      "locator": "https://www.dbreunig.com/2025/06/22/how-contexts-fail-and-how-to-fix-them.html",
+      "accessed_on": "2026-10-27",
+      "read_scope": "完整读取故障框架及示例"
+    },
+    {
+      "id": "S4",
+      "kind": "primary",
+      "title": "How to Fix Your Context",
+      "locator": "https://www.dbreunig.com/2025/06/26/how-to-fix-your-context.html",
+      "accessed_on": "2026-10-27",
+      "read_scope": "完整读取六种方法与边界"
+    },
+    {
+      "id": "S5",
+      "kind": "primary",
+      "title": "Do as I Say, Not as I Do: Instruction-Induction Conflict in LLMs",
+      "locator": "https://arxiv.org/html/2605.20382v3",
+      "accessed_on": "2026-10-27",
+      "read_scope": "摘要、§2–§6：模型/条件/人工历史/结果/推理对比/限制；未运行实验"
+    },
+    {
+      "id": "S6",
+      "kind": "primary",
+      "title": "Fork-and-Flush: Escaping Idea Basins in Autoresearch Agents",
+      "locator": "https://arxiv.org/html/2610.07447v1",
+      "accessed_on": "2026-10-27",
+      "read_scope": "完整正文与结论：方法、13任务、归一化指标、11任务消融、LWE-rec反例；未重新运行或读取全部补充源码"
+    },
+    {
+      "id": "S7",
+      "kind": "primary",
+      "title": "Scaling Discovery Requires Forgetting",
+      "locator": "https://arxiv.org/abs/2610.20563",
+      "accessed_on": "2026-10-27",
+      "read_scope": "PDF正文：方法、任务/模型/budget、表1–3、机制分析与结论；原PDF表格另作视觉核验"
+    },
+    {
+      "id": "S8",
+      "kind": "official",
+      "title": "Anthropic: Self-replicating AI",
+      "locator": "https://www.anthropic.com/research/self-replicating-ai",
+      "accessed_on": "2026-10-27",
+      "read_scope": "研究背景、推理部署任务及附录A：Memento继承内容与1.5h/6h时限；不执行复制研究"
+    },
+    {
+      "id": "S9",
+      "kind": "official",
+      "title": "METR: Measuring AI Ability to Complete Long Tasks",
+      "locator": "https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/",
+      "accessed_on": "2026-10-27",
+      "read_scope": "全文方法：专家任务时间与可靠性定义；未逐项重验演讲的模型时长榜单"
+    },
+    {
+      "id": "S10",
+      "kind": "official",
+      "title": "Google DeepMind: Gemini 2.5 Technical Report",
+      "locator": "https://storage.googleapis.com/deepmind-media/gemini/gemini_v2_5_report.pdf",
+      "accessed_on": "2026-10-27",
+      "read_scope": "官方PDF，读取§4.1 Agent分析、p.17–18 Long Context Reasoning与p.70的TEA跨版本幻觉、goals/summary错误固着及Run2提示的收益和代价；100k重复为特定setup的anecdotal observation；未复核全部基准"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "四种故障、六种修复是作者的问题地图，并非统一条件下的跨模型算法。",
+      "report_anchor": "2. 四种常见故障",
+      "support": "direct",
+      "source_ids": [
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "evidence": "演讲四种故障与六种办法；两篇2025作者原始文章。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "Context × Weights 是原文的心智图示，不是已建立的数学乘法定律。",
+      "report_anchor": "4. 新问题一",
+      "support": "direct",
+      "source_ids": [
+        "S2"
+      ],
+      "evidence": "演讲权重与上下文部分以图示说明两者共同影响。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "指令冲突论文评估13模型、16指令，人工相反assistant历史主要条件从1到50轮。",
+      "report_anchor": "4.2 一手论文说明了什么",
+      "support": "direct",
+      "source_ids": [
+        "S5"
+      ],
+      "evidence": "§2.1–2.3、摘要；13主条件+3附加指令，35sets/cell，不是自然长任务。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "推理对照只覆盖GPT-5.2与Hermes-4两个家族，改善但未保证消除漂移。",
+      "report_anchor": "4.2 一手论文说明了什么",
+      "support": "direct",
+      "source_ids": [
+        "S5"
+      ],
+      "evidence": "§3.6、表5、§5 Limitations。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "Fork-and-Flush复制累计工作区，分支用新对话，固定探索预算后按评分选择。",
+      "report_anchor": "5.2 Fork-and-Flush",
+      "support": "direct",
+      "source_ids": [
+        "S6"
+      ],
+      "evidence": "§4、§5.1固定schedule；不清空全部工作区，不是动态停滞检测。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "13任务归一化平均分0.78/0.47/0.54，66.0%/44.4%是相对归一化分收益；12/13平均最高。",
+      "report_anchor": "5.2 Fork-and-Flush",
+      "support": "direct",
+      "source_ids": [
+        "S6"
+      ],
+      "evidence": "表1与§5.2；LWE-rec mean144.60低于single155.3；不是成功率增幅。",
+      "critical": true
+    },
+    {
+      "id": "C07",
+      "claim": "Scaling Discovery的forget清空会话与搜索历史，仅保留最佳candidate及分数。",
+      "report_anchor": "5.3 Scaling Discovery Requires Forgetting",
+      "support": "direct",
+      "source_ids": [
+        "S7"
+      ],
+      "evidence": "§3.1、§3.3；filesystem不再提供旧candidates；与保留整个workspace的Fork不同。",
+      "critical": true
+    },
+    {
+      "id": "C08",
+      "claim": "Scaling Discovery用Pi与DeepSeek V4.1 Flash，四任务各配置三次、总花费预算匹配。",
+      "report_anchor": "5.3 Scaling Discovery Requires Forgetting",
+      "support": "direct",
+      "source_ids": [
+        "S7"
+      ],
+      "evidence": "§4 Experiments，表1 caption。",
+      "critical": true
+    },
+    {
+      "id": "C09",
+      "claim": "Scaling Discovery的平均VLIW cycles1097对parallel1220；Q171 mean80.8对70.2。",
+      "report_anchor": "5.3 Scaling Discovery Requires Forgetting",
+      "support": "direct",
+      "source_ids": [
+        "S7"
+      ],
+      "evidence": "PDF表1，四个指标的高低方向分别保留；三个replicates。",
+      "critical": true
+    },
+    {
+      "id": "C10",
+      "claim": "Memento来自自我复制能力研究中的推理部署评估，继承代码/环境/笔记；1.5小时一轮、6小时总时限。",
+      "report_anchor": "6. 三个数字",
+      "support": "direct",
+      "source_ids": [
+        "S8"
+      ],
+      "evidence": "研究背景及附录A，不是通用产品QA。",
+      "critical": true
+    },
+    {
+      "id": "C11",
+      "claim": "20万是作者个人警戒点，前文检查区间20–30万并举25万主动重置。",
+      "report_anchor": "6. 三个数字",
+      "support": "direct",
+      "source_ids": [
+        "S2"
+      ],
+      "evidence": "演讲：around200,000or300,000、250,000reset、around200,000warningpoint。",
+      "critical": true
+    },
+    {
+      "id": "C12",
+      "claim": "Gemini2.5官方报告在特定Pokémonsetup观察显著超过100k后倾向重复，并明确称anecdotal；同段指出100k上下文有助工具使用与连贯策略。",
+      "report_anchor": "6. 三个数字",
+      "support": "direct",
+      "source_ids": [
+        "S10"
+      ],
+      "evidence": "官方PDF §4.1、p.17–18 Long Context Reasoning，完整相邻段落，不是跨任务硬阈值。",
+      "critical": true
+    },
+    {
+      "id": "C13",
+      "claim": "METR time horizon按专家完成任务时间及指定成功率度量，不是Agent实际连续运行时长。",
+      "report_anchor": "6. 三个数字",
+      "support": "direct",
+      "source_ids": [
+        "S9"
+      ],
+      "evidence": "指标方法的50%reliability与humanexpertcompletiontime。",
+      "critical": true
+    },
+    {
+      "id": "C14",
+      "claim": "[待验证] Personal Context 分层、重建与三组比较为本文建议，收益尚无本轮行为 A/B 实测。",
+      "report_anchor": "7. 对 Personal Context 的启发",
+      "support": "inference",
+      "source_ids": [
+        "S2",
+        "S6",
+        "S7",
+        "S8"
+      ],
+      "evidence": "从方法差异推导保留证据/任务状态、重建工作context；第8.2明示未执行。",
+      "critical": true
+    },
+    {
+      "id": "C15",
+      "claim": "DSPy约16行演示组合的是工具筛选、隔离/委托、裁剪和摘要；不能把其中隔离写成外部存储卸载。",
+      "report_anchor": "3.2",
+      "support": "direct",
+      "source_ids": [
+        "S2"
+      ],
+      "evidence": "演讲六方法后的DSPy demo，tool loadout、delegate/context quarantine、context pruning、summarization。",
+      "critical": true
+    },
+    {
+      "id": "C16",
+      "claim": "Red/Blue使用FRESH WATER/SODA POP/LEMONADE，重制版FireRed/LeafGreen才需要TEA；Gemini2.5Pro初代运行出现找不存在TEA的固着，Run2新玩家提示部分缓解但有常识利用代价。",
+      "report_anchor": "4.1",
+      "support": "direct",
+      "source_ids": [
+        "S10"
+      ],
+      "evidence": "官方PDF p.70 Hallucinations and Fixations on Delusions；多个goals/summary位置的错误撤销很慢，重复追求不可能目标。",
+      "critical": true
+    },
+    {
+      "id": "C17",
+      "claim": "ICIL每model/condition/N cell为35独立种子集、temperature0、分条件评分；fixed-output模型平均IF1%–99%，N3仅6/13高于50%，Llama3.3 70B在N50仍约95%。",
+      "report_anchor": "4.2",
+      "support": "direct",
+      "source_ids": [
+        "S5"
+      ],
+      "evidence": "§2.1/§2.4 exact match、language detection、code heuristic、persona/preference三judge多数票；§3.1与§3.2 Llama anomaly；不推出全模型全条件必败。",
+      "critical": true
+    },
+    {
+      "id": "C18",
+      "claim": "600skills、Playwright首调用误参数和Claude Code并行要求重复7/4/3/2次是演讲作者观察；不作为通用工具阈值或训练偏置的因果证明。",
+      "report_anchor": "3. 六种修复",
+      "support": "direct",
+      "source_ids": [
+        "S2"
+      ],
+      "evidence": "演讲tool loadout企业案例及fighting weights两张slide/讲解；报告§3/§4显式保留观察与解释性质。",
+      "critical": true
+    },
+    {
+      "id": "C19",
+      "claim": "GPT-5约3.4h、Gemini3.1约6.4h、Opus4.6约12h仅作为2026-10-24演讲引文，并带harness条件；本报告未逐项复核榜单配置和置信区间。",
+      "report_anchor": "6. 三个数字",
+      "support": "direct",
+      "source_ids": [
+        "S2",
+        "S9"
+      ],
+      "evidence": "S2 long horizons两张slide及讲解；S9只用来核验time horizon定义，不作为这些模型成绩的验证。",
+      "critical": true
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "长窗口热潮与装得下/用得对/行动进展",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2"
+      ],
+      "report_anchor": "1.2"
+    },
+    {
+      "id": "U02",
+      "title": "四种故障与具体检查",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2"
+      ],
+      "report_anchor": "2. 四种"
+    },
+    {
+      "id": "U03",
+      "title": "六种修复与代价",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2"
+      ],
+      "report_anchor": "3. 六种"
+    },
+    {
+      "id": "U04",
+      "title": "先裁剪再摘要、小模型筛选与演示代码边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2"
+      ],
+      "report_anchor": "3.1"
+    },
+    {
+      "id": "U05",
+      "title": "权重竞争、当前游戏版本与TEA错误固着、Run2提示代价",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S10"
+      ],
+      "report_anchor": "4.1"
+    },
+    {
+      "id": "U06",
+      "title": "指令冲突实验、35组与分条件评分、模型差异和反例",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S5"
+      ],
+      "report_anchor": "4.2"
+    },
+    {
+      "id": "U07",
+      "title": "context惯性与compaction无法消除旧思路",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2"
+      ],
+      "report_anchor": "5.1"
+    },
+    {
+      "id": "U08",
+      "title": "Fork-and-Flush方法/预算/消融/指标/反例",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S6"
+      ],
+      "report_anchor": "5.2"
+    },
+    {
+      "id": "U09",
+      "title": "ScalingDiscovery更强遗忘与评估范围",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S7"
+      ],
+      "report_anchor": "5.3"
+    },
+    {
+      "id": "U10",
+      "title": "20万/100k/90分钟/METR口径",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S8",
+        "S9",
+        "S10"
+      ],
+      "report_anchor": "6. 三个数字"
+    },
+    {
+      "id": "U11",
+      "title": "长期记忆、技能和指令积累后的杂乱与冲突，经验预测边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2"
+      ],
+      "report_anchor": "7.3"
+    },
+    {
+      "id": "U12",
+      "title": "确定性代码与模型判断分工",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2"
+      ],
+      "report_anchor": "8.1"
+    },
+    {
+      "id": "U13",
+      "title": "PersonalContext分层/更正/状态恢复/删除传播",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2"
+      ],
+      "report_anchor": "7.1"
+    },
+    {
+      "id": "U14",
+      "title": "评估、迁移限制与开放问题",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2"
+      ],
+      "report_anchor": "8.2"
+    },
+    {
+      "id": "U15",
+      "title": "提示→上下文→harness的作者叙事分期，非术语首次出现史",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2"
+      ],
+      "report_anchor": "1.1"
+    },
+    {
+      "id": "U16",
+      "title": "600skills的tool loadout观察及非通用阈值边界",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S2"
+      ],
+      "report_anchor": "3. 六种"
+    },
+    {
+      "id": "U17",
+      "title": "Playwright误参数、Claude Code并行措辞重复与因果解释边界",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S2"
+      ],
+      "report_anchor": "4. 新问题一"
+    }
+  ],
+  "limitations": [
+    "文章为工程经验综述；阈值和演示不能泛化。",
+    "ICIL受控人工历史，推理对照两个家族；Fork13任务和Forgetting4任务、有限重复，均未复跑。",
+    "Idea basins嵌入与惯性为行为证据，非唯一内部机制证明。",
+    "Gemini核验§4.1与p.70跨版本幻觉案例，100k为特定setup的anecdotal；METR只核验定义，演讲模型时长数字仅保留引文且未逐项验证。",
+    "本报告未执行PersonalContext行为A/B，未修改实际运行部署。",
+    "记忆更正、失效、撤回传播仍需具体场景设计。"
+  ]
+}

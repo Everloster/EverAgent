@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "source": {
+    "title": "YC Paper Club：推理全链路",
+    "url": "https://www.bilibili.com/video/BV1fGxK6UEF9",
+    "original_url": "https://www.youtube.com/watch?v=mHNKuH-9OxU",
+    "duration_seconds": 6649,
+    "duration_basis": "Bilibili version"
+  },
+  "execution": {
+    "route": "eacli podcast 远端静默 worker",
+    "status": "succeeded",
+    "language": "en",
+    "engine": "whisper.cpp-v1.9.1-sm120",
+    "asr_model": "large-v3",
+    "vad": "Silero VAD",
+    "elapsed_ms": 397302,
+    "browser_ui_opened": false,
+    "audio_played": false
+  },
+  "audio": {
+    "bytes": 1276444750,
+    "sha256": "6eb199a07bf58f79bafabc8d2e36a6c804fdb9649637f53ee9c2802c3b0fcd95"
+  },
+  "transcript": {
+    "original_artifact_sha256": "cc6b9fb4b545e52a9a61f08b174878a787e097f67a894e672ac9f3a7fb0e6bc7",
+    "original_artifact_bytes": 155443,
+    "repository_sha256": "6ce07d41e9c4109d851161fa232914f92017cd209ae337ff4e3e7216ffce532d",
+    "repository_bytes": 155913,
+    "segments": 2365,
+    "modification": "prepended copyright and ASR provenance header; original timestamped body unchanged"
+  },
+  "audit": {
+    "schema_version": 1,
+    "results": [
+      {
+        "ok": true,
+        "size": 155913,
+        "sha256": "6ce07d41e9c4109d851161fa232914f92017cd209ae337ff4e3e7216ffce532d",
+        "lines": 2371,
+        "segments": 2365,
+        "duration_seconds": 6645,
+        "max_consecutive_identical": 1,
+        "head": [
+          "# YC Paper Club：推理全链路｜英文原声 ASR 转写",
+          "来源：https://www.bilibili.com/video/BV1fGxK6UEF9",
+          "原始出处：https://www.youtube.com/watch?v=mHNKuH-9OxU"
+        ],
+        "tail": [
+          "[01:50:29 -> 01:50:33] You can scan this QR code to register for this.",
+          "[01:50:33 -> 01:50:44] And that is my talk and any Q&As.",
+          "[01:50:44 -> 01:50:45] All right, thank you so much."
+        ],
+        "warnings": [
+          "5 non-empty lines lack transcript timestamps"
+        ],
+        "errors": []
+      }
+    ]
+  },
+  "semantic_validation": "machine audit does not establish word accuracy; names and critical claims checked against original-source context and first-party documents"
+}

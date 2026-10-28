@@ -623,3 +623,27 @@
 - 罗萨「不受掌控/共鸣」与算法可控性诉求的理论对撞：加速社会理论能否为 enshittification 提供比 Doctorow 描述性三阶段更硬的解释？
 - 「+7% 单细胞去噪优于人类最佳」与 Erdős 问题具体幅度需读 arXiv 2601.16175 正文核对（摘要未含）。
   - 来源：[[2026-09-28_bilibili-hesiyuanfang_homogenization]] 思考与追问、Limitations
+
+## 2026-10-27 三期 B 站 AI 视频学习
+
+### 20VC × 纳德拉：企业智能
+
+- 怎样区分员工反馈中的业务知识与错误捷径？
+- “任务已饱和”应按哪些长期失败样本判断？
+- 模型解释、行为日志与独立审查各能发现哪些互不重合的风险？
+  - 来源：[纳德拉访谈报告](../reports/2026-10-27_bilibili-nadella_enterprise-intelligence.md)·思考与追问第 2 问。
+
+### a16z × OpenAI：Computer Use
+
+- 不同 UI/API 路径如何执行一致授权？
+- 任务成功信号延后或来自电话等渠道时，如何可靠续接？
+- 长期主动助手怎样降低误报和通知负担，同时保留有效发现？
+  - 来源：[Computer Use 报告](../reports/2026-10-27_bilibili-openai_computer-use.md)·思考与追问第 2 问。
+
+### YC Paper Club：推理全链路
+
+- 怎样用较低成本持续发现 serving 漂移而不依赖每次完整 eval？
+- 量化误差在多轮工具调用中如何放大或被纠正？
+- 混合模型的统一树怎样定义每个组件的可复用点？
+- 缓存从 95% 到 99% 的收益在真实任务中有多少？
+  - 来源：[推理全链路报告](../reports/2026-10-27_bilibili-krillinai_llm-inference-stack.md)·思考与追问第 2 问。

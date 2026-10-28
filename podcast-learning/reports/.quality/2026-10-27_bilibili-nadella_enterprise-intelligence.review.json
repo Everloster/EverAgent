@@ -1,0 +1,638 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-27_bilibili-nadella_enterprise-intelligence.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "glm-5.3",
+        "harness": "pi",
+        "run_id": "review-f0b1d7da19e6",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 95,
+        "request_coverage": 94,
+        "reasoning_quality": 92,
+        "readability": 92,
+        "limitations": 93
+      },
+      "score_reasons": {
+        "evidence_fidelity": "快照核对：报告 SHA-256 93108206…6ccd9、evidence SHA-256 500390e1…59433 与本轮调度一致；独立来源地图（6b2ab427…fc09）未变。C1–C11 逐项对照完整英文转写与 S2/S5/S6 官方缓存核验，全部属实：修订版新增内容核验通过——§3.1 licensed weights 动机（straightforward software business vs network effects，06:38–07:04 与口播一致）；§3.2 agent swarms/本地子代理/science 可能是下一个 frontier（08:06–08:29 一致）；§6.2 RL on pre-trained models 归因（19:39–19:47）、contact centers/supply chain/marketing 与订单收款'可能且正在发生'（19:52–20:05）、science 弹性与硅设计仿真及 Rolls-Royce 定期维护（20:09–20:44）均与原声一致，新 claim C11 的证据锚 18:55–20:44（尤其 19:36–20:13）准确；§6.3 父亲是发展经济学家/convergence growth（23:22–23:32）属实且 gloss 恰当。C1–C10 沿用第一轮已核结论并复读相关段落，未发现回归。转写 SHA 未变（750394a4…7866），本轮重跑 audit_transcript --json 仍 ok=true、569 段、1417s、唯一 warning 为 5 行文件头。唯一纳米级瑕疵：§2.1 新段引用 02:04–03:22，其中'对齐未解决≠安全无事可做'的直接反驳位于 04:04–04:45，在锚外；但'zero trust 并不新'（02:09–02:14）与'把 AI safety 搁置后信任架构由安全行业承担'（02:49–03:22）足以支撑该句语义，属引用粒度而非失实。",
+        "request_coverage": "官方 12 问在内容地图表逐项留痕并全部落入正文；独立地图 16 单元（13 core）重新逐项判断：13 个 core 全部 covered——第一轮的 M13 partial 已实质解决：RL 归因恢复为明确口播技术判断并加'无后训练消融'限定，纳德拉自举例子（客服/供应链/营销/订单收款）与 science 弹性、硅设计仿真、Rolls-Royce 均已保留且未被报告推测替代；M05 软件业务动机、M03 安全≠AI safety 纠偏、M06 swarms/science、M16 父亲/convergence 动机四项轻微缺口全部补齐。supporting 单元 M01 partial（主持人自述省略有 U13 正当理由）、M14 missing（运动习惯，理由成立）。R1–R5 复验满足（R1 经 S9 收据、R2 产物与统计一致、R3 standalone、R4 四层标注、R5 齐备）。剩余省略均为色彩级：mechanistic understanding elusive 一句、Jensen 提及、价格发现论证细节、'one happy family'人物列举、主持人母亲患 MS（属主持人自述），不影响任何核心问题的回答完整性。",
+        "reasoning_quality": "修订版在保持原有论证主线（企业智能=知识+轨迹+评价的组织能力）的同时，把第一轮最弱的 §6.2 改造成准确的机制归因+嘉宾自举例+限定（'节目没有提供后训练消融来量化 RL 的贡献'），证据等级处理比第一轮更严谨；§2.1 新段把'对齐未解决'与'工程措施可用'的两轨论 explicitly 分开，强化而非稀释原论证。口播/转述/官方补充/[推测] 四层标注执行一致；对 HydraFusion/NHS/Unilever/science 弹性均保留'预测/口播、无收益数据'的边界。§8 双仓启示仍较长但全部标 [推测]。",
+        "readability": "standalone 成立：五处新增段落均自然融入原有结构，未读 polished 与第一轮记录即可完整理解；内容地图表、锚点、表格、引文与核名说明保持一致；§6.2 重写后段落职责更清晰（弹性→机制→反例→限定）。",
+        "limitations": "Limitations 六条与 §7 数字核验表保持完整且与正文限定呼应；新增内容（RL 归因、science 预测）在正文就地标注了证据边界，未夸大。可选改进（非缺陷）：可在 Limitations 补一句'商业模式动机与愿景背景为口播色彩，未逐句保留'。"
+      },
+      "critical_claim_ids_checked": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08",
+        "U09",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15"
+      ],
+      "source_content_map": [
+        {
+          "id": "M01",
+          "title": "冷开引用与主持人开场自述（scaling laws 信徒与 alignment 幻灭预告）",
+          "importance": "supporting",
+          "source_ids": [
+            "S1",
+            "S8"
+          ],
+          "matched_coverage_unit_ids": [
+            "U13",
+            "U14"
+          ],
+          "assessment": "partial",
+          "notes": "冷开引语实质经 §2.1 保留；主持人自述省略，U13 理由成立，可接受。"
+        },
+        {
+          "id": "M02",
+          "title": "'假设模型已被攻陷'：scaling 有效但对齐不涌现，需信任架构兜底",
+          "importance": "core",
+          "source_ids": [
+            "S1",
+            "S8"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01"
+          ],
+          "assessment": "covered",
+          "notes": "§2.1 覆盖对齐假设变更、预训练定位与零信任姿态；'mechanistic understanding elusive'一句仍未保留（色彩级）。"
+        },
+        {
+          "id": "M03",
+          "title": "信任架构具体形态：Agent 365 组件、对齐须入权重、安全与 AI safety 二分",
+          "importance": "core",
+          "source_ids": [
+            "S1",
+            "S8",
+            "S5"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02"
+          ],
+          "assessment": "covered",
+          "notes": "第一轮缺口已补：§2.1 新段显式保留'零信任架构已存在、对齐未解决不等于安全无事可做、两轨分别推进'。纳米瑕疵：直接反驳段（04:04–04:45）在引用锚 02:04–03:22 之外，句义仍可由 02:09–03:22 支撑。"
+        },
+        {
+          "id": "M04",
+          "title": "思维链可靠性：CoT 可 unfaithful，标准化与可审计性可能倒逼开放权重",
+          "importance": "core",
+          "source_ids": [
+            "S1",
+            "S8",
+            "S5"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03"
+          ],
+          "assessment": "covered",
+          "notes": "§2.3 完整；与 S5 的'模型不能自任安全边界'一致。"
+        },
+        {
+          "id": "M05",
+          "title": "中国开源主导是否安全风险：风险共担论与 licensed weights 商业模式",
+          "importance": "core",
+          "source_ids": [
+            "S1",
+            "S8"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04"
+          ],
+          "assessment": "covered",
+          "notes": "第一轮缺口已补：§3.1 保留'做成较直接的软件业务而非网络效应智能业务'动机（06:38–07:04 核对一致）；Jensen 提及仍省略（色彩级）。"
+        },
+        {
+          "id": "M06",
+          "title": "未来 24 个月开源/闭源流量：饱和即商品化，own traces 降低前沿依赖",
+          "importance": "core",
+          "source_ids": [
+            "S1",
+            "S8",
+            "S6"
+          ],
+          "matched_coverage_unit_ids": [
+            "U05"
+          ],
+          "assessment": "covered",
+          "notes": "第一轮缺口已补：§3.2 新段保留 agent swarms/本地子代理与 science 可能是下一个 frontier（08:06–08:29 核对一致）。"
+        },
+        {
+          "id": "M07",
+          "title": "企业为何要自有智能：Hayek 局部知识论与反向信息悖论，私有 eval 即公司",
+          "importance": "core",
+          "source_ids": [
+            "S1",
+            "S8"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06"
+          ],
+          "assessment": "covered",
+          "notes": "§4.1/§4.2 完整；价格发现/剩余留企业的论证细节仍压缩（色彩级）。"
+        },
+        {
+          "id": "M08",
+          "title": "AI 原生会扩散到每家公司：PC/Excel 与 cloud-native 的扩散类比",
+          "importance": "core",
+          "source_ids": [
+            "S1",
+            "S8"
+          ],
+          "matched_coverage_unit_ids": [
+            "U07"
+          ],
+          "assessment": "covered",
+          "notes": "§4.3 保留类比与限定；Lloyds 细节省略（色彩级）。"
+        },
+        {
+          "id": "M09",
+          "title": "实施经济的新轮廓：Unilever order-to-cash 案例，从前沿模型换到 MAI 模型",
+          "importance": "core",
+          "source_ids": [
+            "S1",
+            "S8"
+          ],
+          "matched_coverage_unit_ids": [
+            "U08"
+          ],
+          "assessment": "covered",
+          "notes": "§5.1/§5.2 案例全要素与厂商口播限定齐备。"
+        },
+        {
+          "id": "M10",
+          "title": "是否必须拥有全栈：垂直整合 unlikely，水平专业化多赢家可组合",
+          "importance": "core",
+          "source_ids": [
+            "S1",
+            "S8"
+          ],
+          "matched_coverage_unit_ids": [
+            "U09"
+          ],
+          "assessment": "covered",
+          "notes": "§5.3 完整；router 经 §3.3 承载；主持人 inference 插话省略（属主持人观点）。"
+        },
+        {
+          "id": "M11",
+          "title": "千亿美元训练 run：GDP inflection→R&D 百分比框架，供给 long lead，供需无人知晓",
+          "importance": "core",
+          "source_ids": [
+            "S1",
+            "S8"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10"
+          ],
+          "assessment": "covered",
+          "notes": "§6.1 框架、长交付周期与不确定性齐备；§7 表数字归属正确。"
+        },
+        {
+          "id": "M12",
+          "title": "AI 能否拉升全球 GDP：NHS/Copilot 医疗案例，最少替代最多收益的采用洼地",
+          "importance": "core",
+          "source_ids": [
+            "S1",
+            "S8"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11"
+          ],
+          "assessment": "covered",
+          "notes": "§6.1 保留 NHS 条件化判断与限定。"
+        },
+        {
+          "id": "M13",
+          "title": "需求弹性与职能外溢：coding 是 mother lode，RL+可验证奖励，science 与硅开发，Rolls-Royce",
+          "importance": "core",
+          "source_ids": [
+            "S1",
+            "S8"
+          ],
+          "matched_coverage_unit_ids": [
+            "U12"
+          ],
+          "assessment": "covered",
+          "notes": "第一轮 partial 的三个缺口全部实质解决（非换措辞）：(a) §6.2 明确'编程进步的重要原因归于预训练模型之上的 RL+可验证奖励'并注明无消融证据；(b) 客服中心/供应链/营销与订单收款作为纳德拉自举的'可以做到、正在发生'例子保留，与报告自身 [推测] 分离；(c) science/工程弹性可能接近编程、更快硅设计与仿真、Rolls-Royce 定期维护均保留。新 claim C11 锚点核对一致。"
+        },
+        {
+          "id": "M14",
+          "title": "快问快答（一）：运动习惯与坏膝盖",
+          "importance": "supporting",
+          "source_ids": [
+            "S1",
+            "S8"
+          ],
+          "matched_coverage_unit_ids": [
+            "U13"
+          ],
+          "assessment": "missing",
+          "notes": "纯个人生活内容，U13 省略理由成立，不构成要求。"
+        },
+        {
+          "id": "M15",
+          "title": "快问快答（二）：12 个月改变了什么——alignment 不会从 scaling 中 fall out",
+          "importance": "core",
+          "source_ids": [
+            "S1",
+            "S8"
+          ],
+          "matched_coverage_unit_ids": [
+            "U14"
+          ],
+          "assessment": "covered",
+          "notes": "§2.1 第二段完整保留；'one happy family'人物列举省略（色彩级）。"
+        },
+        {
+          "id": "M16",
+          "title": "快问快答（三）：五年后的寻常事=私有 eval；终极愿景=全球南方被普惠 lifting",
+          "importance": "core",
+          "source_ids": [
+            "S1",
+            "S8"
+          ],
+          "matched_coverage_unit_ids": [
+            "U15",
+            "U11"
+          ],
+          "assessment": "covered",
+          "notes": "第一轮缺口已补：§6.3 保留父亲是发展经济学家与 convergence growth（23:22–23:32 核对一致）；主持人母亲患 MS 省略合理（属主持人自述）。"
+        }
+      ],
+      "source_ids_checked": [
+        "S1",
+        "S2",
+        "S4",
+        "S5",
+        "S6",
+        "S8",
+        "S9"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "第二轮复验流程：先核对本轮快照（报告 9310820660fbd4d19cc60ab113af177d9cc802d943c243ed28a726d87936ccd9、evidence 500390e16278a46354b5bcbb04d551136cea45965934f13f6e1c0091b2259433，均匹配），独立来源地图（6b2ab427…fc09）沿用本独立会话第一轮在未读报告前生成版本；完整重读修订版报告 287 行与修订版 evidence 421 行，并回读原声相应段落核对全部新增时间锚。本会话第一轮已读来源：S8 完整转写（至 EOF）、S4 shownotes、S2/S5/S6 官方缓存全文、S9 收据；本轮复核沿用并复读必要段落，S3 仍仅元数据、S7 仍未读（用于验证 standalone）。新增 claim C11 逐项查源通过；转写未变（sha 750394a4…7866），本轮重跑机器审计 ok=true。结论：第一轮全部五项轻微缺口与 M13 partial 均已实质修复（逐项核对新时间锚 06:38–07:04、08:06–08:29、18:55–19:51、19:52–20:44、23:22–23:32），无硬失败、无失实、R1–R5 满足。总分（加权 35/20/20/15/10）= 93.6。遗留纳米级事项（不构成门禁项，供后续润色）：§2.1 新段'对齐未解决≠安全无事可做'的直接反驳原声位于 04:04–04:45，在所引 02:04–03:22 之外，建议扩锚；色彩级省略（mechanistic understanding、Jensen、价格发现细节、one happy family、主持人 MS 自述）可保持现状。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 93.55,
+    "evaluated_on": "2026-10-27",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "731cf3d23fc098d0e0c025adfd1abce9a0446a1aaad47b1e58f3ec79f35bcbc0",
+    "evidence_sha256": "500390e16278a46354b5bcbb04d551136cea45965934f13f6e1c0091b2259433"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "glm-5.3",
+            "harness": "pi",
+            "run_id": "review-32ca7da1c0a4",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 94,
+            "request_coverage": 90,
+            "reasoning_quality": 90,
+            "readability": 92,
+            "limitations": 93
+          },
+          "score_reasons": {
+            "evidence_fidelity": "快照核对：报告 SHA-256 0326e16a…dfa4、evidence SHA-256 6d23b881…d3e8f 与调度一致。C1–C10 全部对照完整英文转写与 S2/S5/S6 官方缓存核验，未发现失实：2.1 的对齐立场变更（01:23–03:22、21:33–22:10）属实；Agent 365/Project Perception 经 S5 核名且共享 signals/context/registry、保读撤写等表述与 S5 原文一致；HydraFusion 三种执行模式与 research preview 定位与 S6 一致且未外推基准数字；Unilever 前沿模型→MAI/traces/IT 接管路径与口播一致并保留厂商口播限定；§7 表对千亿美元训练（主持人转述）、15–20% 研发占比（口播）、GDP 约 2%（主持人口径）的归属区分正确；22:19 'a firm would be an AI benchmark' 引文逐字准确。转写机器审计由 Reviewer 独立重跑并与 S9 收据内嵌结果逐项一致（sha256 750394a4…7866、569 段、1417s、唯一 warning 为 5 行文件头）；B 站 1429s 与 ASR 末段 23:37 的差异在 §7 显式说明。扣分点：报告对若干口播细节做了无声压缩（见 notes 修订建议），均不构成失实。",
+            "request_coverage": "12 个官方问题在内容地图表逐项留痕并全部落入正文对应章节，独立地图 16 单元（13 core）逐项核对：12 个 core 单元 covered，M13（编程机制与其他职能）partial——RL on pre-trained models 的归因被压成泛化的'验证信号'，纳德拉自举的 contact centers/supply chain '正在见效'例子未保留、部分由报告自身 [推测] 替代，science 弹性未明示；supporting 单元 M01 partial、M14 省略但 U13 有正当理由（片头自述与运动习惯），21:33 后对齐重申与企业 eval/全球扩散均按承诺保留。R1–R5 逐项核验：R1 由 S9 收据证实（远端静默 worker、未开浏览器未播音频）；R2 四类产物齐备且统计与审计一致；R3 深度覆盖且独立可读（Reviewer 未读 polished 即可完整理解）；R4 口播/转述/官方补充/[推测] 四层标注执行一致；R5 双仓启示、Limitations、三问、版权边界齐备。",
+            "reasoning_quality": "论证主线清晰（企业智能=知识+轨迹+评价的组织能力，而非必须自训底模），三个母题的相互关系交代充分；对厂商口播、主持人转述与官方文档的证据等级处理严谨，[推测] 段落不冒充来源内容；§4.2 载体表、§6.2 验证分层等原创分析明确标注为'非节目已验证架构'；对 HydraFusion/NHS/Unilever 均给出'不能外推'的边界。扣分：M13 的机制压缩使'编程为何领先'的技术归因弱化；§8 双仓启示部分推理较长但已全部标 [推测]，不影响核心结论。",
+            "readability": "reader_contract=standalone 成立：不依赖 polished 与外部索引即可理解全部论点、案例与限定；内容地图表把官方 12 问锚到章节，锚点链接、表格与引文格式一致；中文表述准确，专名（Project Perception/HydraFusion/MAI）首次出现均有核名说明；§7 核验表显著降低了数字误读风险。",
+            "limitations": "Limitations 六条覆盖厂商案例、ASR 局限、时间定位口径、许可不确定、研究预览边界、推断性质，与正文限定互相呼应；§7 数字表是额外的诚实层。可再补一条：纳德拉若干商业模式与愿景细节（如 software business vs network effects、全球南方动机背景）被省略，属内容取舍而非证据缺陷。"
+          },
+          "critical_claim_ids_checked": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07",
+            "U08",
+            "U09",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14",
+            "U15"
+          ],
+          "source_content_map": [
+            {
+              "id": "M01",
+              "title": "冷开引用与主持人开场自述（scaling laws 信徒与 alignment 幻灭预告）",
+              "importance": "supporting",
+              "source_ids": [
+                "S1",
+                "S8"
+              ],
+              "matched_coverage_unit_ids": [
+                "U13",
+                "U14"
+              ],
+              "assessment": "partial",
+              "notes": "冷开引语的实质内容经 §2.1 保留（'片头摘引的完整语境'）；Harry 18 岁卧室创业等主持人自述省略，U13 给出理由，对 deep 报告可接受。"
+            },
+            {
+              "id": "M02",
+              "title": "'假设模型已被攻陷'：scaling 有效但对齐不涌现，需信任架构兜底",
+              "importance": "core",
+              "source_ids": [
+                "S1",
+                "S8"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01"
+              ],
+              "assessment": "covered",
+              "notes": "§2.1 完整覆盖对齐假设变更与预训练定位；'mechanistic understanding elusive' 细节未保留（次要，见 notes 修订建议）。"
+            },
+            {
+              "id": "M03",
+              "title": "信任架构具体形态：Agent 365 组件、对齐须入权重、安全与 AI safety 二分",
+              "importance": "core",
+              "source_ids": [
+                "S1",
+                "S8",
+                "S5"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "assessment": "covered",
+              "notes": "§2.1/§2.2 覆盖身份、日志（含不可篡改）、策略与行为监测，S5 补足 Perception 职责；纳德拉对'今天没有这种架构'质疑的纠偏（安全≠AI safety、勿以 AI safety 难推论安全无事可做）未显式保留，但章节标题'对齐与治理仍是两项工作'承载了该二分（次要遗漏）。"
+            },
+            {
+              "id": "M04",
+              "title": "思维链可靠性：CoT 可 unfaithful，标准化与可审计性可能倒逼开放权重",
+              "importance": "core",
+              "source_ids": [
+                "S1",
+                "S8",
+                "S5"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "assessment": "covered",
+              "notes": "§2.3 覆盖不忠实风险、可信伙伴可检查、推动开放权重的条件式判断，并给出'调查线索而非授权凭证'的边界；S5 的 CoT 证据边界（模型不能自任安全边界）与报告一致。"
+            },
+            {
+              "id": "M05",
+              "title": "中国开源主导是否安全风险：风险共担论与 licensed weights 商业模式",
+              "importance": "core",
+              "source_ids": [
+                "S1",
+                "S8"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "assessment": "covered",
+              "notes": "§3.1 保留风险共担框架与三种交付方式表；'把智能生意做成 straightforward software business 而非 network effects intelligence business'的动机表述与 Jensen 提及未保留（次要）。"
+            },
+            {
+              "id": "M06",
+              "title": "未来 24 个月开源/闭源流量：饱和即商品化，own traces 降低前沿依赖",
+              "importance": "core",
+              "source_ids": [
+                "S1",
+                "S8",
+                "S6"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "assessment": "covered",
+              "notes": "§3.2/§3.3 覆盖饱和机制、traces 降本、不给比例、HydraFusion 佐证（S6 核名）；agent swarms/本地子代理与'science 可能是下一个 frontier'未保留（次要）。"
+            },
+            {
+              "id": "M07",
+              "title": "企业为何要自有智能：Hayek 局部知识论与反向信息悖论，私有 eval 即公司",
+              "importance": "core",
+              "source_ids": [
+                "S1",
+                "S8"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "assessment": "covered",
+              "notes": "§4.1/§4.2 覆盖 Hayek/Arrow 类比（并正确标注为类比而非定理）、使用 exhaust 的价值、私有任务集为核心 IP；价格发现/剩余须留在企业的论证被压缩（次要）。"
+            },
+            {
+              "id": "M08",
+              "title": "AI 原生会扩散到每家公司：PC/Excel 与 cloud-native 的扩散类比",
+              "importance": "core",
+              "source_ids": [
+                "S1",
+                "S8"
+              ],
+              "matched_coverage_unit_ids": [
+                "U07"
+              ],
+              "assessment": "covered",
+              "notes": "§4.3 保留类比与'无样本/采用率'限定；Lloyds 500 年细节省略（次要）。"
+            },
+            {
+              "id": "M09",
+              "title": "实施经济的新轮廓：Unilever order-to-cash 案例，从前沿模型换到 MAI 模型",
+              "importance": "core",
+              "source_ids": [
+                "S1",
+                "S8"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08"
+              ],
+              "assessment": "covered",
+              "notes": "§5.1/§5.2 覆盖案例全要素与厂商口播限定，交接/运维问题分析到位。"
+            },
+            {
+              "id": "M10",
+              "title": "是否必须拥有全栈：垂直整合 unlikely，水平专业化多赢家可组合",
+              "importance": "core",
+              "source_ids": [
+                "S1",
+                "S8"
+              ],
+              "matched_coverage_unit_ids": [
+                "U09"
+              ],
+              "assessment": "covered",
+              "notes": "§5.3 覆盖横向专业化与'不否定一切垂直整合'的限定；router/决策引擎经 §3.3 HydraFusion 承载；主持人 infinite demand for inference 插话省略（次要，属主持人观点）。"
+            },
+            {
+              "id": "M11",
+              "title": "千亿美元训练 run：GDP inflection→R&D 百分比框架，供给 long lead，供需无人知晓",
+              "importance": "core",
+              "source_ids": [
+                "S1",
+                "S8"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10"
+              ],
+              "assessment": "covered",
+              "notes": "§6.1 覆盖收入支撑框架、长交付周期与不确定性；15–20%/2% 归属在 §7 表中正确区分。"
+            },
+            {
+              "id": "M12",
+              "title": "AI 能否拉升全球 GDP：NHS/Copilot 医疗案例，最少替代最多收益的采用洼地",
+              "importance": "core",
+              "source_ids": [
+                "S1",
+                "S8"
+              ],
+              "matched_coverage_unit_ids": [
+                "U11"
+              ],
+              "assessment": "covered",
+              "notes": "§6.1 保留 NHS 条件化判断与厂商举例限定。"
+            },
+            {
+              "id": "M13",
+              "title": "需求弹性与职能外溢：coding 是 mother lode，RL+可验证奖励，science 与硅开发，Rolls-Royce",
+              "importance": "core",
+              "source_ids": [
+                "S1",
+                "S8"
+              ],
+              "matched_coverage_unit_ids": [
+                "U12"
+              ],
+              "assessment": "partial",
+              "notes": "§6.2 覆盖验证难度差异与机会领域（医疗/硅设计/设备维护），但 (a) '大量 magic 是 pre-trained 模型之上的 RL'这一具体技术归因被压成泛化的'清晰的验证信号/工具反馈'；(b) 纳德拉自举的 contact centers、supply chain、marketing/order-to-cash '可能且正在发生'例子未保留，该段部分由报告自身 [推测] 填充；(c) 'science 弹性可能与 coding 相当'未明示。属可修订的覆盖缺口，非硬失败。"
+            },
+            {
+              "id": "M14",
+              "title": "快问快答（一）：运动习惯与坏膝盖",
+              "importance": "supporting",
+              "source_ids": [
+                "S1",
+                "S8"
+              ],
+              "matched_coverage_unit_ids": [
+                "U13"
+              ],
+              "assessment": "missing",
+              "notes": "报告仅在内容地图下注明'辅助话题，未展开'；纯个人生活内容，U13 省略理由成立，不构成要求。"
+            },
+            {
+              "id": "M15",
+              "title": "快问快答（二）：12 个月改变了什么——alignment 不会从 scaling 中 fall out",
+              "importance": "core",
+              "source_ids": [
+                "S1",
+                "S8"
+              ],
+              "matched_coverage_unit_ids": [
+                "U14"
+              ],
+              "assessment": "covered",
+              "notes": "§2.1 第二段完整保留并说明其与片头摘引的关系；'one happy family'人物列举等色彩省略（次要）。"
+            },
+            {
+              "id": "M16",
+              "title": "快问快答（三）：五年后的寻常事=私有 eval；终极愿景=全球南方被普惠 lifting",
+              "importance": "core",
+              "source_ids": [
+                "S1",
+                "S8"
+              ],
+              "matched_coverage_unit_ids": [
+                "U15",
+                "U11"
+              ],
+              "assessment": "covered",
+              "notes": "§6.3 保留逐字引文与愿景定性（'愿景与预测，非因果研究'）；主持人母亲患 MS（属主持人自述，省略合理）与纳德拉父亲是发展经济学家/convergence growth 动机背景未保留（次要色彩）。"
+            }
+          ],
+          "source_ids_checked": [
+            "S1",
+            "S2",
+            "S4",
+            "S5",
+            "S6",
+            "S8",
+            "S9"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "来源优先流程：Reviewer 在未打开报告与 evidence 前于全新会话分块读完整英文转写（575 行/569 段至 EOF）与 shownotes，先产出 16 单元独立来源地图（快照 SHA-256 6b2ab427423d71a538718bbdafec677a9cab4abb7b342135a01202ae39dffc09），再进入本阶段；本记录的 source_content_map 即该地图逐项映射。核验口径：S1（B 站视频）按 evidence 自身 read_scope 经 S8 完整对白代读核验至 EOF，页面本身未读不另作网页断言；S2/S5/S6 使用抓取的官方原文缓存全文（S5 确认 Agent 365 与 Project Perception 为真实产品名、S6 确认 HydraFusion 名称与三种执行模式），S3 仅元数据未标 checked，S7 polished 未读以验证 standalone 可读性，S9 收据全文读取。机器收据：Reviewer 独立运行 audit_transcript --json 并与 S9 内嵌审计逐项一致（ok=true、无 errors、唯一 warning 为 5 行文件头），时间戳完整性与尾部对白由全读复核。快照 SHA：报告 0326e16ac8b960320b3be0720bdeea5740d1f1430ebffb2178ec1a3ae0d0dfa4、evidence 6d23b881fe3d5ba95f0ddc48daf3ea4040ff40f52adee419968450d7425d3e8f。总分（加权 35/20/20/15/10）= 92.0。结论：整体可靠，无硬失败、无失实主张、R1–R5 均满足；M13 为 partial，故本轮门禁预期 blocked。修订建议（轻微，不影响核心结论，供生成者参考）：1) §6.2 恢复'RL on top of pre-trained models 是编程领先主因'的口播归因，并保留纳德拉自举的 contact centers/supply chain/order-to-cash 已见效例子，避免用报告自身推测替代来源证据；2) §3.1 可补 licensed weights 的动机语境（普通软件生意而非网络效应生意）；3) §2 可显式保留纳德拉的纠偏（工程化零信任架构今天已存在，AI safety 未解决不等于安全无事可做）；4) §3.2 可补 agent swarms/本地子代理与 science 可能是下一个 frontier；5) §6.3 全球南方愿景可补父亲是发展经济学家、convergence growth 的动机来源。"
+        }
+      ],
+      "decision": {}
+    }
+  ]
+}

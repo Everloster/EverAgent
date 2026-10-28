@@ -1,0 +1,1137 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-27_bilibili-krillinai_llm-inference-stack.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "glm-5.3",
+        "harness": "pi",
+        "run_id": "review-77174557658a",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 97,
+        "request_coverage": 92,
+        "reasoning_quality": 92,
+        "readability": 91,
+        "limitations": 93
+      },
+      "score_reasons": {
+        "evidence_fidelity": "第二轮快照全匹配（报告 0b07289d…、evidence faad8af1…、独立地图 31bf8428…沿用）。本轮完整重读修订版报告与新 evidence，并对新增内容逐一查源：C24 对应 §3.2 新增两段——算术强度定义（每搬运一字节完成多少浮点运算，FLOPs/byte）、主持人'从 DRAM 搬四字节到 SRAM 能做多少计算'的口播（06:53 起 as I go from DRAM to SRAM, if I transfer four bytes…）、RNN/图像 diffusion 高复用 vs LLM 低算术强度对比与 diffusion LLM 方向（07:10-07:44 原文一致）、roofline 上界公式 min(峰值算力, 带宽×算术强度)（08:16-08:32 原文一致）；C25 对应 §4.3 新增段——'同一专家聚合大量 token 恢复 GPU 擅长的大矩阵乘、同一组权重被更大 batch 使用摊销搬运成本'与 28:18-28:49 原文逐点对应，且通信/负载/形状条件正确标注为分析；§7.4 新增的非图灵完备→解析估计 byte movement→roofline 提前剪枝段与 1:27:21-1:28:58 的 Rice 定律问答一致，并加'不等于一切可自动证明'的精确限定。第一轮已逐项核对的数字（2.788M、43,536、73.7K/14.8K 节点级、56.3%、545%、79.4%、15 原语、80% 目标、1.1x/2x/56% 等）在本轮文本中未变，抽对 §2/§6.2/§8.4/§9.5/关键数字表确认无回归。未发现 fabricated 或数字错配。残留轻微项：MFU 约 50%/约 5% 量级口播与 '$38/GPU 小时为正文外口播引用'的显式说明仍未加入（均为 supporting 级，不影响结论）。",
+        "request_coverage": "R1-R6 重新逐项核对仍全部满足。第一轮两个 partial（M26 算术强度、M07 EP 机理）已在 §3.2/§4.3 以正确溯源补全，第一轮的 supporting 建议（Rice 定律洞见）也落地于 §7.4；独立 30 单元全部 covered、无 partial。U29（规模营销数字、趣闻）省略登记不变且理由成立。evidence 相应新增 C24/C25 并更新 U02/U11 标题，与报告新增段落锚点一致。剩余 supporting 细节省略（MFU 量级、$1/test、Artificial Analysis/Kimi K3 截图具名、DeepInfer 互文）不影响任何 R 需求与机制结论。",
+        "reasoning_quality": "修订段的推理质量与原有一致地高：算术强度段落把'口播负载类比'与'通用定律'明确分离；EP 段把机理由口播直接支持、条件限定标注为分析，与全篇的口播/分析二分纪律一致；§7.4 对'非图灵完备'只主张'缩小语义范围使特定分析更可行'，不外推到自动证明一切。roofline 在 §3.2 定义后被 §4.3/§7.4 正确复用，概念链完整。原有优点（12x 三轴拆解、新旧指标隔离、95→99 条件化、compaction 双义区分）未变。未发现新增推理错误。",
+        "readability": "reader_contract=standalone 继续成立。新增两段嵌入自然：§3.2 由'瓶颈不同'引出算术强度定义再接 roofline，形成定义→对比→上界的完整小节；§4.3 表格后接机理段使 EP 行可解释；§7.4 的问答补充与搜索预算论述衔接顺畅。结构与既有锚点、表格、mermaid、关键数字表均未破坏。速览仍偏短（第一轮可选项未采纳，非缺陷）。",
+        "limitations": "9 条 Limitations 未删改且与新增内容兼容：第 1 条（口播性能缺条件）覆盖新增的算术强度类比与 EP 口播定位；新增段落自身的'[分析]'标注补充了正文级限定。仍未显式写入的边界（$38 口播引用说明）属可选改进，不足以扣至 92 以下。"
+      },
+      "critical_claim_ids_checked": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17",
+        "C18",
+        "C19",
+        "C20",
+        "C21",
+        "C22",
+        "C23",
+        "C24",
+        "C25"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08",
+        "U09",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16",
+        "U17",
+        "U18",
+        "U19",
+        "U20",
+        "U21",
+        "U22",
+        "U23",
+        "U24",
+        "U25",
+        "U26",
+        "U27",
+        "U28",
+        "U29"
+      ],
+      "source_content_map": [
+        {
+          "id": "M01",
+          "title": "主持人开场：12x 完整算式与口径（train/inference flops、两年寿命假设、80% 利润率与 220B 市值口播）",
+          "importance": "core",
+          "source_ids": [
+            "S1",
+            "S13",
+            "S3",
+            "S4"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01",
+            "U07"
+          ],
+          "assessment": "covered",
+          "notes": "报告 §2.1/§2.2 重构算式 43000×365/2.8M≈5.6、×2≈11.2 与主持人 01:30-02:39 一致；GPU 小时 vs FLOPs 区分正确。80% 利润率与 220B 市值口播未保留（属 U29 类营销口径，可接受）。"
+        },
+        {
+          "id": "M02",
+          "title": "主持人：prefill/decode 机制（KV 复用/LRU/SSD）、KPI 术语表（TTFT/TPOT/吞吐/goodput）",
+          "importance": "core",
+          "source_ids": [
+            "S1",
+            "S13"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01"
+          ],
+          "assessment": "covered",
+          "notes": "§1 链路要素与 §3.1 指标表覆盖 KPI 语义与常见误读；'为什么不只是 model.forward'的问题框架保留。MFU 约 50%/约 5% 具体量级数字未保留，轻微。"
+        },
+        {
+          "id": "M25",
+          "title": "主持人转述的新 DeepSeek 运营数字组（60K prefill 无命中/96% 命中/1.5M 含命中/14K decode/400ms/P99 1s/72h KV 保留）",
+          "importance": "core",
+          "source_ids": [
+            "S1",
+            "S13",
+            "S4"
+          ],
+          "matched_coverage_unit_ids": [
+            "U08"
+          ],
+          "assessment": "covered",
+          "notes": "§2.3 与关键数字表逐项一致且全部保留口播性质；与 Day6 旧统计（73.7K/14.8K 节点级、56.3%）的单位/时期隔离是全篇最关键的正确处理之一。"
+        },
+        {
+          "id": "M26",
+          "title": "主持人：算术强度定义（DRAM→SRAM 每 4 字节换多少计算）、RNN/diffusion 高强度 vs LLM 低强度、MBU/MFU/roofline",
+          "importance": "core",
+          "source_ids": [
+            "S1",
+            "S13",
+            "S6"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02"
+          ],
+          "assessment": "covered",
+          "notes": "§3.2 新增两段完整覆盖：算术强度定义（FLOPs/byte）、DRAM→SRAM 四字节口播、RNN/图像 diffusion 高复用 vs LLM 低强度对比、diffusion LLM 方向、roofline min 公式及其作为局部上界的边界；'口播负载类比非定律'的限定准确。与 06:53-08:32 查源一致（C24）。"
+        },
+        {
+          "id": "M03",
+          "title": "主持人：三类推理创新框架（模型/内核运行时/harness）与 MLA、Paged/Radix 两处修正",
+          "importance": "core",
+          "source_ids": [
+            "S1",
+            "S13",
+            "S3",
+            "S5",
+            "S6"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02"
+          ],
+          "assessment": "covered",
+          "notes": "§3.3 三层表与 MLA、Paged/Radix 修正不变；roofline 现在由 §3.2 的算术强度定义支撑，三类框架的机理链完整。"
+        },
+        {
+          "id": "M04",
+          "title": "Dan Fu：Together 背景与开源 token 规模口播（400T/月、1/8 Google、OpenRouter 过半、超 OpenAI 单日、便宜至 10x）",
+          "importance": "supporting",
+          "source_ids": [
+            "S1",
+            "S13"
+          ],
+          "matched_coverage_unit_ids": [
+            "U29"
+          ],
+          "assessment": "covered",
+          "notes": "生成者登记 U29 omitted 且理由（营销口径不承担机制结论、未核不外推）成立；讲者身份与技术角色保留于 §4/§10。可接受省略。"
+        },
+        {
+          "id": "M05",
+          "title": "Dan Fu：请求完整生命周期（routing KV 亲和、tokenization/tool call 正确性、调度吞吐-响应权衡、prefill/decode 性质分置、响应回流与 KV 释放）",
+          "importance": "core",
+          "source_ids": [
+            "S1",
+            "S13"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03",
+            "U09"
+          ],
+          "assessment": "covered",
+          "notes": "§4.1 链路图与解释覆盖全部环节；Gemini 首答快后聊慢的具体例子未保留（supporting）。"
+        },
+        {
+          "id": "M06",
+          "title": "Dan Fu：六个加速杠杆总览、kernel 优化背景与 Together Compiler（真实流量驱动、RSI 循环自述、'不是编译器要改名'）",
+          "importance": "core",
+          "source_ids": [
+            "S1",
+            "S13"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10"
+          ],
+          "assessment": "covered",
+          "notes": "六杠杆清单一致；Compiler 限定（内部项目、名称可变、非无限自改进）忠实；'不是编译器'自嘲未保留（趣闻，可接受）。低算术强度单算子成因并入 M26 缺口。"
+        },
+        {
+          "id": "M07",
+          "title": "Dan Fu：TP/PP/DP/EP、72-GPU 机架 expert parallelism（单 expert 大批 token 恢复大 GEMM 的机理）与可靠性反命题",
+          "importance": "core",
+          "source_ids": [
+            "S1",
+            "S13",
+            "S4"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11"
+          ],
+          "assessment": "covered",
+          "notes": "§4.3 新增'EP 的收益机制也回到算术强度'段：单专家聚合大量 token 恢复大矩阵乘、同一组权重被更大 batch 使用摊销搬运、大互连域帮助分发聚合；通信/热点/形状条件标注为分析。与 28:18-28:49 查源一致（C25）。"
+        },
+        {
+          "id": "M08",
+          "title": "Dan Fu：量化质量红队循环（Flappy Bird、dogfooding、逐层 KL、数百测试用例）与 Minimax M3 NVFP4 案例",
+          "importance": "core",
+          "source_ids": [
+            "S1",
+            "S13"
+          ],
+          "matched_coverage_unit_ids": [
+            "U12"
+          ],
+          "assessment": "covered",
+          "notes": "§5.1/§5.2 覆盖评价信号四类与 NVFP4 案例边界；training-free+校准+Scale Search 限定保留；M3.1 未发布说漏嘴细节未保留（趣闻）。"
+        },
+        {
+          "id": "M09",
+          "title": "Dan Fu Q&A：质量度量方法、NVLink 机架（非硬件人坦白）、training-free 理由、新架构方向（KDA=SSM 争议说、looped models 泄露、GPT-6/7 反馈周期）",
+          "importance": "core",
+          "source_ids": [
+            "S1",
+            "S13"
+          ],
+          "matched_coverage_unit_ids": [
+            "U13"
+          ],
+          "assessment": "covered",
+          "notes": "架构方向与'闭源内部结构猜测不写成已知'处理正确；Flappy Bird 循环反哺 Together Compiler 的自指细节与 NVLink 坦白未保留（supporting）。"
+        },
+        {
+          "id": "M10",
+          "title": "Jeff Morgan：Ollama 背景与聚合多 provider 的质量问题（成本/智能/速度/区域四维、坏苹果、失败模式清单、模型挂错名）",
+          "importance": "core",
+          "source_ids": [
+            "S1",
+            "S13"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04",
+            "U14"
+          ],
+          "assessment": "covered",
+          "notes": "§6.1 '模型身份'清单覆盖失败模式与长上下文放大；四维度与挂错名具名细节未保留（supporting）。"
+        },
+        {
+          "id": "M11",
+          "title": "Jeff Morgan：质量差距量化证据（provider 差距>开闭差距、2024 年 31 endpoint 论文转述）与 agent 复利（15 步 10%→约 79%）",
+          "importance": "core",
+          "source_ids": [
+            "S1",
+            "S13"
+          ],
+          "matched_coverage_unit_ids": [
+            "U15"
+          ],
+          "assessment": "covered",
+          "notes": "比较保留口播且不外推（C12）；79.4% 独立复算一致且条件限定完整（C13）。"
+        },
+        {
+          "id": "M12",
+          "title": "Jeff Morgan：五类检测技术（完整 evals、官方 verifier、分布测试、logprobs 漂移、流量内省）及各自成本与盲区",
+          "importance": "core",
+          "source_ids": [
+            "S1",
+            "S13",
+            "S10"
+          ],
+          "matched_coverage_unit_ids": [
+            "U16"
+          ],
+          "assessment": "covered",
+          "notes": "§6.2 表五类齐全；log probes→logprobs 修正有据（C14）；K2VV 以 S10 核验 trigger/schema 指标且不外推到 K3/GLM；$1/test 与 Artificial Analysis/Kimi K3 截图具名细节未保留（supporting）。"
+        },
+        {
+          "id": "M13",
+          "title": "Jeff Morgan：行业级解法（DeepInfer 共享栈、发布前预量化、parser/reasoning 上提 harness、质量监控创业机会、GPU TEE 指纹）",
+          "importance": "core",
+          "source_ids": [
+            "S1",
+            "S13",
+            "S10"
+          ],
+          "matched_coverage_unit_ids": [
+            "U17"
+          ],
+          "assessment": "covered",
+          "notes": "TEE 边界分析正确（C15）；'创业机会'未保留（supporting）。讲者口播引用的 $38/GPU 小时在开场转写中不存在，报告未采用该数字是正确处理，但未显式说明此边界（见 notes）。"
+        },
+        {
+          "id": "M14",
+          "title": "Jeff Morgan Q&A：长上下文 logprobs 用法（含'我不是最有背景'坦白）、防 provider 刷榜（客户私有 holdout）、本地模型回归与本地-云混合路由",
+          "importance": "core",
+          "source_ids": [
+            "S1",
+            "S13"
+          ],
+          "matched_coverage_unit_ids": [
+            "U18"
+          ],
+          "assessment": "covered",
+          "notes": "三条主问答覆盖（C15）；Flint/Recursive/M5 Ultra 等 ASR 待核名不写入反而稳妥；>200K 区间数字未保留（supporting）。"
+        },
+        {
+          "id": "M15",
+          "title": "Joe Fioti：Luminal 定位（编译器=GPU 小时→tokens 转换函数）、equality saturation/egglog、异构硬件与规模",
+          "importance": "supporting",
+          "source_ids": [
+            "S1",
+            "S13",
+            "S9"
+          ],
+          "matched_coverage_unit_ids": [
+            "U05",
+            "U19",
+            "U29"
+          ],
+          "assessment": "covered",
+          "notes": "定位与技术底座覆盖；NVIDIA $4T/CUDA 论断、8 人/80-90T tokens 规模按 U29 省略且理由成立。"
+        },
+        {
+          "id": "M16",
+          "title": "Joe Fioti：RISC 风格 IR 约 15 原语、matmul=广播乘+归约、'PyTorch complete 非 Turing complete'",
+          "importance": "core",
+          "source_ids": [
+            "S1",
+            "S13",
+            "S9"
+          ],
+          "matched_coverage_unit_ids": [
+            "U19"
+          ],
+          "assessment": "covered",
+          "notes": "与 S9 README 15 原语一致（C16）；'不生成庞大广播中间张量'的澄清正确；'PyTorch complete'金句的分析价值并入 M19 的 Rice 定律缺口（supporting）。"
+        },
+        {
+          "id": "M17",
+          "title": "Joe Fioti：超优化历史、e-graph 原理（a×2÷2 例、浮点语义）、多层 IR（cuBLAS/CUTLASS/ThunderKittens）、megakernel 非最优、'最好的成本模型是没有成本模型'",
+          "importance": "core",
+          "source_ids": [
+            "S1",
+            "S13",
+            "S9"
+          ],
+          "matched_coverage_unit_ids": [
+            "U20"
+          ],
+          "assessment": "covered",
+          "notes": "机制与浮点语义前提均覆盖；遗传算法、编译时间换运行时摊销条件式保留（C17 部分）。"
+        },
+        {
+          "id": "M18",
+          "title": "Joe Fioti：编译器公司商业化闭环趣闻（'死掉的公司一长串'）与商品化硬件愿景",
+          "importance": "supporting",
+          "source_ids": [
+            "S1",
+            "S13"
+          ],
+          "matched_coverage_unit_ids": [
+            "U29"
+          ],
+          "assessment": "covered",
+          "notes": "U29 省略理由成立，不承担机制结论。"
+        },
+        {
+          "id": "M19",
+          "title": "Joe Fioti Q&A 七问：数值精度与输出 token 质量、搜索规模（10ms profile/1 秒千次/1% 的 1%/局部最优 99%）、真实客户 shapes、e-graph 证明链调试、融合回收、非图灵完备（Rice 定律→解析 roofline→早期剪枝）、forward 与 spec decoding 边界",
+          "importance": "core",
+          "source_ids": [
+            "S1",
+            "S13",
+            "S9"
+          ],
+          "matched_coverage_unit_ids": [
+            "U21"
+          ],
+          "assessment": "covered",
+          "notes": "七问覆盖不变；第一轮指出的 Rice 定律缺口已由 §7.4 新增段补上（解析估计 byte movement→roofline 提前剪枝，'非图灵完备'限定为搜索语言描述），与 1:27:21-1:28:58 一致。"
+        },
+        {
+          "id": "M20",
+          "title": "Liangsheng Yin：SGLang 起源（2023 底猜 agent workload：tool call、并行子 agent、共享 KV pool）与 RadixAttention（radix tree、LRU 叶子驱逐、cache-aware 重排）",
+          "importance": "core",
+          "source_ids": [
+            "S1",
+            "S13",
+            "S5"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06",
+            "U22"
+          ],
+          "assessment": "covered",
+          "notes": "与 S5 论文 §3（LRU 叶子、引用计数、longest-shared-prefix-first、前端协同）核验一致；v0.2/Llama 405B 时间点与'fork 4K 子 agent'设想细节未保留（supporting）。"
+        },
+        {
+          "id": "M21",
+          "title": "Liangsheng Yin：overlap scheduling（CPU 效率停滞动机、DeepInfer 同款互文、Hopper 1.1x/Blackwell 至 2x）与 HiCache 三级缓存（L1/L2/L3、TTFT 降 56% 口播）",
+          "importance": "core",
+          "source_ids": [
+            "S1",
+            "S13",
+            "S7"
+          ],
+          "matched_coverage_unit_ids": [
+            "U23",
+            "U24"
+          ],
+          "assessment": "covered",
+          "notes": "机制、口播收益限定与 S7 分层设计（L1/L2 实例私有、L3 跨实例、等待策略）核验一致（C18）；'DeepInfer 也用 zero-overlap scheduling'互文未保留（supporting）。"
+        },
+        {
+          "id": "M22",
+          "title": "Liangsheng Yin：混合架构缓存命中条件（full/window/recurrent 各异、窗口 4 从位置 10 回溯到 7 的例子）与 unified radix tree 协调层",
+          "importance": "core",
+          "source_ids": [
+            "S1",
+            "S13"
+          ],
+          "matched_coverage_unit_ids": [
+            "U25"
+          ],
+          "assessment": "covered",
+          "notes": "窗口例子与'最长文本前缀≠最长可安全复用状态'均正确转述（C19）；'统一≠同一种 tensor'的澄清与讲者口径一致。"
+        },
+        {
+          "id": "M27",
+          "title": "Liangsheng Yin：命中率 95%→99% 的收益算式（未命中部分约五倍而非总成本五倍）",
+          "importance": "core",
+          "source_ids": [
+            "S1",
+            "S13"
+          ],
+          "matched_coverage_unit_ids": [
+            "U27"
+          ],
+          "assessment": "covered",
+          "notes": "§9.5 条件化处理是全篇最出色的推理段之一（C21），与讲者'四倍计算节省/五倍费用'口播的语义对应正确。"
+        },
+        {
+          "id": "M23",
+          "title": "Liangsheng Yin：unified memory pool（固定配比不可行、单块物理内存动态分配）与 Compaction（搬页+页表重映射、虚拟 ID 不变）",
+          "importance": "core",
+          "source_ids": [
+            "S1",
+            "S13",
+            "S6"
+          ],
+          "matched_coverage_unit_ids": [
+            "U26"
+          ],
+          "assessment": "covered",
+          "notes": "机制本质与'物理整理≠对话压缩'区分覆盖（C20）；左右增长的具体实现简化为'动态调整分配'（可接受）。"
+        },
+        {
+          "id": "M24",
+          "title": "Liangsheng Yin：Miles/slime 与 RL rollout（SGLang 为 rollout 后端）、生态预告与结尾（转写无 Q&A 记录的边界）",
+          "importance": "core",
+          "source_ids": [
+            "S1",
+            "S13",
+            "S11"
+          ],
+          "matched_coverage_unit_ids": [
+            "U28"
+          ],
+          "assessment": "covered",
+          "notes": "S11 核验 fork 关系与 SGLang rollout 角色（C22）；'无独立 Q&A 不补造'边界与独立阅读一致（末行 01:50:44-45 主持人致谢收场）。'fully synchronized execution'与 Miles README 主打 fully async RL 的措辞差异报告未展开（轻）。"
+        },
+        {
+          "id": "M28",
+          "title": "主持人：四位讲者身份介绍与推荐资源（CS336 lecture 10、Reiner Pope/Duar Kesch 讲座）",
+          "importance": "supporting",
+          "source_ids": [
+            "S1",
+            "S13"
+          ],
+          "matched_coverage_unit_ids": [
+            "U29"
+          ],
+          "assessment": "covered",
+          "notes": "讲者身份在 frontmatter/§4-§9 保留；推荐课程按 U29 省略合理。"
+        },
+        {
+          "id": "M29",
+          "title": "补充来源 S4 的 DeepSeek 2025 Day6 一手系统设计（跨节点 EP32/EP144、dual-batch overlap、decode 5-stage pipeline、FP8/BF16 精度对齐、昼夜资源调度、545% 理论利润率的计价条件）",
+          "importance": "supporting",
+          "source_ids": [
+            "S4"
+          ],
+          "matched_coverage_unit_ids": [
+            "U08",
+            "U29"
+          ],
+          "assessment": "covered",
+          "notes": "报告采用了其中统计口径（§2.2/§2.3）与分离架构概述（§8.5），545% 的计价条件在关键数字表中正确限定；EP32/144 等设计细节未展开属 supplementary 省略，与 evidence read_scope 一致。"
+        },
+        {
+          "id": "M30",
+          "title": "补充来源 S6 的 PagedAttention 一手设计（三种内存浪费、有效内存低至 20.4%、block table 逻辑-物理映射、copy-on-write、beam search 共享）",
+          "importance": "supporting",
+          "source_ids": [
+            "S6"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02"
+          ],
+          "assessment": "covered",
+          "notes": "报告采用其'分页管理访问'定位与共存论证（§3.3/§8.1）；20.4%/CoW/beam search 细节未展开属 supplementary 省略，与 read_scope 一致。"
+        }
+      ],
+      "source_ids_checked": [
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8",
+        "S9",
+        "S10",
+        "S11",
+        "S12",
+        "S13"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "第二轮复验，独立来源优先会话沿用：第一轮在打开报告前已完整通读英文 ASR 至 EOF（2371 行/2365 段/6645 秒，独立运行 audit_transcript.py ok=true 0 errors）并生成独立地图（SHA-256 31bf8428544e3e59c676edbf9e4e89f82cf7eec003418aabac3ef1f5818cc8f1）；本会话已读来源记账：S13 全文、S12 全文、S2/S4/S7/S8/S9/S10/S11 缓存全文、S3 训练成本表与 §2.1.1 MLA 及关键词段落、S5 正文与附录 A、S6 §3-§4 与共享/CoW 段（S14/S15 未读不标 checked）。本轮流程：先核对本轮快照 SHA（报告 0b07289ded64b196741de14cd2c0f17e7d77efed1364c2adce7a76238fc84551、evidence faad8af180ee3b2a2f421b68d61c6147ab5ca2fe28c47f6ed2a7d69bfac437d0，均匹配，无 wrong_target_snapshot），再完整重读修订版报告（531 行）与新 evidence（新增 C24/C25、U02/U11 标题更新），随后对新增三处内容回读原声对应段落查源（06:53-08:32、28:18-28:49、1:27:21-1:28:58），全部一致；未改动的章节抽对 §2/§5/§6/§8/§9/关键数字表/Limitations 确认无回归、未换措辞引入新问题。第一轮两个 partial（M26/M07）与 supporting 建议（Rice 定律）均已正确落地，30 个独立单元全部 covered；第一轮记录完整保留于 history 未改动。可选改进（非缺陷）：速览加 12x 口径提示、显式说明 $38/GPU 小时为正文外口播引用。评分独立重判，不沿用第一轮。加权总分约 93.7。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 93.7,
+    "evaluated_on": "2026-10-27",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "4c853a94ddfbddf97246f45bcd74a7dc0761ac4567a20bace79a349acf877d29",
+    "evidence_sha256": "faad8af180ee3b2a2f421b68d61c6147ab5ca2fe28c47f6ed2a7d69bfac437d0"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "glm-5.3",
+            "harness": "pi",
+            "run_id": "review-346fa757d191",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 96,
+            "request_coverage": 88,
+            "reasoning_quality": 90,
+            "readability": 90,
+            "limitations": 93
+          },
+          "score_reasons": {
+            "evidence_fidelity": "审前 SHA-256 全匹配（报告 b784ba9b…、evidence e0b2bd49…、独立地图 31bf8428…）。独立完成：完整通读英文 ASR 至 EOF（2365 段/6645 秒，独立运行 audit_transcript.py ok=true 0 errors），并读取 S2-S11 真实缓存正文与 S12/S13。逐项核对关键数字全部一致：2.788M H800 GPU 小时（S3 原文含 2.664M 预训练+119K 扩展+5K 后训练）、226.75 节点×8×24=43,536/日、Day6 的 73.7K/14.8K 为每节点且输入含缓存、旧命中 56.3%、545% 为 R1 计价理论值、新口播 60K/96%/1.5M/14K/400ms/72h 均如转写 05:17-06:53、1−0.9^15≈79.4% 复算正确、约 15 原语与 80% PyTorch 目标在 S9、K2VV trigger/schema 指标在 S10、Miles fork from slime 在 S11、S7 确将 MLA 误展开为 Multi-Layer Attention 而报告以 S3 §2.1.1 Multi-head Latent Attention（KV 低秩压缩）纠正有据。报告对'新口播数据未核到一手表、yesterday 不擅自换算日期、开闭 vs provider 差距研究未定位'的处理与独立阅读边界一致。未发现 fabricated 或数字错配。扣分点：部分口播细节（MFU 约 50%/约 5% 的具体量级）未保留，属轻微信报损失，不影响结论。",
+            "request_coverage": "R1-R6 逐项核对全部满足：R1/R2 由完整转写、六章 shownotes 与独立审计支撑（frontmatter transcript_segments=2365 与复核一致）；R3 六章+四讲者+前三段 Q&A 覆盖且明确'SGLang 尾部无独立问答不补造'；R4 的 12x 口径、MLA、Paged/Radix 共存、量化与编译概念全部核验；R5 明列的保留项（pipeline、六杠杆、Flappy Bird、NVFP4/校准、五类监测、IR/搜索、三状态/统一树池/物理整理/RL rollout）全部在正文。独立 30 单元映射 28 个 covered、2 个 partial（M26/M07，同根缺口：算术强度 arithmetic intensity 的定义及其论证链——主持人 06:53-07:48 的 DRAM→SRAM 字节/flops 定义与 RNN/diffusion 高强度 vs LLM 低强度对比、Dan 28:18-28:49 用'单 expert 服务海量 token 恢复成大 GEMM'解释 expert parallelism 收益机理——报告 §3.3/§4.3 只给结论'获得更大 batch 的机会'未给机理链）。该缺口不改变任何结论方向，但削弱了'为什么 EP 有效、decode 为何是瓶颈'的可解释性。U29（规模营销数字、趣闻）省略理由成立且已登记。",
+            "reasoning_quality": "推理纪律高：12x 拆解为 5.6/11.2 两步并显式区分 GPU 小时与 FLOPs 语言；新旧 DeepSeek 指标以单位/时期/模型范围三轴隔离；79.4% 保留独立性与无恢复假设；95→99% 条件化为'未命中部分五倍而非总成本五倍'；物理 compaction 与对话压缩双义区分；TEE attestation 与 holdout 的能力边界分析均正确。推测段全部带 [推测] 标注且方向合理。§7.1 对 matmul 分解补充'不意味着真的生成广播中间张量'的澄清正确。未发现推理错误。扣分：个别推测段（§4.3 故障恢复清单）为合理但未溯源的延伸；算术强度机理缺位使 §4.3 EP 行的解释深度下降。",
+            "readability": "reader_contract=standalone 成立：不依赖精编即可理解，速览+内容地图+六锚点章节+mermaid 链路图+关键数字表+Limitations+三问结构完整；时间戳引用密度适中；术语修正（logprobs、MLA、Paged/Radix 共存）在 frontmatter notable_correction 与正文双重可见。中文表达流畅，表格承担对比信息。§10 连接表与 §11 Personal Context 表有效服务本仓读者。轻微问题：速览三条偏短，对新读者信息密度略低。",
+            "limitations": "9 条 Limitations 覆盖面与正文限定一致且诚实：ASR 图示不可核、12x 口径三重不对称、新手表缺失、口播配方未复现、未定位研究不外推、README≠商业能力、统一树池未源码复现、论文选读不冒充逐章复现、无 benchmark 实测。'typed reader 截断采用无凭据无 UI 公开 HTTP 降级'主动披露。与独立阅读发现的边界（Liangsheng 无 Q&A 记录、$38/GPU 小时为讲者口播引用且开场转写无此数字——报告正确未采用该数字）一致。可在后续补一条'主持人 $38/GPU 小时为正文外口播引用'的显式说明，属锦上添花。"
+          },
+          "critical_claim_ids_checked": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "C16",
+            "C17",
+            "C18",
+            "C19",
+            "C20",
+            "C21",
+            "C22",
+            "C23"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07",
+            "U08",
+            "U09",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14",
+            "U15",
+            "U16",
+            "U17",
+            "U18",
+            "U19",
+            "U20",
+            "U21",
+            "U22",
+            "U23",
+            "U24",
+            "U25",
+            "U26",
+            "U27",
+            "U28",
+            "U29"
+          ],
+          "source_content_map": [
+            {
+              "id": "M01",
+              "title": "主持人开场：12x 完整算式与口径（train/inference flops、两年寿命假设、80% 利润率与 220B 市值口播）",
+              "importance": "core",
+              "source_ids": [
+                "S1",
+                "S13",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01",
+                "U07"
+              ],
+              "assessment": "covered",
+              "notes": "报告 §2.1/§2.2 重构算式 43000×365/2.8M≈5.6、×2≈11.2 与主持人 01:30-02:39 一致；GPU 小时 vs FLOPs 区分正确。80% 利润率与 220B 市值口播未保留（属 U29 类营销口径，可接受）。"
+            },
+            {
+              "id": "M02",
+              "title": "主持人：prefill/decode 机制（KV 复用/LRU/SSD）、KPI 术语表（TTFT/TPOT/吞吐/goodput）",
+              "importance": "core",
+              "source_ids": [
+                "S1",
+                "S13"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01"
+              ],
+              "assessment": "covered",
+              "notes": "§1 链路要素与 §3.1 指标表覆盖 KPI 语义与常见误读；'为什么不只是 model.forward'的问题框架保留。MFU 约 50%/约 5% 具体量级数字未保留，轻微。"
+            },
+            {
+              "id": "M25",
+              "title": "主持人转述的新 DeepSeek 运营数字组（60K prefill 无命中/96% 命中/1.5M 含命中/14K decode/400ms/P99 1s/72h KV 保留）",
+              "importance": "core",
+              "source_ids": [
+                "S1",
+                "S13",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08"
+              ],
+              "assessment": "covered",
+              "notes": "§2.3 与关键数字表逐项一致且全部保留口播性质；与 Day6 旧统计（73.7K/14.8K 节点级、56.3%）的单位/时期隔离是全篇最关键的正确处理之一。"
+            },
+            {
+              "id": "M26",
+              "title": "主持人：算术强度定义（DRAM→SRAM 每 4 字节换多少计算）、RNN/diffusion 高强度 vs LLM 低强度、MBU/MFU/roofline",
+              "importance": "core",
+              "source_ids": [
+                "S1",
+                "S13",
+                "S6"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "assessment": "partial",
+              "notes": "roofline 作为约束工具与 prefill/decode 瓶颈差异已覆盖（§3.2），但 arithmetic intensity 一词及其定义、diffusion LLM 的算术强度论证在报告中完全未出现。该概念同时是 decode 瓶颈与 expert parallelism 的机理解释，缺失使 M07 的 EP 论证链断裂。建议修订时补一段定义与对比。"
+            },
+            {
+              "id": "M03",
+              "title": "主持人：三类推理创新框架（模型/内核运行时/harness）与 MLA、Paged/Radix 两处修正",
+              "importance": "core",
+              "source_ids": [
+                "S1",
+                "S13",
+                "S3",
+                "S5",
+                "S6"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "assessment": "covered",
+              "notes": "§3.3 三层表覆盖 MoE/SSM/MLA/量化/蒸馏与 routing/推测解码/按需取 Context/对话压缩（对应递归语言模型与 compaction）；MLA 正名与 Paged/Radix 共存修正均以 S3/S5 核验且有据。cartridges 名称未保留（supporting）。"
+            },
+            {
+              "id": "M04",
+              "title": "Dan Fu：Together 背景与开源 token 规模口播（400T/月、1/8 Google、OpenRouter 过半、超 OpenAI 单日、便宜至 10x）",
+              "importance": "supporting",
+              "source_ids": [
+                "S1",
+                "S13"
+              ],
+              "matched_coverage_unit_ids": [
+                "U29"
+              ],
+              "assessment": "covered",
+              "notes": "生成者登记 U29 omitted 且理由（营销口径不承担机制结论、未核不外推）成立；讲者身份与技术角色保留于 §4/§10。可接受省略。"
+            },
+            {
+              "id": "M05",
+              "title": "Dan Fu：请求完整生命周期（routing KV 亲和、tokenization/tool call 正确性、调度吞吐-响应权衡、prefill/decode 性质分置、响应回流与 KV 释放）",
+              "importance": "core",
+              "source_ids": [
+                "S1",
+                "S13"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03",
+                "U09"
+              ],
+              "assessment": "covered",
+              "notes": "§4.1 链路图与解释覆盖全部环节；Gemini 首答快后聊慢的具体例子未保留（supporting）。"
+            },
+            {
+              "id": "M06",
+              "title": "Dan Fu：六个加速杠杆总览、kernel 优化背景与 Together Compiler（真实流量驱动、RSI 循环自述、'不是编译器要改名'）",
+              "importance": "core",
+              "source_ids": [
+                "S1",
+                "S13"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10"
+              ],
+              "assessment": "covered",
+              "notes": "六杠杆清单一致；Compiler 限定（内部项目、名称可变、非无限自改进）忠实；'不是编译器'自嘲未保留（趣闻，可接受）。低算术强度单算子成因并入 M26 缺口。"
+            },
+            {
+              "id": "M07",
+              "title": "Dan Fu：TP/PP/DP/EP、72-GPU 机架 expert parallelism（单 expert 大批 token 恢复大 GEMM 的机理）与可靠性反命题",
+              "importance": "core",
+              "source_ids": [
+                "S1",
+                "S13",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U11"
+              ],
+              "assessment": "partial",
+              "notes": "四种并行表、72 GPU 例子、'单卡故障影响整个 72 卡副本'反命题与故障测量推测均覆盖；但 EP 收益机理（每 expert 单卡服务海量 token 后'又像 GPU 擅长的大矩阵乘'，即算术强度恢复）未解释，与 M26 同根。"
+            },
+            {
+              "id": "M08",
+              "title": "Dan Fu：量化质量红队循环（Flappy Bird、dogfooding、逐层 KL、数百测试用例）与 Minimax M3 NVFP4 案例",
+              "importance": "core",
+              "source_ids": [
+                "S1",
+                "S13"
+              ],
+              "matched_coverage_unit_ids": [
+                "U12"
+              ],
+              "assessment": "covered",
+              "notes": "§5.1/§5.2 覆盖评价信号四类与 NVFP4 案例边界；training-free+校准+Scale Search 限定保留；M3.1 未发布说漏嘴细节未保留（趣闻）。"
+            },
+            {
+              "id": "M09",
+              "title": "Dan Fu Q&A：质量度量方法、NVLink 机架（非硬件人坦白）、training-free 理由、新架构方向（KDA=SSM 争议说、looped models 泄露、GPT-6/7 反馈周期）",
+              "importance": "core",
+              "source_ids": [
+                "S1",
+                "S13"
+              ],
+              "matched_coverage_unit_ids": [
+                "U13"
+              ],
+              "assessment": "covered",
+              "notes": "架构方向与'闭源内部结构猜测不写成已知'处理正确；Flappy Bird 循环反哺 Together Compiler 的自指细节与 NVLink 坦白未保留（supporting）。"
+            },
+            {
+              "id": "M10",
+              "title": "Jeff Morgan：Ollama 背景与聚合多 provider 的质量问题（成本/智能/速度/区域四维、坏苹果、失败模式清单、模型挂错名）",
+              "importance": "core",
+              "source_ids": [
+                "S1",
+                "S13"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04",
+                "U14"
+              ],
+              "assessment": "covered",
+              "notes": "§6.1 '模型身份'清单覆盖失败模式与长上下文放大；四维度与挂错名具名细节未保留（supporting）。"
+            },
+            {
+              "id": "M11",
+              "title": "Jeff Morgan：质量差距量化证据（provider 差距>开闭差距、2024 年 31 endpoint 论文转述）与 agent 复利（15 步 10%→约 79%）",
+              "importance": "core",
+              "source_ids": [
+                "S1",
+                "S13"
+              ],
+              "matched_coverage_unit_ids": [
+                "U15"
+              ],
+              "assessment": "covered",
+              "notes": "比较保留口播且不外推（C12）；79.4% 独立复算一致且条件限定完整（C13）。"
+            },
+            {
+              "id": "M12",
+              "title": "Jeff Morgan：五类检测技术（完整 evals、官方 verifier、分布测试、logprobs 漂移、流量内省）及各自成本与盲区",
+              "importance": "core",
+              "source_ids": [
+                "S1",
+                "S13",
+                "S10"
+              ],
+              "matched_coverage_unit_ids": [
+                "U16"
+              ],
+              "assessment": "covered",
+              "notes": "§6.2 表五类齐全；log probes→logprobs 修正有据（C14）；K2VV 以 S10 核验 trigger/schema 指标且不外推到 K3/GLM；$1/test 与 Artificial Analysis/Kimi K3 截图具名细节未保留（supporting）。"
+            },
+            {
+              "id": "M13",
+              "title": "Jeff Morgan：行业级解法（DeepInfer 共享栈、发布前预量化、parser/reasoning 上提 harness、质量监控创业机会、GPU TEE 指纹）",
+              "importance": "core",
+              "source_ids": [
+                "S1",
+                "S13",
+                "S10"
+              ],
+              "matched_coverage_unit_ids": [
+                "U17"
+              ],
+              "assessment": "covered",
+              "notes": "TEE 边界分析正确（C15）；'创业机会'未保留（supporting）。讲者口播引用的 $38/GPU 小时在开场转写中不存在，报告未采用该数字是正确处理，但未显式说明此边界（见 notes）。"
+            },
+            {
+              "id": "M14",
+              "title": "Jeff Morgan Q&A：长上下文 logprobs 用法（含'我不是最有背景'坦白）、防 provider 刷榜（客户私有 holdout）、本地模型回归与本地-云混合路由",
+              "importance": "core",
+              "source_ids": [
+                "S1",
+                "S13"
+              ],
+              "matched_coverage_unit_ids": [
+                "U18"
+              ],
+              "assessment": "covered",
+              "notes": "三条主问答覆盖（C15）；Flint/Recursive/M5 Ultra 等 ASR 待核名不写入反而稳妥；>200K 区间数字未保留（supporting）。"
+            },
+            {
+              "id": "M15",
+              "title": "Joe Fioti：Luminal 定位（编译器=GPU 小时→tokens 转换函数）、equality saturation/egglog、异构硬件与规模",
+              "importance": "supporting",
+              "source_ids": [
+                "S1",
+                "S13",
+                "S9"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05",
+                "U19",
+                "U29"
+              ],
+              "assessment": "covered",
+              "notes": "定位与技术底座覆盖；NVIDIA $4T/CUDA 论断、8 人/80-90T tokens 规模按 U29 省略且理由成立。"
+            },
+            {
+              "id": "M16",
+              "title": "Joe Fioti：RISC 风格 IR 约 15 原语、matmul=广播乘+归约、'PyTorch complete 非 Turing complete'",
+              "importance": "core",
+              "source_ids": [
+                "S1",
+                "S13",
+                "S9"
+              ],
+              "matched_coverage_unit_ids": [
+                "U19"
+              ],
+              "assessment": "covered",
+              "notes": "与 S9 README 15 原语一致（C16）；'不生成庞大广播中间张量'的澄清正确；'PyTorch complete'金句的分析价值并入 M19 的 Rice 定律缺口（supporting）。"
+            },
+            {
+              "id": "M17",
+              "title": "Joe Fioti：超优化历史、e-graph 原理（a×2÷2 例、浮点语义）、多层 IR（cuBLAS/CUTLASS/ThunderKittens）、megakernel 非最优、'最好的成本模型是没有成本模型'",
+              "importance": "core",
+              "source_ids": [
+                "S1",
+                "S13",
+                "S9"
+              ],
+              "matched_coverage_unit_ids": [
+                "U20"
+              ],
+              "assessment": "covered",
+              "notes": "机制与浮点语义前提均覆盖；遗传算法、编译时间换运行时摊销条件式保留（C17 部分）。"
+            },
+            {
+              "id": "M18",
+              "title": "Joe Fioti：编译器公司商业化闭环趣闻（'死掉的公司一长串'）与商品化硬件愿景",
+              "importance": "supporting",
+              "source_ids": [
+                "S1",
+                "S13"
+              ],
+              "matched_coverage_unit_ids": [
+                "U29"
+              ],
+              "assessment": "covered",
+              "notes": "U29 省略理由成立，不承担机制结论。"
+            },
+            {
+              "id": "M19",
+              "title": "Joe Fioti Q&A 七问：数值精度与输出 token 质量、搜索规模（10ms profile/1 秒千次/1% 的 1%/局部最优 99%）、真实客户 shapes、e-graph 证明链调试、融合回收、非图灵完备（Rice 定律→解析 roofline→早期剪枝）、forward 与 spec decoding 边界",
+              "importance": "core",
+              "source_ids": [
+                "S1",
+                "S13",
+                "S9"
+              ],
+              "matched_coverage_unit_ids": [
+                "U21"
+              ],
+              "assessment": "covered",
+              "notes": "七问中数值、搜索预算、调试证明链、融合、forward 边界（C17）均覆盖；Rice 定律/非图灵完备带来的'可解析推导 byte 移动、无需运行即得 roofline'洞见未保留——它解释了早期剪枝为何可行，建议修订时一句带过。"
+            },
+            {
+              "id": "M20",
+              "title": "Liangsheng Yin：SGLang 起源（2023 底猜 agent workload：tool call、并行子 agent、共享 KV pool）与 RadixAttention（radix tree、LRU 叶子驱逐、cache-aware 重排）",
+              "importance": "core",
+              "source_ids": [
+                "S1",
+                "S13",
+                "S5"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06",
+                "U22"
+              ],
+              "assessment": "covered",
+              "notes": "与 S5 论文 §3（LRU 叶子、引用计数、longest-shared-prefix-first、前端协同）核验一致；v0.2/Llama 405B 时间点与'fork 4K 子 agent'设想细节未保留（supporting）。"
+            },
+            {
+              "id": "M21",
+              "title": "Liangsheng Yin：overlap scheduling（CPU 效率停滞动机、DeepInfer 同款互文、Hopper 1.1x/Blackwell 至 2x）与 HiCache 三级缓存（L1/L2/L3、TTFT 降 56% 口播）",
+              "importance": "core",
+              "source_ids": [
+                "S1",
+                "S13",
+                "S7"
+              ],
+              "matched_coverage_unit_ids": [
+                "U23",
+                "U24"
+              ],
+              "assessment": "covered",
+              "notes": "机制、口播收益限定与 S7 分层设计（L1/L2 实例私有、L3 跨实例、等待策略）核验一致（C18）；'DeepInfer 也用 zero-overlap scheduling'互文未保留（supporting）。"
+            },
+            {
+              "id": "M22",
+              "title": "Liangsheng Yin：混合架构缓存命中条件（full/window/recurrent 各异、窗口 4 从位置 10 回溯到 7 的例子）与 unified radix tree 协调层",
+              "importance": "core",
+              "source_ids": [
+                "S1",
+                "S13"
+              ],
+              "matched_coverage_unit_ids": [
+                "U25"
+              ],
+              "assessment": "covered",
+              "notes": "窗口例子与'最长文本前缀≠最长可安全复用状态'均正确转述（C19）；'统一≠同一种 tensor'的澄清与讲者口径一致。"
+            },
+            {
+              "id": "M27",
+              "title": "Liangsheng Yin：命中率 95%→99% 的收益算式（未命中部分约五倍而非总成本五倍）",
+              "importance": "core",
+              "source_ids": [
+                "S1",
+                "S13"
+              ],
+              "matched_coverage_unit_ids": [
+                "U27"
+              ],
+              "assessment": "covered",
+              "notes": "§9.5 条件化处理是全篇最出色的推理段之一（C21），与讲者'四倍计算节省/五倍费用'口播的语义对应正确。"
+            },
+            {
+              "id": "M23",
+              "title": "Liangsheng Yin：unified memory pool（固定配比不可行、单块物理内存动态分配）与 Compaction（搬页+页表重映射、虚拟 ID 不变）",
+              "importance": "core",
+              "source_ids": [
+                "S1",
+                "S13",
+                "S6"
+              ],
+              "matched_coverage_unit_ids": [
+                "U26"
+              ],
+              "assessment": "covered",
+              "notes": "机制本质与'物理整理≠对话压缩'区分覆盖（C20）；左右增长的具体实现简化为'动态调整分配'（可接受）。"
+            },
+            {
+              "id": "M24",
+              "title": "Liangsheng Yin：Miles/slime 与 RL rollout（SGLang 为 rollout 后端）、生态预告与结尾（转写无 Q&A 记录的边界）",
+              "importance": "core",
+              "source_ids": [
+                "S1",
+                "S13",
+                "S11"
+              ],
+              "matched_coverage_unit_ids": [
+                "U28"
+              ],
+              "assessment": "covered",
+              "notes": "S11 核验 fork 关系与 SGLang rollout 角色（C22）；'无独立 Q&A 不补造'边界与独立阅读一致（末行 01:50:44-45 主持人致谢收场）。'fully synchronized execution'与 Miles README 主打 fully async RL 的措辞差异报告未展开（轻）。"
+            },
+            {
+              "id": "M28",
+              "title": "主持人：四位讲者身份介绍与推荐资源（CS336 lecture 10、Reiner Pope/Duar Kesch 讲座）",
+              "importance": "supporting",
+              "source_ids": [
+                "S1",
+                "S13"
+              ],
+              "matched_coverage_unit_ids": [
+                "U29"
+              ],
+              "assessment": "covered",
+              "notes": "讲者身份在 frontmatter/§4-§9 保留；推荐课程按 U29 省略合理。"
+            },
+            {
+              "id": "M29",
+              "title": "补充来源 S4 的 DeepSeek 2025 Day6 一手系统设计（跨节点 EP32/EP144、dual-batch overlap、decode 5-stage pipeline、FP8/BF16 精度对齐、昼夜资源调度、545% 理论利润率的计价条件）",
+              "importance": "supporting",
+              "source_ids": [
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08",
+                "U29"
+              ],
+              "assessment": "covered",
+              "notes": "报告采用了其中统计口径（§2.2/§2.3）与分离架构概述（§8.5），545% 的计价条件在关键数字表中正确限定；EP32/144 等设计细节未展开属 supplementary 省略，与 evidence read_scope 一致。"
+            },
+            {
+              "id": "M30",
+              "title": "补充来源 S6 的 PagedAttention 一手设计（三种内存浪费、有效内存低至 20.4%、block table 逻辑-物理映射、copy-on-write、beam search 共享）",
+              "importance": "supporting",
+              "source_ids": [
+                "S6"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "assessment": "covered",
+              "notes": "报告采用其'分页管理访问'定位与共存论证（§3.3/§8.1）；20.4%/CoW/beam search 细节未展开属 supplementary 省略，与 read_scope 一致。"
+            }
+          ],
+          "source_ids_checked": [
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6",
+            "S7",
+            "S8",
+            "S9",
+            "S10",
+            "S11",
+            "S12",
+            "S13"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "来源优先流程：在打开报告与 evidence 前，先在独立会话完整分块通读英文 ASR 至 EOF（2371 行，末时间戳 01:50:44-01:50:45），并独立运行转写审计（ok=true、2365 段、6645 秒、0 errors、5 行头元数据无时间戳），生成独立来源地图（SHA-256 31bf8428544e3e59c676edbf9e4e89f82cf7eec003418aabac3ef1f5818cc8f1，24 单元；本记录按门禁要求在该地图基础上细分为 30 个可映射单元，语义未变）；本阶段逐项读取 S2-S11 缓存正文（S3/S5/S6 长文按所需段落定位读取，包括 S3 训练成本表与 §2.1.1 MLA、S5 正文与附录 A、S6 §3-§4 与共享/CoW 段）后比对报告。快照核对：报告 b784ba9ba0cd9fa517ff2bd0bac46496ca0b5e75cada3ad70eeca5d4aed3200f、evidence e0b2bd4997b030716f7d62c20b7dda712b29b11387872e4dfa6d967518f809ff，均匹配，无 wrong_target_snapshot。总体：这是一份高质量的来源优先报告，数字纪律与条件化推理在同类报告中属上乘，无硬失败。生成者修订建议（按优先级）：1) 补算术强度概念与 RNN/diffusion vs LLM 对比，并把 §4.3 的 EP 收益接到'单 expert 大 batch 恢复大 GEMM'机理上（M26/M07 两个 partial 的同根缺口，当前 REV033 的来源）；2) 可选补一句'讲者口播引用的 $38/GPU 小时未出现在开场转写中，报告因此未采用'，以及 Joe Q&A 中非图灵完备→解析 roofline 的一句洞见；3) 速览可加一条 12x 口径提示。审计收据：audit_transcript.py 独立运行结果与 evidence/报告 frontmatter 一致（segments=2365）；本复核未读 S14/S15（polished/receipt），故未列入 checked。加权总分约 92.2（evidence 0.35 + coverage 0.20 + reasoning 0.20 + readability 0.15 + limitations 0.10）。"
+        }
+      ],
+      "decision": {}
+    }
+  ]
+}

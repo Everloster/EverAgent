@@ -42,11 +42,11 @@ cd EverAgent
 <!-- AUTO-RECENT:START -->
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-10-27 | [纳德拉谈企业智能：知识、反馈、模型选择与 Agent 治理](./podcast-learning/reports/2026-10-27_bilibili-nadella_enterprise-intelligence.md) | 🎙️ Podcast Learning |
+| 2026-10-27 | [大模型推理全链路：服务质量、量化、编译搜索与 Agent 缓存](./podcast-learning/reports/2026-10-27_bilibili-krillinai_llm-inference-stack.md) | 🎙️ Podcast Learning |
+| 2026-10-27 | [上下文工程的失效与修复：从长对话到可维护的记忆](./ai-learning/reports/knowledge_reports/Context_Engineering_失败修复与战略性遗忘_深度解析_20261027.md) | 🤖 AI Learning |
+| 2026-10-27 | [OpenAI Computer Use：从跨应用操作到可验收的企业任务](./podcast-learning/reports/2026-10-27_bilibili-openai_computer-use.md) | 🎙️ Podcast Learning |
 | 2026-10-26 | [十字路口 × 李磊：AI 时代读 PhD——从难而正确、公开输出到 RSI 的研究方法](./podcast-learning/reports/2026-10-25_xiaoyuzhou-crossing_li-lei-ai-phd.md) | 🎙️ Podcast Learning |
-| 2026-10-26 | [何思远方Siyuan：我们正在把所有人训练成同一种人——池化隐喻下的 AI 同质化批判](./podcast-learning/reports/2026-09-28_bilibili-hesiyuanfang_homogenization.md) | 🎙️ Podcast Learning |
-| 2026-10-26 | [MiniMax Code Mini App：持久工作面、Agent 插件运行时与安全边界深度解析](./ai-learning/reports/knowledge_reports/MiniMax_Code_Mini_App_持久工作面与Agent插件运行时_深度解析_20261026.md) | 🤖 AI Learning |
-| 2026-10-26 | [Kimi K3.1 Pro：联合 RL、长程 Agent 与开放权重边界深度解析](./ai-learning/reports/knowledge_reports/Kimi_K3_1_Pro_联合RL_长程Agent与开放权重_深度解析_20261026.md) | 🤖 AI Learning |
-| 2026-10-25 | [菠萝健康派 × 师永刚：中美抗癌十年，就医路径、费用真相与「被看见」的病人](./podcast-learning/reports/2026-10-21_xiaoyuzhou-boluo-jiankang_shiyonggang-cn-us-cancer-decade.md) | 🎙️ Podcast Learning |
 <!-- AUTO-RECENT:END -->
 
 [浏览全部报告 →](./docs/REPORT_INDEX.md)
@@ -58,13 +58,13 @@ cd EverAgent
 <!-- AUTO-OVERVIEW:START -->
 | 项目 | 报告 | Wiki(概念/实体/综合) |
 |------|------|----------------------|
-| 🤖 [AI Learning](./ai-learning/) | 150 篇 | 54/30/1 |
+| 🤖 [AI Learning](./ai-learning/) | 151 篇 | 54/30/1 |
 | 💻 [CS Learning](./cs-learning/) | 33 篇 | 24/17/1 |
 | 📚 [Philosophy Learning](./philosophy-learning/) | 22 篇 | 20/14/1 |
 | 🧠 [Psychology Learning](./psychology-learning/) | 17 篇 | 13/13/0 |
 | 🧬 [Biology Learning](./biology-learning/) | 18 篇 | 14/9/0 |
 | ⚗️ [AI Practice](./ai-practice/) | 10 篇 | 9/1/0 |
-| 🎙️ [Podcast Learning](./podcast-learning/) | 105 篇 | 58/54/0 |
+| 🎙️ [Podcast Learning](./podcast-learning/) | 108 篇 | 58/54/0 |
 | 🔭 [GitHub Research](./github-trending-analyzer/) | 124 篇 | 0/0/0 |
 | 🏄 [Web Surfing](./web-surfing/) | 47 篇 | 0/0/0 |
 <!-- AUTO-OVERVIEW:END -->

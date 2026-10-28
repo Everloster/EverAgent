@@ -1,0 +1,841 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-27_bilibili-krillinai_llm-inference-stack.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-27",
+  "generator": {
+    "model": "gpt-6.1-sol",
+    "harness": "codex",
+    "run_id": "generator-d17e1d6d8375",
+    "explicit_model_override": false,
+    "override_reason": ""
+  },
+  "task": {
+    "summary": "对 B 站推荐 3：YC Paper Club 推理全链路，完成覆盖 110 分钟主讲与关键问答的深度 AI 学习报告及来源优先独立复核。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "经查重后使用 eacli podcast 远端静默 worker 做完整英文原声转写，不播放媒体或启动浏览器。"
+      },
+      {
+        "id": "R2",
+        "text": "保存完整转写、原始出处与六章 shownotes、中文结构化精编和脱敏收据，统计和时间戳审计真实。"
+      },
+      {
+        "id": "R3",
+        "text": "深度报告独立覆盖六章、四位主讲与前三段问答；SGLang 无独立 Q&A 的边界不补造。"
+      },
+      {
+        "id": "R4",
+        "text": "核验 12x 的 GPU 小时/模型范围/时期，MLA、Paged/Radix、服务质量、量化和编译的关键概念与限制。"
+      },
+      {
+        "id": "R5",
+        "text": "保留 pipeline、六杠杆、Flappy Bird、NVFP4/校准、五类端点监测、IR/搜索、混合三状态/统一树池/物理整理/RL rollout，不能只写 KV cache。"
+      },
+      {
+        "id": "R6",
+        "text": "对未核新数字、口播性能、公开 README 与商业范围作清楚限定；包含双仓/Personal Context 参照、Limitations、三问和隐私边界。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "kind": "primary",
+      "title": "B 站 YC Paper Club 英文原声",
+      "locator": "https://www.bilibili.com/video/BV1fGxK6UEF9",
+      "accessed_on": "2026-10-27",
+      "read_scope": "完整对白实际通过 S13 的英文 ASR 读取"
+    },
+    {
+      "id": "S2",
+      "kind": "official",
+      "title": "Y Combinator 原视频元数据和六章",
+      "locator": "https://www.youtube.com/watch?v=mHNKuH-9OxU",
+      "accessed_on": "2026-10-27",
+      "read_scope": "仅 metadata/章节完整；长网页转写截断，不作对白"
+    },
+    {
+      "id": "S3",
+      "kind": "primary",
+      "title": "DeepSeek-V3 Technical Report",
+      "locator": "https://arxiv.org/html/2412.19437v1",
+      "accessed_on": "2026-10-27",
+      "read_scope": "摘要、训练成本表及表后说明、MLA 定义与相关机制"
+    },
+    {
+      "id": "S4",
+      "kind": "official",
+      "title": "DeepSeek 2025 Day 6 推理系统原文",
+      "locator": "https://github.com/deepseek-ai/open-infra-index/blob/main/202502OpenSourceWeek/day_6_one_more_thing_deepseekV3R1_inference_system_overview.md",
+      "accessed_on": "2026-10-27",
+      "read_scope": "全文；旧时期、节点单位、并行和理论收入"
+    },
+    {
+      "id": "S5",
+      "kind": "primary",
+      "title": "SGLang 论文",
+      "locator": "https://arxiv.org/html/2312.07104v2",
+      "accessed_on": "2026-10-27",
+      "read_scope": "摘要与 §3：Radix/LRU/scheduling/前端协同/兼容性"
+    },
+    {
+      "id": "S6",
+      "kind": "primary",
+      "title": "PagedAttention / vLLM 论文",
+      "locator": "https://arxiv.org/html/2309.06180",
+      "accessed_on": "2026-10-27",
+      "read_scope": "KV 背景与 §4 分页、共享、逻辑物理 block"
+    },
+    {
+      "id": "S7",
+      "kind": "official",
+      "title": "SGLang HiCache design",
+      "locator": "https://docs.sglang.ai/advanced_features/hicache_design.html",
+      "accessed_on": "2026-10-27",
+      "read_scope": "全文；MLA 误展开按 S3 纠正"
+    },
+    {
+      "id": "S8",
+      "kind": "official",
+      "title": "SGLang PD disaggregation",
+      "locator": "https://docs.sglang.ai/advanced_features/pd_disaggregation.html",
+      "accessed_on": "2026-10-27",
+      "read_scope": "全文；只核公开设计，不宣称部署收益"
+    },
+    {
+      "id": "S9",
+      "kind": "official",
+      "title": "Luminal README",
+      "locator": "https://github.com/luminal-ai/luminal",
+      "accessed_on": "2026-10-27",
+      "read_scope": "公开 README 支持目标、primitive、路线图、correctness；未源码复现"
+    },
+    {
+      "id": "S10",
+      "kind": "official",
+      "title": "K2-Vendor-Verifier README",
+      "locator": "https://github.com/MoonshotAI/K2-Vendor-Verifier",
+      "accessed_on": "2026-10-27",
+      "read_scope": "指标、工具 ID 与版本；不采用历史榜单评价当前模型"
+    },
+    {
+      "id": "S11",
+      "kind": "official",
+      "title": "Miles README",
+      "locator": "https://github.com/radixark/miles",
+      "accessed_on": "2026-10-27",
+      "read_scope": "核验 slime 关系与 SGLang rollout 角色"
+    },
+    {
+      "id": "S12",
+      "kind": "local",
+      "title": "原始出处与六章 shownotes",
+      "locator": "podcast-learning/reports/transcripts/2026-10-27_bilibili-krillinai_llm-inference-stack.shownotes.md",
+      "accessed_on": "2026-10-27"
+    },
+    {
+      "id": "S13",
+      "kind": "local",
+      "title": "完整英文原声 ASR",
+      "locator": "podcast-learning/reports/transcripts/2026-10-27_bilibili-krillinai_llm-inference-stack.transcript.txt",
+      "accessed_on": "2026-10-27"
+    },
+    {
+      "id": "S14",
+      "kind": "local",
+      "title": "中文结构化精编",
+      "locator": "podcast-learning/reports/transcripts/2026-10-27_bilibili-krillinai_llm-inference-stack.polished.txt",
+      "accessed_on": "2026-10-27"
+    },
+    {
+      "id": "S15",
+      "kind": "local",
+      "title": "脱敏转写收据",
+      "locator": "podcast-learning/reports/transcripts/2026-10-27_bilibili-krillinai_llm-inference-stack.artifact-receipt.json",
+      "accessed_on": "2026-10-27"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "12x 由旧约 2.8M 训练 GPU 小时、43K/日服务和两年权重寿命假设得到，非 FLOPs 实测或智能价值比。",
+      "report_anchor": "推理比训练重要",
+      "support": "derived",
+      "source_ids": [
+        "S1",
+        "S13"
+      ],
+      "evidence": "01:30–02:39",
+      "critical": true
+    },
+    {
+      "id": "C2",
+      "claim": "V3 正式训练为 2.788M H800 GPU 小时，旧服务为 V3/R1 合计 43,536/日，时期 2025-02-27 12 时至 02-28 12 时；模型范围不对称。",
+      "report_anchor": "2.2 一手资料",
+      "support": "derived",
+      "source_ids": [
+        "S3",
+        "S4"
+      ],
+      "evidence": "论文摘要/表1；Day6 226.75×8×24",
+      "critical": true
+    },
+    {
+      "id": "C3",
+      "claim": "旧 Day6 的 73.7K/14.8K 为每 H800 节点，输入含 cache；旧命中 56.3%，不能与新口播 per-GPU 指标混合。",
+      "report_anchor": "2.3 新旧 DeepSeek",
+      "support": "direct",
+      "source_ids": [
+        "S4",
+        "S13"
+      ],
+      "evidence": "Day6 statistics；05:17–06:53",
+      "critical": true
+    },
+    {
+      "id": "C4",
+      "claim": "新 DeepSeek 60K/96%/1.5M/14K/400ms/P99/72h 只作口播转述，未核新表与 yesterday 日期，不作部署基准。",
+      "report_anchor": "2.3 新旧 DeepSeek",
+      "support": "direct",
+      "source_ids": [
+        "S13"
+      ],
+      "evidence": "05:17–06:53",
+      "critical": true
+    },
+    {
+      "id": "C5",
+      "claim": "TTFT/TPOT/throughput/goodput/MFU/MBU 是不同目标，端到端 TTFT 不只 prefill；运行时优化要检查整链路。",
+      "report_anchor": "3.1 一个快数字",
+      "support": "derived",
+      "source_ids": [
+        "S13",
+        "S6"
+      ],
+      "evidence": "开场 KPI 与完整 pipeline；基于服务职责的解释",
+      "critical": true
+    },
+    {
+      "id": "C6",
+      "claim": "MLA 为 Multi-head Latent Attention 的低秩 KV 压缩，不等于整个序列压缩；HiCache 文档误展开以论文修正。",
+      "report_anchor": "3.3 三类优化",
+      "support": "direct",
+      "source_ids": [
+        "S3",
+        "S7"
+      ],
+      "evidence": "DeepSeek §2.1.1；HiCache 页术语",
+      "critical": true
+    },
+    {
+      "id": "C7",
+      "claim": "PagedAttention 与 RadixAttention 可以共存，分别处理分页访问和前缀复用。",
+      "report_anchor": "8.1 RadixAttention",
+      "support": "direct",
+      "source_ids": [
+        "S5",
+        "S6"
+      ],
+      "evidence": "SGLang §3 明确兼容 paged attention；vLLM §4",
+      "critical": true
+    },
+    {
+      "id": "C8",
+      "claim": "Dan 的完整请求含路由、分词/工具协议、排队/batch、prefill/decode、反分词与缓存处理；六杠杆重点展开三项。",
+      "report_anchor": "4. Dan Fu",
+      "support": "direct",
+      "source_ids": [
+        "S13"
+      ],
+      "evidence": "16:12–23:47",
+      "critical": true
+    },
+    {
+      "id": "C9",
+      "claim": "Together Compiler 是口播内部 Agent 优化循环，版本/名称可变，不证明无限自改进或公开完整编译器。",
+      "report_anchor": "4.2 内核优化",
+      "support": "direct",
+      "source_ids": [
+        "S13"
+      ],
+      "evidence": "21:56–26:14",
+      "critical": true
+    },
+    {
+      "id": "C10",
+      "claim": "并行改变通信和故障影响范围；72 GPU 是例子而非部署建议；量化必须检查工具与长链路质量。",
+      "report_anchor": "4.3 并行",
+      "support": "direct",
+      "source_ids": [
+        "S13"
+      ],
+      "evidence": "26:14–35:28",
+      "critical": true
+    },
+    {
+      "id": "C11",
+      "claim": "MiniMax NVFP4 为口播案例，Q&A 指 training-free + calibration/Scale Search；未读该论文或重建配方。",
+      "report_anchor": "5.2 MiniMax NVFP4",
+      "support": "direct",
+      "source_ids": [
+        "S13"
+      ],
+      "evidence": "32:51–35:28、39:25–40:04",
+      "critical": true
+    },
+    {
+      "id": "C12",
+      "claim": "同名开放模型端点可能因版本、精度、模板、parser、KV、kernel 等表现不同；最佳/最差差距对比未核研究，不泛化。",
+      "report_anchor": "6.1 权重之外",
+      "support": "direct",
+      "source_ids": [
+        "S13"
+      ],
+      "evidence": "42:18–50:31",
+      "critical": true
+    },
+    {
+      "id": "C13",
+      "claim": "1−0.9^15≈79.4% 只是在独立单步错误和无恢复假设下的思想实验，不是实测 Agent 失败率。",
+      "report_anchor": "6.1 权重之外",
+      "support": "derived",
+      "source_ids": [
+        "S13"
+      ],
+      "evidence": "讲者错误复合例子；独立计算及条件",
+      "critical": true
+    },
+    {
+      "id": "C14",
+      "claim": "Jeff 的五类监测各有成本和盲区，log probes 按概率含义修为 logprobs，历史 K2 verifier 不覆盖当前 K3/GLM。",
+      "report_anchor": "6.2 五类监测",
+      "support": "direct",
+      "source_ids": [
+        "S13",
+        "S10"
+      ],
+      "evidence": "50:31–55:33；README metrics/versions",
+      "critical": true
+    },
+    {
+      "id": "C15",
+      "claim": "私有 holdout、公开 serving stack、parser 上提与 TEE 身份不能代替完整任务正确性。",
+      "report_anchor": "6.4 私有 holdout",
+      "support": "derived",
+      "source_ids": [
+        "S13",
+        "S10"
+      ],
+      "evidence": "55:33–1:04:26；TEE 边界为明确分析",
+      "critical": true
+    },
+    {
+      "id": "C16",
+      "claim": "Luminal 约 15 个 primitive/e-graph/搜索是执行优化，公开 README 约80%常用 PyTorch API为目标，不能声称开源全支持。",
+      "report_anchor": "7.1 少量 primitive",
+      "support": "direct",
+      "source_ids": [
+        "S13",
+        "S9"
+      ],
+      "evidence": "1:07:15–1:20:37；README roadmap",
+      "critical": true
+    },
+    {
+      "id": "C17",
+      "claim": "等价改写依赖数值语义；搜索有预算，不保证全局最优；forward 编译不自动承担 spec decode 等服务逻辑。",
+      "report_anchor": "7.2 E-graph",
+      "support": "derived",
+      "source_ids": [
+        "S13",
+        "S9"
+      ],
+      "evidence": "1:20:38–1:30:22 Q&A；本文浮点/摊销限定",
+      "critical": true
+    },
+    {
+      "id": "C18",
+      "claim": "HiCache L1 GPU/L2 host 按实例，L3可共享；传输、等待、预取、写回有成本；overlap/TTFT收益只登记口播条件。",
+      "report_anchor": "8.4 HiCache",
+      "support": "direct",
+      "source_ids": [
+        "S7",
+        "S13"
+      ],
+      "evidence": "HiCache 设计；1:35:59–1:40:02",
+      "critical": true
+    },
+    {
+      "id": "C19",
+      "claim": "混合 full/window/recurrent 状态需要分别核验复用点，统一树协调组件规则，统一池按负载分配；同版本代码未复现。",
+      "report_anchor": "9. 混合架构",
+      "support": "direct",
+      "source_ids": [
+        "S13"
+      ],
+      "evidence": "1:40:02–1:49:24",
+      "critical": true
+    },
+    {
+      "id": "C20",
+      "claim": "物理 compaction 搬页/映射并保持逻辑状态，不同于可能删改信息的对话压缩。",
+      "report_anchor": "9.4 物理内存整理",
+      "support": "derived",
+      "source_ids": [
+        "S13",
+        "S6"
+      ],
+      "evidence": "开场 harness compaction 与 1:45:12–1:49:24 物理整理",
+      "critical": true
+    },
+    {
+      "id": "C21",
+      "claim": "95%→99% 只使未命中比例5%→1%；同口径下未命中计算可降五倍，总成本延迟不能据此称五倍收益。",
+      "report_anchor": "9.5 从 95%",
+      "support": "derived",
+      "source_ids": [
+        "S13"
+      ],
+      "evidence": "讲者 cache 示例；条件化比例计算",
+      "critical": true
+    },
+    {
+      "id": "C22",
+      "claim": "Miles 从 slime fork 并协同演进，用 SGLang 做 rollout；尾部未见独立 SGLang Q&A。",
+      "report_anchor": "9.6 推理也进入后训练",
+      "support": "direct",
+      "source_ids": [
+        "S11",
+        "S13"
+      ],
+      "evidence": "README About/Acknowledgment；1:49:24–1:50:45",
+      "critical": true
+    },
+    {
+      "id": "C23",
+      "claim": "[推测] KV 缓存管理计算状态，Personal Context 还要管理知识、来源、更正、删除与权限，缓存 TTL 不直接规定记忆保留。",
+      "report_anchor": "11. KV 缓存",
+      "support": "inference",
+      "source_ids": [
+        "S3",
+        "S5",
+        "S7"
+      ],
+      "evidence": "基于缓存角色与知识 owner 的职责分析",
+      "critical": false
+    },
+    {
+      "id": "C24",
+      "claim": "算术强度是每搬运字节对应的计算量；主持人以 RNN/diffusion 与 LLM 作负载类比，roofline 用峰值算力与带宽乘算术强度约束局部吞吐，不是各模型标签的通用瓶颈定律。",
+      "report_anchor": "3.2 Prefill 与 decode",
+      "support": "derived",
+      "source_ids": [
+        "S13"
+      ],
+      "evidence": "06:53–08:32；定义与上界据口播说明、对比限制为分析",
+      "critical": true
+    },
+    {
+      "id": "C25",
+      "claim": "Dan 的 EP 收益解释是同一专家服务大量 token，复用权重并恢复大矩阵乘的算术强度；收益仍取决于通信、负载和形状。",
+      "report_anchor": "4.3 并行同时",
+      "support": "derived",
+      "source_ids": [
+        "S13"
+      ],
+      "evidence": "28:18–28:49；机理由口播直接支持，条件为分析",
+      "critical": true
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "00:00 推理的重要性、12x 与指标",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S12",
+        "S13"
+      ],
+      "report_anchor": "推理比训练重要"
+    },
+    {
+      "id": "U02",
+      "title": "开场：算术强度、roofline 与模型/运行时/Harness 三类优化",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S12",
+        "S13"
+      ],
+      "report_anchor": "3.3 三类优化"
+    },
+    {
+      "id": "U03",
+      "title": "12:14 Dan 完整请求、内核/并行/量化与问答",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S12",
+        "S13"
+      ],
+      "report_anchor": "4. Dan Fu"
+    },
+    {
+      "id": "U04",
+      "title": "42:18 Jeff 服务质量、五类监测与问答",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S12",
+        "S13"
+      ],
+      "report_anchor": "6. Jeff Morgan"
+    },
+    {
+      "id": "U05",
+      "title": "1:04:31 Joe 编译、搜索、数值与问答",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S12",
+        "S13"
+      ],
+      "report_anchor": "7. Joe Fioti"
+    },
+    {
+      "id": "U06",
+      "title": "1:30:30 SGLang 前缀/overlap/HiCache/混合树池/整理/RL",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S12",
+        "S13"
+      ],
+      "report_anchor": "8. Liangsheng Yin"
+    },
+    {
+      "id": "U07",
+      "title": "12x 算式与模型/时期/单位不对称",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S12",
+        "S13"
+      ],
+      "report_anchor": "2.2 一手资料"
+    },
+    {
+      "id": "U08",
+      "title": "新 DeepSeek 口播数据与 KPI",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S12",
+        "S13"
+      ],
+      "report_anchor": "2.3 新旧 DeepSeek"
+    },
+    {
+      "id": "U09",
+      "title": "Dan 请求生命周期与 cache-aware routing",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S12",
+        "S13"
+      ],
+      "report_anchor": "4.1 完整链路"
+    },
+    {
+      "id": "U10",
+      "title": "六杠杆总览与三项主讲",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S12",
+        "S13"
+      ],
+      "report_anchor": "4.2 内核优化"
+    },
+    {
+      "id": "U11",
+      "title": "TP/PP/DP/EP、专家大 batch 的算术强度机理及故障影响",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S12",
+        "S13"
+      ],
+      "report_anchor": "4.3 并行"
+    },
+    {
+      "id": "U12",
+      "title": "量化红队、Flappy Bird、NVFP4",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S12",
+        "S13"
+      ],
+      "report_anchor": "5.1 精度变化"
+    },
+    {
+      "id": "U13",
+      "title": "Dan Q&A 校准/training-free/架构方向",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S12",
+        "S13"
+      ],
+      "report_anchor": "5.2 MiniMax NVFP4"
+    },
+    {
+      "id": "U14",
+      "title": "Jeff 同名模型多配置与质量差异",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S12",
+        "S13"
+      ],
+      "report_anchor": "6.1 权重之外"
+    },
+    {
+      "id": "U15",
+      "title": "Agent 单步错误累积思想实验",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S12",
+        "S13"
+      ],
+      "report_anchor": "6.1 权重之外"
+    },
+    {
+      "id": "U16",
+      "title": "五类监测与各自盲区",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S12",
+        "S13"
+      ],
+      "report_anchor": "6.2 五类监测"
+    },
+    {
+      "id": "U17",
+      "title": "公开 serving/预量化/parser/TEE",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S12",
+        "S13"
+      ],
+      "report_anchor": "6.3 工具格式"
+    },
+    {
+      "id": "U18",
+      "title": "Jeff Q&A 长 Context、holdout、baseline、本地混合",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S12",
+        "S13"
+      ],
+      "report_anchor": "6.4 私有 holdout"
+    },
+    {
+      "id": "U19",
+      "title": "Luminal primitive IR 与公开支持目标",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S12",
+        "S13"
+      ],
+      "report_anchor": "7.1 少量 primitive"
+    },
+    {
+      "id": "U20",
+      "title": "e-graph/multi-IR/mega/搜索",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S12",
+        "S13"
+      ],
+      "report_anchor": "7.2 E-graph"
+    },
+    {
+      "id": "U21",
+      "title": "Joe Q&A 数值、搜索时间、定位证明与 forward边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S12",
+        "S13"
+      ],
+      "report_anchor": "7.4 搜索需要预算"
+    },
+    {
+      "id": "U22",
+      "title": "SGLang 起源、前端协同、radix/LRU",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S12",
+        "S13"
+      ],
+      "report_anchor": "8.1 RadixAttention"
+    },
+    {
+      "id": "U23",
+      "title": "cache-aware 排序、overlap 调度",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S12",
+        "S13"
+      ],
+      "report_anchor": "8.2 调度可以改善"
+    },
+    {
+      "id": "U24",
+      "title": "HiCache 三层、传输与等待",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S12",
+        "S13"
+      ],
+      "report_anchor": "8.4 HiCache"
+    },
+    {
+      "id": "U25",
+      "title": "full/window/recurrent 与统一树",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S12",
+        "S13"
+      ],
+      "report_anchor": "9.1 三种状态"
+    },
+    {
+      "id": "U26",
+      "title": "统一内存池与物理 compaction",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S12",
+        "S13"
+      ],
+      "report_anchor": "9.3 统一内存池"
+    },
+    {
+      "id": "U27",
+      "title": "95→99命中收益的部分与整体",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S12",
+        "S13"
+      ],
+      "report_anchor": "9.5 从 95%"
+    },
+    {
+      "id": "U28",
+      "title": "Miles/slime 与末段无独立问答",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S12",
+        "S13"
+      ],
+      "report_anchor": "9.6 推理也进入后训练"
+    },
+    {
+      "id": "U29",
+      "title": "各公司规模/商业收入、推荐课程、未展开研究名称与人员介绍",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "S13"
+      ],
+      "report_anchor": "内容地图",
+      "omission_reason": "保留四位讲者身份和技术角色；规模与商业宣传、推荐课程不承担本篇机制结论，未核数据不外推。"
+    }
+  ],
+  "limitations": [
+    "ASR 与投影片无法完整核验，口播性能缺条件",
+    "12x 分子分母模型范围/单位与两年寿命假设不对称",
+    "未取得新 DeepSeek 一手数据表，不改写 yesterday 日期",
+    "Together Compiler、NVFP4、Scale Search 与闭源架构部分仅口播；未读论文/复现",
+    "服务端点差距研究未定位，旧 K2 verifier 不作当前排名",
+    "Luminal README 不等于源码与商业能力，数值与搜索目标有边界",
+    "HiCache 设计已读，统一树池/compaction 未同版本源码复现",
+    "SGLang 尾部无独立 Q&A，不补造",
+    "论文只读支撑结论的段落；typed reader 截断采用无凭据无UI公开HTTP",
+    "未运行 benchmark、部署或证明双仓改善；Context/Memory建议是推断"
+  ]
+}
