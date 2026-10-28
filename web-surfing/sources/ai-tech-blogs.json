@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_on": "2026-10-23",
+  "updated_on": "2026-10-28",
   "description": "顶尖 AI 厂商、实验室、官方工程项目与发布信号。must 直接进入更新雷达；watch 经过技术关键词过滤后进入。",
   "research_report": "web-surfing/reports/ai-vendor-technical-sources-2026-10-20.md",
   "defaults": {
@@ -1065,6 +1065,86 @@
       ],
       "hydrate_search_results": true,
       "hydrate_limit": 3
+    },
+    {
+      "id": "manus",
+      "name": "Manus Blog",
+      "vendor": "Manus",
+      "tier": "watch",
+      "enabled": true,
+      "homepage": "https://manus.im/blog",
+      "discovery": {
+        "kind": "search",
+        "query": "site:manus.im/blog Manus"
+      },
+      "allow_domains": [
+        "manus.im",
+        "www.manus.im"
+      ],
+      "path_prefixes": [
+        "/blog/"
+      ],
+      "exclude_path_prefixes": [
+        "/blog/customer-stories",
+        "/blog/product"
+      ],
+      "include_any": [
+        "context",
+        "memory",
+        "skill",
+        "harness",
+        "sandbox",
+        "agent",
+        "mcp",
+        "benchmark",
+        "evaluation",
+        "cache",
+        "reasoning",
+        "parallel",
+        "inference",
+        "architecture",
+        "research"
+      ],
+      "exclude_any": [],
+      "title_include_any": [
+        "context",
+        "memory",
+        "skill",
+        "harness",
+        "sandbox",
+        "wide research",
+        "benchmark",
+        "evaluat",
+        "engineering",
+        "tool",
+        "mcp",
+        "browser operator",
+        "plan mode",
+        "branch",
+        "introducing manus"
+      ],
+      "title_exclude_any": [
+        "best ",
+        " vs ",
+        " vs. ",
+        "alternatives",
+        "for business",
+        "joins meta",
+        "independent operations",
+        "a note to",
+        "customer story",
+        "user story"
+      ],
+      "hydrate_search_results": true,
+      "hydrate_limit": 3,
+      "why": "Agent 上下文工程、记忆、工具和执行环境的一手实践；博客混有产品教程、公司消息和工具榜单，按技术标题筛选。未确认可用官方 RSS，使用官方域名搜索并按发布日期过滤，缺日期时尝试回读官方正文。",
+      "source_class": "vendor",
+      "topics": [
+        "agent_harness",
+        "eval_safety",
+        "inference_systems"
+      ],
+      "discovery_fallbacks": []
     }
   ]
 }
