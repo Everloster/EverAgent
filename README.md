@@ -13,11 +13,11 @@ EverAgent 收录借助 AI Agent 完成的论文精读、技术博客分析、开
 <!-- AUTO-RECENT:START -->
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-10-30 | [不要训模型，进化 Harness：LAB 实验的收益与边界](./ai-learning/reports/paper_analyses/46_evolve_the_harness_2026.md) | 🤖 AI Learning |
+| 2026-10-30 | [Personal Context 正交论：哪些积累值得保留，怎样持续维护](./ai-learning/reports/knowledge_reports/PersonalContext正交论_PC构建指南_20261010.md) | 🤖 AI Learning |
 | 2026-10-29 | [多设备、多 Agent 怎样共用上下文与续接会话：从 Manus 到可实现的架构](./ai-learning/reports/knowledge_reports/多设备多Agent共享Context与会话续接_Manus实践与架构边界_深度解析_20261029.md) | 🤖 AI Learning |
 | 2026-10-27 | [纳德拉谈企业智能：知识、反馈、模型选择与 Agent 治理](./podcast-learning/reports/2026-10-27_bilibili-nadella_enterprise-intelligence.md) | 🎙️ Podcast Learning |
 | 2026-10-27 | [大模型推理全链路：服务质量、量化、编译搜索与 Agent 缓存](./podcast-learning/reports/2026-10-27_bilibili-krillinai_llm-inference-stack.md) | 🎙️ Podcast Learning |
-| 2026-10-27 | [上下文工程的失效与修复：从长对话到可维护的记忆](./ai-learning/reports/knowledge_reports/Context_Engineering_失败修复与战略性遗忘_深度解析_20261027.md) | 🤖 AI Learning |
-| 2026-10-27 | [OpenAI Computer Use：从跨应用操作到可验收的企业任务](./podcast-learning/reports/2026-10-27_bilibili-openai_computer-use.md) | 🎙️ Podcast Learning |
 <!-- AUTO-RECENT:END -->
 
 [浏览全部报告 →](./docs/REPORT_INDEX.md)

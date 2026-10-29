@@ -1,0 +1,279 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/paper_analyses/46_evolve_the_harness_2026.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-30",
+  "generator": {
+    "model": "gpt-6-astra",
+    "harness": "codex",
+    "run_id": "revision-20261030-harness-astra",
+    "explicit_model_override": false,
+    "override_reason": ""
+  },
+  "task": {
+    "summary": "修订既有 Niklaus/LAB 报告：核对原文，纠正指标、候选比较、迁移及成本归因，使其与已校正知识页一致，保留有依据的机制解释与数据。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "以原文重新核验主要数据、切分、目标函数和实验过程，保留可复核链接。"
+      },
+      {
+        "id": "R2",
+        "text": "区分观察、作者解释和推测；撤回代码普遍优于提示词、token 惩罚因果归因与跨模型泛化。"
+      },
+      {
+        "id": "R3",
+        "text": "校正成本图表口径，交代修订范围与未核验历史内容；全文独立可读。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "kind": "primary",
+      "title": "Niklaus: introduction（0b5b8d1）",
+      "locator": "https://huggingface.co/spaces/joelniklaus/harness-optimization/blob/0b5b8d1/app/src/content/chapters/introduction.mdx",
+      "accessed_on": "2026-10-30"
+    },
+    {
+      "id": "S2",
+      "kind": "primary",
+      "title": "Niklaus: setup（0b5b8d1）",
+      "locator": "https://huggingface.co/spaces/joelniklaus/harness-optimization/blob/0b5b8d1/app/src/content/chapters/setup.mdx",
+      "accessed_on": "2026-10-30"
+    },
+    {
+      "id": "S3",
+      "kind": "primary",
+      "title": "Niklaus: how-it-works（0b5b8d1）",
+      "locator": "https://huggingface.co/spaces/joelniklaus/harness-optimization/blob/0b5b8d1/app/src/content/chapters/how-it-works.mdx",
+      "accessed_on": "2026-10-30"
+    },
+    {
+      "id": "S4",
+      "kind": "primary",
+      "title": "Niklaus: results（0b5b8d1）",
+      "locator": "https://huggingface.co/spaces/joelniklaus/harness-optimization/blob/0b5b8d1/app/src/content/chapters/results.mdx",
+      "accessed_on": "2026-10-30"
+    },
+    {
+      "id": "S5",
+      "kind": "primary",
+      "title": "Niklaus: conclusion（0b5b8d1）",
+      "locator": "https://huggingface.co/spaces/joelniklaus/harness-optimization/blob/0b5b8d1/app/src/content/chapters/conclusion.mdx",
+      "accessed_on": "2026-10-30"
+    },
+    {
+      "id": "S6",
+      "kind": "primary",
+      "title": "Niklaus: appendix（0b5b8d1）",
+      "locator": "https://huggingface.co/spaces/joelniklaus/harness-optimization/blob/0b5b8d1/app/src/content/chapters/appendix.mdx",
+      "accessed_on": "2026-10-30"
+    },
+    {
+      "id": "S7",
+      "kind": "primary",
+      "title": "Niklaus: 固定轨迹成本图表数据（0b5b8d1）",
+      "locator": "https://huggingface.co/spaces/joelniklaus/harness-optimization/resolve/0b5b8d1/app/src/content/assets/data/lab_allpass_comparison.json",
+      "accessed_on": "2026-10-30"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "冻结 DeepSeek-V4-Pro；Opus 4.8 提议、Sonnet 4.6 裁判，24 dev、100 held-out test 为自建切分。",
+      "report_anchor": "### 2.1 任务、角色与数据切分",
+      "support": "direct",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "evidence": "Setup A held-out test split 与 What an evaluation costs；Introduction 指明 proposer。",
+      "critical": true
+    },
+    {
+      "id": "C2",
+      "claim": "留出 pooled 63.4%→80.1%，all-pass 0%→5%；开发集 pooled 63.1%→83.3%、all-pass 0→4.2%。",
+      "report_anchor": "### 3.1 整体结果",
+      "support": "direct",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S4",
+        "S5"
+      ],
+      "evidence": "指标分开报告；不是整题通过率80.1%。",
+      "critical": true
+    },
+    {
+      "id": "C3",
+      "claim": "混合目标含0.5 all-pass 权重和0.005成本项；每题3次、晋级1个百分点。没有消融证明成本项导致代码胜出。",
+      "report_anchor": "### 2.2 搜索循环与晋级条件",
+      "support": "derived",
+      "source_ids": [
+        "S3",
+        "S6"
+      ],
+      "evidence": "原文 Promotion rule 与 Why three trials；比例单位的0.005对应0.5个百分点。",
+      "critical": true
+    },
+    {
+      "id": "C4",
+      "claim": "landing gate 的开发集增量72.8%→79.2%；前六名是候选版本，不能当成独立组件贡献排序；搜索4纯提示词、14纯代码、1混合。",
+      "report_anchor": "### 3.2 四类机制",
+      "support": "direct",
+      "source_ids": [
+        "S3",
+        "S4"
+      ],
+      "evidence": "Results 明示 copy-and-adapt 继承关系、候选数量及两个早期prompt playbooks。",
+      "critical": true
+    },
+    {
+      "id": "C5",
+      "claim": "五种 Harness 得分说明特定任务适配差异，不能解释为智能倍数或与模型无关。",
+      "report_anchor": "### 3.3 同模型、不同 Harness 的差异",
+      "support": "derived",
+      "source_ids": [
+        "S2"
+      ],
+      "evidence": "45.4/23.2/3.5/63.4/80.1；交付类型75/26/7，超时属于失败。",
+      "critical": true
+    },
+    {
+      "id": "C6",
+      "claim": "迁移使用中途 landing gate，Flash +14.4点、Nemotron +0.4点，有限组合试验不足以证明所有代码/提示词迁移规律。",
+      "report_anchor": "## 4. 跨模型迁移测到了什么",
+      "support": "derived",
+      "source_ids": [
+        "S4"
+      ],
+      "evidence": "原文 one harness, the mid-lineage deliverable_landing_gate；作者解释修复和提示词效果相抵。",
+      "critical": true
+    },
+    {
+      "id": "C7",
+      "claim": "546.9/77.3≈7.08来自固定DeepSeek基线轨迹的刊例价估算，排除judge、缓存等；不是优化后实际账单或等效替代。",
+      "report_anchor": "## 5. “成本只有 1/7”究竟怎么算",
+      "support": "derived",
+      "source_ids": [
+        "S2",
+        "S7"
+      ],
+      "evidence": "JSON input_tokens=174799637、output_tokens=1502524、agent_rollout_only；外部Sonnet成绩与作者自建切分不可混作受控比较。",
+      "critical": true
+    },
+    {
+      "id": "C8",
+      "claim": "目标权重变化后使用旧分数曾导致错误晋级；适配器可靠性和服务故障处理会影响测量。",
+      "report_anchor": "## 6. 搜索系统本身，也可能把结果测错",
+      "support": "direct",
+      "source_ids": [
+        "S2",
+        "S6"
+      ],
+      "evidence": "Appendix stale cost-λ boundary、Nemotron turn-zero error、重跑临时服务故障；通用Harness超时保留。",
+      "critical": true
+    },
+    {
+      "id": "C9",
+      "claim": "约83%是本次搜索局部平台；论文与Karpathy传播链未本轮复现或重核，不再标已核验。",
+      "report_anchor": "## 7. 与 Karpathy、Meta-Harness 的关系",
+      "support": "derived",
+      "source_ids": [
+        "S3",
+        "S4",
+        "S5"
+      ],
+      "evidence": "相邻方法按优化对象区分；原文明确更多prompt/tools仍可能有帮助。",
+      "critical": true
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U1",
+      "title": "问题、任务、模型和指标",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "report_anchor": "## 2. 实验如何设计"
+    },
+    {
+      "id": "U2",
+      "title": "搜索、继承、目标与噪声",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S3",
+        "S6"
+      ],
+      "report_anchor": "### 2.2 搜索循环与晋级条件"
+    },
+    {
+      "id": "U3",
+      "title": "主结果、候选和机制",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "report_anchor": "## 3. 收益来自哪里"
+    },
+    {
+      "id": "U4",
+      "title": "迁移版本及外推边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S4"
+      ],
+      "report_anchor": "## 4. 跨模型迁移测到了什么"
+    },
+    {
+      "id": "U5",
+      "title": "成本图表与真实测量口径",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S7"
+      ],
+      "report_anchor": "## 5. “成本只有 1/7”究竟怎么算"
+    },
+    {
+      "id": "U6",
+      "title": "测量错误与局部平台",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S4",
+        "S5",
+        "S6"
+      ],
+      "report_anchor": "## 6. 搜索系统本身，也可能把结果测错"
+    },
+    {
+      "id": "U7",
+      "title": "相邻研究和待验证问题",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S3",
+        "S5"
+      ],
+      "report_anchor": "## 7. 与 Karpathy、Meta-Harness 的关系"
+    }
+  ],
+  "limitations": [
+    "本轮重新读取作者原文与数据，不独立运行LAB、Meta-Harness论文或模型对照；来源主要来自同一次作者实验。",
+    "有限开发与测试任务、模型裁判、未报告完整置信区间；候选搜索预算不均、组合继承限制单项归因。",
+    "跨模型迁移测的是中途版本，代码与prompt普遍规律及成本项因果作用未得到消融证明。",
+    "成本按历史固定轨迹及刊例价估算，不是当前报价；Sonnet点值来自外部成绩，切分不统一。",
+    "撤去本轮未重核的Karpathy、Star、融资或身份类历史断言。"
+  ]
+}

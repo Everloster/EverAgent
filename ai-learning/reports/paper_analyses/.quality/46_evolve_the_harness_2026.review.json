@@ -1,0 +1,459 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/paper_analyses/46_evolve_the_harness_2026.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "independent-20261030-harness-sol-r2",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "escalation_reason": "历史报告已发现实质证据问题后进行主动跨模型内容复核；revision 2 仅复验上轮指出的措辞歧义修订。按质量策略的强模型顺序选择 Sol，不是抽样到期，也不是用户显式指定模型。",
+      "scores": {
+        "evidence_fidelity": 97,
+        "request_coverage": 98,
+        "reasoning_quality": 97,
+        "readability": 98,
+        "limitations": 98
+      },
+      "score_reasons": {
+        "evidence_fidelity": "逐项核对固定版本 0b5b8d1 的六章原文及成本 JSON。主结果、开发/测试切分、目标函数、候选数量、迁移所用中途版本、外部 Harness 对照和成本假设均与来源一致；报告还主动降低了原文中较强的因果与泛化措辞。未发现关键数字错配或无来源的核心结论。",
+        "request_coverage": "R1-R3 均完整回答：报告重新核验实验设置与数字，明确区分作者观察、本文推断和待验证部分，撤回代码普遍优于提示词、token 惩罚因果作用及广泛迁移等过度归因，并单列成本口径、修订范围和未重核历史断言。独立来源地图中的核心单元均能映射到 U1-U7。",
+        "reasoning_quality": "推理多数采用与证据强度匹配的限定：区分 pooled 与 all-pass，指出组合继承妨碍单组件归因，识别候选搜索预算不均，区分留出泛化证据与总体外推，并把迁移净效果拆成代码修复和定制提示词的相抵作用。成本章节也正确区分固定轨迹刊例价估算、实际测试账单和搜索成本。",
+        "readability": "报告结构完整，能脱离对话独立阅读，表格和公式清楚区分指标、角色、机制及成本。revision 2 将修订说明改为“与 Sonnet 的成绩对照并非在同一留出集上完成”，准确限定了不可比对象，与第 4 节同一留出集上的 Harness 迁移实验不再混淆；上轮唯一表述歧义已解决。",
+        "limitations": "报告充分披露未独立复现实验、来源集中于作者同一项目、开发集较小、模型裁判、置信区间缺失、候选预算不均、组合继承、迁移模型有限和成本轨迹假设等边界；对 Karpathy、Star、身份及二手传播链明确撤去已核验状态。"
+      },
+      "critical_claim_ids_checked": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9"
+      ],
+      "coverage_unit_ids_checked": [
+        "U1",
+        "U2",
+        "U3",
+        "U4",
+        "U5",
+        "U6",
+        "U7"
+      ],
+      "source_content_map": [
+        {
+          "id": "M1",
+          "title": "问题定义、Harness 边界与冻结权重的主结果",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1",
+            "U3"
+          ],
+          "notes": "原文将失败定位于模型周围的工具、上下文、执行和结束条件，并报告测试集 pooled 63.4%→80.1%、all-pass 0→5.0%。报告准确保留数字并明确这不等于八成任务完整完成。"
+        },
+        {
+          "id": "M2",
+          "title": "LAB 指标、自建切分、角色与评估成本",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S2"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1",
+            "U5"
+          ],
+          "notes": "来源定义 pooled 与 all-pass，给出 1,251 个公开任务上的 24 dev/100 test 自建切分、DeepSeek 执行模型、Sonnet 裁判、每次测试约 120–160 美元及 dev 规模受成本限制。报告逐项覆盖并避免把自建切分当作官方切分。"
+        },
+        {
+          "id": "M3",
+          "title": "复制继承、单机制候选与测试集隔离的搜索协议",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U2"
+          ],
+          "notes": "来源说明 proposer 复制当前最佳 Harness、增加一个机制、生成 pending_eval，并由外层脚本对 24 题各跑 3 次；禁止读取 test，后继版本继承已采纳机制。报告据此指出候选不是独立单项消融。"
+        },
+        {
+          "id": "M4",
+          "title": "混合目标、晋级门槛与三次试验噪声依据",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S3",
+            "S6"
+          ],
+          "matched_coverage_unit_ids": [
+            "U2"
+          ],
+          "notes": "来源给出 pooled + 0.5×all-pass − 0.005×tokens_per_million、1 点 min_delta，以及三次试验把约 1.4 点单次波动降至约 0.8 点的经验解释。报告正确处理比例与百分点口径，并指出这不是严格多重搜索误差控制。"
+        },
+        {
+          "id": "M5",
+          "title": "主结果台阶、四类机制与提示词/代码搜索不均",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S4"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3",
+            "U6"
+          ],
+          "notes": "来源报告 landing gate 将 dev pooled 72.8%→79.2%，最终达 83.3%；机制包含交付、案件一致性、循环健壮性和 prompt playbooks。4 个纯提示词、14 个纯代码、1 个混合候选使‘代码普遍优于提示词’不能成立，报告已明确纠正。"
+        },
+        {
+          "id": "M6",
+          "title": "同模型不同 Harness 的大幅差异及交付/超时机制",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S2"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3"
+          ],
+          "notes": "来源给出 Pi 45.4%、Goose 23.2%、mini-swe-agent 3.5%、stock LAB 63.4% 与 optimized 80.1%，并列出预期文件类型产出率及超时。报告将其限定为任务适配和执行行为差异，没有解释成智能倍数。"
+        },
+        {
+          "id": "M7",
+          "title": "中途 landing gate 的跨模型迁移与负迁移",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S4"
+          ],
+          "matched_coverage_unit_ids": [
+            "U4"
+          ],
+          "notes": "来源明确迁移的是 mid-lineage deliverable_landing_gate；DeepSeek V4 Flash +14.4 点，Nemotron +0.4 点，后者由工具调用修复和 DeepSeek 定制提示词伤害相抵。报告准确限定为有限模型与组合版本证据。"
+        },
+        {
+          "id": "M8",
+          "title": "局部平台、剩余实质性失败与后续方向",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S4",
+            "S5"
+          ],
+          "matched_coverage_unit_ids": [
+            "U6",
+            "U7"
+          ],
+          "notes": "来源把约 83% 描述为本次搜索的局部平台，税务任务仍缺定量深度和引用精度，并提出更便宜裁判、更大 dev、种群搜索、更多提示词与工具。报告没有把局部平台写成模型能力天花板。"
+        },
+        {
+          "id": "M9",
+          "title": "晋级规则错误、服务故障和长会话可靠性",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S6"
+          ],
+          "matched_coverage_unit_ids": [
+            "U6"
+          ],
+          "notes": "附录披露旧权重派生分数造成错误晋级、Nemotron 首轮服务错误缺少重试，以及 proposer 会话恢复、孤儿进程和泄漏审计。报告将这些归纳为测量系统也会制造错误，符合来源。"
+        },
+        {
+          "id": "M10",
+          "title": "成本图表的固定轨迹估算与不可比边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S7",
+            "S2"
+          ],
+          "matched_coverage_unit_ids": [
+            "U5"
+          ],
+          "notes": "JSON 给出 DeepSeek full frontier 77.3 美元、Sonnet 546.9 美元及 174,799,637 输入/1,502,524 输出 token 的 DeepSeek 基线轨迹，并明确排除 judge、缓存、分词和长上下文差异。报告准确解释 7.08 倍只是刊例价估算，并与 120–160 美元实际测试成本分开。"
+        },
+        {
+          "id": "M11",
+          "title": "Meta-Harness、相邻方法与结论外推边界",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S3",
+            "S5"
+          ],
+          "matched_coverage_unit_ids": [
+            "U7"
+          ],
+          "notes": "来源把 Meta-Harness 作为直接框架，将 autoresearch、GEPA、AlphaEvolve 等列作相邻模式。报告保持优化对象差异，并明确未独立复现论文或相关传播链。"
+        }
+      ],
+      "source_ids_checked": [
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "revision 2 增量复验。开始前仅用 hashlib 核对新快照：report SHA-256=b1c0dd562ce1577db2a5ac58213250c02b425ecf6ad7de125ef1ceb838ef9f39，evidence SHA-256=06d7c2cbe4d52cb0b25d2ba7610489a4bfa4226f4fd9f38abc5cfc6603b494fd，均与 harness-review-prompt-r2 一致。Evidence 与 revision 1 完全相同；正文 delta 仅为修订说明一句，将“跨模型效果不是同一留出集上的受控比较”改成“与 Sonnet 的成绩对照并非在同一留出集上完成”。复验确认该句与已核验的 S2/S4/S7 一致：第 4 节迁移实验仍明确使用相同 held-out split，而第 5 节 Sonnet 点值来自外部 LAB 报告，确非同一自建留出集的受控对打。沿用 revision 1 来源优先独立建立的 M1-M11 地图、C1-C9、U1-U7、S1-S7 与 R1-R3 核验记录；未重新联网或通读未变来源。上轮歧义仅保留在 history，本轮无 unsupported claim、missing requirement 或 hard failure。Sol 仍是历史证据问题后的主动跨模型复核选择，不是 explicit model override，也不声称抽样到期。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 97.45,
+    "evaluated_on": "2026-10-30",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "db6fe83c94db4696e6fa67dc1e621940044cf15dd57b7ddf8c884efee1314aca",
+    "evidence_sha256": "06d7c2cbe4d52cb0b25d2ba7610489a4bfa4226f4fd9f38abc5cfc6603b494fd"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex",
+            "run_id": "independent-20261030-harness-sol",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "escalation_reason": "历史报告已发现实质证据问题后进行主动跨模型内容复核；按质量策略的强模型顺序选择 Sol，不是抽样到期，也不是用户显式指定模型。",
+          "scores": {
+            "evidence_fidelity": 97,
+            "request_coverage": 98,
+            "reasoning_quality": 97,
+            "readability": 94,
+            "limitations": 98
+          },
+          "score_reasons": {
+            "evidence_fidelity": "逐项核对固定版本 0b5b8d1 的六章原文及成本 JSON。主结果、开发/测试切分、目标函数、候选数量、迁移所用中途版本、外部 Harness 对照和成本假设均与来源一致；报告还主动降低了原文中较强的因果与泛化措辞。未发现关键数字错配或无来源的核心结论。",
+            "request_coverage": "R1-R3 均完整回答：报告重新核验实验设置与数字，明确区分作者观察、本文推断和待验证部分，撤回代码普遍优于提示词、token 惩罚因果作用及广泛迁移等过度归因，并单列成本口径、修订范围和未重核历史断言。独立来源地图中的核心单元均能映射到 U1-U7。",
+            "reasoning_quality": "推理多数采用与证据强度匹配的限定：区分 pooled 与 all-pass，指出组合继承妨碍单组件归因，识别候选搜索预算不均，区分留出泛化证据与总体外推，并把迁移净效果拆成代码修复和定制提示词的相抵作用。成本章节也正确区分固定轨迹刊例价估算、实际测试账单和搜索成本。",
+            "readability": "报告结构完整，能脱离对话独立阅读，表格和公式有助于区分指标、角色、机制及成本。轻微缺陷是修订说明中的‘跨模型效果不是同一留出集上的受控比较’略有歧义，可能被误读为第 4 节的迁移实验；正文第 4、5 节已分别澄清迁移使用同一留出集，而 Sonnet 成本/成绩比较来自外部报告，因此不影响实质结论。",
+            "limitations": "报告充分披露未独立复现实验、来源集中于作者同一项目、开发集较小、模型裁判、置信区间缺失、候选预算不均、组合继承、迁移模型有限和成本轨迹假设等边界；对 Karpathy、Star、身份及二手传播链明确撤去已核验状态。"
+          },
+          "critical_claim_ids_checked": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9"
+          ],
+          "coverage_unit_ids_checked": [
+            "U1",
+            "U2",
+            "U3",
+            "U4",
+            "U5",
+            "U6",
+            "U7"
+          ],
+          "source_content_map": [
+            {
+              "id": "M1",
+              "title": "问题定义、Harness 边界与冻结权重的主结果",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1",
+                "U3"
+              ],
+              "notes": "原文将失败定位于模型周围的工具、上下文、执行和结束条件，并报告测试集 pooled 63.4%→80.1%、all-pass 0→5.0%。报告准确保留数字并明确这不等于八成任务完整完成。"
+            },
+            {
+              "id": "M2",
+              "title": "LAB 指标、自建切分、角色与评估成本",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1",
+                "U5"
+              ],
+              "notes": "来源定义 pooled 与 all-pass，给出 1,251 个公开任务上的 24 dev/100 test 自建切分、DeepSeek 执行模型、Sonnet 裁判、每次测试约 120–160 美元及 dev 规模受成本限制。报告逐项覆盖并避免把自建切分当作官方切分。"
+            },
+            {
+              "id": "M3",
+              "title": "复制继承、单机制候选与测试集隔离的搜索协议",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U2"
+              ],
+              "notes": "来源说明 proposer 复制当前最佳 Harness、增加一个机制、生成 pending_eval，并由外层脚本对 24 题各跑 3 次；禁止读取 test，后继版本继承已采纳机制。报告据此指出候选不是独立单项消融。"
+            },
+            {
+              "id": "M4",
+              "title": "混合目标、晋级门槛与三次试验噪声依据",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S3",
+                "S6"
+              ],
+              "matched_coverage_unit_ids": [
+                "U2"
+              ],
+              "notes": "来源给出 pooled + 0.5×all-pass − 0.005×tokens_per_million、1 点 min_delta，以及三次试验把约 1.4 点单次波动降至约 0.8 点的经验解释。报告正确处理比例与百分点口径，并指出这不是严格多重搜索误差控制。"
+            },
+            {
+              "id": "M5",
+              "title": "主结果台阶、四类机制与提示词/代码搜索不均",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U3",
+                "U6"
+              ],
+              "notes": "来源报告 landing gate 将 dev pooled 72.8%→79.2%，最终达 83.3%；机制包含交付、案件一致性、循环健壮性和 prompt playbooks。4 个纯提示词、14 个纯代码、1 个混合候选使‘代码普遍优于提示词’不能成立，报告已明确纠正。"
+            },
+            {
+              "id": "M6",
+              "title": "同模型不同 Harness 的大幅差异及交付/超时机制",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2"
+              ],
+              "matched_coverage_unit_ids": [
+                "U3"
+              ],
+              "notes": "来源给出 Pi 45.4%、Goose 23.2%、mini-swe-agent 3.5%、stock LAB 63.4% 与 optimized 80.1%，并列出预期文件类型产出率及超时。报告将其限定为任务适配和执行行为差异，没有解释成智能倍数。"
+            },
+            {
+              "id": "M7",
+              "title": "中途 landing gate 的跨模型迁移与负迁移",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U4"
+              ],
+              "notes": "来源明确迁移的是 mid-lineage deliverable_landing_gate；DeepSeek V4 Flash +14.4 点，Nemotron +0.4 点，后者由工具调用修复和 DeepSeek 定制提示词伤害相抵。报告准确限定为有限模型与组合版本证据。"
+            },
+            {
+              "id": "M8",
+              "title": "局部平台、剩余实质性失败与后续方向",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S4",
+                "S5"
+              ],
+              "matched_coverage_unit_ids": [
+                "U6",
+                "U7"
+              ],
+              "notes": "来源把约 83% 描述为本次搜索的局部平台，税务任务仍缺定量深度和引用精度，并提出更便宜裁判、更大 dev、种群搜索、更多提示词与工具。报告没有把局部平台写成模型能力天花板。"
+            },
+            {
+              "id": "M9",
+              "title": "晋级规则错误、服务故障和长会话可靠性",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S6"
+              ],
+              "matched_coverage_unit_ids": [
+                "U6"
+              ],
+              "notes": "附录披露旧权重派生分数造成错误晋级、Nemotron 首轮服务错误缺少重试，以及 proposer 会话恢复、孤儿进程和泄漏审计。报告将这些归纳为测量系统也会制造错误，符合来源。"
+            },
+            {
+              "id": "M10",
+              "title": "成本图表的固定轨迹估算与不可比边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S7",
+                "S2"
+              ],
+              "matched_coverage_unit_ids": [
+                "U5"
+              ],
+              "notes": "JSON 给出 DeepSeek full frontier 77.3 美元、Sonnet 546.9 美元及 174,799,637 输入/1,502,524 输出 token 的 DeepSeek 基线轨迹，并明确排除 judge、缓存、分词和长上下文差异。报告准确解释 7.08 倍只是刊例价估算，并与 120–160 美元实际测试成本分开。"
+            },
+            {
+              "id": "M11",
+              "title": "Meta-Harness、相邻方法与结论外推边界",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S3",
+                "S5"
+              ],
+              "matched_coverage_unit_ids": [
+                "U7"
+              ],
+              "notes": "来源把 Meta-Harness 作为直接框架，将 autoresearch、GEPA、AlphaEvolve 等列作相邻模式。报告保持优化对象差异，并明确未独立复现论文或相关传播链。"
+            }
+          ],
+          "source_ids_checked": [
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6",
+            "S7"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "审阅开始前仅用 hashlib 核对快照：report SHA-256=1bf306e00947b1a9e466fe7cec978171899c5779c68d7320541ec5a5524b6667，evidence SHA-256=06d7c2cbe4d52cb0b25d2ba7610489a4bfa4226f4fd9f38abc5cfc6603b494fd，均与 review-prompt 一致。来源优先顺序为 introduction→setup→how-it-works→results→conclusion→appendix→cost JSON；先独立建立 M1-M11 内容地图，再读取报告、evidence 并映射 U1-U7，而非只核验已登记 claims。原始 eacli web.read 收据核对到 HF Space commit 0b5b8d1；未补联网。Sol 用于历史报告发现实质证据问题后的主动跨模型内容复核，遵循 policy 的强模型首选顺序；不是用户 explicit model override，也不声称抽样到期。唯一轻微问题是修订说明中的‘跨模型效果’措辞可能混淆迁移实验和外部 Sonnet 成本/成绩比较；正文已清楚区分，未形成 unsupported claim 或 hard failure。"
+        }
+      ],
+      "decision": {}
+    }
+  ]
+}

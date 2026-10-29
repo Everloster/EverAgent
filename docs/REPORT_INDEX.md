@@ -7,6 +7,8 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-10-30 | [不要训模型，进化 Harness：LAB 实验的收益与边界](../ai-learning/reports/paper_analyses/46_evolve_the_harness_2026.md) | ai-learning |
+| 2026-10-30 | [Personal Context 正交论：哪些积累值得保留，怎样持续维护](../ai-learning/reports/knowledge_reports/PersonalContext正交论_PC构建指南_20261010.md) | ai-learning |
 | 2026-10-29 | [多设备、多 Agent 怎样共用上下文与续接会话：从 Manus 到可实现的架构](../ai-learning/reports/knowledge_reports/多设备多Agent共享Context与会话续接_Manus实践与架构边界_深度解析_20261029.md) | ai-learning |
 | 2026-10-27 | [纳德拉谈企业智能：知识、反馈、模型选择与 Agent 治理](../podcast-learning/reports/2026-10-27_bilibili-nadella_enterprise-intelligence.md) | podcast-learning |
 | 2026-10-27 | [大模型推理全链路：服务质量、量化、编译搜索与 Agent 缓存](../podcast-learning/reports/2026-10-27_bilibili-krillinai_llm-inference-stack.md) | podcast-learning |
@@ -30,13 +32,13 @@
 | 2026-10-25 | [ThinkingBox：把数据库终态评分器变成 RL 奖励——Agent 后训练的可执行奖励链拆解](../ai-learning/reports/knowledge_reports/Microsoft_ThinkingBox_数据库评分转RL奖励与Agent后训练_深度解析_20261025.md) | ai-learning |
 | 2026-10-25 | [The Cognitive Revolution AI:AM：Clean Neurons、GPU 信贷与 AI 供应链的移动瓶颈](../podcast-learning/reports/2026-10-24_rss-cognitive-revolution_ai-am-clean-neurons-gpu-credit.md) | podcast-learning |
 | 2026-10-25 | [TensorRT Global Performance Tuner：从单一 build route 到可搜索的精度感知端到端调优](../ai-learning/reports/knowledge_reports/TensorRT_GlobalPerformanceTuner_可搜索build_route与精度感知调优_深度解析_20261025.md) | ai-learning |
-| 2026-10-25 | [PyTorch TorchTitan：新模型覆盖、规模化训练性能与 TitanRL 深度解析](../ai-learning/reports/knowledge_reports/PyTorch_TorchTitan_SOTA模型规模化训练与TitanRL_深度解析_20261025.md) | ai-learning |
-| 2026-10-25 | [OpenAI 千 Agent 并行生物数据研究：证据聚合与科学发现的深度解析](../ai-learning/reports/knowledge_reports/OpenAI_千Agent并行生物数据研究_证据聚合与科学发现_深度解析_20261025.md) | ai-learning |
 
 ## 🤖 AI Learning（152 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-10-30 | [不要训模型，进化 Harness：LAB 实验的收益与边界](../ai-learning/reports/paper_analyses/46_evolve_the_harness_2026.md) | `agent_harness`, `self_evolving_agent`, `scaffolding`, `meta_harness`, `context_engineering`, `autoresearch` |
+| 2026-10-30 | [Personal Context 正交论：哪些积累值得保留，怎样持续维护](../ai-learning/reports/knowledge_reports/PersonalContext正交论_PC构建指南_20261010.md) | `personal_context`, `agent_memory`, `context_engineering`, `delegation` |
 | 2026-10-29 | [多设备、多 Agent 怎样共用上下文与续接会话：从 Manus 到可实现的架构](../ai-learning/reports/knowledge_reports/多设备多Agent共享Context与会话续接_Manus实践与架构边界_深度解析_20261029.md) | `personal_context`, `context_engineering`, `multi_agent`, `multi_device`, `session_handoff`, `durable_execution` |
 | 2026-10-27 | [上下文工程的失效与修复：从长对话到可维护的记忆](../ai-learning/reports/knowledge_reports/Context_Engineering_失败修复与战略性遗忘_深度解析_20261027.md) | `context_engineering`, `long_context`, `agent_harness`, `agent_memory`, `strategic_forgetting`, `personal_context` |
 | 2026-10-26 | [MiniMax Code Mini App：持久工作面、Agent 插件运行时与安全边界深度解析](../ai-learning/reports/knowledge_reports/MiniMax_Code_Mini_App_持久工作面与Agent插件运行时_深度解析_20261026.md) | `minimax_code`, `mini_app`, `agent_runtime`, `plugin`, `mcp`, `human_agent_collaboration` |
@@ -79,7 +81,6 @@
 | 2026-10-20 | [VISTA：视觉原生 Harness 论文精读——无损视觉记忆与主动检查如何把 Opus 5.0 的 ARC-AGI-3 分数从 40.68 拉到 100](../ai-learning/reports/paper_analyses/48_vista_2026.md) | `visual_harness`, `multimodal_agent`, `arc_agi`, `visual_memory` |
 | 2026-10-20 | [PuRo-2B 开放低成本预训练配方深度解析：MuonHyperball、FP8 与 RTX 5090 的 $5090 实验](../ai-learning/reports/knowledge_reports/PuRo-2B_开放低成本预训练配方_MuonHyperball与RTX5090_深度解析_20261015.md) | `pretraining`, `muon_optimizer`, `fp8_training`, `cost_scaling_law`, `curriculum_learning`, `model_averaging` |
 | 2026-10-20 | [Plan or Retrieve First：大规模工具发现为何需要复杂度自适应路由](../ai-learning/reports/paper_analyses/49_plan_retrieve_tool_discovery_2026.md) | `tool_discovery`, `agent_routing`, `retrieval`, `plan_then_retrieve`, `toolbench` |
-| 2026-10-20 | [Personal Context 正交论：穿越 AI 进步周期的资产，与 PC 的构建工程](../ai-learning/reports/knowledge_reports/PersonalContext正交论_PC构建指南_20261010.md) | `personal_context`, `agent_memory`, `context_engineering`, `delegation` |
 | 2026-10-20 | [Meta Muse：从产品承诺到代理边界——官方能力、市场信号与人类兜底](../ai-learning/reports/2026-09-22_meta-muse_product-research.md) | `agent`, `meta`, `personal-ai`, `security`, `human-in-the-loop` |
 | 2026-10-20 | [Laya：把「反射性决策」从 LLM 里拆出来——421M 非自回归 System 1 决策模型解析与本机实测](../ai-learning/reports/knowledge_reports/Laya_System1决策模型_深度解析_20260922.md) | `system1_models`, `decision_models`, `discriminative_ai`, `laya` |
 | 2026-10-20 | [Kimi K3：一座 2.8 万亿参数的城市，是怎么让信息不堵车的？](../ai-learning/reports/knowledge_reports/KimiK3_信息流三方向_科普讲解_20260728.md) | `kimi_k3`, `mixture_of_experts`, `linear_attention`, `long_context` |
@@ -104,7 +105,6 @@
 | 2026-07-20 | [同一个 GPT-5.5 考出四个分数——Agent 的智能，几分靠模型、几分靠 Harness？](../ai-learning/reports/knowledge_reports/Agent智能_模型与Harness各占多少_科普讲解_20260720.md) | — |
 | 2026-07-20 | [AI 越来越强，我们给它搭的「脚手架」会被自己淘汰吗？—— Bitter Lesson × Harness 科普讲解](../ai-learning/reports/knowledge_reports/Bitter_Lesson_vs_Harness_科普讲解_20260720.md) | `bitter_lesson`, `agent_harness`, `scaffolding`, `science_popularization`, `self_evolving_agent`, `compute_allocation` |
 | 2026-07-19 | [语言模型中的全局工作空间（J-space / J-lens）——Anthropic 2026 可解释性研究精读](../ai-learning/reports/paper_analyses/45_global_workspace_jspace_2026.md) | `interpretability`, `global_workspace`, `jacobian_lens`, `consciousness`, `ai_safety`, `introspection` |
-| 2026-07-19 | [不要训模型，进化 Harness——Karpathy 700 次 Loop 实验 & Niklaus 一手实验精读](../ai-learning/reports/paper_analyses/46_evolve_the_harness_2026.md) | `agent_harness`, `self_evolving_agent`, `scaffolding`, `meta_harness`, `context_engineering`, `autoresearch` |
 | 2026-07-19 | [一个字走进大楼：6710 亿参数，凭什么 94% 在睡觉？—— MoE 混合专家科普](../ai-learning/reports/knowledge_reports/MoE混合专家_一个token的专家大楼之旅_科普讲解_20260719.md) | `moe`, `mixture-of-experts`, `sparse-activation`, `routing`, `ffn`, `load-balancing` |
 | 2026-07-19 | [《欢迎来到伪智力繁荣时代》分析总结 — AI 如何拉平真伪思想的外观差距](../ai-learning/reports/knowledge_reports/伪智力繁荣时代_评论文精读与批判_20260713.md) | — |
 | 2026-07-19 | [8个专家只请2个来上班，为什么模型反而更聪明了？—— MoE 科普讲解](../ai-learning/reports/knowledge_reports/MoE混合专家_科普讲解_20260717.md) | `moe`, `mixture-of-experts`, `sparse-activation`, `routing`, `load-balancing`, `conditional-computation` |

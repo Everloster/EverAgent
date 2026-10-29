@@ -1,0 +1,253 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/PersonalContext正交论_PC构建指南_20261010.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "independent-20261030-pc-sol",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 96,
+        "request_coverage": 97,
+        "reasoning_quality": 96,
+        "readability": 95,
+        "limitations": 98
+      },
+      "score_reasons": {
+        "evidence_fidelity": "逐项核对了播客指定时段、Anthropic、OpenAI、IBM ALTK-Evolve、公开协议、概念页和两份 Laya 线索。Pass⁴ 数字、样本数、规则数量、成本统计口径、播客时间与 62.5% 示意推导均与来源一致；报告把访谈、厂商经验、受限实验和自身推断明确分层。扣分仅因播客依据为存在 ASR 误差的公开转写且只核对相关选段，Laya 仅作为既有研究类比，报告已如实限制二者证明力。",
+        "request_coverage": "完整回应了本轮修订要求：撤回按类别排序与必然升值论，拆分信任、习惯、授权，校正公开仓组件映射和公开/私有边界，保留按需检索、最小起步、维护机制与真实任务收益评估。来源地图与 evidence 的 U1–U7 均可映射到正文；本报告是跨来源概念报告，不要求覆盖播客整期，其选段前后语境未显示断章取义。",
+        "reasoning_quality": "核心结论被收敛为带条件的互补假说，并持续区分历史真实性与当前适用性、存储与当次输入、概率门控与权限、检索命中与任务收益。OpenAI 的过度约束观察和 IBM 的规则学习结果被解释为领域、模型、剂量和成本依赖，而非二选一。反例、替代解释与停止维护条件充分；少量工程建议均标为推测。",
+        "readability": "报告从证据边界、概念修正、播客案例、分类框架、构建方法到评估与风险逐层展开，可脱离历史对话独立阅读。表格和示意计算清楚，来源段给出核验范围。篇幅较长且中英术语较多，但没有影响主线理解。",
+        "limitations": "对未重听全程、ASR 误差、厂商经验性质、IBM 实验外推、本地未复现、Laya 类比、私有上下文未读取、产品选型未重做和收益评估未实施均有明确披露；还主动撤回资本与文件数量替代效果证据的做法。授权、隐私、删除和迁移风险均进入正文，没有用免责声明掩盖核心缺口。"
+      },
+      "critical_claim_ids_checked": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11"
+      ],
+      "coverage_unit_ids_checked": [
+        "U1",
+        "U2",
+        "U3",
+        "U4",
+        "U5",
+        "U6",
+        "U7"
+      ],
+      "source_content_map": [
+        {
+          "id": "M1",
+          "title": "长期资料与当次上下文必须分层，价值取决于相关性、时效、检索和维护",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3",
+            "S4"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1",
+            "U7"
+          ],
+          "notes": "Anthropic 的有限注意预算、播客的时效反例、OpenAI 的旧规则重验和 IBM 的受限收益共同支持条件性判断；正文没有把正交写成数学事实或必然升值规律。"
+        },
+        {
+          "id": "M2",
+          "title": "上下文工程追求高信号最小集合，并在预载与即时检索之间权衡",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S2"
+          ],
+          "matched_coverage_unit_ids": [
+            "U5",
+            "U7"
+          ],
+          "notes": "正文覆盖了按需检索、渐进取用、运行时探索的速度与误用成本，也避免把少读机械化。"
+        },
+        {
+          "id": "M3",
+          "title": "长时任务可用压缩、结构化笔记和外部持久状态维持连续性，但需保留关键约束",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S2",
+            "S8"
+          ],
+          "matched_coverage_unit_ids": [
+            "U5"
+          ],
+          "notes": "报告没有展开 Anthropic 的全部长任务技术，但准确吸收为原始材料、长期 Memory、索引、当前上下文和执行状态的职责区分，足以服务本题。"
+        },
+        {
+          "id": "M4",
+          "title": "模型升级会使旧指令过度约束，Skill 和 AGENTS 应按任务路由并采用渐进披露",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1",
+            "U2",
+            "U5"
+          ],
+          "notes": "正文准确限定为 GPT-6 Astra 的工程观察，未外推为所有程序经验都会过时，并提炼出版本、任务与失败条件重验。"
+        },
+        {
+          "id": "M5",
+          "title": "轨迹提炼规则可提升特定客服任务，但最佳剂量随领域和模型变化并增加输入成本",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S4"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1",
+            "U2",
+            "U7"
+          ],
+          "notes": "报告核对并解释了 GPT-4.1 与 GPT-5.5 的 Pass⁴、40/20 个留出任务、292/14 条规则、重新提炼规则及 full-base 成本口径，未把基准收益当成个人记忆长期复利。"
+        },
+        {
+          "id": "M6",
+          "title": "个人助手的四条产品路线分别押注高频场景、低委托成本、多 Bot 和免费分发",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S1"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3"
+          ],
+          "notes": "30:14–34:31 的路线和多 Bot 成本质疑均被保留；正文明确这些是节目当时的观察，不是当前产品规格或长期收益证据。"
+        },
+        {
+          "id": "M7",
+          "title": "记忆的核心难点是相关性、时效和处理机制，更多 Context 本身不直接交付价值",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3",
+            "U7"
+          ],
+          "notes": "57:41–58:46 的签证记忆误用和 02:03:10–02:04:48 的过时噪音、画像处理与主动性难题均进入论证，且保留了历史案例与当前产品状态之间的边界。"
+        },
+        {
+          "id": "M8",
+          "title": "信任与习惯可能靠长期交付形成，但它们不等同于授权，Context 入口价值也存在节目内不同判断",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S5",
+            "S6"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3",
+            "U4"
+          ],
+          "notes": "02:01:18 起既有偏向用户侧 Context 的观点，也有 Context 易接入、真正价值在中间处理机制的观点；正文将其呈现为产品判断，并用协议边界补足授权概念。"
+        },
+        {
+          "id": "M9",
+          "title": "公开知识、私有资料、来源 owner、当前授权和执行状态需要分别治理",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S5",
+            "S6",
+            "S8"
+          ],
+          "matched_coverage_unit_ids": [
+            "U4",
+            "U5",
+            "U6",
+            "U7"
+          ],
+          "notes": "正文纠正了根协议、PROFILE、reports/wiki、实体页和授权边界的映射，说明 SHA 只提供 provenance，并把更正、删除、撤回和跨用途重新核权纳入维护。"
+        },
+        {
+          "id": "M10",
+          "title": "成本敏感 act/escalate 门控依赖校准概率与收益矩阵，不能替代人的许可",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S7"
+          ],
+          "matched_coverage_unit_ids": [
+            "U4"
+          ],
+          "notes": "正文重算 4p-3>-0.5 得 p>0.625，明确阈值来自人为假设；同时吸收既有 Laya 研究对校准、任务适配和 act/escalate 的限制，未声称这是授权协议。"
+        },
+        {
+          "id": "M11",
+          "title": "长期积累的收益必须用真实任务结果、错误、总成本和新指令覆盖旧记忆来检验",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S2",
+            "S3",
+            "S4",
+            "S8"
+          ],
+          "matched_coverage_unit_ids": [
+            "U6",
+            "U7"
+          ],
+          "notes": "正文给出可观察指标、对照边界和缩减维护范围的停止条件，并明确没有运行这些对照，不以检索命中、文件数量或质量门通过替代任务收益。"
+        }
+      ],
+      "source_ids_checked": [
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "审阅前已在实际目录核对快照：report SHA-256=660e591a0d7fc25f99989b20f603059254bb94d5e1a733a8bef3f7e51ffbabb7，evidence SHA-256=f6b19f53660074378cf94a4e22a3235469297661cbe01c114589a67ccee29bfe，与 review prompt 一致。来源优先顺序：Anthropic 官方原文缓存（a4e4ab526e5bb4e71a2709a568938859265a9c7e5a545a11bc87afece2114dbd；eacli request_id=report-revision-20261030-anthropic）→ OpenAI 官方原文缓存（5518d47423e1fb0024842a26895478b1d574a6e507e2a94bb46dfcc0f138017f；request_id=wiki-context-20261029-openai）→ IBM/ALTK primary 原文缓存（31dfa38b686259e06e17ac6ea80303088f9d3d045dace571f20e3a4e1f3816aa；request_id=wiki-context-20261029-altk）→ 播客指定选段与上下文 → 根协议、共享协议和概念页 → Laya 两份既有报告的 act/escalate、校准与成本矩阵段。三份公开网页缓存的 eacli 收据均 ok=true 且 URL 与 evidence 一致，未重复联网。转写审计通过：sha256=91e44a3022867d9abc25c33b57ddbefc1da3e7f659fc7d276d04d0affee79c9a，4039 segments，时间戳单调，max_consecutive_identical=1，仅有 6 行标题等非时间戳内容警告。此次为历史实质论证问题的主动跨模型复核，按强模型首选使用 gpt-5.6-sol；不是用户显式模型指定，explicit_model_override=false，也不将其表述为抽样窗口到期。未读取生成者推理。未发现未解决的关键缺陷。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 96.25,
+    "evaluated_on": "2026-10-30",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "cd0d5b0ef6bc5c1771a32366d42127df484959623fb167f33bf8c17cbe77675b",
+    "evidence_sha256": "f6b19f53660074378cf94a4e22a3235469297661cbe01c114589a67ccee29bfe"
+  }
+}

@@ -1,0 +1,329 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/PersonalContext正交论_PC构建指南_20261010.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-30",
+  "generator": {
+    "model": "gpt-6-astra",
+    "harness": "codex",
+    "run_id": "revision-20261030-personal-context-astra",
+    "explicit_model_override": false,
+    "override_reason": ""
+  },
+  "task": {
+    "summary": "修订Personal Context正交论：纠正价值与贬值排序、授权及公开仓现状，结合原文保留可落地构建方法和可验证边界。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "将正交论保持为条件性假说，区分事实、经验、画像和授权；纠正绝对结论。"
+      },
+      {
+        "id": "R2",
+        "text": "核对播客关键材料与厂商原文，用OpenAI和ALTK-Evolve说明规则作用依赖条件。"
+      },
+      {
+        "id": "R3",
+        "text": "纠正公开仓组件映射与隐私边界，提出不过度增加维护负担的构建和实际收益评估方法。"
+      },
+      {
+        "id": "R4",
+        "text": "保留必要历史线索，列明更正范围、来源和未验证部分，避免用资本动作证明长期收益。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "kind": "local",
+      "title": "乱翻书275公开节目原始转写（本次核对相关时段）",
+      "locator": "podcast-learning/reports/transcripts/2026-09-21_xiaoyuzhou-luanfanshu_personal-agent-wars.transcript.txt",
+      "accessed_on": "2026-10-30"
+    },
+    {
+      "id": "S2",
+      "kind": "official",
+      "title": "Anthropic: Effective context engineering for AI agents",
+      "locator": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+      "accessed_on": "2026-10-30"
+    },
+    {
+      "id": "S3",
+      "kind": "official",
+      "title": "OpenAI: Rethinking skills and prompts for GPT-6 Astra",
+      "locator": "https://developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra",
+      "accessed_on": "2026-10-30",
+      "retrieved_on": "2026-10-29",
+      "access_note": "2026-10-30复读此前通过eacli读取的公开原文快照。"
+    },
+    {
+      "id": "S4",
+      "kind": "primary",
+      "title": "IBM Research: ALTK-Evolve 客服规则学习实验",
+      "locator": "https://huggingface.co/blog/ibm-research/altk-evolve-bc",
+      "accessed_on": "2026-10-30",
+      "retrieved_on": "2026-10-29",
+      "access_note": "2026-10-30复读此前通过eacli读取的公开原文快照。"
+    },
+    {
+      "id": "S5",
+      "kind": "local",
+      "title": "EverAgent根协议",
+      "locator": "AGENTS.md",
+      "accessed_on": "2026-10-30"
+    },
+    {
+      "id": "S6",
+      "kind": "local",
+      "title": "EverAgent共享执行协议",
+      "locator": "docs/PROTOCOL_COMMON.md",
+      "accessed_on": "2026-10-30"
+    },
+    {
+      "id": "S7",
+      "kind": "local",
+      "title": "Laya既有研究，作为门控类比线索非本次源码核验",
+      "locator": "ai-learning/reports/knowledge_reports/Laya_System1决策模型_深度解析_20260922.md",
+      "accessed_on": "2026-10-30"
+    },
+    {
+      "id": "S8",
+      "kind": "local",
+      "title": "Personal Context概念页，公开组件分工与当前验证边界",
+      "locator": "ai-learning/wiki/concepts/personal-context-orthogonality.md",
+      "accessed_on": "2026-10-30"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "[推测] 正交是条件性互补假说；类别不能直接决定贬值速度，当前适用性与历史真实性不同。",
+      "report_anchor": "## 1. “正交”是一个提问方式",
+      "support": "inference",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "evidence": "由时效反例、旧模型补丁与规则学习实验推导；不声明长期PC收益已验证。",
+      "critical": true
+    },
+    {
+      "id": "C2",
+      "claim": "OpenAI针对Astra观察到旧步骤可能过约束，支持按任务路由、渐进披露和明确完成边界，不证明技巧全部过时。",
+      "report_anchor": "### 1.3 两篇厂商原文为什么看起来方向相反",
+      "support": "derived",
+      "source_ids": [
+        "S3"
+      ],
+      "evidence": "Better skills、Up-to-date AGENTS.md、Decision boundaries、Persistence；没有量化PC长期收益试验。",
+      "critical": true
+    },
+    {
+      "id": "C3",
+      "claim": "ALTK-Evolve留出Pass⁴：GPT4.1 Retail57.5→67.5，Airline35→45；GPT5.5 Airline55→70，规则从自身轨迹重新提炼。",
+      "report_anchor": "### 1.3 两篇厂商原文为什么看起来方向相反",
+      "support": "direct",
+      "source_ids": [
+        "S4"
+      ],
+      "evidence": "Table1、2、5；40/20测试任务，292 Retail、14 Airline sup3；support非正确率。",
+      "critical": true
+    },
+    {
+      "id": "C4",
+      "claim": "ALTK成本统计full base且含模拟器，不与held-out成绩混成同一统计样本；轮数不等于实测延迟。",
+      "report_anchor": "### 1.3 两篇厂商原文为什么看起来方向相反",
+      "support": "derived",
+      "source_ids": [
+        "S4"
+      ],
+      "evidence": "Table3 cost agent+simulator full base、Table4 matched solved turns；本文未复现实验。",
+      "critical": true
+    },
+    {
+      "id": "C5",
+      "claim": "四产品是节目当时的路线解读，签证案例是嘉宾历史经验，不能推断当前产品错误率或内部架构。",
+      "report_anchor": "### 2.2 记住一件事，和恰当地使用它，是两种能力",
+      "support": "derived",
+      "source_ids": [
+        "S1"
+      ],
+      "evidence": "转写30:14–34:31；57:41–58:46；约02:03:10–02:04:48说明时效和处理。",
+      "critical": true
+    },
+    {
+      "id": "C6",
+      "claim": "[推测] 信任、习惯和授权不同，授权不得因成功历史自动扩展或跨工作场景迁移。",
+      "report_anchor": "### 2.3 信任、习惯与授权不能混成一层",
+      "support": "inference",
+      "source_ids": [
+        "S1",
+        "S5",
+        "S6"
+      ],
+      "evidence": "访谈观点与项目授权规则分别使用；当前授权和用途优先。",
+      "critical": true
+    },
+    {
+      "id": "C7",
+      "claim": "五维是分类而非价值排序，WC不是L2+L4严格子集；62.5%门控仅为给定收益和校准概率的示意计算。",
+      "report_anchor": "### 行动门控为什么不等于授权",
+      "support": "derived",
+      "source_ids": [
+        "S5",
+        "S6",
+        "S7"
+      ],
+      "evidence": "p*1+(1-p)*(-3)>-0.5 => p>0.625；不声称模型实际学会阈值或可代替权限。",
+      "critical": true
+    },
+    {
+      "id": "C8",
+      "claim": "[推测] 原始材料、Memory、索引、当次输入和执行状态职责不同；按需检索有探索成本。",
+      "report_anchor": "### 4.1 分清保存的资料和这次模型读到的内容",
+      "support": "inference",
+      "source_ids": [
+        "S2",
+        "S5",
+        "S8"
+      ],
+      "evidence": "Anthropic Context retrieval and agentic search、长任务压缩与笔记；结合公开协议的设计。",
+      "critical": true
+    },
+    {
+      "id": "C9",
+      "claim": "路径/hash只能追溯变化，不能证明正确；公开禁止私人事实与授权环境按需使用私有资料是不同边界。",
+      "report_anchor": "### 4.2 四条维护原则",
+      "support": "derived",
+      "source_ids": [
+        "S5",
+        "S6",
+        "S8"
+      ],
+      "evidence": "根Personal Context-first、来源owner及公开/私有隔离；没有引用私有仓内容。",
+      "critical": true
+    },
+    {
+      "id": "C10",
+      "claim": "公开仓已在协议表达授权，根路由不是身份画像，实体页不是私人关系库；不必为五层新增DELEGATION.md。",
+      "report_anchor": "### 4.4 本仓已经有什么，仍缺少什么证据",
+      "support": "derived",
+      "source_ids": [
+        "S5",
+        "S6",
+        "S8"
+      ],
+      "evidence": "按公开规则描述组织现状；不以文件存在证明运行收益。",
+      "critical": true
+    },
+    {
+      "id": "C11",
+      "claim": "[推测] 收益应以真实任务复用、错误、总成本与授权遵守评估，本报告仅提方案，没有实施对照。",
+      "report_anchor": "## 5. 怎么知道这套积累有没有帮助",
+      "support": "inference",
+      "source_ids": [
+        "S2",
+        "S3",
+        "S4",
+        "S8"
+      ],
+      "evidence": "仅在需要推广规则时增加相应对照；不设固定维护日程或伪造读数。",
+      "critical": true
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U1",
+      "title": "假说与事实/程序的条件性用途",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "report_anchor": "## 1. “正交”是一个提问方式"
+    },
+    {
+      "id": "U2",
+      "title": "厂商原文与受限实证对照",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S3",
+        "S4"
+      ],
+      "report_anchor": "### 1.3 两篇厂商原文为什么看起来方向相反"
+    },
+    {
+      "id": "U3",
+      "title": "产品路线、记忆误用、时效与不同观点",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1"
+      ],
+      "report_anchor": "## 2. 从个人助手的讨论里，能学到什么"
+    },
+    {
+      "id": "U4",
+      "title": "五维分类、工作边界和授权门控",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S5",
+        "S6",
+        "S7"
+      ],
+      "report_anchor": "## 3. 五个维度，帮助分类而非排序"
+    },
+    {
+      "id": "U5",
+      "title": "上下文工程与维护/选型权衡",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S5",
+        "S6",
+        "S8"
+      ],
+      "report_anchor": "## 4. 怎样构建，而不让维护变成负担"
+    },
+    {
+      "id": "U6",
+      "title": "公开仓现状和最小起步",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S5",
+        "S6",
+        "S8"
+      ],
+      "report_anchor": "### 4.4 本仓已经有什么，仍缺少什么证据"
+    },
+    {
+      "id": "U7",
+      "title": "真实收益评估与失效边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S3",
+        "S4",
+        "S8"
+      ],
+      "report_anchor": "## 5. 怎么知道这套积累有没有帮助"
+    }
+  ],
+  "limitations": [
+    "本报告为跨来源观点分析，未证明长期PC收益、跨设备接班收益或通用跨产品授权迁移。",
+    "只核对播客相关转写时段，没有重听全程；有ASR误差，产品案例是节目当时的经验和观点。",
+    "OpenAI与Anthropic为工程经验；IBM实验限定原模型、任务及切分，未本地复现。",
+    "撤去融资/Star聚合及产品成熟度全称判断，没有重新开展所有memory产品选型调查。",
+    "Laya为既有研究线索；62.5%独立示意推导以校准概率与人为成本为条件，不验证当前模型行为。",
+    "只使用公开协议和公开资料，没有读取或复制私有个人上下文；评估设计尚未实施。"
+  ]
+}
