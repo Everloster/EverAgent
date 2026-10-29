@@ -1,0 +1,867 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/多设备多Agent共享Context与会话续接_Manus实践与架构边界_深度解析_20261029.md",
+  "quality_tier": "important",
+  "revision_round": 3,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "manus-shared-context-20261029-independent-review-r3",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 97,
+        "request_coverage": 97,
+        "reasoning_quality": 97,
+        "readability": 97,
+        "limitations": 97
+      },
+      "score_reasons": {
+        "evidence_fidelity": "Revision 3 唯一实质可见改动是 §10 子标题由“三个值得继续研究的问题”改为“思考与追问”；标题不承载来源事实，标题下三个问题及全部证据性正文未变。报告与 evidence 新 SHA 已核对，evidence 与来源快照保持 Revision 2 状态。C01–C20 的证据结论沿用前两轮同一独立 Reviewer 已完成的来源优先核对。",
+        "request_coverage": "R1–R8 的回答未变化。新的“思考与追问”标题准确概括原有三个后续研究问题，并满足学习报告静态命名要求；没有删减或改变用户要求、落地方案、评估方法与边界。",
+        "reasoning_quality": "三个问题仍分别指向交接字段贡献、用户修正向旧分支传播、缺少可移植 checkpoint 时的安全恢复边界，与全文论证和开放问题一致。标题更名没有引入新推理、事实或外推。",
+        "readability": "“思考与追问”比旧标题更简洁，也与仓库学习报告的静态审计约定一致。三问顺序、措辞和上下文均未变化，§10 的结论、限制、下一步与开放问题结构仍清楚。",
+        "limitations": "正文限制清单及待验证标记完全未变，继续准确声明未公开实现、固定规范版本、服务可用性、跨 Harness 恢复与端到端 A/B 的边界。标题更名没有弱化任何限制。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17",
+        "C18",
+        "C19",
+        "C20"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08"
+      ],
+      "source_content_map": [
+        {
+          "id": "R3-SM01",
+          "title": "Manus Business 的共享 Project 背景与公开实现边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01"
+          ],
+          "notes": "Revision 3 未改变该来源覆盖单元；沿用 Revision 2 及 Revision 1 的独立来源核对。Revision 2 未改动该单元；沿用 Revision 1 对原始来源与正文的独立核对。原文支持共享 instructions、files、Skills、connector settings 和 scheduled task 复用；报告准确说明这不是任意 CLI 的会话迁移协议，也未外推未公开的并发实现。"
+        },
+        {
+          "id": "R3-SM02",
+          "title": "Manus Project 权限、配置生效与文档含混",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S2"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01"
+          ],
+          "notes": "Revision 3 未改变该来源覆盖单元；沿用 Revision 2 及 Revision 1 的独立来源核对。Revision 2 未改动该单元；沿用 Revision 1 对原始来源与正文的独立核对。报告覆盖 Project 成员只能看到自己的 task、具体 task 需另行邀请、指令与文件更新生效时间不同，并保留‘旧任务不受影响’与指令热更新表之间的含混。"
+        },
+        {
+          "id": "R3-SM03",
+          "title": "Manus Collab 与 Branch 的同任务协作和会话分叉边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S3",
+            "S4"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01"
+          ],
+          "notes": "Revision 3 未改变该来源覆盖单元；沿用 Revision 2 及 Revision 1 的独立来源核对。Revision 2 未改动该单元；沿用 Revision 1 对原始来源与正文的独立核对。报告准确区分 Collab 的多人共享 task 与 Branch 的历史复制后独立演进，并纳入首位 collaborator 加入时清除 sandbox cookies、分支后不自动合并等关键限制。"
+        },
+        {
+          "id": "R3-SM04",
+          "title": "Wide Research 独立 worker 与学习型 Project 的批准写回",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S5",
+            "S6"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02"
+          ],
+          "notes": "Revision 3 未改变该来源覆盖单元；沿用 Revision 2 及 Revision 1 的独立来源核对。Revision 2 未改动该单元；沿用 Revision 1 对原始来源与正文的独立核对。报告覆盖主控分解、worker 独立 VM/工具/新 context、集中整合，以及 Project 更新需用户批准；同时拒绝采用原文缺乏独立数据的性能普遍化结论。"
+        },
+        {
+          "id": "R3-SM05",
+          "title": "Project、模型 context、thread、Memory 与 checkpoint 的分层",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S9",
+            "S11",
+            "S12",
+            "S15",
+            "S23"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03"
+          ],
+          "notes": "Revision 3 未改变该来源覆盖单元；沿用 Revision 2 及 Revision 1 的独立来源核对。Revision 2 未改动该单元；沿用 Revision 1 对原始来源与正文的独立核对。来源分别给出持久 conversation、Claude session 与 filesystem 分离、thread checkpoint、跨 thread namespace memory 和 Session v2 身份边界；报告的五层表与原生/逻辑续接区分准确。"
+        },
+        {
+          "id": "R3-SM06",
+          "title": "多设备断线恢复、原生 resume/fork 与跨 Harness 交接",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S7",
+            "S9",
+            "S10",
+            "S11"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04"
+          ],
+          "notes": "Revision 3 未改变该来源覆盖单元；沿用 Revision 2 及 Revision 1 的独立来源核对。本轮重新核对 S7/S9/S10/S11。§4.2 和 §7.3 现明确：Codex app-server 恢复的是该服务器保存的 thread，当前文档未承诺跨主机迁移；Claude 跨主机恢复需要会话文件与正确 cwd，也可改用 fresh session 加应用状态。断线核对与跨 Harness 交接边界保持准确。"
+        },
+        {
+          "id": "R3-SM07",
+          "title": "多 Agent 的独立上下文、共享环境与集中协调",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S5",
+            "S8"
+          ],
+          "matched_coverage_unit_ids": [
+            "U05"
+          ],
+          "notes": "Revision 3 未改变该来源覆盖单元；沿用 Revision 2 及 Revision 1 的独立来源核对。Revision 2 未改动该单元；沿用 Revision 1 对原始来源与正文的独立核对。OpenAI 子 Agent 各有 context 但共享 environment filesystem，Manus Wide Research 自述每个 worker 有独立 VM；报告明确把上下文隔离与执行环境隔离分成两个维度。"
+        },
+        {
+          "id": "R3-SM08",
+          "title": "checkpoint、并发输入、pending writes 与副作用恢复",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S12",
+            "S13",
+            "S14"
+          ],
+          "matched_coverage_unit_ids": [
+            "U05"
+          ],
+          "notes": "Revision 3 未改变该来源覆盖单元；沿用 Revision 2 及 Revision 1 的独立来源核对。本轮重新核对 S12/S13/S14。§5.4 现准确说明同一 super-step 的成功节点写入可通过 pending writes 复用、完整 checkpoint 位于 super-step 边界，并正确列出 exit/async/sync 的保存时点、崩溃恢复风险与性能取舍；外部副作用仍要求幂等或结果查询。"
+        },
+        {
+          "id": "R3-SM09",
+          "title": "OpenViking session、Memory 提炼、完成状态与审计记录",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S16",
+            "S17"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06"
+          ],
+          "notes": "Revision 3 未改变该来源覆盖单元；沿用 Revision 2 及 Revision 1 的独立来源核对。Revision 2 未改动该单元；沿用 Revision 1 对原始来源与正文的独立核对。报告覆盖 create→interact→commit、accepted/task_id 与后台状态分离、memory_diff、FS source of truth、VectorDB 派生索引、path lock/redo 范围，并准确保留 session 与 transaction 页对摘要阶段的差异。"
+        },
+        {
+          "id": "R3-SM10",
+          "title": "OpenViking 多租户权限与个人多设备映射边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S16",
+            "S18",
+            "S22"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06"
+          ],
+          "notes": "Revision 3 未改变该来源覆盖单元；沿用 Revision 2 及 Revision 1 的独立来源核对。Revision 2 未改动该单元；沿用 Revision 1 对原始来源与正文的独立核对。报告准确说明 account 内共享 resources、user 隔离 memories/skills/sessions、peer 只是 user 内范围，home alias 依赖认证身份；并未把既有公开试点写成 10 月 29 日实时部署事实。"
+        },
+        {
+          "id": "R3-SM11",
+          "title": "MCP 2026-07-28 的无协议 session 语义与 A2A 黑盒任务交互",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S19",
+            "S20",
+            "S21"
+          ],
+          "matched_coverage_unit_ids": [
+            "U07"
+          ],
+          "notes": "Revision 3 未改变该来源覆盖单元；沿用 Revision 2 及 Revision 1 的独立来源核对。Revision 2 未改动该单元；沿用 Revision 1 对原始来源与正文的独立核对。报告准确说明该版 MCP 移除协议 session/Mcp-Session-Id、改用显式 handle 且不支持 SSE redelivery；A2A 的 Task、Artifact、contextId 可协作但远端 Agent 的 Memory/工具仍不透明。"
+        },
+        {
+          "id": "R3-SM12",
+          "title": "最小落地方案、贯穿案例、评估设计与停止条件",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S7",
+            "S11",
+            "S13",
+            "S16",
+            "S23"
+          ],
+          "matched_coverage_unit_ids": [
+            "U08"
+          ],
+          "notes": "Revision 3 未改变该来源覆盖单元；沿用 Revision 2 及 Revision 1 的独立来源核对。Revision 2 未改动该单元；沿用 Revision 1 对原始来源与正文的独立核对。报告给出复用已有 owner 的统一工作视图、交接快照、接班切换点、完整虚构案例、A/B 与消融、行为指标和安全停止条件，并明确这些均未实测、未授权部署。"
+        }
+      ],
+      "source_ids_checked": [
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8",
+        "S9",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S19",
+        "S20",
+        "S21",
+        "S22",
+        "S23"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6",
+        "R7",
+        "R8"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "建议通过。本轮为静态命名兼容修正，只核对报告/evidence SHA、§10 标题“思考与追问”及其下三个未变问题；没有重读全套来源。未受影响的 S1–S23、C01–C20、R1–R8 与 U01–U08 映射继承前两轮同一独立 Reviewer 的完整来源核对。未发现新事实、推理、覆盖或限制问题。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 97.0,
+    "evaluated_on": "2026-10-29",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "bfc4ffeb24c4c61da42de2a83162407315e426a78180b1b4e6d6390c0f95d335",
+    "evidence_sha256": "1e5787e9f705e57e440ed49a111ed5c4e160eb90307bfab5cddbe6404b946ff8"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex",
+            "run_id": "manus-shared-context-20261029-independent-review-r1",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 95,
+            "request_coverage": 95,
+            "reasoning_quality": 94,
+            "readability": 94,
+            "limitations": 96
+          },
+          "score_reasons": {
+            "evidence_fidelity": "已独立读取并核对 S1–S23 的指定公开快照，20 个关键 claim 均能回到相应来源。报告准确区分 Manus Project、Collab、Branch、Wide Research 与学习型 Project；原生 session、Memory、checkpoint、MCP/A2A 和 OpenViking 的边界也与官方合同一致。报告保留了 Manus 配置更新和 OpenViking commit 阶段的文档含混，没有把厂商性能宣传当独立实证。轻微表述风险是 §7.3 的‘同 Harness 跨主机恢复｜官方 resume’较宽泛：Claude 文档明确给出跨主机条件，而当前引用的 Codex app-server 文档只说明本机持久 thread 的 resume/read/fork，并未给出跨主机迁移合同。",
+            "request_coverage": "R1–R8 均有实质回答。正文从用户指定的 Manus Business 原文出发，明确区分 Project context、模型 context、长期 Memory、原生 session、逻辑接班和执行恢复；给出多设备入口、跨 Harness 交接、多 Agent 写入与副作用治理、OpenViking 权限边界、贯穿案例及可验证 A/B 方案。没有把研究扩成未经授权的部署或迁移。",
+            "reasoning_quality": "核心推理链成立：每类事实设 owner，多入口优先连接既有 runtime，跨 Harness 通过可读交接建立新原生会话，多 Agent 各持独立 context 并由指定 owner 合并。报告正确指出会话分叉不等于文件系统分叉、checkpoint 回滚不撤销外部副作用、锁不解决语义冲突，并给出幂等与回执核对方法。可进一步补充 LangGraph pending writes 与 exit/async/sync durability mode 的取舍，使执行恢复建议更完整，但不影响现有结论。",
+            "readability": "报告可脱离对话独立阅读，先定义五类对象，再按 Manus 产品事实、参考架构、设备/Agent 接续、多 Agent 并行、OpenViking、协议选择、案例和评估展开。表格、示意图与虚构交接 YAML 有助于把抽象边界落到操作层。篇幅较长但层次清楚；§4.2 与 §7.3 对同 Harness/跨主机的措辞可再收紧，以免快速阅读时把不同厂商能力合并理解。",
+            "limitations": "限制声明充分且诚实：明确底层实现未公开、MCP 固定为 2026-07-28 文档版本、OpenAI Agents API 未验证服务可用性、不同 Harness 原生历史未证明可互换、文件/浏览器/未完成工具未实测、方案和收益均未做端到端 A/B。报告也没有将 10 月 25 日公开积累外推为当前私有部署状态，且未泄露设备、账号、网络或真实会话信息。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07",
+            "C08",
+            "C09",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "C16",
+            "C17",
+            "C18",
+            "C19",
+            "C20"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07",
+            "U08"
+          ],
+          "source_content_map": [
+            {
+              "id": "SM01",
+              "title": "Manus Business 的共享 Project 背景与公开实现边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01"
+              ],
+              "notes": "原文支持共享 instructions、files、Skills、connector settings 和 scheduled task 复用；报告准确说明这不是任意 CLI 的会话迁移协议，也未外推未公开的并发实现。"
+            },
+            {
+              "id": "SM02",
+              "title": "Manus Project 权限、配置生效与文档含混",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01"
+              ],
+              "notes": "报告覆盖 Project 成员只能看到自己的 task、具体 task 需另行邀请、指令与文件更新生效时间不同，并保留‘旧任务不受影响’与指令热更新表之间的含混。"
+            },
+            {
+              "id": "SM03",
+              "title": "Manus Collab 与 Branch 的同任务协作和会话分叉边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01"
+              ],
+              "notes": "报告准确区分 Collab 的多人共享 task 与 Branch 的历史复制后独立演进，并纳入首位 collaborator 加入时清除 sandbox cookies、分支后不自动合并等关键限制。"
+            },
+            {
+              "id": "SM04",
+              "title": "Wide Research 独立 worker 与学习型 Project 的批准写回",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S5",
+                "S6"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "报告覆盖主控分解、worker 独立 VM/工具/新 context、集中整合，以及 Project 更新需用户批准；同时拒绝采用原文缺乏独立数据的性能普遍化结论。"
+            },
+            {
+              "id": "SM05",
+              "title": "Project、模型 context、thread、Memory 与 checkpoint 的分层",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S9",
+                "S11",
+                "S12",
+                "S15",
+                "S23"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "来源分别给出持久 conversation、Claude session 与 filesystem 分离、thread checkpoint、跨 thread namespace memory 和 Session v2 身份边界；报告的五层表与原生/逻辑续接区分准确。"
+            },
+            {
+              "id": "SM06",
+              "title": "多设备断线恢复、原生 resume/fork 与跨 Harness 交接",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S7",
+                "S9",
+                "S10",
+                "S11"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "报告覆盖 active/idle turn 语义、断线后读取 saved items、completed 不代表工具均成功、Codex read/resume/fork、Claude session 文件与 cwd、Conversations 跨设备持久状态以及可移植交接字段。§7.3 的跨主机表述宜明确按厂商合同分别判断。"
+            },
+            {
+              "id": "SM07",
+              "title": "多 Agent 的独立上下文、共享环境与集中协调",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S5",
+                "S8"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "OpenAI 子 Agent 各有 context 但共享 environment filesystem，Manus Wide Research 自述每个 worker 有独立 VM；报告明确把上下文隔离与执行环境隔离分成两个维度。"
+            },
+            {
+              "id": "SM08",
+              "title": "checkpoint、并发输入、pending writes 与副作用恢复",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S12",
+                "S13",
+                "S14"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "报告充分覆盖 replay 不是从原代码行继续、task 封装、幂等、结果查询、enqueue/reject/interrupt/rollback 与外部副作用不自动撤销。来源中的 node-level pending writes 和 exit/async/sync durability mode 未展开，属于可补充的执行恢复细节，不影响核心方案。"
+            },
+            {
+              "id": "SM09",
+              "title": "OpenViking session、Memory 提炼、完成状态与审计记录",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S16",
+                "S17"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "报告覆盖 create→interact→commit、accepted/task_id 与后台状态分离、memory_diff、FS source of truth、VectorDB 派生索引、path lock/redo 范围，并准确保留 session 与 transaction 页对摘要阶段的差异。"
+            },
+            {
+              "id": "SM10",
+              "title": "OpenViking 多租户权限与个人多设备映射边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S16",
+                "S18",
+                "S22"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "报告准确说明 account 内共享 resources、user 隔离 memories/skills/sessions、peer 只是 user 内范围，home alias 依赖认证身份；并未把既有公开试点写成 10 月 29 日实时部署事实。"
+            },
+            {
+              "id": "SM11",
+              "title": "MCP 2026-07-28 的无协议 session 语义与 A2A 黑盒任务交互",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S19",
+                "S20",
+                "S21"
+              ],
+              "matched_coverage_unit_ids": [
+                "U07"
+              ],
+              "notes": "报告准确说明该版 MCP 移除协议 session/Mcp-Session-Id、改用显式 handle 且不支持 SSE redelivery；A2A 的 Task、Artifact、contextId 可协作但远端 Agent 的 Memory/工具仍不透明。"
+            },
+            {
+              "id": "SM12",
+              "title": "最小落地方案、贯穿案例、评估设计与停止条件",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S7",
+                "S11",
+                "S13",
+                "S16",
+                "S23"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08"
+              ],
+              "notes": "报告给出复用已有 owner 的统一工作视图、交接快照、接班切换点、完整虚构案例、A/B 与消融、行为指标和安全停止条件，并明确这些均未实测、未授权部署。"
+            }
+          ],
+          "source_ids_checked": [
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6",
+            "S7",
+            "S8",
+            "S9",
+            "S10",
+            "S11",
+            "S12",
+            "S13",
+            "S14",
+            "S15",
+            "S16",
+            "S17",
+            "S18",
+            "S19",
+            "S20",
+            "S21",
+            "S22",
+            "S23"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6",
+            "R7",
+            "R8"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "建议通过。报告 SHA-256 与 evidence SHA-256 均与审稿任务绑定快照一致；S1–S23 快照自身 SHA 也全部匹配清单。未发现实质缺陷或硬失败。建议两项非阻断修订：一是在 §7.3 将‘同 Harness 跨主机恢复’改成按厂商分别说明，明确当前引用的 Codex app-server 文档没有提供跨主机迁移合同；二是在 §4.2/§5.4 补一句 LangGraph pending writes 与 exit/async/sync durability mode 的恢复/性能权衡。"
+        }
+      ],
+      "decision": {}
+    },
+    {
+      "revision_round": 2,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex",
+            "run_id": "manus-shared-context-20261029-independent-review-r2",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 97,
+            "request_coverage": 97,
+            "reasoning_quality": 97,
+            "readability": 96,
+            "limitations": 97
+          },
+          "score_reasons": {
+            "evidence_fidelity": "Revision 2 的受影响来源已重新核对：S10 只承诺恢复服务器保存的 Codex thread，S11 明确 Claude 跨主机需要会话文件与匹配 cwd；正文和 C09 现已分别陈述，没有再外推 Codex 跨主机迁移合同。S12/S13 对 node-level pending writes、super-step checkpoint、exit/async/sync durability mode、重放及副作用幂等的合同，均被 §5.4 和 C12 准确反映。§3.1 新增 owner 定义与 S23 及原有职责划分一致。其余 C01–C08、C10–C11、C13–C20 沿用 Revision 1 已完成的独立来源核对，相关正文与来源快照未变。",
+            "request_coverage": "R1–R8 继续完整满足。两项上一轮非阻断建议均已落实：同 Harness 恢复按 Codex 服务器内 thread 与 Claude 跨主机条件分别说明；执行恢复补充 pending writes 和 durability mode 的实际取舍。owner 的中文定义降低了术语门槛，没有扩大为新系统实施或部署。",
+            "reasoning_quality": "修订增强了两条关键推理链。第一，换设备连接原服务器、迁移执行主机、跨 Harness 逻辑接班现在明确属于三种不同问题。第二，LangGraph 的节点级成功写入、完整 super-step checkpoint、持久化时机和外部副作用被分层说明，避免把框架恢复保证误当外部事务。原有 owner、版本、交接、合并与幂等方案保持成立。",
+            "readability": "§3.1 对 owner 的一句中文定义使后续“资料 owner / 任务 owner”更易理解。§4.2 和 §7.3 的表格与解释现在能直接看出 Codex 与 Claude 的不同恢复合同；§5.4 的三行 durability 表简洁呈现恢复可靠性和性能取舍。新增内容没有破坏原报告结构或独立可读性。",
+            "limitations": "报告继续明确 Manus 底层实现未公开、MCP 固定文档版本、服务可用性未验证、跨 Harness 原生历史不能保证互换、端到端效果未实测。修订还新增了 Codex 跨主机迁移需另核实这一精确边界，并继续说明 durability mode 只管理框架状态，不能消除外部动作的已做未存窗口。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07",
+            "C08",
+            "C09",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "C16",
+            "C17",
+            "C18",
+            "C19",
+            "C20"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07",
+            "U08"
+          ],
+          "source_content_map": [
+            {
+              "id": "R2-SM01",
+              "title": "Manus Business 的共享 Project 背景与公开实现边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01"
+              ],
+              "notes": "Revision 2 未改动该单元；沿用 Revision 1 对原始来源与正文的独立核对。原文支持共享 instructions、files、Skills、connector settings 和 scheduled task 复用；报告准确说明这不是任意 CLI 的会话迁移协议，也未外推未公开的并发实现。"
+            },
+            {
+              "id": "R2-SM02",
+              "title": "Manus Project 权限、配置生效与文档含混",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01"
+              ],
+              "notes": "Revision 2 未改动该单元；沿用 Revision 1 对原始来源与正文的独立核对。报告覆盖 Project 成员只能看到自己的 task、具体 task 需另行邀请、指令与文件更新生效时间不同，并保留‘旧任务不受影响’与指令热更新表之间的含混。"
+            },
+            {
+              "id": "R2-SM03",
+              "title": "Manus Collab 与 Branch 的同任务协作和会话分叉边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01"
+              ],
+              "notes": "Revision 2 未改动该单元；沿用 Revision 1 对原始来源与正文的独立核对。报告准确区分 Collab 的多人共享 task 与 Branch 的历史复制后独立演进，并纳入首位 collaborator 加入时清除 sandbox cookies、分支后不自动合并等关键限制。"
+            },
+            {
+              "id": "R2-SM04",
+              "title": "Wide Research 独立 worker 与学习型 Project 的批准写回",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S5",
+                "S6"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "Revision 2 未改动该单元；沿用 Revision 1 对原始来源与正文的独立核对。报告覆盖主控分解、worker 独立 VM/工具/新 context、集中整合，以及 Project 更新需用户批准；同时拒绝采用原文缺乏独立数据的性能普遍化结论。"
+            },
+            {
+              "id": "R2-SM05",
+              "title": "Project、模型 context、thread、Memory 与 checkpoint 的分层",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S9",
+                "S11",
+                "S12",
+                "S15",
+                "S23"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "Revision 2 未改动该单元；沿用 Revision 1 对原始来源与正文的独立核对。来源分别给出持久 conversation、Claude session 与 filesystem 分离、thread checkpoint、跨 thread namespace memory 和 Session v2 身份边界；报告的五层表与原生/逻辑续接区分准确。"
+            },
+            {
+              "id": "R2-SM06",
+              "title": "多设备断线恢复、原生 resume/fork 与跨 Harness 交接",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S7",
+                "S9",
+                "S10",
+                "S11"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "本轮重新核对 S7/S9/S10/S11。§4.2 和 §7.3 现明确：Codex app-server 恢复的是该服务器保存的 thread，当前文档未承诺跨主机迁移；Claude 跨主机恢复需要会话文件与正确 cwd，也可改用 fresh session 加应用状态。断线核对与跨 Harness 交接边界保持准确。"
+            },
+            {
+              "id": "R2-SM07",
+              "title": "多 Agent 的独立上下文、共享环境与集中协调",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S5",
+                "S8"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "Revision 2 未改动该单元；沿用 Revision 1 对原始来源与正文的独立核对。OpenAI 子 Agent 各有 context 但共享 environment filesystem，Manus Wide Research 自述每个 worker 有独立 VM；报告明确把上下文隔离与执行环境隔离分成两个维度。"
+            },
+            {
+              "id": "R2-SM08",
+              "title": "checkpoint、并发输入、pending writes 与副作用恢复",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S12",
+                "S13",
+                "S14"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "本轮重新核对 S12/S13/S14。§5.4 现准确说明同一 super-step 的成功节点写入可通过 pending writes 复用、完整 checkpoint 位于 super-step 边界，并正确列出 exit/async/sync 的保存时点、崩溃恢复风险与性能取舍；外部副作用仍要求幂等或结果查询。"
+            },
+            {
+              "id": "R2-SM09",
+              "title": "OpenViking session、Memory 提炼、完成状态与审计记录",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S16",
+                "S17"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "Revision 2 未改动该单元；沿用 Revision 1 对原始来源与正文的独立核对。报告覆盖 create→interact→commit、accepted/task_id 与后台状态分离、memory_diff、FS source of truth、VectorDB 派生索引、path lock/redo 范围，并准确保留 session 与 transaction 页对摘要阶段的差异。"
+            },
+            {
+              "id": "R2-SM10",
+              "title": "OpenViking 多租户权限与个人多设备映射边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S16",
+                "S18",
+                "S22"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "Revision 2 未改动该单元；沿用 Revision 1 对原始来源与正文的独立核对。报告准确说明 account 内共享 resources、user 隔离 memories/skills/sessions、peer 只是 user 内范围，home alias 依赖认证身份；并未把既有公开试点写成 10 月 29 日实时部署事实。"
+            },
+            {
+              "id": "R2-SM11",
+              "title": "MCP 2026-07-28 的无协议 session 语义与 A2A 黑盒任务交互",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S19",
+                "S20",
+                "S21"
+              ],
+              "matched_coverage_unit_ids": [
+                "U07"
+              ],
+              "notes": "Revision 2 未改动该单元；沿用 Revision 1 对原始来源与正文的独立核对。报告准确说明该版 MCP 移除协议 session/Mcp-Session-Id、改用显式 handle 且不支持 SSE redelivery；A2A 的 Task、Artifact、contextId 可协作但远端 Agent 的 Memory/工具仍不透明。"
+            },
+            {
+              "id": "R2-SM12",
+              "title": "最小落地方案、贯穿案例、评估设计与停止条件",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S7",
+                "S11",
+                "S13",
+                "S16",
+                "S23"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08"
+              ],
+              "notes": "Revision 2 未改动该单元；沿用 Revision 1 对原始来源与正文的独立核对。报告给出复用已有 owner 的统一工作视图、交接快照、接班切换点、完整虚构案例、A/B 与消融、行为指标和安全停止条件，并明确这些均未实测、未授权部署。"
+            }
+          ],
+          "source_ids_checked": [
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6",
+            "S7",
+            "S8",
+            "S9",
+            "S10",
+            "S11",
+            "S12",
+            "S13",
+            "S14",
+            "S15",
+            "S16",
+            "S17",
+            "S18",
+            "S19",
+            "S20",
+            "S21",
+            "S22",
+            "S23"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6",
+            "R7",
+            "R8"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "建议通过。本轮直接复核改动章节 §3.1、§4.2、§5.4、§7.3，以及 C09/C12，并重新读取 S10–S13 的相关合同；同时核对 S9/S23 对 conversation/owner 边界的支撑。未受影响的来源、claim、需求与地图单元沿用同一独立 Reviewer 在 Revision 1 对 S1–S23 的完整来源优先核对，因为 source snapshots 和对应正文均未变化。两项上一轮非阻断建议已完整解决，未发现新实质缺陷或硬失败。"
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 96.85,
+        "evaluated_on": "2026-10-29",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "1b914c41c9a7a0a94e7ebb1c8efd8c913dbfe10a58a1e67fede58024a87e2639",
+        "evidence_sha256": "1e5787e9f705e57e440ed49a111ed5c4e160eb90307bfab5cddbe6404b946ff8"
+      }
+    }
+  ]
+}

@@ -1,0 +1,677 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/多设备多Agent共享Context与会话续接_Manus实践与架构边界_深度解析_20261029.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-29",
+  "generator": {
+    "model": "gpt-6.1-sol",
+    "harness": "codex",
+    "run_id": "manus-shared-context-20261029-root",
+    "explicit_model_override": false,
+    "override_reason": ""
+  },
+  "task": {
+    "summary": "基于 Manus for Business 深入研究多设备、多 Agent 如何共享上下文、接续会话与协作，产出可独立阅读的公开研究报告。",
+    "original_request": "就是这个文章，如何让多设备多 agent 用一份 context，或者说一个 session。帮我深入研究学习",
+    "article_context": "Manus for Business：构建 AI 原生公司；起点原文为 https://manus.im/blog/manus-team-plan。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "以 Manus for Business 原文为起点，核对相关官方产品材料，不从营销描述虚构底层实现。"
+      },
+      {
+        "id": "R2",
+        "text": "区分 Project context、模型 context、长期 Memory、原生 session 与逻辑工作续接。"
+      },
+      {
+        "id": "R3",
+        "text": "解释多设备如何继续同一工作，以及运行环境、断线与工具状态的恢复边界。"
+      },
+      {
+        "id": "R4",
+        "text": "解释不同 Agent / Harness 接班与多 Agent 并行的隔离、写入、合并和副作用处理。"
+      },
+      {
+        "id": "R5",
+        "text": "结合已有公开项目积累，说明 OpenViking 与原生运行系统的职责及权限边界，不泄露私有信息。"
+      },
+      {
+        "id": "R6",
+        "text": "给出可落地的最小方案和贯穿案例，复用现有 owner，不擅自扩大成架构实施或部署。"
+      },
+      {
+        "id": "R7",
+        "text": "提供可验证效果的评估方法，区分文档合同、架构建议、尚未运行的实验。"
+      },
+      {
+        "id": "R8",
+        "text": "深入浅出、中文、可独立阅读；保留文档冲突与未验证边界。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "kind": "official",
+      "title": "Manus for Business",
+      "locator": "https://manus.im/blog/manus-team-plan",
+      "accessed_on": "2026-10-29",
+      "read_scope": "完整正文；本任务中已取得的 eacli 原文快照",
+      "snapshot_sha256": "141d2065c8c7eacb6568335df998cddc8c4413346056580e7ff482f9a88bcf4a",
+      "access_method": "eacli tool invoke --capability web.read"
+    },
+    {
+      "id": "S2",
+      "kind": "official",
+      "title": "Manus Projects",
+      "locator": "https://manus.im/docs/features/projects",
+      "accessed_on": "2026-10-29",
+      "read_scope": "完整正文，重点核对 Collaboration and Privacy / Configuration Updates",
+      "snapshot_sha256": "8d8f7cc882a5090af15a3e3cb1de243f230004cf9d3ee985903ce55e34eeafa2",
+      "access_method": "eacli tool invoke --capability web.read",
+      "request_id": "manus-context-20261029-manus-projects",
+      "retrieved_at": "2026-10-29T02:21:52.898573+00:00"
+    },
+    {
+      "id": "S3",
+      "kind": "official",
+      "title": "Manus Collab",
+      "locator": "https://manus.im/docs/features/collab",
+      "accessed_on": "2026-10-29",
+      "read_scope": "完整正文",
+      "snapshot_sha256": "394fddd99b0f07fcd03d2b95fef14296d93659c799669ca3cf5ebb291c876974",
+      "access_method": "eacli tool invoke --capability web.read",
+      "request_id": "manus-context-20261029-manus-collab",
+      "retrieved_at": "2026-10-29T02:22:14.516884+00:00"
+    },
+    {
+      "id": "S4",
+      "kind": "official",
+      "title": "Manus Branch",
+      "locator": "https://manus.im/blog/manus-branch",
+      "accessed_on": "2026-10-29",
+      "read_scope": "完整正文",
+      "snapshot_sha256": "dc764eef86b808f55d62000b8b6cec9df73af9d7e54ece9466bbef5e1175ac3f",
+      "access_method": "eacli tool invoke --capability web.read",
+      "request_id": "manus-context-20261029-manus-branch",
+      "retrieved_at": "2026-10-29T02:24:34.515457+00:00"
+    },
+    {
+      "id": "S5",
+      "kind": "official",
+      "title": "Manus Wide Research",
+      "locator": "https://manus.im/blog/manus-wide-research-solve-context-problem",
+      "accessed_on": "2026-10-29",
+      "read_scope": "完整正文；架构自述与性能泛化分开评价",
+      "snapshot_sha256": "d9fd8f8336843a049095b147c3dd648c65c840d4433be5aef5d33ed7150800f5",
+      "access_method": "eacli tool invoke --capability web.read",
+      "request_id": "manus-context-20261029-manus-wide",
+      "retrieved_at": "2026-10-29T02:24:34.517030+00:00"
+    },
+    {
+      "id": "S6",
+      "kind": "official",
+      "title": "Manus Projects That Learn From Every Task",
+      "locator": "https://manus.im/blog/manus-projects-self-updating",
+      "accessed_on": "2026-10-29",
+      "read_scope": "完整正文",
+      "snapshot_sha256": "ebc04751a2b087028d8430f41f7f19809b4004c0f078c13728178ba27c0224df",
+      "access_method": "eacli tool invoke --capability web.read",
+      "request_id": "manus-context-20261029-manus-project-learning",
+      "retrieved_at": "2026-10-29T02:26:58.342335+00:00"
+    },
+    {
+      "id": "S7",
+      "kind": "official",
+      "title": "OpenAI Run and continue sessions",
+      "locator": "https://developers.openai.com/api/docs/guides/agents-api/sessions",
+      "accessed_on": "2026-10-29",
+      "read_scope": "完整官方 Markdown 正文",
+      "snapshot_sha256": "c0b4d4129d0df3ba5d15e07fd7a77f9c4166b2f62dece03d312c4e93ac268aba",
+      "access_method": "eacli tool invoke --capability web.read",
+      "request_id": "manus-context-20261029-openai-session-md",
+      "retrieved_at": "2026-10-29T02:24:30.347716+00:00"
+    },
+    {
+      "id": "S8",
+      "kind": "official",
+      "title": "OpenAI Multi-agent",
+      "locator": "https://developers.openai.com/api/docs/guides/agents-api/multi-agent",
+      "accessed_on": "2026-10-29",
+      "read_scope": "完整官方 Markdown 正文",
+      "snapshot_sha256": "95a92c876bbad89835a63e4242dd4c4a7522b25f6125fa9e4934a8ff98a719e7",
+      "access_method": "eacli tool invoke --capability web.read",
+      "request_id": "manus-context-20261029-openai-multiagent-md",
+      "retrieved_at": "2026-10-29T02:24:30.339209+00:00"
+    },
+    {
+      "id": "S9",
+      "kind": "official",
+      "title": "OpenAI Conversation state",
+      "locator": "https://developers.openai.com/api/docs/guides/conversation-state",
+      "accessed_on": "2026-10-29",
+      "read_scope": "官方 Markdown 的持久 conversation、state management、reasoning continuation 相关章节",
+      "snapshot_sha256": "c77e32440aeae0d88727ca06e7600aa3f2e35bdfd291c230ba3eb2bb346eada0",
+      "access_method": "eacli tool invoke --capability web.read",
+      "request_id": "manus-context-20261029-openai-conversation-md",
+      "retrieved_at": "2026-10-29T02:24:30.350595+00:00"
+    },
+    {
+      "id": "S10",
+      "kind": "official",
+      "title": "Codex app-server",
+      "locator": "https://developers.openai.com/codex/app-server",
+      "accessed_on": "2026-10-29",
+      "read_scope": "官方 Markdown 的 lifecycle / thread start/read/resume/fork 相关章节",
+      "snapshot_sha256": "205d298783373bcc52f6b40bebd9832d14f9ecb6e58aeeb303fc3fa258c15d2d",
+      "access_method": "eacli tool invoke --capability web.read",
+      "request_id": "manus-context-20261029-codex-app-server-md",
+      "retrieved_at": "2026-10-29T02:27:02.788072+00:00"
+    },
+    {
+      "id": "S11",
+      "kind": "official",
+      "title": "Claude Agent SDK sessions",
+      "locator": "https://platform.claude.com/docs/en/agent-sdk/sessions",
+      "accessed_on": "2026-10-29",
+      "read_scope": "原生会话持久化、resume/fork、跨主机与 filesystem 相关完整章节",
+      "snapshot_sha256": "37cfe46eb676216eb6cc9c055a4d2a4389907908319a569682cf9dc0a50f6cd6",
+      "access_method": "eacli tool invoke --capability web.read",
+      "request_id": "manus-context-20261029-claude-sessions",
+      "retrieved_at": "2026-10-29T02:26:58.343103+00:00"
+    },
+    {
+      "id": "S12",
+      "kind": "official",
+      "title": "LangGraph checkpointers",
+      "locator": "https://docs.langchain.com/oss/python/langgraph/checkpointers",
+      "accessed_on": "2026-10-29",
+      "read_scope": "thread、checkpoint、pending writes、update state、replay 与 durability 相关章节",
+      "snapshot_sha256": "7286bb76b6b9e79f70137ea0e180d708ac07045d8156d6d38dbb77be417def0e",
+      "access_method": "eacli tool invoke --capability web.read",
+      "request_id": "manus-context-20261029-langgraph-checkpoints",
+      "retrieved_at": "2026-10-29T02:22:27.914412+00:00"
+    },
+    {
+      "id": "S13",
+      "kind": "official",
+      "title": "LangGraph Durable execution",
+      "locator": "https://docs.langchain.com/oss/python/langgraph/durable-execution",
+      "accessed_on": "2026-10-29",
+      "read_scope": "完整正文",
+      "snapshot_sha256": "8a0ad0a8d9a32a8648fb350e615c4b95fd5b181da2402fcb5874dfcadab02715",
+      "access_method": "eacli tool invoke --capability web.read",
+      "request_id": "manus-context-20261029-langgraph-durable",
+      "retrieved_at": "2026-10-29T02:24:39.078154+00:00"
+    },
+    {
+      "id": "S14",
+      "kind": "official",
+      "title": "LangSmith Agent Server Double texting",
+      "locator": "https://docs.langchain.com/langsmith/double-texting",
+      "accessed_on": "2026-10-29",
+      "read_scope": "完整正文",
+      "snapshot_sha256": "d309f93cad5951c8a739d08338c1341733a1b6d89ff70bae58939df22db72c28",
+      "access_method": "eacli tool invoke --capability web.read",
+      "request_id": "manus-context-20261029-langgraph-double-texting",
+      "retrieved_at": "2026-10-29T02:22:27.914475+00:00"
+    },
+    {
+      "id": "S15",
+      "kind": "official",
+      "title": "LangGraph Memory overview",
+      "locator": "https://docs.langchain.com/oss/python/concepts/memory",
+      "accessed_on": "2026-10-29",
+      "read_scope": "官方 Markdown 的短期/长期 Memory、namespace 与 background 写入章节",
+      "snapshot_sha256": "d0e20bf34d82acccbc06aef9d89eb44a13596183290743a3264247b5c35a6122",
+      "access_method": "eacli tool invoke --capability web.read",
+      "request_id": "manus-context-20261029-langgraph-memory-md",
+      "retrieved_at": "2026-10-29T02:30:55.179556+00:00"
+    },
+    {
+      "id": "S16",
+      "kind": "official",
+      "title": "OpenViking Session",
+      "locator": "https://docs.openviking.ai/en/concepts/08-session",
+      "accessed_on": "2026-10-29",
+      "read_scope": "完整正文",
+      "snapshot_sha256": "175d929bfc1d18b1180c2e8e5687a32b65aa6c56e5ce81c1e275252e7f117b02",
+      "access_method": "eacli tool invoke --capability web.read",
+      "request_id": "manus-context-20261029-viking-session",
+      "retrieved_at": "2026-10-29T02:22:14.849911+00:00"
+    },
+    {
+      "id": "S17",
+      "kind": "official",
+      "title": "OpenViking Transaction",
+      "locator": "https://docs.openviking.ai/en/concepts/09-transaction",
+      "accessed_on": "2026-10-29",
+      "read_scope": "source of truth、path locks、redo、derived semantics、session.commit、锁与恢复相关章节",
+      "snapshot_sha256": "99cd6063c10bfbc3334d0f1d8a0ffbaab248f9787ac13f7e2f264312b8e7db83",
+      "access_method": "eacli tool invoke --capability web.read",
+      "request_id": "manus-context-20261029-viking-transaction",
+      "retrieved_at": "2026-10-29T02:22:14.851161+00:00"
+    },
+    {
+      "id": "S18",
+      "kind": "official",
+      "title": "OpenViking Multi-Tenant",
+      "locator": "https://docs.openviking.ai/en/concepts/11-multi-tenant",
+      "accessed_on": "2026-10-29",
+      "read_scope": "完整正文",
+      "snapshot_sha256": "5c7075cc9bfdf48f1b6c55203f52341b649f80301e7681c6108c42452bad28ee",
+      "access_method": "eacli tool invoke --capability web.read",
+      "request_id": "manus-context-20261029-viking-tenant",
+      "retrieved_at": "2026-10-29T02:27:04.966372+00:00"
+    },
+    {
+      "id": "S19",
+      "kind": "official",
+      "title": "MCP 2026-07-28 Key Changes",
+      "locator": "https://modelcontextprotocol.io/specification/2026-07-28/changelog",
+      "accessed_on": "2026-10-29",
+      "read_scope": "完整正文；固定规范版本，未外推部署支持",
+      "snapshot_sha256": "0e6ef90e73e8118e8b2dc386e7557a96a171dcb240a99644ae7805e4e35c06de",
+      "access_method": "eacli tool invoke --capability web.read",
+      "request_id": "manus-context-20261029-mcp-current-changes",
+      "retrieved_at": "2026-10-29T02:30:51.081491+00:00"
+    },
+    {
+      "id": "S20",
+      "kind": "official",
+      "title": "MCP 2026-07-28 Streamable HTTP",
+      "locator": "https://modelcontextprotocol.io/specification/2026-07-28/basic/transports/streamable-http",
+      "accessed_on": "2026-10-29",
+      "read_scope": "完整正文",
+      "snapshot_sha256": "34c77c8ca9ea3befadcd589e10219985564e49f1c44cca14cdbbb600ab7eee64",
+      "access_method": "eacli tool invoke --capability web.read",
+      "request_id": "manus-context-20261029-mcp-current-http",
+      "retrieved_at": "2026-10-29T02:30:51.994495+00:00"
+    },
+    {
+      "id": "S21",
+      "kind": "official",
+      "title": "A2A Core Concepts",
+      "locator": "https://a2a-protocol.org/latest/topics/key-concepts/",
+      "accessed_on": "2026-10-29",
+      "read_scope": "完整正文",
+      "snapshot_sha256": "d55fdffb5dfcf2c8ee20806cd4252e2cce7d63ead564229b0d27ee6b3d7c39c7",
+      "access_method": "eacli tool invoke --capability web.read",
+      "request_id": "manus-context-20261029-a2a-concepts",
+      "retrieved_at": "2026-10-29T02:30:50.807842+00:00"
+    },
+    {
+      "id": "S22",
+      "kind": "local",
+      "title": "个人 Context 与 Memory 三层架构",
+      "locator": "ai-learning/reports/knowledge_reports/个人Context与Memory三层架构_OpenViking_手机环境_APP跨对话_深度解析_20261025.md",
+      "accessed_on": "2026-10-29",
+      "read_scope": "既有公开报告导论、三层角色与公开试点边界相关章节；不当作实时部署状态",
+      "snapshot_sha256": "fb15f75d2bbf70e32834dc3902aa0dea9b07241a0739c5350453511c9028fa04"
+    },
+    {
+      "id": "S23",
+      "kind": "local",
+      "title": "EverAgent AGENT_SESSION",
+      "locator": "docs/AGENT_SESSION.md",
+      "accessed_on": "2026-10-29",
+      "read_scope": "前 38 行：Session v2 身份、execution、task、owner 与 unbound 的核心边界",
+      "snapshot_sha256": "8a08b5d19f6932576cf46d5ce804f9069d303b0103f2a0375ed7d33512de20a7"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "Manus Business 的 Project 共用指令、文件、Skills 和连接器配置，定时任务可复用；原文未公开任意 CLI 的会话迁移实现。",
+      "report_anchor": "### 2.1 Business",
+      "support": "direct",
+      "source_ids": [
+        "S1"
+      ],
+      "evidence": "原文列出 Projects that carry context 和团队 Skill 能力，没有给出跨 Harness 恢复协议。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "Project 成员访问共享指令/知识库，不自动获得其他成员任务的访问权；指令/文件更新表列出不同生效时间，同页笼统说明存在含混。",
+      "report_anchor": "### 2.2 Projects",
+      "support": "direct",
+      "source_ids": [
+        "S2"
+      ],
+      "evidence": "Collaboration and Privacy 要求另行分享 task；Configuration Updates 将 instruction 与 files 分列，随后有旧任务不受影响的笼统说法。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "Manus Collab 提供多人共享任务体验，首位 collaborator 加入时清除 sandbox 登录 cookies；不据此外推外部 CLI 原生会话互通。",
+      "report_anchor": "### 2.3 Collab",
+      "support": "direct",
+      "source_ids": [
+        "S3"
+      ],
+      "evidence": "Collab 文档描述实时 prompts/responses 与 Sandbox Login Cookies 处理。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "Manus Branch 继承指定消息之前的背景并建立独立分支，未说明分支后续持续自动合并。",
+      "report_anchor": "### 2.4 Branch",
+      "support": "direct",
+      "source_ids": [
+        "S4"
+      ],
+      "evidence": "Branch 原文说明继承历史、文件和指令到分叉点，新 branch 独立且原会话保持。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "Manus Wide Research 自述 worker 拥有独立 VM/工具/上下文，由主控合并；文中性能普遍化不作为独立实证。",
+      "report_anchor": "### 2.4 Branch",
+      "support": "direct",
+      "source_ids": [
+        "S5"
+      ],
+      "evidence": "原文描述主控分解、fresh context 的 worker 与独立环境；数字阈值与无质量断崖描述未给充分独立依据。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "Manus 学习型 Project 提出可复用指令、文件、Skills 的更新，授权后应用。",
+      "report_anchor": "### 2.5 学习型 Projects",
+      "support": "direct",
+      "source_ids": [
+        "S6"
+      ],
+      "evidence": "原文 Key Capabilities 的 User approval 要求授权，供未来任务使用更新后的背景。",
+      "critical": true
+    },
+    {
+      "id": "C07",
+      "claim": "短期 thread 状态、跨 thread Memory 与单次模型上下文分别管理，纯对话持久化不保证恢复文件系统。",
+      "report_anchor": "## 1. 先把",
+      "support": "derived",
+      "source_ids": [
+        "S9",
+        "S11",
+        "S15"
+      ],
+      "evidence": "LangGraph Memory 区分 thread/checkpointer 与 namespace store；Claude 明确会话不恢复文件系统；OpenAI Conversations 保存 conversation items。",
+      "critical": true
+    },
+    {
+      "id": "C08",
+      "claim": "OpenAI Agents session 保存配置、conversation 与 saved work，消息根据 active/idle 状态 steer 或新开 turn；断线需 retrieve，idle/completed 不是全部工具成功的证明。",
+      "report_anchor": "### 4.1 换设备",
+      "support": "direct",
+      "source_ids": [
+        "S7"
+      ],
+      "evidence": "Sessions 文档明确 session/turn、saved items、stream 不回放遗漏 events 和成功状态边界。",
+      "critical": true
+    },
+    {
+      "id": "C09",
+      "claim": "Codex app-server 的 resume/read/fork 合同限于该服务器保存的 thread，本次文档未给跨主机迁移合同；Claude native resume 明确会话文件与 cwd 条件，fork history 不 fork 文件系统。",
+      "report_anchor": "### 4.2 同一个 Harness",
+      "support": "derived",
+      "source_ids": [
+        "S9",
+        "S10",
+        "S11"
+      ],
+      "evidence": "Codex 官方 thread lifecycle 与本机持久历史接口；Claude 官方跨主机文件/cwd 与 conversation/filesystem 边界；不把两家恢复合同合并外推。",
+      "critical": true
+    },
+    {
+      "id": "C10",
+      "claim": "OpenAI reasoning 的原生无状态续接可能要求完整 output items 及 phase，仅复制可见文本不足以保留全部原生续接语义。",
+      "report_anchor": "### 4.3 跨 Harness",
+      "support": "direct",
+      "source_ids": [
+        "S9"
+      ],
+      "evidence": "官方指南要求保留 output items，包括相应 reasoning items 与 assistant phase；跨厂商保真不能据此保证。",
+      "critical": true
+    },
+    {
+      "id": "C11",
+      "claim": "OpenAI 子 Agent 各有独立 context，但共享 environment 文件系统；这与 Manus Wide Research 自述的每 worker VM 是不同隔离维度。",
+      "report_anchor": "### 5.1 每个 Agent",
+      "support": "derived",
+      "source_ids": [
+        "S8",
+        "S5"
+      ],
+      "evidence": "OpenAI Multi-agent 明确 own context、same filesystem/environment，Manus 原文描述独立 VM。",
+      "critical": true
+    },
+    {
+      "id": "C12",
+      "claim": "LangGraph 恢复可能重放节点；pending writes 可复用同一步已持久化的成功结果；exit/async/sync 的保存时点与恢复保证不同；副作用仍需幂等或结果查询。",
+      "report_anchor": "### 5.4 重试",
+      "support": "direct",
+      "source_ids": [
+        "S12",
+        "S13"
+      ],
+      "evidence": "Checkpointers 的 super-step、task writes、pending writes recovery 与 Durability modes；Durable execution 的已做未存窗口、task 封装与幂等要求。",
+      "critical": true
+    },
+    {
+      "id": "C13",
+      "claim": "enqueue/reject/interrupt/rollback 是 Agent Server 的 double texting 合同，rollback 不撤销已产生的外部副作用。",
+      "report_anchor": "### 5.3 同一任务",
+      "support": "derived",
+      "source_ids": [
+        "S13",
+        "S14"
+      ],
+      "evidence": "Double texting 说明四种运行输入策略；Durable execution 指出副作用由 task 和幂等单独处理。",
+      "critical": true
+    },
+    {
+      "id": "C14",
+      "claim": "OpenViking session commit 的 accepted、原始资料可读与后台完成应分别核对；session 和 transaction 页的摘要阶段表述存在差异。",
+      "report_anchor": "### 6.2 accepted",
+      "support": "direct",
+      "source_ids": [
+        "S16",
+        "S17"
+      ],
+      "evidence": "Session 页返回 task_id 并列异步 summary；Transaction 页将 archive summary LLM 写在 Phase 1，报告保留待核对。",
+      "critical": true
+    },
+    {
+      "id": "C15",
+      "claim": "OpenViking 的 account resources、user memory/skills/sessions 与 peer 内容范围有不同共享边界；home alias 取决于认证 user。",
+      "report_anchor": "### 6.3 同一个服务",
+      "support": "direct",
+      "source_ids": [
+        "S16",
+        "S18"
+      ],
+      "evidence": "Multi-Tenant sharing table 与 Session home alias 明确 account/user/peer 和认证上下文。",
+      "critical": true
+    },
+    {
+      "id": "C16",
+      "claim": "OpenViking 的 filesystem 是 source of truth，VectorDB 是派生；path locks/redo/derived version 并非任意 Agent 执行的全局事务。",
+      "report_anchor": "### 6.3 同一个服务",
+      "support": "derived",
+      "source_ids": [
+        "S17"
+      ],
+      "evidence": "Transaction Design Principles 和锁、redo、派生语义文件章节；LockContext 明确无完整 undo/journal/commit。",
+      "critical": true
+    },
+    {
+      "id": "C17",
+      "claim": "读取的 MCP 2026-07-28 规范移除协议 sessions/Mcp-Session-Id，跨调用 handles 显式传参，并移除原 SSE 回放；部署要匹配版本。",
+      "report_anchor": "### 7.1 MCP",
+      "support": "direct",
+      "source_ids": [
+        "S19",
+        "S20"
+      ],
+      "evidence": "Key Changes major 1/9 与 Streamable HTTP 的 Earlier Revisions、Versioning 合同。",
+      "critical": true
+    },
+    {
+      "id": "C18",
+      "claim": "A2A Task/Artifact/contextId 支持任务交换与分组，远端 Agent 是内部不透明系统，不承诺共享内部 Memory。",
+      "report_anchor": "### 7.2 A2A",
+      "support": "direct",
+      "source_ids": [
+        "S21"
+      ],
+      "evidence": "Core Concepts 中 Task/Artifact/contextId 定义，以及 Remote Agent opaque 描述。",
+      "critical": true
+    },
+    {
+      "id": "C19",
+      "claim": "本仓 Session v2 用于身份与原生执行出处，公共 core 消费任务 owner，不复制第二套控制账本；既有公开报告不是实时部署事实。",
+      "report_anchor": "### 3.1 资料的 owner",
+      "support": "derived",
+      "source_ids": [
+        "S22",
+        "S23"
+      ],
+      "evidence": "AGENT_SESSION 核心边界；10-25 公开报告的记录有明确日期，不能代表 10-29 私有运行状态。",
+      "critical": true
+    },
+    {
+      "id": "C20",
+      "claim": "[推测] 优先多入口连接既有 runtime；跨 Harness 使用有出处的交接、独立 context 和指定合并 owner，效果需 A/B 验证。",
+      "report_anchor": "## 3. 推荐架构",
+      "support": "inference",
+      "source_ids": [
+        "S1",
+        "S4",
+        "S7",
+        "S8",
+        "S11",
+        "S13",
+        "S16",
+        "S23"
+      ],
+      "evidence": "由产品单位、原生续接、checkpoint 和记忆职责推导的方案；不是已部署或已测效果。",
+      "critical": true
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "Manus 的共享背景、任务权限、配置生效与分支语义",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "report_anchor": "## 2. Manus"
+    },
+    {
+      "id": "U02",
+      "title": "Manus 独立 worker 与授权后更新共享背景",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S5",
+        "S6"
+      ],
+      "report_anchor": "### 2.4 Branch"
+    },
+    {
+      "id": "U03",
+      "title": "context/session/Memory/checkpoint 的分层定义",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S9",
+        "S11",
+        "S15",
+        "S23"
+      ],
+      "report_anchor": "## 1. 先把"
+    },
+    {
+      "id": "U04",
+      "title": "多设备接续、断线、原生恢复与跨 Harness 交接",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S7",
+        "S9",
+        "S10",
+        "S11"
+      ],
+      "report_anchor": "## 4. 换设备"
+    },
+    {
+      "id": "U05",
+      "title": "独立上下文与共享环境、合并、并发与副作用恢复",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S5",
+        "S8",
+        "S12",
+        "S13",
+        "S14"
+      ],
+      "report_anchor": "## 5. 多 Agent"
+    },
+    {
+      "id": "U06",
+      "title": "OpenViking session/完成/权限/一致性及公开积累的边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S16",
+        "S17",
+        "S18",
+        "S22"
+      ],
+      "report_anchor": "## 6. OpenViking"
+    },
+    {
+      "id": "U07",
+      "title": "MCP 版本变化与 A2A 不透明任务交互",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S19",
+        "S20",
+        "S21"
+      ],
+      "report_anchor": "## 7. MCP"
+    },
+    {
+      "id": "U08",
+      "title": "owner 复用、小型落地、行为评估与未实测限制",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S7",
+        "S11",
+        "S13",
+        "S16",
+        "S23"
+      ],
+      "report_anchor": "## 9. 怎样评估"
+    }
+  ],
+  "limitations": [
+    "Manus 原文及相邻功能文档未公开底层存储、并发控制、任意外部 CLI 原生历史互操作，不对其作实现层断言。",
+    "产品文档为 2026-10-29 读取快照；MCP 固定 2026-07-28 文档版本，未确认部署支持。",
+    "Manus 指令更新时点、OpenViking 摘要阶段存在官方文档含混或差异，未读当前实现源码与部署来裁定。",
+    "OpenAI Agents API 使用官方 beta 文档示例，未实际调用、验证账号/SDK/服务端可用性。",
+    "无跨设备、跨 Harness 的端到端效益实验；比较表为能力与边界，不是性能排名。",
+    "方案、案例与评估均明确标注推导/待验证；没有擅自执行部署、迁移或外部写入。",
+    "私有 context 只用于理解职责；公开报告和质量账本不含私有设备、账号、网络、会话原文和运行记录。",
+    "抓取截断的 HTML 与失败 slug 均未纳入核心来源；OpenAI/LangGraph 需要时改用成功的官方 Markdown 正文。"
+  ]
+}
