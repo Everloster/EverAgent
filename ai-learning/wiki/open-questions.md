@@ -13,6 +13,8 @@
 - **[PC正交论]** 画像固化度量：PC 主导的 agent 决策与"空白 agent"的分叉率多大算茧房？无此度量则画像固化风险只是担忧不是管理（来源：同上）
 - **[PC正交论]** Letta/mcp-memory-service 的 consolidation 管道对 L2 事实层防腐的借鉴（2027-01 回访）（来源：同上）
 
+**2026-10-29 进展：**[概念页](./concepts/personal-context-orthogonality.md)已把“随模型进步必然升值”收紧为条件性假说。[三层 Context 研究](../reports/knowledge_reports/个人Context与Memory三层架构_OpenViking_手机环境_APP跨对话_深度解析_20261025.md)与[会话续接研究](../reports/knowledge_reports/多设备多Agent共享Context与会话续接_Manus实践与架构边界_深度解析_20261029.md)区分了来源、Memory、当前输入与运行状态，为按任务选取材料提供了设计依据；切片是否充分仍待任务验证。画像决策分叉率只能反映差异，还需检查差异是否符合当前要求。委托授权的粒度、撤销方式与跨产品可携带性也仍待验证。
+
 - **[MoE]** 训练好的 MoE 里专家分工有没有可解释的稳定结构？（"按语法/领域聚类"的可视化证据强度如何，能否可靠标注"专家 42 管什么"）（来源：MoE 专家大楼之旅科普 20260719）
 - **[MoE]** 细粒度（256 选 8）vs 粗粒度（8 选 2）的组合空间差异能否量化——对表达能力是真实收益还是记账幻觉？（来源：同上）
 
@@ -27,6 +29,9 @@
 - **[进化 Harness]** Meta-Harness 的晋级判据（min_delta=1、3 trial 均值）会不会过拟合 dev？dev +20.2 点但 test 只 +16.7，这 3.5 点是正常泛化损耗还是轻度过拟合？（来源：进化 harness 精读 20260707）
 - **[进化 Harness]** "确定性代码 > 提示词"是否依赖打分公式里的 token 惩罚项？拿掉 `-0.005×tokens` 后胜出的会不会翻转成提示词类？（来源：进化 harness 精读 20260707）
 - **[进化 Harness]** 跨家族迁移几乎为零（Nemotron +0.4）卡在哪？是提示词 playbook，还是工具接口/格式约定也带家族特异性？（来源：进化 harness 精读 20260707）
+
+**2026-10-29 校正：**以上数字限于[原 LAB 实验报告](../reports/paper_analyses/46_evolve_the_harness_2026.md)。dev/test 差值本身不能诊断过拟合，token 惩罚项不能单独解释代码胜出，整套 Harness 的迁移结果也不能替代组件消融。[OpenAI 指令工程原文](https://developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra)支持按模型复核规则，仍未回答这些因果问题。当前表述见 [Harness 概念页](./concepts/agent_harness.md)。
+
 - **[Bitter Lesson × Harness]** "能力缺口填补物 vs 保证型需求"能否**事前**形式化判定哪段确定性代码会 BLE-hobbled？PostHog 的 todo_write（活）与 JSON retry（死）都是确定性代码，事后好解释、事前难预测（来源：Bitter Lesson vs Harness 推演 20260707）
 - **[Bitter Lesson × Harness]** "两把镰刀"哪把更快削平 harness——agentic-RL（模型吸收）还是 MCP 生态（协议标准化）？机制不同，结局不同（来源：同上）
 - **[Bitter Lesson × Harness]** 进化循环真的完全免疫镰刀吗？"设计 reward 和搜索空间"会不会也被 meta-search（AlphaEvolve 式）吃掉，人退到哪一层？（来源：同上）
@@ -167,6 +172,8 @@
 - **[指令退役判据]** 判断一条旧规则已被模型能力吸收时，最小回归集需要覆盖多少任务与风险等级？怎样区分真实能力提升、偶然成功和评测泄漏？
   - 来源：同上
 
+**2026-10-29 进展：**[指令架构报告](../reports/knowledge_reports/GPT6_Astra指令架构_从Prompt堆叠到按需控制_深度解析_20261015.md)提供了按需加载与完成条件的设计依据；原文没有给出路由准确率、跨模型迁移率或通用退役阈值。这三项仍需行为证据，文档缩短不能直接算作答案。
+
 ## 2026-10-15 PuRo-2B 开放低成本预训练配方（新汇入）
 
 - **[ELR 外推有效性]** MuonH vs Muon 的归因证据在 170M/BF16 上取得，2B/FP8 生产尺度是否同构？需要至少一个生产尺度的 ELR 对齐对照才能把结论从诊断升格为规律。
@@ -185,7 +192,8 @@
 - **[Mamba-2/cuTile 完整链路]** TileGym 何时公开博客中的 Mamba-2 kernel、raw benchmark 与 backward？相同 tile 设计在 H100/A100 上是否仍优于成熟 Triton 实现，还是优势依赖 Blackwell Tensor Memory/TMA？
   - 来源：[[NVIDIA_CUDA_Tile_Mamba2高性能Kernel_深度解析_20261021]] 局限、思考与追问
 - **[学习型 Memory 评测]** 在真实 Agent 任务上，无 Memory、全部常驻、support 核心与按任务 Top-k 四组的成功率、Pass⁴、token、过期规则命中率和污染恢复成本如何变化？support 能否升级为带反例、版本和验证强度的可信度？
-  - 来源：[[ALTK_Evolve_学习型Memory与Agent服务任务_深度解析_20261021]] 思考与追问
+  - 来源：[ALTK-Evolve 报告](../reports/knowledge_reports/ALTK_Evolve_学习型Memory与Agent服务任务_深度解析_20261021.md)思考与追问。
+  - **2026-10-29 核对：**[IBM 原文](https://huggingface.co/blog/ibm-research/altk-evolve-bc)已比较无规则、按 support 筛选与全部规则：效果见留出测试，成本表来自 full base（train ∪ test），包含 Agent 与用户模拟器；本项目的四组对照仍待验证。强模型实验重新提炼了规则，不能视为同一份 Memory 已跨模型迁移。support 仍是任务支持次数，不是正确率。
 - **[自主湿实验室端到端]** VERID 是否能与 aptamer/protein binder 闭环真正连通，并连续多轮记录物理失败、人工干预、错误经验写入和每个有效候选的时间/成本？人类战略边界应在哪一层逐步下放？
   - 来源：[[Google_自主湿实验室Agent_生物现实约束与闭环_深度解析_20261021]] 思考与追问
 - **[Agent 运行时安全]** capability lease + Policy Prover 能否在 EverAgent 的真实任务回放中同时降低越权率且不显著提高阻断率？Sentry 在 2027 年交付后需补独立红队、P50/P99 隔离延迟、旁路拓扑和完整 TCB 复核。
@@ -194,7 +202,10 @@
 ## 2026-10-27 上下文工程与战略性遗忘
 
 - **[报告交接]** 从完整历史、摘要和新上下文三个相同起点继续研究时，哪种方式更能恢复旧错误、保留反例，并减少总成本？
+  - **2026-10-29 进展：**[会话续接报告 §9](../reports/knowledge_reports/多设备多Agent共享Context与会话续接_Manus实践与架构边界_深度解析_20261029.md)已给出配对比较方法，要求固定模型与任务，并计入交接、检索和复核成本；收益尚未实测。
 - **[必要状态]** 重建对话前，怎样验证用户约束、未完成动作与未知结果都已保存，避免重试已经执行的操作？
+  - **2026-10-29 进展：**[会话续接报告 §4–6](../reports/knowledge_reports/多设备多Agent共享Context与会话续接_Manus实践与架构边界_深度解析_20261029.md)区分原生恢复与跨 Harness 交接；[LangGraph 原文](https://docs.langchain.com/oss/python/langgraph/durable-execution)明确恢复可能重放，需要记录结果并处理幂等。机制已有依据，具体系统是否保全状态与避免重复副作用仍待验证。
 - **[记忆更正]** 一条旧记忆失效后，摘要、检索索引和副本如何同步退出召回，并留下可核验的更正关系？
+  - **2026-10-29 进展：**[三层 Context 报告 §5.3–5.4](../reports/knowledge_reports/个人Context与Memory三层架构_OpenViking_手机环境_APP跨对话_深度解析_20261025.md)已分析更正与删除传播；[OpenViking session 文档](https://docs.openviking.ai/en/concepts/08-session)区分提交受理与后台处理完成。二者都不能证明跨设备的全部派生副本已同步失效，端到端检查仍缺。
 
 来源：[上下文工程的失效与修复](../reports/knowledge_reports/Context_Engineering_失败修复与战略性遗忘_深度解析_20261027.md) §7–9；以上均待行为评估。

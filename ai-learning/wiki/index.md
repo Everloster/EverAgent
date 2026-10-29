@@ -13,6 +13,22 @@
 
 ---
 
+## Context、Memory、Harness 专题
+
+先读两个概念页：[Personal Context](./concepts/personal-context-orthogonality.md)讨论什么值得积累、怎样更新；[Agent Harness](./concepts/agent_harness.md)讨论这些材料如何影响执行。深入阅读可以按下面的顺序：
+
+| 顺序与问题 | 研究报告 | 读时留意 |
+| --- | --- | --- |
+| 1. 模型升级后，旧指令还合适吗？ | [GPT-6 Astra 指令架构](../reports/knowledge_reports/GPT6_Astra指令架构_从Prompt堆叠到按需控制_深度解析_20261015.md) | 原文是官方工程观察；减少规则的收益仍需按任务验证 |
+| 2. 资料、手机环境与聊天记忆如何分工？ | [个人 Context 与 Memory 三层架构](../reports/knowledge_reports/个人Context与Memory三层架构_OpenViking_手机环境_APP跨对话_深度解析_20261025.md) | 区分公开产品合同、实现线索和已验证链路 |
+| 3. Agent 能从做过的任务里学到什么？ | [ALTK-Evolve 学习型 Memory](../reports/knowledge_reports/ALTK_Evolve_学习型Memory与Agent服务任务_深度解析_20261021.md) | 程序性经验有条件收益；留出测试、排行榜和成本分别看 |
+| 4. 历史越来越长，什么时候该重建上下文？ | [上下文工程的失效与修复](../reports/knowledge_reports/Context_Engineering_失败修复与战略性遗忘_深度解析_20261027.md) | 当前输入、长期保存和个人信息删除是不同操作 |
+| 5. 换设备、换 Agent，怎样继续同一项工作？ | [Manus 共享 Context 与会话续接](../reports/knowledge_reports/多设备多Agent共享Context与会话续接_Manus实践与架构边界_深度解析_20261029.md) | 共享资料、原生 Session 恢复和跨 Harness 交接各有条件 |
+
+各报告附原文入口与证据边界。尚未解决的部分汇入[问题池](./open-questions.md)；其中的设计建议不等于已完成行为验证。
+
+---
+
 ## Entities（人物 / 机构）
 
 ### 人物
@@ -67,6 +83,8 @@
 | [self_supervised_learning.md](./concepts/self_supervised_learning.md) | 三大范式：遮蔽重建 / 自回归 / 对比自蒸馏 |
 | [sparse_activation.md](./concepts/sparse_activation.md) | 条件计算的设计哲学，MoE 是其最成功的实现 |
 | [agent_systems.md](./concepts/agent_systems.md) | ReAct Loop · Tool Use · Function Calling · MCP 协议 · Multi-Agent 协作 |
+| [agent_harness.md](./concepts/agent_harness.md) | 指令、工具与任务状态如何组织执行；模型适配、经验复用与验证边界 |
+| [personal-context-orthogonality.md](./concepts/personal-context-orthogonality.md) | Personal Context 的条件性价值，来源、Memory、当前输入与任务状态的分工 |
 | [test_time_compute.md](./concepts/test_time_compute.md) | 推理时计算扩展，o1/o3 · DeepSeek-R1 · GRPO · PRM · MCTS · 三流派对比（OpenAI PRM·DeepSeek GRPO·Claude adaptive budget） |
 | [rag.md](./concepts/rag.md) | 检索增强生成，Naive → Advanced → Modular RAG 演进，GraphRAG · Self-RAG · Reranker |
 | [in_context_learning.md](./concepts/in_context_learning.md) | 通过 prompt demonstrations 无梯度学习，Bayesian / Task Recognition / Knowledge Activation 三派理论 |

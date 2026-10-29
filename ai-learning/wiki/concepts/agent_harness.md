@@ -1,88 +1,75 @@
-# Agent Harness / 进化式 Harness（脚手架与自动优化）
+# Agent Harness / 进化式 Harness
 
-> 维护日期：2026-10-15 | 分类：AI Agent / Scaffolding / 自进化
-> 关联报告：`reports/paper_analyses/46_evolve_the_harness_2026.md`、`reports/knowledge_reports/Agent_Harness_三大设计流派解析.md`、`reports/knowledge_reports/Agent_自进化技术路径深度解析.md`、`reports/knowledge_reports/Agent_Harness请求全链路_深度解析_20260709.md`（报文级请求全链路 + 上下文膨胀治理）、`reports/knowledge_reports/GPT6_Astra指令架构_从Prompt堆叠到按需控制_深度解析_20261015.md`（模型升级后的指令债务与渐进式披露）
+> 维护日期：2026-10-29 · AI Agent / 上下文工程
 
----
+## Harness 管什么
 
-## 概念定义
+Agent Harness 是模型周围的执行系统：它组织指令、提供工具、保存任务状态，并决定如何检查结果、继续执行或交还控制权。修改 Harness 可以改变 Agent 的表现，而不更新模型权重。
 
-**Agent Harness（脚手架 / 驾驭框架）** 是包裹在 LLM **外面**的所有工程结构，它本身不产生智能，而是**约束、引导、组织**模型能力。区别于模型权重（训练学到的固定数值）和单次调用的激活值，Harness 是"模型之外、可被人直接编辑"的那一层。
+这些内容经常一起出现，但成本和可靠性不同：
 
-一个 Agent 系统的三层：
-| 层 | 内容 | 可变性 |
-|----|------|--------|
-| ① 模型权重 | 训练得到的参数 | 靠训练/微调改（贵） |
-| **② Harness** | **系统提示词、few-shot、工具定义、校验/后处理代码、编排逻辑** | **直接编辑（便宜）** |
-| ③ 激活 | 单次前向的当下神经活动 | 随输入自然变化 |
+| 内容 | 例子 | 需要注意什么 |
+| --- | --- | --- |
+| 指令与按需知识 | 系统提示、`AGENTS.md`、Skill、示例 | 由模型理解；效果受模型、任务、加载方式和其他指令影响 |
+| 工具与执行代码 | 文件操作、格式校验、权限检查、重试逻辑 | 纯本地步骤可以不调用模型；工具定义、调用参数与返回内容仍可能消耗 token，接口也需要维护 |
+| 上下文与任务状态管理 | 历史裁剪、Memory 检索、checkpoint、工具回执 | 保存资料、组装模型输入、恢复执行是不同职责，不能只靠一段摘要包办 |
 
-**Harness 内部再分两类**（这是关键区分）：
-- **②a 提示词类（prompt playbook）**：系统提示、指导语、few-shot——软的、靠模型理解、**模型专属、换模型会失效**。
-- **②b 确定性代码类（deterministic code）**：工具、校验器、后处理修复——硬的写死逻辑、**零 token、可跨模型迁移**。
+因此，“提示词换模型就失效”和“确定性代码零成本、天然通用”都不准确。前者需要验证适用性，后者需要检查接口、环境和执行成本。代码只保证它实际检查到的条件；文件存在不代表报告内容正确。
 
----
+## 模型升级后，重看哪些指令
 
-## 核心洞察：进化 Harness ≠ 训练模型
+[OpenAI 原文](https://developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra)总结了 GPT-6 Astra 上的工程观察：过宽的 Skill 描述会误触发，过细的步骤可能限制判断，强制通读文档和反复测试会拖慢简单任务，含糊的权限边界与完成条件可能让 Agent 提前停下。
 
-「不要训模型，进化 harness」指**只优化第②层，冻结①层权重**。Niklaus (2026) 一手实证：
+原文建议把指令放在合适的位置：
 
-- 同一冻结模型（DeepSeek-V4-Pro）在法律基准 LAB 上，held-out 通过率 **63.4%→80.1%**（只改 harness）。
-- **最强 6 处改动里 5 处是 ②b 确定性代码，不是 ②a 提示词**（"mismanaged geniuses hypothesis"：模型是马虎的天才，失分多在交付格式而非能力）。
-- 贡献最大的单点：`deliverable_landing_gate`——把写错目录/名字的交付文件挪回正确位置，纯代码零 token。
-- **迁移性**：代码类改动跨模型迁移好（同家族小号 +14.4 点）；提示词 playbook 不跨家族（异构模型仅 +0.4 点，甚至倒扣）。
+- **Skill 描述**说清何时使用；正文先给必要工作流，再指向相关材料。
+- **`AGENTS.md`**保留跨任务适用的规则，并按任务路由到文档。
+- **任务提示**写清目标、交付物、完成条件和可自主推进的范围。
 
-> ⚠️ **辟谣**："harness 与模型无关"是错的——Pi 框架比原版 LAB 低 18 点、prompt 换家族失效，说明 **harness 与模型强耦合**。正确表述是"**harness 的优化空间被严重低估**"。
+这是针对特定模型的官方实践总结，没有公布受控实验的成功率或成本降幅。它支持重新检查旧规则，不能推出“提示词越少越好”或“所有模型都适用同一份最短配置”。详细论证见 [GPT-6 Astra 指令架构报告](../../reports/knowledge_reports/GPT6_Astra指令架构_从Prompt堆叠到按需控制_深度解析_20261015.md)。
 
----
+**[推测] 规则的去留可以按作用判断：**为某次模型失误加的补丁，应在升级后复核；项目事实、工具合同与授权边界仍需明确，只是表达和执行方式可以变化。固定工作流在步骤稳定、验收明确的任务中仍有用途。Bitter Lesson 提供长期思考方向，不能证明哪段 Harness 或哪种进化循环永远不会过时。
 
-## Harness 会被 Bitter Lesson 反杀吗？
+## 程序性 Memory 也可能有用
 
-见讨论型报告《Bitter Lesson vs Agent Harness 推演与网上观点审阅》（深度专业版）与《AI 越来越强，我们给它搭的脚手架会被自己淘汰吗？》（`reports/knowledge_reports/Bitter_Lesson_vs_Harness_科普讲解_20260720.md`，师傅/徒弟类比科普版）。结论：**分层判生死**——
-- **会被砍（"how"/知识层）**：提示词 playbook、固定编排/DAG、专职子代理固定分工、补模型缺陷的 workaround（如 JSON retry）。判据：填补的是"会被 scaling 填平的能力缺口"。
-- **砍不到（"what"/底座层）**：高风险场景的确定性**安全闸门**（如 never-push）、工具/环境接口、self-reinforcing 的极简工具（todo_write）、**进化循环本身（=Search，Sutton 钦点）**。
-- **两把镰刀**：模型 scaling（agentic-RL 训掉"自我管理赤字"）+ 环境生态适配（MCP/agent-native API 从另一头溶解胶水层）。
-- 业界共识（PostHog/Tavily/Minh Pham）：harness 应是"**thin interface to scalable compute, not where you hide the intelligence**"。
+[IBM 的 ALTK-Evolve 实验](https://huggingface.co/blog/ibm-research/altk-evolve-bc)从训练任务轨迹中提炼操作规则，再加入 Agent 的提示词。模型权重保持不变，在 τ²-bench 的留出客服任务上观察到了收益；GPT-4.1 与 GPT-5.5 的实验都出现改善。
 
-### GPT-6 Astra 的新证据：旧提示可能从帮助变成约束
+这里有三个不能省略的条件：
 
-OpenAI 2026-09 的官方工程指南指出，GPT-6 Astra 更敏感地遵循 skills 与 `AGENTS.md`，也更可能在权限或意图不清时停下。由此可见，Harness 的提示词层具有明显的模型版本依赖：为旧模型补“不会读、不会测、不敢停”而积累的规则，迁移到更强模型后可能造成过度读取、过度测试和提前停工。
+- GPT-5.5 的规则从它自己的轨迹重新提炼，不能据此声称同一套规则已跨模型迁移成功。
+- 最合适的规则数量随领域和指标变化；支持次数统计的是规则来自多少个训练任务，不是正确概率。
+- 输入 token 增加；含训练任务的排行榜成绩与留出测试成绩应分别阅读。
 
-对应治理方式是：常驻层只保留稳定不变量与条件路由；特定工作流渐进加载；完成定义放入单次任务；可判定的硬约束交给代码。官方 Skills 文档还明确了发现层预算，技能过多时会截短 description，随后可能省略技能。
+这项实验说明，做事经验可以在特定条件下改善后续任务，不能按“过程性知识必然贬值”一概丢弃。跨领域泛化、错误规则传播和长期维护仍需验证。数据与限制见 [ALTK-Evolve 报告](../../reports/knowledge_reports/ALTK_Evolve_学习型Memory与Agent服务任务_深度解析_20261021.md)。
 
----
+## 保存上下文与恢复任务
 
-## 进化式优化的机制（Meta-Harness loop）
+长期资料可以供多个 Agent 使用，每次模型调用仍要选择当前需要的部分。Drew Breunig 的[上下文故障分类](https://www.dbreunig.com/2025/06/22/how-contexts-fail-and-how-to-fix-them.html)提醒我们检查错误反复传播、历史干扰、无关内容和指令冲突。这是一组诊断视角，不能把其中个别案例的长度阈值外推到所有模型。
 
-```
-现有 harness 跑 dev → 评判打分 → 挑失败案例
-  → 提议者(强模型)提出一处 harness 改动
-  → 新旧各跑 N 遍取均值 → 新的高 ≥ min_delta 才晋级
-  → 循环
-```
+任务恢复还需要运行系统的支持。例如 [Codex app-server](https://developers.openai.com/codex/app-server)用 `thread/resume` 继续已保存的 thread；[Claude Agent SDK](https://platform.claude.com/docs/en/agent-sdk/sessions)将会话历史与文件系统分开保存，跨主机恢复有会话文件和 `cwd` 等条件。共享资料库本身不能替代这些条件。
 
-**打分公式决定进化方向**（Niklaus 版）：
-```
-score = pooled_criterion_rate + 0.5×all_pass_rate − 0.005×tokens_per_million
-```
-带 **token 惩罚项** → 天然偏好零 token 的确定性代码。**奖励函数塞什么，就进化出什么形态。**
+[LangGraph 持久执行文档](https://docs.langchain.com/oss/python/langgraph/durable-execution)进一步说明：恢复可能重放步骤。如果外部操作已经完成、回执却未保存，仍需幂等键或查询已有结果，避免重复执行。checkpoint 不会自动撤销外部操作。
 
-**家族谱系**：GEPA（进化提示词）、AlphaEvolve/ShinkaEvolve（进化代码）、Darwin Gödel Machine（自改 agent）、Karpathy autoresearch（进化训练配方）、Meta-Harness loop（进化 harness，冻结模型）。
+这些区别在 [Personal Context 概念页](./personal-context-orthogonality.md)和[多设备、多 Agent 会话续接报告](../../reports/knowledge_reports/多设备多Agent共享Context与会话续接_Manus实践与架构边界_深度解析_20261029.md)中展开。
 
-**成本数字（2026-07-19 核实）**：优化后 DeepSeek V4 Pro 跑 100 任务约 $77.3 vs Sonnet 4.6 $546.9 ≈ **1/7 成本**（一手图表数据）。口径：同一条 token 轨迹 × 刊例价估算、仅 agent rollout 不含 judge、基线专指 Sonnet 4.6。详见报告 46 追问深入节。
+## 如何判断 Harness 改动有效
 
----
+进化式 Harness 是“运行任务 → 分析失败 → 提出改动 → 对照评估 → 选择版本”的循环。它优化模型之外的结构；优化循环本身也有成本和过拟合风险。
 
-## 相关概念
+既有 [Niklaus / LAB 实验报告](../../reports/paper_analyses/46_evolve_the_harness_2026.md)记录了冻结模型、修改 Harness 的结果，其中交付文件校验等代码修复有明显贡献。引用时需区分逐条标准通过率与整题全对率，也不能从整套 Harness 的跨模型结果，直接推断某一种组件的普遍迁移能力。该报告中的固定 token 轨迹价格估算也不是端到端实测账单。
 
-- [[./agent_systems.md|Agent Systems]]：Harness 是 Agent 系统"LLM+Tools+Memory"三要素的组织层。
-- [[./agent_orchestration.md|Agent Orchestration]]：编排是 Harness 的一部分。
-- [[./agent_observability.md|Agent Observability]]：进化循环依赖对失败案例的可观测。
+**[推测] 对具体项目，足够小的验证应回答以下问题：**
 
----
+1. 哪种已观察到的失败被修复了？先跑受影响任务，并检查相关反例。
+2. 收益在未用于调规则的任务上还在吗？跨模型迁移要单独比较，不能同时换模型、规则和工具再归因。
+3. 质量变化付出了什么代价？统计从开始到验收的总耗时与成本，包括检索、重试、交接和复核。
 
-## 参考文献
+文档更短、token 更少、评审分更高，各自只能说明一个方面。是否改善任务表现，要由最终产物和实际执行记录回答。待解问题见[问题池](../open-questions.md)。
 
-- Joel Niklaus, "Don't Train the Model, Evolve the Harness", HuggingFace Space, 2026-07-01
-- Meta-Harness loop, arXiv:2603.28052, 2026
-- Harvey, Legal Agent Benchmark (LAB), 1251 tasks
-- Andrej Karpathy, `karpathy/autoresearch` & `nanochat`, 2026
+## 继续阅读
+
+- [专题阅读路线](../index.md#contextmemoryharness-专题)：从指令、记忆读到多 Agent 接班。
+- 早期专题：[三大设计流派](../../reports/knowledge_reports/Agent_Harness_三大设计流派解析.md)、[自进化技术路径](../../reports/knowledge_reports/Agent_自进化技术路径深度解析.md)、[请求全链路](../../reports/knowledge_reports/Agent_Harness请求全链路_深度解析_20260709.md)。
+- [Agent Systems](./agent_systems.md)：Agent 的基本组成。
+- [Agent Orchestration](./agent_orchestration.md)：任务如何分工与合并。
+- [Agent Observability](./agent_observability.md)：如何定位执行失败。
