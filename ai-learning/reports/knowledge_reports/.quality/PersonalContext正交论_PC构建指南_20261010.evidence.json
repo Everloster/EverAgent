@@ -6,12 +6,12 @@
   "generator": {
     "model": "gpt-6-astra",
     "harness": "codex",
-    "run_id": "revision-20261030-personal-context-astra",
+    "run_id": "revision-20261030-personal-context-astra-readability",
     "explicit_model_override": false,
     "override_reason": ""
   },
   "task": {
-    "summary": "修订Personal Context正交论：纠正价值与贬值排序、授权及公开仓现状，结合原文保留可落地构建方法和可验证边界。",
+    "summary": "修订Personal Context正交论：纠正价值与贬值排序、授权及公开仓现状，结合原文保留可落地构建方法和可验证边界。 本轮按用户反馈整理人类阅读呈现，保留已核实内容与边界。",
     "requirements": [
       {
         "id": "R1",
@@ -28,6 +28,10 @@
       {
         "id": "R4",
         "text": "保留必要历史线索，列明更正范围、来源和未验证部分，避免用资本动作证明长期收益。"
+      },
+      {
+        "id": "R_readability",
+        "text": "开篇直接讲问题与发现；术语易懂、长论证用段落、引用可点击，关键数字、反例与限制保留，工作记录不挤占正文。"
       }
     ]
   },

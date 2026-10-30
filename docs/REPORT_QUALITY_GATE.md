@@ -117,7 +117,7 @@ python3 scripts/report_quality.py new-revision path/to/report.md
 | `evidence_fidelity` | 35 | 来源是否真的支持结论，数字、时间、口径是否准确 |
 | `request_coverage` | 20 | 用户明确要求是否全部回答；报告是否覆盖来源的核心内容，而非只覆盖生成者自行登记的要求 |
 | `reasoning_quality` | 20 | 推理链、反例、边界和替代解释是否成立 |
-| `readability` | 15 | 是否能脱离对话独立阅读，结构是否清楚 |
+| `readability` | 15 | 是否能独立阅读，术语与排版是否清楚、引用是否可用；按[阅读呈现要求](./REPORT_WORKFLOW.md#面向读者写作)记录实际检查范围 |
 | `limitations` | 10 | 不确定性、资料缺口和外推边界是否诚实 |
 
 Reviewer 必须为每一维填写评分理由；`unsupported_claims` 和 `missing_requirements` 使用 evidence manifest 中的 ID。多 Reviewer 时按最低总分与最低单项分判定，防止平均分掩盖某个 Reviewer 发现的严重问题。

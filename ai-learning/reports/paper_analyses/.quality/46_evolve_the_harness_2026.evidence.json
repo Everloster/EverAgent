@@ -6,12 +6,12 @@
   "generator": {
     "model": "gpt-6-astra",
     "harness": "codex",
-    "run_id": "revision-20261030-harness-astra",
+    "run_id": "revision-20261030-harness-astra-readability",
     "explicit_model_override": false,
     "override_reason": ""
   },
   "task": {
-    "summary": "修订既有 Niklaus/LAB 报告：核对原文，纠正指标、候选比较、迁移及成本归因，使其与已校正知识页一致，保留有依据的机制解释与数据。",
+    "summary": "修订既有 Niklaus/LAB 报告：核对原文，纠正指标、候选比较、迁移及成本归因，使其与已校正知识页一致，保留有依据的机制解释与数据。 本轮按用户反馈整理人类阅读呈现，保留已核实内容与边界。",
     "requirements": [
       {
         "id": "R1",
@@ -24,6 +24,10 @@
       {
         "id": "R3",
         "text": "校正成本图表口径，交代修订范围与未核验历史内容；全文独立可读。"
+      },
+      {
+        "id": "R_readability",
+        "text": "开篇直接讲问题与发现；术语易懂、长论证用段落、引用可点击，关键数字、反例与限制保留，工作记录不挤占正文。"
       }
     ]
   },
