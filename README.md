@@ -37,7 +37,7 @@ EverAgent 收录借助 AI Agent 完成的论文精读、技术博客分析、开
 | ⚗️ [AI Practice](./ai-practice/) | 10 篇 | 9/1/0 |
 | 🎙️ [Podcast Learning](./podcast-learning/) | 108 篇 | 58/54/0 |
 | 🔭 [GitHub Research](./github-trending-analyzer/) | 124 篇 | 0/0/0 |
-| 🏄 [Web Surfing](./web-surfing/) | 47 篇 | 0/0/0 |
+| 🏄 [Web Surfing](./web-surfing/) | 48 篇 | 0/0/0 |
 <!-- AUTO-OVERVIEW:END -->
 
 ## 知识怎样积累

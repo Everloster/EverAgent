@@ -18,6 +18,7 @@
 | 2026-10-26 | [何思远方Siyuan：我们正在把所有人训练成同一种人——池化隐喻下的 AI 同质化批判](../podcast-learning/reports/2026-09-28_bilibili-hesiyuanfang_homogenization.md) | podcast-learning |
 | 2026-10-26 | [MiniMax Code Mini App：持久工作面、Agent 插件运行时与安全边界深度解析](../ai-learning/reports/knowledge_reports/MiniMax_Code_Mini_App_持久工作面与Agent插件运行时_深度解析_20261026.md) | ai-learning |
 | 2026-10-26 | [Kimi K3.1 Pro：联合 RL、长程 Agent 与开放权重边界深度解析](../ai-learning/reports/knowledge_reports/Kimi_K3_1_Pro_联合RL_长程Agent与开放权重_深度解析_20261026.md) | ai-learning |
+| 2026-10-26 | [AI 行业日报 · 2026-10-26](../web-surfing/reports/ai-news-daily-2026-10-26.md) | web-surfing |
 | 2026-10-25 | [菠萝健康派 × 师永刚：中美抗癌十年，就医路径、费用真相与「被看见」的病人](../podcast-learning/reports/2026-10-21_xiaoyuzhou-boluo-jiankang_shiyonggang-cn-us-cancer-decade.md) | podcast-learning |
 | 2026-10-25 | [晚点聊 184：Astra 之后，具身智能的护城河从大脑移到哪里](../podcast-learning/reports/2026-10-15_rss-wandian-latetalk_184-embodied-quarterly-26q3.md) | podcast-learning |
 | 2026-10-25 | [忽左忽右 510：侨批不是一封家书，而是一套跨国金融与亲缘基础设施](../podcast-learning/reports/2026-10-23_xiaoyuzhou-huzuo-huyou_ep510-thai-qiaopi-network.md) | podcast-learning |
@@ -31,7 +32,6 @@
 | 2026-10-25 | [vLLM Humming：量化推理 GEMM Kernel 库的设计、支持矩阵与证据边界](../ai-learning/reports/knowledge_reports/vLLM_Humming_量化推理Kernel库_深度解析_20261025.md) | ai-learning |
 | 2026-10-25 | [ThinkingBox：把数据库终态评分器变成 RL 奖励——Agent 后训练的可执行奖励链拆解](../ai-learning/reports/knowledge_reports/Microsoft_ThinkingBox_数据库评分转RL奖励与Agent后训练_深度解析_20261025.md) | ai-learning |
 | 2026-10-25 | [The Cognitive Revolution AI:AM：Clean Neurons、GPU 信贷与 AI 供应链的移动瓶颈](../podcast-learning/reports/2026-10-24_rss-cognitive-revolution_ai-am-clean-neurons-gpu-credit.md) | podcast-learning |
-| 2026-10-25 | [TensorRT Global Performance Tuner：从单一 build route 到可搜索的精度感知端到端调优](../ai-learning/reports/knowledge_reports/TensorRT_GlobalPerformanceTuner_可搜索build_route与精度感知调优_深度解析_20261025.md) | ai-learning |
 
 ## 🤖 AI Learning（152 篇）
 
@@ -557,10 +557,11 @@
 | 2026-03-17 | [AstrBotDevs/AstrBot](../github-trending-analyzer/reports/research_AstrBotDevs_AstrBot.md) | — |
 | 2026-03-17 | [666ghj/BettaFish 深度研究报告](../github-trending-analyzer/reports/research_666ghj_BettaFish.md) | — |
 
-## 🏄 Web Surfing（47 篇）
+## 🏄 Web Surfing（48 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-10-26 | [AI 行业日报 · 2026-10-26](../web-surfing/reports/ai-news-daily-2026-10-26.md) | `ai_news`, `daily`, `industry_watch` |
 | 2026-10-22 | [AI 行业日报 · 2026-10-22](../web-surfing/reports/ai-news-daily-2026-10-22.md) | `ai_news`, `daily`, `industry_watch` |
 | 2026-10-21 | [AI 行业日报 · 2026-10-21](../web-surfing/reports/ai-news-daily-2026-10-21.md) | `ai_news`, `daily`, `industry_watch` |
 | 2026-10-20 | [炒菜调料时机：从短视频口诀到可复用的厨房判断](../web-surfing/reports/cooking-logic-timing-douyin.md) | `cooking`, `douyin`, `food-science`, `fact-check` |

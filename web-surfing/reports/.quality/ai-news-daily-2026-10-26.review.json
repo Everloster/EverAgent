@@ -1,0 +1,84 @@
+{
+  "decision": {
+    "status": "pass",
+    "score": 93.05,
+    "evaluated_on": "2026-10-31",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "efc027607fcc3297bf5b61ceefec10a8f23a0b3827b3949a351d29634d367db7",
+    "evidence_sha256": "e855e06664092e13b1273b49ff1899d77b203417e1161c6f259d964ba15e05ec"
+  },
+  "quality_tier": "standard",
+  "report_path": "web-surfing/reports/ai-news-daily-2026-10-26.md",
+  "reviews": [
+    {
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08"
+      ],
+      "escalation_reason": "",
+      "hard_failures": [],
+      "missing_requirements": [],
+      "notes": "独立复核（glm-5.3 / claude-code 新会话，经 eacli web.read 直读）。18 来源全部核验：S01-S07、S10、S12-S18 实际直读；S08/S09 现为 10-31 内容、快照值不可复现（账本局限已声明），改按报告↔账本内部一致性+item 50227356 标题核验；S11 经 radar.py argparse（--since/--limit 真实存在）核对。8 条 critical claim 逐项与原文对照全部成立：C01/C02 全要素（含 CoT 引语逐字、『多数测试给定信道』限定句）在 S04；C03/C04 全部数字与 xdev 对照出自 S05、AA 55/第 4 与 S12 逐字吻合；C05 全部数字与 modified 时间戳出自 S06；C06 机制/时间线/Imperva 出自 S07 且专页确未点名发现方（两说并存准确）；C07 与 10-22、10-19 期实际文件比对成立；C08 各条落到 S03 条目级标注，估值三数字经 S13/S14 确认，AISI PDF 存在且主题吻合。R01-R05 全部满足，未发现伪造引用、关键数字失准或安全问题。次要问题（不动摇 claim，已在评分中扣减）：①Kimi 发布日报告写 10-24，但 S12 published_time 与 S05 图床路径均为 10-23，实际发布大概率 10-23，属账本局限声明的日级误差带内；②简讯『The Decoder 10-24 跟进』实为 10-23T09:49Z；③MiniMax 简讯『ModelSense』疑为 AIHOT 对 ModelScope 的笔误，报告忠实转述；④禾赛 Kosmo 在详情块列为『本期首录』但正文无对应条目（AIHOT 10-24 十二项中唯一未入正文者）；⑤S04 当前 publishedTime 已变为 2026-10-29T09:00（账本记 10-26 时为 10-21T07:00），进一步佐证报告对 openai.com 元数据异常的存疑处理；⑥AISI 报告『49 页』页数与旧址 10-31 停用公告未能独立复核（报告已自标未读/已见，诚实）。",
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05"
+      ],
+      "reviewer": {
+        "explicit_model_override": false,
+        "harness": "claude-code",
+        "independent_context": true,
+        "model": "glm-5.3",
+        "override_reason": "",
+        "run_id": "ai-news-review-2026-10-26-4bb787d0"
+      },
+      "role": "primary_review",
+      "score_reasons": {
+        "evidence_fidelity": "四篇一手/官方全文与全部 18 来源实际重读；8 条 critical claim 的每个数字、引语（CoT 逐字）、CVE 号、期号与时间戳均与原文吻合；Brotli 归因与 OpenAI 发布时点两个冲突点按一手优先存疑处理，且与原文实际情况一致。扣分项：Kimi 发布日 10-24 大概率应为 10-23（S12 发布时间与 S05 图床路径均为 10-23，在账本声明的日级误差带内）；The Decoder 估值跟进日期差一天（实为 10-23T09:49Z）；『ModelSense』为转述继承的来源疑似笔误。",
+        "limitations": "8 条局限具体、诚实且与本次独立复核的实测一致：停刊窗口不可复原、发布时点未定、Brotli 归因单源、Trending/HN 快照不可复现（复核实测 S08/S09 现值确已全变）、雷达历史窗口限制、转述清单逐项列出、AI Digest 缺口及其对头条素材结构的影响；未见粉饰或遗漏重大不确定性。",
+        "readability": "独立可读：三句话速读+关键事实+细读质疑+来源的固定结构；直读/快照/转述三级信源标注全文一致；表格与历史日报链接经核全部有效；术语（离线世界、xdev-bench-hard、WSE-3T、microVM）随文解释；折叠详情块完整交代采集时刻、直读失败项与去重依据。",
+        "reasoning_quality": "质疑段有据且克制：『智能体自建隐蔽通信』的夸大判定直接引官方限定原句而非泛泛怀疑；Kimi 删数据被正确解读为相对同管线的量化取舍而非绝对安全；Cerebras 批大小→并发深度的前提分析成立；趋势总结三主题各有多条本期证据支撑并附『冷读』反例与可验证点（社区复测 xdev）。",
+        "request_coverage": "五源 ✅/❌ 状态、今日要点、4 条结构完整头条、Trending、雷达、简讯、趋势总结与折叠详情块齐备（R01）；AIHOT 10-26 无大事项如实记录未以旧闻冒充；四篇一手直读落实 R02；R03/R05 证据链完整、雷达按规格运行；R04 对照 10-22/21/20 实际文件去重并全部给出增量与历史链接。小缺口：AIHOT 10-24 十二项中禾赛 Kosmo 仅在去重说明列为『首录』而正文无条目，属轻微内部不一致；iPhone Duo（非 AI）排除合理。"
+      },
+      "scores": {
+        "evidence_fidelity": 93,
+        "limitations": 96,
+        "readability": 94,
+        "reasoning_quality": 93,
+        "request_coverage": 91
+      },
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18"
+      ],
+      "unsupported_claims": []
+    }
+  ],
+  "revision_round": 1,
+  "schema_version": 1
+}
