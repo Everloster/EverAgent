@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>EverAgent 介绍动画源文件</title>
+<!--
+  README 介绍动画（docs/assets/everagent-intro.webp）的源文件。
+  画布 1280×720，全部运动由下方可 seek 的关键帧时间轴驱动；build.mjs 逐帧截图后编码为循环 WebP。
+  上屏文字只使用仓库可核对、不会随增长过时的说法（500+、300+、100+、自 2026 年 3 月起）。
+-->
+<!--
+  图标来自 Lucide（lucide-static 1.66.0），按 ISC License 使用：arrow-right, brain, brain-circuit, circle-help, code-xml, dna, file-text, history, landmark, library-big, map, map-pinned, newspaper, podcast, scroll-text, search-check, telescope
+
+ISC License
+
+Copyright (c) 2026 Lucide Icons and Contributors
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted, provided that the above
+copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+-->
+
+<style>
+:root{--gold1:#fff3d1;--gold2:#f2cf7f;--gold3:#cf9646;--ink:#eef0ff;--muted:#b4bbe9;--cyan:#6fd8ff;--edge:rgba(150,160,255,.30)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1280px;height:720px;overflow:hidden;background:#070920}
+#stage{position:relative;width:1280px;height:720px;overflow:hidden;font-family:"PingFang SC",sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+.bg{position:absolute;inset:0;background:
+ radial-gradient(ellipse 58% 52% at 50% 44%,rgba(98,70,220,.34) 0%,rgba(40,30,120,.14) 46%,transparent 72%),
+ radial-gradient(ellipse 80% 40% at 50% 115%,rgba(60,44,170,.55) 0%,transparent 70%),
+ linear-gradient(180deg,#080a24 0%,#0c0f33 55%,#090b26 100%)}
+.stars{position:absolute;inset:0;opacity:.75;background-image:
+ radial-gradient(1.3px 1.3px at 12% 18%,#fff 50%,transparent 52%),radial-gradient(1px 1px at 22% 72%,#cfd6ff 50%,transparent 52%),
+ radial-gradient(1.5px 1.5px at 37% 12%,#fff 50%,transparent 52%),radial-gradient(1px 1px at 63% 22%,#dfe4ff 50%,transparent 52%),
+ radial-gradient(1.4px 1.4px at 78% 9%,#fff 50%,transparent 52%),radial-gradient(1px 1px at 88% 64%,#cfd6ff 50%,transparent 52%),
+ radial-gradient(1.2px 1.2px at 6% 52%,#fff 50%,transparent 52%),radial-gradient(1px 1px at 55% 88%,#cfd6ff 50%,transparent 52%),
+ radial-gradient(1.3px 1.3px at 93% 34%,#fff 50%,transparent 52%),radial-gradient(1px 1px at 31% 44%,#b9c2ff 50%,transparent 52%),
+ radial-gradient(1.1px 1.1px at 70% 80%,#fff 50%,transparent 52%),radial-gradient(1px 1px at 45% 30%,#cfd6ff 50%,transparent 52%)}
+.scene{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0}
+.i{display:block;width:100%;height:100%}
+/* 标题卡 */
+.word{font-family:"Hoefler Text",Baskerville,serif;font-weight:900;font-size:136px;line-height:1.08;padding:0 12px;
+ background:linear-gradient(180deg,var(--gold1) 0%,var(--gold2) 50%,var(--gold3) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+ filter:drop-shadow(0 0 24px rgba(245,200,110,.32))}
+.tag{margin-top:20px;font-size:38px;font-weight:500;letter-spacing:8px;padding-left:8px}
+.rule{display:flex;align-items:center;gap:20px;margin-top:22px;color:var(--muted);font-size:28px;letter-spacing:2px}
+.rule:before,.rule:after{content:"";width:100px;height:1px;background:linear-gradient(90deg,transparent,#8a93d8,transparent)}
+/* 通用 */
+.h{font-size:50px;font-weight:600;letter-spacing:1px;color:#f3f4ff;text-align:center}
+.h em{font-style:normal;background:linear-gradient(180deg,var(--gold1),var(--gold2) 55%,var(--gold3));-webkit-background-clip:text;background-clip:text;color:transparent}
+.card{border-radius:24px;background:linear-gradient(180deg,rgba(32,36,96,.80),rgba(18,20,62,.80));border:1px solid var(--edge);
+ box-shadow:0 0 36px rgba(90,80,230,.20),inset 0 1px 0 rgba(255,255,255,.08)}
+/* 规模 */
+.stats{display:flex;gap:34px;margin-top:46px}
+.stat{width:330px;padding:30px 20px 28px;text-align:center}
+.stat .ic{width:52px;height:52px;margin:0 auto 12px;color:var(--cyan)}
+.stat .ic svg{stroke-width:1.6}
+.stat .k{font-family:"Avenir Next",sans-serif;font-weight:700;font-size:64px;line-height:1.1;color:var(--gold2)}
+.stat .v{font-size:30px;color:#dfe2fb;margin-top:8px}
+/* 学科 */
+.subjects{display:flex;flex-direction:column;gap:16px;margin-top:38px;width:900px}
+.subj{display:flex;align-items:center;gap:24px;padding:13px 30px}
+.subj .ic{width:42px;height:42px;color:var(--cyan);flex:none}
+.subj .ic svg{stroke-width:1.7}
+.subj .n{width:130px;font-size:30px;font-weight:600;color:var(--gold2);flex:none}
+.subj .t{font-size:30px;color:#e6e8ff;white-space:nowrap}
+/* 报告 */
+.split{display:flex;align-items:center;gap:56px;margin-top:40px}
+.doc{width:560px;padding:30px 36px}
+.doc .dt{display:flex;align-items:center;gap:14px;font-size:32px;font-weight:600}
+.doc .dt .ic{width:36px;height:36px;color:var(--gold2)}
+.doc .sec{display:flex;align-items:center;gap:14px;margin-top:20px;font-size:30px;color:#e1e4fb}
+.doc .sec b{width:10px;height:10px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan);flex:none}
+.side{display:flex;flex-direction:column;gap:22px;width:430px}
+.note{font-size:30px;line-height:1.5;color:#e6e8ff}
+.pills{display:flex;gap:14px}
+.pill{padding:6px 18px;border-radius:999px;font-size:28px;font-weight:500;color:#ffe2a8;background:rgba(242,207,127,.12);border:1px solid rgba(242,207,127,.42)}
+/* 积累回路 */
+.chain{position:relative;width:1180px;height:330px;margin-top:36px}
+.node{position:absolute;top:30px;width:250px;padding:24px 14px;text-align:center}
+.node .ic{width:46px;height:46px;margin:0 auto 10px;color:var(--cyan)}
+.node .ic svg{stroke-width:1.6}
+.node .n{font-size:32px;font-weight:600;color:#f3f4ff}
+.node .d{font-size:26px;color:var(--muted);margin-top:6px}
+.arrow{position:absolute;top:106px;width:40px;height:40px;color:var(--gold2)}
+.loop{position:absolute;left:0;top:0;width:1180px;height:330px;overflow:visible}
+.loop path{fill:none;stroke:var(--gold2);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.loop .ah{opacity:0}
+.loopcap{position:absolute;left:0;right:0;top:282px;text-align:center;font-size:30px;color:var(--gold2)}
+/* 质量 */
+.qwrap{display:flex;gap:30px;margin-top:40px}
+.q{width:520px;padding:28px 32px;display:flex;gap:20px;align-items:flex-start}
+.q .ic{width:46px;height:46px;color:var(--cyan);flex:none;margin-top:2px}
+.q .ic svg{stroke-width:1.6}
+.q .n{font-size:32px;font-weight:600}
+.q .d{font-size:28px;color:#d6daf8;margin-top:8px;line-height:1.45}
+.caveat{margin-top:34px;font-size:28px;color:var(--muted);text-align:center;line-height:1.5}
+/* Personal Context */
+.pc{width:620px;margin-top:36px;padding:32px 48px}
+.pc .row{display:flex;align-items:center;gap:20px;font-size:32px;color:#eef0ff}
+.pc .row + .row{margin-top:22px}
+.pc .row .ic{width:42px;height:42px;color:var(--cyan);flex:none}
+.pc .row .ic svg{stroke-width:1.7}
+.pcfoot{margin-top:26px;padding-top:20px;border-top:1px solid rgba(150,160,255,.22);font-size:30px;color:var(--gold2)}
+.eyebrow{font-family:"Avenir Next",sans-serif;font-weight:600;font-size:28px;letter-spacing:4px;color:var(--cyan);margin-bottom:14px}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="bg"></div><div class="stars"></div>
+
+  <!-- 0 标题卡（第 0 帧与循环回到的最后一帧） -->
+  <div class="scene" id="title" style="opacity:1">
+    <div class="word">EverAgent</div>
+    <div class="tag">个人学习与研究工作台</div>
+    <div class="rule"><span>长期学习 · 研究报告 · 知识积累</span></div>
+  </div>
+
+  <!-- 1 规模 -->
+  <div class="scene" id="s1">
+    <div class="h a1">借助 AI Agent，持续做<em>研究</em></div>
+    <div class="stats">
+      <div class="card stat b1"><div class="ic"><svg class="i lucide-file-text" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" /> <path d="M14 2v5a1 1 0 0 0 1 1h5" /> <path d="M10 9H8" /> <path d="M16 13H8" /> <path d="M16 17H8" /> </svg></div><div class="k">500+</div><div class="v">篇报告</div></div>
+      <div class="card stat b2"><div class="ic"><svg class="i lucide-library-big" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <rect width="8" height="18" x="3" y="3" rx="1" /> <path d="M7 3v18" /> <path d="M20.4 18.9c.2.5-.1 1.1-.6 1.3l-1.9.7c-.5.2-1.1-.1-1.3-.6L11.1 5.1c-.2-.5.1-1.1.6-1.3l1.9-.7c.5-.2 1.1.1 1.3.6Z" /> </svg></div><div class="k">300+</div><div class="v">个 Wiki 条目</div></div>
+      <div class="card stat b3"><div class="ic"><svg class="i lucide-history" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" /> <path d="M3 3v5h5" /> <path d="M12 7v5l4 2" /> </svg></div><div class="k">2026.03</div><div class="v">起持续积累</div></div>
+    </div>
+  </div>
+
+  <!-- 2 学科与真实题目 -->
+  <div class="scene" id="s2">
+    <div class="h a1">跨五个学科的精读与研究</div>
+    <div class="subjects">
+      <div class="card subj b1"><div class="ic"><svg class="i lucide-brain-circuit" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M12 13h4" /> <path d="M12 18h6a2 2 0 012 2v1" /> <path d="M12 8h8" /> <path d="M12 9a4.17 4.17 0 01-3 4" /> <path d="M16 8V5a2 2 0 012-2" /> <path d="M6 18a4 4 0 01-2-7.465" /> <path d="M6.004 5.125a4 4 0 00-2.526 5.77" /> <path d="M6.294 6.294A3 3 0 1112 5v13a4 4 0 11-7.967-.518" /> <circle cx="16" cy="13" r="0.5" fill="currentColor" /> <circle cx="18" cy="3" r="0.5" fill="currentColor" /> <circle cx="20" cy="21" r="0.5" fill="currentColor" /> <circle cx="20" cy="8" r="0.5" fill="currentColor" /> </svg></div><div class="n">AI</div><div class="t">Transformer → Harness 实验</div></div>
+      <div class="card subj b2"><div class="ic"><svg class="i lucide-code-xml" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m18 16 4-4-4-4" /> <path d="m6 8-4 4 4 4" /> <path d="m14.5 4-5 16" /> </svg></div><div class="n">计算机</div><div class="t">图灵、香农 → Raft、QUIC</div></div>
+      <div class="card subj b3"><div class="ic"><svg class="i lucide-landmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M10 18v-7" /> <path d="M11.119 2.205a2 2 0 0 1 1.762 0l7.84 3.846A.5.5 0 0 1 20.5 7h-17a.5.5 0 0 1-.22-.949z" /> <path d="M14 18v-7" /> <path d="M18 18v-7" /> <path d="M3 22h18" /> <path d="M6 18v-7" /> </svg></div><div class="n">哲学</div><div class="t">柏拉图洞穴 → 庄子《齐物论》</div></div>
+      <div class="card subj b4"><div class="ic"><svg class="i lucide-brain" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M12 18V5" /> <path d="M15 13a4.17 4.17 0 01-3-4 4.17 4.17 0 01-3 4" /> <path d="M17.707 6.294A3 3 0 1012 5a3 3 0 10-5.707 1.294" /> <path d="M17.996 5.125a4 4 0 012.526 5.77" /> <path d="M18 18a4 4 0 002-7.465" /> <path d="M19.967 17.482a4 4 0 11-7.967.517 4 4 0 11-7.967-.517" /> <path d="M6 18a4 4 0 01-2-7.465" /> <path d="M6.004 5.125a4 4 0 00-2.526 5.77" /> </svg></div><div class="n">心理学</div><div class="t">Milgram 服从实验、前景理论</div></div>
+      <div class="card subj b5"><div class="ic"><svg class="i lucide-dna" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m10 16 1.5 1.5" /> <path d="m14 8-1.5-1.5" /> <path d="M15 2c-1.798 1.998-2.518 3.995-2.807 5.993" /> <path d="m16.5 10.5 1 1" /> <path d="m17 6-2.891-2.891" /> <path d="M2 15c6.667-6 13.333 0 20-6" /> <path d="m20 9 .891.891" /> <path d="M3.109 14.109 4 15" /> <path d="m6.5 12.5 1 1" /> <path d="m7 18 2.891 2.891" /> <path d="M9 22c1.798-1.998 2.518-3.995 2.807-5.993" /> </svg></div><div class="n">生物学</div><div class="t">昼夜节律、果蝇全脑连接组</div></div>
+    </div>
+  </div>
+
+  <!-- 3 来源 -->
+  <div class="scene" id="s3">
+    <div class="h a1">还有播客、开源项目与行业日报</div>
+    <div class="stats">
+      <div class="card stat b1"><div class="ic"><svg class="i lucide-podcast" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M12 17v4" /> <path d="M18 11a6 6 0 00-3-5.197" /> <path d="M2 11a10 10 0 015-8.662" /> <path d="M22 11a10 10 0 00-5-8.662" /> <path d="M6 11a6 6 0 013-5.197" /> <path d="M9 21h6" /> <rect x="10" y="9" width="4" height="8" rx="2" /> </svg></div><div class="k">100+</div><div class="v">篇播客与视频报告</div></div>
+      <div class="card stat b2"><div class="ic"><svg class="i lucide-telescope" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m10.065 12.493-6.18 1.318a.934.934 0 0 1-1.108-.702l-.537-2.15a1.07 1.07 0 0 1 .691-1.265l13.504-4.44" /> <path d="m13.56 11.747 4.332-.924" /> <path d="m16 21-3.105-6.21" /> <path d="M16.485 5.94a2 2 0 0 1 1.455-2.425l1.09-.272a1 1 0 0 1 1.212.727l1.515 6.06a1 1 0 0 1-.727 1.213l-1.09.272a2 2 0 0 1-2.425-1.455z" /> <path d="m6.158 8.633 1.114 4.456" /> <path d="m8 21 3.105-6.21" /> <circle cx="12" cy="13" r="2" /> </svg></div><div class="k">100+</div><div class="v">篇开源项目研究</div></div>
+      <div class="card stat b3"><div class="ic"><svg class="i lucide-newspaper" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M15 18h-5" /> <path d="M18 14h-8" /> <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-4 0v-9a2 2 0 0 1 2-2h2" /> <rect width="8" height="4" x="10" y="6" rx="1" /> </svg></div><div class="k">40+</div><div class="v">期 AI 行业日报</div></div>
+    </div>
+  </div>
+
+  <!-- 4 一篇报告长什么样 -->
+  <div class="scene" id="s4">
+    <div class="h a1">报告脱离对话，也能<em>独立阅读</em></div>
+    <div class="split">
+      <div class="card doc b1">
+        <div class="dt"><span class="ic"><svg class="i lucide-file-text" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" /> <path d="M14 2v5a1 1 0 0 0 1 1h5" /> <path d="M10 9H8" /> <path d="M16 13H8" /> <path d="M16 17H8" /> </svg></span>研究报告</div>
+        <div class="sec c1"><b></b>研究问题与来源</div>
+        <div class="sec c2"><b></b>分析与结论</div>
+        <div class="sec c3"><b></b>局限与未解问题</div>
+      </div>
+      <div class="side b2">
+        <div class="note">区分事实、来源主张与推断</div>
+        <div class="pills"><span class="pill">[推测]</span><span class="pill">[待验证]</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5 积累回路 -->
+  <div class="scene" id="s5">
+    <div class="h a1">报告之后，知识继续<em>积累</em></div>
+    <div class="chain">
+      <svg class="loop" viewBox="0 0 1180 330"><path class="lp" d="M 1055 228 C 1055 262, 960 268, 590 268 C 220 268, 125 262, 125 230"/><path class="ah" d="M 113 244 L 125 230 L 137 244"/></svg>
+      <div class="card node n1" style="left:0"><div class="ic"><svg class="i lucide-file-text" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" /> <path d="M14 2v5a1 1 0 0 0 1 1h5" /> <path d="M10 9H8" /> <path d="M16 13H8" /> <path d="M16 17H8" /> </svg></div><div class="n">研究报告</div><div class="d">来源与局限</div></div>
+      <div class="arrow r1" style="left:260px"><svg class="i lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></div>
+      <div class="card node n2" style="left:310px"><div class="ic"><svg class="i lucide-library-big" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <rect width="8" height="18" x="3" y="3" rx="1" /> <path d="M7 3v18" /> <path d="M20.4 18.9c.2.5-.1 1.1-.6 1.3l-1.9.7c-.5.2-1.1-.1-1.3-.6L11.1 5.1c-.2-.5.1-1.1.6-1.3l1.9-.7c.5-.2 1.1.1 1.3.6Z" /> </svg></div><div class="n">Wiki</div><div class="d">概念 · 人物 · 机构</div></div>
+      <div class="arrow r2" style="left:570px"><svg class="i lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></div>
+      <div class="card node n3" style="left:620px"><div class="ic"><svg class="i lucide-map" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z" /> <path d="M15 5.764v15" /> <path d="M9 3.236v15" /> </svg></div><div class="n">研究地图</div><div class="d">已覆盖与缺口</div></div>
+      <div class="arrow r3" style="left:880px"><svg class="i lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></div>
+      <div class="card node n4" style="left:930px"><div class="ic"><svg class="i lucide-circle-help" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="12" r="10" /> <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" /> <path d="M12 17h.01" /> </svg></div><div class="n">未解问题</div><div class="d">追加记录</div></div>
+      <div class="loopcap lc">下一次追问，从这里接着做</div>
+    </div>
+  </div>
+
+  <!-- 6 证据与复核（带限定） -->
+  <div class="scene" id="s6">
+    <div class="h a1">新报告附证据与复核记录</div>
+    <div class="qwrap">
+      <div class="card q b1"><div class="ic"><svg class="i lucide-scroll-text" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M15 12h-5" /> <path d="M15 8h-5" /> <path d="M19 17V5a2 2 0 0 0-2-2H4" /> <path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3" /> </svg></div><div><div class="n">证据账本</div><div class="d">关键结论<br>逐条对应来源</div></div></div>
+      <div class="card q b2"><div class="ic"><svg class="i lucide-search-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m8 11 2 2 4-4" /> <circle cx="11" cy="11" r="8" /> <path d="m21 21-4.3-4.3" /> </svg></div><div><div class="n">独立复核</div><div class="d">新会话中的 AI 模型<br>对照来源复核</div></div></div>
+    </div>
+    <div class="caveat b3">2026-10-15 起的新报告适用，历史报告复核程度不一</div>
+  </div>
+
+  <!-- 7 Personal Context -->
+  <div class="scene" id="s7">
+    <div class="eyebrow a0">Personal Context</div>
+    <div class="h a1">换个 Agent，也能<em>接着研究</em></div>
+    <div class="card pc b1">
+      <div class="row c1"><span class="ic"><svg class="i lucide-history" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" /> <path d="M3 3v5h5" /> <path d="M12 7v5l4 2" /> </svg></span>查过什么</div>
+      <div class="row c2"><span class="ic"><svg class="i lucide-map-pinned" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M18 8c0 3.613-3.869 7.429-5.393 8.795a1 1 0 01-1.214 0C9.87 15.429 6 11.613 6 8a6 6 0 0112 0" /> <path d="M4.474 15h-.197a1 1 0 00-.969.753l-1.097 4.35a1.5 1.5 0 001.444 1.898L20.344 22a1.5 1.5 0 001.446-1.897l-1.098-4.35a1 1 0 00-.969-.753h-.197" /> <circle cx="12" cy="8" r="2" /> </svg></span>定过什么</div>
+      <div class="row c3"><span class="ic"><svg class="i lucide-circle-help" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="12" r="10" /> <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" /> <path d="M12 17h.01" /> </svg></span>还有哪些疑问</div>
+      <div class="pcfoot c4">留下记录，可以回查</div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* Deterministic keyframe timeline for frame-by-frame capture.
+   TL.add(target, {prop: [[t, value, ease?], ...]}) ; TL.seek(seconds)
+   props: o (opacity), x, y (px), s (scale), r (deg), blur (px),
+          clipR / clipL / clipB (0..1 reveal), dash (0..1 SVG stroke draw),
+          num (count-up, uses data-fmt with {n}), chars (typewriter count), w (% width) */
+(function () {
+  const E = {
+    linear: t => t,
+    in: t => t * t * t,
+    out: t => 1 - Math.pow(1 - t, 3),
+    inOut: t => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2),
+    outBack: t => { const c1 = 1.4, c3 = c1 + 1; return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2); },
+    step: t => (t < 1 ? 0 : 1),
+  };
+  const tracks = [];
+  function value(kf, t) {
+    if (t <= kf[0][0]) return kf[0][1];
+    for (let i = 1; i < kf.length; i++) {
+      const [t1, v1, ease] = kf[i];
+      const [t0, v0] = kf[i - 1];
+      if (t <= t1) {
+        const p = t1 === t0 ? 1 : (t - t0) / (t1 - t0);
+        return v0 + (v1 - v0) * E[ease || 'inOut'](p);
+      }
+    }
+    return kf[kf.length - 1][1];
+  }
+  function wrapChars(el) {
+    const text = el.textContent;
+    el.textContent = '';
+    return Array.from(text).map(ch => {
+      const sp = document.createElement('span');
+      sp.textContent = ch;
+      el.appendChild(sp);
+      return sp;
+    });
+  }
+  const r2 = v => Math.round(v * 100) / 100;
+  const r4 = v => Math.round(v * 10000) / 10000;
+  function apply(el, s) {
+    if ('o' in s) el.style.opacity = String(r4(Math.max(0, Math.min(1, s.o))));
+    const tf = [];
+    if ('x' in s || 'y' in s) tf.push(`translate(${r2(s.x || 0)}px, ${r2(s.y || 0)}px)`);
+    if ('s' in s) tf.push(`scale(${r4(s.s)})`);
+    if ('r' in s) tf.push(`rotate(${r2(s.r)}deg)`);
+    if (tf.length) el.style.transform = tf.join(' ');
+    if ('blur' in s) el.style.filter = s.blur > 0.05 ? `blur(${r2(s.blur)}px)` : 'none';
+    if ('clipR' in s) el.style.clipPath = `inset(-20px ${r2(100 - s.clipR * 100)}% -20px -20px)`;
+    if ('clipL' in s) el.style.clipPath = `inset(-20px -20px -20px ${r2(100 - s.clipL * 100)}%)`;
+    if ('clipB' in s) el.style.clipPath = `inset(-20px -20px ${r2(100 - s.clipB * 100)}% -20px)`;
+    if ('dash' in s) {
+      const L = el._len || (el._len = el.getTotalLength ? el.getTotalLength() : 1000);
+      el.style.strokeDasharray = `${r2(L)}`;
+      el.style.strokeDashoffset = `${r2(L * (1 - Math.max(0, Math.min(1, s.dash))))}`;
+    }
+    if ('num' in s) el.textContent = (el.dataset.fmt || '{n}').replace('{n}', String(Math.round(s.num)));
+    if ('w' in s) el.style.width = `${r2(s.w)}%`;
+    if ('chars' in s) {
+      const spans = el._chars || (el._chars = wrapChars(el));
+      const k = Math.floor(s.chars + 1e-6);
+      spans.forEach((sp, i) => { sp.style.visibility = i < k ? 'visible' : 'hidden'; });
+    }
+  }
+  window.TL = {
+    E,
+    duration: 10,
+    fps: 20,
+    add(target, props) {
+      const list = typeof target === 'string' ? Array.from(document.querySelectorAll(target)) : [target];
+      if (!list.length) throw new Error('TL.add: no element for ' + target);
+      for (const el of list) for (const [p, kf] of Object.entries(props)) tracks.push({ el, p, kf });
+      return this;
+    },
+    seek(t) {
+      const state = new Map();
+      for (const tr of tracks) {
+        let s = state.get(tr.el);
+        if (!s) state.set(tr.el, (s = {}));
+        s[tr.p] = value(tr.kf, t);
+      }
+      for (const [el, s] of state) apply(el, s);
+    },
+  };
+  window.seek = t => window.TL.seek(t);
+})();
+
+</script>
+<script>
+// 时间线（秒）。每屏：0.35s 淡入 → 元素错峰入场 → 最后一个元素就位后静止 ≥2.8s → 0.3s 淡出到空背景。
+// 换屏一律“淡出到空背景再淡入”，不做整屏交叉淡化；背景全片静止，只有局部元素运动（控制 WebP 体积）。
+TL.duration = 54; TL.fps = 20;
+const IN = 0.35, OUT = 0.3;
+function scene(sel, a, b) {
+  TL.add(sel, { o: [[0, 0], [a, 0], [a + IN, 1, 'out'], [b - OUT, 1], [b, 0, 'in']] });
+}
+function enter(sel, t, dy) {
+  const d = dy == null ? 18 : dy;
+  TL.add(sel, { o: [[0, 0], [t, 0], [t + 0.35, 1, 'out']], y: [[0, d], [t, d], [t + 0.35, 0, 'out']] });
+}
+
+// 0 标题卡：0–3.6 静止，3.6–3.9 淡出；结尾 52.0–52.4 淡入，52.4–54 静止。build.mjs 再把最后一帧换成首帧数据，循环接缝逐像素一致。
+TL.add('#title', { o: [[0, 1], [3.6, 1], [3.9, 0, 'in'], [52.0, 0], [52.4, 1, 'out']] });
+
+// 1 规模 4.0–9.4
+scene('#s1', 4.0, 9.4);
+enter('#s1 .a1', 4.0, 0);
+enter('#s1 .b1', 4.5); enter('#s1 .b2', 4.8); enter('#s1 .b3', 5.1);
+
+// 2 学科 9.6–18.4（最后一行 11.85 就位，静止约 6.2s）
+scene('#s2', 9.6, 18.4);
+enter('#s2 .a1', 9.6, 0);
+['.b1', '.b2', '.b3', '.b4', '.b5'].forEach((c, i) => enter('#s2 ' + c, 10.1 + i * 0.35, 14));
+
+// 3 来源 18.6–24.4
+scene('#s3', 18.6, 24.4);
+enter('#s3 .a1', 18.6, 0);
+enter('#s3 .b1', 19.1); enter('#s3 .b2', 19.4); enter('#s3 .b3', 19.7);
+
+// 4 报告 24.6–30.6
+scene('#s4', 24.6, 30.6);
+enter('#s4 .a1', 24.6, 0);
+enter('#s4 .b1', 25.0);
+enter('#s4 .c1', 25.4, 10); enter('#s4 .c2', 25.7, 10); enter('#s4 .c3', 26.0, 10);
+enter('#s4 .b2', 26.5);
+
+// 5 证据与复核 30.8–38.4（限定行 32.25 就位，静止约 5.8s）
+scene('#s6', 30.8, 38.4);
+enter('#s6 .a1', 30.8, 0);
+enter('#s6 .b1', 31.2); enter('#s6 .b2', 31.5); enter('#s6 .b3', 31.9, 0);
+
+// 6 积累回路 38.6–45.6（回环线 41.0–42.0 绘制，说明 41.9 入场，静止约 3.4s）
+scene('#s5', 38.6, 45.6);
+enter('#s5 .a1', 38.6, 0);
+enter('#s5 .n1', 39.0); enter('#s5 .r1', 39.35, 0); enter('#s5 .n2', 39.5);
+enter('#s5 .r2', 39.85, 0); enter('#s5 .n3', 40.0); enter('#s5 .r3', 40.35, 0); enter('#s5 .n4', 40.5);
+TL.add('#s5 .lp', { dash: [[0, 0], [41.0, 0], [42.0, 1, 'inOut']] });
+TL.add('#s5 .ah', { o: [[0, 0], [41.85, 0], [42.1, 1, 'out']] });
+enter('#s5 .lc', 41.9, 0);
+
+// 7 Personal Context 45.8–51.8（页脚 47.95 就位，静止约 3.5s）
+scene('#s7', 45.8, 51.8);
+enter('#s7 .a0', 45.8, 0); enter('#s7 .a1', 45.8, 0);
+enter('#s7 .b1', 46.2);
+enter('#s7 .c1', 46.55, 10); enter('#s7 .c2', 46.85, 10); enter('#s7 .c3', 47.15, 10);
+enter('#s7 .c4', 47.6, 0);
+
+document.fonts.ready.then(() => { TL.seek(0); window.READY = true; });
+</script>
+</body>
+</html>
