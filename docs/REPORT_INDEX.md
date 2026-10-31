@@ -7,6 +7,7 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-10-31 | [余一聊 Manus：怎样把任务真正交给 Agent](../podcast-learning/reports/2026-10-28_xiaoyuzhou-ai-lianjinshu_yuyi-manus-delegation.md) | podcast-learning |
 | 2026-10-30 | [模型不变，Agent 如何做得更好：一项 Harness 实验](../ai-learning/reports/paper_analyses/46_evolve_the_harness_2026.md) | ai-learning |
 | 2026-10-30 | [Personal Context 正交论：哪些积累值得保留，怎样持续维护](../ai-learning/reports/knowledge_reports/PersonalContext正交论_PC构建指南_20261010.md) | ai-learning |
 | 2026-10-29 | [多设备、多 Agent 怎样共用上下文与续接会话：从 Manus 到可实现的架构](../ai-learning/reports/knowledge_reports/多设备多Agent共享Context与会话续接_Manus实践与架构边界_深度解析_20261029.md) | ai-learning |
@@ -31,7 +32,6 @@
 | 2026-10-25 | [vLLM 在 GB300 NVL72 上服务 DeepSeek-V4.1-Flash：P/D 分离 + Wide-EP 的机制拆解与口径核验](../ai-learning/reports/knowledge_reports/vLLM_DeepSeek-V4.1-Flash_PD分离与Wide-EP机架级服务_深度解析_20261025.md) | ai-learning |
 | 2026-10-25 | [vLLM Humming：量化推理 GEMM Kernel 库的设计、支持矩阵与证据边界](../ai-learning/reports/knowledge_reports/vLLM_Humming_量化推理Kernel库_深度解析_20261025.md) | ai-learning |
 | 2026-10-25 | [ThinkingBox：把数据库终态评分器变成 RL 奖励——Agent 后训练的可执行奖励链拆解](../ai-learning/reports/knowledge_reports/Microsoft_ThinkingBox_数据库评分转RL奖励与Agent后训练_深度解析_20261025.md) | ai-learning |
-| 2026-10-25 | [The Cognitive Revolution AI:AM：Clean Neurons、GPU 信贷与 AI 供应链的移动瓶颈](../podcast-learning/reports/2026-10-24_rss-cognitive-revolution_ai-am-clean-neurons-gpu-credit.md) | podcast-learning |
 
 ## 🤖 AI Learning（152 篇）
 
@@ -315,10 +315,11 @@
 | 2026-04-20 | [Qwen2.5-3B GRPO 强化学习微调](../ai-practice/experiments/exp_004_qwen25_grpo_finetune.md) | — |
 | 2026-04-20 | [HuggingFace Hub 模型与数据集管理](../ai-practice/experiments/exp_002_huggingface_basics.md) | — |
 
-## 🎙️ Podcast Learning（108 篇）
+## 🎙️ Podcast Learning（109 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-10-31 | [余一聊 Manus：怎样把任务真正交给 Agent](../podcast-learning/reports/2026-10-28_xiaoyuzhou-ai-lianjinshu_yuyi-manus-delegation.md) | `podcast`, `manus`, `personal_agent`, `multi_agent`, `context_engineering`, `harness` |
 | 2026-10-27 | [纳德拉谈企业智能：知识、反馈、模型选择与 Agent 治理](../podcast-learning/reports/2026-10-27_bilibili-nadella_enterprise-intelligence.md) | `enterprise_ai`, `personal_context`, `agent_security`, `model_routing`, `evaluation` |
 | 2026-10-27 | [大模型推理全链路：服务质量、量化、编译搜索与 Agent 缓存](../podcast-learning/reports/2026-10-27_bilibili-krillinai_llm-inference-stack.md) | `llm_inference`, `serving_quality`, `quantization`, `compiler`, `radix_attention`, `kv_cache` |
 | 2026-10-27 | [OpenAI Computer Use：从跨应用操作到可验收的企业任务](../podcast-learning/reports/2026-10-27_bilibili-openai_computer-use.md) | `computer_use`, `agent_harness`, `enterprise_automation`, `webmcp`, `agent_security`, `evaluation` |

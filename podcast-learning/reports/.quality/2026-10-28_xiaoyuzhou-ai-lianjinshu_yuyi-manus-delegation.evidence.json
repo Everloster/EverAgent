@@ -1,0 +1,497 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-28_xiaoyuzhou-ai-lianjinshu_yuyi-manus-delegation.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-31",
+  "generator": {
+    "model": "gpt-6-astra",
+    "harness": "codex",
+    "run_id": "yuyi-manus-20261031",
+    "explicit_model_override": false,
+    "override_reason": ""
+  },
+  "task": {
+    "summary": "对《AI 炼金术》2026-10-28 余一入职 Manus 访谈做完整深度学习，形成适合人类独立阅读的分析，并与官方工程原文对照。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "通读完整正片，逐一覆盖官方 18 章；保留核心论证、案例、反例和后半段的个人学习、招聘、社区主线。"
+      },
+      {
+        "id": "R2",
+        "text": "保留可追溯的原始转写、按章全文轻校读稿、官方节目简介与脱敏执行收据，说明 ASR 与音频核验边界。"
+      },
+      {
+        "id": "R3",
+        "text": "分析主 Agent 委托、验收、多 Bot 分工与组织上下文，区分统一沟通入口和共享同一 session。"
+      },
+      {
+        "id": "R4",
+        "text": "回到 OpenAI 与 Manus 官方工程原文，分析清理 Harness 的适用边界；不得把尚未完成的计划写成已验证结果。"
+      },
+      {
+        "id": "R5",
+        "text": "报告有术语解释、可点击引用和时间定位；区分嘉宾自述、主持人推演与本文建议，不把口述比例当作测评。"
+      },
+      {
+        "id": "R6",
+        "text": "形成最小知识沉淀与可继续追问的问题，独立复核通过后更新报告状态及索引。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "kind": "primary",
+      "title": "AI 炼金术｜找刚入职 Manus 的余一聊感受",
+      "locator": "https://www.ximalaya.com/sound/1028338072",
+      "accessed_on": "2026-10-31"
+    },
+    {
+      "id": "S2",
+      "kind": "local",
+      "title": "完整原始 ASR：2562 段",
+      "locator": "podcast-learning/reports/transcripts/2026-10-28_xiaoyuzhou-ai-lianjinshu_yuyi-manus-delegation.transcript.txt",
+      "accessed_on": "2026-10-31",
+      "sha256": "1360ff8ee0b0d18c8beb419bf04663e26cd2811ad4230bab59f01502810a58be"
+    },
+    {
+      "id": "S3",
+      "kind": "local",
+      "title": "全文轻校读稿：按官方 18 章编排",
+      "locator": "podcast-learning/reports/transcripts/2026-10-28_xiaoyuzhou-ai-lianjinshu_yuyi-manus-delegation.polished.txt",
+      "accessed_on": "2026-10-31",
+      "sha256": "4aedb2f540341b710bb8a18613f120f033eea5b06eaab774b34ef0910a5b8c82"
+    },
+    {
+      "id": "S4",
+      "kind": "local",
+      "title": "官方节目简介与 18 个章节",
+      "locator": "podcast-learning/reports/transcripts/2026-10-28_xiaoyuzhou-ai-lianjinshu_yuyi-manus-delegation.shownotes.txt",
+      "accessed_on": "2026-10-31",
+      "sha256": "dc1ef51e7936aac1e922bf35887711e50846ffd942c4f1607dae10fe0b961c3c"
+    },
+    {
+      "id": "S5",
+      "kind": "local",
+      "title": "转写获取、哈希与时间戳检查收据",
+      "locator": "podcast-learning/reports/transcripts/2026-10-28_xiaoyuzhou-ai-lianjinshu_yuyi-manus-delegation.artifact.json",
+      "accessed_on": "2026-10-31",
+      "sha256": "e45b7b58962d955f24548319ff4c1fae62f4b37b493416b6be7ae1cfeedd90fe"
+    },
+    {
+      "id": "S6",
+      "kind": "official",
+      "title": "OpenAI：Rethinking skills and prompts for GPT-6 Astra",
+      "locator": "https://developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra",
+      "accessed_on": "2026-10-31"
+    },
+    {
+      "id": "S7",
+      "kind": "official",
+      "title": "Manus：Context Engineering for AI Agents: Lessons from Building Manus",
+      "locator": "https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus",
+      "accessed_on": "2026-10-31"
+    },
+    {
+      "id": "S8",
+      "kind": "official",
+      "title": "Manus：Wide Research: Beyond the Context Window",
+      "locator": "https://manus.im/blog/manus-wide-research-solve-context-problem",
+      "accessed_on": "2026-10-31"
+    },
+    {
+      "id": "S9",
+      "kind": "official",
+      "title": "Manus Projects 产品文档",
+      "locator": "https://manus.im/docs/features/projects",
+      "accessed_on": "2026-10-31"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "余一把离职归因于希望从旁观进入构建；超级个体受到精力与质量限制，因而寻找同频团队。",
+      "report_anchor": "自己加上一组 Agent 可以拓宽能力",
+      "support": "direct",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S4"
+      ],
+      "evidence": "02:01–05:59；00:04:10 附近明确说会累、并非都能做好，随后谈人与 Agent 的四方关系。",
+      "critical": true
+    },
+    {
+      "id": "C2",
+      "claim": "微博链路跑通后显式把经验与代码交给监控 Bot；90%/100% 是主观委托体验，不是成功率实验。",
+      "report_anchor": "主 Agent 与她把链路跑通后，把经验和代码交给一个监控 Bot",
+      "support": "direct",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "evidence": "05:59–11:16；00:06:41–00:08:49 关于链路、经验/代码交接、固定 CLI/模型/知识库；00:10:45 关于主 Agent 验收。",
+      "critical": true
+    },
+    {
+      "id": "C3",
+      "claim": "主持人的封面审核与剪辑困难构成反例；余一对高容错内容接受多个版本，对低容错任务另设审核。",
+      "report_anchor": "可自动检查的局部质量，与需要理解节奏、语义和观众体验的整体质量，交接难度不同。",
+      "support": "derived",
+      "source_ids": [
+        "S2"
+      ],
+      "evidence": "11:16–15:18；00:11:56 剪辑仍需人工，00:14:08 起低容错任务、强模型审核与既有验收原则。区分两位说话人的例子，未把个人下限变成研究标准。",
+      "critical": true
+    },
+    {
+      "id": "C4",
+      "claim": "巡店案例为嘉宾转述，说明先尝试能否实现，再让 IT 完善及降本，不能证明生产可靠性。",
+      "report_anchor": "案例只能支持“降低尝试门槛”的可能性，不能证明生产可靠性。",
+      "support": "derived",
+      "source_ids": [
+        "S2"
+      ],
+      "evidence": "22:06–25:27；00:22:42 物业背景、巡店，00:24:44“根本不会做”与后续请 IT。节目无源码、成本测量和故障数据。",
+      "critical": true
+    },
+    {
+      "id": "C5",
+      "claim": "入职体验中的 Slack/Notion 支持反馈分类、找责任人与补齐背景；常态 Bot 数量有限，创建权限集中。",
+      "report_anchor": "常态机器人只有若干个，创建权限集中在少数人手里",
+      "support": "direct",
+      "source_ids": [
+        "S2"
+      ],
+      "evidence": "30:07–38:59；00:32:18 反馈与评级，00:33:06 入职问答，00:37:17–00:38:41 权限和有限数量。非整家公司全部技术实现说明。",
+      "critical": true
+    },
+    {
+      "id": "C6",
+      "claim": "值机是五名交流对象中三人的 aha 案例；预约面试流程仍保留最终确认，不能概括成无限授权。",
+      "report_anchor": "时间谈好后，仍要与她确认，再发邀请。",
+      "support": "direct",
+      "source_ids": [
+        "S2"
+      ],
+      "evidence": "42:14–46:20；00:44:16 五人中三人，00:44:54 主持人强调身份上下文，00:45:37 与本人再确认一次后发邀请。",
+      "critical": true
+    },
+    {
+      "id": "C7",
+      "claim": "[推测] 单一入口和主 Agent 协调，并不要求多个工作单元共享同一个模型会话。",
+      "report_anchor": "对外看起来连续，不要求内部共用同一个无限增长的会话。",
+      "support": "inference",
+      "source_ids": [
+        "S2",
+        "S8",
+        "S9"
+      ],
+      "evidence": "46:58–48:54 各监控 Bot→主控判断→研究 CLI；54:08–55:59 群内汇报。Wide Research 明确独立上下文和主控汇总，Projects 区分项目背景和 task 权限；二者仅作外部对照，不反推访谈内部实现。",
+      "critical": true
+    },
+    {
+      "id": "C8",
+      "claim": "清理 Harness 与重跑对照尚未完成；单次视频体验不能支持删光规则普遍有效。",
+      "report_anchor": "她提出了清理计划，还没有给出实验结论",
+      "support": "direct",
+      "source_ids": [
+        "S2"
+      ],
+      "evidence": "58:14–1:00:48；58:57 视频例子，59:41 及1:00:28 明确审核结果未看、将旧上下文移到另一目录后再跑。",
+      "critical": true
+    },
+    {
+      "id": "C9",
+      "claim": "OpenAI 建议收紧 Skill 触发、渐进加载、按需读文档并明确完成条件，还提醒不同模型需不同指导。",
+      "report_anchor": "同一仓库可能由不同模型使用，适合一个模型的指导不一定适合另一个。",
+      "support": "direct",
+      "source_ids": [
+        "S6"
+      ],
+      "evidence": "官方正文 sections: SKILL.md descriptions, progressive disclosure, AGENTS.md, model differences, completion requirements。非取消工具、授权、记忆或所有检查。",
+      "critical": true
+    },
+    {
+      "id": "C10",
+      "claim": "Manus Context Engineering 把文件系统、失败反馈、目标保持与稳定工具设计作为历史团队经验；与删除过时提示不矛盾。",
+      "report_anchor": "用文件系统保存可再次读取的信息；保留失败动作和错误反馈；让长期目标保持可见",
+      "support": "direct",
+      "source_ids": [
+        "S7"
+      ],
+      "evidence": "Use the File System as Context / Manipulate Attention Through Recitation / Keep the Wrong Stuff In / Mask, Don’t Remove。作者说不是 universal truths；报告不外推当年成本和调用次数。",
+      "critical": true
+    },
+    {
+      "id": "C11",
+      "claim": "[待验证] 本次仅提出小规模固定任务对照，未实际运行 Harness A/B 或据此修改报告流程。",
+      "report_anchor": "这次学习任务没有运行上述对照",
+      "support": "inference",
+      "source_ids": [
+        "S6",
+        "S7"
+      ],
+      "evidence": "这是报告的待验证实验建议与本次工作范围声明；不声称嘉宾已做成或本项目已有增益。",
+      "critical": true
+    },
+    {
+      "id": "C12",
+      "claim": "特效案例支持先说明用途和评价依据；人类只剩 alignment 是主持人延伸，非已验证劳动事实。",
+      "report_anchor": "它可以帮助思考目标设定的重要性，但本期没有证明所有专业工作都将只剩这一项。",
+      "support": "derived",
+      "source_ids": [
+        "S2"
+      ],
+      "evidence": "1:00:48–1:05:53；1:01:35–1:02:54 主持人对齐推演，1:04:26 余一谈特效配合内容和情绪。",
+      "critical": true
+    },
+    {
+      "id": "C13",
+      "claim": "余一主动恢复先自己口述再由 AI 整理，保留形成判断的过程，同时用 know who 寻求人类合作。",
+      "report_anchor": "只要是自己出镜，她希望先把脑中的想法讲一遍",
+      "support": "direct",
+      "source_ids": [
+        "S2"
+      ],
+      "evidence": "1:05:53–1:10:07；1:07:18 口述在先，1:08:01 建脑和保留摩擦，1:09:25 知道找谁合作。效率未做测量。",
+      "critical": true
+    },
+    {
+      "id": "C14",
+      "claim": "实习生筛选已实施作品、问题追问和一至两天试作；社区仍是摸底和反馈方向，没有长期成效证据。",
+      "report_anchor": "对合适的候选人，提供一笔产品积分和一至两天时间",
+      "support": "direct",
+      "source_ids": [
+        "S2"
+      ],
+      "evidence": "1:10:07–1:22:32；1:11:39 面试与 offer，1:15:11 产品积分和试作，1:17:37–1:18:56 社区摸底，1:19:44 入职甜蜜期。",
+      "critical": true
+    },
+    {
+      "id": "C15",
+      "claim": "报告通读正片机器转写，但不声称逐音人工核验，片尾歌词不作证据。",
+      "report_anchor": "正片告别到约 1:22:32",
+      "support": "direct",
+      "source_ids": [
+        "S2",
+        "S4",
+        "S5"
+      ],
+      "evidence": "审计 2562 段、0 errors；01:22:32 最后告别，65秒空隙后01:23:37–01:24:19歌词残句；RSS 01:25:51。音频长于 ASR 终点。",
+      "critical": true
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "00:00 冷开场",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "report_anchor": "冷开场重复了后文观点"
+    },
+    {
+      "id": "U02",
+      "title": "00:45 开场：三天之内，鹅厂下线、Manus上线",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "report_anchor": "刚加入 Manus 的余一与主持人任鑫、徐文浩讨论",
+      "notes": "保留身份转变背景；X 粉丝增长和社交轶事为 supporting，不作影响力或因果证据。"
+    },
+    {
+      "id": "U03",
+      "title": "02:01 为什么离开腾讯研究院：受够了当旁观者",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "report_anchor": "从个人能力到团队合作"
+    },
+    {
+      "id": "U04",
+      "title": "05:59 只对一个agent说话：90%和100%的委托",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "report_anchor": "把协调工作也交出去"
+    },
+    {
+      "id": "U05",
+      "title": "11:16 剪辑交不出去，和“我用AI下限比较低”",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "report_anchor": "委托不等于降低底线"
+    },
+    {
+      "id": "U06",
+      "title": "15:18 为什么是Manus，去了做什么",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "report_anchor": "她选择 Manus，也包含非常具体的个人条件"
+    },
+    {
+      "id": "U07",
+      "title": "22:06 先开荒再降本：物业老板的巡店系统",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "report_anchor": "先确认能不能做成"
+    },
+    {
+      "id": "U08",
+      "title": "25:27 新入职后的个人感受",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "report_anchor": "团队的快，也包含人的条件"
+    },
+    {
+      "id": "U09",
+      "title": "30:07 AI native组织长什么样",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "report_anchor": "组织怎样让上下文流动"
+    },
+    {
+      "id": "U10",
+      "title": "38:59 关于agent的个人看法",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "report_anchor": "Agent 需要可工作的环境"
+    },
+    {
+      "id": "U11",
+      "title": "42:14 第一个aha是值机：一个主agent调度一群bot",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "report_anchor": "面试预约的案例进一步说明"
+    },
+    {
+      "id": "U12",
+      "title": "50:20 云电脑的使用与协作体验",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "report_anchor": "独立工作环境能减少桌面干扰"
+    },
+    {
+      "id": "U13",
+      "title": "54:08 只跟一个agent聊天，把harness全删掉",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "report_anchor": "旧规则该怎样删"
+    },
+    {
+      "id": "U14",
+      "title": "1:00:48 人类只剩对齐，提示词又回来了",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "report_anchor": "把好结果说清楚"
+    },
+    {
+      "id": "U15",
+      "title": "1:05:53 把自己的事接回来：用know who解决问题",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "report_anchor": "省下操作，保留学习"
+    },
+    {
+      "id": "U16",
+      "title": "1:10:07 AI时代还招不招实习生",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "report_anchor": "招聘：看做过什么，再观察怎样解决问题"
+    },
+    {
+      "id": "U17",
+      "title": "1:16:54 关于社区的个人想法",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "report_anchor": "社区：把用户实践翻译成产品问题"
+    },
+    {
+      "id": "U18",
+      "title": "1:22:17 片尾曲《靠松手》",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "report_anchor": "歌曲不作分析依据",
+      "notes": "保留官方片尾标注及告别时间说明；未辨识歌词不转录、不分析。"
+    }
+  ],
+  "limitations": [
+    "完整通读的是机器转写而非逐音人工核听；轻校读不作说话人分离，剩余不确定专名已标记，原 ASR 保留。",
+    "访谈是新入职者自述；第三方案例、满意度、响应速度与招聘试作均无长期独立测量。",
+    "90%/100% 委托、5% 帮助不当作测评；五人中三人仅交流样本；20 分钟为个例，1–2 天是试作时限。",
+    "没有完成删 Harness 对照；未运行本项目 A/B；相关建议标为待验证。",
+    "共享资料、统一入口、Bot 汇报和相互调用均不证明共享一个 session。",
+    "Manus 工程原文是相应时期经验；Wide Research 宣传性泛化不采用；Projects 配置更新说明存在表述歧义，实际依赖前需产品验证。",
+    "片尾音乐转写不完整且有65秒空隙；RSS长85分51秒，ASR末端84分19秒，对话告别82分32秒。"
+  ]
+}

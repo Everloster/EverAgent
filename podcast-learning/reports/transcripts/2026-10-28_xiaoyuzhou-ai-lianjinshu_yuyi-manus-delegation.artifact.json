@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "source_url": "https://www.ximalaya.com/sound/1028338072",
+  "source_host": "www.ximalaya.com",
+  "pipeline": "eacli podcast 远端静默 worker",
+  "service_version": "whisper.cpp-v1.9.1-sm120",
+  "language": "zh",
+  "audio_size_bytes": 908661062,
+  "audio_size_scope": "worker 下载或转码后的音频文件；不同于 RSS enclosure 压缩媒体大小",
+  "rss_duration_seconds": 5151,
+  "transcript_end_seconds": 5059,
+  "segments": 2562,
+  "downloaded_transcript_size": 126913,
+  "downloaded_transcript_sha256": "73c57e8d7c796febc6eef60d0a1722490bf2e3de1cb1a569c4a7905046031cf6",
+  "archived_transcript_size": 127314,
+  "archived_transcript_sha256": "1360ff8ee0b0d18c8beb419bf04663e26cd2811ad4230bab59f01502810a58be",
+  "archived_change": "仅增加来源与版权头部，ASR 正文和时间戳未改",
+  "audio_playback": false,
+  "interactive_browser": false,
+  "transfer": {
+    "atomic": true,
+    "original_size_and_sha256_verified": true
+  },
+  "audit": {
+    "ok": true,
+    "segments": 2562,
+    "duration_seconds": 5059,
+    "max_consecutive_identical": 3,
+    "warnings": [
+      "last segment starts after a 65s gap; inspect possible outro"
+    ],
+    "errors": []
+  },
+  "limitations": [
+    "片尾音乐存在 65 秒无转写间隔及不可辨识的歌词；对话至 01:22:32。",
+    "RSS 时长 01:25:51；ASR 末段到 01:24:19，不将其当作整段音频的无遗漏证明。"
+  ]
+}

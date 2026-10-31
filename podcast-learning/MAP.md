@@ -17,6 +17,10 @@
 | 哲学/人文访谈 | ✓ | **2026-09-11 长谈64 程乐松×脱不花（个体化评价/过度反思/道教三负责/从哲学史出发的中国哲学）**，与 philosophy-learning 程乐松专题联动 | 《留白》读后回填；《从哲学史出发的中国哲学》精读挂 A 类 |
 | 健康/营养科普 | ✓ | 2026-07-14 鹿哥Gustav 早餐的真相（观念考古 + 黎明现象，wiki: dawn-phenomenon）；**2026-07-13 面基仨账户·肌肉与睡眠两账（wiki: muscle-retirement-savings、sleep-cybernetics）** | 时间限制进食（TRE）/断食专题；睡眠专题可与 biology-learning 联动 |
 
+### 2026-10-31 AI 炼金术 × 余一
+
+- [余一聊 Manus：怎样把任务真正交给 Agent](reports/2026-10-28_xiaoyuzhou-ai-lianjinshu_yuyi-manus-delegation.md)：主 Agent 的协调与验收、组织上下文、旧 Harness 的重新验证，以及主动保留个人判断训练。清理规则的收益、自动验收可靠性与主控瓶颈仍待验证。
+
 ### 2026-10-27 AI 视频学习
 
 - [20VC × 纳德拉：企业智能](reports/2026-10-27_bilibili-nadella_enterprise-intelligence.md)：知识、反馈、模型选择、企业自有评价与 Agent 零信任治理。

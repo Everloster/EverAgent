@@ -1,10 +1,11 @@
 # AI炼金术 — 全量单集索引
 
-> 来源：官方 RSS（<https://www.ximalaya.com/album/74194808.xml>）｜ 最近拉取：2026-10-25 ｜ 总集数：145
+> 来源：官方 RSS（<https://www.ximalaya.com/album/74194808.xml>）｜ 最近拉取：2026-10-31 ｜ 总集数：146
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-10-28 | 1h25m | [找刚入职 Manus 的余一聊感受：好快乐啊，好快乐啊，好快乐啊](https://www.ximalaya.com/sound/1028338072)<!--g:xmly_track_1028338072--> | ✅ 已处理（2026-10-28 xiaoyuzhou-ai-lianjinshu_yuyi-manus-delegation） |
 | — | 2026-10-23 | 1h42m | [AI 卷工作，谁来听普通人心里话｜前小红书高管姚旭聊 NaukNauk](https://www.ximalaya.com/sound/1026998207)<!--g:xmly_track_1026998207--> | ✅ 已处理（2026-10-23 ximalaya-ailianjinshu_yaoxu-nauknauk-ai-companion） |
 | — | 2026-10-18 | 2h15m | [以后一定会更糟，所以现在先别慌 ｜和晓辉博士聊创业和 AI](https://www.ximalaya.com/sound/1025210406)<!--g:xmly_track_1025210406--> | ✅ 已处理（2026-10-18 ximalaya-ailianjinshu_xiaohui-renxin-ai-startup） |
 | — | 2026-10-14 | 1h30m | [AI 帮我干完了 20 年的活儿，我却感觉像坐牢](https://www.ximalaya.com/sound/1024259801)<!--g:xmly_track_1024259801--> | — |
