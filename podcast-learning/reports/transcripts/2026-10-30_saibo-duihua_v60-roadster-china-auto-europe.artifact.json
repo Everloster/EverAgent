@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/6ae3f61897726cd46759f169",
+  "source_host": "www.xiaoyuzhoufm.com",
+  "pipeline": "eacli podcast 远端静默 worker",
+  "service_version": "whisper.cpp-v1.9.1-sm120",
+  "language": "zh",
+  "labeled_duration": "1h29m（节目页与 RSS 标注）",
+  "rss_duration_seconds": null,
+  "transcript_end_seconds": 5379,
+  "segments": 2939,
+  "downloaded_transcript_size": 150420,
+  "downloaded_transcript_sha256": "6d78c4dc5c516c2baa944d77f9b1e467d6dae1f90e22cca45aafdc1f3380cbed",
+  "archived_transcript_size": 150420,
+  "archived_transcript_sha256": "6d78c4dc5c516c2baa944d77f9b1e467d6dae1f90e22cca45aafdc1f3380cbed",
+  "archived_change": "无：归档稿即原始拉回稿，未加头部、未改时间戳与正文",
+  "polished_transcript_size": 119311,
+  "polished_transcript_sha256": "a2990b2884cd8a62e0c981041874ac9f1451436c538e83af4dfb1d036f84b938",
+  "polished_scope": "全文轻校读（2939 段→1016 句，同音专名与数字订正，保留 [?] 语义），非精编摘要",
+  "audio_playback": false,
+  "interactive_browser": false,
+  "audio_size_bytes": null,
+  "audio_size_note": "本篇为合法 retry：原始下载回执未随交接保留，音频大小不可再证；未重跑下载/转写",
+  "transfer": {
+    "original_size_and_sha256_verified": true
+  },
+  "audit": {
+    "ok": true,
+    "segments": 2939,
+    "duration_seconds": 5379,
+    "max_consecutive_identical": 2,
+    "warnings": [],
+    "errors": []
+  },
+  "limitations": [
+    "RSS/节目页时长标注为 1h29m，未获得秒级一手值；转写末段至 01:29:39，与标注时长一致量级。",
+    "机器转写未经逐音核听；专名与数字订正依据官方 shownotes 与公开语境，存疑处保留 [?]。"
+  ],
+  "coordinator_edit": "主会话收敛校读说明：未听音频，专名修改不等于逐项官方核验；原始转写与校读正文未改。 独立初审后仅修正头部体量统计为 27859/26252，约 106.1%；校读正文未改。"
+}

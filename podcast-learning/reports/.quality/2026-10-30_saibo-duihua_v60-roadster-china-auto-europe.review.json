@@ -1,0 +1,627 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-30_saibo-duihua_v60-roadster-china-auto-europe.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "glm-5.3",
+        "harness": "codex",
+        "run_id": "saibo-v60-roadster-review-20261101-r2",
+        "independent_context": true,
+        "explicit_model_override": false
+      },
+      "scores": {
+        "evidence_fidelity": 96,
+        "request_coverage": 98,
+        "reasoning_quality": 95,
+        "readability": 95,
+        "limitations": 96
+      },
+      "score_reasons": {
+        "evidence_fidelity": "延续本独立会话初审，本轮对修改有界复验：核对报告、evidence、artifact 与 polished 的 r2 哈希；确认 25/60+ 无源旁证、S13/产量数字、无链接微博与十万辆旁证已删除，22 家保持节目口径并声明无名录核实。S6 与 S12 的支持范围、S3/artifact 哈希、5379 秒与 106.1% 统计均已同步；初审已实读的关键外链结论仍与正文表述一致。",
+        "request_coverage": "沿用本会话已完成的完整转写、官方 shownotes 14 章、polished 与 evidence 阅读，本轮只复查修订窗口；14 章来源地图仍全部匹配，主线、反方、具体例子和尾声上海/香港相反交通需求均保留。报告继续独立可读，没有因修订损失覆盖。",
+        "reasoning_quality": "技术三层改为 H3 后，整合难度明确归属一苒评价；SpaceX 关系改为嘉宾类比且声明无技术文件；巴黎“真去卖车”也明确归属一苒判断并保留其观察依据。未新增技术事实，演示、预订、量产与嘉宾观点的边界仍清晰。",
+        "readability": "三个真实 H3 小节解决 POD005，术语、正文结构、数字表、脚注与 Limitations 保持可独立阅读。本轮仅做文本与结构复验，未声称 UI 渲染检查。",
+        "limitations": "22 家无主办方名录、跌 20 多点/出口 50–60% 口径未明、澳洲第二分母不明、二手媒体与奖项边界、未核专名和未验证产品主张均保留。修改后的元数据与局限说明一致。"
+      },
+      "critical_claim_ids_checked": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08",
+        "U09",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14"
+      ],
+      "source_content_map": [
+        {
+          "id": "SM01-deposit-regulation",
+          "title": "00:43 定金、预订误解、驾照与监管边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S4",
+            "S5",
+            "S6"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01"
+          ],
+          "notes": "预订款、意向金、驾照倡议、7–9G 举例与监管边界保留。"
+        },
+        {
+          "id": "SM02-technology-and-xpeng",
+          "title": "05:48 主动地效、冷气推进、姿态控制、实用性与小鹏对比",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S2",
+            "S3",
+            "S9"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02"
+          ],
+          "notes": "三种技术层次改为 H3，SpaceX 关系归属嘉宾类比，小鹏对比保留。"
+        },
+        {
+          "id": "SM03-why-now",
+          "title": "13:03 特斯拉此刻发布秀的四种嘉宾解释",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S2",
+            "S3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03"
+          ],
+          "notes": "四种动机仍为嘉宾假说，SpaceX 状态未当事实。"
+        },
+        {
+          "id": "SM04-production-versions",
+          "title": "21:14 9 年间隔、2028 计划与四版本成熟度",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S4"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04"
+          ],
+          "notes": "9 年发布间隔与交付延迟仍区分，四版本边界保留。"
+        },
+        {
+          "id": "SM05-china-spectacle",
+          "title": "23:45 中国车企是否会跟进奇观营销",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S2",
+            "S3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U05"
+          ],
+          "notes": "文化、价值观、回报率与奇观/务实并存反方保留。"
+        },
+        {
+          "id": "SM06-goals",
+          "title": "29:55 特斯拉与中国车企终极目标及路径差异",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S2",
+            "S3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06"
+          ],
+          "notes": "Robotaxi、小巧克力、渐进/脉冲与多企业集合边界保留。"
+        },
+        {
+          "id": "SM07-paris-macron",
+          "title": "35:11 22 家口径、巴黎车展投入与马克龙观察",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S4",
+            "S7",
+            "S8"
+          ],
+          "matched_coverage_unit_ids": [
+            "U07"
+          ],
+          "notes": "22 家保持节目口径；无名录核实，马克龙正反解读保留。"
+        },
+        {
+          "id": "SM08-european-reception",
+          "title": "43:09 欧洲中产接受度、阶层割裂与反方",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S2",
+            "S3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U08"
+          ],
+          "notes": "拐点、表弟个例、六品牌批评、阶层与专业媒体观察均保留为观察。"
+        },
+        {
+          "id": "SM09-tape-price-small-car",
+          "title": "51:02 皮尺、竞品研究与 6–15 万元国内价带",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S2",
+            "S3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U09"
+          ],
+          "notes": "6–15 万元仍明确为中国国内售价，皮尺与 copy 边界保留。"
+        },
+        {
+          "id": "SM10-localization",
+          "title": "55:44 马甲、专有车型、香港/印尼反例与本地团队",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S2",
+            "S3",
+            "S12"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10"
+          ],
+          "notes": "本地团队、语言、展台、香港七座、印尼三排与 Shark 奖项边界保留。"
+        },
+        {
+          "id": "SM11-fuel-luxury",
+          "title": "68:50 燃油车机械表化假说与本土玩家反方",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S2",
+            "S3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11"
+          ],
+          "notes": "机械表类比、支付碎片化、合资史、中立市场与价带重心保留。"
+        },
+        {
+          "id": "SM12-leijun",
+          "title": "74:39 雷军近距离观察",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S2",
+            "S3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U12"
+          ],
+          "notes": "仍按单人观察和推测处理。"
+        },
+        {
+          "id": "SM13-xiaomi-huawei",
+          "title": "76:55 小米与华为的入场方式及竞争烈度",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S2",
+            "S3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U13"
+          ],
+          "notes": "两种入场方式、互相羡慕与竞争两面性保留。"
+        },
+        {
+          "id": "SM14-information-literacy",
+          "title": "82:19 信息甄别方法论与尾声真实购车决策",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S2",
+            "S3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U14"
+          ],
+          "notes": "方法论与上海/香港相反交通需求完整保留。"
+        }
+      ],
+      "source_ids_checked": [
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8",
+        "S9",
+        "S12"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6",
+        "R7",
+        "R8",
+        "R9"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "r2 开始时七项预期 SHA-256 全部匹配；report_quality review-prompt 亦与实际报告和 evidence 哈希一致。延续本独立会话初审，本轮对修改有界复验，不重新声称全期独立重读，也不新增外围研究。逐项核对：①正文/evidence/脚注均已删除 25 个品牌与 60+ 旁证，S8 仅保留新华社标题且明确不能核实 22 家；②S13、cnmarket 脚注与外加产量数字已删除，跌 20 多点/出口 50–60% 仅作口径未明口播；③无链接微博与在澳十万辆旁证已删除，S6 标明新浪转载车友指南且与本初审全文实读一致，S12 仅支持奖项且不证明销量第二；④技术三层为真实 H3，工程难度、SpaceX 联系与卖车判断均归属嘉宾，无新增技术文件事实；⑤duration_seconds=5379，polished 头部为 27859/26252=106.1%，实测 27859 个汉字与 119311 字节，S3 与 artifact 哈希一致；⑥new-revision 已保留 r1 history，当前为 r2。沿用原始转写审计收据：2939 段、末段 01:29:39、ok=true、无警告错误；本轮未重跑音频。受影响结构检查：podcast-learning 单篇 audit_reports ERROR 0/WARN 0；root audit_reports 仅剩未 finalize 前预期的 META009，POD005 已消失。主线和 14 章覆盖未因修订受损。最终 report_quality check（未 finalize）实际结果：decision=pass、weighted score=96.05、ERROR 0、WARN 0；本轮检查范围限于指定修订、相关脚注/表格/evidence、polished 头部与 artifact 统计。"
+    }
+  ],
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "glm-5.3",
+            "harness": "codex",
+            "run_id": "saibo-v60-roadster-review-20261101-r1",
+            "independent_context": true,
+            "explicit_model_override": false
+          },
+          "scores": {
+            "evidence_fidelity": 87,
+            "request_coverage": 98,
+            "reasoning_quality": 91,
+            "readability": 88,
+            "limitations": 95
+          },
+          "score_reasons": {
+            "evidence_fidelity": "核心口播、官方 shownotes、Tesla 美国预订页、巴黎车展官方页和主要媒体源均实际复核，正文对嘉宾观点、演示、预订、量产和统计口径的边界处理谨慎。但 evidence 中 polished 来源哈希仍是主会话编辑前的旧值；C9 的“25 个中国品牌”只有无 URL 的转述定位；中汽协来源被误写为“转载国家统计局数据”且精确数字未从可读正文中复核；若干部落把嘉宾判断写成确定性表述。上述问题需要修订，但不推翻正文的主线事实。",
+            "request_coverage": "独立来源地图覆盖官方 14 章及尾声购车决策；主动地效/冷气推进、9 年口径、22/25 统计边界、马克龙正反解读、欧洲阶层与反方、6–15 万元国内价带、香港七座与印尼三排反例、本地团队/语言/车型策略、上海与香港相反交通需求均进入正文且可独立阅读。未发现核心来源单元遗漏。",
+            "reasoning_quality": "报告总体保留了嘉宾论证、反方和具体案例，并把动机、观察、传闻、预测与事实分层。需小幅收紧若干表述：工程“确实难”、SpaceX 技术“同源”、中国车企“这次是真去卖车”等应更明确归属为嘉宾判断或类比，避免由未核公司关系推演出确定性结论。",
+            "readability": "正文结构、术语解释、数字表、金句和 Limitations 清晰，本地 Markdown 链接存在，脚注可追踪。但全文只有 H2，没有可识别 H3 主线小节；结构审计复现 POD005（standard/deep 播客至少 3 个主线小节）。本审只做文本与结构检查，未声称完成 UI 渲染验收。",
+            "limitations": "Limitations 对嘉宾观点、欧洲观察个例、统计分母、未核专名、产品主张和转写边界覆盖充分，并明确 SpaceX 相关口播只保留未核状态。扣分点是元数据与证据账本未随 polished 编辑同步，且部分外部旁证仍停在摘要级。"
+          },
+          "critical_claim_ids_checked": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07",
+            "U08",
+            "U09",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14"
+          ],
+          "source_content_map": [
+            {
+              "id": "SM01-deposit-regulation",
+              "title": "00:43 定金、预订误解、驾照与监管边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S4",
+                "S5",
+                "S6"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01"
+              ],
+              "notes": "报告覆盖 5 万美元预订款非整车价、中国媒体意向金口径、驾照分级倡议、7–9G 举例与机器人演示边界。"
+            },
+            {
+              "id": "SM02-technology-and-xpeng",
+              "title": "05:48 主动地效、冷气推进、姿态控制、实用性与小鹏对比",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3",
+                "S9"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "报告区分吸附/主动地效、冷气推进与航天式姿态控制，保留直线助推、落地主秀、小鹏“飞”与特斯拉“跳”的差异。"
+            },
+            {
+              "id": "SM03-why-now",
+              "title": "13:03 特斯拉此刻发布秀的四种嘉宾解释",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "发布会叙事、注意力转移、品牌联结、招聘/潜在合并均保留为嘉宾假说，SpaceX 状态未当事实。"
+            },
+            {
+              "id": "SM04-production-versions",
+              "title": "21:14 9 年间隔、2028 计划与四版本成熟度",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "报告明确 2017 发布到 2026 重新亮相的 9 年间隔不等于承诺交付后延迟 9 年，并区分四版本与量产/原型/概念车。"
+            },
+            {
+              "id": "SM05-china-spectacle",
+              "title": "23:45 中国车企是否会跟进奇观营销",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "文化/监管、物理极限价值观、EP9 与理想回报率对照及奇观向往与务实生活并存的反方均保留。"
+            },
+            {
+              "id": "SM06-goals",
+              "title": "29:55 特斯拉与中国车企终极目标及路径差异",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "Robotaxi 主线、Roadster 小巧克力比喻、宏图编年、渐进/脉冲路径与“中国车企是多企业集合”均覆盖。"
+            },
+            {
+              "id": "SM07-paris-macron",
+              "title": "35:11 22 家口径、巴黎车展投入与马克龙观察",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S4",
+                "S7",
+                "S8"
+              ],
+              "matched_coverage_unit_ids": [
+                "U07"
+              ],
+              "notes": "现场站位、晚宴传闻、主持人反方、大牌缺席原因、试车厂与产品经理投入均覆盖；“25 个品牌”旁证的可追溯性见 unsupported_claims。"
+            },
+            {
+              "id": "SM08-european-reception",
+              "title": "43:09 欧洲中产接受度、阶层割裂与反方",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08"
+              ],
+              "notes": "拐点论、表弟个例、六品牌同质化批评、精英/大众媒体分层、专业媒体兴趣和三波冲击史均保留并标为观察或判断。"
+            },
+            {
+              "id": "SM09-tape-price-small-car",
+              "title": "51:02 皮尺、竞品研究与 6–15 万元国内价带",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U09"
+              ],
+              "notes": "报告保留现场未亲见皮尺但视频可见的区分、测量与 copy 的边界，并明确 6–15 万元是中国国内售价而非欧洲售价。"
+            },
+            {
+              "id": "SM10-localization",
+              "title": "55:44 马甲、专有车型、香港/印尼反例与本地团队",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3",
+                "S12"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10"
+              ],
+              "notes": "MG/领克/极氪/Smart/零跑/奇瑞策略、学丰田、be Paris、英文与混合团队、香港七座、印尼 4.2 米三排和 Shark 案例均覆盖。"
+            },
+            {
+              "id": "SM11-fuel-luxury",
+              "title": "68:50 燃油车机械表化假说与本土玩家反方",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U11"
+              ],
+              "notes": "石英危机类比、保时捷/法拉利口播、支付系统碎片化、合资史、中立市场与 6–10 万元重心均保留。"
+            },
+            {
+              "id": "SM12-leijun",
+              "title": "74:39 雷军近距离观察",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U12"
+              ],
+              "notes": "共情、压力与第二次直播邀请均按单人观察和推测处理，未升级为事实。"
+            },
+            {
+              "id": "SM13-xiaomi-huawei",
+              "title": "76:55 小米与华为的入场方式及竞争烈度",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U13"
+              ],
+              "notes": "烫咖啡/分层咖啡、跨界案例、小米整车与华为供应链切入、互相羡慕及创新/拥挤两面性均覆盖。"
+            },
+            {
+              "id": "SM14-information-literacy",
+              "title": "82:19 信息甄别方法论与尾声真实购车决策",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U14"
+              ],
+              "notes": "滤情绪、价格结构、线下试驾、需求优先、看车评人常开车完整保留；上海与香港相反交通需求未被压缩成泛泛购车清单。"
+            }
+          ],
+          "source_ids_checked": [
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6",
+            "S7",
+            "S8",
+            "S9",
+            "S12",
+            "S13"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6",
+            "R7",
+            "R8",
+            "R9"
+          ],
+          "unsupported_claims": [
+            "C9"
+          ],
+          "missing_requirements": [
+            "R3",
+            "R4",
+            "R8"
+          ],
+          "hard_failures": [
+            "critical_claim_unsupported"
+          ],
+          "notes": "开始复核时三项快照 SHA-256 均匹配：报告 811dda1616cb376b060e87e30a876b31c7ae41669428e378e3f5089213b6fd94，证据 41e08bbb6d13de259eb6bc571b45205a627faee81e5ebd7722d76b0ea13a8ed1，polished 0025eef9f5d9c231ec3461023f6076cf719b1bc7631ff52f766c322634e6a7fe。复核顺序为先读完整 2939 段转写与官方 shownotes 14 章，建立来源地图，再读报告、polished 与 evidence。audit_transcript 结果 ok=true：2939 段、5379 秒、无警告/错误、转写 SHA-256 6d78c4dc5c516c2baa944d77f9b1e467d6dae1f90e22cca45aafdc1f3380cbed；因此报告 duration_seconds=5378 应改为 5379 或说明口径。外部核验经 eacli Token Plan：Tesla 美国官网实读 5,000 美元信用卡 + 10 天内 45,000 美元电汇且到账才生效；Tesla 中国预订页仅返回标题；新浪全文支持 33.2 万元意向金、Performance 版与退款表述但自述来源为车友指南；巴黎官方页支持 2026-10-12 至 18 与 Porte de Versailles、未见参展数；新华社/腾讯标题无数字，检索未定位到报告所称网易/新民侨梁 25 个品牌来源；汽车之家标题支持小鹏 2026 量产口径；autoweekly 支持 Shark 6 获 Wheels/CarsGuide 年度皮卡；中汽协转载页未见国家统计局和精确数字。单篇 podcast-learning audit_reports 为 ERROR 0；root scripts/audit_reports.py 独立复现 META009 与 POD005，META009 在未 finalize 前属预期。missing_requirements 对应的具体修复：R4/C9 的“25 个中国品牌”缺可点击来源，需删除或补证并核明统计范围；R3/POD005 需把主线层次改成真实 H3 或等效小节；R8 需把 evidence S3 polished SHA-256 更新为当前值并重跑；R4 的中汽协/国家统计局归属与精确数字需改用可核来源或删除。同步 polished 头部汉字数为 27859；“多条微博媒体账号”“比亚迪在澳十万辆”等旁证若保留须给 URL 或删除；避免用“确实难”“SpaceX 同源”“这次是真去卖车”等无归属确定性措辞。最终 report_quality check（未 finalize）实际结果：decision=revise、weighted score=90.95、ERROR 4、WARN 0，阻断为 C9 unsupported、hard failure、R3/R4/R8 missing、evidence_fidelity=87 低于 90；本结果不表示报告整体不可读或来源主线失实。不要把本审记录解释为 SpaceX 相关口播已被证伪，它们仍是未核状态。"
+        }
+      ],
+      "decision": {}
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 96.05,
+    "evaluated_on": "2026-11-01",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "f37e669f47191599ffc613aa724b1dc6cb4b5c2c1343bb2f8884cc0587d09eea",
+    "evidence_sha256": "259e7ea98b723338027f989f9b67fb1a9e000c3b655cc4f65892d32c220d8c32"
+  },
+  "coordinator_checks": [
+    {
+      "reviewer": {
+        "model": "gpt-6-astra",
+        "harness": "codex"
+      },
+      "report_sha256": "e30a0986131cc3da7f05c222f38d21c21b5ac8c238635a1d942e3c3ad3187f49",
+      "scope": "修订后主会话验收：延续此前完整转写阅读，仅核 r2 修改；独立复验返回文件与本机快照一致，r1 history 未改；headless Markdown 渲染检查 1100/390 宽度无页面横向溢出、目录和脚注目标完整并可跳转；此前已查看手机首屏与桌面内容地图。正文及附属文件无 U+FFFD 与私有路径、任务标识。未听音频，不改独立审阅分数。",
+      "checked_on": "2026-11-01"
+    }
+  ]
+}

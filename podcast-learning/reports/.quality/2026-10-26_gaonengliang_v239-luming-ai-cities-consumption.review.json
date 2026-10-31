@@ -1,0 +1,916 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-26_gaonengliang_v239-luming-ai-cities-consumption.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "glm-5.3",
+        "harness": "codex",
+        "run_id": "review-luming-v239-r2-20261101-bounded",
+        "independent_context": true,
+        "explicit_model_override": false
+      },
+      "scores": {
+        "evidence_fidelity": 95,
+        "request_coverage": 96,
+        "reasoning_quality": 95,
+        "readability": 94,
+        "limitations": 95
+      },
+      "score_reasons": {
+        "evidence_fidelity": "延续本独立会话初审的全来源阅读与外查，本轮仅复核 RF01–RF03 及关联账本。社零表述已统一为按官方口径限定转写稿，保留法人主要经营活动地与适用统计制度边界；polished 01:38:44 否定结构与原始转写一致，SHA、字节和统计同步。",
+        "request_coverage": "20 个官方章节、既有反方与尾声保留；初审 SM23 的大学—产业互动已由新小节、C20 和 SC21 完整覆盖，且明确专业匹配前提，不夸大为建大学必然振兴城市。",
+        "reasoning_quality": "宏观集聚与个人选城、全国平均与个体违法、嘉宾分析与已证因果、说明性假设与统计事实的边界保持清楚；新增机制说明了人才、实习、产业匹配和反向集聚的相互条件。",
+        "readability": "新增小节衔接自然，报告仍可独立阅读；内容地图、叙事、数字表、事实核验与 limitations 分层清楚。本轮未做浏览器或宽窄屏 UI 渲染，不据此宣称渲染验证。",
+        "limitations": "未听音频、未逐项外查宏观数字、说明性假设与口播口径的边界均保留；本轮修订说明也明确仅作文本对照。初审三项缺陷已消除，无未解决实质问题。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17",
+        "C18",
+        "C19",
+        "C20"
+      ],
+      "coverage_unit_ids_checked": [
+        "SC01",
+        "SC02",
+        "SC03",
+        "SC04",
+        "SC05",
+        "SC06",
+        "SC07",
+        "SC08",
+        "SC09",
+        "SC10",
+        "SC11",
+        "SC12",
+        "SC13",
+        "SC14",
+        "SC15",
+        "SC16",
+        "SC17",
+        "SC18",
+        "SC19",
+        "SC20",
+        "SC21",
+        "SC22",
+        "SC23"
+      ],
+      "source_content_map": [
+        {
+          "id": "SM01",
+          "title": "03:24 离开一线城市又逃回北上广：周期冲击下大城市提供就业、服务与多元消费",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC01"
+          ],
+          "notes": "报告保留周期解释、回流现象与大城市多重机会，没有把短期波动写成趋势终点。"
+        },
+        {
+          "id": "SM02",
+          "title": "07:47 房价高未见得是坏事：区分结果与原因，并核对社零口径与城市消费解释",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S06"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC02"
+          ],
+          "notes": "正文覆盖收入、区位、房价与消费关系及社零四种解释；官方口径为含餐饮、不含住宿，法人在地不等于所有网购归注册地。"
+        },
+        {
+          "id": "SM03",
+          "title": "16:04 城市人口承载力是变量：技术、基础设施与治理改变约束",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC03"
+          ],
+          "notes": "承载力章节保留供水、交通、土地和环境等约束可变的核心机制。"
+        },
+        {
+          "id": "SM04",
+          "title": "17:45 人口集中与用脚投票：人民选择与集聚机制",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC04"
+          ],
+          "notes": "章节主线的国际经验、用脚投票和集聚机制已覆盖。"
+        },
+        {
+          "id": "SM05",
+          "title": "28:49 总量差距拉开而人均发展差距缩小：迁移与均衡的衡量口径",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC05"
+          ],
+          "notes": "报告区分经济总量与人均发展，保留迁移带来的收敛机制。"
+        },
+        {
+          "id": "SM06",
+          "title": "34:00 大城市房价如演唱会门票：区位稀缺、前排座位与公共住房讨论",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC06"
+          ],
+          "notes": "报告保留价格分区类比及住房供给、公共资源配置含义。"
+        },
+        {
+          "id": "SM07",
+          "title": "37:07 人口向大城市集中不等于每个人都该留在大城市",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC07"
+          ],
+          "notes": "宏观规律与个人职业、收入、家庭约束分层清楚，未把集聚趋势写成买房或选城指令。"
+        },
+        {
+          "id": "SM08",
+          "title": "38:56 大国执念：规模优势、统一市场与治理错配",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC08"
+          ],
+          "notes": "规模收益、地区分工、统一市场与中央地方治理张力均进入正文。"
+        },
+        {
+          "id": "SM09",
+          "title": "49:20 AI 时代加速而非减少集聚：创新集中、就业结构与空间后果",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC09"
+          ],
+          "notes": "AI 与集聚、创新集中度和就业影响作为嘉宾分析呈现，未升级为已证因果。"
+        },
+        {
+          "id": "SM10",
+          "title": "56:20 每个地方最大化产出不等于全国产出最大化：地方竞争与囚徒困境",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC10"
+          ],
+          "notes": "县域竞争、税收与考核激励、压价及全局福利损失的反方机制保留完整。"
+        },
+        {
+          "id": "SM11",
+          "title": "01:09:55 长时间加班牺牲国内消费者福利并补贴国外消费者",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC11"
+          ],
+          "notes": "48.6 小时仅按全国平均口播口径登记，个体违法边界和说明性价格推演未混淆。"
+        },
+        {
+          "id": "SM12",
+          "title": "01:28:30 产业政策关键是谁制定、怎么实施：层级、法治与激励",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC12"
+          ],
+          "notes": "正文保留日本教训、政策光谱、中央地方分工与反方，不把产业政策简化为有无问题。"
+        },
+        {
+          "id": "SM13",
+          "title": "01:32:33 合肥成功的归因：政府投资、时机、产业基础与幸存者偏差",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC13"
+          ],
+          "notes": "报告保留多因归因和不可简单复制的边界。"
+        },
+        {
+          "id": "SM14",
+          "title": "01:34:08 服务消费不是没有需求：供给管制、场景、收入与时间约束",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC14"
+          ],
+          "notes": "正文区分收入、供给、场景和闲暇时间，未把嘉宾判断写成统计结论。"
+        },
+        {
+          "id": "SM15",
+          "title": "01:41:36 生孩子 16 年后才成为劳动力：短期解法依赖现有劳动力流动",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC15"
+          ],
+          "notes": "人口措施的时间滞后与空间流动方案均已覆盖，收入例子保留说明性假设。"
+        },
+        {
+          "id": "SM16",
+          "title": "01:42:49 AI 时代教育的关键不是读多久而是学什么",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC16"
+          ],
+          "notes": "正文正确保留“不是不要记忆背诵”的边界；精校稿该句存在需修订的反义转写。"
+        },
+        {
+          "id": "SM17",
+          "title": "01:44:01 AI 改变经济学研究对象与方法：数据、平台与空间经济",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC17"
+          ],
+          "notes": "报告覆盖数据可得性、平台经济与研究对象变化，并保留方法局限。"
+        },
+        {
+          "id": "SM18",
+          "title": "01:48:58 经济学不能用方法剪裁问题：发表激励、现实问题与公众沟通",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC18"
+          ],
+          "notes": "克鲁格曼与 Glaeser 案例、学术发表激励和现实研究张力均保留。"
+        },
+        {
+          "id": "SM19",
+          "title": "02:06:18 学术独立与深度参与政策实践不矛盾",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC19"
+          ],
+          "notes": "报告保留距离、参与、分歧和公租房研究例子，身份与政策参与均按口播口径处理。"
+        },
+        {
+          "id": "SM20",
+          "title": "02:11:27 依恋家乡、回老家买房养老与个人选择：尾声的马斯克建议与数据摩擦",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC20",
+            "SC21"
+          ],
+          "notes": "情感依恋、老家房产、医疗养老可及性、返乡投资、普遍原理、马斯克反方和数据跨部门摩擦均有正文落点。"
+        },
+        {
+          "id": "SM21",
+          "title": "Shownotes 栏目、嘉宾身份、制作团队与单集元信息",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S03",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC22"
+          ],
+          "notes": "概览与来源区保留节目、嘉宾和发布信息，身份未外推。"
+        },
+        {
+          "id": "SM22",
+          "title": "单集页评论与推广内容",
+          "importance": "supporting",
+          "assessment": "missing",
+          "source_ids": [
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC23"
+          ],
+          "notes": "该内容与访谈论证无关，报告按个人学习边界省略；不构成本篇遗漏。"
+        },
+        {
+          "id": "SM23",
+          "title": "章节间补充：城市兴衰、收缩地区机会与大学—产业互动（19:09–26:28）",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "SC21"
+          ],
+          "notes": "城市衰落例外、景德镇转型、收缩地区出路和 25:52–26:28 大学—产业相互作用均已覆盖；新增小节保留专业匹配前提与反向集聚条件。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07"
+      ],
+      "requirement_ids_checked": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "required_fixes": [],
+      "resolved_fixes": [
+        {
+          "id": "RF01",
+          "result": "报告事实核验表、R05 与 C03 均改为按官方口径限定转写稿；未听音频不判断嘉宾口误，并保留法人主要经营活动地与适用统计制度边界。"
+        },
+        {
+          "id": "RF02",
+          "result": "polished 约 01:38:44 恢复为“我不是说不要记忆、不要背诵”，头部明示文本对照修订；150369 字节、43,919 汉字、53,322 Unicode 字符与 SHA 均同步，fill_report_stats --dry-run 一致。"
+        },
+        {
+          "id": "RF03",
+          "result": "新增“大学怎样与本地产业相互吸引”小节，覆盖情感链接、实习、专业与本地产业匹配前提及企业反向因大学集聚落地；C20 与 SC21 同步且不猜测公司名。"
+        }
+      ],
+      "notes": "延续本独立会话初审，本轮对修改有界复验，不称重新独立全读。审前七份指定快照 SHA 均匹配，review-prompt SHA-256 为 4e1bbc7e…e23d；r1 history 完整保留，初审 source_content_map 沿用并仅把 SM23 更新为 covered，地图规范哈希 f84b517de63cdf811c560d16d846030b71a86a51109246d471dd5ad75f8fa900。对照修订前快照逐项 diff：报告只改统计、RF01 事实核验表和 RF03 新小节；polished 只加头部修订说明并恢复 01:38:44 否定结构；evidence/artifact 变更限于 R05、C03、S02/S05、C20、SC21、修订记录与 polished 统计。原始转写 SHA 未变，沿用本会话实际 audit_transcript 收据：ok=true、5010 段、8450 秒、无 warnings/errors；polished 当前为 150369 字节、43,919 汉字、53,322 Unicode 字符、SHA 6ed77693…02b2，fill_report_stats --dry-run 报告一致。未新增外围研究，未打开 UI，未做渲染验证。完成后运行 report_quality.py check（未 finalize）：decision=pass、score=95.05、ERROR 0、WARN 0、exit 0。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 95.05,
+    "evaluated_on": "2026-11-01",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "3486e2c9d4cf6b36729f52f12df91ccbe5696210fa83b6b1ae25dee8846966fa",
+    "evidence_sha256": "f32483dd39df2ad0987f3d193ddfef0f0bdd78d73dd0a63a21848abd6bd2ed3b"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "glm-5.3",
+            "harness": "codex",
+            "run_id": "review-luming-v239-r1-20261101",
+            "independent_context": true,
+            "explicit_model_override": false
+          },
+          "scores": {
+            "evidence_fidelity": 90,
+            "request_coverage": 94,
+            "reasoning_quality": 93,
+            "readability": 92,
+            "limitations": 90
+          },
+          "score_reasons": {
+            "evidence_fidelity": "逐项核验 C01–C19：官方 shownotes、原始转写、精校稿与报告定位相符；国家统计局第 5/9 问和 Harvard Glaeser 页面经 eacli Token Plan 核验。扣分点是报告与 R05 在未听音频条件下把口径修正写成“纠正口播/嘉宾口语不精确”，与 Limitations 的证据边界不完全一致。",
+            "request_coverage": "20 个官方章节均留痕并映射正文，前半程主线与后 20 分钟的政策独立性、返乡养老、数据跨部门摩擦、反方和具体案例均覆盖；16:44–18:56 与 01:18:05 两处漏段已恢复。SM04 中 25:52–26:28 大学—本地产业配套子点未显式展开，故不给满分。",
+            "reasoning_quality": "宏观集聚与个人选城、全国平均工时与个体违法、嘉宾分析与已证因果、说明性假设数与统计事实的边界总体清楚；反方、比较案例和政策机制保留完整。主要问题是“纠正口播”的任务表述越过可证明的音频事实，另有精校稿一处反义转写需修订。",
+            "readability": "报告可独立阅读：速览、内容地图、章节叙事、关键数字表、事实核验和 limitations 分层清楚；本地链接存在，官方错位时间点以实际内容分组并在精校稿头部说明。未做浏览器或宽窄屏 UI 渲染，Markdown 中文锚点检查的 MISS 判定为脚本未 normalize 的误报。",
+            "limitations": "未核宏观数字、未逐音校听、评论推广省略、口播口径与说明性假设均有登记；两处外链核验范围也如实说明。扣分点在于社零核验表与 R05 的措辞把转写稿问题断言为口播问题，且精校稿 01:38:44 的反义句会削弱读者对校读层的信任。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07",
+            "C08",
+            "C09",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "C16",
+            "C17",
+            "C18",
+            "C19"
+          ],
+          "coverage_unit_ids_checked": [
+            "SC01",
+            "SC02",
+            "SC03",
+            "SC04",
+            "SC05",
+            "SC06",
+            "SC07",
+            "SC08",
+            "SC09",
+            "SC10",
+            "SC11",
+            "SC12",
+            "SC13",
+            "SC14",
+            "SC15",
+            "SC16",
+            "SC17",
+            "SC18",
+            "SC19",
+            "SC20",
+            "SC21",
+            "SC22",
+            "SC23"
+          ],
+          "source_content_map": [
+            {
+              "id": "SM01",
+              "title": "03:24 离开一线城市又逃回北上广：周期冲击下大城市提供就业、服务与多元消费",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC01"
+              ],
+              "notes": "报告保留周期解释、回流现象与大城市多重机会，没有把短期波动写成趋势终点。"
+            },
+            {
+              "id": "SM02",
+              "title": "07:47 房价高未见得是坏事：区分结果与原因，并核对社零口径与城市消费解释",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC02"
+              ],
+              "notes": "正文覆盖收入、区位、房价与消费关系及社零四种解释；官方口径为含餐饮、不含住宿，法人在地不等于所有网购归注册地。"
+            },
+            {
+              "id": "SM03",
+              "title": "16:04 城市人口承载力是变量：技术、基础设施与治理改变约束",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC03"
+              ],
+              "notes": "承载力章节保留供水、交通、土地和环境等约束可变的核心机制。"
+            },
+            {
+              "id": "SM04",
+              "title": "17:45 人口集中与用脚投票：人民选择与集聚机制",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02",
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC04"
+              ],
+              "notes": "章节主线的国际经验、用脚投票和集聚机制已覆盖。"
+            },
+            {
+              "id": "SM05",
+              "title": "28:49 总量差距拉开而人均发展差距缩小：迁移与均衡的衡量口径",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC05"
+              ],
+              "notes": "报告区分经济总量与人均发展，保留迁移带来的收敛机制。"
+            },
+            {
+              "id": "SM06",
+              "title": "34:00 大城市房价如演唱会门票：区位稀缺、前排座位与公共住房讨论",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC06"
+              ],
+              "notes": "报告保留价格分区类比及住房供给、公共资源配置含义。"
+            },
+            {
+              "id": "SM07",
+              "title": "37:07 人口向大城市集中不等于每个人都该留在大城市",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC07"
+              ],
+              "notes": "宏观规律与个人职业、收入、家庭约束分层清楚，未把集聚趋势写成买房或选城指令。"
+            },
+            {
+              "id": "SM08",
+              "title": "38:56 大国执念：规模优势、统一市场与治理错配",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC08"
+              ],
+              "notes": "规模收益、地区分工、统一市场与中央地方治理张力均进入正文。"
+            },
+            {
+              "id": "SM09",
+              "title": "49:20 AI 时代加速而非减少集聚：创新集中、就业结构与空间后果",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC09"
+              ],
+              "notes": "AI 与集聚、创新集中度和就业影响作为嘉宾分析呈现，未升级为已证因果。"
+            },
+            {
+              "id": "SM10",
+              "title": "56:20 每个地方最大化产出不等于全国产出最大化：地方竞争与囚徒困境",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC10"
+              ],
+              "notes": "县域竞争、税收与考核激励、压价及全局福利损失的反方机制保留完整。"
+            },
+            {
+              "id": "SM11",
+              "title": "01:09:55 长时间加班牺牲国内消费者福利并补贴国外消费者",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC11"
+              ],
+              "notes": "48.6 小时仅按全国平均口播口径登记，个体违法边界和说明性价格推演未混淆。"
+            },
+            {
+              "id": "SM12",
+              "title": "01:28:30 产业政策关键是谁制定、怎么实施：层级、法治与激励",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC12"
+              ],
+              "notes": "正文保留日本教训、政策光谱、中央地方分工与反方，不把产业政策简化为有无问题。"
+            },
+            {
+              "id": "SM13",
+              "title": "01:32:33 合肥成功的归因：政府投资、时机、产业基础与幸存者偏差",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC13"
+              ],
+              "notes": "报告保留多因归因和不可简单复制的边界。"
+            },
+            {
+              "id": "SM14",
+              "title": "01:34:08 服务消费不是没有需求：供给管制、场景、收入与时间约束",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC14"
+              ],
+              "notes": "正文区分收入、供给、场景和闲暇时间，未把嘉宾判断写成统计结论。"
+            },
+            {
+              "id": "SM15",
+              "title": "01:41:36 生孩子 16 年后才成为劳动力：短期解法依赖现有劳动力流动",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC15"
+              ],
+              "notes": "人口措施的时间滞后与空间流动方案均已覆盖，收入例子保留说明性假设。"
+            },
+            {
+              "id": "SM16",
+              "title": "01:42:49 AI 时代教育的关键不是读多久而是学什么",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC16"
+              ],
+              "notes": "正文正确保留“不是不要记忆背诵”的边界；精校稿该句存在需修订的反义转写。"
+            },
+            {
+              "id": "SM17",
+              "title": "01:44:01 AI 改变经济学研究对象与方法：数据、平台与空间经济",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC17"
+              ],
+              "notes": "报告覆盖数据可得性、平台经济与研究对象变化，并保留方法局限。"
+            },
+            {
+              "id": "SM18",
+              "title": "01:48:58 经济学不能用方法剪裁问题：发表激励、现实问题与公众沟通",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC18"
+              ],
+              "notes": "克鲁格曼与 Glaeser 案例、学术发表激励和现实研究张力均保留。"
+            },
+            {
+              "id": "SM19",
+              "title": "02:06:18 学术独立与深度参与政策实践不矛盾",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC19"
+              ],
+              "notes": "报告保留距离、参与、分歧和公租房研究例子，身份与政策参与均按口播口径处理。"
+            },
+            {
+              "id": "SM20",
+              "title": "02:11:27 依恋家乡、回老家买房养老与个人选择：尾声的马斯克建议与数据摩擦",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC20",
+                "SC21"
+              ],
+              "notes": "情感依恋、老家房产、医疗养老可及性、返乡投资、普遍原理、马斯克反方和数据跨部门摩擦均有正文落点。"
+            },
+            {
+              "id": "SM21",
+              "title": "Shownotes 栏目、嘉宾身份、制作团队与单集元信息",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S03",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC22"
+              ],
+              "notes": "概览与来源区保留节目、嘉宾和发布信息，身份未外推。"
+            },
+            {
+              "id": "SM22",
+              "title": "单集页评论与推广内容",
+              "importance": "supporting",
+              "assessment": "missing",
+              "source_ids": [
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC23"
+              ],
+              "notes": "该内容与访谈论证无关，报告按个人学习边界省略；不构成本篇遗漏。"
+            },
+            {
+              "id": "SM23",
+              "title": "章节间补充：城市兴衰、收缩地区机会与大学—产业互动（19:09–26:28）",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S01",
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "SC21"
+              ],
+              "notes": "城市衰落例外、景德镇转型和收缩地区出路已覆盖；25:52–26:28 大学形成情感链接、实习机会并反作用于本地产业配套的子点未在正文显式展开。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06",
+            "S07"
+          ],
+          "requirement_ids_checked": [
+            "R01",
+            "R02",
+            "R03",
+            "R04",
+            "R05",
+            "R06"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "required_fixes": [
+            {
+              "id": "RF01",
+              "severity": "must_fix",
+              "location": "报告“事实核验”表与 evidence R05",
+              "issue": "在未听音频的条件下写成“纠正口播”“嘉宾按销售地为不精确口语”，与 Limitations 的不可判定边界冲突。",
+              "fix": "统一改为“按官方口径修正/限定转写稿表述”，不要断言嘉宾口播发生口误；保留经营地/适用统计制度边界。"
+            },
+            {
+              "id": "RF02",
+              "severity": "must_fix",
+              "location": "polished 01:38:44 段",
+              "issue": "“我不是说要记忆、不要背诵”与原始转写“我不是说不要记忆，不要背诵”语义相反；报告正文虽正确，但精校稿会误导后续引用。",
+              "fix": "按原始转写恢复否定结构，并在需要时保留 [?] 或校读说明，不得静默改写。"
+            },
+            {
+              "id": "RF03",
+              "severity": "should_fix",
+              "location": "SM23 对应正文",
+              "issue": "25:52–26:28 大学通过情感链接、实习与本地产业配套吸引年轻人，产业又因大学聚集反向强化的子点未显式展开。",
+              "fix": "在集聚或城市兴衰段落补一句以上，说明该机制及其依赖本地产业匹配。"
+            }
+          ],
+          "notes": "审前核对指定快照：报告 639364c5…217da、evidence 1e786b97…f2cb、polished eec602b0…ccf7 均匹配，无 wrong_target_snapshot。按来源优先完整读取官方 shownotes 与 5010 段原始转写，独立建立 20 个官方章节地图后再读 polished、报告和 evidence；完整读取 polished、报告正文和 evidence；来源地图规范哈希 097f2907371470308d6612493ed167edcbeb302e9888757603401b5becf8a457。audit_transcript.py --json 实际收据：ok=true，segments=5010，duration_seconds=8450，transcript sha256=1307508e…a041，无 warnings/errors，时间戳单调性通过机器检查。经 eacli Token Plan 的 web.read 核验国家统计局第 5/9 问与 Harvard Glaeser 页面。报告本地链接存在；未做浏览器或宽窄屏渲染，不能宣称渲染验证。主要修订项见 required_fixes；未发现硬失败。完成后运行 report_quality.py check（未 finalize）：decision=blocked、score=91.7、ERROR 1（REV033：SM23 未完整覆盖）、WARN 0、exit 1。本 notes 的总分为审稿判断，未运行 finalize。"
+        }
+      ],
+      "decision": {}
+    }
+  ],
+  "coordinator_checks": [
+    {
+      "reviewer": {
+        "model": "gpt-6-astra",
+        "harness": "codex"
+      },
+      "report_sha256": "bb662f63bb15921265c529566cdc3a45194e948e82bf8ff36b5f1eb09f563665",
+      "checked_on": "2026-11-01",
+      "scope": "修订后主会话验收：延续此前完整转写阅读，对照 25–27 分钟与 98–99 分钟原始转写落实 RF01–RF03；独立复验返回文件与本机快照一致，r1 history 未改。headless Markdown 渲染 1100/390 宽度无页面横向溢出、目录目标完整并可跳转，实际查看修订后的手机首屏；此前已查看桌面内容地图与窄屏数字表。转写/校读/证据/回执大小与 SHA 一致。未听音频，不改独立复核分数。",
+      "review_record_clarification": "当前复核的 SM16 notes 沿用了初审“精校稿该句存在需修订的反义转写”的旧说明；实际问题已修复，当前 resolved_fixes.RF02 与本会话对原始转写的复验共同确认。C03 的未听音频边界在初审前已正确，本轮修改的是事实核验表与 R05。"
+    }
+  ]
+}

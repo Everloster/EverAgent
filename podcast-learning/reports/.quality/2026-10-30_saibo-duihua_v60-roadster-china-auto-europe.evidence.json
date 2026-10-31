@@ -1,0 +1,530 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-30_saibo-duihua_v60-roadster-china-auto-europe.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-01",
+  "generator": {
+    "model": "glm-5.3",
+    "harness": "claude-code",
+    "run_id": "saibo-v60-roadster-retry-20261101",
+    "explicit_model_override": false,
+    "override_reason": "本篇为同一 Task 的合法 retry：前任执行模型 minimax-m3.1-flash（claude-code，原生派发 effort=max）因用量上限（MiniMax 429）中止，其完成的转写、shownotes 存档与全文轻校读稿被完整保留并沿用；本报告正文、事实核验与证据账本由当前运行模型 glm-5.3 撰写（agent_identity.py 取证：session-bound、current_model_confirmed=true），并复核前任校读稿。原生派发 effort=max；agent_identity 未暴露运行时 effort 字段，故只记录派发值，不把配置当运行时证明。"
+  },
+  "task": {
+    "summary": "对赛博对话 vol.60（特斯拉 Roadster 飞行秀与中国车企欧洲业务）完成独立可读的深度报告：接续前任已完成的完整转写与全文轻校读，补齐报告正文、数字核验与 evidence；保留飞天秀技术与营销、量产约束、巴黎车展、品牌与本地化、燃油车奢侈化、小米华为、信息甄别等全部主线，后半程不得省略。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "沿用 eacli podcast 远端静默 worker 的既有转写（2939 段，SHA-256 6d78c4dc…cbed），不重跑下载/转写、不本地 ASR、不 UI/播放器；保存最小公开 artifact 回执。"
+      },
+      {
+        "id": "R2",
+        "text": "以官方 shownotes 全部 14 个精选时间戳章节逐章建立 source_coverage；全文轻校读覆盖全程，不截断、不摘要、不复制 raw 改名。"
+      },
+      {
+        "id": "R3",
+        "text": "报告开篇用速览点题，含内容地图、Limitations、思考与追问；正文按节目主线展开论证、案例、反方与边界，独立可读，不堆工作日志。"
+      },
+      {
+        "id": "R4",
+        "text": "嘉宾对马斯克动机的解释按观点处理，不写成已证事实；飞行演示、预订、量产三件事分开；技术参数与 22 家车企、33 万定金等数字逐一核验来源并标级。"
+      },
+      {
+        "id": "R5",
+        "text": "关键修正：6–15 万元是中国国内售价带，不是欧洲售价；凤凰网/每日经济新闻/新华社转载是媒体不是官方一手；未读全文的检索结果只记摘要级；Tesla 美国官网预订页实读 5,000+45,000 美元为预订款非整车价。"
+      },
+      {
+        "id": "R6",
+        "text": "metadata：report-v2、tier=important、report_depth=deep、reader_contract=standalone、status=in_progress；数字由 fill_report_stats 实测，不手填。"
+      },
+      {
+        "id": "R7",
+        "text": "不改 README/MAP/wiki/公共索引/策略/其他报告，不自填独立 review（review.json 留空模板），不提交不推送。"
+      },
+      {
+        "id": "R8",
+        "text": "运行单篇 audit_transcript、fill_report_stats、领域单篇 audit 与 report_quality check（预期 needs_review，只剩独立 review）；公开产物不含设备名、私有路径、任务/会话标识。"
+      },
+      {
+        "id": "R9",
+        "text": "按主会话正文通读验收意见集中修正：①SpaceX 上市/收购 X/SolarCity 等口播只记未核，不以公开常识断言、不写可以确认；②删除 ACEA 约 12% 与中欧最低价格两条节目外摘要级旁证及脚注，追问不再预设；③媒体引用补可点击 URL 与检索摘要级标注（sina/腾讯转载/汽车之家/autoweekly/中汽协资讯）；④速览三条改为嘉宾认为/判断/建议并保留反方；⑤标题用「## 速览：」不用 emoji，[[报告名]]改标准 Markdown 链接；⑥拆分过长段落、减少主观赞词，保持 14 章覆盖、关键例子与反方。正文与 evidence 同步，仍不填独立 review、不提交。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "kind": "primary",
+      "title": "赛博对话 vol.60｜揭秘马斯克做飞行汽车的真正目的，中国车企会跟进吗？（小宇宙单集页）",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/6ae3f61897726cd46759f169",
+      "accessed_on": "2026-11-01"
+    },
+    {
+      "id": "S2",
+      "kind": "local",
+      "title": "完整机器转写：2939 段，末段 01:29:39",
+      "locator": "podcast-learning/reports/transcripts/2026-10-30_saibo-duihua_v60-roadster-china-auto-europe.transcript.txt",
+      "accessed_on": "2026-11-01",
+      "sha256": "6d78c4dc5c516c2baa944d77f9b1e467d6dae1f90e22cca45aafdc1f3380cbed"
+    },
+    {
+      "id": "S3",
+      "kind": "local",
+      "title": "全文轻校读稿（2939 段→1016 句，前任完成、本任复核）",
+      "locator": "podcast-learning/reports/transcripts/2026-10-30_saibo-duihua_v60-roadster-china-auto-europe.polished.txt",
+      "accessed_on": "2026-11-01",
+      "sha256": "a2990b2884cd8a62e0c981041874ac9f1451436c538e83af4dfb1d036f84b938"
+    },
+    {
+      "id": "S4",
+      "kind": "local",
+      "title": "官方 shownotes 存档（RSS description 一手，14 章节）",
+      "locator": "podcast-learning/reports/transcripts/2026-10-30_saibo-duihua_v60-roadster-china-auto-europe.shownotes.md",
+      "accessed_on": "2026-11-01",
+      "sha256": "dd4ab062aed5368e0e2cf56cdf6cb355a0076f4711cab00c4867a2cb12c1b280"
+    },
+    {
+      "id": "S5",
+      "kind": "official",
+      "title": "特斯拉美国官网 Roadster 预订页（eacli web.read 实读正文）",
+      "locator": "https://www.tesla.com/roadster/reserve",
+      "accessed_on": "2026-11-01"
+    },
+    {
+      "id": "S6",
+      "kind": "secondary",
+      "title": "新浪转载车友指南：Roadster 中国预订意向金与退款规则（二手媒体，独立复核全文实读）",
+      "locator": "https://www.sina.cn/gc/article/nivtchz6970002.html",
+      "accessed_on": "2026-11-01"
+    },
+    {
+      "id": "S7",
+      "kind": "official",
+      "title": "巴黎车展官方站（2026-10-12 至 10-18，Paris Expo Porte de Versailles；摘要级）",
+      "locator": "https://mondial.paris/en",
+      "accessed_on": "2026-11-01"
+    },
+    {
+      "id": "S8",
+      "kind": "secondary",
+      "title": "新华社视频（腾讯转载）：中国品牌参展规模创新高（标题无数量，不能验证 22 家）",
+      "locator": "https://view.inews.qq.com/a/20261013V06PPX00",
+      "accessed_on": "2026-11-01"
+    },
+    {
+      "id": "S9",
+      "kind": "secondary",
+      "title": "何小鹏关于小鹏汇天分体式飞行汽车 2026 年量产的公开表态报道（汽车之家/财联社 2025-03；摘要级）",
+      "locator": "https://m.autohome.com.cn/news/202503/1304530.html",
+      "accessed_on": "2026-11-01"
+    },
+    {
+      "id": "S12",
+      "kind": "secondary",
+      "title": "autoweekly：BYD Shark 6 获 Wheels/CarsGuide 年度皮卡奖（二手媒体，独立复核全文实读；不支持销量排名）",
+      "locator": "https://www.autoweekly.com.au/archives/24846",
+      "accessed_on": "2026-11-01"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "开场口播的『定金 33 万/三十多万』对应媒体口径的特斯拉中国官网 Performance 版预订意向金 33.2 万元（签署正式购车协议前可全额退）；美国官网预订页实读为 5,000 美元信用卡 + 10 天内 45,000 美元电汇，合计 5 万美元是预订款而非整车价。",
+      "report_anchor": "33万定金开场：一场预订口径的误会",
+      "support": "direct",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S5",
+        "S6"
+      ],
+      "evidence": "转写 00:51–01:10（阿飞误读 5 万美金为整车价后被纠正）；S5 官网原文；S6 为媒体转述，中国官网预订页本次仅返回标题壳，金额未获官方一手确认。",
+      "critical": true
+    },
+    {
+      "id": "C2",
+      "claim": "飞天秀的技术含金量在『整合控制』：主动地效（零速/缓速产生下压力，区别于 F1 需 200–250 km/h）与航天式姿态控制是两部分技术；嘉宾以 7–9G 落地过载论证『为什么 demo 里坐机器人』属举例推演，非实测参数。",
+      "report_anchor": "拆开飞天秀：两件难事和一个比喻",
+      "support": "direct",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "evidence": "转写 05:55–09:44（整合难度、两部分技术、材料强度）与 04:55–05:14（G 值举例、抗荷服）；宝马概念车 55 度坡、1970 年代先例为口播未核。",
+      "critical": true
+    },
+    {
+      "id": "C3",
+      "claim": "两位嘉宾均判断飞天秀与实用场景无关（『像景点过山车』），但主动地效对量产车低速下压力有真实价值（『更夸张的尾翼』）；Griffin 扣篮比喻表达『创造人类没做过的事就拿走所有头条』。",
+      "report_anchor": "拆开飞天秀：两件难事和一个比喻",
+      "support": "direct",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "evidence": "转写 09:52–10:30（网友场景逐条否决、扣篮比喻）、11:31–12:14（主动地效实用、直线助推、落下来是营销神迹/奇观式营销）。",
+      "critical": true
+    },
+    {
+      "id": "C4",
+      "claim": "特斯拉与小鹏汇天路线不同：小鹏分体式『陆地航母』按媒体口径计划 2026 年量产、真人在飞；特斯拉是数秒可控的『跳』。",
+      "report_anchor": "拆开飞天秀：两件难事和一个比喻",
+      "support": "direct",
+      "source_ids": [
+        "S2",
+        "S9"
+      ],
+      "evidence": "转写 10:36–13:03（三条区别、Superman/布雷克格里芬、蜻蜓/蚂蚱）；量产时间为媒体报道的 CEO 表态。",
+      "critical": false
+    },
+    {
+      "id": "C5",
+      "claim": "嘉宾对『为何此刻』给出四种动机解释（发布会叙事、注意力转移、航天×汽车品牌联结、招工程师/为潜在合并铺路），全部是观点[推测]；其中『SpaceX 已上市』『SpaceX 收购 X』『SolarCity 被特斯拉收购』『两公司可能合并』等口播均未经核验且节目内未给出处，报告只记未核状态[待验证]。",
+      "report_anchor": "为什么是此刻：动机的四种解释",
+      "support": "inference",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "evidence": "转写 13:03–21:13（24 分钟发布会、乔布斯桥段、打校长比喻、Esprit 相似性、老编辑名言、合并推演）；全部口播按未证实处理，不引节目外信息替任何一方下结论。",
+      "critical": true
+    },
+    {
+      "id": "C6",
+      "claim": "二代 Roadster 以四个版本（basic/performance/thruster/rocket）混装概念车、工程原型车与量产车边界；『跳票 9 年』= 2017 年 11 月首发至 2026 年 10 月重新亮相的间隔，不等于承诺交付后推迟 9 年；2028 年为节目转述的计划，未读发布会原文；四版本也按嘉宾拆解记录。",
+      "report_anchor": "跳票九年与四版本混装",
+      "support": "direct",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S4",
+        "S6"
+      ],
+      "evidence": "转写 21:13–23:44（四版本拆解、2017 现场回忆、Franz/Esprit 故事按嘉宾回忆处理）。",
+      "critical": true
+    },
+    {
+      "id": "C7",
+      "claim": "中国车企『造奇观会跟进、造这种奇观不会』：论据为务实文化与监管、马斯克式『对标物理极限』价值观的差异、以及 EP9 对比理想『彩电冰箱大沙发』的回报率对照（嘉宾观点，非财务核算）。",
+      "report_anchor": "中国车企会跟进奇观营销吗",
+      "support": "direct",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "evidence": "转写 23:44–29:54（美国怪车文化、硬扣可量产场景、EP9/理想对照、泰坦尼克闲笔）。",
+      "critical": true
+    },
+    {
+      "id": "C8",
+      "claim": "一苒判断特斯拉真正主线是 Robotaxi/RoboCab 商业可靠性（Roadster 2 是『豪华套餐后的小巧克力』）；中美目标殊途同归但路径不同（渐进 vs 脉冲）；『中国车企』是多企业集合不能当一家公司谈。",
+      "report_anchor": "终极目标之差与Robotaxi考题",
+      "support": "direct",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "evidence": "转写 29:54–35:10（Robotaxi 考题、宏图编年为口播、百团大战与 3 万到 300 万多样性、LeBron/Curry）。",
+      "critical": true
+    },
+    {
+      "id": "C9",
+      "claim": "巴黎车展 22 家为节目口径；车展官方期 2026-10-12 至 10-18；本文未获得可核对 22 家及其统计范围的主办方名录。马克龙站位与晚宴未邀请中国车企均为嘉宾观察与『听说』转述，节目内即有『私下中法合作』反方。",
+      "report_anchor": "巴黎车展22家的密度与角落里的马克龙",
+      "support": "direct",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S4",
+        "S7",
+        "S8"
+      ],
+      "evidence": "转写 35:10–43:08（7 点入场/晚 12 点、AITO 背板、晚宴传闻、主持人反方、三大 A 展分工、试车厂/产品经理投入、曼谷车展类比）。",
+      "critical": true
+    },
+    {
+      "id": "C10",
+      "claim": "『欧洲中产拐点论』（2025 年底起中间阶层开始接受中国车）是一苒个人观察，无样本与统计；表弟涛涛 Q7 14 万欧 vs 极氪 9X 12.3 万欧起为现场个例；阿飞给出『性价比无法否认→两派分化』与法国阶层割裂结构；节目本身未提供任何注册量或调查数据。",
+      "report_anchor": "欧洲中产接受中国车了吗",
+      "support": "direct",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "evidence": "转写 43:08–51:00（拐点叙述、表弟个例、六品牌同质 SUV 批评、法语搜索关键词、极氪/奔驰人流、三波冲击史）；按验收意见未添加节目外摘要级统计旁证。",
+      "critical": true
+    },
+    {
+      "id": "C11",
+      "claim": "皮尺量车未在现场亲见、竞品测量属正常研究；『国内售价 6–15 万元人民币区间的车在欧洲卖最好』是嘉宾经验口径，6–15 万元是中国国内售价带而非欧洲售价，无统计来源。",
+      "report_anchor": "皮尺、6到15万元价带与高尔夫是大车",
+      "support": "direct",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "evidence": "转写 51:00–55:42（皮尺小视频、信息距离、媒体日制度、6–15 万原话、欧洲地理/基建/精神消费、高尔夫是大车/婚车、S 级卖 C 级逻辑、D 级车 1000 辆口径）。",
+      "critical": true
+    },
+    {
+      "id": "C12",
+      "claim": "本地化主线：MG/领克/极氪/Smart/零跑-Stellantis（转写专名存疑，按公开报道为零跑与 Stellantis 合作）/奇瑞多马甲；学丰田做专有车型；香港七座刚需与印尼 4.2 米三排座为『小车市场也要本地化』的反例；比亚迪 Shark 为本地化正面案例（『澳洲第二』口径不明，媒体旁证仅支持年度皮卡奖，不能证明销量第二）。",
+      "report_anchor": "马甲、七座刚需与本地化的手艺",
+      "support": "direct",
+      "source_ids": [
+        "S2",
+        "S3",
+        "S12"
+      ],
+      "evidence": "转写 55:42–68:48（马甲谱系、工程师优势、be Paris、家庭结构、能源费口径、MPV/A0 消费升级、香港交通署专家、印尼丰田、Shark/日本小车、跌 20%/出口涨 50–60% 口径不明、海外三五年分胜负）。",
+      "critical": true
+    },
+    {
+      "id": "C13",
+      "claim": "阿飞的燃油车机械表化假说（石英危机→奢侈品路线；保时捷回归燃油、法拉利 12C 假手动挡）针对部分细分；一苒以支付系统碎片化与合资历史反驳『赢家通吃』，最大市场本土玩家不会被完全踢掉，竞争关键在中立市场与 6–10 万元国内价车型。",
+      "report_anchor": "燃油车会变成机械表吗",
+      "support": "direct",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "evidence": "转写 68:48–74:37（石英危机类比、加特林弓箭手、Mission S[?]/12C 口播、图景分层、Gcash/泰国/瑞典支付、合资史、中立世界、6–15 万/6–10 万重申、『美国人做不出来』）。",
+      "critical": true
+    },
+    {
+      "id": "C14",
+      "claim": "雷军共情能力观察为阿飞单人近距离个例；小米（跨行整车闭环）与华为（供应链切入）不是同一物种且『互相羡慕』为嘉宾推测；产业融合既带来创新也加剧竞争烈度。",
+      "report_anchor": "雷军的共情与小米华为的两种入场",
+      "support": "direct",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "evidence": "转写 74:37–82:17（直播经历、共情/内耗、烫咖啡/分层咖啡、跨界三案例、不是一个物种、180 度转身）。",
+      "critical": false
+    },
+    {
+      "id": "C15",
+      "claim": "信息甄别清单：滤情绪（最具传播力但最不可信）、价格与价值基本挂钩非绝对定律、回归试乘试驾与静观其变、先想需求再问好坏、看车评人常开什么车（可能的选择偏差）；节目以一苒香港不买车 vs 上海郊区适合长续航电车、阿飞『使用与玩分开』（问界 M9/小米 YU7 + GR Yaris/帕梅 GTS）两个真实决策收尾。",
+      "report_anchor": "信息甄别：情绪、价格与线下",
+      "support": "direct",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "evidence": "转写 82:17–01:29:39（两个建议、辩证法与线下、车评人观察、一苒车型清单与成本测算、阿飞两车两玩具）。",
+      "critical": true
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "00:43 定金33万，会飞的Roadster你冲动了吗（含驾照/监管边界讨论）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S5",
+        "S6"
+      ],
+      "report_anchor": "33万定金开场：一场预订口径的误会",
+      "notes": "预订款口径、中美两路径核验、驾照分级倡议、7–9G 举例边界均覆盖。"
+    },
+    {
+      "id": "U02",
+      "title": "05:48 抛开营销噱头，飞天秀的技术含金量有多高（含小鹏对比）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S3",
+        "S9"
+      ],
+      "report_anchor": "拆开飞天秀：两件难事和一个比喻",
+      "notes": "整合控制、主动地效/姿态控制两分法、实用性判断、Griffin 比喻、小鹏汇天三条区别；谢苗闲笔与蟑螂车等闲聊按最低限度处理。"
+    },
+    {
+      "id": "U03",
+      "title": "13:03 特斯拉为何在此刻上演惊天一跳",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "report_anchor": "为什么是此刻：动机的四种解释",
+      "notes": "四种动机全部标注为嘉宾观点；未核验口播（SpaceX 上市/收购 X/合并）集中披露并降级处理。"
+    },
+    {
+      "id": "U04",
+      "title": "21:14 跳票9年之后，2028年量产靠谱吗（含 2017 现场回忆与四版本拆解）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S6"
+      ],
+      "report_anchor": "跳票九年与四版本混装",
+      "notes": "概念车/原型车/量产车边界模糊化、9 年口径精确化、Franz/Esprit 按嘉宾回忆保守处理。"
+    },
+    {
+      "id": "U05",
+      "title": "23:45 中国车企会跟进奇观式营销吗（含 EP9/理想对照、泰坦尼克闲笔）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "report_anchor": "中国车企会跟进奇观营销吗",
+      "notes": "文化论/价值观论/回报率论三层论证与边界；泰坦尼克段作为奇观消费隐喻保留一句。"
+    },
+    {
+      "id": "U06",
+      "title": "29:55 特斯拉与中国车企，终极目标有何不同",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "report_anchor": "终极目标之差与Robotaxi考题",
+      "notes": "Robotaxi 主线、宏图编年（口播）、渐进 vs 脉冲、多企业集合边界、中美对照。"
+    },
+    {
+      "id": "U07",
+      "title": "35:11 22家中国车企扎堆巴黎，马克龙为何绕着走",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S7",
+        "S8"
+      ],
+      "report_anchor": "巴黎车展22家的密度与角落里的马克龙",
+      "notes": "现场观察与晚宴转述均标个例/传闻，主持人反方并陈；大牌缺席 ROI 与三大 A 展分工；出海投入证据（试驾会/产品经理驻留）。"
+    },
+    {
+      "id": "U08",
+      "title": "43:09 欧洲中产开始真心接受中国车了",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "report_anchor": "欧洲中产接受中国车了吗",
+      "notes": "拐点论标个人观察；表弟个例、两派分化、阶层割裂、专业媒体兴趣、三波冲击史全部保留并标级；未添加节目外统计旁证。"
+    },
+    {
+      "id": "U09",
+      "title": "51:02 欧洲人拿皮尺量中国车，真的假的",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "report_anchor": "皮尺、6到15万元价带与高尔夫是大车",
+      "notes": "皮尺非亲见、竞品研究正当性、6–15 万元国内价带关键修正、欧洲小车三重解释、高尔夫/婚车文化对照、大车做品牌逻辑。"
+    },
+    {
+      "id": "U10",
+      "title": "55:44 中国车出海，先解决马甲问题（本地化与市场结构）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S3",
+        "S12"
+      ],
+      "report_anchor": "马甲、七座刚需与本地化的手艺",
+      "notes": "马甲谱系、学丰田方法论、展台语言/团队、中国大车偏好的结构解释、香港七座/印尼三排反例、Shark 案例、国内/出口口径不明数字披露。"
+    },
+    {
+      "id": "U11",
+      "title": "68:50 燃油车的尽头，是机械表一样的奢侈品",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "report_anchor": "燃油车会变成机械表吗",
+      "notes": "机械表类比标部分细分假说；保时捷/法拉利细节标口播；一苒支付系统+合资史反方完整保留；中立市场与 6–10 万重申。"
+    },
+    {
+      "id": "U12",
+      "title": "74:39 近距离观察雷军，有什么意外发现",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "report_anchor": "雷军的共情与小米华为的两种入场",
+      "notes": "按单人观察个例处理，标 [推测]。"
+    },
+    {
+      "id": "U13",
+      "title": "76:55 小米华为入局，给中国车圈带来了什么",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "report_anchor": "雷军的共情与小米华为的两种入场",
+      "notes": "烫咖啡/分层咖啡类比、跨界案例、两物种拆解、互相羡慕标推测、竞争烈度两面性。"
+    },
+    {
+      "id": "U14",
+      "title": "82:19–末尾 信息爆炸时代，如何甄别车圈消息的真假（含两位嘉宾真实购车决策）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "report_anchor": "信息甄别：情绪、价格与线下",
+      "notes": "方法论清单全部保留；一苒香港/上海两种结论与阿飞使用与玩分开的具体例子按要求完整保留，未压缩为空泛清单。"
+    }
+  ],
+  "limitations": [
+    "嘉宾对马斯克动机的四类解释均为观点；『SpaceX 已上市』『SpaceX 收购 X』『SolarCity 被特斯拉收购』『两公司可能合并』等口播未经核验，报告只记未核状态，不作为事实使用。",
+    "飞行演示（机器人、数秒）、预订款（美国 5 万美元官网实读；中国 33.2 万元为媒体口径）、2028 年量产（预计）三件事严格分开，不互相推导。",
+    "『欧洲中产拐点论』为嘉宾个人观察，无样本量与调查数据；表弟观感、展台人流、外媒状态均为个例或印象；按验收意见未添加节目外摘要级统计旁证。",
+    "口径不明数字集中披露：22 家（节目，未获主办方名录核实）；国内跌 20 多个点/出口涨 50–60%（口播）未交代统计范围且未获独立核实；比亚迪澳洲第二分母不明；多处金额未标币种。",
+    "转写未逐音核听；宝马 VDS[?]、保时捷 Mission S[?]、问界 M6[?]、比亚迪日本海塔[?]、法语 conquette[?] 等专名保留 [?]，不靠语境猜成事实。",
+    "本篇为合法 retry：原始下载回执（音频大小）未随交接保留，artifact 中如实标注 null；转写与全文轻校读沿用前任 minimax-m3.1-flash 成果，正文与核验由 glm-5.3 完成。",
+    "未做任何产品主张的独立验证（主动地效价值、法拉利假手动挡细节、Shark 市场地位等均为嘉宾表述加媒体旁证）。"
+  ],
+  "editorial_checks": [
+    {
+      "editor": {
+        "model": "gpt-6-astra",
+        "harness": "codex"
+      },
+      "scope": "独立复核前的主会话编辑：2028 年与四版本标为节目转述，修正未核验元信息与 6–15 万元国内价带；机器人演示也有外部安全约束；校读说明不再声称逐项官方核验。未改原始转写与校读正文。",
+      "report_before_sha256": "cf5775e506b4719b8960db86cdddc9436b55b8852e8d5501d2ce3fc8bc0b76d8",
+      "report_after_sha256": "811dda1616cb376b060e87e30a876b31c7ae41669428e378e3f5089213b6fd94",
+      "polished_before_sha256": "304e4a98fcc01a3cd0015a6d550c32253fe6406f48f61182fbf09440bdfcc8f0",
+      "polished_after_sha256": "0025eef9f5d9c231ec3461023f6076cf719b1bc7631ff52f766c322634e6a7fe"
+    },
+    {
+      "editor": {
+        "model": "gpt-6-astra",
+        "harness": "codex"
+      },
+      "revision_round": 2,
+      "scope": "按独立初审集中修订：删除无出处的 25/60+ 品牌、误归属中汽协与国家统计局的产量数字、无链接的微博及十万辆旁证；新浪标二手转载，Shark 奖项不证明销量；三层技术讨论改 H3，收紧观点归属。校读仅头部统计更新，时长采用转写末段，S3 与 artifact 同步。",
+      "report_before_sha256": "811dda1616cb376b060e87e30a876b31c7ae41669428e378e3f5089213b6fd94",
+      "report_after_sha256": "e30a0986131cc3da7f05c222f38d21c21b5ac8c238635a1d942e3c3ad3187f49",
+      "polished_before_sha256": "0025eef9f5d9c231ec3461023f6076cf719b1bc7631ff52f766c322634e6a7fe",
+      "polished_after_sha256": "a2990b2884cd8a62e0c981041874ac9f1451436c538e83af4dfb1d036f84b938"
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/6adf44a3c96c8942ec128914",
+  "source_host": "www.xiaoyuzhoufm.com",
+  "pipeline": "eacli podcast 远端静默 worker",
+  "service_version": "whisper.cpp-v1.9.1-sm120",
+  "language": "zh",
+  "audio_size_bytes": 1623851086,
+  "audio_size_scope": "worker 下载或转码后的音频文件；不同于 RSS enclosure 压缩媒体大小",
+  "rss_duration_seconds": 8457,
+  "episode_page_duration": "141分钟",
+  "transcript_end_seconds": 8450,
+  "segments": 5010,
+  "downloaded_transcript_size": 247740,
+  "downloaded_transcript_sha256": "1307508e3beb566fc84122ee8458700125bf4761063b784c7c32d0a6ddcea041",
+  "archived_transcript_size": 247740,
+  "archived_transcript_sha256": "1307508e3beb566fc84122ee8458700125bf4761063b784c7c32d0a6ddcea041",
+  "archived_change": "ASR 原文直接归档，未追加头部、未改写正文与时间戳",
+  "audio_playback": false,
+  "interactive_browser": false,
+  "transfer": {
+    "atomic": true,
+    "original_size_and_sha256_verified": true
+  },
+  "audit": {
+    "ok": true,
+    "segments": 5010,
+    "duration_seconds": 8450,
+    "max_consecutive_identical": 2,
+    "warnings": [],
+    "errors": []
+  },
+  "limitations": [
+    "单集页标注时长 141 分钟，转写末段到 140:50，末段为告别语；转写与校读均未做逐音人工听校，不能据此断言音频尾部无任何内容缺失。",
+    "转写为机器 ASR 产物，无说话人分离；校读稿的说话人标注只在出现明确自称或明确称呼处给出，其余保持中性。",
+    "本集节目页评论区与推广信息未纳入证据。"
+  ],
+  "post_processing": {
+    "proofread_rounds": [
+      {
+        "date": "2026-11-01",
+        "model": "minimax（上一轮作者，因用量上限中断）",
+        "scope": "全文轻校读初版：合并短行、补标点、同音字修正、中性说话人标注"
+      },
+      {
+        "date": "2026-11-01",
+        "model": "glm-5.3（本报告作者，原任务合法 retry）",
+        "scope": "复核补漏：补回初版漏收的 16:44–18:56 整段（首尔/东京/伦敦都市圈、用脚投票与集聚机制）与 01:18:05 段尾约 80 字；章节标题改为按实际内容分组；修正若干说话人角色标注与「常识→常数」等误识别；清理残留标记。未重新下载音频、未重新转写。"
+      },
+      {
+        "date": "2026-11-01",
+        "model": "gpt-6-astra",
+        "scope": "根据独立复核，对照原始转写恢复约 01:38:44 处否定结构漏字，并在校读头部说明；不改其他校读正文，不听音频。"
+      }
+    ],
+    "raw_transcript_untouched": true
+  },
+  "polished_transcript_size": 150369,
+  "polished_transcript_sha256": "6ed77693015598d79bd5b5431da034e5991f17e6f83524e4ae79f7f0906902b2"
+}
