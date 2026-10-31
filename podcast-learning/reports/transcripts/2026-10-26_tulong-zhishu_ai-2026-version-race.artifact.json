@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/6adf8a8dc96c8942ec12aa7d",
+  "source_host": "www.xiaoyuzhoufm.com",
+  "show": "屠龙之术",
+  "episode": "不是，怎么又换版本了？---狂飙中的AI 2026",
+  "published_on": "2026-10-26",
+  "status": "succeeded",
+  "silent": true,
+  "interactive_browser": false,
+  "audio_playback": false,
+  "audio_size_bytes": 1456246888,
+  "transcription": {
+    "channel": "eacli podcast 远端静默 worker",
+    "language": "zh",
+    "segments": 4018,
+    "duration_seconds": 7582,
+    "transcript_size_bytes": 189931,
+    "transcript_sha256": "adddcc865b1a346c93bc040d80ae2f93f4178c60ee55e3274de0f3688077266b",
+    "engine": "whisper.cpp large-v3（CUDA，Silero VAD）",
+    "service_version": "whisper.cpp-v1.9.1-sm120",
+    "repetition_guard": {
+      "passed": true,
+      "max_consecutive_identical": 3
+    }
+  },
+  "transfer": {
+    "mode": "single-file pull",
+    "atomic": true,
+    "verified_sha256": true,
+    "raw_transfer_sha256": "adddcc865b1a346c93bc040d80ae2f93f4178c60ee55e3274de0f3688077266b",
+    "local_path": "podcast-learning/reports/transcripts/2026-10-26_tulong-zhishu_ai-2026-version-race.transcript.txt",
+    "local_final_sha256_after_header": "8c5d4e39e6096f3012052f6da1f31ee1126e2f7b4f86f7620d822f8ee4f422fc"
+  },
+  "audit": {
+    "script": "podcast-learning/scripts/audit_transcript.py",
+    "ok": true,
+    "lines": 4018,
+    "segments": 4018,
+    "size_bytes": 189931,
+    "duration_seconds": 7582,
+    "max_consecutive_identical": 3,
+    "warnings": [],
+    "errors": [],
+    "head_coverage": "[00:00:01] 开场问候与近一月未更说明 → [00:00:17] 10 月筹备狂喜播客节 PPT",
+    "tail_coverage": "[02:06:17] PPT 在 shownotes 图片与 ima 知识库 → [02:06:22] 再次感谢",
+    "scope": "下载所得原始转写，无归档标题头；其SHA-256与大小见transcription字段，保留原审计结果。"
+  },
+  "reference": {
+    "duration_label": "2h06m（批处理输入与 RSS 口径）",
+    "source": "小宇宙单集页公开 shownotes（146 条官方时间线、含作者两处原文勘误），2026-10-31 经 eacli web.read 复核一致"
+  },
+  "archive_audit": {
+    "ok": true,
+    "size": 190627,
+    "sha256": "8c5d4e39e6096f3012052f6da1f31ee1126e2f7b4f86f7620d822f8ee4f422fc",
+    "lines": 4024,
+    "segments": 4018,
+    "duration_seconds": 7582,
+    "max_consecutive_identical": 3,
+    "head": [
+      "屠龙之术｜不是，怎么又换版本了？---狂飙中的AI 2026",
+      "来源：https://www.xiaoyuzhoufm.com/episode/6adf8a8dc96c8942ec12aa7d",
+      "节目发布：2026-10-26；转写：2026-10-31"
+    ],
+    "tail": [
+      "[02:06:17 -> 02:06:18] 然后如果有兴趣去下载",
+      "[02:06:18 -> 02:06:20] 可以去我的IMA的知识库",
+      "[02:06:20 -> 02:06:22] 再次感谢"
+    ],
+    "warnings": [
+      "5 non-empty lines lack transcript timestamps"
+    ],
+    "errors": [],
+    "scope": "公开归档版，包含5行标题说明；正文与下载原始转写一致，新增头部警告不代表漏转写。",
+    "raw_body_sha256_verified": true
+  }
+}

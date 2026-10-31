@@ -1,0 +1,789 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-26_tulong-zhishu_ai-2026-version-race.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-31",
+  "generator": {
+    "model": "gpt-6-astra",
+    "harness": "codex",
+    "run_id": "tulong-ai2026-main-revision3-20261101",
+    "explicit_model_override": true,
+    "override_reason": "用户指定主会话验收修改，远端worker使用GLM-5.3/MiniMax-M3.1-Flash；当前主会话真实模型由agent_identity运行时实测。",
+    "effort": "not-recorded",
+    "effort_note": "当前主会话身份读取确认gpt-6-astra/Codex，但该输出不提供实际思考强度，未把配置名当实测。原作者GLM-5.3/Claude Code的原生派发请求为max。"
+  },
+  "task": {
+    "summary": "屠龙之术单口《不是，怎么又换版本了？---狂飙中的AI 2026》深度学习报告：按章节保全 AI 2026 版本竞争、模型/产品/资本与用户影响主线；一手材料核验关键模型、公司、数字与核心主张。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "eacli podcast 静默转写（远端静默 worker），不打开浏览器 UI/播放器"
+      },
+      {
+        "id": "R2",
+        "text": "先保存完整 shownotes，读完整转写后按章节建立 source_coverage"
+      },
+      {
+        "id": "R3",
+        "text": "报告独立可读：开头直接说明问题、主要观点与理解价值；正文适合普通中文读者"
+      },
+      {
+        "id": "R4",
+        "text": "区分主播观点、独立事实与推断；关键模型/公司/数字用一手材料核验"
+      },
+      {
+        "id": "R5",
+        "text": "metadata 使用 report-v2、report_depth=deep；返修期间 status=in_progress，独立复核通过后再切 completed"
+      },
+      {
+        "id": "R6",
+        "text": "版权引用遵守 COPYRIGHT.md 与领域协议；不改 README、MAP、索引或其它报告"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "kind": "official",
+      "title": "小宇宙官方节目页：146条时间线、一处作者金额勘误与一处时间疑点",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/6adf8a8dc96c8942ec12aa7d",
+      "accessed_on": "2026-10-31"
+    },
+    {
+      "id": "S2",
+      "kind": "local",
+      "title": "机器转写（whisper.cpp large-v3，eacli podcast 远端静默 worker；4018 段/7582 秒/审计通过）",
+      "locator": "podcast-learning/reports/transcripts/2026-10-26_tulong-zhishu_ai-2026-version-race.transcript.txt",
+      "accessed_on": "2026-10-31"
+    },
+    {
+      "id": "S3",
+      "kind": "local",
+      "title": "全文轻校读稿：覆盖节目全程，保留未确定名称、数字、年份",
+      "locator": "podcast-learning/reports/transcripts/2026-10-26_tulong-zhishu_ai-2026-version-race.polished.txt",
+      "accessed_on": "2026-10-31"
+    },
+    {
+      "id": "S4",
+      "kind": "local",
+      "title": "官方时间线存档（shownotes.md，含 102:17 疑似笔误与 95:24 勘误标注）",
+      "locator": "podcast-learning/reports/transcripts/2026-10-26_tulong-zhishu_ai-2026-version-race.shownotes.md",
+      "accessed_on": "2026-10-31"
+    },
+    {
+      "id": "S5",
+      "kind": "primary",
+      "title": "Assistant Benchmark（62 assistants / 15 dimensions，v0.215）",
+      "locator": "https://assistantbenchmark.com/",
+      "accessed_on": "2026-10-31"
+    },
+    {
+      "id": "S6",
+      "kind": "official",
+      "title": "Anthropic 官方文章 Introducing Claude Duet（2026-10-21 研究预览；Reuters 报道交叉）",
+      "locator": "https://claude.com/resources/articles/claude-duet",
+      "accessed_on": "2026-10-31",
+      "note": "2026-10-31 经 eacli web.read 读到原文：research preview、proactive agent、围绕 Claude Opus 5.5 设计、iOS/Android/claude.ai、Pro/Max 套餐与候补名单；交叉源 https://www.reuters.com/technology/anthropic-unveils-claude-duet-ai-agent-app-2026-10-21"
+    },
+    {
+      "id": "S7",
+      "kind": "secondary",
+      "title": "The Verge：Character.AI files for bankruptcy",
+      "locator": "https://www.theverge.com/ai-artificial-intelligence/1009802/character-ai-files-for-bankruptcy-disney",
+      "accessed_on": "2026-10-31"
+    },
+    {
+      "id": "S8",
+      "kind": "official",
+      "title": "Center for Humane Technology：The AI Doc 上线 Netflix 公告",
+      "locator": "https://centerforhumanetechnology.substack.com/p/the-ai-doc-is-now-on-netflix-all",
+      "accessed_on": "2026-10-31"
+    },
+    {
+      "id": "S9",
+      "kind": "primary",
+      "title": "OpenClaw 开源仓库（openclaw/openclaw）",
+      "locator": "https://github.com/openclaw/openclaw",
+      "accessed_on": "2026-10-31"
+    },
+    {
+      "id": "S10",
+      "kind": "official",
+      "title": "OpenAI 官方发布页 Introducing GPT-6 Sol and Luna（分层定价与降价）",
+      "locator": "https://openai.com/index/introducing-gpt-6-sol-and-luna",
+      "accessed_on": "2026-10-31",
+      "note": "原作者经eacli读取官方页：Luna输入/输出$0.10/$0.50、Sol $2/$10每百万token，页面所述降价约50%；不能从主播9/23帖子回忆精确确认所有版本发布时间。"
+    },
+    {
+      "id": "S11",
+      "kind": "secondary",
+      "title": "Anthropic Q3 2026 收入 168 亿美金（The Decoder 全文 + CNBC 交叉）",
+      "locator": "https://the-decoder.com/anthropics-q3-revenue-hits-16-8b-but-growth-slows-ahead-of-planned-november-ipo",
+      "accessed_on": "2026-10-31",
+      "note": "原作者读取The Decoder全文与CNBC检索摘要；本轮独立GLM-5.3/Codex reviewer于2026-11-01通过eacli读取CNBC正文，记录Q3 $16.8B、Q2约$11.6B、Q1 $4.7B。媒体不替代财务原件；口播115/116差异不判为取整。"
+    },
+    {
+      "id": "S12",
+      "kind": "official",
+      "title": "Meta 官方新闻室 Introducing Muse（2026-09-08）；负责人 Alexandr Wang（TechCrunch）",
+      "locator": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent",
+      "accessed_on": "2026-10-31",
+      "note": "原作者读取Meta官方新闻室；Alexandr Wang姓名另对照TechCrunch摘要。厂商关于私密与安全的表述属于产品自述，不作独立验证。"
+    },
+    {
+      "id": "S14",
+      "kind": "secondary",
+      "title": "AMD 约 82 亿美金收购李飞飞创办的 World Labs（Yahoo Finance 全文，多源交叉）",
+      "locator": "https://finance.yahoo.com/technology/ai/articles/amd-buys-firm-founded-ai-211614246.html",
+      "accessed_on": "2026-10-31",
+      "note": "2026-10-31 经 eacli web.read 读到原文：全股票交易约 $8.2B，2026-09-28 宣布，李飞飞出任 AMD 首席科学家，公司研究方向为 spatial intelligence"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "Anthropic官方文章于2026-10-21介绍Claude Duet研究预览；节目把它放入个人助理发布序列",
+      "report_anchor": "10 月 Claude Duet 上线",
+      "support": "direct",
+      "source_ids": [
+        "S6",
+        "S2"
+      ],
+      "evidence": "S6官方文章；原节目约116分钟讨论personal agent序列。不能用做PPT前一天反推独立发布时间。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "节目称Character.AI于10月12日申请破产保护，媒体报道支持申请破产的事件；未核法院文件与日期",
+      "report_anchor": "Character.AI 破产保护申请与陪伴赛道的悖论",
+      "support": "direct",
+      "source_ids": [
+        "S7",
+        "S2"
+      ],
+      "evidence": "S7媒体与节目74:16–77:26；日期依口播，不把二手报道当法院材料。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "2026-10-31读取assistantbenchmark.com显示62 assistants / 15 dimensions；9月上线时间只来自节目",
+      "report_anchor": "核查时已收录 62 个助理、15 个维度",
+      "support": "direct",
+      "source_ids": [
+        "S5",
+        "S2"
+      ],
+      "evidence": "2026-10-31 直接读取站点：62 assistants/15 dimensions/v0.215",
+      "critical": false
+    },
+    {
+      "id": "C04",
+      "claim": "The Decoder与CNBC报道公司披露Anthropic 2026 Q3收入168亿美元；CNBC Q2约116亿美元，未取得财务原件",
+      "report_anchor": "The Decoder 报道了 Anthropic Q3 168 亿美元",
+      "support": "direct",
+      "source_ids": [
+        "S11",
+        "S2"
+      ],
+      "evidence": "原作者读The Decoder全文；独立reviewer本轮读取CNBC正文。媒体仍为二手。",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "Yahoo Finance报道AMD与World Labs约82亿美元交易；未取得交易公告原文",
+      "report_anchor": "李飞飞的 World Labs 与 AMD 的约 82 亿美元收购交易",
+      "support": "direct",
+      "source_ids": [
+        "S14",
+        "S2"
+      ],
+      "evidence": "S14媒体全文；主播98分钟附近另以研究员人数解释价格，后者是观点。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "GPT-6 存在 Luna 与 Sol（口播 Soul）分层定价且低价版本调用量大；官方价 Luna $0.10/$0.50、Sol $2/$10 每百万 token（约降价 50%，9 月下旬发布）；口播梯度 Soul≈10-20 倍 Luna、最高档约 50 美金/百万 token 未核原文",
+      "report_anchor": "GPT-6 有 Luna（极便宜）、Sol（口播作 Soul，约 10-20 倍于 Luna）",
+      "support": "direct",
+      "source_ids": [
+        "S10",
+        "S2"
+      ],
+      "evidence": "OpenAI 官方发布页已读原文确认 Sol/Luna 与价格；倍数与 Extra[?] 档名仅口播",
+      "critical": false
+    },
+    {
+      "id": "C07",
+      "claim": "OpenRouter 口径 2026 Q3 开源模型占 71.8% token、闭源占 73.1% spend（渠道统计，不代表全网）",
+      "report_anchor": "开源拿走 71.8% 的 token、闭源只有 28.2%",
+      "support": "derived",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "evidence": "口播转述 OpenRouter 统计；主播自注不代表全网",
+      "critical": false
+    },
+    {
+      "id": "C08",
+      "claim": "节目转述Anthropic研发中Claude工作占比3%→26%及RSI共识；本文未读到对应技术原文，不作为已验证研究结果",
+      "report_anchor": "六个月前约 3%，到 8 月涨到 26%",
+      "support": "derived",
+      "source_ids": [
+        "S2"
+      ],
+      "evidence": "S2 20:33–22:09。此claim支持主播说过这组数字，不证明测量定义或RSI因果。",
+      "critical": true
+    },
+    {
+      "id": "C09",
+      "claim": "节目转述2026年巨头CapEx8000亿美元、自由现金流7000亿美元及发债2480亿美元；口径未统一，不能据此确认1000亿美元资金缺口",
+      "report_anchor": "暂不能接受这个减法作为资金缺口的证明",
+      "support": "derived",
+      "source_ids": [
+        "S2"
+      ],
+      "evidence": "S2 01:40:38–01:43:15；自由现金流通常已扣CapEx，是否实际指经营现金流需核原图。",
+      "critical": true
+    },
+    {
+      "id": "C10",
+      "claim": "节目转述两公司发布间隔73→18天；13/21天公司归属存疑，1.7天与每月70–80个不能直接换算",
+      "report_anchor": "2023 年每 73 天发布一个新东西，2026 年今天每 18 天",
+      "support": "derived",
+      "source_ids": [
+        "S2"
+      ],
+      "evidence": "S2 01:48:58–01:52:18；原转写公司名“欧盟AI”“Azure Big”不清。",
+      "critical": true
+    },
+    {
+      "id": "C11",
+      "claim": "节目转述存储毛利及11家公司市值2.44T→17.73T；后者是约7.27倍，不能等同买入股票回报",
+      "report_anchor": "后者约为前者的 7.27 倍",
+      "support": "derived",
+      "source_ids": [
+        "S2"
+      ],
+      "evidence": "S2 01:26:00–01:28:22；17.73/2.44约7.27，增幅约6.27倍；毛利与市值尚未核原始财务资料。",
+      "critical": false
+    },
+    {
+      "id": "C12",
+      "claim": "QuestMobile Q3 办公 agent：WorkBuddy 3225 万月活（+641%）；QCloud[?] 于 9/24 宣布 12/31 关停",
+      "report_anchor": "WorkBuddy 3225 万月活（+641%）",
+      "support": "derived",
+      "source_ids": [
+        "S2"
+      ],
+      "evidence": "口播转述 QuestMobile；产品名 QCloud 等转写存疑",
+      "critical": false
+    },
+    {
+      "id": "C13",
+      "claim": "节目转述网络安全ETF涨幅56%；波动次数120/81的阈值在转写中冲突，未构建确定的3%/5%序列",
+      "report_anchor": "转写先后把 120 次和 81 次都接在“超 5%”之后",
+      "support": "derived",
+      "source_ids": [
+        "S2"
+      ],
+      "evidence": "S2安全段及01:22:56–01:24:13；两次均转写超5%，不可自行纠正阈值。",
+      "critical": false
+    },
+    {
+      "id": "C14",
+      "claim": "shownotes 作者勘误：「5 亿美金单轮融资拿走 90% 流动性」应为 5000 万美金单轮",
+      "report_anchor": "5000 万美金[shownotes 勘误",
+      "support": "direct",
+      "source_ids": [
+        "S1",
+        "S4"
+      ],
+      "evidence": "S4 95:24作者明确勘误为单轮融资5000万美金。",
+      "critical": false
+    },
+    {
+      "id": "C15",
+      "claim": "节目说明图表来自不同时间；收入和token数字不能拼成统一全行业结构",
+      "report_anchor": "不能据此重建一张精确的全行业收入饼图",
+      "support": "derived",
+      "source_ids": [
+        "S2"
+      ],
+      "evidence": "S2 49:21–53:11，50:39明确图表收集时间不同；应用金额原词10个币/110美金带4%不清。 49:40明确9月7日图126.2T；50:09明确10月5日图agent132.6T/human17T。",
+      "critical": true
+    },
+    {
+      "id": "C16",
+      "claim": "[推测] 研发更多使用AI、发布变快与收入增长同现不足以证明RSI因果贡献",
+      "report_anchor": "节目没有识别 RSI 对发布间隔的独立贡献",
+      "support": "inference",
+      "source_ids": [
+        "S2"
+      ],
+      "evidence": "节目把这些观察串联，但没有干预或因果识别；报告明确推理边界与替代解释。",
+      "critical": true
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "开场：断更说明、狂喜播客节 152 页 PPT/90 分钟现场、《十字路口》年终联动预告",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "report_anchor": "概览：一份 152 页 PPT 想回答的问题"
+    },
+    {
+      "id": "U02",
+      "title": "广告：天翼云花卷聆记 AI 录音卡",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "S2"
+      ],
+      "report_anchor": "开场、广告、往年 PPT 回顾",
+      "notes": "报告不分析广告；全文校读稿保留广告段落。",
+      "omission_reason": "广告内容不属学习对象，报告正文不展开。"
+    },
+    {
+      "id": "U03",
+      "title": "标题由来、四章结构与本期背景",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "report_anchor": "概览：一份 152 页 PPT 想回答的问题",
+      "notes": "开场对过往PPT的逐份标题日期属于辅助回顾，正文不逐项复述；原始转写保留完整清单。"
+    },
+    {
+      "id": "U04",
+      "title": "1.1 能力：模型到系统、能力-成本-安全三角总纲、能力边界图",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2"
+      ],
+      "report_anchor": "能力、成本、安全同时成为主线"
+    },
+    {
+      "id": "U05",
+      "title": "美国大模型竞争：御三家、OpenAI+Anthropic 两家说、Gemini 4 与 Meta 追赶",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2"
+      ],
+      "report_anchor": "能力主线与它的失效"
+    },
+    {
+      "id": "U06",
+      "title": "benchmark 失效与奇观时代（帝国时代2 比喻、Adobe 逆向、毁灭吧）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2"
+      ],
+      "report_anchor": "能力主线与它的失效"
+    },
+    {
+      "id": "U07",
+      "title": "训练变化：后训练崛起（算力配比）、RSI 共识、Anthropic 研发占比 3%→26%、agent 扩散动画",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "report_anchor": "训练的变化：AI 参与研发到了哪一步"
+    },
+    {
+      "id": "U08",
+      "title": "DeepSeek 研究员《我不得不把才华埋葬在昨天》",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2"
+      ],
+      "report_anchor": "训练的变化：AI 参与研发到了哪一步"
+    },
+    {
+      "id": "U09",
+      "title": "成本：斩杀线、帕累托最优、Q3 务实策略（GLM-5.3 Flash/阶跃/小米/GPT-6 Soul/Luna/Opus 5.5 定价）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S10"
+      ],
+      "report_anchor": "成本主线：从斩杀线到版本内分层"
+    },
+    {
+      "id": "U10",
+      "title": "开源 vs 闭源：能力追赶 5 个月→Top20、token 71.8% vs spend 73.1%、御三家收入 Q3 下降",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2"
+      ],
+      "report_anchor": "成本主线：从斩杀线到版本内分层"
+    },
+    {
+      "id": "U11",
+      "title": "中美模型发布与 token 份额 66%、海外节点分成",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2"
+      ],
+      "report_anchor": "能力向本地扩散，为什么会重新打开硬件机会"
+    },
+    {
+      "id": "U12",
+      "title": "云端 vs 本地：33/12/9 个月追平周期、AI 硬件新机会",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S2"
+      ],
+      "report_anchor": "能力向本地扩散，为什么会重新打开硬件机会"
+    },
+    {
+      "id": "U13",
+      "title": "决策模型（GEV[?]/System 1/微软 DC-C1[?]）与同版本 Pro/Standard/Lite 分层、GPT-6 Luna/Soul/Extra 定价梯度",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S10"
+      ],
+      "report_anchor": "成本主线：从斩杀线到版本内分层"
+    },
+    {
+      "id": "U14",
+      "title": "安全：Netflix 纪录片、6 月 HuggingFace 越狱事件、Time/NYer 封面、400 研究员调研安全第一、Vercel CEO 终极漏洞、安全股 +56%、特朗普 Super Intelligence",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S8"
+      ],
+      "report_anchor": "安全主线：从后台议题变成第一议题"
+    },
+    {
+      "id": "U15",
+      "title": "第一章留白（多模态/世界模型/物理AI/AI4S）与第一人称无力感（Opus 5.5 可视化、水位淹到脖子、重轻[?]引文）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2"
+      ],
+      "report_anchor": "第一章的留白与第一人称样本"
+    },
+    {
+      "id": "U16",
+      "title": "产业开场：token 0.5T→126.2T、agent 132.6T vs 人类 17T、ARR 2760 亿/收入 1610 亿、云厂商 75%、RAMP 企业投入波折",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2"
+      ],
+      "report_anchor": "产业与收入：两家公司的规模问题"
+    },
+    {
+      "id": "U17",
+      "title": "OpenAI vs Anthropic 规模：230 亿→1000 亿、Q3 168 亿超 Intel/Uber/Netflix、OpenAI ARR 500 亿传闻",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S11"
+      ],
+      "report_anchor": "产业与收入：两家公司的规模问题"
+    },
+    {
+      "id": "U18",
+      "title": "订阅经济学：a16z Top20 问题、Anthropic 订阅 10% 收入/41.7% 算力、用满即亏、ARR-菜地梗图",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2"
+      ],
+      "report_anchor": "产业与收入：两家公司的规模问题"
+    },
+    {
+      "id": "U19",
+      "title": "API 风水轮流转与 1% 客户集中度（80% vs Datadog 90%/Snowflake 68%/Slack 40%）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2"
+      ],
+      "report_anchor": "API 收入还面临产品切换与客户集中两种压力"
+    },
+    {
+      "id": "U20",
+      "title": "巨头竞争：五层/九层蛋糕、23 年共识速成、Maia 300、Token Factory、数据中心 vs 办公室曲线",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2"
+      ],
+      "report_anchor": "巨头与 Token Factory"
+    },
+    {
+      "id": "U21",
+      "title": "neocloud：Nebius +530%/CoreWeave +151%、大家都一样、杰文斯悖论、B300 理财产品、英伟达折旧 100-175%",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2"
+      ],
+      "report_anchor": "巨头与 Token Factory"
+    },
+    {
+      "id": "U22",
+      "title": "应用：Menlo 20 亿人/120→400 亿、chatbot 无人关注、模型吞噬应用之辩（Sora 关闭/Midjourney/Perplexity）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2"
+      ],
+      "report_anchor": "应用：吞噬之下仍会长出东西"
+    },
+    {
+      "id": "U23",
+      "title": "a16z 收入 Top50 名单与场景分布、对照移动互联网空白板块、时间×收入、ARR 通胀（1亿→10亿）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2"
+      ],
+      "report_anchor": "应用：吞噬之下仍会长出东西"
+    },
+    {
+      "id": "U24",
+      "title": "Character.AI 破产与一鲸落万物生（Type-C[?] 等偷挣者、中日韩、每三年再做一次）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S7"
+      ],
+      "report_anchor": "应用：吞噬之下仍会长出东西"
+    },
+    {
+      "id": "U25",
+      "title": "第二章小结：产业其实是钱（上次被量化机构禁讲、这次加倍讲回）",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S2"
+      ],
+      "report_anchor": "第三章资本：泡沫 2.0 的证据链"
+    },
+    {
+      "id": "U26",
+      "title": "宏观泡沫讨论：2032年基建/GDP 3.6%、头部42%、巴菲特250%、历史周期、利率及PE/GDP分母反方",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2"
+      ],
+      "report_anchor": "第三章资本：泡沫 2.0 的证据链",
+      "notes": "正文保留宏观判断与反方，不逐个复制辅助图表数字；标普68.5/69T、2030年2.9、40%/2%阈值、各历史周期年数、债券5%阈值在原转写可查，未作为本文定量结论。"
+    },
+    {
+      "id": "U27",
+      "title": "市场波动的历史对照：2026年120/81次的阈值在转写中冲突，不整理为确定的3%/5%序列；科技PE悖论",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2"
+      ],
+      "report_anchor": "第三章资本：泡沫 2.0 的证据链"
+    },
+    {
+      "id": "U28",
+      "title": "MAG7 分化 AI winner/loser、存储三巨头毛利 76%/美光 81%（三年前 -9%）、半导体 11 家 2.44T→17.73T",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2"
+      ],
+      "report_anchor": "第三章资本：泡沫 2.0 的证据链"
+    },
+    {
+      "id": "U29",
+      "title": "一级市场估值规模、资金集中、Block IPO与收入比较；公司名和期间不确定",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2"
+      ],
+      "report_anchor": "一级市场：估值要兑现多大的增长"
+    },
+    {
+      "id": "U30",
+      "title": "李录长文（10% 灭绝概率+2 万亿估值）、WSJ 亏损图拆解（600 亿非业务）、季度收入节奏 46→47→116→168、按月衡量的苛刻",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S11"
+      ],
+      "report_anchor": "第三章资本：泡沫 2.0 的证据链"
+    },
+    {
+      "id": "U31",
+      "title": "VC 视角：股东列表论、募资 SPV 化、a16z deal 54%→65%→86%、big deal 90% 流动性（勘误 5000 万）、中国 123 笔/123 工作日、估值蹿升周期",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "report_anchor": "第三章资本：泡沫 2.0 的证据链",
+      "notes": "补回中国Q3大单集中与月度估值变化的论点；近50%+15%又合计60%的口播数不一致，估值周期公司名/起止点不清，正文不生成精确统计或排名。"
+    },
+    {
+      "id": "U32",
+      "title": "热门方向：Infra 估值倒挂（Fireworks+Together≈Datadog+Snowflake）、数据公司（你的投入就是我的收入）、AMD 82 亿收购 World Labs、YC 假想敌 Scale AI",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S14"
+      ],
+      "report_anchor": "第三章资本：泡沫 2.0 的证据链"
+    },
+    {
+      "id": "U33",
+      "title": "泡沫 2.0：CapEx 8000 亿 vs FCF 7000 亿、发债 2480 亿、钱的流转 100 块拆解、Meta/Google 单季 FCF 转负、SPV 层级化=次贷类比",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2"
+      ],
+      "report_anchor": "借债扩张与循环融资"
+    },
+    {
+      "id": "U34",
+      "title": "CoreWeave 15% 资金成本与债务利率分布、英伟达托底（50 几个项目投资/最活跃 AI 投资人）、国内类比蚂蚁、英伟达是 AI 的央行",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2"
+      ],
+      "report_anchor": "第三章资本：泡沫 2.0 的证据链"
+    },
+    {
+      "id": "U35",
+      "title": "泡沫判断的边界与小猫、绷带比喻",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2"
+      ],
+      "report_anchor": "章末的收束表情包"
+    },
+    {
+      "id": "U36",
+      "title": "发布加速与数学进展；13/21天公司归属及1.7天/月70–80的统计范围存疑",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2"
+      ],
+      "report_anchor": "版本之子更替：从 OpenClaw 到 Codex 到 Personal Agent"
+    },
+    {
+      "id": "U37",
+      "title": "OpenClaw 兴衰（转发几万→小几十）与 Codex 偷梁换柱（下 ChatGPT 得 Codex）、4000 万活跃、三栏 UI 版本之子",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S9"
+      ],
+      "report_anchor": "版本之子更替：从 OpenClaw 到 Codex 到 Personal Agent"
+    },
+    {
+      "id": "U38",
+      "title": "国内办公 agent 战役：豆包/飞书[?]、每天两次更新、QuestMobile Q3（WorkBuddy 3225 万+641%、百度系[?] 977 万、千问 790 万、QCloud[?] 关停）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2"
+      ],
+      "report_anchor": "版本之子更替：从 OpenClaw 到 Codex 到 Personal Agent"
+    },
+    {
+      "id": "U39",
+      "title": "2026 编年：1 月 OpenClaw→2-3 月 XX-Claw→8 月 GrowthBot[?]→9 月 Muse/DOOTS[?]→10 月 Claude Duet；标题呼应",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S6"
+      ],
+      "report_anchor": "版本之子更替：从 OpenClaw 到 Codex 到 Personal Agent",
+      "notes": " 产品名 DOOTS[?] 沿原转写保留，未取得官方来源确认，不据此断言 OpenAI Dots 的名称与发布。"
+    },
+    {
+      "id": "U40",
+      "title": "用户用途 top 场景（shopping/travel/bills）、Meta Muse 与纽约客封面、Alexandr Wang 转发、Assistant Benchmark、403 近 10%、协议层（UCP/ACP[?]/PAP[?]）、国内跟进",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S5",
+        "S12"
+      ],
+      "report_anchor": "版本之子更替：从 OpenClaw 到 Codex 到 Personal Agent"
+    },
+    {
+      "id": "U41",
+      "title": "庄明浩个人样本：贤者时间式任务荒——没有值得交付的任务",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2"
+      ],
+      "report_anchor": "版本之子更替：从 OpenClaw 到 Codex 到 Personal Agent"
+    },
+    {
+      "id": "U42",
+      "title": "结尾：两篇恍惚标题（Not much happened today）、AI 可能不是十年最大商业故事（减肥药对照）、18+2 家板块结构、狂喜双专场中门对狙、世界还会好吗、享受生活收束",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2"
+      ],
+      "report_anchor": "结尾的收束：享受生活"
+    }
+  ],
+  "limitations": [
+    "主要证据是单人口播与官方时间线。来源清单区分厂商原文、媒体全文、检索摘要；未取得多数图表、原始财务或法院文件。",
+    "完整转写未逐音核听；校读不补确定公司归属、年份或百分比。13/21天公司名、波动120/81阈值、应用收入金额与本地模型周期均存疑。",
+    "Anthropic研发占比、员工/Agent动画、研究员文章与CEO公开信仍只读到节目转述，未核技术原文。",
+    "不同时间的ARR、营收、token与估值不拼接；自由现金流通常已扣资本支出，节目相减口径未核。",
+    "官方时间线末尾102:17疑为122:17，仍保留原文；95:24融资门槛按作者明确勘误采用5000万美元。",
+    "未获取152页PPT；节目经验不代表全部用户，RSI未被识别为发布加速的独立原因。",
+    "中国厂商66%的token分母未确认；中国Q3融资两档占比与合计不一致；估值一句“两亿/两万亿”存在转写歧义。"
+  ],
+  "revision": {
+    "date": "2026-11-01",
+    "by": {
+      "model": "gpt-6-astra",
+      "harness": "codex",
+      "identity_evidence": "agent_identity.py --json: codex-thread-state, session-bound, current_model_confirmed=true",
+      "note": "主会话集中修订；保留GLM-5.3/Claude Code原稿与独立审阅历史。修复数字/来源归属、因果强度、全文校读存疑字与缺失主线。 未完成同步修订的可选digest仅保留私有原稿，本轮不作为公开产物或来源。 revision 3收尾：保守处理发布日期、GrowthBot、66%分母与两亿/两万亿；修导航与修订残留；覆盖表不再承诺未展开的辅助数字。"
+    }
+  }
+}

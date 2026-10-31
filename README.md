@@ -16,11 +16,11 @@ EverAgent 收录借助 AI Agent 完成的论文精读、技术博客分析、开
 <!-- AUTO-RECENT:START -->
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-11-01 | [狂飙中的 AI 2026：模型发布、收入增长与算力债务](./podcast-learning/reports/2026-10-26_tulong-zhishu_ai-2026-version-race.md) | 🎙️ Podcast Learning |
+| 2026-10-31 | [卢策吾谈具身智能十年：先建数据系统，再等 Scaling Law](./podcast-learning/reports/2026-10-30_xinhao-yuzaosheng_e16-lucewu-north-slope.md) | 🎙️ Podcast Learning |
 | 2026-10-31 | [余一聊 Manus：怎样把任务真正交给 Agent](./podcast-learning/reports/2026-10-28_xiaoyuzhou-ai-lianjinshu_yuyi-manus-delegation.md) | 🎙️ Podcast Learning |
 | 2026-10-30 | [模型不变，Agent 如何做得更好：一项 Harness 实验](./ai-learning/reports/paper_analyses/46_evolve_the_harness_2026.md) | 🤖 AI Learning |
 | 2026-10-30 | [Personal Context 正交论：哪些积累值得保留，怎样持续维护](./ai-learning/reports/knowledge_reports/PersonalContext正交论_PC构建指南_20261010.md) | 🤖 AI Learning |
-| 2026-10-29 | [多设备、多 Agent 怎样共用上下文与续接会话：从 Manus 到可实现的架构](./ai-learning/reports/knowledge_reports/多设备多Agent共享Context与会话续接_Manus实践与架构边界_深度解析_20261029.md) | 🤖 AI Learning |
-| 2026-10-27 | [纳德拉谈企业智能：知识、反馈、模型选择与 Agent 治理](./podcast-learning/reports/2026-10-27_bilibili-nadella_enterprise-intelligence.md) | 🎙️ Podcast Learning |
 <!-- AUTO-RECENT:END -->
 
 按报告修改日期排列，修订过的旧报告也会出现在这里。[浏览全部报告 →](./docs/REPORT_INDEX.md)
@@ -38,7 +38,7 @@ EverAgent 收录借助 AI Agent 完成的论文精读、技术博客分析、开
 | 🧠 [Psychology Learning](./psychology-learning/) | 17 篇 | 13/13/0 |
 | 🧬 [Biology Learning](./biology-learning/) | 18 篇 | 14/9/0 |
 | ⚗️ [AI Practice](./ai-practice/) | 10 篇 | 9/1/0 |
-| 🎙️ [Podcast Learning](./podcast-learning/) | 109 篇 | 58/54/0 |
+| 🎙️ [Podcast Learning](./podcast-learning/) | 111 篇 | 58/54/0 |
 | 🔭 [GitHub Research](./github-trending-analyzer/) | 124 篇 | 0/0/0 |
 | 🏄 [Web Surfing](./web-surfing/) | 48 篇 | 0/0/0 |
 <!-- AUTO-OVERVIEW:END -->

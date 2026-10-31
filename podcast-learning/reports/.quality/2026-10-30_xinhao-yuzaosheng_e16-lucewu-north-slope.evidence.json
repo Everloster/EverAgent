@@ -1,0 +1,522 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-30_xinhao-yuzaosheng_e16-lucewu-north-slope.md",
+  "quality_tier": "important",
+  "created_on": "2026-10-31",
+  "generator": {
+    "model": "gpt-6-astra",
+    "harness": "codex",
+    "run_id": "e16-lucewu-rev5-locator-repair-20261031",
+    "explicit_model_override": true,
+    "override_reason": "用户要求主会话验收修改后再派下一轮；本轮由主会话按独立复核发现修订。当前模型由 agent_identity.py 从 codex-turn-context 核实为 gpt-6-astra（session-bound）；初稿 GLM-5.3、revision 2 MiniMax-M3.1-Flash 的审阅历史保留。"
+  },
+  "task": {
+    "summary": "对本期访谈完成深度学习报告；revision 4 修正力信号训练阶段的过度补义、引用可用性和阅读格式，保留完整转写与轻校读。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "经 eacli podcast 在远端执行设备上静默转写（不开浏览器 UI/播放器、不本地转写），拉回时核对大小与 SHA-256，保存最小公开 artifact 回执。"
+      },
+      {
+        "id": "R2",
+        "text": "先保存完整 shownotes（RSS 一手 description），再读完整转写建立 source coverage；按官方 10 个精选时间戳章节逐一登记。"
+      },
+      {
+        "id": "R3",
+        "text": "报告开头直接说明问题、主要观点和理解价值；正文适合普通中文读者，含术语解释、内容地图与 3 个以上展开主线小节。"
+      },
+      {
+        "id": "R4",
+        "text": "一手材料核验关键人名（卢策吾/张津剑/李飞飞）、机构（上海交大人工智能学院/穹彻/非夕/绿洲资本）、数字（几十万有效小时/一年多基建/快两年流水线/2014/2023-24）与核心主张；区分嘉宾自述、独立事实与推断（[推测]/[待验证]）。"
+      },
+      {
+        "id": "R5",
+        "text": "metadata 使用 report-v2、report_depth=deep；草稿状态用合法值 in_progress（ready_for_review 不是本仓合法状态值）；evidence 真实记录 source_coverage、核心链路、核验来源与 limitations。"
+      },
+      {
+        "id": "R6",
+        "text": "不改 README、MAP、索引或其它报告；共享索引与集成由协调者处理。"
+      },
+      {
+        "id": "R7",
+        "text": "按上一轮独立复核的 6 项 required_fixes 定向返修：① 用可读原文补李飞飞师承/履历核验，不得编名字；② 删除「有效小时数＝剔除低质数据」这一自行补义；③ 不由嘉宾自评推出全行业主流/非主流结论；④ RT-2 按视觉—语言—动作模型表述，不称纯视觉路线；⑤ 遥操作两段经历的先后与主体不明时保留不确定；⑥ 准确说明 raw 收据与归档版 transcript 的审计口径差异。同时删除正文裸 wiki 链接与内部工作说明，保持引用可点击，不重写正文主线。"
+      },
+      {
+        "id": "R8",
+        "text": "修正 revision 2 独立复核的来源归属与精度问题，补全行业热潮、模型实验体系、诺奖问题审美三段内容；执行审计细节留在 sidecar，正文便于读者阅读。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "kind": "primary",
+      "title": "信号与噪声｜E16.卢策吾：谋于十年，行在当下｜北坡计划",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/6ae464c497726cd4675a38af",
+      "accessed_on": "2026-10-31"
+    },
+    {
+      "id": "S2",
+      "kind": "local",
+      "title": "完整机器转写：1740 段，末段 52:12",
+      "locator": "podcast-learning/reports/transcripts/2026-10-30_xinhao-yuzaosheng_e16-lucewu-north-slope.transcript.txt",
+      "accessed_on": "2026-10-31",
+      "sha256": "ef3f35f16457b2eb5969212796a305956b83a485103a1fdc2d419f76752c288a"
+    },
+    {
+      "id": "S3",
+      "kind": "local",
+      "title": "全文轻校读稿：按官方 10 章分组，含修正清单与 [?] 存疑标注",
+      "locator": "podcast-learning/reports/transcripts/2026-10-30_xinhao-yuzaosheng_e16-lucewu-north-slope.polished.txt",
+      "accessed_on": "2026-10-31",
+      "sha256": "f4715f2012aa828ebd57f84136a58d09e041ceaf7a27606a549bb67a4689e085"
+    },
+    {
+      "id": "S4",
+      "kind": "local",
+      "title": "官方 shownotes 存档（RSS episode description 一手获取）：简介、嘉宾介绍、10 时间戳、相关提及、创作团队",
+      "locator": "podcast-learning/reports/transcripts/2026-10-30_xinhao-yuzaosheng_e16-lucewu-north-slope.shownotes.md",
+      "accessed_on": "2026-10-31"
+    },
+    {
+      "id": "S5",
+      "kind": "local",
+      "title": "转写获取、哈希与审计收据（脱敏公开版）",
+      "locator": "podcast-learning/reports/transcripts/2026-10-30_xinhao-yuzaosheng_e16-lucewu-north-slope.artifact.json",
+      "accessed_on": "2026-10-31"
+    },
+    {
+      "id": "S6",
+      "kind": "official",
+      "title": "上海交通大学新闻：人工智能学院卢策吾教授荣获 ACM China 杰出学者（核验副院长身份）",
+      "locator": "https://news.sjtu.edu.cn/jdyw/20260716/224700.html",
+      "accessed_on": "2026-10-31"
+    },
+    {
+      "id": "S7",
+      "kind": "secondary",
+      "title": "品玩：「万亿」具身智能的师徒「江湖」（核验非夕 2016 创办、2023-11 穹彻孵化、卢策吾在李飞飞指导下完成博士后研究）",
+      "locator": "https://www.pingwest.com/a/297944",
+      "accessed_on": "2026-10-31"
+    },
+    {
+      "id": "S8",
+      "kind": "secondary",
+      "title": "新华财经报道（东方财富转载）：RoboPocket 公开发布与逐帧质量评估功能介绍",
+      "locator": "https://finance.eastmoney.com/a/202601123616198162.html",
+      "accessed_on": "2026-10-31"
+    },
+    {
+      "id": "S9",
+      "kind": "secondary",
+      "title": "中国网：「他的『家书』用代码写成！潮汕之子卢策吾书写科技报国『新侨批』」（核验 2014 年赴斯坦福做博士后、导师李飞飞）",
+      "locator": "http://www.china.com.cn/txt/2026-07/10/content_118592240.shtml",
+      "accessed_on": "2026-10-31"
+    },
+    {
+      "id": "S10",
+      "kind": "official",
+      "title": "Stanford Profiles：Fei-Fei Li 官方档案（核验李飞飞当前身份：斯坦福 Sequoia 教授、Stanford HAI 创始联席主任、World Labs 联合创始人兼 CEO）",
+      "locator": "https://profiles.stanford.edu/fei-fei-li",
+      "accessed_on": "2026-10-31"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "卢策吾 2014 年在斯坦福开始思考机器人；2015 年入局确实偏早，但他认为早晚只是标签，关键是持续处于最前沿。",
+      "report_anchor": "是不是一直在这件事情的最前沿",
+      "support": "direct",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S4"
+      ],
+      "evidence": "00:01:12（2014 斯坦福）、02:34–03:28（太早了/新公司轶事/标签论）；履历与 shownotes 嘉宾介绍一致，外部来源见 C18。",
+      "critical": true
+    },
+    {
+      "id": "C2",
+      "claim": "十年最大底层变化是人才资本进入中心位置加国家政策（基本盘）；早期靠信念吸引放弃海外 offer 的顶尖学生，形成筛选器。",
+      "report_anchor": "他把这称为整件事的基本盘",
+      "support": "direct",
+      "source_ids": [
+        "S2"
+      ],
+      "evidence": "03:34–06:46（基本盘、通用机器人无人提、美国名校 offer 学生、第一批具身智能博士毕业生）。学生出路为嘉宾自述样本。",
+      "critical": true
+    },
+    {
+      "id": "C3",
+      "claim": "转折在 2023–24：ChatGPT 证明数字世界 Scaling Law，逻辑上应延伸到物理世界；但 23 年与 15 年的具身智能内容差别不大，打开的是想象空间，资本随后进场。",
+      "report_anchor": "技术内核变化有限，打开的是想象空间，资本随之进场",
+      "support": "direct",
+      "source_ids": [
+        "S2"
+      ],
+      "evidence": "原转写13:04–14:50：23/24年、人形机器人由Musk带火、Scaling Law论证、内容不大、想象空间。随后正文关于资本预期与技术兑现的区分另标[推测]，不计入此direct claim。",
+      "critical": true
+    },
+    {
+      "id": "C4",
+      "claim": "第一次感觉 Scaling Law = 可规模化的数据方式 + 能吃下数据的网络；遥操作第一波因难规模化而未跟，转做无本体采集（外骨骼→UMI→RoboPocket），数据基建含评估前后搞了一年多，核心是数据爬坡容量。",
+      "report_anchor": "他把「Scaling Law」从一条曲线还原成一条供应链问题",
+      "support": "direct",
+      "source_ids": [
+        "S2",
+        "S8"
+      ],
+      "evidence": "14:48–17:35（两件事、遥操作没跟、外骨骼扔掉上 UMI、lobal pocket=RoboPocket、滴滴式系统、一年多、capacity）；RoboPocket 2026-01 发布与公开报道一致。「供应链」表述为本文 [推测] 归纳。",
+      "critical": true
+    },
+    {
+      "id": "C5",
+      "claim": "数据生产是滴滴式分布式系统：普通人带设备接单、无雇佣关系；质量靠 AI 评价体系（非人工审核）+ reward 导师系统（做得好钱多）+ 科学家早期逐条 check 沉淀的 know-how 训练评估模型；整套称为数据大脑，模型缺什么数据马上发布任务。",
+      "report_anchor": "「不是人在那里后面审核——后面必须得上 AI engine」",
+      "support": "direct",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "evidence": "17:35–20:14（接单、设备、无雇佣、AI engine、reward、导师系统、笨功夫、数据大脑）。shownotes 相关提及的 Reward Function 条目一致。",
+      "critical": true
+    },
+    {
+      "id": "C6",
+      "claim": "嘉宾称数据规模为几十万有效小时，但未定义有效小时。紧随的 ASR「70万小时」无法确认说话人和精确值；70万也落在几十万范围，不构成数值矛盾。",
+      "report_anchor": "数据规模按他的说法是「几十万有效小时」",
+      "support": "direct",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "evidence": "25:27–25:42；原转写没有说话人分离。官方简介同称几十万小时。精确数值不作独立确认。",
+      "critical": true
+    },
+    {
+      "id": "C7",
+      "claim": "合成数据看似增加数据量，信息量是否增加存疑；更可能承担组合泛化角色且需真实数据打底；当前节奏应以真实采集为主，未来某节点合成会起作用。",
+      "report_anchor": "合成「看似数据量增加了，但它是否是信息量增加了」要打问号",
+      "support": "direct",
+      "source_ids": [
+        "S2"
+      ],
+      "evidence": "20:02–21:10（合成/机器收、组合泛化[ASR文字组合放话，依上下文校正]、GP6[?] 存疑保留、显微镜比喻）。",
+      "critical": true
+    },
+    {
+      "id": "C8",
+      "claim": "嘉宾举遥操作试验后及时刹住为战略克制的例子；数量、地点的 ASR 文字无法确定，主体与先后不明，两段经历不拼成单一时间线。",
+      "report_anchor": "发布过设备、采完数据后发现方向不对",
+      "support": "direct",
+      "source_ids": [
+        "S2"
+      ],
+      "evidence": "21:34–22:13；ASR「20T」「数域场」「素材厂」不足以确定设备数量或设施对应关系。14:50 段另有第一波没跟的说法，节目未给主体与时序。",
+      "critical": true
+    },
+    {
+      "id": "C9",
+      "claim": "三年（2023 至今）最大变化是数据规模化与吃规模数据的网络结构形成初步共识，第一个台阶的 Scaling Law 在其视角已摸到；UMI 数据存在坐标系/移动 pattern 与真机不一致的质量问题，大量已沉淀 UMI 数据被 research 指出无用。",
+      "report_anchor": "第一个台阶的 Scaling Law「在我们的角度上是摸到了」",
+      "support": "direct",
+      "source_ids": [
+        "S2"
+      ],
+      "evidence": "24:19–25:26（初步共识、台阶、踩坑、5米=UMI、坐标系、大部分 UMI 数据没用的 research 转述）。research 结论为嘉宾转述二手信息，报告未当作独立事实。 气球演示只称「当年」，不据相邻2023年话题补年份。",
+      "critical": true
+    },
+    {
+      "id": "C10",
+      "claim": "力控三点第一性论证：落地鲁棒性（完成度/响应速度决定订单）、省 token（下意识动作不烧推理、数据需要量下降）、绝对安全；并自评全球力控做得最好、同行不把力搞清楚则数据长期不可用。该判断为嘉宾自评，节目未给出行业整体路线分布的依据，报告不作全行业主流/非主流推论。",
+      "report_anchor": "嘉宾认为被同行忽略的关键变量",
+      "support": "direct",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "evidence": "28:27–30:25（三点论证、鲁棒、token、安全、自评最好）；原话含「大家都在谈泛化性，忽略一点」。自评为嘉宾判断，报告标注须由落地数据检验。",
+      "critical": true
+    },
+    {
+      "id": "C11",
+      "claim": "嘉宾提到 Force Policy、UMI 与力信号结合，以及带力 UMI 的管理和发放成本；具体训练阶段安排因转写歧义无法确认。",
+      "report_anchor": "31:02–31:21 的转写对预训练与 mid-training",
+      "support": "direct",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "evidence": "原转写30:25–31:32提到UMI与力融合、Force Policy和成本权衡。31:02–31:21原文写“预训练时候用力”“middle training…用到力”“补回来”，逻辑不清；未核听，不能插入否定词推定训练方案。shownotes仅支持Force Policy名称与研究方向。",
+      "critical": true
+    },
+    {
+      "id": "C12",
+      "claim": "先搭数据再做模型的理由是 infra 不可逆（动一块补一块）与文化/人才吸引；代价是一段时间看起来慢；应对是战略定力与「把你的路走到最极致」；穹彻两三年内打基本盘不可动摇。",
+      "report_anchor": "接受在这段时间里看起来落后",
+      "support": "direct",
+      "source_ids": [
+        "S2"
+      ],
+      "evidence": "31:32–35:58（战略选择、非夕经历、infra 不可逆、骨骼比喻、两伤害、看前漫[校正为看起来慢]、战略定力、33:43 两三年基本盘）。",
+      "critical": true
+    },
+    {
+      "id": "C13",
+      "claim": "决策方法：至少十年终局倒推当下（不求 exact 画像、求阶段 pattern）；重大决策先逻辑推演后直觉拍板，直觉是大量思考 train 出的模型；不安以金刚经三心不可得与「硬件噪声」框架处理。",
+      "report_anchor": "「做重大决策，先做逻辑推演，推演完之后直觉再拍板」",
+      "support": "direct",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "evidence": "33:43–40:52（at least 10 年、基本盘、金刚经 36:03、硬件噪声 36:23、pattern 38:00、直觉 38:48、世界模型演练 40:00）。经文措辞按 shownotes 相关提及条目校正。",
+      "critical": true
+    },
+    {
+      "id": "C14",
+      "claim": "能量额度论：总额度有限须阴阳互补分配；额度可经修行提高（观察情绪溯源即瓦解）；戒烟类比软件写硬件；幸福感系于得失则波动，观照平稳反而提高决策成功概率。",
+      "report_anchor": "第二点是额度可以被提高",
+      "support": "direct",
+      "source_ids": [
+        "S2"
+      ],
+      "evidence": "40:52–46:44（能量额度、查克拉、修行练肌、知行合一、软件写硬件、幸福感、道家松弛）。均属嘉宾个人经验，无实证数据。",
+      "critical": false
+    },
+    {
+      "id": "C15",
+      "claim": "《道德经》「企者不立」被用于理解先建系统：系统总做不好=老是踮着脚跑，看起来快但走不远；书的价值是与自身体会形成频率共振。",
+      "report_anchor": "系统总是做不好，就是「老是踮着脚跑」",
+      "support": "direct",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "evidence": "50:12–52:12（道德经、企者不立[ASR文字骑者不利]、踮脚、频率共振）。与 shownotes「企者不立，跨者不行」条目（道德经第二十四章）一致。",
+      "critical": true
+    },
+    {
+      "id": "C16",
+      "claim": "标题有北坡计划，但可用机器转写没有解释其含义；不据文本零命中断言音频中绝未出现，也不猜具体所指。",
+      "report_anchor": "标题的「北坡计划」在可用转写里没有得到解释",
+      "support": "derived",
+      "source_ids": [
+        "S2",
+        "S5"
+      ],
+      "evidence": "1740 段机器转写检索该词无正文命中；音频未逐音核听，RSS 52:41 与 ASR 52:12 之间约29秒未可靠转写。",
+      "critical": true
+    },
+    {
+      "id": "C17",
+      "claim": "转写经由 eacli podcast 远端静默 worker 完成，全程无浏览器 UI 与音频播放；拉回经大小与 SHA-256 原子校验；本地审计 1740 段无重复循环、时间戳单调、尾部间隔正常。审计有两个口径：收据的零 warning 对应下载得到的原始文件，仓库归档版因多出 5 行来源与版权头部，复跑时同样无错误但附带 5 条「非空行缺少时间戳」提示。",
+      "report_anchor": "eacli podcast 远端静默 worker → 大小与 SHA-256 核验拉回",
+      "support": "direct",
+      "source_ids": [
+        "S5"
+      ],
+      "evidence": "artifact 回执：downloaded_sha256=5ade7884…（84736 bytes）核验一致；audit ok=true，max_consecutive_identical=2，无 warnings/errors。归档版 sha256=ef3f35f1…（85267 bytes），复跑 audit_transcript 得 ok=true、segments=1740、errors=[]、warnings=['5 non-empty lines lack transcript timestamps']，该 5 条对应归档头部 5 行。",
+      "critical": true
+    },
+    {
+      "id": "C18",
+      "claim": "卢策吾曾在斯坦福大学从事博士后研究、师从李飞飞等教授；李飞飞是其博士后阶段的导师之一。",
+      "report_anchor": "师从李飞飞等教授",
+      "support": "direct",
+      "source_ids": [
+        "S2",
+        "S4",
+        "S7",
+        "S9",
+        "S10"
+      ],
+      "evidence": "官方 shownotes 嘉宾介绍「曾在斯坦福大学从事博士后研究，师从李飞飞等教授」，相关提及「她是卢策吾在斯坦福大学从事博士后研究时的导师之一」；转写开场主持人「你也是师从李飞飞老师」，卢策吾回应提到斯坦福时期「飞飞也是说这个机器人我们真的要好好考虑一下」；品玩「卢策吾直接在李飞飞指导下完成了博士后研究」；中国网 2026-07-10 「2014 年，他赴美国斯坦福大学人工智能实验室开展博士后研究，导师是……李飞飞教授」；Stanford Profiles 核验李飞飞现为斯坦福计算机系 inaugural Sequoia 教授、Stanford HAI 创始联席主任、World Labs 联合创始人兼 CEO。 年份需区分：中国网写2014年赴斯坦福、品玩写2015年2月；两者对博士后师承的支持一致，对赴任年份不一致。",
+      "critical": true
+    },
+    {
+      "id": "C19",
+      "claim": "嘉宾认为中美产业早期都存在拔苗助长，同时承认热潮加速了产业增长。",
+      "report_anchor": "中美竞争与资本热情，会不会造成「拔苗助长」",
+      "support": "direct",
+      "source_ids": [
+        "S2"
+      ],
+      "evidence": "23:53–24:22。克制与热潮的利弊共同进入正文。",
+      "critical": true
+    },
+    {
+      "id": "C20",
+      "claim": "嘉宾认为现有diffusion需要改造，强调高效实验体系用于筛选下一代模型方案；快两年建成从数据到模型的流水线为自述。",
+      "report_anchor": "模型会变，验证模型的系统要先建好",
+      "support": "direct",
+      "source_ids": [
+        "S2"
+      ],
+      "evidence": "26:39–28:10。没有外部对照实验，不把嘉宾判断外推到全部扩散模型。",
+      "critical": true
+    },
+    {
+      "id": "C21",
+      "claim": "主持人回忆按卢策吾建议看历届诺奖解决了什么问题，用来训练问题审美。",
+      "report_anchor": "提升「问题审美」的具体练习",
+      "support": "direct",
+      "source_ids": [
+        "S2"
+      ],
+      "evidence": "37:05–37:28，为主持人转述建议及自身感受。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "00:00 开场与 2014 年斯坦福起点（含嘉宾履历、师从李飞飞、跨学科组织）",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4",
+        "S7",
+        "S9",
+        "S10"
+      ],
+      "report_anchor": "十年预热：从「太早了」到想象空间打开",
+      "notes": "开场同时给出嘉宾履历（斯坦福博士后、师从李飞飞等教授），报告在概览与事实核验表两处落笔，外部来源见 S7、S9、S10。"
+    },
+    {
+      "id": "U02",
+      "title": "02:33 2015 年就开始做机器人，太早了吗？（含十年最大变化、人才筛选器、学术领导力）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "report_anchor": "十年预热：从「太早了」到想象空间打开"
+    },
+    {
+      "id": "U03",
+      "title": "08:36 天才聚在一起之后，怎么让他们一起工作（连接密度、师徒制、人才培养、AI 时代学术与道）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "report_anchor": "天才协同与师徒制"
+    },
+    {
+      "id": "U04",
+      "title": "14:50 机器人怎么越学越聪明？（变化年份、Scaling Law 两件事、遥操作 vs 无本体、数据基建）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "report_anchor": "物理世界的 Scaling Law：两件朴素的事"
+    },
+    {
+      "id": "U05",
+      "title": "17:35 普通人也可以接单给机器人采数据（滴滴式系统、AI 质检、reward、数据大脑）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "report_anchor": "让普通人采数据：分布式数据工厂"
+    },
+    {
+      "id": "U06",
+      "title": "20:14 合成的数据更多了，信息量也增加了吗？（组合泛化、显微镜、战略克制与遥操作学费、传方不传火、单技能通用、拔苗助长、三年共识、UMI 质量、有效小时数、打标签配方、diffusion 与流水线）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "report_anchor": "合成数据的边界与战略克制",
+      "notes": "正文已展开拔苗助长问答、diffusion与实验体系、快两年建成流水线。ASR「1560」不据此推定行业进展百分比。"
+    },
+    {
+      "id": "U07",
+      "title": "28:27 机器人要干好活，为什么离不开手感？（力控三点、全球自评、Force Policy、力 UMI 成本规划）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "report_anchor": "力控：嘉宾眼中的第一性原理"
+    },
+    {
+      "id": "U08",
+      "title": "33:08 先搭数据再做模型，接受一段时间的慢（infra 不可逆、骨骼比喻、两伤害、战略定力）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "report_anchor": "先系统后模型：代价与定力"
+    },
+    {
+      "id": "U09",
+      "title": "35:58 做完决定，怎么面对随之而来的不安？（十年终局、金刚经、硬件噪声、诺奖审美法、pattern 推演、直觉拍板、世界模型演练）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "report_anchor": "谋于十年：终局推演与直觉拍板",
+      "notes": "正文已补主持人回忆的诺奖问题审美练习，约37:05–37:28。"
+    },
+    {
+      "id": "U10",
+      "title": "40:52 你是碳基生物，不可能一直能量满满（能量额度、修行、软件写硬件、幸福感、松弛与环境、道理就那么些、演员与导演、祭祖祭天）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "report_anchor": "行在当下：能量、情绪与松弛"
+    },
+    {
+      "id": "U11",
+      "title": "50:12 「企者不立」：别老是踮着脚跑（《道德经》、频率共振；ASR末段52:12，之后内容未核听）",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "report_anchor": "企者不立：别老是踮着脚跑"
+    },
+    {
+      "id": "U12",
+      "title": "shownotes 非章节内容：嘉宾介绍（含斯坦福博士后、师从李飞飞等教授）、相关提及（李飞飞/UMI/RoboPocket/AnyGrasp/RT-2/力位混合控制/Force Policy/世界模型/三段经文）、音乐与创作团队、免责声明",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S4",
+        "S10"
+      ],
+      "report_anchor": "关键数字与事实核验",
+      "notes": "相关提及条目用于专名核验与术语解释（RT-2 按官方口径记为视觉—语言—动作模型）；嘉宾介绍与相关提及共同支撑「师从李飞飞等教授」这条履历事实，外部来源见 S7、S9、S10；音乐与团队信息用于版权段。"
+    }
+  ],
+  "limitations": [
+    "企业数据规模、人员效率、力控优势和系统建成时间均为嘉宾自述，缺少独立运行数据与第三方评测。",
+    "有效小时定义、两段遥操作经历的主体和先后未交代；不替来源补齐。70万落在几十万范围，不能称数值冲突。",
+    "全文依据机器转写而非逐音核听；20T、1560、GP6等字词存疑。RSS末尾约29秒没有可靠文字，不能推定为音乐。北坡计划在可用文字中没有解释。",
+    "来源年份差异：中国网写2014年赴斯坦福、品玩写2015年2月；报告把嘉宾回忆与报道分别归属。副院长见上交新闻；长江学者见节目说明与中国网。",
+    "RoboPocket逐帧质量评估为新华财经报道的功能描述，官网首页不作为该功能依据。RT-2定义经独立reviewer核对arXiv2307.15818；没有开展机器人实验。",
+    "原始下载回执0 warning；归档版新增来源版权头部，复跑audit为0 error、5条无时间戳头部提示。正文只留收据链接。",
+    "后半段哲学与心理经验是个人观点，不构成科学验证；对典籍的口头举例不作为成书史事实。",
+    "31:02–31:21 的 ASR 对预训练与 mid-training 的力信号安排有歧义；删去校读时擅加的“不”，保留原转写与存疑标记，不把具体训练方案视为已核事实。"
+  ]
+}

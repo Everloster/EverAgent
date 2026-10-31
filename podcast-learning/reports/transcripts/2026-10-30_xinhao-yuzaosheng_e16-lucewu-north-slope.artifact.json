@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/6ae464c497726cd4675a38af",
+  "source_host": "www.xiaoyuzhoufm.com",
+  "pipeline": "eacli podcast 远端静默 worker",
+  "service_version": "whisper.cpp-v1.9.1-sm120",
+  "language": "zh",
+  "audio_size_bytes": 303466600,
+  "audio_size_scope": "worker 下载或转码后的音频文件；不同于 RSS enclosure 压缩媒体大小",
+  "rss_duration_seconds": 3161,
+  "transcript_end_seconds": 3132,
+  "segments": 1740,
+  "downloaded_transcript_size": 84736,
+  "downloaded_transcript_sha256": "5ade7884fcf52aa8a724177a0d65e021277c988ab5fbfb877878d21f7749fe4c",
+  "archived_transcript_size": 85267,
+  "archived_transcript_sha256": "ef3f35f16457b2eb5969212796a305956b83a485103a1fdc2d419f76752c288a",
+  "archived_change": "仅增加来源与版权头部，ASR 正文和时间戳未改",
+  "audio_playback": false,
+  "interactive_browser": false,
+  "transfer": {
+    "atomic": true,
+    "original_size_and_sha256_verified": true
+  },
+  "audit": {
+    "ok": true,
+    "segments": 1740,
+    "duration_seconds": 3132,
+    "max_consecutive_identical": 2,
+    "warnings": [],
+    "errors": []
+  },
+  "limitations": [
+    "RSS 时长 52m41s；ASR 末段到 52:12，尾部约 29 秒（片尾音乐区）未得到可靠转写，不将其当作整段音频的无遗漏证明。",
+    "单集标题中的「北坡计划」未在正片对话转写中出现，报告按对话实际内容处理并已在 Limitations 说明。"
+  ]
+}

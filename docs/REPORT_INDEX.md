@@ -7,6 +7,8 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-11-01 | [狂飙中的 AI 2026：模型发布、收入增长与算力债务](../podcast-learning/reports/2026-10-26_tulong-zhishu_ai-2026-version-race.md) | podcast-learning |
+| 2026-10-31 | [卢策吾谈具身智能十年：先建数据系统，再等 Scaling Law](../podcast-learning/reports/2026-10-30_xinhao-yuzaosheng_e16-lucewu-north-slope.md) | podcast-learning |
 | 2026-10-31 | [余一聊 Manus：怎样把任务真正交给 Agent](../podcast-learning/reports/2026-10-28_xiaoyuzhou-ai-lianjinshu_yuyi-manus-delegation.md) | podcast-learning |
 | 2026-10-30 | [模型不变，Agent 如何做得更好：一项 Harness 实验](../ai-learning/reports/paper_analyses/46_evolve_the_harness_2026.md) | ai-learning |
 | 2026-10-30 | [Personal Context 正交论：哪些积累值得保留，怎样持续维护](../ai-learning/reports/knowledge_reports/PersonalContext正交论_PC构建指南_20261010.md) | ai-learning |
@@ -30,8 +32,6 @@
 | 2026-10-25 | [人民公园说AI：最贵 Token 干最脏的活，买的是模型还是注意力](../podcast-learning/reports/2026-10-23_xiaoyuzhou-renmingongyuan-ai_expensive-token-dirty-work.md) | podcast-learning |
 | 2026-10-25 | [个人 Context 与 Memory 三层架构：OpenViking 多设备、手机环境与 APP 跨对话记忆](../ai-learning/reports/knowledge_reports/个人Context与Memory三层架构_OpenViking_手机环境_APP跨对话_深度解析_20261025.md) | ai-learning |
 | 2026-10-25 | [vLLM 在 GB300 NVL72 上服务 DeepSeek-V4.1-Flash：P/D 分离 + Wide-EP 的机制拆解与口径核验](../ai-learning/reports/knowledge_reports/vLLM_DeepSeek-V4.1-Flash_PD分离与Wide-EP机架级服务_深度解析_20261025.md) | ai-learning |
-| 2026-10-25 | [vLLM Humming：量化推理 GEMM Kernel 库的设计、支持矩阵与证据边界](../ai-learning/reports/knowledge_reports/vLLM_Humming_量化推理Kernel库_深度解析_20261025.md) | ai-learning |
-| 2026-10-25 | [ThinkingBox：把数据库终态评分器变成 RL 奖励——Agent 后训练的可执行奖励链拆解](../ai-learning/reports/knowledge_reports/Microsoft_ThinkingBox_数据库评分转RL奖励与Agent后训练_深度解析_20261025.md) | ai-learning |
 
 ## 🤖 AI Learning（152 篇）
 
@@ -315,10 +315,12 @@
 | 2026-04-20 | [Qwen2.5-3B GRPO 强化学习微调](../ai-practice/experiments/exp_004_qwen25_grpo_finetune.md) | — |
 | 2026-04-20 | [HuggingFace Hub 模型与数据集管理](../ai-practice/experiments/exp_002_huggingface_basics.md) | — |
 
-## 🎙️ Podcast Learning（109 篇）
+## 🎙️ Podcast Learning（111 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-11-01 | [狂飙中的 AI 2026：模型发布、收入增长与算力债务](../podcast-learning/reports/2026-10-26_tulong-zhishu_ai-2026-version-race.md) | `podcast`, `ai-2026`, `version-race`, `rsi`, `capex`, `neocloud` |
+| 2026-10-31 | [卢策吾谈具身智能十年：先建数据系统，再等 Scaling Law](../podcast-learning/reports/2026-10-30_xinhao-yuzaosheng_e16-lucewu-north-slope.md) | `podcast`, `embodied_ai`, `robot_learning`, `scaling_law`, `data_infra`, `force_control` |
 | 2026-10-31 | [余一聊 Manus：怎样把任务真正交给 Agent](../podcast-learning/reports/2026-10-28_xiaoyuzhou-ai-lianjinshu_yuyi-manus-delegation.md) | `podcast`, `manus`, `personal_agent`, `multi_agent`, `context_engineering`, `harness` |
 | 2026-10-27 | [纳德拉谈企业智能：知识、反馈、模型选择与 Agent 治理](../podcast-learning/reports/2026-10-27_bilibili-nadella_enterprise-intelligence.md) | `enterprise_ai`, `personal_context`, `agent_security`, `model_routing`, `evaluation` |
 | 2026-10-27 | [大模型推理全链路：服务质量、量化、编译搜索与 Agent 缓存](../podcast-learning/reports/2026-10-27_bilibili-krillinai_llm-inference-stack.md) | `llm_inference`, `serving_quality`, `quantization`, `compiler`, `radix_attention`, `kv_cache` |

@@ -1,0 +1,1970 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-30_xinhao-yuzaosheng_e16-lucewu-north-slope.md",
+  "quality_tier": "important",
+  "revision_round": 5,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "GLM-5.3",
+        "harness": "codex-cli（Orca dispatched worker）",
+        "run_id": "e16-lucewu-r5-bounded-locator-reverify-20261031",
+        "continued_from_run_id": "e16-lucewu-r4-bounded-reverify-20261031",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": "",
+        "effort": "xhigh",
+        "permissions": "danger-full-access filesystem; no external generation capability invoked; only this review file written",
+        "identity_observation": {
+          "command": "python3 scripts/agent_identity.py --json",
+          "resolved": true,
+          "harness_resolved": true,
+          "current_model_confirmed": true,
+          "observed_model": "GLM-5.3",
+          "model_confidence": "session-bound",
+          "configured_model": "glm-5.3-flash",
+          "effort_evidence": "按 argv[0] 精确匹配同一会话 Codex 进程 ancestry，命令行含 -m GLM-5.3 与 model_reasoning_effort=xhigh；配置文件不作为运行证明。"
+        }
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 97,
+        "request_coverage": 95,
+        "reasoning_quality": 95,
+        "readability": 95,
+        "limitations": 96
+      },
+      "score_reasons": {
+        "evidence_fidelity": "延续同一独立审阅会话：r3 已全量实读原转写、轻校稿、shownotes 与 S1-S10，r4 已逐项核验五项实质返修；本轮只核对定位修订。实际比对原转写 31:32-33:43 与官方 33:08 章节后，确认 strategy 脚注区间准确，内容地图也不再声称官方章节与脚注区间只差几秒，而是说明二者不逐项对齐。除 evidence 生成 run_id 外，报告事实论证、polished 与原转写未变且哈希匹配。",
+        "request_coverage": "复用本会话独立来源地图核对 U01-U12：开场与十个官方章节、核心论证、关键案例、反方边界、Limitations 和思考追问仍完整，定位修订未删内容。shownotes 的支持性荣誉与互动提问仍为合理省略，不构成核心遗漏；R1-R8 继续成立。",
+        "reasoning_quality": "r4 已消除 C11 过度补义与 C3 推断混用，本轮定位修正只让官方章节标签与原转写脚注各司其职，没有引入因果或时间线推断。报告仍区分嘉宾自述、主持人观察、公开报道与作者分析。",
+        "readability": "内容地图先说明官方精选时间戳与脚注转写区间不是同一对齐体系，再用 33:08/31:32 举例，读者更容易理解表格与脚注的关系；strategy 脚注定位到实际讨论区间。19 个本地链接、10 个正文锚点和 17 个脚注均有效，Limitations 标题仍满足门禁。本 Reviewer 无渲染器，未冒认主会话截图检查。",
+        "limitations": "r4 的关键边界均保留：训练阶段歧义、尾部 29 秒未核听、遥操作时序不明、企业自述、来源年份差异和外部功能报道边界。本轮仅修正引用定位，没有发现新的不确定性需要补充。"
+      },
+      "critical_claim_ids_checked": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17",
+        "C18",
+        "C19",
+        "C20",
+        "C21"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08",
+        "U09",
+        "U10",
+        "U11",
+        "U12"
+      ],
+      "source_content_map": [
+        {
+          "id": "M01",
+          "title": "00:00-02:33 开场：节目与身份、2014 年斯坦福起点、物理智能的硬件噪声与验证周期、跨学科组织 know-how",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3",
+            "S4"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01"
+          ],
+          "notes": "沿用本会话 r3 全量实读；定位修订未影响该单元。"
+        },
+        {
+          "id": "M02",
+          "title": "02:33 2015 年开始是否太早：早晚只是标签；十年最大变化是人才与政策；早期筛选器与学术领导力",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3",
+            "S4"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02"
+          ],
+          "notes": "沿用本会话实读；核心内容仍完整。"
+        },
+        {
+          "id": "M03",
+          "title": "08:36 天才协同与师徒制：连接密度、好导师与好项目、taste、AI 时代术与道",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3",
+            "S4"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03"
+          ],
+          "notes": "沿用本会话实读；定位修订未影响该单元。"
+        },
+        {
+          "id": "M04",
+          "title": "14:50 Scaling Law 两件事：可规模化数据与可吃数据的网络；遥操作、无本体采集、UMI/RoboPocket 与数据基建",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3",
+            "S4"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04"
+          ],
+          "notes": "沿用本会话实读；仍区分官方章节时间与脚注转写区间。"
+        },
+        {
+          "id": "M05",
+          "title": "17:35 普通人接单采数据：分布式系统、设备、无雇佣关系、AI 质检、reward、know-how、数据大脑与末端升级",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3",
+            "S4"
+          ],
+          "matched_coverage_unit_ids": [
+            "U05"
+          ],
+          "notes": "沿用本会话实读；定位修订未影响该单元。"
+        },
+        {
+          "id": "M06",
+          "title": "20:14 合成数据与战略克制：信息量、真实数据打底、显微镜、遥操作学费、传方不传火、AnyGrasp、拔苗助长、UMI 质量债、标签实验、diffusion 与流水线",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3",
+            "S4"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06"
+          ],
+          "notes": "沿用本会话实读；历史补齐内容仍保留。"
+        },
+        {
+          "id": "M07",
+          "title": "28:27 手感与力控：鲁棒性、省 token/数据量、安全；全球自评；Force Policy、带力 UMI、训练阶段安排歧义与整套系统",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3",
+            "S4"
+          ],
+          "matched_coverage_unit_ids": [
+            "U07"
+          ],
+          "notes": "沿用 r4 定向复核；C11 歧义边界未因定位修订回退。"
+        },
+        {
+          "id": "M08",
+          "title": "先搭数据再做模型：官方 33:08 章节；原转写战略选择、infra 不可逆、骨骼比喻、两伤害、短期慢与战略定力位于 31:32-33:43",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3",
+            "S4"
+          ],
+          "matched_coverage_unit_ids": [
+            "U08"
+          ],
+          "notes": "本轮实测原转写 31:32 已开始“这肯定是一个战略选择”，至 33:43 转入终局问题；strategy 脚注与内容地图说明均准确。"
+        },
+        {
+          "id": "M09",
+          "title": "35:58 面对不安：十年终局、基本盘、金刚经、硬件噪声、诺奖审美、pattern 推演、直觉拍板与世界模型演练",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3",
+            "S4"
+          ],
+          "matched_coverage_unit_ids": [
+            "U09"
+          ],
+          "notes": "沿用本会话实读；33:43 后的决策讨论定位清楚。"
+        },
+        {
+          "id": "M10",
+          "title": "40:52 碳基生物能量：总额度、阴阳互补、修行、软件写硬件、幸福感、松弛与环境、道理有限、可控变量、祭祖祭天、演员与导演",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3",
+            "S4"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10"
+          ],
+          "notes": "沿用本会话实读；定位修订未影响该单元。"
+        },
+        {
+          "id": "M11",
+          "title": "50:12 企者不立：《道德经》、系统与踮脚跑、原文背不出、频率共振；ASR 至 52:12，尾部约 29 秒未核听",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3",
+            "S4"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11"
+          ],
+          "notes": "沿用本会话实读；尾部边界保留。"
+        },
+        {
+          "id": "M12",
+          "title": "shownotes 非章节内容：嘉宾履历与荣誉、相关提及术语、音乐团队、互动提问与免责声明",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3",
+            "S4"
+          ],
+          "matched_coverage_unit_ids": [
+            "U12"
+          ],
+          "notes": "沿用本会话实读；关键履历、术语、版权团队和免责边界覆盖，2018/2023 荣誉与互动提问为支持性省略。"
+        }
+      ],
+      "source_ids_checked": [
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8",
+        "S9",
+        "S10"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6",
+        "R7",
+        "R8"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "required_fixes": [],
+      "resolved_from_previous_review": [
+        "内容地图删除“几秒偏差”的误导性说法，明确官方精选时间戳与脚注转写区间不逐项对齐，并以官方 33:08 与转写 31:32 为例。",
+        "[^strategy] 定位由官方章节区间 33:08-35:58 修正为实际讨论区间 31:32-33:43，并与相邻 force/decision 脚注的用途区分。"
+      ],
+      "notes": "这是延续同一独立审阅会话的 r5 定向定位复验，不重新声称开展全量来源阅读；全量来源地图来自本会话 r3，实质返验来自 r4。本轮实测原转写 31:32-33:43 与官方章节标记，核对两处定位、快照、链接和转写审计，未发现新增问题，当前无未解决项。",
+      "verification": {
+        "review_basis": "bounded continuation",
+        "target_snapshot": {
+          "report_sha256": "730ebca84bf5e5fcb81f5c73b2534b9436424a83132a1021559425bd3deb39a1",
+          "evidence_sha256": "7db016331530728982a9c1490a8aaaa3d6bdb89a6768b241b27c66c93cd35214",
+          "polished_sha256_unchanged": "f4715f2012aa828ebd57f84136a58d09e041ceaf7a27606a549bb67a4689e085",
+          "matched": true
+        },
+        "locator_checks": {
+          "official_shownotes": "33:08 先搭数据再做模型，接受一段时间的慢",
+          "raw_transcript_strategy_range": "31:32-33:43",
+          "raw_start": "31:32 “这肯定是一个战略选择”",
+          "raw_end": "33:41-33:43 转入“你想怎么选”后接 33:43 终局问题",
+          "report_map": "明确二者不逐项对齐并以 33:08/31:32 为例",
+          "strategy_footnote": "31:32-33:43"
+        },
+        "transcript_audit": {
+          "command": "python3 podcast-learning/scripts/audit_transcript.py <transcript> --json",
+          "transcript_sha256": "ef3f35f16457b2eb5969212796a305956b83a485103a1fdc2d419f76752c288a",
+          "ok": true,
+          "segments": 1740,
+          "duration_seconds": 3132,
+          "max_consecutive_identical": 2,
+          "warnings": [
+            "5 non-empty lines lack transcript timestamps"
+          ],
+          "errors": [],
+          "interpretation": "5 条 warning 对应归档头部非正文行；未混用 raw 收据零 warning。"
+        },
+        "link_checks": {
+          "local_links": 19,
+          "local_missing": 0,
+          "internal_anchors": "10/10 resolved",
+          "footnote_unused": 0,
+          "footnote_undefined": 0,
+          "limitations_heading": "retained"
+        },
+        "rendering": {
+          "performed": false,
+          "reason": "本 Reviewer 会话无无 UI 渲染器；主会话已查看 r4 宽屏首屏截图，但不计为本 Reviewer 实测。"
+        },
+        "quality_check": {
+          "command": "python3 scripts/report_quality.py check podcast-learning/reports/2026-10-30_xinhao-yuzaosheng_e16-lucewu-north-slope.md",
+          "exit_status": 0,
+          "decision": "pass",
+          "score": 95.8,
+          "errors": 0,
+          "warnings": 0
+        }
+      }
+    }
+  ],
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "glm-5.3",
+            "harness": "codex-cli 0.166.0（Orca dispatched worker）",
+            "run_id": "e16-lucewu-independent-review-20261031",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": "",
+            "effort": "high",
+            "permissions": "danger-full-access filesystem; network via eacli typed web.read on a remote device; only this review file written"
+          },
+          "scores": {
+            "evidence_fidelity": 90,
+            "request_coverage": 86,
+            "reasoning_quality": 92,
+            "readability": 93,
+            "limitations": 95
+          },
+          "score_reasons": {
+            "evidence_fidelity": "逐项对照完整原始转写、全文轻校读稿、官方 shownotes、artifact 收据，并用 eacli typed web.read 复查上海交大、品玩与东方财富三份外部引用；2014/2023-24、几十万有效小时、一年多基建、快两年流水线、力控三理由、Force Policy 与企者不立等主线均有来源。扣分点是报告把“有效小时数”解释为“剔除了低质量数据后的口径”，但来源只给出名词未给出剔除规则；“力控在具身智能圈的确不是主流叙事”是作者外部概括而无本报告引用支撑；“纯视觉路线（如 RT-2 一系）”与 RT-2 视觉—语言—动作模型的性质不够准确。存疑的 20T、1560、GP6 均保留 [?]，70 万小时复述与嘉宾几十万口径的矛盾处理正确。",
+            "request_coverage": "独立来源地图与官方开场加 10 个章节相符，报告按时间顺序覆盖十年变化、人才培养、Scaling Law、分布式数据生产、合成数据、UMI 质量债、力控、先系统后模型、终局决策、能量情绪与《道德经》，且可独立阅读。R4 明确要求核验卢策吾、张津剑、李飞飞三类关键人名，但正文仅在延伸阅读链接中顺带出现“李飞飞 World Labs”，没有把“师从李飞飞等教授”这一嘉宾履历事实纳入背景或事实核验表；因此登记 R4 为未完整满足。其余 R1-R6 均已检查，未发现核心章节遗漏。",
+            "reasoning_quality": "报告抓住了“想象空间先于技术兑现”“数据生产系统先于模型发布”“力控是鲁棒性、数据效率与安全的交叉变量”三条主链，并能区分嘉宾自述、主持人观察、公开事实和作者 [推测]。对遥操作“第一波未跟”与后来“第一个做遥操作并部署 20T[?] 后刹住”的时间关系交代不够顺滑，容易让读者误解为前后矛盾；RT-2 路线命名也需更准确。整体推理没有把厂商自评当成独立事实，反方与待验证问题保留充分。",
+            "readability": "标题、速览、问题定义、术语解释、内容地图、章节主线、关键数字表、金句、Limitations 与追问形成完整阅读路径；时间戳与脚注基本可追踪，口语引文经过校读且未增删语义。表格和章节密度适合长报告，普通中文读者可以不依赖播客上下文理解。需要修订的是少数术语与口径表述，而非结构或表达质量。",
+            "limitations": "Limitations 如实覆盖访谈自述、机器转写、尾部 29 秒、专名与数字存疑、70 万小时矛盾、外部核验边界以及“北坡计划”零命中，事实/推测边界总体清楚。独立复跑 archived transcript 审计得到 ok=true、1740 段、0 error，但有 5 条头部非时间戳 warning；artifact 收据的 audit.warnings=[] 对应下载 raw transcript，报告/evidence 未明确这个归档版差异，应补充说明以免“零 warning”与实测不一致。"
+          },
+          "critical_claim_ids_checked": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "C16",
+            "C17"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07",
+            "U08",
+            "U09",
+            "U10",
+            "U11",
+            "U12"
+          ],
+          "source_content_map": [
+            {
+              "id": "M01",
+              "title": "00:00-02:33 开场：节目、主持人、嘉宾身份、2014 年斯坦福起点、物理智能难点与跨学科组织",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01"
+              ],
+              "notes": "报告覆盖开场问题、卢策吾身份、2014 起点、硬件噪声、验证周期、非夕到穹彻的跨学科 know-how；李飞飞导师关系属于 shownotes 嘉宾背景，未在正文明确复核，已并入 U12/R4 修订项。"
+            },
+            {
+              "id": "M02",
+              "title": "02:33-08:36 2015 年是否太早、人才资本与政策基本盘、早期学生筛选器、学术领导力与连接密度",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "报告保留“太早但前沿更重要”、基本盘、通用机器人无人提、顶尖学生筛选器、学术领导力与人才连接密度，并标明学生出路是嘉宾自述样本。"
+            },
+            {
+              "id": "M03",
+              "title": "08:36-14:50 师徒制、博士培养、好导师与好项目、AI 术道之分、2023-24 想象空间转折",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "师徒制、taste 与火候、项目练习、AI 学术与道、2023 ChatGPT 打开想象空间均进入正文；2023 与 2015 技术内容差别不大的重要反方也被保留。"
+            },
+            {
+              "id": "M04",
+              "title": "14:50-17:35 Scaling Law 两条件、遥操作与无本体采集、外骨骼到 UMI/RoboPocket、一年多数据基建",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3",
+                "S4",
+                "S8"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "两条件、未跟第一波遥操作、外骨骼→UMI→RoboPocket、滴滴式管理、设备故障与精度、一年多基建、爬坡容量均已覆盖；东方财富独立读取确认 RoboPocket 2026-01-12 发布与手机采集能力。"
+            },
+            {
+              "id": "M05",
+              "title": "17:35-20:14 普通人接单、无雇佣关系、AI engine 质检、reward 导师系统、科学家逐条 check 与数据大脑",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "分布式生产、设备发放、无雇佣、AI 审核、reward 收敛、know-how 训练评估模型、模型需求驱动任务和个位数人力清洗均按原意转述。"
+            },
+            {
+              "id": "M06",
+              "title": "20:14-28:27 合成数据信息量、显微镜比喻、20T 后战略克制、传方不传火、AnyGrasp 单技能通用、三年共识、UMI 质量与有效小时数",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3",
+                "S4",
+                "S8"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "报告覆盖全部核心技术主线并保留 20T/1560/GP6 存疑。需要作者理顺“第一波未跟”与“第一个做遥操作后刹住”的时序关系，并避免把 RT-2 称为纯视觉路线；“有效小时数=剔除低质量”是报告补义，来源未说明规则。"
+            },
+            {
+              "id": "M07",
+              "title": "28:27-33:08 力控三理由、全球自评、Force Policy、带力 UMI 的成本与 mid-training 补回规划",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U07"
+              ],
+              "notes": "鲁棒性、token/数据量、安全三点与 Force Policy 规划完整；报告明确“全球最好”是嘉宾自评。作者对“非主流叙事”的外部概括需要标注推测或补独立来源。"
+            },
+            {
+              "id": "M08",
+              "title": "33:08-35:58 infra 不可逆、骨骼比喻、文化与人手、刷 demo 的两个伤害、先数据后模型与战略定力",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08"
+              ],
+              "notes": "基础设施、文化、带宽、不可逆性、短期看起来慢与定力均覆盖，且准确保留“每条路都有成败概率”的边界。"
+            },
+            {
+              "id": "M09",
+              "title": "35:58-40:52 十年终局倒推、基本盘、金刚经三心、硬件噪声、诺贝尔奖审美法、pattern 推演与直觉拍板",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U09"
+              ],
+              "notes": "报告覆盖至少十年、两三年基本盘、三心不可得、情绪噪声、诺奖审美建议、pattern 与“逻辑推演后直觉拍板”，并将人脑世界模型与知识库概念作对照。"
+            },
+            {
+              "id": "M10",
+              "title": "40:52-50:12 能量额度、修行练肌、软件写硬件、幸福感、松弛与环境、道理有限、控制变量、演员与导演、祭祖祭天",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10"
+              ],
+              "notes": "心智与情绪主线没有只做鸡汤化摘要，能量分配、可提高额度、物理系统、戒烟类比、幸福感、环境、道理、控制变量与导演视角均进入正文。"
+            },
+            {
+              "id": "M11",
+              "title": "50:12-52:12 《道德经》、企者不立跨者不行、踮脚跑与频率共振；52:12-52:41 片尾音乐区",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3",
+                "S4",
+                "S5"
+              ],
+              "matched_coverage_unit_ids": [
+                "U11"
+              ],
+              "notes": "报告正确用“企者不立”回扣系统建设，并将作者引申标为 [推测]；RSS 3161 秒与 ASR 3132 秒差值、尾部音乐区处理与 receipt 一致。"
+            },
+            {
+              "id": "M12",
+              "title": "shownotes 非章节背景：嘉宾履历、李飞飞、术语解释、AnyGrasp、RT-2、Force Policy、经文出处、团队版权与免责声明",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3",
+                "S4",
+                "S5",
+                "S6",
+                "S7",
+                "S8"
+              ],
+              "matched_coverage_unit_ids": [
+                "U12"
+              ],
+              "notes": "多数术语、机构、作品与团队信息用于正文或事实表，版权段也保留；但李飞飞师承事实未在正文明确核验，RT-2 的 VLA 性质在追问中被误称为纯视觉路线。外部抽查确认上海交大副院长/穹彻 CEO、2023-11 前后穹彻创立叙事与 RoboPocket 2026-01 发布。"
+            }
+          ],
+          "source_ids_checked": [
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6",
+            "S7",
+            "S8"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [
+            "R4"
+          ],
+          "hard_failures": [],
+          "limitations": [
+            "本复核未播放音频或人工逐音核听，音频级核对依赖 transcript artifact 的下载哈希、静默转写收据与本地文本；未把音频缺失段当作已听证据。",
+            "外部核验只抽查 evidence 登记的 S6、S7、S8 三份网页，未重新验证上海交大页面之外的完整履历、非夕/穹彻工商注册时间或融资运营数据。",
+            "eacli web.read 首次读取东方财富 wap URL 返回后端网络错误；改用同 ID 桌面 URL 复查成功，两者均对应新华财经同文。"
+          ],
+          "required_fixes": [
+            "在背景或关键事实表明确写出“卢策吾曾在斯坦福做博士后研究，师从李飞飞等教授”，并挂 shownotes/嘉宾介绍来源，满足 R4 的关键人名核验。",
+            "删除或改写“有效小时数就是剔除了低质量数据后的口径”：来源只说明使用“有效小时数”，未定义过滤规则；应改为“有效/剔除规则未在节目中说明”。",
+            "把“力控在具身智能圈的确不是主流叙事”改为作者推测，或补独立来源；不得以嘉宾“大家没把力搞清楚”直接推出行业整体叙事。",
+            "将“纯视觉路线（如 RT-2 一系）”改为“不以力反馈为主的视觉/视觉—语言—动作路线”，避免把 RT-2 说成纯视觉模型。",
+            "理顺遥操作段落：先说明第一波热潮未跟进，再说明后来第一个做遥操作/部署 20T[?] 后刹住的代价与克制，避免读者看到前后矛盾；若时序无法从来源确定，保留不确定。",
+            "在报告或 evidence 说明 archived transcript 复跑审计为 ok=true、0 error、5 条头部非时间戳 warning，而 artifact 的空 warnings 对应未加归档头部的 raw transcript。"
+          ],
+          "notes": "结论：needs_revision（schema decision 使用 revise），加权总分 90.55，无 hard failure；因 R4 的李飞飞核验要求未完整进入报告，且存在四处轻量证据/术语口径问题，应先返修再通过。复核流程严格遵守来源优先：先分块完整读取 transcript、polished 与 shownotes 并建立 12 单元独立地图，之后才读取 report 与 evidence；随后复跑 transcript/report/quality 审计，并用 eacli tokenplan catalog → tool select → tool invoke 的 typed web.read 路径抽查三份外部来源。运行时证据：GLM-5.3、Codex CLI 0.166.0、Orca 独立会话（会话标识按公开仓脱敏规则移除）、effort=high、独立 context=true、写入权限仅用于本 review JSON。独立审计实测 archived transcript：size=85267、sha256=ef3f35f16457b2eb5969212796a305956b83a485103a1fdc2d419f76752c288a、lines=1746、segments=1740、duration=3132、max_consecutive_identical=2、warnings=[5 non-empty lines lack transcript timestamps]、errors=[]；report audit 为 ERROR 0/WARN 0。"
+        }
+      ],
+      "decision": {
+        "status": "revise",
+        "score": 90.55,
+        "evaluated_on": "2026-10-31",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "7df97f4dec7059c76bedd9096583ef643bb00481a95b3a6c969d67935a758278",
+        "evidence_sha256": "0dcf92d934af7e7edfc7b891dc7431d0f8921e2fd9e48d6d2e721c1e6099b4c7"
+      }
+    },
+    {
+      "revision_round": 2,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "minimax-m3.1-flash",
+            "harness": "codex-cli 0.166.0（Orca 派发 worker）",
+            "run_id": "e16-lucewu-rev2-independent-review-20261031",
+            "independent_context": true,
+            "explicit_model_override": true,
+            "override_reason": "本轮独立复核由 Orca 派发给 codex-cli worker，会话运行时模型固定为 minimax-m3.1-flash（~/.codex/config.toml: model=MiniMax-M3.1-Flash, model_provider=custom/minimax），与策略默认 reviewer（glm-5.3）不同；按实际运行模型如实登记，不以默认配置或环境提示冒充核实。",
+            "runtime_evidence": "CODEX_VERSION=0.166.0；ORCA_APP_VERSION=1.4.245；~/.codex/config.toml 中 model=MiniMax-M3.1-Flash；本次复核先读完原转写/校读稿/shownotes 建立独立来源地图后才读报告与证据账本；未读取生成者的推理过程；未修改报告正文、证据账本或任何共享索引。",
+            "same_model_family_as_generator": true,
+            "same_model_note": "reviewer 与本篇生成模型同族（均 minimax-m3.1-flash），harness 不同（codex-cli vs evidence 记录的 claude-code）；按实际运行如实登记，同模型盲区风险已在 limitations 与 notes 中说明。"
+          },
+          "scores": {
+            "evidence_fidelity": 82,
+            "request_coverage": 83,
+            "reasoning_quality": 85,
+            "readability": 84,
+            "limitations": 83
+          },
+          "score_reasons": {
+            "evidence_fidelity": "逐项复核了完整原转写（1746 行 / 1740 段，全文通读）、全文轻校读稿、官方 shownotes 与 artifact 收据；独立复跑 podcast-learning/scripts/audit_transcript.py 得 ok=true、segments=1740、duration=3132、max_consecutive_identical=2、errors=[]、warnings=['5 non-empty lines lack transcript timestamps']，并做字节级校验独立确认归档版 = 下载 raw（sha256=5ade7884…、84736 字节）+ 531 字节头部，与 artifact 的「仅增加来源与版权头部」完全吻合；「北坡计划」确认只出现在标题行、正片零命中。外部来源按 Token Plan-first（eacli tokenplan catalog → tool select --capability web.read/web.search → tool invoke，zhipu 只读能力）逐一复核：中国网原文确为「2014 年……导师是……李飞飞教授」并含「让学生回归第一性原理」；Stanford Profiles 确为 inaugural Sequoia Professor、HAI Founding Co-Director、World Labs 联合创始人兼 CEO；上交新闻页确为「人工智能学院副院长、穹彻智能（Noematrix）联合创始人兼 CEO」并获 ACM China 杰出学者；东方财富（新华财经 2026-01-12）确为 RoboPocket 发布并含「即时诊断每一帧数据的质量」「动态评估数据价值」；品玩确为非夕 2016、穹彻 2023-11 从非夕拆分；arXiv 2307.15818 确认 RT-2 为 DeepMind 2023 年视觉—语言—动作模型，报告的 RT-2 术语本轮已准确。扣分集中在若干来源未支持的表述：(1) 把主持人一句「70 万小时」与嘉宾「几十万有效小时」判为「矛盾/口径不一致」——70 万本就在几十万区间内，节目从未把两者作为对立表述，且该句在无说话人分离的 ASR 中说话人不可判定；该错误在正文、事实核验表、Limitations 各出现一次。(2)「主持人提到 2023 年『给气球剃胡子』」——主持人只说「当年」，同处问答（「那个时候如果没有大模型，你能做吗」「其实那时候已经是有大模型的影子了」）指向大模型之前的时期，公开报道中 AnyGrasp 相关成果自 2021 年即已出现，该年份是报告自行添加。(3)「原音不清晰」与「尾部约 29 秒属片尾音乐区」两处音频属性断言未经任何音频核验（artifact 记录 audio_playback=false），可支持的只有 shownotes 的音乐条目与 ASR 未覆盖该区间。(4) ASR 的「数域场」被直接写成「数据厂」且与「素材厂」并列为两处地点，校读稿本身只标了原音。(5) 事实核验表称上交新闻页可核验「长江学者特聘教授」，该页只确认副院长与 ACM China 杰出学者。(6) 报告同时引用品玩却称「公开报道与官方 shownotes 一致」，而品玩写 2015 年 2 月赴斯坦福做博士后、中国网写 2014 年。(7) evidence 的 U06/U09 标题把「拔苗助长」「诺奖审美法」「diffusion 与流水线」登记为已覆盖，正文并无对应内容。这些都不动摇报告的核心结论（主线数字、归因、术语与边界均正确），但密度足以让「关键数字与事实核验」表的可信度受损，故不给高分。",
+            "request_coverage": "独立来源地图（28 单元）先于报告建立：官方 shownotes 的开场 + 10 个精选章节在报告中都有对应章节，内容地图表格与实际标题一一吻合，报告可独立阅读、不依赖播客上下文；主线（数据生产系统先于模型发布）、核心例子（气球剃胡子/AnyGrasp/表面处理通用/企者不立/软件写硬件/能量额度）与主要反方（资本入场≠技术兑现、合成数据信息量存疑、UMI 数据质量债、力控只是嘉宾自评不外推行业、过度思考无用）均已进入正文。缺口三处：20:14–28:27 区间「中美竞争下的拔苗助长」整段问答（嘉宾答「存在但只是比例问题，两边都有；产业早期热情太高是合理的，也加速了产业增长」）完全未收录；35:58–40:52 区间主持人转述的「把历史上所有诺贝尔奖看一遍、看他们为什么得奖、解决了什么问题」以提升问题审美这一具体方法未收录；26:39–28:10 的模型框架论证（diffusion 不够、下一代模型框架、需要实验效率体系、两年建成工业流水线）只以「快两年」出现在事实核验表，正文没有展开，而这恰是「为什么值得先花两年」的技术理由。evidence 的 source_coverage 把这三项写进 U06/U09 标题，构成覆盖登记与正文实际内容不符。R1/R3/R5/R6/R7 已核验通过；R4 的关键人名、机构与主要数字确已核验，但存在上述 (1)(2)(6) 的来源误述；R2 的 10 章节逐一登记形式上完成，但登记内容高于正文实际覆盖。按 deep 播客「核心单元遗漏记 core_requirement_missing」的口径衡量：本篇的章节级与主线级内容均未缺失，缺的是三处章节内子话题，故记为覆盖缺口与必改项，不升级为 core_requirement_missing。",
+            "reasoning_quality": "主推理链成立且有分寸：把「Scaling Law」还原为供应链问题并明确标注为本文归纳 [推测]；明确区分「资本相信可能性」与「技术已兑现」；拒绝用嘉宾「大家没把力搞清楚」推出行业整体路线分布；明确拒绝替节目补「有效小时」的过滤规则；遥操作两段经历并置而不强行编成时序；末尾留 5 个可操作的开放问题，并连接知识库已有的世界模型三分类。扣分在三处推理缝隙：把 70 万小时与几十万判为「矛盾」是无效推论（数值相容，且未考虑说话人不可判定）；给气球剃胡子加「2023 年」是从邻近叙述推出、来源不支持的年份；把 ASR 的「数域场」当作既定事实的「数据厂」并与「素材厂」并置，使「遥操作学费」那段的时间与地点关系对读者含混。此外正文把执行审计细节抬到与内容论证同层，稀释了推理主线的重心。",
+            "readability": "结构完整可读：标题与速览给出主线，概览点明问题与理解价值，术语解释覆盖具身智能/Scaling Law/遥操作/无本体采集/UMI/RoboPocket，内容地图表格与实际章节标题一一对应；11 个页内锚点全部解析成功，7 个本地相对链接目标全部存在；正文无乱码、无异常字符、无私有路径/账号/会话标识泄露，也未见生成过程类记录残留在正文。主要扣分点是人类可读优先的要求下仍有流程记录留在正文：概览末段与 Limitations 各有一段专门讲「转写审计有两个口径」「raw 与归档版」「5 条非空行缺少时间戳」的收据说明，属于生产流程而非节目内容，普通读者不需要；此外事实核验表单元格偏长，术语解释是一整段连续加粗术语的加粗文字，引文以直引号呈现使长段落引号密度偏高。运行环境内没有 pandoc/cmark/markdownlint/python-markdown 等任何无 UI 渲染器，本轮未做渲染后的宽窄布局抽查，只做了锚点与链接目标的结构性校验——如实记录为未渲染，不做页面验收。",
+            "limitations": "覆盖面确实宽：访谈自述、机器转写、存疑数字未用于关键结论、外部核验边界、后半段哲学引述按 shownotes 标注、北坡计划零命中、两处遥操作口径不明都有交代；「力控全球最好」被明确留在嘉宾自述层面，未替节目补口径。扣分三处：一是把「70 万小时 vs 几十万」写成「数字口径存在一处矛盾」是一项不成立的 limitation，应改写为「该句说话人归属不可判定、节目未出现冲突表述」；二是「原音不清晰」「属片尾音乐区」在没有任何音频核验的情况下被当成既定事实写进 limitations，而 artifact 明确记录 audio_playback=false；三是未标出报告同时引用的两份外部来源对「赴斯坦福做博士后」的年份不一致（品玩 2015 年 2 月 / 中国网 2014 年），却在同一处写「公开报道与官方 shownotes 一致」。此外北坡计划、尾部 29 秒等被当作结论写死，没有留出「未经音频或官方说明核验」的余地。"
+          },
+          "critical_claim_ids_checked": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C15",
+            "C16",
+            "C17",
+            "C18"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07",
+            "U08",
+            "U09",
+            "U10",
+            "U11",
+            "U12"
+          ],
+          "source_ids_checked": [
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6",
+            "S7",
+            "S8",
+            "S9",
+            "S10"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6",
+            "R7"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [
+            "R2",
+            "R4"
+          ],
+          "hard_failures": [],
+          "limitations": [
+            "未播放音频、未做人工逐音核听；本轮所有关于「原音/音频属性」的判断只能基于 ASR 文本与 artifact 收据，未把未听过的音频当作已核验证据。",
+            "外部核验覆盖 evidence 登记的 S6/S7/S8/S9/S10 五份公开页面，并另核 arXiv 2307.15818（RT-2）与穹彻官网；未核验非夕/穹彻的工商注册与融资数据，也未核验 AnyGrasp 原论文的正式发表年份（仅见公开报道自 2021 年起）。",
+            "穹彻官网首页为图片化页面，其正文文本未出现 RoboPocket 字样；「穹彻官网一致」只能按穹彻/Noematrix 品牌与数据采集产品线核对，RoboPocket 事实以东方财富（新华财经 2026-01-12）报道为准。",
+            "本轮 reviewer 模型与本篇生成模型同族（均 minimax-m3.1-flash，harness 不同），存在同模型盲区风险；本轮为独立新会话、未读取生成者推理过程，跨模型强审额度仍待策略抽样窗口安排。",
+            "环境内无可用无 UI Markdown 渲染器，未做渲染后宽窄布局抽查，仅做锚点与链接目标的结构性校验。"
+          ],
+          "required_fixes": [
+            "改掉「70 万小时与『几十万』矛盾」的错误判定（正文『让普通人采数据：分布式数据工厂』节、关键数字与事实核验表的『有效小时数』行、Limitations 的『数字口径存在一处矛盾』条，共三处）。正确表述：嘉宾给出的是『几十万有效小时』；紧随其后的『70 万小时』在无说话人分离的 ASR 中说话人不可判定，节目并未把两者作为对立表述，且 70 万本就在『几十万』区间内；不应称其为矛盾或口径不一致。",
+            "删除正文『主持人提到 2023 年「给气球剃胡子」』中的年份（『合成数据的边界与战略克制』节及其背景核对段）。主持人原话只有『当年』，同处问答『那个时候如果没有大模型，你能做吗』与『其实那时候已经是有大模型的影子了』指向大模型之前的时期；若要给出年份须另挂独立公开来源，否则改写为『早年，年份未在节目中给出』，并与事实核验表『早期演示』口径统一。",
+            "改写两处未经音频核验的音频断言：事实核验表与 Limitations 中的『原音不清晰』改为『ASR 转写该处字词不可解，未经音频核听』；Limitations 的『尾部约 29 秒……属片尾音乐区』改为『RSS 标注 52m41s 而 ASR 末段为 52:12，差值约 29 秒未被转写；节目 shownotes 收录音乐 Jordan Critz - Beau Et Rapide (Piano)，但该区间是否为片尾音乐未经音频核验』。",
+            "处理 ASR『数域场』的校读推定：在『交过的学费与「传方不传火」』一节把『在数据厂』标注为 ASR 校读推定（原文『数域场』，与后文『素材厂』可能是同一处设施），或保留原音并说明其归属不确定，避免把一个未定地点读成与『素材厂』并列的两处场所。",
+            "补回三处被 evidence 登记为已覆盖、正文却缺失的内容：(a) 20:14–28:27 区间『拔苗助长』问答——嘉宾答『存在，但只是比例问题，两边都有；产业早期热情太高是合理的，也加速了产业增长』；(b) 35:58–40:52 区间主持人转述的『把历史上所有诺贝尔奖都看一遍、看他们为什么得奖、解决了什么问题』以提升问题审美；(c) 26:39–28:10 的模型框架论证——diffusion 不够、下一代模型框架、需要实验效率体系、两年建成工业流水线与『快两年』的关系。",
+            "同步修正 evidence 的 source_coverage：U06 标题里的『拔苗助长』『diffusion 与流水线』与 U09 标题里的『诺奖审美法』在正文补齐前不得计为已覆盖；并在 U06 的 1560 条目上注明『行业进展』这一释义属作者解读而非原话。",
+            "把正文的机器/流程记录压缩到一句：概览末段『转写审计有两个口径……5 条「非空行缺少时间戳」的提示』与 Limitations 的『转写审计有两个口径，别混用』整条属执行收据细节，应移入 evidence 与 artifact；正文只保留一句方法说明（如『本文基于机器转写并以官方 shownotes 校读，存疑处保留 [?]』）并用可点击链接指向 artifact.json。这是本轮『正文无机器工作记录』验收项的直接要求。",
+            "修正两处来源表述：事实核验表『上海交通大学人工智能学院副院长、长江学者特聘教授』行的核验说明应写清上交新闻页只确认副院长身份与 ACM China 杰出学者，『长江学者特聘教授』来自官方 shownotes 与中国网人物报道；同一处『公开报道与官方 shownotes 一致』应补充说明本报告同时引用的品玩写的是 2015 年 2 月赴斯坦福做博士后、中国网写 2014 年，来源之间存在年份差异，报告采用嘉宾与 shownotes 的 2014 年口径并注明该差异。",
+            "在 Limitations 补记本轮外部核验的实际范围与结论：RT-2 已按官方口径核为 2023 年发布的视觉—语言—动作模型（arXiv 2307.15818），与正文表述一致；RoboPocket 的『逐帧质量评估』以东方财富（新华财经 2026-01-12）报道中『即时诊断每一帧数据的质量……动态评估数据价值』为准；『东方财富报道与穹彻官网一致』应改为『东方财富（新华财经 2026-01-12）报道一致；穹彻官网首页正文未出现 RoboPocket 字样，仅可核对穹彻/Noematrix 品牌与数据采集产品线』。"
+          ],
+          "notes": "结论：需返修（机器判定见下）。本轮为 revision 2 的独立复核：先按来源优先顺序分块完整读取原转写（1746 行 / 1740 段）、全文轻校读稿与官方 shownotes，建立 28 单元独立来源地图后，才读取报告与证据账本；随后复跑 transcript 审计、字节级核对 raw→归档哈希链，并用 eacli Token Plan-first（tokenplan catalog → tool select --capability web.read/web.search → tool invoke，zhipu 只读能力）逐份复核五份外部来源与 arXiv 2307.15818。运行时事实：reviewer 模型 minimax-m3.1-flash（与本篇生成模型同族，harness 不同：codex-cli 0.166.0 / ORCA_APP_VERSION 1.4.245），独立新会话，未读取生成者推理过程，review run_id 与生成 run_id 不同。上一轮 6 项 required_fixes 已逐条复核为确实落实：R4 的李飞飞师承与履历已进入正文并挂 shownotes 来源；「有效小时数」的过滤规则不再被自行补义；力控不再被外推为行业整体路线；RT-2 已按视觉—语言—动作模型表述；遥操作两段经历改为并置并声明主体与先后未交代；归档版与 raw 审计的两口径已在报告中说明。本轮新发现 9 项具体问题（两处来源未支持的断言、三处正文缺失且被 evidence 登记为已覆盖、若干精度与来源表述问题、两处应移出正文的流程记录）。未升级为 core_requirement_missing：官方 shownotes 的开场与 10 个精选章节在报告中都有对应章节，主线、核心例子与主要反方均已覆盖，缺失的是章节内三处子话题，按 R2/R4 记为覆盖与核验缺口。机器判定说明：report_quality.py check 的 escalate 来自策略 report-quality-2026-10-18-r2 对 important 档设定 max_revision_rounds=1，而本篇 revision_round=2，按机器规则复核后仍有未清项即转 escalate；这不是内容不可用，而是轮次预算触发的升级路径，剩余问题清单见 required_fixes。",
+          "source_content_map": [
+            {
+              "id": "M01",
+              "title": "开场与节目身份：绿洲出品《信号与噪声》、主持张津剑、嘉宾为上海交大人工智能学院副院长/长江学者/穹彻智能联合创始人CEO卢策吾；2014 年在斯坦福开始思考机器人；物理智能难点=硬件有噪声+验证周期长+跨学科需放下 ego；非夕到穹彻的跨学科组织 know-how",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3",
+                "S4",
+                "S9",
+                "S10"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01"
+              ],
+              "notes": "报告覆盖开场、嘉宾身份、2014 起点、硬件噪声与验证周期、非夕到穹彻的 know-how；李飞飞师承按 shownotes 写为「师从李飞飞等教授」并注明 shownotes 表述为「导师之一」，未把中国网的「导师是」单方面当成定论。"
+            },
+            {
+              "id": "M02",
+              "title": "「2015 年是不是太早」：承认确实太早；投资人喜欢新公司不喜欢老公司；早晚只是标签，关键是一直在前沿或有超前布局",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "报告引「确实是太早了」与「新公司/投资人不喜欢老公司」，并明确「早和晚只是标签」。"
+            },
+            {
+              "id": "M03",
+              "title": "十年最大的底层变化=人才资本与学术资本进入中心位置+国家政策=基本盘；2015 年前后只有工业机器人和商用清洁机器人、无人提通用机器人；他提了但拿不到资本与政策，反而吸引放弃美国名校 offer 的顶尖学生=筛选器；这批学生是中国第一批具身智能博士毕业生",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "基本盘、无人提通用机器人、放弃美国名校 offer 的学生、筛选器、中国第一批具身智能博士毕业生均已写入；仅「顶会 best paper」这一细节未收，未影响论断。"
+            },
+            {
+              "id": "M04",
+              "title": "学术领导力与连接密度：有钱的公司可能没人才（技术一号位无学术领导力）；新人公司靠学术领导力聚人；这一代创业者更纯粹，最看重时间与机会成本；行业变化快，做对的事市场会奖励",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02",
+                "U03"
+              ],
+              "notes": "报告覆盖学术领导力对照、连接密度、机会成本与「市场会奖励做对的事」。"
+            },
+            {
+              "id": "M05",
+              "title": "师徒制与人才培养：本科授课制、硕博师徒制；工艺品可批量、艺术品靠师徒；只可意会不可言传、taste 难写成规范；两条建议=好导师（给方向）+好项目（有练习）；AI 帮「术」不帮「道」；企业培养同理；佛家需要师承",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "报告完整覆盖工艺品/艺术品比喻、taste、好导师+好项目、AI 的术与道，并连接到穹彻的组织 know-how。"
+            },
+            {
+              "id": "M06",
+              "title": "转折在 2023–24：人形机器人由 Elon Musk 带火；ChatGPT 证明数字世界 Scaling Law、物理世界逻辑上应成立；主持人追问「23 年 vs 15 年具身智能相差大吗」→ 其实内容不大，打开的是想象空间，资本 23 年进场",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03",
+                "U04"
+              ],
+              "notes": "报告区分「想象空间打开」与「技术兑现」，并把「资本入场证明可能性被相信」写成显式判断，主线准确。"
+            },
+            {
+              "id": "M07",
+              "title": "第一次感觉 Scaling Law = 可规模化的数据方式 + 吃下数据的网络；第一波遥操作没跟（难规模化），暗地里做无本体采集：外骨骼→UMI→RoboPocket；普通人采集=滴滴式系统（人员管理/设备故障/精度/细节搏斗）+ 数据质量评估，前前后后搞了一年多；关键是数据爬坡 capacity；无本体采集会长期是主流",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3",
+                "S4",
+                "S8"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04",
+                "U05"
+              ],
+              "notes": "两件事、外骨骼→UMI→RoboPocket、一年多、爬坡 capacity、无本体是主流均已覆盖；报告正确标注「第一波遥操作没跟」为嘉宾原话。"
+            },
+            {
+              "id": "M08",
+              "title": "分布式数据工厂：普通人带设备接单、无雇佣关系；沉淀优质素材源、可定义数据分布并发布任务；质量靠 AI 评价体系（非人工审核）+ reward 导师系统（做得好钱更多、差钱更少）+ 科学家早期逐条 check 的笨功夫训练评估模型=「数据大脑」；末端二指→三指→灵巧手，发布渠道一模一样所以升级快；个位数人即可清洗加工",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "AI 质检、reward 导师系统、笨功夫、数据大脑、末端升级与个位数人力三层质量设计全部写入，且补了「分布式生产的边界」段落。"
+            },
+            {
+              "id": "M09",
+              "title": "数据计量口径：计量单位是「有效小时数」，嘉宾给「几十万」；「有效」的过滤规则与阈值节目未给；「张口说我有多少小时其实没意义」；打标签很贵、需大量实验由模型说了算；需平衡资源与有效性、靠实验得配方",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "报告正确写出「只给计量单位与量级、未说明有效规则」，并引用嘉宾「张口说我有多少小时，其实没意义」，未替节目补口径。"
+            },
+            {
+              "id": "M09b",
+              "title": "紧随嘉宾「几十万」之后的一句「70 万小时」：在无说话人分离的 ASR 中说话人不可判定，节目并未把两者作为对立表述；报告却称其与「几十万」矛盾/口径不一致",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "报告在该处判定错误并重复三次（正文『让普通人采数据』节、事实核验表『有效小时数』行、Limitations『数字口径存在一处矛盾』条）。70 万本就在几十万区间内，节目未出现冲突表述，正确表述应为「该句说话人归属不可判定、嘉宾明确给出的是『几十万』」。"
+            },
+            {
+              "id": "M10",
+              "title": "模型框架与工业流水线：diffusion 肯定不行、下一代还要改造 diffusion；需要一套很强的方法让实验效率极高、观察到足够多信号；本质是科学工业化流程与工业流水线；花快两年时间从数据到模型建成，之后迭代很快",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "报告只在关键数字与事实核验表出现「数据到模型的工业流水线『花快两年时间』建成」，正文完全没有展开 diffusion/下一代模型框架/实验效率体系这一段技术论证，也没有把它与「为什么值得先花两年」接起来；这是 evidence 的 U06 标题登记为已覆盖而正文缺失的内容之一。"
+            },
+            {
+              "id": "M11",
+              "title": "合成数据的边界：可见未来仍靠人采；合成「看似数据量增加了但信息量是否增加存疑」，需要真实数据到一定规模打底，合成更可能承担组合泛化；当前节奏用真实数据是对的，但到某个时间节点合成会起作用（GP6[?]）；显微镜/细菌学比喻；每件事都有质变实验点与关键点；「传方不传火」=方子可给、火候不可给",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "合成数据判断、组合泛化、真实数据打底、显微镜比喻、质变实验点与「传方不传火」全部覆盖；GP6 保留 [?] 未被当成确定事实。"
+            },
+            {
+              "id": "M12",
+              "title": "遥操作学费与战略克制：「我们是第一个做遥操作的」、发布 20T[?] 台遥操作设备、采完之后发现不对「这要刹住」、大规模搞素材厂这个节奏点不对、每件事有它的质变实验点",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "报告把两处遥操作经历并置、明确声明主体与先后关系节目未交代，保留 20T[?] 存疑标记，并单独用一段说明两处经历不可强行串联；上一轮的「理顺遥操作段落」已落实。"
+            },
+            {
+              "id": "M12b",
+              "title": "ASR 校读推定：原音「数域场」在报告里被写成「数据厂」，且与后文「素材厂」并列为两处地点，而校读稿只标了原音、未确认是同一处设施",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "属未标注的校读推定；应标存疑或保留原音，避免把一个未定地点读成与「素材厂」并列的第二处场所。"
+            },
+            {
+              "id": "M13",
+              "title": "单技能通用与大模型定义：AnyGrasp 对未见物体可抓；刮漆、刮胡子、抛光打磨等表面处理已能通用且落地；大模型的定义不是参数大而是激发通用能力；美国更快把大模型牵引到物理世界（RT-2 等），中国跟上",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "内容主体已覆盖，AnyGrasp 与表面处理通用的表述与 shownotes 一致；RT-2 只在追问段按 shownotes 官方口径作视觉—语言—动作模型表述，术语准确（见 M13b 关于年份的独立缺陷）。"
+            },
+            {
+              "id": "M13b",
+              "title": "「给气球剃胡子」演示的年份归属：主持人原话只有「当年」，报告写成「主持人提到 2023 年」；同处问答「那个时候如果没有大模型，你能做吗」「其实那时候已经是有大模型的影子了」指向大模型之前的时期",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "该年份是报告自行添加且与来源语境相悖（公开报道中 AnyGrasp 相关成果自 2021 年即已出现），报告内部亦不一致：正文写「2023 年」，事实核验表写「早期演示」。"
+            },
+            {
+              "id": "M14",
+              "title": "中美竞争下的拔苗助长：主持人问这一波是否有竞争导致的拔苗助长；嘉宾答拔苗助长「应该是存在的，只是比例问题，两边都是存在的」，并认为这是每个产业早期都合理的事情、热情太高反而加速了产业增长",
+              "importance": "supporting",
+              "assessment": "missing",
+              "source_ids": [
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "整段问答在报告中完全找不到（全文无「拔苗助长」；「中美」只出现在一条脚注的时间区间描述里），而 evidence 的 U06 标题把它列为已覆盖内容。它是全篇唯一一处嘉宾对「行业当前热度是否不健康」的直接回应，缺失使该反方只剩「想象空间≠技术兑现」等较弱表述；但 10 个官方章节与主线、核心例子、其余主要反方均已覆盖，故按章节内缺口记 supporting/missing，不升级为 core_requirement_missing。"
+            },
+            {
+              "id": "M15",
+              "title": "三年共识与 UMI 数据质量债：数据规模化与吃规模数据的网络结构形成初步共识，第一个台阶的 scaling law 在其视角已摸到；UMI 的移动 pattern 与坐标系跟真机不同，很多 research 认为大部分人沉淀的 UMI 数据其实没用、质量不够；因此重视数据质量的筛选清理分发与量化指标",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "三年共识、UMI 坐标系与移动 pattern、公开 research 的「大部分 UMI 数据没用」、质量筛选与标签成本均已覆盖。"
+            },
+            {
+              "id": "M16",
+              "title": "力控三点与全球自评：鲁棒性（完成度与响应速度上不来别人就不下单；靠手感就能卡进去、速度更快）、省 token（下意识动作不烧推理，实验发现有力后数据需要量下降）、绝对安全；「力从第一性原理里跑不掉」；自评全球力控做得最好或同行没把力搞清楚；同行若不搞清楚，数据长期不能用；采 UMI 时已充分考虑与力融合",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U07"
+              ],
+              "notes": "三点逐条准确；上一轮的问题已修正——报告明确写出「至于力控在整个行业里究竟有多普遍，节目没有给出依据，本文不据此推断行业整体的路线分布」，未再由嘉宾自评推出行业结论。"
+            },
+            {
+              "id": "M17",
+              "title": "Force Policy 与带力 UMI 的成本规划：刚发表论文 Force Policy，讲如何把采到的 UMI 数据与力结合；实验室早期就做出带力 UMI，但要权衡管理与发放成本；规划为预训练时不用力、mid-training 阶段把力补回来，等力采集成本下降再放开做预训练；从底层手感学习到高层通用技能是一整套系统",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U07"
+              ],
+              "notes": "论文与成本规划全部覆盖，并挂 shownotes 说明 Force Policy 是接触密集型操作研究、卢策吾为作者之一。"
+            },
+            {
+              "id": "M18",
+              "title": "先系统后模型的理由与代价：infra「动一块补一块」不可逆（骨骼比喻，长身体先长骨骼）；技术路线不清会影响文化构建与顶尖人才吸引；「赶紧刷一个什么东西」有两个伤害（带宽有限被挤占、仓促拼装不可逆）；代价=一段时间看起来慢；「你是什么基因就得走什么路，把路走到最极致」；先搭数据再做模型被外界看「挺搞笑」",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08"
+              ],
+              "notes": "两层理由、两个伤害、代价与战略定力、骨骼比喻、基因/物种取舍全部覆盖；「代价是看起来慢」的口径准确（未写成落后或失败）。"
+            },
+            {
+              "id": "M19",
+              "title": "终局推演：预测 at least 十年后的状态再倒推今天，不追求 exact 终局画像而求阶段与 pattern，反推今天什么不能做、什么要做、代价是什么；穹彻建立后两三年内打好基本盘（技术体系、技术复利体系、人才密度）不可动摇，其余变量可动；2014 年开始的动机不是投资或经费而是倒推当下；亲历十年周期感到起落有规律但难用语言说明",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U09"
+              ],
+              "notes": "十年尺度、pattern 推演、基本盘不可动摇、2014 动机、周期规律「能 feeling sense 但难用语言说明」全部覆盖。"
+            },
+            {
+              "id": "M20",
+              "title": "直觉是思考训练出的模型：人生选择也是「计算」，计算来源是大量 train data 沉淀成的直觉；「做重大决策，先做逻辑推演，推演完之后直觉再拍板」；任何时间只要脑子醒着都在思考，形成直觉模型；世界模型类比——脑内不停演练、过滤方案形成感觉，行动时拿感觉对应；光想不行但大量思考提高认知广度与深度",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U09"
+              ],
+              "notes": "两段式方法论、世界模型演练与「光想肯定是不行」的限度都写入，并明确标出作者归纳（与知识库世界模型三分类对照属作者延伸）。"
+            },
+            {
+              "id": "M21",
+              "title": "诺奖审美法（主持人转述）：卢曾建议他「把历史上所有诺贝尔奖都看一遍」，看他为什么得奖、解决了什么问题，由此改变对问题的审美",
+              "importance": "supporting",
+              "assessment": "missing",
+              "source_ids": [
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U09"
+              ],
+              "notes": "报告中完全找不到该段（全文无「诺贝尔」「审美」），而 evidence 的 U09 标题把它列为已覆盖。它是全篇最具体、最可操作的一条个人方法，正好呼应后半段「道理与心智」主题线；但该章其余内容（终局推演、直觉拍板、世界模型、硬件噪声）均已覆盖，故按章节内缺口记 supporting/missing。"
+            },
+            {
+              "id": "M22",
+              "title": "不安=硬件噪声：引《金刚经》过去心/现在心/未来心不可得；决定做完后若反过来影响情绪、带来恐惧是低效；碳基生物必然如此=硬件噪声；可清晰 identify 并辩证地当作噪声，不影响工作效率与决策；对应佛家「应无所住而生其心」",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U09"
+              ],
+              "notes": "金刚经三句、硬件噪声框架与应无所住而生其心全部覆盖；三处经文的出处按 shownotes 标注而非自行认定分章。"
+            },
+            {
+              "id": "M23",
+              "title": "能量额度与修行：每段时间有一个能量总额度，碳基生物不可能时刻能量满满；能量密度最高时干最重要的事、低时休息=阴阳互补；马斯克也讲不可能一直 attention/passion；额度可通过修行提高（观察情绪、追踪源头、反复练习=练肌肉）；知行合一：知道负面情绪也挡不住，但观察与溯源即在瓦解它；冥想等方法；云淡风轻",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10"
+              ],
+              "notes": "额度论、阴阳互补、修行提高额度、知行合一、练肌肉与「云淡风轻」全部覆盖；马斯克/火影查克拉仅作举例未收录，不承载论断。"
+            },
+            {
+              "id": "M24",
+              "title": "与物理系统斗争（软件写硬件）：这本身是在跟一个物理系统做斗争，不要以为聪明或智慧就能控制身体；戒烟类比——mentally 反向控制身体=软件不停地写硬件直到硬件变形；幸福感来自得失就会崩，用观照保持平衡则平稳且成功概率更高；道家：整天紧绷成功概率不如松弛",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10"
+              ],
+              "notes": "物理主义框架、戒烟类比、软件写硬件与松弛提高成功概率全部覆盖。"
+            },
+            {
+              "id": "M25",
+              "title": "松弛是动态的且与环境影响巨大：跟能量高、频率高的朋友在一起是安静通透松弛，换一些人立刻紧张；「知道太多道理，到了某个场景却没用」；孔子早年写《论语》、晚年注《周易》作系辞，到那个年龄发现就这么一点点道理；现象很多但道理就那么一两个，甚至半个就能行走江湖；历史上有的企业靠一两个机会莫名其妙上去；即便没有机缘也能按合理曲线发展、遇特殊困难抵抗力更强",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10"
+              ],
+              "notes": "环境/频率、松弛的动态性、孔子《论语》与《周易》系辞、道理就那么些全部覆盖。"
+            },
+            {
+              "id": "M26",
+              "title": "控制变量与交给大自然：能控制的变量就控制，不能控制的交给大自然；中国人祭祖祭天不是迷信，而是「我已经做了我该做的事情，求一个安心，然后很自然地交给大道」；演员视角有输赢成败，导演视角只有合不合适、是否做了该做与不该做的事",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10"
+              ],
+              "notes": "控制论式表述、祭祖祭天的重新解释与演员/导演对仗全部覆盖。"
+            },
+            {
+              "id": "M27",
+              "title": "《道德经》与企者不立：影响最深的书是《道德经》；读完会忘但做企业时某句话会突然冒出；「企者不立，跨者不行」=踮着脚走不远；系统总做不好就是「老是踮着脚跑」，看起来快但走不远；原文背不出来；书不灌输道理，而是与你已有的体会形成频率共振",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U11"
+              ],
+              "notes": "企者不立解读、频率共振与「原文背不出来」的坦白全部覆盖；道德经第二十四章的章次明确按 shownotes 标注。"
+            },
+            {
+              "id": "M28",
+              "title": "shownotes 非章节内容：嘉宾介绍（斯坦福博士后、师从李飞飞等教授、2016 非夕、2023 穹彻、2018 MIT 科技评论中国 35 岁以下科技创新 35 人、2023 科学探索奖）；相关提及（李飞飞/Scaling Law/无本体采集/UMI/Reward Function/力位混合控制/RoboPocket/AnyGrasp/RT-2/力反馈/Force Policy/世界模型/道德经第二十四章/金刚经两句）；音乐 Jordan Critz - Beau Et Rapide；创作团队（主持张津剑、出品绿洲资本、剪辑声度 Studio）；免责声明；互动时刻的观众提问",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U12"
+              ],
+              "notes": "嘉宾履历、相关提及中的技术名词、音乐与创作团队、免责声明均已进入报告（创作团队见版权与引用节），RT-2 的相关提及已按官方口径表述；未收录 2018 MIT TR35 与 2023 科学探索奖两项荣誉，也未引用 shownotes「互动时刻」的观众提问，且 U12 的 anchor 指向关键数字与事实核验表而非背景段落。"
+            }
+          ]
+        }
+      ],
+      "decision": {}
+    },
+    {
+      "revision_round": 3,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "GLM-5.3",
+            "harness": "codex-cli（Orca dispatched worker）",
+            "run_id": "e16-lucewu-r3-independent-review-20261031",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": "",
+            "effort": "high",
+            "permissions": "danger-full-access filesystem; external pages read-only through eacli web.read/web.search Token Plan; only this review file written",
+            "identity_observation": {
+              "command": "python3 scripts/agent_identity.py --json",
+              "resolved": true,
+              "harness_resolved": true,
+              "current_model_confirmed": true,
+              "observed_model": "GLM-5.3",
+              "model_confidence": "session-bound",
+              "configured_model": "glm-5.3-flash",
+              "note": "本记录采用当前会话实测 observed_model；configured_model 仅作配置差异说明，不作为运行证明。"
+            }
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 88,
+            "request_coverage": 95,
+            "reasoning_quality": 90,
+            "readability": 88,
+            "limitations": 92
+          },
+          "score_reasons": {
+            "evidence_fidelity": "逐项复核 C1-C21、U01-U12 与 S1-S10：报告与 evidence 的时间线、数字口径、嘉宾自述边界、RT-2 定义、RoboPocket 功能来源和转写审计口径总体准确；70 万小时、气球演示年份、遥操作时序、来源年份冲突和身份出处均已按 revision 2 要求修正。主要扣分是 C11 把校读稿插入的“（不）”写成确定的预训练不用力方案，而原转写 31:02-31:21 只能支持“预训练/mid-training 如何用力与补回”的模糊口述，未经音频核听，不能作为 direct 事实；“资本入场证明的是可能性被相信”也是作者分析，正文未显式标 [推测]。东方财富 WAP 引用本身只返回应用壳，虽然桌面 URL 可核到新华财经正文，链接可用性仍需修正。",
+            "request_coverage": "先读完整原转写、全文轻校稿与官方 shownotes，独立地图覆盖开场、十个官方时间戳章节和非章节信息；报告正文完整展开主线、反方边界、关键案例、数字、Limitations 与思考追问，并可作为独立阅读文本。拔苗助长、诺奖问题审美、diffusion 实验体系三段历史漏项均已补入。仅 shownotes 支持性荣誉与互动提问未展开，不构成核心遗漏；R1-R8 均已实际检查。",
+            "reasoning_quality": "报告把“想象空间先于技术兑现”“数据生产系统先于模型发布”“力控同时关系鲁棒性、数据效率与安全”组织成清晰论证，并将企业能力、嘉宾判断、公开报道和作者推断基本分离；遥操作两段经历未强行拼接时间线。扣分点是力控训练阶段的具体技术安排被补成确定事实，以及一处资本入场的分析性区分未显式标注为作者推断。",
+            "readability": "全文有清晰问题定义、术语解释、内容地图、逐章分析、关键数字表、边界与追问；本地相对链接、10 个正文锚点和脚注引用检查通过，无乱码或裸双链。扣分点是 Limitations 标题改为纯中文会触发仓库 POD001 字面门禁、artifact/lifeifei 两条脚注未使用，且 RoboPocket 的 WAP 链接在无 UI 读取中不能直接呈现正文；本审阅环境没有可用 Markdown/HTML 渲染器，未伪称完成宽窄视觉验收。",
+            "limitations": "Limitations 与 evidence 如实保留机器转写、尾部 29 秒、20T/1560/GP6、有效小时定义、遥操作主体与时序、来源年份差异、自述能力和外部核验边界；也明确区分 raw 收据零 warning 与归档版 5 条头部提示。扣分点是 Force Policy 训练阶段这一关键不确定性本身未被列为 limitation，导致报告过度确定。"
+          },
+          "critical_claim_ids_checked": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "C16",
+            "C17",
+            "C18",
+            "C19",
+            "C20",
+            "C21"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07",
+            "U08",
+            "U09",
+            "U10",
+            "U11",
+            "U12"
+          ],
+          "source_content_map": [
+            {
+              "id": "M01",
+              "title": "00:00-02:33 开场：节目与身份、2014 年斯坦福起点、物理智能的硬件噪声与验证周期、跨学科组织 know-how",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01"
+              ],
+              "notes": "报告概览、十年预热与事实核验表覆盖嘉宾身份、师承、2014 起点和跨学科背景。"
+            },
+            {
+              "id": "M02",
+              "title": "02:33 2015 年开始是否太早：太早但早晚只是标签；十年最大变化是人才与政策；早期无资本却吸引顶尖学生；学术领导力与筛选器",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "“新公司”轶事、前沿比早晚重要、基本盘、人才筛选器和学术领导力均进入正文。"
+            },
+            {
+              "id": "M03",
+              "title": "08:36 天才如何协同：连接密度、技术路线与组织架构；师徒制、taste、好导师与好项目、AI 学术与道、人才培养相通",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "正文完整承载连接密度、教育焦虑、师徒制、项目练习与 AI 时代术/道区分。"
+            },
+            {
+              "id": "M04",
+              "title": "14:50 机器人怎么越学越聪明：2023-24 转折、ChatGPT 打开想象空间、Scaling Law 两件事、遥操作未跟、外骨骼到 UMI/RoboPocket、一年多数据基建与爬坡容量",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "两处遥操作说法被并置且明确不拼时序；供应链概括标为 [推测]。"
+            },
+            {
+              "id": "M05",
+              "title": "17:35 普通人接单采数据：滴滴式任务分发、提前给设备、无雇佣关系、AI 质检、reward 导师系统、科学家逐条 check 的 know-how、数据大脑与末端升级",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "报告覆盖质量控制三层、个位数清洗人力、几十万有效小时和自述边界。"
+            },
+            {
+              "id": "M06",
+              "title": "20:14 合成数据与战略克制：信息量疑问、真实数据打底、显微镜比喻、遥操作学费与刹住、传方不传火、AnyGrasp/气球剃胡子、拔苗助长、三年共识、UMI 质量债、有效小时、标签实验、diffusion 与快两年流水线",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "历史漏项拔苗助长、诺奖审美所在的后续章节、diffusion 实验体系均已在正文展开；气球年份、20T、1560 和设施地点保留不确定。"
+            },
+            {
+              "id": "M07",
+              "title": "28:27 手感与力控：鲁棒性、省 token/数据量、绝对安全三点；全球自评；Force Policy、带力 UMI、预训练/mid-training 成本与补回、底层手感到高层技能",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U07"
+              ],
+              "notes": "三点论证和自评边界完整；但 C11 的“预训练不用力、mid-training 补回”超出来源可确认范围，需返修。"
+            },
+            {
+              "id": "M08",
+              "title": "33:08 先搭数据再做模型：infra 动一块补一块与不可逆、骨骼比喻、文化/人才吸引、刷成果的两个伤害、代价是一段时间慢、战略定力",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08"
+              ],
+              "notes": "报告准确呈现选择、代价与定力，并回溯 2014 年长期主义。"
+            },
+            {
+              "id": "M09",
+              "title": "35:58 面对不安：至少十年终局倒推、基本盘、科研经费困难、周期规律、金刚经三心、硬件噪声、诺奖问题审美、pattern 推演、直觉拍板与世界模型演练",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U09"
+              ],
+              "notes": "主持人回忆的诺奖审美练习已按说话人归属补入。"
+            },
+            {
+              "id": "M10",
+              "title": "40:52 碳基生物能量：总额度与阴阳互补、修行提高额度、观察情绪、软件写硬件、幸福感与得失、松弛与环境、《周易》系辞、道理有限、可控变量、祭祖祭天、演员与导演",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10"
+              ],
+              "notes": "个人经验未被当心理学结论；环境、松弛、道理有限与安心框架均进入正文。"
+            },
+            {
+              "id": "M11",
+              "title": "50:12 企者不立：《道德经》、系统做不好即踮脚跑、原文背不出、书与已有体会形成频率共振；ASR 至 52:12，尾部约 29 秒未核听",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U11"
+              ],
+              "notes": "报告保留尾部未核听边界，不推定未转写区间内容。"
+            },
+            {
+              "id": "M12",
+              "title": "shownotes 非章节内容：嘉宾履历与荣誉、相关提及术语（李飞飞、Scaling Law、无本体采集、UMI、reward、力位混合、RoboPocket、AnyGrasp、RT-2、力反馈、Force Policy、世界模型、经文）、音乐团队、互动提问与免责声明",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U12"
+              ],
+              "notes": "关键履历、术语、版权团队和免责边界已覆盖；2018 MIT TR35、2023 科学探索奖与互动提问未展开，属 supporting 信息而非核心遗漏。"
+            }
+          ],
+          "source_ids_checked": [
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6",
+            "S7",
+            "S8",
+            "S9",
+            "S10"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6",
+            "R7",
+            "R8"
+          ],
+          "unsupported_claims": [
+            "C11"
+          ],
+          "missing_requirements": [],
+          "hard_failures": [
+            "critical_claim_unsupported"
+          ],
+          "required_fixes": [
+            "返修 C11：正文“预训练时不用力、mid-training 阶段把力补回来”与 evidence C11 的 direct 定性不成立。原转写 31:02-31:21 只能支持“预训练/mid-training 如何用力、补回与成本下降后再放开预训练”的模糊口述；若不核听音频或另接独立来源，应改成不确定表述并同步修订 evidence，不得保留确定训练方案。",
+            "把“## 阅读时需要保留的边界”改回“## Limitations：阅读时需要保留的边界”，满足根 audit_reports.py 与播客 audit 对 POD001 的字面门禁。",
+            "删除未在正文引用的 [^artifact] 与 [^lifeifei] 脚注定义，或在相关正文处真实引用；不要留下无入口来源项。",
+            "把 RoboPocket 引用从 WAP 应用壳 URL 改为可无 UI 读取正文的桌面 URL https://finance.eastmoney.com/a/202601123616198162.html（或同时列出），说明仍为新华财经报道而非效果验证。",
+            "将“资本入场证明的是可能性被相信，不等于技术本身已经兑现”显式标为 [推测]，或改写为嘉宾原话可支持的“想象空间打开且技术内核变化有限”。"
+          ],
+          "notes": "独立复核按合同先核对快照，再完整读取原始转写、全文轻校稿与官方 shownotes，之后读取报告和 evidence。revision 2 的九项历史问题均实际复核：70 万与几十万、气球年份、音频未核听、采集设施地点、拔苗助长/诺奖审美/模型实验体系、来源年份、身份出处、RoboPocket 边界和遥操作时序均未沿用旧错。本轮新发现 C11 关键 claim 被校读推测过度确定，另有 Limitations 标题门禁、两条未用脚注和 WAP 链接可用性问题；因此审阅结论为返修。",
+          "verification": {
+            "target_snapshot": {
+              "report_sha256": "5ef42814092d8f7b4184dcc41004fd043b64fb22d22a8e10e7a35fa0ba389f43",
+              "evidence_sha256": "eb4bb1df555d5a0bdd6de0d6d0ed2ee80979af4ee47f923c9c5ec01053339ede",
+              "matched": true
+            },
+            "transcript_audit": {
+              "command": "python3 podcast-learning/scripts/audit_transcript.py <transcript> --json",
+              "ok": true,
+              "segments": 1740,
+              "duration_seconds": 3132,
+              "max_consecutive_identical": 2,
+              "warnings": [
+                "5 non-empty lines lack transcript timestamps"
+              ],
+              "errors": [],
+              "interpretation": "5 条 warning 对应归档头部非正文行；未把 artifact 中 raw transcript 的零 warning 收据误当成本次归档文件复跑结果。"
+            },
+            "external_verification": {
+              "route": "eacli tokenplan catalog -> eacli tool select web.read/web.search -> eacli tool invoke",
+              "pages_checked": [
+                "https://www.xiaoyuzhoufm.com/episode/6ae464c497726cd4675a38af",
+                "https://news.sjtu.edu.cn/jdyw/20260716/224700.html",
+                "https://www.pingwest.com/a/297944",
+                "https://finance.eastmoney.com/a/202601123616198162.html",
+                "http://www.china.com.cn/txt/2026-07/10/content_118592240.shtml",
+                "https://profiles.stanford.edu/fei-fei-li",
+                "https://arxiv.org/abs/2307.15818"
+              ],
+              "notes": "东方财富 WAP URL 返回应用壳；同 ID 桌面 URL 可读新华财经正文并支持“即时诊断每一帧数据质量、动态评估数据价值”。RT-2 arXiv 摘要确认为 Vision-Language-Action Models。"
+            },
+            "link_checks": {
+              "local_targets": "all resolved",
+              "internal_anchors": "10/10 resolved",
+              "footnote_undefined": 0,
+              "footnote_unused": [
+                "artifact",
+                "lifeifei"
+              ]
+            },
+            "rendering": {
+              "performed": false,
+              "reason": "本审阅会话未安装可用 Markdown/HTML 或无 UI 页面渲染器；仅完成源码链接、锚点、脚注与格式检查。协调者提供的 Pandoc+无 UI Chrome 检查不属于本 Reviewer 实测，未在本记录中冒用。"
+            },
+            "quality_check": {
+              "command": "python3 scripts/report_quality.py check podcast-learning/reports/2026-10-30_xinhao-yuzaosheng_e16-lucewu-north-slope.md",
+              "exit_status": 1,
+              "decision": "escalate",
+              "score": 90.2,
+              "errors": [
+                "REV018: review #1 仍有 unsupported_claims：C11",
+                "REV018: review #1 仍有 hard_failures：critical_claim_unsupported",
+                "SCORE002: evidence_fidelity=88 低于门槛 90"
+              ]
+            }
+          }
+        }
+      ],
+      "decision": {}
+    },
+    {
+      "revision_round": 4,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "GLM-5.3",
+            "harness": "codex-cli（Orca dispatched worker）",
+            "run_id": "e16-lucewu-r4-bounded-reverify-20261031",
+            "continued_from_run_id": "e16-lucewu-r3-independent-review-20261031",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": "",
+            "effort": "xhigh",
+            "permissions": "danger-full-access filesystem; no external generation capability invoked; only this review file written",
+            "identity_observation": {
+              "command": "python3 scripts/agent_identity.py --json",
+              "resolved": true,
+              "harness_resolved": true,
+              "current_model_confirmed": true,
+              "observed_model": "GLM-5.3",
+              "model_confidence": "session-bound",
+              "configured_model": "glm-5.3-flash",
+              "effort_evidence": "同一会话的 Codex 进程 ancestry 命令行含 -m GLM-5.3 与 model_reasoning_effort=xhigh；不把配置文件当运行证明。"
+            }
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 96,
+            "request_coverage": 95,
+            "reasoning_quality": 95,
+            "readability": 94,
+            "limitations": 96
+          },
+          "score_reasons": {
+            "evidence_fidelity": "延续同一独立审阅会话：revision 3 已完整实读原转写、轻校稿、shownotes 并逐项核验 C1-C21/S1-S10；本轮先核对 report/evidence/polished 快照，再定向复核五项返修。C11 已在正文、evidence 与校读稿中撤回“预训练不用力、mid-training 补回”的补义，保留 31:02-31:21 歧义；C3 的作者判断已标 [推测] 并从 direct claim 分离。RoboPocket 改用已实读且可无 UI 呈现正文的桌面 URL，未发现新的关键事实问题。",
+            "request_coverage": "复用本会话独立来源地图核对 U01-U12：开场与十个官方章节仍全部进入可独立阅读正文，核心论证、反方边界、关键数字和思考追问未因定向修订丢失。U12 的支持性荣誉和互动提问仍未展开，但不构成核心要求遗漏；R1-R8 在既有核验与本轮改动检查中均成立。",
+            "reasoning_quality": "返修后不再把模糊转写推成确定训练方案，资本预期与技术兑现的分析边界清楚，遥操作时序、数据口径、嘉宾自评和外部报道仍保持分离。正文结论与证据支持的对应关系完整，没有发现定向修改引发的新推理问题。",
+            "readability": "标题、章节、术语解释、内容地图、正文、关键数字表、Limitations 与追问仍可独立阅读；Limitations 标题已恢复仓库门禁要求，两个未用脚注已删除，19 个本地链接、10 个正文锚点和 17 个脚注均有效，无乱码或裸双链。本 Reviewer 会话仍无渲染器，未冒认协调者的 Pandoc/390px 检查，仅按源码与链接可核性评分。",
+            "limitations": "Limitations 已把力信号进入训练阶段的安排列入转写不确定性，并继续覆盖企业自述、尾部 29 秒、20T/1560/GP6、遥操作时序、来源年份、RoboPocket 与 RT-2 核验边界。轻校稿“未增删语义”的绝对表述已改为校读范围与音频核听限制，剩余仅是支持性 shownotes 信息未展开，不影响核心结论。"
+          },
+          "critical_claim_ids_checked": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "C16",
+            "C17",
+            "C18",
+            "C19",
+            "C20",
+            "C21"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07",
+            "U08",
+            "U09",
+            "U10",
+            "U11",
+            "U12"
+          ],
+          "source_content_map": [
+            {
+              "id": "M01",
+              "title": "00:00-02:33 开场：节目与身份、2014 年斯坦福起点、物理智能的硬件噪声与验证周期、跨学科组织 know-how",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01"
+              ],
+              "notes": "沿用本会话 rev3 实读；当前报告仍覆盖身份、师承、2014 起点与跨学科背景。"
+            },
+            {
+              "id": "M02",
+              "title": "02:33 2015 年开始是否太早：早晚只是标签；十年最大变化是人才与政策；早期筛选器与学术领导力",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "沿用本会话实读；返修未删主线。"
+            },
+            {
+              "id": "M03",
+              "title": "08:36 天才协同与师徒制：连接密度、好导师与好项目、taste、AI 时代术与道",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "沿用本会话实读；教育、组织与人才培养内容仍完整。"
+            },
+            {
+              "id": "M04",
+              "title": "14:50 Scaling Law 两件事：可规模化数据与可吃数据的网络；遥操作、无本体采集、UMI/RoboPocket 与数据基建",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "沿用本会话实读；两段遥操作经历仍不拼时序。"
+            },
+            {
+              "id": "M05",
+              "title": "17:35 普通人接单采数据：分布式系统、设备、无雇佣关系、AI 质检、reward、know-how、数据大脑与末端升级",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "沿用本会话实读；质量机制、数据规模和自述边界仍完整。"
+            },
+            {
+              "id": "M06",
+              "title": "20:14 合成数据与战略克制：信息量、真实数据打底、显微镜、遥操作学费、传方不传火、AnyGrasp、拔苗助长、UMI 质量债、标签实验、diffusion 与流水线",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "沿用本会话实读；rev2 历史漏项在当前正文仍保留。"
+            },
+            {
+              "id": "M07",
+              "title": "28:27 手感与力控：鲁棒性、省 token/数据量、安全；全球自评；Force Policy、带力 UMI、训练阶段安排歧义与整套系统",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U07"
+              ],
+              "notes": "本轮定向复核：报告、evidence C11 与校读稿均不再断言“预训练不用力、mid-training 补回”，明确 31:02-31:21 歧义并保留总体系统主张。"
+            },
+            {
+              "id": "M08",
+              "title": "33:08 先搭数据再做模型：infra 不可逆、骨骼比喻、文化/人才吸引、两个伤害、短期慢与战略定力",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08"
+              ],
+              "notes": "沿用本会话实读；战略取舍和代价仍完整。"
+            },
+            {
+              "id": "M09",
+              "title": "35:58 面对不安：十年终局、基本盘、金刚经、硬件噪声、诺奖审美、pattern 推演、直觉拍板与世界模型演练",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U09"
+              ],
+              "notes": "沿用本会话实读；C3 推断标注修订不影响的其余决策内容。"
+            },
+            {
+              "id": "M10",
+              "title": "40:52 碳基生物能量：总额度、阴阳互补、修行、软件写硬件、幸福感、松弛与环境、道理有限、可控变量、祭祖祭天、演员与导演",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10"
+              ],
+              "notes": "沿用本会话实读；个人经验边界未变成科学结论。"
+            },
+            {
+              "id": "M11",
+              "title": "50:12 企者不立：《道德经》、系统与踮脚跑、原文背不出、频率共振；ASR 至 52:12，尾部约 29 秒未核听",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U11"
+              ],
+              "notes": "沿用本会话实读；尾部未核听边界仍保留。"
+            },
+            {
+              "id": "M12",
+              "title": "shownotes 非章节内容：嘉宾履历与荣誉、相关提及术语、音乐团队、互动提问与免责声明",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U12"
+              ],
+              "notes": "沿用本会话实读；关键履历、术语、版权团队和免责边界覆盖，2018/2023 荣誉与互动提问仍为支持性省略。"
+            }
+          ],
+          "source_ids_checked": [
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6",
+            "S7",
+            "S8",
+            "S9",
+            "S10"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6",
+            "R7",
+            "R8"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "required_fixes": [],
+          "resolved_from_previous_review": [
+            "C11：正文、evidence 与轻校稿均撤回确定训练阶段安排，保留转写歧义和未核听边界。",
+            "C3：资本预期与技术兑现的作者分析已标 [推测]，evidence direct claim 与分析分离。",
+            "Limitations 标题恢复为仓库 audit 的字面要求。",
+            "删除 [^artifact] 与 [^lifeifei] 两个未用脚注，当前脚注均被正文引用。",
+            "RoboPocket 引用改为可无 UI 读取正文的东方财富桌面 URL；另将“未增删语义”绝对表述改为校读范围与音频核听限制。"
+          ],
+          "notes": "这是延续同一独立审阅会话的定向复验，不是重新声称做了全量新来源阅读；全量来源地图来自本会话 revision 3 的实际读取，本轮核对当前快照、五项修改、C3/C11、链接与审计。未发现新的实质问题，当前无未解决项。",
+          "verification": {
+            "review_basis": "bounded continuation",
+            "target_snapshot": {
+              "report_sha256": "d80d4e1ab136bfdbd72c2e61b145298b941e5e5041114c71863c9dae59907ebb",
+              "evidence_sha256": "54916e38b7f7965efa62792456bbf4ba878e1eb194d3a5d9abed3010a8f5a187",
+              "polished_sha256": "f4715f2012aa828ebd57f84136a58d09e041ceaf7a27606a549bb67a4689e085",
+              "matched": true
+            },
+            "transcript_audit": {
+              "command": "python3 podcast-learning/scripts/audit_transcript.py <transcript> --json",
+              "transcript_sha256": "ef3f35f16457b2eb5969212796a305956b83a485103a1fdc2d419f76752c288a",
+              "ok": true,
+              "segments": 1740,
+              "duration_seconds": 3132,
+              "max_consecutive_identical": 2,
+              "warnings": [
+                "5 non-empty lines lack transcript timestamps"
+              ],
+              "errors": [],
+              "interpretation": "5 条 warning 对应归档头部非正文行；未混用 raw 收据的零 warning。"
+            },
+            "link_checks": {
+              "local_links": 19,
+              "local_missing": 0,
+              "internal_anchors": "10/10 resolved",
+              "footnote_unused": 0,
+              "footnote_undefined": 0,
+              "limitations_heading": "restored"
+            },
+            "report_audit": {
+              "command": "python3 scripts/audit_reports.py <report> --json",
+              "exit_status": 1,
+              "error": "META009: 新增 report-v2 报告必须完成复核并 finalize 后才能提交",
+              "interpretation": "该错误与当前 in_progress 状态一致，在本轮 review 写入前出现；不是定向返修引入的内容问题。"
+            },
+            "rendering": {
+              "performed": false,
+              "reason": "本 Reviewer 会话无可用无 UI Markdown/HTML 渲染器；协调者的 Pandoc 与 390px 检查只作为主会话验收记录，不计为本 Reviewer 实测。"
+            },
+            "quality_check": {
+              "command": "python3 scripts/report_quality.py check podcast-learning/reports/2026-10-30_xinhao-yuzaosheng_e16-lucewu-north-slope.md",
+              "exit_status": 0,
+              "decision": "pass",
+              "score": 95.3,
+              "errors": 0,
+              "warnings": 0
+            }
+          }
+        }
+      ],
+      "decision": {}
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 95.8,
+    "evaluated_on": "2026-10-31",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "96bd4a6a505a3eb290869e2bd3db1d91e87dc162890335011df26c466769bb4f",
+    "evidence_sha256": "7db016331530728982a9c1490a8aaaa3d6bdb89a6768b241b27c66c93cd35214"
+  },
+  "public_redactions": [
+    {
+      "scope": "history.reviews: notes与evidence_fidelity理由",
+      "change": "仅删除两处私有执行设备参数；来源、原评分、问题、模型及审阅历史保持原样。",
+      "date": "2026-11-01"
+    }
+  ]
+}
