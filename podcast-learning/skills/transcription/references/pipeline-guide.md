@@ -126,6 +126,10 @@ python3 podcast-learning/scripts/audit_transcript.py \
 对既有公开全文不批量搬迁，不改历史报告正文或 `.quality` 哈希链；逐篇迁移需要新的 revision、
 重新复核以及完整引用检查。详见 [COPYRIGHT.md](../../../COPYRIGHT.md)。
 
+公开检查按新增全文文件判断，不依赖报告是否声明 `private`。新增全文只有附带维护者已确认、
+绑定本次内容哈希的 `.publication.json` 才可作为公开例外；字段与范围见上述版权规则。
+通常只提交报告与脱敏审计收据，私有转写保存在仓库外。
+
 未来报告可使用下列**新增、可选**字段；不要求历史报告补填：
 
 ```yaml

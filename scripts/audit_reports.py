@@ -27,7 +27,7 @@ from pathlib import Path
 
 try:
     from .lint_evidence import lint_file as lint_evidence_file
-    from .report_catalog import ROOT, collection_for_path, iter_reports, metadata_alias_issues, parse_frontmatter
+    from .report_catalog import ROOT, collection_for_path, iter_reports, metadata_alias_issues, new_report_paths, parse_frontmatter
     from .report_quality import (
         CURRENT_REPORT_SCHEMA,
         SUPPORTED_REPORT_SCHEMAS,
@@ -36,7 +36,7 @@ try:
     )
 except ImportError:  # Direct script execution.
     from lint_evidence import lint_file as lint_evidence_file
-    from report_catalog import ROOT, collection_for_path, iter_reports, metadata_alias_issues, parse_frontmatter
+    from report_catalog import ROOT, collection_for_path, iter_reports, metadata_alias_issues, new_report_paths, parse_frontmatter
     from report_quality import (
         CURRENT_REPORT_SCHEMA,
         SUPPORTED_REPORT_SCHEMAS,
@@ -167,7 +167,7 @@ def _reports_from_paths(paths: set[Path]) -> list[Path]:
 
 def changed_reports() -> tuple[list[Path], set[Path]]:
     tracked = _git_paths(["git", "diff", "HEAD", "--name-only", "--diff-filter=ACDMRTUXB", "-z"])
-    added = _git_paths(["git", "diff", "HEAD", "--name-only", "--diff-filter=A", "-z"])
+    added = new_report_paths("HEAD", root=ROOT)
     untracked = _git_paths(["git", "ls-files", "-z", "--others", "--exclude-standard"])
     candidates = tracked | untracked
     reports = _reports_from_paths(candidates)
@@ -176,7 +176,7 @@ def changed_reports() -> tuple[list[Path], set[Path]]:
 
 def staged_reports() -> tuple[list[Path], set[Path]]:
     staged = _git_paths(["git", "diff", "--cached", "--name-only", "--diff-filter=ACDMRTUXB", "-z"])
-    added = _git_paths(["git", "diff", "--cached", "--name-only", "--diff-filter=A", "-z"])
+    added = new_report_paths("--cached", root=ROOT)
     reports = _reports_from_paths(staged)
     return reports, {path.resolve() for path in added}
 
@@ -518,6 +518,8 @@ def main(argv=None) -> int:
     parser.add_argument("--summary-only", action="store_true", help="print totals without individual warnings")
     parser.add_argument("--changed-path", action="append", default=[], metavar="REPO_PATH",
                         help="explicit changed path for a Git-free staged snapshot; repeat as needed")
+    parser.add_argument("--new-path", action="append", default=[], metavar="REPO_PATH",
+                        help="genuinely new report requiring the current contract; repeat as needed")
     parser.add_argument("paths", nargs="*", help="explicit report paths")
     args = parser.parse_args(argv)
 
@@ -588,6 +590,16 @@ def main(argv=None) -> int:
     if args.changed_path and not args.all and not args.paths:
         paths = sorted(set(paths) | set(_reports_from_paths(changed_paths)))
 
+    for item in args.new_path:
+        candidate = Path(item)
+        if candidate.is_absolute() or ".." in candidate.parts:
+            parser.error("--new-path requires a repository-relative path without '..'")
+        candidate = ROOT / candidate
+        if not candidate.is_file() or collection_for_path(candidate) is None:
+            parser.error("--new-path requires an existing report")
+        new_paths.add(candidate.resolve())
+        if candidate not in paths:
+            paths.append(candidate)
     result = audit(paths, strict_all=args.strict, new_paths=new_paths,
                    changed_paths=changed_paths, source_paths=source_paths)
     if args.json:

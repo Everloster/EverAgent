@@ -8,19 +8,13 @@ import sys
 import tempfile
 from pathlib import Path
 
+try:
+    from .report_catalog import new_report_paths
+except ImportError:
+    from report_catalog import new_report_paths
+
 
 ROOT = Path(__file__).resolve().parents[1]
-REPORT_ROOTS = {
-    "ai-learning/reports",
-    "cs-learning/reports",
-    "philosophy-learning/reports",
-    "psychology-learning/reports",
-    "biology-learning/reports",
-    "ai-practice/experiments",
-    "podcast-learning/reports",
-    "github-trending-analyzer/reports",
-    "web-surfing/reports",
-}
 
 
 def run(label: str, command: list[str], cwd: Path) -> bool:
@@ -45,16 +39,6 @@ def git_paths(*args: str) -> set[str]:
     return {item for item in proc.stdout.split("\0") if item}
 
 
-def is_report(path: str) -> bool:
-    candidate = Path(path)
-    if candidate.suffix.lower() != ".md" or "transcripts" in candidate.parts:
-        return False
-    text = candidate.as_posix()
-    if text.startswith("ai-practice/experiments/"):
-        return candidate.name.startswith("exp_") or "评估笔记" in candidate.name
-    return any(text.startswith(f"{root}/") for root in REPORT_ROOTS)
-
-
 def report_for_sidecar(path: str) -> str | None:
     candidate = Path(path)
     if candidate.parent.name != ".quality":
@@ -66,15 +50,16 @@ def report_for_sidecar(path: str) -> str | None:
     return None
 
 
-def report_audit_command(changed_paths: set[str]) -> list[str]:
+def report_audit_command(changed_paths: set[str], new_paths: set[str] | None = None) -> list[str]:
     return [sys.executable, "scripts/audit_reports.py", "--all", "--summary-only",
-            *(f"--changed-path={path}" for path in sorted(changed_paths))]
+            *(f"--changed-path={path}" for path in sorted(changed_paths)),
+            *(f"--new-path={path}" for path in sorted(new_paths or ()))]
 
 
 def main() -> int:
     try:
         staged = git_paths("diff", "--cached", "--no-renames", "--name-only", "--diff-filter=ACMRTUXB")
-        added = git_paths("diff", "--cached", "--no-renames", "--name-only", "--diff-filter=A")
+        added_reports = {str(path.relative_to(ROOT)) for path in new_report_paths("--cached", root=ROOT)}
         modified_or_removed = git_paths("diff", "--cached", "--no-renames", "--name-only", "--diff-filter=DMRTUXB")
     except (RuntimeError, OSError):
         print("[precommit-quality] BLOCKED: cannot read staged snapshot", file=sys.stderr)
@@ -91,7 +76,6 @@ def main() -> int:
             file=sys.stderr,
         )
         return 1
-    added_reports = sorted(path for path in added if is_report(path))
     orphan_sidecars = sorted(
         path
         for path in staged
@@ -129,7 +113,7 @@ def main() -> int:
             ("root README links", [sys.executable, "scripts/check_readme_links.py"]),
             (
                 "versioned report audit",
-                report_audit_command(staged | modified_or_removed),
+                report_audit_command(staged | modified_or_removed, added_reports),
             ),
         ]
         if staged & {"scripts/whoami_agent.py", "scripts/git_identity.py", "scripts/ecommit.sh",
@@ -146,13 +130,6 @@ def main() -> int:
                  "scripts.test_git_identity", "scripts.test_git_commit", "scripts.test_core_contracts",
                  "scripts.test_model_observations", "-q"],
             ))
-        if added_reports:
-            checks.append(
-                (
-                    "new report contract",
-                    [sys.executable, "scripts/audit_reports.py", "--strict", *added_reports],
-                )
-            )
         for report in sidecar_reports:
             checks.append(
                 (

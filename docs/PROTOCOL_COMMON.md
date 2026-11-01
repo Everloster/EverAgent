@@ -104,6 +104,7 @@ python3 scripts/reindex.py --check
 - 新报告使用 `quality_schema: report-v2`，并通过证据账本、独立复核和评分门；`report-v1` 保留为过渡格式。
 - `scripts/ecommit.sh` 会对已暂存报告、索引和 context 自动运行确定性门禁，并校验门禁前后的 index tree 未变化。
 - 历史报告只进入 WARN 清单，不因一次任务批量重写。
+- 同一领域内正文完全不变的报告改名沿用原合同；复制、新建、跨领域移动或从其他目录迁入仍按新报告检查。提交前与 CI 共用该判定，原有版本合同和来源检查继续执行。
 - 播客、代码实验等领域若有额外审计或真实运行要求，按领域 `AGENTS.md` 追加执行。
 - `lint_evidence.py` 保留为单文件快速诊断，由统一审计器复用。
 

@@ -27,6 +27,31 @@
 不把未公开材料、付费或加密内容当作可自由分发的来源。确需公开全文的例外，应逐项记录
 可核验的权利依据及允许范围，并由维护者确认；审计通过不构成版权许可。
 
+提交前与 CI 的公开检查会阻断新增的 `.transcript.txt/.md`、`.polished.txt/.md`、
+`.srt`、`.vtt`，以及 `transcripts/` 内的 TXT/Markdown 正文（README/INDEX 导航除外）。
+这项检查独立于报告字段：没有写报告、忘记声明 `private` 也不能直接提交这些全文。
+历史文件不被批量要求补授权；移动到新路径视为新增公开文件。文件名检查不能识别所有伪装，
+改名或把全文塞进报告不改变上述公开边界。
+
+只有需要公开全文例外时，才在文件旁附加 `<完整文件名>.publication.json`，例如
+`episode.transcript.txt.publication.json`：
+
+```json
+{
+  "schema_version": 1,
+  "sha256": "<本次公开全文的 SHA-256>",
+  "source_url": "https://example.org/episode",
+  "permission_url": "https://example.org/permission",
+  "permission_note": "说明授权允许的全文复制、润色或改编范围",
+  "maintainer_confirmed": false
+}
+```
+
+授权链接应指向可公开核验的许可或授权说明。维护者明确确认后才能把确认值改为 `true`；
+Agent 不得自行代填确认。检查会核对实际待发布文件的哈希、必填字段与确认值，修改全文或
+删除授权说明会重新检查。它不联网判定授权真伪，也不把这个记录当作权利人的签名。
+普通私有转写和公开审计收据不需要这份文件。
+
 ## 已公开历史资料：保持引用链，不追认许可
 
 仓库中已有完整转写与润色稿。2026-11-01 的只读清点发现：111 篇播客报告中 109 篇声明

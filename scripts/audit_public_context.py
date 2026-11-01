@@ -8,6 +8,7 @@ an anonymity guarantee or a sandbox for hostile filesystem changes.
 from __future__ import annotations
 
 import argparse
+import ast
 import hashlib
 import ipaddress
 import json
@@ -17,9 +18,11 @@ from bisect import bisect_right
 from collections import Counter
 from dataclasses import asdict, dataclass
 from pathlib import Path
+from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 MAX_BYTES = 2 * 1024 * 1024
+PUBLICATION_SUFFIX = ".publication.json"
 
 
 @dataclass(frozen=True)
@@ -69,11 +72,72 @@ RULES = [
 ]
 
 
+def reference_value(node: ast.expr) -> bool:
+    """Recognize references, never quoted values or credential defaults."""
+    if isinstance(node, ast.Name):
+        return True
+    if isinstance(node, ast.Attribute):
+        return reference_value(node.value)
+    if isinstance(node, ast.Subscript):
+        return reference_value(node.value) and isinstance(node.slice, (ast.Constant, ast.Name))
+    if isinstance(node, ast.Call) and ast.unparse(node.func) in {"os.getenv", "os.environ.get"}:
+        return (not node.keywords and 1 <= len(node.args) <= 2
+                and isinstance(node.args[0], ast.Constant) and isinstance(node.args[0].value, str)
+                and (len(node.args) == 1 or (isinstance(node.args[1], ast.Constant)
+                                           and node.args[1].value in (None, ""))))
+    return False
+
+
+def reference_spans(text: str, display: str) -> list[tuple[int, int]]:
+    """Only Python syntax can exempt an assignment to a reference.
+
+    JSON/YAML strings, comments, docstrings, and other token rules remain scanned.
+    Parse failures grant no exemption; fenced Python examples use the same rules.
+    """
+    chunks = []
+    if Path(display).suffix.lower() == ".py":
+        chunks.append((0, text))
+    elif Path(display).suffix.lower() == ".md":
+        for match in re.finditer(r"(?m)^(`{3,}|~{3,})(?:python|python3|py)[ \t]*\n([\s\S]*?)^\1[ \t]*$", text):
+            chunks.append((match.start(2), match.group(2)))
+    spans = []
+    for offset, code in chunks:
+        try:
+            tree = ast.parse(code)
+        except (SyntaxError, ValueError, RecursionError):
+            continue
+        lines = code.splitlines(keepends=True)
+        starts = [0]
+        for line in lines:
+            starts.append(starts[-1] + len(line))
+
+        def position(line: int, column: int) -> int:
+            # AST columns are UTF-8 bytes, regex offsets are Unicode characters.
+            return offset + starts[line - 1] + len(lines[line - 1].encode()[:column].decode())
+
+        for node in ast.walk(tree):
+            values = []
+            if isinstance(node, (ast.Assign, ast.AnnAssign, ast.NamedExpr, ast.keyword)):
+                values = [node.value]
+            elif isinstance(node, ast.Dict):
+                values = node.values
+            for value in values:
+                if value is not None and reference_value(value):
+                    spans.append((position(value.lineno, value.col_offset),
+                                  position(value.end_lineno, value.end_col_offset)))
+    return spans
+
+
 def text_hits(text: str, display: str, *, decoded: bool = False):
     """Keep value-specific fingerprints in memory only, never in audit output."""
     newlines = [match.start() for match in re.finditer("\n", text)]
+    references = [] if decoded else reference_spans(text, display)
     for severity, code, pattern, message in RULES:
         for match in re.finditer(pattern, text):
+            if code == "CREDENTIAL_VALUE" and any(
+                match.start() <= start < match.end() <= end for start, end in references
+            ):
+                continue
             if code == "IP_ADDRESS":
                 try:
                     ipaddress.ip_address(match.group().rstrip("."))
@@ -225,6 +289,44 @@ def protected_path(path: str) -> bool:
             or Path(name).suffix in {".key", ".pem", ".p12", ".pfx"})
 
 
+def full_transcript_path(path: str) -> bool:
+    candidate = Path(path.lower())
+    return (path.lower().endswith((".transcript.txt", ".polished.txt", ".transcript.md", ".polished.md", ".srt", ".vtt"))
+            or ("transcripts" in candidate.parts and candidate.suffix in {".txt", ".md"}
+                and candidate.name not in {"readme.md", "index.md"}))
+
+
+def publication_errors(data: bytes, permission: bytes) -> list[str]:
+    """Check an explicit, content-bound exception; this cannot prove legal rights."""
+    if len(permission) > MAX_BYTES:
+        return ["全文公开说明超过文本检查上限。"]
+    try:
+        record = json.loads(permission)
+    except (ValueError, UnicodeError):
+        return ["全文公开说明不是有效 JSON。"]
+    fields = {"schema_version", "sha256", "source_url", "permission_url", "permission_note", "maintainer_confirmed"}
+    if not isinstance(record, dict) or set(record) != fields:
+        return ["全文公开说明需要版本、SHA-256、来源、授权链接、允许范围和维护者确认。"]
+    errors = []
+    if type(record["schema_version"]) is not int or record["schema_version"] != 1:
+        errors.append("全文公开说明版本无效。")
+    if record["sha256"] != hashlib.sha256(data).hexdigest():
+        errors.append("全文已变化；公开说明的 SHA-256 与当前文件不符。")
+    if record["maintainer_confirmed"] is not True:
+        errors.append("全文公开例外尚未记录维护者确认。")
+    if not isinstance(record["permission_note"], str) or not record["permission_note"].strip():
+        errors.append("全文公开说明缺少允许范围。")
+    for field in ("source_url", "permission_url"):
+        try:
+            url = urlsplit(record[field])
+            if (url.scheme not in {"http", "https"} or not url.hostname
+                    or url.username or url.password):
+                raise ValueError
+        except (ValueError, TypeError, AttributeError):
+            errors.append("全文公开说明需要可审阅的公开来源与授权链接。")
+    return errors
+
+
 def decode_text(data: bytes, path: str) -> str | None:
     if known_binary(data, path):
         return None
@@ -260,7 +362,7 @@ def audit_git(root: Path, *, staged: bool = False, base: str = "HEAD",
         baseline = None
     before = tree_entries(root, baseline)
     after = tree_entries(root, resolve_tree(root, head)) if head else index_entries(root)
-    args = ["diff", "--no-ext-diff", "--no-renames", "--name-only", "-z", "--diff-filter=ACMRTUXB"]
+    args = ["diff", "--no-ext-diff", "--no-renames", "--name-only", "-z", "--diff-filter=ACDMRTUXB"]
     if staged:
         args.append("--cached")
     if baseline:
@@ -274,6 +376,25 @@ def audit_git(root: Path, *, staged: bool = False, base: str = "HEAD",
         names.update(name.decode("utf-8", "surrogateescape") for name in
                      git(root, "ls-files", "--others", "--exclude-standard", "-z").split(b"\0") if name)
 
+    def exists(name: str) -> bool:
+        return name in after if staged or head else (root / name).exists() or (root / name).is_symlink()
+
+    def read(name: str) -> bytes:
+        if staged or head:
+            mode, oid = after[name]
+            if mode not in {"100644", "100755"}:
+                raise AuditError("不检查符号链接或子模块；请使用公开普通文件。")
+            return git(root, "cat-file", "blob", oid)
+        path = root / name
+        if any(parent.is_symlink() for parent in (path, *path.parents) if parent != root):
+            raise AuditError("不读取符号链接或经符号链接目录访问的文件。")
+        return path.read_bytes()
+
+    # Permission edits/deletions must recheck an unchanged source too.
+    names.update(name.removesuffix(PUBLICATION_SUFFIX) for name in list(names)
+                 if name.endswith(PUBLICATION_SUFFIX) and full_transcript_path(name.removesuffix(PUBLICATION_SUFFIX)))
+    names = {name for name in names if exists(name)}
+
     findings = []
     scanned = skipped = existing = 0
     for name in sorted(names):
@@ -281,18 +402,16 @@ def audit_git(root: Path, *, staged: bool = False, base: str = "HEAD",
             if protected_path(name):
                 findings.append(Finding(name, 0, "error", "PROTECTED_FILE", "凭据文件不得进入公开仓库。"))
                 continue
-            if staged or head:
-                mode, oid = after[name]
-                if mode not in {"100644", "100755"}:
-                    raise AuditError("不检查符号链接或子模块；请使用公开普通文件。")
-                data = git(root, "cat-file", "blob", oid)
-            else:
-                path = root / name
-                if any(parent.is_symlink() for parent in (path, *path.parents) if parent != root):
-                    raise AuditError("不读取符号链接或经符号链接目录访问的文件。")
-                if not path.exists():
-                    continue  # Deleted only in the worktree.
-                data = path.read_bytes()
+            data = read(name)
+            permission_name = name + PUBLICATION_SUFFIX
+            if full_transcript_path(name) and (
+                name not in before or permission_name in before or exists(permission_name)
+            ):
+                if exists(permission_name):
+                    errors = publication_errors(data, read(permission_name))
+                else:
+                    errors = ["新增转写/润色全文默认私有；公开例外需附同名 .publication.json，记录内容哈希、授权依据与维护者确认。"]
+                findings.extend(Finding(name, 0, "error", "FULL_TRANSCRIPT_PUBLICATION", message) for message in errors)
             text = decode_text(data, name)
             if text is None:
                 skipped += 1
@@ -333,6 +452,7 @@ def make_result(findings: list[Finding], *, selected: int, scanned: int, strict:
             "增量仅豁免同路径相对基线未增加的完整命中；私钥头及可能截断的凭据赋值不豁免，不豁免整个文件或测试目录。",
             "规则不能穷尽凭据和个人标识；无命中不代表匿名或可安全发布。",
             "JSON 解码命中行号为 0；不检查 Git 历史、链接目标或二进制内部内容。",
+            "新增转写全文按文件名/目录识别；公开说明只验证结构、哈希和确认记录，不代替授权核实，也不能识别所有改名伪装。",
         ],
     }
 

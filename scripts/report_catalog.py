@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import datetime as dt
 import re
+import subprocess
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable
@@ -104,10 +105,11 @@ def iter_reports(domain: str | None = None) -> Iterable[tuple[ReportCollection, 
                 yield collection, path
 
 
-def collection_for_path(path: Path) -> ReportCollection | None:
+def collection_for_path(path: Path, *, root: Path | None = None) -> ReportCollection | None:
+    root = ROOT if root is None else root
     resolved = path.resolve()
     for collection in COLLECTIONS:
-        base = (ROOT / collection.root).resolve()
+        base = (root / collection.root).resolve()
         try:
             relative = resolved.relative_to(base)
         except ValueError:
@@ -117,6 +119,41 @@ def collection_for_path(path: Path) -> ReportCollection | None:
         if path.suffix.lower() == ".md":
             return collection
     return None
+
+
+def new_report_paths(*diff_args: str, root: Path | None = None) -> set[Path]:
+    """New report contracts exclude exact renames within the same collection.
+
+    Copies, moves from outside reports, and cross-domain moves remain new reports.
+    Explicit rename detection is independent of the user's Git configuration.
+    """
+    root = ROOT if root is None else root
+    proc = subprocess.run(
+        ["git", "diff", "--no-ext-diff", "--find-renames=100%", "--name-status", "-z", *diff_args, "--"],
+        cwd=root, capture_output=True, text=True, check=False,
+    )
+    if proc.returncode:
+        raise RuntimeError("cannot identify new reports from Git")
+
+    def report(path: Path) -> ReportCollection | None:
+        collection = collection_for_path(path, root=root)
+        if collection and collection.id == "ai-practice" and not (
+            path.name.startswith("exp_") or "评估笔记" in path.name
+        ):
+            return None
+        return collection
+
+    records = iter(proc.stdout.rstrip("\0").split("\0") if proc.stdout else ())
+    added = set()
+    for status in records:
+        old = root / next(records)
+        target = root / next(records) if status.startswith(("R", "C")) else old
+        collection = report(target)
+        if collection and (status == "A" or status.startswith(("R", "C"))):
+            if status == "R100" and report(old) == collection:
+                continue
+            added.add(target)
+    return added
 
 
 def parse_frontmatter(text: str) -> dict[str, object]:

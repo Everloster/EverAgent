@@ -760,7 +760,7 @@ semantic_tags: ["quality"]
         with mock.patch.object(
             precommit_quality,
             "git_paths",
-            side_effect=[{archived}, set(), {archived}],
+            return_value={archived},
         ), mock.patch("sys.stderr", new=io.StringIO()):
             self.assertEqual(precommit_quality.main(), 1)
 

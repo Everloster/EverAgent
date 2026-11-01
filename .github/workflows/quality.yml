@@ -60,14 +60,15 @@ jobs:
           import os
           import subprocess
           import sys
+          sys.path.insert(0, "scripts")
+          from precommit_quality import report_audit_command
+          from report_catalog import ROOT, new_report_paths
           paths = subprocess.check_output([
               "git", "diff", "--no-renames", "--name-only", "-z",
               os.environ["AUDIT_BASE"], "HEAD", "--",
           ]).decode().split("\0")
-          subprocess.run([
-              sys.executable, *"scripts/audit_reports.py --all --summary-only".split(),
-              *("--changed-path=" + path for path in paths if path),
-          ], check=True)
+          added = {str(path.relative_to(ROOT)) for path in new_report_paths(os.environ["AUDIT_BASE"], "HEAD")}
+          subprocess.run(report_audit_command({path for path in paths if path}, added), check=True)
           PY
       - name: Verify generated indexes
         run: python3 scripts/reindex.py --check

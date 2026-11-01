@@ -1,5 +1,6 @@
 """Public gate contracts use generated synthetic values, never real credentials."""
 import contextlib
+import hashlib
 import io
 import json
 import shutil
@@ -44,11 +45,126 @@ class PublicGateTests(unittest.TestCase):
 
     def commit(self):
         self.git("add", "--all")
-        self.git("commit", "-qm", "synthetic fixture")
+        self.git("commit", "-qm", "synthetic fixture\n\nCo-Authored-By: Aiden")
         return self.git("rev-parse", "HEAD")
 
     def staged(self):
         return audit.audit_git(self.root, staged=True)
+
+    def test_python_references_are_not_literal_credentials(self):
+        code = '''import os
+@KEY@ = os.environ["API_KEY"]
+@TOKEN@ = os.getenv("ACCESS_TOKEN")
+@PASSWORD@ = config.password
+@SECRET@ = existing_secret
+client = Client(@KEY@=os.environ.get("API_KEY", None))
+settings = {"@KEY@": config.api_key}
+标题 = "示例"; @KEY@ = os.getenv("API_KEY", "")
+'''.replace("@KEY@", "api_key").replace("@TOKEN@", "access_token").replace("@PASSWORD@", "password").replace("@SECRET@", "secret")
+        self.write("env.py", code)
+        self.write("guide.md", "# 示例\n```python\n" + code + "```\n")
+        self.git("add", "--all")
+        self.assertTrue(self.staged()["ok"])
+
+    def test_reference_exemption_keeps_literals_defaults_and_other_token_rules(self):
+        value = "synthetic" * 3
+        cases = [
+            ('api_key = "' + value + '"', "CREDENTIAL_VALUE"),
+            ('api_key = ' + 'os.getenv("KEY", "' + value + '")', "CREDENTIAL_VALUE"),
+            ('api_key = ' + 'os.environ.get("KEY", default="' + value + '")', "CREDENTIAL_VALUE"),
+            ('api_key = ' + credential(), "KNOWN_TOKEN_PREFIX"),
+            ('# password=' + value, "CREDENTIAL_VALUE"),
+            ('doc = "password=' + value + '"', "CREDENTIAL_VALUE"),
+            ('api_key = ' + 'os.environ["password=' + value + '"]', "CREDENTIAL_VALUE"),
+        ]
+        for code, expected in cases:
+            with self.subTest(expected=expected, code_length=len(code)):
+                self.assertIn(expected, {item.code for item in audit.scan_text(code, "fixture.py")})
+        reference = "os." + "environ"
+        for filename, code in (
+            ("config.json", json.dumps({"api_key": reference})),
+            ("config.yaml", "api_key: " + reference),
+            ("fixture.py", 'api_key = "' + reference + '"'),
+        ):
+            with self.subTest(filename=filename):
+                self.assertIn("CREDENTIAL_VALUE", {item.code for item in audit.scan_text(code, filename)})
+
+    def publication(self, source, **overrides):
+        record = {
+            "schema_version": 1, "sha256": hashlib.sha256(source.read_bytes()).hexdigest(),
+            "source_url": "https://example.org/episode", "permission_url": "https://example.org/license",
+            "permission_note": "合成测试样本：允许全文公开与改编。", "maintainer_confirmed": True,
+        }
+        record.update(overrides)
+        return self.write(str(source.relative_to(self.root)) + audit.PUBLICATION_SUFFIX,
+                          json.dumps(record, ensure_ascii=False))
+
+    def test_new_full_sources_block_even_without_a_report(self):
+        for name in ("topic.transcript.txt", "topic.polished.txt", "subtitles.vtt", "subtitles.srt",
+                     "podcast-learning/reports/transcripts/full.md"):
+            self.write(name, "[00:00:00 -> 00:00:02] 合成测试样本\n")
+        self.git("add", "--all")
+        result = self.staged()
+        self.assertEqual(result["errors"], 5)
+        self.assertEqual({item["code"] for item in result["findings"]}, {"FULL_TRANSCRIPT_PUBLICATION"})
+        self.assertFalse(audit.audit_git(self.root)["ok"])
+
+    def test_private_receipts_and_reports_do_not_require_publication_records(self):
+        self.write("podcast-learning/reports/study.md", "# 学习报告\n来源与原创分析。\n")
+        self.write("podcast-learning/reports/transcripts/source.audit.json", '{"schema_version":2}')
+        self.git("add", "--all")
+        self.assertTrue(self.staged()["ok"])
+
+    def test_publication_permission_is_bound_to_staged_source_and_confirmation(self):
+        source = self.write("topic.transcript.txt", "[00:00:00 -> 00:00:02] 合成样本\n")
+        for overrides in ({"maintainer_confirmed": False}, {"sha256": "0" * 64},
+                          {"permission_note": ""}, {"permission_url": "local-note.md"}):
+            self.publication(source, **overrides)
+            self.git("add", "--all")
+            self.assertFalse(self.staged()["ok"])
+        self.publication(source)
+        self.assertFalse(self.staged()["ok"], "unstaged permission must not authorize the index")
+        self.git("add", "--all")
+        self.assertTrue(self.staged()["ok"])
+        source.write_text("different worktree source\n")
+        self.assertTrue(self.staged()["ok"], "index still contains the approved bytes")
+        self.assertFalse(audit.audit_git(self.root)["ok"])
+
+    def test_published_source_changes_and_permission_deletion_need_revalidation(self):
+        source = self.write("topic.polished.txt", "合成测试样本。\n")
+        permission = self.publication(source)
+        self.commit()
+        original = source.read_text()
+        source.write_text(original + "新增一段。\n")
+        self.git("add", source.name)
+        self.assertFalse(self.staged()["ok"])
+        source.write_text(original)
+        self.git("add", source.name)
+        self.git("rm", permission.name)
+        self.assertFalse(self.staged()["ok"], "removing only permission cannot restore legacy exemption")
+        self.git("rm", source.name)
+        self.assertTrue(self.staged()["ok"])
+
+    def test_existing_full_sources_are_not_retroactively_relicensed(self):
+        source = self.write("legacy.transcript.txt", "历史合成样本。\n")
+        self.commit()
+        source.write_text("历史合成样本，修正错字。\n")
+        self.git("add", source.name)
+        self.assertTrue(self.staged()["ok"])
+        self.git("mv", source.name, "moved.transcript.txt")
+        self.assertFalse(self.staged()["ok"])
+
+    def test_committed_range_requires_same_publication_permission_as_staging(self):
+        base = self.git("rev-parse", "HEAD")
+        source = self.write("topic.transcript.txt", "合成测试样本。\n")
+        self.commit()
+        self.assertFalse(audit.audit_git(self.root, base=base, head="HEAD")["ok"])
+        self.publication(source)
+        self.commit()
+        self.assertTrue(audit.audit_git(self.root, base=base, head="HEAD")["ok"])
+        self.publication(source, maintainer_confirmed=False)
+        self.commit()
+        self.assertFalse(audit.audit_git(self.root, base=base, head="HEAD")["ok"])
 
     def test_index_not_worktree_is_the_publication_boundary(self):
         path = self.write("note with spaces.md", credential())
