@@ -17,10 +17,10 @@ EverAgent 收录借助 AI Agent 完成的论文精读、技术博客分析、开
 | 日期 | 报告 | 领域 |
 |------|------|------|
 | 2026-11-01 | [飞行汽车的剧本与欧洲的账本：赛博对话 vol.60 深读](./podcast-learning/reports/2026-10-30_saibo-duihua_v60-roadster-china-auto-europe.md) | 🎙️ Podcast Learning |
+| 2026-11-01 | [郭凯谈中国经济新范式：拐点、平行线与还没兑现的红利](./podcast-learning/reports/2026-10-30_zhixing-xiaojiuguan_e256-guokai-economy-households.md) | 🎙️ Podcast Learning |
 | 2026-11-01 | [狂飙中的 AI 2026：模型发布、收入增长与算力债务](./podcast-learning/reports/2026-10-26_tulong-zhishu_ai-2026-version-race.md) | 🎙️ Podcast Learning |
 | 2026-11-01 | [人往贵处集中：陆铭谈大城市、内卷、房价与 AI 时代的经济学](./podcast-learning/reports/2026-10-26_gaonengliang_v239-luming-ai-cities-consumption.md) | 🎙️ Podcast Learning |
-| 2026-10-31 | [卢策吾谈具身智能十年：先建数据系统，再等 Scaling Law](./podcast-learning/reports/2026-10-30_xinhao-yuzaosheng_e16-lucewu-north-slope.md) | 🎙️ Podcast Learning |
-| 2026-10-31 | [余一聊 Manus：怎样把任务真正交给 Agent](./podcast-learning/reports/2026-10-28_xiaoyuzhou-ai-lianjinshu_yuyi-manus-delegation.md) | 🎙️ Podcast Learning |
+| 2026-11-01 | [LinkStart Vol.136：Stripe CMO 给出了几条出海准则——四波增长、四层本地化与 Agent 时代的品牌](./podcast-learning/reports/2026-10-29_linkstart_v136-stripe-global-ai-commerce.md) | 🎙️ Podcast Learning |
 <!-- AUTO-RECENT:END -->
 
 按报告修改日期排列，修订过的旧报告也会出现在这里。[浏览全部报告 →](./docs/REPORT_INDEX.md)
@@ -38,7 +38,7 @@ EverAgent 收录借助 AI Agent 完成的论文精读、技术博客分析、开
 | 🧠 [Psychology Learning](./psychology-learning/) | 17 篇 | 13/13/0 |
 | 🧬 [Biology Learning](./biology-learning/) | 18 篇 | 14/9/0 |
 | ⚗️ [AI Practice](./ai-practice/) | 10 篇 | 9/1/0 |
-| 🎙️ [Podcast Learning](./podcast-learning/) | 113 篇 | 58/54/0 |
+| 🎙️ [Podcast Learning](./podcast-learning/) | 115 篇 | 58/54/0 |
 | 🔭 [GitHub Research](./github-trending-analyzer/) | 124 篇 | 0/0/0 |
 | 🏄 [Web Surfing](./web-surfing/) | 47 篇 | 0/0/0 |
 <!-- AUTO-OVERVIEW:END -->

@@ -2,6 +2,7 @@
 
 > 来源：官方 RSS（<https://feed.xyzfm.space/ahng8d9qlywl>）｜ 最近拉取：2026-10-25 ｜ 总集数：181
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
+> [186 的同次采访另剪辑](https://www.xiaoyuzhoufm.com/episode/6ae4143cc96c8942ec1497a8)可[参见郭凯报告](../../reports/2026-10-30_zhixing-xiaojiuguan_e256-guokai-economy-households.md)。该报告的转写与分析范围为知行小酒馆 E256。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|

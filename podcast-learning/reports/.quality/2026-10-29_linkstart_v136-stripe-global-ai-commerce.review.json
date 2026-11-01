@@ -1,0 +1,1154 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-29_linkstart_v136-stripe-global-ai-commerce.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "GLM-5.3",
+        "harness": "codex-cli",
+        "run_id": "ep07-primary-r2-glm53-20261101",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": "",
+        "effort": "xhigh",
+        "identity_evidence": "Current terminal-bound Codex process command line showed -m GLM-5.3 and model_reasoning_effort=xhigh; startup config was not treated as runtime evidence."
+      },
+      "escalation_reason": "",
+      "target_snapshot": {
+        "report_sha256": "b3f6791dd9f1ca2424ea6454c7350ac02df7e8763e20629a879c9455ee97b02b",
+        "report_bytes": 44140,
+        "evidence_sha256": "1c7f64b3b684c3de83d5cd822c20f57cf0874f34f9350b09b996ae9d932aa4e9",
+        "evidence_bytes": 43969,
+        "polished_sha256": "239e51bde51c2d7d612f7a4490a29c98566314d9fc5ea9f27f5f70f52ef657d2",
+        "polished_bytes": 48191,
+        "raw_transcript_sha256_from_receipt": "eb8630d8dace31239f80934606c9c65d4c00b07ceeca20fef6495bbda24b3458",
+        "snapshot_match": true
+      },
+      "scores": {
+        "evidence_fidelity": 95,
+        "request_coverage": 97,
+        "reasoning_quality": 95,
+        "readability": 94,
+        "limitations": 96
+      },
+      "score_reasons": {
+        "evidence_fidelity": "冻结 report/evidence/polished SHA 均匹配；完整复核新版 351 行正文、674 行 evidence、438 行 polished，并复用 r1 已完整阅读的官方 shownotes/raw 独立来源地图。88%/78%、99.999% Historical uptime、Metronome completed、OpenRouter agrees、Kai 83%/39%/25,000 小时和 2025 cohort around 50% 均有官方来源；購入率残片、OpenRouter 后续状态、Radar 1.9 亿等边界保留。扣少量分是因为年度信来源条目的英文摘录保留精确 growing 50% faster 表述，而相邻官方新闻页为 around 50%，正文已用“约”并说明口径。",
+        "request_coverage": "独立来源地图仍覆盖官方 14 个时间点、五部分主线、核心案例、反问/反例和 U01-U18；新版报告独立可读，且逐项落实 r1 普通审与强审的数字、交易状态、单例、说话人与来源边界修复。",
+        "reasoning_quality": "报告持续区分口播、节目单、官网历史口径、官方公告、自报观察性数据与作者推测；对 Day 1 全球化与单一市场深度本地化的张力、平台激励/路由中立、Muse 单例外推边界处理清楚，未发现返修引入的实质推理错误。",
+        "readability": "开篇来源说明压缩，内容地图改为简短锚点目录，关键数字核验改为七组短列表；协调者已实际检查 1100/390px、首屏、关键数字列表和锚点，确认窄屏不再挤压。本 Reviewer 未执行渲染或看图，只在文本结构复核基础上引用该协作证据。",
+        "limitations": "Limitations 明确远端静默转写、无本地 ASR、未核听、说话人推断、99.999% 的历史运行率而非 SLA、多个50%不可合并、OpenRouter 状态未核、Muse 单例和品牌/AEO 策略判断不可外推； polished 字数统计实测匹配。"
+      },
+      "critical_claim_ids_checked": [
+        "C1",
+        "C2",
+        "C3",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08",
+        "U09",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16",
+        "U17",
+        "U18"
+      ],
+      "source_content_map": [
+        {
+          "id": "M01",
+          "title": "02:40 从支付 API 到金融基础设施",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3",
+            "S4"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01"
+          ],
+          "notes": "产品线、教育岗、财富100强残缺口径与上海 Tour 均覆盖。"
+        },
+        {
+          "id": "M02",
+          "title": "08:43 88%、12% 与 Forbes AI 50",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3",
+            "S5",
+            "S6"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02"
+          ],
+          "notes": "口播精确88%、官网More than88%、78%历史值与推断边界已区分。"
+        },
+        {
+          "id": "M03",
+          "title": "10:20 四波增长",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03"
+          ],
+          "notes": "四波、Connect/Shoplazza与忘掉自助线的反例覆盖。"
+        },
+        {
+          "id": "M04",
+          "title": "13:44 Day 1 全球化",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04"
+          ],
+          "notes": "问题同时出现而非一天完成成长，且保留与深度本地化的张力。"
+        },
+        {
+          "id": "M05",
+          "title": "16:10 不满意用户会议",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U05"
+          ],
+          "notes": "销售举荐、百位管理者、5/25分钟结构与小公司建议覆盖。"
+        },
+        {
+          "id": "M06",
+          "title": "18:10 可靠性",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3",
+            "S5"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06"
+          ],
+          "notes": "口播目标与官网Historical uptime区分，不当作SLA或未来保证。"
+        },
+        {
+          "id": "M07",
+          "title": "22:50 四层本地化",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U07"
+          ],
+          "notes": "四层定义、第三层停点、日本反例与市场共处标准覆盖。"
+        },
+        {
+          "id": "M08",
+          "title": "26:24 先做透一个市场",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U08"
+          ],
+          "notes": "TAM/小公司数据路径、B2C投放与文化适配分岔覆盖。"
+        },
+        {
+          "id": "M09",
+          "title": "28:20 两笔交易",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S8",
+            "S9"
+          ],
+          "matched_coverage_unit_ids": [
+            "U09"
+          ],
+          "notes": "Metronome完成与OpenRouter agrees区分；标题不再写成两笔均收购完成。"
+        },
+        {
+          "id": "M10",
+          "title": "35:27 Muse购买",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10"
+          ],
+          "notes": "单例边界、身份/隐私/可发现性需求与推荐看板覆盖，不实化支付标准。"
+        },
+        {
+          "id": "M11",
+          "title": "39:30 Agent时代品牌",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11"
+          ],
+          "notes": "品牌被绕开、事实数据、AEO难度与策略判断边界覆盖。"
+        },
+        {
+          "id": "M12",
+          "title": "42:00 营销工程化",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U12"
+          ],
+          "notes": "CMO理解智能体与营销工程师化覆盖，说话人不确定处中性表述。"
+        },
+        {
+          "id": "M13",
+          "title": "44:00 Kai与内部AI",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3",
+            "S10"
+          ],
+          "matched_coverage_unit_ids": [
+            "U13"
+          ],
+          "notes": "Kai平台化、三个数字分母与非因果边界官方核对。"
+        },
+        {
+          "id": "M14",
+          "title": "49:00 人机梦之队",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U14"
+          ],
+          "notes": "Radar、Checkout、个性化上手与反替代叙事覆盖。"
+        },
+        {
+          "id": "M15",
+          "title": "片头导语口径",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U15"
+          ],
+          "notes": "导语50%、交易状态、四分钟与百位管理者均降级或核对。"
+        },
+        {
+          "id": "M16",
+          "title": "金句",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S2",
+            "S3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U16"
+          ],
+          "notes": "三句金句集中于§7，正文间接转述。"
+        },
+        {
+          "id": "M17",
+          "title": "关键数字核验",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3",
+            "S5",
+            "S6",
+            "S7",
+            "S10",
+            "S11",
+            "S12",
+            "S13"
+          ],
+          "matched_coverage_unit_ids": [
+            "U17"
+          ],
+          "notes": "改为七组短列表，区分口播、官网历史、公告、年度信、节目单、单例与自报。"
+        },
+        {
+          "id": "M18",
+          "title": "Limitations",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U18"
+          ],
+          "notes": "七条边界覆盖转写来源、数字口径、OpenRouter、单例与策略判断。"
+        }
+      ],
+      "source_ids_checked": [
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8",
+        "S9",
+        "S10",
+        "S11",
+        "S12",
+        "S13"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6",
+        "R7",
+        "R8",
+        "R9"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "required_fixes": [],
+      "resolved_prior_fixes": [
+        {
+          "fix": "统一 More than 88% 与口播精确88%",
+          "status": "resolved",
+          "evidence": "§1.2、§8、C1与S5均区分两个表述。"
+        },
+        {
+          "fix": "澄清年度信50%为2025 cohort业务增速约快50%",
+          "status": "resolved",
+          "evidence": "开篇、§8、Limitations与C9均区分导语、購入率残片、收入残片和cohort口径。"
+        },
+        {
+          "fix": "统一远端静默转写来源并消除本地Whisper矛盾",
+          "status": "resolved",
+          "evidence": "polished校读说明、报告方法边界与evidence limitations均写远端静默worker、无本地ASR；字数统计实测匹配。"
+        },
+        {
+          "fix": "为99.999%补公开来源并区分口径",
+          "status": "resolved",
+          "evidence": "S5登记Historical uptime；§2.2/§8/Limitations/C6区分官网历史运行率、口播目标、SLA与未来保证。"
+        },
+        {
+          "fix": "修复窄屏内容地图与数字长表",
+          "status": "resolved_by_coordinator_visual_check",
+          "evidence": "文本结构已改短目录与七组列表；协调者实际检查1100/390px、首屏、关键数字列表和锚点有效。本Reviewer未渲染。"
+        },
+        {
+          "fix": "强审追加的交易标题、支付实现、Muse单例、AEO边界与首屏说明",
+          "status": "resolved",
+          "evidence": "§4改为两笔交易/布局；§5.1不实化机器支付标准；Muse和品牌/AEO补外推边界；首屏说明压缩。"
+        }
+      ],
+      "verification_scope": {
+        "source_first_context": "Reused reviewer-authored r1 independent source map covering official shownotes, full raw, 14 timestamps and five parts; source-map SHA-256 714ea22319d5706e6690e76527764fbd903b8795722b5301f6fc588480ea7c52.",
+        "current_read_scope": [
+          "new report all 351 lines",
+          "new evidence all 674 lines",
+          "new polished all 438 lines",
+          "r1 review history",
+          "public transcript audit receipt"
+        ],
+        "machine_audit": "Public receipt reports ok=true, 1076 segments, 3053 seconds, timestamp_errors=0, malformed_lines=0, tail_gap_seconds=0, raw SHA eb8630d8dace31239f80934606c9c65d4c00b07ceeca20fef6495bbda24b3458; r1 also ran the audit tool directly. Current task did not touch private raw.",
+        "external_check_scope": "Reused r1 official reads for S5/S6/S7-S11/S13 and rechecked cached S5/S7 key phrases; no new broad web research.",
+        "coordinator_visual_check": "Coordinator reported actually rendered and inspected 1100px/390px first screen, 390px key-number list, directory and anchors on report SHA b3f6791d…; this reviewer did not claim to render."
+      },
+      "notes": "第2轮复核验收通过：三份冻结SHA匹配，r1普通审与强审的required fixes均已落实，未发现新的严重事实、覆盖或安全问题。报告独立可读、14个官方时间点和U01-U18全覆盖；实际运行机器检查见 decision。视觉检查由协调者完成，本记录仅引用其结果。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 95.35,
+    "evaluated_on": "2026-11-01",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "c519e5615133f3f7cb1e53d00f4cb24140d53292ef8c3f4367c48f5a5679e0f1",
+    "evidence_sha256": "1c7f64b3b684c3de83d5cd822c20f57cf0874f34f9350b09b996ae9d932aa4e9"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "GLM-5.3",
+            "harness": "codex-cli",
+            "run_id": "ep07-independent-review-20261101",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": "",
+            "effort": "xhigh",
+            "identity_evidence": "Current terminal-bound Codex process command line showed -m GLM-5.3 and model_reasoning_effort=xhigh; startup config was not treated as runtime evidence."
+          },
+          "target_snapshot": {
+            "report_sha256": "1c14e161a4752e18aac6abb70159bc9cdad4c195f6f1d833d6be1c0642ae18e0",
+            "report_bytes": 45850,
+            "evidence_sha256": "de67fffb9f1bf9e4e1fa628fb18999a5b1a5a5bfecbfd811427c3c0b0e9674c6",
+            "evidence_bytes": 40085,
+            "polished_sha256": "1ab585af0342541b0429a57690113411f323fc922a07e2217f718e348e7df38e",
+            "raw_transcript_sha256": "eb8630d8dace31239f80934606c9c65d4c00b07ceeca20fef6495bbda24b3458",
+            "snapshot_match": true
+          },
+          "scores": {
+            "evidence_fidelity": 88,
+            "request_coverage": 96,
+            "reasoning_quality": 92,
+            "readability": 78,
+            "limitations": 88
+          },
+          "score_reasons": {
+            "evidence_fidelity": "来源优先复核了官方 shownotes、完整 raw、完整 polished、正文和 evidence；audit_transcript.py 通过。88%/78%、Metronome 完成、OpenRouter agrees、Kai 83%/39%/25,000 小时、Ryder Cup 和 2025 cohort 约50%均经官方源复核。扣分点：报告个别地方把 More than 88% 压缩成 88%，年度信 50% 的 cohort/outcome 口径仍可误读；99.999% 称有第三方工程报道但公开来源表未登记该来源；evidence 的 remote worker 要求与 polished/evidence 中 local Whisper 说明存在过程来源不一致。",
+            "request_coverage": "独立地图覆盖官方 14 个时间点、五部分主线、核心案例、反问/张力和数据边界；U01-U18 均在正文中实质覆盖，报告可独立阅读，未依赖 polished 代替正文。",
+            "reasoning_quality": "报告清楚区分口播、节目单、官方口径和自报观察性数据，尤其正确处理 OpenRouter 交割状态、39% 同人不同周、四层本地化与 Day 1 全球化张力。扣分点是两个 50% 的第二个口径仍需更精确到业务增速/cohort，少量概括如本地化层级“越往后越贵”未标为作者推断。",
+            "readability": "桌面阅读结构清楚，术语有中文解释，来源链接可用。但协调者主会话在 390px 实测发现开篇三列内容地图每行一字、第二列过窄，§8 四列长表造成手机竖排/横向滚动负担；本 Reviewer 未执行视觉渲染，只按协调者提供的人类实测证据计分。",
+            "limitations": "Limitations 覆盖 99.999%、OpenRouter 状态、两个50%、转写归属、自报数字和结构性空缺，整体诚实。扣分点是转写执行来源在 evidence/polished 中彼此不一致，且年度信 50% 的精确口径仍需补清楚。"
+          },
+          "critical_claim_ids_checked": [
+            "C1",
+            "C2",
+            "C3",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10",
+            "C11"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07",
+            "U08",
+            "U09",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14",
+            "U15",
+            "U16",
+            "U17",
+            "U18"
+          ],
+          "source_content_map": [
+            {
+              "id": "M01",
+              "title": "02:40 从支付 API 到金融基础设施",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01"
+              ],
+              "notes": "产品线、教育岗、财富100强残缺口径与上海 Tour 均覆盖。"
+            },
+            {
+              "id": "M02",
+              "title": "08:43 88%、12% 与 Forbes AI 50 分母",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3",
+                "S5",
+                "S6"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "报告区分使用/变现、88/78 与推断边界；需统一 More than 88% 精度。"
+            },
+            {
+              "id": "M03",
+              "title": "10:20 四波增长",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "开发者自助、平台生态、企业销售、全球化及忘掉自助线的反例均覆盖。"
+            },
+            {
+              "id": "M04",
+              "title": "13:44 Day 1 全球化",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "报告区分问题同时出现与一天完成成长，并保留与单一市场深度本地化的张力。"
+            },
+            {
+              "id": "M05",
+              "title": "16:10 不满意用户的周一会议",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "销售举荐、百位管理者、5/25分钟结构与小公司建议均覆盖。"
+            },
+            {
+              "id": "M06",
+              "title": "18:10 可靠性优先",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "99.999% 被保留为待验证，并解释可用性语义与口碑后果。"
+            },
+            {
+              "id": "M07",
+              "title": "22:50 四层本地化",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U07"
+              ],
+              "notes": "未翻译、基础翻译、本地化、文化适配和日本反例均覆盖。"
+            },
+            {
+              "id": "M08",
+              "title": "26:24 先做透一个市场",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08"
+              ],
+              "notes": "TAM/小公司数据路径、B2C 投放与文化适配分岔及资源边界均覆盖。"
+            },
+            {
+              "id": "M09",
+              "title": "28:20 Metronome 与 OpenRouter",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S8",
+                "S9"
+              ],
+              "matched_coverage_unit_ids": [
+                "U09"
+              ],
+              "notes": "官方公告区分 completed 与 agreed to acquire，战略理由与状态边界清楚。"
+            },
+            {
+              "id": "M10",
+              "title": "35:27 Muse 四分钟购买",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10"
+              ],
+              "notes": "案例限定为亲历，不外推；安全身份、隐私、可发现性和推荐看板均覆盖。"
+            },
+            {
+              "id": "M11",
+              "title": "39:30 Agent 时代品牌",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U11"
+              ],
+              "notes": "品牌被绕开、事实数据准确性与第三方纠错均覆盖。"
+            },
+            {
+              "id": "M12",
+              "title": "42:00 营销工程化",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U12"
+              ],
+              "notes": "CMO 理解智能体与营销团队工程师化的组织含义已覆盖。"
+            },
+            {
+              "id": "M13",
+              "title": "44:00 Kai 与内部AI",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3",
+                "S10"
+              ],
+              "matched_coverage_unit_ids": [
+                "U13"
+              ],
+              "notes": "Kai 平台化、83%周活、25,000小时、39%同人不同周及非因果边界均官方核对。"
+            },
+            {
+              "id": "M14",
+              "title": "49:00 人机梦之队",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U14"
+              ],
+              "notes": "Radar、Checkout、个性化上手与反对简单替代人的反问均覆盖。"
+            },
+            {
+              "id": "M15",
+              "title": "片头导语口径",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U15"
+              ],
+              "notes": "导语的50%、收购表述、四分钟与百位管理者均被正文降级或核对。"
+            },
+            {
+              "id": "M16",
+              "title": "金句与可引用性",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U16"
+              ],
+              "notes": "三句金句均来自正文并保持可追溯。"
+            },
+            {
+              "id": "M17",
+              "title": "关键数字核验表",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3",
+                "S5",
+                "S6",
+                "S7",
+                "S10",
+                "S11",
+                "S12",
+                "S13"
+              ],
+              "matched_coverage_unit_ids": [
+                "U17"
+              ],
+              "notes": "表格区分口播、官方与节目单口径；需修 More than 88% 与约50% cohort 表述。"
+            },
+            {
+              "id": "M18",
+              "title": "Limitations 与结构性空缺",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U18"
+              ],
+              "notes": "不确定性大多如实登记；转写来源过程描述需与 evidence 要求一致。"
+            }
+          ],
+          "source_ids_checked": [
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6",
+            "S7",
+            "S8",
+            "S9",
+            "S10",
+            "S11",
+            "S12",
+            "S13"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6",
+            "R7",
+            "R8",
+            "R9"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "required_fixes": [
+            "在 §1.2、§8、C1/evidence 中统一 Stripe 官网口径为 “More than 88%”（超过88%），避免表格把限定词压掉。",
+            "把年度信相关 50% 改为：官方口径是 2025 年新注册企业这一 cohort 的业务增速比 2024 cohort 约快 50%，明确不是新注册企业数量增长50%，并保留“约”。",
+            "解决 evidence/polished 对转写执行来源的矛盾：R1 写远端静默 worker，而 polished/evidence limitations 写本地 Whisper large-v3；按可审计事实统一描述，且不得写入私有路径。",
+            "为 99.999% 的第三方工程报道补充公开来源登记，或将该句降为仅有口播依据、未获外部佐证。",
+            "按协调者主会话 390px 实测修版式：将开篇三列内容地图改为简短可点击目录，重构 §8 四列长表以避免每行一字和横向滚动；本 Reviewer 未执行视觉检查。"
+          ],
+          "external_verification_notes": [
+            "Stripe AI use-case page: More than 88% of the Forbes AI 50 use Stripe to monetize.",
+            "Stripe Indexing the AI economy: 78% of the Forbes AI 50 and top-100 AI companies on Stripe.",
+            "Stripe newsroom: Metronome acquisition completed on 2026-01-14.",
+            "Stripe newsroom: agreed to acquire OpenRouter on 2026-08-19; no completion status inferred.",
+            "stripe.dev Kai: April launch, 83% weekly active users, 39% more deals for same sellers in Kai weeks, 25,000 hours/year.",
+            "Stripe 2025 update newsroom: 2025 cohort businesses grew around 50% faster than 2024 cohort.",
+            "Ryder Cup official page: Stripe Worldwide Partner, published 2026-07-22, covering 2027 and 2029 matches.",
+            "Pipeline page: Jeff Titterton is Stripe CMO and joined in November 2022."
+          ],
+          "notes": "来源优先复核完成：完整读取官方 shownotes、raw 1076 段、polished 438 行、冻结报告与 evidence；audit_transcript.py 对 raw 的 SHA、时间戳和结构检查通过，三个冻结 SHA 均匹配。报告实质覆盖全部 14 个官方时间点和核心反问，外部关键口径大多核对成功，无硬失败。未通过主要因为 evidence fidelity 低于 important 单项门槛、移动端可读性低于门槛，以及上述可执行修复项；本次未做视觉渲染检查。"
+        },
+        {
+          "role": "escalation_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex",
+            "run_id": "stripe-strong-r1-gpt56sol-xhigh-20261101",
+            "independent_context": true,
+            "explicit_model_override": false
+          },
+          "scores": {
+            "evidence_fidelity": 83,
+            "request_coverage": 96,
+            "reasoning_quality": 88,
+            "readability": 72,
+            "limitations": 84
+          },
+          "score_reasons": {
+            "evidence_fidelity": "四波增长、本地化、两笔交易状态、Kai 的 83%/39%/25,000 小时等核心内容大体可追溯，且对自报数据和观察性比较有明确降级。但仍有四处实质问题：C1 把官网的 ‘More than 88%’ 称为与口播 88% 相同的数字；C6 声称 99.999% 缺少官方直证，而 evidence 已列的 S5 页面实际明确写有 ‘99.999% Historical uptime for Stripe services’；C9/校读稿把原转写中无法可靠还原的 ‘購入率/购买率上升 50%’ 提升成了采访正文明确说 ‘新注册量上升 50%’；C12 又把高度破碎的代理支付译轨写成具体的 Link、身份产品和机器支付标准实现。第 4 节标题仍用 ‘两次收购/收进 Stripe’，与正文对 OpenRouter 仅确认 agreed to acquire 的谨慎口径冲突。",
+            "request_coverage": "SC01–SC14 与 evidence 的 U01–U14 均有正文锚点，关键案例、反方、数字核验、Limitations 与思考追问齐全；没有核心单元完全缺失。SC02、SC09、SC10 因证据口径或标题强度问题判为 partial，而非内容遗漏。",
+            "reasoning_quality": "报告有效展开了 Day 1 全球可售与选择性深度本地化的张力，也正确说明 Kai 的同人不同周比较不能证明因果，整体分析有增量。需要收敛两处外推：单个 Muse 购买案例只能证明一个闭环实例，不能证明 Agentic Commerce 已普遍成熟；‘同时代理买卖双方、参与定价与路由’超出了现有来源，更准确的问题应是 Stripe 同时覆盖收入计费与模型成本路由后如何披露激励、保持路由中立。",
+            "readability": "桌面截图显示章节结构和正文排版基本清楚，但协调者提供的 390px 实际截图中，开篇三列表格把第三列压成逐字竖排、第二列也过窄并需要横向滚动，已经构成真实阅读障碍。开篇在速览和地图之后又连续放置三段机器审阅式来源说明，读者要经过较长方法声明才进入正文；数字核验表同样包含长解释列，窄屏风险高。",
+            "limitations": "报告对机器转写、说话人归属、自报数字、Kai 观察性比较、OpenRouter 交割状态和口径不明数字说明充分。仍应增加 Muse 单例不能外推到商品覆盖、错误率、售后/争议和互操作成熟度的限制，并说明 ‘品牌在 Agent 时代更重要’ 属访谈策略判断，缺少独立效果证据；99.999% 的限制需要根据 S5 重新区分 ‘口播目标’ 与 ‘官网历史 uptime’，不应继续写成完全无官方直证。"
+          },
+          "critical_claim_ids_checked": [
+            "C1",
+            "C2",
+            "C3",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10",
+            "C11"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07",
+            "U08",
+            "U09",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14",
+            "U15",
+            "U16",
+            "U17",
+            "U18"
+          ],
+          "source_content_map": [
+            {
+              "id": "SC01",
+              "title": "02:40 从支付 API 到全栈金融基础设施",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01"
+              ],
+              "notes": "产品扩展、客户跨度与跨国复杂性均进入 §1.1；2009 年只按口播处理。"
+            },
+            {
+              "id": "SC02",
+              "title": "08:43 88% 与剩余 12% 的精确分母",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S5",
+                "S6"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "Forbes AI 50、变现限定和 12% 判断均覆盖；但 S5 是 ‘More than 88%’，只能佐证分母与量级，不能称为与口播精确 88% 相同的数字。S6 的 78% 统计时点未明确，不宜称稳定历史序列。"
+            },
+            {
+              "id": "SC03",
+              "title": "10:20 Stripe 四波增长",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "开发者自助、平台分发、企业销售、全球化以及不要放弃自助线的警告均完整展开。"
+            },
+            {
+              "id": "SC04",
+              "title": "13:44 AI 公司把阶段压缩到 Day 1",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "报告正确解释为问题并行出现，而非一天完成成长，并与深度本地化形成张力。"
+            },
+            {
+              "id": "SC05",
+              "title": "16:10 不满意用户进入周一管理层会议",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "销售举荐、约 100 位管理者、合上电脑、5 分钟优点加 25 分钟问题等机制细节保留充分。"
+            },
+            {
+              "id": "SC06",
+              "title": "18:10 高可靠性优先",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3",
+                "S5"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "节目主张完整覆盖；外部核验应更新：S5 官方页给出 99.999% historical uptime，而口播把它说成目标，两者需并列区分。"
+            },
+            {
+              "id": "SC07",
+              "title": "22:50 四层本地化",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U07"
+              ],
+              "notes": "四层定义、日本案例、地区理解和文化适配的成功标准均完整。"
+            },
+            {
+              "id": "SC08",
+              "title": "26:24 先做透一个市场",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08"
+              ],
+              "notes": "大公司 TAM、小公司看数据与竞争、B2C 浅覆盖和选择性深度适配均有展开。"
+            },
+            {
+              "id": "SC09",
+              "title": "28:20 Metronome 与 OpenRouter 的战略和交易状态",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3",
+                "S8",
+                "S9"
+              ],
+              "matched_coverage_unit_ids": [
+                "U09"
+              ],
+              "notes": "正文状态核对正确：Metronome completed、OpenRouter 仅确认 agreed to acquire；但内容地图和第 4 节仍写 ‘两次收购/收进 Stripe’，标题先制造了错误完成印象。‘代理买卖双方’的中立性表述也应收窄。"
+            },
+            {
+              "id": "SC10",
+              "title": "35:27 Muse 四分钟买包与 Agentic Commerce 前提",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3",
+                "S5"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10"
+              ],
+              "notes": "案例、Link、四分钟和可发现性均覆盖；破碎译轨中的身份产品与 ‘机器支付系统拆成标准’ 被写得过实，应以 S5 的 agentic commerce APIs/protocols 重新核对或删去。还需增加单例不能证明成熟度的限制。"
+            },
+            {
+              "id": "SC11",
+              "title": "39:30 品牌、公开资料与 AEO",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U11"
+              ],
+              "notes": "品牌被绕开、资料准确性、AEO 综合来源和第三方纠错均覆盖；需在 Limitations 明确 ‘品牌更重要’ 尚无独立效果数据。"
+            },
+            {
+              "id": "SC12",
+              "title": "42:00 CMO 团队的工程能力",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U12"
+              ],
+              "notes": "报告用中性表述处理说话人不确定性，并把组织变化连接到推荐监测系统；推断标签清楚。"
+            },
+            {
+              "id": "SC13",
+              "title": "44:00 Kai 平台及 83%/39%/25,000 小时",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3",
+                "S10"
+              ],
+              "matched_coverage_unit_ids": [
+                "U13"
+              ],
+              "notes": "三个分母、同人不同周、观察性非因果、工作流平台与活动团队案例均处理准确。"
+            },
+            {
+              "id": "SC14",
+              "title": "49:00 人与 Agent 的梦之队",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U14"
+              ],
+              "notes": "Radar 数字被剔除，Checkout、个性化上手和反替代愿景均进入正文，且报告说明其不是已验证的普遍机制。"
+            }
+          ],
+          "source_ids_checked": [
+            "S1",
+            "S2",
+            "S3",
+            "S5",
+            "S6",
+            "S7",
+            "S8",
+            "S9",
+            "S10",
+            "S11",
+            "S13"
+          ],
+          "requirement_ids_checked": [
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6",
+            "R9"
+          ],
+          "unsupported_claims": [
+            "C12"
+          ],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "建议判定：revise。加权分 85.05，低于 important 的 88；evidence_fidelity 83 低于 90，readability 72 低于 80。具体修复：1) 将 C1 与正文改为口播精确 88%、S5 当前页 ‘More than 88%’，不再称同一数字；2) 把 +50% 仅归于节目单/片头编辑口径，原访谈 29 分钟处保留为无法还原的 50% 片段，并把年度信明确写成 ‘2025 cohort 的业务增长速度约比 2024 cohort 快 50%’，同步修改 C9 的 direct 支持与证据摘录；3) 用 S5 的 ‘99.999% Historical uptime’ 补核 C6，同时区分官网历史值与节目口播目标；4) 把 ‘两次收购/收进 Stripe’ 改为 ‘两笔交易/两项布局’，保留 OpenRouter 未核实交割状态；5) 收窄 C12 和 §5.1 的支付实现，只写已核实的 Link 一键支付、身份/隐私/可发现性需求，或引用 S5 的 agentic commerce APIs/protocols；6) 给 Muse 单例和品牌/AEO 判断补上外推边界；7) 把开篇三列表格改为简短可点击目录，把数字核验长表改为窄屏友好的分组列表或短表，把首屏三段机器记录式说明压成一段简短来源说明，其余移到 Limitations。实际阅读范围：此前独立完整读取原转写并形成 source-map；本轮核对 source-map SHA 12e47592f2bd6b9216deb7658c4e3216b9187dcc6af77713512e661b5906f8b7、报告 SHA 1c14e161a4752e18aac6abb70159bc9cdad4c195f6f1d833d6be1c0642ae18e0、evidence SHA de67fffb9f1bf9e4e1fa628fb18999a5b1a5a5bfecbfd811427c3c0b0e9674c6、polished SHA 1ab585af0342541b0429a57690113411f323fc922a07e2217f718e348e7df38e，并完整读取三份冻结材料；查看了协调者已经生成的 1100px 与 390px 截图，未声称由本 Reviewer 渲染。Reviewer 模型选择记录为 gpt-5.6-sol、effort=xhigh、harness=Codex，依据结构化 spawn 运行选择回执；未独立核验 serving backend。R1/R7/R8 属运行与工作区操作，本记录未据内容快照独立验收，交由协调者核对收据与最终检查。"
+        }
+      ],
+      "decision": {}
+    }
+  ]
+}

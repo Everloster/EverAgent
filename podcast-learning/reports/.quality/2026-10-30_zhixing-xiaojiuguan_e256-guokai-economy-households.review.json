@@ -1,0 +1,719 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-30_zhixing-xiaojiuguan_e256-guokai-economy-households.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "glm-5.3",
+        "harness": "codex-cli",
+        "run_id": "podcast-ep05-guokai-r2",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 92,
+        "request_coverage": 96,
+        "reasoning_quality": 94,
+        "readability": 90,
+        "limitations": 94
+      },
+      "score_reasons": {
+        "evidence_fidelity": "C1-C16 均与正文、来源登记和既有独立核验结果逐项对照；报告、evidence 与润色稿哈希匹配，R1 的主语、年份、润读语义、生成者 provenance 和放射科数据边界问题均已修正。扣分项是 evidence 的历史任务要求 R6 仍写“付费内容”，与 C10、Limitations 及正文已核正的“获取条件未确认”不一致；该残留未进入公开事实主张。",
+        "request_coverage": "12 个独立来源单元和官方九章重新映射，R1 因主语与年份降为 partial 的 S02、S10 均已恢复 covered。拐点、平行线、红利传导、AI 与分配、家庭韧性、消费预期、新融资结构、三个信号、财政改革和个人宏观假设均保留，核心反问和反例未被作者 claim 清单筛选。",
+        "reasoning_quality": "修订继续区分二阶企稳与存量损失、增长率分化与规模交叉、利润总额与利润率、条件判断与已验证事实；放射科薪酬与增幅冲突、油价持续性、AI 打破储蓄经验和 CF40 口径不可核验均有边界。未发现新的推理硬伤。",
+        "readability": "正文 255 行可独立阅读，关键数字核验已由四列表改为六条主题短列表，间接“金句第几句”指称已删除。宽窄屏渲染由协调者实际验收：1100px/390px 首屏与 390px 数字列表可用；本 Reviewer 未自行做视觉渲染，仅按该证据评分。",
+        "limitations": "CF40 全文未取得且获取条件未确认、交叉点两种口径无法核对、嘉宾条件判断、方法不明数字、放射科增幅冲突、双版本与隐私边界均披露充分。历史任务 R6 的“付费内容”残留是 metadata 同步瑕疵，不影响正文边界的事实表达。"
+      },
+      "critical_claim_ids_checked": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16"
+      ],
+      "coverage_unit_ids_checked": [
+        "cov-01",
+        "cov-02",
+        "cov-03",
+        "cov-04",
+        "cov-05",
+        "cov-06",
+        "cov-07",
+        "cov-08",
+        "cov-09"
+      ],
+      "source_content_map": [
+        {
+          "id": "S01-turning-point",
+          "title": "拐点判断：从多年调整到房地产驱动力减弱",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S10",
+            "S11"
+          ],
+          "matched_coverage_unit_ids": [
+            "cov-01"
+          ],
+          "notes": "2022 年《长尾》、体感反例、财富机构余震、房企处置、分城差异、“发早了”与时长口径边界均覆盖。"
+        },
+        {
+          "id": "S02-two-economies",
+          "title": "旧经济坍缩与新经济生长的平行线",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S12"
+          ],
+          "matched_coverage_unit_ids": [
+            "cov-02"
+          ],
+          "notes": "柏林、SOHO、家庭绑定、股市补仓、98 年下岗与“每个时代人的命运”均覆盖；郭凯对自己说话的主语已修正。"
+        },
+        {
+          "id": "S03-late-household-dividend",
+          "title": "技术红利为何滞后传导到家庭",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "matched_coverage_unit_ids": [
+            "cov-03"
+          ],
+          "notes": "供给侧与需求侧差异、工业革命、教育医疗娱乐、“谁来消费”反问和分配机制前提均覆盖。"
+        },
+        {
+          "id": "S04-new-work-order",
+          "title": "AI、适应性与未来的新工作",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S9"
+          ],
+          "matched_coverage_unit_ids": [
+            "cov-04"
+          ],
+          "notes": "中美适应力、UBI/税收/股权、播客作为新工作、放射科反例和“生命自会找到出路”均覆盖，并标明证据性质。"
+        },
+        {
+          "id": "S05-macro-household-disconnect",
+          "title": "国家繁荣与家庭悲观为何并存",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S6",
+            "S10"
+          ],
+          "matched_coverage_unit_ids": [
+            "cov-05"
+          ],
+          "notes": "正文明确“不是没有传导，而是传导形式与代价不同”，并用收入与就业数据补家庭侧。"
+        },
+        {
+          "id": "S06-household-resilience",
+          "title": "宏观韧性与家庭自救的一体两面",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "matched_coverage_unit_ids": [
+            "cov-06"
+          ],
+          "notes": "压力分散、次贷对比、家庭互顶、金融缓释、日本/德国代际、市场纵深和内卷两面性均覆盖。"
+        },
+        {
+          "id": "S07-income-expectation-consumption",
+          "title": "消费是未来收入预期的函数",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S4",
+            "S5",
+            "S6",
+            "S9"
+          ],
+          "matched_coverage_unit_ids": [
+            "cov-07"
+          ],
+          "notes": "Hall、以旧换新、家庭财富目标、AI 前提和“历史上没有发生过”均覆盖，并保留方法不明边界。"
+        },
+        {
+          "id": "S08-ai-demand-evidence",
+          "title": "AI 冲击与创造需实际求证",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S14"
+          ],
+          "matched_coverage_unit_ids": [
+            "cov-04",
+            "cov-07"
+          ],
+          "notes": "放射科、埃森哲、SaaS、电脑需求弹性和“大胆假设、小心求证”均覆盖；+9% 与 Doximity +7.5% 的冲突已入边界。"
+        },
+        {
+          "id": "S09-credit-inflation-new-metrics",
+          "title": "新融资结构与通胀解读",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S4",
+            "S5",
+            "S6",
+            "S10"
+          ],
+          "matched_coverage_unit_ids": [
+            "cov-07"
+          ],
+          "notes": "股权融资、信贷密集时代落幕、CPI/PPI、出清、利润与油价边界均覆盖，且未把利润总额误作利润率。"
+        },
+        {
+          "id": "S10-three-signals",
+          "title": "三个信号：拐点、能源与财政",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "matched_coverage_unit_ids": [
+            "cov-08"
+          ],
+          "notes": "三个信号、海水淡化、2G 依赖和换工作能力均覆盖；《长尾》年份在公开报告中已统一为 2022 年。"
+        },
+        {
+          "id": "S11-fiscal-reform",
+          "title": "财政体系改革与税制转向",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S7",
+            "S8",
+            "S10"
+          ],
+          "matched_coverage_unit_ids": [
+            "cov-08"
+          ],
+          "notes": "收支平衡、交易税转存量、个税占比、民生倾斜和政策主张属性均覆盖，个税/GDP 粗算核对为约 1.15%。"
+        },
+        {
+          "id": "S12-crosspoint-and-life-decisions",
+          "title": "交叉点测算与个人宏观假设",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2",
+            "S10"
+          ],
+          "matched_coverage_unit_ids": [
+            "cov-09"
+          ],
+          "notes": "2018 年两倍、2025 年交叉、口径边界、宏观企稳与家庭安全感不同步、人生决策中的隐含假设均覆盖。"
+        }
+      ],
+      "source_ids_checked": [
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8",
+        "S9",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6",
+        "R7",
+        "R8"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "required_fixes": [],
+      "notes": "R1 七项 required_fixes 全部解决；本轮无硬失败、无未支撑关键 claim、无核心要求遗漏。非阻断观察：evidence 的历史任务要求 R6 仍写“付费内容”，而 C10、Limitations 与正文已正确改为“全文未取得、获取条件未确认”；后续整理 metadata 时应同步。润色稿仍保留嘉宾后段口播的“2020 年”说法，但同稿前文与公开报告均按官方出处使用 2022 年，公开事实主张未依赖该口误。",
+      "r1_required_fixes_verification": [
+        {
+          "index": 1,
+          "status": "resolved",
+          "finding": "生成者 provenance 同时保留 MiniMax-M3.1-Flash 初稿与额度中断、GLM-5.3/Claude Code/max 后续实质修订，未再把贡献归并给单一模型。"
+        },
+        {
+          "index": 2,
+          "status": "resolved",
+          "finding": "“关键数字与事实核验”改为六条主题短列表；协调者 390px 实测数字列表可读。"
+        },
+        {
+          "index": 3,
+          "status": "resolved",
+          "finding": "第二节已改为郭凯对自己说，并保留“我就属于这种人”的指向。"
+        },
+        {
+          "index": 4,
+          "status": "resolved",
+          "finding": "公开报告第一节与第八节均统一为 2022 年《长尾》。"
+        },
+        {
+          "index": 5,
+          "status": "resolved",
+          "finding": "润色稿约 47:24 已改为“很可能是有问题的”，新 SHA 与正文及 evidence 绑定一致。"
+        },
+        {
+          "index": 6,
+          "status": "resolved",
+          "finding": "正文不再使用“金句第四句/第六句”式间接索引，金句列表可独立阅读。"
+        },
+        {
+          "index": 7,
+          "status": "resolved",
+          "finding": "正文与 Limitations 写明 571,749 美元与 Doximity 一致、+9% 与 +7.5% 冲突，增幅不再作为已核实事实。"
+        }
+      ],
+      "review_scope": {
+        "source_first_context": "复用 R1 独立来源优先地图；该地图覆盖官方九章、12 个来源单元和核心反问，raw 转写 2240 段已通过时间戳单调性审计。",
+        "source_map_sha256": "8502bf4addcec37de85b84210e5b48a4e51a4f8009733fe55cdc1e4f8150f94f",
+        "snapshot_binding": {
+          "report_sha256_expected": "1d96b32b5955797d3e3f9d98e961fdb96c07bb57660441a6e5abd1a7922dbfbd",
+          "report_sha256_actual": "1d96b32b5955797d3e3f9d98e961fdb96c07bb57660441a6e5abd1a7922dbfbd",
+          "evidence_sha256_expected": "a89d380665ecea696906428a080b224a62be7bb3ac9f0fdf64701ca8cd71708d",
+          "evidence_sha256_actual": "a89d380665ecea696906428a080b224a62be7bb3ac9f0fdf64701ca8cd71708d",
+          "polished_sha256_expected": "294a69ba07b740c2c753d5e04d506162f407a196d5854d7fd524acd925edd48e",
+          "polished_sha256_actual": "294a69ba07b740c2c753d5e04d506162f407a196d5854d7fd524acd925edd48e",
+          "audit_receipt_sha256": "5cfcc8e36f540c3574909ba6d9f2509e95f1eada7b9c5426dd521c4cac24a199"
+        },
+        "reading_range": {
+          "report": "all 255 lines",
+          "evidence": "all 523 lines",
+          "polished": "R2 targeted recheck of affected passages and correction list; full polished reading was completed in R1",
+          "raw_transcript": "not reread in R2; R1 full-source map and machine audit reused without modification"
+        },
+        "external_verification": [
+          {
+            "source": "CF40 official report page",
+            "result": "full text unavailable; catalog/lock visibility and unconfirmed access condition are now stated accurately"
+          },
+          {
+            "source": "National Bureau of Statistics September CPI/PPI and Q3 releases",
+            "result": "cited price, output, investment, income, employment and profit-total numbers match"
+          },
+          {
+            "source": "Ministry of Finance 2025 revenue release and NBS 2025 GDP",
+            "result": "16187 / 1401879 gives about 1.15%"
+          },
+          {
+            "source": "Nobel Prize 2026 official release",
+            "result": "Hall and Woodford award cause matches"
+          },
+          {
+            "source": "Doximity 2025 and NRMP-related radiology results",
+            "result": "571,749 supported; +9% conflicts with Doximity +7.5%; position growth has directional but not primary-source confirmation"
+          },
+          {
+            "source": "overlapping Qizhulou episode page",
+            "result": "title, 55-minute duration and co-interview framing support overlap declaration"
+          }
+        ],
+        "visual_render_check": "not performed by reviewer; coordinator-reported 1100px/390px first-screen and 390px numeric-list checks incorporated with attribution"
+      }
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 93.1,
+    "evaluated_on": "2026-11-01",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "1fec4a3ebc634aa56cb4ee9d7c03e74158cb4534918f1566b467ee71c3e1cfdd",
+    "evidence_sha256": "a89d380665ecea696906428a080b224a62be7bb3ac9f0fdf64701ca8cd71708d"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "glm-5.3",
+            "harness": "codex-cli",
+            "run_id": "task_6077b0427fc1",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": "",
+            "effort": "xhigh"
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 86,
+            "request_coverage": 94,
+            "reasoning_quality": 92,
+            "readability": 72,
+            "limitations": 92
+          },
+          "score_reasons": {
+            "evidence_fidelity": "来源主线和关键数字总体可靠：官方九章、反问、边界和主要外部数据均能回溯；CPI/PPI、三季度收入与生产投资、个税/GDP、诺奖、CF40 目录与媒体口径逐项核对。扣分项是两处明确语义错误：第二节把郭凯对自己说的话写成“他对我说”；第八节把 2022 年《长尾》写成 2020 年，且与本文第一节和官方链接冲突。仓外轻校读稿约 47:24 还把“旧方式解读数据很可能有问题”误成“没有问题”，虽然公开报告采用的方向正确，但会削弱该私有校读来源的可信度。",
+            "request_coverage": "12 个来源优先单元全部检查，官方九章均映射到正文；拐点、平行线、红利传导、AI 与分配、家庭韧性、消费预期、新融资结构、三个信号、财政改革和个人宏观假设均有覆盖，核心反问和反例没有被作者 claim 清单筛选掉。仅两处单元因语义错误降为 partial。",
+            "reasoning_quality": "报告强于同类摘要：区分二阶企稳与存量损失、GDP 交叉与家庭收入、利润总额与利润率、条件判断与已验证事实，并保留海外极端冲击、AI 打破储蓄经验、油价持续性和口径不可核验等反例。主要缺陷是个别转述主语和年份错误，以及“金句第四句/第六句”的间接指代会增加读者回查负担。",
+            "readability": "正文结构、术语解释、脚注和边界表述总体可独立阅读；但协调者实际 390px 渲染发现“关键数字与事实核验”四列表最后一列仅两三字一行并需横向滚动，本 Reviewer 未自行做视觉渲染，只把该可核实渲染发现计入评分。该表承载关键核验信息，当前移动端形态严重影响阅读，需改为三列以内或分条短段。",
+            "limitations": "CF40 全文未取得、交叉点口径不可核验、嘉宾条件判断、方法不明数字、双版本边界和隐私边界均充分披露。进一步改进点：外部复核已能说明放射科 1208 个岗位与 571,749 美元薪酬可分别由 NRMP 相关数据与 Doximity 支持，但 shownotes 的 +9% 与 Doximity 2025 报告的 Radiology 7.5% 不一致，应把该冲突写入边界而非笼统称未核对。"
+          },
+          "critical_claim_ids_checked": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "C16"
+          ],
+          "coverage_unit_ids_checked": [
+            "cov-01",
+            "cov-02",
+            "cov-03",
+            "cov-04",
+            "cov-05",
+            "cov-06",
+            "cov-07",
+            "cov-08",
+            "cov-09"
+          ],
+          "source_content_map": [
+            {
+              "id": "S01-turning-point",
+              "title": "拐点判断：从多年调整到房地产驱动力减弱",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S10",
+                "S11"
+              ],
+              "matched_coverage_unit_ids": [
+                "cov-01"
+              ],
+              "notes": "2022 年《长尾》背景、体感反例、财富机构余震、房企处置、分城差异和“发早了”边界均进入正文。"
+            },
+            {
+              "id": "S02-two-economies",
+              "title": "旧经济坍缩与新经济生长的平行线",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S12"
+              ],
+              "matched_coverage_unit_ids": [
+                "cov-02"
+              ],
+              "notes": "柏林、SOHO、家庭绑定、股市补仓、98 年下岗和“每个时代人的命运”均覆盖；但“可能是我对自己说”被误写为“他对我说”，人物指向错误。"
+            },
+            {
+              "id": "S03-late-household-dividend",
+              "title": "技术红利为何滞后传导到家庭",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2"
+              ],
+              "matched_coverage_unit_ids": [
+                "cov-03"
+              ],
+              "notes": "供给侧与需求侧差异、工业革命、教育医疗娱乐、“谁来消费”反问和分配机制前提均覆盖。"
+            },
+            {
+              "id": "S04-new-work-order",
+              "title": "AI、适应性与未来的新工作",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S9"
+              ],
+              "matched_coverage_unit_ids": [
+                "cov-04"
+              ],
+              "notes": "中美适应力、UBI/税收/股权、播客作为新工作、放射科反例和“生命自会找到出路”均覆盖，并标明证据性质。"
+            },
+            {
+              "id": "S05-macro-household-disconnect",
+              "title": "国家繁荣与家庭悲观为何并存",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S6",
+                "S10"
+              ],
+              "matched_coverage_unit_ids": [
+                "cov-05"
+              ],
+              "notes": "报告把该章与交叉点、外部冲击及官方收入数据并置，明确“不是没有传导，而是传导形式与代价不同”。"
+            },
+            {
+              "id": "S06-household-resilience",
+              "title": "宏观韧性与家庭自救的一体两面",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2"
+              ],
+              "matched_coverage_unit_ids": [
+                "cov-06"
+              ],
+              "notes": "压力分散、次贷对比、家庭互顶、金融缓释、日本/德国代际、市场纵深和内卷两面性均覆盖。"
+            },
+            {
+              "id": "S07-income-expectation-consumption",
+              "title": "消费是未来收入预期的函数",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S4",
+                "S5",
+                "S6",
+                "S9"
+              ],
+              "matched_coverage_unit_ids": [
+                "cov-07"
+              ],
+              "notes": "Hall、以旧换新、家庭财富目标、AI 前提和“历史上没有发生过”均覆盖，并保留方法不明边界。"
+            },
+            {
+              "id": "S08-ai-demand-evidence",
+              "title": "AI 冲击与创造需实际求证",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2"
+              ],
+              "matched_coverage_unit_ids": [
+                "cov-04",
+                "cov-07"
+              ],
+              "notes": "放射科、埃森哲、SaaS、电脑需求弹性和“大胆假设、小心求证”均覆盖；+9% 的来源冲突见 limitations。"
+            },
+            {
+              "id": "S09-credit-inflation-new-metrics",
+              "title": "新融资结构与通胀解读",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S4",
+                "S5",
+                "S6",
+                "S10"
+              ],
+              "matched_coverage_unit_ids": [
+                "cov-07"
+              ],
+              "notes": "股权融资、信贷密集时代落幕、CPI/PPI、出清、利润与油价边界均覆盖，且未把利润总额误作利润率。"
+            },
+            {
+              "id": "S10-three-signals",
+              "title": "三个信号：拐点、能源与财政",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S1",
+                "S2"
+              ],
+              "matched_coverage_unit_ids": [
+                "cov-08"
+              ],
+              "notes": "三个信号、海水淡化、2G 依赖和换工作能力均覆盖；但把《长尾》写作年份误为 2020 年，官方链接与本文前文均为 2022 年。"
+            },
+            {
+              "id": "S11-fiscal-reform",
+              "title": "财政体系改革与税制转向",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S7",
+                "S8",
+                "S10"
+              ],
+              "matched_coverage_unit_ids": [
+                "cov-08"
+              ],
+              "notes": "收支平衡、交易税转存量、个税占比、民生倾斜和政策主张属性均覆盖，个税/GDP 粗算核对为约 1.15%。"
+            },
+            {
+              "id": "S12-crosspoint-and-life-decisions",
+              "title": "交叉点测算与个人宏观假设",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2",
+                "S10"
+              ],
+              "matched_coverage_unit_ids": [
+                "cov-09"
+              ],
+              "notes": "2018 年两倍、2025 年交叉、口径边界、宏观企稳与家庭安全感不同步、人生决策中的隐含假设均覆盖。"
+            }
+          ],
+          "source_ids_checked": [
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6",
+            "S7",
+            "S8",
+            "S9",
+            "S10",
+            "S11",
+            "S12",
+            "S13"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6",
+            "R7",
+            "R8"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [
+            "key_number_mismatch"
+          ],
+          "notes": "阶段 A 先完整读取 raw 2240 行与官方 shownotes 全部文本段，未读取报告/evidence/polished/review，建立 12 单元来源地图后再进入阶段 B。冻结 report SHA-256 与 evidence SHA-256 均逐字节核对匹配；polished SHA-256 亦匹配。阶段 B 完整读取正文 260 行、evidence 501 行和 polished 427 行，实际运行 audit_transcript.py，时间戳错误、格式错误和头尾缺口均为 0。实际 reviewer 启动与进程元数据为 GLM-5.3、codex-cli、effort=xhigh。宽窄屏视觉检查未由本 Reviewer 执行；390px 大表问题来自协调者实际渲染发现，本记录仅纳入该事实而不冒认已做视觉检查。放射科岗位与薪酬经 bounded web search/read 复核：1208 个 2025 岗位有 NRMP 相关结果支持，571,749 美元与 Doximity 2025 报告一致，但该报告 Radiology 增幅为 7.5%，与 shownotes +9% 不一致。",
+          "required_fixes": [
+            "补齐 evidence 的生成者 provenance：保留 MiniMax-M3.1-Flash 初稿与 429 中断事实，同时记录后续 GLM-5.3 / Claude Code / max 完成的事实与阅读修订；不得把初稿贡献全部归给 GLM，也不得只保留 MiniMax 作为最终作者。",
+            "将“关键数字与事实核验”四列表改为三列以内或分条短段，长核验说明移至紧邻正文或脚注；该修复来自协调者 390px 实际渲染发现。",
+            "把第二节“这可能是他对我说的话”改为郭凯对自己说，保留“我就属于这种人”的原文指向。",
+            "把第八节“2020 年写房地产长尾”改为 2022 年或“此前研究”，并与第一节及官方链接一致。",
+            "修正仓外轻校读稿约 47:24 的语义反转，并同步更新其哈希绑定；公开报告当前方向正确，不应随错稿改错。",
+            "删除“金句第四句/第六句”这类间接索引，直接指向观点或改为可独立阅读的表述。",
+            "在放射科数据边界中补充外部复核结果：岗位与 571,749 美元可分别由 NRMP 相关数据与 Doximity 支持，但 +9% 与 Doximity 7.5% 不一致，不能把 +9% 写成已核实事实。"
+          ],
+          "review_scope": {
+            "source_first_stage": "completed",
+            "source_map_sha256": "8502bf4addcec37de85b84210e5b48a4e51a4f8009733fe55cdc1e4f8150f94f",
+            "snapshot_binding": {
+              "report_sha256_expected": "5c769f3892f371433a7f5fe0bf4405b353419b5c578f85c8cfc311e260aa868f",
+              "report_sha256_actual": "5c769f3892f371433a7f5fe0bf4405b353419b5c578f85c8cfc311e260aa868f",
+              "evidence_sha256_expected": "d61b740fda3ac1a0889e487e169b9736e78967777927ae0515705915b0d475cd",
+              "evidence_sha256_actual": "d61b740fda3ac1a0889e487e169b9736e78967777927ae0515705915b0d475cd",
+              "polished_sha256_expected": "dee9af2cd5466beece27852d68e6286aaa44c95a20cfa53dd3c7b57a17264516",
+              "polished_sha256_actual": "dee9af2cd5466beece27852d68e6286aaa44c95a20cfa53dd3c7b57a17264516"
+            },
+            "reading_range": {
+              "raw_transcript": "all 2240 lines / 00:00:08-01:01:20",
+              "official_shownotes": "all parsed text blocks and links for key=ep05",
+              "report": "all 260 lines",
+              "evidence": "all task, limitations, generator/editorial checks, sources, source_coverage and claims",
+              "polished": "all 427 lines"
+            },
+            "external_verification": [
+              {
+                "source": "CF40 official report page",
+                "result": "only catalog and lock icon visible; four drivers match, full method unavailable"
+              },
+              {
+                "source": "National Bureau of Statistics September CPI/PPI and Q3 releases",
+                "result": "all cited numbers match"
+              },
+              {
+                "source": "Ministry of Finance 2025 revenue release and NBS 2025 GDP",
+                "result": "16187 / 1401879 gives about 1.15%"
+              },
+              {
+                "source": "Nobel Prize 2026 official release",
+                "result": "Hall and Woodford award cause matches"
+              },
+              {
+                "source": "Caijing via NetEase and Sina reports",
+                "result": "secondary CF40 framing, 22-case and sixth-year statements match"
+              },
+              {
+                "source": "NRMP-related radiology results and Doximity 2025",
+                "result": "1208 positions and $571,749 supported; 9% conflicts with Doximity 7.5%"
+              },
+              {
+                "source": "overlapping Qizhulou episode page",
+                "result": "title, 55-minute duration and co-interview framing support overlap declaration"
+              }
+            ],
+            "visual_render_check": "not performed by reviewer; coordinator-reported 390px table defect incorporated"
+          }
+        }
+      ],
+      "decision": {}
+    }
+  ]
+}

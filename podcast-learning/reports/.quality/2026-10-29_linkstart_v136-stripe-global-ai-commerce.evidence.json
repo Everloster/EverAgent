@@ -1,0 +1,675 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-10-29_linkstart_v136-stripe-global-ai-commerce.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-01",
+  "generator": {
+    "model": "GLM-5.3",
+    "harness": "claude-code",
+    "run_id": "stripe-v136-20261101-retry1",
+    "explicit_model_override": false,
+    "override_reason": "",
+    "note": "初稿（含全文转写校读、外部研究与报告首版）由 MiniMax-M3.1-Flash（claude-code，run_id stripe-v136-20261101）完成；本轮为额度恢复后的有界修订，修订模型经本会话运行时核实为 GLM-5.3、harness 为 claude-code（Orca 派发）。修订范围：按主会话初审的 10 点清单修正事实与推理、清除裸 wiki 链与残缺直引、缩减内容地图与英文长引、补 Limitations 边界，并同步校读稿与 evidence。"
+  },
+  "session_observations": {
+    "model_source": "claude-session-runtime",
+    "model_confidence": "session-bound",
+    "current_model_confirmed": true,
+    "cli": "claude-code",
+    "dispatch_effort": "max",
+    "note": "本单集原生派发模型即 MiniMax-M3.1-Flash（策略禁用清单只含 minimax-m3，本模型不在其列，故未触发显式覆盖，explicit_model_override 记 false）；harness 由进程祖先识别为 claude-code；effort=max 是派发参数，运行时未暴露 effort 字段，故只记派发值，不把它当作运行时证明。"
+  },
+  "task": {
+    "summary": "对《开始连接 LinkStart》Vol.136（极客公园对话 Stripe CMO Jeff Titterton，2026-10-29，50m58s）完成一篇独立可读的深度报告：沿用 eacli podcast 远端静默 worker 的完整转写并做全文轻校读，逐章覆盖官方 shownotes 的 14 个精选时间戳，重构 Stripe 四波增长、AI 公司 Day 1 全球化、用户信任与可靠性、四层本地化与先做透一个市场、Metronome 与 OpenRouter 两次并购、Agentic Commerce 与品牌/AEO、Stripe 内部 AI 平台 Kai 与人机梦之队等全部主线；对 88%、两个 50%、83%/39%/25,000 小时、99.999%、1.9 亿等关键数字逐条外部核对并标级；全文保留反方、局限与不确定处。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "沿用 eacli podcast 远端静默 worker 的既有转写（1076 段，SHA-256 eb8630d8…b3458，时长覆盖 3053 秒），不重跑下载与转写、不做本地 ASR、不使用 UI/浏览器标签/播放器；完整 raw 与全文轻校读稿留在仓库外私有目录，公开仓只保留脱敏审计收据。"
+      },
+      {
+        "id": "R2",
+        "text": "以官方 shownotes 全部 14 个精选时间戳章节逐章建立 source_coverage；全文轻校读覆盖 00:00–50:53 全部有效语音，不截断、不摘要、不复制 raw 改名。"
+      },
+      {
+        "id": "R3",
+        "text": "报告开篇用速览点题，含内容地图、Limitations、思考与追问与金句；正文按节目主线展开论证、案例、反方与边界，独立可读，不堆工作日志与内部编号。"
+      },
+      {
+        "id": "R4",
+        "text": "关键数字逐条核对一手材料并标级：88% 的分母（Forbes AI 50）与“变现”限定、78% 的历史值、两个 50% 的区分、Kai 三个数字的分母与比较基准、99.999% 的可证性、1.9 亿的单位压缩、《财富》100 强中的一半、Ryder Cup 全球合作伙伴与 2022 年 11 月入职。"
+      },
+      {
+        "id": "R5",
+        "text": "并购状态按一手公告区分：Metronome 已完成交割（Stripe newsroom 标题为 completes），OpenRouter 的可引用官方口径为 agrees to acquire（已同意收购，2026-08-19），截至本次检索未核实后续交割状态；不得沿用节目单与口播的“接连收购了”写成两笔都已完成，也不采用二手报道的交割条件表述与价格传闻。"
+      },
+      {
+        "id": "R6",
+        "text": "metadata：report-v2、tier=important、report_depth=deep、reader_contract=standalone、status=in_progress；transcript_visibility=private、transcript_path 与 polished_transcript_path 为 null、以 sha256 内容 ref 与同 stem .audit.json 公开收据代替。"
+      },
+      {
+        "id": "R7",
+        "text": "不改 README/MAP/wiki/公共索引/策略/其他报告，不自填独立 review（review.json 留空模板），不提交不推送。"
+      },
+      {
+        "id": "R8",
+        "text": "运行单篇 audit_transcript 公开收据、fill_report_stats、领域单篇 audit 与 report_quality check（预期 needs_review，只剩独立 review）；公开产物不含设备名、私有路径、任务/会话标识。"
+      },
+      {
+        "id": "R9",
+        "text": "说话人归属必须可追：中文轨为机器翻译稿且无说话人分离，凡依赖归属的结论改用“节目给出/节目明确否定”等中性表述，或说明推断依据与不确定性。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "kind": "primary",
+      "title": "开始连接 LinkStart Vol.136｜关于中国公司出海，Stripe CMO 给出了几条准则（小宇宙单集页，含官方 shownotes 的 5 PART / 14 个精选时间戳）",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/6ae1c5a5c96c8942ec13abef",
+      "accessed_on": "2026-11-01"
+    },
+    {
+      "id": "S2",
+      "kind": "primary",
+      "title": "完整机器转写（1076 段，仓库外私有目录，按内容哈希寻址；公开仓内不落路径）",
+      "locator": "sha256:eb8630d8dace31239f80934606c9c65d4c00b07ceeca20fef6495bbda24b3458",
+      "accessed_on": "2026-11-01",
+      "sha256": "eb8630d8dace31239f80934606c9c65d4c00b07ceeca20fef6495bbda24b3458"
+    },
+    {
+      "id": "S3",
+      "kind": "primary",
+      "title": "全文轻校读稿（00:00–50:53 全部有效语音，仓库外私有目录，按内容哈希寻址）",
+      "locator": "sha256:239e51bde51c2d7d612f7a4490a29c98566314d9fc5ea9f27f5f70f52ef657d2",
+      "accessed_on": "2026-11-01",
+      "sha256": "239e51bde51c2d7d612f7a4490a29c98566314d9fc5ea9f27f5f70f52ef657d2"
+    },
+    {
+      "id": "S4",
+      "kind": "local",
+      "title": "公开脱敏审计收据（仅证明本次所用转写的身份与完整性，不作为任何事实主张的依据）",
+      "locator": "podcast-learning/reports/transcripts/2026-10-29_linkstart_v136-stripe-global-ai-commerce.audit.json",
+      "accessed_on": "2026-11-01",
+      "sha256": "eb8630d8dace31239f80934606c9c65d4c00b07ceeca20fef6495bbda24b3458"
+    },
+    {
+      "id": "S5",
+      "kind": "official",
+      "title": "Stripe for AI Companies（官网 AI 用例页：More than 88% of the Forbes AI 50 use Stripe to monetize；99.999% Historical uptime for Stripe services）",
+      "locator": "https://stripe.com/en-mx/use-cases/ai",
+      "accessed_on": "2026-11-01"
+    },
+    {
+      "id": "S6",
+      "kind": "official",
+      "title": "Indexing the AI economy | Stripe（同一分母的历史值 78% of the Forbes AI 50，并说明分析平台前 100 家 AI 公司的支付数据）",
+      "locator": "https://stripe.com/guides/indexing-the-ai-economy",
+      "accessed_on": "2026-11-01"
+    },
+    {
+      "id": "S7",
+      "kind": "official",
+      "title": "Stripe's 2025 annual letter（2025 年平台企业产生 $1.9 trillion；Businesses that started on Stripe in 2025 are growing 50% faster than the 2024 cohort）",
+      "locator": "https://stripe.com/annual-updates/2025",
+      "accessed_on": "2026-11-01"
+    },
+    {
+      "id": "S8",
+      "kind": "official",
+      "title": "Stripe completes Metronome acquisition（Stripe 官方新闻室，2026-01-14，完成交割）",
+      "locator": "https://stripe.com/newsroom/news/stripe-completes-metronome-acquisition",
+      "accessed_on": "2026-11-01"
+    },
+    {
+      "id": "S9",
+      "kind": "official",
+      "title": "Stripe agrees to acquire OpenRouter to help businesses optimize token routing and usage（Stripe 官方新闻室，2026-08-19，标题用词 agrees，为“已同意收购”）",
+      "locator": "https://stripe.com/newsroom/news/stripe-agrees-to-acquire-openrouter",
+      "accessed_on": "2026-11-01"
+    },
+    {
+      "id": "S10",
+      "kind": "official",
+      "title": "Meet Stripe's Knowledge AI Platform | stripe.dev（Kai：83% 员工周活、25,000 小时年度聚合、39% 为同一批销售用与不用 Kai 的周次成交对比）",
+      "locator": "https://stripe.dev/blog/meet-stripes-knowledge-ai-platform",
+      "accessed_on": "2026-11-01"
+    },
+    {
+      "id": "S11",
+      "kind": "official",
+      "title": "Stripe becomes a Worldwide Partner of the Ryder Cup（Ryder Cup 官方新闻，2026-07-22）",
+      "locator": "https://www.rydercup.com/news-media/stripe-becomes-a-worldwide-partner-of-the-ryder-cup",
+      "accessed_on": "2026-11-01"
+    },
+    {
+      "id": "S12",
+      "kind": "official",
+      "title": "Stripe Radar | AI-powered Fraud Detection Solution（70 万亿训练数据点、平均降低欺诈 32%；用于对照节目口径）",
+      "locator": "https://stripe.com/radar",
+      "accessed_on": "2026-11-01"
+    },
+    {
+      "id": "S13",
+      "kind": "secondary",
+      "title": "Jeff Titterton, CMO at Stripe | Pipeline Issue 01（外部佐证：2022 年 11 月加入 Stripe 任 CMO、2025 年 $1.9T 口径）",
+      "locator": "https://alexmuresan.com/pipeline/jeff-titterton",
+      "accessed_on": "2026-11-01"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "88% 的分母是 Forbes 的 AI 50 榜单，分子是“已经在 Stripe 上变现”的那部分；口播为精确 88%，Stripe 官网 AI 用例页写的是「More than 88%」（超过 88%），只支持分母与量级、不能与口播写成同一数字；另一份 Stripe 报告以同一分母给出 78%；三者的届别与统计时点无法确证，可确认的只是 Stripe 反复以该榜单为分母对外披露这一比例，不能当成稳定时间序列。节目单写的“88% 的顶级 AI 公司都在使用 Stripe”丢掉了“变现”这个限定词。",
+      "report_anchor": "88%：分母是 Forbes AI 50",
+      "support": "direct",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S5",
+        "S6"
+      ],
+      "evidence": "转写 00:09:03「正确的数字是 88%」、00:09:05 前后「其他那 12% 的公司还没有变现」（发展为嘉宾判断）；S5 官网原文「More than 88% of the Forbes AI 50 use Stripe to monetize」；S6 开头“78% of the Forbes AI 50”。节目单对应章标题为“88% 的顶级 AI 公司都在使用 Stripe”。",
+      "critical": true
+    },
+    {
+      "id": "C2",
+      "claim": "主持人口中的“大约 50 家 AI 公司”与 Forbes AI 50 指向同一张榜单，在中文译轨中无法确证，只能作为推断处理；节目单与口播本身都没有出现“Forbes”字样。",
+      "report_anchor": "把两者连起来是[推测]",
+      "support": "inference",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "evidence": "转写 00:08:56「我听说有大约 50 家 AI 公司，90% 的公司都在使用 Stripe 作为金融基础设施？」；节目单写“88% 的顶级 AI 公司”。两处均未出现“Forbes”，连接依据是 88+12=100 与“50 家”这两个数字线索。",
+      "critical": true
+    },
+    {
+      "id": "C3",
+      "claim": "Stripe 的增长被划分为四波：开发者自助与文档、Connect 类平台生态分发、企业销售团队与专家、全球化；顺序之外的关键警告是公司在建企业线时会忘掉开发者与自助服务，一年后才回头重建；用户从“非常小的公司，一直到《财富》100 强”，口播称服务其中一半（按嘉宾口播，Stripe 2009 年起步；该年份为口播口径）（该句转写残缺，与节目单“服务半数财富 100 强企业”方向一致，无独立核实）。",
+      "report_anchor": "一、四波增长与 Day 1 全球化",
+      "support": "direct",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "evidence": "转写 03:36–08:07（产品线：支付、计费、收入确认、资金管理、发卡、拆分贷款）与 10:18–15:26（四波划分、Connect 与 Shoplazza、忘了自助线的警告、全球顺序：美国→英语市场→中国日本德法）；00:08:40 的“一半”标 [?]。",
+      "critical": true
+    },
+    {
+      "id": "C4",
+      "claim": "AI 公司的成长问题从依次出现变成同时出现：由主持人依据 Stripe 数据描述、Jeff 给出解释——中国的 AI 公司在门口就说要卖到 100 多个国家，并且因为有资金而想同时建销售团队；Jeff 的回应是“所以这就是加速增长”，因为“通常你需要几年时间去面对这些问题，但现在第一天就开始了”，前提是做对选择并有能力。这说的是起步期同时面对四类问题，不是一天之内完成成长。",
+      "report_anchor": "Day 1 全球化：起步期就要同时面对四类问题",
+      "support": "direct",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "evidence": "转写 13:44–15:26（主持人描述 MiniMax 等公司与自助+销售双通道；Jeff 的两句回应；Stripe 自身“一直改变能力重心”的自省）。说话人归属依据问答结构与节目单该章标题推断，无逐音分离。",
+      "critical": false
+    },
+    {
+      "id": "C5",
+      "claim": "Stripe 贴近用户的机制是每周一早上 8 点的主管会议：请一位不满用户到场，由销售团队特意举荐，约一百位来自各条线的管理者旁听并只记笔记，该用户先用五分钟讲喜欢 Stripe 的地方、再用二十五分钟讲产品与服务的所有问题；“自助线是留存长尾客户的入口、销售线是拿下大客户的出口”是本报告的概括[推测]，嘉宾本人只给了“别忘掉自助线”的警告。",
+      "report_anchor": "每周一早上八点的用户课",
+      "support": "direct",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "evidence": "转写 00:16:2x–00:17:0x，含英文原句整段与中译（未核听原音频）；节目单该章标题“每周一，请一位不满意的用户来开管理层会议”。",
+      "critical": true
+    },
+    {
+      "id": "C6",
+      "claim": "“没有任何产品功能能比得上一个高度可靠的产品”，口播称 Stripe 的目标是 99.999% 的可用性（中文译轨把可用性说成“提升”）；Stripe 官网 AI 用例页（S5）载有「99.999% Historical uptime for Stripe services」，是官网对历史运行率的披露，佐证指标语义与量级，但与口播的“目标”是两种口径，也不等于合同 SLA 或对未来可用性的保证；紧接的“失去言语”按上下文应为“失去口碑”。",
+      "report_anchor": "可靠性压过一切功能",
+      "support": "direct",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S5"
+      ],
+      "evidence": "转写 00:18:24「Stripe 目标是 99.999% 的提升」、00:18:29 前后「一旦它掉下来，你会失去言语」；S5 官网「Global scale」一节原文「99.999% Historical uptime for Stripe services」（已核对取回缓存）。",
+      "critical": true
+    },
+    {
+      "id": "C7",
+      "claim": "出海被拆成四层且多数公司停在第三层：完全不翻译、基础翻译、本地化（节目里写作“区域化”）、文化适配（译轨作“传达”）；第四层的标志是用户觉得“这家公司真的对我说话”，处方是认真投入地区团队与地区理解（“你不需要在那个地区有 300 人……但你必须深入地理解这个市场”）；“先做透一个市场”对应大公司做 TAM 分析、小公司看数据与对手增长两条路径，B2C 可靠付费投放先铺开、高度本地化必须转向文化相关。其中“选一两个让你和团队都兴奋的市场”与正反馈链条由主持人补充、Jeff 回应“这太难了”。",
+      "report_anchor": "先选一个市场做透，而不是想象全球化",
+      "support": "direct",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "evidence": "转写 22:00–28:10（四层定义、100 个国家与美国、日本案例、300 人、TAM 与小公司路径、美国悖论、B2C 付费投放、主持人补充的“让自己感到兴奋”与转化—接受度—兴奋正反馈、Jeff 的“这太难了”）。",
+      "critical": true
+    },
+    {
+      "id": "C8",
+      "claim": "两次并购的可引用状态不同：Metronome 已由 Stripe 官方新闻室宣布完成交割（2026-01-14）；OpenRouter 官方公告标题为 “Stripe agrees to acquire”（2026-08-19），即已同意收购。截至本次检索只确认 8 月达成收购协议、未核实后续交割状态——既不能写成“已完成”，也不能断定“尚未交割”；节目发布日期不等于录制日期，不能反推交易进度。节目单与口播的“接连收购了”“到今天已经收购了两家”不能据此写成两笔都已完成；交易金额官方未披露，二手传闻本文不采用。",
+      "report_anchor": "分别核对两笔交易",
+      "support": "direct",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S8",
+        "S9"
+      ],
+      "evidence": "转写 00:28:18 主持人口播；节目单“接连收购了 Metronome 和 OpenRouter”；S8 标题 “Stripe completes Metronome acquisition”；S9 已取回官方页面的标题与导语，用词为 agrees／announced that it has agreed to acquire，正文不含交割条件表述（“customary closing conditions” 仅见于二手报道，未采用为官方归因）。",
+      "critical": true
+    },
+    {
+      "id": "C9",
+      "claim": "节目与 Stripe 年度信里出现的三个 50% 不是同一指标：节目单/片头“今年上半年新注册企业暴增 50%”是导语口径、未获独立资料证实；访谈 00:29:10 处的 50% 片段在原转写中作「購入率升了 50%」，口径残缺、无法可靠还原为新注册量，正文与润色稿均不声称访谈明确说过新注册量；转写残缺的“每个人的收入是 50% 以上前年的，其实是前年的 70% 以上”（疑为新注册公司收入相对前年的水平）；年度信“Businesses that started on Stripe in 2025 are growing 50% faster than the 2024 cohort”指 2025 年新注册企业这一 cohort 的业务增长速度约比 2024 年 cohort 快 50%，不是企业数量增长；四者不可合并。",
+      "report_anchor": "三个 50% 不是同一件事",
+      "support": "direct",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S7"
+      ],
+      "evidence": "原转写 00:29:10「我們在這半年中看到的,Stripe的購入率升了50%」（润色稿按[?]保留、不注为新注册量）、00:29:25–00:29:37「每个人的收入是 50% 以上前年的，其实是前年的 70% 以上」（主体与口径残缺）；S1 节目单导语「今年上半年新注册企业暴增 50%」；S7 年度信原文。",
+      "critical": true
+    },
+    {
+      "id": "C10",
+      "claim": "Kai 的三个数字分母各不相同：83% 是 Stripe 员工周活跃使用率（含几乎全部 GTM），25,000 小时是每年从行政工作转入创收工作的聚合量，39% 是同一批销售在“用了 Kai 的那些周”比“没用 Kai 的那些周”的成交单数之差——不是“用 Kai 的销售比不用 Kai 的销售多成交 39%”，更不是公司整体销售提升 39%；且 39% 为公司自报的观察性比较（同人不同周），非随机试验，不能证明因果。节目口播丢掉了比较基准。口播另提到平台“去年 4 月开始开发”，官方博客称 4 月上线（April launch）；开发与上线本就是两回事，录制日期未核实，不做进一步推断。",
+      "report_anchor": "83%、39%、25,000 小时：三个数字的真实分母",
+      "support": "direct",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S10"
+      ],
+      "evidence": "转写 00:44:34–00:46:35（「去吧，会有一万件好事发生」、83%、25,000 小时、39% 多的交易、35%、『数字产业』团队 50% 的每年）与 S10 官方原文逐句对照。",
+      "critical": true
+    },
+    {
+      "id": "C11",
+      "claim": "节目里 Radar“它看出超过 1.9 亿的交易”、“营销发展 35%”、“‘数字产业’团队 50% 的每年”、“收入是前年的 50% 以上／70% 以上”共四组口播数字口径不明[待验证]：团队名、指标与单位无法还原，也未见于公开材料。本文不采用、不与官方数字强配（年度信 $1.9 万亿支付量、Radar 页 70 万亿数据点均无法与口播确证对应），核验表不收录，统一在 Limitations 说明。",
+      "report_anchor": "口径不明、未采用",
+      "support": "inference",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S7"
+      ],
+      "evidence": "转写 00:48:00「我们的 AI 工具，Radar 完全是 AI 能力，它看出超过 1.9 亿的交易」；S7 年度信 $1.9 trillion。Radar 官网另称训练数据点 70 万亿、平均降低欺诈 32%，与节目口径不同，仅作对照。",
+      "critical": true
+    },
+    {
+      "id": "C12",
+      "claim": "Agentic Commerce 已发生的一个具体案例：Jeff 在飞往上海的航班上用 Meta 的 AI 助手 Muse 拍下用了十年的旧包并求同款，“四分钟内他们就把包找到了”，再用 Stripe 的 Link 一键买下、寄到美国的家，会在他回家的八天内到达；成立需要三件事——安全与身份、隐私保护、可发现性（过去叫 SEO，现在要让产品卡能被智能体找到）。转写在涉及具体支付产品与实现的一两处破碎，是否“把机器支付系统拆成可用标准”无法从本期确证，正文只保留需求本身；该案例为单次亲历，不能外推出商品覆盖、错误率、售后/争议、跨商户互操作已成熟。Stripe 还自建了推荐百分比、被选中百分比与“为什么我没有被选择”的下钻看板。",
+      "report_anchor": "一次四分钟的购买，和它的三个前提",
+      "support": "direct",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "evidence": "转写 00:35:44–00:36:21（十年旧包、手套磨损标 [?]、Muse 拍照上传、Link 一键买下、八天送达）与 00:36:36–00:39:1x（三前提与自建看板；36:42–37:01 的「機器支付系統…標準」段破碎，润色稿已补标 [?]）；节目单该章标题写“Jeff 自己在飞上海的航班上……四分钟搞定”。",
+      "critical": false
+    },
+    {
+      "id": "C13",
+      "claim": "品牌在 Agent 时代更重要，因为买家被绕开了：过去品牌在买家被引导到你的网站时建立，现在推荐发生在 LM 或智能体里，于是“建立品牌”与“公司资料必须准确”必须同时成立；节目明确否定了“只要建立一个很酷的东西 Agentic Commerce 就会发生”与“只做一些 SEO 就够了”两种想法；AEO 与 SEO 的差别在于前者会把所有资料拉下来综合成一个自主生成的答案，因此错误资料会被合成进“看起来很确定”的结论，Stripe 的应对是去第三方做“清洁”。“品牌在 Agent 时代更重要”“AEO 更难”属访谈中的策略判断，缺独立效果证据。",
+      "report_anchor": "品牌在 Agent 时代更重要，而且要“干净”",
+      "support": "direct",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "evidence": "转写 00:39:22–00:42:29（“我认为有两点”、品牌被绕开、公司资料必须准确、否定“很酷的东西就会发生”、AEO 综合机制与“错误的品牌呈现”、Stripe 去第三方清洁）。该段中文轨无说话人分离，归属把握不足，正文已改用中性表述。",
+      "critical": false
+    },
+    {
+      "id": "C14",
+      "claim": "Stripe 同时想做 AI 公司的收银台与成本路由层：Metronome 支撑从按席位计费转向用量计费的计费引擎，OpenRouter 负责在不同模型间路由 token 成本；由此产生的平台中立性问题（同时覆盖商家的收入侧计费与模型成本路由后，如何披露自身激励、保持路由中立）节目没有讨论，属本报告的分析[推测]。",
+      "report_anchor": "成本侧（token 路由）",
+      "support": "inference",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "evidence": "转写 00:28:10–00:34:00（“世界正在重新围绕 AI 运转”“想帮助这次重新平台化”、Metronome 的计费引擎与 OpenAI/Anthropic/NVIDIA 名单（转写残缺，标 [待验证]）、OpenRouter 的 token 成本路由、AI 类比每天消耗的能量）。中立性张力是本报告从两条口播推出的分析，[推测]。",
+      "critical": false
+    },
+    {
+      "id": "C15",
+      "claim": "“先选一个市场做透”与“第一天全球化”出自同一场对话却未被调和，本报告推测真正的区分维度不是市场数量而是“几个市场做到文化适配”这一层，需要独立研究验证[推测]。",
+      "report_anchor": "之间的空缺，该怎么补",
+      "support": "inference",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "evidence": "转写 13:44–15:26 与 22:00–28:10 两处口播并置；节目只给出 B2C 付费投放与高度本地化两条路径，未给调和方案；本报告的维度猜想标 [推测]。",
+      "critical": false
+    },
+    {
+      "id": "C16",
+      "claim": "面向客户的 AI 部分包括：Radar 完全是 AI 能力、Checkout suite 用 AI 基于用户优化 checkout、用 AI 降低 Stripe 产品的上手门槛；结尾处主持人提出“AI 不是一个工具……你可以用 AI 和人来建立梦之队”，Jeff 完全同意并称之为“真正的进步”，表示 AI 兴起之初“团队里可以不需要那么多人”的论调到头来是无聊的、真正发生的是人与 AI 组队（该段转写存在直译残缺，按忠实转述处理）。",
+      "report_anchor": "面向客户的 AI",
+      "support": "direct",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "evidence": "转写 00:47:43–00:50:15（Radar、Checkout、个性化上手）与 00:49:30–00:49:52 结尾段（直译残缺，间接转述）；节目单该章标题“「AI 代替人」的想法太无聊了”。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "02:40 从支付 API 到金融基础设施，Stripe 十几年走过的四个阶段",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "report_anchor": "1.1 四波增长：从开发者自助到全球化",
+      "notes": "产品线全貌、教育岗定位、《财富》100 强中的一半（残缺）、上海 Stripe Tour 首站均覆盖；四波划分的顺序与警告在同节展开。"
+    },
+    {
+      "id": "U02",
+      "title": "08:43 88% 的顶级 AI 公司都在使用 Stripe，至于剩下 12%，它们大多还没开始变现",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S5",
+        "S6",
+        "S4"
+      ],
+      "report_anchor": "88%：分母是 Forbes AI 50",
+      "notes": "分母、分子（变现）、78% 的历史值、节目单的松散转述与“12% 会一次性发展”的判断性质，全部展开并标级。"
+    },
+    {
+      "id": "U03",
+      "title": "10:20 Stripe 的四波增长：开发者自助→平台生态→企业销售→全球化",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "report_anchor": "四波增长：从开发者自助到全球化",
+      "notes": "四波各自的内容、Connect 与 Shoplazza、忘了自助线的警告、全球市场顺序均已覆盖并附本报告对“自助线与销售线互补”的概括[推测]。"
+    },
+    {
+      "id": "U04",
+      "title": "13:44 AI 公司把四个阶段压缩到 Day 1，从第一天就要全球化",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "report_anchor": "Day 1 全球化：起步期就要同时面对四类问题",
+      "notes": "主持人的现象描述与 Jeff 的“加速增长”回应分开归属；正文明确这是“起步期同时面对四类问题”而非“一天完成成长”；与“先做透一个市场”的张力在 §1.3 与 §3.2 两处点明。"
+    },
+    {
+      "id": "U05",
+      "title": "16:10 每周一，请一位不满意的用户来开管理层会议",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "report_anchor": "每周一早上八点的用户课",
+      "notes": "英文原段与中译并列、三个让它成立的设计、小公司建议与“增加互联网的 GDP”定位均覆盖。"
+    },
+    {
+      "id": "U06",
+      "title": "18:10 没有任何功能比得上一个高度可靠的产品",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "report_anchor": "可靠性压过一切功能",
+      "notes": "99.999% 按官网「Historical uptime」与口播「目标」两种口径并列区分（S5 已核），“失去口碑”的译误标 [推测]；加入 Stripe 的时间点与外部佐证一并给出。"
+    },
+    {
+      "id": "U07",
+      "title": "22:50 出海的四个层级：未翻译→基础翻译→本地化→文化适配，多数公司都卡在第三层",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "report_anchor": "四层本地化：多数公司停在第三层",
+      "notes": "四层定义、第三层的落地要求（有人真正明白要卖到哪里）、第四层的用户反应与 300 人处方、本地化一词的三重含义均已覆盖。"
+    },
+    {
+      "id": "U08",
+      "title": "26:24 不要想象「全球化」，先选一个市场做透",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "report_anchor": "先选一个市场做透，而不是想象全球化",
+      "notes": "大公司 TAM 与小公司看数据两条路径、美国悖论、B2C 付费投放与高度本地化的分岔、主持人补充的选择标准与正反馈、以及本报告对该段空缺的分析均覆盖。"
+    },
+    {
+      "id": "U09",
+      "title": "28:20 Stripe 为什么接连收购 Metronome 和 OpenRouter",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S8",
+        "S9",
+        "S4"
+      ],
+      "report_anchor": "两笔交易：商业模式与成本的两项布局",
+      "notes": "并购状态按可引用官方口径区分（Metronome 完成、OpenRouter 停在 agrees）、Metronome 的计费引擎逻辑、OpenRouter 的 token 成本路由逻辑、agent 经济问答与收尾均覆盖；标题与全文口径为“两笔交易/两项布局”，不写“两次收购/收进 Stripe”；价格传闻与“交割条件”归因未采用。"
+    },
+    {
+      "id": "U10",
+      "title": "35:27 Agentic Commerce 已经发生了：Jeff 在飞上海的航班上用 Meta Muse 拍包、找同款、下单，4 分钟搞定",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "report_anchor": "一次四分钟的购买，和它的三个前提",
+      "notes": "案例细节与三个前提（身份、隐私、可发现性）、可发现性取代 SEO、Stripe 自建的推荐与被选中看板均覆盖；具体支付标准/实现不从破碎转写实化，并补单例不能外推成熟度的边界。"
+    },
+    {
+      "id": "U11",
+      "title": "39:30 品牌在 Agent 时代更重要了",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "report_anchor": "品牌在 Agent 时代更重要",
+      "notes": "品牌被绕开、资料准确性、AEO 与 SEO 的机制差异与“做清洁”均覆盖；说话人归属不可靠处改用中性表述并说明依据。"
+    },
+    {
+      "id": "U12",
+      "title": "42:00 CMO 为什么要组建工程师团队？",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "report_anchor": "营销工程化：不是多招几个市场人",
+      "notes": "“更多的市场人都在担任工程角色”与度量口径从流量转化迁移到被推荐率的含义均覆盖；该段译轨说话人标签错乱已在正文与 Limitations 标明。"
+    },
+    {
+      "id": "U13",
+      "title": "44:00 Stripe 内部 AI 平台 Kai，83% 员工每周使用，销售成交提升 39%",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S10",
+        "S4"
+      ],
+      "report_anchor": "83%、39%、25,000 小时：三个数字的真实分母",
+      "notes": "“去吧，会有一万件好事发生”的失败经验、Kai 的定位、三个数字的分母与比较基准（39% 为公司自报观察性比较、同人不同周、非因果证明）、活动团队“时间大头在策划/外联/邮件/追踪、AI 帮的正是这些环节”与 HR 团队效果均覆盖；35% 与“50% 的每年”口径不明未采用（Limitations 统一说明）；英文引文改中文解释。"
+    },
+    {
+      "id": "U14",
+      "title": "49:00 「AI 代替人」的想法太无聊了",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "report_anchor": "面向客户的 AI",
+      "notes": "Radar、Checkout suite、AI 化上手与结尾的人机梦之队对话全部覆盖，并给出本报告对该章的反转解读。"
+    },
+    {
+      "id": "U15",
+      "title": "片头导语 00:00–02:34（“暴增 50%”“接连收购”“四分钟搞定”等导语口径）",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S4"
+      ],
+      "report_anchor": "“暴增”是导语文案",
+      "notes": "导语四个断言逐条在正文被核对或降级：暴增 50% 为节目单口径、接连收购未区分交割状态、四分钟与 100 位管理层属实且已找到一手出处。"
+    },
+    {
+      "id": "U16",
+      "title": "全篇金句摘录（附时间码）",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "report_anchor": "七、金句",
+      "notes": "金句为最常被引用的三句，集中于本节便于引用；正文以间接转述提及、不再逐字重复。"
+    },
+    {
+      "id": "U17",
+      "title": "关键数字核验表（口播口径 / 官方口径 / 转写原文 / 节目单口径 四级标注）",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S5",
+        "S6",
+        "S7",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S4"
+      ],
+      "report_anchor": "八、关键数字核验",
+      "notes": "核验从四列长表改为分组短列表（7 组：口播与官方一致、官网历史口径、官方公告核对、年度信口径、节目单/片头口径、口播自述经历单例、自报无独立核实）；88% 区分口播精确 88% 与官网 More than 88%；口径不明的残串不逐条展示，Limitations 统一说明未采用。"
+    },
+    {
+      "id": "U18",
+      "title": "Limitations：本报告的证据边界",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S4"
+      ],
+      "report_anchor": "Limitations：本报告的证据边界",
+      "notes": "七条边界：99.999% 区分官网历史 uptime 与口播目标（不等于 SLA/未来保证）；四组口径不明未采用的口播数字；OpenRouter 交割状态未获核实（发布日期≠录制日期）；三个 50% 的区分（購入率片段不写成新注册量）；远端静默转写未逐段核听、归属为推断；自报数字证据等级（39% 观察性非因果）；Muse 单例与品牌/AEO 策略判断的外推边界。另保留“本地化判断力从何而来”的结构性空缺。"
+    }
+  ],
+  "limitations": [
+    "公开仓内的脱敏审计收据只用于证明本次所用转写的身份与完整性，未被用作任何事实主张的依据；完整机器转写与全文轻校读稿留在仓库外私有目录，公开文件不记录其路径。",
+    "完整转写由远端静默转写 worker 生成（经 eacli podcast 能力面调度，无本地 ASR，有私有执行回执可查），音轨中嘉宾中文的译制方式无法确证[待验证]，没有说话人分离；报告中的说话人归属是依据上下文、问答结构与节目单做出的推断，在 §5.2、§5.3、§6.3 归属把握不足处已改用中性表述或标注不确定性。公开材料不写私有设备名与路径，不声称核听过原音轨。",
+    "“88% 的顶级 AI 公司”是节目单的松散转述：真实分母是 Forbes AI 50，真实限定词是“在 Stripe 上变现”；口播为精确 88%，官网 AI 用例页为「More than 88%」（超过 88%），只支持分母与量级，不能写成同一数字；另一份官方材料以同一分母给出 78%，但三者是否同一统计时点无法确证。",
+    "三个 50% 是不同指标：节目单/片头“今年上半年新注册企业暴增 50%”是导语口径、未获独立资料证实；访谈 00:29:10 的片段原转写作「購入率升了 50%」，口径残缺、无法可靠还原成新注册量；转写残缺的“收入是前年的 50% 以上 / 70% 以上”是第三个口径；年度信的 50% 指 2025 年新注册企业 cohort 的业务增长速度约比 2024 年 cohort 快 50%（企业增速，非数量增长）；四者不可合并。",
+    "99.999% 需区分口径：口播说的是「目标」，Stripe 官网 AI 用例页载有「99.999% Historical uptime for Stripe services」（官网历史运行率，佐证指标语义与量级），两者不是一回事，且官网表述不等于合同 SLA，也不构成对未来可用性的保证。",
+    "Kai 相关的 35% 与“数字产业团队 50% 的每年”以及 Radar“1.9 亿”、“收入是前年的 50% 以上／70% 以上”口径均无法还原，本文未采用、不与官方数字强配，正文与核验表不逐行展示（Limitations 统一说明）。",
+    "OpenRouter 交易截至本次检索只有官方 “agrees to acquire” 公告（2026-08-19，已取回正文不含交割条件表述），后续交割状态未获核实：既不能写成已完成，也不能断定尚未交割；节目发布日期不等于录制日期。二手传闻价格与“交易已关闭”说法均未采用。",
+    "Radar “超过 1.9 亿的交易”为转写原样、口径不明；官方相邻口径（年度信 $1.9 万亿支付量、Radar 页 70 万亿数据点）无法与口播确证对应，本文未采用、不强配。",
+    "并购的战略理由、AI 公司的客户名单、以及收购 Metronome 与 OpenRouter 的对价均只有嘉宾口播支撑，未获独立核实。",
+    "本报告对“先做透一个市场”与“Day 1 全球化”之间空缺的处理、以及对 Stripe 同时充当收银台与成本路由层的平台中立性分析，都是报告作者的分析，不是节目结论。",
+    "39% 等自报数字为公司观察性口径（同人不同周），不能证明 AI 的因果提升作用；正文引用处已保留该限定。",
+    "Muse 四分钟购买是单次亲历案例，不能外推出智能体购买在商品覆盖、下单错误率、售后与争议处理、跨商户互操作上已经成熟；“品牌在 Agent 时代更重要”“AEO 更难做”是访谈中的策略判断，缺独立效果证据。"
+  ],
+  "revision_history": [
+    {
+      "round": 1,
+      "date": "2026-11-01",
+      "model": "MiniMax-M3.1-Flash",
+      "harness": "claude-code",
+      "scope": "初稿：转写校读、外部研究、报告与 evidence 首版",
+      "note": "因短窗额度耗尽中断，已存在的产物沿用"
+    },
+    {
+      "round": 2,
+      "date": "2026-11-01",
+      "model": "GLM-5.3",
+      "harness": "claude-code",
+      "scope": "额度恢复后的有界修订：按主会话 10 点初审清单修正 §4.3 无依据结论、OpenRouter 交割边界、活动团队方向、1.9亿/35%/50% 口径降级为待验证、速览与 78→88 表述收敛、清除裸 wiki 链与残缺直引、缩减内容地图与英文长引、删除机器记录、补 Limitations；同步校读稿四处（来源管线边界、Radar 原数保留、42:57 说话人存疑、注记时间码）与 evidence。",
+      "note": "模型身份经本会话运行时核实；无重转写、无重新全面研究"
+    },
+    {
+      "round": 3,
+      "date": "2026-11-01",
+      "model": "GLM-5.3",
+      "harness": "claude-code",
+      "scope": "冻结前集中修订（主会话二审 6 点）：§4.1 改题并删“交割条件”官方归因与价格传闻；§1.1 删“正在进入”推断、§4.3 删“中国/十年”句、§6.2 删虚构年份冲突；§6.4 结尾改条件性、§5.2 删“最多影响一条搜索结果”绝对化；全文改流畅间接转述并把“译轨/残缺”细节移出正文（来源口径统一为“依据机器转写，未逐段核听原音频”）；§6.2 英文引文改中文；核验表只留可解释指标、四组残串集中 Limitations 一句；金句压缩为三句；TAM/AEO/GTM 首次中文解释；删 evidence/source_coverage 字段说明与过程脚注。",
+      "note": "无新增联网研究；raw 转写与公开审计收据不变"
+    },
+    {
+      "round": 4,
+      "date": "2026-11-01",
+      "model": "GLM-5.3",
+      "harness": "claude-code",
+      "scope": "双 Reviewer revise 结论的有界返修（先 new-revision 归档 r1 两份 review）：口播精确 88% 与官网 More than 88% 区分、年度信 50% 改写为 2025 cohort 业务增速约快 50%；C9/润色稿不再把 00:29:10 的「購入率」片段写成新注册量；99.999% 按已核 S5 缓存「Historical uptime」区分官网历史口径与口播目标（不等于 SLA/未来保证）；§4 改题“两笔交易：商业模式与成本的两项布局”并全文统一；Muse 段只留单例与身份/隐私/可发现性三需求、补单例与品牌/AEO 策略判断边界、中立性问题收窄为披露激励与路由中立；开篇三段说明缩为一段、内容地图改简短目录、§8 四列表改 7 组分组短列表；转写来源统一为远端静默 worker（润色稿删本地 Whisper 表述）；正文直接引文收敛为三句、金句集中 §7 不再重复；同步 C1/C5/C6/C9/C12/C13/C14、U06/U09/U10/U16/U17/U18、limitations 与润色稿 SHA（239e51bd…f657d2）。",
+      "note": "有界返修：无新增研究、无重转写、未自行打分"
+    }
+  ]
+}

@@ -1,10 +1,12 @@
 # 知行小酒馆 — 全量单集索引
 
-> 来源：官方 RSS（<https://feed.xyzfm.space/j8yp8gxkmgqr>）｜ 最近拉取：2026-10-25 ｜ 总集数：268
+> 来源：官方 RSS（<https://feed.xyzfm.space/j8yp8gxkmgqr>）｜ 最近拉取：2026-10-25 ｜ 上次全量拉取集数：268
 > 由 `podcast-learning/scripts/fetch_show_indexes.py` 生成/刷新；「状态」列人工维护，刷新不覆盖。
+> 2026-11-01 补录本次学习单集；上方日期与集数仍指上次 RSS 全量快照。
 
 | 集 | 发布日期 | 时长 | 标题 | 状态 |
 |---|---|---|---|---|
+| — | 2026-10-30 | 1h01m | [E256 等等，经济已经好起来了吗，怎么还没暖到我啊？｜对话郭凯](https://www.xiaoyuzhoufm.com/episode/6ae440bcc96c8942ec14b02f)<!--g:6ae440bcc96c8942ec14b02f--> | ✅ [报告](../../reports/2026-10-30_zhixing-xiaojiuguan_e256-guokai-economy-households.md) |
 | — | 2026-10-23 | 1h09m | [E255 从「大结果」到「大红果」：你还相信越努力越幸运吗？](https://www.xiaoyuzhoufm.com/episode/6adb068cc96c8942ec110ee1?utm_source=rss)<!--g:6adb068cc96c8942ec110ee1--> | — |
 | — | 2026-10-16 | 2h04m | [E254 我的意外之财｜小酒馆故事会🍻](https://www.xiaoyuzhoufm.com/episode/6ad1c92a0e4e410a05bdc907?utm_source=rss)<!--g:6ad1c92a0e4e410a05bdc907--> | — |
 | — | 2026-10-09 | 1h18m | [E253 AI 会改变世界，可它真的有让世界变好吗？](https://www.xiaoyuzhoufm.com/episode/6ac89152195d838e2aef2e5f?utm_source=rss)<!--g:6ac89152195d838e2aef2e5f--> | ✅ 已处理（2026-10-09 xiaoyuzhou-zhixing-xiaojiuguan_e253-ai-good） |
