@@ -35,5 +35,5 @@ Vol.30（What's Next 科技早知道 · 2026-06-09）+ Vol.31（声东击西 #37
 
 ## 关联
 
-- [[entities/xu-tao]] — 联合创始人
-- [[entities/diane-ting]] — 联合创始人
+- [entities/xu-tao](./xu-tao.md) — 联合创始人
+- [entities/diane-ting](./diane-ting.md) — 联合创始人

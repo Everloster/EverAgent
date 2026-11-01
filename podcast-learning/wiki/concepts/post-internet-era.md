@@ -36,6 +36,6 @@ Vol.32（后互联网时代的乱弹 · 第 166 期 · 2026-06-06）。本概念
 
 ## 关联概念
 
-- [[concepts/platform-algorithm-governance]]
-- [[concepts/ai-era-education-challenge]]
-- [[concepts/shangri-la-dialogue]]
+- [concepts/platform-algorithm-governance](./platform-algorithm-governance.md)
+- [concepts/ai-era-education-challenge](./ai-era-education-challenge.md)
+- [concepts/shangri-la-dialogue](./shangri-la-dialogue.md)

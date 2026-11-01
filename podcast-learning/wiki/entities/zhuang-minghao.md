@@ -11,16 +11,16 @@
 
 ## 核心观点
 
-- **文艺复兴映射框架**：印刷术=推理成本坍塌、美第奇=CAPEX、南北文艺复兴=中美双极、透视法=世界模型、工坊=Agent、虚荣的篝火=治理反弹（详 [[renaissance-revaluation]]）
-- **美第奇的账本 / CAPEX 泡沫之辩**："股一般还好，但债经常出问题"；"收入只够折旧"（详 [[ai-capex-bubble-debate]]）
-- **Agent 元年**：纯 Chatbot 已到头，Codex 定义产品样式，Claude Code 是划时代时刻（详 [[agent-first-year]]）
-- **第四支柱**：分发冲击/知识重现/赞助资本已现，"人的画像"需刻意建造（详 [[fourth-pillar]]）
+- **文艺复兴映射框架**：印刷术=推理成本坍塌、美第奇=CAPEX、南北文艺复兴=中美双极、透视法=世界模型、工坊=Agent、虚荣的篝火=治理反弹（详 [renaissance-revaluation](../concepts/renaissance-revaluation.md)）
+- **美第奇的账本 / CAPEX 泡沫之辩**："股一般还好，但债经常出问题"；"收入只够折旧"（详 [ai-capex-bubble-debate](../concepts/ai-capex-bubble-debate.md)）
+- **Agent 元年**：纯 Chatbot 已到头，Codex 定义产品样式，Claude Code 是划时代时刻（详 [agent-first-year](../concepts/agent-first-year.md)）
+- **第四支柱**：分发冲击/知识重现/赞助资本已现，"人的画像"需刻意建造（详 [fourth-pillar](../concepts/fourth-pillar.md)）
 - 方法论习惯：PPT 四章结构（技术→产品→资本→热门故事），本期破例把"钱"放第一章
 
 ## 关联
 
 - 上期节目：《World Model——世界模型也有 Scaling Law 吗？》（本期世界模型一节素材来源）
-- 注意区分：**[[tulong-boshi|屠龙博士]]** 是课代表立正访谈嘉宾（B 站），与本主播及本节目无关，仅昵称同含"屠龙"
+- 注意区分：**[屠龙博士](./tulong-boshi.md)** 是课代表立正访谈嘉宾（B 站），与本主播及本节目无关，仅昵称同含"屠龙"
 
 ## 节目信息
 
@@ -30,4 +30,4 @@
 
 ## 引用本人物的报告
 
-- [[2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review|重估一切，文艺复兴——2026H1 AI行业观察]]
+- [重估一切，文艺复兴——2026H1 AI行业观察](../../reports/2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review.md)

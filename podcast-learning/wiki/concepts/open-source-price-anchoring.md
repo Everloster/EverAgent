@@ -15,10 +15,10 @@
 
 ## 与相关概念的张力
 
-- 与 [[ai-capex-bubble-debate]]（庄明浩"美第奇的账本"）互补：庄论"债是导火索、收入只够折旧"从供给侧；本论从需求侧价格端掐闭源收入曲线。两者共同指向同一时点窗口（2027）。
+- 与 [ai-capex-bubble-debate](./ai-capex-bubble-debate.md)（庄明浩"美第奇的账本"）互补：庄论"债是导火索、收入只够折旧"从供给侧；本论从需求侧价格端掐闭源收入曲线。两者共同指向同一时点窗口（2027）。
 - Bill Qian 的对冲：若 AI 增长够快（3 年 1000 亿美元收入），"增长能解决一切"；变数恰是中国把它做成"社会总福利大增、财务增长没有"——价值捕获问题。
 - 反驳条件：闭源重新拉开代差（如 Fable 5 级跃迁）则锚定失效——观察指标是上市后"每 token 均价 × 收入增速"剪刀。
 
 ## 引用本概念的报告
 
-- [[2026-07-24_bilibili-suochang-linchao_ai-bubble-2027]]（提出现场）
+- [2026-07-24_bilibili-suochang-linchao_ai-bubble-2027](../../reports/2026-07-24_bilibili-suochang-linchao_ai-bubble-2027.md)（提出现场）

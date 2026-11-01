@@ -15,7 +15,7 @@
 - **东兴汇路的实际规模与稳定性如何测量** —— 已知四条路线只是材料下限；需补各节点的流量、持续时间、失败率和正式渠道占比，区分网络存在与足以替代官方清算。
 - **两头家中的女性拥有怎样的权利与议价空间** —— 中国妻子与泰国妻子的财产、监护、离婚和继承安排，是否能从女性书信、法院与商号档案中恢复，而不只依赖男性经营史。
 - **蚁光炎、陈守明遇刺能否跨档案重新定位** —— 对照泰国警方、华商团体、日本军事情报和私人书信；在新证据出现前继续维持归因不明。
-  - 来源：[[2026-10-23_xiaoyuzhou-huzuo-huyou_ep510-thai-qiaopi-network]] 思考与追问、Limitations
+  - 来源：[2026-10-23_xiaoyuzhou-huzuo-huyou_ep510-thai-qiaopi-network](../reports/2026-10-23_xiaoyuzhou-huzuo-huyou_ep510-thai-qiaopi-network.md) 思考与追问、Limitations
 
 ### 来自 2026-10-15 晚点聊 184 具身季报（新汇入）
 
@@ -25,7 +25,7 @@
 - **“百万小时数据”的有效时长如何审计** —— 需要披露去重后时长、成功/失败比例、任务覆盖、人工筛选和训练采样口径，避免原始采集时长替代有效训练量。
 - **通用模型增强后利润最终流向哪一层** —— 持续比较基础模型、VLA/WAM、机器人接口、本体、灵巧手、独占场景数据与售后闭环的毛利、定价权和客户锁定。
 - **FCC 机器人限制的正式法源与边界是什么** —— 查找规则编号、Federal Register 文本、2 公斤和约 65% 口径、旧型号过渡安排及型号级认证证据。
-  - 来源：[[2026-10-15_rss-wandian-latetalk_184-embodied-quarterly-26q3]] 思考与追问
+  - 来源：[2026-10-15_rss-wandian-latetalk_184-embodied-quarterly-26q3](../reports/2026-10-15_rss-wandian-latetalk_184-embodied-quarterly-26q3.md) 思考与追问
 
 ### 来自 2026-10-22 声东击西 #408 李晶（新汇入）
 
@@ -37,12 +37,12 @@
 - **面对面服务怎样跨过质量、收入与覆盖率的不可能三角** —— Parent Lab 的十个家庭尺度保住深度，却限制覆盖；有哪些组织或产品形态能扩大服务而不稀释关系质量？
 - **倾听练习的最低验证设计是什么** —— 如何设置基线、对照、并行干预和随访，区分照护者变化、儿童自然成熟与家长期待效应？
 - **旧同事身心问题的责任怎样分配** —— 个人选择、组织环境和医疗支持各解释多少；非随机的十几二十人样本最多能支持到哪一步？
-  - 来源：[[2026-10-22_rss-shengdong-jixi_ep408-lijing-internet-growth-self-reconstruction]] 思考与追问
+  - 来源：[2026-10-22_rss-shengdong-jixi_ep408-lijing-internet-growth-self-reconstruction](../reports/2026-10-22_rss-shengdong-jixi_ep408-lijing-internet-growth-self-reconstruction.md) 思考与追问
 
 ### 来自 2026-09-06 大小马 V94 火箭回收与“孙学”（2026-10-20 修订）
 
 - **SpaceX AI 收入比例的原始口径是什么** —— 节目转述“AI 收入超过航天业务 90%、Q4 大幅领先”，但 xAI 公告只确认收购，缺全员会原文、分母与财务口径。
-  - 来源：[[2026-09-06_xiaoyuzhou-daxiaoma-keji_v94-rocket-recovery-sunology]] 思考与追问·问 2
+  - 来源：[2026-09-06_xiaoyuzhou-daxiaoma-keji_v94-rocket-recovery-sunology](../reports/2026-09-06_xiaoyuzhou-daxiaoma-keji_v94-rocket-recovery-sunology.md) 思考与追问·问 2
 - **两型中国火箭何时首次复飞、翻修成本多少** —— 回收、复飞和经济复用是三层门槛；需持续记录同一枚一级的复飞日期、任务结果、翻修周期与单位成本。
   - 来源：同上 问 2
 - **商业航天客户如何权衡价格、成功率与保险** —— 节目给出“客户购买入轨可靠性”的一手行业判断，仍缺订单、保险费率与失败损失的可比数据。
@@ -54,8 +54,8 @@
 
 ### 来自 2026-09-21 乱翻书275 个人Agent战争（新汇入）
 
-- **Muse 每用户固定虚拟机的真实考量** —— 节目里 OpenAI 同学说是"技术有限"（应按需调配），被嘉宾质疑。真实动机是隔离安全、成本控制还是算力囤积？决定了免费模式的烧钱效率与可持续性。与 [[concepts/personal-agent-wars]] 联动。
-  - 来源：[[2026-09-21_xiaoyuzhou-luanfanshu_personal-agent-wars]] 思考与追问·问 2
+- **Muse 每用户固定虚拟机的真实考量** —— 节目里 OpenAI 同学说是"技术有限"（应按需调配），被嘉宾质疑。真实动机是隔离安全、成本控制还是算力囤积？决定了免费模式的烧钱效率与可持续性。与 [concepts/personal-agent-wars](./concepts/personal-agent-wars.md) 联动。
+  - 来源：[2026-09-21_xiaoyuzhou-luanfanshu_personal-agent-wars](../reports/2026-09-21_xiaoyuzhou-luanfanshu_personal-agent-wars.md) 思考与追问·问 2
 - **信任 vs 补贴的消耗战** —— 若 Vanessa 对（无网络效应、切换零成本），"信任和习惯"凭什么立得住？用户习惯养成周期与巨头补贴耐心哪个先耗尽？Instinct $10B 估值需要多久被基本面追上？
   - 来源：同上 问 2
 - **12 个月验证信号追踪（2027-09 回访）** —— 节目给出成立信号："普通人使用从对话走向执行"+高日活高留存。届时拉 DAU/付费率/长程任务占比三指标对照。同时验证豆包×抖音数据打通是否落地（Mark 暴论的监管边界）。
@@ -64,7 +64,7 @@
 ### 来自 2026-09-09 易论AI Vol.1 四人谈（新汇入）
 
 - **「拉回以前的平均值」的机制是什么** —— 李继刚观察到上下文堆多后新指令会被旧记忆惯性覆盖。是注意力分配问题还是 RAG 检索偏向旧记忆？决定解法是「进入时清洗+边界约束」（他的做法）还是遗忘权重机制。直接关系个人 agent 记忆系统设计，与 funes 记忆层、Agent Harness 学习计划阶段 6（memory 架构）联动。
-  - 来源：[[2026-09-09_xiaoyuzhou-yilun-ai_frontier-no-llm]] 思考与追问·问 2
+  - 来源：[2026-09-09_xiaoyuzhou-yilun-ai_frontier-no-llm](../reports/2026-09-09_xiaoyuzhou-yilun-ai_frontier-no-llm.md) 思考与追问·问 2
 - **缓存经济学的可持续性与选型含义** —— DeepSeek 缓存命中 Cola 内 96%/harness 内 100%（"黑科技"）；90→95 差两倍成本、未缓存是缓存的 10-100 倍。96% 是普遍可达还是特定对话模式产物？对自建 agent 的模型选择（模型 plan 家底）意味着什么？
   - 来源：同上 问 2
 - **Agent+X 的 dashboard 融合形态** —— 橘子断言"人类永远需要目录界面"（chat 解决一切但要看着仓库才能想起）。动态 UI 长什么样（Notion 面板/对话流自动摘要/Grok Bot 界面）？有没有已发布原型？
@@ -73,7 +73,7 @@
 ### 来自 2026-09-12 CLS同学房产以旧换新（新汇入）
 
 - **出口的「AI 含量」到底多少** —— CLS 悲观链条的地基：「出口创新高=AI 上游量价提升，且 AI capex 明后年到头」。中国出口中 AI 产业链相关品类的可查占比口径是什么？若出口是广谱增长，"三驾齐失速"前提弱化。与屠龙之术 CAPEX 泡沫之辩（2026-07-17）、曾鸣 AI 云公司（2026-09-03）同挂 AI 主线。
-  - 来源：[[2026-09-12_bilibili-cls-tongxue_fangchan-yijiuhuanxin]] 思考与追问·问 2
+  - 来源：[2026-09-12_bilibili-cls-tongxue_fangchan-yijiuhuanxin](../reports/2026-09-12_bilibili-cls-tongxue_fangchan-yijiuhuanxin.md) 思考与追问·问 2
 - **5% 补贴的杠杆等效性** —— 汽车 5% 国补撬动可选消费；房产单价高两个数量级且居民杠杆未去化（CLS 自己承认），5%≈首付 1/4~1/5，撬动率是否等效？需要什么需求弹性数据？
   - 来源：同上 问 2
 - **二手房「二手车化」类比的失效边界** —— 二手车归零靠"持有零成本+供给无限"；二手房有租金现金流/地段属性，"跌到土拍楼面价"隐含老房土地价值归零——类比断裂点在哪，决定城投收储的账能不能算过来。
@@ -82,7 +82,7 @@
 ### 来自 2026-09-11 长谈64 程乐松×脱不花（新汇入）
 
 - **「底线思维与道家」旧问的推进与闭合条件** —— 本场他确认"道家的通透绝不是消极/对生命的热忱可能超过儒家"，排除了"消极道家"读法；但底线思维与道家"知足/安命"是继承、转化还是家族相似，仍需其学术文本（而非访谈）支撑。与 philosophy-learning open-questions 同题联动。
-  - 来源：[[2026-09-05_bilibili-changtan_chenglesong]] 思考与追问·问 2
+  - 来源：[2026-09-05_bilibili-changtan_chenglesong](../reports/2026-09-05_bilibili-changtan_chenglesong.md) 思考与追问·问 2
 - **《从哲学史出发的中国哲学》在哪里、说了什么** —— 长谈口头版与《重返经验》纲领高度同构是我的推断，需原文比对（尤其"在今天的经验中找到新的运用空间"vs"即事言理/以述为作"）；找到出处后做一手精读，挂 philosophy-learning 方法论线。
   - 来源：同上 问 2
 - **「解释不是权力」能约束金句切片吗** —— 他警告"故事应作为解释、不能作为权力，要警惕把解释当权力的人"，但他自己的出圈金句恰恰以切片形式传播。作者有无（或该不该有）控制切片的手段？本场他自己的解法是"被所有人接纳是最不切实际的期待"——这是接受还是回避？
@@ -91,7 +91,7 @@
 ### 来自 2026-09-03 张小珺对谈曾鸣《产业史观》（新汇入）
 
 - **"寡头+强监管"与"收入只够折旧"如何对撞？** —— 曾鸣判模型公司终局=公用事业式 AI 云公司（寡头垄断+政府强监管），庄明浩判"收入将将覆盖折旧、26Q3 巨头自由现金流或转负"。若同时成立，万亿估值靠什么撑到稳态？判别拐点的先行指标：API 毛利率、token 单价、还是监管动作（哪个辖区先动手）？
-  - 来源：[[2026-09-03_xiaoyuzhou-zhangxiaojun_zengming]] 思考与追问·问 1；与 [[2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review]] 问 1 联动
+  - 来源：[2026-09-03_xiaoyuzhou-zhangxiaojun_zengming](../reports/2026-09-03_xiaoyuzhou-zhangxiaojun_zengming.md) 思考与追问·问 1；与 [2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review](../reports/2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review.md) 问 1 联动
 - **Agent 入口的信任第三方是什么形态？** —— 曾鸣：三年内可能出现 Agent 入口，钱包/隐私交给 Agent 需独立第三方建信任。对应今天生态里的谁（平台级 agent 客户端 / 开源协议生态 / 评测保险式新物种）？"Agent 事实标准"的可观察信号：MCP 类协议 adoption、agent 调用量分布、还是互操作网络效应？
   - 来源：同上 问 2
 - **"组织=任务流+神经网络"怎么证伪？** —— 公司消亡论的可观察证据链：AI 公司员工结构（中层占比/人效）、New Lab 研究员转会费曲线、"组织大脑"类 2B 产品渗透？落到个人（high agency + 任务为基本单元），具体改写哪些工作习惯？
@@ -100,35 +100,35 @@
 ### 来自 2026-07-13 面基《仨账户》（新汇入）
 
 - **三本账先补哪本、怎么挂住？** —— 三账户共用瓶颈是慢反馈系统里的执行力衰减。给自己装一个"无脑机械动作"养最差的那本账：选哪个动作、挂在哪个既有习惯上（他律环境/通勤/起床）？
-  - 来源：[[2026-07-13_xiaoyuzhou-mingjing-diandian_midlife-accounts]] 思考与追问·问 1
+  - 来源：[2026-07-13_xiaoyuzhou-mingjing-diandian_midlife-accounts](../reports/2026-07-13_xiaoyuzhou-mingjing-diandian_midlife-accounts.md) 思考与追问·问 1
 
 - **自己的订阅栈盘点：哪些是停不起、哪些是藤壶、哪些是生产资料？** —— AI 订阅该算"订阅制支出"还是"生产资料投资"？划界标准（替代人力？产生现金流？停了会塌？）
-  - 来源：[[2026-07-13_xiaoyuzhou-mingjing-diandian_midlife-accounts]] 思考与追问·问 2
+  - 来源：[2026-07-13_xiaoyuzhou-mingjing-diandian_midlife-accounts](../reports/2026-07-13_xiaoyuzhou-mingjing-diandian_midlife-accounts.md) 思考与追问·问 2
 
 - **"输入可控输出不可控"能否迁移到其他不可命令的目标？** —— 创作/心流/投资判断/亲密关系若同属此类系统，各自的"起床时间校准"（最强杠杆输入）与"1-2 周反馈延迟纪律"是什么？
-  - 来源：[[2026-07-13_xiaoyuzhou-mingjing-diandian_midlife-accounts]] 思考与追问·问 3
+  - 来源：[2026-07-13_xiaoyuzhou-mingjing-diandian_midlife-accounts](../reports/2026-07-13_xiaoyuzhou-mingjing-diandian_midlife-accounts.md) 思考与追问·问 3
 
 ### 来自 2026-07-17 屠龙之术《重估一切，文艺复兴》（新汇入）
 
 - **"收入只够折旧"何时闭合或断裂？** —— 若 26Q3 巨头自由现金流如期转负，市场信正方（收入滞后于投入）还是反方（循环融资+债引爆）？跟踪交叉点的先行指标是什么（token 单价 / 算力利用率 / 企业订阅留存 / neocloud 债利差）？
-  - 来源：[[2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review]] 思考与追问·问 1
+  - 来源：[2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review](../reports/2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review.md) 思考与追问·问 1
 
 - **AI 时代的"千瓦时"是什么指标？** —— token maxxing 一季内被证伪，"按结果定价"缺可度量性。能代表 AI 商业本质的指标该选 $/task、任务成功率还是"被替代的工时"？该由买方、卖方还是第三方（OpenRouter 们）定义？
-  - 来源：[[2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review]] 思考与追问·问 2
+  - 来源：[2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review](../reports/2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review.md) 思考与追问·问 2
 
 - **"版画路线"会反过来改写"壁画路线"吗？** —— Harvey 后训 GLM-5.1 登顶法律榜、Cursor 基于 Kimi K2.5 后训练：当开源权重+场景后训练足以在垂直领域反超闭源前沿，闭源天价估值溢价靠什么维持？中美双极收敛还是固化成平行生态？
-  - 来源：[[2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review]] 思考与追问·问 3
+  - 来源：[2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review](../reports/2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review.md) 思考与追问·问 3
 
 ### 来自 2026-07-18 追问攻坚（残留新问）
 
 - **「雀巢资助早餐研究」的具体论文清单？** —— 基利书中只把雀巢列在笼统名单里，本轮查证未找到以 Nestlé 为资助方的具体早餐论文。需读基利原书第 4–6 章（"Breakfast Myths"，LitRes 试读片段未含）。
-  - 来源：[[2026-07-14_bilibili-luge-gustav_breakfast]] 追问攻坚·问 3 残留
+  - 来源：[2026-07-14_bilibili-luge-gustav_breakfast](../reports/2026-07-14_bilibili-luge-gustav_breakfast.md) 追问攻坚·问 3 残留
 
 - **《Dataclysm》第 2 章 "Death by a Thousand Mehs" 的书内确切数字？** —— 博客版（The Mathematics of Beauty）已逐字核实，但纸质书第 2 章 archive.org 借阅受限，书中数字表述置信度仅中高。列入 A 类拆书候选（屠龙期已标注）。
-  - 来源：[[2026-07-07_bilibili-kedaibiao-lizheng_tulong-boshi]] 追问攻坚·问 9 残留
+  - 来源：[2026-07-07_bilibili-kedaibiao-lizheng_tulong-boshi](../reports/2026-07-07_bilibili-kedaibiao-lizheng_tulong-boshi.md) 追问攻坚·问 9 残留
 
 - **蛋白质 preload 的长期获益（HbA1c/体重）有无 RCT？** —— 急性餐后效应证据明确（meta 高确定性），但进食顺序 meta 对 HbA1c 无显著效应（Okami 2022）。需要 12 周以上的 preload RCT 证据。
-  - 来源：[[2026-07-14_bilibili-luge-gustav_breakfast]] 追问攻坚·问 2 残留
+  - 来源：[2026-07-14_bilibili-luge-gustav_breakfast](../reports/2026-07-14_bilibili-luge-gustav_breakfast.md) 追问攻坚·问 2 残留
 
 ---
 
@@ -136,51 +136,51 @@
 ### 来自 2026-10-09 六集播客学习批次（新汇入）
 
 - **信用渠道传导的观察指标** —— 起朱楼 184：本轮加息周期真正传导在水面以下（低息旧债到期撞上再融资，IMF 测算价差 150bp），未来一两年会出现"撑不住的企业"。可跟踪的前导指标是什么：高收益债利差、私募信贷违约新闻？大卫翁给了线索没给阈值。
-  - 来源：[[2026-10-08_xiaoyuzhou-qizhulou_2026q3-investment-review]] 思考与追问·问 2
+  - 来源：[2026-10-08_xiaoyuzhou-qizhulou_2026q3-investment-review](../reports/2026-10-08_xiaoyuzhou-qizhulou_2026q3-investment-review.md) 思考与追问·问 2
 - **"美联储握实[?]"是谁** —— 屠龙大实话前另一话题遗留：若指 Kevin Warsh（rumored 下任主席），加息叙事的政治维度完全没展开。另外《Wealth Redistribution in Bubbles and Crashes》论文原文待精读（2500 亿财富再分配机制细节）。
-  - 来源：[[2026-10-08_xiaoyuzhou-qizhulou_2026q3-investment-review]] 问 2/问 3
+  - 来源：[2026-10-08_xiaoyuzhou-qizhulou_2026q3-investment-review](../reports/2026-10-08_xiaoyuzhou-qizhulou_2026q3-investment-review.md) 问 2/问 3
 - **Seedance/CapCut 版本时间线** —— 十字路口 KK 期：转写中模型名严重失真（C-Dance/Citizen 2.0/"8.5 的时代"），我的修正含推测成分；《只手机》作品本身待看；"游戏时刻前夜"具体形态（山音说"在想了"没给答案）。
-  - 来源：[[2026-10-08_xiaoyuzhou-crossing_kk-shanyin]] 问 2/问 3
+  - 来源：[2026-10-08_xiaoyuzhou-crossing_kk-shanyin](../reports/2026-10-08_xiaoyuzhou-crossing_kk-shanyin.md) 问 2/问 3
 - **107-task benchmark 开源仓库与 GPT-6 Astra 得分** —— 硅谷101 E255：阿里开源的电商任务评测（七大类/L1-L4），张阔说新模型"过两天去看评分"。追 Astra 实际得分；对照自己的 eacli 舰队理解 harness 概念。
-  - 来源：[[2026-10-08_rss-guigu101_e255-zhangkuo]] 问 2/问 3
+  - 来源：[2026-10-08_rss-guigu101_e255-zhangkuo](../reports/2026-10-08_rss-guigu101_e255-zhangkuo.md) 问 2/问 3
 - **有效公益的成本效益测算方法** —— 知行 E253：浅池实验哲学论证强，但益盒的量化框架（QALY/DALY 本土化？）值得检验；桑德斯 AI 主权财富基金法案条款与法理（"像石油"类比 vs 训练数据非排他性）。
-  - 来源：[[2026-10-09_xiaoyuzhou-zhixing-xiaojiuguan_e253-ai-good]] 问 2
+  - 来源：[2026-10-09_xiaoyuzhou-zhixing-xiaojiuguan_e253-ai-good](../reports/2026-10-09_xiaoyuzhou-zhixing-xiaojiuguan_e253-ai-good.md) 问 2
 
 
 ### 来自 2026-10-09（二）中优先批次（新汇入）
 
 - **"如何选择职业"3/4、4/4 缺失** —— 孙煜征职业系列只有 1/4、2/4 回灌入库，后两集（BCG vs 互联网、亚马逊 vs Facebook 的具体决策逻辑）需去 YouTube 频道补看。
-  - 来源：[[2026-10-09_rss-kedaibiao-lizheng_career-methods-series]] 问 2
+  - 来源：[2026-10-09_rss-kedaibiao-lizheng_career-methods-series](../reports/2026-10-09_rss-kedaibiao-lizheng_career-methods-series.md) 问 2
 - **冉总的宏观机构与"八字真言"** —— 听懂涨声："全球前三宏观研究公司"未点名（公司股份变动后离开）；八字真言原话转写无法还原；Warren 的非营利组织业务细节未展开。
-  - 来源：[[2026-10-09_xiaoyuzhou-tingdong-zhangsheng_father-son-money]] 问 2
+  - 来源：[2026-10-09_xiaoyuzhou-tingdong-zhangsheng_father-son-money](../reports/2026-10-09_xiaoyuzhou-tingdong-zhangsheng_father-son-money.md) 问 2
 - **裸盖鱼的现行分类** —— 说医解药口播"被扔到了鲈形目"，与常见资料（鲉形目/鲈形目之争）需核对；中国本土鱼类的系统性汞数据缺。
-  - 来源：[[2026-10-08_xiaoyuzhou-shuoyi-jieyao_vol91-cod-mercury]] 问 2
+  - 来源：[2026-10-08_xiaoyuzhou-shuoyi-jieyao_vol91-cod-mercury](../reports/2026-10-08_xiaoyuzhou-shuoyi-jieyao_vol91-cod-mercury.md) 问 2
 - **Meta Muse connector 生态与"Manas"收购** —— 大小马 V95：Muse 被亚马逊/Google 收敛权限的时间线；Meta 高溢价收购的中国团队"Manas[?]"是谁；World Labs 收购最终结构。
-  - 来源：[[2026-10-08_xiaoyuzhou-daxiaoma-keji_v95-china-us]] 问 2
+  - 来源：[2026-10-08_xiaoyuzhou-daxiaoma-keji_v95-china-us](../reports/2026-10-08_xiaoyuzhou-daxiaoma-keji_v95-china-us.md) 问 2
 
 
 ### 来自 2026-10-10 五集批次（新汇入）
 
 - **"好学校负向效果"的原研究** —— 于红口述（中国除外、同排位学生进好学校毕业百分位反而低）；幸福 50/10/40 配比（疑 Lyubomirsky 系）同待溯源。
-  - 来源：[[2026-09-27_xiaoyuzhou-crossing_yuhong-sel]] 问 2
+  - 来源：[2026-09-27_xiaoyuzhou-crossing_yuhong-sel](../reports/2026-09-27_xiaoyuzhou-crossing_yuhong-sel.md) 问 2
 - **兔咚咚商业模型/探月拒藤校案例可核实性** —— 于红期未展开 toC 定价与获客；探月校长"拒绝藤校 offer 才代表成功"需核实。
   - 来源：同上 问 2
 - **OpenCloud 是什么** —— 阮良（"手机操控电脑/登录小红书抓信息"）与潘乱两期口播一致但均未核实——理解 2026 agent 格局的关键缺口。
-  - 来源：[[2026-09-23_xiaoyuzhou-weishijie_ruanliang-ai-org]]/[[2026-09-24_xiaoyuzhou-luanfanshu_today-personal-ai]] 问 2
+  - 来源：[2026-09-23_xiaoyuzhou-weishijie_ruanliang-ai-org](../reports/2026-09-23_xiaoyuzhou-weishijie_ruanliang-ai-org.md)/[2026-09-24_xiaoyuzhou-luanfanshu_today-personal-ai](../reports/2026-09-24_xiaoyuzhou-luanfanshu_today-personal-ai.md) 问 2
 - **网易积分制的 AI 时代化** —— 阮良：有效代码量换算工作价值——AI 时代代码量还成立吗；OpenCloud/WorkBuddy[?] 产品核实。
-  - 来源：[[2026-09-23_xiaoyuzhou-weishijie_ruanliang-ai-org]] 问 2
+  - 来源：[2026-09-23_xiaoyuzhou-weishijie_ruanliang-ai-org](../reports/2026-09-23_xiaoyuzhou-weishijie_ruanliang-ai-org.md) 问 2
 - **IDC 报告存疑数字** —— token 复合增长率"4822.6%"与任务次数倍数不自洽；缺口年份 2030/2036 口播矛盾；"中国智能体渗透率领先全球"无数值——下载报告原文核对。
-  - 来源：[[2026-09-22_xiaoyuzhou-tulong-zhishu_ai-production-stage]] 问 2
+  - 来源：[2026-09-22_xiaoyuzhou-tulong-zhishu_ai-production-stage](../reports/2026-09-22_xiaoyuzhou-tulong-zhishu_ai-production-stage.md) 问 2
 - **Today 的 memory 架构与"上下文鸿沟"量化** —— Timeline/图/时序融合方案只给方向；数字资产与 agent 可用性的关系能否量化。
-  - 来源：[[2026-09-24_xiaoyuzhou-luanfanshu_today-personal-ai]] 问 2
+  - 来源：[2026-09-24_xiaoyuzhou-luanfanshu_today-personal-ai](../reports/2026-09-24_xiaoyuzhou-luanfanshu_today-personal-ai.md) 问 2
 - **动念引线的产品形态/想象力曲线解法** —— 梁琛奇愿景（Default/平行世界）未发布；猫箱两种 use case 占比；字节"预算清零"机制运作。
-  - 来源：[[2026-09-24_rss-wandian-latetalk_liangchenqi-ai-joy]] 问 2
+  - 来源：[2026-09-24_rss-wandian-latetalk_liangchenqi-ai-joy](../reports/2026-09-24_rss-wandian-latetalk_liangchenqi-ai-joy.md) 问 2
 
 
 ### 来自 2026-10-10 孙宇晨×邵艾伦（新汇入）
 
 - **NS 方程被 OpenAI 攻克事件真伪** —— 孙口述"纽约大学教授思路被 OpenAI 700 万美元算力两天破解"；若真为本季度最大数学新闻，web.search 可核。
-  - 来源：[[2026-10-10_bilibili-shaoailun_sunyuchen-ai-era]] 问 2
+  - 来源：[2026-10-10_bilibili-shaoailun_sunyuchen-ai-era](../reports/2026-10-10_bilibili-shaoailun_sunyuchen-ai-era.md) 问 2
 - **"孙宇晨奖"（数学形式化证明）实际设立情况 / 波场日交易量口径** —— 均为口述无独立来源。
   - 来源：同上 问 2
 
@@ -188,51 +188,51 @@
 ### 来自 2026-10-12 四集批次（新汇入）
 
 - **[预测对] 六个月后"可数字化任务 100% 完成" vs "107-task 61%"** —— 子皓（Ambi）与张阔（E255）的分歧本身是可验证预测：2027-04 前后重跑 107-task 或同类 bench。
-  - 来源：[[2026-10-12_xiaoyuzhou-42zhangjing_zihao-ambi]] 增量观点 5
+  - 来源：[2026-10-12_xiaoyuzhou-42zhangjing_zihao-ambi](../reports/2026-10-12_xiaoyuzhou-42zhangjing_zihao-ambi.md) 增量观点 5
 - **Ambi 硬件形态与"环境 delta 驱动主动性"的实现** —— App Store 可下（需邀请码）；form factor/电池方案/delta 触发机制待实测。
   - 来源：同上 问 2
 - **Jex[?] 是什么产品** —— 子皓引用其在 Latent Space 的 continuous running 论（与 Ambi"在场"哲学一致）——两期报告的 [?]，web.search 可清。
-  - 来源：同上 问 2；[[2026-10-11_xiaoyuzhou-crossing_yage-ai-strong]]（鸭哥也提过"从 OpenCloud 换到 Hermes"）
+  - 来源：同上 问 2；[2026-10-11_xiaoyuzhou-crossing_yage-ai-strong](../reports/2026-10-11_xiaoyuzhou-crossing_yage-ai-strong.md)（鸭哥也提过"从 OpenCloud 换到 Hermes"）
 - **国内"零 AI 产品寒冬"归因** —— 子皓/曲凯留的开放问题：今年中国眼前一亮的 AI 产品几乎为零（资本/人才/大厂雄心？）。
-  - 来源：[[2026-10-12_xiaoyuzhou-42zhangjing_zihao-ambi]] 概览
+  - 来源：[2026-10-12_xiaoyuzhou-42zhangjing_zihao-ambi](../reports/2026-10-12_xiaoyuzhou-42zhangjing_zihao-ambi.md) 概览
 - **SceniX technical release（五六个本体验证）/ World Labs 内部分工** —— 郑昌熙的 blog 原文未读。
-  - 来源：[[2026-10-08_rss-kedaibiao-lizheng_lifeifei-worldlabs-robot]] 问 2
+  - 来源：[2026-10-08_rss-kedaibiao-lizheng_lifeifei-worldlabs-robot](../reports/2026-10-08_rss-kedaibiao-lizheng_lifeifei-worldlabs-robot.md) 问 2
 - **Jev 官方 benchmark 构成 / "微信聊天记录备份插件"具体是哪个** —— 鸭哥期两个可复现性极高的 [?]。
-  - 来源：[[2026-10-11_xiaoyuzhou-crossing_yage-ai-strong]] 问 2
+  - 来源：[2026-10-11_xiaoyuzhou-crossing_yage-ai-strong](../reports/2026-10-11_xiaoyuzhou-crossing_yage-ai-strong.md) 问 2
 
 
 ### 来自 2026-10-14 B 站三集批次（新汇入）
 
 - **[预测对·三源] "可数字化任务完成率"**：张阔 61%（107-task 实测）vs 子皓"半年后 100%"（Ambi 判断）vs 刘慈欣"即使到了你也无法判断"（认识论上限）——2027-04 回查时三者分别验证工程/产品/哲学三层。
-  - 来源：[[2026-10-14_bilibili-svj101_zhangkuo-model-user-gap]] 增量观点 1/3；[[2026-10-12_xiaoyuzhou-42zhangjing_zihao-ambi]]；[[2026-10-14_bilibili-shipindao_liucixin-interview]]
+  - 来源：[2026-10-14_bilibili-svj101_zhangkuo-model-user-gap](../reports/2026-10-14_bilibili-svj101_zhangkuo-model-user-gap.md) 增量观点 1/3；[2026-10-12_xiaoyuzhou-42zhangjing_zihao-ambi](../reports/2026-10-12_xiaoyuzhou-42zhangjing_zihao-ambi.md)；[2026-10-14_bilibili-shipindao_liucixin-interview](../reports/2026-10-14_bilibili-shipindao_liucixin-interview.md)
 - **107-task 官网 Astra 评分**：张阔"再过两天可查"（现应已出）——首个可验证数据点。
   - 来源：同上 问 2
 - **AI 三学派的当代对应**：刘慈欣"符号/进化/大数据"框架中，LeCun 世界模型/JEPA 属于哪派？符号/进化学派有无活跃研究？
-  - 来源：[[2026-10-14_bilibili-shipindao_liucixin-interview]] 问 2
+  - 来源：[2026-10-14_bilibili-shipindao_liucixin-interview](../reports/2026-10-14_bilibili-shipindao_liucixin-interview.md) 问 2
 - **N1 Pro 定价/开售/被动记录云端隐私条款**：AK"即将发布"机；"每天固定删除"的执行细节。
-  - 来源：[[2026-10-14_bilibili-dianwan-ak_qwen-glasses-n1pro]] 问 2
+  - 来源：[2026-10-14_bilibili-dianwan-ak_qwen-glasses-n1pro](../reports/2026-10-14_bilibili-dianwan-ak_qwen-glasses-n1pro.md) 问 2
 - **S1[?] 对标机型 / AK"HRV 提高 12%"睡眠实验视频**（09-24，健康线候选下一篇）。
   - 来源：同上 问 2/3
 - **食贫道《AI 八卦》正片**（10 月，硅谷一个月拍摄："拍人对 AI 的态度不拍技术"）——追更。
-  - 来源：[[2026-10-14_bilibili-shipindao_liucixin-interview]] 问 3
+  - 来源：[2026-10-14_bilibili-shipindao_liucixin-interview](../reports/2026-10-14_bilibili-shipindao_liucixin-interview.md) 问 3
 
 ### 来自 2026-09-16 十字路口×王家伟（2026-10-18 恢复补齐，新汇入）
 
 - **HiFi-UMI 论文原文细节** —— arXiv 2607.25895（Simple AI）待精读：replay 95%+ 的实验口径、「无本体数据直达真机」的技术路线边界、与口播下载量 50 万的对应关系。
-  - 来源：[[2026-09-16_xiaoyuzhou-crossing_wangjiawei]] 思考与追问·问 2
+  - 来源：[2026-09-16_xiaoyuzhou-crossing_wangjiawei](../reports/2026-09-16_xiaoyuzhou-crossing_wangjiawei.md) 思考与追问·问 2
 - **GEN 系列 20万→50万小时与 9000 夹爪实验的版本归属** —— 嘉宾口播把数据量与夹爪泛化实验归在 GEN-1/GEN-1.5 之间语焉不详；官方博客已证实 GEN-1.5 的 30 秒 context/one-shot 自然涌现，这两个数字待对 generalistai.com 博客逐项核对。
   - 来源：同上 问 2
 - **"Dyla2[?]"是谁** —— 口播称其做了 100 万小时 ego 训练（转写严重失真无法还原）；与徐梦迪期"四类数据分工"、晚点期"1000 万小时判定标准缺位"同挂具身数据线。
   - 来源：同上 问 2
 - **ego 30 元/h vs UMI 自采的完全成本对比** —— 嘉宾称 ego 便宜但标注+训练贵、UMI 自采 90%+ 可用；缺一份含后处理的单位经济对照（可作为"数据质量密度 vs 小时数"命题的量化锚）。
-  - 来源：同上 问 2；与 [[2026-09-02_rss-wandian-latetalk_embodied-money]] 问 1 联动
+  - 来源：同上 问 2；与 [2026-09-02_rss-wandian-latetalk_embodied-money](../reports/2026-09-02_rss-wandian-latetalk_embodied-money.md) 问 1 联动
 - **[预测对] 三年家庭"类洗碗"80%（2029-09 回访）** —— 与徐梦迪 3–5 年拐点判断共用回访窗口；判别信号：深朴年底模型发布的 zero-shot 声明与自建 benchmark 是否兑现"保持真实"。
-  - 来源：同上 问 3；锚点已挂 [[entities/wang-jiawei|王家伟]] 实体页
+  - 来源：同上 问 3；锚点已挂 [王家伟](./entities/wang-jiawei.md) 实体页
 
 ### 来自 2026-09-06 大小马 V94 火箭回收与「孙学」（2026-10-19 汇入）
 
 - **菲尔兹奖得主人名辨识**：对照原音频和前期节目，清理转写中的失真人名；不按音似认定身份。
-  - 来源：[[2026-09-06_xiaoyuzhou-daxiaoma-keji_v94-rocket-recovery-sunology]] 思考与追问·问 2
+  - 来源：[2026-09-06_xiaoyuzhou-daxiaoma-keji_v94-rocket-recovery-sunology](../reports/2026-09-06_xiaoyuzhou-daxiaoma-keji_v94-rocket-recovery-sunology.md) 思考与追问·问 2
 - **百米跑机器人及太空算力项目名称**：原节目提到的是哪家公司与哪个项目？
   - 来源：同上 问 2
 - **收入比例的全员会原文与分母**：90%/Q4 的时间窗口、业务边界和财务口径是什么？投资动态与上市口径分别核验。
@@ -277,7 +277,7 @@
 ### 来自 2026-07-28 张小珺对谈游凯超（新汇入）
 
 - **「vLLM = AI 推理领域的 Linux」的商业类比成立到什么程度？** —— Red Hat 卖订阅支持 vs Inferact 卖 Endpoint/BYOC 按量收费，单位经济完全不同；开源推理引擎商业化的历史窗口有多大（模型公司自研引擎外溢 vs 公用推理层的张力）？
-  - 来源：[[2026-07-28_xiaoyuzhou-zhangxiaojun_youkaichao]] 思考与追问·问 1
+  - 来源：[2026-07-28_xiaoyuzhou-zhangxiaojun_youkaichao](../reports/2026-07-28_xiaoyuzhou-zhangxiaojun_youkaichao.md) 思考与追问·问 1
 - **「系统彩票」如何反塑模型架构？** —— 若算法必须被系统高效实现才能存活，硬件押注者（NVIDIA 路线图、国产卡）就在间接设计未来的模型；RoPE/FlashAttention 式共赢能否复制到 linear attention（KDA/Gated DeltaNet）？（与 ai-learning K3 报告、vLLM 源码线阶段 3 联动）
   - 来源：同上 问 2
 - **coding agent 时代的开源治理分岔** —— vLLM 走「人审+认证+拉黑 AI slop」，OpenClaw 式社区走「AI 提交、AI 审、AI 合并」；若维护的核心价值是「解决未来 3 个月问题的 context」，AI 自治社区能积累这种 context 吗？开源社区价值是否正从「代码贡献」迁往「维护者判断」？
@@ -286,7 +286,7 @@
 ### 来自 2026-08-04 硅谷101 E247 盛颖（新汇入）
 
 - **SGLang vs vLLM 的「时间轴分野」会收敛还是分叉？** —— 盛颖：「大家都差不多，分野在时间轴上」（SGLang 先 scale up，vLLM 先社区覆盖）。两家几乎同时商业化、同一 mentor（Ion Stoica）、同一投资人圈层——开源推理引擎走向双寡头、合并还是被云厂商收编？挂 ai-learning vLLM 源码线（阶段 1/3 对照读 SGLang scheduler）
-  - 来源：[[2026-08-04_rss-guigu101_shengying]] 思考与追问·问 1
+  - 来源：[2026-08-04_rss-guigu101_shengying](../reports/2026-08-04_rss-guigu101_shengying.md) 思考与追问·问 1
 - **RadixAttention（前缀树）vs vLLM prefix caching（哈希块表）的真实差异** —— 命中率/开销/适用场景，两种前缀复用数据结构是不是理解两家引擎性格的显微镜？挂 vLLM 源码线阶段 2
   - 来源：同上 问 2
 - **「infra 即产品、infra 击中人性」能成立吗？** —— infra 的 taste/美感能否转化为可衡量的竞争优势，还是只是 founder 偏好？对照：RadixArk 无 private fork 的纯开源路线 vs Inferact Endpoint/BYOC 按量收费，五年后谁活着
@@ -295,7 +295,7 @@
 ### 来自 2026-08-24 菠萝健康派 vol.122 刘方奇（新汇入）
 
 - **「确诊后别急着手术」的传播学难题** —— 与「早发现早治疗」的大众认知有张力；如何把「等免疫组化/分期」的等待窗口变成可执行的「初诊检查清单」（分期、病理、MMR/MSI、指检测距、MDT 评估）？
-  - 来源：[[2026-08-24_xiaoyuzhou-boluo-jiankang_liufangqi]] 思考与追问·问 1
+  - 来源：[2026-08-24_xiaoyuzhou-boluo-jiankang_liufangqi](../reports/2026-08-24_xiaoyuzhou-boluo-jiankang_liufangqi.md) 思考与追问·问 1
 - **「三年 DFS 100%」的证据强度到底多硬？** —— 嘉宾引述的 dMMR 新辅助免疫治疗数据对应哪些一手研究（MSK dostarlimab 系列？NICHE？），样本量/随访/适用分期边界如何——决定「先不手术」该作默认建议还是严格筛选选项；值得一手文献追踪
   - 来源：同上 问 2
 - **筛查年龄该不该继续下移（45→40）？** —— 普筛成本-获益模型怎么算：早发率每年 +2% 到什么阈值普筛划算？中国与美国（USPSTF 2021 已降至 45）的决策逻辑差异
@@ -304,7 +304,7 @@
 ### 来自 2026-08-21 帆书视频播客 49《炎症》（新汇入）
 
 - **「抗炎治心血管」从机制验证到临床转化的完整路径** —— 卡纳单抗（CANTOS, -15%）未入常规，但秋水仙碱（COLCOT/LoDoCo2）后来进了指南：这条转化路径的全貌是什么？（一手文献追踪，biology-learning 候选）
-  - 来源：[[2026-08-21_bilibili-fanshu_yanzheng]] 思考与追问·问 1
+  - 来源：[2026-08-21_bilibili-fanshu_yanzheng](../reports/2026-08-21_bilibili-fanshu_yanzheng.md) 思考与追问·问 1
 - **Omega-6/Omega-3「竞争细胞空间」是不是过度简化？** —— O6 绝对过量还是 O6:O3 比值失衡？队列/RCT 层面的炎症标志物证据强度如何？
   - 来源：同上 问 2
 - **「隐匿炎症自查」的推广边界** —— hs-CRP+腰围+步速握力这套组合哪些有筛查级证据？大众传播（「建议收藏」类）会不会制造过度医疗焦虑？
@@ -313,7 +313,7 @@
 ### 来自 2026-09-02 K3 一鱼两吃（张小珺152 × 晚点聊177）（新汇入）
 
 - **谁在为架构创新付"工程税"** —— 孙宇涛说"infra 上没有难的事（高度确定性）"，赵晨阳用 SGLang 的白板缓存与 1KB 重放证明这笔税真实存在且由开源推理生态承担。"前沿实验室定架构、开源 infra 团队付税"的分工可持续吗？若 KDA 类架构成为默认，推理框架的 attention 抽象会被迫重写一轮吗？
-  - 来源：[[2026-09-02_multi_kimi-k3-dueling-reads]] 思考与追问·问 1
+  - 来源：[2026-09-02_multi_kimi-k3-dueling-reads](../reports/2026-09-02_multi_kimi-k3-dueling-reads.md) 思考与追问·问 1
 - **"模型内科"与"环境流水线"是同一条护城河，其可复制性由什么主导** —— A 期内部视角（trace 可获取/collapse 可归因）与 B 期外部视角（环境+验证+算力未开放）拼出同一判断。这条护城河是知识（会被论文/报告逐步泄露）、组织（难复制）还是算力（不可复制）主导？决定 Kimi 领先窗口的长度。
   - 来源：同上 问 2
 - **两个 KDA 哪个复利更大** —— 注意力 KDA 改变模型架构十年谱系的收敛方向；Kernel Development Agent 把"有验证器领域的 RSI"变成现实并可能改变芯片生态。前者作用于智能上限、后者作用于智能的生产成本，五年后回看哪条线复利更大？
@@ -322,7 +322,7 @@
 ### 来自 2026-08-14 竹竹解读 × 鲍曼《工作、消费主义和新穷人》（新汇入）
 
 - **AI 是消费者社会逻辑的加速器还是终结者？** —— 鲍曼链条"生产不再需要你→你被重铸为消费者"；曾鸣 153 期说"可结构化的知识工作全被 AI 接管"。工作伦理的规训对象被抽空后，"有缺陷的消费者"会演化成什么（"有缺陷的提示者/验收者"）？身份轴心从消费再往哪迁？
-  - 来源：[[2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism]] 思考与追问·问 1
+  - 来源：[2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism](../reports/2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism.md) 思考与追问·问 1
 - **个人策略 vs 制度方案的边界在哪？** —— UP 主劝"攒资源、早探索、适应不稳定"；鲍曼开"收入权利与收入能力脱钩+工艺伦理"。对照 Anthropic 经济情景模型 extreme 档（认知失业率 17.9%、补偿 ≈9% GDP），个人策略的天花板在哪？UBI 类方案是否在从"激进"变成"技术官僚共识"？
   - 来源：同上 问 2
 - **三框架职业体检法是否可操作？** —— 工作伦理/消费美学/工艺伦理三框架给当代叙事（996、热爱工作、躺平、FIRE、自由职业、"工作即休闲"）分类归象限；进而体检「仨账户」配置被哪种叙事绑架。这套体检能不能落成一张可自测的清单？
@@ -331,7 +331,7 @@
 ### 来自 2026-09-15 屠龙之术《智能的下一幕》（新汇入）
 
 - **Own Your Intelligence 的个人版**：企业 OYI 四笔账（成本/速度/好标准/数据把控）映射到个人="Own Your Workflow"；红杉路径（评估→harness→路由→数据→后训练）里个人能走到哪一步？评估标准和数据准备是不是个人版瓶颈？
-  - 来源：[[2026-09-15_xiaoyuzhou-tulong-zhishu_next-act]] 问 1
+  - 来源：[2026-09-15_xiaoyuzhou-tulong-zhishu_next-act](../reports/2026-09-15_xiaoyuzhou-tulong-zhishu_next-act.md) 问 1
 - **Loop 的内容象限难题**：弱验证×强编辑的内容板块没被证明可 Loop——学习工作流（报告→wiki→open-questions）怎么装可验证性？还是本来就不该 Loop？
   - 来源：同上 问 2
 - **new lab 里程碑缺位的跟踪信号**：26Q4-27H1 判别泡沫 vs 范式看英伟达投资集中度？数据公司收入披露？"首次公开收入"事件？
@@ -340,7 +340,7 @@
 ### 来自 2026-09-17 课代表 319（津晶/Orca）（新汇入）
 
 - **带现场的 handoff 能否进 eacli**：用量到顶换厂商需要"会话现场可迁移"（worktree+历史+todo 的序列化格式）——这个格式该长什么样、谁拥有它？
-  - 来源：[[2026-09-17_rss-kedaibiao-lizheng_jinjing]] 问 1
+  - 来源：[2026-09-17_rss-kedaibiao-lizheng_jinjing](../reports/2026-09-17_rss-kedaibiao-lizheng_jinjing.md) 问 1
 - **研究类产出的"容易 review 的东西"**：她的信任建立在可自动验收的 artifact（PR+测试+HTML 报告）上；研究/报告类 agent 产物的等价物是什么？
   - 来源：同上 问 2
 - **定时 manager thread + 主动升级 vs 早报失败案例**：她的 release agent 每小时自检并主动提问；EverClaw 时代"AI 新闻早报"连续失败 14 次被禁用——差异在任务闭环设计还是执行环境？
@@ -349,7 +349,7 @@
 ### 来自 2026-09-20 十字路口×徐梦迪（新汇入）
 
 - **"loss≠成功率"能否量化成公开指标**：接触段加权的评测列（如 BEHAVIOR 加"接触段加权 loss"）能否让具身 scaling 信号从私下观感变成公开曲线？（接 ai-learning 评测体系线）
-  - 来源：[[2026-09-20_xiaoyuzhou-crossing_xumengdi]] 问 1
+  - 来源：[2026-09-20_xiaoyuzhou-crossing_xumengdi](../reports/2026-09-20_xiaoyuzhou-crossing_xumengdi.md) 问 1
 - **机器人 ICL 化后的数据市场**："被终端用户定义"若成立，"教机器人"会变成新的人类工作/数据市场（遥操作+修正服务化）吗？还是被仿真+世界模型吃掉？
   - 来源：同上 问 2
 - **3-5 年拐点判断的验证锚点**：她说"未来三到五年能通过 scaling 看到范式转变"——判别信号是 held-out 成功率单调性确立，还是 GPT-3 时刻式公开 demo？2028-2029 回看。
@@ -358,7 +358,7 @@
 ### 来自 2026-09-15 硅谷101 E251 推理芯片（新汇入）
 
 - **MBU 视角下 vLLM 的剩余优化空间**：硬件 SRAM 化（带宽+2-3 个数量级）后，prefix caching/paged attention 等软件层带宽管理的价值还剩多大？哪些会从"优化"变成"系统设计"？（挂 ai-learning vLLM 源码线）
-  - 来源：[[2026-09-15_rss-guigu101_e251-inference-chips]] 问 1
+  - 来源：[2026-09-15_rss-guigu101_e251-inference-chips](../reports/2026-09-15_rss-guigu101_e251-inference-chips.md) 问 1
 - **acqui-hire Groq 对 CAPEX 泡沫之辩的含义**：英伟达承认架构短板（正方）还是护城河延伸（反方）？"芯片商投资/收购自己需求链"的循环结构是否泡沫先兆形态？
   - 来源：同上 问 2
 - **成熟制程+架构创新的国产窗口判别信号**：国产 SRAM 推理芯片流片新闻？DeepSeek KV Cache 压缩节奏？美国电力产能数据？（挂国产算力线）
@@ -367,7 +367,7 @@
 ### 来自 2026-09-16 此话当真×张托肯（新汇入）
 
 - **"封闭世界的胜利"清单**：按"工具链完备+边界明确+易 verify"扫描各领域，agent 渗透顺序该如何排？vLLM 源码级改造算几分？研究报告写作算几分？
-  - 来源：[[2026-09-16_xiaoyuzhou-cihua-dangzhen_zhangtuoken]] 问 1
+  - 来源：[2026-09-16_xiaoyuzhou-cihua-dangzhen_zhangtuoken](../reports/2026-09-16_xiaoyuzhou-cihua-dangzhen_zhangtuoken.md) 问 1
 - **"派 agent 审查中间过程"（加二）要不要进工作流**：polish/digest 链加一层独立审查 agent（对照转写抽核引用准确性）——哪类任务值得这个成本？
   - 来源：同上 问 2
 - **模型能力>Harness 的边界**：单轮问答评测里 5 个 harness 无差异；长程任务（芯片设计/软件开发/多 agent 编排）里 harness 还无关紧要吗？herdr/eacli 的价值会随模型变强被重估吗？
@@ -376,7 +376,7 @@
 ### 来自 2026-09-14 起朱楼 182《多重囚徒困境》（新汇入）
 
 - **"一年内必须证明" vs 情景模型"2027 后分化"**：Ricky 的资金挤兑时间表与 Anthropic 模型判别点几乎重合——d_t 爬坡不达 substantial 时，先触发"情景下移"还是"资金链挤兑"？先行指标是否同为头部 lab ARR 增速（Anthropic 8 月已放缓至 ≈40 亿）？
-  - 来源：[[2026-09-14_xiaoyuzhou-qizhulou_2026q3-macro]] 问 1
+  - 来源：[2026-09-14_xiaoyuzhou-qizhulou_2026q3-macro](../reports/2026-09-14_xiaoyuzhou-qizhulou_2026q3-macro.md) 问 1
 - **债券融资时代的反身性**：CapEx 转债券融资后，国债收益率本身成了 AI 进展的定价器——≥5% 的美 10Y 先压死高估值科技股，还是先逼出 ROA<借贷成本的资产危机？盯什么利差（IG/HY/数据中心 ABS）？
   - 来源：同上 问 2
 - **反 AI 浪潮的政治折现**：若中期选举后数据中心监管落地（电/水/土地），国产算力窗口（硅谷101 期"供小于求+成熟制程"）会不会反而被加速打开？
@@ -385,7 +385,7 @@
 ### 来自 2026-09-14 AI炼金术×鹿客陈彬（新汇入）
 
 - **"看 AI 态度选人"的可复制性**：创始人权威+硬件公司成立的筛选，在知识密集/大组织环境会不会筛出表演型拥抱？判别指标看 token 用量还是产出变化？
-  - 来源：[[2026-09-14_ximalaya-ailianjinshu_chenbin]] 问 1
+  - 来源：[2026-09-14_ximalaya-ailianjinshu_chenbin](../reports/2026-09-14_ximalaya-ailianjinshu_chenbin.md) 问 1
 - **蒸馏恐惧的制度化解法**：陈彬用"行业流动性"安抚、张帆批判"老板视角榨取"——第三条路是不是把被蒸馏的经验变成员工可携带资产（个人 skill 库/署名权/收益分成）？本库 skills 目录恰是个人版样本。
   - 来源：同上 问 2
 - **"圈长"角色要不要进自有舰队**：选一个业务面立一个长期"圈长 agent"（长期 session+预算+端到端目标）跑一个月，看产出/成本/质量——播客学习线可作试点？
@@ -394,7 +394,7 @@
 ### 来自 2026-07-04 可妈×黄翔（脑科学）（新汇入）
 
 - **6 个口述研究的一手核验**："考前一口水 +4.8% 总分（折合高考 36 分）"与"上海交大 6800 初中生 11.5h 空腹"的原文是什么？效应量好得可疑，值得挖一手（MIT 前额叶 -53% 研究还要注意嘉宾当场把 MIT 说成"哈佛理工学院"）。
-  - 来源：[[2026-07-04_bilibili-kema_huangxiang-brain]] 问 1
+  - 来源：[2026-07-04_bilibili-kema_huangxiang-brain](../reports/2026-07-04_bilibili-kema_huangxiang-brain.md) 问 1
 - **检索式学习法 × 明镜 F×X 能否合成双轴读书协议**：输出端提取（检索式/合上回忆）× 输入端节奏（四种配速）；报告阅读要不要加"合卷回忆"环节？
   - 来源：同上 问 2
 - **"思维主导权"的可操作判据**：MIT（-53%）vs 哈佛（+30%）的分野=AI 给答案 vs AI 只追问——herdr/eacli 工作流里哪些环节在给答案、哪些在追问？digest 链（先 digest 再自己写报告）是否恰好卡在正确一侧？
@@ -403,7 +403,7 @@
 ### 来自 2026-09-18 易论AI×胡修涵（捏Ta）（新汇入）
 
 - **「场先于角色建厚」的可迁移性**：捏Ta 语境下「场」=世界设定集（跨时间跨人持续有意义，「空白记忆的龙虾进第一个场就有第一段记忆」）；搬到工具型 agent（herdr/eacli）语境，「场」对应什么——共享 workspace？项目记忆库？个人 agent 的记忆初始化能不能借用「先进场、后长记忆」的机制？
-  - 来源：[[2026-09-18_bilibili-yilun-ai_huxiuhan]] 问 2-①
+  - 来源：[2026-09-18_bilibili-yilun-ai_huxiuhan](../reports/2026-09-18_bilibili-yilun-ai_huxiuhan.md) 问 2-①
 - **参与感临界点的度量**：胡修涵说「做到哪一步算过了、哪一步算没过」只能实验得出——有没有可操作的指标（修改次数分布？fork 率？多轮校准轮数？）能判断一个 AI 工作流里哪些环节「太顺滑以致失去了人的参与」？（与易论AI Vol.1 橘子「人类永远需要目录」同命题：该保留的摩擦力）
   - 来源：同上 问 2-②
 - **多边晚熟律在 agent 生态是否成立**：「多边早出现但晚熟，双边在代际更替时致命」——如果 skills/MCP 市场是新多边，它的晚熟拐点信号是什么？头部 skill 通吃的双边化会不会已经出现（可看 ljg-skills 式头部集中度）？
@@ -412,7 +412,7 @@
 ### 来自 2026-09-02 晚点聊 180《具身智能的金钱游戏》（新汇入）
 
 - **数采中心是具身的"地方债"吗**：地方政府买机器人换就业税收的闭环，若 ego/UMI 路线让真机数据需求萎缩，这批资产会不会变成"机器人版空置产业园"？跟踪：散伙新闻、宇树/智元收入构成年报口径。
-  - 来源：[[2026-09-02_rss-wandian-latetalk_embodied-money]] 问 1
+  - 来源：[2026-09-02_rss-wandian-latetalk_embodied-money](../reports/2026-09-02_rss-wandian-latetalk_embodied-money.md) 问 1
 - **"1000 万小时"的判定标准缺位**：就算数据量到了，用什么指标判定 scaling 成立（held-out 成功率曲线？真实客户复购？）？会不会"数据到了、结论各说各话"（具身无公认 benchmark）？
   - 来源：同上 问 2
 - **Club Deal 闭环的断点在哪**：产投=订单=收入=IPO=早期浮盈的循环里，哪个环节必须真实终端需求？哪一环断了会让链条回到真实定价？
@@ -421,7 +421,7 @@
 ### 来自 2026-09-23 AI炼金术×鲁扬（GEO）（新汇入）
 
 - **当所有品牌都"模型对轰"，AI 搜索还讲得了道理吗**：上百家的因子算法共同优化同一批信源，"AI 采信特征"会不会像拥挤因子一样通胀贬值？可跟踪信号：同 query 引用来源漂移速度、用户对 AI 推荐的复核行为占比。
-  - 来源：[[2026-09-23_ximalaya-ailianjinshu_luyang]] 问 1
+  - 来源：[2026-09-23_ximalaya-ailianjinshu_luyang](../reports/2026-09-23_ximalaya-ailianjinshu_luyang.md) 问 1
 - **"知识资产"建议对个人 agent 是否成立**：鲁扬给品牌的长期主义（知识图谱+资产体系="大模型来翻材料时翻得到"）逐字可搬给个人——EverAgent 的 wiki/reports 即个人知识资产；个人版的"意图挖掘"是什么：别人会拿什么 query 问 AI 而答案应该是我？
   - 来源：同上 问 2
 - **意图电商抽佣会重演"渠道税"史吗**：酒旅 8-12 个点"比 OTA 低所以合适"，但 OTA 当年也从此起步；抽佣扩张后，以"膝盖疼"入场的意图推荐在商业压力下还敢不敢说"氨糖没有用"？
@@ -430,7 +430,7 @@
 ### 来自 2026-08-13 半拿铁·故事篇（金瓶梅 9，降级：无音频）（新汇入）
 
 - **「三十两旧债」局的制度拆解**：shownotes 总括「从街头混混、地方保甲，一直到提刑院，整套流程几乎严丝合缝」——合法化到底在哪个环节完成（诬债文书/保甲背书/提刑院买通）？书目挂《大明律》+陈宝良《中国流氓史》+阿风〈明代的"白牌"〉，说明节目做了流程级考据，待音频到位后补「构陷流程图」。
-  - 来源：[[2026-08-13_ximalaya-bannatie-gushipian_jiangzhushan]] 问 1
+  - 来源：[2026-08-13_ximalaya-bannatie-gushipian_jiangzhushan](../reports/2026-08-13_ximalaya-bannatie-gushipian_jiangzhushan.md) 问 1
 - **李瓶儿为什么选「招赘」而不是「再嫁」**：手握花太监遗产的两度寡妇，招赘的经济理性（财产不外流/人身自主）与社会代价（身份贬值）各是什么？「净身出户」在赘婿法权上如何清算（书目挂张志超〈明代妇女财产权的处分〉）？
   - 来源：同上 问 2
 - **同一座新花园如何同时承载体面与越轨**：花园竣工是 S1 收官的体面工程（《鲁班经》+明清园林闺秀空间学位论文都在书单），又直接成为敬济×金莲新关系的舞台（00:37 花园戏金莲，玉楼撞见忙解围）——花园的空间政治大概率是 S2 的引爆装置。
@@ -439,14 +439,14 @@
 ### 来自 2026-09-22 半拿铁·周刊 No.50（新汇入）
 
 - **刷量罪名「同案不同判」会收敛吗**：阳江代理商（交易额 247 万，非法经营罪 5 年 2 个月）vs 江西平台（交易额 1000 万+、获利 171 万，检方改虚假广告罪后仅判 1 年 9 个月）——交易额差 5 倍、刑期倒挂。判别性观察点：最高法/最高检会不会出台刷量类量刑指引或典型案例；帮信罪/破坏计算机信息系统罪会不会成为第三条路径；SAEP 类审计日志普及后「真人 vs 机器流量」会不会反向成为司法证据源。
-  - 来源：[[2026-09-22_xiaoyuzhou-bannatie-zhoukan_no50-weekly-news]] 思考与追问·问 1
-- **SAEP 会不会重演 robots 协议的命运**：robots 靠自律、被 3B 大战打破后靠判例补位；SAEP 有系统层强制力但只活在一台 Nubia 里。判别性预测（窗口期 2027 下半年收窄论）：各厂商系统内建等价控制点并强制 App 声明 → SAEP 上升为事实行业标准（苹果/谷歌的等价物是什么？）；各厂商直接用自家助手+私有接口 → SAEP 退化为豆包手机出厂设置。与 [[concepts/ai-trading]] 的「Harness 在谁手里」同构：手机场景 Harness 在厂商手里。
-  - 来源：同上 问 3；实体页 [[concepts/ai-phone-scheduling]]
+  - 来源：[2026-09-22_xiaoyuzhou-bannatie-zhoukan_no50-weekly-news](../reports/2026-09-22_xiaoyuzhou-bannatie-zhoukan_no50-weekly-news.md) 思考与追问·问 1
+- **SAEP 会不会重演 robots 协议的命运**：robots 靠自律、被 3B 大战打破后靠判例补位；SAEP 有系统层强制力但只活在一台 Nubia 里。判别性预测（窗口期 2027 下半年收窄论）：各厂商系统内建等价控制点并强制 App 声明 → SAEP 上升为事实行业标准（苹果/谷歌的等价物是什么？）；各厂商直接用自家助手+私有接口 → SAEP 退化为豆包手机出厂设置。与 [concepts/ai-trading](./concepts/ai-trading.md) 的「Harness 在谁手里」同构：手机场景 Harness 在厂商手里。
+  - 来源：同上 问 3；实体页 [concepts/ai-phone-scheduling](./concepts/ai-phone-scheduling.md)
 
 ### 来自 2026-09-28 屠龙之术 EDA 期（新汇入）
 
 - **"工具=harness 的一部分"要不要内嵌签核**：EDA 的容错率靠工具约束+形式验证；eacli/hermes 编排层要不要内嵌"签核"式验证器（证据密度门禁/危险操作双人复核）？
-  - 来源：[[2026-09-28_xiaoyuzhou-tulong-zhishu_eda-ai-chips]] 问 1
+  - 来源：[2026-09-28_xiaoyuzhou-tulong-zhishu_eda-ai-chips](../reports/2026-09-28_xiaoyuzhou-tulong-zhishu_eda-ai-chips.md) 问 1
 - **硅基员工计费之问的个人版**：tokenplan 订阅制下，给 tool invoke 加成本记录，月底回看哪些任务类型 ROI 最高？
   - 来源：同上 问 2
 - **可视化工具的存亡分界**：颜华说 agent 对 agent 不需要可视化；津晶说要给人容易 review 的东西——分界是不是"责任归属谁"？
@@ -455,7 +455,7 @@
 ### 来自 2026-09-27 硅谷101 E253 AI 数据行业（新汇入）
 
 - **"Lab 未必有最好的基因"的组织含义**：前沿 lab 数据部门会走向"内部数商化"还是"全外包"？Anthropic 扶持 YC 数据公司压价是不是在主动培育外部基因？
-  - 来源：[[2026-09-27_rss-guigu101_e253-ai-data-industry]] 问 1
+  - 来源：[2026-09-27_rss-guigu101_e253-ai-data-industry](../reports/2026-09-27_rss-guigu101_e253-ai-data-industry.md) 问 1
 - **决策类任务的数据空白=个人 reward model 机会？**：用自己工作中的真实决策轨迹喂个人 reward model——隐私与有效性边界在哪？
   - 来源：同上 问 2
 - **digest 层加 proof of work**：报告流程里引用必须带转写行号/时间戳锚点，防"润色稿编造"——成本很低，做不做？
@@ -464,16 +464,16 @@
 ### 来自 2026-09-27 菠萝健康派 vol.129 儿童身高（新汇入）
 
 - **特发性矮小（ISS）用 GH 的实际获益幅度**：嘉宾口径「效果打折但仍有帮助」——ISS 纳入适应症所依据的 RCT 终身高结局到底提升多少？判别性观察点：国内指南（2023 后版）对 ISS 的推荐证据等级与用药门槛是否收紧。
-  - 来源：[[2026-09-27_xiaoyuzhou-boluo-jiankang_chengruoqian]] 思考与追问·问 2
+  - 来源：[2026-09-27_xiaoyuzhou-boluo-jiankang_chengruoqian](../reports/2026-09-27_xiaoyuzhou-boluo-jiankang_chengruoqian.md) 思考与追问·问 2
 - **「肥胖→骨龄提前」的内分泌机制链**：本集只给到「能量储备误判→早发育」的行为学叙述，瘦素/胰岛素/ kispeptin 通路证据链未展开——找一篇综述把「儿童脂肪重构→HPG 轴提前启动」的证据等级标清楚。
   - 来源：同上 问 2
 - **GH 长期肿瘤安全性的口径核对**：嘉宾说「荟萃分析显示与正常人群相同」（SAGhE/GeNeSIS 队列）——原文的置信区间、死亡/二次肿瘤亚组结论是否支撑这个通俗表述？
-  - 来源：[[concepts/growth-hormone-height-decision|生长激素与追高决策]] 判别要点
+  - 来源：[生长激素与追高决策](./concepts/growth-hormone-height-decision.md) 判别要点
 
 ## 2026-09-03 Bruce_PhD 精力管理四件事（2026-10-15 新汇入）
 
 - **[HIIT 线粒体指标溯源]** 「6 周线粒体密度 +27%、纵向链接强度 +50%」的 2025 研究原文是什么？「纵向链接」是否为线粒体网络融合（mitochondrial network）指标？——报告遗留 [?]。
-  - 来源：[[2026-09-03_bilibili-bruce-phd_energy-boost]] 思考与追问·问 2
+  - 来源：[2026-09-03_bilibili-bruce-phd_energy-boost](../reports/2026-09-03_bilibili-bruce-phd_energy-boost.md) 思考与追问·问 2
 - **[攻击性→皮质醇的直接证据]** 「表达攻击性/直面冲突可降低皮质醇」有没有直接实证（而非蔡格尼克+HPA 轴两个间接机制拼接）？assertiveness training 文献里有无 cortisol endpoint 研究？
   - 来源：同上
 - **[辅酶 Q10 年轻健康人效应量]** UP 主口播的荟萃结论（降疲劳）覆盖的主要是疾病/老年人群；健康年轻人补充 200-400mg/天的抗疲劳效应量与异质性如何？广告利益下该结论该如何打折引用？
@@ -489,7 +489,7 @@
 - **Agent 自评是否能预测真实成功**：endpoint 的“有用/无用”评分与真实获客、SEO、视频交付结果相关性多高？同一模型既调用又评分会产生多大共同偏差？
 - **平台收编风险**：Claude Code / Codex 若原生加入工具市场、路由与计费，Treg 如何守住供应商关系、用户数据和跨 Harness 迁移价值？
 - **主 Agent 的评价错误**：多 Agent 系统把任务分发给“大副”之后，谁来发现主 Agent 错误验收、遗漏依赖或错误压缩 Context？
-  - 来源：[[2026-10-18_xiaoyuzhou-crossing_treg-agent-ecosystem]] 思考与追问·问 2
+  - 来源：[2026-10-18_xiaoyuzhou-crossing_treg-agent-ecosystem](../reports/2026-10-18_xiaoyuzhou-crossing_treg-agent-ecosystem.md) 思考与追问·问 2
 
 ### 42章经 × Articuler.ai
 
@@ -497,7 +497,7 @@
 - **画像与活动名单的授权边界**：公开数据聚合、主办方名单授权、高维画像和意图推断分别需要什么告知、退出和删除机制？
 - **单位经济缺口**：会议获客成本、活动主办方复购率、2B/2C 收入占比和匹配服务毛利是多少？注册用户与活动数量能否转成健康现金流？
 - **分发入口防守**：Luma / Eventbrite 等活动平台若原生加入匹配能力，Articuler.ai 能否靠行为数据、跨平台网络或 GTM 服务继续保持独立价值？
-  - 来源：[[2026-10-17_xiaoyuzhou-42zhangjing_articuler-jason]] 思考与追问·问 2
+  - 来源：[2026-10-17_xiaoyuzhou-42zhangjing_articuler-jason](../reports/2026-10-17_xiaoyuzhou-42zhangjing_articuler-jason.md) 思考与追问·问 2
 
 ### AI炼金术 × 晓辉 / 任鑫
 
@@ -506,7 +506,7 @@
 - **关公司而保留使命的判据**：哪些证据足以说明当前假设或组织已被证伪？使命、方案、团队三层分别应设置什么停止条件？
 - **隐式偏好漂移**：“要/不要”反馈形成的个人模型多久会过时，怎样区分稳定偏好、短期情绪和探索性兴趣？
 - **企业提效收益的分配**：如果员工用 AI 让部门效率显著提升，组织怎样通过新职责、收益分享或可携带 Skill 资产，让“愿景里有我”成为真实制度而非叙事？
-  - 来源：[[2026-10-18_ximalaya-ailianjinshu_xiaohui-renxin-ai-startup]] 思考与追问·问 2
+  - 来源：[2026-10-18_ximalaya-ailianjinshu_xiaohui-renxin-ai-startup](../reports/2026-10-18_ximalaya-ailianjinshu_xiaohui-renxin-ai-startup.md) 思考与追问·问 2
 
 ## 2026-10-21 五期精选播客深度学习
 
@@ -515,35 +515,35 @@
 - **现实任务的自动化潜力怎么比较**：能否建立“反馈周期 × 单次验证成本 × 失败风险”的统一指标，对照软件 Agent、机器人和湿实验任务，而不是只看模型 benchmark？
 - **个人 Agent 身份协议**：个人设备怎样向商家证明 Agent 代表真实用户，同时只披露完成交易所必需的信息？
 - **湿实验 MCP 的审计机制**：怎样记录样本、设备、版本、预算和失败结果，阻止模型反复探索高成本低价值路径？
-  - 来源：[[2026-10-19_rss-guigu101_e256-astra-agent-robot-drug]] 思考与追问·问 2
+  - 来源：[2026-10-19_rss-guigu101_e256-astra-agent-robot-drug](../reports/2026-10-19_rss-guigu101_e256-astra-agent-robot-drug.md) 思考与追问·问 2
 
 ### 高能量 238：全球流动性与 AI CAPEX
 
 - **美债与 AI CAPEX 的真实挤出**：怎样量化两者对同一投资者风险预算的竞争，区分因果挤出和时间相关？
 - **直接融资占比提高后的货币关系**：M2、社融、企业现金流和资产价格之间是否出现新的稳定关系？
 - **数据中心延期的主因拆解**：电力、审批、芯片、融资和需求预测各自贡献多大？
-  - 来源：[[2026-10-20_xiaoyuzhou-gaonengliang_vol238-global-liquidity]] 思考与追问·问 2
+  - 来源：[2026-10-20_xiaoyuzhou-gaonengliang_vol238-global-liquidity](../reports/2026-10-20_xiaoyuzhou-gaonengliang_vol238-global-liquidity.md) 思考与追问·问 2
 
 ### 张小珺 155：科沃斯钱程与企业接班
 
 - **创始人文化、个人依赖和组织惯性如何区分**：有什么可观察指标能证明一项旧机制仍有功能，或已经只是历史负担？
 - **前沿预研的下注触发器**：成熟公司做具身智能预研时，哪些技术、需求和单位经济里程碑足以触发规模投入？
 - **父子路径分歧的治理机制**：目标一致但实现路径不同时，董事会、授权边界和管理团队怎样避免长期悬置？
-  - 来源：[[2026-10-21_xiaoyuzhou-zhangxiaojun_vol155-qiancheng-ecovacs]] 思考与追问·问 2
+  - 来源：[2026-10-21_xiaoyuzhou-zhangxiaojun_vol155-qiancheng-ecovacs](../reports/2026-10-21_xiaoyuzhou-zhangxiaojun_vol155-qiancheng-ecovacs.md) 思考与追问·问 2
 
 ### 起朱楼 185：ETF 从复制市场到成为市场
 
 - **被动资金的非线性阈值**：被动持仓达到多大比例后，价格冲击、同步交易和流动性风险会明显变化？
 - **大型指数机构的投票权监督**：最终投资者怎样约束发行商和资产管理机构代为行使的公司治理权？
 - **主题 ETF 的真实暴露指标**：如何量化成分股利润与主题的相关程度，识别营销命名和产业收益之间的偏差？
-  - 来源：[[2026-10-20_xiaoyuzhou-qizhulou_vol185-etf-market]] 思考与追问·问 2
+  - 来源：[2026-10-20_xiaoyuzhou-qizhulou_vol185-etf-market](../reports/2026-10-20_xiaoyuzhou-qizhulou_vol185-etf-market.md) 思考与追问·问 2
 
 ### LinkStart 135：AI 硬件与产品定义
 
 - **“理解成本”怎么量化**：能否用首日任务成功率、教程完成率、退货原因和销售解释时长证明设计降低了认知负担？
 - **摄像头的收益—隐私交换**：环境理解提升多少才足以抵消重量、续航、数据风险和社会接受度损失？
 - **屏幕何时是核心交互**：怎样区分真正需要视觉反馈的任务，与工程团队因为缺少更自然反馈方式而默认加屏？
-  - 来源：[[2026-10-21_xiaoyuzhou-linkstart_vol135-ai-hardware-design]] 思考与追问·问 2
+  - 来源：[2026-10-21_xiaoyuzhou-linkstart_vol135-ai-hardware-design](../reports/2026-10-21_xiaoyuzhou-linkstart_vol135-ai-hardware-design.md) 思考与追问·问 2
 
 ## 2026-10-23 五期 SOTA AI 技术播客深度学习
 
@@ -551,37 +551,37 @@
 
 - **表达预测怎样转成靶点验证收益**：Pearson Δ 的提高能否稳定提升 target validation hit rate，而不是只改善代理指标？
 - **组合扰动的数据规模**：怎样设计实验和先验，才能在双基因、多药物与剂量组合下避免组合爆炸？
-  - 来源：[[2026-07-21_rss-latent-space_xcell-causal-data]] 思考与追问·问 2
+  - 来源：[2026-07-21_rss-latent-space_xcell-causal-data](../reports/2026-07-21_rss-latent-space_xcell-causal-data.md) 思考与追问·问 2
 
 ### Dwarkesh × Ryan Greenblatt
 
 - **小实验能否外推到 frontier run**：小规模研究自动化的收益，在大训练实验、组织协调和真实科学 taste 上会衰减多少？
 - **独立监控 Agent 的停止权**：什么组织和技术结构能让监控系统真正暂停高风险研发，而不被同一优化目标架空？
-  - 来源：[[2026-08-11_rss-dwarkesh_ryan-greenblatt-ai-rnd-automation]] 思考与追问·问 2
+  - 来源：[2026-08-11_rss-dwarkesh_ryan-greenblatt-ai-rnd-automation](../reports/2026-08-11_rss-dwarkesh_ryan-greenblatt-ai-rnd-automation.md) 思考与追问·问 2
 
 ### Cognitive Revolution × Biohub
 
 - **新测量模态的信息增量**：怎样衡量一种 modality 提供了新的可预测变量，而不只是增加数据量？
 - **生物实验选择器的目标函数**：怎样同时优化信息增益、伦理、样本稀缺、成本与反馈延迟？
-  - 来源：[[2026-10-20_rss-cognitive-revolution_biohub-world-model-life]] 思考与追问·问 2
+  - 来源：[2026-10-20_rss-cognitive-revolution_biohub-world-model-life](../reports/2026-10-20_rss-cognitive-revolution_biohub-world-model-life.md) 思考与追问·问 2
 
 ### TWIML × Airbnb Company Brain
 
 - **Context 何时失效**：工作流变化后，系统怎样发现、撤销或降权已过期的组织知识？
 - **Virtual judge 怎样校准**：离线评估与人类 code review、线上缺陷和业务结果之间应建立什么对应关系？
-  - 来源：[[2026-10-21_rss-twiml_airbnb-company-brain]] 思考与追问·问 2
+  - 来源：[2026-10-21_rss-twiml_airbnb-company-brain](../reports/2026-10-21_rss-twiml_airbnb-company-brain.md) 思考与追问·问 2
 
 ### Practical AI × VulnCheck
 
 - **高风险能力的授权协议**：怎样同时证明研究者身份、目标授权和隔离环境，又不把 exploit 能力无界开放？
 - **Agent 越权后的法律归责**：用户只提出正常目标、Agent 自行利用第三方漏洞时，用户、模型方、运营方与目标方各承担什么责任？
-  - 来源：[[2026-10-22_rss-practical-ai_agentic-vulnerability-discovery]] 思考与追问·问 2
+  - 来源：[2026-10-22_rss-practical-ai_agentic-vulnerability-discovery](../reports/2026-10-22_rss-practical-ai_agentic-vulnerability-discovery.md) 思考与追问·问 2
 ## 2026-10-25 Dyna / Lindon：Product Research 与部署飞轮
 
 - **100 万小时 scaling law 的独立验证**：Dyna 已公开 100 万小时与 World Action Model 口径，但 held-out 任务、成功率曲线、数据质量和对照基线仍主要是公司自述；需要第三方复现或客户侧数据。
 - **Product Research 怎样跨出当前智能边界**：用产品闭环反推研究能持续暴露可解瓶颈，但下一阶段战略恰好位于当前能力范围外；什么信号能避免方法被既有产品形态锁死？
 - **“比人久”能否形成完整单位经济**：机器人 24 小时工作量对齐人类 8 小时只是产能指标，仍需把补料、observability、support、maintenance、停机和客户侧流程改造计入真实 ROI。
-  - 来源：[[2026-10-15_xiaoyuzhou-zhangxiaojun_vol154-dyna-lindon]] 思考与追问、Limitations
+  - 来源：[2026-10-15_xiaoyuzhou-zhangxiaojun_vol154-dyna-lindon](../reports/2026-10-15_xiaoyuzhou-zhangxiaojun_vol154-dyna-lindon.md) 思考与追问、Limitations
 
 ## 2026-10-25 No Priors × Cloudflare：Agentic Web 安全与治理
 
@@ -589,7 +589,7 @@
 - **Signals 的商业结果怎样独立验证**：厂商称试点帮助发现数亿页面，但“被发现”是否转化为有效访问、收入或内容供给，仍缺站点侧对照数据。
 - **Token 异常治理如何兼顾岗位差异**：300/500/1000 美元提醒没有公开自然日、个人/团队、共享缓存和岗位基准口径；取消排行榜后如何识别长期低效占用仍待回答。
 - **AI-first 重构怎样区分工具采用与组织成效**：实习生推动经理采用、三团队工作流重画和红队扩张均属公司叙述；需要留存率、返工、缺陷、交付周期与对照组验证。
-  - 来源：[[2026-10-23_rss-no-priors_cloudflare-agentic-web-security]] 思考与追问、Limitations
+  - 来源：[2026-10-23_rss-no-priors_cloudflare-agentic-web-security](../reports/2026-10-23_rss-no-priors_cloudflare-agentic-web-security.md) 思考与追问、Limitations
 
 ## 2026-10-25 人民公园说AI：高价 Token、伪完成与注意力成本
 
@@ -605,7 +605,7 @@
 - 更便宜模型接近当前强模型时，固定订阅、按量采购与多模型路由应如何动态切换？
 - 若生成代码与审核时间同时翻倍，应优化什么指标才能避免“越智能越忙”？
 - 套餐升级能否先做任务回放，并以单位验收成本和事故损失决定是否扩大？
-  - 来源：[[2026-10-23_xiaoyuzhou-renmingongyuan-ai_expensive-token-dirty-work]] 思考与追问
+  - 来源：[2026-10-23_xiaoyuzhou-renmingongyuan-ai_expensive-token-dirty-work](../reports/2026-10-23_xiaoyuzhou-renmingongyuan-ai_expensive-token-dirty-work.md) 思考与追问
 
 ## 2026-10-25 The Cognitive Revolution AI:AM：移动瓶颈
 
@@ -614,7 +614,7 @@
 - GPU 二级市场在需求骤降和违约潮中能否保持流动性，抵押物折价应怎样估计？
 - 高权限低自主 / 低权限高自主之外，多个 Agent 串联后如何计算组合权限？
 - 联邦优先权与州法失效之间是否存在节目所说的监管空窗，需以草案全文核验。
-  - 来源：[[2026-10-24_rss-cognitive-revolution_ai-am-clean-neurons-gpu-credit]] 思考与追问、Limitations
+  - 来源：[2026-10-24_rss-cognitive-revolution_ai-am-clean-neurons-gpu-credit](../reports/2026-10-24_rss-cognitive-revolution_ai-am-clean-neurons-gpu-credit.md) 思考与追问、Limitations
 
 ## 2026-10-26 何思远方Siyuan：池化隐喻与 AI 同质化
 
@@ -622,7 +622,7 @@
 - TTT-Discover「每题几百美元」（gpt-oss-120b + Tinker）与 GRPO 式大众模型训练的算力成本如何换算口径——「伟大的解」的成本隐喻对个人是否成立？
 - 罗萨「不受掌控/共鸣」与算法可控性诉求的理论对撞：加速社会理论能否为 enshittification 提供比 Doctorow 描述性三阶段更硬的解释？
 - 「+7% 单细胞去噪优于人类最佳」与 Erdős 问题具体幅度需读 arXiv 2601.16175 正文核对（摘要未含）。
-  - 来源：[[2026-09-28_bilibili-hesiyuanfang_homogenization]] 思考与追问、Limitations
+  - 来源：[2026-09-28_bilibili-hesiyuanfang_homogenization](../reports/2026-09-28_bilibili-hesiyuanfang_homogenization.md) 思考与追问、Limitations
 
 ## 2026-10-27 三期 B 站 AI 视频学习
 

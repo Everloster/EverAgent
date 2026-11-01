@@ -99,7 +99,7 @@
 ## 2026-09-12 王坚三分智能框架与机器意识（新汇入）
 
 - **Butlin 14 项指标属性清单未精读** —— 深度解析报告只用了摘要级结论（当前 AI 非意识强候选/无原则性技术障碍）。需读 arXiv 2308.08708 全文（111页），重点指标表与 LLM 评估章 → paper_analysis 候选。
-  - 来源：[[王坚三分智能框架与机器意识_深度解析_20260912]] 思考与追问·问2
+  - 来源：[王坚三分智能框架与机器意识_深度解析_20260912](../reports/knowledge_reports/%E7%8E%8B%E5%9D%9A%E4%B8%89%E5%88%86%E6%99%BA%E8%83%BD%E6%A1%86%E6%9E%B6%E4%B8%8E%E6%9C%BA%E5%99%A8%E6%84%8F%E8%AF%86_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20260912.md) 思考与追问·问2
 - **王坚"10%"的完整论证链** —— 从交通单系统 15.3% 到"城市 10% 资源"之间的模型缺环是什么？有无之江实验室/学术版本表述？另追 2024 香港峰会《无尽的计算》与 WAIC 2026 演讲实录。
   - 来源：同上 问2
 - **IIT 对机器意识的否定性论证** —— 本报告只用 GWT/HOT 线（Butlin 框架），IIT（整合信息论）"物理基质约束现象意识"的更强否定论证未查证，属缺口。
@@ -114,7 +114,7 @@
 - [ ] **<eot> = 免费的边界监督？**：把 BPE 边界作为显式分割信号注入——与 BLT 熵驱动 patching / H-Net 动态分块是否殊途同归？把 <eot> 加进 token 模型自身预训练能否白捡性能（比蒸馏更便宜的 ablation）？（源：同上 追问 2）
 - [ ] **字节转换 × on-policy 蒸馏的组合点**：字节空间全分布可得，是否让 on-policy/GKD 的 KL 计算免去 top-k 偏差？小团队自建管线，"字节+on-policy" vs "token top-k+离线"哪个该作默认起点？（源：同上 追问 3；接 K3 MOPD 线）
 - **[手艺替代]** "机甲驾驶员"窗口期的定量锚点——驾驶/验收技能被自动化的速度目前零实证，什么样的话据（算子署名方式？AI 独立完成率？）能标定这个半衰期？
-  - 来源：[[才华埋葬在昨天_DeepSeek算子工程师自白精读与延伸研究_20260916]] 思考与追问·问2
+  - 来源：[才华埋葬在昨天_DeepSeek算子工程师自白精读与延伸研究_20260916](../reports/knowledge_reports/%E6%89%8D%E5%8D%8E%E5%9F%8B%E8%91%AC%E5%9C%A8%E6%98%A8%E5%A4%A9_DeepSeek%E7%AE%97%E5%AD%90%E5%B7%A5%E7%A8%8B%E5%B8%88%E8%87%AA%E7%99%BD%E7%B2%BE%E8%AF%BB%E4%B8%8E%E5%BB%B6%E4%BC%B8%E7%A0%94%E7%A9%B6_20260916.md) 思考与追问·问2
 - **[手艺替代]** "工程能力是 x86 汇编式消亡还是系统理解式永存"——目前只有历史类比与直觉，什么样的实证设计能区分这两种未来？（候选：追踪撤 AI 后独立表现的纵向队列，按能力类型分层）
   - 来源：同上 问2
 - **[手艺替代·回访锚点]** 2027 年中检验刘胜与"半年到一年 AI 写算子 ≥ 我"是否兑现；验证样本=DeepSeek 新一代模型主算子的生产方式/署名。
@@ -138,7 +138,7 @@
 ## 2026-09-22 Laya/System1 决策模型（新汇入）
 
 - **自定义选项集上的校准衰减** —— 官方 ECE 0.009-0.06 全是预定义任务族；换成自己定义的 criteria 后校准还剩多少？落地前必须自测 reliability diagram（尤其 choice≥11 的未校准警告桶）。
-  - 来源：[[Laya_System1决策模型_深度解析_20260922]] 思考与追问·问 2
+  - 来源：[Laya_System1决策模型_深度解析_20260922](../reports/knowledge_reports/Laya_System1%E5%86%B3%E7%AD%96%E6%A8%A1%E5%9E%8B_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20260922.md) 思考与追问·问 2
 - **RLCD vs 后处理校准的增量** —— RL 训出的校准与 temperature scaling/Platt scaling 相比增量多大？原文无 ablation，是最大未验证假设。
   - 来源：同上 问 2
 - **B 类候选：laya-router-demo** —— 用程乐松期 4466 段真实转写做「广告段识别」对照（laya vs 规则 vs LLM），人工校正结果当 ground truth；教学笔记入 ai-practice。
@@ -146,7 +146,7 @@
 
 ## 2026-09-28 Meta Muse 个人 Agent（新汇入）
 
-- **[Agent产品/孤证]** Muse APK 逆向（微信公众号，60 项权限 + MCP 全线采用 + Aura/Hatch 架构）是全网孤证——独立第二来源缺位；B 类候选：自行下载 APK 跑 `aapt dump permissions` 一小时复核权限清单（来源：[[2026-09-22_meta-muse_product-research]] 思考与追问·问3）
+- **[Agent产品/孤证]** Muse APK 逆向（微信公众号，60 项权限 + MCP 全线采用 + Aura/Hatch 架构）是全网孤证——独立第二来源缺位；B 类候选：自行下载 APK 跑 `aapt dump permissions` 一小时复核权限清单（来源：[2026-09-22_meta-muse_product-research](../reports/2026-09-22_meta-muse_product-research.md) 思考与追问·问3）
 - **[Agent产品/评测鸿沟]** ApprenticeBench 19%（真实应付账款端到端任务）vs Claude Fable 5.1 的 72%——340 万下载用户的"能干活"体验与模型实测鸿沟如何并存：任务分布更简单，还是人工/规则兜底比例高？（同上 问2）
 - **[Agent产品/伦理]** 真人接线员事件（404 Media/Reuters 曝光→Meta 回滚 outbound calls）是否引来 FTC/州监管介入——Wizard-of-Oz 披露义务的首个大规模消费级判例，跟踪后续（同上 问2）
 - **[评测方法论]** Muse Spark「官方自报 vs 独立测」双例落差（DeepSWE 75.4 自报不上公共榜；Terminal-Bench 88.8 自报 vs Vals 72.3）——Agent 时代读 benchmark 必须查 evidence ledger 的"谁来测"
@@ -155,7 +155,7 @@
 ## 2026-10-09 VISTA 视觉 Harness（新汇入）
 
 - **完整 VISTA@Opus xhigh 的每游戏成本** —— 消融只给了 GPT-5.6 Sol 的 per-game token；"满分"的美元价格需从 arcprize scorecard 反推，是落地关键问题。
-  - 来源：[[48_vista_2026]] 思考与追问·问 2
+  - 来源：[48_vista_2026](../reports/paper_analyses/48_vista_2026.md) 思考与追问·问 2
 - **(v) 档动作数反降的机制** —— 无损记忆+inspect 使 RHAE 70→94 且动作数 23,702→12,261 反降：是"回看减少试错"还是"inspect 调用挤掉 play"？关系该结论能否迁移到生产 agent。
   - 来源：同上
 - **视觉档案的语义检索层** —— turn/frame 索引在千+回合长程任务下够不够？VISTA 的显式注意力与 Hindsight 式 embedding 检索如何互补（跨模态 synthesis 候选：Anthropic博文×李继刚×Hindsight×VISTA 四源）。
@@ -166,7 +166,7 @@
 ## 2026-10-15 GPT-6 Astra 指令架构（新汇入）
 
 - **[Skill 路由评测]** description 的长度、类别重叠度与触发 precision/recall 之间是否存在稳定关系？需要用真实正例、负例和邻近任务构造回放集，而不是只比较字符数。
-  - 来源：[[GPT6_Astra指令架构_从Prompt堆叠到按需控制_深度解析_20261015]] 思考与追问·问 2
+  - 来源：[GPT6_Astra指令架构_从Prompt堆叠到按需控制_深度解析_20261015](../reports/knowledge_reports/GPT6_Astra%E6%8C%87%E4%BB%A4%E6%9E%B6%E6%9E%84_%E4%BB%8EPrompt%E5%A0%86%E5%8F%A0%E5%88%B0%E6%8C%89%E9%9C%80%E6%8E%A7%E5%88%B6_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261015.md) 思考与追问·问 2
 - **[多模型协议]** 同一仓库同时服务 Astra、Sol、Luna 与其他模型时，“共同核心 + 模型 overlay”和“单一模型无关协议”哪种长期维护成本更低？如何防止 overlay 再次膨胀？
   - 来源：同上
 - **[指令退役判据]** 判断一条旧规则已被模型能力吸收时，最小回归集需要覆盖多少任务与风险等级？怎样区分真实能力提升、偶然成功和评测泄漏？
@@ -177,7 +177,7 @@
 ## 2026-10-15 PuRo-2B 开放低成本预训练配方（新汇入）
 
 - **[ELR 外推有效性]** MuonH vs Muon 的归因证据在 170M/BF16 上取得，2B/FP8 生产尺度是否同构？需要至少一个生产尺度的 ELR 对齐对照才能把结论从诊断升格为规律。
-  - 来源：[[PuRo-2B_开放低成本预训练配方_MuonHyperball与RTX5090_深度解析_20261015]] 思考与追问·问 2
+  - 来源：[PuRo-2B_开放低成本预训练配方_MuonHyperball与RTX5090_深度解析_20261015](../reports/knowledge_reports/PuRo-2B_%E5%BC%80%E6%94%BE%E4%BD%8E%E6%88%90%E6%9C%AC%E9%A2%84%E8%AE%AD%E7%BB%83%E9%85%8D%E6%96%B9_MuonHyperball%E4%B8%8ERTX5090_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261015.md) 思考与追问·问 2
 - **[参数路由判据]** 哪些矩阵该进 MuonH（尺度不变性近似程度）能否形式化为可测判据（如 L(cW)-L(W) 的实测偏差），而不是凭位置直觉（norm 之后）选择？
   - 来源：同上
 - **[标度律不确定性]** Puro Cost Scaling Law 的 5 点拟合无置信区间；下一个低成本 open-recipe 项目复现该拟合形式时，能否给出区间估计与外推失败判据？
@@ -188,16 +188,16 @@
 ## 2026-10-21 顶尖厂商技术博客 Top 5（新汇入）
 
 - **[MLX/RDMA 独立复现]** Apple 的 TTFT、decode、功耗与双线 mesh 收益在长期服务、并发请求和关闭 `MLX_METAL_FAST_SYNCH` 后分别剩多少？需要固定模型、context 和节点数做单机/pipeline/tensor parallel 对照。
-  - 来源：[[Apple_MLX_RDMA_Mac_Studio分布式大模型推理_深度解析_20261021]] 思考与追问
+  - 来源：[Apple_MLX_RDMA_Mac_Studio分布式大模型推理_深度解析_20261021](../reports/knowledge_reports/Apple_MLX_RDMA_Mac_Studio%E5%88%86%E5%B8%83%E5%BC%8F%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8E%A8%E7%90%86_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261021.md) 思考与追问
 - **[Mamba-2/cuTile 完整链路]** TileGym 何时公开博客中的 Mamba-2 kernel、raw benchmark 与 backward？相同 tile 设计在 H100/A100 上是否仍优于成熟 Triton 实现，还是优势依赖 Blackwell Tensor Memory/TMA？
-  - 来源：[[NVIDIA_CUDA_Tile_Mamba2高性能Kernel_深度解析_20261021]] 局限、思考与追问
+  - 来源：[NVIDIA_CUDA_Tile_Mamba2高性能Kernel_深度解析_20261021](../reports/knowledge_reports/NVIDIA_CUDA_Tile_Mamba2%E9%AB%98%E6%80%A7%E8%83%BDKernel_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261021.md) 局限、思考与追问
 - **[学习型 Memory 评测]** 在真实 Agent 任务上，无 Memory、全部常驻、support 核心与按任务 Top-k 四组的成功率、Pass⁴、token、过期规则命中率和污染恢复成本如何变化？support 能否升级为带反例、版本和验证强度的可信度？
   - 来源：[ALTK-Evolve 报告](../reports/knowledge_reports/ALTK_Evolve_学习型Memory与Agent服务任务_深度解析_20261021.md)思考与追问。
   - **2026-10-29 核对：**[IBM 原文](https://huggingface.co/blog/ibm-research/altk-evolve-bc)已比较无规则、按 support 筛选与全部规则：效果见留出测试，成本表来自 full base（train ∪ test），包含 Agent 与用户模拟器；本项目的四组对照仍待验证。强模型实验重新提炼了规则，不能视为同一份 Memory 已跨模型迁移。support 仍是任务支持次数，不是正确率。
 - **[自主湿实验室端到端]** VERID 是否能与 aptamer/protein binder 闭环真正连通，并连续多轮记录物理失败、人工干预、错误经验写入和每个有效候选的时间/成本？人类战略边界应在哪一层逐步下放？
-  - 来源：[[Google_自主湿实验室Agent_生物现实约束与闭环_深度解析_20261021]] 思考与追问
+  - 来源：[Google_自主湿实验室Agent_生物现实约束与闭环_深度解析_20261021](../reports/knowledge_reports/Google_%E8%87%AA%E4%B8%BB%E6%B9%BF%E5%AE%9E%E9%AA%8C%E5%AE%A4Agent_%E7%94%9F%E7%89%A9%E7%8E%B0%E5%AE%9E%E7%BA%A6%E6%9D%9F%E4%B8%8E%E9%97%AD%E7%8E%AF_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261021.md) 思考与追问
 - **[Agent 运行时安全]** capability lease + Policy Prover 能否在 EverAgent 的真实任务回放中同时降低越权率且不显著提高阻断率？Sentry 在 2027 年交付后需补独立红队、P50/P99 隔离延迟、旁路拓扑和完整 TCB 复核。
-  - 来源：[[NVIDIA_OpenShell_Sentry_Agent运行时安全架构_深度解析_20261021]] 评估与思考
+  - 来源：[NVIDIA_OpenShell_Sentry_Agent运行时安全架构_深度解析_20261021](../reports/knowledge_reports/NVIDIA_OpenShell_Sentry_Agent%E8%BF%90%E8%A1%8C%E6%97%B6%E5%AE%89%E5%85%A8%E6%9E%B6%E6%9E%84_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20261021.md) 评估与思考
 
 ## 2026-10-27 上下文工程与战略性遗忘
 

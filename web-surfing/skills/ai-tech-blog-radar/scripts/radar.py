@@ -25,7 +25,6 @@ import pathlib
 import re
 import subprocess
 import sys
-import tempfile
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -33,6 +32,9 @@ from typing import Any
 
 
 WEB_ROOT = pathlib.Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(WEB_ROOT.parent / "scripts"))
+from radar_common import RadarError, load_json, parse_set_value, set_dotted, write_json_atomic
+
 DEFAULT_REGISTRY = WEB_ROOT / "sources" / "ai-tech-blogs.json"
 UA = "Mozilla/5.0 (compatible; EverAgentAITechRadar/1.0)"
 
@@ -91,26 +93,8 @@ RELEASE_TERMS = {
 }
 
 
-class RadarError(RuntimeError):
-    pass
-
-
 def now_utc() -> dt.datetime:
     return dt.datetime.now(dt.timezone.utc)
-
-
-def load_json(path: pathlib.Path) -> Any:
-    with path.open(encoding="utf-8") as handle:
-        return json.load(handle)
-
-
-def write_json_atomic(path: pathlib.Path, value: Any) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with tempfile.NamedTemporaryFile("w", encoding="utf-8", dir=path.parent, delete=False) as handle:
-        json.dump(value, handle, ensure_ascii=False, indent=2)
-        handle.write("\n")
-        tmp = pathlib.Path(handle.name)
-    tmp.replace(path)
 
 
 def load_registry(path: pathlib.Path) -> dict[str, Any]:
@@ -1099,32 +1083,6 @@ def find_source(registry: dict[str, Any], source_id: str) -> dict[str, Any]:
         if source["id"] == source_id:
             return source
     raise RadarError(f"未知渠道：{source_id}")
-
-
-def parse_set_value(raw: str) -> Any:
-    try:
-        return json.loads(raw)
-    except json.JSONDecodeError:
-        return raw
-
-
-def set_dotted(target: dict[str, Any], assignment: str) -> None:
-    if "=" not in assignment:
-        raise RadarError(f"--set 需要 key=value：{assignment}")
-    path, raw = assignment.split("=", 1)
-    keys = [key for key in path.split(".") if key]
-    if not keys:
-        raise RadarError("--set key 不能为空")
-    cursor: dict[str, Any] = target
-    for key in keys[:-1]:
-        value = cursor.get(key)
-        if value is None:
-            value = {}
-            cursor[key] = value
-        if not isinstance(value, dict):
-            raise RadarError(f"无法进入非 object 字段：{key}")
-        cursor = value
-    cursor[keys[-1]] = parse_set_value(raw)
 
 
 def save_registry(path: pathlib.Path, registry: dict[str, Any]) -> None:

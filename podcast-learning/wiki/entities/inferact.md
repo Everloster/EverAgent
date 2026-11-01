@@ -6,7 +6,7 @@
 
 - vLLM 核心团队创立的商业公司，名字 = **Bring Inference into Action**
 - 2025 年底成立，2026-01-22 官宣：**1.5 亿美元种子轮、8 亿美元估值**；a16z + Lightspeed 领投，Sequoia / Altimeter / Redpoint / 真格跟投（公开报道）
-- 创始团队：Simon Mo（CEO）、Woosuk Kwon（CTO）、[[you-kaichao|游凯超]]（首席科学家）、Roger（合伙人）、Ion Stoica（创始人之一 / advisor）
+- 创始团队：Simon Mo（CEO）、Woosuk Kwon（CTO）、[游凯超](./you-kaichao.md)（首席科学家）、Roger（合伙人）、Ion Stoica（创始人之一 / advisor）
 - base：新加坡 + 美国；30 多人近 40 人（2026-07 访谈自述）；主营北美业务
 - 商业模式：Endpoint Service / BYOC / 生态合作，按量收费——「我们不是技术外包，我们不是在售卖工程师的时间」
 
@@ -20,4 +20,4 @@
 
 ## 引用本公司的报告
 
-- [[2026-07-28_xiaoyuzhou-zhangxiaojun_youkaichao|对游凯超3小时访谈]]（Vol.148）
+- [对游凯超3小时访谈](../../reports/2026-07-28_xiaoyuzhou-zhangxiaojun_youkaichao.md)（Vol.148）

@@ -31,7 +31,7 @@ Patreon 是一家创作者订阅平台，2013 年由 Jack Conte 创办，总部�
 
 ## 与 Gumroad 对比
 
-详见 [[concepts/creator-economy-tools-vs-platforms]] — Sahil 在 Vol.30 中坦言 Gumroad 做了更好的产品，但最终还是输给了 Patreon。
+详见 [concepts/creator-economy-tools-vs-platforms](../concepts/creator-economy-tools-vs-platforms.md) — Sahil 在 Vol.30 中坦言 Gumroad 做了更好的产品，但最终还是输给了 Patreon。
 
 ## 来源
 
@@ -39,5 +39,5 @@ Vol.30（What's Next 科技早知道 · 2026-06-09）
 
 ## 关联
 
-- [[entities/gumroad]]
-- [[concepts/creator-economy-tools-vs-platforms]]
+- [entities/gumroad](./gumroad.md)
+- [concepts/creator-economy-tools-vs-platforms](../concepts/creator-economy-tools-vs-platforms.md)

@@ -5,7 +5,7 @@
 ## 身份
 
 - 开源 LLM 推理/服务引擎，2023 年由盛颖等人在斯坦福读博末期与 LMSYS 社区共同开发；归 **LMSYS 社区**所有
-- 核心论文创新：**RadixAttention**（见 [[radix-attention]]）；自称「跑在全球数十万张 GPU 上，每天为谷歌/微软/英伟达/xAI 生成数万亿 token」（节目开场白，制作方陈述）
+- 核心论文创新：**RadixAttention**（见 [radix-attention](../concepts/radix-attention.md)）；自称「跑在全球数十万张 GPU 上，每天为谷歌/微软/英伟达/xAI 生成数万亿 token」（节目开场白，制作方陈述）
 - 初心其实是 **language**：以 agent 为入口设计、带 frontend 语言（结构化生成）；后因 inference 效率挑战更突出转向 runtime 优化——「有一天我们会 revisit，最终它还是应该是一个 language 的形式」
 
 ## 与 vLLM 的关系
@@ -16,5 +16,5 @@
 
 ## 引用
 
-- [[2026-08-04_rss-guigu101_shengying|对话盛颖]]（E247）
+- [对话盛颖](../../reports/2026-08-04_rss-guigu101_shengying.md)（E247）
 - 对比维度见 ai-learning 概念页 `ai-learning/wiki/concepts/llm_inference_engines.md`

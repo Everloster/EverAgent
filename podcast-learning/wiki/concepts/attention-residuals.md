@@ -4,7 +4,7 @@
 
 ## 定义
 
-把 attention"旋转 90 度"到**层间**：每层一个可学习 **pseudo query**（所有 token 共享），与各深度表示匹配后经 softmax 决定从哪些浅层读取——取代固定的残差累积，让深层**选择性**聚合此前层表示。K3 用于重构深度方向信息流（[[kimi-k3|K3]] 的"depth 维 scaling"）。
+把 attention"旋转 90 度"到**层间**：每层一个可学习 **pseudo query**（所有 token 共享），与各深度表示匹配后经 softmax 决定从哪些浅层读取——取代固定的残差累积，让深层**选择性**聚合此前层表示。K3 用于重构深度方向信息流（[K3](./kimi-k3.md) 的"depth 维 scaling"）。
 
 ## 谱系（连接方式演化）
 
@@ -29,4 +29,4 @@ K3 与 V4 分别证明两条路线都能 scale 到 frontier——层间信息流
 
 ## 引用本概念的报告
 
-- [[2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report]]、[[2026-08-04_rss-wandian-latetalk_kimi-k3]]、[[2026-09-02_multi_kimi-k3-dueling-reads]]
+- [2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report](../../reports/2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report.md)、[2026-08-04_rss-wandian-latetalk_kimi-k3](../../reports/2026-08-04_rss-wandian-latetalk_kimi-k3.md)、[2026-09-02_multi_kimi-k3-dueling-reads](../../reports/2026-09-02_multi_kimi-k3-dueling-reads.md)

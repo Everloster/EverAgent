@@ -34,9 +34,9 @@
 
 ## 与本 wiki 其他概念的关系
 
-- 提出 [[fx-formula|F × X 公式]]（明镜展开，李继刚收束）
-- 共构 [[reading-four-paces|读书的四种配速]]（明镜的实操 + 李继刚的解压缩）
-- 与 [[entities/mingjing|明镜]] 长期合作（明镜主持 / 李继刚作客）
+- 提出 [F × X 公式](../concepts/fx-formula.md)（明镜展开，李继刚收束）
+- 共构 [读书的四种配速](../concepts/reading-four-paces.md)（明镜的实操 + 李继刚的解压缩）
+- 与 [明镜](./mingjing.md) 长期合作（明镜主持 / 李继刚作客）
 
 ## 第二次出现：易论AI Vol.1（2026-09-09，四人谈）
 
@@ -51,5 +51,5 @@
 
 ## 引用本人物的报告
 
-- [[2026-07-09_xiaoyuzhou-mingjing-diandian_lijigang|读书：4种配速，取景框，人是滤器，冲刷神经网络]]
-- [[2026-09-09_xiaoyuzhou-yilun-ai_frontier-no-llm|易论AI Vol.1：AI最前沿的人已经不聊大模型了]]
+- [读书：4种配速，取景框，人是滤器，冲刷神经网络](../../reports/2026-07-09_xiaoyuzhou-mingjing-diandian_lijigang.md)
+- [易论AI Vol.1：AI最前沿的人已经不聊大模型了](../../reports/2026-09-09_xiaoyuzhou-yilun-ai_frontier-no-llm.md)

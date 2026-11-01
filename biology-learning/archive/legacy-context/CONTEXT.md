@@ -1,0 +1,54 @@
+<!-- ARCHIVE NOTICE -->
+> **历史归档（2026-11-01）**：保留旧 Context / knowledge 原文；下文的库存、数字、未研究声明、建议及执行指令仅反映历史语境，未经本次重新核验，不作为现行规则。当前入口：[领域首页](../../README.md)、[领域协议](../../AGENTS.md)、[知识地图](../../MAP.md)、[Wiki](../../wiki/index.md)。
+<!-- END ARCHIVE NOTICE -->
+
+# biology-learning — Project Context
+
+> **Agent 协议**：操作本项目前须读取 [AGENTS.md](../../AGENTS.md)（BioAgent 自包含协议）。执行完成后按协议 §5 提交推送。
+
+**领域**：时间生物学·睡眠科学·运动生理学·神经科学
+**三维度**：机制深度 × 历史叙事 × 个体化应用
+
+## 已有报告
+**论文精读** (`reports/paper_analyses/`)
+- `P01_social_jetlag_obesity_2012` — Social Jetlag and Obesity·社会性时差·工作日/自由日睡眠中点错位·与 BMI 增加相关（2026-03-26）
+- `P08_sleep_onset_sws_gh_1988` — 睡眠起始·慢波睡眠·夜间 GH 脉冲释放·睡眠结构与恢复的经典机制研究（2026-03-26）
+- `P09_gh_sleep_physiology_1996` — GH 夜间分泌生理学·睡眠结构·年龄变化·节律与恢复的整合性综述（2026-03-26）
+- `P25_social_jetlag_metabolic_syndrome_2017` — 社会性时差与代谢综合征及2型糖尿病·SJL>2h风险翻倍·年龄效应修饰·血糖+腰围驱动（2026-03-28）
+- `P26_walker_why_we_sleep_2017` — Walker《Why We Sleep》核心论据综述·睡眠分期功能·睡眠剥夺认知损害·免疫/癌症/心血管/阿尔茨海默症风险·REM情绪功能·胶淋巴机制·局限性评估（2026-04-06）
+- `P02_stutz_evening_exercise_sleep_2025` — 晚间运动与睡眠的剂量-反应关系·14,689人纵向队列·睡前4小时高强度运动显著延迟入睡36分钟·降低HRV·4小时为安全缓冲阈值（2026-04-22）
+- `P03_dattilo_sleep_muscle_2011` — 睡眠与肌肉恢复的内分泌与分子基础·假说性综述·睡眠债通过皮质醇↑/睾酮↓/IGF-1↓创造蛋白分解环境·抑制mTOR通路·激活泛素-蛋白酶体系统（2026-04-22）
+- `P04_roenneberg_circadian_health_2022` — 昼夜节律医学概念框架·健康/疾病平衡三阶段模型·条件过程模型·六大医学领域应用·社会性时差与内部同步（2026-04-24）
+- `P05_thomas_exercise_phase_chronotype_2020` — 定时运动与 DLMO 相位移动·52名年轻久坐成年人·5天30分钟70%VO2peak跑台·早晨运动相位提前0.62h·晚间运动效应受时型修饰（2026-04-25）
+- `P07_youngstedt_exercise_circadian_2023` — 运动对人类昼夜节律影响综述·运动作为非光照授时因子·DLMO/aMT6s/体温/钟基因证据·训练时间窗需按睡眠、代谢、心血管目标个体化（2026-04-25）
+- `P17_hayes_circadian_exercise_2013` — 运动表现昼夜节律综述·核心体温中介·睾酮/皮质醇与肌肉适应因果关系质疑·特定时间训练效应·多因素机制（2026-04-24）
+
+**专题研究** (`reports/concept_reports/`)
+- `晚型人作息与力量训练_深度研究报告` — 晚型节律×深夜训练×睡眠质量交叉研究，含 Roenneberg/Walker/Foster 关键人物及 5 项核心实验，附可操作建议
+- `昼夜节律与运动表现_深度研究报告` — 整合 Hayes(2013)/Montaruli(2021)/Ezagouri(2023)/Gupta(2025)·核心体温节律·睾酮/皮质醇昼夜波动·肌肉分子钟机制·运动时间窗个体化建议（2026-04-22）
+- `运动时间生物学_个体化训练时间窗` — 整合 Hayes(2013)/Ezagouri(2023)/Gupta(2025)·核心体温/激素/分子钟三机制·时型匹配·证据分级决策框架·5层理解模型（2026-04-24）
+- `女童初潮提前与中枢性性早熟_深度研究报告` — 围绕小学三年级女童初潮提前问题，深度解析中国《中枢性性早熟诊断与治疗专家共识（2022）》PDF，整合国内儿童早发育队列与 JAMA Pediatrics/Endocrine Reviews/JCEM/Lancet/JAMA 等前沿证据，形成儿科内分泌就医决策框架（2026-05-05，已扩充）
+- `蓝光与褪黑素的光生物学_20260621` — ipRGC × 黑视蛋白 × SCN-松果体通路物理参数化：Czeisler 1980 / Brainard 2001 / Zeitzer 2000 ED50 / Berson 2002 / Lucas 2014 整合 + CIE S 026 melanopic EDI 决策表 + 家庭 LED / 屏幕 / 夜灯配置 + AASM/AAO/Endocrine Society 立场 + 7 设备 × 7 时间窗口决策矩阵（2026-06-21）
+
+## 离线知识库
+→ [`knowledge/INDEX.md`](./knowledge/INDEX.md)（内容积累中，话题框架已就绪）
+
+## Skills
+- `skills/paper_analysis/SKILL.md` — 生物学论文 7 步分析法
+- `skills/concept_deep_dive/SKILL.md` — 生物学概念 5 层理解模型
+
+## 导航
+- 学习路径：`roadmap/Learning_Roadmap.md`
+- 论文索引：`papers/PAPERS_INDEX.md`（30 篇，含 PMC 开放链接；状态列可能滞后，精读状态以本文件"已有报告"与 `reports/` 实际文件为准）
+- 书籍索引：`books/BOOKS_INDEX.md`（25 部）
+- Wiki 入口：`wiki/index.md`（科学家 / 概念导航；当前为早期种子状态，尚未覆盖所有新增报告）
+
+## ⚠️ 边界（防幻觉）
+以下内容**尚未研究**，禁止推测，须告知用户：
+- 已有独立精读/报告以本文件"已有报告"清单和 `reports/` 实际文件为准：`P01`、`P02`、`P03`、`P04`、`P05`、`P07`、`P08`、`P09`、`P17`、`P25`、`P26` 已有论文精读；4 篇专题研究已完成。
+- `P02`、`P03`、`P26` 等为本项目报告文件编号，可能与 `papers/PAPERS_INDEX.md` 的原始索引编号不完全对应；引用时优先使用报告文件名与报告内容，不得仅按索引编号推断论文状态。
+- 除上述已有报告外，论文索引中的其余条目均**未独立精读**（仅有索引链接或被专题报告引用），不得补写数据、样本量、效应值或机制结论。
+- 神经科学、衰老生物学、营养科学等分支尚无独立专题报告；若被 Walker 综述或运动时间生物学专题提及，只能按对应报告的证据范围转述。
+- knowledge/ 中的子话题包基于首篇综合报告提炼，非独立文献精读
+- wiki/ 当前为种子导航状态，尚未系统摄入 `P02`、`P03`、`P04`、`P17`、`P26` 和后续专题的全部实体/概念；`P05`、`P07` 已做最小摄入；女童初潮提前专题已摄入 `early_menarche`、`central_precocious_puberty`、`chinese_pediatric_endocrinology_group`、`eugster_erica`。查询时不得把 wiki 缺项视为报告不存在。
+- 下一步推荐：优先补齐原始证据链，包括 Xie et al. (2013, Science) 胶淋巴原始论文、Walker & Stickgold (2006) 睡眠-记忆综述、Foster (2020) 睡眠与昼夜健康综述。

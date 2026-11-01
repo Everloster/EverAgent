@@ -45,4 +45,4 @@ Vol.32（后互联网时代的乱弹 · 第 166 期 · 2026-06-06），并参考
 
 ## 关联概念
 
-- [[concepts/post-internet-era]]
+- [concepts/post-internet-era](./post-internet-era.md)

@@ -22,4 +22,4 @@
 
 ## 引用
 
-- [[2026-07-28_xiaoyuzhou-zhangxiaojun_youkaichao|对游凯超3小时访谈]]（Vol.148）
+- [对游凯超3小时访谈](../../reports/2026-07-28_xiaoyuzhou-zhangxiaojun_youkaichao.md)（Vol.148）

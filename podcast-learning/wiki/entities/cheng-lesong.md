@@ -21,9 +21,9 @@
 
 ## 关联
 
-- 与 [[2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism|鲍曼工作观那期]] 同线（"不要牛马不要狗屁"）；与项飙"回到附近"构成两种回应
-- 微小习惯锚点（《四书章句》随包/半小时语言/《汉书》）与 [[concepts/reading-four-paces|读书配速]] 互见
+- 与 [鲍曼工作观那期](../../reports/2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism.md) 同线（"不要牛马不要狗屁"）；与项飙"回到附近"构成两种回应
+- 微小习惯锚点（《四书章句》随包/半小时语言/《汉书》）与 [读书配速](../concepts/reading-four-paces.md) 互见
 
 ## 引用本人物的报告
 
-- [[2026-09-11_bilibili-shigerenwu_chenglesong|是个人物 EP22：不要牛马，不要狗屁，要什么？]]
+- [是个人物 EP22：不要牛马，不要狗屁，要什么？](../../reports/2026-09-11_bilibili-shigerenwu_chenglesong.md)

@@ -23,9 +23,9 @@
 
 ## 与其他概念的关联
 
-- 商业化结果决定 [[ai-capex-bubble-debate]] 的"收入只够折旧"能否闭合
-- 对软件形态的判断与 [[vibe-coding]]（Vol.30-32）一脉相承
+- 商业化结果决定 [ai-capex-bubble-debate](./ai-capex-bubble-debate.md) 的"收入只够折旧"能否闭合
+- 对软件形态的判断与 [vibe-coding](./vibe-coding.md)（Vol.30-32）一脉相承
 
 ## 引用本概念的报告
 
-- [[2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review|重估一切，文艺复兴——2026H1 AI行业观察]]
+- [重估一切，文艺复兴——2026H1 AI行业观察](../../reports/2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review.md)

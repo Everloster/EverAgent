@@ -17,6 +17,48 @@ Thumbs.db
 .env
 .env.*
 
+# Private keys / credential containers (public *.pub keys are not hidden)
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa
+id_dsa
+id_ecdsa
+id_ed25519
+
+# Local audio/video downloads; reviewed public media belongs in docs/assets/public/
+*.mp3
+*.m4a
+*.aac
+*.wav
+*.flac
+*.ogg
+*.opus
+*.mp4
+*.m4v
+*.mov
+*.mkv
+*.webm
+*.avi
+*.m3u8
+!docs/assets/public/**/*.mp3
+!docs/assets/public/**/*.ogg
+!docs/assets/public/**/*.mp4
+!docs/assets/public/**/*.webm
+# Images, including the README WebP animation, remain visible by default.
+
+# Local ebook libraries only; research PDFs/JSON outside books remain visible
+**/books/**/*.pdf
+**/books/**/*.epub
+**/books/**/*.mobi
+**/books/**/*.azw
+**/books/**/*.azw3
+**/books/**/*.djvu
+
+# JavaScript dependencies
+node_modules/
+
 # Archives
 *.zip
 

@@ -18,4 +18,4 @@
 
 ## 引用
 
-- [[2026-08-24_xiaoyuzhou-boluo-jiankang_liufangqi|刘方奇教授：肠癌越来越年轻]]（vol.122）
+- [刘方奇教授：肠癌越来越年轻](../../reports/2026-08-24_xiaoyuzhou-boluo-jiankang_liufangqi.md)（vol.122）

@@ -2242,25 +2242,11 @@
       "remediation_status": "not_required"
     },
     {
-      "path": "web-surfing/reports/huizhou-rental-guide-2026-09.md",
       "domain": "web-surfing",
-      "added_on": "2026-08-27",
-      "added_commit": "fa52c13f9c5fcf6ef5a9d6429edf9ec3b5f3f6ac",
-      "generator_identity": "claude-code-glm-5.3-1m",
-      "generator_evidence": null,
       "decision": "repair",
       "priority": "P2",
-      "review_depth": "deep_review",
-      "reason": "决策信息充分且多轮订正，但缺规范 frontmatter，部分 Gemini/搜索聚合口径应降格并标过期时间。",
-      "static_signals": {
-        "bytes": 49807,
-        "url_count": 0,
-        "quality_schema": null,
-        "has_limitations": true,
-        "has_thought_questions": true
-      },
-      "remediated_on": "2026-10-20",
-      "remediation_status": "repaired"
+      "remediation_status": "repaired",
+      "public_status": "已转私有的个人决策资料，不再提供公开链接"
     },
     {
       "path": "web-surfing/reports/ai-news-daily-2026-08-27.md",

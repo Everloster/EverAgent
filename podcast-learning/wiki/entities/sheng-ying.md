@@ -8,7 +8,7 @@
 - 上海交大 ACM 荣誉班 → 哥伦比亚大学 master（宁愿交违约金也要出国）→ 斯坦福 PhD（形式化验证，导师 Clark Barrett；IJCAR 2020 最佳论文、cvc5 贡献者、TACAS 最佳工具论文奖）
 - 竞赛出身：NOI 银牌（「我没有拿金牌」）；ADHD 自述（「找到了怎么使用我自己的一把钥匙」）
 - 丈夫：连铭[?]（疑为 Lianmin Zheng 郑连民，LMSYS/SGLang 联创，同在 xAI）——节目中自述
-- 与 vLLM 的 [[you-kaichao|游凯超]] 互为镜像：同一个伯克利圈子、同一位 mentor（Ion Stoica）、几乎同时把开源推理引擎商业化
+- 与 vLLM 的 [游凯超](./you-kaichao.md) 互为镜像：同一个伯克利圈子、同一位 mentor（Ion Stoica）、几乎同时把开源推理引擎商业化
 
 ## 核心观点
 
@@ -21,4 +21,4 @@
 
 ## 引用本人物的报告
 
-- [[2026-08-04_rss-guigu101_shengying|对话盛颖：xAI，Infra的浪漫，SGLang，开源，平权与「甄嬛传」]]（E247）
+- [对话盛颖：xAI，Infra的浪漫，SGLang，开源，平权与「甄嬛传」](../../reports/2026-08-04_rss-guigu101_shengying.md)（E247）

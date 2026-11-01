@@ -36,11 +36,11 @@ status: active
 
 ## 与什么相关
 
-- [[scaling_laws]] — 预训练幂律是参照系；RL 侧尚无已验证 scaling law
-- [[test_time_compute]] — o 系列/R1 流派表；RL 训练算力轴是 test-time 轴的训练端孪生
-- [[rlhf]] — reward hacking / KL 约束；grader compute 是抗 hacking 能力的扩展
-- [[agent_harness]] — harness 成为训练基础设施一等公民
-- [[bitter_lesson]] — 通用方法+算力 vs 环境/奖励工程的人类杠杆
+- [scaling_laws](./scaling_laws.md) — 预训练幂律是参照系；RL 侧尚无已验证 scaling law
+- [test_time_compute](./test_time_compute.md) — o 系列/R1 流派表；RL 训练算力轴是 test-time 轴的训练端孪生
+- [rlhf](./rlhf.md) — reward hacking / KL 约束；grader compute 是抗 hacking 能力的扩展
+- [agent_harness](./agent_harness.md) — harness 成为训练基础设施一等公民
+- [bitter_lesson](./bitter_lesson.md) — 通用方法+算力 vs 环境/奖励工程的人类杠杆
 
 ## 相关报告
 

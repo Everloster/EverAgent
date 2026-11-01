@@ -42,9 +42,9 @@
 
 ## 在库来源
 
-- [[2026-07-14_bilibili-luge-gustav_breakfast]] — 鹿哥Gustav《你到底该不该吃早餐?》
+- [2026-07-14_bilibili-luge-gustav_breakfast](../../reports/2026-07-14_bilibili-luge-gustav_breakfast.md) — 鹿哥Gustav《你到底该不该吃早餐?》
 
 ## 关联
 
 - 跨领域：biology-learning 时间生物学主线（昼夜节律 / 皮质醇觉醒反应 / 睡眠）
-- 待建：[[concepts/breakfast-myth-history]]（早餐观念商业史）
+- 待建：concepts/breakfast-myth-history（链接待补）（早餐观念商业史）

@@ -26,7 +26,7 @@ related_concepts:
 
 ## 化名处理
 
-按 [[concepts/pseudonym-reporting]] 的伦理标准处理：
+按 [concepts/pseudonym-reporting](../concepts/pseudonym-reporting.md) 的伦理标准处理：
 - 明确告知听众使用化名
 - 保护受访者免遭可能的政治打击报复
 - 中文配音：幸倍
@@ -37,5 +37,5 @@ Vol.31（声东击西 #378 · 2026-01-29）
 
 ## 关联
 
-- [[entities/lina-kabul-pseudonym]] — 同节目另一位化名受访者
-- [[concepts/afghan-women-education-ban]]
+- [entities/lina-kabul-pseudonym](./lina-kabul-pseudonym.md) — 同节目另一位化名受访者
+- [concepts/afghan-women-education-ban](../concepts/afghan-women-education-ban.md)

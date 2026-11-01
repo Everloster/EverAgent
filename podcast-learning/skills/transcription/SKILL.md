@@ -4,7 +4,7 @@
 
 ## 路由
 
-- URL 默认走 eacli podcast 的 Razer 静默 worker；命令和结果路径见 [pipeline-guide §一](./references/pipeline-guide.md#一转写产出-transcripttxt)。
+- URL 默认走 eacli podcast 远端静默 worker；命令和结果路径见 [pipeline-guide §一](./references/pipeline-guide.md#一转写产出-transcripttxt)。
 - 本地文件或明确的隔离排障才使用本地脚本；依赖与参数见同一节。
 - B 站来源读取 [pipeline-guide：B站链接](./references/pipeline-guide.md#b站链接只允许无-ui-获取)。
 - 出现尾部循环、重复段或混合语种问题时读取 [pipeline-guide：已知故障](./references/pipeline-guide.md#whispercpp-已知故障长音频尾部幻觉循环2026-07-18-实测)。
@@ -13,6 +13,8 @@
 ## 不变量
 
 - 全程静默，不打开浏览器 UI、系统 URL opener 或播放器。
+- 后续新完整转写与完整润色稿默认私有/本地保存，不能直接拉回公开仓；公开只保留来源链接、必要摘录与报告。历史全文不批量搬迁或重写回执，见 [COPYRIGHT.md](../../COPYRIGHT.md)。
+- 私有源不写入 `transcript_path` 的绝对路径，也不造一个失效公开链接；使用公开 `source_url`、内容哈希 `transcript_source_ref` 与脱敏 `transcript_audit_path`。收据校验与原文重验分别声明，缺来源不能声称核验通过。具体字段见 [pipeline-guide](./references/pipeline-guide.md#私有默认与公开审计收据)。
 - 转写不补写事实；无法确定的内容保留并标 `[?]`。
 - 人名、术语、数字和引文必须用 shownotes、字幕或其他一手材料核验。
 - 获取或转写失败时返回具体原因，不用有副作用的交互路径兜底。

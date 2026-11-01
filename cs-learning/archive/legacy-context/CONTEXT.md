@@ -1,0 +1,68 @@
+<!-- ARCHIVE NOTICE -->
+> **历史归档（2026-11-01）**：保留旧 Context / knowledge 原文；下文的库存、数字、未研究声明、建议及执行指令仅反映历史语境，未经本次重新核验，不作为现行规则。当前入口：[领域首页](../../README.md)、[领域协议](../../AGENTS.md)、[知识地图](../../MAP.md)、[Wiki](../../wiki/index.md)。
+<!-- END ARCHIVE NOTICE -->
+
+# cs-learning — Project Context
+
+> **Agent 协议**：操作本项目前须读取 [AGENTS.md](../../AGENTS.md)（ByteAgent 自包含协议）。执行完成后按协议 §5 提交推送。
+
+**领域**：计算机科学基础·系统·算法·分布式
+**三维度**：理论深度 × 系统演化 × 工程实践
+
+## 已有报告
+**论文精读** (`reports/paper_analyses/`)
+- `01_turing_1950` — Computing Machinery and Intelligence，图灵测试奠基
+- `02_shannon_1948` — A Mathematical Theory of Communication，信息熵·信道容量·Shannon极限（2026-03-25）
+- `10_mapreduce_2004` — MapReduce，大规模数据处理范式
+- `12_bigtable_2006` — 列族模型·LSM-Tree·分布式结构化存储·HBase/Cassandra原型（2026-03-25）
+- `05_lamport_clocks_1978` — happens-before偏序·逻辑时钟·全序扩展·分布式互斥算法·向量时钟先驱（2026-03-26）
+- `09_gfs_2003` — Google文件系统·单Master+ChunkServer·64MB大块·Lease机制·追加写语义·Hadoop HDFS原型（2026-03-26）
+- `11_dynamo_2007` — Amazon高可用KV存储·一致性哈希·Sloppy Quorum·向量时钟·Gossip·Merkle Tree反熵·AP系统典范（2026-03-26）
+- `15_raft_2014` — 可理解性优先共识算法·强Leader+随机超时选举·日志复制两阶段·五大安全性质·etcd/TiKV/CockroachDB原型（2026-03-26）
+- `21_spanner_2012` — Google全球分布式数据库·TrueTime(GPS+原子钟)·外部一致性·Commit Wait·SQL+ACID+水平扩展·NewSQL起点（2026-03-26）
+- `13_paxos_2001` — Paxos Made Simple·Prepare/Promise/Accept两阶段·多数派共识·值延续性·Multi-Paxos→Raft先驱（2026-03-26）
+- `22_kafka_2011` — 分布式消息日志·追加写+零拷贝·Pull消费模型+Offset·Consumer Group·ISR副本·现代数据流基础设施（2026-03-26）
+- `04_unix_1974` — 一切皆文件·inode文件系统·fork/exec/wait进程模型·管道组合哲学·Shell即普通程序·Linux/macOS/容器50年精神祖先（2026-03-26）
+- `14_zookeeper_2010` — 分布式协调服务·ZAB原子广播·会话机制+临时顺序节点·HBase/Kafka早期控制平面基石（2026-03-26）
+- `23_ffs_1984` — BSD Fast File System·cylinder group布局·fragment小块分配·空间局部性驱动文件系统性能革命（2026-03-26）
+- `08_byzantine_generals_1982` — 恶意节点一致性问题奠基·3f+1容错下界·BFT与区块链共识理论源头（2026-03-26）
+- `18_csp_1978` — Communicating Sequential Processes·通道通信·进程代数·Go语言并发模型理论基础（2026-03-26）
+- `19_tcpip_1974` — TCP/IP协议·分组交换·网关·端到端可靠性·互联网底层架构起源（2026-03-27）
+- `30_dns_1987` — RFC 1034/1035·分布式层次化命名空间·委托授权·递归/迭代查询·TTL缓存策略（2026-04-05）
+- `28_chord_2001` — Chord P2P查找协议·一致哈希环·Finger Table·O(logN)路由·稳定化协议·DHT奠基（2026-03-30）
+- `29_chubby_2006` — 粗粒度分布式锁服务·5副本Paxos cell·类文件系统接口·advisory锁+Sequencer·Grace period·意外成为Google主要命名服务（2026-03-31）
+- `31_bgp_rfc4271_2006` — RFC 4271·路径向量协议·AS间路由·AS_PATH防环·TCP 179·四类消息·六态FSM·CIDR聚合·互联网域间路由基石（2026-04-16）
+- `32_dijkstra_goto_1968` — Go To Statement Considered Harmful·结构化编程宣言·进度坐标可表达性框架·顺序/选择/循环三元组·Böhm-Jacopini基础·编程语言理论入口（2026-04-16）
+- `33_hoare_axiomatic_1969` — Hoare逻辑·{P}C{Q}三元组·赋值公理·循环不变式·程序验证理论基础·形式化方法学科起点·TLA+/Coq/Dafny前身（2026-04-22）
+- `34_lamport_bakery_1974` — Bakery Algorithm·无硬件原子指令纯软件互斥·取号排队直觉·并发编程经典教材·Ticket Lock/MCS Lock思想源头（2026-04-22）
+- `35_quic_rfc9000_2021` — RFC 9000·UDP之上用户态传输协议·内嵌TLS 1.3·连接ID抗NAT rebind·流多路复用无HoL阻塞·0-RTT握手·Cloudflare/Google/Meta全栈部署（2026-06-21）
+
+**知识深度解析** (`reports/knowledge_reports/`)
+- `CS关键人物图谱` — 图灵→香农→Dijkstra→现代系统工程师的思想传承
+- `分布式系统知识图谱` — Storage/Consensus/Coordination/Messaging 四主线整合，19篇精读归纳
+- `DHT实战排查：从协议理论到工程故障诊断` — Kademlia/BEP-5协议·WireGuard+wstunnel多层隧道·分层故障诊断方法论·Bootstrap节点生态现状（2026-04-06）
+- `操作系统内核设计深度解析_20260416` — UNIX哲学·一切皆文件·fork/exec/pipe·FFS cylinder group·CSP通道通信·宏内核vs微内核·io_uring·Unikernel（2026-04-16）
+- `编程语言范式演化_从Lisp到Go的并发模型变迁` — McCarthy(Lisp)·Dijkstra(结构化编程)·Hoare(CSP)·Lattner(LLVM)四阶段演化图谱·函数式/结构化/进程代数/编译器基础设施（2026-04-22）
+- `Tailscale_WireGuard_VPN_原理深度解析` — 现代 VPN·WireGuard 加密隧道·Tailscale 控制/数据平面·NAT 穿透·DERP 中继·MagicDNS·ACL/Zero Trust·iPad 远程 SSH Mac 实践（2026-05-09）
+- `数据库50年演化_从层次到向量库_20260621` — IMS 1968 / DBTG 1969 / Codd 1970 / System R / Ingres / Oracle 1979 / POSTGRES 1986 / PostgreSQL 1995- / Bigtable 2006 / Dynamo 2007 / MongoDB 2009 / Spanner 2012 / Aurora 2014 / Snowflake 2014 / CockroachDB 2015 / TiDB 2016 / Pinecone·Milvus·Weaviate 2019 / Qdrant 2021；六代范式·ACID/BASE/CAP 三理论·存算分离·向量库时代
+
+## 离线知识库
+→ [`knowledge/INDEX.md`](./knowledge/INDEX.md)
+
+## Skills
+- `skills/paper_analysis/SKILL.md` — CS 论文 7 步分析法
+- `skills/concept_deep_dive/SKILL.md` — CS 概念 5 层理解模型
+
+## 导航
+- 学习路径：`roadmap/Learning_Roadmap.md`
+- 论文索引：`papers/PAPERS_INDEX.md`（30 篇）
+- 书籍索引：`books/BOOKS_INDEX.md`（25 部）
+
+## ⚠️ 边界（防幻觉）
+以下内容**尚未研究**，禁止推测，须告知用户：
+- 网络方向已有 TCP/IP (1974)、DNS (1987)、BGP (2006)；更深层的网络协议（OSPF等）尚无独立精读报告
+- 现代远程访问网络已有 Tailscale/WireGuard/VPN 专题知识报告；该报告是工程原理综述，不等同于 WireGuard 协议形式化证明或 OpenVPN/IPsec 完整对比
+- 编译器、数据库理论（关系代数等）方向尚无报告
+- 论文索引中列出但未精读的论文仅有索引，无分析报告
+- 操作系统方向已有知识报告（UNIX/FFS/CSP综合），但具体子话题（进程调度算法、虚拟内存管理）尚无专项报告
+- 下一步推荐：数据库理论方向（Codd Relational Model 1970）、编译器方向（Lattner LLVM 2004）

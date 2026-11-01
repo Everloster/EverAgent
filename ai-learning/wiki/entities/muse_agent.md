@@ -28,8 +28,8 @@ Meta 2026-09-08 发布的个人 AI Agent（非聊天机器人）：目标制工�
 OpenClaw（自托管开源龙虾）：Muse = 全托管高权限，OpenClaw = 自部署权限可控；"普通人的 OpenClaw，用权限广度换安全感"。
 
 ## 在本项目的相关报告
-- [Meta Muse 深度产品研究报告 v2](../reports/2026-09-22_meta-muse_product-research.md)（v1 2026-09-22，v2 2026-09-28 补 APK 逆向+独立评测+事件线）
+- [Meta Muse 深度产品研究报告 v2](../../reports/2026-09-22_meta-muse_product-research.md)（v1 2026-09-22，v2 2026-09-28 补 APK 逆向+独立评测+事件线）
 
 ## 关联
-- [[meta_ai]]（母公司 AI 体系）
-- 未解问题：[[open-questions]] 2026-09-28 Meta Muse 节（孤证复核 / 评测鸿沟 / 真人接线员监管 / 欧盟版）
+- [meta_ai](./meta_ai.md)（母公司 AI 体系）
+- 未解问题：[open-questions](../open-questions.md) 2026-09-28 Meta Muse 节（孤证复核 / 评测鸿沟 / 真人接线员监管 / 欧盟版）

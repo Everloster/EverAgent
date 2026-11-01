@@ -14,6 +14,6 @@
 
 ## 与其他概念的关联
 
-- 是 [[native-app-stage]] 三阶段推进的驱动机制
-- 与 [[kimi-k3]] 的"模型内科"（训练归因能力）对照：一个讲应用侧飞轮，一个讲模型侧归因
-- 来源：[[2026-09-03_xiaoyuzhou-zhangxiaojun_zengming]]
+- 是 [native-app-stage](./native-app-stage.md) 三阶段推进的驱动机制
+- 与 [kimi-k3](./kimi-k3.md) 的"模型内科"（训练归因能力）对照：一个讲应用侧飞轮，一个讲模型侧归因
+- 来源：[2026-09-03_xiaoyuzhou-zhangxiaojun_zengming](../../reports/2026-09-03_xiaoyuzhou-zhangxiaojun_zengming.md)

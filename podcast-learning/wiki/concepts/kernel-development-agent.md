@@ -25,4 +25,4 @@ RSI 三条件：**便宜、可验证、难作弊**——kernel 全满足（跑�
 
 ## 引用本概念的报告
 
-- [[2026-08-04_rss-wandian-latetalk_kimi-k3]]、[[2026-09-02_multi_kimi-k3-dueling-reads]]
+- [2026-08-04_rss-wandian-latetalk_kimi-k3](../../reports/2026-08-04_rss-wandian-latetalk_kimi-k3.md)、[2026-09-02_multi_kimi-k3-dueling-reads](../../reports/2026-09-02_multi_kimi-k3-dueling-reads.md)

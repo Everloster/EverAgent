@@ -17,10 +17,10 @@
 
 ## 架构遗产（K3）
 
-见 [[kimi-k3]]、[[kda-linear-attention]]、[[quantile-balancing]]、[[attention-residuals]]、[[mopd]]、[[kernel-development-agent]]
+见 [kimi-k3](../concepts/kimi-k3.md)、[kda-linear-attention](../concepts/kda-linear-attention.md)、[quantile-balancing](../concepts/quantile-balancing.md)、[attention-residuals](../concepts/attention-residuals.md)、[mopd](../concepts/mopd.md)、[kernel-development-agent](../concepts/kernel-development-agent.md)
 
 ## 引用本实体的报告
 
-- [[2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report|张小珺152 领读 K3 技术报告]]
-- [[2026-08-04_rss-wandian-latetalk_kimi-k3|晚点聊177 详解 Kimi K3]]
-- [[2026-09-02_multi_kimi-k3-dueling-reads|K3 一鱼两吃对照]]
+- [张小珺152 领读 K3 技术报告](../../reports/2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report.md)
+- [晚点聊177 详解 Kimi K3](../../reports/2026-08-04_rss-wandian-latetalk_kimi-k3.md)
+- [K3 一鱼两吃对照](../../reports/2026-09-02_multi_kimi-k3-dueling-reads.md)

@@ -34,7 +34,7 @@ Gumroad 是一家为创作者提供数字商品销售工具的公司，2011 年�
 
 ## 与 Patreon 对比
 
-详见 [[concepts/creator-economy-tools-vs-platforms]]
+详见 [concepts/creator-economy-tools-vs-platforms](../concepts/creator-economy-tools-vs-platforms.md)
 
 ## 来源
 
@@ -42,6 +42,6 @@ Vol.30（What's Next 科技早知道 · 2026-06-09）
 
 ## 关联
 
-- [[entities/sahil-lavingia]]
-- [[entities/patreon]]
-- [[concepts/creator-economy-tools-vs-platforms]]
+- [entities/sahil-lavingia](./sahil-lavingia.md)
+- [entities/patreon](./patreon.md)
+- [concepts/creator-economy-tools-vs-platforms](../concepts/creator-economy-tools-vs-platforms.md)

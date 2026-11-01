@@ -31,4 +31,4 @@ Vol.32（后互联网时代的乱弹 · 第 166 期 · 2026-06-06）
 
 ## 关联
 
-- [[entities/zhuang-biaowei]] — 主理人
+- [entities/zhuang-biaowei](./zhuang-biaowei.md) — 主理人

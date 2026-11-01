@@ -19,6 +19,6 @@
 
 ## 与其他概念的关联
 
-- 生产者土壤=[[work-ethic|工作伦理]]；铸造炉=[[consumer-society|消费者社会]]
+- 生产者土壤=[工作伦理](./work-ethic.md)；铸造炉=[消费者社会](./consumer-society.md)
 - 与 Anthropic 经济情景模型（ai-learning，2026-09-11）extreme 档的"认知失业率 17.9%、补偿需 ≈9% GDP 转移"互为计量/叙事两面
-- 来源：[[2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism]]
+- 来源：[2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism](../../reports/2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism.md)

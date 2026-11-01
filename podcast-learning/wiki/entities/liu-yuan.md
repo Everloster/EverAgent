@@ -20,11 +20,11 @@
 
 ## 相关期数
 
-- 此话当真 2026-09-23《AI 和真格管理合伙人刘元录了一期播客》（ChatGPT 语音当主播）→ [[2026-09-23_xiaoyuzhou-cihua-dangzhen_liuyuan|报告]]
+- 此话当真 2026-09-23《AI 和真格管理合伙人刘元录了一期播客》（ChatGPT 语音当主播）→ [报告](../../reports/2026-09-23_xiaoyuzhou-cihua-dangzhen_liuyuan.md)
 - 此话当真 2025-12-15《和 Manus 的一周，和肖弘的十年》（未处理）
-- 同节目参照：[[2026-09-16_xiaoyuzhou-cihua-dangzhen_zhangtuoken|张托肯期]]（Token Grant / agent 渗透率）
+- 同节目参照：[张托肯期](../../reports/2026-09-16_xiaoyuzhou-cihua-dangzhen_zhangtuoken.md)（Token Grant / agent 渗透率）
 
 ## 关联
 
-- [[personal-agent-wars]]：本期的「AI 投资人 vs 刘元」之问（价值观与品位成为基金差异）是 agent 替代知识工作的 VC 版
-- 与 [[zeng-ming]]（公司消亡/组织）、陈彬 AI 原生组织期同属「组织与机构年龄」线
+- [personal-agent-wars](../concepts/personal-agent-wars.md)：本期的「AI 投资人 vs 刘元」之问（价值观与品位成为基金差异）是 agent 替代知识工作的 VC 版
+- 与 [zeng-ming](./zeng-ming.md)（公司消亡/组织）、陈彬 AI 原生组织期同属「组织与机构年龄」线

@@ -6,7 +6,7 @@
 
 - **华盛顿大学 CS 博士二年级**，师从 Hannaneh Hajishirzi 教授与 Pang Wei Koh 助理教授
 - 研究方向：LLM 后训练与评测
-- 清华本科，与 [[zhao-chenyang|赵晨阳]] 同系同届
+- 清华本科，与 [赵晨阳](./zhao-chenyang.md) 同系同届
 
 ## 核心观点（2026-08-04 详解 K3 时）
 
@@ -20,9 +20,9 @@
 
 ## 对读镜像
 
-与 [[sun-yutao|孙宇涛]] 同用忒修斯之船但 temperament 相反：孙落"无本质创新"（离场去世界模型），曾落"可组合性惊人"（谨慎乐观）——见 [[2026-09-02_multi_kimi-k3-dueling-reads|对照报告]] 彩蛋一。
+与 [孙宇涛](./sun-yutao.md) 同用忒修斯之船但 temperament 相反：孙落"无本质创新"（离场去世界模型），曾落"可组合性惊人"（谨慎乐观）——见 [对照报告](../../reports/2026-09-02_multi_kimi-k3-dueling-reads.md) 彩蛋一。
 
 ## 引用本人物的报告
 
-- [[2026-08-04_rss-wandian-latetalk_kimi-k3|晚点聊177 详解 Kimi K3]]
-- [[2026-09-02_multi_kimi-k3-dueling-reads|K3 一鱼两吃对照]]
+- [晚点聊177 详解 Kimi K3](../../reports/2026-08-04_rss-wandian-latetalk_kimi-k3.md)
+- [K3 一鱼两吃对照](../../reports/2026-09-02_multi_kimi-k3-dueling-reads.md)

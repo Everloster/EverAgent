@@ -24,4 +24,4 @@ K3 的 MoE 专家负载均衡：**利用 router 分数分布的分位数一步�
 
 ## 引用本概念的报告
 
-- [[2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report]]、[[2026-08-04_rss-wandian-latetalk_kimi-k3]]、[[2026-09-02_multi_kimi-k3-dueling-reads]]
+- [2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report](../../reports/2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report.md)、[2026-08-04_rss-wandian-latetalk_kimi-k3](../../reports/2026-08-04_rss-wandian-latetalk_kimi-k3.md)、[2026-09-02_multi_kimi-k3-dueling-reads](../../reports/2026-09-02_multi_kimi-k3-dueling-reads.md)

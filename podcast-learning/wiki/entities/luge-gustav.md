@@ -20,7 +20,7 @@
 
 ## 关键产出（已被 podcast-learning 收录）
 
-- [[2026-07-14_bilibili-luge-gustav_breakfast]] — 早餐的真相（2026-07-14）
+- [2026-07-14_bilibili-luge-gustav_breakfast](../../reports/2026-07-14_bilibili-luge-gustav_breakfast.md) — 早餐的真相（2026-07-14）
 
 ## 相关链接
 

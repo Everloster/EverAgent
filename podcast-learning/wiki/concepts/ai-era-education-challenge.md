@@ -45,6 +45,6 @@ Vol.30（What's Next 科技早知道 · 2026-06-09）+ Vol.32（后互联网时�
 
 ## 关联概念
 
-- [[concepts/vibe-coding]]
-- [[concepts/post-internet-era]]
-- [[concepts/afghan-women-education-ban]]
+- [concepts/vibe-coding](./vibe-coding.md)
+- [concepts/post-internet-era](./post-internet-era.md)
+- [concepts/afghan-women-education-ban](./afghan-women-education-ban.md)

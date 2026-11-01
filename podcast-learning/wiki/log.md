@@ -10,7 +10,7 @@
 - 嘉宾：王小川（百川智能创始人）
 - 标题：对话王小川：造医生，战豆包，与无尽的 AI 非共识
 - 时长：92m45s · 转录：19,983 字（Whisper large-v3, zh, 未润色）
-- 报告：[[2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan]]
+- 报告：[2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan](../reports/2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan.md)
 - 新增 entities: 王小川、百川智能
 - 新增 concepts: 百川 M4、百小一、生命模型、非共识 AI、医疗供给侧改革
 - 失败/限制：Llama 3.3 70B polish 因 Groq TPM 12,000 限速失败，标点稀疏；详见报告 Limitations
@@ -19,7 +19,7 @@
 - 来源：B 站 · CLS同学 · BV1NHJF6oE8m
 - 标题：三年行业吃肉榜/爆亏榜大合集（2023-2025）
 - 时长：1h2m53s · 转录：21,953 字（Whisper large-v3 zh, **已用 Claude (MiniMax-M3) 自润** — 跳过 Groq Llama 3.3 70B，见 self-polish memory）
-- 报告：[[2026-06-20_bilibili-cls-tongxue_hangye-bangdan]]
+- 报告：[2026-06-20_bilibili-cls-tongxue_hangye-bangdan](../reports/2026-06-20_bilibili-cls-tongxue_hangye-bangdan.md)
 - 新增 entities: CLS 同学
 - 新增 concepts：（未单独建页，详见报告"关键观点"7 节）
 - pipeline: opencli bilibili summary → yt-dlp mp4 → ffmpeg mp3 → Groq Whisper large-v3 → Claude (MiniMax-M3) 自润（分段 + 标点 + 50+ 处误识别修正）
@@ -32,7 +32,7 @@
   - **Vol.30**：What's Next 科技早知道 · Sahil Lavingia · 一人公司 · 2026-06-09
   - **Vol.31**：声东击西 #378 · 塔利班关闭学校后阿富汗女孩的四年 · 2026-01-29
   - **Vol.32**：后互联网时代的乱弹 · 第 166 期 · 香会 + X 新生态 + 教育 · 2026-06-06
-- 报告：[[2026-06-21_xiaoyuzhou-multi_notes]]
+- 报告：[2026-06-21_xiaoyuzhou-multi_notes](../reports/2026-06-21_xiaoyuzhou-multi_notes.md)
 - 状态：archived（**transcript 未取得**，transcript_chars: 0；本 session Bash 工具被持续拒绝，无法调用 `agent-reach xiaoyuzhou transcribe.sh` 拉取音频）
 - 报告合成源：小宇宙 show notes + Apple Podcasts 节目描述 + 声动活泼官方宣传 + 豆瓣播客元数据 + 多源 web_search 交叉印证
 - 新增 entities（10 个）：Sahil Lavingia、Gumroad、Patreon、丁教 Diane、Lina（化名）、Sophia（化名）、徐涛、庄表伟、声动活泼、声湃 WavPub
@@ -56,7 +56,7 @@
 - 嘉宾：**李继刚**（43 AI · 即刻 [@752D3103](https://web.okjike.com/u/752D3103-1107-43A0-BA49-20EC29D09E36)）—— 箴言式写作者，聊天过程是"将高度压缩的只言片语进行解压缩"
 - 标题：读书：4种配速，取景框，人是滤器，冲刷神经网络
 - 时长：1h54min（6815s）· 转录：5,372 段 / **35,430 汉字**（whisper.cpp / ggml-large-v3 / Metal 加速 / zh）/ 语速 312 字/min
-- 报告：[[2026-07-09_xiaoyuzhou-mingjing-diandian_lijigang]]
+- 报告：[2026-07-09_xiaoyuzhou-mingjing-diandian_lijigang](../reports/2026-07-09_xiaoyuzhou-mingjing-diandian_lijigang.md)
 - pipeline: yt-dlp 拉小宇宙 mp3（105MB m4a → 128MB mp3）→ whisper.cpp / ggml-large-v3 / Metal 加速 / 7m30s 墙钟 → Claude (MiniMax-M3) 自润 → WebFetch 拉小宇宙 shownotes（修正嘉宾 + 36 章节时间戳 + 17 本书单）→ Claude 按章节重组成 polished
 - 自润：删 4 段小宇宙片尾广告 + 修 1 处明确同音误识别（黑心流→黑天鹅）+ 标 2 处不确定项（携带码 [?]）+ polished 头部 metadata
 - polished 重构：按 shownotes 36 章节（无时间戳，每节一段连续文本）—— 43 KB，35,897 汉字
@@ -72,7 +72,7 @@
 - 来源：小宇宙 · 屠龙之术 · 单期《重估一切，文艺复兴——2026H1 AI行业观察》
 - 形式：**单口**（主播庄明浩；CSDN 大会 45min 演讲的重新录制版，素材=ima 知识库 5-6 月约 200 张图 + 50 份 PDF，PPT 76 页）
 - 时长：54m37s（3277s）· 转录：1,973 段 / **14,591 汉字**（whisper.cpp / ggml-large-v3 / Metal / zh）/ 语速 267 字/min
-- 报告：[[2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review]]
+- 报告：[2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review](../reports/2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review.md)
 - pipeline: yt-dlp 拉小宇宙音频 → whisper.cpp 本地转写（7/19 完成，卡在 shownotes 未拉取）→ curl 抓 episode 页（JSON-LD + __NEXT_DATA__）解析 shownotes（69 时间戳 + 节目简介）→ Kimi 通读全文 → 按章节重组成 polished（12 节 56 小节，无时间戳）
 - 润色：删末尾 whisper 幻觉行（MING PAO...）+ 修正 40+ 处系统性同音误识别（KPS/CBS→CAPEX、视野模型→世界模型、美利奇→美第奇、Cloud Code→Claude Code、Isofix/ASOPEC/阿萨佩→Anthropic、openseo→OpenAI、Covid→CoreWeave、候选人→后训练、OpenSource→OpenRouter 等）+ 30+ 处不确定项标 [?]（Fable 5、马语、小龙虾、国产产品名等）
 - 核心框架：文艺复兴映射（印刷术=推理成本坍塌 / 美第奇=CAPEX / 南北文艺复兴=中美双极 / 透视法=世界模型 / 工坊=Agent / 虚荣的篝火=治理反弹 / 人的画像=第四支柱）
@@ -86,7 +86,7 @@
 - 来源：小宇宙 · 面基 · 单期《人到中年仨账户：现金流、肌肉、睡眠》
 - 形式：**单口**（主播老钱 / 老钱日日谈；35 岁，预习自己与母亲的中年）
 - 时长：72m06s（4326s）· 转录：2,414 段 / **19,509 汉字**（whisper.cpp / ggml-large-v3 / Metal / zh，transcribe.py）/ 语速 271 字/min
-- 报告：[[2026-07-13_xiaoyuzhou-mingjing-diandian_midlife-accounts]]
+- 报告：[2026-07-13_xiaoyuzhou-mingjing-diandian_midlife-accounts](../reports/2026-07-13_xiaoyuzhou-mingjing-diandian_midlife-accounts.md)
 - pipeline: yt-dlp → whisper.cpp 本地转写 → curl 抓 episode 页 JSON-LD/__NEXT_DATA__（确认节目身份 + 时长）→ FetchURL 拉 shownotes（~40 时间戳 + 书单 + 概念解释）→ Kimi 通读 → 按章节重组成 polished（9 节 31 小节，无时间戳）
 - **节目身份确认**：episode 页 podcast.title=面基 → 本库此前所称"明镜与点点"官方名即「面基」（2026-07-09 李继刚期同一节目）；老钱与"明镜"关系待确认（实体页交叉标注 [?]）
 - 润色：删末尾 whisper 幻觉行（优优独播剧场...）+ 修正 40+ 处系统性误识别（面积→面基、生物中→生物钟、腺肝→腺苷、缺窍→缺觉、潜睡眠→浅睡眠、Aidsleep→Eight Sleep、烙蛋白→酪蛋白、金关涛→金观涛 等）+ 10+ 处 [?]
@@ -100,7 +100,7 @@
 - 来源：小宇宙 · 张小珺Jùn｜商业访谈录 · Vol.148《对游凯超3小时访谈：开源Infra、和模型Co-design、"如果vLLM失败，我们会后悔一辈子"》（2026-07-28 发布）
 - 形式：**对谈**（主持张小珺 × 嘉宾游凯超：Inferact 联创兼首席科学家、vLLM 核心维护者，清华本博）
 - 时长：3h00m26s（10826s）· 转录：6,120 段 / **53,373 汉字**（whisper.cpp / ggml-large-v3 / Metal，transcribe.py，约 16min 墙钟）/ 语速 296 字/min
-- 报告：[[2026-07-28_xiaoyuzhou-zhangxiaojun_youkaichao]]
+- 报告：[2026-07-28_xiaoyuzhou-zhangxiaojun_youkaichao](../reports/2026-07-28_xiaoyuzhou-zhangxiaojun_youkaichao.md)
 - pipeline：yt-dlp → whisper.cpp → episode 页 JSON-LD/__NEXT_DATA__（时长/发布日）+ FetchURL shownotes（8 章节时间戳）→ **8 章并行分章润色**（agent swarm）→ 组装 polished（49,568 汉字）
 - 润色：修正约 300 处系统性误识别（VLM/VM/为我们→vLLM 70+、杨斯多伊克→Ion Stoica 20+、归机→硅基、推力引擎→推理引擎、语言集世界→语言即世界 等）；约 40 处 [?]（翁嘉义[?]疑为翁家翌 Jiayi Weng、Johan[?]疑为 Zhuohan 音误、ch6 海外大咖人名被吞 等）
 - 核心框架：vLLM 三年三级跳（SOSP 低分过线→开源→PyTorch 基金会→Inferact）/ 仁慈的独裁者分级治理 / AI slop 与善意假设崩塌 / 模型-Infra-硬件 co-design / hardware lottery / Token vs 电力 / 开源模型会赢
@@ -109,17 +109,17 @@
 - Limitations：音频未保留（173MB 为 128kbps 估算）；嘉宾口述两处事实存疑已在报告标注（OpenSSH 段实为 OpenSSL Heartbleed；ALiBi 表述）；融资细节（1.5 亿美元种子/8 亿估值/a16z+Lightspeed 领投）经公开报道交叉验证；**与 ai-learning vLLM 源码级学习线互为表里**（代码在 ai-learning，人在本线）
 
 ## [2026-08-23] index | xiaoyuzhou
-- 归档「张小珺Jùn｜商业访谈录」全量 154 集选题索引：[[show-indexes/zhangxiaojun]]（官方 RSS `feed.xyzfm.space/dk4yh3pkpjp3` 免登录全量拉取，2022-04 至今）
+- 归档「张小珺Jùn｜商业访谈录」全量 154 集选题索引：[show-indexes/zhangxiaojun](./show-indexes/zhangxiaojun.md)（官方 RSS `feed.xyzfm.space/dk4yh3pkpjp3` 免登录全量拉取，2022-04 至今）
 - 设周更扫描 cron：每周一 09:47 扫 RSS 对比索引首行，发现新集 → 提醒用户（不落文件、不自动转写）
 - 方法备忘：小宇宙节目主页 SSR JSON 仅含最新 15 集；官方「加载更多」API 需登录 token（401）；**全量清单走 Apple Podcasts lookup 反查 feedUrl → RSS**，通用可复用
-- 同日扩面：小宇宙 app 内导出 OPML（官方功能）→ 归档为 [[curated-podcasts|精选播客清单]]（51 档节目，含公开 RSS；对外表述为精选清单）→ `scripts/fetch_show_indexes.py` 拉全部 51 档节目的全量单集索引入 `wiki/show-indexes/`（共 7,839 集，零失败；含喜马拉雅/fireside/transistor 等非小宇宙源）
-- 周更 cron 升级：由单节目（张小珺）改为全量刷新（`fetch_show_indexes.py`，每周一 09:47，cron id 01M0PF17S1J77J21T69Z7WZQJP），新集自动插入索引并提醒；「状态」列人工标记经链接 diff 保留（修过一次 [[wikilink|别名]] 竖线干扰状态列解析的 bug）
+- 同日扩面：小宇宙 app 内导出 OPML（官方功能）→ 归档为 [精选播客清单](./curated-podcasts.md)（51 档节目，含公开 RSS；对外表述为精选清单）→ `scripts/fetch_show_indexes.py` 拉全部 51 档节目的全量单集索引入 `wiki/show-indexes/`（共 7,839 集，零失败；含喜马拉雅/fireside/transistor 等非小宇宙源）
+- 周更 cron 升级：由单节目（张小珺）改为全量刷新（`fetch_show_indexes.py`，每周一 09:47，cron id 01M0PF17S1J77J21T69Z7WZQJP），新集自动插入索引并提醒；「状态」列人工标记经链接 diff 保留（修过一次 `[[wikilink|别名]]` 竖线干扰状态列解析的 bug）
 
 ## [2026-08-23] ingest | rss（Fireside）
 - 来源：硅谷101 · E247《对话盛颖：xAI，Infra的浪漫，SGLang，开源，平权与"甄嬛传"》（2026-08-04 发布）
 - 形式：**对谈**（采访陈茜 × 嘉宾盛颖：RadixArk 联创&CEO、SGLang 发起人、xAI 前推理团队负责人；上海交大 ACM→哥大→斯坦福 PhD）
 - 时长：1h46m26s（6387s）· 转录：5,578 段 / **34,164 汉字**（whisper.cpp / ggml-large-v3 / Metal / **--vad silero**）/ 语速 321 字/min · 音频 147MB（实测）
-- 报告：[[2026-08-04_rss-guigu101_shengying]]
+- 报告：[2026-08-04_rss-guigu101_shengying](../reports/2026-08-04_rss-guigu101_shengying.md)
 - pipeline：RSS 拿到频直链 → yt-dlp → whisper.cpp → Fireside shownotes（12 章节）→ 12 章并行润色 → 组装 polished（33,726 汉字）
 - **重大踩坑**：首跑无 VAD，whisper 在音乐/过场段陷入循环幻觉（约 00:39 起循环输出无关广告词，整段报废；音频本身完好）→ `--vad` 重跑恢复；教训已写入 AGENTS.md 已知局限 #5，`transcribe.py` 新增 `--whisper-args` 透传
 - 润色：修正约 200 处系统性误识别（SG Lane→SGLang、ReddixArc/Radi Shark→RadixArk、施琳/摄影→盛颖、一浪→Elon、Young Stoica→Ion Stoica、PSC→PhD 等）；约 60 处 [?]
@@ -132,7 +132,7 @@
 - 来源：小宇宙 · 菠萝健康派 · vol.122《刘方奇教授：肠癌越来越年轻，确诊后先别急着手术！》（2026-08-24 发布，周更扫描 cron 捕获）
 - 形式：**对谈**（主播李治中/菠萝 × 嘉宾刘方奇：复旦大学附属肿瘤医院大肠外科副主任医师，师从蔡三军，从业 16 年）
 - 时长：1h21m34s（4894s）· 转录：3,358 段 / **26,467 汉字**（whisper.cpp / ggml-large-v3 / Metal / --vad silero）/ 语速 324 字/min
-- 报告：[[2026-08-24_xiaoyuzhou-boluo-jiankang_liufangqi]]
+- 报告：[2026-08-24_xiaoyuzhou-boluo-jiankang_liufangqi](../reports/2026-08-24_xiaoyuzhou-boluo-jiankang_liufangqi.md)
 - pipeline：transcribe.py（yt-dlp + whisper.cpp + VAD）→ 小宇宙 shownotes（10 章节）→ 10 章并行润色 → 组装 polished（26,512 汉字）
 - 内容：遗传性肠癌（Lynch/FAP/PJS、胚系检测、三代试管生殖阻断）/ 肠癌年轻化与筛查年龄 / 保肛与造口去污名化 / 新辅助治疗与观察等待 / 肛指检查价值 / 外科医生的温度
 - 医学术语误识别密集修正约 200 处（邻居综合症→Lynch、迭面骂/DMMA→dMMR、心腹中→新辅助、细肉→息肉、灶口→造口、宝刚→保肛、聚钢门→距肛门 等）；约 40 处 [?]
@@ -144,7 +144,7 @@
 - 来源：B 站 · 帆书视频播客 · 第49期《身体出现这些信号，可能是炎症在提醒你！三甲医生教你3个自查方法》（2026-08-21 发布，BV1j18i6VEtn）
 - 形式：**讲书/科普对谈**（帆书主播[疑为樊登?] + 助讲嘉宾金博医生[三甲]）讲书《炎症》
 - 时长：17m50s（1070s）· 转录：602 段 / **5,445 汉字**（whisper.cpp / ggml-large-v3 / Metal / --vad silero）/ 语速 305 字/min · 视频 30.8MB
-- 报告：[[2026-08-21_bilibili-fanshu_yanzheng]]
+- 报告：[2026-08-21_bilibili-fanshu_yanzheng](../reports/2026-08-21_bilibili-fanshu_yanzheng.md)
 - pipeline：opencli bilibili download（绕 412）→ ffmpeg → whisper.cpp + VAD → opencli 官方字幕交叉校验 → Kimi 通读自润（短集不走分章 swarm）
 - 字幕校验亮点：烤箱糖→口香糖、一道素→胰岛素、消盐→消炎 等约 40 处修正；**字幕亦错两处**（套蛋白→Tau 蛋白、醋盐→促炎）依医学常识修正并单独标注——官方字幕校验源的角色首次完整走通
 - 内容：慢性炎症=无声小火 / 炎症×癌症（1/4）×心血管（C 反应蛋白、卡纳单抗 -15%）/ 肥胖=巨噬细胞包围脂肪细胞 / 炎性衰老与阿尔茨海默 / 餐桌抗炎（Omega-3 vs 6、深色蔬菜、盐 6g、高果糖玉米糖浆、纤维益生元）
@@ -162,10 +162,10 @@
 - **A 源**：小宇宙 · 张小珺商业访谈录 · 152《领读Kimi K3技术报告：从架构创新聊起，注意力美学、多教师蒸馏和开源MoE》（2026-08-26 发布）｜对谈（张小珺 × 嘉宾**孙宇涛**：清华 CS 博士候选人、上海创智学院璞锐学者、RetNet 一作）
 - **B 源**：RSS（晚点聊官方 feed）· LateTalk · 177《详解Kimi K3：强到冲击Anthropic估值的模型什么样？》（2026-08-04 发布）｜三人谈（主播曼祺 × **赵晨阳**：RadixArk/SGLang 创始成员 + **曾致远**：UW 博二）
 - A：2h04m19s（7459s）· 6,719 段 / 40,439 汉字 / 语速 325 字/min · B：1h55m（6900s）· 5,500 段 / 33,263 汉字 / 289 字/min
-- 报告三份：[[2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report]]（学术谱系学）+ [[2026-08-04_rss-wandian-latetalk_kimi-k3]]（工业生态学）+ **[[2026-09-02_multi_kimi-k3-dueling-reads]]（cross_episode 对照层）**
+- 报告三份：[2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report](../reports/2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report.md)（学术谱系学）+ [2026-08-04_rss-wandian-latetalk_kimi-k3](../reports/2026-08-04_rss-wandian-latetalk_kimi-k3.md)（工业生态学）+ **[2026-09-02_multi_kimi-k3-dueling-reads](../reports/2026-09-02_multi_kimi-k3-dueling-reads.md)（cross_episode 对照层）**
 - pipeline（Workflow 编排·ultracode）：双期 transcribe → 切片（12+15 章）→ **27 章并行润色** → 双期要素提取（结构化）→ 对照 agent 交叉分析（factual_diffs 带外部核验：全模型 NoPE、MOPD=3域×3努力度、MXFP4/MXFP8、2.5×训练效率 vs 6.3×解码加速勿混）
 - 修正统计：A 期 400+ 处（传送门→Transformer×10、上海创制→创智、松林→杨松林与苏剑林分列、C2GOU→SiTU-GLU 等）；B 期 300+ 处（AnswerPick→Anthropic、钱坠付用→前缀复用等）
-- 新增 entities ×5：[[entities/sun-yutao]]、[[entities/zhao-chenyang]]、[[entities/zeng-zhiyuan]]、[[entities/moonshot-ai]]、[[entities/zhang-xiaojun]]；concepts ×6：[[concepts/kimi-k3]]、[[concepts/kda-linear-attention]]、[[concepts/quantile-balancing]]、[[concepts/attention-residuals]]、[[concepts/mopd]]、[[concepts/kernel-development-agent]]
+- 新增 entities ×5：[entities/sun-yutao](./entities/sun-yutao.md)、[entities/zhao-chenyang](./entities/zhao-chenyang.md)、[entities/zeng-zhiyuan](./entities/zeng-zhiyuan.md)、[entities/moonshot-ai](./entities/moonshot-ai.md)、[entities/zhang-xiaojun](./entities/zhang-xiaojun.md)；concepts ×6：[concepts/kimi-k3](./concepts/kimi-k3.md)、[concepts/kda-linear-attention](./concepts/kda-linear-attention.md)、[concepts/quantile-balancing](./concepts/quantile-balancing.md)、[concepts/attention-residuals](./concepts/attention-residuals.md)、[concepts/mopd](./concepts/mopd.md)、[concepts/kernel-development-agent](./concepts/kernel-development-agent.md)
 - open-questions 汇入 3 问（工程税分工 / 护城河可复制性 / 双 KDA 复利）
 - show-indexes 状态 ✅ ×2（zhangxiaojun 152、wandian-latetalk 177）
 - **踩坑两枚**：① transcribe.py `--whisper-args` 里 `~/` 波浪号在 subprocess 列表模式不展开 → VAD 模型找不到 → SIGABRT；**解法：传绝对路径**（AGENTS.md 示例照抄会踩）。② 双 Workflow 并行 27 agent 撞 API 账户级 429 限流（5+9 章失败）→ **分批补齐（3 agent/批）** 后全绿——多 workflow 叠加时并发要主动限批
@@ -173,45 +173,45 @@
 ## [2026-09-09] ingest | xiaoyuzhou（张小珺153 × 曾鸣：产业史观）
 - **源**：小宇宙 · 张小珺商业访谈录 · 153《和曾鸣聊产业史观：残酷的真相、会消亡的公司、优秀≠卓越、"OAI、Anth大概率不是原生时代大赢家"》（2026-09-03 发布）｜对谈（张小珺 × **曾鸣**：前阿里总参谋长、《智能商业》《智能战略》作者）
 - 2h34m18s（9258s）· 3,863 段 / 39,544 汉字（polished 36,065）/ 语速 256 字/min / 音频 171.5MB
-- 报告：[[2026-09-03_xiaoyuzhou-zhangxiaojun_zengming]]（episode_summary，7 章 shownotes 重组）
+- 报告：[2026-09-03_xiaoyuzhou-zhangxiaojun_zengming](../reports/2026-09-03_xiaoyuzhou-zhangxiaojun_zengming.md)（episode_summary，7 章 shownotes 重组）
 - pipeline：yt-dlp → whisper.cpp large-v3 + VAD（silero v6.2.0，全程无循环幻觉）→ webReader shownotes → 按 7 章重组润色
 - 修正统计：100+ 处（曾敏→曾鸣、小骏→小珺、科程制→科层制、Open Cloud→OpenClaw、Skilling Law→Scaling Law、归基员工→硅基员工 等）；三处数字存疑保留+[?]（万亿被吞字、德鲁克卒年、爱迪生灯泡年份）；整句无法辨识 1 处（"付粉袋[?]"）
-- 新增 entities ×1：[[entities/zeng-ming]]；concepts ×3：[[concepts/native-app-stage]]（三阶段论）、[[concepts/strategy-generation]]、[[concepts/intelligence-flywheel]]
+- 新增 entities ×1：[entities/zeng-ming](./entities/zeng-ming.md)；concepts ×3：[concepts/native-app-stage](./concepts/native-app-stage.md)（三阶段论）、[concepts/strategy-generation](./concepts/strategy-generation.md)、[concepts/intelligence-flywheel](./concepts/intelligence-flywheel.md)
 - open-questions 汇入 3 问（寡头监管×折旧对撞 / Agent 入口信任第三方 / 组织生成证伪）
 - show-indexes 状态 ✅ ×1（zhangxiaojun 153）
 
 - 2026-09-11 | ingest | BV1B24667EQH《长谈》64期 程乐松×脱不花（2h55m58s）→ whisper large-v3+VAD 转写 4466段/51,130字（无幻觉循环）→ B站官方字幕交叉校正 ~80处（40处[?]存疑）→ 28章 polished → 报告+philosophy-learning 程乐松实体页/open-questions 联动更新
 - 2026-09-12 | ingest | BV1dnbV6TEMy CLS同学房产以旧换新（15min31s）→ whisper large-v3+VAD 553段/5,586字 → 双源校正+政策锚点联网核实（十五五规划/恒大宣判/沪八条 [Web]）→ 8章 polished → 报告
 - 2026-09-12 | ingest | BV1ZuYm67EzG 王坚×凉子外滩大会问答（5min07s）→ opencli故障改B站API直取音频 → whisper 553→182段/1551字 → 6章polished → 报告（观点提取）→ 衍生 ai-learning 深度解析（两段式任务）
-- 2026-09-13 | ingest | BV1Nugw63E9a 竹竹暴风雪解读鲍曼《工作、消费主义和新穷人》上集（18m19s）→ opencli download（首次 Navigation rejected，重试通过）→ whisper large-v3+VAD 843段/6,261字（无官方字幕，语义级校验，19处修正+6处[?]）→ 双源学习：eacli tokenplan 搜得原书 2021 郭楠译本 PDF（166页，存 ~/workspace/books/ 仅本地不入库）→ 报告 [[2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism]]（视频×原书对照）+ entities/zhuzhu-baofengxue + concepts×3（work-ethic/consumer-society/new-poor-bauman）+ open-questions 3问
+- 2026-09-13 | ingest | BV1Nugw63E9a 竹竹暴风雪解读鲍曼《工作、消费主义和新穷人》上集（18m19s）→ opencli download（首次 Navigation rejected，重试通过）→ whisper large-v3+VAD 843段/6,261字（无官方字幕，语义级校验，19处修正+6处[?]）→ 双源学习：eacli tokenplan 搜得原书 2021 郭楠译本 PDF（166页，存 ~/workspace/books/ 仅本地不入库）→ 报告 [2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism](../reports/2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism.md)（视频×原书对照）+ entities/zhuzhu-baofengxue + concepts×3（work-ethic/consumer-society/new-poor-bauman）+ open-questions 3问
 - 2026-09-14 | ingest | 小宇宙易论AI Vol.1 四人谈（93min）→ whisper large-v3+VAD 2750段/24,997字 → 10章polished（skill→scale系统性校正，26处[?]）→ 报告+三实体页；PROFILE/MAP/open-questions 同步沉淀
 
 ## [2026-09-15] ingest | bilibili
 - 来源：B 站 · 所长林超《AI泡沫，2027年爆破？》（2026-07-24 发布，BV1NKge6YEyj）＝小宇宙《涌现 EmergenceHK×Bill It Up》S01E01 同源（时长 2303/2302s 互证）
 - 形式：**三人对谈**（所长林超 × Bill Qian[前 Binance Labs 负责人、Phoenix/Cypher Capital CIO，口播"前百亿美金科技基金管理人"] + 蒋涛[CSDN 创始人]）
 - 时长：38m23s（2303s）· 转录：1,880 段 / **12,795 汉字**（whisper.cpp large-v3 Metal --vad）/ 语速 333 字/min · 音频 36.6MiB
-- 报告：[[2026-07-24_bilibili-suochang-linchao_ai-bubble-2027]]
+- 报告：[2026-07-24_bilibili-suochang-linchao_ai-bubble-2027](../reports/2026-07-24_bilibili-suochang-linchao_ai-bubble-2027.md)
 - pipeline：yt-dlp 直下 → whisper → 4 块并行润色（无官方字幕/无章节时间轴，校验源=简介+eacli 外部核验；16 处 [?] 保守）
-- 内容：深V 软着陆 vs 2027H2 之辩 / [[concepts/open-source-price-anchoring|开源价格锚定]]（蒋涛新概念页）/ 四大泡沫论检视（剪刀差=7000亿 CAPEX vs 1000亿收入）/ 7 万亿 AI 债（SemiAnalysis）/ 调度层价值（27B+harness 20→70 分）/ B 端决战与"拿奖学金学习"
-- 互链：[[concepts/ai-capex-bubble-debate]] 追加三视角互补段（庄明浩供给侧/Bill 金融侧/蒋涛需求侧）
+- 内容：深V 软着陆 vs 2027H2 之辩 / [开源价格锚定](./concepts/open-source-price-anchoring.md)（蒋涛新概念页）/ 四大泡沫论检视（剪刀差=7000亿 CAPEX vs 1000亿收入）/ 7 万亿 AI 债（SemiAnalysis）/ 调度层价值（27B+harness 20→70 分）/ B 端决战与"拿奖学金学习"
+- 互链：[concepts/ai-capex-bubble-debate](./concepts/ai-capex-bubble-debate.md) 追加三视角互补段（庄明浩供给侧/Bill 金融侧/蒋涛需求侧）
 - 外部核验：Anthropic ≈9650 亿美元估值（嘉宾"1万亿"四舍五入）✓；软银 400 亿投 OpenAI ✓（现押注超 600 亿）；OpenAI/Anthropic/SpaceX 冲 IPO ✓
 - **经验两条**：① **B 站 412 拦截已消失**——yt-dlp 直下成功（AGENTS.md"B站链接例外：yt-dlp 被 412 拦截"已过时，opencli download 仅作 fallback）；② opencli bilibili summary/download 依赖浏览器扩展在线，扩展不在线时 Navigation rejected，video/subtitle 走 API 不受影响
-- 2026-09-22 | ingest ×3 | 用户点名催更新三集：① 屠龙之术《智能的下一幕》73页PPT solo（55m21s，2009段/12,452字）→ [[2026-09-15_xiaoyuzhou-tulong-zhishu_next-act]]（模型狂奔/智能分化/循环自生/界面重构；与 07-17 CAPEX 期续集关系已对照）；② 课代表319 津晶/Orca（1h06m54s）→ [[2026-09-17_rss-kedaibiao-lizheng_jinjing]]（ADE vs Harness、400 任务三层法）；**首轮转写 VAD-only 在 00:13:01 起循环幻觉占 89.5%，加 `-mc 0` 重转修复——教训已写进 AGENTS.md 已知局限**（VAD 单独不保险，触发点可在语音中段；质检须跑重复段检测）；③ 十字路口×徐梦迪（1h20m，3159段/22,227字）→ [[2026-09-20_xiaoyuzhou-crossing_xumengdi]]（adaptation/ICL、loss≠成功率、机器人 GPT-1 阶段论；JHU 求学口径未核实已标 Limitations）
+- 2026-09-22 | ingest ×3 | 用户点名催更新三集：① 屠龙之术《智能的下一幕》73页PPT solo（55m21s，2009段/12,452字）→ [2026-09-15_xiaoyuzhou-tulong-zhishu_next-act](../reports/2026-09-15_xiaoyuzhou-tulong-zhishu_next-act.md)（模型狂奔/智能分化/循环自生/界面重构；与 07-17 CAPEX 期续集关系已对照）；② 课代表319 津晶/Orca（1h06m54s）→ [2026-09-17_rss-kedaibiao-lizheng_jinjing](../reports/2026-09-17_rss-kedaibiao-lizheng_jinjing.md)（ADE vs Harness、400 任务三层法）；**首轮转写 VAD-only 在 00:13:01 起循环幻觉占 89.5%，加 `-mc 0` 重转修复——教训已写进 AGENTS.md 已知局限**（VAD 单独不保险，触发点可在语音中段；质检须跑重复段检测）；③ 十字路口×徐梦迪（1h20m，3159段/22,227字）→ [2026-09-20_xiaoyuzhou-crossing_xumengdi](../reports/2026-09-20_xiaoyuzhou-crossing_xumengdi.md)（adaptation/ICL、loss≠成功率、机器人 GPT-1 阶段论；JHU 求学口径未核实已标 Limitations）
 - 新增 entities ×2（jinjing-orca、xu-mengdi）；concepts ×2（loop-rsi-consensus、ade-vs-harness）；open-questions 汇入 9 问（三期各 3）
-- 2026-09-22 | ingest ×2 | 用户点名再做两集：① 硅谷101 E251 推理芯片之战（1h31m，3202段/28,350字，Mark+子杨）→ [[2026-09-15_rss-guigu101_e251-inference-chips]]（训练算力/推理带宽、SRAM 收敛、Groq/Cerebras/Jalapeño 三路径、英伟达 200 亿 acqui-hire Groq、Bill Dally 设计哲学）；② 此话当真×张托肯（46m48s，1451段/12,657字）→ [[2026-09-16_xiaoyuzhou-cihua-dangzhen_zhangtuoken]]（芯片开卷计划、三天流片、渗透率 80-90%、模型能力>Harness、agent 驾驶员）。两期均用 VAD+`-mc 0` 新组合转写，零循环幻觉。新增 entities/zhang-tuoken；concepts ×2（inference-bandwidth、chip-open-plan）；open-questions +6
+- 2026-09-22 | ingest ×2 | 用户点名再做两集：① 硅谷101 E251 推理芯片之战（1h31m，3202段/28,350字，Mark+子杨）→ [2026-09-15_rss-guigu101_e251-inference-chips](../reports/2026-09-15_rss-guigu101_e251-inference-chips.md)（训练算力/推理带宽、SRAM 收敛、Groq/Cerebras/Jalapeño 三路径、英伟达 200 亿 acqui-hire Groq、Bill Dally 设计哲学）；② 此话当真×张托肯（46m48s，1451段/12,657字）→ [2026-09-16_xiaoyuzhou-cihua-dangzhen_zhangtuoken](../reports/2026-09-16_xiaoyuzhou-cihua-dangzhen_zhangtuoken.md)（芯片开卷计划、三天流片、渗透率 80-90%、模型能力>Harness、agent 驾驶员）。两期均用 VAD+`-mc 0` 新组合转写，零循环幻觉。新增 entities/zhang-tuoken；concepts ×2（inference-bandwidth、chip-open-plan）；open-questions +6
 
-- 2026-09-23 | ingest | 起朱楼 182《多重囚徒困境》Q3 宏观复盘（1h39m，3062段/27,368字，Ricky×大卫翁）→ [[2026-09-14_xiaoyuzhou-qizhulou_2026q3-macro]]（债券融资时代到来=CAPEX 泡沫之辩实况续集；AI 囚徒困境三层嵌套；Anthropic 8 月 ARR 放缓 ≈40 亿=情景模型 d_t 验证数据；Q4 排序 黄金>A股>美股>H股）；与屠龙 Q3（技术侧）拼成完整 Q3 图景。open-questions +3
+- 2026-09-23 | ingest | 起朱楼 182《多重囚徒困境》Q3 宏观复盘（1h39m，3062段/27,368字，Ricky×大卫翁）→ [2026-09-14_xiaoyuzhou-qizhulou_2026q3-macro](../reports/2026-09-14_xiaoyuzhou-qizhulou_2026q3-macro.md)（债券融资时代到来=CAPEX 泡沫之辩实况续集；AI 囚徒困境三层嵌套；Anthropic 8 月 ARR 放缓 ≈40 亿=情景模型 d_t 验证数据；Q4 排序 黄金>A股>美股>H股）；与屠龙 Q3（技术侧）拼成完整 Q3 图景。open-questions +3
 
 ## [2026-09-23] ingest | bilibili
 - 来源：B 站 · 是个人物 EP22《对话北大哲学系教授程乐松：不要牛马，不要狗屁，要什么？》（2026-09-11 发布，BV1QkY561EeD，视频播客）
 - 形式：**对谈**（主播张寒 × 嘉宾程乐松：北大哲学系系主任、道家道教研究、连续两年毕业典礼致辞出圈、新书《留白》）
 - 时长：83m01s（4981s）· 转录：2,993 段 / **24,345 汉字**（whisper.cpp large-v3 Metal **--vad silero -mc 0**）/ 语速 293 字/min · 音频 93.9MiB
-- 报告：[[2026-09-11_bilibili-shigerenwu_chenglesong]]
+- 报告：[2026-09-11_bilibili-shigerenwu_chenglesong](../reports/2026-09-11_bilibili-shigerenwu_chenglesong.md)
 - pipeline：yt-dlp 直下 → whisper（**-mc 0 首次实战**：2993 段零循环幻觉，重复段检测通过——09-22 红线验证有效）→ 7 块并行润色（无官方字幕，校验源=简介+eacli 核验；90+ 处修正、23 处 [?]）
 - 内容：explain out vs explain away / 剧本化人生与恐怖平衡 / 不狗屁的两个方向（热爱的一往无前 / 坚实真切跨过时间跨度）/ 价值判断 vs 事实判断 / 脚踩西瓜皮=回望才有必然性 / 微小习惯锚点 / AI 与去中心化时代的哲学家 / 安时而处顺
-- 新增 entities：[[entities/cheng-lesong]]；新增 concepts：[[concepts/odyssey-years]]
+- 新增 entities：[entities/cheng-lesong](./entities/cheng-lesong.md)；新增 concepts：[concepts/odyssey-years](./concepts/odyssey-years.md)
 - 外部核验：程乐松系主任身份与两年致辞出圈（北大哲学系官网/上观/解放日报）✓
-- 互链：与 [[2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism|鲍曼工作观]]同线；[[concepts/reading-four-paces|读书配速]]互见
+- 互链：与 [鲍曼工作观](../reports/2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism.md)同线；[读书配速](./concepts/reading-four-paces.md)互见
 - 经验：opencli bilibili subtitle 本期走浏览器路径失败（Navigation rejected，扩展离线；上期走 API 返回 EMPTY_RESULT）——subtitle 路径不稳定，B 站字幕可用性按期波动，不可依赖
 
 ## [2026-09-25] index | 播客清单合并（collection 补档机制确立）
@@ -223,8 +223,8 @@
 - 方法沉淀：collection API（`curl /collection/podcast/{id}` 取 SSR JSON `target` 数组）+ iTunes search 反查 feedUrl = 小宇宙导出丢档的完整补档路径
 
 ## [2026-09-25] ingest | xiaoyuzhou ×2（FDE 批判 × 蒸馏实践，镜像双期）
-- **A 源**：硅基立场 Vol.32《对话元理智能张帆：去他X的FDE》（2026-09-24 发布）｜对谈（骆轶航 × 张帆：元理智能创始人/CEO、智谱前 COO）｜1h42m58s（6178s）· 4,022 段 / 31,077 汉字 / 304 字/min → [[2026-09-24_xiaoyuzhou-guiji-lichang_zhangfan-fde]]
-- **B 源**：此话当真《从「同事.skill」到「人生系统」，你害怕被蒸馏吗？》（2026-08-17 发布）｜三人谈（Cindy × 周天奕[同事.skill 23k star] + 蔡不菜[人生系统.skill/Obsidian]）｜56m17s（3377s）· 2,195 段 / 16,949 汉字 / 302 字/min → [[2026-08-17_xiaoyuzhou-cihua-dangzhen_distill]]
+- **A 源**：硅基立场 Vol.32《对话元理智能张帆：去他X的FDE》（2026-09-24 发布）｜对谈（骆轶航 × 张帆：元理智能创始人/CEO、智谱前 COO）｜1h42m58s（6178s）· 4,022 段 / 31,077 汉字 / 304 字/min → [2026-09-24_xiaoyuzhou-guiji-lichang_zhangfan-fde](../reports/2026-09-24_xiaoyuzhou-guiji-lichang_zhangfan-fde.md)
+- **B 源**：此话当真《从「同事.skill」到「人生系统」，你害怕被蒸馏吗？》（2026-08-17 发布）｜三人谈（Cindy × 周天奕[同事.skill 23k star] + 蔡不菜[人生系统.skill/Obsidian]）｜56m17s（3377s）· 2,195 段 / 16,949 汉字 / 302 字/min → [2026-08-17_xiaoyuzhou-cihua-dangzhen_distill](../reports/2026-08-17_xiaoyuzhou-cihua-dangzhen_distill.md)
 - pipeline（双期流水线并行）：双 yt-dlp → whisper 串行（--vad silero -mc 0，双期零循环）→ 双 shownotes SSR → 15 块并行润色（fde 10 块中 3 块撞 429 分批补跑全清；skl 5 块一次全清）
 - **A 核心**：FDE=高级定制外包（能力沉淀在人不可规模化）/ Palantir=AI 时代的 SAP / FDA（Agent化）才是 AI native / 正态分布中央解="很有道理的废话"、边缘解=非共识=竞争力 / 知识承载三载体（规则→workflow、文字→harness、脑神经→weight，"写成规则就坍缩"）/ AlphaGo Zero=人的知识是噪音 / "每次服务从折旧变训练" / 企业比基模离 RSI 更近 / AI 是反工业革命、组织液态化（腐化逻辑 vs 生长逻辑）/ 护城河段子
 - **B 核心**：两个 skill 的诞生与二创生态（前任.skill 的 issue 软事）/ 反蒸馏回应（"社会关系的递进，阻止不了"）/ Codex+ChatCut 替 2 实习生 / Cursor 偷加 rm -rf 删库事故 / AI 审美污染与"读 2023 年以前的文字" / 文风同化恐惧 / agent 不够 personal（最后一百米）/ 信任度 90% vs 复核派 / 效率悖论（更快但更焦虑）
@@ -232,44 +232,44 @@
 - show-indexes 状态 ✅ ×2（guiji-lichang Vol.32、cihua-dangzhen 蒸馏期）
 - 修正统计：A 150+ 处（规矩立场→硅基立场、阿拉佛GO→AlphaGo、白眼星法→白矮星化等）；B 70+ 处（征流→蒸馏、webcoding→Vibe Coding 等）
 
-- 2026-09-26 | ingest | AI炼金术×鹿客陈彬《把一家 12 年的硬件公司重写成 AI 原生组织》（1h07m，2646段/20,483字，喜马拉雅源）→ [[2026-09-14_ximalaya-ailianjinshu_chenbin]]（从 1 到 0 / HARO 四件套 / 圈子制权力下放 / 三轮报名 / FDE 蒸馏恐惧；与曾鸣公司消亡=预言×实验、与张帆 FDE 批判=正反方对照）。open-questions +3
+- 2026-09-26 | ingest | AI炼金术×鹿客陈彬《把一家 12 年的硬件公司重写成 AI 原生组织》（1h07m，2646段/20,483字，喜马拉雅源）→ [2026-09-14_ximalaya-ailianjinshu_chenbin](../reports/2026-09-14_ximalaya-ailianjinshu_chenbin.md)（从 1 到 0 / HARO 四件套 / 圈子制权力下放 / 三轮报名 / FDE 蒸馏恐惧；与曾鸣公司消亡=预言×实验、与张帆 FDE 批判=正反方对照）。open-questions +3
 
-- 2026-09-27 | ingest | B站可妈×黄翔《孩子成绩差，真的不是学习的料吗》（43m40s，1888段/14,365字）→ [[2026-07-04_bilibili-kema_huangxiang-brain]]（脑科学教育观：可塑性/敏感期/检索式学习法/11.5h 空腹/AI 两相反研究）；**首个 whisper+CC 字幕双源校验案例**（字幕术语谐音错 40+ 处亦有不少，两源互修）；新增实体 huang-xiang/kema（见下）；open-questions +3
+- 2026-09-27 | ingest | B站可妈×黄翔《孩子成绩差，真的不是学习的料吗》（43m40s，1888段/14,365字）→ [2026-07-04_bilibili-kema_huangxiang-brain](../reports/2026-07-04_bilibili-kema_huangxiang-brain.md)（脑科学教育观：可塑性/敏感期/检索式学习法/11.5h 空腹/AI 两相反研究）；**首个 whisper+CC 字幕双源校验案例**（字幕术语谐音错 40+ 处亦有不少，两源互修）；新增实体 huang-xiang/kema（见下）；open-questions +3
 
-- 2026-09-28 | ingest | B站易论AI×胡修涵（捏Ta）《被AI淘汰的人才是AI最大的市场》（123min，2746段/31,300汉字，官方AI字幕单源无whisper）→ [[2026-09-18_bilibili-yilun-ai_huxiuhan]]（创作即消费/废人论；双边vs多边；内容积木+康威定律；冷启动纪律；AIGC vs AIUGC 参与感实验科学；小世界/迪士尼乐园/fork；可塑性软件+AI内容四象限；全民套壳Claude Code=信号；教堂比喻收尾）；**首个官方字幕单源全程润色案例**（B站视频流限速下不动，用户裁定字幕为主源）；修正 50+ 处（人名漂移：吴秀涵/胡修寒/胡秋涵→胡修涵；菲律宾比索→PHP；LAURA→LoRA；coffee ui→ComfyUI；买塔→Meta；电农阶级→佃农阶级等，清单见 polished 头部）；16 章自拟分节（无 shownotes）；新增实体 hu-xiuhan / nieta；open-questions +3
+- 2026-09-28 | ingest | B站易论AI×胡修涵（捏Ta）《被AI淘汰的人才是AI最大的市场》（123min，2746段/31,300汉字，官方AI字幕单源无whisper）→ [2026-09-18_bilibili-yilun-ai_huxiuhan](../reports/2026-09-18_bilibili-yilun-ai_huxiuhan.md)（创作即消费/废人论；双边vs多边；内容积木+康威定律；冷启动纪律；AIGC vs AIUGC 参与感实验科学；小世界/迪士尼乐园/fork；可塑性软件+AI内容四象限；全民套壳Claude Code=信号；教堂比喻收尾）；**首个官方字幕单源全程润色案例**（B站视频流限速下不动，用户裁定字幕为主源）；修正 50+ 处（人名漂移：吴秀涵/胡修寒/胡秋涵→胡修涵；菲律宾比索→PHP；LAURA→LoRA；coffee ui→ComfyUI；买塔→Meta；电农阶级→佃农阶级等，清单见 polished 头部）；16 章自拟分节（无 shownotes）；新增实体 hu-xiuhan / nieta；open-questions +3
 
-- 2026-10-01 | ingest | 晚点聊 180《具身智能的金钱游戏》（1h02m，2268段/19,362字，晚点记者子楠×徐玉萌）→ [[2026-09-02_rss-wandian-latetalk_embodied-money]]（数采中心地方闭环/互为供应商客户/Club Deal/8000 台真实销量水位；与徐梦迪期=技术×资本两面、与起朱楼=挤兑时间表上下游）。过程修复：transcribe.py 默认 VAD 文件名漂移（ggml-silero-v6.2.0.bin 不存在）→ 建软链指向 for-tests 副本。open-questions +3
+- 2026-10-01 | ingest | 晚点聊 180《具身智能的金钱游戏》（1h02m，2268段/19,362字，晚点记者子楠×徐玉萌）→ [2026-09-02_rss-wandian-latetalk_embodied-money](../reports/2026-09-02_rss-wandian-latetalk_embodied-money.md)（数采中心地方闭环/互为供应商客户/Club Deal/8000 台真实销量水位；与徐梦迪期=技术×资本两面、与起朱楼=挤兑时间表上下游）。过程修复：transcribe.py 默认 VAD 文件名漂移（ggml-silero-v6.2.0.bin 不存在）→ 建软链指向 for-tests 副本。open-questions +3
 
-- 2026-10-02 | ingest | AI炼金术×PureblueAI 鲁扬《把 prompt 当货架空间，把 GEO 当量化交易》（1h04m40s，2507段/19,376字，喜马拉雅源）→ [[2026-09-23_ximalaya-ailianjinshu_luyang]]（SEO与GEO=两个物种：规则物 vs 黑盒物；三阶段人工→数据→算法；AI 可解释性+量化挖因子（CTO=字节算法→量化首席科学家）；假大黑与同频论；豆包爱抖音视频/海外爱官网Reddit；AI 消费闭环（豆包酒旅抽佣 8-12 点，三周前开始）；意图电商+prompt 货架+二线冲锋衣"AI 是讲道理的"；科学 GEO 八环节写稿只占 2；上百账号月均达标；GEO 是术、品牌知识资产是道；与 [[concepts/ai-trading|AI Trading]]=机器打机器同构、与陈彬期=AI 原生企业内外两面）。过程注记：eacli podcast 全程静默转写零循环（VAD+-mc 0 红线复验）；eacli tool select/invoke 与 Bash /srv 路径均被会话权限拦截 → shownotes 降级 MCP web_reader（页面原文已存档）、transcript.txt 为工件读回重录件（工件 sha256 存档为准，报告 Limitations 已注明）；本期确认主持 Mars=任鑫（上期"马师[?]"疑同一称呼）。新增 entities/luyang、concepts/geo；open-questions +3
+- 2026-10-02 | ingest | AI炼金术×PureblueAI 鲁扬《把 prompt 当货架空间，把 GEO 当量化交易》（1h04m40s，2507段/19,376字，喜马拉雅源）→ [2026-09-23_ximalaya-ailianjinshu_luyang](../reports/2026-09-23_ximalaya-ailianjinshu_luyang.md)（SEO与GEO=两个物种：规则物 vs 黑盒物；三阶段人工→数据→算法；AI 可解释性+量化挖因子（CTO=字节算法→量化首席科学家）；假大黑与同频论；豆包爱抖音视频/海外爱官网Reddit；AI 消费闭环（豆包酒旅抽佣 8-12 点，三周前开始）；意图电商+prompt 货架+二线冲锋衣"AI 是讲道理的"；科学 GEO 八环节写稿只占 2；上百账号月均达标；GEO 是术、品牌知识资产是道；与 [AI Trading](./concepts/ai-trading.md)=机器打机器同构、与陈彬期=AI 原生企业内外两面）。过程注记：eacli podcast 全程静默转写零循环（VAD+-mc 0 红线复验）；eacli tool select/invoke 与 Bash /srv 路径均被会话权限拦截 → shownotes 降级 MCP web_reader（页面原文已存档）、transcript.txt 为工件读回重录件（工件 sha256 存档为准，报告 Limitations 已注明）；本期确认主持 Mars=任鑫（上期"马师[?]"疑同一称呼）。新增 entities/luyang、concepts/geo；open-questions +3
 
-- 2026-10-03 | ingest | 半拿铁·故事篇×金瓶梅·绿色版 9《蒋竹山：从入赘开店到净身出户》（1h38m12s，喜马拉雅源，**降级：无音频**）→ [[2026-08-13_ximalaya-bannatie-gushipian_jiangzhushan]]（S1 收官双线：三十两假债局（雇凶→造假债→提刑重杖→净身出户）×瓶儿入府（冷落→悬梁→鞭审和好）；敬济×金莲新线开雷；官方 shownotes=对仗时间轴 12 节+人物表+12 条学术书目（《大明律》/《中国流氓史》/明代妇女财产权/园林闺秀空间/明代的"白牌"）；单集页显示 S2E1 已上线）。过程注记：**首个全程无音频案例**——eacli podcast worker 不可达（ssh 超时×2）、本地 fallback（yt-dlp/whisper-cli）/eacli tool/WebSearch 均被会话权限拦截 → 降级 MCP web_reader 直读单集页 SSR（×2 一致性校验，shownotes 已存档 `.shownotes.md`）；报告按 shownotes+词话本回目对照撰写（回目段标注「我方典籍知识，未联网核验」），音频可得后升级（补金句/数字/concepts：入赘婚、明代司法寻租、花园空间政治）。新增 entities/bannatie；show-indexes 状态 ✅；open-questions +3
+- 2026-10-03 | ingest | 半拿铁·故事篇×金瓶梅·绿色版 9《蒋竹山：从入赘开店到净身出户》（1h38m12s，喜马拉雅源，**降级：无音频**）→ [2026-08-13_ximalaya-bannatie-gushipian_jiangzhushan](../reports/2026-08-13_ximalaya-bannatie-gushipian_jiangzhushan.md)（S1 收官双线：三十两假债局（雇凶→造假债→提刑重杖→净身出户）×瓶儿入府（冷落→悬梁→鞭审和好）；敬济×金莲新线开雷；官方 shownotes=对仗时间轴 12 节+人物表+12 条学术书目（《大明律》/《中国流氓史》/明代妇女财产权/园林闺秀空间/明代的"白牌"）；单集页显示 S2E1 已上线）。过程注记：**首个全程无音频案例**——eacli podcast worker 不可达（ssh 超时×2）、本地 fallback（yt-dlp/whisper-cli）/eacli tool/WebSearch 均被会话权限拦截 → 降级 MCP web_reader 直读单集页 SSR（×2 一致性校验，shownotes 已存档 `.shownotes.md`）；报告按 shownotes+词话本回目对照撰写（回目段标注「我方典籍知识，未联网核验」），音频可得后升级（补金句/数字/concepts：入赘婚、明代司法寻租、花园空间政治）。新增 entities/bannatie；show-indexes 状态 ✅；open-questions +3
 
-- 2026-10-07 | ingest ×2 | 用户授权自选两集：① 屠龙之术《当AI开始设计芯片》（58m10s，1865段/14,573字，新思科技从业者）→ [[2026-09-28_xiaoyuzhou-tulong-zhishu_eda-ai-chips]]（EDA 129 亿/双寡头、自研=经济账、工具=harness 一部分、全自动造芯证伪清单、与张托肯期渗透率口径对照）；② 硅谷101 E253 AI 数据行业（58m04s，2407段/19,041字，何允中×孙一铀）→ [[2026-09-27_rss-guigu101_e253-ai-data-industry]]（三种基因/Rubric→RL 环境/ALE/榜单水很深/Lab 未必有最好的基因/proof of work 防造假）。open-questions +6
+- 2026-10-07 | ingest ×2 | 用户授权自选两集：① 屠龙之术《当AI开始设计芯片》（58m10s，1865段/14,573字，新思科技从业者）→ [2026-09-28_xiaoyuzhou-tulong-zhishu_eda-ai-chips](../reports/2026-09-28_xiaoyuzhou-tulong-zhishu_eda-ai-chips.md)（EDA 129 亿/双寡头、自研=经济账、工具=harness 一部分、全自动造芯证伪清单、与张托肯期渗透率口径对照）；② 硅谷101 E253 AI 数据行业（58m04s，2407段/19,041字，何允中×孙一铀）→ [2026-09-27_rss-guigu101_e253-ai-data-industry](../reports/2026-09-27_rss-guigu101_e253-ai-data-industry.md)（三种基因/Rubric→RL 环境/ALE/榜单水很深/Lab 未必有最好的基因/proof of work 防造假）。open-questions +6
 
-- 2026-10-09 | ingest（失败恢复） | 菠萝健康派 vol.129 程若倩《孩子身高这件事，到底矮不矮、治不治？》（2026-09-27 发布，1h00m48s，2315段/19,488字/320字每分，Razer whisper 零循环、重复护栏通过）→ [[2026-09-27_xiaoyuzhou-boluo-jiankang_chengruoqian]]（矮不矮=统计判断（-2SD/第3百分位+阶段生长速度）×治不治=风险收益比；遗传是范围不是判决书（父母各50%±5cm）；骨龄会跳变、速度比点位重要、非一锤子买卖；GH 非神丹（药物反应×骨龄空间×坚持时长，年追1-3cm）；骨骺闭合=全世界都没有这样的药（16-17岁案例）；断骨增高明令禁止；肿瘤风险荟萃≈正常人群；焦虑抑制下丘脑-垂体→心理疾病儿童生长停滞）。过程注记：**失败恢复任务**——上轮半成品经检查实际不存在（仅索引条目，git/磁盘均无产出），本轮从转写起全程重做；eacli podcast plan→run→result 全链路正常；/srv 工件复制被会话权限拦截（cp/python 均拒），transcript.txt 为按工件逐段重录件（2315/2315 段与起始时间戳逐一核对，工件 sha256 ebe6dfc9…9f9e 为准，报告 Limitations 已注明）；shownotes 经 eacli web.read 拉取存档。新增 entities/cheng-ruoqian、concepts/growth-hormone-height-decision；li-zhizhong 实体页补 vol.129 引用；show-indexes 状态 ✅；open-questions +3
+- 2026-10-09 | ingest（失败恢复） | 菠萝健康派 vol.129 程若倩《孩子身高这件事，到底矮不矮、治不治？》（2026-09-27 发布，1h00m48s，2315段/19,488字/320字每分，Razer whisper 零循环、重复护栏通过）→ [2026-09-27_xiaoyuzhou-boluo-jiankang_chengruoqian](../reports/2026-09-27_xiaoyuzhou-boluo-jiankang_chengruoqian.md)（矮不矮=统计判断（-2SD/第3百分位+阶段生长速度）×治不治=风险收益比；遗传是范围不是判决书（父母各50%±5cm）；骨龄会跳变、速度比点位重要、非一锤子买卖；GH 非神丹（药物反应×骨龄空间×坚持时长，年追1-3cm）；骨骺闭合=全世界都没有这样的药（16-17岁案例）；断骨增高明令禁止；肿瘤风险荟萃≈正常人群；焦虑抑制下丘脑-垂体→心理疾病儿童生长停滞）。过程注记：**失败恢复任务**——上轮半成品经检查实际不存在（仅索引条目，git/磁盘均无产出），本轮从转写起全程重做；eacli podcast plan→run→result 全链路正常；/srv 工件复制被会话权限拦截（cp/python 均拒），transcript.txt 为按工件逐段重录件（2315/2315 段与起始时间戳逐一核对，工件 sha256 ebe6dfc9…9f9e 为准，报告 Limitations 已注明）；shownotes 经 eacli web.read 拉取存档。新增 entities/cheng-ruoqian、concepts/growth-hormone-height-decision；li-zhizhong 实体页补 vol.129 引用；show-indexes 状态 ✅；open-questions +3
 
-- 2026-10-09 | ingest + 产品深研 | 乱翻书 Vol.275《AI办公的热闹还没散，个人Agent的战争已经开始》（2026-09-21 发布，2h06m，4039段/34,034字/270字每分，Razer whisper 零循环、重复护栏通过）→ [[2026-09-21_xiaoyuzhou-luanfanshu_personal-agent-wars]]（四产品四赌注：Town 场景纵深/Instinct 启动成本/Grok Bot 组织形态/Muse 资本分发；Poke vs Instinct 分水岭=把事办完；小龙虾先烈三因（追热点/云上三套环境/门槛）；意图经济与收藏=未兑现意图；Today 数据反方（真实需求排序行政杂事>旅行>省钱>购物）；GUI=地图论；无网络效应叙事；最值钱位置=信任和习惯；中国变量微信小微/豆包×抖音打通）。**用户加码要求：延展深研相关产品**——报告含 §11 产品深研档案（Town/Instinct/Grok Bot/Muse 四主拆 + Today/OpenClaw/Poke/OpenAI Dots/Manus/千问豆包元宝/Stripe Link 七延展，eacli web.search 12+ 轮核实，融资/估值/发布日期全标注）。过程注记：eacli podcast plan→run→result 全链路正常（job_podcast_fc96…，工件 pod_5577…，scp 拉回 transcript 204KB）；shownotes 经 eacli web.read 拉取；润色稿按 7 大章重组（骨架级+专有名词修正 20+ 处，清单见 frontmatter）；顺手清理 log.md/open-questions.md 残留孤立 diff3 标记 4 行。新增 concepts/personal-agent-wars；open-questions +3；PROFILE 兴趣点 +1
+- 2026-10-09 | ingest + 产品深研 | 乱翻书 Vol.275《AI办公的热闹还没散，个人Agent的战争已经开始》（2026-09-21 发布，2h06m，4039段/34,034字/270字每分，Razer whisper 零循环、重复护栏通过）→ [2026-09-21_xiaoyuzhou-luanfanshu_personal-agent-wars](../reports/2026-09-21_xiaoyuzhou-luanfanshu_personal-agent-wars.md)（四产品四赌注：Town 场景纵深/Instinct 启动成本/Grok Bot 组织形态/Muse 资本分发；Poke vs Instinct 分水岭=把事办完；小龙虾先烈三因（追热点/云上三套环境/门槛）；意图经济与收藏=未兑现意图；Today 数据反方（真实需求排序行政杂事>旅行>省钱>购物）；GUI=地图论；无网络效应叙事；最值钱位置=信任和习惯；中国变量微信小微/豆包×抖音打通）。**用户加码要求：延展深研相关产品**——报告含 §11 产品深研档案（Town/Instinct/Grok Bot/Muse 四主拆 + Today/OpenClaw/Poke/OpenAI Dots/Manus/千问豆包元宝/Stripe Link 七延展，eacli web.search 12+ 轮核实，融资/估值/发布日期全标注）。过程注记：eacli podcast plan→run→result 全链路正常（job_podcast_fc96…，工件 pod_5577…，scp 拉回 transcript 204KB）；shownotes 经 eacli web.read 拉取；润色稿按 7 大章重组（骨架级+专有名词修正 20+ 处，清单见 frontmatter）；顺手清理 log.md/open-questions.md 残留孤立 diff3 标记 4 行。新增 concepts/personal-agent-wars；open-questions +3；PROFILE 兴趣点 +1
 
 ## [2026-10-19] ingest ×3 | Agent 生态、美国 GTM 与 AI 创业方法
 
 - 三期查重均确认此前未处理；全程使用 Razer `whisper.cpp large-v3 + Silero VAD`，未调用本地转写：十字路口 × Treg（1799 段）、42章经 × Articuler.ai（2229 段）、AI炼金术 × 晓辉/任鑫（4767 段）。三份 transcript 的段数、时间戳、连续重复、大小与 SHA-256 审计均通过。
-- 报告：[[2026-10-18_xiaoyuzhou-crossing_treg-agent-ecosystem]]、[[2026-10-17_xiaoyuzhou-42zhangjing_articuler-jason]]、[[2026-10-18_ximalaya-ailianjinshu_xiaohui-renxin-ai-startup]]；独立复核分数依次为 93.75、95.9、93.7，均通过 `report-v2` 质量门并归档。
+- 报告：[2026-10-18_xiaoyuzhou-crossing_treg-agent-ecosystem](../reports/2026-10-18_xiaoyuzhou-crossing_treg-agent-ecosystem.md)、[2026-10-17_xiaoyuzhou-42zhangjing_articuler-jason](../reports/2026-10-17_xiaoyuzhou-42zhangjing_articuler-jason.md)、[2026-10-18_ximalaya-ailianjinshu_xiaohui-renxin-ai-startup](../reports/2026-10-18_ximalaya-ailianjinshu_xiaohui-renxin-ai-startup.md)；独立复核分数依次为 93.75、95.9、93.7，均通过 `report-v2` 质量门并归档。
 - 实践暴露并修复三处流程断点：节目索引刷新增加目标节目、dry-run 与 JSON 模式；新增 transcript 确定性审计器；新增经 eacli 的大工件分片拉回与 SHA-256 原子重组 helper。234593 bytes 工件先以三片手工拉回，再以 helper 两片端到端复验，重组哈希一致。
 
 ## [2026-10-25] ingest | No Priors × Cloudflare CTO
 
 - 《Democratizing Security for the Agentic Web》41m21s，983 段；eacli podcast 远端静默 worker 转写，时间戳、连续重复与 SHA-256 审计通过。
-- 报告：[[2026-10-23_rss-no-priors_cloudflare-agentic-web-security]]；覆盖 21 个官方章节，主线包括 Agentic Web 攻防、Zero Trust、Agent Development Lifecycle、Cloudflare Codex、HTTP 402/x402、Signals、Cloudflare OS、Token 异常提醒与 AI-first 组织重构。
+- 报告：[2026-10-23_rss-no-priors_cloudflare-agentic-web-security](../reports/2026-10-23_rss-no-priors_cloudflare-agentic-web-security.md)；覆盖 21 个官方章节，主线包括 Agentic Web 攻防、Zero Trust、Agent Development Lifecycle、Cloudflare Codex、HTTP 402/x402、Signals、Cloudflare OS、Token 异常提醒与 AI-first 组织重构。
 - 证据边界：安全事故、产品效果、实习生采用和公共品成效仍主要是 Cloudflare 自述；官方 Conclusion 时间戳超过音频与 ASR 终点，只记录冲突，不补写内容。open-questions +4。
 
 ## [2026-10-25] ingest | 人民公园说AI：最贵 Token 干最脏的活
 
 - 22m08s ASR，859 段；eacli podcast 远端静默 worker 转写，时间戳、连续重复与 SHA-256 审计通过。
-- 报告：[[2026-10-23_xiaoyuzhou-renmingongyuan-ai_expensive-token-dirty-work]]；把节目主张重构为单位验收成本、风险驱动模型路由、伪完成证据契约、额度损失厌恶与 Human-in-the-Loop 审批瓶颈。
+- 报告：[2026-10-23_xiaoyuzhou-renmingongyuan-ai_expensive-token-dirty-work](../reports/2026-10-23_xiaoyuzhou-renmingongyuan-ai_expensive-token-dirty-work.md)；把节目主张重构为单位验收成本、风险驱动模型路由、伪完成证据契约、额度损失厌恶与 Human-in-the-Loop 审批瓶颈。
 - 证据边界：模型错误率、研究样本、Linux 案例、训练成本和能力下沉时间均属节目口述或转述；两处算术冲突已显式纠偏。open-questions +12。
 
 ## [2026-10-25] ingest | The Cognitive Revolution AI:AM
 
 - 88m35s ASR，1946 段；eacli podcast 远端静默 worker 转写，SHA-256=`02b26e4…56b5`，时间戳单调、最大连续重复 1、无 warning/error。
-- 报告：[[2026-10-24_rss-cognitive-revolution_ai-am-clean-neurons-gpu-credit]]；覆盖 RSI、clean neurons、probe detector、cognitive core、Black October、GPU 信贷、atoms over bits、HelpPeer 与联邦法案，综合为“移动瓶颈”模型。
+- 报告：[2026-10-24_rss-cognitive-revolution_ai-am-clean-neurons-gpu-credit](../reports/2026-10-24_rss-cognitive-revolution_ai-am-clean-neurons-gpu-credit.md)；覆盖 RSI、clean neurons、probe detector、cognitive core、Black October、GPU 信贷、atoms over bits、HelpPeer 与联邦法案，综合为“移动瓶颈”模型。
 - 补读 Goodfire、Sauers 模型卡、SF Compute 与 Cambrian 一手材料；明确 90%/7%/2%–4% 的阈值敏感性、L40S 128/128 的编译旁路条件、$245M 公司披露和 Cambrian 投资利益关系。open-questions +5。

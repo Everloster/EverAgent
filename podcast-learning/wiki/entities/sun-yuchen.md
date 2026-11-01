@@ -14,5 +14,5 @@
 
 ## 来源
 
-- [[2026-09-06_xiaoyuzhou-daxiaoma-keji_v94-rocket-recovery-sunology|大小马 V94]]
-- [[2026-10-10_bilibili-shaoailun_sunyuchen-ai-era|邵艾伦对谈]]
+- [大小马 V94](../../reports/2026-09-06_xiaoyuzhou-daxiaoma-keji_v94-rocket-recovery-sunology.md)
+- [邵艾伦对谈](../../reports/2026-10-10_bilibili-shaoailun_sunyuchen-ai-era.md)

@@ -39,4 +39,4 @@ Vol.31（声东击西 #378 · 塔利班关闭学校之后 · 2026-01-29）
 
 ## 关联概念
 
-- [[concepts/afghan-women-education-ban]]
+- [concepts/afghan-women-education-ban](./afghan-women-education-ban.md)

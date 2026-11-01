@@ -15,7 +15,7 @@
 ## 与其他概念的关联
 
 - 与 EverAgent 自身 herdr/eacli 舰队对照（报告第五节）：她的 handoff ≈ eacli 多 provider 编排，但 eacli 缺"带工作现场的接力"
-- 来源：[[2026-09-17_rss-kedaibiao-lizheng_jinjing]]
+- 来源：[2026-09-17_rss-kedaibiao-lizheng_jinjing](../../reports/2026-09-17_rss-kedaibiao-lizheng_jinjing.md)
 
 ## 余一访谈带来的补充
 

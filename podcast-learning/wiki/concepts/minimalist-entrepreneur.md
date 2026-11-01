@@ -40,5 +40,5 @@ Sahil Lavingia 2021 年出版的畅销书 *The Minimalist Entrepreneur*（中文
 
 ## 关联概念
 
-- [[concepts/one-person-company]] — 实践形态
-- [[concepts/creator-economy-tools-vs-platforms]] — 生态定位
+- [concepts/one-person-company](./one-person-company.md) — 实践形态
+- [concepts/creator-economy-tools-vs-platforms](./creator-economy-tools-vs-platforms.md) — 生态定位

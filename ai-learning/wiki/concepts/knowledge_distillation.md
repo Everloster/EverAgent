@@ -56,4 +56,4 @@ q_i = exp(z_i / T) / Σ_j exp(z_j / T)
 
 ## 相关概念
 
-- [[byte_level_distillation]] — 字节级蒸馏（2026）：教师 token 分布单次前向转字节级，免 top-k 截断、存储 1/5（paper 47）
+- [byte_level_distillation](./byte_level_distillation.md) — 字节级蒸馏（2026）：教师 token 分布单次前向转字节级，免 top-k 截断、存储 1/5（paper 47）

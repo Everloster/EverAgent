@@ -14,9 +14,9 @@
 
 ## 与其他概念的关联
 
-- 是 [[renaissance-revaluation]] 框架的价值论落点；治理反弹（虚荣的篝火）是缺了第四支柱时的社会反冲
-- 与读书方法论线的"人是滤器"（[[fx-formula]]）可对话：前者问"人的位置"，后者答"修行自己的 F"
+- 是 [renaissance-revaluation](./renaissance-revaluation.md) 框架的价值论落点；治理反弹（虚荣的篝火）是缺了第四支柱时的社会反冲
+- 与读书方法论线的"人是滤器"（[fx-formula](./fx-formula.md)）可对话：前者问"人的位置"，后者答"修行自己的 F"
 
 ## 引用本概念的报告
 
-- [[2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review|重估一切，文艺复兴——2026H1 AI行业观察]]
+- [重估一切，文艺复兴——2026H1 AI行业观察](../../reports/2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review.md)

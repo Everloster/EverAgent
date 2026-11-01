@@ -40,7 +40,7 @@ Vol.30（What's Next 科技早知道 · 2026-06-09）—— 丁教 Diane 对谈
 
 ## 关联
 
-- [[entities/gumroad]] — 他创办的公司
-- [[entities/patreon]] — 创作者经济对照对象
-- [[concepts/one-person-company]]
-- [[concepts/minimalist-entrepreneur]]
+- [entities/gumroad](./gumroad.md) — 他创办的公司
+- [entities/patreon](./patreon.md) — 创作者经济对照对象
+- [concepts/one-person-company](../concepts/one-person-company.md)
+- [concepts/minimalist-entrepreneur](../concepts/minimalist-entrepreneur.md)

@@ -52,6 +52,36 @@ COLLECTIONS: tuple[ReportCollection, ...] = (
 
 COLLECTION_BY_ID = {item.id: item for item in COLLECTIONS}
 
+METADATA_ALIASES = {
+    "status": {"complete": "completed", "done": "completed"},
+    "report_type": {
+        "概念深度解析": "concept_report",
+        "concept_deep_dive": "concept_report",
+        "ai_news_daily": "daily_summary",
+        "daily_digest": "daily_summary",
+    },
+}
+
+
+def normalize_metadata(metadata: dict[str, object]) -> dict[str, object]:
+    """Normalize known legacy spellings in a read view, never the source file."""
+    result = dict(metadata)
+    for field, aliases in METADATA_ALIASES.items():
+        value = result.get(field)
+        if isinstance(value, str):
+            result[field] = aliases.get(value, value)
+    return result
+
+
+def metadata_alias_issues(metadata: dict[str, object]) -> list[str]:
+    """Describe noncanonical spellings for callers enforcing a new contract."""
+    issues = []
+    for field, aliases in METADATA_ALIASES.items():
+        value = metadata.get(field)
+        if isinstance(value, str) and value in aliases:
+            issues.append(f"{field}: {value!r} 应使用规范值 {aliases[value]!r}")
+    return issues
+
 
 def _is_excluded(path: Path, collection: ReportCollection) -> bool:
     relative = path.relative_to(ROOT / collection.root)
@@ -125,7 +155,8 @@ def parse_frontmatter(text: str) -> dict[str, object]:
 
 def report_info(path: Path, *, fallback_updated_on: str = "") -> dict[str, object]:
     text = path.read_text(encoding="utf-8", errors="replace")
-    metadata = parse_frontmatter(text)
+    raw_metadata = parse_frontmatter(text)
+    metadata = normalize_metadata(raw_metadata)
     title = str(metadata.get("title") or "")
     if not title:
         heading = re.search(r"^#\s+(.+?)\s*$", text, re.MULTILINE)
@@ -157,6 +188,7 @@ def report_info(path: Path, *, fallback_updated_on: str = "") -> dict[str, objec
         "updated_on": updated_on,
         "tags": tags,
         "metadata": metadata,
+        "raw_metadata": raw_metadata,
         "path": path,
         "domain": collection.id if collection else str(metadata.get("domain") or "unknown"),
     }

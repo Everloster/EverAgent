@@ -43,6 +43,18 @@ related_entities: ["vaswani_ashish", "google_brain"]
 | `related_concepts` | 关联的 wiki/concepts/ 页面名（不含 .md 后缀） | `["self_attention", "moe_architecture"]` |
 | `related_entities` | 关联的 wiki/entities/ 页面名（不含 .md 后缀） | `["vaswani_ashish", "openai"]` |
 
+## 历史元数据兼容
+
+`scripts/report_catalog.py` 维护唯一别名表，读取视图统一以下历史拼写：
+
+| 字段 | 历史拼写 | 规范值 |
+|---|---|---|
+| `status` | `complete`、`done` | `completed` |
+| `report_type` | `概念深度解析`、`concept_deep_dive` | `concept_report` |
+| `report_type` | `ai_news_daily`、`daily_digest` | `daily_summary` |
+
+`report_info()` 同时返回规范化的 `metadata` 与原始 `raw_metadata`；`parse_frontmatter()` 保留原始字段，质量审计与哈希校验继续读取原件。未知类型不猜测映射，缺失字段不自动编造。这是读取兼容，不批量重写历史报告，也不刷新原报告的日期或复核收据。新增或实质修改的 `report-v2` 报告应使用规范拼写。
+
 ## 补充约定
 
 - 新增报告与实质重写的报告遵循此规范；历史报告不因缺字段而批量重写。

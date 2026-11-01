@@ -23,9 +23,9 @@
 
 ## 与什么相关
 
-- [[craft_displacement]] — 同一方法论光谱的另一端：格氏是"框架建造者"极端，算子工程师是"锤凿手艺人"极端；AI 先替代的是后者，"造海"（提出正确问题、定义新框架）恰是目前最难被替代的一端
-- [[bitter_lesson]] — 格氏"普遍性获胜"是数学版的 Bitter Lesson：通用大框架最终胜过针对具体问题的巧技
-- [[craft_displacement]] 追问联动：涨潮法的"造海/解题"二分可检验 AI 时代"提问题 vs 写答案"的能力分化
+- [craft_displacement](./craft_displacement.md) — 同一方法论光谱的另一端：格氏是"框架建造者"极端，算子工程师是"锤凿手艺人"极端；AI 先替代的是后者，"造海"（提出正确问题、定义新框架）恰是目前最难被替代的一端
+- [bitter_lesson](./bitter_lesson.md) — 格氏"普遍性获胜"是数学版的 Bitter Lesson：通用大框架最终胜过针对具体问题的巧技
+- [craft_displacement](./craft_displacement.md) 追问联动：涨潮法的"造海/解题"二分可检验 AI 时代"提问题 vs 写答案"的能力分化
 
 ## 开放问题（详见 open-questions）
 

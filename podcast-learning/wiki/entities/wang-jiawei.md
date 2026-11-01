@@ -20,8 +20,8 @@
 
 ## 相关期数与链接
 
-- 十字路口 2026-09-16 对谈 → [[2026-09-16_xiaoyuzhou-crossing_wangjiawei|报告]]
-- 与 [[xu-mengdi|徐梦迪]]（[[2026-09-20_xiaoyuzhou-crossing_xumengdi|同节目上一期]]）构成具身 scaling 判断的两个独立来源
+- 十字路口 2026-09-16 对谈 → [报告](../../reports/2026-09-16_xiaoyuzhou-crossing_wangjiawei.md)
+- 与 [徐梦迪](./xu-mengdi.md)（[同节目上一期](../../reports/2026-09-20_xiaoyuzhou-crossing_xumengdi.md)）构成具身 scaling 判断的两个独立来源
 - 涉及同行：Generalist（GEN-1/GEN-1.5）、Physical Intelligence（π0.7）、Skild AI、CaP-X（李飞飞+Jim Fan）
 
 ## 回访锚点

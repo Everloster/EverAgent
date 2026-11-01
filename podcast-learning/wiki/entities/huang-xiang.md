@@ -16,4 +16,4 @@
 
 ## 相关期数
 
-- 可妈对谈（2026-07-04）→ [[2026-07-04_bilibili-kema_huangxiang-brain|报告]]
+- 可妈对谈（2026-07-04）→ [报告](../../reports/2026-07-04_bilibili-kema_huangxiang-brain.md)

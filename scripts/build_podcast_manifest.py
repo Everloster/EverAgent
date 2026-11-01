@@ -3,8 +3,10 @@
 
 Reads generated show indexes under podcast-learning/wiki/show-indexes and
 existing report frontmatter under podcast-learning/reports. The output is a
-public, bounded JSON manifest consumed by EverAgent Android. No transcript or
-private note content is included.
+public, bounded JSON manifest retained for legacy Android reader compatibility.
+The main reading index is docs/REPORT_INDEX.md. No transcript, private note or
+execution-device routing is included. Remove this endpoint only after its
+external consumers have explicitly retired it.
 
 Usage:
     python3 scripts/build_podcast_manifest.py          # rebuild docs/PODCAST_MANIFEST.json in place
@@ -193,7 +195,6 @@ def build() -> dict:
                     "updated_on": report["updated_on"] if report else "",
                 },
                 "task": {
-                    "target_worker": "razer",
                     "kind": "podcast_learning",
                     "ready": not reported,
                     "suggested_report_path": (

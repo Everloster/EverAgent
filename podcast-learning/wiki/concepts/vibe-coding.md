@@ -41,5 +41,5 @@ Vol.30（What's Next 科技早知道 · Sahil Lavingia · 2026-06-09）
 
 ## 关联概念
 
-- [[concepts/one-person-company]] — vibe coding 让一人公司变得可行
-- [[concepts/ai-era-education-challenge]] — vibe coding 改变了编程教育的需求
+- [concepts/one-person-company](./one-person-company.md) — vibe coding 让一人公司变得可行
+- [concepts/ai-era-education-challenge](./ai-era-education-challenge.md) — vibe coding 改变了编程教育的需求

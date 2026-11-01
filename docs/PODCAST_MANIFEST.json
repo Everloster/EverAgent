@@ -1,31 +1,338 @@
 {
   "items": [
     {
+      "audio_url": "https://www.xiaoyuzhoufm.com/episode/6add84e197726cd467573cf1?utm_source=rss",
+      "date": "2026-10-25",
+      "duration": "51m46s",
+      "episode_no": null,
+      "guid": "6add84e197726cd467573cf1",
+      "id": "1457794a02e5d059a1f417ea8c36d2b0de5e35ce1247e0b65c20bb4cedbd49c6",
+      "index_status": "✅ 已处理（2026-10-25 xiaoyuzhou-crossing_li-lei-ai-phd）",
+      "kind": "podcast_episode",
+      "platform": "xiaoyuzhou",
+      "report": {
+        "path": "podcast-learning/reports/2026-10-25_xiaoyuzhou-crossing_li-lei-ai-phd.md",
+        "raw_url": "https://raw.githubusercontent.com/Everloster/EverAgent/main/podcast-learning/reports/2026-10-25_xiaoyuzhou-crossing_li-lei-ai-phd.md",
+        "title": "十字路口 × 李磊：AI 时代读 PhD——从难而正确、公开输出到 RSI 的研究方法",
+        "updated_on": "2026-10-26",
+        "url": "https://github.com/Everloster/EverAgent/blob/main/podcast-learning/reports/2026-10-25_xiaoyuzhou-crossing_li-lei-ai-phd.md"
+      },
+      "show": "十字路口Crossing",
+      "show_slug": "crossing",
+      "study_state": "reported",
+      "task": {
+        "kind": "podcast_learning",
+        "prompt": "请按 podcast-learning 协议学习小宇宙节目《AI 时代，PhD 路上的 10 个关键问题｜对谈李磊：港大 PhD、小米 MiMo 研究员》。来源：https://www.xiaoyuzhoufm.com/episode/6add84e197726cd467573cf1?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
+        "ready": false,
+        "suggested_report_path": "podcast-learning/reports/2026-10-25_xiaoyuzhou-crossing_episode-x.md"
+      },
+      "title": "AI 时代，PhD 路上的 10 个关键问题｜对谈李磊：港大 PhD、小米 MiMo 研究员"
+    },
+    {
+      "audio_url": "https://www.xiaoyuzhoufm.com/episode/6ada2be4c96c8942ec10cb1e?utm_source=rss",
+      "date": "2026-10-24",
+      "duration": "54m03s",
+      "episode_no": null,
+      "guid": "6ada2be4c96c8942ec10cb1e",
+      "id": "dc642bef9d9640d75d60d3788ce425bf68fc3e7151fb2ca9ccc5322da3575afd",
+      "index_status": "✅ 已处理（2026-10-24 xiaoyuzhou-42zhangjing_haonan-multimodal-rl-infra）",
+      "kind": "podcast_episode",
+      "platform": "xiaoyuzhou",
+      "report": {
+        "path": "podcast-learning/reports/2026-10-24_xiaoyuzhou-42zhangjing_haonan-multimodal-rl-infra.md",
+        "raw_url": "https://raw.githubusercontent.com/Everloster/EverAgent/main/podcast-learning/reports/2026-10-24_xiaoyuzhou-42zhangjing_haonan-multimodal-rl-infra.md",
+        "title": "42章经 × 淏楠：Agent、多模态与具身的三次转向，以及一个 RL Infra 负责人的选择逻辑",
+        "updated_on": "2026-10-25",
+        "url": "https://github.com/Everloster/EverAgent/blob/main/podcast-learning/reports/2026-10-24_xiaoyuzhou-42zhangjing_haonan-multimodal-rl-infra.md"
+      },
+      "show": "42章经",
+      "show_slug": "42zhangjing",
+      "study_state": "reported",
+      "task": {
+        "kind": "podcast_learning",
+        "prompt": "请按 podcast-learning 协议学习小宇宙节目《少有的同时做过 Agent、多模态和具身的人 \\| 对谈前混元多模态 RL Infra 负责人淏楠》。来源：https://www.xiaoyuzhoufm.com/episode/6ada2be4c96c8942ec10cb1e?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
+        "ready": false,
+        "suggested_report_path": "podcast-learning/reports/2026-10-24_xiaoyuzhou-42zhangjing_episode-x.md"
+      },
+      "title": "少有的同时做过 Agent、多模态和具身的人 \\| 对谈前混元多模态 RL Infra 负责人淏楠"
+    },
+    {
+      "audio_url": "https://www.xiaoyuzhoufm.com/episode/6ad4dacd641ef406308d86e5?utm_source=rss",
+      "date": "2026-10-21",
+      "duration": "1h59m",
+      "episode_no": 155,
+      "guid": "6ad4dacd641ef406308d86e5",
+      "id": "03a1f0d7241b8ab683b6a8dd46a705cdb8caf03034c747040676d798ffed7bc7",
+      "index_status": "✅ 已处理（2026-10-21 xiaoyuzhou-zhangxiaojun_vol155-qiancheng-ecovacs）",
+      "kind": "podcast_episode",
+      "platform": "xiaoyuzhou",
+      "report": {
+        "path": "podcast-learning/reports/2026-10-21_xiaoyuzhou-zhangxiaojun_vol155-qiancheng-ecovacs.md",
+        "raw_url": "https://raw.githubusercontent.com/Everloster/EverAgent/main/podcast-learning/reports/2026-10-21_xiaoyuzhou-zhangxiaojun_vol155-qiancheng-ecovacs.md",
+        "title": "张小珺 155：科沃斯钱程谈企业接班、经营克制与机器人长期战",
+        "updated_on": "2026-10-21",
+        "url": "https://github.com/Everloster/EverAgent/blob/main/podcast-learning/reports/2026-10-21_xiaoyuzhou-zhangxiaojun_vol155-qiancheng-ecovacs.md"
+      },
+      "show": "张小珺商业访谈录",
+      "show_slug": "zhangxiaojun",
+      "study_state": "reported",
+      "task": {
+        "kind": "podcast_learning",
+        "prompt": "请按 podcast-learning 协议学习小宇宙节目《155. 和科沃斯钱程聊，父与子、企二代接班的样本与肌理、机器人，和我内心的追寻》。来源：https://www.xiaoyuzhoufm.com/episode/6ad4dacd641ef406308d86e5?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
+        "ready": false,
+        "suggested_report_path": "podcast-learning/reports/2026-10-21_xiaoyuzhou-zhangxiaojun_episode-155.md"
+      },
+      "title": "155. 和科沃斯钱程聊，父与子、企二代接班的样本与肌理、机器人，和我内心的追寻"
+    },
+    {
+      "audio_url": "https://www.xiaoyuzhoufm.com/episode/6ad2412d0e4e410a05be01a7?utm_source=rss",
+      "date": "2026-10-18",
+      "duration": "51m08s",
+      "episode_no": null,
+      "guid": "6ad2412d0e4e410a05be01a7",
+      "id": "76c3ae8dcac29c3a8613173af380c345dc62addf41a0bf0bbcab3ef9e51e426f",
+      "index_status": "✅ 已处理（2026-10-18 xiaoyuzhou-crossing_treg-agent-ecosystem）",
+      "kind": "podcast_episode",
+      "platform": "xiaoyuzhou",
+      "report": {
+        "path": "podcast-learning/reports/2026-10-18_xiaoyuzhou-crossing_treg-agent-ecosystem.md",
+        "raw_url": "https://raw.githubusercontent.com/Everloster/EverAgent/main/podcast-learning/reports/2026-10-18_xiaoyuzhou-crossing_treg-agent-ecosystem.md",
+        "title": "十字路口 × Treg：Claude Code / Codex 成为平台后，创业机会转向工具、数据与人机协作",
+        "updated_on": "2026-10-19",
+        "url": "https://github.com/Everloster/EverAgent/blob/main/podcast-learning/reports/2026-10-18_xiaoyuzhou-crossing_treg-agent-ecosystem.md"
+      },
+      "show": "十字路口Crossing",
+      "show_slug": "crossing",
+      "study_state": "reported",
+      "task": {
+        "kind": "podcast_learning",
+        "prompt": "请按 podcast-learning 协议学习小宇宙节目《新的创业机会，正在 Claude Code 和 Codex 周围长出来｜对谈 Treg》。来源：https://www.xiaoyuzhoufm.com/episode/6ad2412d0e4e410a05be01a7?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
+        "ready": false,
+        "suggested_report_path": "podcast-learning/reports/2026-10-18_xiaoyuzhou-crossing_episode-x.md"
+      },
+      "title": "新的创业机会，正在 Claude Code 和 Codex 周围长出来｜对谈 Treg"
+    },
+    {
+      "audio_url": "https://www.xiaoyuzhoufm.com/episode/6acddf92e742e36efcc2448d?utm_source=rss",
+      "date": "2026-10-17",
+      "duration": "54m33s",
+      "episode_no": null,
+      "guid": "6acddf92e742e36efcc2448d",
+      "id": "e9d2626b79527dba40890c214993a9a940bef9b17a5b4b1c29e0026c0a8ebe44",
+      "index_status": "✅ 已处理（2026-10-17 xiaoyuzhou-42zhangjing_articuler-jason）",
+      "kind": "podcast_episode",
+      "platform": "xiaoyuzhou",
+      "report": {
+        "path": "podcast-learning/reports/2026-10-17_xiaoyuzhou-42zhangjing_articuler-jason.md",
+        "raw_url": "https://raw.githubusercontent.com/Everloster/EverAgent/main/podcast-learning/reports/2026-10-17_xiaoyuzhou-42zhangjing_articuler-jason.md",
+        "title": "42章经 × Articuler.ai：穷出来的会议场景、美国 GTM 与创业的保命牌",
+        "updated_on": "2026-10-19",
+        "url": "https://github.com/Everloster/EverAgent/blob/main/podcast-learning/reports/2026-10-17_xiaoyuzhou-42zhangjing_articuler-jason.md"
+      },
+      "show": "42章经",
+      "show_slug": "42zhangjing",
+      "study_state": "reported",
+      "task": {
+        "kind": "podcast_learning",
+        "prompt": "请按 podcast-learning 协议学习小宇宙节目《这个破业非创不可吗？｜对谈 Articuler.ai 创始人 Jason》。来源：https://www.xiaoyuzhoufm.com/episode/6acddf92e742e36efcc2448d?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
+        "ready": false,
+        "suggested_report_path": "podcast-learning/reports/2026-10-17_xiaoyuzhou-42zhangjing_episode-x.md"
+      },
+      "title": "这个破业非创不可吗？｜对谈 Articuler.ai 创始人 Jason"
+    },
+    {
+      "audio_url": "https://www.xiaoyuzhoufm.com/episode/6acf81f0195d838e2af1e281?utm_source=rss",
+      "date": "2026-10-15",
+      "duration": "2h51m",
+      "episode_no": 154,
+      "guid": "6acf81f0195d838e2af1e281",
+      "id": "22d3ee737bd06d08c2ad1adfcf3201eb0455608cdeea6a2f58ceaff82b9c8fb8",
+      "index_status": "✅ 已处理（2026-10-15 xiaoyuzhou-zhangxiaojun_vol154-dyna-lindon）",
+      "kind": "podcast_episode",
+      "platform": "xiaoyuzhou",
+      "report": {
+        "path": "podcast-learning/reports/2026-10-15_xiaoyuzhou-zhangxiaojun_vol154-dyna-lindon.md",
+        "raw_url": "https://raw.githubusercontent.com/Everloster/EverAgent/main/podcast-learning/reports/2026-10-15_xiaoyuzhou-zhangxiaojun_vol154-dyna-lindon.md",
+        "title": "张小珺 × Lindon Gao（Dyna Robotics）：机器人长跑里的闭环、推论与「不犯错的 CEO」包袱",
+        "updated_on": "2026-10-25",
+        "url": "https://github.com/Everloster/EverAgent/blob/main/podcast-learning/reports/2026-10-15_xiaoyuzhou-zhangxiaojun_vol154-dyna-lindon.md"
+      },
+      "show": "张小珺商业访谈录",
+      "show_slug": "zhangxiaojun",
+      "study_state": "reported",
+      "task": {
+        "kind": "podcast_learning",
+        "prompt": "请按 podcast-learning 协议学习小宇宙节目《154. 对Dyna创始人Lindon的3小时访谈：机器人世界的迷雾、分歧与抉择，修心、《沉思录》与王阳明》。来源：https://www.xiaoyuzhoufm.com/episode/6acf81f0195d838e2af1e281?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
+        "ready": false,
+        "suggested_report_path": "podcast-learning/reports/2026-10-15_xiaoyuzhou-zhangxiaojun_episode-154.md"
+      },
+      "title": "154. 对Dyna创始人Lindon的3小时访谈：机器人世界的迷雾、分歧与抉择，修心、《沉思录》与王阳明"
+    },
+    {
+      "audio_url": "https://www.xiaoyuzhoufm.com/episode/6accc5de195d838e2af0bd9a?utm_source=rss",
+      "date": "2026-10-12",
+      "duration": "1h26m",
+      "episode_no": null,
+      "guid": "6accc5de195d838e2af0bd9a",
+      "id": "a00010f6c91cc01ee61ce8522c1f675f20be65bc7418907efb4bd5565aa07c89",
+      "index_status": "✅ 已处理（2026-10-12 xiaoyuzhou-42zhangjing_zihao-ambi）",
+      "kind": "podcast_episode",
+      "platform": "xiaoyuzhou",
+      "report": {
+        "path": "podcast-learning/reports/2026-10-12_xiaoyuzhou-42zhangjing_zihao-ambi.md",
+        "raw_url": "https://raw.githubusercontent.com/Everloster/EverAgent/main/podcast-learning/reports/2026-10-12_xiaoyuzhou-42zhangjing_zihao-ambi.md",
+        "title": "42章经：子皓（Ambi）——交互成本决定需求、A2A网络效应与在场（ambient）哲学",
+        "updated_on": "2026-10-12",
+        "url": "https://github.com/Everloster/EverAgent/blob/main/podcast-learning/reports/2026-10-12_xiaoyuzhou-42zhangjing_zihao-ambi.md"
+      },
+      "show": "42章经",
+      "show_slug": "42zhangjing",
+      "study_state": "reported",
+      "task": {
+        "kind": "podcast_learning",
+        "prompt": "请按 podcast-learning 协议学习小宇宙节目《一个 Personal Agent 创业者的思考｜对谈 Ambi 创始人子皓》。来源：https://www.xiaoyuzhoufm.com/episode/6accc5de195d838e2af0bd9a?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
+        "ready": false,
+        "suggested_report_path": "podcast-learning/reports/2026-10-12_xiaoyuzhou-42zhangjing_episode-x.md"
+      },
+      "title": "一个 Personal Agent 创业者的思考｜对谈 Ambi 创始人子皓"
+    },
+    {
+      "audio_url": "https://www.xiaoyuzhoufm.com/episode/6aca7f91e742e36efcc10957?utm_source=rss",
+      "date": "2026-10-11",
+      "duration": "1h12m",
+      "episode_no": null,
+      "guid": "6aca7f91e742e36efcc10957",
+      "id": "40db39fd6d09eb29dad08b401b6610894149b1086633a0a261054b1dfc4cfe58",
+      "index_status": "✅ 已处理（2026-10-11 xiaoyuzhou-crossing_yage-ai-strong）",
+      "kind": "podcast_episode",
+      "platform": "xiaoyuzhou",
+      "report": {
+        "path": "podcast-learning/reports/2026-10-11_xiaoyuzhou-crossing_yage-ai-strong.md",
+        "raw_url": "https://raw.githubusercontent.com/Everloster/EverAgent/main/podcast-learning/reports/2026-10-11_xiaoyuzhou-crossing_yage-ai-strong.md",
+        "title": "十字路口：鸭哥——Context Infrastructure 三要素、0人公司与睡眠回归实验",
+        "updated_on": "2026-10-12",
+        "url": "https://github.com/Everloster/EverAgent/blob/main/podcast-learning/reports/2026-10-11_xiaoyuzhou-crossing_yage-ai-strong.md"
+      },
+      "show": "十字路口Crossing",
+      "show_slug": "crossing",
+      "study_state": "reported",
+      "task": {
+        "kind": "podcast_learning",
+        "prompt": "请按 podcast-learning 协议学习小宇宙节目《“有了AI，我感觉自己强得可怕！”｜对谈鸭哥》。来源：https://www.xiaoyuzhoufm.com/episode/6aca7f91e742e36efcc10957?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
+        "ready": false,
+        "suggested_report_path": "podcast-learning/reports/2026-10-11_xiaoyuzhou-crossing_episode-x.md"
+      },
+      "title": "“有了AI，我感觉自己强得可怕！”｜对谈鸭哥"
+    },
+    {
+      "audio_url": "https://www.xiaoyuzhoufm.com/episode/6ac7ce36195d838e2aeeebd9?utm_source=rss",
+      "date": "2026-10-08",
+      "duration": "1h05m",
+      "episode_no": null,
+      "guid": "6ac7ce36195d838e2aeeebd9",
+      "id": "8736fc1a9888f658e05306ed0d0355b17cac373e618a1395422e3eba636fa42c",
+      "index_status": "✅ 已处理（2026-10-08 xiaoyuzhou-crossing_kk-shanyin）",
+      "kind": "podcast_episode",
+      "platform": "xiaoyuzhou",
+      "report": {
+        "path": "podcast-learning/reports/2026-10-08_xiaoyuzhou-crossing_kk-shanyin.md",
+        "raw_url": "https://raw.githubusercontent.com/Everloster/EverAgent/main/podcast-learning/reports/2026-10-08_xiaoyuzhou-crossing_kk-shanyin.md",
+        "title": "十字路口：AI 无限，人生有限——山音与 KK 的一线 AI 导演方法论",
+        "updated_on": "2026-10-09",
+        "url": "https://github.com/Everloster/EverAgent/blob/main/podcast-learning/reports/2026-10-08_xiaoyuzhou-crossing_kk-shanyin.md"
+      },
+      "show": "十字路口Crossing",
+      "show_slug": "crossing",
+      "study_state": "reported",
+      "task": {
+        "kind": "podcast_learning",
+        "prompt": "请按 podcast-learning 协议学习小宇宙节目《AI 无限，人生有限｜对谈 KK、山音：一线 AI 创作者》。来源：https://www.xiaoyuzhoufm.com/episode/6ac7ce36195d838e2aeeebd9?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
+        "ready": false,
+        "suggested_report_path": "podcast-learning/reports/2026-10-08_xiaoyuzhou-crossing_episode-x.md"
+      },
+      "title": "AI 无限，人生有限｜对谈 KK、山音：一线 AI 创作者"
+    },
+    {
+      "audio_url": "https://www.xiaoyuzhoufm.com/episode/6ac7a5e2195d838e2aeedbc8?utm_source=rss",
+      "date": "2026-10-08",
+      "duration": "1h53m",
+      "episode_no": null,
+      "guid": "6ac7a5e2195d838e2aeedbc8",
+      "id": "7ca94f6853261ff87549174bfe2e96f00fa3d5e19092ad640cceec878b2ab93a",
+      "index_status": "✅ 已处理（2026-10-08 xiaoyuzhou-daxiaoma-keji_v95-china-us）",
+      "kind": "podcast_episode",
+      "platform": "xiaoyuzhou",
+      "report": {
+        "path": "podcast-learning/reports/2026-10-08_xiaoyuzhou-daxiaoma-keji_v95-china-us.md",
+        "raw_url": "https://raw.githubusercontent.com/Everloster/EverAgent/main/podcast-learning/reports/2026-10-08_xiaoyuzhou-daxiaoma-keji_v95-china-us.md",
+        "title": "大小马 V95：中美新拐点——出海小霸王、AI 眼镜三数量级增量与 Muse 时代的APP崩塌",
+        "updated_on": "2026-10-09",
+        "url": "https://github.com/Everloster/EverAgent/blob/main/podcast-learning/reports/2026-10-08_xiaoyuzhou-daxiaoma-keji_v95-china-us.md"
+      },
+      "show": "大小马聊科技",
+      "show_slug": "daxiaoma-keji",
+      "study_state": "reported",
+      "task": {
+        "kind": "podcast_learning",
+        "prompt": "请按 podcast-learning 协议学习小宇宙节目《V95.中美新拐点！苹果 Meta特斯拉英伟达，深度拆解各家招式》。来源：https://www.xiaoyuzhoufm.com/episode/6ac7a5e2195d838e2aeedbc8?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
+        "ready": false,
+        "suggested_report_path": "podcast-learning/reports/2026-10-08_xiaoyuzhou-daxiaoma-keji_episode-x.md"
+      },
+      "title": "V95.中美新拐点！苹果 Meta特斯拉英伟达，深度拆解各家招式"
+    },
+    {
+      "audio_url": "https://www.xiaoyuzhoufm.com/episode/6ab9f026e742e36efcbc0d88?utm_source=rss",
+      "date": "2026-09-28",
+      "duration": "58m10s",
+      "episode_no": null,
+      "guid": "6ab9f026e742e36efcbc0d88",
+      "id": "ac6fea7efae9f957602598a124bff3ef072c0dfa16bd9fe2d8592a7b338b2527",
+      "index_status": "✅ 已处理（2026-09-28 xiaoyuzhou-tulong-zhishu_eda-ai-chips）",
+      "kind": "podcast_episode",
+      "platform": "xiaoyuzhou",
+      "report": {
+        "path": "podcast-learning/reports/2026-09-28_xiaoyuzhou-tulong-zhishu_eda-ai-chips.md",
+        "raw_url": "https://raw.githubusercontent.com/Everloster/EverAgent/main/podcast-learning/reports/2026-09-28_xiaoyuzhou-tulong-zhishu_eda-ai-chips.md",
+        "title": "当 AI 开始设计芯片：新思科技视角下的 EDA 与 AI 造芯真伪",
+        "updated_on": "2026-10-07",
+        "url": "https://github.com/Everloster/EverAgent/blob/main/podcast-learning/reports/2026-09-28_xiaoyuzhou-tulong-zhishu_eda-ai-chips.md"
+      },
+      "show": "屠龙之术",
+      "show_slug": "tulong-zhishu",
+      "study_state": "reported",
+      "task": {
+        "kind": "podcast_learning",
+        "prompt": "请按 podcast-learning 协议学习小宇宙节目《当AI开始设计芯片---聊聊EDA与AI时代的芯片设计》。来源：https://www.xiaoyuzhoufm.com/episode/6ab9f026e742e36efcbc0d88?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
+        "ready": false,
+        "suggested_report_path": "podcast-learning/reports/2026-09-28_xiaoyuzhou-tulong-zhishu_episode-x.md"
+      },
+      "title": "当AI开始设计芯片---聊聊EDA与AI时代的芯片设计"
+    },
+    {
       "audio_url": "https://www.xiaoyuzhoufm.com/episode/6ab71039195d838e2aea294a?utm_source=rss",
       "date": "2026-09-27",
       "duration": "40m46s",
       "episode_no": null,
       "guid": "6ab71039195d838e2aea294a",
-      "id": "6fd64e387c515aa4d5dcd4262abe487467e26f2fcf3020e01bdab6eff7a08936",
-      "index_status": "—",
+      "id": "e3217e4bdb563439ac8fb9321223bcd38397627fd14f217c55ab7d926868b2ea",
+      "index_status": "✅ 已处理（2026-09-27 xiaoyuzhou-42zhangjing_wuhaozhe）",
       "kind": "podcast_episode",
       "platform": "xiaoyuzhou",
       "report": {
-        "path": "",
-        "raw_url": "",
-        "title": "",
-        "updated_on": "",
-        "url": ""
+        "path": "podcast-learning/reports/2026-09-27_xiaoyuzhou-42zhangjing_wuhaozhe.md",
+        "raw_url": "https://raw.githubusercontent.com/Everloster/EverAgent/main/podcast-learning/reports/2026-09-27_xiaoyuzhou-42zhangjing_wuhaozhe.md",
+        "title": "决策便宜，行动很贵：Vibe-Trading 作者浩哲谈 AI Trading 的通道、闸门与人的位置",
+        "updated_on": "2026-10-01",
+        "url": "https://github.com/Everloster/EverAgent/blob/main/podcast-learning/reports/2026-09-27_xiaoyuzhou-42zhangjing_wuhaozhe.md"
       },
       "show": "42章经",
       "show_slug": "42zhangjing",
-      "study_state": "pending",
+      "study_state": "reported",
       "task": {
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《AI Trading —— 决策便宜，行动很贵｜对谈超 3w Star Vibe-Trading 作者浩哲》。来源：https://www.xiaoyuzhoufm.com/episode/6ab71039195d838e2aea294a?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
-        "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-09-27_xiaoyuzhou-42zhangjing_episode-x.md",
-        "target_worker": "razer"
+        "ready": false,
+        "suggested_report_path": "podcast-learning/reports/2026-09-27_xiaoyuzhou-42zhangjing_episode-x.md"
       },
       "title": "AI Trading —— 决策便宜，行动很贵｜对谈超 3w Star Vibe-Trading 作者浩哲"
     },
@@ -35,26 +342,25 @@
       "duration": "1h52m",
       "episode_no": null,
       "guid": "6ab7fb97e742e36efcbb881a",
-      "id": "ef25afcc1a54953a2a0a5fdcb52aedb2afb4a5637de5334815f3e090c34fcb04",
-      "index_status": "—",
+      "id": "60869266aa2263c2b1e83112d8d7927dbda814e2bf78d3371f14e733892ccad0",
+      "index_status": "✅ 已处理（2026-09-27 xiaoyuzhou-crossing_yuhong-sel）",
       "kind": "podcast_episode",
       "platform": "xiaoyuzhou",
       "report": {
-        "path": "",
-        "raw_url": "",
-        "title": "",
-        "updated_on": "",
-        "url": ""
+        "path": "podcast-learning/reports/2026-09-27_xiaoyuzhou-crossing_yuhong-sel.md",
+        "raw_url": "https://raw.githubusercontent.com/Everloster/EverAgent/main/podcast-learning/reports/2026-09-27_xiaoyuzhou-crossing_yuhong-sel.md",
+        "title": "十字路口：于红——AI 时代学什么？林迪效应、SEL 与把终点放在 30 岁",
+        "updated_on": "2026-10-10",
+        "url": "https://github.com/Everloster/EverAgent/blob/main/podcast-learning/reports/2026-09-27_xiaoyuzhou-crossing_yuhong-sel.md"
       },
       "show": "十字路口Crossing",
       "show_slug": "crossing",
-      "study_state": "pending",
+      "study_state": "reported",
       "task": {
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《AI 时代，我们到底该学什么？｜对谈于红：三种不会过时的能力》。来源：https://www.xiaoyuzhoufm.com/episode/6ab7fb97e742e36efcbb881a?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
-        "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-09-27_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "ready": false,
+        "suggested_report_path": "podcast-learning/reports/2026-09-27_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "AI 时代，我们到底该学什么？｜对谈于红：三种不会过时的能力"
     },
@@ -64,26 +370,25 @@
       "duration": "1h39m",
       "episode_no": 277,
       "guid": "6ab4b804e742e36efcbab131",
-      "id": "e7bbb6ea8d08f1fd594510fca22a3fb859aa279b71f018569c08192239267dc8",
-      "index_status": "—",
+      "id": "ae2986988a80866666355af65acf5d6a0f0ce5ab71b4302a4b5b2cef4808287a",
+      "index_status": "✅ 已处理（2026-09-24 xiaoyuzhou-luanfanshu_today-personal-ai）",
       "kind": "podcast_episode",
       "platform": "xiaoyuzhou",
       "report": {
-        "path": "",
-        "raw_url": "",
-        "title": "",
-        "updated_on": "",
-        "url": ""
+        "path": "podcast-learning/reports/2026-09-24_xiaoyuzhou-luanfanshu_today-personal-ai.md",
+        "raw_url": "https://raw.githubusercontent.com/Everloster/EverAgent/main/podcast-learning/reports/2026-09-24_xiaoyuzhou-luanfanshu_today-personal-ai.md",
+        "title": "乱翻书277：Today 中国首发——Memory×Proactive、单 session 终局与产品经理的价值回归",
+        "updated_on": "2026-10-10",
+        "url": "https://github.com/Everloster/EverAgent/blob/main/podcast-learning/reports/2026-09-24_xiaoyuzhou-luanfanshu_today-personal-ai.md"
       },
       "show": "乱翻书",
       "show_slug": "luanfanshu",
-      "study_state": "pending",
+      "study_state": "reported",
       "task": {
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《277.从提醒你，到替你办：Today想把Personal AI带到哪一步？》。来源：https://www.xiaoyuzhoufm.com/episode/6ab4b804e742e36efcbab131?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
-        "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-09-24_xiaoyuzhou-luanfanshu_episode-277.md",
-        "target_worker": "razer"
+        "ready": false,
+        "suggested_report_path": "podcast-learning/reports/2026-09-24_xiaoyuzhou-luanfanshu_episode-277.md"
       },
       "title": "277.从提醒你，到替你办：Today想把Personal AI带到哪一步？"
     },
@@ -111,8 +416,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《276.当AI给出所有答案，年轻人如何找到自己的问题？》。来源：https://www.xiaoyuzhoufm.com/episode/6ab2546493d5eb3bdc794b18?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-09-22_xiaoyuzhou-luanfanshu_episode-276.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-09-22_xiaoyuzhou-luanfanshu_episode-276.md"
       },
       "title": "276.当AI给出所有答案，年轻人如何找到自己的问题？"
     },
@@ -122,26 +426,25 @@
       "duration": "41m08s",
       "episode_no": null,
       "guid": "6ab2b85df04646b3a955a1de",
-      "id": "2cf0a1e29c20a24e7285fa128130af7c82b01227b92b434f95dd3f3cdb2f4233",
-      "index_status": "—",
+      "id": "c2181af5e43a1ed2035156ca5facb579b818d21e85ef87ca07a525ce4a5ed724",
+      "index_status": "✅ 已处理（2026-09-22 xiaoyuzhou-tulong-zhishu_ai-production-stage）",
       "kind": "podcast_episode",
       "platform": "xiaoyuzhou",
       "report": {
-        "path": "",
-        "raw_url": "",
-        "title": "",
-        "updated_on": "",
-        "url": ""
+        "path": "podcast-learning/reports/2026-09-22_xiaoyuzhou-tulong-zhishu_ai-production-stage.md",
+        "raw_url": "https://raw.githubusercontent.com/Everloster/EverAgent/main/podcast-learning/reports/2026-09-22_xiaoyuzhou-tulong-zhishu_ai-production-stage.md",
+        "title": "屠龙之术：AICC2026 侧记——Agent=Model+Harness 成业界公式，算力缺口十年十倍",
+        "updated_on": "2026-10-10",
+        "url": "https://github.com/Everloster/EverAgent/blob/main/podcast-learning/reports/2026-09-22_xiaoyuzhou-tulong-zhishu_ai-production-stage.md"
       },
       "show": "屠龙之术",
       "show_slug": "tulong-zhishu",
-      "study_state": "pending",
+      "study_state": "reported",
       "task": {
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《AI进入生产阶段之后， 智能、算力、芯片 会走向哪里？》。来源：https://www.xiaoyuzhoufm.com/episode/6ab2b85df04646b3a955a1de?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
-        "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-09-22_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "ready": false,
+        "suggested_report_path": "podcast-learning/reports/2026-09-22_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "AI进入生产阶段之后， 智能、算力、芯片 会走向哪里？"
     },
@@ -151,26 +454,25 @@
       "duration": "2h06m",
       "episode_no": 275,
       "guid": "6ab029b7ac389df82734ebb6",
-      "id": "d4523a1d7d37cad86651270dd473d656f0b4083772f3d9701fb4a4f370e8235c",
-      "index_status": "—",
+      "id": "8da3ccde8bd0dad2ff6b747715b020ab6af7ba095d705e34af26f1a488af0599",
+      "index_status": "✅ 已处理（2026-09-21 xiaoyuzhou-luanfanshu_personal-agent-wars）",
       "kind": "podcast_episode",
       "platform": "xiaoyuzhou",
       "report": {
-        "path": "",
-        "raw_url": "",
-        "title": "",
-        "updated_on": "",
-        "url": ""
+        "path": "podcast-learning/reports/2026-09-21_xiaoyuzhou-luanfanshu_personal-agent-wars.md",
+        "raw_url": "https://raw.githubusercontent.com/Everloster/EverAgent/main/podcast-learning/reports/2026-09-21_xiaoyuzhou-luanfanshu_personal-agent-wars.md",
+        "title": "乱翻书275：个人Agent的战争——拆解Town、Instinct、Grok Bot与Muse（含产品深研档案）",
+        "updated_on": "2026-10-09",
+        "url": "https://github.com/Everloster/EverAgent/blob/main/podcast-learning/reports/2026-09-21_xiaoyuzhou-luanfanshu_personal-agent-wars.md"
       },
       "show": "乱翻书",
       "show_slug": "luanfanshu",
-      "study_state": "pending",
+      "study_state": "reported",
       "task": {
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《275.AI办公的热闹还没散，个人Agent的战争已经开始｜拆解Town、Instinct、Grok Bot与Muse》。来源：https://www.xiaoyuzhoufm.com/episode/6ab029b7ac389df82734ebb6?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
-        "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-09-21_xiaoyuzhou-luanfanshu_episode-275.md",
-        "target_worker": "razer"
+        "ready": false,
+        "suggested_report_path": "podcast-learning/reports/2026-09-21_xiaoyuzhou-luanfanshu_episode-275.md"
       },
       "title": "275.AI办公的热闹还没散，个人Agent的战争已经开始｜拆解Town、Instinct、Grok Bot与Muse"
     },
@@ -181,7 +483,7 @@
       "episode_no": null,
       "guid": "6ab0504f0916f6f8b4466ece",
       "id": "baa98dc7b8fe1d40d1c94fb77a2f0c905d58ee7e4fba98bf85836ec1d42a5da1",
-      "index_status": "✅",
+      "index_status": "✅ 已处理（2026-09-20 xiaoyuzhou-crossing_xumengdi）",
       "kind": "podcast_episode",
       "platform": "xiaoyuzhou",
       "report": {
@@ -198,8 +500,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《“我看到了 Scaling Law 的信号” \\| 对谈清华叉院助理教授徐梦迪：具身智能、世界模型、真正的泛化》。来源：https://www.xiaoyuzhoufm.com/episode/6ab0504f0916f6f8b4466ece?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": false,
-        "suggested_report_path": "podcast-learning/reports/2026-09-20_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-09-20_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "“我看到了 Scaling Law 的信号” \\| 对谈清华叉院助理教授徐梦迪：具身智能、世界模型、真正的泛化"
     },
@@ -227,8 +528,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《274.从全面屏到中折叠，小米的高端化这次找对路了吗？》。来源：https://www.xiaoyuzhoufm.com/episode/6aa9329c051af796b9e8a2dc?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-09-16_xiaoyuzhou-luanfanshu_episode-274.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-09-16_xiaoyuzhou-luanfanshu_episode-274.md"
       },
       "title": "274.从全面屏到中折叠，小米的高端化这次找对路了吗？"
     },
@@ -238,26 +538,25 @@
       "duration": "1h09m",
       "episode_no": null,
       "guid": "6aaa9f039d326477816a3488",
-      "id": "989e2d9bbb3fa90078af7b3e56a83c4c11e15ee026add74e5700af202fc4f5e4",
-      "index_status": "—",
+      "id": "11114ef326ceddddf46745972cc6e4d6f57c5f4d2582a0cb0e2bf28beae5bb2d",
+      "index_status": "✅ 已处理（2026-09-16 xiaoyuzhou-crossing_wangjiawei）",
       "kind": "podcast_episode",
       "platform": "xiaoyuzhou",
       "report": {
-        "path": "",
-        "raw_url": "",
-        "title": "",
-        "updated_on": "",
-        "url": ""
+        "path": "podcast-learning/reports/2026-09-16_xiaoyuzhou-crossing_wangjiawei.md",
+        "raw_url": "https://raw.githubusercontent.com/Everloster/EverAgent/main/podcast-learning/reports/2026-09-16_xiaoyuzhou-crossing_wangjiawei.md",
+        "title": "十字路口：王家伟——24岁的具身智能首席科学家、HiFi-UMI与「趋势不等于Law」",
+        "updated_on": "2026-10-18",
+        "url": "https://github.com/Everloster/EverAgent/blob/main/podcast-learning/reports/2026-09-16_xiaoyuzhou-crossing_wangjiawei.md"
       },
       "show": "十字路口Crossing",
       "show_slug": "crossing",
-      "study_state": "pending",
+      "study_state": "reported",
       "task": {
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《于是转身向具身走去｜对话王家伟：24 岁的具身智能首席科学家》。来源：https://www.xiaoyuzhoufm.com/episode/6aaa9f039d326477816a3488?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
-        "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-09-16_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "ready": false,
+        "suggested_report_path": "podcast-learning/reports/2026-09-16_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "于是转身向具身走去｜对话王家伟：24 岁的具身智能首席科学家"
     },
@@ -268,7 +567,7 @@
       "episode_no": null,
       "guid": "6aa82d11129fe965d33288ca",
       "id": "26ed2fb81ed6f350a90b0befa23ceb284698eda044352f9854f96ee8fb89ca87",
-      "index_status": "✅",
+      "index_status": "✅ 已处理（2026-09-15 xiaoyuzhou-tulong-zhishu_next-act）",
       "kind": "podcast_episode",
       "platform": "xiaoyuzhou",
       "report": {
@@ -285,8 +584,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《智能的下一幕，让人兴奋---73页PPT solo》。来源：https://www.xiaoyuzhoufm.com/episode/6aa82d11129fe965d33288ca?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": false,
-        "suggested_report_path": "podcast-learning/reports/2026-09-15_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-09-15_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "智能的下一幕，让人兴奋---73页PPT solo"
     },
@@ -314,8 +612,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《273.逛完外滩大会，发现蚂蚁找到了新位置》。来源：https://www.xiaoyuzhoufm.com/episode/6aa76141492687f6aad974bc?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-09-14_xiaoyuzhou-luanfanshu_episode-273.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-09-14_xiaoyuzhou-luanfanshu_episode-273.md"
       },
       "title": "273.逛完外滩大会，发现蚂蚁找到了新位置"
     },
@@ -343,10 +640,37 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《当具身智能走到十字路口｜对谈苏度、蚂蚁灵波、自变量、破壳：四种一线判断》。来源：https://www.xiaoyuzhoufm.com/episode/6aa67b319d32647781685e95?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-09-13_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-09-13_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "当具身智能走到十字路口｜对谈苏度、蚂蚁灵波、自变量、破壳：四种一线判断"
+    },
+    {
+      "audio_url": "https://www.xiaoyuzhoufm.com/episode/6a9d85b2a0210c197dce6fa6?utm_source=rss",
+      "date": "2026-09-06",
+      "duration": "1h18m",
+      "episode_no": null,
+      "guid": "6a9d85b2a0210c197dce6fa6",
+      "id": "cedc6a664edbf49c72f0ed754745439ca135efb9cfe9ac85c779efb12df90726",
+      "index_status": "✅ 已处理（2026-09-06 xiaoyuzhou-daxiaoma-keji_v94-rocket-recovery-sunology）",
+      "kind": "podcast_episode",
+      "platform": "xiaoyuzhou",
+      "report": {
+        "path": "podcast-learning/reports/2026-09-06_xiaoyuzhou-daxiaoma-keji_v94-rocket-recovery-sunology.md",
+        "raw_url": "https://raw.githubusercontent.com/Everloster/EverAgent/main/podcast-learning/reports/2026-09-06_xiaoyuzhou-daxiaoma-keji_v94-rocket-recovery-sunology.md",
+        "title": "大小马 V94：中国火箭回收与美国「孙学」——争议资产、复用经济学与中欧美心态切片",
+        "updated_on": "2026-10-20",
+        "url": "https://github.com/Everloster/EverAgent/blob/main/podcast-learning/reports/2026-09-06_xiaoyuzhou-daxiaoma-keji_v94-rocket-recovery-sunology.md"
+      },
+      "show": "大小马聊科技",
+      "show_slug": "daxiaoma-keji",
+      "study_state": "reported",
+      "task": {
+        "kind": "podcast_learning",
+        "prompt": "请按 podcast-learning 协议学习小宇宙节目《V94.理智分析中国火箭回收与美国「孙学」》。来源：https://www.xiaoyuzhoufm.com/episode/6a9d85b2a0210c197dce6fa6?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
+        "ready": false,
+        "suggested_report_path": "podcast-learning/reports/2026-09-06_xiaoyuzhou-daxiaoma-keji_episode-x.md"
+      },
+      "title": "V94.理智分析中国火箭回收与美国「孙学」"
     },
     {
       "audio_url": "https://www.xiaoyuzhoufm.com/episode/6a9abd3df03e74ee6b052a28?utm_source=rss",
@@ -372,39 +696,9 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《她被骗过、被救过、被捧上神坛过、被疼痛击倒过，决定在AI时代继续冒险｜对谈陈安妮》。来源：https://www.xiaoyuzhoufm.com/episode/6a9abd3df03e74ee6b052a28?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-09-06_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-09-06_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "她被骗过、被救过、被捧上神坛过、被疼痛击倒过，决定在AI时代继续冒险｜对谈陈安妮"
-    },
-    {
-      "audio_url": "https://www.xiaoyuzhoufm.com/episode/6a9d85b2a0210c197dce6fa6?utm_source=rss",
-      "date": "2026-09-06",
-      "duration": "1h18m",
-      "episode_no": null,
-      "guid": "6a9d85b2a0210c197dce6fa6",
-      "id": "6a996e3a4ee7ce6e52164c0fab84ea680b205dbd70ff3e70ab0d1db88d7e6299",
-      "index_status": "—",
-      "kind": "podcast_episode",
-      "platform": "xiaoyuzhou",
-      "report": {
-        "path": "",
-        "raw_url": "",
-        "title": "",
-        "updated_on": "",
-        "url": ""
-      },
-      "show": "大小马聊科技",
-      "show_slug": "daxiaoma-keji",
-      "study_state": "pending",
-      "task": {
-        "kind": "podcast_learning",
-        "prompt": "请按 podcast-learning 协议学习小宇宙节目《V94.理智分析中国火箭回收与美国「孙学」》。来源：https://www.xiaoyuzhoufm.com/episode/6a9d85b2a0210c197dce6fa6?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
-        "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-09-06_xiaoyuzhou-daxiaoma-keji_episode-x.md",
-        "target_worker": "razer"
-      },
-      "title": "V94.理智分析中国火箭回收与美国「孙学」"
     },
     {
       "audio_url": "https://www.xiaoyuzhoufm.com/episode/6a918c15a0210c197dc9c039?utm_source=rss",
@@ -430,8 +724,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《中国一级半市场的水下江湖-续集｜串台苔藓之火》。来源：https://www.xiaoyuzhoufm.com/episode/6a918c15a0210c197dc9c039?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-09-04_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-09-04_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "中国一级半市场的水下江湖-续集｜串台苔藓之火"
     },
@@ -442,7 +735,7 @@
       "episode_no": 153,
       "guid": "6a97f287f03e74ee6b03ea5b",
       "id": "3ba02ac78c9b59a7bc34e54d19e1e75d10d44907b6010c5b47dcd73748877cff",
-      "index_status": "✅",
+      "index_status": "✅ 已处理（2026-09-03 xiaoyuzhou-zhangxiaojun_zengming）",
       "kind": "podcast_episode",
       "platform": "xiaoyuzhou",
       "report": {
@@ -459,8 +752,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《153. 和曾鸣聊产业史观：残酷的真相、会消亡的公司、优秀≠卓越、“OAI、Anth大概率不是原生时代大赢家”》。来源：https://www.xiaoyuzhoufm.com/episode/6a97f287f03e74ee6b03ea5b?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": false,
-        "suggested_report_path": "podcast-learning/reports/2026-09-03_xiaoyuzhou-zhangxiaojun_episode-153.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-09-03_xiaoyuzhou-zhangxiaojun_episode-153.md"
       },
       "title": "153. 和曾鸣聊产业史观：残酷的真相、会消亡的公司、优秀≠卓越、“OAI、Anth大概率不是原生时代大赢家”"
     },
@@ -488,8 +780,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《272.从飞书基座到Agent优先，豆包工作All in one紧追WorkBuddy》。来源：https://www.xiaoyuzhoufm.com/episode/6a981121a0210c197dcc5e6e?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-09-02_xiaoyuzhou-luanfanshu_episode-272.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-09-02_xiaoyuzhou-luanfanshu_episode-272.md"
       },
       "title": "272.从飞书基座到Agent优先，豆包工作All in one紧追WorkBuddy"
     },
@@ -517,8 +808,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《对卷卷的3小时访谈：从抖音到AI 3D、创业的过山车、成为制造业OS的野心、基础模型不会吞噬一切！》。来源：https://www.xiaoyuzhoufm.com/episode/6a97a9daa0210c197dcc1ba0?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-09-02_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-09-02_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "对卷卷的3小时访谈：从抖音到AI 3D、创业的过山车、成为制造业OS的野心、基础模型不会吞噬一切！"
     },
@@ -546,8 +836,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《AI李时珍带你“尝百草”---小宇宙先声活动演讲---91页PPT solo》。来源：https://www.xiaoyuzhoufm.com/episode/6a97d6a8f03e74ee6b03d6a6?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-09-02_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-09-02_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "AI李时珍带你“尝百草”---小宇宙先声活动演讲---91页PPT solo"
     },
@@ -575,8 +864,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《模型到底吃不吃应用？--从 Canva、Figma 到美图， 看 AI 应用公司的两种命运》。来源：https://www.xiaoyuzhoufm.com/episode/6a9281bea0210c197dca0307?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-08-31_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-08-31_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "模型到底吃不吃应用？--从 Canva、Figma 到美图， 看 AI 应用公司的两种命运"
     },
@@ -604,8 +892,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《AI 下半场，不会只剩一个超级模型｜对谈 Kevin Ding：Pyromind 创始人/CEO》。来源：https://www.xiaoyuzhoufm.com/episode/6a90fc5e1352af56ff3d48af?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-08-30_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-08-30_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "AI 下半场，不会只剩一个超级模型｜对谈 Kevin Ding：Pyromind 创始人/CEO"
     },
@@ -633,8 +920,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《一个人、两周、数百美元，如何训出登顶 Hugging Face 的模型 \\| 对谈研究员逯雨鑫》。来源：https://www.xiaoyuzhoufm.com/episode/6a8ed6e7ef65145dfcc5d249?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-08-29_xiaoyuzhou-42zhangjing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-08-29_xiaoyuzhou-42zhangjing_episode-x.md"
       },
       "title": "一个人、两周、数百美元，如何训出登顶 Hugging Face 的模型 \\| 对谈研究员逯雨鑫"
     },
@@ -644,16 +930,16 @@
       "duration": "2h04m",
       "episode_no": 152,
       "guid": "6a8eadd61352af56ff3c6017",
-      "id": "dd3ab0dd9142ee366af833ca8609179f1f7851ac49226d585eb1f10a3fa1817e",
-      "index_status": "报告]]）",
+      "id": "9a5418156a5bfa4eff136a96d33a9abdae28284ca1b78e073a439a5b1ec08ed1",
+      "index_status": "✅ 已处理（2026-09-02 multi_kimi-k3-dueling-reads）",
       "kind": "podcast_episode",
       "platform": "xiaoyuzhou",
       "report": {
-        "path": "podcast-learning/reports/2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report.md",
-        "raw_url": "https://raw.githubusercontent.com/Everloster/EverAgent/main/podcast-learning/reports/2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report.md",
-        "title": "张小珺152｜孙宇涛领读 Kimi K3 技术报告：三维 scaling、注意力谱系与 infra co-design",
-        "updated_on": "2026-09-02",
-        "url": "https://github.com/Everloster/EverAgent/blob/main/podcast-learning/reports/2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report.md"
+        "path": "podcast-learning/reports/2026-09-02_multi_kimi-k3-dueling-reads.md",
+        "raw_url": "https://raw.githubusercontent.com/Everloster/EverAgent/main/podcast-learning/reports/2026-09-02_multi_kimi-k3-dueling-reads.md",
+        "title": "Kimi K3 一鱼两吃：张小珺152 × 晚点聊177 对照精读",
+        "updated_on": "2026-10-20",
+        "url": "https://github.com/Everloster/EverAgent/blob/main/podcast-learning/reports/2026-09-02_multi_kimi-k3-dueling-reads.md"
       },
       "show": "张小珺商业访谈录",
       "show_slug": "zhangxiaojun",
@@ -662,8 +948,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《152. 领读Kimi K3技术报告：从架构创新聊起，注意力美学、多教师蒸馏和开源MoE》。来源：https://www.xiaoyuzhoufm.com/episode/6a8eadd61352af56ff3c6017?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": false,
-        "suggested_report_path": "podcast-learning/reports/2026-08-26_xiaoyuzhou-zhangxiaojun_episode-152.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-08-26_xiaoyuzhou-zhangxiaojun_episode-152.md"
       },
       "title": "152. 领读Kimi K3技术报告：从架构创新聊起，注意力美学、多教师蒸馏和开源MoE"
     },
@@ -691,8 +976,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《中国一级半市场的水下江湖（5年-183期-5032条交易线索）》。来源：https://www.xiaoyuzhoufm.com/episode/6a89cfbe1352af56ff3a6049?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-08-24_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-08-24_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "中国一级半市场的水下江湖（5年-183期-5032条交易线索）"
     },
@@ -720,8 +1004,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《22 岁的具身 CEO、5 轮融资、过亿美元、“不知天有多高”、“一年吃了十年的苦”｜对谈黄一：萝博派对创始人/CEO》。来源：https://www.xiaoyuzhoufm.com/episode/6a8aab34ef65145dfcc3ea11?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-08-23_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-08-23_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "22 岁的具身 CEO、5 轮融资、过亿美元、“不知天有多高”、“一年吃了十年的苦”｜对谈黄一：萝博派对创始人/CEO"
     },
@@ -749,8 +1032,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《271.唐朝都要不存在了？为什么伪史论会在今年大爆发？》。来源：https://www.xiaoyuzhoufm.com/episode/6a8813df1352af56ff39cc0e?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-08-21_xiaoyuzhou-luanfanshu_episode-271.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-08-21_xiaoyuzhou-luanfanshu_episode-271.md"
       },
       "title": "271.唐朝都要不存在了？为什么伪史论会在今年大爆发？"
     },
@@ -778,8 +1060,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《V93.小米干不过华为？深度解析两家商业逻辑与危机》。来源：https://www.xiaoyuzhoufm.com/episode/6a87d39a1352af56ff39a4b9?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-08-21_xiaoyuzhou-daxiaoma-keji_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-08-21_xiaoyuzhou-daxiaoma-keji_episode-x.md"
       },
       "title": "V93.小米干不过华为？深度解析两家商业逻辑与危机"
     },
@@ -807,8 +1088,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《151. 17岁被2026年ICML收录论文的小少年：我bet开心！开心！开心！》。来源：https://www.xiaoyuzhoufm.com/episode/6a8472b95aeb2a5712e8de78?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-08-19_xiaoyuzhou-zhangxiaojun_episode-151.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-08-19_xiaoyuzhou-zhangxiaojun_episode-151.md"
       },
       "title": "151. 17岁被2026年ICML收录论文的小少年：我bet开心！开心！开心！"
     },
@@ -836,8 +1116,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《150. 对英伟达研究副总裁刘洺堉的4小时访谈：功夫、Cosmos 3、开源世界模型、黄仁勋、你不需要击败所有对手》。来源：https://www.xiaoyuzhoufm.com/episode/6a7cbeb017676351c5710266?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-08-12_xiaoyuzhou-zhangxiaojun_episode-150.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-08-12_xiaoyuzhou-zhangxiaojun_episode-150.md"
       },
       "title": "150. 对英伟达研究副总裁刘洺堉的4小时访谈：功夫、Cosmos 3、开源世界模型、黄仁勋、你不需要击败所有对手"
     },
@@ -865,8 +1144,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《「模型能力已经够了，要卷就卷 infra」｜对谈戴冠兰：Runta 创始人》。来源：https://www.xiaoyuzhoufm.com/episode/6a773808c4079d62c57f5802?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-08-09_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-08-09_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "「模型能力已经够了，要卷就卷 infra」｜对谈戴冠兰：Runta 创始人"
     },
@@ -894,8 +1172,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《AI by the numbers-23页PPT solo》。来源：https://www.xiaoyuzhoufm.com/episode/6a789a5ac4079d62c57fca54?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-08-09_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-08-09_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "AI by the numbers-23页PPT solo"
     },
@@ -923,8 +1200,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《从蒸馏到合成数据到 RSI，模型竞争的下一个焦点是什么？｜对谈 Evolvent AI 联创孟繁青》。来源：https://www.xiaoyuzhoufm.com/episode/6a75424b000a55a9bb042560?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-08-08_xiaoyuzhou-42zhangjing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-08-08_xiaoyuzhou-42zhangjing_episode-x.md"
       },
       "title": "从蒸馏到合成数据到 RSI，模型竞争的下一个焦点是什么？｜对谈 Evolvent AI 联创孟繁青"
     },
@@ -952,8 +1228,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《「热爱一个行业15年的理由是什么？」｜对谈汪天凡：我要投真正的快乐、投最纯的愿景、投人性的光辉【公路播客】》。来源：https://www.xiaoyuzhoufm.com/episode/6a6eb9e71b5e24969ce77ab5?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-08-02_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-08-02_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "「热爱一个行业15年的理由是什么？」｜对谈汪天凡：我要投真正的快乐、投最纯的愿景、投人性的光辉【公路播客】"
     },
@@ -981,8 +1256,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《270.大厂押注AI办公，飞书和钉钉却先成了配角》。来源：https://www.xiaoyuzhoufm.com/episode/6a6da28d1b5e24969ce72d4c?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-08-01_xiaoyuzhou-luanfanshu_episode-270.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-08-01_xiaoyuzhou-luanfanshu_episode-270.md"
       },
       "title": "270.大厂押注AI办公，飞书和钉钉却先成了配角"
     },
@@ -1010,8 +1284,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《你真的信WorkBuddy有2000万月活？》。来源：https://www.xiaoyuzhoufm.com/episode/6a6e285e1b5e24969ce760fa?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-08-01_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-08-01_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "你真的信WorkBuddy有2000万月活？"
     },
@@ -1039,8 +1312,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《149. 亲历中美neo labs资本狂潮，和清华刘子鸣聊：AI for AI、机制可解释性和Max Tegmark》。来源：https://www.xiaoyuzhoufm.com/episode/6a69b07eb581962ce2bd4d97?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-07-30_xiaoyuzhou-zhangxiaojun_episode-149.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-07-30_xiaoyuzhou-zhangxiaojun_episode-149.md"
       },
       "title": "149. 亲历中美neo labs资本狂潮，和清华刘子鸣聊：AI for AI、机制可解释性和Max Tegmark"
     },
@@ -1051,7 +1323,7 @@
       "episode_no": 148,
       "guid": "6a66ed17a3fec224d5a3f744",
       "id": "dcadf684a0e1bde8c683ae159da10e05094a94611cf3b40fac9c6f392223df42",
-      "index_status": "报告]]）",
+      "index_status": "✅ 已处理（2026-07-28 xiaoyuzhou-zhangxiaojun_youkaichao）",
       "kind": "podcast_episode",
       "platform": "xiaoyuzhou",
       "report": {
@@ -1068,8 +1340,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《148. 对游凯超3小时访谈：开源Infra、和模型Co-design 、“如果vLLM失败，我们会后悔一辈子”》。来源：https://www.xiaoyuzhoufm.com/episode/6a66ed17a3fec224d5a3f744?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": false,
-        "suggested_report_path": "podcast-learning/reports/2026-07-28_xiaoyuzhou-zhangxiaojun_episode-148.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-07-28_xiaoyuzhou-zhangxiaojun_episode-148.md"
       },
       "title": "148. 对游凯超3小时访谈：开源Infra、和模型Co-design 、“如果vLLM失败，我们会后悔一辈子”"
     },
@@ -1097,8 +1368,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《V92.我用AI重活一遍！AI提升幸福感的9种姿势？》。来源：https://www.xiaoyuzhoufm.com/episode/6a66e136a3fec224d5a3f00f?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-07-27_xiaoyuzhou-daxiaoma-keji_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-07-27_xiaoyuzhou-daxiaoma-keji_episode-x.md"
       },
       "title": "V92.我用AI重活一遍！AI提升幸福感的9种姿势？"
     },
@@ -1126,8 +1396,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《11 年，110 亿美金，然后呢？｜对话 Airwallex 吴恺：AI 时代，下一站 1000 亿》。来源：https://www.xiaoyuzhoufm.com/episode/6a6320d16356eb2d9be7bd07?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-07-26_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-07-26_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "11 年，110 亿美金，然后呢？｜对话 Airwallex 吴恺：AI 时代，下一站 1000 亿"
     },
@@ -1155,8 +1424,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《147. 和蚂蚁灵波沈宇军聊：机器人原生基础模型、大脑和本体的关系、预训练与数据scale up、老师汤晓鸥》。来源：https://www.xiaoyuzhoufm.com/episode/6a5f79b3a3fec224d5a128cd?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-07-22_xiaoyuzhou-zhangxiaojun_episode-147.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-07-22_xiaoyuzhou-zhangxiaojun_episode-147.md"
       },
       "title": "147. 和蚂蚁灵波沈宇军聊：机器人原生基础模型、大脑和本体的关系、预训练与数据scale up、老师汤晓鸥"
     },
@@ -1184,8 +1452,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《AI抢走内存，K型消费下我们还要做硬件吗？---串台开始连接 LinkStart》。来源：https://www.xiaoyuzhoufm.com/episode/6a5f100a6356eb2d9be5eee3?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-07-22_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-07-22_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "AI抢走内存，K型消费下我们还要做硬件吗？---串台开始连接 LinkStart"
     },
@@ -1213,8 +1480,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《2026AI狂飙、资本抽水与我们的“恩格斯暂停”---串台进击波财经》。来源：https://www.xiaoyuzhoufm.com/episode/6a5ee6f76356eb2d9be5d600?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-07-21_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-07-21_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "2026AI狂飙、资本抽水与我们的“恩格斯暂停”---串台进击波财经"
     },
@@ -1242,8 +1508,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《AI 发展了 4 年，把应用发展没了？｜AI 年中复盘》。来源：https://www.xiaoyuzhoufm.com/episode/6a5b98a66356eb2d9be4ad2c?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-07-19_xiaoyuzhou-42zhangjing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-07-19_xiaoyuzhou-42zhangjing_episode-x.md"
       },
       "title": "AI 发展了 4 年，把应用发展没了？｜AI 年中复盘"
     },
@@ -1271,8 +1536,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《快一点！再快一点！快到世界能实时生成｜和生数科技张金涛聊：Vidu S1、推理加速、实时交互视频》。来源：https://www.xiaoyuzhoufm.com/episode/6a5c6a91a3fec224d59fd014?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-07-19_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-07-19_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "快一点！再快一点！快到世界能实时生成｜和生数科技张金涛聊：Vidu S1、推理加速、实时交互视频"
     },
@@ -1283,7 +1547,7 @@
       "episode_no": null,
       "guid": "6a5a91e1a3fec224d59f4ddd",
       "id": "f7be0507754e83e5197c3a8c8a431b17cb48cd6feb7de97bcbe04b10af251be4",
-      "index_status": "—",
+      "index_status": "✅ 已处理（2026-07-17 xiaoyuzhou-tulong-zhishu_2026h1-ai-review）",
       "kind": "podcast_episode",
       "platform": "xiaoyuzhou",
       "report": {
@@ -1300,8 +1564,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《重估一切，文艺复兴---2026H1 AI行业观察》。来源：https://www.xiaoyuzhoufm.com/episode/6a5a91e1a3fec224d59f4ddd?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": false,
-        "suggested_report_path": "podcast-learning/reports/2026-07-17_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-07-17_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "重估一切，文艺复兴---2026H1 AI行业观察"
     },
@@ -1329,8 +1592,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《146. 对Physical Intelligence柯丽一鸣4小时访谈：Pi的开源模型研究，机器人的江湖、族谱与主角》。来源：https://www.xiaoyuzhoufm.com/episode/6a57a05da4972c496dfc67f1?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-07-16_xiaoyuzhou-zhangxiaojun_episode-146.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-07-16_xiaoyuzhou-zhangxiaojun_episode-146.md"
       },
       "title": "146. 对Physical Intelligence柯丽一鸣4小时访谈：Pi的开源模型研究，机器人的江湖、族谱与主角"
     },
@@ -1358,8 +1620,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《AI4S 需要狂人与野心家｜对话英灵殿 Odin：\"如果神存在，我怎能容忍自己不是神？\"【公路播客】》。来源：https://www.xiaoyuzhoufm.com/episode/6a5199381e32575f5eb48ce4?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-07-12_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-07-12_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "AI4S 需要狂人与野心家｜对话英灵殿 Odin：\"如果神存在，我怎能容忍自己不是神？\"【公路播客】"
     },
@@ -1387,8 +1648,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《269.卷规模 VS 卷创作：真人短剧的两种生存模式》。来源：https://www.xiaoyuzhoufm.com/episode/6a4f777d1e32575f5eb3cbc1?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-07-09_xiaoyuzhou-luanfanshu_episode-269.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-07-09_xiaoyuzhou-luanfanshu_episode-269.md"
       },
       "title": "269.卷规模 VS 卷创作：真人短剧的两种生存模式"
     },
@@ -1416,8 +1676,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《Agent 元年第 500 天：什么在消失，什么在诞生——为什么我们不该再投资 GUI 思维的软件？》。来源：https://www.xiaoyuzhoufm.com/episode/6a4511d92e335a35a80c8431?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-07-01_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-07-01_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "Agent 元年第 500 天：什么在消失，什么在诞生——为什么我们不该再投资 GUI 思维的软件？"
     },
@@ -1445,8 +1704,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《World Model-世界模型也有Scaling Law吗？》。来源：https://www.xiaoyuzhoufm.com/episode/6a40c46d9d2f5743683f00a8?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-06-29_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-06-29_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "World Model-世界模型也有Scaling Law吗？"
     },
@@ -1474,8 +1732,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《我遇到了第一个真正想买的陪伴机器人！｜对话世博：越伴动力创始人【公路播客】》。来源：https://www.xiaoyuzhoufm.com/episode/6a3f281f9d2f5743683e81b2?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-06-28_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-06-28_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "我遇到了第一个真正想买的陪伴机器人！｜对话世博：越伴动力创始人【公路播客】"
     },
@@ -1503,8 +1760,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《少有的深度参与过字节、美团组织建设的人｜对谈 AI 创业者魏小康》。来源：https://www.xiaoyuzhoufm.com/episode/6a3e50142e335a35a809d5b4?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-06-27_xiaoyuzhou-42zhangjing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-06-27_xiaoyuzhou-42zhangjing_episode-x.md"
       },
       "title": "少有的深度参与过字节、美团组织建设的人｜对谈 AI 创业者魏小康"
     },
@@ -1532,8 +1788,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《268.AI时代，个人工作台会重新回到手机吗？》。来源：https://www.xiaoyuzhoufm.com/episode/6a3bdd319d2f5743683d4841?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-06-24_xiaoyuzhou-luanfanshu_episode-268.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-06-24_xiaoyuzhou-luanfanshu_episode-268.md"
       },
       "title": "268.AI时代，个人工作台会重新回到手机吗？"
     },
@@ -1561,8 +1816,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《说好的艺术家呢？--- AI时代，内容工业的三次死亡与创作者的重生》。来源：https://www.xiaoyuzhoufm.com/episode/6a3b7fbb2e335a35a808904e?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-06-24_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-06-24_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "说好的艺术家呢？--- AI时代，内容工业的三次死亡与创作者的重生"
     },
@@ -1590,8 +1844,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《对话 MiniMax 闫俊杰：M3、10X 计划、10T 模型、和智能的终局》。来源：https://www.xiaoyuzhoufm.com/episode/6a374ab075ba9e0c53368f7e?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-06-21_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-06-21_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "对话 MiniMax 闫俊杰：M3、10X 计划、10T 模型、和智能的终局"
     },
@@ -1619,8 +1872,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《因果路线，才能通往「世界模型」的终局？｜对话黄碧薇：Aether AI 创始人》。来源：https://www.xiaoyuzhoufm.com/episode/6a333a614233e62bc54ba990?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-06-18_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-06-18_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "因果路线，才能通往「世界模型」的终局？｜对话黄碧薇：Aether AI 创始人"
     },
@@ -1648,8 +1900,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《从开源到 Agent，从组织到个体：AIEC 大会现场侧记》。来源：https://www.xiaoyuzhoufm.com/episode/6a337d604233e62bc54bd46b?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-06-18_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-06-18_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "从开源到 Agent，从组织到个体：AIEC 大会现场侧记"
     },
@@ -1677,8 +1928,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《泡沫的四个必要不充分条件 \\| 对谈经济学者朱宁教授》。来源：https://www.xiaoyuzhoufm.com/episode/6a2a808262c3d8534722ac02?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-06-13_xiaoyuzhou-42zhangjing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-06-13_xiaoyuzhou-42zhangjing_episode-x.md"
       },
       "title": "泡沫的四个必要不充分条件 \\| 对谈经济学者朱宁教授"
     },
@@ -1706,8 +1956,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《145. 口述SpaceX开发史：和前高管洪力德聊，马斯克用人观、最大IPO、太空与AI、人类文明扩张前奏？》。来源：https://www.xiaoyuzhoufm.com/episode/6a2be5da43a22a695582ad20?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-06-12_xiaoyuzhou-zhangxiaojun_episode-145.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-06-12_xiaoyuzhou-zhangxiaojun_episode-145.md"
       },
       "title": "145. 口述SpaceX开发史：和前高管洪力德聊，马斯克用人观、最大IPO、太空与AI、人类文明扩张前奏？"
     },
@@ -1735,8 +1984,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《发券、裂变、极速版，如何用红包设计增长？丨字节跳动 第8集》。来源：https://www.xiaoyuzhoufm.com/episode/6a2be12243a22a695582ab90?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-06-12_xiaoyuzhou-luanfanshu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-06-12_xiaoyuzhou-luanfanshu_episode-x.md"
       },
       "title": "发券、裂变、极速版，如何用红包设计增长？丨字节跳动 第8集"
     },
@@ -1764,8 +2012,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《高手怎么用 AI？普通人怎么学 AI？投资人如何投 AI？｜对谈课代表立正》。来源：https://www.xiaoyuzhoufm.com/episode/6a275ed57444b5722235a897?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-06-10_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-06-10_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "高手怎么用 AI？普通人怎么学 AI？投资人如何投 AI？｜对谈课代表立正"
     },
@@ -1793,8 +2040,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《144. 对阳萌的4小时访谈：消费电子死与生、第三类公司、端侧模型、产品方法、游戏模式》。来源：https://www.xiaoyuzhoufm.com/episode/6a2543dcb30e1571aea20d0b?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-06-08_xiaoyuzhou-zhangxiaojun_episode-144.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-06-08_xiaoyuzhou-zhangxiaojun_episode-144.md"
       },
       "title": "144. 对阳萌的4小时访谈：消费电子死与生、第三类公司、端侧模型、产品方法、游戏模式"
     },
@@ -1822,8 +2068,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《OpenAI 和 Anthropic 共同看好的 FDE：AI 时代的新岗位出现，旧分工松动｜对谈 Rolling AI》。来源：https://www.xiaoyuzhoufm.com/episode/6a1e4022ac7bdb080c348b41?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-06-03_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-06-03_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "OpenAI 和 Anthropic 共同看好的 FDE：AI 时代的新岗位出现，旧分工松动｜对谈 Rolling AI"
     },
@@ -1851,8 +2096,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《“悲观者正确，乐观者成功”，和好友亚婷聊聊AI行业的种种》。来源：https://www.xiaoyuzhoufm.com/episode/6a1ed39db30e1571ae9f85ee?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-06-03_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-06-03_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "“悲观者正确，乐观者成功”，和好友亚婷聊聊AI行业的种种"
     },
@@ -1880,8 +2124,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《267.3000块成本，3.5亿次播放，AI短剧怎么在抖音挣钱？》。来源：https://www.xiaoyuzhoufm.com/episode/6a1d9e487460cabdeb597a29?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-06-01_xiaoyuzhou-luanfanshu_episode-267.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-06-01_xiaoyuzhou-luanfanshu_episode-267.md"
       },
       "title": "267.3000块成本，3.5亿次播放，AI短剧怎么在抖音挣钱？"
     },
@@ -1909,8 +2152,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《最后的“手搓”--- AI司马迁的ima使用进化史》。来源：https://www.xiaoyuzhoufm.com/episode/6a1c26687460cabdeb58bf36?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-05-31_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-05-31_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "最后的“手搓”--- AI司马迁的ima使用进化史"
     },
@@ -1938,8 +2180,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《一切都是Vibe的时代，小红书为什么要去买世界杯？---串台翻转体育》。来源：https://www.xiaoyuzhoufm.com/episode/6a1aa43cac7bdb080c332624?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-05-30_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-05-30_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "一切都是Vibe的时代，小红书为什么要去买世界杯？---串台翻转体育"
     },
@@ -1967,8 +2208,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《全面压制，不留空档：字节跳动如何做增长？｜字节跳动 第7集》。来源：https://www.xiaoyuzhoufm.com/episode/6a1953f9ac7bdb080c32baa5?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-05-29_xiaoyuzhou-luanfanshu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-05-29_xiaoyuzhou-luanfanshu_episode-x.md"
       },
       "title": "全面压制，不留空档：字节跳动如何做增长？｜字节跳动 第7集"
     },
@@ -1996,8 +2236,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《143. 对何小鹏的第二次访谈：更大赌注、人形机器人Iron诞生、那场意外、技术剧变下CEO、GX和缝合怪》。来源：https://www.xiaoyuzhoufm.com/episode/6a170f747460cabdeb56dabb?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-05-28_xiaoyuzhou-zhangxiaojun_episode-143.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-05-28_xiaoyuzhou-zhangxiaojun_episode-143.md"
       },
       "title": "143. 对何小鹏的第二次访谈：更大赌注、人形机器人Iron诞生、那场意外、技术剧变下CEO、GX和缝合怪"
     },
@@ -2025,8 +2264,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《142. 雨森的创投观察第2集：Harness、下一个字节、2026大机会和Stanley Druckenmiller》。来源：https://www.xiaoyuzhoufm.com/episode/6a15a2cbff7b9a8c0a5b953f?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-05-27_xiaoyuzhou-zhangxiaojun_episode-142.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-05-27_xiaoyuzhou-zhangxiaojun_episode-142.md"
       },
       "title": "142. 雨森的创投观察第2集：Harness、下一个字节、2026大机会和Stanley Druckenmiller"
     },
@@ -2054,8 +2292,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《2026 AI 游戏全景扫描：四层图景、三大误区、一个共识缺口｜对谈 405 游局筱宁》。来源：https://www.xiaoyuzhoufm.com/episode/6a11a57c8b5c94538e98794d?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-05-27_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-05-27_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "2026 AI 游戏全景扫描：四层图景、三大误区、一个共识缺口｜对谈 405 游局筱宁"
     },
@@ -2083,8 +2320,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《AI行业的收钱、花钱与赚钱---串台赛博对话》。来源：https://www.xiaoyuzhoufm.com/episode/6a169508c6d2b9e2f8808c13?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-05-27_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-05-27_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "AI行业的收钱、花钱与赚钱---串台赛博对话"
     },
@@ -2112,8 +2348,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《一个 AI 创始人的虚荣心、装，和愚昧之巅｜对谈 invoko.ai 创始人梦琪》。来源：https://www.xiaoyuzhoufm.com/episode/6a100e7da7621e15d0c88337?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-05-23_xiaoyuzhou-42zhangjing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-05-23_xiaoyuzhou-42zhangjing_episode-x.md"
       },
       "title": "一个 AI 创始人的虚荣心、装，和愚昧之巅｜对谈 invoko.ai 创始人梦琪"
     },
@@ -2141,8 +2376,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《人类和 AI Agent 的最佳配合方式，还没被发明｜对谈 Paperboy》。来源：https://www.xiaoyuzhoufm.com/episode/6a0be0cfe1eb34a939abced5?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-05-20_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-05-20_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "人类和 AI Agent 的最佳配合方式，还没被发明｜对谈 Paperboy"
     },
@@ -2170,8 +2404,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《141. Freda的投资札记第2集：Tokenmaxxing、把电机塞进蒸汽机、接力赛变篮球赛、孤独、人的连接》。来源：https://www.xiaoyuzhoufm.com/episode/6a09d58b1b7bd502955258ab?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-05-18_xiaoyuzhou-zhangxiaojun_episode-141.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-05-18_xiaoyuzhou-zhangxiaojun_episode-141.md"
       },
       "title": "141. Freda的投资札记第2集：Tokenmaxxing、把电机塞进蒸汽机、接力赛变篮球赛、孤独、人的连接"
     },
@@ -2199,8 +2432,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《当软件容易被创作，新时代的产品长什么样？ \\| 对谈 Albert》。来源：https://www.xiaoyuzhoufm.com/episode/6a059d321b7bd50295257a5e?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-05-16_xiaoyuzhou-42zhangjing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-05-16_xiaoyuzhou-42zhangjing_episode-x.md"
       },
       "title": "当软件容易被创作，新时代的产品长什么样？ \\| 对谈 Albert"
     },
@@ -2228,8 +2460,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《头腾大战八年后，再把字节和腾讯在各个战场上的竞争逐一拆开｜字节跳动 第6集》。来源：https://www.xiaoyuzhoufm.com/episode/6a02f59ce1eb34a9393fb269?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-05-12_xiaoyuzhou-luanfanshu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-05-12_xiaoyuzhou-luanfanshu_episode-x.md"
       },
       "title": "头腾大战八年后，再把字节和腾讯在各个战场上的竞争逐一拆开｜字节跳动 第6集"
     },
@@ -2257,8 +2488,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《140. 对姚顺宇的4小时访谈：请允许我小疯一下！在Anthropic和Gemini训模型、技术预测、英雄主义已过去》。来源：https://www.xiaoyuzhoufm.com/episode/6a00aa051b7bd50295dfe41d?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-05-11_xiaoyuzhou-zhangxiaojun_episode-140.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-05-11_xiaoyuzhou-zhangxiaojun_episode-140.md"
       },
       "title": "140. 对姚顺宇的4小时访谈：请允许我小疯一下！在Anthropic和Gemini训模型、技术预测、英雄主义已过去"
     },
@@ -2286,8 +2516,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《没有中间地带：大国AI博弈、效率碾压和白领的“恩格斯暂停”---串台大内》。来源：https://www.xiaoyuzhoufm.com/episode/69fd6ce61b7bd50295b5a3ad?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-05-08_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-05-08_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "没有中间地带：大国AI博弈、效率碾压和白领的“恩格斯暂停”---串台大内"
     },
@@ -2315,8 +2544,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《十年后，Faker坐到了李世石的旁边》。来源：https://www.xiaoyuzhoufm.com/episode/69fad4a5e05c0efcd6f4eaec?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-05-06_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-05-06_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "十年后，Faker坐到了李世石的旁边"
     },
@@ -2344,8 +2572,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《探秘 Claude Code，搞懂 Agent Harness｜对谈来新璐》。来源：https://www.xiaoyuzhoufm.com/episode/69f2e83fbb3ffa11e59dec82?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-05-05_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-05-05_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "探秘 Claude Code，搞懂 Agent Harness｜对谈来新璐"
     },
@@ -2373,8 +2600,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《139. 【Agent的综述】和苏煜聊Agent技术史、OpenClaw Moment、边界的消弭和社会的辐射》。来源：https://www.xiaoyuzhoufm.com/episode/69f3857a5c60a99573fea0c2?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-05-01_xiaoyuzhou-zhangxiaojun_episode-139.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-05-01_xiaoyuzhou-zhangxiaojun_episode-139.md"
       },
       "title": "139. 【Agent的综述】和苏煜聊Agent技术史、OpenClaw Moment、边界的消弭和社会的辐射"
     },
@@ -2402,8 +2628,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《语言、coding、多模态，到底谁坐AI的主桌？---狂喜98页PPT-solo》。来源：https://www.xiaoyuzhoufm.com/episode/69f2c01ffbed7ba94126a402?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-04-30_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-04-30_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "语言、coding、多模态，到底谁坐AI的主桌？---狂喜98页PPT-solo"
     },
@@ -2431,8 +2656,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《266.从红果到AI短剧：谁在革谁的命？》。来源：https://www.xiaoyuzhoufm.com/episode/69f0d90f740bacea8777122d?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-04-28_xiaoyuzhou-luanfanshu_episode-266.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-04-28_xiaoyuzhou-luanfanshu_episode-266.md"
       },
       "title": "266.从红果到AI短剧：谁在革谁的命？"
     },
@@ -2460,8 +2684,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《当我们在讨论 Harness 的时候，我们在讨论什么 \\| 深度对谈: Minimax × Hermes Agent》。来源：https://www.xiaoyuzhoufm.com/episode/69e96b5b1e94ae6921ee3c2b?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-04-28_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-04-28_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "当我们在讨论 Harness 的时候，我们在讨论什么 \\| 深度对谈: Minimax × Hermes Agent"
     },
@@ -2489,8 +2712,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《为什么公司用不好AI？从焦虑到行动的 3 个关键动作｜对谈百融智能张韶峰》。来源：https://www.xiaoyuzhoufm.com/episode/69eb5dfc1d989496e76d373c?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-04-26_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-04-26_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "为什么公司用不好AI？从焦虑到行动的 3 个关键动作｜对谈百融智能张韶峰"
     },
@@ -2518,8 +2740,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《V91.马斯克SpaceX上市，人类最大IPO！中美太空暗战，谁是真正赢家？》。来源：https://www.xiaoyuzhoufm.com/episode/69ec7fe11e94ae69211e634f?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-04-25_xiaoyuzhou-daxiaoma-keji_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-04-25_xiaoyuzhou-daxiaoma-keji_episode-x.md"
       },
       "title": "V91.马斯克SpaceX上市，人类最大IPO！中美太空暗战，谁是真正赢家？"
     },
@@ -2547,8 +2768,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《265.卷王vs平常心：骑手的两种选择》。来源：https://www.xiaoyuzhoufm.com/episode/69eb6b2e1e94ae6921126ceb?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-04-24_xiaoyuzhou-luanfanshu_episode-265.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-04-24_xiaoyuzhou-luanfanshu_episode-265.md"
       },
       "title": "265.卷王vs平常心：骑手的两种选择"
     },
@@ -2576,8 +2796,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《138. 对罗福莉3.5小时访谈：AI范式已然巨变！OpenClaw、Agent范式很吃后训练、卡的分配、组织平权》。来源：https://www.xiaoyuzhoufm.com/episode/69eae15a1e94ae692107cc50?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-04-24_xiaoyuzhou-zhangxiaojun_episode-138.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-04-24_xiaoyuzhou-zhangxiaojun_episode-138.md"
       },
       "title": "138. 对罗福莉3.5小时访谈：AI范式已然巨变！OpenClaw、Agent范式很吃后训练、卡的分配、组织平权"
     },
@@ -2605,8 +2824,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《用 Agent 动力学，和 40 个 Agents 一起为「人 + AI」做产品｜对谈 Slock.ai 创始人 RC》。来源：https://www.xiaoyuzhoufm.com/episode/69e999241e94ae6921f2901d?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-04-23_xiaoyuzhou-42zhangjing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-04-23_xiaoyuzhou-42zhangjing_episode-x.md"
       },
       "title": "用 Agent 动力学，和 40 个 Agents 一起为「人 + AI」做产品｜对谈 Slock.ai 创始人 RC"
     },
@@ -2634,8 +2852,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《Musical.ly如何成为 TikTok？PM眼中的字节产品文化和全球化之路｜字节跳动 第5集》。来源：https://www.xiaoyuzhoufm.com/episode/69e9cc161d989496e752d932?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-04-23_xiaoyuzhou-luanfanshu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-04-23_xiaoyuzhou-luanfanshu_episode-x.md"
       },
       "title": "Musical.ly如何成为 TikTok？PM眼中的字节产品文化和全球化之路｜字节跳动 第5集"
     },
@@ -2663,8 +2880,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《中美AI创业的生态差异---对谈Google Cloud北亚区创投生态负责人》。来源：https://www.xiaoyuzhoufm.com/episode/69ea99ef1d989496e75ecb41?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-04-23_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-04-23_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "中美AI创业的生态差异---对谈Google Cloud北亚区创投生态负责人"
     },
@@ -2692,8 +2908,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《Agent\\TPU\\生态\\安全\\开放，Google Cloud到底在bet什么？-Google Cloud Next速记》。来源：https://www.xiaoyuzhoufm.com/episode/69e9b86a1e94ae6921f519d1?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-04-23_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-04-23_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "Agent\\TPU\\生态\\安全\\开放，Google Cloud到底在bet什么？-Google Cloud Next速记"
     },
@@ -2721,8 +2936,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《把7位黑客松选手请进播客｜冠军、怪才和48小时不眠的野心家》。来源：https://www.xiaoyuzhoufm.com/episode/69e8a1f21e94ae6921e403b9?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-04-22_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-04-22_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "把7位黑客松选手请进播客｜冠军、怪才和48小时不眠的野心家"
     },
@@ -2750,8 +2964,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《264.库克的道德锚点｜过去15年，库克给苹果留下了什么？》。来源：https://www.xiaoyuzhoufm.com/episode/69e7cc921e94ae6921d5683b?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-04-21_xiaoyuzhou-luanfanshu_episode-264.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-04-21_xiaoyuzhou-luanfanshu_episode-264.md"
       },
       "title": "264.库克的道德锚点｜过去15年，库克给苹果留下了什么？"
     },
@@ -2779,8 +2992,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《137. 对洪乐潼的4小时访谈：AI for Math、把数学变成Lean、数学天书中的证明、直觉、被创造与被发现的》。来源：https://www.xiaoyuzhoufm.com/episode/69e4e6951d989496e7fecc7b?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-04-20_xiaoyuzhou-zhangxiaojun_episode-137.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-04-20_xiaoyuzhou-zhangxiaojun_episode-137.md"
       },
       "title": "137. 对洪乐潼的4小时访谈：AI for Math、把数学变成Lean、数学天书中的证明、直觉、被创造与被发现的"
     },
@@ -2808,8 +3020,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《“你有一把能够挖出金子的铲子，肯定不会先给别人用”｜对谈开物纪陆子恒：用AI发明新材料》。来源：https://www.xiaoyuzhoufm.com/episode/69e0344eb977fb2c470e4136?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-04-19_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-04-19_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "“你有一把能够挖出金子的铲子，肯定不会先给别人用”｜对谈开物纪陆子恒：用AI发明新材料"
     },
@@ -2837,8 +3048,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《Vol.95 视频模型内卷、Agent爆发与大厂的焦虑---串台进击波财经》。来源：https://www.xiaoyuzhoufm.com/episode/69e224c91d989496e7db5b12?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-04-17_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-04-17_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "Vol.95 视频模型内卷、Agent爆发与大厂的焦虑---串台进击波财经"
     },
@@ -2866,8 +3076,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《Vol.94 再不聊聊openclaw可能就不需要聊了---串台知本论》。来源：https://www.xiaoyuzhoufm.com/episode/69e0d423b977fb2c471ea30c?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-04-16_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-04-16_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "Vol.94 再不聊聊openclaw可能就不需要聊了---串台知本论"
     },
@@ -2895,8 +3104,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《136. 全球大模型季报第9集：和广密聊，Coding是AGI第二幕、硅谷御三家真相、模型正成为新一代OS》。来源：https://www.xiaoyuzhoufm.com/episode/69de68cfb977fb2c47f1ee14?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-04-14_xiaoyuzhou-zhangxiaojun_episode-136.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-04-14_xiaoyuzhou-zhangxiaojun_episode-136.md"
       },
       "title": "136. 全球大模型季报第9集：和广密聊，Coding是AGI第二幕、硅谷御三家真相、模型正成为新一代OS"
     },
@@ -2924,8 +3132,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《具身智能的滔天大泡沫中，他已经把机器人送进300个家庭｜对话张翼：未来不远创始人/CEO》。来源：https://www.xiaoyuzhoufm.com/episode/69dae02ab977fb2c47b033c0?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-04-14_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-04-14_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "具身智能的滔天大泡沫中，他已经把机器人送进300个家庭｜对话张翼：未来不远创始人/CEO"
     },
@@ -2953,8 +3160,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《135. 和自然选择创始人Tristan聊，Elys、赛博分身、灵魂、Context的获取与流动和AI社交网络》。来源：https://www.xiaoyuzhoufm.com/episode/69d8bbdfe2c8be3155dcc2fe?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-04-10_xiaoyuzhou-zhangxiaojun_episode-135.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-04-10_xiaoyuzhou-zhangxiaojun_episode-135.md"
       },
       "title": "135. 和自然选择创始人Tristan聊，Elys、赛博分身、灵魂、Context的获取与流动和AI社交网络"
     },
@@ -2982,8 +3188,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《“AGI 来了？我用了一周，头皮发麻“｜对谈张昊然：Moxt 联合创始人》。来源：https://www.xiaoyuzhoufm.com/episode/69ca3aa4b977fb2c479fe088?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-04-06_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-04-06_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "“AGI 来了？我用了一周，头皮发麻“｜对谈张昊然：Moxt 联合创始人"
     },
@@ -3011,8 +3216,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《Vol.93 AI面前，互联网其实也是传统行业---串台难得正经》。来源：https://www.xiaoyuzhoufm.com/episode/69cb6c97e2c8be3155fc4859?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-04-02_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-04-02_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "Vol.93 AI面前，互联网其实也是传统行业---串台难得正经"
     },
@@ -3040,8 +3244,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《她想造一个 AI 时代的“超级游乐场”｜对谈 Roi：幕间创始人 / CEO》。来源：https://www.xiaoyuzhoufm.com/episode/69b40879b810e066f9c6e6f2?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-04-01_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-04-01_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "她想造一个 AI 时代的“超级游乐场”｜对谈 Roi：幕间创始人 / CEO"
     },
@@ -3069,8 +3272,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《263.Sora死了，Adobe跌了，美图何去何从？》。来源：https://www.xiaoyuzhoufm.com/episode/69cb87c8e2c8be3155ffc21f?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-03-31_xiaoyuzhou-luanfanshu_episode-263.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-03-31_xiaoyuzhou-luanfanshu_episode-263.md"
       },
       "title": "263.Sora死了，Adobe跌了，美图何去何从？"
     },
@@ -3098,8 +3300,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《Vol.92 回头听3月初的播客，感觉有点恍如隔世---串台藏金阁》。来源：https://www.xiaoyuzhoufm.com/episode/69cb42fee2c8be3155f7d2b8?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-03-31_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-03-31_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "Vol.92 回头听3月初的播客，感觉有点恍如隔世---串台藏金阁"
     },
@@ -3127,8 +3328,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《134. 【数据的综述】和谢晨聊，新时代的石油、历史、版图、数据金字塔、定价与Recipe》。来源：https://www.xiaoyuzhoufm.com/episode/69c953b4b977fb2c478df5c3?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-03-30_xiaoyuzhou-zhangxiaojun_episode-134.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-03-30_xiaoyuzhou-zhangxiaojun_episode-134.md"
       },
       "title": "134. 【数据的综述】和谢晨聊，新时代的石油、历史、版图、数据金字塔、定价与Recipe"
     },
@@ -3156,8 +3356,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《「1 亿 TOKEN 俱乐部」挤爆了，AI 的燃料不够了｜对谈于文渊：阿里云百炼技术负责人》。来源：https://www.xiaoyuzhoufm.com/episode/69c24455521e5c0a80c3ff92?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-03-29_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-03-29_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "「1 亿 TOKEN 俱乐部」挤爆了，AI 的燃料不够了｜对谈于文渊：阿里云百炼技术负责人"
     },
@@ -3185,8 +3384,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《Vol.91 数据角度看OpenClaw的企业落地---对谈Oceanbase》。来源：https://www.xiaoyuzhoufm.com/episode/69c67ffde2c8be3155a8420a?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-03-27_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-03-27_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "Vol.91 数据角度看OpenClaw的企业落地---对谈Oceanbase"
     },
@@ -3214,8 +3412,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《OpenClaw 之后，谁将定义主动式 AI 的新战场？｜对谈 AirJelly 黄柏特》。来源：https://www.xiaoyuzhoufm.com/episode/69c1ed91fdc405fbf6f58092?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-03-25_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-03-25_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "OpenClaw 之后，谁将定义主动式 AI 的新战场？｜对谈 AirJelly 黄柏特"
     },
@@ -3243,8 +3440,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《V90.王一博赛车，比亚迪砸钱，资本暗战谁是赢家？》。来源：https://www.xiaoyuzhoufm.com/episode/69c3f218852cf1b8bbddd659?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-03-25_xiaoyuzhou-daxiaoma-keji_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-03-25_xiaoyuzhou-daxiaoma-keji_episode-x.md"
       },
       "title": "V90.王一博赛车，比亚迪砸钱，资本暗战谁是赢家？"
     },
@@ -3272,8 +3468,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《Vol.90 AI加速爆发的2026，我们该如何自处？---对谈潘乱+Koji》。来源：https://www.xiaoyuzhoufm.com/episode/69c138b25058f5000cdcf5af?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-03-24_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-03-24_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "Vol.90 AI加速爆发的2026，我们该如何自处？---对谈潘乱+Koji"
     },
@@ -3301,8 +3496,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《V89.小米新SU7吊打保时捷？理想看懵了》。来源：https://www.xiaoyuzhoufm.com/episode/69bc07122d318777c9c1ac0c?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-03-20_xiaoyuzhou-daxiaoma-keji_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-03-20_xiaoyuzhou-daxiaoma-keji_episode-x.md"
       },
       "title": "V89.小米新SU7吊打保时捷？理想看懵了"
     },
@@ -3330,8 +3524,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《我们是如何定义 OpenClaw for Teams 新产品形态的｜对谈 Kuse&Junior 联创兼 CTO 宇豪》。来源：https://www.xiaoyuzhoufm.com/episode/69bbc8ea3c625cc5ae21b461?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-03-19_xiaoyuzhou-42zhangjing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-03-19_xiaoyuzhou-42zhangjing_episode-x.md"
       },
       "title": "我们是如何定义 OpenClaw for Teams 新产品形态的｜对谈 Kuse&Junior 联创兼 CTO 宇豪"
     },
@@ -3359,8 +3552,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《133. 对谢赛宁的7小时马拉松访谈：世界模型、逃出硅谷、AMI Labs、两次拒绝Ilya、杨立昆、李飞飞和42》。来源：https://www.xiaoyuzhoufm.com/episode/69b77577f8b8079bfa8eb837?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-03-16_xiaoyuzhou-zhangxiaojun_episode-133.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-03-16_xiaoyuzhou-zhangxiaojun_episode-133.md"
       },
       "title": "133. 对谢赛宁的7小时马拉松访谈：世界模型、逃出硅谷、AMI Labs、两次拒绝Ilya、杨立昆、李飞飞和42"
     },
@@ -3388,8 +3580,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《OpenClaw 之后，我只想未来 3-6 个月的事情｜对谈 Sheet0 创始人王文锋》。来源：https://www.xiaoyuzhoufm.com/episode/69b4d2f9f8b8079bfa3ae7f2?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-03-14_xiaoyuzhou-42zhangjing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-03-14_xiaoyuzhou-42zhangjing_episode-x.md"
       },
       "title": "OpenClaw 之后，我只想未来 3-6 个月的事情｜对谈 Sheet0 创始人王文锋"
     },
@@ -3417,8 +3608,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《262.AI的进度条停不下来，你的焦虑也停不下来》。来源：https://www.xiaoyuzhoufm.com/episode/69b121eb9b893f69c72bffcb?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-03-11_xiaoyuzhou-luanfanshu_episode-262.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-03-11_xiaoyuzhou-luanfanshu_episode-262.md"
       },
       "title": "262.AI的进度条停不下来，你的焦虑也停不下来"
     },
@@ -3446,8 +3636,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《Vol.89 AI行业2025年度总结补充篇（V4不等了版）---70页PPT solo》。来源：https://www.xiaoyuzhoufm.com/episode/69adf2bdc8cdeb38c28a1a81?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-03-09_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-03-09_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "Vol.89 AI行业2025年度总结补充篇（V4不等了版）---70页PPT solo"
     },
@@ -3475,8 +3664,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《20 个问题，搞懂 OpenClaw：爆红机制、本质变化、创业机会》。来源：https://www.xiaoyuzhoufm.com/episode/69ab99c15b2d0ed069b9d271?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-03-08_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-03-08_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "20 个问题，搞懂 OpenClaw：爆红机制、本质变化、创业机会"
     },
@@ -3504,8 +3692,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《优化胜率而非赔率，把一件事做到理论上该有的样子｜对谈连续创业者 Albert》。来源：https://www.xiaoyuzhoufm.com/episode/69abf2cec8cdeb38c24b2038?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-03-07_xiaoyuzhou-42zhangjing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-03-07_xiaoyuzhou-42zhangjing_episode-x.md"
       },
       "title": "优化胜率而非赔率，把一件事做到理论上该有的样子｜对谈连续创业者 Albert"
     },
@@ -3533,8 +3720,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《剑桥博士去挖矿：当 AI 遇上「一钻下去千万美金」的行业｜对话相子恒：DeepOptica 创始人/CEO》。来源：https://www.xiaoyuzhoufm.com/episode/69a2a906a22480add66cf5aa?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-03-01_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-03-01_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "剑桥博士去挖矿：当 AI 遇上「一钻下去千万美金」的行业｜对话相子恒：DeepOptica 创始人/CEO"
     },
@@ -3562,8 +3748,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《AI + 游戏 + 社交的新演绎 \\| 对谈 Wanaka 创始人张阳》。来源：https://www.xiaoyuzhoufm.com/episode/69a0b34b66e2c303778cd3ce?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-02-28_xiaoyuzhou-42zhangjing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-02-28_xiaoyuzhou-42zhangjing_episode-x.md"
       },
       "title": "AI + 游戏 + 社交的新演绎 \\| 对谈 Wanaka 创始人张阳"
     },
@@ -3591,8 +3776,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《261.AI时代的社交，越得过微信吗？》。来源：https://www.xiaoyuzhoufm.com/episode/6992beebde29766da9ba802a?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-02-16_xiaoyuzhou-luanfanshu_episode-261.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-02-16_xiaoyuzhou-luanfanshu_episode-261.md"
       },
       "title": "261.AI时代的社交，越得过微信吗？"
     },
@@ -3620,8 +3804,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《V88.中美AI对决：谷歌PK字节，短期完败，长期谁赢？》。来源：https://www.xiaoyuzhoufm.com/episode/6992a327de29766da9b88e24?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-02-16_xiaoyuzhou-daxiaoma-keji_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-02-16_xiaoyuzhou-daxiaoma-keji_episode-x.md"
       },
       "title": "V88.中美AI对决：谷歌PK字节，短期完败，长期谁赢？"
     },
@@ -3649,8 +3832,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《132. 对星海图创始人高继扬的3小时访谈：鲶鱼、曾国藩、Waymo与Momenta的两面、一只狼与许华哲的离开》。来源：https://www.xiaoyuzhoufm.com/episode/698ebb0b66e2c30377510cf6?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-02-13_xiaoyuzhou-zhangxiaojun_episode-132.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-02-13_xiaoyuzhou-zhangxiaojun_episode-132.md"
       },
       "title": "132. 对星海图创始人高继扬的3小时访谈：鲶鱼、曾国藩、Waymo与Momenta的两面、一只狼与许华哲的离开"
     },
@@ -3678,8 +3860,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《被遗忘的全球化：头条模式在印度美国日本 \\| 字节跳动 第4集》。来源：https://www.xiaoyuzhoufm.com/episode/698f0fda66e2c303775a7903?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-02-13_xiaoyuzhou-luanfanshu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-02-13_xiaoyuzhou-luanfanshu_episode-x.md"
       },
       "title": "被遗忘的全球化：头条模式在印度美国日本 \\| 字节跳动 第4集"
     },
@@ -3707,8 +3888,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《那个40亿美金卖掉公司的男人，重回十字路口 \\| 对谈Justin袁菁：创业、生活与那些\"无用之事\"》。来源：https://www.xiaoyuzhoufm.com/episode/698bfa3ca22480add6a15da9?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-02-11_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-02-11_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "那个40亿美金卖掉公司的男人，重回十字路口 \\| 对谈Justin袁菁：创业、生活与那些\"无用之事\""
     },
@@ -3736,8 +3916,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《Vol.88 AI如何解锁2026内容消费的深水区---再次对谈快手磁力引擎郑迅》。来源：https://www.xiaoyuzhoufm.com/episode/69855de670aae7e967d34b63?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-02-09_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-02-09_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "Vol.88 AI如何解锁2026内容消费的深水区---再次对谈快手磁力引擎郑迅"
     },
@@ -3765,8 +3944,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《Vibe Coding 下半场：四大天王，和想赢的人｜对话朱广翔：百度秒哒产品总经理》。来源：https://www.xiaoyuzhoufm.com/episode/6985820dc78b823892eb4642?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-02-08_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-02-08_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "Vibe Coding 下半场：四大天王，和想赢的人｜对话朱广翔：百度秒哒产品总经理"
     },
@@ -3794,8 +3972,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《从 Clawdbot 到 26 年 AI Coding 主题大爆发｜对谈 PingCAP CTO 东旭》。来源：https://www.xiaoyuzhoufm.com/episode/698563a188663289fe80769a?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-02-07_xiaoyuzhou-42zhangjing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-02-07_xiaoyuzhou-42zhangjing_episode-x.md"
       },
       "title": "从 Clawdbot 到 26 年 AI Coding 主题大爆发｜对谈 PingCAP CTO 东旭"
     },
@@ -3823,8 +4000,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《Vol.87 闲侃春节AI红包大战-从元宝红包被微信屏蔽聊起-百岁山组合（潘乱\\阑夕\\明浩）+一泽》。来源：https://www.xiaoyuzhoufm.com/episode/69855b8fc78b823892e62849?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-02-06_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-02-06_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "Vol.87 闲侃春节AI红包大战-从元宝红包被微信屏蔽聊起-百岁山组合（潘乱\\阑夕\\明浩）+一泽"
     },
@@ -3852,8 +4028,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《260.AI时代的珍珠港：元宝被封、千问请客、豆包上春晚》。来源：https://www.xiaoyuzhoufm.com/episode/6984b1f4a6d6e5f9a2cfef85?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-02-05_xiaoyuzhou-luanfanshu_episode-260.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-02-05_xiaoyuzhou-luanfanshu_episode-260.md"
       },
       "title": "260.AI时代的珍珠港：元宝被封、千问请客、豆包上春晚"
     },
@@ -3881,8 +4056,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《他看到的未来，和我们有什么不一样？\\| 对话18岁的涂津豪：DeepSeek 前实习生、阿里数竞 AI 组冠军》。来源：https://www.xiaoyuzhoufm.com/episode/697c3998073030367a6ee5ef?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-02-01_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-02-01_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "他看到的未来，和我们有什么不一样？\\| 对话18岁的涂津豪：DeepSeek 前实习生、阿里数竞 AI 组冠军"
     },
@@ -3910,8 +4084,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《Vol.86 同一代技术，两个系统，181页PPT全记录AI行业的2025》。来源：https://www.xiaoyuzhoufm.com/episode/697cbc24b4be4c149b4b6931?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-01-30_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-01-30_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "Vol.86 同一代技术，两个系统，181页PPT全记录AI行业的2025"
     },
@@ -3939,8 +4112,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《259.从互联网医疗到AI健康：一场新供给革命》。来源：https://www.xiaoyuzhoufm.com/episode/6979b0c9fed1b9fd8d559165?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-01-28_xiaoyuzhou-luanfanshu_episode-259.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-01-28_xiaoyuzhou-luanfanshu_episode-259.md"
       },
       "title": "259.从互联网医疗到AI健康：一场新供给革命"
     },
@@ -3968,8 +4140,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《131. 印奇出任阶跃星辰董事长的访谈：聪明人的诱惑、取舍、超长链路残酷淘汰赛、阶跃函数和超多元方程》。来源：https://www.xiaoyuzhoufm.com/episode/6976bdf0ef1cf272a76fa9f3?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-01-26_xiaoyuzhou-zhangxiaojun_episode-131.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-01-26_xiaoyuzhou-zhangxiaojun_episode-131.md"
       },
       "title": "131. 印奇出任阶跃星辰董事长的访谈：聪明人的诱惑、取舍、超长链路残酷淘汰赛、阶跃函数和超多元方程"
     },
@@ -3997,8 +4168,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《Vol.85 写在DeepSeek发布一年之后，也写在元宝要发10亿红包之后---串台厚雪长坡》。来源：https://www.xiaoyuzhoufm.com/episode/6977580d109824f9e1aa7167?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-01-26_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-01-26_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "Vol.85 写在DeepSeek发布一年之后，也写在元宝要发10亿红包之后---串台厚雪长坡"
     },
@@ -4026,8 +4196,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《视频剪辑的「Cursor 时刻」来了？｜对谈 ChatCut 创始人李凯文：从金马导演到 AI 创业》。来源：https://www.xiaoyuzhoufm.com/episode/697195ab109824f9e1df1e6d?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-01-25_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-01-25_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "视频剪辑的「Cursor 时刻」来了？｜对谈 ChatCut 创始人李凯文：从金马导演到 AI 创业"
     },
@@ -4055,8 +4224,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《130. 张月光创业两年首次访谈：妙鸭不是AI Native产品、流程到上下文设计、One Way Door和乙女游戏》。来源：https://www.xiaoyuzhoufm.com/episode/6970c1e0109824f9e1c60e7a?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-01-22_xiaoyuzhou-zhangxiaojun_episode-130.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-01-22_xiaoyuzhou-zhangxiaojun_episode-130.md"
       },
       "title": "130. 张月光创业两年首次访谈：妙鸭不是AI Native产品、流程到上下文设计、One Way Door和乙女游戏"
     },
@@ -4084,8 +4252,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《Vol.84 数据不再是“后台的沉默基石”：OceanBase 与 00 后开发者眼中的 AI 变局》。来源：https://www.xiaoyuzhoufm.com/episode/696f7965109824f9e1919bc5?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-01-20_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-01-20_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "Vol.84 数据不再是“后台的沉默基石”：OceanBase 与 00 后开发者眼中的 AI 变局"
     },
@@ -4113,8 +4280,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《偏执、野心，与一副 AI 眼镜：顶级产品经理的底层燃料｜对谈理想 SVP 范皓宇》。来源：https://www.xiaoyuzhoufm.com/episode/696b6b3a109824f9e1fe90e2?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-01-18_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-01-18_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "偏执、野心，与一副 AI 眼镜：顶级产品经理的底层燃料｜对谈理想 SVP 范皓宇"
     },
@@ -4142,8 +4308,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《258.对话光帆科技董红光：当耳机长出眼睛， “说一下”开始取代“点十下”》。来源：https://www.xiaoyuzhoufm.com/episode/69649d43e235ea65bc6b156c?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-01-12_xiaoyuzhou-luanfanshu_episode-258.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-01-12_xiaoyuzhou-luanfanshu_episode-258.md"
       },
       "title": "258.对话光帆科技董红光：当耳机长出眼睛， “说一下”开始取代“点十下”"
     },
@@ -4171,8 +4336,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《All in AI 的第一个三年｜对谈绿洲资本合伙人张津剑》。来源：https://www.xiaoyuzhoufm.com/episode/6961bd3af8b05f9f75c3edb8?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-01-10_xiaoyuzhou-42zhangjing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-01-10_xiaoyuzhou-42zhangjing_episode-x.md"
       },
       "title": "All in AI 的第一个三年｜对谈绿洲资本合伙人张津剑"
     },
@@ -4200,8 +4364,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《Vol.83 25页PPT记录一场中国AI“全明星赛”》。来源：https://www.xiaoyuzhoufm.com/episode/69629a78f8b05f9f75e200a5?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-01-10_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-01-10_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "Vol.83 25页PPT记录一场中国AI“全明星赛”"
     },
@@ -4229,8 +4392,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《129. 全球大模型第一股的上市访谈，和智谱CEO张鹏聊：敢问路在何方？》。来源：https://www.xiaoyuzhoufm.com/episode/695f008dc1e012a7abf0be09?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-01-08_xiaoyuzhou-zhangxiaojun_episode-129.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-01-08_xiaoyuzhou-zhangxiaojun_episode-129.md"
       },
       "title": "129. 全球大模型第一股的上市访谈，和智谱CEO张鹏聊：敢问路在何方？"
     },
@@ -4258,8 +4420,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《2026，AI视频「大年」将至｜对谈OiiOii创始人闹闹：亲历微信与字节后，如何抓住下一波机会？》。来源：https://www.xiaoyuzhoufm.com/episode/695d9741c1e012a7abb9ebc2?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-01-06_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-01-06_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "2026，AI视频「大年」将至｜对谈OiiOii创始人闹闹：亲历微信与字节后，如何抓住下一波机会？"
     },
@@ -4287,8 +4448,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《中国最大广告机器简史: 学习Facebook，超越Meta｜字节跳动 第3集》。来源：https://www.xiaoyuzhoufm.com/episode/695cfa18c1e012a7abaab5a6?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-01-06_xiaoyuzhou-luanfanshu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-01-06_xiaoyuzhou-luanfanshu_episode-x.md"
       },
       "title": "中国最大广告机器简史: 学习Facebook，超越Meta｜字节跳动 第3集"
     },
@@ -4316,8 +4476,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《AI时代是谁的黄金时代？｜和张咋啦聊：文科生、积极行动、爆款的规律、普通人也能赢》。来源：https://www.xiaoyuzhoufm.com/episode/695af1289b7892496e9811cb?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-01-05_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-01-05_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "AI时代是谁的黄金时代？｜和张咋啦聊：文科生、积极行动、爆款的规律、普通人也能赢"
     },
@@ -4345,8 +4504,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《V87.倾囊分享：一辈子都能用的好物、好书、顶级思维？》。来源：https://www.xiaoyuzhoufm.com/episode/695bbd0cbdbeb6a09ee2e75e?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2026-01-05_xiaoyuzhou-daxiaoma-keji_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2026-01-05_xiaoyuzhou-daxiaoma-keji_episode-x.md"
       },
       "title": "V87.倾囊分享：一辈子都能用的好物、好书、顶级思维？"
     },
@@ -4374,8 +4532,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《257.半佛怕爆款，三表拒AI，冰汝谢川普：我们为什么坚守图文？》。来源：https://www.xiaoyuzhoufm.com/episode/695384792db086f897c8b5d3?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-12-30_xiaoyuzhou-luanfanshu_episode-257.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2025-12-30_xiaoyuzhou-luanfanshu_episode-257.md"
       },
       "title": "257.半佛怕爆款，三表拒AI，冰汝谢川普：我们为什么坚守图文？"
     },
@@ -4403,8 +4560,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《128. Manus决定出售前最后的访谈：啊，这奇幻的2025年漂流啊…》。来源：https://www.xiaoyuzhoufm.com/episode/695331cb2db086f897b50ea9?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-12-30_xiaoyuzhou-zhangxiaojun_episode-128.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2025-12-30_xiaoyuzhou-zhangxiaojun_episode-128.md"
       },
       "title": "128. Manus决定出售前最后的访谈：啊，这奇幻的2025年漂流啊…"
     },
@@ -4432,8 +4588,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《256.中文互联网“build in public”的新实验，为什么会是AMA？》。来源：https://www.xiaoyuzhoufm.com/episode/695263e22db086f8979b5580?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-12-29_xiaoyuzhou-luanfanshu_episode-256.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2025-12-29_xiaoyuzhou-luanfanshu_episode-256.md"
       },
       "title": "256.中文互联网“build in public”的新实验，为什么会是AMA？"
     },
@@ -4461,8 +4616,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《钱去哪了？谁在出手？与刘旌复盘 2025 VC 们的新共识与暗流》。来源：https://www.xiaoyuzhoufm.com/episode/694f570e2db086f897318453?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-12-28_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2025-12-28_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "钱去哪了？谁在出手？与刘旌复盘 2025 VC 们的新共识与暗流"
     },
@@ -4490,8 +4644,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《中美 AI 创投的真实差异｜对谈 Leonis Capital 合伙人 Jenny》。来源：https://www.xiaoyuzhoufm.com/episode/694e181744647f77684bb4f1?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-12-27_xiaoyuzhou-42zhangjing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2025-12-27_xiaoyuzhou-42zhangjing_episode-x.md"
       },
       "title": "中美 AI 创投的真实差异｜对谈 Leonis Capital 合伙人 Jenny"
     },
@@ -4519,8 +4672,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《Vol.82 我和小庄聊了聊他们的“职业分享日”》。来源：https://www.xiaoyuzhoufm.com/episode/694e25b944647f77684e7743?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-12-26_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2025-12-26_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "Vol.82 我和小庄聊了聊他们的“职业分享日”"
     },
@@ -4548,8 +4700,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《255.钉钉告别移动互联网》。来源：https://www.xiaoyuzhoufm.com/episode/694d62e407f7c63e431d6c0d?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-12-25_xiaoyuzhou-luanfanshu_episode-255.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2025-12-25_xiaoyuzhou-luanfanshu_episode-255.md"
       },
       "title": "255.钉钉告别移动互联网"
     },
@@ -4577,8 +4728,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《127. 大模型季报跨年对谈：和广密预言一场AI War、两大联盟和第三个范式Online Learning》。来源：https://www.xiaoyuzhoufm.com/episode/694bbc49d996dd7bfddeecbf?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-12-24_xiaoyuzhou-zhangxiaojun_episode-127.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2025-12-24_xiaoyuzhou-zhangxiaojun_episode-127.md"
       },
       "title": "127. 大模型季报跨年对谈：和广密预言一场AI War、两大联盟和第三个范式Online Learning"
     },
@@ -4606,8 +4756,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《254.三天即被封杀，豆包手机只是一场核试验？》。来源：https://www.xiaoyuzhoufm.com/episode/694938e10b60b7bf75d8ad57?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-12-22_xiaoyuzhou-luanfanshu_episode-254.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2025-12-22_xiaoyuzhou-luanfanshu_episode-254.md"
       },
       "title": "254.三天即被封杀，豆包手机只是一场核试验？"
     },
@@ -4635,8 +4784,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《Vol.81 智谱 or MiniMax，无论谁是第一股，都牛逼---串台苔藓之火》。来源：https://www.xiaoyuzhoufm.com/episode/69495dfe0b60b7bf75e020d6?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-12-22_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2025-12-22_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "Vol.81 智谱 or MiniMax，无论谁是第一股，都牛逼---串台苔藓之火"
     },
@@ -4664,8 +4812,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《126. 和红杉郑庆生聊：经济史的流量革命、人类行为模式的不可预期，与创始人性格》。来源：https://www.xiaoyuzhoufm.com/episode/694795da9f70e5d6b371d207?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-12-21_xiaoyuzhou-zhangxiaojun_episode-126.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2025-12-21_xiaoyuzhou-zhangxiaojun_episode-126.md"
       },
       "title": "126. 和红杉郑庆生聊：经济史的流量革命、人类行为模式的不可预期，与创始人性格"
     },
@@ -4693,8 +4840,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《揭秘千人「AI漫剧」工厂：野蛮生长和内容理想 \\| 对话酱油》。来源：https://www.xiaoyuzhoufm.com/episode/6944f3729f70e5d6b329d02d?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-12-21_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2025-12-21_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "揭秘千人「AI漫剧」工厂：野蛮生长和内容理想 \\| 对话酱油"
     },
@@ -4722,8 +4868,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《253.2026播客市场乱预测，我们在美国挖掘的业界内幕》。来源：https://www.xiaoyuzhoufm.com/episode/69442ff8038062bdbcac0d44?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-12-18_xiaoyuzhou-luanfanshu_episode-253.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2025-12-18_xiaoyuzhou-luanfanshu_episode-253.md"
       },
       "title": "253.2026播客市场乱预测，我们在美国挖掘的业界内幕"
     },
@@ -4751,8 +4896,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《一年投资50家AI公司；当我们都不知道答案时，我是怎么想的？\\| 对话杨洁：锦秋基金创始合伙人》。来源：https://www.xiaoyuzhoufm.com/episode/694217cd5e8cb26fdf3e1c05?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-12-17_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2025-12-17_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "一年投资50家AI公司；当我们都不知道答案时，我是怎么想的？\\| 对话杨洁：锦秋基金创始合伙人"
     },
@@ -4780,8 +4924,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《125. Freda的投资札记第1集：下注OpenAI、Robinhood往事，美国资本坏小孩、算盘与泡沫》。来源：https://www.xiaoyuzhoufm.com/episode/694180874c65abaff3576bc4?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-12-16_xiaoyuzhou-zhangxiaojun_episode-125.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2025-12-16_xiaoyuzhou-zhangxiaojun_episode-125.md"
       },
       "title": "125. Freda的投资札记第1集：下注OpenAI、Robinhood往事，美国资本坏小孩、算盘与泡沫"
     },
@@ -4809,8 +4952,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《Vol.80 我去大内密谈和相爷聊了聊AI》。来源：https://www.xiaoyuzhoufm.com/episode/69400a5f2a383da16741ac60?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-12-15_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2025-12-15_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "Vol.80 我去大内密谈和相爷聊了聊AI"
     },
@@ -4838,8 +4980,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《2026 开年AI对谈：the year of R \\| 对谈真格基金戴雨森》。来源：https://www.xiaoyuzhoufm.com/episode/693becad2a383da167c0b3b6?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-12-14_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2025-12-14_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "2026 开年AI对谈：the year of R \\| 对谈真格基金戴雨森"
     },
@@ -4867,8 +5008,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《124. 雨森的创投观察第1集：2026年预期、The Year of R、回调、我们如何下注》。来源：https://www.xiaoyuzhoufm.com/episode/693d7c172a383da167ecfcde?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-12-13_xiaoyuzhou-zhangxiaojun_episode-124.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2025-12-13_xiaoyuzhou-zhangxiaojun_episode-124.md"
       },
       "title": "124. 雨森的创投观察第1集：2026年预期、The Year of R、回调、我们如何下注"
     },
@@ -4896,8 +5036,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《123. 对ONE2X创始人王冠3小时访谈：生成系统、没有中间商赚差价、内容平台的权力分配》。来源：https://www.xiaoyuzhoufm.com/episode/693bc72b37f52a644e8e2550?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-12-12_xiaoyuzhou-zhangxiaojun_episode-123.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2025-12-12_xiaoyuzhou-zhangxiaojun_episode-123.md"
       },
       "title": "123. 对ONE2X创始人王冠3小时访谈：生成系统、没有中间商赚差价、内容平台的权力分配"
     },
@@ -4925,8 +5064,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《252.AI眼镜替代手机？至少10年起步，可能更久》。来源：https://www.xiaoyuzhoufm.com/episode/693aef2137f52a644e74704d?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-12-11_xiaoyuzhou-luanfanshu_episode-252.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2025-12-11_xiaoyuzhou-luanfanshu_episode-252.md"
       },
       "title": "252.AI眼镜替代手机？至少10年起步，可能更久"
     },
@@ -4954,8 +5092,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《挑战微信，必死无疑？一个25岁AI创始人的野心 \\| 对话陈春宇： Intent 创始人/CEO》。来源：https://www.xiaoyuzhoufm.com/episode/6938bf454ef12f9fe9d4a210?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-12-10_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2025-12-10_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "挑战微信，必死无疑？一个25岁AI创始人的野心 \\| 对话陈春宇： Intent 创始人/CEO"
     },
@@ -4983,8 +5120,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《251.从Substack到《纽约客》：美国媒体的原子化与百年长青》。来源：https://www.xiaoyuzhoufm.com/episode/6937f4694ef12f9fe9be4212?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-12-09_xiaoyuzhou-luanfanshu_episode-251.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2025-12-09_xiaoyuzhou-luanfanshu_episode-251.md"
       },
       "title": "251.从Substack到《纽约客》：美国媒体的原子化与百年长青"
     },
@@ -5012,8 +5148,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《122. 朱啸虎现实主义故事的第三次连载：人工智能的盛筵与泡泡》。来源：https://www.xiaoyuzhoufm.com/episode/693834013fec3166cf262bd0?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-12-09_xiaoyuzhou-zhangxiaojun_episode-122.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2025-12-09_xiaoyuzhou-zhangxiaojun_episode-122.md"
       },
       "title": "122. 朱啸虎现实主义故事的第三次连载：人工智能的盛筵与泡泡"
     },
@@ -5041,8 +5176,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《在「缓慢、昂贵且分散」的市场，AI 的机会最性感 \\| 对谈 Mizzen AI 孙克强&李一豪》。来源：https://www.xiaoyuzhoufm.com/episode/69358bf44ef12f9fe9638add?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-12-07_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2025-12-07_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "在「缓慢、昂贵且分散」的市场，AI 的机会最性感 \\| 对谈 Mizzen AI 孙克强&李一豪"
     },
@@ -5070,8 +5204,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《Dify 从被低估到成为明星项目，到底做对了什么｜对谈 Dify 创始人路宇》。来源：https://www.xiaoyuzhoufm.com/episode/693285733fec3166cf688645?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-12-06_xiaoyuzhou-42zhangjing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2025-12-06_xiaoyuzhou-42zhangjing_episode-x.md"
       },
       "title": "Dify 从被低估到成为明星项目，到底做对了什么｜对谈 Dify 创始人路宇"
     },
@@ -5099,8 +5232,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《Vol.79 腾讯 AI「松弛感」背后：高筑墙、广积粮、缓称王---串台三五环》。来源：https://www.xiaoyuzhoufm.com/episode/69339ade3fec3166cf868e01?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-12-06_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2025-12-06_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "Vol.79 腾讯 AI「松弛感」背后：高筑墙、广积粮、缓称王---串台三五环"
     },
@@ -5128,8 +5260,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《Vol.78 和老钱聊聊风险投资这项工作---串台面基》。来源：https://www.xiaoyuzhoufm.com/episode/693236054ef12f9fe9fd7ea1?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-12-05_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2025-12-05_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "Vol.78 和老钱聊聊风险投资这项工作---串台面基"
     },
@@ -5157,8 +5288,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《快手稳稳压制火山2年，为何被抖音4个月超越？ \\| 字节跳动 第2集》。来源：https://www.xiaoyuzhoufm.com/episode/692fffb03fec3166cf0cc292?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-12-03_xiaoyuzhou-luanfanshu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2025-12-03_xiaoyuzhou-luanfanshu_episode-x.md"
       },
       "title": "快手稳稳压制火山2年，为何被抖音4个月超越？ \\| 字节跳动 第2集"
     },
@@ -5186,8 +5316,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《V86.躺不平输不起，全球年轻人理财新手段？》。来源：https://www.xiaoyuzhoufm.com/episode/692e66560d5237d4de812118?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-12-02_xiaoyuzhou-daxiaoma-keji_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2025-12-02_xiaoyuzhou-daxiaoma-keji_episode-x.md"
       },
       "title": "V86.躺不平输不起，全球年轻人理财新手段？"
     },
@@ -5215,8 +5344,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《和前《原神》主创恶少聊AI游戏创业｜“这一次，我要做个游戏圈的‘渣男’”》。来源：https://www.xiaoyuzhoufm.com/episode/692c59adba2292550f84849d?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-11-30_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2025-11-30_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "和前《原神》主创恶少聊AI游戏创业｜“这一次，我要做个游戏圈的‘渣男’”"
     },
@@ -5244,8 +5372,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《121. 对DeepMind谭捷的访谈：机器人、跨本体、世界模型、Gemini Robotics 1.5和Google》。来源：https://www.xiaoyuzhoufm.com/episode/692965c0ba2292550f3551f7?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-11-28_xiaoyuzhou-zhangxiaojun_episode-121.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2025-11-28_xiaoyuzhou-zhangxiaojun_episode-121.md"
       },
       "title": "121. 对DeepMind谭捷的访谈：机器人、跨本体、世界模型、Gemini Robotics 1.5和Google"
     },
@@ -5273,8 +5400,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《Vol.77 我们在谈论AI游戏的时候，我们到底在谈论什么？》。来源：https://www.xiaoyuzhoufm.com/episode/6926f3fb0084e2631ddf570a?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-11-26_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2025-11-26_xiaoyuzhou-tulong-zhishu_episode-x.md"
       },
       "title": "Vol.77 我们在谈论AI游戏的时候，我们到底在谈论什么？"
     },
@@ -5302,8 +5428,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《250.河北厂二代反抗价格战：两次死里逃生，三年从代工到品牌》。来源：https://www.xiaoyuzhoufm.com/episode/6924193a6018cc2c9856cbc6?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-11-24_xiaoyuzhou-luanfanshu_episode-250.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2025-11-24_xiaoyuzhou-luanfanshu_episode-250.md"
       },
       "title": "250.河北厂二代反抗价格战：两次死里逃生，三年从代工到品牌"
     },
@@ -5331,8 +5456,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《你的下一个可穿戴设备，是挂脖子上的健康伙伴？\\| 对谈潘宇扬：AI项链Odyss创始人&李一豪：CreekStone合伙人》。来源：https://www.xiaoyuzhoufm.com/episode/6920398d6018cc2c98f11625?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-11-23_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2025-11-23_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "你的下一个可穿戴设备，是挂脖子上的健康伙伴？\\| 对谈潘宇扬：AI项链Odyss创始人&李一豪：CreekStone合伙人"
     },
@@ -5360,8 +5484,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《「你觉得 AI 有泡沫吗？」——有！｜对谈莫傑麟》。来源：https://www.xiaoyuzhoufm.com/episode/692035926018cc2c98f08264?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-11-22_xiaoyuzhou-42zhangjing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2025-11-22_xiaoyuzhou-42zhangjing_episode-x.md"
       },
       "title": "「你觉得 AI 有泡沫吗？」——有！｜对谈莫傑麟"
     },
@@ -5389,8 +5512,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《249.对话「斑马口语」：全球首个AI外教如何超越人类？》。来源：https://www.xiaoyuzhoufm.com/episode/691c7eabcbba038b422baffe?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-11-18_xiaoyuzhou-luanfanshu_episode-249.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2025-11-18_xiaoyuzhou-luanfanshu_episode-249.md"
       },
       "title": "249.对话「斑马口语」：全球首个AI外教如何超越人类？"
     },
@@ -5418,8 +5540,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《120. 小鹏新上任的刘先明首次访谈：Language是毒药、拆掉L、简单即美、换帅、小鹏的AI转型》。来源：https://www.xiaoyuzhoufm.com/episode/691c3670cbba038b421f74a4?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-11-18_xiaoyuzhou-zhangxiaojun_episode-120.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2025-11-18_xiaoyuzhou-zhangxiaojun_episode-120.md"
       },
       "title": "120. 小鹏新上任的刘先明首次访谈：Language是毒药、拆掉L、简单即美、换帅、小鹏的AI转型"
     },
@@ -5447,8 +5568,7 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《抖音2016-2017， 最重要的四个人，他们的处境和选择 \\| 字节跳动 第1集》。来源：https://www.xiaoyuzhoufm.com/episode/691b615fcbba038b4204c306?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-11-17_xiaoyuzhou-luanfanshu_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2025-11-17_xiaoyuzhou-luanfanshu_episode-x.md"
       },
       "title": "抖音2016-2017， 最重要的四个人，他们的处境和选择 \\| 字节跳动 第1集"
     },
@@ -5476,329 +5596,9 @@
         "kind": "podcast_learning",
         "prompt": "请按 podcast-learning 协议学习小宇宙节目《他看到了什么？\\| 对谈张帆：前智谱COO，元理智能创始人/CEO ——为何笃信 AI 的机会在 ToB？》。来源：https://www.xiaoyuzhoufm.com/episode/691952ddcbba038b42bd9077?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
         "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-11-16_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
+        "suggested_report_path": "podcast-learning/reports/2025-11-16_xiaoyuzhou-crossing_episode-x.md"
       },
       "title": "他看到了什么？\\| 对谈张帆：前智谱COO，元理智能创始人/CEO ——为何笃信 AI 的机会在 ToB？"
-    },
-    {
-      "audio_url": "https://www.xiaoyuzhoufm.com/episode/691198c3d99642be96554053?utm_source=rss",
-      "date": "2025-11-10",
-      "duration": "1h19m",
-      "episode_no": 248,
-      "guid": "691198c3d99642be96554053",
-      "id": "3a9f28a1bec24456421edd1688219ea11d53ea2568f5d5213ffb6620dc101c7d",
-      "index_status": "—",
-      "kind": "podcast_episode",
-      "platform": "xiaoyuzhou",
-      "report": {
-        "path": "",
-        "raw_url": "",
-        "title": "",
-        "updated_on": "",
-        "url": ""
-      },
-      "show": "乱翻书",
-      "show_slug": "luanfanshu",
-      "study_state": "pending",
-      "task": {
-        "kind": "podcast_learning",
-        "prompt": "请按 podcast-learning 协议学习小宇宙节目《248.对话张楚：用工科生的视角看世界》。来源：https://www.xiaoyuzhoufm.com/episode/691198c3d99642be96554053?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
-        "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-11-10_xiaoyuzhou-luanfanshu_episode-248.md",
-        "target_worker": "razer"
-      },
-      "title": "248.对话张楚：用工科生的视角看世界"
-    },
-    {
-      "audio_url": "https://www.xiaoyuzhoufm.com/episode/69108c6faf4fc00da7e09756?utm_source=rss",
-      "date": "2025-11-09",
-      "duration": "1h08m",
-      "episode_no": null,
-      "guid": "69108c6faf4fc00da7e09756",
-      "id": "88342147b71fb8ce4bfe900f3f3d7bb98b4e27eeac1c57a3369ad12876ed9dfd",
-      "index_status": "—",
-      "kind": "podcast_episode",
-      "platform": "xiaoyuzhou",
-      "report": {
-        "path": "",
-        "raw_url": "",
-        "title": "",
-        "updated_on": "",
-        "url": ""
-      },
-      "show": "十字路口Crossing",
-      "show_slug": "crossing",
-      "study_state": "pending",
-      "task": {
-        "kind": "podcast_learning",
-        "prompt": "请按 podcast-learning 协议学习小宇宙节目《AI来了，玩一场无限的创业游戏｜对谈原今日头条初创期成员、票圈视频创始人丛广乐》。来源：https://www.xiaoyuzhoufm.com/episode/69108c6faf4fc00da7e09756?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
-        "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-11-09_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
-      },
-      "title": "AI来了，玩一场无限的创业游戏｜对谈原今日头条初创期成员、票圈视频创始人丛广乐"
-    },
-    {
-      "audio_url": "https://www.xiaoyuzhoufm.com/episode/69108ee3d99642be96327ea3?utm_source=rss",
-      "date": "2025-11-09",
-      "duration": "1h03m",
-      "episode_no": null,
-      "guid": "69108ee3d99642be96327ea3",
-      "id": "bd1baf6817ccb3c8342f85dffd381591a647be1be53b3a89d53573e26ca6bbfe",
-      "index_status": "—",
-      "kind": "podcast_episode",
-      "platform": "xiaoyuzhou",
-      "report": {
-        "path": "",
-        "raw_url": "",
-        "title": "",
-        "updated_on": "",
-        "url": ""
-      },
-      "show": "大小马聊科技",
-      "show_slug": "daxiaoma-keji",
-      "study_state": "pending",
-      "task": {
-        "kind": "podcast_learning",
-        "prompt": "请按 podcast-learning 协议学习小宇宙节目《V85.中美物理AI最新进展：小鹏机器人被马斯克点赞？》。来源：https://www.xiaoyuzhoufm.com/episode/69108ee3d99642be96327ea3?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
-        "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-11-09_xiaoyuzhou-daxiaoma-keji_episode-x.md",
-        "target_worker": "razer"
-      },
-      "title": "V85.中美物理AI最新进展：小鹏机器人被马斯克点赞？"
-    },
-    {
-      "audio_url": "https://www.xiaoyuzhoufm.com/episode/690d657baf4fc00da78badba?utm_source=rss",
-      "date": "2025-11-08",
-      "duration": "1h24m",
-      "episode_no": null,
-      "guid": "690d657baf4fc00da78badba",
-      "id": "805d538e1c927200c4ee2c4f86ebee2343d7882448ff1c77f303f510cbba5458",
-      "index_status": "—",
-      "kind": "podcast_episode",
-      "platform": "xiaoyuzhou",
-      "report": {
-        "path": "",
-        "raw_url": "",
-        "title": "",
-        "updated_on": "",
-        "url": ""
-      },
-      "show": "42章经",
-      "show_slug": "42zhangjing",
-      "study_state": "pending",
-      "task": {
-        "kind": "podcast_learning",
-        "prompt": "请按 podcast-learning 协议学习小宇宙节目《2018 - 2020，抖音超越快手的关键三年｜对谈 Lessie AI 创始人于北川》。来源：https://www.xiaoyuzhoufm.com/episode/690d657baf4fc00da78badba?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
-        "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-11-08_xiaoyuzhou-42zhangjing_episode-x.md",
-        "target_worker": "razer"
-      },
-      "title": "2018 - 2020，抖音超越快手的关键三年｜对谈 Lessie AI 创始人于北川"
-    },
-    {
-      "audio_url": "https://www.xiaoyuzhoufm.com/episode/6908b9c80ceab2a71c48668c?utm_source=rss",
-      "date": "2025-11-03",
-      "duration": "1h43m",
-      "episode_no": 119,
-      "guid": "6908b9c80ceab2a71c48668c",
-      "id": "66b65b70b37b421942b8ced414e721263c34b33d0e7405022bb3fba377d20e67",
-      "index_status": "—",
-      "kind": "podcast_episode",
-      "platform": "xiaoyuzhou",
-      "report": {
-        "path": "",
-        "raw_url": "",
-        "title": "",
-        "updated_on": "",
-        "url": ""
-      },
-      "show": "张小珺商业访谈录",
-      "show_slug": "zhangxiaojun",
-      "study_state": "pending",
-      "task": {
-        "kind": "podcast_learning",
-        "prompt": "请按 podcast-learning 协议学习小宇宙节目《119. Kimi Linear、Minimax M2？和杨松琳考古算法变种史，并预演未来架构改进方案》。来源：https://www.xiaoyuzhoufm.com/episode/6908b9c80ceab2a71c48668c?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
-        "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-11-03_xiaoyuzhou-zhangxiaojun_episode-119.md",
-        "target_worker": "razer"
-      },
-      "title": "119. Kimi Linear、Minimax M2？和杨松琳考古算法变种史，并预演未来架构改进方案"
-    },
-    {
-      "audio_url": "https://www.xiaoyuzhoufm.com/episode/69080ba448dbe0eb561a492a?utm_source=rss",
-      "date": "2025-11-03",
-      "duration": "1h14m",
-      "episode_no": null,
-      "guid": "69080ba448dbe0eb561a492a",
-      "id": "23a2586cef9a6014c45f92794ef2a13ae44c1a611920d6e903a90bfbdaa968dd",
-      "index_status": "—",
-      "kind": "podcast_episode",
-      "platform": "xiaoyuzhou",
-      "report": {
-        "path": "",
-        "raw_url": "",
-        "title": "",
-        "updated_on": "",
-        "url": ""
-      },
-      "show": "大小马聊科技",
-      "show_slug": "daxiaoma-keji",
-      "study_state": "pending",
-      "task": {
-        "kind": "podcast_learning",
-        "prompt": "请按 podcast-learning 协议学习小宇宙节目《V84.两年20亿！对谈机器人明星创业者：从清华博士到巴黎时装周？》。来源：https://www.xiaoyuzhoufm.com/episode/69080ba448dbe0eb561a492a?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
-        "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-11-03_xiaoyuzhou-daxiaoma-keji_episode-x.md",
-        "target_worker": "razer"
-      },
-      "title": "V84.两年20亿！对谈机器人明星创业者：从清华博士到巴黎时装周？"
-    },
-    {
-      "audio_url": "https://www.xiaoyuzhoufm.com/episode/6908e41f4534ad44d357ba74?utm_source=rss",
-      "date": "2025-11-03",
-      "duration": "2h21m",
-      "episode_no": null,
-      "guid": "6908e41f4534ad44d357ba74",
-      "id": "9330d471b36822bd4e776cdd6a3f1dd75b66070f51d7696fc4ae18b283748503",
-      "index_status": "—",
-      "kind": "podcast_episode",
-      "platform": "xiaoyuzhou",
-      "report": {
-        "path": "",
-        "raw_url": "",
-        "title": "",
-        "updated_on": "",
-        "url": ""
-      },
-      "show": "屠龙之术",
-      "show_slug": "tulong-zhishu",
-      "study_state": "pending",
-      "task": {
-        "kind": "podcast_learning",
-        "prompt": "请按 podcast-learning 协议学习小宇宙节目《Vol.76 我们不知不觉的走到了这里---170页PPT讲透2025AI行业》。来源：https://www.xiaoyuzhoufm.com/episode/6908e41f4534ad44d357ba74?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
-        "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-11-03_xiaoyuzhou-tulong-zhishu_episode-x.md",
-        "target_worker": "razer"
-      },
-      "title": "Vol.76 我们不知不觉的走到了这里---170页PPT讲透2025AI行业"
-    },
-    {
-      "audio_url": "https://www.xiaoyuzhoufm.com/episode/6905b82c48dbe0eb56e37a98?utm_source=rss",
-      "date": "2025-11-02",
-      "duration": "1h11m",
-      "episode_no": null,
-      "guid": "6905b82c48dbe0eb56e37a98",
-      "id": "8974d1dec1acfa8f880b0463aacfa56f06d20b44cec67614e00d8db345b66751",
-      "index_status": "—",
-      "kind": "podcast_episode",
-      "platform": "xiaoyuzhou",
-      "report": {
-        "path": "",
-        "raw_url": "",
-        "title": "",
-        "updated_on": "",
-        "url": ""
-      },
-      "show": "十字路口Crossing",
-      "show_slug": "crossing",
-      "study_state": "pending",
-      "task": {
-        "kind": "podcast_learning",
-        "prompt": "请按 podcast-learning 协议学习小宇宙节目《「AI Infra 就是命运」 \\| 对谈王雁鹏：亲述从大数据时代到 3 万卡集群的中国算力演进史》。来源：https://www.xiaoyuzhoufm.com/episode/6905b82c48dbe0eb56e37a98?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
-        "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-11-02_xiaoyuzhou-crossing_episode-x.md",
-        "target_worker": "razer"
-      },
-      "title": "「AI Infra 就是命运」 \\| 对谈王雁鹏：亲述从大数据时代到 3 万卡集群的中国算力演进史"
-    },
-    {
-      "audio_url": "https://www.xiaoyuzhoufm.com/episode/69034d73acb1abe25b74d867?utm_source=rss",
-      "date": "2025-10-30",
-      "duration": "1h18m",
-      "episode_no": 247,
-      "guid": "69034d73acb1abe25b74d867",
-      "id": "76fed53c778bb872b702246d4e0bbdaf2d015b06370b6a819ccada17c4045104",
-      "index_status": "—",
-      "kind": "podcast_episode",
-      "platform": "xiaoyuzhou",
-      "report": {
-        "path": "",
-        "raw_url": "",
-        "title": "",
-        "updated_on": "",
-        "url": ""
-      },
-      "show": "乱翻书",
-      "show_slug": "luanfanshu",
-      "study_state": "pending",
-      "task": {
-        "kind": "podcast_learning",
-        "prompt": "请按 podcast-learning 协议学习小宇宙节目《247.京东青春采销：从供应链到直播间，他们在证明什么？》。来源：https://www.xiaoyuzhoufm.com/episode/69034d73acb1abe25b74d867?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
-        "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-10-30_xiaoyuzhou-luanfanshu_episode-247.md",
-        "target_worker": "razer"
-      },
-      "title": "247.京东青春采销：从供应链到直播间，他们在证明什么？"
-    },
-    {
-      "audio_url": "https://www.xiaoyuzhoufm.com/episode/6902c5f7abb5e1cf581296be?utm_source=rss",
-      "date": "2025-10-30",
-      "duration": "2h46m",
-      "episode_no": 118,
-      "guid": "6902c5f7abb5e1cf581296be",
-      "id": "d0b8bc1b17972c8b92449c6bdd170e1ac1e518ed3a1a1c40482e04cdf1e743c5",
-      "index_status": "—",
-      "kind": "podcast_episode",
-      "platform": "xiaoyuzhou",
-      "report": {
-        "path": "",
-        "raw_url": "",
-        "title": "",
-        "updated_on": "",
-        "url": ""
-      },
-      "show": "张小珺商业访谈录",
-      "show_slug": "zhangxiaojun",
-      "study_state": "pending",
-      "task": {
-        "kind": "podcast_learning",
-        "prompt": "请按 podcast-learning 协议学习小宇宙节目《118. 对李想的第二次3小时访谈：CEO大模型、MoE、梁文锋、VLA、能量、记忆、对抗人性、亲密关系、人类的智慧》。来源：https://www.xiaoyuzhoufm.com/episode/6902c5f7abb5e1cf581296be?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
-        "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-10-30_xiaoyuzhou-zhangxiaojun_episode-118.md",
-        "target_worker": "razer"
-      },
-      "title": "118. 对李想的第二次3小时访谈：CEO大模型、MoE、梁文锋、VLA、能量、记忆、对抗人性、亲密关系、人类的智慧"
-    },
-    {
-      "audio_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c?utm_source=rss",
-      "date": "2025-10-28",
-      "duration": "4h22m",
-      "episode_no": 117,
-      "guid": "68ff9d1b083a71a4eb86c52c",
-      "id": "f96fabb9176e304d78efe231f105ec2df29feea1c126c2731d867604f6cef812",
-      "index_status": "—",
-      "kind": "podcast_episode",
-      "platform": "xiaoyuzhou",
-      "report": {
-        "path": "",
-        "raw_url": "",
-        "title": "",
-        "updated_on": "",
-        "url": ""
-      },
-      "show": "张小珺商业访谈录",
-      "show_slug": "zhangxiaojun",
-      "study_state": "pending",
-      "task": {
-        "kind": "podcast_learning",
-        "prompt": "请按 podcast-learning 协议学习小宇宙节目《117. 开源一段论文探索之旅：模型范式、Infra和数据、语言、多模态的完整变迁史》。来源：https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c?utm_source=rss。输出结构化学习报告：概览、关键论点、证据、疑问、行动项。",
-        "ready": true,
-        "suggested_report_path": "podcast-learning/reports/2025-10-28_xiaoyuzhou-zhangxiaojun_episode-117.md",
-        "target_worker": "razer"
-      },
-      "title": "117. 开源一段论文探索之旅：模型范式、Infra和数据、语言、多模态的完整变迁史"
     }
   ],
   "platform": "xiaoyuzhou",

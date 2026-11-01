@@ -15,7 +15,7 @@
 
 ## 相关期数
 
-- 课代表立正对话 319（2026-09-17）→ [[2026-09-17_rss-kedaibiao-lizheng_jinjing|报告]]
+- 课代表立正对话 319（2026-09-17）→ [报告](../../reports/2026-09-17_rss-kedaibiao-lizheng_jinjing.md)
 
 ## 与其他实体的关联
 

@@ -21,7 +21,7 @@ related_entities:
 - **现金流为正时不再融资** — 不被估值倒逼，不被"增长曲线"绑架
 - **核心团队 1-3 人** — 大部分工作靠 SaaS 工具 + AI 完成
 - **强销售/分发** — Sahil 给技术创始人的第一条建议是"第一个该招的人不是工程师，是销售"
-- **小而美的本质** — 见 [[concepts/minimalist-entrepreneur]]
+- **小而美的本质** — 见 [concepts/minimalist-entrepreneur](./minimalist-entrepreneur.md)
 
 ## 来源
 
@@ -35,6 +35,6 @@ related_entities:
 
 ## 关联概念
 
-- [[concepts/vibe-coding]] — 让"一人公司"变得更可行的工具基础
-- [[concepts/minimalist-entrepreneur]] — Sahil 的核心理念
-- [[concepts/creator-economy-tools-vs-platforms]] — Gumroad 模式的生态定位
+- [concepts/vibe-coding](./vibe-coding.md) — 让"一人公司"变得更可行的工具基础
+- [concepts/minimalist-entrepreneur](./minimalist-entrepreneur.md) — Sahil 的核心理念
+- [concepts/creator-economy-tools-vs-platforms](./creator-economy-tools-vs-platforms.md) — Gumroad 模式的生态定位

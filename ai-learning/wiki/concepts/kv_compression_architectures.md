@@ -42,8 +42,8 @@ status: active
 
 ## 与什么相关
 
-- [[kv_cache]] / [[attention_mechanism]] / [[long_context_systems]] / [[sparse_activation]] / [[moe_architecture]]
-- [[bitter_lesson]] 镜像：KV 压缩战争是"在硬件约束内做结构化归纳偏置"的反 bitter-lesson 案例（约束真实存在时，结构就是收益）
+- [kv_cache](./kv_cache.md) / [attention_mechanism](./attention_mechanism.md) / [long_context_systems](./long_context_systems.md) / [sparse_activation](./sparse_activation.md) / [moe_architecture](./moe_architecture.md)
+- [bitter_lesson](./bitter_lesson.md) 镜像：KV 压缩战争是"在硬件约束内做结构化归纳偏置"的反 bitter-lesson 案例（约束真实存在时，结构就是收益）
 
 ## 相关报告
 

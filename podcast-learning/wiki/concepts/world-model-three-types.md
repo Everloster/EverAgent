@@ -22,4 +22,4 @@
 
 ## 引用本概念的报告
 
-- [[2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review|重估一切，文艺复兴——2026H1 AI行业观察]]
+- [重估一切，文艺复兴——2026H1 AI行业观察](../../reports/2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review.md)

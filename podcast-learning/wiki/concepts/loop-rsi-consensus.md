@@ -12,5 +12,5 @@
 
 ## 与其他概念的关联
 
-- 与 [[ai-capex-bubble-debate]]（2026-07-17 期）是同一叙事的二级/一级两面：泡沫观察点从巨头 CAPEX 移到 new lab 融资
-- 来源：[[2026-09-15_xiaoyuzhou-tulong-zhishu_next-act]]
+- 与 [ai-capex-bubble-debate](./ai-capex-bubble-debate.md)（2026-07-17 期）是同一叙事的二级/一级两面：泡沫观察点从巨头 CAPEX 移到 new lab 融资
+- 来源：[2026-09-15_xiaoyuzhou-tulong-zhishu_next-act](../../reports/2026-09-15_xiaoyuzhou-tulong-zhishu_next-act.md)

@@ -22,10 +22,10 @@
 
 ## 关联
 
-- 节目主线：[[2026-02-11_xiaoyuzhou-chengwei-buffett_nantian|成为巴菲特27 报告]]（邓白氏→穆迪 25 年分岔全案）
+- 节目主线：[成为巴菲特27 报告](../../reports/2026-02-11_xiaoyuzhou-chengwei-buffett_nantian.md)（邓白氏→穆迪 25 年分岔全案）
 - 同场人物：艾勇（主播，DTC Lab）、芒格（damn perfect 评价）、B 夫人（南添心中的"英雄"）
-- 方法论呼应：[[midlife-three-accounts]] 同属"框架化个人决策"谱系；对马斯克的负面对照（"三年印象特别糟糕"）
+- 方法论呼应：[midlife-three-accounts](../concepts/midlife-three-accounts.md) 同属"框架化个人决策"谱系；对马斯克的负面对照（"三年印象特别糟糕"）
 
 ## 引用本人物的报告
 
-- [[2026-02-11_xiaoyuzhou-chengwei-buffett_nantian|成为巴菲特27：买珠还椟——从邓白氏到穆迪]]（主报告，本节目首篇）
+- [成为巴菲特27：买珠还椟——从邓白氏到穆迪](../../reports/2026-02-11_xiaoyuzhou-chengwei-buffett_nantian.md)（主报告，本节目首篇）

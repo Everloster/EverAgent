@@ -21,4 +21,4 @@
 
 ## 关联
 
-- 同库：[[2026-08-21_bilibili-fanshu_yanzheng|帆书讲《炎症》]]（vol.49 报告）；[[2026-08-24_xiaoyuzhou-boluo-jiankang_liufangqi|刘方奇肠癌访谈]]（慢性炎症→肠癌链条与之一致：溃疡性结肠炎/乳糜泻在慢性炎症刺激下易产生癌症）
+- 同库：[帆书讲《炎症》](../../reports/2026-08-21_bilibili-fanshu_yanzheng.md)（vol.49 报告）；[刘方奇肠癌访谈](../../reports/2026-08-24_xiaoyuzhou-boluo-jiankang_liufangqi.md)（慢性炎症→肠癌链条与之一致：溃疡性结肠炎/乳糜泻在慢性炎症刺激下易产生癌症）

@@ -10,13 +10,13 @@
 
 | 文艺复兴 | 2026 的 AI |
 |---------|-----------|
-| 美第奇银行（1494 挤兑倒闭） | CAPEX 万亿美金与泡沫之辩（详 [[ai-capex-bubble-debate]]） |
+| 美第奇银行（1494 挤兑倒闭） | CAPEX 万亿美金与泡沫之辩（详 [ai-capex-bubble-debate](./ai-capex-bubble-debate.md)） |
 | 印刷术 | 开源模型 / 推理成本下降 |
 | 南北文艺复兴（意大利壁画 vs 北方版画） | 中美双极：闭源前沿（昂贵独家）vs 开源高效低价（便宜可仿制、大规模扩散） |
-| 透视法 | 世界模型（详 [[world-model-three-types]]） |
-| 工坊制（师傅构图、学徒执行） | Agent 分工编排 / 多智能体系统（详 [[agent-first-year]]） |
+| 透视法 | 世界模型（详 [world-model-three-types](./world-model-three-types.md)） |
+| 工坊制（师傅构图、学徒执行） | Agent 分工编排 / 多智能体系统（详 [agent-first-year](./agent-first-year.md)） |
 | 虚荣的篝火（萨伏那洛拉） | 治理反弹：反 AI 活动、先审后发、三对博弈（创新-安全/主权-互通/效率-就业） |
-| 人本主义"人是什么" | "人还是万物的尺度吗"（详 [[fourth-pillar]]） |
+| 人本主义"人是什么" | "人还是万物的尺度吗"（详 [fourth-pillar](./fourth-pillar.md)） |
 
 ## 关键判断
 
@@ -27,4 +27,4 @@
 
 ## 引用本概念的报告
 
-- [[2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review|重估一切，文艺复兴——2026H1 AI行业观察]]
+- [重估一切，文艺复兴——2026H1 AI行业观察](../../reports/2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review.md)

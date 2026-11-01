@@ -25,4 +25,4 @@
 
 ## 相关期数
 
-- AI炼金术 2026-09-23《把 prompt 当货架空间，把 GEO 当量化交易》→ [[2026-09-23_ximalaya-ailianjinshu_luyang|报告]] ｜ [[concepts/geo]]
+- AI炼金术 2026-09-23《把 prompt 当货架空间，把 GEO 当量化交易》→ [报告](../../reports/2026-09-23_ximalaya-ailianjinshu_luyang.md) ｜ [concepts/geo](../concepts/geo.md)

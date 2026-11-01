@@ -26,8 +26,8 @@
 
 ## 与什么相关
 
-- 模式生物脉络：本仓 [[circadian_rhythm]] 等的果蝇渊源（period 基因）——连接组让"基因→回路→行为"在果蝇身上首次全程可追
-- 跨域：ai-learning [[bitter_lesson]] 镜像——"功能写在接线图里还是动力学里"是连接组学内部的 bitter-lesson 式争论
+- 模式生物脉络：本仓 [circadian_rhythm](./circadian_rhythm.md) 等的果蝇渊源（period 基因）——连接组让"基因→回路→行为"在果蝇身上首次全程可追
+- 跨域：ai-learning [bitter_lesson](../../../ai-learning/wiki/concepts/bitter_lesson.md) 镜像——"功能写在接线图里还是动力学里"是连接组学内部的 bitter-lesson 式争论
 - 伦理：2024《纽约动物意识宣言》已纳入昆虫；数字仿真体的意识讨论在当前残缺仿真阶段暂无实质意义（Mineault）
 
 ## 未解问题 / 追踪

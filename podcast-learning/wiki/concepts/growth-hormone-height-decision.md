@@ -27,4 +27,4 @@
 
 ## 引用
 
-- [[2026-09-27_xiaoyuzhou-boluo-jiankang_chengruoqian|程若倩教授：孩子身高这件事，到底矮不矮、治不治？]]（vol.129）
+- [程若倩教授：孩子身高这件事，到底矮不矮、治不治？](../../reports/2026-09-27_xiaoyuzhou-boluo-jiankang_chengruoqian.md)（vol.129）

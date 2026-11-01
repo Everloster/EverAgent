@@ -15,14 +15,14 @@
 
 ## 与其他概念的关联
 
-- 统治地位被 [[consumer-society|消费美学]] 取代（第 2 章）
-- 在新穷人阶段功能再变：从减少贫困变成"洗涤正常人的双手和良知"（[[new-poor-bauman]]）
+- 统治地位被 [消费美学](./consumer-society.md) 取代（第 2 章）
+- 在新穷人阶段功能再变：从减少贫困变成"洗涤正常人的双手和良知"（[new-poor-bauman](./new-poor-bauman.md)）
 - 出路对照：凡勃伦"工艺伦理"（人是创造者，标价牌不定义工作价值）
-- 来源：[[2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism]]
+- 来源：[2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism](../../reports/2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism.md)
 
 ## 2026-09-06 大小马 V94：两种节目叙事与鲍曼框架对照
 
 - **大卫的节目分析**：把努力与竞争性生存能力联系起来，借新教伦理和改革开放解释不同社会对工作的态度。这是主播的历史类比，未在本次阅读中独立核验。
 - **Emma 的节目观点**：更重视个人是否拥有选择努力或休息的条件，以及强制要求努力的代价。
 - **[推测]** 与鲍曼的批判框架对照，可以先检查自愿程度、退出成本和代价由谁承担，再讨论工作伦理；这组连接不构成对制度效果的实证结论。
-- 来源：[[2026-09-06_xiaoyuzhou-daxiaoma-keji_v94-rocket-recovery-sunology|大小马 V94]]
+- 来源：[大小马 V94](../../reports/2026-09-06_xiaoyuzhou-daxiaoma-keji_v94-rocket-recovery-sunology.md)

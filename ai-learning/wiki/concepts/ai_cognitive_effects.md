@@ -23,14 +23,14 @@ AI 对认知的影响**不是工具属性而是使用方式属性**：判据只�
 
 ## 与什么相关
 
-- [[bidirectional_domestication]] — 人与 AI 互相驯化的另一侧面
-- [[bitter_lesson]] — "把认知外包给规模"在个体层面的镜像
+- [bidirectional_domestication](./bidirectional_domestication.md) — 人与 AI 互相驯化的另一侧面
+- [bitter_lesson](./bitter_lesson.md) — "把认知外包给规模"在个体层面的镜像
 - 哲学谱系：Frankfurt《On Bullshit》→ IOED（Rozenblit & Keil 2002）→ 认知卸载（Sparrow 2011 Google Effect）
 
 ## 相关报告
 
 - [《欢迎来到伪智力繁荣时代》精读与批判（含 2026-07-19 追问深入）](../../reports/knowledge_reports/伪智力繁荣时代_评论文精读与批判_20260713.md)
-- [《我不得不把才华埋葬在昨天》精读与延伸研究（2026-09-16）](../../reports/knowledge_reports/才华埋葬在昨天_DeepSeek算子工程师自白精读与延伸研究_20260916.md) — 替身判据的专家版：专家不是免疫的，是被替身模式追上的（见 [[craft_displacement]]）
+- [《我不得不把才华埋葬在昨天》精读与延伸研究（2026-09-16）](../../reports/knowledge_reports/才华埋葬在昨天_DeepSeek算子工程师自白精读与延伸研究_20260916.md) — 替身判据的专家版：专家不是免疫的，是被替身模式追上的（见 [craft_displacement](./craft_displacement.md)）
 
 ## 未解问题 / 追踪
 

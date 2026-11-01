@@ -14,7 +14,7 @@
 
 ## 与其他概念的关联
 
-- 取代 [[work-ethic|工作伦理]] 的统治地位；其阴暗面产物 = [[new-poor-bauman|新穷人（有缺陷的消费者）]]
+- 取代 [工作伦理](./work-ethic.md) 的统治地位；其阴暗面产物 = [新穷人（有缺陷的消费者）](./new-poor-bauman.md)
 - UP 主判断：中国当下是"生产者社会和消费者社会的叠加态"
 - 与曾鸣 153 期"创造力时代/公司消亡"形成下一棒追问：当 AI 接管生产，身份轴心从消费再往哪迁（见报告思考与追问 1）
-- 来源：[[2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism]]
+- 来源：[2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism](../../reports/2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism.md)

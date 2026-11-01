@@ -41,7 +41,7 @@ def git_paths(*args: str) -> set[str]:
         check=False,
     )
     if proc.returncode != 0:
-        return set()
+        raise RuntimeError("cannot read staged paths")
     return {item for item in proc.stdout.split("\0") if item}
 
 
@@ -66,10 +66,19 @@ def report_for_sidecar(path: str) -> str | None:
     return None
 
 
+def report_audit_command(changed_paths: set[str]) -> list[str]:
+    return [sys.executable, "scripts/audit_reports.py", "--all", "--summary-only",
+            *(f"--changed-path={path}" for path in sorted(changed_paths))]
+
+
 def main() -> int:
-    staged = git_paths("diff", "--cached", "--name-only", "--diff-filter=ACMRTUXB")
-    added = git_paths("diff", "--cached", "--name-only", "--diff-filter=A")
-    modified_or_removed = git_paths("diff", "--cached", "--name-only", "--diff-filter=DMRTUXB")
+    try:
+        staged = git_paths("diff", "--cached", "--no-renames", "--name-only", "--diff-filter=ACMRTUXB")
+        added = git_paths("diff", "--cached", "--no-renames", "--name-only", "--diff-filter=A")
+        modified_or_removed = git_paths("diff", "--cached", "--no-renames", "--name-only", "--diff-filter=DMRTUXB")
+    except (RuntimeError, OSError):
+        print("[precommit-quality] BLOCKED: cannot read staged snapshot", file=sys.stderr)
+        return 1
     changed_policy_archives = sorted(
         path
         for path in modified_or_removed
@@ -100,6 +109,10 @@ def main() -> int:
         if (report := report_for_sidecar(path)) is not None
     })
 
+    # This gate needs Git's old blobs as well as index blobs, not checkout files.
+    if not run("incremental public content", [sys.executable, "scripts/audit_public_context.py", "--staged"], ROOT):
+        return 1
+
     with tempfile.TemporaryDirectory(prefix="everagent-staged-") as directory:
         snapshot = Path(directory)
         export = subprocess.run(
@@ -112,9 +125,11 @@ def main() -> int:
             return 1
 
         checks: list[tuple[str, list[str]]] = [
+            # Always check: a staged target deletion can break an unchanged README.
+            ("root README links", [sys.executable, "scripts/check_readme_links.py"]),
             (
                 "versioned report audit",
-                [sys.executable, "scripts/audit_reports.py", "--all", "--summary-only"],
+                report_audit_command(staged | modified_or_removed),
             ),
         ]
         if staged & {"scripts/whoami_agent.py", "scripts/git_identity.py", "scripts/ecommit.sh",

@@ -46,6 +46,6 @@ status: active
 - [程乐松一手文本精读：重返经验、断裂的居间性与「做中国哲学」的手筋](../../reports/concept_reports/程乐松_方法论一手精读_重返经验与做中国哲学_20260720.md)
 
 ## 跨域连接
-- 与 [[religious_hermeneutics_idea_history]]（观念史/宗教诠释学）互补：那页是他在道教研究中的方法，本页是他对整个中国哲学学科的方法论纲领。
+- 与 [religious_hermeneutics_idea_history](./religious_hermeneutics_idea_history.md)（观念史/宗教诠释学）互补：那页是他在道教研究中的方法，本页是他对整个中国哲学学科的方法论纲领。
 - 与伽达默尔诠释学（视域融合、效果历史）可作系统对照 *(待专题)*；利科是其「历史性」论述的直接资源。
 - 「让问题呈现出来」与 ai-learning 的「伪智力」批判（判断天花板 vs 表达地板）在「反单一标准」上同构 *(跨域对照待做)*。

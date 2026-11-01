@@ -52,5 +52,5 @@ status: active
 - [赵鼎新《儒法国家》理论框架：四种竞争、战争驱动与两千年韧性结构](../../reports/concept_reports/赵鼎新_儒法国家_理论框架_20260721.md)
 
 ## 跨域连接
-- 与 [[chongfan_jingyan_methodology]]（程乐松）互为镜像：同一批中国思想传统，程从信仰经验内部理路读（通透），赵还原为意识形态权力的宏观竞争（穿透）——候选 synthesis「国家—意识形态—信仰」三联对照（+ 杨庆堃弥散性宗教）。
+- 与 [chongfan_jingyan_methodology](./chongfan_jingyan_methodology.md)（程乐松）互为镜像：同一批中国思想传统，程从信仰经验内部理路读（通透），赵还原为意识形态权力的宏观竞争（穿透）——候选 synthesis「国家—意识形态—信仰」三联对照（+ 杨庆堃弥散性宗教）。
 - 与 ai-learning 的 Bitter Lesson 讨论形似神异（2026-07-21 裁决）：Bitter Lesson 的筛选器是算力成本曲线，赵的是竞争的计分清晰度；共享直觉仅止于「历史方向由可持续积累的机制决定，而非设计者意图」。不再深挖。

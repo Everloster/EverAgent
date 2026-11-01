@@ -1,43 +1,5 @@
-# psychology-learning — Project Context
+# 历史入口：CONTEXT.md
 
-> **Agent 协议**：操作本项目前须读取 [AGENTS.md](./AGENTS.md)（PsycheAgent 自包含协议）。执行完成后按协议 §5 提交推送。
+旧资料已移至[历史归档](./archive/legacy-context/CONTEXT.md)，原文保留，本页仅兼容旧路径。归档中的库存、建议与执行指令不再作为当前状态。
 
-**领域**：心理学·经典实验精读·概念深度解析
-**三维度**：实验深度 × 历史叙事 × 当代相关性
-
-## 已有报告
-**实验/论文精读** (`reports/paper_analyses/`)
-- `01_miller_magical_number_seven_1956` — 神奇的数字七，工作记忆容量上限
-- `02_milgram_obedience_1963` — 服从权威实验，情境力量的经典证明
-- `03_festinger_carlsmith_cognitive_dissonance_1959` — 认知失调实验·不足理由效应·态度改变与自我合理化（2026-03-26）
-- `05_kahneman_tversky_prospect_theory_1979` — 前景理论·损失厌恶·参考点依赖·概率权重函数·行为经济学奠基（2026-03-26）
-- `06_seligman_maier_learned_helplessness_1967` — 习得性无助·不可控创伤经验·控制感丧失与后续逃避失败（2026-03-26）
-- `10_darley_latane_bystander_1968` — 旁观者效应·责任扩散·多人在场反而降低帮助概率·紧急情境中的社会心理机制（2026-03-26）
-- `14_asch_conformity_1951` — 群体压力下的知觉从众·规范性社会影响·客观任务中仍出现系统性附和（2026-03-26）
-- `24_zimbardo_stanford_prison_1971` — 斯坦福监狱实验·角色内化与制度情境力量·高争议经典案例·方法学批评同样重要（2026-03-26）
-- `04_rosenhan_sane_insane_places_1973` — On Being Sane in Insane Places·假病人实验·诊断标签效应·精神病诊断可靠性质疑（2026-03-27）
-- `07_tversky_kahneman_heuristics_1974` — 启发式与偏差·代表性·可得性·锚定·行为经济学奠基·Kahneman 2002诺贝尔奖（2026-03-28）
-- `08_bandura_bobo_1961` — Bobo娃娃实验·观察学习·攻击行为习得·替代性强化·社会学习理论奠基·媒体暴力效应（2026-03-28）
-- `13_harlow_monkey_1958` — Harlow恒河猴实验·代理母亲·接触舒适·依恋基础·安全基地效应·驱力降低理论反驳（2026-03-30）
-
-**知识深度解析** (`reports/concept_reports/`)
-- `心理学关键人物图谱` — 冯特→卡尼曼思想传承与决裂史
-- `认知偏差全景图` — Kahneman/Tversky 启发式与偏差、前景理论及社会偏差的系统整合，核心偏差矩阵×层次结构图（2026-04-05）
-- `心理学关键人物图谱_更新版` — 加入 Bandura/Seligman/Harlow 等新精读作者；按领域×时代双重维度组织；含 Mermaid 全景关系图与人物矩阵（2026-04-22）
-- `情绪调节_Gross模型_20260621` — Gross 过程模型五大家族（情境选择/修正/注意/认知/反应）+ 重评 vs 抑制实证对比（Gross & John 2003, n=194）+ Webb 2012 + Aldao 2010 元分析 + Ochsner 神经基础 + Butler 2007 跨文化 + DBT/CBT 第三波临床应用（2026-06-21）
-
-## 离线知识库
-→ [`knowledge/INDEX.md`](./knowledge/INDEX.md)
-
-## Skills
-- `skills/paper_analysis/SKILL.md` — 心理学实验 7 步分析法
-- `skills/concept_deep_dive/SKILL.md` — 心理学概念 5 层理解模型
-
-## 导航
-- 学习路径：`roadmap/Learning_Roadmap.md`
-- 论文索引：`papers/PAPERS_INDEX.md`（30 篇）
-- 书籍索引：`books/BOOKS_INDEX.md`（25 部）
-
-## ⚠️ 边界（防幻觉）
-以下内容**尚未研究**，禁止推测，须告知用户：
-- 发展心理学、临床心理学方向尚无报告
+当前入口：[领域首页](./README.md) · [领域协议](./AGENTS.md) · [知识地图](./MAP.md) · [Wiki](./wiki/index.md)。

@@ -32,14 +32,14 @@
 
 ## 出现于
 
-- [[../reports/2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan|Vol.29 报告]]
+- [Vol.29 报告](../../reports/2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan.md)
 
 ## 相关链接
 
-- [[life-model|生命模型]]
-- [[baixiao-yi-ai-doctor|百小一]]
-- [[baichuan-intelligence|百川智能]]
-- [[wang-xiaochuan|王小川]]
+- [生命模型](./life-model.md)
+- [百小一](./baixiao-yi-ai-doctor.md)
+- [百川智能](../entities/baichuan-intelligence.md)
+- [王小川](../entities/wang-xiaochuan.md)
 
 ---
 

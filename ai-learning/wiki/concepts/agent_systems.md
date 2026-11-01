@@ -101,9 +101,9 @@ Agent 的记忆分为两层：
 
 ## 相关概念
 
-- [[./chain_of_thought.md|CoT]]：ReAct 的 Thought 步骤继承 CoT 的推理思想
-- [[./rlhf.md|RLHF]]：Agent 对齐训练的核心方法
-- [[./transformer_architecture.md|Transformer]]：LLM 的底层架构
+- CoT（链接待补）：ReAct 的 Thought 步骤继承 CoT 的推理思想
+- [RLHF](./rlhf.md)：Agent 对齐训练的核心方法
+- [Transformer](./transformer_architecture.md)：LLM 的底层架构
 
 ---
 

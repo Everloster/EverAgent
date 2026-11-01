@@ -16,6 +16,6 @@
 
 ## 与其他概念的关联
 
-- 组织载体：[[native-app-stage]] 第二、三阶段的主角是 New Lab/AI 原生组织
-- 与 [[entities/zeng-ming|曾鸣]] 的"公司消亡"判断一体两面：组织单元从岗位变任务，战略从规划变生成
-- 来源：[[2026-09-03_xiaoyuzhou-zhangxiaojun_zengming]]
+- 组织载体：[native-app-stage](./native-app-stage.md) 第二、三阶段的主角是 New Lab/AI 原生组织
+- 与 [曾鸣](../entities/zeng-ming.md) 的"公司消亡"判断一体两面：组织单元从岗位变任务，战略从规划变生成
+- 来源：[2026-09-03_xiaoyuzhou-zhangxiaojun_zengming](../../reports/2026-09-03_xiaoyuzhou-zhangxiaojun_zengming.md)

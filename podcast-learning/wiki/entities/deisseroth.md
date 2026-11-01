@@ -19,5 +19,5 @@
 
 ## 相关期数
 
-- 屠龙大实话（2026-10-06，28 期重发）→ [[2026-10-06_xiaoyuzhou-tulong-dashihua_karl-deisseroth|报告]]
-- 关联：[[optogenetics]] 概念页；与 [[huang-xiang]]（脑可塑性）同属脑科学线
+- 屠龙大实话（2026-10-06，28 期重发）→ [报告](../../reports/2026-10-06_xiaoyuzhou-tulong-dashihua_karl-deisseroth.md)
+- 关联：[optogenetics](../concepts/optogenetics.md) 概念页；与 [huang-xiang](./huang-xiang.md)（脑可塑性）同属脑科学线

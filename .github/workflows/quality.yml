@@ -13,17 +13,62 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Run report tooling tests
-        run: python3 -m unittest tests.test_report_tooling
-      - name: Run agent identity tests
-        run: python3 -m unittest scripts.test_whoami_agent scripts.test_git_identity scripts.test_git_commit scripts.test_core_contracts scripts.test_model_observations
+      - name: Install GitHub research test dependencies
+        run: |
+          python3 - <<'PY'
+          import pathlib
+          import subprocess
+          import sys
+          import tomllib
+          project = tomllib.loads(pathlib.Path("github-trending-analyzer/pyproject.toml").read_text())["project"]
+          dependencies = project["dependencies"] + project["optional-dependencies"]["dev"]
+          subprocess.run([sys.executable, "-m", "pip", "install", *dependencies], check=True)
+          PY
+      - name: Run report and public gate tests
+        run: python3 -m unittest discover -s tests -p 'test_*.py'
+      - name: Run all script regression tests
+        run: python3 -m unittest discover -s scripts -p 'test_*.py'
+      - name: Run Bilibili inbox tests
+        run: python3 -m unittest discover -s web-surfing/skills/site-bilibili/tests -p 'test_*.py'
+      - name: Run GitHub research tests
+        run: python3 -m pytest github-trending-analyzer/tests -q
+      - name: Audit newly introduced public content
+        env:
+          BASE_REVISION: ${{ github.event.pull_request.base.sha || github.event.before }}
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          [[ "$BASE_REVISION" =~ ^[0-9a-f]{40,64}$ ]] || exit 1
+          if [[ "$BASE_REVISION" =~ ^0+$ ]]; then
+            BASE_REVISION=$(git hash-object -w -t tree --stdin </dev/null)
+          elif [[ "$EVENT_NAME" == "pull_request" ]]; then
+            BASE_REVISION=$(git merge-base "$BASE_REVISION" HEAD)
+          fi
+          python3 scripts/audit_public_context.py --changed --base "$BASE_REVISION" --head HEAD
+          printf 'AUDIT_BASE=%s\n' "$BASE_REVISION" >> "$GITHUB_ENV"
+      - name: Check root README links and media
+        run: python3 scripts/check_readme_links.py
       - name: Check script catalog and generated index
         run: python3 scripts/script_catalog.py check
       - name: Audit all reports
-        run: python3 scripts/audit_reports.py --all --summary-only
+        run: |
+          python3 - <<'PY'
+          import os
+          import subprocess
+          import sys
+          paths = subprocess.check_output([
+              "git", "diff", "--no-renames", "--name-only", "-z",
+              os.environ["AUDIT_BASE"], "HEAD", "--",
+          ]).decode().split("\0")
+          subprocess.run([
+              sys.executable, *"scripts/audit_reports.py --all --summary-only".split(),
+              *("--changed-path=" + path for path in paths if path),
+          ], check=True)
+          PY
       - name: Verify generated indexes
         run: python3 scripts/reindex.py --check
       - name: Evaluate context and real report replays

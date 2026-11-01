@@ -26,10 +26,10 @@ AI 对顶尖手艺人的替代不是"能力贬值"，而是**需求计价方式�
 
 ## 与什么相关
 
-- [[ai_cognitive_effects]] — 替身判据的专家版：专家不是免疫的，是被替身模式追上的；心流丧失是"认知耐心侵蚀"链条的终端
-- [[anthropic_econ_scenarios]] — so-so automation 机制 / extreme 情景劳动份额 45.2%
-- [[bidirectional_domestication]] — 认知耐心侵蚀机制的正向版本
-- [[opensource_vs_closedsource_toa]] — 作者把职业配置成"场景 A/C 的人肉对冲"
+- [ai_cognitive_effects](./ai_cognitive_effects.md) — 替身判据的专家版：专家不是免疫的，是被替身模式追上的；心流丧失是"认知耐心侵蚀"链条的终端
+- [anthropic_econ_scenarios](./anthropic_econ_scenarios.md) — so-so automation 机制 / extreme 情景劳动份额 45.2%
+- [bidirectional_domestication](./bidirectional_domestication.md) — 认知耐心侵蚀机制的正向版本
+- [opensource_vs_closedsource_toa](./opensource_vs_closedsource_toa.md) — 作者把职业配置成"场景 A/C 的人肉对冲"
 - Intelligence Curse 报告（2026-07-30）— "权力 > 技术"担忧的激励机制版
 
 ## 相关报告

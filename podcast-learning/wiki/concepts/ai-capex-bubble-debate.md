@@ -21,19 +21,19 @@
 
 ## 与其他概念的关联
 
-- 是 [[renaissance-revaluation]] 框架第一章的对应物
+- 是 [renaissance-revaluation](./renaissance-revaluation.md) 框架第一章的对应物
 - 与 token 买方/卖方博弈（存储/能源/芯片卖方跑赢云厂商买方）互为表里
-- 对照 [[agent-first-year]]：应用层收入能否闭合折旧缺口，取决于 Agent 商业化
+- 对照 [agent-first-year](./agent-first-year.md)：应用层收入能否闭合折旧缺口，取决于 Agent 商业化
 
 ## 引用本概念的报告
 
-- [[2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review|重估一切，文艺复兴——2026H1 AI行业观察]]
+- [重估一切，文艺复兴——2026H1 AI行业观察](../../reports/2026-07-17_xiaoyuzhou-tulong-zhishu_2026h1-ai-review.md)
 
 ## 互链：2026-07-24 涌现对谈的补充视角
 
-[[2026-07-24_bilibili-suochang-linchao_ai-bubble-2027|所长林超《AI泡沫，2027年爆破？》]]（Bill Qian + 蒋涛）与本概念构成同一命题的三个互补判断：
+[所长林超《AI泡沫，2027年爆破？》](../../reports/2026-07-24_bilibili-suochang-linchao_ai-bubble-2027.md)（Bill Qian + 蒋涛）与本概念构成同一命题的三个互补判断：
 
 - **庄明浩（供给侧）**：债是导火索，收入只够折旧，巨头 FCF 转负——"美第奇的账本"
 - **Bill Qian（金融侧）**：四大泡沫论逐条检视后只剩"剪刀差"成立（7000 亿 CAPEX vs 1000 亿收入、50% 为 3-5 年寿命芯片）；判断为多次深 V 重分配而非一次性崩盘
-- **蒋涛（需求侧）**：[[concepts/open-source-price-anchoring|开源价格锚定]]从价格端掐闭源收入曲线；时点收敛于 2027 下半年（IPO 后 3-4 个季度）
+- **蒋涛（需求侧）**：[开源价格锚定](./open-source-price-anchoring.md)从价格端掐闭源收入曲线；时点收敛于 2027 下半年（IPO 后 3-4 个季度）
 - 债务规模互证：SemiAnalysis 口径 2029 年 AI 债余额 7 万亿美元（2024-2029 累计 11 万亿），"全球除美国房贷外最大债务市场"

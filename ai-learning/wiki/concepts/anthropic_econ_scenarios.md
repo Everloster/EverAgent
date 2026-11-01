@@ -28,7 +28,7 @@
 
 ## 与其他概念的关联
 
-- 供给侧镜像 ↔ podcast-learning [[ai-capex-bubble-debate]]（庄明浩 CAPEX 泡沫之辩）
-- 政治经济学版本 ↔ [[intelligence_curse]] 相关报告（2026-07-30，劳动份额下滑的激励机制版）
+- 供给侧镜像 ↔ podcast-learning [ai-capex-bubble-debate](../../../podcast-learning/wiki/concepts/ai-capex-bubble-debate.md)（庄明浩 CAPEX 泡沫之辩）
+- 政治经济学版本 ↔ intelligence_curse（链接待补） 相关报告（2026-07-30，劳动份额下滑的激励机制版）
 - 计量检验器 ↔ 曾鸣三阶段论（podcast-learning 2026-09-03）："第二阶段开场"≈ d_t logistic 爬升段
-- 来源报告：[[Anthropic经济情景模型_深度解析_20260911]]
+- 来源报告：[Anthropic经济情景模型_深度解析_20260911](../../reports/knowledge_reports/Anthropic%E7%BB%8F%E6%B5%8E%E6%83%85%E6%99%AF%E6%A8%A1%E5%9E%8B_%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90_20260911.md)

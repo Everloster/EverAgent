@@ -17,14 +17,14 @@
 
 ## 出现于
 
-- [[../reports/2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan|Vol.29 报告]]
+- [Vol.29 报告](../../reports/2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan.md)
 
 ## 相关链接
 
-- [[baichuan-intelligence|百川智能]]
-- [[../concepts/baichuan-m4|百川 M4 模型]]
-- [[../concepts/baixiao-yi-ai-doctor|百小一]]
-- [[../concepts/non-consensus-ai|非共识 AI 路线]]
+- [百川智能](./baichuan-intelligence.md)
+- [百川 M4 模型](../concepts/baichuan-m4.md)
+- [百小一](../concepts/baixiao-yi-ai-doctor.md)
+- [非共识 AI 路线](../concepts/non-consensus-ai.md)
 
 ---
 

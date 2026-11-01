@@ -6,7 +6,7 @@
 
 - **RadixArk 创始成员**、**SGLang 核心开发者**（UCLA 读博期间加入；SGLang 第一时间适配 V4、K3、GLM 5.2 等中国开源模型）
 - 清华本科 → UCLA 博士
-- 与 [[sheng-ying|盛颖]]（RadixArk 联创/CEO、SGLang 发起人）同门：RadixArk 圈子（参见 E247）；与 [[zeng-zhiyuan|曾致远]] 清华同系同届
+- 与 [盛颖](./sheng-ying.md)（RadixArk 联创/CEO、SGLang 发起人）同门：RadixArk 圈子（参见 E247）；与 [曾致远](./zeng-zhiyuan.md) 清华同系同届
 
 ## 核心观点（2026-08-04 详解 K3 时）
 
@@ -19,5 +19,5 @@
 
 ## 引用本人物的报告
 
-- [[2026-08-04_rss-wandian-latetalk_kimi-k3|晚点聊177 详解 Kimi K3]]（主报告）
-- [[2026-09-02_multi_kimi-k3-dueling-reads|K3 一鱼两吃对照]]
+- [晚点聊177 详解 Kimi K3](../../reports/2026-08-04_rss-wandian-latetalk_kimi-k3.md)（主报告）
+- [K3 一鱼两吃对照](../../reports/2026-09-02_multi_kimi-k3-dueling-reads.md)

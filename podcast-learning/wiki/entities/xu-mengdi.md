@@ -17,4 +17,4 @@
 
 ## 相关期数
 
-- 十字路口 2026-09-20 对谈 → [[2026-09-20_xiaoyuzhou-crossing_xumengdi|报告]]
+- 十字路口 2026-09-20 对谈 → [报告](../../reports/2026-09-20_xiaoyuzhou-crossing_xumengdi.md)

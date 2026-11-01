@@ -7,8 +7,8 @@
 老钱提出的中年（35-55 岁）生活管理框架：用"地基性"做剃刀——正常时完全无感、出问题即大厦崩塌——再加上"可量化、可用账户概念管理"两个筛选条件，最终只剩三本账：
 
 - **现金账（现金流）**：管终身。蓄水池模型——进水口（薪资+经营=人力资本；分红利息房租=金融资产）水压渐降，出水口（必要/可选消费+退休+代际）管子越接越多
-- **肉身账（肌肉）**：管十年以后。肌肉=长寿器官，力量训练=退休储蓄（详 [[muscle-retirement-savings]]）
-- **睡眠账**：管明天早上。唯一无法积累、必须每天维护的账户（详 [[sleep-cybernetics]]）
+- **肉身账（肌肉）**：管十年以后。肌肉=长寿器官，力量训练=退休储蓄（详 [muscle-retirement-savings](./muscle-retirement-savings.md)）
+- **睡眠账**：管明天早上。唯一无法积累、必须每天维护的账户（详 [sleep-cybernetics](./sleep-cybernetics.md)）
 
 ## 共同规律与破局点
 
@@ -22,4 +22,4 @@
 
 ## 引用本概念的报告
 
-- [[2026-07-13_xiaoyuzhou-mingjing-diandian_midlife-accounts|人到中年仨账户：现金流、肌肉、睡眠]]
+- [人到中年仨账户：现金流、肌肉、睡眠](../../reports/2026-07-13_xiaoyuzhou-mingjing-diandian_midlife-accounts.md)

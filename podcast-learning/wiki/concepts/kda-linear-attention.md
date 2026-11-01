@@ -35,4 +35,4 @@ Kimi 的线性注意力：用**固定大小循环状态**压缩历史信息（�
 
 ## 引用本概念的报告
 
-- [[2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report]]、[[2026-08-04_rss-wandian-latetalk_kimi-k3]]、[[2026-09-02_multi_kimi-k3-dueling-reads]]
+- [2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report](../../reports/2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report.md)、[2026-08-04_rss-wandian-latetalk_kimi-k3](../../reports/2026-08-04_rss-wandian-latetalk_kimi-k3.md)、[2026-09-02_multi_kimi-k3-dueling-reads](../../reports/2026-09-02_multi_kimi-k3-dueling-reads.md)

@@ -15,9 +15,9 @@
 
 ## 关联
 
-- 项目实体：[[sglang|SGLang]]
+- 项目实体：[SGLang](../entities/sglang.md)
 - ai-learning 预科：`ai-learning/wiki/concepts/kv_cache.md`、`llm_inference_engines.md`；vLLM 源码线阶段 2 会读 vLLM 侧的 prefix caching 实现（哈希块表，不同数据结构）
 
 ## 引用
 
-- [[2026-08-04_rss-guigu101_shengying|对话盛颖]]（E247）
+- [对话盛颖](../../reports/2026-08-04_rss-guigu101_shengying.md)（E247）

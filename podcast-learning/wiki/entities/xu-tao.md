@@ -37,4 +37,4 @@ Vol.31（声东击西 #378 · 2026-01-29）—— 监制
 
 ## 关联
 
-- [[entities/wavpub-shengdong-huopo]] — 所属公司
+- [entities/wavpub-shengdong-huopo](./wavpub-shengdong-huopo.md) — 所属公司

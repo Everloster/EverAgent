@@ -5,7 +5,7 @@
 ## 基本信息
 
 - **公司性质**：中国 AI 大模型公司
-- **创始人** / CEO：[[wang-xiaochuan|王小川]]
+- **创始人** / CEO：[王小川](./wang-xiaochuan.md)
 - **核心方向**：医疗大模型（区别于通用助手/编程赛道）
 - **旗舰产品**：
   - M4 模型（医学增强 / 生命模型）
@@ -21,14 +21,14 @@
 
 ## 出现于
 
-- [[../reports/2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan|Vol.29 报告]]
+- [Vol.29 报告](../../reports/2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan.md)
 
 ## 相关链接
 
-- [[wang-xiaochuan|王小川]]
-- [[../concepts/baichuan-m4|百川 M4 模型]]
-- [[../concepts/baixiao-yi-ai-doctor|百小一]]
-- [[../concepts/medical-supply-side-reform|医疗供给侧改革]]
+- [王小川](./wang-xiaochuan.md)
+- [百川 M4 模型](../concepts/baichuan-m4.md)
+- [百小一](../concepts/baixiao-yi-ai-doctor.md)
+- [医疗供给侧改革](../concepts/medical-supply-side-reform.md)
 
 ---
 

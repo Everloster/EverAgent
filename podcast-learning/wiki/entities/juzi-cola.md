@@ -14,4 +14,4 @@ Cola、ListenHub 创始人，正把 Agent 产品推向真实用户。
 - ListenHub 大厂采购入库两年，项目已死
 
 ## 引用报告
-- [[2026-09-09_xiaoyuzhou-yilun-ai_frontier-no-llm|易论AI Vol.1]]
+- [易论AI Vol.1](../../reports/2026-09-09_xiaoyuzhou-yilun-ai_frontier-no-llm.md)

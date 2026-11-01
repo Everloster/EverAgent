@@ -39,13 +39,13 @@
 
 ## 出现于
 
-- [[../reports/2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan|Vol.29 报告]]
+- [Vol.29 报告](../../reports/2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan.md)
 
 ## 相关链接
 
-- [[baixiao-yi-ai-doctor|百小一]]（供给侧的具体产品）
-- [[baichuan-m4|百川 M4 模型]]（供给侧的技术底座）
-- [[non-consensus-ai|非共识 AI 路线]]（供给侧改革是非共识的）
+- [百小一](./baixiao-yi-ai-doctor.md)（供给侧的具体产品）
+- [百川 M4 模型](./baichuan-m4.md)（供给侧的技术底座）
+- [非共识 AI 路线](./non-consensus-ai.md)（供给侧改革是非共识的）
 
 ---
 

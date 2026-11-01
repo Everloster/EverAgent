@@ -20,9 +20,9 @@
 - 生态位：有标注数据可微调的高频决策层 + 隐私本地推理 + 预算敏感 pipeline
 
 ## 关联
-- [[Agent Harness 学习计划]] 的路由/门控层实物样本（置信度门控设计模式）
-- [[model_calibration]]：温度缩放/ECE 的工业级实例；proper scoring rules 组合（log+spherical+RPS，复合保持严格适当）
-- [[bitter_lesson]] 的经济学倒装：Jevons 悖论 vs 算力扩展——廉价决策智能催生海量调用
+- Agent Harness 学习计划（链接待补） 的路由/门控层实物样本（置信度门控设计模式）
+- [model_calibration](./model_calibration.md)：温度缩放/ECE 的工业级实例；proper scoring rules 组合（log+spherical+RPS，复合保持严格适当）
+- [bitter_lesson](./bitter_lesson.md) 的经济学倒装：Jevons 悖论 vs 算力扩展——廉价决策智能催生海量调用
 - 李继刚「服务裹着能力」的自动化形态；colibrì=省显存 vs Laya=省 token/延迟
 - 双仓场景：EverAgent 播客段落分类/trending 过滤；infra 告警分级+升级门控（本地推理零外流）
 

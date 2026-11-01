@@ -34,14 +34,14 @@
 
 ## 出现于
 
-- [[../reports/2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan|Vol.29 报告]]
+- [Vol.29 报告](../../reports/2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan.md)
 
 ## 相关链接
 
-- [[baichuan-m4|百川 M4 模型]]
-- [[baichuan-intelligence|百川智能]]
-- [[medical-supply-side-reform|医疗供给侧改革]]
-- [[non-consensus-ai|非共识 AI 路线]]
+- [百川 M4 模型](./baichuan-m4.md)
+- [百川智能](../entities/baichuan-intelligence.md)
+- [医疗供给侧改革](./medical-supply-side-reform.md)
+- [非共识 AI 路线](./non-consensus-ai.md)
 
 ---
 

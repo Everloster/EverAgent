@@ -16,6 +16,6 @@
 
 ## 与其他概念的关联
 
-- 与 [[ai-capex-bubble-debate]]（屠龙之术 2026-07-17）：算力线的供给侧技术细节；英伟达 200 亿 acqui-hire Groq（2025 底）是"循环结构"的新例证
+- 与 [ai-capex-bubble-debate](./ai-capex-bubble-debate.md)（屠龙之术 2026-07-17）：算力线的供给侧技术细节；英伟达 200 亿 acqui-hire Groq（2025 底）是"循环结构"的新例证
 - 与 vLLM 源码线（ai-learning）：PD 分离、KV Cache 介质放置、MBU 视角是软件层的对应议题
-- 来源：[[2026-09-15_rss-guigu101_e251-inference-chips]]
+- 来源：[2026-09-15_rss-guigu101_e251-inference-chips](../../reports/2026-09-15_rss-guigu101_e251-inference-chips.md)

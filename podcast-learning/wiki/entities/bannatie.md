@@ -21,4 +21,4 @@
 ## 本库相关
 
 - 索引：`show-indexes/bannatie-gushipian.md`（36 集）
-- 报告：[[2026-08-13_ximalaya-bannatie-gushipian_jiangzhushan|金瓶梅·绿色版 9：蒋竹山（降级：无音频）]]
+- 报告：[金瓶梅·绿色版 9：蒋竹山（降级：无音频）](../../reports/2026-08-13_ximalaya-bannatie-gushipian_jiangzhushan.md)

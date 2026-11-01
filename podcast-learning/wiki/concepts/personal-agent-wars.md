@@ -28,10 +28,10 @@
 - **最值钱位置 = 信任和习惯**（context 只是入门）；光有 context 不够，从 context 构建画像的 memory 工程极难
 
 ## 关联
-- [[ai-phone-scheduling]]：AI 手机=AI 浏览器重演论（装 App 平替换机无理由）
-- [[agent-first-year]] / Agent Harness 学习计划：Suki 的"云上三套环境"是 harness 工程实录
-- [[system1-decision-laya]]（ai-learning）：决策层 10ms 化是个人 agent 的执行原语之一
-- [[funes]] 记忆层：Vanessa 豆包签证 bad case = 记忆不体贴人问题
+- [ai-phone-scheduling](./ai-phone-scheduling.md)：AI 手机=AI 浏览器重演论（装 App 平替换机无理由）
+- [agent-first-year](./agent-first-year.md) / Agent Harness 学习计划：Suki 的"云上三套环境"是 harness 工程实录
+- [system1-decision-laya](../../../ai-learning/wiki/concepts/system1-decision-laya.md)（ai-learning）：决策层 10ms 化是个人 agent 的执行原语之一
+- funes（链接待补） 记忆层：Vanessa 豆包签证 bad case = 记忆不体贴人问题
 
 ## 未解
 - Muse 每用户固定 VM 的真实考量（隔离/成本/算力囤积？）

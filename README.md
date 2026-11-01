@@ -40,7 +40,7 @@ EverAgent 收录借助 AI Agent 完成的论文精读、技术博客分析、开
 | ⚗️ [AI Practice](./ai-practice/) | 10 篇 | 9/1/0 |
 | 🎙️ [Podcast Learning](./podcast-learning/) | 113 篇 | 58/54/0 |
 | 🔭 [GitHub Research](./github-trending-analyzer/) | 124 篇 | 0/0/0 |
-| 🏄 [Web Surfing](./web-surfing/) | 48 篇 | 0/0/0 |
+| 🏄 [Web Surfing](./web-surfing/) | 47 篇 | 0/0/0 |
 <!-- AUTO-OVERVIEW:END -->
 
 ## 知识怎样积累
@@ -89,4 +89,4 @@ cd EverAgent
 
 - **来源与时效**：报告区分来源方主张与分析推断。历史材料的复核程度不一，收录数量不等于通过复核的数量；阅读时结合具体报告的来源、日期与复核记录判断。已有产出的证据类型、验证范围与缺口见 [AI 学习与实践记录](./AI_PROGRESS.md)。
 - **公开与私有**：私人对话、设备、账号、网络和访问入口不进入公开仓；通用经验的公开处理方式见 [Personal Context 指南](./PERSONAL_CONTEXT.md#10-私有经验怎样安全进入公开仓)。
-- **版权与许可**：学术论文 PDF 仅供个人学习，版权归原作者及出版机构所有；除另有说明外，报告与分析等原创内容采用 CC BY 4.0 许可，详见[免责声明](./DISCLAIMER.md)。
+- **版权与许可**：原创知识内容沿用 CC BY 4.0，原创软件代码采用 [MIT License](./LICENSE)。论文、转写及其他第三方材料保留各自权利，公开可读不等于可任意转载；详见[版权与使用说明](./DISCLAIMER.md)及[播客来源规则](./podcast-learning/COPYRIGHT.md)。

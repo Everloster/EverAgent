@@ -35,12 +35,12 @@
 
 ## 出现于
 
-- [[../reports/2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan|Vol.29 报告]]
+- [Vol.29 报告](../../reports/2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan.md)
 
 ## 相关链接
 
-- [[baichuan-m4|百川 M4 模型]]（百川对生命模型的尝试）
-- [[baixiao-yi-ai-doctor|百小一]]（生命模型的应用层）
+- [百川 M4 模型](./baichuan-m4.md)（百川对生命模型的尝试）
+- [百小一](./baixiao-yi-ai-doctor.md)（生命模型的应用层）
 
 ---
 

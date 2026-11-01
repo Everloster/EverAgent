@@ -57,5 +57,5 @@ related_entities:
 
 ## 关联
 
-- [[concepts/ade-vs-harness]] — Harness 作为闸门/护栏的跨期呼应（课代表 319 期 ADE vs Harness）
-- [[entities/wu-haozhe]] — 提出者及其实践案例（2026-07 存储行情）
+- [concepts/ade-vs-harness](./ade-vs-harness.md) — Harness 作为闸门/护栏的跨期呼应（课代表 319 期 ADE vs Harness）
+- [entities/wu-haozhe](../entities/wu-haozhe.md) — 提出者及其实践案例（2026-07 存储行情）

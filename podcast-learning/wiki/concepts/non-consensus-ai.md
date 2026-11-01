@@ -41,13 +41,13 @@
 
 ## 出现于
 
-- [[../reports/2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan|Vol.29 报告]]
+- [Vol.29 报告](../../reports/2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan.md)
 
 ## 相关链接
 
-- [[wang-xiaochuan|王小川]]（非共识的实践者）
-- [[baichuan-m4|百川 M4 模型]]（非共识的具体载体）
-- [[medical-supply-side-reform|医疗供给侧改革]]（非共识的另一面）
+- [王小川](../entities/wang-xiaochuan.md)（非共识的实践者）
+- [百川 M4 模型](./baichuan-m4.md)（非共识的具体载体）
+- [医疗供给侧改革](./medical-supply-side-reform.md)（非共识的另一面）
 
 ---
 

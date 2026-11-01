@@ -1,62 +1,34 @@
-# github-trending-analyzer
+# GitHub 开源仓库研究
 
-> GitHub 开源热点追踪 · Repo 深度研究 · 趋势洞察知识库。
-> **双重身份**：自动化分析工具 + 离线知识库。执行协议见 [`AGENTS.md`](./AGENTS.md)。
+通过真实代码、公开 API 与项目文档理解开源项目，积累单仓深研和 trending 趋势报告。关注技术设计与适用边界，不只复述 README 或 Stars 排名。
 
-## 只做三件事
+## 阅读与研究入口
 
-| # | 事 | 触发 | 产出 |
-|---|----|------|------|
-| A | 单 repo 深度研究 | 明确要求“深挖 / 研究 / 出报告” | `reports/research_{owner}_{repo}.md` |
-| B | trending 汇总 | "出日/周/月 trending 报告" | `reports/all-{period}-summary-{date}.md` + 榜上各 repo 报告 |
-| C | 迭代优化研究技能本身 | 发现跨 repo 可复用的问题时 | 对 skill/reference 的最小增量 |
+| 想看什么 | 入口 |
+|---|---|
+| 已有单仓深研、日周月汇总 | [报告目录](./reports/) |
+| 单个仓库的架构与实现 | [repo-research](./skills/repo-research/SKILL.md) |
+| 日、周、月 trending | [trending-analyzer](./skills/trending-analyzer/SKILL.md) |
+| 报告结构参考 | [报告模板](./assets/report_template.md) |
 
-仅发送 repo 链接时默认口头介绍，不落报告。事A 的入口在 `skills/repo-research/SKILL.md`，详细四轮研究方法已下沉到其 `references/`；事B 建立在事A 之上。
+仅发送仓库链接时默认口头介绍，不落文件；明确要求深挖、研究或报告时再展开。已有报告且要求更新时续写原报告，保留其视角和证据时点。
 
-报告质量由代码/API 证据与全仓报告门禁共同保证。每次任务都反思，只有可复用或高风险发现才写回长期 context。
+## 研究特点
 
-## Quick Start
+- 先通过 eacli `repo.public.*` 获取仓库结构、文件与文档；未覆盖的精确元数据按领域协议最小补充。
+- 技术判断回到代码；README 与实现不一致时指出差异。结论区分代码、API、文档、外部资料与推测。
+- Stars、版本、issue 和 release 等数字注明查询时点；历史榜单不代表当前排名。
+- 报告统一保存在 `reports/`，不在首页手工维护篇数或第二份全量库存。
 
-```bash
-# 1. 依赖（Python 3.9+；gh CLI 已 gh auth login）
-pip install -e ".[dev]"
+## 本地辅助工具
 
-# 2. 抓榜单
-python3 scripts/trending_fetcher.py fetch daily          # daily/weekly/monthly
-python3 scripts/trending_fetcher.py fetch daily python   # 按语言过滤
+已有[辅助脚本](./scripts/)处理榜单、元数据和报告草稿，[测试](./tests/)验证脚本行为；使用边界与取数顺序由 [AGENTS.md](./AGENTS.md) 和对应 skill 维护。
 
-# 3. 检查某 repo 是否已有报告（7 天缓存判断）
-python3 scripts/trending_fetcher.py check owner/repo
-
-# 4. GitHub API 取数（4 轮研究的取数入口）
-python3 scripts/github_api.py <owner> <repo> summary
-```
-
-## 目录
-
-```
-scripts/     辅助脚本（只读）：trending_fetcher / report_generator / github_api
-skills/      两件事各一 skill：repo-research（含 4 轮方法论）/ trending-analyzer
-assets/      report_template.md
-reports/     【唯一输出目录】research_*.md + all-*-summary-*.md
-knowledge/   reports_index.md（人类导航索引，可选维护）
-tests/       脚本单元测试
-```
-
-## 知识库现状（`reports/`）
-
-- **Repo 深度报告**：111 篇（AI/ML、DevTools、Infra、Agent 等）
-- **汇总报告**：daily ×7、weekly ×2、monthly ×4（共 13 篇）
-- 完整索引 → [`knowledge/reports_index.md`](./knowledge/reports_index.md)
-
-## 脚本自检
+在本领域目录安装仓库声明的开发依赖后，可运行脚本自检：
 
 ```bash
 ruff check scripts tests
 pytest -q
-python3 ../scripts/reindex.py
-python3 ../scripts/audit_reports.py --changed
-python3 ../scripts/reindex.py --check
 ```
 
-CI：`.github/workflows/trending-analyzer-ci.yml`（push/PR 自动跑 ruff + pytest，仅护脚本，不校验报告内容）。
+这些检查不等于报告内容通过复核。长期报告的证据与完成标准见[报告工作流](../docs/REPORT_WORKFLOW.md)和[质量门](../docs/REPORT_QUALITY_GATE.md)。

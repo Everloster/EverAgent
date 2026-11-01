@@ -43,5 +43,5 @@ Vol.32（后互联网时代的乱弹 · 第 166 期 · 2026-06-06），参考历
 
 ## 关联
 
-- [[entities/wavpub]] — 内容托管方
-- [[concepts/post-internet-era]]
+- [entities/wavpub](./wavpub.md) — 内容托管方
+- [concepts/post-internet-era](../concepts/post-internet-era.md)

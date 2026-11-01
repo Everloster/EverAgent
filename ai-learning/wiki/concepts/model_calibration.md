@@ -25,9 +25,9 @@ status: active
 
 ## 与什么相关
 
-- [[rlhf]] — 校准破坏是 RLHF 三宗罪之一；RLCD（TypeSafe）是"scoring rule 替代偏好"的产业版
-- [[test_time_compute]] — Jev parallel sampling = 第四维度（取消生成、并行出分布）
-- [[bitter_lesson]] — TypeSafe 的 "the bitterest lesson" 挪用：优化对任务 > 数据/算力/算法（与 Sutton 原命题方向相反）
+- [rlhf](./rlhf.md) — 校准破坏是 RLHF 三宗罪之一；RLCD（TypeSafe）是"scoring rule 替代偏好"的产业版
+- [test_time_compute](./test_time_compute.md) — Jev parallel sampling = 第四维度（取消生成、并行出分布）
+- [bitter_lesson](./bitter_lesson.md) — TypeSafe 的 "the bitterest lesson" 挪用：优化对任务 > 数据/算力/算法（与 Sutton 原命题方向相反）
 
 ## 相关报告
 

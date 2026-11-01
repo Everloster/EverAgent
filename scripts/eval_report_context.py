@@ -81,6 +81,20 @@ def _behavior_context_sha256(root: Path = ROOT) -> str:
     return digest.hexdigest()
 
 
+def missing_ci_checks(workflow_text: str) -> list[str]:
+    # Accept module invocations or discovery of the full owning test directory.
+    text = workflow_text.replace("'", "").replace('"', "")
+    checks = {
+        "report tests": ("tests.test_report_tooling", "unittest discover -s tests -p test_*.py"),
+        "script tests": ("scripts.test_git_commit", "unittest discover -s scripts -p test_*.py"),
+        "audit_reports.py --all": ("audit_reports.py --all",),
+        "reindex.py --check": ("reindex.py --check",),
+        "eval_report_context.py": ("eval_report_context.py",),
+    }
+    return [label for label, alternatives in checks.items()
+            if not any(command in text for command in alternatives)]
+
+
 def _load_suite() -> dict:
     return json.loads(SUITE_PATH.read_text(encoding="utf-8"))
 
@@ -401,16 +415,9 @@ def static_evaluation() -> dict[str, object]:
         errors.append("缺少 .github/workflows/quality.yml")
     else:
         workflow_text = CI_QUALITY_WORKFLOW.read_text(encoding="utf-8", errors="replace")
-        required_ci_checks = (
-            "tests.test_report_tooling",
-            "scripts.test_git_commit",
-            "audit_reports.py --all",
-            "reindex.py --check",
-            "eval_report_context.py",
-        )
-        missing_ci_checks = [item for item in required_ci_checks if item not in workflow_text]
-        if missing_ci_checks:
-            errors.append("CI 质量门缺少检查：" + ", ".join(missing_ci_checks))
+        missing = missing_ci_checks(workflow_text)
+        if missing:
+            errors.append("CI 质量门缺少检查：" + ", ".join(missing))
         else:
             ci_quality_guarded = True
 

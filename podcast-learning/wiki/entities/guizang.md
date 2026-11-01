@@ -13,4 +13,4 @@ AI 创业者，曾做内容，今年用内容带产品；深度使用 skill，�
 - 模型双线价格律观察：SOTA 持平微涨 / 主流指数下降
 
 ## 引用报告
-- [[2026-09-09_xiaoyuzhou-yilun-ai_frontier-no-llm|易论AI Vol.1]]
+- [易论AI Vol.1](../../reports/2026-09-09_xiaoyuzhou-yilun-ai_frontier-no-llm.md)

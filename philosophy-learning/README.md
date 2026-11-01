@@ -1,199 +1,30 @@
-# 📚 Philosophy Learning Project
+# 哲学学习与研究
 
-> 系统学习世界哲学（含西方哲学史与中国哲学）的个人知识库与学习项目
-> 创建日期：2026-03-23 | 最后更新：2026-06-22（范围扩展为世界哲学 + 接入对话学习层）
+通过原典精读、论证重构与跨时代比较研究世界哲学，包含西方哲学、中国哲学与当代思想。以问题、文本和思想之间的对话为线索，不把哲学史简化为观点清单。
 
----
+## 阅读入口
 
-## 项目目标
+| 想看什么 | 入口 |
+|---|---|
+| 原典、章节与短篇论证 | [文本精读](./reports/text_analyses/) · [论文分析](./reports/paper_analyses/) |
+| 概念比较与思想专题 | [概念报告](./reports/concept_reports/) |
+| 概念、人物与思想脉络 | [Wiki](./wiki/index.md) · [主题总览](./wiki/overview.md) |
+| 已有覆盖与后续问题 | [知识地图](./MAP.md) · [未解问题](./wiki/open-questions.md) |
+| 原始材料与书目 | [论文及短篇索引](./papers/PAPERS_INDEX.md) · [书籍索引](./books/BOOKS_INDEX.md) |
+| 哲学史与系统阅读路线 | [发展时间线](./roadmap/Philosophy_Development_Timeline.md) · [学习路径](./roadmap/Learning_Roadmap.md) |
 
-建立一套完整的哲学自学体系，覆盖西方哲学史、中国哲学（先秦诸子、道家道教、宋明理学等）与当代学者思想，含核心文本精读、关键论文研究，并持续积累深度分析报告。
-项目的三个维度：**思想深度**（经典文本精读）× **历史叙事**（人物图谱、思想流变）× **概念辨析**（核心概念跨时代比较）。
+时间线与旧路线以西方哲学为主，不代表整个领域的覆盖。Wiki 是导航与提炼；具体阅读范围、版本和论证依据应回到报告，旧索引中的进度不作为当前库存。
 
----
+## 几条阅读线索
 
-## 📁 完整目录结构
+- **知识如何可能**：[《美诺》](./reports/text_analyses/04_plato_meno_-380.md)、[Gettier](./reports/text_analyses/03_gettier_1963.md)与[知识的跨时代比较](./reports/concept_reports/知识_跨时代比较.md)。
+- **如何生活与判断**：[亚里士多德德性伦理](./reports/text_analyses/06_aristotle_nicomachean_ethics_-350.md)、[康德义务论](./reports/text_analyses/05_kant_groundwork_1785.md)与[罗尔斯正义论](./reports/text_analyses/08_rawls_theory_of_justice_1971.md)。
+- **中国哲学与宗教理解**：[程乐松思想综述](./reports/concept_reports/程乐松_道教与宗教诠释学_思想综述_20260622.md)，从概念的历史语境和宗教经验进入问题。
 
-```
-philosophy-learning/
-│
-├── README.md                                    # 本文件，项目总览与导航
-│
-├── roadmap/                                     # 📍 学习路径规划
-│   ├── Philosophy_Development_Timeline.md      # 西方哲学2500年发展时间线
-│   └── Learning_Roadmap.md                     # 系统学习路径（Phase 1-5）
-│
-├── papers/                                      # 📄 经典哲学论文与短篇文本
-│   └── PAPERS_INDEX.md                         # 30篇经典论文/文章索引（含来源链接）
-│
-├── books/                                       # 📖 哲学经典书籍（本项目特色）
-│   └── BOOKS_INDEX.md                          # 25部必读哲学经典索引（含分支分类）
-│
-├── skills/                                      # 🛠️ 学习技能模板
-│   ├── text_analysis/
-│   │   └── SKILL.md                            # 哲学文本深度分析技能（7步分析法）
-│   └── concept_deep_dive/
-│       └── SKILL.md                            # 哲学概念深挖技能（5层理解模型）
-│
-├── reports/                                     # 📊 分析报告
-│   ├── text_analyses/                          # 文本精读报告（论文 + 书籍章节）
-│   └── concept_reports/                        # 概念深度解析
-│       └── 哲学关键人物图谱.md                  # ✅ 哲学家生涯轨迹与思想传承图谱
-│
-└── notes/                                       # 📝 个人学习笔记与参考资料
-```
+重构作者论证时区分原意、解释与自己补出的前提；跨时代比较同时保留概念差异和最强反驳。意识问题可衔接[心理学](../psychology-learning/README.md)，逻辑与计算可衔接 [CS](../cs-learning/README.md)。
 
----
+## 继续研究与历史资料
 
-## 🚀 快速开始
+执行入口见 [AGENTS.md](./AGENTS.md)，公共流程见[报告工作流](../docs/REPORT_WORKFLOW.md)。
 
-### 第一步：建立全局视野（推荐首先阅读）
-
-| 文档 | 内容 | 读完后你能做到 |
-|------|------|--------------|
-| [哲学发展时间线](./roadmap/Philosophy_Development_Timeline.md) | 2500年关键节点 + **思想革命分析** | 理解每个哲学家在何种背景下提出思想 |
-| [学习路径规划](./roadmap/Learning_Roadmap.md) | Phase 1-5 系统学习路径 | 制定个人学习计划 |
-| [哲学关键人物图谱](./reports/concept_reports/哲学关键人物图谱.md) | 哲学家生涯轨迹、师承关系、思想传承 | 理解西方哲学的知识传承网络 |
-
-### 第二步：选择你的学习起点
-
-```
-哲学零基础           →  Phase 1（古希腊哲学）       →  约4-6周
-有古代哲学基础        →  Phase 2（近代哲学）          →  约6-8周
-有近代哲学基础        →  Phase 3（德国古典哲学）       →  约6-8周
-有德国哲学基础        →  Phase 4（20世纪分析/现象学）  →  约8-10周
-全面基础，深化某方向   →  Phase 5（专题深入）           →  持续进行
-```
-
-### 第三步：按类型选择文本
-
-- **哲学论文/短篇** → 查阅 [论文索引](./papers/PAPERS_INDEX.md)（30篇，适合快速了解核心论证）
-- **哲学经典书籍** → 查阅 [书籍索引](./books/BOOKS_INDEX.md)（25部，适合深度系统学习）
-
-### 第四步：阅读已有深度报告
-
-**文本精读：**
-- [《美诺》节选与美诺悖论](./reports/text_analyses/04_plato_meno_-380.md) — 苏格拉底追问“德性是否可教”与“如果不知道 X，如何寻找 X？”
-- [柏拉图《理想国》第七卷·洞穴比喻](./reports/text_analyses/01_plato_republic_cave_-380.md) — 理念论、认识论阶梯与哲学教育
-- [笛卡尔《第一哲学沉思集》](./reports/text_analyses/02_descartes_meditations_1641.md) — 方法论怀疑、我思故我在、身心二元论
-- [Gettier《Is Justified True Belief Knowledge?》](./reports/text_analyses/03_gettier_1963.md) — JTB 定义与认识论运气
-- [柏拉图《美诺》节选](./reports/text_analyses/04_plato_meno_-380.md) — 德性是否可教、美诺悖论与苏格拉底方法
-- [Nagel《What Is It Like to Be a Bat?》](./reports/text_analyses/04_nagel_bat_1974.md) — 主观经验、感质与物理主义局限
-- [康德《道德形而上学基础》](./reports/text_analyses/05_kant_groundwork_1785.md) — 绝对命令、善良意志与义务论
-- [Russell《On Denoting》](./reports/text_analyses/05_russell_on_denoting_1905.md) — 摹状词理论与语言哲学转向
-- [亚里士多德《尼各马可伦理学》](./reports/text_analyses/06_aristotle_nicomachean_ethics_-350.md) — eudaimonia、德性习惯与中道原则
-- [黑格尔《精神现象学》导论](./reports/text_analyses/07_hegel_phaenomenologie_1807.md) — 辩证法、Geist 与意识经验
-- [罗尔斯《正义论》第一章](./reports/text_analyses/08_rawls_theory_of_justice_1971.md) — 原初状态、无知之幕与两条正义原则
-- [Singer《Famine, Affluence, and Morality》](./reports/text_analyses/08_singer_famine_1972.md) — 全球贫困、个人义务与有效利他主义
-
-**概念深度解析：**
-- [哲学关键人物图谱](./reports/concept_reports/哲学关键人物图谱.md) — 从苏格拉底到维特根斯坦的思想传承
-- [知识_跨时代比较](./reports/concept_reports/知识_跨时代比较.md) — 从柏拉图到盖梯尔，比较“知识是什么”的四种经典回答
-- [自由意志_跨时代比较](./reports/concept_reports/自由意志_跨时代比较.md) — 从亚里士多德到法兰克福，自由意志与决定论的张力主线
-
-### 第五步：用技能模板生成新报告
-
-- 精读任意哲学文本 → 使用 [文本分析技能](./skills/text_analysis/SKILL.md)
-- 深入理解某哲学概念 → 使用 [概念深挖技能](./skills/concept_deep_dive/SKILL.md)
-
----
-
-## 📊 文本阅读状态追踪
-
-### 经典论文
-
-| #   | 文本                                  | 作者      | 年份     | 优先级 | 分析报告 |
-| --- | ----------------------------------- | ------- | ------ | --- | ---- |
-| 01  | 洞穴寓言（《理想国》第七卷节选）                    | 柏拉图     | 约前375年 | ⭐⭐⭐ | ✅ 已完成 |
-| 02  | 第一哲学沉思集                             | 笛卡尔     | 1641   | ⭐⭐⭐ | ✅ 已完成 |
-| 03  | Is Justified True Belief Knowledge? | Gettier | 1963   | ⭐⭐⭐ | ✅ 已完成 |
-| 04  | What Is It Like to Be a Bat?        | Nagel   | 1974   | ⭐⭐⭐ | ✅ 已完成 |
-| 05  | On Denoting                         | Russell | 1905   | ⭐⭐⭐ | ✅ 已完成 |
-| 06  | Existentialism is a Humanism        | Sartre  | 1946   | ⭐⭐⭐ | ⬜ 待读 |
-| 07  | Two Dogmas of Empiricism            | Quine   | 1951   | ⭐⭐  | ⬜ 待读 |
-| 08  | Famine, Affluence, and Morality     | Singer  | 1972   | ⭐⭐  | ✅ 已完成 |
-
-> 完整30篇索引见 [PAPERS_INDEX.md](./papers/PAPERS_INDEX.md)
-
-### 经典书籍
-
-| # | 书名 | 作者 | 年份 | 优先级 | 阅读状态 |
-|---|------|------|------|--------|---------|
-| B01 | 理想国（The Republic） | 柏拉图 | 约前375年 | ⭐⭐⭐ | 🟡 关键章节已精读（洞穴比喻、《美诺》相关主题已补） |
-| B02 | 尼各马可伦理学（Nicomachean Ethics） | 亚里士多德 | 约前350年 | ⭐⭐⭐ | 🟡 核心卷已精读 |
-| B03 | 第一哲学沉思集（Meditations） | 笛卡尔 | 1641 | ⭐⭐⭐ | ✅ 已完成核心精读 |
-| B04 | 纯粹理性批判（Critique of Pure Reason） | 康德 | 1781 | ⭐⭐⭐ | ⬜ 待读 |
-| B05 | 正义论（A Theory of Justice） | 罗尔斯 | 1971 | ⭐⭐⭐ | 🟡 第一章已精读 |
-| B06 | 查拉图斯特拉如是说（Thus Spoke Zarathustra） | 尼采 | 1883 | ⭐⭐ | ⬜ 待读 |
-| B07 | 哲学研究（Philosophical Investigations） | 维特根斯坦 | 1953 | ⭐⭐ | ⬜ 待读 |
-
-> 完整25部索引见 [BOOKS_INDEX.md](./books/BOOKS_INDEX.md)
-
----
-
-## 🗓️ 推荐学习节奏
-
-```
-Week 1-2:   哲学发展时间线 + 人物图谱（建立历史视野）
-Week 3-4:   柏拉图《美诺》+ 洞穴寓言 + 《理想国》重点章节（当前已有《美诺》与洞穴比喻分析报告）
-Week 5-6:   亚里士多德《尼各马可伦理学》（实践哲学入门）
-Week 7-8:   笛卡尔沉思集 + 休谟怀疑论（近代认识论）
-Week 9-10:  康德《纯粹理性批判》导论 + 《道德形而上学基础》
-Week 11-12: 尼采《道德谱系学》+ 《查拉图斯特拉如是说》
-Week 13-14: 维特根斯坦《逻辑哲学论》+ 《哲学研究》（分析哲学）
-Week 15-16: 萨特《存在主义是一种人文主义》+ 《存在与虚无》选读
-Week 17-18: 罗尔斯《正义论》+ Gettier 难题 + 当代知识论
-Week 19+:   选择感兴趣方向深入（心灵哲学 / 政治哲学 / 伦理学 / 形而上学）
-```
-
----
-
-## 📌 三个核心视角（项目特色）
-
-本项目在标准哲学史学习之外，额外引入三个常被忽视的视角：
-
-**1. 问题视角**：哲学史不是观点的堆砌，而是同一批问题的反复追问。
-→ 见 [哲学发展时间线 · 核心问题脉络章节](./roadmap/Philosophy_Development_Timeline.md)
-
-**2. 对话视角**：每位哲学家都在和前人"对话"——理解这种传承，才能理解立场的意义。
-→ 见 [哲学关键人物图谱](./reports/concept_reports/哲学关键人物图谱.md)
-
-**3. 当代相关性视角**：古老的哲学问题如何照亮今天的 AI、政治、伦理困境？
-→ 贯穿整个项目，每份报告末尾均有"当代启示"章节
-
----
-
-## 🏷️ 哲学分支索引
-
-| 分支 | 核心问题 | 代表作 |
-|------|---------|--------|
-| **认识论** | 我们如何知道？知识的来源与界限是什么？ | 休谟《人类理解研究》、康德《纯粹理性批判》|
-| **形而上学** | 什么是真实存在的？时间、自我、因果是什么？ | 亚里士多德《形而上学》、斯宾诺莎《伦理学》|
-| **伦理学** | 什么是对的？我们应当如何生活？ | 亚里士多德《尼各马可伦理学》、康德《道德形而上学基础》|
-| **政治哲学** | 国家权力的正当性从何而来？正义是什么？ | 柏拉图《理想国》、罗尔斯《正义论》|
-| **心灵哲学** | 意识是什么？身心关系如何？ | 笛卡尔《沉思集》、内格尔《成为蝙蝠是什么感觉？》|
-| **语言哲学** | 语言如何表达意义？命题与世界的关系？ | 弗雷格、罗素《论指称》、维特根斯坦《哲学研究》|
-| **逻辑学** | 有效推理的形式结构是什么？ | 亚里士多德《工具论》、弗雷格《概念文字》|
-
----
-
-## 🔗 与其他子项目的关联
-
-| 关联领域 | 关联点 | 代表性交叉话题 |
-|---------|-------|-------------|
-| [AI](../ai-learning/) | 心灵哲学 × AI 意识与伦理对齐 | 查默斯"困难问题" ↔ LLM 感质争议；塞尔中文房间 vs. LLM 语义理解；辛格功利主义 → RLHF 价值对齐 |
-| [CS](../cs-learning/) | 图灵测试是 CS 与哲学的交叉点；逻辑学 → 形式方法 | 图灵 (1950) 同时收录于两个项目；弗雷格/罗素逻辑 → 类型论与程序验证 |
-| [心理学](../psychology-learning/) | 认知科学交叉；现象学 × 意识研究 | 内格尔蝙蝠 ↔ 主观体验心理学研究；存在主义 ↔ 人本主义心理学；认知失调 ↔ 信念修正理论 |
-
----
-
-## 🛠️ 待办事项
-
-- [ ] 精读康德《未来形而上学导论》并生成入门报告
-- [ ] 精读诺齐克《无政府、国家与乌托邦》并与罗尔斯形成对话
-- [ ] 扩展"核心概念跨时代比较"系列报告（自由、正义、存在）
-- [ ] 制作哲学分支思维导图
-
----
-
-*"哲学的任务不是回答问题，而是澄清问题。" — 路德维希·维特根斯坦*
+早期摘要与离线知识包保存在[历史 Context](./archive/legacy-context/CONTEXT.md)和[旧知识层](./archive/legacy-context/knowledge/INDEX.md)。其中的台账分工、未研究声明与下一步建议仅反映当时语境。

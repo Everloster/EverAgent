@@ -1,59 +1,27 @@
-# 🌐 web-surfing — Agent 帮我上网
+# 公开网站调研
 
-> **项目目标：Agent 帮我上网。** 以 `opencli` 为主力工具，满足各种上网冲浪需求
-> （抓片单、看热搜、追动态、查资料、整理清单……），并把常用站点沉淀成可复用技能。
->
-> **AI 使用本项目？** → 读 [AGENTS.md](./AGENTS.md)（唯一执行协议）。本文件供人类阅读。
+检索公开资料、追踪资讯、跨页整理清单，并把有长期价值的发现保存为可追溯报告。常用站点的访问经验按需沉淀，不为一次查询建立额外流程。
 
----
+## 阅读与使用入口
 
-## 一句话工作流
+| 想做什么 | 入口 |
+|---|---|
+| 阅读已有调研与 AI 日报 | [报告目录](./reports/) |
+| 制作或阅读 AI 新闻日报 | [日报可读性方法](./skills/ai-news-readability/SKILL.md) |
+| 追踪官方技术博客 | [技术博客雷达](./skills/ai-tech-blog-radar/SKILL.md) · [渠道注册表](./sources/ai-tech-blogs.json) |
+| 查看站点访问经验 | [SeedHub](./skills/site-seeduck/SKILL.md) · [B 站](./skills/site-bilibili/SKILL.md) |
+| 需要登录态或页面交互 | [opencli 手册](./skills/opencli-playbook.md) |
 
-```
-我："帮我上 X 网站看看 / 抓一下 Y / 整理个清单"
-  ↓
-Agent：① 先查复用（本项目沉淀过？opencli 有适配器？）
-       ② 有就复用，没有就 opencli browser 直驱
-       ③ 只读公开数据，产出清单/报告
-       ④ 这站以后还会来 → 沉淀成 skills/site-{name}/
-```
+日报、评分、价格等都是有时点的信息；旧报告保留当时语境，不表示已经重新核验。
 
-**核心理念：先查复用，再上网。** 别每次从零摸索；常访问的站点自行迭代沉淀。
+## 工作方式
 
----
+先定位已有报告和站点经验，再通过 eacli 的 typed capability 选择公开检索、网页读取等能力。需要登录态或页面交互时再按领域协议选择 adapter 或 opencli，不把浏览器直驱作为所有任务的默认入口。
 
-## 目录
+单一事实查询通常直接答复；跨页整理按用户需要交付清单，有长期价值时再归档。已存在的站点经验优先复用，反复出现的需求才沉淀为专用 playbook。
 
-```
-web-surfing/
-├── AGENTS.md                    # 唯一执行协议（三件事 + 查复用铁律 + 合规红线）
-├── README.md                    # 本文件
-├── reports/                     # 上网任务产出
-│   └── kdrama-top10-2024-2026.md   # 首个报告：SeedHub 韩剧 Top10
-├── sources/
-│   └── ai-tech-blogs.json       # 顶尖 AI 官方技术源注册表
-├── knowledge/                   # 可选：跨任务索引
-└── skills/
-    ├── ai-tech-blog-radar/      # 顶尖 AI 官方技术博客更新、回测与渠道维护
-    ├── opencli-playbook.md      # opencli 通用手册（主力工具）
-    ├── site-seeduck/SKILL.md    # SeedHub 站点沉淀（URL/命令/坑）
-    └── site-bilibili/SKILL.md   # B 站关注、动态与学习收件箱（只读）
-```
+## 访问边界
 
-## 已沉淀
+默认只读公开数据；发帖、评论、点赞、下单等外部写入须有明确授权。不批量下载盗版或付费墙内容；批量遍历保持低频，遇验证码或限速停止。
 
-| 类型 | 名称 | 说明 |
-|------|------|------|
-| 通用手册 | `skills/opencli-playbook.md` | opencli 三大支柱 + 173 站速查 + 浏览器直驱模板 |
-| 资讯雷达 | `skills/ai-tech-blog-radar/` | 厂商、实验室与官方工程项目技术博客，支持更新查询、渠道回测和增删改查 |
-| 站点技能 | `skills/site-seeduck/` | SeedHub 影视站：URL 结构 / 语言年份 tagId / 翻页解析脚本 |
-| 站点技能 | `skills/site-bilibili/` | B 站关注、动态、历史与学习候选收件箱（只读） |
-| 报告 | `reports/kdrama-top10-2024-2026.md` | 2024–2026 韩剧豆瓣评分 Top10（含链接） |
-
-## 主力工具：opencli
-
-本机 opencli v1.8.6，把 173+ 网站 / 桌面 App / 外部 CLI 变成统一 `opencli <site> <command>`，复用 Chrome 登录态。详见 [skills/opencli-playbook.md](./skills/opencli-playbook.md)。
-
-## 合规红线
-
-只读公开数据做检索整理；**不批量下载盗版/付费墙资源**；不做写操作除非明确授权；批量遍历低频防封。
+执行规则见 [AGENTS.md](./AGENTS.md)，归档标准见[报告工作流](../docs/REPORT_WORKFLOW.md)。这里不维护设备安装版本、站点数量或重复的报告库存。

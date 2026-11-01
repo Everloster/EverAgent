@@ -14,6 +14,6 @@
 
 ## 与其他概念的关联
 
-- 与 [[ade-vs-harness]]（津晶 319 期）：张托肯的"5 个 harness 分数无差异、换模型泾渭分明"=模型能力≫Harness 的实证，与 ADE 层价值论形成张力
+- 与 [ade-vs-harness](./ade-vs-harness.md)（津晶 319 期）：张托肯的"5 个 harness 分数无差异、换模型泾渭分明"=模型能力≫Harness 的实证，与 ADE 层价值论形成张力
 - 与 Bitter Lesson×Harness 线（ai-learning）：同一"能力普及削平脚手架"命题
-- 来源：[[2026-09-16_xiaoyuzhou-cihua-dangzhen_zhangtuoken]]
+- 来源：[2026-09-16_xiaoyuzhou-cihua-dangzhen_zhangtuoken](../../reports/2026-09-16_xiaoyuzhou-cihua-dangzhen_zhangtuoken.md)

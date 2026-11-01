@@ -24,4 +24,4 @@
 
 ## 相关期数
 
-- 此话当真 2026-09-16 对话 → [[2026-09-16_xiaoyuzhou-cihua-dangzhen_zhangtuoken|报告]]
+- 此话当真 2026-09-16 对话 → [报告](../../reports/2026-09-16_xiaoyuzhou-cihua-dangzhen_zhangtuoken.md)

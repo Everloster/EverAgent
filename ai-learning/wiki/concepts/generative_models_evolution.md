@@ -45,12 +45,12 @@ Flow Matching (2022+) → 一步/少步高质量采样
 
 ## 与其他概念的关系
 
-- **[[attention_mechanism]]**：DiT的Self-Attention是核心模块
-- **[[scaling_laws]]**：DiT实验验证生成模型也满足幂律Scaling
-- **[[latent_diffusion]]**：LDM的详细机制（感知压缩+交叉注意力）
-- **[[diffusion_transformer]]**：DiT的详细架构（AdaLN-Zero, patchify）
-- **[[large_scale_data_filtering]]**：LAION-5B是Stable Diffusion的数据来源
-- **[[self_supervised_learning]]**：DDPM的预测噪声ε目标类似自监督的去噪代理任务
+- **[attention_mechanism](./attention_mechanism.md)**：DiT的Self-Attention是核心模块
+- **[scaling_laws](./scaling_laws.md)**：DiT实验验证生成模型也满足幂律Scaling
+- **[latent_diffusion](./latent_diffusion.md)**：LDM的详细机制（感知压缩+交叉注意力）
+- **[diffusion_transformer](./diffusion_transformer.md)**：DiT的详细架构（AdaLN-Zero, patchify）
+- **[large_scale_data_filtering](./large_scale_data_filtering.md)**：LAION-5B是Stable Diffusion的数据来源
+- **[self_supervised_learning](./self_supervised_learning.md)**：DDPM的预测噪声ε目标类似自监督的去噪代理任务
 
 ## 当前前沿（2026年初）
 

@@ -1,0 +1,116 @@
+<!-- ARCHIVE NOTICE -->
+> **历史归档（2026-11-01）**：保留旧 Context / knowledge 原文；下文的库存、数字、未研究声明、建议及执行指令仅反映历史语境，未经本次重新核验，不作为现行规则。当前入口：[领域首页](../../README.md)、[领域协议](../../AGENTS.md)、[知识地图](../../MAP.md)、[Wiki](../../wiki/index.md)。
+<!-- END ARCHIVE NOTICE -->
+
+# ai-learning — Project Context
+
+> **Agent 协议**：操作本项目前须读取 [AGENTS.md](../../AGENTS.md)（NeuronAgent 自包含协议）。执行完成后按协议 §5 提交推送。
+
+**领域**：人工智能技术·论文精读·技术深度报告
+**三维度**：技术深度 × 历史叙事 × 工程实践
+
+## 已有报告
+
+> **台账分工**（避免三处重复维护）：本区是唯一的**成品报告台账**（含每篇摘要）；学习进度状态（已学/在学/未学）见 [roadmap 核心知识地图](../../roadmap/Learning_Roadmap.md)；计划学的前沿动态见 roadmap「新知识雷达」；防幻觉的"尚未研究"否定式声明见本文末「⚠️ 边界」。对话学习模式见 [AGENTS.md](../../AGENTS.md) §2B。
+
+**论文精读** (`reports/paper_analyses/`)
+- `01_transformer_2017` — Attention Is All You Need，Self-Attention 机制奠基
+- `02_bert_2018` — 双向预训练语言模型
+- `03_gpt3_2020` — 大规模语言模型与 Few-shot 能力
+- `04_instructgpt_2022` — RLHF三阶段训练·ChatGPT前身·对齐税（2026-03-25）
+- `07_resnet_2015` — 残差连接·退化问题解决·深度视觉里程碑·催生Transformer残差（2026-03-25）
+- `08_gan_2014` — 生成对抗网络·博弈框架·无需MCMC·JS散度最小化·开创生成模型新范式（2026-03-25）
+- `09_ddpm_2020` — 扩散生成模型·前向加噪·反向去噪·预测噪声ε·FID 3.17超越GAN·Stable Diffusion基石（2026-03-26）
+- `06_alexnet_2012` — 深度CNN·GPU训练·ReLU激活·Dropout正则化·ILSVRC 2012碾压传统方法·深度学习复兴拐点（2026-03-26）
+- `11_vit_2020` — Vision Transformer·16×16 Patch·纯注意力图像分类·无归纳偏置·大数据超越CNN·多模态统一架构基础（2026-03-26）
+- `12_clip_2021` — 文本-图像对比学习·WIT-400M·零样本图像分类·双编码器·Prompt Engineering·DALL·E/SD/GPT-4V基础设施（2026-03-26）
+- `05_scaling_laws_2020` — 幂律三变量·计算最优配置·Chinchilla对比
+- `10_chain_of_thought_2022` — CoT Prompting·思维链激活推理·涌现现象（2026-03-25）
+- `15_lora_2021` — 低秩分解微调·零推理开销·0.01%参数·PEFT运动奠基（2026-03-26）
+- `26_tulu3_2024` — SFT→DPO→RLVR 后训练完整流程
+- `16_llama_2023` — 开源大模型·推理最优策略·7B超越GPT-3·Pre-Norm+SwiGLU+RoPE·开源生态Linux时刻（2026-03-26）
+- `14_swin_transformer_2021` — 层次化视觉Transformer·移位窗口注意力·线性复杂度·多尺度特征图·ICCV2021最佳论文·统一分类检测分割（2026-03-26）
+- `17_mae_2022` — 掩码自编码器·75%高遮蔽率·不对称编解码器·像素重建·ImageNet ViT-H 86.9%·COCO检测超监督预训练·生成式自监督视觉范式（2026-03-26）
+- `33_mistral_7b_2023` — 小参数高性能开源LLM·GQA+SWA架构·7B级别推理效率与质量平衡里程碑（2026-03-26）
+- `18_flashattention_2022` — IO-aware精确Attention·在线Softmax·显存占用显著下降·长上下文训练提速关键内核（2026-03-26）
+- `34_llama2_2023` — 开源基础模型+Chat模型双路线·70B级别开放对话模型·安全微调进入开源主舞台（2026-03-26）
+- `13_word2vec_2013` — CBOW与Skip-gram·层次化Softmax·负采样·词嵌入民主化·2023 NeurIPS时间检验奖（2026-03-28）
+- `35_dinov2_2023` — 自监督视觉基础模型·LVD-142M数据流水线·KoLeo正则化·蒸馏传承·全视觉任务通用特征（2026-03-28）
+- `36_videomae_2022` — 视频MAE·极高掩码率90-95%·Tube Masking·数据高效自监督预训练·K400 87.4%（2026-04-04）
+- `31_megascale_2024` — 万卡级LLM训练系统·12,288 GPU 55.2% MFU·3D并行Overlap·算法-系统协同设计·自动化故障恢复·NSDI 2024（2026-04-04）
+- `21_moe_2017` — 稀疏门控混合专家·Noisy Top-K Gating·负载均衡双损失·137B参数验证·GPT-4/Mixtral直接前驱（2026-03-31）
+- `25_zero_2019` — ZeRO内存优化·优化器状态/梯度/参数三级切分·DeepSpeed核心·万亿参数训练基础设施（2026-03-30）
+- `37_gpt1_2018` — GPT-1·Transformer Decoder预训练·全参数微调·BooksCorpus 0.1B参数·NLP预训练-微调范式开创·12任务9项SOTA（2026-04-11）
+- `38_gpt2_2019` — GPT-2·1.5B参数·WebText 40GB·零样本多任务学习·Pre-Norm标准化·字节级BPE·scaling信念验证起点（2026-04-11）
+- `22_bitter_lesson_2019` — The Bitter Lesson·70年AI历史元认知纲领·通用计算方法>知识编码·搜索与学习两大可扩展方法·四条时间线哲学总纲（2026-04-11）
+- `20_stable_diffusion_2021` — Latent Diffusion·潜空间两阶段架构·f=4~8最优平衡·交叉注意力条件机制·SD 开源生态基石（2026-04-11）
+- `27_dit_2022` — DiT·Transformer替换U-Net·AdaLN-Zero·Scaling Laws验证·Sora技术基础·ICCV 2023（2026-04-11）
+- `17_react_2022` — ReAct·Thought-Action-Observation循环·推理+行动协同·自我纠错·Agent系统奠基石·arXiv 2022（2026-04-11）
+- `29_laion5b_2022` — LAION-5B·58.5亿图文对·CLIP自动过滤·开源多模态生态数据基础·Stable Diffusion数据源（2026-04-11）
+- `30_refinedweb_2023` — RefinedWeb·5T tokens·Progressive Quality Filtering·Falkon LLM数据基础·高质量数据工程方法论（2026-04-11）
+- `39_google_translate_2016` — GNMT·深层残差LSTM 8+8层·WordPiece·Attention·NMT工业部署里程碑·BLEU+60%（2026-04-11）
+- `40_deepvideo_2014` — Deep Video·Sports-1M数据集·四种时序融合策略·Slow Fusion·多分辨率架构·CVPR 2014（2026-04-11）
+- `41_eva02_2023` — EVA-02·ViT+SwiGLU+2D RoPE+sub-LN·CLIP-ViT-bigG特征MIM·304M参数·ImageNet-1K 90.0% top-1·COCO 58.3 box AP·高效视觉基础模型里程碑（2026-04-16）
+- `42_distilling_2015` — 知识蒸馏·高温softmax软标签·教师-学生训练·MNIST 146→74 errors·ASR蒸馏单模型WER 10.7%·模型压缩范式奠基（2026-04-25）
+- `43_alphago_zero_2017` — AlphaZero·自我对弈强化学习·策略价值网络+MCTS·700k步训练·国际象棋对Stockfish 28胜72和0负·将棋对Elmo 90胜2和8负·围棋对AG0 3-day 60胜40负（2026-04-25）
+- `44_skillos_2026` — SkillOS·自进化Agent技能策展·SkillRepo+SkillCurator·grouped task streams·复合奖励+GRPO·8B curator跨executor泛化（2026-05-13）
+
+**知识深度解析** (`reports/knowledge_reports/`)
+- `self_attention_深度解析` — 含代码实现
+- `RLHF_深度解析` — PPO/DPO 对比
+- `AI关键人物图谱` — Transformer 作者去向·OpenAI 分裂史
+- `Scaling_Laws_深度解析` — Kaplan 2020 幂律关系·Chinchilla 修正·涌现能力（2026-03-25）
+- `LoRA_深度解析` — 低秩适应原理·QLoRA·DoRA变体·代码实现·多任务部署（2026-03-25）
+- `KV_Cache_深度解析_20260330` — 键值缓存原理·GQA/MQA变体·PagedAttention·显存计算·PyTorch代码实现·SnapKV等前沿压缩方案（2026-03-30）
+- `MoE_混合专家_深度解析_20260406` — MoE条件计算·Noisy Top-K Gating·负载均衡双损失·Switch/Mixtral/DeepSeek变体全景·PyTorch实现·Scaling关系（2026-04-06；2026-06-22 追加「路由机制专题」：Token Choice/Expert Choice/auxiliary-loss-free 三代路由范式对比）
+- `RAG_深度解析_20260409` — Naive→Advanced→Modular RAG 演进·HyDE/Self-RAG/GraphRAG·Reranker两阶段·向量数据库选型（2026-04-09）
+- `Agent_ReAct_ToolUse_深度解析_20260409` — ReAct Loop·Function Calling·MCP协议·Multi-Agent协作·Python完整实现（2026-04-09）
+- `Test_Time_Compute_深度解析_20260409` — o1/o3·DeepSeek-R1·GRPO·PRM vs ORM·MCTS·Test-time Scaling Laws（2026-04-09）
+- `In_Context_Learning_深度解析_20260409` — ICL三阶段机制·Bayesian/TaskRecognition/Knowledge Activation三派理论·Position Bias·Scaling涌现
+- `ToA_CLI_Agentic原生论_深度解析_20260415` — ToA范式·CLI原生论·硅碳加速论·GUI迁移成本分析·批判性观点解析（2026-04-15）
+- `双向驯化与多Agent涌现_深度解析_20260415` — 硅基对碳基的四种认知侵蚀机制·多Agent涌现四种类型·单Agent Alignment框架失效点·EverAgent活体案例（2026-04-15）
+- `EverAgent_ToA原型解剖_20260415` — 119 commits实证·ToA五要素审计·git history考古·设计模式提炼·四个未解问题·自我批判（2026-04-15）
+- `奶头乐ChatBot的真实战略价值_20260415` — ToC不是终点是数据基础设施·数据飞轮·RLHF依赖·防Model Collapse·三大AI公司战略对比（2026-04-15）
+- `开源vs闭源在ToA世界的重新博弈_20260415` — CLI原生论利好开源五条机制·闭源数据飞轮优势·DeepSeek分水岭·三种终局场景·监管变量（2026-04-15）
+- `生成模型演化全景_GAN_DDPM_LDM_DiT_20260416` — GAN→DDPM→Stable Diffusion→DiT四代演化·模式崩溃→扩散稳定→潜空间压缩→Transformer骨干·Flow Matching前沿·Sora视频生成（2026-04-16）
+- `Megatron_LM_大规模训练系统_深度解析_20260416` — 张量并行TP·流水线并行1F1B·序列并行SP·选择性激活重算·3D并行体系·DP+TP+PP组合策略·工程谱系与前沿动态（2026-04-16）
+- `Agent_Harness_三大设计流派解析` — everything-claude-code·deer-flow·Archon 设计哲学对比·配置分工vs图编排vs工作流固化·Harness工程五层解析（2026-04-22）
+- `Agent_Skills_生态深度解析` — Karpathy CLAUDE.md→Anthropic Skills标准→156技能生态→agentskills.io跨平台兼容·渐进披露·Skill作为Harness组件（2026-04-22）
+- `Agent_Memory_系统深度解析` — claude-mem架构·会话记忆捕获→AI压缩→相关性注入·SQLite+FTS5+Chroma双重索引·Hooks生命周期·记忆系统四阶段演化（2026-04-22）
+- `Agent_心跳检测与实时Dashboard设计` — Push心跳·alive/suspected/dead三态·SSE实时数据流·watchfiles优化·延迟分级告警·自动干预·零侵入集成（2026-04-23）
+- `金融垂直域Agent技术架构深度解析` — TradingAgents多Agent协作·Kronos金融K线基础模型·ai-hedge-fund投资大师集体决策·金融时序与LLM融合三条路径（2026-04-23）
+- `AI编码Agent终端技术深度解析` — OpenDev Scaffolding-Harness-Context三层架构·obra/superpowers Skill驱动SDLC·Grok Code Fast Edit Format优化6.7%→68.3%（2026-04-23）
+- `Agent_自进化技术路径深度解析` — Hermes Agent闭环学习系统·GenericAgent极简进化论·四层vs五层记忆架构·技能生命周期·Token效率6x·进化算法前沿（2026-04-23）
+- `Agent_团队管理产品化路径深度解析` — Multica Agent-as-Teammate范式·任务生命周期状态机·Compound Skills·LangGraph/CrewAI/AutoGen四方定位差异·L2编排vsL3管理分层（2026-04-23）
+- `MIT_2026_AI_三条主线_深度研究报告` — MIT Technology Review 2026 AI Top 10 中 LLMs+、世界模型、Agent 编排三条主线的系统化解读·AAIF/MCP/Agents.md 标准化时间线·开发者与企业落地路线（2026-04-27）
+- `LLM_评估体系_深度解析_20260429` — 国内外主流 LLM 评估体系·MMLU/C-Eval/GPQA/LiveBench/SWE-bench/BFCL 等基准解读·主流 leaderboard 读法·场景匹配优先级矩阵（2026-04-29）
+- `Long_Context_1M_三阶段深度解析_20260507` — 1M long context 在预训练、后训练、线上推理三阶段的系统化含义·位置编码/注意力复杂度·长上下文 SFT/needle·prefill/KV cache/RAG 取舍（2026-05-07）
+- `MCP_A2A_Agents_md_标准化深度解析_20260621` — MCP（2024-11 Anthropic 开源，2025-03-26 升级 Streamable HTTP+OAuth 2.1）· A2A（2025-04 Google 发布，2025-06 捐赠 Linux 基金会，100+ 合作厂商）· AGENTS.md（2025-08 OpenAI/Google/Cursor/Sourcegraph 共同发布，60,000+ 项目采纳）三种 Agent 互操作协议范式深度对比（2026-06-21）
+- `World_Models_JEPA_路线深度报告_20260621` — JEPA 路线（LeCun：I-JEPA→V-JEPA→V-JEPA 2 1.2B/1M+ hr 视频，2025-11 LeCun 离 Meta 创办 AMI 实验室融资 €350M）vs 生成式路线（OpenAI Sora / NVIDIA Cosmos 4B-14B / Wayve GAIA-2 / DeepMind Genie 3 720p@24fps）双线对比·参数表·应用场景（自动驾驶/机器人/游戏）·MIT 2026 三主线之一（2026-06-21）
+- `推理模型三大流派详解_20260621` — OpenAI o-series（o1 2024-09→o3/o4-mini 2025-04 AIME 99.5%）· DeepSeek R1（2025-01→Nature 2025-09 封面·GRPO 纯 RL·Distill 1.5B-70B）· Claude Extended Thinking（3.7 Sonnet 2025-02→Opus 4.7 2026-04·adaptive budget 128K·deliberative alignment）三流派对比·训练范式·benchmark 表·GRPO 实现（2026-06-21）
+- `多模态理解模型对比_GPT4o_Claude_Gemini_QwenVL_20260621` — GPT-4o（2024-05 原生 omni·320ms 音频响应）· Claude 3.5 Sonnet Vision（2024-06→2024-10 Computer Use）· Gemini 2.5 Pro（2025-03 Vision Arena #1·1M-2M 上下文·稀疏 MoE）· Qwen2.5-VL 3B/7B/72B/Max（2025-01 开源·13 项评测超 GPT-4o）四家多模态理解模型对比·架构·benchmark·价格·场景选型（2026-06-21）
+- `LLM_推理优化引擎_20260621` — vLLM（PagedAttention·UC Berkeley 2023-06）· SGLang（RadixAttention·Stanford 2024-01）· TensorRT-LLM（Kernel Fusion + In-flight Batching·NVIDIA 2023-10）· llama.cpp（GGUF Q2-Q8·Gerganov 2023-03）四引擎深度对比+MLC-LLM/TGI 补充·架构范式·KV cache·量化·硬件·Multi-LoRA·Prefix sharing·2 个 mermaid 图+1 个 10 维对比表（2026-06-21）
+
+**Notes（会议 / 观察笔记，非正式报告）** (`notes/`)
+- `note_AI教育不平等家长焦虑_20260617` — 飞书会议 71.7s 独白转录·AI 时代家长对教育不平等的反思·含原文（出处 + ASR 错字订正）·观点总结·与已有报告的互文对接（2026-06-17）
+
+## 离线知识库
+→ [`knowledge/INDEX.md`](./knowledge/INDEX.md)（子话题菜单，离线模型从此进入）
+
+## Skills
+- `skills/paper_analysis/SKILL.md` — 论文 7 步分析法
+- `skills/concept_deep_dive/SKILL.md` — 概念 5 层理解模型
+
+## 导航
+- 学习路径：`roadmap/Learning_Roadmap.md`
+- 论文索引：`papers/PAPERS_INDEX.md`（34 篇，含 PDF）
+
+## ⚠️ 边界（防幻觉）
+以下内容**尚未研究**，禁止推测，须告知用户：
+- GPT-4 / Claude / Gemini 系列的专项分析报告（ToA报告中有引用现状描述，均标注为推断）
+- 工程类论文精读（Megatron-LM 知识报告已完成；原始 Megatron 论文精读尚无独立 paper_analysis）
+- Phase 2 尚缺：DDIM 等后续扩散论文；VGGNet、Batch Normalization 专项报告
+- 生成模型知识报告已完成（GAN/DDPM/LDM/DiT综合），但DDIM加速采样、Consistency Models尚无专项报告
+- 知识蒸馏原始论文 `42_distilling_2015` 已完成；现代 LLM 长文本/推理链蒸馏、DistilBERT/TinyBERT 专项报告尚无独立精读
+- 本地 `24_alphago_zero_2017.pdf` 实为 AlphaZero arXiv 论文 `Mastering Chess and Shogi by Self-Play with a General Reinforcement Learning Algorithm`，已完成 `43_alphago_zero_2017`；Nature 2017 `Mastering the game of Go without human knowledge` 原文尚无独立精读
+- 下一步推荐：Megatron-LM 原始论文精读（v1/v2/v3 paper_analysis）、DDIM 加速采样专项报告、Consistency Models

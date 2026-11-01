@@ -19,4 +19,4 @@
 
 ## 引用本概念的报告
 
-- [[2026-10-06_xiaoyuzhou-tulong-dashihua_karl-deisseroth|屠龙×Deisseroth：照亮破碎之心]]
+- [屠龙×Deisseroth：照亮破碎之心](../../reports/2026-10-06_xiaoyuzhou-tulong-dashihua_karl-deisseroth.md)

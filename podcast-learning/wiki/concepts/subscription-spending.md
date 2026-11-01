@@ -19,4 +19,4 @@
 
 ## 引用本概念的报告
 
-- [[2026-07-13_xiaoyuzhou-mingjing-diandian_midlife-accounts|人到中年仨账户：现金流、肌肉、睡眠]]
+- [人到中年仨账户：现金流、肌肉、睡眠](../../reports/2026-07-13_xiaoyuzhou-mingjing-diandian_midlife-accounts.md)

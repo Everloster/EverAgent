@@ -28,6 +28,6 @@
 
 ## 关联
 
-- 半拿铁·周刊 No.50 → [[2026-09-22_xiaoyuzhou-bannatie-zhoukan_no50-weekly-news|报告]]
-- 与 42章经「Harness 决定哪个决策有资格变成行动」同构：手机场景里 Harness 在厂商手里 → [[concepts/ai-trading]]
+- 半拿铁·周刊 No.50 → [报告](../../reports/2026-09-22_xiaoyuzhou-bannatie-zhoukan_no50-weekly-news.md)
+- 与 42章经「Harness 决定哪个决策有资格变成行动」同构：手机场景里 Harness 在厂商手里 → [concepts/ai-trading](./ai-trading.md)
 - 半拿铁·周刊 No.22 首次讲豆包 AI 手机（2025-12，一代工程机期）

@@ -23,8 +23,8 @@
 
 ## 睡眠账户的两个特点（在三本账中独特）
 
-①无法积累、无法补偿：每晚充值当天花掉，三账户中唯一必须每天维护；②温饱线三要求：时长（6-7h）+ 规律 + 质量（深睡/REM 占比）。详 [[midlife-three-accounts]]
+①无法积累、无法补偿：每晚充值当天花掉，三账户中唯一必须每天维护；②温饱线三要求：时长（6-7h）+ 规律 + 质量（深睡/REM 占比）。详 [midlife-three-accounts](./midlife-three-accounts.md)
 
 ## 引用本概念的报告
 
-- [[2026-07-13_xiaoyuzhou-mingjing-diandian_midlife-accounts|人到中年仨账户：现金流、肌肉、睡眠]]
+- [人到中年仨账户：现金流、肌肉、睡眠](../../reports/2026-07-13_xiaoyuzhou-mingjing-diandian_midlife-accounts.md)

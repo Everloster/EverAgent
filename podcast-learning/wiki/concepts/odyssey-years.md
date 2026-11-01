@@ -14,10 +14,10 @@
 
 ## 与相关概念的张力
 
-- 程的"解释掉"策略 vs 鲍曼的结构分析（[[2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism|工作、消费主义和新穷人]]）：命名是解毒还是延期？
-- 与 [[concepts/reading-four-paces|读书配速]]/微小习惯：从命名期到锚点期的转换——用稳定的小习惯（"让我感到我活着"）代替宏观人生剧本
+- 程的"解释掉"策略 vs 鲍曼的结构分析（[工作、消费主义和新穷人](../../reports/2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism.md)）：命名是解毒还是延期？
+- 与 [读书配速](./reading-four-paces.md)/微小习惯：从命名期到锚点期的转换——用稳定的小习惯（"让我感到我活着"）代替宏观人生剧本
 - 张寒的观察：大部分人只知道"不要什么"（不要牛马/不要狗屁），不知道热爱什么——奥德赛期的现代形态是排除法人生
 
 ## 引用本概念的报告
 
-- [[2026-09-11_bilibili-shigerenwu_chenglesong]]（提出语境）
+- [2026-09-11_bilibili-shigerenwu_chenglesong](../../reports/2026-09-11_bilibili-shigerenwu_chenglesong.md)（提出语境）

@@ -21,11 +21,11 @@
 
 ## 关联
 
-- 领读对象：[[kimi-k3]]（[[moonshot-ai|月之暗面]] 开源模型）
-- 涉及人物：[[zhao-chenyang]]、[[zeng-zhiyuan]]（同期另一档 K3 深度解读的嘉宾）
+- 领读对象：[kimi-k3](../concepts/kimi-k3.md)（[月之暗面](./moonshot-ai.md) 开源模型）
+- 涉及人物：[zhao-chenyang](./zhao-chenyang.md)、[zeng-zhiyuan](./zeng-zhiyuan.md)（同期另一档 K3 深度解读的嘉宾）
 - 与 Gated DeltaNet 作者杨松林（Songlin Yang）、苏剑林（QB 博客）是不同的人——转录常混
 
 ## 引用本人物的报告
 
-- [[2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report|张小珺152 领读 Kimi K3 技术报告]]（主报告）
-- [[2026-09-02_multi_kimi-k3-dueling-reads|K3 一鱼两吃对照]]（对照层）
+- [张小珺152 领读 Kimi K3 技术报告](../../reports/2026-08-26_xiaoyuzhou-zhangxiaojun_kimi-k3-report.md)（主报告）
+- [K3 一鱼两吃对照](../../reports/2026-09-02_multi_kimi-k3-dueling-reads.md)（对照层）

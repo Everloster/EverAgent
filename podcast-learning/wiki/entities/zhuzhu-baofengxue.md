@@ -14,9 +14,9 @@
 
 ## 相关期数
 
-- 《为什么有人即使不缺钱，也不敢辞职？》（2026-08-14，BV1Nugw63E9a）→ [[2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism|报告]]
+- 《为什么有人即使不缺钱，也不敢辞职？》（2026-08-14，BV1Nugw63E9a）→ [报告](../../reports/2026-08-14_bilibili-zhuzhu-baofengxue_bauman-work-consumerism.md)
 - 本书解读下集（新穷人部分）未出，值得追踪
 
 ## 关联实体
 
-- 解读对象：鲍曼《工作、消费主义和新穷人》→ 概念页 [[work-ethic]]、[[consumer-society]]、[[new-poor-bauman]]
+- 解读对象：鲍曼《工作、消费主义和新穷人》→ 概念页 [work-ethic](../concepts/work-ethic.md)、[consumer-society](../concepts/consumer-society.md)、[new-poor-bauman](../concepts/new-poor-bauman.md)

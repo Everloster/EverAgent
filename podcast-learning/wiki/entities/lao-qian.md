@@ -12,18 +12,18 @@
 
 ## 核心观点
 
-- **三本账框架**：中年只需记现金账、肉身账、睡眠账（详 [[midlife-three-accounts]]）
-- **订阅制支出**：社会 SaaS 化下的消费观察框架（详 [[subscription-spending]]）
+- **三本账框架**：中年只需记现金账、肉身账、睡眠账（详 [midlife-three-accounts](../concepts/midlife-three-accounts.md)）
+- **订阅制支出**：社会 SaaS 化下的消费观察框架（详 [subscription-spending](../concepts/subscription-spending.md)）
 - **人力资本 vs 金融资产**：面基理解财富一以贯之的框架；储蓄=收入−生活方式；储蓄→生息资产→退休自由
 - **AI 时代播客的剩余价值**：起心动念（引发好奇）+ 亲测权重（哪个我试过更好使）
 - **预习心态**：30 岁给 35 岁的自己送现金流；给母亲做红利策略节目（面基第 24 期《写给亲妈的理财建议》）
 
 ## 关联
 
-- **[[mingjing|明镜]]**：本库 2026-07-09 读书对谈报告中的主持"明镜"与老钱的关系待确认（同一节目「面基」；是否同一人/搭档，存疑 [?]）
+- **[明镜](./mingjing.md)**：本库 2026-07-09 读书对谈报告中的主持"明镜"与老钱的关系待确认（同一节目「面基」；是否同一人/搭档，存疑 [?]）
 - 节目引用：Peter Attia《超越百岁》、Matthew Walker《我们为什么要睡觉》、金观涛《控制论与科学方法论》（面基 147 期）
 - 赞助商：Eight Sleep（2026-07-13 期）
 
 ## 引用本人物的报告
 
-- [[2026-07-13_xiaoyuzhou-mingjing-diandian_midlife-accounts|人到中年仨账户：现金流、肌肉、睡眠]]
+- [人到中年仨账户：现金流、肌肉、睡眠](../../reports/2026-07-13_xiaoyuzhou-mingjing-diandian_midlife-accounts.md)

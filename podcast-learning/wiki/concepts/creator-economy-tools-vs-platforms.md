@@ -45,5 +45,5 @@ Vol.30（What's Next 科技早知道 · Sahil Lavingia · 2026-06-09）
 
 ## 关联概念
 
-- [[concepts/one-person-company]]
-- [[concepts/minimalist-entrepreneur]]
+- [concepts/one-person-company](./one-person-company.md)
+- [concepts/minimalist-entrepreneur](./minimalist-entrepreneur.md)

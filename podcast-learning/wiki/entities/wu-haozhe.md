@@ -28,4 +28,4 @@ AI×量化交叉四代亲历：传统挖因子 → 深度学习 → 大模型处
 
 ## 相关期数
 
-- 42章经 2026-09-27 对谈 → [[2026-09-27_xiaoyuzhou-42zhangjing_wuhaozhe|报告]] ｜ [[concepts/ai-trading]]
+- 42章经 2026-09-27 对谈 → [报告](../../reports/2026-09-27_xiaoyuzhou-42zhangjing_wuhaozhe.md) ｜ [concepts/ai-trading](../concepts/ai-trading.md)

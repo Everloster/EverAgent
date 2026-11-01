@@ -70,13 +70,13 @@ blocking I/O (1974) → select (BSD, 1983) → epoll (Linux 2002) → io_uring (
 
 ## 与其他概念的关系
 
-- **[[unix_philosophy]]**：本概念的起源，unix_philosophy更聚焦组合哲学，本页聚焦内核架构
-- **[[csp_concurrency]]**：CSP是并发内核设计的理论基础，Go/Rust async的直接前驱
-- **[[tcp_ip]]**：UNIX的socket接口将TCP/IP纳入"一切皆文件"体系
-- **[[dns]]**：DNS运行在UNIX socket之上，通过UDP/TCP系统调用实现
-- **[[distributed_storage]]**：GFS、HDFS直接继承UNIX文件语义（read/write/append）
-- **[[coordination_chubby_zk]]**：ZooKeeper以文件系统树（znodes）抽象实现分布式协调
-- **[[computation_theory]]**：fork/exec等进程原语依赖可计算性和内存模型的理论基础
+- **[unix_philosophy](./unix_philosophy.md)**：本概念的起源，unix_philosophy更聚焦组合哲学，本页聚焦内核架构
+- **[csp_concurrency](./csp_concurrency.md)**：CSP是并发内核设计的理论基础，Go/Rust async的直接前驱
+- **[tcp_ip](./tcp_ip.md)**：UNIX的socket接口将TCP/IP纳入"一切皆文件"体系
+- **[dns](./dns.md)**：DNS运行在UNIX socket之上，通过UDP/TCP系统调用实现
+- **[distributed_storage](./distributed_storage.md)**：GFS、HDFS直接继承UNIX文件语义（read/write/append）
+- **[coordination_chubby_zk](./coordination_chubby_zk.md)**：ZooKeeper以文件系统树（znodes）抽象实现分布式协调
+- **[computation_theory](./computation_theory.md)**：fork/exec等进程原语依赖可计算性和内存模型的理论基础
 
 ## 被引用于
 

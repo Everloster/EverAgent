@@ -19,6 +19,6 @@
 
 ## 与其他概念的关联
 
-- 基础设施阶段的终局 = [[ai-capex-bubble-debate]] 的另一面：曾鸣判"寡头垄断+政府强监管"，庄明浩问"收入只够折旧怎么撑"
+- 基础设施阶段的终局 = [ai-capex-bubble-debate](./ai-capex-bubble-debate.md) 的另一面：曾鸣判"寡头垄断+政府强监管"，庄明浩问"收入只够折旧怎么撑"
 - "原生产品一定口碑爆发"（OpenClaw 无投放、Yahoo 口碑相传）
-- 来源：[[2026-09-03_xiaoyuzhou-zhangxiaojun_zengming]]
+- 来源：[2026-09-03_xiaoyuzhou-zhangxiaojun_zengming](../../reports/2026-09-03_xiaoyuzhou-zhangxiaojun_zengming.md)

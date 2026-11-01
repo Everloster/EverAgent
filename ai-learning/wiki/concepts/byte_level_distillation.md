@@ -17,5 +17,5 @@
 
 - 前作谱系：ByT5 → MegaByte → CANINE → **BLT**（本文一作 Pagnoni 即 BLT 作者）→ H-Net / EvaByte
 - 直接前作：Hayase 2025 / Phan 2024（精确转换但需多次教师前向）；微调阶段转换：Bolmo（Minixhofer 2025）
-- 与 [[knowledge_distillation]] 的关系：字节化把"top-k 截断存储"这一离线蒸馏暗伤直接消除
+- 与 [knowledge_distillation](./knowledge_distillation.md) 的关系：字节化把"top-k 截断存储"这一离线蒸馏暗伤直接消除
 - 来源报告：[paper 47 与局部校正说明](../../reports/paper_analyses/47_byte_distillation_2026.md)；其他结论的证据时点仍为原报告的 2026-09-15。

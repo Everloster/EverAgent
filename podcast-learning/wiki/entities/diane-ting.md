@@ -33,4 +33,4 @@ Vol.30（What's Next 科技早知道 · 2026-06-09）—— 主持对谈 Sahil L
 
 ## 关联
 
-- [[entities/wavpub-shengdong-huopo]] — 所属公司
+- [entities/wavpub-shengdong-huopo](./wavpub-shengdong-huopo.md) — 所属公司
