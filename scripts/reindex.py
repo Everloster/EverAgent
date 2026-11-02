@@ -2,7 +2,7 @@
 """Reindex EverAgent knowledge base.
 
 Counts reports and wiki pages per learning domain and refreshes the
-recent-report and overview tables in the root README.md (between the
+recent-report list and overview table in the root README.md (between the
 AUTO markers).
 Also rebuilds docs/REPORT_INDEX.md — the reading entry point that lists
 every report by update time, parsed from report frontmatter (see
@@ -22,7 +22,6 @@ from pathlib import Path
 
 try:
     from .report_catalog import (
-        COLLECTION_BY_ID,
         COLLECTIONS,
         ROOT,
         iter_reports,
@@ -30,7 +29,6 @@ try:
     )
 except ImportError:  # Direct script execution.
     from report_catalog import (
-        COLLECTION_BY_ID,
         COLLECTIONS,
         ROOT,
         iter_reports,
@@ -90,18 +88,12 @@ def all_reports_sorted(by_domain: dict[str, list[dict]]) -> list[dict]:
 
 
 def build_readme_recent(by_domain: dict[str, list[dict]]) -> str:
-    rows = [
-        "| 日期 | 报告 | 领域 |",
-        "|------|------|------|",
-    ]
+    # Give long report titles the full line on narrow screens.
+    rows = []
     for report in all_reports_sorted(by_domain)[:README_RECENT_TOP]:
         target = os.path.relpath(report["path"], ROOT)
-        collection = COLLECTION_BY_ID.get(report["domain"])
-        domain = (
-            f"{collection.emoji} {collection.title}" if collection else report["domain"]
-        )
         rows.append(
-            f"| {report['updated_on']} | [{_md_cell(report['title'])}](./{target}) | {domain} |"
+            f"- {report['updated_on']} · [{_md_cell(report['title'])}](./{target})"
         )
     return "\n".join(rows)
 

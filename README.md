@@ -1,33 +1,50 @@
-# EverAgent — 个人学习与研究工作台
+# EverAgent
 
-EverAgent 收录借助 AI Agent 完成的论文精读、技术博客分析、开源项目研究和播客笔记。自 2026 年 3 月起持续积累，涉及 AI、计算机科学、哲学、心理学和生物学，已有 500+ 篇报告和 300+ 个 Wiki 条目。报告保留来源、分析与未解决的问题，便于查阅和继续研究。
+**开放知识 × 个人上下文**
 
-这里也整理 Personal Context 的实践：怎样让后续任务中的 Agent 用上这些记录、决定与偏好。
+这里有论文精读、技术博客分析、开源项目研究、播客笔记和小型实验。自 2026 年 3 月起，借助 AI Agent 持续整理，已积累 500+ 篇报告和 300+ 个 Wiki 条目。
 
-**[阅读研究成果](./docs/REPORT_INDEX.md)** · **[了解 Personal Context](./PERSONAL_CONTEXT.md)** · **[让 Agent 参与研究](./AGENTS.md)**
+另一条实践是 Personal Context：把查过的资料、做过的决定和确认过的偏好记录下来，供下一次任务使用。方法与案例可以分享，个人数据由使用者自己保存。
+
+**[读报告](./docs/REPORT_INDEX.md)** · **[构建 Personal Context](./PERSONAL_CONTEXT.md)** · **[学习与实践记录](./AI_PROGRESS.md)** · **[项目网站](https://everloster.com/)**
 
 <picture>
   <source media="(prefers-reduced-motion: reduce)" srcset="./docs/assets/everagent-horizontal.jpg">
-  <img src="./docs/assets/everagent-intro.webp" alt="EverAgent 介绍动画：自 2026 年 3 月起借助 AI Agent 持续研究，已有 500+ 篇报告、300+ 个 Wiki 条目，涵盖五个学科、播客与开源项目；报告区分事实与推断，新报告附证据与复核记录，研究沉淀为 Wiki、研究地图和未解问题，换个 Agent 也能回查。" width="100%">
+  <img src="./docs/assets/everagent-intro.webp" alt="EverAgent 介绍动画：研究领域、报告与实验、证据复核，以及知识如何用于下一次研究。" width="100%">
 </picture>
+
+<sub>约 54 秒 · 无声循环 · <a href="./docs/assets/everagent-poster.webp">查看静态全景</a></sub>
 
 ## 最近更新
 
 <!-- AUTO-RECENT:START -->
-| 日期 | 报告 | 领域 |
-|------|------|------|
-| 2026-11-01 | [飞行汽车的剧本与欧洲的账本：赛博对话 vol.60 深读](./podcast-learning/reports/2026-10-30_saibo-duihua_v60-roadster-china-auto-europe.md) | 🎙️ Podcast Learning |
-| 2026-11-01 | [郭凯谈中国经济新范式：拐点、平行线与还没兑现的红利](./podcast-learning/reports/2026-10-30_zhixing-xiaojiuguan_e256-guokai-economy-households.md) | 🎙️ Podcast Learning |
-| 2026-11-01 | [狂飙中的 AI 2026：模型发布、收入增长与算力债务](./podcast-learning/reports/2026-10-26_tulong-zhishu_ai-2026-version-race.md) | 🎙️ Podcast Learning |
-| 2026-11-01 | [人往贵处集中：陆铭谈大城市、内卷、房价与 AI 时代的经济学](./podcast-learning/reports/2026-10-26_gaonengliang_v239-luming-ai-cities-consumption.md) | 🎙️ Podcast Learning |
-| 2026-11-01 | [LinkStart Vol.136：Stripe CMO 给出了几条出海准则——四波增长、四层本地化与 Agent 时代的品牌](./podcast-learning/reports/2026-10-29_linkstart_v136-stripe-global-ai-commerce.md) | 🎙️ Podcast Learning |
+- 2026-11-01 · [飞行汽车的剧本与欧洲的账本：赛博对话 vol.60 深读](./podcast-learning/reports/2026-10-30_saibo-duihua_v60-roadster-china-auto-europe.md)
+- 2026-11-01 · [郭凯谈中国经济新范式：拐点、平行线与还没兑现的红利](./podcast-learning/reports/2026-10-30_zhixing-xiaojiuguan_e256-guokai-economy-households.md)
+- 2026-11-01 · [狂飙中的 AI 2026：模型发布、收入增长与算力债务](./podcast-learning/reports/2026-10-26_tulong-zhishu_ai-2026-version-race.md)
+- 2026-11-01 · [人往贵处集中：陆铭谈大城市、内卷、房价与 AI 时代的经济学](./podcast-learning/reports/2026-10-26_gaonengliang_v239-luming-ai-cities-consumption.md)
+- 2026-11-01 · [LinkStart Vol.136：Stripe CMO 给出了几条出海准则——四波增长、四层本地化与 Agent 时代的品牌](./podcast-learning/reports/2026-10-29_linkstart_v136-stripe-global-ai-commerce.md)
 <!-- AUTO-RECENT:END -->
 
 按报告修改日期排列，修订过的旧报告也会出现在这里。[浏览全部报告 →](./docs/REPORT_INDEX.md)
 
-## 研究领域与内容导航
+## 开放知识
 
-从 Transformer、Raft 共识算法，到柏拉图的洞穴比喻、Milgram 服从实验和昼夜节律，报告按学科和资料来源归档。Wiki 列依次是概念、实体（人物、机构等）和综合分析的条目数，0/0/0 表示该集合没有单独的 Wiki。
+研究涉及 AI、计算机科学、哲学、心理学和生物学，也跟进技术博客、开源项目和播客。每份报告围绕具体问题展开，保留来源、分析和仍未解决的疑问。
+
+<a href="./docs/assets/everagent-poster.webp">
+  <img src="./docs/assets/everagent-poster.webp" alt="EverAgent 学习与研究全景：知识树连接 AI、计算机科学、生物学、哲学、心理学与开源研究，下方串起提问、研究、整理、实践和迭代。" width="100%">
+</a>
+
+<sub>学习与研究全景 · 点击图片查看大图</sub>
+
+- **读完整分析**：[报告索引](./docs/REPORT_INDEX.md)按日期和领域整理，适合查找新内容或回看旧问题。
+- **看代码与实验**：[AI Practice](./ai-practice/)用小型 demo 解释机制，保留真实输出和实验笔记。
+- **沿主题继续查**：[Wiki](./ai-learning/wiki/index.md)串起概念、人物和相关报告；[研究地图](./ai-learning/MAP.md)与[未解问题](./ai-learning/wiki/open-questions.md)记录研究进展和下一步问题。这里以 AI 领域为例。
+
+<details>
+<summary><strong>按领域浏览：报告与 Wiki</strong></summary>
+
+Wiki 三列数字依次是概念、实体（人物、机构等）和综合分析的条目数；0/0/0 表示该集合没有单独的 Wiki。
 
 <!-- AUTO-OVERVIEW:START -->
 | 项目 | 报告 | Wiki(概念/实体/综合) |
@@ -43,50 +60,75 @@ EverAgent 收录借助 AI Agent 完成的论文精读、技术博客分析、开
 | 🏄 [Web Surfing](./web-surfing/) | 47 篇 | 0/0/0 |
 <!-- AUTO-OVERVIEW:END -->
 
-## 知识怎样积累
-
-研究资料按用途保存在几类文件中（链接以 AI Learning 为例，其他学科目录结构相同）：
-
-- **报告**保留研究问题、来源、分析、结论与局限，推断标注 `[推测]` 或 `[待验证]`。
-- **Wiki**整理报告涉及的概念、人物、机构及其联系，可从 [Wiki 索引](./ai-learning/wiki/index.md)按主题回到相关报告。
-- **研究地图（MAP）与未解问题**记录已经研究过什么、还有哪些疑问，见[研究地图](./ai-learning/MAP.md)和[未解问题](./ai-learning/wiki/open-questions.md)。
-- **证据与复核记录**：2026-10-15 起新增的报告，在同目录 `.quality/` 中附证据账本（关键结论对应来源）和复核记录（由新会话中的 AI 模型对照来源写成，不是人工审核或外部认证）；更早的报告按需迁移。这套检查是质量下限，不保证每个判断都正确。
-
-写作与核验方法见[研究方法论](./METHODOLOGY.md)、[报告流程](./docs/REPORT_WORKFLOW.md)和[质量检查说明](./docs/REPORT_QUALITY_GATE.md)。
+</details>
 
 ## Personal Context
 
-研究做到一半换个 Agent，已经查过什么、做过哪些决定、哪些结论仍有疑问，都需要有地方可以回查。Personal Context 关注这些会影响后续任务的记录，也包括用户确认的偏好和项目约束。这里提供的是设计建议与试点结论，不代表已实现完整的记忆系统。
+研究做到一半换个 Agent，已经查过什么、做过哪些决定、哪些结论仍有疑问，都需要有地方回查。Personal Context 关注这些会影响后续任务的记录，也包括用户确认的偏好和项目约束。
 
-- [构建指南](./PERSONAL_CONTEXT.md)：从少量记录起步，怎样读取、更新和处理冲突。
-- [多设备 Context 案例](./PERSONAL_CONTEXT.md#真实脱敏案例多设备-agent-会话-context)：可公开的实践结果与仍未证明的部分。
-- [共享 Context 与会话续接研究](./ai-learning/reports/knowledge_reports/多设备多Agent共享Context与会话续接_Manus实践与架构边界_深度解析_20261029.md)：共用资料与接续运行中任务的区别。
+在这套实践中，EverAgent 保存公开知识，配套私有项目 EverAgent-infra 保存个人资料与环境维护记录。本仓整理其中可以公开的方法和脱敏案例。
 
-本仓怎样组织指令、让 Agent 按任务读取资料，见 [Context Engineering](./docs/CONTEXT_ENGINEERING.md)。
+<a href="./docs/assets/personal-context-tree.webp">
+  <img src="./docs/assets/personal-context-tree.webp" alt="Personal Context 知识之树：以规范的 Markdown、CLI-first 和额度资产化为根基，连接基础设施维护、文档治理、工具入口与模型额度的使用。" width="100%">
+</a>
 
-## 如何阅读与参与
+<sub>个人上下文的实践方向 · 点击图片查看大图</sub>
 
-**阅读资料**：直接从报告索引或领域目录进入，无需安装工具。可沿报告中的来源继续查阅，也可从各学科的 Wiki 索引进入概念、人物和机构页，再回到相关报告。
+可以从一个反复遇到的任务、三个普通文件开始：
 
-**使用 Agent 参与研究**：在仓库根目录启动 Agent，并保留项目指令加载（[AGENTS.md](./AGENTS.md) 是规则入口，Claude Code 经 `CLAUDE.md` 导入），再给出具体问题或材料。例如：
+- `profile.md`：本人确认、会影响任务的偏好。
+- `decisions.md`：重要决定、当时的依据与后续结果。
+- `boundaries.md`：允许读取哪些资料，哪些动作需要确认。
 
-- “精读这篇论文，解释方法、证据与局限。”
-- “结合已有报告，比较这两个开源项目的实现取舍。”
-- “整理这期播客的关键观点，核验其中的重要事实。”
+下一次任务先找相关记录，用完再更新。检查它是否找对了依据、是否仍在引用过期决定，再考虑增加检索或同步服务。
 
-**在本地阅读或维护**：
+[构建指南](./PERSONAL_CONTEXT.md)提供可照做的示例；[多设备试点](./PERSONAL_CONTEXT.md#真实脱敏案例多设备-agent-会话-context)记录实际结果与尚未证明的部分；[共享 Context 与会话续接研究](./ai-learning/reports/knowledge_reports/多设备多Agent共享Context与会话续接_Manus实践与架构边界_深度解析_20261029.md)解释共用资料和接续任务的区别。目前公开的是方法与试点经验，完整记忆系统仍有待验证。
+
+## 怎样做研究
+
+- **先读材料，再写判断。** 关键结论对应来源，区分原作者的主张、已核实的事实与分析推断。读不到的内容明确说明。
+- **需要实验的，就实际运行。** 保存输入、输出与适用条件，让读者知道结论在什么范围内成立。
+- **把新认识写回记录。** 报告保留完整分析，Wiki 整理关联，研究地图和未解问题帮助后续任务接着做。
+
+2026-10-15 起新增的报告附有证据与复核记录，由新会话中的 AI 模型对照来源复核。历史报告的复核程度不一，收录数量也不等于通过复核的数量。阅读时仍应结合来源、日期与具体论证判断。
+
+方法与检查范围见[研究方法论](./METHODOLOGY.md)、[报告流程](./docs/REPORT_WORKFLOW.md)和[质量检查说明](./docs/REPORT_QUALITY_GATE.md)。已有成果与缺口见 [AI 学习与实践记录](./AI_PROGRESS.md)。
+
+## 实践中留下的经验
+
+- **入口保持短，材料按需读。** 把完整历史塞进每次对话，会增加阅读成本，也容易让旧信息干扰当前任务。
+- **先用成熟工具，再补缺口。** 反复遇到、现有工具确实解决不了的问题，才值得增加脚本或流程。
+- **格式通过后，还要看实际效果。** 报告要对照原文检查分析是否充分；工具要沿真实使用路径验证。
+- **超时后先查结果。** 执行结果可能只是暂时不可见，直接重试可能造成重复操作或重复产出。
+
+这些经验也用于调整本仓的指令与资料组织，见 [Context Engineering](./docs/CONTEXT_ENGINEERING.md)。
+
+## 如何使用
+
+**阅读**：从[报告索引](./docs/REPORT_INDEX.md)或上面的领域目录进入，无需安装工具。报告中的原始来源和相关 Wiki 可以继续引向更具体的问题。
+
+**用 Agent 参与研究**：在仓库根目录启动 Agent，保留项目指令加载，再给出材料和想弄清的问题。例如：
+
+> 精读这篇论文，解释方法、证据与局限。
+>
+> 整理这期播客的关键观点，核验重要事实，并联系已有报告继续分析。
+
+<details>
+<summary><strong>本地使用与维护</strong></summary>
 
 ```bash
 git clone https://github.com/Everloster/EverAgent.git
 cd EverAgent
 ```
 
-运行研究任务时，模型访问、联网检索和转写服务需另行配置。AGENTS.md 提到的 `eacli` 是维护者的私有命令行工具，公开仓不提供；没有它时，Agent 按 AGENTS.md 做最小降级并记录原因。
+[AGENTS.md](./AGENTS.md) 是规则入口，Claude Code 经 `CLAUDE.md` 导入。模型访问、联网检索和转写服务需另行配置。其中的 `eacli` 是维护者的私有命令行工具，公开仓不提供；没有它时，Agent 按 AGENTS.md 做最小降级并记录原因。
 
-维护约定见[安全与协作协议](./docs/PROTOCOL_COMMON.md)。报告索引和 README 自动区块由 `scripts/reindex.py` 生成；介绍动画的源文件与生成脚本在 [`docs/assets/intro/`](./docs/assets/intro/)。
+维护约定见[安全与协作协议](./docs/PROTOCOL_COMMON.md)。报告索引和 README 自动区块由 `scripts/reindex.py` 生成；配图来源与介绍动画的维护入口见[媒体说明](./docs/assets/README.md)。
 
-## 资料与使用边界
+</details>
 
-- **来源与时效**：报告区分来源方主张与分析推断。历史材料的复核程度不一，收录数量不等于通过复核的数量；阅读时结合具体报告的来源、日期与复核记录判断。已有产出的证据类型、验证范围与缺口见 [AI 学习与实践记录](./AI_PROGRESS.md)。
-- **公开与私有**：私人对话、设备、账号、网络和访问入口不进入公开仓；通用经验的公开处理方式见 [Personal Context 指南](./PERSONAL_CONTEXT.md#10-私有经验怎样安全进入公开仓)。
-- **版权与许可**：原创知识内容沿用 CC BY 4.0，原创软件代码采用 [MIT License](./LICENSE)。论文、转写及其他第三方材料保留各自权利，公开可读不等于可任意转载；详见[版权与使用说明](./DISCLAIMER.md)及[播客来源规则](./podcast-learning/COPYRIGHT.md)。
+---
+
+私人对话、设备、账号与网络细节保留在私有环境，公开经验的处理方式见 [Personal Context 指南](./PERSONAL_CONTEXT.md#10-私有经验怎样安全进入公开仓)。
+
+原创知识内容采用 CC BY 4.0，原创软件代码采用 [MIT License](./LICENSE)。第三方论文、转写等材料保留各自权利，详见[版权与使用说明](./DISCLAIMER.md)及[播客来源规则](./podcast-learning/COPYRIGHT.md)。
