@@ -510,9 +510,10 @@ def prepare_token_plan() -> dict[str, Any]:
 
 
 def request_id(source_id: str, url: str) -> str:
-    digest = hashlib.sha256(url.encode()).hexdigest()[:10]
     hour = now_utc().strftime("%Y%m%d%H")
-    return f"ai-podcast-radar-{source_id}-{hour}-{digest}"
+    identity = json.dumps([source_id, hour, url], ensure_ascii=False)
+    digest = hashlib.sha256(identity.encode()).hexdigest()[:32]
+    return f"req_{digest}"
 
 
 def eacli_web_read(url: str, source_id: str, timeout: int = 35) -> Any:

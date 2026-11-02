@@ -7,6 +7,12 @@
 
 ---
 
+## 看节目更新
+
+[小宇宙精选播客历史速看表](./PODCAST_UPDATES.md)：按节目看近期各期的主题、时长和已有学习报告。每次查询都更新同一页，历史条目继续保留。
+
+也可以看[顶尖技术博客](../web-surfing/TECH_BLOG_UPDATES.md)，或查看[精选节目与订阅源](./wiki/curated-podcasts.md)。
+
 ## 工作流
 
 ```

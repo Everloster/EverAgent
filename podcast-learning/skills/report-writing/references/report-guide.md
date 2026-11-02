@@ -42,7 +42,7 @@
 ## 四、收尾（顺序固定）
 
 1. `fill_report_stats.py <报告>`——数字校验
-2. `sync_index_status.py`——状态回填
+2. `sync_index_status.py`——状态回填；本期已在 [精选播客速看表](../../../PODCAST_UPDATES.md) 中时，核对完成状态并补回对应报告链接。
 3. 从仓库根目录运行 `python3 scripts/reindex.py`、`python3 scripts/audit_reports.py --changed`、`python3 scripts/reindex.py --check`
 4. CONTEXT 只追加本期产物与必要边界；普通过程记录不进入长期上下文
 5. 若本批出现跨节目复用价值或高风险问题，以一条局部 delta 更新本 skill；否则不改
