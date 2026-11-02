@@ -368,9 +368,10 @@ def prepare_token_plan(capabilities: set[str]) -> dict[str, Any]:
 
 
 def request_id(source_id: str, payload: str) -> str:
-    digest = hashlib.sha256(payload.encode()).hexdigest()[:12]
     hour = now_utc().strftime("%Y%m%d%H")
-    return f"ai-tech-radar-{source_id}-{hour}-{digest}"
+    identity = json.dumps([source_id, hour, payload], ensure_ascii=False)
+    digest = hashlib.sha256(identity.encode()).hexdigest()[:32]
+    return f"req_{digest}"
 
 
 def eacli_invoke(capability: str, arguments: dict[str, Any], source_id: str, timeout: int = 60) -> Any:

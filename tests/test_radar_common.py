@@ -1,9 +1,11 @@
 import importlib.util
+import datetime as dt
 import json
 import subprocess
 import sys
 import tempfile
 import unittest
+from unittest import mock
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -81,6 +83,20 @@ class RadarCommonTests(unittest.TestCase):
                     )
                     self.assertEqual(run.returncode, 0, run.stderr)
                     self.assertTrue(json.loads(run.stdout)["valid"])
+
+    def test_blog_request_ids_follow_eacli_contract_and_isolate_requests(self):
+        spec = importlib.util.spec_from_file_location("blog_radar", ROOT / RADARS[0])
+        blog = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(blog)
+        instant = dt.datetime(2026, 11, 2, 5, tzinfo=dt.timezone.utc)
+        with mock.patch.object(blog, "now_utc", return_value=instant):
+            request = blog.request_id("openai-search", '{"query":"AI"}')
+            self.assertRegex(request, r"^req_[0-9a-f]{32}$")
+            self.assertEqual(request, blog.request_id("openai-search", '{"query":"AI"}'))
+            self.assertNotEqual(request, blog.request_id("anthropic-search", '{"query":"AI"}'))
+            self.assertNotEqual(request, blog.request_id("openai-search", '{"query":"agent"}'))
+        with mock.patch.object(blog, "now_utc", return_value=instant + dt.timedelta(hours=1)):
+            self.assertNotEqual(request, blog.request_id("openai-search", '{"query":"AI"}'))
 
 
 if __name__ == "__main__":

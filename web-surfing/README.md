@@ -8,7 +8,8 @@
 |---|---|
 | 阅读已有调研与 AI 日报 | [报告目录](./reports/) |
 | 制作或阅读 AI 新闻日报 | [日报可读性方法](./skills/ai-news-readability/SKILL.md) |
-| 追踪官方技术博客 | [技术博客雷达](./skills/ai-tech-blog-radar/SKILL.md) · [渠道注册表](./sources/ai-tech-blogs.json) |
+| 看官方技术博客最近更新 | [更新清单：原文、导读与学习报告](./TECH_BLOG_UPDATES.md) |
+| 维护技术博客渠道 | [技术博客雷达](./skills/ai-tech-blog-radar/SKILL.md) · [渠道注册表](./sources/ai-tech-blogs.json) |
 | 查看站点访问经验 | [SeedHub](./skills/site-seeduck/SKILL.md) · [B 站](./skills/site-bilibili/SKILL.md) |
 | 需要登录态或页面交互 | [opencli 手册](./skills/opencli-playbook.md) |
 

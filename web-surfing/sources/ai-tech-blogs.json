@@ -495,7 +495,7 @@
       "homepage": "https://www.kimi.com/blog",
       "discovery": {
         "kind": "search",
-        "query": "site:kimi.com/blog Kimi research model benchmark agent"
+        "query": "(site:kimi.com/blog OR site:kimi.com/en/blog) Kimi research model benchmark agent"
       },
       "allow_domains": [
         "kimi.com",
@@ -504,7 +504,8 @@
       ],
       "path_prefixes": [
         "/blog/",
-        "/blog"
+        "/blog",
+        "/en/blog/"
       ],
       "include_any": [],
       "exclude_any": [],
