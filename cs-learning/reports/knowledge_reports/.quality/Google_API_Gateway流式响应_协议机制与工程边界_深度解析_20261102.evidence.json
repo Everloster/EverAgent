@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "report_path": "cs-learning/reports/knowledge_reports/Google_API_Gateway流式响应_协议机制与工程边界_深度解析_20261102.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-02",
+  "generator": {
+    "model": "claude-gpt-6-astra-max[1m]",
+    "harness": "claude-code",
+    "run_id": "gateway-streaming-20261102-generator",
+    "explicit_model_override": true,
+    "override_reason": "用户在本会话通过 /model 选择 Ferry GPT-6-Astra Max 1M，并要求当前助手独立完成；模型标识按本会话环境记录，不使用策略默认生成器。"
+  },
+  "task": {
+    "summary": "独立完成技术博客更新清单中 2026-10-22 Google API Gateway 流式响应文章的深度学习，形成独立可读报告并回填已学习状态。",
+    "requirements": [
+      {"id": "R1", "text": "实际读取原文，重构问题、机制、价值与预览限制，不写成简单翻译。"},
+      {"id": "R2", "text": "解释流式响应、SSE、HTTP 分帧、WebSocket/gRPC 及无需修改 API 规范的分层含义。"},
+      {"id": "R3", "text": "交叉核验超时、模型路由、MCP、hostname、迁移与治理边界。"},
+      {"id": "R4", "text": "给出真实可复现的本地机制实验，区分云端未测试项，保留局限与思考三问。"},
+      {"id": "R5", "text": "完成质量复核、导航与清单状态更新；不自动提交、部署或发布。"}
+    ]
+  },
+  "sources": [
+    {"id": "S1", "kind": "primary", "title": "Streaming comes to API Gateway: real-time and AI-ready APIs, without changing your spec", "locator": "https://developers.googleblog.com/streaming-comes-to-api-gateway-real-time-and-ai-ready-apis-without-changing-your-spec", "accessed_on": "2026-11-02"},
+    {"id": "S2", "kind": "official", "title": "Configure streaming for LLM responses and other traffic", "locator": "https://docs.cloud.google.com/api-gateway/docs/streaming-configure", "accessed_on": "2026-11-02"},
+    {"id": "S3", "kind": "official", "title": "gcloud api-gateway gateways create", "locator": "https://docs.cloud.google.com/sdk/gcloud/reference/api-gateway/gateways/create", "accessed_on": "2026-11-02"},
+    {"id": "S4", "kind": "official", "title": "Overview of model routing", "locator": "https://docs.cloud.google.com/api-gateway/docs/model-routing-overview", "accessed_on": "2026-11-02"},
+    {"id": "S5", "kind": "official", "title": "Model Context Protocol overview", "locator": "https://docs.cloud.google.com/api-gateway/docs/mcp-overview", "accessed_on": "2026-11-02"},
+    {"id": "S6", "kind": "official", "title": "OpenAPI 3.x feature limitations", "locator": "https://docs.cloud.google.com/api-gateway/docs/openapi-v3-limitations", "accessed_on": "2026-11-02"},
+    {"id": "S7", "kind": "primary", "title": "WHATWG HTML §9.2 Server-sent events", "locator": "https://html.spec.whatwg.org/multipage/server-sent-events.html", "accessed_on": "2026-11-02"},
+    {"id": "S8", "kind": "primary", "title": "RFC 9112 §7.1 Chunked Transfer Coding", "locator": "https://www.rfc-editor.org/rfc/rfc9112.html#section-7.1", "accessed_on": "2026-11-02"},
+    {"id": "S9", "kind": "primary", "title": "RFC 9113 §5.2 Flow Control and §8.1 HTTP Message Framing", "locator": "https://www.rfc-editor.org/rfc/rfc9113.html", "accessed_on": "2026-11-02"},
+    {"id": "S10", "kind": "official", "title": "gRPC Core concepts, architecture and lifecycle", "locator": "https://grpc.io/docs/what-is-grpc/core-concepts/", "accessed_on": "2026-11-02"},
+    {"id": "S11", "kind": "local", "title": "HTTP/1.1 与 LF-only SSE 本地机制实验源码", "locator": "cs-learning/reports/knowledge_reports/assets/api_gateway_streaming_20261102/streaming_lab.py", "accessed_on": "2026-11-02"},
+    {"id": "S12", "kind": "local", "title": "本地实验完整真实输出（Python 3.14.5，Darwin）", "locator": "cs-learning/reports/knowledge_reports/assets/api_gateway_streaming_20261102/results.json", "accessed_on": "2026-11-02"}
+  ],
+  "claims": [
+    {"id": "C1", "claim": "原文于 2026-10-22 宣布 Public Preview，主张保留原有治理路径并支持多种流式模式。", "report_anchor": "一、原文真正解决的是“双轨入口”", "support": "direct", "source_ids": ["S1"], "evidence": "原文发布元数据、What you can stream、Your API contract doesn't change；GA 仅为计划。", "critical": true},
+    {"id": "C2", "claim": "HTTP/1.1 chunk、HTTP/2 DATA frame、SSE 事件与单次读取的边界不能等同；HTTP/2 不使用 HTTP/1.1 chunked coding。", "report_anchor": "1. HTTP 分块不等于业务事件", "support": "derived", "source_ids": ["S7", "S8", "S9", "S11", "S12"], "evidence": "RFC 9112 §7.1/§7.1.1 逐连接重新分块，RFC 9113 §8.1 的 DATA framing，SSE 空行事件边界及本地任意字节切分验证。", "critical": true},
+    {"id": "C3", "claim": "不新增流式注解不代表现有协议、deadline 或客户端解析无需调整。", "report_anchor": "三、“不改规范”为什么仍可能需要改配置和客户端", "support": "derived", "source_ids": ["S1", "S2", "S7"], "evidence": "博客称 no streaming-specific annotations；配置文档要求 gRPC h2、WebSocket http/1.1，以及按需求设置既有 deadline。", "critical": true},
+    {"id": "C4", "claim": "SSE/HTTP streaming 默认总 deadline 15 秒、最大 3600 秒，持续发送不重置；gRPC/WebSocket 的 idle deadline 与总时长上限需区别。", "report_anchor": "四、最容易误读的数字：一小时是上限，不是默认值", "support": "direct", "source_ids": ["S2", "S3"], "evidence": "两份文档均写明 HTTP 总时间默认 15、最大 3600；gRPC/WS idle 默认 300、最大 3600；WS 小于 300 被忽略，总时长固定最多 3600。", "critical": true},
+    {"id": "C5", "claim": "模型路由与普通流式网关支持矩阵不同；前者支持响应 SSE，不支持请求侧流式、gRPC、WebSocket 或 Gemini Live。", "report_anchor": "### 模型路由", "support": "direct", "source_ids": ["S4"], "evidence": "Performance and limitations：OpenAPI 3.x、同 hostname、不得混合普通 routing，以及协议限制。", "critical": true},
+    {"id": "C6", "claim": "内置 MCP 是 REST 转换端点，开启 streaming 后仍返回单个 application/json；不支持长时间或流式工具调用，与 Model Routing 配置互斥。", "report_anchor": "### 网关内置 MCP 转换", "support": "direct", "source_ids": ["S2", "S5"], "evidence": "S2 Limitations 的 MCP 项与 S5 Background/Limitations/Request flow。结论限定内置转换，不泛化到 MCP 标准或普通透传。", "critical": true},
+    {"id": "C7", "claim": "原生 EventSource 没有任意 Authorization header 或 POST body 配置；重连携带 Last-Event-ID 不替代服务端事件历史与业务去重。", "report_anchor": "### 浏览器 EventSource 不是任意模型 API 的万能客户端", "support": "derived", "source_ids": ["S7"], "evidence": "EventSourceInit 只有 withCredentials；processing model 使用 last event ID；服务端持久化、业务幂等不属于该浏览器规范。", "critical": false},
+    {"id": "C8", "claim": "HTTP 200 与合法 EOF 不证明业务完成；未完整终止的 SSE 事件应丢弃；应用需要独立结束合同。", "report_anchor": "六、可靠的流式接口，需要一个“完成合同”", "support": "derived", "source_ids": ["S7", "S8", "S10", "S11", "S12"], "evidence": "SSE 规范 EOF 丢弃未终止事件；本地 /cut 发送合法零长度 chunk，客户端仍记录 semantic_complete=false。", "critical": true},
+    {"id": "C9", "claim": "[推测] HTTP/2 流控逐跳工作，不保证模型生产随下游消费自动同步；无界应用队列仍可积压。", "report_anchor": "### 慢消费者会把流式优势变成缓冲积压", "support": "inference", "source_ids": ["S9"], "evidence": "RFC 9113 §5.2.1 明确 flow control specific to a connection and single hop；队列后果作为机制推导标注。", "critical": false},
+    {"id": "C10", "claim": "原文所述网关 request latency 度量流生命周期，而非首字节；首有效内容与结束时间应分别观测。", "report_anchor": "### 首字节、首条有效内容、完整结果是三种指标", "support": "derived", "source_ids": ["S1", "S12"], "evidence": "原文 Preview metrics 项；本地响应头很早但 buffered 首 delta 显著滞后。观测清单为工程建议而非产品现成指标承诺。", "critical": true},
+    {"id": "C11", "claim": "本地两种模式各 5 次：stream 首 delta 中位数 107.420ms，buffered 418.001ms；总时间分别 417.859ms、418.295ms。", "report_anchor": "### 结果一：更早可见，不等于更早算完", "support": "direct", "source_ids": ["S11", "S12"], "evidence": "results.json medians_ms；每个 delta 前固定等待 0.1 秒，4 个 delta；本机 loopback，不含云网关或模型实测。", "critical": true},
+    {"id": "C12", "claim": "实验覆盖 221 个单切分位置、逐字节输入、多行 data、未完成事件丢弃，并通过静态事件表演示游标恢复。", "report_anchor": "### 结果二：半包不能当作事件解析", "support": "direct", "source_ids": ["S11", "S12"], "evidence": "parser_tests、clean_http_eof_without_done、resume_from_static_event_log；仅 LF-only 子集，非完整 SSE 库或持久任务系统。", "critical": true},
+    {"id": "C13", "claim": "streaming mode 创建后不可改；省略 flag 不等于关闭；实际模式看 effectiveStreamingMode；新 hostname 与预览集成限制需迁移检查。", "report_anchor": "九、怎样迁移：先确认真实模式，再验证整条链路", "support": "direct", "source_ids": ["S1", "S2", "S3"], "evidence": "S2 Enable streaming、Gateway streaming properties、Limitations。Console 限制仅按原文初始发布口径，不声称现状已复验。", "critical": true},
+    {"id": "C14", "claim": "网关接受 OpenAPI 参数/类型定义不表示强制校验，scopes 也不执行；保留鉴权不代表所有 AI 业务治理已实现。", "report_anchor": "### 传输兼容不等于业务兼容", "support": "derived", "source_ids": ["S1", "S6"], "evidence": "S6 Scopes ignored、Parameters schemas request bodies and types；token 预算、内容审查和撤销行为仅作为建议/待验证。", "critical": false}
+  ],
+  "source_coverage": [
+    {"id": "U1", "title": "旧路径冲突、治理与实时入口的统一", "importance": "core", "status": "included", "source_ids": ["S1"], "report_anchor": "一、原文真正解决的是“双轨入口”"},
+    {"id": "U2", "title": "SSE、HTTP 响应流、WebSocket、gRPC 与一小时上限", "importance": "core", "status": "included", "source_ids": ["S1", "S2"], "report_anchor": "二、“流式”至少涉及三层边界"},
+    {"id": "U3", "title": "无需新规范、既有身份与观测能力延续", "importance": "core", "status": "included", "source_ids": ["S1"], "report_anchor": "三、“不改规范”为什么仍可能需要改配置和客户端"},
+    {"id": "U4", "title": "创建 opt-in、不可原地切换、默认 hostname", "importance": "core", "status": "included", "source_ids": ["S1", "S2"], "report_anchor": "九、怎样迁移：先确认真实模式，再验证整条链路"},
+    {"id": "U5", "title": "AI 工作负载、模型路由、MCP 与其它 Google 网关的分工", "importance": "core", "status": "included", "source_ids": ["S1", "S4", "S5"], "report_anchor": "五、三种产品功能，必须分别判断"},
+    {"id": "U6", "title": "Preview 缺失集成与流生命周期 latency", "importance": "core", "status": "included", "source_ids": ["S1", "S2"], "report_anchor": "七、性能与治理的重心从“请求数”扩展到“在途工作”"},
+    {"id": "U7", "title": "开始方式与实际行为验证", "importance": "supporting", "status": "included", "source_ids": ["S1", "S2"], "report_anchor": "### 上云验收应验证行为，而不是只验证开关"}
+  ],
+  "limitations": [
+    "所有云端产品能力均为截至 2026-11-02 所读官方口径；没有云端部署、WebSocket/gRPC/HTTP2、IAM、取消或配额实测。",
+    "博客与文档页脚更新日期不一致，不以时间排序推断 GA 或修复状态；Console 仅记录原文初始预览限制。",
+    "RFC HTML 经 eacli web.read 返回内容恰在 32000 字符截断且不可解析，才最小降级用 curl 只读获取官方 RFC 纯文本；仅读取相关章节。",
+    "其它成功网页读取与检索使用 eacli web.read/web.search；失败的猜测文档 URL 不作为来源。",
+    "实验是单进程模拟缓冲策略与静态事件表，仅 LF SSE 子集，非 Google 实现、反向代理压测或完整协议库。",
+    "本地数值仅演示人工延迟下的交付差异；假设并发量与缓冲内存估算不属于产品上限或实测。",
+    "研究与实验由当前会话完成；质量复核另用策略规定的全新模型上下文，不以生成者自检冒充独立复核。"
+  ]
+}

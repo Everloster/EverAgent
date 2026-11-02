@@ -13,7 +13,7 @@
 | 操作系统 | ✓ | 待统计 | 待补 |
 | 分布式系统 | ✓ | 待统计 | 待补 |
 | 数据库 | ✓ | 待统计 | 待补 |
-| 网络 | ✓ | Tailscale/WireGuard 私有组网原理；自建抗审查节点（Reality/Hysteria2）+ 主动探测 + 线路选型 | CDN 中转/域名前置；QUIC/HTTP3 拥塞控制 |
+| 网络 | ✓ | Tailscale/WireGuard 私有组网原理；自建抗审查节点（Reality/Hysteria2）+ 主动探测 + 线路选型；[API Gateway 流式响应](./reports/knowledge_reports/Google_API_Gateway流式响应_协议机制与工程边界_深度解析_20261102.md)：SSE/HTTP 分帧、超时与背压、本地机制实验 | CDN 中转/域名前置；QUIC/HTTP3 拥塞控制 |
 
 ---
 

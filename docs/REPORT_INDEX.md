@@ -7,6 +7,7 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-11-02 | [Google API Gateway 流式响应：协议机制、兼容性与工程边界](../cs-learning/reports/knowledge_reports/Google_API_Gateway流式响应_协议机制与工程边界_深度解析_20261102.md) | cs-learning |
 | 2026-11-01 | [飞行汽车的剧本与欧洲的账本：赛博对话 vol.60 深读](../podcast-learning/reports/2026-10-30_saibo-duihua_v60-roadster-china-auto-europe.md) | podcast-learning |
 | 2026-11-01 | [郭凯谈中国经济新范式：拐点、平行线与还没兑现的红利](../podcast-learning/reports/2026-10-30_zhixing-xiaojiuguan_e256-guokai-economy-households.md) | podcast-learning |
 | 2026-11-01 | [狂飙中的 AI 2026：模型发布、收入增长与算力债务](../podcast-learning/reports/2026-10-26_tulong-zhishu_ai-2026-version-race.md) | podcast-learning |
@@ -31,7 +32,6 @@
 | 2026-10-25 | [忽左忽右 510：侨批不是一封家书，而是一套跨国金融与亲缘基础设施](../podcast-learning/reports/2026-10-23_xiaoyuzhou-huzuo-huyou_ep510-thai-qiaopi-network.md) | podcast-learning |
 | 2026-10-25 | [张小珺 × Lindon Gao（Dyna Robotics）：机器人长跑里的闭环、推论与「不犯错的 CEO」包袱](../podcast-learning/reports/2026-10-15_xiaoyuzhou-zhangxiaojun_vol154-dyna-lindon.md) | podcast-learning |
 | 2026-10-25 | [声东击西 #408：互联网增长的红利、代价与一个人的十年自我重建](../podcast-learning/reports/2026-10-22_rss-shengdong-jixi_ep408-lijing-internet-growth-self-reconstruction.md) | podcast-learning |
-| 2026-10-25 | [声东击西 #407：光遗传学怎样把情绪与精神疾病从相关推向因果](../podcast-learning/reports/2026-10-16_rss-shengdong-jixi_ep407-optogenetics-brain-mental-health.md) | podcast-learning |
 
 ## 🤖 AI Learning（152 篇）
 
@@ -190,10 +190,11 @@
 | 2026-03-23 | [AI演义_笔记分析与项目整合报告](../ai-learning/reports/AI演义_笔记分析与项目整合报告.md) | — |
 | 2026-03-23 | [AI 关键人物图谱](../ai-learning/reports/knowledge_reports/AI关键人物图谱.md) | — |
 
-## 💻 CS Learning（33 篇）
+## 💻 CS Learning（34 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-11-02 | [Google API Gateway 流式响应：协议机制、兼容性与工程边界](../cs-learning/reports/knowledge_reports/Google_API_Gateway流式响应_协议机制与工程边界_深度解析_20261102.md) | `api_gateway`, `response_streaming`, `sse`, `http`, `backpressure`, `ai_infrastructure` |
 | 2026-07-10 | [自建科学上网节点：从抗审查协议到线路选型的系统工程](../cs-learning/reports/knowledge_reports/自建科学上网节点_抗审查协议与线路选型_20260710.md) | — |
 | 2026-06-21 | [数据库 50 年演化知识图谱：从层次/网状到向量库](../cs-learning/reports/knowledge_reports/数据库50年演化_从层次到向量库_20260621.md) | — |
 | 2026-06-21 | [#35 \| RFC 9000 QUIC: A UDP-Based Multiplexed and Secure Transport — IETF QUIC Working Group (2021) 深度分析](../cs-learning/reports/paper_analyses/35_quic_rfc9000_2021.md) | — |

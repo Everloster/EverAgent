@@ -20,6 +20,7 @@ Wiki 用于概念导航，报告保留论证与来源；两者覆盖范围不必
 - **分布式系统**：[Lamport 逻辑时钟](./reports/paper_analyses/05_lamport_clocks_1978.md)、[Raft](./reports/paper_analyses/15_raft_2014.md)与[分布式系统知识图谱](./reports/knowledge_reports/分布式系统知识图谱.md)，对照存储、共识、协调与消息的不同职责。
 - **系统演化**：[UNIX](./reports/paper_analyses/04_unix_1974.md)与[操作系统内核设计](./reports/knowledge_reports/操作系统内核设计深度解析_20260416.md)，从前代瓶颈理解后续设计。
 - **编程与并发**：[CSP](./reports/paper_analyses/18_csp_1978.md)与[编程语言范式演化](./reports/knowledge_reports/编程语言范式演化_从Lisp到Go的并发模型变迁.md)，连接理论模型与语言机制。
+- **网络与流式接口**：[API Gateway 流式响应](./reports/knowledge_reports/Google_API_Gateway流式响应_协议机制与工程边界_深度解析_20261102.md)，通过 SSE、HTTP 分帧和本地实验，理解首条内容、超时、背压与业务完成的边界。
 
 阅读时区分证明、复杂度口径与实测性能；系统权衡应放回工作负载和故障模型，不用单一口号解释所有设计。训练与推理系统可衔接 [AI](../ai-learning/README.md)，实际开源实现见[仓库研究](../github-trending-analyzer/README.md)。
 

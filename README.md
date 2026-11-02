@@ -18,11 +18,11 @@
 ## 最近更新
 
 <!-- AUTO-RECENT:START -->
+- 2026-11-02 · [Google API Gateway 流式响应：协议机制、兼容性与工程边界](./cs-learning/reports/knowledge_reports/Google_API_Gateway流式响应_协议机制与工程边界_深度解析_20261102.md)
 - 2026-11-01 · [飞行汽车的剧本与欧洲的账本：赛博对话 vol.60 深读](./podcast-learning/reports/2026-10-30_saibo-duihua_v60-roadster-china-auto-europe.md)
 - 2026-11-01 · [郭凯谈中国经济新范式：拐点、平行线与还没兑现的红利](./podcast-learning/reports/2026-10-30_zhixing-xiaojiuguan_e256-guokai-economy-households.md)
 - 2026-11-01 · [狂飙中的 AI 2026：模型发布、收入增长与算力债务](./podcast-learning/reports/2026-10-26_tulong-zhishu_ai-2026-version-race.md)
 - 2026-11-01 · [人往贵处集中：陆铭谈大城市、内卷、房价与 AI 时代的经济学](./podcast-learning/reports/2026-10-26_gaonengliang_v239-luming-ai-cities-consumption.md)
-- 2026-11-01 · [LinkStart Vol.136：Stripe CMO 给出了几条出海准则——四波增长、四层本地化与 Agent 时代的品牌](./podcast-learning/reports/2026-10-29_linkstart_v136-stripe-global-ai-commerce.md)
 <!-- AUTO-RECENT:END -->
 
 按报告修改日期排列，修订过的旧报告也会出现在这里。[浏览全部报告 →](./docs/REPORT_INDEX.md)
@@ -52,7 +52,7 @@ Wiki 三列数字依次是概念、实体（人物、机构等）和综合分析
 | 项目 | 报告 | Wiki(概念/实体/综合) |
 |------|------|----------------------|
 | 🤖 [AI Learning](./ai-learning/) | 152 篇 | 54/30/1 |
-| 💻 [CS Learning](./cs-learning/) | 33 篇 | 24/17/1 |
+| 💻 [CS Learning](./cs-learning/) | 34 篇 | 24/17/1 |
 | 📚 [Philosophy Learning](./philosophy-learning/) | 22 篇 | 20/14/1 |
 | 🧠 [Psychology Learning](./psychology-learning/) | 17 篇 | 13/13/0 |
 | 🧬 [Biology Learning](./biology-learning/) | 18 篇 | 14/9/0 |
