@@ -1,0 +1,676 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/Agent请求全链路_流式响应与断线恢复_科普讲解_20261102.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "agent-streaming-review-20261102-sol",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 98,
+        "request_coverage": 96,
+        "reasoning_quality": 97,
+        "readability": 97,
+        "limitations": 98
+      },
+      "score_reasons": {
+        "evidence_fidelity": "已按来源优先顺序独立核验 S1–S13。Google 发布日从抓取元数据复核为 2026-10-22；原文的治理路径冲突、Public Preview、四类流式模式、无需新增流式注解、hostname、产品分工与延迟口径均被准确保留。配置页的 15/300/3600 秒时限矩阵、协议要求、effectiveStreamingMode、不可变模式、Terraform/负载均衡/自定义域名限制，与正文逐项一致。OpenAI 工具调用五步、参数 delta/done 与 Agents SDK 循环支持“模型响应完成不等于任务完成”；WHATWG 与 RFC 支持 UTF-8 增量解析、EOF 丢弃未终止事件、HTTP/1.1 chunked 和 HTTP/2 DATA/逐跳流控边界。本地 results.json 的两组 5 次样本中位数已独立重算，221 个切分位置由 220 字节测试流直接确认；另以 /tmp 新文件复跑源码，断言、半份 200+合法 EOF、Last-Event-ID:2 补发 3/4/5 的行为均一致。未发现错误数字、越界外推或来源无法支撑的关键 claim。",
+        "request_coverage": "R1–R5 均有明确落实：沿用“杭州销量/管家”例子且可脱离前篇阅读；把 Google 原文放回 Agent 全链路而非仅移动旧工程稿；区分参数完成、单轮模型完成、HTTP 结束与业务完成；源码、真实输出、复现命令和未做的云端验证均保留；思考三问、AI Learning 阅读线、MAP、总索引和技术博客入口均合理更新，旧 CS 报告在工作树中已移除。独立来源地图的 16 个单元中 15 个完整覆盖，1 个 supporting 单元为 partial：Preview 免网络 egress、模型路由不支持 VPC-SC、无规则匹配时回退默认模型、冷启动等次要产品条目未逐项进入正文；报告没有声称穷尽全部限制，且不影响用户要求的核心论证。",
+        "reasoning_quality": "全文用“模型输出—任务执行—客户端显示”三层贯穿工具循环、网关、SSE 和断线恢复，随后继续区分字节分帧、事件边界、模型响应结束、任务完成与结果真实性，因果链清楚。实验把“同样的 chunked 头部”和“应用是否缓冲”分离，能直接反驳“看到 chunked 就一定低延迟”；200+正常 EOF 但无 done 的反例支撑完成合同；静态游标补发被严格限定为展示恢复，未冒充持久任务或模型计算恢复。队列积压、幂等、副作用与取消传播均标为设计建议、[推测] 或 [待验证]，没有把逐跳流控外推成端到端保证。",
+        "readability": "正文开头直接提出断线场景和核心答案，术语首次出现即解释，使用同一销量查询贯穿；主线放正文，API 事件名、配置矩阵与部署限制折叠，关键证据就在结论旁。独立目视检查最终版 1280×1000 的 desktop-intro、desktop-experiment、desktop-deadline，以及 390×1000 的 mobile-intro、mobile-diagram、mobile-experiment、mobile-deadline：桌面正文、Mermaid、实验表和展开时限表清楚；手机标题与正文正常换行，首屏不再出现重复标题，流程图缩放后完整可读，实验表与三行时限表均无横向截断。另以 360×1000 固定 viewport 做 DOM 宽度与 heading 检查，记录 innerWidth=360、innerHeight=1000、h1Count=1；render-check.json 还记录 390/360 CSS px 下 document/body 等于 viewport、5 张表 clientWidth=scrollWidth、40 个链接、无 brokenLocal 和页面错误。",
+        "limitations": "正文明确区分厂商口径、标准机制、本地模拟和应用设计建议，并列出没有云端网关、真实模型、完整 SSE、HTTP/2、反向代理、持久存储、自动重连、压力/容量、P95/P99、费用与取消传播实测。销量仅作示意、done 为自定义业务标志、EventSource 游标不等于处理确认、GA 仍是计划、文档日期不用于推断修复时点，均有清楚边界。evidence 也诚实记录 eacli 长文截断后的官方 Markdown/HTML/txt 最小降级。"
+      },
+      "critical_claim_ids_checked": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13"
+      ],
+      "coverage_unit_ids_checked": [
+        "U1",
+        "U2",
+        "U3",
+        "U4",
+        "U5",
+        "U6",
+        "U7",
+        "U8",
+        "U9",
+        "U10"
+      ],
+      "source_content_map": [
+        {
+          "id": "M1",
+          "title": "Agent 工具循环：模型提出调用，应用执行并回填，直到最终输出",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S5",
+            "S7",
+            "S13"
+          ],
+          "matched_coverage_unit_ids": [
+            "U5"
+          ],
+          "notes": "报告沿用前篇的管家与杭州销量例子，但重新给出可独立阅读的职责定义和运行图；没有把前篇简化说法当成本篇权威证据。"
+        },
+        {
+          "id": "M2",
+          "title": "单轮模型响应、工具执行、Agent 最终输出和应用任务完成是不同终点",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S5",
+            "S6",
+            "S7"
+          ],
+          "matched_coverage_unit_ids": [
+            "U5",
+            "U7"
+          ],
+          "notes": "报告用三阶段与对照表明确区分，且说明完成事件不能替结果真实性背书。"
+        },
+        {
+          "id": "M3",
+          "title": "流式函数调用的 output item、arguments delta/done、并行调用归并和 call_id 回填",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S5"
+          ],
+          "matched_coverage_unit_ids": [
+            "U5"
+          ],
+          "notes": "事件名、item_id/output_index 与 call_id 的用途准确；schema 完整与业务授权被明确分开。"
+        },
+        {
+          "id": "M4",
+          "title": "模型流由 typed semantic events 表达；增量发送带来完整输出审核滞后",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S6"
+          ],
+          "matched_coverage_unit_ids": [
+            "U5",
+            "U9"
+          ],
+          "notes": "正文引用 response.output_text.delta/completed/error，并在取消与治理章节保留流式审核取舍。"
+        },
+        {
+          "id": "M5",
+          "title": "Google 原文的问题：治理入口与绕行流式形成双轨，Public Preview 试图统一路径",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1"
+          ],
+          "notes": "报告保留原文问题—能力—价值链，并明确这是 Google 对自身产品的描述。"
+        },
+        {
+          "id": "M6",
+          "title": "SSE、增量 HTTP、WebSocket、gRPC 流与既有治理；“不改规范”不等于后端和客户端零改动",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1",
+            "U2"
+          ],
+          "notes": "报告完整列出模式与治理能力，并把无新增流式注解、后端协议和客户端解析三个层次分开。"
+        },
+        {
+          "id": "M7",
+          "title": "流式网关的协议配置、deadline 矩阵、创建时启用、实际模式查询与不可变性",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S2",
+            "S3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U2",
+            "U3"
+          ],
+          "notes": "15/300/3600 秒口径逐项一致；心跳不重置 SSE 总时限，Model Router 自动形成 streaming gateway，验收看 effectiveStreamingMode。"
+        },
+        {
+          "id": "M8",
+          "title": "可预测 hostname、旧地址迁移、Terraform/负载均衡/自定义域名限制、产品分工与 latency 口径",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S1",
+            "S2"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3",
+            "U10"
+          ],
+          "notes": "报告保留三种地址形态的迁移含义、关键 Preview 集成限制、Apigee/Agent Gateway 分工，并说明 request latency 是流生命周期。"
+        },
+        {
+          "id": "M9",
+          "title": "模型路由按 model 字段与规则选择后端，并受 OpenAPI、hostname、协议和 payload 限制",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U4"
+          ],
+          "notes": "报告覆盖响应 SSE only、禁请求流/gRPC/WS/Gemini Live、同 hostname、OpenAPI 3.x、禁止混合和缺 model 字段缺陷。"
+        },
+        {
+          "id": "M10",
+          "title": "Google 内置 MCP 是 REST→MCP 转换代理，支持有限生命周期方法，但不支持流式/长工具且与 Model Routing 互斥",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S2",
+            "S4"
+          ],
+          "matched_coverage_unit_ids": [
+            "U4"
+          ],
+          "notes": "报告限定为 Google 内置转换功能，没有泛化到 MCP 标准或其它服务器。"
+        },
+        {
+          "id": "M11",
+          "title": "SSE 的 UTF-8、空行分派、多行 data、EOF 丢弃、自动重连与 Last-Event-ID；EventSource 构造能力有限",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S8"
+          ],
+          "matched_coverage_unit_ids": [
+            "U6",
+            "U7"
+          ],
+          "notes": "正文与实验正确覆盖解析和游标语义，也指出 EventSource 没有任意 POST body/Authorization header 接口，fetch 不自动继承重连。"
+        },
+        {
+          "id": "M12",
+          "title": "HTTP/1.1 chunked 是逐连接分帧且以零块结束；HTTP/2 用 DATA frame、禁用 chunked，流控逐跳",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S9",
+            "S10"
+          ],
+          "matched_coverage_unit_ids": [
+            "U6",
+            "U9"
+          ],
+          "notes": "报告把网络块、SSE 事件和模型 token 分开，并把 HTTP/2 逐跳流控到应用队列的结论标为推测边界。"
+        },
+        {
+          "id": "M13",
+          "title": "本地流式与缓冲对照：同样 chunked，首有效事件显著不同而总时长接近",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S11",
+            "S12"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8"
+          ],
+          "notes": "两模式各 5 次，中位数已独立重算；/tmp 复跑行为一致。报告严格限定为回环、人为延迟和应用缓冲示意。"
+        },
+        {
+          "id": "M14",
+          "title": "正常 HTTP 200/EOF 不等于业务完整；静态事件游标可补发但不等于恢复任务或模型计算",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S8",
+            "S9",
+            "S11",
+            "S12"
+          ],
+          "matched_coverage_unit_ids": [
+            "U7",
+            "U8"
+          ],
+          "notes": "cut 路径与 resume 路径均已复跑；done 被明确写为应用自定义合同。"
+        },
+        {
+          "id": "M15",
+          "title": "真实断线恢复还需要稳定任务 ID、事件/结果保存、权限、确认去重、幂等副作用和取消传播",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S7",
+            "S8",
+            "S10",
+            "S11",
+            "S12"
+          ],
+          "matched_coverage_unit_ids": [
+            "U7",
+            "U9",
+            "U10"
+          ],
+          "notes": "这些内容被清楚标为应用设计建议或待验证项，构成对协议游标能力的必要边界，而非伪称已实现。"
+        },
+        {
+          "id": "M16",
+          "title": "次要 Preview 边界：免网络 egress、VPC-SC、默认模型回退、冷启动与保留路径",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "S2",
+            "S3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3",
+            "U4"
+          ],
+          "notes": "正文保留计费/容量未实测和主要部署限制，但未逐项写入免 egress、VPC-SC、无规则匹配回退默认模型、冷启动与保留路径。均为 supporting 级条目，不改变原文主论证、Agent 后续主线或本报告结论。"
+        }
+      ],
+      "source_ids_checked": [
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8",
+        "S9",
+        "S10",
+        "S11",
+        "S12",
+        "S13"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "开始前以 shasum -a 256 核对实际工作区快照：报告 abd4f4ff30e8d280af20be8d97df8493bbdb7208fed729aa0b33897bbc01c9a3，evidence 7d4ef8380df48ccd6705a04cbc4b79923422320cf2c65acd0dde895bbb1b5dbb，与 review-prompt 完全一致。随后在未读当前报告/evidence 的前提下，先读 S1 全文、S2/S3/S4 正式章节、S5 工具调用流程与 Streaming、S6 全文、S7 The agent loop/Streaming、S8 §9.2.2–9.2.6、S9 §7.1、S10 §5.2/§8.1、S11/S12 和仅作衔接的 S13，形成 M1–M16，再映射 U1–U10。S1 发布元数据单独解析确认 publishedTime=2026-10-22。实验在不改仓库结果的前提下以 /tmp 新文件执行 python3 -I 复跑，并独立用 statistics.median 重算存档中位数；结果中的机器耗时有正常抖动，但断言和语义行为一致。安全抽查：源码只访问 127.0.0.1、无凭据和外部请求，公开报告未写入私有设备/账号/网络信息。导航抽查：README、ai-learning/README、MAP、REPORT_INDEX、TECH_BLOG_UPDATES 均指向 AI Learning 续篇，旧 CS 报告在当前工作树中不存在；PROTOCOL_COMMON 新增 main 默认与安全清理条件，符合用户主分支偏好。分支的实际合并、推送和删除由协调者负责，本 Reviewer 未执行。视觉验收：协调者最终使用 Pandoc GFM + github-markdown-css 5.9.0 + Mermaid 11.14.0 + headless Chrome/Playwright。Reviewer 单独目视最终版 3 张 1280×1000 桌面截图与 4 张 390×1000 手机截图；桌面、手机首屏、移动流程图、实验表、展开时限表均可读。首次 mobile-intro.png 曾出现重复标题，属于截图捕获或绘制异常；源 Markdown/HTML 始终只有一个 h1，重建固定手机 viewport 页面后截图正常，不进一步推断具体原因。360×1000 仅用于额外 DOM 宽度与 heading 检查，render-check.json 记录 innerWidth=360、innerHeight=1000、h1Count=1。390/360 CSS px 下 document/body 均等于 viewport，5 张表无横向溢出，无 brokenLocal 或页面错误。Reviewer 的 Chrome CLI 窄屏因 macOS 最小外窗裁剪，未计入验收。协议收尾另核对 docs/PROTOCOL_COMMON.md：仅删除即将清理的 legacy-v1-multiagent 分支导航，main 默认条款未变。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 97.25,
+    "evaluated_on": "2026-11-02",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "9304c72fe8c9dfa60418cdabab0663942fef1bf2d91ee5dc243a46eb9b35eddc",
+    "evidence_sha256": "7d4ef8380df48ccd6705a04cbc4b79923422320cf2c65acd0dde895bbb1b5dbb"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "glm-5.3",
+            "harness": "pi",
+            "run_id": "gateway-streaming-20261102-review",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 97,
+            "request_coverage": 92,
+            "reasoning_quality": 94,
+            "readability": 93,
+            "limitations": 97
+          },
+          "score_reasons": {
+            "evidence_fidelity": "C1–C14 全部逐条对照 /tmp/web-surfing-20261102-gateway-GxnOmd 原始快照核验，无一捏造。C4 超时矩阵与 S2 表格、S3 --enable-streaming 说明逐格一致（HTTP 流式默认 15s/上限 3600s 且'有数据也截止'、gRPC/WS idle 默认 300s、WS 低于 300s 忽略、总时长固定 3600s 不可配）。C11 四个中位数（107.420/418.001/417.859/418.295ms）由本人依据 results.json 原始样本独立重算吻合。C12 的 221=测试字节流 220 字节+1 已独立计算确认，并以 python3 -I 复跑 parser_tests 与完整实验：全部断言通过，/cut 得 HTTP 200+合法 EOF+semantic_complete=false，Last-Event-ID:2 恢复得事件 3/4/5 并补成'流式响应'，与存档行为一致（计时为同量级机器抖动，符合预期）。570/600 官方示例、50×60=3000、3000×64KiB=187.5MiB 等算术均正确。[推测]/[待验证] 标注与 evidence 的 support 类型一一对应。发布日期复核：以 python3 -I 解析 s01/response.json 外层 result.result（JSON 字符串），内层元数据确有 publishedTime=2026-10-22，C1 的日期由抓取快照直接支持，首轮仅读 source.md 漏看元数据形成的疑虑已撤销。",
+            "request_coverage": "R1–R4 全部落实：R1 以问题/机制/结果三段重构原文而非翻译；R2 覆盖 SSE、HTTP 分帧、WebSocket/gRPC 差异与'不改规范'的分层含义；R3 交叉核验超时矩阵、模型路由支持矩阵、MCP 互斥与单 JSON、hostname 三形态与迁移限制；R4 给出可复现实验（仓库内源码+results.json+复现命令）、明确区分云端未测项并保留思考三问。R5 属质量门 finalize 之后的协调者闭环动作，按本次任务约定不判为正文遗漏。Reviewer 独立来源地图 18 单元：17 covered、1 supporting 级 partial（M18：模型路由 VPC-SC 不支持、无匹配规则时选默认模型的回退行为、Preview 期流式网关免网络 egress 费用等次要限制未入正文；报告未声称穷尽列举，且第 10 节已提示计费与限制可能变化需重新核验）。",
+            "reasoning_quality": "传输分帧/业务事件/任务完成三层边界贯穿全文，且同时由规范（RFC 9112 §7.1 逐连接、RFC 9113 §8.1 禁 chunked、WHATWG EOF 丢弃）与实验（事件跨两个 chunk、半包丢弃、cut/resume）双向验证。对高频误读给出机制级反例：心跳不重置 SSE 总 deadline、Transfer-Encoding: chunked 不证明低延迟（buffered 模式反例）、HTTP 200+合法 EOF 不等于业务完整、EventSource 无 Authorization/POST 入口。逐跳流控推论（RFC 9113 §5.2.1 single hop）明确标 [推测]，并用标注为假设值的 50req/s×60s 估算演示在途内存量级；完成合同、游标恢复、幂等副作用保护等建议可操作且不越出证据边界。",
+            "readability": "可独立阅读：术语先定义后使用，层级编号清晰，实验协议片段先于结果给出，全部断言可经文内链接回溯。对 /tmp/web-surfing-20261102-gateway-GxnOmd/report.html 做了 DOM 结构核验：3 个表格（模式对比/deadline 矩阵/实验中位数）行列结构与 Markdown 一致，33 个外部链接、无 TODO/占位符。视觉验收说明：本 Reviewer 会话的模型不支持图像输入，未能亲自目视截图；已核对生成者最终渲染收据 render-check-final.json（Chromium 1440 与 390 两档 scrollWidth 均等于视口宽、h1=1、3 表、results.json 链接实际点击成功），并将其作为辅助证据记录，生成者的最终桌面超时表、窄屏开头与结果表目视检查不替代为本复核的视觉验收。",
+            "limitations": "第 10 节显式区分厂商主张/官方配置/标准与本地实验三类证据且声明不可互替；云端未测项（WS/gRPC/HTTP2、IAM、取消传播、配额）、页脚日期不一致的处理原则、实验范围（LF 子集、单进程模拟缓冲、loopback）、拒绝虚构 SLO/P95/P99 均诚实列出，与 evidence limitations 一致。首轮曾以'S1 快照不含发布日期'记为极小瑕疵，本轮复验已在 response.json 元数据中找到 publishedTime=2026-10-22，该瑕疵撤销。"
+          },
+          "critical_claim_ids_checked": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14"
+          ],
+          "coverage_unit_ids_checked": [
+            "U1",
+            "U2",
+            "U3",
+            "U4",
+            "U5",
+            "U6",
+            "U7"
+          ],
+          "source_content_map": [
+            {
+              "id": "M1",
+              "title": "双轨入口问题与 Public Preview 宣布（治理入口 vs 绕行流式）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1"
+              ],
+              "notes": "对应原文前三段与 announcing 段；报告第一节以问题/机制/结果重构且明确'厂商自述非行业结论'。"
+            },
+            {
+              "id": "M2",
+              "title": "四类流式模式（SSE/chunked+HTTP 响应流/WS/gRPC 双向）与一小时上限及客户端重连建议",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2"
+              ],
+              "matched_coverage_unit_ids": [
+                "U2"
+              ],
+              "notes": "报告导语与第二节覆盖；一小时在第四节被正确降级为上限而非默认。"
+            },
+            {
+              "id": "M3",
+              "title": "不改规范（无流式注解）、既有治理延续、创建时 opt-in、GA 默认化为计划",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1"
+              ],
+              "matched_coverage_unit_ids": [
+                "U3",
+                "U4"
+              ],
+              "notes": "报告第三节拆分'不新增规范语言≠不调整规范文件'，第九节把 GA 表述标注为计划。"
+            },
+            {
+              "id": "M4",
+              "title": "可预测 hostname 新形态与非流式/早期 run.app 形态差异、legacy 不自动迁移",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2"
+              ],
+              "matched_coverage_unit_ids": [
+                "U4"
+              ],
+              "notes": "S2 Limitations 三种 pattern 与 63 字符标签/49 字符 ID 限制被报告以'形态不同、不自动迁移'正确概括。"
+            },
+            {
+              "id": "M5",
+              "title": "AI workloads 动机、模型路由+流式组合、API Gateway/Apigee/Agent Gateway 分工与组合",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S4",
+                "S5"
+              ],
+              "matched_coverage_unit_ids": [
+                "U5"
+              ],
+              "notes": "报告第一节与第五节的分工表述与原文一致，且未把三者能力当作可任意叠加。"
+            },
+            {
+              "id": "M6",
+              "title": "Preview 缺失集成（console/Terraform/Serverless NEG+外部 ALB 自定义域名）与 latency=流生命周期口径",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S1",
+                "S2"
+              ],
+              "matched_coverage_unit_ids": [
+                "U6",
+                "U4"
+              ],
+              "notes": "报告第九节列出并注明 Console 仅按原文初始口径、未复验现状；第七节展开 TTFB 区分。"
+            },
+            {
+              "id": "M7",
+              "title": "deadline 矩阵：非流式/SSE 默认 15s 上限 3600s、gRPC/WS idle 默认 300s、WS<300s 忽略、WS/gRPC 总时长固定 3600s",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U2"
+              ],
+              "notes": "报告第四节表格与 S2 表格、S3 flag 说明逐格一致，并交叉两处来源。"
+            },
+            {
+              "id": "M8",
+              "title": "启用与验证：无显式关闭、省略 flag 由 API config+平台默认解析、Model Router 必为 streaming、effectiveStreamingMode 输出字段、模式不可变",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U4"
+              ],
+              "notes": "报告第九节'省略参数不等于明确关闭'与 describe 验收建议直接对应 S2 Enable streaming 小节。"
+            },
+            {
+              "id": "M9",
+              "title": "后端协议要求：gRPC 须 h2、WS 须 http/1.1 Upgrade、SSE/增量两者皆可推荐 h2；OpenAPI 2.0/3.x 的配置字段位置",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2"
+              ],
+              "matched_coverage_unit_ids": [
+                "U3"
+              ],
+              "notes": "报告第三节逐条对应，且对 WS 要求加了'不要外推到所有实现'的边界。"
+            },
+            {
+              "id": "M10",
+              "title": "模型路由支持矩阵：响应 SSE only；不支持请求侧流式/gRPC/WS/Gemini Live；OpenAPI 3.x、同 hostname、禁混合、缺 model 字段已知缺陷",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U5"
+              ],
+              "notes": "与 S11 Performance and limitations 逐条一致；报告明确'不是智能选模型'并区分托管路由器与自托管后端。"
+            },
+            {
+              "id": "M11",
+              "title": "内置 MCP：REST→MCP 转换代理（initialize/tools/list/tools/call）、不支持流式或长工具调用、与 Model Routing 互斥、--enable-streaming 后仍单 application/json",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S2",
+                "S5"
+              ],
+              "matched_coverage_unit_ids": [
+                "U5"
+              ],
+              "notes": "报告第五节限定结论于内置转换端点、不外推 MCP 标准，与证据限定一致。"
+            },
+            {
+              "id": "M12",
+              "title": "OpenAPI 3.x 校验边界：参数/类型不强制执行、scopes 不检查",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S6"
+              ],
+              "matched_coverage_unit_ids": [
+                "U3"
+              ],
+              "notes": "报告第三节'传输兼容不等于业务兼容'引用该限制支撑'规范描述业务但不执行业务校验'。"
+            },
+            {
+              "id": "M13",
+              "title": "EventSource 接口（EventSourceInit 仅 withCredentials）、自动重连与 Last-Event-ID、EOF 丢弃未终止事件、UTF-8 与行结束规则",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S7"
+              ],
+              "matched_coverage_unit_ids": [
+                "U2",
+                "U3"
+              ],
+              "notes": "报告第三/六节引用口径准确；实验按声明的 LF 子集实现并在正文声明不覆盖 CR/CRLF/BOM/retry。"
+            },
+            {
+              "id": "M14",
+              "title": "分帧与流控机制：chunked 逐连接可重编码、零长度块结束、H2 DATA frame 且禁用 HTTP/1.1 chunked、流控逐跳",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S8",
+                "S9"
+              ],
+              "matched_coverage_unit_ids": [
+                "U2"
+              ],
+              "notes": "第二节与第七节的机制陈述与 RFC 9112 §7.1/§7.1.1、RFC 9113 §8.1/§5.2.1 原文一致。"
+            },
+            {
+              "id": "M15",
+              "title": "gRPC 四种方法形态、单次 RPC 内顺序保证、客户端/服务端终止判定可不一致、双方可随时取消",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S10"
+              ],
+              "matched_coverage_unit_ids": [
+                "U2"
+              ],
+              "notes": "报告第二节表格与第六节'完成合同'引用了顺序保证与判定不一致两点，未泛化为恰好一次交付。"
+            },
+            {
+              "id": "M16",
+              "title": "本地实验：stream/buffered 各 5 次中位数对比、事件跨 chunk、221 单切分位置+逐字节+多行 data+未完成事件丢弃、/cut 合法 EOF 语义不完整、静态事件表游标恢复",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S11",
+                "S12"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "Reviewer 独立复算全部中位数并复跑脚本（python 3.14.5/Darwin），全部断言通过、行为与存档一致；无 evidence source_coverage 单元对应实验，属报告自建内容。"
+            },
+            {
+              "id": "M17",
+              "title": "官方 vLLM/Gemma 教程要点：deadline 570 vs 服务 600、Google ID token 鉴权与 audience、curl -N、data: [DONE] 结束标志",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S2"
+              ],
+              "matched_coverage_unit_ids": [
+                "U6",
+                "U7"
+              ],
+              "notes": "报告第二/四/九节引用 570/600 意图、data:[DONE] 属上层约定而非 SSE 标准，与 S2 教程一致。"
+            },
+            {
+              "id": "M18",
+              "title": "次要产品边界：Preview 期流式网关免网络 egress 费用（Service Control 计费仍适用）、模型路由不支持 VPC-SC、无匹配规则时选默认模型、冷启动/保留路径等运行时限制",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S2",
+                "S4"
+              ],
+              "matched_coverage_unit_ids": [
+                "U6"
+              ],
+              "notes": "报告仅泛提'Preview 计费与功能限制可能变化需重新核验'，未列出上述具体条目；均为 supporting 级细节，报告亦未声称穷尽，不影响核心结论，建议后续修订时补充 VPC-SC 与默认模型回退两处。"
+            }
+          ],
+          "source_ids_checked": [
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5",
+            "S6",
+            "S7",
+            "S8",
+            "S9",
+            "S10",
+            "S11",
+            "S12"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "复核过程：先以 hashlib 核对报告与 evidence 快照（b76b4467…/0dec1362…）均匹配；随后按来源优先独立读取 S1 全文、S2/S3/S4/S5/S6/S7 关键部分、RFC 9112 §7.1 与 RFC 9113 §5.2/§8.1、gRPC core concepts 30–184 行，再读报告与 evidence，最后审查仓库实验并独立复算+复跑（未覆盖已存输出）。两份 RFC 的 receipt 已核：eacli web.read 恰在 32000 字符截断不可解析，最小降级为只读 curl 官方 txt，理由与 evidence limitations 记录一致。安全：s01 response.json 显示 credentials_transmitted=false，实验脚本无凭据、无外部请求，公开仓无私有信息。发现项（均不阻断）：(1) 已撤销——首轮误判'S1 页面快照不含 2026-10-22 发布日期'，因仅读 source.md 漏看元数据；本轮以 python3 -I 解析 s01/response.json 外层 result.result（JSON 字符串），内层确有 publishedTime=2026-10-22，C1 日期由抓取快照直接支持；(2) M18 的 supporting 级限制（VPC-SC、默认模型回退、Preview 免 egress）未入正文；(3) 临时渲染 HTML 的重复标题块已收尾：render-check-final.json 确认 Chromium 1440/390 两档 h1=1、scrollWidth 均等于视口宽、results.json 链接实际点击成功，Reviewer 复核当前 report.html 亦仅 1 个 h1，首轮'生成者仍在修正'的记录已过时，不涉报告正文。本轮为有界复验：仅针对发布时间元数据与渲染收尾两处更正 record（evidence_fidelity 96→97、limitations 96→97），未重读全部来源、未改动正文/evidence/评分门槛，其余独立判断与 M18 非阻断局限维持不变。R5 中 finalize、清单与索引更新由协调者在质量门之后执行，属正常闭环顺序，本复核不以该流程未完成判正文遗漏。渲染验收范围如实声明：本会话模型不支持图像，视觉部分（含生成者对最终桌面超时表、窄屏开头及结果表的目视检查）引用其度量与记录作为辅助，不替代为本复核的视觉验收；Reviewer 自身完成的是 DOM/结构级核验与链接存在性检查。"
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 94.8,
+        "evaluated_on": "2026-11-02",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "a75cdc743e5c86a1fc0921459d9173818fc34e30d53353436e5f892a9b962656",
+        "evidence_sha256": "0dec13620b556234c6249f80bb57dccd86d0cc685fdc701132fc46be753f7ca8"
+      }
+    }
+  ]
+}

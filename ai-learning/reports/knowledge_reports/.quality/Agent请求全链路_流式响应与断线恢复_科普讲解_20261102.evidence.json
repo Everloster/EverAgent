@@ -1,0 +1,423 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/Agent请求全链路_流式响应与断线恢复_科普讲解_20261102.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-02",
+  "generator": {
+    "model": "gpt-6-astra",
+    "harness": "codex",
+    "run_id": "agent-streaming-followup-20261102-codex-24006f8143cf",
+    "explicit_model_override": true,
+    "override_reason": "用户要求当前助手接手 Claude 分支上的报告，移入 AI 学习并作为既有 Agent 全链路科普的后续；当前运行时模型由 agent_identity.py 按 codex-turn-context 核实。"
+  },
+  "task": {
+    "summary": "把 Claude 的 API Gateway 工程分析迁入 ai-learning，整合成 Agent 请求全链路的流式交付与断线恢复科普续篇。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "沿用前篇的查询例子与管家职责，报告能独立阅读，清楚区分模型输出、工具执行和页面显示。"
+      },
+      {
+        "id": "R2",
+        "text": "实读 Google 原文及官方文档，保留原文论证、产品边界、时限和关键预览限制。"
+      },
+      {
+        "id": "R3",
+        "text": "补充参数增量与完成、模型轮次与任务完成、HTTP结束与业务完整、重连与任务恢复的区别。"
+      },
+      {
+        "id": "R4",
+        "text": "迁移保留实验源码，真实复跑，所有数字可追溯；严格区分机制模拟、设计建议和未做的云端验证。"
+      },
+      {
+        "id": "R5",
+        "text": "正文面向人类阅读：解释术语、证据就近链接、细节折叠，含思考三问；报告和导航统一进入AI学习，旧CS分类不保留重复报告。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "kind": "primary",
+      "title": "Google API Gateway streaming 发布原文",
+      "locator": "https://developers.googleblog.com/streaming-comes-to-api-gateway-real-time-and-ai-ready-apis-without-changing-your-spec",
+      "accessed_on": "2026-11-02"
+    },
+    {
+      "id": "S2",
+      "kind": "official",
+      "title": "Google API Gateway streaming 配置与限制",
+      "locator": "https://docs.cloud.google.com/api-gateway/docs/streaming-configure",
+      "accessed_on": "2026-11-02"
+    },
+    {
+      "id": "S3",
+      "kind": "official",
+      "title": "Google API Gateway model routing",
+      "locator": "https://docs.cloud.google.com/api-gateway/docs/model-routing-overview",
+      "accessed_on": "2026-11-02"
+    },
+    {
+      "id": "S4",
+      "kind": "official",
+      "title": "Google API Gateway MCP overview",
+      "locator": "https://docs.cloud.google.com/api-gateway/docs/mcp-overview",
+      "accessed_on": "2026-11-02"
+    },
+    {
+      "id": "S5",
+      "kind": "official",
+      "title": "OpenAI Function calling：流程与 Streaming",
+      "locator": "https://developers.openai.com/api/docs/guides/function-calling",
+      "accessed_on": "2026-11-02"
+    },
+    {
+      "id": "S6",
+      "kind": "official",
+      "title": "OpenAI Streaming API responses",
+      "locator": "https://developers.openai.com/api/docs/guides/streaming-responses",
+      "accessed_on": "2026-11-02"
+    },
+    {
+      "id": "S7",
+      "kind": "official",
+      "title": "OpenAI Agents SDK：The agent loop 与 Streaming",
+      "locator": "https://openai.github.io/openai-agents-python/running_agents/",
+      "accessed_on": "2026-11-02"
+    },
+    {
+      "id": "S8",
+      "kind": "primary",
+      "title": "WHATWG HTML §9.2.2–9.2.6：Server-sent events",
+      "locator": "https://html.spec.whatwg.org/multipage/server-sent-events.html",
+      "accessed_on": "2026-11-02"
+    },
+    {
+      "id": "S9",
+      "kind": "primary",
+      "title": "RFC 9112 §7.1：HTTP/1.1 Chunked Transfer Coding",
+      "locator": "https://www.rfc-editor.org/rfc/rfc9112.html#section-7.1",
+      "accessed_on": "2026-11-02"
+    },
+    {
+      "id": "S10",
+      "kind": "primary",
+      "title": "RFC 9113 §5.2、§8.1：Flow Control 与 HTTP Message Framing",
+      "locator": "https://www.rfc-editor.org/rfc/rfc9113.html",
+      "accessed_on": "2026-11-02"
+    },
+    {
+      "id": "S11",
+      "kind": "local",
+      "title": "迁移保留的本地 HTTP/1.1 流式实验源码",
+      "locator": "ai-learning/reports/knowledge_reports/assets/api_gateway_streaming_20261102/streaming_lab.py",
+      "accessed_on": "2026-11-02"
+    },
+    {
+      "id": "S12",
+      "kind": "local",
+      "title": "2026-11-02 本地复跑完整输出，Python 3.14.5",
+      "locator": "ai-learning/reports/knowledge_reports/assets/api_gateway_streaming_20261102/results.json",
+      "accessed_on": "2026-11-02"
+    },
+    {
+      "id": "S13",
+      "kind": "local",
+      "title": "前篇：Agent 请求全链路科普，仅作为系列与例子衔接",
+      "locator": "ai-learning/reports/knowledge_reports/Agent请求全链路_科普讲解_20260715.md",
+      "accessed_on": "2026-11-02"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "Google 于 2026-10-22 宣布 API Gateway streaming Public Preview；原文解决统一治理路径与增量交付冲突，GA 表述仍为计划。",
+      "report_anchor": "四、Google 的新网关补上了哪一段",
+      "support": "direct",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "evidence": "原文发布元数据、Your API contract、What to know during Public Preview；未以日期冲突推断产品上线状态。",
+      "critical": true
+    },
+    {
+      "id": "C2",
+      "claim": "模型发出自定义函数调用后，应用执行、回填并继续调用模型；单次模型响应完成不等于整个 Agent 任务完成。",
+      "report_anchor": "二、同一笔查询，会出现好几次「结束」",
+      "support": "derived",
+      "source_ids": [
+        "S5",
+        "S6",
+        "S7"
+      ],
+      "evidence": "Function calling 五步；Agents SDK agent loop 的 tool calls、final output、max_turns；模型事件与任务事件分层。",
+      "critical": true
+    },
+    {
+      "id": "C3",
+      "claim": "OpenAI 流式函数调用区分参数 delta、done 和输出项，多个调用要按标识归并；完成参数后的权限与业务检查是应用设计要求。",
+      "report_anchor": "第一步：模型把调用参数写完整",
+      "support": "derived",
+      "source_ids": [
+        "S5"
+      ],
+      "evidence": "Streaming 小节示例中的 response.function_call_arguments.delta/done、item_id/output_index 与 call_id；正文未把 schema 格式保证写成业务授权。",
+      "critical": true
+    },
+    {
+      "id": "C4",
+      "claim": "HTTP 分帧、SSE 事件、模型 token 和客户端一次读取的边界不保证一致；UTF-8 与事件需要增量解析，未终止事件不能在 EOF 强行补全。",
+      "report_anchor": "字节、事件和文字，也不是同一种「块」",
+      "support": "derived",
+      "source_ids": [
+        "S5",
+        "S8",
+        "S9",
+        "S10",
+        "S11",
+        "S12"
+      ],
+      "evidence": "SSE §9.2.5/6 的 UTF-8 和空行；RFC 9112 §7.1、RFC 9113 §8.1；本地分片验证。HTTP/2 不使用 HTTP/1.1 chunked。",
+      "critical": true
+    },
+    {
+      "id": "C5",
+      "claim": "本地 5 次每模式中位数：stream headers 1.358ms、首有效事件109.519ms、总431.061ms；buffered分别1.241ms、433.304ms、433.373ms。",
+      "report_anchor": "三、第一段早到，为什么全部完成时间没变",
+      "support": "direct",
+      "source_ids": [
+        "S11",
+        "S12"
+      ],
+      "evidence": "每个字人工等待0.1s，四个字；同一 HTTP/1.1 server 的两种发送策略，非云、反向代理或模型性能测试。",
+      "critical": true
+    },
+    {
+      "id": "C6",
+      "claim": "本地解析检查通过221个单切分位置、逐字节输入、多行data和未完成事件丢弃；仅实现LF-only子集。",
+      "report_anchor": "实验与协议细节：怎样验证拆包不会丢字",
+      "support": "direct",
+      "source_ids": [
+        "S11",
+        "S12"
+      ],
+      "evidence": "results.parser_tests；源码文档与实现明确不支持完整SSE标准中的所有规则。",
+      "critical": true
+    },
+    {
+      "id": "C7",
+      "claim": "不新增流式专属注解不代表后端协议、deadline或客户端无需调整；Google SSE默认总时限15s，上限3600s，数据/心跳不会重置总时限。",
+      "report_anchor": "「不改规范」仍然有前提",
+      "support": "derived",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S8"
+      ],
+      "evidence": "官方配置 Set the stream deadline 与 Limitations；gRPC/WS idle默认300s、最高3600s，总时限固定3600s；WS小于300s设置被忽略。",
+      "critical": true
+    },
+    {
+      "id": "C8",
+      "claim": "Google模型路由按model字段匹配，支持响应SSE，不支持请求流/gRPC/WS/Gemini Live；内置REST→MCP不支持长工具/流式，开streaming仍单JSON；能力与配置不能任意相加。",
+      "report_anchor": "三项 AI 功能，不能直接相加",
+      "support": "direct",
+      "source_ids": [
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "evidence": "Model routing Performance and limitations；MCP Limitations；streaming MCP条目。限制未泛化为MCP标准或其它服务器。",
+      "critical": true
+    },
+    {
+      "id": "C9",
+      "claim": "streaming模式创建后不可变，实际值查看effectiveStreamingMode；hostname改进、Terraform/自定义域名限制与产品分工影响迁移。",
+      "report_anchor": "部署备查：保留原文中的产品分工和预览限制",
+      "support": "direct",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "evidence": "Config Enable streaming、hostname与Limitations；原文Apigee/Agent Gateway分工；Console仅标记原文初始状态。",
+      "critical": false
+    },
+    {
+      "id": "C10",
+      "claim": "本地/cut以HTTP200和合法HTTP结束返回事件1/2但缺done，业务仍不完整；静态表按Last-Event-ID:2补发3/4/5，未实现自动重连、持久任务或模型恢复。",
+      "report_anchor": "五、断线后，先找任务，再谈重新连接",
+      "support": "direct",
+      "source_ids": [
+        "S9",
+        "S11",
+        "S12"
+      ],
+      "evidence": "clean_http_eof_without_done.semantic_complete=false；resume_from_static_event_log；done是实验的自定义约定。",
+      "critical": true
+    },
+    {
+      "id": "C11",
+      "claim": "EventSource在规定情形重连携带Last-Event-ID，但不是持久业务处理确认；它没有任意POST body/header构造入口，fetch不自动继承其重连行为。",
+      "report_anchor": "重新接上通道，与继续同一个任务，是两件事",
+      "support": "derived",
+      "source_ids": [
+        "S8"
+      ],
+      "evidence": "EventSourceInit仅withCredentials；事件分派设置last event ID string，再排队回调；重连规则有失败终止情形；持久化/幂等是应用建议。",
+      "critical": true
+    },
+    {
+      "id": "C12",
+      "claim": "[推测] HTTP/2流控逐跳作用；无界应用队列可能积压，断线/停止后的取消传播需另行验证。",
+      "report_anchor": "六、点了停止，后台是否真的停下来了",
+      "support": "inference",
+      "source_ids": [
+        "S10"
+      ],
+      "evidence": "RFC 9113 §5.2.1明确single hop not entire end-to-end path；队列后果标[推测]、真实链路取消标[待验证]，未伪称云端实测。",
+      "critical": false
+    },
+    {
+      "id": "C13",
+      "claim": "Google request latency衡量流生命周期；首有效内容、业务完成和取消后的工作应分别观测；保留身份校验不保证工具权限、预算或完整输出审核。",
+      "report_anchor": "七、怎样判断这套流式体验真的做好了",
+      "support": "derived",
+      "source_ids": [
+        "S1",
+        "S6",
+        "S12"
+      ],
+      "evidence": "原文Preview latency项；OpenAI Moderation risk；实验headers与首delta分开。验收清单为设计，不是已执行云端收据。",
+      "critical": false
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U1",
+      "title": "原文动机：把流式交互纳入既有治理入口",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1"
+      ],
+      "report_anchor": "四、Google 的新网关补上了哪一段"
+    },
+    {
+      "id": "U2",
+      "title": "支持协议、规范兼容与一小时上限的配置前提",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "report_anchor": "「不改规范」仍然有前提"
+    },
+    {
+      "id": "U3",
+      "title": "创建方式、hostname、预览集成限制与产品分工",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "report_anchor": "部署备查：保留原文中的产品分工和预览限制"
+    },
+    {
+      "id": "U4",
+      "title": "模型路由与MCP真实能力及互斥",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "report_anchor": "三项 AI 功能，不能直接相加"
+    },
+    {
+      "id": "U5",
+      "title": "Agent循环、参数增量、模型响应与任务完成的区别",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S5",
+        "S6",
+        "S7"
+      ],
+      "report_anchor": "二、同一笔查询，会出现好几次「结束」"
+    },
+    {
+      "id": "U6",
+      "title": "SSE/HTTP字节边界、UTF-8和客户端解析",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S8",
+        "S9",
+        "S10"
+      ],
+      "report_anchor": "字节、事件和文字，也不是同一种「块」"
+    },
+    {
+      "id": "U7",
+      "title": "HTTP完成与业务完成、重连游标及任务恢复边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S8",
+        "S9",
+        "S11",
+        "S12"
+      ],
+      "report_anchor": "五、断线后，先找任务，再谈重新连接"
+    },
+    {
+      "id": "U8",
+      "title": "本地实验的真实方法、数字与复现范围",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S11",
+        "S12"
+      ],
+      "report_anchor": "三、第一段早到，为什么全部完成时间没变"
+    },
+    {
+      "id": "U9",
+      "title": "逐跳背压、取消与身份/内容治理边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S6",
+        "S10"
+      ],
+      "report_anchor": "六、点了停止，后台是否真的停下来了"
+    },
+    {
+      "id": "U10",
+      "title": "流生命周期延迟与面向真实任务的验收",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S1",
+        "S12"
+      ],
+      "report_anchor": "七、怎样判断这套流式体验真的做好了"
+    }
+  ],
+  "limitations": [
+    "Google能力、OpenAI接口、SSE与HTTP机制依据一手资料；没有Google云资源或真实模型端到端部署，不提供吞吐、P95/P99、费用或上线效果保证。",
+    "销量查询是贯穿示意，没有获取真实销量；新设计的页面事件、持久任务与幂等规则并非项目已实现功能。",
+    "本地实验仅回环HTTP/1.1与LF-only SSE子集；模拟整包缓冲，没有真实反向代理、完整SSE解析、持久存储、自动重连和副作用恢复。",
+    "OpenAI streaming/functions、Agents SDK及两个RFC的eacli web.read结果在32000字符处被截断，内层JSON不可解析；因此才最小降级到官方Markdown、SDK文档HTML与RFC纯文本直读，仅读取正文注明章节。其余网页成功使用eacli web.read。",
+    "原文与配置文档页脚日期不一致，按读取时内容核对，不推断GA或缺陷修复时间；Console限制只按初始公告口径记录。",
+    "旧CS报告及其原证据、实验和复核保存在合并父提交c86d75c；迁移后的正文与证据开启新revision，旧review仅作为历史，不认证当前文本。",
+    "前篇仅用于系列导航和示意任务衔接；未将其中关于纯函数、全量重发或缓存复杂度的简化说法作为本篇事实依据。"
+  ]
+}

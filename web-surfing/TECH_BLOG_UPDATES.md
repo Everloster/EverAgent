@@ -8,7 +8,7 @@
 
 **最近检查：2026-11-02（北京时间）** · **本轮存量：2026-09-02—2026-11-02**
 
-检查了 **28 个官方渠道**，目前收录 **349 篇**日期已核实的文章：**42 篇已学习**，**10 篇有相关报告**，**297 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
+检查了 **28 个官方渠道**，目前收录 **349 篇**日期已核实的文章：**43 篇已学习**，**10 篇有相关报告**，**296 篇未做学习任务**。部分渠道的历史仍有缺口，见[获取情况](#coverage)。
 
 范围包括 AI 研究、模型与开发工具发布、Agent、评测、训练和推理工程。不同团队围绕同一技术写的独立文章分别保留，同一篇文章的镜像合并。
 
@@ -17,7 +17,7 @@
 | 发布时间 | 已收录 | 已学习 |
 | --- | ---: | ---: |
 | [2026-11](#m202611) | 1 篇 | 0 篇 |
-| [2026-10](#m202610) | 211 篇 | 38 篇 |
+| [2026-10](#m202610) | 211 篇 | 39 篇 |
 | [2026-09](#m202609) | 137 篇 | 4 篇 |
 
 「已学习」表示有直接研究该文或该系列的已完成报告；「相关报告」只提供背景，仍可继续深读本篇。「未做」表示未找到对应专题报告，日报提及或参考文献引用不算完成学习。
@@ -188,13 +188,13 @@
 </details>
 
 <details>
-<summary><strong>Google Developers · 12 篇 · 1 篇已学习</strong></summary>
+<summary><strong>Google Developers · 12 篇 · 2 篇已学习</strong></summary>
 
 - **10-22** [可治理、可持续改进的 Google Cloud Agent](https://developers.googleblog.com/architecting-governed-self-evolving-ai-agents-on-gemini-agent-platform "Architecting Governed, Self-Evolving AI Agents on Google Cloud") · 未做  
   介绍模型、执行流程和治理机制如何共同组成可维护的 Agent 系统。
 
-- **10-22** [API Gateway 支持流式响应](https://developers.googleblog.com/streaming-comes-to-api-gateway-real-time-and-ai-ready-apis-without-changing-your-spec "Streaming comes to API Gateway: real-time and AI-ready APIs, without changing your spec") · 未做  
-  解释如何为实时和 AI 应用提供流式接口，并保持现有 API 规范。
+- **10-22** [API Gateway 支持流式响应](https://developers.googleblog.com/streaming-comes-to-api-gateway-real-time-and-ai-ready-apis-without-changing-your-spec "Streaming comes to API Gateway: real-time and AI-ready APIs, without changing your spec") · **已学习**\
+  作为 Agent 请求全链路的续篇，讲清逐字输出、工具执行与断线恢复；结合 Google 网关边界和本地流式实验。 [阅读报告](../ai-learning/reports/knowledge_reports/Agent请求全链路_流式响应与断线恢复_科普讲解_20261102.md)
 
 - **10-21** [跨框架管理 Agent 开发生命周期](https://developers.googleblog.com/powering-the-agent-development-lifecycle-with-any-framework-from-adk-to-langchain-and-beyond "Powering the Agent Development Lifecycle with any framework") · 未做  
   连接 ADK、LangChain 等框架，关注开发、评测与上线流程。
@@ -1295,11 +1295,12 @@
 
 ## 已有学习报告
 
-本轮清单中，42 篇原文对应 33 份已完成报告。有些报告研究一个系列或比较多篇原文，因此两者数量不同。
+本轮清单中，43 篇原文对应 34 份已完成报告。有些报告研究一个系列或比较多篇原文，因此两者数量不同。
 
 <details>
 <summary><strong>展开报告速查</strong></summary>
 
+- [Agent 逐字输出与断线恢复（全链路续篇）](../ai-learning/reports/knowledge_reports/Agent请求全链路_流式响应与断线恢复_科普讲解_20261102.md) · 对应本页 1 篇原文。
 - [Kimi K3.1 Pro](../ai-learning/reports/knowledge_reports/Kimi_K3_1_Pro_联合RL_长程Agent与开放权重_深度解析_20261026.md) · 对应本页 1 篇原文。
 - [DeepSeek-V4.1-Flash 的机架级服务](../ai-learning/reports/knowledge_reports/vLLM_DeepSeek-V4.1-Flash_PD分离与Wide-EP机架级服务_深度解析_20261025.md) · 对应本页 2 篇原文。
 - [TensorRT 全局性能调优](../ai-learning/reports/knowledge_reports/TensorRT_GlobalPerformanceTuner_可搜索build_route与精度感知调优_深度解析_20261025.md) · 对应本页 2 篇原文。

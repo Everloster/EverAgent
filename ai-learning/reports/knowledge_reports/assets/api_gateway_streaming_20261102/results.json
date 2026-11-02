@@ -1,0 +1,283 @@
+{
+  "experiment": "local HTTP/1.1 streaming versus full-response buffering",
+  "python": "3.14.5",
+  "platform": "Darwin",
+  "delay_seconds_per_delta": 0.1,
+  "delta_count": 4,
+  "trials_per_mode": 5,
+  "medians_ms": {
+    "stream": {
+      "headers_ms": 1.358,
+      "first_delta_ms": 109.519,
+      "total_ms": 431.061
+    },
+    "buffered": {
+      "headers_ms": 1.241,
+      "first_delta_ms": 433.304,
+      "total_ms": 433.373
+    }
+  },
+  "samples": {
+    "stream": [
+      {
+        "http_status": 200,
+        "headers_ms": 2.259,
+        "first_delta_ms": 108.885,
+        "delta_arrivals_ms": [
+          108.885,
+          209.745,
+          314.765,
+          424.718
+        ],
+        "total_ms": 424.781,
+        "event_ids": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "text": "流式响应",
+        "semantic_complete": true
+      },
+      {
+        "http_status": 200,
+        "headers_ms": 0.788,
+        "first_delta_ms": 101.322,
+        "delta_arrivals_ms": [
+          101.322,
+          202.423,
+          304.17,
+          406.071
+        ],
+        "total_ms": 406.099,
+        "event_ids": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "text": "流式响应",
+        "semantic_complete": true
+      },
+      {
+        "http_status": 200,
+        "headers_ms": 0.781,
+        "first_delta_ms": 109.519,
+        "delta_arrivals_ms": [
+          109.519,
+          219.709,
+          329.942,
+          438.006
+        ],
+        "total_ms": 438.17,
+        "event_ids": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "text": "流式响应",
+        "semantic_complete": true
+      },
+      {
+        "http_status": 200,
+        "headers_ms": 1.358,
+        "first_delta_ms": 112.871,
+        "delta_arrivals_ms": [
+          112.871,
+          219.836,
+          324.81,
+          435.129
+        ],
+        "total_ms": 435.415,
+        "event_ids": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "text": "流式响应",
+        "semantic_complete": true
+      },
+      {
+        "http_status": 200,
+        "headers_ms": 1.716,
+        "first_delta_ms": 110.484,
+        "delta_arrivals_ms": [
+          110.484,
+          212.154,
+          322.17,
+          431.008
+        ],
+        "total_ms": 431.061,
+        "event_ids": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "text": "流式响应",
+        "semantic_complete": true
+      }
+    ],
+    "buffered": [
+      {
+        "http_status": 200,
+        "headers_ms": 1.241,
+        "first_delta_ms": 426.879,
+        "delta_arrivals_ms": [
+          426.879,
+          426.89,
+          426.895,
+          426.901
+        ],
+        "total_ms": 426.931,
+        "event_ids": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "text": "流式响应",
+        "semantic_complete": true
+      },
+      {
+        "http_status": 200,
+        "headers_ms": 0.841,
+        "first_delta_ms": 433.304,
+        "delta_arrivals_ms": [
+          433.304,
+          433.317,
+          433.324,
+          433.33
+        ],
+        "total_ms": 433.373,
+        "event_ids": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "text": "流式响应",
+        "semantic_complete": true
+      },
+      {
+        "http_status": 200,
+        "headers_ms": 2.487,
+        "first_delta_ms": 437.116,
+        "delta_arrivals_ms": [
+          437.116,
+          437.139,
+          437.15,
+          437.16
+        ],
+        "total_ms": 437.209,
+        "event_ids": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "text": "流式响应",
+        "semantic_complete": true
+      },
+      {
+        "http_status": 200,
+        "headers_ms": 2.156,
+        "first_delta_ms": 443.245,
+        "delta_arrivals_ms": [
+          443.245,
+          443.28,
+          443.303,
+          443.323
+        ],
+        "total_ms": 443.599,
+        "event_ids": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "text": "流式响应",
+        "semantic_complete": true
+      },
+      {
+        "http_status": 200,
+        "headers_ms": 0.836,
+        "first_delta_ms": 432.347,
+        "delta_arrivals_ms": [
+          432.347,
+          432.379,
+          432.394,
+          432.407
+        ],
+        "total_ms": 432.843,
+        "event_ids": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "text": "流式响应",
+        "semantic_complete": true
+      }
+    ]
+  },
+  "parser_tests": {
+    "all_single_split_positions_passed": 221,
+    "one_byte_fragments_passed": true,
+    "incomplete_event_discarded": true,
+    "multiline_data_passed": true,
+    "scope": "LF-only SSE subset; not a production SSE parser"
+  },
+  "clean_http_eof_without_done": {
+    "http_status": 200,
+    "headers_ms": 4.014,
+    "first_delta_ms": 110.97,
+    "delta_arrivals_ms": [
+      110.97,
+      213.385
+    ],
+    "total_ms": 213.707,
+    "event_ids": [
+      "1",
+      "2"
+    ],
+    "text": "流式",
+    "semantic_complete": false
+  },
+  "resume_from_static_event_log": {
+    "http_status": 200,
+    "headers_ms": 1.748,
+    "first_delta_ms": 108.331,
+    "delta_arrivals_ms": [
+      108.331,
+      211.891
+    ],
+    "total_ms": 211.922,
+    "event_ids": [
+      "3",
+      "4",
+      "5"
+    ],
+    "text": "响应",
+    "semantic_complete": true
+  },
+  "limitations": [
+    "Loopback only; no Google Cloud resource or real model was tested.",
+    "Buffered delivery is simulated inside one server, not a deployed reverse proxy.",
+    "Static in-process event log; no persistent job, exactly-once effects or automated reconnection.",
+    "Only HTTP/1.1 and the documented LF-only SSE subset were executed.",
+    "Latency values illustrate imposed production delays, not system performance or SLOs."
+  ]
+}

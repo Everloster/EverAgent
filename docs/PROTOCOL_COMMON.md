@@ -34,6 +34,8 @@ Task-Type: {project-optimization | new-project | task-execution}
 
 ## §C Push Flow（推送流程 · 全局统一）
 
+常规报告和维护默认直接在 `main` 完成并交付。确需临时分支时，任务收尾要把成果合入 `main`；确认已推送、没有独有未合入提交或在用工作树后，清理对应本地和远端分支。用户只需在主分支查阅报告。
+
 > **双身份**：Author 由 [`config/git-policy.json`](../config/git-policy.json) 拥有，Committer 是当前 harness 与模型。
 > `scripts/ecommit.sh` 是稳定入口；[`git_commit.py`](../scripts/git_commit.py) 绑定公开仓质量门禁，公共
 > [`everagent-core`](../packages/everagent-core/README.md) 拥有 Git 参数、身份注入、消息与 index 不变规则。
@@ -119,4 +121,4 @@ python3 scripts/reindex.py --check
 
 ---
 
-*EverAgent 2.0（知识优先架构）。旧多 Agent 协议见 `legacy-v1-multiagent` 分支。*
+*EverAgent 2.0（知识优先架构）。*

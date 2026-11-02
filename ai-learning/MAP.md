@@ -16,6 +16,10 @@
 | 可解释性 & AI 安全 | ✓ | J-space/J-lens 全局工作空间（paper 45）；**NVIDIA OpenShell + Sentry Agent 运行时安全（软件沙箱、Policy Prover、凭据代理与 DPU 带外监督，10-21）** | 点火实验、机制可解释性系统方法（SAE 等）待补；Sentry 独立实现/红队与 capability lease 实测待补 |
 | **AI 行业与商业观察** | ✓ | 伪智力繁荣评论批判（07-13）、Anthropic 人才信号核实（07-14）、Evoken 陈冕访谈精读（07-29）、《Intelligence Curse》智能诅咒精读（07-30）、《AI应用创业生死录》Evoken三产品商业分析（07-31）、**《中国AI创业与一级市场故事线2022底-2026》从模型信仰到应用求生——三幕迁徙+全融资轮次表+机构视角(07-31)、**Anthropic《Economic Scenarios for Transformative AI》经济情景模型精读（09-11，wiki: anthropic_econ_scenarios）、**DeepSeek 算子工程师自白《我不得不把才华埋葬在昨天》精读与延伸研究（09-16，wiki: craft_displacement）**、**Personal Context 正交论：条件性互补、五维整理与真实任务评估（10-30 修订，wiki: personal-context-orthogonality）** | 「应用时代」信号追踪（2027-01）、薄毛利打穿点建模、judgment护城河证伪信号、国资接棒是续命还是改写规则、应用层估值洼地会否修复、IPO后二级市场重估、**经济情景模型 2027 判别点回访（modest 是否被排除）**、**"AI 写算子 ≥ 刘胜与"2027 年中回访**、**PC 在真实任务中的复用收益、旧记忆更正与撤回、跨模型适用性** |
 
+### Agent 请求全链路补充（2026-11-02）
+
+[流式响应与断线恢复科普](./reports/knowledge_reports/Agent请求全链路_流式响应与断线恢复_科普讲解_20261102.md)接续工具调用篇，区分模型响应、任务执行与页面显示；结合 Google API Gateway 原文、协议和本地实验解释缓冲、超时与完成条件。持久任务恢复、工具幂等和取消传播仍待真实框架验证。
+
 ### AI 视频研究补充（2026-10-27）
 
 [纳德拉访谈](../podcast-learning/reports/2026-10-27_bilibili-nadella_enterprise-intelligence.md)讨论企业知识、反馈与自有评价；[OpenAI Computer Use](../podcast-learning/reports/2026-10-27_bilibili-openai_computer-use.md)讨论执行、权限与业务终点；[YC 推理全链路](../podcast-learning/reports/2026-10-27_bilibili-krillinai_llm-inference-stack.md)讨论服务质量、编译与缓存。新增待验证问题包括跨路径授权、低成本服务漂移检测和 hybrid 状态的可复用点；部署收益未实测。
