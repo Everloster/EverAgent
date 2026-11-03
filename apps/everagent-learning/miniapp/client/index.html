@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EverAgent 学习</title>
+    <title>EverAgent 学习工作台</title>
     <style>
       :root,
       [data-theme='light'] {
@@ -50,6 +50,8 @@
         box-sizing: border-box;
       }
 
+      [hidden] { display: none !important; }
+
       body {
         margin: 0;
         background: var(--mcode-bg);
@@ -64,9 +66,9 @@
       }
 
       .page {
-        max-width: 1000px;
+        max-width: 1160px;
         margin: 0 auto;
-        padding: 20px 20px 56px;
+        padding: 28px 24px 56px;
       }
 
       /* ---------- top bar ---------- */
@@ -86,8 +88,8 @@
 
       h1 {
         margin: 0;
-        font-size: 18px;
-        line-height: 26px;
+        font-size: 22px;
+        line-height: 32px;
         font-weight: 600;
       }
 
@@ -190,8 +192,9 @@
       .pin {
         flex: 1 1 240px;
         display: grid;
-        gap: 2px;
-        padding: 12px 14px;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 4px 12px;
+        padding: 16px 18px;
         border: 1px solid var(--mcode-border);
         border-radius: 12px;
         background: var(--mcode-surface);
@@ -211,13 +214,46 @@
       }
 
       .pin__title {
+        grid-column: 1;
+        font-size: 16px;
         font-weight: 600;
       }
 
       .pin__note {
+        grid-column: 1;
         color: var(--mcode-text-muted);
         font-size: 12px;
       }
+
+      .pin__arrow {
+        grid-column: 2;
+        grid-row: 1 / 3;
+        align-self: center;
+        color: var(--mcode-text-subtle);
+        font-size: 20px;
+      }
+
+      .resume {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        gap: 12px;
+        margin: 0 0 20px;
+        padding: 12px 16px;
+        border: 1px solid var(--mcode-border);
+        border-radius: 10px;
+        background: var(--mcode-accent-soft);
+        color: var(--mcode-text);
+        text-align: left;
+        font: inherit;
+        cursor: pointer;
+      }
+
+      .resume__label { flex: 0 0 auto; color: var(--mcode-accent); font-size: 12px; }
+      .resume__title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+      .list-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 22px 0 10px; }
+      .list-heading h2 { display: inline; font-size: 15px; font-weight: 600; margin: 0; }
+      .list-heading__note { color: var(--mcode-text-muted); font-size: 12px; margin-left: 8px; }
 
       /* ---------- report list ---------- */
 
@@ -334,7 +370,7 @@
         gap: 2px 20px;
         align-items: baseline;
         width: 100%;
-        padding: 11px 16px;
+        padding: 15px 18px;
         border: 0;
         background: transparent;
         color: inherit;
@@ -353,7 +389,7 @@
       }
 
       .row__title {
-        font-size: 14px;
+        font-size: 15px;
         font-weight: 500;
         line-height: 1.55;
       }
@@ -376,11 +412,6 @@
         color: var(--mcode-accent);
         font-size: 11px;
         font-weight: 600;
-      }
-
-      .tag {
-        color: var(--mcode-text-subtle);
-        font-size: 11px;
       }
 
       .row__more {
@@ -410,7 +441,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 32px 20px;
+        padding: 20px;
         background: var(--mcode-overlay);
         animation: overlay-in 200ms ease-out;
       }
@@ -428,8 +459,9 @@
       .reader {
         display: flex;
         flex-direction: column;
-        width: min(880px, 100%);
-        max-height: 100%;
+        width: min(1120px, 100%);
+        height: 100%;
+        max-height: 1000px;
         border: 1px solid var(--mcode-border);
         border-radius: 12px;
         background: var(--mcode-surface);
@@ -468,8 +500,8 @@
 
       .reader__title {
         margin: 0;
-        font-size: 16px;
-        line-height: 24px;
+        font-size: 20px;
+        line-height: 1.5;
         font-weight: 600;
       }
 
@@ -502,9 +534,28 @@
         flex: 1 1 auto;
         min-height: 0;
         overflow-y: auto;
-        padding: 20px 24px 28px;
-        scroll-behavior: smooth;
+        min-width: 0;
+        padding: 28px 36px 48px;
+        overscroll-behavior: contain;
+        scrollbar-gutter: stable;
       }
+
+      .reader__content { display: flex; position: relative; flex: 1; min-height: 0; }
+      .reader__toolbar { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; padding: 8px 20px; border-bottom: 1px solid var(--mcode-border); }
+      .reader__font { display: flex; align-items: center; gap: 8px; }
+      .reader__font output { min-width: 20px; text-align: center; font-size: 12px; color: var(--mcode-text-muted); }
+      .reader__progress-label { margin-left: auto; color: var(--mcode-text-muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+      .reader__progress { height: 3px; flex: 0 0 3px; background: var(--mcode-border); }
+      .reader__progress-fill { display: block; height: 100%; width: 0; background: var(--mcode-accent); }
+      .reader__toc { flex: 0 0 210px; overflow-y: auto; border-right: 1px solid var(--mcode-border); padding: 20px 12px; overscroll-behavior: contain; }
+      .reader__toc-title { margin: 0 10px 10px; color: var(--mcode-text-muted); font-size: 12px; }
+      .reader__toc a { display: block; padding: 7px 10px; margin-bottom: 3px; border-radius: 6px; color: var(--mcode-text-muted); text-decoration: none; font-size: 13px; line-height: 1.65; overflow-wrap: anywhere; }
+      .reader__toc a[data-level='3'] { padding-left: 22px; font-size: 12px; }
+      .reader__toc a:hover { background: var(--mcode-surface-muted); }
+      .reader__toc a[aria-current='location'] { color: var(--mcode-accent); background: var(--mcode-accent-soft); }
+      .reader__back { flex-shrink: 0; }
+      .reader__back kbd { margin-left: 6px; font: inherit; font-size: 11px; color: var(--mcode-text-subtle); }
+      .resume:focus-visible, .reader__toc a:focus-visible { outline: 2px solid var(--mcode-accent); outline-offset: 2px; }
 
       .reader__body:focus-visible {
         outline: 2px solid var(--mcode-accent);
@@ -578,35 +629,37 @@
       /* ---------- markdown ---------- */
 
       .md {
-        font-size: 14.5px;
-        line-height: 1.78;
+        max-width: 760px;
+        margin: 0 auto;
+        font-size: var(--reader-font-size, 17px);
+        line-height: 1.95;
         overflow-wrap: anywhere;
       }
 
       .md h1 {
         margin: 26px 0 12px;
-        font-size: 20px;
+        font-size: 1.45em;
         line-height: 1.45;
         font-weight: 600;
       }
 
       .md h2 {
         margin: 30px 0 12px;
-        font-size: 17px;
+        font-size: 1.25em;
         line-height: 1.45;
         font-weight: 600;
       }
 
       .md h3 {
         margin: 24px 0 10px;
-        font-size: 15px;
+        font-size: 1.1em;
         line-height: 1.5;
         font-weight: 600;
       }
 
       .md h4 {
         margin: 20px 0 8px;
-        font-size: 14px;
+        font-size: 1em;
         font-weight: 600;
         color: var(--mcode-text-muted);
       }
@@ -616,7 +669,7 @@
       }
 
       .md p {
-        margin: 0 0 14px;
+        margin: 0 0 1em;
       }
 
       .md ul,
@@ -676,8 +729,9 @@
 
       .md table {
         width: 100%;
+        min-width: 440px;
         border-collapse: collapse;
-        font-size: 13px;
+        font-size: 0.88em;
       }
 
       .md th,
@@ -691,7 +745,14 @@
       .md th {
         background: var(--mcode-surface-muted);
         font-weight: 600;
+        white-space: nowrap;
       }
+
+      .md details { margin: 0 0 14px; padding: 10px 14px; border: 1px solid var(--mcode-border); border-radius: 8px; }
+      .md summary { cursor: pointer; font-weight: 600; }
+      .md details[open] > summary { margin-bottom: 14px; }
+      .md :is(h1, h2, h3, h4) { scroll-margin-top: 16px; }
+      .md a { text-underline-offset: 3px; }
 
       .md a {
         color: var(--mcode-accent);
@@ -733,6 +794,19 @@
       }
 
       @media (max-width: 720px) {
+        .overlay { padding: 0; }
+        .reader { border: 0; border-radius: 0; max-height: none; }
+        .reader__head { padding: 12px 16px; gap: 10px; }
+        .reader__title { font-size: 16px; }
+        .reader__back kbd { display: none; }
+        .reader__toolbar { padding: 8px 12px; gap: 8px; }
+        .reader__toolbar .btn { padding: 0 9px; }
+        .reader__toolbar .seg__btn { padding: 4px 8px; }
+        .reader__font { gap: 5px; }
+        .reader__foot { padding: 8px 12px; gap: 8px; }
+        .list-heading__note { display: block; margin: 2px 0 0; }
+        .resume { align-items: flex-start; flex-direction: column; gap: 3px; }
+        .resume__title { max-width: 100%; }
         .page {
           padding: 16px 12px 40px;
         }
@@ -765,6 +839,10 @@
         }
       }
 
+      @media (max-width: 959px) {
+        .reader__toc { position: absolute; inset: 0 auto 0 0; width: min(280px, 85%); z-index: 2; background: var(--mcode-surface); box-shadow: 8px 0 20px rgb(0 0 0 / 12%); }
+      }
+
       @media (prefers-reduced-motion: reduce) {
         *,
         *::before,
@@ -780,7 +858,7 @@
     <div class="page">
       <header class="topbar">
         <div class="topbar__title">
-          <h1>EverAgent 学习</h1>
+          <h1>EverAgent 学习工作台</h1>
           <p class="topbar__meta" id="meta">正在读取公开仓报告目录…</p>
         </div>
         <div class="topbar__tools">
@@ -800,9 +878,13 @@
       </header>
 
       <main>
-        <section class="pins" id="pins" hidden aria-label="固定入口">
+        <section class="pins" id="pins" hidden aria-label="更新速览">
           <div class="pins__row" id="pins-row"></div>
         </section>
+        <button class="resume" id="resume" hidden type="button">
+          <span class="resume__label" id="resume-label">继续阅读</span>
+          <span class="resume__title" id="resume-title"></span>
+        </button>
         <section class="setup" id="setup" hidden aria-labelledby="setup-title">
           <h2 class="setup__title" id="setup-title">找不到公开仓报告目录</h2>
           <p class="setup__hint">
@@ -823,6 +905,10 @@
           </form>
           <p class="setup__note" id="setup-note" role="status"></p>
         </section>
+        <div class="list-heading" id="list-heading" hidden>
+          <div><h2 id="list-summary">全部报告</h2><span class="list-heading__note">按更新日期排序</span></div>
+          <button class="btn" id="clear-filters" type="button" hidden>清除筛选</button>
+        </div>
         <section class="list-pane" aria-label="学习报告列表">
           <p class="status" id="status" role="status">正在读取公开仓报告目录…</p>
           <ul class="report-list" id="report-list"></ul>
@@ -838,26 +924,29 @@
             <h2 class="reader__title" id="reader-title"></h2>
             <p class="reader__meta" id="reader-meta"></p>
           </div>
-          <button class="icon-btn" id="reader-close" type="button" aria-label="关闭阅读器">
-            <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false">
-              <path
-                d="M4 4l8 8M12 4l-8 8"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-              />
-            </svg>
-          </button>
+          <button class="btn reader__back" id="reader-close" type="button" aria-label="返回列表">返回列表<kbd>Esc</kbd></button>
         </header>
-        <div class="reader__body" id="reader-body" tabindex="0" aria-label="报告正文"></div>
-        <footer class="reader__foot">
+        <div class="reader__toolbar">
+          <button class="btn" id="toc-toggle" type="button" aria-expanded="false" aria-controls="reader-toc">目录</button>
           <div class="seg" role="group" aria-label="显示方式">
             <button class="seg__btn" id="view-rendered" type="button" aria-pressed="true">阅读</button>
-            <button class="seg__btn" id="view-source" type="button" aria-pressed="false">原文</button>
+            <button class="seg__btn" id="view-source" type="button" aria-pressed="false">Markdown</button>
           </div>
+          <div class="reader__font" role="group" aria-label="正文字号">
+            <button class="btn" id="font-smaller" type="button" aria-label="缩小字号">A−</button>
+            <output id="font-size" aria-label="当前字号">17</output>
+            <button class="btn" id="font-larger" type="button" aria-label="放大字号">A+</button>
+          </div>
+          <span class="reader__progress-label" id="reading-progress">0%</span>
+        </div>
+        <div class="reader__progress" id="reading-progress-bar" role="progressbar" aria-label="阅读位置" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span class="reader__progress-fill" id="reading-progress-fill"></span></div>
+        <div class="reader__content">
+          <nav class="reader__toc" id="reader-toc" aria-label="文章目录" hidden></nav>
+          <div class="reader__body" id="reader-body" tabindex="0" aria-label="报告正文"></div>
+        </div>
+        <footer class="reader__foot">
           <div class="reader__links" id="reader-links"></div>
-          <div class="reader__nav">
+          <div class="reader__nav" id="reader-nav">
             <button class="btn" id="reader-prev" type="button">← 上一份</button>
             <span class="reader__pos" id="reader-pos"></span>
             <button class="btn" id="reader-next" type="button">下一份 →</button>
@@ -867,6 +956,21 @@
     </div>
 
     <script>
+      const STORAGE_KEY = 'everagent-learning.reader.v1';
+      function readPreferences() {
+        try {
+          const saved = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+          return {
+            fontSize: Number.isInteger(saved.fontSize) && saved.fontSize >= 16 && saved.fontSize <= 22 ? saved.fontSize : 17,
+            history: Array.isArray(saved.history) ? saved.history.filter((item) =>
+              item && typeof item.path === 'string' && Number.isFinite(item.ratio)
+              && item.ratio >= 0 && item.ratio <= 1 && Number.isFinite(item.at),
+            ).slice(0, 40) : [],
+          };
+        } catch { return { fontSize: 17, history: [] }; }
+      }
+      const preferences = readPreferences();
+
       const state = {
         reports: [],
         pins: [],
@@ -882,6 +986,13 @@
         opener: null,
         requestId: 0,
         cache: new Map(),
+        selected: null,
+        headings: [],
+        activeHeading: null,
+        tocOpen: window.innerWidth >= 960,
+        renderedRatio: 0,
+        scrollFrame: 0,
+        saveTimer: 0,
       };
 
       const ui = {
@@ -894,6 +1005,13 @@
         listPane: document.querySelector('.list-pane'),
         pins: document.getElementById('pins'),
         pinsRow: document.getElementById('pins-row'),
+        page: document.querySelector('.page'),
+        resume: document.getElementById('resume'),
+        resumeLabel: document.getElementById('resume-label'),
+        resumeTitle: document.getElementById('resume-title'),
+        listHeading: document.getElementById('list-heading'),
+        listSummary: document.getElementById('list-summary'),
+        clearFilters: document.getElementById('clear-filters'),
         setup: document.getElementById('setup'),
         setupForm: document.getElementById('setup-form'),
         setupPath: document.getElementById('setup-path'),
@@ -911,18 +1029,27 @@
         readerClose: document.getElementById('reader-close'),
         viewRendered: document.getElementById('view-rendered'),
         viewSource: document.getElementById('view-source'),
+        readerNav: document.getElementById('reader-nav'),
+        toc: document.getElementById('reader-toc'),
+        tocToggle: document.getElementById('toc-toggle'),
+        fontSmaller: document.getElementById('font-smaller'),
+        fontLarger: document.getElementById('font-larger'),
+        fontSize: document.getElementById('font-size'),
+        progress: document.getElementById('reading-progress'),
+        progressBar: document.getElementById('reading-progress-bar'),
+        progressFill: document.getElementById('reading-progress-fill'),
       };
 
       const DOMAIN_LABELS = {
         'ai-learning': 'AI 学习',
-        'cs-learning': 'CS 学习',
+        'cs-learning': '计算机科学',
         'philosophy-learning': '哲学学习',
         'psychology-learning': '心理学学习',
-        'biology-learning': '生物学习',
+        'biology-learning': '生物学',
         'ai-practice': 'AI 实践',
         'podcast-learning': '播客学习',
         'github-trending-analyzer': 'GitHub 研究',
-        'web-surfing': 'Web 冲浪',
+        'web-surfing': '网站调研',
       };
 
       const ALLOWED_TAGS = new Set([
@@ -956,6 +1083,8 @@
         ui.setup.hidden = false;
         ui.listPane.hidden = true;
         ui.pins.hidden = true;
+        ui.resume.hidden = true;
+        ui.listHeading.hidden = true;
         ui.status.hidden = true;
         const seen = [];
         for (const item of tried || []) {
@@ -1027,6 +1156,7 @@
         if (!query) return true;
         if ((report.title || '').toLowerCase().includes(query)) return true;
         if ((report.domain_title || '').toLowerCase().includes(query)) return true;
+        if (domainLabel(report.domain).toLowerCase().includes(query)) return true;
         return (report.tags || []).some((tag) => String(tag).toLowerCase().includes(query));
       }
 
@@ -1060,6 +1190,9 @@
           button.type = 'button';
           button.append(make('span', 'pin__title', pin.title));
           if (pin.note) button.append(make('span', 'pin__note', pin.note));
+          const arrow = make('span', 'pin__arrow', '→');
+          arrow.setAttribute('aria-hidden', 'true');
+          button.append(arrow);
           button.addEventListener('click', () => {
             void openPinned(pin, button);
           });
@@ -1071,39 +1204,17 @@
        * Open a fixed entry in the reader. It does not belong to the report
        * list, so the list navigation stays where it was.
        */
-      async function openPinned(pin, opener) {
-        const requestId = ++state.requestId;
-        state.index = -1;
-        state.opener = opener || null;
-        state.detail = null;
-        state.currentPath = pin.path;
-
-        ui.overlay.hidden = false;
-        document.body.classList.add('is-locked');
-        renderReaderChrome();
-        ui.readerBody.replaceChildren(make('p', 'reader__notice', '正在读取清单…'));
-
-        let detail = null;
-        try {
-          detail = await loadDetail(pin);
-        } catch (error) {
-          if (requestId !== state.requestId) return;
-          ui.readerBody.replaceChildren(
-            make('p', 'reader__notice', `无法读取该清单（${error.message}）。`),
-          );
-          ui.readerClose.focus();
-          return;
-        }
-        if (requestId !== state.requestId) return;
-        state.detail = detail;
-        renderReaderChrome();
-        renderReaderBody();
-        ui.readerClose.focus();
+      function openPinned(pin, opener, syncHistory = true) {
+        return openDocument(pin, -1, opener, syncHistory);
       }
 
       function renderList() {
         state.visible = state.reports.filter(matches);
         ui.list.replaceChildren();
+        const filtered = state.domain !== 'all' || Boolean(state.query.trim());
+        ui.listHeading.hidden = false;
+        ui.clearFilters.hidden = !filtered;
+        text(ui.listSummary, `${filtered ? '筛选结果' : '全部报告'} · ${state.visible.length} 份`);
 
         if (!state.visible.length) {
           ui.status.hidden = false;
@@ -1146,9 +1257,6 @@
           const aside = make('span', 'row__aside');
           aside.append(make('span', 'badge', domainLabel(report.domain)));
 
-          for (const tag of (report.tags || []).slice(0, 2)) {
-            aside.append(make('span', 'tag', `#${tag}`));
-          }
           button.append(aside);
 
           button.addEventListener('click', () => {
@@ -1204,7 +1312,104 @@
         host.replaceChildren(...Array.from(parsed.body.childNodes));
       }
 
-      function renderReaderBody() {
+      function persistPreferences() {
+        // Browser-local only; storage may be unavailable inside a host webview.
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(preferences)); } catch { /* Reading still works. */ }
+      }
+
+      function readingRatio() {
+        const range = ui.readerBody.scrollHeight - ui.readerBody.clientHeight;
+        return range > 0 ? Math.max(0, Math.min(1, ui.readerBody.scrollTop / range)) : 0;
+      }
+
+      function savePosition() {
+        clearTimeout(state.saveTimer);
+        if (ui.overlay.hidden || !state.detail || state.view !== 'rendered' || state.index < 0) return;
+        state.renderedRatio = readingRatio();
+        preferences.history = [
+          { path: state.currentPath, ratio: state.renderedRatio, at: Date.now() },
+          ...preferences.history.filter((item) => item.path !== state.currentPath),
+        ].slice(0, 40);
+        persistPreferences();
+        renderResume();
+      }
+
+      function renderResume() {
+        const recent = preferences.history.find((item) => state.reports.some((report) => report.path === item.path));
+        ui.resume.hidden = !recent;
+        if (!recent) return;
+        const report = state.reports.find((item) => item.path === recent.path);
+        ui.resume.dataset.path = report.path;
+        const percent = Math.round(recent.ratio * 100);
+        text(ui.resumeLabel, percent >= 98 ? '上次看到末尾 · 再读一遍' : percent > 0 ? `继续阅读 · 上次读到 ${percent}%` : '上次打开');
+        text(ui.resumeTitle, report.title);
+      }
+
+      function updateReadingState() {
+        const ratio = state.detail ? readingRatio() : 0;
+        const percent = Math.round(ratio * 100);
+        text(ui.progress, `${percent}%`);
+        ui.progress.title = `阅读位置 ${percent}%`;
+        ui.progressBar.setAttribute('aria-valuenow', String(percent));
+        ui.progressFill.style.width = `${percent}%`;
+        if (state.view !== 'rendered') return;
+        state.renderedRatio = ratio;
+        const top = ui.readerBody.getBoundingClientRect().top + 40;
+        let current = null;
+        for (const entry of state.headings) {
+          if (!entry.node.getClientRects().length) continue;
+          if (entry.node.getBoundingClientRect().top > top) break;
+          current = entry;
+        }
+        if (current === state.activeHeading) return;
+        state.activeHeading?.link.removeAttribute('aria-current');
+        current?.link.setAttribute('aria-current', 'location');
+        state.activeHeading = current;
+      }
+
+      function setPosition(ratio) {
+        ui.readerBody.scrollTop = Math.max(0, ui.readerBody.scrollHeight - ui.readerBody.clientHeight) * ratio;
+        updateReadingState();
+      }
+
+      function renderToc() {
+        ui.toc.replaceChildren();
+        state.headings = [];
+        state.activeHeading = null;
+        if (state.view === 'rendered') {
+          for (const node of ui.readerBody.querySelectorAll('.md h2[id], .md h3[id]')) {
+            const link = make('a', null, node.textContent);
+            link.href = `#${encodeURIComponent(node.id)}`;
+            link.dataset.level = node.tagName.slice(1);
+            state.headings.push({ node, link });
+          }
+        }
+        if (state.headings.length) {
+          ui.toc.append(make('p', 'reader__toc-title', '文章目录'));
+          ui.toc.append(...state.headings.map((entry) => entry.link));
+        }
+        ui.tocToggle.disabled = !state.headings.length;
+        ui.toc.hidden = !state.headings.length || !state.tocOpen;
+        ui.tocToggle.setAttribute('aria-expanded', String(!ui.toc.hidden));
+      }
+
+      function applyFontSize() {
+        document.documentElement.style.setProperty('--reader-font-size', `${preferences.fontSize}px`);
+        text(ui.fontSize, preferences.fontSize);
+        ui.fontSmaller.disabled = !state.detail || state.view !== 'rendered' || preferences.fontSize <= 16;
+        ui.fontLarger.disabled = !state.detail || state.view !== 'rendered' || preferences.fontSize >= 22;
+      }
+
+      function changeFontSize(delta) {
+        if (!state.detail || state.view !== 'rendered') return;
+        const ratio = readingRatio();
+        preferences.fontSize = Math.max(16, Math.min(22, preferences.fontSize + delta));
+        applyFontSize();
+        setPosition(ratio);
+        persistPreferences();
+      }
+
+      function renderReaderBody(ratio = 0) {
         ui.readerBody.replaceChildren();
         const report = state.detail;
         if (!report) {
@@ -1213,24 +1418,28 @@
         }
         if (state.view === 'source') {
           ui.readerBody.append(make('pre', 'md-source', report.markdown || ''));
-          return;
+        } else {
+          const host = make('div', 'md');
+          mountMarkdown(host, report.html || '');
+          // The dialog heading already supplies the document title.
+          if (host.firstElementChild?.tagName === 'H1') host.firstElementChild.hidden = true;
+          ui.readerBody.append(host);
         }
-        const host = make('div', 'md');
-        mountMarkdown(host, report.html || '');
-        ui.readerBody.append(host);
+        renderToc();
+        setPosition(ratio);
       }
 
       function renderReaderChrome() {
-        const report = state.detail;
+        const report = state.detail || state.selected;
         const total = state.visible.length;
         const position = state.index >= 0 ? state.index + 1 : 0;
 
         text(ui.readerTitle, report ? report.title : '');
-        text(ui.readerEyebrow, report ? domainLabel(report.domain) : '');
+        text(ui.readerEyebrow, report ? (state.index < 0 ? '更新速览' : domainLabel(report.domain)) : '');
 
         const meta = [];
         if (report) {
-          if (report.updated_on) meta.push(report.updated_on);
+          if (report.updated_on) meta.push(`更新于 ${report.updated_on}`);
           if (report.source) meta.push(report.source);
           if (report.episode) meta.push(report.episode);
         }
@@ -1255,10 +1464,14 @@
         }
 
         text(ui.readerPos, position ? `${position} / ${total}` : '');
+        ui.readerNav.hidden = state.index < 0;
         ui.readerPrev.disabled = state.index <= 0;
         ui.readerNext.disabled = state.index < 0 || state.index >= total - 1;
         ui.viewRendered.setAttribute('aria-pressed', String(state.view === 'rendered'));
         ui.viewSource.setAttribute('aria-pressed', String(state.view === 'source'));
+        ui.viewRendered.disabled = !state.detail;
+        ui.viewSource.disabled = !state.detail;
+        applyFontSize();
       }
 
       async function loadDetail(report) {
@@ -1273,20 +1486,41 @@
         return payload.report;
       }
 
-      async function openReader(index, opener) {
-        const requestId = ++state.requestId;
+      function openReader(index, opener, syncHistory = true) {
         const report = state.visible[index];
         if (!report) return;
+        return openDocument(report, index, opener, syncHistory);
+      }
+
+      async function openDocument(report, index, opener, syncHistory) {
+        savePosition();
+        const requestId = ++state.requestId;
+        const wasClosed = ui.overlay.hidden;
+        if (syncHistory) {
+          const url = new URL(location.href);
+          url.searchParams.set('report', report.path);
+          url.hash = '';
+          if (wasClosed) history.pushState({ everagentReader: true }, '', url);
+          else history.replaceState(history.state, '', url);
+        }
         state.index = index;
-        state.opener = opener || null;
+        if (wasClosed) state.opener = opener || document.activeElement;
         state.detail = null;
+        state.selected = report;
         state.currentPath = report.path;
+        state.view = 'rendered';
+        state.renderedRatio = 0;
+        state.tocOpen = window.innerWidth >= 960;
 
         ui.overlay.hidden = false;
+        ui.page.inert = true;
         document.body.classList.add('is-locked');
         renderReaderChrome();
         markCurrent();
         ui.readerBody.replaceChildren(make('p', 'reader__notice', '正在读取报告…'));
+        renderToc();
+        updateReadingState();
+        ui.readerClose.focus({ preventScroll: true });
 
         let detail = null;
         try {
@@ -1303,20 +1537,34 @@
         if (requestId !== state.requestId) return;
         state.detail = detail;
         renderReaderChrome();
-        renderReaderBody();
-        ui.readerBody.scrollTop = 0;
-        ui.readerBody.focus();
+        const saved = preferences.history.find((item) => item.path === report.path);
+        renderReaderBody(saved && saved.ratio < 0.98 ? saved.ratio : 0);
+        ui.readerBody.focus({ preventScroll: true });
+        savePosition();
       }
 
-      function closeReader() {
+      function closeReader(syncHistory = true) {
+        if (ui.overlay.hidden) return;
+        savePosition();
         state.requestId += 1;
         ui.overlay.hidden = true;
+        ui.page.inert = false;
         document.body.classList.remove('is-locked');
         const opener = state.opener;
         state.opener = null;
         state.detail = null;
-        if (opener && document.contains(opener)) opener.focus();
-        else ui.search.focus();
+        state.selected = null;
+        if (opener && document.contains(opener)) opener.focus({ preventScroll: true });
+        else ui.search.focus({ preventScroll: true });
+        if (syncHistory) {
+          if (history.state?.everagentReader) history.back();
+          else {
+            const url = new URL(location.href);
+            url.searchParams.delete('report');
+            url.hash = '';
+            history.replaceState(history.state, '', url);
+          }
+        }
       }
 
       function markCurrent() {
@@ -1364,7 +1612,35 @@
         for (let parent = target.parentElement; parent && parent !== ui.readerBody; parent = parent.parentElement) {
           if (parent.tagName === 'DETAILS') parent.open = true;
         }
-        target.scrollIntoView({ block: 'start' });
+        if (target.hidden) ui.readerBody.scrollTop = 0;
+        else target.scrollIntoView({ block: 'start' });
+        updateReadingState();
+      }
+
+      function clearFilters() {
+        state.domain = 'all';
+        state.query = '';
+        state.limit = 80;
+        ui.search.value = '';
+        renderDomains();
+        renderList();
+      }
+
+      async function openPath(path, opener = null, syncHistory = true) {
+        const pin = state.pins.find((item) => item.path === path);
+        if (pin) return openPinned(pin, opener, syncHistory);
+        if (!state.reports.some((item) => item.path === path)) return;
+        if (!state.visible.some((item) => item.path === path)) clearFilters();
+        const index = state.visible.findIndex((item) => item.path === path);
+        return openReader(index, opener, syncHistory);
+      }
+
+      async function followLocation() {
+        const path = new URLSearchParams(location.search).get('report');
+        if (!path) { closeReader(false); return; }
+        const hash = location.hash;
+        await openPath(path, null, false);
+        if (!ui.overlay.hidden && state.currentPath === path) scrollToAnchor(hash);
       }
 
       ui.readerBody.addEventListener('click', async (event) => {
@@ -1381,34 +1657,73 @@
         const path = url.searchParams.get('report');
         if (!path) return;
         event.preventDefault();
-        const pin = state.pins.find((item) => item.path === path);
-        if (pin) {
-          await openPinned(pin, link);
-        } else {
-          let index = state.visible.findIndex((item) => item.path === path);
-          if (index < 0) {
-            state.domain = 'all'; state.query = ''; ui.search.value = '';
-            renderDomains(); renderList();
-            index = state.visible.findIndex((item) => item.path === path);
-          }
-          if (index >= 0) await openReader(index, link);
-        }
+        await openPath(path, link);
         if (!ui.overlay.hidden && state.currentPath === path) scrollToAnchor(url.hash);
       });
 
-      ui.readerClose.addEventListener('click', closeReader);
+      function switchView(view) {
+        if (!state.detail || state.view === view) return;
+        if (state.view === 'rendered') {
+          state.renderedRatio = readingRatio();
+          savePosition();
+        }
+        state.view = view;
+        renderReaderChrome();
+        renderReaderBody(view === 'rendered' ? state.renderedRatio : 0);
+      }
+
+      ui.readerClose.addEventListener('click', () => closeReader());
       ui.readerPrev.addEventListener('click', () => step(-1));
       ui.readerNext.addEventListener('click', () => step(1));
-      ui.viewRendered.addEventListener('click', () => {
-        state.view = 'rendered';
-        renderReaderChrome();
-        renderReaderBody();
+      ui.viewRendered.addEventListener('click', () => switchView('rendered'));
+      ui.viewSource.addEventListener('click', () => switchView('source'));
+      ui.fontSmaller.addEventListener('click', () => changeFontSize(-1));
+      ui.fontLarger.addEventListener('click', () => changeFontSize(1));
+      ui.tocToggle.addEventListener('click', () => {
+        const ratio = readingRatio();
+        state.tocOpen = !state.tocOpen;
+        ui.toc.hidden = !state.tocOpen;
+        ui.tocToggle.setAttribute('aria-expanded', String(state.tocOpen));
+        setPosition(ratio);
       });
-      ui.viewSource.addEventListener('click', () => {
-        state.view = 'source';
-        renderReaderChrome();
-        renderReaderBody();
+      ui.toc.addEventListener('click', (event) => {
+        const link = event.target.closest('a[href]');
+        if (!link) return;
+        event.preventDefault();
+        if (window.innerWidth < 960) {
+          state.tocOpen = false;
+          ui.toc.hidden = true;
+          ui.tocToggle.setAttribute('aria-expanded', 'false');
+        }
+        scrollToAnchor(link.getAttribute('href'));
+        ui.readerBody.focus({ preventScroll: true });
       });
+      ui.readerBody.addEventListener('scroll', () => {
+        if (!state.scrollFrame) {
+          state.scrollFrame = requestAnimationFrame(() => {
+            state.scrollFrame = 0;
+            if (!ui.overlay.hidden) updateReadingState();
+          });
+        }
+        clearTimeout(state.saveTimer);
+        state.saveTimer = setTimeout(savePosition, 350);
+      }, { passive: true });
+      window.addEventListener('pagehide', savePosition);
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) savePosition();
+      });
+      window.addEventListener('popstate', () => { void followLocation(); });
+      const wideReader = window.matchMedia('(min-width: 960px)');
+      wideReader.addEventListener('change', () => {
+        state.tocOpen = wideReader.matches;
+        ui.toc.hidden = !state.headings.length || !state.tocOpen;
+        ui.tocToggle.setAttribute('aria-expanded', String(!ui.toc.hidden));
+      });
+      window.addEventListener('resize', () => {
+        if (!ui.overlay.hidden && state.detail && state.view === 'rendered') setPosition(state.renderedRatio);
+      });
+      ui.resume.addEventListener('click', () => { void openPath(ui.resume.dataset.path, ui.resume); });
+      ui.clearFilters.addEventListener('click', clearFilters);
 
       ui.overlay.addEventListener('click', (event) => {
         if (event.target === ui.overlay) closeReader();
@@ -1417,17 +1732,12 @@
       ui.overlay.addEventListener('keydown', (event) => {
         if (event.key === 'Escape') {
           event.preventDefault();
-          closeReader();
-          return;
-        }
-        if (event.key === 'ArrowLeft') {
-          event.preventDefault();
-          step(-1);
-          return;
-        }
-        if (event.key === 'ArrowRight') {
-          event.preventDefault();
-          step(1);
+          if (window.innerWidth < 960 && !ui.toc.hidden) {
+            state.tocOpen = false;
+            ui.toc.hidden = true;
+            ui.tocToggle.setAttribute('aria-expanded', 'false');
+            ui.tocToggle.focus();
+          } else closeReader();
           return;
         }
         if (event.key === 'Tab') trapFocus(event);
@@ -1506,17 +1816,18 @@
         renderDomains();
         renderPins();
         renderList();
-        if (!force) {
-          const path = new URLSearchParams(location.search).get('report');
-          const pin = state.pins.find((item) => item.path === path);
-          if (pin) void openPinned(pin, null);
-          else {
-            const index = state.visible.findIndex((item) => item.path === path);
-            if (index >= 0) void openReader(index, null);
-          }
-        }
+        renderResume();
+        if (!force) void followLocation();
       }
 
+      const colorScheme = window.matchMedia('(prefers-color-scheme: dark)');
+      function applyColorScheme() {
+        document.documentElement.dataset.theme = colorScheme.matches ? 'dark' : 'light';
+        document.documentElement.style.colorScheme = colorScheme.matches ? 'dark' : 'light';
+      }
+      colorScheme.addEventListener('change', applyColorScheme);
+      applyColorScheme();
+      applyFontSize();
       void load(false);
     </script>
   </body>

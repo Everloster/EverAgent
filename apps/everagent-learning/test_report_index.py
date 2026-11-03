@@ -155,15 +155,15 @@ class FixedEntryTest(unittest.TestCase):
             ],
         )
         titles = {item["id"]: item["title"] for item in payload["pins"]}
-        self.assertEqual(titles["podcast-updates"], "小宇宙精选播客历史速看表")
-        self.assertEqual(titles["tech-blog-updates"], "顶尖技术博客更新")
+        self.assertEqual(titles["podcast-updates"], "小宇宙精选播客")
+        self.assertEqual(titles["tech-blog-updates"], "顶尖技术博客")
 
     def test_fixed_entry_renders_folds(self) -> None:
         payload = report_index.build_detail(
             self.root, "podcast-learning/PODCAST_UPDATES.md"
         )
         report = payload["report"]
-        self.assertEqual(report["title"], "小宇宙精选播客历史速看表")
+        self.assertEqual(report["title"], "小宇宙精选播客")
         self.assertTrue(report["pinned"])
         self.assertEqual(report["html"].count("<details"), 2)
         self.assertEqual(report["html"].count("<summary>"), 2)

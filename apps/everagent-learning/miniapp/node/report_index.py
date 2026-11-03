@@ -39,18 +39,18 @@ PINNED_DOCS = (
     {
         "id": "podcast-updates",
         "path": "podcast-learning/PODCAST_UPDATES.md",
-        "title": "小宇宙精选播客历史速看表",
+        "title": "小宇宙精选播客",
         "domain": "podcast-learning",
         "domain_title": "播客学习",
-        "note": "近期单集与已有报告",
+        "note": "节目更新 · 学习报告",
     },
     {
         "id": "tech-blog-updates",
         "path": "web-surfing/TECH_BLOG_UPDATES.md",
-        "title": "顶尖技术博客更新",
+        "title": "顶尖技术博客",
         "domain": "web-surfing",
         "domain_title": "Web 冲浪",
-        "note": "近期文章与已有报告",
+        "note": "文章更新 · 学习报告",
     },
 )
 
