@@ -9,55 +9,39 @@
 
 ## 一、转写（产出 `.transcript.txt`）
 
-URL 的 canonical 路径是 eacli podcast 远端静默 worker；任何执行端都不打开网页或播放媒体：
+URL 默认交给 `eacli transcription` 远端静默 worker。先从运行态能力目录选择执行设备，命令中的 `<device>` 为占位符；不要把私有设备映射写入报告。
 
 ```bash
-eacli podcast status --json
-eacli podcast plan --source '<URL>' --language zh --timeout 21600 --json
-eacli podcast run --source '<URL>' --language zh --timeout 21600 \
-  --plan-id '<plan 返回值>' --confirm '<plan 返回的确认令牌>' \
+eacli transcription status --device '<device>' --json
+eacli transcription submit --device '<device>' --url '<公开节目或官方音频 URL>' \
+  --language zh --expected-duration '<已核实的秒数>' --deadline-seconds 7200 \
   --request-id req_<stable-id> --json
-eacli podcast result --job job_podcast_... --wait 3600 --json
+eacli transcription result --device '<device>' --job '<result.job_id>' --json
 ```
 
-`plan/run/result` 的 `--device` 在当前 CLI 中可省略，不要把设备名固化进公开命令。
-`run` 的 `--plan-id`、`--confirm` 仍必填，确认令牌须原样取自本次 plan，不能根据公开文档拼造。
-`result` 的 transcript 地址仅从本次 artifact receipt 读取；私有执行映射不属于公开协议。
+`--expected-duration` 可省略；有官方准确时长时填写，不把页面四舍五入的分钟数当秒级证据。提交回包丢失，在原发起设备用 `transcription status --device '<device>' --request-id req_<stable-id> --json` 找回原任务，不换 ID 重发。
 
-`eacli pull` 的 remote 参数仍必须是 `<device>:/abs/path`；这里是参数形状，不是允许公开真实映射。
-先在本地选择仓库外的私有目录，再按 receipt 的地址、大小与 SHA-256 拉回：
+- `submitted/running` 表示未结束；`completed` 只说明结构检查通过，不证明每个词准确。
+- `needs_review` 的原文仍可取回检查，但必须逐项解释 `quality.warnings`，核验尾部、空白、重复和语种切换后才能用于报告。不得仅修改状态或重新跑相同音频掩盖缺口。
+- `failed/interrupted` 先读同一任务的结构化错误；修复执行条件后才用 `transcription resume --device '<device>' --job '<job>' --request-id req_resume_<stable-id> --json` 复用已验证分块。
+- 主动取消用 `transcription cancel --device '<device>' --job '<job>' --request-id req_cancel_<stable-id> --json`。共享转写服务可能仍在处理当前块，以 `backend_cancel_confirmed` 区分，不把停止工作进程等同于释放了 GPU。
+- `auto` 当前不能保证中英切换完整。中文节目仍需人工核对英文术语；无法补齐的关键段落要阻断报告完成。
 
-```bash
-eacli pull '<本次回执对应的设备与绝对路径>' \
-  '<仓库外私有目录>/{slug}.transcript.txt' \
-  --request-id req_pull_<stable-id> --json
-```
-
-现有薄编排器用于超过单文件传输上限的 artifact，分片传输后原子重组并核对原始 SHA-256。
-它的 `--device` 可省略，但当前默认映射属于外部部署约束；不在公开文档展开。调用前核对
-本地 CLI 能力和本次回执，不能把旧部署的大小限制当作永恒合同。
+从同一次结果的 `result.artifacts.transcript` 取得 `path/bytes/sha256`。完整转写只存仓库外私有目录，使用 eacli 的传输、断点续传和原子落盘能力：
 
 ```bash
 python3 podcast-learning/scripts/podcast_artifact_pull.py pull \
-  --remote-path '<artifact receipt 的远端路径>' \
-  --sha256 '<artifact.transcript_sha256>' \
-  --size '<artifact.transcript_size>' \
+  --device '<device>' --remote-path '<artifact.path>' \
+  --sha256 '<artifact.sha256>' --size '<artifact.bytes>' \
   --output '<仓库外私有目录>/{slug}.transcript.txt' \
   --request-id req_pull_<stable-id>
 ```
 
-拉回完成后再继续润色和报告；不得用聊天输出复制大段转写，也不得跳过大小与 SHA-256 校验。
-本仓规则不会自动改变外部 eacli worker/传输器的落盘位置或清理策略；执行者必须显式选择私有输出，
-核查外部生产器未将全文复制进公开仓。仓库检查不等于外部生产器已迁移。
+也可直接用 `eacli file pull --device '<device>' --path '<artifact.path>' --destination '<仓库外私有文件>' --sha256 '<artifact.sha256>' --json`，随后核对原回执大小。中断时原样续传；不得把 `.eacli-part` 当完成文件。旧 `podcast/pull` 命令、`plan/run` 确认令牌及大文件拆分流程已退役。
 
-若为公开仓保存 artifact receipt，需从运行态回执生成最小公开视图：保留 `source_url/source_host`、音频与转写的大小和 SHA-256、语言、段数、时长、服务版本、静默/无播放器标志、传输原子性与审计结果；删除执行设备名、远端绝对路径、`job_id`、`plan_id`、`artifact_id`、账号和网络信息。报告与 evidence 使用“eacli podcast 远端静默 worker”，不要把私有执行拓扑写进知识产物。
+获取失败时只依据本次 `request/job` 的回执判断：来源白名单、重定向/CDN、下载器、音频完整性、worker 与转写服务是不同故障层。网页无法读取时可使用同一节目公开的官方音频地址；不能借用相邻任务的时长或日志。需要修改输入时先确认原任务已经终止，保留失败记录，再显式提交新的任务。
 
-### 获取失败的证据顺序
-
-1. 固定本次 `source → plan → request → job` 绑定，只读取该 job 的 `result/state`；相邻任务的时长、日志或错误不能拿来补当前 artifact。
-2. `nonzero_exit` 只是包装层结果，不是根因。继续读取 helper 的结构化错误，再区分主机白名单、重定向/CDN、下载器、临时文件、worker RPC 或转写本体。
-3. 若 `plan` 接受来源而执行 helper 拒绝同一来源，优先判定控制面与部署 helper 的合同漂移；先修一致性与错误透传，不重复生成任务。
-4. 生成类失败不自动重放。修复后重新生成 plan，并使用新的稳定 request id；旧失败记录保留原貌。
+公开审计视图只保留公开来源、媒体及转写大小/hash、语种、段数、时长、服务版本、静默标志和审计结果。删除执行设备、绝对路径、job/request/artifact 标识、账号与网络信息；报告中统一称“eacli transcription 远端静默 worker”。外部服务与私有原文清理不由本仓审计自动完成。
 
 本地文件，或明确隔离排障时，才使用本地脚本。它全程离线（除下载音频），不走云端 API：
 
@@ -83,7 +67,7 @@ yt-dlp --ignore-config --no-playlist --extract-audio \
   --audio-format wav -- '<B站 URL>'
 ```
 
-- 默认仍由 eacli podcast 远端静默 worker 执行上述下载，不手工跑。
+- 默认仍由 eacli transcription 远端静默 worker 执行上述下载，不手工跑。
 - 下载失败时允许无 UI 的官方 API或已证明不创建 tab 的站点 adapter；仍失败就停止并报告。
 - **禁止** `opencli browser`、依赖浏览器扩展/Chrome 登录态的 download fallback、`open` /
   `xdg-open`，以及任何音视频播放器。
@@ -117,8 +101,8 @@ python3 podcast-learning/scripts/audit_transcript.py \
 
 - **必查**：转写完成后运行 `audit_transcript.py`，并人工看返回的头尾样本；不要只看开头几段就交付。
 - **发现循环**：保留原始失败 artifact 与回执，不原地截断或覆盖。必要时另建修复版本，用官方字幕补充可核验的缺失片段并重新审计；翻译字幕只能作为语义线索，不能伪装逐字原文。修复说明与报告 Limitations 如实标注故障区间和来源差异。
-- eacli podcast 远端静默 worker 的既有合同使用 Silero VAD + `max-context=0` 与落盘前重复检查；
-  同句连续超过 3 段应失败。实际部署状态仍须由本次机器回执确认，本地审计不替外部生产器背书。
+- 转写后端、分块和质量检查以本次 `eacli transcription` 回执为准，不把旧 whisper.cpp 参数套到新服务。
+  本仓审计会拒绝同句连续超过 3 段；它不能代替对外部服务结果的内容核验。
 
 ### 私有默认与公开审计收据
 

@@ -18,7 +18,7 @@
 
 - 后台任务不得打开浏览器 UI、系统 URL opener 或任何音视频播放器。
 - 站点获取失败时只尝试无 UI 的官方 API、typed capability、adapter 或下载器；仍失败则返回原因。
-- 转写默认交给 eacli podcast 远端静默 worker；本地文件或隔离排障才走本地脚本。
+- 转写默认交给 eacli transcription 远端静默 worker；本地文件或隔离排障才走本地脚本。
 - 转写不改事实；不确定内容标 `[?]`，人名、术语和数字用 shownotes、字幕或其他一手材料核验。
 
 命名、参数、润色、章节、统计和领域检查由上述 skills 与脚本拥有，不复制到本文件。
