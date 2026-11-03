@@ -1,0 +1,16 @@
+{
+  "name": "everagent-learning",
+  "version": "1.2.0",
+  "private": true,
+  "description": "EverAgent 本地学习工作台，兼容 MiniMax Code Mini App",
+  "license": "MIT",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "start": "node start.mjs",
+    "test": "node --test test_server.mjs && python3 -B -m unittest test_report_index -v"
+  },
+  "mcode": {
+    "schemaVersion": 2,
+    "miniApp": "./miniapp/miniapp.json"
+  }
+}

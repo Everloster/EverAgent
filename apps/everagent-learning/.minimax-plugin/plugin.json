@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "everagent-learning",
+  "displayName": "EverAgent 学习",
+  "version": "1.2.0",
+  "description": "只读本地公开仓的近期学习产出：按更新时间倒序直接罗列报告，点开即读 Markdown 原文，看完关闭继续下一份。",
+  "author": "Everloster",
+  "icon": "icon.png",
+  "category": "Productivity",
+  "exampleQueries": [
+    "打开 EverAgent 学习面板看看最近出了哪些报告",
+    "最近一周有哪些新的学习产出",
+    "打开最近一篇播客学习报告读一下"
+  ],
+  "apps": [],
+  "mcpServers": [],
+  "skills": []
+}

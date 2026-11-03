@@ -1,0 +1,1523 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EverAgent 学习</title>
+    <style>
+      :root,
+      [data-theme='light'] {
+        --mcode-bg: #f7f8fc;
+        --mcode-bg-secondary: #eef1f8;
+        --mcode-surface: #ffffff;
+        --mcode-surface-muted: #f3f5fb;
+        --mcode-text: #171a24;
+        --mcode-text-muted: #5d6475;
+        --mcode-text-subtle: #939aab;
+        --mcode-border: #dfe3ef;
+        --mcode-border-strong: #c3c9dc;
+        --mcode-accent: #3d67ff;
+        --mcode-accent-soft: #e8eeff;
+        --mcode-success: #04b54b;
+        --mcode-warning: #f56811;
+        --mcode-danger: #f73646;
+        --mcode-primary-action-bg: #3d67ff;
+        --mcode-primary-action-text: #ffffff;
+        --mcode-overlay: rgb(16 20 32 / 46%);
+      }
+
+      [data-theme='dark'] {
+        --mcode-bg: #12131a;
+        --mcode-bg-secondary: #191b24;
+        --mcode-surface: #1e2029;
+        --mcode-surface-muted: #262935;
+        --mcode-text: #eceef6;
+        --mcode-text-muted: #9aa1b4;
+        --mcode-text-subtle: #6b7284;
+        --mcode-border: #2c2f3c;
+        --mcode-border-strong: #3c4053;
+        --mcode-accent: #7b9bff;
+        --mcode-accent-soft: #232a45;
+        --mcode-success: #35c46a;
+        --mcode-warning: #ff8a3d;
+        --mcode-danger: #ff5a68;
+        --mcode-primary-action-bg: #3d67ff;
+        --mcode-primary-action-text: #ffffff;
+        --mcode-overlay: rgb(0 0 0 / 62%);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--mcode-bg);
+        color: var(--mcode-text);
+        font-family: ui-sans-serif, -apple-system, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      body.is-locked {
+        overflow: hidden;
+      }
+
+      .page {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px 20px 56px;
+      }
+
+      /* ---------- top bar ---------- */
+
+      .topbar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 12px 20px;
+        margin-bottom: 14px;
+      }
+
+      .topbar__title {
+        min-width: 0;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 18px;
+        line-height: 26px;
+        font-weight: 600;
+      }
+
+      .topbar__meta {
+        margin: 2px 0 0;
+        color: var(--mcode-text-muted);
+        font-size: 12px;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .topbar__tools {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .control {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .control__label {
+        color: var(--mcode-text-subtle);
+        font-size: 12px;
+      }
+
+      .btn,
+      .select,
+      .search {
+        height: 34px;
+        border: 1px solid var(--mcode-border);
+        border-radius: 8px;
+        background: var(--mcode-surface);
+        color: var(--mcode-text);
+        font: inherit;
+        font-size: 13px;
+      }
+
+      .btn {
+        padding: 0 12px;
+        cursor: pointer;
+        transition: background-color 150ms ease-out, border-color 150ms ease-out;
+      }
+
+      .btn:hover:not(:disabled) {
+        background: var(--mcode-surface-muted);
+      }
+
+      .btn:disabled {
+        color: var(--mcode-text-subtle);
+        cursor: default;
+      }
+
+      .select {
+        padding: 0 26px 0 10px;
+        cursor: pointer;
+        appearance: none;
+        background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
+      linear-gradient(135deg, currentColor 50%, transparent 50%);
+        background-position: calc(100% - 14px) 15px, calc(100% - 9px) 15px;
+        background-size: 5px 5px, 5px 5px;
+        background-repeat: no-repeat;
+      }
+
+      .search {
+        width: 220px;
+        padding: 0 12px;
+      }
+
+      .search::placeholder {
+        color: var(--mcode-text-subtle);
+      }
+
+      .btn:focus-visible,
+      .select:focus-visible,
+      .search:focus-visible,
+      .seg__btn:focus-visible,
+      .icon-btn:focus-visible,
+      .row__btn:focus-visible,
+      .md a:focus-visible,
+      .md-source:focus-visible {
+        outline: 2px solid var(--mcode-accent);
+        outline-offset: 2px;
+      }
+
+      /* ---------- fixed entries ---------- */
+
+      .pins {
+        margin-bottom: 14px;
+      }
+
+      .pins__row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .pin {
+        flex: 1 1 240px;
+        display: grid;
+        gap: 2px;
+        padding: 12px 14px;
+        border: 1px solid var(--mcode-border);
+        border-radius: 12px;
+        background: var(--mcode-surface);
+        color: inherit;
+        font: inherit;
+        text-align: left;
+        cursor: pointer;
+      }
+
+      .pin:hover {
+        border-color: var(--mcode-border-strong);
+      }
+
+      .pin:focus-visible {
+        outline: 2px solid var(--mcode-accent);
+        outline-offset: 1px;
+      }
+
+      .pin__title {
+        font-weight: 600;
+      }
+
+      .pin__note {
+        color: var(--mcode-text-muted);
+        font-size: 12px;
+      }
+
+      /* ---------- report list ---------- */
+
+      .list-pane {
+        border: 1px solid var(--mcode-border);
+        border-radius: 12px;
+        background: var(--mcode-surface);
+        overflow: hidden;
+      }
+
+      .status {
+        margin: 0;
+        padding: 28px 16px;
+        color: var(--mcode-text-muted);
+        font-size: 13px;
+        text-align: center;
+      }
+
+      .status--error {
+        color: var(--mcode-danger);
+      }
+
+      /* ---------- first-run setup ---------- */
+
+      .setup {
+        border: 1px solid var(--mcode-border);
+        border-radius: 12px;
+        background: var(--mcode-surface);
+        padding: 28px 16px;
+        text-align: center;
+      }
+
+      .setup__title {
+        margin: 0 0 6px;
+        font-size: 15px;
+        font-weight: 600;
+      }
+
+      .setup__hint {
+        margin: 0 auto 18px;
+        max-width: 540px;
+        color: var(--mcode-text-muted);
+        font-size: 13px;
+      }
+
+      .setup__form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        margin: 0;
+      }
+
+      .setup__input {
+        flex: 1 1 320px;
+        max-width: 520px;
+        padding: 8px 10px;
+        border: 1px solid var(--mcode-border-strong);
+        border-radius: 8px;
+        background: var(--mcode-surface-muted);
+        color: var(--mcode-text);
+        font: inherit;
+        font-size: 13px;
+      }
+
+      .setup__input:focus-visible {
+        outline: 2px solid var(--mcode-accent);
+        outline-offset: 1px;
+      }
+
+      .setup__note {
+        margin: 16px 0 0;
+        color: var(--mcode-text-subtle);
+        font-size: 12px;
+        word-break: break-all;
+      }
+
+      .setup__note--error {
+        color: var(--mcode-danger);
+      }
+
+      .report-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .day {
+        padding: 8px 16px;
+        border-top: 1px solid var(--mcode-border);
+        border-bottom: 1px solid var(--mcode-border);
+        background: var(--mcode-bg-secondary);
+        color: var(--mcode-text-subtle);
+        font-size: 12px;
+        font-weight: 600;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .day:first-child {
+        border-top: 0;
+      }
+
+      .row {
+        border-bottom: 1px solid var(--mcode-border);
+      }
+
+      .row:last-child {
+        border-bottom: 0;
+      }
+
+      .row__btn {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 2px 20px;
+        align-items: baseline;
+        width: 100%;
+        padding: 11px 16px;
+        border: 0;
+        background: transparent;
+        color: inherit;
+        font: inherit;
+        text-align: left;
+        cursor: pointer;
+        transition: background-color 150ms ease-out;
+      }
+
+      .row__btn:hover {
+        background: var(--mcode-surface-muted);
+      }
+
+      .row__btn[aria-current='true'] {
+        background: var(--mcode-accent-soft);
+      }
+
+      .row__title {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.55;
+      }
+
+      .row__aside {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 8px;
+        color: var(--mcode-text-muted);
+        font-size: 12px;
+        white-space: nowrap;
+      }
+
+      .badge {
+        padding: 1px 7px;
+        border-radius: 999px;
+        background: var(--mcode-accent-soft);
+        color: var(--mcode-accent);
+        font-size: 11px;
+        font-weight: 600;
+      }
+
+      .tag {
+        color: var(--mcode-text-subtle);
+        font-size: 11px;
+      }
+
+      .row__more {
+        display: block;
+        width: 100%;
+        padding: 11px 16px;
+        border: 0;
+        border-top: 1px solid var(--mcode-border);
+        background: transparent;
+        color: var(--mcode-accent);
+        font: inherit;
+        font-size: 13px;
+        text-align: center;
+        cursor: pointer;
+      }
+
+      .row__more:hover {
+        background: var(--mcode-surface-muted);
+      }
+
+      /* ---------- reader overlay ---------- */
+
+      .overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 60;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 32px 20px;
+        background: var(--mcode-overlay);
+        animation: overlay-in 200ms ease-out;
+      }
+
+      .overlay[hidden] {
+        display: none;
+      }
+
+      @keyframes overlay-in {
+        from {
+          opacity: 0;
+        }
+      }
+
+      .reader {
+        display: flex;
+        flex-direction: column;
+        width: min(880px, 100%);
+        max-height: 100%;
+        border: 1px solid var(--mcode-border);
+        border-radius: 12px;
+        background: var(--mcode-surface);
+        box-shadow: 0 0 20px rgb(10 10 10 / 18%);
+        overflow: hidden;
+        animation: reader-in 220ms ease-out;
+      }
+
+      @keyframes reader-in {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+      }
+
+      .reader__head {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 16px 20px 12px;
+        border-bottom: 1px solid var(--mcode-border);
+        background: var(--mcode-surface);
+      }
+
+      .reader__heading {
+        min-width: 0;
+      }
+
+      .reader__eyebrow {
+        margin: 0 0 3px;
+        color: var(--mcode-accent);
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      .reader__title {
+        margin: 0;
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 600;
+      }
+
+      .reader__meta {
+        margin: 5px 0 0;
+        color: var(--mcode-text-muted);
+        font-size: 12px;
+      }
+
+      .icon-btn {
+        flex: 0 0 auto;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border: 1px solid var(--mcode-border);
+        border-radius: 8px;
+        background: var(--mcode-surface);
+        color: var(--mcode-text-muted);
+        cursor: pointer;
+      }
+
+      .icon-btn:hover {
+        background: var(--mcode-surface-muted);
+        color: var(--mcode-text);
+      }
+
+      .reader__body {
+        flex: 1 1 auto;
+        min-height: 0;
+        overflow-y: auto;
+        padding: 20px 24px 28px;
+        scroll-behavior: smooth;
+      }
+
+      .reader__body:focus-visible {
+        outline: 2px solid var(--mcode-accent);
+        outline-offset: -2px;
+      }
+
+      .reader__foot {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px 16px;
+        padding: 10px 16px;
+        border-top: 1px solid var(--mcode-border);
+        background: var(--mcode-surface-muted);
+      }
+
+      .seg {
+        display: inline-flex;
+        gap: 2px;
+        padding: 3px;
+        border: 1px solid var(--mcode-border);
+        border-radius: 8px;
+        background: var(--mcode-bg-secondary);
+      }
+
+      .seg__btn {
+        padding: 4px 12px;
+        border: 0;
+        border-radius: 6px;
+        background: transparent;
+        color: var(--mcode-text-muted);
+        font: inherit;
+        font-size: 12px;
+        cursor: pointer;
+      }
+
+      .seg__btn[aria-pressed='true'] {
+        background: var(--mcode-surface);
+        color: var(--mcode-text);
+        font-weight: 600;
+        box-shadow: 0 0 0 1px var(--mcode-border);
+      }
+
+      .reader__links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .reader__nav {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .reader__pos {
+        color: var(--mcode-text-subtle);
+        font-size: 12px;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .reader__notice {
+        margin: 0;
+        padding: 40px 16px;
+        color: var(--mcode-text-muted);
+        font-size: 13px;
+        text-align: center;
+      }
+
+      /* ---------- markdown ---------- */
+
+      .md {
+        font-size: 14.5px;
+        line-height: 1.78;
+        overflow-wrap: anywhere;
+      }
+
+      .md h1 {
+        margin: 26px 0 12px;
+        font-size: 20px;
+        line-height: 1.45;
+        font-weight: 600;
+      }
+
+      .md h2 {
+        margin: 30px 0 12px;
+        font-size: 17px;
+        line-height: 1.45;
+        font-weight: 600;
+      }
+
+      .md h3 {
+        margin: 24px 0 10px;
+        font-size: 15px;
+        line-height: 1.5;
+        font-weight: 600;
+      }
+
+      .md h4 {
+        margin: 20px 0 8px;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--mcode-text-muted);
+      }
+
+      .md > :first-child {
+        margin-top: 0;
+      }
+
+      .md p {
+        margin: 0 0 14px;
+      }
+
+      .md ul,
+      .md ol {
+        margin: 0 0 14px;
+        padding-left: 22px;
+      }
+
+      .md li {
+        margin-bottom: 6px;
+      }
+
+      .md li > ul,
+      .md li > ol {
+        margin-top: 6px;
+        margin-bottom: 0;
+      }
+
+      .md blockquote {
+        margin: 0 0 14px;
+        padding: 10px 14px;
+        border-left: 3px solid var(--mcode-accent);
+        border-radius: 0 8px 8px 0;
+        background: var(--mcode-surface-muted);
+        color: var(--mcode-text-muted);
+      }
+
+      .md pre {
+        margin: 0 0 14px;
+        padding: 12px 14px;
+        border: 1px solid var(--mcode-border);
+        border-radius: 8px;
+        background: var(--mcode-bg-secondary);
+        overflow-x: auto;
+      }
+
+      .md pre code {
+        padding: 0;
+        border: 0;
+        background: none;
+        font-size: 12.5px;
+        line-height: 1.65;
+      }
+
+      .md code {
+        padding: 1px 5px;
+        border: 1px solid var(--mcode-border);
+        border-radius: 4px;
+        background: var(--mcode-surface-muted);
+        font-size: 0.92em;
+      }
+
+      .md-table-wrap {
+        margin: 0 0 16px;
+        overflow-x: auto;
+      }
+
+      .md table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+      }
+
+      .md th,
+      .md td {
+        padding: 8px 10px;
+        border: 1px solid var(--mcode-border);
+        text-align: left;
+        vertical-align: top;
+      }
+
+      .md th {
+        background: var(--mcode-surface-muted);
+        font-weight: 600;
+      }
+
+      .md a {
+        color: var(--mcode-accent);
+        text-decoration: none;
+      }
+
+      .md a:hover {
+        text-decoration: underline;
+      }
+
+      .md img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+      }
+
+      .md hr {
+        margin: 22px 0;
+        border: 0;
+        border-top: 1px solid var(--mcode-border);
+      }
+
+      .md input[type='checkbox'] {
+        margin-right: 6px;
+      }
+
+      .md-source {
+        margin: 0;
+        padding: 14px 16px;
+        border: 1px solid var(--mcode-border);
+        border-radius: 8px;
+        background: var(--mcode-surface-muted);
+        color: var(--mcode-text);
+        font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 12.5px;
+        line-height: 1.7;
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+      }
+
+      @media (max-width: 720px) {
+        .page {
+          padding: 16px 12px 40px;
+        }
+
+        .topbar {
+          align-items: stretch;
+        }
+
+        .topbar__tools {
+          width: 100%;
+        }
+
+        .search {
+          flex: 1 1 140px;
+          width: auto;
+        }
+
+        .row__btn {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 4px;
+        }
+
+        .row__aside {
+          justify-content: flex-start;
+          white-space: normal;
+        }
+
+        .reader__body {
+          padding: 16px 16px 24px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="topbar">
+        <div class="topbar__title">
+          <h1>EverAgent 学习</h1>
+          <p class="topbar__meta" id="meta">正在读取公开仓报告目录…</p>
+        </div>
+        <div class="topbar__tools">
+          <label class="control">
+            <span class="control__label">领域</span>
+            <select class="select" id="domain" aria-label="按领域筛选"></select>
+          </label>
+          <input
+            class="search"
+            id="search"
+            type="search"
+            placeholder="搜索标题或标签"
+            aria-label="搜索报告标题或标签"
+          />
+          <button class="btn" id="refresh" type="button">刷新</button>
+        </div>
+      </header>
+
+      <main>
+        <section class="pins" id="pins" hidden aria-label="固定入口">
+          <div class="pins__row" id="pins-row"></div>
+        </section>
+        <section class="setup" id="setup" hidden aria-labelledby="setup-title">
+          <h2 class="setup__title" id="setup-title">找不到公开仓报告目录</h2>
+          <p class="setup__hint">
+            请选择本机已有的 EverAgent 仓库。路径只保存在本机，下次打开时会继续使用。
+            普通浏览器和 MiniMax Code 都读取这份资料。
+          </p>
+          <form class="setup__form" id="setup-form">
+            <input
+              class="setup__input"
+              id="setup-path"
+              type="text"
+              placeholder="例如 ~/workspace/EverAgent"
+              aria-label="公开仓路径"
+              autocomplete="off"
+              spellcheck="false"
+            />
+            <button class="btn" id="setup-save" type="submit">保存并读取</button>
+          </form>
+          <p class="setup__note" id="setup-note" role="status"></p>
+        </section>
+        <section class="list-pane" aria-label="学习报告列表">
+          <p class="status" id="status" role="status">正在读取公开仓报告目录…</p>
+          <ul class="report-list" id="report-list"></ul>
+        </section>
+      </main>
+    </div>
+
+    <div class="overlay" id="overlay" hidden>
+      <div class="reader" role="dialog" aria-modal="true" aria-labelledby="reader-title">
+        <header class="reader__head">
+          <div class="reader__heading">
+            <p class="reader__eyebrow" id="reader-eyebrow"></p>
+            <h2 class="reader__title" id="reader-title"></h2>
+            <p class="reader__meta" id="reader-meta"></p>
+          </div>
+          <button class="icon-btn" id="reader-close" type="button" aria-label="关闭阅读器">
+            <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false">
+              <path
+                d="M4 4l8 8M12 4l-8 8"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+        </header>
+        <div class="reader__body" id="reader-body" tabindex="0" aria-label="报告正文"></div>
+        <footer class="reader__foot">
+          <div class="seg" role="group" aria-label="显示方式">
+            <button class="seg__btn" id="view-rendered" type="button" aria-pressed="true">阅读</button>
+            <button class="seg__btn" id="view-source" type="button" aria-pressed="false">原文</button>
+          </div>
+          <div class="reader__links" id="reader-links"></div>
+          <div class="reader__nav">
+            <button class="btn" id="reader-prev" type="button">← 上一份</button>
+            <span class="reader__pos" id="reader-pos"></span>
+            <button class="btn" id="reader-next" type="button">下一份 →</button>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script>
+      const state = {
+        reports: [],
+        pins: [],
+        domains: [],
+        domain: 'all',
+        query: '',
+        limit: 80,
+        visible: [],
+        detail: null,
+        index: -1,
+        currentPath: '',
+        view: 'rendered',
+        opener: null,
+        requestId: 0,
+        cache: new Map(),
+      };
+
+      const ui = {
+        meta: document.getElementById('meta'),
+        domain: document.getElementById('domain'),
+        search: document.getElementById('search'),
+        refresh: document.getElementById('refresh'),
+        status: document.getElementById('status'),
+        list: document.getElementById('report-list'),
+        listPane: document.querySelector('.list-pane'),
+        pins: document.getElementById('pins'),
+        pinsRow: document.getElementById('pins-row'),
+        setup: document.getElementById('setup'),
+        setupForm: document.getElementById('setup-form'),
+        setupPath: document.getElementById('setup-path'),
+        setupNote: document.getElementById('setup-note'),
+        setupSave: document.getElementById('setup-save'),
+        overlay: document.getElementById('overlay'),
+        readerTitle: document.getElementById('reader-title'),
+        readerEyebrow: document.getElementById('reader-eyebrow'),
+        readerMeta: document.getElementById('reader-meta'),
+        readerBody: document.getElementById('reader-body'),
+        readerLinks: document.getElementById('reader-links'),
+        readerPos: document.getElementById('reader-pos'),
+        readerPrev: document.getElementById('reader-prev'),
+        readerNext: document.getElementById('reader-next'),
+        readerClose: document.getElementById('reader-close'),
+        viewRendered: document.getElementById('view-rendered'),
+        viewSource: document.getElementById('view-source'),
+      };
+
+      const DOMAIN_LABELS = {
+        'ai-learning': 'AI 学习',
+        'cs-learning': 'CS 学习',
+        'philosophy-learning': '哲学学习',
+        'psychology-learning': '心理学学习',
+        'biology-learning': '生物学习',
+        'ai-practice': 'AI 实践',
+        'podcast-learning': '播客学习',
+        'github-trending-analyzer': 'GitHub 研究',
+        'web-surfing': 'Web 冲浪',
+      };
+
+      const ALLOWED_TAGS = new Set([
+        'P', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'UL', 'OL', 'LI', 'BLOCKQUOTE',
+        'PRE', 'CODE', 'HR', 'BR', 'STRONG', 'EM', 'DEL', 'A', 'IMG', 'TABLE',
+        'THEAD', 'TBODY', 'TR', 'TH', 'TD', 'DIV', 'INPUT', 'SPAN',
+        'DETAILS', 'SUMMARY',
+      ]);
+
+      function domainLabel(id) {
+        return DOMAIN_LABELS[id] || id;
+      }
+
+      function text(node, value) {
+        node.textContent = value == null ? '' : String(value);
+        return node;
+      }
+
+      function make(tag, className, content) {
+        const node = document.createElement(tag);
+        if (className) node.className = className;
+        if (content != null) node.textContent = String(content);
+        return node;
+      }
+
+      /**
+       * Show the first-run setup panel, listing where the board looked.
+       * @param {{path: string, source: string, reason: string}[]} tried
+       */
+      function showSetup(tried) {
+        ui.setup.hidden = false;
+        ui.listPane.hidden = true;
+        ui.pins.hidden = true;
+        ui.status.hidden = true;
+        const seen = [];
+        for (const item of tried || []) {
+          if (!item || !item.path || seen.includes(item.path)) continue;
+          seen.push(item.path);
+        }
+        text(
+          ui.setupNote,
+          seen.length
+            ? `已查找：${seen.slice(0, 6).join('、')}${seen.length > 6 ? ' 等' : ''}`
+            : '',
+        );
+        ui.setupNote.className = 'setup__note';
+      }
+
+      function hideSetup() {
+        ui.setup.hidden = true;
+        ui.listPane.hidden = false;
+        ui.pins.hidden = !state.pins.length;
+        ui.status.hidden = false;
+        ui.setupNote.textContent = '';
+        ui.setupNote.className = 'setup__note';
+      }
+
+      function setupError(message) {
+        ui.setupNote.className = 'setup__note setup__note--error';
+        text(ui.setupNote, message);
+      }
+
+      /**
+       * Persist the public checkout on this machine, then reload the board.
+       */
+      async function saveSetup(event) {
+        event.preventDefault();
+        const requested = ui.setupPath.value.trim();
+        if (!requested) {
+          setupError('请填写公开仓路径');
+          return;
+        }
+        ui.setupSave.disabled = true;
+        try {
+          const response = await fetch('/api/settings', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json', 'x-setup-token': '__SETUP_TOKEN__' },
+            body: JSON.stringify({ path: requested }),
+          });
+          const payload = await response.json();
+          if (!payload || payload.ok !== true) {
+            const reason = payload && payload.reason;
+            setupError(
+              reason === 'no_catalog'
+                ? '这个目录不是完整的 EverAgent 仓库，请选择解压或克隆后的根目录。'
+                : '路径不存在或不可读',
+            );
+            return;
+          }
+          hideSetup();
+          await load(true);
+        } catch (error) {
+          setupError('保存失败,请检查路径后重试');
+        } finally {
+          ui.setupSave.disabled = false;
+        }
+      }
+
+      function matches(report) {
+        if (state.domain !== 'all' && report.domain !== state.domain) return false;
+        const query = state.query.trim().toLowerCase();
+        if (!query) return true;
+        if ((report.title || '').toLowerCase().includes(query)) return true;
+        if ((report.domain_title || '').toLowerCase().includes(query)) return true;
+        return (report.tags || []).some((tag) => String(tag).toLowerCase().includes(query));
+      }
+
+      function renderDomains() {
+        ui.domain.replaceChildren();
+        const all = make('option', null, `全部领域（${state.reports.length}）`);
+        all.value = 'all';
+        ui.domain.append(all);
+        for (const domain of state.domains) {
+          if (!domain.count) continue;
+          const option = make('option', null, `${domainLabel(domain.id)}（${domain.count}）`);
+          option.value = domain.id;
+          ui.domain.append(option);
+        }
+        ui.domain.value = state.domain;
+      }
+
+      /**
+       * Render the fixed entries the public repository maintains. They are not
+       * reports, so they stay outside the list and the list filters.
+       */
+      function renderPins() {
+        ui.pinsRow.replaceChildren();
+        if (!state.pins.length) {
+          ui.pins.hidden = true;
+          return;
+        }
+        ui.pins.hidden = false;
+        for (const pin of state.pins) {
+          const button = make('button', 'pin');
+          button.type = 'button';
+          button.append(make('span', 'pin__title', pin.title));
+          if (pin.note) button.append(make('span', 'pin__note', pin.note));
+          button.addEventListener('click', () => {
+            void openPinned(pin, button);
+          });
+          ui.pinsRow.append(button);
+        }
+      }
+
+      /**
+       * Open a fixed entry in the reader. It does not belong to the report
+       * list, so the list navigation stays where it was.
+       */
+      async function openPinned(pin, opener) {
+        const requestId = ++state.requestId;
+        state.index = -1;
+        state.opener = opener || null;
+        state.detail = null;
+        state.currentPath = pin.path;
+
+        ui.overlay.hidden = false;
+        document.body.classList.add('is-locked');
+        renderReaderChrome();
+        ui.readerBody.replaceChildren(make('p', 'reader__notice', '正在读取清单…'));
+
+        let detail = null;
+        try {
+          detail = await loadDetail(pin);
+        } catch (error) {
+          if (requestId !== state.requestId) return;
+          ui.readerBody.replaceChildren(
+            make('p', 'reader__notice', `无法读取该清单（${error.message}）。`),
+          );
+          ui.readerClose.focus();
+          return;
+        }
+        if (requestId !== state.requestId) return;
+        state.detail = detail;
+        renderReaderChrome();
+        renderReaderBody();
+        ui.readerClose.focus();
+      }
+
+      function renderList() {
+        state.visible = state.reports.filter(matches);
+        ui.list.replaceChildren();
+
+        if (!state.visible.length) {
+          ui.status.hidden = false;
+          ui.status.className = 'status';
+          text(ui.status, state.reports.length
+            ? '没有匹配的报告，换个关键词或切回「全部领域」。'
+            : '公开仓里没有读到任何报告。');
+          return;
+        }
+        ui.status.hidden = true;
+
+        const shown = state.visible.slice(0, state.limit);
+        let currentDay = null;
+        let dayCount = 0;
+        let dayHead = null;
+        let index = 0;
+
+        for (const report of shown) {
+          const day = report.updated_on || '未标注日期';
+          if (day !== currentDay) {
+            if (dayHead) dayHead.textContent = `${currentDay} · ${dayCount} 份`;
+            currentDay = day;
+            dayCount = 0;
+            dayHead = make('li', 'day', day);
+            dayHead.setAttribute('role', 'presentation');
+            ui.list.append(dayHead);
+          }
+          dayCount += 1;
+
+          const item = make('li', 'row');
+          const button = make('button', 'row__btn');
+          button.type = 'button';
+          const position = index;
+          button.dataset.index = String(position);
+          if (report.path === state.currentPath) {
+            button.setAttribute('aria-current', 'true');
+          }
+          button.append(make('span', 'row__title', report.title));
+
+          const aside = make('span', 'row__aside');
+          aside.append(make('span', 'badge', domainLabel(report.domain)));
+
+          for (const tag of (report.tags || []).slice(0, 2)) {
+            aside.append(make('span', 'tag', `#${tag}`));
+          }
+          button.append(aside);
+
+          button.addEventListener('click', () => {
+            openReader(Number(button.dataset.index), button);
+          });
+          item.append(button);
+          ui.list.append(item);
+          index += 1;
+        }
+        if (dayHead) dayHead.textContent = `${currentDay} · ${dayCount} 份`;
+
+        if (state.visible.length > shown.length) {
+          const more = make('li');
+          const button = make('button', 'row__more', `显示更多（还有 ${state.visible.length - shown.length} 份）`);
+          button.type = 'button';
+          button.addEventListener('click', () => {
+            state.limit += 80;
+            renderList();
+          });
+          more.append(button);
+          ui.list.append(more);
+        }
+      }
+
+      function renderMeta(payload) {
+        const parts = [`${payload.total} 份报告`, `${payload.domains.length} 个方向`];
+        if (payload.latest_on) parts.push(`最近更新 ${payload.latest_on}`);
+        text(ui.meta, parts.join(' · '));
+      }
+
+      /**
+       * Mount server-rendered Markdown. The HTML comes from the package's own
+       * renderer, which escapes every report character, but it is still parsed
+       * into an inert document and filtered before it reaches the live page.
+       */
+      function mountMarkdown(host, html) {
+        const parsed = new DOMParser().parseFromString(html, 'text/html');
+        parsed.body.querySelectorAll('*').forEach((node) => {
+          if (!ALLOWED_TAGS.has(node.tagName)) {
+            node.remove();
+            return;
+          }
+          for (const attribute of Array.from(node.attributes)) {
+            const name = attribute.name.toLowerCase();
+            if (/^on[a-z]/.test(name)) {
+              node.removeAttribute(attribute.name);
+            } else if (name === 'href' || name === 'src') {
+              const value = attribute.value.trim().toLowerCase();
+              if (/^(javascript|data|vbscript):/.test(value)) node.removeAttribute(attribute.name);
+            }
+          }
+        });
+        host.replaceChildren(...Array.from(parsed.body.childNodes));
+      }
+
+      function renderReaderBody() {
+        ui.readerBody.replaceChildren();
+        const report = state.detail;
+        if (!report) {
+          ui.readerBody.append(make('p', 'reader__notice', '未载入报告。'));
+          return;
+        }
+        if (state.view === 'source') {
+          ui.readerBody.append(make('pre', 'md-source', report.markdown || ''));
+          return;
+        }
+        const host = make('div', 'md');
+        mountMarkdown(host, report.html || '');
+        ui.readerBody.append(host);
+      }
+
+      function renderReaderChrome() {
+        const report = state.detail;
+        const total = state.visible.length;
+        const position = state.index >= 0 ? state.index + 1 : 0;
+
+        text(ui.readerTitle, report ? report.title : '');
+        text(ui.readerEyebrow, report ? domainLabel(report.domain) : '');
+
+        const meta = [];
+        if (report) {
+          if (report.updated_on) meta.push(report.updated_on);
+          if (report.source) meta.push(report.source);
+          if (report.episode) meta.push(report.episode);
+        }
+        text(ui.readerMeta, meta.join(' · '));
+
+        ui.readerLinks.replaceChildren();
+        if (report) {
+          if (report.github_url) {
+            const link = make('a', 'link', '在 GitHub 打开');
+            link.href = report.github_url;
+            link.target = '_blank';
+            link.rel = 'noreferrer noopener';
+            ui.readerLinks.append(link);
+          }
+          if (report.source_url) {
+            const link = make('a', 'link', '打开来源');
+            link.href = report.source_url;
+            link.target = '_blank';
+            link.rel = 'noreferrer noopener';
+            ui.readerLinks.append(link);
+          }
+        }
+
+        text(ui.readerPos, position ? `${position} / ${total}` : '');
+        ui.readerPrev.disabled = state.index <= 0;
+        ui.readerNext.disabled = state.index < 0 || state.index >= total - 1;
+        ui.viewRendered.setAttribute('aria-pressed', String(state.view === 'rendered'));
+        ui.viewSource.setAttribute('aria-pressed', String(state.view === 'source'));
+      }
+
+      async function loadDetail(report) {
+        const cached = state.cache.get(report.path);
+        if (cached) return cached;
+        const response = await fetch(`/api/report?path=${encodeURIComponent(report.path)}`);
+        const payload = await response.json();
+        if (!payload || payload.ok !== true || !payload.report) {
+          throw new Error((payload && payload.error) || 'unknown');
+        }
+        state.cache.set(report.path, payload.report);
+        return payload.report;
+      }
+
+      async function openReader(index, opener) {
+        const requestId = ++state.requestId;
+        const report = state.visible[index];
+        if (!report) return;
+        state.index = index;
+        state.opener = opener || null;
+        state.detail = null;
+        state.currentPath = report.path;
+
+        ui.overlay.hidden = false;
+        document.body.classList.add('is-locked');
+        renderReaderChrome();
+        markCurrent();
+        ui.readerBody.replaceChildren(make('p', 'reader__notice', '正在读取报告…'));
+
+        let detail = null;
+        try {
+          detail = await loadDetail(report);
+        } catch (error) {
+          if (requestId !== state.requestId) return;
+          ui.readerBody.replaceChildren(
+            make('p', 'reader__notice', `无法读取该报告（${error.message}）。`),
+          );
+          ui.readerClose.focus();
+          return;
+        }
+        if (state.index !== index) return;
+        if (requestId !== state.requestId) return;
+        state.detail = detail;
+        renderReaderChrome();
+        renderReaderBody();
+        ui.readerBody.scrollTop = 0;
+        ui.readerBody.focus();
+      }
+
+      function closeReader() {
+        state.requestId += 1;
+        ui.overlay.hidden = true;
+        document.body.classList.remove('is-locked');
+        const opener = state.opener;
+        state.opener = null;
+        state.detail = null;
+        if (opener && document.contains(opener)) opener.focus();
+        else ui.search.focus();
+      }
+
+      function markCurrent() {
+        ui.list.querySelectorAll('.row__btn').forEach((node) => {
+          const report = state.visible[Number(node.dataset.index)];
+          if (report && report.path === state.currentPath) {
+            node.setAttribute('aria-current', 'true');
+          } else {
+            node.removeAttribute('aria-current');
+          }
+        });
+      }
+
+      function step(delta) {
+        const next = state.index + delta;
+        if (next < 0 || next >= state.visible.length) return;
+        const button = ui.list.querySelector(`.row__btn[data-index="${next}"]`);
+        openReader(next, button);
+      }
+
+      function trapFocus(event) {
+        const focusable = Array.from(
+          ui.overlay.querySelectorAll(
+            'button:not([disabled]), a[href], input:not([disabled]), select, [tabindex]:not([tabindex="-1"])',
+          ),
+        ).filter((node) => node.offsetParent !== null);
+        if (!focusable.length) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
+
+      function scrollToAnchor(hash) {
+        if (!hash) return;
+        let id;
+        try { id = decodeURIComponent(hash.slice(1)); } catch { return; }
+        const target = Array.from(ui.readerBody.querySelectorAll('[id]')).find((node) => node.id === id);
+        if (!target) return;
+        for (let parent = target.parentElement; parent && parent !== ui.readerBody; parent = parent.parentElement) {
+          if (parent.tagName === 'DETAILS') parent.open = true;
+        }
+        target.scrollIntoView({ block: 'start' });
+      }
+
+      ui.readerBody.addEventListener('click', async (event) => {
+        const link = event.target.closest('a[href]');
+        if (!link) return;
+        const raw = link.getAttribute('href');
+        if (raw.startsWith('#')) {
+          event.preventDefault();
+          scrollToAnchor(raw);
+          return;
+        }
+        const url = new URL(link.href, location.href);
+        if (url.origin !== location.origin || url.pathname !== '/dashboard') return;
+        const path = url.searchParams.get('report');
+        if (!path) return;
+        event.preventDefault();
+        const pin = state.pins.find((item) => item.path === path);
+        if (pin) {
+          await openPinned(pin, link);
+        } else {
+          let index = state.visible.findIndex((item) => item.path === path);
+          if (index < 0) {
+            state.domain = 'all'; state.query = ''; ui.search.value = '';
+            renderDomains(); renderList();
+            index = state.visible.findIndex((item) => item.path === path);
+          }
+          if (index >= 0) await openReader(index, link);
+        }
+        if (!ui.overlay.hidden && state.currentPath === path) scrollToAnchor(url.hash);
+      });
+
+      ui.readerClose.addEventListener('click', closeReader);
+      ui.readerPrev.addEventListener('click', () => step(-1));
+      ui.readerNext.addEventListener('click', () => step(1));
+      ui.viewRendered.addEventListener('click', () => {
+        state.view = 'rendered';
+        renderReaderChrome();
+        renderReaderBody();
+      });
+      ui.viewSource.addEventListener('click', () => {
+        state.view = 'source';
+        renderReaderChrome();
+        renderReaderBody();
+      });
+
+      ui.overlay.addEventListener('click', (event) => {
+        if (event.target === ui.overlay) closeReader();
+      });
+
+      ui.overlay.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          event.preventDefault();
+          closeReader();
+          return;
+        }
+        if (event.key === 'ArrowLeft') {
+          event.preventDefault();
+          step(-1);
+          return;
+        }
+        if (event.key === 'ArrowRight') {
+          event.preventDefault();
+          step(1);
+          return;
+        }
+        if (event.key === 'Tab') trapFocus(event);
+      });
+
+      ui.list.addEventListener('keydown', (event) => {
+        if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') return;
+        const buttons = Array.from(ui.list.querySelectorAll('.row__btn'));
+        if (!buttons.length) return;
+        const current = buttons.indexOf(document.activeElement);
+        if (current === -1) return;
+        const next = event.key === 'ArrowDown' ? current + 1 : current - 1;
+        if (next < 0 || next >= buttons.length) return;
+        event.preventDefault();
+        buttons[next].focus();
+        buttons[next].scrollIntoView({ block: 'nearest' });
+      });
+
+      ui.domain.addEventListener('change', (event) => {
+        state.domain = event.target.value;
+        state.limit = 80;
+        renderList();
+      });
+
+      ui.search.addEventListener('input', (event) => {
+        state.query = event.target.value;
+        state.limit = 80;
+        renderList();
+      });
+
+      ui.refresh.addEventListener('click', () => {
+        void load(true);
+      });
+
+      ui.setupForm.addEventListener('submit', (event) => {
+        void saveSetup(event);
+      });
+
+      async function load(force) {
+        if (force) { state.cache.clear(); closeReader(); }
+        ui.status.hidden = false;
+        ui.status.className = 'status';
+        text(ui.status, force ? '正在重新扫描公开仓…' : '正在读取公开仓报告目录…');
+        ui.refresh.disabled = true;
+
+        let payload = null;
+        try {
+          const response = await fetch(`/api/reports${force ? '?refresh=1' : ''}`);
+          payload = await response.json();
+        } catch (error) {
+          payload = { ok: false, error: 'request_failed' };
+        }
+        ui.refresh.disabled = false;
+
+        if (payload && payload.error === 'repo_not_configured') {
+          showSetup(payload.tried || []);
+          return;
+        }
+
+        if (!payload || payload.ok !== true || !Array.isArray(payload.reports)) {
+          ui.status.className = 'status status--error';
+          text(
+            ui.status,
+            payload?.error === 'python_unavailable'
+              ? '缺少 Python 3。安装后重新启动工作台，或用 --python 指定命令。'
+              : '暂时无法读取报告。请检查本地仓库是否完整，再点击刷新。',
+          );
+          return;
+        }
+
+        hideSetup();
+        state.reports = payload.reports;
+        state.pins = payload.pins || [];
+        state.domains = payload.domains || [];
+        renderMeta(payload);
+        renderDomains();
+        renderPins();
+        renderList();
+        if (!force) {
+          const path = new URLSearchParams(location.search).get('report');
+          const pin = state.pins.find((item) => item.path === path);
+          if (pin) void openPinned(pin, null);
+          else {
+            const index = state.visible.findIndex((item) => item.path === path);
+            if (index >= 0) void openReader(index, null);
+          }
+        }
+      }
+
+      void load(false);
+    </script>
+  </body>
+</html>

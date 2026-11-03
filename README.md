@@ -116,6 +116,14 @@ Wiki 三列数字依次是概念、实体（人物、机构等）和综合分析
 
 **阅读**：从[报告索引](./docs/REPORT_INDEX.md)或上面的领域目录进入，无需安装工具。报告中的原始来源和相关 Wiki 可以继续引向更具体的问题。
 
+**本地工作台**：想按日期、领域和关键词翻阅报告，可以在仓库根目录运行下面的命令，再打开终端给出的地址：
+
+```bash
+node apps/everagent-learning/start.mjs
+```
+
+需要 Node.js 20+ 和 Python 3.10+，无需模型账号。[启动说明](./apps/everagent-learning/README.md)也介绍了如何作为 MiniMax Code Mini App 使用。
+
 **用 Agent 参与研究**：在仓库根目录启动 Agent，保留项目指令加载，再给出材料和想弄清的问题。例如：
 
 > 精读这篇论文，解释方法、证据与局限。
