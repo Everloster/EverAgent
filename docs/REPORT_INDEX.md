@@ -7,6 +7,7 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
+| 2026-11-03 | [十字路口年终复盘：AI 的十个惊讶时刻，哪些值得带回日常？](../podcast-learning/reports/2026-11-02_xiaoyuzhou-crossing_ai-aha-moments.md) | podcast-learning |
 | 2026-11-02 | [答案在逐字出现，Agent 到底做到哪一步了？—— Agent 请求全链路续篇](../ai-learning/reports/knowledge_reports/Agent请求全链路_流式响应与断线恢复_科普讲解_20261102.md) | ai-learning |
 | 2026-11-01 | [飞行汽车的剧本与欧洲的账本：赛博对话 vol.60 深读](../podcast-learning/reports/2026-10-30_saibo-duihua_v60-roadster-china-auto-europe.md) | podcast-learning |
 | 2026-11-01 | [郭凯谈中国经济新范式：拐点、平行线与还没兑现的红利](../podcast-learning/reports/2026-10-30_zhixing-xiaojiuguan_e256-guokai-economy-households.md) | podcast-learning |
@@ -31,7 +32,6 @@
 | 2026-10-25 | [晚点聊 184：Astra 之后，具身智能的护城河从大脑移到哪里](../podcast-learning/reports/2026-10-15_rss-wandian-latetalk_184-embodied-quarterly-26q3.md) | podcast-learning |
 | 2026-10-25 | [忽左忽右 510：侨批不是一封家书，而是一套跨国金融与亲缘基础设施](../podcast-learning/reports/2026-10-23_xiaoyuzhou-huzuo-huyou_ep510-thai-qiaopi-network.md) | podcast-learning |
 | 2026-10-25 | [张小珺 × Lindon Gao（Dyna Robotics）：机器人长跑里的闭环、推论与「不犯错的 CEO」包袱](../podcast-learning/reports/2026-10-15_xiaoyuzhou-zhangxiaojun_vol154-dyna-lindon.md) | podcast-learning |
-| 2026-10-25 | [声东击西 #408：互联网增长的红利、代价与一个人的十年自我重建](../podcast-learning/reports/2026-10-22_rss-shengdong-jixi_ep408-lijing-internet-growth-self-reconstruction.md) | podcast-learning |
 
 ## 🤖 AI Learning（153 篇）
 
@@ -316,10 +316,11 @@
 | 2026-04-20 | [Qwen2.5-3B GRPO 强化学习微调](../ai-practice/experiments/exp_004_qwen25_grpo_finetune.md) | — |
 | 2026-04-20 | [HuggingFace Hub 模型与数据集管理](../ai-practice/experiments/exp_002_huggingface_basics.md) | — |
 
-## 🎙️ Podcast Learning（115 篇）
+## 🎙️ Podcast Learning（116 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-11-03 | [十字路口年终复盘：AI 的十个惊讶时刻，哪些值得带回日常？](../podcast-learning/reports/2026-11-02_xiaoyuzhou-crossing_ai-aha-moments.md) | `podcast`, `crossing`, `zhuang-minghao`, `rsi`, `agent`, `video-model` |
 | 2026-11-01 | [飞行汽车的剧本与欧洲的账本：赛博对话 vol.60 深读](../podcast-learning/reports/2026-10-30_saibo-duihua_v60-roadster-china-auto-europe.md) | `podcast`, `tesla`, `roadster`, `flying_car`, `europe`, `china_auto` |
 | 2026-11-01 | [郭凯谈中国经济新范式：拐点、平行线与还没兑现的红利](../podcast-learning/reports/2026-10-30_zhixing-xiaojiuguan_e256-guokai-economy-households.md) | `podcast`, `china_macro`, `property_cycle`, `new_economy`, `ai_labor`, `consumption` |
 | 2026-11-01 | [狂飙中的 AI 2026：模型发布、收入增长与算力债务](../podcast-learning/reports/2026-10-26_tulong-zhishu_ai-2026-version-race.md) | `podcast`, `ai-2026`, `version-race`, `rsi`, `capex`, `neocloud` |

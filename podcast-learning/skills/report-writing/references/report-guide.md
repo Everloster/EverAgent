@@ -9,13 +9,13 @@
 
 ## 一、开工前（顺序固定）
 
-1. 先用 `eacli knowledge.podcasts` 或仓内 URL/标题检索查重；需要刷新节目单时只跑目标节目：
+1. 先用 `eacli context get --domain knowledge.podcasts --json` 或仓内 URL/标题检索查重；需要刷新节目单时只跑目标节目：
    `python3 scripts/fetch_show_indexes.py --show <slug> --dry-run --json`。确认要写回后再去掉
    `--dry-run`；不要为查一集默认刷新全部节目。随后运行 `sync_index_status.py` 核对状态列
    （✅ = 跳过）。技术播客雷达中尚未进入个人精选 OPML 的节目不运行该脚本，直接按单集
    `source_url` 查重并保留雷达来源信息。
 2. shownotes **先于润色**拿到（智谱 web.read；对含"加息/投资/金融"字样的小宇宙 URL 会触发 1301 审查误判 → curl 公开页面降级并记录）
-3. 转写通道判定：小宇宙域名走 Razer eacli podcast；transistor/fireside 直链走本地 `transcribe.py`（Razer 白名单不批）；中英混合音频（外文回答）当前 pipeline 无法正确转写——提前决定"转译大意版"策略并在 frontmatter 标注
+3. 转写统一按 [transcription skill](../../transcription/SKILL.md) 判定：URL 默认使用 `eacli transcription` 远端静默 worker；不沿用旧域名白名单推断可用性。中英混合内容需核验实际转写效果，无法忠实还原时说明限制，不把译述冒充逐字稿。
 4. 转写完成必跑 `python3 podcast-learning/scripts/audit_transcript.py <transcript> --json`
    （同句连续 >3 段失败、时间戳与尾部间隔可见）+ 人工头尾抽查
 
@@ -34,8 +34,8 @@
 4. **先做来源覆盖表**：按 shownotes、精编章节或自然论证单元列出 `source_coverage`。每个单元标 `core/supporting`、`included/omitted`、报告锚点和省略理由；frontmatter 声明有 shownotes 章节时，每章都要登记。`standard/deep` 的核心单元不得省略。Reviewer 必须先独立读来源，把自己的内容地图写入 `source_content_map`，再映射这张表，不能只审生成者主动登记的 claims 或机械填满 coverage ID。
 5. **正文结构**：至少包含内容地图，以及 3 个以上展开后的主线小节；每节需回答“节目说了什么、用了什么例子、证据边界是什么、我如何理解”。数字表和事实核验表不能代替论证正文。
 6. **原话引用规范**：「关键观点」引的是润色修正版时，节末统一注明“原话据润色稿，原转写含误识别”；未经修正的原样引用单独标注。引用用于保留声音和关键推理，不追求数量。
-7. **wiki 双链 ≥1**：正文至少 1 处 `[[...]]` 链到概念/实体页或相关报告；没有可链对象时在 Limitations 写明。
-8. **frontmatter 数字禁止手填**：写完报告必跑 `python3 scripts/fill_report_stats.py <报告>`。跨期多文件等特殊报告若脚本不能正确聚合，只用 `--dry-run` 检查并在 frontmatter 明示多文件口径。
+7. **相关阅读可点击**：需要连接已有概念、实体或报告时，使用具名的标准 Markdown 相对链接，兼容 GitHub 与学习工作台；不为凑链接数量新增无关引用。
+8. **frontmatter 数字必须实测**：仓内原文使用 `python3 podcast-learning/scripts/fill_report_stats.py <报告>`；原文私有或跨期聚合未被脚本支持时，直接对真实文件统计并保留脱敏依据。空路径下的“无差异”不代表核验了私有文件，不能为迁就脚本公开全文。
 9. **思考与追问·问 2 全量汇入 open-questions**；问 3 的行动项若可执行，写明谁/何时，或明确挂起。
 10. **新报告 frontmatter**：增加 `quality_schema: "report-v2"`、`quality_tier: "important"`、`report_depth` 和 `reader_contract: standalone`，并逐字段核对实际节目。
 
@@ -49,10 +49,10 @@
 
 ## 五、纪律红线（2026-10-14 全库 review 后立，违反即返工）
 
-1. **压缩比声明必须取 fill_report_stats 实测值**，禁止手感估——虚高 2-4pp 属诚实性缺陷（2026-10-14 全库查出 4 篇已校准；声明与实测差 >2pp 会被 audit_reports.py 拦下）。
+1. **精编保留比例必须来自真实文件统计**，分子分母使用相同字符口径，禁止手感估。仓内原文可用 `fill_report_stats.py`，私有原文按上文第 8 项核验（声明与实测差 >2pp 会被 `audit_reports.py` 拦下）。
 2. **frontmatter 逐字段回看一眼再提交**——2026-10-12 实证：chapters 字段整段复制了另一期的模板。凡复用上一期报告当骨架，改完必须逐字段比对源集 shownotes。
 3. **修辞强度不得高于证据强度**：禁用「恰好完备/互斥完备/公理级/所有报告中最 X」类全称断言，除非已逐一核对并在文中写明核对范围；对照性结论用「对照/互补/形成张力」，不用「统一/收束/证明」。
-4. **[?] 核实义务**：一次 web.search 就能清掉的 [?]（产品名/人名/公司名）必须在成稿前清；清不掉的才保留，并在 Limitations 写明尝试过什么。靠 [?] 兑底堆密度 = 偷懒。
+4. **转写疑点必须处理**：专名、金额、否定词和说话人归属需结合上下文与可靠来源核对。搜索线索不能单独证明就是口播中的对象；无法恢复时用不依赖该细节的概括，必要处标 `[?]`，不能猜补精确数字后仅加“未独立核实”。
 5. **「原话」引文拼接规则**：允许用省略号跨段拼接，但不得改字/改序/补词；拼接后的语义不得超出原语境。
 6. **数字表条目必须是数字**，来源分三级标注：转写原文 / 口播口径 / 嘉宾转述（二手）——二手数字不标注就当一手用是最大风险（2026-10-12 Jev 100 亿估值实证）。
 7. **高精度不等于高覆盖**：Reviewer 必须从原始来源反推核心内容，不能把“报告中登记的 claim 全部正确”误判成“报告完整”。2026-10-20 大小马 V94 实证：2.27 万字转写被压成 2227 字报告，概览+分析仅 829 字，旧门禁仍给出 93.05 分。
@@ -62,11 +62,10 @@
 
 - MiniMax M3.1 Flash 对长篇“先分析再输出”任务可能把 `max_tokens` 全耗在强制 thinking，最终没有正文。60 分钟以上节目用 2–5 分钟或单章节切片，prompt 只要求“压缩翻译/整理，只输出正文”，单片 `max_tokens` 可设 9000；由协调器按逐字稿组装与核验。空 final 视为失败调用，生成能力不得自动重放。
 - 智谱 web.read 对小宇宙金融词 URL 误判 1301 → curl 降级
-- Razer artifact 拉回：`eacli pull` 当前单文件上限 190KB；更大 transcript 用
-  `podcast-learning/scripts/podcast_artifact_pull.py pull` 自动走 `eacli invoke` 远程分片、
-  `eacli pull` 拉回并按原 artifact SHA-256 重组（2026-10-19：同一份 234593 bytes artifact
-  首轮手工按 100KB 拆成三片；helper 端到端复验按 180KB 拆成两片，重组哈希均一致）
-- whisper 转写专名灾难区：Seedance(8+ 写法)/CapCut(5+)/汞→拱肱股肿/鳕→血雪/Li An→李治霖(6 写法)——shownotes 是唯一修正源，无 shownotes 的集慎引专名
+- 远端 artifact 用 `eacli file pull` 按原回执 SHA-256 校验传输；
+  `podcast-learning/scripts/podcast_artifact_pull.py pull` 是带私有目标与大小校验的包装，
+  不再自行分片。完整原文和精编稿只拉到仓外，不能沿用旧公开目录示例。
+- whisper 常误识别专名：Seedance、CapCut 等可能出现多种写法。先核 shownotes，必要时读官方资料；无法确认则保留疑点或省去非核心专名，不能凭音近猜补。
 - 中英混合访谈：英文被强转破碎中文，两次尝试（zh/auto）均失败——引用以视频字幕/原书为准
 - frontmatter source_url 后不要写中文注释（URL 正则会吞）——2026-10-09 sync 失配实证
 - transistor/fireside 源的 shownotes 直接从 RSS feed 拿（episode description），比 web.read 稳

@@ -18,11 +18,11 @@
 ## 最近更新
 
 <!-- AUTO-RECENT:START -->
+- 2026-11-03 · [十字路口年终复盘：AI 的十个惊讶时刻，哪些值得带回日常？](./podcast-learning/reports/2026-11-02_xiaoyuzhou-crossing_ai-aha-moments.md)
 - 2026-11-02 · [答案在逐字出现，Agent 到底做到哪一步了？—— Agent 请求全链路续篇](./ai-learning/reports/knowledge_reports/Agent请求全链路_流式响应与断线恢复_科普讲解_20261102.md)
 - 2026-11-01 · [飞行汽车的剧本与欧洲的账本：赛博对话 vol.60 深读](./podcast-learning/reports/2026-10-30_saibo-duihua_v60-roadster-china-auto-europe.md)
 - 2026-11-01 · [郭凯谈中国经济新范式：拐点、平行线与还没兑现的红利](./podcast-learning/reports/2026-10-30_zhixing-xiaojiuguan_e256-guokai-economy-households.md)
 - 2026-11-01 · [狂飙中的 AI 2026：模型发布、收入增长与算力债务](./podcast-learning/reports/2026-10-26_tulong-zhishu_ai-2026-version-race.md)
-- 2026-11-01 · [人往贵处集中：陆铭谈大城市、内卷、房价与 AI 时代的经济学](./podcast-learning/reports/2026-10-26_gaonengliang_v239-luming-ai-cities-consumption.md)
 <!-- AUTO-RECENT:END -->
 
 按报告修改日期排列，修订过的旧报告也会出现在这里。[浏览全部报告 →](./docs/REPORT_INDEX.md)
@@ -64,7 +64,7 @@ Wiki 三列数字依次是概念、实体（人物、机构等）和综合分析
 | 🧠 [Psychology Learning](./psychology-learning/) | 17 篇 | 13/13/0 |
 | 🧬 [Biology Learning](./biology-learning/) | 18 篇 | 14/9/0 |
 | ⚗️ [AI Practice](./ai-practice/) | 10 篇 | 9/1/0 |
-| 🎙️ [Podcast Learning](./podcast-learning/) | 115 篇 | 58/54/0 |
+| 🎙️ [Podcast Learning](./podcast-learning/) | 116 篇 | 58/54/0 |
 | 🔭 [GitHub Research](./github-trending-analyzer/) | 124 篇 | 0/0/0 |
 | 🏄 [Web Surfing](./web-surfing/) | 47 篇 | 0/0/0 |
 <!-- AUTO-OVERVIEW:END -->

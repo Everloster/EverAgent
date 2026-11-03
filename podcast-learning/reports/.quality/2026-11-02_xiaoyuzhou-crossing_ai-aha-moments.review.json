@@ -1,0 +1,1133 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-11-02_xiaoyuzhou-crossing_ai-aha-moments.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-6",
+        "harness": "codex",
+        "run_id": "crossing-aha-20261102-independent-review",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "model_identity_basis": "当前会话指令仅支持通用GPT-6身份，未核实具体部署后缀；这是普通独立复核，不声称强模型复核。",
+        "exact_deployment_verified": false,
+        "strong_reviewer_claimed": false
+      },
+      "reviewed_snapshot": {
+        "report_sha256": "0504f4d519e3431b9250b3341505056633d78ecf551f708b45d3d5791f300752",
+        "evidence_sha256": "05c2108f5fee4331fb6bf0c704166f11f657a1e52ad9b6f948d06475529ccfc2",
+        "verified_before_reading": true,
+        "authorized_update": "完整阅读的第二版SHA为0a88d00a5a27ef7c5b532a130dbb391aedc899adaad1ef3203945c01eec5feff。协调者授权两次展示修正：人物wikilink改标准Markdown后为4d524ba0fd6e47aac7832a9badf5791f9d88f6872d494a9de47b0087d5206db3；删除11个不受工作台支持的raw HTML锚点、内容地图链接改普通文字后为当前SHA。复核者分别反向恢复这些修改，哈希均精确恢复上一快照，确认没有其他正文变化。"
+      },
+      "scores": {
+        "evidence_fidelity": 93,
+        "request_coverage": 96,
+        "reasoning_quality": 93,
+        "readability": 88,
+        "limitations": 95
+      },
+      "score_reasons": {
+        "evidence_fidelity": "已完整读取全量转写、官方节目页、最终报告、证据账本和精编稿，独立读完RSI、Sora、Apple与App Store报道。关键日期、金额口径、RSI实现边界、人物线索与语义反向问题均已纠正。ASR仍未逐句听音，外围新闻与部分专名仅能核实为节目讨论；这些边界已进入正文，不再被当作已证事实。",
+        "request_coverage": "来源优先生成的25个单元全部映射并在正文覆盖，包含11章、关键案例及主要反方；不仅核对生成者登记的14项claim。全文与精编稿工件哈希相符，转写时间戳单调性审计通过。音频时长与11分块处理证据来自协调者；桌面与真实390px窄屏已由协调者实测，复核者已读取相应结构化渲染回执，未发现剩余需求缺口。",
+        "reasoning_quality": "区分AI辅助研发、商业反馈循环与完整自主RSI；App Store相关性不再替代因果，模型比较明确支配条件与任务总成本。分析和教学假设有清晰归属，保留可灵、成熟游戏商业、Manus先例与1Password反例。对执行与判断的概括属于原文跨工程/研究类别的归纳，并非其正式章节分类；仍有少量可更精练之处。",
+        "readability": "源码层面已阅读全文：开头交代节目和范围，速览、11章地图、连贯段落及相邻具名来源改善了独立阅读。人物wikilink已改为标准Markdown，不受工作台支持的raw HTML锚点已删除，章节跳转使用自动目录。协调者实测桌面与390px窄屏无正文横向溢出，表格可横滑，20个目录目标存在并验证App Store跳转；复核者已读回执，未亲自执行渲染或查看截图。边界提醒仍较多，部分段落略密，故保留88分。",
+        "limitations": "明确没有逐句听音、没有复现演示、未取得能力追赶图/OpenRouter原始统计/Morgan Stanley原始研究；区分结构审计与逐字准确，清楚限定二手报道及未核日期、专名和说话人。正文与限制目前一致；剩余不确定性没有被包装为确认结果。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14"
+      ],
+      "coverage_unit_ids_checked": [
+        "CU00",
+        "CU01",
+        "CU02",
+        "CU03",
+        "CU04",
+        "CU05",
+        "CU06",
+        "CU07",
+        "CU08",
+        "CU09",
+        "CU10",
+        "CU11",
+        "CU12",
+        "CU13",
+        "CU14",
+        "CU15",
+        "CU16",
+        "CU17",
+        "CU18",
+        "CU19",
+        "CU20",
+        "CU21",
+        "CU22",
+        "CU23",
+        "CU24"
+      ],
+      "source_content_map": [
+        {
+          "id": "ISM00",
+          "title": "系列动机：用个人触动串起年度复盘",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio",
+            "src-shownotes"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU00"
+          ],
+          "notes": "00:01–00:46；第 1–26 行；开篇与第一节保留个人年度触动、十个主题另加彩蛋的组织方式，没有改写成完整行业年鉴。"
+        },
+        {
+          "id": "ISM01",
+          "title": "OpenClaw 将 Agent 与 Harness 的产品形态聚拢",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio",
+            "src-shownotes"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU01"
+          ],
+          "notes": "00:46–03:25；第 27–145 行；第一节呈现 Agent 与 Harness 的组合：本地或云端、常驻设备、通知和流程等；将产品形态归于嘉宾观察。"
+        },
+        {
+          "id": "ISM02",
+          "title": "早期实践的收益和普通人的 FOMO 成本不同",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio",
+            "src-shownotes"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU02"
+          ],
+          "notes": "03:25–06:34；第 146–284 行；第一节分别保留早期实践者理解产品边界的收益与普通人追热点的成本；否定词受损处结合后文中性转述，首轮反向表述已修正。"
+        },
+        {
+          "id": "ISM03",
+          "title": "Seedance 优势被解释为资源与内容商业循环",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio",
+            "src-shownotes"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU03"
+          ],
+          "notes": "06:34–11:11；第 285–485 行；第二节保留数据、资源、生成—分发—广告—反馈的商业机制，以及可灵有类似但被嘉宾判断规模较小循环的反例；不把竞争排名当作统计事实。"
+        },
+        {
+          "id": "ISM04",
+          "title": "通用模型是否会覆盖视频与物理专门路线，仍是争论",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio",
+            "src-shownotes"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU04"
+          ],
+          "notes": "11:11–14:34；第 486–618 行；第二节呈现通用与专门路线争论、具身商业尚不稳定、游戏已有成熟商业支撑的反例及红果支线；没有确定未来胜负。"
+        },
+        {
+          "id": "ISM05",
+          "title": "Sora 2 关闭引出巨头边界与垂直创业机会",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio",
+            "src-shownotes",
+            "src-sora"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU05"
+          ],
+          "notes": "14:34–19:15；第 619–802 行；第三节保留巨头资源取舍、搜索/浏览器与陪伴等垂直机会、供应商收入传导；已删除无法恢复的金额，且依据官方说明分别纠正网页/App与API停服日。"
+        },
+        {
+          "id": "ISM06",
+          "title": "RSI 的触动来自对自我改进循环的可视化理解",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio",
+            "src-shownotes",
+            "src-anthropic-rsi"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU06"
+          ],
+          "notes": "19:15–22:07；第 803–923 行；第四节保留图示、PPT经验与情绪触动；同时明确原文说完整自主RSI尚未实现且非必然，区分辅助研发、商业循环与完全自主循环。"
+        },
+        {
+          "id": "ISM07",
+          "title": "新实验室的同向探索如何拉动下游供给",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio",
+            "src-shownotes"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU07"
+          ],
+          "notes": "22:07–23:59；第 924–1000 行；第四节把Recursive、Jeff Dean与Mira等线索分开，保留人员、数据、训练环境、后训练和评测投入传导；没有重新猜补公司身份与融资数据。"
+        },
+        {
+          "id": "ISM08",
+          "title": "生产力与安全风险共享持续执行和懂代码的能力",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio",
+            "src-shownotes"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU08"
+          ],
+          "notes": "23:59–27:30；第 1001–1137 行；第四节覆盖懂代码与持续执行的生产力/攻击双重用途、响应窗口担忧及讲述者利益边界；具体安全事件仍未核实，zero-day不再被定义为时长。"
+        },
+        {
+          "id": "ISM09",
+          "title": "连研究者也会经历失去掌控感",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio",
+            "src-shownotes"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU09"
+          ],
+          "notes": "27:30–28:29；第 1138–1174 行；第四节末保留研究者失去掌控感的个人体验，没有推出所有专家已经失去价值。"
+        },
+        {
+          "id": "ISM10",
+          "title": "老牌硬件厂商重回视野：AI 需求不只流向新软件",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio",
+            "src-shownotes"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU10"
+          ],
+          "notes": "28:29–30:45；第 1175–1265 行；第五节保留老歌手类比、熟悉硬件厂商重新受关注及物理供给视角；未核奖项、排名与市场口径不再支撑断言。"
+        },
+        {
+          "id": "ISM11",
+          "title": "内容行业的素材、流程和版权商业化同时受压",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio",
+            "src-shownotes"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU11"
+          ],
+          "notes": "30:45–31:30；第 1266–1301 行；第五节分别讨论素材、制作流程、版权商业化压力，说明死亡为修辞，保留对艺术与商业变化方向、速度、强度的不确定。"
+        },
+        {
+          "id": "ISM12",
+          "title": "Codex 与 ChatGPT 合并及工作型界面的阶段性共识",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio",
+            "src-shownotes"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU12"
+          ],
+          "notes": "31:30–33:32；第 1302–1390 行；第六节保留项目—执行—结果界面、Manus先例及阶段性共识；口播日期、用户数和型号未被当成产品史。"
+        },
+        {
+          "id": "ISM13",
+          "title": "能力整合也增加认知成本，给极简产品留出入口",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio",
+            "src-shownotes"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU13"
+          ],
+          "notes": "33:32–35:19；第 1391–1472 行；第六节保留模式选择、速度、额度与重置时间的认知成本，以及功能累积给简洁工具留出机会的判断；不再把混合个人经历整体归给嘉宾。"
+        },
+        {
+          "id": "ISM14",
+          "title": "端侧小模型追赶过去前沿能力的时差缩短",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio",
+            "src-shownotes"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU14"
+          ],
+          "notes": "35:19–37:30；第 1473–1563 行；第七节保留追赶时差图、旧机会重做的论点，明确九个月来自未取得原图的节目回忆；型号与评测未确认，赢家未知。"
+        },
+        {
+          "id": "ISM15",
+          "title": "成本包含价格之外的任务与部署约束",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio",
+            "src-shownotes"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU15"
+          ],
+          "notes": "37:30–38:48；第 1564–1618 行；第七节把成本扩展到任务、开闭源、部署地点和使用环境；延伸示例明确是假设，且修正本地必然不出网、云端必然更新更快的外推。"
+        },
+        {
+          "id": "ISM16",
+          "title": "App Store 变化被用作软件替代信号，但因果不确定",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio",
+            "src-shownotes",
+            "src-apple",
+            "src-appstore"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU16"
+          ],
+          "notes": "38:48–40:01；第 1619–1669 行；第八节区分个性化软件可能性与App Store宏观因果；官方Apple财报与Dataconomy转述Morgan Stanley的对象、日期、窗口、来源级别均已纠正，并保留其他解释。"
+        },
+        {
+          "id": "ISM17",
+          "title": "自制软件的具体案例与仍愿付费的信任边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio",
+            "src-shownotes"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU17"
+          ],
+          "notes": "40:01–41:40；第 1670–1750 行；第八节保留鼠标配套软件、观鸟学习程序及1Password信任/付费反例；未核说话人和专名不猜补，鼠标软件不再被写成制造硬件。"
+        },
+        {
+          "id": "ISM18",
+          "title": "斩杀线把能力与价格放在同一张图上",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio",
+            "src-shownotes"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU18"
+          ],
+          "notes": "41:40–44:09；第 1751–1840 行；第九节准确解释评分与价格两轴、非支配前沿及至少一项严格改善的条件；教学数字明确标作假设，单一评分与真实体验的差距保留。"
+        },
+        {
+          "id": "ISM19",
+          "title": "模型使用走向分层：前沿溢价与日常低成本并存",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio",
+            "src-shownotes"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU19"
+          ],
+          "notes": "44:09–45:18；第 1841–1889 行；第九节保留前沿溢价与日常低价供给并存的预测；缺原始OpenRouter榜单、时间窗和分母，因此删除八成到两成数字，区分Token单价与合格任务总成本。"
+        },
+        {
+          "id": "ISM20",
+          "title": "Opus 5.5 动态可视化触及创作者自身技能",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio",
+            "src-shownotes"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU20"
+          ],
+          "notes": "45:18–46:49；第 1890–1960 行；第十节保留PPT/动态可视化对熟悉技能的冲击、主观理解提升与风格指示；不把不同发言者混成同一履历，也不把体验当学习测量。"
+        },
+        {
+          "id": "ISM21",
+          "title": "奇观成为传达能力的方式，也制造疲劳",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio",
+            "src-shownotes"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU21"
+          ],
+          "notes": "46:49–48:44；第 1961–2041 行；第十节解释奇观如何让非专业观众看见能力，同时保留疲劳、麻木和未来不可预测；满分比喻不再外推到任意任务。"
+        },
+        {
+          "id": "ISM22",
+          "title": "《赵云与阿斗》用粗糙文字反衬精致 AI 画面的疲劳",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio",
+            "src-shownotes"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU22"
+          ],
+          "notes": "48:44–51:31；第 2042–2157 行；第十一节保留文字角色、成熟玩法、粗糙审美反差及新鲜感可能短暂；删除损坏合成公式，未核排名、动机和走红因果不再升格为事实。"
+        },
+        {
+          "id": "ISM23",
+          "title": "公路播客的不可控状态与具体人味",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio",
+            "src-shownotes"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU23"
+          ],
+          "notes": "51:31–52:14；第 2158–2183 行；第十一节保留旅行环境不可控、创作者状态与表达的关系；删除杀伤力猜补，不宣告人味不可复制。"
+        },
+        {
+          "id": "ISM24",
+          "title": "结尾用生活而非持续焦虑收束",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "src-audio",
+            "src-shownotes"
+          ],
+          "matched_coverage_unit_ids": [
+            "CU24"
+          ],
+          "notes": "52:14–53:16；第 2184–2237 行；结尾保留享受生活的收束与AI话题占比下降的节目观察；没有猜补活动场次数或分母扩张，也没有推导AI重要性下降。"
+        }
+      ],
+      "source_ids_checked": [
+        "src-audio",
+        "src-shownotes",
+        "src-audit",
+        "src-anthropic-rsi",
+        "src-sora",
+        "src-apple",
+        "src-appstore"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "source_first_provenance": {
+        "source_map_sha256": "d57ca5975074e921c534d43fbce6273b86a807da3e4ad9b181b8670d4dd5fa9e",
+        "report_seen_when_map_created": false,
+        "evidence_seen_when_map_created": false,
+        "generator_dialogue_seen_when_map_created": false,
+        "description": "在读取任何报告与evidence前，完整读取官方节目页与2237段转写，独立列出25个来源单元及15项来源疑点。原地图保持不变，本轮仅映射到修订后的CU00—CU24。"
+      },
+      "independent_external_source_reads": [
+        {
+          "source_id": "src-anthropic-rsi",
+          "url": "https://www.anthropic.com/institute/recursive-self-improvement",
+          "title": "When AI builds itself",
+          "receipt_sha256": "9a0d209e4c037a9666a316c59233c5fe896524b6a79b7e561ccf621002231495",
+          "method": "eacli tool invoke --capability web.read --device auto",
+          "read_scope": "full returned page content",
+          "read_result": "success",
+          "source_type": "official"
+        },
+        {
+          "source_id": "src-sora",
+          "url": "https://help.openai.com/en/articles/20001152-what-to-know-about-the-sora-discontinuation",
+          "title": "What to know about the Sora discontinuation | OpenAI Help Center",
+          "receipt_sha256": "348753df73e2d61fe2122fbca616c6d308a8aefcd780366fdf9efd2163d469d7",
+          "method": "eacli tool invoke --capability web.read --device auto",
+          "read_scope": "full returned page content",
+          "read_result": "success",
+          "source_type": "official"
+        },
+        {
+          "source_id": "src-apple",
+          "url": "https://www.apple.com/lv/newsroom/2026/07/apple-reports-third-quarter-results",
+          "title": "Apple reports third quarter results - Apple (LV)",
+          "receipt_sha256": "36fa9cb8d132199ddb9363f82549babaf2411e943d5ba734a06a5065a5a70191",
+          "method": "eacli tool invoke --capability web.read --device auto",
+          "read_scope": "full returned page content",
+          "read_result": "success",
+          "source_type": "official"
+        },
+        {
+          "source_id": "src-appstore",
+          "url": "https://dataconomy.com/2026/08/21/apple-app-store-revenue-declines-for-the-first-time-in",
+          "title": "Apple App Store Revenue Declines For The First Time In Four Years - Dataconomy",
+          "receipt_sha256": "6fd0abf4e2414b537e2edb0dce8b20df464b254b8e8bdec87a535e9dce93f133",
+          "method": "eacli tool invoke --capability web.read --device auto",
+          "read_scope": "full returned page content",
+          "read_result": "success",
+          "source_type": "secondary"
+        }
+      ],
+      "artifact_checks": {
+        "transcript_sha256": "1304108f04e6ebfd8c3501a1caf664b3af084877c0538741ecc09a362eb24f49",
+        "polished_sha256": "35ad6f81ffe83e83825299b9a4fac67d840819bc5ac1d0984bcef210741fce32",
+        "transcript_segments": 2237,
+        "all_transcript_read": true,
+        "all_polished_read": true,
+        "audit_executed_by_reviewer": true,
+        "timestamp_errors": 0,
+        "malformed_lines": 0,
+        "audit_ok": true,
+        "audio_listened_by_reviewer": false,
+        "audio_processing_evidence": "协调者提供实际音频3200.064秒、11分块、末次语音3195.62秒及约4.444秒尾部间隔；本复核未独立重跑音频处理。审计中的tail_gap_seconds=0仅为文本内计算。",
+        "public_audit_receipt_read": true,
+        "private_paths_not_copied": true
+      },
+      "presentation_checks": {
+        "owner": "coordinator",
+        "scope": "报告Markdown在工作台中的桌面与窄屏渲染；不代表移动App验收或音频听校。",
+        "method": "headless Chrome / CDP Emulation真实视口",
+        "reviewer_personally_rendered": false,
+        "reviewer_personally_viewed_screenshots": false,
+        "reviewer_read_structured_receipt": true,
+        "receipt_sha256": "2e2b0548538c646074d975e4b306a0c53b29c0517c2e75dd0f4cab93ad56895f",
+        "desktop": {
+          "status": "pass",
+          "viewport": [
+            1440,
+            1100
+          ],
+          "document_scroll_width": 1440,
+          "reader_client_width": 908,
+          "reader_scroll_width": 908,
+          "table_container_width": 760,
+          "table_content_width": 760,
+          "basis": "协调者完成实测并查看最终截图；复核者核对结构化回执。"
+        },
+        "narrow_screen": {
+          "status": "pass",
+          "viewport": [
+            390,
+            844
+          ],
+          "document_scroll_width": 390,
+          "reader_client_width": 390,
+          "reader_scroll_width": 390,
+          "table_container_width": 358,
+          "table_content_width": 440,
+          "table_overflow_x": "auto",
+          "table_scroll_left_after_swipe": 82,
+          "basis": "协调者使用CDP真实390px视口，并查看正文、表格及表格右移截图；初始最小窗口裁切结果未作为通过证据。"
+        },
+        "navigation": {
+          "automatic_toc_targets": 20,
+          "all_targets_exist": true,
+          "tested_target": "八、App Store",
+          "desktop_reader_scroll_top": 6577,
+          "narrow_reader_scroll_top": 10987,
+          "source_and_entity_links": 12,
+          "all_links_have_normal_https_href": true,
+          "note": "正常href不等于逐个重新访问外部页面；关键外部正文的读取另记。"
+        },
+        "format": {
+          "literal_wikilinks_visible": false,
+          "raw_html_anchors_visible": false,
+          "standard_markdown_entity_target_exists": true,
+          "manual_fragment_links_remaining": 0,
+          "raw_html_anchors_remaining": 0
+        },
+        "coordinator_screenshot_review": [
+          "desktop-final.png",
+          "mobile-final.png",
+          "mobile-final-table.png",
+          "mobile-final-table-right.png"
+        ]
+      },
+      "notes": "第二轮独立复核完成：25个来源优先单元均covered，14项关键claim均在实际读取范围内支持，R1—R5已检查，无当前unsupported_claims、missing_requirements或内容硬失败。src-audio的检查范围为完整转写，未听音；精编稿仅作派生产物核验，不作独立原始证据。四份外部正文通过eacli typed web.read实际读取，App Store只有二手报道。桌面与390px窄屏渲染由协调者执行并查看截图，复核者读取了结构化回执；页面无整体或正文横向溢出，表格可横滑，自动目录实测跳转有效。保留首轮55.50分及两项硬失败的真实手动预审历史，不补造自动判定。当前身份为普通GPT-6独立复核，不声称精确部署型号或强模型复核。"
+    }
+  ],
+  "history": [
+    {
+      "revision_round": 1,
+      "review_stage": "manual_preliminary_independent_review",
+      "formal_review": false,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-6",
+            "harness": "codex",
+            "run_id": "crossing-aha-20261102-independent-review",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "model_identity_basis": "当前会话指令仅支持通用GPT-6身份，未核实具体部署后缀；这是普通独立复核，不声称强模型复核。",
+            "exact_deployment_verified": false,
+            "strong_reviewer_claimed": false
+          },
+          "review_stage": "manual_preliminary_independent_review",
+          "formal_review": false,
+          "scores": {
+            "evidence_fidelity": 45,
+            "request_coverage": 80,
+            "reasoning_quality": 50,
+            "readability": 55,
+            "limitations": 55
+          },
+          "score_reasons": {
+            "evidence_fidelity": "已实际读官方RSI、Sora、Apple及所列App Store报道；存在核心外部来源反证、日期错配、金额猜补、语义写反、人物线索合并和不准确引语。",
+            "request_coverage": "11个shownotes章节均有正文，25个独立来源单元无整块缺席；主要案例和反方多数保留。但15个单元仅partial，内容被错误转述不能视为忠实覆盖。",
+            "reasoning_quality": "作者尝试提出商业和产品机制，但多次把相关性、个案和比喻升格为必要条件或必然结果；补写分母扩张、渠道更重要、小时级窗口等无来源前提。",
+            "readability": "阅读全文源码；机械标签、长引语、重复核验大表和十条长limitations使重点变薄；正文没有可点击外部证据链接，wikilink不能证明目标格式可跳转。本轮未做桌面/窄屏渲染验收。",
+            "limitations": "说明未逐句听音、ASR与部分数据未核，保留了若干因果边界；但又在速览和标题确定化、把二手报道称一手核实，且把混合说话人降格为全篇基本嘉宾独白，限制与正文互相冲突。"
+          },
+          "source_content_map": [
+            {
+              "id": "ISM00",
+              "title": "系列动机：用个人触动串起年度复盘",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "src-audio",
+                "src-shownotes"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "00:01–00:46；第 1–26 行；58行；个人年度复盘背景已交代，建议删去审稿口吻的覆盖清单。"
+            },
+            {
+              "id": "ISM01",
+              "title": "OpenClaw 将 Agent 与 Harness 的产品形态聚拢",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "src-audio",
+                "src-shownotes"
+              ],
+              "matched_coverage_unit_ids": [
+                "COV01"
+              ],
+              "notes": "00:46–03:25；第 27–145 行；66–70行；组件、云端/本地、常驻设备和通知入口均在正文。"
+            },
+            {
+              "id": "ISM02",
+              "title": "早期实践的收益和普通人的 FOMO 成本不同",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "src-audio",
+                "src-shownotes"
+              ],
+              "matched_coverage_unit_ids": [
+                "COV01"
+              ],
+              "notes": "03:25–06:34；第 146–284 行；70–78行；普通人/从业者两面都有，但76行把早期体验如何帮助理解新产品的意思写反。"
+            },
+            {
+              "id": "ISM03",
+              "title": "Seedance 优势被解释为资源与内容商业循环",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "src-audio",
+                "src-shownotes"
+              ],
+              "matched_coverage_unit_ids": [
+                "COV02"
+              ],
+              "notes": "06:34–11:11；第 285–485 行；84–92行；数据、资源、分发广告循环和产业用途在场，但R误释为研发；“别人没有”遗漏可灵类似但规模小的反例。"
+            },
+            {
+              "id": "ISM04",
+              "title": "通用模型是否会覆盖视频与物理专门路线，仍是争论",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "src-audio",
+                "src-shownotes"
+              ],
+              "matched_coverage_unit_ids": [
+                "COV02"
+              ],
+              "notes": "11:11–14:34；第 486–618 行；94–102行；通用/专门路线、具身商业模式与游戏反例齐全；“游戏扛住了”“明年才见分晓”比原文更确定。红果例子未收录，不构成本单元整体缺失。"
+            },
+            {
+              "id": "ISM05",
+              "title": "Sora 2 关闭引出巨头边界与垂直创业机会",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "src-audio",
+                "src-shownotes"
+              ],
+              "matched_coverage_unit_ids": [
+                "COV03"
+              ],
+              "notes": "14:34–19:15；第 619–802 行；104–116行；巨头边界与垂直机会完整出现，金额和口径被擅补，Sora外部核验日期错误。"
+            },
+            {
+              "id": "ISM06",
+              "title": "RSI 的触动来自对自我改进循环的可视化理解",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "src-audio",
+                "src-shownotes"
+              ],
+              "matched_coverage_unit_ids": [
+                "COV04"
+              ],
+              "notes": "19:15–22:07；第 803–923 行；118–128行；图示与情绪覆盖，但外部原文对完整RSI未实现的明确限制缺席，速览结论反向。"
+            },
+            {
+              "id": "ISM07",
+              "title": "新实验室的同向探索如何拉动下游供给",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "src-audio",
+                "src-shownotes"
+              ],
+              "matched_coverage_unit_ids": [
+                "COV04"
+              ],
+              "notes": "22:07–23:59；第 924–1000 行；130–136行；下游投入机制在场，Recursive公司与Jeff Dean公司的线索被合并。"
+            },
+            {
+              "id": "ISM08",
+              "title": "生产力与安全风险共享持续执行和懂代码的能力",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "src-audio",
+                "src-shownotes"
+              ],
+              "matched_coverage_unit_ids": [
+                "COV04"
+              ],
+              "notes": "23:59–27:30；第 1001–1137 行；138–148行；持续工作/攻击双面在场，zero-day概念错误，小时级及外部实验数字无相应依据。"
+            },
+            {
+              "id": "ISM09",
+              "title": "连研究者也会经历失去掌控感",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "src-audio",
+                "src-shownotes"
+              ],
+              "matched_coverage_unit_ids": [
+                "COV04"
+              ],
+              "notes": "27:30–28:29；第 1138–1174 行；144行；研究者的无力感和未确认人名有保留。"
+            },
+            {
+              "id": "ISM10",
+              "title": "老牌硬件厂商重回视野：AI 需求不只流向新软件",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "src-audio",
+                "src-shownotes"
+              ],
+              "matched_coverage_unit_ids": [
+                "COV05"
+              ],
+              "notes": "28:29–30:45；第 1175–1265 行；150–168行；老歌手类比和硬件厂商复兴均有；反向纠错中又添市场归属与上涨已证的未核断言。"
+            },
+            {
+              "id": "ISM11",
+              "title": "内容行业的素材、流程和版权商业化同时受压",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "src-audio",
+                "src-shownotes"
+              ],
+              "matched_coverage_unit_ids": [
+                "COV05"
+              ],
+              "notes": "30:45–31:30；第 1266–1301 行；170–174行；素材、流程、版权商业化与艺术开放问题均保留；需解释“死亡”为修辞。"
+            },
+            {
+              "id": "ISM12",
+              "title": "Codex 与 ChatGPT 合并及工作型界面的阶段性共识",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "src-audio",
+                "src-shownotes"
+              ],
+              "matched_coverage_unit_ids": [
+                "COV06"
+              ],
+              "notes": "31:30–33:32；第 1302–1390 行；176–184行；三栏范式、Manus先例、Personal AI变动均有。"
+            },
+            {
+              "id": "ISM13",
+              "title": "能力整合也增加认知成本，给极简产品留出入口",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "src-audio",
+                "src-shownotes"
+              ],
+              "matched_coverage_unit_ids": [
+                "COV06"
+              ],
+              "notes": "33:32–35:19；第 1391–1472 行；186–192行；复杂性与极简入口完整，但不同发言者的第一人称体验被合并成嘉宾个人经历。"
+            },
+            {
+              "id": "ISM14",
+              "title": "端侧小模型追赶过去前沿能力的时差缩短",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "src-audio",
+                "src-shownotes"
+              ],
+              "matched_coverage_unit_ids": [
+                "COV07"
+              ],
+              "notes": "35:19–37:30；第 1473–1563 行；194–216行；时差图和能力下放在场，但标题把未核9个月确定化，发布日比较不能证明能力等效。"
+            },
+            {
+              "id": "ISM15",
+              "title": "成本包含价格之外的任务与部署约束",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "src-audio",
+                "src-shownotes"
+              ],
+              "matched_coverage_unit_ids": [
+                "COV07"
+              ],
+              "notes": "37:30–38:48；第 1564–1618 行；218–224行；谁会赢的不确定和多维成本有保留；角色/决策模型词义未解决，补写弱网质量/本地必不出网等需收窄。"
+            },
+            {
+              "id": "ISM16",
+              "title": "App Store 变化被用作软件替代信号，但因果不确定",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "src-audio",
+                "src-shownotes"
+              ],
+              "matched_coverage_unit_ids": [
+                "COV08"
+              ],
+              "notes": "38:48–40:01；第 1619–1669 行；226–238行；多原因边界已保留，外部数据归属、窗口和证据级别错误削弱核心论证。"
+            },
+            {
+              "id": "ISM17",
+              "title": "自制软件的具体案例与仍愿付费的信任边界",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "src-audio",
+                "src-shownotes"
+              ],
+              "matched_coverage_unit_ids": [
+                "COV08"
+              ],
+              "notes": "40:01–41:40；第 1670–1750 行；240–255行；两个具体应用及1Password例外齐全，但观鸟/付费体验说话人不可靠，鼠标配套软件被写成鼠标本体更好，作者推导被称作庄明浩论证链。"
+            },
+            {
+              "id": "ISM18",
+              "title": "斩杀线把能力与价格放在同一张图上",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "src-audio",
+                "src-shownotes"
+              ],
+              "matched_coverage_unit_ids": [
+                "COV09"
+              ],
+              "notes": "41:40–44:09；第 1751–1840 行；257–275行；两轴与发布叙事保留，前沿定义不严，牛来→ox-alpha音译被强行解释。"
+            },
+            {
+              "id": "ISM19",
+              "title": "模型使用走向分层：前沿溢价与日常低成本并存",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "src-audio",
+                "src-shownotes"
+              ],
+              "matched_coverage_unit_ids": [
+                "COV09"
+              ],
+              "notes": "44:09–45:18；第 1841–1889 行；277–285行；高端溢价与便宜日常分层在场；源数据未核的限制在场，但80%→20%不能推出价格差正在放大。"
+            },
+            {
+              "id": "ISM20",
+              "title": "Opus 5.5 动态可视化触及创作者自身技能",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "src-audio",
+                "src-shownotes"
+              ],
+              "matched_coverage_unit_ids": [
+                "COV10"
+              ],
+              "notes": "45:18–46:49；第 1890–1960 行；287–295行；动态可视化和理解体验齐全，体验发言者归属被混淆。"
+            },
+            {
+              "id": "ISM21",
+              "title": "奇观成为传达能力的方式，也制造疲劳",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "src-audio",
+                "src-shownotes"
+              ],
+              "matched_coverage_unit_ids": [
+                "COV10"
+              ],
+              "notes": "46:49–48:44；第 1961–2041 行；297–327行；奇观的传播功能和疲劳均在场；拼接式长引语、必然通胀措辞需改。"
+            },
+            {
+              "id": "ISM22",
+              "title": "《赵云与阿斗》用粗糙文字反衬精致 AI 画面的疲劳",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "src-audio",
+                "src-shownotes"
+              ],
+              "matched_coverage_unit_ids": [
+                "COV11"
+              ],
+              "notes": "48:44–51:31；第 2042–2157 行；329–355行；文字美术、成熟玩法、暂时性均有；拼字游戏细节被造错，渠道红利被升格必要条件。"
+            },
+            {
+              "id": "ISM23",
+              "title": "公路播客的不可控状态与具体人味",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "src-audio",
+                "src-shownotes"
+              ],
+              "matched_coverage_unit_ids": [
+                "COV11"
+              ],
+              "notes": "51:31–52:14；第 2158–2183 行；345–355行；公路环境不可控被提及，但砂砾感相关ASR被扩成杀伤力、嘉宾归属不稳，改变人味主线。"
+            },
+            {
+              "id": "ISM24",
+              "title": "结尾用生活而非持续焦虑收束",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "src-audio",
+                "src-shownotes"
+              ],
+              "matched_coverage_unit_ids": [
+                "COV11"
+              ],
+              "notes": "52:14–53:16；第 2184–2237 行；357–363行；享受生活结尾保留，但分母扩张被擅自补为事实前提。"
+            }
+          ],
+          "source_ids_checked": [
+            "src-audio",
+            "src-shownotes",
+            "src-audit",
+            "src-anthropic-rsi",
+            "src-sora",
+            "src-apple",
+            "src-appstore"
+          ],
+          "unsupported_claims": [
+            "C05",
+            "C06",
+            "C07",
+            "C12",
+            "C17",
+            "C18",
+            "C22"
+          ],
+          "requirements_needing_revision": [
+            "R2",
+            "R4",
+            "R5",
+            "R7"
+          ],
+          "hard_failures": [
+            "critical_claim_unsupported",
+            "key_number_mismatch"
+          ],
+          "unregistered_key_claim_failure": "F03: invented amounts and valuation/revenue mismatch",
+          "findings": [
+            {
+              "id": "F01",
+              "priority": "P0",
+              "location": "39、122–128、148行；C06",
+              "title": "RSI完整自我改进尚未实现，速览与外部来源相反",
+              "source_basis": "原始文章开篇明确 We are not there yet, and recursive self-improvement is not inevitable；Today 是Autonomous agents，Closing the loop 标为20XX?。Evidence from within Anthropic说明人仍决定目标，研究判断存在重大差距。",
+              "required_revision": "将“AI已加速部分AI研发”与“完整自主设计下一代”区分。正文写清嘉宾感受及文章限制，不用发布文章倒推出提前两个季度已验证完整循环。6月4日未出现在此次读取结果中，只可暂作口播日期。"
+            },
+            {
+              "id": "F02",
+              "priority": "P0",
+              "location": "106、384行；C05",
+              "title": "Sora停服日期被错误标为外部已核实",
+              "source_basis": "独立读取OpenAI帮助中心：web/app discontinued April 26, 2026；API discontinued September 24, 2026。",
+              "required_revision": "改为分产品停服时间。口播3月24日只能记为节目说法，若是公告日期须另证，不能当作停服日。"
+            },
+            {
+              "id": "F03",
+              "priority": "P0",
+              "location": "110–114、380行；未充分登记的关键金额",
+              "title": "把损坏ASR猜补成财务事实并改变单位/指标",
+              "source_basis": "16:47–16:49原始转写为“可能…两三百亿美金的公司”，正文变成“可能年收入两三亿”；17:47–17:53原始为估值11美金/小企10美金、AR1美金等损坏文本，正文补成估值一亿甚至一千万、ARR一亿。",
+              "required_revision": "删去无法恢复的金额，定性保留垂直机会；若保留必须通过原音或公开一手证据恢复。标“未独立核实”不能补救凭空猜数。"
+            },
+            {
+              "id": "F04",
+              "priority": "P1",
+              "location": "76行；C02相关",
+              "title": "早期实践价值被写反",
+              "source_basis": "04:57–05:27的论证是从旧难处理解新产品要解决什么，06:17–06:28又明确走过一路者知道模型/产品边界与实现，因而用不用自由。ASR局部缺否定词导致字面残句。",
+              "required_revision": "改为中性转述：经历早期难处有助于理解后来产品选择；不能从损坏残句构建“反而不太能理解”的新论证。"
+            },
+            {
+              "id": "F05",
+              "priority": "P1",
+              "location": "132–134行；C07",
+              "title": "把相邻两家新公司的线索合并",
+              "source_basis": "22:24–22:35先谈田渊栋相关公司及Recursive；22:37–22:45另起Jeff Dean和无限符号；22:47后又转Mira。",
+              "required_revision": "拆分实体；不把Recursive与Jeff Dean创业公司归为同一条。若不核外围公司新闻，保留新实验室多路径探索与下游支出机制即可。"
+            },
+            {
+              "id": "F06",
+              "priority": "P1",
+              "location": "230–236、371、420行；C11/C12",
+              "title": "App Store来源归属、统计窗口和核验级别混用",
+              "source_basis": "Apple官方支持7月30日、截至6月27日、$109.4B/+16%、Services June季度纪录。Dataconomy明确-0.6%来自Morgan Stanley/Erik Woodring，不是Appfigures；同文current fiscal quarter自late June起为+0.5%，并列external redirect links、游戏需求、汇率等原因；没有-6%或-18%。",
+              "required_revision": "优先保留官方财报与App Store不是同口径这一点。如留-0.6%，写成Dataconomy转述Morgan Stanley、through mid-August，原统计未读，不称三项独立数据。-6%/-18%没有分别可读来源就删；不得由报道日吻合推定嘉宾一定误把它认作财报。"
+            },
+            {
+              "id": "F07",
+              "priority": "P1",
+              "location": "188、240、244、293、347、418行",
+              "title": "个人经历被合并到错误/无法确认的说话人",
+              "source_basis": "33:32–35:19是轮流对话；40:29起观鸟学习与45:56–46:15“我录播客”及51:31公路播客同样出现独立发言轮次。418行称除结尾外基本嘉宾一人陈述并无依据。",
+              "required_revision": "无逐句听音把握时用“对话中举了…”或“主持人/嘉宾之一分享…”，不要把观鸟、理解提升、持续付费都写成庄明浩第一人称履历。作者的商业拆解也不能叫“庄明浩的论证链”。"
+            },
+            {
+              "id": "F08",
+              "priority": "P1",
+              "location": "337、343、347、390–412行",
+              "title": "损坏词被改造成细节和假原话",
+              "source_basis": "50:56–50:59 ASR是“语/官/官语”一类损坏拼字描述，正文造为弓+官=弓箭手。51:15/51:44的“杀力感”在粗糙与公路旅行语境中不能直接扩成杀伤力。多段长引语为改写/合并，不满足原话不改字、不改序规则。",
+              "required_revision": "删去无法核实的拼字公式；用粗糙感/现场不可控的中性转述。短引语对照原文并给时间戳；修辞整理后应去掉引号，不能以精编稿替代原话证据。"
+            },
+            {
+              "id": "F09",
+              "priority": "P1",
+              "location": "90、142、238、265行",
+              "title": "技术术语出现可教坏读者的定义错误",
+              "source_basis": "R在RSI中不是研发；zero-day不是一天或微小时间单位；vibe coding不是“逆向，即反过来的编程”；按每个精确价格档选最高分，可能保留被更便宜且更强模型支配的点。",
+              "required_revision": "分别解释递归、披露/补丁窗口、自然语言驱动编程、非支配前沿。至少用更便宜且更强则支配的直观定义，并说明基准评分和Token单价不是全部质量和任务成本。"
+            },
+            {
+              "id": "F10",
+              "priority": "P1",
+              "location": "148、168、224、249–255、285、349–355、363行；C14/C17/C18",
+              "title": "作者分析多次新增无证前提或过强因果",
+              "source_basis": "原文没有小时级攻防窗口、两位数到三位数场次增长、渠道比产品更重要的测量；“至少三个必要条件”无法由个案成立，节目只描述现成玩法与粗糙审美。原文只给AI话题占比序列，不能判断分母增长。首发日期差也不能证能力等效。",
+              "required_revision": "删无证事实前提；剩余假设标[推测]并说清替代解释。把必要/必然/正确读法/扛住了改成受来源支持的程度；不要为了反对粗糙必胜而另造渠道必胜。"
+            },
+            {
+              "id": "F11",
+              "priority": "P2",
+              "location": "正文全篇，尤其60、365–425行",
+              "title": "重复标签和大表遮蔽主线，证据难跳转",
+              "source_basis": "全文交替使用【嘉宾判断】【外部已核实】【本报告推论】，且正文、核验表、limitations、追问反复重复相同数字；外部来源URL只在账本，正文未提供可点击引用，若干wikilink依赖未知渲染器。",
+              "required_revision": "保留11章覆盖但按问题组织连贯段落；以自然归属和必要[推测]代替标签洪水。关键事实旁给具名来源或脚注。删重复大表、流水账和验收工作记录，收成简短来源说明与限制。"
+            },
+            {
+              "id": "F12",
+              "priority": "P2",
+              "location": "evidence整体，C06/C07/C12/C22等",
+              "title": "证据登记不等于来源已支持结论",
+              "source_basis": "已读网页中至少两项关键结论遭原文反证；部分“外部已核实”的金额/实验参数仍只绑定audio和polished，二手报道被描述为一手材料。",
+              "required_revision": "正文与evidence同步修订。每条保留的关键claim写明确支持片段/定位、核验范围及来源级别；没有读到的原始数据不要借二手引用变成一手。"
+            }
+          ],
+          "inspection_limits": {
+            "full_report_and_evidence_read": true,
+            "full_transcript_read": true,
+            "audio_listened": false,
+            "polished_used_as_independent_primary_source": false,
+            "generator_self_assessment_read": false,
+            "desktop_and_narrow_rendering_checked": false,
+            "peripheral_news_not_reverified": "Coordinator requested focus on core RSI/Sora/Apple/App Store plus semantic fidelity; pending removals do not count as verified."
+          },
+          "notes": "真实首轮手动独立预审。报告和evidence均已读，来源优先地图及关键外部来源已核对。未运行自动最终判定，不是正式完成状态；55.50为手动加权结果，两项硬失败优先于分数。首轮单元为10 covered、15 partial、0 missing；不追补未证实的fabricated_or_unread_source或core_requirement_missing。"
+        }
+      ],
+      "decision": {
+        "status": "revise",
+        "score": 55.5,
+        "evaluated_on": "2026-11-03",
+        "report_sha256": "f3893a4c510875cfa130d9b8225cbdbb13b29fb06357eb5cfb207f3459606db8",
+        "evidence_sha256": "45bb2e07d5228395d592758a5bb174dc5ff4d701c04e88c004a73cc15eb06e15",
+        "decision_origin": "manual_preliminary_independent_review",
+        "automated_check_run": false,
+        "finalized": false,
+        "notes": "从私有首轮发现记录原样保留分数和事实性发现；未伪造自动判定或策略快照。"
+      },
+      "provenance": {
+        "preliminary_review_sha256": "79dbebf0fddc16b8209881ba85fb59a294648a1201200ffe91cf7cd4adaaf5bc",
+        "source_map_sha256": "d57ca5975074e921c534d43fbce6273b86a807da3e4ad9b181b8670d4dd5fa9e"
+      }
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 93.05,
+    "evaluated_on": "2026-11-03",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "cf6ce097541bc9ecd8e51866ae88b5584c2a1ff485b3e685dc076363952b5802",
+    "evidence_sha256": "05c2108f5fee4331fb6bf0c704166f11f657a1e52ad9b6f948d06475529ccfc2"
+  }
+}

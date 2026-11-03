@@ -1,7 +1,7 @@
 # Skill: episode_analysis — 播客总结/报告模板
 
 > 通用研究方法论与「思考与追问」要求见根 [METHODOLOGY.md](../../../METHODOLOGY.md)；按当前任务读取相关章节。本文件只保留领域差异。
-> 前置：已有 `reports/transcripts/{slug}.transcript.txt`（及润色稿）。报告一切事实以转写原文为准。
+> 前置：已取得完整原文与润色稿，默认存放在仓库外私有目录。节目观点以原始材料为据；转写疑点需核验，外部事实另附来源。
 
 ---
 
@@ -28,7 +28,9 @@ source: 小宇宙播客
 source_url: https://...
 show: "节目名"
 guest: "嘉宾"
-transcript: reports/transcripts/{slug}.transcript.txt
+transcript_visibility: private
+transcript_path: null
+polished_transcript_path: null
 status: in_progress
 updated_on: YYYY-MM-DD
 quality_schema: "report-v2"
@@ -50,13 +52,13 @@ semantic_tags: ["podcast"]
 ## 关键概念 / 人物 / 数字
 - 概念：定义 + 嘉宾如何用它
 - 人物/机构：转写中提到的、值得沉淀到 wiki 的
-- 数字：**只用转写中明确出现的数字**，标注
+- 数字：标明来源和统计口径，区分节目中的说法与独立核实的结果
 
 ## 金句
 > 原文引用（保留措辞）。
 
-## 我的思考与延伸
-- 与我已知的哪些内容关联
+## 分析与延伸
+- 与相关知识的联系、推论及适用边界
 
 ## Limitations
 - 转写质量、缺失片段、未辨识处（如有）
@@ -77,7 +79,7 @@ semantic_tags: ["podcast"]
 
 ## 规则
 
-1. **事实以转写为准**：转写外的引用/数据/言论禁止出现（见 transcription skill 红线）。
+1. **忠实记录与事实核验分开**：不把转写误识别或嘉宾口误固化成事实。补充引用、数据和背景须实际查证、标明来源，不冒充节目原话。
 2. **客观背景信息**（嘉宾履历、节目定位等）若非转写内容，须通过 eacli 查证并标来源，不编造。
-3. **沉淀**：报告完成后更新 `wiki/`（新人物/概念页）、未解问题汇入 `wiki/open-questions.md`。
+3. **沉淀**：只为可复用的新知识或值得续接的问题做必要的 wiki 更新，不为每篇报告自动新建页面。
 4. **继续讨论**：用户追问时围绕转写原文 + 已查证事实展开，不引入编造内容。

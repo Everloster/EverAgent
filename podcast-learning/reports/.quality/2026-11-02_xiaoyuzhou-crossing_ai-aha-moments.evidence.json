@@ -1,0 +1,646 @@
+{
+  "schema_version": 1,
+  "report_path": "podcast-learning/reports/2026-11-02_xiaoyuzhou-crossing_ai-aha-moments.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-03",
+  "generator": {
+    "model": "gpt-6-astra",
+    "harness": "codex",
+    "run_id": "crossing-aha-20261102-editorial-v2",
+    "explicit_model_override": false,
+    "note": "最终正文和精编稿由协调者依据完整转写与已读来源实质修订；前置转写、初稿和首轮返修通过远端原生 Orca 的 Claude Code 执行。"
+  },
+  "contributors": [
+    {
+      "role": "transcription_and_draft",
+      "harness": "claude-code",
+      "model": "MiniMax-M3.1-Flash",
+      "model_identity_basis": "本次原生 worker 屏幕定位的精确 Claude 会话日志中，537条非synthetic assistant响应的model均为MiniMax-M3.1-Flash；只读提取模型字段，未依赖env猜测。",
+      "run_id": "crossing-aha-20261102-draft-v1-v2"
+    }
+  ],
+  "session_observations": {
+    "editor_model_source": "codex-thread-state",
+    "editor_current_model_confirmed": true,
+    "private_materials": "转写、精编稿、派工与身份回执保存在仓外。公开 run_id 为本篇出版记录标识，不是基础设施任务编号。",
+    "editor_read_scope": "原始转写全部2237段、官方节目页；Anthropic 原文相关章节、Sora 停服说明、Apple 业绩正文及 Dataconomy 全文。未逐句听音。",
+    "remote_revision_outcome": "首轮草稿完成并交回；修订会话在部分修改后遇到provider 429（Token Plan额度用尽），未正常worker_done。协调者已拉取SHA校验快照并实质编辑；不将远端草稿视为已验收产物。"
+  },
+  "task": {
+    "summary": "选取一集未学习的精选播客，通过远端原生 Orca 的 Claude Code 完成真实转写与写作，由协调者修订、独立复核和验收，交付人类可独立阅读的深度报告。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "全量转写并核对工件、时间戳与音频覆盖；不把结构审计当逐字正确。"
+      },
+      {
+        "id": "R2",
+        "text": "覆盖53分20秒版本的11个官方章节、核心论证、案例和反例。"
+      },
+      {
+        "id": "R3",
+        "text": "全文与精编稿仅存仓外，公开产物脱敏。"
+      },
+      {
+        "id": "R4",
+        "text": "解释概念，区分节目主张、外部核验和分析，纠正转写猜补。"
+      },
+      {
+        "id": "R5",
+        "text": "独立来源优先复核，核对关键日期和数字；桌面及窄屏检查后通过质量门。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "src-audio",
+      "kind": "primary",
+      "title": "本集官方音频与全量转写",
+      "locator": "https://media.xyzcdn.net/60502e253c92d4f62c2a9577/lqXcQjZbUePdvtQOvOZF8bEPxBzB.m4a",
+      "accessed_on": "2026-11-03"
+    },
+    {
+      "id": "src-shownotes",
+      "kind": "primary",
+      "title": "十字路口节目页及11个章节",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/6ae6e230c96c8942ec156ed6",
+      "accessed_on": "2026-11-03"
+    },
+    {
+      "id": "src-audit",
+      "kind": "local",
+      "title": "全量转写的脱敏结构审计",
+      "locator": "podcast-learning/reports/transcripts/2026-11-02_xiaoyuzhou-crossing_ai-aha-moments.audit.json",
+      "accessed_on": "2026-11-03"
+    },
+    {
+      "id": "src-anthropic-rsi",
+      "kind": "official",
+      "title": "Anthropic: When AI builds itself",
+      "locator": "https://www.anthropic.com/institute/recursive-self-improvement",
+      "accessed_on": "2026-11-03"
+    },
+    {
+      "id": "src-sora",
+      "kind": "official",
+      "title": "OpenAI Sora discontinuation",
+      "locator": "https://help.openai.com/en/articles/20001152-what-to-know-about-the-sora-discontinuation",
+      "accessed_on": "2026-11-03"
+    },
+    {
+      "id": "src-apple",
+      "kind": "official",
+      "title": "Apple财年第三季度业绩",
+      "locator": "https://www.apple.com/lv/newsroom/2026/07/apple-reports-third-quarter-results",
+      "accessed_on": "2026-11-03"
+    },
+    {
+      "id": "src-appstore",
+      "kind": "secondary",
+      "title": "Dataconomy转述Morgan Stanley App Store数据",
+      "locator": "https://dataconomy.com/2026/08/21/apple-app-store-revenue-declines-for-the-first-time-in",
+      "accessed_on": "2026-11-03"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "节目将早期实践的收益与普通人追逐热潮的必要性分开。",
+      "report_anchor": "一、OpenClaw：热潮过后，实践留下了什么",
+      "support": "direct",
+      "source_ids": [
+        "src-audio"
+      ],
+      "critical": true,
+      "evidence": "03:25—06:34；否定词损坏处不直引，结合06:17—06:28概括。"
+    },
+    {
+      "id": "C02",
+      "claim": "节目描述视频生产、分发、广告和反馈的商业循环，并承认可灵有相似但被其判断较小的循环。",
+      "report_anchor": "二、Seedance：模型之外，还有谁掌握生产与分发",
+      "support": "direct",
+      "source_ids": [
+        "src-audio"
+      ],
+      "critical": true,
+      "evidence": "06:34—11:11，尤其09:21—10:11；只核实节目如此讨论。"
+    },
+    {
+      "id": "C03",
+      "claim": "官方说明Sora网页/App于2026-04-26停用、API于2026-09-24停用。",
+      "report_anchor": "三、Sora 退场：巨头的边界，不等于创业公司的答案",
+      "support": "direct",
+      "source_ids": [
+        "src-sora"
+      ],
+      "critical": true,
+      "evidence": "Sora discontinuation dates；未确认3月24日为公告日。"
+    },
+    {
+      "id": "C04",
+      "claim": "Anthropic将完全自主设计、开发继任者定义为RSI，并明示尚未实现且非必然。",
+      "report_anchor": "四、RSI：最重要的，是分清已经发生与尚未发生",
+      "support": "direct",
+      "source_ids": [
+        "src-anthropic-rsi"
+      ],
+      "critical": true,
+      "evidence": "开头第2段；与节目对动画图的感受、广义商业循环分开。"
+    },
+    {
+      "id": "C05",
+      "claim": "Anthropic称代码量增长约8倍，口径分别见导语和正文；文章提醒不能把数量当质量及同倍真实生产率。",
+      "report_anchor": "四、RSI：最重要的，是分清已经发生与尚未发生",
+      "support": "direct",
+      "source_ids": [
+        "src-anthropic-rsi"
+      ],
+      "critical": true,
+      "evidence": "导语average code/quarter vs2021—2025；Evidence from within Anthropic的Q2 2026 code/engineer/day vs2024和紧随的caveat。"
+    },
+    {
+      "id": "C06",
+      "claim": "原文区分工程执行与选择目标的研究判断，后者仍有明显差距。",
+      "report_anchor": "四、RSI：最重要的，是分清已经发生与尚未发生",
+      "support": "direct",
+      "source_ids": [
+        "src-anthropic-rsi"
+      ],
+      "critical": true,
+      "evidence": "Evidence from within Anthropic与What if we are wrong；无需由图示推断完整RSI。"
+    },
+    {
+      "id": "C07",
+      "claim": "节目讨论项目、执行、产物界面，承认Manus先例，并保留模式和额度带来的使用成本。",
+      "report_anchor": "六、工作型界面：能力集中之后，选择也变多了",
+      "support": "direct",
+      "source_ids": [
+        "src-audio"
+      ],
+      "critical": true,
+      "evidence": "31:30—35:19；不把口播日期或用户数当产品史。"
+    },
+    {
+      "id": "C08",
+      "claim": "九个月能力追赶来自节目对未取得图的回忆，不能被当成通用端侧能力周期。",
+      "report_anchor": "七、Qwen 小模型：能力下放，怎样才算真的可用",
+      "support": "direct",
+      "source_ids": [
+        "src-audio"
+      ],
+      "critical": true,
+      "evidence": "35:19—38:48；具体型号、参数及比较基准存在ASR歧义。"
+    },
+    {
+      "id": "C09",
+      "claim": "Apple财年第三季度业绩于7月30日发布，截至6月27日，总收入1094亿美元/+16%，Services创六月季度纪录。",
+      "report_anchor": "八、App Store：功能可以自制，付费理由还剩哪些",
+      "support": "direct",
+      "source_ids": [
+        "src-apple"
+      ],
+      "critical": true,
+      "evidence": "官方新闻稿正文前两段；Services并非App Store单项。"
+    },
+    {
+      "id": "C10",
+      "claim": "Dataconomy转述Morgan Stanley：截至8月中旬App Store净收入同比-0.6%，从6月末开始的当时财季累计仍+0.5%。",
+      "report_anchor": "八、App Store：功能可以自制，付费理由还剩哪些",
+      "support": "direct",
+      "source_ids": [
+        "src-appstore"
+      ],
+      "critical": true,
+      "evidence": "原文前两段；未读投行原始研究，只确认二手报道的口径。"
+    },
+    {
+      "id": "C11",
+      "claim": "节目自制案例是鼠标配套软件与观鸟学习程序，并保留1Password等高信任场景的付费可能性。",
+      "report_anchor": "八、App Store：功能可以自制，付费理由还剩哪些",
+      "support": "direct",
+      "source_ids": [
+        "src-audio"
+      ],
+      "critical": true,
+      "evidence": "40:01—41:40；不武断归属说话人、不恢复不清的专名。"
+    },
+    {
+      "id": "C12",
+      "claim": "两轴性价比图不足以涵盖延迟、部署方式及任务可靠性；Token单价不等于合格任务总成本。",
+      "report_anchor": "九、模型“斩杀线”：便宜又强，仍然需要统一比较条件",
+      "support": "derived",
+      "source_ids": [
+        "src-audio"
+      ],
+      "critical": true,
+      "evidence": "41:40—45:18的单一评分与成本多维讨论；A/B数值是明确标注的教学假设。"
+    },
+    {
+      "id": "C13",
+      "claim": "节目可视化带来的理解提升是主观感受，曾给风格指示，未做学习效果实验。",
+      "report_anchor": "十、Opus 5.5：演示让能力可见，也可能让人误判能力",
+      "support": "direct",
+      "source_ids": [
+        "src-audio"
+      ],
+      "critical": true,
+      "evidence": "45:18—46:49；不把震惊演示作为任意任务正确性的保证。"
+    },
+    {
+      "id": "C14",
+      "claim": "文字角色与粗糙风格是节目描述和解释，未核排名或开发者动机；结尾回到享受生活。",
+      "report_anchor": "十一、粗糙感与公路播客：技术之外仍有具体生活",
+      "support": "direct",
+      "source_ids": [
+        "src-audio"
+      ],
+      "critical": true,
+      "evidence": "48:44—53:16；享受生活原话53:05，合成规则不可恢复故删去。"
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "CU00",
+      "title": "系列动机：用个人触动串起年度复盘",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "src-audio",
+        "src-shownotes"
+      ],
+      "report_anchor": "一、OpenClaw：热潮过后，实践留下了什么",
+      "source_locator": "00:01–00:46；第 1–26 行",
+      "chapter_id": null,
+      "note": "修订时按原转写及独立首轮反馈核对。节目外部案例未全部独立核实，保留原讨论与限制。"
+    },
+    {
+      "id": "CU01",
+      "title": "OpenClaw 将 Agent 与 Harness 的产品形态聚拢",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio",
+        "src-shownotes"
+      ],
+      "report_anchor": "一、OpenClaw：热潮过后，实践留下了什么",
+      "source_locator": "00:46–03:25；第 27–145 行",
+      "chapter_id": "CH01",
+      "note": "修订时按原转写及独立首轮反馈核对。节目外部案例未全部独立核实，保留原讨论与限制。"
+    },
+    {
+      "id": "CU02",
+      "title": "早期实践的收益和普通人的 FOMO 成本不同",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio",
+        "src-shownotes"
+      ],
+      "report_anchor": "一、OpenClaw：热潮过后，实践留下了什么",
+      "source_locator": "03:25–06:34；第 146–284 行",
+      "chapter_id": "CH01",
+      "note": "修订时按原转写及独立首轮反馈核对。节目外部案例未全部独立核实，保留原讨论与限制。"
+    },
+    {
+      "id": "CU03",
+      "title": "Seedance 优势被解释为资源与内容商业循环",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio",
+        "src-shownotes"
+      ],
+      "report_anchor": "二、Seedance：模型之外，还有谁掌握生产与分发",
+      "source_locator": "06:34–11:11；第 285–485 行",
+      "chapter_id": "CH02",
+      "note": "修订时按原转写及独立首轮反馈核对。节目外部案例未全部独立核实，保留原讨论与限制。"
+    },
+    {
+      "id": "CU04",
+      "title": "通用模型是否会覆盖视频与物理专门路线，仍是争论",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio",
+        "src-shownotes"
+      ],
+      "report_anchor": "二、Seedance：模型之外，还有谁掌握生产与分发",
+      "source_locator": "11:11–14:34；第 486–618 行",
+      "chapter_id": "CH02",
+      "note": "修订时按原转写及独立首轮反馈核对。节目外部案例未全部独立核实，保留原讨论与限制。"
+    },
+    {
+      "id": "CU05",
+      "title": "Sora 2 关闭引出巨头边界与垂直创业机会",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio",
+        "src-shownotes"
+      ],
+      "report_anchor": "三、Sora 退场：巨头的边界，不等于创业公司的答案",
+      "source_locator": "14:34–19:15；第 619–802 行",
+      "chapter_id": "CH03",
+      "note": "修订时按原转写及独立首轮反馈核对。节目外部案例未全部独立核实，保留原讨论与限制。"
+    },
+    {
+      "id": "CU06",
+      "title": "RSI 的触动来自对自我改进循环的可视化理解",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio",
+        "src-shownotes"
+      ],
+      "report_anchor": "四、RSI：最重要的，是分清已经发生与尚未发生",
+      "source_locator": "19:15–22:07；第 803–923 行",
+      "chapter_id": "CH04",
+      "note": "修订时按原转写及独立首轮反馈核对。节目外部案例未全部独立核实，保留原讨论与限制。"
+    },
+    {
+      "id": "CU07",
+      "title": "新实验室的同向探索如何拉动下游供给",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio",
+        "src-shownotes"
+      ],
+      "report_anchor": "四、RSI：最重要的，是分清已经发生与尚未发生",
+      "source_locator": "22:07–23:59；第 924–1000 行",
+      "chapter_id": "CH04",
+      "note": "修订时按原转写及独立首轮反馈核对。节目外部案例未全部独立核实，保留原讨论与限制。"
+    },
+    {
+      "id": "CU08",
+      "title": "生产力与安全风险共享持续执行和懂代码的能力",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio",
+        "src-shownotes"
+      ],
+      "report_anchor": "四、RSI：最重要的，是分清已经发生与尚未发生",
+      "source_locator": "23:59–27:30；第 1001–1137 行",
+      "chapter_id": "CH04",
+      "note": "修订时按原转写及独立首轮反馈核对。节目外部案例未全部独立核实，保留原讨论与限制。"
+    },
+    {
+      "id": "CU09",
+      "title": "连研究者也会经历失去掌控感",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "src-audio",
+        "src-shownotes"
+      ],
+      "report_anchor": "四、RSI：最重要的，是分清已经发生与尚未发生",
+      "source_locator": "27:30–28:29；第 1138–1174 行",
+      "chapter_id": "CH04",
+      "note": "修订时按原转写及独立首轮反馈核对。节目外部案例未全部独立核实，保留原讨论与限制。"
+    },
+    {
+      "id": "CU10",
+      "title": "老牌硬件厂商重回视野：AI 需求不只流向新软件",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio",
+        "src-shownotes"
+      ],
+      "report_anchor": "五、老牌硬件回归：AI 的需求会落在具体物件上",
+      "source_locator": "28:29–30:45；第 1175–1265 行",
+      "chapter_id": "CH05",
+      "note": "修订时按原转写及独立首轮反馈核对。节目外部案例未全部独立核实，保留原讨论与限制。"
+    },
+    {
+      "id": "CU11",
+      "title": "内容行业的素材、流程和版权商业化同时受压",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio",
+        "src-shownotes"
+      ],
+      "report_anchor": "五、老牌硬件回归：AI 的需求会落在具体物件上",
+      "source_locator": "30:45–31:30；第 1266–1301 行",
+      "chapter_id": "CH05",
+      "note": "修订时按原转写及独立首轮反馈核对。节目外部案例未全部独立核实，保留原讨论与限制。"
+    },
+    {
+      "id": "CU12",
+      "title": "Codex 与 ChatGPT 合并及工作型界面的阶段性共识",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio",
+        "src-shownotes"
+      ],
+      "report_anchor": "六、工作型界面：能力集中之后，选择也变多了",
+      "source_locator": "31:30–33:32；第 1302–1390 行",
+      "chapter_id": "CH06",
+      "note": "修订时按原转写及独立首轮反馈核对。节目外部案例未全部独立核实，保留原讨论与限制。"
+    },
+    {
+      "id": "CU13",
+      "title": "能力整合也增加认知成本，给极简产品留出入口",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio",
+        "src-shownotes"
+      ],
+      "report_anchor": "六、工作型界面：能力集中之后，选择也变多了",
+      "source_locator": "33:32–35:19；第 1391–1472 行",
+      "chapter_id": "CH06",
+      "note": "修订时按原转写及独立首轮反馈核对。节目外部案例未全部独立核实，保留原讨论与限制。"
+    },
+    {
+      "id": "CU14",
+      "title": "端侧小模型追赶过去前沿能力的时差缩短",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio",
+        "src-shownotes"
+      ],
+      "report_anchor": "七、Qwen 小模型：能力下放，怎样才算真的可用",
+      "source_locator": "35:19–37:30；第 1473–1563 行",
+      "chapter_id": "CH07",
+      "note": "修订时按原转写及独立首轮反馈核对。节目外部案例未全部独立核实，保留原讨论与限制。"
+    },
+    {
+      "id": "CU15",
+      "title": "成本包含价格之外的任务与部署约束",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio",
+        "src-shownotes"
+      ],
+      "report_anchor": "七、Qwen 小模型：能力下放，怎样才算真的可用",
+      "source_locator": "37:30–38:48；第 1564–1618 行",
+      "chapter_id": "CH07",
+      "note": "修订时按原转写及独立首轮反馈核对。节目外部案例未全部独立核实，保留原讨论与限制。"
+    },
+    {
+      "id": "CU16",
+      "title": "App Store 变化被用作软件替代信号，但因果不确定",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio",
+        "src-shownotes"
+      ],
+      "report_anchor": "八、App Store：功能可以自制，付费理由还剩哪些",
+      "source_locator": "38:48–40:01；第 1619–1669 行",
+      "chapter_id": "CH08",
+      "note": "修订时按原转写及独立首轮反馈核对。节目外部案例未全部独立核实，保留原讨论与限制。"
+    },
+    {
+      "id": "CU17",
+      "title": "自制软件的具体案例与仍愿付费的信任边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio",
+        "src-shownotes"
+      ],
+      "report_anchor": "八、App Store：功能可以自制，付费理由还剩哪些",
+      "source_locator": "40:01–41:40；第 1670–1750 行",
+      "chapter_id": "CH08",
+      "note": "修订时按原转写及独立首轮反馈核对。节目外部案例未全部独立核实，保留原讨论与限制。"
+    },
+    {
+      "id": "CU18",
+      "title": "斩杀线把能力与价格放在同一张图上",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio",
+        "src-shownotes"
+      ],
+      "report_anchor": "九、模型“斩杀线”：便宜又强，仍然需要统一比较条件",
+      "source_locator": "41:40–44:09；第 1751–1840 行",
+      "chapter_id": "CH09",
+      "note": "修订时按原转写及独立首轮反馈核对。节目外部案例未全部独立核实，保留原讨论与限制。"
+    },
+    {
+      "id": "CU19",
+      "title": "模型使用走向分层：前沿溢价与日常低成本并存",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio",
+        "src-shownotes"
+      ],
+      "report_anchor": "九、模型“斩杀线”：便宜又强，仍然需要统一比较条件",
+      "source_locator": "44:09–45:18；第 1841–1889 行",
+      "chapter_id": "CH09",
+      "note": "修订时按原转写及独立首轮反馈核对。节目外部案例未全部独立核实，保留原讨论与限制。"
+    },
+    {
+      "id": "CU20",
+      "title": "Opus 5.5 动态可视化触及创作者自身技能",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio",
+        "src-shownotes"
+      ],
+      "report_anchor": "十、Opus 5.5：演示让能力可见，也可能让人误判能力",
+      "source_locator": "45:18–46:49；第 1890–1960 行",
+      "chapter_id": "CH10",
+      "note": "修订时按原转写及独立首轮反馈核对。节目外部案例未全部独立核实，保留原讨论与限制。"
+    },
+    {
+      "id": "CU21",
+      "title": "奇观成为传达能力的方式，也制造疲劳",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio",
+        "src-shownotes"
+      ],
+      "report_anchor": "十、Opus 5.5：演示让能力可见，也可能让人误判能力",
+      "source_locator": "46:49–48:44；第 1961–2041 行",
+      "chapter_id": "CH10",
+      "note": "修订时按原转写及独立首轮反馈核对。节目外部案例未全部独立核实，保留原讨论与限制。"
+    },
+    {
+      "id": "CU22",
+      "title": "《赵云与阿斗》用粗糙文字反衬精致 AI 画面的疲劳",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio",
+        "src-shownotes"
+      ],
+      "report_anchor": "十一、粗糙感与公路播客：技术之外仍有具体生活",
+      "source_locator": "48:44–51:31；第 2042–2157 行",
+      "chapter_id": "CH11",
+      "note": "修订时按原转写及独立首轮反馈核对。节目外部案例未全部独立核实，保留原讨论与限制。"
+    },
+    {
+      "id": "CU23",
+      "title": "公路播客的不可控状态与具体人味",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "src-audio",
+        "src-shownotes"
+      ],
+      "report_anchor": "十一、粗糙感与公路播客：技术之外仍有具体生活",
+      "source_locator": "51:31–52:14；第 2158–2183 行",
+      "chapter_id": "CH11",
+      "note": "修订时按原转写及独立首轮反馈核对。节目外部案例未全部独立核实，保留原讨论与限制。"
+    },
+    {
+      "id": "CU24",
+      "title": "结尾用生活而非持续焦虑收束",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "src-audio",
+        "src-shownotes"
+      ],
+      "report_anchor": "十一、粗糙感与公路播客：技术之外仍有具体生活",
+      "source_locator": "52:14–53:16；第 2184–2237 行",
+      "chapter_id": "CH11",
+      "note": "修订时按原转写及独立首轮反馈核对。节目外部案例未全部独立核实，保留原讨论与限制。"
+    }
+  ],
+  "limitations": [
+    "本次未逐句听音；全量处理和时间戳审计不保证ASR逐字准确或所有说话人归属。",
+    "只学习十字路口53分20秒版本，另一串台剪辑未单独学习。",
+    "外部核验集中于RSI、Sora和Apple/App Store；其他口播案例明确作为节目讨论，非逐项事实验证。",
+    "Morgan Stanley 原始研究未取得，仅核对 Dataconomy 二手报道，不能证实 AI 对收入变化的因果影响。",
+    "报告未复现任何模型、软件或游戏演示；端侧能力追赶图、OpenRouter统计和播客节名单未取得。"
+  ],
+  "artifact_observations": {
+    "transcript": {
+      "bytes": 105024,
+      "characters": 72136,
+      "hanzi": 16444,
+      "segments": 2237,
+      "sha256": "1304108f04e6ebfd8c3501a1caf664b3af084877c0538741ecc09a362eb24f49"
+    },
+    "polished": {
+      "bytes": 14206,
+      "characters": 5348,
+      "hanzi": 3947,
+      "sha256": "35ad6f81ffe83e83825299b9a4fac67d840819bc5ac1d0984bcef210741fce32",
+      "retained_hanzi_ratio": 0.240027
+    },
+    "transcription": {
+      "full_audio_processed": true,
+      "processed_chunks": 11,
+      "audio_seconds": 3200.064,
+      "last_speech_end_seconds": 3195.62,
+      "audio_tail_seconds": 4.444,
+      "engine_status": "needs_review",
+      "reason": "source-duration-unavailable",
+      "note": "提交缺少来源时长证据。处理回执的音频实际时长与末段时间已核对；本地audit.tail_gap_seconds不是距音频尾的间隔。"
+    }
+  }
+}

@@ -8,7 +8,9 @@
 
 **最近检查：2026-11-02（北京时间）** · **已收录时段：2026-09-02—2026-11-02**
 
-本页收录 **294 条单集发布记录**：**65 条已有学习报告**，**229 条未做学习任务**。覆盖精选清单的 **58 档节目**，其中 42 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
+报告状态更新于 **2026-11-03**：新增十字路口年终复盘①的学习报告。
+
+本页收录 **294 条单集发布记录**：**66 条已有学习报告**，**228 条未做学习任务**。覆盖精选清单的 **58 档节目**，其中 42 档在这一时段有记录；其余节目的可见日期和获取情况列在[页尾](#coverage)。
 
 同场串台在不同节目发布的版本分别保留入口，并在条目旁注明；后续选学习任务时合并处理。
 
@@ -16,11 +18,11 @@
 
 | 节目类别 | 本页记录 | 已有学习报告 |
 | --- | ---: | ---: |
-| [AI / 科技](#tech) | 99 条 | 48 条 |
+| [AI / 科技](#tech) | 99 条 | 49 条 |
 | [商业 / 投资 / 职场](#business) | 104 条 | 11 条 |
 | [泛文化 / 生活 / 健康](#life) | 91 条 | 6 条 |
 
-「已有学习报告」表示本期有对应的已完成或已归档报告，共 65 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
+「已有学习报告」表示本期有对应的已完成或已归档报告，共 66 份；转写、排队和日报提及不算。「未做」表示尚未找到对应的已完成报告。
 
 也可以看 [顶尖技术博客历史速看表](../web-surfing/TECH_BLOG_UPDATES.md)、[全部播客学习报告](./README.md)，或把[精选订阅源](./wiki/curated-podcasts.opml)导入播客客户端。
 
@@ -28,15 +30,15 @@
 
 ## 最近一周
 
-2026-10-27—2026-11-02，共 32 条，其中 6 条已有学习报告。
+2026-10-27—2026-11-02，共 32 条，其中 7 条已有学习报告。
 
 <details open>
 <summary><strong>展开 / 收起本周全部更新</strong></summary>
 
 | 日期 | 节目 | 本期内容 | 时长 | 学习报告 |
 | --- | --- | --- | --- | --- |
-| 2026-11-02 | 十字路口Crossing | [年终复盘①｜庄明浩的 10 个 AI Aha Moments](https://www.xiaoyuzhoufm.com/episode/6ae6e230c96c8942ec156ed6 "[年终复盘①]AI带给我的10个Aha Moments｜庄明浩：RSI 来了、AI 的奇观与粗糙、巨头夹缝中的创业机会") · [音频](https://media.xyzcdn.net/60502e253c92d4f62c2a9577/lqXcQjZbUePdvtQOvOZF8bEPxBzB.m4a) | 53分钟 | 未做 · [串台](#crossover) |
-| 2026-11-02 | 屠龙之术 | [庄明浩：从龙虾到《赵云与阿斗》的 10 个 AI 时刻](https://www.xiaoyuzhoufm.com/episode/6ae81dffc96c8942ec15ea3c "从龙虾到《赵云与阿斗》，我的10个AI-aha moment") · [音频](https://media.xyzcdn.net/6507bc165c88d2412626b401/lr1uQnOU85Qdneq289p-o6I2QPN6.m4a) | 57分钟 | 未做 · [串台](#crossover) |
+| 2026-11-02 | 十字路口Crossing | [年终复盘①｜庄明浩的 10 个 AI Aha Moments](https://www.xiaoyuzhoufm.com/episode/6ae6e230c96c8942ec156ed6 "[年终复盘①]AI带给我的10个Aha Moments｜庄明浩：RSI 来了、AI 的奇观与粗糙、巨头夹缝中的创业机会") · [音频](https://media.xyzcdn.net/60502e253c92d4f62c2a9577/lqXcQjZbUePdvtQOvOZF8bEPxBzB.m4a) | 53分钟 | [阅读报告](./reports/2026-11-02_xiaoyuzhou-crossing_ai-aha-moments.md) · [串台](#crossover) |
+| 2026-11-02 | 屠龙之术 | [庄明浩：从龙虾到《赵云与阿斗》的 10 个 AI 时刻](https://www.xiaoyuzhoufm.com/episode/6ae81dffc96c8942ec15ea3c "从龙虾到《赵云与阿斗》，我的10个AI-aha moment") · [音频](https://media.xyzcdn.net/6507bc165c88d2412626b401/lr1uQnOU85Qdneq289p-o6I2QPN6.m4a) | 57分钟 | [相关报告（十字路口版）](./reports/2026-11-02_xiaoyuzhou-crossing_ai-aha-moments.md)；本版未单独学习 · [串台](#crossover) |
 | 2026-11-02 | 商业就是这样 | [商业小样 53｜豪华车市场：领先者如何重新挑战？](https://www.ximalaya.com/sound/1029453890 "商业小样53 &#124; 当原来的领先者拿出挑战者的姿态，豪华车市场就变得有趣了") | 20分钟 | 未做 |
 | 2026-11-02 | 声动早咖啡 | [7-11 在印度：牵手本土巨头为何仍难立足？](https://www.xiaoyuzhoufm.com/episode/6ae7126ac96c8942ec1583b4 "7-11 败走印度市场，为何牵手本土巨头仍难站稳脚跟？") · [音频](https://media.xyzcdn.net/60de7c003dd577b40d5a40f3/lg-G1rR9Iy0Zz7xosOoYGIRYRxD3.m4a) | 17分钟 | 未做 |
 | 2026-11-02 | 菠萝健康派 | [Vol.136｜吴小华：年年体检，卵巢癌为何仍难早发现？](https://www.xiaoyuzhoufm.com/episode/6ae6d4e5c96c8942ec1569ff "吴小华教授：年年体检，为什么卵巢癌还是发现晚了？vol.136") · [音频](https://media.xyzcdn.net/6693ae814ce7c8de0f47e220/lttIGwJ3TGTeDrxKwv3Ee8D_B2aZ.m4a) | 1小时1分 | 未做 |
@@ -96,13 +98,13 @@
 <a id="show-crossing"></a>
 
 <details>
-<summary><strong>十字路口Crossing · 11 条 · 7 条有报告</strong></summary>
+<summary><strong>十字路口Crossing · 11 条 · 8 条有报告</strong></summary>
 
 [公开订阅](https://feed.xyzfm.space/68fyjknth9hj) · [更早单集索引](./wiki/show-indexes/crossing.md)
 
 | 日期 | 本期内容 | 时长 | 学习报告 |
 | --- | --- | --- | --- |
-| 2026-11-02 | [年终复盘①｜庄明浩的 10 个 AI Aha Moments](https://www.xiaoyuzhoufm.com/episode/6ae6e230c96c8942ec156ed6 "[年终复盘①]AI带给我的10个Aha Moments｜庄明浩：RSI 来了、AI 的奇观与粗糙、巨头夹缝中的创业机会") · [音频](https://media.xyzcdn.net/60502e253c92d4f62c2a9577/lqXcQjZbUePdvtQOvOZF8bEPxBzB.m4a) | 53分钟 | 未做 · [串台](#crossover) |
+| 2026-11-02 | [年终复盘①｜庄明浩的 10 个 AI Aha Moments](https://www.xiaoyuzhoufm.com/episode/6ae6e230c96c8942ec156ed6 "[年终复盘①]AI带给我的10个Aha Moments｜庄明浩：RSI 来了、AI 的奇观与粗糙、巨头夹缝中的创业机会") · [音频](https://media.xyzcdn.net/60502e253c92d4f62c2a9577/lqXcQjZbUePdvtQOvOZF8bEPxBzB.m4a) | 53分钟 | [阅读报告](./reports/2026-11-02_xiaoyuzhou-crossing_ai-aha-moments.md) · [串台](#crossover) |
 | 2026-10-26 | [李磊：AI 时代读 PhD 的 10 个关键问题](https://www.xiaoyuzhoufm.com/episode/6add84e197726cd467573cf1 "AI 时代，PhD 路上的 10 个关键问题｜对谈李磊：港大 PhD、小米 MiMo 研究员") · [音频](https://media.xyzcdn.net/60502e253c92d4f62c2a9577/lpbsXeoXbCgTv0QckX8lCTPdwViV.m4a) | 52分钟 | [阅读报告](./reports/2026-10-25_xiaoyuzhou-crossing_li-lei-ai-phd.md) |
 | 2026-10-19 | [Treg：Claude Code、Codex 周围的创业机会](https://www.xiaoyuzhoufm.com/episode/6ad2412d0e4e410a05be01a7 "新的创业机会，正在 Claude Code 和 Codex 周围长出来｜对谈 Treg") · [音频](https://media.xyzcdn.net/60502e253c92d4f62c2a9577/lsJEudLUybIGsXWwu9v_u2KuRpSM.m4a) | 51分钟 | [阅读报告](./reports/2026-10-18_xiaoyuzhou-crossing_treg-agent-ecosystem.md) |
 | 2026-10-12 | [鸭哥：把 AI 用进工作、生活与自媒体](https://www.xiaoyuzhoufm.com/episode/6aca7f91e742e36efcc10957 "“有了AI，我感觉自己强得可怕！”｜对谈鸭哥") · [音频](https://media.xyzcdn.net/60502e253c92d4f62c2a9577/lr19x9_9JYmicOZS2uFAbR8YC6Kb.m4a) | 1小时13分 | [阅读报告](./reports/2026-10-11_xiaoyuzhou-crossing_yage-ai-strong.md) |
@@ -359,7 +361,7 @@
 
 | 日期 | 本期内容 | 时长 | 学习报告 |
 | --- | --- | --- | --- |
-| 2026-11-02 | [庄明浩：从龙虾到《赵云与阿斗》的 10 个 AI 时刻](https://www.xiaoyuzhoufm.com/episode/6ae81dffc96c8942ec15ea3c "从龙虾到《赵云与阿斗》，我的10个AI-aha moment") · [音频](https://media.xyzcdn.net/6507bc165c88d2412626b401/lr1uQnOU85Qdneq289p-o6I2QPN6.m4a) | 57分钟 | 未做 · [串台](#crossover) |
+| 2026-11-02 | [庄明浩：从龙虾到《赵云与阿斗》的 10 个 AI 时刻](https://www.xiaoyuzhoufm.com/episode/6ae81dffc96c8942ec15ea3c "从龙虾到《赵云与阿斗》，我的10个AI-aha moment") · [音频](https://media.xyzcdn.net/6507bc165c88d2412626b401/lr1uQnOU85Qdneq289p-o6I2QPN6.m4a) | 57分钟 | [相关报告（十字路口版）](./reports/2026-11-02_xiaoyuzhou-crossing_ai-aha-moments.md)；本版未单独学习 · [串台](#crossover) |
 | 2026-10-27 | [AI 2026：模型更迭、产业变化与 Personal Agent](https://www.xiaoyuzhoufm.com/episode/6adf8a8dc96c8942ec12aa7d "不是，怎么又换版本了？---狂飙中的AI 2026") · [音频](https://media.xyzcdn.net/6507bc165c88d2412626b401/liFTkQnDduLqfyZNmKIqZVdacEH6.m4a) | 2小时6分 | [阅读报告](./reports/2026-10-26_tulong-zhishu_ai-2026-version-race.md) |
 | 2026-09-29 | [AI 开始设计芯片：EDA 会怎么变？](https://www.xiaoyuzhoufm.com/episode/6ab9f026e742e36efcbc0d88 "当AI开始设计芯片---聊聊EDA与AI时代的芯片设计") · [音频](https://media.xyzcdn.net/6507bc165c88d2412626b401/lrhW9aNpML4jmHFQgw6PYzIFx3-Q.m4a) | 58分钟 | [阅读报告](./reports/2026-09-28_xiaoyuzhou-tulong-zhishu_eda-ai-chips.md) |
 | 2026-09-23 | [AI 进入生产阶段，智能、算力与芯片往哪走？](https://www.xiaoyuzhoufm.com/episode/6ab2b85df04646b3a955a1de "AI进入生产阶段之后， 智能、算力、芯片 会走向哪里？") · [音频](https://media.xyzcdn.net/6507bc165c88d2412626b401/lmiekkQAwGIkd4WGtzCDhcEB3X5H.m4a) | 41分钟 | [阅读报告](./reports/2026-09-22_xiaoyuzhou-tulong-zhishu_ai-production-stage.md) |
@@ -942,6 +944,8 @@
 | 从“大结果”到“大红果”：努力与意义感 | [知行小酒馆](https://www.xiaoyuzhoufm.com/episode/6adb068cc96c8942ec110ee1) · [音频](https://media.xyzcdn.net/6013f9f58e2f7ee375cf4216/lmrfBKmfdmUn7-CjfvaeogEO6FQI.m4a) · [听懂涨声](https://www.xiaoyuzhoufm.com/episode/6adb3c3c97726cd46756a0f6) · [音频](https://media.xyzcdn.net/6543750424e7ad2107e8b0b5/ln-1NsbNMeCpDJHWTQLxBVIvEHot.m4a) |
 
 以上关系由官方节目简介确认。各版本时长不同，表中按各自订阅填写；做学习任务时先核对内容差异，避免重复安排。
+
+庄明浩这一场已完成[十字路口 53 分钟版本的报告](./reports/2026-11-02_xiaoyuzhou-crossing_ai-aha-moments.md)；《屠龙之术》57 分钟版本尚未单独学习，不计入已有报告数。
 
 ### 日期、时长与后续更新
 
