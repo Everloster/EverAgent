@@ -28,6 +28,10 @@ node apps/everagent-learning/start.mjs --repo "/path/to/EverAgent"
 
 macOS、Linux 默认调用 `python3`，Windows 默认调用 `python`。如果命令不同，用 `--python` 指定解释器，例如 `--python python3.12`。只下载应用文件夹时，仍需另外准备含报告、`scripts`、`config` 和 `docs` 的完整公开仓。
 
+容器内可用 `--container --repo /public` 监听容器接口，只读挂载公开仓。此模式必须放在受控反向代理后：
+代理先校验访问地址和同源请求，再将上游 Host 设为 `127.0.0.1:4173`、移除已校验的 Origin。
+支持剥离前缀的挂载，例如 `/learning/dashboard`；页面、报告链接和图片都使用相对地址。不要将容器端口直接公开。
+
 ## 在 MiniMax Code 里打开
 
 本目录也是完整的 Mini App 插件包：`.minimax-plugin/plugin.json`、`package.json`、`icon.png` 与 `miniapp/` 必须一起保留。安装时以本目录作为插件包根目录，名字保持为 `everagent-learning`；安装入口以所用版本的[官方说明](https://github.com/MiniMax-AI/MiniMax-Code-MiniApps)为准。

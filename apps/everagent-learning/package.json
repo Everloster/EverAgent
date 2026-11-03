@@ -1,6 +1,6 @@
 {
   "name": "everagent-learning",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "private": true,
   "description": "EverAgent 本地学习工作台，兼容 MiniMax Code Mini App",
   "license": "MIT",

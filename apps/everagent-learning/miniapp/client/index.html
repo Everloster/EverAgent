@@ -1126,7 +1126,7 @@
         }
         ui.setupSave.disabled = true;
         try {
-          const response = await fetch('/api/settings', {
+          const response = await fetch('api/settings', {
             method: 'POST',
             headers: { 'content-type': 'application/json', 'x-setup-token': '__SETUP_TOKEN__' },
             body: JSON.stringify({ path: requested }),
@@ -1477,7 +1477,7 @@
       async function loadDetail(report) {
         const cached = state.cache.get(report.path);
         if (cached) return cached;
-        const response = await fetch(`/api/report?path=${encodeURIComponent(report.path)}`);
+        const response = await fetch(`api/report?path=${encodeURIComponent(report.path)}`);
         const payload = await response.json();
         if (!payload || payload.ok !== true || !payload.report) {
           throw new Error((payload && payload.error) || 'unknown');
@@ -1653,7 +1653,7 @@
           return;
         }
         const url = new URL(link.href, location.href);
-        if (url.origin !== location.origin || url.pathname !== '/dashboard') return;
+        if (url.origin !== location.origin || url.pathname !== new URL('dashboard', location.href).pathname) return;
         const path = url.searchParams.get('report');
         if (!path) return;
         event.preventDefault();
@@ -1785,7 +1785,7 @@
 
         let payload = null;
         try {
-          const response = await fetch(`/api/reports${force ? '?refresh=1' : ''}`);
+          const response = await fetch(`api/reports${force ? '?refresh=1' : ''}`);
           payload = await response.json();
         } catch (error) {
           payload = { ok: false, error: 'request_failed' };

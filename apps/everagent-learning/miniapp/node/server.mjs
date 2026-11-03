@@ -78,7 +78,10 @@ async function readBody(request) {
 
 /** start(context) is the MiniMax Code process lifecycle contract. */
 export async function start(context, options = {}) {
-  if (!LOOPBACK.has(context.listen.host)) throw new Error('只允许本机回环地址');
+  if (!LOOPBACK.has(context.listen.host) && !(options.container && context.listen.host === '0.0.0.0')) {
+    throw new Error('只允许本机回环地址；容器须显式启用 --container');
+  }
+  if (options.container && !options.repoRoot) throw new Error('容器模式须指定只读公开仓 --repo');
   const script = join(context.pluginRoot, 'miniapp/node/report_index.py');
   const setupToken = randomBytes(24).toString('hex');
   const clientEntry = (await readFile(join(context.pluginRoot, 'miniapp/client/index.html'), 'utf8'))

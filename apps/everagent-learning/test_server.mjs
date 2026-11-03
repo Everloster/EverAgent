@@ -105,7 +105,8 @@ test('HTTP origin and settings protection; arbitrary files and transcripts stay 
     assert.ok(!detail.html.includes('href="java'));
     const pin = (await get(app, '/api/report?path=podcast-learning/PODCAST_UPDATES.md')).body.report;
     assert.ok(pin.html.includes('<details>'));
-    assert.ok(pin.html.includes('/dashboard?report='));
+    const link = pin.html.match(/href="(dashboard\?report=[^"]+)"/)[1];
+    assert.equal(new URL(link, 'http://localhost/learning/dashboard').pathname, '/learning/dashboard');
     assert.equal(pin.html.split('#%E7%A4%BA%E4%BE%8B').length - 1, 2);
   } finally { await app.dispose(); }
 });
@@ -167,4 +168,5 @@ test('native lifecycle abort releases the listener; public binds are rejected', 
   await app.dispose();
   await assert.rejects(fetch(app.url));
   await assert.rejects(start({ listen: { host: '0.0.0.0', port: 0 } }), /回环/);
+  await assert.rejects(start({ listen: { host: '0.0.0.0', port: 0 } }, { container: true }), /--repo/);
 });

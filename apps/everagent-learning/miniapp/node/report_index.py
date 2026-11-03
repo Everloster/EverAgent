@@ -201,7 +201,7 @@ def image_resolver(root: pathlib.Path, base: str, relative_dir: str):
     def resolve(url: str) -> str:
         target = local_target(relative_dir, url)
         if safe_file(root, target) and pathlib.Path(target).suffix.lower() in ASSET_TYPES:
-            return "/api/asset?path=" + quote(target, safe="")
+            return "api/asset?path=" + quote(target, safe="")
         return ""
     return resolve
 
@@ -215,7 +215,7 @@ def link_resolver(root: pathlib.Path, relative_dir: str, known: set[str]):
             return ""
         fragment = quote(unquote(urlsplit(url).fragment), safe="")
         if target in known:
-            return "/dashboard?report=" + quote(target, safe="") + ("#" + fragment if fragment else "")
+            return "dashboard?report=" + quote(target, safe="") + ("#" + fragment if fragment else "")
         # Wiki and other repository documents keep their public GitHub link.
         return blob_url(PUBLIC_BASE, target) + ("#" + fragment if fragment else "")
     return resolve
