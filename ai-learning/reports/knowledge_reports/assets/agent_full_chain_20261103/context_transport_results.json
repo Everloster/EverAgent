@@ -1,0 +1,22 @@
+{
+  "experiment": "synthetic JSON transport versus logical conversation",
+  "synthetic_data": true,
+  "model_called": false,
+  "tokenizer_used": false,
+  "network_used": false,
+  "serialization": "UTF-8 JSON, ensure_ascii=False, compact separators",
+  "full_request_bytes": 114944,
+  "thread_continue_request_bytes": 180,
+  "full_request_message_count": 5,
+  "thread_continue_message_count": 1,
+  "reconstructed_message_count": 5,
+  "logical_request_identical": true,
+  "logical_request_sha256": "8973e320ba78898f96c6a0d48900b23a3f19d2d6e07b4686bb0089b0b42b5c88",
+  "expired_thread_replay_messages_identical": true,
+  "checks_passed": 3,
+  "limitations": [
+    "Does not measure tokens, billing, TTFT, model quality, or API behavior.",
+    "Byte counts depend on the chosen synthetic history and serialization.",
+    "Does not implement thread expiry, durable task recovery, or tool idempotency."
+  ]
+}

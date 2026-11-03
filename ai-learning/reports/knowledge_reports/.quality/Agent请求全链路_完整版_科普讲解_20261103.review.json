@@ -1,0 +1,711 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/Agent请求全链路_完整版_科普讲解_20261103.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "glm-5.3",
+        "harness": "pi",
+        "run_id": "00ab938d-a07c-4b33-9ed2-4f6612d07ce1",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "scores": {
+        "evidence_fidelity": 96,
+        "request_coverage": 94,
+        "reasoning_quality": 95,
+        "readability": 92,
+        "limitations": 95
+      },
+      "score_reasons": {
+        "evidence_fidelity": "开始前核对双 SHA-256：报告 2979dc2b…、证据账本 a2ee1852… 均与调度一致，非 wrong_target_snapshot。先读 source-pack S01–S18 全部逐行摘录，再开报告与账本逐条核对 C01–C18。关键数字独立复算：35% 为公告中 500k–1M token 请求的 TTFT 中位数且限定默认开启人群（S07 L158，报告§6 保留全部限定并标注厂商统计）；线程 5 分钟可续接与最迟 1 小时删除两个期限在§6 证据块中明确区分（S07 L160、S08 L49/L808）；continue 不重发 system/tools（S08 L592）、单响应 ID 仅可续接一次（L610）、流式须等 message_stop（L627）、SDK 助手不重试断流（L695）逐条吻合；111,300=1,300+10,000+100,000、11.13%、888,700 手算正确且 input_tokens=断点后未缓存输入的口径与 S06 L552–557 一致；20%=(12000−10000)/10000 正确；114,944/180 字节、5/1/5 条消息与 S15 逐字段一致；109.519/433.304/431.061/433.373ms 与 S14 一致且沿用声明属实；工具结果清理使缓存前缀失效（S10 L35）、Threads 不支持 Compaction 及 thinking 例外（S08 L780–781）、ZDR 不合格（L846–848）均吻合；KV 复杂度表述是对 S05 L38 per-step 口径的正确保守化并声明不验证闭源架构。脚注 [^transport-lab] 声称的『经独立复跑』与 history 中 revision-1 复核记录相符。8 个本地链接目标我逐一确认存在。未发现捏造来源、关键数字错误或超出已读范围的声称。轻微保留：S06/S08 长文档我仅经摘录包核对本报告实际引用的行，未逐字复验脚注宣称的完整读取范围。",
+        "request_coverage": "本轮任务的核心是回应『太白话太啰嗦，重写吧』。对照三版：初稿 21 节、大量铺垫与重复澄清；重写稿收敛为 10 个编号小节，恢复旧篇的机制密度——每节✦一句话+因果链展开，类比压缩为服务机制的一句话（§1 两段即收，§6『补交新的一页』，§8 桌面比喻一段），旧篇的七步流程、意图≠执行、前缀稳定工程铁律、两级缓存、四账分立等骨架全部在场。R1 独立可读（我以未依赖旧篇的方式通读验证）；R2–R9 逐项满足；R10 不只是删字：§5/§6/§7 的『为什么』解释（为什么输入更长不一定更久、为什么有缓存还要 Threads、四本账为何不同）达到并部分超过旧篇深度，且未复制旧篇的过度绝对说法。轻微缺口：(1) 旧篇『附·真实 token 实测拆解』（39,671 逐块占比）未保留，token 记账主题由 §4+§7 手算示例覆盖且如实标注，属证据替代而非主题缺失；(2) opening 段比旧篇悖论式开头略平（见 readability）；(3) supporting 级细节（checkpoints、tool_choice/strict、thread-fallback、20 块回看）仍合理裁剪。无 core_requirement_missing。",
+        "reasoning_quality": "分层论证保持且更收敛：传输/计算/窗口/费用四账（§7）、Threads 请求方向与 Streaming 响应方向两个增量（§9）、补看/恢复会话/恢复任务/重做四分（§10）、模型响应完成/工具执行完成/应用交付确认三分（§10 末）互不冲突且各有来源。对旧篇三处泛化（全量重发必然、KV 总量线性化、服务端清理不破坏缓存）的修正均有当前文档直接支持，并在文末『来源与范围』明示不沿用。§6 先解释『请求仍需上传+校验+分词』再引出 Threads，因果顺序正确；§8 摘要必须保留门店范围/基数的反例（『销量上涨20%』被误读为全市场结论）是高质量的机制化纠错。直觉陷阱表与正文无矛盾。未发现循环论证或与来源冲突的推断。",
+        "readability": "针对用户反馈逐项核验，结论是确实修复而非表面压缩：句均信息量接近旧篇；『为什么』先于结论；折叠块承担硬细节；一页纸+五句总纲+陷阱表+三问自测结构与旧篇契约一致。仍存在的可选优化（均不构成硬失败）：(1) §1 第二段『模型与模型服务不是一回事……后面的 Threads 与缓存，就发生在这些不同层次』在机制尚未展开前预告分层，比旧篇『悖论→两个角色→门缝纸条』的抓人开场略抽象，可后移；(2) §10 末段『用户只要比较销量……不能把生成好了理解为可以发送』与 §2 的授权分界句有语义重叠，可合并；(3) §6 证据块第 3–5 条为约束罗列，节奏比正文略平。类比均服务机制（申请单=结构化意图、账本=messages、便签=KV），无讲故事式展开。协调者渲染记录（pandoc+Chrome，revision 2，78 内部链接 0 缺失、8 本地链接、1440/500 无溢出、开头与§8 表格视检）按其声明引用，非本人视检截图。",
+        "limitations": "8 条限制覆盖合成销量与手算边界、未调用模型/分词器/网络、前篇实验未重跑、35% 厂商统计口径、兼容矩阵不完整、KV 解释通用性、未构建生产级恢复/幂等/取消/记忆、旧篇保持原样；正文对应位置（开头边界声明、§6 表格下方与实验块、§9 实验句、文末来源与范围）同步标注，且『这三种证据不相互替代』的收束到位，无限制与正文夸大并存。脚注对 Threads TTL 与提示缓存 TTL 同为 5 分钟的辨析体现了边界意识。遗留观察：frontmatter status 仍为 in_progress（revision-1 已提），按流程复核通过后需 finalize 切换，属元数据时序问题而非证据缺陷。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17",
+        "C18"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08",
+        "U09",
+        "U10"
+      ],
+      "source_content_map": [
+        {
+          "id": "M01",
+          "title": "agentic loop 三阶段（收集上下文—行动—验证）与 harness=围绕模型提供工具、管理上下文的那一层",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01"
+          ],
+          "notes": "§1 末段与§2 循环节；定义取自 S01 L6/L11，循环自适应与用户可打断的深层含义被恰当简化而非扭曲。"
+        },
+        {
+          "id": "M02",
+          "title": "工具往返：客户端/服务端工具执行位置、stop_reason:tool_use、tool_use/tool_result 以 ID 配对、并行调用与工具 token 开销",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01"
+          ],
+          "notes": "§2 正文+证据块+末段；报文为按官方形状改写的合成示例并如实声明，user 角色承载 tool_result 的解释准确（S02 L116–117）。"
+        },
+        {
+          "id": "M03",
+          "title": "stop_reason 语义族（end_turn/max_tokens/tool_use/pause_turn/refusal/window_exceeded）与『模型停止≠任务完成』",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S03"
+          ],
+          "matched_coverage_unit_ids": [
+            "U07"
+          ],
+          "notes": "§9 证据块表格为自我声明的节选（省略 stop_sequence），pause_turn 释义与 S03 L20 一致；三分完成判定在§10 收束。"
+        },
+        {
+          "id": "M04",
+          "title": "上下文窗口：一切请求内容+输出计入、context rot、usage 三分类、窗口占用 vs 累计用量、溢出行为",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S04",
+            "S06"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02"
+          ],
+          "notes": "§4 组成拆解与『文件存在≠已读』、§7 手算 111.3k 与累计/占用之辨；cached prefix 仍占窗口（S04 L148）在§5 证据块点名。"
+        },
+        {
+          "id": "M05",
+          "title": "KV Cache：因果注意力下历史 K/V 可缓存、逐层、per-step 二次→线性与内存线性增长",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S05"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03"
+          ],
+          "notes": "§5 第一层+prefill/decode 表；『不能笼统说全序列注意力总计算线性』是对 HF 表格的正确保守化，并声明不验证 Claude 内部架构。"
+        },
+        {
+          "id": "M06",
+          "title": "Prompt Caching：前缀断点、TTL 5min/1h 与刷新、tools→system→messages、失效规则、usage 字段分解、命中不改输出",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S06"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03"
+          ],
+          "notes": "§5 第二层+证据块；最低长度/TTL/断点条件点到为止（科普合理），刻意不引具体费率倍数并说明以当期定价为准，稳妥；『命中≠旧答案回放』表述准确。"
+        },
+        {
+          "id": "M07",
+          "title": "Threads 公告：只发新增、500k–1M 请求 TTFT 中位数约降 35%、5 分钟过期后全量重建、内存加密、token 用量不变",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S07"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04",
+            "U05"
+          ],
+          "notes": "§6 保留 35% 的全部限定（默认开启人群、token 区间、中位数、TTFT）并标为厂商统计；token 不变与『不自动提供 Prompt Cache』均直引公告与文档。"
+        },
+        {
+          "id": "M08",
+          "title": "Threads 机制：create/continue/replay、客户端 source of truth、固定字段指纹、单次续接、message_stop、404 成因、与 Compaction/Editing 互斥、ZDR 不合格",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S08"
+          ],
+          "matched_coverage_unit_ids": [
+            "U04"
+          ],
+          "notes": "§6 证据块五条约束+§8 折叠块兼容性；5min/1h 两个期限区分、『并非所有 404 都是 thread_not_found』（L649）、fallback 交互按 supporting 级省略。"
+        },
+        {
+          "id": "M09",
+          "title": "Compaction：服务端摘要替换旧轮次，按需/按阈值/自写摘要三路径分工",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S09"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06"
+          ],
+          "notes": "§8 以『谁决定/写什么代码/摘要替换什么』的分工转述 S09 对照表，未沿用旧报告默认阈值（证据账本亦声明），摘要有损+需保留口径基数的反例质量高。"
+        },
+        {
+          "id": "M10",
+          "title": "Context Editing：定向清理工具结果留占位、服务端执行而客户端保留全史、与缓存失效的取舍",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S10"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06"
+          ],
+          "notes": "§8 表格+折叠块『清理可能破坏缓存』直指 S10 L35，纠正了旧篇『服务端清理不破坏缓存』的泛化。"
+        },
+        {
+          "id": "M11",
+          "title": "Memory Tool：客户端文件操作、按需取回、/memories、安全责任与多会话模式",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S11"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06"
+          ],
+          "notes": "§8 记忆段+表格行（来源/更新/权限/过期）；路径穿越等安全细节压缩为一行职责提示，对科普主线足够，多会话初始化模式未展开（supporting 级）。"
+        },
+        {
+          "id": "M12",
+          "title": "Streaming 事件：message/content_block 事件流、input_json_delta 为 partial JSON、流内错误、usage 累计",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S12"
+          ],
+          "matched_coverage_unit_ids": [
+            "U07"
+          ],
+          "notes": "§9 事件顺序图+『input 是工具将收到的输入，仍是模型输出』辨析准确（S12 L368–379）；thinking_delta/signature 省略合理。"
+        },
+        {
+          "id": "M13",
+          "title": "前篇分层结论：三条进度线、『正在查询』须来自执行事件、token/事件/字节三尺度、200+EOF≠语义完成、四分恢复、幂等、取消传播、背压",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S13"
+          ],
+          "matched_coverage_unit_ids": [
+            "U07",
+            "U08"
+          ],
+          "notes": "§9 三条进度+§10 恢复分层表与幂等/背压段；Last-Event-ID 仅是游标的限定被正确转述；引用前篇时声明沿用其 2026-11-02 核验范围，未冒充重测。"
+        },
+        {
+          "id": "M14",
+          "title": "前篇流式实验数字：首 delta 109.519/433.304ms、总时长 431.061/433.373ms、0.1s×5 次",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S14"
+          ],
+          "matched_coverage_unit_ids": [
+            "U07"
+          ],
+          "notes": "§9 数字与 results.json 一致，结论限定为交付时机差异而非速度提升，未重跑声明如实。"
+        },
+        {
+          "id": "M15",
+          "title": "合成传输实验：114,944/180 字节、5/1/5 条消息、逻辑请求与重放一致、三条 limitations",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S15",
+            "S16"
+          ],
+          "matched_coverage_unit_ids": [
+            "U05"
+          ],
+          "notes": "§6 实验表格逐字段等于 S15；『测的是字节不是 token』『不把体积比当线上收益』的双重自纠偏到位，复现命令可用。"
+        },
+        {
+          "id": "M16",
+          "title": "旧篇风格契约：悖论开头、两角色表、门缝纸条、七步流程、✦一句话、陷阱表、一页纸、真实 token 实测附录",
+          "importance": "core",
+          "assessment": "covered",
+          "matched_coverage_unit_ids": [
+            "U10"
+          ],
+          "source_ids": [
+            "S17"
+          ],
+          "notes": "结构契约全部继承且篇幅回落到旧篇量级；唯真实 token 实测附录由 §4+§7 手算示例替代（如实标注），主题未失、实证强度略降，记为可选增强而非缺口。"
+        },
+        {
+          "id": "M17",
+          "title": "旧深度解析三问与需限制的旧泛化（全量重发必然、KV 线性、清理不破坏缓存）",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S18",
+            "S17"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10"
+          ],
+          "notes": "§3/§5/§8 分别给出带边界的新表述，文末明示不沿用旧版默认值与泛化；三问主线在 10 节结构中全部回答。"
+        },
+        {
+          "id": "M18",
+          "title": "supporting 级 API 细节：checkpoints 快照、tool_choice/strict、thread-fallback 交互、20 块回看窗口、缓存最低长度明细",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "S01",
+            "S02",
+            "S06",
+            "S08"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "科普主线合理省略；§2 权限检查与§8 兼容性已覆盖其结论层面，细节留待扩展，与 revision-1 判定一致。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6",
+        "R7",
+        "R8",
+        "R9",
+        "R10"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "流程：先核对双 SHA-256（均匹配，非 wrong_target_snapshot）；再读 source-pack S01–S18 全部摘录与旧篇全文，独立构建 18 个地图单元；然后通读被否定的初稿与当前重写稿做三版对照，最后逐条核对 C01–C18 与 U01–U10。本轮为 revision 2 复核，聚焦 R10（回应『太白话太啰嗦』）：节构从 21 收敛到 10、✦一句话恢复、类比降为机制注脚、『为什么』先于结论，判定反馈被实质回应。独立核验：35%/5min/1h/单次续接/message_stop/ZDR/清理失效缓存/usage 三分类/KV per-step 口径逐条对源；111,300/11.13%/888,700/20% 手算复核；114,944/180/5/1/5 与 109.519/433.304/431.061/433.373 对源一致；8 个本地链接目标存在；实验源码与结果只读核对未重跑（按任务约定）。渲染与链接完整性引用协调者 revision-2 checks.json（78 内部链接 0 缺失、8 本地链接、1440/500 无溢出、开头与§8 表格视检），非本人视检截图。仍可选优化（非硬失败、不要求重写）：§1 第二段分层预告可后移、§10 末段与§2 授权句轻微重叠、§6 证据块约束罗列节奏略平；旧篇真实 token 实测附录由手算替代，后续如条件允许可补实测。元数据 status: in_progress 待门禁通过后 finalize。无捏造来源、无关键数字错误、无核心需求缺失、无安全隐私问题；加权总分 94.7。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 94.7,
+    "evaluated_on": "2026-11-03",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "08f04f4437c94787e74619f837f82f4a7c14a32301ebdaedaea1c39ff49b7ba1",
+    "evidence_sha256": "a2ee1852be762c54189e42fa7611db3cd1491e828d5fab2ae025ff826c81b656"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "glm-5.3",
+            "harness": "pi",
+            "run_id": "ca934def-ca19-4616-92fb-39aea2e4abca",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "scores": {
+            "evidence_fidelity": 96,
+            "request_coverage": 95,
+            "reasoning_quality": 94,
+            "readability": 94,
+            "limitations": 95
+          },
+          "score_reasons": {
+            "evidence_fidelity": "开始前核对报告与证据账本 SHA-256 均与调度一致（1583a027…/e70dd05d…）。先读 source-pack 全部 S01–S18 摘录，再逐条核对 C01–C18：35% 为公告中 500k–1M token 请求 TTFT 中位数（S07 L158），报告保留了完整限定且标注厂商统计；线程 5 分钟可续接与最迟 1 小时删除两个期限均区分正确（S07 L160、S08 L49/L808）；单次续接、等 message_stop、SDK 助手不重试断流（S08 L610/L627/L695）、continue 不得重发 system/tools（L592）逐条吻合；usage 三分类相加与 111.3k 手算（S06 L555–557）算术正确；工具结果清理使缓存前缀失效（S10 L35）、Threads 不支持 Compaction 及 thinking 例外（S08 L780–781）、ZDR 不合格（L846–848）一致；KV 复杂度表述是对 HF 表格（per-step 线性）的正确保守化，且声明不验证闭源架构。我独立重跑 context_transport_lab.py，输出与报告表格逐字段一致（114944/180 字节、5/1/5 条、3 断言通过）；前篇 results.json 数字（109.519/433.304/431.061/433.373ms）核对一致。所有本地链接目标存在。未发现捏造引用、关键数字错误或超出已读范围的声称。轻微保留：[^stream-lab] 等脚注声称的读取范围我未逐字复验全文，仅按 source-pack 摘录核对关键行。",
+            "request_coverage": "用户要求：基于鹦鹉/管家旧篇、加上今日 Claude 功能、all-in-one、允许重复、像旧篇一样易懂。我独立构建的 14 个核心地图单元全部在报告中落实：主线比喻贯穿且被有意修正升级（无状态的准确化）、agentic loop、工具往返、stop_reason、窗口与账单四分、KV/prompt cache、threads 全生命周期、compaction/editing/memory、流式三尺度、断线四分、两个实验、skills/MCP/子 Agent、旧篇泛化修正。R1–R9 逐项满足；报告明确独立可读且实测无需旧篇。未覆盖的仅是个别 supporting 级 API 细节（checkpoints 文件快照机制、tool_choice/strict、thread 与 fallback 交互），属合理裁剪而非核心遗漏。",
+            "reasoning_quality": "分层论证是本篇最强项：传输量/计算量/窗口占用/账单四账分立，Threads（请求方向）与 Streaming（响应方向）两个'增量'的区分，续看/恢复会话/恢复任务/重做四件事的区分，都有来源依据且互相一致。对旧篇三处泛化（全量重发必然、KV 线性化、服务端清理不破坏缓存）的修正有当前文档直接支持，并在文末旧篇关系中明示不沿用。'最容易混淆的几个判断'表与正文陈述无矛盾。§13 对字节≠token、合成压缩比不可外推的自我限定严谨。未发现循环论证或与来源冲突的推断。",
+            "readability": "结构契约完整兑现：每编号小节有'✦一句话'，硬细节入折叠块，结尾有一页纸 ASCII 图、五句话总纲、纠错表、三问自测。杭州销量单一主线从第 2 节贯穿到第 20 节，比例（申请单/桌子/便签/寄存柜/档案）有继承有递进，与用户点名认可的旧篇比喻同构。术语首次出现均有解释（SSE、RAG、幂等、背压、ZDR、TTFT、prefill/decode）。我在未重读旧篇的情况下通读全文，无需外部依赖即可理解，独立可读声明成立。协调者渲染记录（pandoc+Chrome headless，101 个内部链接无缺失、1440/500 视口无溢出）为协调者的检查结果，此处仅引用、不冒充本人视检。",
+            "limitations": "8 条限制覆盖：合成销量与手算示例边界、未调用模型/tokenizer/网络、前篇实验未重跑、35% 为厂商统计、兼容矩阵不完整、KV 解释的通用性、未构建生产级恢复/幂等/取消/记忆验收、旧篇保持不改。正文对应位置（开头边界声明、§13 表格下方、§16、文末'已经验证/没有验证的范围'）同步标注，无限制与正文夸大并存的现象。轻微观察：元数据 status 仍为 in_progress，与正文的完成形态不一致，属元数据层面小瑕疵，不影响证据边界诚实度。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07",
+            "C08",
+            "C09",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "C16",
+            "C17",
+            "C18"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07",
+            "U08",
+            "U09",
+            "U10"
+          ],
+          "source_content_map": [
+            {
+              "id": "M01",
+              "title": "鹦鹉/管家比喻与 agentic loop（收集上下文—行动—验证）及 harness 定义",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S17"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01"
+              ],
+              "notes": "§1、§6、§20、一页纸；比喻沿用并被修正升级（'不是只会复述'、'无状态≠纯函数'），harness 定义来自 S01 L6/L11。"
+            },
+            {
+              "id": "M02",
+              "title": "无状态的准确含义与上下文组装（规则/工具说明/历史/新问题；按需加载）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S04",
+                "S17"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01",
+                "U02"
+              ],
+              "notes": "§2、§3；'桌面上本轮材料=Context'，MCP 工具定义与 skills 按需加载对应 S01 L101/L106。"
+            },
+            {
+              "id": "M03",
+              "title": "工具调用往返：结构化意图 vs 真实执行、tool_use/tool_result 以 ID 配对、client/server 工具执行位置",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01"
+              ],
+              "notes": "§4–§6；报文形状与 S02 L116–117 一致（合成示例、如实声明），user 角色承载 tool_result 的说明准确。"
+            },
+            {
+              "id": "M04",
+              "title": "stop_reason 多值语义与'模型停止≠任务完成'的分层",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S03"
+              ],
+              "matched_coverage_unit_ids": [
+                "U07",
+                "U08"
+              ],
+              "notes": "§6 折叠块；六种停止原因与 S03 表吻合（省略 stop_sequence，报告自我声明为节选，合理），pause_turn 释义正确。"
+            },
+            {
+              "id": "M05",
+              "title": "上下文窗口组成、token 计量、usage 三分类相加、窗口占用 vs 累计账单",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S04",
+                "S06"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "§8；一切计入窗口（S04 L35）、三类输入相加（S06 L555–557）、111.3k 手算与 11.13% 算术正确且标注手算，input_tokens 命名陷阱讲解准确。"
+            },
+            {
+              "id": "M06",
+              "title": "KV Cache 原理：复用已处理 token 的 K/V、prefill/decode、复杂度边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S05"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "§9；'不能笼统说总计算线性'是对 HF per-step 线性表述的正确保守化，并声明不验证 Claude 内部架构。"
+            },
+            {
+              "id": "M07",
+              "title": "Prompt Caching：前缀复用而非答案复用、tools→system→messages、TTL、失效条件、仍占窗口",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S06",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03"
+              ],
+              "notes": "§10 及折叠块；5min/1h、命中刷新、最低长度、层级失效（S06 L532）均吻合；刻意不引用具体费率倍数并说明原因，稳妥。"
+            },
+            {
+              "id": "M08",
+              "title": "Message Threads 动机与机制：create/continue、请求变小而逻辑上下文与 token 不变、不自动缓存、TTFT 中位数约 35%",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S07",
+                "S08"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04",
+                "U05"
+              ],
+              "notes": "§11；'小的是网络请求不是材料'精准对应 S07 L160；35% 保留厂商限定（500k–1M、中位数、TTFT、默认开启人群）。"
+            },
+            {
+              "id": "M09",
+              "title": "Threads 生命周期与责任：5 分钟过期、best-effort、应用自存副本重放、单次续接、并发限制、内存加密与 ZDR 边界、与 Compaction/Editing 兼容性",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S07",
+                "S08"
+              ],
+              "matched_coverage_unit_ids": [
+                "U04"
+              ],
+              "notes": "§12 与 §14 折叠块；5min/1h 两个期限区分、source-of-truth 在客户端（S08 L51）、不支持清单（L774–795）逐条吻合。"
+            },
+            {
+              "id": "M10",
+              "title": "Compaction（摘要替换旧轮次）与 Context Editing（定向清理工具结果/thinking）及缓存代价、Memory Tool 的应用侧存储",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S09",
+                "S10",
+                "S11"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "§14、§15；三种压缩路径（S09 表）、清理失效缓存（S10 L35）、memory tool client-side 与 /memories（S11 L12）一致；§15 末尾对照表是好的概念收束。"
+            },
+            {
+              "id": "M11",
+              "title": "流式输出：SSE 事件序列、text/input_json_delta/thinking 增量、token/事件/字节三尺度、网关缓冲",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S12",
+                "S13"
+              ],
+              "matched_coverage_unit_ids": [
+                "U07"
+              ],
+              "notes": "§16、§17；事件顺序（S12 L325–330）、partial_json 语义（L368）、Threads 增量与工具参数增量两个方向的区分准确。"
+            },
+            {
+              "id": "M12",
+              "title": "断线分层（补看/恢复会话/恢复任务/重做）、幂等去重、取消传播、背压",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S13"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08"
+              ],
+              "notes": "§18、§19；四分法吸收并收束前篇结论，Last-Event-ID 仅作游标的限定被正确转述（编号≠历史）。"
+            },
+            {
+              "id": "M13",
+              "title": "合成传输实验：114944/180 字节、逻辑请求一致、重放一致、不测 token/TTFT/计费",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S15",
+                "S16"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "§13；我独立重跑脚本，输出逐字段一致；'别读成 token 从 114944 降到 180'的自我纠偏到位，复现命令可用。"
+            },
+            {
+              "id": "M14",
+              "title": "前篇流式/缓冲实验数字（109.519/433.304ms 首 delta、总时长几乎不变）",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S14",
+                "S13"
+              ],
+              "matched_coverage_unit_ids": [
+                "U07"
+              ],
+              "notes": "§16；数字与 results.json 一致，明确沿用未重跑，结论限定为交付时机差异。"
+            },
+            {
+              "id": "M15",
+              "title": "Skills 按需加载、MCP 外部工具协议、子 Agent 独立上下文与 fork",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U09"
+              ],
+              "notes": "§21；'fresh unless fork、结果以摘要返回'（S01 L107）表述准确。"
+            },
+            {
+              "id": "M16",
+              "title": "旧篇学习路径继承与泛化表述修正（全量重发、线性化、清理不破坏缓存）",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S17",
+                "S18"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10"
+              ],
+              "notes": "文末'来源、适用边界与旧篇关系'明示三篇旧报告的分工与不沿用项，符合用户'不怕重复'前提下的增量价值。"
+            },
+            {
+              "id": "M17",
+              "title": "checkpoints/权限安全机制（文件快照回滚、权限模式）",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S01"
+              ],
+              "matched_coverage_unit_ids": [
+                "U09"
+              ],
+              "notes": "报告经管家权限检查（§5）与外发授权（§19–§20）触及安全边界，但未展开 checkpoints 文件快照/Esc 回滚机制（S01 L112–117）。对'请求全链路科普'主线非核心，不构成 core_requirement_missing。"
+            },
+            {
+              "id": "M18",
+              "title": "tool_choice/strict 工具约束与 thread-fallback 交互等 API 细节",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S02",
+                "S08"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "科普主线合理省略；任务说明明确不要求覆盖 SDK 代码与产品版本矩阵，记录在案仅供后续扩展参考。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06",
+            "S07",
+            "S08",
+            "S09",
+            "S10",
+            "S11",
+            "S12",
+            "S13",
+            "S14",
+            "S15",
+            "S16",
+            "S17",
+            "S18"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6",
+            "R7",
+            "R8",
+            "R9"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "流程：先核对双 SHA-256（均匹配），再读 source-pack S01–S18 全部摘录构建独立地图，后读报告与证据账本逐项映射。独立动作：重跑 context_transport_lab.py（输出与报告 §13 表格逐字段一致，logical_request_sha256 8973e320… 相同）；核对前篇 results.json 数字；验证 6 个本地链接目标存在；逐条对照 18 条 claims 的来源行号（35%、5min/1h、单次续接、message_stop、缓存层级失效、ZDR、usage 三分类、KV per-step 线性、SSE 事件顺序等均吻合）。渲染与链接完整性（101 个内部片段、1440/500 视口无溢出）引用协调者 checks.json 的机器记录，非本人视检截图。轻微观察（不构成扣到修订级）：(1) 元数据 status: in_progress 与正文完成形态不一致，建议定稿时更新；(2) S01 checkpoints 机制未展开（M17，supporting）；(3) stop_reason 表省略 stop_sequence，报告已自我声明为节选。无捏造来源、无关键数字错误、无核心需求缺失、无安全隐私问题。加权总分 95.0。"
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 95.0,
+        "evaluated_on": "2026-11-03",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "cde472d50fbbb7beed88c9acd2552c2311b9c46c927a36aee884782cb800568a",
+        "evidence_sha256": "e70dd05d905cd6e6471d47c95805da6f1f771bf0e13ad72a522dd65aa2e3237b"
+      }
+    }
+  ]
+}

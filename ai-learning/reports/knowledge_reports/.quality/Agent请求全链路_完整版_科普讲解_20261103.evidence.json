@@ -1,0 +1,553 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/Agent请求全链路_完整版_科普讲解_20261103.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-03",
+  "generator": {
+    "model": "claude-gpt-6-astra-max",
+    "harness": "claude-code",
+    "run_id": "agent-full-chain-20261103-rewrite",
+    "explicit_model_override": false,
+    "override_reason": "",
+    "identity_basis": "eacli session current 返回 claude-session-runtime、session-bound、confirmed=true；仅记录模型依据，不复制设备或私有会话信息。"
+  },
+  "task": {
+    "summary": "在同一完整版文件中按用户最新反馈重写：保留鹦鹉/管家和完整技术范围，恢复旧科普的机制解释密度，减少过度白话、冗长故事、重复铺垫与提醒。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "独立可读的完整版，不要求先阅读旧报告；允许必要重复。"
+      },
+      {
+        "id": "R2",
+        "text": "以鹦鹉与管家简洁建立直觉，沿用杭州空调销量案例；类比服务于机制解释，不扩为冗长故事。"
+      },
+      {
+        "id": "R3",
+        "text": "解释上下文组装、工具定义、调用与结果配对、行动循环、客户端/服务端执行、错误与任务完成。"
+      },
+      {
+        "id": "R4",
+        "text": "根据当前官方资料解释 Message Threads 的创建/续接、传输收益、token不变、临时性、重放及主要兼容边界。"
+      },
+      {
+        "id": "R5",
+        "text": "分开上下文窗口、累计用量、账单、KV Cache、Prompt Caching、传输量与计算量，避免旧篇的过度泛化。"
+      },
+      {
+        "id": "R6",
+        "text": "说明压缩、定向清理、长期Memory、检索、skills/MCP/子Agent在整条链路中的作用。"
+      },
+      {
+        "id": "R7",
+        "text": "整合流式输出、事件与字节、网关缓冲、断线恢复、取消、背压和工具副作用去重。"
+      },
+      {
+        "id": "R8",
+        "text": "有可追溯的一手证据及实数锚点；合成数据、本地模拟、历史实验与厂商统计分别说明，不冒充真实模型或线上测量。"
+      },
+      {
+        "id": "R9",
+        "text": "每个主要编号小节有一句话总结，正文展开机制而不反复复述；硬细节折叠，保留一页纸、总纲、纠错与思考追问，并检查渲染和引用。"
+      },
+      {
+        "id": "R10",
+        "text": "回应用户对初稿“效果没有之前科普的好”“太白话太啰嗦”的反馈：按旧篇节奏重写，不只是删字；保持技术解释和all-in-one覆盖，不用机械检查或模型高分代替读者体验。"
+      }
+    ],
+    "revision_feedback": "2026-11-03 用户原话：“额，效果没有之前科普的好。。。这个也太白话太啰嗦了。。。。重写吧”。"
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "official",
+      "title": "Claude Code — How Claude Code works",
+      "locator": "https://code.claude.com/docs/en/how-claude-code-works",
+      "accessed_on": "2026-11-03",
+      "read_scope": "全文文字；agentic loop、tools、sessions、context、skills/subagents、checkpoints/permissions；不从配图追加推断。"
+    },
+    {
+      "id": "S02",
+      "kind": "official",
+      "title": "Claude — Tool use with Claude",
+      "locator": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview",
+      "accessed_on": "2026-11-03",
+      "read_scope": "How tool use works；When Claude uses tools；Choose a tool；Pricing 中工具定义/调用/结果的输入组成，不逐项复核所有SDK和模型价目。"
+    },
+    {
+      "id": "S03",
+      "kind": "official",
+      "title": "Claude — Stop reasons and fallback",
+      "locator": "https://platform.claude.com/docs/en/build-with-claude/handling-stop-reasons",
+      "accessed_on": "2026-11-03",
+      "read_scope": "Quick reference 与 stop_reason 字段定义。"
+    },
+    {
+      "id": "S04",
+      "kind": "official",
+      "title": "Claude — Context windows",
+      "locator": "https://platform.claude.com/docs/en/build-with-claude/context-windows",
+      "accessed_on": "2026-11-03",
+      "read_scope": "窗口组成、输入输出、缓存输入分类、thinking/tool use、compaction与overflow。"
+    },
+    {
+      "id": "S05",
+      "kind": "official",
+      "title": "Hugging Face Transformers — Caching",
+      "locator": "https://huggingface.co/docs/transformers/main/en/cache_explanation",
+      "accessed_on": "2026-11-03",
+      "read_scope": "导言、Attention matrices、缓存更新；通用Transformer解释，不作为Claude内部实现实测。"
+    },
+    {
+      "id": "S06",
+      "kind": "official",
+      "title": "Claude — Prompt caching",
+      "locator": "https://platform.claude.com/docs/en/build-with-claude/prompt-caching",
+      "accessed_on": "2026-11-03",
+      "read_scope": "How prompt caching works、Tracking cache performance、Cache storage and sharing、失效/TTL/匹配与data retention；研究助手经eacli读取相关段落。"
+    },
+    {
+      "id": "S07",
+      "kind": "primary",
+      "title": "Anthropic — Make long-running agents faster with message threads",
+      "locator": "https://claude.com/resources/articles/message-threads",
+      "accessed_on": "2026-11-03",
+      "read_scope": "2026-11-02发布公告全文；35%保留厂商陈述、500k–1M请求范围及TTFT中位数口径。"
+    },
+    {
+      "id": "S08",
+      "kind": "official",
+      "title": "Claude — Message Threads",
+      "locator": "https://platform.claude.com/docs/en/build-with-claude/message-threads",
+      "accessed_on": "2026-11-03",
+      "read_scope": "导言、生命周期、What to send、Streaming、SDK恢复边界、Prompt caching on a thread、errors/unsupported features/data retention；研究助手经eacli读取相关段落。"
+    },
+    {
+      "id": "S09",
+      "kind": "official",
+      "title": "Claude — Compaction overview",
+      "locator": "https://platform.claude.com/docs/en/build-with-claude/compaction",
+      "accessed_on": "2026-11-03",
+      "read_scope": "概述及三种路径比较；不引述旧版默认触发阈值。"
+    },
+    {
+      "id": "S10",
+      "kind": "official",
+      "title": "Claude — Context editing",
+      "locator": "https://platform.claude.com/docs/en/build-with-claude/context-editing",
+      "accessed_on": "2026-11-03",
+      "read_scope": "Overview、Server-side strategies、server-side位置、与prompt caching的相互作用。Markdown读取返回fetch failed，HTML同一官方页经eacli成功。"
+    },
+    {
+      "id": "S11",
+      "kind": "official",
+      "title": "Claude — Memory tool",
+      "locator": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool",
+      "accessed_on": "2026-11-03",
+      "read_scope": "概述、How it works、Security considerations、Multisession software development pattern。"
+    },
+    {
+      "id": "S12",
+      "kind": "official",
+      "title": "Claude — Streaming messages",
+      "locator": "https://platform.claude.com/docs/en/build-with-claude/streaming",
+      "accessed_on": "2026-11-03",
+      "read_scope": "Event types、Content block delta types、Full HTTP stream response的事件顺序。"
+    },
+    {
+      "id": "S13",
+      "kind": "local",
+      "title": "Agent 请求全链路：流式响应与断线恢复续篇",
+      "locator": "ai-learning/reports/knowledge_reports/Agent请求全链路_流式响应与断线恢复_科普讲解_20261102.md",
+      "accessed_on": "2026-11-03",
+      "read_scope": "模型/任务/显示分层、字节与事件、第5–7节恢复取消与验证边界。协议核验日期沿用原篇2026-11-02，不声称本次重测。"
+    },
+    {
+      "id": "S14",
+      "kind": "local",
+      "title": "2026-11-02 本地流式/缓冲实验输出",
+      "locator": "ai-learning/reports/knowledge_reports/assets/api_gateway_streaming_20261102/results.json",
+      "accessed_on": "2026-11-03",
+      "read_scope": "实验定义、人工间隔0.1秒、两种模式各5次、medians_ms；本次核对既有输出，未重跑。"
+    },
+    {
+      "id": "S15",
+      "kind": "local",
+      "title": "2026-11-03 合成请求传输与逻辑会话实验结果",
+      "locator": "ai-learning/reports/knowledge_reports/assets/agent_full_chain_20261103/context_transport_results.json",
+      "accessed_on": "2026-11-03",
+      "read_scope": "本次真实运行的全部JSON；模型/分词器/网络均未调用。"
+    },
+    {
+      "id": "S16",
+      "kind": "local",
+      "title": "合成请求传输实验源码",
+      "locator": "ai-learning/reports/knowledge_reports/assets/agent_full_chain_20261103/context_transport_lab.py",
+      "accessed_on": "2026-11-03",
+      "read_scope": "本次编写并运行；UTF-8紧凑JSON长度、历史重建一致、消息重放一致三个断言；无真实thread服务器。"
+    },
+    {
+      "id": "S17",
+      "kind": "local",
+      "title": "鹦鹉与管家原版请求全链路科普",
+      "locator": "ai-learning/reports/knowledge_reports/Agent请求全链路_科普讲解_20260715.md",
+      "accessed_on": "2026-11-03",
+      "read_scope": "全文；复用类比与认知路径，不沿用全量重发、线性复杂度、服务端清理不破坏缓存等泛化说法。"
+    },
+    {
+      "id": "S18",
+      "kind": "local",
+      "title": "早期请求全链路报文级深度解析",
+      "locator": "ai-learning/reports/knowledge_reports/Agent_Harness请求全链路_深度解析_20260709.md",
+      "accessed_on": "2026-11-03",
+      "read_scope": "前180行：主问题、工具往返报文、上下文与缓存旧表述；只作问题来源，不作当前产品行为依据。"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "Agent循环由模型判断、工具行动和Harness管理上下文/执行/反馈共同构成，不要求Harness只在服务端。",
+      "report_anchor": "### 1. 鹦鹉有本领，管家有记录和执行权",
+      "support": "direct",
+      "source_ids": [
+        "S01",
+        "S02"
+      ],
+      "critical": true,
+      "evidence": "S01 The agentic loop称models reason、tools act，Claude Code提供tools并管理context；接口可在多种执行环境运行。"
+    },
+    {
+      "id": "C02",
+      "claim": "客户端工具由应用执行，服务端工具由Anthropic执行；tool_use与tool_result通过ID形成反馈，不把调用意图当作已完成行动。",
+      "report_anchor": "### 2. 从一句问题，到一次真正的工具执行",
+      "support": "direct",
+      "source_ids": [
+        "S02"
+      ],
+      "critical": true,
+      "evidence": "How tool use works明确两种执行位置、stop_reason/tool_use和tool_result往返；示例工具与数据为合成。"
+    },
+    {
+      "id": "C03",
+      "claim": "多轮推理需要相关上下文，但每轮不必由客户端重新上传全部历史；只追加不整理时增长，不是不可改变的自然法则。",
+      "report_anchor": "### 3. “那上个月呢？”为什么不是一句没头没尾的话",
+      "support": "derived",
+      "source_ids": [
+        "S02",
+        "S04",
+        "S07",
+        "S08",
+        "S09"
+      ],
+      "critical": true,
+      "evidence": "普通tool-use示例发送累积messages；Threads续接只发新消息；Compaction替换旧历史。由此限制原篇‘无状态必然全量重发’的适用范围。"
+    },
+    {
+      "id": "C04",
+      "claim": "系统规则、工具定义、消息、工具结果、图文及输出占窗口；Claude缓存输入三类相加是本轮输入，累计用量不是窗口占用。",
+      "report_anchor": "### 7. 请求变小了，为什么上下文和账单不一定变小",
+      "support": "direct",
+      "source_ids": [
+        "S04",
+        "S06"
+      ],
+      "critical": true,
+      "evidence": "S04 How context works列明全部request与output；S06 total_input_tokens=cache_read_input_tokens+cache_creation_input_tokens+input_tokens。111300/1000000等仅为明确标示的手算。"
+    },
+    {
+      "id": "C05",
+      "claim": "KV缓存存历史token的中间K/V；新token仍有计算和历史访问成本，不可笼统推断全序列注意力总量线性。",
+      "report_anchor": "### 5. 无状态，为什么不等于每轮从头算",
+      "support": "derived",
+      "source_ids": [
+        "S05"
+      ],
+      "critical": true,
+      "evidence": "HF描述复用历史K/V及新query访问已缓存序列；只解释典型自回归Transformer，不证明Claude内部架构。"
+    },
+    {
+      "id": "C06",
+      "claim": "Prompt Caching复用精确前缀计算状态，不复用答案；tools→system→messages次序、TTL和失效条件影响命中，缓存仍占窗口并非免费。",
+      "report_anchor": "### 5. 无状态，为什么不等于每轮从头算",
+      "support": "direct",
+      "source_ids": [
+        "S06",
+        "S04"
+      ],
+      "critical": true,
+      "evidence": "S06 How prompt caching works/Tracking/Cache storage and sharing：前缀复用、5分钟及1小时、按输入类别计价、配置与精确匹配。未把原始HTTP字节变化等同全部失效。"
+    },
+    {
+      "id": "C07",
+      "claim": "Threads首次发完整会话，续接发新增消息与上一响应ID，减少重复上传和前处理；逻辑上下文/token用量不因此减少，也不自动提供Prompt Cache。",
+      "report_anchor": "### 6. 已经有缓存，为什么还需要 Message Threads",
+      "support": "direct",
+      "source_ids": [
+        "S07",
+        "S08"
+      ],
+      "critical": true,
+      "evidence": "公告明确Claude仍使用完整conversation、token usage stays the same；技术文档明确thread does not cache your prompt for you，续接省略system/tools。"
+    },
+    {
+      "id": "C08",
+      "claim": "线程尽力暂存，最后请求后5分钟过期，应用仍须保留历史；内存加密且不写持久存储，最后使用后至多1小时删除，不具ZDR资格。",
+      "report_anchor": "证据：请求怎么续接，为什么还要自己保存历史",
+      "support": "direct",
+      "source_ids": [
+        "S07",
+        "S08"
+      ],
+      "critical": true,
+      "evidence": "S08 Lifecycle与Data retention分别规定可续接寿命、best-effort/source-of-truth和最迟删除时间；本文明确区分5分钟与1小时。"
+    },
+    {
+      "id": "C09",
+      "claim": "每个响应ID只能续接一次，流式需等message_stop；SDK线程助手不自动重试断流，其内存历史也不等于进程外持久化。",
+      "report_anchor": "证据：请求怎么续接，为什么还要自己保存历史",
+      "support": "direct",
+      "source_ids": [
+        "S08"
+      ],
+      "critical": true,
+      "evidence": "What to send/Streaming/SDK helper明确单次续接、message_stop、dropped stream与in-memory副本边界。"
+    },
+    {
+      "id": "C10",
+      "claim": "本次本地合成请求实验测得114944与180字节，上传消息为5/1但重建后均5条且逻辑请求一致；未调用模型或tokenizer。",
+      "report_anchor": "本地实验：114,944 字节变成 180 字节，但逻辑输入一样",
+      "support": "direct",
+      "source_ids": [
+        "S15",
+        "S16"
+      ],
+      "critical": true,
+      "evidence": "context_transport_results.json全部字段；合成长detail由明确重复字符串构造，三个断言真实运行通过。只测UTF-8序列化字节，不测token或真实API。"
+    },
+    {
+      "id": "C11",
+      "claim": "2026-11-02公告称500k–1M token请求的TTFT中位数下降约35%；此为厂商统计，不是总体任务耗时、账单或本地模拟收益。",
+      "report_anchor": "### 6. 已经有缓存，为什么还需要 Message Threads",
+      "support": "direct",
+      "source_ids": [
+        "S07"
+      ],
+      "critical": true,
+      "evidence": "公告原句将most Claude Code users默认开启、requests with 500k to 1M tokens、median TTFT drop about35%限定在一起。"
+    },
+    {
+      "id": "C12",
+      "claim": "Compaction用摘要替换旧会话，Context Editing定向清理；清工具结果会使相关缓存失效，不能泛称服务端清理总保缓存。",
+      "report_anchor": "### 8. 缓存、摘要、清理、记忆，分别改变什么",
+      "support": "direct",
+      "source_ids": [
+        "S09",
+        "S10"
+      ],
+      "critical": true,
+      "evidence": "Compaction overview区分按需、阈值、自写摘要；S10 Context editing and prompt caching明确Tool result clearing invalidates cached prompt prefixes。"
+    },
+    {
+      "id": "C13",
+      "claim": "当前Threads不直接支持Compaction与大多数Context Editing，应用可从自己生成的摘要创建新线程，不能把机制概念当成任意配置组合。",
+      "report_anchor": "当前实现的两个关键限制",
+      "support": "direct",
+      "source_ids": [
+        "S08"
+      ],
+      "critical": true,
+      "evidence": "Unsupported features排除Compaction、Context Editing（仅保留clear_thinking且keep:all例外），Compacting a conversation要求新线程。"
+    },
+    {
+      "id": "C14",
+      "claim": "Memory Tool的文件操作由应用执行并控制存储；跨会话记录与当前上下文、线程和计算缓存不同。",
+      "report_anchor": "### 8. 缓存、摘要、清理、记忆，分别改变什么",
+      "support": "direct",
+      "source_ids": [
+        "S11",
+        "S01"
+      ],
+      "critical": true,
+      "evidence": "Memory Tool概述及How it works明确client-side、your own infrastructure、通过tool_result返回；Security safeguards是应用责任。"
+    },
+    {
+      "id": "C15",
+      "claim": "前篇本地HTTP实验两种模式各5次，首事件中位数109.519/433.304ms，总时长431.061/433.373ms，仅显示交付时机差异。",
+      "report_anchor": "### 9. 流式输出：提早看到，不等于提早做完",
+      "support": "direct",
+      "source_ids": [
+        "S14",
+        "S13"
+      ],
+      "critical": true,
+      "evidence": "results.json medians_ms与实验范围；明确本文未重跑、不是模型/云网关性能。"
+    },
+    {
+      "id": "C16",
+      "claim": "Claude SSE有message/content block事件，tool input JSON delta是模型输出的工具参数片段；不同于Threads请求方向的历史增量。",
+      "report_anchor": "### 9. 流式输出：提早看到，不等于提早做完",
+      "support": "derived",
+      "source_ids": [
+        "S12",
+        "S08"
+      ],
+      "critical": true,
+      "evidence": "S12 Input JSON delta明确partial JSON strings及最终input object；S08 continue传新增messages；两条方向依各自接口定义比较。"
+    },
+    {
+      "id": "C17",
+      "claim": "模型停止、连接结束、工具执行与应用任务完成需分层判断；续看、恢复会话、恢复任务和重做不等价。",
+      "report_anchor": "### 10. 断线后能不能接着来，取决于保存了哪一种状态",
+      "support": "derived",
+      "source_ids": [
+        "S03",
+        "S12",
+        "S13",
+        "S08"
+      ],
+      "critical": true,
+      "evidence": "停止原因区分tool_use/max_tokens等；SSE允许流中错误；前篇明确taskID/事件/产物恢复责任，Threads仅会话恢复。未声称部署了这些能力。"
+    },
+    {
+      "id": "C18",
+      "claim": "Skills按需加载、MCP连接外部工具、subagents各有上下文；fork可以继承会话副本，但不等于永久共享记忆。",
+      "report_anchor": "把 Skills、MCP、子 Agent 放回这一层理解",
+      "support": "direct",
+      "source_ids": [
+        "S01"
+      ],
+      "critical": false,
+      "evidence": "S01 Extending base capabilities与Manage context with skills and subagents，明确fresh unless fork/tool outputs stay out/summary returned。"
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "模型/Harness/工具的职责与行为循环",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S17"
+      ],
+      "report_anchor": "### 2. 从一句问题，到一次真正的工具执行"
+    },
+    {
+      "id": "U02",
+      "title": "多轮历史与输入/窗口/累计账单",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S04",
+        "S06"
+      ],
+      "report_anchor": "### 4. 为什么只问了一句话，输入却有几万 token"
+    },
+    {
+      "id": "U03",
+      "title": "KV与前缀缓存的收益和限制",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S05",
+        "S06"
+      ],
+      "report_anchor": "### 5. 无状态，为什么不等于每轮从头算"
+    },
+    {
+      "id": "U04",
+      "title": "Threads的增量语义、生命周期、重放、兼容与数据保留",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S07",
+        "S08"
+      ],
+      "report_anchor": "### 6. 已经有缓存，为什么还需要 Message Threads"
+    },
+    {
+      "id": "U05",
+      "title": "传输模拟与厂商TTFT统计的证据分离",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S07",
+        "S15",
+        "S16"
+      ],
+      "report_anchor": "本地实验：114,944 字节变成 180 字节，但逻辑输入一样"
+    },
+    {
+      "id": "U06",
+      "title": "Compaction/Editing/Memory不同职责与代价",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S04",
+        "S09",
+        "S10",
+        "S11"
+      ],
+      "report_anchor": "### 8. 缓存、摘要、清理、记忆，分别改变什么"
+    },
+    {
+      "id": "U07",
+      "title": "响应流、事件、工具参数与显示/完成判断",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S03",
+        "S12",
+        "S13",
+        "S14"
+      ],
+      "report_anchor": "### 9. 流式输出：提早看到，不等于提早做完"
+    },
+    {
+      "id": "U08",
+      "title": "恢复、取消、背压与副作用去重的应用责任",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S03",
+        "S08",
+        "S13"
+      ],
+      "report_anchor": "### 10. 断线后能不能接着来，取决于保存了哪一种状态"
+    },
+    {
+      "id": "U09",
+      "title": "技能/MCP/子Agent与完整旅程",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S01"
+      ],
+      "report_anchor": "把 Skills、MCP、子 Agent 放回这一层理解"
+    },
+    {
+      "id": "U10",
+      "title": "旧篇学习路径及需限制的泛化表述",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "S13",
+        "S17",
+        "S18"
+      ],
+      "report_anchor": "## 来源与范围"
+    }
+  ],
+  "limitations": [
+    "全文销量、门店、12000/10000及20%为合成教学情境，不是真实市场数据；状态栏111300 token算式也明确为手算示例。",
+    "本次仅运行本地标准库JSON传输模拟，未调用真实模型、tokenizer、网络或业务工具，不验证实际Threads过期/重放/延迟/计费。",
+    "前篇流式实验仅核对既有2026-11-02结果，未重跑；SSE/网关底层协议依据沿用该报告已经声明的范围，不冒充今天重新核验全部RFC。",
+    "公告约35%为厂商在500k–1M token请求上的TTFT中位数统计，不是本地实验、独立复现或全任务成本/延迟保证。",
+    "模型/平台/SDK组合有各自支持条件；本文不是完整兼容矩阵，尤其不把Threads与Compaction/Editing当成可随意叠加。",
+    "KV解释针对典型自回归Transformer，不披露或验证Claude闭源内部架构；不沿用全序列注意力线性化的误导性简化。",
+    "任务持久化、幂等、取消传播、背压和长期记忆收益仅解释职责与设计要求，未构建或验收生产实现。",
+    "旧报告保持原文件不变；本篇只引用所读范围，旧版本默认值和过度泛化表述不作为当前事实依据。"
+  ]
+}
