@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "stage": "completed",
+  "updated_on": "2026-11-04",
+  "formal_report_rewritten": true,
+  "whole_book_complete": true,
+  "next_full_research_batch_started": true,
+  "reader_direction": {
+    "confirmed_on": "2026-11-03",
+    "quote": "好的，可以的，整体的几个视角的路线更关键哦，如何串起来",
+    "priority": "历史、范式变迁、人物视角叠加到共同问题主线；重点核实技术路线之间的支撑、汇合与分歧，不机械拼接单篇摘要。"
+  },
+  "inventory": {
+    "pdf_pages_mapped": 51,
+    "objects_identity_verified": 36,
+    "papers": 33,
+    "research_reports": 2,
+    "essay_articles": 1,
+    "review_verdict": "PASS",
+    "all_objects_reviewed_for_declared_scope": true,
+    "exhaustive_original_paper_audit": false
+  },
+  "samples": [
+    {
+      "path": "ai-learning/notes/ai_yanyi_research/sample_sequence.md",
+      "sha256": "682860acaa1cd600b19b42c551131c7033ccea157c0c76fa15be2f5de5565ff9",
+      "basis": "ai-learning/notes/ai_yanyi_research/sequence-evidence.json",
+      "research_package_review": "ai-learning/notes/ai_yanyi_research/sequence.review.json",
+      "reader_feedback": "accepted_for_continuation"
+    },
+    {
+      "path": "ai-learning/notes/ai_yanyi_research/sample_scaling.md",
+      "sha256": "7c1266c8554185e2696caecb2925a0ff2a978bd34a6487f71092ac79fd83e802",
+      "basis": "ai-learning/notes/ai_yanyi_research/scaling-evidence.json",
+      "research_package_review": "ai-learning/notes/ai_yanyi_research/scaling.review.json",
+      "reader_feedback": "accepted_for_continuation"
+    }
+  ],
+  "verification": {
+    "research_packages": "3 independent-session reviews passed within declared scope; not formal whole-report quality gates",
+    "known_correction": "SCALING-N1 corrected by coordinator after directly checking Chinchilla v1 P2; original reviewer snapshot retained",
+    "original_report_and_papers_unchanged": true,
+    "internal_fragment_links_checked": 28,
+    "local_links_checked": 19,
+    "missing_targets": 0,
+    "render_engine": "pandoc gfm+footnotes + Chrome headless",
+    "viewport_widths_css_px": [
+      1440,
+      500
+    ],
+    "visual_scope": "Both sample openings and monochrome route diagrams; not every scroll position of the whole files",
+    "new_palette_or_numeric_plot": false,
+    "snapshot_scope": "Phase0/1样章阶段的历史检查，不表示后续主报告从未改写。"
+  },
+  "artifact_delivery": {
+    "source_map_markdown": "Coordinator produced source-map.md from verified inventory JSON.",
+    "intermediate_research_markdown": "Not produced by workers; materials were returned in evidence JSON. The coordinator wrote the two reader-facing samples instead of duplicating intermediate prose."
+  },
+  "workflow_observations": {
+    "agents": 6,
+    "reported_subagent_tokens": 529424,
+    "tool_uses": 115,
+    "duration_ms": 1413725,
+    "scope": "Inventory research plus two route research packages and their independent checks; excludes coordinator writing/rendering. Token count is a workflow metric, not an invoice or a linear estimate for the entire book."
+  },
+  "remaining_work": [
+    "Reader feedback on the completed report; no further research expansion is automatic"
+  ],
+  "phase2_batches": [
+    {
+      "batch": 1,
+      "status": "research_verified",
+      "object_count": 14,
+      "agents": 6,
+      "reported_subagent_tokens": 751556,
+      "tool_uses": 160,
+      "duration_ms": 1034850
+    },
+    {
+      "batch": 2,
+      "status": "research_verified",
+      "object_count": 12,
+      "workflow_run_id": "wf_3c0785b3-d90",
+      "agents": 6,
+      "reported_subagent_tokens": 795038,
+      "tool_uses": 155,
+      "duration_ms": 952114
+    },
+    {
+      "batch": 3,
+      "status": "research_verified",
+      "object_count": 5,
+      "workflow_run_id": "wf_afcd5145-d8a",
+      "note": "独立生成模型研究与第2批并行；不使用第2批尚未完成的结论。",
+      "agents": 2,
+      "reported_subagent_tokens": 281404,
+      "tool_uses": 56,
+      "duration_ms": 1053357
+    }
+  ],
+  "research_verified_object_count": 36,
+  "working_manuscript": {
+    "status": "archived_in_local_review_cache",
+    "sha256": "6df4db27c8c12f62781a628daffc0bd963181e010d4fc3377a8fb9b0b957c695",
+    "current_owner": "ai-learning/reports/AI演义_笔记分析与项目整合报告.md",
+    "note": "本任务生成的停更中间稿已移出公开文件树，仍可从本地审阅缓存恢复；原PDF、研究证据和其他会话文件未动。"
+  },
+  "formal_report": {
+    "path": "ai-learning/reports/AI演义_笔记分析与项目整合报告.md",
+    "status": "completed",
+    "quality_tier": "flagship",
+    "object_anchors": 36,
+    "critical_claims_and_connections": 57,
+    "primary_review": "completed",
+    "strong_final_review": "completed",
+    "revision_round": 2,
+    "strong_runtime": "kimi-coding/k3",
+    "strong_policy_name": "kimi-k3",
+    "quality_decision": "pass",
+    "quality_score": 94.05,
+    "report_sha256": "a2ff5c1f5e019047b07c2bb0f7320940502b779cbbfb83f09b9b53972475cc08",
+    "evidence_sha256": "c53f228705b4d182bffc0fb21571db7b2021940115de2696dec84d2a9e9312f4",
+    "quality_policy": "report-quality-2026-10-18-r2"
+  },
+  "workflow_totals": {
+    "research_and_package_review_agents": 20,
+    "reported_subagent_tokens": 2357422,
+    "tool_uses": 486,
+    "note": "仅汇总已完成的四次研究工作流；含并行重叠，不能将duration简单相加当墙钟或将token指标直接换算费用。最终主审/强审及主笔工作另计。"
+  },
+  "final_prechecks": {
+    "internal_links": 134,
+    "local_links": 4,
+    "object_anchors": 36,
+    "missing_targets": 0,
+    "duplicate_ids": false,
+    "viewport_widths_css_px": [
+      1440,
+      500
+    ],
+    "visual_scope": "主稿开头、总问题地图、连接索引；未逐屏视检全篇",
+    "source_library": "40项公开原始资料的独立缓存已核正文选择与哈希，未将私有执行收据作为正文资料。",
+    "revision2": "姓名/共同参与增补已由原独立主审复验；原链接/锚点结构保持，受影响段落完成窄屏检查。"
+  },
+  "completion_scope": "覆盖讲义发展路径、核定36对象与跨视角连接；不代表逐篇穷尽原文细节、全部实验复现或所有外围历史判断已核。",
+  "resource_state": "研究工作流和复核进程均已结束；可追溯原文与审阅缓存保留在非发布位置，未清理其他会话、工作树或用户入口。",
+  "git_state_owner": "提交与推送状态以Git历史和远端引用为准，不在本文件复制可变发布状态。"
+}

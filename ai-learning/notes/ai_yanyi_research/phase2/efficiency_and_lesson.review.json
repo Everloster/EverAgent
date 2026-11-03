@@ -1,0 +1,274 @@
+{
+  "schema_version": 1,
+  "task_id": "efficiency_and_lesson",
+  "artifact_kind": "independent_phase2_research_review",
+  "review_date": "2026-11-03",
+  "language": "zh-CN",
+  "reviewer": {
+    "role": "independent_verifier_not_research_author",
+    "model": "claude-gpt-6-astra-max[1m]",
+    "harness": "claude-code",
+    "identity_basis": "本会话提供的运行环境标识；未将Harness名称当作模型名称。",
+    "delegation": "未派其他Agent。"
+  },
+  "research_file": "ai-learning/notes/ai_yanyi_research/phase2/efficiency_and_lesson.json",
+  "research_sha256": "c9b399c0bee76d4a175cf57f9bc705029ce9749d603a2438850e71c9cdfa8b85",
+  "research_hash_scope": "研究JSON原始字节；读稿前计算，内容核查后再次确认一致。派发未提供独立预期哈希，不能声称已与调度端另一份预期快照比对。",
+  "scope": {
+    "core_object_ids": ["sparse-moe", "lora", "bitter-lesson"],
+    "necessary_extension": "Sara Hooker，The Hardware Lottery；不计入核心36项。",
+    "question": "通用学习与计算扩展如何同稀疏容量、低成本适配及硬件实现条件相互作用；Bitter Lesson能解释什么而不能替代哪些具体判断？",
+    "review_order": [
+      "查询eacli context目录并定向搜索AI演义；无匹配后只定位任务指定来源和项目规则。",
+      "先读取核定MoE、LoRA原文文本以及Sutton、Hooker公开正文，形成独立问题/机制/证据/关系地图；在读作者JSON之前已于会话中记录其主线。",
+      "再读取研究稿，将独立内容单元映射到节点、断言和跨路线关系。",
+      "定点核对foundations、infrastructure_data、scaling-evidence接口及相关上游复核哈希；不重审所有36项。",
+      "只生成本复核JSON，不修改研究稿、原PDF、已有论文、报告、索引或规则。"
+    ],
+    "evidence_policy": "一手实验证据表示原论文确实如此报告，不表示本轮复现实验；观点文章只核作者论证，综合连接不升级成历史因果。"
+  },
+  "source_read_scope": [
+    {
+      "source_id": "EL-MOE",
+      "title": "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer",
+      "authors": ["Noam Shazeer", "Azalia Mirhoseini", "Krzysztof Maziarz", "Andy Davis", "Quoc Le", "Geoffrey Hinton", "Jeff Dean"],
+      "year": 2017,
+      "official_url": "https://arxiv.org/abs/1701.06538",
+      "version_url": "https://arxiv.org/abs/1701.06538v1",
+      "version": "arXiv:1701.06538v1，23 Jan 2017；首页为ICLR 2017审稿稿。",
+      "local_path": "ai-learning/papers/21_moe_2017.pdf",
+      "sha256": "2567713d198a376b65b92f0c60b9f58c8c5f66755530b92203533a17c4ec4b8e",
+      "hash_nature": "本地PDF原始字节；与source-map及研究稿相同。",
+      "extracted_text_sha256": "8c762e7d3abc623293e4533908e97feab64cfbdb1dee50f331863c319336fcc2",
+      "cache_integrity_check": "从核定PDF重新运行pdftotext -layout到标准输出，所得字节与所读既有文本缓存完全一致。",
+      "actual_read_scope": "首页、§1–6（P1–9）；Tables 1–5；Appendix A负载估计与Table 6；Appendix B两级路由开头。实际核了背景、前驱自述、方法、系统约束、语言建模/翻译实验和限制，不是仅读摘要。",
+      "not_read_or_not_verified": "未全读Appendix C–E、未视觉读取曲线或专家语义例句，未复现实验；采用数字来自正文及表格文本。"
+    },
+    {
+      "source_id": "EL-LORA",
+      "title": "LoRA: Low-Rank Adaptation of Large Language Models",
+      "authors": ["Edward J. Hu", "Yelong Shen", "Phillip Wallis", "Zeyuan Allen-Zhu", "Yuanzhi Li", "Shean Wang", "Lu Wang", "Weizhu Chen"],
+      "year": 2021,
+      "official_url": "https://arxiv.org/abs/2106.09685",
+      "version_url": "https://arxiv.org/abs/2106.09685v2",
+      "version": "arXiv:2106.09685v2，16 Oct 2021；本PDF首位作者简写Edward Hu。2021-06-17首发日期沿用已核source-map，不混为v2日期。",
+      "local_path": "ai-learning/papers/15_lora_2021.pdf",
+      "sha256": "e9a0d3128767db616085dc0f4e6e455e672e89af823e8ed1282793682787395a",
+      "hash_nature": "本地PDF原始字节；与source-map及研究稿相同。",
+      "extracted_text_sha256": "606208775b099d757b1d21f4af980ebf67d9185abaef014b7c7724f4f366cd4e",
+      "cache_integrity_check": "从核定PDF重新运行pdftotext -layout到标准输出，所得字节与所读既有文本缓存完全一致。",
+      "actual_read_scope": "首页、§1–6、Tables 1–4；§7.1–7.2、Tables 5–6与脚注6；§7.3正文/Table 7；§8开头。重点读取冻结理由、更新参数化、缩放/初始化、合并与混合任务批次限制、实验任务和低秩证据。",
+      "not_read_or_not_verified": "未全读附录或视觉核热图，不核当前量化实现、扩散采用、部署普及率或训练复现。"
+    },
+    {
+      "source_id": "EL-BITTER",
+      "title": "The Bitter Lesson",
+      "authors": ["Rich Sutton"],
+      "year": 2019,
+      "official_url": "http://www.incompleteideas.net/IncIdeas/BitterLesson.html",
+      "version": "署名Rich Sutton、March 13, 2019的作者网页；无版本号。复用任务提供的既有eacli公开正文。",
+      "sha256": "d0cf279c7feb6b8ab4f29aea8c7f377705bc022e3124f8008f6270636a4b9ec4",
+      "hash_nature": "所读公开正文缓存UTF-8字节，不是网页原HTML或执行收据哈希。",
+      "actual_read_scope": "完整正文：总论、国际象棋、围棋、语音、视觉四组案例、研究投入与心理承诺、历史归纳及末尾两个一般教训。",
+      "not_read_or_not_verified": "未独立审计每个历史案例的原始实验、所有先验贡献或研究群体心理。"
+    },
+    {
+      "source_id": "EL-HARDWARE",
+      "title": "The Hardware Lottery",
+      "authors": ["Sara Hooker"],
+      "year": 2020,
+      "official_url": "https://arxiv.org/abs/2009.06489",
+      "version_url": "https://arxiv.org/pdf/2009.06489v2",
+      "version": "arXiv:2009.06489v2 [cs.CY]，21 Sep 2020；既有正式摘要页公开文本另确认v1为14 Sep 2020。",
+      "core_36": false,
+      "sha256": "9a7c6f675176312c28a9165df10ef009b3b0ebd53d9dbbeffedd7140847e0e7b",
+      "hash_nature": "既有eacli正式PDF提取正文的UTF-8字节，不是PDF原始字节。",
+      "abstract_metadata_text_sha256": "7d7d942494e9854c52c9dad5fb87955eb3f1066c374f77c43f75909d970cc7b8",
+      "actual_read_scope": "首页作者、机构、版本及Abstract/§1；§4–7的专门化收益、反事实识别困难、路径依赖、组合试验成本和软件反馈建议；正式摘要页的题名、署名、提交及修订日期。读取范围包含§2–3部分历史文字，但本次仅浏览，不采用其中历史数字或优先权判断。",
+      "not_read_or_not_verified": "不审计该文二手硬件史、脑科学类比、新闻美元估计或2020年之后的硬件状态；未视觉核图。"
+    },
+    {
+      "source_id": "EL-LECTURE",
+      "title": "终版：AI演义，36篇论文开启你的探索之旅",
+      "authors": null,
+      "year": null,
+      "official_url": null,
+      "version": "用户指定本地PDF；公开版次未核。",
+      "local_path": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
+      "hash_nature": "本地PDF原始字节，实算与研究稿相同。",
+      "actual_read_scope": "直接提取并读取P17、P19文字层，核对容量千倍换算、MoE成本归因、LoRA合并/ResNet类比及后续应用措辞；P21和P26仅核页头日期。另读取source-map中本包对象及相关关系/问题条目。",
+      "not_read_or_not_verified": "未逐字校对P21–25译文，也未核图像布局。讲义不作为技术事实的一手证据。"
+    },
+    {
+      "source_id": "EL-UP-FOUND",
+      "local_path": "ai-learning/notes/ai_yanyi_research/phase2/foundations.json",
+      "sha256": "46dfc1b82aa52621c824fca6a47a5770c3550d853982d0a821575e11113c8979",
+      "hash_nature": "上游研究JSON字节，不是原论文。",
+      "actual_read_scope": "F-B05、F-A03、F-D01；对应foundations.review.json的PASS、绑定哈希、issues和limitations。哈希与本包登记及上游复核一致。",
+      "primary_locators": ["Brook作者稿§5.2/§6，https://dl.acm.org/doi/10.1145/1015706.1015800", "AlexNet §3.2，https://papers.nips.cc/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html", "Distillation §1，https://arxiv.org/abs/1503.02531v1"],
+      "boundary": "本次只验证接口与已独立复核的快照相符，未重读上述原论文。未使用已知错配的本地Brook候选。"
+    },
+    {
+      "source_id": "EL-UP-INFRA",
+      "local_path": "ai-learning/notes/ai_yanyi_research/phase2/infrastructure_data.json",
+      "sha256": "9400a323e685d876d9c3d3502bdb4482866f3a9d386eb5dba0889a7799b446ca",
+      "hash_nature": "上游研究JSON字节，不是原论文。",
+      "actual_read_scope": "INF-Z01–03、INF-M01/05、INF-R01–03；对应infrastructure_data.review.json的PASS、绑定哈希、issues和limitations。哈希与本包登记及上游复核一致。",
+      "primary_locators": ["ZeRO §3–5/§7，https://arxiv.org/abs/1910.02054v3", "MegaScale §3.2/§4–6，https://arxiv.org/abs/2402.15627v1", "RefinedWeb §3–4/Table 4，https://arxiv.org/abs/2306.01116v1"],
+      "boundary": "不重读系统论文，不将数据过滤解释为无偏，也不将有效训练时间率、MFU与故障处理比例混用。"
+    },
+    {
+      "source_id": "EL-UP-SCALE",
+      "local_path": "ai-learning/notes/ai_yanyi_research/scaling-evidence.json",
+      "sha256": "061c6515220f03bfeb29304bfe8755fb07291f0dc6387b6040d5a6323b495715",
+      "hash_nature": "既有证据JSON字节，不是原论文。",
+      "actual_read_scope": "K1–4、C1–6、R1–2，仅核经验缩放条件、稠密模型范围、参数/tokens预算、FLOPs/墙钟与训练/部署目标接口。哈希与本包登记相同。",
+      "primary_locators": ["Kaplan §1.1–1.2/§6/Appendix B.4，https://arxiv.org/abs/2001.08361v1", "Chinchilla §3–5，https://arxiv.org/abs/2203.15556v1"],
+      "boundary": "复用任务指定已核材料，未重新核完整论文、图像或另行出具scaling包通过判定。"
+    }
+  ],
+  "source_content_map": [
+    {
+      "id": "SCM-M1",
+      "source": "EL-MOE §1–2、§5.1/5.3",
+      "independent_unit": "2017年1月的稀疏MoE是既有条件计算/MoE思路的深层组件实现；实际放在LSTM之间，并修改GNMT。问题是扩大容量而非先有Transformer再补救其体积。",
+      "coverage": "covered",
+      "mapped_to": ["nodes/sparse-moe/background", "EL-M01", "EL-M02", "EL-E01"]
+    },
+    {
+      "id": "SCM-M2",
+      "source": "EL-MOE §2–4、Appendix A/B",
+      "independent_unit": "稀疏top-k加权、可学习噪声与端到端训练决定用谁；importance与样本负载不是同一指标。小批量、通信和不均衡决定少算能否转成有效吞吐。",
+      "coverage": "covered",
+      "mapped_to": ["nodes/sparse-moe/mechanism_intuition", "EL-M03", "EL-M04", "EL-M05"]
+    },
+    {
+      "id": "SCM-M3",
+      "source": "EL-MOE §5.1–5.2、Table 1",
+      "independent_unit": "计算匹配扫描、等epoch表格及更大语料分别提供不同证据；前向ops不等于端到端成本，137B最大容量不是最佳质量。",
+      "coverage": "covered",
+      "mapped_to": ["EL-M06", "EL-M07", "EL-M08", "nodes/sparse-moe/limits", "EL-P01"]
+    },
+    {
+      "id": "SCM-M4",
+      "source": "EL-MOE §5.3–5.4、Tables 2–5",
+      "independent_unit": "翻译结果扩展了方法用途，同时网络层数、硬件和训练条件也改变；多语实验不是所有方向均改善。",
+      "coverage": "covered_for_route_not_full_experiment_catalog",
+      "mapped_to": ["EL-E01", "nodes/sparse-moe/limits", "sources/EL-MOE/actual_read_scope"],
+      "assessment": "稿中用实际架构承接建立关系而不搬运全部BLEU表，也未声称每个方向都胜出。少数学的问题路线不要求列全翻译结果，此压缩不构成核心缺漏。"
+    },
+    {
+      "id": "SCM-L1",
+      "source": "EL-LORA §1–4",
+      "independent_unit": "共享预训练使多任务副本和适配状态成为新瓶颈；冻结基座、学习低秩更新不是压缩整个W0，更不是省去基座预训练。",
+      "coverage": "covered",
+      "mapped_to": ["nodes/lora/background", "nodes/lora/change", "EL-L01", "EL-L02", "EL-E05"]
+    },
+    {
+      "id": "SCM-L2",
+      "source": "EL-LORA §4.1–4.2及脚注4",
+      "independent_unit": "训练参数/状态节约、固定线性增量合并、混合任务动态批次是三个不同口径；部署仍有基座，合并须保持训练缩放。",
+      "coverage": "covered",
+      "mapped_to": ["nodes/lora/training_vs_deployment", "EL-L03", "EL-L04", "EL-L07", "EL-P04"]
+    },
+    {
+      "id": "SCM-L3",
+      "source": "EL-LORA §5、§7、Tables 4–7、脚注6",
+      "independent_unit": "任务结果及秩扫描支持低秩参数化的实用性，不证明任意任务极小秩充分；子空间分析是解释性证据而非完整因果机制。",
+      "coverage": "covered",
+      "mapped_to": ["EL-L05", "EL-L06", "nodes/lora/limits", "sources/EL-LORA/actual_read_scope"],
+      "assessment": "研究稿不重复热图或把特征放大解释写成定理，保留任务/配置和波动限制。"
+    },
+    {
+      "id": "SCM-B1",
+      "source": "EL-BITTER首段与四组案例",
+      "independent_unit": "论证前提是长期单位计算成本下降；静态预算下有吸引力的知识编码可能让研究投入和心理承诺锁在不可扩展的路径。案例是作者的选择性历史归纳。",
+      "coverage": "covered",
+      "mapped_to": ["nodes/bitter-lesson/argument_reconstruction", "EL-B01", "EL-B02", "EL-B03"]
+    },
+    {
+      "id": "SCM-B2",
+      "source": "EL-BITTER末三段及首段、棋类/视觉段限定",
+      "independent_unit": "两个教训是持续利用计算的搜索/学习，以及能发现任意复杂内容的元方法。它强烈批评把已有发现写死，但并未证明一切结构、工程或人类知识都无用。",
+      "coverage": "covered",
+      "mapped_to": ["EL-B04", "EL-B05", "nodes/bitter-lesson/limits", "EL-P07"]
+    },
+    {
+      "id": "SCM-H1",
+      "source": "EL-HARDWARE Abstract、§1、§4–7",
+      "independent_unit": "现有软硬件会筛选可验证的研究方向；专门化提高主流效率也提高试验替代方案的成本。反事实难以识别，行动建议是降低组合试验和跨硬件反馈成本。",
+      "coverage": "covered",
+      "mapped_to": ["EL-H01", "EL-H02", "EL-E08", "spine_contribution/suggested_question_chain"],
+      "assessment": "延伸规模适当，未扩写硬件史、脑科学或当代硬件结论。"
+    },
+    {
+      "id": "SCM-X1",
+      "source": "上述原文形成的独立问题关系，后以定点上游接口核对",
+      "independent_unit": "应按生命周期拆分容量/每输入计算、训练状态、任务更新、数据质量和部署目标。Bitter Lesson提供研究选择框架，硬件约束解释计算如何落地；并列方法不能因年份或共同作者变成单线继承。",
+      "coverage": "covered",
+      "mapped_to": ["EL-X01", "EL-X02", "EL-X03", "cross_route_edges", "spine_contribution"],
+      "assessment": "作者稿将历史、范式与研究者选择用于解释问题链，而非只列三篇百科摘要。"
+    }
+  ],
+  "claims_checked": [
+    {"id": "EL-M01", "result": "supported", "basis": "首页23 Jan 2017；§1.2、§5.1/5.3明确LSTM与GNMT结构。未倒写Transformer时间线。"},
+    {"id": "EL-M02", "result": "supported", "basis": "§1.1–1.3明确容量/计算目标及1991、1994、2013前驱引文；稿中未独立裁定优先权。"},
+    {"id": "EL-M03", "result": "supported", "basis": "§2–2.1，先加噪、保留top-k再softmax；未选专家不计算，门控与专家共同反传。"},
+    {"id": "EL-M04", "result": "supported", "basis": "§1.1/§3列分支、小批量和带宽障碍；混合并行、跨时间聚批及较高计算/传输比均对应原文。"},
+    {"id": "EL-M05", "result": "supported", "basis": "§4及Appendix A区分importance与Load估计；Table 6的无损失39.8/17.80及双0.1权重35.6/1.14准确，未误称两项永远缺一不可。"},
+    {"id": "EL-M06", "result": "supported", "basis": "§5.1直接给出约8M前向multiply-and-adds、排除softmax、每输入4专家和困惑度低24%；不是从未看曲线推读。"},
+    {"id": "EL-M07", "result": "supported", "basis": "Table 1准确对应34.1/34.7、8.9M/151M ops、15h×16 K40/59h×32 K40及4303M/151M参数；参数排除embedding/softmax，比较限10 epochs。"},
+    {"id": "EL-M08", "result": "supported", "basis": "§5.2明确65536专家约68B、完整100B词训练后低39%；131072专家约137B退化，过稀疏仅为作者可能解释。"},
+    {"id": "EL-L01", "result": "supported", "basis": "§1–3及Table 1支持多任务权重/状态负担与串行Adapter延迟问题；稿件未外推所有实现的统一罚金。"},
+    {"id": "EL-L02", "result": "supported", "basis": "§4.1明确W0冻结、训练A/B、A高斯初始化/B为零及α/r缩放；低秩作用于更新，不是W0。"},
+    {"id": "EL-L03", "result": "supported", "basis": "§4.1支持固定线性更新合并；§4.2末段直接说明已合并时混合任务批次不直接，未合并动态选模块是另一取舍。"},
+    {"id": "EL-L04", "result": "supported", "basis": "§4.2原报1.2TB→350GB训练显存；r=4、query/value时任务检查点350GB→35MB，脚注4仍需350GB基座。稿中限定论文配置，未包装为独立35MB模型。"},
+    {"id": "EL-L05", "result": "supported", "basis": "Table 6的query/value行73.4/73.8/73.5对应r=1/8/64，WikiSQL典型波动约±0.5%；脚注6明确小秩不保证所有任务。"},
+    {"id": "EL-L06", "result": "supported", "basis": "Table 4全量175255.8M、LoRA 4.7M/37.7M及WikiSQL/MNLI-m各值均一致；验证集与任务指标未混用，未声称每配置都优胜。"},
+    {"id": "EL-L07", "result": "supported_as_scope_analysis", "basis": "可合并保证来自§4.1–4.2的同形线性形式；量化/非线性/动态实现需另验是合理保证范围分析，已标综合而非原文实测。"},
+    {"id": "EL-B01", "result": "supported", "basis": "作者正文署名Rich Sutton、March 13, 2019，性质为观点文章；讲义P21/P26日期错配确实存在。"},
+    {"id": "EL-B02", "result": "supported_as_author_position", "basis": "首段确述广义计算成本下降、长期通用方法、研究机会成本与心理承诺；稿中不保证未来成本趋势。"},
+    {"id": "EL-B03", "result": "supported_as_author_position", "basis": "四组案例、围棋的搜索与自弈价值学习、语音HMM/深度学习和视觉特征变迁均见原文；未冒充独立史学审计。"},
+    {"id": "EL-B04", "result": "supported_as_author_position", "basis": "末三段确述知识注入近期收益/长期平台的归纳，及搜索、学习、发现复杂性元方法的主张；未将强措辞升级为无限扩展定理。"},
+    {"id": "EL-B05", "result": "supported", "basis": "首段承认两取向不必冲突；棋类段有专用软硬件，视觉段有卷积与不变性；稿件也保留作者对领域知识路线的强烈批评。"},
+    {"id": "EL-H01", "result": "supported_as_author_position", "basis": "Abstract/§1定义硬件彩票，§4讨论主流效率收益与替代路线成本；正式署名Sara Hooker准确。"},
+    {"id": "EL-H02", "result": "supported_as_author_position", "basis": "§4明确反事实难题；§6–7支持组合试验、领域语言、自动调优和剖析反馈。未借该文外推当前硬件状态。"},
+    {"id": "EL-X01", "result": "supported_synthesis", "basis": "MoE §2–3与LoRA §4支持不同成本轴的对照；不是直接继承或组合收益相乘的主张。"},
+    {"id": "EL-X02", "result": "supported_synthesis", "basis": "Sutton的计算利用主张与MoE/LoRA提高计算利用及复用的机制可相容；稿中明确Sutton未提供这两种算法，未倒造发明因果。"},
+    {"id": "EL-X03", "result": "supported_synthesis_with_upstream_scope", "basis": "MoE §3–4、LoRA §4.2、Hooker §4/6.1及一致哈希的上游接口支持多约束问题图；稿中不称统一因果实验或唯一历史解释。"}
+  ],
+  "edge_checks": [
+    {"id": "EL-E01", "result": "supported_direct_architectural_relation", "basis": "MoE §5.3明确修改GNMT、减少LSTM层数并在encoder/decoder插层；§5.1是堆叠LSTM模型。不是共同作者推导出的关系。"},
+    {"id": "EL-E02", "result": "supported_synthesis_with_verified_upstream", "basis": "F-B05传输/启动开销、F-A03显存/跨卡通信与MoE §3构成反复出现的硬件约束；无Brook→MoE代码或发明因果承诺。"},
+    {"id": "EL-E03", "result": "supported_synthesis_with_scoped_upstream", "basis": "MoE §5容量/语料扫描与K1–4/C1–6预算问题可并置。稠密参数与计算耦合不能机械移到稀疏模型；未宣称得到MoE缩放律。"},
+    {"id": "EL-E04", "result": "supported_synthesis_with_verified_upstream", "basis": "INF-Z01–03是状态分布，INF-M01/05是通信并行与持续运行；MoE激活选择及LoRA更新参数集合属不同层次，稿中未声称这些论文测试过全部组合。"},
+    {"id": "EL-E05", "result": "supported_explicit_problem_inheritance", "basis": "LoRA §1–2以已有巨型预训练模型及多任务适配为明确动机，§5实测多个模型；不是从时间顺序推因果。"},
+    {"id": "EL-E06", "result": "supported_synthesis_with_verified_upstream", "basis": "F-D01训练/部署拆分与MoE/LoRA阶段对照成立；教师成本、学生部署、专家容量及任务增量未混用。"},
+    {"id": "EL-E07", "result": "supported_synthesis_with_scoped_upstream", "basis": "Sutton通用学习主张不取消INF-R02/03的清洗/去重与同条件数据比较，也不替代K/C/R中的预算和目标限定；未将启发式清洗说成违背Bitter Lesson。"},
+    {"id": "EL-E08", "result": "supported_complement_and_tension", "basis": "Sutton讨论可持续利用计算的方法，Hooker §4–6讨论获得适配软硬件及替代试验机会；并置有据，未夸大为正式反驳或私人争论。"},
+    {"id": "EL-E09", "result": "supported_as_author_illustrative_case", "basis": "Sutton围棋段确有搜索与自弈价值学习；稿中未将未点名的系统擅自确定为AlphaGo Zero或AlphaZero。未使用已知错配PDF。"},
+    {"id": "EL-E10", "result": "supported_contrast_not_lineage", "basis": "MoE对输入稀疏激活、LoRA对任务低秩更新的对照忠于原文；不是把LoRA当成稀疏激活或MoE下一代。"}
+  ],
+  "additional_checks": {
+    "people_and_institutions": "MoE首页机构、Residency脚注与致谢/内部语料；LoRA首页Microsoft及Hu/Shen共同贡献；Hooker首页Sara/Google Research, Brain Team均有对应文本。Sutton关于研究心理只按其本人论证使用。未混入当代任职、导师或创业传闻。",
+    "lecture_corrections": "P17容量千倍不等于成本千分之一，P19合并条件和ResNet类比限制均需原文约束；研究稿已经作出正确修正。P21/P26的年份差异用2019作者日期解决；不扩称逐字校完全部译文。",
+    "core_coverage": "独立来源地图未发现被作者claim列表遮蔽的核心缺漏。完整翻译表、热图、全部附录及历史个案复查不是当前路线研究的必要交付。",
+    "structure_and_traceability": "研究JSON可解析；25项claim与10条edge的source引用均存在，所有登记本地来源哈希一致。公开研究稿没有将临时缓存或原始执行收据作为来源正文。",
+    "acquisition": "本轮复用正确既有原文，未重复联网抓取；只额外执行eacli上下文定位。Python读取使用-I，未从下载目录执行脚本。未用图像推读、训练或付费模型实验。"
+  },
+  "issues": [],
+  "verdict": "PASS",
+  "verdict_reason": "在所声明范围内，25项断言、10条跨路线关系及必要人物/版本事实有对应依据。研究稿正确区分容量、激活计算、适配参数、训练状态和部署成本，并将Bitter Lesson及硬件彩票保留为带边界的研究选择框架；没有发现必须修正后才能交主笔的内容缺口。",
+  "verdict_scope": "仅绑定本研究JSON的上述SHA-256，表示此包可供主笔在保留证据类型与限制的前提下使用，不表示全书终稿、正式发布、所有原始历史判断或当前产品实践通过。",
+  "limitations": [
+    "未运行MoE、LoRA或系统基准，未复算所有FLOPs和显存；数值核查是对论文作者报告及口径的核对。",
+    "未视觉核曲线、热图或讲义布局，也未全读附录。采用数字均可由原文正文/表格文字支持，不能据此新增图像结论。",
+    "Bitter Lesson的历史案例和研究心理只核其论述本身，不是独立史学证据；硬件彩票也不是替代算法潜力的单因果结论。",
+    "Sutton与Hooker使用已有正式URL提取正文，所记哈希分别是公开文本字节，不是原HTML/PDF字节；未重新联网确认网页当前状态。",
+    "LoRA首发日期沿用source-map已核元数据，本轮独立核的是本地v2身份；研究稿已区分首发与修订。",
+    "foundations与infrastructure_data仅核相关接口和一致哈希的PASS复核；scaling-evidence按任务给定已核材料定点复用，未重新精读其原论文或另审整包。上游或本包变化后须重新核对应接口。",
+    "LoRA扩散采用、当前普及率、量化/动态部署细节、当代MoE在线服务价格及人物现职未核，研究稿已排除或明确留待验证。",
+    "讲义P21–25中文译文未逐字校对；本结论不替代全书主笔对叙事整合、可读性和最终文本的独立质量门。"
+  ]
+}

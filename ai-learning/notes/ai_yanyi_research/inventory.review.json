@@ -1,0 +1,191 @@
+{
+  "schema_version": 1,
+  "task_id": "inventory",
+  "reviewer": {
+    "model": "claude-gpt-6-astra-max[1m]",
+    "harness": "claude-code",
+    "role": "independent_reviewer"
+  },
+  "review_date": "2026-11-03",
+  "reviewed_file": "ai-learning/notes/ai_yanyi_research/source-map.json",
+  "reviewed_file_sha256": "82a789b2a65bca73da52eb44391e32f00804686f0de3c34c23440546be551521",
+  "verdict": "PASS",
+  "verdict_scope": "仅通过inventory阶段的页码覆盖、对象计数、来源身份映射和未核边界检查；不表示36个对象已完成全文研究，也不表示原PDF全部历史、机制、数字和因果主张成立。",
+  "source_first_method": "先读取原始PDF的提取文字、内嵌链接并核实原PDF页数与哈希，独立辨认合讲页、重复对象及四条路线；再交叉读取既有路线图视读结果，之后才读取研究稿。没有以作者的完成声明代替核验。",
+  "source_read_scope": [
+    {
+      "kind": "local_pdf_and_extraction",
+      "path": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
+      "page_count": 51,
+      "read_scope": "用pdfinfo独立确认51页；读取全部页码范围的文字层主题正文，后半部分清理排版空白及丢字形成的短碎片；读取全部38个链接注释页面、34个不同URL。不是逐字无损转录或51页重新视读。",
+      "text_layer_sha256": "a2aab6d1a7e77c61b21e26a3139c2d4beb3d471e53472db6f0168b8fc070cfd5",
+      "embedded_links_sha256": "8cd330fc4199d65233d5c6718bab6517619a981ebb54dac0a1cf9f54be41eae0"
+    },
+    {
+      "kind": "cached_typed_vision",
+      "path": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "pages": [7, 8, 26, 32, 41],
+      "read_scope": "读取既有eacli vision.technical-diagram输出中的节点、日期和布局说明，并与文字层交叉核对；没有重新调用图像模型或独立确认所有像素。没有从道路起伏、装饰和无箭头连线推导因果。"
+    },
+    {
+      "kind": "cached_primary_metadata",
+      "urls": [
+        "https://export.arxiv.org/api/query?id_list=1409.3215,1609.08144,2203.15556,1404.7823,1406.2199,2407.15541,2411.15124",
+        "https://export.arxiv.org/api/query?id_list=1503.02531,1512.03385,1706.03762,1701.06538,2201.11903,2106.09685,2210.03629,1910.02054,2001.08361,2210.08402,2306.01116,2402.15627,1301.3781,1810.04805,2005.14165,2203.02155,1406.2661,1503.03585,2006.11239,2010.11929,2103.00020,2112.10752,2212.09748,1409.0473&max_results=50"
+      ],
+      "read_scope": "解析31条官方Atom记录，逐字段比对29个主线对象的题名、完整作者、published日期和年份；另核2个错误链接目标。读取seq2seq、Chinchilla、Tulu3、GNMT、Two-Stream、ReAct、ViT的相关摘要内容。"
+    },
+    {
+      "kind": "cached_primary_pages",
+      "urls": [
+        "https://dl.acm.org/doi/10.1145/1015706.1015800",
+        "https://papers.nips.cc/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html",
+        "https://www.nature.com/articles/nature24270",
+        "http://www.incompleteideas.net/IncIdeas/BitterLesson.html",
+        "https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf",
+        "https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf",
+        "https://openaccess.thecvf.com/content_cvpr_2014/html/Karpathy_Large-scale_Video_Classification_2014_CVPR_paper.html"
+      ],
+      "read_scope": "核其余7个主线对象的题名、作者及年份依据。Brook/AlexNet/Nature读取元数据；Bitter Lesson读取署名、日期及开头；GPT-1/GPT-2读取官方PDF返回文本首页；DeepVideo读取CVPR正式题名、作者、BibTeX和摘要。"
+    },
+    {
+      "kind": "cached_official_release_and_search",
+      "urls": [
+        "https://openai.com/index/language-unsupervised",
+        "https://openai.com/index/better-language-models",
+        "https://stability.ai/news-updates/stable-diffusion-public-release"
+      ],
+      "read_scope": "读取官网搜索条目中的2018-06-11、2019-02-14、2022-08-22；读取Stable Diffusion官方发布说明开头。保留搜索条目与正文证据层级差异，不升级为重新读取原始日期页眉。"
+    },
+    {
+      "kind": "existing_local_pdfs",
+      "path": "ai-learning/papers/",
+      "read_scope": "仅对研究稿列出的27份文件重新计算SHA-256并用pdftotext提取首页核标题：25份身份匹配，2份错配。GAN的Nets/Networks为标题变体；Tülu的变音符号不构成错配。未精读这些论文全文。"
+    },
+    {
+      "kind": "review_target",
+      "path": "ai-learning/notes/ai_yanyi_research/source-map.json",
+      "read_scope": "读取51条pages、36条objects、32条context_objects、39条relations、16条sources及计数、阅读地图、路线说明、17项open_issues。另将16份来源记录的哈希与其声明的result.result字节范围逐一比对。"
+    }
+  ],
+  "source_content_map": [
+    {"pages": [1, 2, 3, 4, 5, 6], "unit": "封面、读论文动机、准备与工具、学习资源、历史/范式/人物叙事框架；不增加主线论文数。", "coverage": "covered"},
+    {"pages": [7], "unit": "芯片、软件系统、数据、模型四要素与四条讲述路线；Chinchilla未在总览单列。", "coverage": "covered"},
+    {"pages": [8, 9], "unit": "模型时间线与GPU硬件前史；11个显示标签包含合并的seq2seq/Attention。", "coverage": "covered"},
+    {"pages": [10, 11], "unit": "Brook的通用GPU抽象与AlexNet的数据/计算/视觉表示节点，不能据相邻页声称直接技术继承。", "coverage": "covered"},
+    {"pages": [12], "unit": "固定长度LSTM编码—解码与Bahdanau Attention是两个对象；只嵌入前者链接。", "coverage": "covered"},
+    {"pages": [13, 14, 15], "unit": "部署压缩、深层优化、注意力主导序列架构分别回应不同问题。", "coverage": "covered"},
+    {"pages": [16, 17], "unit": "AlphaGo Zero的自弈/搜索与稀疏MoE的条件计算；正文页序不是发表时间序。", "coverage": "covered"},
+    {"pages": [18, 19, 20], "unit": "CoT推理示例、LoRA适配成本、ReAct环境交互；LoRA早于CoT，履历中的SWE-bench不另计。", "coverage": "covered"},
+    {"pages": [21, 22, 23, 24, 25], "unit": "同一篇Bitter Lesson的连续五部分：总论、棋类、语音/视觉、搜索与学习、发现的方法；属于观点文章。", "coverage": "covered"},
+    {"pages": [26, 27], "unit": "Infra/数据路线导航与ZeRO显存冗余问题；时间标签不能按道路空间位置解释。", "coverage": "covered"},
+    {"pages": [28], "unit": "Scaling Laws与Chinchilla两个对象，分别讨论经验扩展关系及计算预算分配；原链接只对应前者。", "coverage": "covered"},
+    {"pages": [29, 30, 31], "unit": "开放图文数据、网页清洗质量、大集群效率和稳定性三个独立节点。", "coverage": "covered"},
+    {"pages": [32, 33, 34], "unit": "语言路线导航、Word2Vec词表示、GNMT生产翻译系统；产品标签应落到具体论文。", "coverage": "covered"},
+    {"pages": [35, 36, 37, 38], "unit": "GPT-1预训练迁移、BERT双向理解、GPT-2零样本迁移、GPT-3上下文示例；不是全部预训练或提示方法的发明史。", "coverage": "covered"},
+    {"pages": [39, 40], "unit": "InstructGPT指令/偏好后训练与Tulu3开放配方；Tulu的显示英文题名和内嵌URL均需纠正。", "coverage": "covered"},
+    {"pages": [41, 42, 43], "unit": "多模态路线导航与视频理解支线：DeepVideo时间融合问题、Two-Stream外观/运动建模。", "coverage": "covered"},
+    {"pages": [44, 45, 46], "unit": "GAN、2015原始扩散、2020 DDPM是三个对象；生成与视频识别不是同一任务链。", "coverage": "covered"},
+    {"pages": [47, 48], "unit": "ViT的视觉patch架构与CLIP的图文表示；CLIP本身不是图像生成器。", "coverage": "covered"},
+    {"pages": [49, 50], "unit": "LDM潜空间扩散及DiT去噪骨干；2021 LDM论文不等于2022 Stable Diffusion产品，也不等于Sora。", "coverage": "covered"},
+    {"pages": [51], "unit": "致谢，无新增技术对象。", "coverage": "covered"}
+  ],
+  "checks": [
+    {
+      "id": "C01",
+      "claim": "原PDF为51页，pages逐页覆盖且与对象引用闭合。",
+      "location": "source-map.json#/source_pdf; #/pages; #/objects/*/pdf_pages",
+      "result": "PASS",
+      "evidence": "pdfinfo确认51页，原PDF及文字/链接缓存SHA-256均相符；pages严格为1至51且必需字段齐全，36个对象的反向页码引用全部一致。"
+    },
+    {
+      "id": "C02",
+      "claim": "标题36可对应36个主线研究对象，而非36篇同类学术论文。",
+      "location": "source-map.json#/counting; #/objects",
+      "result": "PASS",
+      "evidence": "独立计数为模型12+Bitter Lesson 1+infra/data 6+语言8+视觉/多模态9=36。P12和P28各拆两篇，P21—25合一篇；类型实际为33篇paper、2篇research_report、1篇essay。没有靠人物履历、错链目标或后续产品凑数。"
+    },
+    {
+      "id": "C03",
+      "claim": "36个主线对象的题名、作者和年份已有对应正式来源。",
+      "location": "source-map.json#/objects; #/sources",
+      "result": "PASS",
+      "evidence": "29个对象逐字段匹配官方arXiv元数据；其中GAN的Nets/Networks差异已记录并由本地首页支持。其余7个对象与ACM、NIPS、Nature、作者主页、OpenAI官方PDF和CVPR元数据相符。identity_verified未被替代为全部结论已核。"
+    },
+    {
+      "id": "C04",
+      "claim": "P12、P28分别保留两篇研究的身份和贡献边界。",
+      "location": "source-map.json#/objects[id=seq2seq|bahdanau-attention|scaling-laws|chinchilla]; #/open_issues[id=I01|I02]",
+      "result": "PASS",
+      "evidence": "1409.3215与1409.0473分别对应seq2seq与Bahdanau Attention；2014-09-01早于2014-09-10，研究稿没有虚构后发因果。2001.08361与2203.15556分别对应Scaling Laws与Chinchilla，未合并成同一论文或同一分配建议。"
+    },
+    {
+      "id": "C05",
+      "claim": "P40 Tulu3和P42 DeepVideo的原始错链已纠正而非沿用。",
+      "location": "source-map.json#/objects[id=tulu3|deepvideo]; #/open_issues[id=I05|I06]",
+      "result": "PASS",
+      "evidence": "2407.15541实际是非平衡流气体动理学论文；正确Tulu3为2411.15124，正式题名为Tulu 3: Pushing Frontiers in Open Language Model Post-Training。1404.7823实际是引力理论论文；DeepVideo正确题名、六名作者和2014年由CVPR官方页面支持。两者均保留原始URL与核定URL。"
+    },
+    {
+      "id": "C06",
+      "claim": "本地原文匹配25份、拒绝2份，不将错文件用于支撑对象。",
+      "location": "source-map.json#/objects/*/local_originals; #/objects/*/rejected_local_candidates",
+      "result": "PASS",
+      "evidence": "27份本地文件的哈希均相符。28_brook_2004.pdf首页实际是Alchemistry of the P versus NP question；24_alphago_zero_2017.pdf是1712.01815的AlphaZero论文，而非Nature AlphaGo Zero。其余25份首页题名匹配；Tülu变音符号与GAN题名变体不构成对象错配。"
+    },
+    {
+      "id": "C07",
+      "claim": "论文、文章、产品与时间口径得到区分。",
+      "location": "source-map.json#/objects[id=bitter-lesson|ldm|gpt1|gpt2|clip]; #/context_objects[id=stable-diffusion-product]; #/open_issues[id=I07|I08|I15]",
+      "result": "PASS",
+      "evidence": "Sutton作者页日期为2019-03-13；LDM arXiv首发为2021-12-20，产品发布搜索条目为2022-08-22。GPT-1/GPT-2的原始日期搜索条目与所填日期相符。研究稿声明arXiv首发、会议、版本和产品公告不等同，并明示搜索条目证据层级。"
+    },
+    {
+      "id": "C08",
+      "claim": "主线、背景组件和人物栏顺带作品被分开。",
+      "location": "source-map.json#/context_objects; #/pages/*/incidental_works",
+      "result": "PASS",
+      "evidence": "CUDA、硬件、数据组件、GLIDE等不并入36；MapReduce、TensorFlow、SWE-bench、VGG、Imagen、Sora等人物栏工作另记。没有因同一对象重复出现而增加数量。"
+    },
+    {
+      "id": "C09",
+      "claim": "39条关系分类型、分证据状态，没有把时间先后自动升级为因果。",
+      "location": "source-map.json#/relations; #/route_order_notes",
+      "result": "PASS",
+      "evidence": "全部关系端点存在。未核历史影响和机制继承明确标待验证；GNMT残差/注意力、ReAct交错推理行动、Chinchilla计算分配、Tulu开放配方、视频运动建模、ViT patch序列等关键说明与所读摘要相符。对MoE/Transformer、LoRA/CoT及Bitter Lesson的页序和年月差异有专门说明。关系检查不是逐条技术史全文核验。"
+    },
+    {
+      "id": "C10",
+      "claim": "来源可追溯且公开底稿未包含私有缓存路径或执行收据。",
+      "location": "source-map.json#/sources; #/execution_boundary",
+      "result": "PASS",
+      "evidence": "16条来源哈希均与其声明的result.result UTF-8字节范围匹配；原PDF和27份本地PDF哈希复核通过。研究稿未检出私有绝对路径、file URL或凭据标记，来源URL和仓库相对路径保留。"
+    },
+    {
+      "id": "C11",
+      "claim": "尚未研究的观点、数字、机制、履历和因果解释有明确待核状态。",
+      "location": "source-map.json#/scope; #/open_issues[id=I10|I11|I12|I13|I14|I15|I16]",
+      "result": "PASS",
+      "evidence": "已将MoE容量与成本换算、ZeRO无限扩展、历史首次、CLIP生成能力、LDM条件实现、DiT外推和人物经历等列为后续问题，没有因为本阶段少数学而宣称其正确。Tulu的Shane Lyu/Xinxi Lyu差异保留待核。"
+    },
+    {
+      "id": "C12",
+      "claim": "人读source-map.md缺失不被隐藏。",
+      "location": "source-map.json#/open_issues[id=I17]; #/reading_map",
+      "result": "ACCEPTED_LIMITATION",
+      "evidence": "原任务建议的.md未生成，作者明确记录执行环境禁止写报告类.md；本复核同受该上层限制。JSON已含人读地图，不据缺少被禁止的文件否定本阶段内容，但不宣称两个原定文件均已交付。"
+    }
+  ],
+  "issues": [],
+  "limitations": [
+    "本次没有独立重做全部51页视觉审阅；路线图使用既有eacli视读结果与文字层交叉核对。作者声明的其他native_visual_pages不作为本次已经视读的证据。",
+    "P10、P28的定量图表没有核数值或拟合，不据图确认性能或扩展规律；其他页的量化主张、历史优先性和跨节点因果仍须后续研究。",
+    "外部身份核查复用已有一手页面和元数据缓存，已校验内容哈希，没有重新联网抓取，也不能证明网页此刻仍保持相同内容。",
+    "GPT-1、GPT-2及Stable Diffusion的具体发布日期复核到官网搜索条目，未重新取得原始日期页眉；Tulu作者姓名版本差异仍未解释。",
+    "本地论文仅复核哈希及首页身份，未据此认证全部作者版本、实验、机制、附录或论文结论。",
+    "source-map.md未交付是已披露的执行限制；PASS仅针对现有JSON研究包的inventory阶段合格性，不代表完整书稿或全书事实核验完成。"
+  ],
+  "required_fixes": [],
+  "next_stage": "可据已核定身份继续研究PDF的发展问题链；优先核会改变路线解释的机制、数字和历史断言，而不是逐篇穷尽公式、附录或人物履历。"
+}

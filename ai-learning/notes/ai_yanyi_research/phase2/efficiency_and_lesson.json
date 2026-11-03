@@ -1,0 +1,339 @@
+{
+  "schema_version": 1,
+  "task_id": "efficiency_and_lesson",
+  "artifact_kind": "phase2_route_research_evidence_not_final_chapter",
+  "status": "ready_for_verification",
+  "verification_date": "2026-11-03",
+  "language": "zh-CN",
+  "scope": {
+    "core_object_ids": ["sparse-moe", "lora", "bitter-lesson"],
+    "question": "通用方法怎样把可获得的计算转化为能力；当容量、计算、训练状态和任务适配不再同步增长时，如何理解MoE、LoRA与Bitter Lesson的关系？",
+    "necessary_extension": "Sara Hooker的The Hardware Lottery，只用于区分算法潜力与硬件/软件可实现性，不计入核心36项，不扩展为硬件史。正式署名为Sara，不是Sarah。",
+    "upstream_use": "复用foundations、infrastructure_data及scaling-evidence中与成本、硬件和数据有关的已登记断言；明确标为上游证据复用，不冒充本轮重新精读其原文。",
+    "exclusions": ["不修改原讲义、论文、旧报告或源地图", "不审计全部36项", "不扩展现职、创业或作者个人履历", "不核定当代商业部署普及率", "不进行训练、基准复现、发布或提交"],
+    "completion_boundary": "三个核心节点均已读取支撑背景、机制、主要证据与边界的原文。此文件为待独立复核研究包，不自称最终质量门已通过。"
+  },
+  "evidence_types": {
+    "verified_primary": "本轮实际读取原论文对应正文、方法或表格后确认的来源事实；实验证据仅在论文口径内成立。",
+    "author_position": "已核原文确实提出该论证，但不把观点、历史概括或预测升级成普适事实。",
+    "pdf_framing": "讲义的概括、类比或叙事安排，不单独用作技术证据。",
+    "upstream_evidence": "复用已登记研究包的具体claim及原文定位，本轮未重读相关原论文。",
+    "synthesis": "[研究综合/推测] 本包依据多项材料建立的问题关系，不声称作者直接传承或有独立因果实验。",
+    "unverified": "[待验证] 本轮未获得足够一手证据，不进入确定叙事。"
+  },
+  "source_ids": ["EL-MOE", "EL-LORA", "EL-BITTER", "EL-HARDWARE", "EL-LECTURE", "EL-UP-FOUND", "EL-UP-INFRA", "EL-UP-SCALE"],
+  "sources": [
+    {
+      "id": "EL-MOE",
+      "object_id": "sparse-moe",
+      "source_type": "primary_paper",
+      "title": "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer",
+      "authors": ["Noam Shazeer", "Azalia Mirhoseini", "Krzysztof Maziarz", "Andy Davis", "Quoc Le", "Geoffrey Hinton", "Jeff Dean"],
+      "year": 2017,
+      "first_public_date": "2017-01-23",
+      "official_url": "https://arxiv.org/abs/1701.06538",
+      "version_url": "https://arxiv.org/abs/1701.06538v1",
+      "version": "arXiv:1701.06538v1 [cs.LG], 23 Jan 2017；首页仍标Under review as a conference paper at ICLR 2017。",
+      "local_path": "ai-learning/papers/21_moe_2017.pdf",
+      "sha256": "2567713d198a376b65b92f0c60b9f58c8c5f66755530b92203533a17c4ec4b8e",
+      "hash_scope": "本地PDF原始字节，本轮重算与source-map一致。",
+      "actual_read_scope": "首页题名、作者、机构及版本；§1–6（P1–9）背景、既有MoE工作、稀疏门控、批量/网络工程、均衡损失、语言模型与翻译实验及结论；Tables 1–5；Appendix A（P13–14）负载损失及Table 6；Appendix B开头的两级路由结构。按pdftotext排版文字读取。未全读附录C–E，未逐项核超参和专家语义例句，未视觉核验曲线；本文引用的数字由表格和正文直接支持。"
+    },
+    {
+      "id": "EL-LORA",
+      "object_id": "lora",
+      "source_type": "primary_paper",
+      "title": "LoRA: Low-Rank Adaptation of Large Language Models",
+      "authors": ["Edward J. Hu", "Yelong Shen", "Phillip Wallis", "Zeyuan Allen-Zhu", "Yuanzhi Li", "Shean Wang", "Lu Wang", "Weizhu Chen"],
+      "year": 2021,
+      "first_public_date": "2021-06-17",
+      "official_url": "https://arxiv.org/abs/2106.09685",
+      "version_url": "https://arxiv.org/abs/2106.09685v2",
+      "version": "arXiv:2106.09685v2 [cs.CL], 16 Oct 2021；首页Version 2，首位作者在此PDF简写Edward Hu。2021-06-17首发日期沿用source-map已核元数据，不把十月修订当首发。",
+      "local_path": "ai-learning/papers/15_lora_2021.pdf",
+      "sha256": "e9a0d3128767db616085dc0f4e6e455e672e89af823e8ed1282793682787395a",
+      "hash_scope": "本地PDF原始字节，本轮重算与source-map一致。",
+      "actual_read_scope": "首页；§1–6（P1–9）动机、既有适配方案、低秩增量、合并、实际限制、评估设置与Tables 1–4；§7.1–7.2（P10–11）权重选择、秩实验、Table 5/6及脚注6；§7.3（P11–12）解释性分析文字与Table 7；§8开头。未全读附录、未独立复现，未视觉核验热图；本包不将热图或作者机制猜想当因果证明。"
+    },
+    {
+      "id": "EL-BITTER",
+      "object_id": "bitter-lesson",
+      "source_type": "author_essay",
+      "title": "The Bitter Lesson",
+      "authors": ["Rich Sutton"],
+      "year": 2019,
+      "first_public_date": "2019-03-13",
+      "official_url": "http://www.incompleteideas.net/IncIdeas/BitterLesson.html",
+      "version": "作者网页，署名Rich Sutton，March 13, 2019；无修订号。本轮复用已通过eacli获取的作者URL正文。",
+      "sha256": "d0cf279c7feb6b8ab4f29aea8c7f377705bc022e3124f8008f6270636a4b9ec4",
+      "hash_scope": "缓存中公开content字段的UTF-8字节；不是原HTML哈希，不含eacli执行收据。",
+      "actual_read_scope": "阅读全文：日期、总论、国际象棋、围棋、语音、视觉四组案例，历史模式归纳及末尾两个一般教训。以段首定位。未独立审计所有历史案例的原始实验或研究群体心理。"
+    },
+    {
+      "id": "EL-HARDWARE",
+      "object_id": "hardware-lottery-extension",
+      "source_type": "position_paper_and_historical_review",
+      "core_36": false,
+      "title": "The Hardware Lottery",
+      "authors": ["Sara Hooker"],
+      "year": 2020,
+      "first_public_date": "2020-09-14",
+      "official_url": "https://arxiv.org/abs/2009.06489",
+      "version_url": "https://arxiv.org/pdf/2009.06489v2",
+      "version": "arXiv:2009.06489v2 [cs.CY], 21 Sep 2020；正式摘要页核v1/v2日期，PDF提取首页核题名、作者、Google Research, Brain Team及版本。",
+      "sha256": "9a7c6f675176312c28a9165df10ef009b3b0ebd53d9dbbeffedd7140847e0e7b",
+      "hash_scope": "eacli从正式PDF URL返回的公开content字段UTF-8字节，不是PDF原始字节哈希。",
+      "actual_read_scope": "正式摘要页元数据；PDF提取首页/Abstract/§1；§4–7（P6–11）硬件专门化、稀疏算子与编译器、反事实难题、未来方向争论、研发激励、软件/语言/剖析工具建议及结论。§2–3历史回顾未精读，不以该部分独立断言早期硬件史；文中脑科学类比和新闻成本估计不采用。",
+      "extension_justification": "MoE自身明说GPU算术、分支、小批量和网络存在张力。此文提供区分可扩展算法与可用算力环境的必要概念，并限制对Bitter Lesson的单因果读法。"
+    },
+    {
+      "id": "EL-LECTURE",
+      "source_type": "user_provided_lecture_framing",
+      "title": "终版：AI演义，36篇论文开启你的探索之旅",
+      "authors": null,
+      "year": null,
+      "official_url": null,
+      "version": "用户指定51页PDF，公开版次及日期本轮未核。",
+      "local_path": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
+      "hash_scope": "本地PDF原始字节，本轮重算。",
+      "actual_read_scope": "直接读取P17、P19文字层；P21–26的主题和日期问题读取source-map对应pages/objects/open_issues条目，再用作者英文全文核主题与日期。不宣称逐字核完P21–25中文翻译或核验图像布局。"
+    },
+    {
+      "id": "EL-UP-FOUND",
+      "source_type": "upstream_evidence_packet",
+      "title": "foundations研究包的硬件与阶段成本接口",
+      "authors": ["研究工作流上游材料，非原论文作者"],
+      "year": 2026,
+      "official_url": null,
+      "version": "本轮读取的本地研究包快照；不把研究包视为独立原始实验。",
+      "local_path": "ai-learning/notes/ai_yanyi_research/phase2/foundations.json",
+      "sha256": "46dfc1b82aa52621c824fca6a47a5770c3550d853982d0a821575e11113c8979",
+      "hash_scope": "读取时研究JSON文件原始字节，非所引论文哈希。",
+      "actual_read_scope": "sources相关元数据；F-B01/02/03/05、F-A03、F-D01/02/05、F-P01及F-N01等已登记claim。采用接口限于Brook的传输/调用开销、AlexNet显存与通信约束、蒸馏的训练/部署阶段区分。未在本包重读这些论文。",
+      "primary_provenance": [
+        {"source_id": "F-S-BROOK", "official_url": "https://dl.acm.org/doi/10.1145/1015706.1015800", "version": "Stanford作者托管稿", "locations": ["§5.2", "§6"]},
+        {"source_id": "F-S-ALEXNET", "official_url": "https://papers.nips.cc/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html", "version": "NIPS 2012论文集版本", "locations": ["§3.2"]},
+        {"source_id": "F-S-DISTILLATION", "official_url": "https://arxiv.org/abs/1503.02531", "version": "arXiv:1503.02531v1", "locations": ["§1"]}
+      ]
+    },
+    {
+      "id": "EL-UP-INFRA",
+      "source_type": "upstream_evidence_packet",
+      "title": "infrastructure_data研究包的状态、通信和数据接口",
+      "authors": ["研究工作流上游材料，非原论文作者"],
+      "year": 2026,
+      "official_url": null,
+      "version": "本轮读取的本地研究包快照。",
+      "local_path": "ai-learning/notes/ai_yanyi_research/phase2/infrastructure_data.json",
+      "sha256": "9400a323e685d876d9c3d3502bdb4482866f3a9d386eb5dba0889a7799b446ca",
+      "hash_scope": "读取时研究JSON文件原始字节，非所引论文哈希。",
+      "actual_read_scope": "sources相关元数据；INF-Z01–04、INF-M01/03/05、INF-R01–03等claim。采用接口限于ZeRO对训练状态的分片、MegaScale的通信重叠与可靠性、RefinedWeb的清洗/去重和同条件语料比较；未重读原论文。",
+      "primary_provenance": [
+        {"source_id": "INF-ZERO", "official_url": "https://arxiv.org/abs/1910.02054", "version": "arXiv:1910.02054v3, 13 May 2020", "locations": ["§3–5", "§7"]},
+        {"source_id": "INF-MEGASCALE", "official_url": "https://arxiv.org/abs/2402.15627", "version": "arXiv:2402.15627v1, 23 Feb 2024", "locations": ["§3.2", "§4–5", "§6.2–6.3"]},
+        {"source_id": "INF-REFINEDWEB", "official_url": "https://arxiv.org/abs/2306.01116", "version": "arXiv:2306.01116v1, 1 Jun 2023", "locations": ["§3.1–3.3", "§4.1–4.2", "Table 4"]}
+      ]
+    },
+    {
+      "id": "EL-UP-SCALE",
+      "source_type": "upstream_evidence_packet",
+      "title": "Scaling Laws → Chinchilla已核研究材料",
+      "authors": ["研究工作流上游材料，非原论文作者"],
+      "year": 2026,
+      "official_url": null,
+      "version": "本轮读取的scaling-evidence快照。",
+      "local_path": "ai-learning/notes/ai_yanyi_research/scaling-evidence.json",
+      "sha256": "061c6515220f03bfeb29304bfe8755fb07291f0dc6387b6040d5a6323b495715",
+      "hash_scope": "读取时研究JSON文件原始字节，非所引论文哈希。",
+      "actual_read_scope": "sources版本元数据及K1–4、C1–6、R1–2；采用计算预算/参数/tokens分配、FLOPs与墙钟区别、训练与部署目标区别，不重复图像或全文核查。",
+      "primary_provenance": [
+        {"source_id": "S1", "official_url": "https://arxiv.org/abs/2001.08361", "version": "arXiv:2001.08361v1, 23 Jan 2020", "locations": ["§1.1–1.2", "§6", "Appendix B.4"]},
+        {"source_id": "S2", "official_url": "https://arxiv.org/abs/2203.15556", "version": "arXiv:2203.15556v1, 29 Mar 2022", "locations": ["§3–4", "§5"]}
+      ]
+    }
+  ],
+  "acquisition": {
+    "context_first": "已运行eacli context catalog与AI演义定向search，后者无匹配；随后仅定位任务指定owner与相关包。",
+    "primary_reuse": "MoE、LoRA使用source-map核定本地PDF并重算哈希；Bitter Lesson复用正式作者URL的既有eacli正文缓存，只提取公开content。",
+    "network": {"capability": "web.read", "selection_request_id": "req_a76449f58a2fa71373623c889a207c3d", "request_ids": ["req_efficiency_hardware_abs_20261103", "req_efficiency_hardware_pdf_20261103"], "result": "正式摘要页与带版本PDF URL均返回可读文本。"},
+    "fallback": "本轮未用curl、供应商私有接口或图片替代结论；文本已足够支持采用的事实。",
+    "cache_policy": "每份新获取的外来来源放入独立新建空临时目录，Python读取均使用-I；不从下载目录执行代码。缓存路径仅随最终source_cache返回，不写入本JSON。",
+    "reading_policy": "不逐式推导或强行全量附录；paper_analysis/references/guide.md中全读/逐符号模板按本任务及METHODOLOGY.md的证据相关性原则裁剪。只保留支撑核心判断的表格与机制。"
+  },
+  "nodes": [
+    {
+      "id": "sparse-moe",
+      "status": "covered_for_assigned_scope",
+      "background": {"type": "verified_primary", "text": "2017年1月的出发点不是把Transformer做大，而是语言建模和翻译已有LSTM系统：更大数据需要更大容量，稠密网络却让每个输入都动用整网。此前已有MoE和条件计算思想，难点是把它们变成能在GPU集群上有效训练的深层网络组件。", "claim_ids": ["EL-M01", "EL-M02"]},
+      "problem": {"type": "verified_primary", "text": "能否多存放可学习的参数，而不让每个token支付与总参数量同比例增长的专家计算？这同时是算法和系统问题：路由需要学会分工，而小批量、负载偏斜与跨设备传输会吃掉理论收益。", "claim_ids": ["EL-M02", "EL-M03", "EL-M04"]},
+      "change": {"type": "verified_primary", "text": "在堆叠LSTM之间插入一个由许多前馈专家组成的层，对每个文本位置学习选择少数专家；不是给所有专家都计算后再平均，也不是用人工领域标签预先指定专家。", "claim_ids": ["EL-M01", "EL-M03"]},
+      "mechanism_intuition": {"type": "verified_primary", "text": "把一个每次必须全开的车间改成很多可选择的工位。门控给工位打分，只让top-k工位处理当前输入，再按权重合并其输出。增加工位可增加参数容量，单次专家计算仍主要取决于选中的工位。但工位不能总有人闲着、有人排长队：噪声和均衡损失帮助探索与分流，合并各设备/各时间位置的输入使每位专家获得较大的批量，专家还要有足够计算密度才能摊薄网络传输。类比只解释调度，不证明专家对应人脑分区或可命名技能。", "claim_ids": ["EL-M03", "EL-M04", "EL-M05"]},
+      "evidence": [
+        {"type": "verified_primary", "text": "1B-word基准中，固定约8百万前向multiply-and-adds/位置、排除softmax的扫描，让专家数增加而每输入仍激活4个；论文正文报告4096专家相对计算匹配基线的测试困惑度低24%。", "claim_ids": ["EL-M06"]},
+        {"type": "verified_primary", "text": "Table 1的10-epoch对照同时列出困惑度、计算和训练硬件：低预算MoE达到34.1，对照34.7；但不是同一硬件、同一容量的单变量延迟实验。", "claim_ids": ["EL-M07"]},
+        {"type": "verified_primary", "text": "Appendix A的同结构损失对照显示，不做均衡时过载专家与质量问题同时出现；这一小实验让工程约束成为证据链的一部分，而非实现附注。", "claim_ids": ["EL-M05"]},
+        {"type": "verified_primary", "text": "更大语料上扩容有收益，但最大容量并非最好：100B-word设置在65536专家后继续到131072专家反而退化。", "claim_ids": ["EL-M08"]}
+      ],
+      "limits": [
+        "参数容量不是知识量的直接测量；总参数、激活参数、前向ops、训练FLOPs、墙钟与价格不能互换。",
+        "专家参数仍须存储和分布；路由、共享LSTM及其它层、通信和调度仍有成本。不能把专家top-k固定写成整网成本严格固定。",
+        "本论文证明特定语言模型/翻译设置下的可行性，不证明所有小批量在线推理都有同样加速，也不证明所有专家都形成稳定可解释专长。",
+        "§5.2把最大模型退化解释为可能过于稀疏；这是作者假说，不是已识别的唯一原因。",
+        "'现代MoE的开端'可作教学标签，不能据此抹掉§1.3明确引用的1991/1994及2013前驱，或认定本轮已全面审计优先权。"
+      ],
+      "route_role": {"type": "synthesis", "text": "[研究综合] 放在序列模型与通用规模扩张的交叉处：它先提出容量和每输入计算可以分开，再把读者带向'理论上少算，硬件上是否真快'。它不是Transformer的时间后继，也不与LoRA竞争同一笔预算。", "claim_ids": ["EL-X01"]}
+    },
+    {
+      "id": "lora",
+      "status": "covered_for_assigned_scope",
+      "background": {"type": "verified_primary", "text": "当通用预训练成为共享起点，问题从'能否训练一个大模型'延伸到'能否为许多任务维护适配版本'。全量微调为每任务更新并保存一套大权重，训练还要维护梯度与优化器状态；少参数的Adapter若增加串行层，仍可能增加在线延迟。", "claim_ids": ["EL-L01"]},
+      "problem": {"type": "verified_primary", "text": "尽量保留已有预训练能力，把任务改变用很少的新增参数表达，同时避免每任务一整套可训练状态和权重副本；这不是从零预训练成本的替代解。", "claim_ids": ["EL-L01", "EL-L02"]},
+      "change": {"type": "verified_primary", "text": "冻结预训练权重W0，学习它的增量而不是重新学习W0。增量用两个小矩阵A、B的乘积表达，低秩约束施加在更新上，不是把整个预训练模型压成低秩。", "claim_ids": ["EL-L02"]},
+      "mechanism_intuition": {"type": "verified_primary", "text": "把适配理解为沿少数方向改动一张已经很丰富的映射。A把输入投到小维度，B把这次修正送回原输出空间，再与原层输出相加。W0不更新，A、B由任务数据学习；初始化让修正为零，所以从原模型的函数出发。这里的'少数方向足够'是受实验支持的任务相关假设，不是对所有知识的低秩定理。", "claim_ids": ["EL-L02", "EL-L05"]},
+      "training_vs_deployment": [
+        {"stage": "适配训练", "type": "verified_primary", "text": "少的是W0的可训练梯度与优化器状态以及每任务增量；基座本身仍需参与前向。论文报告GPT-3 175B的适配训练显存从1.2TB降到350GB，而非把175B模型变成可独立运行的35MB模型。", "claim_ids": ["EL-L04"]},
+        {"stage": "固定任务、可合并的线性层推理", "type": "verified_primary", "text": "若两路是对同一输入的线性映射、输出形状一致，且任务增量固定，可预先把缩放后的BA加到W0。推理使用同形状权重，不再额外执行LoRA支路；'无额外推理延迟'相对于同形状全量微调模型，不意味着基座推理免费。", "claim_ids": ["EL-L02", "EL-L03"]},
+        {"stage": "多任务混合批次或动态适配", "type": "verified_primary", "text": "论文自己指出：把A/B吸收到一个W中后，同一批次处理不同A/B并不直接。保留未合并支路可动态选任务，但不能沿用已经消去支路时的零额外计算保证。", "claim_ids": ["EL-L03"]},
+        {"stage": "量化或改造后的部署", "type": "synthesis", "text": "[研究综合/推测] 代数上的可合并不保证任意低精度表示、量化算子或非线性改造可逐位等价、无重编码成本合并。原论文未核这些实现；本包不给通用零代价承诺。", "claim_ids": ["EL-L07"]}
+      ],
+      "evidence": [
+        {"type": "verified_primary", "text": "Table 4在GPT-3 175B的三个任务上显示很少适配参数能达到接近或更好的任务指标；不同秩和任务并非处处单调、处处优胜。", "claim_ids": ["EL-L06"]},
+        {"type": "verified_primary", "text": "Table 6把低秩假设落到具体任务：同时适配query/value时r=1已很有竞争力，增大r不总提高分数；脚注6明确不预期极小r适用于每个任务或数据集。", "claim_ids": ["EL-L05"]}
+      ],
+      "limits": [
+        "训练参数少不等于总参数少，适配检查点小不等于独立模型小，训练显存降幅不等于推理显存或总FLOPs同比降低。",
+        "[研究综合/推测] 冻结W0保留了可恢复的底座，但不保证加上任务增量后的模型自动保留所有原有行为或不会遗忘。",
+        "[研究综合/推测] 冻结权重不等于整网无需反向传播：为训练前面层的LoRA仍须经过后续层传播激活梯度。它免去的是大量权重更新相关工作，不是整个学习过程。",
+        "原文实验主要适配Transformer注意力矩阵；模型/任务/可训练位置决定所需秩。低秩增量的实用性不能外推为任意领域全量微调的完全替代。",
+        "LoRA与ResNet都可写出加法，并不意味着二者解决同一问题或有已核直接传承；LoRA是固定线性权重上的可训练更新参数化。",
+        "扩散模型中的后续采用、今日普及率、作者当前职业路径未核，不写成原论文实验结果。"
+      ],
+      "route_role": {"type": "synthesis", "text": "[研究综合] 在通用预训练路线之后回问'谁能负担适配与维护'：大规模投入形成的共享基座，可用小的任务增量重复利用。它与MoE构成不同环节的成本响应，不是MoE的下一代，也不是反对大规模学习。", "claim_ids": ["EL-X01", "EL-X02"]}
+    },
+    {
+      "id": "bitter-lesson",
+      "status": "covered_for_assigned_scope",
+      "background": {"type": "author_position", "text": "2019年观点文章回顾长期研究选择：团队容易按眼前算力固定的条件优化，偏爱把自己理解的领域结构写入程序；作者关心的是，当单位计算成本持续下降时，这种投入是否会限制下一阶段进步。不是2018年论文，也不是一篇给出统一实验表的经验缩放研究。", "claim_ids": ["EL-B01", "EL-B02"]},
+      "problem": {"type": "author_position", "text": "在一个计算预算不断变化的世界，应把研究努力主要投入编码已有答案，还是投入能借更多计算继续发现答案的方法？", "claim_ids": ["EL-B02", "EL-B04"]},
+      "change": {"type": "author_position", "text": "将评价单位从'今天用较少计算做得巧不巧'移到'方法能否在计算增长后继续受益'。Sutton主张优先建设学习与搜索这两类通用的发现方法，而不是把已有的人类发现不断写死。", "claim_ids": ["EL-B02", "EL-B04"]},
+      "mechanism_intuition": {"type": "author_position", "text": "论文周期内的捷径可能成为更长周期内的天花板。若手工结构使方法复杂、难以利用新增计算，再多投入也可能锁在平台期。作者还指出机会成本和心理承诺：投入一种路线的时间不能同时投到另一种；'苦涩'在于获胜的可能不是研究者最认同的那种解释。", "claim_ids": ["EL-B02", "EL-B04"]},
+      "argument_reconstruction": {
+        "x": "长期AI进步中应如何选择研究方法与投入方向？",
+        "f": [
+          "[作者立场] 前提：单位计算成本长期下降，使比一个研究项目稍长的时间尺度拥有更多计算。",
+          "[作者立场] 四类案例：国际象棋的深搜索；围棋的搜索与自弈价值学习；语音从领域手工方案到统计/HMM及深度学习；视觉从手工特征到学习方法。",
+          "[作者立场] 归纳模式：知识注入的近期收益和满足感，可能伴随长期平台与妨碍扩展；搜索/学习利用计算带来突破。",
+          "[作者立场] 结论：构建能够发现复杂性与良好近似的元方法，不只复制人类已有的发现。"
+        ],
+        "f_of_x": "[研究综合/推测] 选择方案时除了比较当前分数，还应问：多给数据/计算能否继续改善、是否可在可用硬件上有效执行、是否满足本任务时限与部署约束。前一问题来自Sutton，后两项由本包的工程证据补足，不冒充原文已经回答。",
+        "claim_ids": ["EL-B02", "EL-B03", "EL-B04", "EL-X03"]
+      },
+      "evidence": [
+        {"type": "author_position", "text": "正文确有四组历史案例和研究心理的解释；它们构成作者的归纳论证，本轮未把每组案例改成独立审计过的历史因果结论。", "claim_ids": ["EL-B03"]},
+        {"type": "verified_primary", "text": "原文明确说两种取向不必相互冲突；国际象棋段提到专用硬件和软件，视觉段保留卷积与某些不变性。这些原文细节不允许把全文简化为'人类知识/结构/工程都没用'。", "claim_ids": ["EL-B05"]}
+      ],
+      "limits": [
+        "不是数学定理、对照试验或全史穷尽；案例选择和'长期'的尺度不提供对每项未来任务的保证。",
+        "作者用的是单位计算成本下降这一广义趋势，不等于声称每个任务实际可用的内存、通信、资金和数据质量同步无约束增长。",
+        "不能据此把模型参数个数当唯一变量，把能力、安全、可靠性或部署价值都写成规模的必然单调函数。",
+        "不提供MoE的路由算法、LoRA的秩选择、训练tokens分配、硬件利用率或多任务服务的最优解。",
+        "'通用方法'指可广泛利用计算的搜索/学习，不等于必须运行在通用CPU上，也不等于不能使用领域数据、网络结构或专用硬件。",
+        "[研究综合/推测] 在固定时限、稀缺样本或成本约束下有用的先验，不因这篇长期论证而自动失效；原文没有给出消除这些约束的证明。"
+      ],
+      "route_role": {"type": "synthesis", "text": "[研究综合] 作为跨路线的提问框架而非所有方法的祖先：回顾已有学习/搜索与工程故事，再把问题交给Scaling、ZeRO、数据和部署路线，要求它们说明计算如何真正转化成有效学习。", "claim_ids": ["EL-X02", "EL-X03"]}
+    }
+  ],
+  "claims": [
+    {"id": "EL-M01", "type": "verified_primary", "statement": "该MoE预印本首发2017-01-23；原文把前馈专家层用于堆叠LSTM之间，每个文本位置可选不同专家，不能写成Transformer做大后才发明的结构。", "source_id": "EL-MOE", "locations": ["首页版本标记", "§1.2", "§5.1", "§5.3"], "boundary": "早于Transformer的日期关系沿用source-map已核对象日期；不据时间先后断定技术因果。"},
+    {"id": "EL-M02", "type": "verified_primary", "statement": "原文目标是条件计算下增加容量而不同比增加计算，并明确承接Jacobs等1991、Jordan/Jacobs 1994及Eigen等2013等MoE工作。", "source_id": "EL-MOE", "locations": ["§1.1–1.3"], "boundary": "本轮核的是本文对前驱的引用及自述，未独立裁定1991之前所有优先权；不将作者的'首次'自述升级成全史结论。"},
+    {"id": "EL-M03", "type": "verified_primary", "statement": "专家输出按稀疏门控加权；Noisy Top-K在训练打分中加入可调高斯噪声，保留top-k后softmax，未选专家无需求值，门控与专家共同反向传播训练。", "source_id": "EL-MOE", "locations": ["§2，Equation 1", "§2.1，Equations 3–5"], "boundary": "稀疏的是被激活的专家分支，不是整网权重存储都消失；专家不是预先指定的人类学科角色。"},
+    {"id": "EL-M04", "type": "verified_primary", "statement": "论文将GPU分支不利、专家批量缩小与网络带宽列为核心障碍；采用数据/模型并行混合、跨时间位置合并输入、计算较密集的专家，以改善这些约束。", "source_id": "EL-MOE", "locations": ["§1.1挑战列表", "§3.1", "§3.2"], "boundary": "固定每输入激活专家数不等于端到端延迟固定，也不保证小批量服务高效。"},
+    {"id": "EL-M05", "type": "verified_primary", "statement": "importance均衡不必等于样本负载均衡，故另用可微负载估计损失。Appendix A在同结构MoE-256、10 epochs下：两损失权重皆0时测试困惑度39.8、最大/平均估计负载17.80；两者皆0.1时为35.6、1.14。", "source_id": "EL-MOE", "locations": ["§4", "Appendix A，Equations 8–11及Table 6，P13–14"], "boundary": "是指定结构/训练长度的对照；任一损失的多个设置质量相近，不能声称必须这组权重或两项永远缺一不可。负载指标是论文定义的Load估计。"},
+    {"id": "EL-M06", "type": "verified_primary", "statement": "§5.1固定约8百万前向multiply-and-adds/位置、排除softmax的模型扫描，每输入激活4位专家；正文报告4096专家模型相对计算匹配基线测试困惑度低24%。", "source_id": "EL-MOE", "locations": ["§5.1 Low Computation, Varied Capacity，P6", "Figure 2图注"], "boundary": "数字来自正文，不是本轮从曲线读数。该ops/timestep不是包含反向、softmax、网络和调度的端到端成本。"},
+    {"id": "EL-M07", "type": "verified_primary", "statement": "Table 1的10-epoch比较：低预算MoE测试困惑度34.1、8.9M ops/timestep、15小时/16张K40；既有LSTM对照为34.7、151M、59小时/32张K40。MoE参数4303M、对照151M，参数栏不含embedding和softmax。", "source_id": "EL-MOE", "locations": ["§5.1 Table 1，P7", "同节Computational Efficiency段"], "boundary": "计算量、参数量、单卡TFLOPS利用率和训练硬件不同，不可换算成通用在线推理价格降千倍。"},
+    {"id": "EL-M08", "type": "verified_primary", "statement": "在100B-word内部新闻语料设置中，完整训练后测试困惑度改善至65536专家/约68B专家参数，相对计算匹配基线低39%；增至131072专家/约137B反而退化，作者提出可能过于稀疏。", "source_id": "EL-MOE", "locations": ["§5.2 Results，P7–8"], "boundary": "137B是测试的最大容量而非最好质量；语料为内部数据，原因属于作者假说，不是普适规模边界。"},
+    {"id": "EL-L01", "type": "verified_primary", "statement": "LoRA针对预训练后多任务适配的全量权重/状态成本；论文也区分少参数与低延迟，指出插入串行Adapter层可能增加推理延迟。", "source_id": "EL-LORA", "locations": ["§1–3", "Table 1"], "boundary": "不是所有Adapter实现都具有统一延迟罚金；本包不泛化论文特定硬件测试。"},
+    {"id": "EL-L02", "type": "verified_primary", "statement": "冻结W0，只优化低秩因子A/B；增量为经α/r缩放的BA，A随机、B零初始化使初始增量为零。约束的是更新，不要求W0低秩。", "source_id": "EL-LORA", "locations": ["§4.1，Equation 3及后续初始化/缩放段"], "boundary": "原文简写W0+BA时省略了同段说明的缩放；合并实现必须保持训练使用的缩放一致。"},
+    {"id": "EL-L03", "type": "verified_primary", "statement": "原方法可将固定线性增量合入同形状W0，使部署时不增加该支路；但§4.2明确指出已合并权重时，一个forward中批处理不同任务的A/B并不直接，未合并动态选择是另一种部署取舍。", "source_id": "EL-LORA", "locations": ["§4.1 No Additional Inference Latency", "§4.2 Practical Benefits and Limitations末段"], "boundary": "不等于任务切换、权重存储、基座推理或多任务服务全部零成本。"},
+    {"id": "EL-L04", "type": "verified_primary", "statement": "§4.2在GPT-3 175B/Adam适配场景报告训练显存1.2TB→350GB；r=4且仅适配query/value时任务检查点约350GB→35MB（约10000倍），脚注4仍要求部署时保有350GB基座。", "source_id": "EL-LORA", "locations": ["§4.2，P5及脚注4"], "boundary": "这是论文所报特定配置，不是全任务或全模型通用倍率；基座预训练成本没有被消除。"},
+    {"id": "EL-L05", "type": "verified_primary", "statement": "Table 6在GPT-3、query/value同时适配时，WikiSQL验证准确率r=1为73.4%、r=8为73.8%、r=64为73.5%，表列任务波动约±0.5%；脚注6不预期极小r适用每个任务或数据集。", "source_id": "EL-LORA", "locations": ["§7.2，Table 6及脚注6，P10"], "boundary": "低秩是有效参数化的局部证据，不是证明最优全量增量严格低秩或r=1永远充分。"},
+    {"id": "EL-L06", "type": "verified_primary", "statement": "Table 4中GPT-3全量微调175255.8M可训练参数，WikiSQL/MNLI-m验证准确率73.8%/89.5%；LoRA 4.7M参数为73.4%/91.7%，37.7M参数为74.0%/91.6%。", "source_id": "EL-LORA", "locations": ["§5.5，Table 4，P8"], "boundary": "WikiSQL逻辑形式准确率和MultiNLI-matched准确率是不同任务；典型波动分别约±0.5%、±0.1%。不能写成每个配置每任务都胜全量微调。"},
+    {"id": "EL-L07", "type": "synthesis", "statement": "[研究综合/推测] LoRA的无新增支路推理保证限于其可合并线性形式；量化舍入、非线性改造或动态多任务实现需另验，不能由W0+BA的代数式推出任意模型都无代价合并。", "source_id": "EL-LORA", "locations": ["§4.1–4.2"], "boundary": "原论文没有测试所有这些部署变体；此项是保证范围分析，不是这些变体的实测结果。"},
+    {"id": "EL-B01", "type": "verified_primary", "statement": "The Bitter Lesson为Rich Sutton署名、2019-03-13的作者观点文章。", "source_id": "EL-BITTER", "locations": ["网页署名与日期"], "boundary": "讲义P21–25连续引用同一文章，不另计五项，也不采用页头2018.08。"},
+    {"id": "EL-B02", "type": "author_position", "statement": "Sutton把通用方法长期成功归因于其利用新增计算的能力，前提是广义单位计算成本长期下降；还讨论研究时间的机会成本及对既有路线的心理承诺。", "source_id": "EL-BITTER", "locations": ["首段The biggest lesson..."], "boundary": "核实作者确有此论证，不等于验证未来成本必然按该趋势变化。"},
+    {"id": "EL-B03", "type": "author_position", "statement": "正文以国际象棋深搜索、围棋搜索与自弈价值学习、语音统计/HMM及深度学习、视觉从手工特征到学习方法四组历史叙述支撑其归纳。", "source_id": "EL-BITTER", "locations": ["In computer chess...", "A similar pattern...", "In speech recognition...", "In computer vision..."], "boundary": "本轮未逐案核历史细节，不将其对研究者动机和手工方法作用的概括当作独立已证事实。"},
+    {"id": "EL-B04", "type": "author_position", "statement": "末尾归纳短期知识注入—平台—搜索/学习突破的模式，主张构建能发现良好近似与复杂结构的元方法，而不只内置人类已发现的内容。", "source_id": "EL-BITTER", "locations": ["This is a big lesson...", "One thing that should be learned...", "The second general point..."], "boundary": "作者对搜索/学习可扩展性的强措辞不是经本包证明的无限扩展定理。"},
+    {"id": "EL-B05", "type": "verified_primary", "statement": "原文承认利用人类知识与利用计算不必冲突；象棋案例提到专用硬件/软件，视觉案例保留卷积及某些不变性。", "source_id": "EL-BITTER", "locations": ["首段These two need not run counter...", "国际象棋段", "视觉段"], "boundary": "这些限定允许反对'一切人类设计无用'的误读；不意味着作者撤回其对领域知识路线的强烈批评。"},
+    {"id": "EL-H01", "type": "author_position", "statement": "Hooker把hardware lottery定义为研究想法因适配现有软硬件、而不必因想法本身更优获得成功；并讨论专门化的效率收益与偏离主流路线的试验成本。", "source_id": "EL-HARDWARE", "locations": ["Abstract", "§1", "§4"], "boundary": "是观点框架，不是证明任何失败算法都只输给硬件，也不是否定成功算法的科学价值。"},
+    {"id": "EL-H02", "type": "author_position", "statement": "Hooker承认难以建模换一种硬件是否会成功的反事实，提出降低硬件—软件—算法组合试验成本，并改善跨硬件比较、领域语言、自动调优与剖析反馈。", "source_id": "EL-HARDWARE", "locations": ["§4反事实讨论", "§5结尾", "§6", "§6.1", "§7"], "boundary": "本包不采用该文对具体历史、脑科学或美元成本的二手估计，也不把其2020硬件现状表述外推到今天。"},
+    {"id": "EL-X01", "type": "synthesis", "statement": "[研究综合] MoE分离总容量与每输入激活的专家计算；LoRA分离预训练总权重与每任务可训练增量；两者处理不同成本轴，可共同反驳'效率只等于把模型缩小'。", "source_ids": ["EL-MOE", "EL-LORA"], "locations": ["EL-MOE §2–3", "EL-LORA §4"], "boundary": "概念上并列，不宣称组合后收益相乘，不声称LoRA由MoE直接启发。"},
+    {"id": "EL-X02", "type": "synthesis", "statement": "[研究综合] Bitter Lesson不要求浪费计算；能让更多计算有效进入学习、或让已学能力更便宜地复用的工程，可与其长期方向相容。但Sutton并未在该文替MoE或LoRA作具体算法论证。", "source_ids": ["EL-BITTER", "EL-MOE", "EL-LORA"], "locations": ["EL-BITTER首段及末两段", "EL-MOE §1/3/6", "EL-LORA §1/4"], "boundary": "MoE早于该文，LoRA晚于该文；不能用这个思想框架倒造发明因果。"},
+    {"id": "EL-X03", "type": "synthesis", "statement": "[研究综合] 能力由可学习方法、算力转化效率、训练数据与预算目标共同约束：硬件适配是通用学习的实现条件，不是可从Bitter Lesson省略的旁枝。", "source_ids": ["EL-MOE", "EL-LORA", "EL-HARDWARE", "EL-UP-FOUND", "EL-UP-INFRA", "EL-UP-SCALE"], "locations": ["EL-MOE §3–4", "EL-LORA §4.2", "EL-HARDWARE §4/6.1", "上游F-B05、F-A03、INF-Z01–03、INF-M01/05、INF-R02/03、K4及R2"], "boundary": "多来源问题综合，不是一项控制所有变量的统一实验或唯一历史解释。"}
+  ],
+  "cross_route_edges": [
+    {"id": "EL-E01", "from": "gnmt-and-lstm-sequence-models", "to": "sparse-moe", "relation_type": "direct_architectural_modification", "evidence_type": "verified_primary", "supporting_sources": ["EL-MOE"], "locations": ["§1.2", "§5.1", "§5.3"], "statement": "MoE语言模型在LSTM之间插专家层；翻译实验明确修改GNMT，减少LSTM层数并在encoder/decoder插MoE。", "boundary": "可写实际模型承接，不把MoE移到Transformer之后，不把翻译改善只归因于专家数一个变量。"},
+    {"id": "EL-E02", "from": "brook-and-alexnet", "to": "sparse-moe", "relation_type": "recurring_hardware_constraint", "evidence_type": "synthesis_with_upstream_evidence", "supporting_sources": ["EL-UP-FOUND", "EL-MOE"], "locations": ["F-B05：Brook §5.2/6", "F-A03：AlexNet §3.2", "EL-MOE §1.1/3"], "statement": "[研究综合] GPU可提供大量算术，但有效利用始终受传输、批量、内存和通信约束；MoE使这些旧问题以不规则路由的新形式再出现。", "boundary": "这是反复出现的问题，不是已核Brook→AlexNet→MoE单线代码传承。"},
+    {"id": "EL-E03", "from": "sparse-moe", "to": "scaling-laws-and-chinchilla", "relation_type": "budget_question_refinement", "evidence_type": "synthesis_with_upstream_evidence", "supporting_sources": ["EL-MOE", "EL-UP-SCALE"], "locations": ["EL-MOE §5.1–5.2", "K1–4", "C1–6"], "statement": "[研究综合] 都在问容量、数据和计算如何配合；稀疏模型让总参数与激活计算分开，因此不能机械把稠密模型拟合出的预算分配或tokens/参数比套给MoE。", "boundary": "没有在本包求出MoE缩放律；MoE内部大语料结果也不能当作Chinchilla分配法则的先验证明。"},
+    {"id": "EL-E04", "from": "zero-and-megascale", "to": "sparse-moe-and-lora", "relation_type": "distinct_engineering_layers", "evidence_type": "synthesis_with_upstream_evidence", "supporting_sources": ["EL-UP-INFRA", "EL-MOE", "EL-LORA"], "locations": ["INF-Z01–03", "INF-M01/05", "EL-MOE §3–4", "EL-LORA §4.2"], "statement": "[研究综合] ZeRO处理训练状态如何分布，MegaScale处理并行/通信重叠与持续运行，MoE改变每输入激活哪些参数，LoRA改变适配时更新哪些参数。可在同张成本地图上相互定位。", "boundary": "不宣称这几篇实测了全部组合，不把ZeRO写成训练参数减少方法，也不把LoRA写成无需存放基座。"},
+    {"id": "EL-E05", "from": "general-pretraining", "to": "lora", "relation_type": "explicit_problem_inheritance", "evidence_type": "verified_primary", "supporting_sources": ["EL-LORA"], "locations": ["§1–2", "§4.2", "§5"], "statement": "LoRA把共享预训练模型视为既有起点，直接回应GPT-3级模型多任务适配/副本成本，并以多个Transformer语言模型验证。", "boundary": "这是低成本适配对共享基座的依赖，不是已经证明基座能力能在任意任务中无损提取。"},
+    {"id": "EL-E06", "from": "distillation", "to": "sparse-moe-and-lora", "relation_type": "parallel_lifecycle_cost_responses", "evidence_type": "synthesis_with_upstream_evidence", "supporting_sources": ["EL-UP-FOUND", "EL-MOE", "EL-LORA"], "locations": ["F-D01：Distillation §1", "EL-MOE §2–3", "EL-LORA §4"], "statement": "[研究综合] 蒸馏允许将昂贵教师所学转给部署学生；MoE增加不必全激活的容量；LoRA减少任务增量和更新状态。先问成本发生在哪一阶段，再比较方法。", "boundary": "不混比论文的参数倍率，不声称LoRA已经压缩基座或蒸馏必然减少总训练成本。"},
+    {"id": "EL-E07", "from": "bitter-lesson", "to": "refinedweb-and-scaling", "relation_type": "interpretive_frame_with_constraints", "evidence_type": "synthesis_with_upstream_evidence", "supporting_sources": ["EL-BITTER", "EL-UP-INFRA", "EL-UP-SCALE"], "locations": ["EL-BITTER首段/末两段", "INF-R01–03", "K1/K4/C4/C6/R2"], "statement": "[研究综合] 通用学习并不取消数据工程和预算选择：可扩展清洗/去重及同条件语料比较说明，不是任意更多网页都有相同学习价值；稠密缩放研究也保留目标和计算口径。", "boundary": "不把启发式清洗与手工编写领域答案混为一谈，不把RefinedWeb结果推广到所有规模和任务。"},
+    {"id": "EL-E08", "from": "bitter-lesson", "to": "hardware-lottery-extension", "relation_type": "complementary_question_and_tension", "evidence_type": "synthesis", "supporting_sources": ["EL-BITTER", "EL-HARDWARE"], "locations": ["EL-BITTER首段及末两段", "EL-HARDWARE §1/4/5/6.1"], "statement": "[研究综合] Sutton问什么方法能用好更多计算；Hooker追问哪些方法能够实际获得适配的软硬件并被公平试验。两者共同反对只看静态算法图，但对现有方法/硬件路径的锁定给出不同警示。", "boundary": "不能写成Hooker证明Sutton错误，也不能把硬件彩票当作深度学习'只靠运气'的定论。§5引用Sutton不等于两人有已核个人争论。"},
+    {"id": "EL-E09", "from": "search-and-self-play", "to": "bitter-lesson", "relation_type": "author_illustrative_case", "evidence_type": "author_position", "supporting_sources": ["EL-BITTER"], "locations": ["围棋段A similar pattern..."], "statement": "Sutton将搜索与自弈价值学习并列为围棋进步的计算利用方式。", "boundary": "本文未点名区分AlphaGo Zero与AlphaZero；本包不使用已知错配本地PDF，不把观点文章说成它们的技术前置或LLM推理必然路线。"},
+    {"id": "EL-E10", "from": "sparse-moe", "to": "lora", "relation_type": "contrast_not_lineage", "evidence_type": "synthesis", "supporting_sources": ["EL-MOE", "EL-LORA"], "locations": ["EL-MOE §2–4", "EL-LORA §1/4"], "statement": "[研究综合] 一个让单个输入只用部分容量，一个让单个任务只学习小增量；都可提高大模型利用效率，但分工、训练与部署语义不同。", "boundary": "必须避免把两篇连成'稀疏模型进一步压缩成LoRA'，或声称按先后发生了直接继承。"}
+  ],
+  "people_and_institutions": [
+    {"person_or_group": "Shazeer、Mirhoseini等MoE作者团队", "type": "verified_primary", "fact": "首页列主要作者单位Google Brain，Maziarz列Jagiellonian University；Mirhoseini脚注说明工作在Google Brain Residency期间完成。论文致谢Google Brain与Google Translate团队，并使用内部新闻/翻译语料及K40集群。", "source_id": "EL-MOE", "locations": ["首页及脚注", "§5.1–5.3", "Acknowledgments"], "route_relevance": "显示提出方案的团队同时接触语言任务、大数据和分布式训练条件；不是把全部发明归功于一位名人，也不据单位推断每个人分工。"},
+    {"person_or_group": "Hu、Shen等LoRA作者团队", "type": "verified_primary", "fact": "本地v2首页列Microsoft Corporation，Hu与Shen标共同贡献；研究使用既有预训练模型并实测GPT-3 175B的适配。", "source_id": "EL-LORA", "locations": ["首页", "§1", "§5.5"], "route_relevance": "人的视角放在维护多任务大模型的实际负担以及可实验条件；不采用讲义中的导师关系、后来任职或视频推荐作为技术事实。"},
+    {"person_or_group": "Rich Sutton", "type": "author_position", "fact": "作者以研究者对人类知识方案的投入、满足感及不愿接受替代路线解释'苦涩'，并提出转向能发现答案的方法。", "source_id": "EL-BITTER", "locations": ["署名", "首段", "This is a big lesson...", "结尾"], "route_relevance": "这是作者对研究选择的心理与方法论解释，不是本轮调查过所有研究者动机；不补无关履历。"},
+    {"person_or_group": "Sara Hooker", "type": "verified_primary", "fact": "2020年本文首页署名Sara Hooker、Google Research, Brain Team；论点涉及研究社区与硬件开发激励不一致，以及试验不同技术路线的成本。", "source_id": "EL-HARDWARE", "locations": ["首页", "§4", "§6–6.1"], "route_relevance": "用机构/社区条件解释方法选择空间，而非做人物现职传记；硬件彩票只作为必要延伸。"}
+  ],
+  "spine_contribution": {
+    "type": "synthesis",
+    "central_turn": "[研究综合] 全书从'学习方法为何能做大'转入'大究竟指什么、又由谁支付成本'。这不是三篇效率工具的插播，而是让模型、硬件、数据和研究者选择汇入同一问题链的转折。",
+    "suggested_question_chain": [
+      "先接序列模型：若每个token都运行整套网络，容量增长为什么越来越贵？以2017年1月、仍含LSTM的MoE打开容量/激活计算的分离。",
+      "立刻接回硬件：路由图上的省算为什么可能在GPU上变慢？用小批量、负载偏斜与通信解释必须同时改算法和系统，再呼应Brook/AlexNet。",
+      "让2019年Bitter Lesson回看前面案例：长周期内应建设可利用更多计算的发现方法；保留研究者为何偏好自己的解释这一人的视角。",
+      "用一小段Hardware Lottery提出反问：可利用的计算不是抽象常量，软硬件及组织投入会选择哪些想法有机会成功。此处不是独立硬件史。",
+      "把问题交给Scaling/Chinchilla和infra/data：更多参数、更多tokens、训练状态可容纳、通信与稳定运行分别解决什么，哪些效果不能被一个规模口号包办。",
+      "在共享预训练能力进入具体任务时再讲2021年LoRA：为什么不必每任务重付全量更新与副本成本；以固定任务合并和多任务服务的差别收束到实际使用。"
+    ],
+    "chronology_policy": "问题顺序可以往返，必须显式标日期。MoE是2017-01，Bitter Lesson是2019-03，Hardware Lottery是2020-09，LoRA首发2021-06；讲义空间布局、章内先后与真正历史因果分开。",
+    "cost_axes_to_keep_separate": ["总参数/专家容量", "单token激活及共享计算", "适配可训练参数与优化器状态", "基座及任务检查点存储", "数据规模和质量", "硬件利用率/通信/可靠性", "训练预算与部署量"],
+    "people_lens": "同一个计算愿景，落在不同团队手里表现为不同问题：有大数据与集群时如何有效分工，有共享巨型基座时如何让许多任务负担得起，做长期研究时如何避免对短期成功方案的心理锁定。每项机构事实有出处，这个并置本身属于综合。",
+    "do_not_force": [
+      "不要写成Transformer→MoE的时间因果链。",
+      "不要写成Bitter Lesson直接催生MoE、LoRA或所有后来的扩展方法。",
+      "不要把MoE→LoRA写成稀疏化不断升级的一条单线，也不要把LoRA当作稀疏激活。",
+      "不要因为Shazeer、Hinton等共同作者或机构重合就添加未经来源说明的师承/发明链。",
+      "不要把参数容量千倍、适配参数万倍、显存几倍减少放在同一个效率排行榜。",
+      "不要把硬件彩票简化成'好算法只是抽中了GPU'，也不要把Bitter Lesson简化成'只要继续堆规模就能解决一切'。"
+    ],
+    "most_likely_overreach": "'MoE和LoRA证明Bitter Lesson，因此人类设计不再重要'是本包最应阻止的连接。MoE的噪声/负载损失/批量和并行设计、LoRA的更新参数化与部署形式恰是大量人类工程选择；它们能与通用学习扩展相容，不是消灭设计的证据。",
+    "reader_takeaway": "[研究综合] 效率不一定意味着削弱学习：有时是让更多容量被负担得起，有时是让已有能力被反复利用。但节省哪笔成本、在哪个阶段、需要什么工程条件，必须逐项说清。",
+    "closing_questions": ["我真正理解了什么：容量、计算、可训练参数与部署成本为什么不是同一个量？", "我还没搞懂什么：给定真实批量、通信条件和任务分布，稀疏与低秩的理论优势何时变成墙钟收益？", "下一步读什么或做什么：主笔先完成跨包证据复核；只有书稿确需当代部署判断时，再补特定MoE/LoRA系统的一手基准，而不凭原论文外推。"]
+  },
+  "pdf_corrections": [
+    {"id": "EL-P01", "pages": [17], "pdf_framing": "把容量超过1000倍的摘要表述换算为成本约千分之一。", "correction": "删除该等价换算。总容量与每输入计算、计算利用率不是互为倒数；应按§5.1/5.2的实际模型、ops和训练硬件分别表述。", "supporting_claims": ["EL-M04", "EL-M06", "EL-M07", "EL-M08"], "status": "correction_supported"},
+    {"id": "EL-P02", "pages": [17], "pdf_framing": "MoE解决推理费用、驱动应用普及。", "correction": "可讲条件计算回应成本约束；这篇论文的主要证据是语言模型/翻译的质量、计算量与训练时间，未测得所有在线服务的价格或普及因果。", "supporting_claims": ["EL-M04", "EL-M07"], "status": "narrow_claim_to_evidence"},
+    {"id": "EL-P03", "pages": [17], "pdf_framing": "现代MoE开端及大脑分区类比。", "correction": "保留2017-01而明确含LSTM和既有前驱；大脑类比仅作直觉，不作为本文算法机制或神经科学证据。", "supporting_claims": ["EL-M01", "EL-M02", "EL-M03"], "status": "correction_supported"},
+    {"id": "EL-P04", "pages": [19], "pdf_framing": "W0+BA合并后不会引入任何额外推理延迟。", "correction": "补固定线性增量、同输入/输出空间、保持α/r缩放与单任务合并条件，并补原文多任务混合批次限制；量化/动态等变体另验。", "supporting_claims": ["EL-L02", "EL-L03", "EL-L07"], "status": "conditions_added"},
+    {"id": "EL-P05", "pages": [19], "pdf_framing": "LoRA像ResNet只训练残差，后来在Diffusion大放异彩及当前最广泛使用。", "correction": "加法类比不能建立机制等同或传承；本文核到的是语言模型适配。扩散采用与普及率不由原论文支持，主文若保留须另查一手来源。", "supporting_claims": ["EL-L01", "EL-L02", "EL-L03"], "status": "analogy_limited_later_claims_unverified"},
+    {"id": "EL-P06", "pages": [21, 22, 23, 24, 25, 26], "pdf_framing": "连续页头标2018.08，P26为2019.03。", "correction": "统一为作者网页2019-03-13，并作为一篇观点文章处理。P21–25中文译文未逐字审校。", "supporting_claims": ["EL-B01"], "status": "date_resolved_translation_scope_limited"},
+    {"id": "EL-P07", "pages": [21, 22, 23, 24, 25], "pdf_framing": "跨路线引用Bitter Lesson容易被读成全面反对人类知识或规模必胜。", "correction": "区分作者强归纳、具体历史案例和本包解释；保留两类方法不必冲突、专用软硬件、卷积等原文细节，再明确工程/数据/目标约束。", "supporting_claims": ["EL-B02", "EL-B03", "EL-B04", "EL-B05", "EL-X03"], "status": "interpretation_guard"}
+  ],
+  "unresolved": [
+    {"id": "EL-U01", "status": "scoped_not_blocking", "issue": "Bitter Lesson四组历史案例的全部原始史料与研究者心理未独立审计。", "handling": "只作为Sutton的已读论证使用，不说本包证明了70年唯一历史规律。"},
+    {"id": "EL-U02", "status": "scoped_not_blocking", "issue": "LoRA用于扩散模型的传播、当前普及率、作者后续履历未核。", "handling": "不进入确定技术/人物事实；若主笔保留，应补目标论文或机构一手来源。"},
+    {"id": "EL-U03", "status": "scoped_not_blocking", "issue": "量化LoRA合并、多任务动态路由和当代MoE服务的具体延迟/内存边界未实测。", "handling": "只说明原论文保证的范围，禁止编造统一倍率；不需为完成本包追加训练或付费实验。"},
+    {"id": "EL-U04", "status": "scoped_not_blocking", "issue": "上游包的原论文在本轮未重新精读；可能存在后续复核修订。", "handling": "保留上游文件快照哈希、claim ID和原文定位；主笔合并时以复核后的owner为准，涉及变化的接口再核。"},
+    {"id": "EL-U05", "status": "scoped_not_blocking", "issue": "P21–25中文翻译及讲义图形没有逐字/逐像素校对；本文只核作者英文完整论证和相关源地图。", "handling": "不声称完成讲义全页审校；本包不依据未看图像作结论。"},
+    {"id": "EL-U06", "status": "awaiting_independent_verification", "issue": "当前是研究包生成轮，不是独立复核结论。", "handling": "待工作流安排独立验证；本轮不另派Agent、不写正式章节、不提交。"}
+  ],
+  "validation_scope": {
+    "checks_required": ["JSON可解析", "source/claim引用存在且稳定ID不重复", "三个对象均具备指定节点字段", "公开JSON无临时缓存路径和原始执行收据", "只新增指定研究JSON", "原始两论文哈希仍与核定值一致"],
+    "not_claimed": ["独立Reviewer通过", "论文实验复现", "所有附录精读", "所有历史优先权裁定", "最终报告完成或发布"]
+  }
+}

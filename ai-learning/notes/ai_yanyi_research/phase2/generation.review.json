@@ -1,0 +1,344 @@
+{
+  "schema_version": 1,
+  "task_id": "generation",
+  "review_date": "2026-11-03",
+  "reviewer": {
+    "role": "independent_source_first_reviewer",
+    "model": "claude-gpt-6-astra-max[1m]",
+    "harness": "claude-code",
+    "independent_session": true,
+    "subagents_used": false
+  },
+  "research_file": "ai-learning/notes/ai_yanyi_research/phase2/generation.json",
+  "research_file_hash": {
+    "algorithm": "sha256",
+    "value": "ae9fd235b2cd28a22a539d21a7e05aaf47f4443ad6d758cd5e9138f4c0417b93",
+    "nature": "本次独立审阅的研究 JSON 原始字节；首次读稿前与来源补核后均核对一致"
+  },
+  "verdict": "PASS",
+  "verdict_scope": "仅表示 generation 包在所声明的五对象、版本和阅读范围内可供主笔使用；不是全书、正式报告或后续产品技术谱系的终审。",
+  "summary": "五个节点的贡献、训练机制、主要实验口径及论文与产品边界有原文支持。31 条声明逐项检查；14 条关系中 12 条直接关系获支持、1 条规模研究综合保持限定、1 条视频谱系正确拒绝确立。未发现阻断主笔使用的事实错误或核心遗漏。",
+  "method": {
+    "order": "先读核定身份与原始来源，形成训练信号—逆过程—潜表示计算—条件接口—骨干扩展的独立地图；在会话中记录地图后才首次读取 generation.json。随后对照全部 claims、cross_route_edges、nodes、人物段、问题链和讲义纠错。",
+    "source_first_completed": true,
+    "identity_scope": "只核 gan、diffusion-2015、ddpm、ldm、dit，以及必要延伸 LAION 来源的既有身份与字节；未重新核定 36 项对象。",
+    "context": "先执行 eacli context catalog，再取 knowledge.ai 最小上下文；未读取第二批其他研究包，也未借用其未完成结论。",
+    "network": "本次没有新增联网抓取。复用已取得的原文和 eacli 模型卡缓存，核查其哈希与调用收据；不重复下载。",
+    "cache_integrity": "四份已缓存论文文本均与从 source-map 核定 PDF 重新用 pdftotext -layout 提取的完整文本字节一致。七个本地 PDF 的原始字节哈希与研究稿登记一致；v1.4 模型卡正文及收据哈希也一致。",
+    "visual_boundary": "结论取自正文、表格、图注及作者对曲线的文字分析。GAN 以 PDF 页面阅读，但未把样本图优劣作为独立视觉结论；未声称执行图像能力核查。",
+    "execution": "处理来源的 Python 使用 -I；未执行来源代码、下载模型权重、训练或生成实验。pdftotext 对一个来源报告 xref 重建提示，但提取成功且缓存逐字节一致；原 PDF 未改动。",
+    "assessment": "不以穷尽公式、附录或消融作为本包通过条件；检查关键机制、数字与因果边的证据。"
+  },
+  "source_read_scope": [
+    {
+      "source_id": "GEN-S-GAN",
+      "url": "https://arxiv.org/abs/1406.2661v1",
+      "version": "v1，2014-06-10",
+      "year": 2014,
+      "authors": ["Ian J. Goodfellow", "Jean Pouget-Abadie", "Mehdi Mirza", "Bing Xu", "David Warde-Farley", "Sherjil Ozair", "Aaron Courville", "Yoshua Bengio"],
+      "local_original": "ai-learning/papers/08_gan_2014.pdf",
+      "sha256": "ff5819e3a7b713c3bd3107b7de3d51fe0a347aa5d8444f0efdcf2345ef0a8b63",
+      "hash_nature": "既有本地 PDF 原始字节，与身份 owner 和研究稿一致；不等于重新认证官网文件",
+      "actual_read_scope": "P1–7：首页署名及访问脚注；§1–3、Algorithm 1；§4 理论条件与实际有限网络边界；§5、Tables 1–2；§6 和 P7 的 §7 条件生成开头。",
+      "not_verified": "未逐式重证收敛，未独立测量样本质量，未读完 P8 及参考文献。"
+    },
+    {
+      "source_id": "GEN-S-DIFF15",
+      "url": "https://arxiv.org/abs/1503.03585v8",
+      "version": "v8，2015-11-18；首发年为 2015",
+      "year": 2015,
+      "authors": ["Jascha Sohl-Dickstein", "Eric A. Weiss", "Niru Maheswaranathan", "Surya Ganguli"],
+      "local_original": "ai-learning/papers/32_diffusion_original_2015.pdf",
+      "sha256": "17a29449579ceb4fb906f2f3d5643eb22cea54e5975017ff8788ddf73d8b44ad",
+      "hash_nature": "既有本地 PDF 原始字节；所读文本缓存与独立重新提取结果完全一致",
+      "text_cache_sha256": "53e6ea37fcf118ac5a8fed0faa8a4813fc499a1262021171afb5e974fa79e69b",
+      "actual_read_scope": "P1–9 主文：首页；§1–2 的动机、相关工作、前向/逆向链、似然下界、日程与条件后验；§3、Tables 1–2、CIFAR-10 修正脚注、MNIST 评估说明、结论和致谢。图注用于定位实验，不作视觉独立判断。",
+      "not_verified": "输出还包含部分参考文献和附录，但未系统审查附录证明或完整实现；不声称复现实验或核清传播史。"
+    },
+    {
+      "source_id": "GEN-S-DDPM",
+      "url": "https://arxiv.org/abs/2006.11239v2",
+      "version": "v2，2020-12-16",
+      "year": 2020,
+      "authors": ["Jonathan Ho", "Ajay Jain", "Pieter Abbeel"],
+      "local_original": "ai-learning/papers/09_ddpm_2020.pdf",
+      "sha256": "aee5e07a802e8dfd2a386374c94fd61d1d056cb7e1e0fec4f28e8120ff5d8505",
+      "hash_nature": "既有本地 PDF 原始字节；所读文本缓存与独立重新提取结果完全一致",
+      "text_cache_sha256": "1a7692fd6ebabf1a5cf58caf73d8478faa4e88c8f616f13397e629e09d6fbe75",
+      "actual_read_scope": "P1–9 主文，重点 §2–3.4、Algorithms 1–2、Tables 1–2、§4.1–4.3、相关工作及机构/资源说明；P13 的渐进压缩仅为概念验证说明；P14 Appendix B 的网络、硬件和超参数选择。",
+      "not_verified": "没有逐式复算证明或独立实现压缩系统；未据自回归解释增设跨范式等同关系。"
+    },
+    {
+      "source_id": "GEN-S-LDM",
+      "url": "https://arxiv.org/abs/2112.10752v2",
+      "version": "v2，2022-04-13；首发 2021，CVPR 2022",
+      "year": 2021,
+      "authors": ["Robin Rombach", "Andreas Blattmann", "Dominik Lorenz", "Patrick Esser", "Björn Ommer"],
+      "local_original": "ai-learning/papers/20_stable_diffusion_2021.pdf",
+      "sha256": "46ede043a8dc07ca1f0f445620523fe1ad8b2436bd83856a3835612a47e9f79e",
+      "hash_nature": "既有本地 PDF 原始字节；所读文本缓存与独立重新提取结果完全一致",
+      "text_cache_sha256": "389f849a44197cd8a4581550193581da619a82d7c427b2726373a55095b22de9",
+      "actual_read_scope": "P1–7 方法与主要实验、Tables 1–3、Figures 6–7 图注和分析；P9 限制与结论；P16 changelog；P25 Tables 14–15 相关配置；P26 Table 17、文本 tokenizer 说明和条件编码段；P27 E.3.2、E.3.5 的评估口径。",
+      "not_verified": "未全审超分辨率、修补实验和全附录；未把所有任务的 SOTA 宣称逐一复核。"
+    },
+    {
+      "source_id": "GEN-S-DIT",
+      "url": "https://arxiv.org/abs/2212.09748v2",
+      "version": "v2，2023-03-02；首发 2022",
+      "year": 2022,
+      "authors": ["William Peebles", "Saining Xie"],
+      "local_original": "ai-learning/papers/27_dit_2022.pdf",
+      "sha256": "5fbb0ec35e3ae76826240171ca63ed4c27de6cb43180367453019e9d28a8b076",
+      "hash_nature": "既有本地 PDF 原始字节；所读文本缓存与独立重新提取结果完全一致",
+      "text_cache_sha256": "9f878dccb6c1f304bd50e75f7381afa9e7ef02f9719a455f22d561150802a614",
+      "actual_read_scope": "P1–9 主文：首页及 FAIR 实习脚注、§1–6、Tables 1–3、条件块、latent patch、VAE 复用、规模实验与 §5.2 模型/采样计算的区分。",
+      "not_verified": "不独立评判样本图，未审后续文生图或视频实现，未读取 Sora 来源。"
+    },
+    {
+      "source_id": "GEN-S-SD14",
+      "url": "https://huggingface.co/CompVis/stable-diffusion-v1-4/raw/main/README.md",
+      "version": "明确 checkpoint v1-4；2026-11-03 已获 main 模型卡快照，未固定 commit",
+      "year": 2022,
+      "year_nature": "产品代际年，不代表所读卡片全部措辞的初发年份",
+      "authors": ["Robin Rombach", "Patrick Esser"],
+      "sha256": "235f6807fc6ebbe5c3346354d726de7d53e95424699b443050cdc68ff9caa959",
+      "hash_nature": "eacli web.read 返回正文字符串的 UTF-8 字节，不是 HTTP 原始响应、权重或提交哈希",
+      "receipt_sha256": "c8bd9a21c6a2b210af0b209c87b2c79e74289909ed0703b5e133af4c5a70eed9",
+      "request_id": "req_ai_yanyi_generation_sd14_card_01",
+      "actual_read_scope": "模型卡全文已返回；实质核查 Model Details、Training Data/Procedure、v1-1/v1-2/v1-4 续训关系、Limitations and Bias、Safety Module 与 Evaluation Results 的文字条件，并校验正文及调用收据字节哈希。",
+      "not_verified": "未执行示例代码、下载权重或查看评测图片；卡片并非独立训练日志或产品初发快照。"
+    },
+    {
+      "source_id": "GEN-S-LAION",
+      "url": "https://arxiv.org/abs/2210.08402v1",
+      "version": "v1，2022-10-16",
+      "year": 2022,
+      "authors": ["Christoph Schuhmann", "Romain Beaumont", "Richard Vencu", "Cade Gordon", "Ross Wightman", "Mehdi Cherti", "Theo Coombes", "Aarush Katta", "Clayton Mullis", "Mitchell Wortsman", "Patrick Schramowski", "Srivatsa Kundurthy", "Katherine Crowson", "Ludwig Schmidt", "Robert Kaczmarczyk", "Jenia Jitsev"],
+      "local_original": "ai-learning/papers/29_laion5b_2022.pdf",
+      "sha256": "18dad8c88914dfcdcdcb50eba4b285ba665f67d6f4661d20e3ee2e36a3d42163",
+      "hash_nature": "既有本地 PDF 原始字节，与身份 owner 和研究稿一致",
+      "actual_read_scope": "先读 P1–4 的背景与数据来源、P8 的生成使用和复现实验接口，再定向补读 P5–6 的 §3.1 CLIP 筛选与 §3.2 安全边界。",
+      "not_verified": "没有全审 CLIP 复现实验、附录或全量数据治理；仅验证本包数据—生成接口。"
+    },
+    {
+      "source_id": "GEN-S-LECTURE",
+      "url": null,
+      "url_note": "任务指定本地讲义，没有另造正式公开 URL",
+      "version": "任务指定 PDF",
+      "year": null,
+      "authors": [],
+      "local_original": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
+      "hash_nature": "本地 PDF 原始字节",
+      "actual_read_scope": "P44–46、P49–50 文本层，以及 source-map 中相关页的定位与 open_issues。仅用于确认纠错对象，不作技术事实证据。",
+      "not_verified": "未重审全部讲义、人物传记或全部 36 项。"
+    }
+  ],
+  "source_content_map": [
+    {
+      "id": "SCM-G01",
+      "source_ids": ["GEN-S-GAN"],
+      "locations": ["§1–3、§6，P1–3、P7"],
+      "independent_unit": "生成模型先于 GAN 存在；GAN 的新增办法是同时训练生成器和真假判别器，让可微判别信号经反向传播指导生成，而不是先获得一个完美裁判。",
+      "coverage": "covered",
+      "research_locations": ["nodes[gan]", "GEN-GAN-01", "GEN-GAN-02", "GEN-E01", "GEN-COR01"]
+    },
+    {
+      "id": "SCM-G02",
+      "source_ids": ["GEN-S-GAN"],
+      "locations": ["§3–6、Algorithm 1、Tables 1–2"],
+      "independent_unit": "早期饱和目标需要调整；无限容量与理想判别器下的理论不能担保有限网络收敛。多样性坍缩和概率评估困难已在原文出现，Parzen 估计不是现代图像质量榜。",
+      "coverage": "covered",
+      "research_locations": ["nodes[gan].limits", "GEN-GAN-02", "GEN-GAN-03"]
+    },
+    {
+      "id": "SCM-G03",
+      "source_ids": ["GEN-S-DIFF15"],
+      "locations": ["§1–2.4，P1–6"],
+      "independent_unit": "2015 从灵活概率模型与可计算性的矛盾出发，用已知前向扰动和学习逆向有限链拆解生成；包含高斯及二项情形，训练通过似然下界。局部可计算不代表整条链低成本或真实分布已被精确恢复。",
+      "coverage": "covered",
+      "research_locations": ["nodes[diffusion-2015]", "GEN-D15-01", "GEN-D15-02", "GEN-D15-03"]
+    },
+    {
+      "id": "SCM-G04",
+      "source_ids": ["GEN-S-DIFF15", "GEN-S-DDPM"],
+      "locations": ["2015 §1.2、Table 2、MNIST 说明及致谢", "DDPM §1–3"],
+      "independent_unit": "GAN 与 2015 扩散有相关工作和评估代码联系，不足以证明机制起因；2015 扩散到 DDPM 则有明确的方法家族承接。",
+      "coverage": "covered",
+      "research_locations": ["GEN-E02", "GEN-E03", "spine_contribution.do_not_force"]
+    },
+    {
+      "id": "SCM-G05",
+      "source_ids": ["GEN-S-DDPM"],
+      "locations": ["§3.1–3.4、Algorithms 1–2、Table 2、§4.2"],
+      "independent_unit": "DDPM 的关键是逆均值噪声参数化、固定日程/方差、随机时间训练及重加权目标的组合。噪声预测不是丢弃逆均值，更不是直接减掉一个噪声值就得到下一图；同目标下两种参数化表现相近。",
+      "coverage": "covered",
+      "research_locations": ["nodes[ddpm]", "GEN-DDPM-02", "GEN-DDPM-03", "GEN-COR03"]
+    },
+    {
+      "id": "SCM-G06",
+      "source_ids": ["GEN-S-DDPM", "GEN-S-LDM"],
+      "locations": ["DDPM Table 1、§4.1、§4.3、Appendix B", "LDM §1、Figure 2、§3"],
+      "independent_unit": "样本质量、似然和成本不是同一目标。DDPM 的训练集参考 FID 与测试集参考不同，千步采样仍顺序执行；不易感知的细节占用码长，LDM 明确据此追问仍留在像素域的计算。",
+      "coverage": "covered",
+      "research_locations": ["GEN-DDPM-04", "GEN-DDPM-05", "GEN-LDM-01", "GEN-E05"]
+    },
+    {
+      "id": "SCM-G07",
+      "source_ids": ["GEN-S-LDM"],
+      "locations": ["§3.1–3.2、§4.1、§5"],
+      "independent_unit": "LDM 先学习有损空间压缩器，再冻结表示训练扩散，最后解码。压缩太弱节省有限，太强损失细节；自编码器的感知损失和局部对抗目标说明 GAN 思想以部件形式继续存在。",
+      "coverage": "covered",
+      "research_locations": ["GEN-LDM-02", "GEN-LDM-04", "GEN-E06", "nodes[ldm].limits"]
+    },
+    {
+      "id": "SCM-G08",
+      "source_ids": ["GEN-S-LDM"],
+      "locations": ["§3.3、§4.3.1–4.3.2、Appendix A、Table 17、E.3.2"],
+      "independent_unit": "条件可通过图像 query 查询条件 key/value，也可空间拼接。已读 v2 是 BERT tokenizer、联合训练的 Transformer 文本编码器及 LAION-400M；1.45B 模型和引导结果有明确修订记录，不能倒写成 2021 首发或冻结 CLIP 配方。",
+      "coverage": "covered",
+      "research_locations": ["GEN-LDM-03", "GEN-LDM-05", "GEN-E07", "GEN-COR05"]
+    },
+    {
+      "id": "SCM-G09",
+      "source_ids": ["GEN-S-SD14", "GEN-S-LAION"],
+      "locations": ["v1.4 Model Details、Training、Limitations", "LAION §3.1–3.2、§5.1"],
+      "independent_unit": "CLIP—生成存在两条可分开的桥：LAION 用图文相似度筛候选；v1.4 用冻结 CLIP 文本表示作生成条件。v1.4 从 v1.2 续训，使用特定 LAION 子集而非完整 5B；筛选和条件输入均不保证安全或正确构图。",
+      "coverage": "covered",
+      "research_locations": ["nodes[ldm].product_bridge", "GEN-LAION-01", "GEN-SD14-01", "GEN-SD14-02", "GEN-SD14-03", "GEN-E08", "GEN-E09", "GEN-E10"]
+    },
+    {
+      "id": "SCM-G10",
+      "source_ids": ["GEN-S-DDPM", "GEN-S-LDM", "GEN-S-DIT"],
+      "locations": ["DDPM Appendix B", "LDM §3.3", "DiT §1–4"],
+      "independent_unit": "Transformer 相关复用逐层发生：DDPM 的时间嵌入/注意力、LDM 的条件接口，随后 DiT 的 latent patch 去噪骨干。DiT 保留现成卷积 VAE，预测噪声及方差，采用 adaLN-Zero，不是首次使用注意力或整个系统纯 Transformer 化。",
+      "coverage": "covered",
+      "research_locations": ["GEN-DDPM-05", "GEN-DIT-01", "GEN-DIT-02", "GEN-SYN-03", "GEN-E04", "GEN-E11", "GEN-E12"]
+    },
+    {
+      "id": "SCM-G11",
+      "source_ids": ["GEN-S-DIT"],
+      "locations": ["§4–5.2、Tables 2–3"],
+      "independent_unit": "DiT 的扩展结论来自 ImageNet 类别条件实验；模型大小、patch/token 数、前向 FLOPs、总训练计算和采样计算分别考察。256 分辨率最佳值不能迁移到所有分辨率或所有任务，512 表内仍有更低 FID 的 GAN。",
+      "coverage": "covered",
+      "research_locations": ["GEN-DIT-03", "GEN-DIT-04", "GEN-DIT-05", "GEN-E13", "nodes[dit].limits"]
+    },
+    {
+      "id": "SCM-G12",
+      "source_ids": ["GEN-S-GAN", "GEN-S-DIFF15", "GEN-S-DDPM", "GEN-S-LDM", "GEN-S-DIT", "GEN-S-SD14"],
+      "locations": ["各论文首页、相关致谢与实验资源段", "v1.4 开发者及卡片作者说明"],
+      "independent_unit": "人物用于解释署名协作、方法与实验资源：DDPM 三作者署 Berkeley；LDM 有 LMU/IWR 与 Runway；DiT 有 Berkeley/NYU 署名及 FAIR 实习脚注。后来任职既不能改写当时单位，也不能证明技术谱系。",
+      "coverage": "covered",
+      "research_locations": ["people_and_institutions", "GEN-PEOPLE-01", "GEN-PEOPLE-02", "GEN-PEOPLE-03"]
+    },
+    {
+      "id": "SCM-G13",
+      "source_ids": ["GEN-S-DIFF15", "GEN-S-DDPM", "GEN-S-LDM", "GEN-S-DIT", "GEN-S-LECTURE"],
+      "locations": ["2015 与 DDPM 引言", "LDM 方法/限制", "DiT §4、§6", "讲义 P45–46、P49–50"],
+      "independent_unit": "可支持的是问题与部件的组合史，而非生成范式单向淘汰史。长期被忽视、ResNet 启发噪声预测、DiT 导致 Sora/所有视频等关系在本包证据中不能成立为肯定式因果。",
+      "coverage": "covered",
+      "research_locations": ["GEN-SYN-01", "GEN-SYN-02", "GEN-SYN-03", "GEN-E14", "pdf_corrections", "spine_contribution", "unresolved"]
+    }
+  ],
+  "claims_checked": [
+    {"id": "GEN-GAN-01", "result": "SUPPORTED", "basis": "§1–2 明列既有生成模型；新增贡献为对抗估计框架。"},
+    {"id": "GEN-GAN-02", "result": "SUPPORTED", "basis": "§3、Algorithm 1 和 §6 支持交替优化、穿过 D 的梯度、非饱和替代目标和仅 G 采样。"},
+    {"id": "GEN-GAN-03", "result": "SUPPORTED", "basis": "§4 理想条件与有限网络警告、§5 Parzen 限制及 §6 Helvetica 多样性坍缩均对应。"},
+    {"id": "GEN-D15-01", "result": "SUPPORTED", "basis": "§1–1.2 明述灵活性/可计算性、物理及 AIS 动机；GAN 列于相关工作。"},
+    {"id": "GEN-D15-02", "result": "SUPPORTED", "basis": "§2.1–2.4 的前向/逆向链及下界；§2.4.1 允许学习高斯日程。后者不代表所有实验都必须学习日程。"},
+    {"id": "GEN-D15-03", "result": "SUPPORTED", "basis": "§2.2 成本乘步数；§2.5 条件后验；Tables 1–2 与 P7 脚注3 支持实验和量化修正说明。"},
+    {"id": "GEN-DDPM-01", "result": "SUPPORTED", "basis": "§1–3 显式承接 2015 模型及多噪声去噪 score matching，采样联系明确为 Langevin-like。"},
+    {"id": "GEN-DDPM-02", "result": "SUPPORTED", "basis": "§3.1–3.4 和 Algorithms 1–2；简化目标改变时间权重，采样包含系数及随机项。"},
+    {"id": "GEN-DDPM-03", "result": "SUPPORTED", "basis": "Table 2 同任务消融对应 13.22、13.51、3.17，正确归于参数化与目标组合。"},
+    {"id": "GEN-DDPM-04", "result": "SUPPORTED", "basis": "§4.1 区分训练参考 FID 3.17 与测试参考 5.24；Table 1、§4.3 区分样本质量和码长。"},
+    {"id": "GEN-DDPM-05", "result": "SUPPORTED", "basis": "§4/Appendix B 明列 PixelCNN++、U-Net、Wide ResNet、16×16 注意力、正弦时间嵌入及 T=1000 未扫参。"},
+    {"id": "GEN-LDM-01", "result": "SUPPORTED", "basis": "§1、Figure 2 图注直接把 DDPM 的码率—失真分析接到像素计算问题。"},
+    {"id": "GEN-LDM-02", "result": "SUPPORTED", "basis": "§3.1–3.2 含感知/对抗损失和 KL/VQ 正则；§4.1、§5 支持压缩误差边界。"},
+    {"id": "GEN-LDM-03", "result": "SUPPORTED", "basis": "§3.3 给出 query/key/value 与联合训练；§4.3.1 明确 BERT tokenizer、Transformer 和 LAION-400M，不是冻结 CLIP。"},
+    {"id": "GEN-LDM-04", "result": "SUPPORTED_WITH_SCOPE", "basis": "§4.1 及 Figures 6–7 支持可比规模下的压缩取舍，§5 支持顺序采样及精度限制；参数量与总预算的精确等同不应从此推导，见 metric_checks。"},
+    {"id": "GEN-LDM-05", "result": "SUPPORTED", "basis": "Appendix A 明确 v2 更新 1.45B 文本模型和 guidance；Table 2/E.3.2 明确 COCO 256×256 设置。"},
+    {"id": "GEN-SD14-01", "result": "SUPPORTED", "basis": "模型卡 Model Details/Training 明确固定 CLIP 文本编码、非池化输出、交叉注意力和 f=8。"},
+    {"id": "GEN-SD14-02", "result": "SUPPORTED", "basis": "模型卡 v1-4 条目为从 v1-2 续训、225k 步、512×512、laion-aesthetics v2 5+、10% 条件丢弃。"},
+    {"id": "GEN-SD14-03", "result": "SUPPORTED", "basis": "模型卡限制逐项对应；生成后的 Safety Module 与文本条件路径没有混写。"},
+    {"id": "GEN-LAION-01", "result": "SUPPORTED", "basis": "§3.1 明确 Common Crawl、alt-text、CLIP 余弦过滤和英语 ViT-B/32；§3.2、§5.1 支持安全边界及生成使用。"},
+    {"id": "GEN-DIT-01", "result": "SUPPORTED", "basis": "§3–4 明确 LDM、Stable Diffusion 现成卷积 VAE 和 ViT 式潜图 patch；ImageNet 类别条件并非整套文生图产品替换。"},
+    {"id": "GEN-DIT-02", "result": "SUPPORTED", "basis": "§3.1 的混合目标/方差学习、§3.2 输出及 §5 条件块比较均支持；没有倒填 DDPM 固定方差。"},
+    {"id": "GEN-DIT-03", "result": "SUPPORTED_WITH_SCOPE", "basis": "§5 的 4 种模型规模×3 种 patch 配置支持观察趋势；仅限作者 ImageNet 实验，不是普适扩展定律。"},
+    {"id": "GEN-DIT-04", "result": "SUPPORTED", "basis": "§4 250 DDPM 步，§5.1 256 模型训练 7M 步，Table 2 cfg=1.5/FID-50K=2.27；Table 3 DiT 3.04 未胜 StyleGAN-XL 2.41。"},
+    {"id": "GEN-DIT-05", "result": "SUPPORTED_WITH_SCOPE", "basis": "§5.2 单独研究采样 FLOPs，§6 将文生图骨干列为未来方向；本文没有视频实验。"},
+    {"id": "GEN-PEOPLE-01", "result": "SUPPORTED", "basis": "DDPM 首页三人均署 UC Berkeley；Google 提供 TPU 资源也不改变作者单位。"},
+    {"id": "GEN-PEOPLE-02", "result": "SUPPORTED", "basis": "LDM 首页分列 LMU/IWR 与 Runway；Rombach、Blattmann 等贡献，Esser 不属于统一海德堡署名。"},
+    {"id": "GEN-PEOPLE-03", "result": "SUPPORTED", "basis": "DiT v2 首页为 Berkeley/NYU，Peebles 星号对应 FAIR 实习说明；不据此延伸后续任职史。"},
+    {"id": "GEN-SYN-01", "result": "SUPPORTED_AS_SYNTHESIS", "basis": "GAN 优劣、扩散框架、DDPM 目标取舍与 LDM 对抗压缩器共同支持重新分工的叙事，不是原文证明的单一历史因果。"},
+    {"id": "GEN-SYN-02", "result": "SUPPORTED_AS_SYNTHESIS", "basis": "LAION 的英语筛选 CLIP ViT-B/32 与 v1.4 的 CLIP ViT-L/14 文本条件用途、模型与训练过程均有区分。"},
+    {"id": "GEN-SYN-03", "result": "SUPPORTED_AS_SYNTHESIS", "basis": "DDPM Appendix B、LDM §3.3 和 DiT §3–6 支持逐层复用；不支持通用模态统一的实验断言。"}
+  ],
+  "edge_checks": [
+    {"id": "GEN-E01", "result": "SUPPORTED", "evidence": "GAN §1–3、§6", "check": "有明确梯度与训练工具复用，不要求判别器预先完美。"},
+    {"id": "GEN-E02", "result": "SUPPORTED_AS_NONCAUSAL_CONTACT", "evidence": "2015 §1.2、Table 2、MNIST 说明及致谢", "check": "GAN 为比较对象并提供评估代码；关系类型和 guard 正确阻止升级成生成机制因果。"},
+    {"id": "GEN-E03", "result": "SUPPORTED", "evidence": "2015 §2；DDPM §1–3、Table 2", "check": "明确方法家族延续，2015 与 2020 的贡献没有合并。"},
+    {"id": "GEN-E04", "result": "SUPPORTED", "evidence": "DDPM Appendix B", "check": "真实骨干/时间嵌入复用与‘噪声预测类似残差’的直觉类比已分开。"},
+    {"id": "GEN-E05", "result": "SUPPORTED", "evidence": "DDPM §4.3；LDM §1、Figure 2、§3", "check": "存在直接引用的问题承接；数据同维噪声隐变量与降维潜表示已明确区分。"},
+    {"id": "GEN-E06", "result": "SUPPORTED_WITH_INTERMEDIATE_WORKS", "evidence": "LDM §2、§3.1、§5", "check": "对抗训练作为压缩部件成立；实际近端前驱为 VQGAN 等，不声称原 GAN 代码直传。"},
+    {"id": "GEN-E07", "result": "SUPPORTED", "evidence": "LDM §3.3、§4.3.1", "check": "序列条件及 cross-attention 复用成立；tokenizer、编码器、去噪骨干不是同一组件。"},
+    {"id": "GEN-E08", "result": "SUPPORTED", "evidence": "LAION §3.1–3.2", "check": "CLIP 确实用于筛选候选数据，不倒置原 CLIP 与 LAION-5B 的训练关系。"},
+    {"id": "GEN-E09", "result": "SUPPORTED_FOR_V1_4", "evidence": "LAION §5.1；v1.4 Training", "check": "明确子集、上游 checkpoint 和续训阶段，未外推所有 Stable Diffusion 版本。"},
+    {"id": "GEN-E10", "result": "SUPPORTED_FOR_V1_4", "evidence": "v1.4 Model Details、Training", "check": "冻结文本表示条件化成立，不把 CLIP 变成像素生成器或 LDM v2 的编码器。"},
+    {"id": "GEN-E11", "result": "SUPPORTED", "evidence": "DiT §3.1、§4", "check": "明确使用 LDM 框架及 Stable Diffusion VAE；类别条件实验不等于保留整套产品能力。"},
+    {"id": "GEN-E12", "result": "SUPPORTED", "evidence": "DiT §1–3.2、Table 1", "check": "ViT patch、位置编码和配置有直接原文引用，不依赖作者重合或年份邻近。"},
+    {"id": "GEN-E13", "result": "SUPPORTED_AS_BOUNDED_SYNTHESIS", "evidence": "DiT §2、§5–5.2", "check": "扩展经验提供动机，本论文独立实验提供本域证据；没有移植语言缩放指数或最优数据比例。"},
+    {"id": "GEN-E14", "result": "CORRECTLY_WITHHELD", "evidence": "DiT §4 实验设置及 §6", "check": "原文不足以建立到 Sora、所有文生视频或所有模态统一的谱系。研究稿明确不把该边放入肯定式因果图；不是证明这类联系绝不存在。"}
+  ],
+  "metric_checks": [
+    {
+      "id": "METRIC-01",
+      "result": "CONSISTENT",
+      "detail": "GAN 与 2015 扩散的 Parzen/似然口径没有与现代 FID 拼榜；2015 v8 的 CIFAR 量化修正已说明，不与 DDPM 离散 bits/dim 直接比大小。"
+    },
+    {
+      "id": "METRIC-02",
+      "result": "CONSISTENT",
+      "detail": "DDPM Table 2 的 13.22、13.51、3.17 来自同一无条件 CIFAR-10 消融；Table 1/§4.1 的 3.17 与 5.24 分别使用训练、测试参考集。"
+    },
+    {
+      "id": "METRIC-03",
+      "result": "CONSISTENT_WITH_COMPARABILITY_CAVEAT",
+      "detail": "LDM 压缩比较按 §4.1 的受控设计理解为可比参数规模、相同设备及更新步数；附录 Table 14 的具体参数数并非逐项相等，且批量、学习率等会不同。主笔宜用‘可比参数规模’而非‘精确相同参数和总预算’；研究稿已明确不作任意总成本胜出的推论。"
+    },
+    {
+      "id": "METRIC-04",
+      "result": "CONSISTENT",
+      "detail": "LDM v2 Table 2 的文本生成是 COCO 256×256、250 DDIM 步，E.3.2 为 30000 验证样本；v1.4 模型卡评估为 COCO2017 10000 提示、512×512、50 PLMS 步。研究稿没有拼成同一质量排名。"
+    },
+    {
+      "id": "METRIC-05",
+      "result": "CONSISTENT",
+      "detail": "DiT 2.27 明确对应 256×256 类别条件 ImageNet、DiT-XL/2、7M 训练步、250 DDPM 采样步、cfg=1.5、FID-50K；不是 DDPM 无条件 CIFAR-10 3.17 的可直接比较改进值。"
+    },
+    {
+      "id": "METRIC-06",
+      "result": "CONSISTENT",
+      "detail": "DiT 512×512 的 3.04 与表中 StyleGAN-XL 2.41 已正确区分；§5.2 的采样预算实验使用 FID-10K，研究稿没有误作最佳模型 FID-50K 或通用计算缩放定律。"
+    }
+  ],
+  "requirements_checked": [
+    {"requirement": "历史、范式、人物共同解释问题链而非五篇百科", "result": "SATISFIED", "basis": "spine_contribution 的五个问题转折、真实方法接口和有限机构信息支持连贯路线；没有用人物传记替代机制。"},
+    {"requirement": "GAN 不被写成所有生成模型起点", "result": "SATISFIED", "basis": "背景、GEN-GAN-01 和 GEN-COR01 明确前史；训练信号及局限都有对应原文。"},
+    {"requirement": "2015 扩散与 2020 DDPM 贡献分开", "result": "SATISFIED", "basis": "局部逆链/下界与噪声参数化/简化目标/图像实证分开，并排除长期被忽视的未核断言。"},
+    {"requirement": "LDM、文本编码器、数据及 Stable Diffusion 版本不混用", "result": "SATISFIED", "basis": "LDM v2、BERT tokenizer、联合训练编码器、LAION-400M，与 v1.4 冻结 CLIP 和指定 LAION 子集逐项分开。"},
+    {"requirement": "DiT 潜空间、Transformer 及类别条件实验边界", "result": "SATISFIED", "basis": "卷积 VAE、latent patches、adaLN-Zero、方差配方及 ImageNet 设置正确，没有偷换成视频或现成文本能力。"},
+    {"requirement": "人物机构与论文发生时材料一致", "result": "SATISFIED", "basis": "五篇首页及正式卡片支持所用事实；DDPM 没有因后来职位改写为 Google Brain。"},
+    {"requirement": "跨路线边有明确证据且不把共同作者或时间相邻当因果", "result": "SATISFIED", "basis": "14 条关系逐项核查，GAN/2015 的评估接触与 DiT 视频谱系均保持非因果或未确立状态。"},
+    {"requirement": "只写指定核查 JSON，不改研究稿及其他研究包", "result": "SATISFIED", "basis": "仅创建本文件；源文件哈希绑定与检查单记录独立审阅范围。"}
+  ],
+  "issues": [],
+  "limitations": [
+    "没有独立训练、采样或复现实验；SUPPORTED 指所读原文或正式模型卡支持该陈述，不表示独立验证模型性能。",
+    "本次复用已核本地原文，哈希及重新提取一致只能绑定所读版本，不能替代重新从官方网站认证 PDF 字节。",
+    "v1.4 模型卡来自可变 main，未固定发布 commit；已校验特定 checkpoint 的正文与 eacli 收据哈希，但不认证权重，也不证明全部文字在 2022 已存在。",
+    "样本图、曲线和模型卡评测图片没有进行独立视觉审计；相应结论限于正文、表格、图注和作者分析。",
+    "LDM 的‘相同参数量’应按原文受控比较的可比规模理解，附录具体模型并非逐项精确等参；不据此承诺同端到端预算优于所有方法。",
+    "未核 2015 扩散的传播史、GLIDE 编码器细节、人物后续职业史及 DiT 到具体文生视频产品的谱系；研究稿已排除这些肯定式断言。",
+    "未全审超分辨率/修补任务、数学证明、全量附录或数据治理；未读取第二批其他研究包，本结论不能覆盖其他路线或全书。"
+  ]
+}

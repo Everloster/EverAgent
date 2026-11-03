@@ -1,0 +1,294 @@
+{
+  "schema_version": 1,
+  "task_id": "vision_alignment",
+  "artifact_kind": "independent_scoped_research_review",
+  "review_date": "2026-11-03",
+  "reviewer": {
+    "role": "independent_verifier",
+    "harness": "claude-code",
+    "model": "claude-gpt-6-astra-max[1m]",
+    "model_identity_basis": "本会话环境声明，不以Git配置推断模型身份",
+    "subagents_spawned": false
+  },
+  "research_file": "ai-learning/notes/ai_yanyi_research/phase2/vision_alignment.json",
+  "research_file_sha256": "697f0e33c8b0d4e85418c861f556706c9906c82849adb78395caff56c21fb627",
+  "source_map_file": "ai-learning/notes/ai_yanyi_research/source-map.json",
+  "source_map_sha256": "82a789b2a65bca73da52eb44391e32f00804686f0de3c34c23440546be551521",
+  "verdict": "PASS",
+  "verdict_scope": "仅表示该哈希对应研究包在声明的四对象与关联范围内可供主笔使用，不是全书终稿、生成包、全部人物履历或后续产品配方通过。",
+  "summary": "四对象的问题、贡献、关键数字及关系边与所读原文一致。23项登记主张、12条关系边、4组人物机构信息均已核对；未发现阻断问题。识别与生成、架构与权重、零样本与线性探针、原论文与产品版本的边界保留得当。",
+  "review_method": {
+    "source_first": true,
+    "sequence": "先读取核定来源身份和正确原文，独立形成视频运动表示、ViT序列接口、CLIP语言监督及LAION数据反馈地图，并在会话中记录；之后读取研究JSON。最后按研究稿补核CLIP线性探针、LAION过滤阈值及讲义相关页。",
+    "independent_map_basis_before_research_read": "DeepVideo P1—8正文；Two-Stream缓存P1—11；ViT P1—8；CLIP P1—9、P18—21及视频附录相关段落；LAION P1、4—5、8—9、11—12；GPT-1首页缓存和Transformer首页。",
+    "context_access": "先eacli context catalog，再get knowledge.ai；对象清单仅提取四对象、直接关联边及相关open_issues，不重新核定36对象。",
+    "acquisition": "复用任务给出的正式原文缓存与核定本地PDF。本轮无网络抓取、无新增外来来源、无模型实验。Python读取使用-I，未执行来源中的代码。",
+    "evidence_standard": "核查的是对应版本的原文支持与口径，不是独立重复训练。论文作者的解释与历史组织推断分开；公式不穷尽，图像不冒充已看。"
+  },
+  "source_read_scope": [
+    {
+      "source_id": "VA-S01",
+      "title": "Large-scale Video Classification with Convolutional Neural Networks",
+      "official_url": "https://openaccess.thecvf.com/content_cvpr_2014/html/Karpathy_Large-scale_Video_Classification_2014_CVPR_paper.html",
+      "version_url": "https://openaccess.thecvf.com/content_cvpr_2014/papers/Karpathy_Large-scale_Video_Classification_2014_CVPR_paper.pdf",
+      "version": "CVPR 2014正式论文集PDF",
+      "authors": ["Andrej Karpathy", "George Toderici", "Sanketh Shetty", "Thomas Leung", "Rahul Sukthankar", "Li Fei-Fei"],
+      "year": 2014,
+      "sha256": "662dd2baee30667b3e591b18c71010d1688837e03057f861d38ed832b411499e",
+      "hash_nature": "复用CVPR来源缓存，独立重算原始PDF文件字节SHA-256；匹配研究稿。",
+      "identity_check": "首页题名、六位作者、Google Research/Stanford机构与source-map核定对象一致；未使用1404.7823。",
+      "actual_read_scope": "P1—8正文§1—5、Tables 1—4、训练资源段及致谢；参考文献仅核AlexNet等直接关联条目。",
+      "not_read_or_not_verified": "未视觉核查滤波器、预测样例或补充材料；图注及作者解释不视为独立看图。"
+    },
+    {
+      "source_id": "VA-S02",
+      "title": "Two-Stream Convolutional Networks for Action Recognition in Videos",
+      "official_url": "https://arxiv.org/abs/1406.2199",
+      "version_url": "https://arxiv.org/pdf/1406.2199v2",
+      "version": "arXiv:1406.2199v2，2014-11-12",
+      "authors": ["Karen Simonyan", "Andrew Zisserman"],
+      "year": 2014,
+      "sha256": "4a92a6c2a2dd0793d4ad03035059030ef0591c56e87e3c97871a19e04992c300",
+      "hash_nature": "独立重算既有eacli正文content的UTF-8字节SHA-256；不是PDF字节或在线重新获取证明。",
+      "identity_check": "缓存正文含正确题名、Oxford VGG署名与v2版本标识，匹配核定来源。",
+      "actual_read_scope": "缓存P1—11，§1—7、Tables 1—4、光流实现与多任务训练、致谢及DeepVideo引用[14]。",
+      "not_read_or_not_verified": "数学符号和空格局部损坏；不据此逐式复核。图像、混淆矩阵与滤波器仅读图注和作者文字。"
+    },
+    {
+      "source_id": "VA-S03",
+      "title": "An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale",
+      "official_url": "https://arxiv.org/abs/2010.11929",
+      "version_url": "https://arxiv.org/pdf/2010.11929v2",
+      "version": "arXiv v2，2021-06-03；ICLR 2021；首发年2020沿用source-map",
+      "authors": ["Alexey Dosovitskiy", "Lucas Beyer", "Alexander Kolesnikov", "Dirk Weissenborn", "Xiaohua Zhai", "Thomas Unterthiner", "Mostafa Dehghani", "Matthias Minderer", "Georg Heigold", "Sylvain Gelly", "Jakob Uszkoreit", "Neil Houlsby"],
+      "year": 2020,
+      "repository_path": "ai-learning/papers/19_vit_2020.pdf",
+      "sha256": "8ce7b83971a14508ca711a27c875c9b6914c4f6767cf3150fb1ca6c07aa056d6",
+      "hash_nature": "独立重算本地PDF文件字节SHA-256，匹配source-map与研究稿；未重新下载比较官网字节。",
+      "actual_read_scope": "P1—8：首页作者与贡献标记；§1—3、§4.1—4.4、Tables 1—2；§4.5文字解释及§4.6开头。",
+      "not_read_or_not_verified": "未读完整自监督实验及附录；规模曲线结论由正文验证，未从曲线测数。"
+    },
+    {
+      "source_id": "VA-S04",
+      "title": "Learning Transferable Visual Models From Natural Language Supervision",
+      "official_url": "https://arxiv.org/abs/2103.00020",
+      "version_url": "https://arxiv.org/pdf/2103.00020v1",
+      "version": "arXiv v1，2021-02-26",
+      "authors": ["Alec Radford", "Jong Wook Kim", "Chris Hallacy", "Aditya Ramesh", "Gabriel Goh", "Sandhini Agarwal", "Girish Sastry", "Amanda Askell", "Pamela Mishkin", "Jack Clark", "Gretchen Krueger", "Ilya Sutskever"],
+      "year": 2021,
+      "repository_path": "ai-learning/papers/11_clip_2021.pdf",
+      "sha256": "6478b6e571a7d6fcd846d8ef77bfd60c285f1986abb8f475eedc43de403074f5",
+      "hash_nature": "独立重算本地PDF文件字节SHA-256，匹配source-map与研究稿；未重新下载官网PDF。",
+      "actual_read_scope": "P1—9：背景、§2训练方法、§3.1零样本接口/提示/比较；P11—12 §3.2线性探针；P18—21重叠检测后半、完整§6、§7开头及§7.1初段；P37 Appendix A.1视频处理段，P46 Table 15图注与动作识别段，P47对应续文。",
+      "not_read_or_not_verified": "未全读鲁棒性、人类对照、社会影响及其他附录；未核全部逐任务分数、曲线或产品首次公告。"
+    },
+    {
+      "source_id": "VA-S05",
+      "title": "LAION-5B: An open large-scale dataset for training next generation image-text models",
+      "official_url": "https://arxiv.org/abs/2210.08402",
+      "version_url": "https://arxiv.org/pdf/2210.08402v1",
+      "version": "arXiv v1，2022-10-16",
+      "authors": ["Christoph Schuhmann", "Romain Beaumont", "Richard Vencu", "Cade Gordon", "Ross Wightman", "Mehdi Cherti", "Theo Coombes", "Aarush Katta", "Clayton Mullis", "Mitchell Wortsman", "Patrick Schramowski", "Srivatsa Kundurthy", "Katherine Crowson", "Ludwig Schmidt", "Robert Kaczmarczyk", "Jenia Jitsev"],
+      "year": 2022,
+      "repository_path": "ai-learning/papers/29_laion5b_2022.pdf",
+      "sha256": "18dad8c88914dfcdcdcb50eba4b285ba665f67d6f4661d20e3ee2e36a3d42163",
+      "hash_nature": "独立重算本地PDF文件字节SHA-256，匹配研究稿。",
+      "actual_read_scope": "P1首页；P4—6相关工作末段、§3.1采集/过滤、§3.2安全边界与§4开头；P8—9 §5.1末段、§5.2训练与零样本评测；P11 Table 2及Filtering with CLIP；P11—12 §7开放与伦理讨论。",
+      "not_read_or_not_verified": "未读生成实验附录；§5.1对LDM与Stable Diffusion的转述不作为具体产品配方证据。"
+    },
+    {
+      "source_id": "VA-S06",
+      "title": "Improving Language Understanding by Generative Pre-Training",
+      "official_url": "https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf",
+      "version": "OpenAI正式研究报告缓存，无独立修订号；年份沿用已核清单",
+      "authors": ["Alec Radford", "Karthik Narasimhan", "Tim Salimans", "Ilya Sutskever"],
+      "year": 2018,
+      "sha256": "3d6c754dd04842ef0c578afc7ca3a7bff6e288e4b69587d714b698fa1e1adea4",
+      "hash_nature": "独立重算既有正文content的UTF-8字节SHA-256，不是PDF字节。",
+      "actual_read_scope": "缓存开头1600字符，仅核题名、作者、OpenAI署名；附带读到摘要和引言首句。",
+      "not_read_or_not_verified": "不据此核GPT-1方法、实验或首发日期；到CLIP的技术关系直接由CLIP正文支持。"
+    },
+    {
+      "source_id": "VA-S07",
+      "title": "Attention Is All You Need",
+      "official_url": "https://arxiv.org/abs/1706.03762",
+      "version_url": "https://arxiv.org/pdf/1706.03762v7",
+      "version": "arXiv v7，2023-08-02；NIPS 2017原论文",
+      "authors": ["Ashish Vaswani", "Noam Shazeer", "Niki Parmar", "Jakob Uszkoreit", "Llion Jones", "Aidan N. Gomez", "Łukasz Kaiser", "Illia Polosukhin"],
+      "year": 2017,
+      "repository_path": "ai-learning/papers/01_attention_is_all_you_need_2017.pdf",
+      "sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "hash_nature": "独立重算本地PDF文件字节SHA-256，匹配研究稿。",
+      "actual_read_scope": "仅P1题名、版本、作者机构、贡献脚注与摘要。",
+      "not_read_or_not_verified": "未重审Transformer方法和实验；只支持共同署名与明确贡献，架构接入由ViT正文另证。"
+    },
+    {
+      "source_id": "VA-S00",
+      "title": "AI演义：36篇论文开启你的探索之旅",
+      "official_url": null,
+      "version": "任务指定本地终版讲义",
+      "authors": ["谢青池"],
+      "author_verification_scope": "作者元数据沿用研究稿，本轮不重核讲义作者身份。",
+      "year": null,
+      "repository_path": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
+      "hash_nature": "独立重算本地PDF文件字节SHA-256，匹配研究稿。",
+      "actual_read_scope": "仅P42、43、47、48文字层，核研究稿对讲义概括的纠正；DeepVideo错链另据source-map I06。",
+      "not_read_or_not_verified": "未核全讲义与全部履历；文字层断字明显，不作为技术事实证据。"
+    }
+  ],
+  "source_content_map": [
+    {
+      "id": "VR-M01",
+      "source_basis": "VA-S01 §1—3",
+      "independent_unit": "图像CNN进入视频后，任务同时受数据规模、时间表示和计算成本约束；论文比较不同时间连接而非发明视频生成。",
+      "coverage": "covered",
+      "research_anchors": ["nodes[id=deepvideo]", "VA-D01", "VA-D02", "VA-E01", "VA-P01"]
+    },
+    {
+      "id": "VR-M02",
+      "source_basis": "VA-S01 §3.2、§4.1/Table 1、§4.2/Table 3、§5",
+      "independent_unit": "多帧对单帧增益有限，集成63.9%不等于慢融合60.9%；context/fovea提速与运动双流不是同一机制；迁移成立但数据重叠未排除。",
+      "coverage": "covered",
+      "research_anchors": ["VA-D02", "VA-D03", "VA-D04", "nodes[id=deepvideo].limits"]
+    },
+    {
+      "id": "VR-M03",
+      "source_basis": "VA-S02 §1—4及参考文献[14]",
+      "independent_unit": "双流直接回应RGB堆帧运动学习不足的可能性，显式光流与静态外观互补；借助图像预训练、多任务数据共享应对小动作数据。",
+      "coverage": "covered",
+      "research_anchors": ["VA-T01", "VA-T02", "VA-E02", "nodes[id=two-stream]"]
+    },
+    {
+      "id": "VR-M04",
+      "source_basis": "VA-S02 §5—7、Tables 1—4",
+      "independent_unit": "光流预计算保留传统视觉假设；split 1与三拆分均值不可混用；双流有竞争力但不全面超过全部轨迹方法，相机运动与轨迹池化仍待改进。",
+      "coverage": "covered",
+      "research_anchors": ["VA-T03", "VA-T04", "VA-T05", "VA-E03", "VA-P02"]
+    },
+    {
+      "id": "VR-M05",
+      "source_basis": "VA-S03 §1—3、§4.1",
+      "independent_unit": "ViT用连续patch嵌入、位置与分类标记接入标准Transformer；主要目标仍是监督图像分类，不是把图像变成词或照搬语言建模目标。",
+      "coverage": "covered",
+      "research_anchors": ["VA-V01", "VA-V04", "VA-E04", "nodes[id=vit]"]
+    },
+    {
+      "id": "VR-M06",
+      "source_basis": "VA-S03 §4.1—4.4、Table 2",
+      "independent_unit": "减少视觉归纳偏置的代价由预训练规模与设置显现；大数据预训练后的小数据迁移不能等同从零样本高效，也不能外推所有视觉任务或所有成本。",
+      "coverage": "covered",
+      "research_anchors": ["VA-V02", "VA-V03", "nodes[id=vit].limits"]
+    },
+    {
+      "id": "VR-M07",
+      "source_basis": "VA-S04 §1—2、§3.1.1",
+      "independent_unit": "CLIP把语言预训练的规模与任务学习问题接入视觉，基于既有图文监督/对比工作扩大训练；从头训练两个编码器，并非拼接预训练GPT和ViT权重。",
+      "coverage": "covered",
+      "research_anchors": ["VA-C01", "VA-C02", "VA-C08", "VA-E05", "VA-E06"]
+    },
+    {
+      "id": "VR-M08",
+      "source_basis": "VA-S04 §2.3—2.4、§3.1.2—3.1.5、§6；后补§3.2",
+      "independent_unit": "图文对比学相对匹配，文本编码候选类别构造零样本分类器；提示与评测协议影响结果，模型并无图像生成解码器。",
+      "coverage": "covered",
+      "research_anchors": ["VA-C03", "VA-C04", "VA-C05", "nodes[id=clip]"]
+    },
+    {
+      "id": "VR-M09",
+      "source_basis": "VA-S04 §5—7、Appendix A.1及E.3",
+      "independent_unit": "弱项、开发集共同适应、检测召回不足及偏差限制泛化结论；视频中心帧线性探针与逐帧平均零样本都不能证明学会显式时序。",
+      "coverage": "covered",
+      "research_anchors": ["VA-C06", "VA-C07", "VA-E09"]
+    },
+    {
+      "id": "VR-M10",
+      "source_basis": "VA-S05 §3.1、§5.2/Table 2、§6—7",
+      "independent_unit": "CLIP筛选网页配对，LAION子集经OpenCLIP再训练形成可验证的数据反馈环；数据不同、模型偏差与算力门槛仍在，开放复现不是处处追平。",
+      "coverage": "covered",
+      "research_anchors": ["VA-L01", "VA-L02", "VA-E07", "VA-E08", "spine_contribution"]
+    },
+    {
+      "id": "VR-M11",
+      "source_basis": "四对象首页、资源段；VA-S06/VA-S07首页",
+      "independent_unit": "人的视角可以落在署名、明确分工、数据与计算条件；共同作者只证明共同参与，技术关系须另外由方法和明确引用证明。",
+      "coverage": "covered",
+      "research_anchors": ["VA-P01", "VA-P02", "VA-P03", "VA-P04"]
+    },
+    {
+      "id": "VR-M12",
+      "source_basis": "VA-S01/VA-S02的任务定义、VA-S03/VA-S04的方法接口；证据范围判断",
+      "independent_unit": "视频识别、视觉架构、语言监督可沿问题相接，但不构成单一直系谱系；CLIP表示接口及ViT骨干接口可交付生成包，具体采用必须另核。",
+      "coverage": "covered",
+      "research_anchors": ["VA-E10", "VA-E11", "VA-E12", "handoff_to_generation_package", "spine_contribution"]
+    }
+  ],
+  "claims_checked": [
+    {"claim_id":"VA-D01","result":"supported","basis":"VA-S01 P1、P4：约1M、487类、自动文本元数据标签及片段噪声均明确。未以Two-Stream转述的1.1M覆盖原文口径。"},
+    {"claim_id":"VA-D02","result":"supported","basis":"VA-S01 §3.1—3.2、P4—5：时间融合、双分辨率与视频片段平均分别存在且未混为同一双流。"},
+    {"claim_id":"VA-D03","result":"supported","basis":"VA-S01 Table 1：200000测试视频；Video Hit@1依次55.3/59.3/60.9/63.9%，末项为CNN集成；1.6个百分点计算正确。"},
+    {"claim_id":"VA-D04","result":"supported","basis":"VA-S01 P7 Table 3：从零41.3%、微调顶三层65.4%、三折准确率；未排除数据重叠。摘要63.3%的表述与正文不同，研究稿已提示且没有冒称ImageNet权重初始化。"},
+    {"claim_id":"VA-T01","result":"supported","basis":"VA-S02 §1/1.1直接讨论并引用DeepVideo [14]；对运动表示不足保留可能性，不仅凭同年建立关系。"},
+    {"claim_id":"VA-T02","result":"supported","basis":"VA-S02 §2—5：RGB/光流两路、水平垂直通道、晚期平均或SVM、ImageNet空间预训练及不同任务头均有方法说明。"},
+    {"claim_id":"VA-T03","result":"supported","basis":"VA-S02 P7/Table 1：split 1，RGB慢融合56.4%、最佳从零单帧52.3%、L=10光流加均值减除81.0%；不是与Sports-1M训练同预算。"},
+    {"claim_id":"VA-T04","result":"supported","basis":"VA-S02 P8/Table 4：三拆分均值，双流SVM UCF/HMDB 88.0/59.4%，高维IDT 87.9/61.1%，UCF两路73.0/83.7%；不能写全面压倒手工表示。"},
+    {"claim_id":"VA-T05","result":"supported","basis":"VA-S02 §1.1、§3.2、§5、§7：光流假设和离线计算明确，相机运动及沿轨迹池化是待改进项。"},
+    {"claim_id":"VA-V01","result":"supported","basis":"VA-S03 §3：展平、线性投影、分类标记、位置嵌入与二维插值一致；§4.1及Table 2确有16、32、14等patch配置。"},
+    {"claim_id":"VA-V02","result":"supported","basis":"VA-S03 §4.1及§4.3：1.3M/14M/303M；小数据过拟合与JFT子集实验相符，研究稿未把转折点说成普适定律。"},
+    {"claim_id":"VA-V03","result":"supported","basis":"VA-S03 P6/Table 2：ViT-H/14 88.55±0.04%、BiT-L 87.54±0.02%，2.5k/9.9k TPUv3-core-days；三次微调均值/标准差与预训练成本口径正确。正文同时提示训练配方影响。"},
+    {"claim_id":"VA-V04","result":"supported","basis":"VA-S03 §1—3承认早期图块注意力，强调少改标准架构、大规模监督预训练与较少视觉归纳偏置。"},
+    {"claim_id":"VA-C01","result":"supported","basis":"VA-S04 §1、§2.3—2.4、§3.1.1：动机与文本架构引用明确，两个编码器从头训练；masked attention保留可能用途不等于本次训练了辅助语言目标。"},
+    {"claim_id":"VA-C02","result":"supported","basis":"VA-S04 §2.2：400M、500000查询、每查询最多20000对、WebImageText名称正确；VA-S05 Table 2将原WIT与LAION训练数据明确分列。"},
+    {"claim_id":"VA-C03","result":"supported","basis":"VA-S04 §2.3和P5伪代码：归一化后的跨模态投影、批内相似度与双向损失支持该描述；没有图像生成解码流程。负配对不等于语义绝对不相容的提醒恰当。"},
+    {"claim_id":"VA-C04","result":"supported","basis":"VA-S04 §3.1.2、§3.1.4、§6：候选文本向量充当分类权重，温度缩放余弦与提示工程属实际接口；限于给定类别。"},
+    {"claim_id":"VA-C05","result":"supported","basis":"VA-S04 Table 1及§3.1：ImageNet零样本76.2%，参照原ResNet-50；27任务赢16次。另读§3.2 P11—12，优于最佳模型的多任务平均明确是监督线性探针，不是零样本ImageNet SOTA。"},
+    {"claim_id":"VA-C06","result":"supported","basis":"VA-S04 P9、P18—21：计数/专业任务/分布外弱项、验证集与开发共同适应、重叠检测召回限制、社会偏差均实际披露。"},
+    {"claim_id":"VA-C07","result":"supported","basis":"VA-S04 P37、P46—47：线性探针用中心单帧，附录零样本对各帧预测平均；作者明确承认架构、数据、计算混杂。"},
+    {"claim_id":"VA-C08","result":"supported","basis":"VA-S04 §1、§2.1、§2.3：明确承认既有图文监督及ConVIRT等对比工作；这里只核CLIP自述，不裁决全领域优先权。"},
+    {"claim_id":"VA-L01","result":"supported","basis":"VA-S05 P4—6：IMG/alt-text、英文OpenAI ViT-B/32、其他语言多语CLIP，低于0.28/0.26剔除；P11承认筛选模型偏差。"},
+    {"claim_id":"VA-L02","result":"supported","basis":"VA-S05 §5.2、Table 2：OpenCLIP、JUWELS Booster、128—400 A100明确；B/32 WIT/LAION-400M为63.3/62.9，L/14为75.6/72.8；不是原始WIT公开，也未声称所有规模追平。"}
+  ],
+  "edge_checks": [
+    {"edge_id":"VA-E01","result":"supported","evidence":"VA-S01 §1、§3.1明确图像CNN背景和类似AlexNet架构。","causal_boundary":"支持问题与架构迁移，不支持已沿用ImageNet权重或视频深度学习首次出现。"},
+    {"edge_id":"VA-E02","result":"supported","evidence":"VA-S02 §1/1.1及§6直接讨论DeepVideo、对比RGB堆帧与光流。","causal_boundary":"允许明确引用的问题回应；运动不足仍应与VA-T01一样保留作者解释性质，不虚构团队交流或同预算实验。"},
+    {"edge_id":"VA-E03","result":"supported","evidence":"VA-S02 §3.2解释HOF/MBH等与时间CNN的表示关系，§5保留现成光流。","causal_boundary":"表示可涵盖传统描述子，不代表所有已学滤波器都被验证复刻这些描述子。"},
+    {"edge_id":"VA-E04","result":"supported","evidence":"VA-S03 §1—3、§4.1直接说明标准Transformer、BERT分类标记和Base/Large配置。","causal_boundary":"架构与预训练迁移范式复用，不等同语言目标或预训练权重复用。"},
+    {"edge_id":"VA-E05","result":"supported","evidence":"VA-S04 §2.4—2.5采用略改ViT，同时训练ResNet族。","causal_boundary":"ViT是可选图像骨干，不是CLIP定义或现成权重拼接。"},
+    {"edge_id":"VA-E06","result":"supported","evidence":"VA-S04 §1、§2.4、§3.1.1—3.1.2直接说明语言预训练动机、GPT-2式修改和任务接口。","causal_boundary":"证据来自正文而非共同作者；输出匹配分数不是语言生成答案。"},
+    {"edge_id":"VA-E07","result":"supported","evidence":"VA-S05 §3.1、§5.2.1和§7说明CLIP过滤及大规模数据开放缺口。","causal_boundary":"原CLIP不由后来的LAION训练；筛选不是无偏、安全或版权认证。"},
+    {"edge_id":"VA-E08","result":"supported","evidence":"VA-S05 §5.2、Table 2记录LAION子集上的OpenCLIP训练和结果。","causal_boundary":"证明模型辅助数据与再训练连接存在，不是循环自证质量或处处超越原CLIP。"},
+    {"edge_id":"VA-E09","result":"supported_as_bounded_synthesis","evidence":"VA-S02 §2—3与VA-S04视频附录显示相同动作任务的不同输入与协议。","causal_boundary":"可以比较依赖何种线索，不可以据此宣称双流直接导致CLIP或CLIP解决时序推理。"},
+    {"edge_id":"VA-E10","result":"interface_supported_adoption_not_verified","evidence":"VA-S04 §2.3—2.4支持文本/图像向量与相似度接口。","causal_boundary":"研究稿明确把LDM、具体Stable Diffusion版本的采用、冻结和条件注入留待下一包；本轮不批准该继承关系为事实。"},
+    {"edge_id":"VA-E11","result":"interface_supported_adoption_not_verified","evidence":"VA-S03 §3支持patch向量与Transformer接口。","causal_boundary":"DiT潜变量、去噪目标和条件机制未核；研究稿未拿ViT分类结果代替生成证据。"},
+    {"edge_id":"VA-E12","result":"supported_as_scope_boundary","evidence":"VA-S01/VA-S02的任务、训练和输出均为识别分类。","causal_boundary":"合理拒绝从同年或讲义相邻推出文生视频祖先；不等于证明领域之间历史上毫无交流。"}
+  ],
+  "people_checks": [
+    {"people_id":"VA-P01","result":"supported","basis":"VA-S01首页机构对应关系正确；§3.3、§4.1确有集群与规模条件。合作条件仅作为背景综合，未假定个人分工或后续履历。"},
+    {"people_id":"VA-P02","result":"supported","basis":"VA-S02首页Oxford VGG、§5 Caffe与多GPU/预存光流、P10 ERC及NVIDIA致谢均一致。"},
+    {"people_id":"VA-P03","result":"supported","basis":"VA-S03首页12位作者，equal advising标在Dosovitskiy/Houlsby而非Jakob；VA-S07脚注明确Jakob提议自注意力替代RNN并启动评估。共同署名未冒充ViT方法因果或顾问头衔证明。"},
+    {"people_id":"VA-P04","result":"supported","basis":"VA-S04首页Radford/Kim同等贡献；VA-S06首页核Radford/Sutskever共同参与。CLIP与LAION正文直接支持训练资源叙述，未从共同作者推出权重继承。"}
+  ],
+  "requirement_checks": [
+    {"requirement":"四对象贡献与原文身份","result":"covered","basis":"正确CVPR DeepVideo、Two-Stream v2、ViT v2、CLIP v1；未使用已知错链或旧报告作为事实证据。"},
+    {"requirement":"历史、范式与人的视角服务问题链","result":"covered","basis":"spine_contribution将运动表示、架构复用、语言监督与开放数据串联；明确从视频转到ViT是另一问题维度，不强行写成单一升级谱系。"},
+    {"requirement":"数字与评测口径","result":"covered","basis":"关键表格数字均有核查；Hit@1、准确率、百分点、数据拆分、微调、零样本、线性探针及core-days未混用。"},
+    {"requirement":"语言预训练与LAION/OpenCLIP的关键边回到原文","result":"covered","basis":"直接读取CLIP §1/2.4/3.1.1与LAION §3.1/5.2/6/7，未把上游研究JSON当独立技术证据。"},
+    {"requirement":"讲义纠错不反向污染技术事实","result":"covered","basis":"相关四页文字支持所列概括；原文支持限制ImageNet权重说法、去掉双流泛化影响量词、校正ViT作者标记、区分CLIP评测与生成接口。DeepVideo错链依source-map I06。"},
+    {"requirement":"向生成包交付接口而非预设统一配方","result":"covered","basis":"VA-E10/E11和handoff_to_generation_package均区分接口已核与采用未核，明确LDM论文、具体产品版本和DiT须独立举证。"}
+  ],
+  "issues": [],
+  "limitations": [
+    "PASS只针对当前研究文件哈希和声明范围；未审全书的章节衔接、其他研究包或终稿表达。",
+    "原文结果未进行代码复现、训练重跑或数据审计；从论文读取的性能不能当作独立复现实测。",
+    "本轮复用既有来源缓存，未重新联网验证官方字节；Two-Stream与GPT-1为提取文本哈希，不是PDF哈希。首发日期中未出现在所读首页的部分沿用source-map。",
+    "未视觉核查原论文图像、曲线和样例；结论依方法正文、表格文字及明确的作者讨论。一次文本提取报告xref重建警告，所用片段仍正常返回；未审计PDF结构或全部页面。",
+    "未全读CLIP所有鲁棒性与社会影响实验、ViT完整自监督实验及附录，也不裁决ConVIRT等前驱的绝对优先权。",
+    "LDM原论文、Stable Diffusion各版本与DiT的具体条件编码器、冻结方式、潜变量和训练数据配方仍须生成包独立核实；本包接口通过不能解除这些待核项。",
+    "未核人物后续职位、创业履历、Jakob的ViT顾问称谓或CLIP产品首次公告日；研究稿已将这些排除或保留待核。"
+  ],
+  "handoff_notes": [
+    "主笔可保留四个会合点：视频运动表示的问题回应、Transformer到ViT的架构接口、语言预训练与ViT在CLIP训练/任务接口上的结合、CLIP筛选到LAION/OpenCLIP再训练。",
+    "引用DeepVideo结果时优先用Table 1与Table 3，并保留摘要/正文UCF数字差异提示；不要将63.9%集成结果写给单个Slow Fusion。",
+    "写生成路线前重新核VA-E10/E11所列具体采用；这些边当前是交接问题，不是已证实的产品技术谱系。"
+  ]
+}

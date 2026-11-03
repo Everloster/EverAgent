@@ -9,6 +9,7 @@
 |------|------|------|
 | 2026-11-03 | [无状态的鹦鹉，怎么学会了连续对话和自己用工具？—— Agent 请求全链路科普·完整版](../ai-learning/reports/knowledge_reports/Agent请求全链路_完整版_科普讲解_20261103.md) | ai-learning |
 | 2026-11-03 | [十字路口年终复盘：AI 的十个惊讶时刻，哪些值得带回日常？](../podcast-learning/reports/2026-11-02_xiaoyuzhou-crossing_ai-aha-moments.md) | podcast-learning |
+| 2026-11-03 | [《AI演义》深读：从关键论文看懂AI的发展路径](../ai-learning/reports/AI演义_笔记分析与项目整合报告.md) | ai-learning |
 | 2026-11-02 | [答案在逐字出现，Agent 到底做到哪一步了？—— Agent 请求全链路续篇](../ai-learning/reports/knowledge_reports/Agent请求全链路_流式响应与断线恢复_科普讲解_20261102.md) | ai-learning |
 | 2026-11-01 | [飞行汽车的剧本与欧洲的账本：赛博对话 vol.60 深读](../podcast-learning/reports/2026-10-30_saibo-duihua_v60-roadster-china-auto-europe.md) | podcast-learning |
 | 2026-11-01 | [郭凯谈中国经济新范式：拐点、平行线与还没兑现的红利](../podcast-learning/reports/2026-10-30_zhixing-xiaojiuguan_e256-guokai-economy-households.md) | podcast-learning |
@@ -31,13 +32,13 @@
 | 2026-10-26 | [AI 行业日报 · 2026-10-26](../web-surfing/reports/ai-news-daily-2026-10-26.md) | web-surfing |
 | 2026-10-25 | [菠萝健康派 × 师永刚：中美抗癌十年，就医路径、费用真相与「被看见」的病人](../podcast-learning/reports/2026-10-21_xiaoyuzhou-boluo-jiankang_shiyonggang-cn-us-cancer-decade.md) | podcast-learning |
 | 2026-10-25 | [晚点聊 184：Astra 之后，具身智能的护城河从大脑移到哪里](../podcast-learning/reports/2026-10-15_rss-wandian-latetalk_184-embodied-quarterly-26q3.md) | podcast-learning |
-| 2026-10-25 | [忽左忽右 510：侨批不是一封家书，而是一套跨国金融与亲缘基础设施](../podcast-learning/reports/2026-10-23_xiaoyuzhou-huzuo-huyou_ep510-thai-qiaopi-network.md) | podcast-learning |
 
 ## 🤖 AI Learning（154 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
 | 2026-11-03 | [无状态的鹦鹉，怎么学会了连续对话和自己用工具？—— Agent 请求全链路科普·完整版](../ai-learning/reports/knowledge_reports/Agent请求全链路_完整版_科普讲解_20261103.md) | `agent_harness`, `agentic_loop`, `tool_use`, `context_management`, `message_threads`, `prompt_caching` |
+| 2026-11-03 | [《AI演义》深读：从关键论文看懂AI的发展路径](../ai-learning/reports/AI演义_笔记分析与项目整合报告.md) | `ai_history`, `representation_learning`, `transformer`, `pretraining`, `scaling_laws`, `multimodal` |
 | 2026-11-02 | [答案在逐字出现，Agent 到底做到哪一步了？—— Agent 请求全链路续篇](../ai-learning/reports/knowledge_reports/Agent请求全链路_流式响应与断线恢复_科普讲解_20261102.md) | `agent_harness`, `agentic_loop`, `streaming`, `tool_calling`, `sse`, `api_gateway` |
 | 2026-10-30 | [模型不变，Agent 如何做得更好：一项 Harness 实验](../ai-learning/reports/paper_analyses/46_evolve_the_harness_2026.md) | `agent_harness`, `self_evolving_agent`, `scaffolding`, `meta_harness`, `context_engineering`, `autoresearch` |
 | 2026-10-30 | [Personal Context 正交论：哪些积累值得保留，怎样持续维护](../ai-learning/reports/knowledge_reports/PersonalContext正交论_PC构建指南_20261010.md) | `personal_context`, `agent_memory`, `context_engineering`, `delegation` |
@@ -189,7 +190,6 @@
 | 2026-03-23 | [RLHF 深度解析](../ai-learning/reports/knowledge_reports/RLHF_深度解析.md) | — |
 | 2026-03-23 | [GPT-3 (2020) 论文精读](../ai-learning/reports/paper_analyses/03_gpt3_2020.md) | — |
 | 2026-03-23 | [BERT (2018) 论文精读](../ai-learning/reports/paper_analyses/02_bert_2018.md) | — |
-| 2026-03-23 | [AI演义_笔记分析与项目整合报告](../ai-learning/reports/AI演义_笔记分析与项目整合报告.md) | — |
 | 2026-03-23 | [AI 关键人物图谱](../ai-learning/reports/knowledge_reports/AI关键人物图谱.md) | — |
 
 ## 💻 CS Learning（33 篇）

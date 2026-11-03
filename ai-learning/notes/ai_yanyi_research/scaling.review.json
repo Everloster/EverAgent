@@ -1,0 +1,304 @@
+{
+  "task_id": "scaling",
+  "review_kind": "phase0_1_independent_research_package_review",
+  "reviewer": {
+    "harness": "Claude Code",
+    "model": "claude-gpt-6-astra-max[1m]",
+    "independent_session": true,
+    "cross_model_review": false,
+    "source_first": true
+  },
+  "reviewed_artifact": {
+    "repository_path": "ai-learning/notes/ai_yanyi_research/scaling-evidence.json",
+    "sha256": "694d9de0481d710d32baea5f4a2a2b2e0a21e6be4cf0a2cb1a14fa782c1efed9",
+    "claim_count": 13,
+    "stage": "Phase0/1研究底稿，不是正式样章或全书完成验收"
+  },
+  "source_read_scope": [
+    {
+      "source_id": "S0",
+      "repository_path": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
+      "hash_matches_evidence": true,
+      "pdf_pages": 51,
+      "actually_read": "物理页P28整页原生PDF图像：标题、背景、核心贡献和两组图。没有通读其余50页。",
+      "purpose": "独立确定路径问题、图源与本阶段覆盖范围。"
+    },
+    {
+      "source_id": "S1",
+      "official_url": "https://arxiv.org/abs/2001.08361",
+      "version_url": "https://arxiv.org/pdf/2001.08361v1",
+      "repository_path": "ai-learning/papers/05_scaling_laws_2020.pdf",
+      "sha256": "a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494",
+      "hash_matches_evidence": true,
+      "pdf_pages": 30,
+      "identity_check": "首页题名、作者与arXiv:2001.08361v1、23 Jan 2020相符。",
+      "actually_read": "P1–7 PDF页面图像，包括P3 Figure 1、摘要、§1–2及§3实验范围；P14–16、P22经Poppler提取的文本，包括§6预算分析、Figure 12–14图注、Appendix B.4和C开头。",
+      "not_claimed": "未查看P14–16图像；未穷尽全文或重推公式。"
+    },
+    {
+      "source_id": "S2",
+      "official_url": "https://arxiv.org/abs/2203.15556",
+      "version_url": "https://arxiv.org/pdf/2203.15556v1",
+      "repository_path": null,
+      "sha256": "3fd3632a8ef48171bd25282990221d49535d75356192f068b3b2ebe08f2aedd4",
+      "hash_matches_evidence": true,
+      "pdf_pages": 36,
+      "identity_check": "读取交付缓存的PDF；首页题名、作者与arXiv:2203.15556v1、29 Mar 2022相符。未重新联网核对摘要页或下载链路。",
+      "actually_read": "P1–7 PDF页面图像，重点为§2–3、P5 Figure 2和P6 Figure 3；P8–12及P15经Poppler提取的文本，重点为Table 2–7、§4–4.2、Figure 6图注与§5局限。",
+      "not_claimed": "P8以后只核对文字和图注，没有把Figure 5/6等的文字提取称作图像核验；未读全部附录或复算FLOPs。"
+    }
+  ],
+  "source_content_map": [
+    {
+      "id": "SC1",
+      "independent_unit": "共同问题是固定训练计算预算下模型参数与训练tokens的交换，优化指标先是语言建模损失。",
+      "source_locations": [
+        "S1 P3–6 §1",
+        "S2 P2目标定义"
+      ],
+      "coverage": "covered",
+      "artifact_locations": [
+        "research_framework",
+        "nodes",
+        "claims.K1",
+        "claims.C1"
+      ]
+    },
+    {
+      "id": "SC2",
+      "independent_unit": "Kaplan的贡献包括经验缩放、受控瓶颈、样本效率及预算最优不等于训练至收敛；其建议不是数据固定或任意放大参数。",
+      "source_locations": [
+        "S1 P3–7",
+        "S1 P14–16 §6"
+      ],
+      "coverage": "covered",
+      "artifact_locations": [
+        "nodes.kaplan_2020",
+        "claims.K1–K3",
+        "misreading_guards"
+      ]
+    },
+    {
+      "id": "SC3",
+      "independent_unit": "Chinchilla在模型规模与训练长度上重新扫描，匹配学习率计划；三种估计方法相互校验但并非独立复现。",
+      "source_locations": [
+        "S2 P3 §2",
+        "S2 P4–8 §3及Table 2"
+      ],
+      "coverage": "covered",
+      "artifact_locations": [
+        "claims.C2–C4",
+        "nodes.chinchilla_2022"
+      ]
+    },
+    {
+      "id": "SC4",
+      "independent_unit": "P28上图来自Kaplan Figure 1，下图来自Chinchilla Figure 2左图；训练曲线包络与固定预算参数曲线不是同一种图。",
+      "source_locations": [
+        "S0 P28",
+        "S1 P3 Figure 1",
+        "S2 P5–6 Figure 2–3"
+      ],
+      "coverage": "covered",
+      "artifact_locations": [
+        "p28_chart_reading.G1–G3"
+      ]
+    },
+    {
+      "id": "SC5",
+      "independent_unit": "近似同比例扩张描述预算增加时的路线；70B/1.4T是一次大尺度验证配置，不是所有预算的普遍最优值。",
+      "source_locations": [
+        "S2 P3 Table 1",
+        "S2 P8–9 Table 2及§4"
+      ],
+      "coverage": "covered",
+      "artifact_locations": [
+        "claims.C4–C5",
+        "misreading_guards"
+      ]
+    },
+    {
+      "id": "SC6",
+      "independent_unit": "Gopher对照保留相同训练FLOPs、评测范围及其他训练设置变化；不能据此宣称所有任务改善或完成单变量归因。",
+      "source_locations": [
+        "S2 P9–12 §4",
+        "S2 P15 §5"
+      ],
+      "coverage": "covered",
+      "artifact_locations": [
+        "claims.C5–C7",
+        "nodes.chinchilla_2022.limits",
+        "misreading_guards"
+      ]
+    },
+    {
+      "id": "SC7",
+      "independent_unit": "两节点是预算分配模型的建立与再标定；训练最优不同于训练加部署的全生命周期总成本最优。",
+      "source_locations": [
+        "S1 P22 Appendix B.4",
+        "S2 P1–2",
+        "S2 P9"
+      ],
+      "coverage": "covered",
+      "artifact_locations": [
+        "claims.K4",
+        "claims.R1–R2",
+        "relationships"
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "id": "identity_and_integrity",
+      "status": "PASS",
+      "details": "三份PDF的SHA-256均与证据账本一致；S0经pdfinfo确认51页，两篇论文首页身份与版本相符。JSON可解析，13个claim ID唯一，所有claim_ids/source_ids均可解析。"
+    },
+    {
+      "id": "scope_and_delivery",
+      "status": "PASS",
+      "details": "问题框架、两节点背景/问题/改变/直觉/证据/限制/承接、图表解释及反误读均在JSON中。scaling-research.md确实不存在，但本次上级约束禁止报告类Markdown，内容合并已明确披露，不作为技术内容缺失。未将该研究包当作完整样章。"
+    },
+    {
+      "id": "kaplan_claims",
+      "status": "PASS",
+      "claim_ids": [
+        "K1",
+        "K2",
+        "K3",
+        "K4"
+      ],
+      "details": "WebText2、decoder-only Transformer、768–1.5B非embedding参数、22M–23B数据集tokens、默认1024上下文与250000步/512序列均可定位。0.73/0.27与批量效率修正、每档预算存在最优规模、推理/墙钟约束的表述符合原文。"
+    },
+    {
+      "id": "chinchilla_question_and_methods",
+      "status": "PASS",
+      "claim_ids": [
+        "C1",
+        "C2",
+        "C3",
+        "C4"
+      ],
+      "details": "约300B tokens的历史背景、超过400次训练、四种时长、九档6×10^18至3×10^21 FLOPs、三种拟合及40B–70B推荐区间均有原文依据。正确保留方法复用数据、指数不完全相同及学习率调度解释非唯一原因的限制。来源元数据另有一处非阻断措辞错误，见SCALING-N1。"
+    },
+    {
+      "id": "large_scale_numbers_and_attribution",
+      "status": "PASS",
+      "claim_ids": [
+        "C5",
+        "C6"
+      ],
+      "details": "Table 1支持70B/1.4T与280B/300B，§4明确同训练FLOPs，Figure 2图注明列5.76×10^23 FLOPs的Gopher预算。数据比约4.7而非精确四倍的提醒正确。§4.1列出的数据混合、优化器、tokenizer与精度变化已进入限制，未冒充纯参数/token单变量消融。"
+    },
+    {
+      "id": "evaluation_boundaries",
+      "status": "PASS",
+      "claim_ids": [
+        "C5",
+        "C6",
+        "C7"
+      ],
+      "details": "Table 5覆盖语言建模和多类下游任务；Table 6及正文为57任务平均5-shot 67.6%对60.0%，差7.6个百分点；Figure 6图注支持51项改善、2项持平、4项较差。摘要67.5%与正文67.6%的同版本内部不一致已披露；语言建模评测泄漏提醒亦被保留。"
+    },
+    {
+      "id": "p28_upper_chart",
+      "status": "PASS",
+      "chart_ids": [
+        "G1"
+      ],
+      "details": "独立对照P28与Kaplan P3原图，确认三联图来源。Test Loss、非embedding计算PF-days、数据tokens和非embedding参数轴及对数显示相符；材料区分受限条件、经验轨迹与计算效率估计修正，没有从该图直接推导唯一最优参数/token配比。"
+    },
+    {
+      "id": "p28_lower_chart_and_isoflop",
+      "status": "PASS",
+      "chart_ids": [
+        "G2",
+        "G3"
+      ],
+      "details": "独立查看P28与Chinchilla P5–6原图：Figure 2左图横轴累计FLOPs、纵轴Training loss、颜色为参数规模；Figure 3左图横轴参数、颜色为固定FLOPs预算。材料正确说明P28仅有训练曲线裁图，没有把谷底或70B配置说成P28上的直接读数，也没有冒报肉眼估算精确值。"
+    },
+    {
+      "id": "historical_relationship_and_objective",
+      "status": "PASS",
+      "claim_ids": [
+        "R1",
+        "R2"
+      ],
+      "details": "Chinchilla P1明确同意不必训练至模型最低可能loss，再修正训练tokens分配。材料正确避免‘之前都错了’和‘模型越小越好’，并区分固定训练预算与部署总成本；没有无限扩展后续论文。"
+    },
+    {
+      "id": "limitations_and_public_boundary",
+      "status": "PASS",
+      "details": "少于一epoch、最大尺度仅两次可比训练、外推与因果归属限制均已登记。研究稿未包含缓存绝对路径、设备身份或凭据，未用大段原文代替解释。"
+    }
+  ],
+  "dimension_scores": {
+    "evidence_fidelity": {
+      "score": 34,
+      "max": 35,
+      "reason": "关键来源、数字、方法、图表与限制均经核对；一处来源范围措辞不准确，不影响正文主张。"
+    },
+    "request_coverage": {
+      "score": 20,
+      "max": 20,
+      "reason": "按当前研究阶段覆盖全部核心问题；材料有意合并为允许的JSON，不要求完整样章或逐篇公式审稿。"
+    },
+    "reasoning_quality": {
+      "score": 20,
+      "max": 20,
+      "reason": "能区分经验关系、资源优化、历史承接、因果归因与部署目标。"
+    },
+    "readability": {
+      "score": 14,
+      "max": 15,
+      "reason": "框架和节点可独立理解；当前为主笔用结构化材料，并非已完成面向读者的叙事正文。"
+    },
+    "limitations": {
+      "score": 10,
+      "max": 10,
+      "reason": "范围、版本内部数字差异、工具失败及未复现实验均明确披露。"
+    },
+    "total": 98,
+    "formal_report_finalized": false
+  },
+  "verdict": "PASS",
+  "verdict_scope": "此快照的Scaling Laws → Chinchilla研究包符合Phase0/1内容范围；无阻断性事实或机制错误。不表示全书研究、正式样章或仓库正式质量门已完成。",
+  "issues": [
+    {
+      "id": "SCALING-N1",
+      "severity": "low",
+      "blocking": false,
+      "file": "ai-learning/notes/ai_yanyi_research/scaling-evidence.json",
+      "line": 52,
+      "location": "sources[S2].internal_consistency_notes[1]",
+      "related_claim_ids": [
+        "C3"
+      ],
+      "summary": "S2的来源说明把P2参数范围下限记成了under 70M；该页实际写70M。",
+      "basis": "S2 P2目标定义后的段落写模型范围从70M至over 16B，tokens从5B至over 400B；并未给70M添加under限定。",
+      "impact": "仅影响来源范围备查措辞；节点正文与关键claim仍以约70M描述，不改变方法、预算建议或阶段结论。",
+      "suggested_fix": "将该来源说明中的under 70M改为70M；保留P2与摘要在tokens上采用不同概括口径的说明。",
+      "reviewer_modified_author_artifact": false
+    }
+  ],
+  "limitations": [
+    "独立图表核查前已通过eacli catalog/select确认vision.chart-analysis并实际invoke；返回BackendTimeout。未重复调用或绕过供应商路由，图表判断来自本会话直接查看的原PDF页面及图注，不宣称取得外部图像模型复核。",
+    "S2使用交付缓存，核对了PDF首页身份、实际内容与SHA-256；本轮未重新联网抓取相同原文，也未独立验证作者的摘要页读取和下载执行记录。",
+    "未独立训练模型、重算训练FLOPs或重跑评测；同预算及性能结论按论文报告核验。",
+    "未覆盖两篇论文全部附录、公式推导或所有评测子项；这不是本阶段所需的逐篇像素级审稿。",
+    "scaling-research.md未交付，所需研究内容位于scaling-evidence.json；该形式差异由已披露的上级Markdown写入约束导致。",
+    "本次为不同会话的独立复核，生成器与Reviewer记录的模型相同，不是跨模型复核；研究稿未被修改，原有待复核状态也未由Reviewer代填。"
+  ],
+  "post_review_corrections": [
+    {
+      "issue_id": "SCALING-N1",
+      "actor": "coordinator",
+      "corrected_file": "ai-learning/notes/ai_yanyi_research/scaling-evidence.json",
+      "change": "sources[S2].internal_consistency_notes[1]: under 70M → 70M",
+      "verification": "协调主笔直接查看原始 Chinchilla v1 PDF 第2页，确认原文为from 70M to over 16B。",
+      "source": "https://arxiv.org/pdf/2203.15556v1#page=2",
+      "corrected_artifact_sha256": "061c6515220f03bfeb29304bfe8755fb07291f0dc6387b6040d5a6323b495715",
+      "note": "保留独立Reviewer原始快照与判断；本记录只关闭其已指出的措辞错误，不改动评分。"
+    }
+  ]
+}

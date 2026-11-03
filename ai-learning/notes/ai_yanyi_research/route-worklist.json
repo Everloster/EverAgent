@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "updated_on": "2026-11-03",
+  "user_direction": "样章已认可；整体历史、范式、人物视角的路线串联优先于孤立单篇介绍。",
+  "already_verified_sample_objects": {
+    "seq2seq": "sequence-evidence.json",
+    "bahdanau-attention": "sequence-evidence.json",
+    "transformer": "sequence-evidence.json",
+    "scaling-laws": "scaling-evidence.json",
+    "chinchilla": "scaling-evidence.json"
+  },
+  "jobs": [
+    {
+      "id": "foundations",
+      "batch": 1,
+      "objects": [
+        "brook",
+        "alexnet",
+        "resnet",
+        "distillation"
+      ],
+      "question": "数据、GPU与训练方法怎样共同让深度表示变得可行，扩展能力又怎样引出压缩与训练难题？",
+      "status": "research_verified",
+      "evidence": "phase2/foundations.json",
+      "review": "phase2/foundations.review.json",
+      "workflow_run_id": "wf_c846f7a1-209",
+      "research_sha256": "46dfc1b82aa52621c824fca6a47a5770c3550d853982d0a821575e11113c8979"
+    },
+    {
+      "id": "infrastructure_data",
+      "batch": 1,
+      "objects": [
+        "zero",
+        "megascale",
+        "laion5b",
+        "refinedweb"
+      ],
+      "question": "模型之外的显存、并行系统、数据规模和数据质量，怎样决定能力能否被训练出来？",
+      "status": "research_verified",
+      "evidence": "phase2/infrastructure_data.json",
+      "review": "phase2/infrastructure_data.review.json",
+      "workflow_run_id": "wf_c846f7a1-209",
+      "research_sha256": "9400a323e685d876d9c3d3502bdb4482866f3a9d386eb5dba0889a7799b446ca"
+    },
+    {
+      "id": "language_pretraining",
+      "batch": 1,
+      "objects": [
+        "word2vec",
+        "gnmt",
+        "gpt1",
+        "bert",
+        "gpt2",
+        "gpt3"
+      ],
+      "question": "语言系统怎样从任务部件和专用模型走向可迁移预训练与上下文学习？",
+      "status": "research_verified",
+      "evidence": "phase2/language_pretraining.json",
+      "review": "phase2/language_pretraining.review.json",
+      "workflow_run_id": "wf_c846f7a1-209",
+      "research_sha256": "2328a2983222b865c7700b5b9c07f525d122c1e66991d549f8cda063f3adf839"
+    },
+    {
+      "id": "alignment_action",
+      "batch": 2,
+      "objects": [
+        "alphago-zero",
+        "instructgpt",
+        "tulu3",
+        "cot",
+        "react"
+      ],
+      "question": "会预测或生成，为什么还不等于会按目标解决任务；学习、推理、搜索、对齐与行动有哪些真正关系？",
+      "status": "research_verified",
+      "evidence": "phase2/alignment_action.json",
+      "review": "phase2/alignment_action.review.json",
+      "workflow_run_id": "wf_3c0785b3-d90",
+      "research_sha256": "778b4798223a379407d75a5f8fd2cd3cdf10b34b4311f28d96506897851e56dc"
+    },
+    {
+      "id": "efficiency_and_lesson",
+      "batch": 2,
+      "objects": [
+        "sparse-moe",
+        "lora",
+        "bitter-lesson"
+      ],
+      "question": "通用方法与计算扩展如何同稀疏容量、低成本适配相互作用，Bitter Lesson能解释什么、不能包办什么？",
+      "status": "research_verified",
+      "evidence": "phase2/efficiency_and_lesson.json",
+      "review": "phase2/efficiency_and_lesson.review.json",
+      "workflow_run_id": "wf_3c0785b3-d90",
+      "research_sha256": "c9b399c0bee76d4a175cf57f9bc705029ce9749d603a2438850e71c9cdfa8b85"
+    },
+    {
+      "id": "vision_alignment",
+      "batch": 2,
+      "objects": [
+        "deepvideo",
+        "two-stream",
+        "vit",
+        "clip"
+      ],
+      "question": "视觉和视频如何形成自己的问题线，又在哪些具体机制上与语言/Transformer路线会合？",
+      "status": "research_verified",
+      "evidence": "phase2/vision_alignment.json",
+      "review": "phase2/vision_alignment.review.json",
+      "workflow_run_id": "wf_3c0785b3-d90",
+      "research_sha256": "697f0e33c8b0d4e85418c861f556706c9906c82849adb78395caff56c21fb627"
+    },
+    {
+      "id": "generation",
+      "batch": 3,
+      "objects": [
+        "gan",
+        "diffusion-2015",
+        "ddpm",
+        "ldm",
+        "dit"
+      ],
+      "question": "生成模型怎样围绕质量、稳定性、成本和扩展性演进，并与表示压缩、条件控制和Transformer路线汇合？",
+      "status": "research_verified",
+      "evidence": "phase2/generation.json",
+      "review": "phase2/generation.review.json",
+      "workflow_run_id": "wf_afcd5145-d8a",
+      "research_sha256": "ae9fd235b2cd28a22a539d21a7e05aaf47f4443ad6d758cd5e9138f4c0417b93"
+    }
+  ],
+  "object_count": 36,
+  "pending_research_objects": 31,
+  "spine_rule": "按共同问题组织；跨路线关系区分使能、采用组件、问题继承、修正、并行与主题对照，不将同年或共同作者直接当因果。"
+}

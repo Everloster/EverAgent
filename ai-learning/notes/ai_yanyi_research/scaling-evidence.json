@@ -1,0 +1,323 @@
+{
+  "task_id": "scaling",
+  "artifact_kind": "phase0_1_research_material_not_final_chapter",
+  "status": "ready_for_independent_verification",
+  "scope": "《AI演义》PDF P28：Scaling Laws → Chinchilla。像素级还原发展路径与图表逻辑，不逐篇穷尽公式、附录或消融。",
+  "generator": {
+    "harness": "Claude Code",
+    "model": "claude-gpt-6-astra-max[1m]"
+  },
+  "delivery_note": "本次执行的上级约束禁止新写研究报告类 Markdown，因此问题框架、两节点卡片、图表解释与反误读材料合并保存在本 JSON；未创建 scaling-research.md。未修改旧报告、提交或发布。",
+  "sources": [
+    {
+      "id": "S0",
+      "title": "终版：AI演义，36篇论文开启你的探索之旅",
+      "kind": "local",
+      "repository_path": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "official_url": null,
+      "version": "用户指定的51页PDF；未核定公开发布版本",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
+      "actual_read_scope": "物理页P28整页图像，含历史背景、核心贡献、上方三联图与下方彩色训练曲线。没有把文字层提取或内嵌链接当作图源身份证明。",
+      "role": "路径与讲解范围的锚点；技术事实回到S1/S2核验"
+    },
+    {
+      "id": "S1",
+      "title": "Scaling Laws for Neural Language Models",
+      "authors_short": "Jared Kaplan, Sam McCandlish et al.",
+      "kind": "local_original_paper",
+      "official_url": "https://arxiv.org/abs/2001.08361",
+      "version_url": "https://arxiv.org/abs/2001.08361v1",
+      "pdf_url": "https://arxiv.org/pdf/2001.08361v1",
+      "version": "arXiv:2001.08361v1 [cs.LG], 23 Jan 2020；通过本地PDF首页核对题名、作者与版本标记，未仅凭文件名认定",
+      "repository_path": "ai-learning/papers/05_scaling_laws_2020.pdf",
+      "sha256": "a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494",
+      "actual_read_scope": "P1–7文本（摘要、§1、§2、§3开头实验范围）；P14–16文本（§5末尾、§6至§6.2）；P22文本（附录B.3/B.4及C开头）。P3 Figure 1及其图注实际查看图像。未精读其余附录、消融或公式推导。",
+      "identity_status": "confirmed_from_local_original"
+    },
+    {
+      "id": "S2",
+      "title": "Training Compute-Optimal Large Language Models",
+      "authors_short": "Jordan Hoffmann, Sebastian Borgeaud, Arthur Mensch et al.",
+      "kind": "downloaded_original_paper",
+      "official_url": "https://arxiv.org/abs/2203.15556",
+      "version_url": "https://arxiv.org/abs/2203.15556v1",
+      "pdf_url": "https://arxiv.org/pdf/2203.15556v1",
+      "version": "arXiv:2203.15556v1 [cs.CL], 29 Mar 2022；正式摘要页与下载PDF首页题名、作者、版本标记相符",
+      "repository_path": null,
+      "sha256": "3fd3632a8ef48171bd25282990221d49535d75356192f068b3b2ebe08f2aedd4",
+      "actual_read_scope": "正式摘要页与submission history；PDF P1–11文本，P12 Figure 6图注与Table 7，P15 Discussion & Conclusion中的局限段。P5 Figure 2、P6 Figure 3整页实际查看图像；没有将P12的文字读取冒充图像读取。未精读其余结果、附录B/D/E/F/G，也未独立复算训练FLOPs。",
+      "identity_status": "confirmed_from_official_page_and_pdf",
+      "internal_consistency_notes": [
+        "摘要写MMLU 67.5%，Table 6及§4.2.2写67.6%；精确引用必须标明位置，不混合。",
+        "摘要概括扫描范围为70M至16B以上参数、5B至500B tokens；P2用70M至over 16B、5B至over 400B表述。正文宜写量级范围并标明摘要口径。"
+      ]
+    }
+  ],
+  "acquisition_and_visual_check": {
+    "context_lookup": "已先查询context catalog，并用AI演义 scaling作最小搜索；无匹配后读取指定owner与指定论文，不扫描旧报告或wiki。",
+    "network_route": "先确认Token Plan catalog与web.read选择，再经eacli读取S2正式摘要页。",
+    "pdf_binary_fallback": "typed web.read只提供公开文本，不能提供PDF原始字节落盘；因此仅为S2原始PDF使用curl从arxiv.org版本化URL下载，下载进入新建空临时目录。",
+    "untrusted_file_handling": "使用现有Poppler进行PDF信息、文本提取与图像渲染；读取外来文本的Python使用-I；未执行论文或下载材料中的任何代码。",
+    "vision_route": "已select vision.chart-analysis，并分别invoke整页P28和Chinchilla Figure 2裁图。两次均返回BackendTimeout / provider request timed out；未绕过eacli直调供应商。",
+    "visual_fallback": "因typed图像服务不可用，使用原生Read直接查看P28、Kaplan P3原图、Chinchilla P5–6原图。以下图表判断来自实际所见、原文图注及相关方法段，不来自失败的图像服务输出。",
+    "public_record_boundary": "不包含临时绝对路径、设备身份、原始执行收据或凭据；缓存位置仅通过结构化回执交付核查者。"
+  },
+  "research_framework": {
+    "central_question": "训练计算预算已经定了，应该让更多算力用于更大的模型，还是让相对小些的模型读更多训练token？",
+    "reader_contract": "只解释两项工作的背景、解决的问题、改变的预训练决策、机制直觉、证据边界及承接关系；不展开公式教材。",
+    "narrative_beats": [
+      {
+        "step": 1,
+        "question": "为什么不能把参数量当作唯一进度条？",
+        "material": "增大模型会提高处理每个token的计算成本。预算固定时，模型规模和可处理token数形成交换关系；比较的目标首先是语言建模损失，不是抽象的智能总分。",
+        "claim_ids": ["K1", "C1"]
+      },
+      {
+        "step": 2,
+        "question": "Kaplan让此前靠经验选择规模的决策多了什么依据？",
+        "material": "系统实验显示，在限定条件内，参数、数据与计算对应的损失趋势可以预测；进而提出固定预算下偏向较大模型、不要把每个模型都训练到自身收敛的资源分配建议。",
+        "claim_ids": ["K1", "K2", "K3"]
+      },
+      {
+        "step": 3,
+        "question": "为什么还需要Chinchilla重做，而不只是继续把模型做大？",
+        "material": "当时多款更大的模型仍只训练约300B tokens。新研究同时扫描模型大小与训练时长，并让学习率计划匹配时长，检查原有分配建议是否仍然合算。",
+        "claim_ids": ["C1", "C2", "C3"]
+      },
+      {
+        "step": 4,
+        "question": "重新测量后，改了哪条建议？",
+        "material": "三种估计路径都支持：随着训练预算扩大，参数量和训练token数应大致同比例增加，而不是让参数增长明显快于数据。随后用同预算Chinchilla/Gopher对照检验大尺度预测。",
+        "claim_ids": ["C3", "C4", "C5"]
+      },
+      {
+        "step": 5,
+        "question": "这一步在AI发展路径中究竟起什么作用？",
+        "material": "[研究综合] 这不是替换Transformer模块，而是把可扩展模型的训练从单看参数规模，推进到可预测、可比较的模型—数据—算力资源规划；Chinchilla校准的是分配比例，不是否定规模规律。落点仍是预训练，不扩展成对齐、可靠性或部署优化综述。",
+        "claim_ids": ["R1", "R2"]
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "id": "kaplan_2020",
+      "background": "自回归Transformer语言模型已经可通过增加规模改善语言建模，但下一轮训练昂贵，不能只问哪个模型更大，还要问在预算内怎样更有效地降低损失。",
+      "problem": "辨认模型规模、数据规模、训练计算量与测试交叉熵损失的经验关系，并据此寻找固定训练预算的有效前沿。",
+      "change": "从零散比较转向经验缩放曲线与预算分配预测；在其设置下，建议将增加的算力主要投向参数增长，训练在收敛前结束，数据仍须增长而非保持不变。",
+      "mechanism_intuition": "较大模型在这些实验中用更少样本即可达到同一损失。把小模型的最后一点损失磨下来可能很费计算；与其把它训练到极限，某些预算下换成更大的模型、少训练一些更合算。但每个token在大模型上也更贵，不能无限扩大。",
+      "evidence": "WebText2为主，decoder-only Transformer；实验覆盖768到1.5B非embedding参数，22M到约23B的数据集tokens；主指标是1024-token上下文的交叉熵。图与拟合结合，§6进一步做batch效率修正及预算分析。",
+      "limits": "这些是特定训练分布、tokenizer、架构与优化设置内的经验规律，不是保证所有任务或任意尺度的物理定律。非embedding参数量、独立数据集大小和累计处理tokens的口径不能混用。",
+      "handoff": "保留规模可预测与预算最优不等于收敛的思想；把模型与训练token如何共同增长交给更大规模、更多训练时长的实验重新标定。",
+      "claim_ids": ["K1", "K2", "K3", "K4", "R1"]
+    },
+    {
+      "id": "chinchilla_2022",
+      "background": "当时参数规模持续增长，多款大模型仍训练约300B tokens；这使是否把预算过多花在参数上成为可以直接检验的问题。",
+      "problem": "给定训练FLOPs，哪种参数量和训练token数组合的最终预训练损失更低？",
+      "change": "将扩大训练数据与扩大模型提升到近似同等增长的重要性；不是把数据当做固定配额，也不是给所有预算指定同一个小模型。",
+      "mechanism_intuition": "在同一预算下，模型太大便留给训练token的计算不足；模型太小又有容量限制。最优解在二者之间。预算增加时，这个平衡点仍会移向更大的模型，同时也要求更多tokens。",
+      "evidence": "超过400个模型训练，摘要口径约70M至16B以上参数、5B–500B tokens。采用训练曲线下包络、固定FLOPs切片和联合损失拟合三种方法；再训练70B/1.4T的Chinchilla，与280B/300B的Gopher进行论文报告的同预算对比。",
+      "limits": "三种方法是同一研究的相互校验，不是三家独立复现；预测并不完全一致。最大尺度只有Chinchilla和Gopher两次可比训练，且优化器、数据混合及tokenizer等也改变。扫描实验少于一个数据epoch，不能直接外推反复训练同一批数据。",
+      "handoff": "将资源规划的单位从单一参数量转为参数量、训练tokens和算力预算的组合；部署阶段另有推理量、时延和内存约束，本节点只作边界提醒。",
+      "claim_ids": ["C1", "C2", "C3", "C4", "C5", "C6", "R2"]
+    }
+  ],
+  "claims": [
+    {
+      "id": "K1",
+      "type": "paper_result_with_conditions",
+      "statement": "Kaplan研究的是语言模型交叉熵损失的经验缩放：另两个因素不构成瓶颈时，参数量、数据规模或训练计算量与损失呈幂律趋势。不是参数一增大，所有能力便无条件按同一规律增加。",
+      "source_ids": ["S1"],
+      "locations": ["P1 Abstract", "P3 Figure 1及§1.1", "P4–5 §1.2", "P22 Appendix C首项"],
+      "evidence_boundary": "Figure 1是有控制条件的趋势图；原文承认缺乏扎实理论解释，趋势不能无限延伸至零损失。"
+    },
+    {
+      "id": "K2",
+      "type": "experimental_scope",
+      "statement": "Kaplan主要使用WebText2与decoder-only Transformer，测试非embedding参数约768–1.5B、数据集约22M–23B tokens；默认1024-token上下文，主指标为交叉熵。默认训练计划是250,000步、每批512个1024-token序列，并做规模、数据量、batch等变化实验。",
+      "source_ids": ["S1"],
+      "locations": ["P6 §2及§2.1", "P7 §2.2、§2.3、§3开头"],
+      "evidence_boundary": "23B是数据集tokens量级，不是每次训练累计读取tokens的上限；不要据后文对固定训练计划的批评说Kaplan完全没有改变过数据量。"
+    },
+    {
+      "id": "K3",
+      "type": "paper_budget_recommendation",
+      "statement": "Kaplan在固定训练计算预算、无额外模型大小或数据限制的分析下，建议相对更大的模型在收敛前停止；扩大预算时参数增长应明显快于训练数据增长。其经验分配指数约为参数0.73、tokens 0.27，数字仅作为原文口径备查，不必放入样章正文。",
+      "source_ids": ["S1"],
+      "locations": ["P3 §1.1 Convergence is inefficient", "P5 §1.2", "P14–16 §6–6.2及Figure 13/14图注"],
+      "evidence_boundary": "涉及临界batch及C_min效率修正；不能改写成任何预算下都训练能装下的最大模型，或数据不必增加。Kaplan本身也明确每个预算有最优模型大小。"
+    },
+    {
+      "id": "K4",
+      "type": "objective_boundary",
+      "statement": "Kaplan已区分训练计算最优与其他约束：较小模型可能有利于推理成本，较大模型在额外并行资源下可能减少串行训练步骤；FLOPs不等于墙钟时间。",
+      "source_ids": ["S1"],
+      "locations": ["P6 §1.2末尾硬件约束说明", "P15 Figure 12图注", "P22 Appendix B.4"],
+      "evidence_boundary": "这是优化目标不同的提醒，不是已经求解端到端部署总成本。"
+    },
+    {
+      "id": "C1",
+      "type": "question_and_historical_background",
+      "statement": "Chinchilla明确重问固定训练FLOPs如何在参数与训练tokens之间分配；Table 1显示GPT-3、Jurassic、Gopher等训练tokens约300B，参数规模却不同。",
+      "source_ids": ["S2"],
+      "locations": ["P1 Introduction", "P2目标定义与脚注2", "P3 Table 1"],
+      "evidence_boundary": "这是论文发表时列举模型的背景，不是对所有后续模型的描述。目标首先是预训练损失；扫描阶段在不足一epoch的设定下用平滑训练损失作为测试损失估计。"
+    },
+    {
+      "id": "C2",
+      "type": "methodological_difference",
+      "statement": "Chinchilla同时改变模型规模与训练时长，并使学习率衰减计划匹配目标tokens；其§2指出，在很长固定计划中途截取的loss会高估较短、专门调度训练的最终loss，影响最优分配估计。还纳入更大模型区间。",
+      "source_ids": ["S2", "S1"],
+      "locations": ["S2 P3 §2 Modelling the scaling behavior", "S2 P5 §3.1及脚注4/7", "S1 P7 §2.2"],
+      "evidence_boundary": "这是Chinchilla作者对差异的重要解释，不宣称是唯一原因；本次没有独立复现学习率对照。"
+    },
+    {
+      "id": "C3",
+      "type": "experimental_methods",
+      "statement": "超过400个训练模型支撑三种估计：①约70M–10B量级的模型各训四种时长，取同FLOPs最低loss的包络；②九档6×10^18至3×10^21 FLOPs预算下改变模型大小并调整tokens，取固定预算曲线谷底；③用前两类实验的最终损失共同拟合参数与tokens的作用。",
+      "source_ids": ["S2"],
+      "locations": ["P1 Abstract", "P4–7 §3.1–3.3", "P5 Figure 2", "P6 Figure 3"],
+      "evidence_boundary": "P28下图只截取方法①的训练轨迹，不是全部方法的结论图；方法③复用前两类数据，不是独立实验复制。"
+    },
+    {
+      "id": "C4",
+      "type": "paper_result_with_uncertainty",
+      "statement": "三种方法都支持预算增长时参数与训练tokens大致同比例扩张，估计并非完全相同。Gopher预算对应的推荐模型约40B–70B；作者选择70B进行大尺度验证。",
+      "source_ids": ["S2"],
+      "locations": ["P5–7 §3.1–3.4", "P8 Table 2", "P9 §4开头"],
+      "evidence_boundary": "同比例是近似缩放建议，不是固定预算下把参数和数据同时翻倍。预算也需随之增加；不能把70B或每参数约20个tokens写成永恒最优常数。"
+    },
+    {
+      "id": "C5",
+      "type": "large_scale_check",
+      "statement": "论文报告Chinchilla 70B参数、1.4T训练tokens，与Gopher 280B参数、300B训练tokens使用相同训练FLOPs；Figure 2以5.76×10^23 FLOPs标示Gopher预算。Chinchilla在论文报告的语言建模及多数下游评测上更好，而非每个任务都胜出。",
+      "source_ids": ["S2"],
+      "locations": ["P3 Table 1", "P5 Figure 2图注", "P9 §4", "P10 Table 5、§4.2.1", "P11 §4.2.2–4.2.4", "P12 Figure 6图注"],
+      "evidence_boundary": "70B与280B恰为四倍差；1.4T与300B的数值比约4.7，原文摘要的4×更多数据是近似表述，不应称精确四倍。本次未按Appendix F独立复算FLOPs。"
+    },
+    {
+      "id": "C6",
+      "type": "causal_and_extrapolation_limits",
+      "statement": "同预算大尺度结果不能将全部收益只归因于参数/token分配：Chinchilla还调整了MassiveText子集配比、AdamW优化器、tokenizer和权重精度处理。论文承认只有两次最大尺度可比训练，缺少中间尺度验证，且扫描实验未进入多epoch范围。",
+      "source_ids": ["S2"],
+      "locations": ["P9 §4.1", "P10 §4.2.1数据泄漏提醒", "P15 §5局限段"],
+      "evidence_boundary": "三种缩放分析加大尺度对照共同支持方向；不把它写成唯一变量的严格消融，也不由较低loss推导所有能力、安全性或可信度都更高。"
+    },
+    {
+      "id": "C7",
+      "type": "optional_benchmark_number",
+      "statement": "若确需一个下游数值例子：PDF Table 6与§4.2.2报告MMLU的57项任务平均5-shot准确率为Chinchilla 67.6%、Gopher 60.0%，差7.6个百分点；正文说明4项较差、2项持平。",
+      "source_ids": ["S2"],
+      "locations": ["P11 Table 6及§4.2.2", "P12 Figure 6图注"],
+      "evidence_boundary": "摘要67.5%与正文67.6%不一致。建议样章不依赖该精确数；若引用须指明Table 6，不能写成所有57项都改善，不能把百分点差写成相对提升百分比。"
+    },
+    {
+      "id": "R1",
+      "type": "research_synthesis",
+      "statement": "[研究综合] 两节点的关系是同一预算问题的建模与再标定：Chinchilla保留经验缩放和不必训到收敛的思想，修正模型与训练数据的分配比例。因此不能叙述成此前研究全错、后来证明只要模型小就更好。",
+      "source_ids": ["S1", "S2"],
+      "locations": ["S1 P3 §1.1及P16 §6.1", "S2 P1 Introduction明确同意不训至最低loss", "S2 P7–9 §3.4与§4"],
+      "evidence_boundary": "承接关系是基于两篇原文的综合表述，不宣称已经穷尽此领域后续修订。"
+    },
+    {
+      "id": "R2",
+      "type": "research_synthesis",
+      "statement": "[研究综合] 固定训练预算的最优分配不同于训练加部署的全生命周期总成本最优。后者还取决于后续推理量、内存和服务约束；Chinchilla较小模型的推理优势是附带收益，不能单凭这篇论文算出所有产品的最优模型。",
+      "source_ids": ["S1", "S2"],
+      "locations": ["S1 P22 Appendix B.4", "S2 P2引言末尾", "S2 P9 §4开头"],
+      "evidence_boundary": "不引入后续论文、训练实验或未经核验的部署成本数值。"
+    }
+  ],
+  "p28_chart_reading": [
+    {
+      "id": "G1",
+      "slide_location": "P28右上三联图",
+      "matched_original": "S1 P3 Figure 1；画面、轴标题、拟合标注与曲线形状相符",
+      "actually_viewed": true,
+      "axes": "三图纵轴均为Test Loss，即测试交叉熵损失，越低越好。横轴从左到右分别是Compute（非embedding计算，PF-days）、Dataset Size（tokens）、Parameters（非embedding参数）。三图均按对数尺度显示缩放关系；纵轴刻度显示的是损失原数值，不是普通线性等距损失轴。",
+      "curves": "左图浅色训练轨迹及其低损失边缘与虚线拟合展示计算效率前沿；中、右图显示数据量或参数变化下的实验点与拟合。不能把所有浅色轨迹说成一条等预算曲线。",
+      "controls": "§1.2分别限定：参数受限时有足够数据并训练至收敛；数据受限时使用大模型并早停；算力受限时要求足够数据与合适模型。Figure 1脚注2及Figure 13说明其中计算效率涉及小batch/C_min的估计修正，不应称全部是未经校正的原始耗时数据。",
+      "limited_conclusion": "在这些条件与范围内，扩展相应资源能平滑降低损失，并可作经验预测。图本身不回答同预算参数/token的唯一最优配比，也不证明无穷扩展或通用智能按直线增长。",
+      "claim_ids": ["K1", "K2", "K3"]
+    },
+    {
+      "id": "G2",
+      "slide_location": "P28右下彩色曲线",
+      "matched_original": "S2 P5 Figure 2左图（Training curve envelope）；P28没有保留原Figure 2中、右两幅最优参数/token拟合图",
+      "actually_viewed": true,
+      "axes": "横轴是累计训练FLOPs，对数刻度，标示10^17至10^22；纵轴是Training loss，线性刻度，标示约2.0–6.0。颜色代表模型参数量，由紫色的小模型至黄色的大模型；可见图例75M、250M、500M、1B、2.5B、5B、10B，正文把最低规模概括为70M。",
+      "curves": "每条曲线是一场训练随累计算力推进的损失轨迹；同规模有不同训练时长/学习率衰减周期。取一个固定横坐标，比较不同轨迹的纵坐标，最低者才是该预算下观测到的更好选择；将这些最低点连接，得到包络。",
+      "controls": "Figure 2方法①为不同模型各跑四种时长，平滑并插值训练曲线，在相同FLOPs处比较；不是参数、tokens、FLOPs三个量同时固定。原文在少于一epoch的设定下使用平滑训练loss作测试loss估计。",
+      "limited_conclusion": "不同预算有不同的有效模型大小，较大模型不是每个预算下都占优。仅凭P28这一裁图不能读出70B/1.4T配置，也不能直接得出参数与tokens的近似同比例规律；后者还需原图中右两图、§3和实际Chinchilla对照。",
+      "no_precision_claim": "未用肉眼估读任何曲线交点、谷底或损失差作为精确实验数；上述范围来自可见刻度，模型配置与预算来自原文表格和图注。",
+      "claim_ids": ["C1", "C3", "C4", "C5"]
+    },
+    {
+      "id": "G3",
+      "slide_location": "不是P28内的图；用于解释P28下图背后的预算问题",
+      "matched_original": "S2 P6 Figure 3左图（IsoFLOP curves）",
+      "actually_viewed": true,
+      "axes": "横轴参数量（对数），纵轴最终Training Loss（线性）；每条曲线颜色代表一个固定FLOPs预算，不同于Figure 2按模型大小着色。",
+      "curves_and_controls": "同一曲线上模型越大，就必须相应减少tokens以保持训练FLOPs不变；每次训练的cosine计划匹配目标时长。实验点及拟合构成明显谷底，再拟合不同预算对应的最优模型与tokens。",
+      "limited_conclusion": "它更直接说明过小与过大都可能不是该预算下最优；必须明确这是补充查看的原论文图，而不是声称PDF P28已经展示了谷底。",
+      "claim_ids": ["C3", "C4"]
+    }
+  ],
+  "relationships": [
+    {
+      "from": "kaplan_2020",
+      "to": "chinchilla_2022",
+      "type": "retain_framework_recalibrate_allocation",
+      "preserved": "语言建模损失的经验缩放、固定预算下存在最优分配、预算最优训练不等于训练至自身收敛。",
+      "revised": "随预算增长时参数与训练tokens的相对增长比例。",
+      "new_evidence": "更大模型范围、多训练时长、匹配时长的学习率计划、三种拟合方法及大尺度同预算验证。",
+      "claim_ids": ["K3", "C2", "C3", "C4", "C5", "R1"]
+    },
+    {
+      "from": "P28_upper_charts",
+      "to": "P28_lower_chart",
+      "type": "from_predictable_trends_to_resource_allocation",
+      "meaning": "从知道规模与损失可预测，转向测量同一预算怎样分配更有效；不把两图不同的loss口径与坐标混作一条时间序列。",
+      "claim_ids": ["K1", "C3"]
+    }
+  ],
+  "misreading_guards": [
+    "不用‘上帝指挥棒’替代条件和证据：Scaling Laws是经验规律，不是无条件定律。",
+    "Kaplan不是只要参数大就行；论文已讨论数据、计算瓶颈与每档预算的最优规模。",
+    "Chinchilla不是模型越小越好，而是此前某些模型相对于给定预算偏大；更大的预算仍对应更大的最优模型。",
+    "‘训练不足’指相对于另一种同预算分配不够划算，不等于必须继续训练到收敛。两篇都认为训练至最低可能loss未必最省算力。",
+    "参数和tokens大致同比例扩张说的是沿着预算增长的最优路线，不是固定预算内同时翻倍。",
+    "tokens不是文章篇数；数据集独立tokens与训练过程中累计处理tokens不能混用，重复读同一语料不自动等价于更多新数据。",
+    "P28上图是Test Loss，下图是Training loss；数据与tokenizer也不同，不能跨论文比较纵坐标绝对值来判定优劣。",
+    "70B/1.4T不是图上肉眼读出的魔法点；它是论文实际训练配置，且预测范围40B–70B显示最优值并非唯一精确答案。",
+    "同FLOPs不等于同墙钟耗时、同内存、同美元成本或同部署总成本。",
+    "不说‘所有任务碾压’：论文有负向或持平子任务，也提醒部分语言建模评测的数据泄漏可能性。",
+    "较小模型加更多数据的对照还有优化器等变化，不能声称全部改善已由单变量消融归因。"
+  ],
+  "unresolved": [
+    {
+      "id": "U1",
+      "kind": "delivery_constraint",
+      "issue": "未创建scaling-research.md：上级执行指令禁止新写研究报告类Markdown。",
+      "impact": "研究内容已在本JSON完整分栏供主会话使用，但分配的双文件形式未全部交付。"
+    },
+    {
+      "id": "U2",
+      "kind": "source_internal_discrepancy",
+      "issue": "S2摘要MMLU为67.5%，Table 6/正文为67.6%。",
+      "resolution": "不影响资源分配结论；样章可不引用此精确数，或明确按Table 6的57任务5-shot口径引用并保留版本差异说明。"
+    },
+    {
+      "id": "U3",
+      "kind": "tool_unavailability",
+      "issue": "eacli图像能力两次超时，未取得可用provider图表解析。",
+      "resolution": "已降级为实际查看原PDF/渲染图，并结合图注核验；不声称图表经独立模型复核。"
+    },
+    {
+      "id": "U4",
+      "kind": "verification_boundary",
+      "issue": "尚未由独立Reviewer验证本研究材料。",
+      "resolution": "来源版本、哈希、实际阅读范围、claim位置和临时缓存均已交付；不把本次自检称作独立复核通过。"
+    }
+  ]
+}

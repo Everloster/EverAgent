@@ -1,0 +1,372 @@
+{
+  "schema_version": 1,
+  "task_id": "sequence",
+  "status": "research_material_ready_for_independent_verification",
+  "scope": {
+    "route": "seq2seq → Attention → Transformer",
+    "original_pdf_pages": [12, 15],
+    "depth": "精细还原发展路径；论文只读足以支持背景、问题、机制、贡献、实验边界与衔接的部分，不做公式教材或附录穷举。",
+    "artifact_role": "供主会话组织样章的研究材料与证据账本，不是最终书稿。",
+    "not_done": ["未修改旧报告", "未运行训练或推理实验", "未验证当代产品采用及人物职业经历", "未从论文曲线图或注意力热图读取数值"]
+  },
+  "research_material": {
+    "recommended_causal_narrative": [
+      "先问怎样让一段长度不定的输入，生成另一段长度也不定、词序还可能不同的输出。Sutskever 等用一个深层 LSTM 读入，再用另一个深层 LSTM 从固定规模状态逐步生成，展示了端到端直接翻译的竞争力；这不是 Attention 论文的贡献。",
+      "再问把整个源句交接成一份固定规模状态，会给保留细节带来什么压力。Bahdanau 等把源句保留为一串带上下文的位置表示，让解码器每生成一个词，都重新加权读取这串表示，而不只依赖一次性的整句交接。",
+      "但能回看源句，不代表已经摆脱递归。带 Attention 的编码器和解码器仍然是 RNN，序列位置上的状态更新还需要逐步推进。Transformer 进一步用 self-attention 构造序列内部表示，同时保留编码器—解码器之间的 attention，从架构中去掉按序列位置推进的递归。",
+      "[推测｜机制解释] 三个节点可概括为：先接通变长输入输出，再改变读取源信息的方式，最后改变序列表示的计算方式。后一节点不是对前一节点所有问题的终局解答：Transformer 的训练可以并行处理已知序列位置，原论文的自回归生成仍逐步选择下一个输出。"
+    ],
+    "historical_guardrail": "这是一条问题递进线，不是三篇论文依次发表的时间线。Bahdanau 论文 arXiv v1 为 2014-09-01，Sutskever 论文 v1 为 2014-09-10；不能写成 Bahdanau 读到这篇已发表的 seq2seq 论文后才发现瓶颈。两篇已读修订稿均将工作放在当时多项 encoder–decoder 研究的背景中，也不是 encoder–decoder 从零诞生的唯一来源。",
+    "nodes": [
+      {
+        "id": "seq2seq",
+        "paper_source_id": "SEQ-S1",
+        "background": "当时的固定形状前馈网络不便直接处理输入、输出长度不定且对齐不固定的转换。传统统计机器翻译有多项子系统；神经模型此前也常作为其中的打分或重排组件。不能把这一背景扩大成所有神经网络都不能处理序列。",
+        "problem": "源句和译文长度可不同，词序也可重排；模型如何不依赖预先逐词对齐，直接生成完整译文？",
+        "change": "用分工明确的两个深层 LSTM 接通编码与生成，并在大规模翻译任务上展示直接神经翻译的可行性。",
+        "mechanism_intuition": "编码器逐步读完整个输入，把信息交接为固定规模状态；解码器结合该状态和此前输出，一步步预测下一个词，生成结束标记后停止。因此固定的是中间状态规模，不是输出句长。论文还倒序读取源句，但不倒序生成译文。",
+        "evidence": "直接翻译的最佳成绩来自多个倒序 LSTM 的集成，超过论文选用的 phrase-based SMT 基线；用 LSTM 重排 SMT 候选是另一项实验，不能混为纯神经直接翻译。原文同时承认直接翻译未超过当时该任务最强系统。",
+        "cost_and_boundary": "所有源信息仍经固定规模状态交接，且编码、解码有递归依赖。不过作者报告倒序输入后的模型能较好处理测试中的长句；不能为了引出 Attention，把它写成遇到长句必然崩溃。倒序改善优化的具体解释在原文中是作者假说，不是完整理论证明。",
+        "transition": "[推测｜叙述衔接] 倒序输入说明信息沿计算路径传递的方式很重要；下一步可以改问：生成每个词时，能否直接读取源句中相关的表示，而不只依靠最终交接状态？",
+        "claim_ids": ["SEQ-C01", "SEQ-C02", "SEQ-C03", "SEQ-C04", "SEQ-C05", "SEQ-C13"]
+      },
+      {
+        "id": "attention",
+        "paper_source_id": "SEQ-S2",
+        "background": "基础 encoder–decoder 要把整个源句的信息压进固定规模表示。Bahdanau 等将其视为可能妨碍长句翻译的瓶颈，而不是给出所有固定长度表示均不可能有效的证明。",
+        "problem": "生成不同目标词时，所需的源信息不同，如何按当前需要访问它们？",
+        "change": "保留源句各位置的上下文表示，解码时动态形成当前步骤的 context vector，联合学习对齐与翻译。",
+        "mechanism_intuition": "双向 RNN 为每个源位置形成包含前后文的表示。一个可学习的打分网络根据解码器此前状态与各源位置表示计算相关性，再将各位置表示加权汇总，参与当前词的预测。权重是软分配，不是只挑一个原词，也不是先用人工词对齐标签决定读取位置。",
+        "evidence": "论文的 RNNsearch 胜过其选用的 RNNencdec 基线；作者在结果文字中报告长度鲁棒性改善。与 Moses 相当甚至略高的说法须区分无未知词子集、禁止生成 UNK 和延长训练版本；全测试集上表中的 RNNsearch 仍低于 Moses。",
+        "cost_and_boundary": "没有把 RNN 去掉，也没有把每一步的 context vector 变成无限容量。新增的是随源长度增长的一串可读取表示；每个目标步骤还要计算各源位置权重。比较中编码器结构也发生变化，不能把整项提升当成等参数条件下只开关 Attention 的净效应。",
+        "transition": "Attention 缓解信息访问瓶颈，却仍依附递归网络。Transformer 接着问：既然可以直接建立位置间的信息联系，能否也用 Attention 形成源序列和目标序列内部的表示？",
+        "claim_ids": ["SEQ-C05", "SEQ-C06", "SEQ-C07", "SEQ-C08", "SEQ-C10"]
+      },
+      {
+        "id": "transformer",
+        "paper_source_id": "SEQ-S3",
+        "background": "RNN 加 Attention 已是重要路线，但同一样本内沿位置推进的递归状态仍限制训练并行；卷积模型能并行处理位置，不过局部卷积联系远处位置需要较长计算路径。",
+        "problem": "怎样既让远处位置容易交换信息，又减少必须依次执行的序列位置计算？",
+        "change": "把 self-attention 作为编码器与解码器构造序列内部表示的核心，去掉按序列位置展开的 RNN 和用于混合序列位置的卷积；保留 encoder–decoder attention。",
+        "mechanism_intuition": "编码器中的各位置依据上一层表示，同时从整个源序列读取信息；解码器先从允许看到的目标前缀读取，再从编码器输出读取。多头提供多组可学习的读取方式，逐位置前馈层继续变换表示；残差、归一化和位置信息也是架构的一部分。Bahdanau 的可学习加性打分与这里的多头缩放点积不是同一个实现。",
+        "evidence": "论文在 WMT 2014 英德、英法任务上报告强结果，并将质量和估算训练成本与文献模型比较。这支持该架构的实际可行性，不等于只靠 Attention 单一变量就证明了全部质量与速度收益。",
+        "cost_and_boundary": "[推测｜机制解释] 训练时目标句已知，右移目标输入配合因果 mask，可并行计算多个位置的预测；层与层仍有依赖。自回归生成时未来输出未知，仍需前一个输出确定后继续。全连接 self-attention 的位置配对随长度平方增长；短信息路径既不等于总计算恒定，也不保证任意长输入都能正确处理。",
+        "transition": "本路线到此停止：得到了更易并行、直接连接远处位置的序列建模基础，不借此自动推出后续所有扩展、decoder-only 模型或 scaling 效果。",
+        "claim_ids": ["SEQ-C09", "SEQ-C10", "SEQ-C11", "SEQ-C12", "SEQ-C13", "SEQ-C14", "SEQ-C15", "SEQ-C16"]
+      }
+    ],
+    "one_explanatory_example": {
+      "label": "自拟示意，不是论文实验、真实模型输出或注意力可视化",
+      "input": "The red car stopped.",
+      "target": "La voiture rouge s’est arrêtée.",
+      "seq2seq": "先把源句整体读入固定规模状态，再生成译文。英法名词和形容词的次序不同，说明任务不是机械地把第一个词对到第一个词。",
+      "attention": "[推测｜示意] 在生成 voiture 和 rouge 的不同步骤，可以分别更依赖 car、red 周围的上下文表示；这只是按需读取的说明，并不宣称实际模型的最大权重一定落在这些词上。",
+      "transformer": "[推测｜示意] 源句中 car 的表示可以通过 self-attention 读取 red，而不是只能靠递归状态逐步传来。训练时参考译文已知，可以同时计算各位置预测，但 mask 禁止预测位置读取其答案及未来词；实际翻译时仍要逐步形成法语前缀。",
+      "claim_ids": ["SEQ-C01", "SEQ-C06", "SEQ-C09", "SEQ-C11", "SEQ-C12"]
+    },
+    "optional_numbers": {
+      "editorial_advice": "正文可以不用数字。若需一个里程碑，只选下面一组，不跨论文拼接成 Attention 效果排行榜；BLEU 不是翻译正确率百分比。",
+      "items": [
+        {
+          "id": "SEQ-N1",
+          "statement": "seq2seq 论文在 WMT 2014 英译法 newstest2014 上，5 个倒序 LSTM 的集成、beam size 12，直接翻译为 34.81 BLEU；所列 phrase-based SMT 基线为 33.30 BLEU。",
+          "metric_scope": "原文 §3.6：tokenized predictions/reference 上以 multi-bleu.pl 计算的区分大小写 BLEU；完整测试集，模型词表外词受罚。不是单个 LSTM、不是 SMT 候选重排成绩，也不是该任务当时最优系统成绩。",
+          "source_id": "SEQ-S1",
+          "locator": "§3.1–3.2、§3.6；Table 1，PDF p.6",
+          "claim_id": "SEQ-C02"
+        },
+        {
+          "id": "SEQ-N2",
+          "statement": "Transformer big 在 WMT 2014 英译德 newstest2014 上报告 28.4 BLEU；Table 2 中此前最强的 ConvS2S Ensemble 为 26.36。",
+          "metric_scope": "按该论文 Table 2 的报告口径引用，不将其当作统一硬件、统一训练数据处理和统一预算下的重跑实验。只用于当时英德翻译结果，不与前一项英法分数比较。",
+          "source_id": "SEQ-S3",
+          "locator": "Table 2 与 §6.1，PDF p.8；§5.1 为训练数据与分词设置",
+          "claim_id": "SEQ-C16"
+        }
+      ]
+    },
+    "pdf_original_differences": [
+      {
+        "page": 12,
+        "difference": "同页合并 seq2seq 和 Attention，但页内论文链接只指向 Sutskever 等的 1409.3215。Attention 的逐步加权源表示属于 Bahdanau 等的 1409.0473，不能都归给链接指向的论文。",
+        "claim_ids": ["SEQ-C01", "SEQ-C06", "SEQ-C17"]
+      },
+      {
+        "page": 12,
+        "difference": "把固定表示后的长句性能急降当作普遍必然结局过强。Bahdanau 把固定表示列为潜在瓶颈并报告对其基线的改善；Sutskever 的倒序 LSTM 则明确报告长句表现较好。应写瓶颈与缓解方式，不编造先失败再被挽救的单线剧情。",
+        "claim_ids": ["SEQ-C03", "SEQ-C05", "SEQ-C08"]
+      },
+      {
+        "page": 12,
+        "difference": "超过 SMT 系统须限定为特定基线与集成配置；不能写成当时所有 SMT 都被一个神经模型全面超过。Attention 论文与 Moses 的接近也有未知词子集等条件。",
+        "claim_ids": ["SEQ-C02", "SEQ-C08"]
+      },
+      {
+        "page": 15,
+        "difference": "RNN 不好并行要落到同一样本的序列递归链；seq2seq 原论文已有 minibatch、多 GPU 层分工和 softmax 并行。Transformer 更适合位置并行，也不代表自回归生成整段输出无需等待。",
+        "claim_ids": ["SEQ-C11", "SEQ-C12", "SEQ-C13"]
+      },
+      {
+        "page": 15,
+        "difference": "任意 token 连接上下文内任意 token 要按注意力类型和 mask 限定：编码器可读完整源序列，解码器不能读取未来目标位置，cross-attention 读取源表示。固定信息路径长度也不等于总计算量固定。",
+        "claim_ids": ["SEQ-C09", "SEQ-C12", "SEQ-C14"]
+      },
+      {
+        "page": 15,
+        "difference": "原始 Transformer 并未去掉 Encoder，也不是整个网络只剩 Attention。原文说需要注入相对或绝对位置信息，而不是所有 Transformer 必须使用绝对位置编码。后来的 decoder-only 与 scaling 叙述不由这篇原文实验直接证明。",
+        "claim_ids": ["SEQ-C09", "SEQ-C15", "SEQ-C16"]
+      }
+    ],
+    "avoid_oversimplification": [
+      "把发展箭头理解为问题的递进，不按它倒造 2014 年两篇论文的首次发表次序。",
+      "不要把 seq2seq 泛型任务、encoder–decoder 家族和 Sutskever 的具体 LSTM 系统当作同义词。",
+      "Attention 改变的是源信息访问方式，不是从此无需压缩、记忆无限或长句永不出错。",
+      "Bahdanau attention 是 decoder 对源表示的软读取；Transformer 还用 self-attention 构造序列内部表示。",
+      "软权重不是硬性逐词翻译表，不把它类比成人类理解过程的证据。",
+      "RNN 不是任何计算都不能并行；Transformer 也不是训练、层间计算和自回归生成全程并行。",
+      "信息传播路径短是架构性质，不能直接写成理论证明更聪明；硬件效率与质量证据也要限于实验口径。",
+      "不把三篇不同规模、词表、预处理与训练条件下的 BLEU 排成只反映 Attention 有无的排行榜。"
+    ]
+  },
+  "sources": [
+    {
+      "id": "SEQ-S0",
+      "title": "终版：AI演义，36篇论文开启你的探索之旅",
+      "source_type": "用户提供的二手路线 PDF",
+      "official_url": null,
+      "version": "仓库现存 51 页版本，未见独立版本号",
+      "local_relative_path": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
+      "hash_scope": "PDF 字节",
+      "read_scope": "直接查看 PDF P12/P15 版面文字；P12 与 P15 内嵌链接同时核对已提取链接表。P13/P14 随范围展示，未用于本路线判断。",
+      "embedded_links_used": ["https://arxiv.org/abs/1409.3215", "https://arxiv.org/abs/1706.03762"]
+    },
+    {
+      "id": "SEQ-S1",
+      "title": "Sequence to Sequence Learning with Neural Networks",
+      "authors": ["Ilya Sutskever", "Oriol Vinyals", "Quoc V. Le"],
+      "source_type": "原始论文",
+      "official_url": "https://arxiv.org/abs/1409.3215",
+      "versioned_url": "https://arxiv.org/pdf/1409.3215v3",
+      "version": "arXiv:1409.3215v3，2014-12-14",
+      "sha256": "040302952a472961e317c47877e87d06afef2503905ec41d9c48de987188e111",
+      "hash_scope": "eacli web.read 返回的 PDF 正文 content 字符串按 UTF-8 落盘；不是 PDF 字节哈希",
+      "acquisition": "eacli catalog → web.read select → web.read invoke；无需 curl 降级或下载 PDF 二进制",
+      "read_scope": "题名与页边版本；§1–2 背景、模型；§3.1–3.3 数据、解码、源句倒序；§3.4–3.6 训练、并行、评估与 Tables 1–2；§3.7、§4–5 的长句、相关工作与结论文字。约 PDF pp.1–8。正文中的图表题注可见，但未视觉分析 Figures 1–3；不从曲线读数。参考文献只用于识别文中提及的前驱，未读其原文。",
+      "extraction_boundary": "部分词间距与公式符号提取受损；本材料不据此解释公式。Tables 1–2 的模型行、分数、任务及实验类型可从正文提取文本核对。"
+    },
+    {
+      "id": "SEQ-S2",
+      "title": "Neural Machine Translation by Jointly Learning to Align and Translate",
+      "authors": ["Dzmitry Bahdanau", "Kyunghyun Cho", "Yoshua Bengio"],
+      "source_type": "原始论文",
+      "official_url": "https://arxiv.org/abs/1409.0473",
+      "versioned_url": "https://arxiv.org/pdf/1409.0473v7",
+      "version": "arXiv:1409.0473v7，2016-05-19；页眉 Published as a conference paper at ICLR 2015",
+      "local_relative_path": "ai-learning/papers/14_bahdanau_attention_2014.pdf",
+      "sha256": "84801c8410da51b449d379d2fa4939a416123f2c93991077a680f863026022a7",
+      "hash_scope": "PDF 字节",
+      "extracted_text_sha256": "db9e2c5b87d07e755e3ce72ff44cfeb37a1e70ee63afb5910f7a6a1e87640f73",
+      "read_scope": "用 pdftotext -layout 阅读题名、版本及 §1–4（pp.1–5）、§5.1 结果文字与 Table 1（pp.5–7）、§5.2 的作者定性解释、§6.1 的计算代价、§6.2 与 §7（pp.7–9）。未读实现附录；未视觉复核 Figure 2 曲线或 Figure 3 热图；长度表现仅转述结果正文，不从图取数。",
+      "identity_boundary": "文件名中的 2014 是研究首次公开年份，不是实际缓存修订版年份。"
+    },
+    {
+      "id": "SEQ-S3",
+      "title": "Attention Is All You Need",
+      "source_type": "原始论文",
+      "official_url": "https://arxiv.org/abs/1706.03762",
+      "versioned_url": "https://arxiv.org/pdf/1706.03762v7",
+      "version": "arXiv:1706.03762v7，2023-08-02；首页列 NIPS 2017",
+      "local_relative_path": "ai-learning/papers/01_attention_is_all_you_need_2017.pdf",
+      "sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "hash_scope": "PDF 字节",
+      "extracted_text_sha256": "ccc9fd3451dc99e8822b747f53c1351dce55c04fc649fced4052070951a758e7",
+      "read_scope": "用 pdftotext -layout 阅读题名、版本、§1–4（pp.2–7）、§5 训练设置与 §6.1/Table 2（pp.7–8）；§6.2 与 Table 3、§6.3 开头随提取范围读到，但不展开消融和解析任务。直接查看 PDF p.8 核对 Table 2 与正文英法分数冲突。未视觉分析架构图或注意力可视化，未读附录。",
+      "identity_boundary": "实际缓存为 2023 年修订版，不能表述成已读取 2017 年首版。PDF 创建时间不替代页边 arXiv 版本。"
+    },
+    {
+      "id": "SEQ-S4",
+      "title": "1409.3215 官方摘要页与 Submission history",
+      "source_type": "官方元数据",
+      "official_url": "https://arxiv.org/abs/1409.3215",
+      "version": "页面列 v1 2014-09-10、v3 2014-12-14",
+      "sha256": "072e0eab248f43533df7227824f535bf3f688aeb5ecbf7e5e2b8c780b4e73229",
+      "hash_scope": "eacli web.read 返回的 content 字符串按 UTF-8 落盘",
+      "read_scope": "题名、作者元数据、摘要及 Submission history；只以历史记录支持公开时间，不以摘要替代论文实验。"
+    },
+    {
+      "id": "SEQ-S5",
+      "title": "1409.0473 官方摘要页与 Submission history",
+      "source_type": "官方元数据",
+      "official_url": "https://arxiv.org/abs/1409.0473",
+      "version": "页面列 v1 2014-09-01、v7 2016-05-19；Accepted at ICLR 2015",
+      "sha256": "d0b704f9c7b3f6d5582fd2b15bebf8f79aa64629278856d1dc526877148f555a",
+      "hash_scope": "eacli web.read 返回的 content 字符串按 UTF-8 落盘",
+      "read_scope": "题名、作者、版本、会议状态与 Submission history；不将网页导航内容作为研究证据。"
+    }
+  ],
+  "claims": [
+    {
+      "id": "SEQ-C01",
+      "kind": "原文机制",
+      "claim": "Sutskever seq2seq 用两个深层 LSTM 将变长输入经固定规模状态映射到变长输出，结束标记决定生成停止；该模型不含 Bahdanau 的逐目标步骤软对齐机制。",
+      "supports": [{"source_id": "SEQ-S1", "locator": "§1，PDF pp.1–2；§2，p.3"}],
+      "boundary": "不是声称这篇论文发明了 LSTM、所有 encoder–decoder 或神经序列映射。"
+    },
+    {
+      "id": "SEQ-C02",
+      "kind": "原文实验",
+      "claim": "直接翻译超过所列 SMT 基线的是倒序 LSTM 集成；对 SMT 的 1000-best 候选重排属于不同实验，直接翻译结果也未超过当时最强 WMT 系统。",
+      "supports": [{"source_id": "SEQ-S1", "locator": "§3.1–3.2，p.4；§3.6，p.5；Tables 1–2，p.6"}],
+      "boundary": "如使用 34.81 BLEU，必须连同 5 模型集成、倒序源句、beam 12、WMT14 英法 newstest2014 与评估口径引用。"
+    },
+    {
+      "id": "SEQ-C03",
+      "kind": "原文实验与作者解释分列",
+      "claim": "倒序源句改善了该论文 LSTM 的翻译表现；作者用部分源—目标依赖变短解释优化收益，同时明言没有完整解释且平均对应距离未改变。",
+      "supports": [{"source_id": "SEQ-S1", "locator": "§2，p.3；§3.3，pp.4–5；§5，p.8"}],
+      "boundary": "不能写成所有词的依赖距离都缩短，或倒序输入已经消除了固定表示瓶颈。"
+    },
+    {
+      "id": "SEQ-C04",
+      "kind": "官方时间记录",
+      "claim": "Bahdanau 的 arXiv v1 为 2014-09-01，早于 Sutskever 的 v1 2014-09-10；路线箭头不能冒充这两篇论文的发表先后。",
+      "supports": [{"source_id": "SEQ-S4", "locator": "Submission history，v1"}, {"source_id": "SEQ-S5", "locator": "Submission history，v1"}, {"source_id": "SEQ-S1", "locator": "§1 与 §4 的相关工作定位"}, {"source_id": "SEQ-S2", "locator": "§1–2 的 encoder–decoder 背景"}],
+      "boundary": "只核对公开提交日期，不据此裁定全部研究工作的发现优先权。"
+    },
+    {
+      "id": "SEQ-C05",
+      "kind": "作者假说与反向限定证据",
+      "claim": "固定规模整句表示是 Bahdanau 提出的潜在瓶颈，而不是长句必然失败定理；Sutskever 的已读版本同时报告其倒序 LSTM 对测试长句表现较好。",
+      "supports": [{"source_id": "SEQ-S2", "locator": "§1，pp.1–2；§5.1，p.6；§7，p.9"}, {"source_id": "SEQ-S1", "locator": "§1，p.2；§3.7，p.6；§5，p.8"}],
+      "boundary": "未视觉复核长度曲线，故不报告临界长度或曲线差值；这些模型、结构及训练设置也并不相同。"
+    },
+    {
+      "id": "SEQ-C06",
+      "kind": "原文机制",
+      "claim": "Bahdanau 模型用双向 RNN 的位置表示、基于解码器此前状态的可学习打分与加权汇总，为不同目标步骤形成不同上下文，并联合训练对齐与翻译。",
+      "supports": [{"source_id": "SEQ-S2", "locator": "§3.1，pp.3–4；§3.2，p.4"}],
+      "boundary": "每个位置表示包含上下文，不是孤立原词；每一步的汇总仍为固定维度。它不是 Transformer 的 Q/K/V 缩放点积实现，也不是硬选择一个词。"
+    },
+    {
+      "id": "SEQ-C07",
+      "kind": "原文结构与代价",
+      "claim": "Bahdanau attention 没有去掉循环编码器或循环解码器；每个目标词都需计算各源位置的权重，作者明确指出这可能限制在其他任务中的使用。",
+      "supports": [{"source_id": "SEQ-S2", "locator": "§3.1–3.2，pp.3–4；§6.1 最后一段，p.8"}],
+      "boundary": "按需读取是机制描述，不意味着实现只计算少数被选中的源位置。"
+    },
+    {
+      "id": "SEQ-C08",
+      "kind": "原文实验；包含标明的比较解释",
+      "claim": "RNNsearch 超过论文的 RNNencdec 基线；与 Moses 的接近取决于测试子集和训练设置，完整测试集上仍低于 Moses。",
+      "supports": [{"source_id": "SEQ-S2", "locator": "§4.1–4.2，pp.4–5；§5.1，pp.5–6；Table 1 与表注，p.7；§7 末段，p.9"}],
+      "boundary": "[推测｜实验设计解释] §4.2 同时改变了编码器结构与容量，故不能从这些分数提取只加入 Attention 的等参数净效应。No UNK 列还禁止模型生成 UNK，延长训练行不能冒充所有 RNNsearch 的成绩。"
+    },
+    {
+      "id": "SEQ-C09",
+      "kind": "原文机制",
+      "claim": "原始 Transformer 保留 encoder–decoder，分别包含编码器 self-attention、解码器 masked self-attention 和 encoder–decoder attention；后者明确承接已有 seq2seq attention 的作用。",
+      "supports": [{"source_id": "SEQ-S3", "locator": "§3 开头，p.2；§3.1，p.3；§3.2.3，p.5"}],
+      "boundary": "不要把三类读取范围混为一谈，也不要写成原论文已经改成 decoder-only。"
+    },
+    {
+      "id": "SEQ-C10",
+      "kind": "作者动机与历史定位",
+      "claim": "Transformer 针对序列递归的串行约束和远处位置的信息路径，用 self-attention 构造序列表示；原文承认 self-attention 此前已经用于其他任务。",
+      "supports": [{"source_id": "SEQ-S3", "locator": "§1–2，p.2；§4，pp.6–7"}],
+      "boundary": "不是 Transformer 首次发明 Attention，也不是 CNN 完全不能处理长距离依赖。"
+    },
+    {
+      "id": "SEQ-C11",
+      "kind": "[推测｜由原文机制推出的解释]",
+      "claim": "训练时参考目标序列已知，右移目标输入配合因果 mask，可在不泄露未来答案的情况下并行计算多个目标位置；同层位置并行不等于网络层间没有依赖。",
+      "supports": [{"source_id": "SEQ-S3", "locator": "§3.1 的右移和 mask，p.3；§3.2.1 矩阵同时处理 queries，p.4；§3.2.3，p.5；§4/Table 1，p.6"}],
+      "boundary": "这是对已读计算结构的解释，不是本任务测出的吞吐结果；不要移用于未来目标词未知的自回归生成。"
+    },
+    {
+      "id": "SEQ-C12",
+      "kind": "原文生成定义与机制边界",
+      "claim": "原始 Transformer 按此前已生成符号逐个生成输出；mask 保留这种自回归性质，消除 RNN 递归不等于消除输出之间的生成依赖。",
+      "supports": [{"source_id": "SEQ-S3", "locator": "§3 开头，p.2；§3.1，p.3；§3.2.3，p.5；§6.1 的 beam search，p.8"}],
+      "boundary": "不将未来目标词当成已知输入；本任务不延伸讨论后来的非自回归模型或推理加速算法。"
+    },
+    {
+      "id": "SEQ-C13",
+      "kind": "原文工程事实与精确比较",
+      "claim": "RNN 的限制主要是同一样本内递归状态沿位置的依赖，并非全部计算不可并行；Sutskever 原文已有 minibatch、跨 GPU 层分工和 softmax 并行。",
+      "supports": [{"source_id": "SEQ-S1", "locator": "§3.4–3.5，p.5"}, {"source_id": "SEQ-S3", "locator": "§1，p.2"}],
+      "boundary": "不拿不同论文的硬件和实现速度做无控制的架构纯收益对比。"
+    },
+    {
+      "id": "SEQ-C14",
+      "kind": "原文复杂度与机制解释",
+      "claim": "全连接 self-attention 的位置配对随序列长度平方增长；位置间信息路径短和所需串行操作少，不等于总计算量随长度不变。",
+      "supports": [{"source_id": "SEQ-S3", "locator": "Table 1 与 §4，pp.6–7"}],
+      "boundary": "原文还限定了与表示维度的比较条件，并讨论受限邻域的权衡。不能把短路径表述成任意长度、任意硬件上都更便宜或总能学会长依赖。"
+    },
+    {
+      "id": "SEQ-C15",
+      "kind": "原文架构组成",
+      "claim": "Transformer 除 Attention 外仍有逐位置前馈层、残差、归一化、embedding 与输出层；无递归的结构需要位置信息，原文允许相对或绝对位置来源，并比较固定与可学习位置表示。",
+      "supports": [{"source_id": "SEQ-S3", "locator": "§3.1，p.3；§3.3–3.4，p.5；§3.5，p.6"}],
+      "boundary": "正文不宜照标题写成只需要 Attention 一种组件，也不把原文选择的正弦位置编码推广成全部 Transformer 的唯一合法方案。"
+    },
+    {
+      "id": "SEQ-C16",
+      "kind": "原文实验与作者成本估算",
+      "claim": "Transformer 的英德翻译结果与文献基线比较支持其实际竞争力；原文用训练时间、GPU 数量与估计持续浮点能力推算训练 FLOPs，而不是在统一环境重跑所有基线。",
+      "supports": [{"source_id": "SEQ-S3", "locator": "§5.1–5.2，p.7；Table 2、§6.1 及脚注 5，p.8"}],
+      "boundary": "若引用训练资源，英德 big 对应 8 张 NVIDIA P100、3.5 天；base 的训练时长不能与 big 成绩混用。该比较不能证明所有任务的推理都更快。"
+    },
+    {
+      "id": "SEQ-C17",
+      "kind": "PDF 与原文对应审计",
+      "claim": "路线 PDF P12 同时讲 seq2seq 与 Attention，却只链接 seq2seq 论文；P15 链接匹配 Attention Is All You Need，但其并行与连接范围的概括需要加入原文条件。",
+      "supports": [{"source_id": "SEQ-S0", "locator": "PDF P12/P15 版面与内嵌链接"}, {"source_id": "SEQ-S1", "locator": "§2"}, {"source_id": "SEQ-S2", "locator": "§3"}, {"source_id": "SEQ-S3", "locator": "§3.1–3.2.3、§4"}],
+      "boundary": "内嵌 URL 是线索，不能代表同页全部贡献的归属。"
+    },
+    {
+      "id": "SEQ-C18",
+      "kind": "已确认的来源内部冲突",
+      "claim": "本地 Transformer v7 的摘要与 Table 2 写英法 big 为 41.8 BLEU，但同一 PDF p.8 §6.1 第二段写 41.0。",
+      "supports": [{"source_id": "SEQ-S3", "locator": "摘要 p.1；Table 2 与 §6.1，p.8；已直接查看 p.8 PDF 排版确认非文本提取造成"}],
+      "boundary": "不自行判定哪个数是勘误。本路线可不用英法具体分数，或只使用表文一致的英德数字；如必须引用英法数值，应进一步核对正式会议版本或作者勘误。"
+    }
+  ],
+  "node_relations": [
+    {
+      "from": "seq2seq",
+      "to": "attention",
+      "relation_type": "问题递进，不保证这两篇论文的首次发表先后",
+      "preserved": "端到端条件序列生成与 encoder–decoder 分工",
+      "changed": "从一次性固定规模整句交接，转为对源位置表示的逐目标步骤动态读取",
+      "not_changed": "仍有递归编码与递归解码；输出仍逐步生成",
+      "claim_ids": ["SEQ-C01", "SEQ-C04", "SEQ-C05", "SEQ-C06", "SEQ-C07"]
+    },
+    {
+      "from": "attention",
+      "to": "transformer",
+      "relation_type": "机制作用继承与计算结构改变",
+      "preserved": "解码器从源序列表示中读取相关信息",
+      "changed": "用 self-attention 构造序列内部表示，去掉按序列位置推进的 RNN；Attention 的具体打分与多头实现也变化",
+      "not_changed": "原始架构仍有编码器—解码器分工，生成仍是自回归",
+      "claim_ids": ["SEQ-C06", "SEQ-C09", "SEQ-C10", "SEQ-C11", "SEQ-C12"]
+    }
+  ],
+  "unresolved": [
+    {
+      "id": "SEQ-U1",
+      "severity": "不阻塞机制路线；阻塞无保留引用英法精确分数",
+      "issue": "Transformer 已读 v7 内部存在英法 41.8 与 41.0 的分数冲突。",
+      "handling": "已记录而不猜测；正文建议省略英法具体数值。若必须引用，再查正式会议版或作者勘误。",
+      "claim_ids": ["SEQ-C18"]
+    },
+    {
+      "id": "SEQ-U2",
+      "severity": "范围边界，不阻塞现有叙述",
+      "issue": "未做 2014/2017 初版与已读修订稿的逐版本差异核查，也未视觉审计论文长度曲线与注意力热图。",
+      "handling": "版本明确标注；只引用已读修订版文字和表格。长度现象标为作者报告，不提供曲线临界值，不将机制例子伪装成实测注意力。",
+      "claim_ids": ["SEQ-C04", "SEQ-C05", "SEQ-C18"]
+    }
+  ]
+}

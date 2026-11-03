@@ -20,9 +20,9 @@
 <!-- AUTO-RECENT:START -->
 - 2026-11-03 · [无状态的鹦鹉，怎么学会了连续对话和自己用工具？—— Agent 请求全链路科普·完整版](./ai-learning/reports/knowledge_reports/Agent请求全链路_完整版_科普讲解_20261103.md)
 - 2026-11-03 · [十字路口年终复盘：AI 的十个惊讶时刻，哪些值得带回日常？](./podcast-learning/reports/2026-11-02_xiaoyuzhou-crossing_ai-aha-moments.md)
+- 2026-11-03 · [《AI演义》深读：从关键论文看懂AI的发展路径](./ai-learning/reports/AI演义_笔记分析与项目整合报告.md)
 - 2026-11-02 · [答案在逐字出现，Agent 到底做到哪一步了？—— Agent 请求全链路续篇](./ai-learning/reports/knowledge_reports/Agent请求全链路_流式响应与断线恢复_科普讲解_20261102.md)
 - 2026-11-01 · [飞行汽车的剧本与欧洲的账本：赛博对话 vol.60 深读](./podcast-learning/reports/2026-10-30_saibo-duihua_v60-roadster-china-auto-europe.md)
-- 2026-11-01 · [郭凯谈中国经济新范式：拐点、平行线与还没兑现的红利](./podcast-learning/reports/2026-10-30_zhixing-xiaojiuguan_e256-guokai-economy-households.md)
 <!-- AUTO-RECENT:END -->
 
 按报告修改日期排列，修订过的旧报告也会出现在这里。[浏览全部报告 →](./docs/REPORT_INDEX.md)

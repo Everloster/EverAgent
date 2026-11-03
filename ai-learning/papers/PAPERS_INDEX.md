@@ -3,6 +3,7 @@
 > 本文件列出所有推荐下载的关键论文，包含 Arxiv 下载链接、作者、摘要要点。
 > 请手动点击链接下载 PDF 保存到本目录（papers/）。
 > 更新日期：2026-03-28（v6：补充 DINOv2）
+> 2026-11-03局部核对：随《AI演义》发展路径研究，修正#23、#24、#26、#27、#28的身份、来源或贡献边界；不表示本索引全部内容已重新审阅。
 
 ## 📌 编号规则说明
 
@@ -253,11 +254,11 @@
 - **下载状态**：✅ **已保存** — 本地文件：`23_distilling_2015.pdf`
 - **精读状态**：✅ **已完成** — [42_distilling_2015.md](../reports/paper_analyses/42_distilling_2015.md)
 - **下载链接**：https://arxiv.org/pdf/1503.02531
-- **核心贡献**：知识蒸馏范式——用大模型的"软标签"训练小模型，开创了教师-学生学习框架
+- **核心贡献**：沿已有模型压缩研究，用教师输出分布训练学生，区分训练与部署的模型形态；不将教师—学生思想的全部前史归零到本篇。
 
 ---
 
-### 24. Mastering Go without Human Knowledge（AlphaGo Zero）
+### 24. Mastering Chess and Shogi by Self-Play with a General Reinforcement Learning Algorithm（AlphaZero）
 - **文件名建议**：`24_alphago_zero_2017.pdf`
 - **作者**：Silver 等（DeepMind）
 - **年份**：2017
@@ -266,6 +267,7 @@
 - **备注**：本地 PDF 正文实际为 arXiv:1712.01815v1 `Mastering Chess and Shogi by Self-Play with a General Reinforcement Learning Algorithm`（AlphaZero），非 Nature 2017 AlphaGo Zero 原文；报告按本地 PDF 真实内容完成。
 - **下载链接**：https://arxiv.org/pdf/1712.01815
 - **核心贡献**：AlphaZero 将 AlphaGo Zero 的自我对弈强化学习泛化到国际象棋、日本将棋和围棋；训练时每步使用 800 次 MCTS simulations，并展示了 test-time compute 与学习闭环结合的威力。
+- **《AI演义》中的另一篇**：第16页对应 [Mastering the game of Go without human knowledge（AlphaGo Zero）](https://www.nature.com/articles/nature24270)，Nature 2017，DOI `10.1038/nature24270`。它与本条AlphaZero分开使用；上述本地文件及旧精读状态不代表已经收录这篇AlphaGo Zero原文。
 
 ---
 
@@ -284,7 +286,7 @@
 - **作者**：Lambert 等（Allen Institute for AI）
 - **年份**：2024
 - **下载链接**：https://arxiv.org/pdf/2411.15124
-- **核心贡献**：完整开源后训练三段流程（SFT→DPO→RLVR），性能媲美 GPT-4o-mini 和 Claude 3.5-Haiku
+- **核心贡献**：展开开放后训练的数据策展、SFT、偏好优化与RLVR配方；若只数模型训练阶段则是三段。效果须按任务、模型规模和评测口径判断，不用模型名称概括统一排名。
 
 - **阅读状态**：✅ 已完成（见 `reports/paper_analyses/26_tulu3_2024.md`）
 ---
@@ -294,16 +296,18 @@
 - **作者**：Peebles, 谢赛宁（NYU）
 - **年份**：2022
 - **下载链接**：https://arxiv.org/pdf/2212.09748
-- **核心贡献**：用 Transformer 替换扩散模型中的 U-Net，Sora 的架构基础
+- **核心贡献**：将Transformer用于潜空间扩散的去噪骨干；原论文核心实验为ImageNet类别条件图像生成，具体视频产品的采用关系需另行核验。
 
 ---
 
 ### ⭐ 补充背景参考
 
-### 28. Brook for GPUs: Stream Computing（GPU 通用计算起源）
+### 28. Brook for GPUs: Stream Computing on Graphics Hardware（GPU 编程抽象）
 - **文件名建议**：`28_brook_2004.pdf`
 - **年份**：2004
-- **下载链接**：https://arxiv.org/pdf/cs/0406040
+- **正式来源**：https://dl.acm.org/doi/10.1145/1015706.1015800
+- **作者稿**：https://graphics.stanford.edu/papers/brookgpu/brookgpu.pdf
+- **本地身份提醒（2026-11-03核对）**：现存同名PDF实际不是Brook论文，不能作为该论文原文。此次研究使用了身份已核的Stanford作者稿；旧文件未替换。
 
 ### 29. LAION-5B: Open Large-Scale Dataset
 - **文件名建议**：`29_laion5b_2022.pdf`

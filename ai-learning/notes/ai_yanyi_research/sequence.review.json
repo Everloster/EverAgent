@@ -1,0 +1,222 @@
+{
+  "schema_version": 1,
+  "task_id": "sequence",
+  "reviewer": {
+    "role": "independent_verifier",
+    "harness": "claude-code",
+    "model": "claude-gpt-6-astra-max[1m]",
+    "identity_basis": "本次会话环境声明，未另作模型身份核验"
+  },
+  "review_target": {
+    "file": "ai-learning/notes/ai_yanyi_research/sequence-evidence.json",
+    "sha256": "e15934c3c2e5c30223d2ef1f87ba7bb97394fa1bc6c23cf1ad46b6ec5c398191",
+    "scope": "Phase0/1 的 seq2seq → Attention → Transformer 研究材料；像素级针对 PDF 的发展路径，不针对每篇论文的公式或附录。",
+    "artifact_observation": "实际存在的研究交付是 sequence-evidence.json；其中 research_material 承载叙述素材。sequence-research.md 不存在。"
+  },
+  "method": {
+    "source_first": true,
+    "order": "先读原 PDF P12/P15 和三篇原文的关键正文，独立形成变长映射、信息访问瓶颈、表示计算方式、并行边界四个检查轴；再完整读取研究 JSON；最后核验元数据、哈希和来源内部冲突。",
+    "network": "本轮未联网，复用已提供的官方来源文本缓存；两个仓内论文 PDF 均重新以 pdftotext -layout 提取，提取结果哈希与已读缓存一致。",
+    "changes": "只创建本复核 JSON；未修改研究材料、旧报告或规则，未提交或推送。"
+  },
+  "source_read_scope": [
+    {
+      "source_id": "SEQ-S0",
+      "local_relative_path": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
+      "hash_scope": "PDF 字节",
+      "read_scope": "直接查看 P12/P15 版面文字；P13/P14 随范围显示，未用于本路线判断。核对已有内嵌链接导出表的 P12/P15 行。pdfinfo 独立确认共 51 页。",
+      "boundary": "未重新解析 PDF annotations；未审计其余发展节点。"
+    },
+    {
+      "source_id": "SEQ-S1",
+      "official_url": "https://arxiv.org/pdf/1409.3215v3",
+      "version": "arXiv:1409.3215v3，2014-12-14",
+      "sha256": "040302952a472961e317c47877e87d06afef2503905ec41d9c48de987188e111",
+      "hash_scope": "已提供的官方 PDF 提取正文 content 缓存，不是 PDF 字节",
+      "read_scope": "正文 §1–5，重点 §2、§3.1–3.7、§4–5 及 Tables 1–2，约 PDF pp.1–8；核对模型、倒序解释、直接翻译与重排、评估口径、并行实现、长句限定。",
+      "boundary": "未获取 PDF 二进制；未视觉审计 Figures 1–3，不从曲线取数。"
+    },
+    {
+      "source_id": "SEQ-S2",
+      "official_url": "https://arxiv.org/pdf/1409.0473v7",
+      "version": "arXiv:1409.0473v7，2016-05-19；ICLR 2015",
+      "local_relative_path": "ai-learning/papers/14_bahdanau_attention_2014.pdf",
+      "sha256": "84801c8410da51b449d379d2fa4939a416123f2c93991077a680f863026022a7",
+      "extracted_text_sha256": "db9e2c5b87d07e755e3ce72ff44cfeb37a1e70ee63afb5910f7a6a1e87640f73",
+      "read_scope": "正文 §1–7，PDF pp.1–9；重点 §3 软对齐和双向编码器、§4 实验设置、§5.1 与 Table 1 的 All/No UNK 列及表注、§6.1 逐源位置计算代价、§7 未知词限制。",
+      "boundary": "未读实现附录，未视觉分析长度曲线和注意力热图；长度现象只核对作者结果文字。"
+    },
+    {
+      "source_id": "SEQ-S3",
+      "official_url": "https://arxiv.org/pdf/1706.03762v7",
+      "version": "arXiv:1706.03762v7，2023-08-02；NIPS 2017",
+      "local_relative_path": "ai-learning/papers/01_attention_is_all_you_need_2017.pdf",
+      "sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "extracted_text_sha256": "ccc9fd3451dc99e8822b747f53c1351dce55c04fc649fced4052070951a758e7",
+      "read_scope": "正文重点 §1–5、§6.1、§7 和 Tables 1–2；§6.2–6.3 随范围读到，不展开消融或解析任务审稿。直接查看原 PDF p.8，独立确认 Table 2 与 §6.1 的英法分数冲突。",
+      "boundary": "未视觉分析架构图或注意力可视化，未读附录，未对照 2017 年初版。"
+    },
+    {
+      "source_id": "SEQ-S4",
+      "official_url": "https://arxiv.org/abs/1409.3215",
+      "sha256": "072e0eab248f43533df7227824f535bf3f688aeb5ecbf7e5e2b8c780b4e73229",
+      "hash_scope": "已提供的官方页面 content 缓存",
+      "read_scope": "定向读取 Submission history，确认 v1 为 2014-09-10、v3 为 2014-12-14。"
+    },
+    {
+      "source_id": "SEQ-S5",
+      "official_url": "https://arxiv.org/abs/1409.0473",
+      "sha256": "d0b704f9c7b3f6d5582fd2b15bebf8f79aa64629278856d1dc526877148f555a",
+      "hash_scope": "已提供的官方页面 content 缓存",
+      "read_scope": "定向读取 Submission history 和会议状态，确认 v1 为 2014-09-01、v7 为 2016-05-19 及 ICLR 2015。"
+    }
+  ],
+  "source_content_map": [
+    {
+      "id": "SEQ-RU1",
+      "independent_unit": "变长且可能非单调对齐的序列转换，需要区分固定规模中间状态与可变输出长度；两个 LSTM、结束标记和直接生成是首节点核心。",
+      "source_locations": ["SEQ-S1 §1–2"],
+      "coverage": "covered",
+      "mapped_claim_ids": ["SEQ-C01", "SEQ-C02"]
+    },
+    {
+      "id": "SEQ-RU2",
+      "independent_unit": "固定表示是信息保存和访问上的潜在瓶颈，不是长句必败定理；倒序输入改善部分短依赖，但平均对应距离未改变。",
+      "source_locations": ["SEQ-S1 §3.3、§3.7、§5", "SEQ-S2 §1、§5.1、§7"],
+      "coverage": "covered",
+      "mapped_claim_ids": ["SEQ-C03", "SEQ-C05"]
+    },
+    {
+      "id": "SEQ-RU3",
+      "independent_unit": "Bahdanau 保留双向 RNN 的各源位置表示，以解码器此前状态进行软打分和加权汇总；仍有递归，且每步访问所有源位置有代价。",
+      "source_locations": ["SEQ-S2 §3.1–3.2、§6.1"],
+      "coverage": "covered",
+      "mapped_claim_ids": ["SEQ-C06", "SEQ-C07"]
+    },
+    {
+      "id": "SEQ-RU4",
+      "independent_unit": "实验不能写成三篇分数单调上升的排行榜：seq2seq 集成与 SMT 重排要拆开，Bahdanau 的 Moses 比较要区分完整测试集、No UNK 和延长训练。",
+      "source_locations": ["SEQ-S1 §3.1–3.6、Tables 1–2", "SEQ-S2 §4、§5.1、Table 1"],
+      "coverage": "covered",
+      "mapped_claim_ids": ["SEQ-C02", "SEQ-C08", "SEQ-C16"]
+    },
+    {
+      "id": "SEQ-RU5",
+      "independent_unit": "Transformer 用 self-attention 构造序列内部表示，继承源—目标读取，而非首次发明 attention；原模型仍是 encoder–decoder，且有前馈、残差、归一化和位置信息。",
+      "source_locations": ["SEQ-S3 §1–3.5"],
+      "coverage": "covered",
+      "mapped_claim_ids": ["SEQ-C09", "SEQ-C10", "SEQ-C15"]
+    },
+    {
+      "id": "SEQ-RU6",
+      "independent_unit": "减少位置递归链可提高训练并行性，但右移与 mask 必须防泄露；自回归生成仍逐步发生，RNN 也已有 batch、层和 softmax 并行。短路径不等于恒定总计算量。",
+      "source_locations": ["SEQ-S1 §3.4–3.5", "SEQ-S3 §1、§3.1–3.2.3、§4/Table 1、§6.1、§7"],
+      "coverage": "covered",
+      "mapped_claim_ids": ["SEQ-C11", "SEQ-C12", "SEQ-C13", "SEQ-C14"]
+    },
+    {
+      "id": "SEQ-RU7",
+      "independent_unit": "路线 PDF 的合并讲述不能决定贡献归属；问题递进不等于两篇 2014 年论文的公开顺序，修订版内部冲突也不能自行纠正为确定数字。",
+      "source_locations": ["SEQ-S0 P12/P15", "SEQ-S1 §1、§4", "SEQ-S2 §1–2", "SEQ-S3 摘要、Table 2、§6.1", "SEQ-S4/SEQ-S5 Submission history"],
+      "coverage": "covered",
+      "mapped_claim_ids": ["SEQ-C04", "SEQ-C17", "SEQ-C18"]
+    }
+  ],
+  "checks": [
+    {
+      "id": "SEQ-R01",
+      "name": "范围及实际交付核对",
+      "result": "PASS_WITH_LIMITATION",
+      "locations": ["scope", "research_material"],
+      "basis": "材料按三个机制节点组织，具有背景、问题、改变、证据、代价、衔接和一个自拟示例，未写成逐篇公式教材或完整书稿。独立 Markdown 缺失须保留为交付形式限制，不能声称原约定两文件均已完成。"
+    },
+    {
+      "id": "SEQ-R02",
+      "name": "来源身份、版本与哈希",
+      "result": "PASS",
+      "locations": ["sources"],
+      "basis": "六个来源登记哈希全部匹配；两个仓内论文 PDF 的重新提取结果均匹配登记文本哈希。正确区分 2014/2017 首次研究年份与实际 v7 缓存日期，也区分 PDF 字节哈希和官方提取文本哈希。"
+    },
+    {
+      "id": "SEQ-R03",
+      "name": "因果链与贡献归属",
+      "result": "PASS",
+      "claim_ids": ["SEQ-C01", "SEQ-C04", "SEQ-C06", "SEQ-C09", "SEQ-C10", "SEQ-C17"],
+      "basis": "变长映射、动态源信息读取、无位置递归的表示构造三步分工正确。日期缓存确认 Bahdanau v1 早于 Sutskever v1；材料明确把箭头限定为问题递进。PDF P12 的单一链接未被错误扩展为同页两项工作的共同来源。"
+    },
+    {
+      "id": "SEQ-R04",
+      "name": "固定表示瓶颈与 attention 机制",
+      "result": "PASS",
+      "claim_ids": ["SEQ-C03", "SEQ-C05", "SEQ-C06", "SEQ-C07"],
+      "basis": "对照 Sutskever 长句结果和 Bahdanau 的潜在瓶颈措辞，没有编造长句必然失败。位置表示包含上下文，软汇总不是硬选原词，每步上下文仍是固定维度；保留递归及逐源位置打分的代价均得到原文支持。"
+    },
+    {
+      "id": "SEQ-R05",
+      "name": "训练并行与生成边界",
+      "result": "PASS",
+      "claim_ids": ["SEQ-C11", "SEQ-C12", "SEQ-C13", "SEQ-C14", "SEQ-C15"],
+      "basis": "右移目标输入、因果 mask、同层位置并行、层间依赖和自回归逐步生成区分正确。RNN 多 GPU 层分工与 softmax 并行可在 seq2seq §3.5 直接核对；Transformer Table 1/§4 支持稠密 attention 的平方配对代价及比较条件。"
+    },
+    {
+      "id": "SEQ-R06",
+      "name": "有限数字及实验口径",
+      "result": "PASS",
+      "claim_ids": ["SEQ-C02", "SEQ-C08", "SEQ-C16"],
+      "locations": ["research_material.optional_numbers"],
+      "basis": "34.81/33.30 对应 seq2seq Table 1 的英法完整测试集、5 个倒序 LSTM、beam 12 与 SMT 基线；28.4/26.36 对应 Transformer Table 2 的英德 big 与 ConvS2S Ensemble。Bahdanau Table 1 的 No UNK 条件、延长训练和全测试集仍低于 Moses 均表述正确。训练 FLOPs 被正确写为作者估算，未把不同条件的结果当作 attention 单变量净收益。"
+    },
+    {
+      "id": "SEQ-R07",
+      "name": "来源冲突处理",
+      "result": "PASS_WITH_LIMITATION",
+      "claim_ids": ["SEQ-C18"],
+      "locations": ["unresolved[0]", "research_material.optional_numbers"],
+      "basis": "独立查看 Transformer PDF p.8，确认 Table 2 写 41.8，§6.1 英法段落写 41.0；摘要提取文本为 41.8。材料如实记录且没有把冲突值放入建议使用的数字组，不需要为本阶段额外查勘误后才能通过。"
+    },
+    {
+      "id": "SEQ-R08",
+      "name": "解释示例及证据层级",
+      "result": "PASS",
+      "locations": ["research_material.one_explanatory_example", "claims[*].kind", "claims[*].boundary"],
+      "basis": "英法名词与形容词换序示例足以说明按需读取；明确是自拟示意，不是实测译文或注意力图。机制解释、作者假说和实验事实有所区分，未把热图当作人类理解的证明。"
+    },
+    {
+      "id": "SEQ-R09",
+      "name": "引用完整性与公开路径",
+      "result": "PASS",
+      "locations": ["claims", "sources", "node_relations"],
+      "basis": "18 个 claim ID 唯一且来源引用存在；节点和关系引用均有效。公开研究 JSON 未含用户目录或外部临时缓存绝对路径；来源摘录没有长段复制。"
+    }
+  ],
+  "issues": [],
+  "limitations": [
+    {
+      "id": "SEQ-RL1",
+      "file": "ai-learning/notes/ai_yanyi_research/sequence-research.md",
+      "description": "该文件未交付。作者所处上级执行约束禁止写研究类 Markdown，叙述素材已纳入研究 JSON；本次 PASS 只认可现存 JSON 的阶段内容，不表示原约定两文件交付齐全。"
+    },
+    {
+      "id": "SEQ-RL2",
+      "claim_ids": ["SEQ-C18"],
+      "file": "ai-learning/notes/ai_yanyi_research/sequence-evidence.json",
+      "locator": "claims[17]、unresolved[0]",
+      "description": "Transformer v7 的英法 41.8/41.0 内部冲突尚未裁定。正文应继续省略这个精确分数；如以后必须引用，需再核正式会议版或勘误。"
+    },
+    {
+      "id": "SEQ-RL3",
+      "description": "未对照三篇首版与修订版差异；seq2seq 仅核已提供的官方提取文本，未核 PDF 二进制。两个本地 PDF 已重新提取并验证一致；本轮未重新联网抓取来源。"
+    },
+    {
+      "id": "SEQ-RL4",
+      "description": "未视觉审计论文长度曲线、注意力热图或架构图，未复现训练。长度现象仅核作者正文报告，不验证曲线阈值、消融全集、当代应用或人物经历。"
+    },
+    {
+      "id": "SEQ-RL5",
+      "description": "本次仅审 PDF P12/P15 对应路线；确认 51 页不等于完成全部页面、对象数量或全书内容审计。"
+    }
+  ],
+  "verdict": "PASS",
+  "verdict_scope": "现存 sequence 研究 JSON 的问题链、贡献归属、机制、有限数字和限制符合本阶段要求，无需阻断主会话据此组织样章；不表示两文件交付齐全、正式样章通过或全书研究完成。"
+}

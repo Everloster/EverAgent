@@ -1,0 +1,1736 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/AI演义_笔记分析与项目整合报告.md",
+  "quality_tier": "flagship",
+  "created_on": "2026-11-03",
+  "generator": {
+    "model": "claude-gpt-6-astra-max",
+    "harness": "claude-code",
+    "run_id": "ai-yanyi-routebook-20261103-main",
+    "explicit_model_override": false,
+    "override_reason": ""
+  },
+  "task": {
+    "summary": "用户要求以《AI演义》PDF全量发展路径和必要原论文为基础重写报告。像素级指发展路径细致完整，而非每篇论文穷尽技术细节；少数学，重点是背景、所解问题、机制直觉与发展作用。两段样章获认可后，用户强调历史、范式变迁、人物视角的整体路线串联优先。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "覆盖原PDF51页的实质发展路径和核定36个研究对象，不把合讲页或重复页误计为论文。"
+      },
+      {
+        "id": "R2",
+        "text": "各关键对象说明背景、问题、关键改变、机制直觉、证据边界与路线作用；不默认全量公式/附录/消融。"
+      },
+      {
+        "id": "R3",
+        "text": "历史、范式变迁、人物与组织视角进入共同问题主线，而不是孤立论文摘要或人物履历。"
+      },
+      {
+        "id": "R4",
+        "text": "解释架构、语言、数据/系统、视觉/生成、反馈/行动的交汇和分叉，区别直接采用、使能条件、问题承接与主题对照。"
+      },
+      {
+        "id": "R5",
+        "text": "少数学，沿用获认可样章的机制解释密度；不以冗长白话、重复提醒或形式模板代替内容。"
+      },
+      {
+        "id": "R6",
+        "text": "形成一篇可独立阅读的主报告，含问题地图、连接索引、对象定位和新论文阅读方法，不把核心解释外包给36个链接。"
+      },
+      {
+        "id": "R7",
+        "text": "关键判断回到真实原文；保留版本、任务、数据/预算口径，身份/错链得到校正，未核外围判断不混入事实。"
+      },
+      {
+        "id": "R8",
+        "text": "保留原论文、原PDF、本文综合与当前正式资料的证据层级；不声称完成训练复现或所有历史优先权审计。"
+      },
+      {
+        "id": "R9",
+        "text": "执行范围匹配的链接/渲染/覆盖检查及旗舰级独立复核；模型评分不替代用户学习反馈。"
+      },
+      {
+        "id": "R10",
+        "text": "必要延伸只补解释缺口（如CUDA历史、硬件彩票、指定版本Stable Diffusion），不扩大到无边界AI百科或未经核验的视频产品谱系。"
+      }
+    ],
+    "reader_feedback": [
+      {
+        "date": "2026-11-03",
+        "quote": "少数学相关的，告诉基础目的，解决什么问题即可"
+      },
+      {
+        "date": "2026-11-03",
+        "quote": "像素级 指的是 那个 pdf 就是 ai 发展路径的像素级，不是每篇 paper 的像素级，paper 能回答背景、解决什么问题、发展路径起到的作用等等即可"
+      },
+      {
+        "date": "2026-11-03",
+        "quote": "好的，可以的，整体的几个视角的路线更关键哦，如何串起来"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S-lecture",
+      "kind": "local",
+      "title": "谢青池《AI演义：36篇论文开启你的探索之旅》",
+      "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "accessed_on": "2026-11-03",
+      "read_scope": "51页文字层及嵌入URL；路线总图与必要页面另行视读，具体范围见source-map。按用户要求覆盖发展路径，不声称每字/每像素审校。",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0"
+    },
+    {
+      "id": "S-brook",
+      "kind": "primary",
+      "title": "Brook for GPUs: Stream Computing on Graphics Hardware",
+      "locator": "https://dl.acm.org/doi/10.1145/1015706.1015800",
+      "accessed_on": "2026-11-03",
+      "version": "Stanford作者托管稿，首页未标修订号；题名、七位作者与核定ACM对象一致。未声称与出版社PDF逐字节相同。",
+      "read_scope": "首页身份；§1–6背景、流式模型、编译与运行时、五类应用比较、传输/调用开销及讨论；§7致谢。按pdftotext排版文字读取，附录代码只随范围见到而未审计，参考文献未全读。未视觉核验图形曲线；采用的性能与开销判断在§5正文有明确文字说明。",
+      "research_record": "ai-learning/notes/ai_yanyi_research/phase2/foundations.json",
+      "research_source_id": "F-S-BROOK"
+    },
+    {
+      "id": "S-gpu-history",
+      "kind": "official",
+      "title": "Inside the Programming Evolution of GPU Computing",
+      "locator": "https://developer.nvidia.com/blog/inside-the-programming-evolution-of-gpu-computing/",
+      "accessed_on": "2026-11-03",
+      "version": "publishedTime=2015-10-28；页面metadata含modified_time=2022-08-21。本轮读取当前返回文本，不能据此确认2015原始网页字节。",
+      "read_scope": "短文正文及发布日期元数据，重点为Stanford团队、Brook作为CUDA前驱、2004年Buck将工作带到NVIDIA和C程序员接口目标；未读所链接的外部完整访谈，不核当前职位或硬件性能数字。",
+      "research_record": "ai-learning/notes/ai_yanyi_research/phase2/foundations.json",
+      "research_source_id": "F-S-CUDA-HISTORY"
+    },
+    {
+      "id": "S-alexnet",
+      "kind": "primary",
+      "title": "ImageNet Classification with Deep Convolutional Neural Networks",
+      "locator": "https://papers.nips.cc/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf",
+      "accessed_on": "2026-11-03",
+      "version": "NIPS 2012论文集版本；题名和三位作者与source-map一致，未另核讲义所写具体月份。",
+      "read_scope": "首页身份与摘要；§1–7，包括数据口径、ReLU、双GPU分割、架构、数据增强与Dropout、学习设置、Table 1/2及其解释、讨论；参考文献中与CNN前史、ImageNet和Dropout有关条目。§6.1文字读到但不据此声称亲眼核验特征图；未查代码或补充可视化。",
+      "research_record": "ai-learning/notes/ai_yanyi_research/phase2/foundations.json",
+      "research_source_id": "F-S-ALEXNET"
+    },
+    {
+      "id": "S-resnet",
+      "kind": "primary",
+      "title": "Deep Residual Learning for Image Recognition",
+      "locator": "https://arxiv.org/pdf/1512.03385v1",
+      "accessed_on": "2026-11-03",
+      "version": "arXiv:1512.03385v1，2015-12-10，首页实核；2015指预印本年份。",
+      "read_scope": "首页、§1–4.3（pp.1–8），尤其§3残差形式、§3.4训练设置、§4.1/Table 2–5、§4.2/Table 6及千层讨论；参考文献[21]、[41]等相关条目（p.9），附录A开头随读取范围见到。未审计检测附录完整实验；图1/4/6/7只读图注及对应正文，不做曲线视觉测量。",
+      "research_record": "ai-learning/notes/ai_yanyi_research/phase2/foundations.json",
+      "research_source_id": "F-S-RESNET"
+    },
+    {
+      "id": "S-distill",
+      "kind": "primary",
+      "title": "Distilling the Knowledge in a Neural Network",
+      "locator": "https://arxiv.org/pdf/1503.02531v1",
+      "accessed_on": "2026-11-03",
+      "version": "arXiv:1503.02531v1，2015-03-09，首页实核。",
+      "read_scope": "正文§1–8及致谢、参考文献（pp.1–9）已读取；重点核训练/部署区分、软目标与温度、MNIST、语音Table 1、JFT专门模型与最终未完成的蒸馏边界。§2.1推导读到但不逐式复算，未复制或复现实验。",
+      "research_record": "ai-learning/notes/ai_yanyi_research/phase2/foundations.json",
+      "research_source_id": "F-S-DISTILLATION"
+    },
+    {
+      "id": "S-word2vec",
+      "kind": "primary",
+      "title": "Efficient Estimation of Word Representations in Vector Space",
+      "locator": "https://arxiv.org/pdf/1301.3781v3",
+      "accessed_on": "2026-11-03",
+      "version": "arXiv:1301.3781v3，2013-09-07；2013-01为首发时间口径，沿用已核清单",
+      "read_scope": "pdftotext -layout文字：P1–9，含首页身份、§1前史、§2架构/计算成本/DistBelief、§3 CBOW与Skip-gram、§4评估方法和Tables 1–7、§5开头。公式用于辨认机制而未逐式推导；Figure 1只读图注，未视觉分析。未读P10–12及引用文献原文。",
+      "research_record": "ai-learning/notes/ai_yanyi_research/phase2/language_pretraining.json",
+      "research_source_id": "LP-S01"
+    },
+    {
+      "id": "S-seq2seq",
+      "kind": "primary",
+      "title": "Sequence to Sequence Learning with Neural Networks",
+      "locator": "https://arxiv.org/pdf/1409.3215v3",
+      "accessed_on": "2026-11-03",
+      "version": "arXiv:1409.3215v3，2014-12-14",
+      "read_scope": "题名与页边版本；§1–2 背景、模型；§3.1–3.3 数据、解码、源句倒序；§3.4–3.6 训练、并行、评估与 Tables 1–2；§3.7、§4–5 的长句、相关工作与结论文字。约 PDF pp.1–8。正文中的图表题注可见，但未视觉分析 Figures 1–3；不从曲线读数。参考文献只用于识别文中提及的前驱，未读其原文。",
+      "research_record": "ai-learning/notes/ai_yanyi_research/sequence-evidence.json",
+      "research_source_id": "SEQ-S1"
+    },
+    {
+      "id": "S-bahdanau",
+      "kind": "primary",
+      "title": "Neural Machine Translation by Jointly Learning to Align and Translate",
+      "locator": "https://arxiv.org/pdf/1409.0473v7",
+      "accessed_on": "2026-11-03",
+      "version": "arXiv:1409.0473v7，2016-05-19；页眉 Published as a conference paper at ICLR 2015",
+      "read_scope": "用 pdftotext -layout 阅读题名、版本及 §1–4（pp.1–5）、§5.1 结果文字与 Table 1（pp.5–7）、§5.2 的作者定性解释、§6.1 的计算代价、§6.2 与 §7（pp.7–9）。未读实现附录；未视觉复核 Figure 2 曲线或 Figure 3 热图；长度表现仅转述结果正文，不从图取数。",
+      "research_record": "ai-learning/notes/ai_yanyi_research/sequence-evidence.json",
+      "research_source_id": "SEQ-S2"
+    },
+    {
+      "id": "S-gnmt",
+      "kind": "primary",
+      "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation",
+      "locator": "https://arxiv.org/pdf/1609.08144v2",
+      "accessed_on": "2026-11-03",
+      "version": "arXiv:1609.08144v2，2016-10-08；正文首页版本标记已读",
+      "read_scope": "首页题名、31位作者和版本；§1–2全文；§3架构开头；§3.1–3.3残差、双向底层和并行；§4与§4.1 wordpiece；§6量化动机、训练约束至公式开头；§8.7生产数据、人评方法、Table 10及限制；§9和致谢；References [2]/[41]核对Attention/seq2seq。未精读§5强化学习、§7解码公式、§8.1–8.6及其他实验表。图只读相邻图注，未取曲线数值。",
+      "research_record": "ai-learning/notes/ai_yanyi_research/phase2/language_pretraining.json",
+      "research_source_id": "LP-S02"
+    },
+    {
+      "id": "S-transformer",
+      "kind": "primary",
+      "title": "Attention Is All You Need",
+      "locator": "https://arxiv.org/pdf/1706.03762v7",
+      "accessed_on": "2026-11-03",
+      "version": "arXiv:1706.03762v7，2023-08-02；首页列 NIPS 2017",
+      "read_scope": "用 pdftotext -layout 阅读题名、版本、§1–4（pp.2–7）、§5 训练设置与 §6.1/Table 2（pp.7–8）；§6.2 与 Table 3、§6.3 开头随提取范围读到，但不展开消融和解析任务。直接查看 PDF p.8 核对 Table 2 与正文英法分数冲突。未视觉分析架构图或注意力可视化，未读附录。",
+      "research_record": "ai-learning/notes/ai_yanyi_research/sequence-evidence.json",
+      "research_source_id": "SEQ-S3"
+    },
+    {
+      "id": "S-gpt1",
+      "kind": "primary",
+      "title": "Improving Language Understanding by Generative Pre-Training",
+      "locator": "https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf",
+      "accessed_on": "2026-11-03",
+      "version": "OpenAI正式研究报告；首页Preprint. Work in progress.；无独立修订号，2018年沿用已核清单，不把抓取日期当首发日期",
+      "read_scope": "从首页至§6 Conclusion全文，约原PDF P1–8；包括§2前驱、§3两阶段训练与任务输入转换、§4设置和Tables 1–4、§5零样本启发式及Table 5。参考文献仅出现开头，未查前驱原文；Figure 2只读图注和作者解释，未看曲线。",
+      "research_record": "ai-learning/notes/ai_yanyi_research/phase2/language_pretraining.json",
+      "research_source_id": "LP-S03"
+    },
+    {
+      "id": "S-bert",
+      "kind": "primary",
+      "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "locator": "https://arxiv.org/pdf/1810.04805v2",
+      "accessed_on": "2026-11-03",
+      "version": "arXiv:1810.04805v2，2019-05-24；2018为首发年份，非当前PDF修订年份",
+      "read_scope": "首页身份及摘要开头；P2–5文字含§2相关工作、§3模型/MLM/NSP/微调与§4.1开头；P8含Table 5、§5.1训练目标消融和§5.2；定向读参考文献Wu et al. 2016确认GNMT。未完整阅读P6–7主结果表、其他消融及附录；架构图仅读图注。双栏提取按段落语义复原，不做逐字长引。",
+      "research_record": "ai-learning/notes/ai_yanyi_research/phase2/language_pretraining.json",
+      "research_source_id": "LP-S04"
+    },
+    {
+      "id": "S-gpt2",
+      "kind": "primary",
+      "title": "Language Models are Unsupervised Multitask Learners",
+      "locator": "https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf",
+      "accessed_on": "2026-11-03",
+      "version": "OpenAI正式研究报告，无独立修订号；2019年沿用已核清单",
+      "read_scope": "首页与§1–2全段，含WebText、byte-level BPE及模型修改；§3–3.2及Table 3，§3.3前段；§3.5–3.8全部文字及Tables 4–5；§4 Generalization vs Memorization及Table 6；§5前段。未完整读§3.3–3.4、§5后段、结论或生成样例附录；所有曲线只读图注和正文，不从图取数。",
+      "research_record": "ai-learning/notes/ai_yanyi_research/phase2/language_pretraining.json",
+      "research_source_id": "LP-S05"
+    },
+    {
+      "id": "S-gpt3",
+      "kind": "primary",
+      "title": "Language Models are Few-Shot Learners",
+      "locator": "https://arxiv.org/pdf/2005.14165v4",
+      "accessed_on": "2026-11-03",
+      "version": "arXiv:2005.14165v4，2020-07-22；2020-05为首发时间口径",
+      "read_scope": "首页题名、31人作者表和版本；P3–4引言及脚注1，P6的§2设置；P7只读zero-shot定义与末尾设置比较；P8–10的§2.1–2.4、Tables 2.1–2.2及Figure 2.2图注；P13的Table 3.3、§3.1.3–3.1.4和§3.2前段；P18–20的§3.6–3.7及Tables 3.7–3.8；P33污染讨论末尾及§5，P34前段覆盖目标局限、样本效率和学习/识别歧义。未完整读其他任务、§4污染分析、§6社会影响或附录；不把图注读取算作图像核查。",
+      "research_record": "ai-learning/notes/ai_yanyi_research/phase2/language_pretraining.json",
+      "research_source_id": "LP-S06"
+    },
+    {
+      "id": "S-kaplan",
+      "kind": "primary",
+      "title": "Scaling Laws for Neural Language Models",
+      "locator": "https://arxiv.org/pdf/2001.08361v1",
+      "accessed_on": "2026-11-03",
+      "version": "arXiv:2001.08361v1 [cs.LG], 23 Jan 2020；通过本地PDF首页核对题名、作者与版本标记，未仅凭文件名认定",
+      "read_scope": "P1–7文本（摘要、§1、§2、§3开头实验范围）；P14–16文本（§5末尾、§6至§6.2）；P22文本（附录B.3/B.4及C开头）。P3 Figure 1及其图注实际查看图像。未精读其余附录、消融或公式推导。",
+      "research_record": "ai-learning/notes/ai_yanyi_research/scaling-evidence.json",
+      "research_source_id": "S1"
+    },
+    {
+      "id": "S-chinchilla",
+      "kind": "primary",
+      "title": "Training Compute-Optimal Large Language Models",
+      "locator": "https://arxiv.org/pdf/2203.15556v1",
+      "accessed_on": "2026-11-03",
+      "version": "arXiv:2203.15556v1 [cs.CL], 29 Mar 2022；正式摘要页与下载PDF首页题名、作者、版本标记相符",
+      "read_scope": "正式摘要页与submission history；PDF P1–11文本，P12 Figure 6图注与Table 7，P15 Discussion & Conclusion中的局限段。P5 Figure 2、P6 Figure 3整页实际查看图像；没有将P12的文字读取冒充图像读取。未精读其余结果、附录B/D/E/F/G，也未独立复算训练FLOPs。",
+      "research_record": "ai-learning/notes/ai_yanyi_research/scaling-evidence.json",
+      "research_source_id": "S2"
+    },
+    {
+      "id": "S-zero",
+      "kind": "primary",
+      "title": "ZeRO: Memory Optimizations Toward Training Trillion Parameter Models",
+      "locator": "https://arxiv.org/pdf/1910.02054v3",
+      "accessed_on": "2026-11-03",
+      "version": "arXiv:1910.02054v3 [cs.LG], 13 May 2020",
+      "read_scope": "首页；§1的模型扩张背景和DeepSpeed发布说明；§3—9正文，含Table 1/2的模型状态显存分析、§5三阶段机制、§7通信量分析和§9计算能力缺口；§10—11正文，含Table 3/4、实现范围、硬件/基线、吞吐与显存实验解释。P7—19为本轮主要连续读取范围。未精读§2、参考文献或AE附录；未视觉复核Figure 1—8，不从曲线自行读数。",
+      "research_record": "ai-learning/notes/ai_yanyi_research/phase2/infrastructure_data.json",
+      "research_source_id": "INF-ZERO"
+    },
+    {
+      "id": "S-refinedweb",
+      "kind": "primary",
+      "title": "The RefinedWeb Dataset for Falcon LLM: Outperforming Curated Corpora with Web Data, and Web Data Only",
+      "locator": "https://arxiv.org/pdf/2306.01116v1",
+      "accessed_on": "2026-11-03",
+      "version": "arXiv:2306.01116v1 [cs.CL], 1 Jun 2023",
+      "read_scope": "首页摘要、署名；P2—9的§1—4正文和§5/6相关段，含MDR处理链、实验设置与比较层级、Table 2—5；Appendix A/Table 6的数据用途、创建/资助机构、采集与分发许可片段；Appendix B模型卡的模型类别/日期片段。§5多epoch讨论仅读到问题提出及相关正文片段，不宣称精读其附录实验；不从Figure 1—4自行读曲线或面积，也未完成去污染审计或全量偏差评估。",
+      "research_record": "ai-learning/notes/ai_yanyi_research/phase2/infrastructure_data.json",
+      "research_source_id": "INF-REFINEDWEB"
+    },
+    {
+      "id": "S-laion",
+      "kind": "primary",
+      "title": "LAION-5B: An open large-scale dataset for training next generation image-text models",
+      "locator": "https://arxiv.org/pdf/2210.08402v1",
+      "accessed_on": "2026-11-03",
+      "version": "arXiv:2210.08402v1 [cs.CV], 16 Oct 2022",
+      "read_scope": "首页；§1末段、§2—7相关正文（P3—12），包括采集/过滤、数据组成、OpenCLIP训练和评测方法、Table 2、技术及伦理限制；P13致谢；Appendix A.2 Q14外部链接依赖、A.6 Q45—49分发及版权说明（Q47—49在P30）；Appendix E关于数据规模与samples seen的实验解释和P42 Table 6；Appendix G.1/G.2隐私与CLIP过滤偏差；P49作者贡献的路径相关条目。未读取全量附录或逐项评测，不把生成示例图及Figure 4/12的文本层当作视觉核查。",
+      "research_record": "ai-learning/notes/ai_yanyi_research/phase2/infrastructure_data.json",
+      "research_source_id": "INF-LAION"
+    },
+    {
+      "id": "S-megascale",
+      "kind": "primary",
+      "title": "MegaScale: Scaling Large Language Model Training to More Than 10,000 GPUs",
+      "locator": "https://arxiv.org/pdf/2402.15627v1",
+      "accessed_on": "2026-11-03",
+      "version": "arXiv:2402.15627v1 [cs.LG], 23 Feb 2024",
+      "read_scope": "首页及§1相关段；P2—7的§2背景、§3算法/并行/算子/数据管道/网络协同、§4容错；§5的开头、CUDA事件监测说明片段与§5.2故障依赖定位案例；P9—12的§6训练性能、收敛微实验、生产稳定性、问题修复，含Table 2/3和Figure 10/11/12图注；§7开头。未精读参考文献、全部图像和其余相关工作。Figure 9—12未视觉核查，结论只取正文、表格和图注明确陈述。",
+      "research_record": "ai-learning/notes/ai_yanyi_research/phase2/infrastructure_data.json",
+      "research_source_id": "INF-MEGASCALE"
+    },
+    {
+      "id": "S-moe",
+      "kind": "primary",
+      "title": "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer",
+      "locator": "https://arxiv.org/pdf/1701.06538v1",
+      "accessed_on": "2026-11-03",
+      "version": "arXiv:1701.06538v1 [cs.LG], 23 Jan 2017；首页仍标Under review as a conference paper at ICLR 2017。",
+      "read_scope": "首页题名、作者、机构及版本；§1–6（P1–9）背景、既有MoE工作、稀疏门控、批量/网络工程、均衡损失、语言模型与翻译实验及结论；Tables 1–5；Appendix A（P13–14）负载损失及Table 6；Appendix B开头的两级路由结构。按pdftotext排版文字读取。未全读附录C–E，未逐项核超参和专家语义例句，未视觉核验曲线；本文引用的数字由表格和正文直接支持。",
+      "research_record": "ai-learning/notes/ai_yanyi_research/phase2/efficiency_and_lesson.json",
+      "research_source_id": "EL-MOE"
+    },
+    {
+      "id": "S-lora",
+      "kind": "primary",
+      "title": "LoRA: Low-Rank Adaptation of Large Language Models",
+      "locator": "https://arxiv.org/pdf/2106.09685v2",
+      "accessed_on": "2026-11-03",
+      "version": "arXiv:2106.09685v2 [cs.CL], 16 Oct 2021；首页Version 2，首位作者在此PDF简写Edward Hu。2021-06-17首发日期沿用source-map已核元数据，不把十月修订当首发。",
+      "read_scope": "首页；§1–6（P1–9）动机、既有适配方案、低秩增量、合并、实际限制、评估设置与Tables 1–4；§7.1–7.2（P10–11）权重选择、秩实验、Table 5/6及脚注6；§7.3（P11–12）解释性分析文字与Table 7；§8开头。未全读附录、未独立复现，未视觉核验热图；本包不将热图或作者机制猜想当因果证明。",
+      "research_record": "ai-learning/notes/ai_yanyi_research/phase2/efficiency_and_lesson.json",
+      "research_source_id": "EL-LORA"
+    },
+    {
+      "id": "S-bitter",
+      "kind": "primary",
+      "title": "The Bitter Lesson",
+      "locator": "http://www.incompleteideas.net/IncIdeas/BitterLesson.html",
+      "accessed_on": "2026-11-03",
+      "version": "作者网页，署名Rich Sutton，March 13, 2019；无修订号。本轮复用已通过eacli获取的作者URL正文。",
+      "read_scope": "阅读全文：日期、总论、国际象棋、围棋、语音、视觉四组案例，历史模式归纳及末尾两个一般教训。以段首定位。未独立审计所有历史案例的原始实验或研究群体心理。",
+      "research_record": "ai-learning/notes/ai_yanyi_research/phase2/efficiency_and_lesson.json",
+      "research_source_id": "EL-BITTER"
+    },
+    {
+      "id": "S-hardware",
+      "kind": "primary",
+      "title": "The Hardware Lottery",
+      "locator": "https://arxiv.org/pdf/2009.06489v2",
+      "accessed_on": "2026-11-03",
+      "version": "arXiv:2009.06489v2 [cs.CY], 21 Sep 2020；正式摘要页核v1/v2日期，PDF提取首页核题名、作者、Google Research, Brain Team及版本。",
+      "read_scope": "正式摘要页元数据；PDF提取首页/Abstract/§1；§4–7（P6–11）硬件专门化、稀疏算子与编译器、反事实难题、未来方向争论、研发激励、软件/语言/剖析工具建议及结论。§2–3历史回顾未精读，不以该部分独立断言早期硬件史；文中脑科学类比和新闻成本估计不采用。",
+      "research_record": "ai-learning/notes/ai_yanyi_research/phase2/efficiency_and_lesson.json",
+      "research_source_id": "EL-HARDWARE"
+    },
+    {
+      "id": "S-alphago",
+      "kind": "primary",
+      "title": "Mastering the game of Go without human knowledge",
+      "locator": "https://www.nature.com/articles/nature24270",
+      "accessed_on": "2026-11-03",
+      "version": "公开镜像中的Nature排版版；首页DOI nature24270、题名、作者、卷550及2017-10-19页脚与正式页对应",
+      "read_scope": "P354–358正文中的引言、Reinforcement learning、Empirical analysis、Final performance、Conclusion；Methods的Reinforcement learning、Self-play reinforcement learning in games、AlphaGo versions、Domain knowledge、Self-play training pipeline、Search algorithm、Neural network architecture及架构对照。Figures 1–6只读文字图注与邻近正文；不据棋局图复核新定式。未精读后续棋谱和全部Extended Data。",
+      "research_record": "ai-learning/notes/ai_yanyi_research/phase2/alignment_action.json",
+      "research_source_id": "AA-S02",
+      "retrieved_from": "https://augmentingcognition.com/assets/Silver2017a.pdf",
+      "version_note": "正式Nature页用于身份及作者贡献；方法依据DOI/题名/卷页匹配的公开镜像原文，不冒充出版社页面已开放全文。"
+    },
+    {
+      "id": "S-instruct",
+      "kind": "primary",
+      "title": "Training language models to follow instructions with human feedback",
+      "locator": "https://arxiv.org/pdf/2203.02155v1",
+      "accessed_on": "2026-11-03",
+      "version": "arXiv:2203.02155v1，2022-03-04",
+      "read_scope": "首页身份与作者脚注；P1–12的§1–3.6、§4.1前段，含SFT/RM/PPO、数据来源、标注、KL约束、PPO-ptx、评价口径、偏好结果及Figures 1–5图注；P18–19的§5.2–5.3及§5.4前段。未完整核读§4.2和附录，因此不引用其全套毒性/偏见/公共NLP基准数字。",
+      "research_record": "ai-learning/notes/ai_yanyi_research/phase2/alignment_action.json",
+      "research_source_id": "AA-S03"
+    },
+    {
+      "id": "S-cot",
+      "kind": "primary",
+      "title": "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models",
+      "locator": "https://arxiv.org/pdf/2201.11903v6",
+      "accessed_on": "2026-11-03",
+      "version": "arXiv:2201.11903v6，2023-01-10；首页标NeurIPS 2022，首发年份按source-map为2022",
+      "read_scope": "首页版本、作者、§1–6与§7前段；P20–23 Tables 1–6及Table 7前部。重点核读§2、§3.1–3.4的提示设置、解码方式、结果与消融，以及§6的无微调和推理真实性边界。未精读全量任务提示、错误样本附录及所有后续工作。",
+      "research_record": "ai-learning/notes/ai_yanyi_research/phase2/alignment_action.json",
+      "research_source_id": "AA-S05"
+    },
+    {
+      "id": "S-react",
+      "kind": "primary",
+      "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
+      "locator": "https://arxiv.org/pdf/2210.03629v3",
+      "accessed_on": "2026-11-03",
+      "version": "arXiv:2210.03629v3，2023-03-10；ICLR 2023版，首发年份按source-map为2022",
+      "read_scope": "P1–9：版本、作者与实习脚注；§1–5、§6开头；§2交互定义、§3.1–3.3检索动作/提示/混合方法/错误分析、§4环境设置及结果、Tables 1–4。Figure 1图内文字提取乱码，未用它作案例证据；只采用清晰正文、表格与图注。未精读全附录或把§3小模型微调的图形读数当成独立核查。",
+      "research_record": "ai-learning/notes/ai_yanyi_research/phase2/alignment_action.json",
+      "research_source_id": "AA-S06"
+    },
+    {
+      "id": "S-tulu",
+      "kind": "primary",
+      "title": "Tülu 3: Pushing Frontiers in Open Language Model Post-Training",
+      "locator": "https://arxiv.org/pdf/2411.15124v5",
+      "accessed_on": "2026-11-03",
+      "version": "arXiv:2411.15124v5，2025-04-14；2024是首发年，不把v5扩展全部倒写为2024首版内容",
+      "read_scope": "首页、目录与Table 1；P5–11的§1–2.4及Tables 2–6；P15–23的§4–5.2及Tables 9–15；P27–32的§5.4–6.2及Tables 18–22；P33–37的§6.2.1–7.1开头及Tables 23–24；P50–51的§9.2、结论、Author Contributions与Acknowledgments。Figures相关结论仅依正文或图注，不从未视觉核查曲线取数。未完整精读§3去污染方法、§5.3全套消融、§7全部unseen评价、§8的405B扩展及附录。",
+      "research_record": "ai-learning/notes/ai_yanyi_research/phase2/alignment_action.json",
+      "research_source_id": "AA-S04"
+    },
+    {
+      "id": "S-deepvideo",
+      "kind": "primary",
+      "title": "Large-scale Video Classification with Convolutional Neural Networks",
+      "locator": "https://openaccess.thecvf.com/content_cvpr_2014/papers/Karpathy_Large-scale_Video_Classification_2014_CVPR_paper.pdf",
+      "accessed_on": "2026-11-03",
+      "version": "CVPR 2014正式论文集PDF，无arXiv修订号；年月依官方会议入口，不冒充预印本首发日",
+      "read_scope": "PDF P1—8正文：§1—2背景与前驱，§3.1时间融合、§3.2双分辨率、§3.3训练，§4.1 Sports-1M采集/评测及Tables 1—2，§4.2迁移及Tables 3—4，§5结论；参考文献只核AlexNet等关联条目。图注和作者图像解释已读，不把它们算作亲自看图。",
+      "research_record": "ai-learning/notes/ai_yanyi_research/phase2/vision_alignment.json",
+      "research_source_id": "VA-S01"
+    },
+    {
+      "id": "S-two-stream",
+      "kind": "primary",
+      "title": "Two-Stream Convolutional Networks for Action Recognition in Videos",
+      "locator": "https://arxiv.org/pdf/1406.2199v2",
+      "accessed_on": "2026-11-03",
+      "version": "arXiv:1406.2199v2，2014-11-12；source-map首发日期为2014-06-09，两者分开",
+      "read_scope": "返回正文P1—11；精读§1/1.1对DeepVideo的讨论、§2、§3.1/3.2、§4、§5、§6和Tables 1—4、§7及致谢。§3.3滤波器解释、混淆矩阵与图注仅文本读取，不据此作独立视觉判读。",
+      "research_record": "ai-learning/notes/ai_yanyi_research/phase2/vision_alignment.json",
+      "research_source_id": "VA-S02"
+    },
+    {
+      "id": "S-vit",
+      "kind": "primary",
+      "title": "An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale",
+      "locator": "https://arxiv.org/pdf/2010.11929v2",
+      "accessed_on": "2026-11-03",
+      "version": "本地为arXiv:2010.11929v2，2021-06-03，首页标ICLR 2021；2020为预印本首发年",
+      "read_scope": "P1—8：首页作者与贡献标记、§1—2、§3.1—3.2、§4.1—4.4及Tables 1—2；§4.5仅作者解释和图注，§4.6只读开头。未读完整自监督实验、附录或全量可视化；Figure 3—5的结论依正文解释，不从曲线取数。",
+      "research_record": "ai-learning/notes/ai_yanyi_research/phase2/vision_alignment.json",
+      "research_source_id": "VA-S03"
+    },
+    {
+      "id": "S-clip",
+      "kind": "primary",
+      "title": "Learning Transferable Visual Models From Natural Language Supervision",
+      "locator": "https://arxiv.org/pdf/2103.00020v1",
+      "accessed_on": "2026-11-03",
+      "version": "arXiv:2103.00020v1，2021-02-26；未核产品公告日期",
+      "read_scope": "P1—9：首页、§1、§2.1—2.5、§3.1.1—3.1.4全部、§3.1.5至P9；P11—12 §3.2及P13开头；P18—20 §5后半的重叠检测边界、完整§6、§7开头，P21 §7.1初段及表格文本；Appendix A.1 P37视频数据处理段、Appendix E P46 Table 15图注与动作识别段、P47该段续文。未完整读鲁棒性实验、全部社会影响、其余附录或曲线；不把Figure 5/10图注与正文解读算作图像核验。",
+      "research_record": "ai-learning/notes/ai_yanyi_research/phase2/vision_alignment.json",
+      "research_source_id": "VA-S04"
+    },
+    {
+      "id": "S-gan",
+      "kind": "primary",
+      "title": "Generative Adversarial Nets",
+      "locator": "https://arxiv.org/pdf/1406.2661v1",
+      "accessed_on": "2026-11-03",
+      "version": "arXiv v1，2014-06-10",
+      "read_scope": "P1–7：首页、§1–3、§4 的假设与结论、Algorithm 1、§5、Tables 1–2、§6，以及 P7 上 §7 的条件生成与推断扩展开头。§4 证明文本经过读取，但未逐式复算。",
+      "research_record": "ai-learning/notes/ai_yanyi_research/phase2/generation.json",
+      "research_source_id": "GEN-S-GAN"
+    },
+    {
+      "id": "S-diffusion15",
+      "kind": "primary",
+      "title": "Deep Unsupervised Learning using Nonequilibrium Thermodynamics",
+      "locator": "https://arxiv.org/pdf/1503.03585v8",
+      "accessed_on": "2026-11-03",
+      "version": "arXiv v8，2015-11-18；首发 2015-03-12 沿用身份 owner",
+      "read_scope": "P1–7：首页；§1 的问题与相关工作；§2.1–2.4 的前向、逆向、概率与变分下界；§2.4.1 扩散日程；§2.5–2.6 的条件后验与边界框架；§3 开头及量化修正脚注。P8 的 Figure 5 图注、Tables 1–2 及说明；P9 §3.2.1 的各数据集说明、§4 和致谢。P8 后部的玩具数据/架构实验细节未完整读入，推导未逐式复算。",
+      "research_record": "ai-learning/notes/ai_yanyi_research/phase2/generation.json",
+      "research_source_id": "GEN-S-DIFF15"
+    },
+    {
+      "id": "S-ddpm",
+      "kind": "primary",
+      "title": "Denoising Diffusion Probabilistic Models",
+      "locator": "https://arxiv.org/pdf/2006.11239v2",
+      "accessed_on": "2026-11-03",
+      "version": "arXiv v2，2020-12-16；首发 2020-06-19 沿用身份 owner",
+      "read_scope": "P1–7：首页、§1–3.4、Algorithms 1–4、Tables 1–2、§4.1–4.2、§4.3 的压缩及渐进生成部分；P14 Appendix B 实验细节整页。",
+      "research_record": "ai-learning/notes/ai_yanyi_research/phase2/generation.json",
+      "research_source_id": "GEN-S-DDPM"
+    },
+    {
+      "id": "S-ldm",
+      "kind": "primary",
+      "title": "High-Resolution Image Synthesis with Latent Diffusion Models",
+      "locator": "https://arxiv.org/pdf/2112.10752v2",
+      "accessed_on": "2026-11-03",
+      "version": "arXiv v2，2022-04-13；首发 2021-12-20，CVPR 2022。本文采用 v2 的文本模型与实验，不倒填到 v1。",
+      "read_scope": "P1–7：§1–3.3、§4.1–4.3、Tables 1–3 与 Figures 6–7 图注；P9 §5–6 和致谢；P16 Appendix A changelog 及同页 Appendix B 开头；P25 Table 15 文本任务相关行，P26 Table 17，P27 E.3.2 的文本生成评测说明。",
+      "research_record": "ai-learning/notes/ai_yanyi_research/phase2/generation.json",
+      "research_source_id": "GEN-S-LDM"
+    },
+    {
+      "id": "S-sd14",
+      "kind": "official",
+      "title": "Stable Diffusion v1-4 Model Card",
+      "locator": "https://huggingface.co/CompVis/stable-diffusion-v1-4",
+      "accessed_on": "2026-11-03",
+      "version": "明确 checkpoint 为 v1-4；main 分支模型卡于 2026-11-03 获取，未固定仓库 commit",
+      "read_scope": "模型卡返回全文；重点读取 Model Details、Training Data、Training Procedure 中 v1-1/v1-2/v1-3/v1-4 路径、Limitations and Bias 及 Evaluation Results 的文字条件。",
+      "research_record": "ai-learning/notes/ai_yanyi_research/phase2/generation.json",
+      "research_source_id": "GEN-S-SD14",
+      "version_note": "模型版本明确v1.4；模型卡main快照有内容哈希，未固定仓库commit，不能倒写为2022初始发布文件。"
+    },
+    {
+      "id": "S-dit",
+      "kind": "primary",
+      "title": "Scalable Diffusion Models with Transformers",
+      "locator": "https://arxiv.org/pdf/2212.09748v2",
+      "accessed_on": "2026-11-03",
+      "version": "arXiv v2，2023-03-02；首发 2022-12-19 沿用身份 owner",
+      "read_scope": "P1–9 主文：首页与实习脚注、§1–6、Tables 1–3、Figures 3–10 图注及对应正文分析；包括 §5.2 模型计算与采样计算的区分。",
+      "research_record": "ai-learning/notes/ai_yanyi_research/phase2/generation.json",
+      "research_source_id": "GEN-S-DIT"
+    },
+    {
+      "id": "L-inventory",
+      "kind": "local",
+      "title": "AI演义发展节点与来源身份核定清单",
+      "locator": "ai-learning/notes/ai_yanyi_research/source-map.json",
+      "accessed_on": "2026-11-03",
+      "read_scope": "51页/36对象完整清单、对应原文、身份纠正与待核外围判断；身份核定不冒充全文精读。"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C-brook",
+      "claim": "Brook以数据流/核/规约及编译运行时，将GPU通用计算的表达与硬件映射分开；不是任意程序自动并行或AlexNet的已证直接软件依赖。",
+      "report_anchor": "paper-brook",
+      "support": "direct",
+      "source_ids": [
+        "S-brook",
+        "S-gpu-history"
+      ],
+      "critical": true,
+      "evidence": "Brook作者稿§1–4说明stream/kernel/reduction及编译运行时，§5–6讨论传输与调用代价；CUDA关系另由NVIDIA历史短文核定。"
+    },
+    {
+      "id": "C-alexnet",
+      "claim": "AlexNet把数据、CNN、训练配方与GPU实现组织成大规模表示学习方案；原文主模型约6000万参数、两张各3GB GTX580，不能将整体结果归为单一技巧。",
+      "report_anchor": "paper-alexnet",
+      "support": "direct",
+      "source_ids": [
+        "S-alexnet"
+      ],
+      "critical": true,
+      "evidence": "正式论文§1–5的架构、数据、双GPU与正则化设置；§3.2说明每卡3GB及分割；参数约6000万为原文口径。"
+    },
+    {
+      "id": "C-resnet",
+      "claim": "ResNet针对加深后训练也可能退化的问题学习残差修正；Transformer明确采用并引用残差连接，组件传播不等于模型整体相同。",
+      "report_anchor": "paper-resnet",
+      "support": "derived",
+      "source_ids": [
+        "S-resnet",
+        "S-transformer"
+      ],
+      "critical": true,
+      "evidence": "ResNet§1、§3及§4.1比较plain/residual训练；Transformer§3.1与参考文献[11]明确残差采用。"
+    },
+    {
+      "id": "C-distillation",
+      "claim": "蒸馏通过教师预测分布监督学生，把训练和部署的模型形态分开，不是无损复制参数或大语言模型时代才出现的思想。",
+      "report_anchor": "paper-distillation",
+      "support": "direct",
+      "source_ids": [
+        "S-distill"
+      ],
+      "critical": true,
+      "evidence": "蒸馏§1–2区分训练/部署与软目标，§3–4及Table 1给出任务结果，§8限定未完成的specialist再蒸馏。"
+    },
+    {
+      "id": "C-word2vec",
+      "claim": "Word2Vec的CBOW/Skip-gram以局部预测学习可复用词表示，不是首次向量化语言，也不等于完整上下文网络。",
+      "report_anchor": "paper-word2vec",
+      "support": "direct",
+      "source_ids": [
+        "S-word2vec"
+      ],
+      "critical": true,
+      "evidence": "Word2Vec§1.2承认连续表示前史，§2–3定义CBOW/Skip-gram及计算目标；Tables 3/7说明部件价值与互补。"
+    },
+    {
+      "id": "C-seq2seq",
+      "claim": "LSTM seq2seq通过固定规模状态连接变长输入输出；直接翻译与SMT候选重排是不同实验。",
+      "report_anchor": "paper-seq2seq",
+      "support": "direct",
+      "source_ids": [
+        "S-seq2seq"
+      ],
+      "critical": true,
+      "evidence": "seq2seq§1–2定义固定规模状态与变长输出；§3.1–3.6、Tables 1–2区分直接翻译与候选重排。"
+    },
+    {
+      "id": "C-bahdanau-attention",
+      "claim": "Bahdanau Attention按生成步骤加权读取源位置表示，仍保留循环结构；与Sutskever论文的理解次序不等于首次发表先后。",
+      "report_anchor": "paper-bahdanau-attention",
+      "support": "direct",
+      "source_ids": [
+        "S-bahdanau",
+        "S-seq2seq"
+      ],
+      "critical": true,
+      "evidence": "Bahdanau§3.1–3.2定义逐步骤软读取、§6.1讨论计算；两篇arXiv版本历史分别为2014-09-01和09-10，不按本文问题顺序倒写。"
+    },
+    {
+      "id": "C-gnmt",
+      "claim": "GNMT仍为循环编码—解码系统，结合Attention、WordPiece、残差与部署工程；BERT的WordPiece采用引用GNMT。",
+      "report_anchor": "paper-gnmt",
+      "support": "direct",
+      "source_ids": [
+        "S-gnmt",
+        "S-bert"
+      ],
+      "critical": true,
+      "evidence": "首页作者署名；GNMT§3.1–3.3、§4.1、§6说明循环架构/WordPiece/低精度；BERT§3输入表示及Wu et al. 2016引用提供部件连接。"
+    },
+    {
+      "id": "C-transformer",
+      "claim": "Transformer以self-attention构造序列表示、改变位置递归依赖，原始自回归生成仍逐步进行；并非全网络只剩Attention。",
+      "report_anchor": "paper-transformer",
+      "support": "direct",
+      "source_ids": [
+        "S-transformer"
+      ],
+      "critical": true,
+      "evidence": "Transformer§3.1–3.2.3给出自注意力/交叉注意力/mask，§4/Table 1比较依赖路径，§3开头保留自回归生成。"
+    },
+    {
+      "id": "C-gpt1",
+      "claim": "GPT-1预训练上下文处理网络再通过任务监督微调适配，迁移范围超出词表，但不等于冻结权重直接完成所有任务。",
+      "report_anchor": "paper-gpt1",
+      "support": "direct",
+      "source_ids": [
+        "S-gpt1"
+      ],
+      "critical": true,
+      "evidence": "GPT-1§3的无监督预训练与监督微调、输入转换；§2列明前驱，Table 5比较无预训练设置。"
+    },
+    {
+      "id": "C-bert",
+      "claim": "BERT以双向遮蔽及句对目标获取可迁移能力，主要仍监督微调；与自回归目标是分叉，不是永久淘汰关系。",
+      "report_anchor": "paper-bert",
+      "support": "direct",
+      "source_ids": [
+        "S-bert",
+        "S-gpt1"
+      ],
+      "critical": true,
+      "evidence": "BERT§3定义遮蔽和句对目标与微调，§5.1/Table 5比较目标；与GPT-1目标对照不是全任务胜负判决。"
+    },
+    {
+      "id": "C-gpt2",
+      "claim": "GPT-2将无需任务参数更新的迁移作为重点，输入形式可指定任务；其zero-shot用语不能机械等同GPT-3零示例定义。",
+      "report_anchor": "paper-gpt2",
+      "support": "direct",
+      "source_ids": [
+        "S-gpt2",
+        "S-gpt3"
+      ],
+      "critical": true,
+      "evidence": "GPT-2§2–3说明WebText、任务前缀和无梯度迁移；§3.5–3.8中部分任务含示例，§4讨论记忆与泛化。"
+    },
+    {
+      "id": "C-gpt3",
+      "claim": "GPT-3系统区分不同示例设置，few-shot主要改变输入而非任务梯度；175B参数、300B训练tokens及资源配置依据不因少样本使用而消失。",
+      "report_anchor": "paper-gpt3",
+      "support": "direct",
+      "source_ids": [
+        "S-gpt3",
+        "S-kaplan"
+      ],
+      "critical": true,
+      "evidence": "GPT-3§2定义zero/one/few-shot与微调，Tables 2.1–2.2、§2.1–2.3记录175B/300B及资源；正文引用Kaplan指导配置。"
+    },
+    {
+      "id": "C-scaling-laws",
+      "claim": "Scaling Laws以有条件经验规律研究规模与训练预算分配，不等于任何能力对参数规模无条件单调。",
+      "report_anchor": "paper-scaling-laws",
+      "support": "direct",
+      "source_ids": [
+        "S-kaplan"
+      ],
+      "critical": true,
+      "evidence": "Kaplan§1/Figure 1与§6说明条件性规模规律、效率前沿及预算分配；不是训练至收敛必然最省计算。"
+    },
+    {
+      "id": "C-chinchilla",
+      "claim": "Chinchilla在共同预算问题上重新测量参数与训练量分配，强调随预算共同增长，不是模型越小越好或否定缩放研究。",
+      "report_anchor": "paper-chinchilla",
+      "support": "derived",
+      "source_ids": [
+        "S-chinchilla",
+        "S-kaplan"
+      ],
+      "critical": true,
+      "evidence": "Hoffmann§2–3、Figures 2–3及Table 2重新扫描规模/时长并比较分配；§4验证模型，未把单个配置当永久最优。"
+    },
+    {
+      "id": "C-zero",
+      "claim": "ZeRO分片训练状态以改善显存可行性，通信与其他状态仍有代价；它与训练预算优化是互补层次而非Chinchilla的历史后继。",
+      "report_anchor": "paper-zero",
+      "support": "derived",
+      "source_ids": [
+        "S-zero",
+        "S-chinchilla"
+      ],
+      "critical": true,
+      "evidence": "ZeRO§3–9及Tables 1–2定义状态分片与通信，§10说明实现范围；发表先于Chinchilla，本文只作层次互补对照。"
+    },
+    {
+      "id": "C-megascale",
+      "claim": "MegaScale将并行、通信、数据加载、观测与容错共同组织，使名义算力成为可持续进度；正文明确讨论ZeRO状态分片及通信。",
+      "report_anchor": "paper-megascale",
+      "support": "direct",
+      "source_ids": [
+        "S-megascale",
+        "S-zero"
+      ],
+      "critical": true,
+      "evidence": "MegaScale§2–4给出并行、通信重叠、数据和容错，§6记录系统实验；正文明确介绍ZeRO状态分片。"
+    },
+    {
+      "id": "C-laion5b",
+      "claim": "LAION利用CLIP筛选图文配对并支持OpenCLIP训练，构成模型—数据反馈；它不是原始CLIP数据，开放索引不自动解决版权与偏差。",
+      "report_anchor": "paper-laion5b",
+      "support": "direct",
+      "source_ids": [
+        "S-laion",
+        "S-clip"
+      ],
+      "critical": true,
+      "evidence": "LAION§3.1–3.2说明CLIP筛选，§5.2/Table 2给出OpenCLIP训练，§6–7及datasheet说明偏差和许可边界。"
+    },
+    {
+      "id": "C-refinedweb",
+      "claim": "RefinedWeb引用Chinchilla的数据需求并以清洗/去重和训练对照检验网页数据价值，不证明精选来源永久无用或数据无限。",
+      "report_anchor": "paper-refinedweb",
+      "support": "direct",
+      "source_ids": [
+        "S-refinedweb",
+        "S-chinchilla"
+      ],
+      "critical": true,
+      "evidence": "RefinedWeb§1/Scale first明确引用Hoffmann；§3–4及Tables 2–5说明处理和比较层级，§5–6保留限制。"
+    },
+    {
+      "id": "C-sparse-moe",
+      "claim": "2017稀疏MoE在LSTM系统中分离总专家容量与每输入激活计算；路由、批量、负载和通信仍决定实际效率。",
+      "report_anchor": "paper-sparse-moe",
+      "support": "direct",
+      "source_ids": [
+        "S-moe"
+      ],
+      "critical": true,
+      "evidence": "MoE首页为2017-01-23，§2–4说明top-k门控、批量、网络和均衡；§5–6/Tables 1–5展示特定任务与资源条件。"
+    },
+    {
+      "id": "C-lora",
+      "claim": "LoRA冻结基座、学习低秩更新；省适配状态和任务增量而非取消基座计算，可合并部署结论有固定线性任务等条件。",
+      "report_anchor": "paper-lora",
+      "support": "direct",
+      "source_ids": [
+        "S-lora"
+      ],
+      "critical": true,
+      "evidence": "LoRA§4定义低秩更新及固定线性层合并，并讨论多任务批次限制；§5、§7.1–7.2说明适配结果和秩边界。"
+    },
+    {
+      "id": "C-alphago-zero",
+      "claim": "AlphaGo Zero通过自弈、搜索与网络训练形成反馈循环；不依赖人类棋谱不等于没有规则和设计，不能据此建立到LLM thinking的直接历史因果。",
+      "report_anchor": "paper-alphago-zero",
+      "support": "direct",
+      "source_ids": [
+        "S-alphago"
+      ],
+      "critical": true,
+      "evidence": "Nature正式元数据与镜像首页DOI一致；P354–358及Methods的Self-play、Domain knowledge、Search说明学习/搜索/规则边界。"
+    },
+    {
+      "id": "C-instructgpt",
+      "claim": "InstructGPT在GPT-3上用示范、偏好比较、奖励建模与优化改变行为目标；评价偏好具有提示分布和人群边界。",
+      "report_anchor": "paper-instructgpt",
+      "support": "direct",
+      "source_ids": [
+        "S-instruct",
+        "S-gpt3"
+      ],
+      "critical": true,
+      "evidence": "InstructGPT§1–3.6定义GPT-3基座、SFT/RM/PPO和标注；§4.1、§5.2–5.3限定偏好结果、人群及残余问题。"
+    },
+    {
+      "id": "C-cot",
+      "claim": "CoT提示改变推理时的输入与生成组织，不要求为该提示实验再训练参数；多写token本身不保证同样收益。",
+      "report_anchor": "paper-cot",
+      "support": "direct",
+      "source_ids": [
+        "S-cot"
+      ],
+      "critical": true,
+      "evidence": "首页作者署名；CoT§2–3.4说明few-shot中间步骤提示，§6说明未为该法微调；Table 6区分CoT与无信息点号等对照。"
+    },
+    {
+      "id": "C-react",
+      "claim": "ReAct交错语言推理、动作和环境观察，使过程接受外部信息；交互不等于每轮参数训练，也不消除所有错误。",
+      "report_anchor": "paper-react",
+      "support": "direct",
+      "source_ids": [
+        "S-react",
+        "S-cot"
+      ],
+      "critical": true,
+      "evidence": "ReAct§2–4与Tables 1–4定义thought/action/observation和冻结模型提示实验；§3.3记录错误与任务差异。"
+    },
+    {
+      "id": "C-tulu3",
+      "claim": "Tülu 3把数据策展、SFT、偏好优化、RLVR及评价展开；模型基座为Llama3.1，示范/偏好/可核验反馈各有分工。",
+      "report_anchor": "paper-tulu3",
+      "support": "direct",
+      "source_ids": [
+        "S-tulu",
+        "S-instruct"
+      ],
+      "critical": true,
+      "evidence": "首页作者署名；Tulu v5§2–2.4给出数据策展和三种训练阶段；§4–6区分SFT、DPO、RLVR及反馈；原文基座为Llama3.1。"
+    },
+    {
+      "id": "C-deepvideo",
+      "claim": "DeepVideo比较视频时间融合与数据条件，多帧输入不自动解决运动表示；它是视频理解而非生成研究。",
+      "report_anchor": "paper-deepvideo",
+      "support": "direct",
+      "source_ids": [
+        "S-deepvideo"
+      ],
+      "critical": true,
+      "evidence": "DeepVideo§3比较时间融合，§4及Tables 1–4记录Sports-1M与迁移；不把帧数增多自动等同运动理解。"
+    },
+    {
+      "id": "C-two-stream",
+      "claim": "双流网络将RGB外观与光流运动分开学习再融合，回应视频表示问题，也保留前处理代价和假设。",
+      "report_anchor": "paper-two-stream",
+      "support": "direct",
+      "source_ids": [
+        "S-two-stream",
+        "S-deepvideo"
+      ],
+      "critical": true,
+      "evidence": "Two-Stream§1明确回应DeepVideo，§2–5定义RGB/光流两路与训练，§6–7说明动作识别任务及成本。"
+    },
+    {
+      "id": "C-vit",
+      "claim": "ViT把图像patch表示送入Transformer骨架，数据条件与视觉先验取舍仍重要；它不把所有视觉任务变成语言生成。",
+      "report_anchor": "paper-vit",
+      "support": "direct",
+      "source_ids": [
+        "S-vit",
+        "S-transformer"
+      ],
+      "critical": true,
+      "evidence": "ViT§3定义patch序列与标准Transformer，§4.1–4.4及Tables 1–2记录预训练规模条件，非全部视觉任务保证。"
+    },
+    {
+      "id": "C-clip",
+      "claim": "CLIP以图文对比目标和候选文本描述组织视觉任务接口，图像编码器可用ResNet或ViT；它不是图像生成器。",
+      "report_anchor": "paper-clip",
+      "support": "direct",
+      "source_ids": [
+        "S-clip",
+        "S-vit"
+      ],
+      "critical": true,
+      "evidence": "CLIP§2.1–2.5定义两编码器和对比目标，§3.1定义文本指定类别；§6–7保留能力与偏差边界。"
+    },
+    {
+      "id": "C-gan",
+      "claim": "GAN联合学习生成器与判别器，以判别信号帮助生成学习；判别器不是完美固定裁判，也不保证实际优化和多样性。",
+      "report_anchor": "paper-gan",
+      "support": "direct",
+      "source_ids": [
+        "S-gan"
+      ],
+      "critical": true,
+      "evidence": "GAN§3/Algorithm 1说明生成器与判别器交替学习，§4给出理想假设，§5–6限定实证与多样性问题。"
+    },
+    {
+      "id": "C-diffusion-2015",
+      "claim": "2015扩散研究以逐步扰动与学习逆过程组织生成，与GAN为不同机制探索，不能把引用或评估代码共享当成方法直接继承。",
+      "report_anchor": "paper-diffusion-2015",
+      "support": "direct",
+      "source_ids": [
+        "S-diffusion15",
+        "S-gan"
+      ],
+      "critical": true,
+      "evidence": "2015扩散§2定义前向扰动与逆过程，§1.2/§3.2.1及致谢区分方法来源、GAN比较及评估代码共享。"
+    },
+    {
+      "id": "C-ddpm",
+      "claim": "DDPM在早期扩散家族中组合噪声参数化、训练目标与网络配方，训练监督构造和多步生成的计算路径不同。",
+      "report_anchor": "paper-ddpm",
+      "support": "direct",
+      "source_ids": [
+        "S-ddpm",
+        "S-diffusion15"
+      ],
+      "critical": true,
+      "evidence": "DDPM§3.2–3.4、Algorithms 1–2及§4.2/Table 2说明参数化与训练目标，Appendix B记录实际网络组件。"
+    },
+    {
+      "id": "C-ldm",
+      "claim": "LDM将感知压缩与潜空间扩散分开，对抗目标可进入压缩器；所读v2文本条件为BERT tokenizer和联合训练Transformer，不等于冻结CLIP或完整预训练BERT。",
+      "report_anchor": "paper-ldm",
+      "support": "direct",
+      "source_ids": [
+        "S-ldm",
+        "S-ddpm"
+      ],
+      "critical": true,
+      "evidence": "LDM v2§3.1–3.3分开压缩/扩散/条件；§4.3.1与Appendix A/Table 17记录文本编码及修订；对抗目标在压缩器中而非整个模型为GAN。"
+    },
+    {
+      "id": "C-dit",
+      "claim": "DiT把ViT式骨架/patch接口与潜空间扩散组合，原核心实验为ImageNet类别条件图像生成，不据此证明全部文生视频或Sora谱系。",
+      "report_anchor": "paper-dit",
+      "support": "direct",
+      "source_ids": [
+        "S-dit",
+        "S-vit",
+        "S-ldm"
+      ],
+      "critical": true,
+      "evidence": "首页作者署名；DiT§3–4定义潜空间、ViT式骨架与类别条件设置，§5/Tables 1–3研究配置；§6没有验证Sora或通用文生视频谱系。"
+    },
+    {
+      "id": "C-bitter-lesson",
+      "claim": "The Bitter Lesson是2019年作者的历史归纳与方法论主张，强调可持续利用计算的学习/搜索，不否定所有人类设计和工程。",
+      "report_anchor": "paper-bitter-lesson",
+      "support": "derived",
+      "source_ids": [
+        "S-bitter"
+      ],
+      "critical": true,
+      "evidence": "Sutton2019作者网页全文：学习/搜索、四组历史案例、研究投入与结尾方法论；原文并不排除全部结构与工程。"
+    },
+    {
+      "id": "C-inventory",
+      "claim": "51页讲义按正文核定36个主线对象（33篇论文、2篇研究报告、1篇观点文章）；合讲页与多页同对象不机械计数。",
+      "report_anchor": "原讲义与本文的对应关系",
+      "support": "derived",
+      "source_ids": [
+        "S-lecture",
+        "L-inventory"
+      ],
+      "critical": true,
+      "evidence": "source-map.json的pages覆盖1–51，counting为33论文/2研究报告/1观点文章；P12、P28拆分，P21–25合为同一文章，映射已独立复核。"
+    },
+    {
+      "id": "C-sd14",
+      "claim": "明确版本SD v1.4将冻结CLIP文本表示作为条件，并采用特定LAION子集/续训路径；不把它倒填为原LDM或全部SD版本。",
+      "report_anchor": "30. 从论文到Stable Diffusion",
+      "support": "direct",
+      "source_ids": [
+        "S-sd14",
+        "S-ldm",
+        "S-laion",
+        "S-clip"
+      ],
+      "critical": true,
+      "evidence": "官方v1.4模型卡的Model Details、Training Data/Procedure说明冻结CLIP文本分支和特定LAION续训路径；与LDM v2§3.3/4.3.1对照，不泛化到全部版本。"
+    },
+    {
+      "id": "C-hardware-lens",
+      "claim": "Hardware Lottery讨论软硬件与研究激励塑造方法尝试机会；与Bitter Lesson的长期可扩展性问题可以互补，不将任一论点当统一历史定律。",
+      "report_anchor": "硬件彩票：算法的机会",
+      "support": "derived",
+      "source_ids": [
+        "S-hardware",
+        "S-bitter"
+      ],
+      "critical": true,
+      "evidence": "Hardware Lottery§4–7讨论软件、硬件和研究激励；Bitter Lesson完整正文讨论长期可利用计算的研究取向；对照是本文综合，不冒充统一实验证明。"
+    },
+    {
+      "id": "C-people",
+      "claim": "人物与机构围绕共同参与、研究条件及明确组件传播进入主线；共同作者本身不构成全部技术因果证明。",
+      "report_anchor": "人物线不是附录，也不是英雄谱",
+      "support": "derived",
+      "source_ids": [
+        "S-alexnet",
+        "S-seq2seq",
+        "S-distill",
+        "S-gnmt",
+        "S-gpt1",
+        "S-clip",
+        "S-laion",
+        "S-tulu",
+        "S-react",
+        "S-cot",
+        "S-dit"
+      ],
+      "critical": true,
+      "evidence": "原文首页作者表及贡献/致谢；本轮补入吴永辉、Jason Wei、姚顺雨/Narasimhan、Lambert、Peebles/谢赛宁等具名锚。Narasimhan共同参与GPT-1与ReAct仅作人物线索，不升级为方法因果。"
+    },
+    {
+      "id": "C-identity-corrections",
+      "claim": "使用核定的Brook、AlphaGo Zero、Tülu3与DeepVideo原文；区分论文和产品，已知旧错配不作事实依据。",
+      "report_anchor": "原讲义和旧索引中的若干错链",
+      "support": "derived",
+      "source_ids": [
+        "L-inventory",
+        "S-brook",
+        "S-alphago",
+        "S-tulu",
+        "S-deepvideo"
+      ],
+      "critical": true,
+      "evidence": "source-map的I01–I09对照PDF内嵌URL、本地首页与正式元数据；Brook用Stanford作者稿，AlphaGoZero用nature24270，Tulu3用2411.15124，DeepVideo用CVPR官方入口。"
+    },
+    {
+      "id": "E-gpu",
+      "claim": "编程抽象与工业化线索，不是AlexNet直接软件依赖。",
+      "report_anchor": "Brook → CUDA",
+      "support": "derived",
+      "source_ids": [
+        "S-gpu-history",
+        "S-brook"
+      ],
+      "critical": true,
+      "evidence": "连接索引只按原文支持的关系类型表述；研究包的edge_checks已独立核对，最终Reviewer仍需复核此主稿表述。"
+    },
+    {
+      "id": "E-residual",
+      "claim": "残差组件的明确采用与引用。",
+      "report_anchor": "ResNet → Transformer",
+      "support": "derived",
+      "source_ids": [
+        "S-resnet",
+        "S-transformer"
+      ],
+      "critical": true,
+      "evidence": "连接索引只按原文支持的关系类型表述；研究包的edge_checks已独立核对，最终Reviewer仍需复核此主稿表述。"
+    },
+    {
+      "id": "E-nmt",
+      "claim": "编码—解码、Attention与部署系统的连接。",
+      "report_anchor": "seq2seq / Attention → GNMT",
+      "support": "derived",
+      "source_ids": [
+        "S-seq2seq",
+        "S-bahdanau",
+        "S-gnmt"
+      ],
+      "critical": true,
+      "evidence": "连接索引只按原文支持的关系类型表述；研究包的edge_checks已独立核对，最终Reviewer仍需复核此主稿表述。"
+    },
+    {
+      "id": "E-wordpiece",
+      "claim": "BERT对WordPiece采用的文献引用。",
+      "report_anchor": "GNMT → BERT",
+      "support": "derived",
+      "source_ids": [
+        "S-gnmt",
+        "S-bert"
+      ],
+      "critical": true,
+      "evidence": "连接索引只按原文支持的关系类型表述；研究包的edge_checks已独立核对，最终Reviewer仍需复核此主稿表述。"
+    },
+    {
+      "id": "E-pretraining",
+      "claim": "骨架复用但训练目标和信息可见性分叉。",
+      "report_anchor": "Transformer → GPT-1 / BERT",
+      "support": "derived",
+      "source_ids": [
+        "S-transformer",
+        "S-gpt1",
+        "S-bert"
+      ],
+      "critical": true,
+      "evidence": "连接索引只按原文支持的关系类型表述；研究包的edge_checks已独立核对，最终Reviewer仍需复核此主稿表述。"
+    },
+    {
+      "id": "E-scale-config",
+      "claim": "明确资源配置依据。",
+      "report_anchor": "Scaling Laws → GPT-3",
+      "support": "derived",
+      "source_ids": [
+        "S-kaplan",
+        "S-gpt3"
+      ],
+      "critical": true,
+      "evidence": "连接索引只按原文支持的关系类型表述；研究包的edge_checks已独立核对，最终Reviewer仍需复核此主稿表述。"
+    },
+    {
+      "id": "E-data-demand",
+      "claim": "研究动机将训练量需求转为数据工程。",
+      "report_anchor": "Chinchilla → RefinedWeb",
+      "support": "derived",
+      "source_ids": [
+        "S-chinchilla",
+        "S-refinedweb"
+      ],
+      "critical": true,
+      "evidence": "连接索引只按原文支持的关系类型表述；研究包的edge_checks已独立核对，最终Reviewer仍需复核此主稿表述。"
+    },
+    {
+      "id": "E-system",
+      "claim": "状态分片与通信组织的明确连接。",
+      "report_anchor": "ZeRO → MegaScale",
+      "support": "derived",
+      "source_ids": [
+        "S-zero",
+        "S-megascale"
+      ],
+      "critical": true,
+      "evidence": "连接索引只按原文支持的关系类型表述；研究包的edge_checks已独立核对，最终Reviewer仍需复核此主稿表述。"
+    },
+    {
+      "id": "E-visual-backbone",
+      "claim": "组件关系不是对象集合间的任意笛卡尔积。",
+      "report_anchor": "Transformer → ViT；ViT / ResNet → CLIP",
+      "support": "derived",
+      "source_ids": [
+        "S-transformer",
+        "S-vit",
+        "S-clip"
+      ],
+      "critical": true,
+      "evidence": "连接索引只按原文支持的关系类型表述；研究包的edge_checks已独立核对，最终Reviewer仍需复核此主稿表述。"
+    },
+    {
+      "id": "E-data-loop",
+      "claim": "模型筛选数据与开放数据支持训练的反馈。",
+      "report_anchor": "CLIP → LAION → OpenCLIP",
+      "support": "derived",
+      "source_ids": [
+        "S-clip",
+        "S-laion"
+      ],
+      "critical": true,
+      "evidence": "连接索引只按原文支持的关系类型表述；研究包的edge_checks已独立核对，最终Reviewer仍需复核此主稿表述。"
+    },
+    {
+      "id": "E-latent",
+      "claim": "从像素计算与感知细节分析转向潜空间生成。",
+      "report_anchor": "DDPM → LDM",
+      "support": "derived",
+      "source_ids": [
+        "S-ddpm",
+        "S-ldm"
+      ],
+      "critical": true,
+      "evidence": "连接索引只按原文支持的关系类型表述；研究包的edge_checks已独立核对，最终Reviewer仍需复核此主稿表述。"
+    },
+    {
+      "id": "E-adversarial-component",
+      "claim": "对抗目标作为部件进入，不是原始GAN代码直接成为LDM。",
+      "report_anchor": "对抗训练 → LDM压缩器",
+      "support": "derived",
+      "source_ids": [
+        "S-ldm",
+        "S-gan"
+      ],
+      "critical": true,
+      "evidence": "连接索引只按原文支持的关系类型表述；研究包的edge_checks已独立核对，最终Reviewer仍需复核此主稿表述。"
+    },
+    {
+      "id": "E-product",
+      "claim": "指定版本的实现、条件和训练数据关系。",
+      "report_anchor": "LDM + CLIP文本表示 + LAION子集 → SD v1.4",
+      "support": "derived",
+      "source_ids": [
+        "S-ldm",
+        "S-clip",
+        "S-laion",
+        "S-sd14"
+      ],
+      "critical": true,
+      "evidence": "连接索引只按原文支持的关系类型表述；研究包的edge_checks已独立核对，最终Reviewer仍需复核此主稿表述。"
+    },
+    {
+      "id": "E-dit-meeting",
+      "claim": "框架与骨架组合，保留类别条件实验边界。",
+      "report_anchor": "ViT / LDM → DiT",
+      "support": "derived",
+      "source_ids": [
+        "S-vit",
+        "S-ldm",
+        "S-dit"
+      ],
+      "critical": true,
+      "evidence": "连接索引只按原文支持的关系类型表述；研究包的edge_checks已独立核对，最终Reviewer仍需复核此主稿表述。"
+    },
+    {
+      "id": "E-behavior",
+      "claim": "同一基座上的目标转换。",
+      "report_anchor": "GPT-3 → InstructGPT",
+      "support": "derived",
+      "source_ids": [
+        "S-gpt3",
+        "S-instruct"
+      ],
+      "critical": true,
+      "evidence": "连接索引只按原文支持的关系类型表述；研究包的edge_checks已独立核对，最终Reviewer仍需复核此主稿表述。"
+    },
+    {
+      "id": "E-interaction",
+      "claim": "推理与环境观察的过程组合，不等于在线训练。",
+      "report_anchor": "CoT → ReAct",
+      "support": "derived",
+      "source_ids": [
+        "S-cot",
+        "S-react"
+      ],
+      "critical": true,
+      "evidence": "连接索引只按原文支持的关系类型表述；研究包的edge_checks已独立核对，最终Reviewer仍需复核此主稿表述。"
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U-brook",
+      "title": "Brook for GPUs: Stream Computing on Graphics Hardware",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S-brook",
+        "S-gpu-history"
+      ],
+      "report_anchor": "paper-brook"
+    },
+    {
+      "id": "U-alexnet",
+      "title": "ImageNet Classification with Deep Convolutional Neural Networks",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S-alexnet"
+      ],
+      "report_anchor": "paper-alexnet"
+    },
+    {
+      "id": "U-resnet",
+      "title": "Deep Residual Learning for Image Recognition",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S-resnet",
+        "S-transformer"
+      ],
+      "report_anchor": "paper-resnet"
+    },
+    {
+      "id": "U-distillation",
+      "title": "Distilling the Knowledge in a Neural Network",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S-distill"
+      ],
+      "report_anchor": "paper-distillation"
+    },
+    {
+      "id": "U-word2vec",
+      "title": "Efficient Estimation of Word Representations in Vector Space",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S-word2vec"
+      ],
+      "report_anchor": "paper-word2vec"
+    },
+    {
+      "id": "U-seq2seq",
+      "title": "Sequence to Sequence Learning with Neural Networks",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S-seq2seq"
+      ],
+      "report_anchor": "paper-seq2seq"
+    },
+    {
+      "id": "U-bahdanau-attention",
+      "title": "Neural Machine Translation by Jointly Learning to Align and Translate",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S-bahdanau",
+        "S-seq2seq"
+      ],
+      "report_anchor": "paper-bahdanau-attention"
+    },
+    {
+      "id": "U-gnmt",
+      "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S-gnmt",
+        "S-bert"
+      ],
+      "report_anchor": "paper-gnmt"
+    },
+    {
+      "id": "U-transformer",
+      "title": "Attention Is All You Need",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S-transformer"
+      ],
+      "report_anchor": "paper-transformer"
+    },
+    {
+      "id": "U-gpt1",
+      "title": "Improving Language Understanding by Generative Pre-Training",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S-gpt1"
+      ],
+      "report_anchor": "paper-gpt1"
+    },
+    {
+      "id": "U-bert",
+      "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S-bert",
+        "S-gpt1"
+      ],
+      "report_anchor": "paper-bert"
+    },
+    {
+      "id": "U-gpt2",
+      "title": "Language Models are Unsupervised Multitask Learners",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S-gpt2",
+        "S-gpt3"
+      ],
+      "report_anchor": "paper-gpt2"
+    },
+    {
+      "id": "U-gpt3",
+      "title": "Language Models are Few-Shot Learners",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S-gpt3",
+        "S-kaplan"
+      ],
+      "report_anchor": "paper-gpt3"
+    },
+    {
+      "id": "U-scaling-laws",
+      "title": "Scaling Laws for Neural Language Models",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S-kaplan"
+      ],
+      "report_anchor": "paper-scaling-laws"
+    },
+    {
+      "id": "U-chinchilla",
+      "title": "Training Compute-Optimal Large Language Models",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S-chinchilla",
+        "S-kaplan"
+      ],
+      "report_anchor": "paper-chinchilla"
+    },
+    {
+      "id": "U-zero",
+      "title": "ZeRO: Memory Optimizations Toward Training Trillion Parameter Models",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S-zero",
+        "S-chinchilla"
+      ],
+      "report_anchor": "paper-zero"
+    },
+    {
+      "id": "U-megascale",
+      "title": "MegaScale: Scaling Large Language Model Training to More Than 10,000 GPUs",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S-megascale",
+        "S-zero"
+      ],
+      "report_anchor": "paper-megascale"
+    },
+    {
+      "id": "U-laion5b",
+      "title": "LAION-5B: An open large-scale dataset for training next generation image-text models",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S-laion",
+        "S-clip"
+      ],
+      "report_anchor": "paper-laion5b"
+    },
+    {
+      "id": "U-refinedweb",
+      "title": "The RefinedWeb Dataset for Falcon LLM: Outperforming Curated Corpora with Web Data, and Web Data Only",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S-refinedweb",
+        "S-chinchilla"
+      ],
+      "report_anchor": "paper-refinedweb"
+    },
+    {
+      "id": "U-sparse-moe",
+      "title": "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S-moe"
+      ],
+      "report_anchor": "paper-sparse-moe"
+    },
+    {
+      "id": "U-lora",
+      "title": "LoRA: Low-Rank Adaptation of Large Language Models",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S-lora"
+      ],
+      "report_anchor": "paper-lora"
+    },
+    {
+      "id": "U-alphago-zero",
+      "title": "Mastering the game of Go without human knowledge",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S-alphago"
+      ],
+      "report_anchor": "paper-alphago-zero"
+    },
+    {
+      "id": "U-instructgpt",
+      "title": "Training language models to follow instructions with human feedback",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S-instruct",
+        "S-gpt3"
+      ],
+      "report_anchor": "paper-instructgpt"
+    },
+    {
+      "id": "U-cot",
+      "title": "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S-cot"
+      ],
+      "report_anchor": "paper-cot"
+    },
+    {
+      "id": "U-react",
+      "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S-react",
+        "S-cot"
+      ],
+      "report_anchor": "paper-react"
+    },
+    {
+      "id": "U-tulu3",
+      "title": "Tulu 3: Pushing Frontiers in Open Language Model Post-Training",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S-tulu",
+        "S-instruct"
+      ],
+      "report_anchor": "paper-tulu3"
+    },
+    {
+      "id": "U-deepvideo",
+      "title": "Large-scale Video Classification with Convolutional Neural Networks",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S-deepvideo"
+      ],
+      "report_anchor": "paper-deepvideo"
+    },
+    {
+      "id": "U-two-stream",
+      "title": "Two-Stream Convolutional Networks for Action Recognition in Videos",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S-two-stream",
+        "S-deepvideo"
+      ],
+      "report_anchor": "paper-two-stream"
+    },
+    {
+      "id": "U-vit",
+      "title": "An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S-vit",
+        "S-transformer"
+      ],
+      "report_anchor": "paper-vit"
+    },
+    {
+      "id": "U-clip",
+      "title": "Learning Transferable Visual Models From Natural Language Supervision",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S-clip",
+        "S-vit"
+      ],
+      "report_anchor": "paper-clip"
+    },
+    {
+      "id": "U-gan",
+      "title": "Generative Adversarial Nets",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S-gan"
+      ],
+      "report_anchor": "paper-gan"
+    },
+    {
+      "id": "U-diffusion-2015",
+      "title": "Deep Unsupervised Learning using Nonequilibrium Thermodynamics",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S-diffusion15",
+        "S-gan"
+      ],
+      "report_anchor": "paper-diffusion-2015"
+    },
+    {
+      "id": "U-ddpm",
+      "title": "Denoising Diffusion Probabilistic Models",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S-ddpm",
+        "S-diffusion15"
+      ],
+      "report_anchor": "paper-ddpm"
+    },
+    {
+      "id": "U-ldm",
+      "title": "High-Resolution Image Synthesis with Latent Diffusion Models",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S-ldm",
+        "S-ddpm"
+      ],
+      "report_anchor": "paper-ldm"
+    },
+    {
+      "id": "U-dit",
+      "title": "Scalable Diffusion Models with Transformers",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S-dit",
+        "S-vit",
+        "S-ldm"
+      ],
+      "report_anchor": "paper-dit"
+    },
+    {
+      "id": "U-bitter-lesson",
+      "title": "The Bitter Lesson",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S-bitter"
+      ],
+      "report_anchor": "paper-bitter-lesson"
+    },
+    {
+      "id": "U-lenses",
+      "title": "原PDF学习目的及历史/范式/人的三视角",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S-lecture",
+        "S-bitter",
+        "S-hardware"
+      ],
+      "report_anchor": "三种视角，落在同一张问题图上"
+    },
+    {
+      "id": "U-reader-method",
+      "title": "把新论文定位到问题图与证据条件",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S-lecture"
+      ],
+      "report_anchor": "以后拿到一篇新论文"
+    },
+    {
+      "id": "U-cross-route",
+      "title": "跨路线连接的类型、证据与边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S-transformer",
+        "S-vit",
+        "S-clip",
+        "S-laion",
+        "S-ldm",
+        "S-dit",
+        "S-gpt3",
+        "S-instruct"
+      ],
+      "report_anchor": "连接索引：几条有明确依据"
+    }
+  ],
+  "limitations": [
+    "按用户要求深读AI发展路径而非每篇论文的全部技术细节；原文读取范围逐源记录，未声称所有公式、附录、图像和优先权均穷尽。",
+    "未训练或运行这些模型、下载模型权重、重做原文基准或完整数据合规/污染审计；机制与效果按实际读取的原始证据解释。",
+    "原PDF为二手路线材料；标题、内嵌链接、现职/履历、营销式起点及时间相邻都不自动成为事实或因果。",
+    "本文按问题组织，允许回看更早年代；问题顺序与发表顺序不同，直接组件采用、条件支撑、继承修正和主题对照分别标示。",
+    "部分原文内部数值或版本存在差异（如Transformer英法分数、Chinchilla MMLU、Tulu IFEval口径），正文不依赖争议精确数；详细记录仍保留。",
+    "Stable Diffusion只核定v1.4模型卡的读取快照，未固定main的commit，不外推其他版本；原LDM论文与产品条件/数据路径不混同。",
+    "The Bitter Lesson与Hardware Lottery按作者论证理解，未逐案重建全部AI历史或证明其为普遍定律；不建立未经核的DiT到Sora等产品谱系。",
+    "人物与机构只保留能服务路径、由原文或正式资料支持的参与和条件，未全面审计后续职业经历。",
+    "两段样章已获用户认可；最终报告的阅读效果仍需要读者反馈，脚本和独立模型评分不能替代。"
+  ],
+  "research_artifacts": [
+    {
+      "path": "ai-learning/notes/ai_yanyi_research/phase2/foundations.json",
+      "sha256": "46dfc1b82aa52621c824fca6a47a5770c3550d853982d0a821575e11113c8979",
+      "review_path": "ai-learning/notes/ai_yanyi_research/phase2/foundations.review.json",
+      "review_sha256": "e6f72b3247eb3f4f7b04cf1a95b208ad76e7602a297bcf554f0993c2421d876c",
+      "scope": "独立核查研究材料；不自动替代最终主稿的旗舰复核。",
+      "post_review_correction": false
+    },
+    {
+      "path": "ai-learning/notes/ai_yanyi_research/phase2/infrastructure_data.json",
+      "sha256": "9400a323e685d876d9c3d3502bdb4482866f3a9d386eb5dba0889a7799b446ca",
+      "review_path": "ai-learning/notes/ai_yanyi_research/phase2/infrastructure_data.review.json",
+      "review_sha256": "9ed26076a371e4f709ec8179f747065b2e45519a0c74586759f3881544a870e6",
+      "scope": "独立核查研究材料；不自动替代最终主稿的旗舰复核。",
+      "post_review_correction": false
+    },
+    {
+      "path": "ai-learning/notes/ai_yanyi_research/phase2/language_pretraining.json",
+      "sha256": "2328a2983222b865c7700b5b9c07f525d122c1e66991d549f8cda063f3adf839",
+      "review_path": "ai-learning/notes/ai_yanyi_research/phase2/language_pretraining.review.json",
+      "review_sha256": "8333866b35e86e1f5c461f6d20da7e42061a167c2d1e1457c5e4df41fc762dcb",
+      "scope": "独立核查研究材料；不自动替代最终主稿的旗舰复核。",
+      "post_review_correction": false
+    },
+    {
+      "path": "ai-learning/notes/ai_yanyi_research/phase2/alignment_action.json",
+      "sha256": "778b4798223a379407d75a5f8fd2cd3cdf10b34b4311f28d96506897851e56dc",
+      "review_path": "ai-learning/notes/ai_yanyi_research/phase2/alignment_action.review.json",
+      "review_sha256": "4be2c634da66579cbbf97ebc25a058f68489999cba7ac2a18910b7d6d03bb750",
+      "scope": "独立核查研究材料；不自动替代最终主稿的旗舰复核。",
+      "post_review_correction": false
+    },
+    {
+      "path": "ai-learning/notes/ai_yanyi_research/phase2/efficiency_and_lesson.json",
+      "sha256": "c9b399c0bee76d4a175cf57f9bc705029ce9749d603a2438850e71c9cdfa8b85",
+      "review_path": "ai-learning/notes/ai_yanyi_research/phase2/efficiency_and_lesson.review.json",
+      "review_sha256": "72671f8f619bdd730e34a8868a3cfb0b4664d8a17a37a38f6a2f0b93c23f9577",
+      "scope": "独立核查研究材料；不自动替代最终主稿的旗舰复核。",
+      "post_review_correction": false
+    },
+    {
+      "path": "ai-learning/notes/ai_yanyi_research/phase2/vision_alignment.json",
+      "sha256": "697f0e33c8b0d4e85418c861f556706c9906c82849adb78395caff56c21fb627",
+      "review_path": "ai-learning/notes/ai_yanyi_research/phase2/vision_alignment.review.json",
+      "review_sha256": "c15143c58874b58a55a6322bb25bb5ca6b5d53664394fddc27c977ccdefc3b65",
+      "scope": "独立核查研究材料；不自动替代最终主稿的旗舰复核。",
+      "post_review_correction": false
+    },
+    {
+      "path": "ai-learning/notes/ai_yanyi_research/phase2/generation.json",
+      "sha256": "ae9fd235b2cd28a22a539d21a7e05aaf47f4443ad6d758cd5e9138f4c0417b93",
+      "review_path": "ai-learning/notes/ai_yanyi_research/phase2/generation.review.json",
+      "review_sha256": "71d0b86ab4bdaac8316ec4c7ca850fa885c844f58539dff673b2e17adc557195",
+      "scope": "独立核查研究材料；不自动替代最终主稿的旗舰复核。",
+      "post_review_correction": false
+    },
+    {
+      "path": "ai-learning/notes/ai_yanyi_research/sequence-evidence.json",
+      "sha256": "e15934c3c2e5c30223d2ef1f87ba7bb97394fa1bc6c23cf1ad46b6ec5c398191",
+      "review_path": "ai-learning/notes/ai_yanyi_research/sequence.review.json",
+      "review_sha256": "c89cd7fab322948e0b969b6a8276be47afb163a235a86bc031383344b69d524f",
+      "scope": "独立核查研究材料；不自动替代最终主稿的旗舰复核。",
+      "post_review_correction": false
+    },
+    {
+      "path": "ai-learning/notes/ai_yanyi_research/scaling-evidence.json",
+      "sha256": "061c6515220f03bfeb29304bfe8755fb07291f0dc6387b6040d5a6323b495715",
+      "review_path": "ai-learning/notes/ai_yanyi_research/scaling.review.json",
+      "review_sha256": "a0e7e3948b1dc3104b87c37ce7f6531bbd8daf328a9a3b70145d388b0af32e56",
+      "scope": "独立核查研究材料；不自动替代最终主稿的旗舰复核。",
+      "post_review_correction": true
+    }
+  ],
+  "inventory": {
+    "path": "ai-learning/notes/ai_yanyi_research/source-map.json",
+    "sha256": "82a789b2a65bca73da52eb44391e32f00804686f0de3c34c23440546be551521",
+    "pdf_pages": 51,
+    "core_object_count": 36,
+    "papers": 33,
+    "research_reports": 2,
+    "essay_articles": 1,
+    "note": "论文研究范围按用户最新限定；不是全文逐公式/全图表审计。"
+  },
+  "revision_note": "revision 2：按首轮主审建议补充已核作者姓名与合作锚点，未扩展新技术结论、研究对象或后续履历。"
+}

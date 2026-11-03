@@ -1,0 +1,397 @@
+{
+  "schema_version": 1,
+  "task_id": "foundations",
+  "review_date": "2026-11-03",
+  "reviewer": {
+    "role": "独立核查者，非研究作者",
+    "harness": "claude-code",
+    "model": "claude-gpt-6-astra-max[1m]",
+    "identity_basis": "本次运行环境声明",
+    "subagents_used": false
+  },
+  "research_file": "ai-learning/notes/ai_yanyi_research/phase2/foundations.json",
+  "research_sha256": "46dfc1b82aa52621c824fca6a47a5770c3550d853982d0a821575e11113c8979",
+  "research_hash_scope": "研究文件原始字节；读稿前计算，读稿后复算一致。派发未提供另一个预期哈希，不能声称完成了与调度端预期快照的比对。",
+  "scope": {
+    "object_ids": ["brook", "alexnet", "resnet", "distillation"],
+    "question": "数据、GPU与训练方法怎样共同让深度表示变得可行，扩展能力又怎样引出压缩与训练难题？",
+    "checks": ["原始贡献与实验范围", "数字、数据集、模型数量和评估口径", "训练困难与部署成本的区分", "跨路线连接的证据强度", "人物参与与技术因果的区分", "少数学路线研究所需的核心内容覆盖"],
+    "pass_meaning": "只表示这个证据包在所声明来源、版本和研究范围内可供统一主笔使用，不表示全书、正式报告或全部历史叙述通过。"
+  },
+  "source_first_method": {
+    "sequence": [
+      "先计算研究文件哈希但不读其内容；查询最小上下文，并读取source-map中四对象及相关页面/问题。",
+      "独立读取四篇原文缓存；核对本地PDF指纹，并重新提取文本确认缓存一致。另读NVIDIA官方历史短文缓存和Transformer原PDF的残差段落与引用。",
+      "在会话中先形成条件汇合、优化与部署分叉的主要内容和关系地图，再读取研究JSON。",
+      "将独立地图映射到研究稿，核对33项登记主张、8条关系边，并补读讲义四个相关页面以核对pdf_summary与校准事项。"
+    ],
+    "context_result": "eacli context catalog与knowledge.ai定向检索成功；AI演义查询无匹配，随后只读指定owner及相关来源。",
+    "acquisition": "复用已获取的正确原文与eacli收据，没有重新联网抓取，也没有新增下载或运行外来代码。读取缓存的Python使用-I。",
+    "evidence_policy": "论文实测均作为作者报告，不当成独立复现；从正文、表格文字和图注得出的判断不冒充视觉曲线核查。"
+  },
+  "source_read_scope": [
+    {
+      "source_id": "F-S-BROOK",
+      "title": "Brook for GPUs: Stream Computing on Graphics Hardware",
+      "authors": ["Ian Buck", "Tim Foley", "Daniel Horn", "Jeremy Sugerman", "Kayvon Fatahalian", "Mike Houston", "Pat Hanrahan"],
+      "year": 2004,
+      "official_url": "https://dl.acm.org/doi/10.1145/1015706.1015800",
+      "actual_source_url": "https://graphics.stanford.edu/papers/brookgpu/brookgpu.pdf",
+      "version": "Stanford作者托管稿，首页无修订号；题名、七位作者及机构与核定对象一致。",
+      "sha256": "05f5548350ac39bffb9973e33258eac5cacfd1b5c76422516b1c4f4d980ec21b",
+      "hash_scope": "缓存PDF原始字节，核查者重算。",
+      "text_sha256": "997019345d1bac5b58c006e16451392e996c5b1566c8e52f51684e647e905a42",
+      "text_integrity": "所读排版文本与核查者对该PDF重新运行pdftotext -layout的输出逐字节相同。",
+      "actual_read_scope": "首页身份、§1–2的前史和图形API障碍、§3流/核/规约及CPU执行的操作边界、§4编译器/运行时与硬件限制、§5应用设置/正文性能比较/传输与调用成本、§6讨论、§7团队与支持条件。附录代码未审计；不据图形读取曲线。",
+      "limits": "未比较Stanford稿与ACM排印稿的逐页差异；错误的本地28_brook_2004.pdf未用作技术证据。"
+    },
+    {
+      "source_id": "F-S-ALEXNET",
+      "title": "ImageNet Classification with Deep Convolutional Neural Networks",
+      "authors": ["Alex Krizhevsky", "Ilya Sutskever", "Geoffrey E. Hinton"],
+      "year": 2012,
+      "official_url": "https://papers.nips.cc/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html",
+      "actual_source_url": "https://papers.nips.cc/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf",
+      "version": "NIPS 2012正式论文集PDF的eacli提取正文；不是后来的转载改写版。",
+      "sha256": "9007b711d07262b9b1e0d385d3728fea172ac89e12d7e01cc94e174dd96e8e2d",
+      "hash_scope": "eacli result.result字符串UTF-8字节，核查者重算；不是PDF字节哈希。",
+      "text_sha256": "0322d3dd79d604a46f4d4f7cb59dd89857f4c973befdb49b079479fbc5e71523",
+      "text_integrity": "所读content.txt与收据内解析出的content字段完全一致，返回URL为正式PDF URL。",
+      "actual_read_scope": "首页、§1–7、Table 1/2、脚注1/2/5、与CNN前史/ImageNet/ReLU/Dropout有关的引用。重点核数据版本、网络与GPU设置、正则化成本、2010与2012结果和集成预训练范围。",
+      "limits": "未获取或审计原PDF字节、cuda-convnet代码、特征可视化及补充材料；提取文本有连字和空格损坏，未用其复核公式排版。"
+    },
+    {
+      "source_id": "F-S-RESNET",
+      "title": "Deep Residual Learning for Image Recognition",
+      "authors": ["Kaiming He", "Xiangyu Zhang", "Shaoqing Ren", "Jian Sun"],
+      "year": 2015,
+      "official_url": "https://arxiv.org/abs/1512.03385",
+      "versioned_url": "https://arxiv.org/pdf/1512.03385v1",
+      "version": "arXiv:1512.03385v1，2015-12-10，首页核实；不与2016会议年份混用。",
+      "local_relative_path": "ai-learning/papers/07_resnet_2015.pdf",
+      "sha256": "1e0651b6810ecba34a3dbc5b5b0209226f889004607c1f203540a48d64e5a93a",
+      "hash_scope": "本地PDF原始字节；与source-map及研究稿一致。",
+      "text_sha256": "c2faf9ffb3d04cee85577fee0d4a6ebc2dfaee3a6a643d5a9e29b8eef7aa3a7b",
+      "text_integrity": "所读缓存与原PDF重新提取的排版文本逐字节相同。",
+      "actual_read_scope": "首页、§1–4.3、Table 1–8、相关图注及正文、参考文献[21]/[41]；重点为退化诊断、恒等/投影捷径、原版块相加后非线性、BN与训练惯例、瓶颈设计、单模型/集成及1202层边界。检测附录不是本次逐项审计对象。",
+      "limits": "没有视觉测量训练曲线，没有复现实验或裁定优化机制的完整理论。"
+    },
+    {
+      "source_id": "F-S-DISTILLATION",
+      "title": "Distilling the Knowledge in a Neural Network",
+      "authors": ["Geoffrey Hinton", "Oriol Vinyals", "Jeff Dean"],
+      "year": 2015,
+      "official_url": "https://arxiv.org/abs/1503.02531",
+      "versioned_url": "https://arxiv.org/pdf/1503.02531v1",
+      "version": "arXiv:1503.02531v1，2015-03-09，首页核实。",
+      "local_relative_path": "ai-learning/papers/23_distilling_2015.pdf",
+      "sha256": "74e6689115c539db499f9d6153edecb364059926fd45402454f8210442444c5a",
+      "hash_scope": "本地PDF原始字节；与source-map及研究稿一致。",
+      "text_sha256": "4982e15a4951b958e4347a328dc98c646e603ed1ed9fdc68fb0e708d44734d9f",
+      "text_integrity": "所读缓存与原PDF重新提取的排版文本逐字节相同。",
+      "actual_read_scope": "§1–8、Table 1–5、首页同等贡献脚注、致谢与相关参考文献；核训练/部署动机、概率分布与温度、MNIST、语音、JFT专家训练及未完成蒸馏、软目标正则化、2006前驱与AlexNet引用。§2.1只核机制条件，不逐式复算。",
+      "limits": "不把论文的语音模型实验当成部署上线的独立收据，不裁定整个教师—学生方法史的优先权。"
+    },
+    {
+      "source_id": "F-S-CUDA-HISTORY",
+      "title": "Inside the Programming Evolution of GPU Computing",
+      "authors": [],
+      "author_note": "所读提取内容无个人署名；NVIDIA机构发布，转述Ian Buck访谈。",
+      "publisher": "NVIDIA Technical Blog",
+      "year": 2015,
+      "official_url": "https://developer.nvidia.com/blog/inside-the-programming-evolution-of-gpu-computing/",
+      "version": "publishedTime为2015-10-28；metadata列2022-08-21修改时间；核查的是缓存所保存的当前返回内容。",
+      "sha256": "eb72eb699fdeaec94252c97da78593265707e92312e7bd68d2776344833efae6",
+      "hash_scope": "eacli result.result字符串UTF-8字节，核查者重算；不含执行收据外层。",
+      "actual_read_scope": "短文正文和日期元数据；明确核Brook前驱称谓、Stanford团队、2004年Buck将工作带到NVIDIA、面向C程序员的并行抽象。",
+      "limits": "未读外链完整访谈；机构回顾不提升为独立史学证明，不以其中当时职位冒充现职。"
+    },
+    {
+      "source_id": "F-S-TRANSFORMER",
+      "title": "Attention Is All You Need",
+      "authors": ["Ashish Vaswani", "Noam Shazeer", "Niki Parmar", "Jakob Uszkoreit", "Llion Jones", "Aidan N. Gomez", "Łukasz Kaiser", "Illia Polosukhin"],
+      "year": 2017,
+      "official_url": "https://arxiv.org/abs/1706.03762",
+      "versioned_url": "https://arxiv.org/pdf/1706.03762v7",
+      "version": "arXiv:1706.03762v7，2023-08-02；作品年份2017，未声称读取2017首版。",
+      "local_relative_path": "ai-learning/papers/01_attention_is_all_you_need_2017.pdf",
+      "sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "hash_scope": "本地PDF原始字节，核查者重算。",
+      "actual_read_scope": "从原PDF直接提取首页题名/作者/版本、p.3 §3.1、p.11参考文献[11]；确认encoder/decoder子层采用残差连接，其引文指向He等的ResNet。",
+      "limits": "仅核跨路线接口，不复核sequence包、翻译结果或全架构贡献。"
+    },
+    {
+      "source_id": "F-S-LECTURE",
+      "title": "AI演义：36篇论文开启你的探索之旅",
+      "authors": ["谢青池"],
+      "author_identity_basis": "沿用核定来源登记；本轮不另核作者身份。",
+      "year": null,
+      "official_url": null,
+      "version": "用户提供的原始51页PDF；只核指定相关页。",
+      "local_relative_path": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
+      "hash_scope": "本地PDF原始字节，核查者重算。",
+      "actual_read_scope": "P10、P11、P13、P14文字层及source-map四对象相关页面/问题；用于核对讲义摘要和修正对象，不用讲义支持技术事实。",
+      "limits": "文字层存在丢字；未视觉读取P10趋势图，不核其中数值、所有人物履历或其他32个对象。"
+    }
+  ],
+  "source_content_map": [
+    {
+      "id": "V-B1",
+      "object": "brook",
+      "independent_unit": "GPU已有通用计算实例，待解决的是图形API、数据组织与硬件限制形成的编程门槛，不是首次赋予GPU可编程性。",
+      "source_locators": ["F-S-BROOK §1–2.2"],
+      "report_locations": ["nodes[brook].background", "F-B01"],
+      "coverage": "covered"
+    },
+    {
+      "id": "V-B2",
+      "object": "brook",
+      "independent_unit": "streams/kernels/reductions与brcc/BRT构成编程抽象和实现链；可移植性不等于任意程序自动并行或所有硬件约束消失。",
+      "source_locators": ["F-S-BROOK §3–4"],
+      "report_locations": ["nodes[brook].change", "nodes[brook].limits", "F-B02", "F-B03", "F-B05"],
+      "coverage": "covered"
+    },
+    {
+      "id": "V-B3",
+      "object": "brook",
+      "independent_unit": "GPU优势受应用、后端、CPU基线、传输与调用成本限制；选定应用核性能不能替代端到端收益。",
+      "source_locators": ["F-S-BROOK §5.1–5.2、§6"],
+      "report_locations": ["F-B04", "F-B05", "F-E08"],
+      "coverage": "covered"
+    },
+    {
+      "id": "V-A1",
+      "object": "alexnet",
+      "independent_unit": "图像任务需要规模更大的带标签数据，同时保留卷积结构先验；ImageNet总库、比赛子集与额外监督预训练是不同数据范围。",
+      "source_locators": ["F-S-ALEXNET §1–2、§6–7"],
+      "report_locations": ["F-A01", "F-A02", "F-A07", "F-A08", "F-E03"],
+      "coverage": "covered"
+    },
+    {
+      "id": "V-A2",
+      "object": "alexnet",
+      "independent_unit": "网络结构、优化卷积、显存约束下的双GPU切分、ReLU与防过拟合方法一起使训练可行；这些不是可相互替代的单因素解释。",
+      "source_locators": ["F-S-ALEXNET §3–5"],
+      "report_locations": ["nodes[alexnet].change", "F-A03", "F-A04", "F-A05", "spine_contribution"],
+      "coverage": "covered"
+    },
+    {
+      "id": "V-A3",
+      "object": "alexnet",
+      "independent_unit": "2010主要实验与2012冠军系统必须拆开，后者的七模型集成和额外数据预训练使15.3%不能归给单个基础CNN。",
+      "source_locators": ["F-S-ALEXNET §6、Table 1/2、脚注5"],
+      "report_locations": ["F-A06", "F-A07", "F-PC06"],
+      "coverage": "covered"
+    },
+    {
+      "id": "V-R1",
+      "object": "resnet",
+      "independent_unit": "加深plain网会升高训练误差，故不只是泛化过拟合；作者在BN下检查信号与梯度，不能用梯度消失代替问题诊断。",
+      "source_locators": ["F-S-RESNET §1、§4.1 Plain Networks、Table 2"],
+      "report_locations": ["F-R01", "F-R02", "F-R04"],
+      "coverage": "covered"
+    },
+    {
+      "id": "V-R2",
+      "object": "resnet",
+      "independent_unit": "残差重表述和捷径提供更易优化的参数化；恒等/投影、相加后非线性和瓶颈设计均需保留边界。",
+      "source_locators": ["F-S-RESNET §3.1–3.4、§4.1 Deeper Bottleneck Architectures"],
+      "report_locations": ["nodes[resnet].mechanism_intuition", "nodes[resnet].limits", "F-R03", "F-R05"],
+      "coverage": "covered"
+    },
+    {
+      "id": "V-R3",
+      "object": "resnet",
+      "independent_unit": "ImageNet深度收益及CIFAR-10千层实验共同区分可优化与可泛化；单模型验证结果和集成测试结果也不可混用。",
+      "source_locators": ["F-S-RESNET Table 4–6、§4.2 Exploring Over 1000 layers"],
+      "report_locations": ["F-R05", "F-R06", "F-E08"],
+      "coverage": "covered"
+    },
+    {
+      "id": "V-D1",
+      "object": "distillation",
+      "independent_unit": "训练提取数据结构与服务大量用户是不同优化目标；用教师学习、再训练部署模型的分工已有模型压缩前驱。",
+      "source_locators": ["F-S-DISTILLATION Abstract、§1、References [1]"],
+      "report_locations": ["F-D01", "F-D02", "nodes[distillation].route_role"],
+      "coverage": "covered"
+    },
+    {
+      "id": "V-D2",
+      "object": "distillation",
+      "independent_unit": "知识可以体现为预测函数而非某组参数；软分布揭示错误类别间的相对关系，温度改变监督信息的呈现，有真值时可合用硬标签。",
+      "source_locators": ["F-S-DISTILLATION §1–2"],
+      "report_locations": ["nodes[distillation].change", "nodes[distillation].mechanism_intuition", "F-D03"],
+      "coverage": "covered"
+    },
+    {
+      "id": "V-D3",
+      "object": "distillation",
+      "independent_unit": "MNIST的小学生接近但未复制教师；语音实验把十成员集成变成同成员规模的单模型，减少部署负担不等于测得固定延迟倍数。",
+      "source_locators": ["F-S-DISTILLATION §3–4.1、Table 1、§8"],
+      "report_locations": ["F-D04", "F-D05", "nodes[distillation].limits"],
+      "coverage": "covered"
+    },
+    {
+      "id": "V-D4",
+      "object": "distillation",
+      "independent_unit": "JFT专家模型回应连训练完整集成都太昂贵的问题，展示的是专家集成收益；论文结尾明确尚未完成回蒸馏。",
+      "source_locators": ["F-S-DISTILLATION §5、§8末"],
+      "report_locations": ["F-D06", "nodes[distillation].evidence", "people_and_institutions"],
+      "coverage": "covered",
+      "scope_note": "本包正确保留结果性质，但不展开专家分组、dustbin及推理优化细节；这些不是当前四节点路线研究的必备展开。"
+    },
+    {
+      "id": "V-D5",
+      "object": "distillation",
+      "independent_unit": "§6还用仅3%语音迁移数据说明软目标的正则化信息；§3醒目的缺失类别结果包含按测试集调bias的步骤。",
+      "source_locators": ["F-S-DISTILLATION §6、Table 5；§3 p.4"],
+      "report_locations": ["nodes[distillation].mechanism_intuition", "nodes[distillation].limits", "F-D07"],
+      "coverage": "partial",
+      "blocking": false,
+      "assessment": "缺失类别评估边界已准确覆盖；§6的3%具体案例未进入研究稿。已有软目标机制、MNIST和语音主实验足以支撑本包问题，未要求穷举实验，故不作为核心缺漏或必改项。"
+    },
+    {
+      "id": "V-P1",
+      "object": "people_and_institutions",
+      "independent_unit": "人物线可依赖署名、论文时点单位、硬件支持、同等贡献声明和机构明确叙述；不能把同名作者或后来的职位升级成技术因果。",
+      "source_locators": ["四篇原文首页", "F-S-BROOK §7", "F-S-DISTILLATION 首页脚注", "F-S-CUDA-HISTORY 正文"],
+      "report_locations": ["F-P01", "F-P02", "F-P03", "F-P04", "F-N01", "people_and_institutions"],
+      "coverage": "covered"
+    },
+    {
+      "id": "V-X1",
+      "object": "cross_route",
+      "independent_unit": "Brook到CUDA是有机构证词的历史连接；到AlexNet只能写间接使能。ResNet直接借用AlexNet部分训练惯例，而直接架构基线来自VGG；Transformer则明确引用残差构件。",
+      "source_locators": ["F-S-CUDA-HISTORY 正文", "F-S-ALEXNET §1脚注1、§3.2", "F-S-RESNET §3.3–3.4、References [21]/[41]", "F-S-TRANSFORMER §3.1、References [11]"],
+      "report_locations": ["F-E01", "F-E02", "F-E04", "F-E07"],
+      "coverage": "covered"
+    },
+    {
+      "id": "V-X2",
+      "object": "overall_problem_chain",
+      "independent_unit": "[推测｜核查者独立综合] 以可用计算与数据/学习配方汇合为主干，再把可训练与可部署分成两支；同一条问题链容纳历史、范式和工程人物，而不是四篇论文串行接力。",
+      "source_locators": ["F-S-BROOK §5–6", "F-S-ALEXNET §1、§3–7", "F-S-RESNET §1、§4", "F-S-DISTILLATION §1、§4、§8"],
+      "report_locations": ["F-E03", "F-E05", "F-E06", "F-E08", "spine_contribution"],
+      "coverage": "covered",
+      "assessment": "研究稿主轴与独立地图一致；已明确历史时间顺序不等于讲述顺序，蒸馏不构成ResNet的直接前因。"
+    }
+  ],
+  "claims_checked": [
+    {"claim_id": "F-B01", "result": "supported", "source_locator": "F-S-BROOK §1、§2.2", "check": "引言已列线性代数、模拟和光追前驱；图形API与硬件知识障碍明确，不误称首次GPGPU。"},
+    {"claim_id": "F-B02", "result": "supported", "source_locator": "F-S-BROOK §3开头、§3.1–3.3", "check": "原文区分已有Brook与GPU适配，核逐元素处理，规约要求结合性；并非完整C自动并行。"},
+    {"claim_id": "F-B03", "result": "supported", "source_locator": "F-S-BROOK §4、§4.1–4.3", "check": "brcc、Cg、供应商编译器与BRT三个后端一致，多输出拆分和纹理限制未被抹去。"},
+    {"claim_id": "F-B04", "result": "supported", "source_locator": "F-S-BROOK §5设置、§5.1及Figure 3后正文", "check": "ATI X800 XT Platinum、预发布GeForce 6800、3GHz Pentium 4配置可定位；约7/4.7/0.99倍均有正文，不含初末传输的限定正确。"},
+    {"claim_id": "F-B05", "result": "supported", "source_locator": "F-S-BROOK §3.4、§5.2、§6", "check": "数据传输与核调用开销是独立约束；通用寻址/异步传输是未来需求，ScatterOp/GatherOp当时由CPU执行。"},
+    {"claim_id": "F-A01", "result": "supported", "source_locator": "F-S-ALEXNET §1–2", "check": "超过1500万/约22000类是原论文总库口径，1000类/约120万训练/5万验证是竞赛子集；多数实验属2010。未把§2测试数外推给2012。"},
+    {"claim_id": "F-A02", "result": "supported", "source_locator": "F-S-ALEXNET Abstract、§1、§3.5、§4", "check": "5卷积+3全连接、6000万参数、65万神经元均为原报告；卷积局部性与平稳性先验明确，未声称独立精算。"},
+    {"claim_id": "F-A03", "result": "supported", "source_locator": "F-S-ALEXNET §3.2及脚注2、§5末", "check": "两张各3GB GTX 580、选择性跨GPU连接、约90轮和5–6天一致；双卡对照非等模型硬件消融。"},
+    {"claim_id": "F-A04", "result": "supported", "source_locator": "F-S-ALEXNET §3.1、Figure 1图注", "check": "六倍指特定四层CNN在CIFAR-10达到25%训练错误率所需迭代，未扩成AlexNet整套训练加速。"},
+    {"claim_id": "F-A05", "result": "supported", "source_locator": "F-S-ALEXNET §4.1–4.2", "check": "裁剪翻转、RGB扰动、CPU/GPU流水重叠与首两个全连接层Dropout均可定位；收敛迭代约翻倍也正确。"},
+    {"claim_id": "F-A06", "result": "supported", "source_locator": "F-S-ALEXNET §6、Table 1、脚注5、§4.1", "check": "2010测试37.5%/17.0%，未十裁剪平均39.0%/18.3%，top-1/top-5顺序及口径正确。"},
+    {"claim_id": "F-A07", "result": "supported", "source_locator": "F-S-ALEXNET §6、Table 2", "check": "18.2%是单CNN验证top-5；16.4%为五CNN测试；15.3%为七CNN测试且含两套全库预训练模型；第二名26.2%。"},
+    {"claim_id": "F-A08", "result": "supported", "source_locator": "F-S-ALEXNET §1、§7及CNN前驱引用", "check": "原文支持有图像先验的纯监督大CNN在这些基准上有效，不支持发明深度学习或硬件单因论。"},
+    {"claim_id": "F-R01", "result": "supported", "source_locator": "F-S-RESNET §1、§4.1 Plain Networks", "check": "深plain网训练误差也更高，退化不同于仅测试变差的过拟合。"},
+    {"claim_id": "F-R02", "result": "supported", "source_locator": "F-S-RESNET §4.1 p.5及脚注3", "check": "非零前向方差、健康反向梯度范数与三倍迭代仍退化均有说明；低收敛率仍属作者猜想。"},
+    {"claim_id": "F-R03", "result": "supported", "source_locator": "F-S-RESNET §3.1–3.3、Eq.(1)/(2)", "check": "残差相加、维度不同时投影、原版相加后ReLU均正确；未把恒等捷径无权重扩成所有捷径无成本。"},
+    {"claim_id": "F-R04", "result": "supported", "source_locator": "F-S-RESNET Table 2、§4.1", "check": "10-crop验证top-1为27.94/28.54和27.88/25.03；28.54−25.03=3.51个百分点，不是相对百分比或训练误差。"},
+    {"claim_id": "F-R05", "result": "supported", "source_locator": "F-S-RESNET §4.1、Table 4/5、p.7集成说明", "check": "152层单模型最佳设置验证top-5为4.49%，六模型集成测试3.57%；瓶颈设计明确考虑可负担训练时间。"},
+    {"claim_id": "F-R06", "result": "supported", "source_locator": "F-S-RESNET Table 6、§4.2 p.8", "check": "CIFAR-10的1202层训练<0.1%、测试7.93%；110层最佳6.43%、五次均值6.61±0.16。更差测试的过拟合解释归给作者。"},
+    {"claim_id": "F-R07", "result": "supported", "source_locator": "F-S-RESNET §3.3–3.4、References [21]/[41]", "check": "plain基线主要受VGG启发；颜色增强与10-crop测试对AlexNet的明确引用支持具体实践传承。"},
+    {"claim_id": "F-D01", "result": "supported", "source_locator": "F-S-DISTILLATION §1", "check": "训练与部署不同资源目标是原文明说的动机；拆分阶段没有被误写为降低总训练成本。"},
+    {"claim_id": "F-D02", "result": "supported", "source_locator": "F-S-DISTILLATION Abstract、§1、References [1]", "check": "2006 Model compression前驱承认准确；主张限于2015论文如何定位自身，未假称读过2006全文。"},
+    {"claim_id": "F-D03", "result": "supported", "source_locator": "F-S-DISTILLATION §1末、§2", "check": "教师/学生同高温软目标匹配、部署温度1、可选硬标签温度1目标符合原文。少数学范围不要求展开T平方梯度缩放推导。"},
+    {"claim_id": "F-D04", "result": "supported", "source_locator": "F-S-DISTILLATION §3", "check": "教师两层各1200单元67错；小模型两层各800单元146错；温度20蒸馏74错，均为测试错误数。"},
+    {"claim_id": "F-D05", "result": "supported", "source_locator": "F-S-DISTILLATION §4–4.1、Table 1、§8", "check": "帧准确率58.9/61.1/60.8%、WER10.9/10.7/10.7%、十成员到同成员规模单模型均一致；研究稿诚实保留development/test称谓差异及23K词范围。"},
+    {"claim_id": "F-D06", "result": "supported", "source_locator": "F-S-DISTILLATION §5.1、§5.5、§8末、References [7]", "check": "JFT基线CNN引用AlexNet；专家集成结果并非已完成蒸馏。未把引用等同权重或代码复用。"},
+    {"claim_id": "F-D07", "result": "supported", "source_locator": "F-S-DISTILLATION §3 p.4", "check": "98.6%的测试3正确率在把该类bias加3.5以优化测试表现后取得，不能作为无评估反馈的零样本结果。"},
+    {"claim_id": "F-P01", "result": "supported", "source_locator": "F-S-BROOK 首页、§7", "check": "七位作者统一Stanford署名；ATI/NVIDIA供硬件，DARPA及其他机构支持可核。未杜撰个体分工。"},
+    {"claim_id": "F-P02", "result": "supported", "source_locator": "F-S-ALEXNET 首页、§1贡献段", "check": "三位作者单位均Toronto，优化GPU实现以共同署名we陈述；据此不独占分配工程贡献是正确边界。"},
+    {"claim_id": "F-P03", "result": "supported", "source_locator": "F-S-RESNET 首页", "check": "四位作者论文时点署名Microsoft Research，不混入现职。"},
+    {"claim_id": "F-P04", "result": "supported", "source_locator": "F-S-DISTILLATION 首页及脚注；F-S-ALEXNET 首页", "check": "Google Inc.、Hinton的Toronto/CIFAR关联、Hinton与Vinyals同等贡献及跨作品署名均核实，不作为单独因果证据。"},
+    {"claim_id": "F-N01", "result": "supported_as_institutional_account", "source_locator": "F-S-CUDA-HISTORY 正文Brook/CUDA段及日期元数据", "check": "机构短文确有前驱、2004迁移和C程序员抽象目标；研究稿保留来源性质，不声称CUDA只是改名。"},
+    {"claim_id": "F-T01", "result": "supported", "source_locator": "F-S-TRANSFORMER p.3 §3.1、p.11 References [11]", "check": "encoder/decoder各子层残差后接LayerNorm，引用确为He等ResNet；属于构件采用，不是整架构继承。"}
+  ],
+  "edge_checks": [
+    {
+      "edge_id": "F-E01",
+      "result": "supported_with_declared_scope",
+      "evidence": "Brook §3–4的抽象实现与NVIDIA官方历史短文的前驱/人员迁移说明。",
+      "assessment": "可以作编程抽象和人物/机构连续性连接；稿中已经排除改名、代码等同和单人创造。"
+    },
+    {
+      "edge_id": "F-E02",
+      "result": "acceptable_labeled_synthesis",
+      "evidence": "Brook成本模型、NVIDIA历史叙述、AlexNet的GPU训练正文与cuda-convnet脚注。",
+      "assessment": "间接使能有合理依据，不能证实Brook是AlexNet的直接软件依赖；研究稿标推测并明确排除该过强因果，处理合格。"
+    },
+    {
+      "edge_id": "F-E03",
+      "result": "acceptable_labeled_synthesis",
+      "evidence": "AlexNet §1的数据/计算动机、§3–5配方、§6结果。",
+      "assessment": "把数据、GPU、架构和正则化汇入同一问题，符合原文；没有虚构完整正交实验或给因素分配贡献百分比。"
+    },
+    {
+      "edge_id": "F-E04",
+      "result": "supported_with_declared_scope",
+      "evidence": "ResNet §3.3–3.4与References [21]/[41]，以及§4.1退化实验。",
+      "assessment": "有可定位的训练/测试惯例传承，且保留VGG、BN、初始化中间条件；不把抽象问题延续冒充AlexNet简单加层。"
+    },
+    {
+      "edge_id": "F-E05",
+      "result": "acceptable_labeled_synthesis",
+      "evidence": "AlexNet的集成结果；蒸馏§1部署动机、§5.1的AlexNet引用；Hinton在两篇首页署名。",
+      "assessment": "分清问题连接、引文连接和人物交集；没有以同作者或先后年份证明AlexNet单独催生蒸馏。"
+    },
+    {
+      "edge_id": "F-E06",
+      "result": "correctly_excludes_direct_causality",
+      "evidence": "蒸馏§1/§8与ResNet §1/§4分别研究部署与优化；首页预印本日期分别为2015-03-09和2015-12-10。",
+      "assessment": "虽用from/to字段，relation_type、connection和do_not_overconnect均明确这是并行对照而非有向技术因果。主笔应保留这种分叉。"
+    },
+    {
+      "edge_id": "F-E07",
+      "result": "supported_direct_component_adoption",
+      "evidence": "Transformer §3.1残差连接引文[11]，参考文献对应ResNet。",
+      "assessment": "直接采用证据充分，限定在残差构件；研究稿没有把Transformer效果归给残差单因素。"
+    },
+    {
+      "edge_id": "F-E08",
+      "result": "acceptable_labeled_problem_handoff",
+      "evidence": "Brook传输/启动成本，AlexNet显存/训练时间，ResNet千层泛化边界，蒸馏部署目标。",
+      "assessment": "足以提供可编程、可训练、可泛化、可部署的词汇和问题接口；没有冒充语言模型scaling law证据，不需要为这条接口重读整个scaling包。"
+    }
+  ],
+  "requirement_checks": [
+    {"question": "历史、范式和人物是否共同解释问题链，而非逐篇百科？", "result": "met", "basis": "四节点均落回同一瓶颈链；spine_contribution将Brook与AlexNet设为合流，再将ResNet与蒸馏并列，人物只服务实际约束和可核联系。"},
+    {"question": "是否把AlexNet的架构贡献、硬件条件和数据规模分开？", "result": "met", "basis": "F-A01至F-A08分别核数据版本、结构先验、双GPU容量/连接、训练方法和比赛口径；未误称发明深度学习。"},
+    {"question": "是否准确解释ResNet解决的训练困难？", "result": "met", "basis": "训练误差退化、BN下梯度检查、残差重表述和千层泛化边界均有原文依据。"},
+    {"question": "是否解释蒸馏为何区分能力学习与部署形态？", "result": "met", "basis": "以预测映射而非参数为知识载体，保留软目标机制、同成员规模语音学生、非无损及非总训练成本节省边界。"},
+    {"question": "是否混用后续产品、人物履历和原论文？", "result": "met", "basis": "机构与同等贡献据首页，CUDA历史单列机构来源；Google Brain成立因果、人物现职和其他系统贡献未用于证明技术机制。"},
+    {"question": "是否因少数学而漏掉决定结论的条件？", "result": "met", "basis": "关键机制、实验设置和反例均已覆盖；无需补全公式推导、专家集成细节、附录或所有消融才能使用这包。"}
+  ],
+  "validation": {
+    "node_count_checked": 4,
+    "claim_count_checked": 33,
+    "edge_count_checked": 8,
+    "research_reference_errors": [],
+    "source_hashes_match_research": true,
+    "local_pdf_text_caches_match_fresh_extraction": true,
+    "alexnet_text_matches_receipt_content": true,
+    "research_snapshot_unchanged_during_content_review": true,
+    "research_file_modified": false,
+    "new_network_fetches": 0
+  },
+  "issues": [],
+  "verdict": "PASS",
+  "verdict_reason": "已独立对照原始来源核完33项主张和8条关系边，未发现必须修正的事实、数字或因果缺口。核心价值是条件合流与优化/部署分叉，符合用户强调的整体路线连接；唯一部分覆盖的§6附加实验不影响当前问题和结论。",
+  "limitations": [
+    "PASS仅适用于所绑定哈希的foundations证据包；研究稿变化需重新核查，不代表全书终稿通过。",
+    "Brook使用Stanford作者稿，未核与ACM排印稿的逐页差异；AlexNet使用正式PDF的eacli提取文本，其哈希不是PDF字节哈希。",
+    "未视觉核图形或测量曲线；讲义P10趋势数值未获本次核查支持。使用的数字可回到原文正文、表格文字或图注。",
+    "未审计代码、复现实验、测量部署延迟或验证线上发布；所有实验结果仍是论文作者报告。",
+    "Brook到CUDA只核机构公开历史叙述；不裁定全部技术优先权、2006模型压缩论文完整方法、现职履历或Google Brain成立因果。",
+    "Transformer仅核残差连接与引文，使用v7而非首版；未重新复核sequence/scaling证据包或其全套结论。",
+    "独立地图识别出蒸馏§6的3%语音迁移数据实验未在稿中展开；它是可选补充案例，不是当前少数学路线研究的阻断缺漏。"
+  ]
+}

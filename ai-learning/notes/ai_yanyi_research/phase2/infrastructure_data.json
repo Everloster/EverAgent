@@ -1,0 +1,684 @@
+{
+  "task_id": "infrastructure_data",
+  "artifact_kind": "phase2_route_research_evidence",
+  "status": "ready_for_verification",
+  "language": "zh-CN",
+  "scope": {
+    "object_ids": ["zero", "megascale", "laion5b", "refinedweb"],
+    "central_question": "模型之外的显存、并行系统、数据规模和数据质量，怎样决定能力能否被训练出来？",
+    "answer": "[研究综合/推测] 模型结构规定怎样学习，缩放研究帮助分配训练计算预算；但预算要成为可完成的学习过程，还必须跨过三道关：训练状态能放下，计算与通信能持续推进，模型能读到足够且适合目标的数据。ZeRO、MegaScale与两项数据工作分别改变这些约束，并不共同证明‘算力和数据越多就必然越好’。",
+    "primary_material_boundary": "只核四篇指定版本原文及讲义P26—31相关文字。使用足以支撑背景、机制、主要结果和限制的正文与定点附录；未复现实验，未全量精读附录，未核当前产品状态。",
+    "delivery_boundary": "仅生成本研究JSON；原报告、论文、PDF、索引和规则均不修改。此状态表示可交独立复核，不表示正式报告已通过质量门。"
+  },
+  "evidence_types": {
+    "verified_primary_text": "本轮实际读到原文支持；实验和系统运行数字仍是作者报告，非本轮独立复现。",
+    "pdf_summary": "AI演义讲义的概括或叙事定位，不能单独支持技术事实。",
+    "research_synthesis": "以[研究综合/推测]标识的跨来源解释，不冒充历史因果实证。",
+    "unverified_hypothesis": "尚无足够证据；不得当作已核事实进入正文。"
+  },
+  "source_ids": ["INF-ZERO", "INF-MEGASCALE", "INF-LAION", "INF-REFINEDWEB", "INF-PDF"],
+  "sources": [
+    {
+      "id": "INF-ZERO",
+      "object_id": "zero",
+      "title": "ZeRO: Memory Optimizations Toward Training Trillion Parameter Models",
+      "authors": ["Samyam Rajbhandari", "Jeff Rasley", "Olatunji Ruwase", "Yuxiong He"],
+      "year": 2019,
+      "year_basis": "source-map核定首发2019-10-04；本輪实际研究的是2020-05-13修订版，不把修订实验结果全部倒填为2019首发内容。",
+      "official_url": "https://arxiv.org/abs/1910.02054",
+      "version_url": "https://arxiv.org/abs/1910.02054v3",
+      "pdf_url": "https://arxiv.org/pdf/1910.02054v3",
+      "version": "arXiv:1910.02054v3 [cs.LG], 13 May 2020",
+      "repository_path": "ai-learning/papers/25_zero_2019.pdf",
+      "sha256": "c531734c7d9ee647fda9b4f0e1a6abd6d58ad34e862bc945451b09032be3167e",
+      "hash_nature": "本轮对本地PDF原始字节重算SHA-256，与source-map记录相同；不是重新从官方服务器下载所得的独立比对。",
+      "identity_status": "source-map核定，且本轮读取首页题名、作者与v3标记",
+      "actual_read_scope": "首页；§1的模型扩张背景和DeepSpeed发布说明；§3—9正文，含Table 1/2的模型状态显存分析、§5三阶段机制、§7通信量分析和§9计算能力缺口；§10—11正文，含Table 3/4、实现范围、硬件/基线、吞吐与显存实验解释。P7—19为本轮主要连续读取范围。未精读§2、参考文献或AE附录；未视觉复核Figure 1—8，不从曲线自行读数。",
+      "evidence_role": "训练状态、通信代价、实现与理论容量区别的一手来源"
+    },
+    {
+      "id": "INF-MEGASCALE",
+      "object_id": "megascale",
+      "title": "MegaScale: Scaling Large Language Model Training to More Than 10,000 GPUs",
+      "authors": ["Ziheng Jiang", "Haibin Lin", "Yinmin Zhong", "Qi Huang", "Yangrui Chen", "Zhi Zhang", "Yanghua Peng", "Xiang Li", "Cong Xie", "Shibiao Nong", "Yulu Jia", "Sun He", "Hongmin Chen", "Zhihao Bai", "Qi Hou", "Shipeng Yan", "Ding Zhou", "Yiyao Sheng", "Zhuo Jiang", "Haohan Xu", "Haoran Wei", "Zhang Zhang", "Pengfei Nie", "Leqi Zou", "Sida Zhao", "Liang Xiang", "Zherui Liu", "Zhe Li", "Xiaoying Jia", "Jianxi Ye", "Xin Jin", "Xin Liu"],
+      "year": 2024,
+      "official_url": "https://arxiv.org/abs/2402.15627",
+      "version_url": "https://arxiv.org/abs/2402.15627v1",
+      "pdf_url": "https://arxiv.org/pdf/2402.15627v1",
+      "version": "arXiv:2402.15627v1 [cs.LG], 23 Feb 2024",
+      "repository_path": "ai-learning/papers/31_megascale_2024.pdf",
+      "sha256": "4a04bff09d7cd937271662e8ca9a97f0d41eac9be1d35c9c8b2f18f2dc59ad20",
+      "hash_nature": "本轮重算本地PDF字节哈希并匹配source-map；未另作官方下载比对。",
+      "identity_status": "source-map核定，且本轮读取首页题名、作者机构与v1标记",
+      "actual_read_scope": "首页及§1相关段；P2—7的§2背景、§3算法/并行/算子/数据管道/网络协同、§4容错；§5的开头、CUDA事件监测说明片段与§5.2故障依赖定位案例；P9—12的§6训练性能、收敛微实验、生产稳定性、问题修复，含Table 2/3和Figure 10/11/12图注；§7开头。未精读参考文献、全部图像和其余相关工作。Figure 9—12未视觉核查，结论只取正文、表格和图注明确陈述。",
+      "evidence_role": "大规模训练效率、资源口径及可靠性工程的一手来源"
+    },
+    {
+      "id": "INF-LAION",
+      "object_id": "laion5b",
+      "title": "LAION-5B: An open large-scale dataset for training next generation image-text models",
+      "authors": ["Christoph Schuhmann", "Romain Beaumont", "Richard Vencu", "Cade Gordon", "Ross Wightman", "Mehdi Cherti", "Theo Coombes", "Aarush Katta", "Clayton Mullis", "Mitchell Wortsman", "Patrick Schramowski", "Srivatsa Kundurthy", "Katherine Crowson", "Ludwig Schmidt", "Robert Kaczmarczyk", "Jenia Jitsev"],
+      "year": 2022,
+      "official_url": "https://arxiv.org/abs/2210.08402",
+      "version_url": "https://arxiv.org/abs/2210.08402v1",
+      "pdf_url": "https://arxiv.org/pdf/2210.08402v1",
+      "version": "arXiv:2210.08402v1 [cs.CV], 16 Oct 2022",
+      "repository_path": "ai-learning/papers/29_laion5b_2022.pdf",
+      "sha256": "18dad8c88914dfcdcdcb50eba4b285ba665f67d6f4661d20e3ee2e36a3d42163",
+      "hash_nature": "本轮重算本地PDF字节哈希并匹配source-map；未另作官方下载比对。",
+      "identity_status": "source-map核定，且本轮读取首页题名、作者机构与v1标记",
+      "actual_read_scope": "首页；§1末段、§2—7相关正文（P3—12），包括采集/过滤、数据组成、OpenCLIP训练和评测方法、Table 2、技术及伦理限制；P13致谢；Appendix A.2 Q14外部链接依赖、A.6 Q45—49分发及版权说明（Q47—49在P30）；Appendix E关于数据规模与samples seen的实验解释和P42 Table 6；Appendix G.1/G.2隐私与CLIP过滤偏差；P49作者贡献的路径相关条目。未读取全量附录或逐项评测，不把生成示例图及Figure 4/12的文本层当作视觉核查。",
+      "evidence_role": "开放图文数据如何接上CLIP训练，以及访问、偏差、版权边界的一手来源"
+    },
+    {
+      "id": "INF-REFINEDWEB",
+      "object_id": "refinedweb",
+      "title": "The RefinedWeb Dataset for Falcon LLM: Outperforming Curated Corpora with Web Data, and Web Data Only",
+      "authors": ["Guilherme Penedo", "Quentin Malartic", "Daniel Hesslow", "Ruxandra Cojocaru", "Alessandro Cappelli", "Hamza Alobeidli", "Baptiste Pannier", "Ebtesam Almazrouei", "Julien Launay"],
+      "year": 2023,
+      "official_url": "https://arxiv.org/abs/2306.01116",
+      "version_url": "https://arxiv.org/abs/2306.01116v1",
+      "pdf_url": "https://arxiv.org/pdf/2306.01116v1",
+      "version": "arXiv:2306.01116v1 [cs.CL], 1 Jun 2023",
+      "repository_path": "ai-learning/papers/30_refinedweb_2023.pdf",
+      "sha256": "b084921cc327f1f2bca232ca5339f0378324e2ff941bded327f136752a983d10",
+      "hash_nature": "本轮重算本地PDF字节哈希并匹配source-map；未另作官方下载比对。",
+      "identity_status": "source-map核定，且本轮读取首页题名、作者机构与v1标记",
+      "actual_read_scope": "首页摘要、署名；P2—9的§1—4正文和§5/6相关段，含MDR处理链、实验设置与比较层级、Table 2—5；Appendix A/Table 6的数据用途、创建/资助机构、采集与分发许可片段；Appendix B模型卡的模型类别/日期片段。§5多epoch讨论仅读到问题提出及相关正文片段，不宣称精读其附录实验；不从Figure 1—4自行读曲线或面积，也未完成去污染审计或全量偏差评估。",
+      "internal_consistency_note": "§3.1明确从原始WARC提取HTML，并说明不采用WET的原因；Appendix A采集问答却写下载WET。本包机制以§3.1为依据，将两处差异保留为待核，不擅自替作者修正。",
+      "evidence_role": "网页数据质量、规模与有控制条件的预训练效果比较的一手来源"
+    },
+    {
+      "id": "INF-PDF",
+      "title": "终版：AI演义，36篇论文开启你的探索之旅",
+      "authors": null,
+      "year": null,
+      "official_url": null,
+      "version": "用户指定51页本地讲义；作者及公开版本日期未在本包核定",
+      "repository_path": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
+      "hash_nature": "本轮计算本地PDF原始字节哈希。",
+      "actual_read_scope": "提取并读取P26—31文字层，重点P27、29、30、31；P28用于相邻路线定位。未重看图像，中文文字层有字序/字形分离，需与source-map已核页主题相互定位，不能据此推断图线因果。",
+      "evidence_role": "用户路线与待修概括的来源，不作实验或技术事实依据"
+    }
+  ],
+  "upstream_evidence_inputs": [
+    {
+      "repository_path": "ai-learning/notes/ai_yanyi_research/source-map.json",
+      "sha256": "82a789b2a65bca73da52eb44391e32f00804686f0de3c34c23440546be551521",
+      "hash_nature": "本轮读取的本地JSON字节哈希",
+      "actual_read_scope": "四个对象条目、相关pages和open_issues、reading_map用于定位；未重做36项身份核定。",
+      "role": "身份、正式URL和讲义对象范围的既有核定，不替代原文技术证据"
+    },
+    {
+      "repository_path": "ai-learning/notes/ai_yanyi_research/scaling-evidence.json",
+      "sha256": "061c6515220f03bfeb29304bfe8755fb07291f0dc6387b6040d5a6323b495715",
+      "hash_nature": "本轮读取的本地JSON字节哈希",
+      "actual_read_scope": "sources、claims、relationships；重点K1/K3/K4、C1/C4/C5/C6、R2对应损失目标、计算分配及FLOPs与墙钟区别。未读取样章或旧报告作事实依据。",
+      "role": "已核相邻研究包的接口；未在本轮重新读取Kaplan/Chinchilla原文，故不把其全部结论标作本轮原文核验。RefinedWeb对Hoffmann 2022的明确引用另由本轮原文直接支撑。"
+    }
+  ],
+  "acquisition": {
+    "method": "优先复用source-map核定的四份本地PDF，以pdftotext提取文字；所有读取或哈希脚本用python3 -I。提取文本放在各自独立新建临时目录，缓存路径仅在最终source_cache返回。",
+    "network": "本轮未需网络正文或新外来文件，故没有web.read/web.search调用、没有curl降级、没有供应商直调。已执行eacli context catalog和knowledge.ai定向search；无匹配后直接使用任务指定owner。",
+    "visual_scope": "本包未作新的图像结论。核心数字取正文和可读表格，不宣称视觉验证过图片；因此未调用图像能力。"
+  },
+  "nodes": [
+    {
+      "id": "zero",
+      "status": "covered_with_scoped_evidence",
+      "background": "BERT、GPT-2、Megatron-LM、T5等语言模型让训练状态显存成为现实瓶颈。数据并行虽然增加处理样本的工人，却在每个工人处复制整套训练状态；多加卡不会自动让单卡装下更大的模型。这里的历史动力先于Chinchilla，不是后者催生ZeRO。",
+      "problem": "怎样保留数据并行较粗的计算粒度和可用接口，又避免每卡重复存储优化器状态、梯度和参数？",
+      "change": "把训练状态从‘每卡常驻完整副本’改为‘各卡负责一份，用时通信协调’。这不是压缩参数、删除模型能力，也不是提出新的学习目标。",
+      "mechanism_intuition": [
+        "优化器状态像记录每个参数更新历史的账本。阶段1让各卡只保管并更新自己那部分账本，更新后收齐参数。",
+        "阶段2进一步让每卡只接收自己负责的梯度归约结果，不让所有卡都保留完整梯度。",
+        "阶段3连参数也分片，需要计算某层时再取用，不需要时释放；更省显存，但需要更精细的通信调度。",
+        "模型状态之外还有激活、临时缓冲和碎片。论文的ZeRO-R另外处理它们；不能把三阶段模型状态公式当作GPU总峰值显存。"
+      ],
+      "evidence": ["INF-Z01", "INF-Z02", "INF-Z03", "INF-Z04"],
+      "limits": [
+        "16字节/参数和4倍、8倍等节省对应论文的混合精度Adam状态记账，不是任意优化器、任意实现的统一常数。",
+        "通信量不变不等于通信时间为零；网络带宽、消息粒度、重叠调度和可用batch都会影响墙钟速度。",
+        "v3实际评估ZeRO-100B是阶段1+2和ZeRO-R的组合；三阶段的万亿容量是分析目标，不是本文已端到端完成万亿模型训练。",
+        "论文的‘最多10倍’相对特定旧Megatron基线及特定配置，不是今天所有训练任务的普遍加速。"
+      ],
+      "route_role": "[研究综合/推测] 从‘更大的模型值得训练吗’转向‘学习过程所需的状态能否放下’。它扩大训练方案的可行范围，并为后续系统把通信藏进计算留下调度问题；没有单独决定数据量或能力上限。",
+      "people_hook": "作者组把方案接成DeepSpeed中的训练基础设施；叙事重点是让研究者少做模型并行重写，而非把所有贡献归给单个英雄。"
+    },
+    {
+      "id": "megascale",
+      "status": "covered_with_scoped_evidence",
+      "background": "当单个LLM训练作业占用万余GPU并连续运行数周，瓶颈不再只是单卡显存。同步等待、网络和数据加载会让昂贵GPU闲置，偶发坏卡、慢机或代码抖动会拖住整个作业。",
+      "problem": "既要在大集群上把每步训练做快，又要在数周运行中不断发现、隔离故障并恢复，怎样使名义计算资源变成持续的训练进度？",
+      "change": "在Megatron-LM之上，采用算法与系统协同设计和深入到事件依赖的可观测性，把模型块、优化器、并行通信、数据加载、网络与恢复机制一起考虑。",
+      "mechanism_intuition": [
+        "数据并行分样本，流水并行分层，张量并行分层内运算，序列并行减少部分激活冗余；应按拓扑安排它们，而不是任意把模型切碎。",
+        "不是先把所有计算做完再通信，而是辨清谁依赖谁：提前取参数，反向时归约梯度，让无依赖的发送、接收与计算重叠。",
+        "数据预取和同机共享读取减少开工前等待；通信组初始化也要足够快，否则每次重启都重付成本。",
+        "故障恢复像保留施工检查点：先快速把状态拷到主机内存再后台落存储；心跳和自检找出问题节点，替换后恢复。对假装正常的慢机还要用事件时间线和依赖关系诊断。"
+      ],
+      "evidence": ["INF-M01", "INF-M02", "INF-M03", "INF-M04", "INF-M05"],
+      "limits": [
+        "MFU是模型计算利用率，不是GPU忙碌率，更不是训练不中断时间的比例。",
+        "175B性能表、13B算法收敛微实验和数周私有模型生产运行是三组证据，不应拼成一次完全公开且统一的训练复现。",
+        "模型块、注意力和优化器也发生调整；不是只改网络便取得全部收益。13B损失相近不证明每种规模、长程任务和下游能力都不受影响。",
+        "硬件口径保留正文的NVIDIA Ampere GPUs，不擅自全部改称A100或H100。原文披露截至2023年9月的生产集群背景，不能直接当作2024全年或当前资产规模。",
+        "论文没有在本包证据范围内确立‘首篇生产万卡训练论文’的全领域优先权，也未提供所有细节足以独立重现私有生产模型。"
+      ],
+      "route_role": "[研究综合/推测] 从‘放得下’接到‘跑得快、跑得久、坏了能继续’。它把缩放研究中的抽象训练FLOPs拉回墙钟、同步和故障约束；系统效率是达成训练目标的条件，而不是另一种能力评分。",
+      "people_hook": "ByteDance与北京大学作者组的生产系统论文，价值来自能观察真实大集群故障并把运维经验变成设计依据；不以组织资源充足代替技术解释。"
+    },
+    {
+      "id": "laion5b",
+      "status": "covered_with_scoped_evidence",
+      "background": "CLIP式训练显示自然图文配对可用于大规模表示学习，但训练数据不开放使外部研究者难以重跑配方、改变数据或审计偏差。开放权重并不等于开放训练条件。",
+      "problem": "怎样把网上海量但嘈杂、图文未必相符的材料，变成可供共同训练和研究的图文数据资源？",
+      "change": "LAION-5B是数据集和数据构建基础设施，不是模型。它把Common Crawl发现的图片链接与alt-text，通过下载、语言识别、基本过滤和CLIP匹配筛选组织起来，连同分数、检索和训练工具开放。",
+      "mechanism_intuition": [
+        "网页中的alt-text提供廉价配对线索，但可能是商品词、SEO文本而非准确描述。CLIP把图像和文本编码到可比较空间，筛去相似度很低的配对。",
+        "这形成‘已有模型帮助挑训练数据，开放数据再支持训练新模型’的循环；它降低人工逐条标注成本，也把筛选模型的盲点带入新数据。",
+        "发布内容主要是URL、文本及分数等元数据；用户需要按链接获取图像，数据规模不保证每个链接永久有效。",
+        "真正的验证不是数条数，而是用OpenCLIP在明确子集上训练，并比较零样本分类和分布偏移评测。"
+      ],
+      "evidence": ["INF-L01", "INF-L02", "INF-L03", "INF-L04", "INF-L05", "INF-L06"],
+      "limits": [
+        "5.85B是三个语言分组的总体规模；论文关键CLIP实验使用LAION-400M或LAION-2B-en，不是每次都训全体5.85B。",
+        "数据集大小与训练累计见到的样本数不同。较大数据的收益依赖训练计算，不能抹去Table 6较低计算设置下的反例。",
+        "CLIP相似度衡量图文匹配启发式，不是客观事实、合法性或安全性的认证。NSFW/水印标签也不是生产安全保证。",
+        "作者承认测试集重叠尚需进一步测量，alt-text质量不稳定，CLIP筛选可能放大偏差。",
+        "CC-BY-4.0的元数据许可不等于获得每张图像、每段文本的版权；公开可访问也不等于没有个人信息和隐私问题。"
+      ],
+      "route_role": "[研究综合/推测] 这是CLIP路线中的开放训练条件转折：架构与权重之外，谁能取得、筛选、训练和审查数据也决定谁能参与研究。它不应被写成原始CLIP的训练数据，更不能用开放规模证明价值中立。",
+      "people_hook": "以Schuhmann组织项目、Beaumont/Vencu构建采集管道、Gordon/Cherti/Wightman训练评估以及Jitsev协调研究与计算资源的协作为主线；社区、资助和超级计算资源共同成立，不讲孤身凭热情造出一切的故事。"
+    },
+    {
+      "id": "refinedweb",
+      "status": "covered_with_scoped_evidence",
+      "background": "论文直接从Hoffmann等人的计算最优研究出发：模型扩张还需要更多训练tokens。常见预训练配方混合网页与书籍、论文等精选来源，但逐来源整理难扩展，因此‘质量必须来自人工精选来源’值得重新检验。",
+      "problem": "在需要万亿级语料的条件下，质量是来源标签赋予的，还是能通过可扩展的数据处理得到？仅网页数据能否训练出有竞争力的语言模型？",
+      "change": "Macrodata Refinement把正文提取、过滤与严格去重组合起来；用受控预训练实验衡量处理后的网页数据，而不是将‘网页’和‘精选’先验分为低质与高质。",
+      "mechanism_intuition": [
+        "先取网页正文、去导航广告、识别语言，再清除异常重复和垃圾文本；避免模型把菜单和模板当作高频知识。",
+        "近似去重找整篇高度相像的页面，精确子串去重找不同页面中重复的大段文本，两者处理的问题不同；另用URL记录减少跨crawl重复。",
+        "清洗不是删得越多越好。过滤可能误伤代码、书籍、少数语言或合法内容；保留足够规模与避免重复之间要作取舍。",
+        "实验固定模型架构和训练设置比较语料，并把内部控制与外部模型横向比较分开；数据质量通过特定目标下的结果检验，不是绝对属性。"
+      ],
+      "evidence": ["INF-R01", "INF-R02", "INF-R03", "INF-R04", "INF-R05"],
+      "limits": [
+        "本论文主对象是英文网页预训练，评测重点为指定零样本任务集合；不覆盖所有语言、代码、专业知识、事实性、安全性或后训练表现。",
+        "完整数据规模约5T tokens，公开extract为600B tokens；不能说5T已全部公开，也不能说每个实验模型都读了5T。",
+        "强证据主要是论文内部固定设置的数据对照；与GPT-3等外部模型比较还存在代码、精度、prompt和评测设置差异。",
+        "去重收益不等于丢弃数据总有好处，尤其在数据受限、需要多epoch时；论文也提到其他工作对精选语料去重收益的不同观察。",
+        "没有证明未来不存在数据墙，也没有证明精选来源永远无用、整个互联网材料均可合法无限使用。",
+        "§3.1与Appendix A对WARC/WET的表述不一致，保留待核；这不改变本轮已核的过滤/去重比较，但限制逐字重建采集配方。"
+      ],
+      "route_role": "[研究综合/推测] 它把Chinchilla的‘要更多训练数据’接到数据工程：不是机械追加重复tokens，而是检验怎样从可扩展来源得到更有训练价值的样本。它修改的是数据获取和质量判断方式，不是给缩放规律发放无限延长保证。",
+      "people_hook": "LightOn、Technology Innovation Institute等机构的Falcon LLM作者组，将数据建设与语言模型训练对照放进同一研究；TII创建和资助数据的事实来自datasheet，不补写未核个人职位或商业动机。"
+    }
+  ],
+  "claims": [
+    {
+      "id": "INF-Z01",
+      "type": "verified_primary_text",
+      "statement": "普通数据并行复制完整训练状态。论文混合精度Adam口径下，每参数需fp16参数2字节、梯度2字节、fp32参数主副本及两份优化器统计量共12字节，总计16字节；1.5B参数仅模型状态约24GB，而fp16参数本身约3GB。",
+      "source_id": "INF-ZERO",
+      "locations": ["§1", "§3.1，P7—8"],
+      "boundary": "这是模型状态记账，不包括激活、缓冲、碎片等峰值显存；GB沿用论文口径，不换算成GiB。"
+    },
+    {
+      "id": "INF-Z02",
+      "type": "verified_primary_text",
+      "statement": "三阶段依次分片优化器状态、梯度、参数。在论文Adam状态模型下，前两阶段的单卡模型状态内存至多约降为原来的1/4、1/8；全分片的状态内存随数据并行度分摊。",
+      "source_id": "INF-ZERO",
+      "locations": ["§4.1", "§5.1—5.4", "Table 1，P11"],
+      "boundary": "前两项是大并行度下的极限近似；全分片不意味着总峰值显存严格等于全状态/卡数，也不保证任意大规模都高效。"
+    },
+    {
+      "id": "INF-Z03",
+      "type": "verified_primary_text",
+      "statement": "在§7的带宽主导通信量分析中，标准DP每步约2Ψ个元素搬运；优化器/梯度分片以梯度reduce-scatter加参数all-gather维持该量级；参数也分片时前向、反向取参数加梯度归约约3Ψ，即基线的1.5倍。",
+      "source_id": "INF-ZERO",
+      "locations": ["§7.1—7.2，P13—14"],
+      "boundary": "Ψ是参数个数。这里比较通信元素量，不是声称延迟恰增50%，也不计算所有ZeRO-R通信或任意网络实现。"
+    },
+    {
+      "id": "INF-Z04",
+      "type": "verified_primary_text",
+      "statement": "v3的ZeRO-100B实现和实验采用优化器+梯度分片及ZeRO-R，硬件为400张V100（25个DGX-2节点），节点间带宽800Gbps；正文报告GPT-2式测试模型可运行至170B参数。万亿参数可容纳的分析与这一实现/实验范围不同。",
+      "source_id": "INF-ZERO",
+      "locations": ["§9，P15—16", "§10及§10.1—10.2，P16—17", "§1 P5的阶段3后续计划"],
+      "boundary": "170B是系统测试可运行规模，不能冒充170B或1T模型完整训练完成。吞吐/最多10倍加速的基线为论文采用的2019年9月Megatron代码与相应配置。"
+    },
+    {
+      "id": "INF-M01",
+      "type": "verified_primary_text",
+      "statement": "MegaScale明确讨论ZeRO分片及其reduce-scatter/all-gather通信，并在§3.2围绕数据、流水、张量/序列并行做计算通信重叠；§6.1说明系统建于Megatron-LM之上。",
+      "source_id": "INF-MEGASCALE",
+      "locations": ["§2，P2—3", "§3.2，P4—5", "§6.1，P9"],
+      "boundary": "支持组件机制承接，不支持MegaScale就是DeepSpeed的新名字、仅由ZeRO演化而来，或使用ZeRO阶段3全部方案。"
+    },
+    {
+      "id": "INF-M02",
+      "type": "verified_primary_text",
+      "statement": "Table 2中175B模型、序列长度2048、global batch 6144、12,288张GPU配置下，MegaScale报告MFU 55.2%、吞吐1984.0k tokens/s、每步6.34s；Megatron-LM对应41.2%、1466.8k tokens/s、8.57s。表中1.34×对应MFU比值，绝对差为14.0个百分点。",
+      "source_id": "INF-MEGASCALE",
+      "locations": ["§6生产集群背景", "§6.1，P9", "Table 2及图表后解释，P10"],
+      "boundary": "两者同batch，基线commit为285068c8。表中1.75天是给300B tokens口径的训练时间，可由报告吞吐折算，不是数周私有生产任务的实际完工时长；不能说能力提高34%。GPU型号保留原文Ampere代际。"
+    },
+    {
+      "id": "INF-M03",
+      "type": "verified_primary_text",
+      "statement": "Table 3在175B、256 GPU的小规模分解中，MFU从47.7%基线，经PTB、SWA、通信重叠、算子和其它优化到62.3%，最后LAMB把batch从256增至768后为65.3%。总差17.6个百分点，不是17.6%的相对增幅。",
+      "source_id": "INF-MEGASCALE",
+      "locations": ["§6.1 Ablation study，P10", "Table 3，P11"],
+      "boundary": "顺序累加结果不等于各技术独立贡献；最后一行更改batch。网络优化对两边均开启，不能用该表单独量出网络贡献；不能把256 GPU分解当作12,288 GPU逐项消融。"
+    },
+    {
+      "id": "INF-M04",
+      "type": "verified_primary_text",
+      "statement": "§6.2的算法收敛微实验因资源限制采用13B模型：作者报告PTB/SWA组合在超过100B训练tokens时取得相近loss，LAMB用四倍batch在约250B tokens后与Adam loss相近。",
+      "source_id": "INF-MEGASCALE",
+      "locations": ["§3.1，P3—4", "§6.2 Model convergence microbenchmarks及Figure 10图注，P11"],
+      "boundary": "这是作者对微实验loss的报告，不是本轮从图上测量；与Table 3最后一行的三倍batch是不同实验，不混写。未证明所有下游任务质量等价。"
+    },
+    {
+      "id": "INF-M05",
+      "type": "verified_primary_text",
+      "statement": "作者报告另一项万卡以上、数周、数千亿参数私有模型及数万亿tokens的生产运行，期间超过100次重启；超过90%的软件/硬件故障由框架自动识别处理，少数需诊断工具辅助。§6.3报告有效训练时间率超过90%。",
+      "source_id": "INF-MEGASCALE",
+      "locations": ["§4.1—4.4，P6—7", "§5.2案例，P9", "§6.2生产段与Figure 11图注，P11", "§6.3，P11—12"],
+      "boundary": "有效训练时间率定义为迭代数×每步训练时间/总训练时间，与MFU口径不同。故障自动处理比例也不是可用性比例。不要将该生产运行与175B性能表拼成完全相同的训练任务。"
+    },
+    {
+      "id": "INF-L01",
+      "type": "verified_primary_text",
+      "statement": "LAION-5B论文报告5.85B个CLIP过滤图文对，其中2.32B英文、2.26B其它语言、1.27B无法明确识别语言。发布的Parquet元数据包含图片URL、文本、大小和过滤分数等，而不是承诺永久托管全部图片。",
+      "source_id": "INF-LAION",
+      "locations": ["Abstract，P1", "§4，P6—7", "Appendix A.2 Q14"],
+      "boundary": "样本规模、语言识别状态、数据可访问性是三个不同维度；未知语言组不等于所有文字都没有语义。"
+    },
+    {
+      "id": "INF-L02",
+      "type": "verified_primary_text",
+      "statement": "采集管道从Common Crawl WAT中的IMG标签及alt-text取图文线索，下载后计算图文编码余弦相似度；英文用OpenAI CLIP ViT-B/32，非英文用多语CLIP，剔除英文低于0.28、其它低于0.26的配对。",
+      "source_id": "INF-LAION",
+      "locations": ["§3.1，P4—6"],
+      "boundary": "阈值是该版本构建配方，不是适用于所有语言、模型和任务的质量界线；CLIP过滤不能替代版权或事实核验。"
+    },
+    {
+      "id": "INF-L03",
+      "type": "verified_primary_text",
+      "statement": "作者用OpenCLIP在LAION子集训练CLIP式模型，在JUWELS Booster等训练资源上使用128—400张NVIDIA A100 GPU。Table 2零样本ImageNet中B/32的LAION-400M为62.9%、原CLIP WIT为63.3%；L/14分别72.8%和75.6%，说明复现有用但并非逐模型逐任务完全追平。",
+      "source_id": "INF-LAION",
+      "locations": ["§5.2及§5.2.1，P8—9", "Table 2，P11"],
+      "boundary": "外部CLIP数据不可见，数据与训练实现不完全同一；表中分布偏移任务有不同方向的差异，不能只用某个胜出的分数代表全面胜利。"
+    },
+    {
+      "id": "INF-L04",
+      "type": "verified_primary_text",
+      "statement": "Table 6在相同ViT-L/14、累计34B images seen下，LAION-2B-en的ImageNet-1k零样本准确率75.40%，LAION-400M为73.90%；但B/32只见3B样本时，对应较大/较小数据集为57.60%/58.73%。",
+      "source_id": "INF-LAION",
+      "locations": ["§5.2.1，P9", "Appendix E实验说明", "Table 6，P42"],
+      "boundary": "支持‘训练计算足够时，扩大数据池可能有效’，不支持‘固定任意计算，数据池越大必胜’。34B是含重复的训练累计样本数，不是新增34B独立图文对。"
+    },
+    {
+      "id": "INF-L05",
+      "type": "verified_primary_text",
+      "statement": "§6及Appendix G.2明确指出alt-text噪声、测试集潜在重叠和CLIP过滤偏差；§3.2不把自动安全标签当作可靠的生产安全认证。数据开放有助于审计，并没有消除这些问题。",
+      "source_id": "INF-LAION",
+      "locations": ["§3.2，P6", "§6，P9—11", "§7，P11—12", "Appendix G.2，P48"],
+      "boundary": "不把作者认为某些重叠影响有限的判断改写成已完整排除污染；不从匹配分数推导数据中立或社会公平。"
+    },
+    {
+      "id": "INF-L06",
+      "type": "verified_primary_text",
+      "statement": "Datasheet Q48—49写明元数据按CC-BY-4.0发布，同时明确LAION不拥有图像或文本版权；Appendix G.1承认链接可能指向包含人脸、医疗等个人信息的材料。",
+      "source_id": "INF-LAION",
+      "locations": ["Appendix A.6 Q48—49，P30", "Appendix G.1，P46—47"],
+      "boundary": "这是数据发布方式与风险说明，不是本包对任何具体训练用途的法律结论，也没有核查后续诉讼或当前数据发布状态。"
+    },
+    {
+      "id": "INF-R01",
+      "type": "verified_primary_text",
+      "statement": "RefinedWeb引言明确引用Hoffmann 2022，指出模型与数据联合扩张带来数据需求；工作建立约5T tokens英文网页数据，公开其中600B tokens extract。",
+      "source_id": "INF-REFINEDWEB",
+      "locations": ["Abstract，P1", "§1，P2", "§3设计原则，P4", "§6，P9"],
+      "boundary": "这是与Chinchilla的直接研究动机连接，不证明所有后续模型都遵循某个永恒tokens/参数常数。完整数据、公开子集和某次训练用量要分开。"
+    },
+    {
+      "id": "INF-R02",
+      "type": "verified_primary_text",
+      "statement": "MDR结合URL筛选、WARC正文提取和语言识别、文档/行级过滤、MinHash近似文档去重与精确子串去重，并用URL处理跨Common Crawl批次重复。除语言识别外，作者设计上避免ML质量过滤，选择可解释启发式。",
+      "source_id": "INF-REFINEDWEB",
+      "locations": ["§3.1—3.3，P4—6", "Table 2，P5"],
+      "boundary": "‘避免ML质量过滤’不等于无选择偏差。去重因计算约束分成100份进行，不是证明任意跨份重复已完全消除。WARC/WET的datasheet矛盾见unresolved。"
+    },
+    {
+      "id": "INF-R03",
+      "type": "verified_primary_text",
+      "statement": "Table 4固定架构与训练超参，在论文1B@27B tokens设置下，small-agg零样本平均准确率为RefinedWeb 56.2%、The Pile 53.4%、C4 55.7%；RW-Raw为52.7%、RW-Filtered为54.3%。3B@60B tokens下，RefinedWeb 59.8%、The Pile 57.9%、C4 59.6%。",
+      "source_id": "INF-REFINEDWEB",
+      "locations": ["§4.1—4.2，P6—8", "Table 3，P6", "Table 4，P7"],
+      "boundary": "这是指定六任务small-agg及论文规模下的受控语料对照，不能推出所有任务、规模或所有精选语料都劣于网页。1B/3B沿用表内模型标签。"
+    },
+    {
+      "id": "INF-R04",
+      "type": "verified_primary_text",
+      "statement": "Table 5表明过滤收益依赖来源：OSCAR-22.01过滤后small-agg从52.7%降到52.3%，独立去重后为55.6%；C4在过滤+去重后为56.4%，略高于RefinedWeb 56.2%。",
+      "source_id": "INF-REFINEDWEB",
+      "locations": ["§4.3，P8—9", "Table 5，P9"],
+      "boundary": "不把0.2个百分点小差异夸为确定性优势；本文并未给本包足以判断该差异统计显著性的证据。表中RefinedWeb独立去重实验未做，不能补造一行。"
+    },
+    {
+      "id": "INF-R05",
+      "type": "verified_primary_text",
+      "statement": "作者将内部只改变数据集的比较、同评测框架的外部比较、不同评测设置的外部比较分为三层；§5承认基础毒性分析不覆盖社会偏差与有害性，并保留多epoch/数据受限情况下的问题。",
+      "source_id": "INF-REFINEDWEB",
+      "locations": ["§4.1，P6—7", "§4.2，P7—8", "§5及§4.3末尾，P9"],
+      "boundary": "网页质量结论依赖处理方法、数据分布与评测目标；不是原始网页可不加选择地训练，也没有证明未来的数据供给无限。"
+    },
+    {
+      "id": "INF-S01",
+      "type": "research_synthesis",
+      "statement": "[研究综合/推测] 缩放规律给出在特定分布与目标下如何分配计算的经验建议，而显存和可靠性决定建议是否能执行，数据工程决定训练样本是否足以支撑它。四节点是对同一训练计划施加不同约束，不是四次单向接力。",
+      "source_ids": ["INF-ZERO", "INF-MEGASCALE", "INF-LAION", "INF-REFINEDWEB"],
+      "locations": ["ZeRO §9", "MegaScale §1、§3—6", "LAION Table 6及§6", "RefinedWeb §1、§4.1—4.3"],
+      "upstream_claim_ids": ["scaling-evidence:K4", "scaling-evidence:C4", "scaling-evidence:R2"],
+      "boundary": "这是写作组织与机制解释，不是已求解训练加推理总成本的统一最优公式，也不宣称FLOPs与真实训练速度可用固定换算。"
+    }
+  ],
+  "cross_route_edges": [
+    {
+      "id": "INF-E01",
+      "from": "language-pretraining",
+      "to": "zero",
+      "relation_type": "demand_exposes_system_constraint",
+      "statement": "语言预训练模型扩张暴露训练状态显存瓶颈，ZeRO直接以BERT/GPT-2/T5/Megatron等为背景，并在GPT-2式模型上测试。",
+      "evidence_level": "direct_primary_evidence",
+      "support": [{"source_id": "INF-ZERO", "locations": ["§1", "§3.1", "§10.1"]}],
+      "guard": "不是说ZeRO创造了预训练范式，也不把某个模型的全部能力收益归给ZeRO。"
+    },
+    {
+      "id": "INF-E02",
+      "from": "scaling-laws/chinchilla",
+      "to": "zero",
+      "relation_type": "complementary_feasibility_constraint",
+      "statement": "[研究综合/推测] 预算分配建议和显存可容纳性是不同层次：想训练某规模模型，还须能存下训练状态。ZeRO可作为缩放章节后的回看，不是Chinchilla的历史下游。",
+      "evidence_level": "synthesis_not_historical_causation",
+      "support": [{"source_id": "INF-ZERO", "locations": ["§3", "§5", "§9"]}],
+      "upstream_claim_ids": ["scaling-evidence:K4", "scaling-evidence:C4"],
+      "guard": "ZeRO首发2019，Kaplan 2020、Chinchilla 2022；禁止叙述成后两者先提出需求才诞生ZeRO。"
+    },
+    {
+      "id": "INF-E03",
+      "from": "zero",
+      "to": "megascale",
+      "relation_type": "explicit_component_and_communication_connection",
+      "statement": "MegaScale正文明确介绍ZeRO状态分片，并对其数据并行参数收集/梯度归约通信设计重叠。这是本包可落到原文的组件连接。",
+      "evidence_level": "direct_primary_evidence",
+      "support": [{"source_id": "INF-MEGASCALE", "locations": ["§2", "§3.2"]}, {"source_id": "INF-ZERO", "locations": ["§5", "§7"]}],
+      "guard": "MegaScale明确建于Megatron-LM之上，还引用FSDP预取思路及多种其它技术；不能画成DeepSpeed→MegaScale唯一继承链。"
+    },
+    {
+      "id": "INF-E04",
+      "from": "scaling-laws",
+      "to": "megascale",
+      "relation_type": "stated_motivation_and_system_realization",
+      "statement": "MegaScale引言以缩放规律及大模型/大数据需求解释大集群训练动机；系统工作落实的是可用吞吐与运行稳定性，而非重新证明缩放规律。",
+      "evidence_level": "direct_motivation_plus_synthesis",
+      "support": [{"source_id": "INF-MEGASCALE", "locations": ["§1", "§6.1—6.3"]}],
+      "guard": "不能由55.2% MFU推导模型能力或Chinchilla最优分配，也不能把纸面训练计算与实际GPU小时混为一谈。"
+    },
+    {
+      "id": "INF-E05",
+      "from": "chinchilla",
+      "to": "refinedweb",
+      "relation_type": "explicit_research_motivation",
+      "statement": "RefinedWeb引言与Scale first设计原则直接引用Hoffmann 2022，将联合扩张要求转化为万亿级预训练数据获取问题；小规模对照也依据该工作安排训练tokens。",
+      "evidence_level": "direct_primary_evidence",
+      "support": [{"source_id": "INF-REFINEDWEB", "locations": ["§1", "§3设计原则", "§4.1"]}],
+      "guard": "只能说数据需求促成这项研究的问题设定，不说Chinchilla证明RefinedWeb数据质量或取消了数据墙。"
+    },
+    {
+      "id": "INF-E06",
+      "from": "refinedweb",
+      "to": "language-pretraining",
+      "relation_type": "controlled_data_recipe_test",
+      "statement": "RefinedWeb以自回归decoder-only语言模型训练对照，把数据处理改动反馈到零样本泛化表现，改变对网页与精选来源的简单等级判断。",
+      "evidence_level": "direct_primary_evidence",
+      "support": [{"source_id": "INF-REFINEDWEB", "locations": ["§4.1—4.3", "Table 4/5"]}],
+      "guard": "改善特定预训练基线不等于证明指令跟随、事实性和安全性都已获得；不能跳过后训练路线。"
+    },
+    {
+      "id": "INF-E07",
+      "from": "clip",
+      "to": "laion5b",
+      "relation_type": "model_as_data_filter_and_open_training_gap",
+      "statement": "CLIP提供图文匹配筛选器，其原训练数据不开放又形成复现缺口；LAION的采集和研究动机同时承接这两点。",
+      "evidence_level": "direct_primary_evidence",
+      "support": [{"source_id": "INF-LAION", "locations": ["§1—3", "§7", "Acknowledgments"]}],
+      "guard": "不是原始CLIP使用了LAION-5B；也不能把筛选器的偏好叫作无偏的客观图文真值。"
+    },
+    {
+      "id": "INF-E08",
+      "from": "laion5b",
+      "to": "openclip/multimodal-pretraining",
+      "relation_type": "dataset_enables_training_and_audit",
+      "statement": "OpenCLIP在LAION子集上的实际训练及评测构成‘开放数据接回多模态模型’的实验证据；模型、数据池、累计见样本和计算资源共同决定结果。",
+      "evidence_level": "direct_primary_evidence",
+      "support": [{"source_id": "INF-LAION", "locations": ["§5.2", "Table 2", "Table 6", "§6—7"]}],
+      "guard": "这里的缩放证据来自LAION本身的图文实验，不能直接套用Chinchilla语言模型的分配指数或tokens常数。"
+    },
+    {
+      "id": "INF-E09",
+      "from": "laion5b",
+      "to": "refinedweb",
+      "relation_type": "parallel_data_engineering_comparison_not_lineage",
+      "statement": "[研究综合/推测] 两者同从Common Crawl取得可扩展材料，但训练对象和质量判断不同：LAION筛图文语义配对，RefinedWeb提炼连贯文本并去重。它们可并列解释‘数据质量由目标和加工方式定义’。",
+      "evidence_level": "synthesis",
+      "support": [{"source_id": "INF-LAION", "locations": ["§3", "§6"]}, {"source_id": "INF-REFINEDWEB", "locations": ["§3", "§4.3"]}],
+      "guard": "共用Common Crawl、名称相近或时间相邻不证明方法继承；没有证据说RefinedWeb就是LAION的文本版本。"
+    },
+    {
+      "id": "INF-E10",
+      "from": "laion5b",
+      "to": "stable-diffusion-product",
+      "relation_type": "author_reported_usage_with_version_gap",
+      "statement": "LAION论文§5.1将Stable Diffusion项目与LAION-2B-en、high-resolution、aesthetics等子集联系起来；可作进一步版本核验的线索。",
+      "evidence_level": "partial_author_report_not_version_audit",
+      "support": [{"source_id": "INF-LAION", "locations": ["§5.1，P8"]}],
+      "guard": "本包未核具体产品版本的完整数据配方；正式书稿不能据此写‘所有Stable Diffusion都用完整5.85B训练’，也不把产品与LDM论文混为同一对象。"
+    }
+  ],
+  "people_and_institutions": [
+    {
+      "object_id": "zero",
+      "type": "verified_primary_text",
+      "people": ["Samyam Rajbhandari", "Jeff Rasley", "Olatunji Ruwase", "Yuxiong He"],
+      "institutions_or_project": ["Microsoft", "DeepSpeed"],
+      "route_relevant_fact": "首页作者署名联系微软，§1明确将ZeRO作为开源训练优化库DeepSpeed的一部分；§10.1强调兼容torch.nn.Module、无需修改模型即可采用ZeRO数据并行。",
+      "support": [{"source_id": "INF-ZERO", "locations": ["首页", "§1 P5及脚注2", "§10.1"]}],
+      "narrative_use": "[研究综合/推测] 人的作用写成把分布式状态管理封装为研究者能用的基础设施，体现系统接口如何降低实验组织门槛。",
+      "not_claimed": "没有核各作者具体分工、现职、师承或创业经历；不凭共同署名分配发明功劳。"
+    },
+    {
+      "object_id": "megascale",
+      "type": "verified_primary_text",
+      "people": ["Ziheng Jiang", "Haibin Lin", "Yinmin Zhong", "Xin Jin", "Xin Liu", "论文其余共同作者"],
+      "institutions_or_project": ["ByteDance", "Peking University", "Megatron-LM"],
+      "route_relevant_fact": "首页列ByteDance和北京大学作者机构；§6.1说明建于Megatron-LM，§4—6提供生产环境故障与恢复经验。",
+      "support": [{"source_id": "INF-MEGASCALE", "locations": ["首页", "§4—6"]}],
+      "narrative_use": "[研究综合/推测] 这里的历史角色不是再发明一种模型，而是拥有大规模生产观察条件的团队，把训练稳定性变成研究对象。",
+      "not_claimed": "不把论文作者在论文时的机构当作当前任职，不据生产规模声称全球优先权，也不推测组织间人员传承。"
+    },
+    {
+      "object_id": "laion5b",
+      "type": "verified_primary_text",
+      "people": ["Christoph Schuhmann", "Romain Beaumont", "Richard Vencu", "Cade Gordon", "Mehdi Cherti", "Ross Wightman", "Jenia Jitsev"],
+      "institutions_or_project": ["LAION", "JUWELS Booster / Jülich Supercomputing Centre", "Hugging Face", "Stability AI", "OpenCLIP"],
+      "route_relevant_fact": "作者贡献列Schuhmann组织项目并构建组件原型，Beaumont负责扩展/数据准备管道，Vencu负责系统架构与下载优化，Gordon/Cherti/Wightman承担CLIP训练或评估，Jitsev负责研究组织及计算存储资源获取。致谢列社区抓取支持、Hugging Face与Stability AI资金/托管支持，以及JUWELS计算时间和存储资源。",
+      "support": [{"source_id": "INF-LAION", "locations": ["§5.2", "Acknowledgments，P13", "Author contributions，P49"]}],
+      "narrative_use": "[研究综合/推测] 可以保留社区行动的人的视角，但应把协作、资金、工具和超算放在同一画面；开放不是不需要资源，而是改变资源和成果如何被共同使用。",
+      "not_claimed": "讲义中Schuhmann的教师职业背景未由本包一手材料核验，不写成主线必需事实；不以个人热情解释全部数据与算力来源。"
+    },
+    {
+      "object_id": "refinedweb",
+      "type": "verified_primary_text",
+      "people": ["Guilherme Penedo", "Quentin Malartic", "论文其余Falcon LLM作者组成员"],
+      "institutions_or_project": ["LightOn", "Technology Innovation Institute", "LPENS / École normale supérieure"],
+      "route_relevant_fact": "首页给出上述作者机构；Appendix A/Table 6明确数据集由Technology Innovation Institute创建并资助，用途是LLM预训练，可单独使用或与精选来源组合。",
+      "support": [{"source_id": "INF-REFINEDWEB", "locations": ["首页署名", "Appendix A/Table 6 Motivation"]}],
+      "narrative_use": "[研究综合/推测] 人与机构的作用是组织数据管道和训练对照，让‘网页一定低质’成为可检验命题；不是凭团队声望给数据贴高质量标签。",
+      "not_claimed": "没有核每个人的分工、机构商业决策或与LAION人员的传承关系。"
+    }
+  ],
+  "spine_contribution": {
+    "placement": "放在语言预训练扩展及Scaling/Chinchilla章节的转折处，作为模型路线通向训练现实的横向桥；LAION小节与CLIP章节双向回指，MegaScale用于收束‘算得出来还要跑得完’。讲述顺序按问题走，明示不等于发表年表。",
+    "integrated_sequence": [
+      {
+        "turn": 1,
+        "question": "如果已决定扩大训练，为什么加GPU仍会装不下？",
+        "history": "回看2019首发、2020修订的ZeRO；早于Chinchilla，源于当时语言模型的显存现实。",
+        "paradigm_change": "不是每卡重复拥有全部状态，而是分担状态并按需协调。",
+        "human_condition": "微软作者组把优化接成DeepSpeed接口，降低研究者重写模型并行的负担。",
+        "bridge": "状态能分片不代表搬运免费；把‘能训练’拆成容量和效率两个问题。",
+        "claim_ids": ["INF-Z01", "INF-Z02", "INF-Z03", "INF-Z04"]
+      },
+      {
+        "turn": 2,
+        "question": "需要更多tokens时，怎样避免只把垃圾和重复材料放大？",
+        "history": "2023 RefinedWeb明确接续Hoffmann 2022提出的数据需求。",
+        "paradigm_change": "从根据来源声誉判高低，转向固定训练条件测量网页清洗和去重的效果。",
+        "human_condition": "数据建设与模型评测由同一Falcon LLM研究协作组织，使处理方式可接受实验检验。",
+        "bridge": "数量与质量不能各讲一章互不相干；删多少、重复多少、训练多久要共同讨论。",
+        "claim_ids": ["INF-R01", "INF-R02", "INF-R03", "INF-R04", "INF-R05"]
+      },
+      {
+        "turn": 3,
+        "question": "到了图文学习，除了‘数据够不够’，谁能真正获得训练条件？",
+        "history": "CLIP先提供表示学习与筛选工具，LAION-5B在2022提供开放数据研究资源。",
+        "paradigm_change": "把模型用于筛数据，再用开放数据训练和审计模型；它是带偏差反馈的研究循环，不是单纯增加条数。",
+        "human_condition": "社区志愿协作、工程分工、赞助和超算共同支撑开放训练。",
+        "bridge": "开放提高可研究性，但匹配、可访问、版权、安全分别需要证据。",
+        "claim_ids": ["INF-L01", "INF-L02", "INF-L03", "INF-L04", "INF-L05", "INF-L06"]
+      },
+      {
+        "turn": 4,
+        "question": "模型能装下、数据已准备，怎样让万卡把数周工作真正完成？",
+        "history": "2024 MegaScale披露生产大集群中的通信、慢机与故障问题。",
+        "paradigm_change": "从理想计算总量转向全栈调度和持续有效训练进度。",
+        "human_condition": "生产团队的细粒度观察和大学/企业协作，把排障经验转成系统设计与可讨论证据。",
+        "bridge": "回到全书：模型、数据、硬件和软件相互限制，人的组织方式决定哪些实验能够被做出与公开。",
+        "claim_ids": ["INF-M01", "INF-M02", "INF-M03", "INF-M04", "INF-M05", "INF-S01"]
+      }
+    ],
+    "one_paragraph_bridge": "[研究综合/推测] 缩放研究并没有替我们造出训练条件。模型扩大之后，ZeRO先提醒我们：存下权重远远不够，还得存下学习的账本；当训练需要更多样本，RefinedWeb追问的不是去哪儿再买一个‘高级语料库’，而是怎样从网页里得到更值得学习的文本。图文路线又多了一层：LAION把CLIP式学习所需的数据条件向外开放，却也继承了筛选模型和互联网材料的偏差。最后，MegaScale把这些纸面计划放到会等待、会出错的万卡集群里。四条线因此不是相邻论文的接龙，而是同一项学习计划必须同时回答的容量、数据、效率和组织问题。",
+    "do_not_force": [
+      "不把Chinchilla写成ZeRO的历史起因。",
+      "不把ZeRO→MegaScale写成单一产品继承；直接继承底座是论文说明的Megatron-LM，ZeRO是被明确讨论的状态/通信机制之一。",
+      "不把LAION与RefinedWeb因同用Common Crawl连成技术代际。",
+      "不把LAION数据规模套入语言模型的Chinchilla最优比例；图文数据对、文本tokens与训练samples seen不是同一单位。",
+      "不把RefinedWeb有限规模和评测上的成功扩写成数据墙已解决，或所有专业精选数据都不再需要。",
+      "不将开源社区叙事塑成无需资金/超算的个人英雄主义，也不将大厂资源多写成系统方法有效的充分原因。"
+    ],
+    "writer_priority": "正文以四个问题与桥接为主，只保留足以建立量级直觉的一两个数字；其余配置、表格和核验边界保留在本证据包，不为每篇强造公式或消融章节。"
+  },
+  "pdf_corrections": [
+    {
+      "page": 27,
+      "type": "pdf_summary",
+      "pdf_summary": "ZeRO消除状态冗余，可训练模型规模与集群总显存成比例，理论上无限扩展。",
+      "correction": "可按模型状态分析解释分摊效应，但去掉‘无限扩展’的无条件叙述；激活、缓冲、通信、batch与总计算量仍有限制。v3实现和万亿模型分析需分开。",
+      "support_claim_ids": ["INF-Z01", "INF-Z02", "INF-Z03", "INF-Z04"],
+      "status": "bounded_by_primary_evidence"
+    },
+    {
+      "page": 27,
+      "type": "pdf_summary",
+      "pdf_summary": "以GPT参数与GPU显存的跨代数字说明历史背景。",
+      "correction": "讲义文字层中的GPT代际数字易误读，且混用后来硬件与模型会造成时间错位。本包不沿用该串数字；改用原文混合精度Adam中1.5B模型状态约24GB的明确案例。",
+      "support_claim_ids": ["INF-Z01"],
+      "status": "replace_unchecked_numeric_montage"
+    },
+    {
+      "page": 29,
+      "type": "pdf_summary",
+      "pdf_summary": "LAION-5B为开放社区英雄主义，并用于Stable Diffusion训练。",
+      "correction": "保留开放训练资源的意义，补上社区工程分工、资助与超算条件。Stable Diffusion只写论文所报告的项目/子集关系，具体版本另核；不能说全5.85B都用于任一版本。",
+      "support_claim_ids": ["INF-L01", "INF-L03", "INF-L05", "INF-L06"],
+      "support_edge_ids": ["INF-E10"],
+      "status": "core_bounded_product_versions_partial"
+    },
+    {
+      "page": 29,
+      "type": "pdf_summary",
+      "pdf_summary": "页题日期2022.10。",
+      "correction": "2022.10对应论文首发月份，不是数据集最初开放日。LAION原文datasheet Q47自述自2022-03-31起分发；本包只确认作者这样记载，没有另核当天发布公告。",
+      "support": [{"source_id": "INF-LAION", "locations": ["首页版本标记", "Appendix A.6 Q47，P30"]}],
+      "status": "paper_date_and_author_reported_distribution_date_separated"
+    },
+    {
+      "page": 30,
+      "type": "pdf_summary",
+      "pdf_summary": "网页数据足够，找到解决数据墙的新范式；右上角为描述性英文标题。",
+      "correction": "正式题名采用source-map核定长题名。结论改为‘经过特定处理的英文网页数据，在本文模型与评测中可以匹敌或超过若干精选语料基线’，删除‘已解决数据墙’的定论。",
+      "support_claim_ids": ["INF-R01", "INF-R03", "INF-R04", "INF-R05"],
+      "status": "title_corrected_and_claim_narrowed"
+    },
+    {
+      "page": 31,
+      "type": "pdf_summary",
+      "pdf_summary": "首个公开发表的生产环境万卡训练论文；高效率及自动恢复。",
+      "correction": "不保留‘首个’全领域优先权；可确证论文披露万卡生产系统。分别交代175B性能表、13B收敛微实验与私有模型生产运行，不用一个MFU数字包办可靠性或模型能力。",
+      "support_claim_ids": ["INF-M02", "INF-M03", "INF-M04", "INF-M05"],
+      "status": "priority_not_asserted_resource_scopes_separated"
+    },
+    {
+      "page": 26,
+      "type": "pdf_summary",
+      "pdf_summary": "Infra与数据的变迁以图形排布串列对象。",
+      "correction": "只作章节导航，不按空间位置制造严格时间或因果链；主笔按显存、样本、开放训练和稳定性四个问题组织，并显式标识叙事回看。",
+      "support_edge_ids": ["INF-E02", "INF-E03", "INF-E05", "INF-E07", "INF-E09"],
+      "status": "narrative_order_not_causal_timeline"
+    }
+  ],
+  "unresolved": [
+    {
+      "id": "INF-U01",
+      "status": "nonblocking_version_gap",
+      "issue": "Stable Diffusion具体版本与LAION子集、过滤条件的对应关系未在本包独立核定。",
+      "handling": "仅保留LAION论文§5.1的作者报告；若书稿要讲某版本产品，回到该版本正式model card或训练说明。"
+    },
+    {
+      "id": "INF-U02",
+      "status": "nonblocking_priority_claim_not_supported",
+      "issue": "MegaScale‘首篇公开生产万卡训练论文’的比较范围和优先权未核。",
+      "handling": "直接删去‘首个’，不为主线扩展全领域优先权调查。"
+    },
+    {
+      "id": "INF-U03",
+      "status": "primary_source_internal_inconsistency",
+      "issue": "RefinedWeb v1正文§3.1写从原始WARC提取，Appendix A采集问答写WET。",
+      "handling": "机制说明以详细§3.1为准并保留差异；若要复刻采集配方，需核作者代码/勘误或正式说明，本包不擅自消除矛盾。"
+    },
+    {
+      "id": "INF-U04",
+      "status": "scope_limit",
+      "issue": "未独立复现系统/训练实验，也未做数据集去污染、版权权属或社会偏差全量审计。",
+      "handling": "所有实验数字写成作者报告；不将原文局部性能当作泛化、安全性或可合法任意使用的证明。"
+    },
+    {
+      "id": "INF-U05",
+      "status": "nonblocking_biographical_claim_omitted",
+      "issue": "讲义中的Schuhmann教师职业背景及数据集首次发布公告未新增一手核验。",
+      "handling": "人物线用原文Author contributions已核协作事实；数据分发日期仅引用datasheet自述，论文首发日期与之分开。"
+    }
+  ],
+  "verification_notes": {
+    "primary_identity": "四份PDF首页版本与source-map身份一致，原始字节哈希均匹配。",
+    "numerical_guards": ["ZeRO模型状态显存不等于总峰值显存", "MegaScale百分点、相对MFU比值、有效训练时间率各自独立", "LAION数据池规模不等于samples seen", "RefinedWeb完整5T不等于公开600B或实验训练tokens"],
+    "independent_review": "未在本子任务中进行，按任务边界交回主流程；未派其他Agent。",
+    "instruction_scope": "本包是给主笔的限定证据JSON，不执行正式报告新建、索引或全量附录工作。METHODOLOGY §1/§2要求按结论需要定点读源；paper_analysis旧guide的逐式/全附录一般建议不扩张本任务，且未因此留下无证据的核心判断。"
+  }
+}

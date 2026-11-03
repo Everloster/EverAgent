@@ -1,0 +1,4658 @@
+{
+  "schema_version": 1,
+  "task_id": "inventory",
+  "verification_date": "2026-11-03",
+  "status": "ready_for_identity_and_route_verification",
+  "language": "zh-CN",
+  "scope": {
+    "goal": "逐页覆盖PDF所串联的AI发展路径、节点身份和关系，不逐篇穷尽论文细节。",
+    "not_claimed": [
+      "不声称全书事实核完",
+      "不声称36篇原文全部精读",
+      "不将讲义标题和人物履历直接视为论文结论",
+      "不将时间先后、空间连线或装饰性起伏视为因果证据"
+    ],
+    "semantics": "pages中的主张主题与route_role主要是对讲义内容的归纳；只有明确标注的身份/日期纠正或primary_supported关系已查一手来源。"
+  },
+  "source_pdf": {
+    "path": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+    "title": "AI演义：36篇论文开启你的探索之旅",
+    "author_as_printed": "谢青池",
+    "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
+    "page_count": 51,
+    "text_layer_sha256": "a2aab6d1a7e77c61b21e26a3139c2d4beb3d471e53472db6f0168b8fc070cfd5",
+    "embedded_links_sha256": "8cd330fc4199d65233d5c6718bab6517619a981ebb54dac0a1cf9f54be41eae0",
+    "read_scope": "全部51页文字层及嵌入URL；必要页原PDF视读；五张总览/路线图另经typed图像能力读取。文字层有丢字，不能作为逐字转录。",
+    "native_visual_pages": [
+      5,
+      6,
+      9,
+      10,
+      11,
+      12,
+      28,
+      29,
+      30,
+      39,
+      40,
+      41,
+      49,
+      50,
+      51
+    ],
+    "typed_vision_pages": [
+      7,
+      8,
+      26,
+      32,
+      41
+    ],
+    "uninterpreted_quantitative_figures": [
+      10,
+      28
+    ]
+  },
+  "counting": {
+    "pdf_title_count": 36,
+    "annotated_link_pages": 38,
+    "distinct_embedded_urls": 34,
+    "logical_exposition_blocks": 34,
+    "mainline_objects": 36,
+    "papers": 33,
+    "research_reports": 2,
+    "essay_articles": 1,
+    "papers_and_research_reports": 35,
+    "matching_existing_local_pdfs": 25,
+    "rejected_existing_local_pdfs": 2,
+    "new_pdf_downloads": 0,
+    "basis": "按正文独立展开的对象计数：模型12（P12拆2）+Bitter Lesson 1（P21–25合1）+infra/data 6（P28拆2）+语言8+多模态9=36。换言之34个讲述块+两张合讲页各增1=36。这个口径与标题数相符，但不冒称得知作者原始计数意图。",
+    "exclusions": "背景硬件、数据组件、人物履历顺带工作和后续产品不另凑入36；LDM与Stable Diffusion产品分身份、主线计论文1项；错误链接目标不计入。"
+  },
+  "reading_map": [
+    {
+      "section": "阅读与叙事入口",
+      "pages": "1–9",
+      "summary": "P1–6说明为什么读、怎么读和如何讲；P7总览、P8模型路线、P9硬件前史。问题主轴是算力、软件、数据与模型如何配合。"
+    },
+    {
+      "section": "模型结构与使用方式",
+      "pages": "10–20",
+      "summary": "GPU计算抽象与CNN突破；序列编码—解码和注意力；深层结构、稀疏计算、压缩与适配；自弈搜索、推理提示与环境交互。不是每项按正文顺序直接导致下一项。",
+      "object_ids": [
+        "brook",
+        "alexnet",
+        "seq2seq",
+        "bahdanau-attention",
+        "distillation",
+        "resnet",
+        "transformer",
+        "alphago-zero",
+        "sparse-moe",
+        "cot",
+        "lora",
+        "react"
+      ]
+    },
+    {
+      "section": "跨路线解释、infra与数据",
+      "pages": "21–31",
+      "summary": "先完整引述一篇Bitter Lesson，再讨论训练显存、计算分配、开放图文数据、网页质量与大集群可靠性。P28必须保留两篇研究的差异。",
+      "object_ids": [
+        "bitter-lesson",
+        "zero",
+        "scaling-laws",
+        "chinchilla",
+        "laion5b",
+        "refinedweb",
+        "megascale"
+      ]
+    },
+    {
+      "section": "语言模型",
+      "pages": "32–40",
+      "summary": "词表示、翻译系统、预训练迁移、双向理解、自回归扩展、上下文示例、指令偏好后训练、开放配方。P40纠正题名和链接。",
+      "object_ids": [
+        "word2vec",
+        "gnmt",
+        "gpt1",
+        "bert",
+        "gpt2",
+        "gpt3",
+        "instructgpt",
+        "tulu3"
+      ]
+    },
+    {
+      "section": "视觉、多模态与生成",
+      "pages": "41–50",
+      "summary": "视频理解是一条支线；GAN与扩散是生成路线；ViT提供视觉架构，CLIP提供图文表示，LDM降低扩散计算成本，DiT重用Transformer骨干。P49论文与产品分开。",
+      "object_ids": [
+        "deepvideo",
+        "two-stream",
+        "gan",
+        "diffusion-2015",
+        "ddpm",
+        "vit",
+        "clip",
+        "ldm",
+        "dit"
+      ]
+    },
+    {
+      "section": "收束",
+      "pages": "51",
+      "summary": "致谢，无新增技术对象。"
+    }
+  ],
+  "pages": [
+    {
+      "page": 1,
+      "title": "AI演义：36篇论文开启你的探索之旅",
+      "kind": "cover",
+      "objects": [],
+      "key_topics": [
+        "分享主题与讲者署名",
+        "36是标题口径，不先假设是36篇学术论文"
+      ],
+      "route_role": "入口，无研究结论",
+      "status": "content_inventoried",
+      "read_methods": [
+        "full_text_layer"
+      ],
+      "previous_page": null,
+      "next_page": 2,
+      "background_objects": [],
+      "incidental_works": []
+    },
+    {
+      "page": 2,
+      "title": "我当时为什么读论文",
+      "kind": "learning-context",
+      "objects": [],
+      "key_topics": [
+        "理解新技术边界",
+        "寻找3—5年较稳定的知识",
+        "以研究问题理解论文"
+      ],
+      "route_role": "提出阅读动机，不是发展节点",
+      "status": "content_inventoried",
+      "read_methods": [
+        "full_text_layer"
+      ],
+      "previous_page": 1,
+      "next_page": 3,
+      "background_objects": [],
+      "incidental_works": []
+    },
+    {
+      "page": 3,
+      "title": "碰到了什么挑战，做了何种准备",
+      "kind": "learning-context",
+      "objects": [],
+      "key_topics": [
+        "数学基础",
+        "英语与术语障碍",
+        "先建深度学习概念和历史框架"
+      ],
+      "route_role": "解释读者准备，不将数学清单转化为本任务的先修要求",
+      "status": "content_inventoried",
+      "read_methods": [
+        "full_text_layer"
+      ],
+      "previous_page": 2,
+      "next_page": 4,
+      "background_objects": [],
+      "incidental_works": []
+    },
+    {
+      "page": 4,
+      "title": "如何用AI学习AI，应对这些挑战",
+      "kind": "learning-context",
+      "objects": [],
+      "key_topics": [
+        "翻译辅助",
+        "向AI提问",
+        "Artifact可视化与Dia随问"
+      ],
+      "route_role": "学习工具建议，不计为论文对象",
+      "status": "content_inventoried",
+      "read_methods": [
+        "full_text_layer"
+      ],
+      "previous_page": 3,
+      "next_page": 5,
+      "background_objects": [],
+      "incidental_works": []
+    },
+    {
+      "page": 5,
+      "title": "体系化的学习路书：视频+书籍",
+      "kind": "learning-resources",
+      "objects": [],
+      "key_topics": [
+        "吴恩达、李宏毅、Karpathy、李沐等课程",
+        "3Blue1Brown、王木头、Zomi",
+        "三本入门书",
+        "英文材料时间分配建议"
+      ],
+      "route_role": "背景资源列表；作者的80%建议不是经验证据",
+      "status": "content_inventoried",
+      "read_methods": [
+        "full_text_layer",
+        "native_pdf_visual_read"
+      ],
+      "previous_page": 4,
+      "next_page": 6,
+      "background_objects": [],
+      "incidental_works": [],
+      "named_resources": [
+        "吴恩达机器学习/AI课程",
+        "李宏毅：生成式AI时代下的机器学习（2025）",
+        "Andrej Karpathy的YouTube",
+        "李沐论文精读系列",
+        "3Blue1Brown数学与神经网络",
+        "王木头学科学",
+        "Zomi",
+        "《一站式LLM底层技术原理入门指南》",
+        "《动手学深度学习》（PyTorch版）",
+        "《深度学习的数学》"
+      ]
+    },
+    {
+      "page": 6,
+      "title": "整个分享的结构",
+      "kind": "method-framing",
+      "objects": [],
+      "key_topics": [
+        "历史背景—挑战—解决方法—影响",
+        "范式与支线转主线",
+        "研究者人物线"
+      ],
+      "route_role": "确立全书的问题和叙事框架，人物履历不自动变成主线研究对象",
+      "status": "content_inventoried",
+      "read_methods": [
+        "full_text_layer",
+        "native_pdf_visual_read"
+      ],
+      "previous_page": 5,
+      "next_page": 7,
+      "background_objects": [],
+      "incidental_works": []
+    },
+    {
+      "page": 7,
+      "title": "深度神经网络随着这四个要素的发展而发展",
+      "kind": "overview",
+      "objects": [
+        "brook",
+        "alexnet",
+        "seq2seq",
+        "bahdanau-attention",
+        "distillation",
+        "resnet",
+        "transformer",
+        "alphago-zero",
+        "sparse-moe",
+        "cot",
+        "lora",
+        "react",
+        "bitter-lesson",
+        "zero",
+        "scaling-laws",
+        "laion5b",
+        "refinedweb",
+        "megascale",
+        "word2vec",
+        "gnmt",
+        "gpt1",
+        "bert",
+        "gpt2",
+        "gpt3",
+        "instructgpt",
+        "tulu3",
+        "deepvideo",
+        "two-stream",
+        "gan",
+        "diffusion-2015",
+        "ddpm",
+        "vit",
+        "clip",
+        "ldm",
+        "dit"
+      ],
+      "key_topics": [
+        "芯片、infra、数据、模型结构",
+        "四条讲述线",
+        "总览与正文顺序并非严格一致"
+      ],
+      "route_role": "四条线是分组导航，不是闭合因果图；总览未单独写Chinchilla",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer",
+        "eacli_technical_diagram_read"
+      ],
+      "previous_page": 6,
+      "next_page": 8,
+      "background_objects": [],
+      "incidental_works": []
+    },
+    {
+      "page": 8,
+      "title": "模型的范式变迁",
+      "kind": "timeline",
+      "objects": [
+        "brook",
+        "alexnet",
+        "seq2seq",
+        "bahdanau-attention",
+        "distillation",
+        "resnet",
+        "transformer",
+        "alphago-zero",
+        "sparse-moe",
+        "cot",
+        "lora",
+        "react"
+      ],
+      "key_topics": [
+        "Brook至ReAct的11个显示标签",
+        "seq2seq/Attention合写",
+        "MoE与LoRA的时间位置"
+      ],
+      "route_role": "含12个独立主对象；时间轴顺序不等于后续正文页序",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer",
+        "eacli_technical_diagram_read"
+      ],
+      "previous_page": 7,
+      "next_page": 9,
+      "background_objects": [],
+      "incidental_works": []
+    },
+    {
+      "page": 9,
+      "title": "故事要从1999年的第一颗GPU开始讲起",
+      "kind": "hardware-context",
+      "objects": [],
+      "key_topics": [
+        "GeForce256与几何处理",
+        "GeForce3与可编程shader",
+        "图形硬件转通用计算的动机"
+      ],
+      "route_role": "作为Brook的硬件前史；“第一颗GPU”及可编程像素着色器口径待核",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer",
+        "native_pdf_visual_read"
+      ],
+      "previous_page": 8,
+      "next_page": 10,
+      "background_objects": [
+        "geforce256",
+        "geforce3"
+      ],
+      "incidental_works": []
+    },
+    {
+      "page": 10,
+      "title": "Brook：用GPU进行计算（2004.08）",
+      "kind": "object",
+      "objects": [
+        "brook"
+      ],
+      "key_topics": [
+        "数据并行计算需要更高层抽象",
+        "流、核函数、规约",
+        "编译器和运行时",
+        "GPU/CPU趋势示意图"
+      ],
+      "route_role": "从能编程的图形硬件到较易使用的通用计算工具；不声称AlexNet直接使用Brook",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer",
+        "native_pdf_visual_read"
+      ],
+      "previous_page": 9,
+      "next_page": 11,
+      "background_objects": [
+        "cuda"
+      ],
+      "incidental_works": [
+        "CUDA人物经历",
+        "Pixar",
+        "Tableau"
+      ],
+      "figure_scope": "已确认有趋势/损失曲线；本阶段未读取曲线数值、拟合系数或据图核定实验结论，后续如使用须走图表理解与原论文对照"
+    },
+    {
+      "page": 11,
+      "title": "AlexNet：深度学习的开端（2012.10）",
+      "kind": "object",
+      "objects": [
+        "alexnet"
+      ],
+      "key_topics": [
+        "ImageNet与竞赛",
+        "GPU训练CNN",
+        "特征工程对比表示学习",
+        "数据与算力扩大"
+      ],
+      "route_role": "说明数据、硬件、模型一起起作用；“开端”是阶段性叙事标签",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer",
+        "native_pdf_visual_read"
+      ],
+      "previous_page": 10,
+      "next_page": 12,
+      "background_objects": [
+        "imagenet",
+        "cuda"
+      ],
+      "incidental_works": [
+        "反向传播",
+        "RBM",
+        "DBN",
+        "Google Brain"
+      ]
+    },
+    {
+      "page": 12,
+      "title": "对序列建模：seq2seq和Attention的引入（2014.09）",
+      "kind": "multi-object",
+      "objects": [
+        "seq2seq",
+        "bahdanau-attention"
+      ],
+      "key_topics": [
+        "统计机器翻译背景",
+        "LSTM编码—解码",
+        "固定长度表示瓶颈",
+        "解码时选择源序列信息"
+      ],
+      "route_role": "一页两篇；不能将注意力机制归到seq2seq论文，也不能误写两篇的首发先后",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer",
+        "native_pdf_visual_read"
+      ],
+      "previous_page": 11,
+      "next_page": 13,
+      "background_objects": [
+        "statistical-mt",
+        "lstm"
+      ],
+      "incidental_works": [
+        "2024 seq2seq Test of Time演讲",
+        "Gemini预训练/后训练职位"
+      ]
+    },
+    {
+      "page": 13,
+      "title": "蒸馏：模型能被学习吗？（2015.03）",
+      "kind": "object",
+      "objects": [
+        "distillation"
+      ],
+      "key_topics": [
+        "大模型部署成本",
+        "教师软目标",
+        "学生模型",
+        "知识迁移"
+      ],
+      "route_role": "扩大模型同时产生压缩/部署支线；不是下一页ResNet的直接原因",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer"
+      ],
+      "previous_page": 12,
+      "next_page": 14,
+      "background_objects": [],
+      "incidental_works": [
+        "MapReduce",
+        "TensorFlow"
+      ]
+    },
+    {
+      "page": 14,
+      "title": "ResNet：比深更深（2015.12）",
+      "kind": "object",
+      "objects": [
+        "resnet"
+      ],
+      "key_topics": [
+        "网络加深后的退化",
+        "残差学习与跨层连接",
+        "更深模型的可训练性"
+      ],
+      "route_role": "解决优化结构障碍，后续序列与视觉模型可借用残差思想",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer"
+      ],
+      "previous_page": 13,
+      "next_page": 15,
+      "background_objects": [],
+      "incidental_works": []
+    },
+    {
+      "page": 15,
+      "title": "Transformer来了！拉开一个时代的序幕（2017.06）",
+      "kind": "object",
+      "objects": [
+        "transformer"
+      ],
+      "key_topics": [
+        "循环计算并行困难",
+        "自注意力与多头",
+        "长距离关系",
+        "位置与因果mask",
+        "硬件适配"
+      ],
+      "route_role": "从带注意力的循环序列模型转向注意力主导架构；不把所有Transformer都说成丢弃encoder",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer"
+      ],
+      "previous_page": 14,
+      "next_page": 16,
+      "background_objects": [
+        "lstm"
+      ],
+      "incidental_works": [
+        "Cohere",
+        "Character.AI",
+        "Sakana AI",
+        "Near Protocol",
+        "Inceptive"
+      ]
+    },
+    {
+      "page": 16,
+      "title": "AlphaGo Zero：强化学习的突破（2017.10）",
+      "kind": "object",
+      "objects": [
+        "alphago-zero"
+      ],
+      "key_topics": [
+        "与使用人类棋谱的AlphaGo对比",
+        "自我对弈",
+        "神经网络与MCTS",
+        "训练与搜索计算"
+      ],
+      "route_role": "围棋内的搜索/学习实例；跨到LLM thinking的历史因果与绝对胜率说法待核",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer"
+      ],
+      "previous_page": 15,
+      "next_page": 17,
+      "background_objects": [
+        "alphago-2016",
+        "mcts",
+        "llm-thinking"
+      ],
+      "incidental_works": [
+        "Inflection",
+        "Microsoft AI"
+      ]
+    },
+    {
+      "page": 17,
+      "title": "现代MoE的开端（2017.01）",
+      "kind": "object",
+      "objects": [
+        "sparse-moe"
+      ],
+      "key_topics": [
+        "参数容量与计算成本分离",
+        "稀疏路由",
+        "条件计算",
+        "早期MoE思想"
+      ],
+      "route_role": "成本支线，实际早于Transformer；容量千倍不能换算为成本千分之一",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer"
+      ],
+      "previous_page": 16,
+      "next_page": 18,
+      "background_objects": [
+        "early-moe"
+      ],
+      "incidental_works": []
+    },
+    {
+      "page": 18,
+      "title": "CoT：Prompt Engineering的奠基之作（2022.01）",
+      "kind": "object",
+      "objects": [
+        "cot"
+      ],
+      "key_topics": [
+        "大模型推理任务",
+        "few-shot中间步骤示例",
+        "能力与模型规模",
+        "向后训练/思考模型的叙事连接"
+      ],
+      "route_role": "从仅给问答示例到给出推理过程；后续历史因果未核",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer"
+      ],
+      "previous_page": 17,
+      "next_page": 19,
+      "background_objects": [
+        "llm-thinking"
+      ],
+      "incidental_works": [
+        "o1项目",
+        "CS25分享"
+      ]
+    },
+    {
+      "page": 19,
+      "title": "LoRA：那个我们每天都在用的东西（2021.06）",
+      "kind": "object",
+      "objects": [
+        "lora"
+      ],
+      "key_topics": [
+        "全量微调与多副本成本",
+        "冻结底座和低秩更新",
+        "权重合并",
+        "后续扩散应用"
+      ],
+      "route_role": "适配成本支线；正文在CoT后讲，但时间在CoT前",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer"
+      ],
+      "previous_page": 18,
+      "next_page": 20,
+      "background_objects": [
+        "adapter-tuning",
+        "stable-diffusion-product"
+      ],
+      "incidental_works": [
+        "LoRA作者YouTube讲解"
+      ]
+    },
+    {
+      "page": 20,
+      "title": "ReAct：Agent从理论到落地（2022.10）",
+      "kind": "object",
+      "objects": [
+        "react"
+      ],
+      "key_topics": [
+        "Agent定义背景",
+        "CoT缺乏环境反馈",
+        "推理、行动和观察交错",
+        "工具使用"
+      ],
+      "route_role": "把推理与环境交互连接；人物栏SWE-bench不另计主对象",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer"
+      ],
+      "previous_page": 19,
+      "next_page": 21,
+      "background_objects": [
+        "agent-definition-1995",
+        "langchain-langgraph"
+      ],
+      "incidental_works": [
+        "SWE-bench",
+        "Claude交错思考"
+      ]
+    },
+    {
+      "page": 21,
+      "title": "The Bitter Lesson：过去70年的教训（页头2018.08）",
+      "kind": "essay-part",
+      "objects": [
+        "bitter-lesson"
+      ],
+      "key_topics": [
+        "通用方法与可利用计算",
+        "计算单位成本下降",
+        "人类知识路线的机会成本"
+      ],
+      "route_role": "同一文章第1部分，提出跨路线解释框架；真实日期2019-03-13",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer"
+      ],
+      "previous_page": 20,
+      "next_page": 22,
+      "background_objects": [],
+      "incidental_works": []
+    },
+    {
+      "page": 22,
+      "title": "The Bitter Lesson：棋类案例",
+      "kind": "essay-part",
+      "objects": [
+        "bitter-lesson"
+      ],
+      "key_topics": [
+        "国际象棋的搜索",
+        "围棋的搜索和自我对弈",
+        "学习与搜索的扩展性"
+      ],
+      "route_role": "同一文章第2部分；历史案例为作者论证，不逐案例补成新论文",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer"
+      ],
+      "previous_page": 21,
+      "next_page": 23,
+      "background_objects": [
+        "chess-search",
+        "alphago-2016"
+      ],
+      "incidental_works": []
+    },
+    {
+      "page": 23,
+      "title": "The Bitter Lesson：语音与视觉案例",
+      "kind": "essay-part",
+      "objects": [
+        "bitter-lesson"
+      ],
+      "key_topics": [
+        "语音识别中的统计计算",
+        "HMM",
+        "视觉人工特征与卷积模型"
+      ],
+      "route_role": "同一文章第3部分；不把文中历史概括当作所有人工知识均无效的证明",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer"
+      ],
+      "previous_page": 22,
+      "next_page": 24,
+      "background_objects": [
+        "hmm",
+        "sift"
+      ],
+      "incidental_works": []
+    },
+    {
+      "page": 24,
+      "title": "The Bitter Lesson：历史模式与两种方法",
+      "kind": "essay-part",
+      "objects": [
+        "bitter-lesson"
+      ],
+      "key_topics": [
+        "注入人类知识的短期收益与长期平台",
+        "搜索与学习",
+        "可扩展通用方法"
+      ],
+      "route_role": "同一文章第4部分，归纳观察而非普适数学定理",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer"
+      ],
+      "previous_page": 23,
+      "next_page": 25,
+      "background_objects": [],
+      "incidental_works": []
+    },
+    {
+      "page": 25,
+      "title": "The Bitter Lesson：发现的方法而非已有发现",
+      "kind": "essay-part",
+      "objects": [
+        "bitter-lesson"
+      ],
+      "key_topics": [
+        "心智内容的复杂性",
+        "让方法寻找近似",
+        "能够发现的智能体"
+      ],
+      "route_role": "同一文章第5部分及结尾；不另造第2篇Bitter Lesson",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer"
+      ],
+      "previous_page": 24,
+      "next_page": 26,
+      "background_objects": [],
+      "incidental_works": []
+    },
+    {
+      "page": 26,
+      "title": "Infra与数据的变迁",
+      "kind": "timeline",
+      "objects": [
+        "zero",
+        "scaling-laws",
+        "laion5b",
+        "refinedweb",
+        "megascale",
+        "bitter-lesson"
+      ],
+      "key_topics": [
+        "ZeRO",
+        "Scaling Law",
+        "LAION-5B",
+        "RefinedWeb",
+        "MegaScale",
+        "The Bitter Lesson"
+      ],
+      "route_role": "日期文字与空间排布不完全一致，且Bitter Lesson放在右端；不能照图线写因果或严格年表",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer",
+        "eacli_technical_diagram_read"
+      ],
+      "previous_page": 25,
+      "next_page": 27,
+      "background_objects": [],
+      "incidental_works": []
+    },
+    {
+      "page": 27,
+      "title": "ZeRO：大规模的GPU并行计算（2019.10）",
+      "kind": "object",
+      "objects": [
+        "zero"
+      ],
+      "key_topics": [
+        "单卡显存限制",
+        "数据并行状态冗余",
+        "优化器状态、梯度、参数切分",
+        "DeepSpeed"
+      ],
+      "route_role": "扩大训练可容纳的模型；“无限扩展”仍受通信等约束，本文底稿不采信绝对化",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer"
+      ],
+      "previous_page": 26,
+      "next_page": 28,
+      "background_objects": [
+        "deepspeed"
+      ],
+      "incidental_works": []
+    },
+    {
+      "page": 28,
+      "title": "Scaling Law & Chinchilla：上帝的指挥棒（2020.01、2022.03）",
+      "kind": "multi-object",
+      "objects": [
+        "scaling-laws",
+        "chinchilla"
+      ],
+      "key_topics": [
+        "参数、数据、计算预算",
+        "经验幂律",
+        "计算最优分配的不同建议",
+        "两组损失曲线"
+      ],
+      "route_role": "一页两篇；明确初始规律与修正，不把时间序列写成同一个结论",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer",
+        "native_pdf_visual_read"
+      ],
+      "previous_page": 27,
+      "next_page": 29,
+      "background_objects": [],
+      "incidental_works": [],
+      "figure_scope": "已确认有趋势/损失曲线；本阶段未读取曲线数值、拟合系数或据图核定实验结论，后续如使用须走图表理解与原论文对照"
+    },
+    {
+      "page": 29,
+      "title": "LAION-5B：开源社区的英雄主义（2022.10）",
+      "kind": "object",
+      "objects": [
+        "laion5b"
+      ],
+      "key_topics": [
+        "CLIP训练数据未公开的缺口",
+        "Common Crawl图文对",
+        "CLIP过滤",
+        "开放数据"
+      ],
+      "route_role": "把表示学习与开放训练数据连接；各版本Stable Diffusion实际用哪个子集待核",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer",
+        "native_pdf_visual_read"
+      ],
+      "previous_page": 28,
+      "next_page": 30,
+      "background_objects": [
+        "common-crawl",
+        "stable-diffusion-product"
+      ],
+      "incidental_works": []
+    },
+    {
+      "page": 30,
+      "title": "The RefinedWeb：互联网的数据也很够用（2023.06）",
+      "kind": "object",
+      "objects": [
+        "refinedweb"
+      ],
+      "key_topics": [
+        "数据扩展需求",
+        "网页清洗和去重",
+        "与精选语料的比较",
+        "数据工程"
+      ],
+      "route_role": "数据质量与可获得性支线；不是已证明未来不存在数据墙",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer",
+        "native_pdf_visual_read"
+      ],
+      "previous_page": 29,
+      "next_page": 31,
+      "background_objects": [
+        "common-crawl"
+      ],
+      "incidental_works": []
+    },
+    {
+      "page": 31,
+      "title": "MegaScale：万卡GPU集群的训练（2024.02）",
+      "kind": "object",
+      "objects": [
+        "megascale"
+      ],
+      "key_topics": [
+        "大集群效率",
+        "算法系统协同",
+        "可观测性",
+        "故障诊断与稳定性"
+      ],
+      "route_role": "从“放得下”进一步到生产训练运行；不由发表先后推出与ZeRO的直接继承",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer"
+      ],
+      "previous_page": 30,
+      "next_page": 32,
+      "background_objects": [],
+      "incidental_works": []
+    },
+    {
+      "page": 32,
+      "title": "语言模型的发展",
+      "kind": "timeline",
+      "objects": [
+        "word2vec",
+        "gnmt",
+        "gpt1",
+        "bert",
+        "gpt2",
+        "gpt3",
+        "instructgpt",
+        "tulu3"
+      ],
+      "key_topics": [
+        "Word2Vec至Tulu3的8个节点",
+        "预训练—迁移—提示—后训练"
+      ],
+      "route_role": "语言路线导航；“告别微调”“Prompt从这里开始”作为待检验标题保留",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer",
+        "eacli_technical_diagram_read"
+      ],
+      "previous_page": 31,
+      "next_page": 33,
+      "background_objects": [],
+      "incidental_works": []
+    },
+    {
+      "page": 33,
+      "title": "Word2Vec：用机器学习将单词向量化（2013.01）",
+      "kind": "object",
+      "objects": [
+        "word2vec"
+      ],
+      "key_topics": [
+        "连续语义表示",
+        "训练效率",
+        "大语料",
+        "下游复用"
+      ],
+      "route_role": "表示学习的早期节点，但不是连续词向量思想的起点已经核实",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer"
+      ],
+      "previous_page": 32,
+      "next_page": 34,
+      "background_objects": [],
+      "incidental_works": []
+    },
+    {
+      "page": 34,
+      "title": "Google Translate：神经网络的大规模线上部署（2016.09）",
+      "kind": "object",
+      "objects": [
+        "gnmt"
+      ],
+      "key_topics": [
+        "GNMT取代短语系统的部署障碍",
+        "LSTM和注意力",
+        "残差",
+        "低精度",
+        "稀有词处理"
+      ],
+      "route_role": "把序列建模与工程系统连接，正式对象是GNMT论文",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer"
+      ],
+      "previous_page": 33,
+      "next_page": 35,
+      "background_objects": [
+        "statistical-mt",
+        "lstm"
+      ],
+      "incidental_works": [
+        "Gemini/Seed职位"
+      ]
+    },
+    {
+      "page": 35,
+      "title": "GPT-1：它来了（2018.06）",
+      "kind": "object",
+      "objects": [
+        "gpt1"
+      ],
+      "key_topics": [
+        "标注数据稀缺",
+        "无监督生成式预训练",
+        "监督下游微调",
+        "decoder Transformer"
+      ],
+      "route_role": "从词级表示走向任务通用的语言预训练；不是预训练—微调全范式首次出现",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer"
+      ],
+      "previous_page": 34,
+      "next_page": 36,
+      "background_objects": [
+        "books-corpus"
+      ],
+      "incidental_works": [
+        "2015无监督学习数学证明的口述故事"
+      ]
+    },
+    {
+      "page": 36,
+      "title": "BERT：曾经的王（2018.10）",
+      "kind": "object",
+      "objects": [
+        "bert"
+      ],
+      "key_topics": [
+        "单向信息限制",
+        "深度双向上下文",
+        "预训练和微调",
+        "NSP"
+      ],
+      "route_role": "与GPT形成任务目标和结构的分支比较，不能用单线胜负代替条件分析",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer"
+      ],
+      "previous_page": 35,
+      "next_page": 37,
+      "background_objects": [],
+      "incidental_works": []
+    },
+    {
+      "page": 37,
+      "title": "GPT-2：是时候告别微调了（2019.02）",
+      "kind": "object",
+      "objects": [
+        "gpt2"
+      ],
+      "key_topics": [
+        "更多样的WebText",
+        "扩大模型",
+        "零样本任务迁移",
+        "统一语言建模目标"
+      ],
+      "route_role": "从每任务微调走向直接提示的研究探索；不意味着一般任务已全面达到最优",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer"
+      ],
+      "previous_page": 36,
+      "next_page": 38,
+      "background_objects": [
+        "webtext"
+      ],
+      "incidental_works": []
+    },
+    {
+      "page": 38,
+      "title": "GPT-3：ChatGPT来临前夜（2020.05）",
+      "kind": "object",
+      "objects": [
+        "gpt3"
+      ],
+      "key_topics": [
+        "工程资源扩大",
+        "Common Crawl",
+        "Scaling Laws指导",
+        "few-shot上下文学习",
+        "Prompt"
+      ],
+      "route_role": "用扩展后的模型承载示例驱动使用方式；融资、组织动机和上下游因果另核",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer"
+      ],
+      "previous_page": 37,
+      "next_page": 39,
+      "background_objects": [
+        "common-crawl"
+      ],
+      "incidental_works": []
+    },
+    {
+      "page": 39,
+      "title": "InstructGPT：给LLM以文明（2022.03）",
+      "kind": "object",
+      "objects": [
+        "instructgpt"
+      ],
+      "key_topics": [
+        "预训练目标与用户意图不一致",
+        "SFT",
+        "奖励模型",
+        "PPO",
+        "人类偏好评估"
+      ],
+      "route_role": "从会续写到更符合指令和偏好的行为；不冒称解决所有真实性和安全问题",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer",
+        "native_pdf_visual_read"
+      ],
+      "previous_page": 38,
+      "next_page": 40,
+      "background_objects": [
+        "rlhf",
+        "ppo"
+      ],
+      "incidental_works": [
+        "PPO作者经历",
+        "Alignment团队"
+      ]
+    },
+    {
+      "page": 40,
+      "title": "Tulu 3：后训练的开源（2024.11）",
+      "kind": "object",
+      "objects": [
+        "tulu3"
+      ],
+      "key_topics": [
+        "开放数据代码与配方",
+        "SFT",
+        "DPO",
+        "RLVR",
+        "评估与复现"
+      ],
+      "route_role": "承接后训练透明度问题；显示题名和链接都需要纠正，三阶段叙述的细节待后续研究",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer",
+        "native_pdf_visual_read"
+      ],
+      "previous_page": 39,
+      "next_page": 41,
+      "background_objects": [
+        "dpo",
+        "rlvr",
+        "llama3-base"
+      ],
+      "incidental_works": [
+        "Interconnects通讯"
+      ]
+    },
+    {
+      "page": 41,
+      "title": "多模态模型的发展",
+      "kind": "timeline",
+      "objects": [
+        "deepvideo",
+        "two-stream",
+        "gan",
+        "diffusion-2015",
+        "ddpm",
+        "vit",
+        "clip",
+        "ldm",
+        "dit"
+      ],
+      "key_topics": [
+        "视频分类与动作识别",
+        "GAN/扩散",
+        "ViT",
+        "CLIP",
+        "LDM",
+        "DiT"
+      ],
+      "route_role": "混合多个任务分支的导航，不应写成视频分类直接导致文生图",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer",
+        "native_pdf_visual_read",
+        "eacli_technical_diagram_read"
+      ],
+      "previous_page": 40,
+      "next_page": 42,
+      "background_objects": [],
+      "incidental_works": []
+    },
+    {
+      "page": 42,
+      "title": "DeepVideo：深度学习进入视频领域（2014.06）",
+      "kind": "object",
+      "objects": [
+        "deepvideo"
+      ],
+      "key_topics": [
+        "Sports-1M",
+        "视频CNN",
+        "多种时间融合",
+        "多帧收益有限"
+      ],
+      "route_role": "从图像分类迁移到视频并暴露时间信息建模问题；原URL错误",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer"
+      ],
+      "previous_page": 41,
+      "next_page": 43,
+      "background_objects": [
+        "sports1m",
+        "imagenet"
+      ],
+      "incidental_works": []
+    },
+    {
+      "page": 43,
+      "title": "双流网络：Karén和学术重镇牛津登场（2014.06）",
+      "kind": "object",
+      "objects": [
+        "two-stream"
+      ],
+      "key_topics": [
+        "单帧外观与运动信息",
+        "空间流和时间流",
+        "光流",
+        "融合"
+      ],
+      "route_role": "回应视频运动信息难题；VGG和AlphaGo Zero在人物栏的出现不新增主对象",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer"
+      ],
+      "previous_page": 42,
+      "next_page": 44,
+      "background_objects": [
+        "optical-flow"
+      ],
+      "incidental_works": [
+        "VGG",
+        "AlphaGo Zero"
+      ]
+    },
+    {
+      "page": 44,
+      "title": "图像生成的序章：GAN来了（2014.06）",
+      "kind": "object",
+      "objects": [
+        "gan"
+      ],
+      "key_topics": [
+        "生成任务与判别任务对照",
+        "生成器—判别器对抗",
+        "学习目标"
+      ],
+      "route_role": "视觉生成支线，不是从视频分类直接派生的必然下一步",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer"
+      ],
+      "previous_page": 43,
+      "next_page": 45,
+      "background_objects": [],
+      "incidental_works": [
+        "Deep Learning教科书",
+        "对抗样本"
+      ]
+    },
+    {
+      "page": 45,
+      "title": "Diffusion：在GAN的阴影下，悄然成长（2015.03）",
+      "kind": "object",
+      "objects": [
+        "diffusion-2015"
+      ],
+      "key_topics": [
+        "表达力与可处理概率模型",
+        "逐步加噪",
+        "学习逆向过程",
+        "生成模型的另一条路径"
+      ],
+      "route_role": "与GAN是不同生成路线；“长期被忽视”的传播史尚未核实",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer"
+      ],
+      "previous_page": 44,
+      "next_page": 46,
+      "background_objects": [
+        "vae"
+      ],
+      "incidental_works": [
+        "学习优化器的元训练",
+        "过参数化理论",
+        "作者任职与跨学科经历"
+      ]
+    },
+    {
+      "page": 46,
+      "title": "DDPM：Diffusion重回图像舞台的中央（2020.06）",
+      "kind": "object",
+      "objects": [
+        "ddpm"
+      ],
+      "key_topics": [
+        "扩散的样本质量与训练难点",
+        "去噪/噪声预测",
+        "U-Net",
+        "简化训练目标"
+      ],
+      "route_role": "同一技术家族的后续推进；与ResNet仅作类比，不推断直接继承关系",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer"
+      ],
+      "previous_page": 45,
+      "next_page": 47,
+      "background_objects": [
+        "vae",
+        "autoregressive-image-models",
+        "unet"
+      ],
+      "incidental_works": [
+        "Imagen",
+        "Ideogram",
+        "Covariant"
+      ]
+    },
+    {
+      "page": 47,
+      "title": "ViT：当图像遇到Transformer（2020.10）",
+      "kind": "object",
+      "objects": [
+        "vit"
+      ],
+      "key_topics": [
+        "图像切patch成序列",
+        "标准Transformer",
+        "大数据预训练",
+        "视觉识别扩展"
+      ],
+      "route_role": "把序列架构引入视觉识别；不是图像本身先天存在离散文本token",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer"
+      ],
+      "previous_page": 46,
+      "next_page": 48,
+      "background_objects": [],
+      "incidental_works": [
+        "Transformer作者兼ViT顾问"
+      ]
+    },
+    {
+      "page": 48,
+      "title": "CLIP：文生图的奠基石（2021.03）",
+      "kind": "object",
+      "objects": [
+        "clip"
+      ],
+      "key_topics": [
+        "自然语言监督",
+        "图文对比学习",
+        "共享表示",
+        "零样本图像分类"
+      ],
+      "route_role": "连接图像与语言的表示，不是直接生成图像的模型",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer"
+      ],
+      "previous_page": 47,
+      "next_page": 49,
+      "background_objects": [],
+      "incidental_works": []
+    },
+    {
+      "page": 49,
+      "title": "Stable Diffusion：它来了（2021.12）",
+      "kind": "object",
+      "objects": [
+        "ldm"
+      ],
+      "key_topics": [
+        "像素空间计算成本",
+        "潜空间扩散",
+        "编码器/解码器",
+        "交叉注意力条件",
+        "GLIDE背景"
+      ],
+      "route_role": "主论文是LDM，产品Stable Diffusion单独列背景对象；不能直接沿用产品名与2021日期的组合",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer",
+        "native_pdf_visual_read"
+      ],
+      "previous_page": 48,
+      "next_page": 50,
+      "background_objects": [
+        "glide",
+        "stable-diffusion-product",
+        "unet"
+      ],
+      "incidental_works": []
+    },
+    {
+      "page": 50,
+      "title": "DiT：人们期待一个融合的未来（2022.12）",
+      "kind": "object",
+      "objects": [
+        "dit"
+      ],
+      "key_topics": [
+        "潜空间扩散",
+        "以Transformer替换U-Net骨干",
+        "扩展性",
+        "视觉架构复用"
+      ],
+      "route_role": "结合扩散生成与Transformer架构；原论文不等于Sora、也未核定“所有模态统一”的预测",
+      "status": "route_inventoried_claims_pending",
+      "read_methods": [
+        "full_text_layer",
+        "native_pdf_visual_read"
+      ],
+      "previous_page": 49,
+      "next_page": 51,
+      "background_objects": [
+        "unet",
+        "stable-diffusion-product"
+      ],
+      "incidental_works": [
+        "Sora",
+        "ResNeXt",
+        "ViT",
+        "作者任职"
+      ]
+    },
+    {
+      "page": 51,
+      "title": "THANKS",
+      "kind": "closing",
+      "objects": [],
+      "key_topics": [
+        "结束致谢与讲者署名"
+      ],
+      "route_role": "无新增研究对象或技术结论",
+      "status": "content_inventoried",
+      "read_methods": [
+        "full_text_layer",
+        "native_pdf_visual_read"
+      ],
+      "previous_page": 50,
+      "next_page": null,
+      "background_objects": [],
+      "incidental_works": []
+    }
+  ],
+  "objects": [
+    {
+      "id": "brook",
+      "display_name": "Brook",
+      "kind": "paper",
+      "mainline": true,
+      "track": "model",
+      "title": "Brook for GPUs: Stream Computing on Graphics Hardware",
+      "authors": [
+        "Ian Buck",
+        "Tim Foley",
+        "Daniel Horn",
+        "Jeremy Sugerman",
+        "Kayvon Fatahalian",
+        "Mike Houston",
+        "Pat Hanrahan"
+      ],
+      "year": 2004,
+      "first_public_date": "2004-08-01",
+      "verified_url": "https://dl.acm.org/doi/10.1145/1015706.1015800",
+      "source_ids": [
+        "brook"
+      ],
+      "year_basis": "ACM dc.Date；作者来自 dc.Creator，题名由主标题与副标题合并",
+      "identity_status": "identity_verified",
+      "claim_status": "not_fully_reviewed",
+      "focus_pages": [
+        10
+      ],
+      "pdf_pages": [
+        7,
+        8,
+        10
+      ],
+      "original_urls": [
+        "https://dl.acm.org/doi/pdf/10.1145/1015706.1015800"
+      ],
+      "verified_urls": [
+        "https://dl.acm.org/doi/10.1145/1015706.1015800"
+      ],
+      "local_originals": [],
+      "rejected_local_candidates": [
+        {
+          "path": "ai-learning/papers/28_brook_2004.pdf",
+          "sha256": "f49df39bf00a7cd347d41025563838d7432917ffa9ec6fbc161ae596fc1fd2da",
+          "read_scope": "仅第1页：题名、作者、版本标识；部分摘要和引言开头，不代表全文已研究",
+          "identity_status": "identity_mismatch",
+          "actual_title": "Alchemistry of the P versus NP question",
+          "actual_arxiv_id": "cs/0406040"
+        }
+      ],
+      "notes": [
+        "本地同名文件身份错误，不可作 Brook 原文。PDF 的 ACM 链接本身正确。"
+      ]
+    },
+    {
+      "id": "alexnet",
+      "display_name": "AlexNet",
+      "kind": "paper",
+      "mainline": true,
+      "track": "model",
+      "title": "ImageNet Classification with Deep Convolutional Neural Networks",
+      "authors": [
+        "Alex Krizhevsky",
+        "Ilya Sutskever",
+        "Geoffrey E. Hinton"
+      ],
+      "year": 2012,
+      "first_public_date": null,
+      "verified_url": "https://papers.nips.cc/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html",
+      "source_ids": [
+        "alexnet"
+      ],
+      "year_basis": "NeurIPS/NIPS 2012 正式论文集元数据；P11 的具体月份未另核",
+      "identity_status": "identity_verified",
+      "claim_status": "not_fully_reviewed",
+      "focus_pages": [
+        11
+      ],
+      "pdf_pages": [
+        7,
+        8,
+        11
+      ],
+      "original_urls": [
+        "https://papers.nips.cc/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html"
+      ],
+      "verified_urls": [
+        "https://papers.nips.cc/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html"
+      ],
+      "local_originals": [],
+      "rejected_local_candidates": [],
+      "notes": [
+        "题名和三名作者已核；“深度学习的开端”是讲义的历史定位，不是技术史起点已经核实。"
+      ]
+    },
+    {
+      "id": "seq2seq",
+      "display_name": "seq2seq",
+      "kind": "paper",
+      "mainline": true,
+      "track": "model",
+      "title": "Sequence to Sequence Learning with Neural Networks",
+      "authors": [
+        "Ilya Sutskever",
+        "Oriol Vinyals",
+        "Quoc V. Le"
+      ],
+      "year": 2014,
+      "first_public_date": "2014-09-10",
+      "verified_url": "https://arxiv.org/abs/1409.3215",
+      "verified_version_url": "https://arxiv.org/abs/1409.3215v3",
+      "source_ids": [
+        "arxiv-1"
+      ],
+      "year_basis": "arXiv 官方 published 字段；不等于修订年份或会议发表年份",
+      "identity_status": "identity_verified",
+      "claim_status": "not_fully_reviewed",
+      "focus_pages": [
+        12
+      ],
+      "pdf_pages": [
+        7,
+        8,
+        12
+      ],
+      "original_urls": [
+        "https://arxiv.org/abs/1409.3215"
+      ],
+      "verified_urls": [
+        "https://arxiv.org/abs/1409.3215"
+      ],
+      "local_originals": [],
+      "rejected_local_candidates": [],
+      "notes": [
+        "P12 合讲中的固定长度 LSTM 编码—解码论文；其原链接不支持把 Attention 算作本篇贡献。"
+      ]
+    },
+    {
+      "id": "bahdanau-attention",
+      "display_name": "Bahdanau Attention",
+      "kind": "paper",
+      "mainline": true,
+      "track": "model",
+      "title": "Neural Machine Translation by Jointly Learning to Align and Translate",
+      "authors": [
+        "Dzmitry Bahdanau",
+        "Kyunghyun Cho",
+        "Yoshua Bengio"
+      ],
+      "year": 2014,
+      "first_public_date": "2014-09-01",
+      "verified_url": "https://arxiv.org/abs/1409.0473",
+      "verified_version_url": "https://arxiv.org/abs/1409.0473v7",
+      "source_ids": [
+        "arxiv-2"
+      ],
+      "year_basis": "arXiv 官方 published 字段；不等于修订年份或会议发表年份",
+      "identity_status": "identity_verified",
+      "claim_status": "not_fully_reviewed",
+      "focus_pages": [
+        12
+      ],
+      "pdf_pages": [
+        7,
+        8,
+        12
+      ],
+      "original_urls": [],
+      "verified_urls": [
+        "https://arxiv.org/abs/1409.0473"
+      ],
+      "local_originals": [
+        {
+          "path": "ai-learning/papers/14_bahdanau_attention_2014.pdf",
+          "sha256": "84801c8410da51b449d379d2fa4939a416123f2c93991077a680f863026022a7",
+          "read_scope": "仅第1页：题名、作者、版本标识；部分摘要和引言开头，不代表全文已研究",
+          "identity_status": "identity_verified"
+        }
+      ],
+      "rejected_local_candidates": [],
+      "notes": [
+        "P12 第二个独立对象，没有单独内嵌链接；作者含 Kyunghyun Cho。首发 9月1日早于 seq2seq 的9月10日，不能写成后者发表后才提出。"
+      ],
+      "shared_page_urls": [
+        "https://arxiv.org/abs/1409.3215"
+      ]
+    },
+    {
+      "id": "distillation",
+      "display_name": "知识蒸馏",
+      "kind": "paper",
+      "mainline": true,
+      "track": "model",
+      "title": "Distilling the Knowledge in a Neural Network",
+      "authors": [
+        "Geoffrey Hinton",
+        "Oriol Vinyals",
+        "Jeff Dean"
+      ],
+      "year": 2015,
+      "first_public_date": "2015-03-09",
+      "verified_url": "https://arxiv.org/abs/1503.02531",
+      "verified_version_url": "https://arxiv.org/abs/1503.02531v1",
+      "source_ids": [
+        "arxiv-2"
+      ],
+      "year_basis": "arXiv 官方 published 字段；不等于修订年份或会议发表年份",
+      "identity_status": "identity_verified",
+      "claim_status": "not_fully_reviewed",
+      "focus_pages": [
+        13
+      ],
+      "pdf_pages": [
+        7,
+        8,
+        13
+      ],
+      "original_urls": [
+        "https://arxiv.org/abs/1503.02531"
+      ],
+      "verified_urls": [
+        "https://arxiv.org/abs/1503.02531"
+      ],
+      "local_originals": [
+        {
+          "path": "ai-learning/papers/23_distilling_2015.pdf",
+          "sha256": "74e6689115c539db499f9d6153edecb364059926fd45402454f8210442444c5a",
+          "read_scope": "仅第1页：题名、作者、版本标识；部分摘要和引言开头，不代表全文已研究",
+          "identity_status": "identity_verified"
+        }
+      ],
+      "rejected_local_candidates": [],
+      "notes": [
+        "核定的是 Hinton 等 2015 论文，不据此断言所有教师—学生或模型压缩思想始于此。"
+      ]
+    },
+    {
+      "id": "resnet",
+      "display_name": "ResNet",
+      "kind": "paper",
+      "mainline": true,
+      "track": "model",
+      "title": "Deep Residual Learning for Image Recognition",
+      "authors": [
+        "Kaiming He",
+        "Xiangyu Zhang",
+        "Shaoqing Ren",
+        "Jian Sun"
+      ],
+      "year": 2015,
+      "first_public_date": "2015-12-10",
+      "verified_url": "https://arxiv.org/abs/1512.03385",
+      "verified_version_url": "https://arxiv.org/abs/1512.03385v1",
+      "source_ids": [
+        "arxiv-2"
+      ],
+      "year_basis": "arXiv 官方 published 字段；不等于修订年份或会议发表年份",
+      "identity_status": "identity_verified",
+      "claim_status": "not_fully_reviewed",
+      "focus_pages": [
+        14
+      ],
+      "pdf_pages": [
+        7,
+        8,
+        14
+      ],
+      "original_urls": [
+        "https://arxiv.org/abs/1512.03385"
+      ],
+      "verified_urls": [
+        "https://arxiv.org/abs/1512.03385"
+      ],
+      "local_originals": [
+        {
+          "path": "ai-learning/papers/07_resnet_2015.pdf",
+          "sha256": "1e0651b6810ecba34a3dbc5b5b0209226f889004607c1f203540a48d64e5a93a",
+          "read_scope": "仅第1页：题名、作者、版本标识；部分摘要和引言开头，不代表全文已研究",
+          "identity_status": "identity_verified"
+        }
+      ],
+      "rejected_local_candidates": [],
+      "notes": [
+        "2015 为预印本年份；退化问题与梯度消失不应直接等同。"
+      ]
+    },
+    {
+      "id": "transformer",
+      "display_name": "Transformer",
+      "kind": "paper",
+      "mainline": true,
+      "track": "model",
+      "title": "Attention Is All You Need",
+      "authors": [
+        "Ashish Vaswani",
+        "Noam Shazeer",
+        "Niki Parmar",
+        "Jakob Uszkoreit",
+        "Llion Jones",
+        "Aidan N. Gomez",
+        "Lukasz Kaiser",
+        "Illia Polosukhin"
+      ],
+      "year": 2017,
+      "first_public_date": "2017-06-12",
+      "verified_url": "https://arxiv.org/abs/1706.03762",
+      "verified_version_url": "https://arxiv.org/abs/1706.03762v7",
+      "source_ids": [
+        "arxiv-2"
+      ],
+      "year_basis": "arXiv 官方 published 字段；不等于修订年份或会议发表年份",
+      "identity_status": "identity_verified",
+      "claim_status": "not_fully_reviewed",
+      "focus_pages": [
+        15
+      ],
+      "pdf_pages": [
+        7,
+        8,
+        15
+      ],
+      "original_urls": [
+        "https://arxiv.org/abs/1706.03762"
+      ],
+      "verified_urls": [
+        "https://arxiv.org/abs/1706.03762"
+      ],
+      "local_originals": [
+        {
+          "path": "ai-learning/papers/01_attention_is_all_you_need_2017.pdf",
+          "sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+          "read_scope": "仅第1页：题名、作者、版本标识；部分摘要和引言开头，不代表全文已研究",
+          "identity_status": "identity_verified"
+        }
+      ],
+      "rejected_local_candidates": [],
+      "notes": [
+        "本地 v7 修订于2023年，不能替换2017首发年份；全部八名作者已核，履历未核。"
+      ]
+    },
+    {
+      "id": "alphago-zero",
+      "display_name": "AlphaGo Zero",
+      "kind": "paper",
+      "mainline": true,
+      "track": "model",
+      "title": "Mastering the game of Go without human knowledge",
+      "authors": [
+        "David Silver",
+        "Julian Schrittwieser",
+        "Karen Simonyan",
+        "Ioannis Antonoglou",
+        "Aja Huang",
+        "Arthur Guez",
+        "Thomas Hubert",
+        "Lucas Baker",
+        "Matthew Lai",
+        "Adrian Bolton",
+        "Yutian Chen",
+        "Timothy Lillicrap",
+        "Fan Hui",
+        "Laurent Sifre",
+        "George van den Driessche",
+        "Thore Graepel",
+        "Demis Hassabis"
+      ],
+      "year": 2017,
+      "first_public_date": "2017-10-19",
+      "verified_url": "https://www.nature.com/articles/nature24270",
+      "source_ids": [
+        "alphago-paper",
+        "alphago-blog"
+      ],
+      "year_basis": "Nature Published/Issue date；官网新闻发布日期与期刊出版日期须区分",
+      "identity_status": "identity_verified",
+      "claim_status": "not_fully_reviewed",
+      "focus_pages": [
+        16
+      ],
+      "pdf_pages": [
+        7,
+        8,
+        16
+      ],
+      "original_urls": [
+        "https://deepmind.google/discover/blog/alphago-zero-starting-from-scratch/"
+      ],
+      "verified_urls": [
+        "https://www.nature.com/articles/nature24270"
+      ],
+      "local_originals": [],
+      "rejected_local_candidates": [
+        {
+          "path": "ai-learning/papers/24_alphago_zero_2017.pdf",
+          "sha256": "26c43408551c22f4fdc98e47f9b4592ab2161fac1ba5df27c897f46d8b6cec7f",
+          "read_scope": "仅第1页：题名、作者、版本标识；部分摘要和引言开头，不代表全文已研究",
+          "identity_status": "identity_mismatch",
+          "actual_title": "Mastering Chess and Shogi by Self-Play with a General Reinforcement Learning Algorithm",
+          "actual_arxiv_id": "1712.01815"
+        }
+      ],
+      "notes": [
+        "目标是2017年围棋论文。原链接为研究机构博客，不是论文；本地文件实际为 AlphaZero，必须排除。"
+      ]
+    },
+    {
+      "id": "sparse-moe",
+      "display_name": "Sparsely-Gated MoE",
+      "kind": "paper",
+      "mainline": true,
+      "track": "model",
+      "title": "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer",
+      "authors": [
+        "Noam Shazeer",
+        "Azalia Mirhoseini",
+        "Krzysztof Maziarz",
+        "Andy Davis",
+        "Quoc Le",
+        "Geoffrey Hinton",
+        "Jeff Dean"
+      ],
+      "year": 2017,
+      "first_public_date": "2017-01-23",
+      "verified_url": "https://arxiv.org/abs/1701.06538",
+      "verified_version_url": "https://arxiv.org/abs/1701.06538v1",
+      "source_ids": [
+        "arxiv-2"
+      ],
+      "year_basis": "arXiv 官方 published 字段；不等于修订年份或会议发表年份",
+      "identity_status": "identity_verified",
+      "claim_status": "not_fully_reviewed",
+      "focus_pages": [
+        17
+      ],
+      "pdf_pages": [
+        7,
+        8,
+        17
+      ],
+      "original_urls": [
+        "https://arxiv.org/abs/1701.06538"
+      ],
+      "verified_urls": [
+        "https://arxiv.org/abs/1701.06538"
+      ],
+      "local_originals": [
+        {
+          "path": "ai-learning/papers/21_moe_2017.pdf",
+          "sha256": "2567713d198a376b65b92f0c60b9f58c8c5f66755530b92203533a17c4ec4b8e",
+          "read_scope": "仅第1页：题名、作者、版本标识；部分摘要和引言开头，不代表全文已研究",
+          "identity_status": "identity_verified"
+        }
+      ],
+      "rejected_local_candidates": [],
+      "notes": [
+        "首发2017年1月，早于Transformer；此文网络含LSTM，不应倒写成先有Transformer才有现代稀疏MoE。"
+      ]
+    },
+    {
+      "id": "cot",
+      "display_name": "Chain-of-Thought Prompting",
+      "kind": "paper",
+      "mainline": true,
+      "track": "model",
+      "title": "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models",
+      "authors": [
+        "Jason Wei",
+        "Xuezhi Wang",
+        "Dale Schuurmans",
+        "Maarten Bosma",
+        "Brian Ichter",
+        "Fei Xia",
+        "Ed Chi",
+        "Quoc Le",
+        "Denny Zhou"
+      ],
+      "year": 2022,
+      "first_public_date": "2022-01-28",
+      "verified_url": "https://arxiv.org/abs/2201.11903",
+      "verified_version_url": "https://arxiv.org/abs/2201.11903v6",
+      "source_ids": [
+        "arxiv-2"
+      ],
+      "year_basis": "arXiv 官方 published 字段；不等于修订年份或会议发表年份",
+      "identity_status": "identity_verified",
+      "claim_status": "not_fully_reviewed",
+      "focus_pages": [
+        18
+      ],
+      "pdf_pages": [
+        7,
+        8,
+        18
+      ],
+      "original_urls": [
+        "https://arxiv.org/abs/2201.11903"
+      ],
+      "verified_urls": [
+        "https://arxiv.org/abs/2201.11903"
+      ],
+      "local_originals": [
+        {
+          "path": "ai-learning/papers/10_chain_of_thought_2022.pdf",
+          "sha256": "7d9f878c23b460e4566aa4ec9201b1abfb3b8faefb2b1356e411cb90fef72a12",
+          "read_scope": "仅第1页：题名、作者、版本标识；部分摘要和引言开头，不代表全文已研究",
+          "identity_status": "identity_verified"
+        }
+      ],
+      "rejected_local_candidates": [],
+      "notes": [
+        "首发2022年；few-shot 推理示例方法，不等于已核 o1 的历史或所有提示工程起点。"
+      ]
+    },
+    {
+      "id": "lora",
+      "display_name": "LoRA",
+      "kind": "paper",
+      "mainline": true,
+      "track": "model",
+      "title": "LoRA: Low-Rank Adaptation of Large Language Models",
+      "authors": [
+        "Edward J. Hu",
+        "Yelong Shen",
+        "Phillip Wallis",
+        "Zeyuan Allen-Zhu",
+        "Yuanzhi Li",
+        "Shean Wang",
+        "Lu Wang",
+        "Weizhu Chen"
+      ],
+      "year": 2021,
+      "first_public_date": "2021-06-17",
+      "verified_url": "https://arxiv.org/abs/2106.09685",
+      "verified_version_url": "https://arxiv.org/abs/2106.09685v2",
+      "source_ids": [
+        "arxiv-2"
+      ],
+      "year_basis": "arXiv 官方 published 字段；不等于修订年份或会议发表年份",
+      "identity_status": "identity_verified",
+      "claim_status": "not_fully_reviewed",
+      "focus_pages": [
+        19
+      ],
+      "pdf_pages": [
+        7,
+        8,
+        19
+      ],
+      "original_urls": [
+        "https://arxiv.org/abs/2106.09685"
+      ],
+      "verified_urls": [
+        "https://arxiv.org/abs/2106.09685"
+      ],
+      "local_originals": [
+        {
+          "path": "ai-learning/papers/15_lora_2021.pdf",
+          "sha256": "e9a0d3128767db616085dc0f4e6e455e672e89af823e8ed1282793682787395a",
+          "read_scope": "仅第1页：题名、作者、版本标识；部分摘要和引言开头，不代表全文已研究",
+          "identity_status": "identity_verified"
+        }
+      ],
+      "rejected_local_candidates": [],
+      "notes": [
+        "首发2021年；原论文是语言模型适配，扩散模型中的应用是后续路径，须另证。"
+      ]
+    },
+    {
+      "id": "react",
+      "display_name": "ReAct",
+      "kind": "paper",
+      "mainline": true,
+      "track": "model",
+      "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
+      "authors": [
+        "Shunyu Yao",
+        "Jeffrey Zhao",
+        "Dian Yu",
+        "Nan Du",
+        "Izhak Shafran",
+        "Karthik Narasimhan",
+        "Yuan Cao"
+      ],
+      "year": 2022,
+      "first_public_date": "2022-10-06",
+      "verified_url": "https://arxiv.org/abs/2210.03629",
+      "verified_version_url": "https://arxiv.org/abs/2210.03629v3",
+      "source_ids": [
+        "arxiv-2"
+      ],
+      "year_basis": "arXiv 官方 published 字段；不等于修订年份或会议发表年份",
+      "identity_status": "identity_verified",
+      "claim_status": "not_fully_reviewed",
+      "focus_pages": [
+        20
+      ],
+      "pdf_pages": [
+        7,
+        8,
+        20
+      ],
+      "original_urls": [
+        "https://arxiv.org/abs/2210.03629"
+      ],
+      "verified_urls": [
+        "https://arxiv.org/abs/2210.03629"
+      ],
+      "local_originals": [
+        {
+          "path": "ai-learning/papers/17_react_2022.pdf",
+          "sha256": "f285b0971ae4a790e402fb93966bed3adde2cf0a04977d08b2b40d6ab0cace69",
+          "read_scope": "仅第1页：题名、作者、版本标识；部分摘要和引言开头，不代表全文已研究",
+          "identity_status": "identity_verified"
+        }
+      ],
+      "rejected_local_candidates": [],
+      "notes": [
+        "首发2022年、会议版2023年；语言模型推理轨迹与环境动作交错，不是1995年Agent定义的提出论文。"
+      ]
+    },
+    {
+      "id": "bitter-lesson",
+      "display_name": "The Bitter Lesson",
+      "kind": "essay",
+      "mainline": true,
+      "track": "cross-cutting",
+      "title": "The Bitter Lesson",
+      "authors": [
+        "Rich Sutton"
+      ],
+      "year": 2019,
+      "first_public_date": "2019-03-13",
+      "verified_url": "http://www.incompleteideas.net/IncIdeas/BitterLesson.html",
+      "source_ids": [
+        "bitter"
+      ],
+      "year_basis": "作者原文署名与 March 13, 2019；非论文",
+      "identity_status": "identity_verified",
+      "claim_status": "not_fully_reviewed",
+      "focus_pages": [
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "pdf_pages": [
+        7,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "original_urls": [
+        "http://www.incompleteideas.net/IncIdeas/BitterLesson.html"
+      ],
+      "verified_urls": [
+        "http://www.incompleteideas.net/IncIdeas/BitterLesson.html"
+      ],
+      "local_originals": [],
+      "rejected_local_candidates": [],
+      "notes": [
+        "五页为同一篇观点文章的连续引用/翻译，不是五篇论文。正文页头2018.08错误，作者原文及P26均指向2019年3月。"
+      ]
+    },
+    {
+      "id": "zero",
+      "display_name": "ZeRO",
+      "kind": "paper",
+      "mainline": true,
+      "track": "infra-data",
+      "title": "ZeRO: Memory Optimizations Toward Training Trillion Parameter Models",
+      "authors": [
+        "Samyam Rajbhandari",
+        "Jeff Rasley",
+        "Olatunji Ruwase",
+        "Yuxiong He"
+      ],
+      "year": 2019,
+      "first_public_date": "2019-10-04",
+      "verified_url": "https://arxiv.org/abs/1910.02054",
+      "verified_version_url": "https://arxiv.org/abs/1910.02054v3",
+      "source_ids": [
+        "arxiv-2"
+      ],
+      "year_basis": "arXiv 官方 published 字段；不等于修订年份或会议发表年份",
+      "identity_status": "identity_verified",
+      "claim_status": "not_fully_reviewed",
+      "focus_pages": [
+        27
+      ],
+      "pdf_pages": [
+        7,
+        26,
+        27
+      ],
+      "original_urls": [
+        "https://arxiv.org/abs/1910.02054"
+      ],
+      "verified_urls": [
+        "https://arxiv.org/abs/1910.02054"
+      ],
+      "local_originals": [
+        {
+          "path": "ai-learning/papers/25_zero_2019.pdf",
+          "sha256": "c531734c7d9ee647fda9b4f0e1a6abd6d58ad34e862bc945451b09032be3167e",
+          "read_scope": "仅第1页：题名、作者、版本标识；部分摘要和引言开头，不代表全文已研究",
+          "identity_status": "identity_verified"
+        }
+      ],
+      "rejected_local_candidates": [],
+      "notes": [
+        "训练状态的内存优化论文；本地v3为2020年，首发是2019年。"
+      ]
+    },
+    {
+      "id": "scaling-laws",
+      "display_name": "Scaling Laws",
+      "kind": "paper",
+      "mainline": true,
+      "track": "infra-data",
+      "title": "Scaling Laws for Neural Language Models",
+      "authors": [
+        "Jared Kaplan",
+        "Sam McCandlish",
+        "Tom Henighan",
+        "Tom B. Brown",
+        "Benjamin Chess",
+        "Rewon Child",
+        "Scott Gray",
+        "Alec Radford",
+        "Jeffrey Wu",
+        "Dario Amodei"
+      ],
+      "year": 2020,
+      "first_public_date": "2020-01-23",
+      "verified_url": "https://arxiv.org/abs/2001.08361",
+      "verified_version_url": "https://arxiv.org/abs/2001.08361v1",
+      "source_ids": [
+        "arxiv-2"
+      ],
+      "year_basis": "arXiv 官方 published 字段；不等于修订年份或会议发表年份",
+      "identity_status": "identity_verified",
+      "claim_status": "not_fully_reviewed",
+      "focus_pages": [
+        28
+      ],
+      "pdf_pages": [
+        7,
+        26,
+        28
+      ],
+      "original_urls": [
+        "https://arxiv.org/abs/2001.08361"
+      ],
+      "verified_urls": [
+        "https://arxiv.org/abs/2001.08361"
+      ],
+      "local_originals": [
+        {
+          "path": "ai-learning/papers/05_scaling_laws_2020.pdf",
+          "sha256": "a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494",
+          "read_scope": "仅第1页：题名、作者、版本标识；部分摘要和引言开头，不代表全文已研究",
+          "identity_status": "identity_verified"
+        }
+      ],
+      "rejected_local_candidates": [],
+      "notes": [
+        "P28 合讲第一篇，PDF内嵌链接指向本篇；与Chinchilla分列，参数/数据/预算的经验规律不是普适定律。"
+      ]
+    },
+    {
+      "id": "chinchilla",
+      "display_name": "Chinchilla",
+      "kind": "paper",
+      "mainline": true,
+      "track": "infra-data",
+      "title": "Training Compute-Optimal Large Language Models",
+      "authors": [
+        "Jordan Hoffmann",
+        "Sebastian Borgeaud",
+        "Arthur Mensch",
+        "Elena Buchatskaya",
+        "Trevor Cai",
+        "Eliza Rutherford",
+        "Diego de Las Casas",
+        "Lisa Anne Hendricks",
+        "Johannes Welbl",
+        "Aidan Clark",
+        "Tom Hennigan",
+        "Eric Noland",
+        "Katie Millican",
+        "George van den Driessche",
+        "Bogdan Damoc",
+        "Aurelia Guy",
+        "Simon Osindero",
+        "Karen Simonyan",
+        "Erich Elsen",
+        "Jack W. Rae",
+        "Oriol Vinyals",
+        "Laurent Sifre"
+      ],
+      "year": 2022,
+      "first_public_date": "2022-03-29",
+      "verified_url": "https://arxiv.org/abs/2203.15556",
+      "verified_version_url": "https://arxiv.org/abs/2203.15556v1",
+      "source_ids": [
+        "arxiv-1"
+      ],
+      "year_basis": "arXiv 官方 published 字段；不等于修订年份或会议发表年份",
+      "identity_status": "identity_verified",
+      "claim_status": "not_fully_reviewed",
+      "focus_pages": [
+        28
+      ],
+      "pdf_pages": [
+        28
+      ],
+      "original_urls": [],
+      "verified_urls": [
+        "https://arxiv.org/abs/2203.15556"
+      ],
+      "local_originals": [],
+      "rejected_local_candidates": [],
+      "notes": [
+        "P28 第二篇，没有单独内嵌链接；正式题名不是Scaling Laws for Neural Language Models。"
+      ],
+      "shared_page_urls": [
+        "https://arxiv.org/abs/2001.08361"
+      ]
+    },
+    {
+      "id": "laion5b",
+      "display_name": "LAION-5B",
+      "kind": "paper",
+      "mainline": true,
+      "track": "infra-data",
+      "title": "LAION-5B: An open large-scale dataset for training next generation image-text models",
+      "authors": [
+        "Christoph Schuhmann",
+        "Romain Beaumont",
+        "Richard Vencu",
+        "Cade Gordon",
+        "Ross Wightman",
+        "Mehdi Cherti",
+        "Theo Coombes",
+        "Aarush Katta",
+        "Clayton Mullis",
+        "Mitchell Wortsman",
+        "Patrick Schramowski",
+        "Srivatsa Kundurthy",
+        "Katherine Crowson",
+        "Ludwig Schmidt",
+        "Robert Kaczmarczyk",
+        "Jenia Jitsev"
+      ],
+      "year": 2022,
+      "first_public_date": "2022-10-16",
+      "verified_url": "https://arxiv.org/abs/2210.08402",
+      "verified_version_url": "https://arxiv.org/abs/2210.08402v1",
+      "source_ids": [
+        "arxiv-2"
+      ],
+      "year_basis": "arXiv 官方 published 字段；不等于修订年份或会议发表年份",
+      "identity_status": "identity_verified",
+      "claim_status": "not_fully_reviewed",
+      "focus_pages": [
+        29
+      ],
+      "pdf_pages": [
+        7,
+        26,
+        29
+      ],
+      "original_urls": [
+        "https://arxiv.org/abs/2210.08402"
+      ],
+      "verified_urls": [
+        "https://arxiv.org/abs/2210.08402"
+      ],
+      "local_originals": [
+        {
+          "path": "ai-learning/papers/29_laion5b_2022.pdf",
+          "sha256": "18dad8c88914dfcdcdcb50eba4b285ba665f67d6f4661d20e3ee2e36a3d42163",
+          "read_scope": "仅第1页：题名、作者、版本标识；部分摘要和引言开头，不代表全文已研究",
+          "identity_status": "identity_verified"
+        }
+      ],
+      "rejected_local_candidates": [],
+      "notes": [
+        "研究对象是数据集论文；2022.10是论文首发月份，不能直接等同数据集最初发布日。"
+      ]
+    },
+    {
+      "id": "refinedweb",
+      "display_name": "RefinedWeb",
+      "kind": "paper",
+      "mainline": true,
+      "track": "infra-data",
+      "title": "The RefinedWeb Dataset for Falcon LLM: Outperforming Curated Corpora with Web Data, and Web Data Only",
+      "authors": [
+        "Guilherme Penedo",
+        "Quentin Malartic",
+        "Daniel Hesslow",
+        "Ruxandra Cojocaru",
+        "Alessandro Cappelli",
+        "Hamza Alobeidli",
+        "Baptiste Pannier",
+        "Ebtesam Almazrouei",
+        "Julien Launay"
+      ],
+      "year": 2023,
+      "first_public_date": "2023-06-01",
+      "verified_url": "https://arxiv.org/abs/2306.01116",
+      "verified_version_url": "https://arxiv.org/abs/2306.01116v1",
+      "source_ids": [
+        "arxiv-2"
+      ],
+      "year_basis": "arXiv 官方 published 字段；不等于修订年份或会议发表年份",
+      "identity_status": "identity_verified",
+      "claim_status": "not_fully_reviewed",
+      "focus_pages": [
+        30
+      ],
+      "pdf_pages": [
+        7,
+        26,
+        30
+      ],
+      "original_urls": [
+        "https://arxiv.org/abs/2306.01116"
+      ],
+      "verified_urls": [
+        "https://arxiv.org/abs/2306.01116"
+      ],
+      "local_originals": [
+        {
+          "path": "ai-learning/papers/30_refinedweb_2023.pdf",
+          "sha256": "b084921cc327f1f2bca232ca5339f0378324e2ff941bded327f136752a983d10",
+          "read_scope": "仅第1页：题名、作者、版本标识；部分摘要和引言开头，不代表全文已研究",
+          "identity_status": "identity_verified"
+        }
+      ],
+      "rejected_local_candidates": [],
+      "notes": [
+        "PDF右上角 A New High-Quality, Massive-Scale Web Corpus 是描述性标题，不是论文正式题名。"
+      ],
+      "pdf_displayed_english_title": "A New High-Quality, Massive-Scale Web Corpus"
+    },
+    {
+      "id": "megascale",
+      "display_name": "MegaScale",
+      "kind": "paper",
+      "mainline": true,
+      "track": "infra-data",
+      "title": "MegaScale: Scaling Large Language Model Training to More Than 10,000 GPUs",
+      "authors": [
+        "Ziheng Jiang",
+        "Haibin Lin",
+        "Yinmin Zhong",
+        "Qi Huang",
+        "Yangrui Chen",
+        "Zhi Zhang",
+        "Yanghua Peng",
+        "Xiang Li",
+        "Cong Xie",
+        "Shibiao Nong",
+        "Yulu Jia",
+        "Sun He",
+        "Hongmin Chen",
+        "Zhihao Bai",
+        "Qi Hou",
+        "Shipeng Yan",
+        "Ding Zhou",
+        "Yiyao Sheng",
+        "Zhuo Jiang",
+        "Haohan Xu",
+        "Haoran Wei",
+        "Zhang Zhang",
+        "Pengfei Nie",
+        "Leqi Zou",
+        "Sida Zhao",
+        "Liang Xiang",
+        "Zherui Liu",
+        "Zhe Li",
+        "Xiaoying Jia",
+        "Jianxi Ye",
+        "Xin Jin",
+        "Xin Liu"
+      ],
+      "year": 2024,
+      "first_public_date": "2024-02-23",
+      "verified_url": "https://arxiv.org/abs/2402.15627",
+      "verified_version_url": "https://arxiv.org/abs/2402.15627v1",
+      "source_ids": [
+        "arxiv-2"
+      ],
+      "year_basis": "arXiv 官方 published 字段；不等于修订年份或会议发表年份",
+      "identity_status": "identity_verified",
+      "claim_status": "not_fully_reviewed",
+      "focus_pages": [
+        31
+      ],
+      "pdf_pages": [
+        7,
+        26,
+        31
+      ],
+      "original_urls": [
+        "https://arxiv.org/abs/2402.15627"
+      ],
+      "verified_urls": [
+        "https://arxiv.org/abs/2402.15627"
+      ],
+      "local_originals": [
+        {
+          "path": "ai-learning/papers/31_megascale_2024.pdf",
+          "sha256": "4a04bff09d7cd937271662e8ca9a97f0d41eac9be1d35c9c8b2f18f2dc59ad20",
+          "read_scope": "仅第1页：题名、作者、版本标识；部分摘要和引言开头，不代表全文已研究",
+          "identity_status": "identity_verified"
+        }
+      ],
+      "rejected_local_candidates": [],
+      "notes": [
+        "核定2024系统论文和完整作者；“首个生产万卡论文”仍需界定比较范围。"
+      ]
+    },
+    {
+      "id": "word2vec",
+      "display_name": "Word2Vec",
+      "kind": "paper",
+      "mainline": true,
+      "track": "language",
+      "title": "Efficient Estimation of Word Representations in Vector Space",
+      "authors": [
+        "Tomas Mikolov",
+        "Kai Chen",
+        "Greg Corrado",
+        "Jeffrey Dean"
+      ],
+      "year": 2013,
+      "first_public_date": "2013-01-16",
+      "verified_url": "https://arxiv.org/abs/1301.3781",
+      "verified_version_url": "https://arxiv.org/abs/1301.3781v3",
+      "source_ids": [
+        "arxiv-2"
+      ],
+      "year_basis": "arXiv 官方 published 字段；不等于修订年份或会议发表年份",
+      "identity_status": "identity_verified",
+      "claim_status": "not_fully_reviewed",
+      "focus_pages": [
+        33
+      ],
+      "pdf_pages": [
+        7,
+        32,
+        33
+      ],
+      "original_urls": [
+        "https://arxiv.org/abs/1301.3781"
+      ],
+      "verified_urls": [
+        "https://arxiv.org/abs/1301.3781"
+      ],
+      "local_originals": [
+        {
+          "path": "ai-learning/papers/13_word2vec_2013.pdf",
+          "sha256": "a44d7e22d2005752271c9cc1929c6462d4c8270916b063977992a883e3a54362",
+          "read_scope": "仅第1页：题名、作者、版本标识；部分摘要和引言开头，不代表全文已研究",
+          "identity_status": "identity_verified"
+        }
+      ],
+      "rejected_local_candidates": [],
+      "notes": [
+        "核定2013年1月 Efficient Estimation 论文，不与另篇 Distributed Representations of Words and Phrases 混为一篇。"
+      ]
+    },
+    {
+      "id": "gnmt",
+      "display_name": "Google Neural Machine Translation",
+      "kind": "paper",
+      "mainline": true,
+      "track": "language",
+      "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation",
+      "authors": [
+        "Yonghui Wu",
+        "Mike Schuster",
+        "Zhifeng Chen",
+        "Quoc V. Le",
+        "Mohammad Norouzi",
+        "Wolfgang Macherey",
+        "Maxim Krikun",
+        "Yuan Cao",
+        "Qin Gao",
+        "Klaus Macherey",
+        "Jeff Klingner",
+        "Apurva Shah",
+        "Melvin Johnson",
+        "Xiaobing Liu",
+        "Łukasz Kaiser",
+        "Stephan Gouws",
+        "Yoshikiyo Kato",
+        "Taku Kudo",
+        "Hideto Kazawa",
+        "Keith Stevens",
+        "George Kurian",
+        "Nishant Patil",
+        "Wei Wang",
+        "Cliff Young",
+        "Jason Smith",
+        "Jason Riesa",
+        "Alex Rudnick",
+        "Oriol Vinyals",
+        "Greg Corrado",
+        "Macduff Hughes",
+        "Jeffrey Dean"
+      ],
+      "year": 2016,
+      "first_public_date": "2016-09-26",
+      "verified_url": "https://arxiv.org/abs/1609.08144",
+      "verified_version_url": "https://arxiv.org/abs/1609.08144v2",
+      "source_ids": [
+        "arxiv-1"
+      ],
+      "year_basis": "arXiv 官方 published 字段；不等于修订年份或会议发表年份",
+      "identity_status": "identity_verified",
+      "claim_status": "not_fully_reviewed",
+      "focus_pages": [
+        34
+      ],
+      "pdf_pages": [
+        7,
+        32,
+        34
+      ],
+      "original_urls": [
+        "https://arxiv.org/abs/1609.08144"
+      ],
+      "verified_urls": [
+        "https://arxiv.org/abs/1609.08144"
+      ],
+      "local_originals": [],
+      "rejected_local_candidates": [],
+      "notes": [
+        "对象是 GNMT 系统论文，不是整个 Google Translate 产品史；31名作者以正式元数据为准。"
+      ]
+    },
+    {
+      "id": "gpt1",
+      "display_name": "GPT-1",
+      "kind": "research_report",
+      "mainline": true,
+      "track": "language",
+      "title": "Improving Language Understanding by Generative Pre-Training",
+      "authors": [
+        "Alec Radford",
+        "Karthik Narasimhan",
+        "Tim Salimans",
+        "Ilya Sutskever"
+      ],
+      "year": 2018,
+      "first_public_date": "2018-06-11",
+      "verified_url": "https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf",
+      "source_ids": [
+        "gpt1",
+        "gpt1-date",
+        "search-gpt1"
+      ],
+      "year_basis": "作者与题名来自官方 PDF；原始公开日期来自官网搜索条目的 June 11, 2018，正文读取结果缺日期页眉",
+      "identity_status": "identity_verified",
+      "claim_status": "not_fully_reviewed",
+      "focus_pages": [
+        35
+      ],
+      "pdf_pages": [
+        7,
+        32,
+        35
+      ],
+      "original_urls": [
+        "https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf"
+      ],
+      "verified_urls": [
+        "https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf"
+      ],
+      "local_originals": [],
+      "rejected_local_candidates": [],
+      "notes": [
+        "研究报告而非名为GPT-1的正式题名；预训练—微调的前史未在本阶段穷尽。"
+      ]
+    },
+    {
+      "id": "bert",
+      "display_name": "BERT",
+      "kind": "paper",
+      "mainline": true,
+      "track": "language",
+      "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "authors": [
+        "Jacob Devlin",
+        "Ming-Wei Chang",
+        "Kenton Lee",
+        "Kristina Toutanova"
+      ],
+      "year": 2018,
+      "first_public_date": "2018-10-11",
+      "verified_url": "https://arxiv.org/abs/1810.04805",
+      "verified_version_url": "https://arxiv.org/abs/1810.04805v2",
+      "source_ids": [
+        "arxiv-2"
+      ],
+      "year_basis": "arXiv 官方 published 字段；不等于修订年份或会议发表年份",
+      "identity_status": "identity_verified",
+      "claim_status": "not_fully_reviewed",
+      "focus_pages": [
+        36
+      ],
+      "pdf_pages": [
+        7,
+        32,
+        36
+      ],
+      "original_urls": [
+        "https://arxiv.org/abs/1810.04805"
+      ],
+      "verified_urls": [
+        "https://arxiv.org/abs/1810.04805"
+      ],
+      "local_originals": [
+        {
+          "path": "ai-learning/papers/02_bert_2018.pdf",
+          "sha256": "5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e",
+          "read_scope": "仅第1页：题名、作者、版本标识；部分摘要和引言开头，不代表全文已研究",
+          "identity_status": "identity_verified"
+        }
+      ],
+      "rejected_local_candidates": [],
+      "notes": [
+        "2018为首发年份，本地v2是2019年；不能将与GPT的关系写成后者独创全部预训练—微调方法。"
+      ]
+    },
+    {
+      "id": "gpt2",
+      "display_name": "GPT-2",
+      "kind": "research_report",
+      "mainline": true,
+      "track": "language",
+      "title": "Language Models are Unsupervised Multitask Learners",
+      "authors": [
+        "Alec Radford",
+        "Jeffrey Wu",
+        "Rewon Child",
+        "David Luan",
+        "Dario Amodei",
+        "Ilya Sutskever"
+      ],
+      "year": 2019,
+      "first_public_date": "2019-02-14",
+      "verified_url": "https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf",
+      "source_ids": [
+        "gpt2",
+        "gpt2-date",
+        "search-gpt2"
+      ],
+      "year_basis": "作者与题名来自官方 PDF；原始公开日期来自官网搜索条目的 February 14, 2019；不采用读取器 publishedTime=2024-01-16",
+      "identity_status": "identity_verified",
+      "claim_status": "not_fully_reviewed",
+      "focus_pages": [
+        37
+      ],
+      "pdf_pages": [
+        7,
+        32,
+        37
+      ],
+      "original_urls": [
+        "https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf"
+      ],
+      "verified_urls": [
+        "https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf"
+      ],
+      "local_originals": [],
+      "rejected_local_candidates": [],
+      "notes": [
+        "核定官方技术报告，PDF题名中的 Multask 是误拼；论文展示零样本迁移，不等于今后不再需要微调。"
+      ],
+      "pdf_displayed_english_title": "Language Models are Unsupervised Multask Learners"
+    },
+    {
+      "id": "gpt3",
+      "display_name": "GPT-3",
+      "kind": "paper",
+      "mainline": true,
+      "track": "language",
+      "title": "Language Models are Few-Shot Learners",
+      "authors": [
+        "Tom B. Brown",
+        "Benjamin Mann",
+        "Nick Ryder",
+        "Melanie Subbiah",
+        "Jared Kaplan",
+        "Prafulla Dhariwal",
+        "Arvind Neelakantan",
+        "Pranav Shyam",
+        "Girish Sastry",
+        "Amanda Askell",
+        "Sandhini Agarwal",
+        "Ariel Herbert-Voss",
+        "Gretchen Krueger",
+        "Tom Henighan",
+        "Rewon Child",
+        "Aditya Ramesh",
+        "Daniel M. Ziegler",
+        "Jeffrey Wu",
+        "Clemens Winter",
+        "Christopher Hesse",
+        "Mark Chen",
+        "Eric Sigler",
+        "Mateusz Litwin",
+        "Scott Gray",
+        "Benjamin Chess",
+        "Jack Clark",
+        "Christopher Berner",
+        "Sam McCandlish",
+        "Alec Radford",
+        "Ilya Sutskever",
+        "Dario Amodei"
+      ],
+      "year": 2020,
+      "first_public_date": "2020-05-28",
+      "verified_url": "https://arxiv.org/abs/2005.14165",
+      "verified_version_url": "https://arxiv.org/abs/2005.14165v4",
+      "source_ids": [
+        "arxiv-2"
+      ],
+      "year_basis": "arXiv 官方 published 字段；不等于修订年份或会议发表年份",
+      "identity_status": "identity_verified",
+      "claim_status": "not_fully_reviewed",
+      "focus_pages": [
+        38
+      ],
+      "pdf_pages": [
+        7,
+        32,
+        38
+      ],
+      "original_urls": [
+        "https://arxiv.org/abs/2005.14165"
+      ],
+      "verified_urls": [
+        "https://arxiv.org/abs/2005.14165"
+      ],
+      "local_originals": [
+        {
+          "path": "ai-learning/papers/03_gpt3_2020.pdf",
+          "sha256": "97fd272f1fdfc18677462d0292f5fbf26ca86b4d1b485c2dba03269b643a0e83",
+          "read_scope": "仅第1页：题名、作者、版本标识；部分摘要和引言开头，不代表全文已研究",
+          "identity_status": "identity_verified"
+        }
+      ],
+      "rejected_local_candidates": [],
+      "notes": [
+        "完整作者含首列Tom B. Brown等，不能用讲义只列的三名作者代替全作者；Prompt并非2020年首次出现。"
+      ]
+    },
+    {
+      "id": "instructgpt",
+      "display_name": "InstructGPT",
+      "kind": "paper",
+      "mainline": true,
+      "track": "language",
+      "title": "Training language models to follow instructions with human feedback",
+      "authors": [
+        "Long Ouyang",
+        "Jeff Wu",
+        "Xu Jiang",
+        "Diogo Almeida",
+        "Carroll L. Wainwright",
+        "Pamela Mishkin",
+        "Chong Zhang",
+        "Sandhini Agarwal",
+        "Katarina Slama",
+        "Alex Ray",
+        "John Schulman",
+        "Jacob Hilton",
+        "Fraser Kelton",
+        "Luke Miller",
+        "Maddie Simens",
+        "Amanda Askell",
+        "Peter Welinder",
+        "Paul Christiano",
+        "Jan Leike",
+        "Ryan Lowe"
+      ],
+      "year": 2022,
+      "first_public_date": "2022-03-04",
+      "verified_url": "https://arxiv.org/abs/2203.02155",
+      "verified_version_url": "https://arxiv.org/abs/2203.02155v1",
+      "source_ids": [
+        "arxiv-2"
+      ],
+      "year_basis": "arXiv 官方 published 字段；不等于修订年份或会议发表年份",
+      "identity_status": "identity_verified",
+      "claim_status": "not_fully_reviewed",
+      "focus_pages": [
+        39
+      ],
+      "pdf_pages": [
+        7,
+        32,
+        39
+      ],
+      "original_urls": [
+        "https://arxiv.org/abs/2203.02155"
+      ],
+      "verified_urls": [
+        "https://arxiv.org/abs/2203.02155"
+      ],
+      "local_originals": [
+        {
+          "path": "ai-learning/papers/04_instructgpt_rlhf_2022.pdf",
+          "sha256": "c1984bb50a5b90fddb895fdc3a0f72e5bc977148c9f63ef6040cbe7a3e1f0d98",
+          "read_scope": "仅第1页：题名、作者、版本标识；部分摘要和引言开头，不代表全文已研究",
+          "identity_status": "identity_verified"
+        }
+      ],
+      "rejected_local_candidates": [],
+      "notes": [
+        "核定2022年研究论文；SFT、奖励建模与PPO组合不意味着本篇发明RLHF或PPO。"
+      ]
+    },
+    {
+      "id": "tulu3",
+      "display_name": "Tülu 3",
+      "kind": "paper",
+      "mainline": true,
+      "track": "language",
+      "title": "Tulu 3: Pushing Frontiers in Open Language Model Post-Training",
+      "authors": [
+        "Nathan Lambert",
+        "Jacob Morrison",
+        "Valentina Pyatkin",
+        "Shengyi Huang",
+        "Hamish Ivison",
+        "Faeze Brahman",
+        "Lester James V. Miranda",
+        "Alisa Liu",
+        "Nouha Dziri",
+        "Shane Lyu",
+        "Yuling Gu",
+        "Saumya Malik",
+        "Victoria Graf",
+        "Jena D. Hwang",
+        "Jiangjiang Yang",
+        "Ronan Le Bras",
+        "Oyvind Tafjord",
+        "Chris Wilhelm",
+        "Luca Soldaini",
+        "Noah A. Smith",
+        "Yizhong Wang",
+        "Pradeep Dasigi",
+        "Hannaneh Hajishirzi"
+      ],
+      "year": 2024,
+      "first_public_date": "2024-11-22",
+      "verified_url": "https://arxiv.org/abs/2411.15124",
+      "verified_version_url": "https://arxiv.org/abs/2411.15124v5",
+      "source_ids": [
+        "arxiv-1"
+      ],
+      "year_basis": "arXiv 官方 published 字段；不等于修订年份或会议发表年份",
+      "identity_status": "identity_verified",
+      "claim_status": "not_fully_reviewed",
+      "focus_pages": [
+        40
+      ],
+      "pdf_pages": [
+        7,
+        32,
+        40
+      ],
+      "original_urls": [
+        "https://arxiv.org/abs/2407.15541"
+      ],
+      "verified_urls": [
+        "https://arxiv.org/abs/2411.15124"
+      ],
+      "local_originals": [
+        {
+          "path": "ai-learning/papers/26_tulu3_2024.pdf",
+          "sha256": "79bed1ef4ce4bb332f43bdc87d60709e644560f8f3bb6d14913a473cc82c251f",
+          "read_scope": "仅第1页：题名、作者、版本标识；部分摘要和引言开头，不代表全文已研究",
+          "identity_status": "identity_verified"
+        }
+      ],
+      "rejected_local_candidates": [],
+      "notes": [
+        "显示题名与内嵌链接均错：正确题名为 Pushing Frontiers in Open Language Model Post-Training，原2407.15541为气体动理学论文。本地原文正确。当前元数据作者Shane Lyu、本地首页Xinxi Lyu存在姓名版本差异，保留而不擅自解释。"
+      ],
+      "pdf_displayed_english_title": "TULU 3: The Art and Science of Instruction Tuning at Scale"
+    },
+    {
+      "id": "deepvideo",
+      "display_name": "DeepVideo",
+      "kind": "paper",
+      "mainline": true,
+      "track": "multimodal",
+      "title": "Large-scale Video Classification with Convolutional Neural Networks",
+      "authors": [
+        "Andrej Karpathy",
+        "George Toderici",
+        "Sanketh Shetty",
+        "Thomas Leung",
+        "Rahul Sukthankar",
+        "Li Fei-Fei"
+      ],
+      "year": 2014,
+      "first_public_date": null,
+      "verified_url": "https://openaccess.thecvf.com/content_cvpr_2014/html/Karpathy_Large-scale_Video_Classification_2014_CVPR_paper.html",
+      "source_ids": [
+        "deepvideo"
+      ],
+      "year_basis": "CVPR 2014 官方论文集与 BibTeX，会议月份 June；不冒充预印本首发日",
+      "identity_status": "identity_verified",
+      "claim_status": "not_fully_reviewed",
+      "focus_pages": [
+        42
+      ],
+      "pdf_pages": [
+        7,
+        41,
+        42
+      ],
+      "original_urls": [
+        "https://arxiv.org/abs/1404.7823"
+      ],
+      "verified_urls": [
+        "https://openaccess.thecvf.com/content_cvpr_2014/html/Karpathy_Large-scale_Video_Classification_2014_CVPR_paper.html"
+      ],
+      "local_originals": [],
+      "rejected_local_candidates": [],
+      "notes": [
+        "不是正式论文名；原1404.7823为引力理论论文，正确对象由CVPR官方题名、作者与摘要核定。"
+      ]
+    },
+    {
+      "id": "two-stream",
+      "display_name": "Two-Stream CNN",
+      "kind": "paper",
+      "mainline": true,
+      "track": "multimodal",
+      "title": "Two-Stream Convolutional Networks for Action Recognition in Videos",
+      "authors": [
+        "Karen Simonyan",
+        "Andrew Zisserman"
+      ],
+      "year": 2014,
+      "first_public_date": "2014-06-09",
+      "verified_url": "https://arxiv.org/abs/1406.2199",
+      "verified_version_url": "https://arxiv.org/abs/1406.2199v2",
+      "source_ids": [
+        "arxiv-1"
+      ],
+      "year_basis": "arXiv 官方 published 字段；不等于修订年份或会议发表年份",
+      "identity_status": "identity_verified",
+      "claim_status": "not_fully_reviewed",
+      "focus_pages": [
+        43
+      ],
+      "pdf_pages": [
+        7,
+        41,
+        43
+      ],
+      "original_urls": [
+        "https://arxiv.org/abs/1406.2199"
+      ],
+      "verified_urls": [
+        "https://arxiv.org/abs/1406.2199"
+      ],
+      "local_originals": [],
+      "rejected_local_candidates": [],
+      "notes": [
+        "作者是Karen Simonyan与Andrew Zisserman；属于动作识别，不是文生视频。"
+      ]
+    },
+    {
+      "id": "gan",
+      "display_name": "GAN",
+      "kind": "paper",
+      "mainline": true,
+      "track": "multimodal",
+      "title": "Generative Adversarial Nets",
+      "authors": [
+        "Ian J. Goodfellow",
+        "Jean Pouget-Abadie",
+        "Mehdi Mirza",
+        "Bing Xu",
+        "David Warde-Farley",
+        "Sherjil Ozair",
+        "Aaron Courville",
+        "Yoshua Bengio"
+      ],
+      "year": 2014,
+      "first_public_date": "2014-06-10",
+      "verified_url": "https://arxiv.org/abs/1406.2661",
+      "verified_version_url": "https://arxiv.org/abs/1406.2661v1",
+      "source_ids": [
+        "arxiv-2"
+      ],
+      "year_basis": "arXiv 官方 published 字段；不等于修订年份或会议发表年份",
+      "identity_status": "identity_verified",
+      "claim_status": "not_fully_reviewed",
+      "focus_pages": [
+        44
+      ],
+      "pdf_pages": [
+        7,
+        41,
+        44
+      ],
+      "original_urls": [
+        "https://arxiv.org/abs/1406.2661"
+      ],
+      "verified_urls": [
+        "https://arxiv.org/abs/1406.2661"
+      ],
+      "local_originals": [
+        {
+          "path": "ai-learning/papers/08_gan_2014.pdf",
+          "sha256": "ff5819e3a7b713c3bd3107b7de3d51fe0a347aa5d8444f0efdcf2345ef0a8b63",
+          "read_scope": "仅第1页：题名、作者、版本标识；部分摘要和引言开头，不代表全文已研究",
+          "identity_status": "identity_verified"
+        }
+      ],
+      "rejected_local_candidates": [],
+      "notes": [
+        "本地论文首页正式题名是 Generative Adversarial Nets；arXiv当前元数据为 Generative Adversarial Networks，作为同一ID的题名变体保留。"
+      ],
+      "title_variants": [
+        "Generative Adversarial Networks"
+      ]
+    },
+    {
+      "id": "diffusion-2015",
+      "display_name": "原始扩散模型",
+      "kind": "paper",
+      "mainline": true,
+      "track": "multimodal",
+      "title": "Deep Unsupervised Learning using Nonequilibrium Thermodynamics",
+      "authors": [
+        "Jascha Sohl-Dickstein",
+        "Eric A. Weiss",
+        "Niru Maheswaranathan",
+        "Surya Ganguli"
+      ],
+      "year": 2015,
+      "first_public_date": "2015-03-12",
+      "verified_url": "https://arxiv.org/abs/1503.03585",
+      "verified_version_url": "https://arxiv.org/abs/1503.03585v8",
+      "source_ids": [
+        "arxiv-2"
+      ],
+      "year_basis": "arXiv 官方 published 字段；不等于修订年份或会议发表年份",
+      "identity_status": "identity_verified",
+      "claim_status": "not_fully_reviewed",
+      "focus_pages": [
+        45
+      ],
+      "pdf_pages": [
+        7,
+        41,
+        45
+      ],
+      "original_urls": [
+        "https://arxiv.org/abs/1503.03585"
+      ],
+      "verified_urls": [
+        "https://arxiv.org/abs/1503.03585"
+      ],
+      "local_originals": [
+        {
+          "path": "ai-learning/papers/32_diffusion_original_2015.pdf",
+          "sha256": "17a29449579ceb4fb906f2f3d5643eb22cea54e5975017ff8788ddf73d8b44ad",
+          "read_scope": "仅第1页：题名、作者、版本标识；部分摘要和引言开头，不代表全文已研究",
+          "identity_status": "identity_verified"
+        }
+      ],
+      "rejected_local_candidates": [],
+      "notes": [
+        "2015是首发年，作者为Jascha Sohl-Dickstein等四人；与2020 DDPM为两篇独立论文。"
+      ]
+    },
+    {
+      "id": "ddpm",
+      "display_name": "DDPM",
+      "kind": "paper",
+      "mainline": true,
+      "track": "multimodal",
+      "title": "Denoising Diffusion Probabilistic Models",
+      "authors": [
+        "Jonathan Ho",
+        "Ajay Jain",
+        "Pieter Abbeel"
+      ],
+      "year": 2020,
+      "first_public_date": "2020-06-19",
+      "verified_url": "https://arxiv.org/abs/2006.11239",
+      "verified_version_url": "https://arxiv.org/abs/2006.11239v2",
+      "source_ids": [
+        "arxiv-2"
+      ],
+      "year_basis": "arXiv 官方 published 字段；不等于修订年份或会议发表年份",
+      "identity_status": "identity_verified",
+      "claim_status": "not_fully_reviewed",
+      "focus_pages": [
+        46
+      ],
+      "pdf_pages": [
+        7,
+        41,
+        46
+      ],
+      "original_urls": [
+        "https://arxiv.org/abs/2006.11239"
+      ],
+      "verified_urls": [
+        "https://arxiv.org/abs/2006.11239"
+      ],
+      "local_originals": [
+        {
+          "path": "ai-learning/papers/09_ddpm_2020.pdf",
+          "sha256": "aee5e07a802e8dfd2a386374c94fd61d1d056cb7e1e0fec4f28e8120ff5d8505",
+          "read_scope": "仅第1页：题名、作者、版本标识；部分摘要和引言开头，不代表全文已研究",
+          "identity_status": "identity_verified"
+        }
+      ],
+      "rejected_local_candidates": [],
+      "notes": [
+        "本地首页三名作者单位均为UC Berkeley；讲义所写当时Google Brain归属不能据此采信。"
+      ]
+    },
+    {
+      "id": "vit",
+      "display_name": "ViT",
+      "kind": "paper",
+      "mainline": true,
+      "track": "multimodal",
+      "title": "An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale",
+      "authors": [
+        "Alexey Dosovitskiy",
+        "Lucas Beyer",
+        "Alexander Kolesnikov",
+        "Dirk Weissenborn",
+        "Xiaohua Zhai",
+        "Thomas Unterthiner",
+        "Mostafa Dehghani",
+        "Matthias Minderer",
+        "Georg Heigold",
+        "Sylvain Gelly",
+        "Jakob Uszkoreit",
+        "Neil Houlsby"
+      ],
+      "year": 2020,
+      "first_public_date": "2020-10-22",
+      "verified_url": "https://arxiv.org/abs/2010.11929",
+      "verified_version_url": "https://arxiv.org/abs/2010.11929v2",
+      "source_ids": [
+        "arxiv-2"
+      ],
+      "year_basis": "arXiv 官方 published 字段；不等于修订年份或会议发表年份",
+      "identity_status": "identity_verified",
+      "claim_status": "not_fully_reviewed",
+      "focus_pages": [
+        47
+      ],
+      "pdf_pages": [
+        7,
+        41,
+        47
+      ],
+      "original_urls": [
+        "https://arxiv.org/abs/2010.11929"
+      ],
+      "verified_urls": [
+        "https://arxiv.org/abs/2010.11929"
+      ],
+      "local_originals": [
+        {
+          "path": "ai-learning/papers/19_vit_2020.pdf",
+          "sha256": "8ce7b83971a14508ca711a27c875c9b6914c4f6767cf3150fb1ca6c07aa056d6",
+          "read_scope": "仅第1页：题名、作者、版本标识；部分摘要和引言开头，不代表全文已研究",
+          "identity_status": "identity_verified"
+        }
+      ],
+      "rejected_local_candidates": [],
+      "notes": [
+        "2020预印本、2021会议版；12名作者已核，谢赛宁不在该论文作者表中。"
+      ]
+    },
+    {
+      "id": "clip",
+      "display_name": "CLIP",
+      "kind": "paper",
+      "mainline": true,
+      "track": "multimodal",
+      "title": "Learning Transferable Visual Models From Natural Language Supervision",
+      "authors": [
+        "Alec Radford",
+        "Jong Wook Kim",
+        "Chris Hallacy",
+        "Aditya Ramesh",
+        "Gabriel Goh",
+        "Sandhini Agarwal",
+        "Girish Sastry",
+        "Amanda Askell",
+        "Pamela Mishkin",
+        "Jack Clark",
+        "Gretchen Krueger",
+        "Ilya Sutskever"
+      ],
+      "year": 2021,
+      "first_public_date": "2021-02-26",
+      "verified_url": "https://arxiv.org/abs/2103.00020",
+      "verified_version_url": "https://arxiv.org/abs/2103.00020v1",
+      "source_ids": [
+        "arxiv-2"
+      ],
+      "year_basis": "arXiv 官方 published 字段；不等于修订年份或会议发表年份",
+      "identity_status": "identity_verified",
+      "claim_status": "not_fully_reviewed",
+      "focus_pages": [
+        48
+      ],
+      "pdf_pages": [
+        7,
+        41,
+        48
+      ],
+      "original_urls": [
+        "https://arxiv.org/abs/2103.00020"
+      ],
+      "verified_urls": [
+        "https://arxiv.org/abs/2103.00020"
+      ],
+      "local_originals": [
+        {
+          "path": "ai-learning/papers/11_clip_2021.pdf",
+          "sha256": "6478b6e571a7d6fcd846d8ef77bfd60c285f1986abb8f475eedc43de403074f5",
+          "read_scope": "仅第1页：题名、作者、版本标识；部分摘要和引言开头，不代表全文已研究",
+          "identity_status": "identity_verified"
+        }
+      ],
+      "rejected_local_candidates": [],
+      "notes": [
+        "arXiv官方published为2021-02-26，ID号段2103及讲义2021.03不能直接替代实际首发日；产品首次公告日需另核。"
+      ]
+    },
+    {
+      "id": "ldm",
+      "display_name": "Latent Diffusion Models",
+      "kind": "paper",
+      "mainline": true,
+      "track": "multimodal",
+      "title": "High-Resolution Image Synthesis with Latent Diffusion Models",
+      "authors": [
+        "Robin Rombach",
+        "Andreas Blattmann",
+        "Dominik Lorenz",
+        "Patrick Esser",
+        "Björn Ommer"
+      ],
+      "year": 2021,
+      "first_public_date": "2021-12-20",
+      "verified_url": "https://arxiv.org/abs/2112.10752",
+      "verified_version_url": "https://arxiv.org/abs/2112.10752v2",
+      "source_ids": [
+        "arxiv-2"
+      ],
+      "year_basis": "arXiv 官方 published 字段；不等于修订年份或会议发表年份",
+      "identity_status": "identity_verified",
+      "claim_status": "not_fully_reviewed",
+      "focus_pages": [
+        49
+      ],
+      "pdf_pages": [
+        7,
+        41,
+        49
+      ],
+      "original_urls": [
+        "https://arxiv.org/abs/2112.10752"
+      ],
+      "verified_urls": [
+        "https://arxiv.org/abs/2112.10752"
+      ],
+      "local_originals": [
+        {
+          "path": "ai-learning/papers/20_stable_diffusion_2021.pdf",
+          "sha256": "46ede043a8dc07ca1f0f445620523fe1ad8b2436bd83856a3835612a47e9f79e",
+          "read_scope": "仅第1页：题名、作者、版本标识；部分摘要和引言开头，不代表全文已研究",
+          "identity_status": "identity_verified"
+        }
+      ],
+      "rejected_local_candidates": [],
+      "notes": [
+        "P49用Stable Diffusion作为页标题，却链接2021 LDM论文；将论文与2022年产品发布分开。首页单位并非所有作者都来自单一海德堡实验室。"
+      ]
+    },
+    {
+      "id": "dit",
+      "display_name": "DiT",
+      "kind": "paper",
+      "mainline": true,
+      "track": "multimodal",
+      "title": "Scalable Diffusion Models with Transformers",
+      "authors": [
+        "William Peebles",
+        "Saining Xie"
+      ],
+      "year": 2022,
+      "first_public_date": "2022-12-19",
+      "verified_url": "https://arxiv.org/abs/2212.09748",
+      "verified_version_url": "https://arxiv.org/abs/2212.09748v2",
+      "source_ids": [
+        "arxiv-2"
+      ],
+      "year_basis": "arXiv 官方 published 字段；不等于修订年份或会议发表年份",
+      "identity_status": "identity_verified",
+      "claim_status": "not_fully_reviewed",
+      "focus_pages": [
+        50
+      ],
+      "pdf_pages": [
+        7,
+        41,
+        50
+      ],
+      "original_urls": [
+        "https://arxiv.org/abs/2212.09748"
+      ],
+      "verified_urls": [
+        "https://arxiv.org/abs/2212.09748"
+      ],
+      "local_originals": [
+        {
+          "path": "ai-learning/papers/27_dit_2022.pdf",
+          "sha256": "5fbb0ec35e3ae76826240171ca63ed4c27de6cb43180367453019e9d28a8b076",
+          "read_scope": "仅第1页：题名、作者、版本标识；部分摘要和引言开头，不代表全文已研究",
+          "identity_status": "identity_verified"
+        }
+      ],
+      "rejected_local_candidates": [],
+      "notes": [
+        "2022预印本、2023修订版；对象为潜空间扩散的Transformer骨干，不是Sora论文或视频模型本身。"
+      ]
+    }
+  ],
+  "context_objects": [
+    {
+      "id": "geforce256",
+      "title": "GeForce 256",
+      "mainline": false,
+      "role": "background_or_component",
+      "pdf_pages": [
+        9
+      ],
+      "identity_status": "identity_pending",
+      "notes": "仅登记原PDF中的背景、数据/组件或后续产品；本阶段未逐项核定其原始论文、作者与首次年份，不计入36。"
+    },
+    {
+      "id": "geforce3",
+      "title": "GeForce 3",
+      "mainline": false,
+      "role": "background_or_component",
+      "pdf_pages": [
+        9
+      ],
+      "identity_status": "identity_pending",
+      "notes": "仅登记原PDF中的背景、数据/组件或后续产品；本阶段未逐项核定其原始论文、作者与首次年份，不计入36。"
+    },
+    {
+      "id": "cuda",
+      "title": "CUDA",
+      "mainline": false,
+      "role": "background_or_component",
+      "pdf_pages": [
+        10,
+        11
+      ],
+      "identity_status": "identity_pending",
+      "notes": "仅登记原PDF中的背景、数据/组件或后续产品；本阶段未逐项核定其原始论文、作者与首次年份，不计入36。"
+    },
+    {
+      "id": "imagenet",
+      "title": "ImageNet/ILSVRC",
+      "mainline": false,
+      "role": "background_or_component",
+      "pdf_pages": [
+        11,
+        42
+      ],
+      "identity_status": "identity_pending",
+      "notes": "仅登记原PDF中的背景、数据/组件或后续产品；本阶段未逐项核定其原始论文、作者与首次年份，不计入36。"
+    },
+    {
+      "id": "statistical-mt",
+      "title": "统计/短语机器翻译",
+      "mainline": false,
+      "role": "background_or_component",
+      "pdf_pages": [
+        12,
+        34
+      ],
+      "identity_status": "identity_pending",
+      "notes": "仅登记原PDF中的背景、数据/组件或后续产品；本阶段未逐项核定其原始论文、作者与首次年份，不计入36。"
+    },
+    {
+      "id": "lstm",
+      "title": "LSTM与Encoder–Decoder",
+      "mainline": false,
+      "role": "background_or_component",
+      "pdf_pages": [
+        12,
+        15,
+        34
+      ],
+      "identity_status": "identity_pending",
+      "notes": "仅登记原PDF中的背景、数据/组件或后续产品；本阶段未逐项核定其原始论文、作者与首次年份，不计入36。"
+    },
+    {
+      "id": "alphago-2016",
+      "title": "使用人类棋谱的AlphaGo",
+      "mainline": false,
+      "role": "background_or_component",
+      "pdf_pages": [
+        16,
+        22
+      ],
+      "identity_status": "identity_pending",
+      "notes": "仅登记原PDF中的背景、数据/组件或后续产品；本阶段未逐项核定其原始论文、作者与首次年份，不计入36。"
+    },
+    {
+      "id": "mcts",
+      "title": "Monte Carlo Tree Search",
+      "mainline": false,
+      "role": "background_or_component",
+      "pdf_pages": [
+        16
+      ],
+      "identity_status": "identity_pending",
+      "notes": "仅登记原PDF中的背景、数据/组件或后续产品；本阶段未逐项核定其原始论文、作者与首次年份，不计入36。"
+    },
+    {
+      "id": "llm-thinking",
+      "title": "LLM thinking / test-time compute",
+      "mainline": false,
+      "role": "background_or_component",
+      "pdf_pages": [
+        16,
+        18
+      ],
+      "identity_status": "identity_pending",
+      "notes": "仅登记原PDF中的背景、数据/组件或后续产品；本阶段未逐项核定其原始论文、作者与首次年份，不计入36。"
+    },
+    {
+      "id": "early-moe",
+      "title": "早期Mixture of Experts",
+      "mainline": false,
+      "role": "background_or_component",
+      "pdf_pages": [
+        17
+      ],
+      "identity_status": "identity_pending",
+      "notes": "仅登记原PDF中的背景、数据/组件或后续产品；本阶段未逐项核定其原始论文、作者与首次年份，不计入36。"
+    },
+    {
+      "id": "adapter-tuning",
+      "title": "Adapter等参数高效适配",
+      "mainline": false,
+      "role": "background_or_component",
+      "pdf_pages": [
+        19
+      ],
+      "identity_status": "identity_pending",
+      "notes": "仅登记原PDF中的背景、数据/组件或后续产品；本阶段未逐项核定其原始论文、作者与首次年份，不计入36。"
+    },
+    {
+      "id": "stable-diffusion-product",
+      "title": "Stable Diffusion（产品/模型发布）",
+      "mainline": false,
+      "role": "background_or_component",
+      "pdf_pages": [
+        19,
+        29,
+        49,
+        50
+      ],
+      "identity_status": "identity_verified",
+      "notes": "正式公告证实这是产品公开发布；日期由官网搜索条目核对。与2021 LDM论文为论文—后续产品关系，不另增加主线论文数量。",
+      "year": 2022,
+      "first_public_date": "2022-08-22",
+      "verified_url": "https://stability.ai/news-updates/stable-diffusion-public-release",
+      "source_ids": [
+        "sd-release",
+        "search-sd"
+      ]
+    },
+    {
+      "id": "agent-definition-1995",
+      "title": "Russell与Norvig的Agent定义",
+      "mainline": false,
+      "role": "background_or_component",
+      "pdf_pages": [
+        20
+      ],
+      "identity_status": "identity_pending",
+      "notes": "仅登记原PDF中的背景、数据/组件或后续产品；本阶段未逐项核定其原始论文、作者与首次年份，不计入36。"
+    },
+    {
+      "id": "langchain-langgraph",
+      "title": "LangChain/LangGraph",
+      "mainline": false,
+      "role": "background_or_component",
+      "pdf_pages": [
+        20
+      ],
+      "identity_status": "identity_pending",
+      "notes": "仅登记原PDF中的背景、数据/组件或后续产品；本阶段未逐项核定其原始论文、作者与首次年份，不计入36。"
+    },
+    {
+      "id": "chess-search",
+      "title": "计算机国际象棋搜索案例",
+      "mainline": false,
+      "role": "background_or_component",
+      "pdf_pages": [
+        22
+      ],
+      "identity_status": "identity_pending",
+      "notes": "仅登记原PDF中的背景、数据/组件或后续产品；本阶段未逐项核定其原始论文、作者与首次年份，不计入36。"
+    },
+    {
+      "id": "hmm",
+      "title": "Hidden Markov Models",
+      "mainline": false,
+      "role": "background_or_component",
+      "pdf_pages": [
+        23
+      ],
+      "identity_status": "identity_pending",
+      "notes": "仅登记原PDF中的背景、数据/组件或后续产品；本阶段未逐项核定其原始论文、作者与首次年份，不计入36。"
+    },
+    {
+      "id": "sift",
+      "title": "SIFT及人工视觉特征",
+      "mainline": false,
+      "role": "background_or_component",
+      "pdf_pages": [
+        23
+      ],
+      "identity_status": "identity_pending",
+      "notes": "仅登记原PDF中的背景、数据/组件或后续产品；本阶段未逐项核定其原始论文、作者与首次年份，不计入36。"
+    },
+    {
+      "id": "deepspeed",
+      "title": "DeepSpeed",
+      "mainline": false,
+      "role": "background_or_component",
+      "pdf_pages": [
+        27
+      ],
+      "identity_status": "identity_pending",
+      "notes": "仅登记原PDF中的背景、数据/组件或后续产品；本阶段未逐项核定其原始论文、作者与首次年份，不计入36。"
+    },
+    {
+      "id": "common-crawl",
+      "title": "Common Crawl",
+      "mainline": false,
+      "role": "background_or_component",
+      "pdf_pages": [
+        29,
+        30,
+        38
+      ],
+      "identity_status": "identity_pending",
+      "notes": "仅登记原PDF中的背景、数据/组件或后续产品；本阶段未逐项核定其原始论文、作者与首次年份，不计入36。"
+    },
+    {
+      "id": "books-corpus",
+      "title": "BooksCorpus",
+      "mainline": false,
+      "role": "background_or_component",
+      "pdf_pages": [
+        35
+      ],
+      "identity_status": "identity_pending",
+      "notes": "仅登记原PDF中的背景、数据/组件或后续产品；本阶段未逐项核定其原始论文、作者与首次年份，不计入36。"
+    },
+    {
+      "id": "webtext",
+      "title": "WebText",
+      "mainline": false,
+      "role": "background_or_component",
+      "pdf_pages": [
+        37
+      ],
+      "identity_status": "identity_pending",
+      "notes": "仅登记原PDF中的背景、数据/组件或后续产品；本阶段未逐项核定其原始论文、作者与首次年份，不计入36。"
+    },
+    {
+      "id": "rlhf",
+      "title": "RLHF方法前史",
+      "mainline": false,
+      "role": "background_or_component",
+      "pdf_pages": [
+        39
+      ],
+      "identity_status": "identity_pending",
+      "notes": "仅登记原PDF中的背景、数据/组件或后续产品；本阶段未逐项核定其原始论文、作者与首次年份，不计入36。"
+    },
+    {
+      "id": "ppo",
+      "title": "Proximal Policy Optimization",
+      "mainline": false,
+      "role": "background_or_component",
+      "pdf_pages": [
+        39
+      ],
+      "identity_status": "identity_pending",
+      "notes": "仅登记原PDF中的背景、数据/组件或后续产品；本阶段未逐项核定其原始论文、作者与首次年份，不计入36。"
+    },
+    {
+      "id": "dpo",
+      "title": "Direct Preference Optimization",
+      "mainline": false,
+      "role": "background_or_component",
+      "pdf_pages": [
+        40
+      ],
+      "identity_status": "identity_pending",
+      "notes": "仅登记原PDF中的背景、数据/组件或后续产品；本阶段未逐项核定其原始论文、作者与首次年份，不计入36。"
+    },
+    {
+      "id": "rlvr",
+      "title": "Reinforcement Learning with Verifiable Rewards",
+      "mainline": false,
+      "role": "background_or_component",
+      "pdf_pages": [
+        40
+      ],
+      "identity_status": "identity_pending",
+      "notes": "仅登记原PDF中的背景、数据/组件或后续产品；本阶段未逐项核定其原始论文、作者与首次年份，不计入36。"
+    },
+    {
+      "id": "llama3-base",
+      "title": "Llama 3.1基础模型",
+      "mainline": false,
+      "role": "background_or_component",
+      "pdf_pages": [
+        40
+      ],
+      "identity_status": "identity_pending",
+      "notes": "仅登记原PDF中的背景、数据/组件或后续产品；本阶段未逐项核定其原始论文、作者与首次年份，不计入36。"
+    },
+    {
+      "id": "sports1m",
+      "title": "Sports-1M",
+      "mainline": false,
+      "role": "background_or_component",
+      "pdf_pages": [
+        42
+      ],
+      "identity_status": "identity_pending",
+      "notes": "仅登记原PDF中的背景、数据/组件或后续产品；本阶段未逐项核定其原始论文、作者与首次年份，不计入36。"
+    },
+    {
+      "id": "optical-flow",
+      "title": "光流",
+      "mainline": false,
+      "role": "background_or_component",
+      "pdf_pages": [
+        43
+      ],
+      "identity_status": "identity_pending",
+      "notes": "仅登记原PDF中的背景、数据/组件或后续产品；本阶段未逐项核定其原始论文、作者与首次年份，不计入36。"
+    },
+    {
+      "id": "vae",
+      "title": "Variational Autoencoders",
+      "mainline": false,
+      "role": "background_or_component",
+      "pdf_pages": [
+        45,
+        46
+      ],
+      "identity_status": "identity_pending",
+      "notes": "仅登记原PDF中的背景、数据/组件或后续产品；本阶段未逐项核定其原始论文、作者与首次年份，不计入36。"
+    },
+    {
+      "id": "autoregressive-image-models",
+      "title": "自回归图像生成模型",
+      "mainline": false,
+      "role": "background_or_component",
+      "pdf_pages": [
+        46
+      ],
+      "identity_status": "identity_pending",
+      "notes": "仅登记原PDF中的背景、数据/组件或后续产品；本阶段未逐项核定其原始论文、作者与首次年份，不计入36。"
+    },
+    {
+      "id": "unet",
+      "title": "U-Net",
+      "mainline": false,
+      "role": "background_or_component",
+      "pdf_pages": [
+        46,
+        49,
+        50
+      ],
+      "identity_status": "identity_pending",
+      "notes": "仅登记原PDF中的背景、数据/组件或后续产品；本阶段未逐项核定其原始论文、作者与首次年份，不计入36。"
+    },
+    {
+      "id": "glide",
+      "title": "GLIDE",
+      "mainline": false,
+      "role": "background_or_component",
+      "pdf_pages": [
+        49
+      ],
+      "identity_status": "identity_pending",
+      "notes": "仅登记原PDF中的背景、数据/组件或后续产品；本阶段未逐项核定其原始论文、作者与首次年份，不计入36。"
+    }
+  ],
+  "relations": [
+    {
+      "from": "geforce3",
+      "to": "brook",
+      "type": "enabling_context",
+      "description": "[待验证] 可编程图形硬件提出通用计算抽象需求；不是把产品先后当作Brook的唯一因果解释。",
+      "pdf_pages": [
+        9,
+        10
+      ],
+      "status": "pdf_framing_pending_primary_support"
+    },
+    {
+      "from": "brook",
+      "to": "alexnet",
+      "type": "shared_infrastructure_trajectory",
+      "description": "[待验证] GPU计算抽象与GPU训练属于同一基础设施路径；未证实AlexNet直接采用Brook。",
+      "pdf_pages": [
+        10,
+        11
+      ],
+      "status": "pdf_framing_pending_primary_support"
+    },
+    {
+      "from": "imagenet",
+      "to": "alexnet",
+      "type": "training_and_evaluation_resource",
+      "description": "[待验证] 数据与基准支撑视觉识别实验；数据规模口径仍须分ImageNet全库与ILSVRC子集。",
+      "pdf_pages": [
+        11
+      ],
+      "status": "pdf_framing_pending_primary_support"
+    },
+    {
+      "from": "seq2seq",
+      "to": "bahdanau-attention",
+      "type": "parallel_related_solutions",
+      "description": "两篇同月的序列建模研究：固定长度压缩与可选择源表示分别处理问题；注意力论文首发更早，不构造逐篇发表后的单线发明史。",
+      "pdf_pages": [
+        12
+      ],
+      "status": "identity_and_dates_verified_mechanism_scope_limited"
+    },
+    {
+      "from": "bahdanau-attention",
+      "to": "transformer",
+      "type": "architectural_trajectory",
+      "description": "[待验证] 讲义从循环模型里的注意力讲到以注意力为主的架构；具体继承须读原文相关工作。",
+      "pdf_pages": [
+        12,
+        15
+      ],
+      "status": "pdf_framing_pending_primary_support"
+    },
+    {
+      "from": "resnet",
+      "to": "transformer",
+      "type": "reused_architectural_idea",
+      "description": "[待验证] 残差连接是跨模型的结构线索，不是Transformer只由ResNet导致。",
+      "pdf_pages": [
+        14,
+        15
+      ],
+      "status": "pdf_framing_pending_primary_support"
+    },
+    {
+      "from": "seq2seq",
+      "to": "gnmt",
+      "type": "system_integration",
+      "description": "GNMT官方摘要核实LSTM编码—解码、注意力与生产系统目标；具体对某篇seq2seq的引用关系未全文核对。",
+      "pdf_pages": [
+        12,
+        34
+      ],
+      "status": "primary_abstract_supported"
+    },
+    {
+      "from": "resnet",
+      "to": "gnmt",
+      "type": "system_integration",
+      "description": "GNMT官方摘要明示residual connections；不据此穷尽其工程机制。",
+      "pdf_pages": [
+        14,
+        34
+      ],
+      "status": "primary_abstract_supported"
+    },
+    {
+      "from": "distillation",
+      "to": "sparse-moe",
+      "type": "parallel_cost_responses",
+      "description": "[待验证] 部署压缩与稀疏条件计算回应不同成本问题，不是前后取代。",
+      "pdf_pages": [
+        13,
+        17
+      ],
+      "status": "pdf_framing_pending_primary_support"
+    },
+    {
+      "from": "sparse-moe",
+      "to": "lora",
+      "type": "parallel_cost_responses",
+      "description": "[待验证] 每次计算量与任务适配参数量是不同环节；不比较未经统一条件的效率数字。",
+      "pdf_pages": [
+        17,
+        19
+      ],
+      "status": "pdf_framing_pending_primary_support"
+    },
+    {
+      "from": "alphago-2016",
+      "to": "alphago-zero",
+      "type": "training_regime_change",
+      "description": "Nature摘要支持从监督棋谱加自弈到无需人类棋谱的强化学习；不等于没有规则、搜索或人类工程。",
+      "pdf_pages": [
+        16
+      ],
+      "status": "primary_abstract_supported"
+    },
+    {
+      "from": "alphago-zero",
+      "to": "bitter-lesson",
+      "type": "illustrative_case",
+      "description": "[待验证] 围棋的搜索/学习可作为文章论证实例；文章不是AlphaGo Zero的前置技术。",
+      "pdf_pages": [
+        16,
+        22
+      ],
+      "status": "pdf_framing_pending_primary_support"
+    },
+    {
+      "from": "alphago-zero",
+      "to": "llm-thinking",
+      "type": "historical_influence_claim",
+      "description": "[待验证] PDF声称启发LLM thinking；本阶段无直接历史证据，不写成已证实因果。",
+      "pdf_pages": [
+        16
+      ],
+      "status": "pdf_framing_pending_primary_support"
+    },
+    {
+      "from": "zero",
+      "to": "megascale",
+      "type": "different_system_bottlenecks",
+      "description": "[待验证] 显存冗余与大规模稳定训练互补；并非按日期就能确立直接继承。",
+      "pdf_pages": [
+        27,
+        31
+      ],
+      "status": "pdf_framing_pending_primary_support"
+    },
+    {
+      "from": "scaling-laws",
+      "to": "chinchilla",
+      "type": "revises_compute_allocation",
+      "description": "两篇正式论文分别存在；Chinchilla摘要提出既有大模型欠训练及更均衡的数据/参数扩展。具体差异与拟合口径留待后续研究。",
+      "pdf_pages": [
+        28
+      ],
+      "status": "primary_abstract_supported"
+    },
+    {
+      "from": "chinchilla",
+      "to": "refinedweb",
+      "type": "data_demand_context",
+      "description": "[待验证] 更多训练数据的需求与网页质量工程可相互解释；不能声称RefinedWeb因此才被发明或解决永久数据墙。",
+      "pdf_pages": [
+        28,
+        30
+      ],
+      "status": "pdf_framing_pending_primary_support"
+    },
+    {
+      "from": "clip",
+      "to": "laion5b",
+      "type": "data_filtering_connection",
+      "description": "[待验证] PDF把CLIP过滤与开放图文数据连接；具体过滤流程与阈值尚未研究。",
+      "pdf_pages": [
+        29,
+        48
+      ],
+      "status": "pdf_framing_pending_primary_support"
+    },
+    {
+      "from": "word2vec",
+      "to": "gpt1",
+      "type": "representation_scope_shift",
+      "description": "[待验证] 从可复用词级表示讲向通用语言预训练；中间前史未穷尽。",
+      "pdf_pages": [
+        33,
+        35
+      ],
+      "status": "pdf_framing_pending_primary_support"
+    },
+    {
+      "from": "transformer",
+      "to": "gpt1",
+      "type": "architectural_reuse",
+      "description": "[待验证] GPT采用decoder Transformer；不是GPT首次提出预训练—微调。",
+      "pdf_pages": [
+        15,
+        35
+      ],
+      "status": "pdf_framing_pending_primary_support"
+    },
+    {
+      "from": "gpt1",
+      "to": "bert",
+      "type": "parallel_pretraining_variants",
+      "description": "[待验证] 自回归与双向表示围绕不同任务目标发展，不按演义标题构造单一胜负史。",
+      "pdf_pages": [
+        35,
+        36
+      ],
+      "status": "pdf_framing_pending_primary_support"
+    },
+    {
+      "from": "gpt1",
+      "to": "gpt2",
+      "type": "scaling_and_task_transfer",
+      "description": "官方GPT-2说明称其为GPT直接扩展，任务不微调的结果有范围，且说明仍讨论fine-tuning用途。",
+      "pdf_pages": [
+        35,
+        37
+      ],
+      "status": "primary_official_description_supported"
+    },
+    {
+      "from": "gpt2",
+      "to": "gpt3",
+      "type": "zero_shot_to_few_shot_focus",
+      "description": "[待验证] PDF将扩展模型与上下文示例能力连接；不是说GPT-3发明提示。",
+      "pdf_pages": [
+        37,
+        38
+      ],
+      "status": "pdf_framing_pending_primary_support"
+    },
+    {
+      "from": "scaling-laws",
+      "to": "gpt3",
+      "type": "research_guidance_claim",
+      "description": "[待验证] PDF声称scaling law指导GPT-3；应核原论文的实际引用、训练预算和资源分配，不由同作者名单替代证明。",
+      "pdf_pages": [
+        28,
+        38
+      ],
+      "status": "pdf_framing_pending_primary_support"
+    },
+    {
+      "from": "gpt3",
+      "to": "instructgpt",
+      "type": "post_training_behavior_shift",
+      "description": "[待验证] 从语言建模迁移到指令/偏好后训练；RLHF前史不归零。",
+      "pdf_pages": [
+        38,
+        39
+      ],
+      "status": "pdf_framing_pending_primary_support"
+    },
+    {
+      "from": "gpt3",
+      "to": "cot",
+      "type": "prompting_method",
+      "description": "[待验证] few-shot示例加入推理过程，是使用方式路线而非新模型架构。",
+      "pdf_pages": [
+        18,
+        38
+      ],
+      "status": "pdf_framing_pending_primary_support"
+    },
+    {
+      "from": "cot",
+      "to": "react",
+      "type": "combines_reasoning_and_action",
+      "description": "ReAct摘要明确把推理轨迹与任务动作交错，以外部交互缓解部分幻觉和误差传播；不外推所有Agent可靠。",
+      "pdf_pages": [
+        18,
+        20
+      ],
+      "status": "primary_abstract_supported"
+    },
+    {
+      "from": "instructgpt",
+      "to": "tulu3",
+      "type": "open_post_training_recipe",
+      "description": "Tulu3摘要明确SFT、DPO、RLVR与公开数据代码配方；对InstructGPT的具体继承或差异尚未穷尽。",
+      "pdf_pages": [
+        39,
+        40
+      ],
+      "status": "primary_abstract_supported"
+    },
+    {
+      "from": "alexnet",
+      "to": "deepvideo",
+      "type": "domain_transfer",
+      "description": "CVPR摘要以图像CNN成功为背景并研究视频扩展；不是将视频理解与生成混为同一任务。",
+      "pdf_pages": [
+        11,
+        42
+      ],
+      "status": "primary_abstract_supported"
+    },
+    {
+      "from": "deepvideo",
+      "to": "two-stream",
+      "type": "motion_modeling_problem",
+      "description": "官方摘要分别报告多帧收益有限与空间/运动互补建模；具体实验可比条件待后续核查。",
+      "pdf_pages": [
+        42,
+        43
+      ],
+      "status": "primary_abstract_supported"
+    },
+    {
+      "from": "two-stream",
+      "to": "gan",
+      "type": "different_task_branches",
+      "description": "两者在PDF相邻且同年，但动作识别与图像生成并非已证实的因果链。",
+      "pdf_pages": [
+        43,
+        44
+      ],
+      "status": "route_distinction"
+    },
+    {
+      "from": "gan",
+      "to": "diffusion-2015",
+      "type": "alternative_generative_paradigms",
+      "description": "[待验证] 对抗学习与逐步扩散是并行生成思路，不能把年份先后写成后者必然由前者产生。",
+      "pdf_pages": [
+        44,
+        45
+      ],
+      "status": "pdf_framing_pending_primary_support"
+    },
+    {
+      "from": "diffusion-2015",
+      "to": "ddpm",
+      "type": "same_method_family_later_work",
+      "description": "[待验证] 讲义将早期扩散与2020去噪扩散串联；具体技术增量须比较原文，未逐式审核。",
+      "pdf_pages": [
+        45,
+        46
+      ],
+      "status": "pdf_framing_pending_primary_support"
+    },
+    {
+      "from": "transformer",
+      "to": "vit",
+      "type": "architectural_reuse",
+      "description": "ViT首页摘要支持标准Transformer直接处理图像patch序列；实验规模边界待核。",
+      "pdf_pages": [
+        15,
+        47
+      ],
+      "status": "primary_abstract_supported"
+    },
+    {
+      "from": "clip",
+      "to": "ldm",
+      "type": "conditioning_path",
+      "description": "[待验证] 图文表示与文本条件生成可以连接；必须区分LDM原论文所用文本编码器和Stable Diffusion产品实现，不能混写。",
+      "pdf_pages": [
+        48,
+        49
+      ],
+      "status": "pdf_framing_pending_primary_support"
+    },
+    {
+      "from": "ddpm",
+      "to": "ldm",
+      "type": "latent_space_computation",
+      "description": "[待验证] 从像素空间去噪到潜空间去噪的成本路径，不代表生成质量与成本在所有条件下同时最优。",
+      "pdf_pages": [
+        46,
+        49
+      ],
+      "status": "pdf_framing_pending_primary_support"
+    },
+    {
+      "from": "ldm",
+      "to": "stable-diffusion-product",
+      "type": "paper_vs_later_product",
+      "description": "2021 LDM论文与2022 Stable Diffusion公开发布身份不同；具体产品配方与训练子集另查。",
+      "pdf_pages": [
+        49
+      ],
+      "status": "identity_and_dates_verified"
+    },
+    {
+      "from": "laion5b",
+      "to": "stable-diffusion-product",
+      "type": "training_data_claim",
+      "description": "[待验证] PDF声称作为产品训练数据；应按产品版本、数据子集和发布时间核对。",
+      "pdf_pages": [
+        29,
+        49
+      ],
+      "status": "pdf_framing_pending_primary_support"
+    },
+    {
+      "from": "ldm",
+      "to": "dit",
+      "type": "denoiser_backbone_change",
+      "description": "[待验证] 潜空间扩散中改变去噪骨干，原DiT不应直接写成“给Stable Diffusion产品换骨干”。",
+      "pdf_pages": [
+        49,
+        50
+      ],
+      "status": "pdf_framing_pending_primary_support"
+    },
+    {
+      "from": "vit",
+      "to": "dit",
+      "type": "patch_transformer_connection",
+      "description": "[待验证] 视觉patch Transformer与扩散去噪可组合；不把Sora后续履历当作DiT实验结果。",
+      "pdf_pages": [
+        47,
+        50
+      ],
+      "status": "pdf_framing_pending_primary_support"
+    }
+  ],
+  "sources": [
+    {
+      "id": "arxiv-1",
+      "url": "https://export.arxiv.org/api/query?id_list=1409.3215,1609.08144,2203.15556,1404.7823,1406.2199,2407.15541,2411.15124",
+      "sha256": "c661dc38c3a0b4f3ebdcce0c821ffc00d80a7574af129c84305da704a64354f7",
+      "hash_scope": "eacli result.result 原始 UTF-8 字节，不含执行收据外层",
+      "read_scope": "官方 Atom 元数据：各条目的 id、title、authors、published；摘要仅用于辨认对象，不代表全文精读"
+    },
+    {
+      "id": "arxiv-2",
+      "url": "https://export.arxiv.org/api/query?id_list=1503.02531,1512.03385,1706.03762,1701.06538,2201.11903,2106.09685,2210.03629,1910.02054,2001.08361,2210.08402,2306.01116,2402.15627,1301.3781,1810.04805,2005.14165,2203.02155,1406.2661,1503.03585,2006.11239,2010.11929,2103.00020,2112.10752,2212.09748,1409.0473&max_results=50",
+      "sha256": "8ddcfaea484ef05c9bb757a71a4a0de9f55de15ab8c48f33271d648ff4e7d7fc",
+      "hash_scope": "eacli result.result 原始 UTF-8 字节，不含执行收据外层",
+      "read_scope": "官方 Atom 元数据：各条目的 id、title、authors、published；摘要仅用于辨认对象，不代表全文精读"
+    },
+    {
+      "id": "brook",
+      "url": "https://dl.acm.org/doi/10.1145/1015706.1015800",
+      "sha256": "54a992593ea1a3fd8cf0ff55deb4dc23a12acd8f98d33aa2a499a7760c50a0b1",
+      "hash_scope": "eacli result.result 原始 UTF-8 字节，不含执行收据外层",
+      "read_scope": "题名、作者、出版日期/首发日期与摘要；未据此核定全部实验结论"
+    },
+    {
+      "id": "alexnet",
+      "url": "https://papers.nips.cc/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html",
+      "sha256": "9253594c98771826d0fb020a9a3f0c11b5e8314e72a00672223a73cab7cc3277",
+      "hash_scope": "eacli result.result 原始 UTF-8 字节，不含执行收据外层",
+      "read_scope": "题名、作者、出版日期/首发日期与摘要；未据此核定全部实验结论"
+    },
+    {
+      "id": "alphago-blog",
+      "url": "https://deepmind.google/discover/blog/alphago-zero-starting-from-scratch/",
+      "sha256": "629ac6e2a9a2337a199e5dde8949c4923af4873f4dd74f2bdaca753a77e840ab",
+      "hash_scope": "eacli result.result 原始 UTF-8 字节，不含执行收据外层",
+      "read_scope": "题名、作者、出版日期/首发日期与摘要；未据此核定全部实验结论"
+    },
+    {
+      "id": "alphago-paper",
+      "url": "https://www.nature.com/articles/nature24270",
+      "sha256": "b4cd1c19da984b06631f7261da19a43a59b6f8cf78a4a907c2db61426e3fc5c1",
+      "hash_scope": "eacli result.result 原始 UTF-8 字节，不含执行收据外层",
+      "read_scope": "题名、作者、出版日期/首发日期与摘要；未据此核定全部实验结论"
+    },
+    {
+      "id": "bitter",
+      "url": "http://www.incompleteideas.net/IncIdeas/BitterLesson.html",
+      "sha256": "391e54160631669d74b693ce86e0426433831a2ac61512c086d798bf57a5b00d",
+      "hash_scope": "eacli result.result 原始 UTF-8 字节，不含执行收据外层",
+      "read_scope": "正文与署名、日期；另对照原讲义 P21–25 的全文引述"
+    },
+    {
+      "id": "gpt1",
+      "url": "https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf",
+      "sha256": "db93fca6eb4a565d54ecbb1e03ae9412f6bd663c213f41dd7cb2d3529f42e2b5",
+      "hash_scope": "eacli result.result 原始 UTF-8 字节，不含执行收据外层",
+      "read_scope": "官方 PDF 经 web.read 返回的文本：本次阅读首页题名、作者、摘要和开头；未通读附录或结果表"
+    },
+    {
+      "id": "gpt2",
+      "url": "https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf",
+      "sha256": "c8bb56bbf1e0bedca83d23497a456fb94328656b44d7a704536d0b9aac27b74e",
+      "hash_scope": "eacli result.result 原始 UTF-8 字节，不含执行收据外层",
+      "read_scope": "官方 PDF 经 web.read 返回的文本：本次阅读首页题名、作者、摘要和开头；未通读附录或结果表"
+    },
+    {
+      "id": "deepvideo",
+      "url": "https://openaccess.thecvf.com/content_cvpr_2014/html/Karpathy_Large-scale_Video_Classification_2014_CVPR_paper.html",
+      "sha256": "878caf145085e6a321c87a55b71f9e879d9a630dd9b80961b15279f40ad3df51",
+      "hash_scope": "eacli result.result 原始 UTF-8 字节，不含执行收据外层",
+      "read_scope": "题名、作者、出版日期/首发日期与摘要；未据此核定全部实验结论"
+    },
+    {
+      "id": "gpt1-date",
+      "url": "https://openai.com/index/language-unsupervised/",
+      "sha256": "429257fe1e8e2c9a235711101d253f81e8c07f9c6f212513332fa00b760a2592",
+      "hash_scope": "eacli result.result 原始 UTF-8 字节，不含执行收据外层",
+      "read_scope": "官方说明页的主要正文；读取结果缺原始日期页眉，首发日期另以官网搜索条目核对"
+    },
+    {
+      "id": "gpt2-date",
+      "url": "https://openai.com/index/better-language-models/",
+      "sha256": "1a3c7d19a19b70cdaa8c4b419cdf8efe97c40a0b06958d8c0415b72c0aee600a",
+      "hash_scope": "eacli result.result 原始 UTF-8 字节，不含执行收据外层",
+      "read_scope": "官方说明页的主要正文；读取结果缺原始日期页眉，首发日期另以官网搜索条目核对"
+    },
+    {
+      "id": "search-gpt1",
+      "url": "https://openai.com/index/language-unsupervised",
+      "sha256": "538839d10510d08894e6acb729e3846a7b12016dc3cc906faf8cf0b25154ba63",
+      "hash_scope": "eacli result.result 原始 UTF-8 字节，不含执行收据外层",
+      "read_scope": "仅搜索结果中的官网题名与日期；不以搜索抓取时间作为发表时间"
+    },
+    {
+      "id": "search-gpt2",
+      "url": "https://openai.com/index/better-language-models",
+      "sha256": "28dd37cd8cae82401d7560f29313f1c804c142cf21eba574e5336381903d46a3",
+      "hash_scope": "eacli result.result 原始 UTF-8 字节，不含执行收据外层",
+      "read_scope": "仅搜索结果中的官网题名与日期；不以搜索抓取时间作为发表时间"
+    },
+    {
+      "id": "search-sd",
+      "url": "https://stability.ai/news-updates/stable-diffusion-public-release",
+      "sha256": "93465928eafa7d2429fb94efedebbfae003f51f4caca05f9aa731e9560e2e5f9",
+      "hash_scope": "eacli result.result 原始 UTF-8 字节，不含执行收据外层",
+      "read_scope": "仅搜索结果中的官网题名与日期；不以搜索抓取时间作为发表时间"
+    },
+    {
+      "id": "sd-release",
+      "url": "https://stability.ai/news-updates/stable-diffusion-public-release",
+      "sha256": "7b38ae42d7d30c7bd7bac064fd442a0f7d7a1b919a806c34b31ff74aa74496bf",
+      "hash_scope": "eacli result.result 原始 UTF-8 字节，不含执行收据外层",
+      "read_scope": "产品发布说明正文；日期另由官网搜索条目交叉核对；未解读样图"
+    }
+  ],
+  "route_order_notes": [
+    "保留正文先后与实际时间两套索引；P16 AlphaGo Zero后才讲P17 MoE，但后者发表于更早的2017年1月。",
+    "P18 CoT后才讲P19 LoRA，但LoRA发表于2021年。",
+    "P7/P26把The Bitter Lesson画在infra数据线右端，并不意味着2019文章晚于2024 MegaScale。",
+    "路线图没有明确因果箭头；反复出现的道路起伏、车形图标和分叉仅作装饰处理，不编码成技术停滞/革命证据。",
+    "同一对象在总览、时间线、正文或人物栏复现，不增加对象数；objects.pdf_pages覆盖作为节点/主体的页面，人物栏等零散复现由pages.incidental_works登记。"
+  ],
+  "open_issues": [
+    {
+      "id": "I01",
+      "status": "resolved_identity",
+      "pages": [
+        12
+      ],
+      "issue": "一页两篇且仅有seq2seq链接",
+      "resolution": "seq2seq=1409.3215；Bahdanau Attention=1409.0473。后者首发2014-09-01早于前者2014-09-10，避免虚构先后因果。"
+    },
+    {
+      "id": "I02",
+      "status": "resolved_identity",
+      "pages": [
+        28
+      ],
+      "issue": "Scaling Laws与Chinchilla合讲但只有前者链接",
+      "resolution": "2001.08361与2203.15556分列。保留两种实验建议的区别，不共享同一结论标签。"
+    },
+    {
+      "id": "I03",
+      "status": "resolved_identity_local_file_unmodified",
+      "pages": [
+        16
+      ],
+      "issue": "本地24_alphago_zero_2017.pdf实际是AlphaZero",
+      "resolution": "该文件为1712.01815，不能作AlphaGo Zero原文；目标核到Nature DOI 10.1038/nature24270。未替换既有文件。"
+    },
+    {
+      "id": "I04",
+      "status": "resolved_identity_local_file_unmodified",
+      "pages": [
+        10
+      ],
+      "issue": "本地28_brook_2004.pdf实际是P versus NP论文",
+      "resolution": "PDF内嵌ACM DOI正确；已用ACM元数据核Brook身份，本地错误文件未改。"
+    },
+    {
+      "id": "I05",
+      "status": "resolved_identity",
+      "pages": [
+        40
+      ],
+      "issue": "Tulu3显示题名与链接都错",
+      "resolution": "2407.15541实际为An implicit adaptive unified gas-kinetic scheme for steady-state solutions of non-equilibrium flows，作者Wenpei Long、Yufeng Wei、Kun Xu，2024；应为2411.15124的Tulu 3: Pushing Frontiers in Open Language Model Post-Training。"
+    },
+    {
+      "id": "I06",
+      "status": "resolved_identity",
+      "pages": [
+        42
+      ],
+      "issue": "DeepVideo链接指向无关引力理论论文",
+      "resolution": "1404.7823实际为Lessons from f(R,R_c^2,R_m^2,L_m) gravity: Smooth Gauss-Bonnet limit, energy-momentum conservation and nonminimal coupling，作者David Wenjie Tian、Ivan Booth，2014。正确视频论文由CVPR官方页面核定。"
+    },
+    {
+      "id": "I07",
+      "status": "resolved_identity",
+      "pages": [
+        41,
+        49
+      ],
+      "issue": "LDM论文与Stable Diffusion产品混同",
+      "resolution": "主论文2112.10752首发2021-12-20；产品公开发布2022-08-22，另列背景对象而不增加主论文数。"
+    },
+    {
+      "id": "I08",
+      "status": "resolved_date",
+      "pages": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "issue": "The Bitter Lesson页头2018.08与作者原文冲突",
+      "resolution": "作者日期2019-03-13，P26也写2019.03；五页是一篇观点文章。"
+    },
+    {
+      "id": "I09",
+      "status": "resolved_title",
+      "pages": [
+        30,
+        37,
+        44
+      ],
+      "issue": "描述性标题、误拼与正式标题变体",
+      "resolution": "RefinedWeb用官方长题名；GPT-2修正Multask为Multitask；GAN保留本地首页Nets和arXiv元数据Networks的变体，非两篇论文。"
+    },
+    {
+      "id": "I10",
+      "status": "pending_historical_claims",
+      "pages": [
+        9,
+        11,
+        13,
+        18,
+        20,
+        31,
+        33,
+        35,
+        37,
+        38,
+        39,
+        48
+      ],
+      "issue": "首次、开端、奠基、首个等历史优先性断言",
+      "next_check": "只核影响路径理解的关键前史：GPU术语、神经网络/蒸馏/词向量/预训练/提示/RLHF/图文对比学习的先例；不要为修饰标题扩大成百科。"
+    },
+    {
+      "id": "I11",
+      "status": "pending_quantitative_claims",
+      "pages": [
+        10,
+        11,
+        16,
+        17,
+        27,
+        28,
+        29,
+        31,
+        38,
+        39,
+        42,
+        46,
+        47,
+        48,
+        50
+      ],
+      "issue": "性能、规模、效率与图表数字尚未按原实验口径审核",
+      "next_check": "MoE容量千倍不等于成本千分之一；ZeRO不能宣称无限扩展；区分ImageNet全库/竞赛子集、评估偏好/全能力，以及训练计算/推理搜索。P10/P28图表若引用须单独核。"
+    },
+    {
+      "id": "I12",
+      "status": "pending_mechanism_boundaries",
+      "pages": [
+        14,
+        15,
+        18,
+        19,
+        20,
+        28,
+        39,
+        40,
+        46,
+        48,
+        49,
+        50
+      ],
+      "issue": "部分机制与后续产品实践被讲义压缩或混合",
+      "next_check": "重点核退化与梯度问题、encoder使用、CoT与后训练关系、LoRA合并条件、ReAct闭环边界、RLHF前史、Tulu阶段、DDPM/ResNet类比、CLIP不是生成器、LDM文本条件与产品实现、DiT类别条件实验与文生视频外推。"
+    },
+    {
+      "id": "I13",
+      "status": "pending_biography",
+      "pages": [
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        18,
+        19,
+        20,
+        29,
+        34,
+        35,
+        38,
+        40,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        49,
+        50
+      ],
+      "issue": "人物履历、公司创始关系与当前职位未系统核查",
+      "next_check": "不得把履历栏当作者表。已看到DDPM单位与讲义不一致；ViT正式作者表没有谢赛宁；其余职位/公司/时间点若用于解释路径须另查一手来源。"
+    },
+    {
+      "id": "I14",
+      "status": "pending_causal_history",
+      "pages": [
+        11,
+        16,
+        18,
+        20,
+        28,
+        29,
+        30,
+        38,
+        50
+      ],
+      "issue": "从技术到组织/后续模型的因果推断",
+      "next_check": "AlexNet与Google Brain、AlphaGo Zero与LLM thinking、CoT与o1、GPT-3融资组织动机、数据墙、架构统一与Sora等，不因时间相邻或共同作者而确认。"
+    },
+    {
+      "id": "I15",
+      "status": "date_scope_limited",
+      "pages": [
+        11,
+        29,
+        35,
+        37,
+        48,
+        49
+      ],
+      "issue": "预印本、会议、产品公告与网页迁移日期口径不同",
+      "next_check": "GPT1/GPT2的原始发布日期已由官网搜索条目核对，但web.read缺原始日期页眉；GPT2返回2024 publishedTime不可当首发。CLIP arXiv published是2021-02-26，产品最初公告日期未核；AlexNet月份、LAION数据集首次开放日未核。"
+    },
+    {
+      "id": "I16",
+      "status": "pending_name_variant",
+      "pages": [
+        40
+      ],
+      "issue": "Tulu3作者姓名在当前元数据与本地v5首页不同",
+      "next_check": "当前arXiv作者列表为Shane Lyu，本地PDF首页为Xinxi Lyu；保留来源差异，不擅自断言是不同人或拼写错误。"
+    },
+    {
+      "id": "I17",
+      "status": "unproduced_output",
+      "pages": [],
+      "issue": "未生成source-map.md",
+      "resolution": "本执行环境的上层指令禁止写报告/总结类.md文件；人读地图保存在本JSON的reading_map、pages与objects中，供主会话据此输出。"
+    }
+  ],
+  "followup_priority": [
+    "先用已核定身份研究各节点的背景、问题、改变环节、机制直觉与边界；不要逐篇扩成百科。",
+    "优先处理I11–I14里会改变整条发展路径的主张，而非履历边角或装饰。",
+    "后续精读以少数支撑关键过渡的原文部分为限，图表仅在承载结论时研究。"
+  ],
+  "execution_boundary": {
+    "network": "使用eacli的web.read、web.search与vision.technical-diagram；无直接provider调用，无PDF二进制降级下载。",
+    "existing_files": "未改原PDF、既有论文或旧报告；本地错误命名文件仅登记。",
+    "public_provenance": "只保存公开来源URL、仓库相对路径、哈希、阅读范围与分析；执行缓存不在本文件中。",
+    "output_note": "人读地图已嵌入reading_map；source-map.md因上层文件写入限制未生成。"
+  }
+}

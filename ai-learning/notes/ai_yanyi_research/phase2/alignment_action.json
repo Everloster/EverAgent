@@ -1,0 +1,292 @@
+{
+  "schema_version": 1,
+  "task_id": "alignment_action",
+  "status": "ready_for_verification",
+  "language": "zh-CN",
+  "verification_date": "2026-11-03",
+  "artifact_kind": "限定对象的原文研究证据包；供统一主笔整合，不是正式报告",
+  "scope": {
+    "object_ids": ["alphago-zero", "instructgpt", "tulu3", "cot", "react"],
+    "central_question": "会预测或生成，为什么还不等于会按目标解决任务？训练信号、推理使用、搜索和环境行动分别改变了什么？",
+    "coverage": "五个节点的核心背景、方法、代表性结果及边界均已核读对应原文。Tülu 3不作全篇实验复现；其他节点也不冒称全量附录精读。",
+    "exclusions": ["不修改原讲义或正式报告", "不研究后续商业产品、作者现职或创业经历", "不运行训练、模型评测或付费模型实验", "不由发表先后或共同作者推断技术因果"]
+  },
+  "epistemic_legend": {
+    "primary_verified": "本包实际读到的一手材料主张、方法或作者报告的实验结果；不等于独立复现。",
+    "pdf_summary": "从已核source-map继承的讲义主题或说法，仅说明讲义怎样组织，不作技术事实证据。",
+    "synthesis": "[综合判断]依据所列原文形成的路线解释，不冒充作者已证明的历史因果。",
+    "unverified": "[待验证]未获得足够证据的历史连接、身份差异或版本内不一致。",
+    "illustration": "讲解者构造的机制类比，不是实验、原文引语或模型真实输出。"
+  },
+  "context_inputs": [
+    {
+      "path": "ai-learning/notes/ai_yanyi_research/source-map.json",
+      "sha256": "82a789b2a65bca73da52eb44391e32f00804686f0de3c34c23440546be551521",
+      "hash_scope": "本轮读取时的整个JSON文件字节；哈希不表示全文件精读",
+      "actual_read_scope": "五个对象的身份、版本、local_originals及相关open_issues；相关reading_map、P16/P18/P20/P39/P40条目。一次筛选输出附带无关条目，未据其开展研究。",
+      "use": "唯一对象清单、讲义主题与已知错链定位；技术判断回到原文。"
+    },
+    {
+      "path": "ai-learning/notes/ai_yanyi_research/phase2/language_pretraining.json",
+      "sha256": "2328a2983222b865c7700b5b9c07f525d122c1e66991d549f8cda063f3adf839",
+      "hash_scope": "本轮读取时的整个JSON文件字节；不是原始论文哈希",
+      "actual_read_scope": "sources中的InstructGPT/Tülu 3版本、spine_contribution的GPT-3到后训练接口；未把前包actual_read_scope算成本包已读。",
+      "use": "承接任务表达与目标错位问题；本包另行核读InstructGPT引言、方法、评价和结果。"
+    }
+  ],
+  "source_ids": ["AA-S01", "AA-S02", "AA-S03", "AA-S04", "AA-S05", "AA-S06"],
+  "sources": [
+    {
+      "id": "AA-S01",
+      "object_id": "alphago-zero",
+      "title": "Mastering the game of Go without human knowledge",
+      "authors_short": "David Silver, Julian Schrittwieser, Karen Simonyan et al.",
+      "year": 2017,
+      "official_url": "https://www.nature.com/articles/nature24270",
+      "version": "Nature 550, 354–359；DOI:10.1038/nature24270；出版日期2017-10-19",
+      "source_type": "正式期刊落地页；本次只返回订阅预览，不含正文方法",
+      "sha256": "b4cd1c19da984b06631f7261da19a43a59b6f8cf78a4a907c2db61426e3fc5c1",
+      "hash_scope": "eacli result.result字符串的原始UTF-8字节；不是PDF字节或只含正文的哈希",
+      "actual_read_scope": "题名、全作者列表、摘要、出版信息、Author information/Contributions、Extended Data文字说明；确认正文受订阅预览限制。未凭页面摘要核定算法或实验。",
+      "request_id": "req_aa_alphago_nature24270"
+    },
+    {
+      "id": "AA-S02",
+      "object_id": "alphago-zero",
+      "title": "Mastering the game of Go without human knowledge",
+      "authors_short": "David Silver, Julian Schrittwieser, Karen Simonyan et al.",
+      "year": 2017,
+      "official_url": "https://www.nature.com/articles/nature24270",
+      "retrieval_url": "https://augmentingcognition.com/assets/Silver2017a.pdf",
+      "version": "公开镜像中的Nature排版版；首页DOI nature24270、题名、作者、卷550及2017-10-19页脚与正式页对应",
+      "source_type": "经身份核对的原始论文副本；下载站点不是出版社或作者机构，不声称出版社认证字节一致",
+      "sha256": "e2f80d1918bd183894a1b897de46b69a1edabb937ee146530a575268069938ad",
+      "hash_scope": "本轮下载的PDF字节SHA-256",
+      "extracted_text_sha256": "8e545c86f88d78efb839d196e057c83ed1ed41eb7e42492794e81fa6273894db",
+      "actual_read_scope": "P354–358正文中的引言、Reinforcement learning、Empirical analysis、Final performance、Conclusion；Methods的Reinforcement learning、Self-play reinforcement learning in games、AlphaGo versions、Domain knowledge、Self-play training pipeline、Search algorithm、Neural network architecture及架构对照。Figures 1–6只读文字图注与邻近正文；不据棋局图复核新定式。未精读后续棋谱和全部Extended Data。",
+      "identity_boundary": "明确排除本地24_alphago_zero_2017.pdf：该文件实际是AlphaZero的1712.01815，而非本对象。"
+    },
+    {
+      "id": "AA-S03",
+      "object_id": "instructgpt",
+      "title": "Training language models to follow instructions with human feedback",
+      "authors_short": "Long Ouyang, Jeff Wu, Xu Jiang et al.",
+      "year": 2022,
+      "official_url": "https://arxiv.org/abs/2203.02155",
+      "version_url": "https://arxiv.org/pdf/2203.02155v1",
+      "version": "arXiv:2203.02155v1，2022-03-04",
+      "source_type": "已核本地原始论文；复用提取缓存并重新读相关内容",
+      "repository_path": "ai-learning/papers/04_instructgpt_rlhf_2022.pdf",
+      "sha256": "c1984bb50a5b90fddb895fdc3a0f72e5bc977148c9f63ef6040cbe7a3e1f0d98",
+      "hash_scope": "本轮重新计算的PDF字节SHA-256",
+      "extracted_text_sha256": "e90a9320d7990f73a0298f676b62307a8303dba37ee37b94884c1a7690f3add2",
+      "actual_read_scope": "首页身份与作者脚注；P1–12的§1–3.6、§4.1前段，含SFT/RM/PPO、数据来源、标注、KL约束、PPO-ptx、评价口径、偏好结果及Figures 1–5图注；P18–19的§5.2–5.3及§5.4前段。未完整核读§4.2和附录，因此不引用其全套毒性/偏见/公共NLP基准数字。"
+    },
+    {
+      "id": "AA-S04",
+      "object_id": "tulu3",
+      "title": "Tülu 3: Pushing Frontiers in Open Language Model Post-Training",
+      "authors_short": "Nathan Lambert, Jacob Morrison, Valentina Pyatkin, Shengyi Huang, Hamish Ivison et al.",
+      "year": 2024,
+      "official_url": "https://arxiv.org/abs/2411.15124",
+      "version_url": "https://arxiv.org/pdf/2411.15124v5",
+      "version": "arXiv:2411.15124v5，2025-04-14；2024是首发年，不把v5扩展全部倒写为2024首版内容",
+      "source_type": "已核本地原始论文；复用提取缓存并重新读相关内容",
+      "repository_path": "ai-learning/papers/26_tulu3_2024.pdf",
+      "sha256": "79bed1ef4ce4bb332f43bdc87d60709e644560f8f3bb6d14913a473cc82c251f",
+      "hash_scope": "本轮重新计算的PDF字节SHA-256",
+      "extracted_text_sha256": "d3f87c36d6ca6c3adb187977eb8518fa1fcb56e08ee648614a5904cad9da3b11",
+      "actual_read_scope": "首页、目录与Table 1；P5–11的§1–2.4及Tables 2–6；P15–23的§4–5.2及Tables 9–15；P27–32的§5.4–6.2及Tables 18–22；P33–37的§6.2.1–7.1开头及Tables 23–24；P50–51的§9.2、结论、Author Contributions与Acknowledgments。Figures相关结论仅依正文或图注，不从未视觉核查曲线取数。未完整精读§3去污染方法、§5.3全套消融、§7全部unseen评价、§8的405B扩展及附录。",
+      "identity_boundary": "使用正确2411.15124，不使用讲义2407.15541。v5首页写Xinxi Lyu，source-map记录当前元数据为Shane Lyu；保留差异，不解释原因。"
+    },
+    {
+      "id": "AA-S05",
+      "object_id": "cot",
+      "title": "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models",
+      "authors_short": "Jason Wei, Xuezhi Wang, Dale Schuurmans et al.",
+      "year": 2022,
+      "official_url": "https://arxiv.org/abs/2201.11903",
+      "version_url": "https://arxiv.org/pdf/2201.11903v6",
+      "version": "arXiv:2201.11903v6，2023-01-10；首页标NeurIPS 2022，首发年份按source-map为2022",
+      "source_type": "已核本地原始论文，本轮新建文本提取缓存",
+      "repository_path": "ai-learning/papers/10_chain_of_thought_2022.pdf",
+      "sha256": "7d9f878c23b460e4566aa4ec9201b1abfb3b8faefb2b1356e411cb90fef72a12",
+      "hash_scope": "本轮重新计算的PDF字节SHA-256",
+      "extracted_text_sha256": "8dc7a9a7e8b734f05f9ee10f7ea0edae7c048394977eee46f8c886ac22f5752c",
+      "actual_read_scope": "首页版本、作者、§1–6与§7前段；P20–23 Tables 1–6及Table 7前部。重点核读§2、§3.1–3.4的提示设置、解码方式、结果与消融，以及§6的无微调和推理真实性边界。未精读全量任务提示、错误样本附录及所有后续工作。"
+    },
+    {
+      "id": "AA-S06",
+      "object_id": "react",
+      "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
+      "authors_short": "Shunyu Yao, Jeffrey Zhao, Dian Yu, Nan Du, Izhak Shafran, Karthik Narasimhan, Yuan Cao",
+      "year": 2022,
+      "official_url": "https://arxiv.org/abs/2210.03629",
+      "version_url": "https://arxiv.org/pdf/2210.03629v3",
+      "version": "arXiv:2210.03629v3，2023-03-10；ICLR 2023版，首发年份按source-map为2022",
+      "source_type": "已核本地原始论文，本轮新建文本提取缓存",
+      "repository_path": "ai-learning/papers/17_react_2022.pdf",
+      "sha256": "f285b0971ae4a790e402fb93966bed3adde2cf0a04977d08b2b40d6ab0cace69",
+      "hash_scope": "本轮重新计算的PDF字节SHA-256",
+      "extracted_text_sha256": "0bdbef2564106889c48ecff9f3ce107cdd4dd225064d3dcd4bee0acd56be72d9",
+      "actual_read_scope": "P1–9：版本、作者与实习脚注；§1–5、§6开头；§2交互定义、§3.1–3.3检索动作/提示/混合方法/错误分析、§4环境设置及结果、Tables 1–4。Figure 1图内文字提取乱码，未用它作案例证据；只采用清晰正文、表格与图注。未精读全附录或把§3小模型微调的图形读数当成独立核查。"
+    }
+  ],
+  "nodes": [
+    {
+      "object_id": "alphago-zero",
+      "status": "core_verified",
+      "background": {"epistemic_status": "primary_verified", "text": "此前AlphaGo把人类落子监督、强化学习、策略/价值网络和树搜索组合起来。Zero追问：若没有昂贵或有限的人类棋谱，可否让系统自己产生足够好的学习经验？这不是首次自弈或首次MCTS。", "claim_ids": ["AA-C01", "AA-C02"]},
+      "problem": "下得像人不等于更容易赢；只凭当前网络的直觉选一步，也不等于已经利用未来分支的信息。需要一个能产出更好行动、又把经验积累回网络的循环。",
+      "change": {"epistemic_status": "primary_verified", "text": "从人类棋谱起步转为随机初始化后自弈；把前瞻搜索放进训练循环；一个共享网络同时给出落子先验和局面价值，取消旧式快速rollout策略。", "claim_ids": ["AA-C01", "AA-C02"]},
+      "mechanism_intuition": {"epistemic_status": "illustration", "text": "网络像快速判断员，先指出哪些分支值得看、局面大致有多好；MCTS在规则模拟器里反复试走，用访问统计形成比原始策略更强的落子分布。整盘胜负给出结果反馈，网络再学习搜索的选择与胜负。它不是自己给自己随意打高分：落子是否合法、终局谁赢由既定围棋规则约束。", "claim_ids": ["AA-C02", "AA-C04"], "training_vs_use": "搜索既用于自弈产生训练目标，也用于比赛选步；训练把搜索经验写回参数，比赛中的一次搜索不等同于重新训练网络。"},
+      "evidence": [{"claim_id": "AA-C03", "text": "论文的约三天训练实例在100局、双方2小时时限的对局中以100–0击败AlphaGo Lee；这不是对所有对手、所有条件的100%保证。"}, {"claim_id": "AA-C05", "text": "同架构的人类监督对照更会预测职业棋手落子，但自弈系统下棋表现更强，直接服务于‘预测标签与任务胜负并不等价’的主问题。"}],
+      "limits": ["规则、合法动作、19×19棋盘结构、旋转/反射对称性等仍由人给定；‘无棋谱’不是‘没有任何先验或人的设计’。", "最直接适用条件是完全信息零和博弈，可模拟状态变化且终局可计分；开放语言任务的目标分歧与事实核验不能自动变成同一种胜负信号。", "比赛单机4 TPU不代表整个训练只用4 TPU；Methods另列网络优化的64 GPU workers和19 CPU parameter servers。", "本包不复核棋局图上的定式发现，也不据此宣称系统具有人的理解。"],
+      "route_role": {"epistemic_status": "synthesis", "text": "[综合判断]在语言路线之外放一个清晰反馈的对照实验：学习与搜索可以互相加强，但成功依赖环境能稳定地裁判。随后回到语言任务，追问谁来裁判‘好答案’。它不是LLM thinking的已证直接祖先。", "claim_ids": ["AA-C02", "AA-C04", "AA-C05"]}
+    },
+    {
+      "object_id": "instructgpt",
+      "status": "core_verified",
+      "background": {"epistemic_status": "primary_verified", "text": "GPT-3已经能用说明和示例触发多种任务，但互联网文本的next-token目标并不等于按用户意图、真实且适当地作答。本文继承已有RLHF和语言模型微调工作，把反馈覆盖到更广的实际指令分布。", "claim_ids": ["AA-C06", "AA-C07"]},
+      "problem": "能力可被提示调用，还不意味着默认行为符合助手目标；靠更大规模或更精巧的前缀，不能直接指定怎样权衡有用、真实与有害。",
+      "change": {"epistemic_status": "primary_verified", "text": "沿GPT-3基座继续训练：示范定义可模仿的回答方式，比较数据定义哪种输出更受偏好，奖励模型把这些比较推广到新生成，PPO据此更新回答策略。", "claim_ids": ["AA-C07", "AA-C08"]},
+      "mechanism_intuition": {"epistemic_status": "illustration", "text": "先看批改过的答卷学格式，再让评审比较几份答卷，最后训练一个偏好代理评审。策略反复生成回答、拿代理评分更新，但用KL约束限制偏离SFT模型过远。PPO-ptx还混入预训练梯度以应对其他任务性能回退。这里的‘环境’是给一个提示、收一份回答并打分的bandit设置，不是有工具执行和真实世界反馈的Agent循环。", "claim_ids": ["AA-C07", "AA-C08"]},
+      "evidence": [{"claim_id": "AA-C09", "text": "§4.1报告，在其API提示测试分布上，175B InstructGPT相对175B GPT-3的输出偏好率为85±3%，相对few-shot GPT-3为71±4%；误差条口径为95%置信区间。"}, {"claim_id": "AA-C10", "text": "1.3B InstructGPT的回答可比175B GPT-3更受该评价者群体偏好；结论对象是回答偏好，不是全部知识、推理、语言能力或部署安全。"}],
+      "limits": ["标注者不是原请求的用户；标签受研究者说明、承包团队与提示分布影响。", "数据几乎全为英语，约40名承包标注者不代表所有受影响群体。", "§5.3明确模型仍会编造、产生偏见和有害回答，甚至可能更好地服从有害指令；‘更会服从’与‘更安全’不能画等号。", "RM是偏好的近似模型，不是通用真值裁判；KL约束是训练措施，不是奖励漏洞已消除的证明。"],
+      "route_role": {"epistemic_status": "synthesis", "text": "[综合判断]接住前包GPT-3‘任务怎样进入输入’的问题，转成‘什么输出值得被强化’。人的视角在此不是科学家逸事，而是谁写示范、谁比较输出、谁规定评价标准。", "claim_ids": ["AA-C06", "AA-C11"]}
+    },
+    {
+      "object_id": "tulu3",
+      "status": "core_verified",
+      "background": {"epistemic_status": "primary_verified", "text": "后训练已经不只是一道指令微调，但强模型的数据、阶段选择和评估过程往往不透明。Tülu 3把研究对象从单个成品模型扩展到可检查的开放配方；正式模型基座是Llama 3.1，不是GPT-3权重延续。", "claim_ids": ["AA-C12"]},
+      "problem": "知道SFT、偏好优化和RL这些名词，仍不足以复现多能力的后训练；要确定哪些数据给哪个阶段、反馈如何产生，以及一项分数改善是否损害其他目标。",
+      "change": {"epistemic_status": "primary_verified", "text": "论文按四阶段组织：数据策展→SFT→偏好优化→RLVR；若只数更新模型的训练阶段则是三阶段。SFT混合人写和模型生成的优质回答；偏好阶段采用length-normalized DPO，合成比较涉及自身SFT与其他模型的输出，主要由GPT-4o打分；RLVR阶段用可验证结果替代通用RM评分，再用PPO更新。", "claim_ids": ["AA-C12", "AA-C13", "AA-C14"]},
+      "mechanism_intuition": {"epistemic_status": "illustration", "text": "三种训练像三种批改：SFT看可学习的范例，DPO比较哪份更好并直接调整回答概率，RLVR让答案接受程序化核验。它们既不是同一批数据换名字，也不是‘人类偏好’一种反馈包办所有能力。数学题核对抽取出的最终答案；精确指令遵循核查具体约束，均不是逐步证明整段推理正确。", "claim_ids": ["AA-C13", "AA-C14", "AA-C15"], "important_detail": "RLVR的奖励不采用通用RM分数，但其PPO value model可由训练好的RM初始化；‘替换奖励模型’不等于整个训练流水线从未用RM。"},
+      "evidence": [{"claim_id": "AA-C16", "text": "Table 23中8B从DPO到RLVR，GSM8K 8-shot CoT准确率84.3→87.6，MATH 4-shot CoT/flex 42.0→43.7；70B的GSM8K则93.5→93.5。收益有任务和规模边界。"}, {"claim_id": "AA-C17", "text": "同表8B TruthfulQA 56.1→55.0、Safety六任务平均87.2→85.5，不能把目标任务收益扩成全能力单调提升。"}],
+      "limits": ["DPO不等于PPO：前者在已准备的偏好对上离线优化，不需在每次更新中重新生成并用显式RM评分；数据生成含on-policy输出也不把DPO变成在线PPO。", "RLVR仍有域相关的抽取、判定和约束覆盖问题；更高训练奖励不保证整体评价更高，正文报告过优化。", "作者建立development/unseen分割，但没有unseen安全评价；本包未独立运行其去污染工具或复现开放发布物。", "本轮使用v5，不把405B等后续扩展直接归于2024首发；不宣称RLVR或基于正确性奖励的强化学习由本篇首次发明。", "Table 23的IFEval标Strict，而Tables 6/24标prompt loose，且部分平均分/BBH数字不同；相关口径保留待核，不混取成同一排名。"],
+      "route_role": {"epistemic_status": "synthesis", "text": "[综合判断]把InstructGPT的‘给行为加反馈’推进为‘反馈来源、配方与评价都必须展开’。这里也与CoT汇合：RLVR的数学训练输入使用CoT示例，但CoT本身不是这个RL训练算法。开放配方带来可检查条件，不自动证明已被独立复现。", "claim_ids": ["AA-C12", "AA-C14", "AA-C15", "AA-C18"]}
+    },
+    {
+      "object_id": "cot",
+      "status": "core_verified",
+      "background": {"epistemic_status": "primary_verified", "text": "已有few-shot提示能通过问答示例说明任务，也已有用中间推理步骤训练模型的工作。本文把两者组合成少量‘输入—中间步骤—输出’示例，用已有大模型的上下文学习来调用多步解题。", "claim_ids": ["AA-C19"]},
+      "problem": "让模型直接生成最后答案，要求它在没有显式中间步骤的情况下完成多步语义理解和计算；增加参数也不能保证普通问答提示充分调用已有能力。",
+      "change": {"epistemic_status": "primary_verified", "text": "改的是推理时的提示与生成格式：先生成自然语言中间步骤，再生成答案。该研究过程中不为CoT实验微调模型；不能把它改写成RLHF、RLVR或一套树搜索训练。", "claim_ids": ["AA-C19", "AA-C20"]},
+      "mechanism_intuition": {"epistemic_status": "illustration", "text": "把任务拆成可连续写下的中间问题，前一步生成会进入后一步上下文。像在草稿纸上算而不是一口报数，但草稿内容仍可能错。多写token只是提供机会；实验中输出无信息的点号并没有取得同样收益。", "claim_ids": ["AA-C20", "AA-C22"]},
+      "evidence": [{"claim_id": "AA-C21", "text": "Table 1的PaLM 540B在GSM8K上，标准提示17.9%，CoT提示56.9%；此处是greedy decoding、八个示例、没有外接计算器的行，不能混成投票自洽或计算器结果。"}, {"claim_id": "AA-C22", "text": "Table 6的LaMDA 137B：GSM8K标准提示6.5±0.4、CoT 14.3±0.4、仅点号计算6.4±0.3、答案后再解释6.1±0.4；±为五种示例顺序的标准差。"}],
+      "limits": ["结果依赖模型、任务与示例，不是‘加一句话所有任务都好’；本对象的主方法是few-shot CoT，不应与后来的zero-shot口令混为一篇。", "不能把‘约100B才出现’当普遍定律：论文Table 2自身就显示PaLM 62B在GSM8K 9.6→29.9。这里是实验家族中的条件性规模现象，不是普适门槛。", "§6承认推理路径不保证正确，也没有解决网络是否在人的意义上推理、文本是否忠实呈现内部计算的问题。", "v6使用的部分OpenAI API模型被作者推定为InstructGPT系；不把这些结果统称完全未经后训练的原版GPT-3，也不把后修订实验全部倒写为2022年1月首版。"],
+      "route_role": {"epistemic_status": "synthesis", "text": "[综合判断]与InstructGPT并列为GPT-3后的两条回答：一条改变如何训练偏好，一条改变如何使用已有模型。CoT随后向ReAct提供可交错的语言推理步骤，也能嵌入Tülu 3的训练/评测提示，而不是被RL路线取代。", "claim_ids": ["AA-C19", "AA-C20", "AA-C23", "AA-C26"]}
+    },
+    {
+      "object_id": "react",
+      "status": "core_verified",
+      "background": {"epistemic_status": "primary_verified", "text": "只有语言推理时，模型可能沿错误事实继续推；只有动作生成时，又可能缺少高层拆解和进度跟踪。论文在既有CoT及语言模型交互/规划工作上研究如何交错两种过程，不是提出Agent定义或首次让模型使用工具。", "claim_ids": ["AA-C24", "AA-C26"]},
+      "problem": "任务过程会暴露新信息、检索失败或环境变化，不能先想完一次再照单执行；但拿到观察也不意味着自动理解下一步该做什么。",
+      "change": {"epistemic_status": "primary_verified", "text": "在上下文里交错thought、可执行的task-specific action与环境observation；推理指导查什么或做什么，真实返回再改变后续推理。主设置冻结PaLM-540B，用少量人写交互轨迹提示；另有小模型微调探索。", "claim_ids": ["AA-C24", "AA-C25"]},
+      "mechanism_intuition": {"epistemic_status": "illustration", "text": "不是把‘我已经查到’写出来就算查过：模型输出search/lookup等动作，环境执行后返回文本，模型再据返回结果继续。thought本身不改变外部环境。知识任务使用较密集的思考—动作—观察，长程决策可稀疏插入思考，不必每个动作前固定一段长独白。", "claim_ids": ["AA-C24", "AA-C25"]},
+      "evidence": [{"claim_id": "AA-C27", "text": "Table 1中PaLM-540B的ReAct在FEVER准确率60.9高于CoT的56.3，但HotpotQA EM为27.4，低于CoT的29.4；同表最强提示方案是任务相关的ReAct/CoT-SC组合。"}, {"claim_id": "AA-C28", "text": "WebShop的500条测试指令上，ReAct成功率40.0%，Act 30.1%，人类专家59.6%；成功率要求商品满足全部条件，不是平均属性覆盖分，也不是实际电商部署成功率。"}],
+      "limits": ["检索无信息、推理错误和重复动作仍会使过程失败；外部反馈不是正确性的自动保证。", "§3.3的0% hallucination失败类型只来自人工检查的小样本，绝不能写成ReAct消除了幻觉。", "主实验不因多轮交互就更新参数，也不因用了环境就等于强化学习。", "任务动作空间和文本环境由实验设定；没有据此验证任意网站操作、权限控制、生产安全或长期自主性。", "看得见的轨迹便于检查，不等于证明思维链忠实，或证明人类信任一定合理。"],
+      "route_role": {"epistemic_status": "synthesis", "text": "[综合判断]把‘输出一个答案’改为‘维持一个可被环境纠正的过程’。它与对齐互补：动作可以很有效但目标不合适，回答可以很讨喜但从未真正执行任务；两者不能互相替代。", "claim_ids": ["AA-C11", "AA-C24", "AA-C27", "AA-C28"]}
+    }
+  ],
+  "claims": [
+    {"id": "AA-C01", "source_id": "AA-S02", "locator": "P354引言与Reinforcement learning in AlphaGo Zero；Methods/Self-play reinforcement learning in games", "epistemic_status": "primary_verified", "claim": "AlphaGo Zero随机初始化并只靠自弈训练其主系统；单一双头网络和取消rollout是相对早期AlphaGo的关键改变，而自弈及MCTS均有前史。"},
+    {"id": "AA-C02", "source_id": "AA-S02", "locator": "P354–355；Figure 1/2图注；Methods/Reinforcement learning与Search algorithm", "epistemic_status": "primary_verified", "claim": "MCTS用网络先验与价值引导搜索，访问统计给策略目标，实际自弈胜负给价值目标；网络再拟合两者，构成近似policy iteration。", "boundary": "不是只用网络给自己评分，也不是必须模拟到终局的旧式rollout策略。"},
+    {"id": "AA-C03", "source_id": "AA-S02", "locator": "P355–356/Empirical analysis of AlphaGo Zero training；Methods/AlphaGo versions", "epistemic_status": "primary_verified", "claim": "约72小时训练后的AlphaGo Zero在100局、2小时时限对局中100–0战胜击败李世石的AlphaGo Lee版本。", "boundary": "这不是40天实例对AlphaGo Master的89–11，也不是对所有对手的绝对胜率。"},
+    {"id": "AA-C04", "source_id": "AA-S02", "locator": "Methods/Domain knowledge；Self-play reinforcement learning in games；Self-play training pipeline/Optimization", "epistemic_status": "primary_verified", "claim": "系统仍使用完备规则、合法动作、棋盘网格与对称性；方法最直接适于完全信息零和游戏。网络优化使用64 GPU workers及19 CPU parameter servers，比赛配置4 TPU不可当作全训练资源。"},
+    {"id": "AA-C05", "source_id": "AA-S02", "locator": "P356 Figure 3图注及邻近监督学习对照正文；Methods/Supervised learning", "epistemic_status": "primary_verified", "claim": "同架构监督对照更能预测职业棋手落子，但自弈系统取得更强棋力；模仿预测指标与任务胜负并不等价。", "boundary": "对照训练设置也有差异，不称为只改变一个因素的纯因果实验。"},
+    {"id": "AA-C06", "source_id": "AA-S03", "locator": "§1 P1–2", "epistemic_status": "primary_verified", "claim": "预测互联网文本下一个token的训练目标，不等于有用且安全地服从用户指令；本文从GPT-3出发进行行为后训练。"},
+    {"id": "AA-C07", "source_id": "AA-S03", "locator": "§2；§3.1–3.2 P6–7", "epistemic_status": "primary_verified", "claim": "方法按示范SFT、比较数据训练RM、PPO优化RM评分展开，明确沿用先前RLHF方法；SFT和RM分别需要示范/比较，PPO阶段提示本身无需逐条人类标注答案。"},
+    {"id": "AA-C08", "source_id": "AA-S03", "locator": "§3.5 P8–9，Eq.2", "epistemic_status": "primary_verified", "claim": "PPO环境给提示、接回答、由RM评分后结束；加入相对SFT的逐token KL惩罚。PPO-ptx再混入预训练梯度，本文默认InstructGPT指PPO-ptx。", "boundary": "它不是ReAct式工具行动循环；不把PPO、RLHF和PPO-ptx混作完全相同名词。"},
+    {"id": "AA-C09", "source_id": "AA-S03", "locator": "§3.6；§4.1 P11；Figure 1置信区间图注", "epistemic_status": "primary_verified", "claim": "175B InstructGPT在作者API提示测试分布上相对175B GPT-3偏好率85±3%，相对few-shot GPT-3为71±4%；误差为95%置信区间。", "boundary": "训练/测试按用户划分但来自相关API来源；评价为特定标注者输出偏好，不是全能力胜率。"},
+    {"id": "AA-C10", "source_id": "AA-S03", "locator": "§1 P3；§4.1；Figure 1图注", "epistemic_status": "primary_verified", "claim": "作者报告1.3B InstructGPT输出比175B GPT-3更受偏好，支持目标和反馈的重要性，不支持小模型在所有能力上胜过大模型。"},
+    {"id": "AA-C11", "source_id": "AA-S03", "locator": "§3.3–3.4；§3.6；§5.2–5.3 P18–19", "epistemic_status": "primary_verified", "claim": "数据、研究者指南、约40名标注者及客户提示共同限定对齐对象；模型仍不完全安全，会犯事实错误及服从有害请求。", "boundary": "不把某组偏好称全人类价值，也不把Helpful/Honest/Harmless代理指标说成安全证明。"},
+    {"id": "AA-C12", "source_id": "AA-S04", "locator": "§1–2.3，Table 1，P7–9", "epistemic_status": "primary_verified", "claim": "Tülu 3以Llama 3.1为基座，论文明确承接InstructGPT等后训练配方；完整流程为数据策展、SFT、偏好优化、RLVR，发布声明涵盖权重、数据、训练与评价代码。", "boundary": "本包核对的是论文声明，不是逐项下载验证发布物、许可或独立复现。"},
+    {"id": "AA-C13", "source_id": "AA-S04", "locator": "§4.1.1；§5.1.2–5.2.2；§5.4.1", "epistemic_status": "primary_verified", "claim": "SFT含人写或强模型生成回答；偏好对由自身SFT及外部模型生成、用GPT-4o作主要合成裁判。最终偏好优化用length-normalized DPO，可在偏好对上离线训练，不要求显式RM评分的在线采样循环。", "boundary": "模型生成偏好不等于人逐条标注；数据中的on-policy来源不等于优化算法为在线PPO。"},
+    {"id": "AA-C14", "source_id": "AA-S04", "locator": "§6–6.2，Figure 18图注，Tables 21–22", "epistemic_status": "primary_verified", "claim": "RLVR在偏好训练后用PPO优化确定性验证奖励：答对给常数奖励，否则为0；含KL约束、EOS相关训练处理，value model由RM初始化，但最终奖励不用RM评分。", "boundary": "‘不用奖励模型打分’不等于训练完全没有学得的value model，也不等于DPO。"},
+    {"id": "AA-C15", "source_id": "AA-S04", "locator": "§6.1，Table 22；§9.2", "epistemic_status": "primary_verified", "claim": "RLVR数据包括GSM8K、MATH及可核验指令约束；数学训练输入加CoT示例后核验抽取答案，指令任务用约束专用验证器。论文承认正确性奖励与相关RL方法前史。", "boundary": "核验最终答案不是逐步验证思维链，更不是开放问题都有自动裁判。"},
+    {"id": "AA-C16", "source_id": "AA-S04", "locator": "§6.4，Table 23；Table 24评价设置", "epistemic_status": "primary_verified", "claim": "8B DPO→RLVR：GSM8K 8-shot CoT准确率84.3→87.6，MATH 4-shot CoT/flex 42.0→43.7；70B GSM8K 93.5→93.5。", "boundary": "单位为百分数；是作者所选checkpoint的任务结果，不是任意规模稳定收益。"},
+    {"id": "AA-C17", "source_id": "AA-S04", "locator": "Table 23；§6.2.1 Overoptimization Happens；§2.2", "epistemic_status": "primary_verified", "claim": "8B DPO→RLVR时TruthfulQA 56.1→55.0、Safety六任务均分87.2→85.5；作者报告过优化，且评价设计没有unseen安全集。", "boundary": "这些代理指标回退不应直接量化为现实伤害增加，但足以否定‘所有能力单调改善’。"},
+    {"id": "AA-C18", "source_id": "AA-S04", "locator": "§5.4.1 PPO/DPO比较；§6.3；P51 Author Contributions/Acknowledgments", "epistemic_status": "primary_verified", "claim": "作者把计算与调参成本作为主要偏好实验选DPO的理由，PPO主要留给RLVR；工程上使用分布式训练和异步生成。团队分工明确涵盖SFT、偏好数据、RL、评价、发布，致谢计算资源与vLLM支持。", "boundary": "其非充分调参比较不证明DPO普遍优于PPO；开放配方也不等于低资源即可复现。"},
+    {"id": "AA-C19", "source_id": "AA-S05", "locator": "§1–2、§7前段", "epistemic_status": "primary_verified", "claim": "CoT prompting将输入—推理中间步骤—输出三元示例放入上下文，结合此前中间步骤方法与few-shot prompting，不是发明所有提示工程。"},
+    {"id": "AA-C20", "source_id": "AA-S05", "locator": "§2；§3.1；§6 P9", "epistemic_status": "primary_verified", "claim": "主实验用现成模型的提示与生成、不为该研究微调模型；中间文本增加序列计算和条件信息，但不保证正确、忠实或人类意义上的思考。"},
+    {"id": "AA-C21", "source_id": "AA-S05", "locator": "§3.1–3.2；Appendix Table 1 P20", "epistemic_status": "primary_verified", "claim": "PaLM 540B GSM8K标准提示17.9%，CoT 56.9%；采用八个示例与greedy decoding，不是外接计算器或多条采样投票的结果。"},
+    {"id": "AA-C22", "source_id": "AA-S05", "locator": "§3.3–3.4；Appendix Table 6 P23", "epistemic_status": "primary_verified", "claim": "LaMDA 137B在GSM8K的标准提示6.5±0.4、CoT 14.3±0.4、点号计算6.4±0.3、答案后解释6.1±0.4，±为五种示例顺序标准差。", "boundary": "消融支持中间步骤内容与顺序的作用，不等于已揭示全部内部计算或证明所有CoT必忠实。"},
+    {"id": "AA-C23", "source_id": "AA-S05", "locator": "§3.1模型列表；Appendix Table 2 P21；§6", "epistemic_status": "primary_verified", "claim": "Table 2的PaLM 62B在GSM8K已有9.6→29.9收益，所以约100B不是硬门槛；v6作者对部分OpenAI API模型使用presumably对应InstructGPT的表述。", "boundary": "不把API身份推定提高为严格参数/版本鉴定，也不把本版结果全部归到原始GPT-3。"},
+    {"id": "AA-C24", "source_id": "AA-S06", "locator": "§1–2 P2–4", "epistemic_status": "primary_verified", "claim": "ReAct在环境交互上下文中交错语言thought和动作；thought不直接改变环境，动作才得到环境观察。主要提示实验冻结PaLM-540B，决策任务允许稀疏thought。"},
+    {"id": "AA-C25", "source_id": "AA-S06", "locator": "§3.1–3.2；§4", "epistemic_status": "primary_verified", "claim": "知识任务使用search、lookup、finish组成的简化Wikipedia API；知识任务用人写轨迹示例，ALFWorld/WebShop则使用各自文本动作空间。", "boundary": "论文环境不是通用操作系统、任意互联网或真实购物交易系统。"},
+    {"id": "AA-C26", "source_id": "AA-S06", "locator": "§1；§5 Related Work", "epistemic_status": "primary_verified", "claim": "论文明确承接CoT，并讨论WebGPT、SayCan、Inner Monologue等前驱，承认Inner Monologue的既有闭环。", "boundary": "即使作者对某种组合主张首次，也不能扩大成ReAct发明Agent、闭环或工具使用。"},
+    {"id": "AA-C27", "source_id": "AA-S06", "locator": "§3.2–3.3，Tables 1–2", "epistemic_status": "primary_verified", "claim": "PaLM-540B ReAct的HotpotQA EM 27.4低于CoT 29.4，但FEVER准确率60.9高于56.3；人工错误分析还发现重复推理和无信息检索，不能宣称全面胜出或消除幻觉。"},
+    {"id": "AA-C28", "source_id": "AA-S06", "locator": "§4 WebShop设置及Results，Table 4", "epistemic_status": "primary_verified", "claim": "在500条WebShop测试指令上，ReAct成功率40.0%，Act 30.1%，人类专家59.6%；成功率是所有需求满足的episode比例，与平均属性覆盖score不同。"},
+    {"id": "AA-C29", "source_id": "AA-S01", "locator": "Author information/Author notes/Contributions", "epistemic_status": "primary_verified", "claim": "Silver、Schrittwieser、Simonyan为共同主要贡献者；强化学习、搜索、评价和管理咨询由不同作者组合完成，均属当时DeepMind项目。", "boundary": "不把成果归为单一英雄，也不由作者重合推演到后续LLM技术因果。"},
+    {"id": "AA-C30", "source_id": "AA-S06", "locator": "P1作者机构与实习脚注", "epistemic_status": "primary_verified", "claim": "ReAct作者来自Princeton计算机系与Google Research Brain；Shunyu Yao的工作注明在Google实习期间完成。", "boundary": "只说明研究参与与合作条件，不扩展到现职或后续商业产品。"}
+  ],
+  "cross_route_edges": [
+    {"id": "AA-E01", "from": "gpt3", "to": "instructgpt", "relation_type": "direct_base_model_and_objective_change", "epistemic_status": "primary_verified", "directness": "直接：本文从GPT-3基座微调，并在引言讨论预测目标错位。", "supporting_sources": ["AA-S03"], "claim_ids": ["AA-C06", "AA-C07"], "route_statement": "从‘能用上下文表达任务’接到‘把哪些行为设为训练目标’；输入接口变化与参数后训练是两个层次。"},
+    {"id": "AA-E02", "from": "instructgpt", "to": "tulu3", "relation_type": "explicit_recipe_lineage_not_weight_lineage", "epistemic_status": "primary_verified", "directness": "直接文献连接：Tülu 3 §2引用InstructGPT等作为后训练配方前驱。", "supporting_sources": ["AA-S03", "AA-S04"], "claim_ids": ["AA-C07", "AA-C12", "AA-C13", "AA-C14"], "route_statement": "从示范与人类偏好推广到数据策展、合成偏好和可核验结果等分阶段信号；中间还有其他工作，不能写成两篇论文无缝直接传承。"},
+    {"id": "AA-E03", "from": "gpt3_few_shot_prompting", "to": "cot", "relation_type": "explicit_prompting_extension", "epistemic_status": "primary_verified", "directness": "直接：CoT §1/§3.1引用Brown et al.的few-shot基线，扩展其示例内容。", "supporting_sources": ["AA-S05"], "claim_ids": ["AA-C19", "AA-C20"], "route_statement": "普通输入输出示例变成包含中间步骤的示例，不要求为本任务更新权重；不是提示从无到有。"},
+    {"id": "AA-E04", "from": "cot", "to": "react", "relation_type": "explicit_method_extension_and_controlled_comparison", "epistemic_status": "primary_verified", "directness": "直接：ReAct以CoT为方法背景和基线，引入动作及返回观察。", "supporting_sources": ["AA-S06"], "claim_ids": ["AA-C24", "AA-C26", "AA-C27"], "route_statement": "从封闭语言步骤走向由外部信息改变的推理过程，但交互更强不意味着每项问答分数更高。"},
+    {"id": "AA-E05", "from": "cot", "to": "tulu3_rlvr", "relation_type": "direct_composition_of_prompting_and_training", "epistemic_status": "primary_verified", "directness": "直接：Tülu 3 §6.1数学训练加CoT示例，§7 Table 24列CoT评测设置。", "supporting_sources": ["AA-S04", "AA-S05"], "claim_ids": ["AA-C15", "AA-C20"], "route_statement": "推理轨迹的产生方式可与结果奖励训练组合；CoT不是RLVR，验证最终答案也不是验证每一步思维链。"},
+    {"id": "AA-E06", "from": "alphago-zero", "to": "tulu3_rlvr", "relation_type": "thematic_comparison_not_demonstrated_causation", "epistemic_status": "synthesis", "directness": "[综合判断]共同点是结果反馈约束学习；没有在本包证据中建立算法直接继承。", "supporting_sources": ["AA-S02", "AA-S04"], "claim_ids": ["AA-C02", "AA-C04", "AA-C14", "AA-C15"], "route_statement": "围棋有已知转移规则和胜负；RLVR有任务限定的答案/约束验证器。前者含MCTS与自弈对手，后者本文用PPO采样优化回答，不能把两者都简称‘自我思考’而抹掉机制。"},
+    {"id": "AA-E07", "from": "instructgpt_alignment", "to": "react_action_loop", "relation_type": "orthogonal_problem_axes", "epistemic_status": "synthesis", "directness": "[综合判断]互补问题，不是已证直接训练或权重继承。", "supporting_sources": ["AA-S03", "AA-S06"], "claim_ids": ["AA-C08", "AA-C11", "AA-C24"], "route_statement": "偏好优化回答‘应倾向什么’，交互过程回答‘信息和执行结果怎样回来’。对齐不自动带来执行能力，工具闭环也不自动给出正当目标或安全保证。"},
+    {"id": "AA-E08", "from": "resnet_and_compute_route", "to": "alphago-zero", "relation_type": "documented_component_and_resource_dependency", "epistemic_status": "primary_verified", "directness": "直接组件证据：原文使用并引用残差网络；Methods列训练与搜索资源。", "supporting_sources": ["AA-S02"], "claim_ids": ["AA-C01", "AA-C04"], "route_statement": "模型结构与计算条件横向支持搜索—学习循环；并非CNN论文按时间顺序必然导致围棋突破。"},
+    {"id": "AA-E09", "from": "infrastructure_and_data_route", "to": "tulu3", "relation_type": "documented_recipe_enabler", "epistemic_status": "primary_verified", "directness": "直接：§5.4与§6.3说明算法选择、数据生成、分布式与异步训练条件。", "supporting_sources": ["AA-S04"], "claim_ids": ["AA-C12", "AA-C13", "AA-C18"], "route_statement": "后训练不是只有损失函数：数据、评测、显存与生成吞吐共同决定能比较哪些配方。资源条件可写，未核的商业动机不可写。"}
+  ],
+  "people_and_institutions": [
+    {"object_id": "alphago-zero", "epistemic_status": "primary_verified", "people": ["David Silver", "Julian Schrittwieser", "Karen Simonyan", "Aja Huang"], "institution_at_work": "DeepMind", "path_relevant_fact": "前3人为共同主要贡献者；搜索设计实现包括Aja Huang、Schrittwieser、Matthew Lai和Silver；RL、搜索、评价还有其他共同作者。Google Cloud训练资源与比赛设备须分开叙述。", "sources": ["AA-S01", "AA-S02"], "locators": ["Nature Author notes/Contributions", "Methods/Self-play training pipeline"], "narrative_guard": "不是把人物变成后续LLM thinking的血统证明。"},
+    {"object_id": "instructgpt", "epistemic_status": "primary_verified", "people": ["Long Ouyang", "Jeff Wu", "Xu Jiang", "Jan Leike", "Ryan Lowe", "标注承包团队"], "institution_at_work": "OpenAI Alignment团队；标注者通过Upwork和Scale AI等渠道招募", "path_relevant_fact": "首页明确为Alignment团队合作项目，Leike与Lowe为团队负责人；研究者写指南并与约40名标注者持续沟通。这些参与者影响了偏好数据的含义。", "sources": ["AA-S03"], "locators": ["P1作者脚注", "§3.4", "§5.2–5.3"], "narrative_guard": "不查现职，不把某位作者曾写PPO当作本文发明RLHF的证据。"},
+    {"object_id": "tulu3", "epistemic_status": "primary_verified", "people": ["Nathan Lambert", "Shengyi Huang", "Hamish Ivison", "Valentina Pyatkin", "Faeze Brahman", "Jacob Morrison", "Lester James V. Miranda"], "institution_at_work": "Allen Institute for AI与University of Washington", "path_relevant_fact": "作者贡献表把SFT、偏好、RL、评价与发布明确分工；Huang、Lambert、Ivison、Pyatkin、Brahman参与RL模型开发。致谢NAIRR Pilot、Microsoft Azure、Google TPU Research Cloud及vLLM团队支持。", "sources": ["AA-S04"], "locators": ["P1机构", "P51 Author Contributions/Acknowledgments", "§5.4.1及§6.3"], "narrative_guard": "资源来源按论文致谢陈述，不推断资助金额或单一机构决定算法；John Schulman获咨询致谢也不自动构成直接技术传承。"},
+    {"object_id": "cot", "epistemic_status": "primary_verified", "people": ["Jason Wei", "Xuezhi Wang", "Denny Zhou", "共同作者团队"], "institution_at_work": "Google Research, Brain Team", "path_relevant_fact": "首页列作者和机构；团队能够比较LaMDA、PaLM与外部API模型，并由不同共同作者撰写推理示例检查提示风格敏感性。", "sources": ["AA-S05"], "locators": ["P1", "§3.1", "§3.4"], "narrative_guard": "不把后来的人员流动、o1项目或现职写成本论文产生后续模型的证据。"},
+    {"object_id": "react", "epistemic_status": "primary_verified", "people": ["Shunyu Yao", "Karthik Narasimhan", "Jeffrey Zhao", "Dian Yu", "Nan Du", "Izhak Shafran", "Yuan Cao"], "institution_at_work": "Princeton University与Google Research Brain", "path_relevant_fact": "作者机构和Google实习脚注说明合作背景；论文主实验利用PaLM-540B和预设文本交互环境检验推理与动作组合。", "sources": ["AA-S06"], "locators": ["P1", "§2–4"], "narrative_guard": "不扩展到SWE-bench、后续任职或某框架传播史，也不把一个作者概括为Agent发明者。"}
+  ],
+  "spine_contribution": {
+    "epistemic_status": "synthesis",
+    "central_thesis": "[综合判断]本包不应按五篇论文依次升级来写，而应围绕三个缺口交错叙述：目标缺口、计算过程缺口、环境闭环缺口。目标需要反馈，过程可用中间步骤或搜索，行动需要真实观察；三者能组合，但任何一项都不能代替另外两项。",
+    "position_in_book": "承接language_pretraining在GPT-3处留下的‘能续写任务为什么仍非可靠助手’，把原来模型结构与语言模型两组讲义在此汇合；AlphaGo Zero作为先行的受控反馈对照插入，不强行接成所有语言推理的祖先。",
+    "question_chain": [
+      {"question": "下一个词预测得好，为什么不等于该说的话说得好？", "nodes": ["gpt3", "instructgpt"], "historical_lens": "任务接口已能由上下文表达，后续问题变成训练目标错位；RLHF有明确前史。", "paradigm_lens": "文本分布目标之外加入示范和偏好，且评价只覆盖特定目标与人群。", "human_lens": "研究者、标注者和用户分布共同塑造何为好答案。", "claim_ids": ["AA-C06", "AA-C07", "AA-C11"]},
+      {"question": "如果有明确的输赢，预测与解题能怎样连起来？", "nodes": ["alphago-zero"], "historical_lens": "回插2017年围棋实例，保留从人类棋谱到自弈搜索的真正改变。", "paradigm_lens": "网络预测不是终点：搜索产出更好的策略目标，胜负产生结果约束，训练再吸收经验。", "human_lens": "规则、结构、评价和算力由团队建立，零棋谱不等于零设计。", "claim_ids": ["AA-C02", "AA-C04", "AA-C05", "AA-C29"]},
+      {"question": "语言模型可以不改参数，只改解题过程吗？", "nodes": ["cot"], "historical_lens": "2022年few-shot CoT把已有示例提示与中间步骤思路组合；与InstructGPT不是前后替代。", "paradigm_lens": "改推理时的计算顺序与条件信息，但并未引入外部正确性反馈或参数学习。", "human_lens": "示例设计与模型资源使假设可测试；消融排除‘只要多写点token就行’的简单故事。", "claim_ids": ["AA-C19", "AA-C20", "AA-C21", "AA-C22"]},
+      {"question": "草稿想错了、资料缺失了，凭什么修正？", "nodes": ["react"], "historical_lens": "沿CoT与已有交互系统继续研究，而非从零发明Agent。", "paradigm_lens": "把观察放回上下文，让计划可被环境修正；交互反馈不等于训练奖励。", "human_lens": "研究者设计动作接口、示范轨迹和评估环境，成功率受这些选择约束。", "claim_ids": ["AA-C24", "AA-C25", "AA-C26", "AA-C27", "AA-C28"]},
+      {"question": "这些能力如何成为可检查、可继续研究的训练配方？", "nodes": ["tulu3", "instructgpt", "cot"], "historical_lens": "2024首发的开放后训练研究把已发展的方法、数据和评测展开，本包按2025 v5阅读。", "paradigm_lens": "示范、偏好和可核验结果分工；CoT可作为其中的提示组件，RLVR并非把全部任务都变成围棋。", "human_lens": "数据合成、评审模型、标注来源、基础设施和发布分工进入同一个可追查的配方。", "claim_ids": ["AA-C12", "AA-C13", "AA-C14", "AA-C15", "AA-C18"]}
+    ],
+    "conceptual_controls": [
+      {"term": "学习/后训练", "distinction": "改变参数与行为分布；SFT、DPO、PPO所用信号和优化流程不同。"},
+      {"term": "CoT prompting", "distinction": "用上下文示例和生成中间步骤组织推理；本对象不新增参数训练，也不自带外部真值。"},
+      {"term": "搜索", "distinction": "在候选分支间试探与比较；AlphaGo Zero的MCTS是明确实例，不能把任何长文字推理都叫树搜索。"},
+      {"term": "偏好反馈", "distinction": "谁更喜欢哪份输出；它可以改善某些能力，但不天然代表全部能力、真实性或所有人的价值。"},
+      {"term": "可验证奖励", "distinction": "针对具体任务的程序化结果判定；与人的偏好或模型评审不同，也不能保证全过程正确。"},
+      {"term": "环境观察", "distinction": "行动后得到的新信息或状态；ReAct把它纳入上下文，不必把它变成数值奖励或梯度。"}
+    ],
+    "running_example": {"epistemic_status": "illustration", "text": "用‘按预算和约束选一件商品’贯穿：会生成推荐不等于遵守预算；符合偏好的语气不等于算对总价；逐步列条件不等于查过库存；执行搜索后必须依据真实返回修正；部分约束可程序核验，但‘真正适合我’仍涉及偏好。围棋作为旁例展示一个终点与规则更清楚的世界。", "guard": "这是作者构造的教学场景，不宣称五篇论文共用该任务，也不声称WebShop实验就是生产电商交易。"},
+    "must_not_force": ["AlphaGo Zero→CoT/o1/LLM thinking：目前只支持主题对照，不支持‘围棋自弈直接导致语言思考’的历史因果。", "InstructGPT→CoT→ReAct不是一条权重升级链；Tülu 3也不是GPT-3的后续基座。", "ReAct不保证比CoT全面更优，更不能据名称把它称为Agent的起点。", "Tülu 3不是SFT→RLHF→RLVR三个相同优化环节；四阶段流程与三个模型训练阶段要解释计数口径。", "人员重合、实习合作、咨询致谢与机构算力是参与条件，不单独证明技术因果。"]
+  },
+  "pdf_corrections": [
+    {"pages": [16], "epistemic_status": "pdf_summary", "issue": "讲义把AlphaGo Zero作为强化学习突破并向LLM thinking连接；本地同名候选实际为AlphaZero。", "correction": "使用nature24270的围棋论文；100–0限定为对AlphaGo Lee的特定100局。自弈与搜索作为主题对照，后续语言思考历史因果留待验证。", "claim_ids": ["AA-C01", "AA-C02", "AA-C03", "AA-C04"], "provenance": "对象与P16主题从source-map继承；技术纠正依据本包原文，不声称重新视觉审计讲义。"},
+    {"pages": [18], "epistemic_status": "pdf_summary", "issue": "‘Prompt Engineering奠基之作’和通往后训练思考模型的叙事容易被扩大成发明权与直接因果。", "correction": "限定为few-shot CoT的特定贡献；区分后续zero-shot、采样投票与参数训练，不确认o1组织史。", "claim_ids": ["AA-C19", "AA-C20", "AA-C23"]},
+    {"pages": [20], "epistemic_status": "pdf_summary", "issue": "‘Agent从理论到落地’容易被读成ReAct发明Agent或首次闭环。", "correction": "按原文写推理—行动—观察的组合及其前驱；显式保留HotpotQA劣于CoT和工具失败边界。", "claim_ids": ["AA-C24", "AA-C26", "AA-C27"]},
+    {"pages": [39], "epistemic_status": "pdf_summary", "issue": "‘给LLM以文明’容易掩盖目标冲突、人群范围与残留伤害。", "correction": "限定为特定示范与偏好分布的行为改善；不得把人类偏好评价扩为所有能力、所有人的价值或安全证明。", "claim_ids": ["AA-C09", "AA-C10", "AA-C11"]},
+    {"pages": [40], "epistemic_status": "pdf_summary", "issue": "题名及2407.15541链接错误；三阶段讲述须解释是否把策展计入。", "correction": "正确题名Tülu 3: Pushing Frontiers in Open Language Model Post-Training，正确编号2411.15124；四阶段流程含策展，三个模型训练阶段为SFT、length-normalized DPO、基于PPO的RLVR。", "claim_ids": ["AA-C12", "AA-C13", "AA-C14"], "provenance": "错链身份由source-map已核结论继承，本包未重开错误论文。"}
+  ],
+  "unresolved": [
+    {"id": "AA-U01", "status": "unverified", "blocking": false, "issue": "AlphaGo Zero→后续LLM thinking、CoT→o1的具体历史因果尚未核查。", "handling": "明确不建立直接边；若主笔要写研发传承，须另找当事人或机构的一手史料。"},
+    {"id": "AA-U02", "status": "unverified", "blocking": false, "issue": "Tülu 3 v5首页Xinxi Lyu与source-map当前元数据Shane Lyu的姓名差异。", "handling": "保留差异，不断言同一人、改名或拼写错误；不影响本包机制主线。"},
+    {"id": "AA-U03", "status": "version_internal_inconsistency", "blocking": false, "issue": "Tülu 3 Table 23的IFEval写Strict，Tables 6/24写prompt loose；Table 23与总览的BBH和平均分也不完全一致。", "handling": "只用清楚且跨表一致的GSM8K/MATH及指定表的回退指标；不引用IFEval精确数字或跨表拼接综合排名。需要这些数字时须查对应评测配置/版本记录。"},
+    {"id": "AA-U04", "status": "not_reproduced", "blocking": false, "issue": "Tülu 3完整unseen评测、全部去污染实现及开放发布物未独立运行核验；AlphaGo棋局图与全部附录未精读。", "handling": "研究包只称原文核心证据核读，不称独立复现或所有实验均验证。"}
+  ],
+  "execution_notes": {
+    "context_policy": "已执行eacli context catalog及knowledge.ai最小上下文；不把上下文索引当技术事实来源。",
+    "network_policy": "承接父会话catalog结果，本包先select web.read/web.search再invoke，request-id以req_开头；未直接调用provider私有MCP。",
+    "acquisition_log": [
+      {"url": "https://www.nature.com/articles/nature24270", "request_id": "req_aa_alphago_nature24270", "result": "正式页成功，但只有订阅预览；方法与实验不能以此摘要替代。"},
+      {"url": "https://storage.googleapis.com/deepmind-media/alphago/AlphaGoZeroNature2017.pdf", "request_id": "req_aa_alphago_official_pdf", "result": "尝试的历史机构地址：eacli返回BackendToolError；为取得原始PDF字节最小curl尝试返回404。不是已核有效来源。"},
+      {"url": "https://deepmind.google/discover/blog/alphago-zero-starting-from-scratch/", "request_id": "req_aa_alphago_blog", "result": "读取返回页用于定位公开原文，实际只读导航、题名、作者/日期及开头；不将其冒充方法实验已读证据。"},
+      {"url": "https://discovery.ucl.ac.uk/10045895", "request_id": "req_aa_alphago_ucl", "result": "经eacli web.search定位的大学库入口；web.read只返回520错误页，未当成正文。"},
+      {"url": "https://augmentingcognition.com/assets/Silver2017a.pdf", "request_id": "req_aa_alphago_pdf_search", "result": "eacli搜索找到的公开原文副本；正式来源未供可读方法且eacli不提供所需原始PDF字节，故仅降级curl下载。下载后实际核对首页DOI、题名、作者、卷页与日期，再读取方法实验。镜像地址本身不证明真实性。"}
+    ],
+    "cache_policy": "下载、网页返回与新提取内容按来源放独立新建空临时目录；Python读取均用python3 -I；不从下载目录执行脚本或其中代码。临时路径仅在最终source_cache返回，不写入本JSON。",
+    "visual_policy": "本包结论都可由正文、清晰表格及图注支撑，未作图像推断；不从ReAct图中文字乱码或AlphaGo棋局图得出结论，所以未调用图像能力。",
+    "workflow_scope": "只写本JSON，无Markdown、README、索引、规则修改，无提交推送、子Agent或训练实验。paper_analysis guide的一般全量公式/附录要求服从本任务限定的低数学、问题链研究范围。",
+    "verification_level": "来源身份与关键段落已读、数值口径检查、JSON结构与引用完整性检查；待独立复核。"
+  }
+}
