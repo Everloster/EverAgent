@@ -14,7 +14,8 @@
 | 安装包 | 锁定的公共 core 和私有派生资产，无相邻 checkout 依赖 |
 | 兼容脚本 | 转交 canonical owner，不维护第二套事实或算法 |
 
-公共仓不接收私有设备、地址、账号、拓扑和任务数据。eacli 是统一使用入口，Orca/Herdr 继续拥有原生编排。
+公共仓不接收私有设备、地址、账号、拓扑和任务数据。eacli 是统一使用入口，新协作使用原生 Orca，
+Herdr 留给用户手动使用；发现同伴与协作边界见 [AGENT_COLLABORATION](./AGENT_COLLABORATION.md)。
 
 ## 明确回答的问题
 

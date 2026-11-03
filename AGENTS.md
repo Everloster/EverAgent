@@ -38,6 +38,7 @@
 | 证据账本、独立复核与模型升级 | [REPORT_QUALITY_GATE.md](./docs/REPORT_QUALITY_GATE.md) |
 | Context 或 Harness 调整 | [CONTEXT_ENGINEERING.md](./docs/CONTEXT_ENGINEERING.md) |
 | 身份、会话与脚本契约 | [AGENT_SESSION.md](./docs/AGENT_SESSION.md) |
+| 发现同伴、协作与临时空间收尾 | [AGENT_COLLABORATION.md](./docs/AGENT_COLLABORATION.md) |
 | commit、push 或安全边界 | [PROTOCOL_COMMON.md](./docs/PROTOCOL_COMMON.md) |
 | 新增或迁移报告元数据 | [REPORT_METADATA.md](./docs/REPORT_METADATA.md) |
 
@@ -65,6 +66,8 @@
 
 ## §3 执行边界
 
+- 默认独立完成；跨设备使用基础设施不等于多 Agent 协作。用户明确要求协同后，按[协同协议](./docs/AGENT_COLLABORATION.md)选择同伴；用户日常设备的 Agent 与可见空间由用户决定。
+- 启动或恢复时确认当前会话；有安装态 eacli 时运行 `session current` 与本机 `session peers --json`，协作前刷新目标，不每轮扫描或读取所有会话正文。
 - 主题、来源或交付物明确时直接推进，不停在能力确认、列计划或首版实现。开放式学习请求若缺少方向且选题会实质改变结果，先问一次当前兴趣；确认后按需更新 `MAP.md`。
 - 开始前在当前会话中明确目标、交付物、必要检查和停止条件；无需把一次性任务合同写入仓库。
 - 只有缺失信息会实质改变结果，或外部写入、发布、生产数据、权限扩大及不可逆操作尚未获授权时才询问。
