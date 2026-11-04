@@ -21,6 +21,7 @@ OBSERVATION_SOURCES = {
     "codex-turn-context", "codex-thread-state", "pi-session-runtime", "trae-thread-runtime", "claude-session-runtime",
     "orca-agent-session", "herdr-agent-session", "desktop-session-api", "zcode-model-io", "minimax-session-runtime",
     "kimi-desktop-session-runtime",
+    "dsh-tool-response",
 }
 
 
@@ -102,7 +103,8 @@ def model_evidence(harness: str, *, observation: dict | None = None) -> dict:
             and type(observation.get("observed_at")) in (int, float)
             and 0 <= time.time() - observation["observed_at"] <= 300
             and _valid(observation.get("model"))):
-        return {**evidence, "observed_model": observation["model"],
+        return {**evidence, "requested_model": _valid(observation.get("requested_model")),
+                "observed_model": observation["model"],
                 "model": observation["model"], "source": observation["source"], "confidence": "session-bound",
                 "current_model_confirmed": True, "user_model_declared": False,
                 "scope_ref": declarations.digest(scope)[:24], "observed_at": observation["observed_at"],

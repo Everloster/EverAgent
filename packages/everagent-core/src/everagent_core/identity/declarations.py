@@ -11,6 +11,7 @@ import time
 
 MODEL_RE = re.compile(r"[A-Za-z0-9][A-Za-z0-9:./_-]{0,127}")
 SESSION_KEYS = {
+    "dsh": ("DSH_SESSION_ID",),
     "codex": ("CODEX_THREAD_ID", "CODEX_SESSION_ID"),
     "pi": ("PI_SESSION_ID",),
     "trae": ("TRAECLI_THREAD_ID", "TRAE_THREAD_ID", "CODEX_THREAD_ID"),

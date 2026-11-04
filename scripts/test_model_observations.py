@@ -35,6 +35,43 @@ def owner(name="codex", started=None):
     return {"pid": 1234, "name": name, "started": created}
 
 
+class DshObservationTests(unittest.TestCase):
+    def test_active_response_is_bound_to_session_process_and_freshness(self):
+        with tempfile.TemporaryDirectory(prefix="everagent-dsh-") as folder:
+            root = Path(folder)
+            path = root / "runtime/everagent-identity/1234-fixture/call.json"
+            path.parent.mkdir(parents=True)
+            value = {"schema_version": 1, "pid": 1234, "session": THREAD,
+                     "model": "returned-model", "requested_model": "requested-alias",
+                     "observed_at": time.time(), "turn": 1, "step": 2, "call": "call-fixture"}
+            path.write_text(json.dumps(value)); path.chmod(0o600)
+            env = {"DSH_HOME": str(root), "DSH_SESSION_ID": THREAD, "DSH_SHELL": "1",
+                   "DSH_RUNTIME_PID": "1234", "DSH_IDENTITY_RECEIPT": str(path),
+                   "AGENT_MODEL": "misleading-default"}
+            with patch.dict(os.environ, env, clear=True), patch.object(
+                    processes, "process_chain", return_value=[owner("dsh")]):
+                result = models.model_evidence("dsh")
+                self.assertTrue(result["current_model_confirmed"])
+                self.assertEqual(result["model"], "returned-model")
+                self.assertEqual(result["requested_model"], "requested-alias")
+                for key, bad in (("session", "another-session"), ("pid", 5555),
+                                 ("observed_at", time.time() - 600), ("model", None)):
+                    path.write_text(json.dumps({**value, key: bad}))
+                    self.assertFalse(models.model_evidence("dsh")["current_model_confirmed"], key)
+                path.unlink()
+                self.assertFalse(models.model_evidence("dsh")["current_model_confirmed"])
+
+    def test_node_requires_exact_dsh_entry_and_runtime_pid(self):
+        row = {"pid": 1234, "name": "node"}
+        with patch.dict(os.environ, {"DSH_RUNTIME_PID": "1234"}, clear=True), patch.object(
+                processes.subprocess, "run") as run:
+            run.return_value = SimpleNamespace(returncode=0, stdout="node /opt/example/node_modules/@deepseek-ai/dsh/lib/bin.js web")
+            self.assertTrue(processes.matches_row(row, ("dsh",)))
+            run.return_value.stdout = "node /opt/unrelated.js web"
+            self.assertFalse(processes.matches_row(row, ("dsh",)))
+            self.assertFalse(processes.matches_row({**row, "pid": 5555}, ("dsh",)))
+
+
 class CodexObservationTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory(prefix="everagent-auto-model-")

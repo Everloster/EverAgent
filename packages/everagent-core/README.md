@@ -11,6 +11,7 @@ Python ≥3.10，运行时仅用标准库；macOS、Linux、Windows 使用同一
 | harness 识别与厂商邮箱 | `src/everagent_core/identity/detect.py` |
 | 调用方祖先与进程创建身份 | `src/everagent_core/identity/processes.py` |
 | 当前模型自动读取、配置提示与用户声明 | `identity/observations.py`、`identity/models.py`、`identity/declarations.py` |
+| DSH 官方 shellEnv 适配 | `identity/dsh_plugin.mjs`；当前调用元数据，随包分发 |
 | 宿主 App 元数据、会话组合 | `apps.py`、`session.py` |
 | 脚本描述验证与生成 | `catalog.py` |
 | Git 原语、trailer 与 tree 校验 | `git.py` |

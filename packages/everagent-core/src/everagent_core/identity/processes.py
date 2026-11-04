@@ -4,6 +4,7 @@ from __future__ import annotations
 import hashlib
 import os
 from pathlib import Path
+import shlex
 import subprocess
 import sys
 
@@ -148,6 +149,19 @@ def _proc_has(*names) -> bool:
 
 
 def matches_row(row: dict, names: tuple[str, ...]) -> bool:
+    if "dsh" in names and row.get("name", "").casefold().removesuffix(".exe") == "node":
+        # DSH is a Node entry point, not every Node process. Query only the
+        # ancestor named by its per-tool environment; never scan other apps.
+        if os.name == "nt" or str(row.get("pid")) != os.environ.get("DSH_RUNTIME_PID"):
+            return False
+        try:
+            result = subprocess.run(["ps", "-o", "args=", "-p", str(row["pid"])],
+                                    capture_output=True, text=True, timeout=1)
+            args = shlex.split(result.stdout)
+            return (result.returncode == 0 and len(args) >= 3
+                    and args[1].endswith("/node_modules/@deepseek-ai/dsh/lib/bin.js"))
+        except (OSError, ValueError, subprocess.SubprocessError):
+            return False
     if os.name == "nt" and any(name in names for name in ("kimi", "Kimi", "MiniMax Code", "ZCode")):
         from ..apps import app_for_process
         app_id = app_for_process(row, windows=True)

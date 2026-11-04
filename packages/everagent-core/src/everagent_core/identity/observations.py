@@ -43,6 +43,7 @@ AUTOMATIC_READERS = {
     "claude-code": ("claude-session-runtime",), "zcode": ("zcode-model-io",),
     "minimax-code": ("minimax-session-runtime",),
     "kimi-desktop": ("kimi-desktop-session-runtime",),
+    "dsh": ("dsh-tool-response",),
 }
 
 
@@ -818,6 +819,31 @@ def _kimi(owner: dict, now: float) -> dict | None:
             "turn": turn["turn"], "session": turn["session"]}
 
 
+def _dsh(native: str, owner: dict, now: float) -> dict | None:
+    """Read the official shell-env plugin's active, per-call metadata receipt."""
+    root = Path(os.environ.get("DSH_HOME", ""))
+    path = Path(os.environ.get("DSH_IDENTITY_RECEIPT", ""))
+    if (os.environ.get("DSH_SHELL") != "1" or not root.is_absolute() or not path.is_absolute()
+            or str(owner["pid"]) != os.environ.get("DSH_RUNTIME_PID") or not _regular(path)):
+        return None
+    relative = path.resolve().relative_to(root.resolve() / "runtime/everagent-identity")
+    if (len(relative.parts) != 2 or not relative.parts[0].startswith(str(owner["pid"]) + "-")
+            or path.stat().st_size > 4096 or (os.name != "nt" and path.stat().st_mode & 0o077)):
+        return None
+    value = json.loads(path.read_text(encoding="utf-8"))
+    at, started = value.get("observed_at"), _started_at(owner)
+    if (value.get("schema_version") != 1 or value.get("pid") != owner["pid"]
+            or value.get("session") != native or started is None or type(at) not in (int, float)
+            or not started - 2 <= at <= now or now - at > MAX_AGE_SECONDS
+            or _model(value.get("model")) is None or _model(value.get("requested_model")) is None
+            or not isinstance(value.get("call"), str) or not 1 <= len(value["call"]) <= 256
+            or type(value.get("turn")) is not int or type(value.get("step")) is not int):
+        return None
+    return {"model": value["model"], "requested_model": value["requested_model"],
+            "source": "dsh-tool-response", "observed_at": at,
+            "turn": [value["turn"], value["step"], value["call"]]}
+
+
 def collect(harness: str, scope: dict | None, *, diagnostics: dict | None = None) -> dict | None:
     """Return only a model observation bound to the exact current caller."""
     if diagnostics is not None:
@@ -875,7 +901,7 @@ def collect(harness: str, scope: dict | None, *, diagnostics: dict | None = None
         elif harness == "kimi-desktop":
             found = _kimi(owner, now)
         else:
-            readers = {"codex": _codex, "trae": _trae, "claude-code": _claude, "zcode": _zcode}
+            readers = {"codex": _codex, "trae": _trae, "claude-code": _claude, "zcode": _zcode, "dsh": _dsh}
             found = readers[harness](native, owner, now) if harness in readers else _pi(native)
         if found:
             reference = found.get("session") or native
@@ -883,6 +909,7 @@ def collect(harness: str, scope: dict | None, *, diagnostics: dict | None = None
                 diagnostics.update(status="observed", reason_code=None, source=found["source"])
             return {"harness": harness, "scope": scope, "observed_at": found.get("observed_at", now),
                     "model": found["model"], "source": found["source"],
+                    **({"requested_model": found["requested_model"]} if found.get("requested_model") else {}),
                     "observation_ref": declarations.digest([harness, reference, found.get("turn"), found["model"]])[:24]}
     except (OSError, ValueError, TypeError, AttributeError, sqlite3.Error, StopIteration) as exc:
         if diagnostics is not None:

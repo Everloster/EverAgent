@@ -33,11 +33,13 @@ VENDOR_EMAIL = {
     "qoderclicn":  "noreply@qoder.com.cn",
     "zcode":       "noreply@z.ai",
     "pi":          "noreply@pi.dev",
+    "dsh":         "noreply@deepseek.com",
 }
 FALLBACK_EMAIL = "noreply@everloster.com"
 
 # 检测规则（顺序即优先级）
 CLI_RULES = [
+    ("dsh",        lambda: _eq("DSH_SHELL", "1") and _has("DSH_SESSION_ID")),
     ("cowork",      lambda: _has("CLAUDE_CODE_IS_COWORK")),
     ("amp",         lambda: _has("AMP_CURRENT_THREAD_ID") or _eq("AGENT", "amp")),
     # TRAE / coco：先于 codex 判——本机 CODEX_HOME 是 Orca 编排层全局设的干扰项，
@@ -77,6 +79,7 @@ CLI_RULES = [
 
 # 仅匹配调用方祖先链，最近的已知 CLI 优先；其他终端里运行的 Agent 不是身份依据。
 PROCESS_RULES = (
+    ("dsh", ("dsh",)),
     ("codex", ("codex",)),
     ("claude-code", ("claude", "claude-code")),
     ("trae", ("coco", "traecli")),
