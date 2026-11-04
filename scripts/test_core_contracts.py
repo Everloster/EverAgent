@@ -311,5 +311,74 @@ class ZcodeModelObservationTests(unittest.TestCase):
         self.assertIsNone(self._collect())
 
 
+
+class CursorCliBindingTests(unittest.TestCase):
+    """cursor-cli declaration binding: sandbox watcher + conversation id only."""
+
+    def test_sand_exit_watch_anchors_cursor_cli_not_generic_node(self):
+        watch = {"pid": 52, "name": "sand-exit-watch", "started": "watcher-start"}
+        node = {"pid": 1964, "name": "node", "started": "node-start"}
+        with patch.object(processes, "process_chain", return_value=[node, watch]):
+            self.assertEqual(processes.caller_process("cursor-cli"), watch)
+            self.assertIsNotNone(processes.caller_anchor("cursor-cli"))
+        with patch.object(processes, "process_chain", return_value=[node]):
+            self.assertIsNone(processes.caller_process("cursor-cli"))
+            self.assertIsNone(processes.caller_anchor("cursor-cli"))
+
+    def test_cursor_cli_scope_requires_watcher_and_uses_conversation_id(self):
+        watch = {"pid": 52, "name": "sand-exit-watch", "started": "watcher-start"}
+        with patch.object(processes, "process_chain", return_value=[
+            {"pid": 10, "name": "bash", "started": "shell-start"}, watch
+        ]), patch.dict(os.environ, {"CURSOR_CONVERSATION_ID": "sand-subagent-fixture-1"}, clear=True):
+            scope = declarations.caller_scope("cursor-cli")
+        self.assertEqual(scope["harness"], "cursor-cli")
+        self.assertIn("process_ref", scope)
+        self.assertIn("session_ref", scope)
+        self.assertNotIn("execution_ref", scope)
+        with patch.object(processes, "process_chain", return_value=[
+            {"pid": 10, "name": "bash", "started": "shell-start"}, watch
+        ]), patch.dict(os.environ, {}, clear=True):
+            # No native conversation id and no terminal_ref: fall back to execution shell.
+            scope = declarations.caller_scope("cursor-cli")
+        self.assertIn("execution_ref", scope)
+        with patch.object(processes, "process_chain", return_value=[
+            {"pid": 1964, "name": "node", "started": "node-start"}
+        ]), patch.dict(os.environ, {"CURSOR_CONVERSATION_ID": "sand-subagent-fixture-1"}, clear=True):
+            self.assertIsNone(declarations.caller_scope("cursor-cli"))
+
+    def test_cursor_cli_declaration_binds_current_conversation_only(self):
+        watch = {"pid": 52, "name": "sand-exit-watch", "started": "watcher-start"}
+        with tempfile.TemporaryDirectory(prefix="everagent-cursor-cli-") as folder:
+            receipt = Path(folder) / "receipt.json"
+            env = {"CURSOR_CONVERSATION_ID": "sand-subagent-fixture-a",
+                   "EVERAGENT_MODEL_DECLARATION": str(receipt)}
+            with patch.object(processes, "process_chain", return_value=[watch]), patch.dict(
+                os.environ, env, clear=True
+            ), patch.object(models, "configuration_hint", return_value={
+                "model": "unknown", "source": "unresolved", "confidence": "unknown"
+            }):
+                value = declarations.declare_model(
+                    "cursor-cli", "grok-bot", user_confirmed=True,
+                    hint=models.hint_fingerprint("cursor-cli"))
+                self.assertEqual(value["model"], "grok-bot")
+                self.assertEqual(value["scope"]["harness"], "cursor-cli")
+                self.assertIn("session_ref", value["scope"])
+                evidence = models.model_evidence("cursor-cli")
+                self.assertTrue(evidence["user_model_declared"])
+                self.assertEqual(evidence["model"], "grok-bot")
+                self.assertEqual(evidence["confidence"], "declared")
+            # A different conversation id must not reuse the receipt.
+            with patch.object(processes, "process_chain", return_value=[watch]), patch.dict(
+                os.environ, {"CURSOR_CONVERSATION_ID": "sand-subagent-fixture-b",
+                             "EVERAGENT_MODEL_DECLARATION": str(receipt)}, clear=True
+            ), patch.object(models, "configuration_hint", return_value={
+                "model": "unknown", "source": "unresolved", "confidence": "unknown"
+            }):
+                evidence = models.model_evidence("cursor-cli")
+                self.assertFalse(evidence["user_model_declared"])
+                self.assertEqual(evidence["model"], "unknown")
+
+
+
 if __name__ == "__main__":
     unittest.main()

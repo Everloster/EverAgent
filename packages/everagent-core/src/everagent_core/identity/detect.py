@@ -89,6 +89,9 @@ PROCESS_RULES = (
     ("kimi-desktop", ("Kimi",)),
     ("minimax-code", ("MiniMax Code",)),
     ("pi", ("pi", "pi-coding-agent")),
+    # cursor-cli（Cursor Agent）：无 cursor-cli 二进制；云端/沙箱会话 watcher 为 sand-exit-watch。
+    # 通用 node 不构成身份。会话键见 declarations.SESSION_KEYS。
+    ("cursor-cli", ("sand-exit-watch",)),
 )
 
 def _detect_cli() -> tuple[str | None, str]:

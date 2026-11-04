@@ -136,6 +136,10 @@ Python 只接收任务元数据。
 模型时间须在 5 分钟内，不早于活动 turn 或 App 创建时间。model alias 若存在必须合法，但不要求与模型同名。
 这些原生记录没有请求级关联 ID，因此不声称有该证据；配置默认值与其他会话记录均不兜底。
 
+cursor-cli（Cursor Agent）尚无自动模型读取器。用户声明绑定祖先链中的 `sand-exit-watch`
+与会话环境 `CURSOR_CONVERSATION_ID`；通用 `node` 进程不构成身份。缺少进程或会话键时保持未绑定，
+不能借用其他 harness 的声明。
+
 模型声明要求 `--user-confirmed`，它表示用户本次明确指定，不能由 Agent 根据配置自行补旗标。receipt 仅存在本机用户状态目录；默认 4 小时，最长 12 小时。harness 进程或 session/terminal 改变、
 嵌套 harness、模型提示变化、过期或记录损坏都会使声明失效。声明一直保持
 `current_model_confirmed=false`，通过 `user_model_declared=true` 单独表达依据。

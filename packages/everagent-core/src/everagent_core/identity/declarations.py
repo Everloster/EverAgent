@@ -17,6 +17,7 @@ SESSION_KEYS = {
     "trae": ("TRAECLI_THREAD_ID", "TRAE_THREAD_ID", "CODEX_THREAD_ID"),
     "claude-code": ("CLAUDE_CODE_SESSION_ID",),
     "kimi-cli": ("KIMI_CLI_SESSION_ID",),
+    "cursor-cli": ("CURSOR_CONVERSATION_ID",),
 }
 
 
