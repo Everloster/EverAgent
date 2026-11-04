@@ -36,6 +36,9 @@ def app_for_process(row: dict, *, windows: bool | None = None) -> str | None:
 
 def inspect_host() -> dict:
     for row in processes.process_chain():
+        if processes.matches_row(row, ("dsh",)):
+            return {"id": "dsh", "kind": "dsh", "status": "verified", "verified": True,
+                    "source": "caller-process-entry"}
         image = row.get("image", "")
         app_id = app_for_process(row)
         if app_id:

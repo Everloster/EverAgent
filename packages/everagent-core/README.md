@@ -11,6 +11,7 @@ Python ≥3.10，运行时仅用标准库；macOS、Linux、Windows 使用同一
 | harness 识别与厂商邮箱 | `src/everagent_core/identity/detect.py` |
 | 调用方祖先与进程创建身份 | `src/everagent_core/identity/processes.py` |
 | 当前模型自动读取、配置提示与用户声明 | `identity/observations.py`、`identity/models.py`、`identity/declarations.py` |
+| DSH 官方 shellEnv 适配 | `identity/dsh_plugin.mjs`；当前调用元数据，随包分发 |
 | 宿主 App 元数据、会话组合 | `apps.py`、`session.py` |
 | 脚本描述验证与生成 | `catalog.py` |
 | Git 原语、trailer 与 tree 校验 | `git.py` |
@@ -26,7 +27,8 @@ private eacli 的随包副本由 generator 生成并锁定 source commit 和文�
 安装包入口：`everagent-identity inspect --json`，无需相邻仓库。
 
 先自动核实当前会话；失败时用 `everagent-identity diagnose --json` 定位公开 owner，Agent 先修复可行的
-读取器与绑定并复验。Codex、Pi、TRAE、Claude Code、ZCode 与 MiniMax Code 的现有自动来源继续保留回归。
+读取器与绑定并复验。Codex、Pi、TRAE、Claude Code、ZCode、MiniMax Code 与 DSH 的现有自动来源继续保留回归；
+cursor-cli 提供进程/会话声明绑定（`sand-exit-watch` + `CURSOR_CONVERSATION_ID`），尚无自动模型读取器。
 确实无法核实时才由用户明确指定，再用 `declare-model --model <id> --user-confirmed`。
 配置提示和 `AGENT_ID` 不能授权 Git 署名；声明有会话范围与有效期，不标为 runtime verified。
 

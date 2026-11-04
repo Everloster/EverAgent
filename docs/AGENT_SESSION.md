@@ -53,10 +53,16 @@ App 身份或版本可见不代表当前模型可见；核实失败保持 unknow
 | ZCode | 当前会话 `model-io-<会话标签>` 请求记录前缀的 `modelId`；会话标签取自本执行 shell 启动命令的 bash-startup 路径，绑定 zcode-cli 进程创建时间与新鲜完成记录 |
 | MiniMax Code | 本地运行时的 turn 租约绑定的会话元数据：租约 owner 的 pid 必须是当前调用方的祖先进程，再取该会话最新一条模型计量记录 |
 | Kimi Desktop | 活动 turn 经原生 `backgroundTasks.list` 的 running Bash PID 与启动时间绑定当前执行 shell，再以精确会话 wire 的 `usage.record` 和 `llm.request` 交叉核对模型 |
+| DSH | 官方 `shellEnv` 扩展绑定当前 tool call 与生成它的 assistant response；只使用 provider 返回的 `responseModel`，并核对 DSH 祖先进程、session 与有效期 |
 
 读取器只取当前调用方元数据；Codex 与 Kimi Desktop 的记录尾部有 4 MiB 上限，SQLite 只读查询指定会话的元数据字段。
 配置默认值、同目录的其他会话、全局最近日志与无来源的环境变量不构成核实。原生读取失败保留提示与未核实状态，
 未把观察接口定义本身当作覆盖证据。自动来源和未知回退都进入身份回归测试。
+
+DSH 适配文件为 [`dsh_plugin.mjs`](../packages/everagent-core/src/everagent_core/identity/dsh_plugin.mjs)，
+使用 0.2.1-rc.2 的官方插件接口，需在所用 profile 加载。每次 shell 调用只写不含正文的临时模型元数据，
+调用完成即删除；core 读取上限 4 KiB、有效期 5 分钟。请求别名与返回模型分开记录，缺少返回型号保持未核实。
+macOS/Linux 支持原生 Node 启动；容器里的设备身份仍由容器自身事实决定，不冒充宿主。Windows DSH 未验证。
 
 ### 自动核实失败的修复路径
 
@@ -129,6 +135,10 @@ Python 只接收任务元数据。
 超大时不借旧模型。计量必须属于 turn，请求必须为 `loop`/`kimi`，两者模型一致且时间相差不超过 2 秒；
 模型时间须在 5 分钟内，不早于活动 turn 或 App 创建时间。model alias 若存在必须合法，但不要求与模型同名。
 这些原生记录没有请求级关联 ID，因此不声称有该证据；配置默认值与其他会话记录均不兜底。
+
+cursor-cli（Cursor Agent）尚无自动模型读取器。用户声明绑定祖先链中的 `sand-exit-watch`
+与会话环境 `CURSOR_CONVERSATION_ID`；通用 `node` 进程不构成身份。缺少进程或会话键时保持未绑定，
+不能借用其他 harness 的声明。
 
 模型声明要求 `--user-confirmed`，它表示用户本次明确指定，不能由 Agent 根据配置自行补旗标。receipt 仅存在本机用户状态目录；默认 4 小时，最长 12 小时。harness 进程或 session/terminal 改变、
 嵌套 harness、模型提示变化、过期或记录损坏都会使声明失效。声明一直保持

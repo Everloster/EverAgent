@@ -33,11 +33,13 @@ VENDOR_EMAIL = {
     "qoderclicn":  "noreply@qoder.com.cn",
     "zcode":       "noreply@z.ai",
     "pi":          "noreply@pi.dev",
+    "dsh":         "noreply@deepseek.com",
 }
 FALLBACK_EMAIL = "noreply@everloster.com"
 
 # 检测规则（顺序即优先级）
 CLI_RULES = [
+    ("dsh",        lambda: _eq("DSH_SHELL", "1") and _has("DSH_SESSION_ID")),
     ("cowork",      lambda: _has("CLAUDE_CODE_IS_COWORK")),
     ("amp",         lambda: _has("AMP_CURRENT_THREAD_ID") or _eq("AGENT", "amp")),
     # TRAE / coco：先于 codex 判——本机 CODEX_HOME 是 Orca 编排层全局设的干扰项，
@@ -77,6 +79,7 @@ CLI_RULES = [
 
 # 仅匹配调用方祖先链，最近的已知 CLI 优先；其他终端里运行的 Agent 不是身份依据。
 PROCESS_RULES = (
+    ("dsh", ("dsh",)),
     ("codex", ("codex",)),
     ("claude-code", ("claude", "claude-code")),
     ("trae", ("coco", "traecli")),
@@ -86,6 +89,9 @@ PROCESS_RULES = (
     ("kimi-desktop", ("Kimi",)),
     ("minimax-code", ("MiniMax Code",)),
     ("pi", ("pi", "pi-coding-agent")),
+    # cursor-cli（Cursor Agent）：无 cursor-cli 二进制；云端/沙箱会话 watcher 为 sand-exit-watch。
+    # 通用 node 不构成身份。会话键见 declarations.SESSION_KEYS。
+    ("cursor-cli", ("sand-exit-watch",)),
 )
 
 def _detect_cli() -> tuple[str | None, str]:

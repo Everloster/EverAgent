@@ -7,6 +7,7 @@ import json
 import os
 from pathlib import Path
 import sqlite3
+import struct
 import subprocess
 import sys
 import tempfile
@@ -17,7 +18,7 @@ from types import SimpleNamespace
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import core_bootstrap  # noqa: E402,F401
-from everagent_core.identity import declarations, diagnostics, models, observations, processes  # noqa: E402
+from everagent_core.identity import darwin_process, declarations, diagnostics, models, observations, processes  # noqa: E402
 from everagent_core import git  # noqa: E402
 
 THREAD = "00000000-0000-4000-8000-000000000042"
@@ -33,6 +34,82 @@ def owner(name="codex", started=None):
     created = (str(int((at + 11_644_473_600) * 10_000_000)) if os.name == "nt"
                else time.strftime("%a %b %d %H:%M:%S %Y", time.localtime(at)))
     return {"pid": 1234, "name": name, "started": created}
+
+
+class DshObservationTests(unittest.TestCase):
+    def test_darwin_sandbox_reads_only_caller_ancestry(self):
+        self.addCleanup(processes.reset_cache)
+        processes.reset_cache()
+        rows = [{"pid": 1234, "parent": 5678, "name": "python", "started": "fixture"},
+                {"pid": 5678, "parent": 1, "name": "node", "started": "fixture"}]
+        with patch.object(processes.os, "name", "posix"), patch.object(processes.os, "getpid", return_value=1234), \
+                patch.object(processes.sys, "platform", "darwin"), patch.object(
+                    processes.subprocess, "run", side_effect=PermissionError("sandbox")), patch.object(
+                    darwin_process, "process_row", side_effect=rows) as lookup:
+            self.assertEqual(processes.process_chain(), rows)
+            self.assertEqual([call.args[0] for call in lookup.call_args_list], [1234, 5678])
+            processes.reset_cache()
+            lookup.side_effect = PermissionError("native lookup refused")
+            self.assertEqual(processes.process_chain(), [])
+
+    def test_darwin_sandbox_still_requires_exact_dsh_arguments(self):
+        row = {"pid": 1234, "name": "node"}
+        with patch.dict(os.environ, {"DSH_RUNTIME_PID": "1234"}, clear=True), patch.object(
+                processes.os, "name", "posix"), patch.object(processes.sys, "platform", "darwin"), patch.object(
+                processes.subprocess, "run", side_effect=PermissionError("sandbox")), patch.object(
+                darwin_process, "process_args", return_value=["node", "/opt/example/node_modules/@deepseek-ai/dsh/lib/bin.js", "web"]) as lookup:
+            self.assertTrue(processes.matches_row(row, ("dsh",)))
+            self.assertFalse(processes.matches_row({**row, "pid": 5555}, ("dsh",)))
+            lookup.assert_called_once_with(1234)
+            lookup.return_value = ["node", "/opt/unrelated.js", "web"]
+            self.assertFalse(processes.matches_row(row, ("dsh",)))
+            lookup.side_effect = PermissionError("native lookup refused")
+            self.assertFalse(processes.matches_row(row, ("dsh",)))
+
+    def test_darwin_argument_parser_excludes_environment_and_rejects_truncation(self):
+        data = struct.pack("=i", 3) + b"/opt/node\0\0node\0/path with spaces/bin.js\0web\0SECRET=not-argv\0"
+        self.assertEqual(darwin_process._argv(data), ["node", "/path with spaces/bin.js", "web"])
+        for bad in (data[:4], data[:data.index(b"web") + 2], struct.pack("=i", -1) + b"\0"):
+            with self.subTest(data=bad), self.assertRaises(ValueError):
+                darwin_process._argv(bad)
+
+    def test_active_response_is_bound_to_session_process_and_freshness(self):
+        with tempfile.TemporaryDirectory(prefix="everagent-dsh-") as folder:
+            root = Path(folder)
+            path = root / "runtime/everagent-identity/1234-fixture/call.json"
+            path.parent.mkdir(parents=True)
+            value = {"schema_version": 1, "pid": 1234, "session": THREAD,
+                     "model": "returned-model", "requested_model": "requested-alias",
+                     "observed_at": time.time(), "turn": 1, "step": 2, "call": "call-fixture"}
+            path.write_text(json.dumps(value)); path.chmod(0o600)
+            env = {"DSH_HOME": str(root), "DSH_SESSION_ID": THREAD, "DSH_SHELL": "1",
+                   "DSH_RUNTIME_PID": "1234", "DSH_IDENTITY_RECEIPT": str(path),
+                   "AGENT_MODEL": "misleading-default"}
+            with patch.dict(os.environ, env, clear=True), patch.object(
+                    processes, "process_chain", return_value=[owner("dsh")]):
+                result = models.model_evidence("dsh")
+                self.assertTrue(result["current_model_confirmed"])
+                self.assertEqual(result["model"], "returned-model")
+                self.assertEqual(result["requested_model"], "requested-alias")
+                for key, bad in (("session", "another-session"), ("pid", 5555),
+                                 ("observed_at", time.time() - 600), ("model", None)):
+                    path.write_text(json.dumps({**value, key: bad}))
+                    self.assertFalse(models.model_evidence("dsh")["current_model_confirmed"], key)
+                path.unlink()
+                self.assertFalse(models.model_evidence("dsh")["current_model_confirmed"])
+
+    def test_node_requires_exact_dsh_entry_and_runtime_pid(self):
+        row = {"pid": 1234, "name": "node"}
+        with patch.dict(os.environ, {"DSH_RUNTIME_PID": "1234"}, clear=True), patch.object(
+                processes.subprocess, "run") as run:
+            for name in ("node", "MainThread"):
+                with self.subTest(process_name=name):
+                    row["name"] = name
+                    run.return_value = SimpleNamespace(returncode=0, stdout="node /opt/example/node_modules/@deepseek-ai/dsh/lib/bin.js web")
+                    self.assertTrue(processes.matches_row(row, ("dsh",)))
+                    self.assertFalse(processes.matches_row({**row, "pid": 5555}, ("dsh",)))
+                    run.return_value.stdout = "node /opt/unrelated.js web"
+                    self.assertFalse(processes.matches_row(row, ("dsh",)))
 
 
 class CodexObservationTests(unittest.TestCase):
