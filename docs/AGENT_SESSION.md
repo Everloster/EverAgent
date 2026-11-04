@@ -137,9 +137,14 @@ Python 只接收任务元数据。
 这些原生记录没有请求级关联 ID，因此不声称有该证据；配置默认值与其他会话记录均不兜底。
 
 cursor-cli（Cursor Agent）尚无自动模型读取器。用户声明绑定祖先链中的 `sand-exit-watch`
-与会话环境 `CURSOR_CONVERSATION_ID`；通用 `node` 进程不构成身份。
-有 `CURSOR_CONVERSATION_ID` 时按会话键绑定；缺少会话键但锚点仍在时，退化为当前执行 shell
-的 `execution_ref`（不跨 shell、不借用其他 harness）。缺少 `sand-exit-watch` 锚点则保持未绑定。
+与会话环境；通用 `node` 进程不构成身份。绑定顺序（`everagent_core.identity.declarations.caller_scope`）：
+
+1. 必须有 `sand-exit-watch` 锚点，否则整段 scope 为未绑定（`None`）。
+2. 若存在合法 `CURSOR_CONVERSATION_ID`，写入 `session_ref`。
+3. 若存在合法 `ORCA_TERMINAL_HANDLE` 或 `HERDR_PANE_ID`，写入 `terminal_ref`（可与 `session_ref` 并存）。
+4. **仅当**没有 `session_ref`，且（宿主属于 Desktop 应用，或也没有 `terminal_ref`）时，才退到当前执行 shell 的 `execution_ref`。
+5. 因此：缺少会话键但已有 `terminal_ref` 时，cursor-cli（非 Desktop）**不会**再加 `execution_ref`，而是以 `process_ref`+`terminal_ref` 为界；并非“缺会话键就一定退到 `execution_ref`”。缺少 `sand-exit-watch` 则保持未绑定。
+
 此次能力是 harness／会话识别，**不是** Cursor 自动模型核实；提交仍需真实模型证据或用户明确声明。
 
 模型声明要求 `--user-confirmed`，它表示用户本次明确指定，不能由 Agent 根据配置自行补旗标。receipt 仅存在本机用户状态目录；默认 4 小时，最长 12 小时。harness 进程或 session/terminal 改变、
