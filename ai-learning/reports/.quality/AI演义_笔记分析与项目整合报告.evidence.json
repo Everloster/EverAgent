@@ -4,9 +4,9 @@
   "quality_tier": "flagship",
   "created_on": "2026-11-03",
   "generator": {
-    "model": "claude-gpt-6-astra-max",
-    "harness": "claude-code",
-    "run_id": "ai-yanyi-routebook-20261103-main",
+    "model": "gpt-6-astra",
+    "harness": "codex",
+    "run_id": "ai-yanyi-revision3-20261104-codex",
     "explicit_model_override": false,
     "override_reason": ""
   },
@@ -684,7 +684,7 @@
     },
     {
       "id": "C-chinchilla",
-      "claim": "Chinchilla在共同预算问题上重新测量参数与训练量分配，强调随预算共同增长，不是模型越小越好或否定缩放研究。",
+      "claim": "Chinchilla在共同预算问题上重新测量参数与训练量分配，强调随预算共同增长，不是模型越小越好或否定缩放研究。 论文同训练计算预算下的Chinchilla为70B参数/1.4T训练tokens，Gopher为280B/300B；所报告多项下游评价改善。",
       "report_anchor": "paper-chinchilla",
       "support": "derived",
       "source_ids": [
@@ -692,7 +692,7 @@
         "S-kaplan"
       ],
       "critical": true,
-      "evidence": "Hoffmann§2–3、Figures 2–3及Table 2重新扫描规模/时长并比较分配；§4验证模型，未把单个配置当永久最优。"
+      "evidence": "Hoffmann§2–3、Figures 2–3及Table 2重新扫描规模/时长并比较分配；§4验证模型，未把单个配置当永久最优。 本轮重新读取v1摘要、§1、Table 1及§4：参数700亿/2800亿、tokens 1.4万亿/3000亿；不将same compute误写成同墙钟时间或同费用。"
     },
     {
       "id": "C-zero",
@@ -777,7 +777,7 @@
     },
     {
       "id": "C-instructgpt",
-      "claim": "InstructGPT在GPT-3上用示范、偏好比较、奖励建模与优化改变行为目标；评价偏好具有提示分布和人群边界。",
+      "claim": "InstructGPT在GPT-3上用示范、偏好比较、奖励建模与优化改变行为目标；评价偏好具有提示分布和人群边界。 原提示分布下，1.3B InstructGPT输出较175B GPT-3更受人类评价者偏好。",
       "report_anchor": "paper-instructgpt",
       "support": "direct",
       "source_ids": [
@@ -785,7 +785,7 @@
         "S-gpt3"
       ],
       "critical": true,
-      "evidence": "InstructGPT§1–3.6定义GPT-3基座、SFT/RM/PPO和标注；§4.1、§5.2–5.3限定偏好结果、人群及残余问题。"
+      "evidence": "InstructGPT§1–3.6定义GPT-3基座、SFT/RM/PPO和标注；§4.1、§5.2–5.3限定偏好结果、人群及残余问题。 本轮重新核对摘要中的1.3B与175B及our prompt distribution限定。"
     },
     {
       "id": "C-cot",
@@ -955,7 +955,7 @@
     {
       "id": "C-sd14",
       "claim": "明确版本SD v1.4将冻结CLIP文本表示作为条件，并采用特定LAION子集/续训路径；不把它倒填为原LDM或全部SD版本。",
-      "report_anchor": "30. 从论文到Stable Diffusion",
+      "report_anchor": "paper-sd14",
       "support": "direct",
       "source_ids": [
         "S-sd14",
@@ -1211,6 +1211,55 @@
       ],
       "critical": true,
       "evidence": "连接索引只按原文支持的关系类型表述；研究包的edge_checks已独立核对，最终Reviewer仍需复核此主稿表述。"
+    },
+    {
+      "id": "C-basics",
+      "claim": "参数更新、推理时输入、网络骨架、训练目标和评价是不同层次；同一种Transformer骨架可服务不同目标。",
+      "report_anchor": "basics",
+      "support": "derived",
+      "source_ids": [
+        "S-word2vec",
+        "S-transformer",
+        "S-gpt1",
+        "S-bert",
+        "S-gpt3",
+        "S-instruct",
+        "S-vit",
+        "S-ldm",
+        "S-dit"
+      ],
+      "critical": true,
+      "evidence": "将原论文方法定义压缩为阅读用语；GPT3 §1.2少样本无梯度更新，Transformer §3架构，ViT/DiT/语言模型目标分别核对。术语不承诺穷尽所有训练制度。"
+    },
+    {
+      "id": "C-route-walkthroughs",
+      "claim": "语言表示/预训练/上下文任务接口/反馈与行动，以及视觉表示/图文对齐/潜空间生成，构成两段问题串联；系统和数据作为共同条件，组件采用与主题承接区分。",
+      "report_anchor": "connections",
+      "support": "derived",
+      "source_ids": [
+        "S-word2vec",
+        "S-seq2seq",
+        "S-bahdanau",
+        "S-transformer",
+        "S-gpt1",
+        "S-bert",
+        "S-gpt2",
+        "S-gpt3",
+        "S-kaplan",
+        "S-chinchilla",
+        "S-instruct",
+        "S-cot",
+        "S-react",
+        "S-tulu",
+        "S-vit",
+        "S-clip",
+        "S-ddpm",
+        "S-ldm",
+        "S-sd14",
+        "S-dit"
+      ],
+      "critical": true,
+      "evidence": "第八部分是前文已核节点的综合解释，不声称单线因果或特定现成产品配置；CLIP筛数据与SD1.4文本条件分开，DiT承接生成框架与骨架复用。"
     }
   ],
   "source_coverage": [
@@ -1732,5 +1781,18 @@
     "essay_articles": 1,
     "note": "论文研究范围按用户最新限定；不是全文逐公式/全图表审计。"
   },
-  "revision_note": "revision 2：按首轮主审建议补充已核作者姓名与合作锚点，未扩展新技术结论、研究对象或后续履历。"
+  "revision_note": "2026-11-04：按原用户少数学、发展路径细致与多视角串联要求修订。保留36对象、原来源版本、已有事实纠错；增加术语、两段跨路线解释与两项可理解的实验对照，压缩重复限定。原研究模型与记录保留在generation_history；本轮是修订和定向复核，未声称重新精读全部论文或复现训练。工作台实测发现脚注未解析、自定义锚点被转义，修复真实渲染入口并做安全/跳转回归。",
+  "generation_history": [
+    {
+      "revision_round": 2,
+      "generator": {
+        "model": "claude-gpt-6-astra-max",
+        "harness": "claude-code",
+        "run_id": "ai-yanyi-routebook-20261103-main",
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "revision_note": "revision 2：按首轮主审建议补充已核作者姓名与合作锚点，未扩展新技术结论、研究对象或后续履历。"
+    }
+  ]
 }

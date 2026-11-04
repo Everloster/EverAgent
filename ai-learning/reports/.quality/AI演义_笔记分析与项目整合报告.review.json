@@ -2,32 +2,32 @@
   "schema_version": 1,
   "report_path": "ai-learning/reports/AI演义_笔记分析与项目整合报告.md",
   "quality_tier": "flagship",
-  "revision_round": 2,
+  "revision_round": 3,
   "reviews": [
     {
       "role": "primary_review",
       "reviewer": {
-        "model": "glm-5.3",
-        "harness": "pi",
-        "run_id": "073cb06f-b8d0-4360-bd79-d1175c3fd2b5",
+        "model": "gpt-6-astra",
+        "harness": "codex",
+        "run_id": "collab2:yanyi_fresh_review:2026-11-04",
         "independent_context": true,
+        "fresh_context": true,
         "explicit_model_override": false,
-        "override_reason": ""
+        "override_reason": "本轮继承实际运行模型；未将协调者派发解释为用户明示模型覆盖。"
       },
-      "escalation_reason": "",
       "scores": {
-        "evidence_fidelity": 96,
-        "request_coverage": 94,
+        "evidence_fidelity": 95,
+        "request_coverage": 96,
         "reasoning_quality": 95,
-        "readability": 93,
-        "limitations": 95
+        "readability": 92,
+        "limitations": 97
       },
       "score_reasons": {
-        "evidence_fidelity": "本轮增量复核：开题实核revision 2双SHA-256（报告与evidence均与任务给定一致）；逐行核对revision2.diff共7处改动（GNMT补吴永辉、CoT补Jason Wei等Google研究者、ReAct补姚顺雨/Karthik Narasimhan、Tulu补Nathan Lambert、DiT补William Peebles与谢赛宁、人物线补Narasimhan共同参与、[^people]脚注补ReAct署名），并回到原文库首页逐一核验：Yonghui Wu为GNMT第一作者、Jason Wei为CoT第一作者且全队署名Google Research Brain Team、Shunyu Yao与Karthik Narasimhan同列ReAct作者表（Princeton邮箱）、Nathan Lambert为Tulu v5第一作者、William Peebles与Saining Xie为DiT仅有的两位作者——全部属实。evidence的C-people来源同步加入S-react/S-cot/S-dit，五条对象claim的evidence字段同步'首页作者署名'定位。原审完成的40项来源与57条声明核查结论仍适用（正文其余部分经diff逆向比对与原审稿一致，并抽查36锚点、16条连接索引、四方法对照表及AlphaGo/MoE/LDM等关键防线语句均在原位）。未发现捏造、错配或无支撑声明。",
-        "request_coverage": "原审结论维持并小幅上修：R1–R10全部落实，revision 2针对原审唯一实质partial项（人物线密度）补入5处原文已核具名锚点，人物线由选择性点名升级为覆盖GNMT/CoT/ReAct/Tulu/DiT的具名叙事，且新增'Narasimhan参与GPT-1与ReAct'的人际线连接。剩余轻微保留不变：1999/2001 GPU前史年份与前言资源清单仍省略（有scope声明、符合standalone定位），front-matter status仍为in_progress（待定稿环节处理）。分数仅因人物线缺口的实质收窄而调整，非因'加了名字'本身。",
-        "reasoning_quality": "增量检查确认修订未引入方法因果误写：'Narasimhan参与GPT-1与ReAct，将人物线索从预训练迁移接到了交互研究'明确停留在共同参与/线索层面，[^people]脚注保留'共同参与只支持研究网络的连续性；具体方法继承另据正文所列设计与引用'并同步纳入ReAct署名依据；Jason Wei等标注'Google研究者'与原文首页机构署名一致；无新增技术推断或后续履历。原审确认的四类连接类型区分、时序纠正（Bahdanau/MoE/ZeRO）、AlphaGo Zero主题对照、GPT-2 zero-shot用语辨析、LDM/SD版本分层等推理质量均未受修订影响。",
-        "readability": "修订为纯增量具名插入，未改变章节结构、密度与独立可读性；36锚点、16条连接索引、路线图与问题入口表、思考追问与对应关系表完整。渲染/链接检查仍以协调者机器收据为准，本复核未亲自视检截图，按文本与结构评估，判断与原审一致。",
-        "limitations": "evidence的limitations九条与正文'来源与适用范围'未变，仍明确非复现、二手材料、争议数值不依赖、SD v1.4快照边界、人物履历未全面审计；C-people新增描述也自行限定'不升级为方法因果'。与原审所见一致，无隐瞒性省略。"
+        "evidence_fidelity": "逐项核查59个critical claims及其对应原文支持关系；关键桥梁从原文、论文图注中的明确文字或正式模型卡确认，未用旧review分数背书。AlexNet、GPT-3、Chinchilla与InstructGPT保留数字/口径；来源身份及修订版区别明确。此次检查聚焦主线和关键段落，不声称全文附录、曲线或训练复现。未发现会改变结论的来源失真。",
+        "request_coverage": "读报告前先形成16个独立来源单元，随后覆盖映射到39个U单元；36对象全部有正文位置，合讲/重复页计数自洽。历史、范式、人物与组织贯穿共同问题链，两段完整行程补足跨章节串联；少数学与独立可读要求得到满足。",
+        "reasoning_quality": "将直接组件采用、资源条件、同问题修正及主题对照明确分开，避免时间顺序与技术因果混同。CLIP筛数据和条件编码、训练与推理、骨架与目标、偏好与事实正确性均有清晰分层。16条桥梁可定位，综合解释留有边界。",
+        "readability": "全文源码已读，49个显式锚点无重复、内部碎片及41条脚注无缺失。核真实工作台1440/390宽浏览器收据并亲视三张截图：桌面连接段、窄屏连接段和窄屏尾注；排版与脚注回跳清楚。尚有轻微术语门槛（ReLU/Dropout、WordPiece首次未释义）及重复的边界提醒，但不妨碍主线独立理解。未逐屏查看全文所有表格。",
+        "limitations": "诚实区分讲义、原论文、作者观点、指定版本模型卡与本文综合；不宣称训练复现、全历史因果或未核产品谱系。Chinchilla MMLU内部差异未强选一值进入正文，Tulu与LDM修订版不倒填为首版。模型卡main未固定commit、阅读与渲染抽查范围均披露。"
       },
       "critical_claim_ids_checked": [
         "C-brook",
@@ -64,12 +64,12 @@
         "C-diffusion-2015",
         "C-ddpm",
         "C-ldm",
-        "C-sd14",
         "C-dit",
         "C-bitter-lesson",
+        "C-inventory",
+        "C-sd14",
         "C-hardware-lens",
         "C-people",
-        "C-inventory",
         "C-identity-corrections",
         "E-gpu",
         "E-residual",
@@ -86,7 +86,9 @@
         "E-product",
         "E-dit-meeting",
         "E-behavior",
-        "E-interaction"
+        "E-interaction",
+        "C-basics",
+        "C-route-walkthroughs"
       ],
       "coverage_unit_ids_checked": [
         "U-brook",
@@ -131,231 +133,289 @@
       ],
       "source_content_map": [
         {
-          "id": "SC-L-front",
-          "title": "讲义前言：读论文动机、AI辅助学习法与学习资源清单",
-          "importance": "supporting",
-          "assessment": "covered",
-          "source_ids": [
-            "S-lecture"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-reader-method"
-          ],
-          "notes": "§9与导言承接阅读目的、框架优先与工具辅助，并明确不把个人数学准备路径当读者门槛；资源清单本身被有意省略，符合独立路线报告定位。"
-        },
-        {
-          "id": "SC-L-lenses",
-          "title": "三视角（历史/范式/人物）+四要素（芯片/infra/数据/模型结构）+总路线图",
+          "id": "FR01",
+          "title": "读论文的方法与三视角",
           "importance": "core",
           "assessment": "covered",
-          "source_ids": [
-            "S-lecture"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-lenses"
-          ],
-          "notes": "导言复述三视角并转化为问题主线；四要素化为'架构、数据、算力与工程相互制约的条件'与路线图'共同条件'层，未逐字复述'四要素'提法但语义保全。"
-        },
-        {
-          "id": "SC-L-gpu-prehistory",
-          "title": "1999 GeForce 256 / 2001 GeForce 3 可编程shader前史",
-          "importance": "supporting",
-          "assessment": "partial",
-          "source_ids": [
-            "S-lecture"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-brook"
-          ],
-          "notes": "§1以'GPU原本面向图形处理、算法要改写成纹理与着色器操作'承接背景；具体年份与机型未保留，对发展路径主旨影响很小。"
-        },
-        {
-          "id": "SC-L-paradigm",
-          "title": "模型范式线12对象：Brook→AlexNet→seq2seq/Attention→ResNet→蒸馏→Transformer→AlphaGo Zero→MoE→CoT→LoRA→ReAct",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-lecture",
-            "S-brook",
-            "S-alexnet",
-            "S-seq2seq",
-            "S-bahdanau",
-            "S-resnet",
-            "S-distill",
-            "S-transformer",
-            "S-alphago",
-            "S-moe",
-            "S-cot",
-            "S-lora",
-            "S-react"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-brook",
-            "U-alexnet",
-            "U-seq2seq",
-            "U-bahdanau-attention",
-            "U-resnet",
-            "U-distillation",
-            "U-transformer",
-            "U-alphago-zero",
-            "U-sparse-moe",
-            "U-cot",
-            "U-lora",
-            "U-react"
-          ],
-          "notes": "全部12对象各成一节并按问题重组；每节含背景/问题/机制直觉/作用，未逐篇公式化。"
-        },
-        {
-          "id": "SC-L-infra",
-          "title": "Infra与数据线7对象：ZeRO、Scaling Laws、Chinchilla、LAION-5B、RefinedWeb、MegaScale、Bitter Lesson",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-lecture",
-            "S-zero",
-            "S-kaplan",
-            "S-chinchilla",
-            "S-laion",
-            "S-refinedweb",
-            "S-megascale",
-            "S-bitter"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-zero",
-            "U-scaling-laws",
-            "U-chinchilla",
-            "U-laion5b",
-            "U-refinedweb",
-            "U-megascale",
-            "U-bitter-lesson"
-          ],
-          "notes": "第三部分按'预算决策→显存→数据→持续运行'串成资源主线，Bitter Lesson单列第七部分；MoE/LoRA作为效率问题并入，未机械保留讲义章序但年代与关系类型保留。"
-        },
-        {
-          "id": "SC-L-language",
-          "title": "语言线8对象：Word2Vec→GNMT→GPT-1→BERT→GPT-2→GPT-3→InstructGPT→Tulu 3",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-lecture",
-            "S-word2vec",
-            "S-gnmt",
-            "S-gpt1",
-            "S-bert",
-            "S-gpt2",
-            "S-gpt3",
-            "S-instruct",
-            "S-tulu"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-word2vec",
-            "U-gnmt",
-            "U-gpt1",
-            "U-bert",
-            "U-gpt2",
-            "U-gpt3",
-            "U-instructgpt",
-            "U-tulu3"
-          ],
-          "notes": "'复用表示→复用网络→复用能力→目标与行动'的三次改写叙事完整覆盖8对象，含GPT-1/BERT目标分叉与GPT-2/3上下文接口两处合并节的辨析。"
-        },
-        {
-          "id": "SC-L-multimodal",
-          "title": "多模态线9对象：DeepVideo→双流→GAN→Diffusion2015→DDPM→ViT→CLIP→LDM/SD→DiT",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-lecture",
-            "S-deepvideo",
-            "S-two-stream",
-            "S-gan",
-            "S-diffusion15",
-            "S-ddpm",
-            "S-vit",
-            "S-clip",
-            "S-ldm",
-            "S-sd14",
-            "S-dit"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-deepvideo",
-            "U-two-stream",
-            "U-gan",
-            "U-diffusion-2015",
-            "U-ddpm",
-            "U-vit",
-            "U-clip",
-            "U-ldm",
-            "U-dit"
-          ],
-          "notes": "识别线（输入单位/监督/接口）与生成线（训练信号/计算空间/骨干）分开组织，LDM与SD v1.4分层处理；生成与识别并行发展、非先后阶段的定位与讲义一致且更严谨。"
-        },
-        {
-          "id": "SC-L-bitter",
-          "title": "Bitter Lesson全文：国际象棋/围棋/语音/视觉四案例与两条一般教训",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-bitter"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-bitter-lesson"
-          ],
-          "notes": "报告以'答案还是发现答案的方法'重构其核心问题，保留搜索+学习与避免内置人类发现的论旨，并明确其为归纳性观点文章而非统一证明；四案例未逐个展开但论证结构保全。"
-        },
-        {
-          "id": "SC-L-people",
-          "title": "各对象作者侧写与人物去向（Ian Buck、Hinton系、姚顺雨、Jason Wei、Nathan Lambert、吴永辉、谢赛宁等）",
-          "importance": "core",
-          "assessment": "partial",
           "source_ids": [
             "S-lecture"
           ],
           "matched_coverage_unit_ids": [
             "U-lenses",
-            "U-people"
+            "U-reader-method"
           ],
-          "notes": "报告将人物线主题化为'谁改变了哪个条件'并保留Sutskever/Vinyals/Radford/Uszkoreit/Buck/Karpathy/Simonyan等具体锚点，明确拒绝履历化；但讲义侧写中约半数人物（姚顺雨、Jason Wei、Denny Zhou、Edward Hu、Nathan Lambert、吴永辉、谢赛宁、William Peebles）未具名出现。当前处理符合用户'人物须具体而非名单'与串线优先的要求，故记partial而非missing，修订时可选补两三处具名锚点。"
+          "notes": "来源优先内容：讲義要求从问题背景、旧范式的危机、研究者及后世作用组织学习；课程工具是辅助，核心是发展路径。 讲义页：2,3,4,5,6,7。映射核验：导言、术语表及第七至九部分解释阅读目的，不把作者的数学准备强加给读者。"
         },
         {
-          "id": "SC-L-timeline",
-          "title": "各章编年时间线与交叉时序（MoE早于Transformer页序、LoRA早于CoT页序等）",
+          "id": "FR02",
+          "title": "计算硬件与表征学习的汇合",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
-            "S-lecture"
+            "S-lecture",
+            "S-brook",
+            "S-gpu-history",
+            "S-alexnet"
           ],
           "matched_coverage_unit_ids": [
-            "U-cross-route"
+            "U-brook",
+            "U-alexnet"
           ],
-          "notes": "36对象表按核定首发年份排列，正文在MoE、ZeRO、seq2seq/Attention等处明确纠正讲述顺序与发表顺序的差异，与讲义route_order_notes一致。"
+          "notes": "来源优先内容：Brook降低GPU通用编程门槛；AlexNet结合数据、GPU、CNN训练将手工特征主导的视觉竞赛改写，不能把Brook误作AlexNet直接软件依赖。 讲义页：9,10,11。映射核验：第一部分完整保留软件门槛、数据与GPU训练组合；官方历史桥梁限定为Brook到CUDA，未误称AlexNet运行Brook。"
         },
         {
-          "id": "SC-L-alphago-thinking",
-          "title": "讲义断言：AlphaGo Zero启发OpenAI thinking模式/test-time compute",
+          "id": "FR03",
+          "title": "由固定向量瓶颈到注意力与并行序列计算",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-seq2seq",
+            "S-bahdanau",
+            "S-gnmt",
+            "S-transformer",
+            "S-bert"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-seq2seq",
+            "U-bahdanau-attention",
+            "U-gnmt",
+            "U-transformer"
+          ],
+          "notes": "来源优先内容：seq2seq与Bahdanau注意力是两篇；GNMT将残差、LSTM、注意力与工程部署结合；Transformer取消递归并使训练内序列位置可并行，生成仍受因果顺序约束。 讲义页：12,15,34。映射核验：第6—7节说明固定状态、按步读取、循环依赖、部署与架构改造；Bahdanau首发更早和自回归生成限制均保留。"
+        },
+        {
+          "id": "FR04",
+          "title": "扩大模型与降低使用成本相伴",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-distill",
+            "S-resnet",
+            "S-moe",
+            "S-lora"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-distillation",
+            "U-resnet",
+            "U-sparse-moe",
+            "U-lora"
+          ],
+          "notes": "来源优先内容：蒸馏传递软标签；ResNet缓解优化退化；MoE稀疏激活增容量不能变成费用千分之一；LoRA低秩更新冻结底座并可合并。 讲义页：13,14,17,19。映射核验：第3—4、15—16节将优化退化、教师监督、稀疏激活与低秩任务更新分开；没有保留讲义MoE费用千分之一的错误换算。"
+        },
+        {
+          "id": "FR05",
+          "title": "学习、搜索与外部行动",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-alphago",
+            "S-cot",
+            "S-react"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-alphago-zero",
+            "U-cot",
+            "U-react"
+          ],
+          "notes": "来源优先内容：AlphaGo Zero自我对弈、策略价值网与树搜索组成闭环；CoT是生成中间步骤；ReAct交错推理、行动、观察，关联是方法比较而非未经证明的直接产品谱系。 讲义页：16,18,20。映射核验：第17、19—20节完整说明自弈搜索、提示中间步骤和行动观察闭环；不把主题相似画成AlphaGo Zero到LLM thinking的直接因果。"
+        },
+        {
+          "id": "FR06",
+          "title": "苦涩教训与硬件约束",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-bitter",
+            "S-hardware"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-bitter-lesson",
+            "U-lenses"
+          ],
+          "notes": "来源优先内容：Sutton主张可扩展的搜索和学习优于手写知识，但不是绝对否定人类知识；硬件/软件支持决定可做实验条件。 讲义页：21,22,23,24,25。映射核验：第七部分纠正作者网页日期为2019-03-13；历史归纳与硬件机会互补呈现，未当作统一实验定律。"
+        },
+        {
+          "id": "FR07",
+          "title": "固定训练计算预算的模型数据配比",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-kaplan",
+            "S-chinchilla"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-scaling-laws",
+            "U-chinchilla"
+          ],
+          "notes": "来源优先内容：Kaplan与Chinchilla对计算最优分配提出不同经验估计；Chinchilla 70B和1.4T tokens，同预算对照280B Gopher，5-shot MMLU正文表值67.6%对60.0%，摘要67.5%需分开。 讲义页：28。映射核验：第10节和语言贯通线正确解释同预算配比修正；70B/1.4T和280B/300B可追溯，正文避免采用MMLU摘要67.5与表格67.6的不一致数值。"
+        },
+        {
+          "id": "FR08",
+          "title": "显存、数据与集群为扩展提供条件",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-zero",
+            "S-laion",
+            "S-refinedweb",
+            "S-megascale"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-zero",
+            "U-laion5b",
+            "U-refinedweb",
+            "U-megascale"
+          ],
+          "notes": "来源优先内容：ZeRO划分训练状态；LAION用CLIP筛图文；RefinedWeb过滤去重提取网页质量；MegaScale面向万卡效率和故障，数据和工程不是算法旁注。 讲义页：27,29,30,31。映射核验：第11—14节把状态分片、模型筛数据、网页清洗和稳定运行放在能力兑现主线上；ZeRO更早的时间线明确。"
+        },
+        {
+          "id": "FR09",
+          "title": "从静态词向量到通用预训练",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-word2vec",
+            "S-gpt1",
+            "S-bert"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-word2vec",
+            "U-gpt1",
+            "U-bert"
+          ],
+          "notes": "来源优先内容：Word2Vec以效率和规模推广连续表示，非首次发明；GPT-1与BERT同属预训练迁移但自回归与双向掩码各有目的。 讲义页：33,35,36。映射核验：第5、8节从静态词表转到上下文网络；承认连续表示前史，并将GPT/BERT目标分叉说清。"
+        },
+        {
+          "id": "FR10",
+          "title": "由任务微调到上下文学习",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-gpt2",
+            "S-gpt3",
+            "S-kaplan"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-gpt2",
+            "U-gpt3"
+          ],
+          "notes": "来源优先内容：GPT-2多任务零样本迁移、GPT-3少样本提示承接同一问题，并非证明微调终结；数据、模型、组织和系统同时扩大。 讲义页：37,38。映射核验：第9节说明无梯度任务接口与GPT-3示例定义；175B参数、300B训练tokens及Scaling Laws的配置依据均经原文核对。"
+        },
+        {
+          "id": "FR11",
+          "title": "从续写目标到人类偏好和可验证奖励",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-instruct",
+            "S-tulu"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-instructgpt",
+            "U-tulu3"
+          ],
+          "notes": "来源优先内容：InstructGPT SFT、偏好奖励模型、PPO；1.3B对175B是特定提示分布人类偏好比较，不是全面能力碾压；Tulu3开放SFT/DPO/RLVR数据代码配方评估。 讲义页：39,40。映射核验：第18、21节和贯通线保留偏好目标、标注条件、开放配方和可核验奖励；1.3B对175B明确仅为该提示分布的人类偏好比较。"
+        },
+        {
+          "id": "FR12",
+          "title": "视频中的空间与时间信息",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-deepvideo",
+            "S-two-stream"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-deepvideo",
+            "U-two-stream"
+          ],
+          "notes": "来源优先内容：DeepVideo提供数据和CNN融合实验，双流网络用光流补运动信号；视频任务不等同于独立静态帧。 讲义页：42,43。映射核验：第22—23节解释多帧不自动解决运动建模、光流的作用与前处理代价；没有混成视频生成路线。"
+        },
+        {
+          "id": "FR13",
+          "title": "从判别反馈到逐步去噪生成",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-gan",
+            "S-diffusion15",
+            "S-ddpm"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-gan",
+            "U-diffusion-2015",
+            "U-ddpm"
+          ],
+          "notes": "来源优先内容：GAN利用判别器训练生成器；2015扩散是稳定可计算概率建模的另一路；DDPM把去噪学习做成高质量生成途径，不是GAN换名。 讲义页：44,45,46。映射核验：第26—28节完整保留对抗信号、前向扰动/逆过程、噪声预测与生成成本；GAN比较与引用不被当作扩散直接源头。"
+        },
+        {
+          "id": "FR14",
+          "title": "视觉序列化、图文对齐与开放生成",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-vit",
+            "S-clip",
+            "S-ldm",
+            "S-laion",
+            "S-sd14"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-vit",
+            "U-clip",
+            "U-ldm",
+            "U-laion5b",
+            "U-cross-route"
+          ],
+          "notes": "来源优先内容：ViT将patch作序列；CLIP对比学习图文表示本身不出图；LDM潜空间扩散和条件交叉注意力；SD v1-4固定CLIP编码器与LAION训练组合属于2022产品实现，应与2021 LDM论文区分。 讲义页：47,48,49。映射核验：第24—25、29—30节及第二段贯通线区分patch输入、图文对比、潜空间和条件接口；LDM v2联合训练文本编码与SD v1.4冻结CLIP配置明确分开。"
+        },
+        {
+          "id": "FR15",
+          "title": "DiT使扩散骨干并入Transformer",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-dit",
+            "S-vit",
+            "S-ldm"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-dit",
+            "U-cross-route"
+          ],
+          "notes": "来源优先内容：DiT在LDM空间以Transformer替换U-Net并研究GFLOPs缩放；原实验以类别条件为主，不能写成所有文本条件模型的通用性能保证。 讲义页：50。映射核验：第31节与视觉贯通线解释ViT式骨架进入潜空间去噪器；保留ImageNet类别条件边界，未宣称所有模态已统一。"
+        },
+        {
+          "id": "FR16",
+          "title": "36对象计数及人物角色",
           "importance": "supporting",
           "assessment": "covered",
           "source_ids": [
-            "S-lecture"
+            "S-lecture",
+            "L-inventory",
+            "S-gpt1",
+            "S-gnmt",
+            "S-react",
+            "S-clip"
           ],
           "matched_coverage_unit_ids": [
-            "U-alphago-zero"
+            "U-lenses",
+            "U-cross-route"
           ],
-          "notes": "报告改写为主题对照并显式说明不能仅凭'自弈与推理'画因果箭头；1600次MCTS等未核数字未采用。此处理比讲义原断言更可辩护，属覆盖而非遗漏。"
-        },
-        {
-          "id": "SC-L-inventory",
-          "title": "36对象计数口径与合讲页结构（P12/P28拆2、P21–25合1）",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-lecture"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-cross-route",
-            "U-reader-method"
-          ],
-          "notes": "报告对应关系表与source-map核对一致：33论文+2研究报告+1观点文章、10–20/21–31/32–40/41–50/51分页映射准确。"
+          "notes": "来源优先内容：36应展开seq2seq/attention与scaling/chinchilla合页；人物需解释团队贡献与跨领域迁移，不能把作者共同出现当技术直接继承证据。 讲义页：7,8,26,32,41,50。映射核验：36对象表逐项有正文锚点；33论文+2研究报告+1文章计数自洽。人物共同参与、团队条件和组件传播分别解释，未将履历等同技术因果。"
         }
       ],
       "source_ids_checked": [
@@ -416,37 +476,227 @@
       "unsupported_claims": [],
       "missing_requirements": [],
       "hard_failures": [],
-      "notes": "独立primary复核revision 2，沿用同一会话与run_id，未派生其他模型。范围声明：40项来源核查、57条声明核对、12单元独立内容地图与16条跨路线连接核验系revision 1原审完成，本轮为增量复验——(1)实核新双SHA-256均与任务给定一致；(2)逐行核对revision2.diff的7处改动并回到原文库S-gnmt/S-cot/S-react/S-tulu/S-dit首页验证5组姓名与机构（Yonghui Wu、Jason Wei与Google Research Brain Team、Shunyu Yao与Karthik Narasimhan、Nathan Lambert、William Peebles与Saining Xie），全部属实；(3)检查新增人际线'Narasimhan参与GPT-1与ReAct'，确认为共同参与线索而非方法因果，脚注同步收窄；(4)核evidence同步：C-people来源加S-react/S-cot/S-dit，五条对象claim补'首页作者署名'定位，requirements、source_coverage与其余claims未变；(5)对未改动正文做结构抽查（36锚点、16条连接、关键防线语句、四方法表均在原位），并以diff给定信息确认其余正文与原审SHA一致。结论：修订完全落在原审建议范围内，未引入新缺陷；无硬失败、无无支撑声明、无缺失需求。人物线由partial改善，request_coverage 92→94，其余维度维持；加权94.85。播客审计不适用。缺第二Reviewer与strong reviewer仍属后续环节，本记录不构成终审通过，未finalize。"
+      "notes": "来源优先：先核旧双SHA，再读讲义和关键原文并形成16单元地图，之后才读当前报告和evidence；没有读取生成者推理过程或旧review分数。协调者随后明确将快照更新为仅增paper-sd14锚点及C-sd14.report_anchor，已核旧备份SHA及两处diff并重核新双SHA。真实浏览器收据显示1440/390宽均41尾注、45引用、无缺失DOM目标/重复ID/裸标记、页面与阅读区溢出为0、页内跳转/脚注/返回正常、无新标签和pageerror；本Reviewer亲视1440-connections、390-connections、390-notes截图，未冒称全篇视觉验收。图像理解原eacli请求req_yanyi_review_slide07_20261104报BackendTimeout，沿用可核失败收据后最小降级直接查看本地PNG；无新增联网检索。轻微改进可在下一次编辑顺手处理首次术语释义和边界提醒密度，无内容硬失败。本entry是独立评分与核验记录，最终旗舰判定仍由协调者合并另一独立复核并运行report_quality.py check得出。",
+      "snapshot": {
+        "report_path": "ai-learning/reports/AI演义_笔记分析与项目整合报告.md",
+        "report_sha256": "98505c7e406efbc4bc0ad48a16bddfec38f2207e48887baa4c805e23b39778a1",
+        "evidence_path": "ai-learning/reports/.quality/AI演义_笔记分析与项目整合报告.evidence.json",
+        "evidence_sha256": "8c667b364e344504df93d38c0cbcbf028dd100f1fbf1f2b5ef4e3fef1efad1bd",
+        "revision_round": 3,
+        "verified_at": "2026-11-03T17:40:53.067335+00:00",
+        "source_first_map_sha256": "d4b2f50df4543674d3d7a54e286306d716da2e57d939d5a61b6d9f7cc8807d6d",
+        "browser_receipt_sha256": "0cecbbab9650bb0754710cf3f3434b6e2bee342762e90c89e84998e42e8464a7"
+      },
+      "sources_checked": [
+        {
+          "id": "S-lecture",
+          "read_scope": "51页文字层分段清理空白后阅读，完整主线正文与五组路线页的对象核对；文字层丢字已知，不当作逐字转录，未亲视全部51页。"
+        },
+        {
+          "id": "S-brook",
+          "read_scope": "Stanford原稿重新提取文字；首页题名/作者、摘要中的stream/kernel/reduction与编译运行时、CPU/GPU条件；原始PDF SHA256匹配研究记录。"
+        },
+        {
+          "id": "S-gpu-history",
+          "read_scope": "NVIDIA官方短文eacli缓存正文及发布日期；Brook、Buck、CUDA的具体连接。"
+        },
+        {
+          "id": "S-alexnet",
+          "read_scope": "原文首页摘要、引言及§3.2双GPU段；核约60M参数、两张GTX580各3GB和非单一技巧组合。"
+        },
+        {
+          "id": "S-resnet",
+          "read_scope": "原文引言退化问题、归一化后仍可能训练退化、identity与残差思想；与Transformer残差段对读。"
+        },
+        {
+          "id": "S-distill",
+          "read_scope": "原文摘要、训练/部署区别、soft targets段与商业语音动机；未复验全表或全部实验。"
+        },
+        {
+          "id": "S-word2vec",
+          "read_scope": "原文摘要、§1.2连续表示前史、上下文局部预测的概念与效率动机。"
+        },
+        {
+          "id": "S-seq2seq",
+          "read_scope": "v3原文首页和摘要；固定维度交接、直接翻译及重排序实验分开；官方提交历史2014-09-10。"
+        },
+        {
+          "id": "S-bahdanau",
+          "read_scope": "v7原文摘要、§3.1软读取与§3.2双向RNN段；官方提交历史2014-09-01。"
+        },
+        {
+          "id": "S-gnmt",
+          "read_scope": "v2摘要/引言及实现概述：LSTM、残差、Attention、WordPiece、低精度、覆盖惩罚；署名。"
+        },
+        {
+          "id": "S-transformer",
+          "read_scope": "v7首页、摘要、引言、§3.1编码/解码、残差[11]与因果mask段；并行范围。"
+        },
+        {
+          "id": "S-gpt1",
+          "read_scope": "官方报告首页、摘要、架构Transformer与微调相关正文；核作者Narasimhan及Sutskever。"
+        },
+        {
+          "id": "S-bert",
+          "read_scope": "v2首页、摘要、双向掩码/句对目标；WordPiece直接引用Wu et al. 2016的正文。"
+        },
+        {
+          "id": "S-gpt2",
+          "read_scope": "官方报告摘要、无任务监督迁移和输入条件；以GPT-3脚注核zero-shot历史用语差异。"
+        },
+        {
+          "id": "S-gpt3",
+          "read_scope": "v4摘要、§2.1/§2.3、Table 2.1、Figure 2.2文字图注和关键脚注；核175B/300B、无梯度示例接口及Scaling Laws配置依据。"
+        },
+        {
+          "id": "S-kaplan",
+          "read_scope": "v1原始PDF哈希匹配；首页摘要及导言：交叉熵、条件性幂律、固定预算、较大模型较短训练。"
+        },
+        {
+          "id": "S-chinchilla",
+          "read_scope": "v1首页、摘要、引言、参数/tokens表相关段、MMLU表/正文；核70B/1.4T、280B/300B、同计算预算、67.5与67.6内部差异。"
+        },
+        {
+          "id": "S-zero",
+          "read_scope": "v3首页摘要/引言及状态分片概念；与MegaScale原文ZeRO三阶段和通信段对读。"
+        },
+        {
+          "id": "S-refinedweb",
+          "read_scope": "v1摘要及引言对Hoffmann/Kaplan的直接讨论、网页过滤去重动机与任务边界。"
+        },
+        {
+          "id": "S-laion",
+          "read_scope": "v1摘要、引言数据与过滤说明、OpenCLIP复现及数据未完成/研究用途边界；未复审完整数据版权。"
+        },
+        {
+          "id": "S-megascale",
+          "read_scope": "v1首页/引言、ZeRO状态分片与通信说明、故障与慢节点/恢复段；未独立复算生产性能数值。"
+        },
+        {
+          "id": "S-moe",
+          "read_scope": "v1首页、摘要、引言；稀疏门控与LSTM架构、总容量与计算效率口径，未复验各表。"
+        },
+        {
+          "id": "S-lora",
+          "read_scope": "v2首页、摘要/引言；冻结基座、低秩更新和可合并推理的范围；未审计多租户实际部署。"
+        },
+        {
+          "id": "S-bitter",
+          "read_scope": "作者网页日期及完整讲义引用的四组历史案例和一般教训；未逐案重建历史实验。"
+        },
+        {
+          "id": "S-hardware",
+          "read_scope": "作者原文摘要及动机段：软硬件、不同社区激励和研究机会；未逐案审计全部硬件史。"
+        },
+        {
+          "id": "S-alphago",
+          "read_scope": "Nature排版原文首页、学习/搜索机制、残差网络段、Methods Domain knowledge段；未看棋谱图。"
+        },
+        {
+          "id": "S-instruct",
+          "read_scope": "v1首页摘要、引言、Figure 1文字图注及人类反馈步骤；1.3B/175B比较、提示分布和评价者范围。"
+        },
+        {
+          "id": "S-cot",
+          "read_scope": "v6首页、摘要、示例、dots消融正文；中间文字作用、无参数更新与任务条件。"
+        },
+        {
+          "id": "S-react",
+          "read_scope": "v3首页/摘要和方法动机；推理、动作、环境返回的定义，跨任务结果非普遍胜出。"
+        },
+        {
+          "id": "S-tulu",
+          "read_scope": "v5首页/摘要、目录与SFT/DPO/RLVR流程概述；Llama3.1基座、数据代码配方开放和评价边界。"
+        },
+        {
+          "id": "S-deepvideo",
+          "read_scope": "CVPR原始PDF哈希匹配，首页/摘要、时间融合与Slow Fusion相关段；核Google/Stanford署名。"
+        },
+        {
+          "id": "S-two-stream",
+          "read_scope": "v2摘要、外观/光流的任务定义及DeepVideo参考条目；不将视频分类说成视频生成。"
+        },
+        {
+          "id": "S-vit",
+          "read_scope": "v2原始PDF哈希匹配；首页摘要/引言、patch接口与数据条件；核Jakob Uszkoreit作者。"
+        },
+        {
+          "id": "S-clip",
+          "read_scope": "v1原始PDF哈希匹配；首页动机、图文任务接口和image_encoder/ResNet/ViT/text encoder相关正文；作者表。"
+        },
+        {
+          "id": "S-gan",
+          "read_scope": "v1原始PDF哈希匹配；摘要、对抗框架和理论假设；未逐式证明收敛。"
+        },
+        {
+          "id": "S-diffusion15",
+          "read_scope": "v8首页/摘要及§1、前向扰动和逆过程说明；概率建模的独立问题而非GAN后继产品。"
+        },
+        {
+          "id": "S-ddpm",
+          "read_scope": "v2首页/摘要、Algorithms 1/2、噪声参数化、U-Net/自注意力段；训练监督与采样路径分开。"
+        },
+        {
+          "id": "S-ldm",
+          "read_scope": "v2首页/摘要、§3感知压缩/对抗目标、联合优化条件编码器、§4.3.1 BERT tokenizer段、Appendix自编码器说明。"
+        },
+        {
+          "id": "S-sd14",
+          "read_scope": "官方v1-4模型卡Model Details及checkpoint/LAION续训相关段；固定CLIP文本编码器与LDM引用，main快照不冒充2022原版文件。"
+        },
+        {
+          "id": "S-dit",
+          "read_scope": "v2首页/摘要、§3关于LDM与ViT/patchify的正文；ImageNet类别条件与Transformer去噪器范围。"
+        },
+        {
+          "id": "L-inventory",
+          "read_scope": "source-map的source_pdf、36对象身份/页码/来源、counting与I01—I09；只作来源身份与计数，不采旧review评分。"
+        }
+      ],
+      "non_blocking_notes": [
+        {
+          "requirement_id": "R5",
+          "location": "第2、7节",
+          "issue": "ReLU、Dropout、WordPiece等首次出现未简短解释；可以补几个词，降低额外查询成本。"
+        },
+        {
+          "requirement_id": "R5",
+          "location": "多处章节结尾",
+          "issue": "部分不是/不等于式边界说明重复；可在不删证据限制的前提下收紧。"
+        }
+      ]
     },
     {
       "role": "flagship_final_review",
       "reviewer": {
-        "model": "kimi-k3",
-        "harness": "pi",
-        "run_id": "40804808-def5-4f87-b930-c5dab0f74e9e",
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "codex-gpt56sol-ai-yanyi-strong-review-20261104-01",
         "independent_context": true,
+        "fresh_context": true,
         "explicit_model_override": false,
-        "runtime_provider": "kimi-coding",
-        "runtime_model": "k3"
+        "override_reason": ""
       },
-      "snapshot": {
-        "report_sha256": "c7b30a47130e9202c8dad7bf481d7d2ca960591610799485b11a4582c0d586af",
-        "evidence_sha256": "c53f228705b4d182bffc0fb21571db7b2021940115de2696dec84d2a9e9312f4",
-        "revision_round": 2
-      },
+      "reviewed_on": "2026-11-04",
+      "policy_id": "report-quality-2026-10-18-r2",
+      "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+      "report_sha256": "98505c7e406efbc4bc0ad48a16bddfec38f2207e48887baa4c805e23b39778a1",
+      "evidence_sha256": "8c667b364e344504df93d38c0cbcbf028dd100f1fbf1f2b5ef4e3fef1efad1bd",
+      "snapshot_verified": true,
       "scores": {
-        "evidence_fidelity": 95,
-        "request_coverage": 95,
-        "reasoning_quality": 94,
-        "readability": 90,
-        "limitations": 95
+        "evidence_fidelity": 97,
+        "request_coverage": 97,
+        "reasoning_quality": 97,
+        "readability": 94,
+        "limitations": 98
       },
+      "weighted_score": 96.65,
       "score_reasons": {
-        "evidence_fidelity": "独立字节核对报告与证据双SHA均一致。对全部16条E类跨路线连接逐一回到原文文字层验证：NVIDIA官方短文确把Brook/Buck与CUDA演进相连且未暗示AlexNet直接依赖；Transformer正文employ residual connection并引用He et al.[11]；BERT以WordPiece embeddings (Wu et al.)引用GNMT；GPT-3正文与作者贡献明确以Scaling Laws指导资源配置；RefinedWeb引言引用Hoffmann et al.；MegaScale正文讨论ZeRO状态分片与通信；LAION摘要写明CLIP-filtered pairs且用OpenCLIP在LAION子集训练；LDM v2为BERT-tokenizer加联合训练的Transformer条件编码器经cross-attention进UNet，压缩器用感知+对抗目标（VQGAN式两阶段）；SD v1.4模型卡写明fixed pretrained CLIP ViT-L/14、v1-2上游checkpoint与laion-aesthetics v2 5+；DiT明确以Transformer替换U-Net并遵循ViT实践、实验限于ImageNet类别条件；InstructGPT 1.3B偏好结论被正确限定在指定提示分布。抽查的关键数字（AlexNet 6000万参数/双GTX580 3GB、GPT-3 175B/300B tokens、Chinchilla 70B同预算4倍数据、Bitter Lesson 2019-03-13并纠正讲义2018.08页头）均与原文一致。未发现编造或未读来源充数。扣5分：GPT-2'某些实验使用上下文示例'属对CoQA对话历史的合理但略具解释性的读法；个别机制概括（如'联合训练'）为正确推断而非原文逐字措辞。",
-        "request_coverage": "36个核定对象全部有独立正文段落（背景—问题—关键改变—机制直觉—证据边界—路线作用齐备），讲义封面'36篇'、P12/P28合讲页、P21-25同一篇Bitter Lesson的处理与source-map核定口径一致，错链（P40 Tulu、P42 DeepVideo）与本地错配PDF均在文中声明不用作依据。三视角被编入共同问题链而非孤立摘要：历史（条件成熟度）、范式（复用对象从词表→上下文网络→任务接口→偏好/可核验反馈）、人与组织（Buck/CUDA工业线、GNMT研究+服务团队、LAION/Tülu3开放条件）各有落点。R1-R10逐条对应：直接采用/支撑条件/问题承接/并行对照四类关系在正文与连接索引中显式分开，延伸来源（NVIDIA历史、Hardware Lottery、SD v1.4）严格限定用途，未扩成无边百科。",
-        "reasoning_quality": "因果纪律出色：明确写出'叙述相邻不代表直接继承'，Bahdanau首次公开略早于seq2seq的顺序、ZeRO(2019)早于Chinchilla(2022)的时序、AlphaGo Zero不作LLM thinking祖先、2015扩散引用GAN与共享评估代码不等于方法继承等处均主动拆掉易误推的箭头。'训练如何形成监督与生成如何展开不是同一条计算路径'、'蒸馏/ZeRO/MoE/LoRA不是四代压缩技术'等辨析有真实解释力。人物线只用可核共同参与（Sutskever、Vinyals、Narasimhan、Radford均已回原文署名核对）作线索，方法继承仍由设计与引用确认。扣6分：少数连接（如DDPM→LDM'问题承接'）依赖论文间定位陈述而非显式引用链，正文已如实表述但读者无法从索引直接看出证据强度差异。",
-        "readability": "可独立阅读：问题地图入口表、总路线图（已声明为阅读地图非因果谱系）、连接索引、36对象定位表、新论文五问与思考追问构成完整自洽结构；机制解释密度与样章风格一致，基本无模板化复述。扣10分：第三、四部分个别段落信息密度高，单段承载多个限定条件，初次阅读的读者可能需要回看；文字版路线图为单色关系图（符合声明），对'哪条边最强'没有视觉分级。",
-        "limitations": "边界声明具体且与正文一致：未训练复现、未做全量公式/附录审计、争议精确分数（Transformer英法、Chinchilla MMLU、Tulu IFEval口径）不入结论、SD仅v1.4模型卡快照未pin commit且不外推其他版本、Bitter Lesson/Hardware Lottery按作者论证理解不作普遍定律、人物不审未核现职。讲义作为二手材料的身份也被明示。扣分点仅为：局限条款分散在脚注与'来源与适用范围'节，未集中成单页清单，属可选改进。"
+        "evidence_fidelity": "先于正文建立来源内容地图，并对证据账本登记的全部59项critical claim及41个来源完成复核。首轮直接重读讲义文本层及序列、缩放、语言预训练/对齐、系统、视觉和生成路线的一手材料；补核轮又按evidence定位定向阅读Brook/CUDA历史、AlexNet、ResNet、蒸馏、GNMT、LAION、Hardware Lottery、Tülu 3、DeepVideo和双流网络的身份、摘要、相关机制段、引用/署名、版本与必要结果。新增70B/1.4T对280B/300B及1.3B对175B均保留同训练计算预算或特定提示分布/评价者偏好的口径；17条补核连接与身份claim均能由原文支持。未给满分，因为复核按报告风险定向阅读，没有重新训练模型、复算全部表格或穷尽每篇附录和图像。",
+        "request_coverage": "R1—R10全部得到正文回答；39个coverage unit与36个核心对象均有稳定锚点。报告增加基础术语、两段完整跨路线行程、连接索引、对象定位和新论文阅读方法，重点落在背景、问题、机制直觉与发展作用，符合少数学和整体路线优先的反馈。",
+        "reasoning_quality": "推理没有把时间相邻、同作者或共享名词冒充因果。报告持续区分直接采用、使能条件、同问题上的修正与并行探索，并把训练目标、推理组织、环境交互、数据工程和系统条件分层。Bitter Lesson与Hardware Lottery被作为互补视角而非统一历史定律，人物线也回到具体条件和组件传播。",
+        "readability": "开篇先给主线和阅读入口，术语表降低门槛；31个问题式小节、两段路线 walkthrough、四类关系和连接表便于回查。工作台真实renderer输出中41条脚注、45处引用和49个稳定锚点均解析，往返/片段链接有DOM目标；桌面与500px窄屏切片可读，页面无横向溢出，宽表和代码块局部滚动。篇幅约7.3万字节，连接表与文末长注仍需要持续阅读，因此不评满分。",
+        "limitations": "正文和evidence清楚说明原讲义的二手性质、实际阅读版本、未复现训练、未穷尽优先权、未固定SD模型卡commit、未建立DiT到Sora谱系，以及人物履历和视觉核验范围。不同版本、任务、预算和评价口径未被掩盖；最终读者学习效果也明确留给真实反馈。"
       },
       "critical_claim_ids_checked": [
         "C-brook",
@@ -505,62 +755,9 @@
         "E-product",
         "E-dit-meeting",
         "E-behavior",
-        "E-interaction"
-      ],
-      "source_ids_checked": [
-        "S-lecture",
-        "S-brook",
-        "S-gpu-history",
-        "S-alexnet",
-        "S-resnet",
-        "S-distill",
-        "S-word2vec",
-        "S-seq2seq",
-        "S-bahdanau",
-        "S-gnmt",
-        "S-transformer",
-        "S-gpt1",
-        "S-bert",
-        "S-gpt2",
-        "S-gpt3",
-        "S-kaplan",
-        "S-chinchilla",
-        "S-zero",
-        "S-refinedweb",
-        "S-laion",
-        "S-megascale",
-        "S-moe",
-        "S-lora",
-        "S-bitter",
-        "S-hardware",
-        "S-alphago",
-        "S-instruct",
-        "S-cot",
-        "S-react",
-        "S-tulu",
-        "S-deepvideo",
-        "S-two-stream",
-        "S-vit",
-        "S-clip",
-        "S-gan",
-        "S-diffusion15",
-        "S-ddpm",
-        "S-ldm",
-        "S-sd14",
-        "S-dit",
-        "L-inventory"
-      ],
-      "requirement_ids_checked": [
-        "R1",
-        "R2",
-        "R3",
-        "R4",
-        "R5",
-        "R6",
-        "R7",
-        "R8",
-        "R9",
-        "R10"
+        "E-interaction",
+        "C-basics",
+        "C-route-walkthroughs"
       ],
       "coverage_unit_ids_checked": [
         "U-brook",
@@ -605,558 +802,306 @@
       ],
       "source_content_map": [
         {
-          "id": "S-lecture",
-          "title": "谢青池《AI演义：36篇论文开启你的探索之旅》",
+          "id": "SCM-01",
+          "title": "讲义的总问题：四类条件与历史／范式／人物三视角",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
-            "S-lecture"
+            "S-lecture",
+            "S-bitter"
           ],
           "matched_coverage_unit_ids": [
             "U-lenses",
             "U-reader-method",
             "U-cross-route"
           ],
-          "notes": "核读封面署名（文字层有缺字但身份映射已核）、36篇口径、三视角与硬件彩票提法、P21-25 Bitter Lesson连续页；报告对讲义2018.08页头、P40/P42错链的纠正均与该文字层一致。"
+          "notes": "讲义要求从背景、问题、影响与人物组织理解路线；报告在导言、总图、第七至九部分落实，并说明讲述顺序不等于发表或因果顺序。"
         },
         {
-          "id": "S-brook",
-          "title": "Brook for GPUs",
+          "id": "SCM-02",
+          "title": "计算抽象、视觉突破与深网络可训练性",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
             "S-brook",
-            "S-gpu-history"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-brook"
-          ],
-          "notes": "Stanford作者稿身份（题名七作者）与§1-6范围核读；报告'抽象映射+传输/调用开销仍存'表述与原文范围相符，未夸大成通用自动并行。"
-        },
-        {
-          "id": "S-gpu-history",
-          "title": "Inside the Programming Evolution of GPU Computing",
-          "importance": "supporting",
-          "assessment": "covered",
-          "source_ids": [
-            "S-gpu-history"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-brook"
-          ],
-          "notes": "原文明确称Brook为CUDA前驱并述Buck入职NVIDIA；报告用途限定为工业化线索，未外推。"
-        },
-        {
-          "id": "S-alexnet",
-          "title": "ImageNet Classification with Deep CNNs",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-alexnet"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-alexnet"
-          ],
-          "notes": "6000万参数、双GTX 580 3GB、跨卡连通性设计均逐字核到；报告'组合而非单技巧'定性准确。"
-        },
-        {
-          "id": "S-resnet",
-          "title": "Deep Residual Learning",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-resnet"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-resnet"
-          ],
-          "notes": "退化问题（训练误差随深度上升）与残差学习表述核到；报告同时保留'极深网络可拟合但泛化不再改善'的边界。"
-        },
-        {
-          "id": "S-distill",
-          "title": "Distilling the Knowledge in a Neural Network",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
+            "S-gpu-history",
+            "S-alexnet",
+            "S-resnet",
             "S-distill"
           ],
           "matched_coverage_unit_ids": [
+            "U-brook",
+            "U-alexnet",
+            "U-resnet",
             "U-distillation"
           ],
-          "notes": "教师分布监督与训练/部署形态分离的概括准确；报告未把蒸馏写成无损拷贝。"
+          "notes": "核心不是单一算法接力，而是编程抽象、数据/配方/GPU组合、残差优化和训练/部署形态分工；报告按不同问题展开并避免Brook直接导致AlexNet等假因果。"
         },
         {
-          "id": "S-word2vec",
-          "title": "Efficient Estimation of Word Representations in Vector Space",
+          "id": "SCM-03",
+          "title": "序列建模：固定交接、动态读取与去递归计算",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
-            "S-word2vec"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-word2vec"
-          ],
-          "notes": "CBOW/Skip-gram局部预测与可复用词表定位准确；'非首次向量化'与原文相关工作脉络一致。"
-        },
-        {
-          "id": "S-seq2seq",
-          "title": "Sequence to Sequence Learning with Neural Networks",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-seq2seq"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-seq2seq"
-          ],
-          "notes": "arXiv:1409.3215，Sutskever一作核到；固定状态交接的表述准确。"
-        },
-        {
-          "id": "S-bahdanau",
-          "title": "Neural Machine Translation by Jointly Learning to Align and Translate",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-bahdanau"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-bahdanau-attention"
-          ],
-          "notes": "arXiv:1409.0473，编号与月份支持报告'首次公开略早于seq2seq'的谨慎表述；逐步加权读取源表示的机制概括准确。"
-        },
-        {
-          "id": "S-gnmt",
-          "title": "Google's Neural Machine Translation System",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-gnmt"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-gnmt"
-          ],
-          "notes": "8层LSTM编码解码、residual+attention+wordpiece逐字核到；'仍为循环编码—解码而非Transformer'的辨析正确。"
-        },
-        {
-          "id": "S-transformer",
-          "title": "Attention Is All You Need",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
+            "S-seq2seq",
+            "S-bahdanau",
+            "S-gnmt",
             "S-transformer"
           ],
           "matched_coverage_unit_ids": [
+            "U-seq2seq",
+            "U-bahdanau-attention",
+            "U-gnmt",
             "U-transformer"
           ],
-          "notes": "residual connection引用He et al.[11]、编码器—解码器attention保留、自回归解码仍逐步，均核到。"
+          "notes": "报告准确保留seq2seq固定状态、Bahdanau逐步读取且仍循环、GNMT工程化循环系统、Transformer训练并行与自回归生成边界，并指出Bahdanau v1较早。"
         },
         {
-          "id": "S-gpt1",
-          "title": "Improving Language Understanding by Generative Pre-Training",
+          "id": "SCM-04",
+          "title": "扩大能力时的不同成本轴",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
-            "S-gpt1"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-gpt1"
-          ],
-          "notes": "作者四人为Radford/Narasimhan/Salimans/Sutskever核到；预训练+任务输入变换+微调的概括与摘要一致。"
-        },
-        {
-          "id": "S-bert",
-          "title": "BERT",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-bert"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-bert"
-          ],
-          "notes": "WordPiece (Wu et al.)引用核到；双向遮蔽与句对目标、与自回归目标分叉的定性准确。"
-        },
-        {
-          "id": "S-gpt2",
-          "title": "Language Models are Unsupervised Multitask Learners",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-gpt2"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-gpt2"
-          ],
-          "notes": "zero-shot无参数/结构修改的原文定义核到；CoQA以对话历史为条件（Table 16 previous question/answer pairs）支持报告'某些实验使用上下文示例'的限定；TL;DR提示核到。"
-        },
-        {
-          "id": "S-gpt3",
-          "title": "Language Models are Few-Shot Learners",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-gpt3"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-gpt3"
-          ],
-          "notes": "zero/one/few-shot区分、175B参数与Scaling Laws指导（图2.2及作者贡献声明）核到；'few-shot改变输入而非任务梯度'准确。"
-        },
-        {
-          "id": "S-kaplan",
-          "title": "Scaling Laws for Neural Language Models",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-kaplan"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-scaling-laws"
-          ],
-          "notes": "有条件经验规律与预算分配偏向大模型短训练的概括准确；报告未写成无条件单调律。"
-        },
-        {
-          "id": "S-chinchilla",
-          "title": "Training Compute-Optimal Large Language Models",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-chinchilla"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-chinchilla"
-          ],
-          "notes": "70B、同Gopher预算、4倍数据、参数与tokens应共同增长的结论逐字核到；'重新测量改变建议而非否定缩放'定性准确。"
-        },
-        {
-          "id": "S-zero",
-          "title": "ZeRO",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-zero"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-zero"
-          ],
-          "notes": "优化器状态/梯度/参数三阶段分片核到；报告正确提示激活与碎片另计、且ZeRO(2019)不能被写成Chinchilla催生。"
-        },
-        {
-          "id": "S-refinedweb",
-          "title": "The RefinedWeb Dataset for Falcon LLM",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-refinedweb"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-refinedweb"
-          ],
-          "notes": "引言直接引用Hoffmann et al. (2022)数据需求核到；过滤/去重+训练对照的方法概括准确。"
-        },
-        {
-          "id": "S-laion",
-          "title": "LAION-5B",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-laion"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-laion5b"
-          ],
-          "notes": "CLIP-filtered pairs与OpenCLIP训练（JUWELS超算）逐字核到；模型—数据反馈回路成立，报告同时保留偏差与版权边界。"
-        },
-        {
-          "id": "S-megascale",
-          "title": "MegaScale",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-megascale"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-megascale"
-          ],
-          "notes": "正文ZeRO状态分片讨论、慢节点与故障隔离核到；ByteDance+北大作者组与'组织资源非技术结论证据'的纪律相符。"
-        },
-        {
-          "id": "S-moe",
-          "title": "Sparsely-Gated Mixture-of-Experts",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-moe"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-sparse-moe"
-          ],
-          "notes": "arXiv:1701.06538v1(2017-01-23)与stacked LSTM系统核到；早于Transformer的时序提醒正确，路由/负载/通信代价概括准确。"
-        },
-        {
-          "id": "S-lora",
-          "title": "LoRA",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
+            "S-distill",
+            "S-zero",
+            "S-megascale",
+            "S-moe",
             "S-lora"
           ],
           "matched_coverage_unit_ids": [
+            "U-distillation",
+            "U-zero",
+            "U-megascale",
+            "U-sparse-moe",
             "U-lora"
           ],
-          "notes": "'可合并且无额外推理延迟'原文限定核到；报告正确将其限制在固定任务可合并线性更新，未推广到动态多任务。"
+          "notes": "报告分别解释部署形态、训练状态显存、万卡持续进度、每输入激活容量和每任务更新增量，没有把它们写成四代同类压缩技术。"
         },
         {
-          "id": "S-bitter",
-          "title": "The Bitter Lesson",
+          "id": "SCM-05",
+          "title": "预算、训练量与数据质量",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
-            "S-bitter"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-bitter-lesson"
-          ],
-          "notes": "March 13, 2019与'general methods that leverage computation'首段核到；报告纠正讲义2018.08页头并限定为观点文章，处理正确。"
-        },
-        {
-          "id": "S-hardware",
-          "title": "The Hardware Lottery",
-          "importance": "supporting",
-          "assessment": "covered",
-          "source_ids": [
-            "S-hardware"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-lenses"
-          ],
-          "notes": "作为讲义硬件彩票视角的必要延伸，报告声明不额外计入36对象，与R10边界一致。"
-        },
-        {
-          "id": "S-alphago",
-          "title": "Mastering the game of Go without human knowledge",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-alphago"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-alphago-zero"
-          ],
-          "notes": "监督对照更会预测职业棋手落子、自弈系统更强的图注核到；报告拒绝'AlphaGo Zero直接导致LLM thinking'箭头，定性纪律好。"
-        },
-        {
-          "id": "S-instruct",
-          "title": "Training language models to follow instructions with human feedback",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-instruct"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-instructgpt"
-          ],
-          "notes": "1.3B优于175B GPT-3的偏好结论被正确限定在'our prompt distribution'；示范—比较—奖励模型—优化的流程概括准确。"
-        },
-        {
-          "id": "S-cot",
-          "title": "Chain-of-Thought Prompting",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-cot"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-cot"
-          ],
-          "notes": "Jason Wei等Google作者核到；'不改参数、改变输入与生成组织'与'多写token不保证收益'的边界均与原文一致。"
-        },
-        {
-          "id": "S-react",
-          "title": "ReAct",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-react"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-react"
-          ],
-          "notes": "Yao(姚顺雨)一作、Narasimhan署名核到；推理—动作—观察交错且不等于每轮训练的表述准确。"
-        },
-        {
-          "id": "S-tulu",
-          "title": "Tülu 3",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-tulu"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-tulu3"
-          ],
-          "notes": "Lambert一作、Llama 3.1基座、SFT/DPO/RLVR阶段逐字核到；'若只数更新模型的训练阶段则是后三项'的口径处理细致。"
-        },
-        {
-          "id": "S-deepvideo",
-          "title": "Large-scale Video Classification with CNNs",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-deepvideo"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-deepvideo"
-          ],
-          "notes": "Google Research+Stanford双署名核到；单帧/时间融合比较与'非生成研究'的定位准确。"
-        },
-        {
-          "id": "S-two-stream",
-          "title": "Two-Stream Convolutional Networks",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-two-stream"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-two-stream"
-          ],
-          "notes": "参考文献[14]引用Karpathy et al.核到，'明确讨论上述视频路线'成立；RGB+光流两路的机制概括准确。"
-        },
-        {
-          "id": "S-vit",
-          "title": "An Image is Worth 16x16 Words",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-vit"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-vit"
-          ],
-          "notes": "作者含Jakob Uszkoreit（与Transformer交集）核到；patch序列化与'小数据未必优于CNN'的边界与原文一致。"
-        },
-        {
-          "id": "S-clip",
-          "title": "Learning Transferable Visual Models From Natural Language Supervision",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
+            "S-kaplan",
+            "S-chinchilla",
+            "S-refinedweb",
+            "S-laion",
             "S-clip"
           ],
           "matched_coverage_unit_ids": [
+            "U-scaling-laws",
+            "U-chinchilla",
+            "U-refinedweb",
+            "U-laion5b"
+          ],
+          "notes": "Scaling Laws与Chinchilla被写成同一预算问题上的新测量和建议修正；RefinedWeb与LAION把训练量需求转成不同的数据管线问题，模型筛选数据的反馈回路和偏差边界均保留。"
+        },
+        {
+          "id": "SCM-06",
+          "title": "语言预训练与任务接口的三次变化",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-word2vec",
+            "S-gpt1",
+            "S-bert",
+            "S-gpt2",
+            "S-gpt3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-word2vec",
+            "U-gpt1",
+            "U-bert",
+            "U-gpt2",
+            "U-gpt3"
+          ],
+          "notes": "从复用词表示到复用上下文网络，再到用输入上下文指定任务；报告区分GPT/BERT目标分叉、GPT-2与GPT-3的zero/few-shot口径及少样本使用与昂贵预训练。"
+        },
+        {
+          "id": "SCM-07",
+          "title": "从能力到目标、推理过程与环境行动",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-alphago",
+            "S-instruct",
+            "S-cot",
+            "S-react",
+            "S-tulu"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-alphago-zero",
+            "U-instructgpt",
+            "U-cot",
+            "U-react",
+            "U-tulu3"
+          ],
+          "notes": "AlphaGo Zero只作清晰反馈的对照；InstructGPT改变行为目标，CoT改变调用组织，ReAct引入外部观察，Tülu 3展开后训练配方。报告未建立AlphaGo到LLM thinking的直接谱系。"
+        },
+        {
+          "id": "SCM-08",
+          "title": "视频、视觉表示与图文任务接口",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-deepvideo",
+            "S-two-stream",
+            "S-vit",
+            "S-clip"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-deepvideo",
+            "U-two-stream",
+            "U-vit",
             "U-clip"
           ],
-          "notes": "作者Radford…Sutskever核到；伪码'image_encoder - ResNet or Vision Transformer'与文本Transformer核到；'非生成器、非权重拼接'的辨析准确。"
+          "notes": "报告区分多帧输入、显式光流、patch序列与自然语言监督，明确CLIP是匹配/任务接口而非生成器，也不把动作识别路线写成文生视频祖先。"
         },
         {
-          "id": "S-gan",
-          "title": "Generative Adversarial Nets",
+          "id": "SCM-09",
+          "title": "生成路线：训练信号、逆过程、潜空间与骨架",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
-            "S-gan"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-gan"
-          ],
-          "notes": "生成器—判别器共同训练与'非完美固定裁判'的表述准确；理想分析假设的边界已声明。"
-        },
-        {
-          "id": "S-diffusion15",
-          "title": "Deep Unsupervised Learning using Nonequilibrium Thermodynamics",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-diffusion15"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-diffusion-2015"
-          ],
-          "notes": "§1.2讨论GAN、致谢与实验使用Goodfellow的Parzen-window代码逐字核到；报告'引用与评估共享≠方法继承'的辨析正确。"
-        },
-        {
-          "id": "S-ddpm",
-          "title": "Denoising Diffusion Probabilistic Models",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-ddpm"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-ddpm"
-          ],
-          "notes": "噪声预测参数化与去噪得分匹配等价、训练监督构造与多步生成分离的概括核到。"
-        },
-        {
-          "id": "S-ldm",
-          "title": "High-Resolution Image Synthesis with Latent Diffusion Models",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-ldm"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-ldm"
-          ],
-          "notes": "两阶段感知压缩（VQGAN式对抗+感知目标）、BERT-tokenizer+联合训练Transformer经cross-attention进UNet、LAION-400M文本条件均逐字核到；报告对v2边界的声明准确。"
-        },
-        {
-          "id": "S-sd14",
-          "title": "Stable Diffusion v1-4 Model Card",
-          "importance": "supporting",
-          "assessment": "covered",
-          "source_ids": [
-            "S-sd14"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-ldm",
-            "U-cross-route"
-          ],
-          "notes": "fixed pretrained CLIP ViT-L/14、v1-2上游、laion-aesthetics v2 5+与10%条件丢弃逐字核到；未pin commit的局限已声明，报告未外推到其他版本。"
-        },
-        {
-          "id": "S-dit",
-          "title": "Scalable Diffusion Models with Transformers",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
+            "S-gan",
+            "S-diffusion15",
+            "S-ddpm",
+            "S-ldm",
+            "S-sd14",
             "S-dit"
           ],
           "matched_coverage_unit_ids": [
+            "U-gan",
+            "U-diffusion-2015",
+            "U-ddpm",
+            "U-ldm",
             "U-dit"
           ],
-          "notes": "替换U-Net、遵循ViT实践、潜空间patch化、ImageNet类别条件边界均核到；报告拒绝外推文生视频/Sora谱系。"
+          "notes": "GAN与扩散被保留为并行机制；2015 diffusion到DDPM为方法家族延续，LDM改变计算空间，SD v1.4限定具体CLIP/LAION组合，DiT限定类别条件ImageNet与LDM框架。"
         },
         {
-          "id": "L-inventory",
-          "title": "AI演义发展节点与来源身份核定清单（source-map.json）",
+          "id": "SCM-10",
+          "title": "Bitter Lesson与硬件彩票的解释边界",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
-            "L-inventory"
+            "S-bitter",
+            "S-hardware"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-bitter-lesson",
+            "U-lenses"
+          ],
+          "notes": "报告把Sutton作为作者的历史归纳与方法论主张，把Hooker作为软硬件和研究激励的补充；两者未被合成单因果定律。"
+        },
+        {
+          "id": "SCM-11",
+          "title": "人物与机构如何进入技术史",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-alexnet",
+            "S-seq2seq",
+            "S-distill",
+            "S-gnmt",
+            "S-gpt1",
+            "S-clip",
+            "S-react",
+            "S-tulu",
+            "S-dit"
           ],
           "matched_coverage_unit_ids": [
             "U-lenses",
             "U-cross-route"
           ],
-          "notes": "实读source-map.json（SHA 82a789b2…与evidence inventory.sha256一致）：scope明确不声称全书事实核完/36篇全部精读；source_pdf页数51、PDF sha256 197d1068…与evidence S-lecture一致、text_layer_sha256 a2aab6d1…与本次核读缓存一致；counting为33论文+2研究报告(GPT-1/GPT-2)+1观点文章(Bitter Lesson)=36，P12/P28各拆两篇、P21–25合为一篇，basis明说不冒称作者原始计数意图——与报告'对应关系'表和36对象定位表逐项相符。I01–I09身份条目逐条与正文/脚注核对：I01 Bahdanau 2014-09-01早于seq2seq 2014-09-10（我已核arXiv号1409.0473/1409.3215）；I03本地AlphaZero错配、I04本地Brook错配为P vs NP论文，报告均声明不用错配文件；I05 P40错链2407.15541实为气体动理论论文，报告改用2411.15124（S-tulu已核）；I06 P42错链为引力理论论文，报告改用CVPR官方入口；I07 LDM(2021-12-20)与SD产品(2022-08-22)分身份，context_objects将stable-diffusion-product列为非主线背景；I08 Bitter Lesson按作者原文2019-03-13；I09题名变体处理正确。I10–I16的pending类别（历史优先性、量化数字、人物履历、因果史、日期口径、Tulu作者姓名变体）在报告中均未写成事实，与局限声明一致。该清单是身份冻结快照而非全书进度，报告未据其省略重要对象。"
+          "notes": "共同署名只作为研究网络线索；正文把人物落到数据、系统、服务、标注、资源和组件传播，并明确仍需设计、引用和实验确认技术继承。"
+        },
+        {
+          "id": "SCM-12",
+          "title": "独立阅读脚手架、对象完整性与证据限制",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "L-inventory"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-reader-method",
+            "U-cross-route"
+          ],
+          "notes": "术语表、总路线、两段walkthrough、连接表、36对象定位与五问阅读法使正文可独立使用；来源层级、版本、未复现和未视觉核验边界均在正文及账本说明。"
         }
+      ],
+      "source_ids_checked": [
+        "S-lecture",
+        "S-brook",
+        "S-gpu-history",
+        "S-alexnet",
+        "S-resnet",
+        "S-distill",
+        "S-word2vec",
+        "S-seq2seq",
+        "S-bahdanau",
+        "S-gnmt",
+        "S-transformer",
+        "S-gpt1",
+        "S-bert",
+        "S-gpt2",
+        "S-gpt3",
+        "S-kaplan",
+        "S-chinchilla",
+        "S-zero",
+        "S-refinedweb",
+        "S-laion",
+        "S-megascale",
+        "S-moe",
+        "S-lora",
+        "S-bitter",
+        "S-hardware",
+        "S-alphago",
+        "S-instruct",
+        "S-cot",
+        "S-react",
+        "S-tulu",
+        "S-deepvideo",
+        "S-two-stream",
+        "S-vit",
+        "S-clip",
+        "S-gan",
+        "S-diffusion15",
+        "S-ddpm",
+        "S-ldm",
+        "S-sd14",
+        "S-dit",
+        "L-inventory"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6",
+        "R7",
+        "R8",
+        "R9",
+        "R10"
       ],
       "unsupported_claims": [],
       "missing_requirements": [],
       "hard_failures": [],
-      "notes": "独立终审流程：先以字节核对报告与证据双SHA（均一致），再从原始资料库按来源分别核读身份、背景、方法与结论段落，形成自有连接地图后才通读报告与evidence；未读取既有review.json及其历史，本条目分数独立给出。核读方式：40个来源全部至少完成身份级核对（题名/作者/版本/arXiv号），其中约25个完成主张级原文核对（正文相关段落、图注、参考文献、作者贡献声明），16条E类连接逐一回到两端原文确认其关系类型，未发现因年份相邻或共同作者而补造因果的情况。协调者的链接/渲染检查记录（134内部链接、36对象锚点、无缺失目标、无重复id、双宽度无溢出）已核读其checks.json并引用，未声称亲见截图。报告的修订轮次变更（revision 2补充已核作者姓名与合作锚点）与revision_note一致，我所核对的具名段落（吴永辉/GNMT、姚顺雨/ReAct、Narasimhan GPT-1→ReAct、Uszkoreit Transformer→ViT、Lambert/Tülu3）均回到原文署名验证通过。非问题观察（不影响通过）：(1) GPT-2'某些实验使用上下文示例'是对CoQA对话历史的合理但略具解释性的表述，原文支持但措辞可更精确；(2) 局限条款分散于脚注与末节，可集中；(3) 连接索引未区分证据强度等级（显式引用vs定位陈述），可作为后续可选改进。以上均为润色级建议，不构成硬失败；未发现编造来源、关键主张无支撑、关键数字不符、核心需求缺失或安全隐私问题。 补查（同一终审延续，SHA未变）：应机器门禁要求实读L-inventory=source-map.json，覆盖scope、source_pdf、counting、reading_map、pages(51)、objects(36)、context_objects、I01–I17全部条目。结论：核定口径（51页；33论文+2研究报告+1文章=36；P12/P28合讲、P21–25同文）与报告及evidence完全一致；I01–I09九项身份/日期/错链纠正全部在正文中得到正确执行；I10–I16未决类别未被冒充为已核事实；I17所述未生成.md已由后续source-map.md补齐且与JSON一致。未发现需要修正评分或新增unsupported/hard_failure的真实问题，分数维持依据不变。L-inventory已补入source_ids_checked与source_content_map。"
+      "notes": "来源优先复核：在读取报告前，先依据51页讲义文本层、来源身份地图和关键一手材料建立12个内容单元；未读取旧review分数作为证据。正式内容审查绑定report SHA256 98505c7e406efbc4bc0ad48a16bddfec38f2207e48887baa4c805e23b39778a1 与 evidence SHA256 8c667b364e344504df93d38c0cbcbf028dd100f1fbf1f2b5ef4e3fef1efad1bd。初始冻结快照后协调者仅增加paper-sd14稳定锚点并同步C-sd14 anchor，本记录使用修正后的双SHA。实际来源复核以高风险跨论文连接和新增数字为重点；其余对象完成覆盖/锚点/evidence一致性检查，但本轮不声称重新复现36项训练或穷尽全部附录。讲义文字提取存在丢字，未把它或未亲读的论文图表冒充视觉检查。阅读呈现检查包括工作台renderer真实输出、npm测试、DOM片段/脚注往返检查，以及桌面和500px窄屏截图；未对原讲义页面做本轮视觉审校。当前内容层面建议通过，最终状态仍由质量脚本结合另一位独立Reviewer计算。 本Reviewer亲自生成并查看的呈现证据为 /tmp/ai-yanyi-desktop-top.png、/tmp/ai-yanyi-desktop-footnotes-slice.png、/tmp/ai-yanyi-narrow-sd14-slice.png、/tmp/ai-yanyi-narrow-connections-slice.png；对应DOM/渲染产物为 /tmp/ai-yanyi-render-detail.json 与 /tmp/ai-yanyi-render-preview.html。另读取并复验主Agent的真实HTTP工作台收据 /tmp/ai-yanyi-review-browser.json：1440px与390px两档均记录41条注释、45处引用、无broken/duplicates、无reader/page overflow及无page errors；本Reviewer未据此声称亲自查看主Agent的整页截图。 补核轮按质量脚本要求补齐全部critical范围：定向核验C-alexnet、C-brook、C-deepvideo、C-distillation、C-gnmt、C-hardware-lens、C-identity-corrections、C-laion5b、C-people、C-resnet、C-tulu3、C-two-stream、E-data-loop、E-gpu、E-nmt、E-residual、E-wordpiece；同时亲读对应S-alexnet、S-brook、S-deepvideo、S-distill、S-gnmt、S-gpu-history、S-hardware、S-laion、S-resnet、S-tulu、S-two-stream的相关原文范围。核验结果未产生新的unsupported claim、missing requirement或hard failure。"
     }
   ],
   "decision": {
     "status": "pass",
-    "score": 94.05,
+    "score": 94.95,
     "evaluated_on": "2026-11-04",
     "policy_id": "report-quality-2026-10-18-r2",
     "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
-    "report_sha256": "a2ff5c1f5e019047b07c2bb0f7320940502b779cbbfb83f09b9b53972475cc08",
-    "evidence_sha256": "c53f228705b4d182bffc0fb21571db7b2021940115de2696dec84d2a9e9312f4"
+    "report_sha256": "2327da48b5766c38ac1a312a7e19b6859b93c3fc70855525d6e93c9a1ffea572",
+    "evidence_sha256": "8c667b364e344504df93d38c0cbcbf028dd100f1fbf1f2b5ef4e3fef1efad1bd"
   },
   "history": [
     {
@@ -1578,6 +1523,1164 @@
         }
       ],
       "decision": {}
+    },
+    {
+      "revision_round": 2,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "glm-5.3",
+            "harness": "pi",
+            "run_id": "073cb06f-b8d0-4360-bd79-d1175c3fd2b5",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": ""
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 96,
+            "request_coverage": 94,
+            "reasoning_quality": 95,
+            "readability": 93,
+            "limitations": 95
+          },
+          "score_reasons": {
+            "evidence_fidelity": "本轮增量复核：开题实核revision 2双SHA-256（报告与evidence均与任务给定一致）；逐行核对revision2.diff共7处改动（GNMT补吴永辉、CoT补Jason Wei等Google研究者、ReAct补姚顺雨/Karthik Narasimhan、Tulu补Nathan Lambert、DiT补William Peebles与谢赛宁、人物线补Narasimhan共同参与、[^people]脚注补ReAct署名），并回到原文库首页逐一核验：Yonghui Wu为GNMT第一作者、Jason Wei为CoT第一作者且全队署名Google Research Brain Team、Shunyu Yao与Karthik Narasimhan同列ReAct作者表（Princeton邮箱）、Nathan Lambert为Tulu v5第一作者、William Peebles与Saining Xie为DiT仅有的两位作者——全部属实。evidence的C-people来源同步加入S-react/S-cot/S-dit，五条对象claim的evidence字段同步'首页作者署名'定位。原审完成的40项来源与57条声明核查结论仍适用（正文其余部分经diff逆向比对与原审稿一致，并抽查36锚点、16条连接索引、四方法对照表及AlphaGo/MoE/LDM等关键防线语句均在原位）。未发现捏造、错配或无支撑声明。",
+            "request_coverage": "原审结论维持并小幅上修：R1–R10全部落实，revision 2针对原审唯一实质partial项（人物线密度）补入5处原文已核具名锚点，人物线由选择性点名升级为覆盖GNMT/CoT/ReAct/Tulu/DiT的具名叙事，且新增'Narasimhan参与GPT-1与ReAct'的人际线连接。剩余轻微保留不变：1999/2001 GPU前史年份与前言资源清单仍省略（有scope声明、符合standalone定位），front-matter status仍为in_progress（待定稿环节处理）。分数仅因人物线缺口的实质收窄而调整，非因'加了名字'本身。",
+            "reasoning_quality": "增量检查确认修订未引入方法因果误写：'Narasimhan参与GPT-1与ReAct，将人物线索从预训练迁移接到了交互研究'明确停留在共同参与/线索层面，[^people]脚注保留'共同参与只支持研究网络的连续性；具体方法继承另据正文所列设计与引用'并同步纳入ReAct署名依据；Jason Wei等标注'Google研究者'与原文首页机构署名一致；无新增技术推断或后续履历。原审确认的四类连接类型区分、时序纠正（Bahdanau/MoE/ZeRO）、AlphaGo Zero主题对照、GPT-2 zero-shot用语辨析、LDM/SD版本分层等推理质量均未受修订影响。",
+            "readability": "修订为纯增量具名插入，未改变章节结构、密度与独立可读性；36锚点、16条连接索引、路线图与问题入口表、思考追问与对应关系表完整。渲染/链接检查仍以协调者机器收据为准，本复核未亲自视检截图，按文本与结构评估，判断与原审一致。",
+            "limitations": "evidence的limitations九条与正文'来源与适用范围'未变，仍明确非复现、二手材料、争议数值不依赖、SD v1.4快照边界、人物履历未全面审计；C-people新增描述也自行限定'不升级为方法因果'。与原审所见一致，无隐瞒性省略。"
+          },
+          "critical_claim_ids_checked": [
+            "C-brook",
+            "C-alexnet",
+            "C-resnet",
+            "C-distillation",
+            "C-word2vec",
+            "C-seq2seq",
+            "C-bahdanau-attention",
+            "C-gnmt",
+            "C-transformer",
+            "C-gpt1",
+            "C-bert",
+            "C-gpt2",
+            "C-gpt3",
+            "C-scaling-laws",
+            "C-chinchilla",
+            "C-zero",
+            "C-megascale",
+            "C-laion5b",
+            "C-refinedweb",
+            "C-sparse-moe",
+            "C-lora",
+            "C-alphago-zero",
+            "C-instructgpt",
+            "C-cot",
+            "C-react",
+            "C-tulu3",
+            "C-deepvideo",
+            "C-two-stream",
+            "C-vit",
+            "C-clip",
+            "C-gan",
+            "C-diffusion-2015",
+            "C-ddpm",
+            "C-ldm",
+            "C-sd14",
+            "C-dit",
+            "C-bitter-lesson",
+            "C-hardware-lens",
+            "C-people",
+            "C-inventory",
+            "C-identity-corrections",
+            "E-gpu",
+            "E-residual",
+            "E-nmt",
+            "E-wordpiece",
+            "E-pretraining",
+            "E-scale-config",
+            "E-data-demand",
+            "E-system",
+            "E-visual-backbone",
+            "E-data-loop",
+            "E-latent",
+            "E-adversarial-component",
+            "E-product",
+            "E-dit-meeting",
+            "E-behavior",
+            "E-interaction"
+          ],
+          "coverage_unit_ids_checked": [
+            "U-brook",
+            "U-alexnet",
+            "U-resnet",
+            "U-distillation",
+            "U-word2vec",
+            "U-seq2seq",
+            "U-bahdanau-attention",
+            "U-gnmt",
+            "U-transformer",
+            "U-gpt1",
+            "U-bert",
+            "U-gpt2",
+            "U-gpt3",
+            "U-scaling-laws",
+            "U-chinchilla",
+            "U-zero",
+            "U-megascale",
+            "U-laion5b",
+            "U-refinedweb",
+            "U-sparse-moe",
+            "U-lora",
+            "U-alphago-zero",
+            "U-instructgpt",
+            "U-cot",
+            "U-react",
+            "U-tulu3",
+            "U-deepvideo",
+            "U-two-stream",
+            "U-vit",
+            "U-clip",
+            "U-gan",
+            "U-diffusion-2015",
+            "U-ddpm",
+            "U-ldm",
+            "U-dit",
+            "U-bitter-lesson",
+            "U-lenses",
+            "U-reader-method",
+            "U-cross-route"
+          ],
+          "source_content_map": [
+            {
+              "id": "SC-L-front",
+              "title": "讲义前言：读论文动机、AI辅助学习法与学习资源清单",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S-lecture"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-reader-method"
+              ],
+              "notes": "§9与导言承接阅读目的、框架优先与工具辅助，并明确不把个人数学准备路径当读者门槛；资源清单本身被有意省略，符合独立路线报告定位。"
+            },
+            {
+              "id": "SC-L-lenses",
+              "title": "三视角（历史/范式/人物）+四要素（芯片/infra/数据/模型结构）+总路线图",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-lecture"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-lenses"
+              ],
+              "notes": "导言复述三视角并转化为问题主线；四要素化为'架构、数据、算力与工程相互制约的条件'与路线图'共同条件'层，未逐字复述'四要素'提法但语义保全。"
+            },
+            {
+              "id": "SC-L-gpu-prehistory",
+              "title": "1999 GeForce 256 / 2001 GeForce 3 可编程shader前史",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S-lecture"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-brook"
+              ],
+              "notes": "§1以'GPU原本面向图形处理、算法要改写成纹理与着色器操作'承接背景；具体年份与机型未保留，对发展路径主旨影响很小。"
+            },
+            {
+              "id": "SC-L-paradigm",
+              "title": "模型范式线12对象：Brook→AlexNet→seq2seq/Attention→ResNet→蒸馏→Transformer→AlphaGo Zero→MoE→CoT→LoRA→ReAct",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-lecture",
+                "S-brook",
+                "S-alexnet",
+                "S-seq2seq",
+                "S-bahdanau",
+                "S-resnet",
+                "S-distill",
+                "S-transformer",
+                "S-alphago",
+                "S-moe",
+                "S-cot",
+                "S-lora",
+                "S-react"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-brook",
+                "U-alexnet",
+                "U-seq2seq",
+                "U-bahdanau-attention",
+                "U-resnet",
+                "U-distillation",
+                "U-transformer",
+                "U-alphago-zero",
+                "U-sparse-moe",
+                "U-cot",
+                "U-lora",
+                "U-react"
+              ],
+              "notes": "全部12对象各成一节并按问题重组；每节含背景/问题/机制直觉/作用，未逐篇公式化。"
+            },
+            {
+              "id": "SC-L-infra",
+              "title": "Infra与数据线7对象：ZeRO、Scaling Laws、Chinchilla、LAION-5B、RefinedWeb、MegaScale、Bitter Lesson",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-lecture",
+                "S-zero",
+                "S-kaplan",
+                "S-chinchilla",
+                "S-laion",
+                "S-refinedweb",
+                "S-megascale",
+                "S-bitter"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-zero",
+                "U-scaling-laws",
+                "U-chinchilla",
+                "U-laion5b",
+                "U-refinedweb",
+                "U-megascale",
+                "U-bitter-lesson"
+              ],
+              "notes": "第三部分按'预算决策→显存→数据→持续运行'串成资源主线，Bitter Lesson单列第七部分；MoE/LoRA作为效率问题并入，未机械保留讲义章序但年代与关系类型保留。"
+            },
+            {
+              "id": "SC-L-language",
+              "title": "语言线8对象：Word2Vec→GNMT→GPT-1→BERT→GPT-2→GPT-3→InstructGPT→Tulu 3",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-lecture",
+                "S-word2vec",
+                "S-gnmt",
+                "S-gpt1",
+                "S-bert",
+                "S-gpt2",
+                "S-gpt3",
+                "S-instruct",
+                "S-tulu"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-word2vec",
+                "U-gnmt",
+                "U-gpt1",
+                "U-bert",
+                "U-gpt2",
+                "U-gpt3",
+                "U-instructgpt",
+                "U-tulu3"
+              ],
+              "notes": "'复用表示→复用网络→复用能力→目标与行动'的三次改写叙事完整覆盖8对象，含GPT-1/BERT目标分叉与GPT-2/3上下文接口两处合并节的辨析。"
+            },
+            {
+              "id": "SC-L-multimodal",
+              "title": "多模态线9对象：DeepVideo→双流→GAN→Diffusion2015→DDPM→ViT→CLIP→LDM/SD→DiT",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-lecture",
+                "S-deepvideo",
+                "S-two-stream",
+                "S-gan",
+                "S-diffusion15",
+                "S-ddpm",
+                "S-vit",
+                "S-clip",
+                "S-ldm",
+                "S-sd14",
+                "S-dit"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-deepvideo",
+                "U-two-stream",
+                "U-gan",
+                "U-diffusion-2015",
+                "U-ddpm",
+                "U-vit",
+                "U-clip",
+                "U-ldm",
+                "U-dit"
+              ],
+              "notes": "识别线（输入单位/监督/接口）与生成线（训练信号/计算空间/骨干）分开组织，LDM与SD v1.4分层处理；生成与识别并行发展、非先后阶段的定位与讲义一致且更严谨。"
+            },
+            {
+              "id": "SC-L-bitter",
+              "title": "Bitter Lesson全文：国际象棋/围棋/语音/视觉四案例与两条一般教训",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-bitter"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-bitter-lesson"
+              ],
+              "notes": "报告以'答案还是发现答案的方法'重构其核心问题，保留搜索+学习与避免内置人类发现的论旨，并明确其为归纳性观点文章而非统一证明；四案例未逐个展开但论证结构保全。"
+            },
+            {
+              "id": "SC-L-people",
+              "title": "各对象作者侧写与人物去向（Ian Buck、Hinton系、姚顺雨、Jason Wei、Nathan Lambert、吴永辉、谢赛宁等）",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-lecture"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-lenses",
+                "U-people"
+              ],
+              "notes": "报告将人物线主题化为'谁改变了哪个条件'并保留Sutskever/Vinyals/Radford/Uszkoreit/Buck/Karpathy/Simonyan等具体锚点，明确拒绝履历化；但讲义侧写中约半数人物（姚顺雨、Jason Wei、Denny Zhou、Edward Hu、Nathan Lambert、吴永辉、谢赛宁、William Peebles）未具名出现。当前处理符合用户'人物须具体而非名单'与串线优先的要求，故记partial而非missing，修订时可选补两三处具名锚点。"
+            },
+            {
+              "id": "SC-L-timeline",
+              "title": "各章编年时间线与交叉时序（MoE早于Transformer页序、LoRA早于CoT页序等）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-lecture"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-cross-route"
+              ],
+              "notes": "36对象表按核定首发年份排列，正文在MoE、ZeRO、seq2seq/Attention等处明确纠正讲述顺序与发表顺序的差异，与讲义route_order_notes一致。"
+            },
+            {
+              "id": "SC-L-alphago-thinking",
+              "title": "讲义断言：AlphaGo Zero启发OpenAI thinking模式/test-time compute",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S-lecture"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-alphago-zero"
+              ],
+              "notes": "报告改写为主题对照并显式说明不能仅凭'自弈与推理'画因果箭头；1600次MCTS等未核数字未采用。此处理比讲义原断言更可辩护，属覆盖而非遗漏。"
+            },
+            {
+              "id": "SC-L-inventory",
+              "title": "36对象计数口径与合讲页结构（P12/P28拆2、P21–25合1）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-lecture"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-cross-route",
+                "U-reader-method"
+              ],
+              "notes": "报告对应关系表与source-map核对一致：33论文+2研究报告+1观点文章、10–20/21–31/32–40/41–50/51分页映射准确。"
+            }
+          ],
+          "source_ids_checked": [
+            "S-lecture",
+            "S-brook",
+            "S-gpu-history",
+            "S-alexnet",
+            "S-resnet",
+            "S-distill",
+            "S-word2vec",
+            "S-seq2seq",
+            "S-bahdanau",
+            "S-gnmt",
+            "S-transformer",
+            "S-gpt1",
+            "S-bert",
+            "S-gpt2",
+            "S-gpt3",
+            "S-kaplan",
+            "S-chinchilla",
+            "S-zero",
+            "S-refinedweb",
+            "S-laion",
+            "S-megascale",
+            "S-moe",
+            "S-lora",
+            "S-bitter",
+            "S-hardware",
+            "S-alphago",
+            "S-instruct",
+            "S-cot",
+            "S-react",
+            "S-tulu",
+            "S-deepvideo",
+            "S-two-stream",
+            "S-vit",
+            "S-clip",
+            "S-gan",
+            "S-diffusion15",
+            "S-ddpm",
+            "S-ldm",
+            "S-sd14",
+            "S-dit",
+            "L-inventory"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6",
+            "R7",
+            "R8",
+            "R9",
+            "R10"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "独立primary复核revision 2，沿用同一会话与run_id，未派生其他模型。范围声明：40项来源核查、57条声明核对、12单元独立内容地图与16条跨路线连接核验系revision 1原审完成，本轮为增量复验——(1)实核新双SHA-256均与任务给定一致；(2)逐行核对revision2.diff的7处改动并回到原文库S-gnmt/S-cot/S-react/S-tulu/S-dit首页验证5组姓名与机构（Yonghui Wu、Jason Wei与Google Research Brain Team、Shunyu Yao与Karthik Narasimhan、Nathan Lambert、William Peebles与Saining Xie），全部属实；(3)检查新增人际线'Narasimhan参与GPT-1与ReAct'，确认为共同参与线索而非方法因果，脚注同步收窄；(4)核evidence同步：C-people来源加S-react/S-cot/S-dit，五条对象claim补'首页作者署名'定位，requirements、source_coverage与其余claims未变；(5)对未改动正文做结构抽查（36锚点、16条连接、关键防线语句、四方法表均在原位），并以diff给定信息确认其余正文与原审SHA一致。结论：修订完全落在原审建议范围内，未引入新缺陷；无硬失败、无无支撑声明、无缺失需求。人物线由partial改善，request_coverage 92→94，其余维度维持；加权94.85。播客审计不适用。缺第二Reviewer与strong reviewer仍属后续环节，本记录不构成终审通过，未finalize。"
+        },
+        {
+          "role": "flagship_final_review",
+          "reviewer": {
+            "model": "kimi-k3",
+            "harness": "pi",
+            "run_id": "40804808-def5-4f87-b930-c5dab0f74e9e",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "runtime_provider": "kimi-coding",
+            "runtime_model": "k3"
+          },
+          "snapshot": {
+            "report_sha256": "c7b30a47130e9202c8dad7bf481d7d2ca960591610799485b11a4582c0d586af",
+            "evidence_sha256": "c53f228705b4d182bffc0fb21571db7b2021940115de2696dec84d2a9e9312f4",
+            "revision_round": 2
+          },
+          "scores": {
+            "evidence_fidelity": 95,
+            "request_coverage": 95,
+            "reasoning_quality": 94,
+            "readability": 90,
+            "limitations": 95
+          },
+          "score_reasons": {
+            "evidence_fidelity": "独立字节核对报告与证据双SHA均一致。对全部16条E类跨路线连接逐一回到原文文字层验证：NVIDIA官方短文确把Brook/Buck与CUDA演进相连且未暗示AlexNet直接依赖；Transformer正文employ residual connection并引用He et al.[11]；BERT以WordPiece embeddings (Wu et al.)引用GNMT；GPT-3正文与作者贡献明确以Scaling Laws指导资源配置；RefinedWeb引言引用Hoffmann et al.；MegaScale正文讨论ZeRO状态分片与通信；LAION摘要写明CLIP-filtered pairs且用OpenCLIP在LAION子集训练；LDM v2为BERT-tokenizer加联合训练的Transformer条件编码器经cross-attention进UNet，压缩器用感知+对抗目标（VQGAN式两阶段）；SD v1.4模型卡写明fixed pretrained CLIP ViT-L/14、v1-2上游checkpoint与laion-aesthetics v2 5+；DiT明确以Transformer替换U-Net并遵循ViT实践、实验限于ImageNet类别条件；InstructGPT 1.3B偏好结论被正确限定在指定提示分布。抽查的关键数字（AlexNet 6000万参数/双GTX580 3GB、GPT-3 175B/300B tokens、Chinchilla 70B同预算4倍数据、Bitter Lesson 2019-03-13并纠正讲义2018.08页头）均与原文一致。未发现编造或未读来源充数。扣5分：GPT-2'某些实验使用上下文示例'属对CoQA对话历史的合理但略具解释性的读法；个别机制概括（如'联合训练'）为正确推断而非原文逐字措辞。",
+            "request_coverage": "36个核定对象全部有独立正文段落（背景—问题—关键改变—机制直觉—证据边界—路线作用齐备），讲义封面'36篇'、P12/P28合讲页、P21-25同一篇Bitter Lesson的处理与source-map核定口径一致，错链（P40 Tulu、P42 DeepVideo）与本地错配PDF均在文中声明不用作依据。三视角被编入共同问题链而非孤立摘要：历史（条件成熟度）、范式（复用对象从词表→上下文网络→任务接口→偏好/可核验反馈）、人与组织（Buck/CUDA工业线、GNMT研究+服务团队、LAION/Tülu3开放条件）各有落点。R1-R10逐条对应：直接采用/支撑条件/问题承接/并行对照四类关系在正文与连接索引中显式分开，延伸来源（NVIDIA历史、Hardware Lottery、SD v1.4）严格限定用途，未扩成无边百科。",
+            "reasoning_quality": "因果纪律出色：明确写出'叙述相邻不代表直接继承'，Bahdanau首次公开略早于seq2seq的顺序、ZeRO(2019)早于Chinchilla(2022)的时序、AlphaGo Zero不作LLM thinking祖先、2015扩散引用GAN与共享评估代码不等于方法继承等处均主动拆掉易误推的箭头。'训练如何形成监督与生成如何展开不是同一条计算路径'、'蒸馏/ZeRO/MoE/LoRA不是四代压缩技术'等辨析有真实解释力。人物线只用可核共同参与（Sutskever、Vinyals、Narasimhan、Radford均已回原文署名核对）作线索，方法继承仍由设计与引用确认。扣6分：少数连接（如DDPM→LDM'问题承接'）依赖论文间定位陈述而非显式引用链，正文已如实表述但读者无法从索引直接看出证据强度差异。",
+            "readability": "可独立阅读：问题地图入口表、总路线图（已声明为阅读地图非因果谱系）、连接索引、36对象定位表、新论文五问与思考追问构成完整自洽结构；机制解释密度与样章风格一致，基本无模板化复述。扣10分：第三、四部分个别段落信息密度高，单段承载多个限定条件，初次阅读的读者可能需要回看；文字版路线图为单色关系图（符合声明），对'哪条边最强'没有视觉分级。",
+            "limitations": "边界声明具体且与正文一致：未训练复现、未做全量公式/附录审计、争议精确分数（Transformer英法、Chinchilla MMLU、Tulu IFEval口径）不入结论、SD仅v1.4模型卡快照未pin commit且不外推其他版本、Bitter Lesson/Hardware Lottery按作者论证理解不作普遍定律、人物不审未核现职。讲义作为二手材料的身份也被明示。扣分点仅为：局限条款分散在脚注与'来源与适用范围'节，未集中成单页清单，属可选改进。"
+          },
+          "critical_claim_ids_checked": [
+            "C-brook",
+            "C-alexnet",
+            "C-resnet",
+            "C-distillation",
+            "C-word2vec",
+            "C-seq2seq",
+            "C-bahdanau-attention",
+            "C-gnmt",
+            "C-transformer",
+            "C-gpt1",
+            "C-bert",
+            "C-gpt2",
+            "C-gpt3",
+            "C-scaling-laws",
+            "C-chinchilla",
+            "C-zero",
+            "C-megascale",
+            "C-laion5b",
+            "C-refinedweb",
+            "C-sparse-moe",
+            "C-lora",
+            "C-alphago-zero",
+            "C-instructgpt",
+            "C-cot",
+            "C-react",
+            "C-tulu3",
+            "C-deepvideo",
+            "C-two-stream",
+            "C-vit",
+            "C-clip",
+            "C-gan",
+            "C-diffusion-2015",
+            "C-ddpm",
+            "C-ldm",
+            "C-dit",
+            "C-bitter-lesson",
+            "C-inventory",
+            "C-sd14",
+            "C-hardware-lens",
+            "C-people",
+            "C-identity-corrections",
+            "E-gpu",
+            "E-residual",
+            "E-nmt",
+            "E-wordpiece",
+            "E-pretraining",
+            "E-scale-config",
+            "E-data-demand",
+            "E-system",
+            "E-visual-backbone",
+            "E-data-loop",
+            "E-latent",
+            "E-adversarial-component",
+            "E-product",
+            "E-dit-meeting",
+            "E-behavior",
+            "E-interaction"
+          ],
+          "source_ids_checked": [
+            "S-lecture",
+            "S-brook",
+            "S-gpu-history",
+            "S-alexnet",
+            "S-resnet",
+            "S-distill",
+            "S-word2vec",
+            "S-seq2seq",
+            "S-bahdanau",
+            "S-gnmt",
+            "S-transformer",
+            "S-gpt1",
+            "S-bert",
+            "S-gpt2",
+            "S-gpt3",
+            "S-kaplan",
+            "S-chinchilla",
+            "S-zero",
+            "S-refinedweb",
+            "S-laion",
+            "S-megascale",
+            "S-moe",
+            "S-lora",
+            "S-bitter",
+            "S-hardware",
+            "S-alphago",
+            "S-instruct",
+            "S-cot",
+            "S-react",
+            "S-tulu",
+            "S-deepvideo",
+            "S-two-stream",
+            "S-vit",
+            "S-clip",
+            "S-gan",
+            "S-diffusion15",
+            "S-ddpm",
+            "S-ldm",
+            "S-sd14",
+            "S-dit",
+            "L-inventory"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6",
+            "R7",
+            "R8",
+            "R9",
+            "R10"
+          ],
+          "coverage_unit_ids_checked": [
+            "U-brook",
+            "U-alexnet",
+            "U-resnet",
+            "U-distillation",
+            "U-word2vec",
+            "U-seq2seq",
+            "U-bahdanau-attention",
+            "U-gnmt",
+            "U-transformer",
+            "U-gpt1",
+            "U-bert",
+            "U-gpt2",
+            "U-gpt3",
+            "U-scaling-laws",
+            "U-chinchilla",
+            "U-zero",
+            "U-megascale",
+            "U-laion5b",
+            "U-refinedweb",
+            "U-sparse-moe",
+            "U-lora",
+            "U-alphago-zero",
+            "U-instructgpt",
+            "U-cot",
+            "U-react",
+            "U-tulu3",
+            "U-deepvideo",
+            "U-two-stream",
+            "U-vit",
+            "U-clip",
+            "U-gan",
+            "U-diffusion-2015",
+            "U-ddpm",
+            "U-ldm",
+            "U-dit",
+            "U-bitter-lesson",
+            "U-lenses",
+            "U-reader-method",
+            "U-cross-route"
+          ],
+          "source_content_map": [
+            {
+              "id": "S-lecture",
+              "title": "谢青池《AI演义：36篇论文开启你的探索之旅》",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-lecture"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-lenses",
+                "U-reader-method",
+                "U-cross-route"
+              ],
+              "notes": "核读封面署名（文字层有缺字但身份映射已核）、36篇口径、三视角与硬件彩票提法、P21-25 Bitter Lesson连续页；报告对讲义2018.08页头、P40/P42错链的纠正均与该文字层一致。"
+            },
+            {
+              "id": "S-brook",
+              "title": "Brook for GPUs",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-brook",
+                "S-gpu-history"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-brook"
+              ],
+              "notes": "Stanford作者稿身份（题名七作者）与§1-6范围核读；报告'抽象映射+传输/调用开销仍存'表述与原文范围相符，未夸大成通用自动并行。"
+            },
+            {
+              "id": "S-gpu-history",
+              "title": "Inside the Programming Evolution of GPU Computing",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S-gpu-history"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-brook"
+              ],
+              "notes": "原文明确称Brook为CUDA前驱并述Buck入职NVIDIA；报告用途限定为工业化线索，未外推。"
+            },
+            {
+              "id": "S-alexnet",
+              "title": "ImageNet Classification with Deep CNNs",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-alexnet"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-alexnet"
+              ],
+              "notes": "6000万参数、双GTX 580 3GB、跨卡连通性设计均逐字核到；报告'组合而非单技巧'定性准确。"
+            },
+            {
+              "id": "S-resnet",
+              "title": "Deep Residual Learning",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-resnet"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-resnet"
+              ],
+              "notes": "退化问题（训练误差随深度上升）与残差学习表述核到；报告同时保留'极深网络可拟合但泛化不再改善'的边界。"
+            },
+            {
+              "id": "S-distill",
+              "title": "Distilling the Knowledge in a Neural Network",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-distill"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-distillation"
+              ],
+              "notes": "教师分布监督与训练/部署形态分离的概括准确；报告未把蒸馏写成无损拷贝。"
+            },
+            {
+              "id": "S-word2vec",
+              "title": "Efficient Estimation of Word Representations in Vector Space",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-word2vec"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-word2vec"
+              ],
+              "notes": "CBOW/Skip-gram局部预测与可复用词表定位准确；'非首次向量化'与原文相关工作脉络一致。"
+            },
+            {
+              "id": "S-seq2seq",
+              "title": "Sequence to Sequence Learning with Neural Networks",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-seq2seq"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-seq2seq"
+              ],
+              "notes": "arXiv:1409.3215，Sutskever一作核到；固定状态交接的表述准确。"
+            },
+            {
+              "id": "S-bahdanau",
+              "title": "Neural Machine Translation by Jointly Learning to Align and Translate",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-bahdanau"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-bahdanau-attention"
+              ],
+              "notes": "arXiv:1409.0473，编号与月份支持报告'首次公开略早于seq2seq'的谨慎表述；逐步加权读取源表示的机制概括准确。"
+            },
+            {
+              "id": "S-gnmt",
+              "title": "Google's Neural Machine Translation System",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-gnmt"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-gnmt"
+              ],
+              "notes": "8层LSTM编码解码、residual+attention+wordpiece逐字核到；'仍为循环编码—解码而非Transformer'的辨析正确。"
+            },
+            {
+              "id": "S-transformer",
+              "title": "Attention Is All You Need",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-transformer"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-transformer"
+              ],
+              "notes": "residual connection引用He et al.[11]、编码器—解码器attention保留、自回归解码仍逐步，均核到。"
+            },
+            {
+              "id": "S-gpt1",
+              "title": "Improving Language Understanding by Generative Pre-Training",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-gpt1"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-gpt1"
+              ],
+              "notes": "作者四人为Radford/Narasimhan/Salimans/Sutskever核到；预训练+任务输入变换+微调的概括与摘要一致。"
+            },
+            {
+              "id": "S-bert",
+              "title": "BERT",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-bert"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-bert"
+              ],
+              "notes": "WordPiece (Wu et al.)引用核到；双向遮蔽与句对目标、与自回归目标分叉的定性准确。"
+            },
+            {
+              "id": "S-gpt2",
+              "title": "Language Models are Unsupervised Multitask Learners",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-gpt2"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-gpt2"
+              ],
+              "notes": "zero-shot无参数/结构修改的原文定义核到；CoQA以对话历史为条件（Table 16 previous question/answer pairs）支持报告'某些实验使用上下文示例'的限定；TL;DR提示核到。"
+            },
+            {
+              "id": "S-gpt3",
+              "title": "Language Models are Few-Shot Learners",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-gpt3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-gpt3"
+              ],
+              "notes": "zero/one/few-shot区分、175B参数与Scaling Laws指导（图2.2及作者贡献声明）核到；'few-shot改变输入而非任务梯度'准确。"
+            },
+            {
+              "id": "S-kaplan",
+              "title": "Scaling Laws for Neural Language Models",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-kaplan"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-scaling-laws"
+              ],
+              "notes": "有条件经验规律与预算分配偏向大模型短训练的概括准确；报告未写成无条件单调律。"
+            },
+            {
+              "id": "S-chinchilla",
+              "title": "Training Compute-Optimal Large Language Models",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-chinchilla"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-chinchilla"
+              ],
+              "notes": "70B、同Gopher预算、4倍数据、参数与tokens应共同增长的结论逐字核到；'重新测量改变建议而非否定缩放'定性准确。"
+            },
+            {
+              "id": "S-zero",
+              "title": "ZeRO",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-zero"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-zero"
+              ],
+              "notes": "优化器状态/梯度/参数三阶段分片核到；报告正确提示激活与碎片另计、且ZeRO(2019)不能被写成Chinchilla催生。"
+            },
+            {
+              "id": "S-refinedweb",
+              "title": "The RefinedWeb Dataset for Falcon LLM",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-refinedweb"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-refinedweb"
+              ],
+              "notes": "引言直接引用Hoffmann et al. (2022)数据需求核到；过滤/去重+训练对照的方法概括准确。"
+            },
+            {
+              "id": "S-laion",
+              "title": "LAION-5B",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-laion"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-laion5b"
+              ],
+              "notes": "CLIP-filtered pairs与OpenCLIP训练（JUWELS超算）逐字核到；模型—数据反馈回路成立，报告同时保留偏差与版权边界。"
+            },
+            {
+              "id": "S-megascale",
+              "title": "MegaScale",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-megascale"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-megascale"
+              ],
+              "notes": "正文ZeRO状态分片讨论、慢节点与故障隔离核到；ByteDance+北大作者组与'组织资源非技术结论证据'的纪律相符。"
+            },
+            {
+              "id": "S-moe",
+              "title": "Sparsely-Gated Mixture-of-Experts",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-moe"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-sparse-moe"
+              ],
+              "notes": "arXiv:1701.06538v1(2017-01-23)与stacked LSTM系统核到；早于Transformer的时序提醒正确，路由/负载/通信代价概括准确。"
+            },
+            {
+              "id": "S-lora",
+              "title": "LoRA",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-lora"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-lora"
+              ],
+              "notes": "'可合并且无额外推理延迟'原文限定核到；报告正确将其限制在固定任务可合并线性更新，未推广到动态多任务。"
+            },
+            {
+              "id": "S-bitter",
+              "title": "The Bitter Lesson",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-bitter"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-bitter-lesson"
+              ],
+              "notes": "March 13, 2019与'general methods that leverage computation'首段核到；报告纠正讲义2018.08页头并限定为观点文章，处理正确。"
+            },
+            {
+              "id": "S-hardware",
+              "title": "The Hardware Lottery",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S-hardware"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-lenses"
+              ],
+              "notes": "作为讲义硬件彩票视角的必要延伸，报告声明不额外计入36对象，与R10边界一致。"
+            },
+            {
+              "id": "S-alphago",
+              "title": "Mastering the game of Go without human knowledge",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-alphago"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-alphago-zero"
+              ],
+              "notes": "监督对照更会预测职业棋手落子、自弈系统更强的图注核到；报告拒绝'AlphaGo Zero直接导致LLM thinking'箭头，定性纪律好。"
+            },
+            {
+              "id": "S-instruct",
+              "title": "Training language models to follow instructions with human feedback",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-instruct"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-instructgpt"
+              ],
+              "notes": "1.3B优于175B GPT-3的偏好结论被正确限定在'our prompt distribution'；示范—比较—奖励模型—优化的流程概括准确。"
+            },
+            {
+              "id": "S-cot",
+              "title": "Chain-of-Thought Prompting",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-cot"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-cot"
+              ],
+              "notes": "Jason Wei等Google作者核到；'不改参数、改变输入与生成组织'与'多写token不保证收益'的边界均与原文一致。"
+            },
+            {
+              "id": "S-react",
+              "title": "ReAct",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-react"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-react"
+              ],
+              "notes": "Yao(姚顺雨)一作、Narasimhan署名核到；推理—动作—观察交错且不等于每轮训练的表述准确。"
+            },
+            {
+              "id": "S-tulu",
+              "title": "Tülu 3",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-tulu"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-tulu3"
+              ],
+              "notes": "Lambert一作、Llama 3.1基座、SFT/DPO/RLVR阶段逐字核到；'若只数更新模型的训练阶段则是后三项'的口径处理细致。"
+            },
+            {
+              "id": "S-deepvideo",
+              "title": "Large-scale Video Classification with CNNs",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-deepvideo"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-deepvideo"
+              ],
+              "notes": "Google Research+Stanford双署名核到；单帧/时间融合比较与'非生成研究'的定位准确。"
+            },
+            {
+              "id": "S-two-stream",
+              "title": "Two-Stream Convolutional Networks",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-two-stream"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-two-stream"
+              ],
+              "notes": "参考文献[14]引用Karpathy et al.核到，'明确讨论上述视频路线'成立；RGB+光流两路的机制概括准确。"
+            },
+            {
+              "id": "S-vit",
+              "title": "An Image is Worth 16x16 Words",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-vit"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-vit"
+              ],
+              "notes": "作者含Jakob Uszkoreit（与Transformer交集）核到；patch序列化与'小数据未必优于CNN'的边界与原文一致。"
+            },
+            {
+              "id": "S-clip",
+              "title": "Learning Transferable Visual Models From Natural Language Supervision",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-clip"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-clip"
+              ],
+              "notes": "作者Radford…Sutskever核到；伪码'image_encoder - ResNet or Vision Transformer'与文本Transformer核到；'非生成器、非权重拼接'的辨析准确。"
+            },
+            {
+              "id": "S-gan",
+              "title": "Generative Adversarial Nets",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-gan"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-gan"
+              ],
+              "notes": "生成器—判别器共同训练与'非完美固定裁判'的表述准确；理想分析假设的边界已声明。"
+            },
+            {
+              "id": "S-diffusion15",
+              "title": "Deep Unsupervised Learning using Nonequilibrium Thermodynamics",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-diffusion15"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-diffusion-2015"
+              ],
+              "notes": "§1.2讨论GAN、致谢与实验使用Goodfellow的Parzen-window代码逐字核到；报告'引用与评估共享≠方法继承'的辨析正确。"
+            },
+            {
+              "id": "S-ddpm",
+              "title": "Denoising Diffusion Probabilistic Models",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-ddpm"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-ddpm"
+              ],
+              "notes": "噪声预测参数化与去噪得分匹配等价、训练监督构造与多步生成分离的概括核到。"
+            },
+            {
+              "id": "S-ldm",
+              "title": "High-Resolution Image Synthesis with Latent Diffusion Models",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-ldm"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-ldm"
+              ],
+              "notes": "两阶段感知压缩（VQGAN式对抗+感知目标）、BERT-tokenizer+联合训练Transformer经cross-attention进UNet、LAION-400M文本条件均逐字核到；报告对v2边界的声明准确。"
+            },
+            {
+              "id": "S-sd14",
+              "title": "Stable Diffusion v1-4 Model Card",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S-sd14"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-ldm",
+                "U-cross-route"
+              ],
+              "notes": "fixed pretrained CLIP ViT-L/14、v1-2上游、laion-aesthetics v2 5+与10%条件丢弃逐字核到；未pin commit的局限已声明，报告未外推到其他版本。"
+            },
+            {
+              "id": "S-dit",
+              "title": "Scalable Diffusion Models with Transformers",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-dit"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-dit"
+              ],
+              "notes": "替换U-Net、遵循ViT实践、潜空间patch化、ImageNet类别条件边界均核到；报告拒绝外推文生视频/Sora谱系。"
+            },
+            {
+              "id": "L-inventory",
+              "title": "AI演义发展节点与来源身份核定清单（source-map.json）",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "L-inventory"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-lenses",
+                "U-cross-route"
+              ],
+              "notes": "实读source-map.json（SHA 82a789b2…与evidence inventory.sha256一致）：scope明确不声称全书事实核完/36篇全部精读；source_pdf页数51、PDF sha256 197d1068…与evidence S-lecture一致、text_layer_sha256 a2aab6d1…与本次核读缓存一致；counting为33论文+2研究报告(GPT-1/GPT-2)+1观点文章(Bitter Lesson)=36，P12/P28各拆两篇、P21–25合为一篇，basis明说不冒称作者原始计数意图——与报告'对应关系'表和36对象定位表逐项相符。I01–I09身份条目逐条与正文/脚注核对：I01 Bahdanau 2014-09-01早于seq2seq 2014-09-10（我已核arXiv号1409.0473/1409.3215）；I03本地AlphaZero错配、I04本地Brook错配为P vs NP论文，报告均声明不用错配文件；I05 P40错链2407.15541实为气体动理论论文，报告改用2411.15124（S-tulu已核）；I06 P42错链为引力理论论文，报告改用CVPR官方入口；I07 LDM(2021-12-20)与SD产品(2022-08-22)分身份，context_objects将stable-diffusion-product列为非主线背景；I08 Bitter Lesson按作者原文2019-03-13；I09题名变体处理正确。I10–I16的pending类别（历史优先性、量化数字、人物履历、因果史、日期口径、Tulu作者姓名变体）在报告中均未写成事实，与局限声明一致。该清单是身份冻结快照而非全书进度，报告未据其省略重要对象。"
+            }
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "独立终审流程：先以字节核对报告与证据双SHA（均一致），再从原始资料库按来源分别核读身份、背景、方法与结论段落，形成自有连接地图后才通读报告与evidence；未读取既有review.json及其历史，本条目分数独立给出。核读方式：40个来源全部至少完成身份级核对（题名/作者/版本/arXiv号），其中约25个完成主张级原文核对（正文相关段落、图注、参考文献、作者贡献声明），16条E类连接逐一回到两端原文确认其关系类型，未发现因年份相邻或共同作者而补造因果的情况。协调者的链接/渲染检查记录（134内部链接、36对象锚点、无缺失目标、无重复id、双宽度无溢出）已核读其checks.json并引用，未声称亲见截图。报告的修订轮次变更（revision 2补充已核作者姓名与合作锚点）与revision_note一致，我所核对的具名段落（吴永辉/GNMT、姚顺雨/ReAct、Narasimhan GPT-1→ReAct、Uszkoreit Transformer→ViT、Lambert/Tülu3）均回到原文署名验证通过。非问题观察（不影响通过）：(1) GPT-2'某些实验使用上下文示例'是对CoQA对话历史的合理但略具解释性的表述，原文支持但措辞可更精确；(2) 局限条款分散于脚注与末节，可集中；(3) 连接索引未区分证据强度等级（显式引用vs定位陈述），可作为后续可选改进。以上均为润色级建议，不构成硬失败；未发现编造来源、关键主张无支撑、关键数字不符、核心需求缺失或安全隐私问题。 补查（同一终审延续，SHA未变）：应机器门禁要求实读L-inventory=source-map.json，覆盖scope、source_pdf、counting、reading_map、pages(51)、objects(36)、context_objects、I01–I17全部条目。结论：核定口径（51页；33论文+2研究报告+1文章=36；P12/P28合讲、P21–25同文）与报告及evidence完全一致；I01–I09九项身份/日期/错链纠正全部在正文中得到正确执行；I10–I16未决类别未被冒充为已核事实；I17所述未生成.md已由后续source-map.md补齐且与JSON一致。未发现需要修正评分或新增unsupported/hard_failure的真实问题，分数维持依据不变。L-inventory已补入source_ids_checked与source_content_map。"
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 94.05,
+        "evaluated_on": "2026-11-04",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "a2ff5c1f5e019047b07c2bb0f7320940502b779cbbfb83f09b9b53972475cc08",
+        "evidence_sha256": "c53f228705b4d182bffc0fb21571db7b2021940115de2696dec84d2a9e9312f4"
+      }
     }
   ]
 }

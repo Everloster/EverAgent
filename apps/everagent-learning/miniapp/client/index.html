@@ -753,6 +753,11 @@
       .md details[open] > summary { margin-bottom: 14px; }
       .md :is(h1, h2, h3, h4) { scroll-margin-top: 16px; }
       .md a { text-underline-offset: 3px; }
+      .md sup { line-height: 0; }
+      .md .footnotes { font-size: 0.88em; overflow-wrap: anywhere; }
+      .md .footnotes li { margin-bottom: 14px; }
+      .md .footnotes li p { margin-bottom: 4px; }
+      .md [id^='fn-'], .md [id^='fnref-'] { scroll-margin-top: 16px; }
 
       .md a {
         color: var(--mcode-accent);
@@ -1056,7 +1061,7 @@
         'P', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'UL', 'OL', 'LI', 'BLOCKQUOTE',
         'PRE', 'CODE', 'HR', 'BR', 'STRONG', 'EM', 'DEL', 'A', 'IMG', 'TABLE',
         'THEAD', 'TBODY', 'TR', 'TH', 'TD', 'DIV', 'INPUT', 'SPAN',
-        'DETAILS', 'SUMMARY',
+        'DETAILS', 'SUMMARY', 'SUP', 'SECTION',
       ]);
 
       function domainLabel(id) {

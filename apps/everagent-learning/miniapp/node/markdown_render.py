@@ -8,8 +8,8 @@ the public repository's learning reports actually use.
 
 Safety contract:
 
-* every character taken from a report is HTML-escaped before any markup is
-  emitted, so raw HTML inside a report is displayed as text;
+* report text is HTML-escaped; the only raw HTML accepted by default is an
+  empty anchor with a restricted id, used by report navigation;
 * link and image URLs are restricted to ``http``, ``https``, ``mailto``,
   in-document anchors and repository-relative paths;
 * the returned string can therefore only contain tags produced here.
@@ -46,6 +46,8 @@ _DETAILS_CLOSE_RE = re.compile(r"^</details>$", re.IGNORECASE)
 _SUMMARY_RE = re.compile(r"^<summary>(.*)</summary>$", re.IGNORECASE)
 _RAW_SIMPLE_TAG_RE = re.compile(r"<(/?(?:strong|em|b|i|code))>", re.IGNORECASE)
 _RAW_ANCHOR_RE = re.compile(r"<a\s+id=([\"'])([A-Za-z0-9_-]+)\1\s*>\s*</a>", re.IGNORECASE)
+_FOOTNOTE_DEF_RE = re.compile(r"^ {0,3}\[\^([\w-]+)\]:[ \t]*(.*)$")
+_FOOTNOTE_REF_RE = re.compile(r"(?<!\\)\[\^([\w-]+)\]")
 _BOLD_RE = re.compile(r"\*\*([^*\n]+)\*\*")
 _BOLD_UNDER_RE = re.compile(r"__([^_\n]+)__")
 _ITALIC_RE = re.compile(r"(?<![*\w])\*([^*\n]+?)(?<!\s)\*(?!\*)")
@@ -88,6 +90,58 @@ class _Renderer:
         self._link_resolver = link_resolver
         self._allow_raw_html = allow_raw_html
         self._slug_counts: dict[str, int] = {}
+        self._footnotes: dict[str, List[str]] = {}
+        self._footnote_refs: dict[str, int] = {}
+        self._in_footnote = False
+
+    def render(self, lines: Sequence[str]) -> str:
+        """Collect top-level footnotes without interpreting fenced examples."""
+        body: List[str] = []
+        fence = ""
+        index = 0
+        while index < len(lines):
+            line = lines[index]
+            match = _FENCE_RE.match(line)
+            if match:
+                marker = match.group(2)
+                if not fence:
+                    fence = marker
+                elif marker[0] == fence[0] and len(marker) >= len(fence) and not match.group(3).strip():
+                    fence = ""
+            definition = None if fence or match else _FOOTNOTE_DEF_RE.match(line)
+            if definition:
+                note = [definition.group(2)]
+                index += 1
+                while index < len(lines):
+                    continuation = lines[index]
+                    if continuation.startswith("    ") or continuation.startswith("\t"):
+                        note.append(continuation[4:] if continuation.startswith("    ") else continuation[1:])
+                        index += 1
+                    elif not continuation.strip() and index + 1 < len(lines) and lines[index + 1].startswith(("    ", "\t")):
+                        note.append("")
+                        index += 1
+                    else:
+                        break
+                self._footnotes.setdefault(definition.group(1), note)
+                body.append("")
+                continue
+            body.append(line)
+            index += 1
+        out = self._blocks(body)
+        if self._footnote_refs:
+            out.append('<section class="footnotes" aria-label="参考注释"><hr><ol>')
+            self._in_footnote = True
+            for key, count in self._footnote_refs.items():
+                safe_key = html.escape(key, quote=True)
+                content = "\n".join(self._blocks(self._footnotes[key]))
+                backlinks = " ".join(
+                    '<a href="#fnref-%s-%d" aria-label="返回引用 %d">↩%s</a>'
+                    % (safe_key, n, n, str(n) if count > 1 else "")
+                    for n in range(1, count + 1)
+                )
+                out.append('<li id="fn-%s">%s %s</li>' % (safe_key, content, backlinks))
+            out.append('</ol></section>')
+        return "\n".join(out)
 
     # -- inline ----------------------------------------------------------
 
@@ -138,10 +192,8 @@ class _Renderer:
                 url = _safe_url(self._link_resolver(url))
             if not url:
                 return stash(html.escape(match.group(0), quote=False))
-            return stash(
-                '<a href="%s" target="_blank" rel="noreferrer noopener">%s</a>'
-                % (html.escape(url, quote=True), html.escape(label, quote=False))
-            )
+            target = '' if url.startswith('#') else ' target="_blank" rel="noreferrer noopener"'
+            return stash('<a href="%s"%s>%s</a>' % (html.escape(url, quote=True), target, html.escape(label, quote=False)))
 
         working = _LINK_RE.sub(link, working)
         working = _AUTOLINK_RE.sub(
@@ -152,21 +204,32 @@ class _Renderer:
             working,
         )
 
+        def footnote(match: re.Match[str]) -> str:
+            key = match.group(1)
+            if key not in self._footnotes or self._in_footnote:
+                return match.group(0)
+            self._footnote_refs[key] = self._footnote_refs.get(key, 0) + 1
+            number = list(self._footnote_refs).index(key) + 1
+            safe_key = html.escape(key, quote=True)
+            return stash('<sup id="fnref-%s-%d"><a href="#fn-%s" aria-label="注释 %d">%d</a></sup>'
+                         % (safe_key, self._footnote_refs[key], safe_key, number, number))
+
+        working = _FOOTNOTE_REF_RE.sub(footnote, working)
+        # Keep navigation anchors for ordinary reports without enabling raw HTML.
+        working = _RAW_ANCHOR_RE.sub(
+            lambda match: stash('<a id="%s"></a>' % html.escape(match.group(2), quote=True)), working
+        )
+
         if self._allow_raw_html:
             # A small, attribute-free tag set, only for the repository's own
-            # living lists. These tags cannot load anything or run code, and
-            # the anchor id is restricted to word characters.
+            # living lists. These tags cannot load anything or run code.
             def raw_tag(match: re.Match[str]) -> str:
                 tag = match.group(1).lower()
                 if tag.startswith("/"):
                     return stash("</%s>" % tag[1:])
                 return stash("<%s>" % tag)
 
-            def raw_anchor(match: re.Match[str]) -> str:
-                return stash('<a id="%s"></a>' % html.escape(match.group(2), quote=True))
-
             working = _RAW_SIMPLE_TAG_RE.sub(raw_tag, working)
-            working = _RAW_ANCHOR_RE.sub(raw_anchor, working)
 
         working = html.escape(working, quote=False)
         working = _BOLD_RE.sub(r"<strong>\1</strong>", working)
@@ -186,6 +249,8 @@ class _Renderer:
         return base if count == 0 else "%s-%d" % (base, count)
 
     def _is_block_start(self, line: str) -> bool:
+        if _RAW_ANCHOR_RE.fullmatch(line.strip()):
+            return True
         if _FENCE_RE.match(line):
             return True
         if _HEADING_RE.match(line):
@@ -215,6 +280,12 @@ class _Renderer:
             fence = _FENCE_RE.match(line)
             if fence:
                 index = self._fenced_code(lines, index, out)
+                continue
+
+            anchor = _RAW_ANCHOR_RE.fullmatch(line.strip())
+            if anchor:
+                out.append('<a id="%s"></a>' % anchor.group(2))
+                index += 1
                 continue
 
             heading = _HEADING_RE.match(line)
@@ -578,4 +649,4 @@ def render_markdown(
     """
     normalized = body.replace("\r\n", "\n").replace("\r", "\n")
     renderer = _Renderer(image_resolver=image_resolver, allow_raw_html=allow_raw_html, link_resolver=link_resolver)
-    return "\n".join(renderer._blocks(normalized.split("\n")))
+    return renderer.render(normalized.split("\n"))

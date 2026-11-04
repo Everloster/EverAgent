@@ -19,6 +19,58 @@ PACKAGE_ROOT = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(PACKAGE_ROOT / "miniapp" / "node"))
 
 import report_index  # noqa: E402
+from markdown_render import render_markdown  # noqa: E402
+from html.parser import HTMLParser
+
+
+class MarkdownFootnoteTests(unittest.TestCase):
+    def test_notes_have_working_round_trip_links(self) -> None:
+        rendered = render_markdown('第一次[^source]，第二次[^source]。\n\n[^source]: [原文](https://example.com/paper)\n    后续说明。')
+        self.assertIn('<li id="fn-source">', rendered)
+        self.assertIn('href="#fnref-source-1"', rendered)
+        self.assertIn('href="#fnref-source-2"', rendered)
+        self.assertIn('后续说明。', rendered)
+        self.assertNotIn('[^source]', rendered)
+        self.assertNotIn('href="#fn-source" target="_blank"', rendered)
+
+    def test_code_examples_and_undefined_notes_remain_literal(self) -> None:
+        rendered = render_markdown('```md\n[^demo]: 示例\n```\n\n`[^real]` 与未知[^missing]。\n\n[^real]: 隐藏的未引用注释')
+        self.assertIn('[^demo]: 示例', rendered)
+        self.assertIn('<code>[^real]</code>', rendered)
+        self.assertIn('[^missing]', rendered)
+        self.assertNotIn('class="footnotes"', rendered)
+
+    def test_safe_anchors_work_without_enabling_raw_html(self) -> None:
+        rendered = render_markdown('<a id="section-one"></a>\n\n[跳转](#section-one)\n\n<a id="bad" onclick="alert(1)"></a>\n<script>alert(1)</script>')
+        self.assertIn('<a id="section-one"></a>', rendered)
+        self.assertIn('<a href="#section-one">跳转</a>', rendered)
+        self.assertNotIn('<a id="bad"', rendered)
+        self.assertNotIn('<script>', rendered)
+
+    def test_footnote_content_uses_the_same_safety_and_link_resolver(self) -> None:
+        rendered = render_markdown('正文[^a]\n\n[^a]: <script>alert(1)</script> [危险](javascript:alert) [报告](other.md)', link_resolver=lambda url: '/report/other' if url == 'other.md' else url)
+        self.assertNotIn('<script>', rendered)
+        self.assertNotIn('href="javascript:', rendered)
+        self.assertIn('href="/report/other"', rendered)
+
+    def test_every_rendered_fragment_has_a_real_dom_target(self) -> None:
+        class Links(HTMLParser):
+            def __init__(self):
+                super().__init__()
+                self.ids = []
+                self.fragments = []
+
+            def handle_starttag(self, tag, attrs):
+                attrs = dict(attrs)
+                if 'id' in attrs:
+                    self.ids.append(attrs['id'])
+                if attrs.get('href', '').startswith('#'):
+                    self.fragments.append(attrs['href'][1:])
+
+        parsed = Links()
+        parsed.feed(render_markdown('<a id="chapter"></a>\n## 章节\n[章节](#chapter) 和资料[^中文]。\n\n[^中文]: 引用说明。'))
+        self.assertEqual(len(parsed.ids), len(set(parsed.ids)))
+        self.assertTrue(set(parsed.fragments).issubset(set(parsed.ids)))
 
 
 STUB_CATALOG = '''\

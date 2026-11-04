@@ -110,16 +110,16 @@
     "status": "completed",
     "quality_tier": "flagship",
     "object_anchors": 36,
-    "critical_claims_and_connections": 57,
+    "critical_claims_and_connections": 59,
     "primary_review": "completed",
     "strong_final_review": "completed",
-    "revision_round": 2,
-    "strong_runtime": "kimi-coding/k3",
-    "strong_policy_name": "kimi-k3",
+    "revision_round": 3,
+    "strong_runtime": "codex",
+    "strong_policy_name": "gpt-5.6-sol",
     "quality_decision": "pass",
-    "quality_score": 94.05,
-    "report_sha256": "a2ff5c1f5e019047b07c2bb0f7320940502b779cbbfb83f09b9b53972475cc08",
-    "evidence_sha256": "c53f228705b4d182bffc0fb21571db7b2021940115de2696dec84d2a9e9312f4",
+    "quality_score": 94.95,
+    "report_sha256": "2327da48b5766c38ac1a312a7e19b6859b93c3fc70855525d6e93c9a1ffea572",
+    "evidence_sha256": "8c667b364e344504df93d38c0cbcbf028dd100f1fbf1f2b5ef4e3fef1efad1bd",
     "quality_policy": "report-quality-2026-10-18-r2"
   },
   "workflow_totals": {
@@ -129,20 +129,28 @@
     "note": "仅汇总已完成的四次研究工作流；含并行重叠，不能将duration简单相加当墙钟或将token指标直接换算费用。最终主审/强审及主笔工作另计。"
   },
   "final_prechecks": {
-    "internal_links": 134,
-    "local_links": 4,
-    "object_anchors": 36,
-    "missing_targets": 0,
-    "duplicate_ids": false,
+    "render_engine": "学习工作台实际HTTP入口：内置Markdown渲染器、客户端挂载与Chromium点击验证",
     "viewport_widths_css_px": [
       1440,
-      500
+      390
     ],
-    "visual_scope": "主稿开头、总问题地图、连接索引；未逐屏视检全篇",
-    "source_library": "40项公开原始资料的独立缓存已核正文选择与哈希，未将私有执行收据作为正文资料。",
-    "revision2": "姓名/共同参与增补已由原独立主审复验；原链接/锚点结构保持，受影响段落完成窄屏检查。"
+    "footnotes": 41,
+    "footnote_references": 45,
+    "missing_fragment_targets": 0,
+    "duplicate_ids": false,
+    "literal_footnote_or_anchor_markers": false,
+    "reader_and_page_horizontal_overflow_px": 0,
+    "interactions": [
+      "页内章节跳转",
+      "脚注定位",
+      "返回引用处"
+    ],
+    "new_tabs_from_fragment_navigation": 0,
+    "visual_scope": "桌面开头与跨路线章节、窄屏跨路线章节与尾注；未逐屏视检全篇。另一强审补查500px切片。",
+    "automated_checks": "5项Node服务测试与12项Python渲染/索引测试通过；报告严格审计零错误零警告。",
+    "source_library": "原研究40项公开原始资料及1项对象核查索引；本轮按59项关键判断定向核原文，未复现训练。"
   },
   "completion_scope": "覆盖讲义发展路径、核定36对象与跨视角连接；不代表逐篇穷尽原文细节、全部实验复现或所有外围历史判断已核。",
-  "resource_state": "研究工作流和复核进程均已结束；可追溯原文与审阅缓存保留在非发布位置，未清理其他会话、工作树或用户入口。",
+  "resource_state": "原研究工作流与本轮独立复核均已结束，临时浏览器和测试服务已关闭；常驻阅读工作台继续运行。原文与审阅缓存保留在非发布位置。",
   "git_state_owner": "提交与推送状态以Git历史和远端引用为准，不在本文件复制可变发布状态。"
 }
