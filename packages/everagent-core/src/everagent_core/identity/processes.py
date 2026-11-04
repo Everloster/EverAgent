@@ -149,9 +149,10 @@ def _proc_has(*names) -> bool:
 
 
 def matches_row(row: dict, names: tuple[str, ...]) -> bool:
-    if "dsh" in names and row.get("name", "").casefold().removesuffix(".exe") == "node":
+    if "dsh" in names and row.get("name", "").casefold().removesuffix(".exe") in {"node", "mainthread"}:
         # DSH is a Node entry point, not every Node process. Query only the
         # ancestor named by its per-tool environment; never scan other apps.
+        # Node 24 reports its main thread as MainThread on Linux.
         if os.name == "nt" or str(row.get("pid")) != os.environ.get("DSH_RUNTIME_PID"):
             return False
         try:

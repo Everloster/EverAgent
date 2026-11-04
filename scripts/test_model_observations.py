@@ -65,11 +65,14 @@ class DshObservationTests(unittest.TestCase):
         row = {"pid": 1234, "name": "node"}
         with patch.dict(os.environ, {"DSH_RUNTIME_PID": "1234"}, clear=True), patch.object(
                 processes.subprocess, "run") as run:
-            run.return_value = SimpleNamespace(returncode=0, stdout="node /opt/example/node_modules/@deepseek-ai/dsh/lib/bin.js web")
-            self.assertTrue(processes.matches_row(row, ("dsh",)))
-            run.return_value.stdout = "node /opt/unrelated.js web"
-            self.assertFalse(processes.matches_row(row, ("dsh",)))
-            self.assertFalse(processes.matches_row({**row, "pid": 5555}, ("dsh",)))
+            for name in ("node", "MainThread"):
+                with self.subTest(process_name=name):
+                    row["name"] = name
+                    run.return_value = SimpleNamespace(returncode=0, stdout="node /opt/example/node_modules/@deepseek-ai/dsh/lib/bin.js web")
+                    self.assertTrue(processes.matches_row(row, ("dsh",)))
+                    self.assertFalse(processes.matches_row({**row, "pid": 5555}, ("dsh",)))
+                    run.return_value.stdout = "node /opt/unrelated.js web"
+                    self.assertFalse(processes.matches_row(row, ("dsh",)))
 
 
 class CodexObservationTests(unittest.TestCase):
