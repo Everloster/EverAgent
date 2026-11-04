@@ -99,16 +99,25 @@ def process_chain() -> list[dict]:
                 if pid in seen or pid <= 1:
                     break
                 seen.add(pid)
-                result = subprocess.run(["ps", "-o", "ppid=,lstart=,comm=", "-p", str(pid)],
-                                        capture_output=True, text=True, encoding="utf-8",
-                                        errors="replace", timeout=1, env={**os.environ, "LC_ALL": "C"})
-                parts = result.stdout.strip().split(None, 6)
-                if len(parts) != 7 or not parts[0].isdigit():
-                    break
-                parent = int(parts[0])
-                chain.append({"pid": pid, "parent": parent, "name": os.path.basename(parts[6]),
-                              "started": " ".join(parts[1:6]), "image": parts[6]})
-                pid = parent
+                try:
+                    result = subprocess.run(["ps", "-o", "ppid=,lstart=,comm=", "-p", str(pid)],
+                                            capture_output=True, text=True, encoding="utf-8",
+                                            errors="replace", timeout=1, env={**os.environ, "LC_ALL": "C"})
+                except PermissionError:
+                    if sys.platform != "darwin":
+                        raise
+                    # Seatbelt may refuse to execute set-id ps. Read the same
+                    # ancestor through the OS API, retaining the PID bound.
+                    from .darwin_process import process_row
+                    row = process_row(pid)
+                else:
+                    parts = result.stdout.strip().split(None, 6)
+                    if result.returncode != 0 or len(parts) != 7 or not parts[0].isdigit():
+                        break
+                    row = {"pid": pid, "parent": int(parts[0]), "name": os.path.basename(parts[6]),
+                           "started": " ".join(parts[1:6]), "image": parts[6]}
+                chain.append(row)
+                pid = row["parent"]
     except (OSError, ValueError, subprocess.SubprocessError, AttributeError):
         pass
     _CHAIN = chain
@@ -156,11 +165,18 @@ def matches_row(row: dict, names: tuple[str, ...]) -> bool:
         if os.name == "nt" or str(row.get("pid")) != os.environ.get("DSH_RUNTIME_PID"):
             return False
         try:
-            result = subprocess.run(["ps", "-o", "args=", "-p", str(row["pid"])],
-                                    capture_output=True, text=True, timeout=1)
-            args = shlex.split(result.stdout)
-            return (result.returncode == 0 and len(args) >= 3
-                    and args[1].endswith("/node_modules/@deepseek-ai/dsh/lib/bin.js"))
+            try:
+                result = subprocess.run(["ps", "-o", "args=", "-p", str(row["pid"])],
+                                        capture_output=True, text=True, timeout=1)
+                if result.returncode != 0:
+                    return False
+                args = shlex.split(result.stdout)
+            except PermissionError:
+                if sys.platform != "darwin":
+                    raise
+                from .darwin_process import process_args
+                args = process_args(row["pid"])
+            return len(args) >= 3 and args[1].endswith("/node_modules/@deepseek-ai/dsh/lib/bin.js")
         except (OSError, ValueError, subprocess.SubprocessError):
             return False
     if os.name == "nt" and any(name in names for name in ("kimi", "Kimi", "MiniMax Code", "ZCode")):
