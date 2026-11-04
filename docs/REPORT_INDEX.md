@@ -8,6 +8,7 @@
 | 日期 | 报告 | 领域 |
 |------|------|------|
 | 2026-11-04 | [《AI演义》深读：从关键论文看懂AI的发展路径](../ai-learning/reports/AI演义_笔记分析与项目整合报告.md) | ai-learning |
+| 2026-11-04 | [agent-desktop 深度研究：Agent 怎样可靠地操作桌面](../github-trending-analyzer/reports/research_vercel-labs_agent-desktop.md) | github-trending-analyzer |
 | 2026-11-03 | [无状态的鹦鹉，怎么学会了连续对话和自己用工具？—— Agent 请求全链路科普·完整版](../ai-learning/reports/knowledge_reports/Agent请求全链路_完整版_科普讲解_20261103.md) | ai-learning |
 | 2026-11-03 | [十字路口年终复盘：AI 的十个惊讶时刻，哪些值得带回日常？](../podcast-learning/reports/2026-11-02_xiaoyuzhou-crossing_ai-aha-moments.md) | podcast-learning |
 | 2026-11-02 | [答案在逐字出现，Agent 到底做到哪一步了？—— Agent 请求全链路续篇](../ai-learning/reports/knowledge_reports/Agent请求全链路_流式响应与断线恢复_科普讲解_20261102.md) | ai-learning |
@@ -31,7 +32,6 @@
 | 2026-10-26 | [Kimi K3.1 Pro：联合 RL、长程 Agent 与开放权重边界深度解析](../ai-learning/reports/knowledge_reports/Kimi_K3_1_Pro_联合RL_长程Agent与开放权重_深度解析_20261026.md) | ai-learning |
 | 2026-10-26 | [AI 行业日报 · 2026-10-26](../web-surfing/reports/ai-news-daily-2026-10-26.md) | web-surfing |
 | 2026-10-25 | [菠萝健康派 × 师永刚：中美抗癌十年，就医路径、费用真相与「被看见」的病人](../podcast-learning/reports/2026-10-21_xiaoyuzhou-boluo-jiankang_shiyonggang-cn-us-cancer-decade.md) | podcast-learning |
-| 2026-10-25 | [晚点聊 184：Astra 之后，具身智能的护城河从大脑移到哪里](../podcast-learning/reports/2026-10-15_rss-wandian-latetalk_184-embodied-quarterly-26q3.md) | podcast-learning |
 
 ## 🤖 AI Learning（154 篇）
 
@@ -438,10 +438,11 @@
 | 2026-06-20 | [三年行业吃肉榜/爆亏榜大合集（2023-2025）：谁在偷偷赚钱，谁在快速衰落](../podcast-learning/reports/2026-06-20_bilibili-cls-tongxue_hangye-bangdan.md) | — |
 | 2026-06-18 | [Vol.29 对话王小川：造医生，战豆包，与无尽的 AI 非共识](../podcast-learning/reports/2026-06-18_xiaoyuzhou-mingjing-diandian_wangxiaochuan.md) | — |
 
-## 🔭 GitHub Research（124 篇）
+## 🔭 GitHub Research（125 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
+| 2026-11-04 | [agent-desktop 深度研究：Agent 怎样可靠地操作桌面](../github-trending-analyzer/reports/research_vercel-labs_agent-desktop.md) | `computer_use`, `desktop_automation`, `accessibility`, `agent_harness`, `rust` |
 | 2026-10-20 | [yetone/magpie 深度研究：多 Agent 模型路由中枢](../github-trending-analyzer/reports/research_yetone_magpie.md) | `llm-gateway`, `model-routing`, `coding-agent`, `multi-provider` |
 | 2026-10-20 | [trycua/cua 深度研究（源码视角）](../github-trending-analyzer/reports/research_trycua_cua_sourcecode.md) | `computer-use`, `virtualization`, `agent-infrastructure`, `mcp` |
 | 2026-10-20 | [NandhaKishorM/laya 深度研究：非自回归 System 1 决策引擎](../github-trending-analyzer/reports/research_NandhaKishorM_laya.md) | `decision-model`, `non-autoregressive`, `classification`, `system-1` |

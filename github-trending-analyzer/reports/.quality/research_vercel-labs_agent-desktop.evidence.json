@@ -1,0 +1,751 @@
+{
+  "schema_version": 1,
+  "report_path": "github-trending-analyzer/reports/research_vercel-labs_agent-desktop.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-04",
+  "generator": {
+    "model": "gpt-6-astra",
+    "harness": "codex",
+    "run_id": "generator-2679f8cb1178",
+    "explicit_model_override": true,
+    "override_reason": "用户要求当前主 agent 亲自接手完成；模型按当前会话路由登记"
+  },
+  "task": {
+    "summary": "用户最初要求远端研究 agent-desktop，随后要求当前主 agent 自己接手完成；交付固定源码的公开深研报告。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "亲自完成 agent-desktop 深研报告，七章独立可读，源码与版本可追溯"
+      },
+      {
+        "id": "R2",
+        "text": "解释控件身份、快照、动作、并发和结果验证的真实机制与边界"
+      },
+      {
+        "id": "R3",
+        "text": "核验三平台限制、发布资产、社区活跃度与至少两个竞品"
+      },
+      {
+        "id": "R4",
+        "text": "以实际测试区分已验证和待验证，提出日常工作流采用方法，不泄露私有上下文"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "official",
+      "title": "项目说明与当前命令边界",
+      "locator": "https://github.com/vercel-labs/agent-desktop/blob/93ae89e86fb849eeb5fc265b0b8e37eca56aaf72/README.md",
+      "accessed_on": "2026-11-04"
+    },
+    {
+      "id": "S02",
+      "kind": "official",
+      "title": "仓库元数据 API",
+      "locator": "https://api.github.com/repos/vercel-labs/agent-desktop",
+      "accessed_on": "2026-11-04"
+    },
+    {
+      "id": "S03",
+      "kind": "primary",
+      "title": "CLI 入口、workspace 与分发",
+      "locator": "https://github.com/vercel-labs/agent-desktop/blob/93ae89e86fb849eeb5fc265b0b8e37eca56aaf72/src/main.rs#L130",
+      "accessed_on": "2026-11-04",
+      "additional_locators": [
+        "https://github.com/vercel-labs/agent-desktop/blob/93ae89e86fb849eeb5fc265b0b8e37eca56aaf72/Cargo.toml",
+        "https://github.com/vercel-labs/agent-desktop/blob/93ae89e86fb849eeb5fc265b0b8e37eca56aaf72/src/dispatch/mod.rs"
+      ]
+    },
+    {
+      "id": "S04",
+      "kind": "primary",
+      "title": "快照命名空间与存储",
+      "locator": "https://github.com/vercel-labs/agent-desktop/blob/93ae89e86fb849eeb5fc265b0b8e37eca56aaf72/crates/core/src/refs/refs_store.rs#L21",
+      "accessed_on": "2026-11-04",
+      "additional_locators": [
+        "https://github.com/vercel-labs/agent-desktop/blob/93ae89e86fb849eeb5fc265b0b8e37eca56aaf72/crates/core/src/refs/ref_token.rs"
+      ]
+    },
+    {
+      "id": "S05",
+      "kind": "primary",
+      "title": "捕获时全窗口唯一性",
+      "locator": "https://github.com/vercel-labs/agent-desktop/blob/93ae89e86fb849eeb5fc265b0b8e37eca56aaf72/crates/core/src/refs/ref_capture_proof.rs#L1",
+      "accessed_on": "2026-11-04"
+    },
+    {
+      "id": "S06",
+      "kind": "primary",
+      "title": "稳定身份字段与三值证据",
+      "locator": "https://github.com/vercel-labs/agent-desktop/blob/93ae89e86fb849eeb5fc265b0b8e37eca56aaf72/crates/core/src/refs/ref_full_predicate.rs#L13",
+      "accessed_on": "2026-11-04"
+    },
+    {
+      "id": "S07",
+      "kind": "primary",
+      "title": "执行前解析与落点核验",
+      "locator": "https://github.com/vercel-labs/agent-desktop/blob/93ae89e86fb849eeb5fc265b0b8e37eca56aaf72/crates/core/src/refs/resolve_saved_ref.rs#L27",
+      "accessed_on": "2026-11-04"
+    },
+    {
+      "id": "S08",
+      "kind": "primary",
+      "title": "macOS 私有 AX token 的捕获与解析",
+      "locator": "https://github.com/vercel-labs/agent-desktop/blob/93ae89e86fb849eeb5fc265b0b8e37eca56aaf72/crates/macos/src/tree/resolve/retained.rs#L34",
+      "accessed_on": "2026-11-04"
+    },
+    {
+      "id": "S09",
+      "kind": "primary",
+      "title": "macOS token 生存与身份复核",
+      "locator": "https://github.com/vercel-labs/agent-desktop/blob/93ae89e86fb849eeb5fc265b0b8e37eca56aaf72/crates/macos/src/tree/resolve/retained_resolve.rs#L43",
+      "accessed_on": "2026-11-04"
+    },
+    {
+      "id": "S10",
+      "kind": "primary",
+      "title": "展示裁剪与完整观测",
+      "locator": "https://github.com/vercel-labs/agent-desktop/blob/93ae89e86fb849eeb5fc265b0b8e37eca56aaf72/crates/core/src/snapshot/window_capture.rs#L35",
+      "accessed_on": "2026-11-04",
+      "additional_locators": [
+        "https://github.com/vercel-labs/agent-desktop/blob/93ae89e86fb849eeb5fc265b0b8e37eca56aaf72/crates/core/src/commands/snapshot.rs",
+        "https://github.com/vercel-labs/agent-desktop/blob/93ae89e86fb849eeb5fc265b0b8e37eca56aaf72/skills/agent-desktop/SKILL.md"
+      ]
+    },
+    {
+      "id": "S11",
+      "kind": "primary",
+      "title": "局部展开的引用更新",
+      "locator": "https://github.com/vercel-labs/agent-desktop/blob/93ae89e86fb849eeb5fc265b0b8e37eca56aaf72/crates/core/src/snapshot/snapshot_ref.rs#L42",
+      "accessed_on": "2026-11-04"
+    },
+    {
+      "id": "S12",
+      "kind": "primary",
+      "title": "锁外等待与锁内执行的边界",
+      "locator": "https://github.com/vercel-labs/agent-desktop/blob/93ae89e86fb849eeb5fc265b0b8e37eca56aaf72/crates/core/src/ref_action/ref_action_poll.rs#L22",
+      "accessed_on": "2026-11-04",
+      "additional_locators": [
+        "https://github.com/vercel-labs/agent-desktop/blob/93ae89e86fb849eeb5fc265b0b8e37eca56aaf72/crates/core/src/ref_action/ref_action_single.rs"
+      ]
+    },
+    {
+      "id": "S13",
+      "kind": "primary",
+      "title": "交互 lease",
+      "locator": "https://github.com/vercel-labs/agent-desktop/blob/93ae89e86fb849eeb5fc265b0b8e37eca56aaf72/crates/core/src/session/interaction_lease.rs#L1",
+      "accessed_on": "2026-11-04"
+    },
+    {
+      "id": "S14",
+      "kind": "official",
+      "title": "JSON 2.6 投递、重试和迁移协议",
+      "locator": "https://github.com/vercel-labs/agent-desktop/blob/93ae89e86fb849eeb5fc265b0b8e37eca56aaf72/docs/json-output.md#L1",
+      "accessed_on": "2026-11-04",
+      "additional_locators": [
+        "https://github.com/vercel-labs/agent-desktop/blob/93ae89e86fb849eeb5fc265b0b8e37eca56aaf72/crates/core/src/response/delivery_disposition.rs",
+        "https://github.com/vercel-labs/agent-desktop/blob/93ae89e86fb849eeb5fc265b0b8e37eca56aaf72/crates/core/src/response/retry_disposition.rs"
+      ]
+    },
+    {
+      "id": "S15",
+      "kind": "primary",
+      "title": "交互策略与命令拒绝",
+      "locator": "https://github.com/vercel-labs/agent-desktop/blob/93ae89e86fb849eeb5fc265b0b8e37eca56aaf72/crates/core/src/actions/interaction_policy.rs#L1",
+      "accessed_on": "2026-11-04",
+      "additional_locators": [
+        "https://github.com/vercel-labs/agent-desktop/blob/93ae89e86fb849eeb5fc265b0b8e37eca56aaf72/crates/core/src/commands/input_hold_policy.rs"
+      ]
+    },
+    {
+      "id": "S16",
+      "kind": "official",
+      "title": "Windows 平台与局部验证限制",
+      "locator": "https://github.com/vercel-labs/agent-desktop/blob/93ae89e86fb849eeb5fc265b0b8e37eca56aaf72/skills/agent-desktop-windows/SKILL.md",
+      "accessed_on": "2026-11-04"
+    },
+    {
+      "id": "S17",
+      "kind": "official",
+      "title": "Linux 平台与局部验证限制",
+      "locator": "https://github.com/vercel-labs/agent-desktop/blob/93ae89e86fb849eeb5fc265b0b8e37eca56aaf72/skills/agent-desktop-linux/SKILL.md",
+      "accessed_on": "2026-11-04"
+    },
+    {
+      "id": "S18",
+      "kind": "official",
+      "title": "官方支持平台",
+      "locator": "https://agent-browser.dev/desktop",
+      "accessed_on": "2026-11-04"
+    },
+    {
+      "id": "S19",
+      "kind": "official",
+      "title": "FFI 接入约定",
+      "locator": "https://github.com/vercel-labs/agent-desktop/blob/93ae89e86fb849eeb5fc265b0b8e37eca56aaf72/skills/agent-desktop-ffi/SKILL.md",
+      "accessed_on": "2026-11-04"
+    },
+    {
+      "id": "S20",
+      "kind": "official",
+      "title": "FFI 线程边界",
+      "locator": "https://github.com/vercel-labs/agent-desktop/blob/93ae89e86fb849eeb5fc265b0b8e37eca56aaf72/skills/agent-desktop-ffi/references/threading.md",
+      "accessed_on": "2026-11-04"
+    },
+    {
+      "id": "S21",
+      "kind": "primary",
+      "title": "显式 CDP 启动检查",
+      "locator": "https://github.com/vercel-labs/agent-desktop/blob/93ae89e86fb849eeb5fc265b0b8e37eca56aaf72/crates/core/src/commands/launch.rs#L19",
+      "accessed_on": "2026-11-04"
+    },
+    {
+      "id": "S22",
+      "kind": "execution",
+      "title": "固定源码的 npm 安装 fixture 测试",
+      "locator": "https://github.com/vercel-labs/agent-desktop/blob/93ae89e86fb849eeb5fc265b0b8e37eca56aaf72/tests/npm/postinstall.test.js",
+      "accessed_on": "2026-11-04"
+    },
+    {
+      "id": "S23",
+      "kind": "official",
+      "title": "活跃度、贡献者与语言 API",
+      "locator": "https://api.github.com/repos/vercel-labs/agent-desktop/stats/commit_activity",
+      "accessed_on": "2026-11-04",
+      "additional_locators": [
+        "https://api.github.com/repos/vercel-labs/agent-desktop/contributors?per_page=100",
+        "https://api.github.com/repos/vercel-labs/agent-desktop/languages"
+      ]
+    },
+    {
+      "id": "S24",
+      "kind": "official",
+      "title": "最新 50 条 issue/PR 混合样本",
+      "locator": "https://api.github.com/repos/vercel-labs/agent-desktop/issues?state=all&per_page=50",
+      "accessed_on": "2026-11-04",
+      "additional_locators": [
+        "https://api.github.com/repos/vercel-labs/agent-desktop/issues/529",
+        "https://api.github.com/repos/vercel-labs/agent-desktop/issues/479",
+        "https://api.github.com/repos/vercel-labs/agent-desktop/issues/513/comments",
+        "https://api.github.com/repos/vercel-labs/agent-desktop/issues/494/comments"
+      ]
+    },
+    {
+      "id": "S25",
+      "kind": "official",
+      "title": "v1.1.0 更新与实例替代边界",
+      "locator": "https://github.com/vercel-labs/agent-desktop/blob/93ae89e86fb849eeb5fc265b0b8e37eca56aaf72/CHANGELOG.md#L3",
+      "accessed_on": "2026-11-04"
+    },
+    {
+      "id": "S26",
+      "kind": "official",
+      "title": "最近 10 次发版与资产",
+      "locator": "https://api.github.com/repos/vercel-labs/agent-desktop/releases?per_page=10",
+      "accessed_on": "2026-11-04"
+    },
+    {
+      "id": "S27",
+      "kind": "official",
+      "title": "agent-browser 当前 README",
+      "locator": "https://github.com/vercel-labs/agent-browser/blob/main/README.md",
+      "accessed_on": "2026-11-04"
+    },
+    {
+      "id": "S28",
+      "kind": "official",
+      "title": "Cua 当前 README 与许可",
+      "locator": "https://github.com/trycua/cua/blob/main/README.md",
+      "accessed_on": "2026-11-04"
+    },
+    {
+      "id": "S29",
+      "kind": "official",
+      "title": "两竞品 API 元数据",
+      "locator": "https://api.github.com/repos/vercel-labs/agent-browser",
+      "accessed_on": "2026-11-04",
+      "additional_locators": [
+        "https://api.github.com/repos/trycua/cua"
+      ]
+    },
+    {
+      "id": "S30",
+      "kind": "official",
+      "title": "桌面内容隐私边界",
+      "locator": "https://github.com/vercel-labs/agent-desktop/blob/93ae89e86fb849eeb5fc265b0b8e37eca56aaf72/docs/faq.md#L74",
+      "accessed_on": "2026-11-04"
+    },
+    {
+      "id": "S31",
+      "kind": "official",
+      "title": "JEV 可选远端助手",
+      "locator": "https://github.com/vercel-labs/agent-desktop/blob/93ae89e86fb849eeb5fc265b0b8e37eca56aaf72/skills/jev-desktop/SKILL.md",
+      "accessed_on": "2026-11-04"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "原生 CLI 提供工具，不内置语言模型；v1.1.0 每次 CLI 独立进程",
+      "report_anchor": "3.1 入口很薄，公共核心承担约束",
+      "source_ids": [
+        "S01",
+        "S03",
+        "S25",
+        "S30"
+      ],
+      "support": "direct",
+      "evidence": "入口及更新日志明确移除 command host；FAQ 将 caller loop 与 native operations 分开。",
+      "critical": true
+    },
+    {
+      "id": "C02",
+      "claim": "refs 绑定快照且按 session 保存，不代表跨设备共享推理会话",
+      "report_anchor": "3.2 Ref 的可靠性来自两次检查",
+      "source_ids": [
+        "S04"
+      ],
+      "support": "direct",
+      "evidence": "RefStore::for_session、load_ref 及 qualified ref parser。",
+      "critical": true
+    },
+    {
+      "id": "C03",
+      "claim": "无 token refs 要求捕获和执行时全窗口唯一性；三值字段不等同不存在",
+      "report_anchor": "3.2 Ref 的可靠性来自两次检查",
+      "source_ids": [
+        "S05",
+        "S06",
+        "S07"
+      ],
+      "support": "direct",
+      "evidence": "CaptureProof、RefFullPredicate 与严格 resolver；mutable value/bounds 排除身份。",
+      "critical": true
+    },
+    {
+      "id": "C04",
+      "claim": "稳定字段唯一不保证原控件实例身份，完全相同的新控件可能被操作",
+      "report_anchor": "3.2 Ref 的可靠性来自两次检查",
+      "source_ids": [
+        "S07",
+        "S25"
+      ],
+      "support": "direct",
+      "evidence": "v1.1.0 changelog explicitly distinguishes stable identity from instance and warns ghost widgets. ",
+      "critical": true
+    },
+    {
+      "id": "C05",
+      "claim": "macOS token 依赖私有符号且不总可用；既有 token 死亡后拒绝相似项替代",
+      "report_anchor": "3.3 macOS 的对象 token 更直接，也有额外依赖",
+      "source_ids": [
+        "S08",
+        "S09"
+      ],
+      "support": "direct",
+      "evidence": "dlsym 两个私有符号；capture None 与 saved token STALE_REF 不同。",
+      "critical": true
+    },
+    {
+      "id": "C06",
+      "claim": "skeleton 限制输出不保证同等降低底层观测成本，局部展开事务仅保护映射",
+      "report_anchor": "3.4 少给模型看一些，不一定少读取一些",
+      "source_ids": [
+        "S10",
+        "S11"
+      ],
+      "support": "direct",
+      "evidence": "capture_window whole read then presentation cut；snapshot_ref update_existing_snapshot。",
+      "critical": true
+    },
+    {
+      "id": "C07",
+      "claim": "锁外等待、锁内重验；lease 不约束人或无关工具",
+      "report_anchor": "3.5 多 Agent 共用桌面：先等待，再持锁重查",
+      "source_ids": [
+        "S12",
+        "S13",
+        "S20"
+      ],
+      "support": "direct",
+      "evidence": "poll 返回计数器而非可直接 dispatch 的句柄；FFI threading 明列不能协调的参与者。",
+      "critical": true
+    },
+    {
+      "id": "C08",
+      "claim": "ok 不代表业务完成，失败也可已投递；safe 重试不等于同 ref 会成功",
+      "report_anchor": "3.6 返回结果比一个 success 更有用",
+      "source_ids": [
+        "S14",
+        "S16",
+        "S17"
+      ],
+      "support": "direct",
+      "evidence": "五种 delivery、retry 与 after-action wait 失败保留投递信息；application_commit 未验证。",
+      "critical": true
+    },
+    {
+      "id": "C09",
+      "claim": "headless 是焦点与鼠标策略；三平台仍需要各自真实会话和权限",
+      "report_anchor": "3.7 Headless 不代表没有桌面，也不代表没有副作用",
+      "source_ids": [
+        "S15",
+        "S16",
+        "S17",
+        "S18"
+      ],
+      "support": "direct",
+      "evidence": "默认 focus/cursor false；Windows interactive desktop/UIPI；Linux AT-SPI，Wayland 限制。",
+      "critical": true
+    },
+    {
+      "id": "C10",
+      "claim": "FFI 不等于全 CLI 能力；线程/ABI 边界和显式 CDP 接入需保留",
+      "report_anchor": "3.8 CLI、FFI 和浏览器各有合适的接入方式",
+      "source_ids": [
+        "S19",
+        "S20",
+        "S21",
+        "S25"
+      ],
+      "support": "direct",
+      "evidence": "ABI major7，exact endpoints refuse；native handles thread-affine，launch --cdp 显式。",
+      "critical": true
+    },
+    {
+      "id": "C11",
+      "claim": "7 项 npm fixture 测试通过；Rust 单测未运行且未进行真实桌面实验",
+      "report_anchor": "3.9 本次实际验证了什么",
+      "source_ids": [
+        "S22"
+      ],
+      "support": "direct",
+      "evidence": "Node v24.14.1，7 tests/7 pass/0 fail；cargo command not found。",
+      "critical": true
+    },
+    {
+      "id": "C12",
+      "claim": "API 元数据、活跃度、贡献集中度按接口口径解释，不推出采用率",
+      "report_anchor": "四、社区活跃度：迭代很快，维护仍较集中",
+      "source_ids": [
+        "S02",
+        "S23",
+        "S24",
+        "S26"
+      ],
+      "support": "derived",
+      "evidence": "12018 stars/821 forks；52桶289，末8桶77；9账户324贡献，221/324=68.2%；两技术响应6.97h/4.58h，非维护者SLA。",
+      "critical": true
+    },
+    {
+      "id": "C13",
+      "claim": "v1.1.0 收紧身份、升级协议与 ABI，旧调用方需要迁移",
+      "report_anchor": "五、发展趋势：接口正在收紧，升级要重做契约检查",
+      "source_ids": [
+        "S25",
+        "S26"
+      ],
+      "support": "direct",
+      "evidence": "release API UTC 与 changelog 内容区分；旧 map、data.window 可省略均有文档。",
+      "critical": true
+    },
+    {
+      "id": "C14",
+      "claim": "agent-browser、Cua Driver 和 Cua 环境产品分层比较，许可不能只看顶层",
+      "report_anchor": "六、竞品对比：操作工具、浏览器工具与桌面环境",
+      "source_ids": [
+        "S27",
+        "S28",
+        "S29"
+      ],
+      "support": "direct",
+      "evidence": "agent-browser README native Rust daemon/direct CDP；Cua Driver desktop/MCP/SDK，Spaces、Lume 环境；FSL与MIT条款。",
+      "critical": true
+    },
+    {
+      "id": "C15",
+      "claim": "原生 CLI 本地不推出全部路径无外发；JEV 与桌面产物有隐私边界",
+      "report_anchor": "隐私边界与本次限制",
+      "source_ids": [
+        "S30",
+        "S31"
+      ],
+      "support": "direct",
+      "evidence": "JEV repo-only helper documentation lists screen descriptions/name/value remote delivery；no-values 留下name/title。",
+      "critical": true
+    },
+    {
+      "id": "C16",
+      "claim": "[推测] 应固定版本做小范围应用验证，先保留投递与重试契约，再决定替换工具",
+      "report_anchor": "七、总结评价：先学契约，再做小范围接入",
+      "source_ids": [
+        "S07",
+        "S14",
+        "S16",
+        "S17",
+        "S24",
+        "S25"
+      ],
+      "support": "inference",
+      "evidence": "",
+      "critical": true
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U01",
+      "title": "原生 CLI 提供工具，不内置语言模型；v1.1.0 每次 CLI 独立进程",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S01",
+        "S03",
+        "S25",
+        "S30"
+      ],
+      "report_anchor": "3.1 入口很薄，公共核心承担约束"
+    },
+    {
+      "id": "U02",
+      "title": "refs 绑定快照且按 session 保存，不代表跨设备共享推理会话",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S04"
+      ],
+      "report_anchor": "3.2 Ref 的可靠性来自两次检查"
+    },
+    {
+      "id": "U03",
+      "title": "无 token refs 要求捕获和执行时全窗口唯一性；三值字段不等同不存在",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S05",
+        "S06",
+        "S07"
+      ],
+      "report_anchor": "3.2 Ref 的可靠性来自两次检查"
+    },
+    {
+      "id": "U04",
+      "title": "稳定字段唯一不保证原控件实例身份，完全相同的新控件可能被操作",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S07",
+        "S25"
+      ],
+      "report_anchor": "3.2 Ref 的可靠性来自两次检查"
+    },
+    {
+      "id": "U05",
+      "title": "macOS token 依赖私有符号且不总可用；既有 token 死亡后拒绝相似项替代",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S08",
+        "S09"
+      ],
+      "report_anchor": "3.3 macOS 的对象 token 更直接，也有额外依赖"
+    },
+    {
+      "id": "U06",
+      "title": "skeleton 限制输出不保证同等降低底层观测成本，局部展开事务仅保护映射",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S10",
+        "S11"
+      ],
+      "report_anchor": "3.4 少给模型看一些，不一定少读取一些"
+    },
+    {
+      "id": "U07",
+      "title": "锁外等待、锁内重验；lease 不约束人或无关工具",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S12",
+        "S13",
+        "S20"
+      ],
+      "report_anchor": "3.5 多 Agent 共用桌面：先等待，再持锁重查"
+    },
+    {
+      "id": "U08",
+      "title": "ok 不代表业务完成，失败也可已投递；safe 重试不等于同 ref 会成功",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S14",
+        "S16",
+        "S17"
+      ],
+      "report_anchor": "3.6 返回结果比一个 success 更有用"
+    },
+    {
+      "id": "U09",
+      "title": "headless 是焦点与鼠标策略；三平台仍需要各自真实会话和权限",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S15",
+        "S16",
+        "S17",
+        "S18"
+      ],
+      "report_anchor": "3.7 Headless 不代表没有桌面，也不代表没有副作用"
+    },
+    {
+      "id": "U10",
+      "title": "FFI 不等于全 CLI 能力；线程/ABI 边界和显式 CDP 接入需保留",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S19",
+        "S20",
+        "S21",
+        "S25"
+      ],
+      "report_anchor": "3.8 CLI、FFI 和浏览器各有合适的接入方式"
+    },
+    {
+      "id": "U11",
+      "title": "7 项 npm fixture 测试通过；Rust 单测未运行且未进行真实桌面实验",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S22"
+      ],
+      "report_anchor": "3.9 本次实际验证了什么"
+    },
+    {
+      "id": "U12",
+      "title": "API 元数据、活跃度、贡献集中度按接口口径解释，不推出采用率",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S02",
+        "S23",
+        "S24",
+        "S26"
+      ],
+      "report_anchor": "四、社区活跃度：迭代很快，维护仍较集中"
+    },
+    {
+      "id": "U13",
+      "title": "v1.1.0 收紧身份、升级协议与 ABI，旧调用方需要迁移",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S25",
+        "S26"
+      ],
+      "report_anchor": "五、发展趋势：接口正在收紧，升级要重做契约检查"
+    },
+    {
+      "id": "U14",
+      "title": "agent-browser、Cua Driver 和 Cua 环境产品分层比较，许可不能只看顶层",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S27",
+        "S28",
+        "S29"
+      ],
+      "report_anchor": "六、竞品对比：操作工具、浏览器工具与桌面环境"
+    },
+    {
+      "id": "U15",
+      "title": "原生 CLI 本地不推出全部路径无外发；JEV 与桌面产物有隐私边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S30",
+        "S31"
+      ],
+      "report_anchor": "隐私边界与本次限制"
+    },
+    {
+      "id": "U16",
+      "title": "[推测] 应固定版本做小范围应用验证，先保留投递与重试契约，再决定替换工具",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S07",
+        "S14",
+        "S16",
+        "S17",
+        "S24",
+        "S25"
+      ],
+      "report_anchor": "七、总结评价：先学契约，再做小范围接入"
+    }
+  ],
+  "limitations": [
+    "源码与API快照研究，不是全仓逐行审计；竞品只读README和元数据。",
+    "未运行真实GUI、权限、截图、多Agent并发或跨设备实验，未测任务成功率与延迟。",
+    "cargo/rustc 不可用，Rust核心测试未运行；npm测试只覆盖安装fixture。",
+    "API数值为2026-11-04查询快照，latest50 issue接口混含PR且非总体；社区评论不等于维护者SLA。",
+    "macOS原生token依赖私有接口；无token唯一语义匹配不保证控件实例。"
+  ],
+  "execution": {
+    "source_commit": "93ae89e86fb849eeb5fc265b0b8e37eca56aaf72",
+    "node_version": "v24.14.1",
+    "command": "node --test --test-name-pattern='checksum lookup|archive validation|archive installation|corrupted installed binary' tests/npm/postinstall.test.js",
+    "exit_code": 0,
+    "tests": 7,
+    "pass": 7,
+    "fail": 0,
+    "rust_attempt": {
+      "command": "cargo test --locked -p agent-desktop-core --lib",
+      "status": "not_run",
+      "reason": "cargo: command not found"
+    },
+    "desktop_actions_executed": false,
+    "test_output": "✔ checksum lookup requires an exact archive name (0.843042ms)\n✔ archive validation rejects missing and additional payloads on the darwin entry set (257.107625ms)\n✔ archive validation is platform-correct on the win32 single-entry set (55.683417ms)\n✔ archive installation preserves the exact paired executables (52.526916ms)\n✔ archive installation places the windows executable and leaves no staging directory behind (37.678417ms)\n✔ a corrupted installed binary is not served by the fast path (27.796708ms)\n✔ archive installation removes its staging directory on macOS (32.759083ms)\nℹ tests 7\nℹ suites 0\nℹ pass 7\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 550.829708\n",
+    "test_output_sha256": "8543309bed6c1b6219bf13e592bca1e31e2bec94f485ce25d570c40161b8094e",
+    "coverage_note": "本次筛选的 archive validation 用例构造 valid 与 extra 归档，没有缺少 payload 的 fixture；不能按测试名称推导缺少文件覆盖。"
+  },
+  "retrieval_notes": [
+    "eacli tokenplan catalog/tool select 已先行；repo.public.structure 返回 ProviderSourceUnavailable 后最小降级到固定 git clone 读取代码。",
+    "精确 GitHub 元数据无对应 typed capability，使用 GitHub 官方 API；官方文档 web.read、竞品 repo.public.read 通过 eacli。",
+    "通用 web.search 噪声较多，未将 SEO 汇总用于核心结论。"
+  ],
+  "api_snapshot": {
+    "metadata": {
+      "full_name": "vercel-labs/agent-desktop",
+      "created_at": "2026-02-19T18:00:49Z",
+      "pushed_at": "2026-11-03T12:24:46Z",
+      "stargazers_count": 12018,
+      "forks_count": 821,
+      "open_issues_count": 140
+    },
+    "activity_weeks": 52,
+    "activity_commits": 289,
+    "last8_commits": 77,
+    "contributors_accounts": 9,
+    "contributors_bot_type": 3,
+    "contributions_total": 324,
+    "top_contributions": 221,
+    "latest_issues_sample": {
+      "records": 50,
+      "pull_requests": 40,
+      "issues": 10
+    },
+    "competitors": [
+      {
+        "repo": "vercel-labs/agent-browser",
+        "stars": 45376,
+        "forks": 3112
+      },
+      {
+        "repo": "trycua/cua",
+        "stars": 31663,
+        "forks": 2347
+      }
+    ]
+  }
+}

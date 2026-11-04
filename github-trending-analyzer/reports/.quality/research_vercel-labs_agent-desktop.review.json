@@ -1,0 +1,783 @@
+{
+  "schema_version": 1,
+  "report_path": "github-trending-analyzer/reports/research_vercel-labs_agent-desktop.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-6-astra",
+        "harness": "codex",
+        "run_id": "review-agent_desktop_review-20261104-r2",
+        "independent_context": true,
+        "explicit_model_override": false
+      },
+      "scores": {
+        "evidence_fidelity": 97,
+        "request_coverage": 98,
+        "reasoning_quality": 97,
+        "readability": 95,
+        "limitations": 98
+      },
+      "score_reasons": {
+        "evidence_fidelity": "沿用第一轮固定 commit 源码、平台/协议文档、API 数字和竞品 README 的独立核验。本轮复验 3.9 已删除缺少归档文件的测试覆盖表述，evidence.execution.coverage_note 明确没有 missing payload fixture；7/7/0 原始日志及 SHA 未变。两处表格改写内容与原始资料一致，无未解决的证据问题。",
+        "request_coverage": "R1–R4、C01–C16 与 U01–U16 已逐项核对。来源优先独立列出的 18 个内容单元覆盖身份、观察、动作、并发、投递、平台、FFI、隐私、生态和采用方法，七章正文可独立阅读，未见核心主题遗漏。",
+        "reasoning_quality": "把稳定字段唯一性与控件实例、局部状态验证与业务提交、lease 与全桌面互斥分别解释；社区指标未被推成采用率或可靠性，路线判断和采用建议标为推测。未发现影响核心结论的推理跳跃。",
+        "readability": "正文可独立阅读。本人复验 3.6 五条状态列表与 3.7 三段平台条件，技术字段和限制均保留；读取新版 render-check.json：390px 下 documentWidth=390，80 个链接，余下两张短表容器 366/内容 440 且 overflow auto。协调者亲自查看新 mobile-delivery/mobile-platform 截图，确认长状态名和平台名不再被表格强制拆行，无乱码、重叠或 Markdown 残留。未改动开头的 1200px 检查沿用第一轮；截图检查由协调者执行，本人检查正文与结构收据。",
+        "limitations": "明确区分 7 项安装 fixture、未运行的 Rust 单测、未做的三平台桌面/并发/权限实验；不承诺成功率、Token 节省或性能。issue 作为未复现风险线索，竞品比较限定于 README/API，JEV 外发与桌面产物隐私限制完整。"
+      },
+      "critical_claim_ids_checked": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16"
+      ],
+      "coverage_unit_ids_checked": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08",
+        "U09",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16"
+      ],
+      "source_content_map": [
+        {
+          "id": "RM01",
+          "title": "产品定位与交付边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S03",
+            "S25",
+            "S30"
+          ],
+          "matched_coverage_unit_ids": [
+            "U01"
+          ],
+          "notes": "正文区分 CLI/C ABI 工具与调用者规划，并按 v1.1.0 说明逐次 CLI 独立进程。"
+        },
+        {
+          "id": "RM02",
+          "title": "有命名空间的快照引用",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "U02"
+          ],
+          "notes": "qualified ref 与 session 存储的关系已解释；未把 snapshot id 当永久控件 ID。"
+        },
+        {
+          "id": "RM03",
+          "title": "无原生 token 的双重唯一性证明",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S05",
+            "S06",
+            "S07"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03",
+            "U04"
+          ],
+          "notes": "捕获及执行时完整窗口唯一性、落点复核与同一稳定身份被新控件替代的边界均进入正文。"
+        },
+        {
+          "id": "RM04",
+          "title": "身份字段与三值证据",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S05",
+            "S06",
+            "S07",
+            "S25"
+          ],
+          "matched_coverage_unit_ids": [
+            "U03",
+            "U04"
+          ],
+          "notes": "role/native id/稳定名称/description 与 mutable value/bounds 的区分准确，Known/Absent/Unknown 没有混用。"
+        },
+        {
+          "id": "RM05",
+          "title": "macOS retained token 与私有 API",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S08",
+            "S09"
+          ],
+          "matched_coverage_unit_ids": [
+            "U05"
+          ],
+          "notes": "两私有 AX 符号、capture 无 token 与既有 token 失效的两条路径均准确；没有承诺未来兼容。"
+        },
+        {
+          "id": "RM06",
+          "title": "全窗口验证成本与部分快照",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S10"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06"
+          ],
+          "notes": "skeleton 是展示裁剪；完整观察预算、partial 与 boolean identity_unproven 的区别有说明。"
+        },
+        {
+          "id": "RM07",
+          "title": "drill-down 的更新事务",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S11",
+            "S04"
+          ],
+          "matched_coverage_unit_ids": [
+            "U06"
+          ],
+          "notes": "drill 保持 snapshot id、锁内更新子树且不完整读取不覆盖旧 map；未写成 UI 原子事务。"
+        },
+        {
+          "id": "RM08",
+          "title": "actionability 与自动等待",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S12"
+          ],
+          "matched_coverage_unit_ids": [
+            "U07"
+          ],
+          "notes": "锁外 poll 不把句柄作为正式执行授权；持锁重验及仅未投递且可重试时继续等待的限制完整。"
+        },
+        {
+          "id": "RM09",
+          "title": "交互 lease 的并发边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S13",
+            "S20"
+          ],
+          "matched_coverage_unit_ids": [
+            "U07"
+          ],
+          "notes": "lease 只协调参与协议的 mutation，未误称能锁住用户鼠标或应用自身变化。"
+        },
+        {
+          "id": "RM10",
+          "title": "投递结果与重试协议",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S14"
+          ],
+          "matched_coverage_unit_ids": [
+            "U08"
+          ],
+          "notes": "五种 delivery 与 retry 对应准确；ok、投递和业务完成分开，after-action wait 失败保留原投递状态有官方原文支持。 第二轮改为五条列表，状态及重试含义完整保留。"
+        },
+        {
+          "id": "RM11",
+          "title": "状态读回不是业务提交证明",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S14",
+            "S16",
+            "S17"
+          ],
+          "matched_coverage_unit_ids": [
+            "U08"
+          ],
+          "notes": "元素值/状态的读回没有被提升为应用级提交证明，application_commit:not_verified 及平台事件缺口均保留。"
+        },
+        {
+          "id": "RM12",
+          "title": "headless/headed 的策略含义",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S15",
+            "S16",
+            "S17"
+          ],
+          "matched_coverage_unit_ids": [
+            "U09"
+          ],
+          "notes": "headless/headed 解释为焦点和指针策略，未推断为无图形会话或无副作用；四条 held-input 命令拒绝状态也有交代。"
+        },
+        {
+          "id": "RM13",
+          "title": "平台矩阵与测量范围",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S16",
+            "S17",
+            "S18"
+          ],
+          "matched_coverage_unit_ids": [
+            "U09"
+          ],
+          "notes": "三平台支持范围、交互桌面/权限、AT-SPI、X11/Wayland 和测量环境边界均有覆盖。 第二轮改为三段，版本、架构、权限和会话限制未丢失。"
+        },
+        {
+          "id": "RM14",
+          "title": "隐私、trace 与可选远端 helper",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S01",
+            "S30",
+            "S31"
+          ],
+          "matched_coverage_unit_ids": [
+            "U15"
+          ],
+          "notes": "正文保留桌面产物的敏感内容边界、JEV 可选远端发送与 no-values 局限，没有把本地 CLI 泛化为所有路径均无外发。"
+        },
+        {
+          "id": "RM15",
+          "title": "FFI 接入契约",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S19",
+            "S20",
+            "S21",
+            "S25"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10",
+            "U13"
+          ],
+          "notes": "FFI ABI major 7、exact 入口拒绝、线程与快照选项限制明确；CDP 必须显式开启且检查冲突，未混同完整高层 SDK。"
+        },
+        {
+          "id": "RM16",
+          "title": "生态元数据与成熟度",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S02",
+            "S23",
+            "S24",
+            "S25",
+            "S26"
+          ],
+          "matched_coverage_unit_ids": [
+            "U12",
+            "U13"
+          ],
+          "notes": "API 快照数字重新计算一致，Bot、PR、周桶和贡献统计口径有界定；版本迁移事实与趋势推测分开。"
+        },
+        {
+          "id": "RM17",
+          "title": "替代方案与层次比较",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S27",
+            "S28",
+            "S29"
+          ],
+          "matched_coverage_unit_ids": [
+            "U14"
+          ],
+          "notes": "在来源优先地图后补读两仓 README 相关原文，确认 agent-browser Rust daemon/direct CDP 与 Cua Driver/环境层/许可的分层比较；未做性能排名。"
+        },
+        {
+          "id": "RM18",
+          "title": "验证与可复现实验边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S07",
+            "S14",
+            "S16",
+            "S17",
+            "S22",
+            "S24",
+            "S25"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11",
+            "U16"
+          ],
+          "notes": "已核对真实测试日志、筛选表达式和七项 fixture 源码；第二轮已删除缺少 payload 的已测覆盖误述，并在 evidence.execution.coverage_note 写明限制。明确 Rust 未运行、真实桌面未测试，后续实验是建议而非结果。"
+        }
+      ],
+      "source_ids_checked": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S19",
+        "S20",
+        "S21",
+        "S22",
+        "S23",
+        "S24",
+        "S25",
+        "S26",
+        "S27",
+        "S28",
+        "S29",
+        "S30",
+        "S31"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "第二轮差异复核；report SHA-256 462b1b115d1f8df36e34e0ad86bd25cabd224b6f8908e4e55d076468a48ae063，evidence SHA-256 d8982099298cf3ed18762393b9b75ecdd56787d9cd59ecf46a7473f443928248，开始及落盘前均匹配正式提示。当前 Reviewer 仍独立于生成上下文；本轮沿用自身第一轮原始来源核验，只复验修订处及关联内容，没有把同一份报告从头重复审读。第一轮先读来源、后读报告，形成 18 单元来源地图，其 SHA-256 为 235fc86b871c96af16774e8b7c5fa5108fc6b42923b364359db01d24029c42fc。完整 R1–R4、C01–C16、U01–U16、S01–S31 核验记录和前轮发现保留于 history；本轮地图沿用该独立识别结构，RM18 已由 partial 改为 covered。修复确认：3.9“归档缺少或多出文件时拒绝安装”改为“归档多出文件时拒绝安装”，与真实 fixture 断言一致；evidence.execution.coverage_note 明确没有缺少 payload 案例。执行日志 SHA-256 仍为 8543309bed6c1b6219bf13e592bca1e31e2bec94f485ce25d570c40161b8094e，没有重新执行安装或桌面动作。3.6 五种 delivery 由表变为五条列表，3.7 三平台由表变为三段，版本/架构/权限/会话限制及相关引用完整保留。渲染分工：协调者以相同工作台 renderer/CSS 重新渲染，亲自查看新版 390px 的 mobile-delivery.png 与 mobile-platform.png，确认前轮长代码状态名及 macOS/Windows 多行拆分问题解除，段落正常，无乱码/重叠/残留标记。本人读取更新后的 DOM 记录：三个窄屏局部均 documentWidth=390，80 links，余下两张短表容器 366/scroll 440/overflow auto。1200px 未改动开头沿用首轮检查；首四条 a.href 与所有固定源码文件/行号核验沿用首轮，修改未改变引用。没有逐条联网打开外部链接，不能声称全部在线可达。身份证据沿用第一轮：主会话 eacli 观察 gpt-6-astra/codex，子代理未覆盖模型并继承路由；子会话本地 probe configured/unconfirmed，原因 native-session-binding-unavailable，本机 CLI 不支持 session peers。这是平台路由证据而非服务商 attestation，未虚称用户指定 Reviewer 模型，因此 explicit_model_override=false。固定源码为 93ae89e86fb849eeb5fc265b0b8e37eca56aaf72。来源读取走协调者已说明的 eacli ProviderSourceUnavailable 后最小 clone/API 降级，Reviewer 无额外联网和目标桌面操作。第一轮的两项修复均关闭，无未解决 unsupported_claims、missing_requirements 或 hard_failures。部分 issue 来自 1.0.2 的版本说明可在未来维护中细化；当前已限定为未复现用户线索，未泛化为最新版普遍缺陷。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 97.0,
+    "evaluated_on": "2026-11-04",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "f97b34e184fd2b1608346382ceb40660354f380a89cdc4624a81197503d5c601",
+    "evidence_sha256": "d8982099298cf3ed18762393b9b75ecdd56787d9cd59ecf46a7473f443928248"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-6-astra",
+            "harness": "codex",
+            "run_id": "review-agent_desktop_review-20261104-r1",
+            "independent_context": true,
+            "explicit_model_override": false
+          },
+          "scores": {
+            "evidence_fidelity": 94,
+            "request_coverage": 98,
+            "reasoning_quality": 97,
+            "readability": 86,
+            "limitations": 98
+          },
+          "score_reasons": {
+            "evidence_fidelity": "固定 commit 源码、官方平台指南、JSON 2.6/ABI 7、API 数字与竞品 README 均已核验。7 tests/7 pass/0 fail 与原始日志和 SHA 一致，但 3.9 把缺少归档文件列为已测覆盖；测试名称虽含 missing，实际只有 valid/extra fixture，须删除缺少文件的覆盖表述。",
+            "request_coverage": "R1–R4、C01–C16 与 U01–U16 已逐项核对。来源优先独立列出的 18 个内容单元覆盖身份、观察、动作、并发、投递、平台、FFI、隐私、生态和采用方法，七章正文可独立阅读，未见核心主题遗漏。",
+            "reasoning_quality": "把稳定字段唯一性与控件实例、局部状态验证与业务提交、lease 与全桌面互斥分别解释；社区指标未被推成采用率或可靠性，路线判断和采用建议标为推测。未发现影响核心结论的推理跳跃。",
+            "readability": "本人完成 Markdown 正文与引用静态检查：80 个链接，54 次固定源码引用（30 个唯一 URL）的本地文件和行号有效，无替换字符。协调者用工作台 renderer/CSS 实测 1200 与 390 宽度，无整页横溢；但其亲自查看截图发现窄屏平台名称和 delivery 标识被强制拆成多行，3.6 和 3.7 宜改为列表或短段落。GUI 和视觉检查由协调者执行，本人未冒称亲测。",
+            "limitations": "明确区分 7 项安装 fixture、未运行的 Rust 单测、未做的三平台桌面/并发/权限实验；不承诺成功率、Token 节省或性能。issue 作为未复现风险线索，竞品比较限定于 README/API，JEV 外发与桌面产物隐私限制完整。"
+          },
+          "critical_claim_ids_checked": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07",
+            "C08",
+            "C09",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "C16"
+          ],
+          "coverage_unit_ids_checked": [
+            "U01",
+            "U02",
+            "U03",
+            "U04",
+            "U05",
+            "U06",
+            "U07",
+            "U08",
+            "U09",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14",
+            "U15",
+            "U16"
+          ],
+          "source_content_map": [
+            {
+              "id": "RM01",
+              "title": "产品定位与交付边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S03",
+                "S25",
+                "S30"
+              ],
+              "matched_coverage_unit_ids": [
+                "U01"
+              ],
+              "notes": "正文区分 CLI/C ABI 工具与调用者规划，并按 v1.1.0 说明逐次 CLI 独立进程。"
+            },
+            {
+              "id": "RM02",
+              "title": "有命名空间的快照引用",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "U02"
+              ],
+              "notes": "qualified ref 与 session 存储的关系已解释；未把 snapshot id 当永久控件 ID。"
+            },
+            {
+              "id": "RM03",
+              "title": "无原生 token 的双重唯一性证明",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S05",
+                "S06",
+                "S07"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03",
+                "U04"
+              ],
+              "notes": "捕获及执行时完整窗口唯一性、落点复核与同一稳定身份被新控件替代的边界均进入正文。"
+            },
+            {
+              "id": "RM04",
+              "title": "身份字段与三值证据",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S05",
+                "S06",
+                "S07",
+                "S25"
+              ],
+              "matched_coverage_unit_ids": [
+                "U03",
+                "U04"
+              ],
+              "notes": "role/native id/稳定名称/description 与 mutable value/bounds 的区分准确，Known/Absent/Unknown 没有混用。"
+            },
+            {
+              "id": "RM05",
+              "title": "macOS retained token 与私有 API",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S08",
+                "S09"
+              ],
+              "matched_coverage_unit_ids": [
+                "U05"
+              ],
+              "notes": "两私有 AX 符号、capture 无 token 与既有 token 失效的两条路径均准确；没有承诺未来兼容。"
+            },
+            {
+              "id": "RM06",
+              "title": "全窗口验证成本与部分快照",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S10"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "skeleton 是展示裁剪；完整观察预算、partial 与 boolean identity_unproven 的区别有说明。"
+            },
+            {
+              "id": "RM07",
+              "title": "drill-down 的更新事务",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S11",
+                "S04"
+              ],
+              "matched_coverage_unit_ids": [
+                "U06"
+              ],
+              "notes": "drill 保持 snapshot id、锁内更新子树且不完整读取不覆盖旧 map；未写成 UI 原子事务。"
+            },
+            {
+              "id": "RM08",
+              "title": "actionability 与自动等待",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S12"
+              ],
+              "matched_coverage_unit_ids": [
+                "U07"
+              ],
+              "notes": "锁外 poll 不把句柄作为正式执行授权；持锁重验及仅未投递且可重试时继续等待的限制完整。"
+            },
+            {
+              "id": "RM09",
+              "title": "交互 lease 的并发边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S13",
+                "S20"
+              ],
+              "matched_coverage_unit_ids": [
+                "U07"
+              ],
+              "notes": "lease 只协调参与协议的 mutation，未误称能锁住用户鼠标或应用自身变化。"
+            },
+            {
+              "id": "RM10",
+              "title": "投递结果与重试协议",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S14"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08"
+              ],
+              "notes": "五种 delivery 与 retry 对应准确；ok、投递和业务完成分开，after-action wait 失败保留原投递状态有官方原文支持。"
+            },
+            {
+              "id": "RM11",
+              "title": "状态读回不是业务提交证明",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S14",
+                "S16",
+                "S17"
+              ],
+              "matched_coverage_unit_ids": [
+                "U08"
+              ],
+              "notes": "元素值/状态的读回没有被提升为应用级提交证明，application_commit:not_verified 及平台事件缺口均保留。"
+            },
+            {
+              "id": "RM12",
+              "title": "headless/headed 的策略含义",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S15",
+                "S16",
+                "S17"
+              ],
+              "matched_coverage_unit_ids": [
+                "U09"
+              ],
+              "notes": "headless/headed 解释为焦点和指针策略，未推断为无图形会话或无副作用；四条 held-input 命令拒绝状态也有交代。"
+            },
+            {
+              "id": "RM13",
+              "title": "平台矩阵与测量范围",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S16",
+                "S17",
+                "S18"
+              ],
+              "matched_coverage_unit_ids": [
+                "U09"
+              ],
+              "notes": "三平台支持范围、交互桌面/权限、AT-SPI、X11/Wayland 和测量环境边界均有覆盖。"
+            },
+            {
+              "id": "RM14",
+              "title": "隐私、trace 与可选远端 helper",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S01",
+                "S30",
+                "S31"
+              ],
+              "matched_coverage_unit_ids": [
+                "U15"
+              ],
+              "notes": "正文保留桌面产物的敏感内容边界、JEV 可选远端发送与 no-values 局限，没有把本地 CLI 泛化为所有路径均无外发。"
+            },
+            {
+              "id": "RM15",
+              "title": "FFI 接入契约",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S19",
+                "S20",
+                "S21",
+                "S25"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10",
+                "U13"
+              ],
+              "notes": "FFI ABI major 7、exact 入口拒绝、线程与快照选项限制明确；CDP 必须显式开启且检查冲突，未混同完整高层 SDK。"
+            },
+            {
+              "id": "RM16",
+              "title": "生态元数据与成熟度",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S02",
+                "S23",
+                "S24",
+                "S25",
+                "S26"
+              ],
+              "matched_coverage_unit_ids": [
+                "U12",
+                "U13"
+              ],
+              "notes": "API 快照数字重新计算一致，Bot、PR、周桶和贡献统计口径有界定；版本迁移事实与趋势推测分开。"
+            },
+            {
+              "id": "RM17",
+              "title": "替代方案与层次比较",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S27",
+                "S28",
+                "S29"
+              ],
+              "matched_coverage_unit_ids": [
+                "U14"
+              ],
+              "notes": "在来源优先地图后补读两仓 README 相关原文，确认 agent-browser Rust daemon/direct CDP 与 Cua Driver/环境层/许可的分层比较；未做性能排名。"
+            },
+            {
+              "id": "RM18",
+              "title": "验证与可复现实验边界",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S07",
+                "S14",
+                "S16",
+                "S17",
+                "S22",
+                "S24",
+                "S25"
+              ],
+              "matched_coverage_unit_ids": [
+                "U11",
+                "U16"
+              ],
+              "notes": "已核对真实测试日志、筛选表达式和七项 fixture 源码；明确 Rust 未运行、真实桌面未测试，后续实验是建议而非结果。 当前 3.9 将缺少归档 payload 也列为已测覆盖，但七项 fixture 没有该输入案例；需删除这部分覆盖表述。"
+            }
+          ],
+          "source_ids_checked": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06",
+            "S07",
+            "S08",
+            "S09",
+            "S10",
+            "S11",
+            "S12",
+            "S13",
+            "S14",
+            "S15",
+            "S16",
+            "S17",
+            "S18",
+            "S19",
+            "S20",
+            "S21",
+            "S22",
+            "S23",
+            "S24",
+            "S25",
+            "S26",
+            "S27",
+            "S28",
+            "S29",
+            "S30",
+            "S31"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4"
+          ],
+          "unsupported_claims": [
+            "C11"
+          ],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "审阅快照：report SHA-256 af43d35eff4e822bf70fa0879b3169d6005d064e7f929d90db10031eb2de9b8e；evidence SHA-256 32b84d06afcbb0566c1e3e98553ef7f424d4d357942af7ecf4e41be22298430c。开始及落盘前均核对一致。先读取固定 commit 93ae89e86fb849eeb5fc265b0b8e37eca56aaf72 的关键原始源码和 API 快照，在报告形成前保存 18 单元来源地图，其 SHA-256 为 235fc86b871c96af16774e8b7c5fa5108fc6b42923b364359db01d24029c42fc；之后才读正文/evidence，正式地图沿用原识别单元并补充匹配。模型记录依据：协调者此前 eacli session current 确认主会话 gpt-6-astra/codex，本子代理未设置模型覆盖而继承路由；这是平台路由证据，不是服务商 attestation。子会话本地 probe 仅 configured/unconfirmed，原因 native-session-binding-unavailable，本机 CLI 不支持 session peers。未把默认策略 GLM 5.3 冒充实际 Reviewer，也未声称用户明确指定 Reviewer 模型，故 explicit_model_override=false。来源通过只读固定 clone 与原始 API 文件核验；协调者已记录 eacli repo.public.structure 返回 ProviderSourceUnavailable 后采用最小降级，本 Reviewer 没有联网或操作目标桌面。重新计算 stars/forks、语言字节占比、52/8 周提交、9 账户/3 Bot/324 贡献/221 首位贡献、50 条样本中 40 PR，以及两条非作者技术响应耗时；均与正文相符。原始 npm 日志 SHA-256 为 8543309bed6c1b6219bf13e592bca1e31e2bec94f485ce25d570c40161b8094e，Node v24.14.1 实查一致；Rust 日志为 cargo command not found。待修复两项：一，C11 对应 3.9 的“归档缺少或多出文件”应改为实际有断言的“归档多出文件”；C11 的测试计数、未做桌面实验等其余内容有支持，此处是轻微覆盖误述，不属于核心事实无证据的硬失败。二，协调者实测窄屏阅读发现 3.6 delivery 表与 3.7 平台表长标识强制断行，需改为自然列表/短段落后重看。渲染依据由协调者提供：现行 markdown_render.py/CSS、独立临时 Chrome profile，1200/390 视口；本人读取 render-check.json，390 下 documentWidth=390，四表容器 366/内容 440、overflow-x:auto，80 个引用生成 a 标签且首四条 href 正确。协调者亲自看宽/窄截图报告无乱码重叠，窄屏两表断行影响阅读；辅助视觉结果中的“2026 是未来日期”与当前日期不符，未采纳。外部链接未逐条在线点击，不能认定全部在线可达。其余轻微建议：部分 issue 发生于 1.0.2，可在未来更新时补版本列；当前已声明用户报告、未复现和非普遍缺陷，不影响核心结论。"
+        }
+      ],
+      "decision": {}
+    }
+  ]
+}
