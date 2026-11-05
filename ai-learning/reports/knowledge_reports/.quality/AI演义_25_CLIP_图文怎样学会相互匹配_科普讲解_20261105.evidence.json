@@ -1,0 +1,647 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_25_CLIP_图文怎样学会相互匹配_科普讲解_20261105.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-05",
+  "generator": {
+    "model": "gpt-6-astra",
+    "harness": "codex",
+    "run_id": "ai-yanyi-clip-precision-chapter-r2-20261106",
+    "explicit_model_override": false,
+    "override_reason": "",
+    "identity_basis": "本轮eacli session current核实codex-turn-context及当前调用方；只记录本会话生成模型。"
+  },
+  "task": {
+    "summary": "第25节CLIP科普展开：沿夕阳和飞鸟讲清图文监督、双编码器、对比目标、零样本与迁移评价，核对讲义/口述宽泛说法及生成组件关系。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "实际阅读CLIP固定v1、讲义p48、shownotes和123段目标ASR；保留版本、页码和未听校边界。"
+      },
+      {
+        "id": "R2",
+        "text": "单例贯穿解释图文监督、共同空间、批内匹配、任务文字化与缓存；不混无监督、从未见概念或生成能力。"
+      },
+      {
+        "id": "R3",
+        "text": "区分零样本与线性探测、各基线、效率轴、真实训练成本、泛化与数据/偏差局限，给出可追溯数字和反例。"
+      },
+      {
+        "id": "R4",
+        "text": "说明与ViT及生成路线的关系；核对SD1.4官方模型卡的具体文本编码器复用，不编造历史首次或私人分工。"
+      },
+      {
+        "id": "R5",
+        "text": "主报告第25节实质重写，标题后第一块为展开链接；展开保留返回原节、前后章节导航，研究入口同步。"
+      },
+      {
+        "id": "R6",
+        "text": "使用统一的两位编号标题，正文独立可读，脚注、链接和三问完整；完成独立内容复核，不要求工作台页面验收。"
+      }
+    ],
+    "reader_feedback": [
+      "原章节没有优化、也没有链接展开阅读的啊",
+      "按Brook方式一轮一章，后续参考前轮，独立可读。",
+      "列表命名开头规范一下。"
+    ],
+    "source_coverage_scope": "仅《AI演义》报告第25节及节目对应CLIP片段，不是整集转写质量或全部31节的再次验收。",
+    "scope_adjustment": {
+      "date": "2026-11-06",
+      "authority": "用户明确取消报告的工作台页面验收前置",
+      "ui_validation_required": false,
+      "content_and_source_review_required": true
+    }
+  },
+  "sources": [
+    {
+      "id": "PAPER",
+      "kind": "primary",
+      "title": "Learning Transferable Visual Models From Natural Language Supervision",
+      "locator": "https://arxiv.org/pdf/2103.00020v1",
+      "accessed_on": "2026-11-06",
+      "version": "arXiv:2103.00020v1，2021-02-26，48页",
+      "local_owner": "ai-learning/papers/11_clip_2021.pdf",
+      "sha256": "6478b6e571a7d6fcd846d8ef77bfd60c285f1986abb8f475eedc43de403074f5",
+      "read_scope": "正文pp1–27已读；附录pp37–39、42–48已读。重点核对Figures1–6/10–15、Tables1/7/13–18与各实验口径。讲义p48及论文p2/5/8/15/46经eacli图像读取并直接视检；不采纳图像回执的错列/错字。未逐篇读pp27–36引用文献，未逐格核验pp40–41全模型线性探测表；未重训或重新审计全部数据。",
+      "version_boundary": "本地PDF首页与本轮官方arXiv元信息对应v1；未重新下载官方PDF做字节相等验证。PDF元数据的ICML2020不作发表年证据。"
+    },
+    {
+      "id": "METADATA",
+      "kind": "primary",
+      "title": "CLIP arXiv版本记录",
+      "locator": "https://arxiv.org/abs/2103.00020v1",
+      "accessed_on": "2026-11-05",
+      "read_scope": "通过eacli web.read读取官方标题、作者、版本日期；不把摘要读取冒充论文全文读取。",
+      "response_text_sha256": "315826c2a25b270e60da48992a9c12183082e0cbe3ede30e3263f462d51b7102"
+    },
+    {
+      "id": "OFFICIAL",
+      "kind": "official",
+      "title": "OpenAI: CLIP—Connecting text and images",
+      "locator": "https://openai.com/index/clip/",
+      "accessed_on": "2026-11-05",
+      "read_scope": "已读博客主体、方法、局限、社会影响、结论和脚注，未逐条读完参考文献。发布日期2021-01-05。涉及数据集数量等与固定v1不同的口径不混用，也未臆测差异原因。",
+      "response_text_sha256": "92a2ce967ec08383640be95209b6dbbed3388890738380c2c435dffb2e666306"
+    },
+    {
+      "id": "LECTURE",
+      "kind": "local",
+      "title": "《AI演义》讲义CLIP条目",
+      "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "accessed_on": "2026-11-05",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
+      "read_scope": "p48全文及原图。区分讲义的2021.03、对比学习首创说、零样本/线性探测混述和原论文实际证据。"
+    },
+    {
+      "id": "PODCAST",
+      "kind": "primary",
+      "title": "张小珺商业访谈录117：CLIP片段",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-05",
+      "read_scope": "123段ASR完整读取；零基6398–6520，13275.76–13549.79秒，跨度274.03秒。复用已有恢复转写并核对结构收据，本轮再次读完整片段，未重新听音或测WER。",
+      "transcript_review": "ai-learning/reports/knowledge_reports/.quality/AI演义_25_CLIP_图文怎样学会相互匹配_科普讲解_20261105.transcription-review.json",
+      "transcript_source_ref": "sha256:7b6f60161d34826fac60bd296b61c3b86fb7d2ee97a19e3ae3e63c997fab08d9"
+    },
+    {
+      "id": "SHOWNOTES",
+      "kind": "primary",
+      "title": "节目shownotes的CLIP与多模态路线",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-05",
+      "read_scope": "复用已获取的官方节目页缓存，重读Part4和CLIP条目及相邻顺序。节目后续为Stable Diffusion，报告下一节为GAN；不把两个顺序混为一谈。",
+      "fresh_fetch": false,
+      "cache_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5"
+    },
+    {
+      "id": "SD14",
+      "kind": "official",
+      "title": "Stable Diffusion v1-4 Model Card",
+      "locator": "https://huggingface.co/CompVis/stable-diffusion-v1-4",
+      "accessed_on": "2026-11-05",
+      "read_scope": "通过eacli web.read读取模型卡。正文使用Model Details与Training关于固定CLIP文本编码器、未汇总文本输出、交叉注意力/U-Net的具体陈述；不使用页面部署示例或资源数字推定当前兼容性。未下载权重或执行生成。",
+      "response_text_sha256": "ceb32da028ab8272a461e4974569b06ab8cc2fe2101eb4189c34af89bbb8a6c8",
+      "snapshot_boundary": "读取当时main页面并保存响应与内容哈希，未固定模型仓库commit；不能据此覆盖其他Stable Diffusion版本。"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "CLIP以自然语言图文配对提供监督，并用文字表达目标分类任务；WIT有4亿对、约50万个采集查询项，每项最多2万对，查询项不是固定分类标签。",
+      "report_anchor": "data-supervision",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "PODCAST",
+        "LECTURE"
+      ],
+      "critical": true,
+      "evidence": "§§1–2.2、p26：查询条件与实际完整文本配对分开；社交平台仅是节目例子，未作为数据来源清单。"
+    },
+    {
+      "id": "C2",
+      "claim": "ResNet或ViT图像编码器、Transformer文本编码器与线性投影从零联合训练；归一化表示按余弦相似度比较，不是拼接现成GPT/ViT权重。",
+      "report_anchor": "shared-space",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§§2.3–2.5、Figures1/3；CLIP相互作用在最终点积，非联合注意力（p27）。"
+    },
+    {
+      "id": "C3",
+      "claim": "N对图文形成N×N配对，对角的N对是正例，N²−N个为批内负例，两个方向交叉熵取平均；三对九项为算术示意而非实验。",
+      "report_anchor": "contrastive-training",
+      "support": "derived",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§2.3、Figure3。正文按两个匹配方向解释，不照搬图像回执对axis0/1方向的混淆。"
+    },
+    {
+      "id": "C4",
+      "claim": "[推测] 批内非原始配对仍可能语义相关；示例中落日描述可部分适配带鸟落日照片，不能将每个负例认作现实逻辑否定。",
+      "report_anchor": "contrastive-training",
+      "support": "inference",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": false,
+      "evidence": "依据§2.3配对目标作标明[推测]的机制解释；未声称测得负例错误率或特定照片排名。"
+    },
+    {
+      "id": "C5",
+      "claim": "零样本分类将候选描述编码为可缓存分类器权重，与图像比较，不更新模型；零目标样本不等于零预训练、从未见概念或自动可靠拒答。",
+      "report_anchor": "zero-shot-use",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§§3.1.1–3.1.2、§6；softmax是候选间相对分数，非事实真值保证。"
+    },
+    {
+      "id": "C6",
+      "claim": "ImageNet用A photo of a {label}.较孤立标签约+1.3pp，80模板表示集成相对默认模板再+3.5pp；文本结果可缓存，不需视觉侧每图跑80次。",
+      "report_anchor": "prompt-meaning",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§3.1.4、Figure4。不同任务不保证同等收益；CLIP描述文本不是聊天Agent行为指令。"
+    },
+    {
+      "id": "C7",
+      "claim": "最佳零样本ImageNet76.2%匹配原版ResNet50而非当时SOTA；Figure5对ResNet50特征上监督线性分类器为16/27胜，Cars+28.9、Country211+23.2、Counts−18.2、KITTI−34.0、EuroSAT−37.1pp。",
+      "report_anchor": "evaluation-settings",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "LECTURE"
+      ],
+      "critical": true,
+      "evidence": "§§3.1.3/3.1.5、Table1、Figure5；有别于Figure13的ResNet101和Figure11的EfficientNet-L2比较。"
+    },
+    {
+      "id": "C8",
+      "claim": "CLIP线性探测相对NoisyStudent EfficientNet-L2在21/27数据集更高、平均约+5pp，ImageNet仍约−3pp；计算轴是前向GFLOPs/image。",
+      "report_anchor": "evaluation-settings",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§3.2、Figures10–11；不是零样本结论，也不是完整训练耗费或墙钟延迟。"
+    },
+    {
+      "id": "C9",
+      "claim": "20任务平均零样本约相当同CLIP特征每类4样本的线性分类器；各任务不同且非聊天上下文示例。宠物品种人类实验也不能直接推广为通用超人视觉。",
+      "report_anchor": "evaluation-settings",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "Figure6、§4、Table2；人类与模型的先验、few-shot使用和拒答选项不对等。"
+    },
+    {
+      "id": "C10",
+      "claim": "研发曾反复用完整验证集评估，并调整评测集合；零目标训练样本不等于整个开发流程没看目标反馈。",
+      "report_anchor": "evaluation-settings",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "p20 §6；避免把zero-shot讲成没有开发集适配。"
+    },
+    {
+      "id": "C11",
+      "claim": "Figure2的3倍、4倍效率指零样本迁移随处理图像数的变化，不能直接当通用12倍算力节约。",
+      "report_anchor": "efficiency",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "Figure2横轴#images processed，§2.3说明两次目标调整；不是统一硬件预算消融。"
+    },
+    {
+      "id": "C12",
+      "claim": "主训练32epochs、batch32768；RN50x64为592V100×18天，ViT-L/14为256V100×12天，再加336分辨率1epoch得到默认最佳配置。",
+      "report_anchor": "efficiency",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§2.5、Table18；成本为作者历史训练描述，未转化为当前价格或个人设备可重训保证。"
+    },
+    {
+      "id": "C13",
+      "claim": "用ImageNet标签训练CLIP线性分类器后76.2→85.4（+9.2pp），七个自然偏移集平均略降；语言按目标类别定制有益但不证明监督学习必然有害。",
+      "report_anchor": "robustness",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§3.3、Figures13–15；75%是特定robustness gap最多缩小，非普遍鲁棒性增幅。"
+    },
+    {
+      "id": "C14",
+      "claim": "Table14零样本OCR相关MNIST88.4%、SVHN51.0%；原始像素监督逻辑回归MNIST92.5%；原CLIP匹配接口并非自由文本转写器。",
+      "report_anchor": "other-tasks",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "附录E.2、Table14；本篇固定这一表而不混用Table11的其他设置数值。 本次把SVHN 51.0%明确为完整号码识别，非单字符分类；依据附录E与Table14。"
+    },
+    {
+      "id": "C15",
+      "claim": "附录零样本视频评价平均各帧预测，UCF101Top1=80.3%，K700平均Top1/Top5=69.6%；线性探测只用中间一帧，不意味着学会顺序。",
+      "report_anchor": "other-tasks",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "E.3、Table15、A.1；不采纳图像回执把80.3错给HT100M S3D或错移K700列。"
+    },
+    {
+      "id": "C16",
+      "claim": "Country211国家分类可按候选文字进行零样本；IM2GPS用参考图近邻坐标回归，原文明确非零样本。",
+      "report_anchor": "other-tasks",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "A.1、E.4、Table17；不混同国家级分类与无参考精确坐标预测。"
+    },
+    {
+      "id": "C17",
+      "claim": "FairFace有害误分类受候选集合影响；加入child后3–9岁子集35.0%→4.3%，不是已消除偏差或部署人群分类的建议。",
+      "report_anchor": "limits-and-bias",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§7.1、p22 Table7；论文用10000图作探测，正文只使用年龄子集口径，不混官方博客合并数字。"
+    },
+    {
+      "id": "C18",
+      "claim": "35数据集近重复检查中9未检出重叠，中位重叠2.2%；检出统计并不证明召回完整，也不是本文独立重做WIT去重。",
+      "report_anchor": "limits-and-bias",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§5、Figure17、附录C；重复检验所用模型与方法见原文，本篇不据此宣称绝对无污染。"
+    },
+    {
+      "id": "C19",
+      "claim": "Stable Diffusion v1-4复用固定CLIP文本编码器，未汇总文本输出经交叉注意力进入U-Net；CLIP本身非生成器且型号ViT-L/14不等于用视觉ViT编码文字。",
+      "report_anchor": "generation-connection",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "SD14"
+      ],
+      "critical": true,
+      "evidence": "CLIP§2.4/§6；SD14 Model Details、Training；只核该模型卡，不泛化至全部扩散史或所有版本。"
+    },
+    {
+      "id": "C20",
+      "claim": "CLIP不是图文对比学习首创，原文承认ConVIRT等前驱并强调规模扩展；Alec Radford与Jong Wook Kim标equal contribution，不推断私人分工。",
+      "report_anchor": "historical-position",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "LECTURE"
+      ],
+      "critical": true,
+      "evidence": "首页、pp1–4/§2.3/§8；不声称已逐篇审完前驱。"
+    },
+    {
+      "id": "C21",
+      "claim": "官方CLIP博客2021-01-05、arXiv v1为2021-02-26、讲义写2021.03，三者来源分开。",
+      "report_anchor": "historical-position",
+      "support": "direct",
+      "source_ids": [
+        "METADATA",
+        "OFFICIAL",
+        "PAPER",
+        "LECTURE"
+      ],
+      "critical": true,
+      "evidence": "本轮eacli元信息和博客快照、PDF首页及讲义p48原图；不拿元数据ICML2020推年份。"
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U1",
+      "title": "节目从NLP通用预训练转向视觉；固定类别、标注成本与新任务接口的问题。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PODCAST",
+        "PAPER",
+        "LECTURE"
+      ],
+      "report_anchor": "why-language"
+    },
+    {
+      "id": "U2",
+      "title": "夕阳晚霞飞鸟贯穿例子、自然图文监督与WIT采集；澄清无监督和来源平台推断。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PODCAST",
+        "PAPER",
+        "LECTURE"
+      ],
+      "report_anchor": "data-supervision"
+    },
+    {
+      "id": "U3",
+      "title": "图文各自编码、投影归一化、共同空间与从零联合训练；区别GPT/ViT权重拼接。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PODCAST",
+        "PAPER"
+      ],
+      "report_anchor": "shared-space"
+    },
+    {
+      "id": "U4",
+      "title": "批内双向匹配学习、原始配对与语义真值差异；数字例子只作结构解释。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PODCAST",
+        "PAPER"
+      ],
+      "report_anchor": "contrastive-training"
+    },
+    {
+      "id": "U5",
+      "title": "零样本任务与文字分类器、候选外类别、缓存和prompt表达。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PODCAST",
+        "PAPER",
+        "LECTURE"
+      ],
+      "report_anchor": "zero-shot-use",
+      "other_report_anchors": [
+        "prompt-meaning"
+      ]
+    },
+    {
+      "id": "U6",
+      "title": "区分零样本、监督线性探测、基线、跨任务强弱与开发集适配。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PODCAST",
+        "PAPER",
+        "LECTURE"
+      ],
+      "report_anchor": "evaluation-settings"
+    },
+    {
+      "id": "U7",
+      "title": "少样本与人类对照的方法边界。",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "evaluation-settings",
+      "coverage_note": "提炼设置与外推限制，不详抄所有宠物品种和逐任务估计。"
+    },
+    {
+      "id": "U8",
+      "title": "训练目标效率、processed-images轴、训练资源和前向计算量不是同一成本。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PODCAST",
+        "PAPER",
+        "LECTURE"
+      ],
+      "report_anchor": "efficiency"
+    },
+    {
+      "id": "U9",
+      "title": "自然分布偏移、ImageNet适配权衡及类别集合重建。",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "robustness"
+    },
+    {
+      "id": "U10",
+      "title": "OCR、视频动作与地理定位必须逐项辨识输入、目标、指标和参考数据。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PODCAST",
+        "PAPER",
+        "LECTURE"
+      ],
+      "report_anchor": "other-tasks"
+    },
+    {
+      "id": "U11",
+      "title": "计数/关系、候选偏差和训练测试重叠的真实边界。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "OFFICIAL"
+      ],
+      "report_anchor": "limits-and-bias"
+    },
+    {
+      "id": "U12",
+      "title": "配对匹配与文生图分工、SD1.4文本编码器复用；不能声称CLIP才发明文字控制生成。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PODCAST",
+        "PAPER",
+        "SD14",
+        "LECTURE"
+      ],
+      "report_anchor": "generation-connection"
+    },
+    {
+      "id": "U13",
+      "title": "前驱、作者与日期；术语纠正；节目顺序和报告问题路线分开。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PODCAST",
+        "PAPER",
+        "LECTURE",
+        "METADATA",
+        "OFFICIAL",
+        "SHOWNOTES"
+      ],
+      "report_anchor": "historical-position"
+    },
+    {
+      "id": "U14",
+      "title": "shownotes Part4的CLIP条目已定位，并通过原论文更正首创、零样本SOTA与月份口径。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "SHOWNOTES",
+        "LECTURE",
+        "PAPER"
+      ],
+      "report_anchor": "historical-position",
+      "shownotes_chapter": "Part 4 / CLIP: 文生图的奠基石（2021.03）"
+    },
+    {
+      "id": "U15",
+      "title": "逐模型完整线性探测表、全部任务超参数和所有参考文献。",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "PAPER"
+      ],
+      "omission_reason": "本篇是节目CLIP章节的独立科普展开，不是48页逐表复现；阅读范围明确排除未逐格读取的pp40–41，不把大量基线表机械搬入正文。"
+    },
+    {
+      "id": "U16",
+      "title": "监控、名人识别和全部职业标签探测结果。",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "PAPER"
+      ],
+      "omission_reason": "对应§7.1–7.2为补充敏感应用分析，已阅读但不扩写具体识别应用；本篇以有害候选分类的真实案例保留偏差与部署风险，不把识别成绩转为部署建议。"
+    }
+  ],
+  "limitations": [
+    "夕阳图、三对训练批次与候选均为机制示意，未执行推理、测负例错误率或重训；英文例子不证明中文同质量。",
+    "数字固定于所读CLIP v1；博客其他版本口径不混用。未重做WIT来源、许可、去重和训练成本审计。",
+    "目标ASR完整读取和结构审计不等于听校或WER；完整转写及私有本机路径不公开。",
+    "未逐篇读取参考文献或全部模型表；正文与原论文解释不能宣称前驱和所有文生图系统的完整谱系。",
+    "SD1.4只核官方模型卡当时页面与内容哈希，未钉仓库commit或运行权重；不泛化到其他版本。"
+  ],
+  "research_receipts": {
+    "transcription_review": "ai-learning/reports/knowledge_reports/.quality/AI演义_25_CLIP_图文怎样学会相互匹配_科普讲解_20261105.transcription-review.json",
+    "vision": [
+      {
+        "page": "handout-p48",
+        "capability": "vision.image-analysis",
+        "request_id": "req_2cd10bb962651c270a677ebebf03e22f",
+        "provider": "zhipu",
+        "fallback_used": false,
+        "receipt_sha256": "dc4be8bb0fb03a1549cff89459e628777eb13e983c4dd4ed76d5bfae72c87ad1",
+        "rendered_image_sha256": "2acfadc04abc702f31c9b8bbc75013524b109019f46e654a25a76859f22c37a1",
+        "direct_visual_check": true,
+        "independent_report_review": false
+      },
+      {
+        "page": "paper-p2",
+        "capability": "vision.image-analysis",
+        "request_id": "req_6dbe32b451fe8bccadf2c958d3396c30",
+        "provider": "zhipu",
+        "fallback_used": false,
+        "receipt_sha256": "3e36ea32d86147c1041605e9c4ea4d17da4791984befbec548684de444819279",
+        "rendered_image_sha256": "096ac8d3e0efc881f6f696bdc8ae3e68cee283b41789eb18c6e84d3e5623df2d",
+        "direct_visual_check": true,
+        "independent_report_review": false
+      },
+      {
+        "page": "paper-p5",
+        "capability": "vision.image-analysis",
+        "request_id": "req_d166a86f441f843edd9cf3b45162e31b",
+        "provider": "zhipu",
+        "fallback_used": false,
+        "receipt_sha256": "e3d35067eed5f50451c2408cf92c4ebabee791037a3469630dc9ef5c654e1f24",
+        "rendered_image_sha256": "5e00d0a69c2bed5d76348c57c86b0d7f1cdf937e5c6a469501c7d888695d1e44",
+        "direct_visual_check": true,
+        "independent_report_review": false
+      },
+      {
+        "page": "paper-p8",
+        "capability": "vision.image-analysis",
+        "request_id": "req_c5cbb852ffd6cbce12d4038c2d6833b0",
+        "provider": "zhipu",
+        "fallback_used": false,
+        "receipt_sha256": "2e8e7e586b340f668e266a9323f65d91a972938ea3e53ece33c3c635fbbf6b50",
+        "rendered_image_sha256": "afb034967737f55e55b3f4f2e45122e30f1ab167dd76e6972476c7fddb6086bc",
+        "direct_visual_check": true,
+        "independent_report_review": false
+      },
+      {
+        "page": "paper-p15",
+        "capability": "vision.image-analysis",
+        "request_id": "req_c21294d4c778fd68ab3f6a82759a1b5c",
+        "provider": "zhipu",
+        "fallback_used": false,
+        "receipt_sha256": "c0828c47ee84bbbd022720eb983d08d1d7b41a112476079321555e6374a157a3",
+        "rendered_image_sha256": "ee5fe58b935b1ebd09bf3f0cb84ab0bce9eee5ee326339aa7c60afbc7e5a9700",
+        "direct_visual_check": true,
+        "independent_report_review": false
+      },
+      {
+        "page": "paper-p46",
+        "capability": "vision.image-analysis",
+        "request_id": "req_f3ece524c1ef59b0062d367a6f7c0a1d",
+        "provider": "zhipu",
+        "fallback_used": false,
+        "receipt_sha256": "82bb7e3d0b2ea63ecc50b49e75336099b6dfd3c2302ad4a37bf966f97c34e5ea",
+        "rendered_image_sha256": "f754e1837c1a62105b941d775b3dd1865cd35e197eb7981062c7a968e76051da",
+        "direct_visual_check": true,
+        "independent_report_review": false
+      }
+    ],
+    "vision_corrections": [
+      "Figure1候选词为car而非图像回执识别的cat；正文不依赖该错字。",
+      "Figure3按矩阵行/列解释双向匹配，不照搬回执对axis=0/1语义的反向标注。",
+      "Figure5 Birdsnap为−3.2而非回执补充段的−3.7；正文未使用该项。",
+      "Figure13紫色是Zero-Shot CLIP，蓝色是Standard ImageNet training；回执色标颠倒且漏了横轴class-subsampled，未采纳。",
+      "Figure13香蕉图片只是分布例子，不能据此把右表全数据集成绩认作只评香蕉一类；ObjectNet类别自适配正文为2.3pp而非回执2.5。",
+      "Table13 CLIP Flickr30k文本检索R@1为88.0而非回执88.6；正文不使用该数字。",
+      "Table15零样本CLIP的UCF101=80.3，K700=69.6；回执错放80.3到HT100M S3D且错列I3D的70.2，均按原图/正文纠正。"
+    ],
+    "cli_contract_note": "安装态tokenplan catalog不接受--capability，已改用正式全目录后按ID读取；agent list已退役，session peers只读可用。本轮无绕过typed capability的供应商直接调用。"
+  }
+}

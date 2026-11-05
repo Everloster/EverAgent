@@ -6,7 +6,7 @@
   "generator": {
     "model": "gpt-6-astra",
     "harness": "codex",
-    "run_id": "ai-yanyi-main-r28-vit-20261105",
+    "run_id": "ai-yanyi-clip-precision-main-r30-20261106",
     "explicit_model_override": false,
     "override_reason": "",
     "identity_basis": "eacli session current：codex-turn-context，session-bound，confirmed=true；只证明当前生成会话，不证明子会话模型。"
@@ -56,7 +56,7 @@
       },
       {
         "id": "R11",
-        "text": "原第24节实质改写且标题后首块为展开链接；展开返回原24、上23双流、下25CLIP。讲清图块/位置/学习、数据与计算边界及路线关系；主稿其余科学正文严格继承已发布r27。"
+        "text": "原第25节实质改写且标题后首块为展开链接；展开返回原25、上24 ViT、下26 GAN。讲清图文监督、对比匹配、零样本/线性探测区别和生成组件关系；主稿其余科学正文严格继承已发布r28。"
       }
     ],
     "reader_feedback": [
@@ -526,11 +526,14 @@
       "kind": "primary",
       "title": "Learning Transferable Visual Models From Natural Language Supervision",
       "locator": "https://arxiv.org/pdf/2103.00020v1",
-      "accessed_on": "2026-11-03",
-      "version": "arXiv:2103.00020v1，2021-02-26；未核产品公告日期",
-      "read_scope": "P1—9：首页、§1、§2.1—2.5、§3.1.1—3.1.4全部、§3.1.5至P9；P11—12 §3.2及P13开头；P18—20 §5后半的重叠检测边界、完整§6、§7开头，P21 §7.1初段及表格文本；Appendix A.1 P37视频数据处理段、Appendix E P46 Table 15图注与动作识别段、P47该段续文。未完整读鲁棒性实验、全部社会影响、其余附录或曲线；不把Figure 5/10图注与正文解读算作图像核验。",
+      "accessed_on": "2026-11-06",
+      "version": "arXiv:2103.00020v1，2021-02-26，48页",
+      "read_scope": "正文pp1–27已读；附录pp37–39、42–48已读。重点核对Figures1–6/10–15、Tables1/7/13–18与各实验口径。讲义p48及论文p2/5/8/15/46经eacli图像读取并直接视检；不采纳图像回执的错列/错字。未逐篇读pp27–36引用文献，未逐格核验pp40–41全模型线性探测表；未重训或重新审计全部数据。",
       "research_record": "ai-learning/notes/ai_yanyi_research/phase2/vision_alignment.json",
-      "research_source_id": "VA-S04"
+      "research_source_id": "VA-S04",
+      "sha256": "6478b6e571a7d6fcd846d8ef77bfd60c285f1986abb8f475eedc43de403074f5",
+      "local_owner": "ai-learning/papers/11_clip_2021.pdf",
+      "current_chapter_evidence": "ai-learning/reports/knowledge_reports/.quality/AI演义_25_CLIP_图文怎样学会相互匹配_科普讲解_20261105.evidence.json"
     },
     {
       "id": "S-gan",
@@ -689,6 +692,44 @@
       "read_scope": "复用已取得官方节目页缓存，重读Part4 ViT及前后顺序；本轮未重新抓页。",
       "cache_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5",
       "fresh_fetch": false
+    },
+    {
+      "id": "S-clip-lecture",
+      "kind": "local",
+      "title": "《AI演义》讲义CLIP条目",
+      "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "accessed_on": "2026-11-05",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
+      "read_scope": "p48全文及原图。区分讲义的2021.03、对比学习首创说、零样本/线性探测混述和原论文实际证据。"
+    },
+    {
+      "id": "S-clip-metadata",
+      "kind": "primary",
+      "title": "CLIP arXiv版本记录",
+      "locator": "https://arxiv.org/abs/2103.00020v1",
+      "accessed_on": "2026-11-05",
+      "read_scope": "通过eacli web.read读取官方标题、作者、版本日期；不把摘要读取冒充论文全文读取。",
+      "response_text_sha256": "315826c2a25b270e60da48992a9c12183082e0cbe3ede30e3263f462d51b7102"
+    },
+    {
+      "id": "S-clip-podcast",
+      "kind": "primary",
+      "title": "张小珺商业访谈录117：CLIP片段",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-05",
+      "read_scope": "123段ASR完整读取；零基6398–6520，13275.76–13549.79秒，跨度274.03秒。复用已有恢复转写并核对结构收据，本轮再次读完整片段，未重新听音或测WER。",
+      "transcript_review": "ai-learning/reports/knowledge_reports/.quality/AI演义_25_CLIP_图文怎样学会相互匹配_科普讲解_20261105.transcription-review.json",
+      "transcript_source_ref": "sha256:7b6f60161d34826fac60bd296b61c3b86fb7d2ee97a19e3ae3e63c997fab08d9"
+    },
+    {
+      "id": "S-clip-shownotes",
+      "kind": "primary",
+      "title": "节目shownotes的CLIP与多模态路线",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-05",
+      "read_scope": "复用已获取的官方节目页缓存，重读Part4和CLIP条目及相邻顺序。节目后续为Stable Diffusion，报告下一节为GAN；不把两个顺序混为一谈。",
+      "fresh_fetch": false,
+      "cache_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5"
     }
   ],
   "claims": [
@@ -1039,15 +1080,21 @@
     },
     {
       "id": "C-clip",
-      "claim": "CLIP以图文对比目标和候选文本描述组织视觉任务接口，图像编码器可用ResNet或ViT；它不是图像生成器。",
+      "claim": "CLIP用4亿图文对与对比目标训练两个编码器，候选文字在零样本分类时成为任务接口；76.2%是ImageNet零样本而非SOTA，27任务赢16需保留监督线性基线口径。LAION筛选与SD1.4文本条件是不同用途，匹配不是生成。",
       "report_anchor": "paper-clip",
       "support": "direct",
       "source_ids": [
         "S-clip",
-        "S-vit"
+        "S-clip-metadata",
+        "S-clip-lecture",
+        "S-clip-podcast",
+        "S-clip-shownotes",
+        "S-vit",
+        "S-laion",
+        "S-sd14"
       ],
       "critical": true,
-      "evidence": "CLIP§2.1–2.5定义两编码器和对比目标，§3.1定义文本指定类别；§6–7保留能力与偏差边界。"
+      "evidence": "CLIP v1 §§2–3、Figure3/5、任务对照与零样本/线性探测设置；§§6–7限定泛化与部署。讲义p48与13275.76–13549.79秒口述核对，精确转写边界以章节账本为准。LAION与SD1.4沿用已核主稿来源，不扩张到所有生成系统。"
     },
     {
       "id": "C-gan",
@@ -1769,12 +1816,18 @@
     },
     {
       "id": "U-clip",
-      "title": "Learning Transferable Visual Models From Natural Language Supervision",
+      "title": "CLIP图文对比训练、零样本任务接口、评价口径与匹配/生成边界",
       "importance": "core",
       "status": "included",
       "source_ids": [
         "S-clip",
-        "S-vit"
+        "S-clip-metadata",
+        "S-clip-lecture",
+        "S-clip-podcast",
+        "S-clip-shownotes",
+        "S-vit",
+        "S-laion",
+        "S-sd14"
       ],
       "report_anchor": "paper-clip"
     },
@@ -1978,7 +2031,7 @@
     "essay_articles": 1,
     "note": "论文研究范围按用户最新限定；不是全文逐公式/全图表审计。"
   },
-  "revision_note": "r28：本轮仅实质改写原第24节并补ViT脚注；其余科学正文继承已发布r27。原文、正文、引用与导航检查及独立内容复核保留；按用户明确纠正，不要求工作台页面验收。",
+  "revision_note": "r30：第25节CLIP精度修订，ImageNet 76.2%明确为Top-1准确率；其余科学正文仍继承已发布r28。本轮仅来源、正文、引用与章节导航复核，无工作台页面验收。",
   "generation_history": [
     {
       "revision_round": 2,

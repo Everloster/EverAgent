@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "kind": "chapter-transcription-review",
+  "reviewed_on": "2026-11-06",
+  "chapter": 25,
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+  "transcript_source_ref": "sha256:7b6f60161d34826fac60bd296b61c3b86fb7d2ee97a19e3ae3e63c997fab08d9",
+  "full_segments_sha256": "f322514ced72235a0ca104635824c66df425c18dbae3d0f4e76fa70d088db61c",
+  "public_full_episode_receipt": "podcast-learning/reports/transcripts/2026-11-04_ai-yanyi-117.audit.json",
+  "read_scope": {
+    "segments_read": 123,
+    "source_indices_zero_based_inclusive": [
+      6398,
+      6520
+    ],
+    "actual_interval_seconds": [
+      13275.76,
+      13549.79
+    ],
+    "span_seconds": 274.03,
+    "segment_artifact_sha256": "f6cc2409d4481dcbff41f5843c0b49fdd3ac98b5db8e5969acc1b9cefbde5480",
+    "text_artifact_sha256": "7b6f60161d34826fac60bd296b61c3b86fb7d2ee97a19e3ae3e63c997fab08d9",
+    "time_basis": "约03:41:16–03:45:50，百分秒13275.76–13549.79。前段ViT、后段Stable Diffusion；报告下一节26为GAN。"
+  },
+  "chapter_segment_check": {
+    "same_as_original_slice": true,
+    "segments": 123,
+    "fractional_start_backwards": 0,
+    "fractional_end_backwards": 0,
+    "fractional_end_before_start": 0,
+    "overlap_count": 0,
+    "max_gap_seconds": 3.36
+  },
+  "compatible_text_audit": {
+    "schema_version": 2,
+    "kind": "podcast-transcript-audit",
+    "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+    "source_ref": "sha256:7b6f60161d34826fac60bd296b61c3b86fb7d2ee97a19e3ae3e63c997fab08d9",
+    "max_consecutive_limit": 3,
+    "audit": {
+      "ok": true,
+      "size": 6315,
+      "sha256": "7b6f60161d34826fac60bd296b61c3b86fb7d2ee97a19e3ae3e63c997fab08d9",
+      "lines": 123,
+      "segments": 123,
+      "duration_seconds": 13549,
+      "max_consecutive_identical": 1,
+      "timestamp_errors": 0,
+      "malformed_lines": 0,
+      "tail_gap_seconds": 0
+    }
+  },
+  "audit_interpretation": "复用11月5日原生结构审计，本轮重新核对切片/文本哈希并完整读取123段。duration_seconds=13549为绝对末秒位置，不是274.03秒的章长。原JSON百分秒无逆序、反向和重叠；未修改原ASR。",
+  "term_and_claim_checks": [
+    {
+      "time_seconds": [
+        13275.76,
+        13391
+      ],
+      "issue": "open eye、gbt、real short等专名误识以及完全无监督表述",
+      "adopted": "OpenAI、GPT、zero-shot按论文核对；保留自然语言监督而非声称没有监督。",
+      "basis": "CLIP标题、§§1–2.2、§3.1",
+      "kind": "terms_and_supervision"
+    },
+    {
+      "time_seconds": [
+        13393,
+        13437
+      ],
+      "issue": "社交平台与夕阳飞鸟例子、没有独立标注",
+      "adopted": "保留贯穿例子，平台仅解释图文形态，不能作为WIT真实完整来源；零样本是目标任务适配边界。",
+      "basis": "节目对应片段、§2.2/§3.1",
+      "kind": "data_and_zero_shot"
+    },
+    {
+      "time_seconds": [
+        13444,
+        13471
+      ],
+      "issue": "对比学习首次用于图文、词与图片embedding相近",
+      "adopted": "承认ConVIRT等前驱；解释两边从零训练及整体表示，避免每个词必有精确对象对齐。",
+      "basis": "§§1–2.4、p27",
+      "kind": "history_and_mechanism"
+    },
+    {
+      "time_seconds": [
+        13477,
+        13506
+      ],
+      "issue": "CLIP才带来文字控制图像、此前扩散不可控的历史泛化",
+      "adopted": "匹配与生成分开；用已读SD1.4模型卡只证实一个明确文本编码器复用例子，不确立文生图起源。",
+      "basis": "CLIP§6；SD1.4 Model Details/Training",
+      "kind": "generative_boundary"
+    },
+    {
+      "time_seconds": [
+        13506,
+        13536
+      ],
+      "issue": "零样本优于最强ImageNet模型且计算更省，OCR/地理/动作笼统混述",
+      "adopted": "分开76.2零样本、16/27对RN50线性基线、21/27线性探测；区分训练图像数量、前向GFLOPs、资源天数及各任务协议。",
+      "basis": "Tables1/14–17、Figures2/5/10–11",
+      "kind": "comparison_and_metrics"
+    },
+    {
+      "time_seconds": [
+        13537,
+        13549.79
+      ],
+      "issue": "一作Alex、Ilya共同参与",
+      "adopted": "姓名为Alec Radford，首页同等贡献标记为Alec与Jong Wook Kim；只采用明确署名，不推断私人分工或AGI结论。",
+      "basis": "原论文首页与讲义p48",
+      "kind": "authorship"
+    }
+  ],
+  "audio_listened": false,
+  "wer_measured": false,
+  "limitations": [
+    "时间结构通过不能证明识别词句完全准确。",
+    "完整123段已读；大量机制和数字来自原论文补充，未伪装为节目逐字说过。",
+    "完整转写及本机存储路径不公开。"
+  ]
+}

@@ -1,0 +1,1418 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_25_CLIP_图文怎样学会相互匹配_科普讲解_20261105.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "unconfirmed",
+        "harness": "codex",
+        "run_id": "clip_primary_review",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "identity_basis": "普通collab2子会话未获得可独立确认的实际模型身份；不采用共享宿主eacli的父会话模型。",
+        "model_runtime_confirmation": "unconfirmed",
+        "review_mode": "same-reviewer-delta-followup"
+      },
+      "scores": {
+        "evidence_fidelity": 96,
+        "request_coverage": 97,
+        "reasoning_quality": 96,
+        "readability": 93,
+        "limitations": 97
+      },
+      "score_reasons": {
+        "evidence_fidelity": "上一轮已逐项核对的关键数字与机制保持不变；本轮将SVHN 51.0%明确限定为完整号码识别，准确对应v1附录E.2的full number，消除上一轮唯一的指标精度建议。证据忠实度由94调为96，其他维度未因该小改动上调。",
+        "request_coverage": "来源优先列出的12个单元均进入正文；夕阳飞鸟贯穿、少公式但解释训练与使用、原节实质重写与标题首块展开链接均已核，前后/返回导航成立。",
+        "reasoning_quality": "严格区分自然语言监督、零目标样本、共同空间、配对关系与语义真值，并拆开零样本/线性探测、预训练成本/前向GFLOPs及匹配/生成。未把相关实验扩张为因果或通用能力。",
+        "readability": "全文可独立阅读，术语有首次解释、表格与推理结构清楚，全部脚注定义与本地导航检查无缺失。13节及多组实验细节仍较密集，后半段阅读负担高于前半段，但未形成实质理解障碍。",
+        "limitations": "明确标示机制示意未实测、目标任务零样本不等于从未见概念、验证集反馈、近重复检测局限、未听校/WER、模型卡版本及未复训范围；反例和能力边界紧邻结论。"
+      },
+      "source_content_map": [
+        {
+          "id": "SC-P01",
+          "title": "从固定视觉标签转向自然语言监督",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "PODCAST",
+            "LECTURE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1"
+          ],
+          "notes": "§1明确固定类别和新任务接口的区别；与原论文pp1–3和片段前半相符。"
+        },
+        {
+          "id": "SC-P02",
+          "title": "互联网图文对的规模、弱监督与训练成本",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "PODCAST",
+            "LECTURE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U2",
+            "U8"
+          ],
+          "notes": "§2、§8准确区分自然语言监督、采集查询和训练标签；4亿对、50万查询、2万上限及训练资源已回核论文pp3–5。"
+        },
+        {
+          "id": "SC-P03",
+          "title": "图像/文本双编码器与共同归一化表示",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "PODCAST"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3"
+          ],
+          "notes": "§3交代分别编码、线性投影、归一化与从零联合训练；补读p27确认最终点积而非联合注意力。"
+        },
+        {
+          "id": "SC-P04",
+          "title": "批内全配对、双向训练及不用生成字幕的原因",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U4",
+            "U8"
+          ],
+          "notes": "§4三对九项和两个方向损失符合Figure3；非原始配对可能语义合理明确标为推测。§8不把processed-images效率直接当通用算力倍数。"
+        },
+        {
+          "id": "SC-P05",
+          "title": "零样本分类的候选描述流程与定义",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "LECTURE",
+            "PODCAST"
+          ],
+          "matched_coverage_unit_ids": [
+            "U5"
+          ],
+          "notes": "§5完整说明候选描述、编码、缓存、比较与零目标任务训练样本；明确候选外类别、未经实测的例子和置信度边界。"
+        },
+        {
+          "id": "SC-P06",
+          "title": "Prompt措辞与候选集敏感性",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "OFFICIAL"
+          ],
+          "matched_coverage_unit_ids": [
+            "U5",
+            "U11"
+          ],
+          "notes": "§6正确解释上下文提示、80模板与缓存；§11用候选集合改变偏差的实验补足任务设计边界。1.3pp、3.5pp与Table7均已核。"
+        },
+        {
+          "id": "SC-P07",
+          "title": "零样本成绩、比较基线与线性探针不可混同",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "LECTURE",
+            "PODCAST"
+          ],
+          "matched_coverage_unit_ids": [
+            "U6",
+            "U7"
+          ],
+          "notes": "§7分开76.2%零样本、16/27监督ResNet50线性基线、21/27与约5pp的CLIP线性探测；4-shot平均限定20任务，人类比较不外推。相关pp7–9、11–13、16–17均已读。"
+        },
+        {
+          "id": "SC-P08",
+          "title": "通用能力与反例/数据分布边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "OFFICIAL"
+          ],
+          "matched_coverage_unit_ids": [
+            "U9",
+            "U10",
+            "U11"
+          ],
+          "notes": "§§9–11保留分布偏移、OCR/视频/地理定位的不同设置、计数/测距弱项、候选偏差与污染边界；补读pp13–22及附录A/E核验新增细节。本轮SVHN 51.0%已明确为完整号码识别，原精度建议已解决。"
+        },
+        {
+          "id": "SC-P09",
+          "title": "技术史与发布日期精度",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "METADATA",
+            "OFFICIAL",
+            "LECTURE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U13"
+          ],
+          "notes": "§13保留ConVIRT前驱、共同一作和三种日期的出处，不把讲义月份等同首发日期。"
+        },
+        {
+          "id": "SC-P10",
+          "title": "CLIP与文字条件图像生成的组件分工",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "SD14",
+            "PODCAST",
+            "LECTURE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U12"
+          ],
+          "notes": "§12将CLIP匹配和图像生成分开；SD v1-4固定文本编码器、未汇总输出和cross-attention/U-Net与模型卡一致，也解释ViT型号不等于视觉网络编码文字。"
+        },
+        {
+          "id": "SC-P11",
+          "title": "原讲座示例、来源范围与ASR修订边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PODCAST",
+            "LECTURE",
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U2",
+            "U13"
+          ],
+          "notes": "原ASR的夕阳/晚霞/鸟例子被用作贯穿线索，后续构造样例未伪装成实测；转写范围与未听音/WER边界明确。"
+        },
+        {
+          "id": "SC-P12",
+          "title": "Shownotes章节位置与资料日期边界",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES",
+            "LECTURE",
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U13",
+            "U14"
+          ],
+          "notes": "完整shownotes确认Part4内CLIP位于ViT和Stable Diffusion之间；报告解释为何系列导航按主稿路线转GAN。当前范围仅CLIP，不要求重述整集其他章节。"
+        }
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "本轮仅核SVHN口径修订和哈希/evidence增量，复用上一轮真实完成的来源优先复核与导航检查。原非阻断建议已解决；未发现新增问题或硬失败。U15/U16仍为上一轮确认的非核心范围取舍，不声称新读完整表格或监控实验。其他维度保持原分，最终判定仍交native checker。",
+      "snapshot": {
+        "report_path": "ai-learning/reports/knowledge_reports/AI演义_25_CLIP_图文怎样学会相互匹配_科普讲解_20261105.md",
+        "report_sha256": "068424a034e41a3c21e009a0e93977403e36588a89d5704a87e0c79443393b78",
+        "evidence_path": "ai-learning/reports/knowledge_reports/.quality/AI演义_25_CLIP_图文怎样学会相互匹配_科普讲解_20261105.evidence.json",
+        "evidence_sha256": "a3198009ca889502378db57f1498280eb2302dec2ded43b593b2c7f97e632706",
+        "verified_before_delta_read": true
+      },
+      "read_scopes": [
+        {
+          "artifact": "paper-v1-layout.txt",
+          "owner": "ai-learning/papers/11_clip_2021.pdf",
+          "before_report_pages": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            11,
+            12,
+            18,
+            19,
+            20
+          ],
+          "supplementary_claim_check_pages": [
+            13,
+            14,
+            15,
+            16,
+            17,
+            21,
+            22,
+            26,
+            27,
+            37,
+            38,
+            44,
+            45,
+            46,
+            47,
+            48
+          ],
+          "mode": "PDF文字层；已重新pdftotext -layout输出至stdout并与缓存逐字节比对相同。未查看页面图像。"
+        },
+        {
+          "artifact": "handout-p48.txt",
+          "owner": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+          "scope": "读完第48页缓存文字；重新从owner提取并逐字节确认缓存相同。部分中文缺字，不宣称完成独立视觉核验。",
+          "stage": "before_report"
+        },
+        {
+          "artifact": "clip-asr-audit.txt",
+          "scope": "完整123段文字，13275.76–13549.79秒对应的CLIP片段。",
+          "stage": "before_report"
+        },
+        {
+          "artifact": "clip-asr-segments.json; asr-native-audit.json; asr-precision-check.json",
+          "scope": "读取机器收据，独立逐段检查start/end：123段，负时长0、start/end倒序0、相邻重叠0；实际text/segment SHA与收据一致。",
+          "stage": "before_report"
+        },
+        {
+          "artifact": "shownotes.txt; paper-metadata.txt",
+          "scope": "完整节目导览及官方v1元信息；只将CLIP条目作为本次内容覆盖范围。",
+          "stage": "before_report"
+        },
+        {
+          "artifact": "official-blog.md",
+          "scope": "公告日期、主体、方法、局限、社会影响、结论及脚注；未逐篇重读参考文献。",
+          "stage": "before_report"
+        },
+        {
+          "artifact": "sd-v1-4-model-card.md",
+          "scope": "完整缓存文字，重点核Model Details与Training中的固定文本编码器和非汇总输出；没有运行示例或生成。",
+          "stage": "before_report"
+        },
+        {
+          "artifact": "chapter report/evidence",
+          "scope": "冻结正文、脚注、来源与全部claim/coverage/requirements逐项核对；未读取旧review条目。",
+          "stage": "after_independent_source_map"
+        },
+        {
+          "artifact": "main report",
+          "scope": "第25节、clip/clip-lecture脚注和本地显式导航目标，核实首块展开与往返。"
+        },
+        {
+          "artifact": "current report/evidence delta",
+          "scope": "仅核新哈希、指定的一处正文口径修改及相应evidence字段；逆向还原列出的改动后，报告/evidence哈希均精确回到上一轮已审快照。以上全篇/来源阅读范围属于上一轮实际工作，本轮复用而未重读。"
+        }
+      ],
+      "inheritance_verification": {
+        "used": false
+      },
+      "verification_limits": [
+        "本次为本地缓存与PDF文字层的内容复核；未联网重新抓取、未视觉验收PDF页面、未运行模型，也未重做WIT数据审计。",
+        "转写完整阅读和时间单调性核验不是听音校对或字词错误率测量；未重读整集转写。",
+        "未逐格检查论文完整基线表，未通读全部参考文献或全部监控/职业标签实验；正文已明确将这些作为非核心范围取舍。",
+        "实际子会话模型不可确认，model如实为unconfirmed；模型资格及最终pass须由协调者与native checker处理。",
+        "只输出/tmp两份review-entry，不安装或修改仓库sidecar；不把文本、脚注和导航检查说成工作台页面验收。最终finalize、索引更新、提交与推送由协调者负责。"
+      ],
+      "critical_claim_ids_checked": [
+        "C1",
+        "C2",
+        "C3",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17",
+        "C18",
+        "C19",
+        "C20",
+        "C21"
+      ],
+      "coverage_unit_ids_checked": [
+        "U1",
+        "U2",
+        "U3",
+        "U4",
+        "U5",
+        "U6",
+        "U7",
+        "U8",
+        "U9",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16"
+      ],
+      "source_ids_checked": [
+        "PAPER",
+        "METADATA",
+        "OFFICIAL",
+        "LECTURE",
+        "PODCAST",
+        "SHOWNOTES",
+        "SD14"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6"
+      ],
+      "delta_review": {
+        "mode": "same-reviewer-narrow-delta",
+        "prior_review_entry": "delivery-primary-chapter.json",
+        "prior_review_entry_sha256": "a2987279665137cfda77a5db881bdd341ff0a5c00db126e82e5174998e197438",
+        "prior_report_sha256": "34f10945c1c017ce621efdd0bd42d2f1dbaef1d3375e86b59b13be4c1ecc3f0d",
+        "prior_evidence_sha256": "a4d66b38438321ee5e0cce4de9e6dffa124ce8ba1c71b9b05def9c8eaaecef8f",
+        "report_change": {
+          "before": "在街景门牌数字 SVHN 上为 **51.0%**。",
+          "after": "在 SVHN 街景门牌的**完整号码识别**设置下为 **51.0%**，不是常见的单个数字分类口径。"
+        },
+        "evidence_changed_fields": [
+          "generator.run_id",
+          "claims[C14].evidence"
+        ],
+        "reverting_only_listed_changes_matches_prior_hashes": true,
+        "source_support": "已在上一轮实际阅读的论文v1附录E.2 p45明确写full number SVHN；Table14的51.0%与原文相同。新增完整号码/非单个数字措辞准确收窄了评价口径。",
+        "other_content_and_prior_source_checks_reused": true
+      }
+    },
+    {
+      "role": "flagship_final_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "clip_strong_review",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "identity_basis": "orchestrator-configured",
+        "model_runtime_confirmation": "session-bound-unverified"
+      },
+      "scores": {
+        "evidence_fidelity": 98,
+        "request_coverage": 98,
+        "reasoning_quality": 98,
+        "readability": 96,
+        "limitations": 99
+      },
+      "score_reasons": {
+        "evidence_fidelity": "逐项核对CLIP v1正文与相关附录、arXiv元数据、讲义文字、123段节目片段、shownotes、OpenAI官方说明及Stable Diffusion v1-4模型卡；4亿图文对、双向对比目标、76.2%、16/27、提示收益、训练资源、OCR/动作/地理定位、偏差与重叠数字均保持了对应设置。未发现关键数字或因果关系错置。",
+        "request_coverage": "完成了原章节的实质展开，以夕阳和飞鸟单例贯穿数据、双编码器、批内对比、零样本接口、评价口径、能力边界及生成组件关系；标题后首块含返回/前后导航，shownotes的CLIP条目也有明确留痕。",
+        "reasoning_quality": "清楚区分配对监督与语义真值、零样本与线性探测、处理图像数效率与训练成本、匹配与生成、国家分类与坐标回归，并用反例和外推边界抑制节目与讲义中的过宽表述。",
+        "readability": "正文可独立阅读，少数学但没有牺牲机制；表格、步骤和贯穿案例组织清楚。篇幅较长，但与“讲透机制”的深度要求相称，导航与脚注可用。",
+        "limitations": "明确声明示例未实测、未听音/未测WER、未复现训练、未审计完整WIT、未逐篇重读前驱及SD1.4之外不可泛化；对重复检测、候选偏差和验证集适配的限制交代充分。"
+      },
+      "critical_claim_ids_checked": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17",
+        "C18",
+        "C19",
+        "C20",
+        "C21"
+      ],
+      "coverage_unit_ids_checked": [
+        "U1",
+        "U2",
+        "U3",
+        "U4",
+        "U5",
+        "U6",
+        "U7",
+        "U8",
+        "U9",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16"
+      ],
+      "source_ids_checked": [
+        "PAPER",
+        "METADATA",
+        "OFFICIAL",
+        "LECTURE",
+        "PODCAST",
+        "SHOWNOTES",
+        "SD14"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6"
+      ],
+      "source_content_map": [
+        {
+          "id": "SC-CLIP-01",
+          "title": "固定类别监督的成本与自然语言任务接口",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "PODCAST",
+            "LECTURE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1"
+          ],
+          "notes": "报告先解释固定类别与新任务表达是两个问题，再引出自然语言在训练和使用时的双重作用。"
+        },
+        {
+          "id": "SC-CLIP-02",
+          "title": "WIT规模、采集条件与“不是无监督”的边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "PODCAST",
+            "LECTURE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U2"
+          ],
+          "notes": "4亿图文对、约50万查询项、每项最多2万对及查询词不等于最终标签均准确呈现；社交平台仅保留为节目例子。"
+        },
+        {
+          "id": "SC-CLIP-03",
+          "title": "双编码器、投影归一化与共同表示空间",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3"
+          ],
+          "notes": "图像和文本分别编码、线性投影、归一化和最终点积交互均讲清，并明确两侧从零联合训练。"
+        },
+        {
+          "id": "SC-CLIP-04",
+          "title": "批内N×N双向对比学习",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "PODCAST"
+          ],
+          "matched_coverage_unit_ids": [
+            "U4"
+          ],
+          "notes": "用三对九项示意N对图文、N个原始配对、N²−N个批内其他配对及对称交叉熵；同时指出语义合理的非原始配对可能存在。"
+        },
+        {
+          "id": "SC-CLIP-05",
+          "title": "零样本分类器、缓存与提示敏感性",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "OFFICIAL"
+          ],
+          "matched_coverage_unit_ids": [
+            "U5"
+          ],
+          "notes": "候选描述生成可缓存分类权重、不更新模型、零样本的“零”及候选外类别风险均覆盖；1.3pp和80模板再增3.5pp的口径正确。"
+        },
+        {
+          "id": "SC-CLIP-06",
+          "title": "零样本、少样本和线性探测的评价口径",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "LECTURE",
+            "PODCAST"
+          ],
+          "matched_coverage_unit_ids": [
+            "U6",
+            "U7"
+          ],
+          "notes": "76.2%仅匹配原版ResNet-50；16/27与21/27分别属于不同比较；少样本平均和人类实验没有被外推为通用结论。"
+        },
+        {
+          "id": "SC-CLIP-07",
+          "title": "算法效率、训练资源与前向计算成本",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8"
+          ],
+          "notes": "processed-images轴、32 epochs、32768批次及GPU天数分开解释，没有把3倍和4倍机械相乘。"
+        },
+        {
+          "id": "SC-CLIP-08",
+          "title": "分布偏移与目标数据适配的权衡",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "OFFICIAL"
+          ],
+          "matched_coverage_unit_ids": [
+            "U9"
+          ],
+          "notes": "76.2到85.4及七个自然偏移集平均略降的对照准确，并避免推出“监督必然有害”。"
+        },
+        {
+          "id": "SC-CLIP-09",
+          "title": "OCR、动作识别和地理定位的任务差异",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "PODCAST",
+            "LECTURE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10"
+          ],
+          "notes": "MNIST/SVHN、逐帧平均、单中间帧线性探测、Country211与IM2GPS近邻回归均按各自输入和指标区分；SVHN 51.0%现已明确为完整号码识别而非单字符分类。"
+        },
+        {
+          "id": "SC-CLIP-10",
+          "title": "关系推理、候选类别偏差和数据重叠",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "OFFICIAL"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11",
+            "U16"
+          ],
+          "notes": "计数/否定/距离弱点、FairFace候选集效应和近重复检测局限均进入正文；监控和名人识别作为非核心敏感应用未展开，不影响本章机制主线。"
+        },
+        {
+          "id": "SC-CLIP-11",
+          "title": "CLIP匹配能力与Stable Diffusion生成条件的分工",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "SD14",
+            "PODCAST",
+            "LECTURE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U12"
+          ],
+          "notes": "明确CLIP本身不是生成器；SD1.4复用固定CLIP文本编码器，未汇总文本表示经交叉注意力进入U-Net，且不泛化到全部文生图系统。"
+        },
+        {
+          "id": "SC-CLIP-12",
+          "title": "历史前驱、作者、日期与shownotes定位",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "METADATA",
+            "OFFICIAL",
+            "LECTURE",
+            "PODCAST",
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U13",
+            "U14"
+          ],
+          "notes": "ConVIRT等前驱、equal contribution、博客/arXiv/讲义三个日期来源及Part 4的CLIP条目均准确分开。"
+        },
+        {
+          "id": "SC-CLIP-13",
+          "title": "完整逐表复现与全参考文献审读",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U15"
+          ],
+          "notes": "报告有意不复制全部模型表和超参数，也未逐篇重读参考文献；该取舍与科普章节范围相符，并在阅读范围中明示。"
+        }
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "r2增量核验：§10已把SVHN 51.0%限定为完整号码识别而非单个数字分类，符合CLIP v1 Appendix E.2原文“full number SVHN”；C14 evidence同步。判断与分数不变，最终状态仍由native checker判定。",
+      "snapshot": {
+        "report_path": "ai-learning/reports/knowledge_reports/AI演义_25_CLIP_图文怎样学会相互匹配_科普讲解_20261105.md",
+        "report_sha256": "068424a034e41a3c21e009a0e93977403e36588a89d5704a87e0c79443393b78",
+        "evidence_path": "ai-learning/reports/knowledge_reports/.quality/AI演义_25_CLIP_图文怎样学会相互匹配_科普讲解_20261105.evidence.json",
+        "evidence_sha256": "a3198009ca889502378db57f1498280eb2302dec2ded43b593b2c7f97e632706"
+      },
+      "actual_read_scopes": [
+        "CLIP v1论文文字：正文机制、零样本、提示、实验、鲁棒性、重叠、限制与偏差，以及Appendix E/F相关表格和说明",
+        "讲义p48文字提取、123段CLIP ASR、完整shownotes的Part 4/CLIP条目",
+        "arXiv v1元数据、OpenAI CLIP官方博客、Stable Diffusion v1-4模型卡",
+        "章节报告全文与evidence全文；本地导航目标和脚注链接检查",
+        "asr-native-audit.json与asr-precision-check.json机器收据",
+        "r2仅复核§10的SVHN句、C14证据增量及Appendix E.2“full number SVHN”原文"
+      ],
+      "inheritance_verification": {
+        "used": false,
+        "notes": "本章为当前快照直接全文复核，无历史评审继承。"
+      },
+      "verification_limits": [
+        "未查看旧review意见或评分",
+        "未重新听音，未声称WER",
+        "未做PDF页面图像复核；论文和讲义依据既有文字提取，视觉范围不作新增声称",
+        "未运行模型权重、训练或推理实验"
+      ],
+      "delta_verification": {
+        "basis": "沿用delivery-strong-chapter.json的完整独立复核，仅核本轮两处精度delta中的章节项及对应evidence。",
+        "report_change": "§10将SVHN 51.0%明确为街景门牌完整号码识别，并排除常见单个数字分类口径。",
+        "source_check": "paper-v1-layout.txt Appendix E.2明确写有“CLIP’s 51% accuracy on full number SVHN”，Table 14对应ZS CLIP=51.0。",
+        "evidence_change": "C14 evidence追加完整号码识别/非单字符分类口径；generator.run_id更新。",
+        "assessment": "精度提高，无新缺陷，原分数与空问题清单保持。"
+      }
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 95.85,
+    "evaluated_on": "2026-11-06",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "9d7c5dc6fa9fd7706acfa7eb5e4404933ac2f10b825a222a1409e521bf0202c8",
+    "evidence_sha256": "a3198009ca889502378db57f1498280eb2302dec2ded43b593b2c7f97e632706"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "unconfirmed",
+            "harness": "codex",
+            "run_id": "clip_primary_review",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "identity_basis": "普通collab2子会话未获得可独立确认的实际模型身份；不采用共享宿主eacli的父会话模型。",
+            "model_runtime_confirmation": "unconfirmed"
+          },
+          "scores": {
+            "evidence_fidelity": 94,
+            "request_coverage": 97,
+            "reasoning_quality": 96,
+            "readability": 93,
+            "limitations": 97
+          },
+          "score_reasons": {
+            "evidence_fidelity": "所有登记关键机制与数字均按固定v1相关正文/图表和模型卡实际回核，未见错配；唯一精度建议是将SVHN的51.0%明说为完整号码识别，避免被理解成常见单字符任务。",
+            "request_coverage": "来源优先列出的12个单元均进入正文；夕阳飞鸟贯穿、少公式但解释训练与使用、原节实质重写与标题首块展开链接均已核，前后/返回导航成立。",
+            "reasoning_quality": "严格区分自然语言监督、零目标样本、共同空间、配对关系与语义真值，并拆开零样本/线性探测、预训练成本/前向GFLOPs及匹配/生成。未把相关实验扩张为因果或通用能力。",
+            "readability": "全文可独立阅读，术语有首次解释、表格与推理结构清楚，全部脚注定义与本地导航检查无缺失。13节及多组实验细节仍较密集，后半段阅读负担高于前半段，但未形成实质理解障碍。",
+            "limitations": "明确标示机制示意未实测、目标任务零样本不等于从未见概念、验证集反馈、近重复检测局限、未听校/WER、模型卡版本及未复训范围；反例和能力边界紧邻结论。"
+          },
+          "source_content_map": [
+            {
+              "id": "SC-P01",
+              "title": "从固定视觉标签转向自然语言监督",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "PODCAST",
+                "LECTURE"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1"
+              ],
+              "notes": "§1明确固定类别和新任务接口的区别；与原论文pp1–3和片段前半相符。"
+            },
+            {
+              "id": "SC-P02",
+              "title": "互联网图文对的规模、弱监督与训练成本",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "PODCAST",
+                "LECTURE"
+              ],
+              "matched_coverage_unit_ids": [
+                "U2",
+                "U8"
+              ],
+              "notes": "§2、§8准确区分自然语言监督、采集查询和训练标签；4亿对、50万查询、2万上限及训练资源已回核论文pp3–5。"
+            },
+            {
+              "id": "SC-P03",
+              "title": "图像/文本双编码器与共同归一化表示",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "PODCAST"
+              ],
+              "matched_coverage_unit_ids": [
+                "U3"
+              ],
+              "notes": "§3交代分别编码、线性投影、归一化与从零联合训练；补读p27确认最终点积而非联合注意力。"
+            },
+            {
+              "id": "SC-P04",
+              "title": "批内全配对、双向训练及不用生成字幕的原因",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U4",
+                "U8"
+              ],
+              "notes": "§4三对九项和两个方向损失符合Figure3；非原始配对可能语义合理明确标为推测。§8不把processed-images效率直接当通用算力倍数。"
+            },
+            {
+              "id": "SC-P05",
+              "title": "零样本分类的候选描述流程与定义",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "LECTURE",
+                "PODCAST"
+              ],
+              "matched_coverage_unit_ids": [
+                "U5"
+              ],
+              "notes": "§5完整说明候选描述、编码、缓存、比较与零目标任务训练样本；明确候选外类别、未经实测的例子和置信度边界。"
+            },
+            {
+              "id": "SC-P06",
+              "title": "Prompt措辞与候选集敏感性",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "OFFICIAL"
+              ],
+              "matched_coverage_unit_ids": [
+                "U5",
+                "U11"
+              ],
+              "notes": "§6正确解释上下文提示、80模板与缓存；§11用候选集合改变偏差的实验补足任务设计边界。1.3pp、3.5pp与Table7均已核。"
+            },
+            {
+              "id": "SC-P07",
+              "title": "零样本成绩、比较基线与线性探针不可混同",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "LECTURE",
+                "PODCAST"
+              ],
+              "matched_coverage_unit_ids": [
+                "U6",
+                "U7"
+              ],
+              "notes": "§7分开76.2%零样本、16/27监督ResNet50线性基线、21/27与约5pp的CLIP线性探测；4-shot平均限定20任务，人类比较不外推。相关pp7–9、11–13、16–17均已读。"
+            },
+            {
+              "id": "SC-P08",
+              "title": "通用能力与反例/数据分布边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "OFFICIAL"
+              ],
+              "matched_coverage_unit_ids": [
+                "U9",
+                "U10",
+                "U11"
+              ],
+              "notes": "§§9–11保留分布偏移、OCR/视频/地理定位的不同设置、计数/测距弱项、候选偏差与污染边界；补读pp13–22及附录A/E核验新增细节。SVHN 51.0%可再明确为完整号码识别，这是非阻断精度建议。"
+            },
+            {
+              "id": "SC-P09",
+              "title": "技术史与发布日期精度",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "METADATA",
+                "OFFICIAL",
+                "LECTURE"
+              ],
+              "matched_coverage_unit_ids": [
+                "U13"
+              ],
+              "notes": "§13保留ConVIRT前驱、共同一作和三种日期的出处，不把讲义月份等同首发日期。"
+            },
+            {
+              "id": "SC-P10",
+              "title": "CLIP与文字条件图像生成的组件分工",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "SD14",
+                "PODCAST",
+                "LECTURE"
+              ],
+              "matched_coverage_unit_ids": [
+                "U12"
+              ],
+              "notes": "§12将CLIP匹配和图像生成分开；SD v1-4固定文本编码器、未汇总输出和cross-attention/U-Net与模型卡一致，也解释ViT型号不等于视觉网络编码文字。"
+            },
+            {
+              "id": "SC-P11",
+              "title": "原讲座示例、来源范围与ASR修订边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PODCAST",
+                "LECTURE",
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U2",
+                "U13"
+              ],
+              "notes": "原ASR的夕阳/晚霞/鸟例子被用作贯穿线索，后续构造样例未伪装成实测；转写范围与未听音/WER边界明确。"
+            },
+            {
+              "id": "SC-P12",
+              "title": "Shownotes章节位置与资料日期边界",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "SHOWNOTES",
+                "LECTURE",
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U13",
+                "U14"
+              ],
+              "notes": "完整shownotes确认Part4内CLIP位于ViT和Stable Diffusion之间；报告解释为何系列导航按主稿路线转GAN。当前范围仅CLIP，不要求重述整集其他章节。"
+            }
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "只读独立内容复核，未见需要阻断的核心事实或要求缺失。可选建议：§10将SVHN 51.0%表述为“完整门牌号码识别”；原句未明确声称单字符，故不列unsupported claim。U15/U16是正文明确说明的非核心范围取舍，核对其省略理由，不冒充重读完整表格与监控实验。标题、段落、表格、无复杂公式的机制讲解、脚注定义和返回/前后链接已实际核查；不含页面验收。最终判定不由本回执自行声明。",
+          "snapshot": {
+            "report_path": "ai-learning/reports/knowledge_reports/AI演义_25_CLIP_图文怎样学会相互匹配_科普讲解_20261105.md",
+            "report_sha256": "34f10945c1c017ce621efdd0bd42d2f1dbaef1d3375e86b59b13be4c1ecc3f0d",
+            "evidence_path": "ai-learning/reports/knowledge_reports/.quality/AI演义_25_CLIP_图文怎样学会相互匹配_科普讲解_20261105.evidence.json",
+            "evidence_sha256": "a4d66b38438321ee5e0cce4de9e6dffa124ce8ba1c71b9b05def9c8eaaecef8f",
+            "verified_before_source_read": true
+          },
+          "read_scopes": [
+            {
+              "artifact": "paper-v1-layout.txt",
+              "owner": "ai-learning/papers/11_clip_2021.pdf",
+              "before_report_pages": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                11,
+                12,
+                18,
+                19,
+                20
+              ],
+              "supplementary_claim_check_pages": [
+                13,
+                14,
+                15,
+                16,
+                17,
+                21,
+                22,
+                26,
+                27,
+                37,
+                38,
+                44,
+                45,
+                46,
+                47,
+                48
+              ],
+              "mode": "PDF文字层；已重新pdftotext -layout输出至stdout并与缓存逐字节比对相同。未查看页面图像。"
+            },
+            {
+              "artifact": "handout-p48.txt",
+              "owner": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+              "scope": "读完第48页缓存文字；重新从owner提取并逐字节确认缓存相同。部分中文缺字，不宣称完成独立视觉核验。",
+              "stage": "before_report"
+            },
+            {
+              "artifact": "clip-asr-audit.txt",
+              "scope": "完整123段文字，13275.76–13549.79秒对应的CLIP片段。",
+              "stage": "before_report"
+            },
+            {
+              "artifact": "clip-asr-segments.json; asr-native-audit.json; asr-precision-check.json",
+              "scope": "读取机器收据，独立逐段检查start/end：123段，负时长0、start/end倒序0、相邻重叠0；实际text/segment SHA与收据一致。",
+              "stage": "before_report"
+            },
+            {
+              "artifact": "shownotes.txt; paper-metadata.txt",
+              "scope": "完整节目导览及官方v1元信息；只将CLIP条目作为本次内容覆盖范围。",
+              "stage": "before_report"
+            },
+            {
+              "artifact": "official-blog.md",
+              "scope": "公告日期、主体、方法、局限、社会影响、结论及脚注；未逐篇重读参考文献。",
+              "stage": "before_report"
+            },
+            {
+              "artifact": "sd-v1-4-model-card.md",
+              "scope": "完整缓存文字，重点核Model Details与Training中的固定文本编码器和非汇总输出；没有运行示例或生成。",
+              "stage": "before_report"
+            },
+            {
+              "artifact": "chapter report/evidence",
+              "scope": "冻结正文、脚注、来源与全部claim/coverage/requirements逐项核对；未读取旧review条目。",
+              "stage": "after_independent_source_map"
+            },
+            {
+              "artifact": "main report",
+              "scope": "第25节、clip/clip-lecture脚注和本地显式导航目标，核实首块展开与往返。"
+            }
+          ],
+          "inheritance_verification": {
+            "used": false
+          },
+          "verification_limits": [
+            "本次为本地缓存与PDF文字层的内容复核；未联网重新抓取、未视觉验收PDF页面、未运行模型，也未重做WIT数据审计。",
+            "转写完整阅读和时间单调性核验不是听音校对或字词错误率测量；未重读整集转写。",
+            "未逐格检查论文完整基线表，未通读全部参考文献或全部监控/职业标签实验；正文已明确将这些作为非核心范围取舍。",
+            "实际子会话模型不可确认，model如实为unconfirmed；模型资格及最终pass须由协调者与native checker处理。",
+            "只输出/tmp两份review-entry，不安装或修改仓库sidecar；不把文本、脚注和导航检查说成工作台页面验收。最终finalize、索引更新、提交与推送由协调者负责。"
+          ],
+          "critical_claim_ids_checked": [
+            "C1",
+            "C2",
+            "C3",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "C16",
+            "C17",
+            "C18",
+            "C19",
+            "C20",
+            "C21"
+          ],
+          "coverage_unit_ids_checked": [
+            "U1",
+            "U2",
+            "U3",
+            "U4",
+            "U5",
+            "U6",
+            "U7",
+            "U8",
+            "U9",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14",
+            "U15",
+            "U16"
+          ],
+          "source_ids_checked": [
+            "PAPER",
+            "METADATA",
+            "OFFICIAL",
+            "LECTURE",
+            "PODCAST",
+            "SHOWNOTES",
+            "SD14"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6"
+          ]
+        },
+        {
+          "role": "flagship_final_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex",
+            "run_id": "clip_strong_review",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "identity_basis": "orchestrator-configured",
+            "model_runtime_confirmation": "session-bound-unverified"
+          },
+          "scores": {
+            "evidence_fidelity": 98,
+            "request_coverage": 98,
+            "reasoning_quality": 98,
+            "readability": 96,
+            "limitations": 99
+          },
+          "score_reasons": {
+            "evidence_fidelity": "逐项核对CLIP v1正文与相关附录、arXiv元数据、讲义文字、123段节目片段、shownotes、OpenAI官方说明及Stable Diffusion v1-4模型卡；4亿图文对、双向对比目标、76.2%、16/27、提示收益、训练资源、OCR/动作/地理定位、偏差与重叠数字均保持了对应设置。未发现关键数字或因果关系错置。",
+            "request_coverage": "完成了原章节的实质展开，以夕阳和飞鸟单例贯穿数据、双编码器、批内对比、零样本接口、评价口径、能力边界及生成组件关系；标题后首块含返回/前后导航，shownotes的CLIP条目也有明确留痕。",
+            "reasoning_quality": "清楚区分配对监督与语义真值、零样本与线性探测、处理图像数效率与训练成本、匹配与生成、国家分类与坐标回归，并用反例和外推边界抑制节目与讲义中的过宽表述。",
+            "readability": "正文可独立阅读，少数学但没有牺牲机制；表格、步骤和贯穿案例组织清楚。篇幅较长，但与“讲透机制”的深度要求相称，导航与脚注可用。",
+            "limitations": "明确声明示例未实测、未听音/未测WER、未复现训练、未审计完整WIT、未逐篇重读前驱及SD1.4之外不可泛化；对重复检测、候选偏差和验证集适配的限制交代充分。"
+          },
+          "critical_claim_ids_checked": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "C16",
+            "C17",
+            "C18",
+            "C19",
+            "C20",
+            "C21"
+          ],
+          "coverage_unit_ids_checked": [
+            "U1",
+            "U2",
+            "U3",
+            "U4",
+            "U5",
+            "U6",
+            "U7",
+            "U8",
+            "U9",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14",
+            "U15",
+            "U16"
+          ],
+          "source_ids_checked": [
+            "PAPER",
+            "METADATA",
+            "OFFICIAL",
+            "LECTURE",
+            "PODCAST",
+            "SHOWNOTES",
+            "SD14"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6"
+          ],
+          "source_content_map": [
+            {
+              "id": "SC-CLIP-01",
+              "title": "固定类别监督的成本与自然语言任务接口",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "PODCAST",
+                "LECTURE"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1"
+              ],
+              "notes": "报告先解释固定类别与新任务表达是两个问题，再引出自然语言在训练和使用时的双重作用。"
+            },
+            {
+              "id": "SC-CLIP-02",
+              "title": "WIT规模、采集条件与“不是无监督”的边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "PODCAST",
+                "LECTURE"
+              ],
+              "matched_coverage_unit_ids": [
+                "U2"
+              ],
+              "notes": "4亿图文对、约50万查询项、每项最多2万对及查询词不等于最终标签均准确呈现；社交平台仅保留为节目例子。"
+            },
+            {
+              "id": "SC-CLIP-03",
+              "title": "双编码器、投影归一化与共同表示空间",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U3"
+              ],
+              "notes": "图像和文本分别编码、线性投影、归一化和最终点积交互均讲清，并明确两侧从零联合训练。"
+            },
+            {
+              "id": "SC-CLIP-04",
+              "title": "批内N×N双向对比学习",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "PODCAST"
+              ],
+              "matched_coverage_unit_ids": [
+                "U4"
+              ],
+              "notes": "用三对九项示意N对图文、N个原始配对、N²−N个批内其他配对及对称交叉熵；同时指出语义合理的非原始配对可能存在。"
+            },
+            {
+              "id": "SC-CLIP-05",
+              "title": "零样本分类器、缓存与提示敏感性",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "OFFICIAL"
+              ],
+              "matched_coverage_unit_ids": [
+                "U5"
+              ],
+              "notes": "候选描述生成可缓存分类权重、不更新模型、零样本的“零”及候选外类别风险均覆盖；1.3pp和80模板再增3.5pp的口径正确。"
+            },
+            {
+              "id": "SC-CLIP-06",
+              "title": "零样本、少样本和线性探测的评价口径",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "LECTURE",
+                "PODCAST"
+              ],
+              "matched_coverage_unit_ids": [
+                "U6",
+                "U7"
+              ],
+              "notes": "76.2%仅匹配原版ResNet-50；16/27与21/27分别属于不同比较；少样本平均和人类实验没有被外推为通用结论。"
+            },
+            {
+              "id": "SC-CLIP-07",
+              "title": "算法效率、训练资源与前向计算成本",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U8"
+              ],
+              "notes": "processed-images轴、32 epochs、32768批次及GPU天数分开解释，没有把3倍和4倍机械相乘。"
+            },
+            {
+              "id": "SC-CLIP-08",
+              "title": "分布偏移与目标数据适配的权衡",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "OFFICIAL"
+              ],
+              "matched_coverage_unit_ids": [
+                "U9"
+              ],
+              "notes": "76.2到85.4及七个自然偏移集平均略降的对照准确，并避免推出“监督必然有害”。"
+            },
+            {
+              "id": "SC-CLIP-09",
+              "title": "OCR、动作识别和地理定位的任务差异",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "PODCAST",
+                "LECTURE"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10"
+              ],
+              "notes": "MNIST/SVHN、逐帧平均、单中间帧线性探测、Country211与IM2GPS近邻回归均按各自输入和指标区分。"
+            },
+            {
+              "id": "SC-CLIP-10",
+              "title": "关系推理、候选类别偏差和数据重叠",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "OFFICIAL"
+              ],
+              "matched_coverage_unit_ids": [
+                "U11",
+                "U16"
+              ],
+              "notes": "计数/否定/距离弱点、FairFace候选集效应和近重复检测局限均进入正文；监控和名人识别作为非核心敏感应用未展开，不影响本章机制主线。"
+            },
+            {
+              "id": "SC-CLIP-11",
+              "title": "CLIP匹配能力与Stable Diffusion生成条件的分工",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "SD14",
+                "PODCAST",
+                "LECTURE"
+              ],
+              "matched_coverage_unit_ids": [
+                "U12"
+              ],
+              "notes": "明确CLIP本身不是生成器；SD1.4复用固定CLIP文本编码器，未汇总文本表示经交叉注意力进入U-Net，且不泛化到全部文生图系统。"
+            },
+            {
+              "id": "SC-CLIP-12",
+              "title": "历史前驱、作者、日期与shownotes定位",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "METADATA",
+                "OFFICIAL",
+                "LECTURE",
+                "PODCAST",
+                "SHOWNOTES"
+              ],
+              "matched_coverage_unit_ids": [
+                "U13",
+                "U14"
+              ],
+              "notes": "ConVIRT等前驱、equal contribution、博客/arXiv/讲义三个日期来源及Part 4的CLIP条目均准确分开。"
+            },
+            {
+              "id": "SC-CLIP-13",
+              "title": "完整逐表复现与全参考文献审读",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U15"
+              ],
+              "notes": "报告有意不复制全部模型表和超参数，也未逐篇重读参考文献；该取舍与科普章节范围相符，并在阅读范围中明示。"
+            }
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "强模型独立复核未发现需要修订的问题。分数按实际内容给出，不代表运行native checker后的最终判定。",
+          "snapshot": {
+            "report_path": "ai-learning/reports/knowledge_reports/AI演义_25_CLIP_图文怎样学会相互匹配_科普讲解_20261105.md",
+            "report_sha256": "34f10945c1c017ce621efdd0bd42d2f1dbaef1d3375e86b59b13be4c1ecc3f0d",
+            "evidence_path": "ai-learning/reports/knowledge_reports/.quality/AI演义_25_CLIP_图文怎样学会相互匹配_科普讲解_20261105.evidence.json",
+            "evidence_sha256": "a4d66b38438321ee5e0cce4de9e6dffa124ce8ba1c71b9b05def9c8eaaecef8f"
+          },
+          "actual_read_scopes": [
+            "CLIP v1论文文字：正文机制、零样本、提示、实验、鲁棒性、重叠、限制与偏差，以及Appendix E/F相关表格和说明",
+            "讲义p48文字提取、123段CLIP ASR、完整shownotes的Part 4/CLIP条目",
+            "arXiv v1元数据、OpenAI CLIP官方博客、Stable Diffusion v1-4模型卡",
+            "章节报告全文与evidence全文；本地导航目标和脚注链接检查",
+            "asr-native-audit.json与asr-precision-check.json机器收据"
+          ],
+          "inheritance_verification": {
+            "used": false,
+            "notes": "本章为当前快照直接全文复核，无历史评审继承。"
+          },
+          "verification_limits": [
+            "未查看旧review意见或评分",
+            "未重新听音，未声称WER",
+            "未做PDF页面图像复核；论文和讲义依据既有文字提取，视觉范围不作新增声称",
+            "未运行模型权重、训练或推理实验"
+          ]
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 95.15,
+        "evaluated_on": "2026-11-06",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "2d5c144c11c225f0531fbeebbe0ec51e6c66d7160928b849ccb1d940b7d4fa2c",
+        "evidence_sha256": "a4d66b38438321ee5e0cce4de9e6dffa124ce8ba1c71b9b05def9c8eaaecef8f"
+      }
+    }
+  ]
+}
