@@ -6,7 +6,7 @@
   "generator": {
     "model": "gpt-6-astra",
     "harness": "codex",
-    "run_id": "ai-yanyi-diffusion15-main-r32-20261106",
+    "run_id": "ai-yanyi-ddpm-main-r33-20261106",
     "explicit_model_override": false,
     "override_reason": "",
     "identity_basis": "eacli session current：codex-turn-context，session-bound，confirmed=true；只证明当前生成会话，不证明子会话模型。"
@@ -56,7 +56,7 @@
       },
       {
         "id": "R11",
-        "text": "原第27节实质改写且标题后首块有展开链接；展开保留原节、前后章节导航，统一两位编号、人类独立可读；本轮核心为2015扩散把生成分解为小步逆过程，以已知前向扰动训练均值/协方差与变分目标；新噪声生成不是恢复唯一原件，局部/路径/边缘概率分开，保留原实验步数、bits口径与v8去量化更正。。其余科学正文严格继承已发布r31。"
+        "text": "原第28节实质改写且标题后首块有展开链接；展开保留原节、前后章节导航，统一两位编号、人类独立可读；本轮核心为DDPM 用已知累计噪声构造监督、以噪声预测计算反向均值并逐步采样；参数化、简化损失与时间条件 U-Net 共同构成配方，Table 2 的 13.22／13.51／3.17 不能归功于单改预测对象；FID参考集、似然上界与1000步成本须分开，三位作者首页均署名UC Berkeley。。其余科学正文严格继承已发布r32。"
       }
     ],
     "reader_feedback": [
@@ -566,11 +566,12 @@
       "kind": "primary",
       "title": "Denoising Diffusion Probabilistic Models",
       "locator": "https://arxiv.org/pdf/2006.11239v2",
-      "accessed_on": "2026-11-03",
-      "version": "arXiv v2，2020-12-16；首发 2020-06-19 沿用身份 owner",
-      "read_scope": "P1–7：首页、§1–3.4、Algorithms 1–4、Tables 1–2、§4.1–4.2、§4.3 的压缩及渐进生成部分；P14 Appendix B 实验细节整页。",
-      "research_record": "ai-learning/notes/ai_yanyi_research/phase2/generation.json",
-      "research_source_id": "GEN-S-DDPM"
+      "accessed_on": "2026-11-06",
+      "version": "v2，2020-12-16，25页；首版2020-06-19",
+      "local_owner": "ai-learning/papers/09_ddpm_2020.pdf",
+      "sha256": "aee5e07a802e8dfd2a386374c94fd61d1d056cb7e1e0fec4f28e8120ff5d8505",
+      "read_scope": "pp1–9主文（p9参考文献未逐篇读）、pp14–15附录B/C；Algorithms1–4、Tables1–2、Figures5–8及相关图注。p5原页经eacli图像读取与直接视检；没有逐式复证AppendixA、逐图检阅全部附录样本或运行训练。",
+      "current_chapter_evidence": "ai-learning/reports/knowledge_reports/.quality/AI演义_28_DDPM_预测噪声怎样学会生成图像_科普讲解_20261106.evidence.json"
     },
     {
       "id": "S-ldm",
@@ -857,6 +858,58 @@
       "cache_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5",
       "fresh_fetch": false,
       "current_chapter_evidence": "ai-learning/reports/knowledge_reports/.quality/AI演义_27_Diffusion2015_逐步加噪怎样学会生成_科普讲解_20261106.evidence.json"
+    },
+    {
+      "id": "S-ddpm-metadata",
+      "kind": "primary",
+      "title": "DDPM官方版本记录",
+      "locator": "https://arxiv.org/abs/2006.11239v2",
+      "accessed_on": "2026-11-06",
+      "response_text_sha256": "4d4acdfaa2379f84149abe44bddf386a77926d81f1a5b121736b97cef30d10cc",
+      "read_scope": "eacli web.read，核三位作者、题名、v1/v2日期；机构回论文首页。",
+      "current_chapter_evidence": "ai-learning/reports/knowledge_reports/.quality/AI演义_28_DDPM_预测噪声怎样学会生成图像_科普讲解_20261106.evidence.json"
+    },
+    {
+      "id": "S-ddpm-lecture",
+      "kind": "local",
+      "title": "《AI演义》讲义第46页",
+      "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "accessed_on": "2026-11-06",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
+      "read_scope": "p46文字与原页视读，噪声预测、ResNet类比、U-Net及人物栏；作者机构等按原论文纠正，不把讲义当现职证明。",
+      "current_chapter_evidence": "ai-learning/reports/knowledge_reports/.quality/AI演义_28_DDPM_预测噪声怎样学会生成图像_科普讲解_20261106.evidence.json"
+    },
+    {
+      "id": "S-ddpm-podcast",
+      "kind": "primary",
+      "title": "《AI演义》DDPM口述片段",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-06",
+      "read_scope": "零基6044–6160共117段，12475.27–12736.25秒；全文读取，止于转入ViT；时间起止单调、无相邻重叠。未听校/测WER。",
+      "transcript_source_ref": "sha256:b6ca54584fe78fc99df520ec5bed812f39aa639ad1560821f187e6ef23316f0f",
+      "transcript_review": "ai-learning/reports/knowledge_reports/.quality/AI演义_28_DDPM_预测噪声怎样学会生成图像_科普讲解_20261106.transcription-review.json",
+      "current_chapter_evidence": "ai-learning/reports/knowledge_reports/.quality/AI演义_28_DDPM_预测噪声怎样学会生成图像_科普讲解_20261106.evidence.json"
+    },
+    {
+      "id": "S-ddpm-shownotes",
+      "kind": "primary",
+      "title": "节目Part4的DDPM条目与路线",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-06",
+      "cache_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5",
+      "read_scope": "复用已获取的节目页shownotes，确认DDPM与相邻Diffusion/ViT条目，不将Part4起点当DDPM起点。",
+      "fresh_fetch": false,
+      "current_chapter_evidence": "ai-learning/reports/knowledge_reports/.quality/AI演义_28_DDPM_预测噪声怎样学会生成图像_科普讲解_20261106.evidence.json"
+    },
+    {
+      "id": "S-ddpm-unet",
+      "kind": "primary",
+      "title": "U-Net: Convolutional Networks for Biomedical Image Segmentation",
+      "locator": "https://arxiv.org/abs/1505.04597",
+      "accessed_on": "2026-11-06",
+      "response_text_sha256": "3cb417a381835035596e8adae9df5dbb6201b4030c7f4d13e55fc0490b48c386",
+      "read_scope": "只读官方题名/摘要，核生物医学图像分割任务及收缩/扩展路径；未读全文或复现。",
+      "current_chapter_evidence": "ai-learning/reports/knowledge_reports/.quality/AI演义_28_DDPM_预测噪声怎样学会生成图像_科普讲解_20261106.evidence.json"
     }
   ],
   "claims": [
@@ -1255,15 +1308,19 @@
     },
     {
       "id": "C-ddpm",
-      "claim": "DDPM在早期扩散家族中组合噪声参数化、训练目标与网络配方，训练监督构造和多步生成的计算路径不同。",
+      "claim": "DDPM 用已知累计噪声构造监督、以噪声预测计算反向均值并逐步采样；参数化、简化损失与时间条件 U-Net 共同构成配方，Table 2 的 13.22／13.51／3.17 不能归功于单改预测对象；FID参考集、似然上界与1000步成本须分开，三位作者首页均署名UC Berkeley。",
       "report_anchor": "paper-ddpm",
       "support": "direct",
       "source_ids": [
         "S-ddpm",
-        "S-diffusion15"
+        "S-ddpm-metadata",
+        "S-ddpm-lecture",
+        "S-ddpm-podcast",
+        "S-ddpm-shownotes",
+        "S-ddpm-unet"
       ],
       "critical": true,
-      "evidence": "DDPM§3.2–3.4、Algorithms 1–2及§4.2/Table 2说明参数化与训练目标，Appendix B记录实际网络组件。"
+      "evidence": "本轮第28节展开正文及其原始证据，关键机制/数字见对应论文和章节脚注；未改变其余已发布主稿正文。"
     },
     {
       "id": "C-ldm",
@@ -1995,12 +2052,16 @@
     },
     {
       "id": "U-ddpm",
-      "title": "Denoising Diffusion Probabilistic Models",
+      "title": "DDPM 用已知累计噪声构造监督、以噪声预测计算反向均值并逐步采样；参数化、简化损失与时间条件 U-Net 共同构成配方，Table 2 的 13.22／13.51／3.17 不能归功于单改预测对象；FID参考集、似然上界与1000步成本须分开，三位作者首页均署名UC Berkeley。",
       "importance": "core",
       "status": "included",
       "source_ids": [
         "S-ddpm",
-        "S-diffusion15"
+        "S-ddpm-metadata",
+        "S-ddpm-lecture",
+        "S-ddpm-podcast",
+        "S-ddpm-shownotes",
+        "S-ddpm-unet"
       ],
       "report_anchor": "paper-ddpm"
     },
@@ -2172,7 +2233,7 @@
     "essay_articles": 1,
     "note": "论文研究范围按用户最新限定；不是全文逐公式/全图表审计。"
   },
-  "revision_note": "r32：第27节及其脚注、来源与覆盖增量，其余科学正文严格继承已发布r31。仅原文、正文、引用及章节导航检查，不做工作台页面验收。",
+  "revision_note": "r33：第28节及其脚注、来源与覆盖增量，其余科学正文严格继承已发布r32。仅原文、正文、引用及章节导航检查，不做工作台页面验收。",
   "generation_history": [
     {
       "revision_round": 2,

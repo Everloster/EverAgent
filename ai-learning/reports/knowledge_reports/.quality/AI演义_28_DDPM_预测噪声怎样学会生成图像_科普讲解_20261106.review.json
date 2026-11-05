@@ -1,0 +1,657 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_28_DDPM_预测噪声怎样学会生成图像_科普讲解_20261106.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "unconfirmed",
+        "harness": "codex",
+        "run_id": "ddpm_primary_review",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "identity_status": "session-bound-unverified",
+        "identity_basis": "独立子上下文未取得绑定本子会话的模型证明；共享宿主eacli输出不能证明子模型，不借用父身份。任务说明GLM 5.3不可用，本审未执行该模型。"
+      },
+      "scores": {
+        "evidence_fidelity": 96,
+        "request_coverage": 93,
+        "reasoning_quality": 95,
+        "readability": 92,
+        "limitations": 97
+      },
+      "score_reasons": {
+        "evidence_fidelity": "固定v2主文、附录B/C、官方版本/摘要与转写逐项对照。17项关键claim可追溯，消融、FID参考集、NLL上界、批量耗时及作者机构均准确；来源文件哈希和PDF文字重提取吻合。",
+        "request_coverage": "单一花照例子覆盖训练监督、累计噪声、随机训练与连续采样、损失消融、骨干分工及路线；已检查原节首块展开链接、双向导航和研究入口。历史背景对GAN/VAE/自回归当时各自难题展开较少，是非阻断的深度改进点。",
+        "reasoning_quality": "把预测对象、优化目标与采样过程分开，消融结论不作错误单因归因；条件平均、不确定性、理论压缩和插值边界说明扎实。原论文相关推导用于解释，未冒称完成所有证明或新的实验。",
+        "readability": "少公式、贯穿例子、引用紧贴数字；15组脚注及本地目标/锚点均能解析，没有发现乱码或模板残留。首段“越来越模糊”可换成“越来越受扰”，避免与模糊滤波混淆；少数反复提醒可再精简。",
+        "limitations": "作者报告与本地复现明确分开；单次训练、最低FID点、训练/测试参考、条件分组、未听音/WER、未全附录视觉审计及后续商业事实未核都明确，不以生成质量推演产品或安全承诺。"
+      },
+      "critical_claim_ids_checked": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17"
+      ],
+      "coverage_unit_ids_checked": [
+        "U1",
+        "U2",
+        "U3",
+        "U4",
+        "U5",
+        "U6",
+        "U7",
+        "U8",
+        "U9",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16",
+        "U17",
+        "U18"
+      ],
+      "source_ids_checked": [
+        "PAPER",
+        "METADATA",
+        "LECTURE",
+        "PODCAST",
+        "SHOWNOTES",
+        "UNET"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6"
+      ],
+      "source_content_map": [
+        {
+          "id": "P01",
+          "title": "2020年生成图像困境与2015年扩散前驱",
+          "importance": "core",
+          "assessment": "partial",
+          "source_ids": [
+            "PAPER",
+            "LECTURE",
+            "PODCAST"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1"
+          ],
+          "notes": "§1交代2015框架与2020有效配方，§7/§10保留GAN比较；讲义、口述中的GAN/VAE/自回归各自痛点没有展开。属于历史背景细度的可改进项，未漏掉DDPM所解决的核心问题。"
+        },
+        {
+          "id": "P02",
+          "title": "版本、作者与机构的事实校准",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "METADATA",
+            "LECTURE",
+            "PODCAST"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1",
+            "U15"
+          ],
+          "notes": "首版/v2日期和三位作者准确；§10以首页UC Berkeley及p9 TFRC致谢纠正讲义机构归属，不将后续公司与排名当已核履历。"
+        },
+        {
+          "id": "P03",
+          "title": "可直接抽取任意噪声时刻的自监督训练",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U2",
+            "U3"
+          ],
+          "notes": "§§2–3把原图、时间步、已知高斯噪声、直接构造任意状态和共享网络串成一次训练；累计等效噪声、条件平均与不可辨识性的解释成立。600明确是例子。"
+        },
+        {
+          "id": "P04",
+          "title": "噪声预测如何给出反向分布而非简单相减",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "PODCAST"
+          ],
+          "matched_coverage_unit_ids": [
+            "U4"
+          ],
+          "notes": "§4区分原图估计、反向均值、随机样本；时间系数、信号缩放、t>1新噪声及末步无新噪声均与式11/15、Algorithm2相符，没有把讲者相减类比当算法。"
+        },
+        {
+          "id": "P05",
+          "title": "简化损失与噪声参数化的组合贡献",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U5",
+            "U6",
+            "U10"
+          ],
+          "notes": "§5保留13.22/13.51/3.17及固定方差、原目标/简化目标条件；结论指向组合收益而非单纯预测对象。相对降低小t权重限定于本论文设置，样本质量与NLL分开。"
+        },
+        {
+          "id": "P06",
+          "title": "共享U-Net、时刻条件与原始任务",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "UNET",
+            "LECTURE",
+            "PODCAST"
+          ],
+          "matched_coverage_unit_ids": [
+            "U7"
+          ],
+          "notes": "§6正确分离骨干与扩散算法；原始U-Net用途按官方摘要校为生物医学分割，DDPM的残差/GroupNorm、16×16注意力及正弦时间条件与附录B/C吻合。"
+        },
+        {
+          "id": "P07",
+          "title": "实验结果的指标、比较集与评价边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8",
+            "U9",
+            "U10"
+          ],
+          "notes": "§7的9.46±0.11、3.17/5.24、条件2.67/无条件3.26、50,000样本、各训练一次并取最小FID、NLL≤3.70/≤3.75均可回到Tables1–2及附录B；没有把条件组或±口径混用。"
+        },
+        {
+          "id": "P08",
+          "title": "训练稳定与生成速度的不同账本",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "PODCAST"
+          ],
+          "matched_coverage_unit_ids": [
+            "U14"
+          ],
+          "notes": "§9核准1000步及TPU v3-8上256张32×32用17秒、128张256×256用300秒；明确批量而非单张、本地或现代设备延迟。后续少步/潜空间未归入原DDPM。"
+        },
+        {
+          "id": "P09",
+          "title": "渐进有损压缩与粗到细的潜结构",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U12"
+          ],
+          "notes": "§8覆盖渐进编码、比特偏向不可见细节、先大结构后细节及传输假设；未复述码率/失真具体数值，但机制型科普并不因此缺主线，也未宣传已实现压缩产品。"
+        },
+        {
+          "id": "P10",
+          "title": "广义自回归解释与潜空间插值",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U12",
+            "U13"
+          ],
+          "notes": "特殊逐坐标遮蔽的自回归联系与实际高斯链清楚分开；插值发生在受扰同维状态、眼镜未平滑变化及不等于LDM压缩空间的限制准确。"
+        },
+        {
+          "id": "P11",
+          "title": "与score matching/NCSN的联系及后续路线",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "PODCAST",
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11",
+            "U14"
+          ],
+          "notes": "§8解释score为对数密度的变化方向而非画质分，说明与去噪score matching和Langevin-like采样的联系，并提醒NCSN差别；后续效率路线只作承接，没有冒充本篇实证。"
+        },
+        {
+          "id": "P12",
+          "title": "播客原章边界、顺序及可复核范围",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PODCAST",
+            "SHOWNOTES",
+            "LECTURE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U17",
+            "U18"
+          ],
+          "notes": "Part4节目DDPM条目及相邻Diffusion/ViT顺序已读取；正文明确节目顺序与问题路线不同。117段逐段读完，结构收据与精确时间独立复算相符；不传播误识专名、未经核验排名或听音/WER承诺。范围外细节的省略理由合理。"
+        },
+        {
+          "id": "P13",
+          "title": "生成模型的伪造与数据偏见风险",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U16"
+          ],
+          "notes": "§9已保留p9的伪造图像与数据偏见风险，并区分样本指标改善和授权、公平性、真实性问题；未声称做过数据集审计。"
+        }
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "未发现内容级硬失败或无来源关键数字。非阻断建议：历史背景可增加一句各类生成模型的当时取舍；开头“越来越模糊”可改“越来越受扰”以免与模糊滤波混淆。更正后的低分辨率基准句已独立增量核查。模型身份保留unconfirmed；本评分不替代native checker的最终状态或用户阅读反馈。",
+      "snapshot": {
+        "report_path": "ai-learning/reports/knowledge_reports/AI演义_28_DDPM_预测噪声怎样学会生成图像_科普讲解_20261106.md",
+        "report_sha256": "093d81767ba9c1f85912ec1fbf98ef9f8aaaf9f97cacbca6efbe0913b2399427",
+        "evidence_sha256": "eb4aad98c2d7d025a59939b5bec006e3b960215b3b754a03776ecaac30c9200a"
+      },
+      "directly_reviewed_critical_claim_ids": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17"
+      ],
+      "inherited_critical_claim_ids": [],
+      "directly_reviewed_coverage_unit_ids": [
+        "U1",
+        "U2",
+        "U3",
+        "U4",
+        "U5",
+        "U6",
+        "U7",
+        "U8",
+        "U9",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16",
+        "U17",
+        "U18"
+      ],
+      "inherited_coverage_unit_ids": [],
+      "directly_reviewed_source_ids": [
+        "PAPER",
+        "METADATA",
+        "LECTURE",
+        "PODCAST",
+        "SHOWNOTES",
+        "UNET"
+      ],
+      "inherited_source_ids": [],
+      "directly_reviewed_requirement_ids": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6"
+      ],
+      "inherited_requirement_ids": [],
+      "read_scopes": [
+        "来源先行：报告/evidence先仅核哈希，先读原材料并独立列出P01–P13，再读正文/证据并映射。",
+        "DDPM v2 pp1–9、pp14–15；Algorithms1–4、Tables1–2及相关图注。官方版本记录；U-Net仅官方题名/摘要。",
+        "讲义p46文本；117段DDPM转写全文及对应shownotes条目。论文与讲义缓存均独立重提取并与提供文本逐字节比对。",
+        "全文正文、表格、脚注及局部导航；原主稿第28节、前章导航块与研究入口对应链接。未查看旧审稿意见。"
+      ],
+      "transcript_structure_check": {
+        "text_sha256": "b6ca54584fe78fc99df520ec5bed812f39aa639ad1560821f187e6ef23316f0f",
+        "segments_sha256": "13420ed70c965fce25ad2f0be634a016b2e5558de3f2420064b438848fb5aa21",
+        "segment_count": 117,
+        "start_seconds": 12475.27,
+        "end_seconds": 12736.25,
+        "elapsed_seconds": 260.98,
+        "start_backwards": 0,
+        "end_backwards": 0,
+        "end_before_start": 0,
+        "overlap_count": 0,
+        "max_gap_seconds": 0,
+        "receipt_hashes_match": true,
+        "independently_recomputed": true,
+        "listened": false,
+        "wer_measured": false
+      },
+      "verification_limits": [
+        "仅依据已有官方来源缓存，没有重新联网抓取；来源文件SHA和PDF提取可复核。",
+        "本审实际读取PDF提取文本及图注，未独立视读PNG或全部样本图；不把生成者的视觉核查称为本审行为。",
+        "未听音、未测WER、未重读完整节目或独立定位完整ASR中的全局下标；117段结构与时间依据切片独立复算，下标区间以所给收据为准。",
+        "未训练或运行采样，未逐式重证附录A、未逐篇重读前驱，也没有验收工作台页面。"
+      ],
+      "snapshot_update": {
+        "initial_report_sha256": "c81b15488e596e28f4c624cb98a732b1976f25f0f435e7b83f6724c4e907018a",
+        "authorized_change": "将“这条路线不只适用于小手写数字”改为“这条路线不只适用于低分辨率基准图像”。",
+        "unique_sentence_reversion_matches_initial_sha256": true,
+        "assessment": "与CIFAR-10 32×32到LSUN 256×256的原文范围一致，避免将本篇基准误读成手写数字；其余三份快照未变。"
+      }
+    },
+    {
+      "role": "flagship_final_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "ddpm_strong_review",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "identity_basis": "orchestrator-configured",
+        "model_runtime_confirmation": "session-bound-unverified"
+      },
+      "scores": {
+        "evidence_fidelity": 98,
+        "request_coverage": 99,
+        "reasoning_quality": 98,
+        "readability": 96,
+        "limitations": 99
+      },
+      "score_reasons": {
+        "evidence_fidelity": "关键机制、消融、FID/NLL口径、时间步、批量成本、作者署名均与固定v2原文和官方元数据一致；转写只作为线索且纠错透明。LSUN段已将容易混淆的“小手写数字”修正为“低分辨率基准图像”，与CIFAR-10语境一致。",
+        "request_coverage": "完整覆盖背景、问题、监督来源、训练/生成、参数化与目标、U-Net分工、结果口径、成本、后续路线、人物边界和导航；标题后首块即展开/返回导航。",
+        "reasoning_quality": "没有把预测噪声简化为直接相减，能从Table 2推出“参数化与目标联合作用”，并区分样本质量、似然、稳定性与采样成本；推断和论文原结论边界清楚。",
+        "readability": "花照单例贯穿且少数学，关键概念分层清楚，表格和心智模型有效；篇幅较长但章节结构可定位，原有“小手写数字”语义跳跃已修正。",
+        "limitations": "明确未训练复现、未听校/WER、花照与第600步为讲解例、未核后续商业事实及未逐式/逐图全审，且不把批量硬件数据外推为单机延迟。"
+      },
+      "critical_claim_ids_checked": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17"
+      ],
+      "coverage_unit_ids_checked": [
+        "U1",
+        "U2",
+        "U3",
+        "U4",
+        "U5",
+        "U6",
+        "U7",
+        "U8",
+        "U9",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16",
+        "U17",
+        "U18"
+      ],
+      "source_ids_checked": [
+        "PAPER",
+        "METADATA",
+        "LECTURE",
+        "PODCAST",
+        "SHOWNOTES",
+        "UNET"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6"
+      ],
+      "source_content_map": [
+        {
+          "id": "SC1",
+          "title": "DDPM承接早期扩散并组合具体设计选择",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "METADATA",
+            "LECTURE",
+            "PODCAST"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1"
+          ],
+          "notes": "正文准确区分2015年框架与2020年配方，并以v2日期和原论文首页校正口述/讲义。"
+        },
+        {
+          "id": "SC2",
+          "title": "随机时间步、直接构造x_t与已知累计噪声监督",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U2",
+            "U3"
+          ],
+          "notes": "花照单例清楚解释监督来源、同一共享网络及累计等效噪声，不把目标写成末次增量噪声。"
+        },
+        {
+          "id": "SC3",
+          "title": "噪声预测、原图估计与反向一步采样的区别",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U4"
+          ],
+          "notes": "与式11、Algorithm 2和式15一致；写明时间系数、方差及t>1的新随机项。"
+        },
+        {
+          "id": "SC4",
+          "title": "参数化与简化目标必须联合解释",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "LECTURE",
+            "PODCAST"
+          ],
+          "matched_coverage_unit_ids": [
+            "U5",
+            "U6"
+          ],
+          "notes": "Table 2的13.22、13.51、3.17和不稳定空项均核对，避免把收益只归于预测噪声。"
+        },
+        {
+          "id": "SC5",
+          "title": "时间条件U-Net及组件分工",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "UNET",
+            "LECTURE",
+            "PODCAST"
+          ],
+          "matched_coverage_unit_ids": [
+            "U7"
+          ],
+          "notes": "纠正“边缘检测”口述，区分原始U-Net分割任务与DDPM的PixelCNN++/Wide ResNet、GroupNorm、16×16注意力和时间编码。"
+        },
+        {
+          "id": "SC6",
+          "title": "样本质量数字及评价口径",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8",
+            "U9",
+            "U10"
+          ],
+          "notes": "IS 9.46±0.11、训练集参考FID 3.17、测试集参考5.24、条件/无条件、50,000样本、单次训练取最低FID和NLL上界均区分。"
+        },
+        {
+          "id": "SC7",
+          "title": "分数匹配、渐进编码与插值连接",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11",
+            "U12",
+            "U13"
+          ],
+          "notes": "核心连接均进入正文，并明确不是GAN判别器分数、现成压缩产品或LDM压缩潜空间。"
+        },
+        {
+          "id": "SC8",
+          "title": "1000步成本、影响与历史边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "METADATA",
+            "PODCAST"
+          ],
+          "matched_coverage_unit_ids": [
+            "U14",
+            "U15",
+            "U16"
+          ],
+          "notes": "TPU v3-8批量采样数字、后续加速边界、作者UC Berkeley署名、伪造与偏差风险均有适当限定。"
+        },
+        {
+          "id": "SC9",
+          "title": "节目顺序、转写纠错、导航与范围声明",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES",
+            "PODCAST",
+            "LECTURE",
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U17",
+            "U18"
+          ],
+          "notes": "展开/返回/前后导航有效；结构收据核117段、时间戳单调且无重叠，明确未听音、未测WER，并声明未逐式/逐图/商业事实扩展。"
+        }
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "已定向核对唯一增量：“小手写数字”改为“低分辨率基准图像”，修复了与CIFAR-10语境的混淆，未引入新的事实、机制、引用或导航问题；其余复核结论不变。",
+      "snapshot": {
+        "report_sha256": "093d81767ba9c1f85912ec1fbf98ef9f8aaaf9f97cacbca6efbe0913b2399427",
+        "evidence_sha256": "eb4aad98c2d7d025a59939b5bec006e3b960215b3b754a03776ecaac30c9200a",
+        "expected_report_sha256": "093d81767ba9c1f85912ec1fbf98ef9f8aaaf9f97cacbca6efbe0913b2399427",
+        "expected_evidence_sha256": "eb4aad98c2d7d025a59939b5bec006e3b960215b3b754a03776ecaac30c9200a",
+        "matched": true
+      },
+      "read_scopes": {
+        "directly_reviewed_sources": [
+          "PAPER pp1–9、pp14–15及Algorithms 1–4/Tables 1–2/相关图注",
+          "METADATA官方版本记录",
+          "LECTURE p46文字与图像转录",
+          "PODCAST 117段转写与两份结构收据",
+          "SHOWNOTES Part4相关条目",
+          "UNET官方摘要"
+        ],
+        "directly_reviewed_report": [
+          "全文、脚注、导航、思考三问与原始材料范围"
+        ]
+      },
+      "transcript_verification": {
+        "segment_count": 117,
+        "start_seconds": 12475.27,
+        "end_seconds": 12736.25,
+        "timestamp_errors": 0,
+        "overlaps": 0,
+        "max_consecutive_identical": 1,
+        "audio_listened": false,
+        "wer_measured": false
+      },
+      "verification_limits": [
+        "未重跑模型训练或采样。",
+        "未听音或测WER；只核转写文本、边界、哈希和时间结构。",
+        "未逐式复证附录A或逐图审计全部附录样本。",
+        "按任务要求未做工作台/浏览器页面验收。"
+      ]
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 94.7,
+    "evaluated_on": "2026-11-06",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "cbf18b6fc752b32d8f72a3fea49ecf725c03e6415f6ff0dfcfa4498226eb0d3f",
+    "evidence_sha256": "eb4aad98c2d7d025a59939b5bec006e3b960215b3b754a03776ecaac30c9200a"
+  }
+}

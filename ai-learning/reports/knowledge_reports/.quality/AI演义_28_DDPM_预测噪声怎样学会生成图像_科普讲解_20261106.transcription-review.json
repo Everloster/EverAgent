@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "kind": "chapter-transcription-review",
+  "reviewed_on": "2026-11-06",
+  "chapter": 28,
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+  "transcript_source_ref": "sha256:b6ca54584fe78fc99df520ec5bed812f39aa639ad1560821f187e6ef23316f0f",
+  "full_segments_sha256": "f322514ced72235a0ca104635824c66df425c18dbae3d0f4e76fa70d088db61c",
+  "public_full_episode_receipt": "podcast-learning/reports/transcripts/2026-11-04_ai-yanyi-117.audit.json",
+  "read_scope": {
+    "zero_based_start": 6044,
+    "zero_based_end_inclusive": 6160,
+    "segment_count": 117,
+    "start_seconds": 12475.27,
+    "end_seconds": 12736.25,
+    "elapsed_seconds": 260.98,
+    "text_sha256": "b6ca54584fe78fc99df520ec5bed812f39aa639ad1560821f187e6ef23316f0f",
+    "slice_sha256": "13420ed70c965fce25ad2f0be634a016b2e5558de3f2420064b438848fb5aa21",
+    "start_backwards": 0,
+    "end_backwards": 0,
+    "end_before_start": 0,
+    "overlaps": [],
+    "max_gap_seconds": 0.0
+  },
+  "compatible_text_audits": [
+    {
+      "schema_version": 2,
+      "kind": "podcast-transcript-audit",
+      "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "source_ref": "sha256:b6ca54584fe78fc99df520ec5bed812f39aa639ad1560821f187e6ef23316f0f",
+      "max_consecutive_limit": 3,
+      "audit": {
+        "ok": true,
+        "size": 5723,
+        "sha256": "b6ca54584fe78fc99df520ec5bed812f39aa639ad1560821f187e6ef23316f0f",
+        "lines": 117,
+        "segments": 117,
+        "duration_seconds": 12736,
+        "max_consecutive_identical": 1,
+        "timestamp_errors": 0,
+        "malformed_lines": 0,
+        "tail_gap_seconds": 0
+      }
+    }
+  ],
+  "audit_interpretation": "整数秒文本与百分秒结构检查均通过；绝对结束时间不等于片段长260.98秒；不代表听校或WER。",
+  "term_and_claim_checks": [
+    {
+      "issue": "Denoting Possibility Models、去造、智慧归、NASA猴等",
+      "adopted": "按DDPM原文校正论文名、去噪、自回归、Jonathan Ho；无法听校部分不装作已听清。",
+      "basis": "论文首页/§§2–5"
+    },
+    {
+      "issue": "去掉噪声就是下一步、像ResNet所以更好训",
+      "adopted": "预测累计噪声、按时间系数构造反向均值并抽样；Table2显示参数化须与目标配合。",
+      "basis": "Algorithms1–2、式11–14、Table2"
+    },
+    {
+      "issue": "U-Net边缘检测、作者GoogleBrain和加拿大伯克利",
+      "adopted": "U-Net原任务生物医学图像分割；DDPM三作者首页均UCBerkeley；后续商业叙事未核不采用。",
+      "basis": "U-Net摘要、DDPM首页/p9"
+    }
+  ],
+  "audio_listened": false,
+  "wer_measured": false,
+  "limitations": [
+    "公开仅哈希、范围与纠错，不公开私有转写owner或原文。",
+    "零基6161开始转向ViT，未并入DDPM核心范围。"
+  ]
+}

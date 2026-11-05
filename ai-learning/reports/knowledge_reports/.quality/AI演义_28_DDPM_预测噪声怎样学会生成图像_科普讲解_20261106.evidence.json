@@ -1,0 +1,508 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_28_DDPM_预测噪声怎样学会生成图像_科普讲解_20261106.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-06",
+  "generator": {
+    "model": "gpt-6-astra",
+    "harness": "codex",
+    "run_id": "ai-yanyi-ddpm-r1-20261106",
+    "explicit_model_override": false,
+    "override_reason": "",
+    "identity_basis": "eacli session current精确会话confirmed；不冒用父身份为子审稿。"
+  },
+  "task": {
+    "summary": "逐章展开《AI演义》第28节DDPM，沿用花照例子讲透预测噪声、监督来源、训练与采样、参数化与损失消融、网络/评价/成本及历史会合。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "结合固定v2原文、讲义p46、shownotes与117段转写；仅所述范围，不冒称完整听校。"
+      },
+      {
+        "id": "R2",
+        "text": "少数学、单一花照例子，解释噪声监督从何而来、累计噪声、随机训练一步与多步采样、均值和样本区别。"
+      },
+      {
+        "id": "R3",
+        "text": "用真实消融解释参数化与简化目标配合、固定/学习方差；讲明U-Net/残差/注意力和时间条件分工。"
+      },
+      {
+        "id": "R4",
+        "text": "FID与NLL口径、参考集、条件组、重复次数、采样成本精确；涵盖分数匹配、编码、插值和局限。"
+      },
+      {
+        "id": "R5",
+        "text": "原第28节实质优化，标题后首块展开链接；统一两位编号，独立可读，返回/前后导航、思考三问及研究入口更新。"
+      },
+      {
+        "id": "R6",
+        "text": "原文核人物与边界、真实独立内容复核；不绑定工作台页面验收。"
+      }
+    ],
+    "source_coverage_scope": "只审DDPM章节与对应转写；不是整套31章、全节目或所有后续加速方法的重审。"
+  },
+  "sources": [
+    {
+      "id": "PAPER",
+      "kind": "primary",
+      "title": "Denoising Diffusion Probabilistic Models",
+      "locator": "https://arxiv.org/pdf/2006.11239v2",
+      "accessed_on": "2026-11-06",
+      "version": "v2，2020-12-16，25页；首版2020-06-19",
+      "local_owner": "ai-learning/papers/09_ddpm_2020.pdf",
+      "sha256": "aee5e07a802e8dfd2a386374c94fd61d1d056cb7e1e0fec4f28e8120ff5d8505",
+      "read_scope": "pp1–9主文（p9参考文献未逐篇读）、pp14–15附录B/C；Algorithms1–4、Tables1–2、Figures5–8及相关图注。p5原页经eacli图像读取与直接视检；没有逐式复证AppendixA、逐图检阅全部附录样本或运行训练。"
+    },
+    {
+      "id": "METADATA",
+      "kind": "primary",
+      "title": "DDPM官方版本记录",
+      "locator": "https://arxiv.org/abs/2006.11239v2",
+      "accessed_on": "2026-11-06",
+      "response_text_sha256": "4d4acdfaa2379f84149abe44bddf386a77926d81f1a5b121736b97cef30d10cc",
+      "read_scope": "eacli web.read，核三位作者、题名、v1/v2日期；机构回论文首页。"
+    },
+    {
+      "id": "LECTURE",
+      "kind": "local",
+      "title": "《AI演义》讲义第46页",
+      "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "accessed_on": "2026-11-06",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
+      "read_scope": "p46文字与原页视读，噪声预测、ResNet类比、U-Net及人物栏；作者机构等按原论文纠正，不把讲义当现职证明。"
+    },
+    {
+      "id": "PODCAST",
+      "kind": "primary",
+      "title": "《AI演义》DDPM口述片段",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-06",
+      "read_scope": "零基6044–6160共117段，12475.27–12736.25秒；全文读取，止于转入ViT；时间起止单调、无相邻重叠。未听校/测WER。",
+      "transcript_source_ref": "sha256:b6ca54584fe78fc99df520ec5bed812f39aa639ad1560821f187e6ef23316f0f",
+      "transcript_review": "ai-learning/reports/knowledge_reports/.quality/AI演义_28_DDPM_预测噪声怎样学会生成图像_科普讲解_20261106.transcription-review.json"
+    },
+    {
+      "id": "SHOWNOTES",
+      "kind": "primary",
+      "title": "节目Part4的DDPM条目与路线",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-06",
+      "cache_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5",
+      "read_scope": "复用已获取的节目页shownotes，确认DDPM与相邻Diffusion/ViT条目，不将Part4起点当DDPM起点。",
+      "fresh_fetch": false
+    },
+    {
+      "id": "UNET",
+      "kind": "primary",
+      "title": "U-Net: Convolutional Networks for Biomedical Image Segmentation",
+      "locator": "https://arxiv.org/abs/1505.04597",
+      "accessed_on": "2026-11-06",
+      "response_text_sha256": "3cb417a381835035596e8adae9df5dbb6201b4030c7f4d13e55fc0490b48c386",
+      "read_scope": "只读官方题名/摘要，核生物医学图像分割任务及收缩/扩展路径；未读全文或复现。"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "版本、扩散继承与具体选择",
+      "report_anchor": "what-changed",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "METADATA",
+        "LECTURE",
+        "PODCAST"
+      ],
+      "critical": true,
+      "evidence": "pp1–5；v1/v2日期；讲义p46与ASR。不是2020首次提出扩散。"
+    },
+    {
+      "id": "C2",
+      "claim": "训练随机时间步与已知累计噪声监督",
+      "report_anchor": "training-example",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "p2式4、p4Algorithm1、§3.4；可以直接采样任意t，T=1000，单一共享网络。"
+    },
+    {
+      "id": "C3",
+      "claim": "噪声预测利用受扰数据结构而非猜无条件随机数",
+      "report_anchor": "predicting-random-noise",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§3.2、式9–12：噪声目标与x0到xt的累计扰动相联系；条件平均是平方误差目标的统计解释，非逐点恢复保证。"
+    },
+    {
+      "id": "C4",
+      "claim": "原图估计、反向均值与下一状态不同",
+      "report_anchor": "reverse-step",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "Algorithm2与式11，t>1加入新噪声，t=1置z=0；式15为原图估计。"
+    },
+    {
+      "id": "C5",
+      "claim": "简化损失改变噪声程度的相对权重",
+      "report_anchor": "loss-and-ablation",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§3.4式14去掉式12权重；在所用日程下相对降低小t权重，不泛化所有日程。"
+    },
+    {
+      "id": "C6",
+      "claim": "消融不能支持仅换预测对象即成功",
+      "report_anchor": "loss-and-ablation",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "Table2：均值/原目标/固定方差13.22，噪声/原目标/固定13.51，噪声/简化3.17；均值无权重项不稳定，学习方差配置有劣化。"
+    },
+    {
+      "id": "C7",
+      "claim": "U-Net原用途与DDPM组件分工",
+      "report_anchor": "unet",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "UNET",
+        "LECTURE",
+        "PODCAST"
+      ],
+      "critical": true,
+      "evidence": "U-Net摘要为生物医学图像分割；DDPM §4、AppendixB：PixelCNN++/WideResNet、GroupNorm、16x16注意力、正弦时间编码和共享参数。"
+    },
+    {
+      "id": "C8",
+      "claim": "无条件CIFAR10与FID参考集合",
+      "report_anchor": "results",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "Table1和§4.1：IS9.46±0.11、train-reference FID3.17、test-reference5.24；非文本条件实验。"
+    },
+    {
+      "id": "C9",
+      "claim": "条件分组与实验重复次数限制",
+      "report_anchor": "results",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "Table1：StyleGAN2+ADAv1类别条件2.67、无条件3.26；AppendixB p15各训一次、训练中最小FID、50,000样本，±非跨训练证明。"
+    },
+    {
+      "id": "C10",
+      "claim": "样本质量与NLL上界取舍",
+      "report_anchor": "results",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "Table1：L的FID13.51、NLL≤3.70bits/dim；Lsimple FID3.17、NLL≤3.75；不丢≤或改成精确NLL。"
+    },
+    {
+      "id": "C11",
+      "claim": "去噪分数匹配与Langevin-like联系",
+      "report_anchor": "progressive-decoding",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§3.2、§5及AppendixC；score为对数密度梯度，不是判别器画质评分，具体系数/网络与NCSN有差异。"
+    },
+    {
+      "id": "C12",
+      "claim": "渐进编码、自回归联系及非实测压缩器边界",
+      "report_anchor": "progressive-decoding",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§4.3 Algorithms3–4、Figures5–7，理论传输假设；高斯扩散不是逐词生成，粗到细不等于固定语义层。"
+    },
+    {
+      "id": "C13",
+      "claim": "插值和同维隐变量不等于LDM压缩空间",
+      "report_anchor": "progressive-decoding",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§2同维定义与§4.4 Figure8；姿态/发型等可变但眼镜不平滑；AppendixD p15中间链分叉。"
+    },
+    {
+      "id": "C14",
+      "claim": "1000步、批量成本和后续方法界限",
+      "report_anchor": "cost-and-limits",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "PODCAST"
+      ],
+      "critical": true,
+      "evidence": "§4/AppendixB：T1000、TPUv3-8，256张32x32为17秒、128张256x256为300秒；非单张延迟或本地实测；后续十步/潜空间不算原DDPM完成。"
+    },
+    {
+      "id": "C15",
+      "claim": "作者署名与算力支持分开",
+      "report_anchor": "people-and-history",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "METADATA",
+        "LECTURE",
+        "PODCAST"
+      ],
+      "critical": true,
+      "evidence": "首页三位作者均UCBerkeley，p9TFRC提供CloudTPUs；不沿用讲义GoogleBrain作者归属或未核后续公司/榜单。"
+    },
+    {
+      "id": "C16",
+      "claim": "数据偏差与伪造风险不因指标改善消失",
+      "report_anchor": "cost-and-limits",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "p9BroaderImpact；无本地训练或数据审计。"
+    },
+    {
+      "id": "C17",
+      "claim": "shownotes顺序、转写纠错与读者导航",
+      "report_anchor": "sources-and-scope",
+      "support": "direct",
+      "source_ids": [
+        "SHOWNOTES",
+        "PODCAST",
+        "LECTURE"
+      ],
+      "critical": true,
+      "evidence": "Part4DDPM条目及117段转写读完；专名按论文纠错，无听校；前后章节与原节链接。"
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U1",
+      "title": "版本、扩散继承与具体选择",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "METADATA",
+        "LECTURE",
+        "PODCAST"
+      ],
+      "report_anchor": "what-changed"
+    },
+    {
+      "id": "U2",
+      "title": "训练随机时间步与已知累计噪声监督",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "training-example"
+    },
+    {
+      "id": "U3",
+      "title": "噪声预测利用受扰数据结构而非猜无条件随机数",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "predicting-random-noise"
+    },
+    {
+      "id": "U4",
+      "title": "原图估计、反向均值与下一状态不同",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "reverse-step"
+    },
+    {
+      "id": "U5",
+      "title": "简化损失改变噪声程度的相对权重",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "loss-and-ablation"
+    },
+    {
+      "id": "U6",
+      "title": "消融不能支持仅换预测对象即成功",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "loss-and-ablation"
+    },
+    {
+      "id": "U7",
+      "title": "U-Net原用途与DDPM组件分工",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "UNET",
+        "LECTURE",
+        "PODCAST"
+      ],
+      "report_anchor": "unet"
+    },
+    {
+      "id": "U8",
+      "title": "无条件CIFAR10与FID参考集合",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "results"
+    },
+    {
+      "id": "U9",
+      "title": "条件分组与实验重复次数限制",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "results"
+    },
+    {
+      "id": "U10",
+      "title": "样本质量与NLL上界取舍",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "results"
+    },
+    {
+      "id": "U11",
+      "title": "去噪分数匹配与Langevin-like联系",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "progressive-decoding"
+    },
+    {
+      "id": "U12",
+      "title": "渐进编码、自回归联系及非实测压缩器边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "progressive-decoding"
+    },
+    {
+      "id": "U13",
+      "title": "插值和同维隐变量不等于LDM压缩空间",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "progressive-decoding"
+    },
+    {
+      "id": "U14",
+      "title": "1000步、批量成本和后续方法界限",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "PODCAST"
+      ],
+      "report_anchor": "cost-and-limits"
+    },
+    {
+      "id": "U15",
+      "title": "作者署名与算力支持分开",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "METADATA",
+        "LECTURE",
+        "PODCAST"
+      ],
+      "report_anchor": "people-and-history"
+    },
+    {
+      "id": "U16",
+      "title": "数据偏差与伪造风险不因指标改善消失",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "cost-and-limits"
+    },
+    {
+      "id": "U17",
+      "title": "shownotes顺序、转写纠错与读者导航",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "SHOWNOTES",
+        "PODCAST",
+        "LECTURE"
+      ],
+      "report_anchor": "sources-and-scope"
+    },
+    {
+      "id": "U18",
+      "title": "全部数学证明、全附录样本视觉审计、后续创业榜单与加速作品清单",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "PAPER",
+        "PODCAST",
+        "LECTURE"
+      ],
+      "omission_reason": "当前科普任务聚焦方法与发展作用，未逐式重证、逐图审校或核后续商业事实；不把讲义概括补成无来源事实。"
+    }
+  ],
+  "limitations": [
+    "没有训练、采样、时间性能或训练集独立复现；所有数值为固定v2的作者报告。",
+    "花照与第600步仅讲解例子；原文实际图示不包含花卉实验。",
+    "全文读117段转写，未听音/测WER；结构检查不代表专名与事实都准确。",
+    "仅所声明主文/附录范围，未逐式复证或逐篇读前驱；U-Net仅官方摘要核用途。",
+    "未核后续任职、公司、排名和十步加速，不把原DDPM描述成文生图/潜空间/实时产品。"
+  ]
+}

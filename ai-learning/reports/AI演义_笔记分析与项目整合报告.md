@@ -642,17 +642,25 @@ Sports-1M 测试集有 20 万视频。Table 1 中，单帧模型的视频首选�
 
 <a id="paper-ddpm"></a>
 
-### 28. DDPM：已有框架，怎样变成有竞争力的图像生成配方？
+### 28. DDPM：预测噪声，怎么就学会了画图？
 
-2020年的 **Denoising Diffusion Probabilistic Models** 直接承接早期扩散模型，再把重点推进到高质量图像生成。[^ddpm]
+[展开阅读：训练为什么有答案、生成为什么不能只减一次，以及真正有效的配方](knowledge_reports/AI演义_28_DDPM_预测噪声怎样学会生成图像_科普讲解_20261106.md)
 
-它通过噪声预测的参数化、简化训练目标、网络结构和具体训练选择，形成了有效的组合。训练时，可以抽取一个噪声级别，构造对应的带噪样本，让网络预测已知噪声；生成时，则依采样规则多步推进。
+继续看前一节的花照。2015 年已经提出了逐步加噪、再学着反向生成的框架；2020 年的 **Denoising Diffusion Probabilistic Models（DDPM）** 则要把它做成更有竞争力的图像生成方案。本文采用 2020 年 12 月的 v2，不把噪声预测倒填成 2015 年的方法。[^ddpm]
 
-因此，**训练如何形成监督，与生成如何展开过程，不是同一条计算路径**。训练不必为每个样本反向传播整条长生成链，但生成仍可能需要许多次网络计算。
+**训练程序自己弄脏图片，所以知道答案。** 它取一张清楚的图，随机选一个噪声程度，抽取高斯噪声，再按规则混合。网络只看受扰图片和时间步，预测那份已知噪声，程序据此计算误差。原图用于构造样本，不作为额外答案交给网络。
 
-DDPM并不是只因为“换成预测噪声”就自动解决一切。原文的对照显示参数化与目标选择需要合在一起理解；样本质量、似然和采样成本也存在取舍。它的历史作用，是把扩散从一个可表达的建模框架，推进为更有竞争力的图像生成方案，同时把反复计算的成本进一步暴露出来。
+这里不必真的从第一步加噪到第六百步：前向过程允许直接构造任意时间步的状态。因此，一轮训练可以随机学一步；学到的还是同一个网络。预测对象是原图到当前状态的**累计等效噪声**，不是只预测连续链里最后新加的那一点。[^ddpm-training]
 
-这也再次体现可复用部件的重要性：原文的具体网络使用了U-Net及残差、自注意力等设计。新的生成过程并不要求所有网络组件都重新发明。
+**生成时，情况不同。** 从一份新噪声出发，模型反复预测，再用带时间系数、信号缩放和反向方差的规则走下一步。预测噪声、估计原图和抽取下一状态并不是同一操作；除最后一步外，原算法还会加入新的随机噪声。训练能随机选一步，不意味着生成能一口气减干净。
+
+为什么这种预测更有效？不能只归功于“换个答案格式”。Table 2 中，同用原变分目标和固定方差，直接预测反向均值的 FID 是 **13.22**，改为噪声预测是 **13.51**；将噪声预测与简化损失结合，才得到 **3.17**。简化损失改变了各噪声阶段的训练权重，参数化与目标需要一起看。[^ddpm-results]
+
+网络则复用了带时间条件的 U-Net、残差块和自注意力。**U-Net 决定怎样计算预测，扩散决定怎样组织训练与生成**；这两层不要混为一谈。论文还把噪声预测与分数匹配联系起来，并从渐进编码观察先有大结构、再补细节的生成过程。
+
+这些组合让画质指标显著改善，却没有同时解决所有问题：3.17 是无条件 CIFAR-10、以训练集为参考的 FID，换测试集参考为 **5.24**；简化目标的样本指标更好，似然指标却不如原目标。原实验仍用 **1000 步**，不是实时画图方案。[^ddpm-results]
+
+论文三位作者 Jonathan Ho、Ajay Jain、Pieter Abbeel 在首页均署名 UC Berkeley；Google 提供的 TPU 资源支持不等于作者机构。研究的会合也比公司标签更重要：概率过程、学习目标和视觉骨架各贡献一部分，下一章继续追问——**能否不再让每一步都处理整张高分辨率图？**
 
 <a id="paper-ldm"></a>
 
@@ -946,7 +954,7 @@ AI的发展不只是模型名单变长，而是学习对象、可用信息、计
 [^hardware]: Hooker，[The Hardware Lottery](https://arxiv.org/pdf/2009.06489v2)，2020；为解释讲义的硬件彩票视角补充的必要来源，重点为软硬件、研究激励与方法选择的关系。
 [^gan]: Goodfellow et al.，[Generative Adversarial Nets，arXiv 1406.2661v1](https://arxiv.org/pdf/1406.2661v1)，2014-06-10；已读全 9 页。讲义第 44 页、节目 GAN 主段约 03:17:55–03:22:03 及扩散转场中约 03:24:03–03:24:42 的训练比较，见[本节展开与阅读范围](knowledge_reports/AI演义_26_GAN_两个模型怎样在对抗中学会生成_科普讲解_20261106.md#sources-and-scope)。两段转写分别审计，未听校；花卉例子不当作原论文实验。
 [^diffusion15]: Sohl-Dickstein et al.，[Deep Unsupervised Learning using Nonequilibrium Thermodynamics，v8](https://arxiv.org/pdf/1503.03585v8)，首版 2015-03-12，本篇读取的 v8 为 2015-11-18；结合讲义 p45、约 03:22:03–03:27:55 的 185 段转写及 shownotes，见[本节展开](knowledge_reports/AI演义_27_Diffusion2015_逐步加噪怎样学会生成_科普讲解_20261106.md#sources-and-scope)。未听校；时间结构保留 0.04 秒相邻重叠，专名按论文核对。
-[^ddpm]: Ho, Jain & Abbeel，[Denoising Diffusion Probabilistic Models](https://arxiv.org/pdf/2006.11239v2)，2020。
+[^ddpm]: Ho, Jain & Abbeel，[Denoising Diffusion Probabilistic Models](https://arxiv.org/pdf/2006.11239v2)，首版 2020-06-19、本文使用 v2（2020-12-16）。首页作者机构均为 UC Berkeley，p9 致谢 TFRC 的 TPU 支持；讲义 p46、节目约 03:27:55–03:32:16 提供讲解线索，原文与转写范围见[第 28 节展开](knowledge_reports/AI演义_28_DDPM_预测噪声怎样学会生成图像_科普讲解_20261106.md#sources-and-scope)。
 [^ldm]: Rombach et al.，[High-Resolution Image Synthesis with Latent Diffusion Models](https://arxiv.org/pdf/2112.10752v2)，首发2021年，所读修订版2022年；不将修订的文本模型与训练配方全部倒写为首版。
 [^sd14]: [Stable Diffusion v1.4官方模型卡](https://huggingface.co/CompVis/stable-diffusion-v1-4)。本文读取的是2026-11-03的main内容快照，记录了正文哈希但未固定仓库commit；仅支持该模型卡对v1.4的具体陈述，未下载或运行权重。
 [^dit]: Peebles & Xie，[Scalable Diffusion Models with Transformers](https://arxiv.org/pdf/2212.09748v2)，首发2022年，所读修订版2023年。
@@ -958,3 +966,5 @@ AI的发展不只是模型名单变长，而是学习对象、可用信息、计
 [^gan-evaluation]: 原论文 [Table 1、Figure 2](https://arxiv.org/pdf/1406.2661v1#page=6)及 §5；MNIST 为实值版本，± 为均值标准误，MNIST 与 TFD 分别按测试样本和数据折计算。高维 Parzen 估计、样本质量、记忆审计和显式密度是不同问题，不能相互替代。
 [^diffusion15-probability]: 原论文 [§§2.2–2.4，pp5–6](https://arxiv.org/pdf/1503.03585v8#page=5)区分反向分布、路径积分、估计与训练下界；[附录 D，pp17–18](https://arxiv.org/pdf/1503.03585v8#page=17)给出时间步与网络；[Figure 5，p8](https://arxiv.org/pdf/1503.03585v8#page=8)为树皮条件修补，不是花照实验或文字控制。
 [^diffusion15-experiments]: 原论文 [Table 2，p8](https://arxiv.org/pdf/1503.03585v8#page=8)及 p9 的 MNIST 说明。dead leaves 是合成遮挡数据；MNIST 的 Parzen 估计保留原表 bits 单位和 ±，不可与 GAN 原论文的 225 等数值不换口径直接比较。CIFAR-10 去量化更正见 [p7 脚注 3](https://arxiv.org/pdf/1503.03585v8#page=7)。
+[^ddpm-training]: [DDPM v2，§§2–3、Algorithms 1–2、式 4 与式 11–14](https://arxiv.org/pdf/2006.11239v2#page=2)：直接构造任意噪声阶段、累计噪声目标、反向均值与方差、最后一步不另加随机项；§4.3、附录 B/C 分别解释渐进编码、具体网络与分数匹配联系。
+[^ddpm-results]: [DDPM v2，Tables 1–2、§§4.1–4.3](https://arxiv.org/pdf/2006.11239v2#page=5)，三种固定方差配置的 FID 为 13.22／13.51／3.17，训练集参考 3.17 与测试集参考 5.24 分开；简化损失的测试 NLL 上界 ≤3.75 bits/dim，原变分目标 ≤3.70。全部实验 T＝1000，附录 B 说明最终各训一次、取训练过程最低 FID，不能当作跨训练重复均值。
