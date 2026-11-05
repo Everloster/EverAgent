@@ -1,0 +1,469 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_27_Diffusion2015_逐步加噪怎样学会生成_科普讲解_20261106.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-06",
+  "generator": {
+    "model": "gpt-6-astra",
+    "harness": "codex",
+    "run_id": "ai-yanyi-diffusion15-r1-20261106",
+    "explicit_model_override": false,
+    "override_reason": "",
+    "identity_basis": "eacli session current精确会话，confirmed=true；不将父身份用于子审稿。"
+  },
+  "task": {
+    "summary": "第27节2015扩散模型：沿花照解释前向破坏、可学逆过程、概率与计算边界，并回到v8实验和历史路线。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "读取固定v8、讲义p45、shownotes和185段目标ASR；标明未听校、0.04秒重叠和首版/修订版日期。"
+      },
+      {
+        "id": "R2",
+        "text": "用一个贯穿例子解释前向缩放与加噪、小步反向、状态/时间条件、学习目标和新噪声采样；不误称恢复唯一原件。"
+      },
+      {
+        "id": "R3",
+        "text": "区别2015均值/方差学习与后续DDPM配方；区分一步/路径/边缘概率、下界、精确模型采样与真实分布匹配。"
+      },
+      {
+        "id": "R4",
+        "text": "核对步数/架构、条件修补、原始实验、Parzen口径及去量化修订，不制造GAN市场份额、作者当前履历或后续全能叙事。"
+      },
+      {
+        "id": "R5",
+        "text": "主稿27实质改写且标题后首块为展开链接；返回原27、前26 GAN、后28 DDPM和研究入口有效。"
+      },
+      {
+        "id": "R6",
+        "text": "正文中文、两位编号标题、人类独立可读，脚注、三问完整；只做正文与内容独立复核，不要求工作台页面验收。"
+      }
+    ],
+    "source_coverage_scope": "仅主稿27及相应节目片段，不是整集转写或所有章节重新验收。"
+  },
+  "sources": [
+    {
+      "id": "PAPER",
+      "kind": "primary",
+      "title": "Deep Unsupervised Learning using Nonequilibrium Thermodynamics",
+      "locator": "https://arxiv.org/pdf/1503.03585v8",
+      "accessed_on": "2026-11-06",
+      "version": "arXiv v8，2015-11-18，18页；首版2015-03-12",
+      "local_owner": "ai-learning/papers/32_diffusion_original_2015.pdf",
+      "sha256": "17a29449579ceb4fb906f2f3d5643eb22cea54e5975017ff8788ddf73d8b44ad",
+      "read_scope": "正文与附录文字完整读入，重点核§§2–3、Tables1/2、TableApp.1及附录D；参考文献清单读到但未逐篇原文阅读，推导未逐式复算。论文p8原页视读，未逐图视觉核验全部样本。未复现训练或重新审计原始数据。"
+    },
+    {
+      "id": "METADATA",
+      "kind": "primary",
+      "title": "arXiv版本与作者记录",
+      "locator": "https://arxiv.org/abs/1503.03585v8",
+      "accessed_on": "2026-11-06",
+      "read_scope": "eacli web.read的官方页面，核题名、四位作者、v1/v8日期。",
+      "response_text_sha256": "d97379dfa34ebeabd0edb71899f1053e8fffd420abc06f670148ec11d9087bc5"
+    },
+    {
+      "id": "LECTURE",
+      "kind": "local",
+      "title": "《AI演义》讲义第45页",
+      "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "accessed_on": "2026-11-06",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
+      "read_scope": "p45文字层与原页图像；作者后续任职等二手叙述不作当前已核履历。"
+    },
+    {
+      "id": "PODCAST",
+      "kind": "primary",
+      "title": "张小珺商业访谈录117：早期Diffusion片段",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-06",
+      "read_scope": "185段完整读取，零基5859–6043，12123.22–12475.27秒，含转向2020工作的短桥段；未重新听音或测WER。",
+      "transcript_source_ref": "sha256:d0729673ad9a89432f55a3f55e083c15f1cf5677b68d85ec1210fd115e3fed9f",
+      "transcript_review": "ai-learning/reports/knowledge_reports/.quality/AI演义_27_Diffusion2015_逐步加噪怎样学会生成_科普讲解_20261106.transcription-review.json"
+    },
+    {
+      "id": "SHOWNOTES",
+      "kind": "primary",
+      "title": "节目Part4的Diffusion条目",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-06",
+      "read_scope": "复用官方节目缓存，读取Part4及前后路线；不声称重新获取或全节目每段复核。",
+      "cache_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5",
+      "fresh_fetch": false
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "版本、作者、节目花照例子与无监督边界",
+      "report_anchor": "the-original-problem",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "METADATA",
+        "LECTURE",
+        "PODCAST"
+      ],
+      "critical": true,
+      "evidence": "首页；官方v1/v8日期；ASR 12123–12243秒。花照是示意，不是原论文数据集。"
+    },
+    {
+      "id": "C2",
+      "claim": "动机是灵活表达与学习/采样/推断/评价可计算性的取舍，不是只证明画质胜GAN",
+      "report_anchor": "the-original-problem",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "LECTURE",
+        "PODCAST"
+      ],
+      "critical": true,
+      "evidence": "§§1–1.2；傅里叶仅为节目动机类比，并非算法。"
+    },
+    {
+      "id": "C3",
+      "claim": "高斯前向步缩放信号再加规定噪声，马尔可夫条件依赖和无类别标注仍有训练数据",
+      "report_anchor": "forward-process",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "PODCAST"
+      ],
+      "critical": true,
+      "evidence": "§2.1、TableApp.1（p15）；不是纯加噪导致方差无界。"
+    },
+    {
+      "id": "C4",
+      "claim": "小步极限给出简单反向形式；均值与协方差依赖当前状态和时间，整体不必单一高斯",
+      "report_anchor": "why-small-steps",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§2.2；不声称任意大步长的真实逆条件分布均精确高斯。"
+    },
+    {
+      "id": "C5",
+      "claim": "2015学习反向均值/协方差，训练目标是似然变分下界；训练见x0不等于生成偷看x0；高斯前向第二至末步强度也优化，第一步固定",
+      "report_anchor": "what-is-learned",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§2.4式10–15；TableApp.1；图像对角协方差见D.2.1。不将DDPM噪声预测统一配方倒填。 §2.4.1明确优化β₂…T并固定β₁。"
+    },
+    {
+      "id": "C6",
+      "claim": "生成从新噪声按学习的反向链采样；恢复结构不是找回唯一原件，条件去噪另有已知输入",
+      "report_anchor": "sampling-versus-restoration",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "PODCAST"
+      ],
+      "critical": true,
+      "evidence": "§§2.2/2.5与Figure3图区分denoised与generated。"
+    },
+    {
+      "id": "C7",
+      "claim": "网络参数化与扩散过程分层；图像多尺度卷积/密集路径及时间读出，不是千套独立U-Net",
+      "report_anchor": "physics-and-architecture",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "附录D.2.1与FigureD.1 p17–18；§2.2成本函数×步数。"
+    },
+    {
+      "id": "C8",
+      "claim": "图像通常1000步、树皮500、Swiss roll40、二值序列2000；二值序列20位每5位一脉冲",
+      "report_anchor": "physics-and-architecture",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "附录D.1/D.2 p17；合成序列非临床心电；步数是具体配置非定义。"
+    },
+    {
+      "id": "C9",
+      "claim": "一步和指定路径可算不等于边缘概率轻易精确；采样精确于所定义模型不等于真实分布",
+      "report_anchor": "probabilities",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§1.1及§2.3式6–9、§2.4下界与quasi-static特例。"
+    },
+    {
+      "id": "C10",
+      "claim": "树皮中央100×100修补为已知区域下的条件采样，不保证唯一原件或任意文字控制",
+      "report_anchor": "inpainting",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "Figure5 p8、§2.5；一般条件结合受平滑扰动/可解析相乘等条件约束。"
+    },
+    {
+      "id": "C11",
+      "claim": "dead leaves是遮挡圆片数据；同数据对比中Diffusion1.489为对数似然下界K、MCGSM1.244为对数似然，单位bits/pixel",
+      "report_anchor": "experiments-and-limits",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§3.2.1、Tables1–2；扩散值在Table1明确为K，非精确似然、真实落叶照片或画质评分。"
+    },
+    {
+      "id": "C12",
+      "claim": "MNIST317±2.7、GAN325±2.9及训练样本Parzen349±3.3以bits计，是Parzen估计非精确似然",
+      "report_anchor": "experiments-and-limits",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "Table2及§3.2.1；Perfect model实为训练样本估计；不声称显著性，不跨论文直接混用225等异单位数字。"
+    },
+    {
+      "id": "C13",
+      "claim": "v8更正CIFAR8位量化影响，采用均匀噪声去量化后报告，不拼接旧高分",
+      "report_anchor": "experiments-and-limits",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "p7脚注3；作者更正而非本次独立复现发现。"
+    },
+    {
+      "id": "C14",
+      "claim": "GAN/扩散信号不同，共享评价代码不证明机制继承；2015路线与后续DDPM区分",
+      "report_anchor": "historical-position",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "LECTURE",
+        "PODCAST",
+        "SHOWNOTES"
+      ],
+      "critical": true,
+      "evidence": "§1.2、§4及致谢；shownotes Part4；后续履历和五年沉寂不升格为确证事实。"
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U1",
+      "title": "版本、作者、节目花照例子与无监督边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "METADATA",
+        "LECTURE",
+        "PODCAST"
+      ],
+      "report_anchor": "the-original-problem"
+    },
+    {
+      "id": "U2",
+      "title": "动机是灵活表达与学习/采样/推断/评价可计算性的取舍，不是只证明画质胜GAN",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "LECTURE",
+        "PODCAST"
+      ],
+      "report_anchor": "the-original-problem"
+    },
+    {
+      "id": "U3",
+      "title": "高斯前向步缩放信号再加规定噪声，马尔可夫条件依赖和无类别标注仍有训练数据",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "PODCAST"
+      ],
+      "report_anchor": "forward-process"
+    },
+    {
+      "id": "U4",
+      "title": "小步极限给出简单反向形式；均值与协方差依赖当前状态和时间，整体不必单一高斯",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "why-small-steps"
+    },
+    {
+      "id": "U5",
+      "title": "2015学习反向均值/协方差，训练目标是似然变分下界；训练见x0不等于生成偷看x0",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "what-is-learned"
+    },
+    {
+      "id": "U6",
+      "title": "生成从新噪声按学习的反向链采样；恢复结构不是找回唯一原件，条件去噪另有已知输入",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "PODCAST"
+      ],
+      "report_anchor": "sampling-versus-restoration"
+    },
+    {
+      "id": "U7",
+      "title": "网络参数化与扩散过程分层；图像多尺度卷积/密集路径及时间读出，不是千套独立U-Net",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "physics-and-architecture"
+    },
+    {
+      "id": "U8",
+      "title": "图像通常1000步、树皮500、Swiss roll40、二值序列2000；二值序列20位每5位一脉冲",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "physics-and-architecture"
+    },
+    {
+      "id": "U9",
+      "title": "一步和指定路径可算不等于边缘概率轻易精确；采样精确于所定义模型不等于真实分布",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "probabilities"
+    },
+    {
+      "id": "U10",
+      "title": "树皮中央100×100修补为已知区域下的条件采样，不保证唯一原件或任意文字控制",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "inpainting"
+    },
+    {
+      "id": "U11",
+      "title": "dead leaves是遮挡圆片数据；同数据对比Diffusion1.489与MCGSM1.244 bits/pixel是对数似然",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "experiments-and-limits"
+    },
+    {
+      "id": "U12",
+      "title": "MNIST317±2.7、GAN325±2.9及训练样本Parzen349±3.3以bits计，是Parzen估计非精确似然",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "experiments-and-limits"
+    },
+    {
+      "id": "U13",
+      "title": "v8更正CIFAR8位量化影响，采用均匀噪声去量化后报告，不拼接旧高分",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "experiments-and-limits"
+    },
+    {
+      "id": "U14",
+      "title": "GAN/扩散信号不同，共享评价代码不证明机制继承；2015路线与后续DDPM区分",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "LECTURE",
+        "PODCAST",
+        "SHOWNOTES"
+      ],
+      "report_anchor": "historical-position",
+      "shownotes_chapter": "Part 4 / Diffusion: 在GAN的阴影下，悄然成长（2015.03）"
+    },
+    {
+      "id": "U15",
+      "title": "全部数学逐式证明、全样本视觉判读与二手作者完整履历",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "PAPER",
+        "LECTURE",
+        "PODCAST"
+      ],
+      "omission_reason": "科普任务只展开足够理解机制与证据边界的内容；读取附录文字不声称逐式复证，当前任职与私人分工未核不转述成事实。"
+    }
+  ],
+  "limitations": [
+    "无训练/推理复现，表值与图示来自固定v8；没有独立重做数据预处理或统计显著性检验。",
+    "花照与弯线是教学示意；原论文不含花卉生成实验。",
+    "全部转写片段已读但未重新听音/测WER；百分秒检查有一处0.04秒重叠，未改写原始转写。",
+    "论文文字层及重点原图与独立数学证明、全图审校有别；未逐篇读参考文献。",
+    "本篇不审计当代生成产品、作者现职或2015–2020所有研究，不把叙事性阶段称谓当作完备历史统计。"
+  ],
+  "research_artifacts": [
+    {
+      "kind": "source-reading",
+      "source_id": "PAPER",
+      "sha256": "53e6ea37fcf118ac5a8fed0faa8a4813fc499a1262021171afb5e974fa79e69b",
+      "scope": "18页文字层；p8视觉核对。"
+    },
+    {
+      "kind": "tokenplan-read",
+      "source_id": "METADATA",
+      "request_id": "req_7784a7020c70cd5d36193229f89ba038",
+      "capability": "web.read",
+      "provider": "zhipu",
+      "success": true
+    },
+    {
+      "kind": "source-visual-read",
+      "page": "handout-p45",
+      "capability": "vision.image-analysis",
+      "request_id": "req_d1400beb14e3be45b2e04e0c1438353a",
+      "receipt_sha256": "55f37776f95b2d30f7b3f76c6055069bcd5f98952bcb7809d7de477ba965a08f",
+      "rendered_image_sha256": "1d320f7425c40e7dbe51c0b7450a69566ee8f6475dfe925221f7e71bddcde182",
+      "direct_visual_check": true,
+      "not_workbench_acceptance": true
+    },
+    {
+      "kind": "source-visual-read",
+      "page": "paper-p8",
+      "capability": "vision.image-analysis",
+      "request_id": "req_67778203346b07ed59167e1d5009afec",
+      "receipt_sha256": "cabbd12a337f248c5cc7618504e67d3665bd076955674ca625f297430f69c8e5",
+      "rendered_image_sha256": "3faaed5b4f10cc02abf1d427a0f66970b490b138d398b4eddfccaa216e4c56eb",
+      "direct_visual_check": true,
+      "not_workbench_acceptance": true
+    }
+  ]
+}

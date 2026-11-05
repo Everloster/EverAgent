@@ -8,6 +8,7 @@
 | 日期 | 报告 | 领域 |
 |------|------|------|
 | 2026-11-06 | [《AI演义》深读：从关键论文看懂AI的发展路径](../ai-learning/reports/AI演义_笔记分析与项目整合报告.md) | ai-learning |
+| 2026-11-06 | [《AI演义》27｜早期扩散模型：把花弄成噪声，怎么反而学会画花？](../ai-learning/reports/knowledge_reports/AI演义_27_Diffusion2015_逐步加噪怎样学会生成_科普讲解_20261106.md) | ai-learning |
 | 2026-11-06 | [《AI演义》26｜GAN：判真假，怎么就能教模型画图？](../ai-learning/reports/knowledge_reports/AI演义_26_GAN_两个模型怎样在对抗中学会生成_科普讲解_20261106.md) | ai-learning |
 | 2026-11-06 | [《AI演义》25｜CLIP：不重训分类器，为什么写句话就能认图？](../ai-learning/reports/knowledge_reports/AI演义_25_CLIP_图文怎样学会相互匹配_科普讲解_20261105.md) | ai-learning |
 | 2026-11-06 | [《AI演义》24｜ViT：图片切成小块，为什么还能认出整只猫？](../ai-learning/reports/knowledge_reports/AI演义_24_ViT_图像怎样变成Transformer输入_科普讲解_20261105.md) | ai-learning |
@@ -31,13 +32,13 @@
 | 2026-11-05 | [《AI演义》06｜seq2seq 与 Attention：模型怎样翻译一句话？](../ai-learning/reports/knowledge_reports/AI演义_06_seq2seq与Attention_模型怎样翻译一句话_科普讲解_20261105.md) | ai-learning |
 | 2026-11-04 | [《AI演义》05｜Word2Vec：词向量怎样学出来，又知道些什么？](../ai-learning/reports/knowledge_reports/AI演义_05_Word2Vec_词向量怎样学出来_科普讲解_20261104.md) | ai-learning |
 | 2026-11-04 | [《AI演义》04｜蒸馏：大模型学到的本领，小模型怎样接过去？](../ai-learning/reports/knowledge_reports/AI演义_04_知识蒸馏_从教师到学生_科普讲解_20261104.md) | ai-learning |
-| 2026-11-04 | [《AI演义》03｜ResNet：网络更深了，为什么连训练集都学不好？](../ai-learning/reports/knowledge_reports/AI演义_03_ResNet_深层网络如何训练_科普讲解_20261104.md) | ai-learning |
 
-## 🤖 AI Learning（180 篇）
+## 🤖 AI Learning（181 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
 | 2026-11-06 | [《AI演义》深读：从关键论文看懂AI的发展路径](../ai-learning/reports/AI演义_笔记分析与项目整合报告.md) | `ai_history`, `representation_learning`, `transformer`, `pretraining`, `scaling_laws`, `multimodal` |
+| 2026-11-06 | [《AI演义》27｜早期扩散模型：把花弄成噪声，怎么反而学会画花？](../ai-learning/reports/knowledge_reports/AI演义_27_Diffusion2015_逐步加噪怎样学会生成_科普讲解_20261106.md) | `ai_history`, `diffusion`, `generative_models`, `probabilistic_modeling` |
 | 2026-11-06 | [《AI演义》26｜GAN：判真假，怎么就能教模型画图？](../ai-learning/reports/knowledge_reports/AI演义_26_GAN_两个模型怎样在对抗中学会生成_科普讲解_20261106.md) | `ai_history`, `gan`, `generative_models`, `adversarial_training` |
 | 2026-11-06 | [《AI演义》25｜CLIP：不重训分类器，为什么写句话就能认图？](../ai-learning/reports/knowledge_reports/AI演义_25_CLIP_图文怎样学会相互匹配_科普讲解_20261105.md) | `ai_history`, `clip`, `contrastive_learning`, `multimodal`, `zero_shot` |
 | 2026-11-06 | [《AI演义》24｜ViT：图片切成小块，为什么还能认出整只猫？](../ai-learning/reports/knowledge_reports/AI演义_24_ViT_图像怎样变成Transformer输入_科普讲解_20261105.md) | `ai_history`, `vit`, `transformer`, `image_recognition`, `inductive_bias` |

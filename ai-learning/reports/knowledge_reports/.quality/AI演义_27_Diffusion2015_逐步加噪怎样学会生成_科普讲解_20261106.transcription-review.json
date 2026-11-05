@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "kind": "chapter-transcription-review",
+  "reviewed_on": "2026-11-06",
+  "chapter": 27,
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+  "transcript_source_ref": "sha256:d0729673ad9a89432f55a3f55e083c15f1cf5677b68d85ec1210fd115e3fed9f",
+  "full_segments_sha256": "f322514ced72235a0ca104635824c66df425c18dbae3d0f4e76fa70d088db61c",
+  "public_full_episode_receipt": "podcast-learning/reports/transcripts/2026-11-04_ai-yanyi-117.audit.json",
+  "read_scope": {
+    "zero_based_start": 5859,
+    "zero_based_end_inclusive": 6043,
+    "segments": 185,
+    "start_seconds": 12123.22,
+    "end_seconds": 12475.27,
+    "elapsed_seconds": 352.05,
+    "start_backwards": 0,
+    "end_backwards": 0,
+    "end_before_start": 0,
+    "overlaps": [
+      {
+        "previous_global_index": 6021,
+        "global_index": 6022,
+        "overlap_seconds": 0.04
+      }
+    ],
+    "max_gap_seconds": 0.55,
+    "slice_sha256": "5758e54f68975c9d2ae3a529ccc7f09b28c5d4382929cef15762fc96eb049b04",
+    "text_sha256": "d0729673ad9a89432f55a3f55e083c15f1cf5677b68d85ec1210fd115e3fed9f",
+    "segments_match_owner": true
+  },
+  "compatible_text_audits": [
+    {
+      "schema_version": 2,
+      "kind": "podcast-transcript-audit",
+      "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "source_ref": "sha256:d0729673ad9a89432f55a3f55e083c15f1cf5677b68d85ec1210fd115e3fed9f",
+      "max_consecutive_limit": 3,
+      "audit": {
+        "ok": true,
+        "size": 9025,
+        "sha256": "d0729673ad9a89432f55a3f55e083c15f1cf5677b68d85ec1210fd115e3fed9f",
+        "lines": 185,
+        "segments": 185,
+        "duration_seconds": 12475,
+        "max_consecutive_identical": 1,
+        "timestamp_errors": 0,
+        "malformed_lines": 0,
+        "tail_gap_seconds": 0
+      }
+    }
+  ],
+  "audit_interpretation": "原生整数秒文本审计通过，不替代百分秒检查；百分秒起点/终点单调，6021/6022两段存在0.04秒重叠。保留原文并登记；绝对结束位置不是章长352.05秒。",
+  "term_and_claim_checks": [
+    {
+      "issue": "高次分布、连续就意味着可导等转写/口述",
+      "adopted": "统一高斯分布；不把连续性误说成可导性的充分条件；以原文转移公式为准。",
+      "basis": "§§2.1–2.2、TableApp.1"
+    },
+    {
+      "issue": "一千步恢复同一朵花、GAN全面更好和五年无人关注",
+      "adopted": "随机生成与唯一原件分开；原文步数/数据集/指标逐项限定；不把叙事变成完备历史或市场统计。",
+      "basis": "§§2–3及附录D"
+    },
+    {
+      "issue": "Jassica及后续任职/人物履历",
+      "adopted": "姓名与署名机构回论文首页，未核后续履历不采用。",
+      "basis": "论文首页"
+    }
+  ],
+  "audio_listened": false,
+  "wer_measured": false,
+  "limitations": [
+    "不是全节目听校，未重测音频对齐；一个局部0.04秒重叠已显式记录。",
+    "公开仅范围/哈希/纠错，不复制原始转写与设备信息。"
+  ]
+}

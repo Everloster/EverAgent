@@ -622,15 +622,23 @@ Sports-1M 测试集有 20 万视频。Table 1 中，单帧模型的视频首选�
 
 <a id="paper-diffusion-2015"></a>
 
-### 27. 2015年的Diffusion：把困难生成拆成许多较小的逆问题
+### 27. 早期扩散模型：把花弄成噪声，怎么反而学会画花？
 
-另一种想法来自逐步变化的过程：复杂数据可以被一点点扰动，最终接近容易处理的简单分布；反过来，是否可以学习每一步怎样恢复结构？
+> [展开阅读：从一张花照理解小步逆过程、概率目标和生成边界](knowledge_reports/AI演义_27_Diffusion2015_逐步加噪怎样学会生成_科普讲解_20261106.md)
 
-**Deep Unsupervised Learning using Nonequilibrium Thermodynamics** 将前向扩散与学习逆过程结合起来。生成时，从简单分布出发，沿学到的逆向小步逐渐构造样本。[^diffusion15]
+上一节让判别器帮助生成器画花；2015 年的 **Deep Unsupervised Learning using Nonequilibrium Thermodynamics** 换了一条路：先按已知规则逐步破坏真实图片，再学习相反方向的小步变化。重点不是把某张原图的历史倒放，而是让许多简单、可计算的小步骤，合起来表达复杂的数据分布。[^diffusion15]
 
-它重写了问题：不要求一次完成复杂生成，而让模型学习一系列局部变化。恢复的是数据分布中的结构，并不是保证把某张加噪图片的唯一原件找回来。
+前向过程适当缩小信号、加入规定强度的噪声，让花瓣和背景的结构逐渐消失，整体分布接近容易采样的高斯分布。反向过程则由模型根据当前状态与时间步，给出下一小步的均值和协方差。**小步采用简单分布，不等于最终整体分布也简单**：每一步的参数随状态变化，组合起来可以产生复杂结构。反向形式的依据有小步条件，不能任意放大一步后仍认为近似同样准确。
 
-这与GAN是在探索不同的训练组织方式。2015年论文引用并比较GAN，还使用了相关评估代码，但这种接触不证明GAN是扩散机制的直接前因。时间相邻、相互引用和评估工具共享，需要与方法继承分开。
+真实图片和已知扰动提供了可计算的训练依据，目标是优化数据对数似然的变分下界，不需要另训一个真假裁判。高斯实验也优化第二步至末步的前向加噪强度，第一步则固定为较小常数。这里仍然是 2015 年的均值／协方差参数化；后来 DDPM 常用的噪声预测与简化损失，不能整套倒填进来。训练时知道原图，也不表示生成时可以偷看原图。
+
+使用时，从新噪声出发，按学到的反向分布一步步抽样。噪声不是藏着某张花照的密码；模型是在所学分布中构造新样本。条件去噪、补图则额外利用已有观测：论文展示了树皮中央 **100×100 像素**的修补，但补得相容不等于找回那块树皮的唯一原件。
+
+“每一步概率好算”也不能理解成“最终图片的精确概率直接可得”。单步、指定路径与对所有可能路径求和的边缘概率不同；论文用轨迹估计和下界处理后者。按已定义模型精确采样，也不代表模型已精确等于真实数据。图像实验通常用 **1000 步**，树皮用 **500 步**，多步计算仍是实际成本。[^diffusion15-probability]
+
+评价要保留具体口径。v8 的 Table 2 中，dead leaves 合成遮挡图像的扩散结果为对数似然下界 **1.489 bits/pixel**，对照 MCGSM 的对数似然为 **1.244 bits/pixel**；MNIST 则用 Parzen 估计，扩散与 GAN 分别为 **317 ± 2.7、325 ± 2.9 bits**，不是精确似然或统一画质分数。修订版还更正了旧版 CIFAR-10 结果受 8 位量化影响的问题。既不能概括成“早期扩散毫无效果”，也不能据此说它已经全面胜过 GAN。[^diffusion15-experiments]
+
+这条路线把生成难题拆成局部逆问题，却没有消除近似误差、评价与成本。它引用并比较 GAN，也复用了 GAN 的 Parzen 评价代码；工具共享不是扩散机制源自 GAN 的证明。接下来要看的是：已有这套框架，DDPM 究竟作了哪些具体选择，才让图像生成效果进一步改善？
 
 <a id="paper-ddpm"></a>
 
@@ -937,7 +945,7 @@ AI的发展不只是模型名单变长，而是学习对象、可用信息、计
 [^bitter]: Sutton，[The Bitter Lesson](http://www.incompleteideas.net/IncIdeas/BitterLesson.html)，2019-03-13；作为作者的历史归纳与方法论主张，不是本文逐案重做的全史因果审计。
 [^hardware]: Hooker，[The Hardware Lottery](https://arxiv.org/pdf/2009.06489v2)，2020；为解释讲义的硬件彩票视角补充的必要来源，重点为软硬件、研究激励与方法选择的关系。
 [^gan]: Goodfellow et al.，[Generative Adversarial Nets，arXiv 1406.2661v1](https://arxiv.org/pdf/1406.2661v1)，2014-06-10；已读全 9 页。讲义第 44 页、节目 GAN 主段约 03:17:55–03:22:03 及扩散转场中约 03:24:03–03:24:42 的训练比较，见[本节展开与阅读范围](knowledge_reports/AI演义_26_GAN_两个模型怎样在对抗中学会生成_科普讲解_20261106.md#sources-and-scope)。两段转写分别审计，未听校；花卉例子不当作原论文实验。
-[^diffusion15]: Sohl-Dickstein et al.，[Deep Unsupervised Learning using Nonequilibrium Thermodynamics](https://arxiv.org/pdf/1503.03585v8)，2015。
+[^diffusion15]: Sohl-Dickstein et al.，[Deep Unsupervised Learning using Nonequilibrium Thermodynamics，v8](https://arxiv.org/pdf/1503.03585v8)，首版 2015-03-12，本篇读取的 v8 为 2015-11-18；结合讲义 p45、约 03:22:03–03:27:55 的 185 段转写及 shownotes，见[本节展开](knowledge_reports/AI演义_27_Diffusion2015_逐步加噪怎样学会生成_科普讲解_20261106.md#sources-and-scope)。未听校；时间结构保留 0.04 秒相邻重叠，专名按论文核对。
 [^ddpm]: Ho, Jain & Abbeel，[Denoising Diffusion Probabilistic Models](https://arxiv.org/pdf/2006.11239v2)，2020。
 [^ldm]: Rombach et al.，[High-Resolution Image Synthesis with Latent Diffusion Models](https://arxiv.org/pdf/2112.10752v2)，首发2021年，所读修订版2022年；不将修订的文本模型与训练配方全部倒写为首版。
 [^sd14]: [Stable Diffusion v1.4官方模型卡](https://huggingface.co/CompVis/stable-diffusion-v1-4)。本文读取的是2026-11-03的main内容快照，记录了正文哈希但未固定仓库commit；仅支持该模型卡对v1.4的具体陈述，未下载或运行权重。
@@ -948,3 +956,5 @@ AI的发展不只是模型名单变长，而是学习对象、可用信息、计
 [^clip-lecture]: [《AI演义》讲义第48页](../notes/终版：AI演义，36篇论文开启你的探索之旅.pdf#page=48)；[节目CLIP片段](https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c)约03:41:16–03:45:50。夕阳与飞鸟例子来自转写，关键结论按论文核验；本轮未重新听音。
 [^gan-training]: 原论文 [§3、Figure 1 与 Algorithm 1](https://arxiv.org/pdf/1406.2661v1#page=3)说明交替更新、原始与替代目标；[§4](https://arxiv.org/pdf/1406.2661v1#page=4)讨论理想条件，有限参数优化不享有同样保证；[§6](https://arxiv.org/pdf/1406.2661v1#page=7)提醒双方同步与 Helvetica scenario。
 [^gan-evaluation]: 原论文 [Table 1、Figure 2](https://arxiv.org/pdf/1406.2661v1#page=6)及 §5；MNIST 为实值版本，± 为均值标准误，MNIST 与 TFD 分别按测试样本和数据折计算。高维 Parzen 估计、样本质量、记忆审计和显式密度是不同问题，不能相互替代。
+[^diffusion15-probability]: 原论文 [§§2.2–2.4，pp5–6](https://arxiv.org/pdf/1503.03585v8#page=5)区分反向分布、路径积分、估计与训练下界；[附录 D，pp17–18](https://arxiv.org/pdf/1503.03585v8#page=17)给出时间步与网络；[Figure 5，p8](https://arxiv.org/pdf/1503.03585v8#page=8)为树皮条件修补，不是花照实验或文字控制。
+[^diffusion15-experiments]: 原论文 [Table 2，p8](https://arxiv.org/pdf/1503.03585v8#page=8)及 p9 的 MNIST 说明。dead leaves 是合成遮挡数据；MNIST 的 Parzen 估计保留原表 bits 单位和 ±，不可与 GAN 原论文的 225 等数值不换口径直接比较。CIFAR-10 去量化更正见 [p7 脚注 3](https://arxiv.org/pdf/1503.03585v8#page=7)。

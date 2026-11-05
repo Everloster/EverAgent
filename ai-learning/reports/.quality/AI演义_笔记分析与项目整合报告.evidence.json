@@ -6,7 +6,7 @@
   "generator": {
     "model": "gpt-6-astra",
     "harness": "codex",
-    "run_id": "ai-yanyi-gan-main-r31-20261106",
+    "run_id": "ai-yanyi-diffusion15-main-r32-20261106",
     "explicit_model_override": false,
     "override_reason": "",
     "identity_basis": "eacli session current：codex-turn-context，session-bound，confirmed=true；只证明当前生成会话，不证明子会话模型。"
@@ -56,7 +56,7 @@
       },
       {
         "id": "R11",
-        "text": "原第26节实质改写且标题后首块为展开链接；展开返回原26、上25 CLIP、下27早期扩散。讲清来源标签、交替更新与梯度、理想分析与模式崩塌、评价和采样边界；主稿其余科学正文严格继承已发布r30。"
+        "text": "原第27节实质改写且标题后首块有展开链接；展开保留原节、前后章节导航，统一两位编号、人类独立可读；本轮核心为2015扩散把生成分解为小步逆过程，以已知前向扰动训练均值/协方差与变分目标；新噪声生成不是恢复唯一原件，局部/路径/边缘概率分开，保留原实验步数、bits口径与v8去量化更正。。其余科学正文严格继承已发布r31。"
       }
     ],
     "reader_feedback": [
@@ -554,11 +554,12 @@
       "kind": "primary",
       "title": "Deep Unsupervised Learning using Nonequilibrium Thermodynamics",
       "locator": "https://arxiv.org/pdf/1503.03585v8",
-      "accessed_on": "2026-11-03",
-      "version": "arXiv v8，2015-11-18；首发 2015-03-12 沿用身份 owner",
-      "read_scope": "P1–7：首页；§1 的问题与相关工作；§2.1–2.4 的前向、逆向、概率与变分下界；§2.4.1 扩散日程；§2.5–2.6 的条件后验与边界框架；§3 开头及量化修正脚注。P8 的 Figure 5 图注、Tables 1–2 及说明；P9 §3.2.1 的各数据集说明、§4 和致谢。P8 后部的玩具数据/架构实验细节未完整读入，推导未逐式复算。",
-      "research_record": "ai-learning/notes/ai_yanyi_research/phase2/generation.json",
-      "research_source_id": "GEN-S-DIFF15"
+      "accessed_on": "2026-11-06",
+      "version": "arXiv v8，2015-11-18，18页；首版2015-03-12",
+      "local_owner": "ai-learning/papers/32_diffusion_original_2015.pdf",
+      "sha256": "17a29449579ceb4fb906f2f3d5643eb22cea54e5975017ff8788ddf73d8b44ad",
+      "read_scope": "正文与附录文字完整读入，重点核§§2–3、Tables1/2、TableApp.1及附录D；参考文献清单读到但未逐篇原文阅读，推导未逐式复算。论文p8原页视读，未逐图视觉核验全部样本。未复现训练或重新审计原始数据。",
+      "current_chapter_evidence": "ai-learning/reports/knowledge_reports/.quality/AI演义_27_Diffusion2015_逐步加噪怎样学会生成_科普讲解_20261106.evidence.json"
     },
     {
       "id": "S-ddpm",
@@ -814,6 +815,48 @@
       "accessed_on": "2026-11-06",
       "response_text_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5",
       "read_scope": "复用已缓存节目页并全文核读shownotes；Part4的GAN条目位于双流与Diffusion之间，03:08:08是Part4起点，不是GAN起点。"
+    },
+    {
+      "id": "S-diffusion15-metadata",
+      "kind": "primary",
+      "title": "arXiv版本与作者记录",
+      "locator": "https://arxiv.org/abs/1503.03585v8",
+      "accessed_on": "2026-11-06",
+      "read_scope": "eacli web.read的官方页面，核题名、四位作者、v1/v8日期。",
+      "response_text_sha256": "d97379dfa34ebeabd0edb71899f1053e8fffd420abc06f670148ec11d9087bc5",
+      "current_chapter_evidence": "ai-learning/reports/knowledge_reports/.quality/AI演义_27_Diffusion2015_逐步加噪怎样学会生成_科普讲解_20261106.evidence.json"
+    },
+    {
+      "id": "S-diffusion15-lecture",
+      "kind": "local",
+      "title": "《AI演义》讲义第45页",
+      "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "accessed_on": "2026-11-06",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
+      "read_scope": "p45文字层与原页图像；作者后续任职等二手叙述不作当前已核履历。",
+      "current_chapter_evidence": "ai-learning/reports/knowledge_reports/.quality/AI演义_27_Diffusion2015_逐步加噪怎样学会生成_科普讲解_20261106.evidence.json"
+    },
+    {
+      "id": "S-diffusion15-podcast",
+      "kind": "primary",
+      "title": "张小珺商业访谈录117：早期Diffusion片段",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-06",
+      "read_scope": "185段完整读取，零基5859–6043，12123.22–12475.27秒，含转向2020工作的短桥段；未重新听音或测WER。",
+      "transcript_source_ref": "sha256:d0729673ad9a89432f55a3f55e083c15f1cf5677b68d85ec1210fd115e3fed9f",
+      "transcript_review": "ai-learning/reports/knowledge_reports/.quality/AI演义_27_Diffusion2015_逐步加噪怎样学会生成_科普讲解_20261106.transcription-review.json",
+      "current_chapter_evidence": "ai-learning/reports/knowledge_reports/.quality/AI演义_27_Diffusion2015_逐步加噪怎样学会生成_科普讲解_20261106.evidence.json"
+    },
+    {
+      "id": "S-diffusion15-shownotes",
+      "kind": "primary",
+      "title": "节目Part4的Diffusion条目",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-06",
+      "read_scope": "复用官方节目缓存，读取Part4及前后路线；不声称重新获取或全节目每段复核。",
+      "cache_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5",
+      "fresh_fetch": false,
+      "current_chapter_evidence": "ai-learning/reports/knowledge_reports/.quality/AI演义_27_Diffusion2015_逐步加噪怎样学会生成_科普讲解_20261106.evidence.json"
     }
   ],
   "claims": [
@@ -1197,15 +1240,18 @@
     },
     {
       "id": "C-diffusion-2015",
-      "claim": "2015扩散研究以逐步扰动与学习逆过程组织生成，与GAN为不同机制探索，不能把引用或评估代码共享当成方法直接继承。",
+      "claim": "2015扩散把生成分解为小步逆过程，以已知前向扰动训练均值/协方差与变分目标；新噪声生成不是恢复唯一原件，局部/路径/边缘概率分开，保留原实验步数、bits口径与v8去量化更正。",
       "report_anchor": "paper-diffusion-2015",
       "support": "direct",
       "source_ids": [
         "S-diffusion15",
-        "S-gan"
+        "S-diffusion15-metadata",
+        "S-diffusion15-lecture",
+        "S-diffusion15-podcast",
+        "S-diffusion15-shownotes"
       ],
       "critical": true,
-      "evidence": "2015扩散§2定义前向扰动与逆过程，§1.2/§3.2.1及致谢区分方法来源、GAN比较及评估代码共享。"
+      "evidence": "v8正文与重点附录、Tables1/2、TableApp.1、网络细节及脚注3；讲义p45、185段转写与shownotes，按本章明确边界核读；无训练复现。 明确高斯前向β₂…T优化且β₁固定；1.489是Table1的似然下界K，Table2复用。"
     },
     {
       "id": "C-ddpm",
@@ -1935,12 +1981,15 @@
     },
     {
       "id": "U-diffusion-2015",
-      "title": "Deep Unsupervised Learning using Nonequilibrium Thermodynamics",
+      "title": "2015扩散把生成分解为小步逆过程，以已知前向扰动训练均值/协方差与变分目标；新噪声生成不是恢复唯一原件，局部/路径/边缘概率分开，保留原实验步数、bits口径与v8去量化更正。",
       "importance": "core",
       "status": "included",
       "source_ids": [
         "S-diffusion15",
-        "S-gan"
+        "S-diffusion15-metadata",
+        "S-diffusion15-lecture",
+        "S-diffusion15-podcast",
+        "S-diffusion15-shownotes"
       ],
       "report_anchor": "paper-diffusion-2015"
     },
@@ -2123,7 +2172,7 @@
     "essay_articles": 1,
     "note": "论文研究范围按用户最新限定；不是全文逐公式/全图表审计。"
   },
-  "revision_note": "r31：第26节GAN及相应脚注、来源和覆盖增量，其余科学正文严格继承已发布r30。仅进行来源、正文、引用与章节导航检查，无工作台页面验收。",
+  "revision_note": "r32：第27节及其脚注、来源与覆盖增量，其余科学正文严格继承已发布r31。仅原文、正文、引用及章节导航检查，不做工作台页面验收。",
   "generation_history": [
     {
       "revision_round": 2,
