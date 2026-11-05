@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "kind": "chapter-transcription-review",
+  "reviewed_on": "2026-11-05",
+  "chapter": 23,
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+  "transcript_source_ref": "sha256:5b5d91198a0f429abd8e503f8f2a5c0dba2df11366641456833da4c9184d804d",
+  "full_segments_sha256": "f322514ced72235a0ca104635824c66df425c18dbae3d0f4e76fa70d088db61c",
+  "public_full_episode_receipt": "podcast-learning/reports/transcripts/2026-11-04_ai-yanyi-117.audit.json",
+  "read_scope": {
+    "segments_read": 45,
+    "source_indices_zero_based_inclusive": [
+      5719,
+      5763
+    ],
+    "actual_interval_seconds": [
+      11711.9,
+      11874.72
+    ],
+    "span_seconds": 162.82,
+    "segment_artifact_sha256": "fe7d5311359e808bf7e0824b6e59af346417561fc7cb1665714f77eb8c8e9cb9",
+    "text_artifact_sha256": "5b5d91198a0f429abd8e503f8f2a5c0dba2df11366641456833da4c9184d804d",
+    "time_basis": "约03:15:12–03:17:55；精确起点03:15:11.90。下一原节目主题GAN从第5764段开始；不与报告下一节ViT混同。"
+  },
+  "chapter_segment_check": {
+    "same_as_original_slice": true,
+    "segments": 45,
+    "fractional_start_backwards": 0,
+    "fractional_end_backwards": 0,
+    "fractional_end_before_start": 0,
+    "overlap_count": 0,
+    "max_gap_seconds": 0.0,
+    "max_consecutive_identical": 1
+  },
+  "compatible_text_audit": {
+    "schema_version": 2,
+    "kind": "podcast-transcript-audit",
+    "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+    "source_ref": "sha256:5b5d91198a0f429abd8e503f8f2a5c0dba2df11366641456833da4c9184d804d",
+    "max_consecutive_limit": 3,
+    "audit": {
+      "ok": true,
+      "size": 2958,
+      "sha256": "5b5d91198a0f429abd8e503f8f2a5c0dba2df11366641456833da4c9184d804d",
+      "lines": 45,
+      "segments": 45,
+      "duration_seconds": 11874,
+      "max_consecutive_identical": 1,
+      "timestamp_errors": 0,
+      "malformed_lines": 0,
+      "tail_gap_seconds": 0
+    }
+  },
+  "audit_interpretation": "原生整数秒审计通过，duration_seconds=11874是绝对末位置而非章长。另核原JSON百分秒、单调性、区间与相邻衔接；未改原ASR。",
+  "term_and_claim_checks": [
+    {
+      "time_seconds": [
+        11711.9,
+        11752
+      ],
+      "issue": "Karen/Andrej与技术专名误识、此前深度视频方法效果概括",
+      "adopted": "作者按论文首页；研究关系按§1/1.1，避免将体育视频训练转移成双流已用百万视频。",
+      "basis": "原论文首页、§§1/1.1/6/7",
+      "kind": "names_and_scope"
+    },
+    {
+      "time_seconds": [
+        11752,
+        11828
+      ],
+      "issue": "时间流与光流的关系、两帧做减法的影子类比",
+      "adopted": "两路为RGB空间流与光流时间流；光流是位移估计，帧差只表示同位置颜色/亮度变化。",
+      "basis": "原论文§§2–3.1，Figure1/2",
+      "kind": "mechanism"
+    },
+    {
+      "time_seconds": [
+        11828,
+        11858
+      ],
+      "issue": "首次超过最佳手工方法和影响几乎所有视频研究的宽泛评价",
+      "adopted": "按Table4分数据集：UCF88.0对87.9，HMDB59.4仍落后61.1/66.8；广泛历史影响仅作为讲者评价，不冒称全面验证。",
+      "basis": "原论文Table4/§7与讲义p43",
+      "kind": "comparison_scope"
+    },
+    {
+      "time_seconds": [
+        11858,
+        11874.72
+      ],
+      "issue": "后续研究贡献与人物关联",
+      "adopted": "不扩写未独立核定的作者后续履历；保留作者与机构的原论文事实。",
+      "basis": "本轮研究边界",
+      "kind": "author_scope"
+    }
+  ],
+  "audio_listened": false,
+  "wer_measured": false,
+  "limitations": [
+    "文本结构通过不等于语音识别完全准确。",
+    "目标45段完整读过，论文细节由原文补充，不冒称全部由口述展开。",
+    "完整私有转写与本机路径不公开。"
+  ]
+}

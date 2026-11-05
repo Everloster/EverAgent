@@ -8,6 +8,7 @@
 | 日期 | 报告 | 领域 |
 |------|------|------|
 | 2026-11-05 | [《AI演义》深读：从关键论文看懂AI的发展路径](../ai-learning/reports/AI演义_笔记分析与项目整合报告.md) | ai-learning |
+| 2026-11-05 | [《AI演义》23｜双流网络：把运动先算出来，识别动作会更容易吗？](../ai-learning/reports/knowledge_reports/AI演义_23_TwoStream_外观与运动怎样共同识别动作_科普讲解_20261105.md) | ai-learning |
 | 2026-11-05 | [《AI演义》22｜DeepVideo：多看几帧，为什么还不够？](../ai-learning/reports/knowledge_reports/AI演义_22_DeepVideo_模型怎样利用视频时间信息_科普讲解_20261105.md) | ai-learning |
 | 2026-11-05 | [《AI演义》21｜Tülu 3：示范、偏好和验算，怎样一起训练助手？](../ai-learning/reports/knowledge_reports/AI演义_21_Tulu3_后训练配方怎样起作用_科普讲解_20261105.md) | ai-learning |
 | 2026-11-05 | [《AI演义》20｜ReAct：模型怎样边查边想，把任务做下去？](../ai-learning/reports/knowledge_reports/AI演义_20_ReAct_模型怎样边查边想_科普讲解_20261105.md) | ai-learning |
@@ -31,13 +32,13 @@
 | 2026-11-04 | [《AI演义》02｜AlexNet：数据、模型和 GPU 为什么必须合在一起看？](../ai-learning/reports/knowledge_reports/AI演义_02_AlexNet_图像识别突破_科普讲解_20261104.md) | ai-learning |
 | 2026-11-04 | [《AI演义》01｜Brook：GPU 很快，为什么普通程序还不容易用上它？](../ai-learning/reports/knowledge_reports/AI演义_01_Brook_GPU通用计算_科普讲解_20261104.md) | ai-learning |
 | 2026-11-04 | [agent-desktop 深度研究：Agent 怎样可靠地操作桌面](../github-trending-analyzer/reports/research_vercel-labs_agent-desktop.md) | github-trending-analyzer |
-| 2026-11-03 | [无状态的鹦鹉，怎么学会了连续对话和自己用工具？—— Agent 请求全链路科普·完整版](../ai-learning/reports/knowledge_reports/Agent请求全链路_完整版_科普讲解_20261103.md) | ai-learning |
 
-## 🤖 AI Learning（176 篇）
+## 🤖 AI Learning（177 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
 | 2026-11-05 | [《AI演义》深读：从关键论文看懂AI的发展路径](../ai-learning/reports/AI演义_笔记分析与项目整合报告.md) | `ai_history`, `representation_learning`, `transformer`, `pretraining`, `scaling_laws`, `multimodal` |
+| 2026-11-05 | [《AI演义》23｜双流网络：把运动先算出来，识别动作会更容易吗？](../ai-learning/reports/knowledge_reports/AI演义_23_TwoStream_外观与运动怎样共同识别动作_科普讲解_20261105.md) | `ai_history`, `two_stream`, `action_recognition`, `optical_flow`, `multitask_learning` |
 | 2026-11-05 | [《AI演义》22｜DeepVideo：多看几帧，为什么还不够？](../ai-learning/reports/knowledge_reports/AI演义_22_DeepVideo_模型怎样利用视频时间信息_科普讲解_20261105.md) | `ai_history`, `deepvideo`, `video_classification`, `temporal_fusion`, `sports1m`, `transfer_learning` |
 | 2026-11-05 | [《AI演义》21｜Tülu 3：示范、偏好和验算，怎样一起训练助手？](../ai-learning/reports/knowledge_reports/AI演义_21_Tulu3_后训练配方怎样起作用_科普讲解_20261105.md) | `ai_history`, `tulu3`, `post_training`, `sft`, `dpo`, `rlvr` |
 | 2026-11-05 | [《AI演义》20｜ReAct：模型怎样边查边想，把任务做下去？](../ai-learning/reports/knowledge_reports/AI演义_20_ReAct_模型怎样边查边想_科普讲解_20261105.md) | `ai_history`, `react`, `agents`, `tool_use`, `reasoning`, `evaluation` |

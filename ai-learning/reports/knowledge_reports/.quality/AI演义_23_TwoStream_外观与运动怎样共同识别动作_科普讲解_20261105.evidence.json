@@ -1,0 +1,553 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_23_TwoStream_外观与运动怎样共同识别动作_科普讲解_20261105.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-05",
+  "generator": {
+    "model": "gpt-6-astra",
+    "harness": "codex",
+    "run_id": "ai-yanyi-two-stream-20261105",
+    "explicit_model_override": false,
+    "override_reason": "",
+    "identity_basis": "当前协调者 eacli session current：codex-turn-context，session-bound，confirmed=true。子Reviewer身份单独记录，不借父终端配置作子身份。"
+  },
+  "task": {
+    "summary": "第23节双流网络展开：用跳绳场景讲清RGB/光流、训练与数据、消融、融合、实际错误及代价，并同步原报告。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "结合原论文v2、讲义p43、shownotes及完整45段目标转写；区分来源性质与未听校等边界。"
+      },
+      {
+        "id": "R2",
+        "text": "以一个贯穿例子解释两路、光流位移、十组堆叠、均值补偿、预训练及多任务，不把帧差或三路结构当原机制。"
+      },
+      {
+        "id": "R3",
+        "text": "解释数据和评价划分，保留Tables1–4关键结果、反例与Hammering混淆；不泛化为全面击败手工方法。"
+      },
+      {
+        "id": "R4",
+        "text": "说明预处理与存储/训练成本、辅助数据、局部窗口、相机/轨迹限制和待验证追问。"
+      },
+      {
+        "id": "R5",
+        "text": "原报告第23节实质更新、标题下首块为展开链接；展开返回原23、上22、下24，原节目顺序另说清。"
+      },
+      {
+        "id": "R6",
+        "text": "列表沿用《AI演义》两位编号｜题名；正文普通Markdown、独立可读，检查正文排版、引用和上下篇链接。写报告不要求工作台页面验收。"
+      }
+    ],
+    "reader_feedback": [
+      "原章节没有优化、也没有链接展开阅读的啊",
+      "按Brook方式一轮完成一节，持续完成；少数学、人类阅读友好。",
+      "列表命名开头规范一下。"
+    ],
+    "scope_adjustment": {
+      "date": "2026-11-06",
+      "authority": "用户本会话明确纠正",
+      "user_quote": "写个报告为什么会有工作台的页面验收？啥时候的官僚制度啊。。。。好好写好你的 ai 演义啊。。。。。",
+      "requirement_id": "R6",
+      "previous_requirement": "列表沿用《AI演义》两位编号｜题名；正文普通Markdown、独立可读，实际检查工作台桌面/窄屏与目录、表格、脚注、阅读往返。",
+      "change": "取消报告的工作台桌面/窄屏页面验收前置；来源、正文、引用、章节导航与独立内容复核要求不变。",
+      "ui_validation_performed": false,
+      "scientific_content_changed": false
+    }
+  },
+  "sources": [
+    {
+      "id": "PAPER",
+      "kind": "primary",
+      "title": "Two-Stream Convolutional Networks for Action Recognition in Videos",
+      "locator": "https://arxiv.org/pdf/1406.2199v2",
+      "accessed_on": "2026-11-05",
+      "read_scope": "完整11页PDF提取文字，精读摘要、§§1–7、Tables1–4及Figures1–6的图注和相关正文；p8表2–4另经eacli图像读取和本地原图校核，Table3首行实际85.6%，OCR误为83.6%。Figure2/3/4的机制依据定义和图注；未独立逐格判读混淆矩阵。参考文献不代表逐篇精读。",
+      "sha256": "61c5b62c1f9d50c7445fbc35e09e72b6db3aeecfff9525694d54fd67531c1a47",
+      "version": "arXiv:1406.2199v2，2014-11-12，11页"
+    },
+    {
+      "id": "METADATA",
+      "kind": "primary",
+      "title": "arXiv双流论文题名、署名与版本记录",
+      "locator": "https://arxiv.org/abs/1406.2199",
+      "accessed_on": "2026-11-05",
+      "read_scope": "本轮eacli返回的官方页面全文；v1首发2014-06-09，v2为2014-11-12。",
+      "response_sha256": "64aecec5062a88af35cd9ec93e1fb3087f7b654da799cb99b28b80ddd197a34f"
+    },
+    {
+      "id": "LECTURE",
+      "kind": "local",
+      "title": "《AI演义》讲义双流条目",
+      "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "accessed_on": "2026-11-05",
+      "read_scope": "p43文本、eacli读取与原图，另读p41路线文本；未照搬广泛后续影响或作者最新履历。",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0"
+    },
+    {
+      "id": "PODCAST",
+      "kind": "primary",
+      "title": "张小珺商业访谈录117：双流网络片段",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-05",
+      "read_scope": "45段目标ASR完整读取，零基5719–5763，11711.90–11874.72秒；未听音或测WER。",
+      "transcript_review": "ai-learning/reports/knowledge_reports/.quality/AI演义_23_TwoStream_外观与运动怎样共同识别动作_科普讲解_20261105.transcription-review.json",
+      "transcript_source_ref": "sha256:5b5d91198a0f429abd8e503f8f2a5c0dba2df11366641456833da4c9184d804d"
+    },
+    {
+      "id": "SHOWNOTES",
+      "kind": "primary",
+      "title": "节目shownotes多模态路线",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-05",
+      "read_scope": "复用已取得官方节目页缓存，重读Part4双流及前后主题顺序；本轮未重新抓页。",
+      "cache_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5",
+      "fresh_fetch": false
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "双流回应RGB多帧训练难利用运动；以牛津署名为历史条件，不称首个双通路或复现人脑。",
+      "report_anchor": "why-separate-motion",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "METADATA"
+      ],
+      "critical": true,
+      "evidence": "首页、§§1–1.1承认先前HMAX等工作；生物视觉是启发，工程实验不证实神经科学机制。"
+    },
+    {
+      "id": "C2",
+      "claim": "空间流单帧RGB，时间流多帧光流，两路各自分类后融合，输出动作类别；与DeepVideo多分辨率输入不同。",
+      "report_anchor": "two-streams",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§2/Figure1、§5。跳绳为自建教学场景，未称实测神经元或真实视频演示。"
+    },
+    {
+      "id": "C3",
+      "claim": "光流为水平/垂直位移场，不等于RGB相减；包括相机运动，依赖亮度/梯度恒常与平滑假设。",
+      "report_anchor": "what-optical-flow-means",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "PODCAST"
+      ],
+      "critical": true,
+      "evidence": "§1.1/§3.1/Figure2；遮挡/照明是由假设引出的[推测]风险，不给未测数值。"
+    },
+    {
+      "id": "C4",
+      "claim": "10组相邻帧间光流需11个原始帧，形成20通道；减平均向量仅粗略补偿全局运动。",
+      "report_anchor": "stacking-flow",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§3.1公式(1)：k=1..L，每个d_t对应t/t+1；§3.3对滤波器解释。局部运动未自动成为物体真运动。"
+    },
+    {
+      "id": "C5",
+      "claim": "普通堆叠固定位置，轨迹堆叠沿轨迹取值；双向配置前后各L/2，总通道不增加。",
+      "report_anchor": "stacking-flow",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§3.1公式(1)/(2)、Figure3、bi-directional定义。"
+    },
+    {
+      "id": "C6",
+      "claim": "UCF约13K/101类、每split训练9.5K；HMDB6.8K/51类、每split训练3.7K；空间流借用ImageNet。",
+      "report_anchor": "learning-with-limited-data",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§5/§6；不把全部视频数当训练样本数，不把类别限制成全部体育动作。"
+    },
+    {
+      "id": "C7",
+      "claim": "UCF split1空间从头52.3(d=.9)、预训练全调72.8(.9)、只调末层72.7(.5)；末层高dropout59.9是负例。",
+      "report_anchor": "learning-with-limited-data",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "Table1a；比较保留不同超参数条件，未夸大0.1pp或将预训练资源视为免费。"
+    },
+    {
+      "id": "C8",
+      "claim": "多任务时间流共享特征、两个分类头分别计算标签损失；目标split结合完整辅助集，HMDB split1为46.6/49.0/52.8/55.4。",
+      "report_anchor": "learning-with-limited-data",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§4、§6/Table2，加入78个无重合类别是另一个人工筛选方案；未声称隔离数据量/结构贡献。"
+    },
+    {
+      "id": "C9",
+      "claim": "UCF split1从头RGB52.3/11帧Slow56.4；光流L1/5/10为73.9/80.4/81.0；不是等总成本对照。",
+      "report_anchor": "what-the-ablations-show",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "Table1a/b及p7 Slow段落；差4.1/24.6/6.5/0.6pp为十进制定向计算，未混3split。"
+    },
+    {
+      "id": "C10",
+      "claim": "L10减均值79.9→81.0；轨迹80.2、双向81.2，小差无置信区间，复杂方案不必更好。",
+      "report_anchor": "what-the-ablations-show",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "Table1b，与原文qualitative措辞分离，不声称统计显著。"
+    },
+    {
+      "id": "C11",
+      "claim": "测试每视频均匀25位置、各10视角平均，再融合两路；固定输入的最终平均不保留长程排列。",
+      "report_anchor": "prediction-and-fusion",
+      "support": "derived",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§5 Testing；交换律推导只适用于固定局部输入的聚合，不把原始帧序变化称为不变。"
+    },
+    {
+      "id": "C12",
+      "claim": "分数平均或L2归一化拼接后线性SVM；联合FC受过拟合限制；split1平均85.9/多任务86.2/SVM87.0，双向融合85.6不及单向85.9。",
+      "report_anchor": "prediction-and-fusion",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§2/§6 Table3；空间72.7与多任务时间81.5分别有来源；p8原图纠正eacli OCR误读83.6。"
+    },
+    {
+      "id": "C13",
+      "claim": "Table4三split双流88.0/59.4；强IDT87.9/61.1和HMDB66.8，不能称全面胜出；所有行保留指标口径。",
+      "report_anchor": "results-and-mistakes",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "LECTURE",
+        "PODCAST"
+      ],
+      "critical": true,
+      "evidence": "p8原图Table4：IDT85.9/57.2、空间73.0/40.5、时间83.7/54.6、平均融合86.9/58.0、Slow65.4；不与split1混算。"
+    },
+    {
+      "id": "C14",
+      "claim": "87.0% split1模型中Hammering召回最差，空间易混HeadMassage、时间易混BrushingTeeth；人脸/往复运动是作者解释。",
+      "report_anchor": "results-and-mistakes",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§6 pp8–10配套正文，Figures5/6；未独立量化混淆矩阵或声称做因果隔离。"
+    },
+    {
+      "id": "C15",
+      "claim": "论文光流0.06s/帧对并预计算；JPEG缩放压缩从1.5TB到27GB；4Titan一天、3.2倍是特定实现。",
+      "report_anchor": "cost-and-limits",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§5；光流存储非权重，帧对耗时非端到端FPS，压缩非无损。"
+    },
+    {
+      "id": "C16",
+      "claim": "局部窗口与平均限制长程，轨迹输入不等于沿轨迹池化，相机补偿简化，Sports1M规模为后续计划。",
+      "report_anchor": "cost-and-limits",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§§3/5/7；不把论文视频动作分类外推为完整事件理解或视频生成。"
+    },
+    {
+      "id": "C17",
+      "claim": "v1首发2014-06-09与v2 2014-11-12分开；讲义p43，45段162.82s ASR完整读且结构通过，但未听校/测WER。",
+      "report_anchor": "sources-and-scope",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "METADATA",
+        "LECTURE",
+        "PODCAST",
+        "SHOWNOTES"
+      ],
+      "critical": true,
+      "evidence": "元数据、PDF、切片哈希、百分秒检查和原生audit，所有完整ASR仅私有缓存。"
+    },
+    {
+      "id": "C18",
+      "claim": "报告下一节ViT而节目下一话题GAN；后续人物履历与几乎所有视频研究的广泛影响未做全面核查。",
+      "report_anchor": "sources-and-scope",
+      "support": "direct",
+      "source_ids": [
+        "PODCAST",
+        "SHOWNOTES",
+        "LECTURE"
+      ],
+      "critical": false,
+      "evidence": "shownotes Part4顺序、目标ASR末边界；只将广泛影响表述为讲者观点。"
+    },
+    {
+      "id": "C19",
+      "claim": "固定资源比较RGB/光流与相机条件小实验为待验证下一步，没有把方案写成已执行结果。",
+      "report_anchor": "thinking-and-questions",
+      "support": "derived",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": false,
+      "evidence": "由§7的改进方向和§5成本引出；保留[待验证]。"
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U1",
+      "title": "双流回应RGB多帧训练难利用运动；以牛津署名为历史条件，不称首个双通路或复现人脑。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "METADATA"
+      ],
+      "report_anchor": "why-separate-motion"
+    },
+    {
+      "id": "U2",
+      "title": "空间流单帧RGB，时间流多帧光流，两路各自分类后融合，输出动作类别；与DeepVideo多分辨率输入不同。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "two-streams"
+    },
+    {
+      "id": "U3",
+      "title": "光流为水平/垂直位移场，不等于RGB相减；包括相机运动，依赖亮度/梯度恒常与平滑假设。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "PODCAST"
+      ],
+      "report_anchor": "what-optical-flow-means"
+    },
+    {
+      "id": "U4",
+      "title": "10组相邻帧间光流需11个原始帧，形成20通道；减平均向量仅粗略补偿全局运动。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "stacking-flow"
+    },
+    {
+      "id": "U5",
+      "title": "普通堆叠固定位置，轨迹堆叠沿轨迹取值；双向配置前后各L/2，总通道不增加。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "stacking-flow"
+    },
+    {
+      "id": "U6",
+      "title": "UCF约13K/101类、每split训练9.5K；HMDB6.8K/51类、每split训练3.7K；空间流借用ImageNet。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "learning-with-limited-data"
+    },
+    {
+      "id": "U7",
+      "title": "UCF split1空间从头52.3(d=.9)、预训练全调72.8(.9)、只调末层72.7(.5)；末层高dropout59.9是负例。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "learning-with-limited-data"
+    },
+    {
+      "id": "U8",
+      "title": "多任务时间流共享特征、两个分类头分别计算标签损失；目标split结合完整辅助集，HMDB split1为46.6/49.0/52.8/55.4。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "learning-with-limited-data"
+    },
+    {
+      "id": "U9",
+      "title": "UCF split1从头RGB52.3/11帧Slow56.4；光流L1/5/10为73.9/80.4/81.0；不是等总成本对照。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "what-the-ablations-show"
+    },
+    {
+      "id": "U10",
+      "title": "L10减均值79.9→81.0；轨迹80.2、双向81.2，小差无置信区间，复杂方案不必更好。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "what-the-ablations-show"
+    },
+    {
+      "id": "U11",
+      "title": "测试每视频均匀25位置、各10视角平均，再融合两路；固定输入的最终平均不保留长程排列。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "prediction-and-fusion"
+    },
+    {
+      "id": "U12",
+      "title": "分数平均或L2归一化拼接后线性SVM；联合FC受过拟合限制；split1平均85.9/多任务86.2/SVM87.0，双向融合85.6不及单向85.9。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "prediction-and-fusion"
+    },
+    {
+      "id": "U13",
+      "title": "Table4三split双流88.0/59.4；强IDT87.9/61.1和HMDB66.8，不能称全面胜出；所有行保留指标口径。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "LECTURE",
+        "PODCAST"
+      ],
+      "report_anchor": "results-and-mistakes"
+    },
+    {
+      "id": "U14",
+      "title": "87.0% split1模型中Hammering召回最差，空间易混HeadMassage、时间易混BrushingTeeth；人脸/往复运动是作者解释。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "results-and-mistakes"
+    },
+    {
+      "id": "U15",
+      "title": "论文光流0.06s/帧对并预计算；JPEG缩放压缩从1.5TB到27GB；4Titan一天、3.2倍是特定实现。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "cost-and-limits"
+    },
+    {
+      "id": "U16",
+      "title": "局部窗口与平均限制长程，轨迹输入不等于沿轨迹池化，相机补偿简化，Sports1M规模为后续计划。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "cost-and-limits"
+    },
+    {
+      "id": "U17",
+      "title": "v1首发2014-06-09与v2 2014-11-12分开；讲义p43，45段162.82s ASR完整读且结构通过，但未听校/测WER。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "METADATA",
+        "LECTURE",
+        "PODCAST",
+        "SHOWNOTES"
+      ],
+      "report_anchor": "sources-and-scope"
+    },
+    {
+      "id": "U18",
+      "title": "报告下一节ViT而节目下一话题GAN；后续人物履历与几乎所有视频研究的广泛影响未做全面核查。",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "PODCAST",
+        "SHOWNOTES",
+        "LECTURE"
+      ],
+      "report_anchor": "sources-and-scope"
+    },
+    {
+      "id": "U19",
+      "title": "固定资源比较RGB/光流与相机条件小实验为待验证下一步，没有把方案写成已执行结果。",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "thinking-and-questions"
+    }
+  ],
+  "limitations": [
+    "未训练/推理或复现准确率、光流精度与吞吐。",
+    "转写完整目标段已读但未听校/测WER，结构检查不是识别准确率。",
+    "跨方法表值按本文列示转述，未逐篇审计原基线的训练协议或数据集重叠。",
+    "小差值无置信区间；混淆成因为作者观察而非隔离因果。",
+    "光流依赖估计假设与额外资源，短窗分类不等于长视频理解。",
+    "未全面追查作者后续履历或现代视频系统谱系。"
+  ],
+  "research_receipts": {
+    "source_manifest": {
+      "artifact": "source-manifest.json",
+      "sha256": "0c792abfc4c2561d294d10d3af568440096a63df47b9e31f0c7db3347d548e3b"
+    },
+    "calculations": {
+      "artifact": "calculation-check.json",
+      "sha256": "6041d76699828d4d0e786897775c9d8447893baf46f62717985d9bb284b09502"
+    },
+    "transcription_review": {
+      "path": "ai-learning/reports/knowledge_reports/.quality/AI演义_23_TwoStream_外观与运动怎样共同识别动作_科普讲解_20261105.transcription-review.json",
+      "sha256": "5627db91204af36b119e07b42244fb153fed068c3c6cf6b30881e60d67d1d72a"
+    }
+  }
+}

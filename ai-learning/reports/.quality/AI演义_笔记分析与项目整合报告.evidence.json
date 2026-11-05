@@ -6,10 +6,10 @@
   "generator": {
     "model": "gpt-6-astra",
     "harness": "codex",
-    "run_id": "ai-yanyi-main-r25-deepvideo-20261105",
+    "run_id": "ai-yanyi-main-r27-two-stream-provenance-20261105",
     "explicit_model_override": false,
     "override_reason": "",
-    "identity_basis": "本轮 eacli session current 的 codex-thread-state / session-bound confirmed。仅证明协调生成者；子 Reviewer runtime 另核，未借根身份补证。"
+    "identity_basis": "当前协调者 eacli session current：codex-turn-context，session-bound，confirmed=true。子Reviewer身份单独记录，不借父终端配置作子身份。"
   },
   "task": {
     "summary": "用户要求以《AI演义》PDF全量发展路径和必要原论文为基础重写报告。像素级指发展路径细致完整，而非每篇论文穷尽技术细节；少数学，重点是背景、所解问题、机制直觉与发展作用。两段样章获认可后，用户强调历史、范式变迁、人物视角的整体路线串联优先。",
@@ -48,7 +48,7 @@
       },
       {
         "id": "R9",
-        "text": "执行范围匹配的链接/渲染/覆盖检查及旗舰级独立复核；模型评分不替代用户学习反馈。"
+        "text": "执行范围匹配的正文、链接与覆盖检查及旗舰级独立复核；报告不以工作台页面验收为前置，模型评分不替代用户学习反馈。"
       },
       {
         "id": "R10",
@@ -56,7 +56,7 @@
       },
       {
         "id": "R11",
-        "text": "原第22节实质改写且标题后首块为展开阅读；展开返回原22节、上21 Tülu3、下23双流。讲清视频级单帧/多帧比较、三种时间融合、弱标数据、真实收益/退步、成本与迁移；前21节及其余主稿严格继承。"
+        "text": "原第23节实质改写且标题后首块为展开链接；展开返回原23、上22DeepVideo、下24ViT。讲清双流分工、光流与帧差、数据/预训练/多任务、split1与三split成绩、真实失败与成本边界；前22节及其余主稿严格继承。"
       }
     ],
     "reader_feedback": [
@@ -80,7 +80,17 @@
         "date": "2026-11-04",
         "quote": "按照第一个Brook章节的方式（后续轮次要参考前面多轮次），一轮完成一个章节，持续做完，每一轮过程可以持续优化。"
       }
-    ]
+    ],
+    "scope_adjustment": {
+      "date": "2026-11-06",
+      "authority": "用户本会话明确纠正",
+      "user_quote": "写个报告为什么会有工作台的页面验收？啥时候的官僚制度啊。。。。好好写好你的 ai 演义啊。。。。。",
+      "requirement_id": "R9",
+      "previous_requirement": "执行范围匹配的链接/渲染/覆盖检查及旗舰级独立复核；模型评分不替代用户学习反馈。",
+      "change": "取消报告的工作台桌面/窄屏页面验收前置；来源、正文、引用、章节导航与独立内容复核要求不变。",
+      "ui_validation_performed": false,
+      "scientific_content_changed": false
+    }
   },
   "sources": [
     {
@@ -490,11 +500,12 @@
       "kind": "primary",
       "title": "Two-Stream Convolutional Networks for Action Recognition in Videos",
       "locator": "https://arxiv.org/pdf/1406.2199v2",
-      "accessed_on": "2026-11-03",
-      "version": "arXiv:1406.2199v2，2014-11-12；source-map首发日期为2014-06-09，两者分开",
-      "read_scope": "返回正文P1—11；精读§1/1.1对DeepVideo的讨论、§2、§3.1/3.2、§4、§5、§6和Tables 1—4、§7及致谢。§3.3滤波器解释、混淆矩阵与图注仅文本读取，不据此作独立视觉判读。",
+      "accessed_on": "2026-11-05",
+      "version": "arXiv:1406.2199v2，2014-11-12，11页；v1首发2014-06-09独立核实",
+      "read_scope": "完整11页PDF提取文字，精读摘要、§§1–7、Tables1–4及Figures1–6的图注和相关正文；p8表2–4另经eacli图像读取和本地原图校核，Table3首行实际85.6%，OCR误为83.6%。Figure2/3/4的机制依据定义和图注；未独立逐格判读混淆矩阵。参考文献不代表逐篇精读。",
       "research_record": "ai-learning/notes/ai_yanyi_research/phase2/vision_alignment.json",
-      "research_source_id": "VA-S02"
+      "research_source_id": "VA-S02",
+      "sha256": "61c5b62c1f9d50c7445fbc35e09e72b6db3aeecfff9525694d54fd67531c1a47"
     },
     {
       "id": "S-vit",
@@ -608,6 +619,35 @@
         "sha256": "b43f4f8def7905b5a01e9a6ec9924bfec82015690f200b3412b3b2129f01584c"
       },
       "chapter_transcription_review": "ai-learning/reports/knowledge_reports/.quality/AI演义_16_LoRA_少量参数怎样适配新任务_科普讲解_20261105.transcription-review.json"
+    },
+    {
+      "id": "S-two-stream-lecture",
+      "kind": "local",
+      "title": "《AI演义》讲义双流条目",
+      "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "accessed_on": "2026-11-05",
+      "read_scope": "p43文本、eacli读取与原图，另读p41路线文本；未照搬广泛后续影响或作者最新履历。",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0"
+    },
+    {
+      "id": "S-two-stream-podcast",
+      "kind": "primary",
+      "title": "张小珺商业访谈录117：双流网络片段",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-05",
+      "read_scope": "45段目标ASR完整读取，零基5719–5763，11711.90–11874.72秒；未听音或测WER。",
+      "transcript_review": "ai-learning/reports/knowledge_reports/.quality/AI演义_23_TwoStream_外观与运动怎样共同识别动作_科普讲解_20261105.transcription-review.json",
+      "transcript_source_ref": "sha256:5b5d91198a0f429abd8e503f8f2a5c0dba2df11366641456833da4c9184d804d"
+    },
+    {
+      "id": "S-two-stream-shownotes",
+      "kind": "primary",
+      "title": "节目shownotes多模态路线",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-05",
+      "read_scope": "复用已取得官方节目页缓存，重读Part4双流及前后主题顺序；本轮未重新抓页。",
+      "cache_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5",
+      "fresh_fetch": false
     }
   ],
   "claims": [
@@ -927,15 +967,18 @@
     },
     {
       "id": "C-two-stream",
-      "claim": "双流网络将RGB外观与光流运动分开学习再融合，回应视频表示问题，也保留前处理代价和假设。",
+      "claim": "双流将RGB外观与光流运动分别分类再融合；光流非帧差，L10为20通道，预训练/多任务缓解小数据。UCF split1 RGB56.4/光流81.0；三split双流88.0/59.4不能称全面击败强手工方法。局部相似混淆、光流预处理和相机/时序边界保留。",
       "report_anchor": "paper-two-stream",
       "support": "direct",
       "source_ids": [
         "S-two-stream",
-        "S-deepvideo"
+        "S-deepvideo",
+        "S-two-stream-lecture",
+        "S-two-stream-podcast",
+        "S-two-stream-shownotes"
       ],
       "critical": true,
-      "evidence": "Two-Stream§1明确回应DeepVideo，§2–5定义RGB/光流两路与训练，§6–7说明动作识别任务及成本。"
+      "evidence": "v2完整正文、Tables1–4与p8原图；SVM UCF88.0对87.9、HMDB59.4对61.1/66.8；§6末尾Hammering混淆与作者解释；§§5/7前处理及局部/轨迹/相机限制。与讲义p43及45段ASR核对，未听校。"
     },
     {
       "id": "C-vit",
@@ -1651,14 +1694,18 @@
     },
     {
       "id": "U-two-stream",
-      "title": "Two-Stream Convolutional Networks for Action Recognition in Videos",
+      "title": "双流网络：怎样提供运动表示，收益与代价如何比较",
       "importance": "core",
       "status": "included",
       "source_ids": [
         "S-two-stream",
-        "S-deepvideo"
+        "S-deepvideo",
+        "S-two-stream-lecture",
+        "S-two-stream-podcast",
+        "S-two-stream-shownotes"
       ],
-      "report_anchor": "paper-two-stream"
+      "report_anchor": "paper-two-stream",
+      "coverage_note": "原第23节独立说明两路/光流、训练资源、分口径成绩、错误与代价；完整消融、光流变体、融合和成本细节在展开篇。不把链接存在视为原节对所有细节covered。"
     },
     {
       "id": "U-vit",
@@ -1882,7 +1929,7 @@
     "essay_articles": 1,
     "note": "论文研究范围按用户最新限定；不是全文逐公式/全图表审计。"
   },
-  "revision_note": "r25：仅实质改写第22节DeepVideo及deepvideo脚注，更新S-deepvideo/C-deepvideo/U-deepvideo/R11。前21节及其余正文/证据按r24通过快照严格继承；本轮只重新核目标节，不声称重读全部历史来源。",
+  "revision_note": "r27：依据独立复核，仅为第23节补齐讲义p43、目标ASR及shownotes的独立来源和C/U引用；保留旧LoRA节目来源。论文source只承载论文事实，不用混合研究收据替代来源身份。正文与r26一致；其它范围已与r25通过快照核对未变。实际页面检查仍待完成，不宣称全轮完成。",
   "generation_history": [
     {
       "revision_round": 2,
@@ -2043,6 +2090,34 @@
       "revision_round": 24,
       "report_sha256": "4d7ab576dadde83a8ec76979ccd42163f4ae1a1106fa91eb3e413de8ae44820e",
       "evidence_sha256": "c065ba0e74c413d470aee4967489e7dd5267f320e04a432c8bcce1f6deae4261"
+    },
+    {
+      "generator": {
+        "model": "gpt-6-astra",
+        "harness": "codex",
+        "run_id": "ai-yanyi-main-r25-deepvideo-20261105",
+        "explicit_model_override": false,
+        "override_reason": "",
+        "identity_basis": "本轮 eacli session current 的 codex-thread-state / session-bound confirmed。仅证明协调生成者；子 Reviewer runtime 另核，未借根身份补证。"
+      },
+      "scope": "第22节DeepVideo及其余主稿的通过版本，进入第23节增量修订前保留。",
+      "revision_round": 25,
+      "report_sha256": "c57ecaf2c13863df9c670be6b89eed6d2894bf19bcd7469432c59975cf4e1200",
+      "evidence_sha256": "0d6e8053f96d5686cc20d924e559bf3bd2611ca8fb683226475bec0ac20a2cbd"
+    },
+    {
+      "generator": {
+        "model": "gpt-6-astra",
+        "harness": "codex",
+        "run_id": "ai-yanyi-main-r26-two-stream-20261105",
+        "explicit_model_override": false,
+        "override_reason": "",
+        "identity_basis": "当前协调者 eacli session current：codex-turn-context，session-bound，confirmed=true。子Reviewer身份单独记录，不借父终端配置作子身份。"
+      },
+      "scope": "r26第23节正文已独立复核；来源绑定与实际页面检查尚未通过，保留待修记录。",
+      "revision_round": 26,
+      "report_sha256": "65cbea1950306094ef81fa57d8547c0213d3cf4a3a863c17ced0cd00bafd422d",
+      "evidence_sha256": "ef536151573ccbed882fcc1b30c322448b0f3aa543022c8999f2a7875eae6118"
     }
   ]
 }

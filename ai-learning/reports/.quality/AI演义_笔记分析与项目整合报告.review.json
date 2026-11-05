@@ -2,370 +2,528 @@
   "schema_version": 1,
   "report_path": "ai-learning/reports/AI演义_笔记分析与项目整合报告.md",
   "quality_tier": "flagship",
-  "revision_round": 25,
+  "revision_round": 27,
   "reviews": [
     {
       "role": "primary_review",
       "identity": {
-        "runtime_model": "unconfirmed",
-        "explicit_model_override": false,
-        "configuration": "按调度说明继承父配置，未设置模型override；配置不等于运行身份。",
-        "identity_basis": "本任务没有可信child per-run模型证据；run_id为审阅任务标签。",
-        "host_session_current_used_as_child_identity": false,
-        "strong_model_identity_claimed": false
+        "harness": "codex",
+        "model_runtime_confirmation": "unconfirmed",
+        "model_source": "unconfirmed",
+        "basis": "本子Agent的精确模型/会话绑定没有独立runtime证据。共享工作区eacli宿主的配置身份不作为本子会话身份；不虚构用户模型覆盖。"
       },
       "source_first_review": {
-        "source_map_frozen_before_candidate": true,
-        "frozen_map": {
-          "artifact": "primary-source-map.json",
-          "sha256": "b58610ca8899c2538409d97d02d38301b7d50e473d2592adc4439d18548fb9c8"
-        },
-        "source_receipt": {
-          "artifact": "primary-source-receipt.json",
-          "sha256": "9036d2a775de0bd77762c4c392facd161a2025b291e522a66a921ddb789546c6"
-        },
-        "source_stage_check": {
-          "artifact": "primary-stage1-check.json",
-          "sha256": "27a50c13cc3671f5312312bedaa8883ccfdd9e49c8eca5972bcb6bff5fba83d2"
-        },
-        "other_current_reviewer_content_read": false,
-        "source_units_preserved": 17,
-        "original_source_titles_and_importance_unchanged": true
+        "frozen_map_artifact": "primary-source-map.json",
+        "frozen_map_sha256": "412e9c71d1628fd2a07051fb147a22568b04e3b00a9bf5b3c2e971d17d124afa",
+        "created_before_report_read": true,
+        "source_units": 32,
+        "visual_supplement_artifact": "primary-source-visual-supplement.json",
+        "visual_supplement_sha256": "5f9f04f3af2d64f3e5e10badf6f3f6aec9c522c0d3d1fc1e4fbdf61f66aa7458",
+        "all_titles_and_importance_preserved": true
       },
-      "original_materials_read": [
+      "original_materials_read": {
+        "paper": "arXiv1406.2199v2完整11页排版文字、Tables1–4、Figures1–6图注与关联正文；p8原图直接核表2–4。",
+        "paper_pdf_sha256": "61c5b62c1f9d50c7445fbc35e09e72b6db3aeecfff9525694d54fd67531c1a47",
+        "paper_layout_sha256": "bf36fac1eb6669ece25225562f6799adfae79354ad1d91cb0e6d1a68242fc697",
+        "metadata": "官方arXiv题名、署名和v1/v2时间，缓存已核读。",
+        "lecture": "讲义p43抽取文本和同页原图；未重读全部讲义。",
+        "lecture_pdf_sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
+        "podcast": "目标45段ASR完整读，11711.90–11874.72秒；并独立重算小数时间戳连续/顺序，核对原生机器收据。",
+        "asr_slice_sha256": "fe7d5311359e808bf7e0824b6e59af346417561fc7cb1665714f77eb8c8e9cb9",
+        "asr_text_sha256": "5b5d91198a0f429abd8e503f8f2a5c0dba2df11366641456833da4c9184d804d",
+        "shownotes_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5",
+        "shownotes_scope": "节目页全文重读，本章Part4条目与DeepVideo/双流/GAN顺序；未把Part4时间戳当本章起点。"
+      },
+      "verification_receipts": [
         {
-          "source_map_id": "paper",
-          "artifact": "deepvideo-cvpr2014.pdf",
-          "sha256": "662dd2baee30667b3e591b18c71010d1688837e03057f861d38ed832b411499e",
-          "actual_read_scope": "8 页全文的 pdftotext -layout 文本全部读过：Abstract、§1–5、参考文献；引用文献本身未另读。Figures 1–5 与 Tables 1–4 另通过 p3–7 原页渲染独立观察。",
-          "read_mode": "本地 PDF 正文提取 + 本地原页渲染"
+          "artifact": "primary-verification-receipt.json",
+          "sha256": "ccfcb8b3f504180610e72fbec6d874ca2fd2e983efb0cd8957deee70ba6e5b0b"
         },
         {
-          "source_map_id": "lecture_p42",
-          "artifact": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
-          "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
-          "actual_read_scope": "只读 p42 DeepVideo：标题、历史背景、作者框、核心贡献；未读取 p41 或其余讲义页。",
-          "read_mode": "本地 p42 文本 + 独立查看 p42 渲染"
+          "artifact": "source-manifest.json",
+          "sha256": "0c792abfc4c2561d294d10d3af568440096a63df47b9e31f0c7db3347d548e3b"
         },
         {
-          "source_map_id": "shownotes",
-          "artifact": "shownotes.txt",
-          "sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5",
-          "actual_read_scope": "全部 131 行缓存已读；只把 03:08:08 Part 4 的 DeepVideo 列项与相邻双流网络用于本节范围。",
-          "read_mode": "复用官方节目页已有缓存"
+          "artifact": "calculation-check.json",
+          "sha256": "6041d76699828d4d0e786897775c9d8447893baf46f62717985d9bb284b09502"
         },
         {
-          "source_map_id": "asr_deepvideo",
-          "artifact": "deepvideo-asr-segments.json",
-          "sha256": "2b328ccae0da834b86a15aa62e91c81fc6c646f1bfd1d6476646f19466e4d576",
-          "actual_read_scope": "目标切片 248 段完整逐段阅读：零基 5471–5718，11287.99–11711.90 秒；另读 owner 的 5469、5470、5719、5720 四段边界。",
-          "read_mode": "缓存 JSON 全切片 + owner 对等核验 + 精确时间戳审计"
+          "artifact": "primary-main-r27-verification.json",
+          "sha256": "7eb38d48e4deeb606f3c56bf015ad4431c140f5168ed1f8eaffe17bf1ec55236"
         },
         {
-          "source_map_id": "cvf_metadata",
-          "artifact": "cvf-metadata.content.md",
-          "sha256": "698fc06ed9eabdaafa988460b07ec8805c7350e2975e0d082faa24614da86815",
-          "actual_read_scope": "完整 23 行缓存、标题/六位作者/CVPR 2014/pp.1725–1732/摘要/BibTeX；原始 eacli JSON 的结果与元数据也读取。",
-          "read_mode": "复用协调者本轮 eacli web.read 缓存"
+          "artifact": "navigation-receipt.json",
+          "sha256": "086bbaa20ed5124fd76bc46f391785de639cf3883569ad4d4b77aebd14b5c35b"
         },
         {
-          "source_map_id": "author_project",
-          "artifact": "author-project.content.md",
-          "sha256": "1cc393b3259ade4b6ad32a8819993623c849a7d92b02a74e23bb155ebf517d08",
-          "actual_read_scope": "完整 38 行缓存：Abstract、Sports-1M Dataset、发布 URL 数与自动标签、示例 JSON、数据存储建议、Supplemental Material 列项；未播放示例视频、未下载数据集或补充包。",
-          "read_mode": "复用协调者本轮 eacli web.read 缓存"
+          "artifact": "primary-main-r27-content-assessment.json",
+          "sha256": "e63e652c86bbc3b642af4c60c9801c10a30dbde2e515fa790f74da4d6e427116"
         }
       ],
-      "verification_receipts": {
-        "static": {
-          "artifact": "primary-stage2-static-check.json",
-          "sha256": "4458d0d48493a302a2478b8d26045dbad5872cedf5e4c5ffd22245737c540d6a"
-        },
-        "ui": {
-          "artifact": "primary-ui-review-receipt.json",
-          "sha256": "0e835b8c4dd9a0b9f3eda707b3e8165c0128ba7e55b09aeea964c1549b7ee587"
-        },
-        "transcript_audit": {
-          "artifact": "primary-transcript-audit.json",
-          "sha256": "00e8c35174a2668a7d617099eeb782c85c92f7a05123ffbc6a09cb3d0666259a"
-        },
-        "exact_asr_audit": {
-          "artifact": "primary-asr-exact-audit.json",
-          "sha256": "566f38ae89efc58357ebf331949d4a11d46833f6f28ee4cbec2378db1f583026"
-        },
-        "pdf_extraction": {
-          "artifact": "primary-pdf-extraction-check.json",
-          "sha256": "ea112f7d8d020e630fd68478569319653b3445435bd04abe7ee64a6453b73fdb"
-        },
-        "post_review_native_check_receipt": "primary-stage2-review-receipt.json"
-      },
       "ui_scope": {
-        "own_visual_observation": "本人独立查看六张1440/390截图：主稿和展开仅首屏，标题列表为完整可见列表。所见无乱码、重叠或截断，导航自然换行。",
-        "interaction_evidence": "协调者navigation-receipt.json的同快照DOM与实际点击收据支持展开/返回/上下节、目录、脚注与表格横滚；本人未亲自点击或声称逐屏查看全文。",
-        "list_naming": "22个编号分节统一《AI演义》两位序号｜主题：问题；无编号总导读不属于编号分节。",
-        "navigation_receipt": {
+        "status": "not_completed",
+        "scope_checked_by_reviewer": "正文源码的阅读、路径/明确锚点、脚注定义与编号、无details/summary折叠；未操作工作台页面。",
+        "coordinator_report": "已读取协调者失败收据：blocked_browser_api，实际页面检查未完成。尚无成功视觉或点击证据；本Reviewer没有亲自操作或复现浏览器故障。",
+        "desktop_checked": false,
+        "narrow_screen_checked": false,
+        "toc_click_checked": false,
+        "footnote_roundtrip_checked": false,
+        "report_navigation_click_checked": false,
+        "screenshots_received": false,
+        "static_checks_do_not_establish_ui_pass": true,
+        "failure_receipt": {
           "artifact": "navigation-receipt.json",
-          "sha256": "7226a7c832f7c0880ab10e27b035b2b90e65e5fc018906cc82d7e0b718fa744c"
+          "sha256": "086bbaa20ed5124fd76bc46f391785de639cf3883569ad4d4b77aebd14b5c35b"
         }
       },
       "review_limits": [
-        "未听音、未测WER；ASR结构审计不能证明逐字准确。",
-        "未训练或重跑论文实验；实验数字为逐表核对的作者报告。",
-        "讲义本人只读p42；没有重读p41或其余讲义页。",
-        "网页使用已明确绑定的缓存；未播放补充视频/GIF或下载数据集。",
-        "未经可信child per-run证据确认具体模型身份。"
+        "没有听音或测量WER；结构审计不等于识别文本完全准确。",
+        "没有重训、推理或测量光流精度/速度；差值仅从论文表值计算。",
+        "未逐格查看混淆矩阵或直接查看其他论文图像；数字与图像解释限于实际读取范围。",
+        "未核查所有前驱/后继论文和作者后续履历。",
+        "尚未完成实际工作台桌面/窄屏、目录、脚注与导航点击检查。"
       ],
       "unsupported_claims": [],
-      "missing_requirements": [],
       "hard_failures": [],
-      "frozen_at": "2026-11-05T07:27:11.954686+00:00",
+      "frozen_at": "2026-11-05T08:58:35.901902+00:00",
       "reviewer": {
         "model": "unconfirmed",
         "harness": "codex",
-        "run_id": "deepvideo-primary-20261105-main-r25",
+        "run_id": "two-stream-primary-main-r27-20261105",
         "independent_context": true,
         "explicit_model_override": false
       },
       "snapshot_binding": {
         "report_path": "ai-learning/reports/AI演义_笔记分析与项目整合报告.md",
-        "report_sha256": "ed1ff5fae7ff98c7b9882149e8d8063b8c260d1d8e0c498e5ee153c8bebedb1a",
+        "report_sha256": "65cbea1950306094ef81fa57d8547c0213d3cf4a3a863c17ced0cd00bafd422d",
         "evidence_path": "ai-learning/reports/.quality/AI演义_笔记分析与项目整合报告.evidence.json",
-        "evidence_sha256": "0d6e8053f96d5686cc20d924e559bf3bd2611ca8fb683226475bec0ac20a2cbd",
+        "evidence_sha256": "cea69f31e345532f1a927a163640760ee0c17fec9a44b08a090ab07c13a7d475",
         "quality_tier": "flagship",
-        "revision_round": 25,
-        "review_prompt": {
-          "artifact": "main-review-prompt.txt",
-          "sha256": "770a835d0f60dfbdff64043436af9ff734b3dfa6089ad9ff4377f68af5e8d3d4"
+        "revision_round": 27,
+        "prompt": {
+          "artifact": "main-r27-review-prompt.md",
+          "sha256": "00348adae6952b50b8efd14c03d2826f0ceeb3b0c8bd543e06ba53d8d732f944"
         }
       },
       "source_content_map": [
         {
-          "id": "PR01",
-          "title": "研究目标与三个约束：大规模视频分类需要数据、时间建模和可承受的计算",
+          "id": "P00",
+          "title": "论文身份与版本",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S-two-stream"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-two-stream"
+          ],
+          "notes": "原节首段写两位作者与牛津；two-stream脚注明确首发与v2日期，身份与版本均有对应。"
+        },
+        {
+          "id": "P01",
+          "title": "问题：有多帧不等于学会运动",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
-            "S-deepvideo",
-            "S-lecture",
-            "S-ai-yanyi-episode"
+            "S-two-stream"
           ],
           "matched_coverage_unit_ids": [
-            "U-deepvideo"
+            "U-deepvideo",
+            "U-two-stream"
           ],
-          "notes": "正文以跳绳示意引出时间变化，并独立说明大规模数据、时间连接和计算成本三个问题；明确为视频类别预测，没有声称首次开展视频深度学习。"
+          "notes": "相邻第22节及本节继续以跳绳连接RGB多帧的运动利用问题，56.4%与81.0%的局部对照在原节内给出；未外推为RGB永远学不会运动。"
         },
         {
-          "id": "PR02",
-          "title": "Sports-1M 的规模、自动弱标签与评估数据边界",
-          "importance": "core",
-          "assessment": "partial",
-          "source_ids": [
-            "S-deepvideo",
-            "S-lecture",
-            "S-ai-yanyi-episode"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-deepvideo"
-          ],
-          "notes": "原节写出100万、487类、文本自动标签以及视频错标和片段无关两层噪声。未列70/10/20划分、5%多标签、平均时长、1,755条近重复及项目页URL数；这些展开篇细节不计为主稿覆盖。"
-        },
-        {
-          "id": "PR03",
-          "title": "从长视频到局部片段再到视频预测；单帧基线的真实含义",
+          "id": "P02",
+          "title": "双流全流程与互补信息",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
-            "S-deepvideo",
-            "S-ai-yanyi-episode"
+            "S-two-stream"
           ],
           "matched_coverage_unit_ids": [
-            "U-deepvideo"
+            "U-two-stream"
           ],
-          "notes": "原节直接解释20个片段各做4次裁剪/翻转、视频级平均与单次只输入一帧的区别，并说明平均不保留整段顺序。该单元的核心评测含义已可独立理解；训练采样上限及Clip/Hit@5数值未在原节展开。"
+          "notes": "原节自己写清RGB外观流、光流时间流、分别输出动作类别分数再融合；没有三流或神经科学实证误称。"
         },
         {
-          "id": "PR04",
-          "title": "Early Fusion：第一层直接在短时间窗内比较像素",
+          "id": "P03",
+          "title": "空间流与图像预训练",
           "importance": "core",
           "assessment": "partial",
           "source_ids": [
-            "S-deepvideo"
+            "S-two-stream"
           ],
           "matched_coverage_unit_ids": [
-            "U-deepvideo"
+            "U-two-stream"
           ],
-          "notes": "原节说明第一层合看10帧并给出Early的57.7%结果；未展开11×11×3×10滤波器、约三分之一秒与方向/速度检测示意。"
+          "notes": "写出空间流借ImageNet预训练；未说明最终固定预训练网络、只训最后分类层及相应对照结果。"
         },
         {
-          "id": "PR05",
-          "title": "Late Fusion：两个共享参数的帧网络在高层相遇",
+          "id": "P04",
+          "title": "光流是什么",
           "importance": "core",
           "assessment": "partial",
           "source_ids": [
-            "S-deepvideo"
+            "S-two-stream",
+            "S-two-stream-podcast"
           ],
           "matched_coverage_unit_ids": [
-            "U-deepvideo"
+            "U-two-stream"
           ],
-          "notes": "原节说明相隔15帧的两图先分别处理再合并；未交代两塔共享参数、首个全连接层合并及Late的单独结果。"
+          "notes": "用小箭头解释水平/垂直位移，明确区别于像素相减，也提到相机运动；没有展开Brox算法及亮度/梯度恒定和平滑假设。"
         },
         {
-          "id": "PR06",
-          "title": "Slow Fusion：逐层扩大时间感受范围",
+          "id": "P05",
+          "title": "固定位置的光流堆叠",
           "importance": "core",
           "assessment": "partial",
           "source_ids": [
-            "S-deepvideo",
-            "S-lecture"
+            "S-two-stream"
           ],
           "matched_coverage_unit_ids": [
-            "U-deepvideo"
+            "U-two-stream"
           ],
-          "notes": "原节解释相邻帧信息逐层汇合，但未展开4/2/2时间窗口、步长2及10→4→2→1的时间位置变化。"
+          "notes": "原节写10组光流、20通道和局部时间变化；未展开固定坐标逐通道取值、11张原始帧及224×224输入裁剪。"
         },
         {
-          "id": "PR07",
-          "title": "多分辨率架构：低分辨率全局与高分辨率中心各取所需",
+          "id": "P06",
+          "title": "轨迹堆叠备选",
+          "importance": "core",
+          "assessment": "missing",
+          "source_ids": [
+            "S-two-stream"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "原第23节没有说明轨迹堆叠备选；不把展开篇的说明计为原节覆盖。"
+        },
+        {
+          "id": "P07",
+          "title": "双向光流备选",
+          "importance": "core",
+          "assessment": "missing",
+          "source_ids": [
+            "S-two-stream"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "原第23节没有双向光流配置及单路/融合相反收益的比较。"
+        },
+        {
+          "id": "P08",
+          "title": "均值光流消减",
           "importance": "core",
           "assessment": "partial",
           "source_ids": [
-            "S-deepvideo"
+            "S-two-stream"
           ],
           "matched_coverage_unit_ids": [
-            "U-deepvideo"
+            "U-two-stream"
           ],
-          "notes": "原节保留低清全景与清晰中心两路以及本实现2–4倍训练提速。未给178→89的尺寸、两组具体吞吐、支路消融、Figure 3滤波器观察及中心偏置；不把展开篇这些说明算入原节。"
+          "notes": "原节指出减去平均位移只能做简单相机补偿；没有解释每个场减平均向量的操作及实验增益。"
         },
         {
-          "id": "PR08",
-          "title": "Sports-1M 主结果必须保留统计单位、基线和集成口径",
+          "id": "P09",
+          "title": "为何能连接手工表示",
           "importance": "core",
           "assessment": "partial",
           "source_ids": [
-            "S-deepvideo",
-            "S-lecture",
-            "S-ai-yanyi-episode"
+            "S-two-stream"
           ],
           "matched_coverage_unit_ids": [
-            "U-deepvideo"
+            "U-two-stream"
           ],
-          "notes": "原节保留20万测试视频、Single 59.3、Slow 60.9、Early 57.7、+1.6个百分点及四模型集成63.9的独立口径。未列人工特征55.3、Late行、Clip/Hit@5与完整基线采样差别；没有添加显著性结论。"
+          "notes": "原节讨论先提供运动结构、由网络学习动作的分工；没有HOF/MBH/光流导数及可学习表示如何连接手工描述子的细化。"
         },
         {
-          "id": "PR09",
-          "title": "运动信息有帮助的真例、失败反例与镜头运动假说",
+          "id": "P10",
+          "title": "第一层滤波器的可视化",
+          "importance": "supporting",
+          "assessment": "missing",
+          "source_ids": [
+            "S-two-stream"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "原节未介绍第一层滤波器可视化和空间/时间导数；这是支持性细节省略。"
+        },
+        {
+          "id": "P11",
+          "title": "多任务学习的机制",
           "importance": "core",
           "assessment": "partial",
           "source_ids": [
-            "S-deepvideo"
+            "S-two-stream"
           ],
           "matched_coverage_unit_ids": [
-            "U-deepvideo"
+            "U-two-stream"
           ],
-          "notes": "原节直接保留抛接棒杂耍AP +0.12与短道赛车−0.07的正反结果，区分AP和视频命中率，并将相机运动解释限定为未做控制实验的假说。未复述Figure 5真实误分类排序及其余案例。"
+          "notes": "原节写共享特征、保留UCF/HMDB两头的多任务办法；没有标签交集动机、每个头只对本数据集计算损失及辅助完整数据的细节。"
         },
         {
-          "id": "PR10",
-          "title": "UCF-101 迁移：大数据学来的特征如何适配小数据",
+          "id": "P12",
+          "title": "网络与训练口径",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "S-two-stream"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-two-stream"
+          ],
+          "notes": "原节只交代两路卷积网络与空间预训练；CNN-M、优化器、裁剪和dropout等实现细节未展开。"
+        },
+        {
+          "id": "P13",
+          "title": "测试阶段的视频分数",
           "importance": "core",
           "assessment": "partial",
           "source_ids": [
-            "S-deepvideo"
+            "S-two-stream"
           ],
           "matched_coverage_unit_ids": [
-            "U-deepvideo"
+            "U-two-stream"
           ],
-          "notes": "原节明确Sports-1M→UCF-101、顶部三层65.4%、从头训练41.3%及三折准确率。未定义顶三层具体组成，未列目标集规模、50片段或顶层/全层其余对照行。"
+          "notes": "原节说明对多个位置类别分数平均及其长程顺序限制；没有25个时间位置、各10视角或两次聚合的详细区别。"
         },
         {
-          "id": "PR11",
-          "title": "迁移的细分组结果与跨数据集重叠限制",
+          "id": "P14",
+          "title": "光流工程代价",
           "importance": "core",
           "assessment": "partial",
           "source_ids": [
-            "S-deepvideo"
+            "S-two-stream"
           ],
           "matched_coverage_unit_ids": [
-            "U-deepvideo"
+            "U-two-stream"
           ],
-          "notes": "原节保留跨数据集重叠风险未排除；未写Table 4乐器/体育等分组mAP，因此不能视为已解释非体育迁移的细分结果。"
+          "notes": "原节写光流须预计算和存储、额外成本不能忽略；未给0.06秒、1.5TB→27GB及4Titan训练数字。"
         },
         {
-          "id": "PR12",
-          "title": "原始资料冲突：ImageNet 预训练说法与 UCF 摘要数字",
+          "id": "P15",
+          "title": "数据集和评估协议",
+          "importance": "core",
+          "assessment": "partial",
+          "source_ids": [
+            "S-two-stream"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-two-stream"
+          ],
+          "notes": "单拆分与三拆分平均准确率明确分开；没有数据集全量/训练规模、类别数量与平均帧数。"
+        },
+        {
+          "id": "P16",
+          "title": "空间流消融",
+          "importance": "core",
+          "assessment": "partial",
+          "source_ids": [
+            "S-two-stream"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-two-stream"
+          ],
+          "notes": "原节只保留ImageNet预训练的价值，没有空间流Table1a结果和高dropout反例。"
+        },
+        {
+          "id": "P17",
+          "title": "时间流输入消融",
+          "importance": "core",
+          "assessment": "partial",
+          "source_ids": [
+            "S-two-stream"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-two-stream"
+          ],
+          "notes": "原节只用主要十组光流81.0%的结果，未列L1/L5、均值消减、轨迹和双向完整消融。"
+        },
+        {
+          "id": "P18",
+          "title": "与原始 RGB 帧堆叠的控制比较",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
-            "S-deepvideo",
-            "S-lecture",
-            "S-ai-yanyi-episode"
+            "S-two-stream"
           ],
           "matched_coverage_unit_ids": [
-            "U-deepvideo"
+            "U-two-stream"
           ],
-          "notes": "正文明确讲义ImageNet说法不等于论文已交代该初始化，保留Sports→UCF实证链；同一节脚注写出摘要63.3与Table 3的65.4差异，没有虚构成因。"
+          "notes": "原节明确UCF split1、从头训练11帧Slow Fusion为56.4%、十组光流为81.0%，并保留额外算法成本；没有与三拆分65.4混算。单帧52.3的支持性起点未重复。"
         },
         {
-          "id": "PR13",
-          "title": "播客把视频融合引向跨模态融合讨论时的概念边界",
+          "id": "P19",
+          "title": "多任务实验",
           "importance": "core",
           "assessment": "partial",
           "source_ids": [
-            "S-ai-yanyi-episode",
-            "S-deepvideo"
+            "S-two-stream"
           ],
           "matched_coverage_unit_ids": [
-            "U-deepvideo"
+            "U-two-stream"
           ],
-          "notes": "原节明确融合发生于同一视频的不同时间帧，实验不含文字/声音/画面对齐。未展开播客中何时让跨模态信息相遇的类比或早晚融合旁论；没有把旁论包装成论文实验。"
+          "notes": "多任务学习机制有简介，但HMDB的46.6/49.0/52.8/55.4及UCF81.5等实验和辅助集使用口径未在原节展开。"
         },
         {
-          "id": "PR14",
-          "title": "视频帧冗余与计算成本：保留直觉，校准口头绝对说法",
-          "importance": "supporting",
-          "assessment": "missing",
+          "id": "P20",
+          "title": "融合方法与失败尝试",
+          "importance": "core",
+          "assessment": "partial",
           "source_ids": [
-            "S-ai-yanyi-episode",
-            "S-deepvideo"
+            "S-two-stream"
           ],
-          "matched_coverage_unit_ids": [],
-          "notes": "原节没有具体展开帧冗余直觉或校准24帧/秒口头说法；也没有重复该过宽说法。这是支持性讲解省略，不以一般成本段落或展开链接代替覆盖。"
+          "matched_coverage_unit_ids": [
+            "U-two-stream"
+          ],
+          "notes": "原节称融合动作分数并报告正式SVM结果；没有L2归一化、Table3融合消融或联合全连接层过拟合失败。"
         },
         {
-          "id": "PR15",
-          "title": "训练和实现事实：真实大规模实验而非已复现结果",
-          "importance": "supporting",
-          "assessment": "missing",
+          "id": "P21",
+          "title": "正式成绩与手工表示的边界",
+          "importance": "core",
+          "assessment": "partial",
           "source_ids": [
-            "S-deepvideo"
+            "S-two-stream",
+            "S-two-stream-lecture",
+            "S-two-stream-podcast"
           ],
-          "matched_coverage_unit_ids": [],
-          "notes": "原节没有Downpour、训练副本/分区、优化器参数、月级训练或样本次数细节。该支持性实现单元未覆盖；不冒称本轮重训或复现。"
+          "matched_coverage_unit_ids": [
+            "U-two-stream"
+          ],
+          "notes": "原节保留两数据集最关键的88.0/59.4与87.9/61.1/66.8边界，结论正确；未列基本IDT、两单流和平均融合的完整Table4行。"
         },
         {
-          "id": "PR16",
-          "title": "可解释的细粒度分类错误与仍未解决的问题",
-          "importance": "supporting",
-          "assessment": "missing",
+          "id": "P22",
+          "title": "真实失败类别",
+          "importance": "core",
+          "assessment": "covered",
           "source_ids": [
-            "S-deepvideo"
+            "S-two-stream"
           ],
-          "matched_coverage_unit_ids": [],
-          "notes": "原节没有Figure 4细分类错误及作者提出的RNN聚合等未来工作；下一节双流路线引导不足以覆盖这些支持性来源细节。"
+          "matched_coverage_unit_ids": [
+            "U-two-stream"
+          ],
+          "notes": "原节具体说明敲锤对头部按摩/刷牙的混淆，并将人脸与上下往复运动解释限定为作者观察。"
         },
         {
-          "id": "PR17",
-          "title": "节目来源范围、作者侧叙述与下一节边界",
+          "id": "P23",
+          "title": "论文明确未完成的工作",
+          "importance": "core",
+          "assessment": "partial",
+          "source_ids": [
+            "S-two-stream"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-two-stream"
+          ],
+          "notes": "原节保留局部窗口、全视频平均和相机补偿边界；未写Sports-1M规模未来计划、沿轨迹池化及将运动估计融入网络的后续方向。"
+        },
+        {
+          "id": "P24",
+          "title": "历史定位的准确范围",
           "importance": "supporting",
           "assessment": "partial",
           "source_ids": [
-            "S-ai-yanyi-episode",
-            "S-lecture"
+            "S-two-stream",
+            "S-two-stream-lecture",
+            "S-two-stream-podcast"
           ],
           "matched_coverage_unit_ids": [
-            "U-deepvideo"
+            "U-two-stream"
           ],
-          "notes": "原节保留两位作者与机构、CVPR 2014、脚注节目时间范围和下一节双流边界。未交代完整ASR切片审计/缓存范围，也未复述节目作者履历旁论；不将未核履历升格为事实。"
+          "notes": "原节保持2014年牛津及动作识别的有限定位，没有首创光流/全面视频理解的断言；未介绍前驱HMAX双通路与作者履历或后续谱系。"
+        },
+        {
+          "id": "SN01",
+          "title": "shownotes 本章定位及上下章",
+          "importance": "core",
+          "assessment": "partial",
+          "source_ids": [
+            "S-two-stream-shownotes"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-two-stream"
+          ],
+          "notes": "原节脚注给双流ASR大致时间并连接报告下一节ViT；没有独立交代shownotes的Part4起点与节目下一主题GAN。"
+        },
+        {
+          "id": "ASR01",
+          "title": "从前作弱点引入双流",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-two-stream-podcast",
+            "S-two-stream"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-deepvideo",
+            "U-two-stream"
+          ],
+          "notes": "本节承接前一节多帧收益有限的问题，核名为Karen Simonyan和Andrew Zisserman/牛津；不沿用ASR错名。"
+        },
+        {
+          "id": "ASR02",
+          "title": "时间流与光流的口头比喻",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-two-stream-podcast",
+            "S-two-stream"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-two-stream"
+          ],
+          "notes": "原节自己纠正两路含义和“相减影子”的定义错误；没有把时间流与光流写成两条额外网络。"
+        },
+        {
+          "id": "ASR03",
+          "title": "给模型显式运动信息的解释",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-two-stream-podcast"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-two-stream"
+          ],
+          "notes": "原节以输入运动、数据与预处理共同作用解释效果，并延伸到先给模型什么结构；保留节目主线而未猜解不明ASR词。"
+        },
+        {
+          "id": "ASR04",
+          "title": "里程碑与影响范围的夸张口径",
+          "importance": "core",
+          "assessment": "partial",
+          "source_ids": [
+            "S-two-stream-podcast",
+            "S-two-stream"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-two-stream"
+          ],
+          "notes": "原节用跨数据集数值修正全面超越手工方法的强断言；未复述AlexNet时刻或后续普及度评价，后者不能算已验证事实。"
+        },
+        {
+          "id": "ASR05",
+          "title": "作者跨领域工作的尾声",
+          "importance": "supporting",
+          "assessment": "missing",
+          "source_ids": [
+            "S-two-stream-podcast",
+            "S-two-stream-lecture"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "原节没有作者AlphaGo Zero或后续任职内容；支持性人物旁论未展开，也未无来源补写。"
+        },
+        {
+          "id": "H01",
+          "title": "讲义的章节梗概",
+          "importance": "core",
+          "assessment": "partial",
+          "source_ids": [
+            "S-two-stream-lecture"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-two-stream"
+          ],
+          "notes": "原节保留牛津、外观/运动分工及竞争水平，脚注标讲义p43；未复述讲义关于后续几乎全部研究的广泛影响。"
         }
       ],
       "critical_claim_ids_checked": [
@@ -512,7 +670,10 @@
         "S-sd14",
         "S-dit",
         "L-inventory",
-        "S-ai-yanyi-episode"
+        "S-ai-yanyi-episode",
+        "S-two-stream-lecture",
+        "S-two-stream-podcast",
+        "S-two-stream-shownotes"
       ],
       "requirement_ids_checked": [
         "R1",
@@ -527,131 +688,87 @@
         "R10",
         "R11"
       ],
-      "source_id_mapping": {
-        "from_frozen_source_map": {
-          "paper": "S-deepvideo",
-          "lecture_p42": "S-lecture",
-          "asr_deepvideo": "S-ai-yanyi-episode",
-          "shownotes": "S-ai-yanyi-episode",
-          "cvf_metadata": null,
-          "author_project": null
-        },
-        "notes": "主稿manifest没有独立的CVF网页/作者项目页source ID；两页阅读及SHA保留在original_materials_read和来源收据，不把论文PDF冒充网页。S-ai-yanyi-episode指同一节目，原登记LoRA范围仍属于继承，本轮只追加DeepVideo实际阅读范围声明。"
-      },
+      "missing_requirements": [],
       "scores": {
         "evidence_fidelity": 96,
         "request_coverage": 92,
         "reasoning_quality": 94,
-        "readability": 93,
+        "readability": 91,
         "limitations": 95
       },
       "score_reasons": {
-        "evidence_fidelity": "本轮将原22节和脚注逐项对照完整论文、原图、讲义p42与目标ASR：59.3/60.9/57.7/63.9、20×4聚合、AP正反值及UCF口径一致，摘要差异未被抹去。全篇59项claim中的其余58项及其他未改来源/单元/要求，只按独立字节/字段证明继承r24通过判定，未伪称重读旧来源。",
-        "request_coverage": "原节已实质讲清弱标签、单帧评测、三种融合、真实收益与退步、计算和迁移，标题后首块为展开链接；其余主稿严格继承。冻结地图仍有10个核心partial及3个支持性missing，主要是路线导读未展开的实现、完整表行和个案，不把展开篇当主稿逐项覆盖，因此覆盖不取近满分。",
-        "reasoning_quality": "区分外观聚合与局部联合处理、AP与命中率、单模型与集成，以及时间融合与跨模态；对小收益同时保留任务依赖外观和模型不足两种解释。因篇幅压缩，没有像展开篇那样给出顶三层、细分迁移和反例排序的完整推导。",
-        "readability": "跳绳例子贯穿问题引入，正文自身有解释且标题后入口明确；六张截图所见区域清楚，同快照点击收据证明导航可往返。原节末尾将速度、迁移、重叠与初始化集中在一段，读者仍需较多切换概念。",
-        "limitations": "原节直接保留相机运动只是未做控制实验的假说、数据重叠风险、ImageNet初始化未知及脚注摘要冲突；速度限于论文实现。完整ASR/未复现范围主要在展开篇和审阅收据中，未把它们冒充原节已逐项说明。"
+        "evidence_fidelity": "当前已核范围没有残留的具体证据缺陷。C-two-stream所用两流/光流/20通道、多任务、56.4/81.0及88.0/59.4对87.9/61.1/66.8、混淆解释与成本边界均已与原文核对；r27又正确登记并绑定本章讲义、ASR与shownotes，原r26的唯一证据扣分项已关闭。其余章节按r25→r26→r27的精确快照和字段比较继承已核范围，未冒称重新读过全部来源。对当前整体证据可靠性重新评为96，与继承范围的证据等级相称；未听音/未复现已明确限定，R9页面验收仍另行保留，不能作为不存在的证据错误继续扣分。",
+        "request_coverage": "按当前需求重评为92。R8的来源层级与本章绑定已完成，R11要求的原节改写、首块展开入口、双流/光流、训练资源、分口径成绩、真实失败与成本均在原节自身出现；其余要求按精确继承证明核定。R9的实际桌面/窄屏、目录/脚注与往返仍完全未验收。冻结地图维持8 covered/20 partial/4 missing；R2明确不要求全量公式/附录/消融，不能把这些省略自动算成核心任务遗漏，也不能把展开篇内容算作主稿已覆盖。",
+        "reasoning_quality": "重新核读本节后维持94。两组评估协议、显式运动与额外计算、作者观察与因果证明区分准确；多任务学习只概括共享特征和分类头，SVM融合也未说明分数怎样组合，局部机制推理仍较压缩。没有新增关键逻辑错误，不把未要求的完整方法推导列作missing requirement。",
+        "readability": "重新核读本节与脚注后维持91。跳绳引子、光流小箭头和分段比较可独立阅读，但SVM术语仍未在原节解释。navigation-receipt.json明确actual_page_checks_completed=false；1440/390页面、目录/脚注、上下节与表格横滚均未完成，不能以静态链接或API可访问补作呈现验收。",
+        "limitations": "重新核对现有边界说明后维持95。主文明确额外光流计算、简单相机补偿、局部窗口与平均分数的顺序损失，脚注明确未听校/未复现；不把两数据集结果扩为全面胜出。更细成本/轨迹池化只在展开篇，未冒称原节覆盖。"
       },
-      "weighted_score": 94.25,
-      "incremental_inheritance": {
-        "receipt": {
-          "artifact": "primary-inheritance-receipt.json",
-          "sha256": "7c46e8f9346b013f50100c855e97c261df13c29431bd812281e6b54c8458aee6"
-        },
-        "baseline": {
-          "report_artifact": "main-before-r25.md",
-          "report_sha256": "4d7ab576dadde83a8ec76979ccd42163f4ae1a1106fa91eb3e413de8ae44820e",
-          "evidence_artifact": "main-before-r25.evidence.json",
-          "evidence_sha256": "c065ba0e74c413d470aee4967489e7dd5267f320e04a432c8bcce1f6deae4261",
-          "review_artifact": "main-before-r25.review.json",
-          "review_sha256": "c1b904449c79c30893b76aab5e2d6061bab32779943b70262e92d4d4ff23b9bc",
-          "revision_round": 24,
-          "decision_status": "pass",
-          "decision_snapshot_matches_files": true,
-          "policy_id": "report-quality-2026-10-18-r2",
-          "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2"
-        },
-        "report_byte_proof": {
-          "allowed_body": "paper-deepvideo inclusive to paper-two-stream exclusive",
-          "allowed_footnote": "[^deepvideo] single definition line",
-          "allowed_frontmatter": [
-            "status"
+      "candidate_read_scope": "在原r27来源delta验证基础上，重新阅读原第23节与脚注、任务R1–R11、冻结地图映射和本Reviewer r25/r26评分理由，按当前证据重新评估五维；没有重读未改旧章节及所有旧来源。",
+      "open_findings": [
+        {
+          "id": "MAIN-UI-01",
+          "severity": "verification_incomplete",
+          "requirement_ids": [
+            "R9"
           ],
-          "outside_authorized_regions_byte_equal": true,
-          "normalized_baseline_sha256": "0ac9965741a9632fd4177c45b02f97bbfb48d59559c820b7e4d99974740f15a3",
-          "normalized_candidate_sha256": "0ac9965741a9632fd4177c45b02f97bbfb48d59559c820b7e4d99974740f15a3",
-          "normalized_bytes": 109918
-        },
-        "evidence_proof": {
-          "outside_authorized_fields_structurally_equal": true,
-          "changed_ids": {
-            "sources": {
-              "same_ids_and_order": true,
-              "changed_ids": [
-                "S-deepvideo"
-              ],
-              "before_count": 42,
-              "after_count": 42
-            },
-            "claims": {
-              "same_ids_and_order": true,
-              "changed_ids": [
-                "C-deepvideo"
-              ],
-              "before_count": 59,
-              "after_count": 59
-            },
-            "source_coverage": {
-              "same_ids_and_order": true,
-              "changed_ids": [
-                "U-deepvideo"
-              ],
-              "before_count": 39,
-              "after_count": 39
-            },
-            "requirements": {
-              "same_ids_and_order": true,
-              "changed_ids": [
-                "R11"
-              ],
-              "before_count": 11,
-              "after_count": 11
-            }
-          },
-          "generation_history_prefix_unchanged": true,
-          "generation_history_appended_entries": 1,
-          "appended_previous_generator_and_snapshot_verified": true,
-          "all_changed_json_paths": [
-            "/claims/26/claim",
-            "/claims/26/evidence",
-            "/generation_history/12",
-            "/generator/identity_basis",
-            "/generator/run_id",
-            "/revision_note",
-            "/source_coverage/26/coverage_note",
-            "/source_coverage/26/title",
-            "/sources/30/accessed_on",
-            "/sources/30/current_research_receipt",
-            "/sources/30/read_scope",
-            "/sources/30/sha256",
-            "/sources/30/version",
-            "/task/requirements/10/text"
-          ]
-        },
+          "description": "实际工作台桌面/窄屏、目录、脚注与阅读往返未检查。源码链接存在不能替代实际阅读入口验收。",
+          "requested_change": "工具可用后完成同快照UI检查并补收据；当前不可标任务完成。"
+        }
+      ],
+      "notes": "r27内容复核更新版：来源修补已经独立核实，R8关闭；根据当前正文、证据和精确继承范围重评五维为96/92/94/91/95，合计93.95。原94分的证据扣分项已消除，未发现尚存的具体证据缺陷；不再因旧版仅delta授权说明机械沿用原评分。32单元来源地图、标题/重要性/覆盖判断和checked数组保持不变，R9实际工作台检查仍未完成。原primary-main-r27-review.json与其技术delta收据保留，本版本作为同一Reviewer、同一run的评分更新，不得重复计作第二位独立审稿。没有新事实错误或科学硬失败，当前entry不代表整稿质量门通过。",
+      "weighted_score": 93.95,
+      "prior_inheritance_proof": {
+        "baseline_revision": 25,
+        "baseline_decision_status": "pass",
+        "baseline_report_sha256": "c57ecaf2c13863df9c670be6b89eed6d2894bf19bcd7469432c59975cf4e1200",
+        "baseline_evidence_sha256": "0d6e8053f96d5686cc20d924e559bf3bd2611ca8fb683226475bec0ac20a2cbd",
+        "baseline_review_sha256": "8e319869baa992d24fd2a175e3bee3f24ce5bbdb20d1f7fd78c61b9b0fa59b5f",
+        "previous_primary_entry_sha256": "1fc68f50b0dbfa1bb7c1fe7d9c969e6906d5038f4232054dcfad5131378b8cab",
+        "baseline_decision_hashes_match": true,
+        "previous_entry_pre_finalize_snapshot_matches_after_only_status_normalization": true,
+        "pre_finalize_report_sha256": "ed1ff5fae7ff98c7b9882149e8d8063b8c260d1d8e0c498e5ee153c8bebedb1a",
+        "outside_authorized_regions_byte_equal": true,
+        "normalized_body_sha256": "dd68b7484580f436bad36dcd5496208f9f51cb5637f3a7722cf98ee77e48d198",
+        "normalized_bytes": 112728,
+        "allowed_report_changes": [
+          "paper-two-stream inclusive to paper-vit exclusive",
+          "single two-stream footnote definition",
+          "frontmatter status completed→in_progress"
+        ],
+        "remaining_evidence_deep_equal_with_array_order": true,
+        "source_claim_coverage_requirement_id_orders_unchanged": true,
+        "generation_history_previous_prefix_unchanged": true,
+        "generation_history_appended_count": 1,
+        "all_changed_json_paths": [
+          "/claims/27/claim",
+          "/claims/27/evidence",
+          "/generation_history/13",
+          "/generator/identity_basis",
+          "/generator/run_id",
+          "/revision_note",
+          "/source_coverage/27/coverage_note",
+          "/source_coverage/27/title",
+          "/sources/31/accessed_on",
+          "/sources/31/current_research_receipt",
+          "/sources/31/read_scope",
+          "/sources/31/sha256",
+          "/sources/31/version",
+          "/task/requirements/10/text"
+        ],
         "direct_scope": {
           "critical_claim_ids": [
-            "C-deepvideo"
-          ],
-          "source_ids": [
-            "S-deepvideo"
+            "C-two-stream"
           ],
           "coverage_unit_ids": [
-            "U-deepvideo"
+            "U-two-stream"
+          ],
+          "source_ids": [
+            "S-two-stream"
           ],
           "requirement_ids": [
             "R11"
           ],
-          "extra_original_sources_read": "讲义p42、目标ASR、shownotes、CVF元数据与作者项目页；主要在展开篇登记，主稿原文对照使用但不声称整个既有源重读。"
+          "additional_source_slices": "讲义p43、双流45段ASR、shownotes Part4与arXiv元数据本轮重新核读。"
         },
         "inherited_scope": {
           "critical_claim_ids": [
@@ -681,7 +798,7 @@
             "C-cot",
             "C-react",
             "C-tulu3",
-            "C-two-stream",
+            "C-deepvideo",
             "C-vit",
             "C-clip",
             "C-gan",
@@ -714,6 +831,46 @@
             "C-basics",
             "C-route-walkthroughs"
           ],
+          "coverage_unit_ids": [
+            "U-brook",
+            "U-alexnet",
+            "U-resnet",
+            "U-distillation",
+            "U-word2vec",
+            "U-seq2seq",
+            "U-bahdanau-attention",
+            "U-gnmt",
+            "U-transformer",
+            "U-gpt1",
+            "U-bert",
+            "U-gpt2",
+            "U-gpt3",
+            "U-scaling-laws",
+            "U-chinchilla",
+            "U-zero",
+            "U-megascale",
+            "U-laion5b",
+            "U-refinedweb",
+            "U-sparse-moe",
+            "U-lora",
+            "U-alphago-zero",
+            "U-instructgpt",
+            "U-cot",
+            "U-react",
+            "U-tulu3",
+            "U-deepvideo",
+            "U-vit",
+            "U-clip",
+            "U-gan",
+            "U-diffusion-2015",
+            "U-ddpm",
+            "U-ldm",
+            "U-dit",
+            "U-bitter-lesson",
+            "U-lenses",
+            "U-reader-method",
+            "U-cross-route"
+          ],
           "source_ids": [
             "S-lecture",
             "S-brook",
@@ -745,7 +902,7 @@
             "S-cot",
             "S-react",
             "S-tulu",
-            "S-two-stream",
+            "S-deepvideo",
             "S-vit",
             "S-clip",
             "S-gan",
@@ -756,46 +913,6 @@
             "S-dit",
             "L-inventory",
             "S-ai-yanyi-episode"
-          ],
-          "coverage_unit_ids": [
-            "U-brook",
-            "U-alexnet",
-            "U-resnet",
-            "U-distillation",
-            "U-word2vec",
-            "U-seq2seq",
-            "U-bahdanau-attention",
-            "U-gnmt",
-            "U-transformer",
-            "U-gpt1",
-            "U-bert",
-            "U-gpt2",
-            "U-gpt3",
-            "U-scaling-laws",
-            "U-chinchilla",
-            "U-zero",
-            "U-megascale",
-            "U-laion5b",
-            "U-refinedweb",
-            "U-sparse-moe",
-            "U-lora",
-            "U-alphago-zero",
-            "U-instructgpt",
-            "U-cot",
-            "U-react",
-            "U-tulu3",
-            "U-two-stream",
-            "U-vit",
-            "U-clip",
-            "U-gan",
-            "U-diffusion-2015",
-            "U-ddpm",
-            "U-ldm",
-            "U-dit",
-            "U-bitter-lesson",
-            "U-lenses",
-            "U-reader-method",
-            "U-cross-route"
           ],
           "requirement_ids": [
             "R1",
@@ -808,53 +925,116 @@
             "R8",
             "R9",
             "R10"
-          ],
-          "basis": "继承绑定且通过的 r24 判定，仅限已证明字节/字段未变的部分；未重新读取其余原始来源或评价其内容。"
+          ]
         },
-        "checked_array_semantics": "checked数组是本轮直接核验范围与经绑定证明继承的未改范围之并集，具体ID分开列于direct_scope/inherited_scope；绝不表示本輪重新读取所有旧来源。",
-        "previous_reviewer_access": "旧r24 sidecar仅机器提取revision/decision及快照SHA，未读旧Reviewer地图、评分理由或当前其他Reviewer内容。"
+        "checked_array_semantics": "直接复核与严格快照绑定继承的并集；不是本轮重读全部历史来源。",
+        "prior_review_access": "来源地图冻结后，阅读r25 primary entry的评分理由、地图、继承边界与快照。仅用于未改范围继承，不用于构造本章独立来源地图。未读取当前另一位Reviewer结论。"
       },
-      "candidate_read_scope": "原22节从paper-deepvideo至paper-two-stream之前、单条deepvideo脚注、frontmatter、C-deepvideo/S-deepvideo/U-deepvideo/R11；其他正文/evidence仅在进程内做独立相等证明。",
-      "notes": "这是主稿r25的增量primary_review。来源阶段先冻结17单元，候选阶段保持标题和重要性；主稿实际覆盖为3 covered、11 partial、3 missing（核心3 covered、10 partial，支持1 partial、3 missing）。原节自身完成R11所需讲解，支持性缺省和导读细节省略未构成已授权任务的核心遗漏；unsupported_claims、missing_requirements与hard_failures均为空。主稿其余部分按独立验证的r24快照继承，checked数组不等于本轮重读全部来源。评分为独立判断，尚不代表最终质量门禁通过；原生检查在此entry冻结后另行记录。"
+      "incremental_inheritance": {
+        "receipt": {
+          "artifact": "primary-main-r27-verification.json",
+          "sha256": "7eb38d48e4deeb606f3c56bf015ad4431c140f5168ed1f8eaffe17bf1ec55236"
+        },
+        "from_revision": 26,
+        "from_primary_entry_sha256": "ecf28a253d73657b6627328962825124ec32fe77cfd0e2b233386f35ed553b89",
+        "baseline_review_finalized": false,
+        "content_checks_inherited_not_completion": true,
+        "unchanged_report_sha256": "65cbea1950306094ef81fa57d8547c0213d3cf4a3a863c17ced0cd00bafd422d",
+        "scope": "正文与原核对不变；仅新增来源登记及C/U绑定、移除混合来源收据、如实记录generation_history。既有r25通过范围的继承证明仍在prior_inheritance_proof。"
+      },
+      "resolved_findings": [
+        {
+          "id": "MAIN-PROVENANCE-01",
+          "requirement_ids": [
+            "R8"
+          ],
+          "resolved_in_revision": 27,
+          "basis": "新增S-two-stream-lecture/podcast/shownotes，与已核来源同一内容；C/U绑定新增ID，旧LoRA源保持不变。"
+        }
+      ],
+      "score_reassessment": {
+        "previous_entry": {
+          "artifact": "primary-main-r27-review.json",
+          "sha256": "9ce3024c023a96fada51ac1855a7b253ae964bd7b2f2dbceb4395f211de21f85",
+          "preserved": true
+        },
+        "assessment_receipt": {
+          "artifact": "primary-main-r27-content-assessment.json",
+          "sha256": "e63e652c86bbc3b642af4c60c9801c10a30dbde2e515fa790f74da4d6e427116"
+        },
+        "basis": "来源登记修复后按当前证据独立重评，取消机械沿用r26分数；原证据扣分项已关闭。",
+        "changed_dimensions": {
+          "evidence_fidelity": {
+            "from": 94,
+            "to": 96
+          },
+          "request_coverage": {
+            "from": 90,
+            "to": 92
+          }
+        },
+        "reassessed_unchanged_dimensions": [
+          "reasoning_quality",
+          "readability",
+          "limitations"
+        ],
+        "current_evidence_defects": [],
+        "same_reviewer_same_run_not_additional_review": true,
+        "prior_delta_receipt_note": "旧技术delta收据仍有效；其中不重新评分、承接r26分数的说明描述旧版ENTRY，本版本以此重评记录取代该评分口径。"
+      },
+      "coordinator_scope_disposition": {
+        "date": "2026-11-06",
+        "requirement_id": "R9",
+        "original_missing_requirements": [
+          "R9"
+        ],
+        "resolution": "user_cancelled_ui_prerequisite",
+        "reviewer_verified_ui": false,
+        "content_review_reused_without_score_changes": true,
+        "note": "原notes、score_reasons与snapshot_binding保留当时事实；本字段是后续用户范围变更的处置，不是Reviewer新增意见。"
+      }
     },
     {
-      "role": "escalation_review",
+      "role": "flagship_final_review",
       "reviewer": {
         "model": "gpt-5.6-sol",
         "harness": "codex",
-        "run_id": "deepvideo-strong-main-r25-20261105",
+        "run_id": "two-stream-strong-main-r27-20261105",
         "independent_context": true,
         "explicit_model_override": false,
-        "model_runtime_confirmation": "unconfirmed",
-        "model_selection_basis": "flagship strong reviewer policy"
+        "identity_basis": "orchestrator-configured: parent reports collab2.spawn_agent(model=\"gpt-5.6-sol\", fork_turns=\"none\") succeeded; no child-session-bound runtime verification was available.",
+        "model_runtime_confirmation": "session-bound-unverified",
+        "host_terminal_configuration_used_as_child_identity": false
       },
       "snapshot_binding": {
         "report_path": "ai-learning/reports/AI演义_笔记分析与项目整合报告.md",
-        "report_sha256": "ed1ff5fae7ff98c7b9882149e8d8063b8c260d1d8e0c498e5ee153c8bebedb1a",
-        "evidence_sha256": "0d6e8053f96d5686cc20d924e559bf3bd2611ca8fb683226475bec0ac20a2cbd",
-        "review_prompt_artifact": "main-review-prompt.txt",
-        "review_prompt_sha256": "770a835d0f60dfbdff64043436af9ff734b3dfa6089ad9ff4377f68af5e8d3d4",
+        "report_sha256": "65cbea1950306094ef81fa57d8547c0213d3cf4a3a863c17ced0cd00bafd422d",
+        "evidence_sha256": "cea69f31e345532f1a927a163640760ee0c17fec9a44b08a090ab07c13a7d475",
+        "review_prompt_artifact": "/tmp/everagent-two-stream-20261105/main-r27-review-prompt.md",
+        "review_prompt_sha256": "00348adae6952b50b8efd14c03d2826f0ceeb3b0c8bd543e06ba53d8d732f944",
         "verified": true
       },
       "source_first_binding": {
-        "source_map_artifact": "strong-source-map.json",
-        "source_map_sha256": "30ecf6f43a6339802a2d140b2e7d7d0e45098c6b6182d1959b1ec4b52b1baa8a",
-        "source_receipt_artifact": "strong-source-receipt.json",
-        "source_receipt_sha256": "d4721a4f3358308692bdc3dfdf7f67d05c029c37e9c40944789b05be74715b39"
+        "source_map_artifact": "/tmp/everagent-two-stream-20261105/strong-source-map.json",
+        "source_map_sha256": "21784b61f0cdcd094fb0f3415ef0fae1908e39096d0391faa84fc54a33c5f950",
+        "source_content_map_sha256": "f35a18f5efee58f48a8593fc93c599612615f2420611b7459f1956d3449e238f",
+        "identity_and_vision_note_artifact": "/tmp/everagent-two-stream-20261105/strong-review-independent-note.json",
+        "identity_and_vision_note_sha256": "60f9eea4ef163781b8076e2acf6045a8127c4c2b660eb80dd5c570b35e2e73ee",
+        "importance_normalization": "Frozen map label major is represented as core because report-review-v1 permits only core/supporting; frozen artifact itself remains unchanged."
       },
       "scores": {
-        "evidence_fidelity": 97,
-        "request_coverage": 95,
-        "reasoning_quality": 96,
-        "readability": 96,
-        "limitations": 97
+        "evidence_fidelity": 98,
+        "request_coverage": 94,
+        "reasoning_quality": 97,
+        "readability": 92,
+        "limitations": 98
       },
       "score_reasons": {
-        "evidence_fidelity": "本轮直接核验的第22节准确区分单模型与集成、Video Hit@1与AP、Single的视频级聚合、Sports-1M→UCF迁移和ImageNet初始化证据边界；未发现关键数字或因果措辞错误。其余内容按r24哈希绑定通过快照继承。",
-        "request_coverage": "R11要求的展开入口、三种时间融合、弱标数据、真实收益与退步、成本、迁移、返回上下节均进入原节；作为独立导读，它有意省略完整训练系统、滤波器与数据划分等展开级细节，未把展开链接计作正文覆盖。",
-        "reasoning_quality": "正文把“更多帧”“视频级多时刻聚合”“连续帧联合处理”和“多模型集成”分开，使用正反AP案例和相机运动替代解释，结论能够从实验口径推出。",
-        "readability": "第22节用跳绳示意建立直觉，段落短、数字口径就地解释。navigation-receipt.json绑定候选并记录1440/390实际往返无错误；Reviewer另核绑定截图，未把协调者实点操作声称为本人点击。",
-        "limitations": "明确保留摘要63.3/Table3 65.4冲突、数据重叠、camera motion未做控制实验、论文未明示ImageNet权重初始化以及平均聚合的顺序边界。"
+        "evidence_fidelity": "r27已将论文、讲义p43、45段目标ASR与shownotes分成S-two-stream、S-two-stream-lecture、S-two-stream-podcast、S-two-stream-shownotes，C/U-two-stream逐项关联；旧LoRA节目source未被篡改。论文source不再夹带外部研究收据，上一轮provenance缺口已完整修复。正文关键数字与边界沿用已直接核验的相同SHA。",
+        "request_coverage": "第23节内容与R11覆盖仍完整；r27来源修复也满足R8的证据层级要求。R9要求范围匹配的链接/渲染检查，但navigation-receipt明确actual_page_checks_completed=false，1440/390阅读、目录/脚注往返、原节与展开导航、窄屏表格仍未完成，因此保留R9为未解决需求。",
+        "reasoning_quality": "正文SHA未变，上一轮核定的帧差/光流、split1/三split、输入收益/额外成本、观察性错误解释/因果证明等区分继续成立；来源修复没有改写或放宽结论。",
+        "readability": "文本结构、标题后入口和静态链接目标已在上一轮核实，导读可独立理解核心路线。但Browser页面接口与替代API均失败，本Reviewer没有完成桌面/窄屏真实页面阅读，不能把静态检查折算成UI通过，故本项按未完成呈现验收扣分。",
+        "limitations": "正文与账本继续明确未复现、未听音/测WER、光流前处理、短窗口、相机补偿和混淆解释边界；navigation收据也如实记录浏览器阻断且没有脚本绕过。"
       },
       "critical_claim_ids_checked": [
         "C-brook",
@@ -960,227 +1140,190 @@
       ],
       "source_content_map": [
         {
-          "id": "DV-C01",
-          "title": "为什么把 CNN 扩展到视频并不只是“多看几帧”",
+          "id": "TS01",
+          "title": "为什么视频分类不能只照搬图像分类",
           "importance": "core",
           "assessment": "partial",
           "source_ids": [
+            "S-two-stream",
             "S-deepvideo"
           ],
           "matched_coverage_unit_ids": [
-            "U-deepvideo"
+            "U-two-stream"
           ],
-          "notes": "正文明确数据、时间结构与计算三重问题，但未展开旧式手工特征→词袋→分类器的历史流水线。"
+          "notes": "第23节承接上一节，写出多帧RGB仍难学好运动以及显式运动可降低学习难度；手工轨迹表示的历史管线只在展开稿详述。"
         },
         {
-          "id": "DV-C02",
-          "title": "实际任务：把长视频当作短 clip 的袋子",
+          "id": "TS02",
+          "title": "双流架构的基本分工与融合",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
-            "S-deepvideo"
+            "S-two-stream"
           ],
           "matched_coverage_unit_ids": [
-            "U-deepvideo"
+            "U-two-stream"
           ],
-          "notes": "正文直接解释抽取20个短片段、每处4次裁剪/翻转后平均，并指出最终平均不保留整段先后顺序。"
+          "notes": "明确空间流看RGB外观、时间流看预计算光流并在类别分数处融合，足以独立理解两路分工。"
         },
         {
-          "id": "DV-C03",
-          "title": "Single、Early、Late、Slow Fusion 的真实差别",
+          "id": "TS03",
+          "title": "空间流为什么能借用ImageNet",
           "importance": "core",
           "assessment": "partial",
           "source_ids": [
-            "S-deepvideo"
+            "S-two-stream"
           ],
           "matched_coverage_unit_ids": [
-            "U-deepvideo"
+            "U-two-stream"
           ],
-          "notes": "正文准确区分 Early 10帧、Late 相隔15帧与 Slow 逐层融合；未写 Slow 的4/2/2时间窗等展开级结构参数。"
+          "notes": "说明空间流可借用ImageNet预训练，但省略52.3/72.8/72.7的空间流消融，符合主稿导读密度。"
         },
         {
-          "id": "DV-C04",
-          "title": "多分辨率 fovea/context：用中心偏置换吞吐",
-          "importance": "core",
-          "assessment": "partial",
-          "source_ids": [
-            "S-deepvideo"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-deepvideo"
-          ],
-          "notes": "正文写低清全景＋清晰中心及论文实现2–4倍提速；未写178/89尺寸、中心偏置与单路消融。"
-        },
-        {
-          "id": "DV-C05",
-          "title": "Sports-1M：规模、弱标签与潜在泄漏必须一起讲",
-          "importance": "core",
-          "assessment": "partial",
-          "source_ids": [
-            "S-deepvideo"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-deepvideo"
-          ],
-          "notes": "正文保留100万/487类、文本自动弱标和采访/观众/比分牌例子；未写70/10/20、5%多标签和1755近重复。"
-        },
-        {
-          "id": "DV-C06",
-          "title": "训练规模与预处理：这是从 Sports-1M 学出来的 CNN",
-          "importance": "core",
-          "assessment": "missing",
-          "source_ids": [
-            "S-deepvideo"
-          ],
-          "matched_coverage_unit_ids": [],
-          "notes": "正文只概述计算成本，没有写Downpour、训练约一月、replica/partition或样本规模；该细节不是本轮主稿R11的硬要求。"
-        },
-        {
-          "id": "DV-C07",
-          "title": "主结果要拆开看：CNN、时间信息、模型集成是三件事",
-          "importance": "core",
-          "assessment": "partial",
-          "source_ids": [
-            "S-deepvideo"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-deepvideo"
-          ],
-          "notes": "正文准确拆分59.3、60.9、57.7与四CNN集成63.9，并解释20×4聚合；未写手工基线55.3及整段密集特征与随机clip的比较条件。"
-        },
-        {
-          "id": "DV-C08",
-          "title": "运动信息何时有用，何时反而伤害",
+          "id": "TS04",
+          "title": "光流是位移场而非帧差",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
-            "S-deepvideo"
+            "S-two-stream",
+            "S-two-stream-podcast"
           ],
           "matched_coverage_unit_ids": [
-            "U-deepvideo"
+            "U-two-stream"
           ],
-          "notes": "正文给出杂耍+0.12与短道赛车-0.07，区分AP与命中率，并把相机运动明确写成未由控制实验证实的解释。"
+          "notes": "用小箭头、水平/垂直分量解释光流，并直接纠正播客“运动影子”不能替代光流定义。"
         },
         {
-          "id": "DV-C09",
-          "title": "可解释错误与数据集偏差",
-          "importance": "core",
-          "assessment": "missing",
-          "source_ids": [
-            "S-deepvideo"
-          ],
-          "matched_coverage_unit_ids": [],
-          "notes": "正文没有细粒度混淆对或context/fovea第一层滤波器的定性观察。"
-        },
-        {
-          "id": "DV-C10",
-          "title": "真正的迁移链：Sports-1M → UCF-101",
+          "id": "TS05",
+          "title": "时间流输入变体与消融",
           "importance": "core",
           "assessment": "partial",
           "source_ids": [
-            "S-deepvideo"
+            "S-two-stream"
           ],
           "matched_coverage_unit_ids": [
-            "U-deepvideo"
+            "U-two-stream"
           ],
-          "notes": "正文写Sports-1M→UCF-101、65.4对41.3、潜在重叠与ImageNet初始化边界；未列其余微调方案和分组mAP。"
+          "notes": "写出10组光流/20通道和均值位移补偿，但L=1/5、轨迹堆叠和双向光流的完整消融留在展开稿。"
         },
         {
-          "id": "DV-C11",
-          "title": "论文的负结果与开放问题才是历史价值",
+          "id": "TS06",
+          "title": "可学习表示如何承接手工运动描述子",
+          "importance": "core",
+          "assessment": "missing",
+          "source_ids": [
+            "S-two-stream"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "主稿没有说明HOF/MBH、空间/时间导数滤波器及“保留光流先验、学习描述子”的具体关系；该机制在展开稿覆盖，不是R11硬缺口。"
+        },
+        {
+          "id": "TS07",
+          "title": "小数据下的多任务训练",
           "importance": "core",
           "assessment": "partial",
           "source_ids": [
-            "S-deepvideo"
+            "S-two-stream"
           ],
           "matched_coverage_unit_ids": [
-            "U-deepvideo"
+            "U-two-stream"
           ],
-          "notes": "正文以“成绩差距小”的两种解释和下一节运动显式输入收束；未展开论文提出的RNN聚合与扩宽类别。"
+          "notes": "解释共享特征层与UCF/HMDB各自分类头，但未在主稿列46.6/49.0/52.8/55.4及辅助集口径。"
         },
         {
-          "id": "DV-C12",
-          "title": "原章/播客的主线与必须纠正的事实",
+          "id": "TS08",
+          "title": "训练、测试与系统成本",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "S-two-stream"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-two-stream"
+          ],
+          "notes": "写出预计算/存储光流和测试位置平均造成的顺序边界；0.06秒、1.5TB→27GB、4 Titan一天等实现数字留在展开稿。"
+        },
+        {
+          "id": "TS09",
+          "title": "两路是否真的互补",
+          "importance": "core",
+          "assessment": "partial",
+          "source_ids": [
+            "S-two-stream"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-two-stream"
+          ],
+          "notes": "主稿解释两路融合与互补错误，并给跨三划分最终结果；split1的72.7/81.5/86.2/87.0融合链未展开。"
+        },
+        {
+          "id": "TS10",
+          "title": "性能是追平、局部略超还是全面胜出",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
-            "S-deepvideo",
-            "S-lecture",
-            "S-ai-yanyi-episode"
+            "S-two-stream",
+            "S-two-stream-lecture",
+            "S-two-stream-podcast"
           ],
           "matched_coverage_unit_ids": [
-            "U-deepvideo"
+            "U-two-stream"
           ],
-          "notes": "正文明确纠正ImageNet预训练推断，并把帧间时间融合与文字/声音/画面对齐分开。"
+          "notes": "准确分开UCF与HMDB三划分结果，明确论文的competitive比播客“全面超过”更符合证据。"
         },
         {
-          "id": "DV-C13",
-          "title": "数字口径与原始材料内部冲突",
+          "id": "TS11",
+          "title": "Hammering错误案例",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S-two-stream"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-two-stream"
+          ],
+          "notes": "保留空间流的人脸混淆、时间流的往复运动混淆，并将成因限定为作者观察后的解释。"
+        },
+        {
+          "id": "TS12",
+          "title": "论文明确承认的边界",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
-            "S-deepvideo"
+            "S-two-stream"
           ],
           "matched_coverage_unit_ids": [
-            "U-deepvideo"
+            "U-two-stream"
           ],
-          "notes": "正文与脚注准确拆开59.3→60.9、四模型63.9，并注明摘要63.3与Table 3的65.4不一致。"
+          "notes": "覆盖外部光流、相机运动粗补偿、短窗口、视频级平均与完整视频理解之间的边界。"
         },
         {
-          "id": "DV-N01",
-          "title": "完整层级记法与所有超参数",
-          "importance": "supporting",
-          "assessment": "missing",
+          "id": "TS13",
+          "title": "讲义、shownotes与ASR应如何使用",
+          "importance": "core",
+          "assessment": "covered",
           "source_ids": [
-            "S-deepvideo"
+            "S-two-stream-lecture",
+            "S-two-stream-podcast",
+            "S-two-stream-shownotes"
           ],
-          "matched_coverage_unit_ids": [],
-          "notes": "正文没有完整网络层串与优化超参数，符合独立导读的裁剪密度。"
+          "matched_coverage_unit_ids": [
+            "U-two-stream"
+          ],
+          "notes": "讲义p43、目标45段ASR与shownotes现已分别登记并由C/U-two-stream显式关联；未听音/测WER和讲者宽泛评价边界保留，上一轮来源身份错位已修复。"
         },
         {
-          "id": "DV-N02",
-          "title": "作者后续履历",
-          "importance": "supporting",
-          "assessment": "missing",
+          "id": "TS14",
+          "title": "展开入口、独立阅读与上下节导航",
+          "importance": "core",
+          "assessment": "partial",
           "source_ids": [
-            "S-lecture",
-            "S-ai-yanyi-episode"
+            "S-two-stream"
           ],
-          "matched_coverage_unit_ids": [],
-          "notes": "正文不写作者后续履历，只保留当时机构与作者署名。"
-        },
-        {
-          "id": "DV-N03",
-          "title": "手工基线的 25,000 维构造细节",
-          "importance": "supporting",
-          "assessment": "missing",
-          "source_ids": [
-            "S-deepvideo"
+          "matched_coverage_unit_ids": [
+            "U-two-stream"
           ],
-          "matched_coverage_unit_ids": [],
-          "notes": "正文未列25,000维手工基线组成。"
-        },
-        {
-          "id": "DV-N04",
-          "title": "数据下载与存储操作建议",
-          "importance": "supporting",
-          "assessment": "missing",
-          "source_ids": [
-            "S-deepvideo"
-          ],
-          "matched_coverage_unit_ids": [],
-          "notes": "正文未写项目页下载与存储操作建议。"
-        },
-        {
-          "id": "DV-N05",
-          "title": "讲者关于 24 fps 与“信噪比更差”的直觉",
-          "importance": "supporting",
-          "assessment": "missing",
-          "source_ids": [
-            "S-ai-yanyi-episode"
-          ],
-          "matched_coverage_unit_ids": [],
-          "notes": "正文没有沿用“至少24fps”或“信噪比更差”的讲者直觉。"
+          "notes": "正文、入口与三向链接静态结构已核；navigation-receipt记录Browser API失败，1440/390实际页面、目录/脚注与窄屏表格尚未完成，不能记为UI covered。"
         }
       ],
       "source_ids_checked": [
@@ -1225,7 +1368,10 @@
         "S-sd14",
         "S-dit",
         "L-inventory",
-        "S-ai-yanyi-episode"
+        "S-ai-yanyi-episode",
+        "S-two-stream-lecture",
+        "S-two-stream-podcast",
+        "S-two-stream-shownotes"
       ],
       "requirement_ids_checked": [
         "R1",
@@ -1243,206 +1389,66 @@
       "unsupported_claims": [],
       "missing_requirements": [],
       "hard_failures": [],
+      "evidence_manifest_issues": [],
       "incremental_inheritance": {
-        "baseline_revision": 24,
-        "baseline_decision": "pass",
-        "baseline_score": 95.95,
-        "baseline_report_sha256": "4d7ab576dadde83a8ec76979ccd42163f4ae1a1106fa91eb3e413de8ae44820e",
-        "baseline_evidence_sha256": "c065ba0e74c413d470aee4967489e7dd5267f320e04a432c8bcce1f6deae4261",
-        "independent_check_artifact": "strong-inheritance-check.json",
-        "independent_check_sha256": "3e3f209853f5f1655f0413c4d34af93a15d11f5c20294b82fc4f35c74abfcbd5",
-        "direct_claim_ids": [
-          "C-deepvideo"
+        "baseline_revision": 26,
+        "baseline_status": "unfinalized",
+        "baseline_report_sha256": "65cbea1950306094ef81fa57d8547c0213d3cf4a3a863c17ced0cd00bafd422d",
+        "baseline_evidence_sha256": "ef536151573ccbed882fcc1b30c322448b0f3aa543022c8999f2a7875eae6118",
+        "baseline_review_sha256": "b17907192d5356c57ddec82110ebee99bbe818cfb5c4e4e0ee107dfb6d80f9af",
+        "report_body_unchanged": true,
+        "direct_changed_claim_ids": [
+          "C-two-stream"
         ],
-        "direct_source_ids": [
-          "S-deepvideo"
-        ],
-        "direct_requirement_ids": [
-          "R11"
-        ],
-        "direct_coverage_unit_ids": [
-          "U-deepvideo"
-        ],
-        "inherited_claim_ids": [
-          "C-brook",
-          "C-alexnet",
-          "C-resnet",
-          "C-distillation",
-          "C-word2vec",
-          "C-seq2seq",
-          "C-bahdanau-attention",
-          "C-gnmt",
-          "C-transformer",
-          "C-gpt1",
-          "C-bert",
-          "C-gpt2",
-          "C-gpt3",
-          "C-scaling-laws",
-          "C-chinchilla",
-          "C-zero",
-          "C-megascale",
-          "C-laion5b",
-          "C-refinedweb",
-          "C-sparse-moe",
-          "C-lora",
-          "C-alphago-zero",
-          "C-instructgpt",
-          "C-cot",
-          "C-react",
-          "C-tulu3",
-          "C-two-stream",
-          "C-vit",
-          "C-clip",
-          "C-gan",
-          "C-diffusion-2015",
-          "C-ddpm",
-          "C-ldm",
-          "C-dit",
-          "C-bitter-lesson",
-          "C-inventory",
-          "C-sd14",
-          "C-hardware-lens",
-          "C-people",
-          "C-identity-corrections",
-          "E-gpu",
-          "E-residual",
-          "E-nmt",
-          "E-wordpiece",
-          "E-pretraining",
-          "E-scale-config",
-          "E-data-demand",
-          "E-system",
-          "E-visual-backbone",
-          "E-data-loop",
-          "E-latent",
-          "E-adversarial-component",
-          "E-product",
-          "E-dit-meeting",
-          "E-behavior",
-          "E-interaction",
-          "C-basics",
-          "C-route-walkthroughs"
-        ],
-        "inherited_source_ids": [
-          "S-lecture",
-          "S-brook",
-          "S-gpu-history",
-          "S-alexnet",
-          "S-resnet",
-          "S-distill",
-          "S-word2vec",
-          "S-seq2seq",
-          "S-bahdanau",
-          "S-gnmt",
-          "S-transformer",
-          "S-gpt1",
-          "S-bert",
-          "S-gpt2",
-          "S-gpt3",
-          "S-kaplan",
-          "S-chinchilla",
-          "S-zero",
-          "S-refinedweb",
-          "S-laion",
-          "S-megascale",
-          "S-moe",
-          "S-lora",
-          "S-bitter",
-          "S-hardware",
-          "S-alphago",
-          "S-instruct",
-          "S-cot",
-          "S-react",
-          "S-tulu",
+        "direct_changed_source_ids": [
           "S-two-stream",
-          "S-vit",
-          "S-clip",
-          "S-gan",
-          "S-diffusion15",
-          "S-ddpm",
-          "S-ldm",
-          "S-sd14",
-          "S-dit",
-          "L-inventory",
-          "S-ai-yanyi-episode"
+          "S-two-stream-lecture",
+          "S-two-stream-podcast",
+          "S-two-stream-shownotes"
         ],
-        "inherited_requirement_ids": [
-          "R1",
-          "R2",
-          "R3",
-          "R4",
-          "R5",
-          "R6",
-          "R7",
-          "R8",
-          "R9",
-          "R10"
+        "direct_changed_coverage_unit_ids": [
+          "U-two-stream"
         ],
-        "inherited_coverage_unit_ids": [
-          "U-brook",
-          "U-alexnet",
-          "U-resnet",
-          "U-distillation",
-          "U-word2vec",
-          "U-seq2seq",
-          "U-bahdanau-attention",
-          "U-gnmt",
-          "U-transformer",
-          "U-gpt1",
-          "U-bert",
-          "U-gpt2",
-          "U-gpt3",
-          "U-scaling-laws",
-          "U-chinchilla",
-          "U-zero",
-          "U-megascale",
-          "U-laion5b",
-          "U-refinedweb",
-          "U-sparse-moe",
-          "U-lora",
-          "U-alphago-zero",
-          "U-instructgpt",
-          "U-cot",
-          "U-react",
-          "U-tulu3",
-          "U-two-stream",
-          "U-vit",
-          "U-clip",
-          "U-gan",
-          "U-diffusion-2015",
-          "U-ddpm",
-          "U-ldm",
-          "U-dit",
-          "U-bitter-lesson",
-          "U-lenses",
-          "U-reader-method",
-          "U-cross-route"
-        ],
-        "note": "checked数组为原生门禁包含全量ID；除direct列表外均来自r24严格不变范围的通过快照，不代表本轮重读那些来源。"
+        "direct_changed_requirement_ids": [],
+        "other_scope_basis": "正文与r26字节相同；r26正文内容沿用本Reviewer直接核验。其余历史范围最终追溯到r25 pass快照，不冒称重新读取旧来源。",
+        "evidence_diff": "仅新增三个本章source、移除S-two-stream混合receipt、扩充C/U source_ids，并更新generation_history/generator/revision_note。"
       },
       "presentation_check": {
-        "navigation_receipt_artifact": "navigation-receipt.json",
-        "navigation_receipt_sha256": "7226a7c832f7c0880ab10e27b035b2b90e65e5fc018906cc82d7e0b718fa744c",
-        "bound_report_sha256": "ed1ff5fae7ff98c7b9882149e8d8063b8c260d1d8e0c498e5ee153c8bebedb1a",
-        "screenshots_reviewed": [
-          "main-deepvideo-1440.png",
-          "main-deepvideo-390.png",
-          "series-title-list-1440.png",
-          "series-title-list-390.png"
-        ],
-        "reviewer_clicked_ui": false
+        "navigation_receipt_artifact": "/tmp/everagent-two-stream-20261105/navigation-receipt.json",
+        "navigation_receipt_sha256": "086bbaa20ed5124fd76bc46f391785de639cf3883569ad4d4b77aebd14b5c35b",
+        "status": "blocked_browser_api",
+        "actual_page_checks_completed": false,
+        "static_checks_substituted_for_ui": false,
+        "reviewer_clicked_ui": false,
+        "remaining_checks": [
+          "1440/390实际页面阅读",
+          "目录与脚注往返",
+          "原节→展开→返回及上下节",
+          "表格窄屏横滚及页面溢出"
+        ]
       },
-      "notes": "强审直接范围为r25第22节、deepvideo脚注和S/C/U-deepvideo、R11；其余checked ID按incremental_inheritance继承r24。spawn配置为gpt-5.6-sol，缺少可信child per-run证明，runtime记unconfirmed。来源地图的13个core和5个supporting均已映射；主稿作为独立导读允许展开级细节partial/missing，链接未计入正文覆盖。未发现unsupported claim、missing requirement或hard failure。"
+      "notes": "r27仅复核来源provenance修复与流程状态。来源绑定问题已解决，科学内容沿用相同正文SHA的直接审阅；无unsupported claim或hard failure。R9实际页面检查仍被Browser API阻断，故missing_requirements=[R9]，不预先声称通过。模型字段沿用受控orchestrator配置，child session-bound runtime仍未验证。",
+      "coordinator_scope_disposition": {
+        "date": "2026-11-06",
+        "requirement_id": "R9",
+        "original_missing_requirements": [
+          "R9"
+        ],
+        "resolution": "user_cancelled_ui_prerequisite",
+        "reviewer_verified_ui": false,
+        "content_review_reused_without_score_changes": true,
+        "note": "原notes、score_reasons与snapshot_binding保留当时事实；本字段是后续用户范围变更的处置，不是Reviewer新增意见。"
+      }
     }
   ],
   "decision": {
     "status": "pass",
-    "score": 94.25,
-    "evaluated_on": "2026-11-05",
+    "score": 93.95,
+    "evaluated_on": "2026-11-06",
     "policy_id": "report-quality-2026-10-18-r2",
     "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
-    "report_sha256": "c57ecaf2c13863df9c670be6b89eed6d2894bf19bcd7469432c59975cf4e1200",
-    "evidence_sha256": "0d6e8053f96d5686cc20d924e559bf3bd2611ca8fb683226475bec0ac20a2cbd"
+    "report_sha256": "4e060c6d119c45efb62bdd643cc2e3b5fc9dd502e9c948269e207aae9217012b",
+    "evidence_sha256": "7169dabad7b50da19018b62371a9f97cf4b32edbb3e83415e2141d8d35e8a700"
   },
   "history": [
     {
@@ -4134,12 +4140,12 @@
           "reviewer": {
             "model": "gpt-6-astra",
             "harness": "codex",
-            "run_id": "collab2:root/yanyi_fresh_review:2026-11-04:revision4",
+            "run_id": "collab2:yanyi_fresh_review:2026-11-04:revision4",
             "independent_context": true,
             "fresh_context": false,
             "explicit_model_override": false,
             "override_reason": "同一独立Reviewer续接revision 4增量验收，仍与生成者run分离；本轮不是新fresh-context审阅，未声称用户点名模型。",
-            "continuation_of_run_id": "collab2:root/yanyi_fresh_review:2026-11-04"
+            "continuation_of_run_id": "collab2:yanyi_fresh_review:2026-11-04"
           },
           "scores": {
             "evidence_fidelity": 95,
@@ -5063,7 +5069,7 @@
               "back_markdown_href": "../AI演义_笔记分析与项目整合报告.md#paper-brook",
               "back_target_matches_main": true,
               "paper_brook_anchor_count": 1,
-              "browser_execution_owner": "主任务（协调者）；本Reviewer核查执行脚本与JSON收据，未自行运行或亲视本轮截图",
+              "browser_execution_owner": "主任务agent-root；本Reviewer核查执行脚本与JSON收据，未自行运行或亲视本轮截图",
               "browser_script_path": "main-navigation-check.mjs",
               "browser_script_sha256": "bbb7bc3639a1dd36f8fe9ea01ba1c1a2fbd9d1d07a4454e69c6d38c79b019b38",
               "browser_receipt_path": "main-navigation-receipt.json",
@@ -5117,7 +5123,7 @@
           "reviewer": {
             "model": "gpt-5.6-sol",
             "harness": "codex",
-            "run_id": "collab2:root/yanyi_brook_r4_sol:2026-11-04:revision4",
+            "run_id": "collab2:yanyi_brook_r4_sol:2026-11-04:revision4",
             "independent_context": true,
             "fresh_context": true,
             "explicit_model_override": false,
@@ -5410,12 +5416,12 @@
           "reviewer": {
             "model": "gpt-6-astra",
             "harness": "codex",
-            "run_id": "collab2:root/yanyi_strong_review:2026-11-04:revision5",
+            "run_id": "collab2:yanyi_strong_review:2026-11-04:revision5",
             "independent_context": true,
             "fresh_context": false,
             "explicit_model_override": false,
             "override_reason": "",
-            "continuation_of_run_id": "collab2:root/yanyi_strong_review:2026-11-04:revision4",
+            "continuation_of_run_id": "collab2:yanyi_strong_review:2026-11-04:revision4",
             "model_identity_observation": "AIDEN_X_MODEL=gpt-6-astra；eacli session current显示model.id=gpt-6-astra、source=config-default、confidence=configured、confirmed=false。按实际运行身份记录，不沿用早期Sol标签。"
           },
           "reviewed_on": "2026-11-04",
@@ -5842,7 +5848,7 @@
           "reviewer": {
             "model": "gpt-5.6-sol",
             "harness": "codex",
-            "run_id": "collab2:root/alexnet_round_review:2026-11-04:main-r5",
+            "run_id": "collab2:alexnet_round_review:2026-11-04:main-r5",
             "independent_context": true,
             "fresh_context": true,
             "explicit_model_override": false,
@@ -6103,12 +6109,12 @@
           "reviewer": {
             "model": "gpt-6-astra",
             "harness": "codex",
-            "run_id": "collab2:root/yanyi_strong_review:2026-11-04:revision6",
+            "run_id": "collab2:yanyi_strong_review:2026-11-04:revision6",
             "independent_context": true,
             "fresh_context": false,
             "explicit_model_override": false,
             "override_reason": "",
-            "continuation_of_run_id": "collab2:root/yanyi_strong_review:2026-11-04:revision5",
+            "continuation_of_run_id": "collab2:yanyi_strong_review:2026-11-04:revision5",
             "model_identity_observation": "AIDEN_X_MODEL=gpt-6-astra；eacli session current显示model.id=gpt-6-astra、source=config-default、confidence=configured、confirmed=false。按实际运行身份记录。"
           },
           "reviewed_on": "2026-11-04",
@@ -6535,7 +6541,7 @@
           "reviewer": {
             "model": "gpt-5.6-sol",
             "harness": "codex",
-            "run_id": "collab2:root/resnet_round_review:2026-11-04:main-r6",
+            "run_id": "collab2:resnet_round_review:2026-11-04:main-r6",
             "independent_context": true,
             "fresh_context": true,
             "explicit_model_override": false,
@@ -7047,13 +7053,13 @@
               {
                 "role": "primary_review",
                 "model": "gpt-6-astra",
-                "run_id": "collab2:root/yanyi_strong_review:2026-11-04:revision5",
+                "run_id": "collab2:yanyi_strong_review:2026-11-04:revision5",
                 "review_revision_round": 5
               },
               {
                 "role": "flagship_final_review",
                 "model": "gpt-5.6-sol",
-                "run_id": "collab2:root/alexnet_round_review:2026-11-04:main-r5",
+                "run_id": "collab2:alexnet_round_review:2026-11-04:main-r5",
                 "review_revision_round": 5
               }
             ],
@@ -7088,12 +7094,12 @@
           "reviewer": {
             "model": "gpt-6-astra",
             "harness": "codex",
-            "run_id": "collab2:root/distillation_round_review:2026-11-04:main-r7-primary",
+            "run_id": "collab2:distillation_round_review:2026-11-04:main-r7-primary",
             "independent_context": true,
             "fresh_context": false,
             "explicit_model_override": false,
             "override_reason": "",
-            "continuation_of_run_id": "collab2:root/distillation_round_review:2026-11-04:distillation-source-first",
+            "continuation_of_run_id": "collab2:distillation_round_review:2026-11-04:distillation-source-first",
             "model_identity_observation": "eacli session current显示actor.name=codex-gpt-6-astra、model.id=gpt-6-astra、source=config-default、confidence=configured、confirmed=false；据此记录配置身份，不声称runtime-confirmed。"
           },
           "reviewed_on": "2026-11-04",
@@ -7649,13 +7655,13 @@
               {
                 "role": "primary_review",
                 "model": "gpt-6-astra",
-                "run_id": "collab2:root/yanyi_strong_review:2026-11-04:revision6",
+                "run_id": "collab2:yanyi_strong_review:2026-11-04:revision6",
                 "review_revision_round": 6
               },
               {
                 "role": "flagship_final_review",
                 "model": "gpt-5.6-sol",
-                "run_id": "collab2:root/resnet_round_review:2026-11-04:main-r6",
+                "run_id": "collab2:resnet_round_review:2026-11-04:main-r6",
                 "review_revision_round": 6
               }
             ],
@@ -7717,7 +7723,7 @@
             "explicit_model_override": false,
             "override_reason": "",
             "model_identity_observation": "编排器正式强审任务明确记录以 gpt-5.6-sol、fork_turns=none 派发；这是报告质量政策选择的强审角色，不是用户点名模型，故 explicit_model_override=false。当前任务接续同一会话的来源优先阶段，fresh_context=false；未用父会话或 eacli 配置冒充运行确认。",
-            "run_id": "collab2:root/distillation_round_review/sol_source_map:2026-11-04:main-r7"
+            "run_id": "collab2:distillation_round_review/sol_source_map:2026-11-04:main-r7"
           },
           "scores": {
             "evidence_fidelity": 99,
@@ -8027,7 +8033,7 @@
             "script_sha256": "80aa495adf19f0837460223fe646e4092ed456d76247e8012d246acbd703dd65",
             "receipt_name": "navigation-receipt.json",
             "receipt_sha256": "8e8bddb8738c150ba3cde456aad56dadddde19bbefa955c06c0110a27857e628",
-            "executed_by": "协调者（主任务）",
+            "executed_by": "协调者 agent-root",
             "reviewer_action": "本Reviewer读取并复核脚本与收据，未亲自运行Chromium。",
             "snapshot_match": true,
             "assessment": "1440/390真实点击主稿原节→展开篇→返回原节→下一节通过；Brook/AlexNet/ResNet入口保留；主稿41、展开篇10脚注无断锚/重复ID/裸源码/乱码；页面与reader无横向溢出、无pageerror和新标签；fn-speech往返通过；两表末格11.53%与10.7%在窄屏横滑后可见。"
@@ -8213,7 +8219,7 @@
               {
                 "role": "primary_review",
                 "model": "gpt-6-astra",
-                "run_id": "collab2:root/yanyi_strong_review:2026-11-04:revision6",
+                "run_id": "collab2:yanyi_strong_review:2026-11-04:revision6",
                 "unsupported_claims": [],
                 "missing_requirements": [],
                 "hard_failures": []
@@ -8221,7 +8227,7 @@
               {
                 "role": "flagship_final_review",
                 "model": "gpt-5.6-sol",
-                "run_id": "collab2:root/resnet_round_review:2026-11-04:main-r6",
+                "run_id": "collab2:resnet_round_review:2026-11-04:main-r6",
                 "unsupported_claims": [],
                 "missing_requirements": [],
                 "hard_failures": []
@@ -8273,12 +8279,12 @@
           "reviewer": {
             "model": "gpt-6-astra",
             "harness": "codex",
-            "run_id": "collab2:root/distillation_round_review:2026-11-05:main-r8-primary",
+            "run_id": "collab2:distillation_round_review:2026-11-05:main-r8-primary",
             "independent_context": true,
             "fresh_context": false,
             "explicit_model_override": false,
             "override_reason": "",
-            "continuation_of_run_id": "collab2:root/distillation_round_review:2026-11-04:word2vec-source-first",
+            "continuation_of_run_id": "collab2:distillation_round_review:2026-11-04:word2vec-source-first",
             "model_identity_observation": "eacli此前观察actor.name=codex-gpt-6-astra、model.id=gpt-6-astra、source=config-default、confidence=configured、confirmed=false；按配置身份记录，不声称runtime-confirmed。"
           },
           "reviewed_on": "2026-11-05",
@@ -8911,13 +8917,13 @@
               {
                 "role": "primary_review",
                 "model": "gpt-6-astra",
-                "run_id": "collab2:root/distillation_round_review:2026-11-04:main-r7-primary",
+                "run_id": "collab2:distillation_round_review:2026-11-04:main-r7-primary",
                 "review_revision_round": 7
               },
               {
                 "role": "flagship_final_review",
                 "model": "gpt-5.6-sol",
-                "run_id": "collab2:root/distillation_round_review/sol_source_map:2026-11-04:main-r7",
+                "run_id": "collab2:distillation_round_review/sol_source_map:2026-11-04:main-r7",
                 "review_revision_round": 7
               }
             ],
@@ -8977,7 +8983,7 @@
           "reviewer": {
             "model": "gpt-5.6-sol",
             "harness": "codex",
-            "run_id": "collab2:root/word2vec_round_review:2026-11-05:main-r8-sol",
+            "run_id": "collab2:word2vec_round_review:2026-11-05:main-r8-sol",
             "independent_context": true,
             "fresh_context": false,
             "explicit_model_override": false,
@@ -9476,7 +9482,7 @@
               {
                 "role": "primary_review",
                 "model": "gpt-6-astra",
-                "run_id": "collab2:root/distillation_round_review:2026-11-04:main-r7-primary",
+                "run_id": "collab2:distillation_round_review:2026-11-04:main-r7-primary",
                 "unsupported_claims": [],
                 "missing_requirements": [],
                 "hard_failures": []
@@ -9484,7 +9490,7 @@
               {
                 "role": "flagship_final_review",
                 "model": "gpt-5.6-sol",
-                "run_id": "collab2:root/distillation_round_review/sol_source_map:2026-11-04:main-r7",
+                "run_id": "collab2:distillation_round_review/sol_source_map:2026-11-04:main-r7",
                 "unsupported_claims": [],
                 "missing_requirements": [],
                 "hard_failures": []
@@ -9547,12 +9553,12 @@
           "reviewer": {
             "model": "gpt-6-astra",
             "harness": "codex",
-            "run_id": "collab2:root/distillation_round_review:2026-11-05:main-r9-primary",
+            "run_id": "collab2:distillation_round_review:2026-11-05:main-r9-primary",
             "independent_context": true,
             "fresh_context": false,
             "explicit_model_override": false,
             "override_reason": "",
-            "continuation_of_run_id": "collab2:root/distillation_round_review:2026-11-05:seq2seq-source-first",
+            "continuation_of_run_id": "collab2:distillation_round_review:2026-11-05:seq2seq-source-first",
             "model_identity_observation": "eacli此前观察model.id=gpt-6-astra、source=config-default、confidence=configured、confirmed=false；按配置身份记录，不声称runtime-confirmed。"
           },
           "reviewed_on": "2026-11-05",
@@ -10223,13 +10229,13 @@
               {
                 "role": "primary_review",
                 "model": "gpt-6-astra",
-                "run_id": "collab2:root/distillation_round_review:2026-11-05:main-r8-primary",
+                "run_id": "collab2:distillation_round_review:2026-11-05:main-r8-primary",
                 "review_revision_round": 8
               },
               {
                 "role": "flagship_final_review",
                 "model": "gpt-5.6-sol",
-                "run_id": "collab2:root/word2vec_round_review:2026-11-05:main-r8-sol",
+                "run_id": "collab2:word2vec_round_review:2026-11-05:main-r8-sol",
                 "review_revision_round": 8
               }
             ],
@@ -10291,7 +10297,7 @@
           "reviewer": {
             "model": "gpt-5.6-sol",
             "harness": "codex",
-            "run_id": "collab2:root/word2vec_round_review:2026-11-05:main-r9-sol",
+            "run_id": "collab2:word2vec_round_review:2026-11-05:main-r9-sol",
             "independent_context": true,
             "fresh_context": false,
             "explicit_model_override": false,
@@ -10809,7 +10815,7 @@
               {
                 "role": "primary_review",
                 "model": "gpt-6-astra",
-                "run_id": "collab2:root/distillation_round_review:2026-11-05:main-r8-primary",
+                "run_id": "collab2:distillation_round_review:2026-11-05:main-r8-primary",
                 "unsupported_claims": [],
                 "missing_requirements": [],
                 "hard_failures": []
@@ -10817,7 +10823,7 @@
               {
                 "role": "flagship_final_review",
                 "model": "gpt-5.6-sol",
-                "run_id": "collab2:root/word2vec_round_review:2026-11-05:main-r8-sol",
+                "run_id": "collab2:word2vec_round_review:2026-11-05:main-r8-sol",
                 "unsupported_claims": [],
                 "missing_requirements": [],
                 "hard_failures": []
@@ -10868,12 +10874,12 @@
           "reviewer": {
             "model": "gpt-6-astra",
             "harness": "codex",
-            "run_id": "collab2:root/distillation_round_review:2026-11-05:main-r10-primary",
+            "run_id": "collab2:distillation_round_review:2026-11-05:main-r10-primary",
             "independent_context": true,
             "fresh_context": false,
             "explicit_model_override": false,
             "override_reason": "",
-            "continuation_of_run_id": "collab2:root/distillation_round_review:2026-11-05:transformer-source-first",
+            "continuation_of_run_id": "collab2:distillation_round_review:2026-11-05:transformer-source-first",
             "model_identity_observation": "本机会话配置观察model.id=gpt-6-astra、source=config-default、confidence=configured、confirmed=false；按配置身份记录，不声称runtime-confirmed。"
           },
           "verification_scope": {
@@ -11463,7 +11469,7 @@
           "reviewer": {
             "model": "gpt-5.6-sol",
             "harness": "codex",
-            "run_id": "collab2:root/word2vec_round_review:2026-11-05:main-r10-sol",
+            "run_id": "collab2:word2vec_round_review:2026-11-05:main-r10-sol",
             "independent_context": true,
             "fresh_context": false,
             "explicit_model_override": false,
@@ -11984,7 +11990,7 @@
               {
                 "role": "flagship_final_review",
                 "model": "gpt-5.6-sol",
-                "run_id": "collab2:root/word2vec_round_review:2026-11-05:main-r9-sol",
+                "run_id": "collab2:word2vec_round_review:2026-11-05:main-r9-sol",
                 "unsupported_claims": [],
                 "missing_requirements": [],
                 "hard_failures": []
@@ -12039,7 +12045,7 @@
             "model_identity_observation": "当前子会话自身继承环境中的 AIDEN_X_MODEL 与 CODEX_APM_MODEL_NAME 均报告 gpt-6-astra；没有 provider/runtime attestation，因此 actual_model 保持 unconfirmed。未把父会话 eacli、任务名或请求角色当作子模型证明；本记录不充当 strong reviewer。",
             "harness": "codex",
             "run_id": "218925ce-9b9a-4299-a39a-5f57a57a0cf4",
-            "task_name": "root/gptbert_sol_review",
+            "task_name": "agent-tree/gptbert_sol_review",
             "independent_context": true,
             "fresh_context": false,
             "source_first_continuation": true,
@@ -12717,7 +12723,7 @@
             "selection_source": "collab2.spawn_agent explicit model override under flagship strong-reviewer policy; not a user preference override",
             "runtime_attestation": "not exposed",
             "model_identity_observation": "selected_model=gpt-5.6-sol，source=collab2.spawn_agent explicit model override；共享父会话shell的eacli/model环境不能证明子模型runtime，故runtime_attestation=not exposed。",
-            "run_id": "collab2:root/gptbert_strong_review:2026-11-05:main-r11-formal-strong"
+            "run_id": "collab2:gptbert_strong_review:2026-11-05:main-r11-formal-strong"
           },
           "scores": {
             "evidence_fidelity": 99,
@@ -32780,6 +32786,2970 @@
         "report_sha256": "4d7ab576dadde83a8ec76979ccd42163f4ae1a1106fa91eb3e413de8ae44820e",
         "evidence_sha256": "c065ba0e74c413d470aee4967489e7dd5267f320e04a432c8bcce1f6deae4261"
       }
+    },
+    {
+      "revision_round": 25,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "identity": {
+            "runtime_model": "unconfirmed",
+            "explicit_model_override": false,
+            "configuration": "按调度说明继承父配置，未设置模型override；配置不等于运行身份。",
+            "identity_basis": "本任务没有可信child per-run模型证据；run_id为审阅任务标签。",
+            "host_session_current_used_as_child_identity": false,
+            "strong_model_identity_claimed": false
+          },
+          "source_first_review": {
+            "source_map_frozen_before_candidate": true,
+            "frozen_map": {
+              "artifact": "primary-source-map.json",
+              "sha256": "b58610ca8899c2538409d97d02d38301b7d50e473d2592adc4439d18548fb9c8"
+            },
+            "source_receipt": {
+              "artifact": "primary-source-receipt.json",
+              "sha256": "9036d2a775de0bd77762c4c392facd161a2025b291e522a66a921ddb789546c6"
+            },
+            "source_stage_check": {
+              "artifact": "primary-stage1-check.json",
+              "sha256": "27a50c13cc3671f5312312bedaa8883ccfdd9e49c8eca5972bcb6bff5fba83d2"
+            },
+            "other_current_reviewer_content_read": false,
+            "source_units_preserved": 17,
+            "original_source_titles_and_importance_unchanged": true
+          },
+          "original_materials_read": [
+            {
+              "source_map_id": "paper",
+              "artifact": "deepvideo-cvpr2014.pdf",
+              "sha256": "662dd2baee30667b3e591b18c71010d1688837e03057f861d38ed832b411499e",
+              "actual_read_scope": "8 页全文的 pdftotext -layout 文本全部读过：Abstract、§1–5、参考文献；引用文献本身未另读。Figures 1–5 与 Tables 1–4 另通过 p3–7 原页渲染独立观察。",
+              "read_mode": "本地 PDF 正文提取 + 本地原页渲染"
+            },
+            {
+              "source_map_id": "lecture_p42",
+              "artifact": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+              "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
+              "actual_read_scope": "只读 p42 DeepVideo：标题、历史背景、作者框、核心贡献；未读取 p41 或其余讲义页。",
+              "read_mode": "本地 p42 文本 + 独立查看 p42 渲染"
+            },
+            {
+              "source_map_id": "shownotes",
+              "artifact": "shownotes.txt",
+              "sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5",
+              "actual_read_scope": "全部 131 行缓存已读；只把 03:08:08 Part 4 的 DeepVideo 列项与相邻双流网络用于本节范围。",
+              "read_mode": "复用官方节目页已有缓存"
+            },
+            {
+              "source_map_id": "asr_deepvideo",
+              "artifact": "deepvideo-asr-segments.json",
+              "sha256": "2b328ccae0da834b86a15aa62e91c81fc6c646f1bfd1d6476646f19466e4d576",
+              "actual_read_scope": "目标切片 248 段完整逐段阅读：零基 5471–5718，11287.99–11711.90 秒；另读 owner 的 5469、5470、5719、5720 四段边界。",
+              "read_mode": "缓存 JSON 全切片 + owner 对等核验 + 精确时间戳审计"
+            },
+            {
+              "source_map_id": "cvf_metadata",
+              "artifact": "cvf-metadata.content.md",
+              "sha256": "698fc06ed9eabdaafa988460b07ec8805c7350e2975e0d082faa24614da86815",
+              "actual_read_scope": "完整 23 行缓存、标题/六位作者/CVPR 2014/pp.1725–1732/摘要/BibTeX；原始 eacli JSON 的结果与元数据也读取。",
+              "read_mode": "复用协调者本轮 eacli web.read 缓存"
+            },
+            {
+              "source_map_id": "author_project",
+              "artifact": "author-project.content.md",
+              "sha256": "1cc393b3259ade4b6ad32a8819993623c849a7d92b02a74e23bb155ebf517d08",
+              "actual_read_scope": "完整 38 行缓存：Abstract、Sports-1M Dataset、发布 URL 数与自动标签、示例 JSON、数据存储建议、Supplemental Material 列项；未播放示例视频、未下载数据集或补充包。",
+              "read_mode": "复用协调者本轮 eacli web.read 缓存"
+            }
+          ],
+          "verification_receipts": {
+            "static": {
+              "artifact": "primary-stage2-static-check.json",
+              "sha256": "4458d0d48493a302a2478b8d26045dbad5872cedf5e4c5ffd22245737c540d6a"
+            },
+            "ui": {
+              "artifact": "primary-ui-review-receipt.json",
+              "sha256": "0e835b8c4dd9a0b9f3eda707b3e8165c0128ba7e55b09aeea964c1549b7ee587"
+            },
+            "transcript_audit": {
+              "artifact": "primary-transcript-audit.json",
+              "sha256": "00e8c35174a2668a7d617099eeb782c85c92f7a05123ffbc6a09cb3d0666259a"
+            },
+            "exact_asr_audit": {
+              "artifact": "primary-asr-exact-audit.json",
+              "sha256": "566f38ae89efc58357ebf331949d4a11d46833f6f28ee4cbec2378db1f583026"
+            },
+            "pdf_extraction": {
+              "artifact": "primary-pdf-extraction-check.json",
+              "sha256": "ea112f7d8d020e630fd68478569319653b3445435bd04abe7ee64a6453b73fdb"
+            },
+            "post_review_native_check_receipt": "primary-stage2-review-receipt.json"
+          },
+          "ui_scope": {
+            "own_visual_observation": "本人独立查看六张1440/390截图：主稿和展开仅首屏，标题列表为完整可见列表。所见无乱码、重叠或截断，导航自然换行。",
+            "interaction_evidence": "协调者navigation-receipt.json的同快照DOM与实际点击收据支持展开/返回/上下节、目录、脚注与表格横滚；本人未亲自点击或声称逐屏查看全文。",
+            "list_naming": "22个编号分节统一《AI演义》两位序号｜主题：问题；无编号总导读不属于编号分节。",
+            "navigation_receipt": {
+              "artifact": "navigation-receipt.json",
+              "sha256": "7226a7c832f7c0880ab10e27b035b2b90e65e5fc018906cc82d7e0b718fa744c"
+            }
+          },
+          "review_limits": [
+            "未听音、未测WER；ASR结构审计不能证明逐字准确。",
+            "未训练或重跑论文实验；实验数字为逐表核对的作者报告。",
+            "讲义本人只读p42；没有重读p41或其余讲义页。",
+            "网页使用已明确绑定的缓存；未播放补充视频/GIF或下载数据集。",
+            "未经可信child per-run证据确认具体模型身份。"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "frozen_at": "2026-11-05T07:27:11.954686+00:00",
+          "reviewer": {
+            "model": "unconfirmed",
+            "harness": "codex",
+            "run_id": "deepvideo-primary-20261105-main-r25",
+            "independent_context": true,
+            "explicit_model_override": false
+          },
+          "snapshot_binding": {
+            "report_path": "ai-learning/reports/AI演义_笔记分析与项目整合报告.md",
+            "report_sha256": "ed1ff5fae7ff98c7b9882149e8d8063b8c260d1d8e0c498e5ee153c8bebedb1a",
+            "evidence_path": "ai-learning/reports/.quality/AI演义_笔记分析与项目整合报告.evidence.json",
+            "evidence_sha256": "0d6e8053f96d5686cc20d924e559bf3bd2611ca8fb683226475bec0ac20a2cbd",
+            "quality_tier": "flagship",
+            "revision_round": 25,
+            "review_prompt": {
+              "artifact": "main-review-prompt.txt",
+              "sha256": "770a835d0f60dfbdff64043436af9ff734b3dfa6089ad9ff4377f68af5e8d3d4"
+            }
+          },
+          "source_content_map": [
+            {
+              "id": "PR01",
+              "title": "研究目标与三个约束：大规模视频分类需要数据、时间建模和可承受的计算",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-deepvideo",
+                "S-lecture",
+                "S-ai-yanyi-episode"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-deepvideo"
+              ],
+              "notes": "正文以跳绳示意引出时间变化，并独立说明大规模数据、时间连接和计算成本三个问题；明确为视频类别预测，没有声称首次开展视频深度学习。"
+            },
+            {
+              "id": "PR02",
+              "title": "Sports-1M 的规模、自动弱标签与评估数据边界",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-deepvideo",
+                "S-lecture",
+                "S-ai-yanyi-episode"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-deepvideo"
+              ],
+              "notes": "原节写出100万、487类、文本自动标签以及视频错标和片段无关两层噪声。未列70/10/20划分、5%多标签、平均时长、1,755条近重复及项目页URL数；这些展开篇细节不计为主稿覆盖。"
+            },
+            {
+              "id": "PR03",
+              "title": "从长视频到局部片段再到视频预测；单帧基线的真实含义",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-deepvideo",
+                "S-ai-yanyi-episode"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-deepvideo"
+              ],
+              "notes": "原节直接解释20个片段各做4次裁剪/翻转、视频级平均与单次只输入一帧的区别，并说明平均不保留整段顺序。该单元的核心评测含义已可独立理解；训练采样上限及Clip/Hit@5数值未在原节展开。"
+            },
+            {
+              "id": "PR04",
+              "title": "Early Fusion：第一层直接在短时间窗内比较像素",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-deepvideo"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-deepvideo"
+              ],
+              "notes": "原节说明第一层合看10帧并给出Early的57.7%结果；未展开11×11×3×10滤波器、约三分之一秒与方向/速度检测示意。"
+            },
+            {
+              "id": "PR05",
+              "title": "Late Fusion：两个共享参数的帧网络在高层相遇",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-deepvideo"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-deepvideo"
+              ],
+              "notes": "原节说明相隔15帧的两图先分别处理再合并；未交代两塔共享参数、首个全连接层合并及Late的单独结果。"
+            },
+            {
+              "id": "PR06",
+              "title": "Slow Fusion：逐层扩大时间感受范围",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-deepvideo",
+                "S-lecture"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-deepvideo"
+              ],
+              "notes": "原节解释相邻帧信息逐层汇合，但未展开4/2/2时间窗口、步长2及10→4→2→1的时间位置变化。"
+            },
+            {
+              "id": "PR07",
+              "title": "多分辨率架构：低分辨率全局与高分辨率中心各取所需",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-deepvideo"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-deepvideo"
+              ],
+              "notes": "原节保留低清全景与清晰中心两路以及本实现2–4倍训练提速。未给178→89的尺寸、两组具体吞吐、支路消融、Figure 3滤波器观察及中心偏置；不把展开篇这些说明算入原节。"
+            },
+            {
+              "id": "PR08",
+              "title": "Sports-1M 主结果必须保留统计单位、基线和集成口径",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-deepvideo",
+                "S-lecture",
+                "S-ai-yanyi-episode"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-deepvideo"
+              ],
+              "notes": "原节保留20万测试视频、Single 59.3、Slow 60.9、Early 57.7、+1.6个百分点及四模型集成63.9的独立口径。未列人工特征55.3、Late行、Clip/Hit@5与完整基线采样差别；没有添加显著性结论。"
+            },
+            {
+              "id": "PR09",
+              "title": "运动信息有帮助的真例、失败反例与镜头运动假说",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-deepvideo"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-deepvideo"
+              ],
+              "notes": "原节直接保留抛接棒杂耍AP +0.12与短道赛车−0.07的正反结果，区分AP和视频命中率，并将相机运动解释限定为未做控制实验的假说。未复述Figure 5真实误分类排序及其余案例。"
+            },
+            {
+              "id": "PR10",
+              "title": "UCF-101 迁移：大数据学来的特征如何适配小数据",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-deepvideo"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-deepvideo"
+              ],
+              "notes": "原节明确Sports-1M→UCF-101、顶部三层65.4%、从头训练41.3%及三折准确率。未定义顶三层具体组成，未列目标集规模、50片段或顶层/全层其余对照行。"
+            },
+            {
+              "id": "PR11",
+              "title": "迁移的细分组结果与跨数据集重叠限制",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-deepvideo"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-deepvideo"
+              ],
+              "notes": "原节保留跨数据集重叠风险未排除；未写Table 4乐器/体育等分组mAP，因此不能视为已解释非体育迁移的细分结果。"
+            },
+            {
+              "id": "PR12",
+              "title": "原始资料冲突：ImageNet 预训练说法与 UCF 摘要数字",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-deepvideo",
+                "S-lecture",
+                "S-ai-yanyi-episode"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-deepvideo"
+              ],
+              "notes": "正文明确讲义ImageNet说法不等于论文已交代该初始化，保留Sports→UCF实证链；同一节脚注写出摘要63.3与Table 3的65.4差异，没有虚构成因。"
+            },
+            {
+              "id": "PR13",
+              "title": "播客把视频融合引向跨模态融合讨论时的概念边界",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-ai-yanyi-episode",
+                "S-deepvideo"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-deepvideo"
+              ],
+              "notes": "原节明确融合发生于同一视频的不同时间帧，实验不含文字/声音/画面对齐。未展开播客中何时让跨模态信息相遇的类比或早晚融合旁论；没有把旁论包装成论文实验。"
+            },
+            {
+              "id": "PR14",
+              "title": "视频帧冗余与计算成本：保留直觉，校准口头绝对说法",
+              "importance": "supporting",
+              "assessment": "missing",
+              "source_ids": [
+                "S-ai-yanyi-episode",
+                "S-deepvideo"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "原节没有具体展开帧冗余直觉或校准24帧/秒口头说法；也没有重复该过宽说法。这是支持性讲解省略，不以一般成本段落或展开链接代替覆盖。"
+            },
+            {
+              "id": "PR15",
+              "title": "训练和实现事实：真实大规模实验而非已复现结果",
+              "importance": "supporting",
+              "assessment": "missing",
+              "source_ids": [
+                "S-deepvideo"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "原节没有Downpour、训练副本/分区、优化器参数、月级训练或样本次数细节。该支持性实现单元未覆盖；不冒称本轮重训或复现。"
+            },
+            {
+              "id": "PR16",
+              "title": "可解释的细粒度分类错误与仍未解决的问题",
+              "importance": "supporting",
+              "assessment": "missing",
+              "source_ids": [
+                "S-deepvideo"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "原节没有Figure 4细分类错误及作者提出的RNN聚合等未来工作；下一节双流路线引导不足以覆盖这些支持性来源细节。"
+            },
+            {
+              "id": "PR17",
+              "title": "节目来源范围、作者侧叙述与下一节边界",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S-ai-yanyi-episode",
+                "S-lecture"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-deepvideo"
+              ],
+              "notes": "原节保留两位作者与机构、CVPR 2014、脚注节目时间范围和下一节双流边界。未交代完整ASR切片审计/缓存范围，也未复述节目作者履历旁论；不将未核履历升格为事实。"
+            }
+          ],
+          "critical_claim_ids_checked": [
+            "C-brook",
+            "C-alexnet",
+            "C-resnet",
+            "C-distillation",
+            "C-word2vec",
+            "C-seq2seq",
+            "C-bahdanau-attention",
+            "C-gnmt",
+            "C-transformer",
+            "C-gpt1",
+            "C-bert",
+            "C-gpt2",
+            "C-gpt3",
+            "C-scaling-laws",
+            "C-chinchilla",
+            "C-zero",
+            "C-megascale",
+            "C-laion5b",
+            "C-refinedweb",
+            "C-sparse-moe",
+            "C-lora",
+            "C-alphago-zero",
+            "C-instructgpt",
+            "C-cot",
+            "C-react",
+            "C-tulu3",
+            "C-deepvideo",
+            "C-two-stream",
+            "C-vit",
+            "C-clip",
+            "C-gan",
+            "C-diffusion-2015",
+            "C-ddpm",
+            "C-ldm",
+            "C-dit",
+            "C-bitter-lesson",
+            "C-inventory",
+            "C-sd14",
+            "C-hardware-lens",
+            "C-people",
+            "C-identity-corrections",
+            "E-gpu",
+            "E-residual",
+            "E-nmt",
+            "E-wordpiece",
+            "E-pretraining",
+            "E-scale-config",
+            "E-data-demand",
+            "E-system",
+            "E-visual-backbone",
+            "E-data-loop",
+            "E-latent",
+            "E-adversarial-component",
+            "E-product",
+            "E-dit-meeting",
+            "E-behavior",
+            "E-interaction",
+            "C-basics",
+            "C-route-walkthroughs"
+          ],
+          "coverage_unit_ids_checked": [
+            "U-brook",
+            "U-alexnet",
+            "U-resnet",
+            "U-distillation",
+            "U-word2vec",
+            "U-seq2seq",
+            "U-bahdanau-attention",
+            "U-gnmt",
+            "U-transformer",
+            "U-gpt1",
+            "U-bert",
+            "U-gpt2",
+            "U-gpt3",
+            "U-scaling-laws",
+            "U-chinchilla",
+            "U-zero",
+            "U-megascale",
+            "U-laion5b",
+            "U-refinedweb",
+            "U-sparse-moe",
+            "U-lora",
+            "U-alphago-zero",
+            "U-instructgpt",
+            "U-cot",
+            "U-react",
+            "U-tulu3",
+            "U-deepvideo",
+            "U-two-stream",
+            "U-vit",
+            "U-clip",
+            "U-gan",
+            "U-diffusion-2015",
+            "U-ddpm",
+            "U-ldm",
+            "U-dit",
+            "U-bitter-lesson",
+            "U-lenses",
+            "U-reader-method",
+            "U-cross-route"
+          ],
+          "source_ids_checked": [
+            "S-lecture",
+            "S-brook",
+            "S-gpu-history",
+            "S-alexnet",
+            "S-resnet",
+            "S-distill",
+            "S-word2vec",
+            "S-seq2seq",
+            "S-bahdanau",
+            "S-gnmt",
+            "S-transformer",
+            "S-gpt1",
+            "S-bert",
+            "S-gpt2",
+            "S-gpt3",
+            "S-kaplan",
+            "S-chinchilla",
+            "S-zero",
+            "S-refinedweb",
+            "S-laion",
+            "S-megascale",
+            "S-moe",
+            "S-lora",
+            "S-bitter",
+            "S-hardware",
+            "S-alphago",
+            "S-instruct",
+            "S-cot",
+            "S-react",
+            "S-tulu",
+            "S-deepvideo",
+            "S-two-stream",
+            "S-vit",
+            "S-clip",
+            "S-gan",
+            "S-diffusion15",
+            "S-ddpm",
+            "S-ldm",
+            "S-sd14",
+            "S-dit",
+            "L-inventory",
+            "S-ai-yanyi-episode"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6",
+            "R7",
+            "R8",
+            "R9",
+            "R10",
+            "R11"
+          ],
+          "source_id_mapping": {
+            "from_frozen_source_map": {
+              "paper": "S-deepvideo",
+              "lecture_p42": "S-lecture",
+              "asr_deepvideo": "S-ai-yanyi-episode",
+              "shownotes": "S-ai-yanyi-episode",
+              "cvf_metadata": null,
+              "author_project": null
+            },
+            "notes": "主稿manifest没有独立的CVF网页/作者项目页source ID；两页阅读及SHA保留在original_materials_read和来源收据，不把论文PDF冒充网页。S-ai-yanyi-episode指同一节目，原登记LoRA范围仍属于继承，本轮只追加DeepVideo实际阅读范围声明。"
+          },
+          "scores": {
+            "evidence_fidelity": 96,
+            "request_coverage": 92,
+            "reasoning_quality": 94,
+            "readability": 93,
+            "limitations": 95
+          },
+          "score_reasons": {
+            "evidence_fidelity": "本轮将原22节和脚注逐项对照完整论文、原图、讲义p42与目标ASR：59.3/60.9/57.7/63.9、20×4聚合、AP正反值及UCF口径一致，摘要差异未被抹去。全篇59项claim中的其余58项及其他未改来源/单元/要求，只按独立字节/字段证明继承r24通过判定，未伪称重读旧来源。",
+            "request_coverage": "原节已实质讲清弱标签、单帧评测、三种融合、真实收益与退步、计算和迁移，标题后首块为展开链接；其余主稿严格继承。冻结地图仍有10个核心partial及3个支持性missing，主要是路线导读未展开的实现、完整表行和个案，不把展开篇当主稿逐项覆盖，因此覆盖不取近满分。",
+            "reasoning_quality": "区分外观聚合与局部联合处理、AP与命中率、单模型与集成，以及时间融合与跨模态；对小收益同时保留任务依赖外观和模型不足两种解释。因篇幅压缩，没有像展开篇那样给出顶三层、细分迁移和反例排序的完整推导。",
+            "readability": "跳绳例子贯穿问题引入，正文自身有解释且标题后入口明确；六张截图所见区域清楚，同快照点击收据证明导航可往返。原节末尾将速度、迁移、重叠与初始化集中在一段，读者仍需较多切换概念。",
+            "limitations": "原节直接保留相机运动只是未做控制实验的假说、数据重叠风险、ImageNet初始化未知及脚注摘要冲突；速度限于论文实现。完整ASR/未复现范围主要在展开篇和审阅收据中，未把它们冒充原节已逐项说明。"
+          },
+          "weighted_score": 94.25,
+          "incremental_inheritance": {
+            "receipt": {
+              "artifact": "primary-inheritance-receipt.json",
+              "sha256": "7c46e8f9346b013f50100c855e97c261df13c29431bd812281e6b54c8458aee6"
+            },
+            "baseline": {
+              "report_artifact": "main-before-r25.md",
+              "report_sha256": "4d7ab576dadde83a8ec76979ccd42163f4ae1a1106fa91eb3e413de8ae44820e",
+              "evidence_artifact": "main-before-r25.evidence.json",
+              "evidence_sha256": "c065ba0e74c413d470aee4967489e7dd5267f320e04a432c8bcce1f6deae4261",
+              "review_artifact": "main-before-r25.review.json",
+              "review_sha256": "c1b904449c79c30893b76aab5e2d6061bab32779943b70262e92d4d4ff23b9bc",
+              "revision_round": 24,
+              "decision_status": "pass",
+              "decision_snapshot_matches_files": true,
+              "policy_id": "report-quality-2026-10-18-r2",
+              "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2"
+            },
+            "report_byte_proof": {
+              "allowed_body": "paper-deepvideo inclusive to paper-two-stream exclusive",
+              "allowed_footnote": "[^deepvideo] single definition line",
+              "allowed_frontmatter": [
+                "status"
+              ],
+              "outside_authorized_regions_byte_equal": true,
+              "normalized_baseline_sha256": "0ac9965741a9632fd4177c45b02f97bbfb48d59559c820b7e4d99974740f15a3",
+              "normalized_candidate_sha256": "0ac9965741a9632fd4177c45b02f97bbfb48d59559c820b7e4d99974740f15a3",
+              "normalized_bytes": 109918
+            },
+            "evidence_proof": {
+              "outside_authorized_fields_structurally_equal": true,
+              "changed_ids": {
+                "sources": {
+                  "same_ids_and_order": true,
+                  "changed_ids": [
+                    "S-deepvideo"
+                  ],
+                  "before_count": 42,
+                  "after_count": 42
+                },
+                "claims": {
+                  "same_ids_and_order": true,
+                  "changed_ids": [
+                    "C-deepvideo"
+                  ],
+                  "before_count": 59,
+                  "after_count": 59
+                },
+                "source_coverage": {
+                  "same_ids_and_order": true,
+                  "changed_ids": [
+                    "U-deepvideo"
+                  ],
+                  "before_count": 39,
+                  "after_count": 39
+                },
+                "requirements": {
+                  "same_ids_and_order": true,
+                  "changed_ids": [
+                    "R11"
+                  ],
+                  "before_count": 11,
+                  "after_count": 11
+                }
+              },
+              "generation_history_prefix_unchanged": true,
+              "generation_history_appended_entries": 1,
+              "appended_previous_generator_and_snapshot_verified": true,
+              "all_changed_json_paths": [
+                "/claims/26/claim",
+                "/claims/26/evidence",
+                "/generation_history/12",
+                "/generator/identity_basis",
+                "/generator/run_id",
+                "/revision_note",
+                "/source_coverage/26/coverage_note",
+                "/source_coverage/26/title",
+                "/sources/30/accessed_on",
+                "/sources/30/current_research_receipt",
+                "/sources/30/read_scope",
+                "/sources/30/sha256",
+                "/sources/30/version",
+                "/task/requirements/10/text"
+              ]
+            },
+            "direct_scope": {
+              "critical_claim_ids": [
+                "C-deepvideo"
+              ],
+              "source_ids": [
+                "S-deepvideo"
+              ],
+              "coverage_unit_ids": [
+                "U-deepvideo"
+              ],
+              "requirement_ids": [
+                "R11"
+              ],
+              "extra_original_sources_read": "讲义p42、目标ASR、shownotes、CVF元数据与作者项目页；主要在展开篇登记，主稿原文对照使用但不声称整个既有源重读。"
+            },
+            "inherited_scope": {
+              "critical_claim_ids": [
+                "C-brook",
+                "C-alexnet",
+                "C-resnet",
+                "C-distillation",
+                "C-word2vec",
+                "C-seq2seq",
+                "C-bahdanau-attention",
+                "C-gnmt",
+                "C-transformer",
+                "C-gpt1",
+                "C-bert",
+                "C-gpt2",
+                "C-gpt3",
+                "C-scaling-laws",
+                "C-chinchilla",
+                "C-zero",
+                "C-megascale",
+                "C-laion5b",
+                "C-refinedweb",
+                "C-sparse-moe",
+                "C-lora",
+                "C-alphago-zero",
+                "C-instructgpt",
+                "C-cot",
+                "C-react",
+                "C-tulu3",
+                "C-two-stream",
+                "C-vit",
+                "C-clip",
+                "C-gan",
+                "C-diffusion-2015",
+                "C-ddpm",
+                "C-ldm",
+                "C-dit",
+                "C-bitter-lesson",
+                "C-inventory",
+                "C-sd14",
+                "C-hardware-lens",
+                "C-people",
+                "C-identity-corrections",
+                "E-gpu",
+                "E-residual",
+                "E-nmt",
+                "E-wordpiece",
+                "E-pretraining",
+                "E-scale-config",
+                "E-data-demand",
+                "E-system",
+                "E-visual-backbone",
+                "E-data-loop",
+                "E-latent",
+                "E-adversarial-component",
+                "E-product",
+                "E-dit-meeting",
+                "E-behavior",
+                "E-interaction",
+                "C-basics",
+                "C-route-walkthroughs"
+              ],
+              "source_ids": [
+                "S-lecture",
+                "S-brook",
+                "S-gpu-history",
+                "S-alexnet",
+                "S-resnet",
+                "S-distill",
+                "S-word2vec",
+                "S-seq2seq",
+                "S-bahdanau",
+                "S-gnmt",
+                "S-transformer",
+                "S-gpt1",
+                "S-bert",
+                "S-gpt2",
+                "S-gpt3",
+                "S-kaplan",
+                "S-chinchilla",
+                "S-zero",
+                "S-refinedweb",
+                "S-laion",
+                "S-megascale",
+                "S-moe",
+                "S-lora",
+                "S-bitter",
+                "S-hardware",
+                "S-alphago",
+                "S-instruct",
+                "S-cot",
+                "S-react",
+                "S-tulu",
+                "S-two-stream",
+                "S-vit",
+                "S-clip",
+                "S-gan",
+                "S-diffusion15",
+                "S-ddpm",
+                "S-ldm",
+                "S-sd14",
+                "S-dit",
+                "L-inventory",
+                "S-ai-yanyi-episode"
+              ],
+              "coverage_unit_ids": [
+                "U-brook",
+                "U-alexnet",
+                "U-resnet",
+                "U-distillation",
+                "U-word2vec",
+                "U-seq2seq",
+                "U-bahdanau-attention",
+                "U-gnmt",
+                "U-transformer",
+                "U-gpt1",
+                "U-bert",
+                "U-gpt2",
+                "U-gpt3",
+                "U-scaling-laws",
+                "U-chinchilla",
+                "U-zero",
+                "U-megascale",
+                "U-laion5b",
+                "U-refinedweb",
+                "U-sparse-moe",
+                "U-lora",
+                "U-alphago-zero",
+                "U-instructgpt",
+                "U-cot",
+                "U-react",
+                "U-tulu3",
+                "U-two-stream",
+                "U-vit",
+                "U-clip",
+                "U-gan",
+                "U-diffusion-2015",
+                "U-ddpm",
+                "U-ldm",
+                "U-dit",
+                "U-bitter-lesson",
+                "U-lenses",
+                "U-reader-method",
+                "U-cross-route"
+              ],
+              "requirement_ids": [
+                "R1",
+                "R2",
+                "R3",
+                "R4",
+                "R5",
+                "R6",
+                "R7",
+                "R8",
+                "R9",
+                "R10"
+              ],
+              "basis": "继承绑定且通过的 r24 判定，仅限已证明字节/字段未变的部分；未重新读取其余原始来源或评价其内容。"
+            },
+            "checked_array_semantics": "checked数组是本轮直接核验范围与经绑定证明继承的未改范围之并集，具体ID分开列于direct_scope/inherited_scope；绝不表示本輪重新读取所有旧来源。",
+            "previous_reviewer_access": "旧r24 sidecar仅机器提取revision/decision及快照SHA，未读旧Reviewer地图、评分理由或当前其他Reviewer内容。"
+          },
+          "candidate_read_scope": "原22节从paper-deepvideo至paper-two-stream之前、单条deepvideo脚注、frontmatter、C-deepvideo/S-deepvideo/U-deepvideo/R11；其他正文/evidence仅在进程内做独立相等证明。",
+          "notes": "这是主稿r25的增量primary_review。来源阶段先冻结17单元，候选阶段保持标题和重要性；主稿实际覆盖为3 covered、11 partial、3 missing（核心3 covered、10 partial，支持1 partial、3 missing）。原节自身完成R11所需讲解，支持性缺省和导读细节省略未构成已授权任务的核心遗漏；unsupported_claims、missing_requirements与hard_failures均为空。主稿其余部分按独立验证的r24快照继承，checked数组不等于本轮重读全部来源。评分为独立判断，尚不代表最终质量门禁通过；原生检查在此entry冻结后另行记录。"
+        },
+        {
+          "role": "escalation_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex",
+            "run_id": "deepvideo-strong-main-r25-20261105",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "model_runtime_confirmation": "unconfirmed",
+            "model_selection_basis": "flagship strong reviewer policy"
+          },
+          "snapshot_binding": {
+            "report_path": "ai-learning/reports/AI演义_笔记分析与项目整合报告.md",
+            "report_sha256": "ed1ff5fae7ff98c7b9882149e8d8063b8c260d1d8e0c498e5ee153c8bebedb1a",
+            "evidence_sha256": "0d6e8053f96d5686cc20d924e559bf3bd2611ca8fb683226475bec0ac20a2cbd",
+            "review_prompt_artifact": "main-review-prompt.txt",
+            "review_prompt_sha256": "770a835d0f60dfbdff64043436af9ff734b3dfa6089ad9ff4377f68af5e8d3d4",
+            "verified": true
+          },
+          "source_first_binding": {
+            "source_map_artifact": "strong-source-map.json",
+            "source_map_sha256": "30ecf6f43a6339802a2d140b2e7d7d0e45098c6b6182d1959b1ec4b52b1baa8a",
+            "source_receipt_artifact": "strong-source-receipt.json",
+            "source_receipt_sha256": "d4721a4f3358308692bdc3dfdf7f67d05c029c37e9c40944789b05be74715b39"
+          },
+          "scores": {
+            "evidence_fidelity": 97,
+            "request_coverage": 95,
+            "reasoning_quality": 96,
+            "readability": 96,
+            "limitations": 97
+          },
+          "score_reasons": {
+            "evidence_fidelity": "本轮直接核验的第22节准确区分单模型与集成、Video Hit@1与AP、Single的视频级聚合、Sports-1M→UCF迁移和ImageNet初始化证据边界；未发现关键数字或因果措辞错误。其余内容按r24哈希绑定通过快照继承。",
+            "request_coverage": "R11要求的展开入口、三种时间融合、弱标数据、真实收益与退步、成本、迁移、返回上下节均进入原节；作为独立导读，它有意省略完整训练系统、滤波器与数据划分等展开级细节，未把展开链接计作正文覆盖。",
+            "reasoning_quality": "正文把“更多帧”“视频级多时刻聚合”“连续帧联合处理”和“多模型集成”分开，使用正反AP案例和相机运动替代解释，结论能够从实验口径推出。",
+            "readability": "第22节用跳绳示意建立直觉，段落短、数字口径就地解释。navigation-receipt.json绑定候选并记录1440/390实际往返无错误；Reviewer另核绑定截图，未把协调者实点操作声称为本人点击。",
+            "limitations": "明确保留摘要63.3/Table3 65.4冲突、数据重叠、camera motion未做控制实验、论文未明示ImageNet权重初始化以及平均聚合的顺序边界。"
+          },
+          "critical_claim_ids_checked": [
+            "C-brook",
+            "C-alexnet",
+            "C-resnet",
+            "C-distillation",
+            "C-word2vec",
+            "C-seq2seq",
+            "C-bahdanau-attention",
+            "C-gnmt",
+            "C-transformer",
+            "C-gpt1",
+            "C-bert",
+            "C-gpt2",
+            "C-gpt3",
+            "C-scaling-laws",
+            "C-chinchilla",
+            "C-zero",
+            "C-megascale",
+            "C-laion5b",
+            "C-refinedweb",
+            "C-sparse-moe",
+            "C-lora",
+            "C-alphago-zero",
+            "C-instructgpt",
+            "C-cot",
+            "C-react",
+            "C-tulu3",
+            "C-deepvideo",
+            "C-two-stream",
+            "C-vit",
+            "C-clip",
+            "C-gan",
+            "C-diffusion-2015",
+            "C-ddpm",
+            "C-ldm",
+            "C-dit",
+            "C-bitter-lesson",
+            "C-inventory",
+            "C-sd14",
+            "C-hardware-lens",
+            "C-people",
+            "C-identity-corrections",
+            "E-gpu",
+            "E-residual",
+            "E-nmt",
+            "E-wordpiece",
+            "E-pretraining",
+            "E-scale-config",
+            "E-data-demand",
+            "E-system",
+            "E-visual-backbone",
+            "E-data-loop",
+            "E-latent",
+            "E-adversarial-component",
+            "E-product",
+            "E-dit-meeting",
+            "E-behavior",
+            "E-interaction",
+            "C-basics",
+            "C-route-walkthroughs"
+          ],
+          "coverage_unit_ids_checked": [
+            "U-brook",
+            "U-alexnet",
+            "U-resnet",
+            "U-distillation",
+            "U-word2vec",
+            "U-seq2seq",
+            "U-bahdanau-attention",
+            "U-gnmt",
+            "U-transformer",
+            "U-gpt1",
+            "U-bert",
+            "U-gpt2",
+            "U-gpt3",
+            "U-scaling-laws",
+            "U-chinchilla",
+            "U-zero",
+            "U-megascale",
+            "U-laion5b",
+            "U-refinedweb",
+            "U-sparse-moe",
+            "U-lora",
+            "U-alphago-zero",
+            "U-instructgpt",
+            "U-cot",
+            "U-react",
+            "U-tulu3",
+            "U-deepvideo",
+            "U-two-stream",
+            "U-vit",
+            "U-clip",
+            "U-gan",
+            "U-diffusion-2015",
+            "U-ddpm",
+            "U-ldm",
+            "U-dit",
+            "U-bitter-lesson",
+            "U-lenses",
+            "U-reader-method",
+            "U-cross-route"
+          ],
+          "source_content_map": [
+            {
+              "id": "DV-C01",
+              "title": "为什么把 CNN 扩展到视频并不只是“多看几帧”",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-deepvideo"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-deepvideo"
+              ],
+              "notes": "正文明确数据、时间结构与计算三重问题，但未展开旧式手工特征→词袋→分类器的历史流水线。"
+            },
+            {
+              "id": "DV-C02",
+              "title": "实际任务：把长视频当作短 clip 的袋子",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-deepvideo"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-deepvideo"
+              ],
+              "notes": "正文直接解释抽取20个短片段、每处4次裁剪/翻转后平均，并指出最终平均不保留整段先后顺序。"
+            },
+            {
+              "id": "DV-C03",
+              "title": "Single、Early、Late、Slow Fusion 的真实差别",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-deepvideo"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-deepvideo"
+              ],
+              "notes": "正文准确区分 Early 10帧、Late 相隔15帧与 Slow 逐层融合；未写 Slow 的4/2/2时间窗等展开级结构参数。"
+            },
+            {
+              "id": "DV-C04",
+              "title": "多分辨率 fovea/context：用中心偏置换吞吐",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-deepvideo"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-deepvideo"
+              ],
+              "notes": "正文写低清全景＋清晰中心及论文实现2–4倍提速；未写178/89尺寸、中心偏置与单路消融。"
+            },
+            {
+              "id": "DV-C05",
+              "title": "Sports-1M：规模、弱标签与潜在泄漏必须一起讲",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-deepvideo"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-deepvideo"
+              ],
+              "notes": "正文保留100万/487类、文本自动弱标和采访/观众/比分牌例子；未写70/10/20、5%多标签和1755近重复。"
+            },
+            {
+              "id": "DV-C06",
+              "title": "训练规模与预处理：这是从 Sports-1M 学出来的 CNN",
+              "importance": "core",
+              "assessment": "missing",
+              "source_ids": [
+                "S-deepvideo"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "正文只概述计算成本，没有写Downpour、训练约一月、replica/partition或样本规模；该细节不是本轮主稿R11的硬要求。"
+            },
+            {
+              "id": "DV-C07",
+              "title": "主结果要拆开看：CNN、时间信息、模型集成是三件事",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-deepvideo"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-deepvideo"
+              ],
+              "notes": "正文准确拆分59.3、60.9、57.7与四CNN集成63.9，并解释20×4聚合；未写手工基线55.3及整段密集特征与随机clip的比较条件。"
+            },
+            {
+              "id": "DV-C08",
+              "title": "运动信息何时有用，何时反而伤害",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-deepvideo"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-deepvideo"
+              ],
+              "notes": "正文给出杂耍+0.12与短道赛车-0.07，区分AP与命中率，并把相机运动明确写成未由控制实验证实的解释。"
+            },
+            {
+              "id": "DV-C09",
+              "title": "可解释错误与数据集偏差",
+              "importance": "core",
+              "assessment": "missing",
+              "source_ids": [
+                "S-deepvideo"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "正文没有细粒度混淆对或context/fovea第一层滤波器的定性观察。"
+            },
+            {
+              "id": "DV-C10",
+              "title": "真正的迁移链：Sports-1M → UCF-101",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-deepvideo"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-deepvideo"
+              ],
+              "notes": "正文写Sports-1M→UCF-101、65.4对41.3、潜在重叠与ImageNet初始化边界；未列其余微调方案和分组mAP。"
+            },
+            {
+              "id": "DV-C11",
+              "title": "论文的负结果与开放问题才是历史价值",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-deepvideo"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-deepvideo"
+              ],
+              "notes": "正文以“成绩差距小”的两种解释和下一节运动显式输入收束；未展开论文提出的RNN聚合与扩宽类别。"
+            },
+            {
+              "id": "DV-C12",
+              "title": "原章/播客的主线与必须纠正的事实",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-deepvideo",
+                "S-lecture",
+                "S-ai-yanyi-episode"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-deepvideo"
+              ],
+              "notes": "正文明确纠正ImageNet预训练推断，并把帧间时间融合与文字/声音/画面对齐分开。"
+            },
+            {
+              "id": "DV-C13",
+              "title": "数字口径与原始材料内部冲突",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-deepvideo"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-deepvideo"
+              ],
+              "notes": "正文与脚注准确拆开59.3→60.9、四模型63.9，并注明摘要63.3与Table 3的65.4不一致。"
+            },
+            {
+              "id": "DV-N01",
+              "title": "完整层级记法与所有超参数",
+              "importance": "supporting",
+              "assessment": "missing",
+              "source_ids": [
+                "S-deepvideo"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "正文没有完整网络层串与优化超参数，符合独立导读的裁剪密度。"
+            },
+            {
+              "id": "DV-N02",
+              "title": "作者后续履历",
+              "importance": "supporting",
+              "assessment": "missing",
+              "source_ids": [
+                "S-lecture",
+                "S-ai-yanyi-episode"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "正文不写作者后续履历，只保留当时机构与作者署名。"
+            },
+            {
+              "id": "DV-N03",
+              "title": "手工基线的 25,000 维构造细节",
+              "importance": "supporting",
+              "assessment": "missing",
+              "source_ids": [
+                "S-deepvideo"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "正文未列25,000维手工基线组成。"
+            },
+            {
+              "id": "DV-N04",
+              "title": "数据下载与存储操作建议",
+              "importance": "supporting",
+              "assessment": "missing",
+              "source_ids": [
+                "S-deepvideo"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "正文未写项目页下载与存储操作建议。"
+            },
+            {
+              "id": "DV-N05",
+              "title": "讲者关于 24 fps 与“信噪比更差”的直觉",
+              "importance": "supporting",
+              "assessment": "missing",
+              "source_ids": [
+                "S-ai-yanyi-episode"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "正文没有沿用“至少24fps”或“信噪比更差”的讲者直觉。"
+            }
+          ],
+          "source_ids_checked": [
+            "S-lecture",
+            "S-brook",
+            "S-gpu-history",
+            "S-alexnet",
+            "S-resnet",
+            "S-distill",
+            "S-word2vec",
+            "S-seq2seq",
+            "S-bahdanau",
+            "S-gnmt",
+            "S-transformer",
+            "S-gpt1",
+            "S-bert",
+            "S-gpt2",
+            "S-gpt3",
+            "S-kaplan",
+            "S-chinchilla",
+            "S-zero",
+            "S-refinedweb",
+            "S-laion",
+            "S-megascale",
+            "S-moe",
+            "S-lora",
+            "S-bitter",
+            "S-hardware",
+            "S-alphago",
+            "S-instruct",
+            "S-cot",
+            "S-react",
+            "S-tulu",
+            "S-deepvideo",
+            "S-two-stream",
+            "S-vit",
+            "S-clip",
+            "S-gan",
+            "S-diffusion15",
+            "S-ddpm",
+            "S-ldm",
+            "S-sd14",
+            "S-dit",
+            "L-inventory",
+            "S-ai-yanyi-episode"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6",
+            "R7",
+            "R8",
+            "R9",
+            "R10",
+            "R11"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "incremental_inheritance": {
+            "baseline_revision": 24,
+            "baseline_decision": "pass",
+            "baseline_score": 95.95,
+            "baseline_report_sha256": "4d7ab576dadde83a8ec76979ccd42163f4ae1a1106fa91eb3e413de8ae44820e",
+            "baseline_evidence_sha256": "c065ba0e74c413d470aee4967489e7dd5267f320e04a432c8bcce1f6deae4261",
+            "independent_check_artifact": "strong-inheritance-check.json",
+            "independent_check_sha256": "3e3f209853f5f1655f0413c4d34af93a15d11f5c20294b82fc4f35c74abfcbd5",
+            "direct_claim_ids": [
+              "C-deepvideo"
+            ],
+            "direct_source_ids": [
+              "S-deepvideo"
+            ],
+            "direct_requirement_ids": [
+              "R11"
+            ],
+            "direct_coverage_unit_ids": [
+              "U-deepvideo"
+            ],
+            "inherited_claim_ids": [
+              "C-brook",
+              "C-alexnet",
+              "C-resnet",
+              "C-distillation",
+              "C-word2vec",
+              "C-seq2seq",
+              "C-bahdanau-attention",
+              "C-gnmt",
+              "C-transformer",
+              "C-gpt1",
+              "C-bert",
+              "C-gpt2",
+              "C-gpt3",
+              "C-scaling-laws",
+              "C-chinchilla",
+              "C-zero",
+              "C-megascale",
+              "C-laion5b",
+              "C-refinedweb",
+              "C-sparse-moe",
+              "C-lora",
+              "C-alphago-zero",
+              "C-instructgpt",
+              "C-cot",
+              "C-react",
+              "C-tulu3",
+              "C-two-stream",
+              "C-vit",
+              "C-clip",
+              "C-gan",
+              "C-diffusion-2015",
+              "C-ddpm",
+              "C-ldm",
+              "C-dit",
+              "C-bitter-lesson",
+              "C-inventory",
+              "C-sd14",
+              "C-hardware-lens",
+              "C-people",
+              "C-identity-corrections",
+              "E-gpu",
+              "E-residual",
+              "E-nmt",
+              "E-wordpiece",
+              "E-pretraining",
+              "E-scale-config",
+              "E-data-demand",
+              "E-system",
+              "E-visual-backbone",
+              "E-data-loop",
+              "E-latent",
+              "E-adversarial-component",
+              "E-product",
+              "E-dit-meeting",
+              "E-behavior",
+              "E-interaction",
+              "C-basics",
+              "C-route-walkthroughs"
+            ],
+            "inherited_source_ids": [
+              "S-lecture",
+              "S-brook",
+              "S-gpu-history",
+              "S-alexnet",
+              "S-resnet",
+              "S-distill",
+              "S-word2vec",
+              "S-seq2seq",
+              "S-bahdanau",
+              "S-gnmt",
+              "S-transformer",
+              "S-gpt1",
+              "S-bert",
+              "S-gpt2",
+              "S-gpt3",
+              "S-kaplan",
+              "S-chinchilla",
+              "S-zero",
+              "S-refinedweb",
+              "S-laion",
+              "S-megascale",
+              "S-moe",
+              "S-lora",
+              "S-bitter",
+              "S-hardware",
+              "S-alphago",
+              "S-instruct",
+              "S-cot",
+              "S-react",
+              "S-tulu",
+              "S-two-stream",
+              "S-vit",
+              "S-clip",
+              "S-gan",
+              "S-diffusion15",
+              "S-ddpm",
+              "S-ldm",
+              "S-sd14",
+              "S-dit",
+              "L-inventory",
+              "S-ai-yanyi-episode"
+            ],
+            "inherited_requirement_ids": [
+              "R1",
+              "R2",
+              "R3",
+              "R4",
+              "R5",
+              "R6",
+              "R7",
+              "R8",
+              "R9",
+              "R10"
+            ],
+            "inherited_coverage_unit_ids": [
+              "U-brook",
+              "U-alexnet",
+              "U-resnet",
+              "U-distillation",
+              "U-word2vec",
+              "U-seq2seq",
+              "U-bahdanau-attention",
+              "U-gnmt",
+              "U-transformer",
+              "U-gpt1",
+              "U-bert",
+              "U-gpt2",
+              "U-gpt3",
+              "U-scaling-laws",
+              "U-chinchilla",
+              "U-zero",
+              "U-megascale",
+              "U-laion5b",
+              "U-refinedweb",
+              "U-sparse-moe",
+              "U-lora",
+              "U-alphago-zero",
+              "U-instructgpt",
+              "U-cot",
+              "U-react",
+              "U-tulu3",
+              "U-two-stream",
+              "U-vit",
+              "U-clip",
+              "U-gan",
+              "U-diffusion-2015",
+              "U-ddpm",
+              "U-ldm",
+              "U-dit",
+              "U-bitter-lesson",
+              "U-lenses",
+              "U-reader-method",
+              "U-cross-route"
+            ],
+            "note": "checked数组为原生门禁包含全量ID；除direct列表外均来自r24严格不变范围的通过快照，不代表本轮重读那些来源。"
+          },
+          "presentation_check": {
+            "navigation_receipt_artifact": "navigation-receipt.json",
+            "navigation_receipt_sha256": "7226a7c832f7c0880ab10e27b035b2b90e65e5fc018906cc82d7e0b718fa744c",
+            "bound_report_sha256": "ed1ff5fae7ff98c7b9882149e8d8063b8c260d1d8e0c498e5ee153c8bebedb1a",
+            "screenshots_reviewed": [
+              "main-deepvideo-1440.png",
+              "main-deepvideo-390.png",
+              "series-title-list-1440.png",
+              "series-title-list-390.png"
+            ],
+            "reviewer_clicked_ui": false
+          },
+          "notes": "强审直接范围为r25第22节、deepvideo脚注和S/C/U-deepvideo、R11；其余checked ID按incremental_inheritance继承r24。spawn配置为gpt-5.6-sol，缺少可信child per-run证明，runtime记unconfirmed。来源地图的13个core和5个supporting均已映射；主稿作为独立导读允许展开级细节partial/missing，链接未计入正文覆盖。未发现unsupported claim、missing requirement或hard failure。"
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 94.25,
+        "evaluated_on": "2026-11-05",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "c57ecaf2c13863df9c670be6b89eed6d2894bf19bcd7469432c59975cf4e1200",
+        "evidence_sha256": "0d6e8053f96d5686cc20d924e559bf3bd2611ca8fb683226475bec0ac20a2cbd"
+      }
+    },
+    {
+      "revision_round": 26,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "identity": {
+            "harness": "codex",
+            "model_runtime_confirmation": "unconfirmed",
+            "model_source": "unconfirmed",
+            "basis": "本子Agent的精确模型/会话绑定没有独立runtime证据。共享工作区eacli宿主的配置身份不作为本子会话身份；不虚构用户模型覆盖。"
+          },
+          "source_first_review": {
+            "frozen_map_artifact": "primary-source-map.json",
+            "frozen_map_sha256": "412e9c71d1628fd2a07051fb147a22568b04e3b00a9bf5b3c2e971d17d124afa",
+            "created_before_report_read": true,
+            "source_units": 32,
+            "visual_supplement_artifact": "primary-source-visual-supplement.json",
+            "visual_supplement_sha256": "5f9f04f3af2d64f3e5e10badf6f3f6aec9c522c0d3d1fc1e4fbdf61f66aa7458",
+            "all_titles_and_importance_preserved": true
+          },
+          "original_materials_read": {
+            "paper": "arXiv1406.2199v2完整11页排版文字、Tables1–4、Figures1–6图注与关联正文；p8原图直接核表2–4。",
+            "paper_pdf_sha256": "61c5b62c1f9d50c7445fbc35e09e72b6db3aeecfff9525694d54fd67531c1a47",
+            "paper_layout_sha256": "bf36fac1eb6669ece25225562f6799adfae79354ad1d91cb0e6d1a68242fc697",
+            "metadata": "官方arXiv题名、署名和v1/v2时间，缓存已核读。",
+            "lecture": "讲义p43抽取文本和同页原图；未重读全部讲义。",
+            "lecture_pdf_sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
+            "podcast": "目标45段ASR完整读，11711.90–11874.72秒；并独立重算小数时间戳连续/顺序，核对原生机器收据。",
+            "asr_slice_sha256": "fe7d5311359e808bf7e0824b6e59af346417561fc7cb1665714f77eb8c8e9cb9",
+            "asr_text_sha256": "5b5d91198a0f429abd8e503f8f2a5c0dba2df11366641456833da4c9184d804d",
+            "shownotes_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5",
+            "shownotes_scope": "节目页全文重读，本章Part4条目与DeepVideo/双流/GAN顺序；未把Part4时间戳当本章起点。"
+          },
+          "verification_receipts": [
+            {
+              "artifact": "primary-verification-receipt.json",
+              "sha256": "ccfcb8b3f504180610e72fbec6d874ca2fd2e983efb0cd8957deee70ba6e5b0b"
+            },
+            {
+              "artifact": "source-manifest.json",
+              "sha256": "0c792abfc4c2561d294d10d3af568440096a63df47b9e31f0c7db3347d548e3b"
+            },
+            {
+              "artifact": "calculation-check.json",
+              "sha256": "6041d76699828d4d0e786897775c9d8447893baf46f62717985d9bb284b09502"
+            }
+          ],
+          "ui_scope": {
+            "status": "not_completed",
+            "scope_checked_by_reviewer": "正文源码的阅读、路径/明确锚点、脚注定义与编号、无details/summary折叠；未操作工作台页面。",
+            "coordinator_report": "协调者报告本轮Chrome Browser live API的快照、DOM、截图、导航不可用，没有可用UI收据；这是协调者反馈，不冒称本Reviewer亲自复现故障。",
+            "desktop_checked": false,
+            "narrow_screen_checked": false,
+            "toc_click_checked": false,
+            "footnote_roundtrip_checked": false,
+            "report_navigation_click_checked": false,
+            "screenshots_received": false,
+            "static_checks_do_not_establish_ui_pass": true
+          },
+          "review_limits": [
+            "没有听音或测量WER；结构审计不等于识别文本完全准确。",
+            "没有重训、推理或测量光流精度/速度；差值仅从论文表值计算。",
+            "未逐格查看混淆矩阵或直接查看其他论文图像；数字与图像解释限于实际读取范围。",
+            "未核查所有前驱/后继论文和作者后续履历。",
+            "尚未完成实际工作台桌面/窄屏、目录、脚注与导航点击检查。"
+          ],
+          "unsupported_claims": [],
+          "hard_failures": [],
+          "frozen_at": "2026-11-05T08:34:16.754656+00:00",
+          "reviewer": {
+            "model": "unconfirmed",
+            "harness": "codex",
+            "run_id": "two-stream-primary-main-r26-20261105",
+            "independent_context": true,
+            "explicit_model_override": false
+          },
+          "snapshot_binding": {
+            "report_path": "ai-learning/reports/AI演义_笔记分析与项目整合报告.md",
+            "report_sha256": "65cbea1950306094ef81fa57d8547c0213d3cf4a3a863c17ced0cd00bafd422d",
+            "evidence_path": "ai-learning/reports/.quality/AI演义_笔记分析与项目整合报告.evidence.json",
+            "evidence_sha256": "ef536151573ccbed882fcc1b30c322448b0f3aa543022c8999f2a7875eae6118",
+            "quality_tier": "flagship",
+            "revision_round": 26,
+            "prompt": {
+              "artifact": "main-review-prompt.md",
+              "sha256": "49f0338476f82ac5a84f70c42f01bc8cbb03ac6bc9efb0018ec75c4ff55b918f"
+            }
+          },
+          "source_content_map": [
+            {
+              "id": "P00",
+              "title": "论文身份与版本",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S-two-stream"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-two-stream"
+              ],
+              "notes": "原节首段写两位作者与牛津；two-stream脚注明确首发与v2日期，身份与版本均有对应。"
+            },
+            {
+              "id": "P01",
+              "title": "问题：有多帧不等于学会运动",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-two-stream"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-deepvideo",
+                "U-two-stream"
+              ],
+              "notes": "相邻第22节及本节继续以跳绳连接RGB多帧的运动利用问题，56.4%与81.0%的局部对照在原节内给出；未外推为RGB永远学不会运动。"
+            },
+            {
+              "id": "P02",
+              "title": "双流全流程与互补信息",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-two-stream"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-two-stream"
+              ],
+              "notes": "原节自己写清RGB外观流、光流时间流、分别输出动作类别分数再融合；没有三流或神经科学实证误称。"
+            },
+            {
+              "id": "P03",
+              "title": "空间流与图像预训练",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-two-stream"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-two-stream"
+              ],
+              "notes": "写出空间流借ImageNet预训练；未说明最终固定预训练网络、只训最后分类层及相应对照结果。"
+            },
+            {
+              "id": "P04",
+              "title": "光流是什么",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-two-stream",
+                "S-ai-yanyi-episode"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-two-stream"
+              ],
+              "notes": "用小箭头解释水平/垂直位移，明确区别于像素相减，也提到相机运动；没有展开Brox算法及亮度/梯度恒定和平滑假设。"
+            },
+            {
+              "id": "P05",
+              "title": "固定位置的光流堆叠",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-two-stream"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-two-stream"
+              ],
+              "notes": "原节写10组光流、20通道和局部时间变化；未展开固定坐标逐通道取值、11张原始帧及224×224输入裁剪。"
+            },
+            {
+              "id": "P06",
+              "title": "轨迹堆叠备选",
+              "importance": "core",
+              "assessment": "missing",
+              "source_ids": [
+                "S-two-stream"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "原第23节没有说明轨迹堆叠备选；不把展开篇的说明计为原节覆盖。"
+            },
+            {
+              "id": "P07",
+              "title": "双向光流备选",
+              "importance": "core",
+              "assessment": "missing",
+              "source_ids": [
+                "S-two-stream"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "原第23节没有双向光流配置及单路/融合相反收益的比较。"
+            },
+            {
+              "id": "P08",
+              "title": "均值光流消减",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-two-stream"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-two-stream"
+              ],
+              "notes": "原节指出减去平均位移只能做简单相机补偿；没有解释每个场减平均向量的操作及实验增益。"
+            },
+            {
+              "id": "P09",
+              "title": "为何能连接手工表示",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-two-stream"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-two-stream"
+              ],
+              "notes": "原节讨论先提供运动结构、由网络学习动作的分工；没有HOF/MBH/光流导数及可学习表示如何连接手工描述子的细化。"
+            },
+            {
+              "id": "P10",
+              "title": "第一层滤波器的可视化",
+              "importance": "supporting",
+              "assessment": "missing",
+              "source_ids": [
+                "S-two-stream"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "原节未介绍第一层滤波器可视化和空间/时间导数；这是支持性细节省略。"
+            },
+            {
+              "id": "P11",
+              "title": "多任务学习的机制",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-two-stream"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-two-stream"
+              ],
+              "notes": "原节写共享特征、保留UCF/HMDB两头的多任务办法；没有标签交集动机、每个头只对本数据集计算损失及辅助完整数据的细节。"
+            },
+            {
+              "id": "P12",
+              "title": "网络与训练口径",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S-two-stream"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-two-stream"
+              ],
+              "notes": "原节只交代两路卷积网络与空间预训练；CNN-M、优化器、裁剪和dropout等实现细节未展开。"
+            },
+            {
+              "id": "P13",
+              "title": "测试阶段的视频分数",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-two-stream"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-two-stream"
+              ],
+              "notes": "原节说明对多个位置类别分数平均及其长程顺序限制；没有25个时间位置、各10视角或两次聚合的详细区别。"
+            },
+            {
+              "id": "P14",
+              "title": "光流工程代价",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-two-stream"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-two-stream"
+              ],
+              "notes": "原节写光流须预计算和存储、额外成本不能忽略；未给0.06秒、1.5TB→27GB及4Titan训练数字。"
+            },
+            {
+              "id": "P15",
+              "title": "数据集和评估协议",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-two-stream"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-two-stream"
+              ],
+              "notes": "单拆分与三拆分平均准确率明确分开；没有数据集全量/训练规模、类别数量与平均帧数。"
+            },
+            {
+              "id": "P16",
+              "title": "空间流消融",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-two-stream"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-two-stream"
+              ],
+              "notes": "原节只保留ImageNet预训练的价值，没有空间流Table1a结果和高dropout反例。"
+            },
+            {
+              "id": "P17",
+              "title": "时间流输入消融",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-two-stream"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-two-stream"
+              ],
+              "notes": "原节只用主要十组光流81.0%的结果，未列L1/L5、均值消减、轨迹和双向完整消融。"
+            },
+            {
+              "id": "P18",
+              "title": "与原始 RGB 帧堆叠的控制比较",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-two-stream"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-two-stream"
+              ],
+              "notes": "原节明确UCF split1、从头训练11帧Slow Fusion为56.4%、十组光流为81.0%，并保留额外算法成本；没有与三拆分65.4混算。单帧52.3的支持性起点未重复。"
+            },
+            {
+              "id": "P19",
+              "title": "多任务实验",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-two-stream"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-two-stream"
+              ],
+              "notes": "多任务学习机制有简介，但HMDB的46.6/49.0/52.8/55.4及UCF81.5等实验和辅助集使用口径未在原节展开。"
+            },
+            {
+              "id": "P20",
+              "title": "融合方法与失败尝试",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-two-stream"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-two-stream"
+              ],
+              "notes": "原节称融合动作分数并报告正式SVM结果；没有L2归一化、Table3融合消融或联合全连接层过拟合失败。"
+            },
+            {
+              "id": "P21",
+              "title": "正式成绩与手工表示的边界",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-two-stream",
+                "S-lecture",
+                "S-ai-yanyi-episode"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-two-stream"
+              ],
+              "notes": "原节保留两数据集最关键的88.0/59.4与87.9/61.1/66.8边界，结论正确；未列基本IDT、两单流和平均融合的完整Table4行。"
+            },
+            {
+              "id": "P22",
+              "title": "真实失败类别",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-two-stream"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-two-stream"
+              ],
+              "notes": "原节具体说明敲锤对头部按摩/刷牙的混淆，并将人脸与上下往复运动解释限定为作者观察。"
+            },
+            {
+              "id": "P23",
+              "title": "论文明确未完成的工作",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-two-stream"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-two-stream"
+              ],
+              "notes": "原节保留局部窗口、全视频平均和相机补偿边界；未写Sports-1M规模未来计划、沿轨迹池化及将运动估计融入网络的后续方向。"
+            },
+            {
+              "id": "P24",
+              "title": "历史定位的准确范围",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S-two-stream",
+                "S-lecture",
+                "S-ai-yanyi-episode"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-two-stream"
+              ],
+              "notes": "原节保持2014年牛津及动作识别的有限定位，没有首创光流/全面视频理解的断言；未介绍前驱HMAX双通路与作者履历或后续谱系。"
+            },
+            {
+              "id": "SN01",
+              "title": "shownotes 本章定位及上下章",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-ai-yanyi-episode"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-two-stream"
+              ],
+              "notes": "原节脚注给双流ASR大致时间并连接报告下一节ViT；没有独立交代shownotes的Part4起点与节目下一主题GAN。"
+            },
+            {
+              "id": "ASR01",
+              "title": "从前作弱点引入双流",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-ai-yanyi-episode",
+                "S-two-stream"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-deepvideo",
+                "U-two-stream"
+              ],
+              "notes": "本节承接前一节多帧收益有限的问题，核名为Karen Simonyan和Andrew Zisserman/牛津；不沿用ASR错名。"
+            },
+            {
+              "id": "ASR02",
+              "title": "时间流与光流的口头比喻",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-ai-yanyi-episode",
+                "S-two-stream"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-two-stream"
+              ],
+              "notes": "原节自己纠正两路含义和“相减影子”的定义错误；没有把时间流与光流写成两条额外网络。"
+            },
+            {
+              "id": "ASR03",
+              "title": "给模型显式运动信息的解释",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-ai-yanyi-episode"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-two-stream"
+              ],
+              "notes": "原节以输入运动、数据与预处理共同作用解释效果，并延伸到先给模型什么结构；保留节目主线而未猜解不明ASR词。"
+            },
+            {
+              "id": "ASR04",
+              "title": "里程碑与影响范围的夸张口径",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-ai-yanyi-episode",
+                "S-two-stream"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-two-stream"
+              ],
+              "notes": "原节用跨数据集数值修正全面超越手工方法的强断言；未复述AlexNet时刻或后续普及度评价，后者不能算已验证事实。"
+            },
+            {
+              "id": "ASR05",
+              "title": "作者跨领域工作的尾声",
+              "importance": "supporting",
+              "assessment": "missing",
+              "source_ids": [
+                "S-ai-yanyi-episode",
+                "S-lecture"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "原节没有作者AlphaGo Zero或后续任职内容；支持性人物旁论未展开，也未无来源补写。"
+            },
+            {
+              "id": "H01",
+              "title": "讲义的章节梗概",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-lecture"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-two-stream"
+              ],
+              "notes": "原节保留牛津、外观/运动分工及竞争水平，脚注标讲义p43；未复述讲义关于后续几乎全部研究的广泛影响。"
+            }
+          ],
+          "critical_claim_ids_checked": [
+            "C-brook",
+            "C-alexnet",
+            "C-resnet",
+            "C-distillation",
+            "C-word2vec",
+            "C-seq2seq",
+            "C-bahdanau-attention",
+            "C-gnmt",
+            "C-transformer",
+            "C-gpt1",
+            "C-bert",
+            "C-gpt2",
+            "C-gpt3",
+            "C-scaling-laws",
+            "C-chinchilla",
+            "C-zero",
+            "C-megascale",
+            "C-laion5b",
+            "C-refinedweb",
+            "C-sparse-moe",
+            "C-lora",
+            "C-alphago-zero",
+            "C-instructgpt",
+            "C-cot",
+            "C-react",
+            "C-tulu3",
+            "C-deepvideo",
+            "C-two-stream",
+            "C-vit",
+            "C-clip",
+            "C-gan",
+            "C-diffusion-2015",
+            "C-ddpm",
+            "C-ldm",
+            "C-dit",
+            "C-bitter-lesson",
+            "C-inventory",
+            "C-sd14",
+            "C-hardware-lens",
+            "C-people",
+            "C-identity-corrections",
+            "E-gpu",
+            "E-residual",
+            "E-nmt",
+            "E-wordpiece",
+            "E-pretraining",
+            "E-scale-config",
+            "E-data-demand",
+            "E-system",
+            "E-visual-backbone",
+            "E-data-loop",
+            "E-latent",
+            "E-adversarial-component",
+            "E-product",
+            "E-dit-meeting",
+            "E-behavior",
+            "E-interaction",
+            "C-basics",
+            "C-route-walkthroughs"
+          ],
+          "coverage_unit_ids_checked": [
+            "U-brook",
+            "U-alexnet",
+            "U-resnet",
+            "U-distillation",
+            "U-word2vec",
+            "U-seq2seq",
+            "U-bahdanau-attention",
+            "U-gnmt",
+            "U-transformer",
+            "U-gpt1",
+            "U-bert",
+            "U-gpt2",
+            "U-gpt3",
+            "U-scaling-laws",
+            "U-chinchilla",
+            "U-zero",
+            "U-megascale",
+            "U-laion5b",
+            "U-refinedweb",
+            "U-sparse-moe",
+            "U-lora",
+            "U-alphago-zero",
+            "U-instructgpt",
+            "U-cot",
+            "U-react",
+            "U-tulu3",
+            "U-deepvideo",
+            "U-two-stream",
+            "U-vit",
+            "U-clip",
+            "U-gan",
+            "U-diffusion-2015",
+            "U-ddpm",
+            "U-ldm",
+            "U-dit",
+            "U-bitter-lesson",
+            "U-lenses",
+            "U-reader-method",
+            "U-cross-route"
+          ],
+          "source_ids_checked": [
+            "S-lecture",
+            "S-brook",
+            "S-gpu-history",
+            "S-alexnet",
+            "S-resnet",
+            "S-distill",
+            "S-word2vec",
+            "S-seq2seq",
+            "S-bahdanau",
+            "S-gnmt",
+            "S-transformer",
+            "S-gpt1",
+            "S-bert",
+            "S-gpt2",
+            "S-gpt3",
+            "S-kaplan",
+            "S-chinchilla",
+            "S-zero",
+            "S-refinedweb",
+            "S-laion",
+            "S-megascale",
+            "S-moe",
+            "S-lora",
+            "S-bitter",
+            "S-hardware",
+            "S-alphago",
+            "S-instruct",
+            "S-cot",
+            "S-react",
+            "S-tulu",
+            "S-deepvideo",
+            "S-two-stream",
+            "S-vit",
+            "S-clip",
+            "S-gan",
+            "S-diffusion15",
+            "S-ddpm",
+            "S-ldm",
+            "S-sd14",
+            "S-dit",
+            "L-inventory",
+            "S-ai-yanyi-episode"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6",
+            "R7",
+            "R8",
+            "R9",
+            "R10",
+            "R11"
+          ],
+          "missing_requirements": [
+            "R8",
+            "R9"
+          ],
+          "scores": {
+            "evidence_fidelity": 94,
+            "request_coverage": 90,
+            "reasoning_quality": 94,
+            "readability": 91,
+            "limitations": 95
+          },
+          "score_reasons": {
+            "evidence_fidelity": "本轮直接核对C-two-stream的两流、光流、56.4/81.0、三拆分88.0/59.4及对手值、混淆与代价，未发现关键数字或机制错误。主账本当前C/U仍只挂S-two-stream与S-deepvideo，S-ai-yanyi-episode标题/范围还是LoRA；原节使用的本章ASR及讲义需要独立、明确的来源绑定。实际读过正确原始来源，故不记伪造/未读来源硬失败，但账本provenance尚需修补。",
+            "request_coverage": "原第23节由377字扩至1300字的区块，标题下第一块是展开链接，机制、分口径成绩、真实错误与边界已在原节呈现。32单元实记8 covered/20 partial/4 missing，完整消融、变体和实现细节未靠展开链接冒充主稿覆盖。R8本章来源登记与R9实际UI检查未完成；其余主稿按r25精确证明继承。",
+            "reasoning_quality": "光流与帧差、单拆分与三拆分、显式运动与预计算成本、局部运动与完整视频理解区分清楚；混淆原因限定为作者观察。主稿受导读篇幅限制，未展开多任务损失及融合消融，因而不等同完整方法推导。",
+            "readability": "原節以跳绳衔接DeepVideo，普通段落可独立解释核心机制，入口位置与返回/上下节路径静态存在。SVM等词在原节仍需结合展开理解；本轮没有工作台桌面/窄屏或真实点击收据，不能给实际呈现通过结论。",
+            "limitations": "主文明确额外光流计算、相机补偿简化、局部窗口和平均顺序损失，脚注写未听校/未复现；不把两个数据集的成绩扩成全面胜出。更细成本/轨迹池化等只在展开篇解释，未当作原节已完全覆盖。"
+          },
+          "incremental_inheritance": {
+            "baseline_revision": 25,
+            "baseline_decision_status": "pass",
+            "baseline_report_sha256": "c57ecaf2c13863df9c670be6b89eed6d2894bf19bcd7469432c59975cf4e1200",
+            "baseline_evidence_sha256": "0d6e8053f96d5686cc20d924e559bf3bd2611ca8fb683226475bec0ac20a2cbd",
+            "baseline_review_sha256": "8e319869baa992d24fd2a175e3bee3f24ce5bbdb20d1f7fd78c61b9b0fa59b5f",
+            "previous_primary_entry_sha256": "1fc68f50b0dbfa1bb7c1fe7d9c969e6906d5038f4232054dcfad5131378b8cab",
+            "baseline_decision_hashes_match": true,
+            "previous_entry_pre_finalize_snapshot_matches_after_only_status_normalization": true,
+            "pre_finalize_report_sha256": "ed1ff5fae7ff98c7b9882149e8d8063b8c260d1d8e0c498e5ee153c8bebedb1a",
+            "outside_authorized_regions_byte_equal": true,
+            "normalized_body_sha256": "dd68b7484580f436bad36dcd5496208f9f51cb5637f3a7722cf98ee77e48d198",
+            "normalized_bytes": 112728,
+            "allowed_report_changes": [
+              "paper-two-stream inclusive to paper-vit exclusive",
+              "single two-stream footnote definition",
+              "frontmatter status completed→in_progress"
+            ],
+            "remaining_evidence_deep_equal_with_array_order": true,
+            "source_claim_coverage_requirement_id_orders_unchanged": true,
+            "generation_history_previous_prefix_unchanged": true,
+            "generation_history_appended_count": 1,
+            "all_changed_json_paths": [
+              "/claims/27/claim",
+              "/claims/27/evidence",
+              "/generation_history/13",
+              "/generator/identity_basis",
+              "/generator/run_id",
+              "/revision_note",
+              "/source_coverage/27/coverage_note",
+              "/source_coverage/27/title",
+              "/sources/31/accessed_on",
+              "/sources/31/current_research_receipt",
+              "/sources/31/read_scope",
+              "/sources/31/sha256",
+              "/sources/31/version",
+              "/task/requirements/10/text"
+            ],
+            "direct_scope": {
+              "critical_claim_ids": [
+                "C-two-stream"
+              ],
+              "coverage_unit_ids": [
+                "U-two-stream"
+              ],
+              "source_ids": [
+                "S-two-stream"
+              ],
+              "requirement_ids": [
+                "R11"
+              ],
+              "additional_source_slices": "讲义p43、双流45段ASR、shownotes Part4与arXiv元数据本轮重新核读。"
+            },
+            "inherited_scope": {
+              "critical_claim_ids": [
+                "C-brook",
+                "C-alexnet",
+                "C-resnet",
+                "C-distillation",
+                "C-word2vec",
+                "C-seq2seq",
+                "C-bahdanau-attention",
+                "C-gnmt",
+                "C-transformer",
+                "C-gpt1",
+                "C-bert",
+                "C-gpt2",
+                "C-gpt3",
+                "C-scaling-laws",
+                "C-chinchilla",
+                "C-zero",
+                "C-megascale",
+                "C-laion5b",
+                "C-refinedweb",
+                "C-sparse-moe",
+                "C-lora",
+                "C-alphago-zero",
+                "C-instructgpt",
+                "C-cot",
+                "C-react",
+                "C-tulu3",
+                "C-deepvideo",
+                "C-vit",
+                "C-clip",
+                "C-gan",
+                "C-diffusion-2015",
+                "C-ddpm",
+                "C-ldm",
+                "C-dit",
+                "C-bitter-lesson",
+                "C-inventory",
+                "C-sd14",
+                "C-hardware-lens",
+                "C-people",
+                "C-identity-corrections",
+                "E-gpu",
+                "E-residual",
+                "E-nmt",
+                "E-wordpiece",
+                "E-pretraining",
+                "E-scale-config",
+                "E-data-demand",
+                "E-system",
+                "E-visual-backbone",
+                "E-data-loop",
+                "E-latent",
+                "E-adversarial-component",
+                "E-product",
+                "E-dit-meeting",
+                "E-behavior",
+                "E-interaction",
+                "C-basics",
+                "C-route-walkthroughs"
+              ],
+              "coverage_unit_ids": [
+                "U-brook",
+                "U-alexnet",
+                "U-resnet",
+                "U-distillation",
+                "U-word2vec",
+                "U-seq2seq",
+                "U-bahdanau-attention",
+                "U-gnmt",
+                "U-transformer",
+                "U-gpt1",
+                "U-bert",
+                "U-gpt2",
+                "U-gpt3",
+                "U-scaling-laws",
+                "U-chinchilla",
+                "U-zero",
+                "U-megascale",
+                "U-laion5b",
+                "U-refinedweb",
+                "U-sparse-moe",
+                "U-lora",
+                "U-alphago-zero",
+                "U-instructgpt",
+                "U-cot",
+                "U-react",
+                "U-tulu3",
+                "U-deepvideo",
+                "U-vit",
+                "U-clip",
+                "U-gan",
+                "U-diffusion-2015",
+                "U-ddpm",
+                "U-ldm",
+                "U-dit",
+                "U-bitter-lesson",
+                "U-lenses",
+                "U-reader-method",
+                "U-cross-route"
+              ],
+              "source_ids": [
+                "S-lecture",
+                "S-brook",
+                "S-gpu-history",
+                "S-alexnet",
+                "S-resnet",
+                "S-distill",
+                "S-word2vec",
+                "S-seq2seq",
+                "S-bahdanau",
+                "S-gnmt",
+                "S-transformer",
+                "S-gpt1",
+                "S-bert",
+                "S-gpt2",
+                "S-gpt3",
+                "S-kaplan",
+                "S-chinchilla",
+                "S-zero",
+                "S-refinedweb",
+                "S-laion",
+                "S-megascale",
+                "S-moe",
+                "S-lora",
+                "S-bitter",
+                "S-hardware",
+                "S-alphago",
+                "S-instruct",
+                "S-cot",
+                "S-react",
+                "S-tulu",
+                "S-deepvideo",
+                "S-vit",
+                "S-clip",
+                "S-gan",
+                "S-diffusion15",
+                "S-ddpm",
+                "S-ldm",
+                "S-sd14",
+                "S-dit",
+                "L-inventory",
+                "S-ai-yanyi-episode"
+              ],
+              "requirement_ids": [
+                "R1",
+                "R2",
+                "R3",
+                "R4",
+                "R5",
+                "R6",
+                "R7",
+                "R8",
+                "R9",
+                "R10"
+              ]
+            },
+            "checked_array_semantics": "直接复核与严格快照绑定继承的并集；不是本轮重读全部历史来源。",
+            "prior_review_access": "来源地图冻结后，阅读r25 primary entry的评分理由、地图、继承边界与快照。仅用于未改范围继承，不用于构造本章独立来源地图。未读取当前另一位Reviewer结论。"
+          },
+          "candidate_read_scope": "第23节及two-stream脚注全文，必要的相邻22/24节、元数据、C-two-stream/S-two-stream/U-two-stream/R11；余文与evidence仅做字节/字段比较，再继承r25 primary entry。",
+          "open_findings": [
+            {
+              "id": "MAIN-PROVENANCE-01",
+              "severity": "needs_revision",
+              "requirement_ids": [
+                "R8"
+              ],
+              "affected_claim_ids": [
+                "C-two-stream"
+              ],
+              "affected_coverage_ids": [
+                "U-two-stream"
+              ],
+              "description": "原节已经引用本章口述与讲义，C/U却未绑定本章ASR或讲义来源。既有S-ai-yanyi-episode的LoRA读取范围不能代表双流片段已登记。",
+              "requested_change": "保留旧来源，新增/明确本章节目与讲义来源范围、转写审计及哈希，并让C-two-stream/U-two-stream引用相应ID。此问题是来源登记范围，技术断言已经独立核实。"
+            },
+            {
+              "id": "MAIN-UI-01",
+              "severity": "verification_incomplete",
+              "requirement_ids": [
+                "R9"
+              ],
+              "description": "实际工作台桌面/窄屏、目录、脚注与阅读往返未检查。源码链接存在不能替代实际阅读入口验收。",
+              "requested_change": "工具可用后完成同快照UI检查并补收据；当前不可标任务完成。"
+            }
+          ],
+          "notes": "当前r26的独立增量审稿，科学内容未见实质错误，但本章provenance登记和实际页面检查尚未完成，missing_requirements为R8/R9。主稿partial/missing是如实记录导读的省略，不能套用仅podcast-learning standard/deep的REV033/035，也不凭这些省略自动认定本次核心讲解缺失。其余58项critical claim及未改范围以r25通过快照的精确比较继承，checked数组不代表本轮重读全稿来源。未读取另一位本轮Reviewer的评分；来源范围问题由本轮manifest检查确认。当前entry本身不代表最终质量门通过。",
+          "weighted_score": 92.85
+        },
+        {
+          "role": "flagship_final_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex",
+            "run_id": "two-stream-strong-main-r26-20261105",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "identity_basis": "orchestrator-configured: parent reports collab2.spawn_agent(model=\"gpt-5.6-sol\", fork_turns=\"none\") succeeded; no child-session-bound runtime verification was available.",
+            "model_runtime_confirmation": "session-bound-unverified",
+            "host_terminal_configuration_used_as_child_identity": false
+          },
+          "snapshot_binding": {
+            "report_path": "ai-learning/reports/AI演义_笔记分析与项目整合报告.md",
+            "report_sha256": "65cbea1950306094ef81fa57d8547c0213d3cf4a3a863c17ced0cd00bafd422d",
+            "evidence_sha256": "ef536151573ccbed882fcc1b30c322448b0f3aa543022c8999f2a7875eae6118",
+            "review_prompt_artifact": "/tmp/everagent-two-stream-20261105/main-review-prompt.md",
+            "review_prompt_sha256": "49f0338476f82ac5a84f70c42f01bc8cbb03ac6bc9efb0018ec75c4ff55b918f",
+            "verified": true
+          },
+          "source_first_binding": {
+            "source_map_artifact": "/tmp/everagent-two-stream-20261105/strong-source-map.json",
+            "source_map_sha256": "21784b61f0cdcd094fb0f3415ef0fae1908e39096d0391faa84fc54a33c5f950",
+            "source_content_map_sha256": "f35a18f5efee58f48a8593fc93c599612615f2420611b7459f1956d3449e238f",
+            "identity_and_vision_note_artifact": "/tmp/everagent-two-stream-20261105/strong-review-independent-note.json",
+            "identity_and_vision_note_sha256": "60f9eea4ef163781b8076e2acf6045a8127c4c2b660eb80dd5c570b35e2e73ee",
+            "importance_normalization": "Frozen map label major is represented as core because report-review-v1 permits only core/supporting; frozen artifact itself remains unchanged."
+          },
+          "scores": {
+            "evidence_fidelity": 94,
+            "request_coverage": 96,
+            "reasoning_quality": 97,
+            "readability": 96,
+            "limitations": 98
+          },
+          "score_reasons": {
+            "evidence_fidelity": "第23节正文的架构、光流定义、56.4/81.0、三划分88.0/59.4、Hammering错误与技术边界均由原论文直接支持，Table3首行已以原图纠正为85.6%。但主稿脚注声称结合p43和03:15目标转写核对，evidence中的S-ai-yanyi-episode仍登记LoRA旧切片；讲义/ASR核对又被夹写进论文source S-two-stream，来源身份没有一一对应。内容事实可靠，但旗舰级证据账本存在需修订的provenance缺口。",
+            "request_coverage": "R11要求的实质改写、标题后首块入口、两路/光流/训练资源、split1与三split成绩、失败案例和成本边界全部进入原节。冻结地图如实保留1个missing与多项partial，它们是展开级机制细节，没有用链接冒充主稿covered。",
+            "reasoning_quality": "把帧差与位移场、同划分消融与三划分比较、局部运动窗口与完整视频理解、观察性错误解释与因果证明逐一分开；由输入先验带来的收益同时计入额外计算，不把双流叙事夸成全面胜出。",
+            "readability": "标题、展开入口和跳绳示意形成清楚导读，数字口径就地解释，篇幅与总报告路线定位匹配。静态核实展开返回、上一节、下一节及锚点均存在；尚未收到本轮工作台桌面/窄屏实查收据，因此不声称视觉交互已通过。",
+            "limitations": "明确未复现实验、光流前处理、相机补偿粗糙、短窗口与最终平均丢失长程顺序、作者混淆解释非因果，以及播客未听校。没有外推到文生视频或完整视频理解。"
+          },
+          "critical_claim_ids_checked": [
+            "C-brook",
+            "C-alexnet",
+            "C-resnet",
+            "C-distillation",
+            "C-word2vec",
+            "C-seq2seq",
+            "C-bahdanau-attention",
+            "C-gnmt",
+            "C-transformer",
+            "C-gpt1",
+            "C-bert",
+            "C-gpt2",
+            "C-gpt3",
+            "C-scaling-laws",
+            "C-chinchilla",
+            "C-zero",
+            "C-megascale",
+            "C-laion5b",
+            "C-refinedweb",
+            "C-sparse-moe",
+            "C-lora",
+            "C-alphago-zero",
+            "C-instructgpt",
+            "C-cot",
+            "C-react",
+            "C-tulu3",
+            "C-deepvideo",
+            "C-two-stream",
+            "C-vit",
+            "C-clip",
+            "C-gan",
+            "C-diffusion-2015",
+            "C-ddpm",
+            "C-ldm",
+            "C-dit",
+            "C-bitter-lesson",
+            "C-inventory",
+            "C-sd14",
+            "C-hardware-lens",
+            "C-people",
+            "C-identity-corrections",
+            "E-gpu",
+            "E-residual",
+            "E-nmt",
+            "E-wordpiece",
+            "E-pretraining",
+            "E-scale-config",
+            "E-data-demand",
+            "E-system",
+            "E-visual-backbone",
+            "E-data-loop",
+            "E-latent",
+            "E-adversarial-component",
+            "E-product",
+            "E-dit-meeting",
+            "E-behavior",
+            "E-interaction",
+            "C-basics",
+            "C-route-walkthroughs"
+          ],
+          "coverage_unit_ids_checked": [
+            "U-brook",
+            "U-alexnet",
+            "U-resnet",
+            "U-distillation",
+            "U-word2vec",
+            "U-seq2seq",
+            "U-bahdanau-attention",
+            "U-gnmt",
+            "U-transformer",
+            "U-gpt1",
+            "U-bert",
+            "U-gpt2",
+            "U-gpt3",
+            "U-scaling-laws",
+            "U-chinchilla",
+            "U-zero",
+            "U-megascale",
+            "U-laion5b",
+            "U-refinedweb",
+            "U-sparse-moe",
+            "U-lora",
+            "U-alphago-zero",
+            "U-instructgpt",
+            "U-cot",
+            "U-react",
+            "U-tulu3",
+            "U-deepvideo",
+            "U-two-stream",
+            "U-vit",
+            "U-clip",
+            "U-gan",
+            "U-diffusion-2015",
+            "U-ddpm",
+            "U-ldm",
+            "U-dit",
+            "U-bitter-lesson",
+            "U-lenses",
+            "U-reader-method",
+            "U-cross-route"
+          ],
+          "source_content_map": [
+            {
+              "id": "TS01",
+              "title": "为什么视频分类不能只照搬图像分类",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-two-stream",
+                "S-deepvideo"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-two-stream"
+              ],
+              "notes": "第23节承接上一节，写出多帧RGB仍难学好运动以及显式运动可降低学习难度；手工轨迹表示的历史管线只在展开稿详述。"
+            },
+            {
+              "id": "TS02",
+              "title": "双流架构的基本分工与融合",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-two-stream"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-two-stream"
+              ],
+              "notes": "明确空间流看RGB外观、时间流看预计算光流并在类别分数处融合，足以独立理解两路分工。"
+            },
+            {
+              "id": "TS03",
+              "title": "空间流为什么能借用ImageNet",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-two-stream"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-two-stream"
+              ],
+              "notes": "说明空间流可借用ImageNet预训练，但省略52.3/72.8/72.7的空间流消融，符合主稿导读密度。"
+            },
+            {
+              "id": "TS04",
+              "title": "光流是位移场而非帧差",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-two-stream",
+                "S-ai-yanyi-episode"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-two-stream"
+              ],
+              "notes": "用小箭头、水平/垂直分量解释光流，并直接纠正播客“运动影子”不能替代光流定义。"
+            },
+            {
+              "id": "TS05",
+              "title": "时间流输入变体与消融",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-two-stream"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-two-stream"
+              ],
+              "notes": "写出10组光流/20通道和均值位移补偿，但L=1/5、轨迹堆叠和双向光流的完整消融留在展开稿。"
+            },
+            {
+              "id": "TS06",
+              "title": "可学习表示如何承接手工运动描述子",
+              "importance": "core",
+              "assessment": "missing",
+              "source_ids": [
+                "S-two-stream"
+              ],
+              "matched_coverage_unit_ids": [],
+              "notes": "主稿没有说明HOF/MBH、空间/时间导数滤波器及“保留光流先验、学习描述子”的具体关系；该机制在展开稿覆盖，不是R11硬缺口。"
+            },
+            {
+              "id": "TS07",
+              "title": "小数据下的多任务训练",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-two-stream"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-two-stream"
+              ],
+              "notes": "解释共享特征层与UCF/HMDB各自分类头，但未在主稿列46.6/49.0/52.8/55.4及辅助集口径。"
+            },
+            {
+              "id": "TS08",
+              "title": "训练、测试与系统成本",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S-two-stream"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-two-stream"
+              ],
+              "notes": "写出预计算/存储光流和测试位置平均造成的顺序边界；0.06秒、1.5TB→27GB、4 Titan一天等实现数字留在展开稿。"
+            },
+            {
+              "id": "TS09",
+              "title": "两路是否真的互补",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-two-stream"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-two-stream"
+              ],
+              "notes": "主稿解释两路融合与互补错误，并给跨三划分最终结果；split1的72.7/81.5/86.2/87.0融合链未展开。"
+            },
+            {
+              "id": "TS10",
+              "title": "性能是追平、局部略超还是全面胜出",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-two-stream",
+                "S-lecture",
+                "S-ai-yanyi-episode"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-two-stream"
+              ],
+              "notes": "准确分开UCF与HMDB三划分结果，明确论文的competitive比播客“全面超过”更符合证据。"
+            },
+            {
+              "id": "TS11",
+              "title": "Hammering错误案例",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S-two-stream"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-two-stream"
+              ],
+              "notes": "保留空间流的人脸混淆、时间流的往复运动混淆，并将成因限定为作者观察后的解释。"
+            },
+            {
+              "id": "TS12",
+              "title": "论文明确承认的边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-two-stream"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-two-stream"
+              ],
+              "notes": "覆盖外部光流、相机运动粗补偿、短窗口、视频级平均与完整视频理解之间的边界。"
+            },
+            {
+              "id": "TS13",
+              "title": "讲义、shownotes与ASR应如何使用",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "S-two-stream",
+                "S-lecture",
+                "S-ai-yanyi-episode"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-two-stream"
+              ],
+              "notes": "正文纠正播客的帧差与全面胜出表述，脚注声明未听校；未在主稿说明shownotes章节顺序和ASR结构收据。evidence中本章播客切片未以正确source entry登记。"
+            },
+            {
+              "id": "TS14",
+              "title": "展开入口、独立阅读与上下节导航",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-two-stream"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-two-stream"
+              ],
+              "notes": "标题后第一块即展开链接；展开文本静态核实含返回原23、上22与下24，主稿第23节也有实质内容。工作台视觉实查收据尚未提供给本Reviewer。"
+            }
+          ],
+          "source_ids_checked": [
+            "S-lecture",
+            "S-brook",
+            "S-gpu-history",
+            "S-alexnet",
+            "S-resnet",
+            "S-distill",
+            "S-word2vec",
+            "S-seq2seq",
+            "S-bahdanau",
+            "S-gnmt",
+            "S-transformer",
+            "S-gpt1",
+            "S-bert",
+            "S-gpt2",
+            "S-gpt3",
+            "S-kaplan",
+            "S-chinchilla",
+            "S-zero",
+            "S-refinedweb",
+            "S-laion",
+            "S-megascale",
+            "S-moe",
+            "S-lora",
+            "S-bitter",
+            "S-hardware",
+            "S-alphago",
+            "S-instruct",
+            "S-cot",
+            "S-react",
+            "S-tulu",
+            "S-deepvideo",
+            "S-two-stream",
+            "S-vit",
+            "S-clip",
+            "S-gan",
+            "S-diffusion15",
+            "S-ddpm",
+            "S-ldm",
+            "S-sd14",
+            "S-dit",
+            "L-inventory",
+            "S-ai-yanyi-episode"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6",
+            "R7",
+            "R8",
+            "R9",
+            "R10",
+            "R11"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "evidence_manifest_issues": [
+            {
+              "code": "source_provenance_misaligned",
+              "affected_ids": [
+                "S-two-stream",
+                "S-ai-yanyi-episode",
+                "C-two-stream"
+              ],
+              "detail": "S-ai-yanyi-episode仍是LoRA目标片段；本章p43/45段ASR核对被写进论文source/claim evidence，未以对应source id清晰登记。报告事实仍由PAPER支持，故不记critical_claim_unsupported。"
+            }
+          ],
+          "incremental_inheritance": {
+            "baseline_revision": 25,
+            "baseline_decision": "pass",
+            "baseline_score": 94.25,
+            "baseline_report_sha256": "c57ecaf2c13863df9c670be6b89eed6d2894bf19bcd7469432c59975cf4e1200",
+            "baseline_evidence_sha256": "0d6e8053f96d5686cc20d924e559bf3bd2611ca8fb683226475bec0ac20a2cbd",
+            "baseline_review_sha256": "8e319869baa992d24fd2a175e3bee3f24ce5bbdb20d1f7fd78c61b9b0fa59b5f",
+            "report_diff_verified": "仅frontmatter status、第23节与two-stream脚注变化；其余正文字节范围继承r25。",
+            "evidence_diff_verified": "仅S-two-stream/C-two-stream/U-two-stream/R11、generation_history、generator与revision_note变化。",
+            "direct_claim_ids": [
+              "C-two-stream"
+            ],
+            "direct_source_ids": [
+              "S-two-stream"
+            ],
+            "direct_requirement_ids": [
+              "R11"
+            ],
+            "direct_coverage_unit_ids": [
+              "U-two-stream"
+            ],
+            "inherited_claim_ids": [
+              "C-brook",
+              "C-alexnet",
+              "C-resnet",
+              "C-distillation",
+              "C-word2vec",
+              "C-seq2seq",
+              "C-bahdanau-attention",
+              "C-gnmt",
+              "C-transformer",
+              "C-gpt1",
+              "C-bert",
+              "C-gpt2",
+              "C-gpt3",
+              "C-scaling-laws",
+              "C-chinchilla",
+              "C-zero",
+              "C-megascale",
+              "C-laion5b",
+              "C-refinedweb",
+              "C-sparse-moe",
+              "C-lora",
+              "C-alphago-zero",
+              "C-instructgpt",
+              "C-cot",
+              "C-react",
+              "C-tulu3",
+              "C-deepvideo",
+              "C-vit",
+              "C-clip",
+              "C-gan",
+              "C-diffusion-2015",
+              "C-ddpm",
+              "C-ldm",
+              "C-dit",
+              "C-bitter-lesson",
+              "C-inventory",
+              "C-sd14",
+              "C-hardware-lens",
+              "C-people",
+              "C-identity-corrections",
+              "E-gpu",
+              "E-residual",
+              "E-nmt",
+              "E-wordpiece",
+              "E-pretraining",
+              "E-scale-config",
+              "E-data-demand",
+              "E-system",
+              "E-visual-backbone",
+              "E-data-loop",
+              "E-latent",
+              "E-adversarial-component",
+              "E-product",
+              "E-dit-meeting",
+              "E-behavior",
+              "E-interaction",
+              "C-basics",
+              "C-route-walkthroughs"
+            ],
+            "inherited_source_ids": [
+              "S-lecture",
+              "S-brook",
+              "S-gpu-history",
+              "S-alexnet",
+              "S-resnet",
+              "S-distill",
+              "S-word2vec",
+              "S-seq2seq",
+              "S-bahdanau",
+              "S-gnmt",
+              "S-transformer",
+              "S-gpt1",
+              "S-bert",
+              "S-gpt2",
+              "S-gpt3",
+              "S-kaplan",
+              "S-chinchilla",
+              "S-zero",
+              "S-refinedweb",
+              "S-laion",
+              "S-megascale",
+              "S-moe",
+              "S-lora",
+              "S-bitter",
+              "S-hardware",
+              "S-alphago",
+              "S-instruct",
+              "S-cot",
+              "S-react",
+              "S-tulu",
+              "S-deepvideo",
+              "S-vit",
+              "S-clip",
+              "S-gan",
+              "S-diffusion15",
+              "S-ddpm",
+              "S-ldm",
+              "S-sd14",
+              "S-dit",
+              "L-inventory",
+              "S-ai-yanyi-episode"
+            ],
+            "inherited_requirement_ids": [
+              "R1",
+              "R2",
+              "R3",
+              "R4",
+              "R5",
+              "R6",
+              "R7",
+              "R8",
+              "R9",
+              "R10"
+            ],
+            "inherited_coverage_unit_ids": [
+              "U-brook",
+              "U-alexnet",
+              "U-resnet",
+              "U-distillation",
+              "U-word2vec",
+              "U-seq2seq",
+              "U-bahdanau-attention",
+              "U-gnmt",
+              "U-transformer",
+              "U-gpt1",
+              "U-bert",
+              "U-gpt2",
+              "U-gpt3",
+              "U-scaling-laws",
+              "U-chinchilla",
+              "U-zero",
+              "U-megascale",
+              "U-laion5b",
+              "U-refinedweb",
+              "U-sparse-moe",
+              "U-lora",
+              "U-alphago-zero",
+              "U-instructgpt",
+              "U-cot",
+              "U-react",
+              "U-tulu3",
+              "U-deepvideo",
+              "U-vit",
+              "U-clip",
+              "U-gan",
+              "U-diffusion-2015",
+              "U-ddpm",
+              "U-ldm",
+              "U-dit",
+              "U-bitter-lesson",
+              "U-lenses",
+              "U-reader-method",
+              "U-cross-route"
+            ],
+            "note": "checked数组为本轮直接核验与r25哈希绑定继承的并集；不表示本Reviewer重读全部旧来源。p43、shownotes和本章ASR作为补充原始材料实际读取，但主稿evidence source条目未正确分章登记。"
+          },
+          "presentation_check": {
+            "static_links_verified": true,
+            "workbench_receipt_received": false,
+            "reviewer_clicked_ui": false
+          },
+          "notes": "强审直接范围为r26第23节、two-stream脚注、S/C/U-two-stream与R11；其余范围按r25 pass快照继承。内容没有unsupported claim、missing requirement或hard failure，但evidence_fidelity=94低于旗舰95单项门槛，原因是本章讲义/ASR provenance登记错位；由门禁决定revise，Reviewer不预先宣称通过。模型字段按受控orchestrator配置记录，child session-bound runtime未验证。"
+        }
+      ],
+      "decision": {}
     }
   ],
   "review_receipts": [
@@ -32822,12 +35792,54 @@
       "raw_review_content_preserved": true,
       "reviewer_receipt_file": "primary-stage2-review-receipt.json",
       "reviewer_receipt_sha256": "03e7e3d33c25225b1892eca77cf46a960a8b48dfb265d47f541a6b3f61a6130c"
+    },
+    {
+      "file": "primary-main-r27-review.json",
+      "sha256": "9ce3024c023a96fada51ac1855a7b253ae964bd7b2f2dbceb4395f211de21f85",
+      "report_sha256": "65cbea1950306094ef81fa57d8547c0213d3cf4a3a863c17ced0cd00bafd422d",
+      "evidence_sha256": "cea69f31e345532f1a927a163640760ee0c17fec9a44b08a090ab07c13a7d475",
+      "revision_round": 27,
+      "raw_review_content_preserved": true
+    },
+    {
+      "file": "strong-main-r27-review.json",
+      "sha256": "ff9bad22b9bdd02f20f2f408dbbcd65fe7931c2fe6058c9a026f7885c4ed5c5a",
+      "report_sha256": "65cbea1950306094ef81fa57d8547c0213d3cf4a3a863c17ced0cd00bafd422d",
+      "evidence_sha256": "cea69f31e345532f1a927a163640760ee0c17fec9a44b08a090ab07c13a7d475",
+      "revision_round": 27,
+      "raw_review_content_preserved": true
+    },
+    {
+      "file": "primary-main-r27-content-review.json",
+      "sha256": "35af9f9e2b92909573cec9157951ce9a8f88bfc1271913ba73a6381905cc1666",
+      "report_sha256": "65cbea1950306094ef81fa57d8547c0213d3cf4a3a863c17ced0cd00bafd422d",
+      "evidence_sha256": "cea69f31e345532f1a927a163640760ee0c17fec9a44b08a090ab07c13a7d475",
+      "revision_round": 27,
+      "raw_review_content_preserved": true,
+      "supersedes_file": "primary-main-r27-review.json",
+      "same_review_run": true,
+      "superseded_original_preserved": true
     }
   ],
-  "public_serialization": {
-    "kind": "agent-task-id-normalization",
-    "note": "仅去掉 Agent 任务命名空间的前导斜杠，避免与本机目录混淆；模型、核验内容、评分及判定保持不变。",
-    "source_review_sha256": "8e319869baa992d24fd2a175e3bee3f24ce5bbdb20d1f7fd78c61b9b0fa59b5f",
-    "fields_normalized": 40
+  "scope_adjustments": [
+    {
+      "date": "2026-11-06",
+      "actor": "coordinator",
+      "authority": "用户明确取消工作台页面验收，非Reviewer补做验收",
+      "user_quote": "写个报告为什么会有工作台的页面验收？啥时候的官僚制度啊。。。。好好写好你的 ai 演义啊。。。。。",
+      "requirement_id": "R9",
+      "before_requirement": "执行范围匹配的链接/渲染/覆盖检查及旗舰级独立复核；模型评分不替代用户学习反馈。",
+      "after_requirement": "执行范围匹配的正文、链接与覆盖检查及旗舰级独立复核；报告不以工作台页面验收为前置，模型评分不替代用户学习反馈。",
+      "before_report_sha256": "65cbea1950306094ef81fa57d8547c0213d3cf4a3a863c17ced0cd00bafd422d",
+      "after_report_sha256_before_finalization": "65cbea1950306094ef81fa57d8547c0213d3cf4a3a863c17ced0cd00bafd422d",
+      "before_evidence_sha256": "cea69f31e345532f1a927a163640760ee0c17fec9a44b08a090ab07c13a7d475",
+      "after_evidence_sha256": "7169dabad7b50da19018b62371a9f97cf4b32edbb3e83415e2141d8d35e8a700",
+      "original_review_file_sha256": "c1b49251b1b5ed92d4e96324f3aa71b0e52e0bb143ac141d0500e51f37417776",
+      "preserved": "原Reviewer身份、评分、理由、来源地图、快照和未做UI的事实不变；仅将取消的UI部分从交付阻断项移除。未重审、未伪称UI通过。"
+    }
+  ],
+  "publication_redactions": {
+    "scope": "历史review的虚拟Agent任务树标签用agent-tree或collab2短名表示，避免与系统主目录混淆；模型身份、评分、来源和审阅快照哈希不变。",
+    "date": "2026-11-06"
   }
 }

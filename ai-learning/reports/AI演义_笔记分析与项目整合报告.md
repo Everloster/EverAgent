@@ -538,13 +538,25 @@ Sports-1M 测试集有 20 万视频。Table 1 中，单帧模型的视频首选�
 
 <a id="paper-two-stream"></a>
 
-### 23. 双流网络：把运动先作为一种输入，而不是要求模型同时学会一切
+### 23. 双流网络：把运动先算出来，识别动作会更容易吗？
 
-同年的 **Two-Stream Convolutional Networks** 明确讨论了上述视频路线。它用两路网络分别处理外观和运动：一路看RGB帧，另一路看从连续帧估计的光流，最后融合分类结果。[^two-stream]
+> [展开阅读：从跳绳场景，讲清光流、两路分工与真实得失](knowledge_reports/AI演义_23_TwoStream_外观与运动怎样共同识别动作_科普讲解_20261105.md)
 
-光流将哪里朝哪个方向移动显式呈现给网络。这样，在动作标注有限时，不必要求模型同时学会寻找对应点、估计运动、再识别动作；但它也引入了额外计算和前处理假设。
+继续看跳绳这个讲解示意：彩色画面里有人、有绳子，但要识别动作，还得利用手脚与绳子的变化。2014 年，牛津大学的 Karen Simonyan 和 Andrew Zisserman 提出双流网络，把这个问题分给两路卷积网络：**空间流看 RGB 帧的外观，时间流看预先估计的光流运动，最后融合各自的动作类别分数。**[^two-stream]
 
-这让“手工方法到深度学习”的叙述变得更准确：**人类设计没有整体退场，而是在不同数据条件下，决定哪些结构先给模型、哪些关系留给训练去学。** 双流网络不是后来文生视频的直接祖先，而是动作识别路线中对运动表示的一种明确回应。
+光流可以想成一张铺满小箭头的地图：每个位置记录图像内容到下一帧怎样移动，水平、垂直分量各形成一张数值图。它估计的是位移；两张图直接相减，只得到同一位置的颜色或亮度变化。播客里“减出来的运动影子”有助于建立直觉，但不能替代光流的定义。
+
+时间流的主要输入是 **10 组连续光流，合成 20 个通道**，让网络联合学习短时间内的运动变化。空间流则能借用 ImageNet 图片预训练；动作数据不够时，作者还让时间网络共用前面的特征层、保留 UCF-101 与 HMDB-51 各自的分类头，以多任务学习利用两个数据集。运动表示与可用训练数据，一起决定了这条路线能走多远。
+
+在 UCF-101 的**第一个训练／测试划分**中，作者从头训练的 11 帧 RGB Slow Fusion 准确率为 **56.4%**，十组光流网络为 **81.0%**。同一批动作标签下，先提供显式运动，确实让识别容易了很多；但光流已经使用了额外算法和计算，这不是等总成本的纯网络比较。
+
+正式跨方法比较采用**三个标准划分的平均准确率**。双流 SVM 融合在 UCF-101 上达到 **88.0%**，略高于表中的强手工方法 **87.9%**；在 HMDB-51 上是 **59.4%**，仍低于更强手工方法的 **61.1%** 和 **66.8%**。因此，原论文所说的“有竞争力”比“全面超过最好的手工方法”更符合实验。
+
+两路互补也不等于不会一起出错。论文发现敲锤容易与头部按摩、刷牙混淆：作者认为，空间流可能抓住了相似的人脸外观，时间流则抓住了手上下反复运动的相似模式。这是观察后的解释，尚不足以证明已隔离出错误的全部原因。
+
+代价和边界同样具体。作者因光流计算会拖慢训练而提前计算并存储；减去平均位移只能做简单的相机运动补偿。十组光流仍是局部窗口，最终对多个位置的分类分数取平均，也没有保留整段事件的先后顺序。**双流展示的是怎样在当时的数据条件下更有效地识别动作，并没有一次解决完整视频理解。**
+
+从这里继续看模型演化，值得追踪的不只是网络变深了多少，还有输入经过了哪些处理、先提供了哪些结构，以及这些选择省下什么、付出什么。下一节 ViT 会把问题转向另一种输入组织方式：把图像切成图块，交给 Transformer。
 
 <a id="paper-vit"></a>
 
@@ -901,7 +913,7 @@ AI的发展不只是模型名单变长，而是学习对象、可用信息、计
 [^react]: Yao et al.，[ReAct](https://arxiv.org/pdf/2210.03629v3)，首发2022-10-06，所读v3为2023-03-10；Figure 1、§2–4及Tables 1–4。主要提示实验不更新参数，问答、文字家务和模拟购物的结果需按各自口径理解。
 [^tulu]: Lambert et al.，[Tülu 3 v5](https://arxiv.org/pdf/2411.15124v5)，2025-04-14；首版为 2024-11-22。流程见 §2–6，阶段成绩见 [Table 23](https://arxiv.org/pdf/2411.15124v5#page=36)，关键词过度优化见 [Figure 28](https://arxiv.org/pdf/2411.15124v5#page=67)，评测边界与后续工作见 §7–8。示意彩笔题为本篇构造；不混用跨表平均分，不将修订扩展全部归入首版。
 [^deepvideo]: Karpathy et al.，[Large-scale Video Classification with Convolutional Neural Networks](https://openaccess.thecvf.com/content_cvpr_2014/papers/Karpathy_Large-scale_Video_Classification_2014_CVPR_paper.pdf)，CVPR 2014，§§3–5、Figures 1–5、Tables 1–4。59.3/60.9/63.9 为 Sports-1M Video Hit@1；65.4% 按 UCF-101 Table 3，摘要另写 63.3%，本文保留该差异。讲义 p42 与节目约 03:08:08–03:15:12 的对照、输入聚合与迁移边界，见[本节展开](knowledge_reports/AI演义_22_DeepVideo_模型怎样利用视频时间信息_科普讲解_20261105.md#sources-and-scope)。
-[^two-stream]: Simonyan & Zisserman，[Two-Stream Convolutional Networks](https://arxiv.org/pdf/1406.2199v2)，2014。
+[^two-stream]: Simonyan & Zisserman，[Two-Stream Convolutional Networks for Action Recognition in Videos](https://arxiv.org/pdf/1406.2199v2)，首发 2014-06-09，本篇采用 2014-11-12 的 v2。§§2–5 定义 RGB／光流两路、输入堆叠、训练与预计算；p. 7 的 Table 1b 及正文为 split 1 的 81.0%／56.4%；p. 8 的 Table 4 为三划分比较；pp. 9–10 解释敲锤混淆与后续限制。结合讲义 p. 43 和约 03:15:12–03:17:55 的播客转写核对，未听校或复现实验。
 [^vit]: Dosovitskiy et al.，[An Image is Worth 16x16 Words](https://arxiv.org/pdf/2010.11929v2)，首发2020年，所读修订版2021年。
 [^clip]: Radford et al.，[Learning Transferable Visual Models From Natural Language Supervision](https://arxiv.org/pdf/2103.00020v1)，2021。
 [^bitter]: Sutton，[The Bitter Lesson](http://www.incompleteideas.net/IncIdeas/BitterLesson.html)，2019-03-13；作为作者的历史归纳与方法论主张，不是本文逐案重做的全史因果审计。
