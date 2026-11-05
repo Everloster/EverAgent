@@ -6,7 +6,7 @@
   "generator": {
     "model": "gpt-6-astra",
     "harness": "codex",
-    "run_id": "ai-yanyi-sd14-main-r35-20261106",
+    "run_id": "ai-yanyi-dit-main-r36-20261106",
     "explicit_model_override": false,
     "override_reason": "",
     "identity_basis": "eacli session current：codex-turn-context，session-bound，confirmed=true；只证明当前生成会话，不证明子会话模型。"
@@ -56,7 +56,7 @@
       },
       {
         "id": "R11",
-        "text": "原第30节实质改写且标题后首块有展开链接；展开保留原节、前后章节导航，统一两位编号、人类独立可读；本轮核心为v1.4把固定CLIP文本序列、f8四通道潜空间、U-Net与CFG/采样器组合成具体模型；训练路径v1.3/v1.4均续自v1.2，数据筛选CLIP与生成条件分工不同，步数/调用次数/训练成本/运行门槛与安全边界不可混同。其余科学正文严格继承已发布r34。"
+        "text": "原第31节实质改写且标题后首块有展开链接；展开保留原节、前后章节导航，统一两位编号、人类独立可读；本轮核心为DiT在固定卷积VAE潜空间中以Transformer替换去噪骨架，patch/条件块和模型计算可扩展；类别条件ImageNet实验需保留CFG、decoder、训练长度/样本数和512分辨率反例，采样计算不等模型能力，开放文生图与视频不能倒填原论文结论。其余科学正文严格继承已发布r35。"
       }
     ],
     "reader_feedback": [
@@ -600,13 +600,14 @@
     {
       "id": "S-dit",
       "kind": "primary",
-      "title": "Scalable Diffusion Models with Transformers",
+      "title": "Scalable Diffusion Models with Transformers v2",
       "locator": "https://arxiv.org/pdf/2212.09748v2",
-      "accessed_on": "2026-11-03",
-      "version": "arXiv v2，2023-03-02；首发 2022-12-19 沿用身份 owner",
-      "read_scope": "P1–9 主文：首页与实习脚注、§1–6、Tables 1–3、Figures 3–10 图注及对应正文分析；包括 §5.2 模型计算与采样计算的区分。",
-      "research_record": "ai-learning/notes/ai_yanyi_research/phase2/generation.json",
-      "research_source_id": "GEN-S-DIT"
+      "accessed_on": "2026-11-06",
+      "version": "v2，2023-03-02，25页；首版2022-12-19",
+      "local_owner": "ai-learning/papers/27_dit_2022.pdf",
+      "sha256": "5fbb0ec35e3ae76826240171ca63ed4c27de6cb43180367453019e9d28a8b076",
+      "read_scope": "主文pp1–9，附录A–D相关实现/采样/完整模型/解码器pp12–13，相关图表标题和参数；Figure3原页经TokenPlan和直接视读。未逐张审全部附录样本、逐式重证推导或训练运行。",
+      "current_chapter_evidence": "ai-learning/reports/knowledge_reports/.quality/AI演义_31_DiT_Transformer怎样接替去噪骨架_科普讲解_20261106.evidence.json"
     },
     {
       "id": "L-inventory",
@@ -1089,6 +1090,48 @@
       "fresh_fetch": false,
       "response_text_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5",
       "current_chapter_evidence": "ai-learning/reports/knowledge_reports/.quality/AI演义_30_StableDiffusion_v14_文生图系统怎样协同工作_科普讲解_20261106.evidence.json"
+    },
+    {
+      "id": "S-dit-metadata",
+      "kind": "primary",
+      "title": "DiT官方版本与作者记录",
+      "locator": "https://arxiv.org/abs/2212.09748v2",
+      "accessed_on": "2026-11-06",
+      "response_text_sha256": "50f7b7a62afdcef4458740affb051e3ef4bd466377912bd2ec6a6c79bb5742fb",
+      "read_scope": "eacli web.read，核首版/v2日期、题名与两作者；原署名回原PDF首页，不依据后来的通用人物简介。",
+      "current_chapter_evidence": "ai-learning/reports/knowledge_reports/.quality/AI演义_31_DiT_Transformer怎样接替去噪骨架_科普讲解_20261106.evidence.json"
+    },
+    {
+      "id": "S-dit-lecture",
+      "kind": "local",
+      "title": "《AI演义》讲义第50页",
+      "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "accessed_on": "2026-11-06",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
+      "read_scope": "第50页文字、TokenPlan图像转读及直接视读，核背景/贡献/人物说法；仅用原DiT论文支持的边界，不采纳未核人物后续和SD直接替换叙事。",
+      "current_chapter_evidence": "ai-learning/reports/knowledge_reports/.quality/AI演义_31_DiT_Transformer怎样接替去噪骨架_科普讲解_20261106.evidence.json"
+    },
+    {
+      "id": "S-dit-podcast",
+      "kind": "primary",
+      "title": "《AI演义》DiT口述片段",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-06",
+      "read_scope": "零基6712–6801，共90段，13974.88–14192.51秒，全文读取；起止时间各自单调、无相邻重叠或间隙。未听校/WER；机制例子不等于节目逐字还原。",
+      "transcript_source_ref": "sha256:d3fee913ddf9df271e093f4554ca887e7ef5afdf56cdc9f52178fc5db9bded80",
+      "transcript_review": "ai-learning/reports/knowledge_reports/.quality/AI演义_31_DiT_Transformer怎样接替去噪骨架_科普讲解_20261106.transcription-review.json",
+      "current_chapter_evidence": "ai-learning/reports/knowledge_reports/.quality/AI演义_31_DiT_Transformer怎样接替去噪骨架_科普讲解_20261106.evidence.json"
+    },
+    {
+      "id": "S-dit-shownotes",
+      "kind": "primary",
+      "title": "节目Part4 DiT与路线收尾条目",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-06",
+      "cache_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5",
+      "read_scope": "复用已获取节目页，核DiT前接StableDiffusion和结尾路线；不创建节目中不存在的自由文本或视频实验。",
+      "fresh_fetch": false,
+      "current_chapter_evidence": "ai-learning/reports/knowledge_reports/.quality/AI演义_31_DiT_Transformer怎样接替去噪骨架_科普讲解_20261106.evidence.json"
     }
   ],
   "claims": [
@@ -1519,16 +1562,18 @@
     },
     {
       "id": "C-dit",
-      "claim": "DiT把ViT式骨架/patch接口与潜空间扩散组合，原核心实验为ImageNet类别条件图像生成，不据此证明全部文生视频或Sora谱系。",
+      "claim": "DiT在固定卷积VAE潜空间中以Transformer替换去噪骨架，patch/条件块和模型计算可扩展；类别条件ImageNet实验需保留CFG、decoder、训练长度/样本数和512分辨率反例，采样计算不等模型能力，开放文生图与视频不能倒填原论文结论",
       "report_anchor": "paper-dit",
       "support": "direct",
       "source_ids": [
         "S-dit",
-        "S-vit",
-        "S-ldm"
+        "S-dit-metadata",
+        "S-dit-lecture",
+        "S-dit-podcast",
+        "S-dit-shownotes"
       ],
       "critical": true,
-      "evidence": "首页作者署名；DiT§3–4定义潜空间、ViT式骨架与类别条件设置，§5/Tables 1–3研究配置；§6没有验证Sora或通用文生视频谱系。"
+      "evidence": "本轮第31节展开正文及其原始证据，关键机制/数字见对应论文和章节脚注；未改变其余已发布主稿正文。"
     },
     {
       "id": "C-bitter-lesson",
@@ -2273,13 +2318,15 @@
     },
     {
       "id": "U-dit",
-      "title": "Scalable Diffusion Models with Transformers",
+      "title": "DiT在固定卷积VAE潜空间中以Transformer替换去噪骨架，patch/条件块和模型计算可扩展；类别条件ImageNet实验需保留CFG、decoder、训练长度/样本数和512分辨率反例，采样计算不等模型能力，开放文生图与视频不能倒填原论文结论",
       "importance": "core",
       "status": "included",
       "source_ids": [
         "S-dit",
-        "S-vit",
-        "S-ldm"
+        "S-dit-metadata",
+        "S-dit-lecture",
+        "S-dit-podcast",
+        "S-dit-shownotes"
       ],
       "report_anchor": "paper-dit"
     },
@@ -2449,7 +2496,7 @@
     "essay_articles": 1,
     "note": "论文研究范围按用户最新限定；不是全文逐公式/全图表审计。"
   },
-  "revision_note": "r35：第30节及其脚注、来源与覆盖增量，其余科学正文严格继承已发布r34。仅原文、正文、引用及章节导航检查，不做工作台页面验收。",
+  "revision_note": "r36：第31节及其脚注、来源与覆盖增量，其余科学正文严格继承已发布r35。仅原文、正文、引用及章节导航检查，不做工作台页面验收。",
   "generation_history": [
     {
       "revision_round": 2,

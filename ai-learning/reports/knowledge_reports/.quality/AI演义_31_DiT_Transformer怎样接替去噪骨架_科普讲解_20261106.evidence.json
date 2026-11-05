@@ -1,0 +1,518 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_31_DiT_Transformer怎样接替去噪骨架_科普讲解_20261106.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-06",
+  "generator": {
+    "model": "gpt-6-astra",
+    "harness": "codex",
+    "run_id": "ai-yanyi-dit-r1-20261106",
+    "explicit_model_override": false,
+    "override_reason": "",
+    "identity_basis": "eacli session current，session-bound confirmed"
+  },
+  "task": {
+    "summary": "按Brook方式完成第31节DiT，沿图像生成路线讲透骨架替换、patch条件块、规模/采样计算和有限范围实验。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "固定v2论文+讲义50页+shownotes+90段转写，分清Transformer/扩散/潜空间不同层级与原实验范围。"
+      },
+      {
+        "id": "R2",
+        "text": "花照贯穿、少数学，解释latent patch、token位置、条件接入、adaLNZero与输出/多步训练采样。"
+      },
+      {
+        "id": "R3",
+        "text": "消融与扩展有原表证据，参数/token/前向/训练/采样计算分开，反例与变量混杂不隐去。"
+      },
+      {
+        "id": "R4",
+        "text": "核256/512结果、CFG/decoder/通道/样本数/训练长度；不夸大原文SOTA、文生图/视频、硬件实测或人物后续。"
+      },
+      {
+        "id": "R5",
+        "text": "原31节实改、节首展开链接，两位编号、独立可读、前节/后续视角导航、三问和跨章收尾。"
+      },
+      {
+        "id": "R6",
+        "text": "如实记录转写结构与未听音/WER/训练运行；只检查内容、引用和导航，不做工作台页面验收。"
+      }
+    ],
+    "source_coverage_scope": "原DiT v2类别条件ImageNet和对应节目段；自由文本/视频/现职和未审附录样本不作已验证结论。"
+  },
+  "sources": [
+    {
+      "id": "PAPER",
+      "kind": "primary",
+      "title": "Scalable Diffusion Models with Transformers v2",
+      "locator": "https://arxiv.org/pdf/2212.09748v2",
+      "accessed_on": "2026-11-06",
+      "version": "v2，2023-03-02，25页；首版2022-12-19",
+      "local_owner": "ai-learning/papers/27_dit_2022.pdf",
+      "sha256": "5fbb0ec35e3ae76826240171ca63ed4c27de6cb43180367453019e9d28a8b076",
+      "read_scope": "主文pp1–9，附录A–D相关实现/采样/完整模型/解码器pp12–13，相关图表标题和参数；Figure3原页经TokenPlan和直接视读。未逐张审全部附录样本、逐式重证推导或训练运行。"
+    },
+    {
+      "id": "METADATA",
+      "kind": "primary",
+      "title": "DiT官方版本与作者记录",
+      "locator": "https://arxiv.org/abs/2212.09748v2",
+      "accessed_on": "2026-11-06",
+      "response_text_sha256": "50f7b7a62afdcef4458740affb051e3ef4bd466377912bd2ec6a6c79bb5742fb",
+      "read_scope": "eacli web.read，核首版/v2日期、题名与两作者；原署名回原PDF首页，不依据后来的通用人物简介。"
+    },
+    {
+      "id": "LECTURE",
+      "kind": "local",
+      "title": "《AI演义》讲义第50页",
+      "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "accessed_on": "2026-11-06",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
+      "read_scope": "第50页文字、TokenPlan图像转读及直接视读，核背景/贡献/人物说法；仅用原DiT论文支持的边界，不采纳未核人物后续和SD直接替换叙事。"
+    },
+    {
+      "id": "PODCAST",
+      "kind": "primary",
+      "title": "《AI演义》DiT口述片段",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-06",
+      "read_scope": "零基6712–6801，共90段，13974.88–14192.51秒，全文读取；起止时间各自单调、无相邻重叠或间隙。未听校/WER；机制例子不等于节目逐字还原。",
+      "transcript_source_ref": "sha256:d3fee913ddf9df271e093f4554ca887e7ef5afdf56cdc9f52178fc5db9bded80",
+      "transcript_review": "ai-learning/reports/knowledge_reports/.quality/AI演义_31_DiT_Transformer怎样接替去噪骨架_科普讲解_20261106.transcription-review.json"
+    },
+    {
+      "id": "SHOWNOTES",
+      "kind": "primary",
+      "title": "节目Part4 DiT与路线收尾条目",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-06",
+      "cache_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5",
+      "read_scope": "复用已获取节目页，核DiT前接StableDiffusion和结尾路线；不创建节目中不存在的自由文本或视频实验。",
+      "fresh_fetch": false
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "DiT是扩散骨架而非取代扩散框架",
+      "report_anchor": "backbone-not-framework",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "METADATA",
+        "LECTURE",
+        "PODCAST"
+      ],
+      "critical": true,
+      "evidence": "§§1–3：已含空间attention的U-Net可换为标准Transformer；版本日期与动机，不声称注意力首次进入扩散或理论必胜CNN。"
+    },
+    {
+      "id": "C2",
+      "claim": "固定卷积VAE与新类别条件DiT的混合系统",
+      "report_anchor": "what-changes",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§3.1/§4：StableDiffusion预训练f8卷积VAE，训练潜空间DiT；非现成SD文生图权重热替换、非整个系统全无卷积。"
+    },
+    {
+      "id": "C3",
+      "claim": "潜网格切块位置与token数",
+      "report_anchor": "patches-and-tokens",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§3.2/Figure4：256²RGB→32×32×4，p8/4/2→16/64/256token；p是潜位置而非原图像素，sin-cos位置，参数与token计算分开。"
+    },
+    {
+      "id": "C4",
+      "claim": "四类条件接入与adaLN/adaLNZero含义",
+      "report_anchor": "conditional-blocks",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§3.2/Figure3/AppendixA：in-context两附加token非ICL示例学习；crossattn；adaLN共享token调制；Zero残差分支缩放0初始化恒等块而非全权重0。"
+    },
+    {
+      "id": "C5",
+      "claim": "条件设计消融的数值与混杂边界",
+      "report_anchor": "conditional-blocks",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "Table4 XL2、400k、50k样本、无额外CFG/ftMSE：incontext35.24/cross26.14/adaLN25.21/Zero19.47；params/Gflops不同，不能把收益全归单个初始化值。"
+    },
+    {
+      "id": "C6",
+      "claim": "每步噪声和对角协方差预测及训练目标",
+      "report_anchor": "output-and-training",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§3.1/3.2：linear输出p×p×2C重排，与VAEdecoder区分；噪声MSE/协方差变分目标，仍多步非逐token自回归或完整巨型covariance。"
+    },
+    {
+      "id": "C7",
+      "claim": "固定训练设置与其范围",
+      "report_anchor": "output-and-training",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§4：ImageNet类别、AdamW lr1e-4、batch256、无weightdecay/warmup、horizontalflip、EMA0.9999；不外推所有Transformer无需warmup。"
+    },
+    {
+      "id": "C8",
+      "claim": "规模与patch二维扩展及参数不能代表计算",
+      "report_anchor": "scaling",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§5/Table4：4尺寸×3patch12模型；XL8 7.39G/676M/106.41，XL4 29.05G/675M/43.01，XL2 118.64G/675M/19.47；400k无CFG/ftMSE，Gflops不含VAE或硬件每秒能力。"
+    },
+    {
+      "id": "C9",
+      "claim": "扩展规律的训练计算与数据范围",
+      "report_anchor": "scaling",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "Figures6–9：sameiterations不等成本，总G×batch×steps×3估计，固定ImageNet不能声称实证任意数据规模规律；相关性与无限外推分开。"
+    },
+    {
+      "id": "C10",
+      "claim": "采样计算并非模型计算的简单替代",
+      "report_anchor": "sampling-budget",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§5.2/Figure10：400k模型、16/32/64/128/256/1000步，L2千步80.7T/FID10k25.9，XL2百廿八步15.2T/23.7；计算非墙钟/FID10k非50k。"
+    },
+    {
+      "id": "C11",
+      "claim": "最终256ImageNet结果与引导/覆盖取舍",
+      "report_anchor": "benchmark-results",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§5.1/Table2：7M训练、250DDPM、FID50k、ftEMA；无额外CFG9.62/R.67；1.25 3.22/.62；1.5 2.27/.57；LDM4G3.60/.48，StyleGANXL2.30；无CFG仍条件生成。"
+    },
+    {
+      "id": "C12",
+      "claim": "512ImageNet结果只超过此前扩散方法",
+      "report_anchor": "benchmark-results",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§5.1/Table3：3M训练、64×64×4/patch2→1024tokens、524.6G；CFG1.5 FID3.04 vsADM组合3.85，但StyleGANXL2.41更低；非所有生成模型全胜。"
+    },
+    {
+      "id": "C13",
+      "claim": "图像解码器与引导通道的实验口径",
+      "report_anchor": "benchmark-results",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "AppendixA/D、Table5：原decoder2.46/ftMSE2.30/ftEMA2.27；扫描ftMSE、最终ftEMA，非DiTEMA同一概念；CFG原前三潜通道，四通道另一强度结果不替换主表。"
+    },
+    {
+      "id": "C14",
+      "claim": "计算收益分解与硬件训练吞吐边界",
+      "report_anchor": "cost-and-limits",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§4/§5.1/Tables4/6：DiTXL2 118.6G比LDM4 103.6G并非更少，vs像素U-Net还混有潜空间收益；TPUv3-256约5.7训练迭代/秒全局batch256，非本机生成。"
+    },
+    {
+      "id": "C15",
+      "claim": "生成、表示、评价及泛化局限",
+      "report_anchor": "cost-and-limits",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§3.1/4/5/6：多步/预训练VAE、token成本、类条件ImageNet非任意文本视频；安全版权事实边界为本章使用判断，不冒称原文安全审计。"
+    },
+    {
+      "id": "C16",
+      "claim": "跨章节继承与统一骨架的解释边界",
+      "report_anchor": "history-and-synthesis",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "LECTURE",
+        "PODCAST"
+      ],
+      "critical": true,
+      "evidence": "§1/2/3.2/6支持ViT/残差/扩散/LDM/CFG会合；HardwareLottery为跨章解释非原文测量，不将生态收益或任意软件迁移当数据。"
+    },
+    {
+      "id": "C17",
+      "claim": "SD文生图后续方向与原署名不倒填历史",
+      "report_anchor": "history-and-synthesis",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "LECTURE",
+        "PODCAST"
+      ],
+      "critical": true,
+      "evidence": "§6将StableDiffusion/DALLE2文字系统列futurework；首页PeeblesUC Berkeley/XieNYU、Peebles星号MetaFAIR实习；不采纳未核任职/Sora谱系。"
+    },
+    {
+      "id": "C18",
+      "claim": "来源范围、转写结构与章节导航",
+      "report_anchor": "sources-and-scope",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "METADATA",
+        "LECTURE",
+        "PODCAST",
+        "SHOWNOTES"
+      ],
+      "critical": true,
+      "evidence": "90段3:52:54–3:56:32，217.63秒、无倒序/重叠/间隙；未听音/WER、逐图审附录或运行；主稿展开/前一节/独立视角导航。"
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U1",
+      "title": "DiT是扩散骨架而非取代扩散框架",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "METADATA",
+        "LECTURE",
+        "PODCAST"
+      ],
+      "report_anchor": "backbone-not-framework"
+    },
+    {
+      "id": "U2",
+      "title": "固定卷积VAE与新类别条件DiT的混合系统",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "what-changes"
+    },
+    {
+      "id": "U3",
+      "title": "潜网格切块位置与token数",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "patches-and-tokens"
+    },
+    {
+      "id": "U4",
+      "title": "四类条件接入与adaLN/adaLNZero含义",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "conditional-blocks"
+    },
+    {
+      "id": "U5",
+      "title": "条件设计消融的数值与混杂边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "conditional-blocks"
+    },
+    {
+      "id": "U6",
+      "title": "每步噪声和对角协方差预测及训练目标",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "output-and-training"
+    },
+    {
+      "id": "U7",
+      "title": "固定训练设置与其范围",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "output-and-training"
+    },
+    {
+      "id": "U8",
+      "title": "规模与patch二维扩展及参数不能代表计算",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "scaling"
+    },
+    {
+      "id": "U9",
+      "title": "扩展规律的训练计算与数据范围",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "scaling"
+    },
+    {
+      "id": "U10",
+      "title": "采样计算并非模型计算的简单替代",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "sampling-budget"
+    },
+    {
+      "id": "U11",
+      "title": "最终256ImageNet结果与引导/覆盖取舍",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "benchmark-results"
+    },
+    {
+      "id": "U12",
+      "title": "512ImageNet结果只超过此前扩散方法",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "benchmark-results"
+    },
+    {
+      "id": "U13",
+      "title": "图像解码器与引导通道的实验口径",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "benchmark-results"
+    },
+    {
+      "id": "U14",
+      "title": "计算收益分解与硬件训练吞吐边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "cost-and-limits"
+    },
+    {
+      "id": "U15",
+      "title": "生成、表示、评价及泛化局限",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "cost-and-limits"
+    },
+    {
+      "id": "U16",
+      "title": "跨章节继承与统一骨架的解释边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "LECTURE",
+        "PODCAST"
+      ],
+      "report_anchor": "history-and-synthesis"
+    },
+    {
+      "id": "U17",
+      "title": "SD文生图后续方向与原署名不倒填历史",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "LECTURE",
+        "PODCAST"
+      ],
+      "report_anchor": "history-and-synthesis"
+    },
+    {
+      "id": "U18",
+      "title": "来源范围、转写结构与章节导航",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "METADATA",
+        "LECTURE",
+        "PODCAST",
+        "SHOWNOTES"
+      ],
+      "report_anchor": "sources-and-scope"
+    },
+    {
+      "id": "U19",
+      "title": "完整理论重证、全部附录样本审核、自由文本/视频SOTA与Sora团队后续",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "PAPER",
+        "PODCAST",
+        "LECTURE"
+      ],
+      "omission_reason": "机制科普只采用实际读取证据；未核视频/人物叙事不倒填原文，未逐张审全部样本或运行实验。"
+    }
+  ],
+  "limitations": [
+    "没有训练、生成、测速、能耗或跨设备实验；GFLOPs为论文运算量，不等墙钟或总系统成本。",
+    "花照用于机制说明；原实验是类别条件ImageNet，非开放文本或视频模型。",
+    "已读指定主文/附录，未逐式重证推导或逐张审核所有样本图。",
+    "转写90段时间结构无误不证明逐字正确，未听音/WER；用户可听原节目，公开仓不复制私有全文。",
+    "人物仅核原论文署名与脚注，生态/技术史综合为跨章节解释，不以未来故事证明原论文结果。"
+  ]
+}

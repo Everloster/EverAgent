@@ -712,18 +712,27 @@ v1.4 的自编码器把高、宽各缩小 8 倍：512×512×3 的图像对应 64
 
 <a id="paper-dit"></a>
 
-### 31. DiT：统一骨架，不等于统一训练目标
+### 31. DiT：去噪这份工作，Transformer 能接手吗？
 
-William Peebles与谢赛宁在2022年公开的 **Scalable Diffusion Models with Transformers** 进一步问：潜空间扩散已经将工作空间缩小，去噪网络是否一定要采用U-Net骨架？[^dit]
+[展开阅读：潜网格怎样变成 token，条件怎样进入网络，以及“大模型少走几步”的证据](knowledge_reports/AI演义_31_DiT_Transformer怎样接替去噪骨架_科普讲解_20261106.md)
 
-DiT保留潜空间扩散的生成框架及预训练自编码器，将带噪潜表示切成小块，用Transformer处理这些块之间的关系，再预测扩散过程需要的输出。它明确采用了ViT的部分设计，同时为时间和类别条件作适配。
+前一节把图像生成拆成了潜空间、去噪网络、条件和采样器。于是还可以问：**保留扩散方法，把去噪骨架换成 Transformer，会怎样？** 这不是让 Transformer 击败扩散，而是让它承担扩散内部的一份工作。
 
-因此，ViT与DiT共享的是可复用的骨架和输入组织方式，**不是同一个任务目标**：前者的主要实验是分类与表示迁移，后者是类别条件图像生成；使用Transformer也不意味着改成语言模型式的下一词生成。
+2022 年公开的 **DiT** 采用现成的卷积 VAE，在其潜空间里训练 Transformer。原文主要实验是 ImageNet 类别条件生成，不是直接把已训练好的 Stable Diffusion 文生图权重改成另一种骨架。本文采用 2023 年 3 月的 v2。[^dit]
 
-原论文研究了模型规模、图块大小和计算量等因素。它显示，参数量不是唯一的扩展维度；但不能把ImageNet类别条件实验直接写成自由文本、视频或所有模态已经统一的证明。
+以 256×256 图像为例，潜表示是 32×32×4；按潜空间 2×2 位置切块，得到 256 个 token，加入位置表示后交给 Transformer。它们不是词，也不是按顺序生成的图像碎片；每次前向会共同参与当前一步的去噪计算。
 
-这条线的会合已经足够清楚：**扩散规定生成过程如何学习与展开，潜表示决定在哪个空间计算，Transformer决定去噪器怎样处理表示，条件机制决定它依据什么生成。** 这些层次可以组合，却需要分别评价。
+**条件不一定只能通过交叉注意力接入。** 原文比较把时间与类别当额外 token、交叉注意力、adaLN 和 adaLN-Zero。最后一种根据条件调节内部特征与残差分支，让残差块从恒等映射起步，再学习修正。在这组类别条件实验中它表现更好；这不等于已证明它在所有长文字任务上都最优。[^dit-design]
 
+预测完成后，token 重新排成噪声与对角协方差参数的潜网格，采样器更新状态，再开始下一步。最后才由图像解码器生成像素。**整组 token 一起计算，和整幅图一步生成，是两回事。**
+
+论文同时增加网络深度与宽度，以及细分潜空间块大小。仅把 XL 的块边长从 8 变成 2，参数仍约 6.75 亿，单次前向却从 7.39 增至 118.64 GFLOPs；训练 400,000 步后的无额外 CFG 的 FID 从 106.41 降至 19.47。参数量不能独自代表计算量，GFLOPs 也不是硬件每秒性能。[^dit-scaling]
+
+多走采样步数能否弥补较小模型？作者的一个对照是：L/2 走 1000 步需要约 80.7 TFLOPs，FID-10K 为 25.9；XL/2 只走 128 步，约 15.2 TFLOPs，FID-10K 反而更好，为 23.7。它说明更多次调用较弱的去噪器，不一定抵得过较强的去噪器；不是说采样步数没有用。
+
+最终 256×256 的 XL/2 训练 700 万步，使用 250 步 DDPM、CFG＝1.5 和 ft-EMA 图像解码器，FID-50K 达到 **2.27**。但在 512×512 上，DiT 的 **3.04** 虽然优于此前扩散组合的 3.85，仍不及表中 StyleGAN-XL 的 2.41。引导、解码器、样本数和训练时长都影响这些结论，不能把一项基准的领先扩成所有场景的胜利。[^dit-results]
+
+走到这里，ViT 的图像 token、残差初始化、DDPM、潜空间与 CFG 并没有互相消失，而是在不同层次重新组合。统一骨架有机会借用其他领域的训练与工程经验；至于开放文生图、视频、真实设备性能以及后续人物故事，需要各自的证据。**原论文把进一步接入 Stable Diffusion 等文生图系统列为后续方向，而非已完成实验。**[^dit-boundaries]
 
 <a id="lenses"></a>
 
@@ -966,7 +975,7 @@ AI的发展不只是模型名单变长，而是学习对象、可用信息、计
 [^ddpm]: Ho, Jain & Abbeel，[Denoising Diffusion Probabilistic Models](https://arxiv.org/pdf/2006.11239v2)，首版 2020-06-19、本文使用 v2（2020-12-16）。首页作者机构均为 UC Berkeley，p9 致谢 TFRC 的 TPU 支持；讲义 p46、节目约 03:27:55–03:32:16 提供讲解线索，原文与转写范围见[第 28 节展开](knowledge_reports/AI演义_28_DDPM_预测噪声怎样学会生成图像_科普讲解_20261106.md#sources-and-scope)。
 [^ldm]: Rombach et al.，[High-Resolution Image Synthesis with Latent Diffusion Models](https://arxiv.org/pdf/2112.10752v2)，首版 2021-12-20、本文采用 v2（2022-04-13）。§§1–3 说明像素计算成本、两阶段训练、潜空间与一次解码；讲义 p49 和节目约 03:45:52–03:52:54 的版本混用、转写重复／时间重叠已在[第 29 节展开](knowledge_reports/AI演义_29_LDM_潜空间怎样降低图像生成成本_科普讲解_20261106.md#sources-and-scope)说明。
 [^sd14]: [v1.4 官方模型卡，固定仓库版本](https://huggingface.co/CompVis/stable-diffusion-v1-4/blob/133a221b8aa7292a167afc5127cb63fb5005638b/README.md)，Model Details 与 Training；[本节展开](knowledge_reports/AI演义_30_StableDiffusion_v14_文生图系统怎样协同工作_科普讲解_20261106.md)。该文件版本晚于模型初发，不作为2022首发原稿。
-[^dit]: Peebles & Xie，[Scalable Diffusion Models with Transformers](https://arxiv.org/pdf/2212.09748v2)，首发2022年，所读修订版2023年。
+[^dit]: [DiT 原论文 v2](https://arxiv.org/pdf/2212.09748v2)，§§1–4；[本节展开](knowledge_reports/AI演义_31_DiT_Transformer怎样接替去噪骨架_科普讲解_20261106.md)。首版 2022-12-19，所读 v2 为 2023-03-02；在固定卷积 VAE 上训练类别条件 DiT，不是给预训练 SD 文本模型直接换权重。
 
 [^lecture]: 谢青池，[《AI演义：36篇论文开启你的探索之旅》](../notes/终版：AI演义，36篇论文开启你的探索之旅.pdf)，本地51页版本。作者身份按封面署名理解，不将其自动视为当前职位。
 [^people]: 该段依据AlexNet、seq2seq、蒸馏、GNMT、GPT-1、CLIP和ReAct的原文署名，分别见前述论文链接。共同参与只支持研究网络的连续性；具体方法继承另据正文所列设计与引用。
@@ -983,3 +992,7 @@ AI的发展不只是模型名单变长，而是学习对象、可用信息、计
 [^sd14-sampling]: [CFG 原论文](https://arxiv.org/abs/2207.12598v1) §3.2；[官方 PLMS 代码](https://github.com/CompVis/stable-diffusion/blob/master/ldm/models/diffusion/plms.py)与[README参考采样](https://github.com/CompVis/stable-diffusion/blob/master/README.md#reference-sampling-script)，核共用网络、权重约定、首步额外估计与eta=0；不把训练1000时间步或推理50步解释成相同调用次数。
 [^sd14-training]: 固定版本模型卡 Training，v1.3续195,000步、v1.4续225,000步，均从v1.2开始；[LAION-5B论文](https://arxiv.org/pdf/2210.08402v1) §3.1–3.2，数据筛选的英语CLIP ViT-B/32与生成的CLIP ViT-L/14文本条件分开。
 [^sd14-limits]: 固定版本模型卡 Evaluation Results、Limitations and Bias、Uses；[官方 README](https://github.com/CompVis/stable-diffusion/blob/master/README.md)的研究权重、安全检查、水印及用途限制。本轮不声称生成实测、曲线逐点复核或完整法律审查；节目片段与第29节共享03:45:52–03:52:54。
+[^dit-design]: 原论文 §3.2、Figure 3、Table 4：潜网格切块、四种条件块、噪声与对角协方差输出及 adaLN-Zero。不同条件设计的参数量与计算量不同，不能把消融差异全归一个初始化数字。
+[^dit-scaling]: 原论文 §5、Table 4、§5.2、Figure 10。400,000 训练步、无额外 CFG 的扩展表采用 ft-MSE 解码器，计算与参数不含 VAE；采样预算对照采用 FID-10K，不能与最终 FID-50K 混比，也不是墙钟测速。
+[^dit-results]: 原论文 §5.1、Tables 2–3、附录 A/D 及 Table 5：256×256 模型训练 700 万步，512×512 模型训练 300 万步；250 步 DDPM、50,000 个生成样本与 CFG 逐项保留；最终解码器为 ft-EMA，原 CFG 施加于前三个潜通道。256×256 的 2.27 与 512×512 的 3.04 不证明所有方法、指标全面获胜。
+[^dit-boundaries]: 原论文 §6 的后续方向与首页署名：William Peebles — UC Berkeley、Saining Xie — NYU，Peebles 的星号说明 Meta AI FAIR 实习；不据此确认后续任职或 Sora 谱系。节目 03:52:54–03:56:32 共 90 段已做文本与时间结构检查，未听音或测字错误率。

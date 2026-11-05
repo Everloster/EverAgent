@@ -1,0 +1,812 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_31_DiT_Transformer怎样接替去噪骨架_科普讲解_20261106.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "unconfirmed",
+        "harness": "codex",
+        "run_id": "dit_primary_review",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "identity_basis": "本子会话没有独立、会话绑定的模型确认；不借宿主默认配置或生成者身份填写模型。未继续诊断身份。"
+      },
+      "scores": {
+        "evidence_fidelity": 96,
+        "request_coverage": 95,
+        "reasoning_quality": 95,
+        "readability": 96,
+        "limitations": 97
+      },
+      "score_reasons": {
+        "evidence_fidelity": "固定v2 pp1–9及pp12–13中与本章相关的机制和数字已逐项核验；独立重提PDF文字与提供文本逐字一致，原PDF/讲义/metadata/shownotes哈希一致。三类计算量、CFG、decoder、50K/10K样本及256/512边界均正确。没有发现内容级关键证据或数字错误。",
+        "request_coverage": "来源先行的15个独立单元均已覆盖；花照、patch、条件块、输出训练、规模和采样反例保留。此次另外实际审了主稿第31节及5条脚注，核到实质改写、标题后首块展开链接与双向导航，R5/C18的原延后部分现已完成；不依赖转写或跳出本章才能读主线。",
+        "reasoning_quality": "明确区分扩散框架/骨架、参数/token/前向/训练/采样成本，未把条件消融包装成参数完全相等的单因素实验；LDM比较保留表示空间混杂，StyleGAN-XL反例和文生图未来方向约束了结论。没有看到实质推理跳跃。",
+        "readability": "此前通读327行，本次逐项比较到332行的可读性delta：VAE中文名、FID/CFG首次释义、EMA参数平滑解释、系列ResNet定位及思考与追问标题均准确；术语补释没有新增数学负担，原来的两项可读性小问题已解决。重新核验7个本地链接、4个片段锚点及主稿入站链接。未做工作台页面验收。",
+        "limitations": "原论文实验与花照例子、类别条件与开放文字/视频、图像解码器EMA与模型EMA、训练吞吐与实际生成速度均分开。未听音/WER、未训练复现、未逐张审核附录样本和未核后续人物/Sora明确写出；未将时间结构审计冒充逐字准确。"
+      },
+      "critical_claim_ids_checked": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17",
+        "C18"
+      ],
+      "source_ids_checked": [
+        "PAPER",
+        "METADATA",
+        "LECTURE",
+        "PODCAST",
+        "SHOWNOTES"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6"
+      ],
+      "coverage_unit_ids_checked": [
+        "U1",
+        "U2",
+        "U3",
+        "U4",
+        "U5",
+        "U6",
+        "U7",
+        "U8",
+        "U9",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16",
+        "U17",
+        "U18",
+        "U19"
+      ],
+      "source_content_map": [
+        {
+          "id": "P01",
+          "title": "为何要换骨架：扩散过程与去噪网络不同；U-Net不是只有卷积，已有注意力",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "LECTURE",
+            "PODCAST"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1"
+          ],
+          "notes": "paper pp1–3; ASR 03:52:54–03:54:18; handout p50；§1区分扩散任务与骨架，也明确扩散U-Net早已有注意力，没有把动机误写成CNN必败。"
+        },
+        {
+          "id": "P02",
+          "title": "技术史和讲义校正：2022-12-19首版、2023-03-02 v2、Peebles/Xie原机构与FAIR实习；人物后续不外推",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "METADATA",
+            "LECTURE",
+            "PODCAST"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1",
+            "U17",
+            "U18"
+          ],
+          "notes": "official metadata; paper p1; handout p50; ASR 03:54:18–03:54:28、03:55:56–03:56:32；开篇日期与§10署名/实习脚注符合原文；未把讲义的后续任职和Sora叙述升格为已核实事实。"
+        },
+        {
+          "id": "P03",
+          "title": "LDM不变部分：VAE压缩与解码、潜空间扩散；DiT替换去噪器不等于直接继承文生图系统",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U2"
+          ],
+          "notes": "paper pp3–6、9；§2保留卷积VAE及潜空间过程，明确新训练类别条件DiT，不是SD v1.4文生图权重热替换。"
+        },
+        {
+          "id": "P04",
+          "title": "Patchify与位置：256像素到32×32×4潜表示，p=8/4/2对应16/64/256图像tokens；不是文字分词",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3"
+          ],
+          "notes": "paper pp4–5 Figure4；§3给出256²到32×32×4及三种patch的16/64/256个tokens，并解释位置表示和潜位置/像素的区别。"
+        },
+        {
+          "id": "P05",
+          "title": "一次前向与反复去噪：整组tokens的自注意力和逐位置MLP；非逐token自回归生成",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3",
+            "U6"
+          ],
+          "notes": "paper Figure3、pp3–5；§3解释全局读取与逐位置前馈，§5明确一轮并行token计算与多轮去噪、非自回归逐块生成。"
+        },
+        {
+          "id": "P06",
+          "title": "训练已知加噪目标与生成随机初始化；输出noise和对角协方差，不是每轮产出完整RGB图",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U6",
+            "U7"
+          ],
+          "notes": "paper pp3、5–6；§5区分噪声/对角协方差输出、unpatchify/VAE decoder；保留已知加噪监督和协方差变分目标，训练配方按§4给出。"
+        },
+        {
+          "id": "P07",
+          "title": "条件机制四种比较：in-context、cross-attention、adaLN、adaLN-Zero；时间和类别分工",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U4"
+          ],
+          "notes": "paper pp4–6 Figure3、5；§4四类条件接入的形式正确；adaLN同层共享调制与长文本cross-attention的边界也交代。"
+        },
+        {
+          "id": "P08",
+          "title": "adaLN-Zero残差缩放初始为零使块为恒等；不等于全部权重归零或推理无更新",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U4"
+          ],
+          "notes": "paper pp5、12；§4 Zero小节区分残差缩放零初始化、恒等块、完整模型及推理输出；与原图3和§3.2相符。"
+        },
+        {
+          "id": "P09",
+          "title": "核心scaling设计：4档规模×3patch，400K训练，无CFG；参数数目不足以解释，Gflops是前向理论量",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8",
+            "U9"
+          ],
+          "notes": "paper pp5–8; Appendix Table4；§6完整交代4×3扩展，XL三个patch的参数/Gflops/FID逐项正确；单次前向、训练成本与固定数据集边界清楚。"
+        },
+        {
+          "id": "P10",
+          "title": "条件消融数字和公平性边界：19.47对35.24/26.14/25.21，参数并非完全固定",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U5"
+          ],
+          "notes": "paper p6; Appendix Table4；§4的35.24/26.14/25.21/19.47与Table4一致，标明400K、50K样本、无额外CFG及ft-MSE；没有伪装成参数固定的单变量消融。"
+        },
+        {
+          "id": "P11",
+          "title": "ImageNet最终结果：256的2.27附带7M训练、cfg1.5、250步、50K样本、ft-EMA；512的3.04非全面胜GAN",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11",
+            "U12"
+          ],
+          "notes": "paper pp8–9 Tables2–3; Appendix A–D；§8核到7M/3M训练、250步、FID-50K、CFG强度、decoder和512的1024 tokens/524.6G；明确512并未超过StyleGAN-XL的2.41。"
+        },
+        {
+          "id": "P12",
+          "title": "引导和decoder口径影响最终数值；FID不等同提示理解或个体审美",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11",
+            "U13",
+            "U15"
+          ],
+          "notes": "paper pp6、12–13 Tables2–5；§8有Recall随guidance变化、2.46/2.30/2.27 decoder消融及前三潜通道细节，§9限定指标用途；本次已核新增FID/CFG释义正确。"
+        },
+        {
+          "id": "P13",
+          "title": "反例：多采样步不能补小模型；400K下L/2的1000步80.7Tflops、25.9与XL/2的128步15.2Tflops、23.7",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10"
+          ],
+          "notes": "paper p9 Figure10、§5.2；§7独立保留反例：L/2千步80.7T/25.9与XL/2的128步15.2T/23.7；区分FID-10K和50K，也未外推成多步无用。"
+        },
+        {
+          "id": "P14",
+          "title": "架构统一和硬件生态是动机与推断，不能从Gflops推实测端到端速度、任意数据收益或所有U-Net必败",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "LECTURE",
+            "PODCAST"
+          ],
+          "matched_coverage_unit_ids": [
+            "U9",
+            "U14",
+            "U15",
+            "U16"
+          ],
+          "notes": "paper pp2–3、8–9; handout p50; ASR 03:54:40–03:55:56；§6、9、10区分潜空间收益、骨架收益、运算量、训练吞吐与生态机会；没有推成端到端实测优势或任意数据/任务收益。"
+        },
+        {
+          "id": "P15",
+          "title": "shownotes Part4的DiT承接Stable Diffusion；节目后续Sora与任职叙事须划为未核，不是论文已做文生图或视频",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES",
+            "PODCAST",
+            "PAPER",
+            "LECTURE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U16",
+            "U17",
+            "U18",
+            "U19"
+          ],
+          "notes": "shownotes Part4 DiT item; ASR last 40s; paper §6；已核shownotes Part4中Stable Diffusion之后的DiT条目与节目末段；§10、来源范围保留该节主线并声明后续Sora/现职未核。完整节目其他章节不属本次DiT展开审阅范围。 此次实际核主稿第31节和五条脚注及其入站展开链接，完成原先未审部分。"
+        }
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "issues": [],
+      "snapshot": {
+        "report_path": "ai-learning/reports/knowledge_reports/AI演义_31_DiT_Transformer怎样接替去噪骨架_科普讲解_20261106.md",
+        "report_sha256": "c8f4cec14a5fcc4da978982e298872e5d4dac83252f7d6eb3c110a6812dbb52c",
+        "evidence_path": "ai-learning/reports/knowledge_reports/.quality/AI演义_31_DiT_Transformer怎样接替去噪骨架_科普讲解_20261106.evidence.json",
+        "evidence_sha256": "a7e3a33c2c4e45336baf468ada4ff21108ee3f646e38a1d952de68e17064b382",
+        "matched_before_review": true,
+        "matched_before_delivery": true
+      },
+      "read_scopes": [
+        {
+          "source_id": "PAPER",
+          "scope": "原PDF主文pp1–9、附录pp12–13 A–D相关说明与Tables4–6；实际直接视读Figure3原页；未逐张审其余样本图或逐式重证。",
+          "verification": "原PDF SHA匹配；独立pdftotext -layout重提结果与所读布局文本完全一致。Figure3另外通过本轮eacli vision.image-analysis读取并回看原图；工具曾把Patchify→Embed连线误读，已以原图和§3.2校正，不采纳该错误。"
+        },
+        {
+          "source_id": "METADATA",
+          "scope": "官方缓存中的标题、作者、v1/v2完整版本日期；缓存SHA匹配，未重新联网请求。"
+        },
+        {
+          "source_id": "LECTURE",
+          "scope": "第50页文本与原页图像实际读取，核动机、核心贡献、人物叙述与论文的边界；未把讲义的人物后续作为事实根据。"
+        },
+        {
+          "source_id": "PODCAST",
+          "scope": "90段DiT片段文本全文与精确起止数值；独立重跑结构审计，未听音/WER，未访问其余转写。"
+        },
+        {
+          "source_id": "SHOWNOTES",
+          "scope": "所提供节目页文本已读；内容地图只覆盖本任务范围的Part4 DiT条目及与Stable Diffusion/结尾的关系，未对其它章节给出完成性复核。"
+        },
+        {
+          "source_id": "REPORT",
+          "scope": "先前完整通读初稿327行及evidence；本次只读初稿到现稿332行的可读性delta，evidence SHA未变。新增术语解释/两处链接实际核验；另外实际审主稿第31节、5条脚注与入站导航，R5/C18已补全。未读其它旧章节正文或旧审稿意见。"
+        }
+      ],
+      "transcript_audit": {
+        "command": "python3 podcast-learning/scripts/audit_transcript.py <DiT片段文本> --json",
+        "executed_in_this_review": true,
+        "text_sha256": "d3fee913ddf9df271e093f4554ca887e7ef5afdf56cdc9f52178fc5db9bded80",
+        "segment_json_sha256": "6f94498dd21f64f3cf5148a82dfb9eb6d2a556c68d1abd3db8c059043b381847",
+        "segments": 90,
+        "start_seconds": 13974.88,
+        "end_seconds": 14192.51,
+        "elapsed_seconds": 217.63,
+        "native_audit": {
+          "ok": true,
+          "lines": 90,
+          "segments": 90,
+          "duration_seconds": 14192,
+          "timestamp_errors": 0,
+          "malformed_lines": 0,
+          "max_consecutive_identical": 1,
+          "tail_gap_seconds": 0
+        },
+        "precision_audit": {
+          "start_backwards": 0,
+          "end_backwards": 0,
+          "end_before_start": 0,
+          "overlaps": 0,
+          "gaps": 0
+        },
+        "duration_field_note": "原生审计的duration_seconds为整秒末绝对时间，不是本片段时长；由精确片段起止差得217.63秒。",
+        "listened": false,
+        "wer_measured": false
+      },
+      "text_checks": {
+        "local_links": 7,
+        "local_links_missing": 0,
+        "explicit_fragment_targets_checked": 4,
+        "explicit_fragment_targets_missing": 0,
+        "footnotes": 16,
+        "undefined_footnotes": 0,
+        "unreferenced_footnotes": 0,
+        "tables": 5,
+        "inconsistent_table_widths": 0,
+        "replacement_characters": 0,
+        "private_path_markers": 0,
+        "evidence_lint_flagged": 0,
+        "workbench_page_acceptance": false,
+        "main_expansion_link_checked": true,
+        "main_dit_footnotes_checked": 5
+      },
+      "notes": "本记录更新到指定现稿SHA，保留同一独立审稿人在初稿阶段的来源优先核验；仅对当前可读性delta和原先延后的主稿R5/C18追加实际检查。原始来源与科学数字未变，未重复整套读源；术语释义与ResNet定位问题均已解决。主稿第31节及五个脚注和入站展开链接已审，故不再保留未审项。无内容级硬失败、无未解决内容问题。模型仍为unconfirmed，不借宿主配置；只写临时review，不改仓库、不做UI、不自行宣布质量门通过。",
+      "quality_check": {
+        "executed_this_delta": false,
+        "reason": "父任务明确无需对空仓内review重复运行native quality check；本记录只写临时交付，最终判定由协调者合入后执行。"
+      },
+      "schema_validation": {
+        "schema": "schemas/report-review-v1.schema.json#/properties/reviews/items",
+        "validator": "jsonschema.Draft202012Validator",
+        "valid": true
+      },
+      "resolved_issues": [
+        "FID/CFG/EMA首次释义已补充且正确",
+        "ResNet改为明确的本系列第3节链接，实际目标匹配"
+      ],
+      "readability_delta": {
+        "previous_reviewed_report_sha256": "c8ceda80e27c8919e6d593d8369876aa54941e8f211a42de3e57db84dabeb59f",
+        "before_file_matches_previous_review": true,
+        "evidence_unchanged": true,
+        "science_numbers_and_claims_unchanged": true,
+        "changes_checked": [
+          "VAE中文全称",
+          "FID/CFG释义与上一章CFG锚点",
+          "EMA中文释义和参数平滑",
+          "系列ResNet定位链接",
+          "CFG后空格",
+          "思考与追问标题"
+        ],
+        "previously_deferred_ids_now_checked": [
+          "R5",
+          "C18"
+        ],
+        "main_report_sha256": "ef4ef926e53f9833d4ff8e9ad6125814744585d6cb90dc91127741f9a706a19a",
+        "main_evidence_sha256": "ae15173ff3971a0334d0832ead8788d0bf689af13ab9c85af57d217a647a795e"
+      }
+    },
+    {
+      "role": "flagship_final_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "dit-strong-chapter-20261106-r1",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "identity_basis": "orchestrator-configured",
+        "model_runtime_confirmation": "session-bound-unverified"
+      },
+      "scores": {
+        "evidence_fidelity": 98,
+        "request_coverage": 97,
+        "reasoning_quality": 98,
+        "readability": 97,
+        "limitations": 98
+      },
+      "score_reasons": {
+        "evidence_fidelity": "逐项回读论文主文、附录表格、Figure 3、版本页、讲义、shownotes 与90段转写；关键尺寸、token、四类条件块、Table 4消融、采样计算、256/512基准、decoder与CFG通道口径均吻合。正文主动纠正了512×512并非胜过StyleGAN-XL、无CFG仍为类别条件、VAE不计入DiT FLOPs等易错点；未发现关键事实或数字错误。",
+        "request_coverage": "少数学科普、花照例子、DiT/扩散/VAE层级、patch/token、条件块、模型/训练/采样计算、消融与基准范围、思考与追问和导航均完成。当前delta又补齐VAE、FID、CFG、EMA首次解释与跨章链接；Figure 8的-0.93未入正文只是可选量化增强，不构成核心遗漏。",
+        "reasoning_quality": "不是术语堆砌，而是按“替换哪一层—怎样变成token—条件如何注入—输出什么—怎样扩展—实验支持到哪”推进；能区分相关性与普适定律、模型计算与采样计算、Transformer收益与潜空间收益，并用反例/混杂变量限制因果归因。",
+        "readability": "开篇问题明确，花照与32×32×4、2×2 patch示例降低门槛；当前delta补齐VAE/FID/CFG/EMA解释，ResNet与上一章CFG可直接跳转，“思考与追问”标题也更符合学习报告导航。短表格承载数字，脚注可定位，前节/主稿/后续视角导航齐全；仅做文本检查，未做页面渲染验收。",
+        "limitations": "诚实声明未训练复现、未测墙钟/能耗、未逐图审核、未听音/WER；明确ImageNet类别条件不外推开放文本/视频，人物/Sora叙事不倒填，FID等指标不代表安全或事实正确，并注明decoder、CFG、采样步数和评价样本口径。"
+      },
+      "critical_claim_ids_checked": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17",
+        "C18"
+      ],
+      "coverage_unit_ids_checked": [
+        "U1",
+        "U2",
+        "U3",
+        "U4",
+        "U5",
+        "U6",
+        "U7",
+        "U8",
+        "U9",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16",
+        "U17",
+        "U18",
+        "U19"
+      ],
+      "source_content_map": [
+        {
+          "id": "scm_dit_01",
+          "title": "历史问题与论文主张：扩散去噪长期以卷积 U-Net 为默认骨架，DiT 检验 U-Net 归纳偏置是否必要，并以标准 Transformer 替换骨架",
+          "importance": "core",
+          "source_ids": [
+            "PAPER",
+            "PODCAST",
+            "LECTURE"
+          ],
+          "notes": "论文限定为扩散模型 backbone 的替换与可扩展性实验；播客/讲义把它叙述为 Transformer 架构统一。不能把‘全局建模较弱’或后续 Sora 关联当论文已证事实。",
+          "assessment": "covered",
+          "matched_coverage_unit_ids": [
+            "U1"
+          ]
+        },
+        {
+          "id": "scm_dit_02",
+          "title": "扩散系统层级：正向加噪、反向去噪、VAE 潜空间与去噪骨架是不同层；DiT 只替换 latent DDPM 中的 U-Net",
+          "importance": "core",
+          "source_ids": [
+            "PAPER"
+          ],
+          "notes": "256×256 RGB 经冻结的卷积 VAE 编码为 32×32×4 latent；DiT 预测噪声与对角协方差；最后仍由 VAE decoder 还原像素，因此是混合系统，不是端到端纯 Transformer。",
+          "assessment": "covered",
+          "matched_coverage_unit_ids": [
+            "U2",
+            "U6"
+          ]
+        },
+        {
+          "id": "scm_dit_03",
+          "title": "少量必要数学：x_t 是干净样本与高斯噪声的线性混合；网络学习 epsilon_theta(x_t) 并迭代近似逆过程",
+          "importance": "core",
+          "source_ids": [
+            "PAPER"
+          ],
+          "notes": "L_simple=||epsilon_theta(x_t)-epsilon_t||^2 支持‘猜噪声’直觉；论文另用完整变分项训练 learned covariance，不应把全部训练简化为单一 MSE。",
+          "assessment": "covered",
+          "matched_coverage_unit_ids": [
+            "U6"
+          ]
+        },
+        {
+          "id": "scm_dit_04",
+          "title": "DiT 前向结构：latent patchify→位置编码→N 个 DiT block→线性解码/unpatchify→噪声与协方差",
+          "importance": "core",
+          "source_ids": [
+            "PAPER",
+            "PAPER"
+          ],
+          "notes": "输入 latent 的空间网格被转成 token 序列，最终每 token 解码为 p×p×2C 并复原空间布局。",
+          "assessment": "covered",
+          "matched_coverage_unit_ids": [
+            "U3",
+            "U6"
+          ]
+        },
+        {
+          "id": "scm_dit_05",
+          "title": "条件注入设计与消融：in-context token、cross-attention、adaLN、adaLN-Zero 四种方案",
+          "importance": "core",
+          "source_ids": [
+            "PAPER",
+            "PAPER"
+          ],
+          "notes": "timestep t 与 class label c 可作额外 token、独立 cross-attention 序列，或经 embedding 和后回归 layer norm 的 scale/shift；adaLN-Zero 还回归残差门控 alpha 并零初始化，使 block 初始近似恒等。",
+          "assessment": "covered",
+          "matched_coverage_unit_ids": [
+            "U4"
+          ]
+        },
+        {
+          "id": "scm_dit_06",
+          "title": "条件块定量对照：400K、256²、XL/2、无 guidance 下 adaLN-Zero 19.47，优于 adaLN 25.21、cross-attention 26.14、in-context 35.24",
+          "importance": "core",
+          "source_ids": [
+            "PAPER"
+          ],
+          "notes": "对应计算量约 118.64/118.56/137.62/119.37 Gflops；说明质量差异并非简单由 cross-attention 更多 FLOPs 保证。",
+          "assessment": "covered",
+          "matched_coverage_unit_ids": [
+            "U5"
+          ]
+        },
+        {
+          "id": "scm_dit_07",
+          "title": "两条计算扩展轴：扩大深宽/头数，或减小 patch 增加 token；后者参数近似不变却显著增加 Gflops",
+          "importance": "core",
+          "source_ids": [
+            "PAPER"
+          ],
+          "notes": "T=(I/p)^2；p 减半令 token 数四倍、总 Transformer Gflops 至少四倍。S/B/L/XL × p=8/4/2 共 12 个主扫描点。",
+          "assessment": "covered",
+          "matched_coverage_unit_ids": [
+            "U8",
+            "U9"
+          ]
+        },
+        {
+          "id": "scm_dit_08",
+          "title": "扩展证据及边界：400K 时 Gflops 与 FID-50K 相关系数 -0.93；只是该设计网格/训练设定内的经验相关，不是普适 scaling law",
+          "importance": "core",
+          "source_ids": [
+            "PAPER"
+          ],
+          "notes": "同参数减 patch 也改善 FID，支持计算量比参数数更解释结果；但 FLOPs 不是唯一复杂度真理，论文自己称 golden metric 仍有争议。 正文充分讲清两条扩展轴、同参增算与外推边界，但没有写出 Figure 8 的 -0.93 相关系数；这是可选的量化增强，不改变核心结论。",
+          "assessment": "partial",
+          "matched_coverage_unit_ids": [
+            "U9"
+          ]
+        },
+        {
+          "id": "scm_dit_09",
+          "title": "训练计算与采样计算不可简单互换",
+          "importance": "supporting",
+          "source_ids": [
+            "PAPER"
+          ],
+          "notes": "400K 模型中 DiT-L/2 用 1000 步约 80.7 Tflops/图、FID-10K 25.9，仍差于 XL/2 用 128 步约 15.2 Tflops/图、FID-10K 23.7。",
+          "assessment": "covered",
+          "matched_coverage_unit_ids": [
+            "U10"
+          ]
+        },
+        {
+          "id": "scm_dit_10",
+          "title": "最终基准数字与口径：256² DiT-XL/2-G cfg=1.5 FID-50K 2.27；512² 为 3.04",
+          "importance": "core",
+          "source_ids": [
+            "PAPER"
+          ],
+          "notes": "256² 对 LDM-4-G cfg=1.5 的 3.60；512² 对 ADM-G+ADM-U 的 3.85。结果是 class-conditional ImageNet、250 DDPM steps、ADM TensorFlow evaluator；2.27 使用 classifier-free guidance 与 ft-EMA decoder。",
+          "assessment": "covered",
+          "matched_coverage_unit_ids": [
+            "U11",
+            "U12"
+          ]
+        },
+        {
+          "id": "scm_dit_11",
+          "title": "VAE decoder 消融与组件口径",
+          "importance": "supporting",
+          "source_ids": [
+            "PAPER"
+          ],
+          "notes": "同一 DiT-XL/2-G cfg=1.5 下 original/ft-MSE/ft-EMA decoder 的 FID 为 2.46/2.30/2.27；表中 DiT 参数/FLOPs 排除 84M VAE。说明结果仍受非 DiT 组件影响。",
+          "assessment": "covered",
+          "matched_coverage_unit_ids": [
+            "U13"
+          ]
+        },
+        {
+          "id": "scm_dit_12",
+          "title": "适用范围与未证明外推",
+          "importance": "core",
+          "source_ids": [
+            "PAPER",
+            "PODCAST",
+            "LECTURE"
+          ],
+          "notes": "核心实验是 class-conditional ImageNet latent diffusion，不是 text-to-image；自然语言条件和 pixel-space 只被称可探索/可应用，未实验。播客关于工具生态、硬件彩票、人物后续及 Sora 使用 DiT 只是叙事/猜测，不能当论文结论。",
+          "assessment": "covered",
+          "matched_coverage_unit_ids": [
+            "U15",
+            "U17"
+          ]
+        },
+        {
+          "id": "scm_dit_13",
+          "title": "播客/讲义叙事单元：Transformer 统一、扩散架构拥抱共享训练配方与跨领域研究",
+          "importance": "supporting",
+          "source_ids": [
+            "PODCAST",
+            "LECTURE",
+            "SHOWNOTES"
+          ],
+          "notes": "shownotes Part 4 明列 DiT；节目段落 03:52:54–03:56:32，结构审计 90 段、217.63 秒。报告若承接节目，应区分节目讲法与论文证据。",
+          "assessment": "covered",
+          "matched_coverage_unit_ids": [
+            "U16",
+            "U18"
+          ]
+        }
+      ],
+      "source_ids_checked": [
+        "PAPER",
+        "METADATA",
+        "LECTURE",
+        "PODCAST",
+        "SHOWNOTES"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "强审加权分 97.65/100。已对初稿→现稿做完整可读性delta：六类变化均为正向解释/导航修订，科学数字与evidence未变，无新增缺陷。非阻断增强仍只有：可补Figure 8相关系数-0.93；若追求更强的单例贯穿，可在后段再回扣花照。未修改仓库sidecar、未读取旧review意见、未做UI验收。",
+      "snapshot": {
+        "report_sha256": "c8f4cec14a5fcc4da978982e298872e5d4dac83252f7d6eb3c110a6812dbb52c",
+        "evidence_sha256": "a7e3a33c2c4e45336baf468ada4ff21108ee3f646e38a1d952de68e17064b382",
+        "verified_before_review": true,
+        "wrong_target_snapshot": false,
+        "previous_reviewed_report_sha256": "c8ceda80e27c8919e6d593d8369876aa54941e8f211a42de3e57db84dabeb59f"
+      },
+      "read_scopes": [
+        {
+          "source_id": "PAPER",
+          "artifacts": [
+            "/tmp/everagent-dit-20261106/paper-v2-layout.txt",
+            "/tmp/everagent-dit-20261106/paper-p3.png"
+          ],
+          "scope": "实际阅读 v2 主文 pp1–9；附录 pp12–13 的 A–D 实现、完整模型表、解码器消融；直接视读 Figure 3 原页。未逐张审 pp14–25 样本。"
+        },
+        {
+          "source_id": "METADATA",
+          "artifacts": [
+            "/tmp/everagent-dit-20261106/paper-metadata.txt",
+            "/tmp/everagent-dit-20261106/paper-metadata.json"
+          ],
+          "scope": "核 arXiv v1/v2 日期、题名、作者。"
+        },
+        {
+          "source_id": "LECTURE",
+          "artifacts": [
+            "/tmp/everagent-dit-20261106/handout-p50.txt",
+            "/tmp/everagent-dit-20261106/handout-p50.png"
+          ],
+          "scope": "阅读 OCR 文本并直接视读第50页，核历史叙事、核心贡献和人物说法边界。"
+        },
+        {
+          "source_id": "PODCAST",
+          "artifacts": [
+            "/tmp/everagent-dit-20261106/dit-asr.txt",
+            "/tmp/everagent-dit-20261106/dit-asr-segments.json",
+            "/tmp/everagent-dit-20261106/asr-precision-check.json",
+            "/tmp/everagent-dit-20261106/asr-native-audit.json"
+          ],
+          "scope": "全文读取零基 6712–6801 的90段 DiT 转写；独立复算时间结构。未听音，未测 WER。"
+        },
+        {
+          "source_id": "SHOWNOTES",
+          "artifacts": [
+            "/tmp/everagent-dit-20261106/shownotes.txt"
+          ],
+          "scope": "读取完整本地 shownotes，核 Part 4 中 Stable Diffusion→DiT 条目和节目收尾位置。"
+        },
+        {
+          "source_id": "REPORT",
+          "artifacts": [
+            "ai-learning/reports/knowledge_reports/AI演义_31_DiT_Transformer怎样接替去噪骨架_科普讲解_20261106.md"
+          ],
+          "scope": "来源地图完成后阅读正文全部327行；核机制、数字、表格、脚注、独立阅读与上下篇导航。仅做文本内容检查，不做工作台或浏览器页面验收。"
+        },
+        {
+          "source_id": "EVIDENCE",
+          "artifacts": [
+            "ai-learning/reports/knowledge_reports/.quality/AI演义_31_DiT_Transformer怎样接替去噪骨架_科普讲解_20261106.evidence.json"
+          ],
+          "scope": "来源地图完成后读取 evidence 全部 requirements、sources、C1–C18 与 U1–U19；未读取旧 review 意见。"
+        },
+        {
+          "source_id": "READABILITY_DELTA",
+          "artifacts": [
+            "/tmp/everagent-dit-20261106/before-readability-chapter.md",
+            "ai-learning/reports/knowledge_reports/AI演义_31_DiT_Transformer怎样接替去噪骨架_科普讲解_20261106.md"
+          ],
+          "scope": "只比较已审初稿到当前章稿的完整diff；核新增术语解释、链接与结尾标题，未重读整套来源。"
+        }
+      ],
+      "transcript_recomputation": {
+        "input": "/tmp/everagent-dit-20261106/dit-asr-segments.json",
+        "segment_count": 90,
+        "start_seconds": 13974.88,
+        "end_seconds": 14192.51,
+        "elapsed_seconds": 217.63,
+        "start_backwards": 0,
+        "end_backwards": 0,
+        "end_before_start": 0,
+        "overlap_count": 0,
+        "max_gap_seconds": 0.0,
+        "nonzero_gap_count": 0,
+        "empty_text_count": 0,
+        "json_sha256": "6f94498dd21f64f3cf5148a82dfb9eb6d2a556c68d1abd3db8c059043b381847"
+      },
+      "readability_delta": {
+        "baseline": "/tmp/everagent-dit-20261106/before-readability-chapter.md",
+        "comparison": "exact unified diff",
+        "scientific_content_changed": false,
+        "evidence_changed": false,
+        "verified_changes": [
+          "VAE首次补中文全称",
+          "ResNet改为本系列可点击链接",
+          "首次解释FID与CFG并链接上一章CFG",
+          "EMA补中文全称与参数平滑解释",
+          "修复CFG后空格",
+          "结尾标题显式包含思考与追问"
+        ],
+        "assessment": "全部为正向可读性修订；未发现数字、范围、引用或机制含义漂移。"
+      }
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 95.7,
+    "evaluated_on": "2026-11-06",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "f0524df6b2415c730f454df8b9d4d0acea4b3f2dc2fae7537d758d98e68a5a6f",
+    "evidence_sha256": "a7e3a33c2c4e45336baf468ada4ff21108ee3f646e38a1d952de68e17064b382"
+  }
+}

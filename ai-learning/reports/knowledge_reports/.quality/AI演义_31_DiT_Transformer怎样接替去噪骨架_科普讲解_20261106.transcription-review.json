@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "kind": "chapter-transcription-review",
+  "reviewed_on": "2026-11-06",
+  "chapter": 31,
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+  "transcript_source_ref": "sha256:d3fee913ddf9df271e093f4554ca887e7ef5afdf56cdc9f52178fc5db9bded80",
+  "full_segments_sha256": "f322514ced72235a0ca104635824c66df425c18dbae3d0f4e76fa70d088db61c",
+  "public_full_episode_receipt": "podcast-learning/reports/transcripts/2026-11-04_ai-yanyi-117.audit.json",
+  "read_scope": {
+    "zero_based_start": 6712,
+    "zero_based_end_inclusive": 6801,
+    "segment_count": 90,
+    "start_seconds": 13974.88,
+    "end_seconds": 14192.51,
+    "elapsed_seconds": 217.63,
+    "text_sha256": "d3fee913ddf9df271e093f4554ca887e7ef5afdf56cdc9f52178fc5db9bded80",
+    "slice_sha256": "6f94498dd21f64f3cf5148a82dfb9eb6d2a556c68d1abd3db8c059043b381847",
+    "start_backwards": 0,
+    "end_backwards": 0,
+    "end_before_start": 0,
+    "overlaps": [],
+    "max_gap_seconds": 0.0
+  },
+  "compatible_text_audits": [
+    {
+      "schema_version": 2,
+      "kind": "podcast-transcript-audit",
+      "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "source_ref": "sha256:d3fee913ddf9df271e093f4554ca887e7ef5afdf56cdc9f52178fc5db9bded80",
+      "max_consecutive_limit": 3,
+      "audit": {
+        "ok": true,
+        "size": 4871,
+        "sha256": "d3fee913ddf9df271e093f4554ca887e7ef5afdf56cdc9f52178fc5db9bded80",
+        "lines": 90,
+        "segments": 90,
+        "duration_seconds": 14192,
+        "max_consecutive_identical": 1,
+        "timestamp_errors": 0,
+        "malformed_lines": 0,
+        "tail_gap_seconds": 0
+      }
+    }
+  ],
+  "audit_interpretation": "百分秒结构核90段、13974.88–14192.51秒跨度217.63秒，无起始/结束倒序、负时长、重叠或相邻间隙。native duration_seconds为绝对末时间，不作本片段时长。文本校核与听音/WER分开。",
+  "term_and_claim_checks": [
+    {
+      "issue": "DIT、扩展模型、SleeveDiffusion、路况性等ASR词",
+      "adopted": "按原文规范DiT、扩散、StableDiffusion与鲁棒性；不声称听校还原每一原词。",
+      "basis": "论文题名/§§1–3"
+    },
+    {
+      "issue": "直接换掉现成StableDiffusion U-Net及数据算力一起扩展",
+      "adopted": "固定VAE上训练新的类别条件DiT；§6文本模型列后续方向，当前主要固定ImageNet比较模型/token/计算。",
+      "basis": "§§3–6"
+    },
+    {
+      "issue": "后续任职、Sora推测与讲义作者归属",
+      "adopted": "仅采用PeeblesUC Berkeley/XieNYU及PeeblesMetaFAIR实习脚注，不采纳未核人物现职或视频谱系。",
+      "basis": "论文首页与§6"
+    }
+  ],
+  "audio_listened": false,
+  "wer_measured": false,
+  "limitations": [
+    "仅发布核查范围/哈希与纠错，不复制私有转写路径或全文。",
+    "时间结构通过不能等同准确转写、逐字听校或WER结果。"
+  ]
+}

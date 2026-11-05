@@ -42,8 +42,9 @@
 - [《AI演义》28｜DDPM：预测噪声，怎么就学会了画图？](../../reports/knowledge_reports/AI演义_28_DDPM_预测噪声怎样学会生成图像_科普讲解_20261106.md)
 - [《AI演义》29｜LDM：为什么先压缩，反而更会画图？](../../reports/knowledge_reports/AI演义_29_LDM_潜空间怎样降低图像生成成本_科普讲解_20261106.md)
 - [《AI演义》30｜Stable Diffusion v1.4：一句提示词，怎样穿过整套文生图系统？](../../reports/knowledge_reports/AI演义_30_StableDiffusion_v14_文生图系统怎样协同工作_科普讲解_20261106.md)
+- [《AI演义》31｜DiT：去噪这份工作，Transformer 能接手吗？](../../reports/knowledge_reports/AI演义_31_DiT_Transformer怎样接替去噪骨架_科普讲解_20261106.md)
 
-主报告的对应章节保留完整导读，并直接链接展开篇；展开篇可以返回原章节，也可继续读下一节。其余章节仍见主报告。
+31 节均已提供展开阅读。主报告保留各节导读与展开链接；展开篇可以返回原章节，也可继续读下一节。技术史的综合视角与全书总结仍见主报告。
 
 - [初始来源／36对象地图](./source-map.md)
 - [从seq2seq到Transformer](./sample_sequence.md)
