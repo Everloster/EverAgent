@@ -2,32 +2,32 @@
   "schema_version": 1,
   "report_path": "ai-learning/reports/AI演义_笔记分析与项目整合报告.md",
   "quality_tier": "flagship",
-  "revision_round": 33,
+  "revision_round": 34,
   "reviews": [
     {
       "role": "primary_review",
       "reviewer": {
         "model": "unconfirmed",
         "harness": "codex",
-        "run_id": "ddpm_primary_review",
+        "run_id": "ldm_primary_review",
         "independent_context": true,
         "explicit_model_override": false,
         "identity_status": "session-bound-unverified",
-        "identity_basis": "独立子上下文未取得绑定本子会话的模型证明；共享宿主eacli输出不能证明子模型，不借用父身份。任务说明GLM 5.3不可用，本审未执行该模型。"
+        "identity_note": "本复核子会话未取得独立绑定的模型身份；共享宿主config-default不作为本子会话模型证据，未借用父会话身份。"
       },
       "scores": {
-        "evidence_fidelity": 96,
-        "request_coverage": 95,
-        "reasoning_quality": 95,
-        "readability": 94,
-        "limitations": 96
+        "evidence_fidelity": 95,
+        "request_coverage": 96,
+        "reasoning_quality": 96,
+        "readability": 95,
+        "limitations": 97
       },
       "score_reasons": {
-        "evidence_fidelity": "直接复核C-ddpm/U-ddpm及六个本章来源：13.22/13.51/3.17、训练参考3.17/测试参考5.24、NLL≤3.70/≤3.75、1000步及UC Berkeley/TPU归属均准确。其余证据与正文经精确比对合法继承r32，不冒称重读。",
-        "request_coverage": "第28节从摘要实质改为可独立理解的训练—采样—目标—网络—代价链；标题后首块就是展开链接，前后章节和来源入口可达。直接审核R11，R1–R10及其他科学内容仅按核实的已发布基线继承。",
-        "reasoning_quality": "主稿自身已解释已知监督、累计噪声、反向分布和参数化/损失共同作用，不把核心机制外包给链接。与上一章建模框架、下一章潜空间成本衔接明确，数值取舍没有混为全方位胜出。",
-        "readability": "增量段落比展开篇紧凑，花照例子连贯，三个脚注均有定义，章节首链及来源锚点可解析，未见乱码。少数术语如分数匹配与渐进编码在主稿仅作短介绍，展开篇提供细化。",
-        "limitations": "主稿限定v2、无条件CIFAR-10、FID参考集和原实验1000步；脚注保留NLL上界、各训一次和最低FID选择口径。补充压缩/插值/安全细节在展开篇，未声称本节进行了产品、训练或页面验收。"
+        "evidence_fidelity": "直接核第29节及四脚注，原文支持机制和所引5.11/4.98/3.08、修补0.11→0.33与24.74→14.99；任务/采样器和硬件没有混用。旧部分仅在hash/pass与允许项外完全一致的核验基础上继承。新增256×256与50k生成样本/完整训练集统计口径已作增量复核，保守保持首次评分。",
+        "request_coverage": "本节实质改写，第一内容块为展开链接；自身仍解释背景、问题、两阶段机制、条件控制、反例和路线，核心不是全部外包到链接。R11直接审；未变化R1–R10按经过独立不变性核验的r33继承。",
+        "reasoning_quality": "能把表示学习/生成学习、压缩比/加速比、一次解码/多步采样和论文/具体模型分清，并用FFHQ反例限制全胜叙事；对真实细节恢复的限制与前文机制相接。评分反映本节增量，不冒称重新独立推导所有旧章节。",
+        "readability": "段落沿花照问题推进，短节已有完整机制链，链接、四脚注与下一节锚点均有效，未发现乱码。KL/VQ在压缩后的摘要里仍较紧凑，但详细解释有明确展开入口。检查为Markdown内容和文件锚点检查，而非页面验收。",
+        "limitations": "不以论文数字冒称本机速度，不把固定CLIP倒填LDM，不把合理补全当真值恢复；节目/版本核验细节可点击追溯。复核也明确区分直接阅读与r33继承，未虚称听校、全论文重读或部署验证。"
       },
       "critical_claim_ids_checked": [
         "C-brook",
@@ -63,7 +63,6 @@
         "C-gan",
         "C-diffusion-2015",
         "C-ddpm",
-        "C-ldm",
         "C-dit",
         "C-bitter-lesson",
         "C-inventory",
@@ -88,7 +87,8 @@
         "E-behavior",
         "E-interaction",
         "C-basics",
-        "C-route-walkthroughs"
+        "C-route-walkthroughs",
+        "C-ldm"
       ],
       "coverage_unit_ids_checked": [
         "U-brook",
@@ -124,12 +124,12 @@
         "U-gan",
         "U-diffusion-2015",
         "U-ddpm",
-        "U-ldm",
         "U-dit",
         "U-bitter-lesson",
         "U-lenses",
         "U-reader-method",
-        "U-cross-route"
+        "U-cross-route",
+        "U-ldm"
       ],
       "source_ids_checked": [
         "S-lecture",
@@ -169,7 +169,6 @@
         "S-gan",
         "S-diffusion15",
         "S-ddpm",
-        "S-ldm",
         "S-sd14",
         "S-dit",
         "L-inventory",
@@ -197,7 +196,13 @@
         "S-ddpm-lecture",
         "S-ddpm-podcast",
         "S-ddpm-shownotes",
-        "S-ddpm-unet"
+        "S-ddpm-unet",
+        "S-ldm",
+        "S-ldm-metadata",
+        "S-ldm-lecture",
+        "S-ldm-podcast",
+        "S-ldm-shownotes",
+        "S-ldm-sd14"
       ],
       "requirement_ids_checked": [
         "R1",
@@ -214,123 +219,95 @@
       ],
       "source_content_map": [
         {
-          "id": "M01",
-          "title": "2015框架到2020有效配方的问题承接",
+          "id": "MAIN-LDM-01",
+          "title": "像素计算成本与先表示后生成的两阶段分工",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
-            "S-ddpm",
-            "S-ddpm-lecture",
-            "S-ddpm-podcast"
+            "S-ldm",
+            "S-ldm-podcast"
           ],
           "matched_coverage_unit_ids": [
-            "U-ddpm"
+            "U-ldm"
           ],
-          "notes": "本节从既有前向/反向框架进入高质量生成的设计选择，未把噪声预测倒填给2015年。竞争范式的更多背景由主稿前文承接，前文只按基线继承。"
+          "notes": "本节不只放链接：独立解释反复处理大数组的成本、先训练并固定编码/解码再训练扩散，以及潜网格不等于文字标签或缩略图。"
         },
         {
-          "id": "M02",
-          "title": "已知噪声监督、直接构造状态与随机反向采样",
+          "id": "MAIN-LDM-02",
+          "title": "噪声监督、生成起点与最终解码",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
-            "S-ddpm",
-            "S-ddpm-podcast"
+            "S-ldm"
           ],
           "matched_coverage_unit_ids": [
-            "U-ddpm"
+            "U-ldm"
           ],
-          "notes": "对应独立来源单元P03/P04。主稿自身说明原图不输入预测网络、随机t、共享模型、累计等效噪声、反向均值/方差与末步随机性，核心解释不依赖展开链接。"
+          "notes": "主稿直接讲清已知噪声提供训练监督、生成从新潜噪声开始、最后一次解码不是一步生成，核心流程无需读展开稿也成立。"
         },
         {
-          "id": "M03",
-          "title": "参数化与目标配合的消融证据",
+          "id": "MAIN-LDM-03",
+          "title": "压缩目标、组件继承与非单调的压缩收益",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
-            "S-ddpm"
+            "S-ldm"
           ],
           "matched_coverage_unit_ids": [
-            "U-ddpm"
+            "U-ldm"
           ],
-          "notes": "对应P05。13.22/13.51/3.17保持同为固定方差的配置差别，不能归因于单改预测对象；简化损失改变时间权重的解释成立。"
+          "notes": "感知/局部对抗目标、轻KL/VQ、f4/8取舍和尺寸比不等于速度比均已进入主稿；较细的VQ量化位置在脚注说明。"
         },
         {
-          "id": "M04",
-          "title": "时间条件U-Net与扩散组织方式的分工",
+          "id": "MAIN-LDM-04",
+          "title": "通用条件接口与原LDM/具体SD版本分界",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
-            "S-ddpm",
-            "S-ddpm-unet",
-            "S-ddpm-lecture",
-            "S-ddpm-podcast"
+            "S-ldm",
+            "S-ldm-sd14",
+            "S-ldm-lecture",
+            "S-ldm-podcast"
           ],
           "matched_coverage_unit_ids": [
-            "U-ddpm"
+            "U-ldm"
           ],
-          "notes": "对应P06。主稿区分网络如何算预测与扩散如何组织训练/生成，说明残差和注意力组件；原U-Net的任务更正在展开篇，主稿没有沿用边缘检测误述。"
+          "notes": "Q来自图像、K/V来自条件的机制和BERT tokenizer+联合Transformer对固定CLIP的区别均直接说明；没有将讲义混用写成论文事实。"
         },
         {
-          "id": "M05",
-          "title": "指标口径、似然取舍与1000步成本",
+          "id": "MAIN-LDM-05",
+          "title": "有代表性的实验证据、反例与精度边界",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
-            "S-ddpm"
+            "S-ldm"
           ],
           "matched_coverage_unit_ids": [
-            "U-ddpm"
+            "U-ldm"
           ],
-          "notes": "对应P07/P08。3.17/5.24参考集合及无条件任务明确；ddpm-results脚注保留≤3.75/≤3.70、只训练一次和最低FID选择。没有把T=1000改写成少步或实时方法。"
+          "notes": "主稿用CelebA-HQ与FFHQ正反例及修补吞吐/FID说明收益并非全胜；保留任务、采样步数、VQ注意力行和8×V100。文本引导、用户研究及社会风险等细节在展开稿，此处未虚称主稿全部展开。本脚注已补分辨率与50k统计口径，并经后续增量复核。"
         },
         {
-          "id": "M06",
-          "title": "版本、作者署名与资源支持",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-ddpm",
-            "S-ddpm-metadata",
-            "S-ddpm-lecture",
-            "S-ddpm-podcast"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-ddpm"
-          ],
-          "notes": "对应P02。v1/v2日期、三位作者UC Berkeley与Google TPU支持分开；无未核商业排名或后续履历扩张。"
-        },
-        {
-          "id": "M07",
-          "title": "分数匹配、渐进编码及补充解释的层次",
+          "id": "MAIN-LDM-06",
+          "title": "史料层级、节目拆章和增量阅读入口",
           "importance": "supporting",
-          "assessment": "partial",
-          "source_ids": [
-            "S-ddpm"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-ddpm"
-          ],
-          "notes": "对应P09/P10/P11/P13。主稿保留分数匹配和粗到细生成联系；传样假设、插值和社会风险的细节在已读展开篇而非本节摘要。属于支持性细节的有意压缩，未把这些省略当成本节已完整展开。"
-        },
-        {
-          "id": "M08",
-          "title": "对应转写、shownotes与读者导航",
-          "importance": "core",
           "assessment": "covered",
           "source_ids": [
-            "S-ddpm-podcast",
-            "S-ddpm-shownotes",
-            "S-ddpm-lecture"
+            "S-ldm",
+            "S-ldm-metadata",
+            "S-ldm-lecture",
+            "S-ldm-podcast",
+            "S-ldm-shownotes",
+            "S-ldm-sd14"
           ],
           "matched_coverage_unit_ids": [
-            "U-ddpm"
+            "U-ldm"
           ],
-          "notes": "对应P12。本章脚注给讲义p46及约03:27:55–03:32:16，展开范围保留未听校界限；节目后接ViT而主稿问题路线接LDM，展开篇已说明两种顺序不同。首块展开、返回与前后链接均可定位。"
+          "notes": "首版/v2日期和方法/实现拆分准确；首块展开链接、脚注到sources-and-scope可用，不伪造v1.4独立节目段；未扩写当代市场或作者现职。"
         },
         {
-          "id": "M09",
-          "title": "已发布r32未改正文及证据的继承单元",
+          "id": "BASELINE-R33",
+          "title": "已发布r33其余主稿与证据的明确继承",
           "importance": "core",
           "assessment": "covered",
           "source_ids": [
@@ -370,7 +347,7 @@
             "S-clip",
             "S-gan",
             "S-diffusion15",
-            "S-ldm",
+            "S-ddpm",
             "S-sd14",
             "S-dit",
             "L-inventory",
@@ -393,7 +370,12 @@
             "S-diffusion15-metadata",
             "S-diffusion15-lecture",
             "S-diffusion15-podcast",
-            "S-diffusion15-shownotes"
+            "S-diffusion15-shownotes",
+            "S-ddpm-metadata",
+            "S-ddpm-lecture",
+            "S-ddpm-podcast",
+            "S-ddpm-shownotes",
+            "S-ddpm-unet"
           ],
           "matched_coverage_unit_ids": [
             "U-brook",
@@ -428,27 +410,88 @@
             "U-clip",
             "U-gan",
             "U-diffusion-2015",
-            "U-ldm",
+            "U-ddpm",
             "U-dit",
             "U-bitter-lesson",
             "U-lenses",
             "U-reader-method",
             "U-cross-route"
           ],
-          "notes": "只继承4bba245fc32b32afaa3c161e664ab1784d681e59的r32。git show独立核实pass、两个review条数及报告/evidence哈希；指定排除之外正文完全相同，保留的evidence对象和数组顺序也相同。本轮未重新阅读这些旧论文，未读取旧审稿意见或五维分数。"
+          "notes": "独立git show检查fcd26a6ffda22fdf5332ca8db45c2e3c64edd74c：r33顶层decision=pass，报告/证据绑定SHA均匹配。剔除允许区段、四脚注、status/updated_on以及允许evidence项后，正文逐字相同、evidence结构含顺序相同。因此只继承未变化部分的既有覆盖，不声称本轮重读全部旧论文或重审旧意见。"
         }
       ],
       "unsupported_claims": [],
       "missing_requirements": [],
       "hard_failures": [],
-      "notes": "未发现本章增量的无支持关键claim、关键数字错误或核心要求漏答。59个关键claim中直接复核1个、继承58个；39个coverage中直接1个、继承38个；66个source中直接6个、继承60个；R11直接、R1–R10继承。checked字段为两者并集，不能解释为本轮重读全部来源。最终状态由native checker计算。",
+      "notes": "未发现阻断性内容问题。后续仅增量复核[^ldm-results]新增的256×256、50,000个生成样本及对应完整训练集统计口径，与此前已读原文相符，先前非阻断建议已落实。反向撤销该处后文件SHA精确回到首次审阅快照，evidence未变化，无附带修改；保持原评分，不重新读取旧来源或重跑r33基线。checked仍为下列directly_reviewed_*与inherited_*的并集，不代表本轮重读所有旧来源。最终判定交native checker。",
       "snapshot": {
         "report_path": "ai-learning/reports/AI演义_笔记分析与项目整合报告.md",
-        "report_sha256": "dacb782b987f5bbdc6ffd96bf6051a98087be518809342c1e16a7652cfa9de3c",
-        "evidence_sha256": "2534e96bb0ae1f3133c678e543cd87f4fe938996a8abe8f7788304602e5fbfdd"
+        "report_sha256": "ba6ec70ea6fb395cf943fed9db3626db789f1ff0bf09a4323870174833334d74",
+        "evidence_sha256": "3b556e692283ef9364f22f66ba873b3f5ad87cc3d8c05926f638a22fbb8e8f2f",
+        "matched_requested_snapshot_at_start_and_finish": true
       },
+      "read_scopes": {
+        "direct_report": "paper-ldm至paper-sd14之前，第29节；脚注ldm、ldm-compression、ldm-conditioning、ldm-results；本节到展开稿与相邻章节的导航。",
+        "direct_sources": {
+          "S-ldm": "直接读取固定v2缓存版面文本pp1–9、pp21–22、pp25–29及相应表格/图注；核仓内PDF SHA。未逐式重证，也未在本轮重新视读原页图片。",
+          "S-ldm-metadata": "直接读取官方版本记录缓存全文并核缓存SHA。",
+          "S-ldm-lecture": "直接读取p49缓存抽取文本，可见标题、贡献、CLIP与机构表述；抽取有缺字，本轮未重新视读原页，关键科学判断回原论文。",
+          "S-ldm-podcast": "直接读取零基6521–6711共191段文字与JSON切片；独立按小数精度检查起止单调性、重叠与间隔。",
+          "S-ldm-shownotes": "直接读取节目页缓存并核SHA，重点Part4及Stable Diffusion前后条目。",
+          "S-ldm-sd14": "直接读取已缓存官方模型卡，判断仅限固定预训练CLIP与LDM原v2的版本差别；未声称是2022原稿或固定commit。"
+        },
+        "baseline_review": "仅解析顶层revision_round、decision及记录条数核r33通过和hash；未查看reviews/history里的意见或五维分数。",
+        "baseline_report_and_evidence": "对允许项外全部内容做确定性不变性比较，不等于重读全部旧正文的科学论证。"
+      },
+      "inheritance_verification": {
+        "baseline_commit": "fcd26a6ffda22fdf5332ca8db45c2e3c64edd74c",
+        "baseline_revision_round": 33,
+        "baseline_decision_status": "pass",
+        "baseline_review_count": 2,
+        "baseline_report_sha256": "04a7ef38fc6ddad914830c183c0099e5b8b608a7ee2c407a00ad1670711ae10c",
+        "baseline_evidence_sha256": "2534e96bb0ae1f3133c678e543cd87f4fe938996a8abe8f7788304602e5fbfdd",
+        "baseline_bound_report_sha256_matches": true,
+        "baseline_bound_evidence_sha256_matches": true,
+        "body_allowlist": [
+          "section paper-ldm up to but excluding paper-sd14",
+          "footnotes ldm,ldm-compression,ldm-conditioning,ldm-results",
+          "frontmatter status,updated_on"
+        ],
+        "body_remainder_equal": true,
+        "normalized_report_sha256": "40100e29dfd03d3e42b48aba7acb6dcaa3a9add1a03524e1613645159562500e",
+        "evidence_allowlist": {
+          "sources": [
+            "S-ldm",
+            "S-ldm-lecture",
+            "S-ldm-metadata",
+            "S-ldm-podcast",
+            "S-ldm-sd14",
+            "S-ldm-shownotes"
+          ],
+          "claims": [
+            "C-ldm"
+          ],
+          "source_coverage": [
+            "U-ldm"
+          ],
+          "requirements": [
+            "R11"
+          ],
+          "other": [
+            "generator.run_id",
+            "revision_note"
+          ]
+        },
+        "evidence_remainder_equal": true,
+        "normalized_evidence_sha256": "9ddb716e8d5e3b46a449008ac08374e1c84ca143fa5a6db8342f851ead4858e0"
+      },
+      "verification_limits": [
+        "旧内容承接已发布基线，未重新独立阅读全文所引旧论文。",
+        "未重新听音、测WER、运行论文代码或进行工作台/网页验收。",
+        "模型身份保持unconfirmed，不用共享宿主的配置默认值补作真实子会话型号。"
+      ],
       "directly_reviewed_critical_claim_ids": [
-        "C-ddpm"
+        "C-ldm"
       ],
       "inherited_critical_claim_ids": [
         "C-brook",
@@ -483,7 +526,7 @@
         "C-clip",
         "C-gan",
         "C-diffusion-2015",
-        "C-ldm",
+        "C-ddpm",
         "C-dit",
         "C-bitter-lesson",
         "C-inventory",
@@ -511,7 +554,7 @@
         "C-route-walkthroughs"
       ],
       "directly_reviewed_coverage_unit_ids": [
-        "U-ddpm"
+        "U-ldm"
       ],
       "inherited_coverage_unit_ids": [
         "U-brook",
@@ -546,7 +589,7 @@
         "U-clip",
         "U-gan",
         "U-diffusion-2015",
-        "U-ldm",
+        "U-ddpm",
         "U-dit",
         "U-bitter-lesson",
         "U-lenses",
@@ -554,12 +597,12 @@
         "U-cross-route"
       ],
       "directly_reviewed_source_ids": [
-        "S-ddpm",
-        "S-ddpm-metadata",
-        "S-ddpm-lecture",
-        "S-ddpm-podcast",
-        "S-ddpm-shownotes",
-        "S-ddpm-unet"
+        "S-ldm",
+        "S-ldm-metadata",
+        "S-ldm-lecture",
+        "S-ldm-podcast",
+        "S-ldm-shownotes",
+        "S-ldm-sd14"
       ],
       "inherited_source_ids": [
         "S-lecture",
@@ -598,7 +641,7 @@
         "S-clip",
         "S-gan",
         "S-diffusion15",
-        "S-ldm",
+        "S-ddpm",
         "S-sd14",
         "S-dit",
         "L-inventory",
@@ -621,7 +664,12 @@
         "S-diffusion15-metadata",
         "S-diffusion15-lecture",
         "S-diffusion15-podcast",
-        "S-diffusion15-shownotes"
+        "S-diffusion15-shownotes",
+        "S-ddpm-metadata",
+        "S-ddpm-lecture",
+        "S-ddpm-podcast",
+        "S-ddpm-shownotes",
+        "S-ddpm-unet"
       ],
       "directly_reviewed_requirement_ids": [
         "R11"
@@ -638,68 +686,42 @@
         "R9",
         "R10"
       ],
-      "inheritance_verification": {
-        "baseline_commit": "4bba245fc32b32afaa3c161e664ab1784d681e59",
-        "baseline_revision_round": 32,
-        "baseline_status": "pass",
-        "baseline_reviews_count": 2,
-        "baseline_report_sha256": "a7672c5704cf64a829a2f64b0d12d4f7c761869b04406b648410e02ecfdbb6b7",
-        "baseline_evidence_sha256": "aa1d56558f13995d66a42f06f1d217909990c62f4f7a5536c0dffcd8bc117e3f",
-        "baseline_decision_hashes_match_git_objects": true,
-        "report_exclusions": [
-          "paper-ddpm至paper-ldm锚点之间的第28节",
-          "脚注ddpm、ddpm-training、ddpm-results",
-          "frontmatter status/updated_on"
+      "delta_revalidation": {
+        "previous_reviewed_report_sha256": "48651f43e0e1903d0d31ae1c45f76278888c5845e4590c9e2d0d1ece8b2c3fa1",
+        "current_report_sha256": "ba6ec70ea6fb395cf943fed9db3626db789f1ff0bf09a4323870174833334d74",
+        "changes_reviewed": [
+          "ldm-results无条件FID的分辨率和统计样本口径"
         ],
-        "remaining_report_exactly_equal": true,
-        "remaining_report_sha256": "c2729f3a845df9f4c9cfd8824ebcf7f3ea23751746009b3d9c03c2d043486986",
-        "evidence_exclusions": [
-          "六个S-ddpm系列来源",
-          "C-ddpm",
-          "U-ddpm",
-          "R11",
-          "generator.run_id",
-          "revision_note"
-        ],
-        "remaining_evidence_values_and_array_order_equal": true,
-        "remaining_evidence_canonical_sha256": "d78b4fe127efe489d83def84c2c03c5eb52ff7a1c22d7abac5b5675ef4ec79d2",
-        "unexpected_changes": []
-      },
-      "read_scopes": [
-        "新读来源与第28节审稿相同：DDPM v2 pp1–9/14–15、指定算法/表格/图注、讲义p46、官方元数据、U-Net摘要、117段转写与对应shownotes。",
-        "主稿只直接读paper-ddpm节、ddpm/ddpm-training/ddpm-results脚注及相关导航；展开篇全文另已实际读取。",
-        "其余主稿/evidence执行精确差异验证后继承；基线review仅访问顶层decision的状态/哈希、revision_round和reviews条数，不读意见或五维分数。"
-      ],
-      "verification_limits": [
-        "本轮分数针对DDPM增量及继承合法性，不声称对全部旧论文做了全新内容复核。",
-        "模型身份未独立确认；不借用共享宿主或父会话的模型标签。",
-        "复用原材料缓存；本审未独立视读PNG、听音、测WER、运行训练/采样或验收工作台页面。"
-      ]
+        "reversing_only_listed_changes_restores_previous_hash": true,
+        "evidence_unchanged": true,
+        "sources_and_baseline_reused_without_repeating_passed_checks": true,
+        "scores_unchanged": true
+      }
     },
     {
       "role": "flagship_final_review",
       "reviewer": {
         "model": "gpt-5.6-sol",
         "harness": "codex",
-        "run_id": "ddpm_strong_review",
+        "run_id": "ldm_strong_review",
         "independent_context": true,
         "explicit_model_override": false,
         "identity_basis": "orchestrator-configured",
         "model_runtime_confirmation": "session-bound-unverified"
       },
       "scores": {
-        "evidence_fidelity": 98,
-        "request_coverage": 98,
-        "reasoning_quality": 97,
-        "readability": 97,
-        "limitations": 99
+        "evidence_fidelity": 97,
+        "request_coverage": 96,
+        "reasoning_quality": 96,
+        "readability": 95,
+        "limitations": 96
       },
       "score_reasons": {
-        "evidence_fidelity": "DDPM增量的版本、机制、Table 2数字、FID参考集、NLL取舍、1000步与作者署名均由固定v2及官方元数据支持；非DDPM部分通过r32绑定哈希pass和规范化相等继承。",
-        "request_coverage": "第28节完成实质改写，标题后首块即展开链接；训练答案、累计噪声、逐步采样、联合配方、网络分工、指标/成本及下一章问题均进入主稿，脚注和研究入口齐全。",
-        "reasoning_quality": "从消融正确推出不能把3.17归因于单一参数化，并把训练一步与生成多步、U-Net与扩散、样本质量与似然/速度分开；与前后章节的承接克制。",
-        "readability": "主稿增量紧凑、独立可读，展开链接文案明确，三条脚注承担细节而不压垮正文；导航锚点与编号一致。",
-        "limitations": "明确采用v2、转写未听校、后续商业叙事不采用、原实验不是实时方案；继承范围、规范化规则和未重读旧来源的限制均如实记录。"
+        "evidence_fidelity": "第29节增量的机制、版本和数值与本轮直接读取来源一致；其余内容仅在允许变化剔除后与已发布r33正文/evidence完全相同并继承已通过快照。",
+        "request_coverage": "本节覆盖问题、两阶段机制、压缩取舍、条件接口、实验反例、限制和路线作用，且标题后第一块为展开链接；全稿其余要求按r33相等性继承。",
+        "reasoning_quality": "简稿仍保留表示/生成、潜空间/条件接口、重建/生成质量和方法/具体版本的关键区分，没有由局部实验外推全局胜出。",
+        "readability": "本节以同一花例衔接DDPM与下一节SD1.4，段落短、术语少、数字只取能验证机制的几项；脚注可定位且无乱码或悬空引用。",
+        "limitations": "明确多步采样、压缩精度、合理补全不等于真实恢复、修补基准非本机性能；继承范围和本轮未重读旧来源也如实记录。"
       },
       "critical_claim_ids_checked": [
         "C-brook",
@@ -803,6 +825,166 @@
         "U-reader-method",
         "U-cross-route"
       ],
+      "source_content_map": [
+        {
+          "id": "MSC1",
+          "title": "第29节新增：两阶段潜空间扩散机制",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-ldm"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-ldm"
+          ],
+          "notes": "主稿准确概括压缩器先学表示与重建、固定后在二维潜表示多步去噪、最终一次解码，并明确位置数比例不是端到端加速倍率。"
+        },
+        {
+          "id": "MSC2",
+          "title": "第29节新增：压缩目标、条件接口与版本边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-ldm",
+            "S-ldm-lecture",
+            "S-ldm-podcast",
+            "S-ldm-sd14"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-ldm"
+          ],
+          "notes": "感知/对抗目标、KL/VQ、Q与K/V分工及原LDM联合训练Transformer和SD1.4固定CLIP的差别均被保留。"
+        },
+        {
+          "id": "MSC3",
+          "title": "第29节新增：数字反例、限制与展开导航",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-ldm",
+            "S-ldm-metadata",
+            "S-ldm-shownotes"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-ldm"
+          ],
+          "notes": "5.11、4.98与3.08保留任务/步数口径；修补效率不冒充本机性能；节首展开链接、相邻章节和脚注可定位。"
+        },
+        {
+          "id": "MSC4",
+          "title": "r33其余主稿基线",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-brook",
+            "S-gpu-history",
+            "S-alexnet",
+            "S-resnet",
+            "S-distill",
+            "S-word2vec",
+            "S-seq2seq",
+            "S-bahdanau",
+            "S-gnmt",
+            "S-transformer",
+            "S-gpt1",
+            "S-bert",
+            "S-gpt2",
+            "S-gpt3",
+            "S-kaplan",
+            "S-chinchilla",
+            "S-zero",
+            "S-refinedweb",
+            "S-laion",
+            "S-megascale",
+            "S-moe",
+            "S-lora",
+            "S-bitter",
+            "S-hardware",
+            "S-alphago",
+            "S-instruct",
+            "S-cot",
+            "S-react",
+            "S-tulu",
+            "S-deepvideo",
+            "S-two-stream",
+            "S-vit",
+            "S-clip",
+            "S-gan",
+            "S-diffusion15",
+            "S-ddpm",
+            "S-sd14",
+            "S-dit",
+            "L-inventory",
+            "S-ai-yanyi-episode",
+            "S-two-stream-lecture",
+            "S-two-stream-podcast",
+            "S-two-stream-shownotes",
+            "S-vit-metadata",
+            "S-vit-lecture",
+            "S-vit-podcast",
+            "S-vit-shownotes",
+            "S-clip-lecture",
+            "S-clip-metadata",
+            "S-clip-podcast",
+            "S-clip-shownotes",
+            "S-gan-metadata",
+            "S-gan-lecture",
+            "S-gan-podcast",
+            "S-gan-shownotes",
+            "S-diffusion15-metadata",
+            "S-diffusion15-lecture",
+            "S-diffusion15-podcast",
+            "S-diffusion15-shownotes",
+            "S-ddpm-metadata",
+            "S-ddpm-lecture",
+            "S-ddpm-podcast",
+            "S-ddpm-shownotes",
+            "S-ddpm-unet"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-brook",
+            "U-alexnet",
+            "U-resnet",
+            "U-distillation",
+            "U-word2vec",
+            "U-seq2seq",
+            "U-bahdanau-attention",
+            "U-gnmt",
+            "U-transformer",
+            "U-gpt1",
+            "U-bert",
+            "U-gpt2",
+            "U-gpt3",
+            "U-scaling-laws",
+            "U-chinchilla",
+            "U-zero",
+            "U-megascale",
+            "U-laion5b",
+            "U-refinedweb",
+            "U-sparse-moe",
+            "U-lora",
+            "U-alphago-zero",
+            "U-instructgpt",
+            "U-cot",
+            "U-react",
+            "U-tulu3",
+            "U-deepvideo",
+            "U-two-stream",
+            "U-vit",
+            "U-clip",
+            "U-gan",
+            "U-diffusion-2015",
+            "U-ddpm",
+            "U-dit",
+            "U-bitter-lesson",
+            "U-lenses",
+            "U-reader-method",
+            "U-cross-route"
+          ],
+          "notes": "未在本轮重读旧论文或旧正文；以git show独立剔除允许变化后逐字相等、evidence结构化剔除允许字段后相等，并继承fcd26a6…中r33的两审pass（95.3）。"
+        }
+      ],
       "source_ids_checked": [
         "S-lecture",
         "S-brook",
@@ -869,7 +1051,12 @@
         "S-ddpm-lecture",
         "S-ddpm-podcast",
         "S-ddpm-shownotes",
-        "S-ddpm-unet"
+        "S-ddpm-unet",
+        "S-ldm-metadata",
+        "S-ldm-lecture",
+        "S-ldm-podcast",
+        "S-ldm-shownotes",
+        "S-ldm-sd14"
       ],
       "requirement_ids_checked": [
         "R1",
@@ -884,272 +1071,66 @@
         "R10",
         "R11"
       ],
-      "source_content_map": [
-        {
-          "id": "MSC0",
-          "title": "r32已发布主稿基线继承",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "L-inventory"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-brook",
-            "U-alexnet",
-            "U-resnet",
-            "U-distillation",
-            "U-word2vec",
-            "U-seq2seq",
-            "U-bahdanau-attention",
-            "U-gnmt",
-            "U-transformer",
-            "U-gpt1",
-            "U-bert",
-            "U-gpt2",
-            "U-gpt3",
-            "U-scaling-laws",
-            "U-chinchilla",
-            "U-zero",
-            "U-megascale",
-            "U-laion5b",
-            "U-refinedweb",
-            "U-sparse-moe",
-            "U-lora",
-            "U-alphago-zero",
-            "U-instructgpt",
-            "U-cot",
-            "U-react",
-            "U-tulu3",
-            "U-deepvideo",
-            "U-two-stream",
-            "U-vit",
-            "U-clip",
-            "U-gan",
-            "U-diffusion-2015",
-            "U-ldm",
-            "U-dit",
-            "U-bitter-lesson",
-            "U-lenses",
-            "U-reader-method",
-            "U-cross-route"
-          ],
-          "notes": "本轮未重读旧章节来源；独立git show核对4bba245f…：剔除DDPM区段、三条DDPM脚注及status/updated_on后正文逐字相同；证据账本剔除允许的DDPM/R11与run_id/revision_note变化后结构相同，且r32绑定哈希判定为pass。"
-        },
-        {
-          "id": "MSC1",
-          "title": "DDPM版本、继承关系与人物署名",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-ddpm",
-            "S-ddpm-metadata",
-            "S-ddpm-lecture",
-            "S-ddpm-podcast"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-ddpm"
-          ],
-          "notes": "主稿采用v2，区分2015扩散框架与2020配方，并纠正Google资源支持与UC Berkeley作者署名的混淆。"
-        },
-        {
-          "id": "MSC2",
-          "title": "已知累计噪声监督与逐步采样",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-ddpm"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-ddpm"
-          ],
-          "notes": "随机时间步、直接构造状态、共享网络、累计等效噪声、反向均值/方差及末步随机性边界表述准确。"
-        },
-        {
-          "id": "MSC3",
-          "title": "参数化、简化目标与U-Net组件配合",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-ddpm",
-            "S-ddpm-unet",
-            "S-ddpm-lecture",
-            "S-ddpm-podcast"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-ddpm"
-          ],
-          "notes": "13.22/13.51/3.17正确支持联合配方而非单改预测对象；U-Net计算骨架与扩散组织方式分开。"
-        },
-        {
-          "id": "MSC4",
-          "title": "FID、NLL与1000步成本口径",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-ddpm"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-ddpm"
-          ],
-          "notes": "训练集参考3.17、测试集参考5.24、似然取舍与1000步均保留，未写成实时方案。"
-        },
-        {
-          "id": "MSC5",
-          "title": "章节展开链接、脚注与研究入口",
-          "importance": "supporting",
-          "assessment": "covered",
-          "source_ids": [
-            "S-ddpm",
-            "S-ddpm-shownotes",
-            "S-ddpm-podcast"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-ddpm"
-          ],
-          "notes": "标题后首块为展开链接；脚注ddpm/ddpm-training/ddpm-results能回到原文与展开篇，研究入口锚点有效。"
-        }
-      ],
       "unsupported_claims": [],
       "missing_requirements": [],
       "hard_failures": [],
-      "notes": "DDPM直接审阅增量未发现实质问题；r32其余正文和evidence的继承验证通过。未读取旧review意见或五维分数。",
+      "notes": "直接复核第29节增量；r33其余部分只按独立git show相等性和已发布pass继承，不冒称重新阅读旧来源。未读旧review意见正文。最终状态由native checker计算。 增量复核：[^ldm-results]补明无条件生成数字为256×256输出、50,000个生成样本对完整训练集估计；口径与原论文及展开篇一致。其余继承核验结论、评分和evidence快照不变。",
       "snapshot": {
-        "report_sha256": "dacb782b987f5bbdc6ffd96bf6051a98087be518809342c1e16a7652cfa9de3c",
-        "evidence_sha256": "2534e96bb0ae1f3133c678e543cd87f4fe938996a8abe8f7788304602e5fbfdd",
-        "expected_report_sha256": "dacb782b987f5bbdc6ffd96bf6051a98087be518809342c1e16a7652cfa9de3c",
-        "expected_evidence_sha256": "2534e96bb0ae1f3133c678e543cd87f4fe938996a8abe8f7788304602e5fbfdd",
-        "matched": true
+        "report_sha256": "ba6ec70ea6fb395cf943fed9db3626db789f1ff0bf09a4323870174833334d74",
+        "evidence_sha256": "3b556e692283ef9364f22f66ba873b3f5ad87cc3d8c05926f638a22fbb8e8f2f"
       },
       "read_scopes": {
         "directly_reviewed_report": [
-          "paper-ddpm至paper-ldm前区段",
-          "脚注ddpm、ddpm-training、ddpm-results",
-          "DDPM研究入口与展开导航"
+          "paper-ldm至paper-sd14增量区段",
+          "脚注ldm、ldm-compression、ldm-conditioning、ldm-results",
+          "相应章节导航"
         ],
         "directly_reviewed_source_ids": [
-          "S-ddpm",
-          "S-ddpm-metadata",
-          "S-ddpm-lecture",
-          "S-ddpm-podcast",
-          "S-ddpm-shownotes",
-          "S-ddpm-unet"
+          "S-ldm",
+          "S-ldm-metadata",
+          "S-ldm-lecture",
+          "S-ldm-podcast",
+          "S-ldm-shownotes",
+          "S-ldm-sd14"
         ],
-        "inherited_report_scope": "除DDPM区段、三条DDPM脚注及frontmatter status/updated_on外的r32正文",
-        "inherited_evidence_scope": "除六个DDPM source、C-ddpm、U-ddpm、R11、generator.run_id、revision_note外的r32 evidence"
+        "inherited_report": "除允许变化外的r33正文与evidence，未重读旧论文",
+        "excluded": [
+          "旧review意见内容与五维分数",
+          "工作台/浏览器页面",
+          "其余旧来源正文"
+        ]
       },
-      "directly_reviewed_critical_claim_ids": [
-        "C-ddpm"
-      ],
-      "inherited_critical_claim_ids": [
-        "C-brook",
-        "C-alexnet",
-        "C-resnet",
-        "C-distillation",
-        "C-word2vec",
-        "C-seq2seq",
-        "C-bahdanau-attention",
-        "C-gnmt",
-        "C-transformer",
-        "C-gpt1",
-        "C-bert",
-        "C-gpt2",
-        "C-gpt3",
-        "C-scaling-laws",
-        "C-chinchilla",
-        "C-zero",
-        "C-megascale",
-        "C-laion5b",
-        "C-refinedweb",
-        "C-sparse-moe",
-        "C-lora",
-        "C-alphago-zero",
-        "C-instructgpt",
-        "C-cot",
-        "C-react",
-        "C-tulu3",
-        "C-deepvideo",
-        "C-two-stream",
-        "C-vit",
-        "C-clip",
-        "C-gan",
-        "C-diffusion-2015",
-        "C-ldm",
-        "C-dit",
-        "C-bitter-lesson",
-        "C-inventory",
-        "C-sd14",
-        "C-hardware-lens",
-        "C-people",
-        "C-identity-corrections",
-        "E-gpu",
-        "E-residual",
-        "E-nmt",
-        "E-wordpiece",
-        "E-pretraining",
-        "E-scale-config",
-        "E-data-demand",
-        "E-system",
-        "E-visual-backbone",
-        "E-data-loop",
-        "E-latent",
-        "E-adversarial-component",
-        "E-product",
-        "E-dit-meeting",
-        "E-behavior",
-        "E-interaction",
-        "C-basics",
-        "C-route-walkthroughs"
-      ],
-      "directly_reviewed_coverage_unit_ids": [
-        "U-ddpm"
-      ],
-      "inherited_coverage_unit_ids": [
-        "U-brook",
-        "U-alexnet",
-        "U-resnet",
-        "U-distillation",
-        "U-word2vec",
-        "U-seq2seq",
-        "U-bahdanau-attention",
-        "U-gnmt",
-        "U-transformer",
-        "U-gpt1",
-        "U-bert",
-        "U-gpt2",
-        "U-gpt3",
-        "U-scaling-laws",
-        "U-chinchilla",
-        "U-zero",
-        "U-megascale",
-        "U-laion5b",
-        "U-refinedweb",
-        "U-sparse-moe",
-        "U-lora",
-        "U-alphago-zero",
-        "U-instructgpt",
-        "U-cot",
-        "U-react",
-        "U-tulu3",
-        "U-deepvideo",
-        "U-two-stream",
-        "U-vit",
-        "U-clip",
-        "U-gan",
-        "U-diffusion-2015",
-        "U-ldm",
-        "U-dit",
-        "U-bitter-lesson",
-        "U-lenses",
-        "U-reader-method",
-        "U-cross-route"
-      ],
+      "inheritance_verification": {
+        "baseline_commit": "fcd26a6ffda22fdf5332ca8db45c2e3c64edd74c",
+        "baseline_revision_round": 33,
+        "baseline_review_count": 2,
+        "baseline_decision_status": "pass",
+        "baseline_score": 95.3,
+        "baseline_report_sha256": "04a7ef38fc6ddad914830c183c0099e5b8b608a7ee2c407a00ad1670711ae10c",
+        "baseline_evidence_sha256": "2534e96bb0ae1f3133c678e543cd87f4fe938996a8abe8f7788304602e5fbfdd",
+        "report_equal_after_allowed_exclusions": true,
+        "evidence_equal_after_allowed_exclusions": true,
+        "report_exclusions": [
+          "frontmatter status/updated_on",
+          "paper-ldm至paper-sd14区段",
+          "脚注ldm、ldm-compression、ldm-conditioning、ldm-results"
+        ],
+        "evidence_exclusions": [
+          "S-ldm系列六源",
+          "C-ldm",
+          "U-ldm",
+          "R11",
+          "generator.run_id",
+          "revision_note"
+        ]
+      },
       "directly_reviewed_source_ids": [
-        "S-ddpm",
-        "S-ddpm-metadata",
-        "S-ddpm-lecture",
-        "S-ddpm-podcast",
-        "S-ddpm-shownotes",
-        "S-ddpm-unet"
+        "S-ldm",
+        "S-ldm-metadata",
+        "S-ldm-lecture",
+        "S-ldm-podcast",
+        "S-ldm-shownotes",
+        "S-ldm-sd14"
       ],
       "inherited_source_ids": [
         "S-lecture",
@@ -1188,7 +1169,7 @@
         "S-clip",
         "S-gan",
         "S-diffusion15",
-        "S-ldm",
+        "S-ddpm",
         "S-sd14",
         "S-dit",
         "L-inventory",
@@ -1211,7 +1192,118 @@
         "S-diffusion15-metadata",
         "S-diffusion15-lecture",
         "S-diffusion15-podcast",
-        "S-diffusion15-shownotes"
+        "S-diffusion15-shownotes",
+        "S-ddpm-metadata",
+        "S-ddpm-lecture",
+        "S-ddpm-podcast",
+        "S-ddpm-shownotes",
+        "S-ddpm-unet"
+      ],
+      "directly_reviewed_critical_claim_ids": [
+        "C-ldm"
+      ],
+      "inherited_critical_claim_ids": [
+        "C-brook",
+        "C-alexnet",
+        "C-resnet",
+        "C-distillation",
+        "C-word2vec",
+        "C-seq2seq",
+        "C-bahdanau-attention",
+        "C-gnmt",
+        "C-transformer",
+        "C-gpt1",
+        "C-bert",
+        "C-gpt2",
+        "C-gpt3",
+        "C-scaling-laws",
+        "C-chinchilla",
+        "C-zero",
+        "C-megascale",
+        "C-laion5b",
+        "C-refinedweb",
+        "C-sparse-moe",
+        "C-lora",
+        "C-alphago-zero",
+        "C-instructgpt",
+        "C-cot",
+        "C-react",
+        "C-tulu3",
+        "C-deepvideo",
+        "C-two-stream",
+        "C-vit",
+        "C-clip",
+        "C-gan",
+        "C-diffusion-2015",
+        "C-ddpm",
+        "C-dit",
+        "C-bitter-lesson",
+        "C-inventory",
+        "C-sd14",
+        "C-hardware-lens",
+        "C-people",
+        "C-identity-corrections",
+        "E-gpu",
+        "E-residual",
+        "E-nmt",
+        "E-wordpiece",
+        "E-pretraining",
+        "E-scale-config",
+        "E-data-demand",
+        "E-system",
+        "E-visual-backbone",
+        "E-data-loop",
+        "E-latent",
+        "E-adversarial-component",
+        "E-product",
+        "E-dit-meeting",
+        "E-behavior",
+        "E-interaction",
+        "C-basics",
+        "C-route-walkthroughs"
+      ],
+      "directly_reviewed_coverage_unit_ids": [
+        "U-ldm"
+      ],
+      "inherited_coverage_unit_ids": [
+        "U-brook",
+        "U-alexnet",
+        "U-resnet",
+        "U-distillation",
+        "U-word2vec",
+        "U-seq2seq",
+        "U-bahdanau-attention",
+        "U-gnmt",
+        "U-transformer",
+        "U-gpt1",
+        "U-bert",
+        "U-gpt2",
+        "U-gpt3",
+        "U-scaling-laws",
+        "U-chinchilla",
+        "U-zero",
+        "U-megascale",
+        "U-laion5b",
+        "U-refinedweb",
+        "U-sparse-moe",
+        "U-lora",
+        "U-alphago-zero",
+        "U-instructgpt",
+        "U-cot",
+        "U-react",
+        "U-tulu3",
+        "U-deepvideo",
+        "U-two-stream",
+        "U-vit",
+        "U-clip",
+        "U-gan",
+        "U-diffusion-2015",
+        "U-ddpm",
+        "U-dit",
+        "U-bitter-lesson",
+        "U-lenses",
+        "U-reader-method",
+        "U-cross-route"
       ],
       "directly_reviewed_requirement_ids": [
         "R11"
@@ -1228,43 +1320,28 @@
         "R9",
         "R10"
       ],
-      "inheritance_verification": {
-        "baseline_commit": "4bba245fc32b32afaa3c161e664ab1784d681e59",
-        "baseline_revision_round": 32,
-        "baseline_decision_status": "pass",
-        "baseline_report_sha256": "a7672c5704cf64a829a2f64b0d12d4f7c761869b04406b648410e02ecfdbb6b7",
-        "baseline_evidence_sha256": "aa1d56558f13995d66a42f06f1d217909990c62f4f7a5536c0dffcd8bc117e3f",
-        "baseline_hashes_match_published_decision": true,
-        "normalized_report_equal": true,
-        "normalized_report_sha256": "fab249fcf7733a6ef44b660f778cd18530731c6420612e880dea87d54cf9898e",
-        "normalized_evidence_equal": true,
-        "normalized_evidence_sha256": "4ed69109501cb2fb2ab2d52481da90375e206c7f2d96439fe766278e2de39108"
-      },
-      "transcript_verification": {
-        "segment_count": 117,
-        "start_seconds": 12475.27,
-        "end_seconds": 12736.25,
-        "timestamp_errors": 0,
-        "overlaps": 0,
-        "max_consecutive_identical": 1,
-        "audio_listened": false,
-        "wer_measured": false
-      },
       "verification_limits": [
-        "旧章节仅按已发布r32的哈希绑定pass与规范化逐字/结构相等继承，未重读其论文或旧review意见。",
-        "未听音或测WER；只核DDPM转写文本、边界、哈希和时间结构。",
-        "按任务要求未做工作台/浏览器页面验收。"
+        "reviewer模型值来自调度配置，未独立确认provider运行身份",
+        "继承部分只做基线相等性与已发布判定核验，不声称本轮重读全部旧论文",
+        "未做工作台、浏览器页面、模型运行或音频听校"
+      ],
+      "incremental_verification": [
+        {
+          "scope": "仅本轮三处可读性补充",
+          "assessment": "accepted",
+          "notes": "增量复核：[^ldm-results]补明无条件生成数字为256×256输出、50,000个生成样本对完整训练集估计；口径与原论文及展开篇一致。其余继承核验结论、评分和evidence快照不变。"
+        }
       ]
     }
   ],
   "decision": {
     "status": "pass",
-    "score": 95.3,
+    "score": 95.6,
     "evaluated_on": "2026-11-06",
     "policy_id": "report-quality-2026-10-18-r2",
     "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
-    "report_sha256": "04a7ef38fc6ddad914830c183c0099e5b8b608a7ee2c407a00ad1670711ae10c",
-    "evidence_sha256": "2534e96bb0ae1f3133c678e543cd87f4fe938996a8abe8f7788304602e5fbfdd"
+    "report_sha256": "ae9f0a952ebc8c8a46e798573f203f51ba0efbf97fa1de1801662216bda6b116",
+    "evidence_sha256": "3b556e692283ef9364f22f66ba873b3f5ad87cc3d8c05926f638a22fbb8e8f2f"
   },
   "history": [
     {
@@ -44491,6 +44568,1272 @@
         "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
         "report_sha256": "a7672c5704cf64a829a2f64b0d12d4f7c761869b04406b648410e02ecfdbb6b7",
         "evidence_sha256": "aa1d56558f13995d66a42f06f1d217909990c62f4f7a5536c0dffcd8bc117e3f"
+      }
+    },
+    {
+      "revision_round": 33,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "unconfirmed",
+            "harness": "codex",
+            "run_id": "ddpm_primary_review",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "identity_status": "session-bound-unverified",
+            "identity_basis": "独立子上下文未取得绑定本子会话的模型证明；共享宿主eacli输出不能证明子模型，不借用父身份。任务说明GLM 5.3不可用，本审未执行该模型。"
+          },
+          "scores": {
+            "evidence_fidelity": 96,
+            "request_coverage": 95,
+            "reasoning_quality": 95,
+            "readability": 94,
+            "limitations": 96
+          },
+          "score_reasons": {
+            "evidence_fidelity": "直接复核C-ddpm/U-ddpm及六个本章来源：13.22/13.51/3.17、训练参考3.17/测试参考5.24、NLL≤3.70/≤3.75、1000步及UC Berkeley/TPU归属均准确。其余证据与正文经精确比对合法继承r32，不冒称重读。",
+            "request_coverage": "第28节从摘要实质改为可独立理解的训练—采样—目标—网络—代价链；标题后首块就是展开链接，前后章节和来源入口可达。直接审核R11，R1–R10及其他科学内容仅按核实的已发布基线继承。",
+            "reasoning_quality": "主稿自身已解释已知监督、累计噪声、反向分布和参数化/损失共同作用，不把核心机制外包给链接。与上一章建模框架、下一章潜空间成本衔接明确，数值取舍没有混为全方位胜出。",
+            "readability": "增量段落比展开篇紧凑，花照例子连贯，三个脚注均有定义，章节首链及来源锚点可解析，未见乱码。少数术语如分数匹配与渐进编码在主稿仅作短介绍，展开篇提供细化。",
+            "limitations": "主稿限定v2、无条件CIFAR-10、FID参考集和原实验1000步；脚注保留NLL上界、各训一次和最低FID选择口径。补充压缩/插值/安全细节在展开篇，未声称本节进行了产品、训练或页面验收。"
+          },
+          "critical_claim_ids_checked": [
+            "C-brook",
+            "C-alexnet",
+            "C-resnet",
+            "C-distillation",
+            "C-word2vec",
+            "C-seq2seq",
+            "C-bahdanau-attention",
+            "C-gnmt",
+            "C-transformer",
+            "C-gpt1",
+            "C-bert",
+            "C-gpt2",
+            "C-gpt3",
+            "C-scaling-laws",
+            "C-chinchilla",
+            "C-zero",
+            "C-megascale",
+            "C-laion5b",
+            "C-refinedweb",
+            "C-sparse-moe",
+            "C-lora",
+            "C-alphago-zero",
+            "C-instructgpt",
+            "C-cot",
+            "C-react",
+            "C-tulu3",
+            "C-deepvideo",
+            "C-two-stream",
+            "C-vit",
+            "C-clip",
+            "C-gan",
+            "C-diffusion-2015",
+            "C-ddpm",
+            "C-ldm",
+            "C-dit",
+            "C-bitter-lesson",
+            "C-inventory",
+            "C-sd14",
+            "C-hardware-lens",
+            "C-people",
+            "C-identity-corrections",
+            "E-gpu",
+            "E-residual",
+            "E-nmt",
+            "E-wordpiece",
+            "E-pretraining",
+            "E-scale-config",
+            "E-data-demand",
+            "E-system",
+            "E-visual-backbone",
+            "E-data-loop",
+            "E-latent",
+            "E-adversarial-component",
+            "E-product",
+            "E-dit-meeting",
+            "E-behavior",
+            "E-interaction",
+            "C-basics",
+            "C-route-walkthroughs"
+          ],
+          "coverage_unit_ids_checked": [
+            "U-brook",
+            "U-alexnet",
+            "U-resnet",
+            "U-distillation",
+            "U-word2vec",
+            "U-seq2seq",
+            "U-bahdanau-attention",
+            "U-gnmt",
+            "U-transformer",
+            "U-gpt1",
+            "U-bert",
+            "U-gpt2",
+            "U-gpt3",
+            "U-scaling-laws",
+            "U-chinchilla",
+            "U-zero",
+            "U-megascale",
+            "U-laion5b",
+            "U-refinedweb",
+            "U-sparse-moe",
+            "U-lora",
+            "U-alphago-zero",
+            "U-instructgpt",
+            "U-cot",
+            "U-react",
+            "U-tulu3",
+            "U-deepvideo",
+            "U-two-stream",
+            "U-vit",
+            "U-clip",
+            "U-gan",
+            "U-diffusion-2015",
+            "U-ddpm",
+            "U-ldm",
+            "U-dit",
+            "U-bitter-lesson",
+            "U-lenses",
+            "U-reader-method",
+            "U-cross-route"
+          ],
+          "source_ids_checked": [
+            "S-lecture",
+            "S-brook",
+            "S-gpu-history",
+            "S-alexnet",
+            "S-resnet",
+            "S-distill",
+            "S-word2vec",
+            "S-seq2seq",
+            "S-bahdanau",
+            "S-gnmt",
+            "S-transformer",
+            "S-gpt1",
+            "S-bert",
+            "S-gpt2",
+            "S-gpt3",
+            "S-kaplan",
+            "S-chinchilla",
+            "S-zero",
+            "S-refinedweb",
+            "S-laion",
+            "S-megascale",
+            "S-moe",
+            "S-lora",
+            "S-bitter",
+            "S-hardware",
+            "S-alphago",
+            "S-instruct",
+            "S-cot",
+            "S-react",
+            "S-tulu",
+            "S-deepvideo",
+            "S-two-stream",
+            "S-vit",
+            "S-clip",
+            "S-gan",
+            "S-diffusion15",
+            "S-ddpm",
+            "S-ldm",
+            "S-sd14",
+            "S-dit",
+            "L-inventory",
+            "S-ai-yanyi-episode",
+            "S-two-stream-lecture",
+            "S-two-stream-podcast",
+            "S-two-stream-shownotes",
+            "S-vit-metadata",
+            "S-vit-lecture",
+            "S-vit-podcast",
+            "S-vit-shownotes",
+            "S-clip-lecture",
+            "S-clip-metadata",
+            "S-clip-podcast",
+            "S-clip-shownotes",
+            "S-gan-metadata",
+            "S-gan-lecture",
+            "S-gan-podcast",
+            "S-gan-shownotes",
+            "S-diffusion15-metadata",
+            "S-diffusion15-lecture",
+            "S-diffusion15-podcast",
+            "S-diffusion15-shownotes",
+            "S-ddpm-metadata",
+            "S-ddpm-lecture",
+            "S-ddpm-podcast",
+            "S-ddpm-shownotes",
+            "S-ddpm-unet"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6",
+            "R7",
+            "R8",
+            "R9",
+            "R10",
+            "R11"
+          ],
+          "source_content_map": [
+            {
+              "id": "M01",
+              "title": "2015框架到2020有效配方的问题承接",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-ddpm",
+                "S-ddpm-lecture",
+                "S-ddpm-podcast"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-ddpm"
+              ],
+              "notes": "本节从既有前向/反向框架进入高质量生成的设计选择，未把噪声预测倒填给2015年。竞争范式的更多背景由主稿前文承接，前文只按基线继承。"
+            },
+            {
+              "id": "M02",
+              "title": "已知噪声监督、直接构造状态与随机反向采样",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-ddpm",
+                "S-ddpm-podcast"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-ddpm"
+              ],
+              "notes": "对应独立来源单元P03/P04。主稿自身说明原图不输入预测网络、随机t、共享模型、累计等效噪声、反向均值/方差与末步随机性，核心解释不依赖展开链接。"
+            },
+            {
+              "id": "M03",
+              "title": "参数化与目标配合的消融证据",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-ddpm"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-ddpm"
+              ],
+              "notes": "对应P05。13.22/13.51/3.17保持同为固定方差的配置差别，不能归因于单改预测对象；简化损失改变时间权重的解释成立。"
+            },
+            {
+              "id": "M04",
+              "title": "时间条件U-Net与扩散组织方式的分工",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-ddpm",
+                "S-ddpm-unet",
+                "S-ddpm-lecture",
+                "S-ddpm-podcast"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-ddpm"
+              ],
+              "notes": "对应P06。主稿区分网络如何算预测与扩散如何组织训练/生成，说明残差和注意力组件；原U-Net的任务更正在展开篇，主稿没有沿用边缘检测误述。"
+            },
+            {
+              "id": "M05",
+              "title": "指标口径、似然取舍与1000步成本",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-ddpm"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-ddpm"
+              ],
+              "notes": "对应P07/P08。3.17/5.24参考集合及无条件任务明确；ddpm-results脚注保留≤3.75/≤3.70、只训练一次和最低FID选择。没有把T=1000改写成少步或实时方法。"
+            },
+            {
+              "id": "M06",
+              "title": "版本、作者署名与资源支持",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-ddpm",
+                "S-ddpm-metadata",
+                "S-ddpm-lecture",
+                "S-ddpm-podcast"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-ddpm"
+              ],
+              "notes": "对应P02。v1/v2日期、三位作者UC Berkeley与Google TPU支持分开；无未核商业排名或后续履历扩张。"
+            },
+            {
+              "id": "M07",
+              "title": "分数匹配、渐进编码及补充解释的层次",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "S-ddpm"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-ddpm"
+              ],
+              "notes": "对应P09/P10/P11/P13。主稿保留分数匹配和粗到细生成联系；传样假设、插值和社会风险的细节在已读展开篇而非本节摘要。属于支持性细节的有意压缩，未把这些省略当成本节已完整展开。"
+            },
+            {
+              "id": "M08",
+              "title": "对应转写、shownotes与读者导航",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-ddpm-podcast",
+                "S-ddpm-shownotes",
+                "S-ddpm-lecture"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-ddpm"
+              ],
+              "notes": "对应P12。本章脚注给讲义p46及约03:27:55–03:32:16，展开范围保留未听校界限；节目后接ViT而主稿问题路线接LDM，展开篇已说明两种顺序不同。首块展开、返回与前后链接均可定位。"
+            },
+            {
+              "id": "M09",
+              "title": "已发布r32未改正文及证据的继承单元",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-lecture",
+                "S-brook",
+                "S-gpu-history",
+                "S-alexnet",
+                "S-resnet",
+                "S-distill",
+                "S-word2vec",
+                "S-seq2seq",
+                "S-bahdanau",
+                "S-gnmt",
+                "S-transformer",
+                "S-gpt1",
+                "S-bert",
+                "S-gpt2",
+                "S-gpt3",
+                "S-kaplan",
+                "S-chinchilla",
+                "S-zero",
+                "S-refinedweb",
+                "S-laion",
+                "S-megascale",
+                "S-moe",
+                "S-lora",
+                "S-bitter",
+                "S-hardware",
+                "S-alphago",
+                "S-instruct",
+                "S-cot",
+                "S-react",
+                "S-tulu",
+                "S-deepvideo",
+                "S-two-stream",
+                "S-vit",
+                "S-clip",
+                "S-gan",
+                "S-diffusion15",
+                "S-ldm",
+                "S-sd14",
+                "S-dit",
+                "L-inventory",
+                "S-ai-yanyi-episode",
+                "S-two-stream-lecture",
+                "S-two-stream-podcast",
+                "S-two-stream-shownotes",
+                "S-vit-metadata",
+                "S-vit-lecture",
+                "S-vit-podcast",
+                "S-vit-shownotes",
+                "S-clip-lecture",
+                "S-clip-metadata",
+                "S-clip-podcast",
+                "S-clip-shownotes",
+                "S-gan-metadata",
+                "S-gan-lecture",
+                "S-gan-podcast",
+                "S-gan-shownotes",
+                "S-diffusion15-metadata",
+                "S-diffusion15-lecture",
+                "S-diffusion15-podcast",
+                "S-diffusion15-shownotes"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-brook",
+                "U-alexnet",
+                "U-resnet",
+                "U-distillation",
+                "U-word2vec",
+                "U-seq2seq",
+                "U-bahdanau-attention",
+                "U-gnmt",
+                "U-transformer",
+                "U-gpt1",
+                "U-bert",
+                "U-gpt2",
+                "U-gpt3",
+                "U-scaling-laws",
+                "U-chinchilla",
+                "U-zero",
+                "U-megascale",
+                "U-laion5b",
+                "U-refinedweb",
+                "U-sparse-moe",
+                "U-lora",
+                "U-alphago-zero",
+                "U-instructgpt",
+                "U-cot",
+                "U-react",
+                "U-tulu3",
+                "U-deepvideo",
+                "U-two-stream",
+                "U-vit",
+                "U-clip",
+                "U-gan",
+                "U-diffusion-2015",
+                "U-ldm",
+                "U-dit",
+                "U-bitter-lesson",
+                "U-lenses",
+                "U-reader-method",
+                "U-cross-route"
+              ],
+              "notes": "只继承4bba245fc32b32afaa3c161e664ab1784d681e59的r32。git show独立核实pass、两个review条数及报告/evidence哈希；指定排除之外正文完全相同，保留的evidence对象和数组顺序也相同。本轮未重新阅读这些旧论文，未读取旧审稿意见或五维分数。"
+            }
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "未发现本章增量的无支持关键claim、关键数字错误或核心要求漏答。59个关键claim中直接复核1个、继承58个；39个coverage中直接1个、继承38个；66个source中直接6个、继承60个；R11直接、R1–R10继承。checked字段为两者并集，不能解释为本轮重读全部来源。最终状态由native checker计算。",
+          "snapshot": {
+            "report_path": "ai-learning/reports/AI演义_笔记分析与项目整合报告.md",
+            "report_sha256": "dacb782b987f5bbdc6ffd96bf6051a98087be518809342c1e16a7652cfa9de3c",
+            "evidence_sha256": "2534e96bb0ae1f3133c678e543cd87f4fe938996a8abe8f7788304602e5fbfdd"
+          },
+          "directly_reviewed_critical_claim_ids": [
+            "C-ddpm"
+          ],
+          "inherited_critical_claim_ids": [
+            "C-brook",
+            "C-alexnet",
+            "C-resnet",
+            "C-distillation",
+            "C-word2vec",
+            "C-seq2seq",
+            "C-bahdanau-attention",
+            "C-gnmt",
+            "C-transformer",
+            "C-gpt1",
+            "C-bert",
+            "C-gpt2",
+            "C-gpt3",
+            "C-scaling-laws",
+            "C-chinchilla",
+            "C-zero",
+            "C-megascale",
+            "C-laion5b",
+            "C-refinedweb",
+            "C-sparse-moe",
+            "C-lora",
+            "C-alphago-zero",
+            "C-instructgpt",
+            "C-cot",
+            "C-react",
+            "C-tulu3",
+            "C-deepvideo",
+            "C-two-stream",
+            "C-vit",
+            "C-clip",
+            "C-gan",
+            "C-diffusion-2015",
+            "C-ldm",
+            "C-dit",
+            "C-bitter-lesson",
+            "C-inventory",
+            "C-sd14",
+            "C-hardware-lens",
+            "C-people",
+            "C-identity-corrections",
+            "E-gpu",
+            "E-residual",
+            "E-nmt",
+            "E-wordpiece",
+            "E-pretraining",
+            "E-scale-config",
+            "E-data-demand",
+            "E-system",
+            "E-visual-backbone",
+            "E-data-loop",
+            "E-latent",
+            "E-adversarial-component",
+            "E-product",
+            "E-dit-meeting",
+            "E-behavior",
+            "E-interaction",
+            "C-basics",
+            "C-route-walkthroughs"
+          ],
+          "directly_reviewed_coverage_unit_ids": [
+            "U-ddpm"
+          ],
+          "inherited_coverage_unit_ids": [
+            "U-brook",
+            "U-alexnet",
+            "U-resnet",
+            "U-distillation",
+            "U-word2vec",
+            "U-seq2seq",
+            "U-bahdanau-attention",
+            "U-gnmt",
+            "U-transformer",
+            "U-gpt1",
+            "U-bert",
+            "U-gpt2",
+            "U-gpt3",
+            "U-scaling-laws",
+            "U-chinchilla",
+            "U-zero",
+            "U-megascale",
+            "U-laion5b",
+            "U-refinedweb",
+            "U-sparse-moe",
+            "U-lora",
+            "U-alphago-zero",
+            "U-instructgpt",
+            "U-cot",
+            "U-react",
+            "U-tulu3",
+            "U-deepvideo",
+            "U-two-stream",
+            "U-vit",
+            "U-clip",
+            "U-gan",
+            "U-diffusion-2015",
+            "U-ldm",
+            "U-dit",
+            "U-bitter-lesson",
+            "U-lenses",
+            "U-reader-method",
+            "U-cross-route"
+          ],
+          "directly_reviewed_source_ids": [
+            "S-ddpm",
+            "S-ddpm-metadata",
+            "S-ddpm-lecture",
+            "S-ddpm-podcast",
+            "S-ddpm-shownotes",
+            "S-ddpm-unet"
+          ],
+          "inherited_source_ids": [
+            "S-lecture",
+            "S-brook",
+            "S-gpu-history",
+            "S-alexnet",
+            "S-resnet",
+            "S-distill",
+            "S-word2vec",
+            "S-seq2seq",
+            "S-bahdanau",
+            "S-gnmt",
+            "S-transformer",
+            "S-gpt1",
+            "S-bert",
+            "S-gpt2",
+            "S-gpt3",
+            "S-kaplan",
+            "S-chinchilla",
+            "S-zero",
+            "S-refinedweb",
+            "S-laion",
+            "S-megascale",
+            "S-moe",
+            "S-lora",
+            "S-bitter",
+            "S-hardware",
+            "S-alphago",
+            "S-instruct",
+            "S-cot",
+            "S-react",
+            "S-tulu",
+            "S-deepvideo",
+            "S-two-stream",
+            "S-vit",
+            "S-clip",
+            "S-gan",
+            "S-diffusion15",
+            "S-ldm",
+            "S-sd14",
+            "S-dit",
+            "L-inventory",
+            "S-ai-yanyi-episode",
+            "S-two-stream-lecture",
+            "S-two-stream-podcast",
+            "S-two-stream-shownotes",
+            "S-vit-metadata",
+            "S-vit-lecture",
+            "S-vit-podcast",
+            "S-vit-shownotes",
+            "S-clip-lecture",
+            "S-clip-metadata",
+            "S-clip-podcast",
+            "S-clip-shownotes",
+            "S-gan-metadata",
+            "S-gan-lecture",
+            "S-gan-podcast",
+            "S-gan-shownotes",
+            "S-diffusion15-metadata",
+            "S-diffusion15-lecture",
+            "S-diffusion15-podcast",
+            "S-diffusion15-shownotes"
+          ],
+          "directly_reviewed_requirement_ids": [
+            "R11"
+          ],
+          "inherited_requirement_ids": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6",
+            "R7",
+            "R8",
+            "R9",
+            "R10"
+          ],
+          "inheritance_verification": {
+            "baseline_commit": "4bba245fc32b32afaa3c161e664ab1784d681e59",
+            "baseline_revision_round": 32,
+            "baseline_status": "pass",
+            "baseline_reviews_count": 2,
+            "baseline_report_sha256": "a7672c5704cf64a829a2f64b0d12d4f7c761869b04406b648410e02ecfdbb6b7",
+            "baseline_evidence_sha256": "aa1d56558f13995d66a42f06f1d217909990c62f4f7a5536c0dffcd8bc117e3f",
+            "baseline_decision_hashes_match_git_objects": true,
+            "report_exclusions": [
+              "paper-ddpm至paper-ldm锚点之间的第28节",
+              "脚注ddpm、ddpm-training、ddpm-results",
+              "frontmatter status/updated_on"
+            ],
+            "remaining_report_exactly_equal": true,
+            "remaining_report_sha256": "c2729f3a845df9f4c9cfd8824ebcf7f3ea23751746009b3d9c03c2d043486986",
+            "evidence_exclusions": [
+              "六个S-ddpm系列来源",
+              "C-ddpm",
+              "U-ddpm",
+              "R11",
+              "generator.run_id",
+              "revision_note"
+            ],
+            "remaining_evidence_values_and_array_order_equal": true,
+            "remaining_evidence_canonical_sha256": "d78b4fe127efe489d83def84c2c03c5eb52ff7a1c22d7abac5b5675ef4ec79d2",
+            "unexpected_changes": []
+          },
+          "read_scopes": [
+            "新读来源与第28节审稿相同：DDPM v2 pp1–9/14–15、指定算法/表格/图注、讲义p46、官方元数据、U-Net摘要、117段转写与对应shownotes。",
+            "主稿只直接读paper-ddpm节、ddpm/ddpm-training/ddpm-results脚注及相关导航；展开篇全文另已实际读取。",
+            "其余主稿/evidence执行精确差异验证后继承；基线review仅访问顶层decision的状态/哈希、revision_round和reviews条数，不读意见或五维分数。"
+          ],
+          "verification_limits": [
+            "本轮分数针对DDPM增量及继承合法性，不声称对全部旧论文做了全新内容复核。",
+            "模型身份未独立确认；不借用共享宿主或父会话的模型标签。",
+            "复用原材料缓存；本审未独立视读PNG、听音、测WER、运行训练/采样或验收工作台页面。"
+          ]
+        },
+        {
+          "role": "flagship_final_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex",
+            "run_id": "ddpm_strong_review",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "identity_basis": "orchestrator-configured",
+            "model_runtime_confirmation": "session-bound-unverified"
+          },
+          "scores": {
+            "evidence_fidelity": 98,
+            "request_coverage": 98,
+            "reasoning_quality": 97,
+            "readability": 97,
+            "limitations": 99
+          },
+          "score_reasons": {
+            "evidence_fidelity": "DDPM增量的版本、机制、Table 2数字、FID参考集、NLL取舍、1000步与作者署名均由固定v2及官方元数据支持；非DDPM部分通过r32绑定哈希pass和规范化相等继承。",
+            "request_coverage": "第28节完成实质改写，标题后首块即展开链接；训练答案、累计噪声、逐步采样、联合配方、网络分工、指标/成本及下一章问题均进入主稿，脚注和研究入口齐全。",
+            "reasoning_quality": "从消融正确推出不能把3.17归因于单一参数化，并把训练一步与生成多步、U-Net与扩散、样本质量与似然/速度分开；与前后章节的承接克制。",
+            "readability": "主稿增量紧凑、独立可读，展开链接文案明确，三条脚注承担细节而不压垮正文；导航锚点与编号一致。",
+            "limitations": "明确采用v2、转写未听校、后续商业叙事不采用、原实验不是实时方案；继承范围、规范化规则和未重读旧来源的限制均如实记录。"
+          },
+          "critical_claim_ids_checked": [
+            "C-brook",
+            "C-alexnet",
+            "C-resnet",
+            "C-distillation",
+            "C-word2vec",
+            "C-seq2seq",
+            "C-bahdanau-attention",
+            "C-gnmt",
+            "C-transformer",
+            "C-gpt1",
+            "C-bert",
+            "C-gpt2",
+            "C-gpt3",
+            "C-scaling-laws",
+            "C-chinchilla",
+            "C-zero",
+            "C-megascale",
+            "C-laion5b",
+            "C-refinedweb",
+            "C-sparse-moe",
+            "C-lora",
+            "C-alphago-zero",
+            "C-instructgpt",
+            "C-cot",
+            "C-react",
+            "C-tulu3",
+            "C-deepvideo",
+            "C-two-stream",
+            "C-vit",
+            "C-clip",
+            "C-gan",
+            "C-diffusion-2015",
+            "C-ddpm",
+            "C-ldm",
+            "C-dit",
+            "C-bitter-lesson",
+            "C-inventory",
+            "C-sd14",
+            "C-hardware-lens",
+            "C-people",
+            "C-identity-corrections",
+            "E-gpu",
+            "E-residual",
+            "E-nmt",
+            "E-wordpiece",
+            "E-pretraining",
+            "E-scale-config",
+            "E-data-demand",
+            "E-system",
+            "E-visual-backbone",
+            "E-data-loop",
+            "E-latent",
+            "E-adversarial-component",
+            "E-product",
+            "E-dit-meeting",
+            "E-behavior",
+            "E-interaction",
+            "C-basics",
+            "C-route-walkthroughs"
+          ],
+          "coverage_unit_ids_checked": [
+            "U-brook",
+            "U-alexnet",
+            "U-resnet",
+            "U-distillation",
+            "U-word2vec",
+            "U-seq2seq",
+            "U-bahdanau-attention",
+            "U-gnmt",
+            "U-transformer",
+            "U-gpt1",
+            "U-bert",
+            "U-gpt2",
+            "U-gpt3",
+            "U-scaling-laws",
+            "U-chinchilla",
+            "U-zero",
+            "U-megascale",
+            "U-laion5b",
+            "U-refinedweb",
+            "U-sparse-moe",
+            "U-lora",
+            "U-alphago-zero",
+            "U-instructgpt",
+            "U-cot",
+            "U-react",
+            "U-tulu3",
+            "U-deepvideo",
+            "U-two-stream",
+            "U-vit",
+            "U-clip",
+            "U-gan",
+            "U-diffusion-2015",
+            "U-ddpm",
+            "U-ldm",
+            "U-dit",
+            "U-bitter-lesson",
+            "U-lenses",
+            "U-reader-method",
+            "U-cross-route"
+          ],
+          "source_ids_checked": [
+            "S-lecture",
+            "S-brook",
+            "S-gpu-history",
+            "S-alexnet",
+            "S-resnet",
+            "S-distill",
+            "S-word2vec",
+            "S-seq2seq",
+            "S-bahdanau",
+            "S-gnmt",
+            "S-transformer",
+            "S-gpt1",
+            "S-bert",
+            "S-gpt2",
+            "S-gpt3",
+            "S-kaplan",
+            "S-chinchilla",
+            "S-zero",
+            "S-refinedweb",
+            "S-laion",
+            "S-megascale",
+            "S-moe",
+            "S-lora",
+            "S-bitter",
+            "S-hardware",
+            "S-alphago",
+            "S-instruct",
+            "S-cot",
+            "S-react",
+            "S-tulu",
+            "S-deepvideo",
+            "S-two-stream",
+            "S-vit",
+            "S-clip",
+            "S-gan",
+            "S-diffusion15",
+            "S-ddpm",
+            "S-ldm",
+            "S-sd14",
+            "S-dit",
+            "L-inventory",
+            "S-ai-yanyi-episode",
+            "S-two-stream-lecture",
+            "S-two-stream-podcast",
+            "S-two-stream-shownotes",
+            "S-vit-metadata",
+            "S-vit-lecture",
+            "S-vit-podcast",
+            "S-vit-shownotes",
+            "S-clip-lecture",
+            "S-clip-metadata",
+            "S-clip-podcast",
+            "S-clip-shownotes",
+            "S-gan-metadata",
+            "S-gan-lecture",
+            "S-gan-podcast",
+            "S-gan-shownotes",
+            "S-diffusion15-metadata",
+            "S-diffusion15-lecture",
+            "S-diffusion15-podcast",
+            "S-diffusion15-shownotes",
+            "S-ddpm-metadata",
+            "S-ddpm-lecture",
+            "S-ddpm-podcast",
+            "S-ddpm-shownotes",
+            "S-ddpm-unet"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6",
+            "R7",
+            "R8",
+            "R9",
+            "R10",
+            "R11"
+          ],
+          "source_content_map": [
+            {
+              "id": "MSC0",
+              "title": "r32已发布主稿基线继承",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "L-inventory"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-brook",
+                "U-alexnet",
+                "U-resnet",
+                "U-distillation",
+                "U-word2vec",
+                "U-seq2seq",
+                "U-bahdanau-attention",
+                "U-gnmt",
+                "U-transformer",
+                "U-gpt1",
+                "U-bert",
+                "U-gpt2",
+                "U-gpt3",
+                "U-scaling-laws",
+                "U-chinchilla",
+                "U-zero",
+                "U-megascale",
+                "U-laion5b",
+                "U-refinedweb",
+                "U-sparse-moe",
+                "U-lora",
+                "U-alphago-zero",
+                "U-instructgpt",
+                "U-cot",
+                "U-react",
+                "U-tulu3",
+                "U-deepvideo",
+                "U-two-stream",
+                "U-vit",
+                "U-clip",
+                "U-gan",
+                "U-diffusion-2015",
+                "U-ldm",
+                "U-dit",
+                "U-bitter-lesson",
+                "U-lenses",
+                "U-reader-method",
+                "U-cross-route"
+              ],
+              "notes": "本轮未重读旧章节来源；独立git show核对4bba245f…：剔除DDPM区段、三条DDPM脚注及status/updated_on后正文逐字相同；证据账本剔除允许的DDPM/R11与run_id/revision_note变化后结构相同，且r32绑定哈希判定为pass。"
+            },
+            {
+              "id": "MSC1",
+              "title": "DDPM版本、继承关系与人物署名",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-ddpm",
+                "S-ddpm-metadata",
+                "S-ddpm-lecture",
+                "S-ddpm-podcast"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-ddpm"
+              ],
+              "notes": "主稿采用v2，区分2015扩散框架与2020配方，并纠正Google资源支持与UC Berkeley作者署名的混淆。"
+            },
+            {
+              "id": "MSC2",
+              "title": "已知累计噪声监督与逐步采样",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-ddpm"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-ddpm"
+              ],
+              "notes": "随机时间步、直接构造状态、共享网络、累计等效噪声、反向均值/方差及末步随机性边界表述准确。"
+            },
+            {
+              "id": "MSC3",
+              "title": "参数化、简化目标与U-Net组件配合",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-ddpm",
+                "S-ddpm-unet",
+                "S-ddpm-lecture",
+                "S-ddpm-podcast"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-ddpm"
+              ],
+              "notes": "13.22/13.51/3.17正确支持联合配方而非单改预测对象；U-Net计算骨架与扩散组织方式分开。"
+            },
+            {
+              "id": "MSC4",
+              "title": "FID、NLL与1000步成本口径",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-ddpm"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-ddpm"
+              ],
+              "notes": "训练集参考3.17、测试集参考5.24、似然取舍与1000步均保留，未写成实时方案。"
+            },
+            {
+              "id": "MSC5",
+              "title": "章节展开链接、脚注与研究入口",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "S-ddpm",
+                "S-ddpm-shownotes",
+                "S-ddpm-podcast"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-ddpm"
+              ],
+              "notes": "标题后首块为展开链接；脚注ddpm/ddpm-training/ddpm-results能回到原文与展开篇，研究入口锚点有效。"
+            }
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "DDPM直接审阅增量未发现实质问题；r32其余正文和evidence的继承验证通过。未读取旧review意见或五维分数。",
+          "snapshot": {
+            "report_sha256": "dacb782b987f5bbdc6ffd96bf6051a98087be518809342c1e16a7652cfa9de3c",
+            "evidence_sha256": "2534e96bb0ae1f3133c678e543cd87f4fe938996a8abe8f7788304602e5fbfdd",
+            "expected_report_sha256": "dacb782b987f5bbdc6ffd96bf6051a98087be518809342c1e16a7652cfa9de3c",
+            "expected_evidence_sha256": "2534e96bb0ae1f3133c678e543cd87f4fe938996a8abe8f7788304602e5fbfdd",
+            "matched": true
+          },
+          "read_scopes": {
+            "directly_reviewed_report": [
+              "paper-ddpm至paper-ldm前区段",
+              "脚注ddpm、ddpm-training、ddpm-results",
+              "DDPM研究入口与展开导航"
+            ],
+            "directly_reviewed_source_ids": [
+              "S-ddpm",
+              "S-ddpm-metadata",
+              "S-ddpm-lecture",
+              "S-ddpm-podcast",
+              "S-ddpm-shownotes",
+              "S-ddpm-unet"
+            ],
+            "inherited_report_scope": "除DDPM区段、三条DDPM脚注及frontmatter status/updated_on外的r32正文",
+            "inherited_evidence_scope": "除六个DDPM source、C-ddpm、U-ddpm、R11、generator.run_id、revision_note外的r32 evidence"
+          },
+          "directly_reviewed_critical_claim_ids": [
+            "C-ddpm"
+          ],
+          "inherited_critical_claim_ids": [
+            "C-brook",
+            "C-alexnet",
+            "C-resnet",
+            "C-distillation",
+            "C-word2vec",
+            "C-seq2seq",
+            "C-bahdanau-attention",
+            "C-gnmt",
+            "C-transformer",
+            "C-gpt1",
+            "C-bert",
+            "C-gpt2",
+            "C-gpt3",
+            "C-scaling-laws",
+            "C-chinchilla",
+            "C-zero",
+            "C-megascale",
+            "C-laion5b",
+            "C-refinedweb",
+            "C-sparse-moe",
+            "C-lora",
+            "C-alphago-zero",
+            "C-instructgpt",
+            "C-cot",
+            "C-react",
+            "C-tulu3",
+            "C-deepvideo",
+            "C-two-stream",
+            "C-vit",
+            "C-clip",
+            "C-gan",
+            "C-diffusion-2015",
+            "C-ldm",
+            "C-dit",
+            "C-bitter-lesson",
+            "C-inventory",
+            "C-sd14",
+            "C-hardware-lens",
+            "C-people",
+            "C-identity-corrections",
+            "E-gpu",
+            "E-residual",
+            "E-nmt",
+            "E-wordpiece",
+            "E-pretraining",
+            "E-scale-config",
+            "E-data-demand",
+            "E-system",
+            "E-visual-backbone",
+            "E-data-loop",
+            "E-latent",
+            "E-adversarial-component",
+            "E-product",
+            "E-dit-meeting",
+            "E-behavior",
+            "E-interaction",
+            "C-basics",
+            "C-route-walkthroughs"
+          ],
+          "directly_reviewed_coverage_unit_ids": [
+            "U-ddpm"
+          ],
+          "inherited_coverage_unit_ids": [
+            "U-brook",
+            "U-alexnet",
+            "U-resnet",
+            "U-distillation",
+            "U-word2vec",
+            "U-seq2seq",
+            "U-bahdanau-attention",
+            "U-gnmt",
+            "U-transformer",
+            "U-gpt1",
+            "U-bert",
+            "U-gpt2",
+            "U-gpt3",
+            "U-scaling-laws",
+            "U-chinchilla",
+            "U-zero",
+            "U-megascale",
+            "U-laion5b",
+            "U-refinedweb",
+            "U-sparse-moe",
+            "U-lora",
+            "U-alphago-zero",
+            "U-instructgpt",
+            "U-cot",
+            "U-react",
+            "U-tulu3",
+            "U-deepvideo",
+            "U-two-stream",
+            "U-vit",
+            "U-clip",
+            "U-gan",
+            "U-diffusion-2015",
+            "U-ldm",
+            "U-dit",
+            "U-bitter-lesson",
+            "U-lenses",
+            "U-reader-method",
+            "U-cross-route"
+          ],
+          "directly_reviewed_source_ids": [
+            "S-ddpm",
+            "S-ddpm-metadata",
+            "S-ddpm-lecture",
+            "S-ddpm-podcast",
+            "S-ddpm-shownotes",
+            "S-ddpm-unet"
+          ],
+          "inherited_source_ids": [
+            "S-lecture",
+            "S-brook",
+            "S-gpu-history",
+            "S-alexnet",
+            "S-resnet",
+            "S-distill",
+            "S-word2vec",
+            "S-seq2seq",
+            "S-bahdanau",
+            "S-gnmt",
+            "S-transformer",
+            "S-gpt1",
+            "S-bert",
+            "S-gpt2",
+            "S-gpt3",
+            "S-kaplan",
+            "S-chinchilla",
+            "S-zero",
+            "S-refinedweb",
+            "S-laion",
+            "S-megascale",
+            "S-moe",
+            "S-lora",
+            "S-bitter",
+            "S-hardware",
+            "S-alphago",
+            "S-instruct",
+            "S-cot",
+            "S-react",
+            "S-tulu",
+            "S-deepvideo",
+            "S-two-stream",
+            "S-vit",
+            "S-clip",
+            "S-gan",
+            "S-diffusion15",
+            "S-ldm",
+            "S-sd14",
+            "S-dit",
+            "L-inventory",
+            "S-ai-yanyi-episode",
+            "S-two-stream-lecture",
+            "S-two-stream-podcast",
+            "S-two-stream-shownotes",
+            "S-vit-metadata",
+            "S-vit-lecture",
+            "S-vit-podcast",
+            "S-vit-shownotes",
+            "S-clip-lecture",
+            "S-clip-metadata",
+            "S-clip-podcast",
+            "S-clip-shownotes",
+            "S-gan-metadata",
+            "S-gan-lecture",
+            "S-gan-podcast",
+            "S-gan-shownotes",
+            "S-diffusion15-metadata",
+            "S-diffusion15-lecture",
+            "S-diffusion15-podcast",
+            "S-diffusion15-shownotes"
+          ],
+          "directly_reviewed_requirement_ids": [
+            "R11"
+          ],
+          "inherited_requirement_ids": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6",
+            "R7",
+            "R8",
+            "R9",
+            "R10"
+          ],
+          "inheritance_verification": {
+            "baseline_commit": "4bba245fc32b32afaa3c161e664ab1784d681e59",
+            "baseline_revision_round": 32,
+            "baseline_decision_status": "pass",
+            "baseline_report_sha256": "a7672c5704cf64a829a2f64b0d12d4f7c761869b04406b648410e02ecfdbb6b7",
+            "baseline_evidence_sha256": "aa1d56558f13995d66a42f06f1d217909990c62f4f7a5536c0dffcd8bc117e3f",
+            "baseline_hashes_match_published_decision": true,
+            "normalized_report_equal": true,
+            "normalized_report_sha256": "fab249fcf7733a6ef44b660f778cd18530731c6420612e880dea87d54cf9898e",
+            "normalized_evidence_equal": true,
+            "normalized_evidence_sha256": "4ed69109501cb2fb2ab2d52481da90375e206c7f2d96439fe766278e2de39108"
+          },
+          "transcript_verification": {
+            "segment_count": 117,
+            "start_seconds": 12475.27,
+            "end_seconds": 12736.25,
+            "timestamp_errors": 0,
+            "overlaps": 0,
+            "max_consecutive_identical": 1,
+            "audio_listened": false,
+            "wer_measured": false
+          },
+          "verification_limits": [
+            "旧章节仅按已发布r32的哈希绑定pass与规范化逐字/结构相等继承，未重读其论文或旧review意见。",
+            "未听音或测WER；只核DDPM转写文本、边界、哈希和时间结构。",
+            "按任务要求未做工作台/浏览器页面验收。"
+          ]
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 95.3,
+        "evaluated_on": "2026-11-06",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "04a7ef38fc6ddad914830c183c0099e5b8b608a7ee2c407a00ad1670711ae10c",
+        "evidence_sha256": "2534e96bb0ae1f3133c678e543cd87f4fe938996a8abe8f7788304602e5fbfdd"
       }
     }
   ],

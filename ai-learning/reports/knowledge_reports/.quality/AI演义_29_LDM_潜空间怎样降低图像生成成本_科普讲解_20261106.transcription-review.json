@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "kind": "chapter-transcription-review",
+  "reviewed_on": "2026-11-06",
+  "chapter": 29,
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+  "transcript_source_ref": "sha256:e1dd238bdcaebed4babe891e525d46386bd6eb38ccafdd7aadb115ac75110edc",
+  "full_segments_sha256": "f322514ced72235a0ca104635824c66df425c18dbae3d0f4e76fa70d088db61c",
+  "public_full_episode_receipt": "podcast-learning/reports/transcripts/2026-11-04_ai-yanyi-117.audit.json",
+  "read_scope": {
+    "zero_based_start": 6521,
+    "zero_based_end_inclusive": 6711,
+    "segment_count": 191,
+    "start_seconds": 13552.68,
+    "end_seconds": 13974.88,
+    "elapsed_seconds": 422.2,
+    "text_sha256": "e1dd238bdcaebed4babe891e525d46386bd6eb38ccafdd7aadb115ac75110edc",
+    "slice_sha256": "a04a34d715193d10765f62fc38a54847e1a252984429d58643805453be608b27",
+    "start_backwards": 0,
+    "end_backwards": 0,
+    "end_before_start": 0,
+    "overlaps": [
+      {
+        "previous_zero_based_index": 6587,
+        "current_zero_based_index": 6588,
+        "seconds": 0.02
+      },
+      {
+        "previous_zero_based_index": 6588,
+        "current_zero_based_index": 6589,
+        "seconds": 0.1
+      },
+      {
+        "previous_zero_based_index": 6589,
+        "current_zero_based_index": 6590,
+        "seconds": 0.1
+      }
+    ],
+    "max_gap_seconds": 1.51
+  },
+  "compatible_text_audits": [
+    {
+      "schema_version": 2,
+      "kind": "podcast-transcript-audit",
+      "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "source_ref": "sha256:e1dd238bdcaebed4babe891e525d46386bd6eb38ccafdd7aadb115ac75110edc",
+      "max_consecutive_limit": 3,
+      "audit": {
+        "ok": true,
+        "size": 9854,
+        "sha256": "e1dd238bdcaebed4babe891e525d46386bd6eb38ccafdd7aadb115ac75110edc",
+        "lines": 191,
+        "segments": 191,
+        "duration_seconds": 13974,
+        "max_consecutive_identical": 2,
+        "timestamp_errors": 0,
+        "malformed_lines": 0,
+        "tail_gap_seconds": 0
+      }
+    }
+  ],
+  "audit_interpretation": "原生整数秒检查pass；百分秒检查发现6587/6588重叠0.02秒，6588/6589与6589/6590分别重叠0.10秒；起始/结束各自不倒序，最大相邻间隔1.51秒。重复短句与误识保留在私有原ASR，正文依原论文重建解释，不冒称音频核验。",
+  "term_and_claim_checks": [
+    {
+      "issue": "浅空间/影空间、纹身图、造成预测等误识",
+      "adopted": "按原文统一潜空间、文生图、噪声预测；未听校所以不声称逐字还原口音。",
+      "basis": "LDM §§1–3"
+    },
+    {
+      "issue": "一张图一天、压缩至少省两个量级、玫瑰所有规律保留、压缩产生智能",
+      "adopted": "5万样本约5天是前作引述；空间比不等于速度比，压缩保留感知结构且有信息损失，不把类比当定律。",
+      "basis": "pp1–2、§4.1/§5"
+    },
+    {
+      "issue": "CLIP条件编码器与全部作者同机构混入原LDM",
+      "adopted": "BERTtokenizer+联合训练Transformer与SD1.4固定CLIP分开；Esser署名RunwayML，其他上标1为LMU/IWR。",
+      "basis": "§3.3/§4.3.1、首页与SD1.4模型卡"
+    }
+  ],
+  "audio_listened": false,
+  "wer_measured": false,
+  "limitations": [
+    "公开仅范围、哈希与纠错，不复制私有转写owner或全文。",
+    "第30节会共享同一口述片段并以模型卡补充，非伪造一段专讲v1.4的节目。"
+  ]
+}

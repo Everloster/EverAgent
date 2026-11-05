@@ -664,17 +664,27 @@ Sports-1M 测试集有 20 万视频。Table 1 中，单帧模型的视频首选�
 
 <a id="paper-ldm"></a>
 
-### 29. LDM：为什么还要在每个像素上反复计算？
+### 29. LDM：为什么先压缩，反而更会画图？
 
-如果很多计算都花在高分辨率图像的细节上，能否先学到一个较小、可解码的表示，再在这个空间中完成昂贵的生成？
+[展开阅读：潜空间里装了什么，怎样训练、接收文字，以及压缩的代价](knowledge_reports/AI演义_29_LDM_潜空间怎样降低图像生成成本_科普讲解_20261106.md)
 
-2021年公开的 **Latent Diffusion Models** 将感知压缩与扩散生成分成两阶段：先训练编码器和解码器，再在较小的空间表示中训练和运行扩散，最后解码回图像。[^ldm]
+继续画前一节的花。分辨率越高，每一步去噪要处理的数组越大；即使损失函数少重视肉眼难辨的细节，网络仍然在整个像素空间反复计算。**能不能先换一种更省计算的表达方式，再进行生成？**
 
-它没有把图像变成一句语义描述，也不是无损压缩。压得太少，节省有限；压得太多，又可能限制细节与质量。它改变的是**反复生成计算发生在哪里**，不是取消生成过程。
+2021 年公开的 **Latent Diffusion Models（LDM）** 把任务拆成两阶段：先训练编码器和解码器，让真实图片压缩后仍能较好地重建；固定这套表示，再在潜空间里训练和运行扩散。最后一次通过解码器得到图片，不等于前面的去噪只有一步。本文采用 2022 年 4 月的 v2。[^ldm]
 
-这里出现了一次比“扩散取代GAN”更有解释力的会合：LDM的压缩器使用感知损失和对抗目标。对抗训练的思想经由相关两阶段生成工作，以部件形式进入了扩散系统。**一种方法可以不再占据主流程中心，却继续在另一个位置发挥作用。**
+潜表示仍是有空间结构的数值网格，不是一句“这是一朵花”，也不是普通低清缩略图。例如高、宽各缩小 4 倍，位置数变成 1/16；但通道、网络宽度、编码解码都要计算，不能据此宣称整套系统加速 16 倍。
 
-条件控制则接入另一条线：文本先被编码成序列，再通过交叉注意力影响去噪过程。本文所读LDM v2的文本方案使用BERT tokenizer与联合训练的Transformer条件编码器；这不等于直接加载完整预训练BERT，也不等于使用冻结的CLIP文本编码器。
+**压缩器与生成器学的不是一回事。** 第一阶段学习怎样表示并重建图片；第二阶段学习这些表示怎样组成合理的新样本。训练时给真实图片的潜表示加入已知噪声，去噪网络学习预测；生成时直接从新的潜空间噪声出发，不需要预先藏一张原图。
+
+压缩器使用感知损失和局部对抗目标，也比较轻 KL 与 VQ 两类约束。于是，GAN 的思想以部件形式进入扩散系统。压得太少，工作量仍大；压得太多，重要细节已经丢失。在作者的压缩率比较里，f＝4、8 的质量与效率取舍较好，并不是“压缩越狠，越聪明”。[^ldm-compression]
+
+怎样按“窗边花瓶里的一朵红花”生成？文本被编码成序列，去噪网络用交叉注意力读取它；图像特征提供查询，条件表示提供键和值。**潜空间回答在哪里算，条件接口回答依据什么算。** 布局、类别和空间对齐的图片条件，也有各自的接入方式。
+
+版本要在这里分开：原 LDM v2 使用 **BERT tokenizer 与联合训练的 Transformer 条件编码器**，不是直接加载完整预训练 BERT，也不是冻结 CLIP。后者是下一章所核对的 Stable Diffusion v1.4 的具体配置。[^ldm-conditioning]
+
+实验显示了实际收益，也保留了反例：CelebA-HQ 上 LDM-4 的 FID 为 **5.11**，而在 FFHQ 上，LDM 的 **4.98** 不及表中 ProjectedGAN 的 **3.08**。图像修补的配对实验同时改善吞吐与 FID，但有明确的模型、批量和硬件条件，不能当作本机性能。[^ldm-results]
+
+因此，这篇论文不是宣告一个模型在所有场景取胜。它让“表示细节”与“生成结构”不必都压在同一条昂贵计算链上，同时保留代价：多步采样仍慢，压缩会限制逐像素精度；超分与修补得到合理细节，也不保证恢复真实原件。下一章再看这套方法怎样与固定文本编码器、训练数据和具体权重组合成可用模型。
 
 <a id="paper-sd14"></a>
 
@@ -955,7 +965,7 @@ AI的发展不只是模型名单变长，而是学习对象、可用信息、计
 [^gan]: Goodfellow et al.，[Generative Adversarial Nets，arXiv 1406.2661v1](https://arxiv.org/pdf/1406.2661v1)，2014-06-10；已读全 9 页。讲义第 44 页、节目 GAN 主段约 03:17:55–03:22:03 及扩散转场中约 03:24:03–03:24:42 的训练比较，见[本节展开与阅读范围](knowledge_reports/AI演义_26_GAN_两个模型怎样在对抗中学会生成_科普讲解_20261106.md#sources-and-scope)。两段转写分别审计，未听校；花卉例子不当作原论文实验。
 [^diffusion15]: Sohl-Dickstein et al.，[Deep Unsupervised Learning using Nonequilibrium Thermodynamics，v8](https://arxiv.org/pdf/1503.03585v8)，首版 2015-03-12，本篇读取的 v8 为 2015-11-18；结合讲义 p45、约 03:22:03–03:27:55 的 185 段转写及 shownotes，见[本节展开](knowledge_reports/AI演义_27_Diffusion2015_逐步加噪怎样学会生成_科普讲解_20261106.md#sources-and-scope)。未听校；时间结构保留 0.04 秒相邻重叠，专名按论文核对。
 [^ddpm]: Ho, Jain & Abbeel，[Denoising Diffusion Probabilistic Models](https://arxiv.org/pdf/2006.11239v2)，首版 2020-06-19、本文使用 v2（2020-12-16）。首页作者机构均为 UC Berkeley，p9 致谢 TFRC 的 TPU 支持；讲义 p46、节目约 03:27:55–03:32:16 提供讲解线索，原文与转写范围见[第 28 节展开](knowledge_reports/AI演义_28_DDPM_预测噪声怎样学会生成图像_科普讲解_20261106.md#sources-and-scope)。
-[^ldm]: Rombach et al.，[High-Resolution Image Synthesis with Latent Diffusion Models](https://arxiv.org/pdf/2112.10752v2)，首发2021年，所读修订版2022年；不将修订的文本模型与训练配方全部倒写为首版。
+[^ldm]: Rombach et al.，[High-Resolution Image Synthesis with Latent Diffusion Models](https://arxiv.org/pdf/2112.10752v2)，首版 2021-12-20、本文采用 v2（2022-04-13）。§§1–3 说明像素计算成本、两阶段训练、潜空间与一次解码；讲义 p49 和节目约 03:45:52–03:52:54 的版本混用、转写重复／时间重叠已在[第 29 节展开](knowledge_reports/AI演义_29_LDM_潜空间怎样降低图像生成成本_科普讲解_20261106.md#sources-and-scope)说明。
 [^sd14]: [Stable Diffusion v1.4官方模型卡](https://huggingface.co/CompVis/stable-diffusion-v1-4)。本文读取的是2026-11-03的main内容快照，记录了正文哈希但未固定仓库commit；仅支持该模型卡对v1.4的具体陈述，未下载或运行权重。
 [^dit]: Peebles & Xie，[Scalable Diffusion Models with Transformers](https://arxiv.org/pdf/2212.09748v2)，首发2022年，所读修订版2023年。
 
@@ -968,3 +978,6 @@ AI的发展不只是模型名单变长，而是学习对象、可用信息、计
 [^diffusion15-experiments]: 原论文 [Table 2，p8](https://arxiv.org/pdf/1503.03585v8#page=8)及 p9 的 MNIST 说明。dead leaves 是合成遮挡数据；MNIST 的 Parzen 估计保留原表 bits 单位和 ±，不可与 GAN 原论文的 225 等数值不换口径直接比较。CIFAR-10 去量化更正见 [p7 脚注 3](https://arxiv.org/pdf/1503.03585v8#page=7)。
 [^ddpm-training]: [DDPM v2，§§2–3、Algorithms 1–2、式 4 与式 11–14](https://arxiv.org/pdf/2006.11239v2#page=2)：直接构造任意噪声阶段、累计噪声目标、反向均值与方差、最后一步不另加随机项；§4.3、附录 B/C 分别解释渐进编码、具体网络与分数匹配联系。
 [^ddpm-results]: [DDPM v2，Tables 1–2、§§4.1–4.3](https://arxiv.org/pdf/2006.11239v2#page=5)，三种固定方差配置的 FID 为 13.22／13.51／3.17，训练集参考 3.17 与测试集参考 5.24 分开；简化损失的测试 NLL 上界 ≤3.75 bits/dim，原变分目标 ≤3.70。全部实验 T＝1000，附录 B 说明最终各训一次、取训练过程最低 FID，不能当作跨训练重复均值。
+[^ldm-compression]: [LDM v2，§3.1、§4.1](https://arxiv.org/pdf/2112.10752v2#page=3)与[附录 G](https://arxiv.org/pdf/2112.10752v2#page=29)：感知／局部对抗目标、KL 与 VQ 正则；VQ 量化前表示用于扩散。压缩率比较控制 GPU 型号、训练步数和近似参数规模，但批量／学习率等并不全部相同，不能把空间尺寸比直接当作速度比。
+[^ldm-conditioning]: [LDM v2，§3.3、§4.3.1](https://arxiv.org/pdf/2112.10752v2#page=4)和 pp25–26：BERT tokenizer、联合训练的 Transformer 条件编码器、交叉注意力与拼接；[SD v1.4 官方模型卡](https://huggingface.co/CompVis/stable-diffusion-v1-4)的固定 CLIP 是另一个明确版本的实现选择。
+[^ldm-results]: [LDM v2，Tables 1–3 与 Table 6](https://arxiv.org/pdf/2112.10752v2#page=6)。CelebA-HQ 5.11 为 500 步 DDIM，FFHQ 4.98 为 200 步；前者／后者都不是所有 GAN 的统一比较结论。修补的训练吞吐 0.11→0.33 样本/秒、FID@2k epoch6 24.74→14.99 对应 VQ、含注意力的 LDM-4，修补训练为 8×V100，不能与单 A100 的压缩率实验混淆；精度与采样限制见 §5。 无条件生成数字采用256×256输出，以50,000个生成样本和对应完整训练集估计统计量。

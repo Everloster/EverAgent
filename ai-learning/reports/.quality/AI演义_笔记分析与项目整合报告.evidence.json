@@ -6,7 +6,7 @@
   "generator": {
     "model": "gpt-6-astra",
     "harness": "codex",
-    "run_id": "ai-yanyi-ddpm-main-r33-20261106",
+    "run_id": "ai-yanyi-ldm-main-r34-20261106",
     "explicit_model_override": false,
     "override_reason": "",
     "identity_basis": "eacli session current：codex-turn-context，session-bound，confirmed=true；只证明当前生成会话，不证明子会话模型。"
@@ -56,7 +56,7 @@
       },
       {
         "id": "R11",
-        "text": "原第28节实质改写且标题后首块有展开链接；展开保留原节、前后章节导航，统一两位编号、人类独立可读；本轮核心为DDPM 用已知累计噪声构造监督、以噪声预测计算反向均值并逐步采样；参数化、简化损失与时间条件 U-Net 共同构成配方，Table 2 的 13.22／13.51／3.17 不能归功于单改预测对象；FID参考集、似然上界与1000步成本须分开，三位作者首页均署名UC Berkeley。。其余科学正文严格继承已发布r32。"
+        "text": "原第29节实质改写且标题后首块有展开链接；展开保留原节、前后章节导航，统一两位编号、人类独立可读；本轮核心为LDM把感知压缩与扩散生成拆成两阶段，在二维潜表示中多步去噪并最终一次解码；感知/对抗目标与KL/VQ表示有取舍，空间缩小不直接等于加速倍率；原v2的BERT tokenizer与联合训练Transformer条件不同于SD1.4固定CLIP，实验优势有任务和精度边界。。其余科学正文严格继承已发布r33。"
       }
     ],
     "reader_feedback": [
@@ -578,11 +578,12 @@
       "kind": "primary",
       "title": "High-Resolution Image Synthesis with Latent Diffusion Models",
       "locator": "https://arxiv.org/pdf/2112.10752v2",
-      "accessed_on": "2026-11-03",
-      "version": "arXiv v2，2022-04-13；首发 2021-12-20，CVPR 2022。本文采用 v2 的文本模型与实验，不倒填到 v1。",
-      "read_scope": "P1–7：§1–3.3、§4.1–4.3、Tables 1–3 与 Figures 6–7 图注；P9 §5–6 和致谢；P16 Appendix A changelog 及同页 Appendix B 开头；P25 Table 15 文本任务相关行，P26 Table 17，P27 E.3.2 的文本生成评测说明。",
-      "research_record": "ai-learning/notes/ai_yanyi_research/phase2/generation.json",
-      "research_source_id": "GEN-S-LDM"
+      "accessed_on": "2026-11-06",
+      "version": "v2，2022-04-13，45页；首版2021-12-20",
+      "local_owner": "ai-learning/papers/20_stable_diffusion_2021.pdf",
+      "sha256": "46ede043a8dc07ca1f0f445620523fe1ad8b2436bd83856a3835612a47e9f79e",
+      "read_scope": "pp1–9主文、pp21–22补充重建/比较、pp25–29相关架构/训练/评价和压缩器说明；Tables1–3/6/8/10/14–18及相关图注。p1署名与p8表格经TokenPlan图像读取后直接视读核对；未逐式重证全部推导、逐图审全附录或运行。图像工具对Table5上标有误读，正文采用原页，不采用工具误读数字。",
+      "current_chapter_evidence": "ai-learning/reports/knowledge_reports/.quality/AI演义_29_LDM_潜空间怎样降低图像生成成本_科普讲解_20261106.evidence.json"
     },
     {
       "id": "S-sd14",
@@ -910,6 +911,59 @@
       "response_text_sha256": "3cb417a381835035596e8adae9df5dbb6201b4030c7f4d13e55fc0490b48c386",
       "read_scope": "只读官方题名/摘要，核生物医学图像分割任务及收缩/扩展路径；未读全文或复现。",
       "current_chapter_evidence": "ai-learning/reports/knowledge_reports/.quality/AI演义_28_DDPM_预测噪声怎样学会生成图像_科普讲解_20261106.evidence.json"
+    },
+    {
+      "id": "S-ldm-metadata",
+      "kind": "primary",
+      "title": "LDM官方版本记录",
+      "locator": "https://arxiv.org/abs/2112.10752v2",
+      "accessed_on": "2026-11-06",
+      "response_text_sha256": "a656191cb4d35e06bd93295152d580a9b5c12330c317106b1875682b1f5f2aa6",
+      "read_scope": "eacli web.read，核首版与v2日期，45页及机构回仓内原PDF。",
+      "current_chapter_evidence": "ai-learning/reports/knowledge_reports/.quality/AI演义_29_LDM_潜空间怎样降低图像生成成本_科普讲解_20261106.evidence.json"
+    },
+    {
+      "id": "S-ldm-lecture",
+      "kind": "local",
+      "title": "《AI演义》讲义第49页",
+      "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "accessed_on": "2026-11-06",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
+      "read_scope": "p49文字、TokenPlan图像读取与直接视读；StableDiffusion标题下实际LDM论文，冻结CLIP与机构概括按原文分版本纠正。",
+      "current_chapter_evidence": "ai-learning/reports/knowledge_reports/.quality/AI演义_29_LDM_潜空间怎样降低图像生成成本_科普讲解_20261106.evidence.json"
+    },
+    {
+      "id": "S-ldm-podcast",
+      "kind": "primary",
+      "title": "《AI演义》潜空间与Stable Diffusion口述片段",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-06",
+      "read_scope": "零基6521–6711共191段，13552.68–13974.88秒，全文读取；起始/终止各自单调，3处相邻重叠0.02/0.10/0.10秒、最大间隔1.51秒，重复短句如实保留原ASR。未听校或测WER。",
+      "transcript_source_ref": "sha256:e1dd238bdcaebed4babe891e525d46386bd6eb38ccafdd7aadb115ac75110edc",
+      "transcript_review": "ai-learning/reports/knowledge_reports/.quality/AI演义_29_LDM_潜空间怎样降低图像生成成本_科普讲解_20261106.transcription-review.json",
+      "current_chapter_evidence": "ai-learning/reports/knowledge_reports/.quality/AI演义_29_LDM_潜空间怎样降低图像生成成本_科普讲解_20261106.evidence.json"
+    },
+    {
+      "id": "S-ldm-shownotes",
+      "kind": "primary",
+      "title": "节目Part4的Stable Diffusion条目与路线",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-06",
+      "cache_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5",
+      "read_scope": "复用已获取节目页，核该条目和前后CLIP/DiT；原节目不是单独LDM与v1.4两段，本文按方法/实现拆讲。",
+      "fresh_fetch": false,
+      "current_chapter_evidence": "ai-learning/reports/knowledge_reports/.quality/AI演义_29_LDM_潜空间怎样降低图像生成成本_科普讲解_20261106.evidence.json"
+    },
+    {
+      "id": "S-ldm-sd14",
+      "kind": "primary",
+      "title": "Stable Diffusion v1.4官方模型卡",
+      "locator": "https://huggingface.co/CompVis/stable-diffusion-v1-4",
+      "accessed_on": "2026-11-06",
+      "cache_sha256": "ceb32da028ab8272a461e4974569b06ab8cc2fe2101eb4189c34af89bbb8a6c8",
+      "read_scope": "复用已获取的官方模型卡，本章仅取ModelDetails/Training的固定CLIP文本编码器版本差别；不声称文件固定于2022年初稿或某个仓库commit。",
+      "fresh_fetch": false,
+      "current_chapter_evidence": "ai-learning/reports/knowledge_reports/.quality/AI演义_29_LDM_潜空间怎样降低图像生成成本_科普讲解_20261106.evidence.json"
     }
   ],
   "claims": [
@@ -1324,15 +1378,19 @@
     },
     {
       "id": "C-ldm",
-      "claim": "LDM将感知压缩与潜空间扩散分开，对抗目标可进入压缩器；所读v2文本条件为BERT tokenizer和联合训练Transformer，不等于冻结CLIP或完整预训练BERT。",
+      "claim": "LDM把感知压缩与扩散生成拆成两阶段，在二维潜表示中多步去噪并最终一次解码；感知/对抗目标与KL/VQ表示有取舍，空间缩小不直接等于加速倍率；原v2的BERT tokenizer与联合训练Transformer条件不同于SD1.4固定CLIP，实验优势有任务和精度边界。",
       "report_anchor": "paper-ldm",
       "support": "direct",
       "source_ids": [
         "S-ldm",
-        "S-ddpm"
+        "S-ldm-metadata",
+        "S-ldm-lecture",
+        "S-ldm-podcast",
+        "S-ldm-shownotes",
+        "S-ldm-sd14"
       ],
       "critical": true,
-      "evidence": "LDM v2§3.1–3.3分开压缩/扩散/条件；§4.3.1与Appendix A/Table 17记录文本编码及修订；对抗目标在压缩器中而非整个模型为GAN。"
+      "evidence": "本轮第29节展开正文及其原始证据，关键机制/数字见对应论文和章节脚注；未改变其余已发布主稿正文。"
     },
     {
       "id": "C-dit",
@@ -2067,12 +2125,16 @@
     },
     {
       "id": "U-ldm",
-      "title": "High-Resolution Image Synthesis with Latent Diffusion Models",
+      "title": "LDM把感知压缩与扩散生成拆成两阶段，在二维潜表示中多步去噪并最终一次解码；感知/对抗目标与KL/VQ表示有取舍，空间缩小不直接等于加速倍率；原v2的BERT tokenizer与联合训练Transformer条件不同于SD1.4固定CLIP，实验优势有任务和精度边界。",
       "importance": "core",
       "status": "included",
       "source_ids": [
         "S-ldm",
-        "S-ddpm"
+        "S-ldm-metadata",
+        "S-ldm-lecture",
+        "S-ldm-podcast",
+        "S-ldm-shownotes",
+        "S-ldm-sd14"
       ],
       "report_anchor": "paper-ldm"
     },
@@ -2233,7 +2295,7 @@
     "essay_articles": 1,
     "note": "论文研究范围按用户最新限定；不是全文逐公式/全图表审计。"
   },
-  "revision_note": "r33：第28节及其脚注、来源与覆盖增量，其余科学正文严格继承已发布r32。仅原文、正文、引用及章节导航检查，不做工作台页面验收。",
+  "revision_note": "r34：第29节及其脚注、来源与覆盖增量，其余科学正文严格继承已发布r33。仅原文、正文、引用及章节导航检查，不做工作台页面验收。",
   "generation_history": [
     {
       "revision_round": 2,

@@ -1,0 +1,505 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_29_LDM_潜空间怎样降低图像生成成本_科普讲解_20261106.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-06",
+  "generator": {
+    "model": "gpt-6-astra",
+    "harness": "codex",
+    "run_id": "ai-yanyi-ldm-r1-20261106",
+    "explicit_model_override": false,
+    "override_reason": "",
+    "identity_basis": "eacli session current，session-bound confirmed"
+  },
+  "task": {
+    "summary": "按Brook方式展开第29节LDM，讲透高分辨率成本、感知压缩、潜空间生成与条件控制，以原论文核实验和边界。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "固定v2原论文、讲义49页、shownotes、191段转写，明确LDM与SD1.4版本差别。"
+      },
+      {
+        "id": "R2",
+        "text": "沿用花照单例、少数学，解释压缩表示、编码解码、两阶段训练和多步生成。"
+      },
+      {
+        "id": "R3",
+        "text": "解释压缩取舍、对抗目标再利用、KL/VQ、文本和空间条件接口以及组件分工。"
+      },
+      {
+        "id": "R4",
+        "text": "原文实验保留数据/步数/样本数/引导/硬件等口径，区分质量与精确恢复，说明成本与风险。"
+      },
+      {
+        "id": "R5",
+        "text": "原29节实改且节首展开链接，报告独立可读、两位编号、原节前后导航、思考三问与研究入口。"
+      },
+      {
+        "id": "R6",
+        "text": "转写真实审计与人物原署名，不冒称听校/复现；只验内容与导航，不绑定工作台页面。"
+      }
+    ],
+    "source_coverage_scope": "仅LDM方法和对应节目片段；具体SDv1.4模型留下一章，引用模型卡只为区分文本编码器。"
+  },
+  "sources": [
+    {
+      "id": "PAPER",
+      "kind": "primary",
+      "title": "High-Resolution Image Synthesis with Latent Diffusion Models",
+      "locator": "https://arxiv.org/pdf/2112.10752v2",
+      "accessed_on": "2026-11-06",
+      "version": "v2，2022-04-13，45页；首版2021-12-20",
+      "local_owner": "ai-learning/papers/20_stable_diffusion_2021.pdf",
+      "sha256": "46ede043a8dc07ca1f0f445620523fe1ad8b2436bd83856a3835612a47e9f79e",
+      "read_scope": "pp1–9主文、pp21–22补充重建/比较、pp25–29相关架构/训练/评价和压缩器说明；Tables1–3/6/8/10/14–18及相关图注。p1署名与p8表格经TokenPlan图像读取后直接视读核对；未逐式重证全部推导、逐图审全附录或运行。图像工具对Table5上标有误读，正文采用原页，不采用工具误读数字。"
+    },
+    {
+      "id": "METADATA",
+      "kind": "primary",
+      "title": "LDM官方版本记录",
+      "locator": "https://arxiv.org/abs/2112.10752v2",
+      "accessed_on": "2026-11-06",
+      "response_text_sha256": "a656191cb4d35e06bd93295152d580a9b5c12330c317106b1875682b1f5f2aa6",
+      "read_scope": "eacli web.read，核首版与v2日期，45页及机构回仓内原PDF。"
+    },
+    {
+      "id": "LECTURE",
+      "kind": "local",
+      "title": "《AI演义》讲义第49页",
+      "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "accessed_on": "2026-11-06",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
+      "read_scope": "p49文字、TokenPlan图像读取与直接视读；StableDiffusion标题下实际LDM论文，冻结CLIP与机构概括按原文分版本纠正。"
+    },
+    {
+      "id": "PODCAST",
+      "kind": "primary",
+      "title": "《AI演义》潜空间与Stable Diffusion口述片段",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-06",
+      "read_scope": "零基6521–6711共191段，13552.68–13974.88秒，全文读取；起始/终止各自单调，3处相邻重叠0.02/0.10/0.10秒、最大间隔1.51秒，重复短句如实保留原ASR。未听校或测WER。",
+      "transcript_source_ref": "sha256:e1dd238bdcaebed4babe891e525d46386bd6eb38ccafdd7aadb115ac75110edc",
+      "transcript_review": "ai-learning/reports/knowledge_reports/.quality/AI演义_29_LDM_潜空间怎样降低图像生成成本_科普讲解_20261106.transcription-review.json"
+    },
+    {
+      "id": "SHOWNOTES",
+      "kind": "primary",
+      "title": "节目Part4的Stable Diffusion条目与路线",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-06",
+      "cache_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5",
+      "read_scope": "复用已获取节目页，核该条目和前后CLIP/DiT；原节目不是单独LDM与v1.4两段，本文按方法/实现拆讲。",
+      "fresh_fetch": false
+    },
+    {
+      "id": "SD14",
+      "kind": "primary",
+      "title": "Stable Diffusion v1.4官方模型卡",
+      "locator": "https://huggingface.co/CompVis/stable-diffusion-v1-4",
+      "accessed_on": "2026-11-06",
+      "cache_sha256": "ceb32da028ab8272a461e4974569b06ab8cc2fe2101eb4189c34af89bbb8a6c8",
+      "read_scope": "复用已获取的官方模型卡，本章仅取ModelDetails/Training的固定CLIP文本编码器版本差别；不声称文件固定于2022年初稿或某个仓库commit。",
+      "fresh_fetch": false
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "LDM论文与具体StableDiffusion版本分开",
+      "report_anchor": "pixel-cost",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "METADATA",
+        "LECTURE"
+      ],
+      "critical": true,
+      "evidence": "首版2021-12-20、v2 2022-04-13；方法是感知压缩与潜空间扩散，不直接套后续模型卡。"
+    },
+    {
+      "id": "C2",
+      "claim": "像素成本与两种降本方向",
+      "report_anchor": "pixel-cost",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "PODCAST"
+      ],
+      "critical": true,
+      "evidence": "pp1–3前作引述150–1000V100日、A100生成50k约5天，非一图一天；少步与缩小表示空间不同。"
+    },
+    {
+      "id": "C3",
+      "claim": "潜表示空间结构及尺寸倍率不等于速度倍率",
+      "report_anchor": "what-is-latent",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§3.1、Table8：二维网格有通道、f=H/h=W/w；512→128是f4的示例，位置1/16不推整套16倍加速。"
+    },
+    {
+      "id": "C4",
+      "claim": "感知与局部对抗目标、KL/VQ压缩器",
+      "report_anchor": "learning-compression",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§3.1/AppendixG：感知+patch-adversarial、轻KL与VQ约束；VQ量化前z供扩散，量化归decoder。"
+    },
+    {
+      "id": "C5",
+      "claim": "固定压缩器后训练扩散并可复用",
+      "report_anchor": "learning-compression",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "p2和§3：两阶段，E/D固定后学扩散；复用不抹掉压缩器预训练成本。"
+    },
+    {
+      "id": "C6",
+      "claim": "潜空间噪声监督、生成与一次解码区别",
+      "report_anchor": "latent-training-and-generation",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§3.2–3.3式2/3：先编码再已知加噪训练，生成直接新潜噪声多步→D一次；不是每次需原图或整个模型一步。"
+    },
+    {
+      "id": "C7",
+      "claim": "适当压缩取舍不等于压缩产生智能",
+      "report_anchor": "compression-tradeoff",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "PODCAST"
+      ],
+      "critical": true,
+      "evidence": "§4.1、Figures6/7、Tables8/14–15/§E.3.5：f4/8较优，f32损质；A100同迭代近规模但batch/LR有差别，图指标5k与最终50k分开；VQ重建稍差不必生成更差。"
+    },
+    {
+      "id": "C8",
+      "claim": "交叉注意力与不同条件接口的分工",
+      "report_anchor": "text-conditioning",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§3.3、§4.3和E.2.1：图特征Q、条件K/V，文本/类别/布局编码，空间对齐输入可concat；接口不是语义可靠性保证。"
+    },
+    {
+      "id": "C9",
+      "claim": "原LDM文本条件不是冻结CLIP或完整预训练BERT",
+      "report_anchor": "text-conditioning",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "SD14",
+        "LECTURE",
+        "PODCAST"
+      ],
+      "critical": true,
+      "evidence": "LDM §4.3.1 BERTtokenizer，§3.3 τ与ε联合优化；SD1.4模型卡fixed pretrainedCLIP是另一配置。"
+    },
+    {
+      "id": "C10",
+      "claim": "无条件生成指标与反例",
+      "report_anchor": "experiments",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "Table1/§E.3.1：CelebAHQ256 LDM4 DDIM500 FID5.11；FFHQ LDM4 DDIM200 4.98、ProjectedGAN3.08，50k生成对训练集；不说全胜GAN。"
+    },
+    {
+      "id": "C11",
+      "claim": "文本生成与引导效果的准确口径",
+      "report_anchor": "experiments",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§4.3.1/Table2/§E.3.2：LAION400M训练，COCO30k验证256²、DDIM250，23.31→12.63 CFG1.5；GLIDE12.24、MakeAScene11.84不当作本方法全胜。"
+    },
+    {
+      "id": "C12",
+      "claim": "类别条件引导与覆盖取舍",
+      "report_anchor": "experiments",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "Table3/10：ImageNet LDM4 FID10.56→3.60，Recall0.62→0.48，与文本任务分开。"
+    },
+    {
+      "id": "C13",
+      "claim": "修补的效率配对实验而非本机或纯文本基准",
+      "report_anchor": "experiments",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "Table6 VQw/attn行：train0.11/0.33samples/s，sampling256 0.26/0.97，hours/epoch20.66/7.04，FID@2kepoch6 24.74/14.99；Table15修补训练8×V100、表注GPU/batch影响。"
+    },
+    {
+      "id": "C14",
+      "claim": "多种条件任务、感知质量与精确恢复边界",
+      "report_anchor": "more-than-text-to-image",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§4.3.2–4.5、Tables4/5/7：布局/超分/修补分别训练；SR3 IS更佳、回归PSNR/SSIM更高；高分辨率泛化依赖条件/信噪比与部分微调。 Table4 Task2超分/修补偏好70.6%/68.1%，§E.3.6观看3秒后回答；是与基准的偏好而非满意度或胜真图比例。"
+    },
+    {
+      "id": "C15",
+      "claim": "人物署名与研究部件会合",
+      "report_anchor": "history-and-limits",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "LECTURE"
+      ],
+      "critical": true,
+      "evidence": "p1两位共同一作、五作者，Esser RunwayML其余上标1 LMU/IWR；不冒称同一实验室或已核后续现职。"
+    },
+    {
+      "id": "C16",
+      "claim": "采样、精度、数据和成本限制",
+      "report_anchor": "history-and-limits",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§5/§1/Table18：序列采样仍慢于GAN、感知压缩限制像素精度、偏差隐私与误导风险，压缩器训练非免费。"
+    },
+    {
+      "id": "C17",
+      "claim": "shownotes顺序与真实转写缺陷、导航",
+      "report_anchor": "sources-and-scope",
+      "support": "direct",
+      "source_ids": [
+        "PODCAST",
+        "SHOWNOTES",
+        "LECTURE"
+      ],
+      "critical": true,
+      "evidence": "191段全部读取，3处重叠与重复不掩盖，未听校；原节/前后链接、方法与模型拆分。"
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U1",
+      "title": "LDM论文与具体StableDiffusion版本分开",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "METADATA",
+        "LECTURE"
+      ],
+      "report_anchor": "pixel-cost"
+    },
+    {
+      "id": "U2",
+      "title": "像素成本与两种降本方向",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "PODCAST"
+      ],
+      "report_anchor": "pixel-cost"
+    },
+    {
+      "id": "U3",
+      "title": "潜表示空间结构及尺寸倍率不等于速度倍率",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "what-is-latent"
+    },
+    {
+      "id": "U4",
+      "title": "感知与局部对抗目标、KL/VQ压缩器",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "learning-compression"
+    },
+    {
+      "id": "U5",
+      "title": "固定压缩器后训练扩散并可复用",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "learning-compression"
+    },
+    {
+      "id": "U6",
+      "title": "潜空间噪声监督、生成与一次解码区别",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "latent-training-and-generation"
+    },
+    {
+      "id": "U7",
+      "title": "适当压缩取舍不等于压缩产生智能",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "PODCAST"
+      ],
+      "report_anchor": "compression-tradeoff"
+    },
+    {
+      "id": "U8",
+      "title": "交叉注意力与不同条件接口的分工",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "text-conditioning"
+    },
+    {
+      "id": "U9",
+      "title": "原LDM文本条件不是冻结CLIP或完整预训练BERT",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "SD14",
+        "LECTURE",
+        "PODCAST"
+      ],
+      "report_anchor": "text-conditioning"
+    },
+    {
+      "id": "U10",
+      "title": "无条件生成指标与反例",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "experiments"
+    },
+    {
+      "id": "U11",
+      "title": "文本生成与引导效果的准确口径",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "experiments"
+    },
+    {
+      "id": "U12",
+      "title": "类别条件引导与覆盖取舍",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "experiments"
+    },
+    {
+      "id": "U13",
+      "title": "修补的效率配对实验而非本机或纯文本基准",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "experiments"
+    },
+    {
+      "id": "U14",
+      "title": "多种条件任务、感知质量与精确恢复边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "more-than-text-to-image"
+    },
+    {
+      "id": "U15",
+      "title": "人物署名与研究部件会合",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "LECTURE"
+      ],
+      "report_anchor": "history-and-limits"
+    },
+    {
+      "id": "U16",
+      "title": "采样、精度、数据和成本限制",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "history-and-limits"
+    },
+    {
+      "id": "U17",
+      "title": "shownotes顺序与真实转写缺陷、导航",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PODCAST",
+        "SHOWNOTES",
+        "LECTURE"
+      ],
+      "report_anchor": "sources-and-scope"
+    },
+    {
+      "id": "U18",
+      "title": "完整数学重证、全部附录样本、GLIDE/ControlNet/后续创业及当代市场地位",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "PAPER",
+        "PODCAST",
+        "LECTURE"
+      ],
+      "omission_reason": "超出本章机制科普；正文只对实际读取来源作解释，不扩写未核技术/商业叙事。"
+    }
+  ],
+  "limitations": [
+    "未训练/运行或测本机吞吐；数值来自固定v2的对应任务，图像工具的上标误读用直接原页校正。",
+    "未逐式重证全部推导或逐篇精读前驱；没有把参考文献目录当阅读证据。",
+    "ASR时间起止分别单调但存在三处相邻重叠与重复，未听音/测WER。",
+    "花照、512→128为解释例子；压缩尺寸比不等于端到端加速，感知补全不等于真实细节恢复。",
+    "模型卡是已获取版本，只用于固定CLIP对比，不声称是2022原稿；后续人物、市场、控制方法不在本章核验。"
+  ]
+}
