@@ -1,5 +1,20 @@
 # everagent-core
 
+## Go 迁移候选
+
+根目录的 Go module 提供同源身份读取、声明、会话组合与 Git 原语，版本为 `0.4.0-dev`。
+CLI 可将其直接编译进单个二进制，不需要运行时解释器或独立身份 helper：
+
+```bash
+go -C packages/everagent-core test ./...
+go -C packages/everagent-core run ./cmd/everagent-identity inspect --json
+```
+
+这是源码迁移检查点，尚未替换下述旧安装入口。合成回归不证明各客户端、平台或安装态已验收；
+仓库质量门禁由各调用方注入，不因迁移而跳过。Go 模块依赖与哈希由 `go.mod` / `go.sum` 固定。
+
+## 旧入口（迁移中）
+
 可安装的公共 Python core：当前调用方身份、模型证据、会话契约、脚本目录与 Git 原语。
 Python ≥3.10，运行时仅用标准库；macOS、Linux、Windows 使用同一契约。
 0.3.0为当前源码候选；安装态及真实平台支持分别验收，不以版本号或fixture通过证明已部署。
