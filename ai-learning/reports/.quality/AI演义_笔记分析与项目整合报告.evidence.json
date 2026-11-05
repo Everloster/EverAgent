@@ -6,7 +6,7 @@
   "generator": {
     "model": "gpt-6-astra",
     "harness": "codex",
-    "run_id": "ai-yanyi-ldm-main-r34-20261106",
+    "run_id": "ai-yanyi-sd14-main-r35-20261106",
     "explicit_model_override": false,
     "override_reason": "",
     "identity_basis": "eacli session current：codex-turn-context，session-bound，confirmed=true；只证明当前生成会话，不证明子会话模型。"
@@ -56,7 +56,7 @@
       },
       {
         "id": "R11",
-        "text": "原第29节实质改写且标题后首块有展开链接；展开保留原节、前后章节导航，统一两位编号、人类独立可读；本轮核心为LDM把感知压缩与扩散生成拆成两阶段，在二维潜表示中多步去噪并最终一次解码；感知/对抗目标与KL/VQ表示有取舍，空间缩小不直接等于加速倍率；原v2的BERT tokenizer与联合训练Transformer条件不同于SD1.4固定CLIP，实验优势有任务和精度边界。。其余科学正文严格继承已发布r33。"
+        "text": "原第30节实质改写且标题后首块有展开链接；展开保留原节、前后章节导航，统一两位编号、人类独立可读；本轮核心为v1.4把固定CLIP文本序列、f8四通道潜空间、U-Net与CFG/采样器组合成具体模型；训练路径v1.3/v1.4均续自v1.2，数据筛选CLIP与生成条件分工不同，步数/调用次数/训练成本/运行门槛与安全边界不可混同。其余科学正文严格继承已发布r34。"
       }
     ],
     "reader_feedback": [
@@ -587,15 +587,15 @@
     },
     {
       "id": "S-sd14",
-      "kind": "official",
-      "title": "Stable Diffusion v1-4 Model Card",
-      "locator": "https://huggingface.co/CompVis/stable-diffusion-v1-4",
-      "accessed_on": "2026-11-03",
-      "version": "明确 checkpoint 为 v1-4；main 分支模型卡于 2026-11-03 获取，未固定仓库 commit",
-      "read_scope": "模型卡返回全文；重点读取 Model Details、Training Data、Training Procedure 中 v1-1/v1-2/v1-3/v1-4 路径、Limitations and Bias 及 Evaluation Results 的文字条件。",
-      "research_record": "ai-learning/notes/ai_yanyi_research/phase2/generation.json",
-      "research_source_id": "GEN-S-SD14",
-      "version_note": "模型版本明确v1.4；模型卡main快照有内容哈希，未固定仓库commit，不能倒写为2022初始发布文件。"
+      "kind": "primary",
+      "title": "Stable Diffusion v1.4官方模型卡（固定仓库版本）",
+      "locator": "https://huggingface.co/CompVis/stable-diffusion-v1-4/blob/133a221b8aa7292a167afc5127cb63fb5005638b/README.md",
+      "accessed_on": "2026-11-06",
+      "read_scope": "eacli web.read全文，核ModelDetails/Examples/Training/Evaluation/Uses/Limitations；评价曲线未逐点读取，不引用精确曲线值。HF元数据核固定commit，该版本晚于2022模型发布。",
+      "fixed_commit": "133a221b8aa7292a167afc5127cb63fb5005638b",
+      "metadata_response_sha256": "be5693646a7ccdcc4eb5d3382a450f09ca65baa3063ff221b24b3fc84379be77",
+      "response_text_sha256": "46e5bb193f6e2ff9cd1c2a908aa18778d91fb59504398094c526b9b001898bd0",
+      "current_chapter_evidence": "ai-learning/reports/knowledge_reports/.quality/AI演义_30_StableDiffusion_v14_文生图系统怎样协同工作_科普讲解_20261106.evidence.json"
     },
     {
       "id": "S-dit",
@@ -964,6 +964,131 @@
       "read_scope": "复用已获取的官方模型卡，本章仅取ModelDetails/Training的固定CLIP文本编码器版本差别；不声称文件固定于2022年初稿或某个仓库commit。",
       "fresh_fetch": false,
       "current_chapter_evidence": "ai-learning/reports/knowledge_reports/.quality/AI演义_29_LDM_潜空间怎样降低图像生成成本_科普讲解_20261106.evidence.json"
+    },
+    {
+      "id": "S-sd14-repo",
+      "kind": "primary",
+      "title": "CompVis Stable Diffusion官方README",
+      "locator": "https://github.com/CompVis/stable-diffusion/blob/master/README.md",
+      "accessed_on": "2026-11-06",
+      "read_scope": "eacli repo.public.read，全文核组件、参考采样、图生图、训练沿革、规模/显存/机构合作、安全与用途限制；实际分支master。GitHub元数据读取失败，未声称固定commit。",
+      "branch": "master",
+      "commit_pinned": false,
+      "response_text_sha256": "cd14f7760b5e023ecf5e27fb59130a5148c90d8d1a0818c47f1c13a45b55bdc3",
+      "current_chapter_evidence": "ai-learning/reports/knowledge_reports/.quality/AI演义_30_StableDiffusion_v14_文生图系统怎样协同工作_科普讲解_20261106.evidence.json"
+    },
+    {
+      "id": "S-sd14-config",
+      "kind": "primary",
+      "title": "Stable Diffusion v1官方推理配置",
+      "locator": "https://github.com/CompVis/stable-diffusion/blob/master/configs/stable-diffusion/v1-inference.yaml",
+      "accessed_on": "2026-11-06",
+      "read_scope": "eacli repo.public.read全文：1000时间步、四潜通道、crossattn、冻结条件、AutoencoderKL及UNet配置；只核推理配置，不伪称训练复现。",
+      "branch": "master",
+      "commit_pinned": false,
+      "response_text_sha256": "3c7d9bb474fc0b31b5e3dbf8c4ab2f04189c117951e918feca7ae0749b21d3a5",
+      "current_chapter_evidence": "ai-learning/reports/knowledge_reports/.quality/AI演义_30_StableDiffusion_v14_文生图系统怎样协同工作_科普讲解_20261106.evidence.json"
+    },
+    {
+      "id": "S-sd14-encoder",
+      "kind": "primary",
+      "title": "官方FrozenCLIPEmbedder实现",
+      "locator": "https://github.com/CompVis/stable-diffusion/blob/master/ldm/modules/encoders/modules.py",
+      "accessed_on": "2026-11-06",
+      "read_scope": "eacli repo.public.read；读取FrozenCLIPEmbedder及相邻FrozenCLIPTextEmbedder，核tokenizer/max_length77/freeze/last_hidden_state；未把另一类encode_text返回混进使用类。",
+      "branch": "master",
+      "commit_pinned": false,
+      "response_text_sha256": "ea60d4b4e632e17b4f9b20286ad14a28c2586d857edbdd309b7e428a30b2bd18",
+      "current_chapter_evidence": "ai-learning/reports/knowledge_reports/.quality/AI演义_30_StableDiffusion_v14_文生图系统怎样协同工作_科普讲解_20261106.evidence.json"
+    },
+    {
+      "id": "S-sd14-plms",
+      "kind": "primary",
+      "title": "官方PLMSSampler实现",
+      "locator": "https://github.com/CompVis/stable-diffusion/blob/master/ldm/models/diffusion/plms.py",
+      "accessed_on": "2026-11-06",
+      "read_scope": "eacli repo.public.read完整采样类；重点make_schedule、get_model_output、get_x_prev_and_pred_x0、p_sample_plms；核eta0、CFG加倍batch/s1条件预测、首步额外模型输出。未运行。",
+      "branch": "master",
+      "commit_pinned": false,
+      "response_text_sha256": "c2a8c4f8e637d3681b97be7be7ffdd9deefc08b1a2110e8420de15463ef93470",
+      "current_chapter_evidence": "ai-learning/reports/knowledge_reports/.quality/AI演义_30_StableDiffusion_v14_文生图系统怎样协同工作_科普讲解_20261106.evidence.json"
+    },
+    {
+      "id": "S-sd14-cfg",
+      "kind": "primary",
+      "title": "Classifier-Free Diffusion Guidance原论文v1",
+      "locator": "https://arxiv.org/abs/2207.12598v1",
+      "accessed_on": "2026-11-06",
+      "read_scope": "eacli web.read原PDF；Introduction、§3.1/3.2、Algorithms1/2、§4.1及结论相关；公式抽取有乱码，用官方PLMS明确公式与原文语义交叉核，不复制乱码或将其ImageNet分数当SD实验。官方元数据核2022-07-26 arXiv和2021workshop短版。",
+      "metadata_response_sha256": "9659c8e320f2624e75410b29729991a4022da3b86bbe84340cc8379aeda08563",
+      "response_text_sha256": "825284f22dfb79ada3247dca0156244710df45bc9f2ea3d612c477ab1cb85345",
+      "current_chapter_evidence": "ai-learning/reports/knowledge_reports/.quality/AI演义_30_StableDiffusion_v14_文生图系统怎样协同工作_科普讲解_20261106.evidence.json"
+    },
+    {
+      "id": "S-sd14-ldm",
+      "kind": "primary",
+      "title": "High-Resolution Image Synthesis with Latent Diffusion Models v2",
+      "locator": "https://arxiv.org/pdf/2112.10752v2",
+      "accessed_on": "2026-11-06",
+      "read_scope": "复用上一章已核原文；本章聚焦§§3.1–3.3、§4.3.1与方法/具体checkpoint边界，BERTtokenizer+联合训练条件与SD固定CLIP分开。",
+      "local_owner": "ai-learning/papers/20_stable_diffusion_2021.pdf",
+      "sha256": "46ede043a8dc07ca1f0f445620523fe1ad8b2436bd83856a3835612a47e9f79e",
+      "current_chapter_evidence": "ai-learning/reports/knowledge_reports/.quality/AI演义_30_StableDiffusion_v14_文生图系统怎样协同工作_科普讲解_20261106.evidence.json"
+    },
+    {
+      "id": "S-sd14-clip",
+      "kind": "primary",
+      "title": "Learning Transferable Visual Models From Natural Language Supervision v1",
+      "locator": "https://arxiv.org/pdf/2103.00020v1",
+      "accessed_on": "2026-11-06",
+      "read_scope": "本轮实际读取§2.4（PDF第5页）文本Transformer及EOS整体表示，并与v1.4非池化输出区别；不把论文写法中的76长度当SD源码77配置。",
+      "local_owner": "ai-learning/papers/11_clip_2021.pdf",
+      "sha256": "6478b6e571a7d6fcd846d8ef77bfd60c285f1986abb8f475eedc43de403074f5",
+      "current_chapter_evidence": "ai-learning/reports/knowledge_reports/.quality/AI演义_30_StableDiffusion_v14_文生图系统怎样协同工作_科普讲解_20261106.evidence.json"
+    },
+    {
+      "id": "S-sd14-laion",
+      "kind": "primary",
+      "title": "LAION-5B原论文v1",
+      "locator": "https://arxiv.org/pdf/2210.08402v1",
+      "accessed_on": "2026-11-06",
+      "read_scope": "本轮提取并读pp4–6的§3.1相似度筛选、§3.2自动过滤局限；英语用ViT-B/32，非SD文本条件用的ViT-L/14。未重做数据集全量审计。",
+      "local_owner": "ai-learning/papers/29_laion5b_2022.pdf",
+      "sha256": "18dad8c88914dfcdcdcb50eba4b285ba665f67d6f4661d20e3ee2e36a3d42163",
+      "current_chapter_evidence": "ai-learning/reports/knowledge_reports/.quality/AI演义_30_StableDiffusion_v14_文生图系统怎样协同工作_科普讲解_20261106.evidence.json"
+    },
+    {
+      "id": "S-sd14-lecture",
+      "kind": "local",
+      "title": "《AI演义》讲义第49页",
+      "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "accessed_on": "2026-11-06",
+      "read_scope": "复用第29章p49文字、TokenPlan及直接视读；该页StableDiffusion标题下混合方法与后续配置，按论文/模型卡分别解释。",
+      "local_owner": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
+      "current_chapter_evidence": "ai-learning/reports/knowledge_reports/.quality/AI演义_30_StableDiffusion_v14_文生图系统怎样协同工作_科普讲解_20261106.evidence.json"
+    },
+    {
+      "id": "S-sd14-podcast",
+      "kind": "primary",
+      "title": "《AI演义》潜空间/StableDiffusion口述片段",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-06",
+      "read_scope": "与29共享零基6521–6711共191段，13552.68–13974.88秒；没有单独v1.4节目章节。时间起止分别单调、3处相邻重叠与重复；只读转写，未听音/WER。",
+      "transcript_source_ref": "sha256:e1dd238bdcaebed4babe891e525d46386bd6eb38ccafdd7aadb115ac75110edc",
+      "transcript_review": "ai-learning/reports/knowledge_reports/.quality/AI演义_30_StableDiffusion_v14_文生图系统怎样协同工作_科普讲解_20261106.transcription-review.json",
+      "current_chapter_evidence": "ai-learning/reports/knowledge_reports/.quality/AI演义_30_StableDiffusion_v14_文生图系统怎样协同工作_科普讲解_20261106.evidence.json"
+    },
+    {
+      "id": "S-sd14-shownotes",
+      "kind": "primary",
+      "title": "节目Part4 StableDiffusion条目",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-06",
+      "read_scope": "复用已取得节目shownotes，核StableDiffusion条目与后续DiT；本章按方法/具体模型分开，不声称原节目另有v1.4专章。",
+      "fresh_fetch": false,
+      "response_text_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5",
+      "current_chapter_evidence": "ai-learning/reports/knowledge_reports/.quality/AI演义_30_StableDiffusion_v14_文生图系统怎样协同工作_科普讲解_20261106.evidence.json"
     }
   ],
   "claims": [
@@ -1430,17 +1555,25 @@
     },
     {
       "id": "C-sd14",
-      "claim": "明确版本SD v1.4将冻结CLIP文本表示作为条件，并采用特定LAION子集/续训路径；不把它倒填为原LDM或全部SD版本。",
+      "claim": "v1.4把固定CLIP文本序列、f8四通道潜空间、U-Net与CFG/采样器组合成具体模型；训练路径v1.3/v1.4均续自v1.2，数据筛选CLIP与生成条件分工不同，步数/调用次数/训练成本/运行门槛与安全边界不可混同",
       "report_anchor": "paper-sd14",
       "support": "direct",
       "source_ids": [
         "S-sd14",
-        "S-ldm",
-        "S-laion",
-        "S-clip"
+        "S-sd14-repo",
+        "S-sd14-config",
+        "S-sd14-encoder",
+        "S-sd14-plms",
+        "S-sd14-cfg",
+        "S-sd14-ldm",
+        "S-sd14-clip",
+        "S-sd14-laion",
+        "S-sd14-lecture",
+        "S-sd14-podcast",
+        "S-sd14-shownotes"
       ],
       "critical": true,
-      "evidence": "官方v1.4模型卡的Model Details、Training Data/Procedure说明冻结CLIP文本分支和特定LAION续训路径；与LDM v2§3.3/4.3.1对照，不泛化到全部版本。"
+      "evidence": "本轮第30节展开正文及其原始证据，关键机制/数字见对应论文和章节脚注；未改变其余已发布主稿正文。"
     },
     {
       "id": "C-hardware-lens",
@@ -2198,6 +2331,27 @@
         "S-instruct"
       ],
       "report_anchor": "连接索引：几条有明确依据"
+    },
+    {
+      "id": "U-sd14",
+      "title": "v1.4把固定CLIP文本序列、f8四通道潜空间、U-Net与CFG/采样器组合成具体模型；训练路径v1.3/v1.4均续自v1.2，数据筛选CLIP与生成条件分工不同，步数/调用次数/训练成本/运行门槛与安全边界不可混同",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S-sd14",
+        "S-sd14-repo",
+        "S-sd14-config",
+        "S-sd14-encoder",
+        "S-sd14-plms",
+        "S-sd14-cfg",
+        "S-sd14-ldm",
+        "S-sd14-clip",
+        "S-sd14-laion",
+        "S-sd14-lecture",
+        "S-sd14-podcast",
+        "S-sd14-shownotes"
+      ],
+      "report_anchor": "paper-sd14"
     }
   ],
   "limitations": [
@@ -2295,7 +2449,7 @@
     "essay_articles": 1,
     "note": "论文研究范围按用户最新限定；不是全文逐公式/全图表审计。"
   },
-  "revision_note": "r34：第29节及其脚注、来源与覆盖增量，其余科学正文严格继承已发布r33。仅原文、正文、引用及章节导航检查，不做工作台页面验收。",
+  "revision_note": "r35：第30节及其脚注、来源与覆盖增量，其余科学正文严格继承已发布r34。仅原文、正文、引用及章节导航检查，不做工作台页面验收。",
   "generation_history": [
     {
       "revision_round": 2,

@@ -1,0 +1,631 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_30_StableDiffusion_v14_文生图系统怎样协同工作_科普讲解_20261106.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-06",
+  "generator": {
+    "model": "gpt-6-astra",
+    "harness": "codex",
+    "run_id": "ai-yanyi-sd14-r1-20261106",
+    "explicit_model_override": false,
+    "override_reason": "",
+    "identity_basis": "eacli session current，session-bound confirmed"
+  },
+  "task": {
+    "summary": "按Brook方式展开第30节StableDiffusionv1.4，沿一朵花的提示词讲清文本编码、潜空间去噪、CFG、采样、数据与公开模型边界。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "原LDM方法、v1.4checkpoint、推理程序分层，模型卡固定版本，结合讲义/节目/原始论文和源码。"
+      },
+      {
+        "id": "R2",
+        "text": "少数学、花照贯穿，讲清文本序列、冻结、潜表示、已知噪声训练与新噪声生成。"
+      },
+      {
+        "id": "R3",
+        "text": "讲清CFG共用网络/10%丢条件/权重约定与取舍，采样器/步数/调用次数/seed及图生图旋钮。"
+      },
+      {
+        "id": "R4",
+        "text": "核训练沿革/数据筛选/CLIP双角色、评价协议和成本，不夸大效果、设备能力或安全。"
+      },
+      {
+        "id": "R5",
+        "text": "原30节实质改写、标题后首块展开链接，两位编号与前后导航，三问检验；报告独立人类可读。"
+      },
+      {
+        "id": "R6",
+        "text": "如实说明转写结构缺陷、未听音/实测/完整法律审查，按实际署名区分合作主体；只核正文引用导航，不做工作台验收。"
+      }
+    ],
+    "source_coverage_scope": "原节目StableDiffusion同段拆为29方法/30具体模型，扩展模型卡与相关代码；后续SD版本/全部采样器/视频谱系不在本章。"
+  },
+  "sources": [
+    {
+      "id": "PAPER",
+      "kind": "primary",
+      "title": "Stable Diffusion v1.4官方模型卡（固定仓库版本）",
+      "locator": "https://huggingface.co/CompVis/stable-diffusion-v1-4/blob/133a221b8aa7292a167afc5127cb63fb5005638b/README.md",
+      "accessed_on": "2026-11-06",
+      "read_scope": "eacli web.read全文，核ModelDetails/Examples/Training/Evaluation/Uses/Limitations；评价曲线未逐点读取，不引用精确曲线值。HF元数据核固定commit，该版本晚于2022模型发布。",
+      "fixed_commit": "133a221b8aa7292a167afc5127cb63fb5005638b",
+      "metadata_response_sha256": "be5693646a7ccdcc4eb5d3382a450f09ca65baa3063ff221b24b3fc84379be77",
+      "response_text_sha256": "46e5bb193f6e2ff9cd1c2a908aa18778d91fb59504398094c526b9b001898bd0"
+    },
+    {
+      "id": "REPO",
+      "kind": "primary",
+      "title": "CompVis Stable Diffusion官方README",
+      "locator": "https://github.com/CompVis/stable-diffusion/blob/master/README.md",
+      "accessed_on": "2026-11-06",
+      "read_scope": "eacli repo.public.read，全文核组件、参考采样、图生图、训练沿革、规模/显存/机构合作、安全与用途限制；实际分支master。GitHub元数据读取失败，未声称固定commit。",
+      "branch": "master",
+      "commit_pinned": false,
+      "response_text_sha256": "cd14f7760b5e023ecf5e27fb59130a5148c90d8d1a0818c47f1c13a45b55bdc3"
+    },
+    {
+      "id": "CONFIG",
+      "kind": "primary",
+      "title": "Stable Diffusion v1官方推理配置",
+      "locator": "https://github.com/CompVis/stable-diffusion/blob/master/configs/stable-diffusion/v1-inference.yaml",
+      "accessed_on": "2026-11-06",
+      "read_scope": "eacli repo.public.read全文：1000时间步、四潜通道、crossattn、冻结条件、AutoencoderKL及UNet配置；只核推理配置，不伪称训练复现。",
+      "branch": "master",
+      "commit_pinned": false,
+      "response_text_sha256": "3c7d9bb474fc0b31b5e3dbf8c4ab2f04189c117951e918feca7ae0749b21d3a5"
+    },
+    {
+      "id": "ENCODER",
+      "kind": "primary",
+      "title": "官方FrozenCLIPEmbedder实现",
+      "locator": "https://github.com/CompVis/stable-diffusion/blob/master/ldm/modules/encoders/modules.py",
+      "accessed_on": "2026-11-06",
+      "read_scope": "eacli repo.public.read；读取FrozenCLIPEmbedder及相邻FrozenCLIPTextEmbedder，核tokenizer/max_length77/freeze/last_hidden_state；未把另一类encode_text返回混进使用类。",
+      "branch": "master",
+      "commit_pinned": false,
+      "response_text_sha256": "ea60d4b4e632e17b4f9b20286ad14a28c2586d857edbdd309b7e428a30b2bd18"
+    },
+    {
+      "id": "PLMS",
+      "kind": "primary",
+      "title": "官方PLMSSampler实现",
+      "locator": "https://github.com/CompVis/stable-diffusion/blob/master/ldm/models/diffusion/plms.py",
+      "accessed_on": "2026-11-06",
+      "read_scope": "eacli repo.public.read完整采样类；重点make_schedule、get_model_output、get_x_prev_and_pred_x0、p_sample_plms；核eta0、CFG加倍batch/s1条件预测、首步额外模型输出。未运行。",
+      "branch": "master",
+      "commit_pinned": false,
+      "response_text_sha256": "c2a8c4f8e637d3681b97be7be7ffdd9deefc08b1a2110e8420de15463ef93470"
+    },
+    {
+      "id": "CFG",
+      "kind": "primary",
+      "title": "Classifier-Free Diffusion Guidance原论文v1",
+      "locator": "https://arxiv.org/abs/2207.12598v1",
+      "accessed_on": "2026-11-06",
+      "read_scope": "eacli web.read原PDF；Introduction、§3.1/3.2、Algorithms1/2、§4.1及结论相关；公式抽取有乱码，用官方PLMS明确公式与原文语义交叉核，不复制乱码或将其ImageNet分数当SD实验。官方元数据核2022-07-26 arXiv和2021workshop短版。",
+      "metadata_response_sha256": "9659c8e320f2624e75410b29729991a4022da3b86bbe84340cc8379aeda08563",
+      "response_text_sha256": "825284f22dfb79ada3247dca0156244710df45bc9f2ea3d612c477ab1cb85345"
+    },
+    {
+      "id": "LDM",
+      "kind": "primary",
+      "title": "High-Resolution Image Synthesis with Latent Diffusion Models v2",
+      "locator": "https://arxiv.org/pdf/2112.10752v2",
+      "accessed_on": "2026-11-06",
+      "read_scope": "复用上一章已核原文；本章聚焦§§3.1–3.3、§4.3.1与方法/具体checkpoint边界，BERTtokenizer+联合训练条件与SD固定CLIP分开。",
+      "local_owner": "ai-learning/papers/20_stable_diffusion_2021.pdf",
+      "sha256": "46ede043a8dc07ca1f0f445620523fe1ad8b2436bd83856a3835612a47e9f79e"
+    },
+    {
+      "id": "CLIP",
+      "kind": "primary",
+      "title": "Learning Transferable Visual Models From Natural Language Supervision v1",
+      "locator": "https://arxiv.org/pdf/2103.00020v1",
+      "accessed_on": "2026-11-06",
+      "read_scope": "本轮实际读取§2.4（PDF第5页）文本Transformer及EOS整体表示，并与v1.4非池化输出区别；不把论文写法中的76长度当SD源码77配置。",
+      "local_owner": "ai-learning/papers/11_clip_2021.pdf",
+      "sha256": "6478b6e571a7d6fcd846d8ef77bfd60c285f1986abb8f475eedc43de403074f5"
+    },
+    {
+      "id": "LAION",
+      "kind": "primary",
+      "title": "LAION-5B原论文v1",
+      "locator": "https://arxiv.org/pdf/2210.08402v1",
+      "accessed_on": "2026-11-06",
+      "read_scope": "本轮提取并读pp4–6的§3.1相似度筛选、§3.2自动过滤局限；英语用ViT-B/32，非SD文本条件用的ViT-L/14。未重做数据集全量审计。",
+      "local_owner": "ai-learning/papers/29_laion5b_2022.pdf",
+      "sha256": "18dad8c88914dfcdcdcb50eba4b285ba665f67d6f4661d20e3ee2e36a3d42163"
+    },
+    {
+      "id": "LECTURE",
+      "kind": "local",
+      "title": "《AI演义》讲义第49页",
+      "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "accessed_on": "2026-11-06",
+      "read_scope": "复用第29章p49文字、TokenPlan及直接视读；该页StableDiffusion标题下混合方法与后续配置，按论文/模型卡分别解释。",
+      "local_owner": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0"
+    },
+    {
+      "id": "PODCAST",
+      "kind": "primary",
+      "title": "《AI演义》潜空间/StableDiffusion口述片段",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-06",
+      "read_scope": "与29共享零基6521–6711共191段，13552.68–13974.88秒；没有单独v1.4节目章节。时间起止分别单调、3处相邻重叠与重复；只读转写，未听音/WER。",
+      "transcript_source_ref": "sha256:e1dd238bdcaebed4babe891e525d46386bd6eb38ccafdd7aadb115ac75110edc",
+      "transcript_review": "ai-learning/reports/knowledge_reports/.quality/AI演义_30_StableDiffusion_v14_文生图系统怎样协同工作_科普讲解_20261106.transcription-review.json"
+    },
+    {
+      "id": "SHOWNOTES",
+      "kind": "primary",
+      "title": "节目Part4 StableDiffusion条目",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-06",
+      "read_scope": "复用已取得节目shownotes，核StableDiffusion条目与后续DiT；本章按方法/具体模型分开，不声称原节目另有v1.4专章。",
+      "fresh_fetch": false,
+      "response_text_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "方法论文、checkpoint与推理程序分层",
+      "report_anchor": "method-model-program",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "REPO",
+        "LDM"
+      ],
+      "critical": true,
+      "evidence": "LDM§§3–4与模型卡fixedCLIP/v1.4；不套原LDM与具体SD配置。"
+    },
+    {
+      "id": "C2",
+      "claim": "冻结CLIP文本序列、77token实现与原CLIP分工",
+      "report_anchor": "text-encoder",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "ENCODER",
+        "CONFIG",
+        "CLIP"
+      ],
+      "critical": true,
+      "evidence": "FrozenCLIPEmbedder max_length77、truncation/padding、last_hidden_state、freeze；不是77词或77汉字、不是ViT把文字切图片；CLIP原论文§2.4。"
+    },
+    {
+      "id": "C3",
+      "claim": "f8二维四通道潜表示与空间倍率边界",
+      "report_anchor": "latent-and-unet",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "CONFIG",
+        "LDM"
+      ],
+      "critical": true,
+      "evidence": "512×512×3→64×64×4；空间位置1/64不等于完整元素比或速度比。"
+    },
+    {
+      "id": "C4",
+      "claim": "去噪骨架、文本条件与交叉注意力",
+      "report_anchor": "latent-and-unet",
+      "support": "direct",
+      "source_ids": [
+        "CONFIG",
+        "PAPER",
+        "LDM"
+      ],
+      "critical": true,
+      "evidence": "图特征Q条件K/V；三类输入：带噪潜表示、t与文本；不是词与位置一一确定绑定。"
+    },
+    {
+      "id": "C5",
+      "claim": "已知噪声监督与无原图采样区别",
+      "report_anchor": "training",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "LDM"
+      ],
+      "critical": true,
+      "evidence": "Training噪声重建目标；真实图先E再已知加噪训练，纯文本生成新噪声→多步→D，普通采样不更新参数；不以非检索否认记忆。"
+    },
+    {
+      "id": "C6",
+      "claim": "CFG丢条件、共用网络和权重约定",
+      "report_anchor": "cfg",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "CFG",
+        "PLMS"
+      ],
+      "critical": true,
+      "evidence": "v1.4 10%丢文本；CFG论文§3.2同网络，PLMS无条件+s(条件-无条件)、s1为条件；论文w0对应s1；非分类器且不是双模型。"
+    },
+    {
+      "id": "C7",
+      "claim": "引导强度对应质量多样性取舍而非万能质量提升",
+      "report_anchor": "cfg",
+      "support": "direct",
+      "source_ids": [
+        "CFG",
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "CFG§4.1及结论，模型卡组合/英文局限；不将引导称为推理时学习新知识。"
+    },
+    {
+      "id": "C8",
+      "claim": "模型可换采样器、50步与前向次数不同",
+      "report_anchor": "sampling",
+      "support": "direct",
+      "source_ids": [
+        "REPO",
+        "PAPER",
+        "CONFIG",
+        "PLMS"
+      ],
+      "critical": true,
+      "evidence": "README PLMS50/7.5/512，模型卡PNDM例子；配置1000与推理50不同；PLMS首步额外eval、成对batch，eta0，不套DDPM逐步随机项。"
+    },
+    {
+      "id": "C9",
+      "claim": "随机种子与跨配置可复现性边界",
+      "report_anchor": "sampling",
+      "support": "direct",
+      "source_ids": [
+        "REPO",
+        "PLMS"
+      ],
+      "critical": true,
+      "evidence": "参考--seed与初始x_T；随机性解释不保证跨precision/device/sampler逐像素相同，未做本机复现。"
+    },
+    {
+      "id": "C10",
+      "claim": "四版本训练路径及更新步数口径",
+      "report_anchor": "data-and-checkpoints",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "REPO"
+      ],
+      "critical": true,
+      "evidence": "v1.1 237k/194k；v1.2续515k；v1.3与v1.4均从v1.2续195k/225k、10%丢条件；非单一顺序链。"
+    },
+    {
+      "id": "C11",
+      "claim": "训练子集筛选与不等于人工安全授权",
+      "report_anchor": "data-and-checkpoints",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "REPO"
+      ],
+      "critical": true,
+      "evidence": "v1.1高分辨率170M原图≥1024²；v1.2原图≥512²、美学>5、水印概率<0.5；命名差别保留，不称全部5B或225k张图。"
+    },
+    {
+      "id": "C12",
+      "claim": "数据筛选CLIP与生成文本CLIP两种用途",
+      "report_anchor": "data-and-checkpoints",
+      "support": "direct",
+      "source_ids": [
+        "LAION",
+        "PAPER",
+        "CLIP"
+      ],
+      "critical": true,
+      "evidence": "LAION§3.1/3.2 pp4–6：英语ViTB32图文相似度筛选及过滤局限；生成用ViTL14文本条件，不是同一模型调用。"
+    },
+    {
+      "id": "C13",
+      "claim": "checkpoint评价协议而非无条件SOTA断言",
+      "report_anchor": "evaluation-and-cost",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "COCO2017随机10k提示512²、50PLMS、CFG1.5–8多个值，not optimized forFID；未逐点读曲线，不报精确分数/全胜。"
+    },
+    {
+      "id": "C14",
+      "claim": "训练规模与参考运行条件不能混为设备门槛",
+      "report_anchor": "evaluation-and-cost",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "REPO"
+      ],
+      "critical": true,
+      "evidence": "模型卡32×8A100、batch2048；README860M/123M、参考10GB，模型卡float16/attention slicing建议；非当代通用最低要求或本机测试。"
+    },
+    {
+      "id": "C15",
+      "claim": "图生图strength与CFG等控制分工",
+      "report_anchor": "editing-and-controls",
+      "support": "direct",
+      "source_ids": [
+        "REPO"
+      ],
+      "critical": true,
+      "evidence": "ImageModification引用SDEdit及strength0–1，加噪更多可更大变化/较少语义保持；与guidance、steps、seed区分，未冒称精读SDEdit。"
+    },
+    {
+      "id": "C16",
+      "claim": "生成局限、数据记忆、附加防护与许可边界",
+      "report_anchor": "limits-and-history",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "REPO"
+      ],
+      "critical": true,
+      "evidence": "Limitations/Uses/Safety：组合/文本/人脸/英文/有损、额外去重缺失与重复记忆；安全检查/水印附加非保证；商用依条款不替代产品安全。"
+    },
+    {
+      "id": "C17",
+      "claim": "研究路线会合与人物机构记录边界",
+      "report_anchor": "limits-and-history",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "REPO",
+        "LDM",
+        "CLIP",
+        "LAION"
+      ],
+      "critical": true,
+      "evidence": "模型卡开发者Rombach/Esser，LDM五作者；READMEStabilityAI算力/Runway合作/LAION支持，不延伸未核任职。"
+    },
+    {
+      "id": "C18",
+      "claim": "共享节目范围与文本结构、导航及方法实现拆分",
+      "report_anchor": "sources-and-scope",
+      "support": "direct",
+      "source_ids": [
+        "PODCAST",
+        "SHOWNOTES",
+        "LECTURE",
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "03:45:52–03:52:54，191段起止单调但3处0.02/0.10/0.10秒重叠，未听音/WER；HF固定commit晚于初版，GitHubmaster内容hash不等于固定commit。"
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U1",
+      "title": "方法论文、checkpoint与推理程序分层",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "REPO",
+        "LDM"
+      ],
+      "report_anchor": "method-model-program"
+    },
+    {
+      "id": "U2",
+      "title": "冻结CLIP文本序列、77token实现与原CLIP分工",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "ENCODER",
+        "CONFIG",
+        "CLIP"
+      ],
+      "report_anchor": "text-encoder"
+    },
+    {
+      "id": "U3",
+      "title": "f8二维四通道潜表示与空间倍率边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "CONFIG",
+        "LDM"
+      ],
+      "report_anchor": "latent-and-unet"
+    },
+    {
+      "id": "U4",
+      "title": "去噪骨架、文本条件与交叉注意力",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "CONFIG",
+        "PAPER",
+        "LDM"
+      ],
+      "report_anchor": "latent-and-unet"
+    },
+    {
+      "id": "U5",
+      "title": "已知噪声监督与无原图采样区别",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "LDM"
+      ],
+      "report_anchor": "training"
+    },
+    {
+      "id": "U6",
+      "title": "CFG丢条件、共用网络和权重约定",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "CFG",
+        "PLMS"
+      ],
+      "report_anchor": "cfg"
+    },
+    {
+      "id": "U7",
+      "title": "引导强度对应质量多样性取舍而非万能质量提升",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "CFG",
+        "PAPER"
+      ],
+      "report_anchor": "cfg"
+    },
+    {
+      "id": "U8",
+      "title": "模型可换采样器、50步与前向次数不同",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "REPO",
+        "PAPER",
+        "CONFIG",
+        "PLMS"
+      ],
+      "report_anchor": "sampling"
+    },
+    {
+      "id": "U9",
+      "title": "随机种子与跨配置可复现性边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "REPO",
+        "PLMS"
+      ],
+      "report_anchor": "sampling"
+    },
+    {
+      "id": "U10",
+      "title": "四版本训练路径及更新步数口径",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "REPO"
+      ],
+      "report_anchor": "data-and-checkpoints"
+    },
+    {
+      "id": "U11",
+      "title": "训练子集筛选与不等于人工安全授权",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "REPO"
+      ],
+      "report_anchor": "data-and-checkpoints"
+    },
+    {
+      "id": "U12",
+      "title": "数据筛选CLIP与生成文本CLIP两种用途",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "LAION",
+        "PAPER",
+        "CLIP"
+      ],
+      "report_anchor": "data-and-checkpoints"
+    },
+    {
+      "id": "U13",
+      "title": "checkpoint评价协议而非无条件SOTA断言",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "evaluation-and-cost"
+    },
+    {
+      "id": "U14",
+      "title": "训练规模与参考运行条件不能混为设备门槛",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "REPO"
+      ],
+      "report_anchor": "evaluation-and-cost"
+    },
+    {
+      "id": "U15",
+      "title": "图生图strength与CFG等控制分工",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "REPO"
+      ],
+      "report_anchor": "editing-and-controls"
+    },
+    {
+      "id": "U16",
+      "title": "生成局限、数据记忆、附加防护与许可边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "REPO"
+      ],
+      "report_anchor": "limits-and-history"
+    },
+    {
+      "id": "U17",
+      "title": "研究路线会合与人物机构记录边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "REPO",
+        "LDM",
+        "CLIP",
+        "LAION"
+      ],
+      "report_anchor": "limits-and-history"
+    },
+    {
+      "id": "U18",
+      "title": "共享节目范围与文本结构、导航及方法实现拆分",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PODCAST",
+        "SHOWNOTES",
+        "LECTURE",
+        "PAPER"
+      ],
+      "report_anchor": "sources-and-scope"
+    },
+    {
+      "id": "U19",
+      "title": "全部采样算法、后续SD模型/应用、完整法律分析与真实部署基准",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "PAPER",
+        "REPO"
+      ],
+      "omission_reason": "本章聚焦v1.4机制及原始记录；不把未核后续成果、没有运行的图像或速度写成实测。"
+    }
+  ],
+  "limitations": [
+    "无训练、生成、测速或跨设备复现实验；中文提示是机制说明例子而非生成结果。",
+    "HF模型卡固定仓库版本但晚于初发；GitHub读取master及内容哈希，metadata失败未固定commit。",
+    "只核评价设置、不读取精确曲线分数；CFG抽取公式乱码用官方PLMS清楚代码交叉核。",
+    "转写与29共享191段，三处短重叠/重复，未听音或测WER。",
+    "许可证只核模型卡与README边界，不作全文法律审查；附加安全工具非可靠性保证。"
+  ]
+}

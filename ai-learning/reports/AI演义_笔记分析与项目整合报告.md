@@ -688,28 +688,27 @@ Sports-1M 测试集有 20 万视频。Table 1 中，单帧模型的视频首选�
 
 <a id="paper-sd14"></a>
 
-### 30. Stable Diffusion v1.4：方法、文本条件与数据怎样组合
+### 30. Stable Diffusion v1.4：一句提示词，怎样穿过整套文生图系统？
 
-讲义把LDM论文放在“Stable Diffusion”标题下。为了把论文方法与产品实现接清楚，这里只补一个明确例子：**Stable Diffusion v1.4**。
+[展开阅读：文字编码、CFG、采样程序和训练数据怎样一起把花画出来](knowledge_reports/AI演义_30_StableDiffusion_v14_文生图系统怎样协同工作_科普讲解_20261106.md)
 
-它的官方模型卡描述了固定的预训练CLIP文本编码器、潜空间U-Net和交叉注意力条件输入，也列出了上游checkpoint及所用LAION子集的训练路径。[^sd14]
+输入“窗边花瓶里的一朵红花”，为什么就能出现一张图片？前一节 LDM 解释了潜空间方法，这里选定 **v1.4 这个具体 checkpoint**，把生成链路接起来。方法论文、训练好的模型参数与用户运行的程序，是三个不同层次。[^sd14]
 
-于是，前面几条线在这里形成两种不同连接：
+文字先经过固定的 **CLIP 文本编码器**，得到未汇聚为单一向量的序列表示。冻结是训练时不更新它的参数，不是不用它计算。U-Net 再依据文本、时间步和带噪潜表示预测噪声；交叉注意力让图像特征读取条件信息，不能保证每个词与每个位置严格对应。
 
-```text
-CLIP的图文匹配能力
-        │ 用于筛选
-        ▼
-明确的LAION子集 ── 训练材料 ──► Stable Diffusion v1.4
+v1.4 的自编码器把高、宽各缩小 8 倍：512×512×3 的图像对应 64×64×4 的潜表示。纯文本生成从新潜噪声开始，反复去噪后再解码为图片，不需要预先藏一张目标原图。空间位置变少 64 倍，也不等于整套程序快了 64 倍。
 
-CLIP的文本编码器 ─ 条件表示 ──► 潜空间去噪网络
+**CFG 不是另一个负责打分的分类器。** v1.4 训练时以 10% 概率丢弃文本条件，使同一网络也学习无条件预测；采样时组合“有文字”和“无文字”两种预测，强化条件带来的差别。按官方代码，引导强度 1 是普通有条件预测，数值越高也不保证质量越好。[^sd14-sampling]
 
-LDM方法 ───── 潜空间扩散与条件接口 ─────► 具体实现
-```
+参考命令使用 PLMS、50 个采样步、7.5 的引导强度与 512×512 分辨率；模型卡的 Diffusers 示例使用 PNDM。采样器不是模型权重，50 步也不严格等于 50 次前向计算。最后一次解码，更不意味着整个生成过程只有一步。
 
-CLIP没有直接变成像素生成器，数据筛选与生成时的条件输入也不是同一个作用。v1.4的配方不能倒填到原始LDM，更不能推广成所有Stable Diffusion版本的统一实现。
+模型来自具体的数据选择与训练路径，不是泛泛的“学过 LAION”。**v1.3 与 v1.4 都从 v1.2 继续**；v1.4 又在美学筛选子集上训练 225,000 步，并丢弃部分文本条件。LAION 构建时用 CLIP 筛图文关联，v1.4 生成时用 CLIP 编码提示词，两者作用不同，也不是同一种模型配置。[^sd14-training]
 
-这段连接也体现研究与产品之间的工程过程：LDM论文由学术与工业研究者共同参与，具体公开模型又通过模型卡说明组件与训练条件。论文、checkpoint、数据子集和产品名称，是需要分别核对的对象。
+模型卡的比较使用 COCO2017 验证集随机 10,000 条提示词、50 步 PLMS、512×512 图像，以及多种引导强度。不能离开这些条件，直接宣称某个版本处处更好。训练配置中的 32×8 张 A100，也不是个人推理的设备要求。
+
+它的局限同样具体：复杂组合关系、可读文字、人脸与非英文提示可能表现不好；压缩有损，重复训练图片可能被记住。官方参考程序另加安全检查与水印，权重许可也有用途限制，不能把“可以下载”当作“已经是无需防护的产品”。[^sd14-limits]
+
+走到这里，图文表示、数据筛选、感知压缩、扩散和采样工具汇成了一条可研究的生成链。下一节继续问：保留潜空间与扩散训练，去噪网络一定要使用 U-Net 吗？
 
 <a id="paper-dit"></a>
 
@@ -966,7 +965,7 @@ AI的发展不只是模型名单变长，而是学习对象、可用信息、计
 [^diffusion15]: Sohl-Dickstein et al.，[Deep Unsupervised Learning using Nonequilibrium Thermodynamics，v8](https://arxiv.org/pdf/1503.03585v8)，首版 2015-03-12，本篇读取的 v8 为 2015-11-18；结合讲义 p45、约 03:22:03–03:27:55 的 185 段转写及 shownotes，见[本节展开](knowledge_reports/AI演义_27_Diffusion2015_逐步加噪怎样学会生成_科普讲解_20261106.md#sources-and-scope)。未听校；时间结构保留 0.04 秒相邻重叠，专名按论文核对。
 [^ddpm]: Ho, Jain & Abbeel，[Denoising Diffusion Probabilistic Models](https://arxiv.org/pdf/2006.11239v2)，首版 2020-06-19、本文使用 v2（2020-12-16）。首页作者机构均为 UC Berkeley，p9 致谢 TFRC 的 TPU 支持；讲义 p46、节目约 03:27:55–03:32:16 提供讲解线索，原文与转写范围见[第 28 节展开](knowledge_reports/AI演义_28_DDPM_预测噪声怎样学会生成图像_科普讲解_20261106.md#sources-and-scope)。
 [^ldm]: Rombach et al.，[High-Resolution Image Synthesis with Latent Diffusion Models](https://arxiv.org/pdf/2112.10752v2)，首版 2021-12-20、本文采用 v2（2022-04-13）。§§1–3 说明像素计算成本、两阶段训练、潜空间与一次解码；讲义 p49 和节目约 03:45:52–03:52:54 的版本混用、转写重复／时间重叠已在[第 29 节展开](knowledge_reports/AI演义_29_LDM_潜空间怎样降低图像生成成本_科普讲解_20261106.md#sources-and-scope)说明。
-[^sd14]: [Stable Diffusion v1.4官方模型卡](https://huggingface.co/CompVis/stable-diffusion-v1-4)。本文读取的是2026-11-03的main内容快照，记录了正文哈希但未固定仓库commit；仅支持该模型卡对v1.4的具体陈述，未下载或运行权重。
+[^sd14]: [v1.4 官方模型卡，固定仓库版本](https://huggingface.co/CompVis/stable-diffusion-v1-4/blob/133a221b8aa7292a167afc5127cb63fb5005638b/README.md)，Model Details 与 Training；[本节展开](knowledge_reports/AI演义_30_StableDiffusion_v14_文生图系统怎样协同工作_科普讲解_20261106.md)。该文件版本晚于模型初发，不作为2022首发原稿。
 [^dit]: Peebles & Xie，[Scalable Diffusion Models with Transformers](https://arxiv.org/pdf/2212.09748v2)，首发2022年，所读修订版2023年。
 
 [^lecture]: 谢青池，[《AI演义：36篇论文开启你的探索之旅》](../notes/终版：AI演义，36篇论文开启你的探索之旅.pdf)，本地51页版本。作者身份按封面署名理解，不将其自动视为当前职位。
@@ -981,3 +980,6 @@ AI的发展不只是模型名单变长，而是学习对象、可用信息、计
 [^ldm-compression]: [LDM v2，§3.1、§4.1](https://arxiv.org/pdf/2112.10752v2#page=3)与[附录 G](https://arxiv.org/pdf/2112.10752v2#page=29)：感知／局部对抗目标、KL 与 VQ 正则；VQ 量化前表示用于扩散。压缩率比较控制 GPU 型号、训练步数和近似参数规模，但批量／学习率等并不全部相同，不能把空间尺寸比直接当作速度比。
 [^ldm-conditioning]: [LDM v2，§3.3、§4.3.1](https://arxiv.org/pdf/2112.10752v2#page=4)和 pp25–26：BERT tokenizer、联合训练的 Transformer 条件编码器、交叉注意力与拼接；[SD v1.4 官方模型卡](https://huggingface.co/CompVis/stable-diffusion-v1-4)的固定 CLIP 是另一个明确版本的实现选择。
 [^ldm-results]: [LDM v2，Tables 1–3 与 Table 6](https://arxiv.org/pdf/2112.10752v2#page=6)。CelebA-HQ 5.11 为 500 步 DDIM，FFHQ 4.98 为 200 步；前者／后者都不是所有 GAN 的统一比较结论。修补的训练吞吐 0.11→0.33 样本/秒、FID@2k epoch6 24.74→14.99 对应 VQ、含注意力的 LDM-4，修补训练为 8×V100，不能与单 A100 的压缩率实验混淆；精度与采样限制见 §5。 无条件生成数字采用256×256输出，以50,000个生成样本和对应完整训练集估计统计量。
+[^sd14-sampling]: [CFG 原论文](https://arxiv.org/abs/2207.12598v1) §3.2；[官方 PLMS 代码](https://github.com/CompVis/stable-diffusion/blob/master/ldm/models/diffusion/plms.py)与[README参考采样](https://github.com/CompVis/stable-diffusion/blob/master/README.md#reference-sampling-script)，核共用网络、权重约定、首步额外估计与eta=0；不把训练1000时间步或推理50步解释成相同调用次数。
+[^sd14-training]: 固定版本模型卡 Training，v1.3续195,000步、v1.4续225,000步，均从v1.2开始；[LAION-5B论文](https://arxiv.org/pdf/2210.08402v1) §3.1–3.2，数据筛选的英语CLIP ViT-B/32与生成的CLIP ViT-L/14文本条件分开。
+[^sd14-limits]: 固定版本模型卡 Evaluation Results、Limitations and Bias、Uses；[官方 README](https://github.com/CompVis/stable-diffusion/blob/master/README.md)的研究权重、安全检查、水印及用途限制。本轮不声称生成实测、曲线逐点复核或完整法律审查；节目片段与第29节共享03:45:52–03:52:54。
