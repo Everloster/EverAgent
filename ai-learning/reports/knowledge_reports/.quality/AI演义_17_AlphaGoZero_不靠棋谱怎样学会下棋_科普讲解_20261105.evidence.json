@@ -1,0 +1,611 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_17_AlphaGoZero_不靠棋谱怎样学会下棋_科普讲解_20261105.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-05",
+  "generator": {
+    "model": "gpt-6-astra",
+    "harness": "codex",
+    "run_id": "ai-yanyi-alphagozero-r1-20261105",
+    "explicit_model_override": false,
+    "override_reason": "",
+    "identity_basis": "eacli session current actor.model.id=gpt-6-astra；source=codex-thread-state、confidence=session-bound、confirmed=true，harness=codex。仅证明生成者，不替代子Reviewer的运行身份。"
+  },
+  "task": {
+    "summary": "《AI演义》第17节AlphaGo Zero深入展开，实质优化原章节与阅读入口；沿用Brook等前16轮经验，面向人讲清背景、机制与发展路线。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "结合2017围棋原论文、讲义p16、shownotes与完整本章208段ASR，解释问题、历史背景、机制和路线。"
+      },
+      {
+        "id": "R2",
+        "text": "用明确自拟的一步棋例子讲清p/v、MCTS、pi/z、自弈训练、探索与模型筛选；少数学但保留反馈链条。"
+      },
+      {
+        "id": "R3",
+        "text": "真实实验分清三天/四十天、36h/72h、Lee/Master、搜索/训练硬件、模仿/棋力/误差，保留对照条件与反例。"
+      },
+      {
+        "id": "R4",
+        "text": "核本章时间结构，处理人物/公司/无先验/无thinking断言边界；一手补查o1关系，不伪称听校、复训、观看视频或历史因果。"
+      },
+      {
+        "id": "R5",
+        "text": "原第17节实质重写，标题下有展开入口；展开返回原节、上一节LoRA及下一节InstructGPT，前16节及其余主文保持。"
+      },
+      {
+        "id": "R6",
+        "text": "面向人独立可读，检查实际工作台1440/390宽度、导航/目录/脚注/表格；两位来源优先独立复核，原ASR和私有运行信息不公开。"
+      }
+    ],
+    "reader_feedback": [
+      "原章节没有优化、也没有链接展开阅读的啊",
+      "按照第一个Brook章节的方式，一轮完成一个章节，持续做完，参考之前轮次改进。",
+      "少数学，解释背景、解决什么问题和发展路线，报告面向人类阅读。"
+    ]
+  },
+  "sources": [
+    {
+      "id": "AGZ_PAPER",
+      "kind": "primary",
+      "title": "Mastering the game of Go without human knowledge",
+      "locator": "https://www.nature.com/articles/nature24270",
+      "accessed_on": "2026-11-05",
+      "published_on": "2017-10-19",
+      "version": "Nature 550, 354–359, DOI 10.1038/nature24270；本轮镜像PDF18页含Methods与ExtendedData。",
+      "retrieved_from": "https://augmentingcognition.com/assets/Silver2017a.pdf",
+      "sha256": "e2f80d1918bd183894a1b897de46b69a1edabb937ee146530a575268069938ad",
+      "read_scope": "正文pp1–5、Methods pp7–9的实质文本，以及pp10–18 Extended Data图表图注；参考文献未逐篇追读。直接查看原图pp2/3/5/16/17，未逐手复盘附录棋谱。",
+      "identity_boundary": "用题名、DOI、作者、卷页和正式页交叉核对公开镜像身份；没有出版社字节一致性证明。仓内旧24_alphago_zero_2017.pdf实际是AlphaZero，已核标题，未将其当作本轮主源，也未修改该旧文件。",
+      "metadata_receipt": {
+        "artifact": "nature-page.json",
+        "sha256": "862a3460f4b914cde0a212ca27dd4196bc02ccf61962909f8aee0bf10e0b0b5e"
+      },
+      "retrieval_receipt": {
+        "artifact": "paper-retrieval.json",
+        "sha256": "08217658f6719ab38365feedfe3c04061f3b6c694600af347e545cb1a0dc7855"
+      }
+    },
+    {
+      "id": "DEEPMIND",
+      "kind": "primary",
+      "title": "AlphaGo Zero: Starting from scratch",
+      "locator": "https://deepmind.google/discover/blog/alphago-zero-starting-from-scratch/",
+      "accessed_on": "2026-11-05",
+      "published_on": "2017-10-18",
+      "authors": "David Silver; Demis Hassabis",
+      "read_scope": "公开正文完整读取，辅助机制与研究动机；跨领域应用作为当时展望。",
+      "receipt": {
+        "artifact": "deepmind-blog.json",
+        "sha256": "5a4722c1fe060f5caafb5ffaa164708f67d6d1c4b7c35f3d931b20dba2c5f1b2"
+      }
+    },
+    {
+      "id": "LECTURE",
+      "kind": "local",
+      "title": "《AI演义》讲义 AlphaGo Zero 页",
+      "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "accessed_on": "2026-11-05",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
+      "read_scope": "physical p16文字与原图：棋谱依赖、从零强化学习、36小时/算力、thinking/o1连接与作者。未采用未经核验的公司履历或当前行业概括。"
+    },
+    {
+      "id": "EPISODE",
+      "kind": "primary",
+      "title": "张小珺 Jùn 第117期《AI演义》：AlphaGo Zero 段落及shownotes",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-05",
+      "published_on": "2025-10-28",
+      "read_scope": "已恢复ASR完整208段，4111.48–4534.53秒；shownotes完整读取但只用Part1/AlphaGoZero定位，无官方单篇精确时间。没有听校/WER或本轮播放；Apple收据沿用前轮。",
+      "alternate_locator": "https://podcasts.apple.com/cn/podcast/id1634356920?i=1000733801180",
+      "shownotes_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5",
+      "metadata_receipt": {
+        "artifact": "apple-episode-read.json",
+        "sha256": "b43f4f8def7905b5a01e9a6ec9924bfec82015690f200b3412b3b2129f01584c"
+      },
+      "chapter_transcription_review": "ai-learning/reports/knowledge_reports/.quality/AI演义_17_AlphaGoZero_不靠棋谱怎样学会下棋_科普讲解_20261105.transcription-review.json"
+    },
+    {
+      "id": "TRANSCRIPT_REVIEW",
+      "kind": "local",
+      "title": "AlphaGo Zero 本章转写核查摘要",
+      "locator": "ai-learning/reports/knowledge_reports/.quality/AI演义_17_AlphaGoZero_不靠棋谱怎样学会下棋_科普讲解_20261105.transcription-review.json",
+      "accessed_on": "2026-11-05",
+      "sha256": "d27645079e72d02536de290a9d82f42a2df5b4f6c2fe873e157134b432057300",
+      "read_scope": "完整208段语义阅读与实际原生审计/小数时间戳检查；术语和声明回到论文，未听校或测字错率。"
+    },
+    {
+      "id": "OAI_REASONING",
+      "kind": "primary",
+      "title": "Learning to reason with LLMs",
+      "locator": "https://openai.com/index/learning-to-reason-with-llms/",
+      "accessed_on": "2026-11-05",
+      "read_scope": "读取公开正文，采用开篇、Evals、Chain of Thought关于RL/训练计算/推理计算说明；没有引用未核图表数值或声称复测。",
+      "receipt": {
+        "artifact": "openai-o1-official.json",
+        "sha256": "2615f813fa13a7ff30d2935ec83065198232ebbc5b5973fffb9bcdba87bfaa60"
+      }
+    },
+    {
+      "id": "NOAM_INTERVIEW",
+      "kind": "primary",
+      "title": "Noam Brown and Team on Teaching LLMs to Reason",
+      "locator": "https://sequoiacap.com/podcast/training-data-noam-brown/",
+      "accessed_on": "2026-11-05",
+      "read_scope": "官方访谈文字稿四节全文：Conviction in o1、What is reasoning?、Lessons from gameplay、The trough of disillusionment及邻近检索段落。作者本人关于AlphaGo、推理领域差别、数独/首都、人类数据/RL互补的陈述；编辑导语单独区分。未读整场全部文本或观看视频，未证实这就是节目所指视频。",
+      "receipt": {
+        "artifact": "noam-team-interview.json",
+        "sha256": "fe36b88af4d5bc240231adb47c6f48ee5e6ed1b4a11d68c6e8f7a74befcd29b9"
+      }
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "Zero移除人类棋谱训练起点，旧AlphaGo已有监督/RL/MCTS；署名、年份与研究对象已核。",
+      "report_anchor": "problem-and-history",
+      "support": "direct",
+      "source_ids": [
+        "AGZ_PAPER",
+        "DEEPMIND",
+        "LECTURE",
+        "EPISODE"
+      ],
+      "critical": true,
+      "evidence": "首页、Methods AlphaGo versions；共同第一作者为Silver/Schrittwieser/Simonyan，不误用仓内AlphaZero旧PDF。"
+    },
+    {
+      "id": "C2",
+      "claim": "输入19×19×17包含8时刻双方棋子与颜色；共享残差主干输出p与v，v在[-1,+1]，策略含pass。",
+      "report_anchor": "state-policy-value",
+      "support": "direct",
+      "source_ids": [
+        "AGZ_PAPER"
+      ],
+      "critical": true,
+      "evidence": "Figure1，Methods Neural network architecture；p不是行动胜率。"
+    },
+    {
+      "id": "C3",
+      "claim": "MCTS选择/扩展评估/回传/落子；1600次simulation不是1600盘或深度，Zero不用rollout而仍用搜索。",
+      "report_anchor": "mcts-one-move",
+      "support": "direct",
+      "source_ids": [
+        "AGZ_PAPER"
+      ],
+      "critical": true,
+      "evidence": "Figure2、Methods Search algorithm；非终局叶节点用网络评价，终局用规则计分。"
+    },
+    {
+      "id": "C4",
+      "claim": "A55/B35/其他10与480/960/160访问为教学示意；tau1分布30/60/10，非模型实测或通用落子规则。",
+      "report_anchor": "mcts-one-move",
+      "support": "derived",
+      "source_ids": [
+        "AGZ_PAPER"
+      ],
+      "critical": true,
+      "evidence": "calculation-check.json实际算术；前30手tau1，之后tau趋0。"
+    },
+    {
+      "id": "C5",
+      "claim": "训练样本(s,pi,z)让策略学搜索分布、价值学终局；按当前执棋方换符号，不把胜棋每步当最优。",
+      "report_anchor": "self-play-learning",
+      "support": "direct",
+      "source_ids": [
+        "AGZ_PAPER"
+      ],
+      "critical": true,
+      "evidence": "Figure1、equation1、Methods Reinforcement learning；L2正则与近似策略迭代。"
+    },
+    {
+      "id": "C6",
+      "claim": "根噪声、温度与异步流水线提供探索与筛选；每1000步新checkpoint，400局>55%晋级，不保证每轮变强。",
+      "report_anchor": "self-play-learning",
+      "support": "direct",
+      "source_ids": [
+        "AGZ_PAPER"
+      ],
+      "critical": true,
+      "evidence": "Methods Optimization/Evaluator/Self-play；pi不是真实最优策略。"
+    },
+    {
+      "id": "C7",
+      "claim": "三天约490万盘、20块简称、36h学习曲线超过Lee，72h后在100局2h比赛100–0。",
+      "report_anchor": "training-results",
+      "support": "direct",
+      "source_ids": [
+        "AGZ_PAPER",
+        "DEEPMIND"
+      ],
+      "critical": true,
+      "evidence": "Figures3、正文Empirical analysis、Methods Evaluation；对手是程序，不是Zero直接对人类。"
+    },
+    {
+      "id": "C8",
+      "claim": "四十天是更大网络从随机权重另训约2900万盘，对Master89–11；论文简称40块，非三天直接续训。",
+      "report_anchor": "training-results",
+      "support": "direct",
+      "source_ids": [
+        "AGZ_PAPER",
+        "DEEPMIND"
+      ],
+      "critical": true,
+      "evidence": "Final performance/Figure6；Methods主干1conv+19/39residual；搜索参数曾借助较小实例优化，已在脚注保留。"
+    },
+    {
+      "id": "C9",
+      "claim": "4TPU为对弈搜索，梯度优化64GPU workers+19CPU参数服务器，总batch2048，从最近50万盘抽样。",
+      "report_anchor": "training-results",
+      "support": "direct",
+      "source_ids": [
+        "AGZ_PAPER"
+      ],
+      "critical": true,
+      "evidence": "Methods Optimization；正文700k/3.1M minibatches各2048；不推成完整总成本或个人电脑时长。"
+    },
+    {
+      "id": "C10",
+      "claim": "GoKifu上SL20落子54.3%/RL20 49.0%，胜负MSE0.207/0.177；模仿更准但棋力可更弱，损失权重不同。",
+      "report_anchor": "imitation-versus-winning",
+      "support": "direct",
+      "source_ids": [
+        "AGZ_PAPER"
+      ],
+      "critical": true,
+      "evidence": "Figure3、Extended Data Tables1/2原图、Methods Supervised learning；SL MSE权重.01 vs RL等权，MSE缩放1/4，非错误率。"
+    },
+    {
+      "id": "C11",
+      "claim": "固定最后200万盘的架构对照，残差和双头共享各自约600Elo收益；不同预测指标方向不同。",
+      "report_anchor": "architecture-and-discovery",
+      "support": "direct",
+      "source_ids": [
+        "AGZ_PAPER"
+      ],
+      "critical": true,
+      "evidence": "Figure4、Neural network architecture comparison；五秒/步、固定数据、作者共享表示解释，不把全系统收益只归RL或任意相加。"
+    },
+    {
+      "id": "C12",
+      "claim": "作者观察从贪吃子到全局/复杂战斗、定式和新变化，征子较晚学会；未逐手复盘或证明人类式概念。",
+      "report_anchor": "architecture-and-discovery",
+      "support": "direct",
+      "source_ids": [
+        "AGZ_PAPER",
+        "DEEPMIND"
+      ],
+      "critical": true,
+      "evidence": "Figure5、Knowledge learned、ExtendedData2–4按文字图注，不声称逐棋谱像素核验。"
+    },
+    {
+      "id": "C13",
+      "claim": "5秒/步内部赛事raw network3055、完整Zero5185，支持本条件下搜索的增益，不能量化普遍人类胜率。",
+      "report_anchor": "search-and-reasoning",
+      "support": "direct",
+      "source_ids": [
+        "AGZ_PAPER"
+      ],
+      "critical": true,
+      "evidence": "Figure6b与Evaluation；硬件/标尺条件与selfplay bias需保留。"
+    },
+    {
+      "id": "C14",
+      "claim": "OpenAI文确认o1的RL/思维链与train/test计算；Brown亲述AlphaGo先例、领域差别、首都/数独反例及数据与RL互补。",
+      "report_anchor": "search-and-reasoning",
+      "support": "direct",
+      "source_ids": [
+        "OAI_REASONING",
+        "NOAM_INTERVIEW",
+        "EPISODE",
+        "LECTURE"
+      ],
+      "critical": true,
+      "evidence": "官方公开说明和本人访谈四节；不能升级成Zero直接导致o1或照搬1600MCTS，未识别节目具体视频。"
+    },
+    {
+      "id": "C15",
+      "claim": "最直接适用零和完全信息环境，仍有规则、计分/网格/对称性先验；selfplay Elo需锚定外部参照。",
+      "report_anchor": "transfer-limits",
+      "support": "direct",
+      "source_ids": [
+        "AGZ_PAPER"
+      ],
+      "critical": true,
+      "evidence": "Methods Domain knowledge/Selfplay games/Evaluation；TrompTaylor自弈搜索与Chinese规则比赛分开，不撤去预训练的普遍外推。"
+    },
+    {
+      "id": "C16",
+      "claim": "[推测] 引用数量奖励可能鼓励堆引用为思想实验；现实模拟/裁判/探索成本改变可迁移性，愿景非实测。",
+      "report_anchor": "transfer-limits",
+      "support": "inference",
+      "source_ids": [
+        "AGZ_PAPER",
+        "DEEPMIND"
+      ],
+      "critical": true,
+      "evidence": "由机制分析的反例非AlphaGo实验；博客的蛋白质/材料/能源为当时展望。"
+    },
+    {
+      "id": "C17",
+      "claim": "208段423.05秒结构核查无倒序/负时长/重叠，100处正间隔最大1.22秒；shownotes无单篇时间，未听校/WER。",
+      "report_anchor": "source-notes",
+      "support": "direct",
+      "source_ids": [
+        "EPISODE",
+        "TRANSCRIPT_REVIEW",
+        "LECTURE"
+      ],
+      "critical": true,
+      "evidence": "实际audit/public_receipt/validate_receipt与Decimal检查；英文/姓名错词不直接归因讲者。"
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U1",
+      "title": "Zero移除人类棋谱训练起点，旧AlphaGo已有监督/RL/MCTS；署名、年份与研究对象已核。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "AGZ_PAPER",
+        "DEEPMIND",
+        "LECTURE",
+        "EPISODE"
+      ],
+      "report_anchor": "problem-and-history"
+    },
+    {
+      "id": "U2",
+      "title": "输入19×19×17包含8时刻双方棋子与颜色；共享残差主干输出p与v，v在[-1,+1]，策略含pass。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "AGZ_PAPER"
+      ],
+      "report_anchor": "state-policy-value"
+    },
+    {
+      "id": "U3",
+      "title": "MCTS选择/扩展评估/回传/落子；1600次simulation不是1600盘或深度，Zero不用rollout而仍用搜索。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "AGZ_PAPER"
+      ],
+      "report_anchor": "mcts-one-move"
+    },
+    {
+      "id": "U4",
+      "title": "A55/B35/其他10与480/960/160访问为教学示意；tau1分布30/60/10，非模型实测或通用落子规则。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "AGZ_PAPER"
+      ],
+      "report_anchor": "mcts-one-move"
+    },
+    {
+      "id": "U5",
+      "title": "训练样本(s,pi,z)让策略学搜索分布、价值学终局；按当前执棋方换符号，不把胜棋每步当最优。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "AGZ_PAPER"
+      ],
+      "report_anchor": "self-play-learning"
+    },
+    {
+      "id": "U6",
+      "title": "根噪声、温度与异步流水线提供探索与筛选；每1000步新checkpoint，400局>55%晋级，不保证每轮变强。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "AGZ_PAPER"
+      ],
+      "report_anchor": "self-play-learning"
+    },
+    {
+      "id": "U7",
+      "title": "三天约490万盘、20块简称、36h学习曲线超过Lee，72h后在100局2h比赛100–0。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "AGZ_PAPER",
+        "DEEPMIND"
+      ],
+      "report_anchor": "training-results"
+    },
+    {
+      "id": "U8",
+      "title": "四十天是更大网络从随机权重另训约2900万盘，对Master89–11；论文简称40块，非三天直接续训。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "AGZ_PAPER",
+        "DEEPMIND"
+      ],
+      "report_anchor": "training-results"
+    },
+    {
+      "id": "U9",
+      "title": "4TPU为对弈搜索，梯度优化64GPU workers+19CPU参数服务器，总batch2048，从最近50万盘抽样。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "AGZ_PAPER"
+      ],
+      "report_anchor": "training-results"
+    },
+    {
+      "id": "U10",
+      "title": "GoKifu上SL20落子54.3%/RL20 49.0%，胜负MSE0.207/0.177；模仿更准但棋力可更弱，损失权重不同。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "AGZ_PAPER"
+      ],
+      "report_anchor": "imitation-versus-winning"
+    },
+    {
+      "id": "U11",
+      "title": "固定最后200万盘的架构对照，残差和双头共享各自约600Elo收益；不同预测指标方向不同。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "AGZ_PAPER"
+      ],
+      "report_anchor": "architecture-and-discovery"
+    },
+    {
+      "id": "U12",
+      "title": "作者观察从贪吃子到全局/复杂战斗、定式和新变化，征子较晚学会；未逐手复盘或证明人类式概念。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "AGZ_PAPER",
+        "DEEPMIND"
+      ],
+      "report_anchor": "architecture-and-discovery"
+    },
+    {
+      "id": "U13",
+      "title": "5秒/步内部赛事raw network3055、完整Zero5185，支持本条件下搜索的增益，不能量化普遍人类胜率。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "AGZ_PAPER"
+      ],
+      "report_anchor": "search-and-reasoning"
+    },
+    {
+      "id": "U14",
+      "title": "OpenAI文确认o1的RL/思维链与train/test计算；Brown亲述AlphaGo先例、领域差别、首都/数独反例及数据与RL互补。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "OAI_REASONING",
+        "NOAM_INTERVIEW",
+        "EPISODE",
+        "LECTURE"
+      ],
+      "report_anchor": "search-and-reasoning"
+    },
+    {
+      "id": "U15",
+      "title": "最直接适用零和完全信息环境，仍有规则、计分/网格/对称性先验；selfplay Elo需锚定外部参照。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "AGZ_PAPER"
+      ],
+      "report_anchor": "transfer-limits"
+    },
+    {
+      "id": "U16",
+      "title": "引用数量奖励可能鼓励堆引用为标明推测的思想实验；现实模拟/裁判/探索成本改变可迁移性，愿景非实测。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "AGZ_PAPER",
+        "DEEPMIND"
+      ],
+      "report_anchor": "transfer-limits"
+    },
+    {
+      "id": "U17",
+      "title": "208段423.05秒结构核查无倒序/负时长/重叠，100处正间隔最大1.22秒；shownotes无单篇时间，未听校/WER。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "EPISODE",
+        "TRANSCRIPT_REVIEW",
+        "LECTURE"
+      ],
+      "report_anchor": "source-notes"
+    },
+    {
+      "id": "U18",
+      "title": "原节实质改写与节首链接、展开返回/前后节，沿共同问题串联预训练、LoRA、ResNet与InstructGPT。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "AGZ_PAPER",
+        "LECTURE"
+      ],
+      "report_anchor": "route-connections"
+    },
+    {
+      "id": "U19",
+      "title": "节目Sutton视频及语言模型学习方式插话；只保留示范、未知问题与强化学习互补的相关主线。",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "EPISODE"
+      ],
+      "report_anchor": "source-notes",
+      "omission_reason": "未定位或观看所指视频，不从ASR猜测完整立场；主线由论文和Noam本人访谈补充。"
+    },
+    {
+      "id": "U20",
+      "title": "Karen后续履历、并购、英美研究圈与Gemini组织故事。",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "LECTURE",
+        "EPISODE"
+      ],
+      "report_anchor": "source-notes",
+      "omission_reason": "未做完整动态组织史调查；专名ASR错多，只用正式论文署名和共同第一作者说明贡献。"
+    },
+    {
+      "id": "U21",
+      "title": "DeepMind当年的跨领域应用愿景与原研究实测范围分开。",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "DEEPMIND",
+        "AGZ_PAPER"
+      ],
+      "report_anchor": "transfer-limits"
+    }
+  ],
+  "limitations": [
+    "未重新训练、复跑基准、算完整研究总成本或估计当前个人设备耗时。",
+    "208段转写未听校/测WER，机器结构检查不证明逐字准确。",
+    "论文棋局仅依据正文与图注理解，直接视觉核验限pp2/3/5/16/17及讲义p16，未逐手复盘。",
+    "Noam访谈仅读相关四节与邻近检索段，未看视频，也未证实节目所指视频身份。",
+    "人物当前任职、并购、完整组织史与Sutton视频未调查，不当已核事实。",
+    "现实奖励/报告例子为推测，迁移与小棋盘实验为后续建议，本轮未运行。"
+  ],
+  "research_receipts": {
+    "source_manifest": {
+      "artifact": "source-manifest.json",
+      "sha256": "6ddb0b1d8533f924a58ed73b2bd92aaa28143e615c662b82fb6341fb4a1922f5"
+    },
+    "transcript_precision": {
+      "artifact": "chapter-precision-audit.json",
+      "sha256": "3bcceb913348df41fcca4fd236ce208198960289c267b78a861a023c20cbb77b"
+    },
+    "native_transcript_audit": {
+      "artifact": "transcript-native-audit.json",
+      "sha256": "1240f03a23d30423943cf513b81a7fda3ef943cd98bfe38047eac7706e34e807"
+    },
+    "tokenplan_catalog": {
+      "artifact": "tokenplan-catalog.json",
+      "sha256": "bee85051297d2b37aae05403efbcb5aba22ff23a6c1b2048308fd929e49c37c7"
+    },
+    "visual_check": {
+      "artifact": "direct-page-visual-check.json",
+      "sha256": "5f1458a5853b3e4ccb59f9c87e76620a1c830deae696dc6b448c223693ea4c1f"
+    },
+    "calculation_check": {
+      "artifact": "calculation-check.json",
+      "sha256": "6ff9d7e516e8a1c00990ff2cc3a37277e92adfb8903fa9b4443739b99fdb675c"
+    },
+    "fallbacks": [
+      "eacli无原始PDF下载/渲染能力，在正式网页识别之后最小降级下载公开镜像并本地提取/渲染；详细原因见paper-retrieval.json。",
+      "vision.technical-diagram与vision.chart-analysis两项typed调用均结束为provider BackendTimeout，后以native view_image最小只读降级检查本地页图，不重放生成任务。"
+    ]
+  }
+}

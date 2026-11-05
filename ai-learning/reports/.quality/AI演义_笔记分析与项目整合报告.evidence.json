@@ -6,9 +6,10 @@
   "generator": {
     "model": "gpt-6-astra",
     "harness": "codex",
-    "run_id": "ai-yanyi-revision3-20261104-codex",
+    "run_id": "ai-yanyi-main-r25-deepvideo-20261105",
     "explicit_model_override": false,
-    "override_reason": ""
+    "override_reason": "",
+    "identity_basis": "本轮 eacli session current 的 codex-thread-state / session-bound confirmed。仅证明协调生成者；子 Reviewer runtime 另核，未借根身份补证。"
   },
   "task": {
     "summary": "用户要求以《AI演义》PDF全量发展路径和必要原论文为基础重写报告。像素级指发展路径细致完整，而非每篇论文穷尽技术细节；少数学，重点是背景、所解问题、机制直觉与发展作用。两段样章获认可后，用户强调历史、范式变迁、人物视角的整体路线串联优先。",
@@ -52,6 +53,10 @@
       {
         "id": "R10",
         "text": "必要延伸只补解释缺口（如CUDA历史、硬件彩票、指定版本Stable Diffusion），不扩大到无边界AI百科或未经核验的视频产品谱系。"
+      },
+      {
+        "id": "R11",
+        "text": "原第22节实质改写且标题后首块为展开阅读；展开返回原22节、上21 Tülu3、下23双流。讲清视频级单帧/多帧比较、三种时间融合、弱标数据、真实收益/退步、成本与迁移；前21节及其余主稿严格继承。"
       }
     ],
     "reader_feedback": [
@@ -66,6 +71,14 @@
       {
         "date": "2026-11-03",
         "quote": "好的，可以的，整体的几个视角的路线更关键哦，如何串起来"
+      },
+      {
+        "date": "2026-11-04",
+        "quote": "原章节没有优化、也没有链接展开阅读的啊"
+      },
+      {
+        "date": "2026-11-04",
+        "quote": "按照第一个Brook章节的方式（后续轮次要参考前面多轮次），一轮完成一个章节，持续做完，每一轮过程可以持续优化。"
       }
     ]
   },
@@ -141,7 +154,7 @@
       "locator": "https://arxiv.org/pdf/1301.3781v3",
       "accessed_on": "2026-11-03",
       "version": "arXiv:1301.3781v3，2013-09-07；2013-01为首发时间口径，沿用已核清单",
-      "read_scope": "pdftotext -layout文字：P1–9，含首页身份、§1前史、§2架构/计算成本/DistBelief、§3 CBOW与Skip-gram、§4评估方法和Tables 1–7、§5开头。公式用于辨认机制而未逐式推导；Figure 1只读图注，未视觉分析。未读P10–12及引用文献原文。",
+      "read_scope": "2026-11-04本轮扩读为P1–12全文：§1–7、Tables1–8、Figure1图注、References；另对Figure1页面图像核预测方向和SUM标记。按§3正文采用CBOW平均上下文，图示不代替正文；不声称训练复现或所有公式逐式证明，引用文献未全部另读。保留原版本/研究记录的历史provenance。",
       "research_record": "ai-learning/notes/ai_yanyi_research/phase2/language_pretraining.json",
       "research_source_id": "LP-S01"
     },
@@ -150,9 +163,9 @@
       "kind": "primary",
       "title": "Sequence to Sequence Learning with Neural Networks",
       "locator": "https://arxiv.org/pdf/1409.3215v3",
-      "accessed_on": "2026-11-03",
+      "accessed_on": "2026-11-05",
       "version": "arXiv:1409.3215v3，2014-12-14",
-      "read_scope": "题名与页边版本；§1–2 背景、模型；§3.1–3.3 数据、解码、源句倒序；§3.4–3.6 训练、并行、评估与 Tables 1–2；§3.7、§4–5 的长句、相关工作与结论文字。约 PDF pp.1–8。正文中的图表题注可见，但未视觉分析 Figures 1–3；不从曲线读数。参考文献只用于识别文中提及的前驱，未读其原文。",
+      "read_scope": "本轮补读全文§1–6、Figures1–3图注、Tables1–3与References；原eacli全文与v3 PDF文本对照。p2/6/7图表经eacli视觉辅助，p2另直接看图。§3.8的句表示定性范围已核；不从曲线估逐点值。另eacli读取https://arxiv.org/abs/1409.3215官方版本历史核v1/v3时间。引用文献只用于识别前驱，不宣称通读全部被引原文。",
       "research_record": "ai-learning/notes/ai_yanyi_research/sequence-evidence.json",
       "research_source_id": "SEQ-S1"
     },
@@ -161,9 +174,9 @@
       "kind": "primary",
       "title": "Neural Machine Translation by Jointly Learning to Align and Translate",
       "locator": "https://arxiv.org/pdf/1409.0473v7",
-      "accessed_on": "2026-11-03",
+      "accessed_on": "2026-11-05",
       "version": "arXiv:1409.0473v7，2016-05-19；页眉 Published as a conference paper at ICLR 2015",
-      "read_scope": "用 pdftotext -layout 阅读题名、版本及 §1–4（pp.1–5）、§5.1 结果文字与 Table 1（pp.5–7）、§5.2 的作者定性解释、§6.1 的计算代价、§6.2 与 §7（pp.7–9）。未读实现附录；未视觉复核 Figure 2 曲线或 Figure 3 热图；长度表现仅转述结果正文，不从图取数。",
+      "read_scope": "本轮补读全文§1–7、模型实现Appendix A、训练Appendix B、长句Appendix C、References，Figures1–3与Tables1–3。p3/5/7/14经eacli视觉辅助；Figure3所在p6服务双路失败，以本地原图核，p5另直接看图。核GRU/LSTM差别、No UNK源句与参考口径、30/50长句曲线及111h/252h；OCR错误按原文纠正。另eacli读取https://arxiv.org/abs/1409.0473核v1/v7时间。未训练复现或阅读全文所有前驱。",
       "research_record": "ai-learning/notes/ai_yanyi_research/sequence-evidence.json",
       "research_source_id": "SEQ-S2"
     },
@@ -172,154 +185,179 @@
       "kind": "primary",
       "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation",
       "locator": "https://arxiv.org/pdf/1609.08144v2",
-      "accessed_on": "2026-11-03",
+      "accessed_on": "2026-11-05",
       "version": "arXiv:1609.08144v2，2016-10-08；正文首页版本标记已读",
-      "read_scope": "首页题名、31位作者和版本；§1–2全文；§3架构开头；§3.1–3.3残差、双向底层和并行；§4与§4.1 wordpiece；§6量化动机、训练约束至公式开头；§8.7生产数据、人评方法、Table 10及限制；§9和致谢；References [2]/[41]核对Attention/seq2seq。未精读§5强化学习、§7解码公式、§8.1–8.6及其他实验表。图只读相邻图注，未取曲线数值。",
+      "read_scope": "2026-11-05第7轮补读：23页文字全文，§1–9、Tables1–11、References；根直接看p4/12/16/18/19/23原页，六图中的三组eacli辅助后逐项校正层数/四方人评等错误。其余图按正文和图注，不从曲线像素估数。",
       "research_record": "ai-learning/notes/ai_yanyi_research/phase2/language_pretraining.json",
-      "research_source_id": "LP-S02"
+      "research_source_id": "LP-S02",
+      "sha256": "285fb4323972464ba0be4f7c76a0db1a3cc196d5e44be542152f085d47fe5812"
     },
     {
       "id": "S-transformer",
       "kind": "primary",
       "title": "Attention Is All You Need",
       "locator": "https://arxiv.org/pdf/1706.03762v7",
-      "accessed_on": "2026-11-03",
+      "accessed_on": "2026-11-05",
       "version": "arXiv:1706.03762v7，2023-08-02；首页列 NIPS 2017",
-      "read_scope": "用 pdftotext -layout 阅读题名、版本、§1–4（pp.2–7）、§5 训练设置与 §6.1/Table 2（pp.7–8）；§6.2 与 Table 3、§6.3 开头随提取范围读到，但不展开消融和解析任务。直接查看 PDF p.8 核对 Table 2 与正文英法分数冲突。未视觉分析架构图或注意力可视化，未读附录。",
+      "read_scope": "2026-11-05第7轮补读：15页文字全文含§1–7、Tables1–4与References；附录Figures3–5读图注/可提取文字，不作逐头量值核读。根直接看p3/4/8/9架构/结果/消融；eacli辅助中41.0/41.8臆造解释、Table3错列回原图纠正。",
       "research_record": "ai-learning/notes/ai_yanyi_research/sequence-evidence.json",
-      "research_source_id": "SEQ-S3"
+      "research_source_id": "SEQ-S3",
+      "sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
     },
     {
       "id": "S-gpt1",
       "kind": "primary",
       "title": "Improving Language Understanding by Generative Pre-Training",
       "locator": "https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf",
-      "accessed_on": "2026-11-03",
+      "accessed_on": "2026-11-05",
       "version": "OpenAI正式研究报告；首页Preprint. Work in progress.；无独立修订号，2018年沿用已核清单，不把抓取日期当首发日期",
-      "read_scope": "从首页至§6 Conclusion全文，约原PDF P1–8；包括§2前驱、§3两阶段训练与任务输入转换、§4设置和Tables 1–4、§5零样本启发式及Table 5。参考文献仅出现开头，未查前驱原文；Figure 2只读图注和作者解释，未看曲线。",
+      "read_scope": "12页文字全文含References；§1–6、Tables1–5；根直接查看p4 Figure1及p7 Figure2，Table5按文字层核。eacli视觉辅助后回原图核对；不从曲线估取精确点值。 前驱仅依据本文§2，不冒充另读前驱论文。",
       "research_record": "ai-learning/notes/ai_yanyi_research/phase2/language_pretraining.json",
-      "research_source_id": "LP-S03"
+      "research_source_id": "LP-S03",
+      "sha256": "eb81a65e0856bd38e855e1f1de6ee12e7c3eb92ae05c8270d345a475beb631d0"
     },
     {
       "id": "S-bert",
       "kind": "primary",
       "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
       "locator": "https://arxiv.org/pdf/1810.04805v2",
-      "accessed_on": "2026-11-03",
-      "version": "arXiv:1810.04805v2，2019-05-24；2018为首发年份，非当前PDF修订年份",
-      "read_scope": "首页身份及摘要开头；P2–5文字含§2相关工作、§3模型/MLM/NSP/微调与§4.1开头；P8含Table 5、§5.1训练目标消融和§5.2；定向读参考文献Wu et al. 2016确认GNMT。未完整阅读P6–7主结果表、其他消融及附录；架构图仅读图注。双栏提取按段落语义复原，不做逐字长引。",
+      "accessed_on": "2026-11-05",
+      "version": "arXiv1810.04805v2，2019-05-24；首发2018-10-11另核版本页",
+      "read_scope": "16页文字全文含正文、References、Appendix A–C；根直接查看p3/4/6/8/13/16，含架构、MLM/NSP、GLUE、Table5与Figure5/Table8；其余表按文字层、图2按文字及图注核对，未声称逐图逐点测量。",
       "research_record": "ai-learning/notes/ai_yanyi_research/phase2/language_pretraining.json",
-      "research_source_id": "LP-S04"
+      "research_source_id": "LP-S04",
+      "sha256": "5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e"
     },
     {
       "id": "S-gpt2",
       "kind": "primary",
       "title": "Language Models are Unsupervised Multitask Learners",
       "locator": "https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf",
-      "accessed_on": "2026-11-03",
+      "accessed_on": "2026-11-05",
       "version": "OpenAI正式研究报告，无独立修订号；2019年沿用已核清单",
-      "read_scope": "首页与§1–2全段，含WebText、byte-level BPE及模型修改；§3–3.2及Table 3，§3.3前段；§3.5–3.8全部文字及Tables 4–5；§4 Generalization vs Memorization及Table 6；§5前段。未完整读§3.3–3.4、§5后段、结论或生成样例附录；所有曲线只读图注和正文，不从图取数。",
+      "read_scope": "24页PDF实际读取正文p1–10；表1–6按文字核，根实际查看p6表4/CoQA/翻译，eacli视觉辅助。未通读p11–24参考文献和生成样例；不从曲线估取精确数。",
       "research_record": "ai-learning/notes/ai_yanyi_research/phase2/language_pretraining.json",
-      "research_source_id": "LP-S05"
+      "research_source_id": "LP-S05",
+      "sha256": "d9d852e2894556e73f53cb22b7c605a9643d6f0b19bf604b429ed6192fa24f4e"
     },
     {
       "id": "S-gpt3",
       "kind": "primary",
       "title": "Language Models are Few-Shot Learners",
       "locator": "https://arxiv.org/pdf/2005.14165v4",
-      "accessed_on": "2026-11-03",
+      "accessed_on": "2026-11-05",
       "version": "arXiv:2005.14165v4，2020-07-22；2020-05为首发时间口径",
-      "read_scope": "首页题名、31人作者表和版本；P3–4引言及脚注1，P6的§2设置；P7只读zero-shot定义与末尾设置比较；P8–10的§2.1–2.4、Tables 2.1–2.2及Figure 2.2图注；P13的Table 3.3、§3.1.3–3.1.4和§3.2前段；P18–20的§3.6–3.7及Tables 3.7–3.8；P33污染讨论末尾及§5，P34前段覆盖目标局限、样本效率和学习/识别歧义。未完整读其他任务、§4污染分析、§6社会影响或附录；不把图注读取算作图像核查。",
+      "read_scope": "75页arXiv v4：实际读p1–46文字（p46只到附录E开头），含正文、局限/影响、贡献与附录A–D；另读p50/55/58–61任务格式、p63表H.1相关任务行。根实际查看p7图2.1，eacli视觉辅助；其它图以文字和图注核，不声称逐图测量；p47–49、其它附录G页与H曲线未完整读。",
       "research_record": "ai-learning/notes/ai_yanyi_research/phase2/language_pretraining.json",
-      "research_source_id": "LP-S06"
+      "research_source_id": "LP-S06",
+      "sha256": "97fd272f1fdfc18677462d0292f5fbf26ca86b4d1b485c2dba03269b643a0e83"
     },
     {
       "id": "S-kaplan",
       "kind": "primary",
       "title": "Scaling Laws for Neural Language Models",
       "locator": "https://arxiv.org/pdf/2001.08361v1",
-      "accessed_on": "2026-11-03",
-      "version": "arXiv:2001.08361v1 [cs.LG], 23 Jan 2020；通过本地PDF首页核对题名、作者与版本标记，未仅凭文件名认定",
-      "read_scope": "P1–7文本（摘要、§1、§2、§3开头实验范围）；P14–16文本（§5末尾、§6至§6.2）；P22文本（附录B.3/B.4及C开头）。P3 Figure 1及其图注实际查看图像。未精读其余附录、消融或公式推导。",
+      "accessed_on": "2026-11-05",
+      "version": "arXiv2001.08361v1，2020-01-23",
+      "read_scope": "30页PDF：已读p1–19主文及p22–23附录B.3/B.4/C；根直接核图p3 Figure1。p15图注与正文已读，未把已渲染未查看的图片算成视读；未逐图读完其余附录。",
       "research_record": "ai-learning/notes/ai_yanyi_research/scaling-evidence.json",
-      "research_source_id": "S1"
+      "research_source_id": "S1",
+      "sha256": "a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494"
     },
     {
       "id": "S-chinchilla",
       "kind": "primary",
       "title": "Training Compute-Optimal Large Language Models",
       "locator": "https://arxiv.org/pdf/2203.15556v1",
-      "accessed_on": "2026-11-03",
-      "version": "arXiv:2203.15556v1 [cs.CL], 29 Mar 2022；正式摘要页与下载PDF首页题名、作者、版本标记相符",
-      "read_scope": "正式摘要页与submission history；PDF P1–11文本，P12 Figure 6图注与Table 7，P15 Discussion & Conclusion中的局限段。P5 Figure 2、P6 Figure 3整页实际查看图像；没有将P12的文字读取冒充图像读取。未精读其余结果、附录B/D/E/F/G，也未独立复算训练FLOPs。",
+      "accessed_on": "2026-11-05",
+      "version": "arXiv2203.15556v1，2022-03-29",
+      "read_scope": "36页PDF：主文p1–16；补读p22–23 A/B/C与FigureA1图注、p26–29 D.3/D.4/E/F/G。根直接核图p5 Figure2及p6 Figure3，后者有eacli辅助回执；p10虽渲染但未实际视读，不算图像核验。数字按文字/表格并限定口径；未逐项通读p30–36结果附录。",
       "research_record": "ai-learning/notes/ai_yanyi_research/scaling-evidence.json",
-      "research_source_id": "S2"
+      "research_source_id": "S2",
+      "sha256": "3fd3632a8ef48171bd25282990221d49535d75356192f068b3b2ebe08f2aedd4"
     },
     {
       "id": "S-zero",
       "kind": "primary",
       "title": "ZeRO: Memory Optimizations Toward Training Trillion Parameter Models",
       "locator": "https://arxiv.org/pdf/1910.02054v3",
-      "accessed_on": "2026-11-03",
+      "accessed_on": "2026-11-05",
       "version": "arXiv:1910.02054v3 [cs.LG], 13 May 2020",
-      "read_scope": "首页；§1的模型扩张背景和DeepSpeed发布说明；§3—9正文，含Table 1/2的模型状态显存分析、§5三阶段机制、§7通信量分析和§9计算能力缺口；§10—11正文，含Table 3/4、实现范围、硬件/基线、吞吐与显存实验解释。P7—19为本轮主要连续读取范围。未精读§2、参考文献或AE附录；未视觉复核Figure 1—8，不从曲线自行读数。",
+      "read_scope": "24页文本主文、参考文献和末尾配置附录已读；p3 Figure1经eacli图像能力及根直接视读。实验数字取作者正文与附录，不从未逐图视读的Figure2–8自行估取；未复现训练。",
       "research_record": "ai-learning/notes/ai_yanyi_research/phase2/infrastructure_data.json",
-      "research_source_id": "INF-ZERO"
+      "research_source_id": "INF-ZERO",
+      "sha256": "c531734c7d9ee647fda9b4f0e1a6abd6d58ad34e862bc945451b09032be3167e"
     },
     {
       "id": "S-refinedweb",
       "kind": "primary",
       "title": "The RefinedWeb Dataset for Falcon LLM: Outperforming Curated Corpora with Web Data, and Web Data Only",
       "locator": "https://arxiv.org/pdf/2306.01116v1",
-      "accessed_on": "2026-11-03",
+      "accessed_on": "2026-11-05",
       "version": "arXiv:2306.01116v1 [cs.CL], 1 Jun 2023",
-      "read_scope": "首页摘要、署名；P2—9的§1—4正文和§5/6相关段，含MDR处理链、实验设置与比较层级、Table 2—5；Appendix A/Table 6的数据用途、创建/资助机构、采集与分发许可片段；Appendix B模型卡的模型类别/日期片段。§5多epoch讨论仅读到问题提出及相关正文片段，不宣称精读其附录实验；不从Figure 1—4自行读曲线或面积，也未完成去污染审计或全量偏差评估。",
+      "read_scope": "32页文字层已读，包括方法、主实验、参考文献、数据与模型卡、E/G/H附录；表4/p7、表5/p9原图直接核对并调用eacli图像能力。未从其他未逐图核验曲线读精确数据，未复现语料制作或训练。方法解释按§3.1 WARC；附录A WET记载与其冲突；MinHash主文与附录桶数写法不一致，本文不按此提供可复现配置；具体阈值的>50/至少50不作为结论。",
       "research_record": "ai-learning/notes/ai_yanyi_research/phase2/infrastructure_data.json",
-      "research_source_id": "INF-REFINEDWEB"
+      "research_source_id": "INF-REFINEDWEB",
+      "sha256": "b084921cc327f1f2bca232ca5339f0378324e2ff941bded327f136752a983d10"
     },
     {
       "id": "S-laion",
       "kind": "primary",
       "title": "LAION-5B: An open large-scale dataset for training next generation image-text models",
       "locator": "https://arxiv.org/pdf/2210.08402v1",
-      "accessed_on": "2026-11-03",
+      "accessed_on": "2026-11-05",
       "version": "arXiv:2210.08402v1 [cs.CV], 16 Oct 2022",
-      "read_scope": "首页；§1末段、§2—7相关正文（P3—12），包括采集/过滤、数据组成、OpenCLIP训练和评测方法、Table 2、技术及伦理限制；P13致谢；Appendix A.2 Q14外部链接依赖、A.6 Q45—49分发及版权说明（Q47—49在P30）；Appendix E关于数据规模与samples seen的实验解释和P42 Table 6；Appendix G.1/G.2隐私与CLIP过滤偏差；P49作者贡献的路径相关条目。未读取全量附录或逐项评测，不把生成示例图及Figure 4/12的文本层当作视觉核查。",
+      "read_scope": "本轮实际读主文物理pp1–13；datasheet p24及p26–31，p22–23/p25相关字段片段；附录E p40–44，F.1/F.2 p41–42/p46、G.1/G.2 p46–48、作者贡献与致谢p49–50。直接核图2/p5、表2/p11、表6/p42原图，另有eacli图像收据。未穷尽全部附录，未从未核曲线读精确数字，未复现采集或训练。",
       "research_record": "ai-learning/notes/ai_yanyi_research/phase2/infrastructure_data.json",
-      "research_source_id": "INF-LAION"
+      "research_source_id": "INF-LAION",
+      "sha256": "18dad8c88914dfcdcdcb50eba4b285ba665f67d6f4661d20e3ee2e36a3d42163"
     },
     {
       "id": "S-megascale",
       "kind": "primary",
       "title": "MegaScale: Scaling Large Language Model Training to More Than 10,000 GPUs",
       "locator": "https://arxiv.org/pdf/2402.15627v1",
-      "accessed_on": "2026-11-03",
+      "accessed_on": "2026-11-05",
       "version": "arXiv:2402.15627v1 [cs.LG], 23 Feb 2024",
-      "read_scope": "首页及§1相关段；P2—7的§2背景、§3算法/并行/算子/数据管道/网络协同、§4容错；§5的开头、CUDA事件监测说明片段与§5.2故障依赖定位案例；P9—12的§6训练性能、收敛微实验、生产稳定性、问题修复，含Table 2/3和Figure 10/11/12图注；§7开头。未精读参考文献、全部图像和其余相关工作。Figure 9—12未视觉核查，结论只取正文、表格和图注明确陈述。",
+      "read_scope": "16页本地PDF；主文physical pp1–13 Abstract与§§1–8全文，含Tables1–3及Figures1–12相关正文/图注。直接视觉复核p4 Figure3、p6 Figure5、p10 Table2/Figure9、p11 Table3/Figures10–11、p12 Figure12。pp14–16参考文献未通读；未复现训练。",
       "research_record": "ai-learning/notes/ai_yanyi_research/phase2/infrastructure_data.json",
-      "research_source_id": "INF-MEGASCALE"
+      "research_source_id": "INF-MEGASCALE",
+      "local_copy_sha256": "4a04bff09d7cd937271662e8ca9a97f0d41eac9be1d35c9c8b2f18f2dc59ad20",
+      "chapter_research_record": "ai-learning/reports/knowledge_reports/.quality/AI演义_14_MegaScale_万卡怎样协同训练_科普讲解_20261105.evidence.json"
     },
     {
       "id": "S-moe",
       "kind": "primary",
       "title": "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer",
       "locator": "https://arxiv.org/pdf/1701.06538v1",
-      "accessed_on": "2026-11-03",
+      "accessed_on": "2026-11-05",
       "version": "arXiv:1701.06538v1 [cs.LG], 23 Jan 2017；首页仍标Under review as a conference paper at ICLR 2017。",
-      "read_scope": "首页题名、作者、机构及版本；§1–6（P1–9）背景、既有MoE工作、稀疏门控、批量/网络工程、均衡损失、语言模型与翻译实验及结论；Tables 1–5；Appendix A（P13–14）负载损失及Table 6；Appendix B开头的两级路由结构。按pdftotext排版文字读取。未全读附录C–E，未逐项核超参和专家语义例句，未视觉核验曲线；本文引用的数字由表格和正文直接支持。",
+      "read_scope": "physical pp1–19排版文本全文，主文§§1–6、附录A–G，含图表图注和参考文献。直接视觉核对p7 Table1、p9 Table5、p13 Table6、p15 Table7、p16 Table8；其余图表按文本/图注读取，不声称全部曲线逐像素核验。未重训或测时。",
       "research_record": "ai-learning/notes/ai_yanyi_research/phase2/efficiency_and_lesson.json",
-      "research_source_id": "EL-MOE"
+      "research_source_id": "EL-MOE",
+      "local_copy": "ai-learning/papers/21_moe_2017.pdf",
+      "sha256": "2567713d198a376b65b92f0c60b9f58c8c5f66755530b92203533a17c4ec4b8e"
     },
     {
       "id": "S-lora",
       "kind": "primary",
       "title": "LoRA: Low-Rank Adaptation of Large Language Models",
       "locator": "https://arxiv.org/pdf/2106.09685v2",
-      "accessed_on": "2026-11-03",
-      "version": "arXiv:2106.09685v2 [cs.CL], 16 Oct 2021；首页Version 2，首位作者在此PDF简写Edward Hu。2021-06-17首发日期沿用source-map已核元数据，不把十月修订当首发。",
-      "read_scope": "首页；§1–6（P1–9）动机、既有适配方案、低秩增量、合并、实际限制、评估设置与Tables 1–4；§7.1–7.2（P10–11）权重选择、秩实验、Table 5/6及脚注6；§7.3（P11–12）解释性分析文字与Table 7；§8开头。未全读附录、未独立复现，未视觉核验热图；本包不将热图或作者机制猜想当因果证明。",
+      "accessed_on": "2026-11-05",
+      "version": "arXiv:2106.09685v2, 2021-10-16, 26页；2021-06-17首次公开。",
+      "read_scope": "正文§§1–8与附录A–H排版文本，含图表图注；参考条目只作定位，未追读所有被引论文。直接核对physical pp1/4/5/8/10/26原图；其余按文本和图注阅读，不声称逐像素核验所有热图。",
       "research_record": "ai-learning/notes/ai_yanyi_research/phase2/efficiency_and_lesson.json",
-      "research_source_id": "EL-LORA"
+      "research_source_id": "EL-LORA",
+      "local_copy": "ai-learning/papers/15_lora_2021.pdf",
+      "sha256": "e9a0d3128767db616085dc0f4e6e455e672e89af823e8ed1282793682787395a",
+      "metadata_receipt": {
+        "artifact": "arxiv-metadata.json",
+        "sha256": "7fdd58c3b5483178ba0f1bf538c9a34dc9a99435dd6b2fe95f3d0fae9bb8a201"
+      },
+      "venue_receipt": {
+        "artifact": "openreview-page.json",
+        "sha256": "12ed4a5120b794fcae94621dab260dd4fec21854ff442b896ada57a21c004eca"
+      }
     },
     {
       "id": "S-bitter",
@@ -348,68 +386,104 @@
       "kind": "primary",
       "title": "Mastering the game of Go without human knowledge",
       "locator": "https://www.nature.com/articles/nature24270",
-      "accessed_on": "2026-11-03",
-      "version": "公开镜像中的Nature排版版；首页DOI nature24270、题名、作者、卷550及2017-10-19页脚与正式页对应",
-      "read_scope": "P354–358正文中的引言、Reinforcement learning、Empirical analysis、Final performance、Conclusion；Methods的Reinforcement learning、Self-play reinforcement learning in games、AlphaGo versions、Domain knowledge、Self-play training pipeline、Search algorithm、Neural network architecture及架构对照。Figures 1–6只读文字图注与邻近正文；不据棋局图复核新定式。未精读后续棋谱和全部Extended Data。",
+      "accessed_on": "2026-11-05",
+      "version": "Nature 550, 354–359, DOI 10.1038/nature24270；本轮镜像PDF18页含Methods与ExtendedData。",
+      "read_scope": "正文pp1–5、Methods pp7–9的实质文本，以及pp10–18 Extended Data图表图注；参考文献未逐篇追读。直接查看原图pp2/3/5/16/17，未逐手复盘附录棋谱。",
       "research_record": "ai-learning/notes/ai_yanyi_research/phase2/alignment_action.json",
       "research_source_id": "AA-S02",
       "retrieved_from": "https://augmentingcognition.com/assets/Silver2017a.pdf",
-      "version_note": "正式Nature页用于身份及作者贡献；方法依据DOI/题名/卷页匹配的公开镜像原文，不冒充出版社页面已开放全文。"
+      "version_note": "正式Nature页用于身份及作者贡献；方法依据DOI/题名/卷页匹配的公开镜像原文，不冒充出版社页面已开放全文。",
+      "sha256": "e2f80d1918bd183894a1b897de46b69a1edabb937ee146530a575268069938ad",
+      "metadata_receipt": {
+        "artifact": "nature-page.json",
+        "sha256": "862a3460f4b914cde0a212ca27dd4196bc02ccf61962909f8aee0bf10e0b0b5e"
+      },
+      "retrieval_receipt": {
+        "artifact": "paper-retrieval.json",
+        "sha256": "08217658f6719ab38365feedfe3c04061f3b6c694600af347e545cb1a0dc7855"
+      }
     },
     {
       "id": "S-instruct",
       "kind": "primary",
       "title": "Training language models to follow instructions with human feedback",
       "locator": "https://arxiv.org/pdf/2203.02155v1",
-      "accessed_on": "2026-11-03",
+      "accessed_on": "2026-11-05",
       "version": "arXiv:2203.02155v1，2022-03-04",
-      "read_scope": "首页身份与作者脚注；P1–12的§1–3.6、§4.1前段，含SFT/RM/PPO、数据来源、标注、KL约束、PPO-ptx、评价口径、偏好结果及Figures 1–5图注；P18–19的§5.2–5.3及§5.4前段。未完整核读§4.2和附录，因此不引用其全套毒性/偏见/公共NLP基准数字。",
+      "read_scope": "本轮读取正文pp1–21（p21只取致谢）、Appendix A.3/A.4 pp33–35、B.1/B.2 p36、C pp40–43、D pp44–48与E pp51–57的所涉内容；未逐篇追读参考文献，未读完68页全部附加案例。直接核Figure1/2与Table14原图。",
       "research_record": "ai-learning/notes/ai_yanyi_research/phase2/alignment_action.json",
-      "research_source_id": "AA-S03"
+      "research_source_id": "AA-S03",
+      "sha256": "c1984bb50a5b90fddb895fdc3a0f72e5bc977148c9f63ef6040cbe7a3e1f0d98",
+      "metadata_receipt": {
+        "artifact": "arxiv-v1.json",
+        "sha256": "90eb446b7c817bce2dd9910129d89b41002a60cf839221d164e5d5984e8d993b"
+      }
     },
     {
       "id": "S-cot",
       "kind": "primary",
       "title": "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models",
       "locator": "https://arxiv.org/pdf/2201.11903v6",
-      "accessed_on": "2026-11-03",
-      "version": "arXiv:2201.11903v6，2023-01-10；首页标NeurIPS 2022，首发年份按source-map为2022",
-      "read_scope": "首页版本、作者、§1–6与§7前段；P20–23 Tables 1–6及Table 7前部。重点核读§2、§3.1–3.4的提示设置、解码方式、结果与消融，以及§6的无微调和推理真实性边界。未精读全量任务提示、错误样本附录及所有后续工作。",
+      "accessed_on": "2026-11-05",
+      "version": "arXiv:2201.11903v6，2023-01-10；v1为2022-01-28",
+      "read_scope": "正文物理pp1–9；附录pp16–23、25–31及p35 Table20。直接视觉核Figure1与Tables1–7所在p20–23；其余所述附录用本地原PDF文本核验。未通读参考文献pp10–15、C部分p24、全部p32–43附加提示/输出；不宣称读全43页。",
       "research_record": "ai-learning/notes/ai_yanyi_research/phase2/alignment_action.json",
-      "research_source_id": "AA-S05"
+      "research_source_id": "AA-S05",
+      "sha256": "7d9f878c23b460e4566aa4ec9201b1abfb3b8faefb2b1356e411cb90fef72a12",
+      "metadata_receipt": {
+        "artifact": "arxiv-v6.json",
+        "sha256": "0d8b6d83855a00eaed7ca0ae93bae19475254f8a20df25e765243870b57815c9"
+      }
     },
     {
       "id": "S-react",
       "kind": "primary",
       "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
       "locator": "https://arxiv.org/pdf/2210.03629v3",
-      "accessed_on": "2026-11-03",
-      "version": "arXiv:2210.03629v3，2023-03-10；ICLR 2023版，首发年份按source-map为2022",
-      "read_scope": "P1–9：版本、作者与实习脚注；§1–5、§6开头；§2交互定义、§3.1–3.3检索动作/提示/混合方法/错误分析、§4环境设置及结果、Tables 1–4。Figure 1图内文字提取乱码，未用它作案例证据；只采用清晰正文、表格与图注。未精读全附录或把§3小模型微调的图形读数当成独立核查。",
+      "accessed_on": "2026-11-05",
+      "version": "arXiv:2210.03629v3，2023-03-10；ICLR2023，v1为2022-10-06",
+      "read_scope": "主文物理pp1–10；附录A.1–A.3/B.1–B.2 pp14–15，C.3/C.4 pp22–25，D.2.3/D.3 pp29–31，E.1 pp32–33。Figure1 p2先eacli视觉再直接核图；其余实验表/描述按原PDF文本核验。未精读参考文献pp10–13、全部C.1/C.2提示pp16–21及D.1/D.2.1/D.2.2 pp26–29；不宣称全文33页逐段已读。",
       "research_record": "ai-learning/notes/ai_yanyi_research/phase2/alignment_action.json",
-      "research_source_id": "AA-S06"
+      "research_source_id": "AA-S06",
+      "sha256": "f285b0971ae4a790e402fb93966bed3adde2cf0a04977d08b2b40d6ab0cace69",
+      "local_file": "ai-learning/papers/17_react_2022.pdf",
+      "current_research_receipt": {
+        "artifact": "source-manifest.json",
+        "sha256": "6b100546bb5adf59b7e7922759f81d305bb058aeefd5dfb502e0f4bd854158d4"
+      }
     },
     {
       "id": "S-tulu",
       "kind": "primary",
       "title": "Tülu 3: Pushing Frontiers in Open Language Model Post-Training",
       "locator": "https://arxiv.org/pdf/2411.15124v5",
-      "accessed_on": "2026-11-03",
-      "version": "arXiv:2411.15124v5，2025-04-14；2024是首发年，不把v5扩展全部倒写为2024首版内容",
-      "read_scope": "首页、目录与Table 1；P5–11的§1–2.4及Tables 2–6；P15–23的§4–5.2及Tables 9–15；P27–32的§5.4–6.2及Tables 18–22；P33–37的§6.2.1–7.1开头及Tables 23–24；P50–51的§9.2、结论、Author Contributions与Acknowledgments。Figures相关结论仅依正文或图注，不从未视觉核查曲线取数。未完整精读§3去污染方法、§5.3全套消融、§7全部unseen评价、§8的405B扩展及附录。",
+      "accessed_on": "2026-11-05",
+      "version": "arXiv:2411.15124v5 2025-04-14；首版2024-11-22，405B等扩展不倒写首版",
+      "read_scope": "协调者核读首页、Table1与p5部分；p7–10、13–17、20–24、27–38、44–46、48–51（至贡献/致谢）、60及67–68。Table23 p36原图先eacli OCR后直接看；Figure28 p67的eacli OCR超时后最小降级直接看本地原图并与文本对照。其它曲线趋势只依正文/图注，不数字化曲线。未逐页精读p6、11–12、18–19、25–26、39–43、47、52–59、61–66、69–82；不宣称82页全文逐字已读。",
       "research_record": "ai-learning/notes/ai_yanyi_research/phase2/alignment_action.json",
-      "research_source_id": "AA-S04"
+      "research_source_id": "AA-S04",
+      "sha256": "79bed1ef4ce4bb332f43bdc87d60709e644560f8f3bb6d14913a473cc82c251f",
+      "local_file": "ai-learning/papers/26_tulu3_2024.pdf",
+      "current_research_receipt": {
+        "artifact": "source-manifest.json",
+        "sha256": "d83ad7985049bbf4cf055eb1f77cfcfe7cb9e82d296441b0099408bad018ffa4"
+      }
     },
     {
       "id": "S-deepvideo",
       "kind": "primary",
       "title": "Large-scale Video Classification with Convolutional Neural Networks",
       "locator": "https://openaccess.thecvf.com/content_cvpr_2014/papers/Karpathy_Large-scale_Video_Classification_2014_CVPR_paper.pdf",
-      "accessed_on": "2026-11-03",
-      "version": "CVPR 2014正式论文集PDF，无arXiv修订号；年月依官方会议入口，不冒充预印本首发日",
-      "read_scope": "PDF P1—8正文：§1—2背景与前驱，§3.1时间融合、§3.2双分辨率、§3.3训练，§4.1 Sports-1M采集/评测及Tables 1—2，§4.2迁移及Tables 3—4，§5结论；参考文献只核AlexNet等关联条目。图注和作者图像解释已读，不把它们算作亲自看图。",
+      "accessed_on": "2026-11-05",
+      "version": "CVPR 2014正式论文集PDF，8页，pp1725–1732；以CVF出版记录为年份依据",
+      "read_scope": "CVPR正式8页PDF全文、Tables1–4及Figure1–5的图注/正文。论文p3–7原图先经eacli typed图像调用（两项BackendTimeout）后本地逐页查看，核结构/表值/标签排序；无补充混淆矩阵、无视频或GIF观看。参考文献可见，不等于逐篇精读。",
       "research_record": "ai-learning/notes/ai_yanyi_research/phase2/vision_alignment.json",
-      "research_source_id": "VA-S01"
+      "research_source_id": "VA-S01",
+      "sha256": "662dd2baee30667b3e591b18c71010d1688837e03057f861d38ed832b411499e",
+      "current_research_receipt": {
+        "artifact": "source-manifest.json",
+        "sha256": "99dbabd1e2fe240a22be88c3c10c3f8fff6beb616671b4377d45ed6b62cc054d"
+      }
     },
     {
       "id": "S-two-stream",
@@ -518,6 +592,22 @@
       "locator": "ai-learning/notes/ai_yanyi_research/source-map.json",
       "accessed_on": "2026-11-03",
       "read_scope": "51页/36对象完整清单、对应原文、身份纠正与待核外围判断；身份核定不冒充全文精读。"
+    },
+    {
+      "id": "S-ai-yanyi-episode",
+      "kind": "primary",
+      "title": "张小珺 Jùn 第117期《AI演义》：LoRA 段落及shownotes",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-05",
+      "published_on": "2025-10-28",
+      "read_scope": "已恢复ASR本章153段完整阅读，5407.70–5688.37秒；shownotes全文读取但只用Part1/LoRA定位，无官方逐章精确时间。没有听校或WER。Apple收据沿用前轮公开读取，不冒称本轮联网播放。",
+      "alternate_locator": "https://podcasts.apple.com/cn/podcast/id1634356920?i=1000733801180",
+      "shownotes_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5",
+      "metadata_receipt": {
+        "artifact": "apple-episode-read.json",
+        "sha256": "b43f4f8def7905b5a01e9a6ec9924bfec82015690f200b3412b3b2129f01584c"
+      },
+      "chapter_transcription_review": "ai-learning/reports/knowledge_reports/.quality/AI演义_16_LoRA_少量参数怎样适配新任务_科普讲解_20261105.transcription-review.json"
     }
   ],
   "claims": [
@@ -531,22 +621,22 @@
         "S-gpu-history"
       ],
       "critical": true,
-      "evidence": "Brook作者稿§1–4说明stream/kernel/reduction及编译运行时，§5–6讨论传输与调用代价；CUDA关系另由NVIDIA历史短文核定。"
+      "evidence": "Brook作者稿§1–4说明stream/kernel/reduction及编译运行时，§5–6讨论传输与调用代价；CUDA关系另由NVIDIA历史短文核定。 本次导读以自拟数字演示论文§3.2 SAXPY的逐元素乘加，§3.3说明规约；§2与§3.2对比已有着色器语言及宿主端配置/纹理/绘图调用负担。示例为教学算术，不是论文实测数据。"
     },
     {
       "id": "C-alexnet",
-      "claim": "AlexNet把数据、CNN、训练配方与GPU实现组织成大规模表示学习方案；原文主模型约6000万参数、两张各3GB GTX580，不能将整体结果归为单一技巧。",
+      "claim": "AlexNet把已有CNN路线、大规模标注、高效GPU实现、ReLU及防过拟合方法组合起来；基础训练约120万图/1000类、约6000万参数、双GTX580各3GB训练5–6天；2012年15.3% top-5 test是含额外预训练的七模型集成，第二名26.2%。",
       "report_anchor": "paper-alexnet",
       "support": "direct",
       "source_ids": [
         "S-alexnet"
       ],
       "critical": true,
-      "evidence": "正式论文§1–5的架构、数据、双GPU与正则化设置；§3.2说明每卡3GB及分割；参数约6000万为原文口径。"
+      "evidence": "NIPS2012原论文§1–5支持数据、架构、训练目标、ReLU、双卡分割、增强与Dropout；§6/Table2严格区分单CNN18.2% val、7CNNs*15.4% val/15.3% test及第二名26.2% test，正文说明其中两个CNN先在更大全库上预训练。猫照片为教学例子。"
     },
     {
       "id": "C-resnet",
-      "claim": "ResNet针对加深后训练也可能退化的问题学习残差修正；Transformer明确采用并引用残差连接，组件传播不等于模型整体相同。",
+      "claim": "ResNet通过输入捷径和特征修正缓解加深后的训练退化；修正由最终监督共同训练，原版相加后还有ReLU；CIFAR10的1202层训练误差<0.1%而测试不如110层，优化和泛化须分别看。Transformer明确采用并引用残差组件，不等同整套CNN。",
       "report_anchor": "paper-resnet",
       "support": "derived",
       "source_ids": [
@@ -554,44 +644,44 @@
         "S-transformer"
       ],
       "critical": true,
-      "evidence": "ResNet§1、§3及§4.1比较plain/residual训练；Transformer§3.1与参考文献[11]明确残差采用。"
+      "evidence": "ResNet§1、§3.1–3.4、§4.1/Figure4、§4.2/Table6与千层讨论；0.6/−0.1/0.5标为自拟中间特征例。Transformer§3.1与ref[11]明确采用。本轮重读所引范围；其余正文沿用r5。"
     },
     {
       "id": "C-distillation",
-      "claim": "蒸馏通过教师预测分布监督学生，把训练和部署的模型形态分开，不是无损复制参数或大语言模型时代才出现的思想。",
+      "claim": "蒸馏以教师预测关系监督学生，将训练/部署形态分开；温度使软目标更平缓。语音Table1十模型/学生/基线帧准确率61.1/60.8/58.9%，学生与基线同规模，不等于实测十倍加速或无损拷贝。2015原文承认2006模型压缩前驱。",
       "report_anchor": "paper-distillation",
       "support": "direct",
       "source_ids": [
         "S-distill"
       ],
       "critical": true,
-      "evidence": "蒸馏§1–2区分训练/部署与软目标，§3–4及Table 1给出任务结果，§8限定未完成的specialist再蒸馏。"
+      "evidence": "2015§1–2及参考文献[1]支持训练/部署、温度和前驱；§4–4.1/Table1支持语音帧分类比较与单学生/基线同结构。类别示例为教学解释，未据此扩展当前产品或保证。"
     },
     {
       "id": "C-word2vec",
-      "claim": "Word2Vec的CBOW/Skip-gram以局部预测学习可复用词表示，不是首次向量化语言，也不等于完整上下文网络。",
+      "claim": "Word2Vec通过CBOW/Skip-gram局部预测学习可复用静态词表，向量不是人工标注，也非连续表示首创；架构对照各有优势，填空48.0%与组合58.9%表明部件互补，不能据类比认定完整语言理解或同词按句消歧。",
       "report_anchor": "paper-word2vec",
       "support": "direct",
       "source_ids": [
         "S-word2vec"
       ],
       "critical": true,
-      "evidence": "Word2Vec§1.2承认连续表示前史，§2–3定义CBOW/Skip-gram及计算目标；Tables 3/7说明部件价值与互补。"
+      "evidence": "§1.2前史，§2–3任务/共享参数/固定词表与CBOW平均、§4.2 SGD/backprop；§4.3 Table3同320M/82K/640d下CBOW语义24%句法64%、Skip55%/59%；§4.4 DistBelief异步CPU；§4.5 Table7的Skip48.0%、RNNLMs55.4%、组合总体58.9%。"
     },
     {
       "id": "C-seq2seq",
-      "claim": "LSTM seq2seq通过固定规模状态连接变长输入输出；直接翻译与SMT候选重排是不同实验。",
+      "claim": "LSTM seq2seq以固定规模状态连接变长输入输出并输出EOS；源句倒序缩短部分依赖，五模型直接翻译34.81高于基线33.30、单模型30.59未超过；倒序模型长句良好，不能把固定状态当必败。",
       "report_anchor": "paper-seq2seq",
       "support": "direct",
       "source_ids": [
         "S-seq2seq"
       ],
       "critical": true,
-      "evidence": "seq2seq§1–2定义固定规模状态与变长输出；§3.1–3.6、Tables 1–2区分直接翻译与候选重排。"
+      "evidence": "§1–2、§3.1–3.7、Tables1–2和Figure3；34.81为5个倒序LSTM、beam12，30.59为单模型beam12；端到端仍依数据、训练、搜索与GPU工程。只源句倒序且作者解释有不确定性。"
     },
     {
       "id": "C-bahdanau-attention",
-      "claim": "Bahdanau Attention按生成步骤加权读取源位置表示，仍保留循环结构；与Sutskever论文的理解次序不等于首次发表先后。",
+      "claim": "Bahdanau用双向源annotations及上一步decoder state按步打分、加权读context，联合学软对齐；仍为循环且使用Cho门控单元。完整集最好28.45低于Moses33.30，No UNK子集条件不同；v1 09-01早于seq2seq09-10，不构成严格接力或无限记忆。",
       "report_anchor": "paper-bahdanau-attention",
       "support": "direct",
       "source_ids": [
@@ -599,11 +689,11 @@
         "S-seq2seq"
       ],
       "critical": true,
-      "evidence": "Bahdanau§3.1–3.2定义逐步骤软读取、§6.1讨论计算；两篇arXiv版本历史分别为2014-09-01和09-10，不按本文问题顺序倒写。"
+      "evidence": "§3–5/Table1、长句医生案例、§6–7、AppendixA实现；无未来目标词作为打分输入，读法与翻译目标联合训练。Figure2的30词模型超长仍下降。官方arXiv历史与当前v7/v3版本分开；成本/OOV/循环与训练分布限制保留。"
     },
     {
       "id": "C-gnmt",
-      "claim": "GNMT仍为循环编码—解码系统，结合Attention、WordPiece、残差与部署工程；BERT的WordPiece采用引用GNMT。",
+      "claim": "GNMT用8+8层循环网络、残差、WordPiece、搜索与整数推理处理部署问题；500例Table9中8模型RL使BLEU40.35→41.16而人评4.46→4.44，生产实验未用RL；BERT引用GNMT的WordPiece。",
       "report_anchor": "paper-gnmt",
       "support": "direct",
       "source_ids": [
@@ -611,33 +701,33 @@
         "S-bert"
       ],
       "critical": true,
-      "evidence": "首页作者署名；GNMT§3.1–3.3、§4.1、§6说明循环架构/WordPiece/低精度；BERT§3输入表示及Wu et al. 2016引用提供部件连接。"
+      "evidence": "GNMT§3–7、§8.2/8.6/Table9/8.7：整数量化与训练全精度区分，Table9为4份译文人评，0–6分、500例；不由小差异断言显著伤害。BERT§3与Wu引用。"
     },
     {
       "id": "C-transformer",
-      "claim": "Transformer以self-attention构造序列表示、改变位置递归依赖，原始自回归生成仍逐步进行；并非全网络只剩Attention。",
+      "claim": "Transformer通过同层输入的QKV自注意力减少位置循环依赖，含多头/位置/FFN/残差/LayerNorm；目标右移与mask可训练并行，原生成仍自回归；两两匹配有平方代价，WordPiece/长度惩罚引用GNMT。",
       "report_anchor": "paper-transformer",
       "support": "direct",
       "source_ids": [
         "S-transformer"
       ],
       "critical": true,
-      "evidence": "Transformer§3.1–3.2.3给出自注意力/交叉注意力/mask，§4/Table 1比较依赖路径，§3开头保留自回归生成。"
+      "evidence": "§3/图1–2核三路Attention与信息依赖、§4/Table1核n<d等比较条件及平方成本、§5.1/§6.1与References核GNMT部件迁移。"
     },
     {
       "id": "C-gpt1",
-      "claim": "GPT-1预训练上下文处理网络再通过任务监督微调适配，迁移范围超出词表，但不等于冻结权重直接完成所有任务。",
+      "claim": "GPT-1以因果语言预测预训练上下文网络，再通过任务输入与标签微调；末位能综合全文。Table5完整74.7对无预训59.9为混合平均分；RTE56.0低于61.7，不能写全任务成功或冻结权重即用。",
       "report_anchor": "paper-gpt1",
       "support": "direct",
       "source_ids": [
         "S-gpt1"
       ],
       "critical": true,
-      "evidence": "GPT-1§3的无监督预训练与监督微调、输入转换；§2列明前驱，Table 5比较无预训练设置。"
+      "evidence": "GPT §2–4、Tables2/5、Figure1；黑猫为教学例，相关层数和语言语料等细节由独立展开解释。"
     },
     {
       "id": "C-bert",
-      "claim": "BERT以双向遮蔽及句对目标获取可迁移能力，主要仍监督微调；与自回归目标是分叉，不是永久淘汰关系。",
+      "claim": "BERT是双向encoder，用MLM与NSP二分类预训练并通过任务标签微调；SQuAD抽取span。Base且都无NSP的对照中，MLM SQuAD Dev F1为87.9，LTR为77.8；不外推全任务优劣或把多个变量归于单开关。",
       "report_anchor": "paper-bert",
       "support": "direct",
       "source_ids": [
@@ -645,11 +735,11 @@
         "S-gpt1"
       ],
       "critical": true,
-      "evidence": "BERT§3定义遮蔽和句对目标与微调，§5.1/Table 5比较目标；与GPT-1目标对照不是全任务胜负判决。"
+      "evidence": "BERT §3–4.3/Table5/AppendixA4；v2版本与首版区别，原论文承认前驱。"
     },
     {
       "id": "C-gpt2",
-      "claim": "GPT-2将无需任务参数更新的迁移作为重点，输入形式可指定任务；其zero-shot用语不能机械等同GPT-3零示例定义。",
+      "claim": "GPT-2通过任务文本调用无梯度迁移；WebText为外链正文约40GB。摘要R-AVG无提示15.03/有提示21.40/开头3句31.55，CoQA dev约55F1；zero-shot不全是零示例。",
       "report_anchor": "paper-gpt2",
       "support": "direct",
       "source_ids": [
@@ -657,11 +747,11 @@
         "S-gpt3"
       ],
       "critical": true,
-      "evidence": "GPT-2§2–3说明WebText、任务前缀和无梯度迁移；§3.5–3.8中部分任务含示例，§4讨论记忆与泛化。"
+      "evidence": "GPT-2 §2/§3.5–3.7/Table4；GPT-3引言脚注1。黑猫输入为教学示意。"
     },
     {
       "id": "C-gpt3",
-      "claim": "GPT-3系统区分不同示例设置，few-shot主要改变输入而非任务梯度；175B参数、300B训练tokens及资源配置依据不因少样本使用而消失。",
+      "claim": "GPT-3区分零/单/少示例，固定权重而输入/表示变化；8档125M–175B每档300Btoken。CoQA dev81.5→85.0F1；WiC test32shot49.4%，LAMBADA单例可更差；570GB只指CommonCrawl；未做本体微调，过滤bug和目标局限仍存在。",
       "report_anchor": "paper-gpt3",
       "support": "direct",
       "source_ids": [
@@ -669,22 +759,22 @@
         "S-kaplan"
       ],
       "critical": true,
-      "evidence": "GPT-3§2定义zero/one/few-shot与微调，Tables 2.1–2.2、§2.1–2.3记录175B/300B及资源；正文引用Kaplan指导配置。"
+      "evidence": "GPT-3 §2/Tables2.1–2.2；Tables3.2/3.7/3.8；§4–5/AppendixC；Contributions p42支撑正式人物分工与规模决策，不据原论文证明组织动机。"
     },
     {
       "id": "C-scaling-laws",
-      "claim": "Scaling Laws以有条件经验规律研究规模与训练预算分配，不等于任何能力对参数规模无条件单调。",
+      "claim": "Scaling Laws以有条件的语言建模loss经验规律研究参数/数据/计算；较大模型可更省样本，预算内有最优规模，提前停止不同于自身收敛，自拟预算例子仅解释主要计算近似。",
       "report_anchor": "paper-scaling-laws",
       "support": "direct",
       "source_ids": [
         "S-kaplan"
       ],
       "critical": true,
-      "evidence": "Kaplan§1/Figure 1与§6说明条件性规模规律、效率前沿及预算分配；不是训练至收敛必然最省计算。"
+      "evidence": "Kaplan§1–2/Figure1、§6/Figures12–14、AppendixB.3/B.4；人物按首页Contributions；主要计算近似支持教学乘法，不将loss当所有任务正确率。"
     },
     {
       "id": "C-chinchilla",
-      "claim": "Chinchilla在共同预算问题上重新测量参数与训练量分配，强调随预算共同增长，不是模型越小越好或否定缩放研究。 论文同训练计算预算下的Chinchilla为70B参数/1.4T训练tokens，Gopher为280B/300B；所报告多项下游评价改善。",
+      "claim": "Chinchilla比较>400模型、同时扫规模/时长并匹配学习率，重新估计参数/训练量配比；各翻倍约四倍主要计算。论文同训练FLOPs下70B/1.4T对280B/300B，MMLU57任务5-shot均值60.0→67.6%，但有持平/退步且数据、优化器、tokenizer等混杂。",
       "report_anchor": "paper-chinchilla",
       "support": "derived",
       "source_ids": [
@@ -692,11 +782,11 @@
         "S-kaplan"
       ],
       "critical": true,
-      "evidence": "Hoffmann§2–3、Figures 2–3及Table 2重新扫描规模/时长并比较分配；§4验证模型，未把单个配置当永久最优。 本轮重新读取v1摘要、§1、Table 1及§4：参数700亿/2800亿、tokens 1.4万亿/3000亿；不将same compute误写成同墙钟时间或同费用。"
+      "evidence": "§2–3/Table2，§4/Table1/6，§4.1及AppendicesA/B/F/G；采用正文67.6非摘要67.5；不把同算力等同耗时费用，较小模型推理收益见Kaplan B.4与Chinchilla§4。"
     },
     {
       "id": "C-zero",
-      "claim": "ZeRO分片训练状态以改善显存可行性，通信与其他状态仍有代价；它与训练预算优化是互补层次而非Chinchilla的历史后继。",
+      "claim": "ZeRO按阶段分片模型状态；混合Adam的15亿参数需24GB状态，四卡推算10.5/8.25/6GB而非总峰值；v3实测前两阶段加ZeRO-R，容量/吞吐与完整训练分开，CPU激活卸载有反例。它与Chinchilla是互补问题而非历史后继。",
       "report_anchor": "paper-zero",
       "support": "derived",
       "source_ids": [
@@ -704,11 +794,11 @@
         "S-chinchilla"
       ],
       "critical": true,
-      "evidence": "ZeRO§3–9及Tables 1–2定义状态分片与通信，§10说明实现范围；发表先于Chinchilla，本文只作层次互补对照。"
+      "evidence": "ZeRO§3的16字节/参数账本；§5–7分片与通信；§9容量/算力界限；§10实测stage1/2+R、400V100/170B与60B C4→C5反例；首次2019先于Chinchilla。四卡数字为本文推算。"
     },
     {
       "id": "C-megascale",
-      "claim": "MegaScale将并行、通信、数据加载、观测与容错共同组织，使名义算力成为可持续进度；正文明确讨论ZeRO状态分片及通信。",
+      "claim": "MegaScale以算法/系统协同、通信重叠、深层观测和checkpoint恢复组织万卡单作业：175B/12288GPU/batch6144，MFU41.2%→55.2%（14个百分点、约1.34倍）；时间线可追到代码抖动造成同步等待。另一数周生产run经历>100次重启而持续推进，有效训练时间率>90%；该率、MFU与无停顿运行不可混用。",
       "report_anchor": "paper-megascale",
       "support": "direct",
       "source_ids": [
@@ -716,11 +806,11 @@
         "S-zero"
       ],
       "critical": true,
-      "evidence": "MegaScale§2–4给出并行、通信重叠、数据和容错，§6记录系统实验；正文明确介绍ZeRO状态分片。"
+      "evidence": "§§2–5说明3D并行、ZeRO2状态分片、并行block/LAMB与计算通信重叠、诊断和checkpoint流程。Table2具体性能配置；§6.2用13B微实验核损失，Figure11为独立专有生产run；§6.3记录GC/PyTorch时序抖动和两种恢复时间/有效训练时间率。原节首展开入口及完整第14节详解共同验收。S-zero关系继承已核基线，MegaScale§2明确介绍ZeRO。"
     },
     {
       "id": "C-laion5b",
-      "claim": "LAION利用CLIP筛选图文配对并支持OpenCLIP训练，构成模型—数据反馈；它不是原始CLIP数据，开放索引不自动解决版权与偏差。",
+      "claim": "LAION从网页图文借CLIP筛出5.85B配对并支持OpenCLIP；L/14同为34B累计样本的2B-en/400M对照为75.40%/73.90%，小模型低预算有反例；元数据、自动安全标签、版权及团队资源各有边界，图文检索与生成不同。",
       "report_anchor": "paper-laion5b",
       "support": "direct",
       "source_ids": [
@@ -728,11 +818,11 @@
         "S-clip"
       ],
       "critical": true,
-      "evidence": "LAION§3.1–3.2说明CLIP筛选，§5.2/Table 2给出OpenCLIP训练，§6–7及datasheet说明偏差和许可边界。"
+      "evidence": "§3–5、图2、表2；p42表6支持同模型同累计次数对照及B/32低预算反例；§3.2/6–7、datasheet Q14/Q48–49、F.1/F.2、p49–50说明标签、许可、生成用途和资源。S-clip的前序读取用于原始CLIP定义，未借此声称本轮重读全CLIP。"
     },
     {
       "id": "C-refinedweb",
-      "claim": "RefinedWeb引用Chinchilla的数据需求并以清洗/去重和训练对照检验网页数据价值，不证明精选来源永久无用或数据无限。",
+      "claim": "RefinedWeb承接Chinchilla数据需求，正文提取/过滤/两类去重须以训练对照检验：表4 1B@27B的RW56.2/Pile53.4/C455.7，表5 OSCAR过滤52.7→52.3；团队人工及资源仍必要，不证明精选来源失效或数据无限。",
       "report_anchor": "paper-refinedweb",
       "support": "direct",
       "source_ids": [
@@ -740,44 +830,46 @@
         "S-chinchilla"
       ],
       "critical": true,
-      "evidence": "RefinedWeb§1/Scale first明确引用Hoffmann；§3–4及Tables 2–5说明处理和比较层级，§5–6保留限制。"
+      "evidence": "§1及§3–5；Table4/5原图核数，百分点与模型/token预算绑定；G.3.2精确去重删除全部匹配片段且可能断句，G.4为数据处理资源，附录A为TII创建资助。"
     },
     {
       "id": "C-sparse-moe",
-      "claim": "2017稀疏MoE在LSTM系统中分离总专家容量与每输入激活计算；路由、批量、负载和通信仍决定实际效率。",
+      "claim": "2017稀疏MoE在LSTM中分离总专家容量与每输入激活计算；路由/批量/负载/通信决定实际效率。1B-word十轮4→4096专家的PPL45.0→34.1、前向ops8.4M→8.9M并非费用千分之一；100B-word最大专家配置质量和硬件效率退化。",
       "report_anchor": "paper-sparse-moe",
       "support": "direct",
       "source_ids": [
         "S-moe"
       ],
       "critical": true,
-      "evidence": "MoE首页为2017-01-23，§2–4说明top-k门控、批量、网络和均衡；§5–6/Tables 1–5展示特定任务与资源条件。"
+      "evidence": "§§1–5、Figure1、Table6/7/8、AppendicesA–G；Table7每输入4专家、4096为层次路由，ops排除softmax；Table8固定约2.5M词batch、64→128K40，PPL28.9→29.2、TFLOPS/GPU0.72→0.30。"
     },
     {
       "id": "C-lora",
-      "claim": "LoRA冻结基座、学习低秩更新；省适配状态和任务增量而非取消基座计算，可合并部署结论有固定线性任务等条件。",
+      "claim": "LoRA冻结基座、学习低秩更新并在固定线性任务下合并；单层参数演算不等于整模型压缩或提速，SAMSum有基准优势但自动指标与rank有边界；资源需分账，节目个人记忆只是待验证设想。",
       "report_anchor": "paper-lora",
       "support": "direct",
       "source_ids": [
-        "S-lora"
+        "S-lora",
+        "S-ai-yanyi-episode",
+        "S-lecture"
       ],
       "critical": true,
-      "evidence": "LoRA§4定义低秩更新及固定线性层合并，并讨论多任务批次限制；§5、§7.1–7.2说明适配结果和秩边界。"
+      "evidence": "Figure1、§4、p5脚注4–5、Table4/5/6/18与AppC/D.4；原节4096/r8参数为教学演算；完整153段ASR中的记忆讨论归因节目，原论文未做删除/追溯/隔离测试；转写核查见展开篇sidecar。 原节补充Adapter非线性支路、讲义ResNet类比及Diffusion后续应用边界，限讲义physical p19。"
     },
     {
       "id": "C-alphago-zero",
-      "claim": "AlphaGo Zero通过自弈、搜索与网络训练形成反馈循环；不依赖人类棋谱不等于没有规则和设计，不能据此建立到LLM thinking的直接历史因果。",
+      "claim": "AlphaGo Zero从随机权重通过p/v网络、MCTS与(pi,z)训练闭环不依赖人类棋谱；区分三天/四十天、36h/72h、Lee/Master、4TPU搜索与梯度优化；职业棋谱预测54.3/49.0不等于棋力；规则/评价/模拟条件限制迁移。",
       "report_anchor": "paper-alphago-zero",
       "support": "direct",
       "source_ids": [
         "S-alphago"
       ],
       "critical": true,
-      "evidence": "Nature正式元数据与镜像首页DOI一致；P354–358及Methods的Self-play、Domain knowledge、Search说明学习/搜索/规则边界。"
+      "evidence": "Figures1/2/3/6、Methods AlphaGo versions/Optimization/Evaluator/Search/Domain knowledge/Evaluation，ExtendedDataTable1。A/B仅机制示意；40天权重重新初始化但搜索参数借助小实例优化；监督损失MSE权重0.01，不能称单变量对照。"
     },
     {
       "id": "C-instructgpt",
-      "claim": "InstructGPT在GPT-3上用示范、偏好比较、奖励建模与优化改变行为目标；评价偏好具有提示分布和人群边界。 原提示分布下，1.3B InstructGPT输出较175B GPT-3更受人类评价者偏好。",
+      "claim": "InstructGPT在既有GPT3上应用RLHF，以示范、比较、RM和PPO改变回答行为；KL限制偏离、ptx保留原语言学习；13亿更受偏好于1750亿受分布/人群限定，不代表全能力超越。错误前提、能力回退和有害指令仍有风险。",
       "report_anchor": "paper-instructgpt",
       "support": "direct",
       "source_ids": [
@@ -785,22 +877,22 @@
         "S-gpt3"
       ],
       "critical": true,
-      "evidence": "InstructGPT§1–3.6定义GPT-3基座、SFT/RM/PPO和标注；§4.1、§5.2–5.3限定偏好结果、人群及残余问题。 本轮重新核对摘要中的1.3B与175B及our prompt distribution限定。"
+      "evidence": "§2–3、Figures1/2；§4.1–4.3及Figure9；AppendixC/E区分KL/ptx与实做配置；§5.2–5.4人群和安全边界。通知是教学例；本轮重读指定原文，非复训。"
     },
     {
       "id": "C-cot",
-      "claim": "CoT提示改变推理时的输入与生成组织，不要求为该提示实验再训练参数；多写token本身不保证同样收益。",
+      "claim": "CoT在few-shot示范中加入中间步骤，不为本提示实验微调；可见步骤参与后续生成但不保证忠实。PaLM540B GSM8K1319题8示例greedy无计算器17.9→56.9%，SingleOp94.1不变；点号/事后解释无同等收益，苹果派反例终答正确但语义颠倒。",
       "report_anchor": "paper-cot",
       "support": "direct",
       "source_ids": [
         "S-cot"
       ],
       "critical": true,
-      "evidence": "首页作者署名；CoT§2–3.4说明few-shot中间步骤提示，§6说明未为该法微调；Table 6区分CoT与无信息点号等对照。"
+      "evidence": "Figure1、§2–3.3与E.2；Tables1/3/6/12核数值、设置、样本；Table9核真实反例。后续方法在展开稿的一手摘要边界下讨论；不是本轮模型复现。"
     },
     {
       "id": "C-react",
-      "claim": "ReAct交错语言推理、动作和环境观察，使过程接受外部信息；交互不等于每轮参数训练，也不消除所有错误。",
+      "claim": "ReAct在冻结模型提示下交错推理、动作和真实观察；Apple Remote例展示查找失败后的调整，Act-only查询后仍可能答非所问。FEVER改善而HotpotQA低于CoT，检索失败与重复动作仍存在；微调另属训练阶段。",
       "report_anchor": "paper-react",
       "support": "direct",
       "source_ids": [
@@ -808,11 +900,11 @@
         "S-cot"
       ],
       "critical": true,
-      "evidence": "ReAct§2–4与Tables 1–4定义thought/action/observation和冻结模型提示实验；§3.3记录错误与任务差异。"
+      "evidence": "本轮直接核Figure1；§2–4、Tables1–4。CoT/ReAct的Hotpot29.4/27.4、FEVER56.3/60.9；原图Obs3省略，不补完整返回；提示/微调/既有前驱分开。"
     },
     {
       "id": "C-tulu3",
-      "claim": "Tülu 3把数据策展、SFT、偏好优化、RLVR及评价展开；模型基座为Llama3.1，示范/偏好/可核验反馈各有分工。",
+      "claim": "Tülu3公开数据与三段参数训练/评测；SFT、DPO、RLVR信号不同。Figure28说明关键词检查可遗漏任务，Table23数学改善伴随安全等回退；结果验证不保证完整推理正确，工具/记忆不自动获得。",
       "report_anchor": "paper-tulu3",
       "support": "direct",
       "source_ids": [
@@ -820,18 +912,18 @@
         "S-instruct"
       ],
       "critical": true,
-      "evidence": "首页作者署名；Tulu v5§2–2.4给出数据策展和三种训练阶段；§4–6区分SFT、DPO、RLVR及反馈；原文基座为Llama3.1。"
+      "evidence": "本轮核§2–6、Table23 p36和Figure28 p67原图；8B GSM84.3→87.6、70B93.5不变、安全87.2→85.5；§7/8.3评测和未解范围。彩笔题为明示的教学构造，不是论文样本。"
     },
     {
       "id": "C-deepvideo",
-      "claim": "DeepVideo比较视频时间融合与数据条件，多帧输入不自动解决运动表示；它是视频理解而非生成研究。",
+      "claim": "DeepVideo比较RGB视频分类中的时间连接；Single也聚合多时刻，VideoHit1为59.3/Slow60.9/Early57.7，63.9属四CNN集成。弱标数据、相机干扰假说、多分辨率成本与Sports1M→UCF迁移共同限定收益，未把ImageNet架构相似当权重初始化。",
       "report_anchor": "paper-deepvideo",
       "support": "direct",
       "source_ids": [
         "S-deepvideo"
       ],
       "critical": true,
-      "evidence": "DeepVideo§3比较时间融合，§4及Tables 1–4记录Sports-1M与迁移；不把帧数增多自动等同运动理解。"
+      "evidence": "本轮完整8页与p3–7 Figures1–5/Tables1–4原图；20clip×4crop/flip平均，AP+0.12/-0.07为不同指标；训练提速2–4倍受实现限定；UCF顶3 65.4/从头41.3，摘要63.3冲突与数据重叠保留。"
     },
     {
       "id": "C-two-stream",
@@ -1365,7 +1457,8 @@
       "source_ids": [
         "S-gpt1"
       ],
-      "report_anchor": "paper-gpt1"
+      "report_anchor": "paper-gpt1",
+      "notes": "r11实质更新原节，用黑猫例、关系分类、预训练对照与RTE失败说明迁移；节首有展开链接。"
     },
     {
       "id": "U-bert",
@@ -1376,7 +1469,8 @@
         "S-bert",
         "S-gpt1"
       ],
-      "report_anchor": "paper-bert"
+      "report_anchor": "paper-bert",
+      "notes": "r11说明encoder/MLM/NSP与片段抽取，保留无NSP对照和数据/版本边界。"
     },
     {
       "id": "U-gpt2",
@@ -1387,7 +1481,8 @@
         "S-gpt2",
         "S-gpt3"
       ],
-      "report_anchor": "paper-gpt2"
+      "report_anchor": "paper-gpt2",
+      "notes": "r12在主稿中实质讲解黑猫问答、任务文本、外链数据和摘要失败；节首展开入口。"
     },
     {
       "id": "U-gpt3",
@@ -1398,7 +1493,8 @@
         "S-gpt3",
         "S-kaplan"
       ],
-      "report_anchor": "paper-gpt3"
+      "report_anchor": "paper-gpt3",
+      "notes": "r12直接说明示例设置、权重/输入、实验反例、训练成本/污染、人物分工；展开补任务细节与读源范围。"
     },
     {
       "id": "U-scaling-laws",
@@ -1477,17 +1573,19 @@
     },
     {
       "id": "U-lora",
-      "title": "LoRA: Low-Rank Adaptation of Large Language Models",
+      "title": "LoRA低秩适配、资源与任务实证，以及节目记忆设想的边界",
       "importance": "core",
       "status": "included",
       "source_ids": [
-        "S-lora"
+        "S-lora",
+        "S-ai-yanyi-episode",
+        "S-lecture"
       ],
       "report_anchor": "paper-lora"
     },
     {
       "id": "U-alphago-zero",
-      "title": "Mastering the game of Go without human knowledge",
+      "title": "AlphaGo Zero的自弈搜索训练闭环、两次真实实验、模仿与棋力差别，以及规则和迁移条件",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -1497,7 +1595,7 @@
     },
     {
       "id": "U-instructgpt",
-      "title": "Training language models to follow instructions with human feedback",
+      "title": "InstructGPT的示范/偏好/RM/PPO闭环，偏好与能力区别、人群及真实失败边界",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -1508,7 +1606,7 @@
     },
     {
       "id": "U-cot",
-      "title": "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models",
+      "title": "CoT的few-shot步骤与上下文、无微调边界、单链实验和消融、任务差异及正确答案中的语义错误",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -1518,35 +1616,38 @@
     },
     {
       "id": "U-react",
-      "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
+      "title": "ReAct：推理怎样用上环境反馈",
       "importance": "core",
       "status": "included",
       "source_ids": [
         "S-react",
         "S-cot"
       ],
-      "report_anchor": "paper-react"
+      "report_anchor": "paper-react",
+      "coverage_note": "原第20节独立解释查询实例、三类记录、参数不变与正反实验；更细API/消融/失败和口述分析见配对展开。原节未声称穷尽本章全部实验。"
     },
     {
       "id": "U-tulu3",
-      "title": "Tulu 3: Pushing Frontiers in Open Language Model Post-Training",
+      "title": "Tülu3：示范、偏好和可验证反馈怎样组成开放后训练配方",
       "importance": "core",
       "status": "included",
       "source_ids": [
         "S-tulu",
         "S-instruct"
       ],
-      "report_anchor": "paper-tulu3"
+      "report_anchor": "paper-tulu3",
+      "coverage_note": "原第21节独立交代流程、例子、实际收益/回退、检查器失效与评测边界；详细数据/算法/工程/口述核验见配对展开，不将展开链接算作原节已逐项覆盖。"
     },
     {
       "id": "U-deepvideo",
-      "title": "Large-scale Video Classification with Convolutional Neural Networks",
+      "title": "DeepVideo：时间信息怎样进入视频分类，收益为何有限",
       "importance": "core",
       "status": "included",
       "source_ids": [
         "S-deepvideo"
       ],
-      "report_anchor": "paper-deepvideo"
+      "report_anchor": "paper-deepvideo",
+      "coverage_note": "原22节独立解释三种融合、单帧评测口径、弱标签、真实收益/退步、成本和迁移边界；详细采样、按类案例、速度与迁移表在展开篇，不把链接本身当原节逐项完整覆盖。"
     },
     {
       "id": "U-two-stream",
@@ -1781,7 +1882,7 @@
     "essay_articles": 1,
     "note": "论文研究范围按用户最新限定；不是全文逐公式/全图表审计。"
   },
-  "revision_note": "2026-11-04：按原用户少数学、发展路径细致与多视角串联要求修订。保留36对象、原来源版本、已有事实纠错；增加术语、两段跨路线解释与两项可理解的实验对照，压缩重复限定。原研究模型与记录保留在generation_history；本轮是修订和定向复核，未声称重新精读全部论文或复现训练。工作台实测发现脚注未解析、自定义锚点被转义，修复真实渲染入口并做安全/跳转回归。",
+  "revision_note": "r25：仅实质改写第22节DeepVideo及deepvideo脚注，更新S-deepvideo/C-deepvideo/U-deepvideo/R11。前21节及其余正文/证据按r24通过快照严格继承；本轮只重新核目标节，不声称重读全部历史来源。",
   "generation_history": [
     {
       "revision_round": 2,
@@ -1793,6 +1894,155 @@
         "override_reason": ""
       },
       "revision_note": "revision 2：按首轮主审建议补充已核作者姓名与合作锚点，未扩展新技术结论、研究对象或后续履历。"
+    },
+    {
+      "revision_round": 11,
+      "generator": {
+        "model": "gpt-6-astra",
+        "harness": "codex",
+        "run_id": "ai-yanyi-revision3-20261104-codex",
+        "explicit_model_override": false,
+        "override_reason": ""
+      },
+      "revision_note": "2026-11-05 revision 11：逐节展开第8轮，重写paper-gpt1至paper-gpt2前（保留paper-bert），更新两脚注、R11、C-gpt1/C-bert及两原文读取范围和相应coverage。Brook/AlexNet/ResNet的已有展开入口移到节首，三节说明正文不改。其余正文与前七节继承已通过r10冻结基线；仍为41 sources、59 claims、39 coverage，不宣称本轮重读全部来源。ASR/Shownotes/讲义与独立展开另存本章质量记录。"
+    },
+    {
+      "revision_round": 14,
+      "generator": {
+        "model": "gpt-6-astra",
+        "harness": "codex",
+        "run_id": "ai-yanyi-main-r14-zero-20261105",
+        "explicit_model_override": false,
+        "override_reason": "",
+        "identity_basis": "agent_identity.py diagnose：gpt-6-astra，codex-turn-context，session-bound，current_model_confirmed=true；只证明生成者，不用于证明Reviewer模型。"
+      },
+      "revision_note": "2026-11-05 revision 14：逐节展开第11轮，实质改写paper-zero至paper-refinedweb前的原节，节首展开入口和zero脚注；更新R11、S-zero实际阅读范围及C-zero。前十节及其余主文继承已冻结通过的r13；41 sources、59 claims、39 coverage保持，不声称本轮全量重读。86段ASR、讲义p27与shownotes及官方发布材料的核验随展开篇记录。"
+    },
+    {
+      "revision_round": 15,
+      "generator": {
+        "model": "gpt-6-astra",
+        "harness": "codex",
+        "run_id": "ai-yanyi-main-r15-refinedweb-20261105",
+        "explicit_model_override": false,
+        "override_reason": "",
+        "identity_basis": "eacli session current actor.model.id=gpt-6-astra，codex-turn-context，session-bound，confirmed=true；仅证明生成者，不作为子Reviewer运行身份。"
+      },
+      "revision_note": "2026-11-05 revision 15：完成第12轮展开，实质改写paper-refinedweb至paper-laion5b前的原节、节首入口与refinedweb脚注；更新R11、S-refinedweb、C-refinedweb及本轮生成记录。其余正文与前11节严格继承r14冻结基线，41 sources/59 claims/39 coverage不增删；不声称本轮重新通读全稿所有来源。讲义p30、92段ASR与shownotes、原论文全32页及官方数据卡等核验随第12节展开记录。"
+    },
+    {
+      "revision_round": 16,
+      "generator": {
+        "model": "gpt-6-astra",
+        "harness": "codex",
+        "run_id": "ai-yanyi-main-r16-laion-20261105",
+        "explicit_model_override": false,
+        "override_reason": "",
+        "identity_basis": "eacli session current actor.model.id=gpt-6-astra，codex-turn-context，session-bound，confirmed=true；仅证明生成者，不作为子Reviewer运行身份。"
+      },
+      "revision_note": "2026-11-05 revision 16：完成第13轮展开，实质改写paper-laion5b至paper-megascale前的原节、节首展开入口与laion脚注；更新R11、S-laion、C-laion5b及本轮生成记录。其余正文和前12节严格继承r15冻结基线，41 sources/59 claims/39 coverage不增删；不声称本轮重新通读全稿所有来源。讲义p29、228段转录、shownotes、必要CLIP及官方发布和治理后续核验随第13节展开记录。"
+    },
+    {
+      "revision_round": 17,
+      "generator": {
+        "model": "gpt-6-astra",
+        "harness": "codex",
+        "run_id": "ai-yanyi-main-r17-megascale-20261105",
+        "explicit_model_override": false,
+        "override_reason": "",
+        "identity_basis": "eacli session current actor.model.id=gpt-6-astra，codex-thread-state，session-bound，confirmed=true；仅证明生成者，不作为子Reviewer运行身份。"
+      },
+      "revision_note": "2026-11-05 revision 17：完成第14轮展开，实质改写paper-megascale至paper-sparse-moe前的原节、节首入口与megascale脚注；更新R11、S-megascale、C-megascale及生成记录。其余正文和前13节严格继承r16冻结基线，41 sources/59 claims/39 coverage不增删；不声称本轮重读全稿所有原始来源。讲义p31、236段转录、shownotes、MegaScale主文及指定图表/正式元数据核验随展开证据记录。"
+    },
+    {
+      "revision_round": 18,
+      "generator": {
+        "model": "gpt-6-astra",
+        "harness": "codex",
+        "run_id": "ai-yanyi-main-r18-moe-20261105",
+        "explicit_model_override": false,
+        "override_reason": "",
+        "identity_basis": "eacli session current actor.model.id=gpt-6-astra，codex-turn-context，session-bound，confirmed=true；仅证明生成者，不作为子Reviewer运行身份。"
+      },
+      "revision_note": "2026-11-05 revision 18：完成第15轮展开，实质改写paper-sparse-moe至paper-lora前的原节、节首入口与moe脚注；更新R11、S-moe、C-sparse-moe及生成记录。其余正文和前14节严格继承r17冻结基线，41 sources/59 claims/39 coverage不增删；不声称本轮重读全稿所有原始来源。讲义p17、206段转录、shownotes、MoE全文及指定图表/官方元数据核验随展开记录。"
+    },
+    {
+      "revision_round": 19,
+      "generator": {
+        "model": "gpt-6-astra",
+        "harness": "codex",
+        "run_id": "ai-yanyi-main-r19-lora-20261105",
+        "explicit_model_override": false,
+        "override_reason": "",
+        "identity_basis": "eacli session current actor.model.id=gpt-6-astra，codex-turn-context，session-bound，confirmed=true；仅证明生成者，不作为子Reviewer运行身份。"
+      },
+      "revision_note": "2026-11-05 revision 19：完成第16轮展开，实质改写paper-lora至goals前的原节、节首入口与lora脚注；更新R11、S-lora、C-lora/U-lora及生成记录。原节新增记忆讨论，故单独登记节目来源S-ai-yanyi-episode，避免将访谈设想误归给原论文。其余正文和前15节严格继承r18冻结基线；当前42 sources/59 claims/39 coverage，不声称本轮重读全稿所有来源。讲义p19、153段ASR与shownotes、原论文26页和指定页面视觉核查见展开篇证据。"
+    },
+    {
+      "revision_round": 20,
+      "generator": {
+        "model": "gpt-6-astra",
+        "harness": "codex",
+        "run_id": "ai-yanyi-main-r20-alphagozero-20261105",
+        "explicit_model_override": false,
+        "override_reason": "",
+        "identity_basis": "eacli session current actor.model.id=gpt-6-astra；source=codex-thread-state、confidence=session-bound、confirmed=true，harness=codex。仅证明生成者，不替代子Reviewer的运行身份。"
+      },
+      "revision_note": "2026-11-05 revision 20：第17轮展开；实质改写paper-alphago-zero至paper-instructgpt前的原节、标题下展开入口与alphago脚注。R11、S-alphago、C-alphago-zero/U-alphago-zero和生成记录更新；其他正文、前16节与其他证据严格继承r19冻结基线。当前仍42 sources/59 critical claims/39 coverage/11 requirements。本轮展开读讲义p16、完整208段ASR与shownotes、正确18页围棋论文及指定原图；补查DeepMind博客、OpenAI与Noam本人访谈。主稿没有新增o1实证断言；延伸证据见展开篇，不宣称本轮重读全稿所有来源。"
+    },
+    {
+      "revision_round": 21,
+      "generator": {
+        "model": "gpt-6-astra",
+        "harness": "codex",
+        "run_id": "ai-yanyi-main-r21-instructgpt-20261105",
+        "explicit_model_override": false,
+        "override_reason": "",
+        "identity_basis": "本轮agent_identity.py inspect：model=gpt-6-astra，model_source=codex-turn-context，current_model_confirmed=true。仅证明协调生成者，子Reviewer运行身份独立记录。"
+      },
+      "revision_note": "2026-11-05 revision21：第18轮展开；实质改写paper-instructgpt至paper-cot前原节、节首展开入口及instruct脚注。仅更新R11、S-instruct、C-instructgpt/U-instructgpt与生成记录，其余证据和前17节正文严格继承r20冻结基线。仍42 sources/59 critical claims/39 coverage/11 requirements。本轮读v1论文相关正文与附录、讲义p39、194段ASR和shownotes，并补查两篇作者博客；不声称重读全稿所有来源。扩展实验和转写缺陷详见展开稿。"
+    },
+    {
+      "generator": {
+        "model": "gpt-6-astra",
+        "harness": "codex",
+        "run_id": "ai-yanyi-main-r22-cot-20261105",
+        "explicit_model_override": false,
+        "override_reason": "",
+        "identity_basis": "本轮agent_identity.py inspect：model=gpt-6-astra，model_source=codex-turn-context，current_model_confirmed=true。仅证明协调生成者；子Reviewer的配置与运行身份另记，不借根身份补证。"
+      },
+      "scope": "第19节CoT完成版本及其余主稿的生成记录，进入ReAct增量修订前保留。",
+      "revision_round": 22,
+      "report_sha256": "e3b495efdc8b0c91ccbe662ee707b8518fa6f2194aa43ab9938c847427248753",
+      "evidence_sha256": "dfdd98f00373677948138eac3ef650ac96da4c7ee6e547aee8eeca8f38d1ed77"
+    },
+    {
+      "generator": {
+        "model": "gpt-6-astra",
+        "harness": "codex",
+        "run_id": "ai-yanyi-main-r23-react-20261105",
+        "explicit_model_override": false,
+        "override_reason": "",
+        "identity_basis": "本轮 eacli session current：gpt-6-astra，codex-turn-context，session-bound confirmed。只证明协调生成者，子 Reviewer 的配置与实际 runtime 分开记录。"
+      },
+      "scope": "第20节ReAct及其余主稿的已通过版本；进入Tülu3本节增量修订前保留。",
+      "revision_round": 23,
+      "report_sha256": "3af5e319c6170fb2faf0bd718e9b6d0cc5405a9e26fd301f877fc2384ff67167",
+      "evidence_sha256": "f9963560bc9d14eb5d5769e622d06578dd3af672669aa250b16b9b41eeadae30"
+    },
+    {
+      "generator": {
+        "model": "gpt-6-astra",
+        "harness": "codex",
+        "run_id": "ai-yanyi-main-r24-tulu3-20261105",
+        "explicit_model_override": false,
+        "override_reason": "",
+        "identity_basis": "本轮 eacli session current 的 codex-turn-context / session-bound confirmed。仅证明协调生成者；子 Reviewer runtime 另核，不借根身份补证。"
+      },
+      "scope": "第21节Tülu3及其余主稿的已通过版本；进入DeepVideo第22节增量修订前保留。",
+      "revision_round": 24,
+      "report_sha256": "4d7ab576dadde83a8ec76979ccd42163f4ae1a1106fa91eb3e413de8ae44820e",
+      "evidence_sha256": "c065ba0e74c413d470aee4967489e7dd5267f320e04a432c8bcce1f6deae4261"
     }
   ]
 }

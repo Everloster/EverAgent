@@ -1,0 +1,560 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_14_MegaScale_万卡怎样协同训练_科普讲解_20261105.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-05",
+  "generator": {
+    "model": "gpt-6-astra",
+    "harness": "codex",
+    "run_id": "ai-yanyi-megascale-20261105",
+    "explicit_model_override": false,
+    "override_reason": "",
+    "identity_basis": "eacli session current actor.model.id=gpt-6-astra，codex-thread-state，session-bound，confirmed=true；仅证明生成者，不作为子Reviewer运行身份。"
+  },
+  "task": {
+    "summary": "按用户认可的Brook方式完成《AI演义》第14节：原节实质改写且节首可展开，详解结合讲义、节目shownotes、本章转录与原论文，少数学、适合人类连续阅读。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "讲清万卡集群与单作业万卡训练的差异、历史问题和作者的贡献，按训练过程组织解释。"
+      },
+      {
+        "id": "R2",
+        "text": "解释并行分工、算法与系统协同、通信重叠、数据/初始化/网络、观测诊断和checkpoint恢复，首次解释必要术语。"
+      },
+      {
+        "id": "R3",
+        "text": "关键实验保留模型/硬件/基线/batch/预算口径，区分MFU百分点与倍率、强弱扩展、累加消融、13B收敛和专有生产运行。"
+      },
+      {
+        "id": "R4",
+        "text": "保留反直觉排障及故障恢复边界；核对本章236段和机器时间审计；对节目未核行业/卡数/带宽强概括不升格为事实。"
+      },
+      {
+        "id": "R5",
+        "text": "原第14节实改并有节首展开链接；详解返回原节、前13节LAION和后15节稀疏MoE；保留主稿其余部分。"
+      },
+      {
+        "id": "R6",
+        "text": "报告可独立阅读，少公式、表格口径清楚、引用可点击；实际桌面和窄屏阅读入口验收，独立来源优先复核，公开私有资料边界清楚。"
+      }
+    ],
+    "reader_feedback": [
+      "原章节没有优化、也没有链接展开阅读的啊",
+      "按第一个Brook章节的方式，一轮完成一个章节，持续完成，并参考之前轮次改进。",
+      "少数学，解释背景、解决什么问题及发展路线；报告面向人类阅读。"
+    ]
+  },
+  "sources": [
+    {
+      "id": "MEGASCALE",
+      "kind": "primary",
+      "title": "MegaScale: Scaling Large Language Model Training to More Than 10,000 GPUs",
+      "locator": "https://arxiv.org/pdf/2402.15627v1",
+      "accessed_on": "2026-11-05",
+      "version": "arXiv:2402.15627v1 [cs.LG], 23 Feb 2024",
+      "local_copy": "ai-learning/papers/31_megascale_2024.pdf",
+      "sha256": "4a04bff09d7cd937271662e8ca9a97f0d41eac9be1d35c9c8b2f18f2dc59ad20",
+      "read_scope": "16页本地PDF；主文physical pp1–13 Abstract与§§1–8全文，含Tables1–3及Figures1–12相关正文/图注。直接视觉复核p4 Figure3、p6 Figure5、p10 Table2/Figure9、p11 Table3/Figures10–11、p12 Figure12。pp14–16参考文献未通读；未复现训练。",
+      "metadata_receipt": {
+        "artifact": "arxiv-metadata.json",
+        "sha256": "7a2697c7e1539f05684c4b46d952fdf0646a21fbcea68548f3e9986aa919f0aa"
+      },
+      "venue_locator": "https://www.usenix.org/conference/nsdi24/presentation/jiang-ziheng",
+      "venue_read_scope": "USENIX作者机构、摘要及公开材料入口实读，不声称阅读另一版正式PDF或播放演讲视频。",
+      "venue_receipt": {
+        "artifact": "usenix-page.json",
+        "sha256": "fd4568ef6db6733064db1a87674b2540d794d2fc1188c3cb4e38b419f6394aaa"
+      }
+    },
+    {
+      "id": "LECTURE",
+      "kind": "local",
+      "title": "《AI演义：36篇论文开启你的探索之旅》讲义 MegaScale 页",
+      "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "accessed_on": "2026-11-05",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
+      "read_scope": "physical p31文字与原图；单个job、效率/稳定性、Algorithm-System Co-design、深度可观测性。对“首个”表述不作无条件历史事实采用。"
+    },
+    {
+      "id": "EPISODE",
+      "kind": "primary",
+      "title": "张小珺Jùn｜商业访谈录 第117期：谢青池谈AI演义",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-05",
+      "published_on": "2025-10-28",
+      "read_scope": "已核正确节目身份与shownotes；Part2 01:52:58、Part3 02:21:29。读恢复转录236段02:13:37.79–02:21:28.53，包含MegaScale及联合设计追问。没有逐论文官方时间表，未听校。",
+      "shownotes_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5",
+      "transcription_review": "ai-learning/reports/knowledge_reports/.quality/AI演义_14_MegaScale_万卡怎样协同训练_科普讲解_20261105.transcription-review.json",
+      "alternate_locator": "https://podcasts.apple.com/cn/podcast/id1634356920?i=1000733801180",
+      "alternate_read_scope": "复用前一轮实读的同一期Apple页面与eacli成功收据，核117/谢青池/2025-10-28/4小时23分钟及分部内容；未试播音频。",
+      "alternate_receipt": {
+        "artifact": "apple-episode-read.json",
+        "sha256": "b43f4f8def7905b5a01e9a6ec9924bfec82015690f200b3412b3b2129f01584c"
+      },
+      "alternate_text_sha256": "5d280466ec15666cd2f03b23d163a085986859b72a37facf13831eaf9a86fc3a"
+    },
+    {
+      "id": "TRANSCRIPT_REVIEW",
+      "kind": "local",
+      "title": "第14节MegaScale转录结构与术语核查记录",
+      "locator": "ai-learning/reports/knowledge_reports/.quality/AI演义_14_MegaScale_万卡怎样协同训练_科普讲解_20261105.transcription-review.json",
+      "accessed_on": "2026-11-05",
+      "sha256": "87209b2b0f67aaab5daf5cc53e4523eb243a9f903e78904c05428f1fa1d81527",
+      "read_scope": "本章236段的精确边界、无倒序/负时长/重叠、29处正向间隔及正式audit_transcript.py收据；术语与论断回到论文核对，不代表WER或逐字听校。"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "拥有万卡与单作业万卡训练不同；效率与长期稳定性需要分别解决。",
+      "report_anchor": "one-training-job",
+      "support": "direct",
+      "source_ids": [
+        "MEGASCALE",
+        "LECTURE",
+        "EPISODE"
+      ],
+      "critical": true,
+      "evidence": "§1；讲义p31；本章转录的效率和稳定性问题。"
+    },
+    {
+      "id": "C2",
+      "claim": "3D并行分别拆数据、层和算子，ZeRO2分片优化器状态/梯度，SP分担部分激活；8卡为讲解示例，非实测。",
+      "report_anchor": "parallel-work",
+      "support": "direct",
+      "source_ids": [
+        "MEGASCALE"
+      ],
+      "critical": true,
+      "evidence": "§2 pp2–3；TP优先节点内，DP/PP跨节点；既有机制不是MegaScale原创。"
+    },
+    {
+      "id": "C3",
+      "claim": "并行block、滑动窗口和LAMB改变模型/训练方式，不能无条件视为等价替换或无损提速。",
+      "report_anchor": "algorithm-and-system",
+      "support": "direct",
+      "source_ids": [
+        "MEGASCALE"
+      ],
+      "critical": true,
+      "evidence": "§3.1式1/2与窗口注意力、LAMB；§6.2另做收敛实验。"
+    },
+    {
+      "id": "C4",
+      "claim": "通信重叠基于真实依赖、模型块预取、独立send/recv和GEMM分块，隐藏部分等待而非通信消失。",
+      "report_anchor": "overlap",
+      "support": "direct",
+      "source_ids": [
+        "MEGASCALE"
+      ],
+      "critical": true,
+      "evidence": "§3.2 Figures3/4；first AG/last RS边界以及优先级预取。"
+    },
+    {
+      "id": "C5",
+      "claim": "数据共享/预处理、算子优化、初始化顺序和网络路径共同改善效率；2048 GPU初始化1047→361→<5秒，万卡<30秒，不全归因Redis。",
+      "report_anchor": "outside-gpu-kernels",
+      "support": "direct",
+      "source_ids": [
+        "MEGASCALE"
+      ],
+      "critical": true,
+      "evidence": "§§3.3–3.6 pp5–6；两阶段初始化优化有不同贡献，网络优化不是私人集群配置。"
+    },
+    {
+      "id": "C6",
+      "claim": "175B/12288GPU/batch6144/seq2048，Table2 MFU41.2%→55.2%为14个百分点约1.34倍；步时8.57→6.34秒，吞吐1466.8k→1984.0k tokens/s。",
+      "report_anchor": "performance-evidence",
+      "support": "direct",
+      "source_ids": [
+        "MEGASCALE"
+      ],
+      "critical": true,
+      "evidence": "§1 MFU定义，§6.1 Tables1/2；Megatron-LM 285068c8基线，NVIDIA Ampere集群背景。MFU不是闲置卡数占比，算法改动需结合收敛看。"
+    },
+    {
+      "id": "C7",
+      "claim": "固定batch强扩展中3072→12288GPU时MFU59.1%→55.2%；530B弱扩展2240/4480/11200GPU的54.3/54.1/54.3%来自工作量同时增大。",
+      "report_anchor": "performance-evidence",
+      "support": "direct",
+      "source_ids": [
+        "MEGASCALE"
+      ],
+      "critical": true,
+      "evidence": "Table2及Figure9；两种实验及300B tokens时间口径与数周生产记录分开。"
+    },
+    {
+      "id": "C8",
+      "claim": "256GPU/175B消融为累加配置47.7→53.3→59.5→62.3→65.3%，末项LAMB+batch256→768；网络优化两边启用。",
+      "report_anchor": "performance-evidence",
+      "support": "direct",
+      "source_ids": [
+        "MEGASCALE"
+      ],
+      "critical": true,
+      "evidence": "Table3与§6.1；不是万卡独立因果分解，BS×3与微实验×4不同，百分点不误写相对百分比。"
+    },
+    {
+      "id": "C9",
+      "claim": "收敛微实验限13B：算法改动在>100B tokens时损失相近；4倍batch LAMB约250B tokens后与ADAM相近。",
+      "report_anchor": "algorithm-and-system",
+      "support": "direct",
+      "source_ids": [
+        "MEGASCALE"
+      ],
+      "critical": true,
+      "evidence": "§6.2与Figure10；训练loss不等于全下游能力等价，不能泛化为所有规模无损。"
+    },
+    {
+      "id": "C10",
+      "claim": "训练越跑越慢的案例中，通信内的等待来自不同进程晚到同步点；代码/GC抖动在上游，不能只由症状归因网络。",
+      "report_anchor": "why-training-slows",
+      "support": "direct",
+      "source_ids": [
+        "MEGASCALE"
+      ],
+      "critical": true,
+      "evidence": "§§5.1–5.2，§6.3 MFU decreasing及Figure12；计算时长与带宽基本稳定，时间线追踪到reduce-scatter launch skew。"
+    },
+    {
+      "id": "C11",
+      "claim": "CUDA事件和跨rank依赖图可定位慢节点与无日志的坏GPU；特定主机相同前向计算约慢10%，单GPU小测试不必暴露分布式问题。",
+      "report_anchor": "why-training-slows",
+      "support": "direct",
+      "source_ids": [
+        "MEGASCALE"
+      ],
+      "critical": true,
+      "evidence": "§5.1单GPU GEMM不能区分、§5.2挂起/级联超时、§6.3 Computational stragglers。未把多个案例合成同一机器原因。"
+    },
+    {
+      "id": "C12",
+      "claim": "异常后暂停全作业、诊断、隔离并补健康节点，再从checkpoint恢复；有些异常仍需人工诊断。",
+      "report_anchor": "recover-training",
+      "support": "direct",
+      "source_ids": [
+        "MEGASCALE"
+      ],
+      "critical": true,
+      "evidence": "§4.1–4.3，Figure5；不是无停顿热换卡，诊断需要兼顾耗时和覆盖。"
+    },
+    {
+      "id": "C13",
+      "claim": "Checkpoint先从GPU拷到主机再后台写持久存储；前台仍阻塞几秒；恢复减少多进程重复读取。",
+      "report_anchor": "recover-training",
+      "support": "direct",
+      "source_ids": [
+        "MEGASCALE"
+      ],
+      "critical": true,
+      "evidence": "§4.4：pinned host memory→HDFS；相同state由一个worker读后broadcast，不宣称host memory持久化或零开销。"
+    },
+    {
+      "id": "C14",
+      "claim": "独立数周生产训练为数千亿专有参数/数万亿tokens，>100次重启、>90%异常自动处理；检测诊断均时<10min、从checkpoint追平15min内、有效训练时间率>90%。",
+      "report_anchor": "recover-training",
+      "support": "direct",
+      "source_ids": [
+        "MEGASCALE"
+      ],
+      "critical": true,
+      "evidence": "§§6.2–6.3 Figure11归一化loss与token进度；不把两时间相加成SLA，不将该run等同Table2；有效训练时间率=迭代数×单步时长/总时长，非MFU。"
+    },
+    {
+      "id": "C15",
+      "claim": "接口反复断开可造成训练停滞；超时调整用于容忍短暂故障，链路质量控制处理根因。",
+      "report_anchor": "recover-training",
+      "support": "direct",
+      "source_ids": [
+        "MEGASCALE"
+      ],
+      "critical": true,
+      "evidence": "§6.3 Frequent network interface flapping；网卡/线缆/交换机链路质量与软件重传分别处理。"
+    },
+    {
+      "id": "C16",
+      "claim": "本章236段来自02:13:37.79–02:21:28.53，无倒序/负时长/重叠，但无听校/WER；节目历史唯一性及跨公司卡数/带宽数字未核，不采为事实。",
+      "report_anchor": "sources-and-reading",
+      "support": "direct",
+      "source_ids": [
+        "LECTURE",
+        "EPISODE",
+        "TRANSCRIPT_REVIEW",
+        "MEGASCALE"
+      ],
+      "critical": true,
+      "evidence": "shownotes只给Part2/3边界；本章时间与术语记录逐项核；MFU以论文定义收紧。"
+    },
+    {
+      "id": "C17",
+      "claim": "MegaScale公开系统设计和生产经验，把预算、存储、数据之后的长期执行约束补入AI发展问题线；不表示按系列顺序发表或直接使用前述数据集。",
+      "report_anchor": "place-in-history",
+      "support": "derived",
+      "source_ids": [
+        "MEGASCALE",
+        "LECTURE"
+      ],
+      "critical": true,
+      "evidence": "§1/7/8与讲义p31；历史、方法与团队研究条件为本文基于已有章节的综合，不主张全球优先权。"
+    },
+    {
+      "id": "C18",
+      "claim": "[推测] 多程序或Agent工作流可类比记录有效产出、等待和重做成本，MegaScale指标与训练方案不能直接迁移。",
+      "report_anchor": "place-in-history",
+      "support": "inference",
+      "source_ids": [
+        "MEGASCALE"
+      ],
+      "critical": false,
+      "evidence": "正文明确[推测]；不是原论文实验或本仓已验证性能。"
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U1",
+      "title": "拥有万卡与单作业万卡训练不同；效率与长期稳定性需要分别解决。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "MEGASCALE",
+        "LECTURE",
+        "EPISODE"
+      ],
+      "report_anchor": "one-training-job"
+    },
+    {
+      "id": "U2",
+      "title": "3D并行分别拆数据、层和算子，ZeRO2分片优化器状态/梯度，SP分担部分激活；8卡为讲解示例，非实测。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "MEGASCALE"
+      ],
+      "report_anchor": "parallel-work"
+    },
+    {
+      "id": "U3",
+      "title": "并行block、滑动窗口和LAMB改变模型/训练方式，不能无条件视为等价替换或无损提速。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "MEGASCALE"
+      ],
+      "report_anchor": "algorithm-and-system"
+    },
+    {
+      "id": "U4",
+      "title": "通信重叠基于真实依赖、模型块预取、独立send/recv和GEMM分块，隐藏部分等待而非通信消失。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "MEGASCALE"
+      ],
+      "report_anchor": "overlap"
+    },
+    {
+      "id": "U5",
+      "title": "数据共享/预处理、算子优化、初始化顺序和网络路径共同改善效率；2048 GPU初始化1047→361→<5秒，万卡<30秒，不全归因Redis。",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "MEGASCALE"
+      ],
+      "report_anchor": "outside-gpu-kernels"
+    },
+    {
+      "id": "U6",
+      "title": "175B/12288GPU/batch6144/seq2048，Table2 MFU41.2%→55.2%为14个百分点约1.34倍；步时8.57→6.34秒，吞吐1466.8k→1984.0k tokens/s。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "MEGASCALE"
+      ],
+      "report_anchor": "performance-evidence"
+    },
+    {
+      "id": "U7",
+      "title": "固定batch强扩展中3072→12288GPU时MFU59.1%→55.2%；530B弱扩展2240/4480/11200GPU的54.3/54.1/54.3%来自工作量同时增大。",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "MEGASCALE"
+      ],
+      "report_anchor": "performance-evidence"
+    },
+    {
+      "id": "U8",
+      "title": "256GPU/175B消融为累加配置47.7→53.3→59.5→62.3→65.3%，末项LAMB+batch256→768；网络优化两边启用。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "MEGASCALE"
+      ],
+      "report_anchor": "performance-evidence"
+    },
+    {
+      "id": "U9",
+      "title": "收敛微实验限13B：算法改动在>100B tokens时损失相近；4倍batch LAMB约250B tokens后与ADAM相近。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "MEGASCALE"
+      ],
+      "report_anchor": "algorithm-and-system"
+    },
+    {
+      "id": "U10",
+      "title": "训练越跑越慢的案例中，通信内的等待来自不同进程晚到同步点；代码/GC抖动在上游，不能只由症状归因网络。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "MEGASCALE"
+      ],
+      "report_anchor": "why-training-slows"
+    },
+    {
+      "id": "U11",
+      "title": "CUDA事件和跨rank依赖图可定位慢节点与无日志的坏GPU；特定主机相同前向计算约慢10%，单GPU小测试不必暴露分布式问题。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "MEGASCALE"
+      ],
+      "report_anchor": "why-training-slows"
+    },
+    {
+      "id": "U12",
+      "title": "异常后暂停全作业、诊断、隔离并补健康节点，再从checkpoint恢复；有些异常仍需人工诊断。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "MEGASCALE"
+      ],
+      "report_anchor": "recover-training"
+    },
+    {
+      "id": "U13",
+      "title": "Checkpoint先从GPU拷到主机再后台写持久存储；前台仍阻塞几秒；恢复减少多进程重复读取。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "MEGASCALE"
+      ],
+      "report_anchor": "recover-training"
+    },
+    {
+      "id": "U14",
+      "title": "独立数周生产训练为数千亿专有参数/数万亿tokens，>100次重启、>90%异常自动处理；检测诊断均时<10min、从checkpoint追平15min内、有效训练时间率>90%。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "MEGASCALE"
+      ],
+      "report_anchor": "recover-training"
+    },
+    {
+      "id": "U15",
+      "title": "接口反复断开可造成训练停滞；超时调整用于容忍短暂故障，链路质量控制处理根因。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "MEGASCALE"
+      ],
+      "report_anchor": "recover-training"
+    },
+    {
+      "id": "U16",
+      "title": "本章236段来自02:13:37.79–02:21:28.53，无倒序/负时长/重叠，但无听校/WER；节目历史唯一性及跨公司卡数/带宽数字未核，不采为事实。",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "LECTURE",
+        "EPISODE",
+        "TRANSCRIPT_REVIEW",
+        "MEGASCALE"
+      ],
+      "report_anchor": "sources-and-reading"
+    },
+    {
+      "id": "U17",
+      "title": "MegaScale公开系统设计和生产经验，把预算、存储、数据之后的长期执行约束补入AI发展问题线；不表示按系列顺序发表或直接使用前述数据集。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "MEGASCALE",
+        "LECTURE"
+      ],
+      "report_anchor": "place-in-history"
+    },
+    {
+      "id": "U18",
+      "title": "多程序或Agent工作流可类比记录有效产出、等待和重做成本，MegaScale指标与训练方案不能直接迁移。",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "MEGASCALE"
+      ],
+      "report_anchor": "place-in-history"
+    }
+  ],
+  "limitations": [
+    "未复现集群训练、吞吐、下游评测或故障恢复，数字是作者指定配置下的报告。",
+    "13B收敛、175B强扩展、530B弱扩展、256GPU消融和专有数周生产run分别限定，不拼成同一实验。",
+    "MFU不是忙碌卡数占比，也不同于有效训练时间率；性能表不保证当前硬件或未来基线同样收益。",
+    "原论文只精读主文pp1–13；指定图表视觉核验范围另列，参考文献pp14–16未全读；未审当前完整软件开源状态。",
+    "节目行业优先权、跨公司卡数/硬件口算不直接采纳；未扩研DeepSeek V3，不声称已证伪这些外围说法。",
+    "转录结构通过不等于听校、WER或全期逐字完整；原始ASR和执行信息保留私有。",
+    "多Agent类比标注推测，未将训练指标当本项目实验。"
+  ],
+  "research_receipts": {
+    "source_manifest": {
+      "artifact": "source-inputs.json",
+      "sha256": "d2be4a22534ecbb68589f54a00d7eecef56b3f4e23234515583792e7e1beb7b8"
+    },
+    "paper_text": {
+      "artifact": "megascale-layout.txt",
+      "sha256": "cb66dc7afa31a7d910d2803a857cd1e39edf0343d50ffb703145d6e0d47e05a3"
+    },
+    "transcript_precision": {
+      "artifact": "chapter-precision-audit.json",
+      "sha256": "4c59eee6ea2d1232069f929ec50bd1d34d954265ee2260d918dfe7d9d3b5c7a9"
+    },
+    "transcript_native_audit": {
+      "artifact": "transcript-native-audit.json",
+      "sha256": "dac5230fe39bf6f7f7b6c67521a49ca40e8151844434d242bed2e0b48448d237"
+    },
+    "visual_checks": [
+      {
+        "artifact": "vision-lecture-p31.json",
+        "sha256": "3894456d18bab50e9170e47bd9fee788120c11486d37e29d0a3b4431b4095859"
+      },
+      {
+        "artifact": "vision-megascale-p04.json",
+        "sha256": "359976bee3c10aa80c21cb50f57b81b5c30c8b470444ac8014b1766250fc7d5d"
+      },
+      {
+        "artifact": "vision-megascale-p06.json",
+        "sha256": "70911581959e7e6a2e50827917efaa12791b252d48b9afaf9ea4437262b1fd4d"
+      },
+      {
+        "artifact": "vision-fallback-p10.json",
+        "sha256": "77935a265c5b08fa76591caea7e8e4889fe3dfc3b79db7604a9f1b02229f0a83"
+      },
+      {
+        "artifact": "vision-fallback-p11.json",
+        "sha256": "a2b31d6da7cc22f65fa215959429bbed484d4c1acdb0e2774473e64b9a88f593"
+      },
+      {
+        "artifact": "vision-fallback-p12.json",
+        "sha256": "fbf7b54681a7834a265d256f062adcb288eddca88aebda0367de83e9fb74ffff"
+      }
+    ],
+    "visual_limitations": "p10/p11/p12 chart-analysis均BackendTimeout，保留失败收据；按eacli通用image-analysis成功降级并由生成者直接核原图。模型说明中Table3括号被误称逐项增量、RS被误标反向等解释未采纳，原表是相对基线累积增量，图3通信分块不能如此区分前/反向。",
+    "generator_identity": {
+      "artifact": "generator-session-current.json",
+      "sha256": "5f30b7b34bd30702a6588b57f9d2677f20ad04b38e84f2bda41de9ebb62e5a58"
+    },
+    "private_archive_key": "ai-yanyi-117/source-reference/megascale/round-r17-20261105"
+  }
+}

@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "kind": "chapter-transcription-review",
+  "reviewed_on": "2026-11-05",
+  "chapter": 10,
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+  "transcript_source_ref": "sha256:220176479f7dafd5d404a0764d467fd37faf139c9704a48007d0d02f0f1678df",
+  "full_segments_sha256": "f322514ced72235a0ca104635824c66df425c18dbae3d0f4e76fa70d088db61c",
+  "public_full_episode_receipt": "podcast-learning/reports/transcripts/2026-11-04_ai-yanyi-117.audit.json",
+  "read_scope": {
+    "segments_read": 233,
+    "source_indices_1based": [
+      3188,
+      3420
+    ],
+    "actual_interval_seconds": [
+      6976.77,
+      7449.67
+    ],
+    "segment_artifact_sha256": "220176479f7dafd5d404a0764d467fd37faf139c9704a48007d0d02f0f1678df",
+    "text_artifact_sha256": "e6b663e65a0b3642120a3188459e668e16d3534c05e4621690ecf13c551590bb",
+    "time_basis": "Shownotes仅标Part 2起点01:52:58；本节01:56:17—02:04:10为内容定位后约取整，非官方逐章时间。"
+  },
+  "chapter_segment_check": {
+    "selected_count": 233,
+    "index_range": [
+      3188,
+      3420
+    ],
+    "range_seconds": [
+      6976.77,
+      7449.67
+    ],
+    "full_segments_sha256": "f322514ced72235a0ca104635824c66df425c18dbae3d0f4e76fa70d088db61c",
+    "start_regressions": [],
+    "overlaps": [],
+    "max_gap_seconds": 2.88,
+    "adjacent_identical_text": [],
+    "audio_listened": false,
+    "wer_measured": false
+  },
+  "compatible_text_audit": {
+    "schema_version": 2,
+    "kind": "podcast-transcript-audit",
+    "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+    "source_ref": "sha256:8a571d9a3ab3298ae49a09f70a1d70b61c7c15de5eb5a446a3360bdd82250588",
+    "max_consecutive_limit": 3,
+    "audit": {
+      "ok": true,
+      "size": 12065,
+      "sha256": "8a571d9a3ab3298ae49a09f70a1d70b61c7c15de5eb5a446a3360bdd82250588",
+      "lines": 233,
+      "segments": 233,
+      "duration_seconds": 7449,
+      "max_consecutive_identical": 1,
+      "timestamp_errors": 0,
+      "malformed_lines": 0,
+      "tail_gap_seconds": 0
+    }
+  },
+  "audit_interpretation": "从分段JSON不改字转换为审计脚本接受的 -> 时间戳格式；秒数向下取整。duration_seconds=7449是节目绝对末尾时间，不是本章长度；tail_gap_seconds=0只反映所选文本最后两个片段。精确顺序/重叠以原始小数秒结构检查为准。",
+  "input_format_failure": {
+    "attempt": "兼容文本初稿使用了 --> 分隔符，审计只接受 ->",
+    "status": "failed",
+    "cause": "输入格式不匹配",
+    "resolution": "从同一233段JSON重新转换格式并重跑，成功收据独立保存；不能将格式失败当成ASR精度失败。",
+    "artifact_sha256": "a962210180f3e195c69396a30ab7fa5d032784a46f7d28fe6891df00bbdb3012"
+  },
+  "term_and_claim_checks": [
+    {
+      "time_seconds": [
+        6976.77,
+        6994.85
+      ],
+      "issue": "Scaling Laws和Chinchilla的转录词形不稳定",
+      "adopted": "技术名词按两篇论文题名和模型名统一。",
+      "basis": "两篇PDF首页",
+      "kind": "terminology"
+    },
+    {
+      "time_seconds": [
+        7006.41,
+        7021.6
+      ],
+      "issue": "语言数据耗尽与集群卡数上限",
+      "adopted": "指定论文未支持这些当前量化判断，不写成事实。",
+      "basis": "论文不覆盖相应当代公司及硬件断言",
+      "kind": "unsupported_precision_excluded"
+    },
+    {
+      "time_seconds": [
+        7179.03,
+        7259.78
+      ],
+      "issue": "小实验预测大训练的实际价值",
+      "adopted": "保留资源决策直觉，明确不能保证训练无故障或预测所有下游能力。",
+      "basis": "Kaplan §6–8；Chinchilla §3/§5",
+      "kind": "scope"
+    },
+    {
+      "time_seconds": [
+        7260.46,
+        7317.22
+      ],
+      "issue": "不同公司训练故障次数、稳定性轶事",
+      "adopted": "仅说明检查点和训练可靠性是另一个工程问题，不采未核次数和当前公司对照。",
+      "basis": "本轮未读取相关模型报告",
+      "kind": "unsupported_precision_excluded"
+    },
+    {
+      "time_seconds": [
+        7327.82,
+        7345.27
+      ],
+      "issue": "预算固定时尽可能扩大模型的口述",
+      "adopted": "改为相对充分训练的小模型可偏大，但每份预算仍有最优规模。",
+      "basis": "Kaplan §6/Figure12/AppendixB.4",
+      "kind": "optimization_boundary"
+    },
+    {
+      "time_seconds": [
+        7346.84,
+        7373.37
+      ],
+      "issue": "训练不足与等比例扩大",
+      "adopted": "两篇均不要求收敛；参数与训练token各翻倍约需四倍主要计算量。",
+      "basis": "Chinchilla §1–3/Table2",
+      "kind": "definitions_and_arithmetic"
+    },
+    {
+      "time_seconds": [
+        7381.1,
+        7388.53
+      ],
+      "issue": "OpenAI可能已有结论但未公开",
+      "adopted": "属于节目推测，没有作为技术史事实进入报告。",
+      "basis": "指定来源未提供组织内部证据",
+      "kind": "speculation_excluded"
+    },
+    {
+      "time_seconds": [
+        7392.82,
+        7449.67
+      ],
+      "issue": "较小模型多训练与推理成本的后续延伸",
+      "adopted": "区别训练最优与生命周期目标，采用条件性推测，不宣称现代具体模型或通用倍数已证实。",
+      "basis": "Kaplan AppendixB.4；Chinchilla §4",
+      "kind": "inference_scope"
+    }
+  ],
+  "audio_listened": false,
+  "word_accuracy_measured": false,
+  "verbatim_completeness": false,
+  "limitations": [
+    "没有人工听校或WER；不能从结构检查推出逐字准确率。",
+    "整期末15.989秒覆盖仍未知，与本章所在区间无重叠。",
+    "公开仅保留必要核查摘要与哈希，原始ASR及执行记录不入公开仓。"
+  ]
+}

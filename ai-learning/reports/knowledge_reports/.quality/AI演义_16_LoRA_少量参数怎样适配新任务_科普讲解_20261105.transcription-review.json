@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "kind": "chapter-transcription-review",
+  "reviewed_on": "2026-11-05",
+  "chapter": 16,
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+  "transcript_source_ref": "sha256:eecbbfeb6c4cd89939057aacc0f96fe03a7f747ee9d5e0879ea0cd540af655b7",
+  "full_segments_sha256": "f322514ced72235a0ca104635824c66df425c18dbae3d0f4e76fa70d088db61c",
+  "public_full_episode_receipt": "podcast-learning/reports/transcripts/2026-11-04_ai-yanyi-117.audit.json",
+  "read_scope": {
+    "segments_read": 153,
+    "source_indices_zero_based_inclusive": [
+      2317,
+      2469
+    ],
+    "actual_interval_seconds": [
+      5407.7,
+      5688.37
+    ],
+    "span_seconds": 280.67,
+    "segment_artifact_sha256": "95955bdff3282239dbe6c34934302746253ba7ddfcbcb00d55007c4526a52cf2",
+    "text_artifact_sha256": "eecbbfeb6c4cd89939057aacc0f96fe03a7f747ee9d5e0879ea0cd540af655b7",
+    "time_basis": "源segments小数秒；正文约01:30:08–01:34:48，包含完整LoRA讲解及记忆/ResNet/脑学习类比，止于ReAct前。shownotes只有Part1大段边界，不冒称官方逐论文章界。"
+  },
+  "chapter_segment_check": {
+    "segment_count": 153,
+    "negative_duration_count": 0,
+    "backward_start_count": 0,
+    "backward_end_count": 0,
+    "overlap_count": 0,
+    "positive_gap_count": 1,
+    "max_gap_seconds": 0.12,
+    "max_consecutive_identical": 1
+  },
+  "compatible_text_audit": {
+    "schema_version": 2,
+    "kind": "podcast-transcript-audit",
+    "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+    "source_ref": "sha256:5cbbfb820cb2389beaf8327bc4b2d5e4212a90a475f99d070366cda17ba65d61",
+    "max_consecutive_limit": 3,
+    "audit": {
+      "ok": true,
+      "size": 7439,
+      "sha256": "5cbbfb820cb2389beaf8327bc4b2d5e4212a90a475f99d070366cda17ba65d61",
+      "lines": 153,
+      "segments": 153,
+      "duration_seconds": 5688,
+      "max_consecutive_identical": 1,
+      "timestamp_errors": 0,
+      "malformed_lines": 0,
+      "tail_gap_seconds": 0
+    }
+  },
+  "audit_interpretation": "完整153段转换成整数秒时间戳后运行audit_transcript.audit/public_receipt并validate_receipt。duration_seconds=5688是节目绝对终点，不是章长；原小数秒跨度280.67。无倒序/负时长/重叠，唯一正间隔0.12秒，最长连续重复1。结构检查不等于字词准确率。",
+  "term_and_claim_checks": [
+    {
+      "time_seconds": [
+        5407.7,
+        5475.54
+      ],
+      "issue": "全量微调困难与每任务副本成本被口头合讲。",
+      "adopted": "区分任务训练参数、显存状态、每任务存储和基座前向。",
+      "basis": "LoRA §§1–5、p5脚注4–5",
+      "kind": "resource_definitions"
+    },
+    {
+      "time_seconds": [
+        5475.54,
+        5535.83
+      ],
+      "issue": "低质/罗瓦等ASR错词；平行的小模型说法易被理解为独立模型。",
+      "adopted": "按论文称LoRA和低秩更新，解释同输入分支相加与线性合并条件。",
+      "basis": "Figure1、§§4.1–4.2",
+      "kind": "terminology_and_mechanism"
+    },
+    {
+      "time_seconds": [
+        5535.83,
+        5568.99
+      ],
+      "issue": "艾伦·胡等姓名错词，以及作者履历/视频推荐。",
+      "adopted": "技术正文署名按论文与arXiv；未验证的完整履历、推荐视频不转成已核事实或已观看。",
+      "basis": "首页、arXiv元数据；视频未读",
+      "kind": "attribution_boundary"
+    },
+    {
+      "time_seconds": [
+        5568.99,
+        5605.07
+      ],
+      "issue": "性能相当、最主流和Diffusion应用的概括。",
+      "adopted": "性能回到具体任务对照与反例；后续应用/采用率按节目归因，不把语言模型论文当行业统计。",
+      "basis": "Tables2–6/18；讲义p19",
+      "kind": "evaluation_and_scope"
+    },
+    {
+      "time_seconds": [
+        5605.07,
+        5630.27
+      ],
+      "issue": "定期训练个人资料LoRA即获得记忆的设想。",
+      "adopted": "分开训练得到的行为变化与可更新、删除、追溯的具体记录，明确原论文未测完整个人记忆系统。",
+      "basis": "§§4–8实验范围；这是节目设想，工程建议另标推测",
+      "kind": "memory_boundary"
+    },
+    {
+      "time_seconds": [
+        5630.27,
+        5688.37
+      ],
+      "issue": "VestNet/data等ASR错词及与人脑学习的类比。",
+      "adopted": "结合讲义与论文理解为ResNet/增量；保留直觉但不写成架构等价或神经科学事实；未听音纠词。",
+      "basis": "讲义p19；LoRA§4",
+      "kind": "analogy_boundary"
+    }
+  ],
+  "audio_listened": false,
+  "word_accuracy_measured": false,
+  "verbatim_completeness": false,
+  "limitations": [
+    "未重新转写、逐字听校、说话人校验或测WER。",
+    "章内结构核验不证明全期逐字完整。",
+    "原ASR、设备和运行态收据只留私有缓存；公开只留范围、哈希和核查摘要。"
+  ]
+}

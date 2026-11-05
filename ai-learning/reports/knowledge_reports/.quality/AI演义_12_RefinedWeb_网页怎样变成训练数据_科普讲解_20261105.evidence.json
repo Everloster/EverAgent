@@ -1,0 +1,435 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_12_RefinedWeb_网页怎样变成训练数据_科普讲解_20261105.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-05",
+  "generator": {
+    "model": "gpt-6-astra",
+    "harness": "codex",
+    "run_id": "ai-yanyi-chapter12-refinedweb-20261105",
+    "explicit_model_override": false,
+    "override_reason": "",
+    "identity_basis": "eacli session current actor.model.id=gpt-6-astra，codex-turn-context，session-bound，confirmed=true；仅证明生成者，不作为子Reviewer运行身份。"
+  },
+  "task": {
+    "summary": "逐节完成AI演义第12节RefinedWeb，以讲义、shownotes、相关转录及论文深入浅出讲清数据加工与验证，同时实质优化主稿原章节和阅读入口。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "以原论文v1、讲义p30、shownotes与本章92段转录为基础，回到原文核查机制、数字、适用范围与来源差异。"
+      },
+      {
+        "id": "R2",
+        "text": "用一篇网页的连贯例子解释正文提取、规则过滤、两种去重及代价；少数学、必要术语在首次出现解释。"
+      },
+      {
+        "id": "R3",
+        "text": "训练对照与反例并列，区分任务均分、模型预算、开发版消融、跨模型比较与实际应用，不把删得越多越好写成结论。"
+      },
+      {
+        "id": "R4",
+        "text": "说明团队、资源、公开子集与Falcon模型数据差别；接回规模、训练系统与下一节图文数据，不外推永久解决数据墙。"
+      },
+      {
+        "id": "R5",
+        "text": "实质改写主稿原第12节并把展开入口置于节首；展开可返回原节、上一节与下一节，保留前11节。"
+      },
+      {
+        "id": "R6",
+        "text": "报告可独立阅读；工作台桌面与窄屏实际检查目录、脚注、跨报告往返；公开文件不含原始ASR、私有路径或设备信息。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "REFINEDWEB",
+      "kind": "primary",
+      "title": "The RefinedWeb Dataset for Falcon LLM: Outperforming Curated Corpora with Web Data, and Web Data Only",
+      "locator": "https://arxiv.org/pdf/2306.01116v1",
+      "accessed_on": "2026-11-05",
+      "version": "arXiv:2306.01116v1，2023-06-01，32页",
+      "sha256": "b084921cc327f1f2bca232ca5339f0378324e2ff941bded327f136752a983d10",
+      "read_scope": "32页文字层已读，包括方法、主实验、参考文献、数据与模型卡、E/G/H附录；表4/p7、表5/p9原图直接核对并调用eacli图像能力。未从其他未逐图核验曲线读精确数据，未复现语料制作或训练。方法解释按§3.1 WARC；附录A WET记载与其冲突；MinHash主文与附录桶数写法不一致，本文不按此提供可复现配置；具体阈值的>50/至少50不作为结论。"
+    },
+    {
+      "id": "META",
+      "kind": "primary",
+      "title": "RefinedWeb arXiv v1元数据",
+      "locator": "https://arxiv.org/abs/2306.01116v1",
+      "accessed_on": "2026-11-05",
+      "read_scope": "eacli web.read核题名、九名作者、v1提交日期及600B公开子集摘要。"
+    },
+    {
+      "id": "DATASET",
+      "kind": "official",
+      "title": "Falcon RefinedWeb官方数据卡",
+      "locator": "https://huggingface.co/datasets/tiiuae/falcon-refinedweb/blob/main/README.md",
+      "accessed_on": "2026-11-05",
+      "snapshot_sha256": "162aa9ce67730ba7ccaf6bcf72dca6dbe73e03fd3626d2e923befc6e72fa4645",
+      "read_scope": "eacli web.read取得README正文，已读公开子集500–650GT随tokenizer变化、MDR流程、模型数据用途、敏感信息、限制与许可。此前数据集首页只返回viewer样本，raw页只返回metadata；不将两次部分响应称为完整读取。此为动态main页，不是已固定commit的数据卡。"
+    },
+    {
+      "id": "PROCEEDINGS",
+      "kind": "primary",
+      "title": "NeurIPS 2023 RefinedWeb正式会议摘要",
+      "locator": "https://papers.nips.cc/paper_files/paper/2023/hash/fa3ed726cc5073b9c31e3e49a807789c-Abstract-Datasets_and_Benchmarks.html",
+      "accessed_on": "2026-11-05",
+      "read_scope": "eacli web.read只读取摘要，确认公开子集写500B；没有据此声称读完会议版论文，也未用其改写v1表格数字。"
+    },
+    {
+      "id": "LECTURE",
+      "kind": "local",
+      "title": "AI演义讲义RefinedWeb页",
+      "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "accessed_on": "2026-11-05",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
+      "read_scope": "物理p30文字与原图经eacli并直接查看；p7/p26文本用于定位。p30提出数据量/精选语料/数据墙论点；不把讲义强概括直接当一手结论。"
+    },
+    {
+      "id": "EPISODE",
+      "kind": "primary",
+      "title": "张小珺Jùn｜商业访谈录第117期：开源一段论文探索之旅，shownotes与RefinedWeb段",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-05",
+      "read_scope": "复用已经eacli核对的节目身份和shownotes快照；节目发布2025-10-28。按相关原转录零基索引3648–3739，共92段、7869.10–8017.79秒定位，约02:11:09—02:13:38；前后章节只用于划界，不作为本轮内容覆盖。未重新转写或听校，未测WER。",
+      "full_segments_sha256": "f322514ced72235a0ca104635824c66df425c18dbae3d0f4e76fa70d088db61c",
+      "chapter_segments_sha256": "768362e73660c9a68eb5e5c01527ccd8e426d3424c44c78c7b002935e6078975",
+      "chapter_text_sha256": "bbe75feec2c494f1d18dfa6a05804ac25facfbccb9bd7253c4d06702a3f4a5a9",
+      "shownotes_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5"
+    },
+    {
+      "id": "TRANSCRIPT_REVIEW",
+      "kind": "local",
+      "title": "第12节转录时间结构及术语范围核查",
+      "locator": "ai-learning/reports/knowledge_reports/.quality/AI演义_12_RefinedWeb_网页怎样变成训练数据_科普讲解_20261105.transcription-review.json",
+      "accessed_on": "2026-11-05",
+      "sha256": "fc57e46d704b1f686dd6e0b082868f125cea09e155bcb874f6a3b661b82582e5",
+      "read_scope": "公开最小范围及结构收据；无原始转录或私有路径；片段跨度与审计器绝对结束时间分开登记。"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "RefinedWeb直接承接Chinchilla的数据需求，用web-only检验精选混合来源是否必要；web-only不表示没有专业内容。",
+      "report_anchor": "data-question",
+      "source_ids": [
+        "REFINEDWEB",
+        "LECTURE"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§1–2、§3与G.1.3；目标英语通用预训练。"
+    },
+    {
+      "id": "C2",
+      "claim": "MDR先网址处理、提正文和语言识别，再文本过滤与行级修整；RW-Raw已包含前置预处理。Neutral filtering仍有ML语言识别、人工及ToxicBERT辅助规则检查。",
+      "report_anchor": "filtering",
+      "source_ids": [
+        "REFINEDWEB",
+        "DATASET"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§3.1–3.2、G.1–G.2；5%分母为全文词数、分子为标记行词数。"
+    },
+    {
+      "id": "C3",
+      "claim": "MinHash近似文档簇随机留一篇；精确去重识别规范化长片段并删除全部匹配副本，可能断句且不判断事实真伪。作者跳过逐对真实相似度复查，仍有误删风险。",
+      "report_anchor": "deduplication",
+      "source_ids": [
+        "REFINEDWEB"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§3.3、G.3.1–G.3.2；H含真实模板、URL参数与鞋款量脚说明例子，猫网页是教学示意。"
+    },
+    {
+      "id": "C4",
+      "claim": "近似去重在精确前的理由包括扩展性；E.1并未证明组合必然更准，cut/drop/mask有取舍；100份内内容去重加跨份URL记录不保证全局无重复。",
+      "report_anchor": "deduplication",
+      "source_ids": [
+        "REFINEDWEB"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§3.3、E.1/Table8、G.3；E.1为开发版1B/30B tokens三任务，不能和主实验绝对分数混比。"
+    },
+    {
+      "id": "C5",
+      "claim": "表4控制架构/超参/代码/评测，仅预训练数据不同：1B@27B与3B@60B，两列七数据集六任务零样本均分已核；1B RW56.2/Pile53.4/C455.7，3B RW59.8/C459.6。",
+      "report_anchor": "controlled-experiments",
+      "source_ids": [
+        "REFINEDWEB"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§4.1–4.2/Table4；1B差2.8与0.5百分点、3B对C4差0.2；非聊天能力总分，完整研究模型没有多次训练随机性测量。"
+    },
+    {
+      "id": "C6",
+      "claim": "表5的OSCAR22.01 52.7→过滤52.3、去重55.6、组合55.4；C4组合56.4略高RW56.2但规模取舍不同；RW缺少单独去重条件。",
+      "report_anchor": "counterexamples",
+      "source_ids": [
+        "REFINEDWEB"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§4.3/Table5；不把不完整消融编成全正交设计。"
+    },
+    {
+      "id": "C7",
+      "claim": "完整Falcon-RW为约1.3B/7.5B模型训练350B tokens；跨模型结果的harness/论文来源和预算并不完全同质。",
+      "report_anchor": "controlled-experiments",
+      "source_ids": [
+        "REFINEDWEB",
+        "DATASET"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§4.2、Table10–11、官方数据卡；不声称小模型全面超越GPT3。"
+    },
+    {
+      "id": "C8",
+      "claim": "Pythia的较小去重收益与本研究差异未被因果排除；重复训练的有利迹象来自有限小规模，不能保证无限重复收益。",
+      "report_anchor": "counterexamples",
+      "source_ids": [
+        "REFINEDWEB"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§5、E.3、F.2；作者提出数据类型、方法、训练遍数等假说。"
+    },
+    {
+      "id": "C9",
+      "claim": "九作者及TII等署名可核；TII创建资助，流程复用公共资源；论文数据处理常用1–2万vCPU，精确去重实例最高2TiB内存，人工审核仍必要。",
+      "report_anchor": "people-and-scale",
+      "source_ids": [
+        "REFINEDWEB",
+        "META"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "首页、附录A、G.1/G.2/G.4；不编逐人分工或本机测量。"
+    },
+    {
+      "id": "C10",
+      "claim": "v1完整5T、公开600B；官方数据卡500–650GT随tokenizer变化、会议摘要500B；Falcon-RW仅RW，而Falcon7B/40B混合精选数据。v1说明自家预处理软件未公开、最终生产中间产物未保留，完整复现受限。",
+      "report_anchor": "people-and-scale",
+      "source_ids": [
+        "REFINEDWEB",
+        "DATASET",
+        "PROCEEDINGS"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "v1摘要/§6、dataset card开头、NeurIPS摘要；不把完整集当全部开放，不把全部Falcon当web-only。 附录A pp16–17。"
+    },
+    {
+      "id": "C11",
+      "claim": "数据卡提醒个人敏感信息、错误/残余重复；Perspective毒性近Pile只覆盖有限定义，不能推出公平安全、隐私均解决。",
+      "report_anchor": "people-and-scale",
+      "source_ids": [
+        "REFINEDWEB",
+        "DATASET"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§5与数据卡Personal and Sensitive Information/Discussion of Biases/Other Known Limitations。"
+    },
+    {
+      "id": "C12",
+      "claim": "讲义p30及本章92段给研究动机；数据墙为路线问题，未听校，不把垄断断言或未唯一定位的HF三部曲当事实源。",
+      "report_anchor": "source-scope",
+      "source_ids": [
+        "LECTURE",
+        "EPISODE",
+        "TRANSCRIPT_REVIEW"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "讲义、shownotes与转录；精确时间为内容定位非官方章界，时间审计与词准确率不同。"
+    },
+    {
+      "id": "C13",
+      "claim": "[推测] Personal Context检索可能需要保存来源/时间及重复引文，不能把训练用精确去重删除规则直接照搬。",
+      "report_anchor": "route-and-limits",
+      "source_ids": [
+        "REFINEDWEB"
+      ],
+      "support": "inference",
+      "critical": false,
+      "evidence": "从G.3.2全部删除匹配片段的机制与不同任务目标推导，非本论文实验结论。"
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U1",
+      "title": "RefinedWeb直接承接Chinchilla的数据需求，用web-only检验精选混合来源是否必要；web-only不表示没有专业内容。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "REFINEDWEB",
+        "LECTURE"
+      ],
+      "report_anchor": "data-question"
+    },
+    {
+      "id": "U2",
+      "title": "MDR先网址处理、提正文和语言识别，再文本过滤与行级修整；RW-Raw已包含前置预处理。Neutral filtering仍有ML语言识别、人工及ToxicBERT辅助规则检查。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "REFINEDWEB",
+        "DATASET"
+      ],
+      "report_anchor": "filtering"
+    },
+    {
+      "id": "U3",
+      "title": "MinHash近似文档簇随机留一篇；精确去重识别规范化长片段并删除全部匹配副本，可能断句且不判断事实真伪。作者跳过逐对真实相似度复查，仍有误删风险。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "REFINEDWEB"
+      ],
+      "report_anchor": "deduplication"
+    },
+    {
+      "id": "U4",
+      "title": "近似去重在精确前的理由包括扩展性；E.1并未证明组合必然更准，cut/drop/mask有取舍；100份内内容去重加跨份URL记录不保证全局无重复。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "REFINEDWEB"
+      ],
+      "report_anchor": "deduplication"
+    },
+    {
+      "id": "U5",
+      "title": "表4控制架构/超参/代码/评测，仅预训练数据不同：1B@27B与3B@60B，两列七数据集六任务零样本均分已核；1B RW56.2/Pile53.4/C455.7，3B RW59.8/C459.6。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "REFINEDWEB"
+      ],
+      "report_anchor": "controlled-experiments"
+    },
+    {
+      "id": "U6",
+      "title": "表5的OSCAR22.01 52.7→过滤52.3、去重55.6、组合55.4；C4组合56.4略高RW56.2但规模取舍不同；RW缺少单独去重条件。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "REFINEDWEB"
+      ],
+      "report_anchor": "counterexamples"
+    },
+    {
+      "id": "U7",
+      "title": "完整Falcon-RW为约1.3B/7.5B模型训练350B tokens；跨模型结果的harness/论文来源和预算并不完全同质。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "REFINEDWEB",
+        "DATASET"
+      ],
+      "report_anchor": "controlled-experiments"
+    },
+    {
+      "id": "U8",
+      "title": "Pythia的较小去重收益与本研究差异未被因果排除；重复训练的有利迹象来自有限小规模，不能保证无限重复收益。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "REFINEDWEB"
+      ],
+      "report_anchor": "counterexamples"
+    },
+    {
+      "id": "U9",
+      "title": "九作者及TII等署名可核；TII创建资助，流程复用公共资源；论文数据处理常用1–2万vCPU，精确去重实例最高2TiB内存，人工审核仍必要。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "REFINEDWEB",
+        "META"
+      ],
+      "report_anchor": "people-and-scale"
+    },
+    {
+      "id": "U10",
+      "title": "v1完整5T、公开600B；官方数据卡500–650GT随tokenizer变化、会议摘要500B；Falcon-RW仅RW，而Falcon7B/40B混合精选数据。v1说明自家预处理软件未公开、最终生产中间产物未保留，完整复现受限。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "REFINEDWEB",
+        "DATASET",
+        "PROCEEDINGS"
+      ],
+      "report_anchor": "people-and-scale"
+    },
+    {
+      "id": "U11",
+      "title": "数据卡提醒个人敏感信息、错误/残余重复；Perspective毒性近Pile只覆盖有限定义，不能推出公平安全、隐私均解决。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "REFINEDWEB",
+        "DATASET"
+      ],
+      "report_anchor": "people-and-scale"
+    },
+    {
+      "id": "U12",
+      "title": "讲义p30及本章92段给研究动机；数据墙为路线问题，未听校，不把垄断断言或未唯一定位的HF三部曲当事实源。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "LECTURE",
+        "EPISODE",
+        "TRANSCRIPT_REVIEW"
+      ],
+      "report_anchor": "source-scope"
+    },
+    {
+      "id": "U13",
+      "title": "[推测] Personal Context检索可能需要保存来源/时间及重复引文，不能把训练用精确去重删除规则直接照搬。",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "REFINEDWEB"
+      ],
+      "report_anchor": "route-and-limits"
+    },
+    {
+      "id": "U14",
+      "title": "Shownotes Part2 Infra与数据变迁中RefinedWeb的位置与该片段完整研究论证",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "EPISODE",
+        "LECTURE"
+      ],
+      "report_anchor": "source-scope"
+    },
+    {
+      "id": "U15",
+      "title": "全期其它章节以及未唯一定位的Hugging Face三部曲推荐",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "EPISODE"
+      ],
+      "omission_reason": "本轮限定第12节；其它章节由主稿与逐节任务承接。播客推荐未给可唯一核定标题，不猜测链接，不声称完成全期逐字学习。"
+    }
+  ],
+  "limitations": [
+    "没有重新构建语料、训练模型或复跑指标；猫网页场景是教学示意。",
+    "技术与实验固定arXiv v1，官方数据卡只补公开子集与模型用途；会议版仅读摘要。",
+    "部分主文/附录字段矛盾保留在read_scope，不提供未经消歧的复现参数。",
+    "表4/5均分不能外推聊天全面能力；完整研究模型没有多次训练变异测量，跨模型比较条件不完全一致。",
+    "转录仅92段时间结构和术语核查，未人工听校或测WER，不代表全期逐字完整性。",
+    "数据卡为动态main快照，未核验许可在各司法辖区及每份原网页的法律效力；不把数据公开视为隐私保证。",
+    "Personal Context段明确为跨任务推测，不是本论文验证。"
+  ]
+}

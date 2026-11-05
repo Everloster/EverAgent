@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "kind": "chapter-transcription-review",
+  "reviewed_on": "2026-11-05",
+  "chapter": 8,
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+  "transcript_source_ref": "sha256:919e4ce5147340e2306748394cdb555bfc6a745119f846e7ce8c985056745b05",
+  "full_segments_sha256": "f322514ced72235a0ca104635824c66df425c18dbae3d0f4e76fa70d088db61c",
+  "public_full_episode_receipt": "podcast-learning/reports/transcripts/2026-11-04_ai-yanyi-117.audit.json",
+  "read_scope": {
+    "segments_read": 415,
+    "source_indices_1based": [
+      4350,
+      4764
+    ],
+    "actual_interval_seconds": [
+      9209.89,
+      10026.1
+    ],
+    "segment_artifact_sha256": "9b0b20bf6bc63cc30f123ecb875630b645645180e0a8d07f5c73fb225d3055f0",
+    "text_artifact_sha256": "ab8109cdcc408eed69af693ac3507c811b097edff990ce9906d44aeb59ec0e55",
+    "time_basis": "Part 3 shownotes从02:21:29开始；单篇范围由转录定位，所选末段含路线解释，下一节GPT-2自10026.10秒之后继续。"
+  },
+  "chapter_segment_check": {
+    "segments": 415,
+    "start_regressions": [],
+    "overlaps": [
+      {
+        "previous_index": 4388,
+        "current_index": 4389,
+        "seconds": 0.06
+      },
+      {
+        "previous_index": 4389,
+        "current_index": 4390,
+        "seconds": 0.06
+      }
+    ],
+    "consecutive_exact_duplicate_next_indices_1based": [
+      4388,
+      4389
+    ],
+    "max_gap_seconds": 2.66,
+    "interpretation": "浮点分段起点没有回退；两处0.06秒重叠、三连然后呢不能用来估计WER，也不直接确诊为ASR错误。"
+  },
+  "term_and_claim_checks": [
+    {
+      "time_seconds": [
+        9209.89,
+        9234.56
+      ],
+      "raw": "GBT系列；GBT-1",
+      "adopted": "GPT与GPT-1",
+      "basis": "GPT原论文标题与正文",
+      "kind": "term_correction"
+    },
+    {
+      "time_seconds": [
+        9320.47,
+        9334.16
+      ],
+      "raw": "Wort to rank；只学单词规律",
+      "adopted": "Word2Vec；固定词表示与完整上下文网络的区别，不把词向量说成完全没有语言规律",
+      "basis": "GPT §1–2；主稿既有Word2Vec展开",
+      "kind": "term_and_scope_correction"
+    },
+    {
+      "time_seconds": [
+        9421.55,
+        9443.61
+      ],
+      "raw": "之前NLP没有预训练加微调；第一次",
+      "adopted": "原论文明确列出Dai/Le、Howard/Ruder等前驱；GPT扩展Transformer迁移至更多任务",
+      "basis": "GPT §2及OpenAI官方研究介绍",
+      "kind": "priority_correction"
+    },
+    {
+      "time_seconds": [
+        9510.01,
+        9517.9
+      ],
+      "raw": "Books Corp；5GB；0.1B",
+      "adopted": "BooksCorpus；正文采用论文明确的7000多本书与12层/768/12头配置，不把讲义约数冒充统一参数统计",
+      "basis": "GPT §4.1；讲义p35",
+      "kind": "name_and_metric_scope"
+    },
+    {
+      "time_seconds": [
+        9533.29,
+        9669.69
+      ],
+      "raw": "BERT捶GPT；几乎横扫；性能更强",
+      "adopted": "以具体GLUE/SQuAD任务、数据与微调条件说明优势，加入同条件目标消融",
+      "basis": "BERT Tables1/2/5、AppendixA4",
+      "kind": "comparison_scope"
+    },
+    {
+      "time_seconds": [
+        9618.05,
+        9621.28
+      ],
+      "raw": "Next Sentence Prediction现在已经没人提",
+      "adopted": "解释原版NSP二分类与本文消融，不据当前bundle断言所有后续模型弃用或必需",
+      "basis": "BERT §3.1与Table5；未读全体后续模型",
+      "kind": "scope_limit"
+    },
+    {
+      "time_seconds": [
+        9709.79,
+        9714.04
+      ],
+      "raw": "Bert是一个Encode Decode的模型",
+      "adopted": "BERT是多层双向Transformer encoder；未听音不能判断是嘉宾口误还是ASR误识别",
+      "basis": "BERT §3与Figure3",
+      "kind": "architecture_correction"
+    },
+    {
+      "time_seconds": [
+        9737.7,
+        9986.02
+      ],
+      "raw": "大型隐式多任务学习、更开放、世界规律；夹杂后续模型与人物轶事",
+      "adopted": "保留讲述者解释且其自述尚无共识；不以两篇原文证明BERT不能学世界知识或GPT已具备后来的开放推理",
+      "basis": "转录9866.65–9869.35自述无共识；GPT §5将相关解释列为hypothesis",
+      "kind": "hypothesis_boundary"
+    }
+  ],
+  "audio_listened": false,
+  "word_accuracy_measured": false,
+  "verbatim_completeness": false,
+  "limitations": [
+    "本章未人工听音，不报告WER，不反推嘉宾准确发音。",
+    "整期最后15.989秒覆盖仍未知；不能声称整期逐字完整。",
+    "时间戳结构通过不表示词语或专名都准确；原始转录留私有存储。"
+  ]
+}

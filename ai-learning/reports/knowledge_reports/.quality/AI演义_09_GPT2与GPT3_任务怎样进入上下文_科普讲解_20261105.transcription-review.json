@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "kind": "chapter-transcription-review",
+  "reviewed_on": "2026-11-05",
+  "chapter": 9,
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+  "transcript_source_ref": "sha256:919e4ce5147340e2306748394cdb555bfc6a745119f846e7ce8c985056745b05",
+  "full_segments_sha256": "f322514ced72235a0ca104635824c66df425c18dbae3d0f4e76fa70d088db61c",
+  "public_full_episode_receipt": "podcast-learning/reports/transcripts/2026-11-04_ai-yanyi-117.audit.json",
+  "read_scope": {
+    "segments_read": 419,
+    "source_indices_1based": [
+      4765,
+      5183
+    ],
+    "actual_interval_seconds": [
+      10026.1,
+      10796.78
+    ],
+    "segment_artifact_sha256": "2e707c92065eed7f5f74d192ee861ff44a16f5dfaa1e427355c2eb43c37ff571",
+    "text_artifact_sha256": "cdb045ba943830fbe8d2e1aecc959e5bf4d061d89ce4d5294c2c7e41558120a5",
+    "time_basis": "Shownotes将Part 3起点标为02:21:29；本章边界来自转录内容定位，非节目官方小节时间。"
+  },
+  "chapter_segment_check": {
+    "selected_count": 419,
+    "index_range": [
+      4765,
+      5183
+    ],
+    "range_seconds": [
+      10026.1,
+      10796.78
+    ],
+    "full_segments_sha256": "f322514ced72235a0ca104635824c66df425c18dbae3d0f4e76fa70d088db61c",
+    "start_regressions": [],
+    "overlaps": [],
+    "max_gap_seconds": 1.02,
+    "adjacent_identical_text": [],
+    "audio_listened": false,
+    "wer_measured": false
+  },
+  "compatible_text_audit": {
+    "schema_version": 2,
+    "kind": "podcast-transcript-audit",
+    "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+    "source_ref": "sha256:84d95298c9971481758b6203edd13880494d70d820d9f914e97c0dbe39a389f9",
+    "max_consecutive_limit": 3,
+    "audit": {
+      "ok": true,
+      "size": 20064,
+      "sha256": "84d95298c9971481758b6203edd13880494d70d820d9f914e97c0dbe39a389f9",
+      "lines": 419,
+      "segments": 419,
+      "duration_seconds": 10796,
+      "max_consecutive_identical": 1,
+      "timestamp_errors": 0,
+      "malformed_lines": 0,
+      "tail_gap_seconds": 0
+    }
+  },
+  "audit_interpretation": "审计脚本读取箭头分隔时间戳文本；从JSON无改字转换，秒数向下取整。duration_seconds=10796为绝对末尾时间，不是本章长度；tail_gap_seconds=0只反映所选文本末尾，不能替代整期尾部检查。精细重叠/间隙以原始小数秒结构检查为准。",
+  "input_format_failure": {
+    "attempt": "误将分段JSON作为audit_transcript.py的逐行文本输入",
+    "status": "failed",
+    "cause": "输入格式不匹配",
+    "resolution": "转换为支持的文本格式后另行运行并保留成功收据；失败不算ASR质量失败或审计通过。",
+    "artifact_sha256": "f08ad7d5cc5c02bafe27fec2e0540f2ee8b8b02756af02dba8c6488f9ceee6d7"
+  },
+  "term_and_claim_checks": [
+    {
+      "time_seconds": [
+        10115.03,
+        10137.9
+      ],
+      "issue": "Reddit与评论区类比",
+      "adopted": "WebText采集用户推荐外链指向的网页，不据类比写成评论语料。",
+      "basis": "GPT-2 §2.1",
+      "kind": "data_scope"
+    },
+    {
+      "time_seconds": [
+        10145.66,
+        10151.57
+      ],
+      "issue": "模型与数据均扩大约10倍",
+      "adopted": "分开解释参数、文本字节、训练token与上下文，正文保留原表口径，不据粗略倍率证明效果原因。",
+      "basis": "GPT-2 Table 2；GPT-3 Tables 2.1–2.2",
+      "kind": "metric_scope"
+    },
+    {
+      "time_seconds": [
+        10512.06,
+        10514.75
+      ],
+      "issue": "570 GB被口述为数据规模",
+      "adopted": "仅指过滤后的Common Crawl；另有WebText2、Books1/2和Wikipedia，300B为累计训练token。",
+      "basis": "GPT-3 §2.2/Table2.2/AppendixA",
+      "kind": "data_scope"
+    },
+    {
+      "time_seconds": [
+        10582.86,
+        10585.42
+      ],
+      "issue": "几千张GPU的口述配置",
+      "adopted": "原文只支持V100、微软高带宽集群和模型并行；不补未核实的精确GPU数量。",
+      "basis": "GPT-3 §2.3",
+      "kind": "unsupported_precision_excluded"
+    },
+    {
+      "time_seconds": [
+        10270.9,
+        10470.45
+      ],
+      "issue": "组织变化、投入决策与技术路线的因果叙事",
+      "adopted": "人物分工按正式Contributions记录；组织动机未由这些论文证明，不采为事实。",
+      "basis": "GPT-3 p42 Contributions",
+      "kind": "causal_scope"
+    },
+    {
+      "time_seconds": [
+        10786.25,
+        10788.05
+      ],
+      "issue": "人物名字转录为Alex及当前去向",
+      "adopted": "按论文署名使用Alec Radford；未额外调查当前任职，不把旁支轶事写入技术结论。",
+      "basis": "GPT-2首页；GPT-3 p42",
+      "kind": "name_and_scope"
+    }
+  ],
+  "audio_listened": false,
+  "word_accuracy_measured": false,
+  "verbatim_completeness": false,
+  "limitations": [
+    "没有人工听校或WER；不能据结构检查确认每词准确或判断嘉宾是否口误。",
+    "整期最后15.989秒覆盖仍未知。",
+    "公开仅保留必要的事实核查说明与哈希，原始ASR不进入公开仓。"
+  ]
+}

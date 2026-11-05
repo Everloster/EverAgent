@@ -43,7 +43,7 @@ def report_for_sidecar(path: str) -> str | None:
     candidate = Path(path)
     if candidate.parent.name != ".quality":
         return None
-    for suffix in (".evidence.json", ".review.json"):
+    for suffix in (".evidence.json", ".review.json", ".transcription-review.json"):
         if candidate.name.endswith(suffix):
             report = candidate.parent.parent / f"{candidate.name[:-len(suffix)]}.md"
             return str(report) if (ROOT / report).is_file() else None

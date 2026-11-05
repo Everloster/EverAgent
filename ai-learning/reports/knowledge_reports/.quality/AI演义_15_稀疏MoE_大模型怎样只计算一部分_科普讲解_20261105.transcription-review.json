@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "kind": "chapter-transcription-review",
+  "reviewed_on": "2026-11-05",
+  "chapter": 15,
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+  "transcript_source_ref": "sha256:0378bf5d313297e7f63acd9177ff8faf108319b7f916dd8c955b520e3724c79a",
+  "full_segments_sha256": "f322514ced72235a0ca104635824c66df425c18dbae3d0f4e76fa70d088db61c",
+  "public_full_episode_receipt": "podcast-learning/reports/transcripts/2026-11-04_ai-yanyi-117.audit.json",
+  "read_scope": {
+    "segments_read": 206,
+    "source_indices_zero_based_inclusive": [
+      1832,
+      2037
+    ],
+    "actual_interval_seconds": [
+      4534.53,
+      4947.03
+    ],
+    "span_seconds": 412.5,
+    "segment_artifact_sha256": "85c22cb503d1026df9cc506815df81af294c7d7b310c5b8cb95c4309f9d49b98",
+    "text_artifact_sha256": "0378bf5d313297e7f63acd9177ff8faf108319b7f916dd8c955b520e3724c79a",
+    "time_basis": "源segments小数秒；正文约01:15:35–01:22:27，包括MoE及其后的工程/成本追问，止于CoT前。shownotes只给Part1大段边界，不把此范围冒称官方逐论文章界。"
+  },
+  "chapter_segment_check": {
+    "segment_count": 206,
+    "negative_duration_count": 0,
+    "backward_start_count": 0,
+    "overlap_count": 0,
+    "positive_gap_count": 3,
+    "max_gap_seconds": 0.62
+  },
+  "compatible_text_audit": {
+    "schema_version": 2,
+    "kind": "podcast-transcript-audit",
+    "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+    "source_ref": "sha256:6590cc0f9fce807508a3448d94b0a8b0fe5b592efe45af28e719cf2e244c13c9",
+    "max_consecutive_limit": 3,
+    "audit": {
+      "ok": true,
+      "size": 10571,
+      "sha256": "6590cc0f9fce807508a3448d94b0a8b0fe5b592efe45af28e719cf2e244c13c9",
+      "lines": 206,
+      "segments": 206,
+      "duration_seconds": 4947,
+      "max_consecutive_identical": 2,
+      "timestamp_errors": 0,
+      "malformed_lines": 0,
+      "tail_gap_seconds": 0
+    }
+  },
+  "audit_interpretation": "同一206段转换为[hh:mm:ss -> hh:mm:ss]格式后由audit_transcript.audit/public_receipt生成并validate_receipt检查。duration_seconds=4947是节目绝对结束位置，不是章长；实际跨度412.5秒。连续相同句最长2，原样保留；3处正间隔最大0.62秒，无倒序/负时长/重叠。没有听校或WER测量。",
+  "term_and_claim_checks": [
+    {
+      "time_seconds": [
+        4534.53,
+        4600.16
+      ],
+      "issue": "MoE与作者Noam Shazeer等专名的ASR错词，以及早期历史和后续公司经历混合。",
+      "adopted": "按论文首页/§1校正MoE和作者，历史只按原文related work归因；后续公司轶事不采用为事实。",
+      "basis": "论文pp1–3；讲义p17",
+      "kind": "terminology_and_history_boundary"
+    },
+    {
+      "time_seconds": [
+        4600.16,
+        4709.44
+      ],
+      "issue": "把更大容量、每次只用一部分计算和实际费用连成口头推论，脑分区作类比。",
+      "adopted": "展开总参数/激活计算/专家层与全模型/时间及费用的区别；类比不当作神经科学证明。",
+      "basis": "§§2–5；Tables1/6–8",
+      "kind": "mechanism_and_metric_definition"
+    },
+    {
+      "time_seconds": [
+        4709.44,
+        4870.83
+      ],
+      "issue": "DeepSeek、CUDA/NVIDIA/ATI及商业历史旁支存在未核强概括。",
+      "adopted": "明确这些外围说法超出本轮一手来源，只保留算法与工程配合的问题，联系此前Brook的教学主线。",
+      "basis": "§3；本轮未补读这些公司的内部或商业历史资料",
+      "kind": "unverified_external_examples"
+    },
+    {
+      "time_seconds": [
+        4870.83,
+        4895.69
+      ],
+      "issue": "1000倍模型容量被进一步说成1000倍性能及千分之一成本；一条费用句连续重复。",
+      "adopted": "明确纠正容量倍率与质量/费用不可互换，保留不同预算实验及最大模型退化；原ASR重复未静默删除。",
+      "basis": "论文摘要；Tables1/7/8；讲义p17",
+      "kind": "unsupported_conversion"
+    },
+    {
+      "time_seconds": [
+        4895.69,
+        4945.17
+      ],
+      "issue": "公司采用情况、内部训练失败次数等未经核实叙述。",
+      "adopted": "不升级为事实，保留MoE仍有训练与工程难点的可证结论。",
+      "basis": "§§3–4与均衡/大规模退化实验",
+      "kind": "attribution_boundary"
+    }
+  ],
+  "audio_listened": false,
+  "word_accuracy_measured": false,
+  "verbatim_completeness": false,
+  "limitations": [
+    "未重新转写或逐字听校，未测WER。",
+    "本章206段结构核验不等于全期逐字完整。",
+    "原ASR、设备、私有路径与原始工具收据留私有缓存，公开只留范围、摘要、哈希和结构指标。"
+  ]
+}

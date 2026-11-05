@@ -7,37 +7,59 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
-| 2026-11-04 | [《AI演义》深读：从关键论文看懂AI的发展路径](../ai-learning/reports/AI演义_笔记分析与项目整合报告.md) | ai-learning |
+| 2026-11-05 | [《AI演义》深读：从关键论文看懂AI的发展路径](../ai-learning/reports/AI演义_笔记分析与项目整合报告.md) | ai-learning |
+| 2026-11-05 | [《AI演义》22｜DeepVideo：多看几帧，为什么还不够？](../ai-learning/reports/knowledge_reports/AI演义_22_DeepVideo_模型怎样利用视频时间信息_科普讲解_20261105.md) | ai-learning |
+| 2026-11-05 | [《AI演义》21｜Tülu 3：示范、偏好和验算，怎样一起训练助手？](../ai-learning/reports/knowledge_reports/AI演义_21_Tulu3_后训练配方怎样起作用_科普讲解_20261105.md) | ai-learning |
+| 2026-11-05 | [《AI演义》20｜ReAct：模型怎样边查边想，把任务做下去？](../ai-learning/reports/knowledge_reports/AI演义_20_ReAct_模型怎样边查边想_科普讲解_20261105.md) | ai-learning |
+| 2026-11-05 | [《AI演义》19｜CoT：中间步骤怎样帮助模型作答？](../ai-learning/reports/knowledge_reports/AI演义_19_CoT_中间步骤怎样帮助模型作答_科普讲解_20261105.md) | ai-learning |
+| 2026-11-05 | [《AI演义》18｜InstructGPT：模型怎样学会按要求回答？](../ai-learning/reports/knowledge_reports/AI演义_18_InstructGPT_模型怎样学会按要求回答_科普讲解_20261105.md) | ai-learning |
+| 2026-11-05 | [《AI演义》17｜AlphaGo Zero：没有人类棋谱，怎样学会下棋？](../ai-learning/reports/knowledge_reports/AI演义_17_AlphaGoZero_不靠棋谱怎样学会下棋_科普讲解_20261105.md) | ai-learning |
+| 2026-11-05 | [《AI演义》16｜LoRA：少量参数，怎样让大模型适配新任务？](../ai-learning/reports/knowledge_reports/AI演义_16_LoRA_少量参数怎样适配新任务_科普讲解_20261105.md) | ai-learning |
+| 2026-11-05 | [《AI演义》15｜稀疏 MoE：大模型怎样只计算一部分？](../ai-learning/reports/knowledge_reports/AI演义_15_稀疏MoE_大模型怎样只计算一部分_科普讲解_20261105.md) | ai-learning |
+| 2026-11-05 | [《AI演义》14｜MegaScale：一万张 GPU，怎样一起把模型练完？](../ai-learning/reports/knowledge_reports/AI演义_14_MegaScale_万卡怎样协同训练_科普讲解_20261105.md) | ai-learning |
+| 2026-11-05 | [《AI演义》13｜LAION：图片和文字，怎样变成训练数据？](../ai-learning/reports/knowledge_reports/AI演义_13_LAION_图文怎样变成训练数据_科普讲解_20261105.md) | ai-learning |
+| 2026-11-05 | [《AI演义》12｜RefinedWeb：网页怎样变成好用的训练数据？](../ai-learning/reports/knowledge_reports/AI演义_12_RefinedWeb_网页怎样变成训练数据_科普讲解_20261105.md) | ai-learning |
+| 2026-11-05 | [《AI演义》11｜ZeRO：多加 GPU，怎样让训练真正装得下？](../ai-learning/reports/knowledge_reports/AI演义_11_ZeRO_多卡怎样分担训练显存_科普讲解_20261105.md) | ai-learning |
+| 2026-11-05 | [《AI演义》10｜Scaling Laws 与 Chinchilla：同一份算力，模型和数据怎样分？](../ai-learning/reports/knowledge_reports/AI演义_10_ScalingLaws与Chinchilla_算力预算怎样分配_科普讲解_20261105.md) | ai-learning |
+| 2026-11-05 | [《AI演义》09｜GPT-2 与 GPT-3：只给说明和例子，模型就能换任务吗？](../ai-learning/reports/knowledge_reports/AI演义_09_GPT2与GPT3_任务怎样进入上下文_科普讲解_20261105.md) | ai-learning |
+| 2026-11-05 | [《AI演义》08｜GPT-1 与 BERT：只是读了很多文本，怎么就能做不同任务？](../ai-learning/reports/knowledge_reports/AI演义_08_GPT1与BERT_预训练怎样迁移到不同任务_科普讲解_20261105.md) | ai-learning |
+| 2026-11-05 | [《AI演义》07｜GNMT 与 Transformer：翻译怎样变快，为什么还要逐词生成？](../ai-learning/reports/knowledge_reports/AI演义_07_GNMT与Transformer_从翻译系统到并行架构_科普讲解_20261105.md) | ai-learning |
+| 2026-11-05 | [《AI演义》06｜seq2seq 与 Attention：模型怎样翻译一句话？](../ai-learning/reports/knowledge_reports/AI演义_06_seq2seq与Attention_模型怎样翻译一句话_科普讲解_20261105.md) | ai-learning |
+| 2026-11-04 | [《AI演义》05｜Word2Vec：词向量怎样学出来，又知道些什么？](../ai-learning/reports/knowledge_reports/AI演义_05_Word2Vec_词向量怎样学出来_科普讲解_20261104.md) | ai-learning |
+| 2026-11-04 | [《AI演义》04｜蒸馏：大模型学到的本领，小模型怎样接过去？](../ai-learning/reports/knowledge_reports/AI演义_04_知识蒸馏_从教师到学生_科普讲解_20261104.md) | ai-learning |
+| 2026-11-04 | [《AI演义》03｜ResNet：网络更深了，为什么连训练集都学不好？](../ai-learning/reports/knowledge_reports/AI演义_03_ResNet_深层网络如何训练_科普讲解_20261104.md) | ai-learning |
+| 2026-11-04 | [《AI演义》02｜AlexNet：数据、模型和 GPU 为什么必须合在一起看？](../ai-learning/reports/knowledge_reports/AI演义_02_AlexNet_图像识别突破_科普讲解_20261104.md) | ai-learning |
+| 2026-11-04 | [《AI演义》01｜Brook：GPU 很快，为什么普通程序还不容易用上它？](../ai-learning/reports/knowledge_reports/AI演义_01_Brook_GPU通用计算_科普讲解_20261104.md) | ai-learning |
 | 2026-11-04 | [agent-desktop 深度研究：Agent 怎样可靠地操作桌面](../github-trending-analyzer/reports/research_vercel-labs_agent-desktop.md) | github-trending-analyzer |
 | 2026-11-03 | [无状态的鹦鹉，怎么学会了连续对话和自己用工具？—— Agent 请求全链路科普·完整版](../ai-learning/reports/knowledge_reports/Agent请求全链路_完整版_科普讲解_20261103.md) | ai-learning |
-| 2026-11-03 | [十字路口年终复盘：AI 的十个惊讶时刻，哪些值得带回日常？](../podcast-learning/reports/2026-11-02_xiaoyuzhou-crossing_ai-aha-moments.md) | podcast-learning |
-| 2026-11-02 | [答案在逐字出现，Agent 到底做到哪一步了？—— Agent 请求全链路续篇](../ai-learning/reports/knowledge_reports/Agent请求全链路_流式响应与断线恢复_科普讲解_20261102.md) | ai-learning |
-| 2026-11-01 | [飞行汽车的剧本与欧洲的账本：赛博对话 vol.60 深读](../podcast-learning/reports/2026-10-30_saibo-duihua_v60-roadster-china-auto-europe.md) | podcast-learning |
-| 2026-11-01 | [郭凯谈中国经济新范式：拐点、平行线与还没兑现的红利](../podcast-learning/reports/2026-10-30_zhixing-xiaojiuguan_e256-guokai-economy-households.md) | podcast-learning |
-| 2026-11-01 | [狂飙中的 AI 2026：模型发布、收入增长与算力债务](../podcast-learning/reports/2026-10-26_tulong-zhishu_ai-2026-version-race.md) | podcast-learning |
-| 2026-11-01 | [人往贵处集中：陆铭谈大城市、内卷、房价与 AI 时代的经济学](../podcast-learning/reports/2026-10-26_gaonengliang_v239-luming-ai-cities-consumption.md) | podcast-learning |
-| 2026-11-01 | [LinkStart Vol.136：Stripe CMO 给出了几条出海准则——四波增长、四层本地化与 Agent 时代的品牌](../podcast-learning/reports/2026-10-29_linkstart_v136-stripe-global-ai-commerce.md) | podcast-learning |
-| 2026-10-31 | [卢策吾谈具身智能十年：先建数据系统，再等 Scaling Law](../podcast-learning/reports/2026-10-30_xinhao-yuzaosheng_e16-lucewu-north-slope.md) | podcast-learning |
-| 2026-10-31 | [余一聊 Manus：怎样把任务真正交给 Agent](../podcast-learning/reports/2026-10-28_xiaoyuzhou-ai-lianjinshu_yuyi-manus-delegation.md) | podcast-learning |
-| 2026-10-30 | [模型不变，Agent 如何做得更好：一项 Harness 实验](../ai-learning/reports/paper_analyses/46_evolve_the_harness_2026.md) | ai-learning |
-| 2026-10-30 | [Personal Context 正交论：哪些积累值得保留，怎样持续维护](../ai-learning/reports/knowledge_reports/PersonalContext正交论_PC构建指南_20261010.md) | ai-learning |
-| 2026-10-29 | [多设备、多 Agent 怎样共用上下文与续接会话：从 Manus 到可实现的架构](../ai-learning/reports/knowledge_reports/多设备多Agent共享Context与会话续接_Manus实践与架构边界_深度解析_20261029.md) | ai-learning |
-| 2026-10-27 | [纳德拉谈企业智能：知识、反馈、模型选择与 Agent 治理](../podcast-learning/reports/2026-10-27_bilibili-nadella_enterprise-intelligence.md) | podcast-learning |
-| 2026-10-27 | [大模型推理全链路：服务质量、量化、编译搜索与 Agent 缓存](../podcast-learning/reports/2026-10-27_bilibili-krillinai_llm-inference-stack.md) | podcast-learning |
-| 2026-10-27 | [上下文工程的失效与修复：从长对话到可维护的记忆](../ai-learning/reports/knowledge_reports/Context_Engineering_失败修复与战略性遗忘_深度解析_20261027.md) | ai-learning |
-| 2026-10-27 | [OpenAI Computer Use：从跨应用操作到可验收的企业任务](../podcast-learning/reports/2026-10-27_bilibili-openai_computer-use.md) | podcast-learning |
-| 2026-10-26 | [十字路口 × 李磊：AI 时代读 PhD——从难而正确、公开输出到 RSI 的研究方法](../podcast-learning/reports/2026-10-25_xiaoyuzhou-crossing_li-lei-ai-phd.md) | podcast-learning |
-| 2026-10-26 | [何思远方Siyuan：我们正在把所有人训练成同一种人——池化隐喻下的 AI 同质化批判](../podcast-learning/reports/2026-09-28_bilibili-hesiyuanfang_homogenization.md) | podcast-learning |
-| 2026-10-26 | [MiniMax Code Mini App：持久工作面、Agent 插件运行时与安全边界深度解析](../ai-learning/reports/knowledge_reports/MiniMax_Code_Mini_App_持久工作面与Agent插件运行时_深度解析_20261026.md) | ai-learning |
-| 2026-10-26 | [Kimi K3.1 Pro：联合 RL、长程 Agent 与开放权重边界深度解析](../ai-learning/reports/knowledge_reports/Kimi_K3_1_Pro_联合RL_长程Agent与开放权重_深度解析_20261026.md) | ai-learning |
-| 2026-10-26 | [AI 行业日报 · 2026-10-26](../web-surfing/reports/ai-news-daily-2026-10-26.md) | web-surfing |
-| 2026-10-25 | [菠萝健康派 × 师永刚：中美抗癌十年，就医路径、费用真相与「被看见」的病人](../podcast-learning/reports/2026-10-21_xiaoyuzhou-boluo-jiankang_shiyonggang-cn-us-cancer-decade.md) | podcast-learning |
 
-## 🤖 AI Learning（154 篇）
+## 🤖 AI Learning（176 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
-| 2026-11-04 | [《AI演义》深读：从关键论文看懂AI的发展路径](../ai-learning/reports/AI演义_笔记分析与项目整合报告.md) | `ai_history`, `representation_learning`, `transformer`, `pretraining`, `scaling_laws`, `multimodal` |
+| 2026-11-05 | [《AI演义》深读：从关键论文看懂AI的发展路径](../ai-learning/reports/AI演义_笔记分析与项目整合报告.md) | `ai_history`, `representation_learning`, `transformer`, `pretraining`, `scaling_laws`, `multimodal` |
+| 2026-11-05 | [《AI演义》22｜DeepVideo：多看几帧，为什么还不够？](../ai-learning/reports/knowledge_reports/AI演义_22_DeepVideo_模型怎样利用视频时间信息_科普讲解_20261105.md) | `ai_history`, `deepvideo`, `video_classification`, `temporal_fusion`, `sports1m`, `transfer_learning` |
+| 2026-11-05 | [《AI演义》21｜Tülu 3：示范、偏好和验算，怎样一起训练助手？](../ai-learning/reports/knowledge_reports/AI演义_21_Tulu3_后训练配方怎样起作用_科普讲解_20261105.md) | `ai_history`, `tulu3`, `post_training`, `sft`, `dpo`, `rlvr` |
+| 2026-11-05 | [《AI演义》20｜ReAct：模型怎样边查边想，把任务做下去？](../ai-learning/reports/knowledge_reports/AI演义_20_ReAct_模型怎样边查边想_科普讲解_20261105.md) | `ai_history`, `react`, `agents`, `tool_use`, `reasoning`, `evaluation` |
+| 2026-11-05 | [《AI演义》19｜CoT：中间步骤怎样帮助模型作答？](../ai-learning/reports/knowledge_reports/AI演义_19_CoT_中间步骤怎样帮助模型作答_科普讲解_20261105.md) | `ai_history`, `chain_of_thought`, `prompting`, `in_context_learning`, `reasoning`, `evaluation` |
+| 2026-11-05 | [《AI演义》18｜InstructGPT：模型怎样学会按要求回答？](../ai-learning/reports/knowledge_reports/AI演义_18_InstructGPT_模型怎样学会按要求回答_科普讲解_20261105.md) | `ai_history`, `instructgpt`, `rlhf`, `instruction_following`, `reward_model`, `alignment` |
+| 2026-11-05 | [《AI演义》17｜AlphaGo Zero：没有人类棋谱，怎样学会下棋？](../ai-learning/reports/knowledge_reports/AI演义_17_AlphaGoZero_不靠棋谱怎样学会下棋_科普讲解_20261105.md) | `ai_history`, `alphago_zero`, `reinforcement_learning`, `self_play`, `mcts`, `test_time_compute` |
+| 2026-11-05 | [《AI演义》16｜LoRA：少量参数，怎样让大模型适配新任务？](../ai-learning/reports/knowledge_reports/AI演义_16_LoRA_少量参数怎样适配新任务_科普讲解_20261105.md) | `ai_history`, `lora`, `parameter_efficient_finetuning`, `low_rank_adaptation`, `transfer_learning` |
+| 2026-11-05 | [《AI演义》15｜稀疏 MoE：大模型怎样只计算一部分？](../ai-learning/reports/knowledge_reports/AI演义_15_稀疏MoE_大模型怎样只计算一部分_科普讲解_20261105.md) | `ai_history`, `mixture_of_experts`, `conditional_computation`, `sparse_routing`, `load_balancing`, `language_modeling` |
+| 2026-11-05 | [《AI演义》14｜MegaScale：一万张 GPU，怎样一起把模型练完？](../ai-learning/reports/knowledge_reports/AI演义_14_MegaScale_万卡怎样协同训练_科普讲解_20261105.md) | `ai_history`, `megascale`, `distributed_training`, `parallelism`, `observability`, `fault_tolerance` |
+| 2026-11-05 | [《AI演义》13｜LAION：图片和文字，怎样变成训练数据？](../ai-learning/reports/knowledge_reports/AI演义_13_LAION_图文怎样变成训练数据_科普讲解_20261105.md) | `ai_history`, `laion`, `clip`, `multimodal`, `training_data`, `data_curation` |
+| 2026-11-05 | [《AI演义》12｜RefinedWeb：网页怎样变成好用的训练数据？](../ai-learning/reports/knowledge_reports/AI演义_12_RefinedWeb_网页怎样变成训练数据_科普讲解_20261105.md) | `AI演义`, `RefinedWeb`, `Falcon`, `训练数据`, `数据去重`, `科普讲解` |
+| 2026-11-05 | [《AI演义》11｜ZeRO：多加 GPU，怎样让训练真正装得下？](../ai-learning/reports/knowledge_reports/AI演义_11_ZeRO_多卡怎样分担训练显存_科普讲解_20261105.md) | `AI演义`, `ZeRO`, `DeepSpeed`, `分布式训练`, `显存`, `科普讲解` |
+| 2026-11-05 | [《AI演义》10｜Scaling Laws 与 Chinchilla：同一份算力，模型和数据怎样分？](../ai-learning/reports/knowledge_reports/AI演义_10_ScalingLaws与Chinchilla_算力预算怎样分配_科普讲解_20261105.md) | `AI演义`, `Scaling Laws`, `Chinchilla`, `语言模型`, `训练预算`, `科普讲解` |
+| 2026-11-05 | [《AI演义》09｜GPT-2 与 GPT-3：只给说明和例子，模型就能换任务吗？](../ai-learning/reports/knowledge_reports/AI演义_09_GPT2与GPT3_任务怎样进入上下文_科普讲解_20261105.md) | `AI演义`, `GPT-2`, `GPT-3`, `上下文学习`, `语言模型`, `科普讲解` |
+| 2026-11-05 | [《AI演义》08｜GPT-1 与 BERT：只是读了很多文本，怎么就能做不同任务？](../ai-learning/reports/knowledge_reports/AI演义_08_GPT1与BERT_预训练怎样迁移到不同任务_科普讲解_20261105.md) | `ai_history`, `gpt`, `bert`, `pretraining`, `transfer_learning`, `language_model` |
+| 2026-11-05 | [《AI演义》07｜GNMT 与 Transformer：翻译怎样变快，为什么还要逐词生成？](../ai-learning/reports/knowledge_reports/AI演义_07_GNMT与Transformer_从翻译系统到并行架构_科普讲解_20261105.md) | `ai_history`, `neural_machine_translation`, `gnmt`, `transformer`, `attention`, `wordpiece` |
+| 2026-11-05 | [《AI演义》06｜seq2seq 与 Attention：模型怎样翻译一句话？](../ai-learning/reports/knowledge_reports/AI演义_06_seq2seq与Attention_模型怎样翻译一句话_科普讲解_20261105.md) | `ai_history`, `seq2seq`, `attention`, `neural_machine_translation`, `lstm`, `encoder_decoder` |
+| 2026-11-04 | [《AI演义》05｜Word2Vec：词向量怎样学出来，又知道些什么？](../ai-learning/reports/knowledge_reports/AI演义_05_Word2Vec_词向量怎样学出来_科普讲解_20261104.md) | `ai_history`, `word2vec`, `representation_learning`, `embeddings`, `negative_sampling`, `contextual_representation` |
+| 2026-11-04 | [《AI演义》04｜蒸馏：大模型学到的本领，小模型怎样接过去？](../ai-learning/reports/knowledge_reports/AI演义_04_知识蒸馏_从教师到学生_科普讲解_20261104.md) | `ai_history`, `knowledge_distillation`, `soft_targets`, `model_compression`, `generalization` |
+| 2026-11-04 | [《AI演义》03｜ResNet：网络更深了，为什么连训练集都学不好？](../ai-learning/reports/knowledge_reports/AI演义_03_ResNet_深层网络如何训练_科普讲解_20261104.md) | `ai_history`, `resnet`, `residual_learning`, `optimization`, `generalization`, `representation_learning` |
+| 2026-11-04 | [《AI演义》02｜AlexNet：数据、模型和 GPU 为什么必须合在一起看？](../ai-learning/reports/knowledge_reports/AI演义_02_AlexNet_图像识别突破_科普讲解_20261104.md) | `ai_history`, `alexnet`, `convolutional_neural_networks`, `representation_learning`, `imagenet`, `gpu_training` |
+| 2026-11-04 | [《AI演义》01｜Brook：GPU 很快，为什么普通程序还不容易用上它？](../ai-learning/reports/knowledge_reports/AI演义_01_Brook_GPU通用计算_科普讲解_20261104.md) | `brook`, `gpu`, `gpgpu`, `stream_computing`, `cuda`, `ai_history` |
 | 2026-11-03 | [无状态的鹦鹉，怎么学会了连续对话和自己用工具？—— Agent 请求全链路科普·完整版](../ai-learning/reports/knowledge_reports/Agent请求全链路_完整版_科普讲解_20261103.md) | `agent_harness`, `agentic_loop`, `tool_use`, `context_management`, `message_threads`, `prompt_caching` |
 | 2026-11-02 | [答案在逐字出现，Agent 到底做到哪一步了？—— Agent 请求全链路续篇](../ai-learning/reports/knowledge_reports/Agent请求全链路_流式响应与断线恢复_科普讲解_20261102.md) | `agent_harness`, `agentic_loop`, `streaming`, `tool_calling`, `sse`, `api_gateway` |
 | 2026-10-30 | [模型不变，Agent 如何做得更好：一项 Harness 实验](../ai-learning/reports/paper_analyses/46_evolve_the_harness_2026.md) | `agent_harness`, `self_evolving_agent`, `scaffolding`, `meta_harness`, `context_engineering`, `autoresearch` |

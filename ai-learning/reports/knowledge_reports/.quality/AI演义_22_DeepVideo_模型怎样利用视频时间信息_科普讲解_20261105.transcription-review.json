@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "kind": "chapter-transcription-review",
+  "reviewed_on": "2026-11-05",
+  "chapter": 22,
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+  "transcript_source_ref": "sha256:cf7c6f26802838286ed12d1d9d39efb1e461bb522d88a33e37da363028d19d1b",
+  "full_segments_sha256": "f322514ced72235a0ca104635824c66df425c18dbae3d0f4e76fa70d088db61c",
+  "public_full_episode_receipt": "podcast-learning/reports/transcripts/2026-11-04_ai-yanyi-117.audit.json",
+  "read_scope": {
+    "segments_read": 248,
+    "source_indices_zero_based_inclusive": [
+      5471,
+      5718
+    ],
+    "actual_interval_seconds": [
+      11287.99,
+      11711.9
+    ],
+    "span_seconds": 423.91,
+    "segment_artifact_sha256": "2b328ccae0da834b86a15aa62e91c81fc6c646f1bfd1d6476646f19466e4d576",
+    "text_artifact_sha256": "cf7c6f26802838286ed12d1d9d39efb1e461bb522d88a33e37da363028d19d1b",
+    "time_basis": "约03:08:08–03:15:12；原ASR起点03:08:07.99，文本整数秒显示03:08:07。shownotes给Part4起点03:08:08；下一节从5719段开始。"
+  },
+  "chapter_segment_check": {
+    "same_as_original_slice": true,
+    "segments": 248,
+    "fractional_start_backwards": 0,
+    "fractional_end_backwards": 0,
+    "fractional_end_before_start": 0,
+    "overlap_count": 0,
+    "max_gap_seconds": 0.96,
+    "max_consecutive_identical": 2
+  },
+  "compatible_text_audit": {
+    "schema_version": 2,
+    "kind": "podcast-transcript-audit",
+    "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+    "source_ref": "sha256:cf7c6f26802838286ed12d1d9d39efb1e461bb522d88a33e37da363028d19d1b",
+    "max_consecutive_limit": 3,
+    "audit": {
+      "ok": true,
+      "size": 11456,
+      "sha256": "cf7c6f26802838286ed12d1d9d39efb1e461bb522d88a33e37da363028d19d1b",
+      "lines": 248,
+      "segments": 248,
+      "duration_seconds": 11711,
+      "max_consecutive_identical": 2,
+      "timestamp_errors": 0,
+      "malformed_lines": 0,
+      "tail_gap_seconds": 0
+    }
+  },
+  "audit_interpretation": "原生整数秒审计通过；duration_seconds=11711为绝对末位置而非章长。原JSON另核百分秒一致性、单调、区间方向及间隔；未改原ASR。",
+  "term_and_claim_checks": [
+    {
+      "time_seconds": [
+        11287.99,
+        11416
+      ],
+      "issue": "ImageNet、CNN、Transformer、人名等识别与数据/计算概括",
+      "adopted": "专有名词按论文统一；多帧带来计算和冗余，但不沿用视频至少24fps或普遍信噪比更差。",
+      "basis": "原论文§§1–3与讲义p42",
+      "kind": "names_and_scope"
+    },
+    {
+      "time_seconds": [
+        11425,
+        11448
+      ],
+      "issue": "讲义/口述称ImageNet预训练后迁移到视频",
+      "adopted": "原文只说结构类似ImageNet冠军架构，未明确该初始化；只把Sports-1M→UCF-101写成已报告迁移。",
+      "basis": "原论文§3.1及§4.2",
+      "kind": "initialization_and_transfer"
+    },
+    {
+      "time_seconds": [
+        11448,
+        11554
+      ],
+      "issue": "早晚融合延伸到文字/图像/视频以及人脑和后续系统",
+      "adopted": "区分讲者类比与原论文实验；本文Early/Late/Slow只在RGB帧时间轴融合。",
+      "basis": "原论文Figure1与§3.1",
+      "kind": "fusion_scope"
+    },
+    {
+      "time_seconds": [
+        11554,
+        11667
+      ],
+      "issue": "人物后续履历、自动驾驶与当前活动旁论",
+      "adopted": "只保留正式论文作者/组织署名；未核外围当前履历，不补写推测。",
+      "basis": "CVF元数据及论文首页",
+      "kind": "author_context"
+    },
+    {
+      "time_seconds": [
+        11667,
+        11711.9
+      ],
+      "issue": "59.3→60.9虽数值对，但口述单帧解释省略视频聚合口径",
+      "adopted": "补充20clip×4次crop/flip平均；Video Hit@1增加1.6个百分点，63.9另属四模型集成。",
+      "basis": "原论文§4.1与Table1",
+      "kind": "evaluation_scope"
+    }
+  ],
+  "audio_listened": false,
+  "wer_measured": false,
+  "limitations": [
+    "文本结构检查不代表语音识别准确率。",
+    "完整目标段已读，但机制和表格细节来自原论文，不冒称均由口述展开。",
+    "完整ASR与私有存储路径不公开。"
+  ]
+}

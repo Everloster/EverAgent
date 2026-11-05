@@ -1,0 +1,221 @@
+{
+  "schema_version": 1,
+  "kind": "transcription-content-review",
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+  "reviewed_on": "2026-11-04",
+  "backend": "whisper.cpp",
+  "audio_playback": false,
+  "interactive_browser": false,
+  "media_bytes": 380897463,
+  "media_sha256": "404d76192ff62e593940ebbe4d12ceadb3d4abe747e74dff11b77b31e68fef0b",
+  "decoded_audio_sha256": "d92a78f5bcf73ed11fc61cdc20feef986452050d64de1f00d6e3ccf711fe5645",
+  "media_duration_seconds": 15757.48,
+  "decoded_audio_duration_seconds": 15757.479188,
+  "chunks_processed": 53,
+  "chunks_expected": 53,
+  "processing_elapsed_seconds": 1254,
+  "original": {
+    "source_ref": "sha256:a31980417a25aea86e04f3c86d31ebab7cfff57a6262d28668eb675241a74bfe",
+    "segments": 7618,
+    "bytes": 394542,
+    "audit_ok": false,
+    "maximum_consecutive_identical": 153,
+    "service_status": "needs_review",
+    "repeated_interval_seconds": [
+      13310.8,
+      13500.0
+    ],
+    "repeated_text_example": "然后我们可以去做一些试验"
+  },
+  "recovery": {
+    "method": "从同一已核hash音频裁出两个170秒片段，以20秒重叠重新转写，逐句比较重叠段并按语句边界接回。原文未覆盖、未仅删重复；恢复内容涉及CLIP。",
+    "clip_intervals_seconds": [
+      [
+        13190,
+        13360
+      ],
+      [
+        13340,
+        13510
+      ]
+    ],
+    "replaced_interval_seconds": [
+      13310.8,
+      13506.39
+    ],
+    "clip_a_source_ref": "sha256:dad67010e94cd58089075c6c245fe7e0d8b93ad6b620d962efaac4f308faa982",
+    "clip_b_source_ref": "sha256:18ccf4c534d547b8b0fca01154e316e651db046deb86c53eac2551e13aecf7a3",
+    "recovered_source_ref": "sha256:919e4ce5147340e2306748394cdb555bfc6a745119f846e7ce8c985056745b05",
+    "bytes": 389895,
+    "segments": 7553,
+    "structural_audit_ok": true,
+    "maximum_consecutive_identical": 3,
+    "timestamp_errors": 0,
+    "brook_content_unchanged": true,
+    "join_note": "保留各次ASR时间戳。按BERT/GPT句、概念有限句和Clip模型句衔接；首个接缝约3.36秒，反映两次ASR分段差异，非逐字人工听校。"
+  },
+  "service_warnings_review": [
+    {
+      "warning": "consecutive-repetition",
+      "assessment": "已局部重转恢复并复查，初始失败回执保留；原任务状态未修改。"
+    },
+    {
+      "warning": "overlapping-segments-review-required",
+      "assessment": "共11处，最大0.1秒；逐项查看时间戳与相邻文字，涉及短词重复或边界重叠，无时间倒序。未强改原始时间戳，不用于词级对齐。"
+    },
+    {
+      "warning": "tail-coverage-unverified",
+      "assessment": "转录尾部含节目结束及栏目告别语，末段到15741.49秒；距音频末尾仍有15.989秒，未听校，无法确认是音乐、静音或漏词。"
+    },
+    {
+      "warning": "source-duration-unavailable",
+      "assessment": "官方音频媒体与解码时长一致；节目页面约4小时23分钟只做粗粒度交叉检查，缺独立精确publisher时长，不将该警告改为通过。"
+    }
+  ],
+  "content_windows_checked": [
+    {
+      "seconds": [
+        0,
+        90
+      ],
+      "purpose": "开头引言与节目身份"
+    },
+    {
+      "seconds": [
+        420,
+        475
+      ],
+      "purpose": "阅读论文的背景与问题视角"
+    },
+    {
+      "seconds": [
+        600,
+        640
+      ],
+      "purpose": "工具推荐与讲义说明"
+    },
+    {
+      "seconds": [
+        1170,
+        1630
+      ],
+      "purpose": "Brook相关整段逐段对照讲义和原论文；未听音"
+    },
+    {
+      "seconds": [
+        3590,
+        3630
+      ],
+      "purpose": "模型范式中段连续性抽查"
+    },
+    {
+      "seconds": [
+        5390,
+        5430
+      ],
+      "purpose": "模型范式后段与LoRA入口"
+    },
+    {
+      "seconds": [
+        6750,
+        6870
+      ],
+      "purpose": "Part2边界与ZeRO入口"
+    },
+    {
+      "seconds": [
+        7190,
+        7230
+      ],
+      "purpose": "数据/规模中段连续性抽查"
+    },
+    {
+      "seconds": [
+        8490,
+        8610
+      ],
+      "purpose": "Part3与Word2Vec入口"
+    },
+    {
+      "seconds": [
+        8990,
+        9030
+      ],
+      "purpose": "语言模型中段连续性抽查"
+    },
+    {
+      "seconds": [
+        10790,
+        10830
+      ],
+      "purpose": "语言模型后段与InstructGPT入口"
+    },
+    {
+      "seconds": [
+        11270,
+        11410
+      ],
+      "purpose": "Part4与DeepVideo入口"
+    },
+    {
+      "seconds": [
+        12590,
+        12630
+      ],
+      "purpose": "多模态中段连续性抽查"
+    },
+    {
+      "seconds": [
+        13190,
+        13525
+      ],
+      "purpose": "重复故障前后及两份局部重转逐段检查"
+    },
+    {
+      "seconds": [
+        14180,
+        14300
+      ],
+      "purpose": "论文部分结束与最后聊天入口"
+    },
+    {
+      "seconds": [
+        14390,
+        14430
+      ],
+      "purpose": "最后聊天中段连续性抽查"
+    },
+    {
+      "seconds": [
+        15620,
+        15758
+      ],
+      "purpose": "尾部内容与末段缺口"
+    }
+  ],
+  "brook_term_review": [
+    {
+      "approximate_time": "21:30",
+      "raw_fragment": "高度变形的处理结构…超越GPU",
+      "reference_reading": "高度并行；与CPU比较",
+      "basis": "讲义第10页及论文§1，不能区分口误与ASR错误"
+    },
+    {
+      "approximate_time": "25:39",
+      "raw_fragment": "不肯语言",
+      "reference_reading": "Brook语言",
+      "basis": "论文标题和§3"
+    },
+    {
+      "approximate_time": "26:11",
+      "raw_fragment": "和函数",
+      "reference_reading": "核函数（kernel）",
+      "basis": "论文§3及讲义"
+    }
+  ],
+  "conclusion": "可作逐章研究底稿，不能直接作为校对完成稿。Brook文字已结合论文/讲义核对；其余章节仍需逐章纠词与核实。",
+  "word_accuracy_measured": false,
+  "audio_listened": false,
+  "verbatim_completeness": "unverified",
+  "private_artifacts_preserved": true
+}

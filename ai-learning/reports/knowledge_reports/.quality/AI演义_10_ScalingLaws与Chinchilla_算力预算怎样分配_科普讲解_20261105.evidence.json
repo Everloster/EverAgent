@@ -1,0 +1,599 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_10_ScalingLaws与Chinchilla_算力预算怎样分配_科普讲解_20261105.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-05",
+  "generator": {
+    "model": "gpt-6-astra",
+    "harness": "codex",
+    "run_id": "ai-yanyi-chapter10-source-label-correction-20261105",
+    "explicit_model_override": false,
+    "override_reason": "",
+    "identity_basis": "生成者当前会话agent_identity.py核实为gpt-6-astra/codex，session-bound；本次只更正来源名称，技术内容继承冻结基线。"
+  },
+  "task": {
+    "summary": "逐节展开AI演义第10节，围绕同一训练预算讲清Scaling Laws到Chinchilla的实验与判断变化，同步实质优化主稿原节并放节首入口。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "结合讲义p28、shownotes、本章233段转录、两篇原论文与官方博客；实际读取范围、原文差异与ASR边界可追溯。"
+      },
+      {
+        "id": "R2",
+        "text": "用同一预算例子讲清参数/训练token/窗口/loss、幂律、收敛与计算最优、三种重新估计，少数学可独立读。"
+      },
+      {
+        "id": "R3",
+        "text": "给真实结果与反例，保留数字/评价设置、N-D混杂、数据重复质量、外推与训练/推理目标区别。"
+      },
+      {
+        "id": "R4",
+        "text": "自然嵌入人物可核贡献、接到GPT2/3及下一节ZeRO，不采未核组织内部动机或当前公司轶事。"
+      },
+      {
+        "id": "R5",
+        "text": "主稿原第10节实质改写且入口在节首；展开能返回原第10节并继续第11节，保留前九节。"
+      },
+      {
+        "id": "R6",
+        "text": "真实工作台桌面/窄屏检查目录、脚注、表格与跨报告定位；正文无原始ASR、私有设备或执行日志。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "KAPLAN",
+      "kind": "primary",
+      "title": "Scaling Laws for Neural Language Models",
+      "locator": "https://arxiv.org/pdf/2001.08361v1",
+      "accessed_on": "2026-11-05",
+      "version": "arXiv2001.08361v1，2020-01-23",
+      "sha256": "a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494",
+      "read_scope": "30页PDF：已读p1–19主文及p22–23附录B.3/B.4/C；根直接核图p3 Figure1。p15图注与正文已读，未把已渲染未查看的图片算成视读；未逐图读完其余附录。"
+    },
+    {
+      "id": "CHINCHILLA",
+      "kind": "primary",
+      "title": "Training Compute-Optimal Large Language Models",
+      "locator": "https://arxiv.org/pdf/2203.15556v1",
+      "accessed_on": "2026-11-05",
+      "version": "arXiv2203.15556v1，2022-03-29",
+      "sha256": "3fd3632a8ef48171bd25282990221d49535d75356192f068b3b2ebe08f2aedd4",
+      "read_scope": "36页PDF：主文p1–16；补读p22–23 A/B/C与FigureA1图注、p26–29 D.3/D.4/E/F/G。根直接核图p5 Figure2及p6 Figure3，后者有eacli辅助回执；p10虽渲染但未实际视读，不算图像核验。数字按文字/表格并限定口径；未逐项通读p30–36结果附录。"
+    },
+    {
+      "id": "BLOG",
+      "kind": "primary",
+      "title": "DeepMind: An empirical analysis of compute-optimal large language model training",
+      "locator": "https://deepmind.google/blog/an-empirical-analysis-of-compute-optimal-large-language-model-training",
+      "accessed_on": "2026-11-05",
+      "version": "2022-04-12",
+      "snapshot_sha256": "1809e99e7fd1de48daa610ca06f013177b56dd3dc8d9a6a959c731d56ae59de4",
+      "read_scope": "eacli web.read已获取并实际阅读全文正文；1.3T与论文1.4T差异保留，不合并数字。"
+    },
+    {
+      "id": "SLIDE",
+      "kind": "local",
+      "title": "AI演义讲义：Scaling Laws与Chinchilla",
+      "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "accessed_on": "2026-11-05",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
+      "read_scope": "第28页文字层与原图实际读取，核图源及重复段落。根eacli视觉第一次timeout/unknown，未重放，最小降级本地view_image；不把提取字形乱序当原图乱码。"
+    },
+    {
+      "id": "SHOWNOTES",
+      "kind": "secondary",
+      "title": "《张小珺Jùn｜商业访谈录》第117期AI演义公开Shownotes",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-05",
+      "snapshot_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5",
+      "read_scope": "既有网页缓存全文；Part2起点01:52:58，本章顺序定位，未提供单节精确时间。",
+      "identity_correction": "2026-11-05经原节目页title/description重新核对，节目归属张小珺Jùn｜商业访谈录，第117期；原链接、shownotes正文与转录材料未变。"
+    },
+    {
+      "id": "ASR",
+      "kind": "local",
+      "title": "AI演义第10节转录复核与结构收据",
+      "locator": "ai-learning/reports/knowledge_reports/.quality/AI演义_10_ScalingLaws与Chinchilla_算力预算怎样分配_科普讲解_20261105.transcription-review.json",
+      "accessed_on": "2026-11-05",
+      "sha256": "787871657443961bfcdfdede59a7d6b0e070e1affe205cd4bcc611bd7cb8df6a",
+      "read_scope": "原转录233段已读，6976.77–7449.67秒；公开仅留结构与疑点核查，未人工听音/WER。"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "参数、累计训练token和上下文长度不同；密集模型主要计算近似随参数×训练量增长，自拟三方案未声称实测。",
+      "report_anchor": "budget",
+      "source_ids": [
+        "KAPLAN",
+        "CHINCHILLA"
+      ],
+      "support": "derived",
+      "critical": true,
+      "evidence": "Kaplan§2.1、Chinchilla AppendixF；10亿×200亿、20亿×100亿、50亿×40亿乘积相等。"
+    },
+    {
+      "id": "C2",
+      "claim": "loss为语言建模交叉熵，不等同任务正确率、智能百分比或安全。",
+      "report_anchor": "loss-and-curves",
+      "source_ids": [
+        "KAPLAN",
+        "CHINCHILLA"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "Kaplan§1–2；Chinchilla§4下游独立评测；黑猫概率为教学示意。"
+    },
+    {
+      "id": "C3",
+      "claim": "单因素幂律有其他资源非瓶颈前提，可辅助小实验外推，范围和理论仍受限。",
+      "report_anchor": "loss-and-curves",
+      "source_ids": [
+        "KAPLAN"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "Figure1，§6.3–8，AppendixC。"
+    },
+    {
+      "id": "C4",
+      "claim": "较大模型样本效率与每token成本不同；固定预算存在最优模型，收敛不等于计算最优。",
+      "report_anchor": "kaplan-allocation",
+      "source_ids": [
+        "KAPLAN"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§1、§6，Figure12，AppendixB.3/B.4。"
+    },
+    {
+      "id": "C5",
+      "claim": "Kaplan 0.73/0.27为增长指数不是预算百分比分账；图14约10倍计算对应5倍模型和2倍数据。",
+      "report_anchor": "kaplan-allocation",
+      "source_ids": [
+        "KAPLAN"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§6.1/Figure14；含batch效率调整。"
+    },
+    {
+      "id": "C6",
+      "claim": "Kaplan的数据/过拟合问题与固定总计算下的最优配比分别建模，不能交换指数。",
+      "report_anchor": "kaplan-allocation",
+      "source_ids": [
+        "KAPLAN"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§4与§6分别对应不同约束；正文不用额外公式。"
+    },
+    {
+      "id": "C7",
+      "claim": "Kaplan人员按首页真实研究、LSTM、Transformer、数据与指导分工说明。",
+      "report_anchor": "kaplan-allocation",
+      "source_ids": [
+        "KAPLAN"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "p1 Contributions。"
+    },
+    {
+      "id": "C8",
+      "claim": "Chinchilla超过400模型，摘要范围70M至>16B参数、5B–500Btoken，同时扫大小/时长并匹配学习率。",
+      "report_anchor": "chinchilla-method",
+      "source_ids": [
+        "CHINCHILLA"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "p1摘要、§2–3、AppendixB；未把中途成绩当适配短训练的最终成绩。"
+    },
+    {
+      "id": "C9",
+      "claim": "训练曲线下包络、IsoFLOP、参数化loss为三种不同估计；预测Gopher预算约67B、63B、40B，最终选70B非唯一精确解。",
+      "report_anchor": "chinchilla-method",
+      "source_ids": [
+        "CHINCHILLA"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§3.1–3.3与§4；数据和实际计算效率影响选择。"
+    },
+    {
+      "id": "C10",
+      "claim": "Table2近似等比例：.50/.50、.49/.51、.46/.54；各翻倍约4倍计算，预算翻倍各约1.41倍。",
+      "report_anchor": "equal-scaling",
+      "source_ids": [
+        "CHINCHILLA"
+      ],
+      "support": "derived",
+      "critical": true,
+      "evidence": "Table2与主要计算近似；倍率是算术而非新增实测。"
+    },
+    {
+      "id": "C11",
+      "claim": "20token/参数是全局训练token与参数总数之比，不是每权重固定分配、窗口或永久标准。",
+      "report_anchor": "equal-scaling",
+      "source_ids": [
+        "CHINCHILLA"
+      ],
+      "support": "derived",
+      "critical": true,
+      "evidence": "§4 1.4T/70B=20；Table3与AppendixD.3展示拟合差异。"
+    },
+    {
+      "id": "C12",
+      "claim": "Gopher280B/300B与Chinchilla70B/1.4T同训练FLOPs；博客1.3T保留差异，训练量比约4.7。",
+      "report_anchor": "gopher-experiment",
+      "source_ids": [
+        "CHINCHILLA",
+        "BLOG"
+      ],
+      "support": "derived",
+      "critical": true,
+      "evidence": "Table1、§4、AppendixF；简式与完整口径不同，同FLOPs不保证同时间/费用。"
+    },
+    {
+      "id": "C13",
+      "claim": "MMLU 57任务5-shot平均60.0→67.6%，提升7.6pp；LAMBADA0-shot74.5→77.4%，PIQA0-shot81.8持平。",
+      "report_anchor": "gopher-experiment",
+      "source_ids": [
+        "CHINCHILLA"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "Tables6/7/8；摘要67.5与表6/主文67.6区别说明，不混任务指标。"
+    },
+    {
+      "id": "C14",
+      "claim": "MMLU 4退步、2持平、51提高，退步含大学数学/计量经济学/道德情境/形式逻辑；平均改善不代表全部能力。",
+      "report_anchor": "gopher-experiment",
+      "source_ids": [
+        "CHINCHILLA"
+      ],
+      "support": "derived",
+      "critical": true,
+      "evidence": "§4.2.2；51=57−4−2。"
+    },
+    {
+      "id": "C15",
+      "claim": "Gopher/Chinchilla还改数据采样、AdamW、tokenizer、优化器权重精度，全部收益不能仅因果归N/D。",
+      "report_anchor": "gopher-experiment",
+      "source_ids": [
+        "CHINCHILLA"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§4.1、AppendicesA/G，图A6/A7显示其他改动影响。"
+    },
+    {
+      "id": "C16",
+      "claim": "更低loss不自动消除偏见/毒性，无提示毒性分数差异小，群体改善不均。",
+      "report_anchor": "gopher-experiment",
+      "source_ids": [
+        "CHINCHILLA"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§4.2.7 pp14–15。"
+    },
+    {
+      "id": "C17",
+      "claim": "训练不足相对预算最优；缩放分析少于一epoch不能改写成最终模型每个子集无重复，MassiveWeb1.24/Wikipedia3.40遍。",
+      "report_anchor": "undertraining-and-data",
+      "source_ids": [
+        "CHINCHILLA",
+        "KAPLAN"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§1、§5与AppendixA TableA1；重复token不保证独立信息增加。"
+    },
+    {
+      "id": "C18",
+      "claim": "[推测] 训练最优与长期服务最优目标不同；两篇已谈小模型推理成本，额外训练换未来节省只作条件性推测。",
+      "report_anchor": "training-and-serving",
+      "source_ids": [
+        "KAPLAN",
+        "CHINCHILLA",
+        "ASR"
+      ],
+      "support": "inference",
+      "critical": true,
+      "evidence": "Kaplan AppendixB.4、Chinchilla§4；未宣称当代具体行业实践或通用倍数。"
+    },
+    {
+      "id": "C19",
+      "claim": "四位Chinchilla等贡献作者不等于前四署名；论文未逐人分工；实际使用TPUv3/v4、JAX、Haiku。",
+      "report_anchor": "people-and-next",
+      "source_ids": [
+        "CHINCHILLA",
+        "BLOG"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "p1等贡献标记、§4.1、p16致谢；下一节是问题承接不倒置ZeRO年代。"
+    },
+    {
+      "id": "C20",
+      "claim": "讲义p28上方为Kaplan图1、下方为Chinchilla图2左图；本章233段转录和shownotes定位，不将结构通过当逐字准确。",
+      "report_anchor": "source-scope",
+      "source_ids": [
+        "SLIDE",
+        "SHOWNOTES",
+        "ASR"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "实际原图/原论文与内容定界；无听音/WER；末尾15.989秒未知且不在本章。"
+    },
+    {
+      "id": "C21",
+      "claim": "两篇经验规律存在数据、架构、曲率及大尺度验证边界；Chinchilla只有两个大尺度可比点。",
+      "report_anchor": "source-scope",
+      "source_ids": [
+        "KAPLAN",
+        "CHINCHILLA"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "Kaplan§6.3–8/C；Chinchilla§5/AppendixE，数据质量和污染需另核。"
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U1",
+      "title": "参数、累计训练token和上下文长度不同；密集模型主要计算近似随参数×训练量增长，自拟三方案未声称实测。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "KAPLAN",
+        "CHINCHILLA"
+      ],
+      "report_anchor": "budget"
+    },
+    {
+      "id": "U2",
+      "title": "loss为语言建模交叉熵，不等同任务正确率、智能百分比或安全。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "KAPLAN",
+        "CHINCHILLA"
+      ],
+      "report_anchor": "loss-and-curves"
+    },
+    {
+      "id": "U3",
+      "title": "单因素幂律有其他资源非瓶颈前提，可辅助小实验外推，范围和理论仍受限。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "KAPLAN"
+      ],
+      "report_anchor": "loss-and-curves"
+    },
+    {
+      "id": "U4",
+      "title": "较大模型样本效率与每token成本不同；固定预算存在最优模型，收敛不等于计算最优。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "KAPLAN"
+      ],
+      "report_anchor": "kaplan-allocation"
+    },
+    {
+      "id": "U5",
+      "title": "Kaplan 0.73/0.27为增长指数不是预算百分比分账；图14约10倍计算对应5倍模型和2倍数据。",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "KAPLAN"
+      ],
+      "report_anchor": "kaplan-allocation"
+    },
+    {
+      "id": "U6",
+      "title": "Kaplan的数据/过拟合问题与固定总计算下的最优配比分别建模，不能交换指数。",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "KAPLAN"
+      ],
+      "report_anchor": "kaplan-allocation"
+    },
+    {
+      "id": "U7",
+      "title": "Kaplan人员按首页真实研究、LSTM、Transformer、数据与指导分工说明。",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "KAPLAN"
+      ],
+      "report_anchor": "kaplan-allocation"
+    },
+    {
+      "id": "U8",
+      "title": "Chinchilla超过400模型，摘要范围70M至>16B参数、5B–500Btoken，同时扫大小/时长并匹配学习率。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "CHINCHILLA"
+      ],
+      "report_anchor": "chinchilla-method"
+    },
+    {
+      "id": "U9",
+      "title": "训练曲线下包络、IsoFLOP、参数化loss为三种不同估计；预测Gopher预算约67B、63B、40B，最终选70B非唯一精确解。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "CHINCHILLA"
+      ],
+      "report_anchor": "chinchilla-method"
+    },
+    {
+      "id": "U10",
+      "title": "Table2近似等比例：.50/.50、.49/.51、.46/.54；各翻倍约4倍计算，预算翻倍各约1.41倍。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "CHINCHILLA"
+      ],
+      "report_anchor": "equal-scaling"
+    },
+    {
+      "id": "U11",
+      "title": "20token/参数是全局训练token与参数总数之比，不是每权重固定分配、窗口或永久标准。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "CHINCHILLA"
+      ],
+      "report_anchor": "equal-scaling"
+    },
+    {
+      "id": "U12",
+      "title": "Gopher280B/300B与Chinchilla70B/1.4T同训练FLOPs；博客1.3T保留差异，训练量比约4.7。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "CHINCHILLA",
+        "BLOG"
+      ],
+      "report_anchor": "gopher-experiment"
+    },
+    {
+      "id": "U13",
+      "title": "MMLU 57任务5-shot平均60.0→67.6%，提升7.6pp；LAMBADA0-shot74.5→77.4%，PIQA0-shot81.8持平。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "CHINCHILLA"
+      ],
+      "report_anchor": "gopher-experiment"
+    },
+    {
+      "id": "U14",
+      "title": "MMLU 4退步、2持平、51提高，退步含大学数学/计量经济学/道德情境/形式逻辑；平均改善不代表全部能力。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "CHINCHILLA"
+      ],
+      "report_anchor": "gopher-experiment"
+    },
+    {
+      "id": "U15",
+      "title": "Gopher/Chinchilla还改数据采样、AdamW、tokenizer、优化器权重精度，全部收益不能仅因果归N/D。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "CHINCHILLA"
+      ],
+      "report_anchor": "gopher-experiment"
+    },
+    {
+      "id": "U16",
+      "title": "更低loss不自动消除偏见/毒性，无提示毒性分数差异小，群体改善不均。",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "CHINCHILLA"
+      ],
+      "report_anchor": "gopher-experiment"
+    },
+    {
+      "id": "U17",
+      "title": "训练不足相对预算最优；缩放分析少于一epoch不能改写成最终模型每个子集无重复，MassiveWeb1.24/Wikipedia3.40遍。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "CHINCHILLA",
+        "KAPLAN"
+      ],
+      "report_anchor": "undertraining-and-data"
+    },
+    {
+      "id": "U18",
+      "title": "训练最优与长期服务最优目标不同；两篇已谈小模型推理成本，额外训练换未来节省只作条件性推测。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "KAPLAN",
+        "CHINCHILLA",
+        "ASR"
+      ],
+      "report_anchor": "training-and-serving"
+    },
+    {
+      "id": "U19",
+      "title": "四位Chinchilla等贡献作者不等于前四署名；论文未逐人分工；实际使用TPUv3/v4、JAX、Haiku。",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "CHINCHILLA",
+        "BLOG"
+      ],
+      "report_anchor": "people-and-next"
+    },
+    {
+      "id": "U20",
+      "title": "讲义p28上方为Kaplan图1、下方为Chinchilla图2左图；本章233段转录和shownotes定位，不将结构通过当逐字准确。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "SLIDE",
+        "SHOWNOTES",
+        "ASR"
+      ],
+      "report_anchor": "source-scope"
+    },
+    {
+      "id": "U21",
+      "title": "两篇经验规律存在数据、架构、曲率及大尺度验证边界；Chinchilla只有两个大尺度可比点。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "KAPLAN",
+        "CHINCHILLA"
+      ],
+      "report_anchor": "source-scope"
+    },
+    {
+      "id": "U22",
+      "title": "具体公司训练故障数字、数据耗尽、集群上限与未公开组织结论的节目旁支",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "ASR"
+      ],
+      "omission_reason": "与本章两篇论文的核心解释无关且无一手核验；source-scope与people-and-next说明未采，保留一般训练可靠性问题。"
+    },
+    {
+      "id": "U23",
+      "title": "Kaplan的critical batch、极端架构/深宽范围及Chinchilla跨数据/小规模对照的完整技术细节",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "KAPLAN",
+        "CHINCHILLA"
+      ],
+      "omission_reason": "本章按用户少数学的预算机制科普范围取舍；保留batch计算修正与外推边界，不穷尽每个附录。"
+    }
+  ],
+  "limitations": [
+    "没有复现两篇训练或基准；预算乘法与黑猫例子是教学示意。",
+    "Kaplan与Chinchilla的参数/FLOPs包含项不同；摘要、正文、博客数字差异明确保留。",
+    "数据、架构、学习率与优化器改变会影响拟合，不把经验比例当永久规律。",
+    "大尺度只有Gopher和Chinchilla两个可比训练点；最终对照有额外训练设置混杂。",
+    "没有人工听音/WER；本章结构检查不证明逐字正确，整期末15.989秒仍未知。",
+    "两篇主要研究训练；现代长期部署推断、上下文和推理计算目标另行区分。",
+    "根只直接视读列明图页，其余图注/表格文字读取不充当完整逐图核验。"
+  ],
+  "revision_note": "2026-11-05来源名称勘误：原节目为《张小珺Jùn｜商业访谈录》第117期，修正此前误写的晚点聊；URL、shownotes正文与技术讲解未变。除来源名称与本修订元数据外，继承已通过的冻结基线；独立复核只直接验证本次勘误及范围。"
+}

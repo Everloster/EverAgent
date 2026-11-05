@@ -1,0 +1,909 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_08_GPT1与BERT_预训练怎样迁移到不同任务_科普讲解_20261105.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-6-astra",
+        "harness": "codex_collab2_subagent",
+        "run_id": "source-label-08-primary-review-20261105",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "identity_basis": "inherited_dispatch_configuration",
+        "runtime_model": "unconfirmed",
+        "source_first_continuation": true,
+        "identity_note": "协调者明确本次spawn未传model override、继承根派发配置gpt-6-astra；不是provider/runtime attestation。未用共享shell或生成者身份证明Reviewer模型。"
+      },
+      "scores": {
+        "evidence_fidelity": 99,
+        "request_coverage": 99,
+        "reasoning_quality": 99,
+        "readability": 98,
+        "limitations": 99
+      },
+      "score_reasons": {
+        "evidence_fidelity": "本轮直接核对原页title、description/og:title及URL，确认节目归属和期号；正文仅替换来源标签及修订状态。17项关键claim及论文/转录判断按SHA绑定的revision 1已通过基线继承，保留99分；没有声称本轮重读论文或转录。",
+        "request_coverage": "task requirements和18个source_coverage单元与基线完全相同；来源名称勘误由读稿前冻结的LABEL-S1–S3独立地图直接复核。原需求覆盖及原地图的covered/partial状态原样继承，保留99分。",
+        "reasoning_quality": "精确文本恢复和evidence递归比较表明因果解释、数字、反例、推测与边界没有改变；节目身份修正没有被用来支持新的技术结论。本维按已通过技术基线保留99分，不是本轮重新评价全部推理。",
+        "readability": "本篇1440/390px收据的报告/evidence哈希与当前目标一致，纠正名称的链接文本和URL正确，无旧标签、乱码、横溢出或pageErrors；本篇已直接抽看390px截图。其余篇章、表格和导航可读性继承基线，保留98分。",
+        "limitations": "来源read_scope和limitations完全未改，保留基线的版本、未复现实验及ASR未听音/未测WER等边界；本轮明确限制为身份勘误，未把元数据核验冒充完整材料重读。本维沿用冻结基线99分。"
+      },
+      "weighted_score": 98.85,
+      "critical_claim_ids_checked": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17"
+      ],
+      "coverage_unit_ids_checked": [
+        "U1",
+        "U2",
+        "U3",
+        "U4",
+        "U5",
+        "U6",
+        "U7",
+        "U8",
+        "U9",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16",
+        "U17",
+        "U18"
+      ],
+      "source_ids_checked": [
+        "GPT",
+        "BERT",
+        "SLIDE",
+        "SHOWNOTES",
+        "ASR",
+        "GPT-BLOG",
+        "BERT-HISTORY"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6"
+      ],
+      "critical_claim_ids_checked_direct": [],
+      "critical_claim_ids_checked_inherited": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17"
+      ],
+      "coverage_unit_ids_checked_direct": [
+        "U16"
+      ],
+      "coverage_unit_ids_checked_inherited": [
+        "U1",
+        "U2",
+        "U3",
+        "U4",
+        "U5",
+        "U6",
+        "U7",
+        "U8",
+        "U9",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16",
+        "U17",
+        "U18"
+      ],
+      "source_ids_checked_direct": [
+        "SHOWNOTES"
+      ],
+      "source_ids_checked_inherited": [
+        "GPT",
+        "BERT",
+        "SLIDE",
+        "SHOWNOTES",
+        "ASR",
+        "GPT-BLOG",
+        "BERT-HISTORY"
+      ],
+      "requirement_ids_checked_direct": [
+        "R1",
+        "R6"
+      ],
+      "requirement_ids_checked_inherited": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6"
+      ],
+      "source_content_map": [
+        {
+          "id": "LABEL-S1",
+          "title": "公开原页所属节目为《张小珺Jùn｜商业访谈录》",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U16"
+          ],
+          "notes": "读五篇待审稿前已直接核对原页description。候选正文所含节目名称均为《张小珺Jùn｜商业访谈录》，原晚点聊标签已清除；本次只直接核查节目归属。 matched coverage仅直接核身份/引用子项，其他内容沿用基线。"
+        },
+        {
+          "id": "LABEL-S2",
+          "title": "该URL是第117期论文探索之旅",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U16"
+          ],
+          "notes": "直接核对title、og:title与URL，第117期论文探索之旅与原链接相符。报告的“AI演义”用作内容简称；未改变期号、URL或任何链接目标。 matched coverage仅直接核身份/引用子项，其他内容沿用基线。"
+        },
+        {
+          "id": "LABEL-S3",
+          "title": "来源身份更正不提供新的论文或转写结论",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U16"
+          ],
+          "notes": "公开页身份元数据只支持节目标签及链接对应关系。当前evidence明确记录冻结继承；read_scope、claims、source_coverage、task和limitations逐项完全不变。 matched coverage仅直接核身份/引用子项，其他内容沿用基线。"
+        },
+        {
+          "id": "U01",
+          "title": "共同问题：标注稀缺与可迁移表示",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "GPT",
+            "BERT"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】开篇与第1节清楚解释预训练、监督微调和复用对象从固定词表示扩展到上下文网络，并明确GPT不是该路线绝对起点。"
+        },
+        {
+          "id": "U02",
+          "title": "GPT-1 的两阶段框架",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "GPT"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1",
+            "U4"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】第2至4节覆盖因果语言预测、任务监督微调及辅助LM并非无条件增益。"
+        },
+        {
+          "id": "U03",
+          "title": "GPT-1 的架构与任务适配",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "GPT"
+          ],
+          "matched_coverage_unit_ids": [
+            "U2",
+            "U3"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】黑猫例贯穿下一词片预测、因果遮罩、末位综合全文、蕴含拼接、相似度双顺序和候选分别评分。"
+        },
+        {
+          "id": "U04",
+          "title": "GPT-1 的实验结论必须连同失败项呈现",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "GPT"
+          ],
+          "matched_coverage_unit_ids": [
+            "U4",
+            "U5"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】准确保留74.7/59.9混合平均、Story Cloze/RACE提升、RTE 56.0低于61.7及9/12时点。"
+        },
+        {
+          "id": "U05",
+          "title": "GPT-1 的 zero-shot 观察是启发性证据",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "GPT"
+          ],
+          "matched_coverage_unit_ids": [
+            "U6"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】说明图2右侧是归一化启发式表现，不等于原始准确率，也不能证明完整世界知识。"
+        },
+        {
+          "id": "U06",
+          "title": "BERT 对单向模型的批评与核心设计",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "BERT"
+          ],
+          "matched_coverage_unit_ids": [
+            "U7",
+            "U13",
+            "U15"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】明确BERT是encoder-only，并把作者论证限定在所测句级/逐位置任务及消融条件。"
+        },
+        {
+          "id": "U07",
+          "title": "BERT 的 MLM、NSP 与输入表示",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "BERT"
+          ],
+          "matched_coverage_unit_ids": [
+            "U7",
+            "U8"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】完整解释15%与80/10/10的条件比例、目标可见例外、NSP 50/50二分类、CLS/SEP及三类embedding。"
+        },
+        {
+          "id": "U08",
+          "title": "BERT 的统一微调接口",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "BERT"
+          ],
+          "matched_coverage_unit_ids": [
+            "U9",
+            "U10"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】区分关系分类、SQuAD span抽取、SQuAD2无答案和NER冻结特征实验。"
+        },
+        {
+          "id": "U09",
+          "title": "BERT 的规模、数据与训练成本",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "BERT",
+            "GPT"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】Base/Large配置、3.3B words、1M steps、128/512比例、TPU芯片数和4天口径均准确。"
+        },
+        {
+          "id": "U10",
+          "title": "BERT 的 2018 年基准优势",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "BERT"
+          ],
+          "matched_coverage_unit_ids": [
+            "U12",
+            "U14"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】区分GLUE官方80.5与排除WNLI表内82.1，并拆开SQuAD单模型、集成和TriviaQA。"
+        },
+        {
+          "id": "U11",
+          "title": "BERT 消融支持与实验边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "BERT"
+          ],
+          "matched_coverage_unit_ids": [
+            "U13",
+            "U14"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】Table5三行比较、后加BiLSTM、小数据随机重启和规模表多变量同时变化均有交代。"
+        },
+        {
+          "id": "U12",
+          "title": "讲义的历史叙事层",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "SLIDE",
+            "ASR",
+            "GPT",
+            "BERT"
+          ],
+          "matched_coverage_unit_ids": [
+            "U16"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】把“第一次”“捶”“横扫”等叙事降回具体论文数字和前驱关系，没有把修辞升级成事实。"
+        },
+        {
+          "id": "U13",
+          "title": "自回归路线与 BERT 路线的后见之明",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "ASR",
+            "GPT",
+            "BERT"
+          ],
+          "matched_coverage_unit_ids": [
+            "U15",
+            "U16"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】将“更开放/世界规律”明确保留为尚无共识的讲述者解释，并用信息条件与输出接口作更稳健比较。"
+        },
+        {
+          "id": "U14",
+          "title": "节目结构证据",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES",
+            "ASR"
+          ],
+          "matched_coverage_unit_ids": [
+            "U16"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】只用shownotes定位Part3，用转录确定本章约02:33:30–02:47:06，未让shownotes承担技术数字。"
+        }
+      ],
+      "source_content_map_ids_direct": [
+        "LABEL-S1",
+        "LABEL-S2",
+        "LABEL-S3"
+      ],
+      "source_content_map_ids_inherited": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08",
+        "U09",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "review_revision_round": 2,
+      "snapshot_verified": true,
+      "report_sha256": "f7e9246c70d16a2243a05662d59dec109f611183fb8f7d1d22f5ca2667a684dd",
+      "evidence_sha256": "a741443a1edb8e5b5329eeae6da6bc6cc4a12134679fd25cbc17b46cd94c9275",
+      "snapshot": {
+        "report_path": "ai-learning/reports/knowledge_reports/AI演义_08_GPT1与BERT_预训练怎样迁移到不同任务_科普讲解_20261105.md",
+        "evidence_path": "ai-learning/reports/knowledge_reports/.quality/AI演义_08_GPT1与BERT_预训练怎样迁移到不同任务_科普讲解_20261105.evidence.json",
+        "report_sha256": "f7e9246c70d16a2243a05662d59dec109f611183fb8f7d1d22f5ca2667a684dd",
+        "evidence_sha256": "a741443a1edb8e5b5329eeae6da6bc6cc4a12134679fd25cbc17b46cd94c9275",
+        "revision_round": 2
+      },
+      "incremental_scope": {
+        "kind": "source-label-correction",
+        "direct_scope": "直接读取原页身份元数据；独立验证正文的精确允许替换、evidence允许字段、所有链接目标、当前/基线哈希、基线通过收据与新名称渲染收据。",
+        "inherited_scope": "技术正文、论文/讲义/转录的内容判断、机器转录结构审计、原始来源地图与既有呈现/导航验证均按冻结基线继承；原地图partial不升级。",
+        "checked_array_semantics": "总checked数组包含本轮已验证可继承的基线集合；direct数组仅说明局部直接核查。direct与inherited重叠表示同一ID中的身份/渲染子项直接复核、技术/旧内容子项继承，绝不表示整单元本轮重读。",
+        "direct_requirement_scope": {
+          "R1": "仅原节目所属名称、期号及链接对应关系。",
+          "R6": "仅本次纠正标签在1440/390px下的渲染收据；原导航及其他呈现沿用基线。"
+        },
+        "original_papers_reread_this_revision": false,
+        "transcript_reread_or_reaudited_this_revision": false,
+        "generator_research_notes_read": false,
+        "public_files_modified_by_reviewer": false,
+        "baseline": {
+          "revision_round": 1,
+          "report_file": "08-before.report.md",
+          "evidence_file": "08-before.evidence.json",
+          "review_file": "08-before.review.json",
+          "report_sha256": "0e7c0bc519794e407707f9157599c2d0f82f6e53d2ee381f8833c9a915641527",
+          "evidence_sha256": "ee755f1e322ee6f45f5b7cd094f6423f180d9cae49dbd8dc089e03179ab9d098",
+          "review_sha256": "6a74d356305142be4823a58cc96f135a8258a8453721a51532626b1cf73dd327",
+          "decision": {
+            "status": "pass",
+            "score": 98.85,
+            "evaluated_on": "2026-11-05",
+            "policy_id": "report-quality-2026-10-18-r2",
+            "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+            "report_sha256": "0e7c0bc519794e407707f9157599c2d0f82f6e53d2ee381f8833c9a915641527",
+            "evidence_sha256": "ee755f1e322ee6f45f5b7cd094f6423f180d9cae49dbd8dc089e03179ab9d098"
+          },
+          "check_receipt_file": "08-baseline-check.json",
+          "check_receipt_sha256": "6b3da7073bbd2ad7ba1d7e177c3af7e5762bea741d9131b6685612dc509aaeeb",
+          "check_receipt_status": "pass",
+          "check_receipt_errors": [],
+          "check_receipt_warnings": []
+        },
+        "scope_audit": {
+          "file": "primary-source-label-scope-audit.json",
+          "sha256": "94efda1efa455a2dceb7d0249c4c16d2824c7747254ce7a83b97dee124453574",
+          "chapter": 8
+        },
+        "source_alias_map_for_inherited_map": {},
+        "source_alias_basis": "冻结地图已使用当前source IDs，无需转换。"
+      },
+      "source_priority_map": {
+        "file": "primary-identity-source-map.json",
+        "sha256": "06c345ab85c857a1312954cb09c70ee43699d6538007de7e9c8f2848eb68eb12",
+        "frozen_before_target_reports_read": true,
+        "scope": "仅本次身份勘误；技术来源地图另按冻结基线明确继承。"
+      },
+      "identity_source_receipt": {
+        "file": "episode-identity-read.json",
+        "sha256": "96781505dddc5ae22487657983c5dff1f74d5294042adbe02f54f38169bf4436",
+        "capability": "web.read",
+        "ok": true,
+        "url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+        "read_scope": "直接读取title、URL、description与metadata.description/og:title。"
+      },
+      "render_receipt_review": {
+        "file": "primary-source-label-render-audit.json",
+        "sha256": "14e683860af4093b5d184ef9b7d3fad19cb9189c3fc79937e5f439a5a0f67e1d",
+        "chapter": 8,
+        "receipt_widths_read": [
+          1440,
+          390
+        ],
+        "manual_image_samples": [
+          {
+            "chapter": 8,
+            "width": 390,
+            "file": "source-label-8-390.png",
+            "observations": "来源列表的长节目名和期号正常换行；无重叠、缺字或链接边缘裁切。",
+            "sha256": "4051889b862dbcb49854db8a134026c13c120e36a990014f1980dc897b6102be"
+          }
+        ],
+        "browser_actions_performed_by_this_reviewer": false
+      },
+      "notes": "本记录是report-review-v1的单条reviews item。本轮先核原始公开页身份并冻结LABEL地图，再审五篇标签勘误；关键事实和技术评分来自SHA核验通过的冻结基线，保留而不冒称重新完整复核。正文与账本只发生允许的名称/修订元数据变化，未发现本次勘误引入新的unsupported claim、missing requirement或hard failure。该记录不宣称最终quality gate通过；生成者汇入后仍需完成正式检查。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 98.85,
+    "evaluated_on": "2026-11-05",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "956c232d80eb3e39b78c60944a5b76019c7d8fb666ff1966b56f1391f1fc9e2d",
+    "evidence_sha256": "a741443a1edb8e5b5329eeae6da6bc6cc4a12134679fd25cbc17b46cd94c9275"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex_collab2_subagent",
+            "independent_context": true,
+            "fresh_context": false,
+            "explicit_model_override": false,
+            "override_reason": "",
+            "selection_source": "collab2.spawn_agent explicit model override under flagship strong-reviewer policy; not a user preference override",
+            "runtime_attestation": "not exposed",
+            "model_identity_observation": "selected_model=gpt-5.6-sol，source=collab2.spawn_agent explicit model override；共享父会话shell的eacli/model环境不能证明子模型runtime，故runtime_attestation=not exposed。",
+            "run_id": "collab2:root/gptbert_strong_review:2026-11-05:expanded-formal-strong"
+          },
+          "scores": {
+            "evidence_fidelity": 99,
+            "request_coverage": 99,
+            "reasoning_quality": 99,
+            "readability": 98,
+            "limitations": 99
+          },
+          "score_reasons": {
+            "evidence_fidelity": "两篇原论文的架构、训练条件、表格数字和反例逐项核对；74.7/59.9、RTE失败、MLM比例、GLUE两种口径、Table5消融及SQuAD集成条件均准确。讲义、转录和shownotes严格降级为叙事/定位来源。",
+            "request_coverage": "单一黑猫例贯穿GPT预训练与任务微调、BERT MLM/NSP/分类/抽取；原论文、讲义、shownotes、415段转录、版本和导航要求均覆盖。核心来源地图14项全部有正文落点。",
+            "reasoning_quality": "跨论文总榜与同条件消融分开；方向约束、训练目标、数据规模和输出接口没有混成单因果解释。对“世界知识”“BERT永远更强”“NSP后来命运”等外推均设边界。",
+            "readability": "正文少数学、术语首次解释、表格口径清楚，黑猫例连续使用且可独立阅读。核过与正式SHA绑定的1440/390导航收据：主/展开无断链，24脚注往返正常，5表窄屏可横向滚动；本Reviewer复核收据，没有宣称亲自执行浏览器。",
+            "limitations": "明确未运行模型、未复现基准、未审计训练数据、未听音/未测WER、v2与首版差异、曲线只读趋势及后续GPT/BERT变体不在范围内。"
+          },
+          "critical_claim_ids_checked": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "C16",
+            "C17"
+          ],
+          "coverage_unit_ids_checked": [
+            "U1",
+            "U2",
+            "U3",
+            "U4",
+            "U5",
+            "U6",
+            "U7",
+            "U8",
+            "U9",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14",
+            "U15",
+            "U16",
+            "U17",
+            "U18"
+          ],
+          "source_content_map": [
+            {
+              "id": "U01",
+              "title": "共同问题：标注稀缺与可迁移表示",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "GPT",
+                "BERT"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1"
+              ],
+              "notes": "开篇与第1节清楚解释预训练、监督微调和复用对象从固定词表示扩展到上下文网络，并明确GPT不是该路线绝对起点。"
+            },
+            {
+              "id": "U02",
+              "title": "GPT-1 的两阶段框架",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "GPT"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1",
+                "U4"
+              ],
+              "notes": "第2至4节覆盖因果语言预测、任务监督微调及辅助LM并非无条件增益。"
+            },
+            {
+              "id": "U03",
+              "title": "GPT-1 的架构与任务适配",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "GPT"
+              ],
+              "matched_coverage_unit_ids": [
+                "U2",
+                "U3"
+              ],
+              "notes": "黑猫例贯穿下一词片预测、因果遮罩、末位综合全文、蕴含拼接、相似度双顺序和候选分别评分。"
+            },
+            {
+              "id": "U04",
+              "title": "GPT-1 的实验结论必须连同失败项呈现",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "GPT"
+              ],
+              "matched_coverage_unit_ids": [
+                "U4",
+                "U5"
+              ],
+              "notes": "准确保留74.7/59.9混合平均、Story Cloze/RACE提升、RTE 56.0低于61.7及9/12时点。"
+            },
+            {
+              "id": "U05",
+              "title": "GPT-1 的 zero-shot 观察是启发性证据",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "GPT"
+              ],
+              "matched_coverage_unit_ids": [
+                "U6"
+              ],
+              "notes": "说明图2右侧是归一化启发式表现，不等于原始准确率，也不能证明完整世界知识。"
+            },
+            {
+              "id": "U06",
+              "title": "BERT 对单向模型的批评与核心设计",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "BERT"
+              ],
+              "matched_coverage_unit_ids": [
+                "U7",
+                "U13",
+                "U15"
+              ],
+              "notes": "明确BERT是encoder-only，并把作者论证限定在所测句级/逐位置任务及消融条件。"
+            },
+            {
+              "id": "U07",
+              "title": "BERT 的 MLM、NSP 与输入表示",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "BERT"
+              ],
+              "matched_coverage_unit_ids": [
+                "U7",
+                "U8"
+              ],
+              "notes": "完整解释15%与80/10/10的条件比例、目标可见例外、NSP 50/50二分类、CLS/SEP及三类embedding。"
+            },
+            {
+              "id": "U08",
+              "title": "BERT 的统一微调接口",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "BERT"
+              ],
+              "matched_coverage_unit_ids": [
+                "U9",
+                "U10"
+              ],
+              "notes": "区分关系分类、SQuAD span抽取、SQuAD2无答案和NER冻结特征实验。"
+            },
+            {
+              "id": "U09",
+              "title": "BERT 的规模、数据与训练成本",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "BERT",
+                "GPT"
+              ],
+              "matched_coverage_unit_ids": [
+                "U11"
+              ],
+              "notes": "Base/Large配置、3.3B words、1M steps、128/512比例、TPU芯片数和4天口径均准确。"
+            },
+            {
+              "id": "U10",
+              "title": "BERT 的 2018 年基准优势",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "BERT"
+              ],
+              "matched_coverage_unit_ids": [
+                "U12",
+                "U14"
+              ],
+              "notes": "区分GLUE官方80.5与排除WNLI表内82.1，并拆开SQuAD单模型、集成和TriviaQA。"
+            },
+            {
+              "id": "U11",
+              "title": "BERT 消融支持与实验边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "BERT"
+              ],
+              "matched_coverage_unit_ids": [
+                "U13",
+                "U14"
+              ],
+              "notes": "Table5三行比较、后加BiLSTM、小数据随机重启和规模表多变量同时变化均有交代。"
+            },
+            {
+              "id": "U12",
+              "title": "讲义的历史叙事层",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "SLIDE",
+                "ASR",
+                "GPT",
+                "BERT"
+              ],
+              "matched_coverage_unit_ids": [
+                "U16"
+              ],
+              "notes": "把“第一次”“捶”“横扫”等叙事降回具体论文数字和前驱关系，没有把修辞升级成事实。"
+            },
+            {
+              "id": "U13",
+              "title": "自回归路线与 BERT 路线的后见之明",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "ASR",
+                "GPT",
+                "BERT"
+              ],
+              "matched_coverage_unit_ids": [
+                "U15",
+                "U16"
+              ],
+              "notes": "将“更开放/世界规律”明确保留为尚无共识的讲述者解释，并用信息条件与输出接口作更稳健比较。"
+            },
+            {
+              "id": "U14",
+              "title": "节目结构证据",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "SHOWNOTES",
+                "ASR"
+              ],
+              "matched_coverage_unit_ids": [
+                "U16"
+              ],
+              "notes": "只用shownotes定位Part3，用转录确定本章约02:33:30–02:47:06，未让shownotes承担技术数字。"
+            }
+          ],
+          "source_ids_checked": [
+            "GPT",
+            "BERT",
+            "SLIDE",
+            "SHOWNOTES",
+            "ASR",
+            "GPT-BLOG",
+            "BERT-HISTORY"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "正式双SHA与冻结source-map SHA均已核对。转录结构由本Reviewer对chapter-segments.json等价复算：415段、无start regression、两处0.06秒overlap、最大gap 2.66秒；未听音、未测WER。navigation-receipt SHA d79eb1a...与正式稿SHA绑定，original-page-review SHA a80ebf...仅作为生成阶段原页查看收据复核，不冒称本Reviewer亲自读图或操作浏览器。未读取另一Reviewer地图/结果，未运行尚未整合的final gate。source_content_map逐项沿用冻结U01–U14的ID/title/importance。当前未发现必要修订。",
+          "reviewed_snapshot": {
+            "report_sha256": "96d2f0b8a4afaa500e085fc2b574a4a17a1e7f680a27c066f52c1680e39a2347",
+            "evidence_sha256": "ee755f1e322ee6f45f5b7cd094f6423f180d9cae49dbd8dc089e03179ab9d098",
+            "source_map_sha256": "09a780c041f5e8325d7e1b0928d59a4da36c562562a9b7f5c470afa635da1bee"
+          },
+          "critical_claim_ids_checked_direct": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "C16",
+            "C17"
+          ],
+          "critical_claim_ids_checked_inherited": [],
+          "source_ids_checked_direct": [
+            "GPT",
+            "BERT",
+            "SLIDE",
+            "SHOWNOTES",
+            "ASR",
+            "GPT-BLOG",
+            "BERT-HISTORY"
+          ],
+          "source_ids_checked_inherited": [],
+          "requirement_ids_checked_direct": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6"
+          ],
+          "requirement_ids_checked_inherited": [],
+          "coverage_unit_ids_checked_direct": [
+            "U1",
+            "U2",
+            "U3",
+            "U4",
+            "U5",
+            "U6",
+            "U7",
+            "U8",
+            "U9",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14",
+            "U15",
+            "U16",
+            "U17",
+            "U18"
+          ],
+          "coverage_unit_ids_checked_inherited": []
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 98.85,
+        "evaluated_on": "2026-11-05",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "0e7c0bc519794e407707f9157599c2d0f82f6e53d2ee381f8833c9a915641527",
+        "evidence_sha256": "ee755f1e322ee6f45f5b7cd094f6423f180d9cae49dbd8dc089e03179ab9d098"
+      }
+    }
+  ],
+  "review_receipts": [
+    {
+      "file": "08-independent-review.json",
+      "sha256": "730da6ece994c6928fb0cbde3b8185e2f8c95f4956676cb77f90f1cd32de3868",
+      "role": "primary_review",
+      "raw_review_content_preserved": true
+    }
+  ],
+  "public_serialization": {
+    "kind": "agent-task-id-normalization",
+    "note": "仅去掉 Agent 任务命名空间的前导斜杠，避免与本机目录混淆；模型、核验内容、评分及判定保持不变。",
+    "source_review_sha256": "46a1c2567b8b4de3550d579c08457679c9bdefa1e9d319eb75e5344f4712407f",
+    "fields_normalized": 1
+  }
+}

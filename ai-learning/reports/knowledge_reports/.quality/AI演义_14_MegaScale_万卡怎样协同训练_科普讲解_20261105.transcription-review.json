@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "kind": "chapter-transcription-review",
+  "reviewed_on": "2026-11-05",
+  "chapter": 14,
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+  "transcript_source_ref": "sha256:26aef293597cd1894e8c810d7a09f67d53b1eac1e9acf905ec90a99b17ec75b6",
+  "full_segments_sha256": "f322514ced72235a0ca104635824c66df425c18dbae3d0f4e76fa70d088db61c",
+  "public_full_episode_receipt": "podcast-learning/reports/transcripts/2026-11-04_ai-yanyi-117.audit.json",
+  "read_scope": {
+    "segments_read": 236,
+    "source_indices_zero_based_inclusive": [
+      3740,
+      3975
+    ],
+    "actual_interval_seconds": [
+      8017.79,
+      8488.53
+    ],
+    "span_seconds": 470.74,
+    "segment_artifact_sha256": "d1dcff283b4b37960c39ac488a88513da39e24c82f8ba7487a048f478072d385",
+    "text_artifact_sha256": "26aef293597cd1894e8c810d7a09f67d53b1eac1e9acf905ec90a99b17ec75b6",
+    "time_basis": "源 segments 的小数秒；正文约 02:13:38–02:21:29，含 MegaScale 及算法/系统协同追问，止于 Part3 前。Shownotes 没有逐论文边界。"
+  },
+  "chapter_segment_check": {
+    "segment_count": 236,
+    "negative_duration_count": 0,
+    "backward_start_count": 0,
+    "overlap_count": 0,
+    "positive_gap_count": 29,
+    "max_gap_seconds": 1.02
+  },
+  "compatible_text_audit": {
+    "schema_version": 2,
+    "kind": "podcast-transcript-audit",
+    "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+    "source_ref": "sha256:f8c716b3a6ecbbdff04e041665500992b8708f08173d615943e4b8348cd31558",
+    "max_consecutive_limit": 3,
+    "audit": {
+      "ok": true,
+      "size": 11917,
+      "sha256": "f8c716b3a6ecbbdff04e041665500992b8708f08173d615943e4b8348cd31558",
+      "lines": 236,
+      "segments": 236,
+      "duration_seconds": 8488,
+      "max_consecutive_identical": 1,
+      "timestamp_errors": 0,
+      "malformed_lines": 0,
+      "tail_gap_seconds": 0
+    }
+  },
+  "audit_interpretation": "audit_transcript.py 对相同236段的[hh:mm:ss -> hh:mm:ss]导出文本检查通过。秒向下取整；duration_seconds=8488是节目绝对结束位置，本章实际跨度470.74秒。小数秒另核无负时长/倒序/重叠，正向间隔29处，最大1.02秒。未听校，未测WER，不以结构审计代替语义准确率。",
+  "term_and_claim_checks": [
+    {
+      "time_seconds": [
+        8017.79,
+        8135.98
+      ],
+      "issue": "MegaScale、机构和175B参数量的ASR专名/数字错词。",
+      "adopted": "依据论文首页、§6与讲义p31统一为MegaScale、ByteDance/北京大学作者与1750亿参数。",
+      "basis": "MegaScale pp1/9–11；讲义p31；USENIX作者条目",
+      "kind": "terminology_and_identity"
+    },
+    {
+      "time_seconds": [
+        8041.84,
+        8107.9
+      ],
+      "issue": "行业仅少数公司、发表优先权与内部系统优劣的强概括。",
+      "adopted": "保留万卡单作业系统经验公开的价值，不将未全面核验的唯一性、排名及内部动机当成事实。",
+      "basis": "MegaScale§1/7；讲义和访谈只作提问背景",
+      "kind": "attribution_and_history_boundary"
+    },
+    {
+      "time_seconds": [
+        8135.98,
+        8277.85
+      ],
+      "issue": "万卡协作、效率、稳定性、监控定位和隔离恢复的口头概括。",
+      "adopted": "按原论文明确3D并行、联合设计、观测和checkpoint恢复；多次恢复不等于从未停工。",
+      "basis": "MegaScale§§2–6",
+      "kind": "mechanism_and_recovery"
+    },
+    {
+      "time_seconds": [
+        8285.56,
+        8376.33
+      ],
+      "issue": "跨公司GPU数量、H800带宽和模型传输量的示例存在未核条件，谈话亦承认不记得细节。",
+      "adopted": "不采用具体卡数等价与带宽除模型大小的口算，只保留模型/系统配合与通信计算重叠的研究问题。",
+      "basis": "MegaScale§3；本轮未研究DeepSeek V3全文，不声称已核该例。",
+      "kind": "unverified_external_example"
+    },
+    {
+      "time_seconds": [
+        8461.08,
+        8488.53
+      ],
+      "issue": "用GPU算力空置比喻MFU，可能被误读为部分卡完全不工作。",
+      "adopted": "用论文§1定义实际模型吞吐/理论峰值吞吐，区分MFU、设备繁忙率、有效训练时间率；不据此推导简单减半卡数保证。",
+      "basis": "MegaScale§1、Table2、§6.3",
+      "kind": "metric_definition"
+    }
+  ],
+  "audio_listened": false,
+  "word_accuracy_measured": false,
+  "verbatim_completeness": false,
+  "limitations": [
+    "未重新转写、逐字听校或测WER。",
+    "本章236段结构核验不表示全期逐字完整。",
+    "原ASR、执行设备和私有路径未复制到公开产物；仅留范围、摘要、哈希和结构指标。"
+  ]
+}

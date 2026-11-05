@@ -1,0 +1,605 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_18_InstructGPT_模型怎样学会按要求回答_科普讲解_20261105.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-05",
+  "generator": {
+    "model": "gpt-6-astra",
+    "harness": "codex",
+    "run_id": "ai-yanyi-instructgpt-r1-20261105",
+    "explicit_model_override": false,
+    "override_reason": "",
+    "identity_basis": "本轮agent_identity.py inspect：model=gpt-6-astra，model_source=codex-turn-context，current_model_confirmed=true。仅证明协调生成者，子Reviewer运行身份独立记录。"
+  },
+  "task": {
+    "summary": "《AI演义》第18节InstructGPT深入展开，同时实质改原章节与阅读入口；用通知例子解释目标、三阶段训练、实验、失效与路线。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "结合InstructGPT v1论文、讲义p39、shownotes和完整194段ASR，解释背景与研究路线。"
+      },
+      {
+        "id": "R2",
+        "text": "用自拟通知贯穿SFT、偏好排序、RM、PPO与KL/ptx；区分概念流程和最终训练配置。"
+      },
+      {
+        "id": "R3",
+        "text": "核对提示数、参数量、比较对、偏好/真实性/能力各指标；真实实验与教学例分开，保留样本/版本/任务口径。"
+      },
+      {
+        "id": "R4",
+        "text": "保留真实反例、标注者与语言边界、ASR缺陷与历史未核范围，不伪称训练复现/逐字听校/媒体观看。"
+      },
+      {
+        "id": "R5",
+        "text": "原第18节实质改写，展开入口紧贴标题，展开可返回原节与前后节；前17节和其余主文保持。"
+      },
+      {
+        "id": "R6",
+        "text": "人类可独立阅读；实际工作台1440/390宽度、目录/脚注/链接/表格验证，两位来源优先独立复核；私有材料不公开。"
+      }
+    ],
+    "reader_feedback": [
+      "原章节没有优化、也没有链接展开阅读的啊",
+      "按照Brook方式每轮一节，持续完成，少数学，面向人类阅读。"
+    ]
+  },
+  "sources": [
+    {
+      "id": "PAPER",
+      "kind": "primary",
+      "title": "Training language models to follow instructions with human feedback",
+      "locator": "https://arxiv.org/pdf/2203.02155v1",
+      "accessed_on": "2026-11-05",
+      "version": "arXiv:2203.02155v1，2022-03-04",
+      "sha256": "c1984bb50a5b90fddb895fdc3a0f72e5bc977148c9f63ef6040cbe7a3e1f0d98",
+      "read_scope": "本轮读取正文pp1–21（p21只取致谢）、Appendix A.3/A.4 pp33–35、B.1/B.2 p36、C pp40–43、D pp44–48与E pp51–57的所涉内容；未逐篇追读参考文献，未读完68页全部附加案例。直接核Figure1/2与Table14原图。",
+      "metadata_receipt": {
+        "artifact": "arxiv-v1.json",
+        "sha256": "90eb446b7c817bce2dd9910129d89b41002a60cf839221d164e5d5984e8d993b"
+      }
+    },
+    {
+      "id": "AUTHOR_BLOG",
+      "kind": "primary",
+      "title": "Aligning language models to follow instructions",
+      "locator": "https://openai.com/research/instruction-following",
+      "accessed_on": "2026-11-05",
+      "read_scope": "完整正文及footnotes；只采用登月示例、研究动机和边界，不混用与论文不同的数字。网页内媒体未观看。",
+      "receipt": {
+        "artifact": "openai-instruction-following-legacy.json",
+        "sha256": "27c65e0b46d8f20a19b53e6da8f7f24ae9644be309ccdb1b35c265e6a5ac32fc"
+      }
+    },
+    {
+      "id": "PREFERENCE_2017",
+      "kind": "primary",
+      "title": "Learning from human preferences",
+      "locator": "https://openai.com/index/learning-from-human-preferences/",
+      "accessed_on": "2026-11-05",
+      "read_scope": "正文和Challenges；作者描述的机器人遮挡镜头反例，未看媒体或复跑。",
+      "receipt": {
+        "artifact": "openai-human-preferences.json",
+        "sha256": "6d0a4051311a900a5f293e87915edecc0108aa27512c84b9e7f8317b778ddfe6"
+      }
+    },
+    {
+      "id": "LECTURE",
+      "kind": "local",
+      "title": "《AI演义》讲义InstructGPT页",
+      "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "accessed_on": "2026-11-05",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
+      "read_scope": "physical p39，文本/typed视觉/直接看原页；不照抄首创或作者栏歧义。"
+    },
+    {
+      "id": "EPISODE",
+      "kind": "primary",
+      "title": "张小珺117期：谢青池讲解AI演义（本章与shownotes）",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-05",
+      "read_scope": "复用既有完整ASR的194段与本轮阅读的shownotes；语义内容以论文核验，未听校。仅节目自身陈述属于一手，技术事实仍由论文主证。",
+      "receipt": {
+        "artifact": "shownotes.txt",
+        "sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5"
+      }
+    },
+    {
+      "id": "TRANSCRIPT_REVIEW",
+      "kind": "local",
+      "title": "InstructGPT本章转写核查摘要",
+      "locator": "ai-learning/reports/knowledge_reports/.quality/AI演义_18_InstructGPT_模型怎样学会按要求回答_科普讲解_20261105.transcription-review.json",
+      "accessed_on": "2026-11-05",
+      "sha256": "f436ebd34bb33ecc885faa38f86efa116bf2a4889ff2009804868d54a25abdea",
+      "read_scope": "本轮194段的高精度时间检查、原生兼容审计与术语核对，包含重叠和重复缺陷。"
+    },
+    {
+      "id": "PREVIOUS_CHAPTER",
+      "kind": "local",
+      "title": "《AI演义》17 AlphaGo Zero已完成展开稿",
+      "locator": "ai-learning/reports/knowledge_reports/AI演义_17_AlphaGoZero_不靠棋谱怎样学会下棋_科普讲解_20261105.md",
+      "accessed_on": "2026-11-05",
+      "sha256": "5d7a6665b1bb5c9aa9cdfd33f02b393e49c243ecce406a37516fc51ed11a61c0",
+      "read_scope": "本系列紧邻已验收前章的规则裁判、搜索训练闭环及往返导航；继承已完成研究，不声称本轮重读其全部一手来源。"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "预训练续写目标与帮助用户不同；InstructGPT应用既有RLHF路线，登月例为作者展示而非发生率。",
+      "report_anchor": "problem-and-history",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "AUTHOR_BLOG",
+        "PREFERENCE_2017"
+      ],
+      "critical": true,
+      "evidence": "§1–3.1；博客开篇；2017文。"
+    },
+    {
+      "id": "C2",
+      "claim": "SFT用人类示范更新参数，提示示范只影响当前生成；通知为自拟例，单个示范不覆盖所有可接受回答。",
+      "report_anchor": "sft-demonstration",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§3.1/3.5；例子明确未实测。"
+    },
+    {
+      "id": "C3",
+      "claim": "同提示4–9候选可形成6–36相关比较对，平局剔除，同提示成组训练；不当成等量独立人工判断。",
+      "report_anchor": "preference-comparisons",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§3.5、AppendixC.2、Table6。"
+    },
+    {
+      "id": "C4",
+      "claim": "RM对请求回答给相对偏好分，最终使用6B公共NLP微调GPT3初始化；分数不是真实概率。",
+      "report_anchor": "reward-model",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§3.5与AppendixC.2分开概念和最终配置。"
+    },
+    {
+      "id": "C5",
+      "claim": "PPO使用奖励与价值估计更新策略，KL参考固定监督起点；PPO-ptx混预训练梯度，训练不等于即时聊天更新。",
+      "report_anchor": "ppo-learning",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§3.5、AppendixC.3–C.4；通知优化为机制示意。"
+    },
+    {
+      "id": "C6",
+      "claim": "训练提示SFT12,725、RM33,207、PPO31,144；各阶段监督不同，SFT含few-shot构造，用户源限Playground，按用户划分并清PII。",
+      "report_anchor": "data-and-people",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§3.2–3.4、Table6/9；不能相加当不重复用户或新任务。"
+    },
+    {
+      "id": "C7",
+      "claim": "SFT评测基线16epochs；PPO起点监督训练2epochs加10%预训练数据，不是直接复制该基线。",
+      "report_anchor": "data-and-people",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "AppendixC.1/C.3及E.8。"
+    },
+    {
+      "id": "C8",
+      "claim": "1.3B较175B更受偏好限定分布和群体；85±3%/71±4%是175B直接比较，95%CI，Fig1统一对SFT175B。",
+      "report_anchor": "preference-results",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "Figure1、p3、§4.1；175/1.3仅算术。"
+    },
+    {
+      "id": "C9",
+      "claim": "41%至21%为跨规模封闭域幻觉率；自动TruthfulQA曾高估PPO改进，不能与Fig6人工结果混用。",
+      "report_anchor": "preference-results",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "p3、Figure4/6与p21致谢；博客不同数字不猜原因。"
+    },
+    {
+      "id": "C10",
+      "claim": "175B zero-shot：HellaSwag78.1/74.3/80.7%；SQuADv2F1 64.30/43.68/59.85；DROP F1 27.53/13.08/15.23（GPT/PPO/PPO-ptx）。",
+      "report_anchor": "capability-tradeoffs",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "Table14；D.2样本数10,042/11,873/9,536。"
+    },
+    {
+      "id": "C11",
+      "claim": "PPO-ptx缓解但未消除回退；1.3B消融中单独增KL不充分修复DROP/SQuADv2，且有奖励权衡。",
+      "report_anchor": "capability-tradeoffs",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§4.2、AppendixE.6、Figures33/34。"
+    },
+    {
+      "id": "C12",
+      "claim": "约40标注者、约96%被分类为英语；训练优先helpfulness而最终评估优先真实无害，held-out仍同类供应链，不代表全人类。",
+      "report_anchor": "whose-preferences",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "AUTHOR_BLOG"
+      ],
+      "critical": true,
+      "evidence": "§5.2–5.3、A.4、B.1–B.2、§4.1及博客footnoteE。"
+    },
+    {
+      "id": "C13",
+      "claim": "袜子错误前提与南瓜过度回避是真实展示；谦逊奖励成因是作者假说，挑选提示不提供发生率。",
+      "report_anchor": "failure-cases",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "Figure9及§4.3 pp16–17。"
+    },
+    {
+      "id": "C14",
+      "claim": "毒性改善依赖respectful指令；无指令优势消失、biased可能更毒；偏见无普遍改善。",
+      "report_anchor": "failure-cases",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§4.2、§5.3–5.4，不借相邻总体偏好推安全。"
+    },
+    {
+      "id": "C15",
+      "claim": "2017机器人遮挡镜头骗过评价的故事来自作者文字，不是InstructGPT实验；通知奖励错误例标推测。",
+      "report_anchor": "failure-cases",
+      "support": "derived",
+      "source_ids": [
+        "PREFERENCE_2017",
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "2017Challenges；RM只是近似偏好，教学例未实测。"
+    },
+    {
+      "id": "C16",
+      "claim": "以预训练能力、反馈来源与任务执行连接前后章；AlphaGo规则奖励与语言近似奖励分开；CoT是问题衔接，不宣称直接继承/更晚。",
+      "report_anchor": "route-connections",
+      "support": "derived",
+      "source_ids": [
+        "PAPER",
+        "PREVIOUS_CHAPTER"
+      ],
+      "critical": true,
+      "evidence": "论文§1–3与上一节已验收机制；章节链接属本仓导航。"
+    },
+    {
+      "id": "C17",
+      "claim": "194段ASR不听校；0负时长/起终点倒序但1处0.10秒重叠，最大相邻重复2；native通过不证明原音准确。",
+      "report_anchor": "source-notes",
+      "support": "direct",
+      "source_ids": [
+        "TRANSCRIPT_REVIEW",
+        "EPISODE",
+        "LECTURE"
+      ],
+      "critical": true,
+      "evidence": "实际切片、原生脚本与Decimal检查；shownotes未给单篇时间。"
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U1",
+      "title": "预训练续写目标与帮助用户不同；InstructGPT应用既有RLHF路线，登月例为作者展示而非发生率。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "AUTHOR_BLOG",
+        "PREFERENCE_2017"
+      ],
+      "report_anchor": "problem-and-history"
+    },
+    {
+      "id": "U2",
+      "title": "SFT用人类示范更新参数，提示示范只影响当前生成；通知为自拟例，单个示范不覆盖所有可接受回答。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "sft-demonstration"
+    },
+    {
+      "id": "U3",
+      "title": "同提示4–9候选可形成6–36相关比较对，平局剔除，同提示成组训练；不当成等量独立人工判断。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "preference-comparisons"
+    },
+    {
+      "id": "U4",
+      "title": "RM对请求回答给相对偏好分，最终使用6B公共NLP微调GPT3初始化；分数不是真实概率。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "reward-model"
+    },
+    {
+      "id": "U5",
+      "title": "PPO使用奖励与价值估计更新策略，KL参考固定监督起点；PPO-ptx混预训练梯度，训练不等于即时聊天更新。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "ppo-learning"
+    },
+    {
+      "id": "U6",
+      "title": "训练提示SFT12,725、RM33,207、PPO31,144；各阶段监督不同，SFT含few-shot构造，用户源限Playground，按用户划分并清PII。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "data-and-people"
+    },
+    {
+      "id": "U7",
+      "title": "SFT评测基线16epochs；PPO起点监督训练2epochs加10%预训练数据，不是直接复制该基线。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "data-and-people"
+    },
+    {
+      "id": "U8",
+      "title": "1.3B较175B更受偏好限定分布和群体；85±3%/71±4%是175B直接比较，95%CI，Fig1统一对SFT175B。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "preference-results"
+    },
+    {
+      "id": "U9",
+      "title": "41%至21%为跨规模封闭域幻觉率；自动TruthfulQA曾高估PPO改进，不能与Fig6人工结果混用。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "preference-results"
+    },
+    {
+      "id": "U10",
+      "title": "175B zero-shot：HellaSwag78.1/74.3/80.7%；SQuADv2F1 64.30/43.68/59.85；DROP F1 27.53/13.08/15.23（GPT/PPO/PPO-ptx）。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "capability-tradeoffs"
+    },
+    {
+      "id": "U11",
+      "title": "PPO-ptx缓解但未消除回退；1.3B消融中单独增KL不充分修复DROP/SQuADv2，且有奖励权衡。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "capability-tradeoffs"
+    },
+    {
+      "id": "U12",
+      "title": "约40标注者、约96%被分类为英语；训练优先helpfulness而最终评估优先真实无害，held-out仍同类供应链，不代表全人类。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "AUTHOR_BLOG"
+      ],
+      "report_anchor": "whose-preferences"
+    },
+    {
+      "id": "U13",
+      "title": "袜子错误前提与南瓜过度回避是真实展示；谦逊奖励成因是作者假说，挑选提示不提供发生率。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "failure-cases"
+    },
+    {
+      "id": "U14",
+      "title": "毒性改善依赖respectful指令；无指令优势消失、biased可能更毒；偏见无普遍改善。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "failure-cases"
+    },
+    {
+      "id": "U15",
+      "title": "2017机器人遮挡镜头骗过评价的故事来自作者文字，不是InstructGPT实验；通知奖励错误例标推测。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PREFERENCE_2017",
+        "PAPER"
+      ],
+      "report_anchor": "failure-cases"
+    },
+    {
+      "id": "U16",
+      "title": "以预训练能力、反馈来源与任务执行连接前后章；AlphaGo规则奖励与语言近似奖励分开；CoT是问题衔接，不宣称直接继承/更晚。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "PREVIOUS_CHAPTER"
+      ],
+      "report_anchor": "route-connections"
+    },
+    {
+      "id": "U17",
+      "title": "194段ASR不听校；0负时长/起终点倒序但1处0.10秒重叠，最大相邻重复2；native通过不证明原音准确。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "TRANSCRIPT_REVIEW",
+        "EPISODE",
+        "LECTURE"
+      ],
+      "report_anchor": "source-notes"
+    },
+    {
+      "id": "U18",
+      "title": "GPT3到ChatGPT的代码训练/模型代际口述谱系",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "EPISODE"
+      ],
+      "report_anchor": "source-notes",
+      "omission_reason": "非本章算法必要前提；原论文不提供完整谱系，本轮未独立核定。正文已标范围。"
+    },
+    {
+      "id": "U19",
+      "title": "作者亲属关系、离职创业与内部感受推测",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "EPISODE",
+        "LECTURE"
+      ],
+      "report_anchor": "route-connections",
+      "omission_reason": "只采用正式论文团队与标注者贡献；未做人物关系与创业因果核验。"
+    },
+    {
+      "id": "U20",
+      "title": "公开NLP任务数据和实际用户需求的分布差异",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "data-and-people"
+    },
+    {
+      "id": "U21",
+      "title": "原节实质改写、标题下展开入口、展开原节/前后节往返与评估追问",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "LECTURE",
+        "PREVIOUS_CHAPTER"
+      ],
+      "report_anchor": "questions"
+    },
+    {
+      "id": "U22",
+      "title": "代码和非英语任务的定性泛化观察与非全面能力结论",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "preference-results"
+    },
+    {
+      "id": "U23",
+      "title": "全训练计算成本和成本效益比例",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "source-notes",
+      "omission_reason": "本章重点解释行为目标、人工数据与评价，未做端到端资源/成本复算，也不据参数比推断实际部署成本。"
+    }
+  ],
+  "limitations": [
+    "未训练或运行InstructGPT/GPT3，所有模型结果来自所列v1论文；算术与通知示例不是模型实验。",
+    "本章194段ASR存在重叠/重复，未逐字听校或测WER，native结构通过不证明语义准确。",
+    "只精读论文相关部分及所列图页，未精读全部68页附加输出或追读所有参考文献。",
+    "博客与论文不同汇总数不混用且不推测差异原因；自动TruthfulQA不替代人工结果。",
+    "未独立核定完整ChatGPT训练谱系、作者亲属和创业因果；2017网页媒体未观看。",
+    "当前章节完成不代表全31节或全系列本轮重验。"
+  ],
+  "research_receipts": {
+    "source_manifest": {
+      "artifact": "source-manifest.json",
+      "sha256": "361a1ae67ff9983a4754df53a0302289058f7191b60865ef7201dd104c3a0af4"
+    },
+    "transcript_precision": {
+      "artifact": "chapter-precision-audit.json",
+      "sha256": "6bc963023ecd2691d7648d40c302d2bb14215a5f0aea85e19fd02c36166fc25a"
+    },
+    "native_transcript_audit": {
+      "artifact": "transcript-native-audit.json",
+      "sha256": "3e51c3150a3df33366a457de19b9f55b7cd8928eac141dcc8d2e8641148b8bcd"
+    },
+    "tokenplan_catalog": {
+      "artifact": "tokenplan-catalog.json",
+      "sha256": "1ff34f766145209671e1562f9dc38406ce508a0a3e94a44571c116351f5001e9"
+    },
+    "visual_check": {
+      "artifact": "direct-page-visual-check.json",
+      "sha256": "3d0da39f3bc2cb38a2486f7e99cc5d408749a68ef7d2373ec3ac0772c262ef18"
+    },
+    "calculation_check": {
+      "artifact": "calculation-check.json",
+      "sha256": "2cb6ee6ceb0ec74f1f94a7e23a6bc52f8feda66f8f2446f85add56cd23d1cad4"
+    },
+    "tool_boundaries": [
+      "网页与视觉均先eacli typed调用；已有公开PDF的本地文本提取/渲染不在typed远程读取范围内。",
+      "首次博客URL缺正文，换同作者legacy URL后实际取得正文；没有将工具ok当内容完整。"
+    ]
+  }
+}

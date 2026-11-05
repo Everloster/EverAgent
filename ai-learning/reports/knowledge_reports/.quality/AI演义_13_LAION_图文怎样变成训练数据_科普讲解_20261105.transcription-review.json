@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "kind": "chapter-transcription-review",
+  "reviewed_on": "2026-11-05",
+  "chapter": 13,
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+  "transcript_source_ref": "sha256:affcbde5791d337a2ea545b0165a2c87c578823da7d06ee6fc1e360741e3986a",
+  "full_segments_sha256": "f322514ced72235a0ca104635824c66df425c18dbae3d0f4e76fa70d088db61c",
+  "public_full_episode_receipt": "podcast-learning/reports/transcripts/2026-11-04_ai-yanyi-117.audit.json",
+  "read_scope": {
+    "segments_read": 228,
+    "source_indices_zero_based_inclusive": [
+      3420,
+      3647
+    ],
+    "actual_interval_seconds": [
+      7449.67,
+      7869.1
+    ],
+    "span_seconds": 419.43,
+    "segment_artifact_sha256": "affcbde5791d337a2ea545b0165a2c87c578823da7d06ee6fc1e360741e3986a",
+    "text_artifact_sha256": "71399b20d6cf0254a7dcdb36260f0ca8c725fb503cccc34cca7f4a4562af6edc",
+    "time_basis": "按内容定位约02:04:10—02:11:09；shownotes只标第二部分起点01:52:58，没有逐篇章界。"
+  },
+  "chapter_segment_check": {
+    "segment_count": 228,
+    "negative_duration_count": 0,
+    "backward_start_count": 0,
+    "overlap_count": 0,
+    "max_gap_seconds": 1.42,
+    "positive_gap_count": 2
+  },
+  "compatible_text_audit": {
+    "schema_version": 2,
+    "kind": "podcast-transcript-audit",
+    "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+    "source_ref": "sha256:e19ec8b7d66b3818611a8d4daa05c34f38e74d26499d71524e5d852a51b9ba0c",
+    "max_consecutive_limit": 3,
+    "audit": {
+      "ok": true,
+      "size": 11527,
+      "sha256": "e19ec8b7d66b3818611a8d4daa05c34f38e74d26499d71524e5d852a51b9ba0c",
+      "lines": 228,
+      "segments": 228,
+      "duration_seconds": 7869,
+      "max_consecutive_identical": 1,
+      "timestamp_errors": 0,
+      "malformed_lines": 0,
+      "tail_gap_seconds": 0
+    }
+  },
+  "audit_interpretation": "正式脚本审计相同228段导出的[hh:mm:ss -> hh:mm:ss]文本，秒数向下取整；duration_seconds=7869是节目绝对结束时间，本章精确跨度419.43秒。小数秒另核无倒序/负时长/重叠，正向间隔2处，最大1.42秒。结构通过不代表听校或语义准确率。",
+  "term_and_claim_checks": [
+    {
+      "time_seconds": [
+        7449.67,
+        7558.43
+      ],
+      "issue": "LAION及图文对术语错词；把通过文字找到图片说成文生图。",
+      "adopted": "按LAION/CLIP论文校正专名，分开解释检索、零样本分类与生成。",
+      "basis": "CLIP§2.1–2.3；LAION§3/5及附录F",
+      "kind": "terminology_and_mechanism"
+    },
+    {
+      "time_seconds": [
+        7558.43,
+        7637.81
+      ],
+      "issue": "个人经历、工业垄断观点和未唯一识别的德语采访。",
+      "adopted": "教师经历按讲义/访谈归因；具体贡献与资源按论文作者贡献核查，不猜配采访。",
+      "basis": "讲义p29；LAION p49–50",
+      "kind": "attribution_and_unidentified_source"
+    },
+    {
+      "time_seconds": [
+        7637.81,
+        7676.0
+      ],
+      "issue": "Common Crawl被说成CMU每年抓全部互联网，CLIP被说成抓取器。",
+      "adopted": "按主文解释公开网页抓取资源及约月度快照，分开WAT解析、下载与CLIP筛选。",
+      "basis": "LAION§3.1及图2",
+      "kind": "source_identity_and_pipeline"
+    },
+    {
+      "time_seconds": [
+        7676.0,
+        7716.19
+      ],
+      "issue": "规模、影响力排名和所有扩散模型的强概括。",
+      "adopted": "使用论文5.85B及三类语言规模；只列原文明确的生成模型与子集，不采纳绝对排名。",
+      "basis": "LAION§4–5及附录F.2",
+      "kind": "numbers_and_scope"
+    },
+    {
+      "time_seconds": [
+        7716.19,
+        7869.1
+      ],
+      "issue": "逐图人工NSFW标记、删某类数据必失人体理解、所有模型只能输出端禁用等说法。",
+      "adopted": "保留读数据处理细节的主旨；明确自动标签与人工测试的区别、论文未提供必然因果消融；并列LAIONIDE-v2实际过滤NSFW/LIKELY的训练细节。",
+      "basis": "LAION§3.2/7、F.1；官方发布Safety；2024后续治理单独归因",
+      "kind": "causal_claim_and_counterexample"
+    }
+  ],
+  "audio_listened": false,
+  "word_accuracy_measured": false,
+  "verbatim_completeness": false,
+  "limitations": [
+    "未重新转写、逐字听校或测WER。",
+    "本章结构检查不代表全期逐字完整。",
+    "公开仅保留范围、哈希、术语判断与结构指标，原ASR和执行信息留私有。"
+  ]
+}

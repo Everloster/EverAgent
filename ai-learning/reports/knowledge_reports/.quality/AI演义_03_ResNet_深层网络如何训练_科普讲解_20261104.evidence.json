@@ -1,0 +1,427 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_03_ResNet_深层网络如何训练_科普讲解_20261104.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-04",
+  "generator": {
+    "model": "gpt-6-astra",
+    "harness": "codex",
+    "run_id": "ai-yanyi-chapter03-resnet-20261104",
+    "explicit_model_override": false,
+    "override_reason": "",
+    "identity_basis": "eacli codex-turn-context确认gpt-6-astra，session-bound、confirmed=true；当前run负责本轮生成。"
+  },
+  "task": {
+    "summary": "按前两节的方式持续逐节展开AI演义，本轮完成第3节ResNet；以对应转写、Shownotes、讲义、原论文与必要后续论文解释机制和边界，同步优化主稿原节及双向阅读入口。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "阅读ResNet对应ASR、讲义和Shownotes，核词误及技术泛化；复用整期转录与结构审计，诚实保留未听校和尾部缺口。"
+      },
+      {
+        "id": "R2",
+        "text": "延续猫照片例子，讲清优化退化与过拟合、恒等映射动机、两路相加与修正监督、形状匹配；少数学、独立可读。"
+      },
+      {
+        "id": "R3",
+        "text": "以原论文对照和千层反例检查残差收益，分清训练/验证/测试、数据集、单模型/集成、原版与预激活，避免深度无限保证。"
+      },
+      {
+        "id": "R4",
+        "text": "保留人物与研究过程，区分早期捷径/本论文贡献，解释检测迁移和Transformer的组件采用，并衔接AlexNet与蒸馏。"
+      },
+      {
+        "id": "R5",
+        "text": "形成独立展开篇，同步改好主稿原ResNet节并加醒目展开入口；核工作台桌面/窄屏的往返定位、脚注和表格，保留Brook和AlexNet入口。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "PAPER",
+      "kind": "primary",
+      "title": "Deep Residual Learning for Image Recognition",
+      "locator": "https://arxiv.org/pdf/1512.03385v1",
+      "accessed_on": "2026-11-04",
+      "read_scope": "正文§1–4.3（pp.1–8）、Table1–8、相应图注及相关参考文献。Figure1另经eacli图像服务辅助核CIFAR10/20与56层/训练测试相对关系，不采用其颜色、刻度或尖峰猜测；其余图按正文和图注，不声称全部视觉分析。",
+      "version": "arXiv:1512.03385v1，2015-12-10；2015为预印本年份。",
+      "sha256": "1e0651b6810ecba34a3dbc5b5b0209226f889004607c1f203540a48d64e5a93a"
+    },
+    {
+      "id": "IDENTITY",
+      "kind": "primary",
+      "title": "Identity Mappings in Deep Residual Networks",
+      "locator": "https://arxiv.org/pdf/1603.05027v3",
+      "accessed_on": "2026-11-04",
+      "read_scope": "通过eacli web.read阅读§1–4.2相关机制、推导条件、激活摆放比较和解释，未完整审其后性能讨论/附录；提取数学字符有缺损，本文不用损坏公式作精确引语。",
+      "version": "arXiv:1603.05027v3，2016-07-25；本轮采用范围为§1–4.2相关部分。"
+    },
+    {
+      "id": "TRANSFORMER",
+      "kind": "primary",
+      "title": "Attention Is All You Need",
+      "locator": "https://arxiv.org/pdf/1706.03762v7",
+      "accessed_on": "2026-11-04",
+      "read_scope": "本轮仅重读§3.1及参考文献[11]，用于核残差组件采用、相加后层归一化和作品发表年份，不重审翻译结果。",
+      "version": "arXiv:1706.03762v7，2023-08-02；作品发表于2017年。",
+      "sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+    },
+    {
+      "id": "SLIDE",
+      "kind": "local",
+      "title": "AI演义讲义第14页",
+      "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "accessed_on": "2026-11-04",
+      "read_scope": "第14页文字层和渲染图；eacli图像服务辅助恢复缺字。叙事概括、中文姓名与职务不直接作为原论文学术事实。",
+      "version": "51页讲义，本轮第14页。",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0"
+    },
+    {
+      "id": "ASR",
+      "kind": "primary",
+      "title": "AI演义第117期原音频对应自动转录",
+      "locator": "https://media.xyzcdn.net/626b46ea9cbbf0451cf5a962/ludOBUWHSc2Y_GA47pSOwlGC8JPS.m4a",
+      "accessed_on": "2026-11-04",
+      "read_scope": "本节核心约52:49–57:24，逐段阅读包含交接的141段（3168.69–3451.07秒）。未听音，不将文本当逐字准确引语；整期修复转录留公开仓外。",
+      "transcript_source_ref": "sha256:919e4ce5147340e2306748394cdb555bfc6a745119f846e7ce8c985056745b05"
+    },
+    {
+      "id": "SHOWNOTES",
+      "kind": "primary",
+      "title": "第117期节目说明与章节",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-04",
+      "read_scope": "复用前轮已取得全文，核Part1的19:35总入口、ResNet标题与顺序；没有本节精确时间戳。"
+    },
+    {
+      "id": "TRANSCRIPT_REVIEW",
+      "kind": "local",
+      "title": "ResNet逐段转录与事实核对记录",
+      "locator": "ai-learning/reports/knowledge_reports/.quality/AI演义_03_ResNet_深层网络如何训练_科普讲解_20261104.transcription-review.json",
+      "accessed_on": "2026-11-04",
+      "read_scope": "本章141段核查范围、专名和技术含义校正、复用结构收据及未听校边界。"
+    },
+    {
+      "id": "TRANSCRIPT_AUDIT",
+      "kind": "local",
+      "title": "AI演义整期转录结构收据",
+      "locator": "podcast-learning/reports/transcripts/2026-11-04_ai-yanyi-117.audit.json",
+      "accessed_on": "2026-11-04",
+      "read_scope": "核已有修复全文的机器收据：7553段、时间戳错误0、最大连续相同3；文本tail_gap=0不证明对原音频的末尾完整性。"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "普通网络加深后训练误差也升高是优化退化，与训练拟合好但新数据差的过拟合不同；Figure1为CIFAR10的20/56层，Figure4为ImageNet的18/34层。",
+      "report_anchor": "先分清",
+      "source_ids": [
+        "PAPER"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§1、§4.1和Figure1/4；训练诊断与泛化诊断分别讨论。"
+    },
+    {
+      "id": "C2",
+      "claim": "恒等映射是动机与构造性思想实验，解存在不意味着随机初始化的优化一定找到；实际plain/residual都从头训练而非冻结浅网加补丁。",
+      "report_anchor": "多加的层",
+      "source_ids": [
+        "PAPER"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§1、§3.1、§3.4；并非任意任务的最佳变换必须接近恒等。"
+    },
+    {
+      "id": "C3",
+      "claim": "残差块相加处y=x+F(x)，修正由标签分类损失经反向传播学出，不是块级人工目标或最终分类错误；0.6-0.1=0.5为自拟特征示例。",
+      "report_anchor": "谁告诉分支",
+      "source_ids": [
+        "PAPER"
+      ],
+      "support": "derived",
+      "critical": true,
+      "evidence": "§3.1–3.2及实现/训练目标；示例不是概率或实测。"
+    },
+    {
+      "id": "C4",
+      "claim": "逐元素相加要求形状一致；补零/步幅和1×1投影可处理维度变化，投影有参数，相加有计算。",
+      "report_anchor": "两路尺寸",
+      "source_ids": [
+        "PAPER"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§3.2–3.3、Figure3；无额外参数限恒等方案。"
+    },
+    {
+      "id": "C5",
+      "claim": "原论文使用BN并检查到健康的反向梯度范数，认为所见退化不太可能来自梯度消失；不能把退化全部归为消失。",
+      "report_anchor": "那么，它与梯度消失",
+      "source_ids": [
+        "PAPER"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§4.1；传播路径解释与实验具体归因不混用。"
+    },
+    {
+      "id": "C6",
+      "claim": "2015原版相加后有ReLU；2016分析需要捷径与相加后操作均恒等，full preactivation把BN/ReLU前移而非删掉非线性，跨维度处有例外。",
+      "report_anchor": "作者为什么在 2016",
+      "source_ids": [
+        "PAPER",
+        "IDENTITY"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "ResNet§3.2/Figure2；Identity Mappings§2–4.2、相关图注和脚注。"
+    },
+    {
+      "id": "C7",
+      "claim": "ImageNet约128万训练图/1000类/5万val；同条件Table2的10crop Top1验证错误率为plain18/34 27.94/28.54%，residual18/34 27.88/25.03%；34层差3.51个百分点。",
+      "report_anchor": "实验怎样判断",
+      "source_ids": [
+        "PAPER"
+      ],
+      "support": "derived",
+      "critical": true,
+      "evidence": "§4.1/Table2，选option A且无额外参数；28.54-25.03=3.51；训练误差结论另取Figure4。"
+    },
+    {
+      "id": "C8",
+      "claim": "1×1/3×3/1×1瓶颈控制计算；152层5.71%为10crop Top5 val，4.49%为较佳评估设置单模型val，3.57%为六模型集成Top5 test（提交时两个152层）。",
+      "report_anchor": "152 层和 3.57%",
+      "source_ids": [
+        "PAPER"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§4.1/Table1、3–5及Figure5；不同评估不能视作单因素改进。"
+    },
+    {
+      "id": "C9",
+      "claim": "1202层在CIFAR10上train error<0.1%、test7.93%，不如110层的五次均值6.61%±0.16百分点（best6.43%）；1202未给同样统计，作者认为泛化差可能为过拟合。",
+      "report_anchor": "既然能训到一千多层",
+      "source_ids": [
+        "PAPER"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§4.2/Table6、Figure6–7；响应较小支持动机，不保证每层小修正或任意深度更好。"
+    },
+    {
+      "id": "C10",
+      "claim": "所述FasterRCNN设置以ResNet101替换VGG16，COCO val mAP@[.5,.95]从21.2到27.2，差6点，约28%相对提升，非分类准确率。",
+      "report_anchor": "从认出猫",
+      "source_ids": [
+        "PAPER"
+      ],
+      "support": "derived",
+      "critical": true,
+      "evidence": "§4.3/Table7–8；(27.2-21.2)/21.2≈28.30%；未审全检测附录，不做全任务外推。"
+    },
+    {
+      "id": "C11",
+      "claim": "Transformer§3.1采用并引用残差连接，在相加后用LayerNorm；这是组件采用，不等同原版CNN或满足纯恒等跨块传播。",
+      "report_anchor": "另一条路线跨到了语言",
+      "source_ids": [
+        "TRANSFORMER",
+        "PAPER"
+      ],
+      "support": "derived",
+      "critical": true,
+      "evidence": "Attention Is All You Need§3.1及ref[11]；局部机制跨路线连接。"
+    },
+    {
+      "id": "C12",
+      "claim": "2015论文四位作者署名为Kaiming He、Xiangyu Zhang、Shaoqing Ren、Jian Sun，单位Microsoft Research；§2已讨论早期shortcut及Highway，不能宣称首次跨层连接。",
+      "report_anchor": "把这项工作放回",
+      "source_ids": [
+        "PAPER"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "首页署名/单位与§2；不采用ASR/讲义未另核的现任职务和动态引用量。"
+    },
+    {
+      "id": "C13",
+      "claim": "本章转录141段经纸面来源核含义，Vesnet/T2/残杀网络等做技术名校正；Shownotes无逐论文边界，未听校且整期尾部约15.989秒仍未知。",
+      "report_anchor": "回到播客和讲义",
+      "source_ids": [
+        "ASR",
+        "SLIDE",
+        "SHOWNOTES",
+        "TRANSCRIPT_REVIEW",
+        "TRANSCRIPT_AUDIT"
+      ],
+      "support": "derived",
+      "critical": true,
+      "evidence": "完整转录7553段结构合格不等于词准确；15757.479-15741.49=15.989秒。"
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U1",
+      "title": "优化退化与过拟合的诊断",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "先分清",
+      "source_ids": [
+        "PAPER",
+        "ASR",
+        "SLIDE"
+      ]
+    },
+    {
+      "id": "U2",
+      "title": "恒等解动机与从头共同训练",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "多加的层",
+      "source_ids": [
+        "PAPER"
+      ]
+    },
+    {
+      "id": "U3",
+      "title": "输入、修正、加法和标签监督",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "跟着一个中间特征",
+      "source_ids": [
+        "PAPER",
+        "ASR"
+      ]
+    },
+    {
+      "id": "U4",
+      "title": "形状匹配、恒等与投影捷径",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "两路尺寸",
+      "source_ids": [
+        "PAPER"
+      ]
+    },
+    {
+      "id": "U5",
+      "title": "BN背景下的退化与梯度边界",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "那么，它与梯度消失",
+      "source_ids": [
+        "PAPER",
+        "ASR",
+        "SLIDE"
+      ]
+    },
+    {
+      "id": "U6",
+      "title": "原版ReLU与2016预激活条件",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "作者为什么在 2016",
+      "source_ids": [
+        "PAPER",
+        "IDENTITY"
+      ]
+    },
+    {
+      "id": "U7",
+      "title": "同条件plain与residual对照",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "实验怎样判断",
+      "source_ids": [
+        "PAPER"
+      ]
+    },
+    {
+      "id": "U8",
+      "title": "瓶颈块和单模型/集成/评估口径",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "152 层和 3.57%",
+      "source_ids": [
+        "PAPER"
+      ]
+    },
+    {
+      "id": "U9",
+      "title": "千层反例、响应分析与泛化限制",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "既然能训到一千多层",
+      "source_ids": [
+        "PAPER"
+      ]
+    },
+    {
+      "id": "U10",
+      "title": "从分类到检测的迁移证据",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "从认出猫",
+      "source_ids": [
+        "PAPER"
+      ]
+    },
+    {
+      "id": "U11",
+      "title": "残差部件在Transformer的采用",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "另一条路线跨到了语言",
+      "source_ids": [
+        "PAPER",
+        "TRANSFORMER"
+      ]
+    },
+    {
+      "id": "U12",
+      "title": "人物、前驱、研究过程与下一节",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "把这项工作放回",
+      "source_ids": [
+        "PAPER",
+        "ASR",
+        "SLIDE"
+      ]
+    },
+    {
+      "id": "U13",
+      "title": "讲义、转录校正与来源边界",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "回到播客和讲义",
+      "source_ids": [
+        "ASR",
+        "SLIDE",
+        "SHOWNOTES",
+        "TRANSCRIPT_REVIEW",
+        "TRANSCRIPT_AUDIT"
+      ]
+    },
+    {
+      "id": "U14",
+      "title": "可独立阅读的自测与双向路线",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "思考与追问",
+      "source_ids": [
+        "PAPER"
+      ]
+    }
+  ],
+  "limitations": [
+    "未训练/复现实验；2015论文正文§1–4.3与相应图表已读，未完整审计检测附录或所有相关历史论文。",
+    "2016后续论文仅读§1–4.2相关机制与边界；网页提取公式有缺字符，不据其损坏排版逐字转述数学推导。",
+    "Figure1仅采用图像服务与caption/正文相符的任务、深度、曲线相对关系；其他图只按正文与图注，不宣称已视觉复审全部曲线。",
+    "完整ASR复用前轮修复稿与结构收据；本节纸面交叉核141段，未听音、未测词准确率，原音频尾部约16秒未知。",
+    "讲义和播客为主题与叙事来源；中文姓名、当前职务和动态引文数未另核，不补齐为事实。",
+    "猫照片与0.6/−0.1/0.5是教学例，实验结论只适用所述数据/模型/评估；章节顺序用于问题承接，不代表发表顺序或直接历史因果。"
+  ]
+}

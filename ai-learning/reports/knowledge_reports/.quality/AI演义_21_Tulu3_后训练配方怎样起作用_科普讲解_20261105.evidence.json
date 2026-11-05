@@ -1,0 +1,586 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_21_Tulu3_后训练配方怎样起作用_科普讲解_20261105.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-05",
+  "generator": {
+    "model": "gpt-6-astra",
+    "harness": "codex",
+    "run_id": "ai-yanyi-tulu3-r1-20261105",
+    "explicit_model_override": false,
+    "override_reason": "",
+    "identity_basis": "本轮 eacli session current 的 codex-turn-context / session-bound confirmed。仅证明协调生成者；子 Reviewer runtime 另核，不借根身份补证。"
+  },
+  "task": {
+    "summary": "第21节Tülu3展开与原节同步改写，以少数学讲清开放后训练配方、反馈差别、真实实验和奖励失效；保持系列命名与阅读入口一致。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "结合Tülu3 v5原论文、讲义p40、shownotes和完整目标85段ASR，明确历史位置与版本/来源边界。"
+      },
+      {
+        "id": "R2",
+        "text": "用贯穿例子解释数据、SFT、偏好、RLVR及参数/上下文区别；示意和真实论文案例分开，少数学。"
+      },
+      {
+        "id": "R3",
+        "text": "保留数据消融、RLVR正反成绩、未见评测与图28真实失败；指标、规模、比较条件和表格差异可追溯。"
+      },
+      {
+        "id": "R4",
+        "text": "说明开放配方的数据/工程/评测作用、有限负结果与未解决长上下文/工具等缺口；未复现/未听校诚实标记。"
+      },
+      {
+        "id": "R5",
+        "text": "原第21节实质改写且标题后首块为展开链接；展开可返回原21节、上一节ReAct、下一节DeepVideo；其余主文严格继承。"
+      },
+      {
+        "id": "R6",
+        "text": "标题遵循《AI演义》两位序号｜主题；正文独立可读；工作台桌面与窄屏实点导航/目录/脚注/表格，来源优先独立复核。"
+      }
+    ],
+    "reader_feedback": [
+      "原章节没有优化、也没有链接展开阅读的啊",
+      "按Brook方式一轮完成一节，持续完成；少数学、人类阅读友好。",
+      "列表命名开头规范一下。"
+    ]
+  },
+  "sources": [
+    {
+      "id": "PAPER",
+      "kind": "primary",
+      "title": "Tülu 3: Pushing Frontiers in Open Language Model Post-Training",
+      "locator": "https://arxiv.org/pdf/2411.15124v5",
+      "accessed_on": "2026-11-05",
+      "read_scope": "协调者核读首页、Table1与p5部分；p7–10、13–17、20–24、27–38、44–46、48–51（至贡献/致谢）、60及67–68。Table23 p36原图先eacli OCR后直接看；Figure28 p67的eacli OCR超时后最小降级直接看本地原图并与文本对照。其它曲线趋势只依正文/图注，不数字化曲线。未逐页精读p6、11–12、18–19、25–26、39–43、47、52–59、61–66、69–82；不宣称82页全文逐字已读。",
+      "local_file": "ai-learning/papers/26_tulu3_2024.pdf",
+      "sha256": "79bed1ef4ce4bb332f43bdc87d60709e644560f8f3bb6d14913a473cc82c251f",
+      "version": "arXiv:2411.15124v5 2025-04-14"
+    },
+    {
+      "id": "LECTURE",
+      "kind": "local",
+      "title": "《AI演义》讲义Tülu3条目",
+      "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "accessed_on": "2026-11-05",
+      "read_scope": "仅物理p40，文本、OCR和原图；题名/任务范围以原论文纠正。",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0"
+    },
+    {
+      "id": "PODCAST",
+      "kind": "primary",
+      "title": "张小珺商业访谈录117：Tülu3片段",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-05",
+      "read_scope": "完整85段目标ASR与边界核验，零基5377–5461，11169.02–11276.07秒；未听音。",
+      "transcript_review": "ai-learning/reports/knowledge_reports/.quality/AI演义_21_Tulu3_后训练配方怎样起作用_科普讲解_20261105.transcription-review.json",
+      "transcript_source_ref": "sha256:46826a59a59b510bb8f6defaf430f1d4f062b633d3a606dac4f4e7037c128062"
+    },
+    {
+      "id": "SHOWNOTES",
+      "kind": "primary",
+      "title": "节目shownotes与论文路线",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-05",
+      "read_scope": "复用前轮官方节目页缓存，重读Part3的Tulu3与Part4边界；未重新抓网页。",
+      "cache_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5",
+      "fresh_fetch": false
+    },
+    {
+      "id": "ARXIV",
+      "kind": "primary",
+      "title": "Tülu3摘要与版本历史",
+      "locator": "https://arxiv.org/abs/2411.15124",
+      "accessed_on": "2026-11-05",
+      "read_scope": "本轮eacli读取摘要与v1–v5日期，不以PDF创建时间替代版本日。",
+      "response_sha256": "f177476652220b3b8f1e11f616b1ca7c88e16e5398f9411f05f85a0f7ea568ae"
+    },
+    {
+      "id": "BLOG",
+      "kind": "primary",
+      "title": "Ai2：Tülu3开放后训练发布文章",
+      "locator": "https://allenai.org/blog/tulu-3",
+      "accessed_on": "2026-11-05",
+      "read_scope": "本轮eacli返回正文全文；性能/低算力/无RM等简写须回论文限定，不当独立复现实验。",
+      "response_sha256": "e5cbce0beeab8da4d23ccdfcdc0764c2eca1a2942ba8412a811d941a3d807ee4"
+    },
+    {
+      "id": "CODE",
+      "kind": "primary",
+      "title": "Open Instruct官方README",
+      "locator": "https://github.com/allenai/open-instruct/blob/master/README.md",
+      "accessed_on": "2026-11-05",
+      "read_scope": "本轮eacli读取README，核模型/数据/训练与OLMES入口；未逐行审完整源码、运行命令或固定历史commit。",
+      "response_sha256": "8eecb2bdc1feb87982a97e18fab64c4aa3ca79b12ed60bf86bffef670a1cc25a"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "Tülu3基于Llama3.1，将数据整理和SFT/DPO/RLVR公开；首版2024-11-22，所读v5为2025-04-14。",
+      "report_anchor": "why-an-open-recipe",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "ARXIV",
+        "BLOG"
+      ],
+      "critical": true,
+      "evidence": "首页、Figure1、§2.3与arXiv history；三轮参数训练与四步完整流程分开，405B按修订版理解。"
+    },
+    {
+      "id": "C2",
+      "claim": "彩笔题为本篇讲解示意：三阶段分别使用示范、偏好对、结果检查；实际数据并无该中文题或默认联合验证。",
+      "report_anchor": "three-kinds-of-feedback",
+      "support": "derived",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§4–6机制的教学重构，12+2×6=24；明确非原实验/真实输出。"
+    },
+    {
+      "id": "C3",
+      "claim": "按目标能力整理/合成数据，Persona是多样任务设定，不是个人长期记忆；8B去数学MATH31.5→23.5，去安全平均93.1→74.7。",
+      "report_anchor": "data-before-training",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§3.1.2、§4.1–4.2、Table10，两个独立消融；安全平均非现实风险比例。"
+    },
+    {
+      "id": "C4",
+      "claim": "去污染主要检查提示重叠，有助于评价但不保证识别所有改写或消除基座污染。",
+      "report_anchor": "data-before-training",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§3.2：8-gram、匹配阈值及对development/unseen区别处置；局限由方法覆盖范围限定。"
+    },
+    {
+      "id": "C5",
+      "claim": "SFT用人类或强模型示范；部分题目回答由GPT4o等重新生成，正确性/风格依赖数据并需评测迁移。",
+      "report_anchor": "sft-demonstrations",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§3.1.2、§4.1/4.2；不把SFT解释为仅背答案，也不声称合成示范是真值。"
+    },
+    {
+      "id": "C6",
+      "claim": "DPO合成偏好包含多模型和自身SFT回答，主要由GPT4o四方面打分；偏好不是人类投票或事实保证。",
+      "report_anchor": "dpo-preferences",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§5.1–5.2/Figure7，模型评审与最终偏好混合分开。"
+    },
+    {
+      "id": "C7",
+      "claim": "独特题目与自身模型回答参与比较有帮助；同一约64k题组38.3万偏好对并无对应幅度收益。",
+      "report_anchor": "dpo-preferences",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§5.3/Figures8–11与p24正文：64k/180k/383k同题候选重组，未数字化曲线。"
+    },
+    {
+      "id": "C8",
+      "claim": "length-normalized DPO相对参考模型做偏好训练；自生成数据不等于在线PPO，在线DPO仅有限负结果且不代表算法普遍排序。",
+      "report_anchor": "dpo-preferences",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§5.1.2/Eq6、§5.4、§8.2；长度归一化作用与偏差限度分开。"
+    },
+    {
+      "id": "C9",
+      "claim": "RLVR用PPO更新模型，任务是GSM8K/MATH/可验证指令，共29946；该配方未用代码执行训练编程。",
+      "report_anchor": "rlvr-verification",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "LECTURE"
+      ],
+      "critical": true,
+      "evidence": "§6/6.1、Table22；7473+7500+14973，讲义的代码解释器例超出实做。"
+    },
+    {
+      "id": "C10",
+      "claim": "RLVR任务奖励通过为10否则0，完整目标还有KL等；不用通用RM打任务奖励，但value model可由RM初始化。",
+      "report_anchor": "rlvr-verification",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "BLOG"
+      ],
+      "critical": true,
+      "evidence": "Eqs7–8/§6.2–6.4，非EOS惩罚与RM/value角色；不将博客without RM扩展成整系统没有RM成果。"
+    },
+    {
+      "id": "C11",
+      "claim": "Table23同规模DPO→RLVR：8B GSM84.3→87.6、MATH42.0→43.7，70B GSM93.5不变；8B TQA56.1→55.0、安全87.2→85.5。",
+      "report_anchor": "results-and-regressions",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "p36原表经OCR及直接核图；GSM8shot、MATH4shot flex类别宏平均、TQA6shot MC2、安全六项平均，分别计差，不合成总榜。"
+    },
+    {
+      "id": "C12",
+      "claim": "Table23 IFEval标签与Table24不同，BBH/Avg跨表有差；Table6 Qwen2.5-7B表内平均高于Tulu8B，不支持全面胜出。",
+      "report_anchor": "results-and-regressions",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "BLOG"
+      ],
+      "critical": true,
+      "evidence": "Tables6/23/24，Qwen66.5/Tulu65.1只按Table6解释；不混算Table23均值或等训练预算外推。"
+    },
+    {
+      "id": "C13",
+      "claim": "Figure28真实笔长度问题的输出只凑关键词/e/空段落，Figure29仍有空段落；检查通过不保证任务完成或过程正确。",
+      "report_anchor": "pen-failure",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "AppendixB.4，p67 Figure28原图和p68 Figure29文本；展示例非总体频率、非本轮复现。"
+    },
+    {
+      "id": "C14",
+      "claim": "development指导选择，unseen检查迁移但无unseen safety；其他模型是否用过该套题不能确认。",
+      "report_anchor": "unseen-evaluation",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§2.2/Table3/§7，明确未据unseen成绩开发，不等于所有预训练/对照都未见。"
+    },
+    {
+      "id": "C15",
+      "claim": "Table31的8B DPO→Final有DeepMindMath33.0→35.4与BigCodeBench9.5→7.4的分化；Table33最终8B均值34.2低于Llama36.4。",
+      "report_anchor": "unseen-evaluation",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "Tables31/33；编码为pass@10，不当单次成功率，未用不同套件均值直接作差；原文泛化结论按表值收紧。"
+    },
+    {
+      "id": "C16",
+      "claim": "公开中间模型/数据/训练/OLMES可支持追查阶段效果，但未在本轮逐条数据抽查、源码全审或实际复现。",
+      "report_anchor": "what-the-release-enables",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "CODE"
+      ],
+      "critical": true,
+      "evidence": "Table1与README公开入口；当前README不等于论文历史commit。"
+    },
+    {
+      "id": "C17",
+      "claim": "缓存参考logprobs、分开chosen/rejected、ZeRO/vLLM/Ray与异步训练解决工程约束；8B DPO为8H100约10h，仅该阶段。",
+      "report_anchor": "what-the-release-enables",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§5.4.1–5.4.2/§6.3，成本不推广为整个pipeline/个人设备实验。"
+    },
+    {
+      "id": "C18",
+      "claim": "作者贡献包括数据/各训练阶段/评价/发布；在线DPO和拒绝采样的有限负结果不等于这些方法普遍无用。",
+      "report_anchor": "what-the-release-enables",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§8.2、p51 Author Contributions；本文不扩展人物当前履历。"
+    },
+    {
+      "id": "C19",
+      "claim": "长上下文、多轮、多语、工具Agent为论文后续工作；当前任务评估建议是待验证借鉴而非本项目已测收益。",
+      "report_anchor": "thinking-and-questions",
+      "support": "derived",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§8.3明确空白；从反馈与评测设计引出实践问题，不当新能力或参数训练。"
+    },
+    {
+      "id": "C20",
+      "claim": "本章ASR仅85段107.05秒，术语校正依论文；文本结构核验通过不等于听校、WER或口述覆盖全机制。",
+      "report_anchor": "sources-and-scope",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "LECTURE",
+        "PODCAST",
+        "SHOWNOTES"
+      ],
+      "critical": true,
+      "evidence": "完整目标切片与边界；native审计与百分秒检查；讲义题名/任务外推更正，不公开ASR。"
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U1",
+      "title": "Tülu3基于Llama3.1，将数据整理和SFT/DPO/RLVR公开；首版2024-11-22，所读v5为2025-04-14。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "ARXIV",
+        "BLOG"
+      ],
+      "report_anchor": "why-an-open-recipe"
+    },
+    {
+      "id": "U2",
+      "title": "彩笔题为本篇讲解示意：三阶段分别使用示范、偏好对、结果检查；实际数据并无该中文题或默认联合验证。",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "three-kinds-of-feedback"
+    },
+    {
+      "id": "U3",
+      "title": "按目标能力整理/合成数据，Persona是多样任务设定，不是个人长期记忆；8B去数学MATH31.5→23.5，去安全平均93.1→74.7。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "data-before-training"
+    },
+    {
+      "id": "U4",
+      "title": "去污染主要检查提示重叠，有助于评价但不保证识别所有改写或消除基座污染。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "data-before-training"
+    },
+    {
+      "id": "U5",
+      "title": "SFT用人类或强模型示范；部分题目回答由GPT4o等重新生成，正确性/风格依赖数据并需评测迁移。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "sft-demonstrations"
+    },
+    {
+      "id": "U6",
+      "title": "DPO合成偏好包含多模型和自身SFT回答，主要由GPT4o四方面打分；偏好不是人类投票或事实保证。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "dpo-preferences"
+    },
+    {
+      "id": "U7",
+      "title": "独特题目与自身模型回答参与比较有帮助；同一约64k题组38.3万偏好对并无对应幅度收益。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "dpo-preferences"
+    },
+    {
+      "id": "U8",
+      "title": "length-normalized DPO相对参考模型做偏好训练；自生成数据不等于在线PPO，在线DPO仅有限负结果且不代表算法普遍排序。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "dpo-preferences"
+    },
+    {
+      "id": "U9",
+      "title": "RLVR用PPO更新模型，任务是GSM8K/MATH/可验证指令，共29946；该配方未用代码执行训练编程。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "LECTURE"
+      ],
+      "report_anchor": "rlvr-verification"
+    },
+    {
+      "id": "U10",
+      "title": "RLVR任务奖励通过为10否则0，完整目标还有KL等；不用通用RM打任务奖励，但value model可由RM初始化。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "BLOG"
+      ],
+      "report_anchor": "rlvr-verification"
+    },
+    {
+      "id": "U11",
+      "title": "Table23同规模DPO→RLVR：8B GSM84.3→87.6、MATH42.0→43.7，70B GSM93.5不变；8B TQA56.1→55.0、安全87.2→85.5。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "results-and-regressions"
+    },
+    {
+      "id": "U12",
+      "title": "Table23 IFEval标签与Table24不同，BBH/Avg跨表有差；Table6 Qwen2.5-7B表内平均高于Tulu8B，不支持全面胜出。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "BLOG"
+      ],
+      "report_anchor": "results-and-regressions"
+    },
+    {
+      "id": "U13",
+      "title": "Figure28真实笔长度问题的输出只凑关键词/e/空段落，Figure29仍有空段落；检查通过不保证任务完成或过程正确。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "pen-failure"
+    },
+    {
+      "id": "U14",
+      "title": "development指导选择，unseen检查迁移但无unseen safety；其他模型是否用过该套题不能确认。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "unseen-evaluation"
+    },
+    {
+      "id": "U15",
+      "title": "Table31的8B DPO→Final有DeepMindMath33.0→35.4与BigCodeBench9.5→7.4的分化；Table33最终8B均值34.2低于Llama36.4。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "unseen-evaluation"
+    },
+    {
+      "id": "U16",
+      "title": "公开中间模型/数据/训练/OLMES可支持追查阶段效果，但未在本轮逐条数据抽查、源码全审或实际复现。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "CODE"
+      ],
+      "report_anchor": "what-the-release-enables"
+    },
+    {
+      "id": "U17",
+      "title": "缓存参考logprobs、分开chosen/rejected、ZeRO/vLLM/Ray与异步训练解决工程约束；8B DPO为8H100约10h，仅该阶段。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "what-the-release-enables"
+    },
+    {
+      "id": "U18",
+      "title": "作者贡献包括数据/各训练阶段/评价/发布；在线DPO和拒绝采样的有限负结果不等于这些方法普遍无用。",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "what-the-release-enables"
+    },
+    {
+      "id": "U19",
+      "title": "长上下文、多轮、多语、工具Agent为论文后续工作；当前任务评估建议是待验证借鉴而非本项目已测收益。",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "thinking-and-questions"
+    },
+    {
+      "id": "U20",
+      "title": "本章ASR仅85段107.05秒，术语校正依论文；文本结构核验通过不等于听校、WER或口述覆盖全机制。",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "LECTURE",
+        "PODCAST",
+        "SHOWNOTES"
+      ],
+      "report_anchor": "sources-and-scope"
+    }
+  ],
+  "limitations": [
+    "没有重新训练Tülu3、运行模型或复现全部评测。",
+    "目标ASR完整阅读但未逐字听校或测WER；107秒口述不足以覆盖全部机制。",
+    "原论文跨表均值/IFEval标签/70B部分超参数存在差异，未擅自统一或提供精确复现配置。",
+    "展示例不能代表总体失败率；程序检查结果不保证过程正确或任务充分完成。",
+    "unseen无安全评测，长上下文/多轮/多语/工具仍不受本配方完整验证。",
+    "公开入口核至论文和官方README，未检查全部数据/代码/历史commit。",
+    "对个人学习/报告评估的迁移建议仍待真实任务验证。"
+  ],
+  "research_receipts": {
+    "source_manifest": {
+      "artifact": "source-manifest.json",
+      "sha256": "d83ad7985049bbf4cf055eb1f77cfcfe7cb9e82d296441b0099408bad018ffa4"
+    },
+    "calculations": {
+      "artifact": "calculation-check.json",
+      "sha256": "3ecd70f3fdea48ab474d962ba9e7f6409076e824b5446bff15732de7935ed6e5"
+    },
+    "transcription_review": {
+      "path": "ai-learning/reports/knowledge_reports/.quality/AI演义_21_Tulu3_后训练配方怎样起作用_科普讲解_20261105.transcription-review.json",
+      "sha256": "15aaa2a4dac76fdf50b74a58462d16fc9ec93bf5cb320b67938ecaac6f218159"
+    },
+    "generator_identity": {
+      "artifact": "session-current.json",
+      "sha256": "fa451531af7d6aecda9c3dbce44f5ffae8afa31fe2b0353e2c5701e0d2b64be2"
+    }
+  }
+}

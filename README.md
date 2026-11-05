@@ -18,11 +18,11 @@
 ## 最近更新
 
 <!-- AUTO-RECENT:START -->
-- 2026-11-04 · [《AI演义》深读：从关键论文看懂AI的发展路径](./ai-learning/reports/AI演义_笔记分析与项目整合报告.md)
-- 2026-11-04 · [agent-desktop 深度研究：Agent 怎样可靠地操作桌面](./github-trending-analyzer/reports/research_vercel-labs_agent-desktop.md)
-- 2026-11-03 · [无状态的鹦鹉，怎么学会了连续对话和自己用工具？—— Agent 请求全链路科普·完整版](./ai-learning/reports/knowledge_reports/Agent请求全链路_完整版_科普讲解_20261103.md)
-- 2026-11-03 · [十字路口年终复盘：AI 的十个惊讶时刻，哪些值得带回日常？](./podcast-learning/reports/2026-11-02_xiaoyuzhou-crossing_ai-aha-moments.md)
-- 2026-11-02 · [答案在逐字出现，Agent 到底做到哪一步了？—— Agent 请求全链路续篇](./ai-learning/reports/knowledge_reports/Agent请求全链路_流式响应与断线恢复_科普讲解_20261102.md)
+- 2026-11-05 · [《AI演义》深读：从关键论文看懂AI的发展路径](./ai-learning/reports/AI演义_笔记分析与项目整合报告.md)
+- 2026-11-05 · [《AI演义》22｜DeepVideo：多看几帧，为什么还不够？](./ai-learning/reports/knowledge_reports/AI演义_22_DeepVideo_模型怎样利用视频时间信息_科普讲解_20261105.md)
+- 2026-11-05 · [《AI演义》21｜Tülu 3：示范、偏好和验算，怎样一起训练助手？](./ai-learning/reports/knowledge_reports/AI演义_21_Tulu3_后训练配方怎样起作用_科普讲解_20261105.md)
+- 2026-11-05 · [《AI演义》20｜ReAct：模型怎样边查边想，把任务做下去？](./ai-learning/reports/knowledge_reports/AI演义_20_ReAct_模型怎样边查边想_科普讲解_20261105.md)
+- 2026-11-05 · [《AI演义》19｜CoT：中间步骤怎样帮助模型作答？](./ai-learning/reports/knowledge_reports/AI演义_19_CoT_中间步骤怎样帮助模型作答_科普讲解_20261105.md)
 <!-- AUTO-RECENT:END -->
 
 按报告修改日期排列，修订过的旧报告也会出现在这里。[浏览全部报告 →](./docs/REPORT_INDEX.md)
@@ -58,7 +58,7 @@ Wiki 三列数字依次是概念、实体（人物、机构等）和综合分析
 <!-- AUTO-OVERVIEW:START -->
 | 项目 | 报告 | Wiki(概念/实体/综合) |
 |------|------|----------------------|
-| 🤖 [AI Learning](./ai-learning/) | 154 篇 | 54/30/1 |
+| 🤖 [AI Learning](./ai-learning/) | 176 篇 | 54/30/1 |
 | 💻 [CS Learning](./cs-learning/) | 33 篇 | 24/17/1 |
 | 📚 [Philosophy Learning](./philosophy-learning/) | 22 篇 | 20/14/1 |
 | 🧠 [Psychology Learning](./psychology-learning/) | 17 篇 | 13/13/0 |

@@ -1,0 +1,413 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_04_知识蒸馏_从教师到学生_科普讲解_20261104.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "independent_context": true,
+        "fresh_context": false,
+        "explicit_model_override": false,
+        "override_reason": "",
+        "model_identity_observation": "编排器正式强审任务明确记录以 gpt-5.6-sol、fork_turns=none 派发；这是报告质量政策选择的强审角色，不是用户点名模型，故 explicit_model_override=false。当前任务接续同一会话的来源优先阶段，fresh_context=false；未用父会话或 eacli 配置冒充运行确认。",
+        "run_id": "collab2:root/distillation_round_review/sol_source_map:2026-11-04:expanded-r1"
+      },
+      "scores": {
+        "evidence_fidelity": 99,
+        "request_coverage": 100,
+        "reasoning_quality": 99,
+        "readability": 99,
+        "limitations": 99
+      },
+      "score_reasons": {
+        "evidence_fidelity": "逐项回到2015 arXiv v1、2006前驱、2016序列蒸馏、讲义视觉转录、161段ASR与结构收据核对。MNIST、语音、3%数据、缺类偏置和JFT数字及比较条件准确；自拟softmax表已独立复算。没有采用无法辨认的语音最佳温度，也没有把口播产品判断或傅里叶类比当论文事实。",
+        "request_coverage": "完整回答蒸馏的部署动机、软硬目标、温度、双目标、T²、迁移输入、主要实验、前驱/后续与边界；独立成篇，并与主稿第4节及下一节形成可用往返链接。R1–R5均满足，协调者1440/390实际工作台收据覆盖点击、脚注、两表与前三节入口。",
+        "reasoning_quality": "以猫/狗/汽车例子建立直觉，再用MNIST、语音、少数据、缺类和specialists逐层检验；明确区分集成变单网与参数缩小、相对与绝对提升、测试集调参、全量教师前提及未完成的specialists回蒸馏。历史归因和sequence-output延伸均保留适用范围。",
+        "readability": "主线清楚、术语随用随释，两张表可读，脚注与正文分工合理。协调者实际渲染确认1440/390无页面/reader溢出、无断锚或裸脚注；窄屏两表可横滑到末格，脚注往返和前后章节导航正常。",
+        "limitations": "明确声明未训练或复现实验、未测部署速度、ASR未听音、音频尾部约16秒未知、两份扩展论文只读限定范围、开发/测试称谓差异、视觉无法辨认粗体温度，以及教学例和当代产品接口的边界。"
+      },
+      "source_content_map": [
+        {
+          "id": "EX-SCM-01",
+          "title": "2006 Model Compression直接前驱与2015推进",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "COMPRESSION"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11"
+          ],
+          "notes": "§8明确写2006已用复杂集成输出训练紧凑网络，2015进一步发展温度化软目标、logit关系与真实任务验证，没有把2015写成从无到有的发明。"
+        },
+        {
+          "id": "EX-SCM-02",
+          "title": "迁移输入覆盖决定教师函数可学区域",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "COMPRESSION",
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U9",
+            "U11"
+          ],
+          "notes": "缺数字3与只见7/8的解释保留输入覆盖和类别偏置条件；历史段也说明2006对真实任务相关区域覆盖的要求。"
+        },
+        {
+          "id": "EX-SCM-03",
+          "title": "训练形态与部署形态可以分离",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "ASR",
+            "SLIDE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1"
+          ],
+          "notes": "开篇和§1解释昂贵教师、部署学生及成本转移，不把教师训练成本写成消失。"
+        },
+        {
+          "id": "EX-SCM-04",
+          "title": "错误类别相对概率承载泛化线索",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "ASR"
+          ],
+          "matched_coverage_unit_ids": [
+            "U2"
+          ],
+          "notes": "猫/狗/汽车例子准确区分硬标签与完整分布，也提醒教师概率可能含偏差和噪声。"
+        },
+        {
+          "id": "EX-SCM-05",
+          "title": "温度化softmax与训练/部署协议",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3",
+            "U4"
+          ],
+          "notes": "T=1/5教学表复算正确；高温教师与同温学生匹配、部署T=1及容量相关温度边界均写清。"
+        },
+        {
+          "id": "EX-SCM-06",
+          "title": "软硬双目标、T²补偿与hard-label来源",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "SLIDE",
+            "ASR"
+          ],
+          "matched_coverage_unit_ids": [
+            "U4",
+            "U5"
+          ],
+          "notes": "明确硬标签来自标注而非高温教师，并说明两项温度、权重与1/T²梯度尺度补偿。"
+        },
+        {
+          "id": "EX-SCM-07",
+          "title": "logit匹配仅是有条件的高温近似",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U5"
+          ],
+          "notes": "§8保留高温和逐样本零均值两个条件，没有无条件宣称等价。"
+        },
+        {
+          "id": "EX-SCM-08",
+          "title": "transfer set可来自原训练集或无标签输入",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "COMPRESSION"
+          ],
+          "matched_coverage_unit_ids": [
+            "U4",
+            "U9",
+            "U11"
+          ],
+          "notes": "四步流程说明迁移数据来源；缺类案例与2006覆盖讨论展示输入支持仍是独立条件。"
+        },
+        {
+          "id": "EX-SCM-09",
+          "title": "MNIST容量、温度与缺类实验",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U6",
+            "U9"
+          ],
+          "notes": "67/146/74、T20、不同容量温度范围、去掉3和只留7/8均保留实验设置；98.6%和13.2%明确带测试集偏置调参条件。"
+        },
+        {
+          "id": "EX-SCM-10",
+          "title": "十模型语音ensemble到单模型",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U7"
+          ],
+          "notes": "58.9/61.1/60.8与10.9/10.7/10.7逐项准确；说明学生与单基线同规模、80%以上只指frame-accuracy增益且无实测十倍加速。"
+        },
+        {
+          "id": "EX-SCM-11",
+          "title": "soft targets作为少数据正则器",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8"
+          ],
+          "notes": "44.5/57.0/58.9口径正确，并保留教师已用全量数据，未写成全流程只用3%。"
+        },
+        {
+          "id": "EX-SCM-12",
+          "title": "generalist与specialists的构造和激活",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10"
+          ],
+          "notes": "说明按通才预测统计关系分组、从通才初始化、保留其余数据、按候选激活相关specialists。"
+        },
+        {
+          "id": "EX-SCM-13",
+          "title": "JFT收益、相对口径与不严格单网蒸馏",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10"
+          ],
+          "notes": "25.0→26.1被正确写成1.1个百分点和4.4%相对提升；没有把specialist ensemble结果误写成已回蒸馏。"
+        },
+        {
+          "id": "EX-SCM-14",
+          "title": "specialists与当时Mixture of Experts的区别",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10"
+          ],
+          "notes": "强调固定子集、独立训练与当时门控耦合方案的差异，并限制对现代MoE的外推。"
+        },
+        {
+          "id": "EX-SCM-15",
+          "title": "论文明确的未完成边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10"
+          ],
+          "notes": "明确写尚未证明把specialists知识再蒸馏回单个大网络。"
+        },
+        {
+          "id": "EX-SCM-16",
+          "title": "word-level与sequence-level输出蒸馏",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "SEQUENCE",
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U12"
+          ],
+          "notes": "准确区分类别/逐词概率与教师beam-search生成的单条序列，说明后者只是mode近似且不能推定任意聊天模型可复制。"
+        },
+        {
+          "id": "EX-SCM-17",
+          "title": "讲义、ASR、Shownotes覆盖与口播外围材料",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "SLIDE",
+            "ASR",
+            "SHOWNOTES",
+            "TRANSCRIPT_REVIEW",
+            "TRANSCRIPT_AUDIT"
+          ],
+          "matched_coverage_unit_ids": [
+            "U13",
+            "U14",
+            "U15"
+          ],
+          "notes": "机制、章节定位和函数拟合边界已覆盖；excerpt-provenance-receipt.json（SHA 05e2412e562505ddb1f9894a7c722f9e89a0da0496b970b086c3b17b3ab8bbf6）确认161段摘录与完整segments[973:1134]逐段一致。人物段子、动态职务、个人数学经历按证据账本有意省略，属于合理取舍。"
+        }
+      ],
+      "critical_claim_ids_checked": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13"
+      ],
+      "coverage_unit_ids_checked": [
+        "U1",
+        "U2",
+        "U3",
+        "U4",
+        "U5",
+        "U6",
+        "U7",
+        "U8",
+        "U9",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15"
+      ],
+      "source_ids_checked": [
+        "PAPER",
+        "COMPRESSION",
+        "SEQUENCE",
+        "SLIDE",
+        "ASR",
+        "SHOWNOTES",
+        "TRANSCRIPT_REVIEW",
+        "TRANSCRIPT_AUDIT"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "weighted_score": 99.2,
+      "review_revision_round": 1,
+      "snapshot_verified": true,
+      "review_scope": {
+        "source_map": "sol-source-map.json",
+        "source_map_sha256": "61a7d9643018beb87b72898c3569441f05862a1d089be3ca869626a6854cb3a7",
+        "sources_read_before_report": true,
+        "presentation_checks_by_reviewer": [
+          "复算softmax教学表",
+          "静态核对本地相对链接与目标锚点",
+          "核对10个脚注引用/定义一一对应",
+          "核对未采用具体语音最佳温度与实测十倍加速"
+        ],
+        "coordinator_workbench_receipt_used": true,
+        "asr_excerpt_provenance": {
+          "artifact": "excerpt-provenance-receipt.json",
+          "sha256": "05e2412e562505ddb1f9894a7c722f9e89a0da0496b970b086c3b17b3ab8bbf6",
+          "matched": true,
+          "full_transcript_sha256": "919e4ce5147340e2306748394cdb555bfc6a745119f846e7ce8c985056745b05",
+          "full_segments_sha256": "f322514ced72235a0ca104635824c66df425c18dbae3d0f4e76fa70d088db61c",
+          "chapter_segments_sha256": "acb5307da506be8bb5b3e5ea2312491d083801ed8008eb20305d0afa666b35a2",
+          "chapter_excerpt_text_sha256": "2fbdd1e8c62b0ed6f9b271726c42d8c74710d26d47b97aaf53ea553f69455b73",
+          "full_segments": 7553,
+          "chapter_segments": 161,
+          "zero_based_slice": [
+            973,
+            1134
+          ],
+          "time_range_seconds": [
+            2789.84,
+            3171.64
+          ],
+          "assessment": "161段摘录逐段start/end/text与已哈希完整segments的连续切片完全一致，补足摘录到整期来源的直接绑定。"
+        }
+      },
+      "snapshot": {
+        "report_path": "ai-learning/reports/knowledge_reports/AI演义_04_知识蒸馏_从教师到学生_科普讲解_20261104.md",
+        "report_sha256": "21abaa10416010007e74bc030ff248db7a7cb5d5782d3d4ca152733144308c89",
+        "evidence_path": "ai-learning/reports/knowledge_reports/.quality/AI演义_04_知识蒸馏_从教师到学生_科普讲解_20261104.evidence.json",
+        "evidence_sha256": "3f94c11e21c33223798868b13d8fa276022a5aa6bc90568121e1106f80deb142",
+        "revision_round": 1,
+        "verified_on": "2026-11-04"
+      },
+      "navigation_receipt": {
+        "script_name": "navigation-check.mjs",
+        "script_sha256": "80aa495adf19f0837460223fe646e4092ed456d76247e8012d246acbd703dd65",
+        "receipt_name": "navigation-receipt.json",
+        "receipt_sha256": "8e8bddb8738c150ba3cde456aad56dadddde19bbefa955c06c0110a27857e628",
+        "executed_by": "协调者（主任务）",
+        "reviewer_action": "本Reviewer读取并复核脚本与收据，未亲自运行Chromium。",
+        "snapshot_match": true,
+        "assessment": "1440/390真实点击主稿原节→展开篇→返回原节→下一节通过；Brook/AlexNet/ResNet入口保留；主稿41、展开篇10脚注无断锚/重复ID/裸源码/乱码；页面与reader无横向溢出、无pageerror和新标签；fn-speech往返通过；两表末格11.53%与10.7%在窄屏横滑后可见。"
+      },
+      "notes": "important revision 1来源优先强审。正式report/evidence双SHA先核后读；同一会话先完成隔离的source-content map，再读正文，故independent_context=true、fresh_context=false。未读取生成者推理过程。正文、evidence、ASR结构收据、转录审查、前驱/后续限定范围与协调者实际工作台验收均已核。无unsupported claim、missing requirement或hard failure；最终状态由共享review集成和质量脚本计算。",
+      "report_sha256": "21abaa10416010007e74bc030ff248db7a7cb5d5782d3d4ca152733144308c89",
+      "evidence_sha256": "3f94c11e21c33223798868b13d8fa276022a5aa6bc90568121e1106f80deb142",
+      "policy_id": "report-quality-2026-10-18-r2",
+      "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+      "preintegration_quality_check": {
+        "command": "python3 scripts/report_quality.py check ai-learning/reports/knowledge_reports/AI演义_04_知识蒸馏_从教师到学生_科普讲解_20261104.md",
+        "exit_code": 1,
+        "decision": "needs_review",
+        "errors": [
+          "REV006: important 至少需要 1 个独立复核"
+        ],
+        "interpretation": "本临时单review尚未集成到共享.review.json；这是预集成状态，不是本Reviewer自行判定通过或内容失败。"
+      }
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 99.2,
+    "evaluated_on": "2026-11-04",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "76178f61847aea9214d88627cde97ae922b5a60230653dacf25fb7cce521afa0",
+    "evidence_sha256": "3f94c11e21c33223798868b13d8fa276022a5aa6bc90568121e1106f80deb142"
+  },
+  "public_serialization": {
+    "kind": "agent-task-id-normalization",
+    "note": "仅去掉 Agent 任务命名空间的前导斜杠，避免与本机目录混淆；模型、核验内容、评分及判定保持不变。",
+    "source_review_sha256": "7f56833c329e7239051db32a53e314d9f37f304d3f6792b60bb0261a1ecbaf7a",
+    "fields_normalized": 2
+  }
+}

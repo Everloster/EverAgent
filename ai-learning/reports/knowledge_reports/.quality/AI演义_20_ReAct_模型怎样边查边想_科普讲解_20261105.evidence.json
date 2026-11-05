@@ -1,0 +1,552 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_20_ReAct_模型怎样边查边想_科普讲解_20261105.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-05",
+  "generator": {
+    "model": "gpt-6-astra",
+    "harness": "codex",
+    "run_id": "ai-yanyi-react-r1-20261105",
+    "explicit_model_override": false,
+    "override_reason": "",
+    "identity_basis": "本轮 eacli session current：gpt-6-astra，codex-turn-context，session-bound confirmed。只证明协调生成者，子 Reviewer 的配置与实际 runtime 分开记录。"
+  },
+  "task": {
+    "summary": "《AI演义》第20节ReAct深入展开并同步改写原节；以Apple Remote查询解释推理/动作/观察，保留真实实验、反例和边界。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "结合ReAct v3论文、讲义p20、shownotes及完整293段本章ASR，说明问题、机制与历史位置。"
+      },
+      {
+        "id": "R2",
+        "text": "用真实Apple Remote任务解释模型/工具/观察的分工、上下文与稀疏思考；区分提示、离线训练及长期记忆，少数学。"
+      },
+      {
+        "id": "R3",
+        "text": "保留QA正反结果、组合成本、ALFWorld best/avg、WebShop模拟任务、微调预算与原材料歧义，不冒称全面胜出。"
+      },
+      {
+        "id": "R4",
+        "text": "解释真实失败和答对但过程错的案例；审计转写并说明未听校/未复现实验；访谈经验与论文事实分开。"
+      },
+      {
+        "id": "R5",
+        "text": "原第20节实质改写且标题后第一块为展开链接；展开返回原20节、上一节CoT、下一节Tülu3；前19节和其余主文严格继承。"
+      },
+      {
+        "id": "R6",
+        "text": "正文独立可读，列表规范命名；工作台桌面1440与窄屏390实点目录、脚注、表格和导航，来源优先独立复核。"
+      }
+    ],
+    "reader_feedback": [
+      "原章节没有优化、也没有链接展开阅读的啊",
+      "按Brook方式一轮完成一节，持续完成；少数学、人类阅读友好。",
+      "列表命名开头规范一下。"
+    ]
+  },
+  "sources": [
+    {
+      "id": "PAPER",
+      "kind": "primary",
+      "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
+      "locator": "https://arxiv.org/pdf/2210.03629v3",
+      "accessed_on": "2026-11-05",
+      "read_scope": "主文物理pp1–10；附录A.1–A.3/B.1–B.2 pp14–15，C.3/C.4 pp22–25，D.2.3/D.3 pp29–31，E.1 pp32–33。Figure1 p2先eacli视觉再直接核图；其余实验表/描述按原PDF文本核验。未精读参考文献pp10–13、全部C.1/C.2提示pp16–21及D.1/D.2.1/D.2.2 pp26–29；不宣称全文33页逐段已读。",
+      "version": "arXiv:2210.03629v3，2023-03-10；v1为2022-10-06",
+      "sha256": "f285b0971ae4a790e402fb93966bed3adde2cf0a04977d08b2b40d6ab0cace69",
+      "local_file": "ai-learning/papers/17_react_2022.pdf"
+    },
+    {
+      "id": "LECTURE",
+      "kind": "local",
+      "title": "《AI演义》讲义ReAct条目",
+      "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "accessed_on": "2026-11-05",
+      "read_scope": "物理p20文字与原图；只将机制/路线作讲义原意，外围事实另核。",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0"
+    },
+    {
+      "id": "PODCAST",
+      "kind": "primary",
+      "title": "张小珺商业访谈录117：ReAct及其后学习讨论",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-05",
+      "read_scope": "私有存档的本章293段原ASR全文；零基2470–2762，5688.37–6163.57秒。只输出整理观点与核验范围，不公开原转写。",
+      "transcript_review": "ai-learning/reports/knowledge_reports/.quality/AI演义_20_ReAct_模型怎样边查边想_科普讲解_20261105.transcription-review.json",
+      "transcript_source_ref": "sha256:0401e75fa99a51664f86535332fe49c6b2b6c194f611135b9dd1ff4137dded07"
+    },
+    {
+      "id": "SHOWNOTES",
+      "kind": "primary",
+      "title": "节目shownotes与论文路线",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-05",
+      "read_scope": "复用前轮取得的官方节目页完整文本；本轮重读其中Part1和ReAct/后续路线，未重新请求网页。",
+      "cache_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5",
+      "fresh_fetch": false
+    },
+    {
+      "id": "ARXIV",
+      "kind": "primary",
+      "title": "ReAct版本记录",
+      "locator": "https://arxiv.org/abs/2210.03629",
+      "accessed_on": "2026-11-05",
+      "read_scope": "eacli网页返回摘要与v1-v3提交历史。",
+      "response_sha256": "1c938349d42dcc787deade5af2a6d532638a6e26984811d178603a1dcf91f673"
+    },
+    {
+      "id": "PROJECT",
+      "kind": "primary",
+      "title": "ReAct作者项目页",
+      "locator": "https://react-lm.github.io/",
+      "accessed_on": "2026-11-05",
+      "read_scope": "本轮eacli返回正文中的问题、提示、示范、微调与限制；网页图片没有另抓，机制案例直接核原论文。",
+      "response_sha256": "7781dae0b9ca7866d6d8a5187d6527f1ebbbe17f4017edb4326806b17e794d2d"
+    },
+    {
+      "id": "CODE",
+      "kind": "primary",
+      "title": "ReAct官方仓库README",
+      "locator": "https://github.com/ysymyth/ReAct/blob/master/README.md",
+      "accessed_on": "2026-11-05",
+      "read_scope": "eacli repo.public.read全文：GPT3 notebook入口、500 random dev结果与复现边界；未将README当源码运行证据。",
+      "response_sha256": "7baf1b526922aa706faa595c6a68fc8e00900f221c2ff29e8968bdddd3ffa48d"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "ReAct在2022-10首发、所读为2023-03的ICLR v3；它承接而非发明Agent/LM工具交互。",
+      "report_anchor": "history-and-reading",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "ARXIV"
+      ],
+      "critical": true,
+      "evidence": "论文首页、§1/§5与arXiv history；人物只采用作者与实习脚注，不外推履历。"
+    },
+    {
+      "id": "C2",
+      "claim": "Figure1的Apple Remote案例：CoT认成Apple TV，Act-only同类查询后答yes，ReAct从查找失败改搜Front Row (software)后答键盘功能键。",
+      "report_anchor": "apple-remote-walkthrough",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "物理p2原图及图注；本轮eacli视觉/直接看图。图示而非本轮运行，Obs3有省略。"
+    },
+    {
+      "id": "C3",
+      "claim": "Thought由模型生成并更新上下文；Action请求由环境执行取得Observation；主要few-shot实验冻结参数，不自动形成跨会话长期记忆。",
+      "report_anchor": "model-tool-observation",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§2/§3.1：thought属于扩充动作空间，无环境改变；解释临时轨迹与参数更新的区别。"
+    },
+    {
+      "id": "C4",
+      "claim": "知识问答API只有search、lookup、finish；search返回前5句或相似词条，不能理解为任意网页访问。",
+      "report_anchor": "action-space-and-rhythm",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§3.1明确动作定义与弱检索器边界。"
+    },
+    {
+      "id": "C5",
+      "claim": "问答采用密集推理，决策任务可稀疏思考；提示节奏不等于每次动作前都必须长推理。",
+      "report_anchor": "action-space-and-rhythm",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§2末与§4提示设计，C.3/C.4示范。"
+    },
+    {
+      "id": "C6",
+      "claim": "Table1 PaLM540B：HotpotQA CoT29.4/ReAct27.4，FEVER CoT56.3/ReAct60.9，分别差-2.0/+4.6个百分点；不支持ReAct全面优于CoT。",
+      "report_anchor": "knowledge-results",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "Table1：Standard28.7/57.1、Act25.7/58.9；Hotpot6-shot、FEVER3-shot，question-only。"
+    },
+    {
+      "id": "C7",
+      "claim": "ReAct与CoT-SC互补；最优组合Hotpot35.1/FEVER64.6，采样21条与切换上限7/5等条件须保留。",
+      "report_anchor": "knowledge-results",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§3.2/Table1/Figure2；单独CoT-SC33.4/60.4；majority<n/2时转ReAct。"
+    },
+    {
+      "id": "C8",
+      "claim": "200条轨迹是按两方法×成功/失败各50分层抽查；ReAct错答组推理47%、检索23%、幻觉0，成功组仍有6%错误事实/推理。",
+      "report_anchor": "failures",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§3.3/Table2按作者报告分类，不外推全量发生率，不把0%当零幻觉保证。"
+    },
+    {
+      "id": "C9",
+      "claim": "San Marco/About Time例说明最终匹配可以伴随实体与事实错用；过时标签也影响EM解释。",
+      "report_anchor": "failures",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "E.1 pp32–33的false-positive例及A.2；不把论文例子当当前实体事实核验。"
+    },
+    {
+      "id": "C10",
+      "claim": "ALFWorld评测134个未见游戏，2-shot六组提示；ReAct平均57/best71，Act best45，BUTLER best37；34pp是best差值。",
+      "report_anchor": "decision-making",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§4/Table3；Figure1胡椒瓶展示计划/状态跟踪。基线训练/搜索条件不同；C.4/Table7有一行think与No thoughts标签冲突。"
+    },
+    {
+      "id": "C11",
+      "claim": "ReAct-IM是作者构造的受限密集反馈消融；best53低于ReAct71，刀具案例遗漏清洗并重复放置。",
+      "report_anchor": "decision-making",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§4/B.2/D.2.3；将目标当达成状态是作者给的可能解释，非已证明内部机制。"
+    },
+    {
+      "id": "C12",
+      "claim": "WebShop500条指令的全部条件成功率：ReAct40.0、Act30.1、IL29.1、IL+RL28.7、人类59.6；不是真实下单，不是平均属性得分。",
+      "report_anchor": "decision-making",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "CODE"
+      ],
+      "critical": true,
+      "evidence": "§4/Table4/Ethics；Table10口味与16包/100包展示；README将论文40列在PaLM540B行。"
+    },
+    {
+      "id": "C13",
+      "claim": "3000条答案正确的生成轨迹用于微调PaLM8B/62B，ReAct在Figure3提示时弱、微调后最好；不同训练步数限制等预算比较。",
+      "report_anchor": "training-and-human-correction",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§3.2–3.3/Figure3/B.1；4000 vs 2000/1000步，非逐次工具调用即参数训练。"
+    },
+    {
+      "id": "C14",
+      "claim": "Figure5单例编辑两段thought改变后续行为而成功；不能推成普遍可控或忠实内部推理保证。",
+      "report_anchor": "training-and-human-correction",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "PROJECT"
+      ],
+      "critical": true,
+      "evidence": "A.3 pp14–15正文与图注说明编辑Act17/23；系统研究留未来，本轮未重新跑该案例。"
+    },
+    {
+      "id": "C15",
+      "claim": "公开代码、论文主表和附表不是同一评估快照，PaLM当时不可公开访问；不能用500子集结果填充Table1题数或替代原实验复现。",
+      "report_anchor": "sources-and-scope",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "CODE",
+        "ARXIV"
+      ],
+      "critical": true,
+      "evidence": "Reproducibility/A.1/Table5与README；v3主文Table1未标实际题数，README与Table5的GPT3 Hotpot30.4/30.8不同。"
+    },
+    {
+      "id": "C16",
+      "claim": "讲义和播客用于机制/发展脉络与学习建议，未核年龄/引用/行业概括不作为实验事实；ASR结构通过不等于听写准确率。",
+      "report_anchor": "sources-and-scope",
+      "support": "direct",
+      "source_ids": [
+        "LECTURE",
+        "PODCAST",
+        "SHOWNOTES"
+      ],
+      "critical": true,
+      "evidence": "p20与完整目标293段；原生审计及精确切片检查，未听音/未测WER。"
+    },
+    {
+      "id": "C17",
+      "claim": "以查询目的、反馈是否改变下一步和完成依据评估工具Agent，是从论文机制与失败推得的待验证实践建议。",
+      "report_anchor": "practical-implications",
+      "support": "derived",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§2/§3.3/§4/§6；正文标[推测／实践建议]，未冒称本项目实测收益或现成跨设备记忆能力。"
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U1",
+      "title": "ReAct在2022-10首发、所读为2023-03的ICLR v3；它承接而非发明Agent/LM工具交互。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "ARXIV"
+      ],
+      "report_anchor": "history-and-reading"
+    },
+    {
+      "id": "U2",
+      "title": "Figure1的Apple Remote案例：CoT认成Apple TV，Act-only同类查询后答yes，ReAct从查找失败改搜Front Row (software)后答键盘功能键。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "apple-remote-walkthrough"
+    },
+    {
+      "id": "U3",
+      "title": "Thought由模型生成并更新上下文；Action请求由环境执行取得Observation；主要few-shot实验冻结参数，不自动形成跨会话长期记忆。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "model-tool-observation"
+    },
+    {
+      "id": "U4",
+      "title": "知识问答API只有search、lookup、finish；search返回前5句或相似词条，不能理解为任意网页访问。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "action-space-and-rhythm"
+    },
+    {
+      "id": "U5",
+      "title": "问答采用密集推理，决策任务可稀疏思考；提示节奏不等于每次动作前都必须长推理。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "action-space-and-rhythm"
+    },
+    {
+      "id": "U6",
+      "title": "Table1 PaLM540B：HotpotQA CoT29.4/ReAct27.4，FEVER CoT56.3/ReAct60.9，分别差-2.0/+4.6个百分点；不支持ReAct全面优于CoT。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "knowledge-results"
+    },
+    {
+      "id": "U7",
+      "title": "ReAct与CoT-SC互补；最优组合Hotpot35.1/FEVER64.6，采样21条与切换上限7/5等条件须保留。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "knowledge-results"
+    },
+    {
+      "id": "U8",
+      "title": "200条轨迹是按两方法×成功/失败各50分层抽查；ReAct错答组推理47%、检索23%、幻觉0，成功组仍有6%错误事实/推理。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "failures"
+    },
+    {
+      "id": "U9",
+      "title": "San Marco/About Time例说明最终匹配可以伴随实体与事实错用；过时标签也影响EM解释。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "failures"
+    },
+    {
+      "id": "U10",
+      "title": "ALFWorld评测134个未见游戏，2-shot六组提示；ReAct平均57/best71，Act best45，BUTLER best37；34pp是best差值。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "decision-making"
+    },
+    {
+      "id": "U11",
+      "title": "ReAct-IM是作者构造的受限密集反馈消融；best53低于ReAct71，刀具案例遗漏清洗并重复放置。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "decision-making"
+    },
+    {
+      "id": "U12",
+      "title": "WebShop500条指令的全部条件成功率：ReAct40.0、Act30.1、IL29.1、IL+RL28.7、人类59.6；不是真实下单，不是平均属性得分。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "CODE"
+      ],
+      "report_anchor": "decision-making"
+    },
+    {
+      "id": "U13",
+      "title": "3000条答案正确的生成轨迹用于微调PaLM8B/62B，ReAct在Figure3提示时弱、微调后最好；不同训练步数限制等预算比较。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "training-and-human-correction"
+    },
+    {
+      "id": "U14",
+      "title": "Figure5单例编辑两段thought改变后续行为而成功；不能推成普遍可控或忠实内部推理保证。",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "PROJECT"
+      ],
+      "report_anchor": "training-and-human-correction"
+    },
+    {
+      "id": "U15",
+      "title": "公开代码、论文主表和附表不是同一评估快照，PaLM当时不可公开访问；不能用500子集结果填充Table1题数或替代原实验复现。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "CODE",
+        "ARXIV"
+      ],
+      "report_anchor": "sources-and-scope"
+    },
+    {
+      "id": "U16",
+      "title": "讲义和播客用于机制/发展脉络与学习建议，未核年龄/引用/行业概括不作为实验事实；ASR结构通过不等于听写准确率。",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "LECTURE",
+        "PODCAST",
+        "SHOWNOTES"
+      ],
+      "report_anchor": "sources-and-scope"
+    },
+    {
+      "id": "U17",
+      "title": "以查询目的、反馈是否改变下一步和完成依据评估工具Agent，是从论文机制与失败推得的待验证实践建议。",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "practical-implications"
+    },
+    {
+      "id": "U18",
+      "title": "访谈后续：提前发现问题与方法复杂度；年轻和资深研究者的持续学习；管理细化与亲手实现的区别；PRD/原型传递损失及更宽能力跨度",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "PODCAST",
+        "SHOWNOTES"
+      ],
+      "report_anchor": "history-and-reading"
+    },
+    {
+      "id": "U19",
+      "title": "模型作者、机构与前后章节的职责连接；报告编辑顺序不冒称原音顺序",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "LECTURE",
+        "SHOWNOTES"
+      ],
+      "report_anchor": "history-and-reading"
+    },
+    {
+      "id": "U20",
+      "title": "讲义未核人物年龄、现代产品归因与引用量；作为范围外说法而非技术事实",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "LECTURE",
+        "PODCAST"
+      ],
+      "report_anchor": "history-and-reading"
+    }
+  ],
+  "limitations": [
+    "未运行原论文模型推理/训练/基准，数字是作者报告；主要PaLM模型当时未开放访问。",
+    "正文Table1与500题子集/README不是同一快照；不混用未对齐数字。",
+    "原图Obs3有省略，未补造完整外部返回；Figure1和Figure5均是展示例。",
+    "Table7标无thought但包含think行，实际实验输入关系未核定；不声称完全复现对照。",
+    "ASR按本章293段审阅和结构核验，未逐字听校或測WER；外围履历/引用/产品因果未核。",
+    "当前Agent评估建议仍待实测；没有增加或验证多设备会话/长期记忆。"
+  ],
+  "research_receipts": {
+    "source_manifest": {
+      "artifact": "source-manifest.json",
+      "sha256": "6b100546bb5adf59b7e7922759f81d305bb058aeefd5dfb502e0f4bd854158d4"
+    },
+    "calculations": {
+      "artifact": "calculation-check.json",
+      "sha256": "3cb0b5494299b3d4fbc97166e56cb44fc52702572b4c691af89057e3017c3aea"
+    },
+    "transcription_review": {
+      "path": "ai-learning/reports/knowledge_reports/.quality/AI演义_20_ReAct_模型怎样边查边想_科普讲解_20261105.transcription-review.json",
+      "sha256": "fe1f7016952e3774424464cb8b0c913e3d153315bc4956eea0d2bb4938ad5f59"
+    },
+    "generator_identity": {
+      "artifact": "session-current.json",
+      "sha256": "ed275c01731b39f6cff6197822e8590e12ff012894b61a7d9b154005e6d7b443"
+    }
+  }
+}

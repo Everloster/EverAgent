@@ -1,0 +1,397 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_11_ZeRO_多卡怎样分担训练显存_科普讲解_20261105.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "zero-strong-expanded-20261105",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": "依据旗舰报告双复核流程，由协调者按强模型优先顺序派发；非用户对本轮模型的显式指定。",
+        "identity_basis": "dispatch_selection_only",
+        "runtime_model": "unconfirmed",
+        "runtime_attestation": {
+          "status": "unavailable",
+          "note": "没有子会话 runtime model 的独立可验证收据；未使用共享 shell、根会话身份或生成者身份探针冒充 Reviewer 模型证明。"
+        }
+      },
+      "scores": {
+        "evidence_fidelity": 99,
+        "request_coverage": 97,
+        "reasoning_quality": 98,
+        "readability": 98,
+        "limitations": 99
+      },
+      "score_reasons": {
+        "evidence_fidelity": "核心数字、公式、版本、实验硬件、比较口径和反例均回到论文/官方来源逐项核验；四卡数字可复算。上一轮指出的通信小节定位已从不存在的§7.3修正为§7.2.2，节目身份也由同一原页metadata补充收据核为《张小珺Jùn｜商业访谈录》。",
+        "request_coverage": "完整覆盖背景、状态账本、三阶段机制、训练step、通信、ZeRO-R、实验成败、人物与路线，并可独立阅读。Turing-NLG只作为实际应用概述，未展开官方材料中MP 16→4等具体收益，因此相应来源单元为partial。",
+        "reasoning_quality": "因果链清楚：先拆显存账，再解释复制冗余、逐阶段分片、通信代价、剩余显存和实验边界；主动区分容量、吞吐、完整训练和任务质量，且给出CPU offload反例。",
+        "readability": "同一四卡例子贯穿，术语首次出现即解释，数字列表与脚注在桌面/390px均清楚，无横向溢出或乱码；上一节、返回原位、下一节、目录和脚注往返均实际点击通过。篇幅较长但章节问题明确，阅读节奏稳定。",
+        "limitations": "诚实标明未训练复现、混合精度Adam口径、v3实现边界、基线配置差异、未听校ASR与未核轶事；“无限扩展”和万亿参数均紧邻限制条件。已删除未绑定冻结来源的全期末尾秒数旁支，改成“本章检查不代表全期验证”。"
+      },
+      "critical_claim_ids_checked": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17",
+        "C18",
+        "C19"
+      ],
+      "coverage_unit_ids_checked": [
+        "U1",
+        "U2",
+        "U3",
+        "U4",
+        "U5",
+        "U6",
+        "U7",
+        "U8",
+        "U9",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16",
+        "U17",
+        "U18",
+        "U19",
+        "U20",
+        "U21",
+        "U22",
+        "U23"
+      ],
+      "source_content_map": [
+        {
+          "id": "zero-c01",
+          "title": "问题背景：模型增长撞上单卡显存与既有并行方法瓶颈",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "ZERO",
+            "LECTURE",
+            "EPISODE",
+            "LAUNCH"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3",
+            "U18",
+            "U21"
+          ],
+          "notes": "开头、数据并行小节和路线小节完整解释单卡状态复制、MP/PP代价与讲义叙事；没有把跨时代GPU/GPT数字倒填为2019论文事实。"
+        },
+        {
+          "id": "zero-c02",
+          "title": "真正的显存账本：权重只是模型状态的一小部分",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "ZERO"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1",
+            "U2"
+          ],
+          "notes": "逐项给出混合精度Adam的2/2/4/4/4字节账本，区分24GB模型状态、激活、缓冲和碎片，并限定60GB/8GB配置。"
+        },
+        {
+          "id": "zero-c03",
+          "title": "ZeRO核心洞察：状态分片与按需通信",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "ZERO",
+            "LECTURE",
+            "EPISODE",
+            "LAUNCH"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3",
+            "U4",
+            "U5",
+            "U6"
+          ],
+          "notes": "用四卡统一例子讲清从复制到分片、负责人更新及按需通信，保留DP计算方式。"
+        },
+        {
+          "id": "zero-c04",
+          "title": "三个阶段累积分片及通信代价",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "ZERO",
+            "LAUNCH"
+          ],
+          "matched_coverage_unit_ids": [
+            "U4",
+            "U5",
+            "U6",
+            "U7",
+            "U9"
+          ],
+          "notes": "三阶段对象、四卡推算与1/1/1.5相对通信量均覆盖，并说明stage3未进入v3实测实现。"
+        },
+        {
+          "id": "zero-c05",
+          "title": "Figure 1的7.5B/64卡具体算例与显存口径",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "ZERO"
+          ],
+          "matched_coverage_unit_ids": [
+            "U6",
+            "U12"
+          ],
+          "notes": "准确列出120/31.4/16.6/1.9GB，并反复说明这是per-device model-state memory而非总峰值。"
+        },
+        {
+          "id": "zero-c06",
+          "title": "一次训练step中按需收集、归约、更新与释放",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "ZERO"
+          ],
+          "matched_coverage_unit_ids": [
+            "U4",
+            "U5",
+            "U6"
+          ],
+          "notes": "专节按前向、反向、梯度汇总和owner更新走完stage3训练step，且注明实现会分组、预取和重叠。"
+        },
+        {
+          "id": "zero-c07",
+          "title": "通信分析：前两阶段不增加总量，第三阶段约1.5倍",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "ZERO"
+          ],
+          "matched_coverage_unit_ids": [
+            "U7"
+          ],
+          "notes": "给出all-reduce/reduce-scatter/all-gather直觉和口径限定；未把通信量比例误写为耗时比例。"
+        },
+        {
+          "id": "zero-c08",
+          "title": "ZeRO-R处理激活、临时buffer和碎片",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "ZERO"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8",
+            "U15"
+          ],
+          "notes": "三类剩余显存逐项覆盖，并用CPU激活卸载更省显存却更慢的反例说明取舍。"
+        },
+        {
+          "id": "zero-c09",
+          "title": "实验设计、实现范围与基线边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "ZERO",
+            "META",
+            "LAUNCH"
+          ],
+          "matched_coverage_unit_ids": [
+            "U9",
+            "U10",
+            "U11",
+            "U13"
+          ],
+          "notes": "准确交代v1/v3/发布说明时间、ZeRO-100B实现范围、400 V100/25 DGX-2/800Gbps、DDP/Megatron基线和附录配置差异。"
+        },
+        {
+          "id": "zero-c10",
+          "title": "主要实验成败：13B、170B、10倍与超线性条件",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "ZERO"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11",
+            "U13",
+            "U14",
+            "U15"
+          ],
+          "notes": "把可执行规模、每GPU吞吐和完整训练质量分开；指出超线性伴随batch改变，并保留offload负例。"
+        },
+        {
+          "id": "zero-c11",
+          "title": "Turing-NLG具体成功案例",
+          "importance": "core",
+          "assessment": "partial",
+          "source_ids": [
+            "ZERO",
+            "LAUNCH",
+            "TURING"
+          ],
+          "matched_coverage_unit_ids": [
+            "U17"
+          ],
+          "notes": "正文确认17B实际训练应用并与170B系统测试分开，但没有展开MP 16→4、batch四倍、256对1024 GPU及28 heads不可整除这组具体系统收益。该缺口不影响本篇已用其他成功/失败实验回答用户核心问题。"
+        },
+        {
+          "id": "zero-c12",
+          "title": "万亿参数：容量可行不等于合理时间完成训练",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "ZERO",
+            "LAUNCH"
+          ],
+          "matched_coverage_unit_ids": [
+            "U12",
+            "U18"
+          ],
+          "notes": "明确16TB/1024≈15.6GB是模型状态容量推算，另受激活、通信和算力限制，且论文估计训练时间可能不可接受。"
+        },
+        {
+          "id": "zero-s01",
+          "title": "人物、机构与开源路线",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "ZERO",
+            "LAUNCH"
+          ],
+          "matched_coverage_unit_ids": [
+            "U16",
+            "U17"
+          ],
+          "notes": "四位作者、同等贡献、Yuxiong He团队负责人及ZeRO/DeepSpeed关系均有一手来源；未写未核去向。"
+        },
+        {
+          "id": "zero-s02",
+          "title": "2019初稿与2020修订版时间线",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "ZERO",
+            "META",
+            "LAUNCH"
+          ],
+          "matched_coverage_unit_ids": [
+            "U9"
+          ],
+          "notes": "单列三时点，避免把Turing与v3实验倒写进2019。"
+        },
+        {
+          "id": "zero-s03",
+          "title": "讲义/播客叙事骨架与ASR边界",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "LECTURE",
+            "EPISODE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U18",
+            "U19",
+            "U21",
+            "U22"
+          ],
+          "notes": "用节目引题但技术事实回到论文；明确未听校、未测逐字准确率，且不采企业合作与团队去向轶事。"
+        }
+      ],
+      "source_ids_checked": [
+        "ZERO",
+        "META",
+        "LAUNCH",
+        "TURING",
+        "LECTURE",
+        "EPISODE",
+        "TRANSCRIPT_REVIEW"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "先冻结来源优先地图（SHA-256 d609105fcad96bad27f8076bfc0fa45f46eee4407fc0d982248d3c7482c42cd4），再核对绑定report/evidence SHA后读稿。末轮小修复核确认：通信定位已改为§7.2.2；非必要的全期末尾秒数已删除；同一小宇宙原页metadata明确节目为《张小珺Jùn｜商业访谈录》第117期，shownotes正文与原冻结全文相同。身份补充收据source-supplement.json SHA-256=f92033e3f254be83d913cea75e6760a223593f643bf7df6b2453b0da01ec9ba7，不替换前置source-first map。已实际读取公开TRANSCRIPT_REVIEW结构核查JSON（SHA-256 24f8486cdcc04d86e67eba1a2e478ffd03cfa6c67b36cf8466943ca403475ceb），并与冻结segments/text独立复算：86段、原索引3102–3187、跨度199.97秒、最大间隙2.37秒、无重叠，哈希一致；其机器审计无时间戳/格式错误。未听音频，不声明逐字准确率。直接读取新版navigation-receipt.json（SHA-256 37c1c11f4feefc209f9ccb09ce6b666b76296905f5aab99d9a18283fa0a07077）：1440/390均实际点击上一节、主稿第11节→展开→返回原位→第12节、目录与脚注，无横溢出。eacli navigation vision针对小修前同布局截图，不作为新SHA图像审核；当前新快照以新版DOM/点击收据和同名新截图为准。Turing-NLG的MP 16→4等细节仍为真实partial，不影响核心要求。评分为Reviewer意见，最终状态由report_quality.py计算。",
+      "actual_read_scope": {
+        "report": "全文279行及全部17条脚注",
+        "evidence": "全部requirements、sources、20 claims、23 coverage units与limitations",
+        "sources": "冻结清单全部文件；ZeRO v3全文24页，讲义p27原图，86段转录与审计，shownotes，Microsoft两篇官方材料及arXiv metadata；另读同一节目原页identity metadata、补充冻结收据，以及公开TRANSCRIPT_REVIEW转录结构核查JSON全文。",
+        "visual": "新版navigation receipt；main/expanded的1440px与390px截图；数字列表DOM宽度收据；上一节、返回、下一节、目录与脚注实际点击。",
+        "not_checked": [
+          "未听原始音频",
+          "未运行真实分布式训练",
+          "未把小修前navigation vision辅助结果冒充新SHA截图审核"
+        ],
+        "transcript_review": "完整读取transcription-review.json（SHA-256 24f8486cdcc04d86e67eba1a2e478ffd03cfa6c67b36cf8466943ca403475ceb）；独立复算确认86段、原索引3102–3187、6776.8–6976.77秒、跨度199.97秒、最大间隙2.37秒、无重叠，segment/text哈希与记录一致；确认audio_listened=false、WER/逐字完整性未测，以及未核企业支持/团队去向被排除。"
+      },
+      "snapshot_binding": {
+        "report_sha256": "c25408d42aca002bb2241cdaa20a80ed391adebf85196bf8fe7e5869ef2c1310",
+        "evidence_sha256": "0c3171110550751a1eb877644015d0620fc04f248de217f63d1fefaf76840792",
+        "verified": true
+      }
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 98.25,
+    "evaluated_on": "2026-11-05",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "2c8e98ce472c35f9f6240ad00a3764f7420ff30af09ccdca0dfe2c673c8a60d2",
+    "evidence_sha256": "0c3171110550751a1eb877644015d0620fc04f248de217f63d1fefaf76840792"
+  },
+  "review_receipts": [
+    {
+      "file": "strong-expanded-review.json",
+      "sha256": "7c16d7d478e5083c20227eccae9f3ffafd5113c22e740e2f4cf3a078594710bf",
+      "role": "primary_review",
+      "raw_review_content_preserved": true,
+      "additional_delivery_metadata": {
+        "schema_version": 1,
+        "report_path": "ai-learning/reports/knowledge_reports/AI演义_11_ZeRO_多卡怎样分担训练显存_科普讲解_20261105.md",
+        "quality_tier": "important",
+        "revision_round": 1,
+        "reviewer_recommendation": {
+          "status": "pass",
+          "weighted_score": 98.25,
+          "minor_issues": [
+            "Turing-NLG具体系统收益只部分覆盖；不影响本篇已有的成功/失败实验链。"
+          ]
+        },
+        "source_identity_supplement": {
+          "podcast_title": "张小珺Jùn｜商业访谈录",
+          "episode": "第117期：开源一段论文探索之旅：模型范式、Infra和数据、语言、多模态的完整变迁史",
+          "receipt_sha256": "f92033e3f254be83d913cea75e6760a223593f643bf7df6b2453b0da01ec9ba7",
+          "shownotes_unchanged": true
+        }
+      }
+    }
+  ]
+}

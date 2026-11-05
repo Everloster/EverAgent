@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "kind": "chapter-transcription-review",
+  "reviewed_on": "2026-11-05",
+  "chapter": 18,
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+  "transcript_source_ref": "sha256:6c0a415a4e6df9093369f2238eacfe4181b300db8d368bdb7ba6eea05b6f6ad0",
+  "full_segments_sha256": "f322514ced72235a0ca104635824c66df425c18dbae3d0f4e76fa70d088db61c",
+  "public_full_episode_receipt": "podcast-learning/reports/transcripts/2026-11-04_ai-yanyi-117.audit.json",
+  "read_scope": {
+    "segments_read": 194,
+    "source_indices_zero_based_inclusive": [
+      5183,
+      5376
+    ],
+    "actual_interval_seconds": [
+      10796.78,
+      11169.02
+    ],
+    "span_seconds": 372.24,
+    "segment_artifact_sha256": "36d5cb713198e018bbfcc2cfd276210b4b204493f9ab046d0452d90d899f6831",
+    "text_artifact_sha256": "6c0a415a4e6df9093369f2238eacfe4181b300db8d368bdb7ba6eea05b6f6ad0",
+    "time_basis": "原segments小数秒；正文约02:59:57–03:06:09。shownotes仅Part3边界和研究列表，不提供单篇精确时间。"
+  },
+  "chapter_segment_check": {
+    "segments": 194,
+    "negative_duration_count": 0,
+    "backward_start_count": 0,
+    "backward_end_count": 0,
+    "overlap_count": 1,
+    "overlaps": [
+      {
+        "source_index": 5221,
+        "seconds": "0.10"
+      }
+    ],
+    "positive_gap_count": 2,
+    "max_gap_seconds": 0.61,
+    "max_consecutive_identical": 2
+  },
+  "compatible_text_audit": {
+    "schema_version": 2,
+    "kind": "podcast-transcript-audit",
+    "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+    "source_ref": "sha256:e937c226408329208f8f719de57f7adea5d610cf8a07b97f28a15003da1eafb9",
+    "max_consecutive_limit": 3,
+    "audit": {
+      "ok": true,
+      "size": 9167,
+      "sha256": "e937c226408329208f8f719de57f7adea5d610cf8a07b97f28a15003da1eafb9",
+      "lines": 194,
+      "segments": 194,
+      "duration_seconds": 11169,
+      "max_consecutive_identical": 2,
+      "timestamp_errors": 0,
+      "malformed_lines": 0,
+      "tail_gap_seconds": 0
+    }
+  },
+  "audit_interpretation": "原生整数秒审计通过：194段、0时间戳错误、最长连续相同句2。duration_seconds=11169是绝对结束位置；章长372.24秒。额外Decimal核查0负时长/起终点倒退，但有1处0.10秒重叠、2处正间隔（最大0.61秒）；保留近重复和原件，没有以native pass声称原转写完全准确。",
+  "term_and_claim_checks": [
+    {
+      "time_seconds": [
+        10796.78,
+        10914.46
+      ],
+      "issue": "InstructGPT/预训练/年份等ASR错词，代码训练谱系及scaling未解决意图的概括。",
+      "adopted": "术语与2022版本按论文；不把GPT-3至ChatGPT的口述当完整训练谱系，不说规模完全无益。",
+      "basis": "论文§1、§3与Figure1",
+      "kind": "terminology_and_scope"
+    },
+    {
+      "time_seconds": [
+        10914.46,
+        10961.5
+      ],
+      "issue": "姓名、PPO作者、作者亲属及RLHF首创的叙述。",
+      "adopted": "采用论文团队/标注者贡献；既有RLHF前驱已核，不证实亲属关系。",
+      "basis": "论文§2、首页和致谢；2017作者文章",
+      "kind": "history_boundary"
+    },
+    {
+      "time_seconds": [
+        10961.5,
+        11044.05
+      ],
+      "issue": "SFT数据约数、排序组合扩增与奖励模型。",
+      "adopted": "按Table6核12,725/33,207/31,144；4–9回答产生6–36相关对，未增加同等数量独立评审。",
+      "basis": "§3.5与Table6、AppendixC.2",
+      "kind": "data_and_comparisons"
+    },
+    {
+      "time_seconds": [
+        11044.05,
+        11120.44
+      ],
+      "issue": "模型缩小1000倍后口头改100倍及后训练效果。",
+      "adopted": "175/1.3约134.6倍是不同模型参数量之比；人类偏好限定任务/群体，不是全能力超越或压缩实验。",
+      "basis": "Figure1、§4.1",
+      "kind": "experiment_scope"
+    },
+    {
+      "time_seconds": [
+        11120.44,
+        11169.02
+      ],
+      "issue": "离职创业与内部已经看到助手潜力的推测。",
+      "adopted": "不将口述猜测当已核技术因果；保留后训练接近助手的学习主线。",
+      "basis": "不越过本轮原始论文证据范围",
+      "kind": "biography_scope"
+    }
+  ],
+  "audio_listened": false,
+  "word_accuracy_measured": false,
+  "verbatim_completeness": false,
+  "limitations": [
+    "时间结构检查不证明逐字准确；原ASR不静默清洗。",
+    "未重新转写、听校、测WER或核验说话人。",
+    "公开仅范围、摘要与哈希，不包含原音频、大段转写、私有设备路径或运行身份。"
+  ]
+}

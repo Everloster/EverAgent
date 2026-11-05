@@ -1,0 +1,1087 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_10_ScalingLaws与Chinchilla_算力预算怎样分配_科普讲解_20261105.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-6-astra",
+        "harness": "codex_collab2_subagent",
+        "run_id": "source-label-10-primary-review-20261105",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "identity_basis": "inherited_dispatch_configuration",
+        "runtime_model": "unconfirmed",
+        "source_first_continuation": true,
+        "identity_note": "协调者明确本次spawn未传model override、继承根派发配置gpt-6-astra；不是provider/runtime attestation。未用共享shell或生成者身份证明Reviewer模型。"
+      },
+      "scores": {
+        "evidence_fidelity": 98,
+        "request_coverage": 98,
+        "reasoning_quality": 98,
+        "readability": 98,
+        "limitations": 98
+      },
+      "score_reasons": {
+        "evidence_fidelity": "本轮直接核对原页title、description/og:title及URL，确认节目归属和期号；正文仅替换来源标签及修订状态。21项关键claim及论文/转录判断按SHA绑定的revision 1已通过基线继承，保留98分；没有声称本轮重读论文或转录。",
+        "request_coverage": "task requirements和23个source_coverage单元与基线完全相同；来源名称勘误由读稿前冻结的LABEL-S1–S3独立地图直接复核。原需求覆盖及原地图的covered/partial状态原样继承，保留98分。",
+        "reasoning_quality": "精确文本恢复和evidence递归比较表明因果解释、数字、反例、推测与边界没有改变；节目身份修正没有被用来支持新的技术结论。本维按已通过技术基线保留98分，不是本轮重新评价全部推理。",
+        "readability": "本篇1440/390px收据的报告/evidence哈希与当前目标一致，纠正名称的链接文本和URL正确，无旧标签、乱码、横溢出或pageErrors；本篇已直接抽看390px截图。其余篇章、表格和导航可读性继承基线，保留98分。",
+        "limitations": "来源read_scope和limitations完全未改，保留基线的版本、未复现实验及ASR未听音/未测WER等边界；本轮明确限制为身份勘误，未把元数据核验冒充完整材料重读。本维沿用冻结基线98分。"
+      },
+      "weighted_score": 98.0,
+      "critical_claim_ids_checked": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17",
+        "C18",
+        "C19",
+        "C20",
+        "C21"
+      ],
+      "coverage_unit_ids_checked": [
+        "U1",
+        "U2",
+        "U3",
+        "U4",
+        "U5",
+        "U6",
+        "U7",
+        "U8",
+        "U9",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16",
+        "U17",
+        "U18",
+        "U19",
+        "U20",
+        "U21",
+        "U22",
+        "U23"
+      ],
+      "source_ids_checked": [
+        "KAPLAN",
+        "CHINCHILLA",
+        "BLOG",
+        "SLIDE",
+        "SHOWNOTES",
+        "ASR"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6"
+      ],
+      "critical_claim_ids_checked_direct": [],
+      "critical_claim_ids_checked_inherited": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17",
+        "C18",
+        "C19",
+        "C20",
+        "C21"
+      ],
+      "coverage_unit_ids_checked_direct": [
+        "U20"
+      ],
+      "coverage_unit_ids_checked_inherited": [
+        "U1",
+        "U2",
+        "U3",
+        "U4",
+        "U5",
+        "U6",
+        "U7",
+        "U8",
+        "U9",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16",
+        "U17",
+        "U18",
+        "U19",
+        "U20",
+        "U21",
+        "U22",
+        "U23"
+      ],
+      "source_ids_checked_direct": [
+        "SHOWNOTES"
+      ],
+      "source_ids_checked_inherited": [
+        "KAPLAN",
+        "CHINCHILLA",
+        "BLOG",
+        "SLIDE",
+        "SHOWNOTES",
+        "ASR"
+      ],
+      "requirement_ids_checked_direct": [
+        "R1",
+        "R6"
+      ],
+      "requirement_ids_checked_inherited": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6"
+      ],
+      "source_content_map": [
+        {
+          "id": "LABEL-S1",
+          "title": "公开原页所属节目为《张小珺Jùn｜商业访谈录》",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U20"
+          ],
+          "notes": "读五篇待审稿前已直接核对原页description。候选正文所含节目名称均为《张小珺Jùn｜商业访谈录》，原晚点聊标签已清除；本次只直接核查节目归属。 matched coverage仅直接核身份/引用子项，其他内容沿用基线。"
+        },
+        {
+          "id": "LABEL-S2",
+          "title": "该URL是第117期论文探索之旅",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U20"
+          ],
+          "notes": "直接核对title、og:title与URL，第117期论文探索之旅与原链接相符。报告的“AI演义”用作内容简称；未改变期号、URL或任何链接目标。 matched coverage仅直接核身份/引用子项，其他内容沿用基线。"
+        },
+        {
+          "id": "LABEL-S3",
+          "title": "来源身份更正不提供新的论文或转写结论",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U20"
+          ],
+          "notes": "公开页身份元数据只支持节目标签及链接对应关系。当前evidence明确记录冻结继承；read_scope、claims、source_coverage、task和limitations逐项完全不变。 matched coverage仅直接核身份/引用子项，其他内容沿用基线。"
+        },
+        {
+          "id": "K01_problem_people_and_scope",
+          "title": "Kaplan 的问题、实验范围与真实分工",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "KAPLAN"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1",
+            "U7"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】预算问题、实验对象与Kaplan首页贡献分工均进入正文。"
+        },
+        {
+          "id": "K02_smooth_power_laws",
+          "title": "三个规模旋钮上的平滑幂律",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "KAPLAN",
+            "SLIDE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U2",
+            "U3"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】以loss、非瓶颈前提和小实验外推完整解释，未把loss写成通用能力分。"
+        },
+        {
+          "id": "K03_scale_over_shape_and_transfer",
+          "title": "规模强于形状，但架构并非完全无关",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "KAPLAN"
+          ],
+          "matched_coverage_unit_ids": [
+            "U21",
+            "U23"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】保留架构/数据变化需重测的边界；LSTM、深宽和异分布transfer细节按少数学预算主线有意省略。"
+        },
+        {
+          "id": "K04_data_model_tandem_and_overfitting",
+          "title": "数据和模型要协同扩张以控制过拟合",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "KAPLAN"
+          ],
+          "matched_coverage_unit_ids": [
+            "U6",
+            "U17"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】明确区分避免过拟合的数据需求与固定总计算的最优配比。"
+        },
+        {
+          "id": "K05_training_curves_and_batch",
+          "title": "学习曲线可预测，critical batch 连接训练时间与算力效率",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "KAPLAN"
+          ],
+          "matched_coverage_unit_ids": [
+            "U4",
+            "U23"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】学习曲线与训练时长公平比较已讲；critical batch细节仅在计算修正和适用边界中留痕。"
+        },
+        {
+          "id": "K06_kaplan_compute_optimal_frontier",
+          "title": "Kaplan 的计算最优处方：更大模型、较早停止",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "KAPLAN",
+            "ASR",
+            "SLIDE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U4",
+            "U5",
+            "U18"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】收敛与计算最优、0.73/0.27、固定预算最优点及推理成本均得到解释。"
+        },
+        {
+          "id": "K07_breakdown_and_caveats",
+          "title": "Kaplan 自己给出的失效边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "KAPLAN"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3",
+            "U21"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】缺乏理论、外推、长上下文、曲率与大尺度点数限制均明确。"
+        },
+        {
+          "id": "C01_reframing_kaplan",
+          "title": "Chinchilla 如何重做 Kaplan 的问题",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "CHINCHILLA"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8",
+            "U17"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】把争论准确定位为固定FLOPs下参数与token分配，而非否定scaling。"
+        },
+        {
+          "id": "C02_three_methods_equal_scaling",
+          "title": "三种方法收敛到近似 1:1 的参数/token 扩张",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "CHINCHILLA"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8",
+            "U9",
+            "U10"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】三种方法、三组指数、谷底直觉和预测区间完整进入正文。"
+        },
+        {
+          "id": "C03_small_scale_head_to_head",
+          "title": "对旧前沿的直接小规模对照实验",
+          "importance": "core",
+          "assessment": "partial",
+          "source_ids": [
+            "CHINCHILLA"
+          ],
+          "matched_coverage_unit_ids": [
+            "U9"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】报告呈现400余模型的三种估计与70B/280B大尺度验证，未单列10^21 FLOPs下2.80B对4.74B的附录对照；不影响核心结论，但可作为后续扩展案例。"
+        },
+        {
+          "id": "C04_chinchilla_large_scale_test",
+          "title": "70B Chinchilla 对 280B Gopher 的同算力检验",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "CHINCHILLA",
+            "BLOG",
+            "SLIDE",
+            "ASR"
+          ],
+          "matched_coverage_unit_ids": [
+            "U12"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】70B/1.4T与280B/300B、同训练FLOPs、1.3T博客差异及约4.7倍口径均清楚。"
+        },
+        {
+          "id": "C05_downstream_results_and_inference",
+          "title": "下游收益与推理经济性",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "CHINCHILLA",
+            "BLOG"
+          ],
+          "matched_coverage_unit_ids": [
+            "U13",
+            "U14",
+            "U16",
+            "U18"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】MMLU、LAMBADA、PIQA、任务退步、毒性/偏见和推理经济性均有正反证据。"
+        },
+        {
+          "id": "C06_training_and_data_confounds",
+          "title": "成功实验中的训练工程与混杂因素",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "CHINCHILLA"
+          ],
+          "matched_coverage_unit_ids": [
+            "U15",
+            "U17"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】AdamW、采样、tokenizer、高精度权重和schedule混杂均明确。"
+        },
+        {
+          "id": "C07_limits_data_quality_and_risk",
+          "title": "Chinchilla 的外推限制、数据质量与风险",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "CHINCHILLA"
+          ],
+          "matched_coverage_unit_ids": [
+            "U17",
+            "U21"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】多epoch边界、数据质量/污染/隐私与曲率限制完整。"
+        },
+        {
+          "id": "C08_people_and_organization",
+          "title": "Chinchilla 团队与组织贡献边界",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "CHINCHILLA",
+            "BLOG"
+          ],
+          "matched_coverage_unit_ids": [
+            "U19"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】四位equal contributors、DeepMind归属、作者分工证据边界及TPU/JAX/Haiku均准确。"
+        },
+        {
+          "id": "L01_slide_summary_and_figure_provenance",
+          "title": "讲义页的教学主线与图源",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "SLIDE",
+            "KAPLAN",
+            "CHINCHILLA"
+          ],
+          "matched_coverage_unit_ids": [
+            "U20"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】讲义p28上下图源回到Kaplan Figure1与Chinchilla Figure2左图，不从缩略图估数字。"
+        },
+        {
+          "id": "T01_transcript_practical_value",
+          "title": "转写中的工程直觉：减少昂贵预训练的盲盒感",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "ASR"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3",
+            "U18"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】小实验降低昂贵训练盲盒感进入主线，同时明确趋势不能保证系统稳定。"
+        },
+        {
+          "id": "T02_transcript_stability_anecdotes",
+          "title": "转写中的训练稳定性轶事不属于两篇论文证据",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "ASR"
+          ],
+          "matched_coverage_unit_ids": [
+            "U22"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】冻结source-first map原importance=peripheral（低优先枝节）；report-review-v1 schema仅接受core/supporting，故本记录映射为supporting。只保留checkpoint/可靠性的一般问题，并明确未核公司故障数字不作结论。"
+        },
+        {
+          "id": "T03_transcript_post_chinchilla_extrapolation",
+          "title": "转写对小模型过量训练与推理成本的后续延伸",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "ASR",
+            "CHINCHILLA"
+          ],
+          "matched_coverage_unit_ids": [
+            "U18"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】把训练最优与长期服务最优分开，额外训练换推理节省明确标为条件性推测。"
+        },
+        {
+          "id": "T04_transcript_speculation_boundary",
+          "title": "OpenAI 是否已知 Chinchilla 结论属于节目推测",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "ASR"
+          ],
+          "matched_coverage_unit_ids": [
+            "U22"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】冻结source-first map原importance=peripheral（低优先枝节）；report-review-v1 schema仅接受core/supporting，故本记录映射为supporting。未采“OpenAI早已知道但不发”等组织推测，并在来源边界说明。"
+        },
+        {
+          "id": "S01_shownotes_context_only",
+          "title": "shownotes 仅提供节目结构和资源入口",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U20"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】冻结source-first map原importance=peripheral（低优先枝节）；report-review-v1 schema仅接受core/supporting，故本记录映射为supporting。shownotes仅用于Part 2和资源定位，技术结论回到论文。"
+        }
+      ],
+      "source_content_map_ids_direct": [
+        "LABEL-S1",
+        "LABEL-S2",
+        "LABEL-S3"
+      ],
+      "source_content_map_ids_inherited": [
+        "K01_problem_people_and_scope",
+        "K02_smooth_power_laws",
+        "K03_scale_over_shape_and_transfer",
+        "K04_data_model_tandem_and_overfitting",
+        "K05_training_curves_and_batch",
+        "K06_kaplan_compute_optimal_frontier",
+        "K07_breakdown_and_caveats",
+        "C01_reframing_kaplan",
+        "C02_three_methods_equal_scaling",
+        "C03_small_scale_head_to_head",
+        "C04_chinchilla_large_scale_test",
+        "C05_downstream_results_and_inference",
+        "C06_training_and_data_confounds",
+        "C07_limits_data_quality_and_risk",
+        "C08_people_and_organization",
+        "L01_slide_summary_and_figure_provenance",
+        "T01_transcript_practical_value",
+        "T02_transcript_stability_anecdotes",
+        "T03_transcript_post_chinchilla_extrapolation",
+        "T04_transcript_speculation_boundary",
+        "S01_shownotes_context_only"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "review_revision_round": 2,
+      "snapshot_verified": true,
+      "report_sha256": "dd1a32189a38c9229938e0ed78942f500a4b825599f515cf38c8c59acdda8ef6",
+      "evidence_sha256": "bf10589433af9b1acd23c3be05f5a76cbcd0b5955881e34cb5371e71644d0e96",
+      "snapshot": {
+        "report_path": "ai-learning/reports/knowledge_reports/AI演义_10_ScalingLaws与Chinchilla_算力预算怎样分配_科普讲解_20261105.md",
+        "evidence_path": "ai-learning/reports/knowledge_reports/.quality/AI演义_10_ScalingLaws与Chinchilla_算力预算怎样分配_科普讲解_20261105.evidence.json",
+        "report_sha256": "dd1a32189a38c9229938e0ed78942f500a4b825599f515cf38c8c59acdda8ef6",
+        "evidence_sha256": "bf10589433af9b1acd23c3be05f5a76cbcd0b5955881e34cb5371e71644d0e96",
+        "revision_round": 2
+      },
+      "incremental_scope": {
+        "kind": "source-label-correction",
+        "direct_scope": "直接读取原页身份元数据；独立验证正文的精确允许替换、evidence允许字段、所有链接目标、当前/基线哈希、基线通过收据与新名称渲染收据。",
+        "inherited_scope": "技术正文、论文/讲义/转录的内容判断、机器转录结构审计、原始来源地图与既有呈现/导航验证均按冻结基线继承；原地图partial不升级。",
+        "checked_array_semantics": "总checked数组包含本轮已验证可继承的基线集合；direct数组仅说明局部直接核查。direct与inherited重叠表示同一ID中的身份/渲染子项直接复核、技术/旧内容子项继承，绝不表示整单元本轮重读。",
+        "direct_requirement_scope": {
+          "R1": "仅原节目所属名称、期号及链接对应关系。",
+          "R6": "仅本次纠正标签在1440/390px下的渲染收据；原导航及其他呈现沿用基线。"
+        },
+        "original_papers_reread_this_revision": false,
+        "transcript_reread_or_reaudited_this_revision": false,
+        "generator_research_notes_read": false,
+        "public_files_modified_by_reviewer": false,
+        "baseline": {
+          "revision_round": 1,
+          "report_file": "10-before.report.md",
+          "evidence_file": "10-before.evidence.json",
+          "review_file": "10-before.review.json",
+          "report_sha256": "6144f7132c904e6efc4f00c9ff2f265247d488a7afc1829ab103232717dd8119",
+          "evidence_sha256": "a40b303e7f447e542a9c8db22ec1279e6c95e3fa4880751ef29deea7308321ea",
+          "review_sha256": "b2615d2e92d1d32144b6558e7a211c73e65ec1403f23fb97d18e8bf8a476ac7a",
+          "decision": {
+            "status": "pass",
+            "score": 98.0,
+            "evaluated_on": "2026-11-05",
+            "policy_id": "report-quality-2026-10-18-r2",
+            "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+            "report_sha256": "6144f7132c904e6efc4f00c9ff2f265247d488a7afc1829ab103232717dd8119",
+            "evidence_sha256": "a40b303e7f447e542a9c8db22ec1279e6c95e3fa4880751ef29deea7308321ea"
+          },
+          "check_receipt_file": "10-baseline-check.json",
+          "check_receipt_sha256": "3290dc5e6947555f2c358a75e246a220645da144dd41feb95eb23e86ee594eb2",
+          "check_receipt_status": "pass",
+          "check_receipt_errors": [],
+          "check_receipt_warnings": []
+        },
+        "scope_audit": {
+          "file": "primary-source-label-scope-audit.json",
+          "sha256": "94efda1efa455a2dceb7d0249c4c16d2824c7747254ce7a83b97dee124453574",
+          "chapter": 10
+        },
+        "source_alias_map_for_inherited_map": {
+          "kaplan_arxiv": "KAPLAN",
+          "kaplan_pdf": "KAPLAN",
+          "chinchilla_pdf": "CHINCHILLA",
+          "deepmind_blog": "BLOG",
+          "lecture_p28": "SLIDE",
+          "chapter_transcript": "ASR",
+          "chapter_segments": "ASR",
+          "shownotes": "SHOWNOTES"
+        },
+        "source_alias_basis": "第10篇冻结地图使用缓存别名；据已读当前evidence的来源题名、locator及基线地图主题对应到现有source IDs。仅规范化引用，不构成本轮重读论文、讲义或转录。"
+      },
+      "source_priority_map": {
+        "file": "primary-identity-source-map.json",
+        "sha256": "06c345ab85c857a1312954cb09c70ee43699d6538007de7e9c8f2848eb68eb12",
+        "frozen_before_target_reports_read": true,
+        "scope": "仅本次身份勘误；技术来源地图另按冻结基线明确继承。"
+      },
+      "identity_source_receipt": {
+        "file": "episode-identity-read.json",
+        "sha256": "96781505dddc5ae22487657983c5dff1f74d5294042adbe02f54f38169bf4436",
+        "capability": "web.read",
+        "ok": true,
+        "url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+        "read_scope": "直接读取title、URL、description与metadata.description/og:title。"
+      },
+      "render_receipt_review": {
+        "file": "primary-source-label-render-audit.json",
+        "sha256": "14e683860af4093b5d184ef9b7d3fad19cb9189c3fc79937e5f439a5a0f67e1d",
+        "chapter": 10,
+        "receipt_widths_read": [
+          1440,
+          390
+        ],
+        "manual_image_samples": [
+          {
+            "chapter": 10,
+            "width": 390,
+            "file": "source-label-10-390.png",
+            "observations": "讲义后的节目链接正常跨行，来源范围文字可读；无重叠、乱码或边缘裁切。",
+            "sha256": "c534e63aa212b51db5302e6853bd45c1db4f3a491706cca94aed41e2a4ee1385"
+          }
+        ],
+        "browser_actions_performed_by_this_reviewer": false
+      },
+      "notes": "本记录是report-review-v1的单条reviews item。本轮先核原始公开页身份并冻结LABEL地图，再审五篇标签勘误；关键事实和技术评分来自SHA核验通过的冻结基线，保留而不冒称重新完整复核。正文与账本只发生允许的名称/修订元数据变化，未发现本次勘误引入新的unsupported claim、missing requirement或hard failure。该记录不宣称最终quality gate通过；生成者汇入后仍需完成正式检查。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 98.0,
+    "evaluated_on": "2026-11-05",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "0f494df3d4e2dc5257aec4e1bfa4ce1c640368a9990b5c5122832ff21346d2ba",
+    "evidence_sha256": "bf10589433af9b1acd23c3be05f5a76cbcd0b5955881e34cb5371e71644d0e96"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex",
+            "run_id": "scaling-strong-expanded-20261105",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": "依据 docs/REPORT_QUALITY_GATE.md 的强模型复核策略，由协调者选择并派发 gpt-5.6-sol；非用户本轮模型特指。",
+            "identity_basis": "dispatch_selection_only",
+            "runtime_attestation": {
+              "status": "unavailable",
+              "attested_model": null,
+              "note": "子会话没有可验证 runtime model receipt；共享 shell/eacli 根 terminal 身份不用于证明本 Reviewer 模型。"
+            }
+          },
+          "scores": {
+            "evidence_fidelity": 98,
+            "request_coverage": 98,
+            "reasoning_quality": 98,
+            "readability": 98,
+            "limitations": 98
+          },
+          "score_reasons": {
+            "evidence_fidelity": "逐项核对两篇v1论文、讲义原图、转写时间段、shownotes与DeepMind博客。参数/FLOPs定义、1.3T/1.4T、67.5/67.6、4×口号、MMLU正反任务、optimizer/tokenizer/precision混杂均按原文分层，无关键数字错配。",
+            "request_coverage": "围绕背景、预算问题、机制直觉、三种实验方法、成功与反例、人员和组织、前后路线形成独立可读叙事。冻结地图21单元中18 covered、3 partial；partial为架构/critical batch技术枝节和2.80B对4.74B附录小规模对照，核心问题与实验成败已由更完整的大尺度证据回答。",
+            "reasoning_quality": "清楚区分loss与任务能力、收敛与计算最优、避免过拟合与计算前沿、训练最优与长期服务最优；没有把Chinchilla写成“小模型永远更好”，也没有把推理成本延伸伪装成论文定律。",
+            "readability": "少公式，以三个同预算方案、黑猫续词、训练曲线谷底和四组紧凑对照列表建立直觉。1440px与390px常驻工作台实测无页面溢出、断链或脚注失败；最终窄屏列表无需横向滚动即可逐项比较，目录与前后跳转正常。",
+            "limitations": "明确经验规律、训练配置、数据质量、曲率、大尺度仅两个可比点、重复数据、污染/隐私与未听校边界；公司训练故障、数据耗尽、集群上限和组织内部动机均未当事实。"
+          },
+          "critical_claim_ids_checked": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "C16",
+            "C17",
+            "C18",
+            "C19",
+            "C20",
+            "C21"
+          ],
+          "coverage_unit_ids_checked": [
+            "U1",
+            "U2",
+            "U3",
+            "U4",
+            "U5",
+            "U6",
+            "U7",
+            "U8",
+            "U9",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14",
+            "U15",
+            "U16",
+            "U17",
+            "U18",
+            "U19",
+            "U20",
+            "U21",
+            "U22",
+            "U23"
+          ],
+          "source_content_map": [
+            {
+              "id": "K01_problem_people_and_scope",
+              "title": "Kaplan 的问题、实验范围与真实分工",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "kaplan_pdf",
+                "kaplan_arxiv"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1",
+                "U7"
+              ],
+              "notes": "预算问题、实验对象与Kaplan首页贡献分工均进入正文。"
+            },
+            {
+              "id": "K02_smooth_power_laws",
+              "title": "三个规模旋钮上的平滑幂律",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "kaplan_pdf",
+                "lecture_p28"
+              ],
+              "matched_coverage_unit_ids": [
+                "U2",
+                "U3"
+              ],
+              "notes": "以loss、非瓶颈前提和小实验外推完整解释，未把loss写成通用能力分。"
+            },
+            {
+              "id": "K03_scale_over_shape_and_transfer",
+              "title": "规模强于形状，但架构并非完全无关",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "kaplan_pdf"
+              ],
+              "matched_coverage_unit_ids": [
+                "U21",
+                "U23"
+              ],
+              "notes": "保留架构/数据变化需重测的边界；LSTM、深宽和异分布transfer细节按少数学预算主线有意省略。"
+            },
+            {
+              "id": "K04_data_model_tandem_and_overfitting",
+              "title": "数据和模型要协同扩张以控制过拟合",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "kaplan_pdf"
+              ],
+              "matched_coverage_unit_ids": [
+                "U6",
+                "U17"
+              ],
+              "notes": "明确区分避免过拟合的数据需求与固定总计算的最优配比。"
+            },
+            {
+              "id": "K05_training_curves_and_batch",
+              "title": "学习曲线可预测，critical batch 连接训练时间与算力效率",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "kaplan_pdf"
+              ],
+              "matched_coverage_unit_ids": [
+                "U4",
+                "U23"
+              ],
+              "notes": "学习曲线与训练时长公平比较已讲；critical batch细节仅在计算修正和适用边界中留痕。"
+            },
+            {
+              "id": "K06_kaplan_compute_optimal_frontier",
+              "title": "Kaplan 的计算最优处方：更大模型、较早停止",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "kaplan_pdf",
+                "chapter_transcript",
+                "lecture_p28"
+              ],
+              "matched_coverage_unit_ids": [
+                "U4",
+                "U5",
+                "U18"
+              ],
+              "notes": "收敛与计算最优、0.73/0.27、固定预算最优点及推理成本均得到解释。"
+            },
+            {
+              "id": "K07_breakdown_and_caveats",
+              "title": "Kaplan 自己给出的失效边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "kaplan_pdf"
+              ],
+              "matched_coverage_unit_ids": [
+                "U3",
+                "U21"
+              ],
+              "notes": "缺乏理论、外推、长上下文、曲率与大尺度点数限制均明确。"
+            },
+            {
+              "id": "C01_reframing_kaplan",
+              "title": "Chinchilla 如何重做 Kaplan 的问题",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "chinchilla_pdf"
+              ],
+              "matched_coverage_unit_ids": [
+                "U8",
+                "U17"
+              ],
+              "notes": "把争论准确定位为固定FLOPs下参数与token分配，而非否定scaling。"
+            },
+            {
+              "id": "C02_three_methods_equal_scaling",
+              "title": "三种方法收敛到近似 1:1 的参数/token 扩张",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "chinchilla_pdf"
+              ],
+              "matched_coverage_unit_ids": [
+                "U8",
+                "U9",
+                "U10"
+              ],
+              "notes": "三种方法、三组指数、谷底直觉和预测区间完整进入正文。"
+            },
+            {
+              "id": "C03_small_scale_head_to_head",
+              "title": "对旧前沿的直接小规模对照实验",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "chinchilla_pdf"
+              ],
+              "matched_coverage_unit_ids": [
+                "U9"
+              ],
+              "notes": "报告呈现400余模型的三种估计与70B/280B大尺度验证，未单列10^21 FLOPs下2.80B对4.74B的附录对照；不影响核心结论，但可作为后续扩展案例。"
+            },
+            {
+              "id": "C04_chinchilla_large_scale_test",
+              "title": "70B Chinchilla 对 280B Gopher 的同算力检验",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "chinchilla_pdf",
+                "deepmind_blog",
+                "lecture_p28",
+                "chapter_transcript"
+              ],
+              "matched_coverage_unit_ids": [
+                "U12"
+              ],
+              "notes": "70B/1.4T与280B/300B、同训练FLOPs、1.3T博客差异及约4.7倍口径均清楚。"
+            },
+            {
+              "id": "C05_downstream_results_and_inference",
+              "title": "下游收益与推理经济性",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "chinchilla_pdf",
+                "deepmind_blog"
+              ],
+              "matched_coverage_unit_ids": [
+                "U13",
+                "U14",
+                "U16",
+                "U18"
+              ],
+              "notes": "MMLU、LAMBADA、PIQA、任务退步、毒性/偏见和推理经济性均有正反证据。"
+            },
+            {
+              "id": "C06_training_and_data_confounds",
+              "title": "成功实验中的训练工程与混杂因素",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "chinchilla_pdf"
+              ],
+              "matched_coverage_unit_ids": [
+                "U15",
+                "U17"
+              ],
+              "notes": "AdamW、采样、tokenizer、高精度权重和schedule混杂均明确。"
+            },
+            {
+              "id": "C07_limits_data_quality_and_risk",
+              "title": "Chinchilla 的外推限制、数据质量与风险",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "chinchilla_pdf"
+              ],
+              "matched_coverage_unit_ids": [
+                "U17",
+                "U21"
+              ],
+              "notes": "多epoch边界、数据质量/污染/隐私与曲率限制完整。"
+            },
+            {
+              "id": "C08_people_and_organization",
+              "title": "Chinchilla 团队与组织贡献边界",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "chinchilla_pdf",
+                "deepmind_blog"
+              ],
+              "matched_coverage_unit_ids": [
+                "U19"
+              ],
+              "notes": "四位equal contributors、DeepMind归属、作者分工证据边界及TPU/JAX/Haiku均准确。"
+            },
+            {
+              "id": "L01_slide_summary_and_figure_provenance",
+              "title": "讲义页的教学主线与图源",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "lecture_p28",
+                "kaplan_pdf",
+                "chinchilla_pdf"
+              ],
+              "matched_coverage_unit_ids": [
+                "U20"
+              ],
+              "notes": "讲义p28上下图源回到Kaplan Figure1与Chinchilla Figure2左图，不从缩略图估数字。"
+            },
+            {
+              "id": "T01_transcript_practical_value",
+              "title": "转写中的工程直觉：减少昂贵预训练的盲盒感",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "chapter_transcript",
+                "chapter_segments"
+              ],
+              "matched_coverage_unit_ids": [
+                "U3",
+                "U18"
+              ],
+              "notes": "小实验降低昂贵训练盲盒感进入主线，同时明确趋势不能保证系统稳定。"
+            },
+            {
+              "id": "T02_transcript_stability_anecdotes",
+              "title": "转写中的训练稳定性轶事不属于两篇论文证据",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "chapter_transcript",
+                "chapter_segments"
+              ],
+              "matched_coverage_unit_ids": [
+                "U22"
+              ],
+              "notes": "冻结source-first map原importance=peripheral（低优先枝节）；report-review-v1 schema仅接受core/supporting，故本记录映射为supporting。只保留checkpoint/可靠性的一般问题，并明确未核公司故障数字不作结论。"
+            },
+            {
+              "id": "T03_transcript_post_chinchilla_extrapolation",
+              "title": "转写对小模型过量训练与推理成本的后续延伸",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "chapter_transcript",
+                "chapter_segments",
+                "chinchilla_pdf"
+              ],
+              "matched_coverage_unit_ids": [
+                "U18"
+              ],
+              "notes": "把训练最优与长期服务最优分开，额外训练换推理节省明确标为条件性推测。"
+            },
+            {
+              "id": "T04_transcript_speculation_boundary",
+              "title": "OpenAI 是否已知 Chinchilla 结论属于节目推测",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "chapter_transcript",
+                "chapter_segments"
+              ],
+              "matched_coverage_unit_ids": [
+                "U22"
+              ],
+              "notes": "冻结source-first map原importance=peripheral（低优先枝节）；report-review-v1 schema仅接受core/supporting，故本记录映射为supporting。未采“OpenAI早已知道但不发”等组织推测，并在来源边界说明。"
+            },
+            {
+              "id": "S01_shownotes_context_only",
+              "title": "shownotes 仅提供节目结构和资源入口",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "shownotes"
+              ],
+              "matched_coverage_unit_ids": [
+                "U20"
+              ],
+              "notes": "冻结source-first map原importance=peripheral（低优先枝节）；report-review-v1 schema仅接受core/supporting，故本记录映射为supporting。shownotes仅用于Part 2和资源定位，技术结论回到论文。"
+            }
+          ],
+          "source_ids_checked": [
+            "KAPLAN",
+            "CHINCHILLA",
+            "BLOG",
+            "SLIDE",
+            "SHOWNOTES",
+            "ASR"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "绑定最终候选 report SHA-256=d262c8ebdc920a685b9ab736df9b0c70a62a46590f2ddac2dc55c7aee6c32d4d，evidence SHA-256=a40b303e7f447e542a9c8db22ec1279e6c95e3fa4880751ef29deea7308321ea。来源优先冻结地图 SHA-256=d66ad0057b103f2bf63ac7f984e5f166e7b767d0c7a096c556e7fc1a6f44b3df；在读稿前形成。转录审计收据 SHA-256=462080a16c9dea6936040f5d491b1e860dcaaf1329eb3e02547527e26b8e02ba，233段、时间戳错误0、重复上限1；未播放音频、未声称听校或WER。Token Plan讲义视觉在本Reviewer请求中timeout/unknown后按最小降级直接视读原图；不冒充provider成功。页面收据 navigation-receipt.json SHA-256=140189dee7e60ddb950b71912237709b9b0b4742d7d6ac9c0879c7af5717aae2；expanded 1440/390截图SHA分别为56f28f78f767c3bcdd5a0ec081a08d6b2be09077b72e6fc8d713e67298d315d2、e29e9db0535d9e720101f5a8ad7975f95736755ddc84720d53b6f4f75b027bad。本Reviewer实际查看两张整页、早期四张390px宽表截图，并在排版修订后再次查看四张390px紧凑对照列表截图；expanded-mobile-table-fix.diff SHA-256=e76b45a8a40524803df38db328ff12c2222c5c71d70ea135016bef3352cd10f8。最终短列表无需横向滚动。评分为Reviewer意见，最终状态由report_quality.py计算。"
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 98.0,
+        "evaluated_on": "2026-11-05",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "6144f7132c904e6efc4f00c9ff2f265247d488a7afc1829ab103232717dd8119",
+        "evidence_sha256": "a40b303e7f447e542a9c8db22ec1279e6c95e3fa4880751ef29deea7308321ea"
+      }
+    }
+  ],
+  "review_receipts": [
+    {
+      "file": "10-independent-review.json",
+      "sha256": "1a466a790356d3ab6789c3c8fc83eb2b768a4135563bc2c35e5c93b735541133",
+      "role": "primary_review",
+      "raw_review_content_preserved": true
+    }
+  ]
+}

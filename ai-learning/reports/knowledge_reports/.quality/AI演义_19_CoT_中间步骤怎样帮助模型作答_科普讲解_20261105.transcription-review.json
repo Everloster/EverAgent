@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "kind": "chapter-transcription-review",
+  "reviewed_on": "2026-11-05",
+  "chapter": 19,
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+  "transcript_source_ref": "sha256:7f33c66a1a0048e6ad117b530e894be57da6e4e7c4f9a40b4600af4eaa18a5c6",
+  "full_segments_sha256": "f322514ced72235a0ca104635824c66df425c18dbae3d0f4e76fa70d088db61c",
+  "public_full_episode_receipt": "podcast-learning/reports/transcripts/2026-11-04_ai-yanyi-117.audit.json",
+  "read_scope": {
+    "segments_read": 278,
+    "source_indices_zero_based_inclusive": [
+      2038,
+      2315
+    ],
+    "actual_interval_seconds": [
+      4947.03,
+      5406.77
+    ],
+    "span_seconds": 459.74,
+    "segment_artifact_sha256": "078c064ef0f16cd61640ba85b90e066e775224b0e182a25029a5616a2c5c756c",
+    "text_artifact_sha256": "7f33c66a1a0048e6ad117b530e894be57da6e4e7c4f9a40b4600af4eaa18a5c6",
+    "time_basis": "原segments百分秒；正文约01:22:27–01:30:07。shownotes只有Part1起点19:35和论文清单，不提供本章精确时间。"
+  },
+  "chapter_segment_check": {
+    "segments": 278,
+    "negative_duration_count": 0,
+    "backward_start_count": 0,
+    "backward_end_count": 0,
+    "overlap_count": 1,
+    "overlaps": [
+      {
+        "previous": 2187,
+        "current": 2188,
+        "overlap_seconds": 0.03
+      }
+    ],
+    "positive_gap_count": 1,
+    "positive_gaps": [
+      {
+        "previous": 2311,
+        "current": 2312,
+        "gap_seconds": 1.38
+      }
+    ],
+    "max_consecutive_identical": 1
+  },
+  "compatible_text_audit": {
+    "schema_version": 2,
+    "kind": "podcast-transcript-audit",
+    "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+    "source_ref": "sha256:0691f729be6ad494a8ab4a3db98cf6ae349676aa2d26351c70ab23b10c7ad5d8",
+    "max_consecutive_limit": 3,
+    "audit": {
+      "ok": true,
+      "size": 12928,
+      "sha256": "0691f729be6ad494a8ab4a3db98cf6ae349676aa2d26351c70ab23b10c7ad5d8",
+      "lines": 278,
+      "segments": 278,
+      "duration_seconds": 5406,
+      "max_consecutive_identical": 1,
+      "timestamp_errors": 0,
+      "malformed_lines": 0,
+      "tail_gap_seconds": 0
+    }
+  },
+  "audit_interpretation": "整数秒原生审计通过：278段、0时间戳错误、最长连续相同句1。duration_seconds=5406为绝对结束位置，章长459.74秒。百分秒另查0负时长和起终点倒退，保留1处0.03秒重叠与1处1.38秒间隔。原生pass不等于准确听写。首次分隔符转换失败已修，失败不是原ASR断章。",
+  "term_and_claim_checks": [
+    {
+      "time_seconds": [
+        4947.03,
+        5043.64
+      ],
+      "issue": "CoT英文、few-shot等识别词以及规模/SFT背景混讲。",
+      "adopted": "名称与方法按论文，传统提示收益和SFT数据成本作为背景，不说所有任务规模无益。",
+      "basis": "论文§1–3.1",
+      "kind": "terminology_and_scope"
+    },
+    {
+      "time_seconds": [
+        5043.64,
+        5151.68
+      ],
+      "issue": "Jason Wei、Denny Zhou、Gemini reasoning及CS25名称和个人履历。",
+      "adopted": "作者名称按论文与作者博客；留学习建议，不采未核履历/职位。",
+      "basis": "论文首页、讲义p18、Google作者博客署名",
+      "kind": "people_and_learning"
+    },
+    {
+      "time_seconds": [
+        5151.68,
+        5242.83
+      ],
+      "issue": "示范步骤与magic-word口令并讲；CoT后训练、thinking与输入工程的因果串联。",
+      "adopted": "few-shot/zero-shot分开，CoT无梯度更新；历史连接作为讲述者视角而非已核产品因果。",
+      "basis": "论文§3.1/E.2；Zero-shot-CoT摘要",
+      "kind": "method_boundary"
+    },
+    {
+      "time_seconds": [
+        5242.83,
+        5334.86
+      ],
+      "issue": "找到重要问题的研究观点与引用量增长口述。",
+      "adopted": "保留研究提问视角，引用倍数未独立核定，不作为历史事实。",
+      "basis": "播客本章，方法事实回原论文",
+      "kind": "commentary_boundary"
+    },
+    {
+      "time_seconds": [
+        5334.86,
+        5406.77
+      ],
+      "issue": "SFT/强化学习、CoT本质与AlphaGoZero/o1/R1叙述，术语识别有误。",
+      "adopted": "区分提示、参数训练与采样/搜索；不据本篇复原后续产品方法。",
+      "basis": "论文E.2及Self-consistency摘要",
+      "kind": "training_and_history_boundary"
+    }
+  ],
+  "not_verified": [
+    "逐字听校或字错率",
+    "全部人名履历和职位",
+    "引用量增长统计",
+    "具体后续产品训练来源或人员贡献的完整因果链"
+  ]
+}

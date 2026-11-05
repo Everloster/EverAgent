@@ -1,0 +1,508 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_05_Word2Vec_词向量怎样学出来_科普讲解_20261104.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-04",
+  "generator": {
+    "model": "gpt-6-astra",
+    "harness": "codex",
+    "run_id": "ai-yanyi-chapter05-word2vec-20261104",
+    "explicit_model_override": false,
+    "override_reason": "",
+    "identity_basis": "eacli session current：gpt-6-astra，source=codex-turn-context，confidence=session-bound，confirmed=true；本run负责生成。"
+  },
+  "task": {
+    "summary": "沿用前四节的逐章展开方式，本轮完成AI演义第5节Word2Vec；以苹果贯穿，结合原播客、Shownotes、讲义与两篇2013论文，辨清静态表示、训练与成本、实验边界，并同步重写主稿原节和实际阅读入口。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "逐段读本章ASR，对照Shownotes与讲义、原论文校正；核整期收据，保留本章重叠、未听音及音频尾部未知边界。"
+      },
+      {
+        "id": "R2",
+        "text": "以自拟苹果例子讲透编号、连续向量、CBOW/Skip-gram、共享表更新和自动构造的训练监督，报告独立可读。"
+      },
+      {
+        "id": "R3",
+        "text": "区分层次softmax、后续负采样和高频下采样；用真实实验及反例解释类比、成本、下游互补、短语与多义限制，数字保留条件。"
+      },
+      {
+        "id": "R4",
+        "text": "核完整署名、研究前史、首篇v3与后续v1的版本边界；以BERT指定原始段落解释静态词表、token输入与上下文输出表示的区别。"
+      },
+      {
+        "id": "R5",
+        "text": "同步重写主稿第5节、节首提供展开入口，展开篇能返回原节及到下一节；实际工作台桌面/窄屏验证表格脚注和定位，保留前四节成果。"
+      },
+      {
+        "id": "R6",
+        "text": "算例需实际计算且标为自拟，不能冒充语料训练、论文复现或部署测量；私有原始转录与执行信息不入公开仓。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "PAPER",
+      "kind": "primary",
+      "title": "Efficient Estimation of Word Representations in Vector Space",
+      "locator": "https://arxiv.org/pdf/1301.3781v3",
+      "accessed_on": "2026-11-04",
+      "read_scope": "全文§1–7、Tables 1–8、Figure 1图注、References已读；Figure1另核渲染图及视觉服务结果。公式用于机制解释，没有逐式证明或训练复现。",
+      "version": "arXiv:1301.3781v3，2013-09-07；当前PDF含后加§7，首发月份与当前版本日期分开。",
+      "sha256": "a44d7e22d2005752271c9cc1929c6462d4c8270916b063977992a883e3a54362"
+    },
+    {
+      "id": "FOLLOWUP",
+      "kind": "primary",
+      "title": "Distributed Representations of Words and Phrases and their Compositionality",
+      "locator": "https://arxiv.org/pdf/1310.4546v1",
+      "accessed_on": "2026-11-04",
+      "read_scope": "通过eacli web.read取得并通读全文§1–7、Tables 1–6、Figure 1/2图注及References；用于NEG、subsampling、phrases与其实验边界。未视觉审计全文图表，也未复现实验。",
+      "version": "arXiv:1310.4546v1，2013-10-16",
+      "extracted_text_sha256": "e98a398b80ce21d5f1ce4ac73aae50966362c6b6e5c4fe90a697fbf2df3ae459"
+    },
+    {
+      "id": "BERT",
+      "kind": "primary",
+      "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "locator": "https://arxiv.org/pdf/1810.04805v2",
+      "accessed_on": "2026-11-04",
+      "read_scope": "摘要、§2.1–2.2、§3 Model Architecture与Input/Output Representations、Figure1/2相关文字及相邻预训练说明；只用于静态与上下文表示、WordPiece以及输入表与输出表示区别。不声称全文实验审计。",
+      "version": "arXiv:1810.04805v2，2019-05-24；仓内02_bert_2018.pdf实际为此版本。",
+      "sha256": "5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e"
+    },
+    {
+      "id": "SLIDE",
+      "kind": "local",
+      "title": "AI演义讲义第33页",
+      "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "accessed_on": "2026-11-04",
+      "read_scope": "第33页文字层及渲染图的视觉服务结果；核标题、简略署名、首次/开创表述和成本/复用方向。文本缺字不直接补全；原论文优先。",
+      "version": "51页讲义，本轮第33页。",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0"
+    },
+    {
+      "id": "ASR",
+      "kind": "primary",
+      "title": "AI演义第117期原音频对应自动转录",
+      "locator": "https://media.xyzcdn.net/626b46ea9cbbf0451cf5a962/ludOBUWHSc2Y_GA47pSOwlGC8JPS.m4a",
+      "accessed_on": "2026-11-04",
+      "read_scope": "本章核心约02:21:28–02:28:27；逐段读含交接的221段（8488.57–8913.39秒），对应完整segments[3976:4197]。未听音；不将ASR词句作为已听校逐字引语。",
+      "transcript_source_ref": "sha256:919e4ce5147340e2306748394cdb555bfc6a745119f846e7ce8c985056745b05"
+    },
+    {
+      "id": "SHOWNOTES",
+      "kind": "primary",
+      "title": "第117期节目说明与章节",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-04",
+      "read_scope": "复用已取全文，本轮阅读全文并核Part3的02:21:29总入口、Word2Vec首项及日期2013.01；说明不提供机制、成绩或精确单章结束时间。"
+    },
+    {
+      "id": "TRANSCRIPT_REVIEW",
+      "kind": "local",
+      "title": "Word2Vec逐段转录与事实核对记录",
+      "locator": "ai-learning/reports/knowledge_reports/.quality/AI演义_05_Word2Vec_词向量怎样学出来_科普讲解_20261104.transcription-review.json",
+      "accessed_on": "2026-11-04",
+      "read_scope": "本章221段核查范围、0.1秒重叠、术语与概念校正、结构检查及未听校边界。"
+    },
+    {
+      "id": "TRANSCRIPT_AUDIT",
+      "kind": "local",
+      "title": "AI演义整期转录结构收据",
+      "locator": "podcast-learning/reports/transcripts/2026-11-04_ai-yanyi-117.audit.json",
+      "accessed_on": "2026-11-04",
+      "read_scope": "核已有同SHA全文机器收据：7553段、时间戳错误0、最大连续相同3；文本按整秒格式审计，通过不等于原始浮点segments完全无重叠或原音频尾部完整。"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "词编号与one-hot标识词条，不直接给出词间相近用法；连续词向量由学习形成，不以类比算术是否成功定义。",
+      "report_anchor": "word-id-and-vector",
+      "source_ids": [
+        "PAPER"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§1–1.2、§2–3；中文编号为自拟，连续表示的解释不把具体维度人工命名。"
+    },
+    {
+      "id": "C2",
+      "claim": "词向量和神经语言模型有前史，Word2Vec的贡献是高效简化任务及规模化；首篇四位作者与后续五位作者、v3追加工作分开。",
+      "report_anchor": "historical-place",
+      "source_ids": [
+        "PAPER",
+        "FOLLOWUP",
+        "SLIDE"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "两篇首页、首篇§1.2与§7，后续§1；讲义确有首次/开创及仅二人署名，按原文更正。"
+    },
+    {
+      "id": "C3",
+      "claim": "CBOW平均上下文向量预测中心词、忽略局部词序；Skip-gram从中心词预测邻近词，原实验最大窗口10。",
+      "report_anchor": "two-prediction-tasks",
+      "source_ids": [
+        "PAPER"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§3.1–3.2、Figure1；CBOW正文前后各四词，图示少于实际且写SUM；中文五词句及左右各二词是教学设置。"
+    },
+    {
+      "id": "C4",
+      "claim": "监督来自原始文本窗口，共享词向量和输出参数通过SGD/backprop调整；训练向量不是人工填写，类似用法也不等于同义。",
+      "report_anchor": "learning-the-table",
+      "source_ids": [
+        "PAPER"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§3与§4.2；更新解释沿原训练目标，冷/热为自拟反例直觉，未声称测量邻居。"
+    },
+    {
+      "id": "C5",
+      "claim": "首篇以Huffman hierarchical softmax减少目标路径计算；词在叶子上、输出参数在内部节点，不是给所有词概率求值的常数时间捷径。",
+      "report_anchor": "training-cost",
+      "source_ids": [
+        "PAPER",
+        "FOLLOWUP"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "首篇§2.1、§3；后续§2.1；树结构按频率，不当作语义分类树。"
+    },
+    {
+      "id": "C6",
+      "claim": "NEG属于10月后续论文，利用输入/输出向量与少量噪声词作logistic区分；不是完整归一化softmax，也非默认均匀噪声。",
+      "report_anchor": "training-cost",
+      "source_ids": [
+        "FOLLOWUP"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§2.2式4、noise unigram^3/4；负例是采样对照，不宣称永不共现或同一表内直接拉近所有共现词。"
+    },
+    {
+      "id": "C7",
+      "claim": "手设二维向量、步长0.1，一个正例与一个噪声样本同时更新一步，sigmoid分数由0.5/0.5变为0.53743/0.46257；仅为算术教学。",
+      "report_anchor": "自拟输入的算术演示",
+      "source_ids": [
+        "FOLLOWUP"
+      ],
+      "support": "derived",
+      "critical": true,
+      "evidence": "按§2.2式4：v=[1,0],u+=[0,1],u-=[0,-1]，更新为[1,0.1],[0.05,1],[-0.05,-1]，点积±0.15；实际Python计算，无语料训练。"
+    },
+    {
+      "id": "C8",
+      "claim": "高频下采样跳过部分训练出现，不等于删除词表项或负采样；指定NEG-5对照中38min/59%变14min/60%。",
+      "report_anchor": "高频词下采样",
+      "source_ids": [
+        "FOLLOWUP"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§2.3–3、Table1：1B新闻词、过滤<5后692K词表、300维；有/无10^-5下采样，指标为词类比总准确率。"
+    },
+    {
+      "id": "C9",
+      "claim": "类比使用近似关系位移和余弦最近邻，排除输入词；19544题=8869语义+10675句法，标准答案精确匹配，人工构造评测不等于人工训练向量。",
+      "report_anchor": "analogy",
+      "source_ids": [
+        "PAPER"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§1.1示例归于先前[20]、§4–4.1、§5、Tables1/8；不外推为完整理解。"
+    },
+    {
+      "id": "C10",
+      "claim": "同320M words/82K词表/640维对照下，CBOW语义24%句法64%；Skip-gram语义55%句法59%，没有跨任务统一赢家。",
+      "report_anchor": "experiments",
+      "source_ids": [
+        "PAPER"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§4.3、Table3，只摘作者语义句法测试两列，不混另一个MSR词关系测试。"
+    },
+    {
+      "id": "C11",
+      "claim": "成本需同时报告数据、维度、epoch与硬件；单CPU 1.6B/300d/1epoch的CBOW0.6天与Skip2天；DistBelief 6B/1000d下2天约140核与2.5天约125核，非GPU或等配置全表消融。",
+      "report_anchor": "便宜一些",
+      "source_ids": [
+        "PAPER"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§4.2–4.4、Tables2/5/6；收益递减，CPU共享估计，旧NNLM100d，不能只比天数。"
+    },
+    {
+      "id": "C12",
+      "claim": "1040句5选1填空任务，Skip-gram48.0%、RNNLMs55.4%、组合58.9%；词向量有互补价值但不独自替代语言系统。",
+      "report_anchor": "好词向量",
+      "source_ids": [
+        "PAPER"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§4.5、Table7；Skip640d/50M训练词；58.9总体，dev59.2/test58.7。"
+    },
+    {
+      "id": "C13",
+      "claim": "相同词表项的输入向量固定，多义混合不等于按句子自动消歧；识别短语再单列词条可增加静态表示，不等于上下文化。",
+      "report_anchor": "one-apple-two-meanings",
+      "source_ids": [
+        "PAPER",
+        "FOLLOWUP",
+        "BERT"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "首篇§2–3查表参数、后续§4短语、BERT§2.1–2.2静态/上下文分类；苹果是中文自拟场景。"
+    },
+    {
+      "id": "C14",
+      "claim": "短语识别与向量相加是不同路线；短语实验在1B新闻词/300d/window5/1e-5下采样下，HS47%、NEG15为42%，不能把词类比优势一概泛化。",
+      "report_anchor": "短语向量仍然是静态表示",
+      "source_ids": [
+        "FOLLOWUP"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§4–5、Table3，Air Canada/Boston Globe说明习语与组成词义限制；不将Table1词类比当同表比较。"
+    },
+    {
+      "id": "C15",
+      "claim": "BERT保留WordPiece token embedding表，输入叠加token/segment/position表示，经过双向Transformer后的T_i才是上下文表示；不能把现代查表本身当动态消歧或直接继承Word2Vec参数。",
+      "report_anchor": "BERT 往前多走了一步",
+      "source_ids": [
+        "BERT",
+        "PAPER"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "BERT摘要、§2.1–2.2、§3指定表示段落与Figure1/2；只作问题路线连接，不宣称权重/代码或单线历史继承。"
+    },
+    {
+      "id": "C16",
+      "claim": "本章ASR只辅助定位，讲义/口播首次发明、手工标注、自动区分词义等按原文校正；本章有0.1秒分段重叠，未听音，整期尾部约16秒未知。",
+      "report_anchor": "sources-and-corrections",
+      "source_ids": [
+        "ASR",
+        "SHOWNOTES",
+        "SLIDE",
+        "TRANSCRIPT_REVIEW",
+        "TRANSCRIPT_AUDIT"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "逐段221条及原始浮点segment复核；完整音频15757.479s、末段15741.49s；整秒文本审计timestamp_errors=0不能替代词准确率或原音频覆盖。"
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U1",
+      "title": "Shownotes的Part3首项与本章转录范围",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "来源与阅读说明",
+      "source_ids": [
+        "SHOWNOTES",
+        "ASR",
+        "SLIDE",
+        "TRANSCRIPT_REVIEW"
+      ]
+    },
+    {
+      "id": "U2",
+      "title": "词表索引、one-hot、连续表示与非人工语义轴",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "word-id-and-vector",
+      "source_ids": [
+        "PAPER"
+      ]
+    },
+    {
+      "id": "U3",
+      "title": "前史、署名与两篇论文的版本边界",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "historical-place",
+      "source_ids": [
+        "PAPER",
+        "FOLLOWUP",
+        "SLIDE"
+      ]
+    },
+    {
+      "id": "U4",
+      "title": "CBOW/Skip-gram预测方向、词序与窗口",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "two-prediction-tasks",
+      "source_ids": [
+        "PAPER"
+      ]
+    },
+    {
+      "id": "U5",
+      "title": "共享向量训练、自生监督和类似上下文的边界",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "learning-the-table",
+      "source_ids": [
+        "PAPER"
+      ]
+    },
+    {
+      "id": "U6",
+      "title": "层次softmax、Huffman树与内部节点输出参数",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "training-cost",
+      "source_ids": [
+        "PAPER",
+        "FOLLOWUP"
+      ]
+    },
+    {
+      "id": "U7",
+      "title": "后续NEG目标、两套词向量与实际算例",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "自拟输入的算术演示",
+      "source_ids": [
+        "FOLLOWUP"
+      ]
+    },
+    {
+      "id": "U8",
+      "title": "高频下采样与训练成本/词类比效果",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "高频词下采样",
+      "source_ids": [
+        "FOLLOWUP"
+      ]
+    },
+    {
+      "id": "U9",
+      "title": "类比位移、最近邻与先前发现",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "analogy",
+      "source_ids": [
+        "PAPER"
+      ]
+    },
+    {
+      "id": "U10",
+      "title": "19544题的构建和精确匹配范围",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "19,544",
+      "source_ids": [
+        "PAPER"
+      ]
+    },
+    {
+      "id": "U11",
+      "title": "CBOW与Skip-gram等数据对照",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "experiments",
+      "source_ids": [
+        "PAPER"
+      ]
+    },
+    {
+      "id": "U12",
+      "title": "数据、维度、epoch与DistBelief CPU条件",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "便宜一些",
+      "source_ids": [
+        "PAPER"
+      ]
+    },
+    {
+      "id": "U13",
+      "title": "句子填空的反例与互补",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "好词向量",
+      "source_ids": [
+        "PAPER"
+      ]
+    },
+    {
+      "id": "U14",
+      "title": "苹果多义与固定词表的限制",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "one-apple-two-meanings",
+      "source_ids": [
+        "PAPER",
+        "BERT",
+        "ASR"
+      ]
+    },
+    {
+      "id": "U15",
+      "title": "短语识别、加法与任务相关的实验结论",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "短语向量仍然是静态表示",
+      "source_ids": [
+        "FOLLOWUP"
+      ]
+    },
+    {
+      "id": "U16",
+      "title": "Token/输入表/上下文网络三个层次",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "BERT 往前多走了一步",
+      "source_ids": [
+        "BERT"
+      ]
+    },
+    {
+      "id": "U17",
+      "title": "复用部件的历史位置及衔接序列问题",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "historical-place",
+      "source_ids": [
+        "PAPER",
+        "BERT"
+      ]
+    },
+    {
+      "id": "U18",
+      "title": "二手材料校正及未测范围",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "sources-and-corrections",
+      "source_ids": [
+        "ASR",
+        "SLIDE",
+        "TRANSCRIPT_REVIEW",
+        "TRANSCRIPT_AUDIT"
+      ]
+    }
+  ],
+  "limitations": [
+    "未训练Word2Vec、BERT或复现论文实验；二维NEG步骤是手工向量的算术演示，不能证明真实语义或部署效果。",
+    "两篇2013论文全文已读，但没有逐式重推所有推导；首篇Figure1与讲义p33做视觉核验，后续图表按文本/图注，没有冒充全文视觉审计。",
+    "BERT只读表示与背景相关范围，不引用完整实验表现；不把问题线连接当直接权重、代码或历史因果继承。",
+    "播客没有人工逐字听校或WER评测；本章原始segments有一处0.1秒重叠，整期末尾15.989秒覆盖仍未知。",
+    "类似上下文、类比题和短语例子不足以证明事实准确性、语义消歧或一般语言理解；当代特定产品的词表/字母能力/代号未作技术证据。",
+    "私有转录、音频、来源缓存与执行收据不公开；公开质量文件只保留最小定位、校正依据与内容哈希。"
+  ]
+}

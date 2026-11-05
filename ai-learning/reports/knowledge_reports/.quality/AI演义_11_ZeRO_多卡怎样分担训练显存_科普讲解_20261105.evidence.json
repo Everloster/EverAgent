@@ -1,0 +1,590 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_11_ZeRO_多卡怎样分担训练显存_科普讲解_20261105.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-05",
+  "generator": {
+    "model": "gpt-6-astra",
+    "harness": "codex",
+    "run_id": "ai-yanyi-chapter11-zero-20261105",
+    "explicit_model_override": false,
+    "override_reason": "",
+    "identity_basis": "agent_identity.py diagnose：gpt-6-astra，codex-turn-context，session-bound，current_model_confirmed=true；只证明生成者，不用于证明Reviewer模型。"
+  },
+  "task": {
+    "summary": "逐节展开AI演义第11节ZeRO，讲清模型状态与三阶段协作，原章节同步实质改写与阅读入口。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "结合讲义p27、shownotes、本章86段转录、原论文v3及两篇官方历史介绍，实际阅读与ASR边界可追溯。"
+      },
+      {
+        "id": "R2",
+        "text": "用同一个四卡例子讲清模型状态、三阶段分片、各卡实际计算及通信；少数学，数字注明条件与推算性质。"
+      },
+      {
+        "id": "R3",
+        "text": "区分版本实现、容量分析、吞吐实验和完整模型训练；保留硬件/基线差异、超线性条件和CPU卸载反例。"
+      },
+      {
+        "id": "R4",
+        "text": "人物和团队只写可核贡献；接到前节训练预算和下一节RefinedWeb，不采未经核验的公司与人员轶事。"
+      },
+      {
+        "id": "R5",
+        "text": "主稿原第11节实质改写且入口在节首；展开能返回原第11节、上一节和继续第12节，保留前十节。"
+      },
+      {
+        "id": "R6",
+        "text": "学习工作台实际检查桌面/窄屏阅读、目录、脚注与跨报告往返；公开正文不含原始ASR、私有环境或执行日志。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "ZERO",
+      "kind": "primary",
+      "title": "ZeRO: Memory Optimizations Toward Training Trillion Parameter Models",
+      "locator": "https://arxiv.org/pdf/1910.02054v3",
+      "accessed_on": "2026-11-05",
+      "version": "arXiv 1910.02054v3，2020-05-13；最早提交2019-10-04",
+      "sha256": "c531734c7d9ee647fda9b4f0e1a6abd6d58ad34e862bc945451b09032be3167e",
+      "read_scope": "24页文本主文、参考文献和末尾配置附录已读；p3 Figure1经eacli图像能力及根直接视读。实验数字取作者正文与附录，不从未逐图视读的Figure2–8自行估取；未复现训练。"
+    },
+    {
+      "id": "META",
+      "kind": "primary",
+      "title": "arXiv ZeRO v3元数据及提交历史",
+      "locator": "https://arxiv.org/abs/1910.02054v3",
+      "accessed_on": "2026-11-05",
+      "read_scope": "通过eacli web.read读取作者、摘要、提交历史。最早v1条目标withdrawn，v2为2019-10-07；本文技术与实验均按v3，不使用已撤回v1内容。"
+    },
+    {
+      "id": "LAUNCH",
+      "kind": "official",
+      "title": "ZeRO & DeepSpeed: New system optimizations enable training models with over 100 billion parameters",
+      "locator": "https://www.microsoft.com/en-us/research/blog/zero-deepspeed-new-system-optimizations-enable-training-models-with-over-100-billion-parameters/",
+      "accessed_on": "2026-11-05",
+      "version": "2020年2月官方发布说明",
+      "read_scope": "经eacli读取正文，核已实现stage1、stage2/3计划、PyTorch接口、团队与Turing使用；正文动态插入的后期推广内容排除。未把博客早期3–5倍吞吐混入v3实验。"
+    },
+    {
+      "id": "TURING",
+      "kind": "official",
+      "title": "Turing-NLG: A 17-billion-parameter language model by Microsoft",
+      "locator": "https://www.microsoft.com/en-us/research/blog/turing-nlg-a-17-billion-parameter-language-model-by-microsoft/",
+      "accessed_on": "2026-11-05",
+      "read_scope": "经eacli读取正文训练方法、模型结构、语言任务与问答/摘要应用；图片成绩表未逐图视读，所以未采用图片分数。只作为真实训练应用，未把模型质量改善归因于ZeRO单因素。"
+    },
+    {
+      "id": "LECTURE",
+      "kind": "local",
+      "title": "AI演义原讲义：ZeRO页",
+      "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "accessed_on": "2026-11-05",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
+      "read_scope": "本轮物理p27，原图经eacli与根直接核验。只有文字要点，无图表；文本层乱序不当作原图乱码。规模跨期压缩叙述不倒填2019，理论无限扩展按论文限定。"
+    },
+    {
+      "id": "EPISODE",
+      "kind": "primary",
+      "title": "《张小珺Jùn｜商业访谈录》第117期：开源一段论文探索之旅，公开shownotes与ZeRO段转录",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-05",
+      "read_scope": "已重新经eacli读取原页title/description，核节目归属为张小珺Jùn｜商业访谈录，第117期，页面发布时间2025-10-28；shownotes正文与原冻结文本一致。Part2起点01:52:58；本轮转录原索引3102–3187共86段，6776.8–6976.77秒，含Part2开场。全文7553段恢复版SHA另登记；未重新转写、未人工听校，未测WER。",
+      "full_segments_sha256": "f322514ced72235a0ca104635824c66df425c18dbae3d0f4e76fa70d088db61c",
+      "chapter_segments_sha256": "db735dc8f522ea47be061fddc71477de5f48375d86ff20fd23e6cf22f53494fe",
+      "chapter_text_sha256": "fb1f545f0f4d9d8c5bf35a786fc0d64cbff35c7fd1071c4f467113409ae43e43"
+    },
+    {
+      "id": "TRANSCRIPT_REVIEW",
+      "kind": "local",
+      "title": "第11节转录结构及术语范围核查",
+      "locator": "ai-learning/reports/knowledge_reports/.quality/AI演义_11_ZeRO_多卡怎样分担训练显存_科普讲解_20261105.transcription-review.json",
+      "accessed_on": "2026-11-05",
+      "read_scope": "公开最小核查记录，不含逐字转录或私有文件路径；精确时间段与审计脚本绝对结束时间分开。"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "论文混合精度Adam每参数16字节；15亿参数的3GB权重对应24GB模型状态，不包含激活等。",
+      "report_anchor": "training-memory",
+      "source_ids": [
+        "ZERO"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§3.1 p7：2字节参数、2字节梯度、4字节主权重和8字节Adam统计；模型状态24GB。"
+    },
+    {
+      "id": "C2",
+      "claim": "激活60GB及检查点后约8GB是1.5B/seq1024/batch32的分析，不能泛化为固定训练倍数。",
+      "report_anchor": "training-memory",
+      "source_ids": [
+        "ZERO"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§3.2 pp7–8；激活、缓冲、碎片在模型状态之外。"
+    },
+    {
+      "id": "C3",
+      "claim": "普通DP每卡处理不同样本但复制模型状态；ZeRO沿DP计算方式消除重复，仍可与MP/PP配合。",
+      "report_anchor": "data-parallel",
+      "source_ids": [
+        "ZERO"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§1–§4及§8；四卡黑猫场景为解释示意。"
+    },
+    {
+      "id": "C4",
+      "claim": "四路stage1把18GB优化器相关状态分片，每卡3+3+18/4=10.5GB，更新后交换参数。",
+      "report_anchor": "three-stages",
+      "source_ids": [
+        "ZERO"
+      ],
+      "support": "derived",
+      "critical": true,
+      "evidence": "§5.1公式与更新后all-gather；数字为教学计算未运行。"
+    },
+    {
+      "id": "C5",
+      "claim": "四路stage2保留3GB参数，分片梯度与优化器状态，每卡3+21/4=8.25GB；生成梯度仍必要。",
+      "report_anchor": "three-stages",
+      "source_ids": [
+        "ZERO"
+      ],
+      "support": "derived",
+      "critical": true,
+      "evidence": "§5.2、§7.2；reduce-scatter汇总后交owner，并释放不必要完整梯度。"
+    },
+    {
+      "id": "C6",
+      "claim": "stage3四卡持久模型状态24/4=6GB，但计算所需参数要临时聚合，不代表只算四分之一网络或总峰值6GB。",
+      "report_anchor": "one-step",
+      "source_ids": [
+        "ZERO"
+      ],
+      "support": "derived",
+      "critical": true,
+      "evidence": "§5.3、§7.2.2；FP参数前/反向按需聚合与释放，梯度分片更新。图1的7.5B/64-way为另一算例。"
+    },
+    {
+      "id": "C7",
+      "claim": "简化大消息通信模型中DP和stage1/2约2N元素、stage3约3N；相对1.5倍并非训练时间比。",
+      "report_anchor": "communication",
+      "source_ids": [
+        "ZERO"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§7 pp13–14；有限rank项/精度/带宽/重叠等真实成本另算。"
+    },
+    {
+      "id": "C8",
+      "claim": "ZeRO-R处理MP组激活检查点分片、受控缓冲与碎片；本版CPU卸载针对激活检查点。",
+      "report_anchor": "other-memory",
+      "source_ids": [
+        "ZERO"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§4.2、§6；激活checkpoint与故障恢复checkpoint不同，后期模型状态offload不倒填本版。"
+    },
+    {
+      "id": "C9",
+      "claim": "2019首次提交、2020年2月发布stage1、2020-05-13 v3实测stage1/2+ZeRO-R；stage3与万亿非本版实测。",
+      "report_anchor": "experiments",
+      "source_ids": [
+        "ZERO",
+        "META",
+        "LAUNCH"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "META历史；LAUNCH已实现第一阶段；v3 §10定义ZeRO-100B=P_os+g+ZeRO-R。"
+    },
+    {
+      "id": "C10",
+      "claim": "实验集群400 V100/25 DGX-2/800Gbps；DDP和2019年9月Megatron-LM分别用于无MP/有MP基线。",
+      "report_anchor": "experiments",
+      "source_ids": [
+        "ZERO"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§10.1 p17；附录部分基线384/256卡而非均400。"
+    },
+    {
+      "id": "C11",
+      "claim": "无MP时128卡ZeRO约13B vs DDP约1.4B；结合MP可高效执行170B，不等于每配置完整训练与效果验证。",
+      "report_anchor": "experiments",
+      "source_ids": [
+        "ZERO"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§10.2/10.4及附录；130亿/14亿/1700亿参数，容量/吞吐与质量不同。"
+    },
+    {
+      "id": "C12",
+      "claim": "万亿参数16TB/1024≈15.6GB是理想模型状态容量分析，激活/临时空间与计算时间仍限制。",
+      "report_anchor": "experiments",
+      "source_ids": [
+        "ZERO"
+      ],
+      "support": "derived",
+      "critical": true,
+      "evidence": "§5.3/Table1/§9；十进制16TB=16000GB，除1024=15.625，论文近似16GB。"
+    },
+    {
+      "id": "C13",
+      "claim": "最高约10倍是特定软件硬件的每GPU吞吐，MP/batch/部分卡数与模型配置不同，不能作为同质量普适提速。",
+      "report_anchor": "experiments",
+      "source_ids": [
+        "ZERO"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§10.2与pp23–24配置附录；基线需跨节点MP、GPU数384/256、heads等有差异。"
+    },
+    {
+      "id": "C14",
+      "claim": "60B从64到400卡的超线性同时将局部batch由16增至64，非固定batch强扩展。",
+      "report_anchor": "experiments",
+      "source_ids": [
+        "ZERO"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§10.3、附录Table6；MP16，全局batch64→1600。"
+    },
+    {
+      "id": "C15",
+      "claim": "60B的C5相对C4卸载激活到CPU更省显存却更慢；极大模型的可行性可改变取舍。",
+      "report_anchor": "experiments",
+      "source_ids": [
+        "ZERO"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§10.5 pp18–19直接给反例与按是否有益启用的条件。"
+    },
+    {
+      "id": "C16",
+      "claim": "四位作者、前两位同等贡献、Yuxiong He为发布文列出的团队负责人；未编逐人分工或去向。",
+      "report_anchor": "people-and-implementation",
+      "source_ids": [
+        "ZERO",
+        "LAUNCH"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "论文首页；官方About the DeepSpeed Team。"
+    },
+    {
+      "id": "C17",
+      "claim": "DeepSpeed承载ZeRO等优化并兼容PyTorch；Turing-NLG 17B是实际模型训练应用，与170B系统测试分开。",
+      "report_anchor": "people-and-implementation",
+      "source_ids": [
+        "ZERO",
+        "LAUNCH",
+        "TURING"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§10.1/10.6/11；两篇发布文训练章节和应用；不使用未经视读的任务成绩图。"
+    },
+    {
+      "id": "C18",
+      "claim": "与Scaling/Chinchilla的连接按问题而非历史因果；讲义无限扩展需受模型状态以外的资源条件限定。",
+      "report_anchor": "route-and-limits",
+      "source_ids": [
+        "ZERO",
+        "META",
+        "LECTURE",
+        "EPISODE"
+      ],
+      "support": "derived",
+      "critical": true,
+      "evidence": "META首次2019，shownotes标Chinchilla2022.03；ZERO§9说明算力边界，讲义p27压缩叙述不倒填年代。"
+    },
+    {
+      "id": "C19",
+      "claim": "本章86段结构检查不等于听校或逐字准确率；外围合作/去向/三代谱系未一手核实不作为事实。",
+      "report_anchor": "source-scope",
+      "source_ids": [
+        "EPISODE",
+        "TRANSCRIPT_REVIEW"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "所选原索引3102–3187、约199.97秒，结构审计零时间错误；原始ASR保留私有。"
+    },
+    {
+      "id": "C20",
+      "claim": "[推测] 实际训练可行性需分别检查状态、激活、临时空间和通信；不能仅把所有GPU显存相加。",
+      "report_anchor": "route-and-limits",
+      "source_ids": [
+        "ZERO"
+      ],
+      "support": "inference",
+      "critical": false,
+      "evidence": "正文明确[推测]，依据§3–9瓶颈拆分，未作硬件实测承诺。"
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U1",
+      "title": "论文混合精度Adam每参数16字节；15亿参数的3GB权重对应24GB模型状态，不包含激活等。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "ZERO"
+      ],
+      "report_anchor": "training-memory"
+    },
+    {
+      "id": "U2",
+      "title": "激活60GB及检查点后约8GB是1.5B/seq1024/batch32的分析，不能泛化为固定训练倍数。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "ZERO"
+      ],
+      "report_anchor": "training-memory"
+    },
+    {
+      "id": "U3",
+      "title": "普通DP每卡处理不同样本但复制模型状态；ZeRO沿DP计算方式消除重复，仍可与MP/PP配合。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "ZERO"
+      ],
+      "report_anchor": "data-parallel"
+    },
+    {
+      "id": "U4",
+      "title": "四路stage1把18GB优化器相关状态分片，每卡3+3+18/4=10.5GB，更新后交换参数。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "ZERO"
+      ],
+      "report_anchor": "three-stages"
+    },
+    {
+      "id": "U5",
+      "title": "四路stage2保留3GB参数，分片梯度与优化器状态，每卡3+21/4=8.25GB；生成梯度仍必要。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "ZERO"
+      ],
+      "report_anchor": "three-stages"
+    },
+    {
+      "id": "U6",
+      "title": "stage3四卡持久模型状态24/4=6GB，但计算所需参数要临时聚合，不代表只算四分之一网络或总峰值6GB。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "ZERO"
+      ],
+      "report_anchor": "one-step"
+    },
+    {
+      "id": "U7",
+      "title": "简化大消息通信模型中DP和stage1/2约2N元素、stage3约3N；相对1.5倍并非训练时间比。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "ZERO"
+      ],
+      "report_anchor": "communication"
+    },
+    {
+      "id": "U8",
+      "title": "ZeRO-R处理MP组激活检查点分片、受控缓冲与碎片；本版CPU卸载针对激活检查点。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "ZERO"
+      ],
+      "report_anchor": "other-memory"
+    },
+    {
+      "id": "U9",
+      "title": "2019首次提交、2020年2月发布stage1、2020-05-13 v3实测stage1/2+ZeRO-R；stage3与万亿非本版实测。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "ZERO",
+        "META",
+        "LAUNCH"
+      ],
+      "report_anchor": "experiments"
+    },
+    {
+      "id": "U10",
+      "title": "实验集群400 V100/25 DGX-2/800Gbps；DDP和2019年9月Megatron-LM分别用于无MP/有MP基线。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "ZERO"
+      ],
+      "report_anchor": "experiments"
+    },
+    {
+      "id": "U11",
+      "title": "无MP时128卡ZeRO约13B vs DDP约1.4B；结合MP可高效执行170B，不等于每配置完整训练与效果验证。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "ZERO"
+      ],
+      "report_anchor": "experiments"
+    },
+    {
+      "id": "U12",
+      "title": "万亿参数16TB/1024≈15.6GB是理想模型状态容量分析，激活/临时空间与计算时间仍限制。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "ZERO"
+      ],
+      "report_anchor": "experiments"
+    },
+    {
+      "id": "U13",
+      "title": "最高约10倍是特定软件硬件的每GPU吞吐，MP/batch/部分卡数与模型配置不同，不能作为同质量普适提速。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "ZERO"
+      ],
+      "report_anchor": "experiments"
+    },
+    {
+      "id": "U14",
+      "title": "60B从64到400卡的超线性同时将局部batch由16增至64，非固定batch强扩展。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "ZERO"
+      ],
+      "report_anchor": "experiments"
+    },
+    {
+      "id": "U15",
+      "title": "60B的C5相对C4卸载激活到CPU更省显存却更慢；极大模型的可行性可改变取舍。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "ZERO"
+      ],
+      "report_anchor": "experiments"
+    },
+    {
+      "id": "U16",
+      "title": "四位作者、前两位同等贡献、Yuxiong He为发布文列出的团队负责人；未编逐人分工或去向。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "ZERO",
+        "LAUNCH"
+      ],
+      "report_anchor": "people-and-implementation"
+    },
+    {
+      "id": "U17",
+      "title": "DeepSpeed承载ZeRO等优化并兼容PyTorch；Turing-NLG 17B是实际模型训练应用，与170B系统测试分开。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "ZERO",
+        "LAUNCH",
+        "TURING"
+      ],
+      "report_anchor": "people-and-implementation"
+    },
+    {
+      "id": "U18",
+      "title": "与Scaling/Chinchilla的连接按问题而非历史因果；讲义无限扩展需受模型状态以外的资源条件限定。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "ZERO",
+        "META",
+        "LECTURE",
+        "EPISODE"
+      ],
+      "report_anchor": "route-and-limits"
+    },
+    {
+      "id": "U19",
+      "title": "本章86段结构检查不等于听校或逐字准确率；外围合作/去向/三代谱系未一手核实不作为事实。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "EPISODE",
+        "TRANSCRIPT_REVIEW"
+      ],
+      "report_anchor": "source-scope"
+    },
+    {
+      "id": "U20",
+      "title": "[推测] 实际训练可行性需分别检查状态、激活、临时空间和通信；不能仅把所有GPU显存相加。",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "ZERO"
+      ],
+      "report_anchor": "route-and-limits"
+    },
+    {
+      "id": "U21",
+      "title": "Shownotes Part2 Infra与数据变迁开场：ZeRO是本部分首篇，精确单篇时段非官方标注",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "EPISODE"
+      ],
+      "report_anchor": "source-scope"
+    },
+    {
+      "id": "U22",
+      "title": "节目公司支持、团队后续去向与三代基础设施谱系",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "EPISODE"
+      ],
+      "report_anchor": "source-scope",
+      "omission_reason": "不属于本节机制主线且未另作相应一手核验；正文说明未据此建立技术史，不擅自纠正为另一套轶事。"
+    },
+    {
+      "id": "U23",
+      "title": "整期其他章节及shownotes全期路线",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "EPISODE"
+      ],
+      "omission_reason": "本轮任务只展开第11节；其他单元由已完成前十节、主报告及后续各轮承接，不声称本轮重做整期。"
+    }
+  ],
+  "limitations": [
+    "没有训练复现，四卡与万亿容量计算不等于设备实测或总峰值显存。",
+    "显存账本为论文混合精度Adam口径；现代精度、优化器及实现可能改变状态和调度。",
+    "ZeRO-100B是v3实现的前两阶段加ZeRO-R；第三阶段及万亿规模作为完整方案与容量分析。",
+    "各基线的GPU数、MP、batch及部分模型配置不同；吞吐、容量、同质量训练时间不同。",
+    "参考文献标题已读不等于重读其引用文献；未从未视读性能曲线或Turing图表取数。",
+    "转录未人工听校/测WER；本章检查不代表全期逐字完整性已验证。",
+    "未核合作、团队迁移与更宽泛谱系；只保留公开最小来源摘要，不公开原始ASR。"
+  ]
+}

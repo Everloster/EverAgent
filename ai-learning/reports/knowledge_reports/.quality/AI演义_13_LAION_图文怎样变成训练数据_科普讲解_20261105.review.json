@@ -1,0 +1,697 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_13_LAION_图文怎样变成训练数据_科普讲解_20261105.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-6-astra",
+        "harness": "codex_collab2_subagent",
+        "run_id": "laion-primary-review-20261105",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "identity_basis": "inherited_dispatch_configuration",
+        "runtime_model": "unconfirmed",
+        "identity_note": "模型名称据根Agent派发配置继承记录；本子会话未设置模型override。此项不是provider/runtime attestation，未用共享shell的根会话身份代替Reviewer运行时身份。"
+      },
+      "scores": {
+        "evidence_fidelity": 98,
+        "request_coverage": 98,
+        "reasoning_quality": 97,
+        "readability": 96,
+        "limitations": 97
+      },
+      "score_reasons": {
+        "evidence_fidelity": "逐项核C1–C14并另核推测C15。Table 2六行与Table 6预算对照、5.85B构成、过滤门槛、指定生成子集均有原文依据；NSFW人工工作及A100资源两处精确修订已核。未以转录结构核验冒充音频准确率。",
+        "request_coverage": "R1–R6及U1–U14均有对应内容；先冻结的PL01–PL08全部覆盖。原论文、CLIP必要机制、讲义和本章228段讨论均进入解释，主稿实改与前后导航由本轮边界审计和实际执行收据支持。",
+        "reasoning_quality": "区分相似度、事实正确性、检索和生成；把累计样本次数与独立样本量分开，保留小模型低预算反例。F.1只能反驳人体能力必然论，未被包装成严格消融；Personal Context类比明确标为推测。",
+        "readability": "假想网页图片串起采集、筛选、发布和训练验证，必要术语有首次解释，四表口径与引用可追溯。桌面和390宽度导航/排版收据通过；量化及安全讨论密度略高，窄屏表格需局部滚动。",
+        "limitations": "说明版权、隐私、噪声、偏差、链接变动、测试集重叠与分类器盲点；2024 Re-LAION结论限项目方当时已知名单。未声称重新训练、全量安全复验、当前全部链接可用或已测ASR词错率。"
+      },
+      "critical_claim_ids_checked": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14"
+      ],
+      "noncritical_claim_ids_checked": [
+        "C15"
+      ],
+      "source_ids_checked": [
+        "LAION",
+        "CLIP",
+        "META",
+        "RELEASE",
+        "RELAION",
+        "LECTURE",
+        "EPISODE",
+        "TRANSCRIPT_REVIEW"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6"
+      ],
+      "coverage_unit_ids_checked": [
+        "U1",
+        "U2",
+        "U3",
+        "U4",
+        "U5",
+        "U6",
+        "U7",
+        "U8",
+        "U9",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14"
+      ],
+      "source_content_map": [
+        {
+          "id": "PL01",
+          "title": "开放权重之后，仍需开放训练数据与复现条件",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "LAION",
+            "CLIP",
+            "LECTURE",
+            "EPISODE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1",
+            "U12",
+            "U14"
+          ],
+          "notes": "§1说明400M WIT与开放数据缺口，§9按讲义归因教师经历并回论文核团队和支持机构；来源说明标清节目身份及章界，未猜配德语采访。"
+        },
+        {
+          "id": "PL02",
+          "title": "CLIP如何把图像和文字变成可比较的表示",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "CLIP",
+            "LAION",
+            "EPISODE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1",
+            "U3",
+            "U6",
+            "U8"
+          ],
+          "notes": "§3以双编码器和向量方向解释相似度，§5说明零样本分类，§7将现有图文检索与生成新图分开；不把0.28误释成概率。"
+        },
+        {
+          "id": "PL03",
+          "title": "从Common Crawl网页到筛选后的图文对",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "LAION",
+            "RELEASE",
+            "LECTURE",
+            "EPISODE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U2",
+            "U3"
+          ],
+          "notes": "§2–3依次说明WAT/alt-text、CLD3、下载、基础过滤与两种匹配门槛；500亿候选与约九成删减只作近似口径。狗的网页例明确是假想。"
+        },
+        {
+          "id": "PL04",
+          "title": "发布物、规模与可再筛选的子集",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "LAION",
+            "RELEASE",
+            "LECTURE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U4",
+            "U5"
+          ],
+          "notes": "§4使用2.32B/2.26B/1.27B口径，解释不明语言、URL/文字/尺寸/分数、向量/索引及子集；区分元数据许可、原内容版权和随时间变化的下载集合。"
+        },
+        {
+          "id": "PL05",
+          "title": "用模型复现和受控比较证明数据可用",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "LAION"
+          ],
+          "matched_coverage_unit_ids": [
+            "U6",
+            "U7"
+          ],
+          "notes": "§5的Table 2六行两列全部与原图对应；§6的Table 6三行及L/14结果对应原图，保留低训练量反例、累计次数与独立样本区别及未测方差限制。"
+        },
+        {
+          "id": "PL06",
+          "title": "LAION怎样支持生成模型，而非自身成为生成模型",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "LAION",
+            "LECTURE",
+            "EPISODE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8",
+            "U13"
+          ],
+          "notes": "§7明确检索/分类/生成的不同任务，Stable Diffusion仅按F.2指定子集说明，LAIONIDE仅作为实际研究实例；§9说明路线顺序不等于论文年代或直接继承。"
+        },
+        {
+          "id": "PL07",
+          "title": "NSFW标记、训练过滤与人体能力：将讨论还原到证据",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "LAION",
+            "RELEASE",
+            "EPISODE",
+            "TRANSCRIPT_REVIEW"
+          ],
+          "matched_coverage_unit_ids": [
+            "U9",
+            "U10",
+            "U14"
+          ],
+          "notes": "§8保留读清洗细节的主旨，区分自动标记、人工样本工作和非法内容政策；F.1过滤NSFW/LIKELY的实际训练与人体能力必然论并列，不伪称严格消融。228段结构收据与原始审计、精度收据一致。"
+        },
+        {
+          "id": "PL08",
+          "title": "开放让缺陷可查，仍需治理和带版本的安全结论",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "LAION",
+            "RELEASE",
+            "RELAION"
+          ],
+          "matched_coverage_unit_ids": [
+            "U5",
+            "U11",
+            "U13"
+          ],
+          "notes": "§3/4/8/9覆盖噪声、偏差、链接变动、版权/隐私、测试重叠与持续治理；Re-LAION明确是后续项目方说明，范围限2024-07已知名单，未假称复验清理或当前可用状态。"
+        }
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "完整直接复核最终展开正文及证据账本，先冻结的8个来源单元均得到覆盖。两处须精确限定的表述已经修正并复核，无必须修订项。此文件是单个独立审稿条目；最终发布质量状态由根Agent合入后运行质量门确定。",
+      "checked_field_semantics": "所有checked ID均在本轮直接检查；source_ids表示登记来源已核，但实际读取页码、转录和补充收据范围仍以source_first_provenance为准，不代表读取引用文献全文。",
+      "direct_review": {
+        "scope": "展开报告完整正文、15项claim、14个覆盖单元、8项来源和R1–R6。",
+        "all_critical_claims_checked": true,
+        "all_coverage_units_checked": true,
+        "local_link_check": {
+          "relative_links_checked": 23,
+          "problems": [],
+          "footnote_definition_count": 15,
+          "duplicate_footnote_ids": [],
+          "undefined_footnotes": []
+        },
+        "claim_and_coverage_anchors_exist": true
+      },
+      "snapshot": {
+        "revision_round": 1,
+        "report_path": "ai-learning/reports/knowledge_reports/AI演义_13_LAION_图文怎样变成训练数据_科普讲解_20261105.md",
+        "report_sha256": "fd158938d92b5b7c253dec85a708d2c22e1f6fbc79133a841b2f3069604bc287",
+        "evidence_sha256": "b46f998129f5870e0ad526630aaf7f33b4e3e5019291e331d2c574160cbb2092"
+      },
+      "final_revision_check": {
+        "initial_fully_reviewed_report_sha256": "bb6f339c53492557ed5d2a4920372bd90e467db994c81bcea6dad00bfd564534",
+        "initial_fully_reviewed_evidence_sha256": "5576cff88c96af5d14a0abca0f2a8ff60facd261f6794f410a02c93d28ab3569",
+        "exact_report_reconstruction_verified": true,
+        "report_delta": "仅两段修订；将其还原原句后得到初次完整审稿的确切正文SHA。",
+        "corrected_statements": [
+          "人工标注测试集，并参与训练集的构造；这不等于逐张人工标完全部几十亿张图片。",
+          "论文所述OpenCLIP模型训练使用了上百张NVIDIA A100 GPU，部分配置达到400张。"
+        ],
+        "correction_rationale": "官方发布直接支持人工测试集和训练集构造；正文128–400 GPU的概述需与Table 4含112 GPU的配置共同理解，最终表述兼容两处。",
+        "evidence_delta_allowlist": [
+          "C10",
+          "C13",
+          "EPISODE alternate-source fields",
+          "research_receipts.review_corrections"
+        ],
+        "evidence_outside_allowlist_unchanged": true,
+        "source_claim_coverage_counts_unchanged": [
+          8,
+          15,
+          14
+        ]
+      },
+      "source_first_provenance": {
+        "source_map_artifact": "primary-source-map.json",
+        "source_map_sha256": "019497f62a9aebc751fb331e636812c2a52c2506b3a2cee99ca5e660b63ead12",
+        "source_manifest_artifact": "source-inputs.json",
+        "source_manifest_sha256": "374a26657761f664863f8308870bc4f65315a32c27ff83c406e234b6a8e9ea65",
+        "supplemental_clip_manifest_artifact": "source-inputs-clip.json",
+        "supplemental_clip_manifest_sha256": "4bae2b66c959a5beffa2aede7452cbaafdc9841e621bf4bcfa38b9c3cd65bca8",
+        "all_original_18_and_supplemental_2_source_hashes_verified": true,
+        "source_map_frozen_before_any_candidate_or_evidence_read": true,
+        "other_current_reviewer_outputs_read": false,
+        "read_scope": {
+          "LAION": "2210.08402v1；正文pp1–13，附录pp22–42及44–50实读；pp14–21参考文献仅定位，p43 Table 7未逐项核。p5 Figure 2、p11 Table 2、p42 Table 6与F.1另直接核原图。",
+          "CLIP": "2103.00020v1；p1核身份，pp3–4 §2.1–2.3实读；不声称全篇复核或重核CLIP全部实验。",
+          "LECTURE": "仅物理p29文字和原图。",
+          "RELEASE": "官方原发布材料全文，包括License、Dataset columns、Acquisition pipeline与Watermark and safety inference。",
+          "RELAION": "后续官方发布全文；把它作为发布者对修订过程和已知名单的陈述，不视为全量安全审计。",
+          "EPISODE": "公开节目身份、shownotes与章节表；指定228段转录全部实读。候选后补核Apple备用页面全文及成功web.read收据，仅核同一节目身份和备用链接。",
+          "TRANSCRIPT_REVIEW": "候选阶段读公开结构审计收据，核文件SHA、内嵌审计与临时原件相同，时间精度与段落/文字摘要相符。"
+        },
+        "direct_visual_source_checks": [
+          "LAION p5",
+          "LAION p11",
+          "LAION p42",
+          "lecture p29"
+        ],
+        "vision_receipt_scope": "根提供的四个图像收据均成功；Reviewer自行核上述原图，未把模型图像解释当作原始证据。",
+        "independent_transcript_integrity_check": {
+          "segment_count": 228,
+          "zero_based_indices": [
+            3420,
+            3647
+          ],
+          "start_seconds": 7449.67,
+          "end_seconds": 7869.1,
+          "duration_seconds": 419.43,
+          "negative_durations": 0,
+          "backward_starts": 0,
+          "overlap_count": 0,
+          "positive_gap_count": 2,
+          "max_gap_seconds": 1.42,
+          "all_segment_text_and_timestamps_match_corresponding_transcript_lines": true,
+          "public_receipt_artifact": "AI演义_13_LAION_图文怎样变成训练数据_科普讲解_20261105.transcription-review.json",
+          "public_receipt_sha256": "14b31718d7e42fb1592298e39b1ebed3b9963eb22dedf8d7eb383f25d5a5344d",
+          "native_audit_matches_embedded_receipt": true,
+          "precision_audit_matches": true,
+          "audio_listened": false,
+          "word_accuracy_measured": false,
+          "duration_field_note": "原公开收据中的7869秒为绝对节目结束位置，不是本章时长；本章精确时长为419.43秒。"
+        },
+        "supplemental_alternate_link_check": {
+          "receipt_artifact": "apple-episode-read.json",
+          "receipt_sha256": "b43f4f8def7905b5a01e9a6ec9924bfec82015690f200b3412b3b2129f01584c",
+          "text_artifact": "apple-episode-read.txt",
+          "text_sha256": "5d280466ec15666cd2f03b23d163a085986859b72a37facf13831eaf9a86fc3a",
+          "capability": "web.read",
+          "succeeded": true,
+          "same_episode_identity_verified": true,
+          "audio_playback_tested": false,
+          "note": "在来源地图冻结后核验同一节目备用入口；没有新增或倒写独立地图单元。"
+        }
+      },
+      "render_check": {
+        "executor": "root coordinator",
+        "reviewer_action": "实际读取并复核根Agent提供的导航/DOM收据及执行脚本，核其绑定最终两份正文SHA；Reviewer本轮未亲自操作工作台或查看UI截图。",
+        "receipt_artifact": "navigation-receipt.json",
+        "receipt_sha256": "490b005b800a77d5d16cc969ddc78776b4e7f31a4a677a76fbe0609ea9ab9b2c",
+        "script_artifact": "navigation-check.mjs",
+        "report_snapshot_binding_verified": true,
+        "execution_mode": "根Agent通过headless Chromium访问已有工作台服务，实际执行点击、DOM断言和截图；未涉及服务生命周期操作。",
+        "viewports": [
+          1440,
+          390
+        ],
+        "observed_receipt_scope": [
+          "主稿前13节标题后的首个块均为展开入口；前12节入口保留。",
+          "主稿第13节到展开、展开返回原第13节、上一节RefinedWeb、下一节MegaScale均实际导航成功。",
+          "展开目录第5节及scale脚注往返成功，定位误差在脚本断言范围内。",
+          "主稿41条、展开15条脚注的DOM无缺失或重复锚点，也无字面Markdown标记和替换字符。",
+          "1440及390宽度的整页和阅读容器横向溢出均为0；未新增标签页，pageErrors为空。",
+          "展开4张表格的单元格被完整读取。390宽度下容器358px、内容宽度440/450/443/440px，实际局部横向滚动到82/92/85/82px；桌面容器与内容宽度均760px。"
+        ],
+        "reviewer_opened_ui": false,
+        "reviewer_viewed_ui_screenshots": false,
+        "all_external_links_clicked": false
+      },
+      "quality_check_observed": {
+        "command": "python3 scripts/report_quality.py check ai-learning/reports/knowledge_reports/AI演义_13_LAION_图文怎样变成训练数据_科普讲解_20261105.md --json",
+        "observed_on": "2026-11-05",
+        "exit_code": 1,
+        "decision": "needs_review",
+        "error_codes": [
+          "REV006"
+        ],
+        "warnings": [],
+        "public_reviews_integrated": false,
+        "note": "最终小修后只读检查，仅提示important需合入至少1个独立复核；该条目当时尚未汇入公共review sidecar。未把候选阶段状态当作最终质量门已通过。"
+      }
+    },
+    {
+      "role": "flagship_final_review",
+      "review_kind": "strong_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": "按report-quality-2026-10-18-r2的strong reviewer策略派发；不是用户直接指定模型。",
+        "dispatch_model_override": true,
+        "identity_basis": "dispatch_selection_only",
+        "runtime_model": "unconfirmed",
+        "runtime_attestation": {
+          "status": "unavailable",
+          "note": "本子会话没有可独立验证的runtime model收据；未使用共享shell eacli根身份、生成者身份或设备身份替代。"
+        },
+        "run_id": "laion-strong-expanded-review-20261105"
+      },
+      "scores": {
+        "evidence_fidelity": 98,
+        "request_coverage": 98,
+        "reasoning_quality": 98,
+        "readability": 99,
+        "limitations": 99
+      },
+      "score_reasons": {
+        "evidence_fidelity": "8项登记来源均实际核读；15项claim逐项与论文、官方发布、讲义和转录收据对照。表2/表6、门槛、分区、版权、人工参与范围和GPU资源概括准确；Apple备用入口也有eacli实读收据，未发现实质不符。",
+        "request_coverage": "R1–R6完整满足，14个来源单元均有正文映射；Re-LAION治理链完整，两版阈值与清理数量属于可选细节。独立headless Chromium收据绑定最终双SHA，验证主稿第13节往返、前后节、目录、脚注及桌面/窄屏布局。",
+        "reasoning_quality": "从采集、筛选、数据产物、训练验证到治理后续形成闭环；明确区分相关性与真实性、检索与生成、数据集规模与samples seen，并用低预算反例和LAIONIDE过滤反例约束强因果。",
+        "readability": "狗与alt-text例子贯穿全文，术语首次出现即解释，表格口径明确，章节与脚注可定位。已读取绑定最终快照的独立浏览器执行收据：1440/390均无坏锚点、重复ID、乱码或页面溢出，4张表在窄屏可局部滚动；这不是本Reviewer亲自操作浏览器。",
+        "limitations": "诚实说明未复现采集/训练、未测方差、未独立复验Re-LAION安全结果、未听校/WER、教师采访未唯一定位，并把Personal Context类比标为推测。"
+      },
+      "critical_claim_ids_checked": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14"
+      ],
+      "coverage_unit_ids_checked": [
+        "U1",
+        "U2",
+        "U3",
+        "U4",
+        "U5",
+        "U6",
+        "U7",
+        "U8",
+        "U9",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14"
+      ],
+      "source_content_map": [
+        {
+          "id": "LAION-S01",
+          "title": "问题起点：大规模多模态数据的封闭性",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "LAION",
+            "LECTURE",
+            "EPISODE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1",
+            "U13"
+          ],
+          "notes": "完整解释CLIP训练数据不公开与LAION开放研究条件的动机，并把价值判断收束为可复现和可审计。"
+        },
+        {
+          "id": "LAION-S02",
+          "title": "CLIP 在故事中的技术角色",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "CLIP",
+            "LAION",
+            "EPISODE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1",
+            "U3",
+            "U8"
+          ],
+          "notes": "双编码器、批内对比目标、筛选相似度以及检索/分类/生成的区别均进入正文。"
+        },
+        {
+          "id": "LAION-S03",
+          "title": "规模、分区与基本构成",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "LAION",
+            "META",
+            "RELEASE",
+            "LECTURE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U4"
+          ],
+          "notes": "5.85B及2.32B/2.26B/1.27B三分区准确，且解释“不明语言”不等于无语义。"
+        },
+        {
+          "id": "LAION-S04",
+          "title": "从 Common Crawl 到 LAION-5B 的流水线",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "LAION",
+            "RELEASE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U2",
+            "U3"
+          ],
+          "notes": "WAT、alt-text、CLD3、下载、基础过滤、0.28/0.26门槛和约50B缩减九成都覆盖，并纠正CMU/全网备份说法。"
+        },
+        {
+          "id": "LAION-S05",
+          "title": "数据产物不是一个整齐的人工标注图片包",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "LAION",
+            "RELEASE",
+            "RELAION"
+          ],
+          "matched_coverage_unit_ids": [
+            "U4",
+            "U5"
+          ],
+          "notes": "明确发布物以链接和元数据为主、链接会失效、CC BY 4.0不覆盖图片与文字版权。"
+        },
+        {
+          "id": "LAION-S06",
+          "title": "开放工具链与可组合子集",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "LAION",
+            "RELEASE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U4"
+          ],
+          "notes": "向量、检索索引、下载工具和派生子集的作用以读者所需粒度说明；未堆砌工程体量。"
+        },
+        {
+          "id": "LAION-S07",
+          "title": "CLIP 复现与规模效应的实验证据",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "LAION"
+          ],
+          "matched_coverage_unit_ids": [
+            "U6",
+            "U7"
+          ],
+          "notes": "表2六行数字、VTAB+口径与表6同模型同累计次数对照均核准，同时保留大数据低预算不占优和非全面领先。"
+        },
+        {
+          "id": "LAION-S08",
+          "title": "生成模型影响：具体链条而非泛化口号",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "LAION",
+            "LECTURE",
+            "RELEASE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8"
+          ],
+          "notes": "以Stable Diffusion具体LAION子集和LAIONIDE为证据，明确不外推全部扩散模型。"
+        },
+        {
+          "id": "LAION-S09",
+          "title": "原始安全策略：保留并自动打标签，而非逐张人工标记",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "LAION",
+            "RELEASE",
+            "EPISODE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U9"
+          ],
+          "notes": "准确说明大规模自动推断、人工标注测试集并参与训练集构造，且标签不构成生产安全保证。"
+        },
+        {
+          "id": "LAION-S10",
+          "title": "安全标签的局限及训练时筛选实例",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "LAION",
+            "RELEASE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U9",
+            "U10"
+          ],
+          "notes": "直接拆解“删NSFW必失人体理解/只能输出端关闭”的无证据因果，并以LAIONIDE-v2实际训练筛选作反例。"
+        },
+        {
+          "id": "LAION-S11",
+          "title": "技术、偏差、隐私与使用边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "LAION",
+            "RELEASE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U5",
+            "U13"
+          ],
+          "notes": "覆盖alt-text噪声、CLIP偏差、相似度局限、测试重叠、隐私版权、研究用途与未复现边界。"
+        },
+        {
+          "id": "LAION-S12",
+          "title": "Re-LAION：开放数据必须可撤回、修订和迁移",
+          "importance": "core",
+          "assessment": "partial",
+          "source_ids": [
+            "RELAION"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11"
+          ],
+          "notes": "覆盖2023下架、与专业机构用哈希清理、2024重发及已知清单时点边界；未展开2236/1008、5,526,641,167、research/research-safe两版阈值与迁移建议。核心治理结论仍完整。"
+        },
+        {
+          "id": "LAION-S13",
+          "title": "讲义与播客的叙事主线",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "LECTURE",
+            "EPISODE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1",
+            "U12",
+            "U13"
+          ],
+          "notes": "保留“开源社区的英雄主义”入口，同时用作者贡献、资助和“上百张A100、部分配置400张”纠正单人英雄化，并避免与Table 4的112张具体设置冲突。"
+        },
+        {
+          "id": "LAION-S14",
+          "title": "转录边界与机器审计",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "TRANSCRIPT_REVIEW"
+          ],
+          "matched_coverage_unit_ids": [
+            "U14"
+          ],
+          "notes": "公开transcription-review SHA已实核，228段时间结构指标与私有精度收据一致；Apple备用入口另有实读收据；明确未听校或播放。"
+        }
+      ],
+      "source_ids_checked": [
+        "LAION",
+        "CLIP",
+        "META",
+        "RELEASE",
+        "RELAION",
+        "LECTURE",
+        "EPISODE",
+        "TRANSCRIPT_REVIEW"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "must_fix_issues": [],
+      "non_blocking_suggestions": [],
+      "notes": "DIRECT full review：本轮在冻结source-first map之后读取展开正文与evidence，核对8 sources、C1–C15、U1–U14、R1–R6；C15为明确标注的推测，不列入critical_claim_ids。初审两项非阻塞建议均已采纳：人工范围收紧为测试集标注/训练集构造；GPU资源改为上百张、部分配置400张，并在evidence说明p8与Table 4的112张设置差异。Apple Podcasts备用入口实读文本SHA-256=5d280466ec15666cd2f03b23d163a085986859b72a37facf13831eaf9a86fc3a、eacli收据SHA-256=b43f4f8def7905b5a01e9a6ec9924bfec82015690f200b3412b3b2129f01584c，核117期/2025-10-28/谢青池/4小时23分/shownotes，未播放音频。TRANSCRIPT_REVIEW公开文件SHA-256=14b31718d7e42fb1592298e39b1ebed3b9963eb22dedf8d7eb383f25d5a5344d；228段时间结构指标与冻结私有收据一致。独立headless Chromium导航收据SHA-256=490b005b800a77d5d16cc969ddc78776b4e7f31a4a677a76fbe0609ea9ab9b2c绑定最终main/expanded快照；本Reviewer读取执行收据，不冒称亲自UI实测。收据显示1440/390均13个展开入口，第13节展开/返回/前后节、目录与脚注往返通过，主稿41/展开15脚注，无坏锚点、重复ID、乱码、横向页面溢出，4表窄屏可滚动，newTabs=0、pageErrors=0。无必须或非阻塞修订项。role按report-review-v1机器schema记录为flagship_final_review，review_kind标记语义角色strong_review。最终状态由report_quality.py计算。",
+      "snapshot_binding": {
+        "report_sha256": "fd158938d92b5b7c253dec85a708d2c22e1f6fbc79133a841b2f3069604bc287",
+        "evidence_sha256": "b46f998129f5870e0ad526630aaf7f33b4e3e5019291e331d2c574160cbb2092",
+        "verified": true
+      }
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 97.4,
+    "evaluated_on": "2026-11-05",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "afcaa0eadd38a4b9f82ada86b167654e79401d07d1eb769c5a69053a431dc31b",
+    "evidence_sha256": "b46f998129f5870e0ad526630aaf7f33b4e3e5019291e331d2c574160cbb2092"
+  },
+  "review_receipts": [
+    {
+      "file": "primary-expanded-review.json",
+      "sha256": "a7c44c18dc14a1d660b1efb3a8a1148b8735adb5687eec87774dc222a399715b",
+      "role": "primary_review",
+      "raw_review_content_preserved": true
+    },
+    {
+      "file": "strong-expanded-review.json",
+      "sha256": "ec3fbd325a9fbdb505956b3fa5396655b96e21032e3f5849d32f26eb1817ee08",
+      "role": "flagship_final_review",
+      "raw_review_content_preserved": true
+    }
+  ]
+}

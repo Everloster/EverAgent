@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "kind": "chapter-transcription-review",
+  "reviewed_on": "2026-11-04",
+  "chapter": 2,
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+  "transcript_source_ref": "sha256:919e4ce5147340e2306748394cdb555bfc6a745119f846e7ce8c985056745b05",
+  "read_scope": {
+    "content_window_seconds": [
+      1612.73,
+      2030.3
+    ],
+    "context_window_seconds": [
+      1587.46,
+      2030.3
+    ],
+    "segments_read": 153,
+    "time_basis": "ASR内容定位；Shownotes仅给Part1的19:35总入口，不含本节独立时间戳。"
+  },
+  "structural_audit": {
+    "ok": true,
+    "size": 389895,
+    "sha256": "919e4ce5147340e2306748394cdb555bfc6a745119f846e7ce8c985056745b05",
+    "lines": 7553,
+    "segments": 7553,
+    "duration_seconds": 15741,
+    "max_consecutive_identical": 3,
+    "timestamp_errors": 0,
+    "malformed_lines": 0,
+    "tail_gap_seconds": 0
+  },
+  "public_full_episode_receipt": "podcast-learning/reports/transcripts/2026-11-04_ai-yanyi-117.audit.json",
+  "term_and_claim_checks": [
+    {
+      "time": "27:12–27:38",
+      "raw": "Blook、Kuda；两张GPU一起做渲染",
+      "adopted": "Brook、CUDA；两张GPU分割网络共同训练",
+      "basis": "Brook标题；AlexNet §3.2–3.5",
+      "kind": "term_or_statement_crosscheck"
+    },
+    {
+      "time": "28:30–28:55",
+      "raw": "1400多万张标注图像、2万多个类别",
+      "adopted": "区分ImageNet全库与ILSVRC约120万训练图像/1000类；不把不同时点全库数值当训练量",
+      "basis": "AlexNet §2、§6",
+      "kind": "scope_correction"
+    },
+    {
+      "time": "30:50",
+      "raw": "鲜艳知识",
+      "adopted": "先验知识；论文明确讨论局部性等图像假设",
+      "basis": "AlexNet §1",
+      "kind": "term_crosscheck"
+    },
+    {
+      "time": "30:15–31:27",
+      "raw": "讲述将一些技术史评论称为论文原话",
+      "adopted": "指定AlexNet论文未找到这些对应原句，不作为直接引语；保留论文实际说的数据与计算条件",
+      "basis": "AlexNet全文与讲义第11页对照",
+      "kind": "attribution_boundary"
+    },
+    {
+      "time": "32:12–32:21",
+      "raw": "6250万个参数、65万个神经元",
+      "adopted": "沿用原论文约6000万参数、65万神经元，不伪称重新逐层计数",
+      "basis": "AlexNet摘要、§4",
+      "kind": "number_scope"
+    },
+    {
+      "time": "32:47–33:07",
+      "raw": "领先百分之十几个点",
+      "adopted": "2012七模型集成test top-5 15.3%，第二名26.2%；差10.9个百分点",
+      "basis": "AlexNet Table2与§6",
+      "kind": "metric_crosscheck"
+    },
+    {
+      "time": "27:58–28:09；33:08–33:40",
+      "raw": "三人公司被收购，成为Google Brain前身的叙事",
+      "adopted": "2013大学公告核实收购；X官方历史确认Brain2011已开始，不能将成立因果倒置",
+      "basis": "University of Toronto 2013-03-12；X Brain项目历史",
+      "kind": "historical_correction"
+    }
+  ],
+  "audio_listened": false,
+  "word_accuracy_measured": false,
+  "verbatim_completeness": "unverified",
+  "limitations": [
+    "按已有修复全文重跑文字转录审计，7553段、最大连续相同3段、时间戳错误0；该收据并不证明语音识别词准确率。",
+    "完整原始/修复转录均留在公开仓之外；本轮未再次转写音频。",
+    "全音频15757.479秒，末段到15741.49秒，末尾约15.989秒内容仍未确认；文本审计tail_gap=0不能代替对音频结尾的比较。",
+    "正文只使用本章经纸面来源核实的含义，未听校时不逐处区分识别错误与口误。"
+  ],
+  "conclusion": "本章可作有来源校正的研究底稿；不能宣称逐字听校或把人物轶事当成已验证技术史。"
+}

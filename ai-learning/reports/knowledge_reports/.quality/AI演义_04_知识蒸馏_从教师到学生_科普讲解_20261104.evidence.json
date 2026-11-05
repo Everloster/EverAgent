@@ -1,0 +1,438 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_04_知识蒸馏_从教师到学生_科普讲解_20261104.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-04",
+  "generator": {
+    "model": "gpt-6-astra",
+    "harness": "codex",
+    "run_id": "ai-yanyi-chapter04-distillation-20261104",
+    "explicit_model_override": false,
+    "override_reason": "",
+    "identity_basis": "eacli codex-turn-context确认gpt-6-astra，session-bound、confirmed=true；本run负责生成。"
+  },
+  "task": {
+    "summary": "按前三节方式持续逐节展开AI演义，本轮完成第4节知识蒸馏；对照播客、Shownotes、讲义和原论文及必要前驱/后续，讲透机制、例子和条件，同步改好主稿原章节与展开阅读入口。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "逐段读取蒸馏对应ASR并对照Shownotes、讲义，校正术语及过度泛化；复用整期审计，诚实声明未听音与音频尾部缺口。"
+      },
+      {
+        "id": "R2",
+        "text": "以猫/狗/汽车贯穿例子解释预测关系、软硬标签、温度、双目标与迁移输入；少数学但机制准确，报告独立可读。"
+      },
+      {
+        "id": "R3",
+        "text": "讲清MNIST、语音、少数据、未见数字3和specialists的实验设置、指标与边界，不把教师开销、测试调参或未完成实验省掉。"
+      },
+      {
+        "id": "R4",
+        "text": "把2015贡献接回2006前驱与2016序列蒸馏，保留有关署名和研究问题；区分口播当代产品泛化与正式论文方法。"
+      },
+      {
+        "id": "R5",
+        "text": "完成独立展开篇并同步重写主稿原蒸馏节、加醒目入口；验工作台桌面/窄屏双向定位、脚注和两表，保留Brook/AlexNet/ResNet入口。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "PAPER",
+      "kind": "primary",
+      "title": "Distilling the Knowledge in a Neural Network",
+      "locator": "https://arxiv.org/pdf/1503.02531v1",
+      "accessed_on": "2026-11-04",
+      "read_scope": "全文§1–8、致谢与相关参考文献已读。Table1另经第5页图像服务核验；其余表格按正文与文字层。§2.1读到但未逐式重推；未复现实验。视觉无法可靠辨认温度列表粗体，不采用语音最佳温度。",
+      "version": "arXiv:1503.02531v1，2015-03-09；仓内23_distilling_2015.pdf同版本。",
+      "sha256": "74e6689115c539db499f9d6153edecb364059926fd45402454f8210442444c5a"
+    },
+    {
+      "id": "COMPRESSION",
+      "kind": "primary",
+      "title": "Model Compression",
+      "locator": "https://www.cs.cornell.edu/~caruana/compression.kdd06.pdf",
+      "accessed_on": "2026-11-04",
+      "read_scope": "通过eacli web.read阅读摘要、§1、§2开头及后续局部，采用范围仅压缩动机、教师预测模仿和迁移输入覆盖。未审全部实验，不引用性能倍数；文本空格/重音有缺损，不据损坏文字逐字引用。",
+      "version": "KDD 2006"
+    },
+    {
+      "id": "SEQUENCE",
+      "kind": "primary",
+      "title": "Sequence-Level Knowledge Distillation",
+      "locator": "https://arxiv.org/pdf/1606.07947v1",
+      "accessed_on": "2026-11-04",
+      "read_scope": "通过eacli web.read阅读§1–3.2定义方法及Figure1图注，看到§3.3开头。只采用word-level与sequence-level监督区别、教师beam search近似mode生成数据；不采用速度/BLEU数字，不审全实验。公式抽取有损，不逐式引用。",
+      "version": "arXiv:1606.07947v1，2016-06-25"
+    },
+    {
+      "id": "SLIDE",
+      "kind": "local",
+      "title": "AI演义讲义第13页",
+      "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "accessed_on": "2026-11-04",
+      "read_scope": "只读第13页文字层及图像服务对渲染页的转录，恢复缺字；开创者措辞、hard-label句法与机制按原论文收紧。",
+      "version": "51页讲义，本轮第13页。",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0"
+    },
+    {
+      "id": "ASR",
+      "kind": "primary",
+      "title": "AI演义第117期原音频对应自动转录",
+      "locator": "https://media.xyzcdn.net/626b46ea9cbbf0451cf5a962/ludOBUWHSc2Y_GA47pSOwlGC8JPS.m4a",
+      "accessed_on": "2026-11-04",
+      "read_scope": "本节核心约46:30–52:49，逐段阅读含交接的161段（2789.84–3171.64秒）。未听音，不把转录作逐字准确引语；整期修复转录留公开仓外。",
+      "transcript_source_ref": "sha256:919e4ce5147340e2306748394cdb555bfc6a745119f846e7ce8c985056745b05"
+    },
+    {
+      "id": "SHOWNOTES",
+      "kind": "primary",
+      "title": "第117期节目说明与章节",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-04",
+      "read_scope": "复用前轮取得的全文，本轮核Part1的19:35总入口、蒸馏标题及前后顺序；没有蒸馏机制、实验或逐论文精确时间。"
+    },
+    {
+      "id": "TRANSCRIPT_REVIEW",
+      "kind": "local",
+      "title": "蒸馏逐段转录与事实核对记录",
+      "locator": "ai-learning/reports/knowledge_reports/.quality/AI演义_04_知识蒸馏_从教师到学生_科普讲解_20261104.transcription-review.json",
+      "accessed_on": "2026-11-04",
+      "read_scope": "本章161段核查范围、专名和技术含义校正、复用结构收据、未听校与尾部缺口边界。"
+    },
+    {
+      "id": "TRANSCRIPT_AUDIT",
+      "kind": "local",
+      "title": "AI演义整期转录结构收据",
+      "locator": "podcast-learning/reports/transcripts/2026-11-04_ai-yanyi-117.audit.json",
+      "accessed_on": "2026-11-04",
+      "read_scope": "核已有同SHA全文机器收据：7553段、时间戳错误0、最大连续相同3；文本tail_gap=0不能证明原音频尾部完整。"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "教师传递输入到输出的预测关系；训练/部署可选不同模型，学生不必复制参数或结构，收益依赖质量与部署情景。",
+      "report_anchor": "训练时与使用时",
+      "source_ids": [
+        "PAPER"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§1训练/部署动机、learned mapping与ensemble-to-single；不把训练成本抹掉。"
+    },
+    {
+      "id": "C2",
+      "claim": "错误类别的相对概率可携带泛化线索；软目标来自教师、高温双方匹配；有真值时另用T=1硬标签项，部署T=1。",
+      "report_anchor": "实际做哪几件事",
+      "source_ids": [
+        "PAPER"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§1–2软目标、transfer set、同温训练和双目标定义。教师概率包含信息不保证全是真知识。"
+    },
+    {
+      "id": "C3",
+      "claim": "高温软目标梯度尺度约随1/T²缩小，组合硬/软目标时用T²补偿；logit平方误差匹配是高温且每例各自零均值下的近似。",
+      "report_anchor": "实现细节容易漏掉",
+      "source_ids": [
+        "PAPER"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§2–2.1/Eq1–4；两个条件与组合权重边界明确，不推广成任意温度恒等。"
+    },
+    {
+      "id": "C4",
+      "claim": "自拟logits[8,5,0]经softmax在T=1得95.23/4.74/0.03%，在T=5得57.12/31.35/11.53%，排名不变。",
+      "report_anchor": "小算例",
+      "source_ids": [
+        "PAPER"
+      ],
+      "support": "derived",
+      "critical": true,
+      "evidence": "Python标准数学函数实际计算exp((z_i-max(z))/T)/sum，按两位小数；仅教学概率计算，不是模型训练或真实图片测量。"
+    },
+    {
+      "id": "C5",
+      "claim": "MNIST教师2×1200使用正则和平移，错误67；2×800基线146，加T20软目标后74；较大与极小学生的适用温度不同。",
+      "report_anchor": "先看手写数字",
+      "source_ids": [
+        "PAPER"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§3错误个数及教师/学生训练差异；≥300单元T>8近似，30单元约2.5–4更好。"
+    },
+    {
+      "id": "C6",
+      "claim": "语音Table1基线/十模型集成/蒸馏单模型帧准确率58.9/61.1/60.8%，WER10.9/10.7/10.7%；学生与单基线同规模，80%指帧分类收益。",
+      "report_anchor": "十个模型的好处",
+      "source_ids": [
+        "PAPER"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§4–4.1/Table1：约85M参数、8隐藏层、2000h英语；development/test称谓差异留在脚注。未测十倍延迟收益。"
+    },
+    {
+      "id": "C7",
+      "claim": "3%迁移数据时hard44.5%、soft57.0%，全量基线58.9%均为Test Frame Accuracy；教师仍使用全量数据。",
+      "report_anchor": "少量迁移数据",
+      "source_ids": [
+        "PAPER"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§6/Table5；结论不能推为全流程只用3%数据或节省97%总资源。"
+    },
+    {
+      "id": "C8",
+      "claim": "去掉学生迁移集中数字3后仍有教师类别信号；206错经测试表现调bias+3.5变109错，3错133/1010变14/1010；只见7/8的47.3%→13.2%也经测试调参。",
+      "report_anchor": "没见过数字 3",
+      "source_ids": [
+        "PAPER"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§3明确bias为optimize performance on test set；98.6%不能当未触测试集调参的普遍泛化率。"
+    },
+    {
+      "id": "C9",
+      "claim": "JFT的61 specialists让Table3总体25.0→26.1%，+1.1pp/+4.4%relative；原文§8尚未完成specialists回蒸馏，MoE比较有方法范围。",
+      "report_anchor": "专长模型",
+      "source_ids": [
+        "PAPER"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§5–8/Table2–4：当时1亿图/1.5万标签、61模型各300类及dustbin、按预测统计分组；开发/测试称谓差异不擅自统一。"
+    },
+    {
+      "id": "C10",
+      "claim": "2006 Model Compression已用集成输出训练紧凑模型并强调迁移输入覆盖；2015主动承认前驱，不能称首次发明教师学生学习。",
+      "report_anchor": "也有前驱",
+      "source_ids": [
+        "PAPER",
+        "COMPRESSION"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "2015摘要/§1/ref[1]；2006摘要/§1/§2开头。未采用2006性能倍数。"
+    },
+    {
+      "id": "C11",
+      "claim": "2016机器翻译序列蒸馏用beam search近似教师高概率序列训练学生，与分类完整分布监督的信息不同；不能据此推定任意聊天接口与效果。",
+      "report_anchor": "生成的文本训练",
+      "source_ids": [
+        "SEQUENCE",
+        "PAPER"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "2016§1–3.2/Figure1；beam search不是全序列精确argmax，未重报速度或BLEU。"
+    },
+    {
+      "id": "C12",
+      "claim": "三名作者是Hinton、Vinyals、Dean，2015首页均署Google，Hinton另有关联单位且与Vinyals等贡献；仅采用当时署名。",
+      "report_anchor": "三位作者",
+      "source_ids": [
+        "PAPER"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "首页及脚注；没有由署名推定个人分工、现任职务或新组织因果。"
+    },
+    {
+      "id": "C13",
+      "claim": "本章ASR含161段，Shownotes仅给Part1总入口；术语与泛化主张按原文校正，未听校且整期尾部约16秒未知。",
+      "report_anchor": "回到播客与讲义",
+      "source_ids": [
+        "ASR",
+        "SHOWNOTES",
+        "SLIDE",
+        "TRANSCRIPT_REVIEW",
+        "TRANSCRIPT_AUDIT"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "文字交叉核验与原有结构收据，不把机器结构pass等同词准确率或完整音频覆盖。"
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U1",
+      "title": "训练/部署区分与函数模仿",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "训练时与使用时",
+      "source_ids": [
+        "PAPER",
+        "ASR",
+        "SLIDE"
+      ]
+    },
+    {
+      "id": "U2",
+      "title": "软目标、错误类别关系与教师误差",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "只说“这是猫”",
+      "source_ids": [
+        "PAPER",
+        "ASR",
+        "SLIDE"
+      ]
+    },
+    {
+      "id": "U3",
+      "title": "温度的机制、可复算示例与容量边界",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "温度怎样",
+      "source_ids": [
+        "PAPER"
+      ]
+    },
+    {
+      "id": "U4",
+      "title": "迁移输入、同温匹配、双目标和部署T=1",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "实际做哪几件事",
+      "source_ids": [
+        "PAPER",
+        "SLIDE",
+        "ASR"
+      ]
+    },
+    {
+      "id": "U5",
+      "title": "T²补偿及logit匹配的有条件近似",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "实现细节容易漏掉",
+      "source_ids": [
+        "PAPER"
+      ]
+    },
+    {
+      "id": "U6",
+      "title": "MNIST容量、正则与错误对照",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "先看手写数字",
+      "source_ids": [
+        "PAPER"
+      ]
+    },
+    {
+      "id": "U7",
+      "title": "商业语音系统集成到单网的两个指标",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "十个模型的好处",
+      "source_ids": [
+        "PAPER"
+      ]
+    },
+    {
+      "id": "U8",
+      "title": "少量迁移数据的正则作用与全量教师前提",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "少量迁移数据",
+      "source_ids": [
+        "PAPER"
+      ]
+    },
+    {
+      "id": "U9",
+      "title": "未见类别实验、偏置校正和测试集调参",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "没见过数字 3",
+      "source_ids": [
+        "PAPER"
+      ]
+    },
+    {
+      "id": "U10",
+      "title": "专长模型构造、成本动机与尚未完成的回蒸馏",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "专长模型",
+      "source_ids": [
+        "PAPER"
+      ]
+    },
+    {
+      "id": "U11",
+      "title": "2006前驱、2015推进与当时署名",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "把方法放回历史",
+      "source_ids": [
+        "PAPER",
+        "COMPRESSION",
+        "SLIDE",
+        "ASR"
+      ]
+    },
+    {
+      "id": "U12",
+      "title": "逐类别概率和序列蒸馏、聊天接口泛化边界",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "生成的文本训练",
+      "source_ids": [
+        "SEQUENCE",
+        "PAPER",
+        "ASR"
+      ]
+    },
+    {
+      "id": "U13",
+      "title": "函数拟合类比和无损保证的区别",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "回到播客与讲义",
+      "source_ids": [
+        "ASR",
+        "PAPER",
+        "TRANSCRIPT_REVIEW"
+      ]
+    },
+    {
+      "id": "U14",
+      "title": "Shownotes Part1中蒸馏子条目及转录定位",
+      "importance": "supporting",
+      "status": "included",
+      "report_anchor": "Shownotes 只给出",
+      "source_ids": [
+        "SHOWNOTES",
+        "ASR",
+        "TRANSCRIPT_AUDIT"
+      ]
+    },
+    {
+      "id": "U15",
+      "title": "口播人物段子、动态职务和个人数学学习经历",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "ASR"
+      ],
+      "omission_reason": "与本章机制和可核验技术史关系较弱，未另核现任职务或数学史；保留与技术边界有关的类比校正，不把个人经历当作论文证据。"
+    }
+  ],
+  "limitations": [
+    "未训练教师/学生或复现实验；唯一实际计算是教学logits的softmax和表格数字复算，不能当部署测量。",
+    "2015原论文全文已读，但§2.1未逐式重推；只对第5页做视觉辅助核表。无法辨认温度粗体，不采用语音最佳温度。Table1/3的development/test称谓不完全一致，正文/脚注保留口径边界。",
+    "2006仅采用摘要、§1–2开头的方法与覆盖动机；2016仅读§1–3.2和Figure1相关范围，不引用其速度/BLEU或推定当代模型效果。两份网页文字提取有缺损，不作精确公式/排版引语。",
+    "完整ASR复用前轮修复稿和同SHA结构收据；本节读161段但未听音或测词准确率，音频最后约15.989秒未确认。",
+    "人物现职、口播段子、数学史及当前接口能力未另核；只用原版署名和已核论文来讲技术史。",
+    "猫照片、猫狗汽车分数是教学例；温度适用范围、测试偏置校正、3%迁移数据和specialists结果只适用原文条件。主稿问题顺序不代表发表顺序。"
+  ]
+}

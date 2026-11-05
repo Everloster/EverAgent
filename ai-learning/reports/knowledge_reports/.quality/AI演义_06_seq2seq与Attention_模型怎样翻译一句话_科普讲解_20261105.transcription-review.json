@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "kind": "chapter-transcription-review",
+  "reviewed_on": "2026-11-05",
+  "chapter": 6,
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+  "transcript_source_ref": "sha256:919e4ce5147340e2306748394cdb555bfc6a745119f846e7ce8c985056745b05",
+  "read_scope": {
+    "content_window_approx_seconds": [
+      2030,
+      2790
+    ],
+    "context_window_seconds": [
+      2015.08,
+      2837.24
+    ],
+    "segments_read": 282,
+    "chapter_excerpt_sha256": "87bc278ee33453d38adcbe8c6308b09b3257b84420b25e1a53aae4d13c039870",
+    "chapter_segments_sha256": "6c1c136068ef02bf2ff95ad25ef42506ca1cac6eb8e9ee1c52bf0091ef877ffb",
+    "full_segments_sha256": "f322514ced72235a0ca104635824c66df425c18dbae3d0f4e76fa70d088db61c",
+    "full_segments_zero_based_slice": [
+      713,
+      995
+    ],
+    "time_basis": "Shownotes Part1入口19:35，合列seq2seq和Attention；本章约33:50–46:30由逐段ASR定位，含交接核读33:35–47:17。"
+  },
+  "structural_audit": {
+    "schema_version": 2,
+    "kind": "podcast-transcript-audit",
+    "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+    "source_ref": "sha256:919e4ce5147340e2306748394cdb555bfc6a745119f846e7ce8c985056745b05",
+    "max_consecutive_limit": 3,
+    "audit": {
+      "ok": true,
+      "size": 389895,
+      "sha256": "919e4ce5147340e2306748394cdb555bfc6a745119f846e7ce8c985056745b05",
+      "lines": 7553,
+      "segments": 7553,
+      "duration_seconds": 15741,
+      "max_consecutive_identical": 3,
+      "timestamp_errors": 0,
+      "malformed_lines": 0,
+      "tail_gap_seconds": 0
+    }
+  },
+  "public_full_episode_receipt": "podcast-learning/reports/transcripts/2026-11-04_ai-yanyi-117.audit.json",
+  "chapter_segment_check": {
+    "overlap_count": 0,
+    "start_regression_count": 0,
+    "consecutive_exact_duplicate_next_indices_1based": [
+      905,
+      906
+    ],
+    "max_gap_seconds": 2.68,
+    "interpretation": "本章原始浮点分段无开始时间倒退或区间重叠；约43:57有连续相同内容，43:22附近有拆分后近重复。结构合规不代表词语准确或真实音频无缺漏。"
+  },
+  "term_and_claim_checks": [
+    {
+      "time": "33:57–34:02；35:38–36:42；40:07–40:34",
+      "raw": "second to second / Oreal / Quarkly / Bahano / 耶稣华",
+      "adopted": "seq2seq / Oriol Vinyals / Quoc V. Le / Bahdanau / Yoshua Bengio",
+      "basis": "两篇首页及官方版本历史；当前职务与获奖旁支未采用。",
+      "kind": "term_correction"
+    },
+    {
+      "time": "37:29–38:04",
+      "raw": "五个字进去必须五个单词出来",
+      "adopted": "固定维度并不要求输入输出词数相同；问题是共享计算如何处理未知长度且对齐复杂的序列。",
+      "basis": "seq2seq §1–2、Figure1；Bahdanau §2",
+      "kind": "mechanism_correction"
+    },
+    {
+      "time": "38:27–40:04；42:28–42:51",
+      "raw": "隐藏向量装不下长句；两篇都解决这些问题",
+      "adopted": "保留潜在表示/训练瓶颈，但并列倒序LSTM长句结果与Bahdanau弱基线；RNNsearch-30仍会在超训练长度后退化，不写无限容量或全体固定状态必败。",
+      "basis": "seq2seq §3.3、§3.7/Figure3；Bahdanau Figure2、§5.2.2",
+      "kind": "scope_and_counterexample"
+    },
+    {
+      "time": "39:50–40:04；40:23–40:30",
+      "raw": "两篇同期互引；找到attention源头/第一次提出",
+      "adopted": "v1日期Bahdanau 2014-09-01，seq2seq 2014-09-10；当前修订版互引不构成最初合作/因果证明。Bahdanau §6.1承认Graves手写注意力前驱。",
+      "basis": "arXiv历史、两篇§1与相关工作",
+      "kind": "history_correction"
+    },
+    {
+      "time": "40:36–41:33",
+      "raw": "不再需要领域知识；两篇效果都超出统计翻译",
+      "adopted": "端到端联合学习仍需平行语料、词表、结构和工程；seq2seq五模型34.81超过基线33.30，单模型30.59没有；Bahdanau完整测试28.45低于33.30，No UNK子集另论。",
+      "basis": "两篇实验与表1；seq2seq表2",
+      "kind": "experimental_scope_correction"
+    },
+    {
+      "time": "41:36–42:24",
+      "raw": "借LSTM复兴70至80年代encoder-decoder",
+      "adopted": "分别说明LSTM与Cho式门控循环单元；承认论文列出的前史，不采用未一手核验的70/80年代起源断言。",
+      "basis": "seq2seq §2/4；Bahdanau Appendix A.1.1及相关工作",
+      "kind": "architecture_and_history"
+    },
+    {
+      "time": "42:58–44:36",
+      "raw": "和当前要生成的目标词做权重；上下文向量或者叫注意力",
+      "adopted": "由前一解码状态与源annotations打分，softmax得权重，加权和得context；三者不同，尚未生成的目标词不作为打分输入；联合训练不需人工逐词对齐标签。",
+      "basis": "Bahdanau §3、Appendix A",
+      "kind": "information_flow_correction"
+    },
+    {
+      "time": "43:22–43:25；43:55–43:59",
+      "raw": "近重复与连续重复语句",
+      "adopted": "作为ASR质量限制保留记录，不把重复次数当独立论据或自行补造缺失音频。",
+      "basis": "本章282段逐段读取和原始segments结构检查",
+      "kind": "transcription_quality"
+    },
+    {
+      "time": "44:55–46:29",
+      "raw": "所有AI被Transformer统一；Gemini现职与师承合作旁支",
+      "adopted": "保留从视觉到语言的教学路线；只采用两篇首页署名和已完成AlexNet篇的作者关系，不外推统一所有AI或引用未经核查的现职。",
+      "basis": "两篇首页、原文相关工作、既有AlexNet报告",
+      "kind": "scope_boundary"
+    }
+  ],
+  "audio_listened": false,
+  "word_accuracy_measured": false,
+  "verbatim_completeness": "unverified",
+  "limitations": [
+    "逐段核读本章282段与原论文，不是人工听校；不能分清每处识别错误与口误。",
+    "整期结构审计基于整秒文本；本章另查原始浮点segments，二者口径分开。",
+    "原音频15757.479秒，末段15741.49秒，尾部15.989秒仍未知；文本审计tail_gap=0不能证明原音频覆盖完整。",
+    "完整转录、音频、设备与执行收据均在公开仓外。"
+  ],
+  "conclusion": "本章转录适合对照原文定位论题；术语、机制与数字须按论文校正，没有认证逐字准确或整期音频完全覆盖。"
+}

@@ -1,0 +1,903 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_07_GNMT与Transformer_从翻译系统到并行架构_科普讲解_20261105.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-05",
+  "generator": {
+    "model": "gpt-6-astra",
+    "harness": "codex",
+    "run_id": "ai-yanyi-chapter7-source-label-correction-20261105",
+    "explicit_model_override": false,
+    "override_reason": "",
+    "identity_basis": "生成者当前会话agent_identity.py核实为gpt-6-astra/codex，session-bound；本次只更正来源名称，技术内容继承冻结基线。"
+  },
+  "task": {
+    "summary": "沿用前六轮展开AI演义第7节GNMT与Transformer，用黑猫翻译贯穿系统部署与自注意力结构，结合两段播客转录、Shownotes、讲义p15/p34和原论文；同步重写主稿原节与双向导航。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "读两段本章ASR并对照Shownotes与讲义p15/p34；核结构、重复与术语，不假称听音、WER或连续章界。"
+      },
+      {
+        "id": "R2",
+        "text": "用具体翻译例讲清GNMT的深层LSTM/残差/并行、WordPiece/覆盖、整数量化与时延，并保留评测反例与限制。"
+      },
+      {
+        "id": "R3",
+        "text": "讲清自注意力Q/K/V、多头、前馈/残差/位置、三处attention及目标右移和mask；区分训练并行、推理逐步与长序列代价。"
+      },
+      {
+        "id": "R4",
+        "text": "核原论文任务、数据、单模型/集成/检查点平均、计时与消融口径、BLEU/人评、内部冲突、人物分工及首发/修订版本；少数学、独立可读。"
+      },
+      {
+        "id": "R5",
+        "text": "主稿第7节同步实质重写并有醒目展开入口；展开篇能返回原节和去第8节；工作台桌面/窄屏核导航、表格与脚注，保留前六节。"
+      },
+      {
+        "id": "R6",
+        "text": "教学示意不冒充实验；按真实范围记录原文、图像辅助与复核，私有转录/设备/执行收据不进入公开仓。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "GNMT",
+      "kind": "primary",
+      "title": "Google’s Neural Machine Translation System: Bridging the Gap between Human and Machine Translation",
+      "locator": "https://arxiv.org/pdf/1609.08144v2",
+      "accessed_on": "2026-11-05",
+      "read_scope": "23页文字全文，§1–9、Tables1–11、References；根直接看p4/12/16/18/19/23原页，六图中的三组eacli辅助后逐项校正层数/四方人评等错误。其余图按正文和图注，不从曲线像素估数。",
+      "version": "v2，2016-10-08；首发2016-09-26另核history",
+      "sha256": "285fb4323972464ba0be4f7c76a0db1a3cc196d5e44be542152f085d47fe5812"
+    },
+    {
+      "id": "TRANSFORMER",
+      "kind": "primary",
+      "title": "Attention Is All You Need",
+      "locator": "https://arxiv.org/pdf/1706.03762v7",
+      "accessed_on": "2026-11-05",
+      "read_scope": "15页文字全文含§1–7、Tables1–4与References；附录Figures3–5读图注/可提取文字，不作逐头量值核读。根直接看p3/4/8/9架构/结果/消融；eacli辅助中41.0/41.8臆造解释、Table3错列回原图纠正。",
+      "version": "v7，2023-08-02；首发2017-06-12另核history",
+      "sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+    },
+    {
+      "id": "GNMT_HISTORY",
+      "kind": "primary",
+      "title": "GNMT官方版本历史",
+      "locator": "https://arxiv.org/abs/1609.08144",
+      "accessed_on": "2026-11-05",
+      "read_scope": "eacli web.read已读取官方版本历史，核v1/v2日期，不据此扩充技术结论。"
+    },
+    {
+      "id": "TRANSFORMER_HISTORY",
+      "kind": "primary",
+      "title": "Transformer官方版本历史",
+      "locator": "https://arxiv.org/abs/1706.03762",
+      "accessed_on": "2026-11-05",
+      "read_scope": "eacli web.read已读取v1/v7日期，与所读本地PDF版本一致。"
+    },
+    {
+      "id": "BERT",
+      "kind": "primary",
+      "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "locator": "https://arxiv.org/pdf/1810.04805v2",
+      "accessed_on": "2026-11-05",
+      "read_scope": "本轮只定向读§3 WordPiece embeddings、30,000词表及对应Wu et al.2016/GNMT引用；未为本章重读其余BERT实验。",
+      "version": "v2，2019-05-24",
+      "sha256": "5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e"
+    },
+    {
+      "id": "SLIDE",
+      "kind": "local",
+      "title": "终版：AI演义，36篇论文开启你的探索之旅",
+      "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "accessed_on": "2026-11-05",
+      "read_scope": "本轮仅p15 Transformer与p34 GNMT，文字和原页均读；采用二手问题脉络，人物当代去向/绝对首次/问题全部解决等不直接当事实。",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0"
+    },
+    {
+      "id": "SHOWNOTES",
+      "kind": "primary",
+      "title": "第117期节目说明与章节",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-05",
+      "read_scope": "复用已获取shownotes全文并实际阅读；Transformer在Part1模型范式，GNMT在Part3语言模型；不把段落标题当两篇精确起止。",
+      "identity_correction": "2026-11-05经原节目页title/description重新核对，节目归属张小珺Jùn｜商业访谈录，第117期；原链接、shownotes正文与转录材料未变。"
+    },
+    {
+      "id": "ASR",
+      "kind": "primary",
+      "title": "AI演义GNMT与Transformer两段主题转录",
+      "locator": "https://media.xyzcdn.net/626b46ea9cbbf0451cf5a962/ludOBUWHSc2Y_GA47pSOwlGC8JPS.m4a",
+      "accessed_on": "2026-11-05",
+      "read_scope": "逐段读Transformer3448.94–4127.00秒361段，GNMT8911.73–9209.89秒153段，共514段及近边界文字；未听音。",
+      "transcript_source_ref": "sha256:919e4ce5147340e2306748394cdb555bfc6a745119f846e7ce8c985056745b05",
+      "intervals": [
+        {
+          "section": "transformer",
+          "seconds": [
+            3448.94,
+            4127.0
+          ],
+          "segment_count": 361,
+          "excerpt_sha256": "685386aff26c67b59b55ae7bf09b064d66dacf4643f94781151528fa6bd783fb",
+          "segments_sha256": "e11490cc316068359da284ab27c84476c6072c4c5e83e322f4f3b88323c79ef5"
+        },
+        {
+          "section": "gnmt",
+          "seconds": [
+            8911.73,
+            9209.89
+          ],
+          "segment_count": 153,
+          "excerpt_sha256": "fb08b34fba62e9b290e94e76e681d02fc410058bc01a53576468a91ce09c7efa",
+          "segments_sha256": "922c1397b48a0cc8f0b486b1c97b9344581d3d406cf841f2bc47cd93a7fbecb6"
+        }
+      ]
+    },
+    {
+      "id": "TRANSCRIPT_REVIEW",
+      "kind": "local",
+      "title": "GNMT/Transformer本章转录与事实核对",
+      "locator": "ai-learning/reports/knowledge_reports/.quality/AI演义_07_GNMT与Transformer_从翻译系统到并行架构_科普讲解_20261105.transcription-review.json",
+      "accessed_on": "2026-11-05",
+      "read_scope": "两主题区间、原始浮点分段结构与重复、人名/点积/FP8等校正；未听音、尾部未知。"
+    },
+    {
+      "id": "TRANSCRIPT_AUDIT",
+      "kind": "local",
+      "title": "AI演义整期转录结构收据",
+      "locator": "podcast-learning/reports/transcripts/2026-11-04_ai-yanyi-117.audit.json",
+      "accessed_on": "2026-11-05",
+      "read_scope": "核同SHA全文7553段的结构收据，timestamp_errors=0、max_consecutive_identical=3；不以该数值声称原始音频完全覆盖或每词准确。"
+    },
+    {
+      "id": "SEQ2SEQ_CHAPTER",
+      "kind": "local",
+      "title": "已完成AI演义第6节seq2seq与Attention",
+      "locator": "ai-learning/reports/knowledge_reports/AI演义_06_seq2seq与Attention_模型怎样翻译一句话_科普讲解_20261105.md",
+      "accessed_on": "2026-11-05",
+      "read_scope": "承接黑猫例及已核seq2seq三位作者，读机制、人物与相邻导航相关段落，不在本轮重做前章研究。"
+    },
+    {
+      "id": "RESNET_CHAPTER",
+      "kind": "local",
+      "title": "已完成AI演义第3节ResNet",
+      "locator": "ai-learning/reports/knowledge_reports/AI演义_03_ResNet_深层网络如何训练_科普讲解_20261104.md",
+      "accessed_on": "2026-11-05",
+      "read_scope": "仅导航与已完成残差机制解释入口；本章GNMT/Transformer残差事实由两原论文直接支持。"
+    },
+    {
+      "id": "MAIN_NAV",
+      "kind": "local",
+      "title": "AI演义主稿第7节导读与展开入口",
+      "locator": "ai-learning/reports/AI演义_笔记分析与项目整合报告.md",
+      "accessed_on": "2026-11-05",
+      "read_scope": "本轮改paper-gnmt至paper-gpt1前的第7节、两条脚注；导航需实际工作台点击验收，其余章节继承冻结r9。"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "GNMT针对速度、罕见词与漏译等生产问题组合多环节。",
+      "report_anchor": "translation-service",
+      "source_ids": [
+        "GNMT",
+        "SLIDE"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "摘要、§1–2、讲义p34；黑猫缺noir是教学例。"
+    },
+    {
+      "id": "C2",
+      "claim": "GNMT有8 encoder+8 decoder LSTM，底层编码双向、残差自第3层，bottom decoder前一步state参与Attention，支持流水但仍有循环依赖。",
+      "report_anchor": "gnmt-architecture",
+      "source_ids": [
+        "GNMT"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§3–3.3、Figures1–3/式4；避免按GPU标签误数。"
+    },
+    {
+      "id": "C3",
+      "claim": "正式配置12副本×8GPU=96K80，英法ML约6天；循环网络仍能批次/矩阵/层间并行。",
+      "report_anchor": "gnmt-architecture",
+      "source_ids": [
+        "GNMT"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§3.3泛述约10replicas，§8.3实际12replicas；不混淆训练副本与推理ensemble。"
+    },
+    {
+      "id": "C4",
+      "claim": "WordPiece是数据驱动词片和共享词表，Jet/_J+et为原例，仍裁低频字符；采用既有日/韩语音实现。",
+      "report_anchor": "wordpiece-and-coverage",
+      "source_ids": [
+        "GNMT"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§4.1及原文未知字符限定。"
+    },
+    {
+      "id": "C5",
+      "claim": "Table4中WPM32K的38.95为8次单模型分数平均，WPM16K计时0.1874s比32K的0.2118s快，计时为batch16吞吐折算。",
+      "report_anchor": "wordpiece-and-coverage",
+      "source_ids": [
+        "GNMT"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§8.4/Table4；保留正文最快与表格的冲突，不扩大8次平均到所有未说明配置。"
+    },
+    {
+      "id": "C6",
+      "claim": "长度归一化和attention coverage penalty鼓励译全，不保证语义覆盖或逐词翻译。",
+      "report_anchor": "wordpiece-and-coverage",
+      "source_ids": [
+        "GNMT"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§7–8.1，Tables2–3；RL/搜索收益重叠。"
+    },
+    {
+      "id": "C7",
+      "claim": "GNMT使用8bit整数权重/矩阵乘法与16bit敏感状态/部分运算；训练全精度，attention/softmax不全量化，不是FP8。",
+      "report_anchor": "integer-and-latency",
+      "source_ids": [
+        "GNMT",
+        "ASR"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§6、式10–13，对照9103秒ASR；不混推理与训练精度。"
+    },
+    {
+      "id": "C8",
+      "claim": "Table1为6003句开发集整批CPU1322s/GPU3028s/TPU384s，BLEU31.20/31.20/31.21；是硬件+实现比较，GPU瓶颈涉及逐步传输与利用率。",
+      "report_anchor": "integer-and-latency",
+      "source_ids": [
+        "GNMT"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§6/Table1；双CPU主机，CPU/GPU浮点，TPU部分CPU执行；非单句延迟/量化单变量消融。"
+    },
+    {
+      "id": "C9",
+      "claim": "GNMT先ML再可选混合RL，单句奖励GLEU兼顾1–4gramprecision/recall；人评用于检查而非该奖励来源。",
+      "report_anchor": "metrics-and-humans",
+      "source_ids": [
+        "GNMT"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§5/式7–9；BLEU为语料指标，GLEU用于每句奖励。"
+    },
+    {
+      "id": "C10",
+      "claim": "Table6英法38.95→39.92，英德24.67→24.60为8次单模型分数平均，开发集改善未必测试集改善。",
+      "report_anchor": "metrics-and-humans",
+      "source_ids": [
+        "GNMT"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§8.5/Table6，不用Table5的24.61替换。"
+    },
+    {
+      "id": "C11",
+      "claim": "500例Table9四份译文人评，8模型神经集成BLEU40.35→41.16而0–6人评4.46→4.44，不能断言显著伤害；生产实验未用RL/ensemble。",
+      "report_anchor": "metrics-and-humans",
+      "source_ids": [
+        "GNMT"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§8.2/8.6/8.7、Tables7–10；不混Table10三方比较。"
+    },
+    {
+      "id": "C12",
+      "claim": "生产Table10英法4.932/5.295/5.496的人工分差缩小约64%，不是错误句计数；只评简单孤立句且人评有限。",
+      "report_anchor": "metrics-and-humans",
+      "source_ids": [
+        "GNMT"
+      ],
+      "support": "derived",
+      "critical": true,
+      "evidence": "§8.7/Table10、Figure6；(5.295-4.932)/(5.496-4.932)重算。"
+    },
+    {
+      "id": "C13",
+      "claim": "Table11神经译文把投资者不安译成吸引，作者另质疑满分PBMT译文；案例不代表总体错误率。",
+      "report_anchor": "metrics-and-humans",
+      "source_ids": [
+        "GNMT"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "Table11最后一例与表注；保持其对应RL前8模型配置。"
+    },
+    {
+      "id": "C14",
+      "claim": "Self-attention让各位置从同层输入读取，减少逐位置RNN依赖，不必等其他位置本层输出。",
+      "report_anchor": "self-attention",
+      "source_ids": [
+        "TRANSFORMER"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§3–4、Table1；黑猫读取为教学示意，不是测得注意力。"
+    },
+    {
+      "id": "C15",
+      "claim": "Q/K学习投影点积经sqrt(dk)缩放与softmax得到权重，权重汇总V；不是手工语义标签或真实关系证明。",
+      "report_anchor": "self-attention",
+      "source_ids": [
+        "TRANSFORMER"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§3.2.1、式1、Figure2。"
+    },
+    {
+      "id": "C16",
+      "claim": "Base8头、每头K/V64维、整体512维；多投影、拼接、再投影，并非模型集成/GPU数或固定语法职责。",
+      "report_anchor": "self-attention",
+      "source_ids": [
+        "TRANSFORMER"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§3.2.2、Figure2。"
+    },
+    {
+      "id": "C17",
+      "claim": "原Transformer两端6层，含逐位置FFN、残差、post-LN、embedding/softmax，非整网只有attention。",
+      "report_anchor": "self-attention",
+      "source_ids": [
+        "TRANSFORMER"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§3.1/3.3/3.4、Figure1；FFN2线性+ReLU、base2048中间层。"
+    },
+    {
+      "id": "C18",
+      "claim": "位置编码提供顺序线索，正弦与学习PE成绩相近；长于训练长度外推是动机非保证。",
+      "report_anchor": "self-attention",
+      "source_ids": [
+        "TRANSFORMER"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§3.5/Table3(E)，无位置自注意力置换等变，不说所有输出始终相同。"
+    },
+    {
+      "id": "C19",
+      "claim": "三路attention的QKV来源与可见范围不同，decodercrossQ来自目标表示、KV来自encoder最终输出。",
+      "report_anchor": "training-and-generation",
+      "source_ids": [
+        "TRANSFORMER"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§3.2.3/Figure1。"
+    },
+    {
+      "id": "C20",
+      "claim": "目标右移与因果mask联合防止偷看；真实前缀已知时可训练并行，原自回归推理仍逐步生成。",
+      "report_anchor": "training-and-generation",
+      "source_ids": [
+        "TRANSFORMER"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§3.1/3.2.3，§6.1beamsearch；词级法文表和START记号为自拟教学。"
+    },
+    {
+      "id": "C21",
+      "claim": "注意力两两配对代价随长度平方增长，原文层复杂度优势保留n<d；常数路径不等于整网常数时间。",
+      "report_anchor": "transformer-evidence",
+      "source_ids": [
+        "TRANSFORMER"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§4/Table1；100→1000配对数为结构算术说明，非性能测量。"
+    },
+    {
+      "id": "C22",
+      "claim": "英德base27.3/65M/8P100约12h，big28.4/213M/约3.5天；数据及tokenizer英德4.5M+BPE37K、英法36M+WPM32K。",
+      "report_anchor": "transformer-evidence",
+      "source_ids": [
+        "TRANSFORMER"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§5.1/5.2、Tables2–3；不把不同硬件论文训练时间之比说成受控架构加速。"
+    },
+    {
+      "id": "C23",
+      "claim": "Table2是跨文献系统比较，FLOPs由时间/卡数/估算算力得到；single model采用同一次训练末5/20检查点参数平均。",
+      "report_anchor": "transformer-evidence",
+      "source_ids": [
+        "TRANSFORMER"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§6.1、Table2、脚注5。"
+    },
+    {
+      "id": "C24",
+      "claim": "Transformer v7英法big摘要/表2为41.8、正文§6.1为41.0，未擅自消解。",
+      "report_anchor": "transformer-evidence",
+      "source_ids": [
+        "TRANSFORMER"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "根直接看p8与全文p1；拒绝视觉模型编造集成/版本解释。"
+    },
+    {
+      "id": "C25",
+      "claim": "Table3是dev2013且不平均检查点；1头24.9/8头25.8/32头25.4，无dropout24.6，无label smoothing25.3，learnedPE25.7。",
+      "report_anchor": "transformer-evidence",
+      "source_ids": [
+        "TRANSFORMER"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§5.4/6.2/Table3；头数实验相应调整head维度，非越多越好。"
+    },
+    {
+      "id": "C26",
+      "claim": "4层Transformer句法实验约40K/17M句得到F1 91.3/92.7，是任务迁移而非所有设置SOTA。",
+      "report_anchor": "transformer-evidence",
+      "source_ids": [
+        "TRANSFORMER"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§6.3/Table4，表内更高91.7/93.0/93.3；与BLEU不可直接比较。"
+    },
+    {
+      "id": "C27",
+      "claim": "附录用少量例子观察远距、代词与多头模式，不能构成固定职责/完整可解释性证明。",
+      "report_anchor": "transformer-evidence",
+      "source_ids": [
+        "TRANSFORMER"
+      ],
+      "support": "direct",
+      "critical": false,
+      "evidence": "§4、Figures3–5图注和可提取文字；根未逐头测量。"
+    },
+    {
+      "id": "C28",
+      "claim": "GNMT31位作者、Transformer8位共同贡献及v7分工说明支持协作视角；只继承已核seq2seq人物连接。",
+      "report_anchor": "people-and-connections",
+      "source_ids": [
+        "GNMT",
+        "TRANSFORMER",
+        "SEQ2SEQ_CHAPTER"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "两篇首页/致谢与上章人物来源；不把2023修订脚注冒充首发原文或采用未核当代履历。"
+    },
+    {
+      "id": "C29",
+      "claim": "Transformer对WordPiece/长度惩罚引用GNMT、残差引用ResNet；BERT§3 WordPiece引用GNMT支持部件迁移。",
+      "report_anchor": "people-and-connections",
+      "source_ids": [
+        "TRANSFORMER",
+        "BERT"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "Transformer §3.1/5.1/6.1与References；BERT§3及Wu引用。"
+    },
+    {
+      "id": "C30",
+      "claim": "GNMT首发2016-09-26/v2 2016-10-08，Transformer首发2017-06-12/v7 2023-08-02。",
+      "report_anchor": "people-and-connections",
+      "source_ids": [
+        "GNMT_HISTORY",
+        "TRANSFORMER_HISTORY",
+        "GNMT",
+        "TRANSFORMER"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "eacli官方history与本地PDF标记。"
+    },
+    {
+      "id": "C31",
+      "claim": "本章为分离的361+153段、合514段ASR；无浮点回退重叠，GNMT一处相邻完全重复，未听音/测WER，整期尾部15.989s未知。",
+      "report_anchor": "sources-and-corrections",
+      "source_ids": [
+        "ASR",
+        "SHOWNOTES",
+        "SLIDE",
+        "TRANSCRIPT_REVIEW",
+        "TRANSCRIPT_AUDIT"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "本章provenance与同SHA全文结构收据；两段间未选内容不视为缺音。"
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U1",
+      "title": "GNMT针对速度、罕见词与漏译等生产问题组合多环节。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "translation-service",
+      "source_ids": [
+        "GNMT",
+        "SLIDE"
+      ]
+    },
+    {
+      "id": "U2",
+      "title": "GNMT有8 encoder+8 decoder LSTM，底层编码双向、残差自第3层，bottom decoder前一步state参与Attention，支持流水但仍有循环依赖。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "gnmt-architecture",
+      "source_ids": [
+        "GNMT"
+      ]
+    },
+    {
+      "id": "U3",
+      "title": "正式配置12副本×8GPU=96K80，英法ML约6天；循环网络仍能批次/矩阵/层间并行。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "gnmt-architecture",
+      "source_ids": [
+        "GNMT"
+      ]
+    },
+    {
+      "id": "U4",
+      "title": "WordPiece是数据驱动词片和共享词表，Jet/_J+et为原例，仍裁低频字符；采用既有日/韩语音实现。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "wordpiece-and-coverage",
+      "source_ids": [
+        "GNMT"
+      ]
+    },
+    {
+      "id": "U5",
+      "title": "Table4中WPM32K的38.95为8次单模型分数平均，WPM16K计时0.1874s比32K的0.2118s快，计时为batch16吞吐折算。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "wordpiece-and-coverage",
+      "source_ids": [
+        "GNMT"
+      ]
+    },
+    {
+      "id": "U6",
+      "title": "长度归一化和attention coverage penalty鼓励译全，不保证语义覆盖或逐词翻译。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "wordpiece-and-coverage",
+      "source_ids": [
+        "GNMT"
+      ]
+    },
+    {
+      "id": "U7",
+      "title": "GNMT使用8bit整数权重/矩阵乘法与16bit敏感状态/部分运算；训练全精度，attention/softmax不全量化，不是FP8。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "integer-and-latency",
+      "source_ids": [
+        "GNMT",
+        "ASR"
+      ]
+    },
+    {
+      "id": "U8",
+      "title": "Table1为6003句开发集整批CPU1322s/GPU3028s/TPU384s，BLEU31.20/31.20/31.21；是硬件+实现比较，GPU瓶颈涉及逐步传输与利用率。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "integer-and-latency",
+      "source_ids": [
+        "GNMT"
+      ]
+    },
+    {
+      "id": "U9",
+      "title": "GNMT先ML再可选混合RL，单句奖励GLEU兼顾1–4gramprecision/recall；人评用于检查而非该奖励来源。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "metrics-and-humans",
+      "source_ids": [
+        "GNMT"
+      ]
+    },
+    {
+      "id": "U10",
+      "title": "Table6英法38.95→39.92，英德24.67→24.60为8次单模型分数平均，开发集改善未必测试集改善。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "metrics-and-humans",
+      "source_ids": [
+        "GNMT"
+      ]
+    },
+    {
+      "id": "U11",
+      "title": "500例Table9四份译文人评，8模型神经集成BLEU40.35→41.16而0–6人评4.46→4.44，不能断言显著伤害；生产实验未用RL/ensemble。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "metrics-and-humans",
+      "source_ids": [
+        "GNMT"
+      ]
+    },
+    {
+      "id": "U12",
+      "title": "生产Table10英法4.932/5.295/5.496的人工分差缩小约64%，不是错误句计数；只评简单孤立句且人评有限。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "metrics-and-humans",
+      "source_ids": [
+        "GNMT"
+      ]
+    },
+    {
+      "id": "U13",
+      "title": "Table11神经译文把投资者不安译成吸引，作者另质疑满分PBMT译文；案例不代表总体错误率。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "metrics-and-humans",
+      "source_ids": [
+        "GNMT"
+      ]
+    },
+    {
+      "id": "U14",
+      "title": "Self-attention让各位置从同层输入读取，减少逐位置RNN依赖，不必等其他位置本层输出。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "self-attention",
+      "source_ids": [
+        "TRANSFORMER"
+      ]
+    },
+    {
+      "id": "U15",
+      "title": "Q/K学习投影点积经sqrt(dk)缩放与softmax得到权重，权重汇总V；不是手工语义标签或真实关系证明。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "self-attention",
+      "source_ids": [
+        "TRANSFORMER"
+      ]
+    },
+    {
+      "id": "U16",
+      "title": "Base8头、每头K/V64维、整体512维；多投影、拼接、再投影，并非模型集成/GPU数或固定语法职责。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "self-attention",
+      "source_ids": [
+        "TRANSFORMER"
+      ]
+    },
+    {
+      "id": "U17",
+      "title": "原Transformer两端6层，含逐位置FFN、残差、post-LN、embedding/softmax，非整网只有attention。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "self-attention",
+      "source_ids": [
+        "TRANSFORMER"
+      ]
+    },
+    {
+      "id": "U18",
+      "title": "位置编码提供顺序线索，正弦与学习PE成绩相近；长于训练长度外推是动机非保证。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "self-attention",
+      "source_ids": [
+        "TRANSFORMER"
+      ]
+    },
+    {
+      "id": "U19",
+      "title": "三路attention的QKV来源与可见范围不同，decodercrossQ来自目标表示、KV来自encoder最终输出。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "training-and-generation",
+      "source_ids": [
+        "TRANSFORMER"
+      ]
+    },
+    {
+      "id": "U20",
+      "title": "目标右移与因果mask联合防止偷看；真实前缀已知时可训练并行，原自回归推理仍逐步生成。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "training-and-generation",
+      "source_ids": [
+        "TRANSFORMER"
+      ]
+    },
+    {
+      "id": "U21",
+      "title": "注意力两两配对代价随长度平方增长，原文层复杂度优势保留n<d；常数路径不等于整网常数时间。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "transformer-evidence",
+      "source_ids": [
+        "TRANSFORMER"
+      ]
+    },
+    {
+      "id": "U22",
+      "title": "英德base27.3/65M/8P100约12h，big28.4/213M/约3.5天；数据及tokenizer英德4.5M+BPE37K、英法36M+WPM32K。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "transformer-evidence",
+      "source_ids": [
+        "TRANSFORMER"
+      ]
+    },
+    {
+      "id": "U23",
+      "title": "Table2是跨文献系统比较，FLOPs由时间/卡数/估算算力得到；single model采用同一次训练末5/20检查点参数平均。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "transformer-evidence",
+      "source_ids": [
+        "TRANSFORMER"
+      ]
+    },
+    {
+      "id": "U24",
+      "title": "Transformer v7英法big摘要/表2为41.8、正文§6.1为41.0，未擅自消解。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "transformer-evidence",
+      "source_ids": [
+        "TRANSFORMER"
+      ]
+    },
+    {
+      "id": "U25",
+      "title": "Table3是dev2013且不平均检查点；1头24.9/8头25.8/32头25.4，无dropout24.6，无label smoothing25.3，learnedPE25.7。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "transformer-evidence",
+      "source_ids": [
+        "TRANSFORMER"
+      ]
+    },
+    {
+      "id": "U26",
+      "title": "4层Transformer句法实验约40K/17M句得到F1 91.3/92.7，是任务迁移而非所有设置SOTA。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "transformer-evidence",
+      "source_ids": [
+        "TRANSFORMER"
+      ]
+    },
+    {
+      "id": "U27",
+      "title": "附录用少量例子观察远距、代词与多头模式，不能构成固定职责/完整可解释性证明。",
+      "importance": "supporting",
+      "status": "included",
+      "report_anchor": "transformer-evidence",
+      "source_ids": [
+        "TRANSFORMER"
+      ]
+    },
+    {
+      "id": "U28",
+      "title": "GNMT31位作者、Transformer8位共同贡献及v7分工说明支持协作视角；只继承已核seq2seq人物连接。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "people-and-connections",
+      "source_ids": [
+        "GNMT",
+        "TRANSFORMER",
+        "SEQ2SEQ_CHAPTER"
+      ]
+    },
+    {
+      "id": "U29",
+      "title": "Transformer对WordPiece/长度惩罚引用GNMT、残差引用ResNet；BERT§3 WordPiece引用GNMT支持部件迁移。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "people-and-connections",
+      "source_ids": [
+        "TRANSFORMER",
+        "BERT"
+      ]
+    },
+    {
+      "id": "U30",
+      "title": "GNMT首发2016-09-26/v2 2016-10-08，Transformer首发2017-06-12/v7 2023-08-02。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "people-and-connections",
+      "source_ids": [
+        "GNMT_HISTORY",
+        "TRANSFORMER_HISTORY",
+        "GNMT",
+        "TRANSFORMER"
+      ]
+    },
+    {
+      "id": "U31",
+      "title": "本章为分离的361+153段、合514段ASR；无浮点回退重叠，GNMT一处相邻完全重复，未听音/测WER，整期尾部15.989s未知。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "sources-and-corrections",
+      "source_ids": [
+        "ASR",
+        "SHOWNOTES",
+        "SLIDE",
+        "TRANSCRIPT_REVIEW",
+        "TRANSCRIPT_AUDIT"
+      ]
+    },
+    {
+      "id": "U32",
+      "title": "原节实质导读、展开/返回/下一节导航与独立可读性",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "MAIN_NAV"
+      ],
+      "report_anchor": "reading-route"
+    },
+    {
+      "id": "U33",
+      "title": "讲义/口播人物当代履历、公司文化评价、翻译订阅价格旁支",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "ASR",
+        "SLIDE"
+      ],
+      "omission_reason": "未进一步核验且不服务本章机制与历史协作主线；采用原论文已核参与/分工。"
+    },
+    {
+      "id": "U34",
+      "title": "全部训练公式推导、超参数逐项复现与附录热图定量统计",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "GNMT",
+        "TRANSFORMER"
+      ],
+      "omission_reason": "按用户少数学、讲透发展问题的范围，保留关键方法/实验及失败反例；未训练模型或估计图像逐点数值。"
+    }
+  ],
+  "limitations": [
+    "未重新训练模型、复现BLEU/人评或测试当前Google翻译服务。",
+    "黑猫句子、词级切分与START/EOS表是教学示意，不是原论文实际生成结果。",
+    "已读两篇文字全文，根只直接视觉核指定关键页；其余曲线/热图限文字/图注，不声称逐头/逐点测量。",
+    "GNMT速度表是硬件+实现比较，Transformer成本表为跨文献整理，不能分离架构改动的纯因果收益。",
+    "保留Transformer英法41.0/41.8内部冲突及GNMT表4速度与附近文字不一致。",
+    "人评0–6等级分差的相对改善不是错误句计数；短句样本不证明长文或专业译者级能力。",
+    "ASR两段未人工听校，术语校正以论文为准，整期末尾15.989秒仍未知。",
+    "人物后续去向、绝对首次部署、当前产品架构与文化评价未采为技术事实。",
+    "BERT仅定向核WordPiece引用，前六章使用已通过内容，不假称本轮重读所有来源；评价分不能替代用户反馈。"
+  ],
+  "revision_note": "2026-11-05来源名称勘误：原节目为《张小珺Jùn｜商业访谈录》第117期，修正此前误写的晚点聊；URL、shownotes正文与技术讲解未变。除来源名称与本修订元数据外，继承已通过的冻结基线；独立复核只直接验证本次勘误及范围。"
+}

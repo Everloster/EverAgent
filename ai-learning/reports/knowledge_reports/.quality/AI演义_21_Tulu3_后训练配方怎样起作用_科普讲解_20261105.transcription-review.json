@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "kind": "chapter-transcription-review",
+  "reviewed_on": "2026-11-05",
+  "chapter": 21,
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+  "transcript_source_ref": "sha256:46826a59a59b510bb8f6defaf430f1d4f062b633d3a606dac4f4e7037c128062",
+  "full_segments_sha256": "f322514ced72235a0ca104635824c66df425c18dbae3d0f4e76fa70d088db61c",
+  "public_full_episode_receipt": "podcast-learning/reports/transcripts/2026-11-04_ai-yanyi-117.audit.json",
+  "read_scope": {
+    "segments_read": 85,
+    "source_indices_zero_based_inclusive": [
+      5377,
+      5461
+    ],
+    "actual_interval_seconds": [
+      11169.02,
+      11276.07
+    ],
+    "span_seconds": 107.05,
+    "segment_artifact_sha256": "3d22be66d1075afa8fd8c2a81e4057e4744a3486e9101470fa3b5755a712553e",
+    "text_artifact_sha256": "46826a59a59b510bb8f6defaf430f1d4f062b633d3a606dac4f4e7037c128062",
+    "time_basis": "本章约03:06:09–03:07:56；前为InstructGPT，后转多模态。官方shownotes只给Part级起点，章节编辑次序不等于音频相邻次序。"
+  },
+  "chapter_segment_check": {
+    "same_as_original_slice": true,
+    "segments": 85,
+    "fractional_start_backwards": 0,
+    "fractional_end_backwards": 0,
+    "fractional_end_before_start": 0,
+    "overlap_count": 0,
+    "max_gap_seconds": 0.08,
+    "max_consecutive_identical": 1
+  },
+  "compatible_text_audit": {
+    "schema_version": 2,
+    "kind": "podcast-transcript-audit",
+    "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+    "source_ref": "sha256:46826a59a59b510bb8f6defaf430f1d4f062b633d3a606dac4f4e7037c128062",
+    "max_consecutive_limit": 3,
+    "audit": {
+      "ok": true,
+      "size": 3263,
+      "sha256": "46826a59a59b510bb8f6defaf430f1d4f062b633d3a606dac4f4e7037c128062",
+      "lines": 85,
+      "segments": 85,
+      "duration_seconds": 11276,
+      "max_consecutive_identical": 1,
+      "timestamp_errors": 0,
+      "malformed_lines": 0,
+      "tail_gap_seconds": 0
+    }
+  },
+  "audit_interpretation": "原生整数秒文本审计通过；duration_seconds=11276是绝对末位置，不是章长。百分秒原切片另核一致性、单调、重叠及间隔。未改原ASR、未听校。",
+  "term_and_claim_checks": [
+    {
+      "time_seconds": [
+        11176.2,
+        11223.84
+      ],
+      "issue": "模型名、后训练和机构名有识别歧义",
+      "adopted": "采用论文中的Tülu3、post-training、Llama3.1、Ai2名称；不按同音转写拼写",
+      "basis": "原论文首页/§2，讲义p40",
+      "kind": "names_and_terms"
+    },
+    {
+      "time_seconds": [
+        11223.84,
+        11254.31
+      ],
+      "issue": "开放材料与性能比较的概括",
+      "adopted": "按Table1说明材料；按规模和评测保留收益/回退，不承接泛化全面胜出",
+      "basis": "原论文Tables1/6/23/31/33",
+      "kind": "performance_and_scope"
+    },
+    {
+      "time_seconds": [
+        11256.26,
+        11272.94
+      ],
+      "issue": "作者和通讯介绍",
+      "adopted": "署名以论文为准，保留开放配方研究背景；未单独调查人物最新职务/通讯订阅情况",
+      "basis": "原论文署名与贡献表，讲义作者栏",
+      "kind": "author_context"
+    }
+  ],
+  "audio_listened": false,
+  "wer_measured": false,
+  "limitations": [
+    "文本结构检查不能代表听写准确率。",
+    "本章只有约107秒，完整训练机制来自论文，不冒称口述已讲全部细节。",
+    "不公开完整ASR和私有存储定位。"
+  ]
+}

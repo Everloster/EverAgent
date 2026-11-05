@@ -1,0 +1,582 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_22_DeepVideo_模型怎样利用视频时间信息_科普讲解_20261105.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-05",
+  "generator": {
+    "model": "gpt-6-astra",
+    "harness": "codex",
+    "run_id": "ai-yanyi-deepvideo-r1-20261105",
+    "explicit_model_override": false,
+    "override_reason": "",
+    "identity_basis": "本轮 eacli session current 的 codex-thread-state / session-bound confirmed。仅证明协调生成者；子 Reviewer runtime 另核，未借根身份补证。"
+  },
+  "task": {
+    "summary": "第22节DeepVideo展开与原节同步，少数学讲清单帧评测、时间融合、弱标数据、真实收益与失败、计算和迁移；规范列表标题和阅读往返。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "结合CVPR正式原文、讲义p42、shownotes和完整248段目标ASR，说明历史问题、输入/输出及阅读边界。"
+      },
+      {
+        "id": "R2",
+        "text": "用一个贯穿例子解释单帧视频聚合、Early/Late/Slow与多分辨率；时间与模态、局部与整段顺序区分清楚。"
+      },
+      {
+        "id": "R3",
+        "text": "保留数据噪声/重复、Table1单模型与集成、真实正反案例、相机运动假说、训练成本与UCF迁移口径。"
+      },
+      {
+        "id": "R4",
+        "text": "更正ImageNet初始化推断、摘要/Table3冲突、单帧评测省略；未听校/训练/重叠未排除等如实说明。"
+      },
+      {
+        "id": "R5",
+        "text": "主稿原22节实质改写且标题后首块为展开链接；展开能返回22、上21 Tülu3、下23双流；其余主稿严格继承。"
+      },
+      {
+        "id": "R6",
+        "text": "统一《AI演义》两位序号｜主题；独立可读，工作台1440/390实际点击目录/脚注/表格/展开往返，按来源优先独立复核。"
+      }
+    ],
+    "reader_feedback": [
+      "原章节没有优化、也没有链接展开阅读的啊",
+      "按Brook方式一轮完成一节，持续完成；少数学、人类阅读友好。",
+      "列表命名开头规范一下。"
+    ]
+  },
+  "sources": [
+    {
+      "id": "PAPER",
+      "kind": "primary",
+      "title": "Large-scale Video Classification with Convolutional Neural Networks",
+      "locator": "https://openaccess.thecvf.com/content_cvpr_2014/papers/Karpathy_Large-scale_Video_Classification_2014_CVPR_paper.pdf",
+      "accessed_on": "2026-11-05",
+      "read_scope": "CVPR正式8页PDF全文、Tables1–4及Figure1–5的图注/正文。论文p3–7原图先经eacli typed图像调用（两项BackendTimeout）后本地逐页查看，核结构/表值/标签排序；无补充混淆矩阵、无视频或GIF观看。参考文献可见，不等于逐篇精读。",
+      "sha256": "662dd2baee30667b3e591b18c71010d1688837e03057f861d38ed832b411499e",
+      "version": "CVPR 2014正式论文集PDF；8页"
+    },
+    {
+      "id": "LECTURE",
+      "kind": "local",
+      "title": "《AI演义》讲义DeepVideo条目",
+      "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "accessed_on": "2026-11-05",
+      "read_scope": "p41路线概览文本；p42文本、eacli OCR和原图。方法和数字以正式论文限定。",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0"
+    },
+    {
+      "id": "PODCAST",
+      "kind": "primary",
+      "title": "张小珺商业访谈录117：DeepVideo片段",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-05",
+      "read_scope": "完整248段目标ASR与邻接边界，零基5471–5718，11287.99–11711.90秒；未听音。",
+      "transcript_review": "ai-learning/reports/knowledge_reports/.quality/AI演义_22_DeepVideo_模型怎样利用视频时间信息_科普讲解_20261105.transcription-review.json",
+      "transcript_source_ref": "sha256:cf7c6f26802838286ed12d1d9d39efb1e461bb522d88a33e37da363028d19d1b"
+    },
+    {
+      "id": "SHOWNOTES",
+      "kind": "primary",
+      "title": "节目shownotes多模态路线",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-05",
+      "read_scope": "复用此前官方节目页缓存，重读Part4起点03:08:08及DeepVideo/双流顺序；未重新抓页。",
+      "cache_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5",
+      "fresh_fetch": false
+    },
+    {
+      "id": "CVF",
+      "kind": "primary",
+      "title": "CVF正式论文题名、作者与出版记录",
+      "locator": "https://openaccess.thecvf.com/content_cvpr_2014/html/Karpathy_Large-scale_Video_Classification_2014_CVPR_paper.html",
+      "accessed_on": "2026-11-05",
+      "read_scope": "本轮eacli返回内容全文；摘要数字与正文表格不一致，未视作更正后的数字。",
+      "response_sha256": "58bebcc8b86b7bcd609e21cb5b5df2ef963379c18e2f70d78dc130260e0d7226"
+    },
+    {
+      "id": "PROJECT",
+      "kind": "primary",
+      "title": "作者DeepVideo项目页",
+      "locator": "https://cs.stanford.edu/people/karpathy/deepvideo/",
+      "accessed_on": "2026-11-05",
+      "read_scope": "本轮eacli返回全文，1133158个URL为发布索引口径；未逐项检查仓库/原视频或观看GIF。",
+      "response_sha256": "c0b7afbc038bdc99277b6434e5d5172e3c2986f576ad9c297a007ea1d7c51231"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "DeepVideo为CVPR2014的Google Research/Stanford视频分类研究，将数据、时间连接和成本共同实验；已有前驱，不称首次视频深度学习。",
+      "report_anchor": "why-video-is-different",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "CVF",
+        "LECTURE"
+      ],
+      "critical": true,
+      "evidence": "正式首页/§§1–2、CVF pp1725–1732；不扩展后续职业或工业谱系。"
+    },
+    {
+      "id": "C2",
+      "claim": "本任务由RGB短clip预测体育类别，最后平均；时间帧融合与跨模态文字/图像融合不同。",
+      "report_anchor": "what-the-model-predicts",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "PODCAST",
+        "LECTURE"
+      ],
+      "critical": true,
+      "evidence": "§3/§3.1：bag of clips与三种时间连接；播客跨模态旁论在报告中明确区分。"
+    },
+    {
+      "id": "C3",
+      "claim": "Single-frame每次只输入一帧，但Sports视频级结果抽20clip、各做4次crop/flip再平均；Clip41.1与Video59.3是不同评价单位。",
+      "report_anchor": "single-frame-is-not-one-image",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§3.1 Single-frame与§4.1 Video-level predictions、Table1原图；不杜撰具体取哪一帧。"
+    },
+    {
+      "id": "C4",
+      "claim": "固定clip预测的简单平均不随clip排列改变，因而没有在最终聚合中保留长程顺序；内部帧序实验未做。",
+      "report_anchor": "single-frame-is-not-one-image",
+      "support": "derived",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "由§4.1平均运算的交换律得出；模型可能保留clip内部时序，不把两者混同。"
+    },
+    {
+      "id": "C5",
+      "claim": "Early第一层融合10帧；Late共享单帧分支相隔15帧，在首个全连接层合并；Slow用时间窗4/2/2与步长2逐层由10变4/2/1。",
+      "report_anchor": "three-temporal-fusions",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§3.1/Figure1，Early 11×11×3×10；慢为逐层融合不指慢放。跳绳为教学构造，不是已定位神经元或新实验。"
+    },
+    {
+      "id": "C6",
+      "claim": "Sports1M论文100万487类，70/10/20，约5%多标签；文本元数据自动标注导致视频级错标与帧级无关。",
+      "report_anchor": "million-noisy-videos",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§4.1 Dataset与足球比分牌/采访/主播/观众真实例；弱标注不等于无监督。"
+    },
+    {
+      "id": "C7",
+      "claim": "训练每视频最多100个约半秒clip、平均视频5分36秒、clip内一致增强；1755条含近重复帧不代表已全删除或无泄漏。",
+      "report_anchor": "million-noisy-videos",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§3.3与§4.1 Dataset；漏过瞬间动作为方法边界的示意，不给失败频率。"
+    },
+    {
+      "id": "C8",
+      "claim": "项目页1133158视频URL与论文百万视频/20万测试分开，不重算原论文分母。",
+      "report_anchor": "million-noisy-videos",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "PROJECT"
+      ],
+      "critical": true,
+      "evidence": "官方项目页数据说明与论文Table1标题；不同记录粒度不擅自等同。"
+    },
+    {
+      "id": "C9",
+      "claim": "Table1 Video Hit@1手工55.3、Single59.3、Early57.7、Late59.3、Slow60.9、集成63.9；Slow较Single高1.6个百分点，集成非单模型。",
+      "report_anchor": "results-and-regressions",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "Table1原图；VideoHit5对应77.7/76.8/78.7/80.2/82.4，Hit@k为至少一个真标签命中。"
+    },
+    {
+      "id": "C10",
+      "claim": "传统基线密集用整段特征而CNN抽20clip；原表无置信区间，不外推所有传统方法或统计显著。",
+      "report_anchor": "results-and-regressions",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§4.1 Feature histogram baselines/Quantitative results以及Table1实际字段。"
+    },
+    {
+      "id": "C11",
+      "claim": "Slow相对Single每类AP：Juggling+.12、PoleClimbing+.10、SkippingRope+.06，三类赛车/截拳道-.07；Figure5展示杂耍纠错与赛车退步。",
+      "report_anchor": "when-motion-helps",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "Table2/Figure5：JugglingClub单帧acrobatics第一→Slow正确第一；ShortTrackMotorRacing单帧正确→Slow dirt track racing第一；仅核展示标签，不看过完整片段。"
+    },
+    {
+      "id": "C12",
+      "claim": "相机运动干扰是作者假说而非隔离因果；类别可能依赖外观，许多混淆发生在近邻类。",
+      "report_anchor": "when-motion-helps",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§4.1 motion/qualitative与§5替代解释；Figure4 track cycling被更宽cycling排在前；无总体错误严重性保证。"
+    },
+    {
+      "id": "C13",
+      "claim": "多分辨率178×178拆为低清全景89×89与原清中心89×89，两路拼接；Single60.0优于仅中心49.9/仅全景56.0，依赖中心偏置。",
+      "report_anchor": "multiresolution-and-cost",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§3.2/Figure2/Table1；Figure3只支持定性滤波器分工，不是Personal Context或RGB/光流双流。"
+    },
+    {
+      "id": "C14",
+      "claim": "具体实现Single6→21clip/s即3.5倍、Slow5→10即2倍，受分区/实现影响；Downpour10–50副本、4–32分区、约一月，不把分区称GPU。",
+      "report_anchor": "multiresolution-and-cost",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§3.3/§4.1训练与吞吐；50M采样/500M累计为作者估计，非不同视频数。"
+    },
+    {
+      "id": "C15",
+      "claim": "原文明示Sports1M→UCF101，后者13320视频101类50clip/视频3fold；41.3从头、64.1顶层、65.4顶3、62.2全层。",
+      "report_anchor": "sports-to-other-actions",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§4.2/Table3：顶部三层为两个FC和分类器；43.9为Soomro基线，59.0手工基线，不能混为从头成绩。"
+    },
+    {
+      "id": "C16",
+      "claim": "UCF分组mAP顶层→顶3，乐器.46→.65体育.80→.79；全层调差和过拟合解释仅限实验，数据重叠未排除。",
+      "report_anchor": "sports-to-other-actions",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "Table4/§4.2结果与缺YouTube IDs；mAP不与accuracy混用；差24.1pp不是等总训练预算比较。"
+    },
+    {
+      "id": "C17",
+      "claim": "摘要63.3与Table3最高65.4不一致，本文按Table3并留差异；架构类似AlexNet不证明ImageNet初始化，亦不反向证明未用。",
+      "report_anchor": "sports-to-other-actions",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "CVF",
+        "PROJECT",
+        "LECTURE",
+        "PODCAST"
+      ],
+      "critical": true,
+      "evidence": "摘要/§3.1/§4.2/Table3与讲义p42、ASR03:10:25–03:10:48对照。"
+    },
+    {
+      "id": "C18",
+      "claim": "作者后续方向含相机运动、更宽类别与RNN聚合；单帧强不能证明运动不重要，当前流程不足长视频事件理解。",
+      "report_anchor": "what-remains-unsolved",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§5完整结论；与下一节按运动显式输入的研究问题相连，不在本篇新宣称后续系统效果。"
+    },
+    {
+      "id": "C19",
+      "claim": "ASR完整248段423.91秒、结构检查通过但未听校/测WER；跨模态/履历旁论及24fps过宽说法有边界说明。",
+      "report_anchor": "sources-and-scope",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "LECTURE",
+        "PODCAST",
+        "SHOWNOTES"
+      ],
+      "critical": true,
+      "evidence": "目标切片/精确和原生审计；shownotes起点03:08:08；全转写不发布。"
+    },
+    {
+      "id": "C20",
+      "claim": "提出相近外观不同动作、clip重排、内部帧序重排、相机控制为下一步验证思路，未执行。",
+      "report_anchor": "thinking-and-questions",
+      "support": "derived",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "由论文§5的两个解释与平均聚合局限引出的[待验证]方案；不是本项目已得结果。"
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U1",
+      "title": "DeepVideo为CVPR2014的Google Research/Stanford视频分类研究，将数据、时间连接和成本共同实验；已有前驱，不称首次视频深度学习。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "CVF",
+        "LECTURE"
+      ],
+      "report_anchor": "why-video-is-different"
+    },
+    {
+      "id": "U2",
+      "title": "本任务由RGB短clip预测体育类别，最后平均；时间帧融合与跨模态文字/图像融合不同。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "PODCAST",
+        "LECTURE"
+      ],
+      "report_anchor": "what-the-model-predicts"
+    },
+    {
+      "id": "U3",
+      "title": "Single-frame每次只输入一帧，但Sports视频级结果抽20clip、各做4次crop/flip再平均；Clip41.1与Video59.3是不同评价单位。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "single-frame-is-not-one-image"
+    },
+    {
+      "id": "U4",
+      "title": "固定clip预测的简单平均不随clip排列改变，因而没有在最终聚合中保留长程顺序；内部帧序实验未做。",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "single-frame-is-not-one-image"
+    },
+    {
+      "id": "U5",
+      "title": "Early第一层融合10帧；Late共享单帧分支相隔15帧，在首个全连接层合并；Slow用时间窗4/2/2与步长2逐层由10变4/2/1。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "three-temporal-fusions"
+    },
+    {
+      "id": "U6",
+      "title": "Sports1M论文100万487类，70/10/20，约5%多标签；文本元数据自动标注导致视频级错标与帧级无关。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "million-noisy-videos"
+    },
+    {
+      "id": "U7",
+      "title": "训练每视频最多100个约半秒clip、平均视频5分36秒、clip内一致增强；1755条含近重复帧不代表已全删除或无泄漏。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "million-noisy-videos"
+    },
+    {
+      "id": "U8",
+      "title": "项目页1133158视频URL与论文百万视频/20万测试分开，不重算原论文分母。",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "PROJECT"
+      ],
+      "report_anchor": "million-noisy-videos"
+    },
+    {
+      "id": "U9",
+      "title": "Table1 Video Hit@1手工55.3、Single59.3、Early57.7、Late59.3、Slow60.9、集成63.9；Slow较Single高1.6个百分点，集成非单模型。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "results-and-regressions"
+    },
+    {
+      "id": "U10",
+      "title": "传统基线密集用整段特征而CNN抽20clip；原表无置信区间，不外推所有传统方法或统计显著。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "results-and-regressions"
+    },
+    {
+      "id": "U11",
+      "title": "Slow相对Single每类AP：Juggling+.12、PoleClimbing+.10、SkippingRope+.06，三类赛车/截拳道-.07；Figure5展示杂耍纠错与赛车退步。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "when-motion-helps"
+    },
+    {
+      "id": "U12",
+      "title": "相机运动干扰是作者假说而非隔离因果；类别可能依赖外观，许多混淆发生在近邻类。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "when-motion-helps"
+    },
+    {
+      "id": "U13",
+      "title": "多分辨率178×178拆为低清全景89×89与原清中心89×89，两路拼接；Single60.0优于仅中心49.9/仅全景56.0，依赖中心偏置。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "multiresolution-and-cost"
+    },
+    {
+      "id": "U14",
+      "title": "具体实现Single6→21clip/s即3.5倍、Slow5→10即2倍，受分区/实现影响；Downpour10–50副本、4–32分区、约一月，不把分区称GPU。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "multiresolution-and-cost"
+    },
+    {
+      "id": "U15",
+      "title": "原文明示Sports1M→UCF101，后者13320视频101类50clip/视频3fold；41.3从头、64.1顶层、65.4顶3、62.2全层。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "sports-to-other-actions"
+    },
+    {
+      "id": "U16",
+      "title": "UCF分组mAP顶层→顶3，乐器.46→.65体育.80→.79；全层调差和过拟合解释仅限实验，数据重叠未排除。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "sports-to-other-actions"
+    },
+    {
+      "id": "U17",
+      "title": "摘要63.3与Table3最高65.4不一致，本文按Table3并留差异；架构类似AlexNet不证明ImageNet初始化，亦不反向证明未用。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "CVF",
+        "PROJECT",
+        "LECTURE",
+        "PODCAST"
+      ],
+      "report_anchor": "sports-to-other-actions"
+    },
+    {
+      "id": "U18",
+      "title": "作者后续方向含相机运动、更宽类别与RNN聚合；单帧强不能证明运动不重要，当前流程不足长视频事件理解。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "what-remains-unsolved"
+    },
+    {
+      "id": "U19",
+      "title": "ASR完整248段423.91秒、结构检查通过但未听校/测WER；跨模态/履历旁论及24fps过宽说法有边界说明。",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "LECTURE",
+        "PODCAST",
+        "SHOWNOTES"
+      ],
+      "report_anchor": "sources-and-scope"
+    },
+    {
+      "id": "U20",
+      "title": "提出相近外观不同动作、clip重排、内部帧序重排、相机控制为下一步验证思路，未执行。",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "thinking-and-questions"
+    }
+  ],
+  "limitations": [
+    "没有训练/推理或复现DeepVideo评测、吞吐。",
+    "ASR整段已读，但没有听校和WER；文本检查不是准确率。",
+    "Sports1M重复与UCF跨数据重叠未排除；聚合无长程顺序。",
+    "相机干扰为作者假说，Figure示例和挑选AP差值不表示总体失效频率。",
+    "主实验ImageNet权重初始化未明；摘要/Table3有数字冲突，按表格并保留差异。",
+    "全景/中心提速受实现与拍摄偏置限制，未当通用设备保证。",
+    "仅核官方页、论文与目标讲义/口述，未核作者最新履历、完整数据仓或原视频。"
+  ],
+  "research_receipts": {
+    "source_manifest": {
+      "artifact": "source-manifest.json",
+      "sha256": "99dbabd1e2fe240a22be88c3c10c3f8fff6beb616671b4377d45ed6b62cc054d"
+    },
+    "calculations": {
+      "artifact": "calculation-check.json",
+      "sha256": "b8640ab73c62c9bc6c8af7d26aee3429509fbdc877605805d37825c57fcb5b68"
+    },
+    "transcription_review": {
+      "path": "ai-learning/reports/knowledge_reports/.quality/AI演义_22_DeepVideo_模型怎样利用视频时间信息_科普讲解_20261105.transcription-review.json",
+      "sha256": "b24e086980c7e1912bf6e1ddd49dbda3438f8b94ca0b70d6f3f8506384416419"
+    },
+    "generator_identity": {
+      "artifact": "session-current.json",
+      "sha256": "88db0e28f8ec3f9e1d607c54f106a12c2ffd5bad37e051b8bff5f89cf342fd2e"
+    }
+  }
+}

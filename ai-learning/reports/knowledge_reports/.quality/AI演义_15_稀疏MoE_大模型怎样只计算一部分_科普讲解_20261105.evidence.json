@@ -1,0 +1,489 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_15_稀疏MoE_大模型怎样只计算一部分_科普讲解_20261105.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-05",
+  "generator": {
+    "model": "gpt-6-astra",
+    "harness": "codex",
+    "run_id": "ai-yanyi-moe-20261105",
+    "explicit_model_override": false,
+    "override_reason": "",
+    "identity_basis": "eacli session current actor.model.id=gpt-6-astra，codex-turn-context，session-bound，confirmed=true；仅证明生成者，不作为子Reviewer运行身份。"
+  },
+  "task": {
+    "summary": "按用户认可的Brook方式完成《AI演义》第15节：原节实质改写且节首可展开，详解结合讲义、节目shownotes、本章转录与2017 MoE原论文，少数学、面向人类连续阅读。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "解释2017稀疏MoE在已有专家混合研究中的贡献，准确说明LSTM背景与按问题而非发表时间排序。"
+      },
+      {
+        "id": "R2",
+        "text": "沿一个明确标为假设的输入例子讲清门控、专家、逐位置加权合并、训练梯度与噪声、层次路由，以及批量/通信/负载均衡。"
+      },
+      {
+        "id": "R3",
+        "text": "用原实验区分总容量、单次计算、质量与时间/费用，纠正千倍容量直接换算成本；保留单位、数据集、训练轮数和硬件口径。"
+      },
+      {
+        "id": "R4",
+        "text": "保留最大模型和英韩翻译退化、严格均衡变体和训练/推理差异；核对本章206段及时间审计，说明讲义/节目未核旁支和未听校边界。"
+      },
+      {
+        "id": "R5",
+        "text": "主稿第15节实质改写且节首可展开，详解可返回原节、上一节MegaScale与下一节LoRA，保持主稿前14节和其余正文。"
+      },
+      {
+        "id": "R6",
+        "text": "独立可读、少数学，关键数字与引用清楚；真实桌面/窄屏导航和表格/脚注验收，来源优先独立复核，私有原始资料不进入公开仓。"
+      }
+    ],
+    "reader_feedback": [
+      "原章节没有优化、也没有链接展开阅读的啊",
+      "按第一个Brook章节的方式，一轮完成一个章节，持续做完，参考之前轮次改进。",
+      "少数学，解释背景、解决什么问题和发展路线，报告面向人类阅读。"
+    ]
+  },
+  "sources": [
+    {
+      "id": "MOE",
+      "kind": "primary",
+      "title": "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer",
+      "locator": "https://arxiv.org/pdf/1701.06538v1",
+      "accessed_on": "2026-11-05",
+      "version": "arXiv:1701.06538v1 [cs.LG], 23 Jan 2017；本地19页PDF首页仍标Under review as a conference paper at ICLR 2017。",
+      "local_copy": "ai-learning/papers/21_moe_2017.pdf",
+      "sha256": "2567713d198a376b65b92f0c60b9f58c8c5f66755530b92203533a17c4ec4b8e",
+      "read_scope": "physical pp1–19排版文本全文，主文§§1–6、附录A–G，含图表图注和参考文献。直接视觉核对p7 Table1、p9 Table5、p13 Table6、p15 Table7、p16 Table8；其余图表按文本/图注读取，不声称全部曲线逐像素核验。未重训或测时。",
+      "metadata_receipt": {
+        "artifact": "arxiv-metadata.json",
+        "sha256": "e7bf55d10a1de2dbe08b74edf4ad8ccf20ec160eb777aca3228b3a85431fb68f"
+      },
+      "venue_locator": "https://openreview.net/forum?id=B1ckMDqlg",
+      "venue_read_scope": "实读OpenReview元数据/摘要，确认ICLR 2017 Poster；未读该处另版PDF、评论或实现。",
+      "venue_receipt": {
+        "artifact": "openreview-page.json",
+        "sha256": "d1ca9c339434833a490193e2d6a56058483b0f1e39a3f1068a0c3822be3f031f"
+      }
+    },
+    {
+      "id": "LECTURE",
+      "kind": "local",
+      "title": "《AI演义：36篇论文开启你的探索之旅》讲义 稀疏MoE页",
+      "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "accessed_on": "2026-11-05",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
+      "read_scope": "physical p17文本与原图；2017.01、容量/成本、脑分区类比、算法与工程配合。直接确认把容量1000倍换算成本千分之一的句子，本报告予以纠正。"
+    },
+    {
+      "id": "EPISODE",
+      "kind": "primary",
+      "title": "张小珺Jùn｜商业访谈录 第117期：谢青池谈AI演义",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-05",
+      "published_on": "2025-10-28",
+      "read_scope": "已核节目身份、shownotes；Part1 19:35包括现代MoE。读恢复转录206段01:15:34.53–01:22:27.03及相邻边界；没有逐论文官方细时间表，未听校。",
+      "shownotes_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5",
+      "transcription_review": "ai-learning/reports/knowledge_reports/.quality/AI演义_15_稀疏MoE_大模型怎样只计算一部分_科普讲解_20261105.transcription-review.json",
+      "alternate_locator": "https://podcasts.apple.com/cn/podcast/id1634356920?i=1000733801180",
+      "alternate_read_scope": "复用前轮实读同一期Apple页面/eacli成功收据，核节目身份与内容列表；未试播音频。",
+      "alternate_receipt": {
+        "artifact": "apple-episode-read.json",
+        "sha256": "b43f4f8def7905b5a01e9a6ec9924bfec82015690f200b3412b3b2129f01584c"
+      },
+      "alternate_text_sha256": "5d280466ec15666cd2f03b23d163a085986859b72a37facf13831eaf9a86fc3a"
+    },
+    {
+      "id": "TRANSCRIPT_REVIEW",
+      "kind": "local",
+      "title": "第15节稀疏MoE转录结构与术语/成本口径核查",
+      "locator": "ai-learning/reports/knowledge_reports/.quality/AI演义_15_稀疏MoE_大模型怎样只计算一部分_科普讲解_20261105.transcription-review.json",
+      "accessed_on": "2026-11-05",
+      "sha256": "6384584d3fa617870c11041551a9e7a8ec426f031760b8af3effc5f08de3dbdd",
+      "read_scope": "206段精确边界、3处正间隔、最长连续重复2、无倒序/负时长/重叠、正式audit_transcript机器收据；语义回查不替代WER或逐字听校。"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "2017稀疏MoE在LSTM中实现条件计算，承接早期MoE和深层组件研究，不代表发明全部MoE思想。",
+      "report_anchor": "problem-and-history",
+      "support": "direct",
+      "source_ids": [
+        "MOE"
+      ],
+      "critical": true,
+      "evidence": "§§1–2、首页日期/作者、Figure1；历史归因只沿原论文相关工作。"
+    },
+    {
+      "id": "C2",
+      "claim": "同结构独立参数的专家处理同维度表示，门控为每个文本位置选择少数专家并加权合并；8选2是假设例子。",
+      "report_anchor": "one-input-through-moe",
+      "support": "direct",
+      "source_ids": [
+        "MOE"
+      ],
+      "critical": true,
+      "evidence": "§2、Figure1、§5.1、AppendixC；普通LM k=4、层次LM每级k=2合计4叶专家。"
+    },
+    {
+      "id": "C3",
+      "claim": "Noisy Top-K把稀疏选择与混合权重结合，k>1的已选门控权重可反传；噪声还支持平滑负载估计，不宣称处处可导。",
+      "report_anchor": "learning-to-route",
+      "support": "direct",
+      "source_ids": [
+        "MOE"
+      ],
+      "critical": true,
+      "evidence": "§2.1 p4；AppendixA pp13–14。"
+    },
+    {
+      "id": "C4",
+      "claim": "专家越多每个batch越小；跨数据并行副本及已算出的时间步聚集输入，专家原地保存、主要传输入输出，递归MoE不能直接用跨时间聚集技巧。",
+      "report_anchor": "shrinking-batches",
+      "support": "direct",
+      "source_ids": [
+        "MOE"
+      ],
+      "critical": true,
+      "evidence": "§3 pp4–5；32位置的8/64专家算例为解释，不是测量。"
+    },
+    {
+      "id": "C5",
+      "claim": "Importance权重和与Load平滑人数估计不同，Table6无均衡39.8/17.80，单项也有35.6或35.7；两项0.1时35.6/1.14，不宣称两项缺一不可。",
+      "report_anchor": "balancing-experts",
+      "support": "direct",
+      "source_ids": [
+        "MOE"
+      ],
+      "critical": true,
+      "evidence": "§4、AppendixA Table6，MoE-256各10epochs、对若干batch平均负载指标。"
+    },
+    {
+      "id": "C6",
+      "claim": "1B-word十轮4→4096专家仍各位置激活4个，排除embedding/softmax参数8.4M→4303.4M、前向ops8.4M→8.9M、困惑度45.0→34.1，容量倍率不等于费用倍率。",
+      "report_anchor": "capacity-and-cost",
+      "support": "direct",
+      "source_ids": [
+        "MOE",
+        "LECTURE",
+        "EPISODE"
+      ],
+      "critical": true,
+      "evidence": "§5.1、Table7；完整MoE-4096-h约5.1B；讲义p17和ASR成本推导与原文不等价。"
+    },
+    {
+      "id": "C7",
+      "claim": "Table1同为十轮：强LSTM34.7/151M ops/59h32K40，低预算MoE34.1/8.9M/15h16K40；高预算28.0/142.7M，不把100轮30.6与10轮混比。",
+      "report_anchor": "capacity-and-cost",
+      "support": "direct",
+      "source_ids": [
+        "MOE"
+      ],
+      "critical": true,
+      "evidence": "Table1/7、AppendixC.2；8.9/151约6%仅为前向算术口径，不是完整训练FLOPs或延迟/费用。"
+    },
+    {
+      "id": "C8",
+      "claim": "100B-word内部新闻语料中65536→131072专家的PPL28.9→29.2、TFLOPS/GPU0.72→0.30；设备64→128K40而总batch约2.5M词不变，质量退化原因是作者推测。",
+      "report_anchor": "when-more-is-worse",
+      "support": "direct",
+      "source_ids": [
+        "MOE"
+      ],
+      "critical": true,
+      "evidence": "§5.2、AppendixD Table8；排除embedding/softmax参数68,791.0M/137,577.6M，完整68.9B/137.7B；同训练1epoch。"
+    },
+    {
+      "id": "C9",
+      "claim": "未激活的专家仍占存储，论文用重算及减少/分解优化器状态控制显存，不能倒称为已用后来ZeRO。",
+      "report_anchor": "when-more-is-worse",
+      "support": "direct",
+      "source_ids": [
+        "MOE"
+      ],
+      "critical": true,
+      "evidence": "AppendixD p16；no first-moment estimator，second-moment行列均值分解；只将ZeRO作本系列问题承接。"
+    },
+    {
+      "id": "C10",
+      "claim": "翻译模型同时改变层数、attention和硬件条件；多语相对共享GNMT11/12方向更好，相对各单语模型8/12，英韩18.41→16.62退化。",
+      "report_anchor": "translation-and-boundaries",
+      "support": "direct",
+      "source_ids": [
+        "MOE"
+      ],
+      "critical": true,
+      "evidence": "§§5.3–5.4、Tables2–5、AppendicesE/G；数据与过采样/过拟合解释由原文归因，不做无条件同机速度推导。"
+    },
+    {
+      "id": "C11",
+      "claim": "部分单语对翻译使用batchwise严格均衡：每专家固定人数、每输入平均k；推理以学习阈值近似；多语采用noisy top-k。",
+      "report_anchor": "translation-and-boundaries",
+      "support": "direct",
+      "source_ids": [
+        "MOE"
+      ],
+      "critical": true,
+      "evidence": "AppendixF pp18–19、AppendixE p17；不将所有实验都写成每输入恰好k。"
+    },
+    {
+      "id": "C12",
+      "claim": "Table9观察到局部语法/语义分工，但不等于人工指定学科专家或证明专家固定职责；例句来自翻译训练batch。",
+      "report_anchor": "learning-to-route",
+      "support": "direct",
+      "source_ids": [
+        "MOE"
+      ],
+      "critical": true,
+      "evidence": "AppendixE Table9 p18；Expert752。"
+    },
+    {
+      "id": "C13",
+      "claim": "MoE的容量/实际计算分离与Brook批量及前几节资源问题呼应；脑分区只是讲义类比，访谈公司/硬件历史旁支不升格为已核事实。",
+      "report_anchor": "place-in-history",
+      "support": "direct",
+      "source_ids": [
+        "MOE",
+        "LECTURE",
+        "EPISODE"
+      ],
+      "critical": true,
+      "evidence": "§§1/3/6，讲义p17及ASR对应旁支；教学关系不声称后文论文按本序发表。"
+    },
+    {
+      "id": "C14",
+      "claim": "本章由ASR定位为4534.53–4947.03秒206段，最长重复2、3处间隔最大0.62s且无倒序/重叠/负时长；没有听校或WER结论。",
+      "report_anchor": "sources-and-reading",
+      "support": "direct",
+      "source_ids": [
+        "EPISODE",
+        "TRANSCRIPT_REVIEW"
+      ],
+      "critical": true,
+      "evidence": "本章结构收据和原小数秒；shownotes仅给Part1 19:35大段；结构通过非逐字准确。"
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U1",
+      "title": "2017稀疏MoE在LSTM中实现条件计算，承接早期MoE和深层组件研究，不代表发明全部MoE思想。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "MOE"
+      ],
+      "report_anchor": "problem-and-history"
+    },
+    {
+      "id": "U2",
+      "title": "同结构独立参数的专家处理同维度表示，门控为每个文本位置选择少数专家并加权合并；8选2是假设例子。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "MOE"
+      ],
+      "report_anchor": "one-input-through-moe"
+    },
+    {
+      "id": "U3",
+      "title": "Noisy Top-K把稀疏选择与混合权重结合，k>1的已选门控权重可反传；噪声还支持平滑负载估计，不宣称处处可导。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "MOE"
+      ],
+      "report_anchor": "learning-to-route"
+    },
+    {
+      "id": "U4",
+      "title": "专家越多每个batch越小；跨数据并行副本及已算出的时间步聚集输入，专家原地保存、主要传输入输出，递归MoE不能直接用跨时间聚集技巧。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "MOE"
+      ],
+      "report_anchor": "shrinking-batches"
+    },
+    {
+      "id": "U5",
+      "title": "Importance权重和与Load平滑人数估计不同，Table6无均衡39.8/17.80，单项也有35.6或35.7；两项0.1时35.6/1.14，不宣称两项缺一不可。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "MOE"
+      ],
+      "report_anchor": "balancing-experts"
+    },
+    {
+      "id": "U6",
+      "title": "1B-word十轮4→4096专家仍各位置激活4个，排除embedding/softmax参数8.4M→4303.4M、前向ops8.4M→8.9M、困惑度45.0→34.1，容量倍率不等于费用倍率。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "MOE",
+        "LECTURE",
+        "EPISODE"
+      ],
+      "report_anchor": "capacity-and-cost"
+    },
+    {
+      "id": "U7",
+      "title": "Table1同为十轮：强LSTM34.7/151M ops/59h32K40，低预算MoE34.1/8.9M/15h16K40；高预算28.0/142.7M，不把100轮30.6与10轮混比。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "MOE"
+      ],
+      "report_anchor": "capacity-and-cost"
+    },
+    {
+      "id": "U8",
+      "title": "100B-word内部新闻语料中65536→131072专家的PPL28.9→29.2、TFLOPS/GPU0.72→0.30；设备64→128K40而总batch约2.5M词不变，质量退化原因是作者推测。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "MOE"
+      ],
+      "report_anchor": "when-more-is-worse"
+    },
+    {
+      "id": "U9",
+      "title": "未激活的专家仍占存储，论文用重算及减少/分解优化器状态控制显存，不能倒称为已用后来ZeRO。",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "MOE"
+      ],
+      "report_anchor": "when-more-is-worse"
+    },
+    {
+      "id": "U10",
+      "title": "翻译模型同时改变层数、attention和硬件条件；多语相对共享GNMT11/12方向更好，相对各单语模型8/12，英韩18.41→16.62退化。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "MOE"
+      ],
+      "report_anchor": "translation-and-boundaries"
+    },
+    {
+      "id": "U11",
+      "title": "部分单语对翻译使用batchwise严格均衡：每专家固定人数、每输入平均k；推理以学习阈值近似；多语采用noisy top-k。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "MOE"
+      ],
+      "report_anchor": "translation-and-boundaries"
+    },
+    {
+      "id": "U12",
+      "title": "Table9观察到局部语法/语义分工，但不等于人工指定学科专家或证明专家固定职责；例句来自翻译训练batch。",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "MOE"
+      ],
+      "report_anchor": "learning-to-route"
+    },
+    {
+      "id": "U13",
+      "title": "MoE的容量/实际计算分离与Brook批量及前几节资源问题呼应；脑分区只是讲义类比，访谈公司/硬件历史旁支不升格为已核事实。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "MOE",
+        "LECTURE",
+        "EPISODE"
+      ],
+      "report_anchor": "place-in-history"
+    },
+    {
+      "id": "U14",
+      "title": "本章由ASR定位为4534.53–4947.03秒206段，最长重复2、3处间隔最大0.62s且无倒序/重叠/负时长；没有听校或WER结论。",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "EPISODE",
+        "TRANSCRIPT_REVIEW"
+      ],
+      "report_anchor": "sources-and-reading"
+    },
+    {
+      "id": "U15",
+      "title": "Shownotes Part1中的现代MoE条目及对应后续工程/成本问答；本轮止于CoT前，其他章节随既有系列逐轮展开。",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "EPISODE",
+        "TRANSCRIPT_REVIEW"
+      ],
+      "report_anchor": "sources-and-reading"
+    },
+    {
+      "id": "U16",
+      "title": "节目中公司职业经历、GPU商业史及内部训练失败次数等旁支，未有本轮一手核定，保留工程问题但不采用具体传闻。",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "EPISODE"
+      ],
+      "report_anchor": "place-in-history"
+    }
+  ],
+  "limitations": [
+    "未训练模型、测在线延迟/成本或重新运行原基准；结果按原论文具体版本、数据、硬件和训练预算解释。",
+    "讲义与访谈是理解问题的二手材料；公司轶事及行业采用/商业史未逐项查证，不能当作结论。",
+    "没有全量MoE历史优先权审计；前驱工作按2017论文相关工作归因。",
+    "没有逐字听校、说话人校验或WER测量；结构审计不证明语义准确。",
+    "数字视觉核验针对Tables1/5/6/7/8及讲义p17；其他图表按原文与图注读取，不声称逐图像素核查。",
+    "对现代产品、所有稀疏结构或所有在线请求规模不做无条件外推。"
+  ],
+  "research_receipts": {
+    "source_manifest": {
+      "artifact": "source-manifest.json",
+      "sha256": "fd0fc7442375717194cb6a3d57273e5fbf1d2beaf23fc4d03e8e2e52b715f566"
+    },
+    "transcript_precision": {
+      "artifact": "chapter-precision-audit.json",
+      "sha256": "f8fe7ead668eddae4168f23bf38cf878f40c7ddee4419299b7f2e075d7043bf8"
+    },
+    "native_transcript_audit": {
+      "artifact": "transcript-native-audit.json",
+      "sha256": "971177ffddfb64a74692bf42f7ad92a592b12de08846a16726a04f16542a7fd5"
+    },
+    "tokenplan_catalog": {
+      "artifact": "tokenplan-catalog.json",
+      "sha256": "402e7ffc78499f445270ce62da5e8549ca2558550d49c3027dac7e919dd10303"
+    },
+    "vision_read_receipts": [
+      {
+        "artifact": "moe-p07-vision.json",
+        "sha256": "6d070dfe50c4804712fcd156b0791ecbdd7cce995a92413dc27f0db5a2e3ea25"
+      },
+      {
+        "artifact": "moe-p09-vision.json",
+        "sha256": "cd526e532b70b1c934306828575eb382967c2ca8abc93e926807da858ccbd531"
+      },
+      {
+        "artifact": "moe-p13-vision.json",
+        "sha256": "5a1213216bdf89232fb3907e3980a920836d9340b39f9f36d3b71a64d17c4a07"
+      },
+      {
+        "artifact": "moe-p15-vision.json",
+        "sha256": "35b20626887a730647fdab7b167afa9aa971c43021d7b6017d285d4392178aab"
+      },
+      {
+        "artifact": "moe-p16-vision.json",
+        "sha256": "a2bd79ab09469f79c6230692db8b8355d5f9947791ce025cb81e0750bab1bc5e"
+      },
+      {
+        "artifact": "lecture-p17-vision.json",
+        "sha256": "0b833d14c6142d3938aa6b8fefe7769105ab52103a5d342ca808ac8ab6044f59"
+      }
+    ],
+    "vision_interpretation": "eacli vision作辅助，原图与原文为裁决依据；讲义视觉回答一处将成本误识成成就，直接看图确认成本后按原文理解。"
+  }
+}

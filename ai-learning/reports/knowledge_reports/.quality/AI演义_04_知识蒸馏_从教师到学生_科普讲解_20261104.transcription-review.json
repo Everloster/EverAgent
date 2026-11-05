@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "kind": "chapter-transcription-review",
+  "reviewed_on": "2026-11-04",
+  "chapter": 4,
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+  "transcript_source_ref": "sha256:919e4ce5147340e2306748394cdb555bfc6a745119f846e7ce8c985056745b05",
+  "read_scope": {
+    "content_window_approx_seconds": [
+      2790,
+      3169
+    ],
+    "context_window_seconds": [
+      2789.84,
+      3171.64
+    ],
+    "segments_read": 161,
+    "chapter_excerpt_sha256": "2fbdd1e8c62b0ed6f9b271726c42d8c74710d26d47b97aaf53ea553f69455b73",
+    "chapter_segments_sha256": "acb5307da506be8bb5b3e5ea2312491d083801ed8008eb20305d0afa666b35a2",
+    "time_basis": "ASR逐段定位；Shownotes只有Part1的19:35总入口，未给出蒸馏单节精确时间。正文取约数，摘录显示取整可差1秒。"
+  },
+  "structural_audit": {
+    "ok": true,
+    "size": 389895,
+    "sha256": "919e4ce5147340e2306748394cdb555bfc6a745119f846e7ce8c985056745b05",
+    "lines": 7553,
+    "segments": 7553,
+    "duration_seconds": 15741,
+    "max_consecutive_identical": 3,
+    "timestamp_errors": 0,
+    "malformed_lines": 0,
+    "tail_gap_seconds": 0
+  },
+  "public_full_episode_receipt": "podcast-learning/reports/transcripts/2026-11-04_ai-yanyi-117.audit.json",
+  "term_and_claim_checks": [
+    {
+      "time": "47:14–47:52；49:06–49:37",
+      "raw": "严实；针流／真流；同时不会损失很多性能",
+      "adopted": "延迟；知识蒸馏；能否保持任务效果要看教师、学生容量、迁移输入和实际评价",
+      "basis": "2015原论文§1–4；容量和迁移数据边界",
+      "kind": "term_and_scope_correction"
+    },
+    {
+      "time": "48:10–49:06",
+      "raw": "Hinton, Aurel和Jeff Dean；Google brand；作者职务和段子",
+      "adopted": "采用论文首页Geoffrey Hinton、Oriol Vinyals、Jeff Dean及当时署名单位；动态职务、人物段子和未核合作史不采用",
+      "basis": "2015原论文首页和等贡献脚注",
+      "kind": "identity_and_time_boundary"
+    },
+    {
+      "time": "49:52–50:43",
+      "raw": "硬标签是最终答案；把整个概率分布给到小模型",
+      "adopted": "软目标来自教师、真实硬标签来自标注；高温教师与同温学生匹配，真实标签项使用温度1，另有权重与T²补偿",
+      "basis": "2015原论文§2–2.1；讲义第13页视觉核对确认其语句有歧义",
+      "kind": "mechanism_crosscheck"
+    },
+    {
+      "time": "50:45–50:58",
+      "raw": "15年确立了教师和学生的学习范式",
+      "adopted": "2015进一步发展温度化软目标；2006 Model Compression是论文明确承认的前驱",
+      "basis": "2015摘要/§1/参考文献[1]；2006摘要、§1–2开头",
+      "kind": "historical_scope_correction"
+    },
+    {
+      "time": "50:09–50:28；50:59–51:22",
+      "raw": "聊天给出概率最大的结果；GPT不会输出概率分布；没有那么完整的蒸馏",
+      "adopted": "不据口播推定当代接口能力或解码策略；区分分类概率与生成序列监督，2016机器翻译序列蒸馏用beam search近似mode",
+      "basis": "2015§2与2016 Sequence-Level Knowledge Distillation §1–3.2、Figure1图注",
+      "kind": "later_method_and_product_boundary"
+    },
+    {
+      "time": "51:28–52:49",
+      "raw": "负力变化；不停拟合下去会一模一样",
+      "adopted": "将傅里叶/函数拟合作为口播类比的语境；不把它当成有限学生容量与训练优化下无损复制的保证",
+      "basis": "2015§1–3关于知识映射、有限容量与迁移数据实验；不采用未经核验的数学史段落",
+      "kind": "analogy_boundary"
+    }
+  ],
+  "audio_listened": false,
+  "word_accuracy_measured": false,
+  "verbatim_completeness": "unverified",
+  "limitations": [
+    "复用同一修复全文已通过的结构收据，7553段、时间戳错误0、最大连续相同3；未重跑同SHA审计，结构不能证明词准确率。",
+    "本轮逐段阅读161段并对照原论文、讲义和Shownotes，没有重新转写或听音；不逐项判定ASR错误还是口误。",
+    "完整音频15757.479秒，末段到15741.49秒，约15.989秒尾部仍未知；文本tail_gap=0不是音频完整性结论。",
+    "完整音频、原始/修复转录和含执行信息的工具收据留在公开仓外；本文只公开校正依据与短片段。"
+  ],
+  "conclusion": "本节可用于有原文校正的研究；独立结构检查、概念交叉核验和逐字听校是不同层次的证据，未把口播类比或当代产品概括写成已证实事实。"
+}

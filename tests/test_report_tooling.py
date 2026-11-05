@@ -62,6 +62,74 @@ def complete_behavioral_case(case: dict, expected: dict) -> None:
     )
 
 
+class ChapterTitleTests(unittest.TestCase):
+    def test_legacy_and_current_prefixes_share_one_display_label(self):
+        path = Path("AI演义_01_Brook_20261104.md")
+        for title in (
+            "AI演义·01 Brook：为什么？",
+            "AI演义 1：Brook：为什么？",
+            "《AI演义》01｜Brook：为什么？",
+            "Brook：为什么？",
+        ):
+            with self.subTest(title=title):
+                self.assertEqual(report_catalog.display_title(path, title), "《AI演义》01｜Brook：为什么？")
+
+    def test_other_reports_and_conflicting_chapter_numbers_are_not_rewritten(self):
+        title = "AI演义·02 AlexNet：为什么？"
+        self.assertEqual(report_catalog.display_title(Path("AI演义_01_Brook.md"), title), title)
+        self.assertEqual(report_catalog.display_title(Path("other-report.md"), title), title)
+
+    def test_projection_does_not_modify_the_report_or_its_metadata(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "AI演义_01_Brook_20261104.md"
+            original = '---\ntitle: "AI演义·01 Brook：为什么？"\nupdated_on: "2026-11-04"\n---\n\n# 原标题\n'
+            path.write_text(original, encoding="utf-8")
+            entry = report_catalog.report_info(path)
+            self.assertEqual(entry["title"], "《AI演义》01｜Brook：为什么？")
+            self.assertEqual(entry["metadata"]["title"], "AI演义·01 Brook：为什么？")
+            self.assertEqual(path.read_text(encoding="utf-8"), original)
+
+
+class ReportSidecarTests(unittest.TestCase):
+    def setUp(self):
+        temporary = tempfile.TemporaryDirectory()
+        self.addCleanup(temporary.cleanup)
+        self.root = Path(temporary.name)
+        self.report = "ai-learning/reports/topic.md"
+        path = self.root / self.report
+        path.parent.mkdir(parents=True)
+        path.write_text("# Topic\n", encoding="utf-8")
+        patch = mock.patch.object(precommit_quality, "ROOT", self.root)
+        patch.start()
+        self.addCleanup(patch.stop)
+
+    def test_supported_artifacts_resolve_to_their_report(self):
+        for suffix in ("evidence", "review", "transcription-review"):
+            with self.subTest(suffix=suffix):
+                path = f"ai-learning/reports/.quality/topic.{suffix}.json"
+                self.assertEqual(precommit_quality.report_for_sidecar(path), self.report)
+
+    def test_missing_reports_and_unknown_artifacts_remain_rejected(self):
+        for path in (
+            "ai-learning/reports/.quality/missing.transcription-review.json",
+            "ai-learning/reports/.quality/topic.unknown.json",
+            "ai-learning/reports/topic.evidence.json",
+        ):
+            with self.subTest(path=path):
+                self.assertIsNone(precommit_quality.report_for_sidecar(path))
+
+    def test_transcription_review_change_still_runs_report_quality_check(self):
+        artifact = "ai-learning/reports/.quality/topic.transcription-review.json"
+        with mock.patch.object(precommit_quality, "git_paths", side_effect=[{artifact}, set()]), \
+                mock.patch.object(precommit_quality, "new_report_paths", return_value=[]), \
+                mock.patch.object(precommit_quality, "run", return_value=True) as run, \
+                mock.patch.object(precommit_quality.subprocess, "run", return_value=mock.Mock(returncode=0)), \
+                mock.patch("sys.stdout", new=io.StringIO()):
+            self.assertEqual(precommit_quality.main(), 0)
+        commands = [call.args[1] for call in run.call_args_list]
+        self.assertIn([sys.executable, "scripts/report_quality.py", "check", self.report], commands)
+
+
 class ReportToolingTests(unittest.TestCase):
     def test_catalog_covers_projects_and_excludes_podcast_sources(self):
         reports = list(report_catalog.iter_reports())

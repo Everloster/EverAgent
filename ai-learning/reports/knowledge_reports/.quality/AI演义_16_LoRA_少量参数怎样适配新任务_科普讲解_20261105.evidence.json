@@ -1,0 +1,482 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_16_LoRA_少量参数怎样适配新任务_科普讲解_20261105.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-05",
+  "generator": {
+    "model": "gpt-6-astra",
+    "harness": "codex",
+    "run_id": "ai-yanyi-lora-r1-20261105",
+    "explicit_model_override": false,
+    "override_reason": "",
+    "identity_basis": "eacli session current actor.model.id=gpt-6-astra，codex-turn-context，session-bound，confirmed=true；仅证明生成者，不作为子Reviewer运行身份。"
+  },
+  "task": {
+    "summary": "《AI演义》第16节LoRA逐节深入展开，同时实质优化原章节及阅读入口；按Brook等前15轮经验面向人类写作。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "结合原论文、讲义、shownotes与完整本章ASR，解释LoRA背景、所解问题、历史定位与此前路线关系。"
+      },
+      {
+        "id": "R2",
+        "text": "沿一个明确自拟的摘要任务讲清训练反馈、冻结基座、A/B低秩更新、初始化、适配位置和合并条件；少数学但不牺牲机制。"
+      },
+      {
+        "id": "R3",
+        "text": "用原始实验分开可训参数、显存、每任务存储、吞吐、任务分数；保留版本、条件、分母、误差和反例。"
+      },
+      {
+        "id": "R4",
+        "text": "完整读153段并做时间结构审计，覆盖记忆设想/类比/行业应用旁支及其证据边界，明确未听校/WER或复训。"
+      },
+      {
+        "id": "R5",
+        "text": "原第16节实质改写、标题下直接展开；详解返回原16节、上一节MoE及下一节AlphaGoZero；前15节与其余正文保持。"
+      },
+      {
+        "id": "R6",
+        "text": "正文人类独立可读、脚注清晰；实际1440/390宽度入口、返回、目录、脚注和表格检查；独立来源优先复核，私有材料不公开。"
+      }
+    ],
+    "reader_feedback": [
+      "原章节没有优化、也没有链接展开阅读的啊",
+      "按照第一个Brook章节的方式，一轮完成一个章节，持续做完，参考之前轮次改进。",
+      "少数学，解释背景、解决什么问题和发展路线，报告面向人类阅读。"
+    ]
+  },
+  "sources": [
+    {
+      "id": "LORA",
+      "kind": "primary",
+      "title": "LoRA: Low-Rank Adaptation of Large Language Models",
+      "locator": "https://arxiv.org/pdf/2106.09685v2",
+      "accessed_on": "2026-11-05",
+      "version": "arXiv:2106.09685v2, 2021-10-16, 26页；2021-06-17首次公开。",
+      "local_copy": "ai-learning/papers/15_lora_2021.pdf",
+      "sha256": "e9a0d3128767db616085dc0f4e6e455e672e89af823e8ed1282793682787395a",
+      "read_scope": "正文§§1–8与附录A–H排版文本，含图表图注；参考条目只作定位，未追读所有被引论文。直接核对physical pp1/4/5/8/10/26原图；其余按文本和图注阅读，不声称逐像素核验所有热图。",
+      "metadata_receipt": {
+        "artifact": "arxiv-metadata.json",
+        "sha256": "7fdd58c3b5483178ba0f1bf538c9a34dc9a99435dd6b2fe95f3d0fae9bb8a201"
+      },
+      "venue_locator": "https://openreview.net/forum?id=nZeVKeeFYf9",
+      "venue_read_scope": "实读元数据/摘要，确认ICLR 2022 Poster；未读其PDF或评审讨论。",
+      "venue_receipt": {
+        "artifact": "openreview-page.json",
+        "sha256": "12ed4a5120b794fcae94621dab260dd4fec21854ff442b896ada57a21c004eca"
+      }
+    },
+    {
+      "id": "LECTURE",
+      "kind": "local",
+      "title": "《AI演义》讲义 LoRA 页",
+      "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "accessed_on": "2026-11-05",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
+      "read_scope": "physical p19文字与原图；微调/副本成本、低秩/合并、Diffusion应用、ResNet类比、作者与视频推荐。未核行业采用率/完整履历/视频内容。"
+    },
+    {
+      "id": "EPISODE",
+      "kind": "primary",
+      "title": "张小珺 Jùn 第117期《AI演义》：LoRA 段落及shownotes",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-05",
+      "published_on": "2025-10-28",
+      "read_scope": "已恢复ASR本章153段完整阅读，5407.70–5688.37秒；shownotes全文读取但只用Part1/LoRA定位，无官方逐章精确时间。没有听校或WER。Apple收据沿用前轮公开读取，不冒称本轮联网播放。",
+      "alternate_locator": "https://podcasts.apple.com/cn/podcast/id1634356920?i=1000733801180",
+      "shownotes_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5",
+      "metadata_receipt": {
+        "artifact": "apple-episode-read.json",
+        "sha256": "b43f4f8def7905b5a01e9a6ec9924bfec82015690f200b3412b3b2129f01584c"
+      },
+      "chapter_transcription_review": "ai-learning/reports/knowledge_reports/.quality/AI演义_16_LoRA_少量参数怎样适配新任务_科普讲解_20261105.transcription-review.json"
+    },
+    {
+      "id": "TRANSCRIPT_REVIEW",
+      "kind": "local",
+      "title": "LoRA 本章转写核查摘要",
+      "locator": "ai-learning/reports/knowledge_reports/.quality/AI演义_16_LoRA_少量参数怎样适配新任务_科普讲解_20261105.transcription-review.json",
+      "accessed_on": "2026-11-05",
+      "sha256": "09adc167b51a7e579bd79144f6f90ecd69b8543c9f05b68d6418846e35423bf4",
+      "read_scope": "完整153段文本阅读，audit_transcript实际执行及Decimal时间检查，按论文校术语与声明边界；不证明听校或字错率。"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "LoRA研究预训练后任务适配与副本成本；2021首发、ICLR2022；对话摘要例子明确自拟。",
+      "report_anchor": "problem-and-history",
+      "support": "direct",
+      "source_ids": [
+        "LORA"
+      ],
+      "critical": true,
+      "evidence": "首页、§§1–3，arXiv/OpenReview元数据；例子为教学演示，非模型实测。"
+    },
+    {
+      "id": "C2",
+      "claim": "冻结基座但保留计算；选定线性层的原输出与可训练增量相加，研究注意力权重并冻结MLP。",
+      "report_anchor": "one-example-through-lora",
+      "support": "direct",
+      "source_ids": [
+        "LORA"
+      ],
+      "critical": true,
+      "evidence": "Figure1、§§4.1–4.2；冻结权重更新不等于取消全部反向传播。"
+    },
+    {
+      "id": "C3",
+      "claim": "低秩限制更新而非基座；4096→8→4096为自拟演算，参数16777216对65536，单层更新少256倍。",
+      "report_anchor": "low-rank-intuition",
+      "support": "direct",
+      "source_ids": [
+        "LORA"
+      ],
+      "critical": true,
+      "evidence": "§4.1定义d×r与r×k，演算由calculation-check.json核对，未把倍率换成整模型提速。"
+    },
+    {
+      "id": "C4",
+      "claim": "A高斯随机、B零初始化，初始增量为零，使用alpha/r缩放；r不是任务或主题数量。",
+      "report_anchor": "low-rank-intuition",
+      "support": "direct",
+      "source_ids": [
+        "LORA"
+      ],
+      "critical": true,
+      "evidence": "Figure1、§4.1；秩至多r及低秩更新定义。"
+    },
+    {
+      "id": "C5",
+      "claim": "固定任务的线性更新可合并，动态多任务批量仍有条件；Table1延迟是GPT2Medium/RTX8000单前向，不是通用30%。",
+      "report_anchor": "merge-and-latency",
+      "support": "direct",
+      "source_ids": [
+        "LORA"
+      ],
+      "critical": true,
+      "evidence": "§§3–4、Table1、AppB：batch1/128为19.8/23.9/25.8ms，batch32/512增幅2.2/3.0%。"
+    },
+    {
+      "id": "C6",
+      "claim": "训练显存1.2TB→350GB、r4qv每任务350GB→35MB增量、共享基座100任务约354GB等是不同账目。",
+      "report_anchor": "resource-accounting",
+      "support": "direct",
+      "source_ids": [
+        "LORA"
+      ],
+      "critical": true,
+      "evidence": "p5正文/脚注4：基座仍需约350GB；35MB不等于Table4小预算。"
+    },
+    {
+      "id": "C7",
+      "claim": "相同模型并行分片数的V100吞吐32.5→43.1token/s，约增32.6%；同token耗时约减24.6%，非整体费用。",
+      "report_anchor": "resource-accounting",
+      "support": "direct",
+      "source_ids": [
+        "LORA"
+      ],
+      "critical": true,
+      "evidence": "p5脚注5原数及calculation-check.json算术。"
+    },
+    {
+      "id": "C8",
+      "claim": "SAMSum上小LoRA用470万可训参数达到53.8/29.8/45.9，对照全量52.0/28.0/44.5；较大LoRA不更高；ROUGE不是事实正确率。",
+      "report_anchor": "task-results",
+      "support": "direct",
+      "source_ids": [
+        "LORA"
+      ],
+      "critical": true,
+      "evidence": "Table4、AppC、§D.4；14732训练/819测试，参数原数175255.8M/4.7M/37.7M，2epochs/batch128/调学习率和选最佳验证。"
+    },
+    {
+      "id": "C9",
+      "claim": "LoRA不是每项都胜：小预算MNLI91.7对89.5，但WikiSQL73.4对73.8，差在典型±0.5百分点内；明确验证指标与选择配置。",
+      "report_anchor": "task-results",
+      "support": "direct",
+      "source_ids": [
+        "LORA"
+      ],
+      "critical": true,
+      "evidence": "Table4、§5.5、§D.4；不把各预算当固定qv秩单因素对照，不把全表冒称独立test。"
+    },
+    {
+      "id": "C10",
+      "claim": "适配位置和rank均需评估，qv小rank有效但非单调；GPT2E2E r1 BLEU68.72、r4 70.38，部分超参为r4调优。",
+      "report_anchor": "why-small-rank",
+      "support": "direct",
+      "source_ids": [
+        "LORA"
+      ],
+      "critical": true,
+      "evidence": "Tables5/6/18：约18M预算q-only70.4、qv73.7、qkvo73.7且MNLI91.7；qv r1/8/64 WikiSQL73.4/73.8/73.5。"
+    },
+    {
+      "id": "C11",
+      "claim": "不同r与种子子空间重合、特征放大解释是经验分析，不是所有任务低秩定理或人类技能逐方向定位。",
+      "report_anchor": "why-small-rank",
+      "support": "direct",
+      "source_ids": [
+        "LORA"
+      ],
+      "critical": true,
+      "evidence": "§§7.2–7.3、Figures3/4、Table7、AppendicesG/H；只按文字及图注解释，不伪称逐热图像素核查。"
+    },
+    {
+      "id": "C12",
+      "claim": "可训练prefix与手写提示词不同，原文设置下有优化和序列长度代价；组合有失败，低数据非总胜，后续比较未运行。",
+      "report_anchor": "adaptation-methods",
+      "support": "direct",
+      "source_ids": [
+        "LORA"
+      ],
+      "critical": true,
+      "evidence": "§3明确优化观察与预留序列位置；§5.1、AppE/F.3、Tables15/16；MNLI100 FT60.2/LoRA63.8、1k85.8/85.6。"
+    },
+    {
+      "id": "C13",
+      "claim": "节目提出LoRA记忆设想，原论文未验证完整个人记忆框架；ResNet/脑类比与Diffusion后续采用率均保留来源边界。",
+      "report_anchor": "memory-and-analogies",
+      "support": "direct",
+      "source_ids": [
+        "LORA",
+        "LECTURE",
+        "EPISODE",
+        "TRANSCRIPT_REVIEW"
+      ],
+      "critical": true,
+      "evidence": "ASR2426–2469；讲义p19；LoRA实验范围仅语言适配，没有定向删除/来源追溯/用户隔离测试；工程建议标推测。"
+    },
+    {
+      "id": "C14",
+      "claim": "本章153段280.67秒结构核验通过，仅0.12秒间隔；shownotes无逐论文时间；未听校/WER，原ASR不公开。",
+      "report_anchor": "source-notes",
+      "support": "direct",
+      "source_ids": [
+        "EPISODE",
+        "TRANSCRIPT_REVIEW"
+      ],
+      "critical": true,
+      "evidence": "chapter-public-audit.json由脚本实际生成并validate_receipt；Decimal检查chapter-precision-audit.json。"
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U1",
+      "title": "LoRA研究预训练后任务适配与副本成本；2021首发、ICLR2022；对话摘要例子明确自拟。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "LORA"
+      ],
+      "report_anchor": "problem-and-history"
+    },
+    {
+      "id": "U2",
+      "title": "冻结基座但保留计算；选定线性层的原输出与可训练增量相加，研究注意力权重并冻结MLP。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "LORA"
+      ],
+      "report_anchor": "one-example-through-lora"
+    },
+    {
+      "id": "U3",
+      "title": "低秩限制更新而非基座；4096→8→4096为自拟演算，参数16777216对65536，单层更新少256倍。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "LORA"
+      ],
+      "report_anchor": "low-rank-intuition"
+    },
+    {
+      "id": "U4",
+      "title": "A高斯随机、B零初始化，初始增量为零，使用alpha/r缩放；r不是任务或主题数量。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "LORA"
+      ],
+      "report_anchor": "low-rank-intuition"
+    },
+    {
+      "id": "U5",
+      "title": "固定任务的线性更新可合并，动态多任务批量仍有条件；Table1延迟是GPT2Medium/RTX8000单前向，不是通用30%。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "LORA"
+      ],
+      "report_anchor": "merge-and-latency"
+    },
+    {
+      "id": "U6",
+      "title": "训练显存1.2TB→350GB、r4qv每任务350GB→35MB增量、共享基座100任务约354GB等是不同账目。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "LORA"
+      ],
+      "report_anchor": "resource-accounting"
+    },
+    {
+      "id": "U7",
+      "title": "相同模型并行分片数的V100吞吐32.5→43.1token/s，约增32.6%；同token耗时约减24.6%，非整体费用。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "LORA"
+      ],
+      "report_anchor": "resource-accounting"
+    },
+    {
+      "id": "U8",
+      "title": "SAMSum上小LoRA用470万可训参数达到53.8/29.8/45.9，对照全量52.0/28.0/44.5；较大LoRA不更高；ROUGE不是事实正确率。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "LORA"
+      ],
+      "report_anchor": "task-results"
+    },
+    {
+      "id": "U9",
+      "title": "LoRA不是每项都胜：小预算MNLI91.7对89.5，但WikiSQL73.4对73.8，差在典型±0.5百分点内；明确验证指标与选择配置。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "LORA"
+      ],
+      "report_anchor": "task-results"
+    },
+    {
+      "id": "U10",
+      "title": "适配位置和rank均需评估，qv小rank有效但非单调；GPT2E2E r1 BLEU68.72、r4 70.38，部分超参为r4调优。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "LORA"
+      ],
+      "report_anchor": "why-small-rank"
+    },
+    {
+      "id": "U11",
+      "title": "不同r与种子子空间重合、特征放大解释是经验分析，不是所有任务低秩定理或人类技能逐方向定位。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "LORA"
+      ],
+      "report_anchor": "why-small-rank"
+    },
+    {
+      "id": "U12",
+      "title": "可训练prefix与手写提示词不同，原文设置下有优化和序列长度代价；组合有失败，低数据非总胜，后续比较未运行。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "LORA"
+      ],
+      "report_anchor": "adaptation-methods"
+    },
+    {
+      "id": "U13",
+      "title": "节目提出LoRA记忆设想，原论文未验证完整个人记忆框架；ResNet/脑类比与Diffusion后续采用率均保留来源边界。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "LORA",
+        "LECTURE",
+        "EPISODE",
+        "TRANSCRIPT_REVIEW"
+      ],
+      "report_anchor": "memory-and-analogies"
+    },
+    {
+      "id": "U14",
+      "title": "本章153段280.67秒结构核验通过，仅0.12秒间隔；shownotes无逐论文时间；未听校/WER，原ASR不公开。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "EPISODE",
+        "TRANSCRIPT_REVIEW"
+      ],
+      "report_anchor": "source-notes"
+    },
+    {
+      "id": "U15",
+      "title": "从预训练、上下文学习、ZeRO/MegaScale/MoE到LoRA，按问题串联而非声称先后继承；返回主稿与前后节。",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "LORA",
+        "LECTURE"
+      ],
+      "report_anchor": "route-connections"
+    }
+  ],
+  "limitations": [
+    "未训练模型、测当前硬件速度或复跑原基准；所有数值固定到原论文版本与条件。",
+    "没有逐字听校、说话人核对或WER；结构审计不是语义准确率。",
+    "行业采用率、完整履历和YouTube视频内容未调查，节目/讲义旁支不升级为事实。",
+    "记忆工程建议标推测；论文未测长期个人记忆、删除、追溯或用户隔离。",
+    "视觉核验限physical pp1/4/5/8/10/26与讲义p19，其余图表按正文/图注阅读。"
+  ],
+  "research_receipts": {
+    "source_manifest": {
+      "artifact": "source-manifest.json",
+      "sha256": "be0af60eea57fc7aef78fcc1073a0eade3e90c22b61ea8497cea5fcd9bbcaa67"
+    },
+    "transcript_precision": {
+      "artifact": "chapter-precision-audit.json",
+      "sha256": "af1d6a4c53581fba51d77a8d8fc54a90b2386b4e0bf562178cc57e751a626b03"
+    },
+    "native_transcript_audit": {
+      "artifact": "transcript-native-audit.json",
+      "sha256": "02ffad9c1dcc6b32aedd02885599490d1b9a3d06aff1cd6475204618b9101895"
+    },
+    "tokenplan_catalog": {
+      "artifact": "tokenplan-catalog.json",
+      "sha256": "19ab3134f7b2dbea378da1563b0dbc49f186880310b998e2b1f209444068d4a7"
+    },
+    "vision_read_receipts": [
+      {
+        "artifact": "lora-p01-vision.json",
+        "sha256": "53e38d89831a2a5038de5032ecf5b18277efa984a80f71f9663ad0b0c95eaf2c"
+      },
+      {
+        "artifact": "lora-p04-vision.json",
+        "sha256": "006e4632fe109f67a2ce4aaaf63da0db46b03a8a3672c0437674d8a068b6a423"
+      },
+      {
+        "artifact": "lora-p05-vision.json",
+        "sha256": "7ee1b47c7535bf12c031a3968a3705bd6466d763c67f715963f404b374f83249"
+      },
+      {
+        "artifact": "lora-p08-vision.json",
+        "sha256": "220a5563eaa4e26b8575b7dc9231fcfd27fc826875ea998529559dd975baa71f"
+      },
+      {
+        "artifact": "lora-p10-vision.json",
+        "sha256": "ac0291435ee0aa46b19e548e1de774f69fbdea71e5c01af0ed5ddcb226e17039"
+      },
+      {
+        "artifact": "lora-p26-vision.json",
+        "sha256": "803803bcf3d0bbb7c740b5bc4c0efb2ae902fecdb90b802acacb7653c9d55fbd"
+      },
+      {
+        "artifact": "lecture-p19-vision.json",
+        "sha256": "a84169e19135814b06996f95e4710a66ab204734dfdaa32c7d1193b9ecf2e992"
+      }
+    ],
+    "calculation_check": {
+      "artifact": "calculation-check.json",
+      "sha256": "fe8e31f7e2ad9741d0e1696617dfa500c091b10abb2c99d3750554c1a06fedbd"
+    },
+    "vision_interpretation": "eacli视觉辅助后直接检查原图。p8响应错误地把MNLI 91.6称为最高，不采用；p10响应对各rank优劣有过度概括且脚注6省略跨语言思想实验条件，不采用。p26提示tuned on r=4不应擅自加强为只在r4调优，正文已用原文较弱措辞。数值以PDF原页为准。"
+  }
+}

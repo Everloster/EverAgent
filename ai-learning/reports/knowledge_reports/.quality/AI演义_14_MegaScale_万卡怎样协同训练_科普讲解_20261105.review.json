@@ -1,0 +1,901 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_14_MegaScale_万卡怎样协同训练_科普讲解_20261105.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-6-astra",
+        "harness": "codex",
+        "run_id": "megascale-primary-review-20261105",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": "",
+        "identity_basis": "inherited_dispatch_configuration",
+        "runtime_model": "unconfirmed",
+        "runtime_model_confirmed": false,
+        "identity_note": "model为继承调度配置标签。独立子Agent运行模型没有单独的运行时证明；未将共享shell根会话的eacli身份冒充为本Reviewer身份。",
+        "independence_note": "先读原始来源并冻结19单元地图，再读候选与evidence；本轮未读另一Reviewer的当前输出。两份entry出自同一独立primary子会话，不能计作两名Reviewer。"
+      },
+      "scores": {
+        "evidence_fidelity": 98,
+        "request_coverage": 97,
+        "reasoning_quality": 98,
+        "readability": 96,
+        "limitations": 98
+      },
+      "score_reasons": {
+        "evidence_fidelity": "17个关键claim逐项核回原文；Table2、Figure9、Table3与收敛/生产图直接看原图，单位、模型规模、batch及基线一致。236段全读并独立审计时间；最终转录收据与本Reviewer审计经public_receipt生成的结果相同且validate_receipt为空。未把视觉模型旁注当原文。",
+        "request_coverage": "冻结地图19单元、15个核心均落实到U1–U18；从分工、联合设计、数据/初始化/网络到观测、故障和checkpoint均有实质解释。主稿改写与前后/返回导航也已核验；未以链接替代展开正文的核心解释。",
+        "reasoning_quality": "联合设计的收益与代价相连，通信等待的反例提供因果诊断；严格区分175B强扩展、530B弱扩展、256GPU累加消融、13B收敛和独立数周生产run，不把改batch的结果当同条件纯系统收益。",
+        "readability": "按训练过程组织，首次解释必要术语，表格和具体排障故事能连续阅读；真实桌面/窄屏入口与表格滚动收据可用。第6节同时包含扩展方式和累加消融，信息密度略高但已分小节。",
+        "limitations": "训练loss证据不外推所有下游能力；两种恢复时间不拼成SLA，MFU与训练时间率分开；未核历史/卡数/H800说法不升格事实。读取/听校/复现边界明确，Agent工作流类比标推测。"
+      },
+      "critical_claim_ids_checked": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17"
+      ],
+      "source_ids_checked": [
+        "MEGASCALE",
+        "LECTURE",
+        "EPISODE",
+        "TRANSCRIPT_REVIEW"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6"
+      ],
+      "coverage_unit_ids_checked": [
+        "U1",
+        "U2",
+        "U3",
+        "U4",
+        "U5",
+        "U6",
+        "U7",
+        "U8",
+        "U9",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16",
+        "U17",
+        "U18"
+      ],
+      "source_content_map": [
+        {
+          "id": "PM-MG-01",
+          "title": "章节位置、时间范围与来源身份",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "EPISODE",
+            "TRANSCRIPT_REVIEW"
+          ],
+          "matched_coverage_unit_ids": [
+            "U16"
+          ],
+          "notes": "原始定位：shownotes: Part 2 Infra 与数据最后一篇；Part 3 起点 02:21:29；转录 02:13:37.79–02:21:28.53，global indices 3740–3975；Apple 节目 117，页面发布时间 2025-10-28。独立识别：MegaScale 是 Infra 与数据部分的收束，前有 RefinedWeb，后进入语言模型；本轮只覆盖这一章节及论文扩展。章节包含讲述正文及随后有关 co-design、DeepSeek 和 MFU 的问答。 候选核对：来源段和转录收据交代236段范围、节目位置及未听校，精确起点未冒称官方章节时间。 边界：shownotes 未提供 MegaScale 的精确起点；起点来自转录分段，不能冒称节目官方章节时间。页面元数据不是试听证明。其他 shownotes 章节只登记存在和历史 inherited，不本轮重审。"
+        },
+        {
+          "id": "PM-MG-02",
+          "title": "万卡集群与万卡共同训练一个模型的区别",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "MEGASCALE",
+            "LECTURE",
+            "EPISODE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1"
+          ],
+          "notes": "原始定位：论文 pp1–2 §1；讲义 p31 历史背景；转录 02:15:07.90–02:15:44.55。独立识别：挑战从许多独立任务共享集群，变成一个任务同时占用上万 GPU；模型切分带来频繁通信和全局依赖。规模和长训练时段使效率与稳定性同时成为中心问题。 候选核对：第1节以一次共同更新说明单作业依赖和万卡集群的区别。 边界：把万卡当作一张卡是口语直觉，不表示物理共享一份显存或没有通信。175B 指 1750 亿参数。"
+        },
+        {
+          "id": "PM-MG-03",
+          "title": "训练效率、MFU 与长期稳定性是两种相关指标",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "MEGASCALE",
+            "EPISODE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U6",
+            "U14"
+          ],
+          "notes": "原始定位：论文 p1 MFU 定义、pp1–2 效率与稳定性；论文 p12 effective training time rate；转录 02:15:44.55–02:17:14.34、02:21:00.49–02:21:28.53。独立识别：MFU 将观测吞吐与假设峰值算力全部用于模型所需运算时的理论吞吐比较；长期稳定性要求持续保持效率。有效训练时间率按迭代数乘每迭代训练时间除以总时间统计，与 MFU 分母不同。 候选核对：第6节解释MFU，第8节另定义有效训练时间率；未把剩余MFU解释成整卡闲置。 边界：55.2% MFU 不能读成 44.8% GPU 整张闲置，也不等于 nvidia-smi 的 GPU busy 或能效。节目把 50% 提到 100% 即少一半卡是附带固定工作量等前提的理想推论，非论文实现。"
+        },
+        {
+          "id": "PM-MG-04",
+          "title": "并行分工是优化的背景，非 MegaScale 首创",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "MEGASCALE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U2"
+          ],
+          "notes": "原始定位：论文 pp2–3 §2，Figure 1–2；论文 p13 §7。独立识别：数据并行分样本并同步模型更新；ZeRO2 分摊优化器与梯度状态；流水线并行分层并用 micro-batch 填充流水线；张量并行分一个算子，序列并行分配部分激活运算。MegaScale 组合这些方法，通信重的 TP 主要在单节点，DP/PP 跨节点。 候选核对：第2节逐一解释DP/PP/TP、SP和ZeRO2；8卡例子标为讲解，不归为万卡实测。 边界：不把数据并行解释成每卡完整独立训练不同模型；不将 sequence parallelism 混同任意全局长上下文切分。历史贡献是生产系统联合设计，不是发明所有并行方法。"
+        },
+        {
+          "id": "PM-MG-05",
+          "title": "算法与系统联合设计包含模型及优化器改动",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "MEGASCALE",
+            "LECTURE",
+            "EPISODE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3",
+            "U9"
+          ],
+          "notes": "原始定位：论文 pp3–4 §3.1、Figure 3；讲义 p31 核心贡献；转录 02:17:14.34–02:18:33.95。独立识别：并行 Transformer block 让 Attention 与 MLP 共用同层输入并行执行；滑动窗口注意力减少每 token 直接看的范围并借多层传播扩大感受野；LAMB 容许在测试中扩大 batch 以减少流水线空泡。这使优化跨越算法与基础设施。 候选核对：第3节把PTB、滑动窗口和LAMB连接到系统瓶颈，并明确模型改动与收敛测试条件。 边界：PTB 是架构变更，不是对串行公式的普遍代数等价；多层局部传播不自动保证所有长距离任务质量。4× batch 收敛实验与 Table 3 的 3× batch 消融必须分开。无精度损失仅限论文已给出的测试证据。"
+        },
+        {
+          "id": "PM-MG-06",
+          "title": "通信重叠依赖计算图与调度，并非通信消失",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "MEGASCALE",
+            "EPISODE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U4"
+          ],
+          "notes": "原始定位：论文 pp4–5 §3.2、Figures 3–4；转录 02:19:51.97–02:20:56.60。独立识别：DP 以 model chunk 为粒度在前后向间重叠 all-gather/reduce-scatter，并预取首个 all-gather；PP 解耦收发并按 warm-up/steady/cool-down 的依赖调度；TP/SP 把 FFN GEMM 分块，与所需收集/分发流水并行。隐藏的是关键路径上的等待。 候选核对：第4节给出分块/预取、独立send/recv和依赖条件，表述为隐藏等待。 边界：只有数据依赖允许且计算窗口足够时才能隐藏传输，不能解释成所有通信都能同时执行。计算和通信中较慢一方及必要同步仍约束总时长。"
+        },
+        {
+          "id": "PM-MG-07",
+          "title": "算子、数据管线和通信组初始化也消耗训练时间",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "MEGASCALE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U5"
+          ],
+          "notes": "原始定位：论文 pp5–6 §§3.3–3.5。独立识别：优化含 FlashAttention-2、LayerNorm/GeLU 融合、与同步阶段重叠的数据预处理、每机共享 loader、非阻塞 Redis 和减少全局 barrier。2048 GPU 初始化由约 1047 秒经 361 秒降至 5 秒内，上万 GPU 在 30 秒内。 候选核对：第5节解释数据、算子、Redis/初始化/barrier，数值不误当每步收益。 边界：loader 共享建立在同机 TP workers 输入相同的条件；初始化时间不是每步训练时间或 MFU。算子名本身不足以解释系统问题，展开稿至少需交代空转来自何处。"
+        },
+        {
+          "id": "PM-MG-08",
+          "title": "网络拓扑、路径冲突与链路抖动是实际系统边界",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "MEGASCALE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U5",
+            "U15"
+          ],
+          "notes": "原始定位：论文 p6 §3.6；论文 p12 Frequent network interface flapping problem。独立识别：部署使用三层 CLOS-like 网络及上下行 1:1 带宽，multi-rail 和调度降低 ECMP 冲突；结合 RTT 与 ECN 控制拥塞，重传参数及网卡特性降低短时链路抖动损失。部分抖动根源是网卡、AOC 线缆和交换机信号质量。 候选核对：第5节说明网络路径/拥塞，第8节区分短暂链路波动的容忍与链路质量根因。 边界：具体拓扑、400G/200G 端口、参数是该部署经验，不能泛化为所有万卡系统的必要配置。超时过短会误判可恢复抖动；调软件参数不能消除坏链路。"
+        },
+        {
+          "id": "PM-MG-09",
+          "title": "故障恢复是观测、诊断、隔离、替补与重启的闭环",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "MEGASCALE",
+            "LECTURE",
+            "EPISODE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U12"
+          ],
+          "notes": "原始定位：论文 pp6–7 §§4.1–4.3、Figure 5；讲义 p31 核心贡献；转录 02:16:00.75–02:17:14.34。独立识别：心跳汇报进程状态、日志和 RDMA 指标；发现异常或心跳缺失后暂停 executors、执行自检、剔除故障节点，补入通过诊断的节点，再从最新 checkpoint 恢复。网络异常波动可先告警人工检查，完全停止才触发自动恢复。 候选核对：第8节明确暂停、诊断、隔离、补节点、读checkpoint，保留人工诊断边界。 边界：不是不暂停的热替换，不是所有故障都自动修好。自检的运行时间与误报代价存在取舍，某些概率性硬件问题不能靠自检覆盖。转录提到比特翻转是嘉宾举例，不能说论文已给出其端到端检测保证。"
+        },
+        {
+          "id": "PM-MG-10",
+          "title": "Checkpoint 的持久化与恢复也需要控制关键路径",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "MEGASCALE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U13"
+          ],
+          "notes": "原始定位：论文 pp7–8 §4.4。独立识别：先把 GPU 状态复制到主机 pinned memory，恢复训练后由后台写 HDFS；恢复时让共享状态的组内一个 worker 读取后广播，减轻 HDFS 负载。更频繁保存减少故障时丢失的进度，但会增加保存开销。 候选核对：第8节区分先GPU到主机的数秒停顿、后台持久化，以及恢复读取/广播。 边界：主机内存副本不是最终持久化；GPU 到主机这一步仍有数秒停顿。故障后读取 checkpoint 在关键路径上，不能与后台保存混作无停顿恢复。"
+        },
+        {
+          "id": "PM-MG-11",
+          "title": "深度可观测性定位看似正常的慢机器和依赖链",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "MEGASCALE",
+            "LECTURE",
+            "EPISODE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11"
+          ],
+          "notes": "原始定位：论文 pp8–9 §§5.1–5.2、Figures 6–8；讲义 p31；转录 02:16:23.72–02:17:09.96。独立识别：低同步开销的 CUDA event 计时、跨 rank 热力图与统一时间线显示局部慢执行如何拖累全作业；3D 逻辑拓扑辅助沿 DP/TP/PP 依赖寻找根因。约 0.5% 慢机器可影响全局，而单 GPU GEMM microbenchmark 未必暴露差异。 候选核对：第7节给出CUDA事件与跨rank依赖定位，并解释错误日志所在节点不必是根因。 边界：错误日志最多的等待节点不必然是故障源；真实挂死节点可能来不及记日志。工具提供定位证据，不表示每种硬件错误均可自动推断根因。"
+        },
+        {
+          "id": "PM-MG-12",
+          "title": "175B 强扩展结果必须带配置与基线",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "MEGASCALE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U6",
+            "U7"
+          ],
+          "notes": "原始定位：论文 pp9–10 §6.1、Tables 1–2。独立识别：Table 2 的万卡组固定 batch 6144、sequence 2048、vocab 64000，175B 模型在 12288 Ampere GPU 达 55.2% MFU，基线 Megatron-LM commit 285068c8 为 41.2%；论文报告 1.34×，差值 14 个百分点。3072 至 12288 GPU 的 MegaScale MFU 从 59.1% 降到 55.2%，吞吐仍提升。 候选核对：第6节Table2比较保持175B/12288 Ampere GPU/batch6144/seq2048/vocab64000、基线commit285068c8；8.57→6.34秒、1466.8k→1984.0k tokens/s、41.2→55.2%均核回原表。 边界：1.34× 表示约 34% 相对提高，不是提升 134%；14 是百分点。不能混用 256–1024 GPU 的 batch 768 组。表内 300B tokens 时间口径与数周 proprietary production run 不同；不冒称自行复现。"
+        },
+        {
+          "id": "PM-MG-13",
+          "title": "530B 弱扩展与固定 batch 强扩展回答不同问题",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "MEGASCALE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U7"
+          ],
+          "notes": "原始定位：论文 pp9–10 §6.1、Figure 9。独立识别：530B 测试随 GPU 数扩大 batch，并调整学习率；2240、4480、11200 GPU 的 MegaScale MFU 为 54.3%、54.1%、54.3%，对照为 49.2%、48.8%、48.2%。它显示该弱扩展设置下 MFU 近似稳定。 候选核对：第6节明确强扩展固定batch而530B弱扩展增batch；2240/4480/11200卡与54.3/54.1/54.3%未混入175B组。 边界：不能把稳定 MFU 的弱扩展直接解释成固定训练工作量下任意增加卡数必线性提速。最大差值 6.1 为百分点，且规模与 175B 的 12288 GPU 不同。"
+        },
+        {
+          "id": "PM-MG-14",
+          "title": "消融展示累加配置，避免误把组合收益归给单点",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "MEGASCALE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8"
+          ],
+          "notes": "原始定位：论文 pp10–11 §6.1、Table 3。独立识别：175B/256 GPU 消融从 47.7% 经 PTB 52.3%、SWA 53.3%、TP overlap 55.5%、PP overlap 58.0%、DP overlap 59.5%、算子 61.2%、其他 62.3%，最后 LAMB 把 batch 256 扩为 768 得 65.3%。网络优化两边都开启。 候选核对：第6节表格聚合中间配置，但明确是顺序累加；最后LAMB将batch256→768，网络优化两边开启。未把表中括号当每步独立增益。 边界：这些是顺序累加的配置，不是各技术独立消融或能任意相加的普适收益；最终 17.6 个百分点包含 batch 改变，不能冒称同 batch 仅换系统获得该全部收益。"
+        },
+        {
+          "id": "PM-MG-15",
+          "title": "收敛证据的模型规模、数据量和指标各有限定",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "MEGASCALE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U9",
+            "U14"
+          ],
+          "notes": "原始定位：论文 pp10–11 §6.2、Figures 10–11。独立识别：受资源限制，算法收敛 microbenchmark 是 13B；PTB/SWA 在逾 100B tokens 后 loss 可比，LAMB 4× batch 在约 250B tokens 后与 ADAM loss 可比。另有数千亿参数、multi-trillion tokens、万卡、数周的 proprietary 运行，图中归一化 loss 持续下降并包含多次重启。 候选核对：第3节把13B、>100B与约250B tokens的loss证据限定在对应实验；第8节专有长期运行单列，未外推所有下游质量。 边界：训练 loss 可比不等于所有下游任务质量等价；13B 测试与 175B/530B 性能测量不是同一实验。不能补写未公开模型身份、准确数据量或未测任务结论。"
+        },
+        {
+          "id": "PM-MG-16",
+          "title": "生产稳定性指标支持恢复能力而非零故障",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "MEGASCALE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U14"
+          ],
+          "notes": "原始定位：论文 p11 §6.2、p12 §6.3、Figure 11。独立识别：数周生产运行发生超过 100 次训练重启，超过 90% 软硬件故障被自动定位处理；检测加诊断平均少于 10 分钟，论文另报从最新 checkpoint 追到崩溃前进度可在 15 分钟内完成，有效训练时间率超过 90%。 候选核对：第8节保留>100重启、>90%异常自动处理、平均检测诊断<10分钟、另述15分钟内追平、有效训练时间率>90%，没有拼成统一恢复SLA。 边界：这些是同一次部署经验的报告值，不是故障永不发生或所有恢复 15 分钟的 SLA；不擅自将两个时间相加/合并为另一个未报告指标。"
+        },
+        {
+          "id": "PM-MG-17",
+          "title": "反直觉案例：通信等待可能由代码时序偏移产生",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "MEGASCALE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10",
+            "U11"
+          ],
+          "notes": "原始定位：论文 p12 §6.3、Figure 12。独立识别：某些机器前向慢约 10%，剔除后 MFU 约增 0.7 个百分点；另一类性能随训练退化，算子和网络带宽大致稳定，最终归因于 reduce-scatter 发起时刻被垃圾回收及部分 PyTorch 操作扰动。修代码后 MFU 稳定。 候选核对：第7节讲清网络带宽稳定而GC/PyTorch时序偏移导致reduce-scatter等待，另列慢主机约10%的案例。 边界：慢通信观测并不自动指向带宽不足；要区分传输时间和等同伴的时间。不能将不同问题都归因于坏 GPU，也不能把约 0.7% 不加说明改成 0.7 倍或普遍增益。"
+        },
+        {
+          "id": "PM-MG-18",
+          "title": "节目中的行业历史、卡数与 H800 例子应按证据等级处理",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "EPISODE",
+            "LECTURE",
+            "MEGASCALE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U16",
+            "U17"
+          ],
+          "notes": "原始定位：转录 02:13:44.88–02:15:07.90、02:17:32.67–02:19:51.97；讲义 p31 首个公开发表说法；论文 pp1–2、p12 related work。独立识别：节目将保密环境、公开生产训练系统经验、算法/数据/系统复合能力联系起来，并谈到 DeepSeek、H800 和资源压力；这些说明嘉宾如何解释 co-design 的价值。论文独立支持效率与可观测性主线。 候选核对：来源与发展路线段保留co-design问题意识，不采纳未经核验的历史唯一性、跨公司卡数和H800口算，也未宣称已证伪它们。 边界：首个公开、全球只有三家公司、3000 卡抵 20000 卡、带宽决定只能切四卡，以及公司发布次优工作等，均无本次来源中的可比实验或穷尽历史证据。转录有专名错字，嘉宾明确记不清细节；保留时须归属为观点/比喻或待验证，不能包装成 MegaScale 实验事实。"
+        },
+        {
+          "id": "PM-MG-19",
+          "title": "系统论文的贡献与可迁移原则有边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "MEGASCALE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U17",
+            "U18"
+          ],
+          "notes": "原始定位：论文 pp1–2、pp12–13 §§7–8。独立识别：系统建立在 Megatron-LM 和既有算法/诊断研究上，主要贡献是把多层优化与生产可观测、故障恢复组合到万卡单任务训练。可迁移的问题意识包括关键路径、瓶颈、依赖、代价与运行时证据。 候选核对：第9节把系统贡献放入资源/数据/执行问题线，并把Agent工作流类比明确标为[推测]。 边界：原始代码、数据和 proprietary 训练模型不能由论文全部复现；不把特定硬件和模型设置下的 MFU 或恢复时间直接外推至任意集群、小模型、推理、消费级卡或所有长上下文任务。"
+        }
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "snapshot_binding": {
+        "revision_round": 1,
+        "report_path": "ai-learning/reports/knowledge_reports/AI演义_14_MegaScale_万卡怎样协同训练_科普讲解_20261105.md",
+        "report_sha256": "114027f481394ee33f92a267cac30f7fcd36096fb6d8dd21c5b273938c2fc641",
+        "evidence_path": "ai-learning/reports/knowledge_reports/.quality/AI演义_14_MegaScale_万卡怎样协同训练_科普讲解_20261105.evidence.json",
+        "evidence_sha256": "117dc5fec7c7b70230f5e5b619615e875095a738dca2d1597f2d0b3eebd3be4e",
+        "transcription_review_sha256": "87209b2b0f67aaab5daf5cc53e4523eb243a9f903e78904c05428f1fa1d81527",
+        "checked_at": "2026-11-04T23:25:19.788496+00:00"
+      },
+      "check_scope": {
+        "mode": "full_current_chapter_source_first_review",
+        "critical_claim_ids_direct": [
+          "C1",
+          "C2",
+          "C3",
+          "C4",
+          "C5",
+          "C6",
+          "C7",
+          "C8",
+          "C9",
+          "C10",
+          "C11",
+          "C12",
+          "C13",
+          "C14",
+          "C15",
+          "C16",
+          "C17"
+        ],
+        "noncritical_claim_ids_direct": [
+          "C18"
+        ],
+        "coverage_unit_ids_direct": [
+          "U1",
+          "U2",
+          "U3",
+          "U4",
+          "U5",
+          "U6",
+          "U7",
+          "U8",
+          "U9",
+          "U10",
+          "U11",
+          "U12",
+          "U13",
+          "U14",
+          "U15",
+          "U16",
+          "U17",
+          "U18"
+        ],
+        "source_aliases": {
+          "S-megascale": "MEGASCALE",
+          "S-lecture": "LECTURE",
+          "S-shownotes/S-transcript/S-apple": "EPISODE"
+        },
+        "source_ids_direct": [
+          "MEGASCALE",
+          "LECTURE",
+          "EPISODE",
+          "TRANSCRIPT_REVIEW"
+        ],
+        "source_scope": "采用provenance所列实际读取范围；作者LECTURE source.read_scope写原图不代表本Reviewer看过讲义原图，Reviewer只核p31提取文+eacli OCR。",
+        "chapter_coverage": "仅当前MegaScale及联合设计问答；所读其他shownotes章节只用于节目定位，不声称重审全期。",
+        "main_edit_verification": "只核主稿第14节/脚注和允许区外不变；r16其余正文源事实继承，不重复审阅。",
+        "ui": {
+          "widths": [
+            1440,
+            390
+          ],
+          "actual_clicks_by_coordinator": [
+            "主稿第14节进入展开",
+            "返回原第14节",
+            "上一节LAION实际访问",
+            "下一节稀疏MoE锚点",
+            "目录第6节",
+            "performance脚注往返"
+          ],
+          "dom_checks": "1–14节入口均在节首blockquote；只实际点击本轮入口。主稿41/展开13脚注的存在、fragment与重复ID检查通过，未声称逐个点击13条脚注。",
+          "tables": "3张表桌面760/760，无横溢出；窄屏358/440，实际横滚至82。页面与reader溢出均为0。",
+          "other_results": "无乱码占位、literal anchor/note、pageerror或新tab。"
+        }
+      },
+      "provenance": {
+        "frozen_source_map": {
+          "artifact": "primary-source-map.json",
+          "sha256": "dcc5d51498eb8734bb9a35d4edd0060adc16cc414882632f65b2dc384c7c650c",
+          "frozen_at": "2026-11-04T22:49:42.218528+00:00",
+          "source_units": 19,
+          "core_units": 15,
+          "candidate_and_evidence_read_before_freeze": false
+        },
+        "source_inputs": {
+          "artifact": "source-inputs.json",
+          "sha256": "d2be4a22534ecbb68589f54a00d7eecef56b3f4e23234515583792e7e1beb7b8"
+        },
+        "supplemental_source_inputs": {
+          "artifact": "supplemental-source-inputs.json",
+          "sha256": "6f1af691472b109b726d295a0717041716025ce39a58fda11aa6cd730dd72c2a"
+        },
+        "independent_extraction_check": {
+          "artifact": "primary-extraction-audit.json",
+          "sha256": "c6babb74671fff770fdbcd95158161481c94aa7a282e0ced5b74cb499b1ec6b5",
+          "result": "论文重新pdftotext逐字节一致；讲义p31仅尾部换页符差异。"
+        },
+        "independent_transcript_checks": [
+          {
+            "artifact": "primary-native-audit.json",
+            "sha256": "dac5230fe39bf6f7f7b6c67521a49ca40e8151844434d242bed2e0b48448d237"
+          },
+          {
+            "artifact": "primary-transcript-audit.json",
+            "sha256": "e689a411ffa4bf1c27677ff7d003d785504ae2174011691e0eead78340d589ed"
+          }
+        ],
+        "initial_candidate_record": {
+          "artifact": "primary-initial-candidate-review.json",
+          "sha256": "0378213b04f960d6f0060507fef9cd81802f75d886d31cbaaa09b840bcb7b137"
+        },
+        "final_delta_audit": {
+          "artifact": "primary-final-delta-audit.json",
+          "sha256": "d4c476e1972cb47d27e3944eb1f9f6d300e288c4fc1e0e336cb78b3515880e62",
+          "resolved": [
+            "主稿明确Megatron-LM基线",
+            "转录正式白名单收据及绑定SHA"
+          ],
+          "unresolved": []
+        },
+        "navigation_receipt": {
+          "artifact": "navigation-receipt.json",
+          "sha256": "67ac43f53ce0776b28d9d9c0d7e3a2d61c08bec643dc7972fe1e1cd41a812d4b",
+          "checked_at": "2026-11-04T23:13:39.079Z",
+          "method": "复核协调者实际headless Chromium脚本和执行收据；未亲自点击UI、未查看UI截图、未宣称用户浏览器验收。",
+          "body_snapshot_bindings_verified": true
+        },
+        "source_read_scope": {
+          "paper": "SHA已核的arXiv v1物理pp1–13主文全部实读；pp14–16参考文献未通读。",
+          "lecture": "仅p31提取文和eacli视觉OCR；本Reviewer未直接看讲义原图，也未读其他页。",
+          "episode": "全部所供shownotes及同一期Apple页面元数据；本章236段02:13:37.79–02:21:28.53全部实读。全期/global indices关系来自协调者收据，不声称通读全期转录。",
+          "venue": "实读USENIX正式页作者、机构、摘要及材料入口；未读另一版本PDF或播放演讲。",
+          "paper_images": "在核对eacli读取收据后，亲自查看本地p4 Figure3、p6 Figure5、p10 Table2/Figure9、p11 Table3/Figures10–11、p12 Figure12原图。",
+          "vision_limits": "p10/11/12 chart-analysis超时后image-analysis成功；p4经只读fallback成功。未采用模型旁注对Table3累计百分点、Figure3 RS阶段和55.2%是否全表最高的错误解释。",
+          "audio_listened": false,
+          "wer_measured": false,
+          "training_reproduced": false
+        },
+        "verification_limits": "转录时间结构通过不证明逐字准确；公开训练结果按作者报告理解。导航检查为协调者实际执行、本Reviewer独立复核脚本和绑定收据，不是第二次亲自浏览。"
+      },
+      "notes": "展开正文完整实读；19个独立来源地图单元映射18个coverage，全部本轮直接核验。无未解决unsupported/missing/hard failure。最终展开正文未变，仅evidence更换正式转录收据SHA；收据结构由schema1非正式记录修为schema2官方白名单，阈值20→3并去除warnings/errors，实际审计指标逐项相同。保留未听校、未测WER、未复现训练与UI收据复核的真实边界。本entry不是正式门禁判定。"
+    },
+    {
+      "role": "flagship_final_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "dispatch_model_override": true,
+        "dispatch_configuration_source": "collaboration tool explicit configuration under flagship policy",
+        "runtime_model": "unconfirmed",
+        "runtime_identity_note": "未取得可独立验证的子会话运行时模型证明；不使用根会话身份或共享workspace session作为证明。",
+        "run_id": "megascale-s14-strong-expanded-r1-20261105"
+      },
+      "snapshot": {
+        "report_sha256": "114027f481394ee33f92a267cac30f7fcd36096fb6d8dd21c5b273938c2fc641",
+        "evidence_sha256": "117dc5fec7c7b70230f5e5b619615e875095a738dca2d1597f2d0b3eebd3be4e",
+        "source_map_sha256": "9e7a24eeca04486845996f9e3fc2cc5a2eb1dcc5f5872302d7d0a010dca75dae",
+        "snapshot_verified": true,
+        "previous_evidence_sha256": "3c450c9b91dbb08dc87fe3114d04a81cfd638b8a89c21c7d690a9417b67c2f0b"
+      },
+      "scores": {
+        "evidence_fidelity": 98,
+        "request_coverage": 99,
+        "reasoning_quality": 99,
+        "readability": 98,
+        "limitations": 99
+      },
+      "score_reasons": {
+        "evidence_fidelity": "18项claim逐项回到论文、讲义、shownotes和236段转录审计核对。关键数字及条件完整：初始化1047→361→<5秒、万卡<30秒；175B Table2；530B弱扩展；256 GPU累加消融；13B收敛；专有生产run。区分batch×3与×4、百分点与倍率、MFU与有效训练时间率。仅有“根据故障信息安排诊断”略概括，未改变恢复流程结论。",
+        "request_coverage": "R1–R6全部覆盖。冻结的16个来源单元中14个完整覆盖；深层观测的RDMA触发层级及RNIC/NCCL具体自检为partial，但核心机制、实验条件、关键反例、来源边界和导航要求均完成，不构成核心遗漏。",
+        "reasoning_quality": "全文按一次训练从分工、算法改造、通信重叠、外围管线、性能证据、排障到恢复展开。多处主动拆开易混因果：通信耗时与网络根因、异步写盘与无停顿恢复、累加消融与独立贡献、强扩展与弱扩展。",
+        "readability": "可独立阅读，必要术语在首次出现处解释，数学限于复杂度与指标口径，三张表清晰。复核协调者navigation-receipt：1440/390下返回原节、LAION上节、MoE下节、目录/脚注往返和窄屏表格横滚均成功，无乱码或整体溢出；不宣称本Reviewer亲自操作UI。",
+        "limitations": "明确未复现训练、未听校/WER、参考文献pp14–16未通读、专有生产run不可复现、13B/175B/530B/256 GPU/生产run不可拼接，并拒绝节目中的行业唯一性与跨公司算力比较。Agent类比明确标为推测且禁止直接迁移指标。"
+      },
+      "critical_claim_ids_checked": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17"
+      ],
+      "coverage_unit_ids_checked": [
+        "U1",
+        "U2",
+        "U3",
+        "U4",
+        "U5",
+        "U6",
+        "U7",
+        "U8",
+        "U9",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16",
+        "U17",
+        "U18"
+      ],
+      "source_content_map": [
+        {
+          "id": "MSC-SM-01",
+          "title": "万卡单作业的两个系统瓶颈：效率与长期稳定性",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "MEGASCALE",
+            "LECTURE",
+            "EPISODE",
+            "TRANSCRIPT_REVIEW"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1"
+          ],
+          "notes": "第1节完整解释单作业、效率、稳定性和同步依赖。"
+        },
+        {
+          "id": "MSC-SM-02",
+          "title": "总设计原则：算法—系统协同设计与深层可观测性",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "MEGASCALE",
+            "LECTURE",
+            "EPISODE",
+            "TRANSCRIPT_REVIEW"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1",
+            "U17"
+          ],
+          "notes": "两条设计原则贯穿分工、执行、观测和恢复。"
+        },
+        {
+          "id": "MSC-SM-03",
+          "title": "3D 并行是后续优化的坐标系",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "MEGASCALE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U2"
+          ],
+          "notes": "DP/PP/TP/SP、ZeRO2、通信内容及节点内外放置均有解释。"
+        },
+        {
+          "id": "MSC-SM-04",
+          "title": "算法侧改造不是数学等价替换，收益需以收敛实验约束",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "MEGASCALE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3",
+            "U9"
+          ],
+          "notes": "PTB、SWA、LAMB与13B收敛微实验的条件和外推边界齐全。"
+        },
+        {
+          "id": "MSC-SM-05",
+          "title": "通信重叠的机制：只隐藏不在关键路径上的部分",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "MEGASCALE",
+            "EPISODE",
+            "TRANSCRIPT_REVIEW"
+          ],
+          "matched_coverage_unit_ids": [
+            "U4"
+          ],
+          "notes": "DP预取、PP拆分send/receive、TP/SP的GEMM分块均覆盖，并说明通信不消失。"
+        },
+        {
+          "id": "MSC-SM-06",
+          "title": "效率来自全栈补洞：算子、数据、通信组初始化与网络",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "MEGASCALE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U5"
+          ],
+          "notes": "数据、算子、初始化1047→361→<5秒、万卡<30秒和网络路径均覆盖。"
+        },
+        {
+          "id": "MSC-SM-07",
+          "title": "自动容错工作流是暂停—诊断—替换—从 checkpoint 恢复",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "MEGASCALE",
+            "EPISODE",
+            "TRANSCRIPT_REVIEW"
+          ],
+          "matched_coverage_unit_ids": [
+            "U12"
+          ],
+          "notes": "恢复流程和“非无停顿热换”写得明确。"
+        },
+        {
+          "id": "MSC-SM-08",
+          "title": "深层可观测性：从表面错误到毫秒级跨栈信号",
+          "importance": "core",
+          "assessment": "partial",
+          "source_ids": [
+            "MEGASCALE",
+            "LECTURE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10",
+            "U11",
+            "U12"
+          ],
+          "notes": "CUDA事件和跨rank时间线讲解充分，也提及日志、心跳、网络流量；未细分RDMA异常波动告警与完全停止自动恢复。"
+        },
+        {
+          "id": "MSC-SM-09",
+          "title": "诊断测试在速度与误报之间取舍",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "MEGASCALE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U12"
+          ],
+          "notes": "保留诊断覆盖与停工时间的权衡，但未列loopback、RNIC-to-RNIC和NCCL测试层级。"
+        },
+        {
+          "id": "MSC-SM-10",
+          "title": "Checkpoint 写入和恢复采用不同的关键路径优化",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "MEGASCALE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U13"
+          ],
+          "notes": "前台数秒、host memory后异步持久化、恢复单读多播和非零停顿均准确。"
+        },
+        {
+          "id": "MSC-SM-11",
+          "title": "慢节点与隐性故障需要分布式时间线，而非单卡 microbenchmark",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "MEGASCALE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10",
+            "U11"
+          ],
+          "notes": "代码抖动、约10%慢主机、单卡小测不显著、无日志坏GPU及依赖反查均覆盖。"
+        },
+        {
+          "id": "MSC-SM-12",
+          "title": "性能主结果必须连同模型、基线、batch 和 scaling 口径陈述",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "MEGASCALE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U6",
+            "U7"
+          ],
+          "notes": "Table 2与Figure 9的模型、GPU、batch、序列、基线、强弱扩展和数字口径完整。"
+        },
+        {
+          "id": "MSC-SM-13",
+          "title": "消融显示组合收益，但不是万卡条件下的独立因果分解",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "MEGASCALE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8"
+          ],
+          "notes": "累加配置、256 GPU、batch×3、网络两边开启及不可独立相加的边界齐全。"
+        },
+        {
+          "id": "MSC-SM-14",
+          "title": "稳定性证据来自真实长跑，但细节受专有性限制",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "MEGASCALE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U14"
+          ],
+          "notes": "专有模型、多万亿token、100+重启、归一化与自动处理比例/时间率均限定在该run。"
+        },
+        {
+          "id": "MSC-SM-15",
+          "title": "三个关键反例说明稳定性不是“发现坏卡即可”",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "MEGASCALE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10",
+            "U11",
+            "U15"
+          ],
+          "notes": "计算straggler、运行时抖动、网络flapping三个反例及各自修复边界均覆盖。"
+        },
+        {
+          "id": "MSC-SM-16",
+          "title": "播客叙事提供直觉，但若干断言不能升级为报告事实",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "LECTURE",
+            "EPISODE",
+            "TRANSCRIPT_REVIEW"
+          ],
+          "matched_coverage_unit_ids": [
+            "U16",
+            "U17"
+          ],
+          "notes": "节目时间边界、236段审计、无听校/WER，以及不采历史唯一性与跨公司数字均明确。"
+        }
+      ],
+      "source_ids_checked": [
+        "MEGASCALE",
+        "LECTURE",
+        "EPISODE",
+        "TRANSCRIPT_REVIEW"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "结论：本强审未发现需修订的核心遗漏、关键数字错误或硬失败。快照SHA已逐项核对；转录机器收据显示236段、时间单调、无负时长/倒序/重叠，29处正间隙最大1.02秒，但未听音频且无WER，正文对此表述准确。复核协调者eacli网页/视觉收据及原文：p10/p11/p12 chart-analysis BackendTimeout，通用image-analysis降级成功；不采用视觉模型关于Table3括号为逐步新增、Figure3 AG/RS前后向简化和55.2%为整表最高MFU的错误旁注。navigation-receipt与正文SHA绑定，本Reviewer只复核其执行收据。未读另一Reviewer输出，未覆盖公共review，未finalize。 最终增量复核：展开正文零变化；evidence仅更新转录核查SHA。本人重跑audit_transcript.py --public-receipt，结果与嵌入schema2对象完全相同，validate_receipt=[]，最长连续重复仍为1；原评分保持。",
+      "final_revision_check": {
+        "scope": "incremental_only",
+        "checked_changes": [
+          "展开正文未变化",
+          "evidence仅更新TRANSCRIPT_REVIEW来源SHA",
+          "compatible_text_audit改为audit_transcript.py schema2官方白名单收据，max_consecutive_limit=3"
+        ],
+        "unexpected_changes": [],
+        "report_unchanged": true,
+        "evidence_diff_verified": true,
+        "source_map_unchanged": true,
+        "report_sha256": "114027f481394ee33f92a267cac30f7fcd36096fb6d8dd21c5b273938c2fc641",
+        "new_evidence_sha256": "117dc5fec7c7b70230f5e5b619615e875095a738dca2d1597f2d0b3eebd3be4e",
+        "transcription_review_sha256": "87209b2b0f67aaab5daf5cc53e4523eb243a9f903e78904c05428f1fa1d81527",
+        "transcript_native_sha256": "f8c716b3a6ecbbdff04e041665500992b8708f08173d615943e4b8348cd31558",
+        "independent_public_receipt_sha256": "a0ba550833a8ac029e9391a1b38d16f38a739df20208ffff706f2ef0ce82967e",
+        "public_receipt_equals_embedded": true,
+        "validate_receipt_errors": [],
+        "audit_metrics_unchanged": {
+          "segments": 236,
+          "max_consecutive_identical": 1,
+          "timestamp_errors": 0,
+          "malformed_lines": 0,
+          "tail_gap_seconds": 0,
+          "negative_duration_count": 0,
+          "backward_start_count": 0,
+          "overlap_count": 0,
+          "positive_gap_count": 29,
+          "max_gap_seconds": 1.02
+        },
+        "finding": "旧手填limit=20已由脚本真实常量3替换；官方收据重跑结果与嵌入对象逐字段相同，语义限制仍为未听校、未测WER，不改变正文或评分。",
+        "report_quality_check": {
+          "command": "python3 scripts/report_quality.py check <bound-report>",
+          "exit_code": 1,
+          "output_sha256": "fb0ca93cd5fbadced73d2825fc6170e1f092d86b018d425f11b0ae5ac01170ec",
+          "observed_status": "needs_review",
+          "interpretation": "公共review尚未合入本强审entry，因此缺Reviewer；不是本次内容或收据复核失败。"
+        }
+      }
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 97.5,
+    "evaluated_on": "2026-11-05",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "174658a7c67d5c79aedfdb5be6cabc4b2a8a9083d96c0d2218ac65a8ef2fbaed",
+    "evidence_sha256": "117dc5fec7c7b70230f5e5b619615e875095a738dca2d1597f2d0b3eebd3be4e"
+  },
+  "review_receipts": [
+    {
+      "file": "primary-expanded-review.json",
+      "sha256": "34dc314e4ecd38a9ff689400f6604ea6756d1516b32678fa000caea1139b56bc",
+      "role": "primary_review",
+      "raw_review_content_preserved": true
+    },
+    {
+      "file": "strong-expanded-review.json",
+      "sha256": "6c0cd05a4435ed6997f554b5200d0b6992aac4593908195b1a295f4ad770bf8f",
+      "role": "flagship_final_review",
+      "raw_review_content_preserved": true
+    }
+  ]
+}

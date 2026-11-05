@@ -1,0 +1,977 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_01_Brook_GPU通用计算_科普讲解_20261104.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-6-astra",
+        "harness": "codex",
+        "run_id": "review-e3f7d7887fef",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": "",
+        "identity_basis": "父会话eacli codex-thread-state自动确认gpt-6-astra、session-bound、confirmed=true；spawn无模型覆盖，按调度契约继承。worker CLI只显示未确认配置，不冒称为worker自身独立确认。"
+      },
+      "escalation_reason": "",
+      "scores": {
+        "evidence_fidelity": 96,
+        "request_coverage": 95,
+        "reasoning_quality": 96,
+        "readability": 94,
+        "limitations": 97
+      },
+      "score_reasons": {
+        "evidence_fidelity": "继承revision1对全部11条critical claims与7个来源的核对，本轮按新快照重点复验变更。错误Figure4–5定位已在正文、PAPER.read_scope、C6.evidence三处修正；新增局部寄存器段落及C3对应论文§3.2。性能表精简后仍完整保留4324/624、12163/2616、1212/1224及约6.93/4.65/0.99，单位MFLOPS与ATI BrookDX口径位于相邻正文。未发现未支持的关键主张或数字。",
+        "request_coverage": "17项独立Brook来源单元、3项转录完整性单元及8项Shownotes章节留痕均已映射U1–U8。本轮补足核内局部性，SAXPY贯穿动机、三个抽象、执行过程及成本；全期转录、故障恢复和审核边界已覆盖。其他30节仅保留学习入口，符合用户本轮先完成Brook的范围。",
+        "reasoning_quality": "数据独立性→图形接口负担→stream/kernel/reduction→编译运行时→具体性能及端到端成本的链条完整；新增段落清楚区分设备内寄存器局部性与CPU/GPU传输，避免混账。保留FFT反例、读写限制、浮点舍入、抽象代价及CUDA前驱边界，没有为简化排版删除推理或限制。",
+        "readability": "revision1已完整读正文与脚注，本轮重读修订段、完整性能节及文末来源。隐藏JSON链接已移除，性能表将长表头、单位和任务释义移到紧邻正文。核对最终实际1440/390收据：7脚注/14引用、无断锚/重复ID/源码残留/页面或阅读区溢出，往返有效；另经eacli图片理解核对窄屏表格右端截图，三项比值和单位说明清楚。390宽度仍因现有工作台样式在358px容器内横滚440px表格，需滑动82px看到最右列；已实际滚到最右验看，不能表述为整张表无需横滑。",
+        "limitations": "来源年代、未复现实验、教学数字、自动定位时间、未核实轶事、未听音及无WER均保留。原始故障产物和修复版未变，本轮仅复验其哈希，沿用已独立运行的全量结构审计和精确时间检查；15.989秒末尾未知、11处微小重叠及首接缝3.36秒等边界仍在记录中，不把结构通过等同逐字准确。"
+      },
+      "critical_claim_ids_checked": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11"
+      ],
+      "coverage_unit_ids_checked": [
+        "U1",
+        "U2",
+        "U3",
+        "U4",
+        "U5",
+        "U6",
+        "U7",
+        "U8"
+      ],
+      "source_content_map": [
+        {
+          "id": "ICM01",
+          "title": "问题是算力已经存在，但通用程序难以调用它",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "SLIDE",
+            "ASR"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1",
+            "U2"
+          ],
+          "notes": "论文 §1–2，页1–2；幻灯片历史背景；ASR 20:43–23:35；来源优先独立单元。开篇两列数字与第1–2节把可计算性、数据独立性、图形接口负担连接起来。"
+        },
+        {
+          "id": "ICM02",
+          "title": "Brook 超过了把汇编换成 C 的问题",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "ASR"
+          ],
+          "matched_coverage_unit_ids": [
+            "U2"
+          ],
+          "notes": "论文 §1、§2.2；ASR 23:05–23:17；来源优先独立单元。明确HLSL/Cg已存在，纠正近汇编概括，并解释宿主图形API编排问题。"
+        },
+        {
+          "id": "ICM03",
+          "title": "Stream 是一组同类计算的数据记录",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "SLIDE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3"
+          ],
+          "notes": "论文 §2.1、§3.1，页2–3；来源优先独立单元。stream的类型、形状、记录与网络流的区别均已解释。"
+        },
+        {
+          "id": "ICM04",
+          "title": "Kernel 隐式遍历数据，并把中间结果留在局部寄存器",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "SLIDE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3"
+          ],
+          "notes": "论文§3.2，页3–4；来源优先独立单元。revision2已在隐式循环后补足核内多步计算、临时寄存器保存中间量、减少设备内存往返，并与CPU↔GPU搬运明确区分；与原论文机制一致。SAXPY教学例采用“可以”措辞，不宣称实际机器指令必定分开执行乘加。"
+        },
+        {
+          "id": "ICM05",
+          "title": "Reduction 让并行结果重新汇合",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "SLIDE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3"
+          ],
+          "notes": "论文 §3.3、§4.3，页4、6；来源优先独立单元。三项结果12、24、36合为72，分层汇总、结合性与浮点舍入边界均有交代。"
+        },
+        {
+          "id": "ICM06",
+          "title": "简单算式如何走完整条 CPU—GPU 路径",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3",
+            "U4",
+            "U5"
+          ],
+          "notes": "论文 §3.2 的 SAXPY 代码与 Appendix A；来源优先独立单元。SAXPY贯穿解释声明、核函数、编译执行、取回；streamRead/Write方向在性能节解释正确。"
+        },
+        {
+          "id": "ICM07",
+          "title": "抽象下层依然利用图形管线执行",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U4"
+          ],
+          "notes": "论文 §4.1–4.2、Appendix A，页4–5、9；来源优先独立单元。brcc→Cg→厂商编译器、C++与BRT、纹理与四边形绘制均符合原论文。"
+        },
+        {
+          "id": "ICM08",
+          "title": "虚拟化硬件限制带来便利，也有代价和上限",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U4"
+          ],
+          "notes": "论文§4.1–4.2，页4–5，Table1；来源优先独立单元。多输出拆分、结构拆纹理、重复读取/计算与OpenGL复制示例充分。revision2正文脚注、PAPER.read_scope和C6.evidence均已改为真实§4.2/Table1，Figure3/4各归其对应性能与调用开销内容。"
+        },
+        {
+          "id": "ICM09",
+          "title": "论文比较的是具体硬件、后端和任务",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U5"
+          ],
+          "notes": "论文 §5.1，页6–7，Figure 3；来源优先独立单元。2004设备、具体ATI BrookDX列、优化CPU基线均已交代，未用ray数据冒充完整渲染速度。"
+        },
+        {
+          "id": "ICM10",
+          "title": "约 7 倍是 SAXPY 上限，FFT 给出反例",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U5"
+          ],
+          "notes": "论文 §5.1，页7，Figure 3；来源优先独立单元。4324/624、12163/2616、1212/1224独立计算无误；成功例和FFT反例并置，排除初始上传/最终下载的口径紧邻解释。"
+        },
+        {
+          "id": "ICM11",
+          "title": "端到端收益必须覆盖搬运成本",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U5"
+          ],
+          "notes": "论文 §5.2，页7–8；来源优先独立单元。以明确标为自拟的70/10/5/80ms例子表达端到端取舍；15/90ms算术正确。科普体不照抄公式是合理取舍。"
+        },
+        {
+          "id": "ICM12",
+          "title": "数据太小，启动内核也会成为瓶颈",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U5"
+          ],
+          "notes": "论文 §5.2，页8，Figure 4；来源优先独立单元。保留小任务固定调用开销和留在GPU连续执行以分摊搬运的解释；没有滥用旧硬件阈值。"
+        },
+        {
+          "id": "ICM13",
+          "title": "数据并行与原型限制决定适用边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3",
+            "U4"
+          ],
+          "notes": "论文 §3.2、§3.4、§6，页3–4、8；来源优先独立单元。只读gather、全局写副作用、部分读改写在CPU的边界清楚，未承诺任意程序自动高效移植。"
+        },
+        {
+          "id": "ICM14",
+          "title": "Brook 的前史和影响是一条技术线索",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "NVIDIA",
+            "ACM",
+            "ASR"
+          ],
+          "matched_coverage_unit_ids": [
+            "U6"
+          ],
+          "notes": "论文 §3；NVIDIA全文；ACM technical contributions；ASR 23:43–24:01、25:18–26:36；来源优先独立单元。既有Brook适配GPU、团队研究、ACM与NVIDIA支持的CUDA前驱关系均准确。"
+        },
+        {
+          "id": "ICM15",
+          "title": "作者信息只保留有助于理解技术方向的部分",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SLIDE",
+            "ACM"
+          ],
+          "matched_coverage_unit_ids": [
+            "U6"
+          ],
+          "notes": "幻灯片作者栏；ACM 公告头部和技术贡献；来源优先独立单元。人物信息服务技术路径；脚注区分2019年度奖与2020-03-18公布，不推断现任职位。"
+        },
+        {
+          "id": "ICM16",
+          "title": "播客保留了问题和贡献，技术机制需要论文补足",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES",
+            "SLIDE",
+            "ASR",
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8"
+          ],
+          "notes": "shownotes Part1 19:35；ASR 19:39–26:36；幻灯片第10页；来源优先独立单元。播客定位、讲义压缩信息与论文细节各有分工；19:35被正确标为Part1入口。未伪称口述包含全部实现细节。"
+        },
+        {
+          "id": "ICM17",
+          "title": "未核实的硬件首创史与游戏轶事",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "ASR",
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U7",
+            "U8"
+          ],
+          "notes": "ASR 19:42–20:12、24:57–25:05、26:36；来源优先独立单元。未核实轶事被有意省略；正文明确不宣称AlexNet使用Brook或2012首次GPU深度学习，符合本轮范围。"
+        },
+        {
+          "id": "ICM18",
+          "title": "长音频重复故障、局部重转与替换可追溯性",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "ASR",
+            "TRANSCRIPT_REVIEW"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8"
+          ],
+          "notes": "先于正式报告读取原始/恢复转录和recovery两段。独立比较得到6407段相同前缀、1054段相同后缀；旧157段换为新92段，后者13段逐条匹配A(+13190秒)、79段匹配B(+13340秒)，文本和时间均可追溯。Brook抽查1170–1600秒71段完全未变。公开记录的替换13310.8–13506.39秒与实际一致。"
+        },
+        {
+          "id": "ICM19",
+          "title": "结构检查不能证明词准确率或音频尾部完整",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "ASR",
+            "TRANSCRIPT_REVIEW"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8"
+          ],
+          "notes": "独立运行audit_transcript.py：原始7618段、最大重复153，失败；恢复7553段、最大重复3、时间戳错误0，结构通过。另直接检查精确segments时间：无倒序/非法区间，仍有11处至多0.1秒重叠，末段15741.49秒，已登记音频时长15757.479秒，尾差15.989秒。TXT审计tail_gap=0没有外部音频时长，不能抵消这项尾差。正文诚实保留未听音、未测WER与约16秒未知。"
+        },
+        {
+          "id": "ICM20",
+          "title": "接缝按语句对照成立，但未作原音逐字校对",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "ASR",
+            "TRANSCRIPT_REVIEW"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8"
+          ],
+          "notes": "独立读取替换区前后及两次重转全文。接回BERT/GPT之后→然后呢，A与B在概念有限后交接，末尾回到原始Clip模型句，文本上下文连贯；首接缝3.36秒、A/B间0.01秒、末接缝0.27秒保留原时间。原音频未听，不能据此判定这些间隙没有漏字。"
+        },
+        {
+          "id": "SN1",
+          "title": "Shownotes 01:30：探索的缘起",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES",
+            "ASR",
+            "TRANSCRIPT_REVIEW"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8"
+          ],
+          "notes": "章节逐项留痕用于本轮整期转录定位和结构/内容抽查，不要求在Brook正文展开该章全部论文。已核对独立shownotes地图与公开content_windows；Reviewer另读对应主章入口或Brook段以及头尾。正文说明整期有主要章节抽查，细项留质量记录，符合本轮只展开Brook的明确范围。"
+        },
+        {
+          "id": "SN2",
+          "title": "Shownotes 07:25：怎么读论文（用AI学AI）",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES",
+            "ASR",
+            "TRANSCRIPT_REVIEW"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8"
+          ],
+          "notes": "章节逐项留痕用于本轮整期转录定位和结构/内容抽查，不要求在Brook正文展开该章全部论文。已核对独立shownotes地图与公开content_windows；Reviewer另读对应主章入口或Brook段以及头尾。正文说明整期有主要章节抽查，细项留质量记录，符合本轮只展开Brook的明确范围。"
+        },
+        {
+          "id": "SN3",
+          "title": "Shownotes 10:20：辅助小工具和路书",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES",
+            "ASR",
+            "TRANSCRIPT_REVIEW"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8"
+          ],
+          "notes": "章节逐项留痕用于本轮整期转录定位和结构/内容抽查，不要求在Brook正文展开该章全部论文。已核对独立shownotes地图与公开content_windows；Reviewer另读对应主章入口或Brook段以及头尾。正文说明整期有主要章节抽查，细项留质量记录，符合本轮只展开Brook的明确范围。"
+        },
+        {
+          "id": "SN4",
+          "title": "Shownotes 19:35：Part 1 模型的范式变迁，Brook在此主干开头",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES",
+            "ASR",
+            "TRANSCRIPT_REVIEW"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8"
+          ],
+          "notes": "章节逐项留痕用于本轮整期转录定位和结构/内容抽查，不要求在Brook正文展开该章全部论文。已核对独立shownotes地图与公开content_windows；Reviewer另读对应主章入口或Brook段以及头尾。正文说明整期有主要章节抽查，细项留质量记录，符合本轮只展开Brook的明确范围。"
+        },
+        {
+          "id": "SN5",
+          "title": "Shownotes 01:52:58：Part 2 Infra与数据的变迁",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES",
+            "ASR",
+            "TRANSCRIPT_REVIEW"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8"
+          ],
+          "notes": "章节逐项留痕用于本轮整期转录定位和结构/内容抽查，不要求在Brook正文展开该章全部论文。已核对独立shownotes地图与公开content_windows；Reviewer另读对应主章入口或Brook段以及头尾。正文说明整期有主要章节抽查，细项留质量记录，符合本轮只展开Brook的明确范围。"
+        },
+        {
+          "id": "SN6",
+          "title": "Shownotes 02:21:29：Part 3 语言模型的发展",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES",
+            "ASR",
+            "TRANSCRIPT_REVIEW"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8"
+          ],
+          "notes": "章节逐项留痕用于本轮整期转录定位和结构/内容抽查，不要求在Brook正文展开该章全部论文。已核对独立shownotes地图与公开content_windows；Reviewer另读对应主章入口或Brook段以及头尾。正文说明整期有主要章节抽查，细项留质量记录，符合本轮只展开Brook的明确范围。"
+        },
+        {
+          "id": "SN7",
+          "title": "Shownotes 03:08:08：Part 4 多模态模型的发展",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES",
+            "ASR",
+            "TRANSCRIPT_REVIEW"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8"
+          ],
+          "notes": "章节逐项留痕用于本轮整期转录定位和结构/内容抽查，不要求在Brook正文展开该章全部论文。已核对独立shownotes地图与公开content_windows；Reviewer另读对应主章入口或Brook段以及头尾。正文说明整期有主要章节抽查，细项留质量记录，符合本轮只展开Brook的明确范围。"
+        },
+        {
+          "id": "SN8",
+          "title": "Shownotes 03:56:38：最后的聊天",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES",
+            "ASR",
+            "TRANSCRIPT_REVIEW"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8"
+          ],
+          "notes": "章节逐项留痕用于本轮整期转录定位和结构/内容抽查，不要求在Brook正文展开该章全部论文。已核对独立shownotes地图与公开content_windows；Reviewer另读对应主章入口或Brook段以及头尾。正文说明整期有主要章节抽查，细项留质量记录，符合本轮只展开Brook的明确范围。"
+        }
+      ],
+      "source_ids_checked": [
+        "PAPER",
+        "SLIDE",
+        "SHOWNOTES",
+        "ASR",
+        "NVIDIA",
+        "ACM",
+        "TRANSCRIPT_REVIEW"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "revision2最终快照绑定：report SHA-256 b330d3f582079c891356936f6b9c766b96ed8574fd614eb20a7fc7d2703df34b；evidence SHA-256 5f8e1ff16cc3926137b782105fcc863cad0ab9a2514f11726e23229e23c89744。开始及落盘前均核对一致。\n本轮早先预审的report 11e5008143d2b3234f8145e5eb81444d3f695c633d29f6c30054159e6f8b2834随后由协调者明确替换为当前最终目标，仅作中间预审，不用于本轮判定绑定。原revision1记录完整保留在history。\n来源优先过程沿用revision1的真实独立地图与审计：原地图形成于报告生成前，未阅读生成者推理。当前复验只针对Table1定位、核内局部性、隐藏质量JSON链接及性能表呈现的改动，未重新下载来源或重转音频。\n三项revision1修订请求均已解决：正文与evidence纠正图表定位；新增寄存器局部性并区分host↔GPU搬运；移除正文不可点击的隐藏JSON记录引导。随后性能表仅调整呈现，所有原始数值、单位与比较范围均保留。\n转录原件和恢复版TXT/segments四份哈希本轮复验未变，继承revision1已完成的TXT全量时间戳/重复审计、精确segments检查、92个替换段A/B出处核对、Brook71段不变及主章/头尾抽查。未重新运行未受影响的全套审计；没有人工听音，不将音频末尾约16秒或ASR拼接间隙判定为已逐字完整。\n实际呈现检查范围：协调者在1440和390宽度的工作台实际页面复跑脚注往返、断锚、溢出与表内滚动，Reviewer核对机器收据并通过eacli图片理解检查390右端截图。本人没有再次自主操作浏览器；不把Markdown源码核对冒充全部页面验收。\n呈现保留边界：390宽度的性能表容器358px、内容440px，表内可横滚82px，实际scrollLeft=82且最后单元格“约0.99倍”完整可读；整页和阅读区均无横向溢出。此为现有工作台样式的可用呈现，不声称表格无需横滑，未修改并行工作中的工作台源码。\n公开复核仅保留来源ID、hash、范围与结果，未复制完整私有路径、远端执行任务标识或设备信息。\n当前无未解决的实质内容或来源问题；最终判定由report_quality.py check计算，Reviewer未自行finalize、提交或改动正文/evidence。",
+      "reviewed_report_sha256": "b330d3f582079c891356936f6b9c766b96ed8574fd614eb20a7fc7d2703df34b",
+      "reviewed_evidence_sha256": "5f8e1ff16cc3926137b782105fcc863cad0ab9a2514f11726e23229e23c89744"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 95.6,
+    "evaluated_on": "2026-11-04",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "843d4b2fb0ed76519c70155e9867f583bd20e87bee687b7abbe09e4318f48c60",
+    "evidence_sha256": "5f8e1ff16cc3926137b782105fcc863cad0ab9a2514f11726e23229e23c89744"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-6-astra",
+            "harness": "codex",
+            "run_id": "review-40fe784dc0b1",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "override_reason": "",
+            "identity_basis": "父会话eacli codex-thread-state自动确认gpt-6-astra、session-bound、confirmed=true；spawn无模型覆盖，按调度契约继承。worker CLI只显示未确认配置，不冒称为worker自身独立确认。"
+          },
+          "escalation_reason": "",
+          "scores": {
+            "evidence_fidelity": 89,
+            "request_coverage": 91,
+            "reasoning_quality": 94,
+            "readability": 88,
+            "limitations": 97
+          },
+          "score_reasons": {
+            "evidence_fidelity": "主要机制、历史边界与三组性能原始值逐项对回来源，6.93/4.65/0.99及15/90ms计算正确；但[^implementation]、PAPER.read_scope和C6.evidence三处错误指向Figure4–5。多输出实验实为§4.2的Table1，Figure4是调用开销，当前作者稿无Figure5。属于必须修正的定位/阅读范围登记错误，未据此认定真实存在的论文或核心机制为伪造。",
+            "request_coverage": "本轮全期转写和Brook独立展开均已覆盖，不把其余30节误判为本轮遗漏。独立来源地图对齐U1–U8；SAXPY贯穿三个抽象和执行过程，另有FFT反例及转录修复。核内多步计算保留寄存器中间量的主线仅部分覆盖，补短段即可更完整回答Brook为何超出向量式运算。",
+            "reasoning_quality": "从数据独立性、图形接口负担、三类抽象到编译运行时，再到端到端时间，因果链清楚；读与写的区别、结合律与舍入、旧设备口径、抽象成本和CUDA前驱均有边界，未用单一7倍结果过度外推。核内局部性与host↔GPU搬运需进一步分层解释。",
+            "readability": "完整阅读Markdown正文和全部7条脚注：术语首次解释充分，算例连贯，表格对照适中，无需回看主报告。核对协调者提供的1440/390工作台检查收据：13处引用、无断锚/溢出/脚本错误、脚注往返成功；本人未重新打开浏览器逐屏检查。协调者随后实测隐藏.quality JSON链接被降为纯文本，正文“检查经过见转录核查记录”形成不可操作指引，应移除或换可读入口。图表脚注定位也影响追溯。",
+            "limitations": "2004硬件未复现、教学数值、播客时间近似、未核实轶事、原始重复故障和恢复版边界均明示。文本审计通过与音频处理完整、逐字准确分开，约15.989秒末尾未知和未听校/无WER仍保留。未将原始或恢复转录泄露至公开正文。"
+          },
+          "critical_claim_ids_checked": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10",
+            "C11"
+          ],
+          "coverage_unit_ids_checked": [
+            "U1",
+            "U2",
+            "U3",
+            "U4",
+            "U5",
+            "U6",
+            "U7",
+            "U8"
+          ],
+          "source_content_map": [
+            {
+              "id": "ICM01",
+              "title": "问题是算力已经存在，但通用程序难以调用它",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "SLIDE",
+                "ASR"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1",
+                "U2"
+              ],
+              "notes": "论文 §1–2，页1–2；幻灯片历史背景；ASR 20:43–23:35；来源优先独立单元。开篇两列数字与第1–2节把可计算性、数据独立性、图形接口负担连接起来。"
+            },
+            {
+              "id": "ICM02",
+              "title": "Brook 超过了把汇编换成 C 的问题",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "ASR"
+              ],
+              "matched_coverage_unit_ids": [
+                "U2"
+              ],
+              "notes": "论文 §1、§2.2；ASR 23:05–23:17；来源优先独立单元。明确HLSL/Cg已存在，纠正近汇编概括，并解释宿主图形API编排问题。"
+            },
+            {
+              "id": "ICM03",
+              "title": "Stream 是一组同类计算的数据记录",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "SLIDE"
+              ],
+              "matched_coverage_unit_ids": [
+                "U3"
+              ],
+              "notes": "论文 §2.1、§3.1，页2–3；来源优先独立单元。stream的类型、形状、记录与网络流的区别均已解释。"
+            },
+            {
+              "id": "ICM04",
+              "title": "Kernel 隐式遍历数据，并把中间结果留在局部寄存器",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "PAPER",
+                "SLIDE"
+              ],
+              "matched_coverage_unit_ids": [
+                "U3"
+              ],
+              "notes": "论文 §3.2，页3–4；来源优先独立单元。隐式循环、并行性和副作用限制解释充分；尚缺论文§2.1及§3.2强调的核内多步运算/局部寄存器中间结果/减少设备内主存往返这一条收益，建议补一短段。"
+            },
+            {
+              "id": "ICM05",
+              "title": "Reduction 让并行结果重新汇合",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "SLIDE"
+              ],
+              "matched_coverage_unit_ids": [
+                "U3"
+              ],
+              "notes": "论文 §3.3、§4.3，页4、6；来源优先独立单元。三项结果12、24、36合为72，分层汇总、结合性与浮点舍入边界均有交代。"
+            },
+            {
+              "id": "ICM06",
+              "title": "简单算式如何走完整条 CPU—GPU 路径",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U3",
+                "U4",
+                "U5"
+              ],
+              "notes": "论文 §3.2 的 SAXPY 代码与 Appendix A；来源优先独立单元。SAXPY贯穿解释声明、核函数、编译执行、取回；streamRead/Write方向在性能节解释正确。"
+            },
+            {
+              "id": "ICM07",
+              "title": "抽象下层依然利用图形管线执行",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U4"
+              ],
+              "notes": "论文 §4.1–4.2、Appendix A，页4–5、9；来源优先独立单元。brcc→Cg→厂商编译器、C++与BRT、纹理与四边形绘制均符合原论文。"
+            },
+            {
+              "id": "ICM08",
+              "title": "虚拟化硬件限制带来便利，也有代价和上限",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U4"
+              ],
+              "notes": "论文 §4.1–4.2，页4–5，Table 1；来源优先独立单元。多输出拆分、结构拆纹理、重复读取/计算与OpenGL复制示例充足；脚注和evidence的图表定位有错误，须改为Table1。"
+            },
+            {
+              "id": "ICM09",
+              "title": "论文比较的是具体硬件、后端和任务",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U5"
+              ],
+              "notes": "论文 §5.1，页6–7，Figure 3；来源优先独立单元。2004设备、具体ATI BrookDX列、优化CPU基线均已交代，未用ray数据冒充完整渲染速度。"
+            },
+            {
+              "id": "ICM10",
+              "title": "约 7 倍是 SAXPY 上限，FFT 给出反例",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U5"
+              ],
+              "notes": "论文 §5.1，页7，Figure 3；来源优先独立单元。4324/624、12163/2616、1212/1224独立计算无误；成功例和FFT反例并置，排除初始上传/最终下载的口径紧邻解释。"
+            },
+            {
+              "id": "ICM11",
+              "title": "端到端收益必须覆盖搬运成本",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U5"
+              ],
+              "notes": "论文 §5.2，页7–8；来源优先独立单元。以明确标为自拟的70/10/5/80ms例子表达端到端取舍；15/90ms算术正确。科普体不照抄公式是合理取舍。"
+            },
+            {
+              "id": "ICM12",
+              "title": "数据太小，启动内核也会成为瓶颈",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U5"
+              ],
+              "notes": "论文 §5.2，页8，Figure 4；来源优先独立单元。保留小任务固定调用开销和留在GPU连续执行以分摊搬运的解释；没有滥用旧硬件阈值。"
+            },
+            {
+              "id": "ICM13",
+              "title": "数据并行与原型限制决定适用边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U3",
+                "U4"
+              ],
+              "notes": "论文 §3.2、§3.4、§6，页3–4、8；来源优先独立单元。只读gather、全局写副作用、部分读改写在CPU的边界清楚，未承诺任意程序自动高效移植。"
+            },
+            {
+              "id": "ICM14",
+              "title": "Brook 的前史和影响是一条技术线索",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "NVIDIA",
+                "ACM",
+                "ASR"
+              ],
+              "matched_coverage_unit_ids": [
+                "U6"
+              ],
+              "notes": "论文 §3；NVIDIA全文；ACM technical contributions；ASR 23:43–24:01、25:18–26:36；来源优先独立单元。既有Brook适配GPU、团队研究、ACM与NVIDIA支持的CUDA前驱关系均准确。"
+            },
+            {
+              "id": "ICM15",
+              "title": "作者信息只保留有助于理解技术方向的部分",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "SLIDE",
+                "ACM"
+              ],
+              "matched_coverage_unit_ids": [
+                "U6"
+              ],
+              "notes": "幻灯片作者栏；ACM 公告头部和技术贡献；来源优先独立单元。人物信息服务技术路径；脚注区分2019年度奖与2020-03-18公布，不推断现任职位。"
+            },
+            {
+              "id": "ICM16",
+              "title": "播客保留了问题和贡献，技术机制需要论文补足",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "SHOWNOTES",
+                "SLIDE",
+                "ASR",
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U8"
+              ],
+              "notes": "shownotes Part1 19:35；ASR 19:39–26:36；幻灯片第10页；来源优先独立单元。播客定位、讲义压缩信息与论文细节各有分工；19:35被正确标为Part1入口。未伪称口述包含全部实现细节。"
+            },
+            {
+              "id": "ICM17",
+              "title": "未核实的硬件首创史与游戏轶事",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "ASR",
+                "SHOWNOTES"
+              ],
+              "matched_coverage_unit_ids": [
+                "U7",
+                "U8"
+              ],
+              "notes": "ASR 19:42–20:12、24:57–25:05、26:36；来源优先独立单元。未核实轶事被有意省略；正文明确不宣称AlexNet使用Brook或2012首次GPU深度学习，符合本轮范围。"
+            },
+            {
+              "id": "ICM18",
+              "title": "长音频重复故障、局部重转与替换可追溯性",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "ASR",
+                "TRANSCRIPT_REVIEW"
+              ],
+              "matched_coverage_unit_ids": [
+                "U8"
+              ],
+              "notes": "先于正式报告读取原始/恢复转录和recovery两段。独立比较得到6407段相同前缀、1054段相同后缀；旧157段换为新92段，后者13段逐条匹配A(+13190秒)、79段匹配B(+13340秒)，文本和时间均可追溯。Brook抽查1170–1600秒71段完全未变。公开记录的替换13310.8–13506.39秒与实际一致。"
+            },
+            {
+              "id": "ICM19",
+              "title": "结构检查不能证明词准确率或音频尾部完整",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "ASR",
+                "TRANSCRIPT_REVIEW"
+              ],
+              "matched_coverage_unit_ids": [
+                "U8"
+              ],
+              "notes": "独立运行audit_transcript.py：原始7618段、最大重复153，失败；恢复7553段、最大重复3、时间戳错误0，结构通过。另直接检查精确segments时间：无倒序/非法区间，仍有11处至多0.1秒重叠，末段15741.49秒，已登记音频时长15757.479秒，尾差15.989秒。TXT审计tail_gap=0没有外部音频时长，不能抵消这项尾差。正文诚实保留未听音、未测WER与约16秒未知。"
+            },
+            {
+              "id": "ICM20",
+              "title": "接缝按语句对照成立，但未作原音逐字校对",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "ASR",
+                "TRANSCRIPT_REVIEW"
+              ],
+              "matched_coverage_unit_ids": [
+                "U8"
+              ],
+              "notes": "独立读取替换区前后及两次重转全文。接回BERT/GPT之后→然后呢，A与B在概念有限后交接，末尾回到原始Clip模型句，文本上下文连贯；首接缝3.36秒、A/B间0.01秒、末接缝0.27秒保留原时间。原音频未听，不能据此判定这些间隙没有漏字。"
+            },
+            {
+              "id": "SN1",
+              "title": "Shownotes 01:30：探索的缘起",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "SHOWNOTES",
+                "ASR",
+                "TRANSCRIPT_REVIEW"
+              ],
+              "matched_coverage_unit_ids": [
+                "U8"
+              ],
+              "notes": "章节逐项留痕用于本轮整期转录定位和结构/内容抽查，不要求在Brook正文展开该章全部论文。已核对独立shownotes地图与公开content_windows；Reviewer另读对应主章入口或Brook段以及头尾。正文说明整期有主要章节抽查，细项留质量记录，符合本轮只展开Brook的明确范围。"
+            },
+            {
+              "id": "SN2",
+              "title": "Shownotes 07:25：怎么读论文（用AI学AI）",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "SHOWNOTES",
+                "ASR",
+                "TRANSCRIPT_REVIEW"
+              ],
+              "matched_coverage_unit_ids": [
+                "U8"
+              ],
+              "notes": "章节逐项留痕用于本轮整期转录定位和结构/内容抽查，不要求在Brook正文展开该章全部论文。已核对独立shownotes地图与公开content_windows；Reviewer另读对应主章入口或Brook段以及头尾。正文说明整期有主要章节抽查，细项留质量记录，符合本轮只展开Brook的明确范围。"
+            },
+            {
+              "id": "SN3",
+              "title": "Shownotes 10:20：辅助小工具和路书",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "SHOWNOTES",
+                "ASR",
+                "TRANSCRIPT_REVIEW"
+              ],
+              "matched_coverage_unit_ids": [
+                "U8"
+              ],
+              "notes": "章节逐项留痕用于本轮整期转录定位和结构/内容抽查，不要求在Brook正文展开该章全部论文。已核对独立shownotes地图与公开content_windows；Reviewer另读对应主章入口或Brook段以及头尾。正文说明整期有主要章节抽查，细项留质量记录，符合本轮只展开Brook的明确范围。"
+            },
+            {
+              "id": "SN4",
+              "title": "Shownotes 19:35：Part 1 模型的范式变迁，Brook在此主干开头",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "SHOWNOTES",
+                "ASR",
+                "TRANSCRIPT_REVIEW"
+              ],
+              "matched_coverage_unit_ids": [
+                "U8"
+              ],
+              "notes": "章节逐项留痕用于本轮整期转录定位和结构/内容抽查，不要求在Brook正文展开该章全部论文。已核对独立shownotes地图与公开content_windows；Reviewer另读对应主章入口或Brook段以及头尾。正文说明整期有主要章节抽查，细项留质量记录，符合本轮只展开Brook的明确范围。"
+            },
+            {
+              "id": "SN5",
+              "title": "Shownotes 01:52:58：Part 2 Infra与数据的变迁",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "SHOWNOTES",
+                "ASR",
+                "TRANSCRIPT_REVIEW"
+              ],
+              "matched_coverage_unit_ids": [
+                "U8"
+              ],
+              "notes": "章节逐项留痕用于本轮整期转录定位和结构/内容抽查，不要求在Brook正文展开该章全部论文。已核对独立shownotes地图与公开content_windows；Reviewer另读对应主章入口或Brook段以及头尾。正文说明整期有主要章节抽查，细项留质量记录，符合本轮只展开Brook的明确范围。"
+            },
+            {
+              "id": "SN6",
+              "title": "Shownotes 02:21:29：Part 3 语言模型的发展",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "SHOWNOTES",
+                "ASR",
+                "TRANSCRIPT_REVIEW"
+              ],
+              "matched_coverage_unit_ids": [
+                "U8"
+              ],
+              "notes": "章节逐项留痕用于本轮整期转录定位和结构/内容抽查，不要求在Brook正文展开该章全部论文。已核对独立shownotes地图与公开content_windows；Reviewer另读对应主章入口或Brook段以及头尾。正文说明整期有主要章节抽查，细项留质量记录，符合本轮只展开Brook的明确范围。"
+            },
+            {
+              "id": "SN7",
+              "title": "Shownotes 03:08:08：Part 4 多模态模型的发展",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "SHOWNOTES",
+                "ASR",
+                "TRANSCRIPT_REVIEW"
+              ],
+              "matched_coverage_unit_ids": [
+                "U8"
+              ],
+              "notes": "章节逐项留痕用于本轮整期转录定位和结构/内容抽查，不要求在Brook正文展开该章全部论文。已核对独立shownotes地图与公开content_windows；Reviewer另读对应主章入口或Brook段以及头尾。正文说明整期有主要章节抽查，细项留质量记录，符合本轮只展开Brook的明确范围。"
+            },
+            {
+              "id": "SN8",
+              "title": "Shownotes 03:56:38：最后的聊天",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "SHOWNOTES",
+                "ASR",
+                "TRANSCRIPT_REVIEW"
+              ],
+              "matched_coverage_unit_ids": [
+                "U8"
+              ],
+              "notes": "章节逐项留痕用于本轮整期转录定位和结构/内容抽查，不要求在Brook正文展开该章全部论文。已核对独立shownotes地图与公开content_windows；Reviewer另读对应主章入口或Brook段以及头尾。正文说明整期有主要章节抽查，细项留质量记录，符合本轮只展开Brook的明确范围。"
+            }
+          ],
+          "source_ids_checked": [
+            "PAPER",
+            "SLIDE",
+            "SHOWNOTES",
+            "ASR",
+            "NVIDIA",
+            "ACM",
+            "TRANSCRIPT_REVIEW"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "开始及落盘前均核对本轮report/evidence SHA-256，与任务快照一致。此记录只针对revision 1。\n严格来源优先：先读论文全文、幻灯片第10页、完整Shownotes、Brook ASR片段、NVIDIA和ACM；独立地图在正文生成前形成，SHA-256 5725e12273155cb9e87d11b2a45fed682cd881cb9faefdfae24856cdafff4b3b。收到正式任务后，又先检查原始与恢复转录、局部重转和拼接，再读报告/evidence。没有阅读生成者推理笔记。\n必须修订1：正文[^implementation]把Figure4–5改为§4.2与Table1；同轮修PAPER.read_scope的Figure3–5及C6.evidence的Figure4/5。实际本文只有Figures1–4，不能登记读过不存在的Figure5。C6核心结论有真实§4.2/Table1支持，因此不列unsupported_claims或hard_failure。\n必须修订2：正文§3的kernel解释补一短段：核内可以连续执行多步计算并把中间量留在局部寄存器，减少设备内部内存往返；明确这与§5讨论的CPU↔GPU数据搬运是两个层次。用既有SAXPY例子延伸即可，不要加入无必要模板。\n必须修订3：处理正文指向隐藏.quality JSON的转录核查记录链接；当前工作台实际会降为纯文本。可删除正文机器记录引导，保留现有充分摘要和evidence中的审核文件。\n转录复核：全量运行TXT结构审计，原始失败与恢复通过均符合登记哈希；直接比较精确segments，验证92个替换段可回到A/B原产物、Brook71段未改。另独立读9组头尾/主章入口窗口，协调者17个窗口的记录亦已读，但不宣称Reviewer逐字读完或听完全期。\n复核采纳公开机器收据与本地保留原件进行交叉验证；没有独立重新解码媒体，也没有人工听音。保留尾差15.989秒、11处微小重叠与首接缝3.36秒的不确定性。\n实际呈现范围：本轮本人读完整Markdown/脚注并核对协调者实际1440/390结果；无自主浏览器重跑或逐屏视觉验收。隐藏JSON链接问题来自协调者实际点击检查，不被脚注锚点统计掩盖。\n评分及建议不替代机器策略判定；下一步由生成者开启new-revision统一修订，再按新hash复验。",
+          "reviewed_report_sha256": "2cdd388315f3669fe359e0b9774232b969b4b54253c4fdae472f27fe769bfcb5",
+          "reviewed_evidence_sha256": "42b3cb089d649d19a014b74b5f751439329d41231f3264adcfaa779f56425a9d"
+        }
+      ],
+      "decision": {}
+    }
+  ]
+}

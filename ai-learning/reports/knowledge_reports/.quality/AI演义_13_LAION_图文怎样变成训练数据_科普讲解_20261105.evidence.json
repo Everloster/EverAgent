@@ -1,0 +1,489 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_13_LAION_图文怎样变成训练数据_科普讲解_20261105.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-05",
+  "generator": {
+    "model": "gpt-6-astra",
+    "harness": "codex",
+    "run_id": "ai-yanyi-laion-20261105",
+    "explicit_model_override": false,
+    "override_reason": "",
+    "identity_basis": "eacli session current actor.model.id=gpt-6-astra，codex-turn-context，session-bound，confirmed=true；仅证明生成者，不作为子Reviewer运行身份。"
+  },
+  "task": {
+    "summary": "逐节完成AI演义第13节LAION，结合原论文、讲义、shownotes和相关转录，用人类可读的展开篇说明图文数据建设，并实质优化主稿原章节和展开入口。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "从LAION v1、必要CLIP原文、讲义p29、shownotes和本章228段转录研究，核机制、数字及来源差异。"
+      },
+      {
+        "id": "R2",
+        "text": "用网页图片及替代文字的连贯例子解释采集、模型筛选、元数据和局限，少数学，首次解释必要术语。"
+      },
+      {
+        "id": "R3",
+        "text": "给出真实训练对照和反例；区分图文相关性、真实性、检索与生成，以及数据规模和累计样本次数。"
+      },
+      {
+        "id": "R4",
+        "text": "交代社区、团队资源、开放数据边界、自动安全标签与2024治理后续，不复述无证据的人体理解必然因果。"
+      },
+      {
+        "id": "R5",
+        "text": "实质改写主稿原第13节并将展开入口置于节首；展开可返回原节、上一节与下一节，保留前12节。"
+      },
+      {
+        "id": "R6",
+        "text": "独立可读、引用可点击，工作台桌面/窄屏实际点验目录、脚注与跨报告导航；公开文件不含原始ASR或私有信息。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "LAION",
+      "kind": "primary",
+      "title": "LAION-5B: An open large-scale dataset for training next generation image-text models",
+      "locator": "https://arxiv.org/pdf/2210.08402v1",
+      "accessed_on": "2026-11-05",
+      "read_scope": "本轮实际读主文物理pp1–13；datasheet p24及p26–31，p22–23/p25相关字段片段；附录E p40–44，F.1/F.2 p41–42/p46、G.1/G.2 p46–48、作者贡献与致谢p49–50。直接核图2/p5、表2/p11、表6/p42原图，另有eacli图像收据。未穷尽全部附录，未从未核曲线读精确数字，未复现采集或训练。",
+      "version": "arXiv:2210.08402v1，2022-10-16，50页",
+      "sha256": "18dad8c88914dfcdcdcb50eba4b285ba665f67d6f4661d20e3ee2e36a3d42163"
+    },
+    {
+      "id": "CLIP",
+      "kind": "primary",
+      "title": "Learning Transferable Visual Models From Natural Language Supervision",
+      "locator": "https://arxiv.org/pdf/2103.00020v1",
+      "accessed_on": "2026-11-05",
+      "read_scope": "仅首页身份及物理p3–4 §2.1–2.3的WIT规模与双编码器对比学习；不把图2曲线文字层算图像核验，不声称完整精读CLIP。",
+      "version": "arXiv:2103.00020v1，2021-02-26",
+      "sha256": "6478b6e571a7d6fcd846d8ef77bfd60c285f1986abb8f475eedc43de403074f5"
+    },
+    {
+      "id": "META",
+      "kind": "primary",
+      "title": "LAION-5B arXiv v1元数据",
+      "locator": "https://arxiv.org/abs/2210.08402v1",
+      "accessed_on": "2026-11-05",
+      "read_scope": "eacli web.read核v1题名、作者、日期与摘要。"
+    },
+    {
+      "id": "RELEASE",
+      "kind": "official",
+      "title": "LAION-5B官方原发布说明",
+      "locator": "https://laion.ai/blog/laion-5b/",
+      "accessed_on": "2026-11-05",
+      "read_scope": "eacli web.read获取正文；读引言/用途限制、License、Dataset columns、采集/准备流程、Watermark and safety inference/Safety、BLIP段与Credit Assignment。统计图及生成样例未逐图核，不把宣传性保证或未来工作当成实证。",
+      "snapshot_sha256": "fb28326d16a2a7fc09d3d2e318b4d445b0961564a22775620b35242a1b3f70bf"
+    },
+    {
+      "id": "RELAION",
+      "kind": "official",
+      "title": "Releasing Re-LAION-5B: transparent iteration on LAION-5B with additional safety fixes",
+      "locator": "https://laion.ai/blog/relaion-5b/",
+      "accessed_on": "2026-11-05",
+      "read_scope": "eacli web.read取得正文；核Highlights/Background、Safety Revision、两种发布版本、Summary/Usage及已知清单截至2024-07的边界。仅引项目方承认遗漏、下架、哈希过滤与修订版；不采用其疑似链接占比或总量争议推断，不独立复验安全结果，不核当前下载可用性。",
+      "version": "2024年发布说明",
+      "snapshot_sha256": "1a845d1cd86059a052bd039c8d4c4920703c2365f7611ddabdc2f69291684e54"
+    },
+    {
+      "id": "LECTURE",
+      "kind": "local",
+      "title": "AI演义讲义LAION页",
+      "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "accessed_on": "2026-11-05",
+      "read_scope": "物理p29文字与原图经eacli并直接查看；p26文本仅定位路线。教师叙事按讲义归因，贡献及资源回原论文，强影响力排名不直接采纳。",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0"
+    },
+    {
+      "id": "EPISODE",
+      "kind": "primary",
+      "title": "张小珺Jùn商业访谈录第117期：AI演义shownotes与LAION段",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-05",
+      "read_scope": "复用已eacli核验的节目身份与shownotes；2025-10-28发布。按原转录零基3420–3647共228段，7449.67–7869.10秒定位；本轮读全部片段并校关键术语/强概括。未重新转写、听校或测WER。",
+      "full_segments_sha256": "f322514ced72235a0ca104635824c66df425c18dbae3d0f4e76fa70d088db61c",
+      "chapter_segments_sha256": "affcbde5791d337a2ea545b0165a2c87c578823da7d06ee6fc1e360741e3986a",
+      "chapter_text_sha256": "71399b20d6cf0254a7dcdb36260f0ca8c725fb503cccc34cca7f4a4562af6edc",
+      "shownotes_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5",
+      "alternate_locator": "https://podcasts.apple.com/cn/podcast/id1634356920?i=1000733801180",
+      "alternate_read_scope": "本轮经eacli web.read补核Apple Podcasts同一期标题、2025-10-28日期、谢青池嘉宾、4小时23分钟及分部shownotes；仅核网页身份和正文，未实际播放音频。",
+      "alternate_read_receipt_sha256": "b43f4f8def7905b5a01e9a6ec9924bfec82015690f200b3412b3b2129f01584c",
+      "alternate_text_sha256": "5d280466ec15666cd2f03b23d163a085986859b72a37facf13831eaf9a86fc3a"
+    },
+    {
+      "id": "TRANSCRIPT_REVIEW",
+      "kind": "local",
+      "title": "第13节转录时间结构与术语范围核查",
+      "locator": "ai-learning/reports/knowledge_reports/.quality/AI演义_13_LAION_图文怎样变成训练数据_科普讲解_20261105.transcription-review.json",
+      "accessed_on": "2026-11-05",
+      "read_scope": "公开最小范围及结构收据；正式脚本时间审计和小数秒检查均通过，不作为语义准确率证明。",
+      "sha256": "14b31718d7e42fb1592298e39b1ebed3b9963eb22dedf8d7eb383f25d5a5344d"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "原始CLIP用4亿WIT图文对；其模型开放但完整训练数据未公开，LAION后来用CLIP筛新数据并支持OpenCLIP。",
+      "report_anchor": "why-open-data",
+      "source_ids": [
+        "LAION",
+        "CLIP"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "CLIP§2.2/2.3；LAION§1–3/5.2，区分模型/数据/训练软件。"
+    },
+    {
+      "id": "C2",
+      "claim": "LAION从Common Crawl WAT提取带alt-text图片地址，识别语言、下载图片并做基本筛选；不是CMU年度全网备份或CLIP抓取网页。",
+      "report_anchor": "from-webpage",
+      "source_ids": [
+        "LAION",
+        "RELEASE"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "LAION§3.1与图2，短文本<5字符、图片<5KB等；Common Crawl约月度快照。"
+    },
+    {
+      "id": "C3",
+      "claim": "CLIP双编码器对比学习；LAION用已训练模型的余弦相似度筛选，英语0.28、其他及未明确语言0.26，不是正确概率。",
+      "report_anchor": "clip-filter",
+      "source_ids": [
+        "CLIP",
+        "LAION",
+        "RELEASE"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "CLIP§2.3；LAION§3.1和datasheet，门槛绑定指定模型。"
+    },
+    {
+      "id": "C4",
+      "claim": "图文总体相关不保证细节正确；CLIP筛选会误删好样本、保留弱关联并继承偏差。",
+      "report_anchor": "clip-filter",
+      "source_ids": [
+        "LAION"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§6与G.2；狗的数量例明确是假想、未测分。"
+    },
+    {
+      "id": "C5",
+      "claim": "5.85B分为英语2.32B、其他语言2.26B与未能明确检测语言1.27B，后者不等于无文字/无语义。",
+      "report_anchor": "what-is-released",
+      "source_ids": [
+        "LAION"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§4 pp6–7，使用论文而非发布页约数。"
+    },
+    {
+      "id": "C6",
+      "claim": "公开主要是链接/文本/尺寸/分数元数据，外部图片可失效；2022元数据CC BY4.0不代表获得图片文字版权。",
+      "report_anchor": "what-is-released",
+      "source_ids": [
+        "LAION",
+        "RELEASE"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§4；datasheet Q14/Q31–33/Q48–49；开放可检查性不保证下载集合不变。"
+    },
+    {
+      "id": "C7",
+      "claim": "表2六行B/32及L/14的ImageNet/VTAB+值准确，分别是单数据集及35任务均分；不是全面超过WIT。",
+      "report_anchor": "training-results",
+      "source_ids": [
+        "LAION"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "物理p11原表：B/32三行为63.3/45.4、62.9/45.6、65.7/47.9；L/14为75.6/55.7、72.8/51.8、75.2/54.6，单位%。忽略不一致的差值小字。"
+    },
+    {
+      "id": "C8",
+      "claim": "表6控制模型和samples seen；B/32的较大数据在3B/13B不占优、34B占优；L/14在34B为75.40对73.90。",
+      "report_anchor": "data-and-compute",
+      "source_ids": [
+        "LAION"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "p42原表：B/32 400M/2B-en三行为58.73/57.60、62.90/62.56、64.07/65.50；累计次数不等于独立数据数，不混用表2结果。"
+    },
+    {
+      "id": "C9",
+      "claim": "CLIP检索/零样本分类与图像生成不同；所述Stable Diffusion训练有具体LAION子集，非所有扩散或全量58.5亿原样训练。",
+      "report_anchor": "retrieval-generation",
+      "source_ids": [
+        "LAION",
+        "CLIP"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§5/F.2列英语、高分辨率、美学等子集；CLIP§2.3说明表示匹配。"
+    },
+    {
+      "id": "C10",
+      "claim": "NSFW标签主要自动推断，人工标注测试集并参与训练集构造；3000个安全测试样本不等于全量人工标记，过滤也不保证投产安全。",
+      "report_anchor": "safety-and-governance",
+      "source_ids": [
+        "LAION",
+        "RELEASE"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§3.2/7、官方Watermark and safety inference/Safety，区分潜在冒犯内容标签与非法内容过滤。"
+    },
+    {
+      "id": "C11",
+      "claim": "论文未证明删NSFW必失人体理解；F.1说明LAIONIDE-v2过滤NSFW/LIKELY且研究人物生成，但此非严格消融。",
+      "report_anchor": "safety-and-governance",
+      "source_ids": [
+        "LAION",
+        "EPISODE"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "p41–42直接原文；不把人体解剖类比或所有模型只输出端禁用当因果事实。"
+    },
+    {
+      "id": "C12",
+      "claim": "2024 Re-LAION官方承认2023末发现遗漏后下架、与专业机构用哈希清单清理重发；范围限合作机构截至2024-07已知清单。",
+      "report_anchor": "safety-and-governance",
+      "source_ids": [
+        "RELAION"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "项目方发布的Safety Revision/Usage/Recommendations；未复验其清理结果，不代表未知问题为零。"
+    },
+    {
+      "id": "C13",
+      "claim": "项目由Schuhmann等社区团队、资助和计算支持完成；OpenCLIP模型训练使用上百张A100，部分配置达到400张。",
+      "report_anchor": "people-and-route",
+      "source_ids": [
+        "LAION",
+        "LECTURE",
+        "EPISODE"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§5.2、p13致谢、p49–50贡献；正文p8写128–400张，Table4另列B/32(2B)112张，正文采用两处均支持的概括；教师身份按讲义/访谈归因。"
+    },
+    {
+      "id": "C14",
+      "claim": "本章转录只核228段时间结构和术语，不声称完整听校；shownotes无逐论文章界。",
+      "report_anchor": "sources",
+      "source_ids": [
+        "EPISODE",
+        "TRANSCRIPT_REVIEW"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "02:04:09.67–02:11:09.10；正式审计及精确时间检查通过，最大间隔1.42秒。"
+    },
+    {
+      "id": "C15",
+      "claim": "[推测]知识库中模型相关性评分不能替代出处、时间、权限及事实证据核查。",
+      "report_anchor": "questions",
+      "source_ids": [
+        "LAION"
+      ],
+      "support": "inference",
+      "critical": false,
+      "evidence": "从相关性筛选局限类比到Personal Context，不是论文实测。"
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U1",
+      "title": "CLIP自然语言监督与训练数据未公开的背景；模型、LAION数据和OpenCLIP软件的区别。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "CLIP",
+        "LAION",
+        "LECTURE",
+        "EPISODE"
+      ],
+      "report_anchor": "why-open-data"
+    },
+    {
+      "id": "U2",
+      "title": "Common Crawl/WAT、alt-text、语言检测、下载与规则筛选；纠正CMU全网备份概括。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "LAION",
+        "RELEASE",
+        "EPISODE"
+      ],
+      "report_anchor": "from-webpage"
+    },
+    {
+      "id": "U3",
+      "title": "已有CLIP双编码器相似度筛选、两种门槛、误删与偏差；不是生成新标签或真实概率。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "LAION",
+        "CLIP",
+        "RELEASE"
+      ],
+      "report_anchor": "clip-filter"
+    },
+    {
+      "id": "U4",
+      "title": "5.85B三语言组、公开元数据/向量/工具和不明语言解释。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "LAION",
+        "RELEASE"
+      ],
+      "report_anchor": "what-is-released"
+    },
+    {
+      "id": "U5",
+      "title": "外部链接依赖、复现边界、CC BY4.0与内容版权和同意不同。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "LAION",
+        "RELEASE"
+      ],
+      "report_anchor": "what-is-released"
+    },
+    {
+      "id": "U6",
+      "title": "OpenCLIP训练验证、零样本分类机制、表2任务口径与未全面追平的反例。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "LAION",
+        "CLIP"
+      ],
+      "report_anchor": "training-results"
+    },
+    {
+      "id": "U7",
+      "title": "表6控制训练次数对照、低预算反例；数据规模/重复次数区分与未检验方差边界。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "LAION"
+      ],
+      "report_anchor": "data-and-compute"
+    },
+    {
+      "id": "U8",
+      "title": "检索/分类/生成区分；Stable Diffusion特定子集和LAIONIDE用途，不泛化所有扩散。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "LAION",
+        "EPISODE"
+      ],
+      "report_anchor": "retrieval-generation"
+    },
+    {
+      "id": "U9",
+      "title": "读数据处理细节的价值；NSFW自动标签/人工训练测试、冒犯内容与非法内容区别。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "LAION",
+        "RELEASE",
+        "EPISODE"
+      ],
+      "report_anchor": "safety-and-governance"
+    },
+    {
+      "id": "U10",
+      "title": "人体结构必然退化和只输出端禁用缺少因果实证；F.1过滤训练的反例与消融限制。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "LAION",
+        "EPISODE"
+      ],
+      "report_anchor": "safety-and-governance"
+    },
+    {
+      "id": "U11",
+      "title": "2024 Re-LAION治理后续、已知哈希清单范围、与2022研究的时间层次。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "RELAION"
+      ],
+      "report_anchor": "safety-and-governance"
+    },
+    {
+      "id": "U12",
+      "title": "Schuhmann叙事、具体团队分工、社区/资金/超算支持与训练规模，避免个人英雄独自完成归因。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "LAION",
+        "LECTURE",
+        "EPISODE"
+      ],
+      "report_anchor": "people-and-route"
+    },
+    {
+      "id": "U13",
+      "title": "CLIP→数据筛选→OpenCLIP/生成的连接；LAION早于RefinedWeb，保留偏差、重叠、隐私和未复现边界。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "LAION",
+        "META",
+        "LECTURE"
+      ],
+      "report_anchor": "people-and-route"
+    },
+    {
+      "id": "U14",
+      "title": "节目身份、shownotes的粗分段与本章228段范围，术语校正但未听校，未定位德语采访不猜配。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "EPISODE",
+        "TRANSCRIPT_REVIEW"
+      ],
+      "report_anchor": "sources"
+    }
+  ],
+  "limitations": [
+    "未复现数据采集、模型训练或安全过滤；原图与文字读取范围逐源注明，不声称读透全部50页附录。",
+    "CLIP筛选相似度不是概率或真实性，图文假想例未实际测分；不同来源内部强概括不直接采纳。",
+    "表2和表6训练条件不能混用，未重训测方差；公开数据结果不能因WIT不公开而作完美单因素因果解释。",
+    "Re-LAION只核项目方治理说明，清理范围限2024-07已知清单；未核当前下载状态或保证未知风险清零。",
+    "人物经历按讲义/访谈归因，未唯一识别德语采访，不猜配链接。",
+    "本章228段结构/术语核对，不代表听校、WER或全期逐字完整性。"
+  ],
+  "research_receipts": {
+    "source_manifest_sha256": "374a26657761f664863f8308870bc4f65315a32c27ff83c406e234b6a8e9ea65",
+    "supplemental_source_manifest_sha256": "4bae2b66c959a5beffa2aede7452cbaafdc9841e621bf4bcfa38b9c3cd65bca8",
+    "network_policy": "公开网页先eacli tokenplan catalog/select，实际web.read/search；本地论文图表先vision.image-analysis，再直接查看。无直连供应商降级。",
+    "tool_output_corrections": [
+      "图像工具声称75.6-0.3=75.2、55.7-1.2=54.6自洽，算术错误；根按原表绝对值记录，不采纳其自洽结论。",
+      "图像工具从讲义补出的会议发表月份及人物事实认证并非图中证据，未采纳；用v1日期，人物按讲义归因。",
+      "图像工具把图2色条解释成按相似度排序，本页未证明排序，未采纳。"
+    ],
+    "review_method": "两位全新会话先读原始来源并冻结独立地图，再读候选及evidence。主稿非本节部分按r15已通过冻结基线继承，不把继承写为本轮直接重读。",
+    "review_corrections": [
+      "独立复核后将人工标注范围收紧为测试集与训练集构造。",
+      "独立复核后将OpenCLIP训练资源概括为上百张A100、部分配置400张，避免正文范围与附录112张设置混淆。",
+      "补核Apple Podcasts备用入口，与原节目身份及shownotes一致；未播放音频。"
+    ]
+  }
+}

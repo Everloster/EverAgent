@@ -1,0 +1,602 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_09_GPT2与GPT3_任务怎样进入上下文_科普讲解_20261105.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-05",
+  "generator": {
+    "model": "gpt-6-astra",
+    "harness": "codex",
+    "run_id": "ai-yanyi-chapter9-source-label-correction-20261105",
+    "explicit_model_override": false,
+    "override_reason": "",
+    "identity_basis": "生成者当前会话agent_identity.py核实为gpt-6-astra/codex，session-bound；本次只更正来源名称，技术内容继承冻结基线。"
+  },
+  "task": {
+    "summary": "逐节展开AI演义第9节，用黑猫问答讲清GPT2/3的上下文任务接口与实验边界，同步实质优化主稿原节并放节首展开入口。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "结合讲义p37/38、shownotes与本章419段转录、GPT2/GPT3原论文；保留ASR未听音/WER、版本和实际阅读范围。"
+      },
+      {
+        "id": "R2",
+        "text": "沿一个例子讲清任务文本、微调、zero/one/few-shot、固定权重/变化表示和窗口限制；少数学，可独立读。"
+      },
+      {
+        "id": "R3",
+        "text": "用具体任务讲进步、失败与比较条件，分清数据量/训练token、污染、识别旧任务/学新任务的未解边界。"
+      },
+      {
+        "id": "R4",
+        "text": "说明人物实际贡献与数据/系统支撑，承接上一节并连到规模预算/后训练，不采未核组织因果。"
+      },
+      {
+        "id": "R5",
+        "text": "主稿原第9节实质改写且入口在节首；展开能返回原第9节并继续第10节；前八节正文和入口保留。"
+      },
+      {
+        "id": "R6",
+        "text": "真实工作台桌面/窄屏检查目录、正文、脚注、表格和跨报告定位；正文无私有转录或执行记录。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "GPT2",
+      "kind": "primary",
+      "title": "Language Models are Unsupervised Multitask Learners",
+      "locator": "https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf",
+      "accessed_on": "2026-11-05",
+      "read_scope": "24页PDF实际读取正文p1–10；表1–6按文字核，根实际查看p6表4/CoQA/翻译，eacli视觉辅助。未通读p11–24参考文献和生成样例；不从曲线估取精确数。",
+      "version": "2019年OpenAI研究报告，无独立修订号",
+      "sha256": "d9d852e2894556e73f53cb22b7c605a9643d6f0b19bf604b429ed6192fa24f4e"
+    },
+    {
+      "id": "GPT3",
+      "kind": "primary",
+      "title": "Language Models are Few-Shot Learners",
+      "locator": "https://arxiv.org/pdf/2005.14165v4",
+      "accessed_on": "2026-11-05",
+      "read_scope": "75页arXiv v4：实际读p1–46文字（p46只到附录E开头），含正文、局限/影响、贡献与附录A–D；另读p50/55/58–61任务格式、p63表H.1相关任务行。根实际查看p7图2.1，eacli视觉辅助；其它图以文字和图注核，不声称逐图测量；p47–49、其它附录G页与H曲线未完整读。",
+      "version": "arXiv2005.14165v4，2020-07-22；首版2020-05-28",
+      "sha256": "97fd272f1fdfc18677462d0292f5fbf26ca86b4d1b485c2dba03269b643a0e83"
+    },
+    {
+      "id": "GPT1",
+      "kind": "primary",
+      "title": "Improving Language Understanding by Generative Pre-Training",
+      "locator": "https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf",
+      "accessed_on": "2026-11-05",
+      "read_scope": "本轮只回读p2/7/8，核§5 Zero-shot Behaviors与前驱；前轮已读范围不冒充本轮重读。",
+      "sha256": "eb81a65e0856bd38e855e1f1de6ee12e7c3eb92ae05c8270d345a475beb631d0"
+    },
+    {
+      "id": "SLIDE",
+      "kind": "local",
+      "title": "AI演义讲义：GPT-2与GPT-3",
+      "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "accessed_on": "2026-11-05",
+      "read_scope": "p37/38文字与原页实际视读；eacli图像辅助。路线假说、组织动机与粗略数值回原论文限定。",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0"
+    },
+    {
+      "id": "SHOWNOTES",
+      "kind": "secondary",
+      "title": "张小珺Jùn｜商业访谈录第117期AI演义公开Shownotes",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-05",
+      "read_scope": "既有网页提取快照；Part3起点02:21:29与GPT2/3顺序，未把Part3时间当单节边界。",
+      "snapshot_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5",
+      "identity_correction": "2026-11-05经原节目页title/description重新核对，节目归属张小珺Jùn｜商业访谈录，第117期；原链接、shownotes正文与转录材料未变。"
+    },
+    {
+      "id": "ASR",
+      "kind": "local",
+      "title": "AI演义第9节转录复核与结构收据",
+      "locator": "ai-learning/reports/knowledge_reports/.quality/AI演义_09_GPT2与GPT3_任务怎样进入上下文_科普讲解_20261105.transcription-review.json",
+      "accessed_on": "2026-11-05",
+      "read_scope": "原转录419段已读，10026.10–10796.78秒；公开仅保留结构、疑点核查及未听音/WER边界。",
+      "sha256": "e342c9432747a3cd413c1d3cdcd1899b846555c9a23d4cb7a4ba0400cc4687a5"
+    },
+    {
+      "id": "GPT3-HISTORY",
+      "kind": "primary",
+      "title": "GPT-3 arXiv版本记录",
+      "locator": "https://arxiv.org/abs/2005.14165",
+      "accessed_on": "2026-11-05",
+      "read_scope": "eacli web.read实际返回的abs与history：v1 2020-05-28，v4 2020-07-22。",
+      "snapshot_sha256": "76ff004c06293b7eaf2be3ac153367c658f6ca3a8b42dee9324cde1314015283"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "任务文本化与微调的区别；GPT-1已有zero-shot探索，GPT-2不是绝对起点。",
+      "report_anchor": "task-as-text",
+      "source_ids": [
+        "GPT2",
+        "GPT3",
+        "GPT1"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "GPT-2 §1–2；GPT-1 §5；GPT-3 §2。"
+    },
+    {
+      "id": "C2",
+      "claim": "WebText来自Reddit获至少3 karma外链网页，略多于8M文档/40GB，截止2017-12，不含Wikipedia；不是评论语料。",
+      "report_anchor": "gpt2-data",
+      "source_ids": [
+        "GPT2"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§2.1。"
+    },
+    {
+      "id": "C3",
+      "claim": "GPT-2自然文本任务示范是研究假设，最大档1542M/48层/1024token及字节BPE不证明世界知识完整。",
+      "report_anchor": "gpt2-data",
+      "source_ids": [
+        "GPT2"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§2、Table1–2、§2.2–2.3。"
+    },
+    {
+      "id": "C4",
+      "claim": "GPT-2摘要R-AVG无提示15.03、TLDR21.40、随机3句20.98、开头3句31.55；100token前三句，不是准确率。",
+      "report_anchor": "gpt2-results",
+      "source_ids": [
+        "GPT2"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§3.6/Table4；原页p6实际视读。"
+    },
+    {
+      "id": "C5",
+      "claim": "GPT-2 CoQA dev约55 F1、翻译英法5/法英11.5 BLEU；监督阅读理解和无监督翻译对照仍更强。",
+      "report_anchor": "gpt2-results",
+      "source_ids": [
+        "GPT2"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§3.5/3.7，原文无监督翻译对照33.5；不得读成统一准确率。"
+    },
+    {
+      "id": "C6",
+      "claim": "GPT-2零样本术语包含无梯度迁移；GPT-3区分零/单/少演示；未给GPT-3本体跑监督微调。",
+      "report_anchor": "three-settings",
+      "source_ids": [
+        "GPT2",
+        "GPT3"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "GPT-3引言脚注1、§2/Figure2.1；GPT-2任务格式。"
+    },
+    {
+      "id": "C7",
+      "claim": "额外演示与任务所需段落/历史不同；CoQA K5、LAMBADA K15、NQ K64；窗口2048token。",
+      "report_anchor": "three-settings",
+      "source_ids": [
+        "GPT3"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§2.4、TableH.1；图2.1少数演示仅为示意。"
+    },
+    {
+      "id": "C8",
+      "claim": "上下文学习固定权重、改变输入/激活；一次推理不自动产生跨会话永久记忆，保存历史是应用层行为。",
+      "report_anchor": "fixed-weights",
+      "source_ids": [
+        "GPT3"
+      ],
+      "support": "derived",
+      "critical": true,
+      "evidence": "Figure1.1、§7；跨会话边界为固定权重计算的直接推导，未实测记忆系统。"
+    },
+    {
+      "id": "C9",
+      "claim": "8档125M–175B模型各训练300Btoken；本文比较输入条件而非训练时只见少量样本。",
+      "report_anchor": "scale-results",
+      "source_ids": [
+        "GPT3"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§2.1/Table2.1。"
+    },
+    {
+      "id": "C10",
+      "claim": "GPT-3最大档CoQA dev F1 81.5/84/85，LAMBADA test acc76.2/72.5/86.4，NQ test EM14.6/23/29.9，各行口径不混。",
+      "report_anchor": "scale-results",
+      "source_ids": [
+        "GPT3"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "Tables3.2/3.3/3.7与H.1；附录C换随机seed不与正文混用。"
+    },
+    {
+      "id": "C11",
+      "claim": "LAMBADA单示例比零示例差，格式也变化；NQ少示例29.9低于闭卷T5+SSM36.6，不保证更多例子必更好。",
+      "report_anchor": "scale-results",
+      "source_ids": [
+        "GPT3"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§3.1.2、§3.2；Table3.2/3.3。"
+    },
+    {
+      "id": "C12",
+      "claim": "WiC test32shot49.4近随机、RACE-h test45.5/45.9/46.8，对照90.0；ANLI也难，不能宣布全面替代微调。",
+      "report_anchor": "failure-cases",
+      "source_ids": [
+        "GPT3"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§3.6–3.8/Tables3.7–3.8。"
+    },
+    {
+      "id": "C13",
+      "claim": "每类2000道合成算术：2D+100%、4D+25.5%、2Dx29.2%；整数分别取0–99或0–9999，结果不保证通用计算可靠。",
+      "report_anchor": "failure-cases",
+      "source_ids": [
+        "GPT3"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§3.9.1/Table3.9；避开正文80.2与表80.4冲突。"
+    },
+    {
+      "id": "C14",
+      "claim": "语法修正例删除cheap改变原意；少见字符任务和新词造句不能确定证明全新技能或通用学习算法。",
+      "report_anchor": "learning-or-recognition",
+      "source_ids": [
+        "GPT3"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "Figure3.17、§3.9.2/3.9.5、§5；定性例不当成功率。"
+    },
+    {
+      "id": "C15",
+      "claim": "GPT-2 CoQA新闻文章15%重叠、估整体收益0.5–1F1；文章重叠与问答泄漏分开。",
+      "report_anchor": "contamination",
+      "source_ids": [
+        "GPT2"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§4；问答发布时间晚于WebText截止。"
+    },
+    {
+      "id": "C16",
+      "claim": "GPT-3过滤bug后不能重训，事后干净子集比较有假阳性/难度差异；不是完全排除污染。",
+      "report_anchor": "contamination",
+      "source_ids": [
+        "GPT3"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§4/AppendixC；PIQA/Winograd警示、LAMBADA差异<0.5百分点不能消除方法限制。"
+    },
+    {
+      "id": "C17",
+      "claim": "570GB仅过滤后CommonCrawl；另混合WebText2/Books1/Books2/Wikipedia，按来源加权抽样；可用语料与300B累计token不同。",
+      "report_anchor": "resources-and-people",
+      "source_ids": [
+        "GPT3"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§2.2/Table2.2/AppendixA。"
+    },
+    {
+      "id": "C18",
+      "claim": "训练用V100、微软高带宽集群和模型并行；论文不支持精确几千卡或特定未列明框架。",
+      "report_anchor": "resources-and-people",
+      "source_ids": [
+        "GPT3"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§2.1–2.3。"
+    },
+    {
+      "id": "C19",
+      "claim": "人物按正式数据、模型/系统、下游评测、缩放研究分工讲；GPT2首页6人/GPT3 31人不等于全组织规模和决策动机。",
+      "report_anchor": "resources-and-people",
+      "source_ids": [
+        "GPT2",
+        "GPT3"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "两篇首页及GPT-3 Contributions p42。"
+    },
+    {
+      "id": "C20",
+      "claim": "GPT-3当时仅建议探索蒸馏、人类反馈、RL、多模态；预测目标不同于用户目标，非已经完成助手或蒸馏结果。",
+      "report_anchor": "today-and-next",
+      "source_ids": [
+        "GPT3"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§5；§3.9.4/§6新闻人评与偏见初查不代表事实保证。"
+    },
+    {
+      "id": "C21",
+      "claim": "[推测] 将任务说明/示例/事实材料分别检查、用留出问题评估是本文现代使用推断，非原论文证明Agent或跨会话记忆框架。",
+      "report_anchor": "today-and-next",
+      "source_ids": [
+        "GPT3"
+      ],
+      "support": "inference",
+      "critical": false,
+      "evidence": "由实验条件与局限推断，正文明确[推测]。"
+    },
+    {
+      "id": "C22",
+      "claim": "讲义p37–38、shownotes与419段转录共同定位；未听音未测WER、整期尾约16秒未知；GPT-3首版/实读v4分开。",
+      "report_anchor": "source-scope",
+      "source_ids": [
+        "SLIDE",
+        "SHOWNOTES",
+        "ASR",
+        "GPT3-HISTORY"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "本章转录收据、原文history；不将结构通过当识字准确率。"
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U1",
+      "title": "任务文本化与微调的区别；GPT-1已有zero-shot探索，GPT-2不是绝对起点。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "GPT2",
+        "GPT3",
+        "GPT1"
+      ],
+      "report_anchor": "task-as-text"
+    },
+    {
+      "id": "U2",
+      "title": "WebText来自Reddit获至少3 karma外链网页，略多于8M文档/40GB，截止2017-12，不含Wikipedia；不是评论语料。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "GPT2"
+      ],
+      "report_anchor": "gpt2-data"
+    },
+    {
+      "id": "U3",
+      "title": "GPT-2自然文本任务示范是研究假设，最大档1542M/48层/1024token及字节BPE不证明世界知识完整。",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "GPT2"
+      ],
+      "report_anchor": "gpt2-data"
+    },
+    {
+      "id": "U4",
+      "title": "GPT-2摘要R-AVG无提示15.03、TLDR21.40、随机3句20.98、开头3句31.55；100token前三句，不是准确率。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "GPT2"
+      ],
+      "report_anchor": "gpt2-results"
+    },
+    {
+      "id": "U5",
+      "title": "GPT-2 CoQA dev约55 F1、翻译英法5/法英11.5 BLEU；监督阅读理解和无监督翻译对照仍更强。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "GPT2"
+      ],
+      "report_anchor": "gpt2-results"
+    },
+    {
+      "id": "U6",
+      "title": "GPT-2零样本术语包含无梯度迁移；GPT-3区分零/单/少演示；未给GPT-3本体跑监督微调。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "GPT2",
+        "GPT3"
+      ],
+      "report_anchor": "three-settings"
+    },
+    {
+      "id": "U7",
+      "title": "额外演示与任务所需段落/历史不同；CoQA K5、LAMBADA K15、NQ K64；窗口2048token。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "GPT3"
+      ],
+      "report_anchor": "three-settings"
+    },
+    {
+      "id": "U8",
+      "title": "上下文学习固定权重、改变输入/激活；一次推理不自动产生跨会话永久记忆，保存历史是应用层行为。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "GPT3"
+      ],
+      "report_anchor": "fixed-weights"
+    },
+    {
+      "id": "U9",
+      "title": "8档125M–175B模型各训练300Btoken；本文比较输入条件而非训练时只见少量样本。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "GPT3"
+      ],
+      "report_anchor": "scale-results"
+    },
+    {
+      "id": "U10",
+      "title": "GPT-3最大档CoQA dev F1 81.5/84/85，LAMBADA test acc76.2/72.5/86.4，NQ test EM14.6/23/29.9，各行口径不混。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "GPT3"
+      ],
+      "report_anchor": "scale-results"
+    },
+    {
+      "id": "U11",
+      "title": "LAMBADA单示例比零示例差，格式也变化；NQ少示例29.9低于闭卷T5+SSM36.6，不保证更多例子必更好。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "GPT3"
+      ],
+      "report_anchor": "scale-results"
+    },
+    {
+      "id": "U12",
+      "title": "WiC test32shot49.4近随机、RACE-h test45.5/45.9/46.8，对照90.0；ANLI也难，不能宣布全面替代微调。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "GPT3"
+      ],
+      "report_anchor": "failure-cases"
+    },
+    {
+      "id": "U13",
+      "title": "每类2000道合成算术：2D+100%、4D+25.5%、2Dx29.2%；整数分别取0–99或0–9999，结果不保证通用计算可靠。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "GPT3"
+      ],
+      "report_anchor": "failure-cases"
+    },
+    {
+      "id": "U14",
+      "title": "语法修正例删除cheap改变原意；少见字符任务和新词造句不能确定证明全新技能或通用学习算法。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "GPT3"
+      ],
+      "report_anchor": "learning-or-recognition"
+    },
+    {
+      "id": "U15",
+      "title": "GPT-2 CoQA新闻文章15%重叠、估整体收益0.5–1F1；文章重叠与问答泄漏分开。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "GPT2"
+      ],
+      "report_anchor": "contamination"
+    },
+    {
+      "id": "U16",
+      "title": "GPT-3过滤bug后不能重训，事后干净子集比较有假阳性/难度差异；不是完全排除污染。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "GPT3"
+      ],
+      "report_anchor": "contamination"
+    },
+    {
+      "id": "U17",
+      "title": "570GB仅过滤后CommonCrawl；另混合WebText2/Books1/Books2/Wikipedia，按来源加权抽样；可用语料与300B累计token不同。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "GPT3"
+      ],
+      "report_anchor": "resources-and-people"
+    },
+    {
+      "id": "U18",
+      "title": "训练用V100、微软高带宽集群和模型并行；论文不支持精确几千卡或特定未列明框架。",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "GPT3"
+      ],
+      "report_anchor": "resources-and-people"
+    },
+    {
+      "id": "U19",
+      "title": "人物按正式数据、模型/系统、下游评测、缩放研究分工讲；GPT2首页6人/GPT3 31人不等于全组织规模和决策动机。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "GPT2",
+        "GPT3"
+      ],
+      "report_anchor": "resources-and-people"
+    },
+    {
+      "id": "U20",
+      "title": "GPT-3当时仅建议探索蒸馏、人类反馈、RL、多模态；预测目标不同于用户目标，非已经完成助手或蒸馏结果。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "GPT3"
+      ],
+      "report_anchor": "today-and-next"
+    },
+    {
+      "id": "U21",
+      "title": "将任务说明/示例/事实材料分别检查、用留出问题评估是本文现代使用推断，非原论文证明Agent或跨会话记忆框架。",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "GPT3"
+      ],
+      "report_anchor": "today-and-next"
+    },
+    {
+      "id": "U22",
+      "title": "讲义p37–38、shownotes与419段转录共同定位；未听音未测WER、整期尾约16秒未知；GPT-3首版/实读v4分开。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "SLIDE",
+        "SHOWNOTES",
+        "ASR",
+        "GPT3-HISTORY"
+      ],
+      "report_anchor": "source-scope"
+    }
+  ],
+  "limitations": [
+    "没有运行原版模型、训练、复现基准或重新做污染审计；黑猫提示及答案为教学示意。",
+    "GPT2正文p1–10与GPT3明确列出的页面已读，未逐项读完全部样例/附录曲线；没有声称全文逐图精读。",
+    "GPT3使用2020-07-22的v4，不回填为首版2020-05-28的全部结果。",
+    "跨任务指标、dev/test、上下文K值、原文/附录C随机seed不混；LAMBADA格式变化不能当纯示例数量对照。",
+    "无法凭本论文区分所有任务中的识别、适应和新学习；文字流畅不等于事实和行为可靠。",
+    "ASR结构通过不代表逐字正确；未听校未测WER，整期末15.989秒仍未知。",
+    "精确GPU数量、未列明框架、组织重组动机、人物当前去向未另核，不进入结论。",
+    "现代Context建议标为本文推测；不声称两篇论文验证了当前Agent/记忆框架。"
+  ],
+  "revision_note": "2026-11-05来源名称勘误：原节目为《张小珺Jùn｜商业访谈录》第117期，修正此前误写的晚点聊；URL、shownotes正文与技术讲解未变。除来源名称与本修订元数据外，继承已通过的冻结基线；独立复核只直接验证本次勘误及范围。"
+}

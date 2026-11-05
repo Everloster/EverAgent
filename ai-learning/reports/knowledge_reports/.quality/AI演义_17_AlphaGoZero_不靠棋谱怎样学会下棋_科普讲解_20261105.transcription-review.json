@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "kind": "chapter-transcription-review",
+  "reviewed_on": "2026-11-05",
+  "chapter": 17,
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+  "transcript_source_ref": "sha256:891be3b65efc9fac309b05082f7b539fb06ada8b550217e517f0863321918b17",
+  "full_segments_sha256": "f322514ced72235a0ca104635824c66df425c18dbae3d0f4e76fa70d088db61c",
+  "public_full_episode_receipt": "podcast-learning/reports/transcripts/2026-11-04_ai-yanyi-117.audit.json",
+  "read_scope": {
+    "segments_read": 208,
+    "source_indices_zero_based_inclusive": [
+      1624,
+      1831
+    ],
+    "actual_interval_seconds": [
+      4111.48,
+      4534.53
+    ],
+    "span_seconds": 423.05,
+    "segment_artifact_sha256": "e78fcee77ffaceb39b61381da39a60aa536d01637fe915f50374cfe458c4200c",
+    "text_artifact_sha256": "891be3b65efc9fac309b05082f7b539fb06ada8b550217e517f0863321918b17",
+    "time_basis": "源segments小数秒；正文约01:08:31–01:15:35，包含过渡，止于下一段MoE前。shownotes仅Part1大段边界，不声称官方提供单篇时间。"
+  },
+  "chapter_segment_check": {
+    "segment_count": 208,
+    "negative_duration_count": 0,
+    "backward_start_count": 0,
+    "backward_end_count": 0,
+    "overlap_count": 0,
+    "positive_gap_count": 100,
+    "max_gap_seconds": 1.22,
+    "max_consecutive_identical": 1
+  },
+  "compatible_text_audit": {
+    "schema_version": 2,
+    "kind": "podcast-transcript-audit",
+    "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+    "source_ref": "sha256:2f44a1b61a6757a8acebc5ac39dbabd782eb2da0545ad99d7da56dbb2a34eacc",
+    "max_consecutive_limit": 3,
+    "audit": {
+      "ok": true,
+      "size": 10916,
+      "sha256": "2f44a1b61a6757a8acebc5ac39dbabd782eb2da0545ad99d7da56dbb2a34eacc",
+      "lines": 208,
+      "segments": 208,
+      "duration_seconds": 4534,
+      "max_consecutive_identical": 1,
+      "timestamp_errors": 0,
+      "malformed_lines": 0,
+      "tail_gap_seconds": 0
+    }
+  },
+  "audit_interpretation": "完整208段转换整数秒时间格式后实际运行audit_transcript.audit/public_receipt/validate_receipt。duration_seconds=4534为节目绝对终点，不是章长；原小数秒跨度423.05。无负时长/倒序/重叠；100处正间隔，最大1.22秒，最长连续同句1。结构检查不证明逐字准确。",
+  "term_and_claim_checks": [
+    {
+      "time_seconds": [
+        4111.48,
+        4194.2
+      ],
+      "issue": "题名、AlphaGo、李世石等ASR专名有错词，且转写中出现旧AlphaGo不是强化学习的说法。",
+      "adopted": "身份按论文；正文明确旧版已经结合人类数据、强化学习和搜索，不把ASR某句直接当作可证的讲者原话。",
+      "basis": "论文首页与Methods AlphaGo versions；未听音",
+      "kind": "history_and_terminology"
+    },
+    {
+      "time_seconds": [
+        4194.2,
+        4265.15
+      ],
+      "issue": "Sutton视频旁支与模仿上限、未知问题缺示范的讨论。",
+      "adopted": "保留研究动机，区分目标与示范，不写模仿必不能超人的定理；未定位或观看所指Sutton视频。",
+      "basis": "论文引言；Noam访谈对人类数据价值的本人回顾",
+      "kind": "motivation_boundary"
+    },
+    {
+      "time_seconds": [
+        4265.15,
+        4364.45
+      ],
+      "issue": "Karen/Inflection/微软、欧洲硅谷/Gemini故事，ASR姓名错误多。",
+      "adopted": "算法正文用论文署名与共同第一作者；完整履历、并购和组织史没有核验，不当作算法证据。",
+      "basis": "正式Nature页作者和contribution；其余保留未核范围",
+      "kind": "biography_scope"
+    },
+    {
+      "time_seconds": [
+        4365.63,
+        4405.15
+      ],
+      "issue": "36小时超过Lee与更少卡混述，易把对弈部署配置当总训练资源。",
+      "adopted": "分开36小时学习曲线、72小时后100–0、四十天独立权重实例89–11，以及4TPU搜索/64GPU优化。",
+      "basis": "Figures3/6及Methods Optimization/Evaluation",
+      "kind": "experiment_accounting"
+    },
+    {
+      "time_seconds": [
+        4405.25,
+        4488.32
+      ],
+      "issue": "每步1600MCTS、没有thinking不能击败人类、o1启发与Brown视频。",
+      "adopted": "解释simulation不是整盘或深度；raw network对照只支持给定条件。另读OpenAI官方文与Brown本人文字访谈，支持思想联系与领域区别，不声称证实具体视频或Zero直接历史因果。",
+      "basis": "Figure2/6b；OpenAI官方与Sequoia作者访谈",
+      "kind": "search_and_reasoning_boundary"
+    },
+    {
+      "time_seconds": [
+        4488.44,
+        4534.53
+      ],
+      "issue": "从零、没有先验与奖励清晰即可以强化学习的概括。",
+      "adopted": "补齐规则/结构先验、零和完全信息、可模拟与试错成本、可靠裁判；不推成所有领域可去掉预训练。",
+      "basis": "Methods Domain knowledge、Self-play reinforcement learning in games",
+      "kind": "transfer_boundary"
+    }
+  ],
+  "audio_listened": false,
+  "word_accuracy_measured": false,
+  "verbatim_completeness": false,
+  "limitations": [
+    "未重新转写、逐字听校、说话人核对或测WER。",
+    "时间结构核查不证明本章或全期逐字准确完整。",
+    "原ASR、设备和运行态收据仅留私有缓存，公开只有范围、哈希和核查摘要。"
+  ]
+}

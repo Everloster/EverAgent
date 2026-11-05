@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "kind": "chapter-transcription-review",
+  "reviewed_on": "2026-11-05",
+  "chapter": 12,
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+  "transcript_source_ref": "sha256:768362e73660c9a68eb5e5c01527ccd8e426d3424c44c78c7b002935e6078975",
+  "full_segments_sha256": "f322514ced72235a0ca104635824c66df425c18dbae3d0f4e76fa70d088db61c",
+  "public_full_episode_receipt": "podcast-learning/reports/transcripts/2026-11-04_ai-yanyi-117.audit.json",
+  "read_scope": {
+    "segments_read": 92,
+    "source_indices_zero_based_inclusive": [
+      3648,
+      3739
+    ],
+    "actual_interval_seconds": [
+      7869.1,
+      8017.79
+    ],
+    "span_seconds": 148.69,
+    "segment_artifact_sha256": "768362e73660c9a68eb5e5c01527ccd8e426d3424c44c78c7b002935e6078975",
+    "text_artifact_sha256": "bbe75feec2c494f1d18dfa6a05804ac25facfbccb9bd7253c4d06702a3f4a5a9",
+    "time_basis": "按内容定位本章约02:11:09—02:13:38；shownotes只标Part2起点01:52:58，未标逐篇章界。"
+  },
+  "chapter_segment_check": {
+    "segment_count": 92,
+    "negative_duration_count": 0,
+    "backward_start_count": 0,
+    "overlap_count": 0,
+    "max_gap_seconds": 0.0
+  },
+  "compatible_text_audit": {
+    "schema_version": 2,
+    "kind": "podcast-transcript-audit",
+    "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+    "source_ref": "sha256:7979023d9a02cb8f0fbbe7639e07c81ff6c3404ce08315d041ae0df96def1b59",
+    "max_consecutive_limit": 3,
+    "audit": {
+      "ok": true,
+      "size": 4166,
+      "sha256": "7979023d9a02cb8f0fbbe7639e07c81ff6c3404ce08315d041ae0df96def1b59",
+      "lines": 92,
+      "segments": 92,
+      "duration_seconds": 8017,
+      "max_consecutive_identical": 1,
+      "timestamp_errors": 0,
+      "malformed_lines": 0,
+      "tail_gap_seconds": 0
+    }
+  },
+  "audit_interpretation": "正式脚本使用由相同92段导出的原生[hh:mm:ss -> hh:mm:ss]文本，秒数向下取整；duration_seconds=8017是节目绝对结束时间，本章精确跨度148.69秒。小数秒的倒序/负时长/重叠另核均为0。首次误给JSON格式导致无可识别段的失败收据保留私有，改为正确输入后通过。",
+  "term_and_claim_checks": [
+    {
+      "time_seconds": [
+        7869.1,
+        7929.59
+      ],
+      "issue": "RefinedWeb、Scaling Laws等专名识别不稳，且含精选语料垄断的概括",
+      "adopted": "术语按论文校正；采用数据量与精选来源扩展的研究问题，不将具体公司垄断写为已核事实。",
+      "basis": "论文§1–2及讲义p30",
+      "kind": "terminology_and_scope"
+    },
+    {
+      "time_seconds": [
+        7929.59,
+        7982.05
+      ],
+      "issue": "CommonCrawl及数据集术语错词；清洗后可匹敌精选语料、自动化与数据墙强概括",
+      "adopted": "用论文流水线、训练对照、反例与资源条件展开，明确人工调规则和评测仍必要。",
+      "basis": "论文§3–6、附录E/G与数据卡",
+      "kind": "mechanism_and_limitations"
+    },
+    {
+      "time_seconds": [
+        7982.05,
+        8017.79
+      ],
+      "issue": "推荐Hugging Face三部曲但未给唯一文章身份",
+      "adopted": "正文保留未唯一对应的来源边界，不猜配链接，不作为论文事实来源。",
+      "basis": "本章转录末段与shownotes",
+      "kind": "unidentified_supplement_excluded"
+    }
+  ],
+  "audio_listened": false,
+  "word_accuracy_measured": false,
+  "verbatim_completeness": false,
+  "limitations": [
+    "结构检查不能证明逐字准确率，未人工听校或测WER。",
+    "本章检查不代表全期逐字完整性验证。",
+    "公开仅保存必要范围、术语判断与结构指标；原始ASR和执行设备信息不公开。"
+  ]
+}

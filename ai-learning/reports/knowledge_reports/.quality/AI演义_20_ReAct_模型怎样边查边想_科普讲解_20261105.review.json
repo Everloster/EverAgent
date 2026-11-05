@@ -1,0 +1,1078 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_20_ReAct_模型怎样边查边想_科普讲解_20261105.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-6-astra",
+        "configured_model": "gpt-6-astra",
+        "harness": "codex",
+        "run_id": "review-react-primary-expanded-r1-20261105",
+        "run_id_kind": "审阅产物标识，不是实际采样运行ID或运行模型证明",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "model_identity_status": "configured_only",
+        "configuration_evidence": "会话启动及恢复时eacli session current均显示config-default的gpt-6-astra配置、confirmed=false；只用作配置证据。",
+        "runtime_model": "unconfirmed",
+        "runtime_model_confirmed": false,
+        "identity_limit": "没有本独立子会话的可信per-run runtime证明；不借用协调者、根会话或其他Reviewer身份补证。"
+      },
+      "reviewed_at": "2026-11-05T04:31:32.247209+00:00",
+      "snapshot_binding": {
+        "report_path": "ai-learning/reports/knowledge_reports/AI演义_20_ReAct_模型怎样边查边想_科普讲解_20261105.md",
+        "report_sha256": "d81a9f31124839ec0ee92c590e23f09f1fb8ba574924137f83d14869c94e33c5",
+        "evidence_sha256": "007830f62128665fab5a144498dec9cfca08323cb9992d6ac7d0161b39abc7cc",
+        "revision_round": 1,
+        "evidence_path": "ai-learning/reports/knowledge_reports/.quality/AI演义_20_ReAct_模型怎样边查边想_科普讲解_20261105.evidence.json",
+        "quality_tier": "important",
+        "binding_scope": "本entry仅对应列明的最终候选字节；展开初版的details/summary仅经排版修订，旧哈希已废止。"
+      },
+      "source_first_map_proof": {
+        "artifact": "primary-source-map.json",
+        "sha256": "e4d9ba51ed7c42bf87787fd5c4f6de57b4e718aeaca6f45e6dc0974fe56f565c",
+        "receipt": {
+          "artifact": "primary-source-receipt.json",
+          "sha256": "ac4fef7eb33b7a7547d1c3eb29e1ac9fd4a3a1df6b7ee9ff48466df82345215f"
+        },
+        "frozen_at": "2026-11-05T03:51:02.002380+00:00",
+        "stage": "stage_1_sources_only",
+        "units": 21,
+        "core_units": 13,
+        "supporting_units": 8,
+        "original_ids_titles_importance_unchanged": true,
+        "manuscript_or_evidence_read_before_freeze": false,
+        "other_current_reviewer_outputs_read": false,
+        "additional_source_reading": {
+          "artifact": "primary-source-addendum.json",
+          "sha256": "a1f787b4e91629fe844fbf399f161ab89836e196979f034952f4f5b728fe496f"
+        }
+      },
+      "source_read_scope": [
+        {
+          "reviewer_source_id": "S-PAPER",
+          "manifest_source_id": "PAPER",
+          "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
+          "stage_1_read_scope": "本地 33 页 v3（2023-03-10，ICLR 2023）。独立重跑 pdftotext -layout 与既有缓存逐字节一致。读取正文 §§1–6、p.10 复现与伦理声明、附录 A–E（pp.14–33）；参考文献清单未逐条核读。Figure 1 另经图像首选能力后直接核图。Figures 2–3 依据正文和图注，未数字化曲线。Figures 4–5 图中文字存在编码问题，本轮只据周边说明与图注，不声称完整视觉核验。",
+          "url": "https://arxiv.org/abs/2210.03629v3",
+          "sha256": "f285b0971ae4a790e402fb93966bed3adde2cf0a04977d08b2b40d6ab0cace69",
+          "stage_2_addition": "补充直接核读Figure 5全部相关动作/观察与人工删改，详见primary-source-addendum.json；未更改阶段1地图或其原始边界记录。"
+        },
+        {
+          "reviewer_source_id": "S-HANDOUT",
+          "manifest_source_id": "LECTURE",
+          "title": "《AI演义》终版讲义第 20 页",
+          "stage_1_read_scope": "只读 ReAct 第 20 页的历史背景、核心贡献、作者栏及三幅结构示意图；eacli vision.ocr 成功后直接核图。未读取其他报告或其他讲义章节。",
+          "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0"
+        },
+        {
+          "reviewer_source_id": "S-ASR",
+          "manifest_source_id": "PODCAST",
+          "title": "《AI演义》ReAct 原始 ASR 切片",
+          "stage_1_read_scope": "完整读取零基 2470–2762（含）共 293 段，5688.37–6163.57 秒，跨度 475.20 秒；含研究选题和工程文化续谈。原始私有 JSON 仅用于 SHA、精确切片和边界核对，不把私有路径写入公开产物。边界额外检查 2468–2469、2763–2772，确认前为 LoRA、后转 The Bitter Lesson。未听音。",
+          "url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c"
+        },
+        {
+          "reviewer_source_id": "S-SHOWNOTES",
+          "manifest_source_id": "SHOWNOTES",
+          "title": "官方节目页 shownotes 缓存",
+          "stage_1_read_scope": "完整读取协调者提供的前轮官方节目页缓存 shownotes.txt；本轮未重新抓该节目页。只有 Part 级时间和论文顺序，没有每篇精确时间。",
+          "url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c"
+        },
+        {
+          "reviewer_source_id": "S-ARXIV",
+          "manifest_source_id": "ARXIV",
+          "title": "arXiv 2210.03629 摘要与版本历史",
+          "stage_1_read_scope": "读取本轮 eacli web.read 收据与返回的完整摘要、作者元数据和 submission history；v1 2022-10-06，v2 2022-11-27，v3 2023-03-10。",
+          "url": "https://arxiv.org/abs/2210.03629"
+        },
+        {
+          "reviewer_source_id": "S-PROJECT",
+          "manifest_source_id": "PROJECT",
+          "title": "ReAct 作者项目页",
+          "stage_1_read_scope": "读取本轮 eacli web.read 收据和页面文字全部区块：动机、摘要、prompting、HotpotQA/ALFWorld 示例说明、fine-tuning 初步结果。未另外打开网页所链图片；相关原论文 Figure 1 已直接核图。",
+          "url": "https://react-lm.github.io/"
+        },
+        {
+          "reviewer_source_id": "S-REPO",
+          "manifest_source_id": "CODE",
+          "title": "ysymyth/ReAct README.md",
+          "stage_1_read_scope": "读取本轮 eacli repo.public.read 返回的 README.md 全文及调用收据；未读取 notebooks、执行代码、核 commit 或检验外链 LangChain 页面当前有效性。",
+          "url": "https://github.com/ysymyth/ReAct/blob/master/README.md"
+        }
+      ],
+      "transcript_review": {
+        "source_sha256": "f322514ced72235a0ca104635824c66df425c18dbae3d0f4e76fa70d088db61c",
+        "source_slice": {
+          "zero_based_indices_inclusive": [
+            2470,
+            2762
+          ],
+          "segments": 293,
+          "start_seconds": 5688.37,
+          "end_seconds": 6163.57,
+          "span_seconds": 475.2
+        },
+        "read_scope": "完整293段及相邻边界，含研究选题、持续学习和PRD/原型传递续谈；未只做头尾抽查。",
+        "native_audit": {
+          "artifact": "primary-asr-audit.json",
+          "sha256": "5f7f23d8e96167030e6a59f6d4cb6fdfa41aa306f13029a2f90f19f0eee1ce20"
+        },
+        "exact_slice_and_decimal_timing_check": {
+          "artifact": "primary-asr-slice-check.json",
+          "sha256": "51a239103f0d36c26fa4e6c53b73f8bd2dee9e50621efe973a943f6735a2e11a"
+        },
+        "initial_format_failure_retained": {
+          "artifact": "primary-asr-audit-format-rejected.json",
+          "sha256": "e810c1776d70b290d0359d964930dca83973b00001e4fad5f2e2502447d497ab"
+        },
+        "findings": "先对原始JSON入口的格式不支持保留失败收据，再用脚本支持的整数时间导出审计通过。原始小数时间精确切片相等，负时长、起止时间倒退与重叠均为0，最大间隔2.04秒。导出审计duration_seconds=6163是绝对末端，不是切片时长。",
+        "audio_listened": false,
+        "word_error_rate_measured": false,
+        "limitation": "时间结构通过及术语对照不等于逐字听校准确率；shownotes只提供Part级起点，本段精确边界来自既有ASR。"
+      },
+      "visual_review": {
+        "primary_review_receipt": {
+          "artifact": "primary-visual-navigation-check.json",
+          "sha256": "24bc4981851d8fd2a7586e9a1e3e27879e7ac60abaeada5b49c7823eb62cea79"
+        },
+        "coordinator_actual_clicks": {
+          "artifact": "navigation-receipt.json",
+          "sha256": "ffd2aa08888b8b0d4661814a5ae44dad6a557c4e30ed466d40eefd130b9a09a2"
+        },
+        "coordinator_click_script": {
+          "artifact": "navigation-check.mjs",
+          "sha256": "3739b53ca71c8a1b2d06597a68dc37b217ff7cab7a21f40e9af1c59ac5ffb975"
+        },
+        "coordinator_screenshot_review": {
+          "artifact": "ui-visual-receipt.json",
+          "sha256": "371246d122beee3129f803db3f4cf5456c894f787fbd16810ad7b6b83f237607"
+        },
+        "toc_scroll_followup": {
+          "artifact": "toc-scroll-check.json",
+          "sha256": "a34a05df27ca018b69d80255994a81cf745455de7263dfb42ad907e748642c2f"
+        },
+        "mobile_tables_followup": {
+          "artifact": "ui-tables-visual-receipt.json",
+          "sha256": "8abfa192701c874121756f531c197d75621a8465e9b537ba2617ab63b898c2a0"
+        },
+        "viewports_px": [
+          1440,
+          390
+        ],
+        "reviewer_directly_viewed": [
+          "main-react-1440.png",
+          "main-react-390.png",
+          "expanded-react-1440.png",
+          "expanded-react-390.png",
+          "mobile-tables-contact.png"
+        ],
+        "actual_browser_operator": "协调者；主审核对脚本、哈希、真实实点收据和截图，没有自行点击浏览器。",
+        "result": "导航、目录和脚注往返有实际点击证据；四表在390px可横滚而整页不溢出，两个宽度均无失效片内链接、重复锚点或页面错误。主稿41脚注、展开15脚注；截图可见标题、入口、数字和换行清楚。",
+        "limitations": "五张图像只证明对应可见区域，不能代替全篇DOM或点击验收。四表拼图位于右滚端；左端可达据实测scrollLeft而非图片推断。目录截图边缘不是条目丢失；没有采纳视觉服务把当前日期称为未来的错误判断。"
+      },
+      "static_links_receipt": {
+        "artifact": "primary-static-navigation-check.json",
+        "sha256": "5a0231d3f79e075671fe27ce05bca62d355132594ce98314bd61c79335df56df"
+      },
+      "native_quality_check": {
+        "artifact": "primary-expanded-quality-check.json",
+        "sha256": "60b3f8f4c238bf15dada1ba3c0745a85b791135f62fd4b214f2bb3a7f684b077",
+        "observed_decision_before_entry_merge": "needs_review",
+        "findings_before_entry_merge": [
+          {
+            "severity": "error",
+            "code": "REV006",
+            "message": "important 至少需要 1 个独立复核"
+          }
+        ],
+        "scope": "按照原生prompt执行只读check；当时本轮reviews数组尚未填入，缺复核记录的状态不作为本entry的内容失败，也不宣告最终gate通过。协调者合入所有必要entry后须重跑。"
+      },
+      "policy_binding": {
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2"
+      },
+      "scores": {
+        "evidence_fidelity": 97,
+        "request_coverage": 96,
+        "reasoning_quality": 97,
+        "readability": 95,
+        "limitations": 98
+      },
+      "score_reasons": {
+        "evidence_fidelity": "17个关键claim、7个source与20个coverage条目均按真实读取范围核查，Figure1/5和数表口径准确，未补造Obs3或混用README数据。完整ASR与讲义交叉核验；图曲线未数字化、音频未听校、源码未复跑的范围如实保留。",
+        "request_coverage": "13项来源core均实质覆盖：机制、真实查询与失败、QA及组合、两项交互任务、可信边界，以及访谈选题/持续学习/PRD三段。u13备选人工示例、u20传记冲突missing，u14教材定义和u16节目逐项顺序partial，均属非核心细节；不把U20范围声明算作传记内容覆盖。",
+        "reasoning_quality": "用反馈改变下一次动作解释闭环，数据同时保留提升与退步，分层错误分析不外推总体概率，最佳值/平均值与百分点分开。答对但过程错、受限消融、训练预算和人工修改单例各有明确边界；实践建议标推测且没有编造已测收益。",
+        "readability": "案例贯穿，三类记录表、分段失败解释和短小问答式标题帮助阅读；正文无需外部polished稿才成立。两种宽度导航/目录/脚注实点通过，四表局部横滚可读，旧details标签已换普通标题。比较条件段信息较密，手机表格需横滚，是轻微阅读成本。",
+        "limitations": "明确未复现实验、未逐字听音、时间结构审计不等于WER；承认PaLM开放限制、Table1/附表/README快照差、Table7自相矛盾、预算不等与模拟购物。经验判断与论文事实分开，既不掩盖反例，也不对未经核验的年龄/引用/现代产品归因作事实扩写。"
+      },
+      "source_ids_checked": [
+        "PAPER",
+        "LECTURE",
+        "PODCAST",
+        "SHOWNOTES",
+        "ARXIV",
+        "PROJECT",
+        "CODE"
+      ],
+      "critical_claim_ids_checked": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17"
+      ],
+      "coverage_unit_ids_checked": [
+        "U1",
+        "U2",
+        "U3",
+        "U4",
+        "U5",
+        "U6",
+        "U7",
+        "U8",
+        "U9",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16",
+        "U17",
+        "U18",
+        "U19",
+        "U20"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6"
+      ],
+      "source_content_map": [
+        {
+          "id": "react-primary-u01",
+          "title": "问题：纯推理可能自洽地编造事实，纯行动也可能不会规划和收束答案",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "LECTURE",
+            "PODCAST",
+            "PROJECT"
+          ],
+          "matched_coverage_unit_ids": [
+            "U2",
+            "U3"
+          ],
+          "notes": "引言和§1以CoT认错Apple TV、Act-only查询后答yes解释双重问题；§2–3用新返回改变行动，保留双向关系及适用边界。"
+        },
+        {
+          "id": "react-primary-u02",
+          "title": "机制：模型产生 Thought/Action，环境产生 Observation，新增信息进入后续上下文",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "LECTURE",
+            "PODCAST",
+            "PROJECT"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3",
+            "U5"
+          ],
+          "notes": "§3–4分清Thought/Action/Observation、外部执行和累积上下文；冻结参数、工作记忆不等于长期记忆、稀疏推理均明确，没有把打印记录当真实执行。"
+        },
+        {
+          "id": "react-primary-u03",
+          "title": "Wikipedia 行动接口及其刻意受限的检索能力",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U4",
+            "U6"
+          ],
+          "notes": "§4给出search/lookup/finish、前五句或相近条目及lookup只查当前页；§5实验条件说明question-only、示范数量和受限检索，未误写为任意浏览网页。"
+        },
+        {
+          "id": "react-primary-u04",
+          "title": "论文实际轨迹：Apple Remote → Front Row → 消歧 → keyboard function keys",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "PROJECT"
+          ],
+          "matched_coverage_unit_ids": [
+            "U2"
+          ],
+          "notes": "§1–2完成Apple Remote实际轨迹与CoT/Act反例。Obs3明确省略，未补造全文；查询失败促使改搜Front Row (software)，最终答案为键盘功能键。"
+        },
+        {
+          "id": "react-primary-u05",
+          "title": "问答与验证的实际结果：ReAct 并未在所有任务胜过 CoT",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U6",
+            "U7"
+          ],
+          "notes": "§5保留四种单次方法的原表数值、EM/准确率和ReAct正反表现，补充混合方案及条件，没有把混合结果算给纯ReAct或用README替换Table1。未逐行抄全表不影响核心比较。"
+        },
+        {
+          "id": "react-primary-u06",
+          "title": "可信度与反例：答案正确不保证推理正确，检索也不能消灭幻觉",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8",
+            "U9"
+          ],
+          "notes": "§6说明两方法×正确/错误各50共200条分层抽查、错误组0%不能外推总体零幻觉、正确组仍有假阳性；San Marco/About Time错实体碰巧答对和过时标签均有解释。"
+        },
+        {
+          "id": "react-primary-u07",
+          "title": "互补方案：根据失败或投票不确定性切换 ReAct 与 CoT-SC",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U7"
+          ],
+          "notes": "§5给出21条CoT、7/5步回退和多数票低于一半的切换条件，区分35.1/64.6来自不同方向组合；说明计算和交互成本，未把启发式写成通用最优控制器。"
+        },
+        {
+          "id": "react-primary-u08",
+          "title": "ALFWorld：通过子目标、常识和状态跟踪完成长程文本任务",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10"
+          ],
+          "notes": "§7用任务过程解释子目标切换，注明134游戏、2-shot六组提示、平均57/最佳71、Act最佳45与BUTLER最佳37；34为最佳差的百分点，并指出训练和搜索条件不同、环境为模拟。"
+        },
+        {
+          "id": "react-primary-u09",
+          "title": "WebShop：选择满足属性的商品，区分平均分与全部条件成功率",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U12"
+          ],
+          "notes": "§7说明500指令、搜索/点击选项，以及要求指定口味与16包、Act误选另一口味100包的反例；区分属性得分与全部要求成功率，40.0/30.1/29.1/28.7/59.6口径正确，明确不是真实下单且落后人类。"
+        },
+        {
+          "id": "react-primary-u10",
+          "title": "消融：有用的内部推理不等于反复念当前子目标",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11"
+          ],
+          "notes": "§7解释ReAct-IM只复述目标/子目标的限制，71与53的最佳值及遗漏清洗、直接放置并重复的错误，未写成想得越多越好；附录Table7矛盾另行披露，未武断判定实验污染。"
+        },
+        {
+          "id": "react-primary-u11",
+          "title": "训练边界：小模型仅靠示例未必能同时学会推理和行动",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "PROJECT"
+          ],
+          "matched_coverage_unit_ids": [
+            "U13"
+          ],
+          "notes": "§8保留3000条答案正确轨迹、8B/62B提示弱而微调改善与不同训练步数；明确小模型收益只在该实验设置成立，提示与训练分开。曲线结论按作者正文，未冒称重新估值。"
+        },
+        {
+          "id": "react-primary-u12",
+          "title": "人可读轨迹可用于定位与干预，但人类对齐尚未被系统证明",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "PROJECT"
+          ],
+          "matched_coverage_unit_ids": [
+            "U14"
+          ],
+          "notes": "§8说明错误判断另一把钥匙链在抽屉、人工删改两段thought后任务完成，明确修改的是上下文而非权重；单例不证明普遍可控。阶段2直接核Figure5，见primary-source-addendum.json。"
+        },
+        {
+          "id": "react-primary-u13",
+          "title": "可教学的人工示例：Colorado orogeny → High Plains 的逐步查证",
+          "importance": "supporting",
+          "assessment": "missing",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "未采用Colorado orogeny人工提示示范，保留supporting/missing。Apple Remote真实轨迹已完整承载查询、消歧、证据与结束机制；这项备选例子的省略不构成当前任务缺口。"
+        },
+        {
+          "id": "react-primary-u14",
+          "title": "历史位置：Agent 不以 LLM 为定义前提，ReAct 也有明确前驱",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "PAPER",
+            "LECTURE",
+            "PODCAST"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1",
+            "U19"
+          ],
+          "notes": "§9说明既有Agent/工具交互及WebGPT、SayCan、Inner Monologue等前驱，未给教材中不要求LLM的正式定义。此supporting历史细节部分省略，未产生首次发明Agent的失实结论。"
+        },
+        {
+          "id": "react-primary-u15",
+          "title": "应用和可信度边界：可检查性增加，真实世界执行仍需额外条件",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "PROJECT"
+          ],
+          "matched_coverage_unit_ids": [
+            "U15",
+            "U17",
+            "U10",
+            "U12"
+          ],
+          "notes": "§6–8和§10说明检索/规划错误、上下文窗口、冻结提示与实际执行条件，区分四项实验和现实系统；实践检查标推测，没有把可见thought、工具返回或公开代码当可靠性保证。"
+        },
+        {
+          "id": "react-primary-u16",
+          "title": "时间与章节边界：2022 年首发、2023 年会议稿，节目顺序与报告顺序不同",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "ARXIV",
+            "PAPER",
+            "SHOWNOTES",
+            "PODCAST",
+            "LECTURE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1",
+            "U16",
+            "U19"
+          ],
+          "notes": "来源部分区分2022 v1、2023 v3，ASR范围与shownotes大段起点；导航明确CoT/ReAct/Tülu3是报告阅读路线。未逐项列出原节目LoRA/ReAct/The Bitter Lesson顺序，故按原地图保留partial。"
+        },
+        {
+          "id": "react-primary-u17",
+          "title": "播客的研究主张：提前发现好问题，不以公式多寡判断贡献",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PODCAST",
+            "LECTURE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U18"
+          ],
+          "notes": "§9第一段完整保留提前发现问题、直观思想与公式复杂度的讨论，归属嘉宾观点，未拿未经核验的引用曲线证明必然影响力。"
+        },
+        {
+          "id": "react-primary-u18",
+          "title": "播客的持续学习讨论：年轻并非唯一条件，管理者仍需保持动手能力",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PODCAST"
+          ],
+          "matched_coverage_unit_ids": [
+            "U18"
+          ],
+          "notes": "§9第二段保留没有统一年龄答案、年轻少包袱与资深持续学习反例，区分商业/组织管理细化与技术动手；地区文化比较限定为个人观察。"
+        },
+        {
+          "id": "react-primary-u19",
+          "title": "播客的工程例子：想法经 PRD/原型转交会损失信息，全栈动手缩短传递",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PODCAST"
+          ],
+          "matched_coverage_unit_ids": [
+            "U18"
+          ],
+          "notes": "§9第三段写明自己做前端、PRD/原型压缩—解压可能丢信息、更宽能力跨度与带同事读论文；同时指出不意味着取消文档或分工。"
+        },
+        {
+          "id": "react-primary-u20",
+          "title": "讲义与口述的人物信息存在冲突，应控制叙事边界",
+          "importance": "supporting",
+          "assessment": "missing",
+          "source_ids": [
+            "LECTURE",
+            "PODCAST",
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "正文没有叙述讲义00后与口述97年的冲突或扩写未核履历，保留supporting/missing。作者姓名与U20范围声明不能等价于此来源内容已覆盖；控制传记叙事边界合理。"
+        },
+        {
+          "id": "react-primary-u21",
+          "title": "复现与版本：作者代码可定位，但不同表格快照不能混算",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "CODE",
+            "ARXIV"
+          ],
+          "matched_coverage_unit_ids": [
+            "U15",
+            "U10"
+          ],
+          "notes": "§5比较条件、§7附录提示说明及来源范围区分Table1、Table5与README快照，保留PaLM不可公开复现及Table7写No thoughts却含think的矛盾；未擅自判断30.4/30.8孰对或声称跑过代码。"
+        }
+      ],
+      "source_id_translation": {
+        "S-PAPER": "PAPER",
+        "S-HANDOUT": "LECTURE",
+        "S-ASR": "PODCAST",
+        "S-SHOWNOTES": "SHOWNOTES",
+        "S-ARXIV": "ARXIV",
+        "S-PROJECT": "PROJECT",
+        "S-REPO": "CODE"
+      },
+      "source_map_assessment_counts": {
+        "covered": 17,
+        "missing": 2,
+        "partial": 2
+      },
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "review_recommendation": "未发现需要退回正文修订的关键事实或当前任务缺口；保留范围与身份限制，交协调者合入所需复核记录后运行原生质量门。本条不是最终gate通过声明。",
+      "weighted_score_for_reference": 96.6,
+      "score_not_final_gate_decision": true,
+      "candidate_read_scope": "直接读取最新展开稿全文、全部17 claims、7 sources、20 source_coverage、R1–R6、limitations及转写审计；与阶段1独立地图逐项映射。旧展开候选只因details/summary显示原标签而改成普通小标题；primary-expanded-format-diff.txt证明正文内容未改，最终绑定最新SHA。",
+      "source_map_scope_note": "完全保留阶段1的21项ID/title/importance。17 covered、2 partial、2 missing；全部13个core已覆盖。U20的范围声明已核查，但它不代表传记冲突本身已写进正文，所以原地图u20保持missing且不强行配对。未要求把论文每个表格和人工示范逐项照抄。",
+      "scope_observations": [
+        {
+          "source_unit_ids": [
+            "react-primary-u13",
+            "react-primary-u20"
+          ],
+          "assessment_in_this_report": "missing",
+          "requirement_judgment": "supporting备选示范与未核传记冲突未采用；已有真实案例充分解释机制，且避免扩大未核人物叙述，不构成当前R1–R6遗漏。"
+        },
+        {
+          "source_unit_ids": [
+            "react-primary-u14",
+            "react-primary-u16"
+          ],
+          "assessment_in_this_report": "partial",
+          "requirement_judgment": "前驱、版本、来源边界和报告顺序已说明，教材形式定义与官方相邻条目未展开；未导致历史或导航误导。"
+        }
+      ],
+      "notes": "最新展开稿能独立解释ReAct的问题、机制、操作接口、实验口径和反例，§9完整承接原ASR后半的三段访谈。正文没有关键事实/数值错配或当前任务实质缺口；两个supporting missing和两个supporting partial如实保留。ASR结构审计、独立核图与协调者实际页面验收的边界清楚；未听音、未复现实验。运行模型身份仍unconfirmed，配置字段不能证明真实runtime。"
+    },
+    {
+      "role": "escalation_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "override_reason": "",
+        "dispatch_model_override": true,
+        "configured_model": "gpt-5.6-sol",
+        "configuration_source": "report-quality policy flagship strong_reviewers / premium_reviewer_order",
+        "runtime_model": "unconfirmed",
+        "runtime_model_confirmed": false,
+        "identity_note": "model字段记录策略选定与调度配置；实际子会话runtime没有可信证明，不借协调者、生成者或其它Reviewer身份补证。",
+        "run_id": "react-s20-strong-expanded-r1-20261105"
+      },
+      "snapshot_binding": {
+        "report_path": "ai-learning/reports/knowledge_reports/AI演义_20_ReAct_模型怎样边查边想_科普讲解_20261105.md",
+        "report_sha256": "d81a9f31124839ec0ee92c590e23f09f1fb8ba574924137f83d14869c94e33c5",
+        "evidence_sha256": "007830f62128665fab5a144498dec9cfca08323cb9992d6ac7d0161b39abc7cc",
+        "revision_round": 1,
+        "verified": true,
+        "source_map_sha256": "c9444e83bd2d395fc740d1113fe7f8581d3374a8755bf2027853f8be4dda540d",
+        "source_addendum_sha256": "1aa9967a4df73ba8b158096e7b34aa8f9a3eccb040a06046798e2e6f65cac678",
+        "transcript_audit_sha256": "3b8ddff2a2e203cdfef7c95793afdab3c0fcc22657c600eb2fa846cf038c243e",
+        "format_fix_receipt": {
+          "artifact": "format-fix-receipt.json",
+          "sha256": "c4a37c59608a1d8ee9cbd76181fdda1202a287dab1c1dc894a71b4e4bf0fa592",
+          "prior_report_sha256": "9be4a77bfe1154f08a2788c5743ce4dbc23b644803c2c9da1dee90aa8a2b3f50",
+          "note": "仅将details/summary改为普通Markdown小标题，文字内容与evidence不变。"
+        }
+      },
+      "navigation_receipt": {
+        "artifact": "navigation-receipt.json",
+        "sha256": "ffd2aa08888b8b0d4661814a5ae44dad6a557c4e30ed466d40eefd130b9a09a2",
+        "reviewer_action": "读取并核对正式候选SHA、1440/390实际点击、DOM、表格左右滚动和脚注往返收据；浏览器由协调者操作，本Reviewer未冒称亲自点击。"
+      },
+      "visual_review_receipt": {
+        "artifact": "navigation-receipt.json + bound screenshots",
+        "sha256": "ffd2aa08888b8b0d4661814a5ae44dad6a557c4e30ed466d40eefd130b9a09a2",
+        "screenshots": {
+          "main-react-1440.png": "57ba02905ad6b4ca1b7422d68cb2f7f30f69bc33f057ca574bf82c492bee6555",
+          "main-react-390.png": "4fab479d462162c57ad60ea004f411845402b9ee2d4bfc85f1dc0626cf22c25b",
+          "expanded-react-1440.png": "e88642ff1485d29de2de89a25ab0868e6c7046251a0d6f6d5363248d16af3eac",
+          "expanded-react-390.png": "9f2a47176866ecdd5d1b60c3502c12d2115c1525a200407093e051636d36c6bc",
+          "react-table1-390-left.png": "74d5e32dcbc3bbb026f3a897c33dfc998c171c390cce9f17905ab9bd9bb7a366",
+          "react-table1-390.png": "34bf050f5725b972bc082511bd5b29955b6351cffe91830728a6892e87ac8676"
+        },
+        "reviewer_action": "独立查看主节/展开篇桌面与窄屏截图及窄屏表格左右端；标题、入口、正文、表格、脚注编号和固定底栏均可读，无原始HTML标签、替换字符或阻断溢出。"
+      },
+      "transcript_audit": {
+        "native_artifact": "asr-audit.json",
+        "native_ok": true,
+        "segments": 293,
+        "timestamp_errors": 0,
+        "malformed_lines": 0,
+        "exact_slice_match": true,
+        "span_seconds": 475.2,
+        "audio_listened": false,
+        "wer_measured": false,
+        "equivalent_receipt_sha256": "3b8ddff2a2e203cdfef7c95793afdab3c0fcc22657c600eb2fa846cf038c243e"
+      },
+      "scores": {
+        "evidence_fidelity": 98,
+        "request_coverage": 98,
+        "reasoning_quality": 98,
+        "readability": 98,
+        "limitations": 97
+      },
+      "score_reasons": {
+        "evidence_fidelity": "17项claims逐项回到论文正文、Figure 1、Tables 1–4、Figure 3及指定附录核验；版本、500子集快照、ALFWorld best/avg、WebShop指标和错误分析口径均准确。讲义与播客外推被降格，ASR审计与未听校/WER边界明确。",
+        "request_coverage": "从Apple Remote成功轨迹出发，完整覆盖三类记录、受限API、dense/sparse节奏、QA正反结果、回退成本、ALFWorld/WebShop、ReAct-IM、微调、人工编辑和多种失败；访谈后谈与导航要求也完成。唯一partial是论文Ethics中开放环境隐私/有害动作警告未直接展开，不影响用户要求的机制、实验与失败主线。",
+        "reasoning_quality": "展示例、成组实验、分层错误抽查与实践推断严格分开；没有把检索等同事实、把正确答案等同正确过程、把工具调用等同训练、把阅读顺序等同模型继承。对Table7内部不一致和README/Table5快照差异也保持待核边界。",
+        "readability": "Apple Remote贯穿前半，机制表与三组结果表可扫描，复杂比较条件改为普通Markdown小标题。1440/390实点收据显示返回/前后节/目录/脚注均可用，窄屏四表可滚动到左右端；本Reviewer查看绑定截图，未见原始HTML或阻断溢出。",
+        "limitations": "明确未复现实验、PaLM当时不可访问、Table1题数不能由500子集补齐、Figure 1/5为展示例、ASR未听校、实践建议待验证及权限/持久记忆不在论文范围。未直接展开Ethics中的隐私与有害动作风险，故非满分。"
+      },
+      "critical_claim_ids_checked": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17"
+      ],
+      "coverage_unit_ids_checked": [
+        "U1",
+        "U2",
+        "U3",
+        "U4",
+        "U5",
+        "U6",
+        "U7",
+        "U8",
+        "U9",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16",
+        "U17",
+        "U18",
+        "U19",
+        "U20"
+      ],
+      "source_content_map": [
+        {
+          "id": "react-01-version-and-object",
+          "title": "论文对象、版本与会议状态",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "ARXIV"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1",
+            "U15"
+          ],
+          "notes": "正文与脚注区分2022-10首发、2023-03 v3及ICLR 2023，并说明没有复现实验。"
+        },
+        {
+          "id": "react-02-problem-and-predecessors",
+          "title": "问题设定与直接前驱",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1",
+            "U19"
+          ],
+          "notes": "以CoT、Act-only拆开缺口，并明确Agent、WebGPT、SayCan、Inner Monologue早于或邻近ReAct。"
+        },
+        {
+          "id": "react-03-formal-mechanism",
+          "title": "Thought 扩充动作空间并写回上下文",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3"
+          ],
+          "notes": "Thought/Action/Observation来源、外部效果和上下文更新均解释清楚；短期轨迹不被写成参数记忆。"
+        },
+        {
+          "id": "react-04-prompting-regimes",
+          "title": "冻结模型、few-shot 与密集/稀疏节奏",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3",
+            "U5"
+          ],
+          "notes": "冻结few-shot、知识任务密集交替、决策任务稀疏thought及提示/微调分层均进入正文。"
+        },
+        {
+          "id": "react-05-figure1-hotpot-example",
+          "title": "Apple Remote 四种方法对照",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U2"
+          ],
+          "notes": "Apple Remote案例逐步转述且保留原图省略边界，没有补造Observation 3。"
+        },
+        {
+          "id": "react-06-figure1-alfworld-example",
+          "title": "胡椒瓶长程行动对照",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10"
+          ],
+          "notes": "胡椒瓶例完整呈现Act-only重复无效动作与ReAct子目标切换，并明确单例不是统计证明。"
+        },
+        {
+          "id": "react-07-knowledge-task-setup",
+          "title": "HotpotQA/FEVER 与受限 Wikipedia API",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U4"
+          ],
+          "notes": "列出search/lookup/finish、前5句/相似实体和弱检索器边界。"
+        },
+        {
+          "id": "react-08-knowledge-results",
+          "title": "知识任务正反结果与精确数字",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U6",
+            "U7"
+          ],
+          "notes": "Table 1全部基础方法与组合关键值准确，保留任务指标、shot数、采样21条、温度和7/5步切换口径。"
+        },
+        {
+          "id": "react-09-error-analysis",
+          "title": "分层抽查、搜索失败与循环",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8",
+            "U9"
+          ],
+          "notes": "200条分层抽查、47/23/6与“0%不等于零幻觉”解释准确，并用San Marco和过时标签展示评价边界。"
+        },
+        {
+          "id": "react-10-combination-and-finetuning",
+          "title": "CoT-SC 回退组合与初步微调",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "PROJECT"
+          ],
+          "matched_coverage_unit_ids": [
+            "U7",
+            "U13"
+          ],
+          "notes": "回退方向、成本、3000条正确生成轨迹、8B/62B提示弱而微调后强及不同训练步数均保留。"
+        },
+        {
+          "id": "react-11-alfworld-setup-and-results",
+          "title": "ALFWorld 设置、平均值与 best-of-6",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10"
+          ],
+          "notes": "134局、2-shot六提示、平均57/best71、Act45、BUTLER37和34个百分点best差值均准确。"
+        },
+        {
+          "id": "react-12-webshop-setup-and-results",
+          "title": "WebShop 设置、指标与人类差距",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "CODE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U12"
+          ],
+          "notes": "500指令、ReAct40.0/Act30.1/IL29.1/IL+RL28.7/人类59.6及非真实下单、成功率与属性分数区别完整。"
+        },
+        {
+          "id": "react-13-react-im-ablation",
+          "title": "ReAct-IM 消融与 thought 内容边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11"
+          ],
+          "notes": "ReAct-IM 53 vs 71、受限密集反馈和缺少高层分解/状态判断通过刀具案例讲明。"
+        },
+        {
+          "id": "react-14-concrete-failure-trajectories",
+          "title": "错误 thought、无效动作与无法恢复",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8",
+            "U9",
+            "U11"
+          ],
+          "notes": "搜索错实体、重复循环、未清洗刀具与错误thought持续驱动动作均有具体例子。"
+        },
+        {
+          "id": "react-15-human-editing",
+          "title": "单例 thought 编辑与可控性边界",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "PROJECT"
+          ],
+          "matched_coverage_unit_ids": [
+            "U14"
+          ],
+          "notes": "明确只改Act17/23上下文、单例成功且未证明普遍可控或忠实内部推理。"
+        },
+        {
+          "id": "react-16-reproducibility-safety-limits",
+          "title": "复现、上下文长度与环境安全边界",
+          "importance": "core",
+          "assessment": "partial",
+          "source_ids": [
+            "PAPER",
+            "CODE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U12",
+            "U15",
+            "U17"
+          ],
+          "notes": "PaLM不可访问、提示窗口、模拟购买、未复现和实际系统权限/记忆缺口均写明；论文Ethics对开放网页/物理环境的隐私信息和有害动作警告未直接展开。"
+        },
+        {
+          "id": "react-17-handout-framing",
+          "title": "讲义的 Agent 历史与后见外推",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "LECTURE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U16",
+            "U19",
+            "U20"
+          ],
+          "notes": "引用“Agent从理论到落地”后立即校正优先权，并把年龄、引用、现代产品归因降格为未核或范围外说法。"
+        },
+        {
+          "id": "react-18-podcast-react-core",
+          "title": "播客中的 ReAct 主线与 ASR 边界",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "PODCAST",
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U16",
+            "U18",
+            "U19"
+          ],
+          "notes": "机制、问题选择和ChatGPT前时间线进入正文；姓名/年份等ASR错误没有被静默当成事实。"
+        },
+        {
+          "id": "react-19-podcast-post-topic-discussion",
+          "title": "选题、学习与工程文化延伸",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "PODCAST",
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U18"
+          ],
+          "notes": "选题、年龄无统一答案、持续学习、管理与亲手实现、PRD/原型传递损失均以嘉宾观察呈现，不冒充统计结论。"
+        },
+        {
+          "id": "react-20-editorial-neighbor-bridge",
+          "title": "CoT→ReAct→Tülu 3 的编辑桥梁",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U19"
+          ],
+          "notes": "返回原节、上一节CoT和下一节Tülu 3导航齐全，并明确这是阅读路线而非权重或原音顺序。"
+        },
+        {
+          "id": "react-a01-official-code-and-snapshot-boundary",
+          "title": "官方仓库入口与 500 random dev 快照边界",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "CODE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U15"
+          ],
+          "notes": "正文把作者README仅作为notebook入口和另一组500 random dev快照，并明确不可与主表混用；30.4/30.8的具体差异来自evidence与本轮来源审计，不冒充正文逐字显示。"
+        }
+      ],
+      "source_ids_checked": [
+        "PAPER",
+        "LECTURE",
+        "PODCAST",
+        "SHOWNOTES",
+        "ARXIV",
+        "PROJECT",
+        "CODE"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "source_map_scope_note": "冻结地图20个主单元和1个addendum单元保持原ID与importance。react-16因未直接展开论文Ethics的开放环境风险标partial；其余核心单元均在正文自身covered。",
+      "notes": "结论：最新r1排版修复快照未发现关键数字错配、无支持核心结论、核心要求遗漏或安全隐私问题。策略配置模型为gpt-5.6-sol，实际子会话runtime未确认。未修改正文/evidence/review，未读取另一位本轮Reviewer产物，未finalize或commit。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 96.6,
+    "evaluated_on": "2026-11-05",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "cf991fa0a69e11206d11fc52fc456397ae04b7dd181a7688bc638608e5324a13",
+    "evidence_sha256": "007830f62128665fab5a144498dec9cfca08323cb9992d6ac7d0161b39abc7cc"
+  },
+  "review_receipts": [
+    {
+      "file": "primary-expanded-review.json",
+      "sha256": "ddef75fdd12c60ec5a3e734894d5428ce60bcff940e471fa647cdf6f75ffa953",
+      "role": "primary_review",
+      "revision_round": 1,
+      "raw_review_content_preserved": true
+    },
+    {
+      "file": "strong-expanded-review.json",
+      "sha256": "91b084c1350fd2c92564445b651085b9abb0a8d789388704d508c50e024b21e6",
+      "role": "escalation_review",
+      "revision_round": 1,
+      "raw_review_content_preserved": true
+    }
+  ]
+}

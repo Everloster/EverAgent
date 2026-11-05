@@ -1,0 +1,357 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_05_Word2Vec_词向量怎样学出来_科普讲解_20261104.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "collab2:root/word2vec_round_review:2026-11-05:expanded-r1-sol",
+        "independent_context": true,
+        "fresh_context": false,
+        "explicit_model_override": false,
+        "override_reason": "",
+        "model_identity_observation": "编排任务按report-quality-2026-10-18-r2的strong reviewer顺序选择gpt-5.6-sol，不是用户点名模型；本次正式读稿接续同一独立来源优先会话，因此independent_context=true、fresh_context=false。"
+      },
+      "scores": {
+        "evidence_fidelity": 99,
+        "request_coverage": 99,
+        "reasoning_quality": 99,
+        "readability": 98,
+        "limitations": 99
+      },
+      "score_reasons": {
+        "evidence_fidelity": "16项关键claim均逐项回到两篇2013原论文、BERT指定片段、讲义/播客材料与机器收据。作者、版本、19544题、同条件架构成绩、CPU/DistBelief成本、下采样、短语和填空数字均与来源一致；负采样一步算例已独立复算。",
+        "request_coverage": "完整回答用户要求的机制、具体例子、历史人物、路线连接和双向入口。来源优先地图的核心单元全部覆盖；展开篇顶部能返回主稿，结尾能返回原节并进入seq2seq，且主稿原节有醒目入口。",
+        "reasoning_quality": "以两个苹果贯穿索引、训练、静态多义限制与上下文化表示，区分训练目标、输出近似和评测能力；用句子填空与短语实验作为反例，避免将类比成绩外推为通用理解。历史连接明确是问题线和复用对象变化，没有编造单线继承。",
+        "readability": "少数学但机制完整，术语首次出现即解释，三张表均服务于比较。导航收据核验1440/390无页面横溢出、裸标记、乱码、断锚或pageerror；窄屏表格采用可横滑容器，Reviewer查看的截图中文字层级和入口清楚。篇幅较长但章节导航与苹果主线控制了认知负担。",
+        "limitations": "明确未训练Word2Vec/BERT、未复现实验、未人工听音、ASR重叠与音频尾部未知；区分类比、短语、搜索/推荐外推和当代产品说法。BERT阅读范围也限定在表示相关段落。"
+      },
+      "source_content_map": [
+        {
+          "id": "SOL-W2V-SCM-01",
+          "title": "Shownotes章节边界、播客摘录及校边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES",
+            "ASR",
+            "SLIDE",
+            "TRANSCRIPT_REVIEW",
+            "TRANSCRIPT_AUDIT"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1",
+            "U18"
+          ],
+          "notes": "正文给出Part 3入口与本章约数范围，逐项更正首次发明、手工标注和自动分义等口播/讲义问题；明确未听音、0.1秒分段重叠及音频尾部约16秒未知。"
+        },
+        {
+          "id": "SOL-W2V-SCM-02",
+          "title": "词编号、one-hot、连续表示与研究前史",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "SLIDE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U2",
+            "U3"
+          ],
+          "notes": "用自拟编号解释索引不携带相似性，说明维度不是人工语义轴，并把Word2Vec定位为高效规模化而非词向量首创。"
+        },
+        {
+          "id": "SOL-W2V-SCM-03",
+          "title": "CBOW与Skip-gram的预测方向、窗口和自生训练信号",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U4",
+            "U5"
+          ],
+          "notes": "苹果/梨例子清楚区分CBOW上下文均值预测中心词与Skip-gram中心词预测邻词；教学中文句明确不是论文数据，并说明SGD/backprop如何更新共享参数。"
+        },
+        {
+          "id": "SOL-W2V-SCM-04",
+          "title": "层次softmax、Huffman树与首篇版本边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "FOLLOWUP"
+          ],
+          "matched_coverage_unit_ids": [
+            "U6"
+          ],
+          "notes": "解释树路径、内部节点参数和频率编码，避免把树误作语义分类，也没有把后续NEG倒填进首篇。"
+        },
+        {
+          "id": "SOL-W2V-SCM-05",
+          "title": "负采样目标、两套角色向量与可复算一步更新",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "FOLLOWUP"
+          ],
+          "matched_coverage_unit_ids": [
+            "U7"
+          ],
+          "notes": "将观察词对与噪声对照解释为logistic训练而非完整softmax；算例明确为手工二维输入，复算与negative-sampling-demo.json一致。"
+        },
+        {
+          "id": "SOL-W2V-SCM-06",
+          "title": "高频词下采样与训练成本口径",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "FOLLOWUP",
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8",
+            "U12"
+          ],
+          "notes": "区分下采样、负采样和语料过滤；38→14分钟、59→60%及单CPU/DistBelief数字均保留数据、维度、epoch和CPU条件。"
+        },
+        {
+          "id": "SOL-W2V-SCM-07",
+          "title": "类比位移、19544题构建与能力边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U9",
+            "U10"
+          ],
+          "notes": "说明近似方向、余弦最近邻、排除输入词和精确匹配；指出人工构造的是评测关系，不是训练向量，也不外推为完整句义理解。"
+        },
+        {
+          "id": "SOL-W2V-SCM-08",
+          "title": "CBOW/Skip-gram同条件对照",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11"
+          ],
+          "notes": "准确呈现320M词、82K词表、640维下CBOW 24/64与Skip-gram 55/59，结论限定为任务相关取舍。"
+        },
+        {
+          "id": "SOL-W2V-SCM-09",
+          "title": "句子填空反例与部件互补",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U13"
+          ],
+          "notes": "1040句五选一、Skip-gram 48.0%、RNNLMs 55.4%、组合58.9%均准确，清楚说明好词表示不等于完整语言系统。"
+        },
+        {
+          "id": "SOL-W2V-SCM-10",
+          "title": "静态词表、多义混合与短语token路线",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "FOLLOWUP",
+            "ASR"
+          ],
+          "matched_coverage_unit_ids": [
+            "U14",
+            "U15"
+          ],
+          "notes": "把两个苹果改写为静态表示的局限；短语单列词条与向量相加分开，47/42%短语实验没有与词类比表混用。"
+        },
+        {
+          "id": "SOL-W2V-SCM-11",
+          "title": "BERT输入embedding与上下文化输出的层次区别",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "BERT",
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U16",
+            "U17"
+          ],
+          "notes": "准确区分WordPiece token表、token/segment/position输入之和及双向Transformer后的上下文化表示；没有写成现代模型取消embedding查表或直接继承Word2Vec参数。"
+        },
+        {
+          "id": "SOL-W2V-SCM-12",
+          "title": "署名、版本与技术路线位置",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "FOLLOWUP",
+            "SLIDE",
+            "BERT"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3",
+            "U17",
+            "U18"
+          ],
+          "notes": "完整列出首篇四位与后续五位作者，区分2013.01首发月份、v3修订和10月后续论文，并以复用对象从词表走向上下文网络串联路线。"
+        },
+        {
+          "id": "SOL-W2V-SCM-13",
+          "title": "独立阅读、双向入口与窄屏呈现",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "FOLLOWUP",
+            "BERT",
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1",
+            "U17",
+            "U18"
+          ],
+          "notes": "报告从问题、机制、实验、局限到历史位置自成一体；顶部返回主稿、结尾返回原节并进入下一节。导航收据绑定双SHA，1440/390点击、14脚注和3表通过；Reviewer直接查看主稿/展开篇桌面与窄屏截图及三张窄屏表格截图。"
+        }
+      ],
+      "critical_claim_ids_checked": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16"
+      ],
+      "coverage_unit_ids_checked": [
+        "U1",
+        "U2",
+        "U3",
+        "U4",
+        "U5",
+        "U6",
+        "U7",
+        "U8",
+        "U9",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16",
+        "U17",
+        "U18"
+      ],
+      "source_ids_checked": [
+        "PAPER",
+        "FOLLOWUP",
+        "BERT",
+        "SLIDE",
+        "ASR",
+        "SHOWNOTES",
+        "TRANSCRIPT_REVIEW",
+        "TRANSCRIPT_AUDIT"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "weighted_score": 98.85,
+      "review_revision_round": 1,
+      "snapshot_verified": true,
+      "source_priority_map": {
+        "artifact": "sol-source-map.json",
+        "sha256": "3fc8c215a461bf9674bbfc8b0a116b7508ee88e72e42121483de721b5a92ddd6",
+        "read_before_report": true
+      },
+      "review_scope": {
+        "report": "全文249行及14条脚注",
+        "evidence": "task、8个sources、16个claims、18个source_coverage与limitations全部读取",
+        "primary_sources": "PAPER全文、FOLLOWUP全文、BERT指定范围在来源优先阶段已读",
+        "secondary_sources": "讲义p33、221段本章转录、shownotes、视觉与结构收据已核",
+        "audio_listened": false,
+        "visible_browser_started": false
+      },
+      "navigation_receipt": {
+        "artifact": "navigation-receipt.json",
+        "sha256": "8d869a66f7b613d1743f1fda36881e3422baecce72daad63b9e56c41368a00e0",
+        "snapshot_match": true,
+        "executed_by": "协调者",
+        "reviewer_action": "读取完整收据并直接查看expanded-word2vec-1440.png、expanded-word2vec-390.png、main-word2vec-1440.png、main-word2vec-390.png及word2vec-table1/2/3-390.png；未启动浏览器。",
+        "assessment": "主稿41脚注、展开14脚注、3表及原节→展开→返回→下一节真实点击通过；1440/390无页面横溢出、裸标记、乱码、新标签或pageerror。窄屏表格通过容器横滑查看末列。"
+      },
+      "derived_check": {
+        "artifact": "negative-sampling-demo.json",
+        "independently_recomputed": true,
+        "result": "一步同时梯度上升得到输入[1,0.1]、正输出[0.05,1]、负输出[-0.05,-1]，sigmoid分数0.5374298453/0.4625701547，与收据一致。"
+      },
+      "notes": "important revision 1独立强模型复核。正式report/evidence双SHA先核后读，来源地图在正文前独立建立。本轮无unsupported claim、missing requirement或hard failure；临时review尚未写入共享quality文件，最终状态由协调者集成后运行质量脚本。",
+      "report_sha256": "239266d8107d736231869ab6457e5d5b1c42f21ff0f51ad4ecebca40d5046b74",
+      "evidence_sha256": "9c1b5fb0819a108fd7e3b0c61b90694b1c0157686bd43c636f700203eaafdd86",
+      "policy_id": "report-quality-2026-10-18-r2",
+      "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+      "preintegration_quality_check": {
+        "performed": false,
+        "reason": "协调者明确要求暂不运行共享quality check；单review未集成时只会报告缺review。"
+      },
+      "layout_visual_receipt": {
+        "receipt_artifact": "layout-vision-receipt.json",
+        "receipt_sha256": "709f505cf77d0ea93d85b376f9acd2b4540c2dc7a19c09d9caa5a403b19541e6",
+        "extracted_text_artifact": "layout-vision.txt",
+        "extracted_text_sha256": "600f19b823bb92a01959867708d67e839712ee46d67952f5bc76d06795197350",
+        "composite_artifact": "layout-visual-pair.png",
+        "composite_sha256": "921068566f62e84c296c6105f0b74ee1a9d3704fb40ea48b1743c1c4c8fbe2e8",
+        "service": "eacli vision.image-analysis / zhipu",
+        "scope": "仅四张可见截图区域：桌面1440与手机390下的主稿第5节和独立展开篇；不替代全文DOM、链接点击或折叠区域检查。",
+        "assessment": "可见区域标题完整，中英文术语、数字、标点与脚注角标正常；主稿节首展开入口醒目；未见乱码、遮挡或页面横向溢出。桌面蓝色焦点边框和底部截断均按截图状态保留未知，不推断为页面故障。",
+        "authority_boundary": "实际点击、链接、脚注、表格横滑和全DOM范围仍以navigation-receipt.json为准。"
+      }
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 98.85,
+    "evaluated_on": "2026-11-05",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "1692b578fdc4266605a3f828b57d30b80b952759b54fa085233b091d1224f885",
+    "evidence_sha256": "9c1b5fb0819a108fd7e3b0c61b90694b1c0157686bd43c636f700203eaafdd86"
+  },
+  "public_serialization": {
+    "kind": "agent-task-id-normalization",
+    "note": "仅去掉 Agent 任务命名空间的前导斜杠，避免与本机目录混淆；模型、核验内容、评分及判定保持不变。",
+    "source_review_sha256": "3bc0d81a38b48618392020259557f9ee9568d1e9f5924553791e5127e94ace95",
+    "fields_normalized": 1
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "kind": "chapter-transcription-review",
+  "reviewed_on": "2026-11-05",
+  "chapter": 11,
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+  "transcript_source_ref": "sha256:db735dc8f522ea47be061fddc71477de5f48375d86ff20fd23e6cf22f53494fe",
+  "full_segments_sha256": "f322514ced72235a0ca104635824c66df425c18dbae3d0f4e76fa70d088db61c",
+  "public_full_episode_receipt": "podcast-learning/reports/transcripts/2026-11-04_ai-yanyi-117.audit.json",
+  "read_scope": {
+    "segments_read": 86,
+    "source_indices_1based": [
+      3102,
+      3187
+    ],
+    "actual_interval_seconds": [
+      6776.8,
+      6976.77
+    ],
+    "span_seconds": 199.97,
+    "segment_artifact_sha256": "db735dc8f522ea47be061fddc71477de5f48375d86ff20fd23e6cf22f53494fe",
+    "text_artifact_sha256": "fb1f545f0f4d9d8c5bf35a786fc0d64cbff35c7fd1071c4f467113409ae43e43",
+    "time_basis": "Shownotes只标Part2起点01:52:58；章节约01:52:57—01:56:17由内容定位并四舍五入，包含开场，非官方逐篇边界。"
+  },
+  "chapter_segment_check": {
+    "segments": 86,
+    "start_index": 3102,
+    "end_index": 3187,
+    "start_seconds": 6776.8,
+    "end_seconds": 6976.77,
+    "monotonic_without_overlap": true,
+    "max_gap_seconds": 2.37,
+    "transcript_sha256": "fb1f545f0f4d9d8c5bf35a786fc0d64cbff35c7fd1071c4f467113409ae43e43",
+    "source_segments_sha256": "db735dc8f522ea47be061fddc71477de5f48375d86ff20fd23e6cf22f53494fe",
+    "audio_listened": false,
+    "wer_measured": false
+  },
+  "compatible_text_audit": {
+    "schema_version": 2,
+    "kind": "podcast-transcript-audit",
+    "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+    "source_ref": "sha256:fb1f545f0f4d9d8c5bf35a786fc0d64cbff35c7fd1071c4f467113409ae43e43",
+    "max_consecutive_limit": 3,
+    "audit": {
+      "ok": true,
+      "size": 4536,
+      "sha256": "fb1f545f0f4d9d8c5bf35a786fc0d64cbff35c7fd1071c4f467113409ae43e43",
+      "lines": 86,
+      "segments": 86,
+      "duration_seconds": 6976,
+      "max_consecutive_identical": 1,
+      "timestamp_errors": 0,
+      "malformed_lines": 0,
+      "tail_gap_seconds": 1
+    }
+  },
+  "audit_interpretation": "审计输入从同一86段生成，时间戳秒数向下取整；duration_seconds=6976为节目绝对结束时间，不是本节时长，tail_gap_seconds=1只指所选文本末相邻段。精确跨度199.97秒及重叠由原小数秒结构另核。",
+  "term_and_claim_checks": [
+    {
+      "time_seconds": [
+        6797,
+        6812
+      ],
+      "issue": "技术名称及早期基础设施谱系存在ASR错词",
+      "adopted": "按论文校正ZeRO，未经一手核验的三代谱系不展开。",
+      "basis": "论文首页与§2，shownotes",
+      "kind": "terminology_and_scope"
+    },
+    {
+      "time_seconds": [
+        6817,
+        6845
+      ],
+      "issue": "GPT系列与显存增长压缩在2019年前后叙述",
+      "adopted": "保留模型增长的动机；按论文版本区分历史，不把全部参数/显存数字倒填2019。",
+      "basis": "META提交历史与论文§1，讲义p27",
+      "kind": "chronology"
+    },
+    {
+      "time_seconds": [
+        6877,
+        6895
+      ],
+      "issue": "模型/数据/流水线并行名称识别不稳定",
+      "adopted": "术语按论文统一，ZeRO与DeepSpeed分别说明方法与工具库。",
+      "basis": "论文§2、§10.1；官方发布",
+      "kind": "terminology"
+    },
+    {
+      "time_seconds": [
+        6898,
+        6921
+      ],
+      "issue": "企业支持与团队后续去向转述",
+      "adopted": "本轮未核相应原始来源，不把该转述或人员流动写成技术史事实。",
+      "basis": "所读论文与官方历史资料不足以证明这些旁支",
+      "kind": "unsupported_precision_excluded"
+    },
+    {
+      "time_seconds": [
+        6922,
+        6976.77
+      ],
+      "issue": "消除冗余、理论无限扩展、规模与效率的关系",
+      "adopted": "用三阶段机制展开，明确容量/通信/算力限制并补实测反例。",
+      "basis": "论文§3–10",
+      "kind": "mechanism_and_limitations"
+    }
+  ],
+  "audio_listened": false,
+  "word_accuracy_measured": false,
+  "verbatim_completeness": false,
+  "limitations": [
+    "结构检查不证明逐字准确率，未人工听校或测WER。",
+    "本章检查不代表全期逐字完整性已验证。",
+    "原始ASR、来源切片与执行收据保留私有，公开仅保留必要核查与哈希。"
+  ]
+}

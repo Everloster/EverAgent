@@ -1,0 +1,366 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_03_ResNet_深层网络如何训练_科普讲解_20261104.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "collab2:root/resnet_round_review:2026-11-04:expanded-r1",
+        "independent_context": true,
+        "fresh_context": true,
+        "explicit_model_override": false,
+        "override_reason": "",
+        "model_identity_observation": "本次由报告质量政策为独立强审角色选择并派发 gpt-5.6-sol；身份依据实际任务派发，不借用父会话或 eacli 模型配置。"
+      },
+      "scores": {
+        "evidence_fidelity": 99,
+        "request_coverage": 98,
+        "reasoning_quality": 98,
+        "readability": 99,
+        "limitations": 99
+      },
+      "score_reasons": {
+        "evidence_fidelity": "在看报告前先从 ResNet v1、Identity Mappings v3、Transformer v7、讲义视觉转录、节目 ASR 与结构收据建立17单元地图。正文的 Figure 1/4、Table 2–6、1202层反例、5.71/4.49/3.57口径、COCO 6.0点/约28%、原版相加后ReLU和full pre-activation条件均逐项吻合；没有采用Figure 1图像服务对颜色、尖峰或刻度的过度估计。",
+        "request_coverage": "R1–R5均有直接产物：141段转录和未听校/尾部边界、猫照片连续例、退化/过拟合与残差监督、关键受控实验及千层反例、人物/前驱/检测/Transformer发展路径、主稿同步与醒目双向入口。17个独立来源单元的核心项全部 covered；A/B/C数字、精确FLOPs和更远历史旁支仅作 supporting partial，不构成用户主线遗漏。",
+        "reasoning_quality": "论证按“训练退化诊断—恒等解存在但难找—x+F(x)—监督与形状—梯度边界—受控实验—优化/泛化分离—跨任务与跨路线传播”推进。作者主张、实验归因、教学例与分析者边界分开；尤其没有把退化化约为梯度消失，也没有把能训练千层升级为越深越好。",
+        "readability": "正文可独立阅读，术语首次解释，数字就地说明数据集、指标和比较口径，脚注可定位原始来源。读取主Agent实际执行的渲染收据：目标SHA与本轮快照一致，1440/390两档完成主稿#paper-resnet→展开→返回→下一节；展开篇11条脚注无断锚/重复id/乱码/裸Markdown/溢出/pageerror，fn-results往返成功，窄屏表横滑82px后末列25.03%可见。本人核验脚本与收据，不冒称亲自运行浏览器。",
+        "limitations": "报告明确声明未复现实验、后续论文读取范围、图像服务最小采用、ASR未听校及约16秒尾部未知、作者现职/引用量未核、教学例性质与章节顺序非历史因果。来源能力和版本时点均清楚，未发现会误导结论的隐藏外推。"
+      },
+      "source_content_map": [
+        {
+          "id": "SCM-R01",
+          "title": "真正的问题是可优化性退化：更深 plain net 训练误差反而更高",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1"
+          ],
+          "notes": "正文先用训练集/新图片区分退化与过拟合，并准确映射 CIFAR-10 Figure 1 与 ImageNet Figure 4。"
+        },
+        {
+          "id": "SCM-R02",
+          "title": "退化问题与梯度消失/爆炸是不同层次的问题",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "IDENTITY",
+            "ASR",
+            "SLIDE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U5",
+            "U6"
+          ],
+          "notes": "正文保留 BN 下健康梯度范数这一原论文判断，并把 2016 直接传播分析限定为后续机制与有条件推导。"
+        },
+        {
+          "id": "SCM-R03",
+          "title": "构造性矛盾：更深模型至少应能复制浅模型加恒等层",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U2"
+          ],
+          "notes": "正文清楚区分好解存在与随机初始化后优化容易找到，并说明实际网络从头共同训练。"
+        },
+        {
+          "id": "SCM-R04",
+          "title": "残差重参数化：让层学习相对输入的改变量",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3"
+          ],
+          "notes": "x、F(x)、相加和自拟数值例均解释清楚；未把残差误写成 loss 或预测错误。"
+        },
+        {
+          "id": "SCM-R05",
+          "title": "identity shortcut 的工程含义与原版块位置",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "IDENTITY",
+            "SLIDE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3",
+            "U4",
+            "U6"
+          ],
+          "notes": "逐元素相加、恒等支路、原版 addition 后 ReLU 与后续预激活均准确。"
+        },
+        {
+          "id": "SCM-R06",
+          "title": "维度变化时的 A/B/C shortcut 选择说明 projection 不是解决退化的必要条件",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U4",
+            "U7"
+          ],
+          "notes": "正文准确说明补零/步幅/1×1 projection、参数与形状边界，但为科普密度没有展开 Table 3 的 A/B/C 数字及 projection 非必要的完整对照。"
+        },
+        {
+          "id": "SCM-R07",
+          "title": "ImageNet 受控对照直接验证：深度从负担变成收益",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U7"
+          ],
+          "notes": "Table 2 四个 10-crop Top-1 validation 数字、3.51 个百分点、训练曲线与验证表的区别均准确。"
+        },
+        {
+          "id": "SCM-R08",
+          "title": "bottleneck 让 50/101/152 层在计算上可负担，但不是残差原理本身",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8"
+          ],
+          "notes": "正文解释 1×1/3×3/1×1 bottleneck 的计算目的，但按用户要求没有补 11.3B 对 15.3/19.6B FLOPs 等非核心细节。"
+        },
+        {
+          "id": "SCM-R09",
+          "title": "CIFAR-10 将结论推进到百层/千层，同时暴露越深不等于越准",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U9"
+          ],
+          "notes": "1202 层 train<0.1%、test 7.93%，110 层 best/mean±std 及统计不对称均准确，明确优化成功不等于泛化更好。"
+        },
+        {
+          "id": "SCM-R10",
+          "title": "Figure 7 只提供残差响应更小的经验支持，不是因果证明",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U9"
+          ],
+          "notes": "正文只写与动机相符，并显式拒绝“每层必定小修正”的升级。"
+        },
+        {
+          "id": "SCM-R11",
+          "title": "分类、检测与竞赛结果需分清单模型、集成、验证集和测试集",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8",
+            "U10"
+          ],
+          "notes": "5.71/4.49/3.57 的测试方式、单模型/集成与 val/test 分开；COCO +6.0 点与约28%相对提升也准确。"
+        },
+        {
+          "id": "SCM-R12",
+          "title": "历史位置：ResNet 延续 shortcut 思想，但用无门控 identity 重构学习目标",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U12"
+          ],
+          "notes": "正文覆盖更早 shortcut 与同期 Highway，并准确收紧创新表述；VLAD、多重网格等更远的残差表示旁支未展开，符合本轮少数学和主线密度。"
+        },
+        {
+          "id": "SCM-R13",
+          "title": "Transformer 是可核验的跨领域传播节点，但只支持明确引用和结构采用",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "TRANSFORMER",
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11"
+          ],
+          "notes": "正文核到 §3.1/ref[11]、相加后 LayerNorm，并拒绝把所有现代模型等同原版 ResNet。"
+        },
+        {
+          "id": "SCM-R14",
+          "title": "人物与时代叙事必须区分论文时点和当前身份",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "ASR",
+            "SLIDE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U12",
+            "U13"
+          ],
+          "notes": "只采用四位英文署名与当时 Microsoft Research，未把 ASR/讲义中的当前职务和动态引用量写成事实。"
+        },
+        {
+          "id": "SCM-R15",
+          "title": "从原版到 full pre-activation 的演化必须按版本归属",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "IDENTITY"
+          ],
+          "matched_coverage_unit_ids": [
+            "U6"
+          ],
+          "notes": "2015 post-activation 与 2016 BN+ReLU full pre-activation 分开，未倒写。"
+        },
+        {
+          "id": "SCM-R16",
+          "title": "播客和讲义补足叙事风格，不能替代论文口径",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "ASR",
+            "SLIDE",
+            "SHOWNOTES",
+            "TRANSCRIPT_REVIEW",
+            "TRANSCRIPT_AUDIT"
+          ],
+          "matched_coverage_unit_ids": [
+            "U13"
+          ],
+          "notes": "正文采用节目类比并逐条收紧“一百层阈值、彻底解决、所有网络”等强断言，明确未听校及 shownotes 无逐论文精确边界。"
+        },
+        {
+          "id": "SCM-R17",
+          "title": "干净恒等路径的机制有严格条件，跨维度单元是例外",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "IDENTITY"
+          ],
+          "matched_coverage_unit_ids": [
+            "U6"
+          ],
+          "notes": "正文写明 skip 与 after-addition operation 都恒等的条件、原版 ReLU 差异及跨维度例外，没有写成无条件梯度保证。"
+        }
+      ],
+      "critical_claim_ids_checked": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13"
+      ],
+      "coverage_unit_ids_checked": [
+        "U1",
+        "U2",
+        "U3",
+        "U4",
+        "U5",
+        "U6",
+        "U7",
+        "U8",
+        "U9",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14"
+      ],
+      "source_ids_checked": [
+        "PAPER",
+        "IDENTITY",
+        "TRANSFORMER",
+        "SLIDE",
+        "ASR",
+        "SHOWNOTES",
+        "TRANSCRIPT_REVIEW",
+        "TRANSCRIPT_AUDIT"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "weighted_score": 98.6,
+      "review_revision_round": 1,
+      "snapshot_verified": true,
+      "snapshot": {
+        "report_path": "ai-learning/reports/knowledge_reports/AI演义_03_ResNet_深层网络如何训练_科普讲解_20261104.md",
+        "report_sha256": "23f8847bc5664e295397bcb7b981b55d362a73e1444dabd85ec1024184007005",
+        "evidence_path": "ai-learning/reports/knowledge_reports/.quality/AI演义_03_ResNet_深层网络如何训练_科普讲解_20261104.evidence.json",
+        "evidence_sha256": "f6be50fd8bc3a6abd24e7d7a5ae1fc1be2eb11f1cba77d003f768428a0d38754",
+        "revision_round": 1,
+        "verified_on": "2026-11-04"
+      },
+      "navigation_receipt": {
+        "script_name": "navigation-check.mjs",
+        "script_sha256": "5097c63675817c12ee500a00c78f4deac4224d45501d7a61a160d9342859393b",
+        "receipt_name": "navigation-receipt.json",
+        "receipt_sha256": "5590f8d780fd0cbadb23ae751f82afea6b078f67114018a74584ee592af64a97",
+        "assessment": "已读取脚本并核验收据的目标SHA、点击路径、脚注、锚点、表格横滑、两档溢出与错误断言；浏览器由主Agent在临时服务上执行，本Reviewer未声称亲自运行。"
+      },
+      "notes": "来源优先地图在读取当前报告/evidence前完成，补充来源后地图SHA256为3a32273b7d913c99b46164a653340979205dc0fde6fe06ffb8eb0f6a10b9983c。正式双SHA在实际目录匹配后才读正文。三个partial均为非核心压缩：A/B/C shortcut细节、精确FLOPs比较、VLAD/多重网格旁支；按用户要求无需为此扩篇。当前无unsupported claim、missing requirement或hard failure；最终状态仍由共享review集成后运行质量脚本计算。",
+      "report_sha256": "23f8847bc5664e295397bcb7b981b55d362a73e1444dabd85ec1024184007005",
+      "evidence_sha256": "f6be50fd8bc3a6abd24e7d7a5ae1fc1be2eb11f1cba77d003f768428a0d38754",
+      "policy_id": "report-quality-2026-10-18-r2",
+      "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 98.6,
+    "evaluated_on": "2026-11-04",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "726800635bc8f276f7ab2eddfb6cca26d6b4d4bf0bd94334a8d37fc845e7c413",
+    "evidence_sha256": "f6be50fd8bc3a6abd24e7d7a5ae1fc1be2eb11f1cba77d003f768428a0d38754"
+  },
+  "public_serialization": {
+    "kind": "agent-task-id-normalization",
+    "note": "仅去掉 Agent 任务命名空间的前导斜杠，避免与本机目录混淆；模型、核验内容、评分及判定保持不变。",
+    "source_review_sha256": "545b5deec1063a94827e728314df048a40848749f373bfb0be78c4de56d6db3f",
+    "fields_normalized": 1
+  }
+}

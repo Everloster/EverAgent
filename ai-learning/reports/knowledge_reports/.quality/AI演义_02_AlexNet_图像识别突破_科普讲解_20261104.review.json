@@ -1,0 +1,294 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_02_AlexNet_图像识别突破_科普讲解_20261104.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "collab2:root/alexnet_round_review:2026-11-04:expanded-r1",
+        "independent_context": true,
+        "fresh_context": true,
+        "explicit_model_override": false,
+        "override_reason": "由本轮调度按报告质量策略派发 gpt-5.6-sol 独立复核；不是用户点名覆盖，也未使用共享进程父模型变量冒充身份。"
+      },
+      "scores": {
+        "evidence_fidelity": 98,
+        "request_coverage": 98,
+        "reasoning_quality": 98,
+        "readability": 97,
+        "limitations": 99
+      },
+      "score_reasons": {
+        "evidence_fidelity": "先于正文建立独立来源地图，并完整重读 AlexNet NIPS 2012 论文、对应 ASR 摘录、Shownotes、讲义页、Brook §3 kernel 定义，以及 University of Toronto 收购公告和 X 的 Brain 项目史。正文准确区分 ImageNet 全库与 ILSVRC 子集、论文约 6000 万参数与讲义 6250 万口径、单 CNN／5 CNN／7 CNN、val／test、错误率／准确率；15.3% 明确是含两个额外预训练模型的七模型集成，26.2%-15.3%=10.9 个百分点。作者分工和人物印象保持播客归因，Google Brain 2011 时间线由官方材料纠正。",
+        "request_coverage": "报告独立覆盖背景、像素到可学习表示、卷积与池化、标签损失和反向传播、双 GPU 受限连接、ReLU、数据增强、Dropout、LRN／重叠池化、关键实验、隐藏层表示、人物组织及 Brook→AlexNet→ResNet 路线。主稿第 2 节和展开篇均有明确往返入口。Shownotes 只给 Part 1 总入口、本节 26:52–33:50 来自 ASR 定位的边界也如实说明。",
+        "reasoning_quality": "全文没有把突破归因于单个技巧，而是解释数据、容量、算力、优化速度与防过拟合为何需要共同成立；同时把人设计的结构先验与训练学习的参数分开。对六倍 ReLU、双卡收益、十裁剪、七模型集成和近邻图像展示均保留实验口径，未将特定比较外推成普遍视觉理解。Brook kernel 与卷积核的概念层级区分准确，转向 ResNet 被写成问题承接而非直接完整继承史。",
+        "readability": "猫照片贯穿输入、表示、训练反馈、过拟合和候选类别，少数学但没有牺牲关键机制；术语第一次出现即解释，表格把最易混淆的 2012 结果并排呈现。实际工作台收据在 1440px 与 390px 均完成主稿→展开篇→主稿 #paper-alexnet、再到 #paper-resnet 的实点往返；13 条脚注无断锚、重复 id、字面脚注标记、替换乱码或溢出。窄屏结果表在 358px 容器内横滑 82px 后可见 26.2% 末列，未撑破 reader。",
+        "limitations": "报告明确未运行 cuda-convnet、未复现训练、未逐层重算参数，也未把图注阅读冒充完整视觉复审。ASR 结构收据与公开仓副本逐字节一致，7553 段、时间戳错误 0；正文同时明确结构检查不证明词准确率、未人工听校，且相对原音频末尾约 15.989 秒仍未知。组织史官方页面的采用范围、人物轶事未核范围和教学例子边界均交代清楚。"
+      },
+      "critical_claim_ids_checked": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14"
+      ],
+      "coverage_unit_ids_checked": [
+        "U1",
+        "U2",
+        "U3",
+        "U4",
+        "U5",
+        "U6",
+        "U7",
+        "U8",
+        "U9",
+        "U10",
+        "U11",
+        "U12",
+        "U13"
+      ],
+      "source_content_map": [
+        {
+          "id": "SCM-A01",
+          "title": "视觉识别背景、手工特征与表示学习",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "ASR",
+            "SLIDE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1",
+            "U2"
+          ],
+          "notes": "正文先说明现实图像变化、特征由谁设计及卷积先验，再分清 ImageNet 全库和 ILSVRC 约 120 万训练图／1000 类。"
+        },
+        {
+          "id": "SCM-A02",
+          "title": "卷积、参数复用、池化与八个带权重层",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "BROOK"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3"
+          ],
+          "notes": "小窗口与猫照片建立卷积直觉；5 卷积+3 全连接的计数口径准确，并主动区分 Brook 可执行 kernel、可学习卷积核与物理核心。"
+        },
+        {
+          "id": "SCM-A03",
+          "title": "标签、损失、反向传播、SGD 与推理",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U4"
+          ],
+          "notes": "四步训练流程说明分类反馈如何影响前层特征，保留 batch 128 和训练／推理边界，不用公式堆叠替代机制。"
+        },
+        {
+          "id": "SCM-A04",
+          "title": "模型规模、双 GPU 模型并行与 ReLU 训练速度",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U5"
+          ],
+          "notes": "约 6000 万参数、65 万神经元、双 3GB GTX 580、90 轮和 5–6 天均与论文一致；两卡是受限连接的模型分割，六倍仅限 CIFAR-10 指定比较。"
+        },
+        {
+          "id": "SCM-A05",
+          "title": "过拟合、数据增强、Dropout 与完整配方",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "SLIDE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U6"
+          ],
+          "notes": "随机裁剪、翻转、RGB 扰动和前两全连接层 Dropout 均讲清作用与代价；LRN、重叠池化被保留为当时配方，没有虚构最终领先幅度的贡献分解。"
+        },
+        {
+          "id": "SCM-A06",
+          "title": "2010／2012、val／test、单模型／集成的实验口径",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "ASR"
+          ],
+          "matched_coverage_unit_ids": [
+            "U7"
+          ],
+          "notes": "2010 的 37.5%／17.0% 与 2012 表格分开；15.3% 七模型集成、额外预训练、第六卷积层变体、第二名 26.2% 和 10.9pp 均完整呈现。"
+        },
+        {
+          "id": "SCM-A07",
+          "title": "4096 维隐藏表示与定性近邻边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8"
+          ],
+          "notes": "报告解释特征向量和跨姿态近邻的意义，同时明确例图不证明任意检索任务或完整视觉常识。"
+        },
+        {
+          "id": "SCM-A08",
+          "title": "作者、数据建设者与工程协作",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "ASR",
+            "SLIDE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U9"
+          ],
+          "notes": "三位作者共同署名、ImageNet 数据建设与 GPU 实现被放回协作结构；Krizhevsky 的具体角色和人物印象只作播客叙事，不冒充论文贡献声明。"
+        },
+        {
+          "id": "SCM-A09",
+          "title": "公司收购与 Google Brain 的独立时间线",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "UTORONTO",
+            "GOOGLE_X",
+            "ASR",
+            "SLIDE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10"
+          ],
+          "notes": "2012 成立公司、2013-03-12 收购及研究者去向由大学公告支持；X 官方项目史表明 Brain 2011 已开始，正文没有沿用“AlexNet 催生／前身”的倒置因果。"
+        },
+        {
+          "id": "SCM-A10",
+          "title": "Brook 到 AlexNet 的概念连接与 ResNet 问题承接",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "BROOK",
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11"
+          ],
+          "notes": "连接限定在 GPU 可编程性、硬件约束进入实现及“深度怎样继续可训练”的问题线，不声称 AlexNet 使用 Brook 或 ResNet 是直接完整接力。"
+        },
+        {
+          "id": "SCM-A11",
+          "title": "播客、讲义、Shownotes 的边界和纠错",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "ASR",
+            "SHOWNOTES",
+            "SLIDE",
+            "TRANSCRIPT_REVIEW"
+          ],
+          "matched_coverage_unit_ids": [
+            "U12"
+          ],
+          "notes": "本节 153 段 ASR 的 Brook／CUDA、渲染／训练、6250 万／6000 万、十几个点／10.9pp 和论文原话归因均有校正；Shownotes 只提供 Part 1 入口。"
+        },
+        {
+          "id": "SCM-A12",
+          "title": "独立阅读、自测问题与后续路线",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U13"
+          ],
+          "notes": "报告无需主稿即可理解，并以三个追问检验机制、实验口径和三重 scale 的掌握；下一步明确进入 ResNet。"
+        },
+        {
+          "id": "SCM-A13",
+          "title": "原论文自身的限制与未来设想",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U5",
+            "U8",
+            "U11"
+          ],
+          "notes": "正文保留纯监督、特定基准、删除中层只支持当前配置、表示近邻属于定性展示等边界，没有把 2012 愿景写成已经由本文完成。"
+        }
+      ],
+      "source_ids_checked": [
+        "PAPER",
+        "SLIDE",
+        "ASR",
+        "SHOWNOTES",
+        "BROOK",
+        "UTORONTO",
+        "GOOGLE_X",
+        "TRANSCRIPT_REVIEW"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "独立 fresh-context 的 AlexNet 展开篇 important 全文审。开始和结束均核对 report SHA256 3e38682a3ed7c85a58d1afa3b1133c9dca87403ed8f68e8302d98b6f5c1f247d 与 evidence SHA256 0a1b8534579498ac8253b8c15499761351fed72f14c497eb9a272c063a48ba32。先从原始材料形成 13 单元来源地图，再读正文和账本逐项映射 U1–U13；没有 unsupported claim、missing requirement 或 hard failure。核对正确的 transcript-text-audit.json：公开仓收据与临时收据 SHA256 均为 9a78a381da6be3c5f3ae34ea34b804774088110cb75f66fa9ffca9857931e1d7，结构通过但不证明词准确率；误喂 JSON 的 transcript-audit.json 未作为有效证据。阅读呈现依据 /tmp/everagent-alexnet-20261104/navigation-receipt.json（SHA256 28c406948b9fc3273b5b12a1f811b858a87cbc79886f0dafcc5c5b712ee185e6）：真实 localhost 工作台、headless Chromium、1440／390 两档实点往返和 DOM 测量均通过。本 Reviewer 读取并复核收据与脚本；除为诊断首版脚注断言而独立运行 probe 外，不声称亲自执行最终修正版全流程或查看全部截图。内容与呈现层面建议通过，最终状态仍由协调者写入共享 review 后运行质量脚本决定。",
+      "report_sha256": "3e38682a3ed7c85a58d1afa3b1133c9dca87403ed8f68e8302d98b6f5c1f247d",
+      "evidence_sha256": "0a1b8534579498ac8253b8c15499761351fed72f14c497eb9a272c063a48ba32",
+      "snapshot_verified": true,
+      "reviewed_on": "2026-11-04",
+      "review_revision_round": 1
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 97.95,
+    "evaluated_on": "2026-11-04",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "d86ca3c89b7a554ba51b43baf82cce184488e54bf032df5fca6278b06bb2c7d1",
+    "evidence_sha256": "0a1b8534579498ac8253b8c15499761351fed72f14c497eb9a272c063a48ba32"
+  },
+  "public_serialization": {
+    "kind": "agent-task-id-normalization",
+    "note": "仅去掉 Agent 任务命名空间的前导斜杠，避免与本机目录混淆；模型、核验内容、评分及判定保持不变。",
+    "source_review_sha256": "ab337644ffbdbcbdc138f3140bee9cf7941740f7cf2175c26160f148cec864af",
+    "fields_normalized": 1
+  }
+}

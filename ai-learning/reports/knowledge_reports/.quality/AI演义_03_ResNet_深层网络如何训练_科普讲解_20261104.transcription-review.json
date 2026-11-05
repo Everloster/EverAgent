@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "kind": "chapter-transcription-review",
+  "reviewed_on": "2026-11-04",
+  "chapter": 3,
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+  "transcript_source_ref": "sha256:919e4ce5147340e2306748394cdb555bfc6a745119f846e7ce8c985056745b05",
+  "read_scope": {
+    "content_window_approx_seconds": [
+      3169,
+      3444
+    ],
+    "context_window_seconds": [
+      3168.69,
+      3451.07
+    ],
+    "segments_read": 141,
+    "time_basis": "ASR逐段定位；Shownotes仅有Part1的19:35总入口。摘录显示取整与原稿可相差1秒，未据此声称精确听校。"
+  },
+  "structural_audit": {
+    "ok": true,
+    "size": 389895,
+    "sha256": "919e4ce5147340e2306748394cdb555bfc6a745119f846e7ce8c985056745b05",
+    "lines": 7553,
+    "segments": 7553,
+    "duration_seconds": 15741,
+    "max_consecutive_identical": 3,
+    "timestamp_errors": 0,
+    "malformed_lines": 0,
+    "tail_gap_seconds": 0
+  },
+  "public_full_episode_receipt": "podcast-learning/reports/transcripts/2026-11-04_ai-yanyi-117.audit.json",
+  "term_and_claim_checks": [
+    {
+      "time": "52:52–53:56",
+      "raw": "Vesnet；一百层以上性能下降",
+      "adopted": "ResNet；退化在18/34层普通网络ImageNet对照即已出现，非一百层阈值",
+      "basis": "原论文题名、§4.1/Table2与Figure4",
+      "kind": "term_and_scope_correction"
+    },
+    {
+      "time": "54:11–54:19",
+      "raw": "至少不会带来性能下降；彻底解决退化问题",
+      "adopted": "恒等映射为动机，实证改善所述优化；1202层测试表现仍不如110层",
+      "basis": "§1、§3.1、§4.2/Table6",
+      "kind": "guarantee_boundary"
+    },
+    {
+      "time": "54:25–55:02",
+      "raw": "作者中文姓名、职务、接近30万引用的口述",
+      "adopted": "采用首页四名作者英文署名及当时Microsoft Research；现任职务、引用量未另核，不采用",
+      "basis": "原论文首页；讲义第14页与ASR均可能含缺字/词误",
+      "kind": "identity_and_time_boundary"
+    },
+    {
+      "time": "55:02–55:12；57:17–57:20",
+      "raw": "几乎所有网络都是残差网络；残杀网络",
+      "adopted": "核Transformer明确采用残差连接这一组件，不把全部现代架构等同原版ResNet",
+      "basis": "Transformer§3.1与ref[11]",
+      "kind": "scope_correction"
+    },
+    {
+      "time": "55:21–56:45",
+      "raw": "R1 LU；FS；网络权重和函数写法混乱",
+      "adopted": "ReLU；F(x)为分支算出的修正，x+F(x)是相加处；监督仍来自最终分类损失",
+      "basis": "ResNet§3.1–3.2/Figure2",
+      "kind": "mechanism_crosscheck"
+    },
+    {
+      "time": "56:33–57:06",
+      "raw": "T2消失、T2爆大；缓解梯度问题和消解退化",
+      "adopted": "技术含义为梯度消失/爆炸；原论文BN下梯度范数正常，不将所见退化直接等同梯度消失",
+      "basis": "ResNet§4.1；2016后续论文§2–4.2限传播条件",
+      "kind": "term_and_causal_boundary"
+    }
+  ],
+  "audio_listened": false,
+  "word_accuracy_measured": false,
+  "verbatim_completeness": "unverified",
+  "limitations": [
+    "复用前轮对修复全文实际运行的文字结构审计；7553段、最大连续相同3段、时间戳错误0，不能据此声称语音词准确率。",
+    "本轮逐段阅读141段并查论文，没有重新转写或人工听音；不逐处推定识别错误还是嘉宾口误。",
+    "全音频15757.479秒、末段到15741.49秒，约15.989秒尾部仍未确认；文本tail_gap=0仅针对现有文本。",
+    "完整音频与原始/修复转录留公开仓之外；正文采用经来源校正的含义，不公布全文或未核人物信息。"
+  ],
+  "conclusion": "本节可作为有论文校正的研究底稿；结构合格不代表逐字可靠，性能保证和历史泛化均按原文收紧。"
+}

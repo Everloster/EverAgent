@@ -1,0 +1,1111 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_06_seq2seq与Attention_模型怎样翻译一句话_科普讲解_20261105.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-6-astra",
+        "harness": "codex_collab2_subagent",
+        "run_id": "source-label-06-primary-review-20261105",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "identity_basis": "inherited_dispatch_configuration",
+        "runtime_model": "unconfirmed",
+        "source_first_continuation": true,
+        "identity_note": "协调者明确本次spawn未传model override、继承根派发配置gpt-6-astra；不是provider/runtime attestation。未用共享shell或生成者身份证明Reviewer模型。"
+      },
+      "scores": {
+        "evidence_fidelity": 99,
+        "request_coverage": 99,
+        "reasoning_quality": 99,
+        "readability": 99,
+        "limitations": 99
+      },
+      "score_reasons": {
+        "evidence_fidelity": "本轮直接核对原页title、description/og:title及URL，确认节目归属和期号；正文仅替换来源标签及修订状态。20项关键claim及论文/转录判断按SHA绑定的revision 1已通过基线继承，保留99分；没有声称本轮重读论文或转录。",
+        "request_coverage": "task requirements和21个source_coverage单元与基线完全相同；来源名称勘误由读稿前冻结的LABEL-S1–S3独立地图直接复核。原需求覆盖及原地图的covered/partial状态原样继承，保留99分。",
+        "reasoning_quality": "精确文本恢复和evidence递归比较表明因果解释、数字、反例、推测与边界没有改变；节目身份修正没有被用来支持新的技术结论。本维按已通过技术基线保留99分，不是本轮重新评价全部推理。",
+        "readability": "本篇1440/390px收据的报告/evidence哈希与当前目标一致，纠正名称的链接文本和URL正确，无旧标签、乱码、横溢出或pageErrors；本篇已直接抽看1440px截图。其余篇章、表格和导航可读性继承基线，保留99分。",
+        "limitations": "来源read_scope和limitations完全未改，保留基线的版本、未复现实验及ASR未听音/未测WER等边界；本轮明确限制为身份勘误，未把元数据核验冒充完整材料重读。本维沿用冻结基线99分。"
+      },
+      "weighted_score": 99.0,
+      "critical_claim_ids_checked": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17",
+        "C18",
+        "C19",
+        "C20"
+      ],
+      "coverage_unit_ids_checked": [
+        "U1",
+        "U2",
+        "U3",
+        "U4",
+        "U5",
+        "U6",
+        "U7",
+        "U8",
+        "U9",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16",
+        "U17",
+        "U18",
+        "U19",
+        "U20",
+        "U21"
+      ],
+      "source_ids_checked": [
+        "SEQ2SEQ",
+        "BAHDANAU",
+        "SEQ_HISTORY",
+        "ATTENTION_HISTORY",
+        "SLIDE",
+        "SHOWNOTES",
+        "ASR",
+        "TRANSCRIPT_REVIEW",
+        "TRANSCRIPT_AUDIT",
+        "ALEXNET_CHAPTER"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6"
+      ],
+      "critical_claim_ids_checked_direct": [],
+      "critical_claim_ids_checked_inherited": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17",
+        "C18",
+        "C19",
+        "C20"
+      ],
+      "coverage_unit_ids_checked_direct": [
+        "U1"
+      ],
+      "coverage_unit_ids_checked_inherited": [
+        "U1",
+        "U2",
+        "U3",
+        "U4",
+        "U5",
+        "U6",
+        "U7",
+        "U8",
+        "U9",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16",
+        "U17",
+        "U18",
+        "U19",
+        "U20",
+        "U21"
+      ],
+      "source_ids_checked_direct": [
+        "SHOWNOTES"
+      ],
+      "source_ids_checked_inherited": [
+        "SEQ2SEQ",
+        "BAHDANAU",
+        "SEQ_HISTORY",
+        "ATTENTION_HISTORY",
+        "SLIDE",
+        "SHOWNOTES",
+        "ASR",
+        "TRANSCRIPT_REVIEW",
+        "TRANSCRIPT_AUDIT",
+        "ALEXNET_CHAPTER"
+      ],
+      "requirement_ids_checked_direct": [
+        "R1",
+        "R5"
+      ],
+      "requirement_ids_checked_inherited": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6"
+      ],
+      "source_content_map": [
+        {
+          "id": "LABEL-S1",
+          "title": "公开原页所属节目为《张小珺Jùn｜商业访谈录》",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1"
+          ],
+          "notes": "读五篇待审稿前已直接核对原页description。候选正文所含节目名称均为《张小珺Jùn｜商业访谈录》，原晚点聊标签已清除；本次只直接核查节目归属。 matched coverage仅直接核身份/引用子项，其他内容沿用基线。"
+        },
+        {
+          "id": "LABEL-S2",
+          "title": "该URL是第117期论文探索之旅",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1"
+          ],
+          "notes": "直接核对title、og:title与URL，第117期论文探索之旅与原链接相符。报告的“AI演义”用作内容简称；未改变期号、URL或任何链接目标。 matched coverage仅直接核身份/引用子项，其他内容沿用基线。"
+        },
+        {
+          "id": "LABEL-S3",
+          "title": "来源身份更正不提供新的论文或转写结论",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1"
+          ],
+          "notes": "公开页身份元数据只支持节目标签及链接对应关系。当前evidence明确记录冻结继承；read_scope、claims、source_coverage、task和limitations逐项完全不变。 matched coverage仅直接核身份/引用子项，其他内容沿用基线。"
+        },
+        {
+          "id": "SOL-S2S-SCM-01",
+          "title": "Shownotes合讲条目、282段转录与校边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES",
+            "ASR",
+            "SLIDE",
+            "TRANSCRIPT_REVIEW",
+            "TRANSCRIPT_AUDIT"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】Part1合讲条目、本章范围、连续重复、未听音及尾部未知均进入来源说明；口播的人名、机制和实验夸张逐项由论文校正。"
+        },
+        {
+          "id": "SOL-S2S-SCM-02",
+          "title": "变长输入输出与复杂对齐问题",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "SEQ2SEQ",
+            "BAHDANAU"
+          ],
+          "matched_coverage_unit_ids": [
+            "U2"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】黑猫英法例清楚展示词数、词序和组合表达差异，并纠正固定维度不等于五词进五词出；SMT也被准确描述为含学习的多部件系统。"
+        },
+        {
+          "id": "SOL-S2S-SCM-03",
+          "title": "固定向量seq2seq编码器—解码器、EOS与参数共享",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "SEQ2SEQ"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】两套四层LSTM、固定规模交接、逐词自回归和EOS决定长度讲解完整；8000实数没有误写成词容量。"
+        },
+        {
+          "id": "SOL-S2S-SCM-04",
+          "title": "平行语料、正确目标前缀与推理差异",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "SEQ2SEQ",
+            "BAHDANAU"
+          ],
+          "matched_coverage_unit_ids": [
+            "U4"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】训练使用正确前缀的条件概率目标，推理只能接自身输出；teacher forcing被明确作为机制术语解释而非论文原词或误差实验。"
+        },
+        {
+          "id": "SOL-S2S-SCM-05",
+          "title": "beam search与attention读取的区别",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "SEQ2SEQ",
+            "BAHDANAU"
+          ],
+          "matched_coverage_unit_ids": [
+            "U5"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】候选前缀、独立状态、EOS收束和近似性均说明；Attention在单候选内读源信息，束搜索在候选之间筛路径。"
+        },
+        {
+          "id": "SOL-S2S-SCM-06",
+          "title": "仅反转源句、依赖路径与解释不确定性",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "SEQ2SEQ"
+          ],
+          "matched_coverage_unit_ids": [
+            "U6"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】具体黑猫顺序展示只反转源句；表1单模型26.17/30.59和§3.3的5.8→4.7、25.9→30.6在脚注分口径，作者未完整解释及平均距离不变也保留。"
+        },
+        {
+          "id": "SOL-S2S-SCM-07",
+          "title": "倒序固定向量模型的长句反例",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "SEQ2SEQ"
+          ],
+          "matched_coverage_unit_ids": [
+            "U7"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】Figure3图注的<35词无退化、最长句轻微退化被限定为该模型/测试集，主动反驳固定向量必败的过度叙事。"
+        },
+        {
+          "id": "SOL-S2S-SCM-08",
+          "title": "双向逐位置annotations与可变份数",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "BAHDANAU"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】每个源位置拼接双向状态、已含上下文；每份固定维但份数随句长变化，并指出需先取得完整源句。"
+        },
+        {
+          "id": "SOL-S2S-SCM-09",
+          "title": "s_{i-1}打分、softmax权重与逐步context",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "BAHDANAU"
+          ],
+          "matched_coverage_unit_ids": [
+            "U9"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】四步机制严格遵守先后关系，没有偷看尚未生成的noir；annotation、权重、context和decoder state另表区分。"
+        },
+        {
+          "id": "SOL-S2S-SCM-10",
+          "title": "soft alignment联合训练与平行句对",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "BAHDANAU"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】解释可微权重让翻译损失训练对齐网络，不需人工逐词连线但仍需平行句对；权重图不冒充金标准或因果解释。"
+        },
+        {
+          "id": "SOL-S2S-SCM-11",
+          "title": "GRU式门控单元、加性打分与实现边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "BAHDANAU",
+            "SEQ2SEQ"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】准确区分Sutskever LSTM与Bahdanau Cho式门控/GRU类单元，未写成Attention LSTM；对齐小网络与预计算边界有脚注。"
+        },
+        {
+          "id": "SOL-S2S-SCM-12",
+          "title": "对齐热图、重排、多词对应与抽样范围",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "BAHDANAU"
+          ],
+          "matched_coverage_unit_ids": [
+            "U12"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】x英文/y法文、0黑1白、对角与非单调、多位置共同参与、b-d无UNK且10–20词随机样本均准确；服务失败/本地核验如实记录。"
+        },
+        {
+          "id": "SOL-S2S-SCM-13",
+          "title": "seq2seq数据、词表、单模型/ensemble直接翻译",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "SEQ2SEQ"
+          ],
+          "matched_coverage_unit_ids": [
+            "U13"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】12M句对、304M/348M词、160K/80K词表准确；26.17/30.59单模型与34.50/34.81五模型集成分开，未把34.81归给单模型。"
+        },
+        {
+          "id": "SOL-S2S-SCM-14",
+          "title": "SMT候选重排、BLEU口径与最佳系统",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "SEQ2SEQ"
+          ],
+          "matched_coverage_unit_ids": [
+            "U14"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】36.5明确是5个倒序LSTM参与SMT 1000-best重排；33.30 baseline与37.0同脚本最佳参照分开，BLEU不写成准确率。"
+        },
+        {
+          "id": "SOL-S2S-SCM-15",
+          "title": "seq2seq参数、GPU分工与训练成本",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "SEQ2SEQ"
+          ],
+          "matched_coverage_unit_ids": [
+            "U15"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】单模型384M参数、8GPU分工和约十天条件完整，并说明不是五模型集成总预算。"
+        },
+        {
+          "id": "SOL-S2S-SCM-16",
+          "title": "Bahdanau All/No-UNK、训练时长与结构条件",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "BAHDANAU"
+          ],
+          "matched_coverage_unit_ids": [
+            "U16"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】17.82/26.71、26.75/34.16、28.45/36.15和Moses33.30/35.63准确；No-UNK筛源句与参考并禁生成UNK，111h/252h和反向encoder混杂明确。"
+        },
+        {
+          "id": "SOL-S2S-SCM-17",
+          "title": "医生/Disney长句案例与30/50训练边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "BAHDANAU",
+            "SEQ2SEQ"
+          ],
+          "matched_coverage_unit_ids": [
+            "U17"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】职业身份→健康状况和Disney后段偏离被准确解释；RNNsearch-30超训练长度仍降、50更稳，并与倒序LSTM证据并列。"
+        },
+        {
+          "id": "SOL-S2S-SCM-18",
+          "title": "OOV、Tx×Ty读取成本、循环路径与有限记忆",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "BAHDANAU"
+          ],
+          "matched_coverage_unit_ids": [
+            "U18"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】未知词、每目标步扫描源位置、循环计算和有限维表示全部保留，未把Attention写成无限上下文或完整复杂度公式。"
+        },
+        {
+          "id": "SOL-S2S-SCM-19",
+          "title": "作者、v1首发、当前版本与同期而非接力",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "SEQ2SEQ",
+            "BAHDANAU",
+            "SEQ_HISTORY",
+            "ATTENTION_HISTORY",
+            "ALEXNET_CHAPTER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U19"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】两篇三位作者/单位、Bahdanau 9月1日与seq2seq 9月10日、v7/v3修订分开；AlexNet章只用于Ilya已核作者身份。"
+        },
+        {
+          "id": "SOL-S2S-SCM-20",
+          "title": "Graves前驱与Bahdanau历史定位",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "BAHDANAU",
+            "ATTENTION_HISTORY"
+          ],
+          "matched_coverage_unit_ids": [
+            "U19"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】准确定位为把可学习软对齐有力引入NMT，而非全部attention绝对首创；没有采用现职、奖项和合作旁支。"
+        },
+        {
+          "id": "SOL-S2S-SCM-21",
+          "title": "整句表示定性观察与下一节问题",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "SEQ2SEQ"
+          ],
+          "matched_coverage_unit_ids": [
+            "U20"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】PCA小样本被限定为词序/主动被动的定性例子；Word2Vec连接是问题路线，不声称继承权重，并自然引出循环计算问题。"
+        },
+        {
+          "id": "SOL-S2S-SCM-22",
+          "title": "均匀权重、容量与访问方式的可检验追问",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "BAHDANAU"
+          ],
+          "matched_coverage_unit_ids": [
+            "U21"
+          ],
+          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】均匀权重导致各步同一源平均但decoder仍变化的推断成立，明确没有做消融；容量与读取方式及忠实度检查形成可执行追问。"
+        }
+      ],
+      "source_content_map_ids_direct": [
+        "LABEL-S1",
+        "LABEL-S2",
+        "LABEL-S3"
+      ],
+      "source_content_map_ids_inherited": [
+        "SOL-S2S-SCM-01",
+        "SOL-S2S-SCM-02",
+        "SOL-S2S-SCM-03",
+        "SOL-S2S-SCM-04",
+        "SOL-S2S-SCM-05",
+        "SOL-S2S-SCM-06",
+        "SOL-S2S-SCM-07",
+        "SOL-S2S-SCM-08",
+        "SOL-S2S-SCM-09",
+        "SOL-S2S-SCM-10",
+        "SOL-S2S-SCM-11",
+        "SOL-S2S-SCM-12",
+        "SOL-S2S-SCM-13",
+        "SOL-S2S-SCM-14",
+        "SOL-S2S-SCM-15",
+        "SOL-S2S-SCM-16",
+        "SOL-S2S-SCM-17",
+        "SOL-S2S-SCM-18",
+        "SOL-S2S-SCM-19",
+        "SOL-S2S-SCM-20",
+        "SOL-S2S-SCM-21",
+        "SOL-S2S-SCM-22"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "review_revision_round": 2,
+      "snapshot_verified": true,
+      "report_sha256": "464951253ad37fe1d835426af4a08aadeef0d2b619fdb552907e4a766f3e2c7d",
+      "evidence_sha256": "b82f8446c75c70b727d3a18382d00aa31523b5eaad7a47052b776d8ab52ca4ec",
+      "snapshot": {
+        "report_path": "ai-learning/reports/knowledge_reports/AI演义_06_seq2seq与Attention_模型怎样翻译一句话_科普讲解_20261105.md",
+        "evidence_path": "ai-learning/reports/knowledge_reports/.quality/AI演义_06_seq2seq与Attention_模型怎样翻译一句话_科普讲解_20261105.evidence.json",
+        "report_sha256": "464951253ad37fe1d835426af4a08aadeef0d2b619fdb552907e4a766f3e2c7d",
+        "evidence_sha256": "b82f8446c75c70b727d3a18382d00aa31523b5eaad7a47052b776d8ab52ca4ec",
+        "revision_round": 2
+      },
+      "incremental_scope": {
+        "kind": "source-label-correction",
+        "direct_scope": "直接读取原页身份元数据；独立验证正文的精确允许替换、evidence允许字段、所有链接目标、当前/基线哈希、基线通过收据与新名称渲染收据。",
+        "inherited_scope": "技术正文、论文/讲义/转录的内容判断、机器转录结构审计、原始来源地图与既有呈现/导航验证均按冻结基线继承；原地图partial不升级。",
+        "checked_array_semantics": "总checked数组包含本轮已验证可继承的基线集合；direct数组仅说明局部直接核查。direct与inherited重叠表示同一ID中的身份/渲染子项直接复核、技术/旧内容子项继承，绝不表示整单元本轮重读。",
+        "direct_requirement_scope": {
+          "R1": "仅原节目所属名称、期号及链接对应关系。",
+          "R5": "仅本次纠正标签在1440/390px下的渲染收据；原导航及其他呈现沿用基线。"
+        },
+        "original_papers_reread_this_revision": false,
+        "transcript_reread_or_reaudited_this_revision": false,
+        "generator_research_notes_read": false,
+        "public_files_modified_by_reviewer": false,
+        "baseline": {
+          "revision_round": 1,
+          "report_file": "06-before.report.md",
+          "evidence_file": "06-before.evidence.json",
+          "review_file": "06-before.review.json",
+          "report_sha256": "0c76df46fa57fa617b5fab06aac31226ab111863b56ac6bb55c2e50c50e63088",
+          "evidence_sha256": "5512c94ef5904c805dc18bf4f7b9dd8ccfede9878a6fceed0135778c05c61069",
+          "review_sha256": "f43032071bb4ac680a7a2804ea344a2864bacb78b084c1b898ad0d03f4e1a766",
+          "decision": {
+            "status": "pass",
+            "score": 99.0,
+            "evaluated_on": "2026-11-05",
+            "policy_id": "report-quality-2026-10-18-r2",
+            "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+            "report_sha256": "0c76df46fa57fa617b5fab06aac31226ab111863b56ac6bb55c2e50c50e63088",
+            "evidence_sha256": "5512c94ef5904c805dc18bf4f7b9dd8ccfede9878a6fceed0135778c05c61069"
+          },
+          "check_receipt_file": "06-baseline-check.json",
+          "check_receipt_sha256": "dc29c323fe9a0e2be542980acdaf3d55e1380598c16d4ea5e7cde4f5b22e98c5",
+          "check_receipt_status": "pass",
+          "check_receipt_errors": [],
+          "check_receipt_warnings": []
+        },
+        "scope_audit": {
+          "file": "primary-source-label-scope-audit.json",
+          "sha256": "94efda1efa455a2dceb7d0249c4c16d2824c7747254ce7a83b97dee124453574",
+          "chapter": 6
+        },
+        "source_alias_map_for_inherited_map": {},
+        "source_alias_basis": "冻结地图已使用当前source IDs，无需转换。"
+      },
+      "source_priority_map": {
+        "file": "primary-identity-source-map.json",
+        "sha256": "06c345ab85c857a1312954cb09c70ee43699d6538007de7e9c8f2848eb68eb12",
+        "frozen_before_target_reports_read": true,
+        "scope": "仅本次身份勘误；技术来源地图另按冻结基线明确继承。"
+      },
+      "identity_source_receipt": {
+        "file": "episode-identity-read.json",
+        "sha256": "96781505dddc5ae22487657983c5dff1f74d5294042adbe02f54f38169bf4436",
+        "capability": "web.read",
+        "ok": true,
+        "url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+        "read_scope": "直接读取title、URL、description与metadata.description/og:title。"
+      },
+      "render_receipt_review": {
+        "file": "primary-source-label-render-audit.json",
+        "sha256": "14e683860af4093b5d184ef9b7d3fad19cb9189c3fc79937e5f439a5a0f67e1d",
+        "chapter": 6,
+        "receipt_widths_read": [
+          1440,
+          390
+        ],
+        "manual_image_samples": [
+          {
+            "chapter": 6,
+            "width": 1440,
+            "file": "source-label-6-1440.png",
+            "observations": "脚注节目名称完整；Jùn重音和竖线清晰，链接未裁切。",
+            "sha256": "798baf3d12d7d1bf41d47858ee2841bb4624a64947f53e29a66e1bedc581ad0e"
+          }
+        ],
+        "browser_actions_performed_by_this_reviewer": false
+      },
+      "notes": "本记录是report-review-v1的单条reviews item。本轮先核原始公开页身份并冻结LABEL地图，再审五篇标签勘误；关键事实和技术评分来自SHA核验通过的冻结基线，保留而不冒称重新完整复核。正文与账本只发生允许的名称/修订元数据变化，未发现本次勘误引入新的unsupported claim、missing requirement或hard failure。该记录不宣称最终quality gate通过；生成者汇入后仍需完成正式检查。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 99.0,
+    "evaluated_on": "2026-11-05",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "356e0ac2a2afc5ba55f1ebd05f85c456ff377f81a63dde78d0d655a9e08a5d19",
+    "evidence_sha256": "b82f8446c75c70b727d3a18382d00aa31523b5eaad7a47052b776d8ab52ca4ec"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex",
+            "run_id": "collab2:root/word2vec_round_review:2026-11-05:seq2seq-expanded-r1-sol",
+            "independent_context": true,
+            "fresh_context": false,
+            "explicit_model_override": false,
+            "override_reason": "",
+            "model_identity_observation": "同一独立强审会话由编排任务按质量策略指定gpt-5.6-sol；Harness为Codex。来源优先阶段先于正文，正式读稿为continuation，故independent_context=true、fresh_context=false；未用宿主/eacli配置冒充模型运行身份。"
+          },
+          "scores": {
+            "evidence_fidelity": 99,
+            "request_coverage": 99,
+            "reasoning_quality": 99,
+            "readability": 99,
+            "limitations": 99
+          },
+          "score_reasons": {
+            "evidence_fidelity": "20项关键claim逐项回到seq2seq v3、Bahdanau v7正文/附录/关键原图、官方历史及播客收据。单模型/ensemble、直接生成/SMT重排、All/No-UNK、111h/252h、LSTM/GRU、s_{i-1}信息流和Figure3抽样口径全部准确；视觉服务误转写未进入事实。",
+            "request_coverage": "黑猫翻译贯穿变长、词序、encoder/decoder、EOS、训练/推理、beam、反转、annotations、soft alignment和context；两篇人物/贡献/首发分开，实验胜负与限制没有抹平。21个evidence coverage和独立地图22单元均有正文或明确脚注落点。",
+            "reasoning_quality": "报告主动处理同期证据张力：倒序固定向量模型长句良好，与basic encoder-decoder长句退化并列；把容量与访问方式分开，并用医生误译、BLEU口径和均匀权重反事实限制外推。历史连接是问题谱系，不伪造严格接力。",
+            "readability": "少数学但信息流清楚，黑猫句与三个对象表降低理解门槛，实验表格把混淆口径并排展示。真实工作台收据验证1440/390双向导航、19脚注、3表横滑及前五入口，无断锚、乱码或全页溢出；正文较长但目录与十节结构适合deep独立阅读。",
+            "limitations": "明确自拟例子、未训练复现、未听音、尾部未知、BLEU/长句/热图边界、版本修订、视觉服务8成功1失败及OCR纠错；OOV、计算成本、训练分布和循环路径均保留。"
+          },
+          "source_content_map": [
+            {
+              "id": "SOL-S2S-SCM-01",
+              "title": "Shownotes合讲条目、282段转录与校边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "SHOWNOTES",
+                "ASR",
+                "SLIDE",
+                "TRANSCRIPT_REVIEW",
+                "TRANSCRIPT_AUDIT"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1"
+              ],
+              "notes": "Part1合讲条目、本章范围、连续重复、未听音及尾部未知均进入来源说明；口播的人名、机制和实验夸张逐项由论文校正。"
+            },
+            {
+              "id": "SOL-S2S-SCM-02",
+              "title": "变长输入输出与复杂对齐问题",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "SEQ2SEQ",
+                "BAHDANAU"
+              ],
+              "matched_coverage_unit_ids": [
+                "U2"
+              ],
+              "notes": "黑猫英法例清楚展示词数、词序和组合表达差异，并纠正固定维度不等于五词进五词出；SMT也被准确描述为含学习的多部件系统。"
+            },
+            {
+              "id": "SOL-S2S-SCM-03",
+              "title": "固定向量seq2seq编码器—解码器、EOS与参数共享",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "SEQ2SEQ"
+              ],
+              "matched_coverage_unit_ids": [
+                "U3"
+              ],
+              "notes": "两套四层LSTM、固定规模交接、逐词自回归和EOS决定长度讲解完整；8000实数没有误写成词容量。"
+            },
+            {
+              "id": "SOL-S2S-SCM-04",
+              "title": "平行语料、正确目标前缀与推理差异",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "SEQ2SEQ",
+                "BAHDANAU"
+              ],
+              "matched_coverage_unit_ids": [
+                "U4"
+              ],
+              "notes": "训练使用正确前缀的条件概率目标，推理只能接自身输出；teacher forcing被明确作为机制术语解释而非论文原词或误差实验。"
+            },
+            {
+              "id": "SOL-S2S-SCM-05",
+              "title": "beam search与attention读取的区别",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "SEQ2SEQ",
+                "BAHDANAU"
+              ],
+              "matched_coverage_unit_ids": [
+                "U5"
+              ],
+              "notes": "候选前缀、独立状态、EOS收束和近似性均说明；Attention在单候选内读源信息，束搜索在候选之间筛路径。"
+            },
+            {
+              "id": "SOL-S2S-SCM-06",
+              "title": "仅反转源句、依赖路径与解释不确定性",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "SEQ2SEQ"
+              ],
+              "matched_coverage_unit_ids": [
+                "U6"
+              ],
+              "notes": "具体黑猫顺序展示只反转源句；表1单模型26.17/30.59和§3.3的5.8→4.7、25.9→30.6在脚注分口径，作者未完整解释及平均距离不变也保留。"
+            },
+            {
+              "id": "SOL-S2S-SCM-07",
+              "title": "倒序固定向量模型的长句反例",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "SEQ2SEQ"
+              ],
+              "matched_coverage_unit_ids": [
+                "U7"
+              ],
+              "notes": "Figure3图注的<35词无退化、最长句轻微退化被限定为该模型/测试集，主动反驳固定向量必败的过度叙事。"
+            },
+            {
+              "id": "SOL-S2S-SCM-08",
+              "title": "双向逐位置annotations与可变份数",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "BAHDANAU"
+              ],
+              "matched_coverage_unit_ids": [
+                "U8"
+              ],
+              "notes": "每个源位置拼接双向状态、已含上下文；每份固定维但份数随句长变化，并指出需先取得完整源句。"
+            },
+            {
+              "id": "SOL-S2S-SCM-09",
+              "title": "s_{i-1}打分、softmax权重与逐步context",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "BAHDANAU"
+              ],
+              "matched_coverage_unit_ids": [
+                "U9"
+              ],
+              "notes": "四步机制严格遵守先后关系，没有偷看尚未生成的noir；annotation、权重、context和decoder state另表区分。"
+            },
+            {
+              "id": "SOL-S2S-SCM-10",
+              "title": "soft alignment联合训练与平行句对",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "BAHDANAU"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10"
+              ],
+              "notes": "解释可微权重让翻译损失训练对齐网络，不需人工逐词连线但仍需平行句对；权重图不冒充金标准或因果解释。"
+            },
+            {
+              "id": "SOL-S2S-SCM-11",
+              "title": "GRU式门控单元、加性打分与实现边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "BAHDANAU",
+                "SEQ2SEQ"
+              ],
+              "matched_coverage_unit_ids": [
+                "U11"
+              ],
+              "notes": "准确区分Sutskever LSTM与Bahdanau Cho式门控/GRU类单元，未写成Attention LSTM；对齐小网络与预计算边界有脚注。"
+            },
+            {
+              "id": "SOL-S2S-SCM-12",
+              "title": "对齐热图、重排、多词对应与抽样范围",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "BAHDANAU"
+              ],
+              "matched_coverage_unit_ids": [
+                "U12"
+              ],
+              "notes": "x英文/y法文、0黑1白、对角与非单调、多位置共同参与、b-d无UNK且10–20词随机样本均准确；服务失败/本地核验如实记录。"
+            },
+            {
+              "id": "SOL-S2S-SCM-13",
+              "title": "seq2seq数据、词表、单模型/ensemble直接翻译",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "SEQ2SEQ"
+              ],
+              "matched_coverage_unit_ids": [
+                "U13"
+              ],
+              "notes": "12M句对、304M/348M词、160K/80K词表准确；26.17/30.59单模型与34.50/34.81五模型集成分开，未把34.81归给单模型。"
+            },
+            {
+              "id": "SOL-S2S-SCM-14",
+              "title": "SMT候选重排、BLEU口径与最佳系统",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "SEQ2SEQ"
+              ],
+              "matched_coverage_unit_ids": [
+                "U14"
+              ],
+              "notes": "36.5明确是5个倒序LSTM参与SMT 1000-best重排；33.30 baseline与37.0同脚本最佳参照分开，BLEU不写成准确率。"
+            },
+            {
+              "id": "SOL-S2S-SCM-15",
+              "title": "seq2seq参数、GPU分工与训练成本",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "SEQ2SEQ"
+              ],
+              "matched_coverage_unit_ids": [
+                "U15"
+              ],
+              "notes": "单模型384M参数、8GPU分工和约十天条件完整，并说明不是五模型集成总预算。"
+            },
+            {
+              "id": "SOL-S2S-SCM-16",
+              "title": "Bahdanau All/No-UNK、训练时长与结构条件",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "BAHDANAU"
+              ],
+              "matched_coverage_unit_ids": [
+                "U16"
+              ],
+              "notes": "17.82/26.71、26.75/34.16、28.45/36.15和Moses33.30/35.63准确；No-UNK筛源句与参考并禁生成UNK，111h/252h和反向encoder混杂明确。"
+            },
+            {
+              "id": "SOL-S2S-SCM-17",
+              "title": "医生/Disney长句案例与30/50训练边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "BAHDANAU",
+                "SEQ2SEQ"
+              ],
+              "matched_coverage_unit_ids": [
+                "U17"
+              ],
+              "notes": "职业身份→健康状况和Disney后段偏离被准确解释；RNNsearch-30超训练长度仍降、50更稳，并与倒序LSTM证据并列。"
+            },
+            {
+              "id": "SOL-S2S-SCM-18",
+              "title": "OOV、Tx×Ty读取成本、循环路径与有限记忆",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "BAHDANAU"
+              ],
+              "matched_coverage_unit_ids": [
+                "U18"
+              ],
+              "notes": "未知词、每目标步扫描源位置、循环计算和有限维表示全部保留，未把Attention写成无限上下文或完整复杂度公式。"
+            },
+            {
+              "id": "SOL-S2S-SCM-19",
+              "title": "作者、v1首发、当前版本与同期而非接力",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "SEQ2SEQ",
+                "BAHDANAU",
+                "SEQ_HISTORY",
+                "ATTENTION_HISTORY",
+                "ALEXNET_CHAPTER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U19"
+              ],
+              "notes": "两篇三位作者/单位、Bahdanau 9月1日与seq2seq 9月10日、v7/v3修订分开；AlexNet章只用于Ilya已核作者身份。"
+            },
+            {
+              "id": "SOL-S2S-SCM-20",
+              "title": "Graves前驱与Bahdanau历史定位",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "BAHDANAU",
+                "ATTENTION_HISTORY"
+              ],
+              "matched_coverage_unit_ids": [
+                "U19"
+              ],
+              "notes": "准确定位为把可学习软对齐有力引入NMT，而非全部attention绝对首创；没有采用现职、奖项和合作旁支。"
+            },
+            {
+              "id": "SOL-S2S-SCM-21",
+              "title": "整句表示定性观察与下一节问题",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "SEQ2SEQ"
+              ],
+              "matched_coverage_unit_ids": [
+                "U20"
+              ],
+              "notes": "PCA小样本被限定为词序/主动被动的定性例子；Word2Vec连接是问题路线，不声称继承权重，并自然引出循环计算问题。"
+            },
+            {
+              "id": "SOL-S2S-SCM-22",
+              "title": "均匀权重、容量与访问方式的可检验追问",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "BAHDANAU"
+              ],
+              "matched_coverage_unit_ids": [
+                "U21"
+              ],
+              "notes": "均匀权重导致各步同一源平均但decoder仍变化的推断成立，明确没有做消融；容量与读取方式及忠实度检查形成可执行追问。"
+            }
+          ],
+          "critical_claim_ids_checked": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "C16",
+            "C17",
+            "C18",
+            "C19",
+            "C20"
+          ],
+          "coverage_unit_ids_checked": [
+            "U1",
+            "U2",
+            "U3",
+            "U4",
+            "U5",
+            "U6",
+            "U7",
+            "U8",
+            "U9",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14",
+            "U15",
+            "U16",
+            "U17",
+            "U18",
+            "U19",
+            "U20",
+            "U21"
+          ],
+          "source_ids_checked": [
+            "SEQ2SEQ",
+            "BAHDANAU",
+            "SEQ_HISTORY",
+            "ATTENTION_HISTORY",
+            "SLIDE",
+            "SHOWNOTES",
+            "ASR",
+            "TRANSCRIPT_REVIEW",
+            "TRANSCRIPT_AUDIT",
+            "ALEXNET_CHAPTER"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "weighted_score": 99.0,
+          "review_revision_round": 1,
+          "snapshot_verified": true,
+          "source_priority_map": {
+            "artifact": "source-map-sol.json",
+            "sha256": "80536e1de73843fa97a5926780755e46f905173658e43d9ed51c80ab54c15bef",
+            "read_before_report": true
+          },
+          "review_scope": {
+            "report": "全文303行及19条脚注",
+            "evidence": "task、10 sources、20 claims、21 coverage及limitations全部读取",
+            "transcription_review": "全文读取并核282段/provenance/audit边界",
+            "alexnet_cross_reference": "仅读取既有第2篇中Ilya为AlexNet作者的对应段落与脚注",
+            "audio_listened": false,
+            "shared_quality_check_run": false
+          },
+          "navigation_receipt": {
+            "script_artifact": "navigation-check.mjs",
+            "script_sha256": "da41c52aa748fb8832a44b4a614b927d58c9cc8fb96e94a3dff41977cce0802b",
+            "receipt_artifact": "navigation-receipt.json",
+            "receipt_sha256": "3eb51ab90ff7ff344db4a852c5d1e895f11b42b70fc88fc42dde9c83904328b7",
+            "snapshot_match": true,
+            "executed_by": "协调者",
+            "reviewer_action": "读取并核对收据；未亲自运行Chromium，未将DOM/交互收据扩写成额外视觉审计。",
+            "assessment": "1440/390均实际点击主稿第6节→展开→返回第6节→第7节；主稿41脚注、展开19脚注、3表横滑末列、前五入口通过；无断锚、重复ID、裸标记、乱码、页面/reader横溢出、pageerror或新标签。"
+          },
+          "notes": "important revision 1独立强模型复核。正式双SHA先核后读，来源地图先于正文建立。当前无unsupported claim、missing requirement或hard failure；临时review未写共享质量文件，最终判定由协调者集成后运行质量脚本。",
+          "report_sha256": "557af9030346f7acc3d3e7f3e41df231687071600e88c8b358f38976a1afee83",
+          "evidence_sha256": "5512c94ef5904c805dc18bf4f7b9dd8ccfede9878a6fceed0135778c05c61069",
+          "policy_id": "report-quality-2026-10-18-r2",
+          "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+          "preintegration_quality_check": {
+            "performed": false,
+            "reason": "协调者要求不运行共享quality check；临时review未集成。"
+          }
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 99.0,
+        "evaluated_on": "2026-11-05",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "0c76df46fa57fa617b5fab06aac31226ab111863b56ac6bb55c2e50c50e63088",
+        "evidence_sha256": "5512c94ef5904c805dc18bf4f7b9dd8ccfede9878a6fceed0135778c05c61069"
+      }
+    }
+  ],
+  "review_receipts": [
+    {
+      "file": "06-independent-review.json",
+      "sha256": "f0f5b83c4017a54a8504e55b11ee86e8103451653f628ab3b7d7cb57a05646c0",
+      "role": "primary_review",
+      "raw_review_content_preserved": true
+    }
+  ],
+  "public_serialization": {
+    "kind": "agent-task-id-normalization",
+    "note": "仅去掉 Agent 任务命名空间的前导斜杠，避免与本机目录混淆；模型、核验内容、评分及判定保持不变。",
+    "source_review_sha256": "7557d5bda62cb9a8fcec0847569171cecc20ffd82104285e2ee4a89f35be469e",
+    "fields_normalized": 1
+  }
+}

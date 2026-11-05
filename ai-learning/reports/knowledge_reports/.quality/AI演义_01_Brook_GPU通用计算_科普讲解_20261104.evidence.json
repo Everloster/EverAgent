@@ -1,0 +1,339 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_01_Brook_GPU通用计算_科普讲解_20261104.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-04",
+  "generator": {
+    "model": "gpt-6-astra",
+    "harness": "codex",
+    "run_id": "generator-793171899936",
+    "explicit_model_override": false,
+    "override_reason": "",
+    "identity_basis": "eacli codex-thread-state 自动核实 gpt-6-astra，session-bound、confirmed=true。"
+  },
+  "task": {
+    "summary": "转写整期 AI 演义播客并审核长音频质量；结合 Shownotes、讲义第10页、Brook段转录与2004年原论文，先交付独立可读的第1节展开篇。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "整期音频完成处理，检查重复、时间戳、头尾、章节与术语；保留原始失败产物，说明修复及未听校边界。"
+      },
+      {
+        "id": "R2",
+        "text": "融合播客对应段、Shownotes、讲义PDF及正确版本Brook原论文，按来源能力分配证据。"
+      },
+      {
+        "id": "R3",
+        "text": "以贯穿算例讲清GPU动机、既有编程门槛、stream/kernel/reduction与编译运行时，而不是拉长摘要。"
+      },
+      {
+        "id": "R4",
+        "text": "解释真实性能口径、搬运成本、限制，保留历史与人物组织视角，准确连接CUDA和下一篇AlexNet。"
+      },
+      {
+        "id": "R5",
+        "text": "本轮只展开Brook，独立成篇、人类阅读友好，做独立来源优先复核与实际渲染验收，完整转录留私有。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "PAPER",
+      "kind": "primary",
+      "title": "Brook for GPUs: Stream Computing on Graphics Hardware",
+      "locator": "https://graphics.stanford.edu/papers/brookgpu/brookgpu.pdf",
+      "accessed_on": "2026-11-04",
+      "read_scope": "作者稿正文§1–6、Figure 3、Table 1、Figure 4、Appendix A；Figure 3按PDF第7页视觉核验，Table 1按第5页表格与§4.2核验。",
+      "sha256": "05f5548350ac39bffb9973e33258eac5cacfd1b5c76422516b1c4f4d980ec21b"
+    },
+    {
+      "id": "SLIDE",
+      "kind": "local",
+      "title": "AI演义讲义第10页 Brook",
+      "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "accessed_on": "2026-11-04",
+      "read_scope": "只用第10页，按渲染页视觉读取；文字层与OCR有错，不照抄。",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0"
+    },
+    {
+      "id": "SHOWNOTES",
+      "kind": "primary",
+      "title": "张小珺商业访谈录117期节目说明",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-04",
+      "read_scope": "完整Shownotes，章节定位；19:35是Part 1总入口，不是独立Brook章界。"
+    },
+    {
+      "id": "ASR",
+      "kind": "primary",
+      "title": "同一期官方音频的自动转录",
+      "locator": "https://media.xyzcdn.net/626b46ea9cbbf0451cf5a962/ludOBUWHSc2Y_GA47pSOwlGC8JPS.m4a",
+      "accessed_on": "2026-11-04",
+      "read_scope": "Brook约19:39–26:36逐段阅读；整期17个时间窗、11处微小重叠与故障区间已核查，详见转录核查记录；未人工听校。",
+      "media_sha256": "404d76192ff62e593940ebbe4d12ceadb3d4abe747e74dff11b77b31e68fef0b",
+      "original_transcript_sha256": "a31980417a25aea86e04f3c86d31ebab7cfff57a6262d28668eb675241a74bfe",
+      "recovered_transcript_sha256": "919e4ce5147340e2306748394cdb555bfc6a745119f846e7ce8c985056745b05"
+    },
+    {
+      "id": "NVIDIA",
+      "kind": "official",
+      "title": "Inside the Programming Evolution of GPU Computing",
+      "locator": "https://developer.nvidia.com/blog/inside-the-programming-evolution-of-gpu-computing/",
+      "accessed_on": "2026-11-04",
+      "read_scope": "全文机构历史回顾，Buck于2004年加入NVIDIA及Brook到CUDA路径；不推断当前职位。"
+    },
+    {
+      "id": "ACM",
+      "kind": "official",
+      "title": "ACM A.M. Turing Award Honors Pioneers of Modern Computer Graphics",
+      "locator": "https://www.acm.org/media-center/2020/march/turing-award-2019",
+      "accessed_on": "2026-11-04",
+      "read_scope": "全文，Hanrahan、RenderMan、着色器语言、Brook与CUDA；2019年度奖于2020-03-18公布。"
+    },
+    {
+      "id": "TRANSCRIPT_REVIEW",
+      "kind": "local",
+      "title": "整期自动转录结构及内容抽查记录",
+      "locator": "ai-learning/reports/knowledge_reports/.quality/AI演义_01_Brook_GPU通用计算_科普讲解_20261104.transcription-review.json",
+      "accessed_on": "2026-11-04",
+      "read_scope": "完整记录初始失败、两段重转、拼接边界、17个窗口、尾部与未听校限制；它是执行和审核证据，不代替原文语义。"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "已有通用GPU计算与C-like着色语言；痛点包含图形API编排与硬件限制。",
+      "report_anchor": "真正的问题是：",
+      "source_ids": [
+        "PAPER"
+      ],
+      "evidence": "§1–2列举前驱应用、HLSL/Cg/GLslang，以及纹理、shader加载和绘图构造的宿主负担。",
+      "support": "direct",
+      "critical": true
+    },
+    {
+      "id": "C2",
+      "claim": "Brook把已有流式处理语言适配GPU，通过streams、kernels、reductions表达数据并行。",
+      "report_anchor": "用三个概念",
+      "source_ids": [
+        "PAPER",
+        "SLIDE",
+        "ASR"
+      ],
+      "evidence": "§3及转录25:13–26:27，讲义第10页三核心概念。",
+      "support": "direct",
+      "critical": true
+    },
+    {
+      "id": "C3",
+      "claim": "kernel采用隐含遍历，局部寄存器保存中间量以减少回写；限制输入写入与跨元素副作用，但允许只读gather；部分高级读改写当时在CPU。",
+      "report_anchor": "这种方便为什么需要限制",
+      "source_ids": [
+        "PAPER"
+      ],
+      "evidence": "§3.1–3.4；§3.2指出中间量留在local register storage、最终结果写回。GPU内部局部性不同于CPU↔GPU搬运；gather只读不同于CPU上的GatherOp/ScatterOp。",
+      "support": "direct",
+      "critical": true
+    },
+    {
+      "id": "C4",
+      "claim": "规约通过多轮汇总，结合性是重组运算条件。",
+      "report_anchor": "Reduction：算完各行之后",
+      "source_ids": [
+        "PAPER"
+      ],
+      "evidence": "§3.3、§4.3；整数示例12+24+36=72用于直观说明，浮点舍入边界保留。",
+      "support": "direct",
+      "critical": true
+    },
+    {
+      "id": "C5",
+      "claim": "brcc生成Cg与宿主C++衔接；BRT管理纹理、发起四边形绘制、写入结果。",
+      "report_anchor": "从一句运算到一次 GPU 执行",
+      "source_ids": [
+        "PAPER"
+      ],
+      "evidence": "§4.1–4.2，Cg经厂商编译器生成GPU程序；每个输出stream元素对应片元。",
+      "support": "direct",
+      "critical": true
+    },
+    {
+      "id": "C6",
+      "claim": "跨平台虚拟化会产生拆分、额外读取、重复运算或复制成本。",
+      "report_anchor": "跨平台的意思",
+      "source_ids": [
+        "PAPER"
+      ],
+      "evidence": "§4.2、Table 1及OpenGL Pbuffer结果复制；不推出不同后端同速。",
+      "support": "direct",
+      "critical": true
+    },
+    {
+      "id": "C7",
+      "claim": "ATI BrookDX与CPU三任务吞吐量比值约6.93、4.65、0.99，排除初始上传及最终下载。",
+      "report_anchor": "论文里的“最高约 7 倍”",
+      "source_ids": [
+        "PAPER"
+      ],
+      "evidence": "Figure3原始值4324/624、12163/2616、1212/1224；§5明确排除initial streamRead/final streamWrite。",
+      "support": "derived",
+      "critical": true
+    },
+    {
+      "id": "C8",
+      "claim": "端到端收益取决于计算、搬运与调用成本，GPU计算快不保证全流程快。",
+      "report_anchor": "最容易漏掉的条件",
+      "source_ids": [
+        "PAPER"
+      ],
+      "evidence": "§5.2 cost model；正文70/10/5/80毫秒明确教学自拟，15/90毫秒为算术结果。",
+      "support": "derived",
+      "critical": true
+    },
+    {
+      "id": "C9",
+      "claim": "Brook/CUDA存在人才与技术前驱关系；Hanrahan经历连接图形语言研究和通用计算。",
+      "report_anchor": "为什么人物与组织史",
+      "source_ids": [
+        "PAPER",
+        "NVIDIA",
+        "ACM"
+      ],
+      "evidence": "论文7位作者；NVIDIA记Buck2004加入；ACM明确RenderMan/着色器/Brook/CUDA联系；不称改名。",
+      "support": "direct",
+      "critical": true
+    },
+    {
+      "id": "C10",
+      "claim": "播客对应时间由机器转录定位，Shownotes19:35为Part1入口；稿件用论文补足技术细节。",
+      "report_anchor": "播客、讲义和论文",
+      "source_ids": [
+        "ASR",
+        "SHOWNOTES",
+        "SLIDE",
+        "PAPER"
+      ],
+      "evidence": "原始转录19:39背景，20:49引出Brook，23:43团队，25:13核心，26:36过渡；时间为近似。",
+      "support": "direct",
+      "critical": true
+    },
+    {
+      "id": "C11",
+      "claim": "整期53块处理完毕，初始153次循环经局部重转后恢复，修复版7553段、重复检查最大3、时间戳错误0；末尾仍有约16秒未确认。",
+      "report_anchor": "整期转写的使用边界",
+      "support": "direct",
+      "source_ids": [
+        "TRANSCRIPT_REVIEW",
+        "ASR"
+      ],
+      "evidence": "原始与恢复后转录哈希、媒体时长、段数及审计值见转录核查记录；修复版全部原文私有保存可复核。",
+      "critical": true
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U1",
+      "title": "计算独立性与GPU研究动机",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "显卡为什么会成为计算工具的候选者",
+      "source_ids": [
+        "PAPER",
+        "SLIDE",
+        "ASR"
+      ]
+    },
+    {
+      "id": "U2",
+      "title": "已有着色语言仍有API门槛",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "已经能写着色器",
+      "source_ids": [
+        "PAPER",
+        "ASR"
+      ]
+    },
+    {
+      "id": "U3",
+      "title": "三个抽象与读写限制",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "用三个概念",
+      "source_ids": [
+        "PAPER",
+        "SLIDE",
+        "ASR"
+      ]
+    },
+    {
+      "id": "U4",
+      "title": "编译运行时与跨平台代价",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "从一句运算到一次 GPU 执行",
+      "source_ids": [
+        "PAPER"
+      ]
+    },
+    {
+      "id": "U5",
+      "title": "实验口径与端到端成本",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "论文里的“最高约 7 倍”",
+      "source_ids": [
+        "PAPER",
+        "ASR"
+      ]
+    },
+    {
+      "id": "U6",
+      "title": "团队与CUDA路径",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "为什么人物与组织史",
+      "source_ids": [
+        "PAPER",
+        "ASR",
+        "NVIDIA",
+        "ACM"
+      ]
+    },
+    {
+      "id": "U7",
+      "title": "与AI学习路线相接",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "从 Brook 到 AlexNet",
+      "source_ids": [
+        "PAPER",
+        "NVIDIA",
+        "SHOWNOTES"
+      ]
+    },
+    {
+      "id": "U8",
+      "title": "四类材料与全期转录质量边界",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "整期转写的使用边界",
+      "source_ids": [
+        "ASR",
+        "SHOWNOTES",
+        "SLIDE",
+        "PAPER",
+        "TRANSCRIPT_REVIEW"
+      ]
+    }
+  ],
+  "limitations": [
+    "未人工听校整段音频；ASR与讲义/论文不一致时只登记候选纠正，不判定每处是口误还是识别错，不能估计WER。",
+    "原始整期转录在03:41:50.8–03:45:00连续重复153段；已通过两段170秒原音频重转恢复并复查拼接，原始失败产物保留。修复版结构通过不等于准确率通过。",
+    "音频媒体15757.48秒、解码15757.479秒，但来源未提供独立精确publisher时长；机器转录末尾约16秒未覆盖，不宣称逐字完整。",
+    "论文性能为2004年硬件结果，未复现，不外推现代显卡；所有教学数字显式标注。",
+    "本篇只讲Brook；其他章节的事实、精确数字和语音质量未逐字核验。",
+    "人物轶事、首款GPU优先权、现任职位未充分核实，不采入正文。",
+    "初审使用同模型的新会话；来源优先与独立执行可减小锚定，不能消除同模型盲区。"
+  ]
+}

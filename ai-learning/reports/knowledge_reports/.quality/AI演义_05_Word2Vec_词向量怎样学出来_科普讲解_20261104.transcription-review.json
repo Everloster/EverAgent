@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "kind": "chapter-transcription-review",
+  "reviewed_on": "2026-11-04",
+  "chapter": 5,
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+  "transcript_source_ref": "sha256:919e4ce5147340e2306748394cdb555bfc6a745119f846e7ce8c985056745b05",
+  "read_scope": {
+    "content_window_approx_seconds": [
+      8488,
+      8907
+    ],
+    "context_window_seconds": [
+      8488.57,
+      8913.39
+    ],
+    "segments_read": 221,
+    "chapter_excerpt_sha256": "90106e1fbd81dbe38c85803c9920a4b3b84fe564151cf16bfca7e21901b696ea",
+    "chapter_segments_sha256": "9fbfa43c021dc7bec2dfc7af5faccda097ffa2776ae5b0314270b89749b66c10",
+    "full_segments_sha256": "f322514ced72235a0ca104635824c66df425c18dbae3d0f4e76fa70d088db61c",
+    "full_segments_zero_based_slice": [
+      3976,
+      4197
+    ],
+    "time_basis": "Shownotes Part3入口02:21:29；本章结束与含交接范围按ASR逐段定位，正文使用约数。"
+  },
+  "structural_audit": {
+    "schema_version": 2,
+    "kind": "podcast-transcript-audit",
+    "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+    "source_ref": "sha256:919e4ce5147340e2306748394cdb555bfc6a745119f846e7ce8c985056745b05",
+    "max_consecutive_limit": 3,
+    "audit": {
+      "ok": true,
+      "size": 389895,
+      "sha256": "919e4ce5147340e2306748394cdb555bfc6a745119f846e7ce8c985056745b05",
+      "lines": 7553,
+      "segments": 7553,
+      "duration_seconds": 15741,
+      "max_consecutive_identical": 3,
+      "timestamp_errors": 0,
+      "malformed_lines": 0,
+      "tail_gap_seconds": 0
+    }
+  },
+  "public_full_episode_receipt": "podcast-learning/reports/transcripts/2026-11-04_ai-yanyi-117.audit.json",
+  "chapter_segment_check": {
+    "overlap_count": 1,
+    "overlap_seconds": 0.1,
+    "previous_segment_seconds": [
+      8500.52,
+      8500.62
+    ],
+    "following_segment_seconds": [
+      8500.52,
+      8501.32
+    ],
+    "interpretation": "原始浮点分段一处重叠；整秒文本时间戳结构审计通过不意味着原始segments无重叠。"
+  },
+  "term_and_claim_checks": [
+    {
+      "time": "02:21:35–02:21:43；02:24:43–02:24:46；02:26:12–02:26:16",
+      "raw": "我图VAC／WaterVac／WorldRex",
+      "adopted": "Word2Vec",
+      "basis": "Shownotes、讲义标题、两篇原论文",
+      "kind": "term_correction"
+    },
+    {
+      "time": "02:22:39–02:23:30；02:24:16–02:24:35",
+      "raw": "苹果品牌和水果不是一个向量；按语义向量搜索",
+      "adopted": "保留苹果例子的阅读价值；普通Word2Vec同一词条为静态输入向量，不能自动按当前句子消歧。上下文表示需另有网络计算，搜索收益需实际任务验证。",
+      "basis": "首篇§2–3；BERT§2.1–2.2、§3",
+      "kind": "mechanism_correction"
+    },
+    {
+      "time": "02:24:43–02:25:47",
+      "raw": "能作king-man+woman、国家减首都，所以叫连续",
+      "adopted": "连续表示是实数空间中的可调向量；类比是近似位移和余弦最近邻，不能当逐坐标恒等式。king现象在首篇引言引用先前工作。",
+      "basis": "首篇§1.1、§4–5",
+      "kind": "definition_and_analogy_correction"
+    },
+    {
+      "time": "02:26:06–02:26:22",
+      "raw": "一作Thomas，二作Jeffrey；第一次用机器学习把单词向量化",
+      "adopted": "首篇署名Mikolov、Chen、Corrado、Dean；承认分布式表示与神经语言模型前史，贡献限定为高效任务及规模化。",
+      "basis": "首篇首页、§1.2；讲义p33视觉确认首次措辞确实存在",
+      "kind": "identity_and_history_correction"
+    },
+    {
+      "time": "02:26:36–02:26:58",
+      "raw": "过去向量提前学好，手工标注出来",
+      "adopted": "原始文本窗口自动构造训练例，用SGD/backprop学向量；人工关系词对属于类比评测。",
+      "basis": "首篇§3、§4.1–4.2",
+      "kind": "training_supervision_correction"
+    },
+    {
+      "time": "02:27:01–02:28:26",
+      "raw": "词到token、GPT4词表、没有R token、字母计数与Strawberry代号",
+      "adopted": "仅据BERT原文解释处理单位、输入表和上下文网络三层；不采用未核实的当代产品词表、字母能力和代号说法。",
+      "basis": "BERT§3与Figure1/2；本任务未调查当代产品",
+      "kind": "scope_boundary"
+    }
+  ],
+  "audio_listened": false,
+  "word_accuracy_measured": false,
+  "verbatim_completeness": "unverified",
+  "limitations": [
+    "复用同SHA整期结构审计，没有重转写或人工听音；不能分清每一处是识别错误还是讲者口误。",
+    "本章221段逐段阅读并交叉核原文，不以头尾抽查代替本章内容核对。",
+    "整期音频15757.479秒、末段15741.49秒，尾部15.989秒仍未知；文本tail_gap=0不是原音频覆盖结论。",
+    "完整转录、音频与执行收据留在公开仓外。"
+  ],
+  "conclusion": "本章可作为对照原文后的研究定位材料；关键概念按论文校正，未认证逐字准确性或全文音频完整性。"
+}

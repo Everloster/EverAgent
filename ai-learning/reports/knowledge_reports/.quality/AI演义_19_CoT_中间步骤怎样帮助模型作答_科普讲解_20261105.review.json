@@ -1,0 +1,808 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_19_CoT_中间步骤怎样帮助模型作答_科普讲解_20261105.md",
+  "quality_tier": "important",
+  "revision_round": 1,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "gpt-6-astra",
+        "harness": "codex",
+        "run_id": "review-cot-primary-source-first-20261105",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "model_identity_status": "configured_only",
+        "configured_model": "gpt-6-astra",
+        "configuration_evidence": "本会话启动时的eacli session current配置记录及协调者调度收据；model参数未显式覆盖。",
+        "runtime_model": "unconfirmed",
+        "runtime_model_confirmed": false,
+        "identity_limit": "没有可核验的本子会话per-run运行模型证明；不借用根会话身份，调度记录不等于运行证明。",
+        "run_id_kind": "审阅产物标识，不是运行模型证明"
+      },
+      "reviewed_at": "2026-11-05T03:01:26.153646+00:00",
+      "source_first_map_proof": {
+        "artifact": "primary-source-map.json",
+        "sha256": "ec7ef4a2aed75683ddd8d44c2691b857b421fddd148340e3f59aa398e3bd879b",
+        "frozen_at": "2026-11-05T02:37:34.048620+00:00",
+        "frozen_before_candidate": true,
+        "candidate_snapshot_checked_at": "2026-11-05T02:45:33.212150+00:00",
+        "candidate_read_after_snapshot_check": true,
+        "original_units_preserved": 13,
+        "original_core_units": 11,
+        "original_supporting_units": 2,
+        "preserved_fields": [
+          "id",
+          "title",
+          "importance"
+        ],
+        "other_current_reviewer_content_read": false,
+        "scope": "先独立阅读来源并冻结13项内容地图，再阅读候选和evidence；候选阶段只增加assessment及coverage映射，不回写冻结地图。"
+      },
+      "source_read_scope": {
+        "paper": "CoT v6原PDF的物理p1–9、16–23、25–37，共30页抽取正文；p1、20–23另核图像。亲自重抽取原PDF并与缓存核对。未读p10–15、24、38–43，未复跑模型。",
+        "lecture": "讲义物理p18完整页，经eacli视觉分析后直接看原页；未将缺字的文本抽取作为唯一依据。",
+        "episode": "shownotes全文及本章全部278段转写，源零基2038–2315，4947.03–5406.77秒。与完整源的对应切片逐段核对，其余7275段未读，未听音。",
+        "web": "已读arXiv CoT v6版本页、Google作者博文的全部缓存正文；Zero-shot CoT与Self-consistency仅摘要和版本记录，未读两篇全文。",
+        "source_extraction_receipt": {
+          "artifact": "primary-source-extraction-check.json",
+          "sha256": "ced0217da32e4768e84374da2d37ff0987a0bc79a55f7db44a10b5e7e34721b9"
+        },
+        "source_recheck_receipt": {
+          "artifact": "primary-stage2-source-check.json",
+          "sha256": "0d7a4d1598176e69a8eb64aa19d95d4f1793eec1b1240d32428a7306e44d5c4c"
+        }
+      },
+      "transcript_review": {
+        "segments_checked": 278,
+        "time_range_seconds": [
+          4947.03,
+          5406.77
+        ],
+        "elapsed_seconds": 459.74,
+        "start_monotonic_violations": 0,
+        "end_monotonic_violations": 0,
+        "negative_durations": 0,
+        "overlap_count": 1,
+        "max_overlap_seconds": 0.03,
+        "positive_gap_count": 1,
+        "positive_gap_seconds": 1.38,
+        "longest_consecutive_identical_text": 1,
+        "repeat_excess": 5,
+        "repeats_assessment": "均为短口语，未见连续重复循环。",
+        "native_audit_pass": true,
+        "native_receipt": {
+          "artifact": "primary-transcript-native-audit.json",
+          "sha256": "da7f04fcd00ef74d13ba6b9565f8d32d3dc0bfcd70a7cd6a4223cd2d5fb28a10"
+        },
+        "precision_receipt": {
+          "artifact": "primary-transcript-precision-audit.json",
+          "sha256": "cb161c2678c2b36ae55f738d4a0cab3cbfebdd46b035f430910a5437bfc2088b"
+        },
+        "sidecar_comparison_receipt": {
+          "artifact": "primary-stage2-source-check.json",
+          "sha256": "0d7a4d1598176e69a8eb64aa19d95d4f1793eec1b1240d32428a7306e44d5c4c"
+        },
+        "limits": "本人生成兼容格式并运行仓库原生审计；整数秒检查另由百分秒精度检查补足。公开sidecar及原生收据已读且与独立运行一致；未测ASR字错率。"
+      },
+      "visual_review": {
+        "receipt": {
+          "artifact": "primary-visual-check.json",
+          "sha256": "9ec5eb724499de9ce49b0b19889b247464050a9a96e62b6f0cf75ab70ad16bec"
+        },
+        "scope": "本人核收据、SHA和4张截图；实际点击、DOM及横滚由协调者执行。未据图推断全文均无排版缺陷。"
+      },
+      "static_links_receipt": {
+        "artifact": "primary-static-links-check.json",
+        "sha256": "71a35b468adcf9ec8bcedde11b5ac277db964c3bdcb949e54315a6ff78c1b104"
+      },
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "policy_binding": {
+        "policy_id": "report-quality-2026-10-18-r2",
+        "canonical_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2"
+      },
+      "review_recommendation": "本轮未发现实质阻断项；本记录为独立主审输入，最终准入仍由协调者汇总所需复核并运行原生质量门禁。",
+      "snapshot_binding": {
+        "report_path": "ai-learning/reports/knowledge_reports/AI演义_19_CoT_中间步骤怎样帮助模型作答_科普讲解_20261105.md",
+        "report_sha256": "1603d8ce81c60f81d5bed1baf4b0b0da9a0afc68fe383878a89153e73d68e5ed",
+        "evidence_sha256": "387886f5b629c581d6e1a61ca6b5fa5bc53cd38a0adafd8c29de21117e13a128",
+        "revision_round": 1,
+        "quality_tier": "important",
+        "evidence_path": "ai-learning/reports/knowledge_reports/.quality/AI演义_19_CoT_中间步骤怎样帮助模型作答_科普讲解_20261105.evidence.json"
+      },
+      "scores": {
+        "evidence_fidelity": 98,
+        "request_coverage": 96,
+        "reasoning_quality": 96,
+        "readability": 95,
+        "limitations": 97
+      },
+      "score_reasons": {
+        "evidence_fidelity": "15项critical主张逐项核到原PDF对应图表、全部目标转写或已读一手摘要；实验模型、题数、解码、均值/标准差、版本和反例准确。网页缓存与机器收据SHA已核。文中没有把原文冲突计数合成可信总体比例，也没有将示例冒称新复现。",
+        "request_coverage": "6项任务要求及18项候选覆盖全部检查；13项独立来源地图中11个core均有实质对应。U16人物履历与U17产品因果细节有明确不采用理由。鲁棒性只给敏感性概述，未带99.6→71.4数值例；这项细节不足不影响核心边界。",
+        "reasoning_quality": "苹果题串联示范、生成与后续上下文；成组实验和消融区分机制解释与统计效果，SingleOp及CSQA反例阻止万能化，苹果派说明终答与过程分开核。应用建议标为推测且要求控制任务/成本；未从2022论文推出后续产品内部技术。",
+        "readability": "通俗问题推进、一个主例贯穿，必要数字集中四表；导航、目录与脚注有快照绑定点击收据，桌面与窄屏可见内容已亲自看图。全文较长，后段方法边界与来源说明密度略高；窄屏表格需局部滚动，但两端均能读全。",
+        "limitations": "披露来源阅读边界、原文内部计数不一致、小样本人审局限、未复跑与未听校；没有把可见步骤认作内部实录。后续论文仅摘要、人物和产品因果未核范围明确，评分仍受这些可核范围限制。"
+      },
+      "critical_claim_ids_checked": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15"
+      ],
+      "source_ids_checked": [
+        "PAPER",
+        "LECTURE",
+        "EPISODE",
+        "AUTHOR_BLOG",
+        "ZERO_SHOT",
+        "SELF_CONSISTENCY",
+        "TRANSCRIPT_REVIEW"
+      ],
+      "coverage_unit_ids_checked": [
+        "U1",
+        "U2",
+        "U3",
+        "U4",
+        "U5",
+        "U6",
+        "U7",
+        "U8",
+        "U9",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16",
+        "U17",
+        "U18"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6"
+      ],
+      "source_content_map": [
+        {
+          "id": "primary-cot-background",
+          "title": "为何大模型仍会卡在多步题上",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "LECTURE",
+            "EPISODE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1",
+            "U13"
+          ],
+          "notes": "§1区分模型、上下文示范和再训练，交代已有中间步骤研究及少量带步骤示例所回答的问题；§10保留讲义和播客的历史视角而不把口述当实验。 来源定位：论文§1–2，物理p2–3；讲义物理p18“历史背景”；播客01:22:27.03–01:24:19.78；shownotes Part 1中的CoT条目。"
+        },
+        {
+          "id": "primary-cot-method",
+          "title": "示例里补上中间步骤，测试时先生成步骤再作答",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "LECTURE",
+            "EPISODE",
+            "AUTHOR_BLOG"
+          ],
+          "matched_coverage_unit_ids": [
+            "U2",
+            "U3",
+            "U11"
+          ],
+          "notes": "§2完整展示网球示范与苹果新题，分开人给示范、模型生成步骤和不更新参数；§3解释中间输出参与后续上下文，同时限定可见文字不能证明全部内部过程。 来源定位：论文Fig.1，§2–3.1，物理p1–4；Table20，p35；讲义物理p18“核心贡献”第一条；播客01:25:51.68–01:26:37.60；Google blog“Comparison to Standard Prompting”。"
+        },
+        {
+          "id": "primary-cot-arithmetic",
+          "title": "算术结果的提升与实验口径",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "AUTHOR_BLOG"
+          ],
+          "matched_coverage_unit_ids": [
+            "U4",
+            "U5"
+          ],
+          "notes": "§4把v6、1,319题、PaLM540B、8例、greedy和准确率口径写清；17.9/56.9/58.6分行比较，并将39.0称百分点。计算器和博客后续投票成绩分开，未声称本轮重现模型输出。 来源定位：论文§3.1–3.2，p3–5；Table1–2，p20–21；Table12，p29；AppendixE，p30；Google blog“Arithmetic Reasoning”及图注。"
+        },
+        {
+          "id": "primary-cot-scale",
+          "title": "规模有影响，收益也取决于题目",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U7"
+          ],
+          "notes": "§6用SingleOp562题94.1→94.1与MultiArith600题42.2→94.7展示任务差异，并用PaLM62B的9.6→29.9反驳普遍100B硬门槛；模型与训练计算量的混杂得到保留。 来源定位：论文§3.2，p4–5；AppendixA.1/A.3，p16–19；Table2–3，p21。"
+        },
+        {
+          "id": "primary-cot-ablations",
+          "title": "消融支持了什么机制解释",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U6"
+          ],
+          "notes": "§5含算式、点号、先答后解释三种对照与完整CoT；LaMDA137B的五行均值和标准差逐项正确，±解释为五种示例排列间标准差。对机制的归纳限定在被测模型和任务，未把长度无效推广为普遍规律。 来源定位：论文§3.3，p5–6；AppendixA.4，p19；Table6–7，p23。"
+        },
+        {
+          "id": "primary-cot-robustness",
+          "title": "无需固定话术，但提示仍然影响效果",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10"
+          ],
+          "notes": "§7明确更换作者、示例或顺序仍有许多收益，同时指出幅度变化与硬币翻转尤其敏感。未列99.6→71.4的具体提示反例，但保留了同等重要的非保证边界；属于细节压缩，不是核心结论缺失。 来源定位：论文§3.4，p6–7；AppendixA.2，p17–18；Table6–7，p23；AppendixD.3/Fig.11，p28–29。"
+        },
+        {
+          "id": "primary-cot-commonsense",
+          "title": "迁移到常识与行动规划，但增益并不统一",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8"
+          ],
+          "notes": "§6保留text-davinci-002在CSQA79.5→73.5的反例及SayCan离散计划分数边界；避免将有步骤等同于事实可靠或真实机器人执行成功。 来源定位：论文Fig.3，p4；§4，p7；Table4，p22；Tables15–19，p32–34。"
+        },
+        {
+          "id": "primary-cot-symbolic",
+          "title": "符号任务中的状态追踪与有限长度泛化",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8"
+          ],
+          "notes": "§6用末字母两/三/四词99.4/94.8/63.0说明有限长度外推，并明确toy任务不能证明任意长的复杂推理。与原表一致，没有用短例掩盖长度增长后的衰减。 来源定位：论文§5/Fig.8，p8；Table5，p22；Tables13–14，p32；Tables22–23，p36–37。"
+        },
+        {
+          "id": "primary-cot-errors",
+          "title": "写出步骤仍可能错，答案对也可能过程错",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3",
+            "U9"
+          ],
+          "notes": "§7还原Table9苹果派语义反转但答案26正确的案例，区分算术、漏步、语义及内部忠实性问题；指出条件小样本人审不能变成总体可靠率，回避原文计数冲突。 来源定位：论文§3.2，p5；§6，p9；AppendixA.1，p16–17；AppendixD.1–D.2，p25–28；Tables13–19，p32–34。"
+        },
+        {
+          "id": "primary-cot-followups",
+          "title": "原版CoT、zero-shot CoT和self-consistency的边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "EPISODE",
+            "ZERO_SHOT",
+            "SELF_CONSISTENCY",
+            "AUTHOR_BLOG"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11"
+          ],
+          "notes": "§8把few-shot CoT、Zero-shot CoT、自洽投票和SFT分别放在提示、解码或参数训练环节。后两篇来源仅摘要与版本页，正文及来源说明不冒称全面核其实验。 来源定位：论文§3.1，p4；播客01:25:51.68–01:26:37.60的magic words叙述；Zero-shot论文摘要与提交历史，arXiv2205.11916；Self-consistency论文摘要与提交历史，arXiv2203.11171；Google blog“Arithmetic Reasoning”。"
+        },
+        {
+          "id": "primary-cot-podcast-history",
+          "title": "播客对后训练、上下文工程与强化学习的联结",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "LECTURE",
+            "EPISODE",
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U13",
+            "U17"
+          ],
+          "notes": "§8/§10保留既有能力、后训练/thinking及输入工程的历史联结，同时纠正CoT本质即监督学习的过度概括。U17所指产品因果细节有明确不采用理由，未声称原论文证明了后续产品内部方法。 来源定位：讲义物理p18“核心贡献”后两条；播客01:23:43.97–01:24:19.78、01:26:37.57–01:27:22.83、01:28:54.86–01:30:06.77；论文§6，p9；AppendixC.5，p25；AppendixE.1–E.2，p30。"
+        },
+        {
+          "id": "primary-cot-version",
+          "title": "论文年份、版本与当时的比较对象",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "EPISODE",
+            "LECTURE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U15"
+          ],
+          "notes": "§4和版本脚注明确首发2022-01-28、使用2023-01-10 v6、v1仅LaMDA及后续加入PaLM等模型；没有把后增表格混回首版。 来源定位：论文p1；AppendixE Version Control，p30；arXiv2201.11903v6摘要页及提交历史；shownotes CoT(2022.01)与讲义物理p18标题。"
+        },
+        {
+          "id": "primary-cot-people-learning",
+          "title": "作者线索与发现重要问题的学习价值",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "LECTURE",
+            "EPISODE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U13",
+            "U16"
+          ],
+          "notes": "§10保留找重要问题的学习价值、继续阅读作者博客/分享及CS25的线索；人物履历、职位、引用倍数未独立核验并明确省略。supporting的轶事未全展开，不影响本章机制。 来源定位：讲义物理p18“作者”；播客01:24:23.64–01:25:51.68及01:27:22.83–01:28:54.86；shownotes开场对论文阅读价值的说明。"
+        }
+      ],
+      "source_id_translation": {
+        "paper-cot-v6": [
+          "PAPER"
+        ],
+        "lecture-p18": [
+          "LECTURE"
+        ],
+        "podcast-cot-chapter": [
+          "EPISODE"
+        ],
+        "podcast-shownotes": [
+          "EPISODE"
+        ],
+        "arxiv-cot-v6": [
+          "PAPER"
+        ],
+        "google-cot-blog": [
+          "AUTHOR_BLOG"
+        ],
+        "arxiv-zero-shot": [
+          "ZERO_SHOT"
+        ],
+        "arxiv-self-consistency": [
+          "SELF_CONSISTENCY"
+        ]
+      },
+      "candidate_read_scope": "全文、完整evidence的7来源/15 critical主张/18 coverage/6 requirements，以及TRANSCRIPT_REVIEW公共sidecar全文均已读；相关引用定位已核。无旧版内容继承。",
+      "supplementary_candidate_coverage_checks": [
+        {
+          "id": "U12",
+          "assessment": "covered",
+          "notes": "应用实验方案和Personal Context收益显式标推测，要求分离示范与测试、固定模型与任务并记录成本；没有冒称新增实证。"
+        },
+        {
+          "id": "U14",
+          "assessment": "covered",
+          "notes": "目标278段审计本人重做，0.03秒重叠和1.38秒间隔与sidecar一致；保留未听音/未测WER边界。"
+        },
+        {
+          "id": "U18",
+          "assessment": "covered",
+          "notes": "原节改写、标题后首块入口及返回/前后节静态路径亲核；协调者的1440/390点击收据和本人所见截图相互吻合。"
+        }
+      ],
+      "notes": "本轮独立来源地图先冻结，候选全文随后阅读，未读取另一位当前Reviewer的输出。11项core主题都得到直接说明，supporting人物学习单元部分保留，其余未核轶事明确省略。未发现关键事实、必要需求或可见呈现的阻断项；细小不足是鲁棒性反例未量化、后段略密。点击由协调者完成，本人核收据并直接看图；后续摘要范围、未听校与未复跑边界不扩大。运行模型身份仍未确认。",
+      "weighted_score_for_reference": 96.65,
+      "score_not_final_gate_decision": true
+    },
+    {
+      "role": "flagship_final_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "dispatch_model_override": true,
+        "configured_model": "gpt-5.6-sol",
+        "configuration_source": "reviewer-dispatch-receipt.json / flagship premium order",
+        "runtime_model": "unconfirmed",
+        "runtime_model_confirmed": false,
+        "identity_note": "model字段记录策略调度配置；当前无可信子会话runtime证明，不借协调者、生成者或其它Reviewer身份补证。",
+        "run_id": "cot-s19-strong-expanded-r1-20261105"
+      },
+      "snapshot_binding": {
+        "report_path": "ai-learning/reports/knowledge_reports/AI演义_19_CoT_中间步骤怎样帮助模型作答_科普讲解_20261105.md",
+        "report_sha256": "1603d8ce81c60f81d5bed1baf4b0b0da9a0afc68fe383878a89153e73d68e5ed",
+        "evidence_sha256": "387886f5b629c581d6e1a61ca6b5fa5bc53cd38a0adafd8c29de21117e13a128",
+        "revision_round": 1,
+        "verified": true,
+        "source_map_sha256": "c45153fc7fda2207de4ecc2a983381adb22444c9d771705fc4d8a1052ecaffd7",
+        "source_addendum_sha256": "79b70f457f6a314cceffb3bc0d4e03b0f9871044ed31b87e399aa0c7c928d6fc"
+      },
+      "inheritance": {
+        "kind": "none_new_report",
+        "directly_rechecked_claim_ids": [
+          "C1",
+          "C2",
+          "C3",
+          "C4",
+          "C5",
+          "C6",
+          "C7",
+          "C8",
+          "C9",
+          "C10",
+          "C11",
+          "C12",
+          "C13",
+          "C14",
+          "C15"
+        ],
+        "directly_rechecked_coverage_unit_ids": [
+          "U1",
+          "U2",
+          "U3",
+          "U4",
+          "U5",
+          "U6",
+          "U7",
+          "U8",
+          "U9",
+          "U10",
+          "U11",
+          "U12",
+          "U13",
+          "U14",
+          "U15",
+          "U16",
+          "U17",
+          "U18"
+        ],
+        "directly_rechecked_source_ids": [
+          "PAPER",
+          "LECTURE",
+          "EPISODE",
+          "AUTHOR_BLOG",
+          "ZERO_SHOT",
+          "SELF_CONSISTENCY",
+          "TRANSCRIPT_REVIEW"
+        ],
+        "directly_rechecked_requirement_ids": [
+          "R1",
+          "R2",
+          "R3",
+          "R4",
+          "R5",
+          "R6"
+        ],
+        "note": "展开稿r1全部集合均为本轮直接内容核验，无历史review继承。"
+      },
+      "navigation_receipt": {
+        "artifact": "navigation-receipt.json",
+        "sha256": "df15fbfc96435b2918e72df72da13f7259ea604ae8396b5e36c938bdb9d0e9e4",
+        "reviewer_action": "读取并核对绑定SHA、1440/390实际点击、目录/脚注/往返与四表DOM；协调者操作浏览器，本Reviewer未操作。"
+      },
+      "visual_review_receipt": {
+        "artifact": "workbench-visual-review.json",
+        "sha256": "900803fca3ee2f4149858119dfc7437af6ed90394fed0c86a6907c60c9bdc694",
+        "reviewer_action": "核收据并查看缓存截图；窄屏四表左右端和14.3%±0.4换行均可读，局部横滚不造成整页溢出。"
+      },
+      "scores": {
+        "evidence_fidelity": 98,
+        "request_coverage": 99,
+        "reasoning_quality": 98,
+        "readability": 98,
+        "limitations": 99
+      },
+      "score_reasons": {
+        "evidence_fidelity": "15项critical claims逐项回到CoT v6正文、Tables1–7/9/12、FAQ与错误分析核验；17.9→56.9、58.6计算器、消融均值±顺序标准差、SingleOp/MultiArith、62B反例、CSQA退步与尾字母长度迁移均口径准确。后续两篇只按官方摘要使用，未越界综述。",
+        "request_coverage": "苹果题贯穿问题、示范、上下文和失败；包含少量必要数字、原论文真实实验、直接反例、实验边界、可执行实践建议、讲义/播客视角、三问与前后节往返。用户要求的真实实验和反例均来自原论文，并明确本章未复跑模型。",
+        "reasoning_quality": "从调用方式是否释放能力出发，依次用完整提示回路、autoregressive上下文直觉、消融和跨任务反例检验替代解释；区分external calculator、zero-shot、self-consistency、SFT/RL和ReAct，不把谱系关系写成训练因果。",
+        "readability": "术语首次出现即解释，四张表各回答一个问题，苹果案例维持上下文，真实输出与教学构造显式区分。1440/390收据和截图显示入口、导航、目录、脚注及四表可用，窄屏局部滚动完整呈现左右列。",
+        "limitations": "明确v1/v6、greedy/计算器/投票、展示例/成组实验、条件抽样/总体错误率、计划评价/机器人执行、自动转写/准确听写的边界；人物、引用统计、产品因果和未读全文均公开声明。"
+      },
+      "critical_claim_ids_checked": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15"
+      ],
+      "coverage_unit_ids_checked": [
+        "U1",
+        "U2",
+        "U3",
+        "U4",
+        "U5",
+        "U6",
+        "U7",
+        "U8",
+        "U9",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16",
+        "U17",
+        "U18"
+      ],
+      "source_content_map": [
+        {
+          "id": "COT-01",
+          "title": "问题设定：规模、传统 few-shot 与 rationale 监督的缺口",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "EPISODE",
+            "LECTURE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1",
+            "U13"
+          ],
+          "notes": "问题设定、传统few-shot缺口、rationale训练成本与材料中的历史视角均被重构并收窄。"
+        },
+        {
+          "id": "COT-02",
+          "title": "方法：few-shot 输出侧示范，不更新权重",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U2",
+            "U3"
+          ],
+          "notes": "网球示范—苹果待解题的完整来回、三类步骤来源与无梯度更新边界清楚。"
+        },
+        {
+          "id": "COT-03",
+          "title": "实验设置与解码口径",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "SELF_CONSISTENCY"
+          ],
+          "matched_coverage_unit_ids": [
+            "U4",
+            "U6",
+            "U15",
+            "U11"
+          ],
+          "notes": "样本、版本、模型、8-shot、greedy、五顺序标准差与后续多路径解码区分完整；addendum并入原ID。"
+        },
+        {
+          "id": "COT-04",
+          "title": "算术主结果与精确数字",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "AUTHOR_BLOG"
+          ],
+          "matched_coverage_unit_ids": [
+            "U4",
+            "U5",
+            "U7"
+          ],
+          "notes": "GSM8K主结果、39.0pp、58.6外部计算器以及简单/多步题对照均按表格口径呈现。"
+        },
+        {
+          "id": "COT-05",
+          "title": "“涌现”是本实验观察，不是普遍参数定律",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U7"
+          ],
+          "notes": "明确约100B不是硬阈值，以PaLM62B 9.6→29.9和规模/算力混杂限制外推。"
+        },
+        {
+          "id": "COT-06",
+          "title": "跨任务证据：常识与符号任务有收益也有反例",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8"
+          ],
+          "notes": "常识、SayCan、符号toy长度迁移、长度退化及GPT-3 CSQA 79.5→73.5反例齐全。"
+        },
+        {
+          "id": "COT-07",
+          "title": "消融：自然语言步骤、顺序与额外 token 的区别",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U6"
+          ],
+          "notes": "equation-only、点号、先答后解释与完整CoT的LaMDA137B五组均给出均值和标准差口径。"
+        },
+        {
+          "id": "COT-08",
+          "title": "鲁棒性与 prompt engineering 仍重要",
+          "importance": "core",
+          "assessment": "partial",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10"
+          ],
+          "notes": "正文覆盖不同作者、示例和顺序下的波动及coin-flip敏感性，但未保留99.6/71.4/50.0数字和反转列表预实验；不影响主结论。"
+        },
+        {
+          "id": "COT-09",
+          "title": "错误案例与“答案正确≠推理忠实”",
+          "importance": "core",
+          "assessment": "partial",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U9"
+          ],
+          "notes": "具体苹果派反例、错误位置和条件抽样边界完整；为避免论文内部计数冲突，未展开D.2的8%/16%/22%/54%分布，属于审慎压缩。"
+        },
+        {
+          "id": "COT-10",
+          "title": "论文自述局限",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3",
+            "U9"
+          ],
+          "notes": "内部推理未被完整刻画、正确答案可能伴随错误过程、工具只能修部分错误等局限清楚。"
+        },
+        {
+          "id": "COT-11",
+          "title": "播客与讲义的后见历史叙事",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "EPISODE",
+            "LECTURE",
+            "PAPER",
+            "AUTHOR_BLOG"
+          ],
+          "matched_coverage_unit_ids": [
+            "U13",
+            "U16",
+            "U17"
+          ],
+          "notes": "完整呈现播客重要论点，同时把人物履历、引用增长、o1/R1与产品因果标为未核或有意省略。"
+        },
+        {
+          "id": "COT-12",
+          "title": "必须区分的后来概念",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "ZERO_SHOT",
+            "SELF_CONSISTENCY",
+            "AUTHOR_BLOG"
+          ],
+          "matched_coverage_unit_ids": [
+            "U5",
+            "U11"
+          ],
+          "notes": "保留原稳定ID并并入addendum：few-shot CoT、2022-03 self-consistency、2022-05 Zero-shot-CoT、SFT/RL分层准确。"
+        },
+        {
+          "id": "COT-13",
+          "title": "播客转写完整性与准确性边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "EPISODE",
+            "TRANSCRIPT_REVIEW"
+          ],
+          "matched_coverage_unit_ids": [
+            "U14"
+          ],
+          "notes": "278段、精确区间、0.03秒重叠、1.38秒间隔、原生脚本结果与未听校/未测WER边界全部进入正文或来源说明。"
+        }
+      ],
+      "source_ids_checked": [
+        "PAPER",
+        "LECTURE",
+        "EPISODE",
+        "AUTHOR_BLOG",
+        "ZERO_SHOT",
+        "SELF_CONSISTENCY",
+        "TRANSCRIPT_REVIEW"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "结论：展开稿r1未发现实质事实错误、关键数字错配或核心遗漏。COT-08和COT-09只压缩了鲁棒性数字与错误分类比例，核心结论、反例和边界均已覆盖。转写审计仅证明结构完整，不证明听写准确。配置模型为gpt-5.6-sol，runtime仍unconfirmed。未修改公开稿/evidence/review，未读取另一位本轮新review，未finalize或commit。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 96.65,
+    "evaluated_on": "2026-11-05",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "d49acbcfa4c9e61fbb3073097ff92d1fa1a461119a1ec4ec1e57ac5442ced877",
+    "evidence_sha256": "387886f5b629c581d6e1a61ca6b5fa5bc53cd38a0adafd8c29de21117e13a128"
+  },
+  "review_receipts": [
+    {
+      "file": "primary-expanded-review.json",
+      "sha256": "1b7ef50e3b7f59158c184886cd539755a99122b680b93c6cd9a5ba2fd3d5d1b5",
+      "role": "primary_review",
+      "revision_round": 1,
+      "raw_review_content_preserved": true
+    },
+    {
+      "file": "strong-expanded-review.json",
+      "sha256": "6900e6cdc865e47522c75e1206938911c718710fba8dc04d3029d2eef765b6d8",
+      "role": "flagship_final_review",
+      "revision_round": 1,
+      "raw_review_content_preserved": true
+    }
+  ]
+}

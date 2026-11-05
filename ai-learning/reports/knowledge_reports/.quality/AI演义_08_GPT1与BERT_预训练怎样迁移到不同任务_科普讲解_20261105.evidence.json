@@ -1,0 +1,509 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_08_GPT1与BERT_预训练怎样迁移到不同任务_科普讲解_20261105.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-05",
+  "generator": {
+    "model": "gpt-6-astra",
+    "harness": "codex",
+    "run_id": "ai-yanyi-chapter8-source-label-correction-20261105",
+    "explicit_model_override": false,
+    "override_reason": "",
+    "identity_basis": "生成者当前会话agent_identity.py核实为gpt-6-astra/codex，session-bound；本次只更正来源名称，技术内容继承冻结基线。"
+  },
+  "task": {
+    "summary": "持续展开AI演义第8节GPT-1/BERT，用黑猫段落讲清预训练到不同任务，核两篇原论文与播客/讲义；同步改善主稿原节与阅读入口。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "结合本章415段转录、Shownotes、讲义p35/p36与原论文；核时间结构和术语，不假称听音或WER。"
+      },
+      {
+        "id": "R2",
+        "text": "一个黑猫段落贯穿，讲清GPT下一词片预测、因果结构、两阶段微调、任务输入转换与标签反馈。"
+      },
+      {
+        "id": "R3",
+        "text": "讲清BERT双向encoder、MLM15%/80-10-10、NSP、输入表示与分类/抽取/特征提取的使用方式。"
+      },
+      {
+        "id": "R4",
+        "text": "原论文数字保留任务、指标、对照、失败、数据/规模/微调差异、版本和人物边界；少数学、独立可读。"
+      },
+      {
+        "id": "R5",
+        "text": "主稿第8节实质改写，节首可展开、展开可回原节并继续第9节；前三节已有入口移到节首，前七节已通过正文保留。"
+      },
+      {
+        "id": "R6",
+        "text": "真实工作台桌面/窄屏核链接、锚点、脚注、表格；正文不混入设备/执行收据和私有转录。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "GPT",
+      "kind": "primary",
+      "title": "Improving Language Understanding by Generative Pre-Training",
+      "locator": "https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf",
+      "accessed_on": "2026-11-05",
+      "version": "2018年官方PDF，12页，无独立修订号",
+      "read_scope": "12页文字全文含References；§1–6、Tables1–5；根直接查看p4 Figure1及p7 Figure2，Table5按文字层核。eacli视觉辅助后回原图核对；不从曲线估取精确点值。",
+      "sha256": "eb81a65e0856bd38e855e1f1de6ee12e7c3eb92ae05c8270d345a475beb631d0"
+    },
+    {
+      "id": "BERT",
+      "kind": "primary",
+      "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "locator": "https://arxiv.org/pdf/1810.04805v2",
+      "accessed_on": "2026-11-05",
+      "version": "arXiv1810.04805v2，2019-05-24；首发2018-10-11另核版本页",
+      "read_scope": "16页文字全文含正文、References、Appendix A–C；根直接查看p3/4/6/8/13/16，含架构、MLM/NSP、GLUE、Table5与Figure5/Table8；其余表按文字层、图2按文字及图注核对，未声称逐图逐点测量。",
+      "sha256": "5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e"
+    },
+    {
+      "id": "SLIDE",
+      "kind": "local",
+      "title": "AI演义讲义：GPT-1与BERT",
+      "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "accessed_on": "2026-11-05",
+      "read_scope": "p32时间线及p35/p36文字；根直接看p35/p36原页，eacli辅助看三页。仅用于讲述脉络，起点/性能/人物旁支回原文限定。",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0"
+    },
+    {
+      "id": "SHOWNOTES",
+      "kind": "secondary",
+      "title": "张小珺Jùn｜商业访谈录第117期：AI演义，公开Shownotes",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-05",
+      "read_scope": "既有网页提取快照，Part3从02:21:29开始与GPT/BERT顺序。未把Part3起点当单篇章界；不以Shownotes支持机制数字。",
+      "snapshot_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5",
+      "identity_correction": "2026-11-05经原节目页title/description重新核对，节目归属张小珺Jùn｜商业访谈录，第117期；原链接、shownotes正文与转录材料未变。"
+    },
+    {
+      "id": "ASR",
+      "kind": "local",
+      "title": "AI演义第8节转录复核与完整结构收据引用",
+      "locator": "ai-learning/reports/knowledge_reports/.quality/AI演义_08_GPT1与BERT_预训练怎样迁移到不同任务_科普讲解_20261105.transcription-review.json",
+      "accessed_on": "2026-11-05",
+      "read_scope": "实际读原始转录415段，9209.89–10026.10秒；公开只保留来源哈希、时间结构、术语校正及未听音/WER边界。",
+      "sha256": "710d1b39ca5e79b3c0e97b9a770e0939b9c0f454d7a9cbf66d7f64a81d922adc"
+    },
+    {
+      "id": "GPT-BLOG",
+      "kind": "primary",
+      "title": "OpenAI研究介绍：Improving language understanding with unsupervised learning",
+      "locator": "https://openai.com/index/language-unsupervised/",
+      "accessed_on": "2026-11-05",
+      "read_scope": "eacli web.read实际返回正文：两阶段、与Semi-supervised Sequence Learning/ULMFiT/ELMo的前驱关系、任务与公开例子；不据返回文本推定精确发布日期。"
+    },
+    {
+      "id": "BERT-HISTORY",
+      "kind": "primary",
+      "title": "BERT arXiv版本历史",
+      "locator": "https://arxiv.org/abs/1810.04805",
+      "accessed_on": "2026-11-05",
+      "read_scope": "eacli web.read实际读取abs与版本历史，v1 2018-10-11，v2 2019-05-24。"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "预训练后监督微调复用的是上下文网络；GPT并非NLP首次采用此路线，不同任务一般得到各自权重。",
+      "report_anchor": "beyond-word-vectors",
+      "source_ids": [
+        "GPT",
+        "BERT",
+        "GPT-BLOG"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "GPT §1–3与官方blog前驱段；BERT §2–3/Figure1。"
+    },
+    {
+      "id": "C2",
+      "claim": "GPT采用因果Transformer做下一词片预测；12层/768维/12头、512token连续样本，BooksCorpus7000多本书；40000为BPE合并次数。",
+      "report_anchor": "gpt-pretraining",
+      "source_ids": [
+        "GPT"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "GPT §3.1/§4.1/Figure1；词级黑猫表仅教学示意，源句正确输出未实测。"
+    },
+    {
+      "id": "C3",
+      "claim": "GPT通过输入转换与分类输出微调网络：蕴含拼接前提/假设，末位可看完整前缀；相似度双顺序，选择题分别评分候选。",
+      "report_anchor": "gpt-finetuning",
+      "source_ids": [
+        "GPT"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "GPT §3.2–3.3/Figure1；示意三种关系标签，不把生成式预训练结果冒充冻结模型聊天。"
+    },
+    {
+      "id": "C4",
+      "claim": "GPT Table5完整74.7/无预训练59.9相差14.8分；无辅助LM75.0，收益依任务而异。",
+      "report_anchor": "gpt-evidence",
+      "source_ids": [
+        "GPT"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "GPT Table5及§5；混合指标无权重平均，不是准确率或官方GLUE总分。"
+    },
+    {
+      "id": "C5",
+      "claim": "GPT Table2–3中StoryCloze86.5对77.6，RACE59.0对53.3九模型，RTE56.0低于61.7且训练约2490条；作者报告9/12刷新当时最佳。",
+      "report_anchor": "gpt-evidence",
+      "source_ids": [
+        "GPT"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "GPT §4.2、Tables2–4；百分点/样本/集成条件保留。"
+    },
+    {
+      "id": "C6",
+      "claim": "迁移更多预训练层总体有益，但非严格单调；零样本启发式曲线归一化而非原始准确率，不能证明完整世界知识。",
+      "report_anchor": "gpt-evidence",
+      "source_ids": [
+        "GPT"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "GPT §5/Figure2左右图与Zero-shot Behaviors；不估曲线精确点值。"
+    },
+    {
+      "id": "C7",
+      "claim": "BERT为encoder-only深层双向网络，MLM选15%目标后按80/10/10处理，只在选定位置算MLM损失；保留原词是目标可见例外。",
+      "report_anchor": "bert-masking",
+      "source_ids": [
+        "BERT"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "BERT §3–3.1、Figure3、Appendix C2/Table8；不能把MLM等同重建全文或把默认比例当普适最佳。"
+    },
+    {
+      "id": "C8",
+      "claim": "NSP是50%真实后续与50%随机文本的二分类，不生成下一句、不等同蕴含；输入三种embedding相加，CLS未经任务微调不是通用句向量保证。",
+      "report_anchor": "bert-nsp",
+      "source_ids": [
+        "BERT"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "BERT §3.1/InputOutput/Figure2、脚注6及AppendixA1–A2。"
+    },
+    {
+      "id": "C9",
+      "claim": "BERT主要全部参数微调；分类与SQuAD起止span抽取不同，SQuAD2另有无答案机制。",
+      "report_anchor": "bert-finetuning",
+      "source_ids": [
+        "BERT"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "BERT §3.2/§4.1–4.3；黑猫the sofa示意不是实测。"
+    },
+    {
+      "id": "C10",
+      "claim": "BERT冻结top4层拼接加2层BiLSTM的NER Dev F1为96.1，Base全微调Dev为96.4；不外推统一0.3分代价。",
+      "report_anchor": "bert-finetuning",
+      "source_ids": [
+        "BERT"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "BERT §5.3/Table7，Dev而非Test。"
+    },
+    {
+      "id": "C11",
+      "claim": "BERT Base12/768/12/110M、Large24/1024/16/340M；语料800M+2500M words，100万步，90%128/10%512，16/64芯片各约4天。",
+      "report_anchor": "comparison-conditions",
+      "source_ids": [
+        "BERT",
+        "GPT"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "BERT §3/§3.1/AppendixA2；CloudTPU与芯片区分、words不等于token；GPT条件见§4.1。"
+    },
+    {
+      "id": "C12",
+      "claim": "GLUE官方80.5对72.8与排除WNLI平均82.1对75.1不同；Base表均79.6；数据/批次/微调等差异不能全归双向。",
+      "report_anchor": "comparison-conditions",
+      "source_ids": [
+        "BERT"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "BERT §4.1/Table1/AppendixA4；综合分不统称准确率。"
+    },
+    {
+      "id": "C13",
+      "claim": "BERT目标消融在同Base/数据/微调条件的Dev集：MLM+NSP84.4/88.4/88.5；NoNSP83.9/84.9/87.9；LTR无NSP82.1/84.3/77.8。补BiLSTM SQuAD84.9仍较低。",
+      "report_anchor": "comparison-conditions",
+      "source_ids": [
+        "BERT"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "BERT Table5；各列MNLI/QNLI accuracy、SQuAD F1；比较后两行避免同时改变NSP，仍注明方向及目标共同变化。"
+    },
+    {
+      "id": "C14",
+      "claim": "BERT Large小数据微调不稳定；规模表同时改层宽头；SQuAD1.1 Test F193.2为七模型+TriviaQA，对应单模型+TriviaQA91.8。",
+      "report_anchor": "comparison-conditions",
+      "source_ids": [
+        "BERT"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "BERT §4.1–4.2/Table2、§5.2/Table6；验证集选模型，F1/集成/额外数据口径。"
+    },
+    {
+      "id": "C15",
+      "claim": "完整输入下的双向表示与未来尚未知时的自回归续写服务不同信息条件；不把BERT/GPT排成所有任务的永久优劣。",
+      "report_anchor": "different-interfaces",
+      "source_ids": [
+        "GPT",
+        "BERT"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "两文架构、训练/微调与实验边界的解释；两组作者与当时机构按原文首页，不推定其后职业与动机。"
+    },
+    {
+      "id": "C16",
+      "claim": "讲义与转录的首次/横扫/encoder-decoder及隐式多任务评价需分别校正或限定；选段415段，无起点回退，两处0.06秒重叠，未听音也未测WER。",
+      "report_anchor": "podcast-and-notes",
+      "source_ids": [
+        "SLIDE",
+        "SHOWNOTES",
+        "ASR",
+        "GPT",
+        "BERT"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "lecture p32/35/36；ASR4350–4764及本章浮点结构检查。技术事实依据论文；来源无共识的自述保留。"
+    },
+    {
+      "id": "C17",
+      "claim": "BERT本次使用2019-05-24 v2，首版为2018-10-11；不把修订版全部结果倒填成首版。",
+      "report_anchor": "sources-and-scope",
+      "source_ids": [
+        "BERT",
+        "BERT-HISTORY"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "arXiv版本页实读；PDF本地SHA固定。"
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U1",
+      "title": "预训练后监督微调复用的是上下文网络；GPT并非NLP首次采用此路线，不同任务一般得到各自权重。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "beyond-word-vectors",
+      "source_ids": [
+        "GPT",
+        "BERT",
+        "GPT-BLOG"
+      ]
+    },
+    {
+      "id": "U2",
+      "title": "GPT采用因果Transformer做下一词片预测；12层/768维/12头、512token连续样本，BooksCorpus7000多本书；40000为BPE合并次数。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "gpt-pretraining",
+      "source_ids": [
+        "GPT"
+      ]
+    },
+    {
+      "id": "U3",
+      "title": "GPT通过输入转换与分类输出微调网络：蕴含拼接前提/假设，末位可看完整前缀；相似度双顺序，选择题分别评分候选。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "gpt-finetuning",
+      "source_ids": [
+        "GPT"
+      ]
+    },
+    {
+      "id": "U4",
+      "title": "GPT Table5完整74.7/无预训练59.9相差14.8分；无辅助LM75.0，收益依任务而异。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "gpt-evidence",
+      "source_ids": [
+        "GPT"
+      ]
+    },
+    {
+      "id": "U5",
+      "title": "GPT Table2–3中StoryCloze86.5对77.6，RACE59.0对53.3九模型，RTE56.0低于61.7且训练约2490条；作者报告9/12刷新当时最佳。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "gpt-evidence",
+      "source_ids": [
+        "GPT"
+      ]
+    },
+    {
+      "id": "U6",
+      "title": "迁移更多预训练层总体有益，但非严格单调；零样本启发式曲线归一化而非原始准确率，不能证明完整世界知识。",
+      "importance": "supporting",
+      "status": "included",
+      "report_anchor": "gpt-evidence",
+      "source_ids": [
+        "GPT"
+      ]
+    },
+    {
+      "id": "U7",
+      "title": "BERT为encoder-only深层双向网络，MLM选15%目标后按80/10/10处理，只在选定位置算MLM损失；保留原词是目标可见例外。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "bert-masking",
+      "source_ids": [
+        "BERT"
+      ]
+    },
+    {
+      "id": "U8",
+      "title": "NSP是50%真实后续与50%随机文本的二分类，不生成下一句、不等同蕴含；输入三种embedding相加，CLS未经任务微调不是通用句向量保证。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "bert-nsp",
+      "source_ids": [
+        "BERT"
+      ]
+    },
+    {
+      "id": "U9",
+      "title": "BERT主要全部参数微调；分类与SQuAD起止span抽取不同，SQuAD2另有无答案机制。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "bert-finetuning",
+      "source_ids": [
+        "BERT"
+      ]
+    },
+    {
+      "id": "U10",
+      "title": "BERT冻结top4层拼接加2层BiLSTM的NER Dev F1为96.1，Base全微调Dev为96.4；不外推统一0.3分代价。",
+      "importance": "supporting",
+      "status": "included",
+      "report_anchor": "bert-finetuning",
+      "source_ids": [
+        "BERT"
+      ]
+    },
+    {
+      "id": "U11",
+      "title": "BERT Base12/768/12/110M、Large24/1024/16/340M；语料800M+2500M words，100万步，90%128/10%512，16/64芯片各约4天。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "comparison-conditions",
+      "source_ids": [
+        "BERT",
+        "GPT"
+      ]
+    },
+    {
+      "id": "U12",
+      "title": "GLUE官方80.5对72.8与排除WNLI平均82.1对75.1不同；Base表均79.6；数据/批次/微调等差异不能全归双向。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "comparison-conditions",
+      "source_ids": [
+        "BERT"
+      ]
+    },
+    {
+      "id": "U13",
+      "title": "BERT目标消融在同Base/数据/微调条件的Dev集：MLM+NSP84.4/88.4/88.5；NoNSP83.9/84.9/87.9；LTR无NSP82.1/84.3/77.8。补BiLSTM SQuAD84.9仍较低。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "comparison-conditions",
+      "source_ids": [
+        "BERT"
+      ]
+    },
+    {
+      "id": "U14",
+      "title": "BERT Large小数据微调不稳定；规模表同时改层宽头；SQuAD1.1 Test F193.2为七模型+TriviaQA，对应单模型+TriviaQA91.8。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "comparison-conditions",
+      "source_ids": [
+        "BERT"
+      ]
+    },
+    {
+      "id": "U15",
+      "title": "完整输入下的双向表示与未来尚未知时的自回归续写服务不同信息条件；不把BERT/GPT排成所有任务的永久优劣。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "different-interfaces",
+      "source_ids": [
+        "GPT",
+        "BERT"
+      ]
+    },
+    {
+      "id": "U16",
+      "title": "讲义与转录的首次/横扫/encoder-decoder及隐式多任务评价需分别校正或限定；选段415段，无起点回退，两处0.06秒重叠，未听音也未测WER。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "podcast-and-notes",
+      "source_ids": [
+        "SLIDE",
+        "SHOWNOTES",
+        "ASR",
+        "GPT",
+        "BERT"
+      ]
+    },
+    {
+      "id": "U17",
+      "title": "BERT本次使用2019-05-24 v2，首版为2018-10-11；不把修订版全部结果倒填成首版。",
+      "importance": "supporting",
+      "status": "included",
+      "report_anchor": "sources-and-scope",
+      "source_ids": [
+        "BERT",
+        "BERT-HISTORY"
+      ]
+    },
+    {
+      "id": "U18",
+      "title": "主稿原节与独立展开的双向导航，前三节入口统一到节首",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "reading-route",
+      "source_ids": [
+        "SLIDE"
+      ]
+    }
+  ],
+  "limitations": [
+    "未训练或运行两模型、复现下游分数、审计数据合规/污染或当前产品行为；黑猫与关系/答案为教学示意。",
+    "原论文文字全文已读，原页视觉范围逐源列明；曲线只解释趋势，不声称逐点重建。",
+    "历史与人物仅保留论文或官方介绍支持的贡献；前驱论文未另做全文精读，讲义作者现职/轶事不采为事实。",
+    "GLUE/Dev/Test、混合指标、single/ensemble和额外数据分别处理；BERT跨论文比较有多个变量，方向与训练目标也不可完全分离。",
+    "BERT使用2019年v2；2018是首发年份，不回填所有修订结果。",
+    "ASR未听校、不报告WER；完整节目末尾15.989秒仍未知；少量时间重叠和重复不等于识字准确率。",
+    "本章不完整评估GPT2/3、后续BERT变体或隐式多任务学习理论；后续路线只承接研究问题。",
+    "模型评分和页面检查不能替代读者学习反馈；原始来源与执行痕迹的私有路径不进入公开仓。"
+  ],
+  "revision_note": "2026-11-05来源名称勘误：原节目为《张小珺Jùn｜商业访谈录》第117期，修正此前误写的晚点聊；URL、shownotes正文与技术讲解未变。除来源名称与本修订元数据外，继承已通过的冻结基线；独立复核只直接验证本次勘误及范围。"
+}

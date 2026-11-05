@@ -1,0 +1,602 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_06_seq2seq与Attention_模型怎样翻译一句话_科普讲解_20261105.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-05",
+  "generator": {
+    "model": "gpt-6-astra",
+    "harness": "codex",
+    "run_id": "ai-yanyi-chapter6-source-label-correction-20261105",
+    "explicit_model_override": false,
+    "override_reason": "",
+    "identity_basis": "生成者当前会话agent_identity.py核实为gpt-6-astra/codex，session-bound；本次只更正来源名称，技术内容继承冻结基线。"
+  },
+  "task": {
+    "summary": "沿用前五轮完成AI演义第6节seq2seq与Attention：黑猫翻译例贯穿，结合播客、讲义与两篇原论文讲透机制、训练、实验、历史与限制；同步重写主稿原节并验收工作台展开往返。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "逐段读本章ASR，对照Shownotes、讲义p12及原论文；核结构收据与重复，保留未听音和音频尾部未知边界。"
+      },
+      {
+        "id": "R2",
+        "text": "用自拟具体翻译贯穿变长、词序、RNN/LSTM、encoder-decoder、EOS、训练前缀与推理、beam search和源句反转；独立可读，少数学。"
+      },
+      {
+        "id": "R3",
+        "text": "准确解释双向annotations、前一decoder state打分、softmax权重与context加权和、联合学习及GRU/LSTM区别，不偷看未来目标词。"
+      },
+      {
+        "id": "R4",
+        "text": "按原文分别核单模型/集成/重排、完整/No UNK测试、训练成本、长句反例与OOV限制，保留两篇真实首发、版本和前史。"
+      },
+      {
+        "id": "R5",
+        "text": "同步重写主稿第6节并放醒目展开入口；展开篇能返回原节、前往下一节；工作台桌面/窄屏核表格、脚注和导航，保留前五节。"
+      },
+      {
+        "id": "R6",
+        "text": "自拟案例不冒充论文测量；来源读取和视觉降级如实记录，不宣称训练复现或听音，不公开私有转录与执行信息。"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "SEQ2SEQ",
+      "kind": "primary",
+      "title": "Sequence to Sequence Learning with Neural Networks",
+      "locator": "https://arxiv.org/pdf/1409.3215v3",
+      "accessed_on": "2026-11-05",
+      "read_scope": "全文§1–6、Figures1–3/图注、Tables1–3、References；先读已有eacli全文，后用原PDF清晰文本核数字。p2/p6/p7图表有eacli视觉辅助；根会话直接看p2。未重训或逐式证明。",
+      "version": "arXiv:1409.3215v3，2014-12-14；首发2014-09-10另核官方history。",
+      "sha256": "5c74e1db863e2d61b869c9b0603494b34c41fb05db1a4fa7f9a83d5a42b7350f"
+    },
+    {
+      "id": "BAHDANAU",
+      "kind": "primary",
+      "title": "Neural Machine Translation by Jointly Learning to Align and Translate",
+      "locator": "https://arxiv.org/pdf/1409.0473v7",
+      "accessed_on": "2026-11-05",
+      "read_scope": "全文§1–7、Figures1–3、Tables1–3、实现Appendix A、训练Appendix B、长句Appendix C与References。p3/5/7/14有eacli视觉辅助；p6服务双路失败后用本地图片核验，根会话直接看p5/6。OCR公式/No UNK解说错误回到原文纠正。",
+      "version": "arXiv:1409.0473v7，2016-05-19；页眉ICLR2015，首发2014-09-01另核history。",
+      "sha256": "84801c8410da51b449d379d2fa4939a416123f2c93991077a680f863026022a7"
+    },
+    {
+      "id": "SEQ_HISTORY",
+      "kind": "primary",
+      "title": "seq2seq官方提交历史",
+      "locator": "https://arxiv.org/abs/1409.3215",
+      "accessed_on": "2026-11-05",
+      "read_scope": "eacli web.read实际读取并核v1/v2/v3日期；只用于首发、版本，机制依据完整PDF。"
+    },
+    {
+      "id": "ATTENTION_HISTORY",
+      "kind": "primary",
+      "title": "Bahdanau官方提交历史",
+      "locator": "https://arxiv.org/abs/1409.0473",
+      "accessed_on": "2026-11-05",
+      "read_scope": "eacli web.read实际读取摘要/作者/版本历史；v1 2014-09-01，v7 2016-05-19。"
+    },
+    {
+      "id": "SLIDE",
+      "kind": "local",
+      "title": "终版：AI演义，36篇论文开启你的探索之旅",
+      "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "accessed_on": "2026-11-05",
+      "read_scope": "仅本章p12：历史背景、贡献、人物及链接；文字层破碎，另由eacli视觉读取原页。二手叙事与原论文发生差异时依论文收紧，不采未核现职/奖项。",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0"
+    },
+    {
+      "id": "SHOWNOTES",
+      "kind": "primary",
+      "title": "第117期节目说明与章节",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-05",
+      "read_scope": "复用已经取回的shownotes全文并阅读；Part1入口19:35，合列seq2seq和Attention(2014.09)，不据此冒充本章精确起止或实验原证据。",
+      "identity_correction": "2026-11-05经原节目页title/description重新核对，节目归属张小珺Jùn｜商业访谈录，第117期；原链接、shownotes正文与转录材料未变。"
+    },
+    {
+      "id": "ASR",
+      "kind": "primary",
+      "title": "AI演义本章转录及交接段",
+      "locator": "https://media.xyzcdn.net/626b46ea9cbbf0451cf5a962/ludOBUWHSc2Y_GA47pSOwlGC8JPS.m4a",
+      "accessed_on": "2026-11-05",
+      "read_scope": "本章核心约33:50–46:30，含交接33:35–47:17共282段逐段阅读；精确区间2015.08–2837.24秒。全文7553段，本轮没有听音。",
+      "excerpt_sha256": "87bc278ee33453d38adcbe8c6308b09b3257b84420b25e1a53aae4d13c039870",
+      "segments_excerpt_sha256": "6c1c136068ef02bf2ff95ad25ef42506ca1cac6eb8e9ee1c52bf0091ef877ffb",
+      "transcript_source_ref": "sha256:919e4ce5147340e2306748394cdb555bfc6a745119f846e7ce8c985056745b05"
+    },
+    {
+      "id": "TRANSCRIPT_REVIEW",
+      "kind": "local",
+      "title": "seq2seq/Attention本章转录与事实核对",
+      "locator": "ai-learning/reports/knowledge_reports/.quality/AI演义_06_seq2seq与Attention_模型怎样翻译一句话_科普讲解_20261105.transcription-review.json",
+      "accessed_on": "2026-11-05",
+      "read_scope": "282段读取范围、无浮点分段重叠、重复与术语/数字/概念校正；未听校及原音频尾部未知边界。"
+    },
+    {
+      "id": "TRANSCRIPT_AUDIT",
+      "kind": "local",
+      "title": "AI演义整期转录结构收据",
+      "locator": "podcast-learning/reports/transcripts/2026-11-04_ai-yanyi-117.audit.json",
+      "accessed_on": "2026-11-05",
+      "read_scope": "核同SHA全文结构收据：7553段、timestamp_errors=0、max_consecutive_identical=3；整秒格式审计不证明原始分段全无重叠或尾部完全覆盖。"
+    },
+    {
+      "id": "ALEXNET_CHAPTER",
+      "kind": "local",
+      "title": "已完成AI演义第2节AlexNet人物讨论",
+      "locator": "ai-learning/reports/knowledge_reports/AI演义_02_AlexNet_图像识别突破_科普讲解_20261104.md",
+      "accessed_on": "2026-11-05",
+      "read_scope": "只用于已核AlexNet共同作者与本节Ilya连接；本轮读§8，不重新调查全部人物经历，相关原始来源可沿该章脚注追溯。"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "变长输入输出与复杂对齐是seq2seq问题，固定维度不等于词数相等；SMT含学习与多部件，不是纯人工规则。",
+      "report_anchor": "translation-problem",
+      "source_ids": [
+        "SEQ2SEQ",
+        "BAHDANAU"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "seq2seq §1–2/4，Bahdanau §1–2/6.2；黑猫英法句是自拟教学。"
+    },
+    {
+      "id": "C2",
+      "claim": "两套LSTM用固定规模状态交接源句，再自回归输出到EOS；四层、每层1000cells、8000实数并非8000词容量。",
+      "report_anchor": "encoder-decoder",
+      "source_ids": [
+        "SEQ2SEQ"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§2、§3.4、Figure1；正常读词先解释框架，§4明确实际源句反转。"
+    },
+    {
+      "id": "C3",
+      "claim": "从平行句对最大化正确译文条件概率，训练可用正确目标前缀，推理只接自己的输出；整体可训练仍依赖数据与工程。",
+      "report_anchor": "training-and-search",
+      "source_ids": [
+        "SEQ2SEQ",
+        "BAHDANAU"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "两篇条件概率/训练目标与数据设置；teacher forcing为训练目标的解释，不声称原文用该术语或做了误差累积实验。"
+    },
+    {
+      "id": "C4",
+      "claim": "束搜索在多个候选前缀中近似搜索，与attention在单候选内读取源表示不同；不保证最优或事实正确。",
+      "report_anchor": "training-and-search",
+      "source_ids": [
+        "SEQ2SEQ",
+        "BAHDANAU"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "seq2seq §3.2，Bahdanau §4.2；自拟Le chat/Le petit未冒充输出。"
+    },
+    {
+      "id": "C5",
+      "claim": "仅源句倒序；短依赖解释由作者提出且不完整，平均对应距离不变；Table1单模型beam12为26.17与30.59。",
+      "report_anchor": "reverse-source",
+      "source_ids": [
+        "SEQ2SEQ"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§2/3.3与Table1；§3.3另报25.9→30.6、困惑度5.8→4.7，正文主表和脚注分开口径。"
+    },
+    {
+      "id": "C6",
+      "claim": "固定状态模型不必然长句失败；倒序LSTM Figure3图注称<35词无退化、最长句轻微退化，只在其测试范围成立。",
+      "report_anchor": "reverse-source",
+      "source_ids": [
+        "SEQ2SEQ"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§3.7与Figure3，未从曲线读取逐点值，不外推无限长度。"
+    },
+    {
+      "id": "C7",
+      "claim": "Bahdanau用双向RNN的前后隐状态拼接为每源位置annotation；固定维但份数随句长变，每份已含上下文，不是孤立词向量。",
+      "report_anchor": "attention-step",
+      "source_ids": [
+        "BAHDANAU"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§3.2、Appendix A.2.1；完整源句双向处理，非无需后文的在线翻译。"
+    },
+    {
+      "id": "C8",
+      "claim": "用上一步解码状态和各源annotation打分，softmax得权重，再加权和为当前context；权重、annotation、context、decoder state分开。",
+      "report_anchor": "attention-step",
+      "source_ids": [
+        "BAHDANAU"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§3.1式5/6、Appendix A；未用尚未产生的当前目标词，输出层具体索引差异在脚注如实说明。"
+    },
+    {
+      "id": "C9",
+      "claim": "软对齐与翻译损失联合训练，不需人工逐词对齐但仍需平行句对；实际实验用Cho式门控单元，不能写为LSTM。",
+      "report_anchor": "learn-alignment",
+      "source_ids": [
+        "BAHDANAU"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§3.1、Appendix A.1.1–1.2；GRU解释依update/reset gates，与前文LSTM分开。"
+    },
+    {
+      "id": "C10",
+      "claim": "Figure3权重图x为源英文y为生成法文，0黑1白，允许重排和多词对应；后三幅来自无UNK且10–20词测试句，非全测试对齐准确率或完整因果解释。",
+      "report_anchor": "learn-alignment",
+      "source_ids": [
+        "BAHDANAU"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "Figure3/caption和§5.2.1；eacli该页失败后本地原图复核，无法把服务失败写为成功。"
+    },
+    {
+      "id": "C11",
+      "claim": "seq2seq以12M句对、304M英词348M法词、160k/80k词表训练；34.81来自5个倒序模型beam12，30.59为单模型，不超过当时best重算37.0。",
+      "report_anchor": "experiments",
+      "source_ids": [
+        "SEQ2SEQ"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§3.1、§3.6、Tables1–2；34.50为5模型beam2，33.30为SMT基线。BLEU非准确率。"
+    },
+    {
+      "id": "C12",
+      "claim": "36.5 BLEU是5个倒序模型参与SMT1000-best重排，并非纯神经直接翻译；单模型384M参数、8GPU约十天训练描述其实现。",
+      "report_anchor": "experiments",
+      "source_ids": [
+        "SEQ2SEQ"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§3.2、§3.4–3.6及Table2；四GPU分层、四GPU词表输出，时间不是整个集成总预算。"
+    },
+    {
+      "id": "C13",
+      "claim": "Bahdanau 30k词表、3003测试句；RNNencdec50 17.82/26.71，RNNsearch50 26.75/34.16，长训版28.45/36.15，Moses33.30/35.63，分别为All/No UNK。",
+      "report_anchor": "experiments",
+      "source_ids": [
+        "BAHDANAU"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§4–5/Table1；No UNK筛源句和参考且禁止输出UNK；Moses有额外418M词单语料，双向编码增加结构差异，非等参数单开关消融。"
+    },
+    {
+      "id": "C14",
+      "claim": "RNNsearch50常规与长训版分别111h/2.2epoch及252h/5epoch，同为Quadro K-6000；名称50是训练长度上限，不是硬输入最大长度。",
+      "report_anchor": "experiments",
+      "source_ids": [
+        "BAHDANAU"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§4.2、Appendix B/Table2；训练时长影响结果，不能一概五天。"
+    },
+    {
+      "id": "C15",
+      "claim": "医生职业身份被基线误译为健康状况、Disney句后段偏离是论文案例；Attention改善但RNNsearch30超训练长度仍下降，50版本更稳。",
+      "report_anchor": "long-sentence-case",
+      "source_ids": [
+        "BAHDANAU",
+        "SEQ2SEQ"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§5.2.2/AppendixC、Figure2；与seq2seq长句证据并列，不能用不同基线推出所有固定模型必败。"
+    },
+    {
+      "id": "C16",
+      "claim": "每目标步对所有源位置配对打分，次数随源长×目标长变化，OOV与循环路径仍在；这不等于无限记忆、全文模型复杂度或实时同传。",
+      "report_anchor": "long-sentence-case",
+      "source_ids": [
+        "BAHDANAU"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§3、§6.1、§7、AppendixA.1.2；读信息的方式改变不自动扩大词表。"
+    },
+    {
+      "id": "C17",
+      "claim": "两篇完整署名分开，Bahdanau首发2014-09-01早于seq2seq09-10；当前v7/v3互引不构成严格先后接力，前文已承认编码器和Graves注意力前驱。",
+      "report_anchor": "people-and-history",
+      "source_ids": [
+        "SEQ2SEQ",
+        "BAHDANAU",
+        "SEQ_HISTORY",
+        "ATTENTION_HISTORY",
+        "ALEXNET_CHAPTER"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "两篇首页、官方history、§1与相关工作；仅连接Ilya已核AlexNet身份，未采用未经核实的现职、奖项或合作关系。"
+    },
+    {
+      "id": "C18",
+      "claim": "seq2seq句表示PCA图提供词序及主动被动变化的有限定性例子；与Word2Vec只是问题路线连接，不主张直接继承权重。",
+      "report_anchor": "people-and-history",
+      "source_ids": [
+        "SEQ2SEQ"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§3.8、Figure2，未据小样本图外推一般语义理解。"
+    },
+    {
+      "id": "C19",
+      "claim": "本章282段仅用于对照来源；无浮点重叠但有重复，未听音或测WER，整期末尾15.989秒仍未知。",
+      "report_anchor": "sources-and-corrections",
+      "source_ids": [
+        "ASR",
+        "SHOWNOTES",
+        "SLIDE",
+        "TRANSCRIPT_REVIEW",
+        "TRANSCRIPT_AUDIT"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "本章原始segments逐段校验与整期同SHA审计；不把文本tail_gap=0解释成原音频全覆盖。"
+    },
+    {
+      "id": "C20",
+      "claim": "固定annotations下均匀注意力使每步context相同但decoder仍可变化；容量与访问方式不同，性能影响需实验。",
+      "report_anchor": "questions",
+      "source_ids": [
+        "BAHDANAU"
+      ],
+      "support": "derived",
+      "critical": true,
+      "evidence": "由§3.1加权和结构推得，不冒充已做消融。"
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U1",
+      "title": "节目/讲义条目、本章逐段读取及ASR校正边界",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "sources-and-corrections",
+      "source_ids": [
+        "ASR",
+        "SHOWNOTES",
+        "SLIDE",
+        "TRANSCRIPT_REVIEW",
+        "TRANSCRIPT_AUDIT"
+      ]
+    },
+    {
+      "id": "U2",
+      "title": "变长、词序与多部件SMT问题",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "translation-problem",
+      "source_ids": [
+        "SEQ2SEQ",
+        "BAHDANAU"
+      ]
+    },
+    {
+      "id": "U3",
+      "title": "固定状态、循环参数共享、LSTM与EOS",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "encoder-decoder",
+      "source_ids": [
+        "SEQ2SEQ"
+      ]
+    },
+    {
+      "id": "U4",
+      "title": "平行语料联合训练、正确前缀与推理差异",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "training-and-search",
+      "source_ids": [
+        "SEQ2SEQ",
+        "BAHDANAU"
+      ]
+    },
+    {
+      "id": "U5",
+      "title": "beam search近似搜索与attention读取的区别",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "training-and-search",
+      "source_ids": [
+        "SEQ2SEQ",
+        "BAHDANAU"
+      ]
+    },
+    {
+      "id": "U6",
+      "title": "源句反转、依赖路径和作者解释的不确定性",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "reverse-source",
+      "source_ids": [
+        "SEQ2SEQ"
+      ]
+    },
+    {
+      "id": "U7",
+      "title": "倒序LSTM长句表现作为固定状态必败的反例",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "reverse-source",
+      "source_ids": [
+        "SEQ2SEQ"
+      ]
+    },
+    {
+      "id": "U8",
+      "title": "双向源annotations、上下文与固定维/可变份数",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "attention-step",
+      "source_ids": [
+        "BAHDANAU"
+      ]
+    },
+    {
+      "id": "U9",
+      "title": "前一步状态打分、softmax与context的逐步依赖",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "attention-step",
+      "source_ids": [
+        "BAHDANAU"
+      ]
+    },
+    {
+      "id": "U10",
+      "title": "soft alignment联合训练、无需人工逐词对齐",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "learn-alignment",
+      "source_ids": [
+        "BAHDANAU"
+      ]
+    },
+    {
+      "id": "U11",
+      "title": "Cho门控单元与LSTM、对齐小网络的实现边界",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "attention-step",
+      "source_ids": [
+        "BAHDANAU",
+        "SEQ2SEQ"
+      ]
+    },
+    {
+      "id": "U12",
+      "title": "热图重排、多词对应、抽样与解释限制",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "learn-alignment",
+      "source_ids": [
+        "BAHDANAU"
+      ]
+    },
+    {
+      "id": "U13",
+      "title": "seq2seq训练数据、词表、单模型和集成成绩",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "experiments",
+      "source_ids": [
+        "SEQ2SEQ"
+      ]
+    },
+    {
+      "id": "U14",
+      "title": "SMT候选重排、BLEU口径与best系统比较",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "experiments",
+      "source_ids": [
+        "SEQ2SEQ"
+      ]
+    },
+    {
+      "id": "U15",
+      "title": "参数、GPU分工及训练工程成本",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "experiments",
+      "source_ids": [
+        "SEQ2SEQ"
+      ]
+    },
+    {
+      "id": "U16",
+      "title": "Bahdanau完整/No UNK评测与长训/模型结构条件",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "experiments",
+      "source_ids": [
+        "BAHDANAU"
+      ]
+    },
+    {
+      "id": "U17",
+      "title": "医生/Disney长句错误、30/50训练长度边界",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "long-sentence-case",
+      "source_ids": [
+        "BAHDANAU"
+      ]
+    },
+    {
+      "id": "U18",
+      "title": "OOV、源长×目标长成本、循环路径与无限记忆边界",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "long-sentence-case",
+      "source_ids": [
+        "BAHDANAU"
+      ]
+    },
+    {
+      "id": "U19",
+      "title": "完整署名、版本首发、前驱和同期而非接力",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "people-and-history",
+      "source_ids": [
+        "SEQ2SEQ",
+        "BAHDANAU",
+        "SEQ_HISTORY",
+        "ATTENTION_HISTORY",
+        "ALEXNET_CHAPTER"
+      ]
+    },
+    {
+      "id": "U20",
+      "title": "整句表示定性观察及连接下一节的问题",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "people-and-history",
+      "source_ids": [
+        "SEQ2SEQ"
+      ]
+    },
+    {
+      "id": "U21",
+      "title": "均匀权重与容量/读取问题的可检验追问",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "questions",
+      "source_ids": [
+        "BAHDANAU"
+      ]
+    }
+  ],
+  "limitations": [
+    "未训练seq2seq/RNNsearch或复现BLEU；黑猫翻译和候选前缀为自拟教学，权重走向是条件性说明，没有真实推理测量。",
+    "已读两篇正文和Bahdanau附录，但没有逐式证明；图表只在所列页作视觉辅助/核查，不宣称整篇逐页视觉审计。",
+    "9次来源图片eacli调用8次成功、1次双路失败；失败的Bahdanau Figure3以本地原图核验。部分成功回执的公式编号、No UNK解释有误，按原文纠正，不把工具解说当一手事实。",
+    "两篇最新修订版与v1日期分开；引用相关工作是承认前驱，不等于已经阅读全文中的所有引用，也不推导单线历史因果。",
+    "BLEU/长句结果受数据、词表、架构、训练、集成和搜索限制；不据小样本PCA或对齐图证明一般理解或因果可解释性。",
+    "本章未听音或测WER；整期原音频尾部15.989秒覆盖未知，逐段阅读不能认证逐字完整。",
+    "PDF二进制仅在Token Plan catalog无此能力时最小下载供渲染；全文先由eacli读取。原始转录、来源缓存、设备和执行收据不进入公开仓。"
+  ],
+  "revision_note": "2026-11-05来源名称勘误：原节目为《张小珺Jùn｜商业访谈录》第117期，修正此前误写的晚点聊；URL、shownotes正文与技术讲解未变。除来源名称与本修订元数据外，继承已通过的冻结基线；独立复核只直接验证本次勘误及范围。"
+}

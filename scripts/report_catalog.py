@@ -190,6 +190,19 @@ def parse_frontmatter(text: str) -> dict[str, object]:
     return result
 
 
+def display_title(path: Path, title: str) -> str:
+    """Keep chapter labels consistent across the board and generated indexes."""
+    chapter = re.match(r"^AI演义_(\d{2})_", path.name)
+    if not chapter:
+        return title
+    prefix = re.match(r"^(?:《AI演义》|AI演义)\s*[·｜|]?\s*(\d+)\s*[·｜|:：]?\s*", title)
+    if prefix:
+        if int(prefix.group(1)) != int(chapter.group(1)):
+            return title
+        title = title[prefix.end():]
+    return f"《AI演义》{chapter.group(1)}｜{title}"
+
+
 def report_info(path: Path, *, fallback_updated_on: str = "") -> dict[str, object]:
     text = path.read_text(encoding="utf-8", errors="replace")
     raw_metadata = parse_frontmatter(text)
@@ -198,6 +211,7 @@ def report_info(path: Path, *, fallback_updated_on: str = "") -> dict[str, objec
     if not title:
         heading = re.search(r"^#\s+(.+?)\s*$", text, re.MULTILINE)
         title = heading.group(1).strip() if heading else path.stem
+    title = display_title(path, title)
 
     updated_on = str(metadata.get("updated_on") or metadata.get("created") or "")
     if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", updated_on):

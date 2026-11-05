@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "kind": "chapter-transcription-review",
+  "reviewed_on": "2026-11-05",
+  "chapter": 20,
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+  "transcript_source_ref": "sha256:0401e75fa99a51664f86535332fe49c6b2b6c194f611135b9dd1ff4137dded07",
+  "full_segments_sha256": "f322514ced72235a0ca104635824c66df425c18dbae3d0f4e76fa70d088db61c",
+  "public_full_episode_receipt": "podcast-learning/reports/transcripts/2026-11-04_ai-yanyi-117.audit.json",
+  "read_scope": {
+    "segments_read": 293,
+    "source_indices_zero_based_inclusive": [
+      2470,
+      2762
+    ],
+    "actual_interval_seconds": [
+      5688.37,
+      6163.57
+    ],
+    "span_seconds": 475.2,
+    "segment_artifact_sha256": "83b23f2285ac1e4ae1f2645b9a8752a856618bd982464c764028fcf9ffb800d8",
+    "text_artifact_sha256": "0401e75fa99a51664f86535332fe49c6b2b6c194f611135b9dd1ff4137dded07",
+    "time_basis": "百分秒源切片；正文约01:34:48–01:42:44，含后续研究与工程文化讨论，止于Bitter Lesson前。与主稿编辑顺序不同。shownotes只给大段时间。"
+  },
+  "chapter_segment_check": {
+    "segments": 293,
+    "negative_duration_count": 0,
+    "backward_start_count": 0,
+    "overlap_count": 0,
+    "max_gap_seconds": 2.04,
+    "max_consecutive_identical": 1
+  },
+  "compatible_text_audit": {
+    "schema_version": 2,
+    "kind": "podcast-transcript-audit",
+    "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+    "source_ref": "sha256:047e62fc8585a02d845eb267ecd4cebf8cdce228e388815b6cc4473d2a0fc531",
+    "max_consecutive_limit": 3,
+    "audit": {
+      "ok": true,
+      "size": 13566,
+      "sha256": "047e62fc8585a02d845eb267ecd4cebf8cdce228e388815b6cc4473d2a0fc531",
+      "lines": 293,
+      "segments": 293,
+      "duration_seconds": 6163,
+      "max_consecutive_identical": 1,
+      "timestamp_errors": 0,
+      "malformed_lines": 0,
+      "tail_gap_seconds": 0
+    }
+  },
+  "audit_interpretation": "原生整数秒导出通过：293段、0时间戳错误、0畸形行。duration_seconds=6163为绝对末位置，章长475.20秒；百分秒另核原切片一致性与单调性。首次带毫秒/长箭头导出不兼容，失败收据在私有研究缓存保留；未更改原ASR。",
+  "term_and_claim_checks": [
+    {
+      "time_seconds": [
+        5688.37,
+        5752.45
+      ],
+      "issue": "姓名、年龄、英文术语及Agent定义的识别/概括不稳定",
+      "adopted": "作者与日期依据原论文；不采用未核出生年、履历与历史优先权",
+      "basis": "论文首页/§1/§5，讲义p20",
+      "kind": "names_and_history"
+    },
+    {
+      "time_seconds": [
+        5752.45,
+        5817.89
+      ],
+      "issue": "推理/动作/观察的循环讲解",
+      "adopted": "完整保留机制并明确工具真实返回与模型生成文本不同",
+      "basis": "论文§2/§3.1/Figure1",
+      "kind": "mechanism"
+    },
+    {
+      "time_seconds": [
+        5817.89,
+        5921.25
+      ],
+      "issue": "研究问题、导师、引用量与后续影响的叙事",
+      "adopted": "保留选题视角；影响与引用增长不作为已核事实",
+      "basis": "本章口述，论文动机与版本",
+      "kind": "commentary"
+    },
+    {
+      "time_seconds": [
+        5921.77,
+        6163.57
+      ],
+      "issue": "年龄、持续学习、工程文化与全栈等访谈延伸",
+      "adopted": "概括持续阅读/亲手实践建议并归属讲述者，不外推整个行业的客观比较",
+      "basis": "本章后半口述",
+      "kind": "supporting_discussion"
+    }
+  ],
+  "audio_listened": false,
+  "wer_measured": false,
+  "limitations": [
+    "文本结构检查不代表听写准确率。",
+    "不公开完整ASR或私有存储定位。",
+    "没有把转写中全部人物/行业说法转为论文事实。"
+  ]
+}
