@@ -9,8 +9,10 @@ import json
 import os
 from pathlib import Path
 import re
+import shutil
 import sqlite3
 import stat
+import subprocess
 import time
 
 from . import declarations, processes
@@ -43,6 +45,7 @@ AUTOMATIC_READERS = {
     "claude-code": ("claude-session-runtime",), "zcode": ("zcode-model-io",),
     "minimax-code": ("minimax-session-runtime",),
     "kimi-desktop": ("kimi-desktop-session-runtime",),
+    "kimi-cli": ("kimi-cli-session-runtime",),
     "dsh": ("dsh-tool-response",),
 }
 
@@ -697,7 +700,7 @@ def _kimi_model_record(raw: bytes) -> dict:
     """Decode only allowlisted scalar fields from a model metadata record."""
     text = raw.decode("utf-8")
     spans = _json_object_spans(text)
-    fields = {"type", "model", "time", "usageScope", "kind", "provider", "modelAlias"}
+    fields = {"type", "model", "time", "usageScope", "kind", "provider", "modelAlias", "turnStep"}
     return {key: json.loads(text[start:end]) for key, (start, end) in spans.items() if key in fields}
 
 
@@ -819,6 +822,84 @@ def _kimi(owner: dict, now: float) -> dict | None:
             "turn": turn["turn"], "session": turn["session"]}
 
 
+def _kimi_cli(owner: dict, now: float) -> dict | None:
+    """Use the caller's native cwd to find one fresh CLI session and wire request."""
+    home = declarations.safe_home()
+    cwd = processes.current_directory(owner)
+    executable = shutil.which("kimi")
+    started = _started_at(owner)
+    if home is None or cwd is None or executable is None or started is None:
+        return None
+    try:
+        result = subprocess.run(
+            [executable, "session", "list", "--cwd", str(cwd), "--limit", "16", "--json"],
+            stdin=subprocess.DEVNULL, capture_output=True, text=True, timeout=2)
+    except (OSError, subprocess.SubprocessError):
+        return None
+    if result.returncode != 0 or len(result.stdout) > 1024 * 1024:
+        return None
+    raw_dirs = re.findall(r'"sessionDir"\s*:\s*("(?:\\.|[^"\\])*")', result.stdout)
+    if not raw_dirs or len(raw_dirs) > 16:
+        return None
+    sessions = []
+    root = (home / ".kimi-code" / "sessions").resolve()
+    for raw in dict.fromkeys(raw_dirs):
+        try:
+            directory = Path(json.loads(raw))
+            if not directory.is_absolute() or directory.is_symlink():
+                return None
+            directory = directory.resolve()
+            state_path = directory / "state.json"
+            if (not directory.is_relative_to(root) or not _regular(state_path)
+                    or state_path.stat().st_size > _KIMI_STATE_MAX_BYTES):
+                return None
+            text = state_path.read_text(encoding="utf-8")
+            spans = _json_object_spans(text)
+            state = {key: json.loads(text[start:end]) for key, (start, end) in spans.items()
+                     if key in {"id", "cwd", "createdAt", "updatedAt", "archived"}}
+        except (OSError, ValueError, TypeError, UnicodeError):
+            return None
+        created, updated = state.get("createdAt"), state.get("updatedAt")
+        if type(created) not in (int, float) or type(updated) not in (int, float):
+            return None
+        created_at, updated_at = created / 1000, updated / 1000
+        if (state.get("archived") is not False or state.get("id") != directory.name
+                or not isinstance(state.get("cwd"), str) or Path(state["cwd"]).resolve() != cwd.resolve()
+                or created_at > now + 2 or not started - 2 <= updated_at <= now + 2):
+            continue
+        sessions.append((directory, state["id"]))
+    if len(sessions) != 1:
+        return None
+    directory, session = sessions[0]
+    wire = directory / "agents" / "main" / "wire.jsonl"
+    latest = None
+    for raw in reversed(_tail(wire)):
+        if len(raw) > MAX_RECORD_BYTES:
+            if b"llm.request" in raw:
+                return None
+            continue
+        if b"llm.request" not in raw:
+            continue
+        try:
+            request = _kimi_model_record(raw)
+        except (ValueError, UnicodeError):
+            return None
+        if request.get("type") == "llm.request":
+            latest = request
+            break
+    if latest is None:
+        return None
+    at = latest.get("time") / 1000 if type(latest.get("time")) in (int, float) else None
+    model, turn = _model(latest.get("model")), latest.get("turnStep")
+    if (latest.get("kind") != "loop" or model is None or at is None
+            or ("modelAlias" in latest and _model(latest["modelAlias"]) is None)
+            or not isinstance(turn, str) or not re.fullmatch(r"[A-Za-z0-9._:-]{1,128}", turn)
+            or not started - 2 <= at <= now + 2 or now - at > MAX_AGE_SECONDS):
+        return None
+    return {"model": model, "source": "kimi-cli-session-runtime",
+            "observed_at": at, "turn": turn, "session": session}
+
+
 def _dsh(native: str, owner: dict, now: float) -> dict | None:
     """Read the official shell-env plugin's active, per-call metadata receipt."""
     root = Path(os.environ.get("DSH_HOME", ""))
@@ -882,6 +963,10 @@ def collect(harness: str, scope: dict | None, *, diagnostics: dict | None = None
             if "execution_ref" not in scope:
                 return unavailable("current-execution-scope-unavailable")
             native = None
+        elif harness == "kimi-cli":
+            native = None
+            if sum(processes.matches_row(row, names) for row in processes.process_chain()) != 1:
+                return unavailable("ambiguous-harness-ancestry")
         else:
             native = _native_id(harness)
             if not native:
@@ -900,6 +985,8 @@ def collect(harness: str, scope: dict | None, *, diagnostics: dict | None = None
             found = _minimax(owner, now)
         elif harness == "kimi-desktop":
             found = _kimi(owner, now)
+        elif harness == "kimi-cli":
+            found = _kimi_cli(owner, now)
         else:
             readers = {"codex": _codex, "trae": _trae, "claude-code": _claude, "zcode": _zcode, "dsh": _dsh}
             found = readers[harness](native, owner, now) if harness in readers else _pi(native)

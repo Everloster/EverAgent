@@ -292,7 +292,7 @@ class IdentityDiagnosticTests(unittest.TestCase):
     def test_unsupported_reader_does_not_probe_another_harness(self):
         probe = {}
         with patch.object(processes, "caller_process") as caller:
-            self.assertIsNone(observations.collect("kimi-cli", {"execution_ref": "fixture"}, diagnostics=probe))
+            self.assertIsNone(observations.collect("cursor-cli", {"execution_ref": "fixture"}, diagnostics=probe))
         self.assertEqual(probe["status"], "unsupported")
         self.assertEqual(probe["reason_code"], "automatic-reader-not-implemented")
         caller.assert_not_called()
@@ -1001,6 +1001,109 @@ class KimiDesktopObservationTests(unittest.TestCase):
         after = models.model_evidence("kimi-desktop")
         self.assertEqual(after["model"], "new-observed-model")
         self.assertNotEqual(before["observation_ref"], after["observation_ref"])
+
+
+class KimiCliObservationTests(unittest.TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory(prefix="everagent-kimi-cli-")
+        self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name)
+        self.workspace = self.root / "work"
+        self.workspace.mkdir()
+        self.session = self.root / ".kimi-code/sessions/wd_fixture/session_fixture"
+        self.wire = self.session / "agents/main/wire.jsonl"
+        self.wire.parent.mkdir(parents=True)
+        (self.root / ".kimi-code/config.toml").write_text('default_model="kimi-code/misleading-default"\n')
+        self.now = time.time()
+        self.paths = [self.session]
+        for target, value in ((declarations, "safe_home"), (models, "HOME")):
+            target_patch = patch.object(target, value, self.root) if value == "HOME" else patch.object(target, value, return_value=self.root)
+            target_patch.start(); self.addCleanup(target_patch.stop)
+        chain = patch.object(processes, "process_chain", return_value=[owner("kimi", started=self.now - 1000)])
+        chain.start(); self.addCleanup(chain.stop)
+        directory = patch.object(processes, "current_directory", return_value=self.workspace)
+        directory.start(); self.addCleanup(directory.stop)
+        executable = patch.object(observations.shutil, "which", return_value="/fixture/kimi")
+        executable.start(); self.addCleanup(executable.stop)
+        env = patch.dict(os.environ, {"ORCA_TERMINAL_HANDLE": "term_fixture"}, clear=True)
+        env.start(); self.addCleanup(env.stop)
+        run = patch.object(observations.subprocess, "run", side_effect=self._session_list)
+        run.start(); self.addCleanup(run.stop)
+        self.write()
+
+    def _session_list(self, command, **kwargs):
+        self.assertEqual(command[:3], ["/fixture/kimi", "session", "list"])
+        self.assertEqual(command[3:5], ["--cwd", str(self.workspace)])
+        return SimpleNamespace(returncode=0, stdout=json.dumps(
+            [{"sessionDir": str(path), "lastPrompt": "PRIVATE-DIALOG-SENTINEL"} for path in self.paths]))
+
+    def write(self, *, model="observed-kimi-model", request_at=None, updated_at=None,
+              created_at=None, cwd=None, tail="", session=None):
+        target = session or self.session
+        target.mkdir(parents=True, exist_ok=True)
+        state = {"id": target.name, "cwd": str(cwd or self.workspace),
+                 "createdAt": int((self.now - 900 if created_at is None else created_at) * 1000),
+                 "updatedAt": int((self.now - 600 if updated_at is None else updated_at) * 1000),
+                 "archived": False, "lastPrompt": "PRIVATE-DIALOG-SENTINEL"}
+        (target / "state.json").write_text(json.dumps(state))
+        wire = target / "agents/main/wire.jsonl"
+        wire.parent.mkdir(parents=True, exist_ok=True)
+        at = self.now if request_at is None else request_at
+        rows = [{"type": "llm.request", "kind": "loop", "provider": "openai",
+                 "model": model, "modelAlias": "kimi-code/" + model, "turnStep": "1.2",
+                 "time": int(at * 1000)},
+                {"type": "tool.result", "result": {"content": "PRIVATE-DIALOG-SENTINEL"}}]
+        wire.write_text("\n".join(json.dumps(row) for row in rows) + "\n" + tail)
+
+    def test_current_wire_request_is_verified_without_native_environment_or_declaration(self):
+        original = json.loads
+        def metadata_only(value, *args, **kwargs):
+            if isinstance(value, str):
+                self.assertNotIn("PRIVATE-DIALOG-SENTINEL", value)
+            return original(value, *args, **kwargs)
+        with patch.object(observations.json, "loads", side_effect=metadata_only), patch.object(
+                declarations, "declare_model") as declaration:
+            value = diagnostics.diagnose()
+        self.assertTrue(value["identity"]["current_model_confirmed"])
+        self.assertTrue(value["identity"]["user_model_declared"] is False)
+        self.assertEqual(value["identity"]["model"], "observed-kimi-model")
+        self.assertEqual(value["identity"]["configured_model"], "misleading-default")
+        self.assertEqual(value["automatic_probe"]["source"], "kimi-cli-session-runtime")
+        self.assertTrue(value["commit_allowed"])
+        declaration.assert_not_called()
+        self.assertNotIn("PRIVATE-DIALOG-SENTINEL", json.dumps(value))
+
+    def test_stale_future_foreign_or_previous_process_sessions_do_not_verify(self):
+        for changes in ({"request_at": self.now - 301}, {"request_at": self.now + 5},
+                        {"cwd": self.root / "other"}, {"updated_at": self.now - 1100},
+                        {"created_at": self.now + 5}):
+            with self.subTest(changes=changes):
+                self.write(**changes)
+                self.assertFalse(models.model_evidence("kimi-cli")["current_model_confirmed"])
+
+    def test_parallel_fresh_sessions_stay_ambiguous(self):
+        other = self.root / ".kimi-code/sessions/wd_fixture/session_other"
+        self.write(session=other)
+        self.paths.append(other)
+        self.assertFalse(models.model_evidence("kimi-cli")["current_model_confirmed"])
+
+    def test_new_session_in_an_existing_process_and_model_switch_are_supported(self):
+        self.write(created_at=self.now - 10)
+        before = models.model_evidence("kimi-cli")
+        self.assertTrue(before["current_model_confirmed"])
+        self.write(created_at=self.now - 10, model="new-observed-model")
+        after = models.model_evidence("kimi-cli")
+        self.assertEqual(after["model"], "new-observed-model")
+        self.assertNotEqual(before["observation_ref"], after["observation_ref"])
+
+    def test_malformed_or_oversized_latest_request_cannot_borrow_old_model(self):
+        oversized = json.dumps({"type": "llm.request", "kind": "loop", "model": "new-model",
+                                "turnStep": "1.3", "time": int(self.now * 1000),
+                                "padding": "x" * observations.MAX_RECORD_BYTES})
+        for tail in ('{"type":"llm.request","model":', oversized):
+            with self.subTest(length=len(tail)):
+                self.write(tail=tail)
+                self.assertFalse(models.model_evidence("kimi-cli")["current_model_confirmed"])
 
 
 class OtherRuntimeObservationTests(unittest.TestCase):
