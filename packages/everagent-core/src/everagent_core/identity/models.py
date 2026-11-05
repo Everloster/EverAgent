@@ -6,7 +6,7 @@ import os
 from pathlib import Path
 import re
 import time
-from . import declarations, observations
+from . import config, declarations, observations
 
 # Compatibility field: a missing Windows home is a real unknown, not an import failure.
 HOME = declarations.safe_home()
@@ -64,7 +64,7 @@ def configuration_hint(harness: str) -> dict:
     raw = None
     if harness == "codex":
         codex_home = os.environ.get("CODEX_HOME")
-        root = Path(codex_home) if codex_home else home / ".codex" if home else None
+        root = config.root("codex", home, override=codex_home)
         raw = _toml_get(root / "config.toml", "model") if root else None
     elif home and harness == "trae":
         raw = _toml_get(home / ".trae/traecli.toml", "model")
@@ -97,6 +97,21 @@ def model_evidence(harness: str, *, observation: dict | None = None) -> dict:
     evidence = {"requested_model": None,
                 "configured_model": hint["model"] if hint["model"] != "unknown" else None,
                 "observed_model": None, "user_declared_model": None}
+    requested_only = (harness == "opencode" and isinstance(observation, dict) and scope is not None
+                      and observation.get("scope") == scope and observation.get("harness") == harness
+                      and observation.get("source") == "opencode-session-request"
+                      and type(observation.get("observed_at")) in (int, float)
+                      and 0 <= time.time() - observation["observed_at"] <= 300
+                      and _valid(observation.get("requested_model")) is not None)
+    if requested_only:
+        metadata = observation.get("request_metadata")
+        metadata = metadata if isinstance(metadata, dict) else {}
+        evidence["requested_model"] = observation["requested_model"]
+        evidence["request_observation"] = {
+            "source": "opencode-session-request", "scope_ref": declarations.digest(scope)[:24],
+            "observed_at": observation["observed_at"], "observation_ref": observation.get("observation_ref"),
+            **{key: value for key, value in metadata.items()
+               if key in {"provider_id", "variant", "step_completed", "storage_version"}}}
     if (isinstance(observation, dict) and scope is not None
             and observation.get("scope") == scope and observation.get("harness") == harness
             and observation.get("source") in OBSERVATION_SOURCES
@@ -109,13 +124,26 @@ def model_evidence(harness: str, *, observation: dict | None = None) -> dict:
                 "current_model_confirmed": True, "user_model_declared": False,
                 "scope_ref": declarations.digest(scope)[:24], "observed_at": observation["observed_at"],
                 **({"observation_ref": observation["observation_ref"]} if observation.get("observation_ref") else {})}
-    declared = declarations.read_declaration(harness, hint=declarations.digest(hint))
-    if declared:
+    # Compare the time the model itself was stated, not an unrelated fact update.
+    # An expired newer correction must not resurrect an older still-live model.
+    declared = declarations.read_declaration(harness, hint=declarations.digest(hint), include_expired=True)
+    facts = declarations.read_facts(harness=harness, include_expired=True)
+    fields = facts.get("fields", {}) if facts else {}
+    timing = facts.get("field_times", {}).get("model", {}) if facts else {}
+    if (fields.get("model") and fields.get("harness", harness) == harness
+            and (declared is None or timing["declared_at"] >= declared["declared_at"])):
+        declared = {**facts, **timing, "model": fields["model"]}
+    discarded_at = facts.get("model_discarded_at", 0) if facts else 0
+    # Equal wall-clock ticks cannot establish that a declaration followed revocation.
+    if declared and (not discarded_at or declared["declared_at"] > discarded_at) and time.time() < declared["expires_at"]:
         return {**evidence, "user_declared_model": declared["model"],
                 "model": declared["model"], "source": "user-declared", "confidence": "declared",
                 "current_model_confirmed": False, "user_model_declared": True,
                 "declaration": {"id": declared["id"], "scope_ref": declarations.digest(declared["scope"])[:24],
                                 "expires_at": declared["expires_at"]}}
+    if requested_only:
+        return {**evidence, "model": "unknown", "source": "opencode-session-request", "confidence": "requested",
+                "current_model_confirmed": False, "user_model_declared": False}
     return {**evidence, **hint, "current_model_confirmed": False, "user_model_declared": False}
 
 

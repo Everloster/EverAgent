@@ -44,6 +44,7 @@ Task-Type: {project-optimization | new-project | task-execution}
 **提交前必须有模型依据**：先自动读取运行时的精确会话证据；失败时 Agent 先诊断并修复可行的识别路径，确实无法取证才由用户明确指定。
 Codex 当前 thread、Pi 当前 shell context、TRAE thread 与 Claude Code UUID session 读取路径见 [身份契约](./AGENT_SESSION.md#模型证据与声明)。
 配置默认值、一般环境提示、全局最近日志、历史对话和 `AGENT_ID` 都不能自动放行。
+OpenCode V2原生会话的请求Model.Ref也不是provider返回型号；requested-only记录不能自动授权署名。
 诊断入口是 `eacli session diagnose --json`；源码兜底为
 `python3 scripts/agent_identity.py diagnose --json`。按诊断核对当前调用方绑定，回公共 core owner 修复
 读取器或 adapter、补针对性回归，再复验当前会话。已授权的源码修复与只读工作可继续；仅配置值不能提交。
@@ -53,8 +54,10 @@ Codex 当前 thread、Pi 当前 shell context、TRAE thread 与 Claude Code UUID
 python3 scripts/agent_model_declare.py --model <用户明确指定的ID> --user-confirmed
 ```
 
-声明绑定 harness 进程创建身份和当前 session/terminal，默认 4 小时，最长 12 小时；重启、嵌套 harness、
-切换会话、模型提示变化或过期后失效。`user-declared` 与 `current_model_confirmed=true` 分开，声明不冒充实测。
+新源码入口为`eacli session declare`，可只补用户明确指定的device/harness/form/model；`declare-model`继续兼容模型。
+声明绑定harness进程创建身份和当前session/terminal；Desktop/Web无native session及未知harness限当前执行shell。
+默认4小时、最长12小时，字段独立TTL；重启、嵌套、会话/模型hint变化或到期失效。无关字段更新不续期模型，
+更晚的过期/撤销模型证据不能让旧模型复活，撤销时刻相等也不构成新的确认。`user-declared`与自动confirmed分开，声明不授予权限或冒充实测。
 身份缺失只阻断提交，已获授权的只读和源码工作可以继续。当前证据与字段定义见
 [身份与会话契约](./AGENT_SESSION.md)。
 
@@ -78,7 +81,12 @@ git push origin main
 ```
 
 安装态可在批准的双仓内使用 `eacli git commit`，它读取 checkout 自带的质量门禁；缺门禁硬失败。
-`eacli git push` 会 fetch、核验远端祖先关系并普通推送，分叉时要求先检查集成方案，禁止 force。
+`eacli git identity`默认校验`git var`返回的实际Author/Committer，失败非零；旧`identity show`保持诊断零退出，但有显式validation_exit_code，不得拿它当校验通过。
+`eacli git push`绑定捕获的HEAD SHA与唯一实际push目的地，先读回/获取该目的分支并核验祖先关系，再推送捕获SHA，
+不因并发HEAD变化改推新提交。命名remote的pushurl与fetch URL可不同；会拒绝目的URL再次匹配insteadOf/pushInsteadOf
+或remote别名造成的歧义，不修改用户Git配置。普通推送后再次读回同一目的ref，仅remote_sha==head才返回verified=true；
+传输确认丢失但SHA一致仍可核实，读回失败/不一致返回pushed-unverified及非零退出，不能报已核实交付或自动重推。
+分叉时先检查集成，禁止force；多pushurl拒绝在写前，不做部分推送。上述为已修源码契约，旧安装态须另行核验。
 提交和推送授权仍来自本会话的用户指令；上述例子不授予额外权限。
 
 ### 常见错误处理
@@ -88,7 +96,7 @@ git push origin main
 | `fatal: Unable to create '.git/index.lock': File exists` | 用 `git rev-parse --git-path index.lock` 定位真实锁，检查相关 Git 进程；现有操作结束后重试。锁文件清理按用户授权处理。 |
 | `Updates were rejected because the tip of your current branch is behind` | 先 `git fetch origin main` 并检查差异；只做可证明的 fast-forward，分叉时先处理集成方案。 |
 | `pre-commit hook denied` | 检查 git identity（运行 `python3 scripts/git_identity.py validate`） |
-| 网络超时 / 502 | 重试 3 次，每次间隔 ≥ 30s；3 次失败则上报用户 |
+| 网络超时 / 502 | 只读请求可有界重试；commit/push等写入结果未知先查原提交/目的ref，不自动重放；读回仍失败则明确未核实并上报 |
 
 ---
 

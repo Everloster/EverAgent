@@ -195,9 +195,9 @@ def matches_row(row: dict, names: tuple[str, ...]) -> bool:
 
 
 def caller_process(harness: str) -> dict | None:
-    from .detect import PROCESS_RULES
+    from .detect import process_rules
     harness = "claude-code" if harness == "cowork" else harness
-    names = next((names for key, names in PROCESS_RULES if key == harness), ())
+    names = next((names for key, names in process_rules() if key == harness), ())
     for row in process_chain():
         if matches_row(row, names):
             return row

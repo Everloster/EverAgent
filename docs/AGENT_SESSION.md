@@ -17,11 +17,24 @@
 公共仓不接收私有设备、地址、账号、拓扑和任务数据。eacli 是统一使用入口，新协作使用原生 Orca，
 Herdr 留给用户手动使用；发现同伴与协作边界见 [AGENT_COLLABORATION](./AGENT_COLLABORATION.md)。
 
+## current → diagnose → declare
+
+本页描述core 0.3.0及对应eacli源码契约；安装态升级与真实平台覆盖由私仓分别验收，源码/fixture通过不代表已发布。
+
+- `eacli session current`先自动取当前调用方；`diagnose`解释失败字段、读取器、配置/源码owner及复验入口，不自动修复或扩大访问范围。`eacli session inspect`为diagnose兼容入口；独立core的`everagent-identity inspect`仍是当前身份查询。
+- `identity/readers.json`拥有有界进程签名、session环境键、原生根目录与适配字段；`EVERAGENT_IDENTITY_CONFIG`显式覆盖用于修复路径/签名。配置不得提供model答案、把一般进程当Agent、用凭据环境键当会话ID或绕过读取边界；核心仍验证PID创建身份、session与新鲜度。
+- 自动读取及可行修复仍无依据，才用`eacli session declare --harness <用户指定> --form cli --model <用户指定> --user-confirmed`，只传用户明确补充的字段。公共core对应`everagent-identity declare`；旧`declare-model`保留仅模型兼容语义。
+- 用户facts仅接受device/harness/form/model，默认4小时、允许300–43200秒，字段分别保留原声明时间和到期时间；普通字段更新不续期模型或复活更早声明。模型撤销边界仅抑制旧声明，不是新模型证据；有边界时模型声明时间必须严格更晚，同tick无法证明先后则不放行。
+- 已知harness绑定进程创建身份及session/terminal；Desktop/Web没有native session时只绑定当前执行shell，未知harness也必须有exact shell，并核对通用及用户harness适用的model hint。重启、嵌套、会话/提示变化、过期或损坏失效；新的自动事实优先，用户声明不覆盖相冲突的自动证据。
+- 声明始终标`user-declared`而非自动确认，不授予权限。device值仍须由私有adapter核对登记/红线；公共core不含私有设备表，声明不能把未知机器擅自认成个人设备。
+
 ## 明确回答的问题
 
 Session v2 区分 `actor`（harness 与模型）、`execution`（当前执行设备）、`caller`（来源）、
 `host`（当前 runtime 或 Desktop）、`checkout`（实际 Git 工作树）、`task`（原生绑定）、`readiness`。
 设备、终端、仓库、模型和任务各自保留来源与核实状态，不能把宿主的默认模型或 focused pane 当作调用方事实。
+`interface`单列cli/desktop/web/unknown及来源；`host`是承载环境，嵌套CLI不因外层App已核实就变成Desktop/Web。
+没有原生已核实或有效用户声明时，`actor.model.id`为unknown，配置和请求分别在configured/requested字段，不能仅凭显示了型号就认为可提交。
 
 个人桌面场景支持命令行和 Desktop。**Kimi Desktop 是独立的 macOS/Windows App**，身份为
 `kimi-desktop`；Kimi Code CLI 身份为 `kimi-cli`。ZCode、MiniMax Code 也作为 Desktop 宿主识别。
@@ -35,7 +48,7 @@ App 身份或版本可见不代表当前模型可见；核实失败保持 unknow
 
 | 字段/状态 | 含义 | 可用于提交 |
 |---|---|---|
-| requested | 原生派工请求的模型 | 否 |
+| requested | 原生派工/会话step实际请求的Model.Ref；不是provider返回型号 | 否 |
 | configured | 配置或环境中的候选模型 | 否 |
 | observed / session-bound | 新鲜、精确会话范围的原生模型观测 | 是 |
 | user-declared / declared | 用户明确指定的本会话模型 | 是 |
@@ -55,6 +68,7 @@ App 身份或版本可见不代表当前模型可见；核实失败保持 unknow
 | Kimi Code CLI | 当前 Kimi 祖先进程的原生 cwd 定位当前目录会话；只接受当前进程运行期唯一更新会话，并读取其 wire 最新 `llm.request.model`；多会话、过期或未来记录不核实 |
 | Kimi Desktop | 活动 turn 经原生 `backgroundTasks.list` 的 running Bash PID 与启动时间绑定当前执行 shell，再以精确会话 wire 的 `usage.record` 和 `llm.request` 交叉核对模型 |
 | DSH | 官方 `shellEnv` 扩展绑定当前 tool call 与生成它的 assistant response；只使用 provider 返回的 `responseModel`，并核对 DSH 祖先进程、session 与有效期 |
+| OpenCode 2.0.27 | 原生shell注入的OPENCODE_SESSION_ID、唯一祖先进程及精确cwd限定V2 SQLite元数据；只能读step请求Model.Ref，返回requested-only，不自动放行提交，详见下节 |
 
 读取器只取当前调用方元数据；Codex、Kimi Code CLI 与 Kimi Desktop 的记录尾部有 4 MiB 上限，SQLite 只读查询指定会话的元数据字段。
 配置默认值、同目录的其他会话、全局最近日志与无来源的环境变量不构成核实。原生读取失败保留提示与未核实状态，
@@ -64,6 +78,31 @@ DSH 适配文件为 [`dsh_plugin.mjs`](../packages/everagent-core/src/everagent_
 使用 0.2.1-rc.2 的官方插件接口，需在所用 profile 加载。每次 shell 调用只写不含正文的临时模型元数据，
 调用完成即删除；core 读取上限 4 KiB、有效期 5 分钟。请求别名与返回模型分开记录，缺少返回型号保持未核实。
 macOS/Linux 支持原生 Node 启动；容器里的设备身份仍由容器自身事实决定，不冒充宿主。Windows DSH 未验证。
+
+### OpenCode V2：请求元数据与返回模型分开
+
+实现对应官方`anomalyco/opencode@1f4d07a4a519185955ae8ab2ea3607805509e386`（2.0.27）：
+`packages/core/src/tool/plugin/shell.ts:199–218`在公共shell create.before hook之后设置OPENCODE_SESSION_ID；
+公共hook本身没有session/message/tool字段，不能照搬V1 shell.env或借同目录最近会话。
+`packages/schema/src/session-message.ts:212–237`的Assistant.model和`packages/core/src/session/model-request.ts:239–256,355–363`
+的http.response事件model均是请求Model.Ref，通用V2 schema没有provider responseModel。
+
+读取器只接受OPENCODE=1、合法native session及唯一OpenCode祖先进程；读取前后核对该PID创建身份和cwd，
+要求调用方cwd、祖先cwd、session_v2.directory精确一致。默认读取XDG数据根下opencode/opencode.db，
+无XDG时为用户.local/share/opencode；可通过readers配置root或明确OPENCODE_DB定位，不枚举其他数据库。
+`:memory:`、未指明的其他channel布局、相对路径逃逸、symlink、未知schema/版本或跨目录工具调用保持不可用。
+目前仅支持存储行version=2.0.27；这不是当前可执行程序版本证明，旧会话行及Windows原生cwd绑定尚未验证。
+
+SQLite只读事务先按id+directory筛session，再取该session最新assistant的有界标量：model id/provider/variant、
+created/streamed/completed及更新时刻；不返回或Python解码正文/工具输入输出，不读其他session或凭据表。
+workspace/fork或存在location-switched时保守拒绝；两次精确快照不同、记录早于进程、过期/未来/损坏、
+后续模型选择改变均不借旧条目。最新provider流未结束时不可用；streamed已记录但工具未结算时仅返回
+`request_observation.step_completed=false`的请求元数据，不能当作完整回复或当前provider模型证明。
+
+自动成功读取后：`requested_model`及`request_observation`保留来源/范围摘要/时间/provider/variant，
+`model=unknown`、confidence=requested、current_model_confirmed=false；diagnose说明provider-response-model-unavailable。
+实际模型仍可由用户明确声明，且与原生requested分列。该读取器不声称精确tool-call或provider返回型号绑定，
+不修改OpenCode插件/App/环境，不为取得返回型号读取完整响应；有更强原生证据时再独立适配和验收。
 
 ### 自动核实失败的修复路径
 
@@ -77,7 +116,7 @@ Agent 可以在任务授权内修复 harness 分类、进程/session 绑定或�
 读取对话正文、借另一会话的模型、把配置升级为实测或自行设置用户确认。
 
 模型未核实阻断提交，已授权的源码修复与只读工作继续。没有可信原生字段、当前来源不可访问或修复后仍
-无法核实时，才请求用户给出模型 ID；harness 本身未识别时先修分类，不能借声明伪造 harness。
+无法核实时，才请求用户给出缺失事实；harness未识别时先修分类，确实不可核实才用绑定当前执行范围的用户声明，不能伪装成自动识别。
 诊断元数据和 `repair.order` 不构成模型证据，也不授权安装、权限或生产配置变更。
 
 Claude Code 从自身用户配置目录的 `projects/<cwd 编码>/<session UUID>.jsonl` 读取元数据。

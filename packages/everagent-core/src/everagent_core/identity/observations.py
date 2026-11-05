@@ -6,6 +6,7 @@ from contextlib import closing
 import heapq
 import itertools
 import json
+import math
 import os
 from pathlib import Path
 import re
@@ -15,7 +16,7 @@ import stat
 import subprocess
 import time
 
-from . import declarations, processes
+from . import config, declarations, processes
 
 MODEL_RE = declarations.MODEL_RE
 MAX_TAIL_BYTES = 4 * 1024 * 1024
@@ -47,6 +48,7 @@ AUTOMATIC_READERS = {
     "kimi-desktop": ("kimi-desktop-session-runtime",),
     "kimi-cli": ("kimi-cli-session-runtime",),
     "dsh": ("dsh-tool-response",),
+    "opencode": ("opencode-session-request",),  # A request ref, never provider response proof.
 }
 
 
@@ -93,7 +95,7 @@ def _tail(path: Path, budget: int = MAX_TAIL_BYTES) -> list[bytes]:
 
 
 def _native_id(harness: str) -> str | None:
-    keys = declarations.SESSION_KEYS.get(harness, ())
+    keys = declarations.session_keys(harness)
     if harness == "trae":
         specific = keys[:2]
         keys = specific if any(os.environ.get(k) for k in specific) else keys[2:]
@@ -132,7 +134,9 @@ def _codex(native: str, owner: dict, now: float) -> dict | None:
     explicit = os.environ.get("CODEX_HOME")
     if not explicit and home is None:
         return None
-    root = (Path(explicit) if explicit else home / ".codex").resolve()
+    root = config.root("codex", home, override=explicit)
+    if root is None:
+        return None
     index = _codex_index(root, native)
     if index:
         if index.get("archived"):
@@ -164,7 +168,7 @@ def _codex(native: str, owner: dict, now: float) -> dict | None:
             row = json.loads(line)
             payload = row.get("payload", {})
             if kind == b"turn_context":
-                context = {"model": _model(payload.get("model")), "turn": payload.get("turn_id"),
+                context = {"model": _model(payload.get(config.rule("codex").get("model_key", "model"))), "turn": payload.get("turn_id"),
                            "at": _timestamp(row.get("timestamp"))}
             elif payload.get("thread_id") == native:
                 usage = {"turn": payload.get("turn_id"), "at": _timestamp(row.get("timestamp"))}
@@ -211,7 +215,7 @@ def _trae(native: str, owner: dict, now: float) -> dict | None:
     home = declarations.safe_home()
     if home is None:
         return None
-    logs = heapq.nlargest(4, (home / ".trae/cli/log").glob("traecli*.log"), key=lambda path: path.stat().st_mtime)
+    logs = heapq.nlargest(4, config.root("trae", home).glob("traecli*.log"), key=lambda path: path.stat().st_mtime)
     thread = re.compile(rb'(?<![A-Za-z0-9_])thread_id=' + re.escape(native.encode()) + rb'(?![A-Za-z0-9._:-])')
     started = _started_at(owner)
     latest = None
@@ -360,7 +364,9 @@ def _claude(native: str, owner: dict, now: float, *, diagnostics: dict | None = 
     if home is None or started is None or not re.fullmatch(
             r"[0-9a-fA-F]{8}(?:-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}", native):
         return unavailable("native-session-binding-unavailable")
-    root = Path(os.environ.get("CLAUDE_CONFIG_DIR") or home / ".claude").expanduser()
+    root = config.root("claude-code", home, override=os.environ.get("CLAUDE_CONFIG_DIR"))
+    if root is None:
+        return unavailable("native-root-unavailable")
     cwd = Path.cwd().resolve()
     project = re.sub(r"[^a-zA-Z0-9]", "-", str(cwd))
     path = root / "projects" / project / (native + ".jsonl")
@@ -453,7 +459,7 @@ def _zcode(native: str, owner: dict, now: float) -> dict | None:
     home = declarations.safe_home()
     if home is None:
         return None
-    root = (home / ".zcode" / "cli" / "rollout").resolve()
+    root = config.root("zcode", home)
     path = root / f"model-io-{native}.jsonl"
     if not _regular(path) or not path.resolve().is_relative_to(root):
         return None
@@ -488,7 +494,7 @@ def _minimax(owner: dict, now: float) -> dict | None:
     home = declarations.safe_home()
     if home is None:
         return None
-    root = (home / ".minimax" / "v2").resolve()
+    root = config.root("minimax-code", home)
     database = root / "sqlite" / "runtime-state.sqlite"
     if not _regular(database) or not database.resolve().is_relative_to(root):
         return None
@@ -842,7 +848,7 @@ def _kimi_cli(owner: dict, now: float) -> dict | None:
     if not raw_dirs or len(raw_dirs) > 16:
         return None
     sessions = []
-    root = (home / ".kimi-code" / "sessions").resolve()
+    root = config.root("kimi-cli", home)
     for raw in dict.fromkeys(raw_dirs):
         try:
             directory = Path(json.loads(raw))
@@ -925,6 +931,112 @@ def _dsh(native: str, owner: dict, now: float) -> dict | None:
             "turn": [value["turn"], value["step"], value["call"]]}
 
 
+def _opencode_snapshot(connection, native: str, cwd: str):
+    """OpenCode 2.0.27 projections; SQL returns scalars, never message bodies.
+
+    Upstream 1f4d07a4a519185955ae8ab2ea3607805509e386:
+    packages/core/src/session/sql.ts and packages/schema/src/session-message.ts.
+    """
+    connection.execute("BEGIN")
+    try:
+        own = connection.execute("""SELECT version, model IS NOT NULL,
+            CASE WHEN length(model)<=4096 THEN CASE WHEN json_valid(model) THEN json_extract(model,'$.id') END END,
+            CASE WHEN length(model)<=4096 THEN CASE WHEN json_valid(model) THEN json_extract(model,'$.providerID') END END,
+            CASE WHEN length(model)<=4096 THEN CASE WHEN json_valid(model) THEN json_extract(model,'$.variant') END END
+            FROM session_v2 WHERE id=? AND directory=? AND workspace_id IS NULL
+            AND fork_session_id IS NULL LIMIT 1""", (native, cwd)).fetchone()
+        if own is None or own[0] != "2.0.27":
+            return None
+        # A moved session's present directory cannot authorize its old history.
+        if connection.execute("SELECT 1 FROM session_message WHERE session_id=? AND type='location-switched' LIMIT 1", (native,)).fetchone():
+            return None
+        # No WHERE completion/validity filter: an unusable newest row must not
+        # cause us to borrow an older completed model.
+        paths = ("$.model.id", "$.model.providerID", "$.model.variant", "$.time.created",
+                 "$.time.streamed", "$.time.completed")
+        columns = ",".join("CASE WHEN length(data)<=? THEN CASE WHEN json_valid(data) THEN json_extract(data,?) END END" for _ in paths)
+        bindings = tuple(x for path in paths for x in (MAX_RECORD_BYTES, path))
+        row = connection.execute("SELECT id,time_created,time_updated,length(data)," + columns +
+            ",CASE WHEN length(data)<=? THEN CASE WHEN json_valid(data) THEN json_type(data,'$.error') END END "
+            "FROM session_message WHERE session_id=? AND type='assistant' ORDER BY seq DESC LIMIT 1",
+            (*bindings, MAX_RECORD_BYTES, native)).fetchone()
+        return (own, row) if row else None
+    finally:
+        connection.rollback()
+
+
+def _opencode(native: str, owner: dict, now: float, *, diagnostics: dict | None = None) -> dict | None:
+    def unavailable(reason):
+        if diagnostics is not None:
+            diagnostics["reason_code"] = reason
+        return None
+
+    # The built-in V2 shell sets this session ID after the public shell hook.
+    # A process match alone or a user-set model hint is not sufficient.
+    if os.environ.get("OPENCODE") != "1" or not native.startswith("ses_"):
+        return unavailable("native-tool-context-unavailable")
+    started = _started_at(owner)
+    cwd = Path.cwd().resolve()
+    if started is None or processes.current_directory(owner) != cwd:
+        return unavailable("native-cwd-binding-unavailable")
+    home = declarations.safe_home()
+    xdg = os.environ.get("XDG_DATA_HOME")
+    root = config.root("opencode", home, override=str(Path(xdg) / "opencode") if xdg else None)
+    selected = os.environ.get("OPENCODE_DB")
+    if selected == ":memory:" or root is None:
+        return unavailable("native-database-unavailable")
+    if selected and Path(selected).is_absolute():
+        database = Path(selected)
+    elif selected and not re.fullmatch(r"[A-Za-z0-9_.-]+\.db", selected):
+        return unavailable("native-database-path-unverified")
+    else:
+        database = root / (selected or "opencode.db")
+    if database.absolute() != database.resolve() or not _regular(database):
+        return unavailable("native-database-unavailable")
+    before = database.stat()
+    with closing(sqlite3.connect(database.as_uri() + "?mode=ro", uri=True, timeout=0.25)) as connection:
+        connection.execute("PRAGMA query_only=ON")
+        connection.execute("PRAGMA trusted_schema=OFF")
+        deadline = time.monotonic() + 0.5
+        connection.set_progress_handler(lambda: int(time.monotonic() > deadline), 1000)
+        types = dict(connection.execute("SELECT name,type FROM sqlite_master WHERE name IN ('session_v2','session_message')"))
+        if types != {"session_v2": "table", "session_message": "table"}:
+            return unavailable("native-schema-unsupported")
+        snapshot = _opencode_snapshot(connection, native, str(cwd))
+        if snapshot is None:
+            return unavailable("native-session-metadata-unavailable")
+        # A second exact-session snapshot catches replacement/new steps or
+        # streaming metadata updates without consulting any other session.
+        if _opencode_snapshot(connection, native, str(cwd)) != snapshot:
+            return unavailable("native-observation-in-progress")
+    after = database.stat()
+    if ((before.st_dev, before.st_ino) != (after.st_dev, after.st_ino)
+            or processes.current_directory(owner) != cwd or _native_id("opencode") != native):
+        return unavailable("native-caller-changed")
+    own, row = snapshot
+    message, created, updated, size, model, provider, variant, at, streamed, completed, error = row
+    def valid_ms(value):
+        return type(value) in (int, float) and math.isfinite(value) and started <= value / 1000 <= now
+    if (not isinstance(message, str) or not re.fullmatch(r"msg_[A-Za-z0-9_-]{1,128}", message)
+            or size > MAX_RECORD_BYTES or _model(model) is None or _model(provider) is None
+            or (variant is not None and _model(variant) is None) or error not in (None, "null")
+            or not all(valid_ms(value) for value in (created, updated, at, streamed))
+            or created != at or not at <= streamed <= updated
+            or (completed is not None and (not valid_ms(completed) or not streamed <= completed <= updated))
+            or now - streamed / 1000 > MAX_AGE_SECONDS):
+        return unavailable("native-request-metadata-incomplete-or-stale")
+    # Session selection is configuration, not evidence; only use it to detect a
+    # subsequent switch that makes this assistant's request ref obsolete.
+    if own[1] and (own[2] != model or own[3] != provider
+                   or (own[4] is not None and _model(own[4]) is None)
+                   or (own[4] or "default") != (variant or "default")):
+        return unavailable("native-request-selection-changed")
+    return {"model": model, "requested_model": model, "source": "opencode-session-request",
+            "observed_at": streamed / 1000, "turn": [message, updated],
+            "request_metadata": {"provider_id": provider, "variant": variant,
+                                 "step_completed": completed is not None, "storage_version": own[0]}}
+
+
 def collect(harness: str, scope: dict | None, *, diagnostics: dict | None = None) -> dict | None:
     """Return only a model observation bound to the exact current caller."""
     if diagnostics is not None:
@@ -943,8 +1055,8 @@ def collect(harness: str, scope: dict | None, *, diagnostics: dict | None = None
         owner = processes.caller_process(harness)
         if owner is None or not owner.get("started"):
             return unavailable("current-caller-process-unavailable")
-        from .detect import PROCESS_RULES
-        names = next(names for cli, names in PROCESS_RULES if cli == harness)
+        from .detect import process_rules
+        names = next(names for cli, names in process_rules() if cli == harness)
         if harness == "zcode":
             # zcode-cli is per conversation; the resident zcode-host above it is
             # structural, so the nearest match must be the session CLI itself.
@@ -977,8 +1089,9 @@ def collect(harness: str, scope: dict | None, *, diagnostics: dict | None = None
                 return unavailable("ambiguous-harness-ancestry")
         now = time.time()
         detail = {}
-        if harness == "claude-code":
-            found = _claude(native, owner, now, diagnostics=detail)
+        if harness in {"claude-code", "opencode"}:
+            reader = _claude if harness == "claude-code" else _opencode
+            found = reader(native, owner, now, diagnostics=detail)
             if diagnostics is not None:
                 diagnostics.update(detail)
         elif harness == "minimax-code":
@@ -993,10 +1106,14 @@ def collect(harness: str, scope: dict | None, *, diagnostics: dict | None = None
         if found:
             reference = found.get("session") or native
             if diagnostics is not None:
-                diagnostics.update(status="observed", reason_code=None, source=found["source"])
+                requested_only = found["source"] == "opencode-session-request"
+                diagnostics.update(status="requested" if requested_only else "observed",
+                                   reason_code="provider-response-model-unavailable" if requested_only else None,
+                                   source=found["source"])
             return {"harness": harness, "scope": scope, "observed_at": found.get("observed_at", now),
                     "model": found["model"], "source": found["source"],
                     **({"requested_model": found["requested_model"]} if found.get("requested_model") else {}),
+                    **({"request_metadata": found["request_metadata"]} if found.get("request_metadata") else {}),
                     "observation_ref": declarations.digest([harness, reference, found.get("turn"), found["model"]])[:24]}
     except (OSError, ValueError, TypeError, AttributeError, sqlite3.Error, StopIteration) as exc:
         if diagnostics is not None:

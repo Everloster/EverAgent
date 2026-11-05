@@ -2,7 +2,7 @@
 from __future__ import annotations
 import os
 import re
-from . import models, processes
+from . import config, declarations, models, processes
 
 # ── CLI 检测表：环境变量信号（借鉴 gh cli / detect-coding-agent，社区权威）──
 # 每项：(cli_id, 厂商邮箱, 判定函数)。顺序=优先级（具体的在前）。
@@ -78,25 +78,17 @@ CLI_RULES = [
 ]
 
 # 仅匹配调用方祖先链，最近的已知 CLI 优先；其他终端里运行的 Agent 不是身份依据。
-PROCESS_RULES = (
-    ("dsh", ("dsh",)),
-    ("codex", ("codex",)),
-    ("claude-code", ("claude", "claude-code")),
-    ("trae", ("coco", "traecli")),
-    ("qoderclicn", ("qoderclicn",)),
-    ("zcode", ("zcode-cli", "zcode-host", "ZCode")),
-    ("kimi-cli", ("kimi",)),
-    ("kimi-desktop", ("Kimi",)),
-    ("minimax-code", ("MiniMax Code",)),
-    ("pi", ("pi", "pi-coding-agent")),
-    # cursor-cli（Cursor Agent）：无 cursor-cli 二进制；云端/沙箱会话 watcher 为 sand-exit-watch。
-    # 通用 node 不构成身份。会话键见 declarations.SESSION_KEYS。
-    ("cursor-cli", ("sand-exit-watch",)),
-)
+def process_rules():
+    return tuple((key, tuple(value.get("process_names", ()))) for key, value in config.load().items())
+
+
+# Compatibility export; runtime calls reload the configured rules per inspection.
+PROCESS_RULES = tuple((key, tuple(value.get("process_names", ())))
+                      for key, value in config.load(override=False).items())
 
 def _detect_cli() -> tuple[str | None, str]:
     for row in processes.process_chain():
-        for cli, names in PROCESS_RULES:
+        for cli, names in process_rules():
             if processes.matches_row(row, names):
                 if cli == "claude-code" and _has("CLAUDE_CODE_IS_COWORK"):
                     cli = "cowork"
@@ -124,7 +116,14 @@ def inspect_identity(*, observation: dict | None = None) -> dict:
                 "harness_resolved": False, "user_model_declared": False, "commit_ready": False,
                 "resolved": valid and not name.endswith("-unknown")}
 
-    cli, cli_source = _detect_cli()
+    try:
+        cli, cli_source = _detect_cli()
+    except (OSError, ValueError, TypeError):
+        cli, cli_source = None, "reader-config-invalid"
+
+    facts = declarations.read_facts() if cli_source != "reader-config-invalid" else None
+    if not cli and facts and facts["fields"].get("harness"):
+        cli, cli_source = facts["fields"]["harness"], "user-declared"
 
     if not cli:
         # 完全识别不出：进程名 + 兜底邮箱（ecommit 会拦 *-unknown，绝不静默提交）
@@ -151,14 +150,14 @@ def inspect_identity(*, observation: dict | None = None) -> dict:
     name = re.sub(r"[^A-Za-z0-9._-]+", "-", name).strip("-").lower()
     email = VENDOR_EMAIL.get(cli, FALLBACK_EMAIL)
     return {"schema_version": 2, "name": name, "email": email,
-            "cli": cli, "cli_source": cli_source, "model": model,
+            "cli": cli, "cli_source": cli_source, "harness_user_declared": cli_source == "user-declared", "model": model,
             "model_source": evidence["source"], "model_confidence": evidence["confidence"],
             "current_model_confirmed": evidence["current_model_confirmed"],
             "user_model_declared": evidence["user_model_declared"],
             "harness_resolved": True, "resolved": not name.endswith("-unknown"),
             "commit_ready": evidence["current_model_confirmed"] or evidence["user_model_declared"],
             **{key: evidence[key] for key in ("declaration", "scope_ref", "observed_at", "requested_model",
-                                           "configured_model", "observed_model", "user_declared_model", "observation_ref") if key in evidence}}
+                                           "configured_model", "observed_model", "user_declared_model", "observation_ref", "request_observation") if key in evidence}}
 
 
 def detect() -> tuple[str, str]:

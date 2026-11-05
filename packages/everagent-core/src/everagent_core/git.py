@@ -297,7 +297,7 @@ def commit(arguments: list[str], *, gate: Callable[[Path, dict[str, str]], int],
 
 
 def push(*, cwd: Path, remote: str = "origin", branch: str = "main") -> dict:
-    """Fetch, prove ancestry and push the current branch without force."""
+    """Bind the intended commit and verify the actual push destination, not a fetch alias."""
     if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]{0,63}", remote):
         raise CommitError("invalid Git remote")
     if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._/-]{0,160}", branch) or ".." in branch:
@@ -306,19 +306,78 @@ def push(*, cwd: Path, remote: str = "origin", branch: str = "main") -> dict:
     actual = git_value(["branch", "--show-current"], cwd=cwd, env=env)
     if actual != branch:
         raise CommitError("push 必须明确对应当前 checkout 的分支")
-    fetched = subprocess.run(["git", "fetch", "--no-tags", remote, branch], cwd=cwd,
-                             env=env, capture_output=True, text=True, encoding="utf-8", check=False)
-    if fetched.returncode:
-        raise CommitError("无法读取远端分支；未推送", 1)
     head = git_value(["rev-parse", "HEAD"], cwd=cwd, env=env)
-    base = git_value(["rev-parse", "FETCH_HEAD"], cwd=cwd, env=env)
+    destinations = git_value(["remote", "get-url", "--push", "--all", remote], cwd=cwd, env=env).splitlines()
+    if len(destinations) != 1 or not destinations[0] or destinations[0].startswith("-"):
+        raise CommitError("push 需要唯一明确的目的地；不自动推送多个 pushurl")
+    destination = destinations[0]
+    # Do not put URL-embedded credentials into subprocess arguments or receipts.
+    from urllib.parse import urlsplit
+    url = urlsplit(destination)
+    if url.scheme in {"http", "https"} and (url.username or url.password):
+        raise CommitError("push URL 不得内嵌认证信息；使用 Git credential helper")
+    ref = f"refs/heads/{branch}"
+
+    def check_destination():
+        # get-url already applies Git's rewrite rules. Passing its result as a
+        # URL would apply them again, and pushInsteadOf differs for a named
+        # remote with an explicit pushurl. Refuse a second interpretation rather
+        # than writing one repository and claiming a readback from another.
+        rules = subprocess.run(["git", "config", "--null", "--get-regexp", r"^url\..*\.(insteadof|pushinsteadof)$"],
+                               cwd=cwd, env=env, capture_output=True, text=True, check=False, timeout=5)
+        if rules.returncode not in (0, 1):
+            raise CommitError("无法核实 Git URL rewrite 规则；未推送")
+        if any(destination.startswith(row.partition("\n")[2]) for row in rules.stdout.split("\0") if row):
+            raise CommitError("实际 push URL 仍匹配 Git URL rewrite；为防错推请先核对 remote 配置")
+        if destination in git_value(["remote"], cwd=cwd, env=env).splitlines():
+            raise CommitError("push URL 与 Git remote 别名重名；目的地不明确，未推送")
+
+    check_destination()
+
+    def remote_sha():
+        try:
+            check_destination()
+            readback = subprocess.run(["git", "ls-remote", "--exit-code", "--refs", destination, ref], cwd=cwd,
+                                      env=env, capture_output=True, text=True, encoding="utf-8", check=False, timeout=30)
+            rows = [row.split() for row in readback.stdout.splitlines()]
+            if (readback.returncode == 0 and len(rows) == 1 and len(rows[0]) == 2
+                    and rows[0][1] == ref and re.fullmatch(r"(?:[0-9a-f]{40}|[0-9a-f]{64})", rows[0][0])):
+                return rows[0][0]
+        except (CommitError, OSError, subprocess.SubprocessError):
+            pass
+        return None
+
+    base = remote_sha()
+    if base is None:
+        raise CommitError("无法读取实际 push 目的分支；未推送", 1)
+    # Fetch the observed object, not a shared FETCH_HEAD another fetch can change.
+    try:
+        fetched = subprocess.run(["git", "fetch", "--no-tags", "--no-write-fetch-head", destination, base], cwd=cwd,
+                                 env=env, capture_output=True, text=True, encoding="utf-8", check=False, timeout=120)
+    except (OSError, subprocess.SubprocessError) as exc:
+        raise CommitError("读取实际 push 目的分支失败；未推送", 1) from exc
+    if fetched.returncode:
+        raise CommitError("无法读取实际 push 目的分支；未推送", 1)
     proof = subprocess.run(["git", "merge-base", "--is-ancestor", base, head], cwd=cwd,
                            env=env, capture_output=True, check=False)
     if proof.returncode:
-        raise CommitError("远端分支不是当前 HEAD 的祖先；检查并集成后再推送", 3)
-    result = subprocess.run(["git", "push", "--porcelain", remote, f"HEAD:refs/heads/{branch}"],
-                            cwd=cwd, env=env, capture_output=True, text=True, encoding="utf-8", check=False)
-    if result.returncode:
-        raise CommitError("Git 推送失败；先读取远端状态，禁止 force", 1)
-    return {"status": "pushed", "remote": remote, "branch": branch, "head": head,
-            "base": base, "fast_forward": True}
+        raise CommitError("远端分支不是待推送 SHA 的祖先；检查并集成后再推送", 3)
+    check_destination()
+    try:
+        result = subprocess.run(["git", "push", "--porcelain", destination, f"{head}:{ref}"],
+                                cwd=cwd, env=env, capture_output=True, text=True, encoding="utf-8", check=False, timeout=120)
+        push_code = result.returncode
+    except (OSError, subprocess.SubprocessError):
+        push_code = None
+    report = {"status": "pushed-unverified", "remote": remote, "branch": branch, "head": head,
+              "base": base, "fast_forward": True, "verified": False, "remote_sha": None,
+              "push_exit_code": push_code, "exit_code": 1}
+    # Even a failed transport can have committed the push. Read back, never retry writes here.
+    report["remote_sha"] = remote_sha()
+    if report["remote_sha"] == head:
+        report.update(status="pushed", verified=True, exit_code=0)
+        if push_code != 0:
+            report["transport_warning"] = "push-acknowledgement-lost-but-remote-sha-verified"
+    else:
+        report["reason"] = "remote-sha-unverified; query the original destination before any retry"
+    return report

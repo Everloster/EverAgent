@@ -44,7 +44,7 @@ def readiness(device: dict, agent: dict, checkout: dict, host: dict) -> dict:
     try:
         require_model(agent)
     except CommitError:
-        reasons.append("model-needs-user")
+        reasons.append("model-unverified")
     if checkout.get("status") != "ok":
         reasons.append("checkout-unavailable")
     if host.get("status") in {"ambiguous-runtime", "unavailable", "disconnected-or-orphaned", "no-caller-handle"}:
@@ -66,7 +66,8 @@ def normalize(*, device: dict, agent: dict, checkout: dict, runtime: dict,
     actor_kind = ("agent" if agent.get("harness_resolved", agent.get("resolved"))
                   else "executor-service" if worker and task.get("verified") and task.get("kind") == "executor"
                   else "unresolved")
-    model = {"id": agent.get("model", "unknown"), "source": agent.get("model_source", "unresolved"),
+    has_model = agent.get("current_model_confirmed") is True or agent.get("user_model_declared") is True
+    model = {"id": agent.get("model", "unknown") if has_model else "unknown", "source": agent.get("model_source", "unresolved"),
              "confidence": agent.get("model_confidence", "unknown"),
              "confirmed": agent.get("current_model_confirmed") is True,
              "user_declared": agent.get("user_model_declared") is True}
@@ -75,17 +76,38 @@ def normalize(*, device: dict, agent: dict, checkout: dict, runtime: dict,
             model[field.removesuffix("_model")] = agent[field]
     if agent.get("declaration"):
         model["declaration_id"] = agent["declaration"]["id"][:24]
+    if agent.get("request_observation"):
+        model["request_observation"] = agent["request_observation"]
     host = {key: runtime[key] for key in ("kind", "status", "verified", "source", "terminal_handle",
             "pane_id", "tab_id", "workspace_id", "worktree_ref", "workspace_matches_runtime", "error", "candidates")
             if key in runtime}
     if not host.get("kind") and host_app and host_app.get("id"):
         host = dict(host_app)
+    from .identity import config, declarations
+    try:
+        form = config.rule(harness).get("form", "unknown") if harness else "unknown"
+    except (OSError, ValueError, TypeError):
+        form = "unknown"
+    interface = {"kind": form, "source": ("user-declared" if agent.get("harness_user_declared")
+                 else "harness-rule") if form != "unknown" else "unresolved"}
+    if host_app and host_app.get("verified") and host_app.get("id") == harness:
+        interface = {"kind": "web" if host_app.get("id") == "dsh" else "desktop",
+                     "application": host_app.get("id"), "source": host_app.get("source")}
+    # A fallback only fills an absent fact. It never changes an observed app.
+    facts = declarations.read_facts() if device.get("known") else None
+    declared_form = facts.get("fields", {}).get("form") if facts else None
+    if declared_form and interface["kind"] == "unknown":
+        interface = {"kind": declared_form, "source": "user-declared", "declaration_id": facts["id"][:24]}
     return {"schema_version": 2, "observed_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
             "status": "unknown-device" if not device.get("known") else "ok" if ready["commit"] else "partial",
             "usage": "worker" if worker and actor_kind == "agent" else "executor" if actor_kind == "executor-service" else "interactive",
-            "actor": {"kind": actor_kind, "harness": harness, "name": agent.get("name"), "model": model},
+            "interface": interface,
+            "actor": {"kind": actor_kind, "harness": harness, "harness_source": agent.get("cli_source", "unresolved"),
+                      "name": agent.get("name") if has_model else (harness or "agent") + "-unknown", "model": model},
             "execution": {key: device.get(key) for key in
-                          ("device", "asset_id", "platform", "redline", "archive", "known")},
+                          ("device", "asset_id", "platform", "redline", "archive", "known", "source")}
+                         | ({"declaration_id": device["declaration_id"]} if device.get("declaration_id") else {}),
             "caller": caller, "host": host, "checkout": checkout,
             "task": task or {"owner": None, "status": "unbound", "verified": False},
-            "readiness": ready, **({"core": core} if core else {})}
+            "readiness": ready, **({"core": core} if core else {}),
+            **({"next": "eacli session diagnose --json"} if device.get("known") and not ready["commit"] else {})}

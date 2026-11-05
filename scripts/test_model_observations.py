@@ -112,6 +112,203 @@ class DshObservationTests(unittest.TestCase):
                     self.assertFalse(processes.matches_row(row, ("dsh",)))
 
 
+class OpenCodeRequestObservationTests(unittest.TestCase):
+    """V2 SQL metadata fixtures only; never start OpenCode or read a user's DB."""
+    def setUp(self):
+        temporary = tempfile.TemporaryDirectory(prefix="everagent-opencode-")
+        self.addCleanup(temporary.cleanup)
+        self.root = Path(temporary.name).resolve()
+        self.project = self.root / "project"
+        self.project.mkdir()
+        self.database = self.root / "data/opencode/opencode.db"
+        self.database.parent.mkdir(parents=True)
+        self.native = "ses_fixture_current"
+        self.now = time.time()
+        self.proc = owner("opencode", self.now - 10)
+        self.environment = patch.dict(os.environ, {"OPENCODE": "1", "OPENCODE_SESSION_ID": self.native,
+            "OPENCODE_MODEL": "misleading-config", "XDG_DATA_HOME": str(self.root / "data"),
+            "EVERAGENT_MODEL_DECLARATION": str(self.root / "legacy.json"),
+            "EVERAGENT_SESSION_DECLARATION": str(self.root / "facts.json")}, clear=True)
+        for target in (self.environment, patch.object(processes, "process_chain", return_value=[self.proc]),
+                       patch.object(processes, "current_directory", return_value=self.project),
+                       patch.object(Path, "cwd", return_value=self.project),
+                       patch.object(declarations, "safe_home", return_value=self.root),
+                       patch.object(models, "HOME", self.root)):
+            target.start()
+            self.addCleanup(target.stop)
+        with closing(sqlite3.connect(self.database)) as db:
+            db.executescript("""CREATE TABLE session_v2(id TEXT PRIMARY KEY,directory TEXT,workspace_id TEXT,
+                fork_session_id TEXT,version TEXT,model TEXT);
+                CREATE TABLE session_message(id TEXT PRIMARY KEY,session_id TEXT,type TEXT,seq INTEGER,
+                time_created INTEGER,time_updated INTEGER,data TEXT);""")
+            db.execute("INSERT INTO session_v2 VALUES(?,?,NULL,NULL,?,?)", (self.native, str(self.project), "2.0.27",
+                json.dumps({"id": "request-model", "providerID": "provider"})))
+            db.commit()
+        self.write()
+
+    def write(self, *, model="request-model", streamed=True, completed=True, at=None, seq=1, native=None, error=False):
+        base = int((self.now if at is None else at) * 1000)
+        data = {"model": {"id": model, "providerID": "provider", "variant": "default"},
+                "content": [{"type": "text", "text": "PRIVATE-BODY-MUST-NOT-RETURN"}],
+                "time": {"created": base - 2000}}
+        if streamed:
+            data["time"]["streamed"] = base - 1000
+        if completed:
+            data["time"]["completed"] = base - 500
+        if error:
+            data["error"] = {"message": "PRIVATE-ERROR-MUST-NOT-RETURN"}
+        with closing(sqlite3.connect(self.database)) as db:
+            db.execute("INSERT OR REPLACE INTO session_message VALUES(?,?,?,?,?,?,?)",
+                ("msg_fixture_" + str(seq), native or self.native, "assistant", seq,
+                 base - 2000, base - 100, json.dumps(data)))
+            db.commit()
+
+    def evidence(self):
+        return models.model_evidence("opencode")
+
+    def test_request_ref_is_not_provider_response_or_commit_proof(self):
+        from everagent_core import session
+        from everagent_core.identity import core
+        value = self.evidence()
+        self.assertEqual(value["model"], "unknown")
+        self.assertEqual(value["requested_model"], "request-model")
+        self.assertEqual(value["configured_model"], "misleading-config")
+        self.assertNotEqual(value["model"], value["configured_model"])
+        self.assertEqual(value["confidence"], "requested")
+        self.assertFalse(value["current_model_confirmed"])
+        self.assertFalse(value["user_model_declared"])
+        identity = core.inspect_identity()
+        self.assertFalse(identity["commit_ready"])
+        normalized = session.normalize(device={"known": True}, agent=identity, checkout={"status": "ok"}, runtime={}, caller={})
+        self.assertEqual(normalized["actor"]["model"]["requested"], "request-model")
+        self.assertEqual(normalized["actor"]["model"]["id"], "unknown")
+        self.assertEqual(normalized["actor"]["model"]["request_observation"]["provider_id"], "provider")
+        schema = json.loads((Path(models.__file__).parents[1] / "schemas/session-v2.json").read_text())
+        model_schema = schema["properties"]["actor"]["properties"]["model"]["properties"]
+        self.assertIn(normalized["actor"]["model"]["confidence"], model_schema["confidence"]["enum"])
+        self.assertLessEqual(set(normalized["actor"]["model"]["request_observation"]),
+                             set(model_schema["request_observation"]["properties"]))
+        self.assertNotIn("PRIVATE-", json.dumps(normalized))
+        self.assertNotIn(str(self.root), json.dumps(normalized))
+        with self.assertRaises(git.CommitError):
+            git.require_model(identity)
+        report = diagnostics.diagnose()
+        self.assertEqual(report["automatic_probe"]["status"], "requested")
+        self.assertEqual(report["automatic_probe"]["reason_code"], "provider-response-model-unavailable")
+
+    def test_wrong_session_cwd_or_nested_owner_never_borrows_other_rows(self):
+        self.write(seq=2, native="ses_other_session")
+        self.assertEqual(self.evidence()["requested_model"], "request-model")
+        for changes in ({"OPENCODE_SESSION_ID": "ses_missing"}, {"OPENCODE": ""}):
+            with patch.dict(os.environ, changes):
+                self.assertIsNone(self.evidence()["requested_model"])
+        with patch.object(Path, "cwd", return_value=self.root), patch.object(processes, "current_directory", return_value=self.root):
+            self.assertIsNone(self.evidence()["requested_model"])
+        with patch.object(processes, "current_directory", return_value=None):
+            self.assertIsNone(self.evidence()["requested_model"])
+        with patch.object(processes, "process_chain", return_value=[self.proc, {**self.proc, "pid": 9999}]):
+            self.assertIsNone(self.evidence()["requested_model"])
+
+    def test_stale_future_restart_and_error_do_not_supply_requested_model(self):
+        for timestamp in (self.now - 301, self.now + 5):
+            with self.subTest(timestamp=timestamp):
+                self.write(at=timestamp)
+                self.assertIsNone(self.evidence()["requested_model"])
+        self.write()
+        with patch.object(processes, "process_chain", return_value=[owner("opencode", self.now + 5)]):
+            self.assertIsNone(self.evidence()["requested_model"])
+        self.write(error=True)
+        self.assertIsNone(self.evidence()["requested_model"])
+
+    def test_streaming_newest_record_does_not_fall_back_to_finished_old_step(self):
+        self.write(seq=2, streamed=False, completed=False)
+        self.assertIsNone(self.evidence()["requested_model"])
+        self.write(seq=2, streamed=True, completed=False)
+        value = self.evidence()
+        self.assertEqual(value["requested_model"], "request-model")
+        self.assertFalse(value["request_observation"]["step_completed"])
+        self.assertFalse(value["current_model_confirmed"])
+        self.write(seq=2)
+        self.assertTrue(self.evidence()["request_observation"]["step_completed"])
+
+    def test_session_switch_move_fork_and_unknown_version_are_not_current_proof(self):
+        for column, value in (("model", json.dumps({"id": "different", "providerID": "provider"})),
+                              ("workspace_id", "foreign-workspace"), ("fork_session_id", "ses_parent"),
+                              ("version", "1.2.3")):
+            with self.subTest(column=column), closing(sqlite3.connect(self.database)) as db:
+                prior = db.execute("SELECT " + column + " FROM session_v2").fetchone()[0]
+                db.execute("UPDATE session_v2 SET " + column + "=?", (value,)); db.commit()
+                self.assertIsNone(self.evidence()["requested_model"])
+                db.execute("UPDATE session_v2 SET " + column + "=?", (prior,)); db.commit()
+        with closing(sqlite3.connect(self.database)) as db:
+            db.execute("INSERT INTO session_message VALUES('msg_move',?,'location-switched',2,1,1,?)", (self.native, "PRIVATE-MOVE-BODY"))
+            db.commit()
+        self.assertIsNone(self.evidence()["requested_model"])
+
+    def test_changed_snapshot_and_changed_caller_are_rejected(self):
+        original = observations._opencode_snapshot
+        calls = []
+        def changing(connection, native, cwd):
+            value = original(connection, native, cwd)
+            calls.append(value)
+            if len(calls) == 2:
+                own, row = value
+                return own, ("msg_replaced", *row[1:])
+            return value
+        with patch.object(observations, "_opencode_snapshot", side_effect=changing):
+            self.assertIsNone(self.evidence()["requested_model"])
+        with patch.object(processes, "current_directory", side_effect=[self.project, None]):
+            self.assertIsNone(self.evidence()["requested_model"])
+
+    def test_private_bodies_are_not_decoded_and_bad_latest_metadata_never_borrows(self):
+        original = json.loads
+        def metadata_only(text, *args, **kwargs):
+            self.assertNotIn("PRIVATE-", str(text))
+            return original(text, *args, **kwargs)
+        with patch.object(observations.json, "loads", side_effect=metadata_only):
+            self.assertEqual(self.evidence()["requested_model"], "request-model")
+        self.write(seq=2)
+        for raw in ("{incomplete", json.dumps({"content": "x" * (observations.MAX_RECORD_BYTES + 1)})):
+            with closing(sqlite3.connect(self.database)) as db:
+                db.execute("UPDATE session_message SET data=? WHERE seq=2", (raw,)); db.commit()
+            self.assertIsNone(self.evidence()["requested_model"])
+
+    def test_explicit_user_model_remains_separate_from_native_request_ref(self):
+        declarations.declare_model("opencode", "user-confirmed-model", user_confirmed=True,
+                                   hint=models.hint_fingerprint("opencode"))
+        value = self.evidence()
+        self.assertEqual(value["model"], "user-confirmed-model")
+        self.assertEqual(value["requested_model"], "request-model")
+        self.assertTrue(value["user_model_declared"])
+        self.assertFalse(value["current_model_confirmed"])
+
+    def test_configured_root_repairs_location_without_supplying_model_answers(self):
+        relocated = self.root / "relocated"
+        relocated.mkdir()
+        self.database.rename(relocated / "opencode.db")
+        rules = self.root / "readers.json"
+        rules.write_text(json.dumps({"schema_version": 1, "harnesses": {"opencode": {"root": str(relocated)}}}))
+        os.environ.pop("XDG_DATA_HOME")
+        with patch.dict(os.environ, {"EVERAGENT_IDENTITY_CONFIG": str(rules)}):
+            value = self.evidence()
+            self.assertEqual(value["requested_model"], "request-model")
+            self.assertFalse(value["current_model_confirmed"])
+
+    def test_database_paths_do_not_glob_or_accept_relative_escape(self):
+        for selected in (":memory:", "../other.db", str(self.root / "missing.db")):
+            with patch.dict(os.environ, {"OPENCODE_DB": selected}):
+                self.assertIsNone(self.evidence()["requested_model"])
+        with patch.dict(os.environ, {"OPENCODE_DB": str(self.database)}):
+            self.assertEqual(self.evidence()["requested_model"], "request-model")
+        with patch.dict(os.environ, {"OPENCODE_DB": "channel.db"}):
+            self.assertIsNone(self.evidence()["requested_model"])
+        if os.name != "nt":
+            link = self.root / "linked.db"
+            link.symlink_to(self.database)
+            with patch.dict(os.environ, {"OPENCODE_DB": str(link)}):
+                self.assertIsNone(self.evidence()["requested_model"])
+
+
 class CodexObservationTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory(prefix="everagent-auto-model-")
@@ -190,7 +387,7 @@ class CodexObservationTests(unittest.TestCase):
         self.assertFalse(value["commit_allowed"])
         self.assertTrue(value["authorized_source_repair_allowed"])
         self.assertFalse(value["diagnostics_are_model_evidence"])
-        self.assertEqual(value["repair"]["order"][-1], "request-explicit-user-model-if-unverifiable")
+        self.assertEqual(value["repair"]["order"][-1], "request-explicit-user-facts-if-unverifiable")
         declaration.assert_not_called()
 
     def test_diagnose_missing_binding_does_not_scan_history(self):
@@ -279,15 +476,17 @@ class CodexObservationTests(unittest.TestCase):
 class IdentityDiagnosticTests(unittest.TestCase):
     def test_unknown_harness_stops_before_automatic_reader(self):
         unresolved = {"harness_resolved": False, "commit_ready": False}
-        with patch.object(diagnostics, "_detect_cli", return_value=(None, "unresolved")), patch.object(
+        for scope in (None, {"execution_ref": "fixture-shell"}):
+            with self.subTest(scope=scope), patch.object(declarations, "fact_scope", return_value=scope), patch.object(
+                diagnostics, "_detect_cli", return_value=(None, "unresolved")), patch.object(
                 diagnostics, "inspect_identity", return_value=unresolved), patch.object(
                 observations, "collect") as reader, patch.object(declarations, "declare_model") as declaration:
-            value = diagnostics.diagnose()
-        self.assertEqual(value["automatic_probe"]["reason_code"], "current-harness-unresolved")
-        self.assertFalse(value["user_fallback"]["available"])
-        self.assertFalse(value["commit_allowed"])
-        reader.assert_not_called()
-        declaration.assert_not_called()
+                value = diagnostics.diagnose()
+            self.assertEqual(value["automatic_probe"]["reason_code"], "current-harness-unresolved")
+            self.assertEqual(value["user_fallback"]["available"], scope is not None)
+            self.assertFalse(value["commit_allowed"])
+            reader.assert_not_called()
+            declaration.assert_not_called()
 
     def test_unsupported_reader_does_not_probe_another_harness(self):
         probe = {}

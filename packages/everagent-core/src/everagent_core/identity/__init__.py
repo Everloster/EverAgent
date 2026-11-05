@@ -17,6 +17,8 @@ def diagnose_identity() -> dict:
 def source_sha256() -> str:
     digest = hashlib.sha256()
     root = Path(__file__).resolve().parent
-    for path in sorted(root.glob("*.py")):
+    for path in sorted(root.iterdir()):
+        if not path.is_file() or path.suffix not in {".py", ".json", ".mjs"}:
+            continue
         digest.update(path.name.encode() + b"\0" + path.read_bytes() + b"\0")
     return digest.hexdigest()

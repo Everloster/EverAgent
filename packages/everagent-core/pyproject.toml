@@ -20,4 +20,4 @@ include = ["everagent_core*"]
 version = {attr = "everagent_core.__version__"}
 
 [tool.setuptools.package-data]
-everagent_core = ["schemas/*.json", "identity/*.mjs"]
+everagent_core = ["schemas/*.json", "identity/*.mjs", "identity/*.json"]

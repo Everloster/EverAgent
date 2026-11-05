@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "harnesses": {
+    "dsh": {"process_names": ["dsh"], "session_keys": ["DSH_SESSION_ID"], "form": "web"},
+    "codex": {"process_names": ["codex"], "session_keys": ["CODEX_THREAD_ID", "CODEX_SESSION_ID"], "root": "~/.codex", "model_key": "model", "form": "cli"},
+    "claude-code": {"process_names": ["claude", "claude-code"], "session_keys": ["CLAUDE_CODE_SESSION_ID"], "root": "~/.claude", "form": "cli"},
+    "trae": {"process_names": ["coco", "traecli"], "session_keys": ["TRAECLI_THREAD_ID", "TRAE_THREAD_ID", "CODEX_THREAD_ID"], "root": "~/.trae/cli/log", "form": "cli"},
+    "qoderclicn": {"process_names": ["qoderclicn"], "form": "cli"},
+    "zcode": {"process_names": ["zcode-cli", "zcode-host", "ZCode"], "root": "~/.zcode/cli/rollout", "form": "desktop"},
+    "kimi-cli": {"process_names": ["kimi"], "session_keys": ["KIMI_CLI_SESSION_ID"], "root": "~/.kimi-code/sessions", "form": "cli"},
+    "kimi-desktop": {"process_names": ["Kimi"], "form": "desktop"},
+    "minimax-code": {"process_names": ["MiniMax Code"], "root": "~/.minimax/v2", "form": "desktop"},
+    "pi": {"process_names": ["pi", "pi-coding-agent"], "session_keys": ["PI_SESSION_ID"], "form": "cli"},
+    "opencode": {"process_names": ["opencode"], "session_keys": ["OPENCODE_SESSION_ID"], "root": "~/.local/share/opencode", "form": "cli"},
+    "cursor-cli": {"process_names": ["sand-exit-watch"], "session_keys": ["CURSOR_CONVERSATION_ID"], "form": "cli"}
+  }
+}

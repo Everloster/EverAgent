@@ -222,5 +222,122 @@ class CommitTests(unittest.TestCase):
         self.assertEqual(self.git("log", "-1", check=False), "")
 
 
+class PushTests(unittest.TestCase):
+    """Actual local bare remotes, no network or real repository state."""
+
+    def setUp(self):
+        from everagent_core import git
+        self.core = git
+        temporary = tempfile.TemporaryDirectory(prefix="everagent-push-test-")
+        self.addCleanup(temporary.cleanup)
+        self.root = Path(temporary.name) / "checkout"
+        self.root.mkdir()
+        self.fetch_target = self.root.parent / "fetch.git"
+        self.push_target = self.root.parent / "push.git"
+        env = {key: value for key, value in os.environ.items() if not key.startswith("GIT_")}
+        env.update(GIT_CONFIG_GLOBAL=os.devnull, GIT_CONFIG_NOSYSTEM="1",
+                   GIT_AUTHOR_NAME="fixture", GIT_AUTHOR_EMAIL="fixture@example.com",
+                   GIT_COMMITTER_NAME="fixture", GIT_COMMITTER_EMAIL="fixture@example.com")
+        environment = patch.dict(os.environ, env, clear=True)
+        environment.start()
+        self.addCleanup(environment.stop)
+        self.git("init", "-qb", "main")
+        (self.root / "file").write_text("base")
+        self.git("add", "file")
+        self.git("commit", "-qm", "基线\n\nCo-Authored-By: Aiden")
+        self.base = self.git("rev-parse", "HEAD")
+        self.git("clone", "-q", "--bare", str(self.root), str(self.fetch_target))
+        self.git("clone", "-q", "--bare", str(self.root), str(self.push_target))
+        self.git("remote", "add", "origin", str(self.fetch_target))
+        self.git("remote", "set-url", "--push", "origin", str(self.push_target))
+        (self.root / "file").write_text("next")
+        self.git("add", "file")
+        self.git("commit", "-qm", "下一笔\n\nCo-Authored-By: Aiden")
+        self.head = self.git("rev-parse", "HEAD")
+
+    def git(self, *args):
+        return subprocess.run(["git", *args], cwd=self.root, check=True, capture_output=True,
+                              text=True).stdout.strip()
+
+    def test_verifies_actual_pushurl_and_keeps_fetch_destination_untouched(self):
+        value = self.core.push(cwd=self.root)
+        self.assertEqual(value["remote_sha"], self.head)
+        self.assertEqual((value["status"], value["verified"], value["exit_code"]), ("pushed", True, 0))
+        self.assertEqual(self.git("--git-dir", str(self.fetch_target), "rev-parse", "main"), self.base)
+        self.assertNotIn(str(self.push_target), str(value))
+
+    def test_bound_sha_is_pushed_even_if_local_head_moves(self):
+        run = subprocess.run
+
+        def move_head(args, **kwargs):
+            if args[:2] == ["git", "push"]:
+                run(["git", "commit", "--allow-empty", "-qm", "并发提交\n\nCo-Authored-By: Aiden"],
+                    cwd=self.root, env=kwargs["env"], check=True, capture_output=True)
+            return run(args, **kwargs)
+
+        with patch.object(self.core.subprocess, "run", side_effect=move_head):
+            value = self.core.push(cwd=self.root)
+        self.assertNotEqual(self.git("rev-parse", "HEAD"), self.head)
+        self.assertEqual(value["remote_sha"], self.head)
+
+    def test_successful_transport_with_failed_readback_is_not_delivery(self):
+        run = subprocess.run
+        reads = 0
+
+        def lose_readback(args, **kwargs):
+            nonlocal reads
+            if args[:2] == ["git", "ls-remote"]:
+                reads += 1
+                if reads == 2:
+                    return subprocess.CompletedProcess(args, 1, "", "fixture transport error")
+            return run(args, **kwargs)
+
+        with patch.object(self.core.subprocess, "run", side_effect=lose_readback):
+            value = self.core.push(cwd=self.root)
+        self.assertFalse(value["verified"])
+        self.assertEqual(value["status"], "pushed-unverified")
+        self.assertEqual(value["exit_code"], 1)
+        self.assertEqual(self.git("--git-dir", str(self.push_target), "rev-parse", "main"), self.head)
+
+    def test_lost_push_acknowledgement_queries_original_destination_without_replaying(self):
+        run = subprocess.run
+        pushes = 0
+
+        def lose_ack(args, **kwargs):
+            nonlocal pushes
+            result = run(args, **kwargs)
+            if args[:2] == ["git", "push"]:
+                pushes += 1
+                raise subprocess.TimeoutExpired(args, 120)
+            return result
+
+        with patch.object(self.core.subprocess, "run", side_effect=lose_ack):
+            value = self.core.push(cwd=self.root)
+        self.assertEqual(pushes, 1)
+        self.assertTrue(value["verified"])
+        self.assertIn("transport_warning", value)
+
+    def test_multiple_destinations_are_rejected_without_a_partial_push(self):
+        self.git("remote", "set-url", "--add", "--push", "origin", str(self.fetch_target))
+        with self.assertRaises(self.core.CommitError):
+            self.core.push(cwd=self.root)
+        self.assertEqual(self.git("--git-dir", str(self.push_target), "rev-parse", "main"), self.base)
+
+    def test_pushurl_with_conflicting_rewrite_never_writes_a_third_destination(self):
+        other = self.root.parent / "other.git"
+        self.git("clone", "-q", "--bare", str(self.push_target), str(other))
+        self.git("config", f"url.{other}.pushInsteadOf", str(self.push_target))
+        self.assertEqual(self.git("remote", "get-url", "--push", "origin"), str(self.push_target))
+        for already_delivered in (False, True):
+            with self.subTest(already_delivered=already_delivered):
+                if already_delivered:
+                    self.git("push", "-q", "origin", "main")
+                with self.assertRaises(self.core.CommitError):
+                    self.core.push(cwd=self.root)
+                self.assertEqual(self.git("--git-dir", str(other), "rev-parse", "main"), self.base)
+                self.assertEqual(self.git("--git-dir", str(self.push_target), "rev-parse", "main"),
+                                 self.head if already_delivered else self.base)
+
+
 if __name__ == "__main__":
     unittest.main()

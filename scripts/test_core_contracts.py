@@ -16,7 +16,7 @@ from unittest.mock import patch
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import core_bootstrap  # noqa: E402,F401
 from everagent_core import apps, catalog, devices, session  # noqa: E402
-from everagent_core.identity import declarations, models, processes, core  # noqa: E402
+from everagent_core.identity import config, declarations, models, processes, core  # noqa: E402
 
 SCOPE = {"harness": "codex", "process_ref": "fixture-process", "session_ref": "fixture-session"}
 
@@ -84,7 +84,202 @@ class ModelDeclarationTests(unittest.TestCase):
             self.assertFalse(models.model_evidence("codex", observation={**value, **changed})["current_model_confirmed"])
 
 
+class ReaderConfigurationAndFactsTests(unittest.TestCase):
+    def setUp(self):
+        temporary = tempfile.TemporaryDirectory(prefix="everagent-facts-fixture-")
+        self.addCleanup(temporary.cleanup)
+        self.home = Path(temporary.name).resolve()
+        self.path = self.home / "facts.json"
+        self.chain = [{"pid": 8, "name": "zsh", "started": "fixture-shell"}]
+        for target in (patch.dict(os.environ, {"EVERAGENT_SESSION_DECLARATION": str(self.path),
+                        "EVERAGENT_MODEL_DECLARATION": str(self.home / "legacy.json")}, clear=True),
+                       patch.object(processes, "process_chain", return_value=self.chain),
+                       patch.object(models, "HOME", self.home),
+                       patch.object(declarations, "safe_home", return_value=self.home)):
+            target.start()
+            self.addCleanup(target.stop)
+
+    def override(self, harnesses):
+        path = self.home / "readers.json"
+        path.write_text(json.dumps({"schema_version": 1, "harnesses": harnesses}))
+        os.environ["EVERAGENT_IDENTITY_CONFIG"] = str(path)
+
+    def test_keywords_paths_and_session_keys_are_repairable_not_model_proof(self):
+        self.override({"codex": {"process_names": ["renamed-codex"], "session_keys": ["FIXTURE_SESSION_ID"],
+                                 "root": str(self.home / "relocated")}})
+        self.chain.append({"pid": 9, "name": "renamed-codex", "started": "fixture-agent"})
+        os.environ["FIXTURE_SESSION_ID"] = "current-session"
+        self.assertEqual(core._detect_cli(), ("codex", "process-ancestry"))
+        self.assertEqual(config.root("codex", self.home), self.home / "relocated")
+        self.assertIn("session_ref", declarations.caller_scope("codex"))
+        self.assertFalse(core.inspect_identity(observation={})["commit_ready"])
+
+    def test_invalid_configuration_is_diagnosable_not_a_generic_process_match(self):
+        for fields in ({"process_names": ["node"]}, {"session_keys": ["API_TOKEN"]},
+                       {"model": "made-up"}, {"root": "~/all/*"}):
+            with self.subTest(fields=fields):
+                self.override({"codex": fields})
+                value = core.inspect_identity()
+                self.assertEqual(value["cli_source"], "reader-config-invalid")
+                self.assertFalse(value["commit_ready"])
+
+    def test_unknown_harness_can_be_user_declared_only_for_this_execution(self):
+        fields = {"harness": "new-cli", "model": "user-model", "form": "cli"}
+        with self.assertRaises(ValueError):
+            declarations.declare_facts(fields, user_confirmed=False)
+        receipt = declarations.declare_facts(fields, user_confirmed=True)
+        self.assertFalse(receipt["grants_permissions"])
+        value = core.inspect_identity(observation={})
+        self.assertEqual(value["cli_source"], "user-declared")
+        self.assertEqual(value["model"], "user-model")
+        self.assertTrue(value["user_model_declared"])
+        self.assertFalse(value["current_model_confirmed"])
+        normalized = session.normalize(device={"known": True}, agent=value, checkout={"status": "ok"},
+                                       runtime={}, caller={})
+        self.assertEqual(normalized["interface"]["source"], "user-declared")
+        self.chain[0] = {**self.chain[0], "started": "another-shell"}
+        self.assertIsNone(declarations.read_facts())
+
+    def test_successive_explicit_facts_preserve_other_still_bound_fields(self):
+        declarations.declare_facts({"harness": "new-cli"}, user_confirmed=True)
+        declarations.declare_facts({"model": "user-model", "form": "cli"}, user_confirmed=True)
+        self.assertEqual(core.inspect_identity(observation={})["name"], "new-cli-user-model")
+
+    def test_automatic_evidence_wins_and_conflicting_declarations_are_refused(self):
+        self.chain.append({"pid": 9, "name": "codex", "started": "fixture-agent"})
+        with self.assertRaises(ValueError):
+            declarations.declare_facts({"harness": "pi"}, user_confirmed=True, observed={"harness": "codex"})
+        declarations.declare_facts({"model": "user-model"}, user_confirmed=True)
+        observation = {"harness": "codex", "scope": declarations.caller_scope("codex"),
+                       "source": "codex-turn-context", "observed_at": time.time(), "model": "native-model"}
+        value = core.inspect_identity(observation=observation)
+        self.assertEqual(value["model"], "native-model")
+        self.assertTrue(value["current_model_confirmed"])
+        self.assertFalse(value["user_model_declared"])
+
+    def test_facts_expire_on_hint_change_tampering_or_restart(self):
+        self.chain.append({"pid": 9, "name": "codex", "started": "fixture-agent"})
+        declarations.declare_facts({"model": "user-model"}, user_confirmed=True, ttl_seconds=300)
+        self.assertIsNone(declarations.read_facts(now=time.time() + 301))
+        with patch.dict(os.environ, {"CODEX_MODEL": "different-hint"}):
+            self.assertIsNone(declarations.read_facts())
+        original = self.path.read_text()
+        value = json.loads(original)
+        value["fields"]["model"] = "tampered"
+        self.path.write_text(json.dumps(value))
+        self.assertIsNone(declarations.read_facts())
+        self.path.write_text(original)
+        self.chain[-1] = {**self.chain[-1], "started": "restarted"}
+        self.assertIsNone(declarations.read_facts())
+
+    def test_latest_valid_user_model_receipt_wins_across_compatibility_names(self):
+        self.chain.append({"pid": 9, "name": "codex", "started": "fixture-agent"})
+        declarations.declare_model("codex", "old-model", user_confirmed=True, hint=models.hint_fingerprint("codex"))
+        declarations.declare_facts({"model": "new-model"}, user_confirmed=True)
+        self.assertEqual(models.model_evidence("codex", observation={})["model"], "new-model")
+        declarations.declare_model("codex", "latest-model", user_confirmed=True, hint=models.hint_fingerprint("codex"))
+        self.assertEqual(models.model_evidence("codex", observation={})["model"], "latest-model")
+
+    def test_unrelated_fact_updates_do_not_renew_or_resurrect_a_model(self):
+        self.chain.append({"pid": 9, "name": "codex", "started": "fixture-agent"})
+        with patch.object(declarations.time, "time", return_value=1000):
+            declarations.declare_facts({"model": "old-model"}, user_confirmed=True, ttl_seconds=4000)
+        with patch.object(declarations.time, "time", return_value=1001):
+            declarations.declare_model("codex", "new-model", user_confirmed=True,
+                                       hint=models.hint_fingerprint("codex"), ttl_seconds=300)
+        for now, fields in ((1002, {"form": "cli"}), (1003, {"device": "fixture"})):
+            with patch.object(declarations.time, "time", return_value=now):
+                receipt = declarations.declare_facts(fields, user_confirmed=True)
+                self.assertEqual(receipt["field_times"]["model"], {"declared_at": 1000, "expires_at": 5000})
+                self.assertEqual(models.model_evidence("codex", observation={})["model"], "new-model")
+        with patch.object(declarations.time, "time", return_value=1302):
+            self.assertFalse(models.model_evidence("codex", observation={})["user_model_declared"])
+        with patch.object(declarations.time, "time", return_value=6000):
+            self.assertNotIn("model", declarations.read_facts()["fields"])
+
+    def test_expired_facts_model_remains_newer_than_legacy_after_another_update(self):
+        self.chain.append({"pid": 9, "name": "codex", "started": "fixture-agent"})
+        with patch.object(declarations.time, "time", return_value=1000):
+            declarations.declare_model("codex", "old-model", user_confirmed=True,
+                                       hint=models.hint_fingerprint("codex"))
+        with patch.object(declarations.time, "time", return_value=1001):
+            declarations.declare_facts({"model": "new-model"}, user_confirmed=True, ttl_seconds=300)
+        with patch.object(declarations.time, "time", return_value=1400):
+            receipt = declarations.declare_facts({"form": "cli"}, user_confirmed=True)
+            self.assertNotIn("model", receipt["fields"])
+            self.assertFalse(models.model_evidence("codex", observation={})["user_model_declared"])
+
+    def test_configured_desktop_without_session_is_bound_to_each_execution_shell(self):
+        self.override({"new-desktop": {"process_names": ["NewDesktopAgent"], "form": "desktop"}})
+        self.chain.append({"pid": 9, "name": "NewDesktopAgent", "started": "fixture-app"})
+        os.environ["ORCA_TERMINAL_HANDLE"] = "same-terminal"
+        for legacy in (False, True):
+            with self.subTest(legacy=legacy):
+                if legacy:
+                    declarations.declare_model("new-desktop", "user-model", user_confirmed=True,
+                                               hint=models.hint_fingerprint("new-desktop"))
+                else:
+                    declarations.declare_facts({"model": "user-model"}, user_confirmed=True)
+                self.assertIn("execution_ref", declarations.caller_scope("new-desktop"))
+                self.assertTrue(core.inspect_identity(observation={})["commit_ready"])
+                self.chain[0] = {**self.chain[0], "started": self.chain[0]["started"] + "-next"}
+                self.assertFalse(core.inspect_identity(observation={})["commit_ready"])
+
+    def test_native_conflict_does_not_erase_the_model_supersession_boundary(self):
+        self.chain.append({"pid": 9, "name": "codex", "started": "fixture-agent"})
+        with patch.object(declarations.time, "time", return_value=1000):
+            declarations.declare_model("codex", "legacy-old", user_confirmed=True,
+                                       hint=models.hint_fingerprint("codex"), ttl_seconds=4000)
+        with patch.object(declarations.time, "time", return_value=1001):
+            declarations.declare_facts({"model": "newer-correction"}, user_confirmed=True, ttl_seconds=300)
+        with patch.object(declarations.time, "time", return_value=1303):
+            receipt = declarations.declare_facts({"form": "cli"}, user_confirmed=True,
+                                                 observed={"harness": "codex", "model": "native-live"})
+            self.assertNotIn("model", receipt["fields"])
+        with patch.object(declarations.time, "time", return_value=1304):
+            self.assertFalse(models.model_evidence("codex", observation={})["user_model_declared"])
+            declarations.declare_facts({"device": "fixture"}, user_confirmed=True)
+            self.assertFalse(models.model_evidence("codex", observation={})["user_model_declared"])
+        with patch.object(declarations.time, "time", return_value=1305):
+            declarations.declare_model("codex", "explicit-new", user_confirmed=True,
+                                       hint=models.hint_fingerprint("codex"))
+            self.assertEqual(models.model_evidence("codex", observation={})["model"], "explicit-new")
+
+    def test_same_tick_model_declaration_cannot_cross_revocation(self):
+        self.chain.append({"pid": 9, "name": "codex", "started": "fixture-agent"})
+        with patch.object(declarations.time, "time", return_value=1000):
+            declarations.declare_model("codex", "same-tick-old", user_confirmed=True,
+                                       hint=models.hint_fingerprint("codex"), ttl_seconds=4000)
+            declarations.declare_facts({"model": "same-tick-correction"}, user_confirmed=True)
+            declarations.declare_facts({"form": "cli"}, user_confirmed=True,
+                                      observed={"harness": "codex", "model": "native-live"})
+            self.assertFalse(models.model_evidence("codex", observation={})["user_model_declared"])
+        with patch.object(declarations.time, "time", return_value=1001):
+            declarations.declare_facts({"model": "later-explicit"}, user_confirmed=True)
+            self.assertEqual(models.model_evidence("codex", observation={})["model"], "later-explicit")
+
+    def test_unknown_harness_fallback_invalidates_generic_and_specific_hints(self):
+        for harness, key in (("new-cli", "AGENT_MODEL"), ("codex", "CODEX_MODEL"), ("pi", "PI_MODEL")):
+            with self.subTest(harness=harness), patch.dict(os.environ, {key: "initial"}):
+                declarations.declare_facts({"harness": harness, "model": "user-model"}, user_confirmed=True)
+                self.assertTrue(core.inspect_identity(observation={})["commit_ready"])
+                os.environ[key] = "changed"
+                self.assertIsNone(declarations.read_facts())
+                self.assertFalse(core.inspect_identity(observation={})["commit_ready"])
+
+
 class SessionContracts(unittest.TestCase):
+    def test_nested_cli_keeps_its_interface_separate_from_outer_app(self):
+        for harness, app, expected in (("codex", "dsh", "cli"), ("pi", "zcode", "cli"),
+                                       ("zcode", "zcode", "desktop"), ("dsh", "dsh", "web")):
+            with self.subTest(harness=harness, app=app), patch.object(declarations, "read_facts", return_value=None):
+                value = session.normalize(device={"known": True},
+                    agent={"cli": harness, "harness_resolved": True}, checkout={}, runtime={}, caller={},
+                    host_app={"id": app, "verified": True, "source": "caller-process-entry"})
+            self.assertEqual(value["interface"]["kind"], expected)
+            self.assertEqual(value["host"]["id"], app)
+            self.assertEqual(value["interface"]["source"], "caller-process-entry" if harness == app else "harness-rule")
+
     def test_generic_environment_never_confirms_nested_agent_model(self):
         with patch.dict(os.environ, {"AGENT_MODEL": "outer-model"}, clear=True):
             value = models.model_evidence("pi")

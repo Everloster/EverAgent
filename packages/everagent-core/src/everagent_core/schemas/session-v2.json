@@ -89,6 +89,7 @@
                 "declared",
                 "environment-hint",
                 "configured",
+                "requested",
                 "unknown"
               ]
             },
@@ -100,6 +101,27 @@
             },
             "declaration_id": {
               "type": "string"
+            },
+            "requested": {
+              "type": "string"
+            },
+            "configured": {
+              "type": "string"
+            },
+            "request_observation": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["source", "scope_ref", "observed_at", "observation_ref"],
+              "properties": {
+                "source": {"const": "opencode-session-request"},
+                "scope_ref": {"type": "string"},
+                "observed_at": {"type": "number"},
+                "observation_ref": {"type": ["string", "null"]},
+                "provider_id": {"type": "string"},
+                "variant": {"type": ["string", "null"]},
+                "step_completed": {"type": "boolean"},
+                "storage_version": {"type": "string"}
+              }
             }
           }
         }
@@ -152,6 +174,29 @@
     },
     "core": {
       "type": "object"
+    },
+    "interface": {
+      "type": "object",
+      "required": [
+        "kind",
+        "source"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "cli",
+            "desktop",
+            "web",
+            "unknown"
+          ]
+        },
+        "source": {
+          "type": "string"
+        }
+      }
+    },
+    "next": {
+      "type": "string"
     }
   }
 }
