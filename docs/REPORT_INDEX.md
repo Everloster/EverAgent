@@ -7,7 +7,8 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
-| 2026-11-05 | [《AI演义》深读：从关键论文看懂AI的发展路径](../ai-learning/reports/AI演义_笔记分析与项目整合报告.md) | ai-learning |
+| 2026-11-06 | [《AI演义》深读：从关键论文看懂AI的发展路径](../ai-learning/reports/AI演义_笔记分析与项目整合报告.md) | ai-learning |
+| 2026-11-06 | [《AI演义》24｜ViT：图片切成小块，为什么还能认出整只猫？](../ai-learning/reports/knowledge_reports/AI演义_24_ViT_图像怎样变成Transformer输入_科普讲解_20261105.md) | ai-learning |
 | 2026-11-05 | [《AI演义》23｜双流网络：把运动先算出来，识别动作会更容易吗？](../ai-learning/reports/knowledge_reports/AI演义_23_TwoStream_外观与运动怎样共同识别动作_科普讲解_20261105.md) | ai-learning |
 | 2026-11-05 | [《AI演义》22｜DeepVideo：多看几帧，为什么还不够？](../ai-learning/reports/knowledge_reports/AI演义_22_DeepVideo_模型怎样利用视频时间信息_科普讲解_20261105.md) | ai-learning |
 | 2026-11-05 | [《AI演义》21｜Tülu 3：示范、偏好和验算，怎样一起训练助手？](../ai-learning/reports/knowledge_reports/AI演义_21_Tulu3_后训练配方怎样起作用_科普讲解_20261105.md) | ai-learning |
@@ -31,13 +32,13 @@
 | 2026-11-04 | [《AI演义》03｜ResNet：网络更深了，为什么连训练集都学不好？](../ai-learning/reports/knowledge_reports/AI演义_03_ResNet_深层网络如何训练_科普讲解_20261104.md) | ai-learning |
 | 2026-11-04 | [《AI演义》02｜AlexNet：数据、模型和 GPU 为什么必须合在一起看？](../ai-learning/reports/knowledge_reports/AI演义_02_AlexNet_图像识别突破_科普讲解_20261104.md) | ai-learning |
 | 2026-11-04 | [《AI演义》01｜Brook：GPU 很快，为什么普通程序还不容易用上它？](../ai-learning/reports/knowledge_reports/AI演义_01_Brook_GPU通用计算_科普讲解_20261104.md) | ai-learning |
-| 2026-11-04 | [agent-desktop 深度研究：Agent 怎样可靠地操作桌面](../github-trending-analyzer/reports/research_vercel-labs_agent-desktop.md) | github-trending-analyzer |
 
-## 🤖 AI Learning（177 篇）
+## 🤖 AI Learning（178 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
-| 2026-11-05 | [《AI演义》深读：从关键论文看懂AI的发展路径](../ai-learning/reports/AI演义_笔记分析与项目整合报告.md) | `ai_history`, `representation_learning`, `transformer`, `pretraining`, `scaling_laws`, `multimodal` |
+| 2026-11-06 | [《AI演义》深读：从关键论文看懂AI的发展路径](../ai-learning/reports/AI演义_笔记分析与项目整合报告.md) | `ai_history`, `representation_learning`, `transformer`, `pretraining`, `scaling_laws`, `multimodal` |
+| 2026-11-06 | [《AI演义》24｜ViT：图片切成小块，为什么还能认出整只猫？](../ai-learning/reports/knowledge_reports/AI演义_24_ViT_图像怎样变成Transformer输入_科普讲解_20261105.md) | `ai_history`, `vit`, `transformer`, `image_recognition`, `inductive_bias` |
 | 2026-11-05 | [《AI演义》23｜双流网络：把运动先算出来，识别动作会更容易吗？](../ai-learning/reports/knowledge_reports/AI演义_23_TwoStream_外观与运动怎样共同识别动作_科普讲解_20261105.md) | `ai_history`, `two_stream`, `action_recognition`, `optical_flow`, `multitask_learning` |
 | 2026-11-05 | [《AI演义》22｜DeepVideo：多看几帧，为什么还不够？](../ai-learning/reports/knowledge_reports/AI演义_22_DeepVideo_模型怎样利用视频时间信息_科普讲解_20261105.md) | `ai_history`, `deepvideo`, `video_classification`, `temporal_fusion`, `sports1m`, `transfer_learning` |
 | 2026-11-05 | [《AI演义》21｜Tülu 3：示范、偏好和验算，怎样一起训练助手？](../ai-learning/reports/knowledge_reports/AI演义_21_Tulu3_后训练配方怎样起作用_科普讲解_20261105.md) | `ai_history`, `tulu3`, `post_training`, `sft`, `dpo`, `rlvr` |

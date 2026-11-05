@@ -1,0 +1,590 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_24_ViT_图像怎样变成Transformer输入_科普讲解_20261105.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-05",
+  "generator": {
+    "model": "gpt-6-astra",
+    "harness": "codex",
+    "run_id": "ai-yanyi-vit-r1-20261105",
+    "explicit_model_override": false,
+    "override_reason": "",
+    "identity_basis": "eacli session current：codex-turn-context，session-bound，confirmed=true；只证明当前生成会话，不证明子会话模型。"
+  },
+  "task": {
+    "summary": "第24节ViT展开：以猫照片讲清图块、位置、自注意力、分类学习，解释数据规模与计算成本的条件，并实质改写原报告对应章节。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "结合ViT v2原论文、讲义p47、shownotes与236段目标转写；准确区分版本、实际阅读范围及未听校边界。"
+      },
+      {
+        "id": "R2",
+        "text": "用贯穿例子解释224/16图块、连续向量、位置、分类标记、监督训练和迁移；不混同词表、自回归生成或零视觉先验。"
+      },
+      {
+        "id": "R3",
+        "text": "保留数据规模反例、CLS/GAP与位置消融，严格区别全参微调、线性5-shot、不同表和不同分辨率。"
+      },
+      {
+        "id": "R4",
+        "text": "解释预训练累计成本、实际硬件与图块数量代价；区分自监督初探、图文/视频设想和原文已验证任务。"
+      },
+      {
+        "id": "R5",
+        "text": "原第24节实质改写，标题后首块为展开链接；展开返回原24、上23双流、下25CLIP，保留人类阅读友好的主线和三问。"
+      },
+      {
+        "id": "R6",
+        "text": "标题沿用《AI演义》两位编号｜题名；正文普通Markdown、独立可读，检查正文排版、引用和上下篇链接，不要求工作台页面验收。"
+      }
+    ],
+    "reader_feedback": [
+      "原章节没有优化、也没有链接展开阅读的啊",
+      "按Brook方式一轮完成一节，后续参考前轮；少数学、独立可读。",
+      "列表命名开头规范一下。"
+    ],
+    "scope_adjustment": {
+      "date": "2026-11-06",
+      "authority": "用户明确取消报告的工作台页面验收前置",
+      "ui_validation_required": false,
+      "content_and_source_review_required": true
+    }
+  },
+  "sources": [
+    {
+      "id": "PAPER",
+      "kind": "primary",
+      "title": "An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale",
+      "locator": "https://arxiv.org/pdf/2010.11929v2",
+      "accessed_on": "2026-11-05",
+      "version": "arXiv:2010.11929v2，2021-06-03，ICLR 2021，22页",
+      "read_scope": "正文pp1–9、附录pp13–20及22已读，p12相关引用条目已核；模型/输入、Tables1/2/5/8、Figures3–5/9及对应文字重点核对。p3/6/7/9经eacli图像读取，p6原图另直接核；图像模型误读不采纳。未逐篇精读参考文献，也未逐格检查p21 Figure14全部注意力图。",
+      "sha256": "8ce7b83971a14508ca711a27c875c9b6914c4f6767cf3150fb1ca6c07aa056d6",
+      "local_owner": "ai-learning/papers/19_vit_2020.pdf"
+    },
+    {
+      "id": "METADATA",
+      "kind": "primary",
+      "title": "arXiv ViT版本与修订说明",
+      "locator": "https://arxiv.org/abs/2010.11929v2",
+      "accessed_on": "2026-11-05",
+      "read_scope": "本轮通过eacli读取官方元信息；首发2020-10-22，v2增加CLS/GAP讨论并更正Figure5/Table6的exaFLOPs；未重新下载官方PDF做字节比对。",
+      "response_text_sha256": "3ea3127aee0239978f61f06211932109114a29485488ea6be6223fe7ea9030bb"
+    },
+    {
+      "id": "LECTURE",
+      "kind": "local",
+      "title": "《AI演义》讲义ViT条目及多模态路线",
+      "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "accessed_on": "2026-11-05",
+      "read_scope": "p47文本与原图、eacli图像读取；p41路线文字。顾问称呼不能替代原论文署名中的具体贡献标记。",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0"
+    },
+    {
+      "id": "PODCAST",
+      "kind": "primary",
+      "title": "张小珺商业访谈录117：ViT片段",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-05",
+      "read_scope": "236段目标ASR完整读取；零基6162–6397；12737.70–13275.76秒，跨度538.06秒。未重新听音或测WER。",
+      "transcript_review": "ai-learning/reports/knowledge_reports/.quality/AI演义_24_ViT_图像怎样变成Transformer输入_科普讲解_20261105.transcription-review.json",
+      "transcript_source_ref": "sha256:aaca2aeb13277caa28b6ca41e9f61e5218957ea94166d99f32801c8bfca5ec3d"
+    },
+    {
+      "id": "SHOWNOTES",
+      "kind": "primary",
+      "title": "节目shownotes多模态路线",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-05",
+      "read_scope": "复用已取得官方节目页缓存，重读Part4 ViT及前后顺序；本轮未重新抓页。",
+      "cache_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5",
+      "fresh_fetch": false
+    },
+    {
+      "id": "TRANSFORMER",
+      "kind": "primary",
+      "title": "Attention Is All You Need",
+      "locator": "https://arxiv.org/pdf/1706.03762v7",
+      "accessed_on": "2026-11-05",
+      "version": "arXiv:1706.03762v7，2023-08-02；首页列 NIPS 2017",
+      "read_scope": "继承本日第7轮已读v7首页署名核对Jakob Uszkoreit共同作者身份。本轮不新增Transformer机制或实验主张；原读取记录保持可追溯。",
+      "research_record": "ai-learning/notes/ai_yanyi_research/sequence-evidence.json",
+      "research_source_id": "SEQ-S3",
+      "sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "ViT尽量复用标准Transformer处理图像，非视觉注意力首创；动机兼顾表达与高效扩展。",
+      "report_anchor": "why-use-transformer",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "LECTURE",
+        "PODCAST"
+      ],
+      "critical": true,
+      "evidence": "§§1–2；前驱与工程动机不能转成全部硬件速度保证。"
+    },
+    {
+      "id": "C2",
+      "claim": "224×224 RGB、P16对应196块，各768像素数，Base宽768，加CLS共197位置；投影不必降维且patch非词表语义词。",
+      "report_anchor": "patch-input",
+      "support": "derived",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§3.1公式1、Figure1、Table1；196/768/197为给定尺寸算术，Large宽1024。 逐像素50176位置与patch196位置对照按§2–3和给定尺寸推算。"
+    },
+    {
+      "id": "C3",
+      "claim": "默认一维可学位置嵌入提供空间线索，注意力在表示中交换信息；编码器序列不等于自回归逐词生成。",
+      "report_anchor": "position-and-attention",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§3.1、附录A；图块内部顺序固定。图7为作者观察，猫部位关系仅教学示意。"
+    },
+    {
+      "id": "C4",
+      "claim": "class token最终表示用于分类，端到端监督学习调整参数；全参微调与冻结表示线性few-shot口径不同。",
+      "report_anchor": "classification-and-learning",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§§3.1–3.2、4.1及B.1.1/§4.1 Metrics；上游MLP分类头，下游换线性头。"
+    },
+    {
+      "id": "C5",
+      "claim": "ViT减少某些视觉归纳偏置，仍有图块/共享投影/位置设计；数据条件结果不能隔离全部结构因果。",
+      "report_anchor": "visual-bias",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§3.1 Inductive bias、§4.3；不写无任何先验。"
+    },
+    {
+      "id": "C6",
+      "claim": "Table5统一384微调：B/L的ImageNet为77.91/76.53、21k为83.97/85.15、JFT为84.15/87.12；规模越大并非无条件更好。",
+      "report_anchor": "data-scale",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "Table5、Table1；差−1.38/+1.18/+2.97个百分点；模型86M/307M。训练计划与数据来源不同，不声称只改张数。"
+    },
+    {
+      "id": "C7",
+      "claim": "同一JFT的9M/30M/90M/完整子集使用相同超参与早停，不为小集额外正则，评价冻结表示的线性5-shot。",
+      "report_anchor": "data-scale",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§4.3/Figure4正文：B32在9M低于相近成本R50、90M以上更好；图轴10M/100M非实际子集。"
+    },
+    {
+      "id": "C8",
+      "claim": "VTAB19任务各1000训练样本，仍依赖上游预训练，不能称从零只需这些样本。 作者报告将预训练数据对下游测试集去重，本篇未复验去重结果。",
+      "report_anchor": "data-scale",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§4.1 Datasets与Table4。"
+    },
+    {
+      "id": "C9",
+      "claim": "GAP最初差，改变学习率后与CLS相近；不能从初始失败断言CLS不可替代。",
+      "report_anchor": "ablation",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "D.3/Figure9 pp16–17，差异由适合学习率解释。"
+    },
+    {
+      "id": "C10",
+      "claim": "Table8 B16 ImageNet线性5-shot无位置61.382%、默认1D64.206%；2D/相对位置未明显更好。",
+      "report_anchor": "ablation",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "D.4/Table8 p17；正文四舍五入61.38/64.21，作者对网格易学作推测。"
+    },
+    {
+      "id": "C11",
+      "claim": "Table2三次微调均值±标准差及JFT上游：BiT-L/L16/H14 ImageNet87.54±.02/87.76±.03/88.55±.04，VTAB76.29±1.70/76.28±.46/77.63±.23。",
+      "report_anchor": "accuracy-and-cost",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "p6 Table2原图核读；不能称ViT-L逐项胜BiT，Flowers L99.74/H99.68亦为反例。"
+    },
+    {
+      "id": "C12",
+      "claim": "Table2预训练成本9900/680/2500 TPUv3核心天，不是推理延迟；ImageNet另用512/518与Polyak平均，不能混同Table5。",
+      "report_anchor": "accuracy-and-cost",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§4.2/Table2；512/518与Polyak平均明确见§4.1 Training p5。架构、优化器、方案不一致需保留。"
+    },
+    {
+      "id": "C13",
+      "claim": "受控JFT规模实验按5个下游平均，作者概括ViT约用1/2至1/4计算获得相近性能；小预算hybrid可更强。",
+      "report_anchor": "accuracy-and-cost",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§4.4/Figure5及D.1/Table6；采用v2更正成本，非全部硬件保证。"
+    },
+    {
+      "id": "C14",
+      "claim": "224到448且P16不变：图块196到784为4倍，忽略CLS两两关系38416到614656为16倍；非整网实测。",
+      "report_anchor": "resolution-and-hardware",
+      "support": "derived",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "由§3定义推算；§3.2位置嵌入二维插值。"
+    },
+    {
+      "id": "C15",
+      "claim": "TPUv3吞吐取各batch最佳，不等于单图延迟；AxialResNet朴素实现很慢，Axial-ViT因额外MLP增加整网计算量，单个算子成本不能代替整网成本或真实速度。",
+      "report_anchor": "resolution-and-hardware",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "D.5–D.6 pp18–20；明确区分AxialResNet与Axial-ViT，不外推所有实现。"
+    },
+    {
+      "id": "C16",
+      "claim": "主结果是监督分类；自监督初探选50%图块嵌入扰动，最终预测512色量化均色，B16后续ImageNet79.9%。",
+      "report_anchor": "supervision-and-next-step",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§4.6及B.1.2 p14；原文约高于从零2pp、低于监督4pp；不是完整像素重建或后继MAE。"
+    },
+    {
+      "id": "C17",
+      "claim": "图文/视频序列统一为节目延伸设想，形式相容不等于已学语义对应；论文结论保留检测/分割与自监督待研究。",
+      "report_anchor": "supervision-and-next-step",
+      "support": "derived",
+      "source_ids": [
+        "PAPER",
+        "PODCAST",
+        "SHOWNOTES"
+      ],
+      "critical": true,
+      "evidence": "§5与口述约03:39–03:41；CLIP为下一问题，本轮未声明所有视觉任务统一。"
+    },
+    {
+      "id": "C18",
+      "claim": "讲义的输入适配概括可用；Jakob为Transformer/ViT共同作者，但ViT首页equal advising标在Alexey/Neil，不能证实讲义具体指导说法。",
+      "report_anchor": "lecture-and-history",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "LECTURE",
+        "PODCAST",
+        "TRANSFORMER"
+      ],
+      "critical": true,
+      "evidence": "两篇首页、讲义p47；署名参与与私人指导关系分开。"
+    },
+    {
+      "id": "C19",
+      "claim": "目标236段538.06秒结构通过，无逆序或重叠；未听校或测WER；读v2版本修订，不冒称重新下载PDF。",
+      "report_anchor": "sources-and-scope",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "METADATA",
+        "LECTURE",
+        "PODCAST",
+        "SHOWNOTES"
+      ],
+      "critical": true,
+      "evidence": "原生audit及百分秒校核回执、正式元信息；完整转写留私有。"
+    },
+    {
+      "id": "C20",
+      "claim": "图块内容/位置排列及分辨率成本的比较为待验证实验，没有报告未执行的预测或计时结果。",
+      "report_anchor": "thinking-and-questions",
+      "support": "derived",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": false,
+      "evidence": "由输入结构、位置消融和成本推导，正文明确[待验证]。"
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U1",
+      "title": "ViT尽量复用标准Transformer处理图像，非视觉注意力首创；动机兼顾表达与高效扩展。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "LECTURE",
+        "PODCAST"
+      ],
+      "report_anchor": "why-use-transformer"
+    },
+    {
+      "id": "U2",
+      "title": "224×224 RGB、P16对应196块，各768像素数，Base宽768，加CLS共197位置；投影不必降维且patch非词表语义词。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "patch-input"
+    },
+    {
+      "id": "U3",
+      "title": "默认一维可学位置嵌入提供空间线索，注意力在表示中交换信息；编码器序列不等于自回归逐词生成。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "position-and-attention"
+    },
+    {
+      "id": "U4",
+      "title": "class token最终表示用于分类，端到端监督学习调整参数；全参微调与冻结表示线性few-shot口径不同。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "classification-and-learning"
+    },
+    {
+      "id": "U5",
+      "title": "ViT减少某些视觉归纳偏置，仍有图块/共享投影/位置设计；数据条件结果不能隔离全部结构因果。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "visual-bias"
+    },
+    {
+      "id": "U6",
+      "title": "Table5统一384微调：B/L的ImageNet为77.91/76.53、21k为83.97/85.15、JFT为84.15/87.12；规模越大并非无条件更好。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "data-scale"
+    },
+    {
+      "id": "U7",
+      "title": "同一JFT的9M/30M/90M/完整子集使用相同超参与早停，不为小集额外正则，评价冻结表示的线性5-shot。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "data-scale"
+    },
+    {
+      "id": "U8",
+      "title": "VTAB19任务各1000训练样本，仍依赖上游预训练，不能称从零只需这些样本。 作者报告将预训练数据对下游测试集去重，本篇未复验去重结果。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "data-scale"
+    },
+    {
+      "id": "U9",
+      "title": "GAP最初差，改变学习率后与CLS相近；不能从初始失败断言CLS不可替代。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "ablation"
+    },
+    {
+      "id": "U10",
+      "title": "Table8 B16 ImageNet线性5-shot无位置61.382%、默认1D64.206%；2D/相对位置未明显更好。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "ablation"
+    },
+    {
+      "id": "U11",
+      "title": "Table2三次微调均值±标准差及JFT上游：BiT-L/L16/H14 ImageNet87.54±.02/87.76±.03/88.55±.04，VTAB76.29±1.70/76.28±.46/77.63±.23。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "accuracy-and-cost"
+    },
+    {
+      "id": "U12",
+      "title": "Table2预训练成本9900/680/2500 TPUv3核心天，不是推理延迟；ImageNet另用512/518与Polyak平均，不能混同Table5。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "accuracy-and-cost"
+    },
+    {
+      "id": "U13",
+      "title": "受控JFT规模实验按5个下游平均，作者概括ViT约用1/2至1/4计算获得相近性能；小预算hybrid可更强。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "accuracy-and-cost"
+    },
+    {
+      "id": "U14",
+      "title": "224到448且P16不变：图块196到784为4倍，忽略CLS两两关系38416到614656为16倍；非整网实测。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "resolution-and-hardware"
+    },
+    {
+      "id": "U15",
+      "title": "区分单次注意力、完整模型计算量与TPUv3真实吞吐",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "resolution-and-hardware"
+    },
+    {
+      "id": "U16",
+      "title": "主结果是监督分类；自监督初探选50%图块嵌入扰动，最终预测512色量化均色，B16后续ImageNet79.9%。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "supervision-and-next-step"
+    },
+    {
+      "id": "U17",
+      "title": "图文/视频序列统一为节目延伸设想，形式相容不等于已学语义对应；论文结论保留检测/分割与自监督待研究。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "PODCAST",
+        "SHOWNOTES"
+      ],
+      "report_anchor": "supervision-and-next-step"
+    },
+    {
+      "id": "U18",
+      "title": "讲义的输入适配概括可用；Jakob为Transformer/ViT共同作者，但ViT首页equal advising标在Alexey/Neil，不能证实讲义具体指导说法。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "LECTURE",
+        "PODCAST",
+        "TRANSFORMER"
+      ],
+      "report_anchor": "lecture-and-history"
+    },
+    {
+      "id": "U19",
+      "title": "目标236段538.06秒结构通过，无逆序或重叠；未听校或测WER；读v2版本修订，不冒称重新下载PDF。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "METADATA",
+        "LECTURE",
+        "PODCAST",
+        "SHOWNOTES"
+      ],
+      "report_anchor": "sources-and-scope"
+    },
+    {
+      "id": "U20",
+      "title": "图块内容/位置排列及分辨率成本的比较为待验证实验，没有报告未执行的预测或计时结果。",
+      "importance": "supporting",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "thinking-and-questions"
+    }
+  ],
+  "limitations": [
+    "猫照片仅机制示意，未训练、执行推理或复现准确率/硬件成本。",
+    "原论文版本和实验口径受限于实际读取v2；未逐篇审计基线论文、训练数据重叠或现代视觉模型谱系。",
+    "目标转写已完整读取并检查时间结构，但未重新听音/测WER，不能据结构审计宣称识别文本完全正确。",
+    "注意力/位置可视化不构成完整因果解释；数据规模比较仍有训练条件与数据来源边界。",
+    "口述的Sora/DiT和图文融合延伸没有被当作ViT实验或已核定产品继承关系。"
+  ],
+  "research_receipts": {
+    "source_manifest_sha256": "caabf68f38a7124956e443bfdd6942922578a168ee594971ae76ec63217416b5",
+    "transcription_review": "ai-learning/reports/knowledge_reports/.quality/AI演义_24_ViT_图像怎样变成Transformer输入_科普讲解_20261105.transcription-review.json",
+    "paper_vision_corrections": [
+      "不采纳把pre-norm与2017原布局说成完全相同的图像回执。",
+      "Figure4实际子集以正文9M/30M/90M为准，不按轴刻度10M/100M。",
+      "不采纳无归纳偏置、未经原文核定的MAE继承或过度因果化注意力解释。"
+    ],
+    "render_check": {
+      "status": "not_required_by_user",
+      "observed_on": "2026-11-05",
+      "failure": "所选浏览器的实际页面操作报Cannot read properties of undefined (reading 'timeoutMs')；本轮新连接后仍复现。",
+      "service_not_stopped": true,
+      "viewport_changed": false,
+      "original_tab_retained": true,
+      "scope_corrected_on": "2026-11-06",
+      "note": "保留此前未操作成功的事实；用户已明确取消报告页面验收，此项不再阻断正文交付。"
+    }
+  },
+  "revision_note": "r2：根据独立内容复核修正不存在的附录B.3定位；明确轴向注意力的算子、整网与实测速度三种口径。其余科学正文和来源不变。"
+}

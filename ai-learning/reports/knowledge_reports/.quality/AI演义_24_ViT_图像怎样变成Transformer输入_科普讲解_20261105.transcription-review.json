@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "kind": "chapter-transcription-review",
+  "reviewed_on": "2026-11-05",
+  "chapter": 24,
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+  "transcript_source_ref": "sha256:aaca2aeb13277caa28b6ca41e9f61e5218957ea94166d99f32801c8bfca5ec3d",
+  "full_segments_sha256": "f322514ced72235a0ca104635824c66df425c18dbae3d0f4e76fa70d088db61c",
+  "public_full_episode_receipt": "podcast-learning/reports/transcripts/2026-11-04_ai-yanyi-117.audit.json",
+  "read_scope": {
+    "segments_read": 236,
+    "source_indices_zero_based_inclusive": [
+      6162,
+      6397
+    ],
+    "actual_interval_seconds": [
+      12737.7,
+      13275.76
+    ],
+    "span_seconds": 538.06,
+    "segment_artifact_sha256": "887f8121c29ecaf514bf3ffb1479ac156edb99844b61e0b6be518cced14a267d",
+    "text_artifact_sha256": "aaca2aeb13277caa28b6ca41e9f61e5218957ea94166d99f32801c8bfca5ec3d",
+    "time_basis": "约03:32:18–03:41:16；百分秒12737.70–13275.76。节目此前DDPM，下一主题CLIP；不与报告顺序混同。"
+  },
+  "chapter_segment_check": {
+    "same_as_original_slice": true,
+    "segments": 236,
+    "fractional_start_backwards": 0,
+    "fractional_end_backwards": 0,
+    "fractional_end_before_start": 0,
+    "overlap_count": 0,
+    "max_gap_seconds": 0.07,
+    "max_consecutive_identical": 1
+  },
+  "compatible_text_audit": {
+    "schema_version": 2,
+    "kind": "podcast-transcript-audit",
+    "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+    "source_ref": "sha256:aaca2aeb13277caa28b6ca41e9f61e5218957ea94166d99f32801c8bfca5ec3d",
+    "max_consecutive_limit": 3,
+    "audit": {
+      "ok": true,
+      "size": 12410,
+      "sha256": "aaca2aeb13277caa28b6ca41e9f61e5218957ea94166d99f32801c8bfca5ec3d",
+      "lines": 236,
+      "segments": 236,
+      "duration_seconds": 13275,
+      "max_consecutive_identical": 1,
+      "timestamp_errors": 0,
+      "malformed_lines": 0,
+      "tail_gap_seconds": 0
+    }
+  },
+  "audit_interpretation": "原生整数秒审计通过，duration_seconds=13275是绝对末位置而非538.06秒章长；另核原JSON百分秒和相邻衔接，未改原ASR。",
+  "term_and_claim_checks": [
+    {
+      "time_seconds": [
+        12737.7,
+        12904
+      ],
+      "issue": "会议名、GPU、ResNet等专名误识与硬件生态概括",
+      "adopted": "专名按原文；不保留口误推断，不把组件复用等同任意硬件加速。",
+      "basis": "ViT§§1–2、D.5–D.6",
+      "kind": "names_and_hardware"
+    },
+    {
+      "time_seconds": [
+        12904,
+        13103
+      ],
+      "issue": "有限token、图块编号和embedding的口述简化",
+      "adopted": "连续像素投影、可学位置向量、编码器并行处理；非词表语义词或逐词生成。",
+      "basis": "§3.1、Figure1、附录A",
+      "kind": "mechanism"
+    },
+    {
+      "time_seconds": [
+        12915,
+        12935
+      ],
+      "issue": "Jakob顾问身份",
+      "adopted": "共同作者事实与equal advising署名分开，不确认私人指导关系。",
+      "basis": "ViT首页、Transformer首页、讲义p47",
+      "kind": "authorship"
+    },
+    {
+      "time_seconds": [
+        13103,
+        13158
+      ],
+      "issue": "数据规模与计算优势的宽泛评价",
+      "adopted": "按Tables2/5与§4.3–4.4保留训练和评价口径，不写CNN必然弱或ViT普遍快。",
+      "basis": "原论文对应实验及附录",
+      "kind": "comparison_scope"
+    },
+    {
+      "time_seconds": [
+        13158,
+        13275.76
+      ],
+      "issue": "后续Sora/DiT、图文融合与所有方法统一的延伸",
+      "adopted": "作为节目设想与下一问题，不当作ViT已验证能力或全面历史谱系。",
+      "basis": "节目目标片段、ViT§5研究边界",
+      "kind": "task_and_history_scope"
+    }
+  ],
+  "audio_listened": false,
+  "wer_measured": false,
+  "limitations": [
+    "文本时间结构通过不等于语音识别完全准确。",
+    "完整236段已读；展开中的机制和数字大量来自论文补充。",
+    "完整私有转写与本机路径不公开。"
+  ]
+}

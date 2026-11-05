@@ -3,7 +3,7 @@ title: "《AI演义》深读：从关键论文看懂AI的发展路径"
 domain: "ai-learning"
 report_type: "knowledge_report"
 status: "completed"
-updated_on: "2026-11-05"
+updated_on: "2026-11-06"
 quality_schema: "report-v2"
 quality_tier: "flagship"
 report_depth: "deep"
@@ -560,15 +560,21 @@ Sports-1M 测试集有 20 万视频。Table 1 中，单帧模型的视频首选�
 
 <a id="paper-vit"></a>
 
-### 24. ViT：视觉与语言共享的是计算骨架，不是同一个任务
+### 24. ViT：图片切成小块，为什么还能认出整只猫？
 
-2020年公开的 **Vision Transformer** 问了另一类问题：能否尽量少改标准Transformer，就让它处理图像识别？[^vit]
+**[展开阅读：从一张猫照片看懂 ViT 的输入、学习与数据代价 →](knowledge_reports/AI演义_24_ViT_图像怎样变成Transformer输入_科普讲解_20261105.md)**
 
-图像不是单词序列，逐像素处理又可能很贵。ViT把图像切成图块，投影为向量序列，加上位置信息，再用Transformer编码器处理。这不是先把图像翻译成语言，而是为同一类计算骨架设计可用输入单位。
+一张猫趴在窗台上的照片，切成许多小方块后，每块可能只剩局部纹理。2020 年公开的 **Vision Transformer（ViT）** 要验证的是：能否尽量保留标准 Transformer 的计算骨架，让模型从这些图块中学会图像识别？它承接了前面 Transformer 的架构路线，也把 CNN 的视觉路线带入了新的比较。[^vit]
 
-它减少了逐层写入的某些视觉结构偏好，更多关系需要从数据中学出来。原论文的大规模预训练结果很重要，而较小数据条件下未必优于CNN。**共享架构不等于不需要足够数据，更不意味着所有视觉任务自动统一。**
+以一张 224×224 的 RGB 照片为例，按 16×16 像素切分，得到 **196 个图块**。每块展平为像素数值，再用共享的线性投影转换成向量，加上位置表示，送进 Transformer 编码器。这里的图块不是已经标好“猫耳朵”“猫尾巴”的词，而是由像素计算得到的输入单位。
 
-Transformer与ViT作者名单存在研究者交集，例如Jakob Uszkoreit；真正的技术连接则是ViT原文明确复用标准Transformer。人员与研究网络帮助我们追踪思路，架构和实验才说明具体继承了什么。
+自注意力让不同图块按内容交换信息，多层处理使一个局部表示能够带入其他位置的信息。模型还加入一个分类标记，与图块一起处理，最后用它的输出预测类别。训练根据图像标签调整参数，并不逐块告诉模型哪里是耳朵。**图像没有先被翻译成语言；它获得了适合序列模型处理的表示。** 序列也不意味着必须像生成文字那样逐个位置输出。
+
+代价在数据条件上显现。CNN 预先写入局部处理、参数共享等视觉偏好；ViT 在后续层中减少了部分这类约束，更多关系需要从训练中学。在统一用 384 分辨率微调的对比中，只用 ImageNet 预训练时，ViT-B/16 的准确率是 **77.91%**，更大的 L/16 反而只有 **76.53%**；换成约 3.03 亿张图的 JFT 预训练后，两者分别为 **84.15% 和 87.12%**。训练计划等条件也不同，不能把这组结果简化成固定的数据量门槛。[^vit-scale]
+
+大规模预训练使 ViT 取得了有竞争力的图像分类与迁移成绩，论文也报告了计算优势。但预训练资源不是单图推理延迟，各模型并非每项指标都领先；图片变大、图块变多，还会明显增加全局注意力的成本。它主要验证的是监督分类路线，不能据此认定图像、视频、文字的所有任务已经统一。
+
+讲义用“让数据适应模型”概括这个转向：输入表示、通用架构和规模条件在这里相遇。Jakob Uszkoreit 同时出现在 Transformer 与 ViT 的作者名单中，能证明研究参与的联系；所读 ViT 论文首页的共同指导标记则属于 Alexey Dosovitskiy 与 Neil Houlsby，不能据讲义的“顾问”称呼推定具体指导关系。下一步的问题也很清楚：**图像和文字都能变成向量以后，怎样让它们学到彼此的对应关系？**[^vit-lecture]
 
 <a id="paper-clip"></a>
 
@@ -914,7 +920,9 @@ AI的发展不只是模型名单变长，而是学习对象、可用信息、计
 [^tulu]: Lambert et al.，[Tülu 3 v5](https://arxiv.org/pdf/2411.15124v5)，2025-04-14；首版为 2024-11-22。流程见 §2–6，阶段成绩见 [Table 23](https://arxiv.org/pdf/2411.15124v5#page=36)，关键词过度优化见 [Figure 28](https://arxiv.org/pdf/2411.15124v5#page=67)，评测边界与后续工作见 §7–8。示意彩笔题为本篇构造；不混用跨表平均分，不将修订扩展全部归入首版。
 [^deepvideo]: Karpathy et al.，[Large-scale Video Classification with Convolutional Neural Networks](https://openaccess.thecvf.com/content_cvpr_2014/papers/Karpathy_Large-scale_Video_Classification_2014_CVPR_paper.pdf)，CVPR 2014，§§3–5、Figures 1–5、Tables 1–4。59.3/60.9/63.9 为 Sports-1M Video Hit@1；65.4% 按 UCF-101 Table 3，摘要另写 63.3%，本文保留该差异。讲义 p42 与节目约 03:08:08–03:15:12 的对照、输入聚合与迁移边界，见[本节展开](knowledge_reports/AI演义_22_DeepVideo_模型怎样利用视频时间信息_科普讲解_20261105.md#sources-and-scope)。
 [^two-stream]: Simonyan & Zisserman，[Two-Stream Convolutional Networks for Action Recognition in Videos](https://arxiv.org/pdf/1406.2199v2)，首发 2014-06-09，本篇采用 2014-11-12 的 v2。§§2–5 定义 RGB／光流两路、输入堆叠、训练与预计算；p. 7 的 Table 1b 及正文为 split 1 的 81.0%／56.4%；p. 8 的 Table 4 为三划分比较；pp. 9–10 解释敲锤混淆与后续限制。结合讲义 p. 43 和约 03:15:12–03:17:55 的播客转写核对，未听校或复现实验。
-[^vit]: Dosovitskiy et al.，[An Image is Worth 16x16 Words](https://arxiv.org/pdf/2010.11929v2)，首发2020年，所读修订版2021年。
+[^vit]: Dosovitskiy et al.，[An Image is Worth 16x16 Words](https://arxiv.org/pdf/2010.11929v2)，首发 2020-10-22；所读 v2 为 2021-06-03，ICLR 2021。架构见 §3、Figure 1，监督训练、迁移和评价见 §4；本轮补读附录，不把图块输入等同于语言生成。
+[^vit-scale]: 原论文 Table 5、Figure 3 及 §4.3，384 分辨率下比较不同预训练条件；模型规模见 Table 1。Table 2 的高分另用了不同分辨率与参数平均，不能混为同一实验；§4.4 的计算比较也有固定任务和训练范围。
+[^vit-lecture]: [《AI演义》讲义](../notes/终版：AI演义，36篇论文开启你的探索之旅.pdf)第 47 页；[节目](https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c)约 03:32:18–03:41:16，236 段转写已读，未听校或测 WER。作者与共同指导标记以 ViT 首页为准；节目关于后续视频和图文融合的延伸不作为 ViT 已验证能力。
 [^clip]: Radford et al.，[Learning Transferable Visual Models From Natural Language Supervision](https://arxiv.org/pdf/2103.00020v1)，2021。
 [^bitter]: Sutton，[The Bitter Lesson](http://www.incompleteideas.net/IncIdeas/BitterLesson.html)，2019-03-13；作为作者的历史归纳与方法论主张，不是本文逐案重做的全史因果审计。
 [^hardware]: Hooker，[The Hardware Lottery](https://arxiv.org/pdf/2009.06489v2)，2020；为解释讲义的硬件彩票视角补充的必要来源，重点为软硬件、研究激励与方法选择的关系。

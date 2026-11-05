@@ -1,0 +1,1417 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_24_ViT_图像怎样变成Transformer输入_科普讲解_20261105.md",
+  "quality_tier": "important",
+  "revision_round": 2,
+  "reviews": [
+    {
+      "role": "primary_review",
+      "reviewer": {
+        "model": "unconfirmed",
+        "harness": "codex",
+        "run_id": "vit-primary-delivery-20261106-chapter",
+        "independent_context": true,
+        "explicit_model_override": false
+      },
+      "scores": {
+        "evidence_fidelity": 93,
+        "request_coverage": 95,
+        "reasoning_quality": 94,
+        "readability": 94,
+        "limitations": 97
+      },
+      "score_reasons": {
+        "evidence_fidelity": "保留r1完整来源复核的保守分数，本次不重新全文打分。已精确确认[^training]/C4将不存在的B.3改为§4.1 Metrics；该节确实定义冻结表征的few-shot评价。§9/C15已分别对应D.6中的AxialResNet慢实现和Axial-ViT额外MLP增加整网计算量，不再概括为整类模型理论计算更少。其他数字与事实条目未变，沿用原审。",
+        "request_coverage": "保留r1覆盖评分和15个来源优先单元。本次仅两处既有问题的修复：机制/训练来源定位更准确，算子、整网计算与机器速度的区分补全；正文其余行、全部来源及其余证据值与r1完全相同，不新增UI或其他要求。",
+        "reasoning_quality": "保留r1评分。轴向段落现已明确：每次注意力处理的序列较短，不等于完整Axial-ViT更省计算；额外前馈网络会增加整网计算，AxialResNet的朴素TPU实现又是另一层实际速度问题。该修复直接得到D.6支持，其余推理沿用原审。",
+        "readability": "保留r1全文文本与导航检查的评分。仅复读修订段和[^training]脚注，三种成本判断区分清楚，错误章节定位已删除；变化不涉及链接目标、标题、锚点或表格，相关已通过检查无需重复。未做页面验收。",
+        "limitations": "保留r1评分与实际来源阅读限制。r2没有扩大模型实验、音频听校、网页刷新或设备图像审查的主张；本次明确只是两处delta复验，不声称重读全文，也不重生成主稿继承地图。"
+      },
+      "critical_claim_ids_checked": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17",
+        "C18",
+        "C19"
+      ],
+      "coverage_unit_ids_checked": [
+        "U1",
+        "U2",
+        "U3",
+        "U4",
+        "U5",
+        "U6",
+        "U7",
+        "U8",
+        "U9",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16",
+        "U17",
+        "U18",
+        "U19",
+        "U20"
+      ],
+      "source_content_map": [
+        {
+          "id": "VIT-P01",
+          "title": "从视觉专用注意力回到可扩展的标准Transformer",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "LECTURE",
+            "PODCAST"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1"
+          ],
+          "notes": "来源先行单元；原文定位：paper §1–2；handout p47；ASR 03:32:17–03:34:21。§1完整回答问题、前驱与工程动机；不声称所有CNN/视觉注意力都不能扩展。"
+        },
+        {
+          "id": "VIT-P02",
+          "title": "patch不是词典：切块、展平、线性投影成序列",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "LECTURE",
+            "PODCAST"
+          ],
+          "matched_coverage_unit_ids": [
+            "U2"
+          ],
+          "notes": "来源先行单元；原文定位：paper §3.1 Eq.1 Figure1；ASR 03:34:21–03:38:04；handout p47。§2逐步说明像素切块、展平、共享投影；196/768/197与两个768的不同含义均准确，非词典语义词边界清晰。"
+        },
+        {
+          "id": "VIT-P03",
+          "title": "位置编码与分类token各负其责",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3",
+            "U4",
+            "U9",
+            "U10",
+            "U20"
+          ],
+          "notes": "来源先行单元；原文定位：paper §3.1–3.2；paper D.3–D.4；ASR 03:36:18–03:37:48。§§3–4及7说明1D可学位置、class token和GAP替代；正确保留学习率混杂及61.38%/64.21%口径。结尾调换内容/位置实验仅是待验证建议。"
+        },
+        {
+          "id": "VIT-P04",
+          "title": "Encoder主干与监督分类目标",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3",
+            "U4",
+            "U16"
+          ],
+          "notes": "来源先行单元；原文定位：paper §3–4.1；paper §4.6；paper B.1.2。§§3–4明确编码器非自回归、监督预训/全参微调/冻结线性5-shot分开。r1指出C4的B.3定位不存在；r2已删除并明确§4.1 Metrics，本次回读该段确认few-shot定义与正文相符，该问题已解决。"
+        },
+        {
+          "id": "VIT-P05",
+          "title": "更少视觉归纳偏置而不是零偏置",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "PODCAST"
+          ],
+          "matched_coverage_unit_ids": [
+            "U5"
+          ],
+          "notes": "来源先行单元；原文定位：paper §3.1–3.2；paper §4.3；ASR 03:38:28–03:39:18。§5保留切块/共享投影等先验，明确不是零偏置，且性能差异不被简化为已隔离的结构因果。"
+        },
+        {
+          "id": "VIT-P06",
+          "title": "数据规模证据及两种不同实验口径",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U6",
+            "U7",
+            "U8"
+          ],
+          "notes": "来源先行单元；原文定位：paper §4.1 §4.3 Figures3–4 Table5。§6完整保留Table5的大小模型反例、384微调、模型规模、实际JFT 9M/30M/90M及5-shot；VTAB每任务1000与大规模上游数据分开，去重仅报告作者做过。"
+        },
+        {
+          "id": "VIT-P07",
+          "title": "表2关键成绩必须绑定模型、数据、微调设置",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11",
+            "U12"
+          ],
+          "notes": "来源先行单元；原文定位：paper Tables1–2；paper §4.1–4.2。§8选取Table2三种同为JFT上游模型，成绩/三次微调均值±标准差/TPUv3核心天正确；VTAB和Flowers反例防止逐项领先误读。选表不要求抄全表。"
+        },
+        {
+          "id": "VIT-P08",
+          "title": "训练资源与架构效率不能混为因果",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "PODCAST"
+          ],
+          "matched_coverage_unit_ids": [
+            "U12",
+            "U13",
+            "U15"
+          ],
+          "notes": "来源先行单元；原文定位：paper §4.2–4.4 Table2 Figure5；paper D.5–D.6；ASR 03:33:13–03:34:21;03:38:04–03:39:18。§8准确区分核心天、端到端成本、训练配方与受控JFT的约2–4倍差异；§9区分吞吐和延迟。r1指出轴向attention算子与完整模型/实现层级混杂；r2已分别说明Axial-ViT的额外MLP计算和AxialResNet的朴素TPU慢实现，经D.6局部回读确认，该问题已解决。"
+        },
+        {
+          "id": "VIT-P09",
+          "title": "patch大小、分辨率与注意力代价",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U14",
+            "U15",
+            "U20"
+          ],
+          "notes": "来源先行单元；原文定位：paper §2 §3.1–3.2 §4.1；paper D.2 D.5。§9准确推导图块4倍/关系项16倍，明示忽略CLS且非整网实测；位置嵌入二维插值说明准确。"
+        },
+        {
+          "id": "VIT-P10",
+          "title": "模型是否学到空间结构：诊断不等于理解证明",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3"
+          ],
+          "notes": "来源先行单元；原文定位：paper §4.5 Figures6–7；paper D.4 D.7 D.8。§3及inspection脚注保留位置网格与局部/全局注意力观察，明确猫照片为示意，不把可视化当完整因果解释。滤波器细节未展开属于支持性裁剪。"
+        },
+        {
+          "id": "VIT-P11",
+          "title": "自监督与未来任务边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U16",
+            "U17"
+          ],
+          "notes": "来源先行单元；原文定位：paper §4.6 §5；paper B.1.2。§10完整区分主监督结果与masked patch初探，50%选择范围、RGB各3bit/512色、79.9%及约2/4个百分点口径准确；检测分割/图文生成不能由分类成绩推出。"
+        },
+        {
+          "id": "VIT-P12",
+          "title": "嘉宾的硬件与生态解释的证据等级",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "LECTURE",
+            "PODCAST"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1",
+            "U13",
+            "U15"
+          ],
+          "notes": "来源先行单元；原文定位：handout p47；ASR 03:33:13–03:34:21;03:38:04–03:39:18；paper §3 §4.2。§§1/8/9/11保留生态与扩展动机，同时把工程解释同TPU实验支持范围分开；不将CUDA生态归因冒充论文实测。"
+        },
+        {
+          "id": "VIT-P13",
+          "title": "从视频切序列到人物画面和字幕对齐的迁移设想",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PODCAST",
+            "PAPER",
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U17"
+          ],
+          "notes": "来源先行单元；原文定位：ASR 03:39:18–03:41:15。§10–11保留视频与图文共处理设想及输入形式不等于已学语义对应，以同一猫照片与配图句子承担关系说明；人物/Sora/DiT旁枝不照抄、不据此宣称已核定继承或产品能力。论证主线得到覆盖，具体口述案例未逐个复述。"
+        },
+        {
+          "id": "VIT-P14",
+          "title": "近邻工作与作者角色不能神化",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "LECTURE",
+            "PODCAST",
+            "TRANSFORMER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1",
+            "U18"
+          ],
+          "notes": "来源先行单元；原文定位：paper §2；paper title page and references；handout p47；ASR 03:35:14–03:35:28。§§1/11准确说明非视觉attention首创；共同作者已由ViT首页与Transformer首页独立核对，ViT共同指导标记为Alexey/Neil而非Jakob。"
+        },
+        {
+          "id": "VIT-P15",
+          "title": "本节在课程中的位置与资料版本",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "METADATA",
+            "LECTURE",
+            "PODCAST",
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U18",
+            "U19"
+          ],
+          "notes": "来源先行单元；原文定位：handout p41,p47；shownotes Part4 ViT条目；paper title page metadata。来源节明示首发/v2与修订、ASR未听校；讲义与shownotes路线只用于本节定位。报告的章节安排为23双流→24ViT→25CLIP，不声称与讲义时间线一一同序。"
+        }
+      ],
+      "source_ids_checked": [
+        "PAPER",
+        "METADATA",
+        "LECTURE",
+        "PODCAST",
+        "SHOWNOTES",
+        "TRANSFORMER"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "同一独立Reviewer的r2小范围续验，model/harness/run_id保持原记录，不借共享宿主身份补认模型。开始核对新旧报告及evidence四个SHA；实际diff与指定delivery-r2.diff完全一致，正文只改updated_on、§9末段和[^training]，账本只改C4.evidence、C15.claim/evidence、U15.title及revision_note，其他全部行/值相同。只回读§4.1 Metrics与D.6相关原文：B.3错引和轴向比较层级混杂均已修复，未发现本次delta引入新问题。原来源地图的ID/题目/来源/映射/评价不变，只给P04/P08补记解决状态；原五维分数保留。其余内容沿用r1完整源优先复核，不伪称本次再读全文；主稿entry保持不动。无工作台验收、全仓检查、仓库写入或提交，最终质量门由协调者接纳r2条目后判定。",
+      "snapshot": {
+        "report_path": "ai-learning/reports/knowledge_reports/AI演义_24_ViT_图像怎样变成Transformer输入_科普讲解_20261105.md",
+        "report_sha256": "30bb0f5b8bf66ae465a708fdc9a200d1fcf8d17def3391e7311ac394938169cd",
+        "evidence_sha256": "3f4c5771e2f951567876d803264a3dc32c9435d1596a944c78ea1e8181b444e0",
+        "verified_before_delta_read": true
+      },
+      "directly_reviewed_critical_claim_ids": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17",
+        "C18",
+        "C19"
+      ],
+      "directly_reviewed_source_ids": [
+        "PAPER",
+        "METADATA",
+        "LECTURE",
+        "PODCAST",
+        "SHOWNOTES",
+        "TRANSFORMER"
+      ],
+      "directly_reviewed_coverage_unit_ids": [
+        "U1",
+        "U2",
+        "U3",
+        "U4",
+        "U5",
+        "U6",
+        "U7",
+        "U8",
+        "U9",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16",
+        "U17",
+        "U18",
+        "U19",
+        "U20"
+      ],
+      "directly_reviewed_requirement_ids": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6"
+      ],
+      "inherited_critical_claim_ids": [],
+      "inherited_source_ids": [],
+      "inherited_coverage_unit_ids": [],
+      "inherited_requirement_ids": [],
+      "source_read_scopes": [
+        {
+          "source_id": "PAPER",
+          "read_scope": "v2全部文字/图注，重点核§§1–5、Tables1/2/5/6/8及附录A/B/C/D；PDF重提取文本与给定缓存一致；未视觉核读原图。",
+          "sha256": "8ce7b83971a14508ca711a27c875c9b6914c4f6767cf3150fb1ca6c07aa056d6"
+        },
+        {
+          "source_id": "METADATA",
+          "read_scope": "提供的官方v2元信息缓存，日期与修订说明；无本轮网络刷新。",
+          "text_sha256": "3ea3127aee0239978f61f06211932109114a29485488ea6be6223fe7ea9030bb"
+        },
+        {
+          "source_id": "LECTURE",
+          "read_scope": "p47/p41完整可提取文字，独立重提取核对；未核图像。",
+          "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0"
+        },
+        {
+          "source_id": "PODCAST",
+          "read_scope": "236段全部文字与结构检查；起止12737.70–13275.76秒；未听音/测WER。",
+          "text_sha256": "aaca2aeb13277caa28b6ca41e9f61e5218957ea94166d99f32801c8bfca5ec3d"
+        },
+        {
+          "source_id": "SHOWNOTES",
+          "read_scope": "所给完整缓存，复核Part4中ViT及前后路线；其他章节只看条目而未作科学重审。",
+          "text_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5"
+        },
+        {
+          "source_id": "TRANSFORMER",
+          "read_scope": "仅v7首页作者及贡献脚注，确认共同作者身份；未重新阅读全文。",
+          "sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+        }
+      ],
+      "verification_limits": [
+        "来源优先实际范围：完整读取所给ViT v2全文文字缓存（1455行、22页对应文字，含附录/参考文献/图注），并从仓内PDF独立pdftotext重提取，所得SHA与缓存完全相同。未逐图视觉审查；不将图注和可提取文字的阅读称作图像核读。",
+        "讲义仅独立读取并重提取p47/p41文字；重提取与缓存完全一致，但文字存在缺字，不声称视觉核读讲义版面。已用ViT原文及ASR交叉检查本节技术含义。",
+        "完整阅读236段目标ASR文字及对应segments；重跑原生audit_transcript并自行复算小数时间戳，无起止倒序、逆序或重叠，最大间隙0.07秒，跨度538.06秒。核对给定精度/原生回执；未回读整集私有原ASR重做切片，未听音、未测WER。",
+        "shownotes全文缓存用于课程边界与顺序；非ViT主题不是本轮科学复核范围。元信息读取并核对所给官方缓存SHA，未在本次review重新联网请求、重新下载官方PDF或测试外部链接当前可达性。",
+        "Transformer v7只新读仓内PDF首页及其署名/贡献脚注，并核对SHA；不能把共享宿主eacli报告的模型身份当成本子会话模型，故model为unconfirmed。",
+        "没有训练、推理、重做基准、复验数据去重或审计现代模型/产品谱系；没有操作工作台、浏览器或页面，也不把文本/链接检查称作页面验收。"
+      ],
+      "content_check": {
+        "path": "ai-learning/reports/knowledge_reports/AI演义_24_ViT_图像怎样变成Transformer输入_科普讲解_20261105.md",
+        "local_links_checked": 4,
+        "local_link_errors": [],
+        "undefined_footnotes": [],
+        "unreferenced_footnotes": [],
+        "duplicate_footnotes": [],
+        "duplicate_explicit_ids": [],
+        "replacement_characters": 0,
+        "external_links_fetched_this_review": false
+      },
+      "correction_suggestions": [],
+      "native_check": {
+        "performed": true,
+        "scope": "仅当前章节report_quality.py check；临时r2 entry尚未写入仓库，不把此结果称作已接纳本次review的最终判定。",
+        "exit_code": 1,
+        "decision": "needs_review",
+        "finding_codes": [
+          "REV006"
+        ],
+        "write_decision": false,
+        "finalize": false,
+        "repository_wide": false
+      },
+      "entry_validation": {
+        "json_parsed": true,
+        "required_fields_checked": true,
+        "all_dimensions_checked": true,
+        "map_schema_fields_checked": true,
+        "ids_known_and_unique": true,
+        "jsonschema_library_available": false
+      },
+      "previous_snapshot": {
+        "report_path": "ai-learning/reports/knowledge_reports/AI演义_24_ViT_图像怎样变成Transformer输入_科普讲解_20261105.md",
+        "report_sha256": "cff8968f2599beb850c142cf0c5c73e8e536df3e6120d5d15736a1230618536e",
+        "evidence_sha256": "9da77d6114a3450c8dfa8d5b12902abeb466a00a96aa338dd9c94d8ef19410a1",
+        "verified_before_source_read": true
+      },
+      "delta_review": {
+        "continuation_id": "vit-primary-delivery-20261106-chapter-r2",
+        "same_reviewer_and_context": true,
+        "mode": "two_findings_only_with_exact_unchanged_content_verification",
+        "old_report_sha256": "cff8968f2599beb850c142cf0c5c73e8e536df3e6120d5d15736a1230618536e",
+        "old_evidence_sha256": "9da77d6114a3450c8dfa8d5b12902abeb466a00a96aa338dd9c94d8ef19410a1",
+        "new_report_sha256": "30bb0f5b8bf66ae465a708fdc9a200d1fcf8d17def3391e7311ac394938169cd",
+        "new_evidence_sha256": "3f4c5771e2f951567876d803264a3dc32c9435d1596a944c78ea1e8181b444e0",
+        "provided_diff_sha256": "eeee4c10738502ed05cf45e0cda96f23c4d7438007433e71fad307c67ffacf35",
+        "actual_diff_equals_provided": true,
+        "changed_report_lines": [
+          6,
+          213,
+          272
+        ],
+        "changed_report_scope": [
+          "updated_on",
+          "§9末段轴向注意力比较",
+          "[^training]来源定位"
+        ],
+        "changed_evidence_fields": [
+          "C4.evidence",
+          "C15.claim",
+          "C15.evidence",
+          "U15.title",
+          "revision_note"
+        ],
+        "all_other_report_lines_and_evidence_values_identical": true,
+        "source_passages_reread": [
+          "ViT v2 §4.1 Metrics",
+          "附录D.6 Axial Attention，含Axial-ViT额外MLP与AxialResNet慢实现段落"
+        ],
+        "critical_claim_ids_directly_rechecked": [
+          "C4",
+          "C15"
+        ],
+        "coverage_unit_ids_directly_rechecked": [
+          "U4",
+          "U15"
+        ],
+        "source_ids_directly_rechecked": [
+          "PAPER"
+        ],
+        "requirement_ids_affected": [
+          "R1",
+          "R4",
+          "R6"
+        ],
+        "source_content_map_ids_and_source_coverage_mappings_preserved": true,
+        "source_map_note_updates_only": [
+          "VIT-P04",
+          "VIT-P08"
+        ],
+        "full_report_reread": false,
+        "main_report_or_main_review_regenerated": false,
+        "ui_validation_performed": false,
+        "repository_wide_checks_performed": false,
+        "score_policy": "保留r1五维数值；只核两处修复并更新理由，不把本次局部复验包装成重新全文评分。"
+      },
+      "resolved_findings": [
+        {
+          "severity": "minor",
+          "claim_ids": [
+            "C4"
+          ],
+          "requirement_ids": [
+            "R1",
+            "R6"
+          ],
+          "locator": "正文L272 [^training]；evidence C4.evidence",
+          "finding": "ViT v2没有附录B.3；few-shot指标定义见§4.1 Metrics。",
+          "suggested_fix": "将B.1.1、B.3改为B.1.1，并明确few-shot定义在§4.1 Metrics。",
+          "status": "resolved_in_r2",
+          "resolution_evidence": "§4.1 Metrics确有冻结表示的few-shot定义，错误B.3已删除。"
+        },
+        {
+          "severity": "minor",
+          "claim_ids": [
+            "C15"
+          ],
+          "requirement_ids": [
+            "R4"
+          ],
+          "locator": "正文L213；evidence C15",
+          "finding": "轴向attention序列更短与完整Axial-ViT计算较少不是同一件事；D.6说明额外MLP使Axial-ViT更费计算，且慢的朴素实现具体指AxialResNet。",
+          "suggested_fix": "分开算子复杂度、完整模型FLOPs与AxialResNet实际TPU实现，不概括为整类模型理论计算量较少。",
+          "status": "resolved_in_r2",
+          "resolution_evidence": "D.6明确完整Axial-ViT增加额外MLP而有更多计算；慢的朴素TPU实现具体指AxialResNet。r2正文/C15/U15已一致区分。"
+        }
+      ],
+      "prior_snapshot_native_check": {
+        "performed": true,
+        "exit_code": 1,
+        "decision": "needs_review",
+        "finding_codes": [
+          "REV006"
+        ],
+        "write_decision": false,
+        "finalize": false,
+        "scope": "当前仓库sidecar的原生检查；本条临时独立review尚未写入仓库，故不将该结果冒充已接纳本次review的最终判定。",
+        "error_count": 1,
+        "warning_count": 0
+      }
+    },
+    {
+      "role": "flagship_final_review",
+      "reviewer": {
+        "model": "gpt-5.6-sol",
+        "harness": "codex-collab",
+        "run_id": "vit-strong-delivery-20261106-chapter-r2",
+        "independent_context": true,
+        "explicit_model_override": false,
+        "identity_basis": "orchestrator-configured: repository policy premium_reviewer_order selected gpt-5.6-sol; not a user model override.",
+        "model_runtime_confirmation": "session-bound-unverified: exact child runtime receipt unavailable; model identity relies on successful explicit orchestrator spawn configuration, not shared-host eacli model."
+      },
+      "scores": {
+        "evidence_fidelity": 98,
+        "request_coverage": 97,
+        "reasoning_quality": 97,
+        "readability": 96,
+        "limitations": 98
+      },
+      "score_reasons": {
+        "evidence_fidelity": "在r1完整来源复核基础上精确核对r2 delta：不存在的附录B.3已改为§4.1 Metrics；轴向注意力现准确区分AxialResNet朴素实测很慢、Axial-ViT单次注意力序列缩短但额外MLP增加整网计算量，以及算子/整网/真实速度三种口径。报告与evidence同步，未发现新增错误。",
+        "request_coverage": "R1–R6均完成：贯穿猫照片解释输入与学习，保留小数据反方、消融、成本和任务边界，主稿第24节、首块展开链接及上下篇导航均核对。整期shownotes非ViT章节仅作来源地图留痕，不构成本篇遗漏。",
+        "reasoning_quality": "用反例、对照实验和不同评价口径约束因果解释；明确区分图块序列与语言词表/自回归、上游预训练与下游小样本、累计预训练成本与推理延迟、输入相容与多模态对齐。",
+        "readability": "Markdown原文独立可读，例子贯穿，公式/数字均解释，表格与脚注可追踪；本轮按用户范围只检查原文、正文、引用和导航，不做也不要求工作台页面验收。",
+        "limitations": "对未复现实验、未复验去重、未听音/未测WER、可视化非因果解释、不同训练方案和后续多模态外推均有明确限制。"
+      },
+      "critical_claim_ids_checked": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17",
+        "C18",
+        "C19",
+        "C20"
+      ],
+      "coverage_unit_ids_checked": [
+        "U1",
+        "U2",
+        "U3",
+        "U4",
+        "U5",
+        "U6",
+        "U7",
+        "U8",
+        "U9",
+        "U10",
+        "U11",
+        "U12",
+        "U13",
+        "U14",
+        "U15",
+        "U16",
+        "U17",
+        "U18",
+        "U19",
+        "U20"
+      ],
+      "source_content_map": [
+        {
+          "id": "sc-problem",
+          "title": "从专门视觉注意力到标准 Transformer 的研究问题",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "LECTURE",
+            "PODCAST"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1"
+          ],
+          "notes": "正文说明此前方案与工程扩展背景，并把表达能力和组件复用分开，不把 ViT 写成视觉注意力首创。"
+        },
+        {
+          "id": "sc-patch-sequence",
+          "title": "二维图像切 patch、展平并线性投影为序列",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "LECTURE",
+            "PODCAST"
+          ],
+          "matched_coverage_unit_ids": [
+            "U2"
+          ],
+          "notes": "用224×224、P=16得到196块和加CLS后的197位置，且明确16×16不是固定唯一尺寸、patch不是词表语义词。"
+        },
+        {
+          "id": "sc-position-encoder",
+          "title": "位置表示与标准编码器恢复跨图块关系",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3",
+            "U10"
+          ],
+          "notes": "覆盖可学习1D位置嵌入、非因果编码、自注意力/MLP/残差直觉，并用消融限定位置编码结论。"
+        },
+        {
+          "id": "sc-classification",
+          "title": "CLS汇总、监督预训练、微调与线性few-shot口径",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U4",
+            "U9"
+          ],
+          "notes": "分类头、端到端学习和冻结表示评价被区分；GAP经匹配学习率后与CLS相近的反例已写入。"
+        },
+        {
+          "id": "sc-inductive-bias",
+          "title": "弱化部分视觉归纳偏置的收益与数据代价",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "PODCAST"
+          ],
+          "matched_coverage_unit_ids": [
+            "U5",
+            "U6",
+            "U7",
+            "U8"
+          ],
+          "notes": "正文保留小数据反方、不同预训练计划边界、同一JFT子集实验与VTAB上游预训练前提。"
+        },
+        {
+          "id": "sc-results",
+          "title": "大规模预训练后的准确率与计算比较",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "LECTURE",
+            "PODCAST"
+          ],
+          "matched_coverage_unit_ids": [
+            "U11",
+            "U12",
+            "U13"
+          ],
+          "notes": "Table2数字、误差、TPUv3核心天和受控scaling study均有口径限制，未宣称逐项或任意硬件领先。"
+        },
+        {
+          "id": "sc-resolution-hardware",
+          "title": "分辨率、序列长度与真实硬件成本边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U14",
+            "U15"
+          ],
+          "notes": "平方关系仍明确标为算术推算而非整网实测；吞吐不冒充单图延迟。r2已准确区分AxialResNet朴素实现很慢、Axial-ViT额外MLP增加整网计算，以及单个算子/完整模型/真实机器速度三种判断。"
+        },
+        {
+          "id": "sc-selfsup-future",
+          "title": "自监督初探、检测分割与多模态延伸的边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER",
+            "PODCAST",
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U16",
+            "U17"
+          ],
+          "notes": "报告区分监督主结果、masked patch初探、论文未来工作和节目对视频/图文的推论。"
+        },
+        {
+          "id": "sc-lecture-route",
+          "title": "讲义第47页与多模态路线中的ViT定位",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "LECTURE",
+            "PODCAST",
+            "SHOWNOTES",
+            "TRANSFORMER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U18"
+          ],
+          "notes": "输入适配叙事被采用；Jakob共同作者身份与ViT首页equal advising标记分开处理，未把讲义顾问称呼当作已证实分工。"
+        },
+        {
+          "id": "sc-asr-integrity",
+          "title": "目标转写的结构完整性与听音限制",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "PODCAST"
+          ],
+          "matched_coverage_unit_ids": [
+            "U19"
+          ],
+          "notes": "236段、538.06秒、时间戳无逆序/重叠的机器收据已核；正文明确未听音、未测WER。"
+        },
+        {
+          "id": "sc-proposed-test",
+          "title": "内容/位置与分辨率成本的待验证实验",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "PAPER"
+          ],
+          "matched_coverage_unit_ids": [
+            "U20"
+          ],
+          "notes": "正文明确标[待验证]，未把未执行实验写成结果。"
+        },
+        {
+          "id": "sc-shownotes-frame",
+          "title": "Shownotes节目缘起与读论文动机",
+          "importance": "supporting",
+          "assessment": "missing",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "独立来源地图留痕；这是整期节目框架，不属于第24节ViT专篇的交付范围，故不列为遗漏需求。"
+        },
+        {
+          "id": "sc-shownotes-part1",
+          "title": "Shownotes Part 1模型范式变迁",
+          "importance": "supporting",
+          "assessment": "missing",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "整期其他章节，超出本篇ViT专篇范围，不列为遗漏需求。"
+        },
+        {
+          "id": "sc-shownotes-part2",
+          "title": "Shownotes Part 2 Infra与数据",
+          "importance": "supporting",
+          "assessment": "missing",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "整期其他章节，超出本篇ViT专篇范围，不列为遗漏需求。"
+        },
+        {
+          "id": "sc-shownotes-part3",
+          "title": "Shownotes Part 3语言模型发展",
+          "importance": "supporting",
+          "assessment": "missing",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "整期其他章节，超出本篇ViT专篇范围，不列为遗漏需求。"
+        },
+        {
+          "id": "sc-shownotes-part4",
+          "title": "Shownotes Part 4多模态路线及ViT位置",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES",
+            "LECTURE"
+          ],
+          "matched_coverage_unit_ids": [
+            "U17",
+            "U18"
+          ],
+          "notes": "ViT位于DDPM之后、CLIP之前的路线定位和下一问已进入正文。"
+        },
+        {
+          "id": "sc-shownotes-final",
+          "title": "Shownotes最后聊天：架构、硬件与学习建议",
+          "importance": "supporting",
+          "assessment": "missing",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "整期收束内容，超出本篇ViT专篇范围，不列为遗漏需求。"
+        }
+      ],
+      "source_ids_checked": [
+        "PAPER",
+        "METADATA",
+        "LECTURE",
+        "PODCAST",
+        "SHOWNOTES",
+        "TRANSFORMER"
+      ],
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6"
+      ],
+      "unsupported_claims": [],
+      "missing_requirements": [],
+      "hard_failures": [],
+      "notes": "SHA快照已核对：report 30bb0f5b8bf66ae465a708fdc9a200d1fcf8d17def3391e7311ac394938169cd；evidence 3f4c5771e2f951567876d803264a3dc32c9435d1596a944c78ea1e8181b444e0。本轮仅精确复核delivery-r2.diff，沿用r1已独立建立的source_content_map与其余评分依据；两处科学修订均与ViT v2原文相符，其他科学正文未改。主稿及主稿evidence快照未变。不含UI/工作台验收要求。模型由仓库策略 premium_reviewer_order 经协调者显式配置选择，不是用户点名，explicit_model_override=false；精确子会话runtime回执不可得，记为session-bound-unverified，未借共享宿主eacli型号充当子身份。"
+    }
+  ],
+  "decision": {
+    "status": "pass",
+    "score": 94.15,
+    "evaluated_on": "2026-11-06",
+    "policy_id": "report-quality-2026-10-18-r2",
+    "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+    "report_sha256": "e1d9b302846fb17e3a5bcb61c8095dec9aa24cd9c8c5b723ae3459b7e43fc49e",
+    "evidence_sha256": "3f4c5771e2f951567876d803264a3dc32c9435d1596a944c78ea1e8181b444e0"
+  },
+  "history": [
+    {
+      "revision_round": 1,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "unconfirmed",
+            "harness": "codex",
+            "run_id": "vit-primary-delivery-20261106-chapter",
+            "independent_context": true,
+            "explicit_model_override": false
+          },
+          "scores": {
+            "evidence_fidelity": 93,
+            "request_coverage": 95,
+            "reasoning_quality": 94,
+            "readability": 94,
+            "limitations": 97
+          },
+          "score_reasons": {
+            "evidence_fidelity": "模型/尺寸、Tables2/5/8、JFT实际子集、微调和few-shot、TPUv3核心天以及自监督数字均能回到所读v2；未见关键数字错配。扣分在[^training]/C4引用了不存在的B.3，以及§9/C15将不同层级的轴向注意力比较压缩成易误读的结论。",
+            "request_coverage": "来源优先识别的输入改造、学习与位置、数据反例、两项消融、资源与任务边界、讲义人物/路线及口述延伸均进入正文；猫例贯穿且不是只读索引。原节实质改写及首块入口、回24/上23/下25均核对。无UI前置缺项。",
+            "reasoning_quality": "能区分推导/实测、监督/自监督、全参微调/冻结表示、低数据迁移/低数据从零训练，并用VTAB和Flowers等反例限制全胜叙事。轴向注意力的算子复杂度、额外MLP及实现时间层级还应分清，不宜合成笼统算得少却更慢。",
+            "readability": "全文Markdown、各表列数和脚注标签、明确锚点及4个本地链接已检查；无缺失脚注、重复锚点或替换乱码，猫照片示意使技术路线可独立理解。B.3错误降低定位准确性；本次未做页面渲染验收。",
+            "limitations": "明确未训练/未推理实测、未听校/WER、未复验数据去重与私有JFT，区分论文实验和口述展望；不把注意力图当完整理解证明，也没有复制私有ASR原文或设备路径到正文。"
+          },
+          "critical_claim_ids_checked": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "C16",
+            "C17",
+            "C18",
+            "C19"
+          ],
+          "coverage_unit_ids_checked": [
+            "U1",
+            "U2",
+            "U3",
+            "U4",
+            "U5",
+            "U6",
+            "U7",
+            "U8",
+            "U9",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14",
+            "U15",
+            "U16",
+            "U17",
+            "U18",
+            "U19",
+            "U20"
+          ],
+          "source_content_map": [
+            {
+              "id": "VIT-P01",
+              "title": "从视觉专用注意力回到可扩展的标准Transformer",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "LECTURE",
+                "PODCAST"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1"
+              ],
+              "notes": "来源先行单元；原文定位：paper §1–2；handout p47；ASR 03:32:17–03:34:21。§1完整回答问题、前驱与工程动机；不声称所有CNN/视觉注意力都不能扩展。"
+            },
+            {
+              "id": "VIT-P02",
+              "title": "patch不是词典：切块、展平、线性投影成序列",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "LECTURE",
+                "PODCAST"
+              ],
+              "matched_coverage_unit_ids": [
+                "U2"
+              ],
+              "notes": "来源先行单元；原文定位：paper §3.1 Eq.1 Figure1；ASR 03:34:21–03:38:04；handout p47。§2逐步说明像素切块、展平、共享投影；196/768/197与两个768的不同含义均准确，非词典语义词边界清晰。"
+            },
+            {
+              "id": "VIT-P03",
+              "title": "位置编码与分类token各负其责",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U3",
+                "U4",
+                "U9",
+                "U10",
+                "U20"
+              ],
+              "notes": "来源先行单元；原文定位：paper §3.1–3.2；paper D.3–D.4；ASR 03:36:18–03:37:48。§§3–4及7说明1D可学位置、class token和GAP替代；正确保留学习率混杂及61.38%/64.21%口径。结尾调换内容/位置实验仅是待验证建议。"
+            },
+            {
+              "id": "VIT-P04",
+              "title": "Encoder主干与监督分类目标",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U3",
+                "U4",
+                "U16"
+              ],
+              "notes": "来源先行单元；原文定位：paper §3–4.1；paper §4.6；paper B.1.2。§§3–4明确编码器非自回归、监督预训/全参微调/冻结线性5-shot分开。C4事实有§4.1支持，但其脚注与evidence的B.3定位不存在，见修订建议。"
+            },
+            {
+              "id": "VIT-P05",
+              "title": "更少视觉归纳偏置而不是零偏置",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "PODCAST"
+              ],
+              "matched_coverage_unit_ids": [
+                "U5"
+              ],
+              "notes": "来源先行单元；原文定位：paper §3.1–3.2；paper §4.3；ASR 03:38:28–03:39:18。§5保留切块/共享投影等先验，明确不是零偏置，且性能差异不被简化为已隔离的结构因果。"
+            },
+            {
+              "id": "VIT-P06",
+              "title": "数据规模证据及两种不同实验口径",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U6",
+                "U7",
+                "U8"
+              ],
+              "notes": "来源先行单元；原文定位：paper §4.1 §4.3 Figures3–4 Table5。§6完整保留Table5的大小模型反例、384微调、模型规模、实际JFT 9M/30M/90M及5-shot；VTAB每任务1000与大规模上游数据分开，去重仅报告作者做过。"
+            },
+            {
+              "id": "VIT-P07",
+              "title": "表2关键成绩必须绑定模型、数据、微调设置",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U11",
+                "U12"
+              ],
+              "notes": "来源先行单元；原文定位：paper Tables1–2；paper §4.1–4.2。§8选取Table2三种同为JFT上游模型，成绩/三次微调均值±标准差/TPUv3核心天正确；VTAB和Flowers反例防止逐项领先误读。选表不要求抄全表。"
+            },
+            {
+              "id": "VIT-P08",
+              "title": "训练资源与架构效率不能混为因果",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "PODCAST"
+              ],
+              "matched_coverage_unit_ids": [
+                "U12",
+                "U13",
+                "U15"
+              ],
+              "notes": "来源先行单元；原文定位：paper §4.2–4.4 Table2 Figure5；paper D.5–D.6；ASR 03:33:13–03:34:21;03:38:04–03:39:18。§8准确区分核心天、端到端成本、训练配方与受控JFT的约2–4倍差异；§9区分吞吐和延迟。但轴向attention算子与完整Axial-ViT/AxialResNet被压成一句，需收窄表述，详见C15意见。"
+            },
+            {
+              "id": "VIT-P09",
+              "title": "patch大小、分辨率与注意力代价",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U14",
+                "U15",
+                "U20"
+              ],
+              "notes": "来源先行单元；原文定位：paper §2 §3.1–3.2 §4.1；paper D.2 D.5。§9准确推导图块4倍/关系项16倍，明示忽略CLS且非整网实测；位置嵌入二维插值说明准确。"
+            },
+            {
+              "id": "VIT-P10",
+              "title": "模型是否学到空间结构：诊断不等于理解证明",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U3"
+              ],
+              "notes": "来源先行单元；原文定位：paper §4.5 Figures6–7；paper D.4 D.7 D.8。§3及inspection脚注保留位置网格与局部/全局注意力观察，明确猫照片为示意，不把可视化当完整因果解释。滤波器细节未展开属于支持性裁剪。"
+            },
+            {
+              "id": "VIT-P11",
+              "title": "自监督与未来任务边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U16",
+                "U17"
+              ],
+              "notes": "来源先行单元；原文定位：paper §4.6 §5；paper B.1.2。§10完整区分主监督结果与masked patch初探，50%选择范围、RGB各3bit/512色、79.9%及约2/4个百分点口径准确；检测分割/图文生成不能由分类成绩推出。"
+            },
+            {
+              "id": "VIT-P12",
+              "title": "嘉宾的硬件与生态解释的证据等级",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "LECTURE",
+                "PODCAST"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1",
+                "U13",
+                "U15"
+              ],
+              "notes": "来源先行单元；原文定位：handout p47；ASR 03:33:13–03:34:21;03:38:04–03:39:18；paper §3 §4.2。§§1/8/9/11保留生态与扩展动机，同时把工程解释同TPU实验支持范围分开；不将CUDA生态归因冒充论文实测。"
+            },
+            {
+              "id": "VIT-P13",
+              "title": "从视频切序列到人物画面和字幕对齐的迁移设想",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PODCAST",
+                "PAPER",
+                "SHOWNOTES"
+              ],
+              "matched_coverage_unit_ids": [
+                "U17"
+              ],
+              "notes": "来源先行单元；原文定位：ASR 03:39:18–03:41:15。§10–11保留视频与图文共处理设想及输入形式不等于已学语义对应，以同一猫照片与配图句子承担关系说明；人物/Sora/DiT旁枝不照抄、不据此宣称已核定继承或产品能力。论证主线得到覆盖，具体口述案例未逐个复述。"
+            },
+            {
+              "id": "VIT-P14",
+              "title": "近邻工作与作者角色不能神化",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "LECTURE",
+                "PODCAST",
+                "TRANSFORMER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1",
+                "U18"
+              ],
+              "notes": "来源先行单元；原文定位：paper §2；paper title page and references；handout p47；ASR 03:35:14–03:35:28。§§1/11准确说明非视觉attention首创；共同作者已由ViT首页与Transformer首页独立核对，ViT共同指导标记为Alexey/Neil而非Jakob。"
+            },
+            {
+              "id": "VIT-P15",
+              "title": "本节在课程中的位置与资料版本",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "PAPER",
+                "METADATA",
+                "LECTURE",
+                "PODCAST",
+                "SHOWNOTES"
+              ],
+              "matched_coverage_unit_ids": [
+                "U18",
+                "U19"
+              ],
+              "notes": "来源先行单元；原文定位：handout p41,p47；shownotes Part4 ViT条目；paper title page metadata。来源节明示首发/v2与修订、ASR未听校；讲义与shownotes路线只用于本节定位。报告的章节安排为23双流→24ViT→25CLIP，不声称与讲义时间线一一同序。"
+            }
+          ],
+          "source_ids_checked": [
+            "PAPER",
+            "METADATA",
+            "LECTURE",
+            "PODCAST",
+            "SHOWNOTES",
+            "TRANSFORMER"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "先核报告/evidence快照，先读取原始材料并固定15个独立内容单元，再读报告与账本；未打开其他review文件、来源图或评分理由；来源地图已在收到协调者关于轴向段落修订的提示前固定，后依据附录D.6独立核对该点。当前冻结版有两处应修的小问题：1）正文L272 [^training]与C4的B.3不存在，删去B.3并用§4.1 Metrics/必要时B.1.1；2）L213/C15应分别说明轴向attention缩短每次注意力长度、Axial-ViT有额外MLP而完整模型更费计算，以及AxialResNet朴素TPU实现慢，不能笼统概括整类网络理论计算量较少。两处不构成关键数值错误或整条核心claim无来源，因此不伪填hard failure。没有UI缺项；不宣称质量门已通过。",
+          "snapshot": {
+            "report_path": "ai-learning/reports/knowledge_reports/AI演义_24_ViT_图像怎样变成Transformer输入_科普讲解_20261105.md",
+            "report_sha256": "cff8968f2599beb850c142cf0c5c73e8e536df3e6120d5d15736a1230618536e",
+            "evidence_sha256": "9da77d6114a3450c8dfa8d5b12902abeb466a00a96aa338dd9c94d8ef19410a1",
+            "verified_before_source_read": true
+          },
+          "directly_reviewed_critical_claim_ids": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "C16",
+            "C17",
+            "C18",
+            "C19"
+          ],
+          "directly_reviewed_source_ids": [
+            "PAPER",
+            "METADATA",
+            "LECTURE",
+            "PODCAST",
+            "SHOWNOTES",
+            "TRANSFORMER"
+          ],
+          "directly_reviewed_coverage_unit_ids": [
+            "U1",
+            "U2",
+            "U3",
+            "U4",
+            "U5",
+            "U6",
+            "U7",
+            "U8",
+            "U9",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14",
+            "U15",
+            "U16",
+            "U17",
+            "U18",
+            "U19",
+            "U20"
+          ],
+          "directly_reviewed_requirement_ids": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6"
+          ],
+          "inherited_critical_claim_ids": [],
+          "inherited_source_ids": [],
+          "inherited_coverage_unit_ids": [],
+          "inherited_requirement_ids": [],
+          "source_read_scopes": [
+            {
+              "source_id": "PAPER",
+              "read_scope": "v2全部文字/图注，重点核§§1–5、Tables1/2/5/6/8及附录A/B/C/D；PDF重提取文本与给定缓存一致；未视觉核读原图。",
+              "sha256": "8ce7b83971a14508ca711a27c875c9b6914c4f6767cf3150fb1ca6c07aa056d6"
+            },
+            {
+              "source_id": "METADATA",
+              "read_scope": "提供的官方v2元信息缓存，日期与修订说明；无本轮网络刷新。",
+              "text_sha256": "3ea3127aee0239978f61f06211932109114a29485488ea6be6223fe7ea9030bb"
+            },
+            {
+              "source_id": "LECTURE",
+              "read_scope": "p47/p41完整可提取文字，独立重提取核对；未核图像。",
+              "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0"
+            },
+            {
+              "source_id": "PODCAST",
+              "read_scope": "236段全部文字与结构检查；起止12737.70–13275.76秒；未听音/测WER。",
+              "text_sha256": "aaca2aeb13277caa28b6ca41e9f61e5218957ea94166d99f32801c8bfca5ec3d"
+            },
+            {
+              "source_id": "SHOWNOTES",
+              "read_scope": "所给完整缓存，复核Part4中ViT及前后路线；其他章节只看条目而未作科学重审。",
+              "text_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5"
+            },
+            {
+              "source_id": "TRANSFORMER",
+              "read_scope": "仅v7首页作者及贡献脚注，确认共同作者身份；未重新阅读全文。",
+              "sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+            }
+          ],
+          "verification_limits": [
+            "来源优先实际范围：完整读取所给ViT v2全文文字缓存（1455行、22页对应文字，含附录/参考文献/图注），并从仓内PDF独立pdftotext重提取，所得SHA与缓存完全相同。未逐图视觉审查；不将图注和可提取文字的阅读称作图像核读。",
+            "讲义仅独立读取并重提取p47/p41文字；重提取与缓存完全一致，但文字存在缺字，不声称视觉核读讲义版面。已用ViT原文及ASR交叉检查本节技术含义。",
+            "完整阅读236段目标ASR文字及对应segments；重跑原生audit_transcript并自行复算小数时间戳，无起止倒序、逆序或重叠，最大间隙0.07秒，跨度538.06秒。核对给定精度/原生回执；未回读整集私有原ASR重做切片，未听音、未测WER。",
+            "shownotes全文缓存用于课程边界与顺序；非ViT主题不是本轮科学复核范围。元信息读取并核对所给官方缓存SHA，未在本次review重新联网请求、重新下载官方PDF或测试外部链接当前可达性。",
+            "Transformer v7只新读仓内PDF首页及其署名/贡献脚注，并核对SHA；不能把共享宿主eacli报告的模型身份当成本子会话模型，故model为unconfirmed。",
+            "没有训练、推理、重做基准、复验数据去重或审计现代模型/产品谱系；没有操作工作台、浏览器或页面，也不把文本/链接检查称作页面验收。"
+          ],
+          "content_check": {
+            "path": "ai-learning/reports/knowledge_reports/AI演义_24_ViT_图像怎样变成Transformer输入_科普讲解_20261105.md",
+            "local_links_checked": 4,
+            "local_link_errors": [],
+            "undefined_footnotes": [],
+            "unreferenced_footnotes": [],
+            "duplicate_footnotes": [],
+            "duplicate_explicit_ids": [],
+            "replacement_characters": 0,
+            "external_links_fetched_this_review": false
+          },
+          "correction_suggestions": [
+            {
+              "severity": "minor",
+              "claim_ids": [
+                "C4"
+              ],
+              "requirement_ids": [
+                "R1",
+                "R6"
+              ],
+              "locator": "正文L272 [^training]；evidence C4.evidence",
+              "finding": "ViT v2没有附录B.3；few-shot指标定义见§4.1 Metrics。",
+              "suggested_fix": "将B.1.1、B.3改为B.1.1，并明确few-shot定义在§4.1 Metrics。"
+            },
+            {
+              "severity": "minor",
+              "claim_ids": [
+                "C15"
+              ],
+              "requirement_ids": [
+                "R4"
+              ],
+              "locator": "正文L213；evidence C15",
+              "finding": "轴向attention序列更短与完整Axial-ViT计算较少不是同一件事；D.6说明额外MLP使Axial-ViT更费计算，且慢的朴素实现具体指AxialResNet。",
+              "suggested_fix": "分开算子复杂度、完整模型FLOPs与AxialResNet实际TPU实现，不概括为整类模型理论计算量较少。"
+            }
+          ],
+          "native_check": {
+            "performed": true,
+            "exit_code": 1,
+            "decision": "needs_review",
+            "finding_codes": [
+              "REV006"
+            ],
+            "write_decision": false,
+            "finalize": false,
+            "scope": "当前仓库sidecar的原生检查；本条临时独立review尚未写入仓库，故不将该结果冒充已接纳本次review的最终判定。",
+            "error_count": 1,
+            "warning_count": 0
+          },
+          "entry_validation": {
+            "json_parsed": true,
+            "required_fields_checked": true,
+            "all_dimensions_checked": true,
+            "map_schema_fields_checked": true,
+            "ids_known_and_unique": true,
+            "jsonschema_library_available": false
+          }
+        }
+      ],
+      "decision": {}
+    }
+  ],
+  "review_receipts": [
+    {
+      "artifact": "delivery-primary-chapter-r2.json",
+      "sha256": "a63bd56303c4bb27ba11e646d06f43ca997c6927c4411f556226f62d89ec7144"
+    },
+    {
+      "artifact": "delivery-strong-chapter-r2.json",
+      "sha256": "9ea80a62b881e8ed0256ec8ecd2945fd1f3859ae9c16ddb10b46756e0ccfd1c8"
+    }
+  ]
+}
