@@ -1,0 +1,699 @@
+{
+  "schema_version": 1,
+  "report_path": "ai-learning/reports/knowledge_reports/AI演义_26_GAN_两个模型怎样在对抗中学会生成_科普讲解_20261106.md",
+  "quality_tier": "important",
+  "created_on": "2026-11-06",
+  "generator": {
+    "model": "gpt-6-astra",
+    "harness": "codex",
+    "run_id": "generator-d7ff99e5ce48",
+    "explicit_model_override": false,
+    "override_reason": "",
+    "identity_basis": "本轮eacli session current核实当前codex-turn-context、调用方与main工作区；图像能力仅辅助读取来源，不作为独立复核。"
+  },
+  "task": {
+    "summary": "《AI演义》第26节GAN独立科普展开：以生成花卉图片解释来源监督、交替更新、经D传给G的梯度、非饱和目标、理想分析与模式崩塌，核读原始实验和评价限制。",
+    "requirements": [
+      {
+        "id": "R1",
+        "text": "实际阅读GAN固定v1全文、讲义p44、shownotes以及95段主ASR和24段扩散比较补充ASR；分开两段范围，不冒称听校或全节目验收。"
+      },
+      {
+        "id": "R2",
+        "text": "单个花卉例子贯穿，讲清随机输入、生成分布、来源标签、G/D交替更新、冻结参数但传递梯度，以及原始与替代目标的差别。"
+      },
+      {
+        "id": "R3",
+        "text": "对照原论文解释收敛前提、D的1/2不能独立验收、模式崩塌和记忆区别；实验、Parzen估计、标准误与视觉证据保留精确口径和限制。"
+      },
+      {
+        "id": "R4",
+        "text": "区分采样与训练、隐式密度与反向推断、已实现与条件生成展望；与蒸馏和CLIP比较只建立训练分工关系，作者/书籍和市场叙事分别核验。"
+      },
+      {
+        "id": "R5",
+        "text": "主报告第26节实质重写，标题后第一块为展开链接；展开保留返回原节、前后章节导航，研究入口同步。"
+      },
+      {
+        "id": "R6",
+        "text": "使用统一的两位编号标题，正文独立可读，脚注、链接和三问完整；完成独立内容复核，不要求工作台页面验收。"
+      }
+    ],
+    "reader_feedback": [
+      "原章节没有优化、也没有链接展开阅读的啊",
+      "按Brook方式一轮一章，后续参考前轮，独立可读。",
+      "列表命名开头规范一下。"
+    ],
+    "source_coverage_scope": "仅GAN章节及进入扩散时涉及GAN训练比较的补充片段；不是所有扩散口述、全部播客或整套31章的完成判定。",
+    "scope_adjustment": {
+      "date": "2026-11-06",
+      "authority": "用户明确取消报告的工作台页面验收前置",
+      "ui_validation_required": false,
+      "content_and_source_review_required": true
+    }
+  },
+  "sources": [
+    {
+      "id": "PAPER",
+      "kind": "primary",
+      "title": "Generative Adversarial Nets",
+      "locator": "https://arxiv.org/pdf/1406.2661v1",
+      "accessed_on": "2026-11-06",
+      "version": "arXiv:1406.2661v1，2014-06-10，9页",
+      "local_owner": "ai-learning/papers/08_gan_2014.pdf",
+      "sha256": "ff5819e3a7b713c3bd3107b7de3d51fe0a347aa5d8444f0efdcf2345ef0a8b63",
+      "read_scope": "pp1–9全文已读；核对Algorithm1、Propositions1–2、Theorem1、Figures1–3和Tables1–2。p3/6/7经eacli图像读取并直接视检；未逐篇获取参考文献、未读取代码或复现训练。",
+      "version_boundary": "本地PDF首页为Nets、官方摘要页为Networks；日期与v1一致，未重新下载PDF做字节相等证明。Poppler提示若干closepath语法告警，已直接查看所用图页，不能把提取成功当所有图页零缺陷。"
+    },
+    {
+      "id": "METADATA",
+      "kind": "primary",
+      "title": "GAN官方arXiv版本记录",
+      "locator": "https://arxiv.org/abs/1406.2661v1",
+      "accessed_on": "2026-11-06",
+      "response_text_sha256": "1bf0b05e87372f9f51c355e3ff31563fa0348a85a4ada8ae5ead3bdfdb68cd28",
+      "read_scope": "eacli web.read核读作者、题名、首次提交时间和摘要，页面题名Networks与PDF首页Nets的差异单独说明。"
+    },
+    {
+      "id": "LECTURE",
+      "kind": "local",
+      "title": "《AI演义》讲义第44页：GAN",
+      "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "accessed_on": "2026-11-06",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
+      "read_scope": "仅p44文字、eacli图像辅助和原页直接视检；采用历史直觉、对抗分工与作者线索，不将讲义的作者履历和难度判断直接当成独立核实的事实。"
+    },
+    {
+      "id": "PODCAST",
+      "kind": "primary",
+      "title": "《AI演义》GAN口述及后续GAN训练比较",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-06",
+      "full_segments_sha256": "f322514ced72235a0ca104635824c66df425c18dbae3d0f4e76fa70d088db61c",
+      "read_scope": "GAN主段5764–5858共95段，11874.72–12123.22秒；补充5917–5940共24段，12243.40–12281.50秒。两段完整重读、分别机器审计及百分秒核对；相邻转场读至5964定位边界，但不并入本章核心范围。未听音或测WER。",
+      "slice_receipts": [
+        {
+          "name": "core",
+          "zero_based_start": 5764,
+          "zero_based_end_inclusive": 5858,
+          "segment_count": 95,
+          "start_seconds": 11874.72,
+          "end_seconds": 12123.22,
+          "elapsed_seconds": 248.5,
+          "slice_sha256": "b77d3115a9c923bb47be12eb66936874b3c6057b9879fd8ab819d831e9733004",
+          "text_sha256": "273f66ae5cfaa2838319967fefdcac7eeda2cbb774b56491926cb4c03586e7b4",
+          "precision": {
+            "start_backwards": 0,
+            "end_backwards": 0,
+            "end_before_start": 0,
+            "overlap_count": 0,
+            "max_gap_seconds": 0.77,
+            "max_consecutive_identical": 1
+          },
+          "segments_match_owner": true
+        },
+        {
+          "name": "diffusion-comparison",
+          "zero_based_start": 5917,
+          "zero_based_end_inclusive": 5940,
+          "segment_count": 24,
+          "start_seconds": 12243.4,
+          "end_seconds": 12281.5,
+          "elapsed_seconds": 38.1,
+          "slice_sha256": "921b51a3624611ad5caa58f792bfdd0573387a475e642819a811512b94a871b6",
+          "text_sha256": "41337230dc62ec7f84ce40d197badc413072c430cba848cd656cd4da6f5016d9",
+          "precision": {
+            "start_backwards": 0,
+            "end_backwards": 0,
+            "end_before_start": 0,
+            "overlap_count": 0,
+            "max_gap_seconds": 0.0,
+            "max_consecutive_identical": 1
+          },
+          "segments_match_owner": true
+        }
+      ],
+      "public_transcription_review": "ai-learning/reports/knowledge_reports/.quality/AI演义_26_GAN_两个模型怎样在对抗中学会生成_科普讲解_20261106.transcription-review.json",
+      "public_full_episode_receipt": "podcast-learning/reports/transcripts/2026-11-04_ai-yanyi-117.audit.json",
+      "raw_transcript_public": false
+    },
+    {
+      "id": "SHOWNOTES",
+      "kind": "primary",
+      "title": "节目shownotes：Part4生成路线",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-06",
+      "response_text_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5",
+      "read_scope": "复用已缓存节目页并全文核读shownotes；Part4的GAN条目位于双流与Diffusion之间，03:08:08是Part4起点，不是GAN起点。"
+    },
+    {
+      "id": "BOOK",
+      "kind": "primary",
+      "title": "Deep Learning官方书籍主页",
+      "locator": "https://www.deeplearningbook.org/",
+      "accessed_on": "2026-11-06",
+      "response_text_sha256": "8a4139d836366516c6dc8bdf4ecec36b0702680c411201deeb1661e1c95043c5",
+      "read_scope": "只核对首页作者、MIT Press出版与引用条目2016年，不声称本轮读过全书或独立审计作者完整履历。"
+    },
+    {
+      "id": "DISTILLATION",
+      "kind": "primary",
+      "title": "Distilling the Knowledge in a Neural Network",
+      "locator": "https://arxiv.org/pdf/1503.02531v1",
+      "accessed_on": "2026-11-06",
+      "local_owner": "ai-learning/papers/23_distilling_2015.pdf",
+      "sha256": "74e6689115c539db499f9d6153edecb364059926fd45402454f8210442444c5a",
+      "read_scope": "本轮只重读pp1–2，核对训练后大模型/集成的输出作为小模型软目标；用于分工对照，不重审全篇实验。"
+    },
+    {
+      "id": "CLIP",
+      "kind": "primary",
+      "title": "CLIP的共同配对目标",
+      "locator": "https://arxiv.org/pdf/2103.00020v1",
+      "accessed_on": "2026-11-06",
+      "local_owner": "ai-learning/papers/11_clip_2021.pdf",
+      "sha256": "6478b6e571a7d6fcd846d8ef77bfd60c285f1986abb8f475eedc43de403074f5",
+      "read_scope": "本轮复用第25节固定原文并重读pp4–5，§2.3与Figure3；仅核图文编码器共同训练的配对目标，不把GAN与CLIP组织成未核的直接谱系。"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "GAN不是所有生成模型的起点；2014框架以判别训练为生成模型提供学习信号，原文动机包括概率计算和采样困难。",
+      "report_anchor": "why-adversarial",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "LECTURE",
+        "PODCAST"
+      ],
+      "critical": true,
+      "evidence": "§§1–2已有RBM/DBN/GSN/VAE等路线，讲义的生成/理解难度仅用作直觉。"
+    },
+    {
+      "id": "C2",
+      "claim": "基本G将随机z映射为图像并隐式定义生成分布；所做实验仅在底层输入噪声，随机输入不保证输出多样性。",
+      "report_anchor": "data-and-noise",
+      "support": "derived",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§3、§5和§6；固定参数同z产生同输出是所述无中间随机噪声映射的直接推论。"
+    },
+    {
+      "id": "C3",
+      "claim": "D的标签是来自真实数据或当前G，不是花/非花；训练程序可由样本来源给标签，不需人工为每张生成图打分。",
+      "report_anchor": "two-models",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§3和Algorithm1分别取真实样本与噪声生成样本；不等于训练数据不需要选择和清理。"
+    },
+    {
+      "id": "C4",
+      "claim": "交替更新k步D和1步G，原实验k=1且更新G前重采噪声；每轮优化D至完成计算昂贵且有限数据上会过拟合。",
+      "report_anchor": "one-training-round",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "p3及p4 Algorithm1，不外推所有GAN的最佳更新比。"
+    },
+    {
+      "id": "C5",
+      "claim": "更新G时固定D的参数，但仍通过D的可微计算向G传递梯度；不是仅收真假硬标签，也不是只修改当次图片。",
+      "report_anchor": "where-gradient-comes-from",
+      "support": "derived",
+      "source_ids": [
+        "PAPER",
+        "LECTURE"
+      ],
+      "critical": true,
+      "evidence": "Algorithm1对theta_d与theta_g分别求导，§6讨论流经判别器的梯度；花瓣解释仅是机制示意。"
+    },
+    {
+      "id": "C6",
+      "claim": "原始生成目标在G很差且D高置信拒绝时可能饱和；改为最大化log D(G(z))保留相同理想固定点并增强早期梯度。",
+      "report_anchor": "saturation",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "PODCAST"
+      ],
+      "critical": true,
+      "evidence": "p3 §3第二段，未宣称所有实验均由本篇重新跑出。"
+    },
+    {
+      "id": "C7",
+      "claim": "使用替代G目标后，不能再将实际D/G更新不加区分地视作同一个标量目标的严格相反优化；同一固定点不等于相同训练动力学。",
+      "report_anchor": "saturation",
+      "support": "derived",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "由Eq1与紧接的替代目标比较得到，区分理论minimax公式和训练替代目标。"
+    },
+    {
+      "id": "C8",
+      "claim": "理想分布匹配时，等权两来源下最优D输出1/2；收敛分析需要足够容量、最优D和足够小的分布更新，有限参数优化无此普遍保证。",
+      "report_anchor": "ideal-equilibrium",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "Figures1、Propositions1–2、Theorem1和p5参数空间限制。"
+    },
+    {
+      "id": "C9",
+      "claim": "仅观察D接近50%不能验收G；常数输出1/2且不看图片的D是反例，并不要求生成分布匹配。",
+      "report_anchor": "ideal-equilibrium",
+      "support": "derived",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "由最优D的前提和一个明示数学反例得出，不是本篇测得的训练失败率。"
+    },
+    {
+      "id": "C10",
+      "claim": "原文Helvetica scenario指过多z坍缩为同一x、多样性不足；特别提醒G训练过多而D未同步，不能视为所有模式崩塌的完整成因。",
+      "report_anchor": "mode-collapse",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "PODCAST"
+      ],
+      "critical": true,
+      "evidence": "p7 §6；红花收缩只是说明例子。"
+    },
+    {
+      "id": "C11",
+      "claim": "原实验包含MNIST、TFD、CIFAR-10；除主要MLP设置外，也展示卷积D与反卷积G的CIFAR-10结果。",
+      "report_anchor": "original-experiments",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§5与Figure2 c/d；未把花卉场景列为实测或基本GAN写成成熟文生图。"
+    },
+    {
+      "id": "C12",
+      "claim": "Table1 GAN在MNIST为225±2、TFD为2057±26；DBN、Stacked CAE、Deep GSN各行按原表转录，TFD的Stacked CAE为2110±50。",
+      "report_anchor": "original-experiments",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "p6 Table1直接视检，数值不是准确率、百分比或现代画质分数。"
+    },
+    {
+      "id": "C13",
+      "claim": "Table1是高斯Parzen窗下的平均对数似然估计，带宽由验证集选择；MNIST为实值版、标准误跨样本，TFD跨折，原文承认高方差与高维局限。",
+      "report_anchor": "original-experiments",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§5跨p5–6、Table1图注；原表未明示nats单位，本篇不据图像模型擅加单位。"
+    },
+    {
+      "id": "C14",
+      "claim": "Figures2–3展示随机样本、最近邻和z插值；抽样非精选是作者说明，有限可视化不能单独证明不记忆或全空间有语义控制；原文未声称样本更好。",
+      "report_anchor": "original-experiments",
+      "support": "derived",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "p6正文与Figure2、p7 Figure3；图像证据与更广证明范围明确分开。"
+    },
+    {
+      "id": "C15",
+      "claim": "基本GAN训练后只用G前向采样，不需D审核循环或马尔可夫链混合；但隐式密度不直接给出精确p(x)，也没有自带任意图片的逆映射。",
+      "report_anchor": "tradeoffs-and-extensions",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "p2、Table2及§§6–7，采样便利不等于训练容易或概率/反演全部解决。"
+    },
+    {
+      "id": "C16",
+      "claim": "向G/D同时加入条件c、辅助推断网络、半监督与协调改进属于原文列出的扩展方向，不能当作已完成的基本文生图实验。",
+      "report_anchor": "tradeoffs-and-extensions",
+      "support": "direct",
+      "source_ids": [
+        "PAPER"
+      ],
+      "critical": true,
+      "evidence": "§7 pp7–8；正文展开条件生成和辅助推断，其余方向在coverage记为非核心省略。"
+    },
+    {
+      "id": "C17",
+      "claim": "GAN与蒸馏/CLIP只作训练分工对照：蒸馏传递既有大模型知识，CLIP共同优化图文配对，GAN双方围绕来源判别竞争。",
+      "report_anchor": "historical-position",
+      "support": "derived",
+      "source_ids": [
+        "PAPER",
+        "DISTILLATION",
+        "CLIP"
+      ],
+      "critical": true,
+      "evidence": "三篇各自方法段的机制比较，不是按发布时间或网络个数建立谱系。"
+    },
+    {
+      "id": "C18",
+      "claim": "GAN论文v1于2014-06-10提交、8位作者，首页署名蒙特利尔并说明访问学生；Deep Learning官网列Goodfellow/Bengio/Courville及2016年。",
+      "report_anchor": "historical-position",
+      "support": "direct",
+      "source_ids": [
+        "PAPER",
+        "METADATA",
+        "BOOK"
+      ],
+      "critical": true,
+      "evidence": "首页、arXiv版本记录、书籍官网引用条目；不推断私人分工或未核的当下职位。"
+    },
+    {
+      "id": "C19",
+      "claim": "节目关于GAN主导随后几年图像生成的说法只按历史叙事处理，不当作市场份额统计或成熟文生图占有率。",
+      "report_anchor": "historical-position",
+      "support": "direct",
+      "source_ids": [
+        "PODCAST",
+        "LECTURE"
+      ],
+      "critical": true,
+      "evidence": "口述12106.57–12123.22秒；本文未补造统计数据。"
+    }
+  ],
+  "source_coverage": [
+    {
+      "id": "U1",
+      "title": "节目花卉判别/生成的直觉与讲义历史背景；难度判断不作普遍定律。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PODCAST",
+        "LECTURE",
+        "PAPER"
+      ],
+      "report_anchor": "why-adversarial"
+    },
+    {
+      "id": "U2",
+      "title": "原始G/D分工、来源监督和二人博弈，不把判别器当预先完美教师。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PODCAST",
+        "LECTURE",
+        "PAPER"
+      ],
+      "report_anchor": "two-models"
+    },
+    {
+      "id": "U3",
+      "title": "随机输入、隐式生成分布与多样性不是一回事。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "data-and-noise"
+    },
+    {
+      "id": "U4",
+      "title": "交替更新、k=1原实验与冻结D但通过D反传梯度。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PODCAST",
+        "PAPER",
+        "LECTURE"
+      ],
+      "report_anchor": "one-training-round",
+      "other_report_anchors": [
+        "where-gradient-comes-from"
+      ]
+    },
+    {
+      "id": "U5",
+      "title": "扩散转场中的GAN训练不稳定性，与原论文梯度饱和/替代目标建立具体对应。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PODCAST",
+        "PAPER"
+      ],
+      "report_anchor": "saturation",
+      "coverage_note": "不照搬VAE一概模糊、GAN永远清晰或当代训练状态的宽泛比较。"
+    },
+    {
+      "id": "U6",
+      "title": "原始minimax与非饱和目标不混同；固定点、实际梯度与训练过程分开。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "saturation"
+    },
+    {
+      "id": "U7",
+      "title": "Figure1与理论收敛前提；1/2不是任意真实训练验收规则。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "ideal-equilibrium"
+    },
+    {
+      "id": "U8",
+      "title": "Helvetica scenario和模式崩塌；同步、质量、多样性与记忆区分。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "PODCAST"
+      ],
+      "report_anchor": "mode-collapse"
+    },
+    {
+      "id": "U9",
+      "title": "原始三数据集、网络设置、Figures2–3的样本与潜在插值。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "original-experiments"
+    },
+    {
+      "id": "U10",
+      "title": "Table1四方法两数据集、实值MNIST、均值标准误和Parzen带宽/高维局限。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "original-experiments"
+    },
+    {
+      "id": "U11",
+      "title": "定性图不证明普遍无记忆、抽样声明不冒充本篇实测、作者不声称全面更好。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "original-experiments"
+    },
+    {
+      "id": "U12",
+      "title": "Table2和§6的采样便利、隐式密度、推断与代价交换。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "tradeoffs-and-extensions"
+    },
+    {
+      "id": "U13",
+      "title": "条件生成和辅助逆推断属于§7展望，不能说已实现文生图。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER"
+      ],
+      "report_anchor": "tradeoffs-and-extensions"
+    },
+    {
+      "id": "U14",
+      "title": "节目/讲义人物与花书线索用论文署名和书籍官网核对；不夸私人分工。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PODCAST",
+        "LECTURE",
+        "PAPER",
+        "BOOK",
+        "METADATA"
+      ],
+      "report_anchor": "historical-position"
+    },
+    {
+      "id": "U15",
+      "title": "主导5–6年等说法不量化为已验证市场结论；节目与报告顺序区别。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PODCAST",
+        "SHOWNOTES",
+        "LECTURE"
+      ],
+      "report_anchor": "historical-position"
+    },
+    {
+      "id": "U16",
+      "title": "shownotes Part4 GAN条目在双流与Diffusion之间，GAN时间以ASR定位。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "SHOWNOTES",
+        "PODCAST"
+      ],
+      "report_anchor": "historical-position",
+      "shownotes_chapter": "Part 4 / 图像生成的序章: GAN来了（2014.06）"
+    },
+    {
+      "id": "U17",
+      "title": "与知识蒸馏、CLIP及此前判别路线建立有边界的训练机制对照。",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "PAPER",
+        "DISTILLATION",
+        "CLIP"
+      ],
+      "report_anchor": "historical-position"
+    },
+    {
+      "id": "U18",
+      "title": "全部相关工作逐篇验证、Table2的全部历史模型评价及参考文献全文。",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "PAPER"
+      ],
+      "omission_reason": "本篇精读GAN原文并解释其训练机制，未逐篇读取31项参考文献，不把原表的历史模型概括推广到现代所有变体。"
+    },
+    {
+      "id": "U19",
+      "title": "§7其余的共享参数条件族、半监督分类与采样分布改进细节。",
+      "importance": "supporting",
+      "status": "omitted",
+      "source_ids": [
+        "PAPER"
+      ],
+      "omission_reason": "已读完整展望，正文保留条件控制和辅助推断及协调问题；其余方向不属于节目GAN核心问题，不添加未运行实现。"
+    }
+  ],
+  "limitations": [
+    "本篇没有训练、部署、复现GAN，也没有跑花卉示例；真实数字仅为固定v1的论文数据。",
+    "119段ASR分属两段不连续范围，时间结构通过不等于语义或字词完全准确；未听音或测WER。",
+    "理想分布空间定理不能保证有限网络实际训练收敛，非饱和目标也不是稳定性总解。",
+    "未重新取得或审计GAN数据、生成样本、最近邻或全部基线实现；不从可视化推出普遍无记忆或统计显著性。",
+    "未逐篇审计全部前驱/后继；蒸馏与CLIP只作已读原文方法对照，书籍只核首页出版信息。",
+    "没有核实讲义中全部人物履历或市场叙事；不写当前职位、私人分工或GAN市场份额。"
+  ],
+  "research_receipts": [
+    {
+      "kind": "source-visual-reading",
+      "capability": "vision.image-analysis",
+      "receipts": [
+        {
+          "artifact": "vision-handout-p44.json",
+          "sha256": "e6b816a3b79fc49c982b714a1bd3bc4dea8d12ae4b05580979c3dea1c9acf8cc",
+          "image_sha256": "94359faa5a37ed5c0af6c574c9ee92ee20969361165cea63e8ebf48e0c1aeca9",
+          "provider": "zhipu",
+          "fallback_used": false,
+          "direct_visual_crosscheck": true
+        },
+        {
+          "artifact": "vision-paper-p3.json",
+          "sha256": "4408488e0e4fd1ce683bbb7089122e452dda911b8d91c7f63e960e63fb78175c",
+          "image_sha256": "6ebce7d0664dbc0c6b0b832afa53357f1a840d539fbff9abf0bab4e6796f5217",
+          "provider": "zhipu",
+          "fallback_used": false,
+          "direct_visual_crosscheck": true
+        },
+        {
+          "artifact": "vision-paper-p6.json",
+          "sha256": "ea2106ec2c10b2f59cd31fa27e27c8708e66642358a044d853206b409f8b8e05",
+          "image_sha256": "6d139dd34df323787c4f162eb81b64b5f8a4dfeae8a80e243e1cefa6983f8585",
+          "provider": "zhipu",
+          "fallback_used": false,
+          "direct_visual_crosscheck": true
+        },
+        {
+          "artifact": "vision-paper-p7.json",
+          "sha256": "eb7749a632fcaccd4f82d53d8b4761e6e6545fef477f5cf271a75f016dc320f4",
+          "image_sha256": "7d134b74881d616296e5145614acd7cd67812218259755eb11e8356c113f7760",
+          "provider": "zhipu",
+          "fallback_used": false,
+          "direct_visual_crosscheck": true
+        }
+      ],
+      "independent_report_review": false,
+      "corrections_to_assistance": [
+        "Figure1(d)仍有由均匀z到非均匀x的映射，不采用回执称箭头已均匀竖直的说法。",
+        "Table1页未明示nats单位；不采纳视觉模型补出的单位和加粗缘由/显著性解释。",
+        "Figure3插值不是普遍语义连续、已学流形或绝不记忆的证明；不采纳视觉模型的扩大推断。",
+        "Table2是作者对当时各路线的简表，不采用唯一训练困难、其余环节都无困难的笼统结论。"
+      ]
+    },
+    {
+      "kind": "source-text-reading",
+      "artifacts": [
+        {
+          "name": "paper-v1-layout.txt",
+          "sha256": "5758fdf50572efde7a9cc5b29e66e847142c35a3f916821f698432bbc5dc5663"
+        },
+        {
+          "name": "paper-metadata.txt",
+          "sha256": "1bf0b05e87372f9f51c355e3ff31563fa0348a85a4ada8ae5ead3bdfdb68cd28"
+        },
+        {
+          "name": "shownotes.txt",
+          "sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5"
+        },
+        {
+          "name": "deep-learning-book.md",
+          "sha256": "8a4139d836366516c6dc8bdf4ecec36b0702680c411201deeb1661e1c95043c5"
+        },
+        {
+          "name": "asr-core-native-audit.json",
+          "sha256": "88b2f8cada86b8565243eb2b4395213d417e64a6bdbeb06b0cce205cb96ebff3"
+        },
+        {
+          "name": "asr-comparison-native-audit.json",
+          "sha256": "fb6516f95f4c1f7c5798295a216b938b46d76a600a123bc502cbfc4bbac4786c"
+        }
+      ],
+      "paper_scope": "GAN全9页；参考文献条目已读但引用文献本身未逐篇读取。"
+    }
+  ]
+}

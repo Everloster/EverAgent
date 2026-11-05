@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "kind": "chapter-transcription-review",
+  "reviewed_on": "2026-11-06",
+  "chapter": 26,
+  "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+  "transcript_source_ref": "sha256:273f66ae5cfaa2838319967fefdcac7eeda2cbb774b56491926cb4c03586e7b4",
+  "full_segments_sha256": "f322514ced72235a0ca104635824c66df425c18dbae3d0f4e76fa70d088db61c",
+  "public_full_episode_receipt": "podcast-learning/reports/transcripts/2026-11-04_ai-yanyi-117.audit.json",
+  "read_scope": {
+    "segments_read": 119,
+    "non_contiguous_intervals": [
+      {
+        "name": "core",
+        "zero_based_start": 5764,
+        "zero_based_end_inclusive": 5858,
+        "segment_count": 95,
+        "start_seconds": 11874.72,
+        "end_seconds": 12123.22,
+        "elapsed_seconds": 248.5,
+        "slice_sha256": "b77d3115a9c923bb47be12eb66936874b3c6057b9879fd8ab819d831e9733004",
+        "text_sha256": "273f66ae5cfaa2838319967fefdcac7eeda2cbb774b56491926cb4c03586e7b4",
+        "precision": {
+          "start_backwards": 0,
+          "end_backwards": 0,
+          "end_before_start": 0,
+          "overlap_count": 0,
+          "max_gap_seconds": 0.77,
+          "max_consecutive_identical": 1
+        },
+        "segments_match_owner": true
+      },
+      {
+        "name": "diffusion-comparison",
+        "zero_based_start": 5917,
+        "zero_based_end_inclusive": 5940,
+        "segment_count": 24,
+        "start_seconds": 12243.4,
+        "end_seconds": 12281.5,
+        "elapsed_seconds": 38.1,
+        "slice_sha256": "921b51a3624611ad5caa58f792bfdd0573387a475e642819a811512b94a871b6",
+        "text_sha256": "41337230dc62ec7f84ce40d197badc413072c430cba848cd656cd4da6f5016d9",
+        "precision": {
+          "start_backwards": 0,
+          "end_backwards": 0,
+          "end_before_start": 0,
+          "overlap_count": 0,
+          "max_gap_seconds": 0.0,
+          "max_consecutive_identical": 1
+        },
+        "segments_match_owner": true
+      }
+    ],
+    "sum_of_selected_spans_seconds": 286.6,
+    "not_single_contiguous_span": true
+  },
+  "compatible_text_audits": [
+    {
+      "schema_version": 2,
+      "kind": "podcast-transcript-audit",
+      "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "source_ref": "sha256:273f66ae5cfaa2838319967fefdcac7eeda2cbb774b56491926cb4c03586e7b4",
+      "max_consecutive_limit": 3,
+      "audit": {
+        "ok": true,
+        "size": 5241,
+        "sha256": "273f66ae5cfaa2838319967fefdcac7eeda2cbb774b56491926cb4c03586e7b4",
+        "lines": 95,
+        "segments": 95,
+        "duration_seconds": 12123,
+        "max_consecutive_identical": 1,
+        "timestamp_errors": 0,
+        "malformed_lines": 0,
+        "tail_gap_seconds": 0
+      }
+    },
+    {
+      "schema_version": 2,
+      "kind": "podcast-transcript-audit",
+      "source_url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "source_ref": "sha256:41337230dc62ec7f84ce40d197badc413072c430cba848cd656cd4da6f5016d9",
+      "max_consecutive_limit": 3,
+      "audit": {
+        "ok": true,
+        "size": 1086,
+        "sha256": "41337230dc62ec7f84ce40d197badc413072c430cba848cd656cd4da6f5016d9",
+        "lines": 24,
+        "segments": 24,
+        "duration_seconds": 12281,
+        "max_consecutive_identical": 1,
+        "timestamp_errors": 0,
+        "malformed_lines": 0,
+        "tail_gap_seconds": 0
+      }
+    }
+  ],
+  "audit_interpretation": "两段分别核对原JSON百分秒和原生文本审计，无逆序、反向或重叠。原生duration_seconds=12123/12281是绝对结束位置，不是248.5/38.1秒章长；不把中间转场全部算作GAN片段。",
+  "term_and_claim_checks": [
+    {
+      "time_seconds": [
+        11874.72,
+        11985.12
+      ],
+      "issue": "干/Gang等术语及生成比理解更难的叙述",
+      "adopted": "统一GAN；花卉例子作为直觉而非普遍任务难度定理或实际数据集。",
+      "basis": "原论文首页、§§1–3与讲义p44"
+    },
+    {
+      "time_seconds": [
+        11987.58,
+        12040.59
+      ],
+      "issue": "警察/画家、强一点的判别器与零和博弈",
+      "adopted": "说明双方交替训练，判别器不是固定完美教师；原始minimax与非饱和更新分开。",
+      "basis": "§3与Algorithm1"
+    },
+    {
+      "time_seconds": [
+        12042.4,
+        12081.4
+      ],
+      "issue": "生存/判决等错词，以及判别模型就是loss的简述",
+      "adopted": "采用生成/判别，精确解释由D输出构造损失并经D反传给G；不声称D输出语义改图指令。",
+      "basis": "Algorithm1与§6"
+    },
+    {
+      "time_seconds": [
+        12083.49,
+        12106.57
+      ],
+      "issue": "good fellow、低谱能力/花书及作者姓名误识",
+      "adopted": "Goodfellow及Deep Learning的Goodfellow/Bengio/Courville与2016信息按论文/书籍官网核对，不抄未核私人分工。",
+      "basis": "论文首页与书籍官网引用条目"
+    },
+    {
+      "time_seconds": [
+        12106.57,
+        12123.22
+      ],
+      "issue": "主导生成图像/文生图5–6年的宽泛说法",
+      "adopted": "按历史叙事处理，不转成已有市场份额数据或无条件GAN成熟文生图证据。",
+      "basis": "该片段及原论文实验范围"
+    },
+    {
+      "time_seconds": [
+        12243.4,
+        12281.5
+      ],
+      "issue": "VAE模糊/GAN清晰、警察太强导致崩溃和当代仍难训的合并解释",
+      "adopted": "不采纳跨方法无条件优劣；用原论文的梯度饱和、G/D同步和多样性解释具体问题，不建立现代训练难度结论。",
+      "basis": "原论文§3、§6及Figures2–3"
+    }
+  ],
+  "audio_listened": false,
+  "wer_measured": false,
+  "limitations": [
+    "不是全节目转写复核，也没有重新听校。",
+    "保留两段独立哈希和跨度，不把大间隔当连续无静音的GAN音频。",
+    "原始转写及其本机存储路径不公开；只公开范围、哈希和纠错结论。"
+  ]
+}

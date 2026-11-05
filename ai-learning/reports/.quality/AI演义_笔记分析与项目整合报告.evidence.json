@@ -6,7 +6,7 @@
   "generator": {
     "model": "gpt-6-astra",
     "harness": "codex",
-    "run_id": "ai-yanyi-clip-precision-main-r30-20261106",
+    "run_id": "ai-yanyi-gan-main-r31-20261106",
     "explicit_model_override": false,
     "override_reason": "",
     "identity_basis": "eacli session current：codex-turn-context，session-bound，confirmed=true；只证明当前生成会话，不证明子会话模型。"
@@ -56,7 +56,7 @@
       },
       {
         "id": "R11",
-        "text": "原第25节实质改写且标题后首块为展开链接；展开返回原25、上24 ViT、下26 GAN。讲清图文监督、对比匹配、零样本/线性探测区别和生成组件关系；主稿其余科学正文严格继承已发布r28。"
+        "text": "原第26节实质改写且标题后首块为展开链接；展开返回原26、上25 CLIP、下27早期扩散。讲清来源标签、交替更新与梯度、理想分析与模式崩塌、评价和采样边界；主稿其余科学正文严格继承已发布r30。"
       }
     ],
     "reader_feedback": [
@@ -540,11 +540,14 @@
       "kind": "primary",
       "title": "Generative Adversarial Nets",
       "locator": "https://arxiv.org/pdf/1406.2661v1",
-      "accessed_on": "2026-11-03",
-      "version": "arXiv v1，2014-06-10",
-      "read_scope": "P1–7：首页、§1–3、§4 的假设与结论、Algorithm 1、§5、Tables 1–2、§6，以及 P7 上 §7 的条件生成与推断扩展开头。§4 证明文本经过读取，但未逐式复算。",
+      "accessed_on": "2026-11-06",
+      "version": "arXiv:1406.2661v1，2014-06-10，9页",
+      "read_scope": "pp1–9全文已读；核对Algorithm1、Propositions1–2、Theorem1、Figures1–3和Tables1–2。p3/6/7经eacli图像读取并直接视检；未逐篇获取参考文献、未读取代码或复现训练。",
       "research_record": "ai-learning/notes/ai_yanyi_research/phase2/generation.json",
-      "research_source_id": "GEN-S-GAN"
+      "research_source_id": "GEN-S-GAN",
+      "sha256": "ff5819e3a7b713c3bd3107b7de3d51fe0a347aa5d8444f0efdcf2345ef0a8b63",
+      "local_owner": "ai-learning/papers/08_gan_2014.pdf",
+      "current_chapter_evidence": "ai-learning/reports/knowledge_reports/.quality/AI演义_26_GAN_两个模型怎样在对抗中学会生成_科普讲解_20261106.evidence.json"
     },
     {
       "id": "S-diffusion15",
@@ -730,6 +733,87 @@
       "read_scope": "复用已获取的官方节目页缓存，重读Part4和CLIP条目及相邻顺序。节目后续为Stable Diffusion，报告下一节为GAN；不把两个顺序混为一谈。",
       "fresh_fetch": false,
       "cache_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5"
+    },
+    {
+      "id": "S-gan-metadata",
+      "kind": "primary",
+      "title": "GAN官方arXiv版本记录",
+      "locator": "https://arxiv.org/abs/1406.2661v1",
+      "accessed_on": "2026-11-06",
+      "response_text_sha256": "1bf0b05e87372f9f51c355e3ff31563fa0348a85a4ada8ae5ead3bdfdb68cd28",
+      "read_scope": "eacli web.read核读作者、题名、首次提交时间和摘要，页面题名Networks与PDF首页Nets的差异单独说明。"
+    },
+    {
+      "id": "S-gan-lecture",
+      "kind": "local",
+      "title": "《AI演义》讲义第44页：GAN",
+      "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "accessed_on": "2026-11-06",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
+      "read_scope": "仅p44文字、eacli图像辅助和原页直接视检；采用历史直觉、对抗分工与作者线索，不将讲义的作者履历和难度判断直接当成独立核实的事实。"
+    },
+    {
+      "id": "S-gan-podcast",
+      "kind": "primary",
+      "title": "《AI演义》GAN口述及后续GAN训练比较",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-06",
+      "full_segments_sha256": "f322514ced72235a0ca104635824c66df425c18dbae3d0f4e76fa70d088db61c",
+      "read_scope": "GAN主段5764–5858共95段，11874.72–12123.22秒；补充5917–5940共24段，12243.40–12281.50秒。两段完整重读、分别机器审计及百分秒核对；相邻转场读至5964定位边界，但不并入本章核心范围。未听音或测WER。",
+      "slice_receipts": [
+        {
+          "name": "core",
+          "zero_based_start": 5764,
+          "zero_based_end_inclusive": 5858,
+          "segment_count": 95,
+          "start_seconds": 11874.72,
+          "end_seconds": 12123.22,
+          "elapsed_seconds": 248.5,
+          "slice_sha256": "b77d3115a9c923bb47be12eb66936874b3c6057b9879fd8ab819d831e9733004",
+          "text_sha256": "273f66ae5cfaa2838319967fefdcac7eeda2cbb774b56491926cb4c03586e7b4",
+          "precision": {
+            "start_backwards": 0,
+            "end_backwards": 0,
+            "end_before_start": 0,
+            "overlap_count": 0,
+            "max_gap_seconds": 0.77,
+            "max_consecutive_identical": 1
+          },
+          "segments_match_owner": true
+        },
+        {
+          "name": "diffusion-comparison",
+          "zero_based_start": 5917,
+          "zero_based_end_inclusive": 5940,
+          "segment_count": 24,
+          "start_seconds": 12243.4,
+          "end_seconds": 12281.5,
+          "elapsed_seconds": 38.1,
+          "slice_sha256": "921b51a3624611ad5caa58f792bfdd0573387a475e642819a811512b94a871b6",
+          "text_sha256": "41337230dc62ec7f84ce40d197badc413072c430cba848cd656cd4da6f5016d9",
+          "precision": {
+            "start_backwards": 0,
+            "end_backwards": 0,
+            "end_before_start": 0,
+            "overlap_count": 0,
+            "max_gap_seconds": 0.0,
+            "max_consecutive_identical": 1
+          },
+          "segments_match_owner": true
+        }
+      ],
+      "public_transcription_review": "ai-learning/reports/knowledge_reports/.quality/AI演义_26_GAN_两个模型怎样在对抗中学会生成_科普讲解_20261106.transcription-review.json",
+      "public_full_episode_receipt": "podcast-learning/reports/transcripts/2026-11-04_ai-yanyi-117.audit.json",
+      "raw_transcript_public": false
+    },
+    {
+      "id": "S-gan-shownotes",
+      "kind": "primary",
+      "title": "节目shownotes：Part4生成路线",
+      "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+      "accessed_on": "2026-11-06",
+      "response_text_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5",
+      "read_scope": "复用已缓存节目页并全文核读shownotes；Part4的GAN条目位于双流与Diffusion之间，03:08:08是Part4起点，不是GAN起点。"
     }
   ],
   "claims": [
@@ -1098,14 +1182,18 @@
     },
     {
       "id": "C-gan",
-      "claim": "GAN联合学习生成器与判别器，以判别信号帮助生成学习；判别器不是完美固定裁判，也不保证实际优化和多样性。",
+      "claim": "GAN按样本来源训练D、从随机输入训练G，交替更新时冻结D参数仍传梯度；原始/非饱和目标、理想分布匹配与实际训练分开。模式崩塌和记忆不同，Parzen分数225±2/2057±26不是准确率，采样仅需G而密度/反演不自动可得。",
       "report_anchor": "paper-gan",
       "support": "direct",
       "source_ids": [
-        "S-gan"
+        "S-gan",
+        "S-gan-metadata",
+        "S-gan-lecture",
+        "S-gan-podcast",
+        "S-gan-shownotes"
       ],
       "critical": true,
-      "evidence": "GAN§3/Algorithm 1说明生成器与判别器交替学习，§4给出理想假设，§5–6限定实证与多样性问题。"
+      "evidence": "GAN v1全9页，§3/Algorithm1、Figure1和§4的前提、Table1的实值MNIST/TFD和不同标准误口径、§§5–7的样本/局限/展望；讲义p44和两段GAN相关口述分别读取审计，未听校或复现。"
     },
     {
       "id": "C-diffusion-2015",
@@ -1833,11 +1921,15 @@
     },
     {
       "id": "U-gan",
-      "title": "Generative Adversarial Nets",
+      "title": "GAN来源监督、交替更新和梯度、理想分析与崩塌、实验评价和采样边界",
       "importance": "core",
       "status": "included",
       "source_ids": [
-        "S-gan"
+        "S-gan",
+        "S-gan-metadata",
+        "S-gan-lecture",
+        "S-gan-podcast",
+        "S-gan-shownotes"
       ],
       "report_anchor": "paper-gan"
     },
@@ -2031,7 +2123,7 @@
     "essay_articles": 1,
     "note": "论文研究范围按用户最新限定；不是全文逐公式/全图表审计。"
   },
-  "revision_note": "r30：第25节CLIP精度修订，ImageNet 76.2%明确为Top-1准确率；其余科学正文仍继承已发布r28。本轮仅来源、正文、引用与章节导航复核，无工作台页面验收。",
+  "revision_note": "r31：第26节GAN及相应脚注、来源和覆盖增量，其余科学正文严格继承已发布r30。仅进行来源、正文、引用与章节导航检查，无工作台页面验收。",
   "generation_history": [
     {
       "revision_round": 2,
