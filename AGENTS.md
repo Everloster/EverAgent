@@ -3,25 +3,23 @@
 <!-- BEGIN MANAGED EACLI TOKEN PLAN POLICY -->
 ## Token Plan-first（由 everagentcli 管理）
 
-对联网搜索、网页读取、公开 GitHub 仓库、图像/视频理解、结构化数据和媒体生成任务，Agent **必须先走 eacli 的三家 Token Plan 能力面**：
+联网搜索、网页读取、公开 GitHub、图像/视频理解、结构化数据和媒体生成，**先走 eacli 的三家 Token Plan 能力面**：
 
-1. 先用 `eacli tokenplan catalog --json` 识别 canonical capability；用 `eacli tool select --capability <id> --device auto --json` 获取 provider/device 选择证据。
-2. 实际调用用 `eacli tool invoke --capability <id> --input-json ... --device auto --request-id <stable-id> --json`；安装与认证状态用 `eacli tokenplan doctor|verify --device all --json`。
-3. 当 typed capability 已存在时，不直接绕过 eacli 调 `mcporter`、provider MCP、`mmx` 或供应商私有参数。eacli 不可用或尚未覆盖时才允许最小降级，并记录原因；有时间应优先修 eacli。
-4. 凭据只在最终执行设备本地解析，禁止写入 prompt、argv、RPC、仓库或结果。只读能力才允许按 catalog 自动 fallback；生成类任务禁止自动重放。
-5. Agent 启动时必须保留项目 context-file 加载；禁止使用跳过项目指令的参数。Claude Code 通过仓库 `CLAUDE.md` 的 `@AGENTS.md` 导入本策略。
-
-这是默认执行与审计策略，不是安全沙箱；用户明确指令、仓库安全红线和授权等级始终优先。
+1. 已知 capability 直接 `eacli tool invoke --capability <id> --input-json ... --device auto --request-id <stable-id> --json`；调用内置选择并返回证据，不再机械预跑 select。
+2. 不确定契约时按需 `tokenplan catalog --capability <id> --json`，未知 ID 才查短目录；`tool select` 用于解释选择，`tokenplan doctor|verify` 仅在安装、认证或实调诊断时使用，不逐任务全量巡检。
+3. 已有 typed 能力不绕过 eacli 调 provider MCP、mcporter、mmx 或私有参数。CLI 不可用或尚未覆盖时才最小降级并记录原因，优先修正式入口。
+4. 凭据仅在执行设备本地解析，不进 prompt、argv、RPC、仓库或结果。只读才允许目录内回退；生成与未知执行不自动重放，沿原 request-id 查询。
+5. 启动/恢复保留项目 context-file，禁止跳过项目指令；Claude Code 由 `CLAUDE.md` 的 `@AGENTS.md` 导入。此策略不是沙箱，不替代用户授权或仓库安全边界。
 
 ## Personal Context-first（由 everagentcli 管理）
 
-当任务涉及已经积累的个人设备、网络、服务、项目或学习资料时，Agent **先取最小上下文，再读 owner**：
+涉及已有积累时，**取任务所需最小上下文，再回 owner**，不用每次加载全量目录或历史：
 
-1. 先用 `eacli context catalog --json` 确认领域、唯一 owner、敏感级别与现有 typed entry。
-2. 已知领域用 `eacli context get --domain <id> --json`；需要定位资料用 `eacli context search --query <text> --json`，不得默认通读整个仓库或巨型档案。
-3. 结果中的仓库相对路径与 SHA-256 是 provenance，不是第二份事实；需要修改时仍回到 owner 文件并遵守该仓协议。
-4. `EverAgent-infra` 私有上下文不得复制进公开仓；CLI 不可用时才最小化直接读取 owner，并记录原因。
-5. `eacli context verify --repo all --json` 用于检查目录、owner、来源与章节漂移；它只读且不自动修复。
+1. 已知领域用 `eacli context get --domain <id> --json`；需要定位才用 `context search --query <text> --json` 或 `context catalog --json`。目录只负责发现、敏感级别与 owner，不是第二份事实。
+2. 接班或核对其他会话的原话/近期工作时按需 `eacli context recent --json`；旧安装按帮助使用 `context center query`。私有主题用文件/stdin；来源、时间、覆盖和缺口必须保留，role=user 不证明真人、自述不证明交付。
+3. 历史原话不替代当前用户纠正、Git、实际部署或现行 owner；路径/SHA 只证明出处。读不全就回读原文或标未知，不把旧记录冒充当前状态。
+4. `EverAgent-infra` 的私有上下文不得复制到公开仓。CLI 不可用才最小直接读取 owner，并记录原因；不默认通读整个仓库。
+5. `eacli context verify --repo all --json` 只用于资料维护/门禁，检查来源与章节漂移，不自动修复，也不证明内容真实新鲜。
 <!-- END MANAGED EACLI TOKEN PLAN POLICY -->
 
 > 个人学习与研究工作台。核心资产是可独立阅读、可追溯的报告，以及由报告沉淀出的知识索引。
