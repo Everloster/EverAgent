@@ -6,13 +6,13 @@
   "generator": {
     "model": "gpt-6-astra",
     "harness": "codex",
-    "run_id": "ai-yanyi-chapter8-source-label-correction-20261105",
+    "run_id": "ai-yanyi-full-reread-ch08-20261106",
     "explicit_model_override": false,
     "override_reason": "",
-    "identity_basis": "生成者当前会话agent_identity.py核实为gpt-6-astra/codex，session-bound；本次只更正来源名称，技术内容继承冻结基线。"
+    "identity_basis": "当前协调会话eacli session current核实gpt-6-astra/codex，confirmed、session-bound，来源codex-thread-state；本轮负责全文复读、修改与来源核对。"
   },
   "task": {
-    "summary": "持续展开AI演义第8节GPT-1/BERT，用黑猫段落讲清预训练到不同任务，核两篇原论文与播客/讲义；同步改善主稿原节与阅读入口。",
+    "summary": "《AI演义》32篇全量精修中的第08篇：完整复读、按原PDF语言路线核原论文与转录；补清MLM训练成本、合法答案片段与无答案判断、冻结特征价值，改善阅读及前后导航。",
     "requirements": [
       {
         "id": "R1",
@@ -32,11 +32,11 @@
       },
       {
         "id": "R5",
-        "text": "主稿第8节实质改写，节首可展开、展开可回原节并继续第9节；前三节已有入口移到节首，前七节已通过正文保留。"
+        "text": "保留第08篇文件、编号、与总览对应关系；承接第07篇，并直接链接第09篇。总览全篇在系列收束阶段统一复核。"
       },
       {
         "id": "R6",
-        "text": "真实工作台桌面/窄屏核链接、锚点、脚注、表格；正文不混入设备/执行收据和私有转录。"
+        "text": "检查正文术语、表格、公式、脚注、上下篇链接及隐私；本篇不捆绑无关工作台功能验收。系列收束检查实际富文本呈现，明确真实范围。"
       }
     ]
   },
@@ -177,14 +177,14 @@
     },
     {
       "id": "C7",
-      "claim": "BERT为encoder-only深层双向网络，MLM选15%目标后按80/10/10处理，只在选定位置算MLM损失；保留原词是目标可见例外。",
+      "claim": "BERT为encoder-only深层双向网络，MLM选15%目标后按80/10/10处理，只在选定位置算MLM损失；保留原词是目标可见例外。只对15%位置算MLM损失不等于只处理15%输入；原文报告收敛略慢，不能按该比例推算节省计算。",
       "report_anchor": "bert-masking",
       "source_ids": [
         "BERT"
       ],
       "support": "direct",
       "critical": true,
-      "evidence": "BERT §3–3.1、Figure3、Appendix C2/Table8；不能把MLM等同重建全文或把默认比例当普适最佳。"
+      "evidence": "BERT §3–3.1、Figure3、Appendix C2/Table8；不能把MLM等同重建全文或把默认比例当普适最佳。本轮重读Appendix A1/C1与Figure5，解释预测目标密度和输入上下文计算的区别。"
     },
     {
       "id": "C8",
@@ -199,25 +199,25 @@
     },
     {
       "id": "C9",
-      "claim": "BERT主要全部参数微调；分类与SQuAD起止span抽取不同，SQuAD2另有无答案机制。",
+      "claim": "BERT主要全部参数微调；SQuAD以起止分数之和选择终点不早于起点的合法片段；SQuAD2把无答案起止标CLS，推理比较最优非空片段与CLS分数并用验证集阈值。",
       "report_anchor": "bert-finetuning",
       "source_ids": [
         "BERT"
       ],
       "support": "direct",
       "critical": true,
-      "evidence": "BERT §3.2/§4.1–4.3；黑猫the sofa示意不是实测。"
+      "evidence": "BERT §3.2/§4.1–4.3；s(i,j)=S·Ti+E·Tj，j≥i；非空最优分须大于s_null+τ，τ在dev按F1选择。黑猫the sofa及猫名未给是教学示意，非模型实测。"
     },
     {
       "id": "C10",
-      "claim": "BERT冻结top4层拼接加2层BiLSTM的NER Dev F1为96.1，Base全微调Dev为96.4；不外推统一0.3分代价。",
+      "claim": "BERT冻结top4层拼接加2层BiLSTM的NER Dev F1为96.1，Base全微调Dev为96.4；不外推统一0.3分代价。冻结后可预计算固定输入的昂贵表示，复用到较轻下游模型试验，代价是表示不随任务调整。",
       "report_anchor": "bert-finetuning",
       "source_ids": [
         "BERT"
       ],
       "support": "direct",
       "critical": true,
-      "evidence": "BERT §5.3/Table7，Dev而非Test。"
+      "evidence": "BERT §5.3/Table7，Dev而非Test。§5.3明确预计算表示与便宜模型多次实验的理由。"
     },
     {
       "id": "C11",
@@ -369,7 +369,7 @@
     },
     {
       "id": "U7",
-      "title": "BERT为encoder-only深层双向网络，MLM选15%目标后按80/10/10处理，只在选定位置算MLM损失；保留原词是目标可见例外。",
+      "title": "BERT为encoder-only深层双向网络，MLM选15%目标后按80/10/10处理，只在选定位置算MLM损失；保留原词是目标可见例外。只对15%位置算MLM损失不等于只处理15%输入；原文报告收敛略慢，不能按该比例推算节省计算。",
       "importance": "core",
       "status": "included",
       "report_anchor": "bert-masking",
@@ -389,7 +389,7 @@
     },
     {
       "id": "U9",
-      "title": "BERT主要全部参数微调；分类与SQuAD起止span抽取不同，SQuAD2另有无答案机制。",
+      "title": "BERT主要全部参数微调；SQuAD以起止分数之和选择终点不早于起点的合法片段；SQuAD2把无答案起止标CLS，推理比较最优非空片段与CLS分数并用验证集阈值。",
       "importance": "core",
       "status": "included",
       "report_anchor": "bert-finetuning",
@@ -399,7 +399,7 @@
     },
     {
       "id": "U10",
-      "title": "BERT冻结top4层拼接加2层BiLSTM的NER Dev F1为96.1，Base全微调Dev为96.4；不外推统一0.3分代价。",
+      "title": "BERT冻结top4层拼接加2层BiLSTM的NER Dev F1为96.1，Base全微调Dev为96.4；不外推统一0.3分代价。冻结后可预计算固定输入的昂贵表示，复用到较轻下游模型试验，代价是表示不随任务调整。",
       "importance": "supporting",
       "status": "included",
       "report_anchor": "bert-finetuning",
@@ -486,7 +486,7 @@
     },
     {
       "id": "U18",
-      "title": "主稿原节与独立展开的双向导航，前三节入口统一到节首",
+      "title": "保留第08篇编号、总览对应关系及第07/09篇直达导航",
       "importance": "core",
       "status": "included",
       "report_anchor": "reading-route",
@@ -505,5 +505,5 @@
     "本章不完整评估GPT2/3、后续BERT变体或隐式多任务学习理论；后续路线只承接研究问题。",
     "模型评分和页面检查不能替代读者学习反馈；原始来源与执行痕迹的私有路径不进入公开仓。"
   ],
-  "revision_note": "2026-11-05来源名称勘误：原节目为《张小珺Jùn｜商业访谈录》第117期，修正此前误写的晚点聊；URL、shownotes正文与技术讲解未变。除来源名称与本修订元数据外，继承已通过的冻结基线；独立复核只直接验证本次勘误及范围。"
+  "revision_note": "2026-11-06全量精修：本篇全文、GPT正文方法/实验/消融与官方介绍缓存，BERT正文架构/任务/实验/消融、附录A1–A4与C1–C2，讲义p32/35/36及415段本章转录已重读；未变化的版本、原图与转录结构收据沿用，未重转或听音。补清MLM预测密度不等于计算比例、合法span及CLS无答案阈值、冻结特征的复用成本；规范标题和前后导航，移出正文执行记录。保留此前节目名称勘误。系列实际浏览器呈现尚未完成，不以Markdown检查冒称。"
 }

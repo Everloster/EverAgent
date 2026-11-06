@@ -6,21 +6,21 @@
   "generator": {
     "model": "gpt-6-astra",
     "harness": "codex",
-    "run_id": "ai-yanyi-chapter10-source-label-correction-20261105",
+    "run_id": "ai-yanyi-reread-ch10-20261106",
     "explicit_model_override": false,
     "override_reason": "",
-    "identity_basis": "生成者当前会话agent_identity.py核实为gpt-6-astra/codex，session-bound；本次只更正来源名称，技术内容继承冻结基线。"
+    "identity_basis": "eacli session current核实当前生成者gpt-6-astra/codex，confirmed、session-bound、codex-thread-state；本轮全文复读并实质精修，历史来源检查按未变范围继承。"
   },
   "task": {
-    "summary": "逐节展开AI演义第10节，围绕同一训练预算讲清Scaling Laws到Chinchilla的实验与判断变化，同步实质优化主稿原节并放节首入口。",
+    "summary": "全32篇逐段精修中的第10篇：保留讲义的训练预算主线，核对Scaling Laws与Chinchilla机制和数字，补齐损失分解直觉并改善阅读与分章导航。",
     "requirements": [
       {
         "id": "R1",
-        "text": "结合讲义p28、shownotes、本章233段转录、两篇原论文与官方博客；实际读取范围、原文差异与ASR边界可追溯。"
+        "text": "结合讲义p28、shownotes、本章233段转录、两篇原论文与官方博客；明确本轮重读、历史继承与ASR边界。"
       },
       {
         "id": "R2",
-        "text": "用同一预算例子讲清参数/训练token/窗口/loss、幂律、收敛与计算最优、三种重新估计，少数学可独立读。"
+        "text": "用同一预算例子讲清参数/训练token/窗口/loss、幂律、收敛与计算最优、三种估计及损失分解，少数学可独立读。"
       },
       {
         "id": "R3",
@@ -32,11 +32,11 @@
       },
       {
         "id": "R5",
-        "text": "主稿原第10节实质改写且入口在节首；展开能返回原第10节并继续第11节，保留前九节。"
+        "text": "保留现有文件与编号；展开能返回主稿第10节并直达上下分章，主稿在系列收束统一校订。"
       },
       {
         "id": "R6",
-        "text": "真实工作台桌面/窄屏检查目录、脚注、表格与跨报告定位；正文无原始ASR、私有设备或执行日志。"
+        "text": "逐段检查正文、算式、脚注、乱码和本地导航；正文无原始ASR、私有设备与执行日志；实际富文本呈现按系列收束检查，不捆绑工作台功能验收。"
       }
     ]
   },
@@ -49,7 +49,7 @@
       "accessed_on": "2026-11-05",
       "version": "arXiv2001.08361v1，2020-01-23",
       "sha256": "a41bd7877fd1a6bcbba096b2619618bd2f90e02488f2365644903eb2f7c6a494",
-      "read_scope": "30页PDF：已读p1–19主文及p22–23附录B.3/B.4/C；根直接核图p3 Figure1。p15图注与正文已读，未把已渲染未查看的图片算成视读；未逐图读完其余附录。"
+      "read_scope": "2026-11-06复读首页与引言、§6.1–6.3、Appendix B.3/B.4及C，复核预算指数、固定预算最优和外推/推理限制。其余未变主文、原图及版本收据继承此前读取，不称本轮逐图重读。此前范围：30页PDF：已读p1–19主文及p22–23附录B.3/B.4/C；根直接核图p3 Figure1。p15图注与正文已读，未把已渲染未查看的图片算成视读；未逐图读完其余附录。"
     },
     {
       "id": "CHINCHILLA",
@@ -59,7 +59,7 @@
       "accessed_on": "2026-11-05",
       "version": "arXiv2203.15556v1，2022-03-29",
       "sha256": "3fd3632a8ef48171bd25282990221d49535d75356192f068b3b2ebe08f2aedd4",
-      "read_scope": "36页PDF：主文p1–16；补读p22–23 A/B/C与FigureA1图注、p26–29 D.3/D.4/E/F/G。根直接核图p5 Figure2及p6 Figure3，后者有eacli辅助回执；p10虽渲染但未实际视读，不算图像核验。数字按文字/表格并限定口径；未逐项通读p30–36结果附录。"
+      "read_scope": "2026-11-06复读§2–3相关段、三种拟合与§3.3式2、Table2/3、§4训练细节、MMLU/阅读/常识/毒性结果及§5；重读A/B、F计算与G优化器差异相关文字/表格。其余未变章节及原图继承历史；未逐项通读结果附录。此前范围：36页PDF：主文p1–16；补读p22–23 A/B/C与FigureA1图注、p26–29 D.3/D.4/E/F/G。根直接核图p5 Figure2及p6 Figure3，后者有eacli辅助回执；p10虽渲染但未实际视读，不算图像核验。数字按文字/表格并限定口径；未逐项通读p30–36结果附录。"
     },
     {
       "id": "BLOG",
@@ -69,7 +69,7 @@
       "accessed_on": "2026-11-05",
       "version": "2022-04-12",
       "snapshot_sha256": "1809e99e7fd1de48daa610ca06f013177b56dd3dc8d9a6a959c731d56ae59de4",
-      "read_scope": "eacli web.read已获取并实际阅读全文正文；1.3T与论文1.4T差异保留，不合并数字。"
+      "read_scope": "2026-11-06重读缓存中的完整文章正文，保留论文/博客token口径区别；没有再次联网获取。此前范围：eacli web.read已获取并实际阅读全文正文；1.3T与论文1.4T差异保留，不合并数字。"
     },
     {
       "id": "SLIDE",
@@ -78,7 +78,7 @@
       "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
       "accessed_on": "2026-11-05",
       "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
-      "read_scope": "第28页文字层与原图实际读取，核图源及重复段落。根eacli视觉第一次timeout/unknown，未重放，最小降级本地view_image；不把提取字形乱序当原图乱码。"
+      "read_scope": "2026-11-06复读第28页文字层；原图及图源核验未变，继承此前图像检查。此前范围：第28页文字层与原图实际读取，核图源及重复段落。根eacli视觉第一次timeout/unknown，未重放，最小降级本地view_image；不把提取字形乱序当原图乱码。"
     },
     {
       "id": "SHOWNOTES",
@@ -87,7 +87,7 @@
       "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
       "accessed_on": "2026-11-05",
       "snapshot_sha256": "de440657a3424432774f00fab750288c9155ae0f188bbbc4500113b77c9750e5",
-      "read_scope": "既有网页缓存全文；Part2起点01:52:58，本章顺序定位，未提供单节精确时间。",
+      "read_scope": "本轮定位继承未变shownotes与来源身份核实，不以新访问日期冒充重新抓取。此前范围：既有网页缓存全文；Part2起点01:52:58，本章顺序定位，未提供单节精确时间。",
       "identity_correction": "2026-11-05经原节目页title/description重新核对，节目归属张小珺Jùn｜商业访谈录，第117期；原链接、shownotes正文与转录材料未变。"
     },
     {
@@ -97,7 +97,7 @@
       "locator": "ai-learning/reports/knowledge_reports/.quality/AI演义_10_ScalingLaws与Chinchilla_算力预算怎样分配_科普讲解_20261105.transcription-review.json",
       "accessed_on": "2026-11-05",
       "sha256": "787871657443961bfcdfdede59a7d6b0e070e1affe205cd4bcc611bd7cb8df6a",
-      "read_scope": "原转录233段已读，6976.77–7449.67秒；公开仅留结构与疑点核查，未人工听音/WER。"
+      "read_scope": "2026-11-06全文复读本章233段及公开transcription-review；复用未变的结构收据，未重新转写/听音/测WER。此前范围：原转录233段已读，6976.77–7449.67秒；公开仅留结构与疑点核查，未人工听音/WER。"
     }
   ],
   "claims": [
@@ -127,14 +127,15 @@
     },
     {
       "id": "C3",
-      "claim": "单因素幂律有其他资源非瓶颈前提，可辅助小实验外推，范围和理论仍受限。",
+      "claim": "Kaplan所测区间的单因素幂律有其他资源非瓶颈前提；不能把相近比例的loss改善永久外推到零。",
       "report_anchor": "loss-and-curves",
       "source_ids": [
-        "KAPLAN"
+        "KAPLAN",
+        "CHINCHILLA"
       ],
       "support": "direct",
       "critical": true,
-      "evidence": "Figure1，§6.3–8，AppendixC。"
+      "evidence": "Kaplan Figure1、§6.3–8与AppendixC；Chinchilla §3.3引入理想数据分布损失E。"
     },
     {
       "id": "C4",
@@ -319,7 +320,7 @@
     },
     {
       "id": "C20",
-      "claim": "讲义p28上方为Kaplan图1、下方为Chinchilla图2左图；本章233段转录和shownotes定位，不将结构通过当逐字准确。",
+      "claim": "讲义p28上下图分别为Kaplan图1与Chinchilla图2左图；本章对应转录全文已读，结构收据不等于逐字准确。",
       "report_anchor": "source-scope",
       "source_ids": [
         "SLIDE",
@@ -341,6 +342,17 @@
       "support": "direct",
       "critical": true,
       "evidence": "Kaplan§6.3–8/C；Chinchilla§5/AppendixE，数据质量和污染需另核。"
+    },
+    {
+      "id": "C22",
+      "claim": "Chinchilla参数化拟合将loss分为理想数据分布项E、有限模型容量项A/N^α和有限优化项B/D^β；这是经验分解，不是网络中直接测得的独立误差或智能上限定理。",
+      "report_anchor": "chinchilla-method",
+      "source_ids": [
+        "CHINCHILLA"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "§3.3式2及紧随解释；固定预算约6ND下两种可变差距需要权衡。黑猫多个续词仅为本文教学示意。"
     }
   ],
   "source_coverage": [
@@ -368,11 +380,12 @@
     },
     {
       "id": "U3",
-      "title": "单因素幂律有其他资源非瓶颈前提，可辅助小实验外推，范围和理论仍受限。",
+      "title": "Kaplan所测区间的单因素幂律有其他资源非瓶颈前提；不能把相近比例的loss改善永久外推到零。",
       "importance": "core",
       "status": "included",
       "source_ids": [
-        "KAPLAN"
+        "KAPLAN",
+        "CHINCHILLA"
       ],
       "report_anchor": "loss-and-curves"
     },
@@ -543,7 +556,7 @@
     },
     {
       "id": "U20",
-      "title": "讲义p28上方为Kaplan图1、下方为Chinchilla图2左图；本章233段转录和shownotes定位，不将结构通过当逐字准确。",
+      "title": "讲义p28上下图分别为Kaplan图1与Chinchilla图2左图；本章对应转录全文已读，结构收据不等于逐字准确。",
       "importance": "core",
       "status": "included",
       "source_ids": [
@@ -584,6 +597,16 @@
         "CHINCHILLA"
       ],
       "omission_reason": "本章按用户少数学的预算机制科普范围取舍；保留batch计算修正与外推边界，不穷尽每个附录。"
+    },
+    {
+      "id": "U24",
+      "title": "参数化loss的三项含义、固定预算权衡与拟合假设边界",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "CHINCHILLA"
+      ],
+      "report_anchor": "chinchilla-method"
     }
   ],
   "limitations": [
@@ -595,5 +618,5 @@
     "两篇主要研究训练；现代长期部署推断、上下文和推理计算目标另行区分。",
     "根只直接视读列明图页，其余图注/表格文字读取不充当完整逐图核验。"
   ],
-  "revision_note": "2026-11-05来源名称勘误：原节目为《张小珺Jùn｜商业访谈录》第117期，修正此前误写的晚点聊；URL、shownotes正文与技术讲解未变。除来源名称与本修订元数据外，继承已通过的冻结基线；独立复核只直接验证本次勘误及范围。"
+  "revision_note": "2026-11-06全文逐段复读并精修：补齐参数化loss三项直觉，明确幂律与非零下限，统一系列标题和直达下一分章，减去正文执行计数。原始技术结果、可信来源图像及转录收据按未变范围继承；未称重做训练/听校/页面验收。"
 }

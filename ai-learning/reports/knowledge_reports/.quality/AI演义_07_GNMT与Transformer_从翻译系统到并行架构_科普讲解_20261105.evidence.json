@@ -6,13 +6,13 @@
   "generator": {
     "model": "gpt-6-astra",
     "harness": "codex",
-    "run_id": "ai-yanyi-chapter7-source-label-correction-20261105",
+    "run_id": "ai-yanyi-full-reread-ch07-20261106",
     "explicit_model_override": false,
     "override_reason": "",
-    "identity_basis": "生成者当前会话agent_identity.py核实为gpt-6-astra/codex，session-bound；本次只更正来源名称，技术内容继承冻结基线。"
+    "identity_basis": "本轮eacli session current核实gpt-6-astra/codex，confirmed、session-bound，来源codex-thread-state。"
   },
   "task": {
-    "summary": "沿用前六轮展开AI演义第7节GNMT与Transformer，用黑猫翻译贯穿系统部署与自注意力结构，结合两段播客转录、Shownotes、讲义p15/p34和原论文；同步重写主稿原节与双向导航。",
+    "summary": "按32篇全量精修Goal全文重读第7篇并保留讲义两条路线：核GNMT系统与Transformer结构，补整词基线的未知词复制、量化累加精度、多头成本与指标取舍，优化标题、正文和相邻阅读入口。",
     "requirements": [
       {
         "id": "R1",
@@ -32,7 +32,7 @@
       },
       {
         "id": "R5",
-        "text": "主稿第7节同步实质重写并有醒目展开入口；展开篇能返回原节和去第8节；工作台桌面/窄屏核导航、表格与脚注，保留前六节。"
+        "text": "保留第7篇原文件、总览第7节入口与上篇，下一篇直达GPT-1/BERT展开；检查受影响正文、表格、脚注及链接。总览全系列及实际富文本在Goal末统一收束，不要求单章验收工作台功能。"
       },
       {
         "id": "R6",
@@ -247,7 +247,7 @@
     },
     {
       "id": "C7",
-      "claim": "GNMT使用8bit整数权重/矩阵乘法与16bit敏感状态/部分运算；训练全精度，attention/softmax不全量化，不是FP8。",
+      "claim": "GNMT用8bit整数权重与乘法，但乘积放入更宽累加器；时间/深度累积状态及激活、逐元素运算用16bit，训练仍全精度并裁剪状态/logits，Attention和softmax内部不量化，不是FP8。",
       "report_anchor": "integer-and-latency",
       "source_ids": [
         "GNMT",
@@ -255,7 +255,7 @@
       ],
       "support": "direct",
       "critical": true,
-      "evidence": "§6、式10–13，对照9103秒ASR；不混推理与训练精度。"
+      "evidence": "GNMT §6/式10–13：量化误差可能跨时间与深度放大，敏感状态保留16bit；matrix products accumulated into larger accumulators，未推定原文未给的具体累加位宽。"
     },
     {
       "id": "C8",
@@ -347,7 +347,7 @@
     },
     {
       "id": "C16",
-      "claim": "Base8头、每头K/V64维、整体512维；多投影、拼接、再投影，并非模型集成/GPU数或固定语法职责。",
+      "claim": "Base8头、每头K/V64维、整体512维；多投影、拼接、再投影，并非模型集成/GPU数或固定语法职责。 缩小每头维度，使原配置总attention计算成本与全维单头相近，非任意加头都免费。",
       "report_anchor": "self-attention",
       "source_ids": [
         "TRANSFORMER"
@@ -446,7 +446,7 @@
     },
     {
       "id": "C25",
-      "claim": "Table3是dev2013且不平均检查点；1头24.9/8头25.8/32头25.4，无dropout24.6，无label smoothing25.3，learnedPE25.7。",
+      "claim": "Table3是dev2013且不平均检查点；1头24.9/8头25.8/32头25.4，无dropout24.6，无label smoothing25.3，learnedPE25.7。 §5.4指出标签平滑让困惑度变差却提高BLEU，二者衡量目标不同。",
       "report_anchor": "transformer-evidence",
       "source_ids": [
         "TRANSFORMER"
@@ -530,6 +530,17 @@
       "support": "direct",
       "critical": true,
       "evidence": "本章provenance与同SHA全文结构收据；两段间未选内容不视为缺音。"
+    },
+    {
+      "id": "C32",
+      "claim": "GNMT表4的整词基线为未知词保留首尾字符标记，再按Attention复制源词替换；不能当成完全不处理生词的弱基线。",
+      "report_anchor": "wordpiece-and-coverage",
+      "source_ids": [
+        "GNMT"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "GNMT §8.4开头：<first_char>_UNK_<last_char>，attention copy a corresponding word from the source to replace unknown words。"
     }
   ],
   "source_coverage": [
@@ -596,7 +607,7 @@
     },
     {
       "id": "U7",
-      "title": "GNMT使用8bit整数权重/矩阵乘法与16bit敏感状态/部分运算；训练全精度，attention/softmax不全量化，不是FP8。",
+      "title": "GNMT用8bit整数权重与乘法，但乘积放入更宽累加器；时间/深度累积状态及激活、逐元素运算用16bit，训练仍全精度并裁剪状态/logits，Attention和softmax内部不量化，不是FP8。",
       "importance": "core",
       "status": "included",
       "report_anchor": "integer-and-latency",
@@ -687,7 +698,7 @@
     },
     {
       "id": "U16",
-      "title": "Base8头、每头K/V64维、整体512维；多投影、拼接、再投影，并非模型集成/GPU数或固定语法职责。",
+      "title": "Base8头、每头K/V64维、整体512维；多投影、拼接、再投影，并非模型集成/GPU数或固定语法职责。 缩小每头维度，使原配置总attention计算成本与全维单头相近，非任意加头都免费。",
       "importance": "core",
       "status": "included",
       "report_anchor": "self-attention",
@@ -777,7 +788,7 @@
     },
     {
       "id": "U25",
-      "title": "Table3是dev2013且不平均检查点；1头24.9/8头25.8/32头25.4，无dropout24.6，无label smoothing25.3，learnedPE25.7。",
+      "title": "Table3是dev2013且不平均检查点；1头24.9/8头25.8/32头25.4，无dropout24.6，无label smoothing25.3，learnedPE25.7。 §5.4指出标签平滑让困惑度变差却提高BLEU，二者衡量目标不同。",
       "importance": "core",
       "status": "included",
       "report_anchor": "transformer-evidence",
@@ -886,6 +897,16 @@
         "TRANSFORMER"
       ],
       "omission_reason": "按用户少数学、讲透发展问题的范围，保留关键方法/实验及失败反例；未训练模型或估计图像逐点数值。"
+    },
+    {
+      "id": "U35",
+      "title": "整词比较基线已有未知词标记与attention复制机制",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "wordpiece-and-coverage",
+      "source_ids": [
+        "GNMT"
+      ]
     }
   ],
   "limitations": [
@@ -899,5 +920,5 @@
     "人物后续去向、绝对首次部署、当前产品架构与文化评价未采为技术事实。",
     "BERT仅定向核WordPiece引用，前六章使用已通过内容，不假称本轮重读所有来源；评价分不能替代用户反馈。"
   ],
-  "revision_note": "2026-11-05来源名称勘误：原节目为《张小珺Jùn｜商业访谈录》第117期，修正此前误写的晚点聊；URL、shownotes正文与技术讲解未变。除来源名称与本修订元数据外，继承已通过的冻结基线；独立复核只直接验证本次勘误及范围。"
+  "revision_note": "2026-11-06全量精修：本篇全文、讲义p15/p34文字、Transformer361段与GNMT153段转录均重新阅读；重读GNMT §3架构/图注、§3.2–4.1、§6量化/表1、§7评分、§8.1–8.7数据训练实验及结论，Transformer首页贡献/§1–4与§6–7/表1–4，BERT的WordPiece定向片段。沿用2026-11-05未变化的来源全文阅读、原图核验、版本历史和转录结构/校正记录，不将继承项冒称本轮重新执行。新增基线与精度细节、多头成本、标签平滑评价边界，统一第7篇标题和直达第8篇链接。总览在末批统一收束；本轮实际浏览器呈现尚未完成，单章检查不得冒充页面验收。"
 }

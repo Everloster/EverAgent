@@ -6,13 +6,13 @@
   "generator": {
     "model": "gpt-6-astra",
     "harness": "codex",
-    "run_id": "ai-yanyi-chapter6-source-label-correction-20261105",
+    "run_id": "ai-yanyi-full-reread-ch06-20261106",
     "explicit_model_override": false,
     "override_reason": "",
-    "identity_basis": "生成者当前会话agent_identity.py核实为gpt-6-astra/codex，session-bound；本次只更正来源名称，技术内容继承冻结基线。"
+    "identity_basis": "本轮eacli session current核实gpt-6-astra/codex，confirmed、session-bound，来源codex-thread-state。"
   },
   "task": {
-    "summary": "沿用前五轮完成AI演义第6节seq2seq与Attention：黑猫翻译例贯穿，结合播客、讲义与两篇原论文讲透机制、训练、实验、历史与限制；同步重写主稿原节并验收工作台展开往返。",
+    "summary": "按32篇全量精修Goal逐段复读第6篇：保留讲义主线，复核seq2seq与Attention机制、训练、实验和历史；补可复算的加权和与BLEU直觉，改善正文及下一篇导航。",
     "requirements": [
       {
         "id": "R1",
@@ -32,7 +32,7 @@
       },
       {
         "id": "R5",
-        "text": "同步重写主稿第6节并放醒目展开入口；展开篇能返回原节、前往下一节；工作台桌面/窄屏核表格、脚注和导航，保留前五节。"
+        "text": "保留第6篇文件与原总览入口；上下篇链接直达已存在展开篇；检查本篇正文、表格、文本式算式、脚注及链接。总览与全系列的实际富文本收束在Goal末执行，不把工作台功能验收捆入单章。"
       },
       {
         "id": "R6",
@@ -129,6 +129,14 @@
       "locator": "ai-learning/reports/knowledge_reports/AI演义_02_AlexNet_图像识别突破_科普讲解_20261104.md",
       "accessed_on": "2026-11-05",
       "read_scope": "只用于已核AlexNet共同作者与本节Ilya连接；本轮读§8，不重新调查全部人物经历，相关原始来源可沿该章脚注追溯。"
+    },
+    {
+      "id": "BLEU",
+      "kind": "primary",
+      "title": "BLEU: a Method for Automatic Evaluation of Machine Translation",
+      "locator": "https://aclanthology.org/P02-1040.pdf",
+      "accessed_on": "2026-11-06",
+      "read_scope": "经eacli web.read取回并实际阅读摘要、§1和§2.1–2.2；返回正文在§2.3公式处截断，不能声称阅读全文。仅支持片段匹配、计数截断、语料级汇总、过短惩罚及单句评估边界。"
     }
   ],
   "claims": [
@@ -363,6 +371,28 @@
       "support": "derived",
       "critical": true,
       "evidence": "由§3.1加权和结构推得，不冒充已做消融。"
+    },
+    {
+      "id": "C21",
+      "claim": "两位置教学算例：0.75×[1,0]+0.25×[0,2]=[0.75,0.5]，是按权重混合而非硬选一个位置；两维不代表手工词义。",
+      "report_anchor": "attention-step",
+      "source_ids": [
+        "BAHDANAU"
+      ],
+      "support": "derived",
+      "critical": true,
+      "evidence": "按§3.1加权和定义构造并手算；权重和为1，各分量分别相乘相加，不冒充黑猫句的真实模型权重。"
+    },
+    {
+      "id": "C22",
+      "claim": "BLEU按单词及连续词片段匹配参考，对重复计数截断，并施加过短惩罚；用于语料级比较，不是句子翻译正确率。",
+      "report_anchor": "experiments",
+      "source_ids": [
+        "BLEU"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "原论文§2.1 modified precision及§2.1.1、§2.2.2；单句与人判断可能不一致见§2.1.1脚注4。未将表面匹配视为完整语义评估。"
     }
   ],
   "source_coverage": [
@@ -587,6 +617,26 @@
       "source_ids": [
         "BAHDANAU"
       ]
+    },
+    {
+      "id": "U22",
+      "title": "两位置加权和算术例及非真实模型测量边界",
+      "importance": "supporting",
+      "status": "included",
+      "report_anchor": "attention-step",
+      "source_ids": [
+        "BAHDANAU"
+      ]
+    },
+    {
+      "id": "U23",
+      "title": "BLEU片段匹配、重复计数、过短惩罚与非正确率",
+      "importance": "supporting",
+      "status": "included",
+      "report_anchor": "experiments",
+      "source_ids": [
+        "BLEU"
+      ]
     }
   ],
   "limitations": [
@@ -598,5 +648,5 @@
     "本章未听音或测WER；整期原音频尾部15.989秒覆盖未知，逐段阅读不能认证逐字完整。",
     "PDF二进制仅在Token Plan catalog无此能力时最小下载供渲染；全文先由eacli读取。原始转录、来源缓存、设备和执行收据不进入公开仓。"
   ],
-  "revision_note": "2026-11-05来源名称勘误：原节目为《张小珺Jùn｜商业访谈录》第117期，修正此前误写的晚点聊；URL、shownotes正文与技术讲解未变。除来源名称与本修订元数据外，继承已通过的冻结基线；独立复核只直接验证本次勘误及范围。"
+  "revision_note": "2026-11-06全量精修：本篇正文、两篇原论文核心正文与Bahdanau实现/训练/长句附录、讲义p12及本章282段转录已重读；沿用未变的来源版本、历史图像核对、转录结构收据及转录校正文件，不称这些检查本轮重新执行。新增加权和自拟算例与BLEU原论文§2.1–2.2解释，缩短正文执行计数、直达第7篇。历史来源名称勘误仍有效：节目为张小珺第117期。本轮尚未成功打开实际浏览器渲染，不能以Markdown检查冒充页面验收。"
 }

@@ -2,36 +2,34 @@
   "schema_version": 1,
   "report_path": "ai-learning/reports/knowledge_reports/AI演义_09_GPT2与GPT3_任务怎样进入上下文_科普讲解_20261105.md",
   "quality_tier": "important",
-  "revision_round": 2,
+  "revision_round": 3,
   "reviews": [
     {
       "role": "primary_review",
       "reviewer": {
-        "model": "gpt-6-astra",
-        "harness": "codex_collab2_subagent",
-        "run_id": "source-label-09-primary-review-20261105",
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "gpt23-r3-gpt56sol-20261106",
         "independent_context": true,
         "explicit_model_override": false,
-        "identity_basis": "inherited_dispatch_configuration",
-        "runtime_model": "unconfirmed",
-        "source_first_continuation": true,
-        "identity_note": "协调者明确本次spawn未传model override、继承根派发配置gpt-6-astra；不是provider/runtime attestation。未用共享shell或生成者身份证明Reviewer模型。"
+        "override_reason": "",
+        "identity_basis": "协调器按本轮强Reviewer策略显式以gpt-5.6-sol调度隔离worker；子环境未提供可确认自身型号的独立CLI收据，故采用spawn调度依据，不把父会话或宿主型号冒充自身核实。"
       },
+      "escalation_reason": "全32篇实质修订的逐篇强模型独立复核；本篇为第09篇。",
       "scores": {
-        "evidence_fidelity": 98,
-        "request_coverage": 97,
+        "evidence_fidelity": 99,
+        "request_coverage": 99,
         "reasoning_quality": 98,
         "readability": 98,
         "limitations": 99
       },
       "score_reasons": {
-        "evidence_fidelity": "本轮直接核对原页title、description/og:title及URL，确认节目归属和期号；正文仅替换来源标签及修订状态。22项关键claim及论文/转录判断按SHA绑定的revision 1已通过基线继承，保留98分；没有声称本轮重读论文或转录。",
-        "request_coverage": "task requirements和22个source_coverage单元与基线完全相同；来源名称勘误由读稿前冻结的LABEL-S1–S3独立地图直接复核。原需求覆盖及原地图的covered/partial状态原样继承，保留97分。",
-        "reasoning_quality": "精确文本恢复和evidence递归比较表明因果解释、数字、反例、推测与边界没有改变；节目身份修正没有被用来支持新的技术结论。本维按已通过技术基线保留98分，不是本轮重新评价全部推理。",
-        "readability": "本篇1440/390px收据的报告/evidence哈希与当前目标一致，纠正名称的链接文本和URL正确，无旧标签、乱码、横溢出或pageErrors；本篇仅复核双宽度机器收据，未声称直接目视本篇截图。其余篇章、表格和导航可读性继承基线，保留98分。",
-        "limitations": "来源read_scope和limitations完全未改，保留基线的版本、未复现实验及ASR未听音/未测WER等边界；本轮明确限制为身份勘误，未把元数据核验冒充完整材料重读。本维沿用冻结基线99分。"
+        "evidence_fidelity": "来源优先重读GPT-2正文方法、关键任务、重叠分析与讨论，GPT-3引言、方法、评测、关键结果、污染、局限、社会影响、Contributions和相关附录，并读讲义、shownotes及419段本章转录。24条claim的数字、口径、版本、任务格式和工程边界均与来源一致；新增California高概率错答与候选似然评分解释准确。",
+        "request_coverage": "完整覆盖讲义的GPT-2零样本信号、GPT-3上下文学习与规模工程主线，同时纳入微调对照、zero/one/few-shot合同、正反任务、污染、识别与新学习未决问题、人物贡献、后训练方向和上下篇导航。27项独立来源地图含shownotes八个章节，均有正文或范围映射，无核心遗漏。",
+        "reasoning_quality": "同一黑猫例子贯穿任务表达、前向计算、候选评分、事实材料与跨会话边界；严格区分提示改变行为与任务做对、文本概率与事实正确、文章重叠与答案泄漏、规模相关与单变量因果、现场学习与任务识别。LAMBADA格式变化、NQ微调对照及污染clean subset偏差提供了充分替代解释。",
+        "readability": "完整逐段阅读319行正文。四张表、两个短提示例和分节问句使长篇双论文材料仍可独立理解；38个脚注定义齐全，7个本地链接存在，Pandoc转HTML成功，无乱码、异常路径或审计日志进入正文。未启动工作台功能验收，也未把历史截图冒充本轮渲染。",
+        "limitations": "明确未运行原模型、训练或基准，未重新做污染研究；黑猫为教学示意。GPT-3 v1/v4、已读与未读附录、ASR未听校/无WER/整期尾部缺口、GPU数量与组织因果、现代Context推测、后见欠训练判断均有清楚边界。"
       },
-      "weighted_score": 97.9,
       "critical_claim_ids_checked": [
         "C1",
         "C2",
@@ -54,7 +52,9 @@
         "C19",
         "C20",
         "C21",
-        "C22"
+        "C22",
+        "C23",
+        "C24"
       ],
       "coverage_unit_ids_checked": [
         "U1",
@@ -78,7 +78,392 @@
         "U19",
         "U20",
         "U21",
-        "U22"
+        "U22",
+        "U23",
+        "U24"
+      ],
+      "source_content_map": [
+        {
+          "id": "G23-S01",
+          "title": "共同问题：任务信息是通过监督训练写入权重，还是在推理时通过文本临时指定",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "GPT1",
+            "GPT2",
+            "GPT3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1",
+            "U6"
+          ],
+          "notes": "第1、4节先区分微调与文本条件，再说明GPT-1已有zero-shot探索、GPT-2术语含无梯度但可能含示例，避免把历史起点绝对化。"
+        },
+        {
+          "id": "G23-S02",
+          "title": "GPT-2机制假说：自然网页中的问答、翻译和摘要示范可被下一token目标吸收为隐式多任务学习",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "GPT2"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3"
+          ],
+          "notes": "第2节将其准确写成研究假说，并明确不等于已证明完整世界知识或所有任务能力。"
+        },
+        {
+          "id": "G23-S03",
+          "title": "GPT-2数据：WebText以Reddit获至少3 karma的外链作人工筛选信号，并控制时间、去重与Wikipedia重叠",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "GPT2"
+          ],
+          "matched_coverage_unit_ids": [
+            "U2"
+          ],
+          "notes": "外链网页正文、略多于8M文档、40GB、2017年12月截止及移除Wikipedia均进入正文；没有误写成Reddit评论语料。"
+        },
+        {
+          "id": "G23-S04",
+          "title": "GPT-2模型与输入表示：四档规模、最大1542M/48层、1024上下文和byte-level BPE",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "GPT2"
+          ],
+          "matched_coverage_unit_ids": [
+            "U3"
+          ],
+          "notes": "第2节给出规模、窗口、归一化/初始化和字节BPE的用途，并把可表示字符串与理解正确分开。"
+        },
+        {
+          "id": "G23-S05",
+          "title": "GPT-2任务信号与绝对成绩：TL;DR摘要、CoQA、双向翻译显示提示可改变行为，但远未全面可用",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "GPT2"
+          ],
+          "matched_coverage_unit_ids": [
+            "U4",
+            "U5"
+          ],
+          "notes": "第3节保留ROUGE、F1、BLEU各自口径和基线；摘要只略过随机三句、翻译显著落后强对照、CoQA存在浅层启发式。"
+        },
+        {
+          "id": "G23-S06",
+          "title": "GPT-2事实问答反例：高文本概率与事实正确性不是同一指标",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "GPT2"
+          ],
+          "matched_coverage_unit_ids": [
+            "U23"
+          ],
+          "notes": "正文准确引用表5的California错误答案及59.2%模型概率，并限定为单条反例，不否定论文关于总体校准的观察。"
+        },
+        {
+          "id": "G23-S07",
+          "title": "GPT-2泛化与记忆：n-gram重叠提供小而一致的收益，文章重叠不等于问答对泄漏",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "GPT2"
+          ],
+          "matched_coverage_unit_ids": [
+            "U15"
+          ],
+          "notes": "第9节写明CoQA新闻文章约15%重叠、整体约0.5–1.0 F1收益及问答数据晚于WebText截止。"
+        },
+        {
+          "id": "G23-S08",
+          "title": "GPT-3动机：减少每个任务的大规模标注/微调需求，并检验规模是否提升in-context meta-learning",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "GPT3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U6",
+            "U9"
+          ],
+          "notes": "报告把GPT-3定位为跨规模、跨任务的系统实验，没有宣布提示已全面替代微调。"
+        },
+        {
+          "id": "G23-S09",
+          "title": "GPT-3四种设置及评测合同：fine-tuning、zero/one/few-shot、10–100演示、任务特定K与2048窗口",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "GPT3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U6",
+            "U7"
+          ],
+          "notes": "第4–5节区分额外演示与任务必需材料，列出CoQA K=5、LAMBADA K=15、NQ K=64；明确论文未给GPT-3本体跑监督微调。"
+        },
+        {
+          "id": "G23-S10",
+          "title": "上下文学习接口：权重固定、输入与激活变化；选择题通过候选似然及必要校正评分",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "GPT3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U8",
+            "U24"
+          ],
+          "notes": "第5节既解释前向激活，也准确说明多数任务按token长度归一化，ARC/OpenBookQA/RACE再除以通用Answer:/A:前缀下候选概率；未与自由聊天混为同条件。"
+        },
+        {
+          "id": "G23-S11",
+          "title": "GPT-3规模、数据与系统工程：8档125M–175B、300B训练token、加权语料混合、V100与模型并行",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "GPT3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U9",
+            "U17",
+            "U18"
+          ],
+          "notes": "第6、10节分清570GB过滤后Common Crawl、五类可用语料、累计训练token与抽样权重；没有补写未证实的精确GPU数量或框架。"
+        },
+        {
+          "id": "G23-S12",
+          "title": "GPT-3核心结果：更大模型通常更能利用演示，但不同任务、格式、指标与数据划分不能合成单一智能分数",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "GPT3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U10",
+            "U11"
+          ],
+          "notes": "CoQA、LAMBADA、NQ三行数字逐项与表3.2/3.3/3.7及H.1一致；LAMBADA one-shot下降与格式变化、NQ落后T5+SSM均作为反例。"
+        },
+        {
+          "id": "G23-S13",
+          "title": "GPT-3混合与失败结果：WiC、ANLI、RACE、位数增长算术和语法纠错暴露能力边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "GPT3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U12",
+            "U13"
+          ],
+          "notes": "WiC 49.4%、RACE-h 45.5/45.9/46.8、算术100/25.5/29.2及cheap语义删失均准确，且没有从流畅输出推导事实可靠。"
+        },
+        {
+          "id": "G23-S14",
+          "title": "ICL解释边界：现场学新技能、适应新格式与识别预训练任务构成连续谱",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "GPT3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U14"
+          ],
+          "notes": "第8节以翻译、字符操作和新词造句解释为何论文不能确定所有任务中的内部机制。"
+        },
+        {
+          "id": "G23-S15",
+          "title": "GPT-3污染方法学：预过滤bug、无法重训、clean subset偏差、撤下或标记受影响基准",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "GPT3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U16"
+          ],
+          "notes": "第9节把污染作为结论强度的组成部分；LAMBADA小差异没有被写成完全排除污染。"
+        },
+        {
+          "id": "G23-S16",
+          "title": "GPT-3限制与社会影响：自回归结构、预测目标、预训练样本效率、推理成本、偏见和滥用风险",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "GPT3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U20",
+            "U21"
+          ],
+          "notes": "第10–11节将蒸馏、人类反馈、RL和多模态写成后续方向，现代Context建议明确标为推测；没有倒填后来的助手能力。"
+        },
+        {
+          "id": "G23-S17",
+          "title": "真实贡献与scaling law角色：数据、系统、评测、集群、偏见与规模研究是协作工程",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "GPT2",
+            "GPT3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U19"
+          ],
+          "notes": "第10节按GPT-3 Contributions列出Mann/Radford、Brown等、Subbiah等、Kaplan/McCandlish的正式分工，并拒绝由作者人数推断组织动机。"
+        },
+        {
+          "id": "G23-S18",
+          "title": "讲义与本章转录的主线、口误和证据边界：GPT-2到GPT-3的任务接口、规模工程与后见欠训练判断",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "SLIDE",
+            "ASR",
+            "GPT2",
+            "GPT3",
+            "GPT3-HISTORY"
+          ],
+          "matched_coverage_unit_ids": [
+            "U22"
+          ],
+          "notes": "报告采纳讲义的问题路线，但把Reddit评论、570GB、GPU数量、组织因果等口述缩回论文证据；v1发布日期与实际读取v4分开。"
+        },
+        {
+          "id": "G23-S19",
+          "title": "作为系列独立章节的阅读闭环：一个黑猫例子贯穿机制、证据、反例、污染、工程和后续问题",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "SLIDE",
+            "SHOWNOTES",
+            "GPT2",
+            "GPT3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1",
+            "U20",
+            "U22"
+          ],
+          "notes": "正文可独立阅读，并保留第08/10篇及总览导航；思考题没有替代主论证。"
+        },
+        {
+          "id": "SN1",
+          "title": "Shownotes 01:30：探索的缘起",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U22"
+          ],
+          "notes": "用于确认整期结构与研究旅程背景；本篇不扩写与GPT-2/3无关的个人叙事。"
+        },
+        {
+          "id": "SN2",
+          "title": "Shownotes 07:25：怎么读论文（用AI学AI）",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U22"
+          ],
+          "notes": "作为节目范围留痕；技术结论回到原论文。"
+        },
+        {
+          "id": "SN3",
+          "title": "Shownotes 10:20：辅助小工具和路书",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U22"
+          ],
+          "notes": "作为节目范围留痕；不捆绑工具或工作台功能验收。"
+        },
+        {
+          "id": "SN4",
+          "title": "Shownotes 19:35：Part 1模型范式变迁",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U22"
+          ],
+          "notes": "确认GPT系列位于更长范式路线中；本篇只展开GPT-2/3相关接口变化。"
+        },
+        {
+          "id": "SN5",
+          "title": "Shownotes 01:52:58：Part 2 Infra与数据的变迁",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U17",
+            "U18",
+            "U22"
+          ],
+          "notes": "数据清洗、模型并行与规模预算在第10–11节得到必要承接。"
+        },
+        {
+          "id": "SN6",
+          "title": "Shownotes 02:21:29：Part 3语言模型的发展，含GPT-2与GPT-3",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES",
+            "SLIDE",
+            "ASR"
+          ],
+          "matched_coverage_unit_ids": [
+            "U1",
+            "U6",
+            "U22"
+          ],
+          "notes": "本章定位10026.10–10796.78秒，完整419段文本已读；Part 3起点没有被误当成本章精确起点。"
+        },
+        {
+          "id": "SN7",
+          "title": "Shownotes 03:08:08：Part 4多模态模型的发展",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U20",
+            "U22"
+          ],
+          "notes": "仅用于全节目范围与后续多模态方向留痕，不要求本章展开Part 4。"
+        },
+        {
+          "id": "SN8",
+          "title": "Shownotes 03:56:38：最后的聊天",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES"
+          ],
+          "matched_coverage_unit_ids": [
+            "U21",
+            "U22"
+          ],
+          "notes": "本章用思考与追问承接学习方法，但不把结尾讨论冒充GPT论文证据。"
+        }
       ],
       "source_ids_checked": [
         "GPT2",
@@ -97,594 +482,22 @@
         "R5",
         "R6"
       ],
-      "critical_claim_ids_checked_direct": [],
-      "critical_claim_ids_checked_inherited": [
-        "C1",
-        "C2",
-        "C3",
-        "C4",
-        "C5",
-        "C6",
-        "C7",
-        "C8",
-        "C9",
-        "C10",
-        "C11",
-        "C12",
-        "C13",
-        "C14",
-        "C15",
-        "C16",
-        "C17",
-        "C18",
-        "C19",
-        "C20",
-        "C21",
-        "C22"
-      ],
-      "coverage_unit_ids_checked_direct": [
-        "U22"
-      ],
-      "coverage_unit_ids_checked_inherited": [
-        "U1",
-        "U2",
-        "U3",
-        "U4",
-        "U5",
-        "U6",
-        "U7",
-        "U8",
-        "U9",
-        "U10",
-        "U11",
-        "U12",
-        "U13",
-        "U14",
-        "U15",
-        "U16",
-        "U17",
-        "U18",
-        "U19",
-        "U20",
-        "U21",
-        "U22"
-      ],
-      "source_ids_checked_direct": [
-        "SHOWNOTES"
-      ],
-      "source_ids_checked_inherited": [
-        "GPT2",
-        "GPT3",
-        "GPT1",
-        "SLIDE",
-        "SHOWNOTES",
-        "ASR",
-        "GPT3-HISTORY"
-      ],
-      "requirement_ids_checked_direct": [
-        "R1",
-        "R6"
-      ],
-      "requirement_ids_checked_inherited": [
-        "R1",
-        "R2",
-        "R3",
-        "R4",
-        "R5",
-        "R6"
-      ],
-      "source_content_map": [
-        {
-          "id": "LABEL-S1",
-          "title": "公开原页所属节目为《张小珺Jùn｜商业访谈录》",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "SHOWNOTES"
-          ],
-          "matched_coverage_unit_ids": [
-            "U22"
-          ],
-          "notes": "读五篇待审稿前已直接核对原页description。候选正文所含节目名称均为《张小珺Jùn｜商业访谈录》，原晚点聊标签已清除；本次只直接核查节目归属。 matched coverage仅直接核身份/引用子项，其他内容沿用基线。"
-        },
-        {
-          "id": "LABEL-S2",
-          "title": "该URL是第117期论文探索之旅",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "SHOWNOTES"
-          ],
-          "matched_coverage_unit_ids": [
-            "U22"
-          ],
-          "notes": "直接核对title、og:title与URL，第117期论文探索之旅与原链接相符。报告的“AI演义”用作内容简称；未改变期号、URL或任何链接目标。 matched coverage仅直接核身份/引用子项，其他内容沿用基线。"
-        },
-        {
-          "id": "LABEL-S3",
-          "title": "来源身份更正不提供新的论文或转写结论",
-          "importance": "supporting",
-          "assessment": "covered",
-          "source_ids": [
-            "SHOWNOTES"
-          ],
-          "matched_coverage_unit_ids": [
-            "U22"
-          ],
-          "notes": "公开页身份元数据只支持节目标签及链接对应关系。当前evidence明确记录冻结继承；read_scope、claims、source_coverage、task和limitations逐项完全不变。 matched coverage仅直接核身份/引用子项，其他内容沿用基线。"
-        },
-        {
-          "id": "g23-u001",
-          "title": "共同问题：怎样从每个任务重训一个模型，走向一个可由文本临时指定任务的通用模型",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "GPT2",
-            "GPT3",
-            "SLIDE",
-            "ASR"
-          ],
-          "matched_coverage_unit_ids": [
-            "U1",
-            "U6"
-          ],
-          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】第1–5节用黑猫问答持续区分微调与文本条件，问题链完整。"
-        },
-        {
-          "id": "g23-u002",
-          "title": "贯穿例子：英译法任务从训练集/微调变成提示中的说明与示例",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "GPT2",
-            "GPT3"
-          ],
-          "matched_coverage_unit_ids": [
-            "U1",
-            "U6",
-            "U7"
-          ],
-          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】黑猫问答为主线，同时用英法格式说明 GPT-2/GPT-3 的任务提示变化。"
-        },
-        {
-          "id": "g23-u003",
-          "title": "GPT-2 的数据贡献：WebText 以人类筛选信号换取网页质量与多样性",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "GPT2"
-          ],
-          "matched_coverage_unit_ids": [
-            "U2"
-          ],
-          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】准确写明 karma>=3 的 outbound links、8M/40GB、截止时间和移除 Wikipedia，并纠正“Reddit评论”误读。"
-        },
-        {
-          "id": "g23-u004",
-          "title": "GPT-2 的模型/表示改动与规模",
-          "importance": "supporting",
-          "assessment": "covered",
-          "source_ids": [
-            "GPT2"
-          ],
-          "matched_coverage_unit_ids": [
-            "U3"
-          ],
-          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】给出1542M/48层/1024 token、byte-level BPE及其表示边界。"
-        },
-        {
-          "id": "g23-u005",
-          "title": "GPT-2 的机制主张：下一个 token 预测可把自然任务示范当作隐式多任务训练",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "GPT2"
-          ],
-          "matched_coverage_unit_ids": [
-            "U1",
-            "U3"
-          ],
-          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】把自然任务示范写成作者假设，没有升级成“完整世界模型已证明”。"
-        },
-        {
-          "id": "g23-u006",
-          "title": "GPT-2 实验信号：规模增大时多任务 zero-shot 表现大体改善",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "GPT2"
-          ],
-          "matched_coverage_unit_ids": [
-            "U4",
-            "U5"
-          ],
-          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】以摘要、CoQA、翻译和跨代实验说明初步能力及绝对成绩；未机械复述7/8语言模型榜单不影响主线。"
-        },
-        {
-          "id": "g23-u007",
-          "title": "GPT-2 的失败：会做任务不等于做得可用",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "GPT2"
-          ],
-          "matched_coverage_unit_ids": [
-            "U4",
-            "U5"
-          ],
-          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】摘要仅略过随机摘句、翻译远弱于对照、浅层启发式等失败均进入正文。"
-        },
-        {
-          "id": "g23-u008",
-          "title": "GPT-2 的污染与记忆检查",
-          "importance": "supporting",
-          "assessment": "covered",
-          "source_ids": [
-            "GPT2"
-          ],
-          "matched_coverage_unit_ids": [
-            "U15"
-          ],
-          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】CoQA重叠与0.5–1.0 F1收益进入正文，并区分文章重叠和问答泄漏。"
-        },
-        {
-          "id": "g23-u009",
-          "title": "GPT-3 把提示内学习正式分成 four regimes",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "GPT3"
-          ],
-          "matched_coverage_unit_ids": [
-            "U6",
-            "U7"
-          ],
-          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】四种设置、额外演示定义、GPT-3未做本体微调均清楚。"
-        },
-        {
-          "id": "g23-u010",
-          "title": "GPT-3 规模工程：8 档模型、175B、300B 训练 token",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "GPT3"
-          ],
-          "matched_coverage_unit_ids": [
-            "U9",
-            "U18"
-          ],
-          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】8档125M–175B、每档300B token、2048窗口与V100/并行边界准确。"
-        },
-        {
-          "id": "g23-u011",
-          "title": "GPT-3 数据工程：Common Crawl 过滤、去重与加权混合",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "GPT3"
-          ],
-          "matched_coverage_unit_ids": [
-            "U17"
-          ],
-          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】570GB口径、五类语料、质量分类、近似去重和加权抽样均覆盖。"
-        },
-        {
-          "id": "g23-u012",
-          "title": "scaling law 的实际角色：预测并指导规模选择，而不是事后口号",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "GPT3"
-          ],
-          "matched_coverage_unit_ids": [
-            "U9",
-            "U19"
-          ],
-          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】Contributions与转场明确Kaplan/McCandlish用scaling laws指导规模；并把欠训练判断留给Chinchilla。"
-        },
-        {
-          "id": "g23-u013",
-          "title": "GPT-3 的关键实验：大模型更会利用上下文示例",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "GPT3"
-          ],
-          "matched_coverage_unit_ids": [
-            "U9",
-            "U10",
-            "U11"
-          ],
-          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】用三任务zero/one/few-shot表、LAMBADA反例及规模趋势解释ICL证据。"
-        },
-        {
-          "id": "g23-u014",
-          "title": "GPT-3 的能力案例：算术、类比、翻译与生成",
-          "importance": "supporting",
-          "assessment": "partial",
-          "source_ids": [
-            "GPT3"
-          ],
-          "matched_coverage_unit_ids": [
-            "U10",
-            "U13",
-            "U14",
-            "U20"
-          ],
-          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】翻译、问答、算术和生成风险已有代表性案例；未展开SAT类比或新闻52%的精确数字，属支持性取舍。"
-        },
-        {
-          "id": "g23-u015",
-          "title": "GPT-3 的失败与混合结果",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "GPT3"
-          ],
-          "matched_coverage_unit_ids": [
-            "U4",
-            "U5",
-            "U11",
-            "U12",
-            "U13",
-            "U14"
-          ],
-          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】WiC、ANLI、RACE、算术边界、倒写词和语义删失形成充分失败面。"
-        },
-        {
-          "id": "g23-u016",
-          "title": "污染 bug 是 GPT-3 论文的方法学核心，不是脚注",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "GPT3"
-          ],
-          "matched_coverage_unit_ids": [
-            "U16"
-          ],
-          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】过滤bug、无法重训、clean subset偏差及被撤/标记基准均作为方法学主线。"
-        },
-        {
-          "id": "g23-u017",
-          "title": "ICL 的机制边界：到底是现场学习，还是识别训练时见过的任务",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "GPT3"
-          ],
-          "matched_coverage_unit_ids": [
-            "U14"
-          ],
-          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】独立一节讨论task recognition、格式适应与de novo learning连续谱。"
-        },
-        {
-          "id": "g23-u018",
-          "title": "从 GPT-3 失败自然接向 InstructGPT：预测目标不等于用户目标",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "GPT3"
-          ],
-          "matched_coverage_unit_ids": [
-            "U20"
-          ],
-          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】从token预测目标、目标行动、人类反馈/RL/多模态自然接到后训练，未倒填InstructGPT。"
-        },
-        {
-          "id": "g23-u019",
-          "title": "GPT-3 的真实人物与组织贡献应以 Contributions 为准",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "GPT3"
-          ],
-          "matched_coverage_unit_ids": [
-            "U19"
-          ],
-          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】按p42 Contributions列数据、系统、评测、缩放研究等真实分工。"
-        },
-        {
-          "id": "g23-u020",
-          "title": "GPT-2 的人物证据边界",
-          "importance": "supporting",
-          "assessment": "partial",
-          "source_ids": [
-            "GPT2"
-          ],
-          "matched_coverage_unit_ids": [
-            "U19"
-          ],
-          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】说明GPT-2六位作者且不从作者数推组织动机；未展开equal-contribution标记和Noam训练基础设施致谢，属支持性省略。"
-        },
-        {
-          "id": "g23-u021",
-          "title": "组织史可以讲，但必须与论文贡献分层",
-          "importance": "supporting",
-          "assessment": "covered",
-          "source_ids": [
-            "SLIDE",
-            "ASR",
-            "GPT3"
-          ],
-          "matched_coverage_unit_ids": [
-            "U19",
-            "U22"
-          ],
-          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】明确讲义/播客组织史只作线索，正式判断落在论文贡献，未采未核因果。"
-        },
-        {
-          "id": "g23-u022",
-          "title": "术语纠偏：GPT-2 不是 zero-shot 概念的首次提出者",
-          "importance": "supporting",
-          "assessment": "covered",
-          "source_ids": [
-            "GPT1",
-            "GPT2",
-            "ASR"
-          ],
-          "matched_coverage_unit_ids": [
-            "U1",
-            "U6"
-          ],
-          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】明确GPT-2并非首次发明zero-shot，并解释两代术语差别。"
-        },
-        {
-          "id": "g23-u023",
-          "title": "后见之明：GPT-3 欠训练不能只靠本篇论文",
-          "importance": "supporting",
-          "assessment": "covered",
-          "source_ids": [
-            "SLIDE",
-            "ASR",
-            "GPT3"
-          ],
-          "matched_coverage_unit_ids": [
-            "U20"
-          ],
-          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】把“欠训练”作为后来视角留到Scaling Laws/Chinchilla，不冒充GPT-3自我结论。"
-        },
-        {
-          "id": "g23-u024",
-          "title": "第9节在总路线中的落点与接第10节方式",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "SHOWNOTES",
-            "SLIDE",
-            "GPT3"
-          ],
-          "matched_coverage_unit_ids": [
-            "U20",
-            "U22"
-          ],
-          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】顶部可返回/前后节导航齐全，末尾回原节并接第10节，同时为InstructGPT留下目标缺口。"
-        }
-      ],
-      "source_content_map_ids_direct": [
-        "LABEL-S1",
-        "LABEL-S2",
-        "LABEL-S3"
-      ],
-      "source_content_map_ids_inherited": [
-        "g23-u001",
-        "g23-u002",
-        "g23-u003",
-        "g23-u004",
-        "g23-u005",
-        "g23-u006",
-        "g23-u007",
-        "g23-u008",
-        "g23-u009",
-        "g23-u010",
-        "g23-u011",
-        "g23-u012",
-        "g23-u013",
-        "g23-u014",
-        "g23-u015",
-        "g23-u016",
-        "g23-u017",
-        "g23-u018",
-        "g23-u019",
-        "g23-u020",
-        "g23-u021",
-        "g23-u022",
-        "g23-u023",
-        "g23-u024"
-      ],
       "unsupported_claims": [],
       "missing_requirements": [],
       "hard_failures": [],
-      "review_revision_round": 2,
-      "snapshot_verified": true,
-      "report_sha256": "786bdfdcbfdf7dac5108374bc1730bf387a0979df55c467ed8783202d3bf6036",
-      "evidence_sha256": "aa4af8fdff9e58f28e1b1547db38e3d2e91451f9cfa86b457fa9333fc30fffb0",
-      "snapshot": {
-        "report_path": "ai-learning/reports/knowledge_reports/AI演义_09_GPT2与GPT3_任务怎样进入上下文_科普讲解_20261105.md",
-        "evidence_path": "ai-learning/reports/knowledge_reports/.quality/AI演义_09_GPT2与GPT3_任务怎样进入上下文_科普讲解_20261105.evidence.json",
-        "report_sha256": "786bdfdcbfdf7dac5108374bc1730bf387a0979df55c467ed8783202d3bf6036",
-        "evidence_sha256": "aa4af8fdff9e58f28e1b1547db38e3d2e91451f9cfa86b457fa9333fc30fffb0",
-        "revision_round": 2
-      },
-      "incremental_scope": {
-        "kind": "source-label-correction",
-        "direct_scope": "直接读取原页身份元数据；独立验证正文的精确允许替换、evidence允许字段、所有链接目标、当前/基线哈希、基线通过收据与新名称渲染收据。",
-        "inherited_scope": "技术正文、论文/讲义/转录的内容判断、机器转录结构审计、原始来源地图与既有呈现/导航验证均按冻结基线继承；原地图partial不升级。",
-        "checked_array_semantics": "总checked数组包含本轮已验证可继承的基线集合；direct数组仅说明局部直接核查。direct与inherited重叠表示同一ID中的身份/渲染子项直接复核、技术/旧内容子项继承，绝不表示整单元本轮重读。",
-        "direct_requirement_scope": {
-          "R1": "仅原节目所属名称、期号及链接对应关系。",
-          "R6": "仅本次纠正标签在1440/390px下的渲染收据；原导航及其他呈现沿用基线。"
-        },
-        "original_papers_reread_this_revision": false,
-        "transcript_reread_or_reaudited_this_revision": false,
-        "generator_research_notes_read": false,
-        "public_files_modified_by_reviewer": false,
-        "baseline": {
-          "revision_round": 1,
-          "report_file": "09-before.report.md",
-          "evidence_file": "09-before.evidence.json",
-          "review_file": "09-before.review.json",
-          "report_sha256": "e8a792fed68793bf6785b5ff61aa3253da617fff3f71fbe0d479ea9ea0745b2b",
-          "evidence_sha256": "71891ecc9fe84cff8dcd3f346a331b48c9fbbe0e9491d89103af6a48150781ba",
-          "review_sha256": "5c5b32cbc0f26471fef9f991bf5a3d99b01617c4f0c9d74b3ee919cfafd8b99a",
-          "decision": {
-            "status": "pass",
-            "score": 97.9,
-            "evaluated_on": "2026-11-05",
-            "policy_id": "report-quality-2026-10-18-r2",
-            "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
-            "report_sha256": "e8a792fed68793bf6785b5ff61aa3253da617fff3f71fbe0d479ea9ea0745b2b",
-            "evidence_sha256": "71891ecc9fe84cff8dcd3f346a331b48c9fbbe0e9491d89103af6a48150781ba"
-          },
-          "check_receipt_file": "09-baseline-check.json",
-          "check_receipt_sha256": "bb19b7557de5606e15cc624937e9c6a3696a899b236a09a3ed1a352e543eb82b",
-          "check_receipt_status": "pass",
-          "check_receipt_errors": [],
-          "check_receipt_warnings": []
-        },
-        "scope_audit": {
-          "file": "primary-source-label-scope-audit.json",
-          "sha256": "94efda1efa455a2dceb7d0249c4c16d2824c7747254ce7a83b97dee124453574",
-          "chapter": 9
-        },
-        "source_alias_map_for_inherited_map": {},
-        "source_alias_basis": "冻结地图已使用当前source IDs，无需转换。"
-      },
-      "source_priority_map": {
-        "file": "primary-identity-source-map.json",
-        "sha256": "06c345ab85c857a1312954cb09c70ee43699d6538007de7e9c8f2848eb68eb12",
-        "frozen_before_target_reports_read": true,
-        "scope": "仅本次身份勘误；技术来源地图另按冻结基线明确继承。"
-      },
-      "identity_source_receipt": {
-        "file": "episode-identity-read.json",
-        "sha256": "96781505dddc5ae22487657983c5dff1f74d5294042adbe02f54f38169bf4436",
-        "capability": "web.read",
-        "ok": true,
-        "url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
-        "read_scope": "直接读取title、URL、description与metadata.description/og:title。"
-      },
-      "render_receipt_review": {
-        "file": "primary-source-label-render-audit.json",
-        "sha256": "14e683860af4093b5d184ef9b7d3fad19cb9189c3fc79937e5f439a5a0f67e1d",
-        "chapter": 9,
-        "receipt_widths_read": [
-          1440,
-          390
-        ],
-        "manual_image_samples": [],
-        "browser_actions_performed_by_this_reviewer": false
-      },
-      "notes": "本记录是report-review-v1的单条reviews item。本轮先核原始公开页身份并冻结LABEL地图，再审五篇标签勘误；关键事实和技术评分来自SHA核验通过的冻结基线，保留而不冒称重新完整复核。正文与账本只发生允许的名称/修订元数据变化，未发现本次勘误引入新的unsupported claim、missing requirement或hard failure。该记录不宣称最终quality gate通过；生成者汇入后仍需完成正式检查。"
+      "notes": "revision3快照绑定：report SHA-256 bc2569b00801be3a9ed07879b19103663a875e909fc624bb7ad30340b8a5f943；evidence SHA-256 f6bc3b1e4b59ed70c75c885c7a9a46a518f45c1063356b4d06cc2f1747119d1a。开始审阅与落盘前均核对一致。\n独立顺序为先读GPT-2/GPT-3/GPT-1相关原文、讲义p37–38、shownotes、419段转录和版本记录，形成27项内容地图，再完整读正文、evidence及相对HEAD diff；未接收作者推理或旧评分结论。\n对未变的chapter-compatible.transcript.txt重新执行确定性audit_transcript.py：419段、timestamp_errors=0、malformed_lines=0、max_consecutive_identical=1；未重转录、未听音、未测WER。历史图像、附录和旧呈现结果仅在未变范围内继承，未冒称本轮重跑。\n本轮重点复验：GPT-2 zero-shot术语可能包含上下文示例；表5 California错答的59.2%是模型文本概率；GPT-3选择题的长度归一化及Answer:/A:分母校正；LAMBADA格式差异；300B训练token与570GB Common Crawl口径；污染过滤bug与clean subset限制。均有来源支持。\n阅读检查仅限Markdown报告、4张表、38个脚注、教学例子、前后/总览导航与本地链接；Pandoc解析通过，未启动无关工作台功能验收。\n当前未发现需要修订的事实、数字、推理、覆盖、引用或呈现缺陷；最终判定由report_quality.py check计算，本Reviewer不finalize、不提交。",
+      "reviewed_report_sha256": "bc2569b00801be3a9ed07879b19103663a875e909fc624bb7ad30340b8a5f943",
+      "reviewed_evidence_sha256": "f6bc3b1e4b59ed70c75c885c7a9a46a518f45c1063356b4d06cc2f1747119d1a"
     }
   ],
   "decision": {
     "status": "pass",
-    "score": 97.9,
-    "evaluated_on": "2026-11-05",
+    "score": 98.65,
+    "evaluated_on": "2026-11-06",
     "policy_id": "report-quality-2026-10-18-r2",
     "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
-    "report_sha256": "22ff9426de65d52a22a358e24470fc3b233b659612f9704effe5f96a838445f1",
-    "evidence_sha256": "aa4af8fdff9e58f28e1b1547db38e3d2e91451f9cfa86b457fa9333fc30fffb0"
+    "report_sha256": "df35b10e7517a0a91813a202a1a541c1a19e31b529a8a0d37f825b2d083bfc46",
+    "evidence_sha256": "f6bc3b1e4b59ed70c75c885c7a9a46a518f45c1063356b4d06cc2f1747119d1a"
   },
   "history": [
     {
@@ -1226,6 +1039,692 @@
         "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
         "report_sha256": "e8a792fed68793bf6785b5ff61aa3253da617fff3f71fbe0d479ea9ea0745b2b",
         "evidence_sha256": "71891ecc9fe84cff8dcd3f346a331b48c9fbbe0e9491d89103af6a48150781ba"
+      }
+    },
+    {
+      "revision_round": 2,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-6-astra",
+            "harness": "codex_collab2_subagent",
+            "run_id": "source-label-09-primary-review-20261105",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "identity_basis": "inherited_dispatch_configuration",
+            "runtime_model": "unconfirmed",
+            "source_first_continuation": true,
+            "identity_note": "协调者明确本次spawn未传model override、继承根派发配置gpt-6-astra；不是provider/runtime attestation。未用共享shell或生成者身份证明Reviewer模型。"
+          },
+          "scores": {
+            "evidence_fidelity": 98,
+            "request_coverage": 97,
+            "reasoning_quality": 98,
+            "readability": 98,
+            "limitations": 99
+          },
+          "score_reasons": {
+            "evidence_fidelity": "本轮直接核对原页title、description/og:title及URL，确认节目归属和期号；正文仅替换来源标签及修订状态。22项关键claim及论文/转录判断按SHA绑定的revision 1已通过基线继承，保留98分；没有声称本轮重读论文或转录。",
+            "request_coverage": "task requirements和22个source_coverage单元与基线完全相同；来源名称勘误由读稿前冻结的LABEL-S1–S3独立地图直接复核。原需求覆盖及原地图的covered/partial状态原样继承，保留97分。",
+            "reasoning_quality": "精确文本恢复和evidence递归比较表明因果解释、数字、反例、推测与边界没有改变；节目身份修正没有被用来支持新的技术结论。本维按已通过技术基线保留98分，不是本轮重新评价全部推理。",
+            "readability": "本篇1440/390px收据的报告/evidence哈希与当前目标一致，纠正名称的链接文本和URL正确，无旧标签、乱码、横溢出或pageErrors；本篇仅复核双宽度机器收据，未声称直接目视本篇截图。其余篇章、表格和导航可读性继承基线，保留98分。",
+            "limitations": "来源read_scope和limitations完全未改，保留基线的版本、未复现实验及ASR未听音/未测WER等边界；本轮明确限制为身份勘误，未把元数据核验冒充完整材料重读。本维沿用冻结基线99分。"
+          },
+          "weighted_score": 97.9,
+          "critical_claim_ids_checked": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "C16",
+            "C17",
+            "C18",
+            "C19",
+            "C20",
+            "C21",
+            "C22"
+          ],
+          "coverage_unit_ids_checked": [
+            "U1",
+            "U2",
+            "U3",
+            "U4",
+            "U5",
+            "U6",
+            "U7",
+            "U8",
+            "U9",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14",
+            "U15",
+            "U16",
+            "U17",
+            "U18",
+            "U19",
+            "U20",
+            "U21",
+            "U22"
+          ],
+          "source_ids_checked": [
+            "GPT2",
+            "GPT3",
+            "GPT1",
+            "SLIDE",
+            "SHOWNOTES",
+            "ASR",
+            "GPT3-HISTORY"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6"
+          ],
+          "critical_claim_ids_checked_direct": [],
+          "critical_claim_ids_checked_inherited": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "C16",
+            "C17",
+            "C18",
+            "C19",
+            "C20",
+            "C21",
+            "C22"
+          ],
+          "coverage_unit_ids_checked_direct": [
+            "U22"
+          ],
+          "coverage_unit_ids_checked_inherited": [
+            "U1",
+            "U2",
+            "U3",
+            "U4",
+            "U5",
+            "U6",
+            "U7",
+            "U8",
+            "U9",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14",
+            "U15",
+            "U16",
+            "U17",
+            "U18",
+            "U19",
+            "U20",
+            "U21",
+            "U22"
+          ],
+          "source_ids_checked_direct": [
+            "SHOWNOTES"
+          ],
+          "source_ids_checked_inherited": [
+            "GPT2",
+            "GPT3",
+            "GPT1",
+            "SLIDE",
+            "SHOWNOTES",
+            "ASR",
+            "GPT3-HISTORY"
+          ],
+          "requirement_ids_checked_direct": [
+            "R1",
+            "R6"
+          ],
+          "requirement_ids_checked_inherited": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6"
+          ],
+          "source_content_map": [
+            {
+              "id": "LABEL-S1",
+              "title": "公开原页所属节目为《张小珺Jùn｜商业访谈录》",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "SHOWNOTES"
+              ],
+              "matched_coverage_unit_ids": [
+                "U22"
+              ],
+              "notes": "读五篇待审稿前已直接核对原页description。候选正文所含节目名称均为《张小珺Jùn｜商业访谈录》，原晚点聊标签已清除；本次只直接核查节目归属。 matched coverage仅直接核身份/引用子项，其他内容沿用基线。"
+            },
+            {
+              "id": "LABEL-S2",
+              "title": "该URL是第117期论文探索之旅",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "SHOWNOTES"
+              ],
+              "matched_coverage_unit_ids": [
+                "U22"
+              ],
+              "notes": "直接核对title、og:title与URL，第117期论文探索之旅与原链接相符。报告的“AI演义”用作内容简称；未改变期号、URL或任何链接目标。 matched coverage仅直接核身份/引用子项，其他内容沿用基线。"
+            },
+            {
+              "id": "LABEL-S3",
+              "title": "来源身份更正不提供新的论文或转写结论",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "SHOWNOTES"
+              ],
+              "matched_coverage_unit_ids": [
+                "U22"
+              ],
+              "notes": "公开页身份元数据只支持节目标签及链接对应关系。当前evidence明确记录冻结继承；read_scope、claims、source_coverage、task和limitations逐项完全不变。 matched coverage仅直接核身份/引用子项，其他内容沿用基线。"
+            },
+            {
+              "id": "g23-u001",
+              "title": "共同问题：怎样从每个任务重训一个模型，走向一个可由文本临时指定任务的通用模型",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "GPT2",
+                "GPT3",
+                "SLIDE",
+                "ASR"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1",
+                "U6"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】第1–5节用黑猫问答持续区分微调与文本条件，问题链完整。"
+            },
+            {
+              "id": "g23-u002",
+              "title": "贯穿例子：英译法任务从训练集/微调变成提示中的说明与示例",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "GPT2",
+                "GPT3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1",
+                "U6",
+                "U7"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】黑猫问答为主线，同时用英法格式说明 GPT-2/GPT-3 的任务提示变化。"
+            },
+            {
+              "id": "g23-u003",
+              "title": "GPT-2 的数据贡献：WebText 以人类筛选信号换取网页质量与多样性",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "GPT2"
+              ],
+              "matched_coverage_unit_ids": [
+                "U2"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】准确写明 karma>=3 的 outbound links、8M/40GB、截止时间和移除 Wikipedia，并纠正“Reddit评论”误读。"
+            },
+            {
+              "id": "g23-u004",
+              "title": "GPT-2 的模型/表示改动与规模",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "GPT2"
+              ],
+              "matched_coverage_unit_ids": [
+                "U3"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】给出1542M/48层/1024 token、byte-level BPE及其表示边界。"
+            },
+            {
+              "id": "g23-u005",
+              "title": "GPT-2 的机制主张：下一个 token 预测可把自然任务示范当作隐式多任务训练",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "GPT2"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1",
+                "U3"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】把自然任务示范写成作者假设，没有升级成“完整世界模型已证明”。"
+            },
+            {
+              "id": "g23-u006",
+              "title": "GPT-2 实验信号：规模增大时多任务 zero-shot 表现大体改善",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "GPT2"
+              ],
+              "matched_coverage_unit_ids": [
+                "U4",
+                "U5"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】以摘要、CoQA、翻译和跨代实验说明初步能力及绝对成绩；未机械复述7/8语言模型榜单不影响主线。"
+            },
+            {
+              "id": "g23-u007",
+              "title": "GPT-2 的失败：会做任务不等于做得可用",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "GPT2"
+              ],
+              "matched_coverage_unit_ids": [
+                "U4",
+                "U5"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】摘要仅略过随机摘句、翻译远弱于对照、浅层启发式等失败均进入正文。"
+            },
+            {
+              "id": "g23-u008",
+              "title": "GPT-2 的污染与记忆检查",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "GPT2"
+              ],
+              "matched_coverage_unit_ids": [
+                "U15"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】CoQA重叠与0.5–1.0 F1收益进入正文，并区分文章重叠和问答泄漏。"
+            },
+            {
+              "id": "g23-u009",
+              "title": "GPT-3 把提示内学习正式分成 four regimes",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "GPT3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U6",
+                "U7"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】四种设置、额外演示定义、GPT-3未做本体微调均清楚。"
+            },
+            {
+              "id": "g23-u010",
+              "title": "GPT-3 规模工程：8 档模型、175B、300B 训练 token",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "GPT3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U9",
+                "U18"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】8档125M–175B、每档300B token、2048窗口与V100/并行边界准确。"
+            },
+            {
+              "id": "g23-u011",
+              "title": "GPT-3 数据工程：Common Crawl 过滤、去重与加权混合",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "GPT3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U17"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】570GB口径、五类语料、质量分类、近似去重和加权抽样均覆盖。"
+            },
+            {
+              "id": "g23-u012",
+              "title": "scaling law 的实际角色：预测并指导规模选择，而不是事后口号",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "GPT3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U9",
+                "U19"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】Contributions与转场明确Kaplan/McCandlish用scaling laws指导规模；并把欠训练判断留给Chinchilla。"
+            },
+            {
+              "id": "g23-u013",
+              "title": "GPT-3 的关键实验：大模型更会利用上下文示例",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "GPT3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U9",
+                "U10",
+                "U11"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】用三任务zero/one/few-shot表、LAMBADA反例及规模趋势解释ICL证据。"
+            },
+            {
+              "id": "g23-u014",
+              "title": "GPT-3 的能力案例：算术、类比、翻译与生成",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "GPT3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10",
+                "U13",
+                "U14",
+                "U20"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】翻译、问答、算术和生成风险已有代表性案例；未展开SAT类比或新闻52%的精确数字，属支持性取舍。"
+            },
+            {
+              "id": "g23-u015",
+              "title": "GPT-3 的失败与混合结果",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "GPT3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U4",
+                "U5",
+                "U11",
+                "U12",
+                "U13",
+                "U14"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】WiC、ANLI、RACE、算术边界、倒写词和语义删失形成充分失败面。"
+            },
+            {
+              "id": "g23-u016",
+              "title": "污染 bug 是 GPT-3 论文的方法学核心，不是脚注",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "GPT3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U16"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】过滤bug、无法重训、clean subset偏差及被撤/标记基准均作为方法学主线。"
+            },
+            {
+              "id": "g23-u017",
+              "title": "ICL 的机制边界：到底是现场学习，还是识别训练时见过的任务",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "GPT3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U14"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】独立一节讨论task recognition、格式适应与de novo learning连续谱。"
+            },
+            {
+              "id": "g23-u018",
+              "title": "从 GPT-3 失败自然接向 InstructGPT：预测目标不等于用户目标",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "GPT3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U20"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】从token预测目标、目标行动、人类反馈/RL/多模态自然接到后训练，未倒填InstructGPT。"
+            },
+            {
+              "id": "g23-u019",
+              "title": "GPT-3 的真实人物与组织贡献应以 Contributions 为准",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "GPT3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U19"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】按p42 Contributions列数据、系统、评测、缩放研究等真实分工。"
+            },
+            {
+              "id": "g23-u020",
+              "title": "GPT-2 的人物证据边界",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "GPT2"
+              ],
+              "matched_coverage_unit_ids": [
+                "U19"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】说明GPT-2六位作者且不从作者数推组织动机；未展开equal-contribution标记和Noam训练基础设施致谢，属支持性省略。"
+            },
+            {
+              "id": "g23-u021",
+              "title": "组织史可以讲，但必须与论文贡献分层",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "SLIDE",
+                "ASR",
+                "GPT3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U19",
+                "U22"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】明确讲义/播客组织史只作线索，正式判断落在论文贡献，未采未核因果。"
+            },
+            {
+              "id": "g23-u022",
+              "title": "术语纠偏：GPT-2 不是 zero-shot 概念的首次提出者",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "GPT1",
+                "GPT2",
+                "ASR"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1",
+                "U6"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】明确GPT-2并非首次发明zero-shot，并解释两代术语差别。"
+            },
+            {
+              "id": "g23-u023",
+              "title": "后见之明：GPT-3 欠训练不能只靠本篇论文",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "SLIDE",
+                "ASR",
+                "GPT3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U20"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】把“欠训练”作为后来视角留到Scaling Laws/Chinchilla，不冒充GPT-3自我结论。"
+            },
+            {
+              "id": "g23-u024",
+              "title": "第9节在总路线中的落点与接第10节方式",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "SHOWNOTES",
+                "SLIDE",
+                "GPT3"
+              ],
+              "matched_coverage_unit_ids": [
+                "U20",
+                "U22"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】顶部可返回/前后节导航齐全，末尾回原节并接第10节，同时为InstructGPT留下目标缺口。"
+            }
+          ],
+          "source_content_map_ids_direct": [
+            "LABEL-S1",
+            "LABEL-S2",
+            "LABEL-S3"
+          ],
+          "source_content_map_ids_inherited": [
+            "g23-u001",
+            "g23-u002",
+            "g23-u003",
+            "g23-u004",
+            "g23-u005",
+            "g23-u006",
+            "g23-u007",
+            "g23-u008",
+            "g23-u009",
+            "g23-u010",
+            "g23-u011",
+            "g23-u012",
+            "g23-u013",
+            "g23-u014",
+            "g23-u015",
+            "g23-u016",
+            "g23-u017",
+            "g23-u018",
+            "g23-u019",
+            "g23-u020",
+            "g23-u021",
+            "g23-u022",
+            "g23-u023",
+            "g23-u024"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "review_revision_round": 2,
+          "snapshot_verified": true,
+          "report_sha256": "786bdfdcbfdf7dac5108374bc1730bf387a0979df55c467ed8783202d3bf6036",
+          "evidence_sha256": "aa4af8fdff9e58f28e1b1547db38e3d2e91451f9cfa86b457fa9333fc30fffb0",
+          "snapshot": {
+            "report_path": "ai-learning/reports/knowledge_reports/AI演义_09_GPT2与GPT3_任务怎样进入上下文_科普讲解_20261105.md",
+            "evidence_path": "ai-learning/reports/knowledge_reports/.quality/AI演义_09_GPT2与GPT3_任务怎样进入上下文_科普讲解_20261105.evidence.json",
+            "report_sha256": "786bdfdcbfdf7dac5108374bc1730bf387a0979df55c467ed8783202d3bf6036",
+            "evidence_sha256": "aa4af8fdff9e58f28e1b1547db38e3d2e91451f9cfa86b457fa9333fc30fffb0",
+            "revision_round": 2
+          },
+          "incremental_scope": {
+            "kind": "source-label-correction",
+            "direct_scope": "直接读取原页身份元数据；独立验证正文的精确允许替换、evidence允许字段、所有链接目标、当前/基线哈希、基线通过收据与新名称渲染收据。",
+            "inherited_scope": "技术正文、论文/讲义/转录的内容判断、机器转录结构审计、原始来源地图与既有呈现/导航验证均按冻结基线继承；原地图partial不升级。",
+            "checked_array_semantics": "总checked数组包含本轮已验证可继承的基线集合；direct数组仅说明局部直接核查。direct与inherited重叠表示同一ID中的身份/渲染子项直接复核、技术/旧内容子项继承，绝不表示整单元本轮重读。",
+            "direct_requirement_scope": {
+              "R1": "仅原节目所属名称、期号及链接对应关系。",
+              "R6": "仅本次纠正标签在1440/390px下的渲染收据；原导航及其他呈现沿用基线。"
+            },
+            "original_papers_reread_this_revision": false,
+            "transcript_reread_or_reaudited_this_revision": false,
+            "generator_research_notes_read": false,
+            "public_files_modified_by_reviewer": false,
+            "baseline": {
+              "revision_round": 1,
+              "report_file": "09-before.report.md",
+              "evidence_file": "09-before.evidence.json",
+              "review_file": "09-before.review.json",
+              "report_sha256": "e8a792fed68793bf6785b5ff61aa3253da617fff3f71fbe0d479ea9ea0745b2b",
+              "evidence_sha256": "71891ecc9fe84cff8dcd3f346a331b48c9fbbe0e9491d89103af6a48150781ba",
+              "review_sha256": "5c5b32cbc0f26471fef9f991bf5a3d99b01617c4f0c9d74b3ee919cfafd8b99a",
+              "decision": {
+                "status": "pass",
+                "score": 97.9,
+                "evaluated_on": "2026-11-05",
+                "policy_id": "report-quality-2026-10-18-r2",
+                "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+                "report_sha256": "e8a792fed68793bf6785b5ff61aa3253da617fff3f71fbe0d479ea9ea0745b2b",
+                "evidence_sha256": "71891ecc9fe84cff8dcd3f346a331b48c9fbbe0e9491d89103af6a48150781ba"
+              },
+              "check_receipt_file": "09-baseline-check.json",
+              "check_receipt_sha256": "bb19b7557de5606e15cc624937e9c6a3696a899b236a09a3ed1a352e543eb82b",
+              "check_receipt_status": "pass",
+              "check_receipt_errors": [],
+              "check_receipt_warnings": []
+            },
+            "scope_audit": {
+              "file": "primary-source-label-scope-audit.json",
+              "sha256": "94efda1efa455a2dceb7d0249c4c16d2824c7747254ce7a83b97dee124453574",
+              "chapter": 9
+            },
+            "source_alias_map_for_inherited_map": {},
+            "source_alias_basis": "冻结地图已使用当前source IDs，无需转换。"
+          },
+          "source_priority_map": {
+            "file": "primary-identity-source-map.json",
+            "sha256": "06c345ab85c857a1312954cb09c70ee43699d6538007de7e9c8f2848eb68eb12",
+            "frozen_before_target_reports_read": true,
+            "scope": "仅本次身份勘误；技术来源地图另按冻结基线明确继承。"
+          },
+          "identity_source_receipt": {
+            "file": "episode-identity-read.json",
+            "sha256": "96781505dddc5ae22487657983c5dff1f74d5294042adbe02f54f38169bf4436",
+            "capability": "web.read",
+            "ok": true,
+            "url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+            "read_scope": "直接读取title、URL、description与metadata.description/og:title。"
+          },
+          "render_receipt_review": {
+            "file": "primary-source-label-render-audit.json",
+            "sha256": "14e683860af4093b5d184ef9b7d3fad19cb9189c3fc79937e5f439a5a0f67e1d",
+            "chapter": 9,
+            "receipt_widths_read": [
+              1440,
+              390
+            ],
+            "manual_image_samples": [],
+            "browser_actions_performed_by_this_reviewer": false
+          },
+          "notes": "本记录是report-review-v1的单条reviews item。本轮先核原始公开页身份并冻结LABEL地图，再审五篇标签勘误；关键事实和技术评分来自SHA核验通过的冻结基线，保留而不冒称重新完整复核。正文与账本只发生允许的名称/修订元数据变化，未发现本次勘误引入新的unsupported claim、missing requirement或hard failure。该记录不宣称最终quality gate通过；生成者汇入后仍需完成正式检查。"
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 97.9,
+        "evaluated_on": "2026-11-05",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "22ff9426de65d52a22a358e24470fc3b233b659612f9704effe5f96a838445f1",
+        "evidence_sha256": "aa4af8fdff9e58f28e1b1547db38e3d2e91451f9cfa86b457fa9333fc30fffb0"
       }
     }
   ],

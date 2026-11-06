@@ -2,36 +2,34 @@
   "schema_version": 1,
   "report_path": "ai-learning/reports/knowledge_reports/AI演义_07_GNMT与Transformer_从翻译系统到并行架构_科普讲解_20261105.md",
   "quality_tier": "important",
-  "revision_round": 2,
+  "revision_round": 3,
   "reviews": [
     {
       "role": "primary_review",
       "reviewer": {
-        "model": "gpt-6-astra",
-        "harness": "codex_collab2_subagent",
-        "run_id": "source-label-07-primary-review-20261105",
+        "model": "gpt-5.6-sol",
+        "harness": "codex",
+        "run_id": "gnmt-transformer-r3-gpt56sol-fc4d689d9ae8",
         "independent_context": true,
         "explicit_model_override": false,
-        "identity_basis": "inherited_dispatch_configuration",
-        "runtime_model": "unconfirmed",
-        "source_first_continuation": true,
-        "identity_note": "协调者明确本次spawn未传model override、继承根派发配置gpt-6-astra；不是provider/runtime attestation。未用共享shell或生成者身份证明Reviewer模型。"
+        "override_reason": "",
+        "identity_basis": "协调器按本轮强Reviewer策略显式以gpt-5.6-sol调度隔离worker；子环境未提供可确认自身型号的独立CLI收据，故采用spawn调度依据，不把协调者或宿主型号冒充自身核实。"
       },
+      "escalation_reason": "全32篇实质修订的逐篇强模型独立复核；本篇为第07篇。",
       "scores": {
-        "evidence_fidelity": 99,
+        "evidence_fidelity": 98,
         "request_coverage": 99,
         "reasoning_quality": 98,
-        "readability": 99,
+        "readability": 97,
         "limitations": 99
       },
       "score_reasons": {
-        "evidence_fidelity": "本轮直接核对原页title、description/og:title及URL，确认节目归属和期号；正文仅替换来源标签及修订状态。31项关键claim及论文/转录判断按SHA绑定的revision 1已通过基线继承，保留99分；没有声称本轮重读论文或转录。",
-        "request_coverage": "task requirements和34个source_coverage单元与基线完全相同；来源名称勘误由读稿前冻结的LABEL-S1–S3独立地图直接复核。原需求覆盖及原地图的covered/partial状态原样继承，保留99分。",
-        "reasoning_quality": "精确文本恢复和evidence递归比较表明因果解释、数字、反例、推测与边界没有改变；节目身份修正没有被用来支持新的技术结论。本维按已通过技术基线保留98分，不是本轮重新评价全部推理。",
-        "readability": "本篇1440/390px收据的报告/evidence哈希与当前目标一致，纠正名称的链接文本和URL正确，无旧标签、乱码、横溢出或pageErrors；本篇仅复核双宽度机器收据，未声称直接目视本篇截图。其余篇章、表格和导航可读性继承基线，保留99分。",
-        "limitations": "来源read_scope和limitations完全未改，保留基线的版本、未复现实验及ASR未听音/未测WER等边界；本轮明确限制为身份勘误，未把元数据核验冒充完整材料重读。本维沿用冻结基线99分。"
+        "evidence_fidelity": "来源优先重读GNMT与Transformer全文、关键表图、版本历史、BERT WordPiece定向段、讲义两页及两段共514条转写。32条critical claims逐项成立：GNMT层数/并行/WordPiece/量化/人评数字、Transformer QKV/多头/遮罩/复杂度/训练与消融口径均准确；原文的32K速度矛盾与41.0/41.8冲突也被诚实保留。",
+        "request_coverage": "完整覆盖讲义两条路线：GNMT生产系统把速度、罕见词、漏译与评价组合解决；Transformer改变序列计算组织但仍自回归生成。报告还覆盖工程成本、失败案例、三路attention、位置编码、消融、任务迁移、团队协作和组件继承，并保留上下篇与总览导航。",
+        "reasoning_quality": "黑猫例子贯穿服务缺口、词片、覆盖、QKV与因果生成；准确区分训练并行与推理逐步、结构能力与硬件实现、BLEU与人评、单模型平均与集成、WordPiece收益与已有整词生词基线。跨论文时间和组件迁移没有被写成整机替换或单线因果。",
+        "readability": "完整逐段阅读351行正文。八张短表分别承担真实实验或概念对照，数字口径和限制紧邻，术语解释充分。Pandoc GFM+footnotes渲染成功，31个脚注定义齐全，9个本地链接存在，无乱码、异常转义或审计日志进入正文。报告篇幅与脚注密度较高但符合双论文deep报告。",
+        "limitations": "明确未训练模型、复现BLEU/人评或测试当前服务；速度表与成本表不被当作受控架构因果。生产人评限简单孤立句，注意力图限定性示例，人物现职和绝对首创未采用；ASR未听校、含重复且尾部约16秒未知。"
       },
-      "weighted_score": 98.8,
       "critical_claim_ids_checked": [
         "C1",
         "C2",
@@ -63,7 +61,8 @@
         "C28",
         "C29",
         "C30",
-        "C31"
+        "C31",
+        "C32"
       ],
       "coverage_unit_ids_checked": [
         "U1",
@@ -99,174 +98,10 @@
         "U31",
         "U32",
         "U33",
-        "U34"
-      ],
-      "source_ids_checked": [
-        "GNMT",
-        "TRANSFORMER",
-        "GNMT_HISTORY",
-        "TRANSFORMER_HISTORY",
-        "BERT",
-        "SLIDE",
-        "SHOWNOTES",
-        "ASR",
-        "TRANSCRIPT_REVIEW",
-        "TRANSCRIPT_AUDIT",
-        "SEQ2SEQ_CHAPTER",
-        "RESNET_CHAPTER",
-        "MAIN_NAV"
-      ],
-      "requirement_ids_checked": [
-        "R1",
-        "R2",
-        "R3",
-        "R4",
-        "R5",
-        "R6"
-      ],
-      "critical_claim_ids_checked_direct": [],
-      "critical_claim_ids_checked_inherited": [
-        "C1",
-        "C2",
-        "C3",
-        "C4",
-        "C5",
-        "C6",
-        "C7",
-        "C8",
-        "C9",
-        "C10",
-        "C11",
-        "C12",
-        "C13",
-        "C14",
-        "C15",
-        "C16",
-        "C17",
-        "C18",
-        "C19",
-        "C20",
-        "C21",
-        "C22",
-        "C23",
-        "C24",
-        "C25",
-        "C26",
-        "C27",
-        "C28",
-        "C29",
-        "C30",
-        "C31"
-      ],
-      "coverage_unit_ids_checked_direct": [
-        "U31"
-      ],
-      "coverage_unit_ids_checked_inherited": [
-        "U1",
-        "U2",
-        "U3",
-        "U4",
-        "U5",
-        "U6",
-        "U7",
-        "U8",
-        "U9",
-        "U10",
-        "U11",
-        "U12",
-        "U13",
-        "U14",
-        "U15",
-        "U16",
-        "U17",
-        "U18",
-        "U19",
-        "U20",
-        "U21",
-        "U22",
-        "U23",
-        "U24",
-        "U25",
-        "U26",
-        "U27",
-        "U28",
-        "U29",
-        "U30",
-        "U31",
-        "U32",
-        "U33",
-        "U34"
-      ],
-      "source_ids_checked_direct": [
-        "SHOWNOTES"
-      ],
-      "source_ids_checked_inherited": [
-        "GNMT",
-        "TRANSFORMER",
-        "GNMT_HISTORY",
-        "TRANSFORMER_HISTORY",
-        "BERT",
-        "SLIDE",
-        "SHOWNOTES",
-        "ASR",
-        "TRANSCRIPT_REVIEW",
-        "TRANSCRIPT_AUDIT",
-        "SEQ2SEQ_CHAPTER",
-        "RESNET_CHAPTER",
-        "MAIN_NAV"
-      ],
-      "requirement_ids_checked_direct": [
-        "R1",
-        "R5"
-      ],
-      "requirement_ids_checked_inherited": [
-        "R1",
-        "R2",
-        "R3",
-        "R4",
-        "R5",
-        "R6"
+        "U34",
+        "U35"
       ],
       "source_content_map": [
-        {
-          "id": "LABEL-S1",
-          "title": "公开原页所属节目为《张小珺Jùn｜商业访谈录》",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "SHOWNOTES"
-          ],
-          "matched_coverage_unit_ids": [
-            "U31"
-          ],
-          "notes": "读五篇待审稿前已直接核对原页description。候选正文所含节目名称均为《张小珺Jùn｜商业访谈录》，原晚点聊标签已清除；本次只直接核查节目归属。 matched coverage仅直接核身份/引用子项，其他内容沿用基线。"
-        },
-        {
-          "id": "LABEL-S2",
-          "title": "该URL是第117期论文探索之旅",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "SHOWNOTES"
-          ],
-          "matched_coverage_unit_ids": [
-            "U31"
-          ],
-          "notes": "直接核对title、og:title与URL，第117期论文探索之旅与原链接相符。报告的“AI演义”用作内容简称；未改变期号、URL或任何链接目标。 matched coverage仅直接核身份/引用子项，其他内容沿用基线。"
-        },
-        {
-          "id": "LABEL-S3",
-          "title": "来源身份更正不提供新的论文或转写结论",
-          "importance": "supporting",
-          "assessment": "covered",
-          "source_ids": [
-            "SHOWNOTES"
-          ],
-          "matched_coverage_unit_ids": [
-            "U31"
-          ],
-          "notes": "公开页身份元数据只支持节目标签及链接对应关系。当前evidence明确记录冻结继承；read_scope、claims、source_coverage、task和limitations逐项完全不变。 matched coverage仅直接核身份/引用子项，其他内容沿用基线。"
-        },
         {
           "id": "T-U01",
           "title": "问题不是“注意力首次出现”，而是移除序列对齐的递归/卷积",
@@ -373,7 +208,7 @@
           "matched_coverage_unit_ids": [
             "U16"
           ],
-          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+          "notes": "Transformer §3.2.2。8头使用不同投影、拼接与输出投影，不是模型集成、GPU数或固定语法职责；新增说明每头K/V降到64维，使原base配置总Attention成本与全维单头相近，但不推出任意加头免费。"
         },
         {
           "id": "T-U09",
@@ -477,7 +312,7 @@
           "matched_coverage_unit_ids": [
             "U25"
           ],
-          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文覆盖dropout、label smoothing与BLEU消融；未展开label smoothing使PPL变差而BLEU改善的反直觉细节。"
+          "notes": "Transformer §5.4/§6.2/Table3。正文准确呈现dropout与label smoothing消融；新增说明标签平滑让困惑度变差却提高BLEU，强调概率拟合指标与生成译文指标不必同步。"
         },
         {
           "id": "T-U17",
@@ -661,7 +496,7 @@
           "matched_coverage_unit_ids": [
             "U4"
           ],
-          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+          "notes": "正文准确解释共享WordPiece词片、原始Jet/feud示例和低频字符边界；新增明确整词基线也用首尾字符UNK标记并按Attention复制源词替换，避免把词片对照写成与“完全无生词处理”的弱基线比较。"
         },
         {
           "id": "G-U06",
@@ -700,7 +535,7 @@
           "matched_coverage_unit_ids": [
             "U7"
           ],
-          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+          "notes": "GNMT §6/Table1。正文区分8-bit权重/乘法、更宽累加器、16-bit状态/激活/逐元素运算，以及未量化的Attention/softmax；训练全精度并裁剪范围。CPU/GPU/TPU表被限定为硬件与实现比较，未称纯量化消融。"
         },
         {
           "id": "G-U09",
@@ -865,7 +700,7 @@
           "matched_coverage_unit_ids": [
             "U31"
           ],
-          "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+          "notes": "Shownotes与转录显示两段分属Part1 Transformer和Part3 GNMT，361+153段合514段；正文明确中间主题未选不是缺音，同SHA结构审计可继承但未听音。"
         },
         {
           "id": "C-U03",
@@ -917,157 +752,175 @@
             "U29"
           ],
           "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+        },
+        {
+          "id": "SN1",
+          "title": "Shownotes 01:30：探索的缘起",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES",
+            "ASR",
+            "TRANSCRIPT_REVIEW",
+            "TRANSCRIPT_AUDIT"
+          ],
+          "matched_coverage_unit_ids": [
+            "U31"
+          ],
+          "notes": "完整Shownotes章节留痕用于界定整期路线和本篇双区间范围；不要求本篇展开其他论文。Transformer由Part1段落定位，GNMT由Part3段落定位；同SHA整期结构收据可继承。"
+        },
+        {
+          "id": "SN2",
+          "title": "Shownotes 07:25：怎么读论文（用AI学AI）",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES",
+            "ASR",
+            "TRANSCRIPT_REVIEW",
+            "TRANSCRIPT_AUDIT"
+          ],
+          "matched_coverage_unit_ids": [
+            "U31"
+          ],
+          "notes": "完整Shownotes章节留痕用于界定整期路线和本篇双区间范围；不要求本篇展开其他论文。Transformer由Part1段落定位，GNMT由Part3段落定位；同SHA整期结构收据可继承。"
+        },
+        {
+          "id": "SN3",
+          "title": "Shownotes 10:20：辅助小工具和路书",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES",
+            "ASR",
+            "TRANSCRIPT_REVIEW",
+            "TRANSCRIPT_AUDIT"
+          ],
+          "matched_coverage_unit_ids": [
+            "U31"
+          ],
+          "notes": "完整Shownotes章节留痕用于界定整期路线和本篇双区间范围；不要求本篇展开其他论文。Transformer由Part1段落定位，GNMT由Part3段落定位；同SHA整期结构收据可继承。"
+        },
+        {
+          "id": "SN4",
+          "title": "Shownotes 19:35：Part 1模型范式变迁，含Transformer",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES",
+            "ASR",
+            "TRANSCRIPT_REVIEW",
+            "TRANSCRIPT_AUDIT"
+          ],
+          "matched_coverage_unit_ids": [
+            "U31"
+          ],
+          "notes": "完整Shownotes章节留痕用于界定整期路线和本篇双区间范围；不要求本篇展开其他论文。Transformer由Part1段落定位，GNMT由Part3段落定位；同SHA整期结构收据可继承。"
+        },
+        {
+          "id": "SN5",
+          "title": "Shownotes 01:52:58：Part 2 Infra与数据的变迁",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES",
+            "ASR",
+            "TRANSCRIPT_REVIEW",
+            "TRANSCRIPT_AUDIT"
+          ],
+          "matched_coverage_unit_ids": [
+            "U31"
+          ],
+          "notes": "完整Shownotes章节留痕用于界定整期路线和本篇双区间范围；不要求本篇展开其他论文。Transformer由Part1段落定位，GNMT由Part3段落定位；同SHA整期结构收据可继承。"
+        },
+        {
+          "id": "SN6",
+          "title": "Shownotes 02:21:29：Part 3语言模型的发展，含GNMT/Google Translate",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES",
+            "ASR",
+            "TRANSCRIPT_REVIEW",
+            "TRANSCRIPT_AUDIT"
+          ],
+          "matched_coverage_unit_ids": [
+            "U31"
+          ],
+          "notes": "完整Shownotes章节留痕用于界定整期路线和本篇双区间范围；不要求本篇展开其他论文。Transformer由Part1段落定位，GNMT由Part3段落定位；同SHA整期结构收据可继承。"
+        },
+        {
+          "id": "SN7",
+          "title": "Shownotes 03:08:08：Part 4多模态模型的发展",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES",
+            "ASR",
+            "TRANSCRIPT_REVIEW",
+            "TRANSCRIPT_AUDIT"
+          ],
+          "matched_coverage_unit_ids": [
+            "U31"
+          ],
+          "notes": "完整Shownotes章节留痕用于界定整期路线和本篇双区间范围；不要求本篇展开其他论文。Transformer由Part1段落定位，GNMT由Part3段落定位；同SHA整期结构收据可继承。"
+        },
+        {
+          "id": "SN8",
+          "title": "Shownotes 03:56:38：最后的聊天",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "SHOWNOTES",
+            "ASR",
+            "TRANSCRIPT_REVIEW",
+            "TRANSCRIPT_AUDIT"
+          ],
+          "matched_coverage_unit_ids": [
+            "U31"
+          ],
+          "notes": "完整Shownotes章节留痕用于界定整期路线和本篇双区间范围；不要求本篇展开其他论文。Transformer由Part1段落定位，GNMT由Part3段落定位；同SHA整期结构收据可继承。"
         }
       ],
-      "source_content_map_ids_direct": [
-        "LABEL-S1",
-        "LABEL-S2",
-        "LABEL-S3"
+      "source_ids_checked": [
+        "GNMT",
+        "TRANSFORMER",
+        "GNMT_HISTORY",
+        "TRANSFORMER_HISTORY",
+        "BERT",
+        "SLIDE",
+        "SHOWNOTES",
+        "ASR",
+        "TRANSCRIPT_REVIEW",
+        "TRANSCRIPT_AUDIT",
+        "SEQ2SEQ_CHAPTER",
+        "RESNET_CHAPTER",
+        "MAIN_NAV"
       ],
-      "source_content_map_ids_inherited": [
-        "T-U01",
-        "T-U02",
-        "T-U03",
-        "T-U04",
-        "T-U05",
-        "T-U06",
-        "T-U07",
-        "T-U08",
-        "T-U09",
-        "T-U10",
-        "T-U11",
-        "T-U12",
-        "T-U13",
-        "T-U14",
-        "T-U15",
-        "T-U16",
-        "T-U17",
-        "T-U18",
-        "T-U19",
-        "T-U20",
-        "T-U21",
-        "T-U22",
-        "T-U23",
-        "T-U24",
-        "T-U25",
-        "G-U01",
-        "G-U02",
-        "G-U03",
-        "G-U04",
-        "G-U05",
-        "G-U06",
-        "G-U07",
-        "G-U08",
-        "G-U09",
-        "G-U10",
-        "G-U11",
-        "G-U12",
-        "G-U13",
-        "G-U14",
-        "G-U15",
-        "G-U16",
-        "G-U17",
-        "G-U18",
-        "C-U01",
-        "C-U02",
-        "C-U03",
-        "C-U04",
-        "C-U05"
+      "requirement_ids_checked": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6"
       ],
       "unsupported_claims": [],
       "missing_requirements": [],
       "hard_failures": [],
-      "review_revision_round": 2,
-      "snapshot_verified": true,
-      "report_sha256": "445d578e8b753b3be3e6d946933ebf56dc868d00e80da929f2fc57f4c0208847",
-      "evidence_sha256": "a32039f5df2900c5c2a824807520e3c73e0a268b82fa62dea17677cf3ae2cce8",
-      "snapshot": {
-        "report_path": "ai-learning/reports/knowledge_reports/AI演义_07_GNMT与Transformer_从翻译系统到并行架构_科普讲解_20261105.md",
-        "evidence_path": "ai-learning/reports/knowledge_reports/.quality/AI演义_07_GNMT与Transformer_从翻译系统到并行架构_科普讲解_20261105.evidence.json",
-        "report_sha256": "445d578e8b753b3be3e6d946933ebf56dc868d00e80da929f2fc57f4c0208847",
-        "evidence_sha256": "a32039f5df2900c5c2a824807520e3c73e0a268b82fa62dea17677cf3ae2cce8",
-        "revision_round": 2
-      },
-      "incremental_scope": {
-        "kind": "source-label-correction",
-        "direct_scope": "直接读取原页身份元数据；独立验证正文的精确允许替换、evidence允许字段、所有链接目标、当前/基线哈希、基线通过收据与新名称渲染收据。",
-        "inherited_scope": "技术正文、论文/讲义/转录的内容判断、机器转录结构审计、原始来源地图与既有呈现/导航验证均按冻结基线继承；原地图partial不升级。",
-        "checked_array_semantics": "总checked数组包含本轮已验证可继承的基线集合；direct数组仅说明局部直接核查。direct与inherited重叠表示同一ID中的身份/渲染子项直接复核、技术/旧内容子项继承，绝不表示整单元本轮重读。",
-        "direct_requirement_scope": {
-          "R1": "仅原节目所属名称、期号及链接对应关系。",
-          "R5": "仅本次纠正标签在1440/390px下的渲染收据；原导航及其他呈现沿用基线。"
-        },
-        "original_papers_reread_this_revision": false,
-        "transcript_reread_or_reaudited_this_revision": false,
-        "generator_research_notes_read": false,
-        "public_files_modified_by_reviewer": false,
-        "baseline": {
-          "revision_round": 1,
-          "report_file": "07-before.report.md",
-          "evidence_file": "07-before.evidence.json",
-          "review_file": "07-before.review.json",
-          "report_sha256": "a28a65d08e275d3843f0554ce27d606510c8d4dacaba4acd9f95754b9c3df2e2",
-          "evidence_sha256": "822bf5a19106f6cb99f0b00b96e970cb65d5f1980bab392699fa9f76c0834d20",
-          "review_sha256": "07169808dd99c0ce8e2faf39c5cba85120c210feb6ed3a39a00851d4bdf0e36b",
-          "decision": {
-            "status": "pass",
-            "score": 98.8,
-            "evaluated_on": "2026-11-05",
-            "policy_id": "report-quality-2026-10-18-r2",
-            "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
-            "report_sha256": "a28a65d08e275d3843f0554ce27d606510c8d4dacaba4acd9f95754b9c3df2e2",
-            "evidence_sha256": "822bf5a19106f6cb99f0b00b96e970cb65d5f1980bab392699fa9f76c0834d20"
-          },
-          "check_receipt_file": "07-baseline-check.json",
-          "check_receipt_sha256": "3ab84207a149535df6425864678717c95a4408ab05eb9286eb897291a27c01a8",
-          "check_receipt_status": "pass",
-          "check_receipt_errors": [],
-          "check_receipt_warnings": []
-        },
-        "scope_audit": {
-          "file": "primary-source-label-scope-audit.json",
-          "sha256": "94efda1efa455a2dceb7d0249c4c16d2824c7747254ce7a83b97dee124453574",
-          "chapter": 7
-        },
-        "source_alias_map_for_inherited_map": {},
-        "source_alias_basis": "冻结地图已使用当前source IDs，无需转换。"
-      },
-      "source_priority_map": {
-        "file": "primary-identity-source-map.json",
-        "sha256": "06c345ab85c857a1312954cb09c70ee43699d6538007de7e9c8f2848eb68eb12",
-        "frozen_before_target_reports_read": true,
-        "scope": "仅本次身份勘误；技术来源地图另按冻结基线明确继承。"
-      },
-      "identity_source_receipt": {
-        "file": "episode-identity-read.json",
-        "sha256": "96781505dddc5ae22487657983c5dff1f74d5294042adbe02f54f38169bf4436",
-        "capability": "web.read",
-        "ok": true,
-        "url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
-        "read_scope": "直接读取title、URL、description与metadata.description/og:title。"
-      },
-      "render_receipt_review": {
-        "file": "primary-source-label-render-audit.json",
-        "sha256": "14e683860af4093b5d184ef9b7d3fad19cb9189c3fc79937e5f439a5a0f67e1d",
-        "chapter": 7,
-        "receipt_widths_read": [
-          1440,
-          390
-        ],
-        "manual_image_samples": [],
-        "browser_actions_performed_by_this_reviewer": false
-      },
-      "notes": "本记录是report-review-v1的单条reviews item。本轮先核原始公开页身份并冻结LABEL地图，再审五篇标签勘误；关键事实和技术评分来自SHA核验通过的冻结基线，保留而不冒称重新完整复核。正文与账本只发生允许的名称/修订元数据变化，未发现本次勘误引入新的unsupported claim、missing requirement或hard failure。该记录不宣称最终quality gate通过；生成者汇入后仍需完成正式检查。"
+      "notes": "revision3快照绑定：report SHA-256 da6355e33472dd4784b425d9031dbbfa21b13fff2226a5ae2ceb4171d7804201；evidence SHA-256 2d6f2af5e0dbb9aa1cf5a808394f1ca168eaf0c4663ce2e0872ce8a374e52404。开始审阅与落盘前均核对一致。\n独立顺序为先读GNMT/Transformer原文、版本历史、BERT定向段、讲义、两段ASR和Shownotes，建立双路线内容地图，再完整读正文、evidence及相对HEAD diff；未接收作者推理。\n两段361+153条转录与整期结构审计绑定同一transcript SHA 919e4c…745b05，输入未变，本轮核对transcription-review和公开audit后明确继承，不冒充重转或听音。shownotes八个主章节逐项留痕用于双区间范围。\n本轮实质变化复验：整词基线的UNK首尾字符和Attention复制；整数乘法/累加与16-bit敏感状态边界；多头降维后的成本解释；label smoothing困惑度/BLEU反向变化；第08篇直链及执行措辞收敛。均有来源支持。\n富文本检查仅限Markdown报告、8张表、31个脚注、公式字符和本地链接；历史浏览器截图不冒充本轮执行，未启动工作台功能验收。\n当前未发现需要修订的事实、数字、推理、覆盖、引用或呈现缺陷；最终判定由report_quality.py check计算，本Reviewer不finalize、不提交。",
+      "reviewed_report_sha256": "da6355e33472dd4784b425d9031dbbfa21b13fff2226a5ae2ceb4171d7804201",
+      "reviewed_evidence_sha256": "2d6f2af5e0dbb9aa1cf5a808394f1ca168eaf0c4663ce2e0872ce8a374e52404"
     }
   ],
   "decision": {
     "status": "pass",
-    "score": 98.8,
-    "evaluated_on": "2026-11-05",
+    "score": 98.15,
+    "evaluated_on": "2026-11-06",
     "policy_id": "report-quality-2026-10-18-r2",
     "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
-    "report_sha256": "3effea09762f4d5cce95365d8f110c356c7b7dbc629081f6ba145afdda6b1a3c",
-    "evidence_sha256": "a32039f5df2900c5c2a824807520e3c73e0a268b82fa62dea17677cf3ae2cce8"
+    "report_sha256": "bd22da959490c1eca59c9eb7e2da46808630a80890054699c2e71c6b6be91013",
+    "evidence_sha256": "2d6f2af5e0dbb9aa1cf5a808394f1ca168eaf0c4663ce2e0872ce8a374e52404"
   },
   "history": [
     {
@@ -1900,6 +1753,1075 @@
         "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
         "report_sha256": "a28a65d08e275d3843f0554ce27d606510c8d4dacaba4acd9f95754b9c3df2e2",
         "evidence_sha256": "822bf5a19106f6cb99f0b00b96e970cb65d5f1980bab392699fa9f76c0834d20"
+      }
+    },
+    {
+      "revision_round": 2,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "gpt-6-astra",
+            "harness": "codex_collab2_subagent",
+            "run_id": "source-label-07-primary-review-20261105",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "identity_basis": "inherited_dispatch_configuration",
+            "runtime_model": "unconfirmed",
+            "source_first_continuation": true,
+            "identity_note": "协调者明确本次spawn未传model override、继承根派发配置gpt-6-astra；不是provider/runtime attestation。未用共享shell或生成者身份证明Reviewer模型。"
+          },
+          "scores": {
+            "evidence_fidelity": 99,
+            "request_coverage": 99,
+            "reasoning_quality": 98,
+            "readability": 99,
+            "limitations": 99
+          },
+          "score_reasons": {
+            "evidence_fidelity": "本轮直接核对原页title、description/og:title及URL，确认节目归属和期号；正文仅替换来源标签及修订状态。31项关键claim及论文/转录判断按SHA绑定的revision 1已通过基线继承，保留99分；没有声称本轮重读论文或转录。",
+            "request_coverage": "task requirements和34个source_coverage单元与基线完全相同；来源名称勘误由读稿前冻结的LABEL-S1–S3独立地图直接复核。原需求覆盖及原地图的covered/partial状态原样继承，保留99分。",
+            "reasoning_quality": "精确文本恢复和evidence递归比较表明因果解释、数字、反例、推测与边界没有改变；节目身份修正没有被用来支持新的技术结论。本维按已通过技术基线保留98分，不是本轮重新评价全部推理。",
+            "readability": "本篇1440/390px收据的报告/evidence哈希与当前目标一致，纠正名称的链接文本和URL正确，无旧标签、乱码、横溢出或pageErrors；本篇仅复核双宽度机器收据，未声称直接目视本篇截图。其余篇章、表格和导航可读性继承基线，保留99分。",
+            "limitations": "来源read_scope和limitations完全未改，保留基线的版本、未复现实验及ASR未听音/未测WER等边界；本轮明确限制为身份勘误，未把元数据核验冒充完整材料重读。本维沿用冻结基线99分。"
+          },
+          "weighted_score": 98.8,
+          "critical_claim_ids_checked": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "C16",
+            "C17",
+            "C18",
+            "C19",
+            "C20",
+            "C21",
+            "C22",
+            "C23",
+            "C24",
+            "C25",
+            "C26",
+            "C27",
+            "C28",
+            "C29",
+            "C30",
+            "C31"
+          ],
+          "coverage_unit_ids_checked": [
+            "U1",
+            "U2",
+            "U3",
+            "U4",
+            "U5",
+            "U6",
+            "U7",
+            "U8",
+            "U9",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14",
+            "U15",
+            "U16",
+            "U17",
+            "U18",
+            "U19",
+            "U20",
+            "U21",
+            "U22",
+            "U23",
+            "U24",
+            "U25",
+            "U26",
+            "U27",
+            "U28",
+            "U29",
+            "U30",
+            "U31",
+            "U32",
+            "U33",
+            "U34"
+          ],
+          "source_ids_checked": [
+            "GNMT",
+            "TRANSFORMER",
+            "GNMT_HISTORY",
+            "TRANSFORMER_HISTORY",
+            "BERT",
+            "SLIDE",
+            "SHOWNOTES",
+            "ASR",
+            "TRANSCRIPT_REVIEW",
+            "TRANSCRIPT_AUDIT",
+            "SEQ2SEQ_CHAPTER",
+            "RESNET_CHAPTER",
+            "MAIN_NAV"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6"
+          ],
+          "critical_claim_ids_checked_direct": [],
+          "critical_claim_ids_checked_inherited": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8",
+            "C9",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "C16",
+            "C17",
+            "C18",
+            "C19",
+            "C20",
+            "C21",
+            "C22",
+            "C23",
+            "C24",
+            "C25",
+            "C26",
+            "C27",
+            "C28",
+            "C29",
+            "C30",
+            "C31"
+          ],
+          "coverage_unit_ids_checked_direct": [
+            "U31"
+          ],
+          "coverage_unit_ids_checked_inherited": [
+            "U1",
+            "U2",
+            "U3",
+            "U4",
+            "U5",
+            "U6",
+            "U7",
+            "U8",
+            "U9",
+            "U10",
+            "U11",
+            "U12",
+            "U13",
+            "U14",
+            "U15",
+            "U16",
+            "U17",
+            "U18",
+            "U19",
+            "U20",
+            "U21",
+            "U22",
+            "U23",
+            "U24",
+            "U25",
+            "U26",
+            "U27",
+            "U28",
+            "U29",
+            "U30",
+            "U31",
+            "U32",
+            "U33",
+            "U34"
+          ],
+          "source_ids_checked_direct": [
+            "SHOWNOTES"
+          ],
+          "source_ids_checked_inherited": [
+            "GNMT",
+            "TRANSFORMER",
+            "GNMT_HISTORY",
+            "TRANSFORMER_HISTORY",
+            "BERT",
+            "SLIDE",
+            "SHOWNOTES",
+            "ASR",
+            "TRANSCRIPT_REVIEW",
+            "TRANSCRIPT_AUDIT",
+            "SEQ2SEQ_CHAPTER",
+            "RESNET_CHAPTER",
+            "MAIN_NAV"
+          ],
+          "requirement_ids_checked_direct": [
+            "R1",
+            "R5"
+          ],
+          "requirement_ids_checked_inherited": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6"
+          ],
+          "source_content_map": [
+            {
+              "id": "LABEL-S1",
+              "title": "公开原页所属节目为《张小珺Jùn｜商业访谈录》",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "SHOWNOTES"
+              ],
+              "matched_coverage_unit_ids": [
+                "U31"
+              ],
+              "notes": "读五篇待审稿前已直接核对原页description。候选正文所含节目名称均为《张小珺Jùn｜商业访谈录》，原晚点聊标签已清除；本次只直接核查节目归属。 matched coverage仅直接核身份/引用子项，其他内容沿用基线。"
+            },
+            {
+              "id": "LABEL-S2",
+              "title": "该URL是第117期论文探索之旅",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "SHOWNOTES"
+              ],
+              "matched_coverage_unit_ids": [
+                "U31"
+              ],
+              "notes": "直接核对title、og:title与URL，第117期论文探索之旅与原链接相符。报告的“AI演义”用作内容简称；未改变期号、URL或任何链接目标。 matched coverage仅直接核身份/引用子项，其他内容沿用基线。"
+            },
+            {
+              "id": "LABEL-S3",
+              "title": "来源身份更正不提供新的论文或转写结论",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "SHOWNOTES"
+              ],
+              "matched_coverage_unit_ids": [
+                "U31"
+              ],
+              "notes": "公开页身份元数据只支持节目标签及链接对应关系。当前evidence明确记录冻结继承；read_scope、claims、source_coverage、task和limitations逐项完全不变。 matched coverage仅直接核身份/引用子项，其他内容沿用基线。"
+            },
+            {
+              "id": "T-U01",
+              "title": "问题不是“注意力首次出现”，而是移除序列对齐的递归/卷积",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "TRANSFORMER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U14",
+                "U17"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文准确说明去循环主干和自注意力转向，但没有展开memory network、卷积seq2seq等完整前史。"
+            },
+            {
+              "id": "T-U02",
+              "title": "去递归的直接动机是训练样本内的顺序依赖",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "TRANSFORMER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U14"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+            },
+            {
+              "id": "T-U03",
+              "title": "Transformer仍保留encoder-decoder与自回归输出",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "TRANSFORMER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U19",
+                "U20"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+            },
+            {
+              "id": "T-U04",
+              "title": "Encoder层结构",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "TRANSFORMER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U17"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+            },
+            {
+              "id": "T-U05",
+              "title": "Decoder层结构与因果mask",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "TRANSFORMER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U17",
+                "U19",
+                "U20"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+            },
+            {
+              "id": "T-U06",
+              "title": "Query-Key-Value抽象与加权值",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "TRANSFORMER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U15"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+            },
+            {
+              "id": "T-U07",
+              "title": "Scaled Dot-Product Attention公式与缩放动机",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "TRANSFORMER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U15"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+            },
+            {
+              "id": "T-U08",
+              "title": "Multi-Head不是复制相同注意力图",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "TRANSFORMER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U16"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+            },
+            {
+              "id": "T-U09",
+              "title": "三种multi-head attention用途",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "TRANSFORMER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U19"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+            },
+            {
+              "id": "T-U10",
+              "title": "逐位置FFN、embedding/softmax共享仍是模型核心",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "TRANSFORMER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U17"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文覆盖逐位置FFN、embedding与最终softmax，但省略embedding/pre-softmax权重共享及embedding乘sqrt(d_model)的实现细节。"
+            },
+            {
+              "id": "T-U11",
+              "title": "无递归时必须显式加入位置信息",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "TRANSFORMER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U18"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+            },
+            {
+              "id": "T-U12",
+              "title": "Self-attention的并行、路径与二次成本权衡",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "TRANSFORMER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U21"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+            },
+            {
+              "id": "T-U13",
+              "title": "“可解释attention”只是附录定性观察",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "TRANSFORMER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U27"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+            },
+            {
+              "id": "T-U14",
+              "title": "翻译训练数据与tokenization",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "TRANSFORMER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U22"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+            },
+            {
+              "id": "T-U15",
+              "title": "base/big训练硬件、规模与调度",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "TRANSFORMER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U22"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文覆盖P100、参数量、训练步数对应时间；Adam系数、warmup与step^-0.5调度只在脚注概述，未逐参数展开。"
+            },
+            {
+              "id": "T-U16",
+              "title": "Dropout与label smoothing的反直觉结果",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "TRANSFORMER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U25"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文覆盖dropout、label smoothing与BLEU消融；未展开label smoothing使PPL变差而BLEU改善的反直觉细节。"
+            },
+            {
+              "id": "T-U17",
+              "title": "翻译主结果与单模型/检查点平均",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "TRANSFORMER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U22",
+                "U23"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+            },
+            {
+              "id": "T-U18",
+              "title": "论文内部英法41.8与41.0不一致",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "TRANSFORMER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U24"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+            },
+            {
+              "id": "T-U19",
+              "title": "训练成本比较是估算FLOPs而非统一实测墙钟",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "TRANSFORMER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U23"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+            },
+            {
+              "id": "T-U20",
+              "title": "组件消融/变化显示最佳点而非越多越好",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "TRANSFORMER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U25"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+            },
+            {
+              "id": "T-U21",
+              "title": "英语成分句法解析提供跨任务证据但非全面SOTA",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "TRANSFORMER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U26"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+            },
+            {
+              "id": "T-U22",
+              "title": "输出生成仍顺序，论文自己把减少生成顺序性列为未来目标",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "TRANSFORMER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U20"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+            },
+            {
+              "id": "T-U23",
+              "title": "作者贡献脚注属于当前v7版本证据",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "TRANSFORMER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U28"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+            },
+            {
+              "id": "T-U24",
+              "title": "从Bahdanau additive attention到Transformer的关系与差异",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "TRANSFORMER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U29"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文用上一节连接Attention前史，并写GNMT/Transformer部件承接；未在本章单独重述Bahdanau additive attention与scaled dot-product的逐项差异。"
+            },
+            {
+              "id": "T-U25",
+              "title": "“Attention Is All You Need”不是架构只含attention",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "TRANSFORMER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U17"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+            },
+            {
+              "id": "G-U01",
+              "title": "GNMT针对生产部署的四类缺口",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "GNMT"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+            },
+            {
+              "id": "G-U02",
+              "title": "深层LSTM encoder-decoder与attention总体结构",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "GNMT"
+              ],
+              "matched_coverage_unit_ids": [
+                "U2"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+            },
+            {
+              "id": "G-U03",
+              "title": "残差连接是借用思想，不是使用视觉ResNet网络",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "GNMT"
+              ],
+              "matched_coverage_unit_ids": [
+                "U2"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+            },
+            {
+              "id": "G-U04",
+              "title": "模型并行反过来约束架构",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "GNMT"
+              ],
+              "matched_coverage_unit_ids": [
+                "U2",
+                "U3"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+            },
+            {
+              "id": "G-U05",
+              "title": "WordPiece把开放词表变成可逆子词序列",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "GNMT"
+              ],
+              "matched_coverage_unit_ids": [
+                "U4"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+            },
+            {
+              "id": "G-U06",
+              "title": "字符与混合方案展示子词的真实取舍",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "GNMT"
+              ],
+              "matched_coverage_unit_ids": [
+                "U5"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】表格覆盖词、字符、16K/32K WordPiece的质量速度取舍；mixed word/character方案未进正文。"
+            },
+            {
+              "id": "G-U07",
+              "title": "ML目标与序列级RL/GLEU refinement",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "GNMT"
+              ],
+              "matched_coverage_unit_ids": [
+                "U9"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文准确解释ML后可选GLEU强化学习及1–4 gram口径；15个采样序列和α≈0.017等训练参数按少数学范围省略。"
+            },
+            {
+              "id": "G-U08",
+              "title": "量化感知训练与整数推理的精确范围",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "GNMT"
+              ],
+              "matched_coverage_unit_ids": [
+                "U7"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+            },
+            {
+              "id": "G-U09",
+              "title": "CPU/GPU/TPU速度比较是特定实现反例",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "GNMT"
+              ],
+              "matched_coverage_unit_ids": [
+                "U8"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+            },
+            {
+              "id": "G-U10",
+              "title": "Length normalization、coverage penalty与搜索剪枝",
+              "importance": "core",
+              "assessment": "partial",
+              "source_ids": [
+                "GNMT"
+              ],
+              "matched_coverage_unit_ids": [
+                "U6"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文覆盖长度归一与coverage penalty的作用和边界；30.3→31.4开发集增益、RL后边际变小及CPU剪枝30–40%未展开。"
+            },
+            {
+              "id": "G-U11",
+              "title": "训练系统与预算",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "GNMT"
+              ],
+              "matched_coverage_unit_ids": [
+                "U3"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+            },
+            {
+              "id": "G-U12",
+              "title": "WMT单模型结果是8次独立训练的平均",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "GNMT"
+              ],
+              "matched_coverage_unit_ids": [
+                "U5",
+                "U10"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+            },
+            {
+              "id": "G-U13",
+              "title": "RL提高BLEU并非稳定提高test或人感知",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "GNMT"
+              ],
+              "matched_coverage_unit_ids": [
+                "U10",
+                "U11"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+            },
+            {
+              "id": "G-U14",
+              "title": "8模型ensemble的公开benchmark成绩",
+              "importance": "supporting",
+              "assessment": "partial",
+              "source_ids": [
+                "GNMT"
+              ],
+              "matched_coverage_unit_ids": [
+                "U11"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文详细覆盖英法8模型集成与人评反例；英德ensemble 26.20→26.30未写入。"
+            },
+            {
+              "id": "G-U15",
+              "title": "生产人评“约60%错误降低”的样本和定义",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "GNMT"
+              ],
+              "matched_coverage_unit_ids": [
+                "U12"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+            },
+            {
+              "id": "G-U16",
+              "title": "人评本身也有噪声和歧义",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "GNMT"
+              ],
+              "matched_coverage_unit_ids": [
+                "U13"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+            },
+            {
+              "id": "G-U17",
+              "title": "部署成功仍未“解决所有问题”",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "GNMT"
+              ],
+              "matched_coverage_unit_ids": [
+                "U1",
+                "U4",
+                "U7",
+                "U12"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+            },
+            {
+              "id": "G-U18",
+              "title": "完整团队署名与工程协作边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "GNMT"
+              ],
+              "matched_coverage_unit_ids": [
+                "U28"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+            },
+            {
+              "id": "C-U01",
+              "title": "GNMT与Transformer是生产RNN系统和去循环架构的相邻基线关系",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "GNMT",
+                "TRANSFORMER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U14",
+                "U22",
+                "U29"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+            },
+            {
+              "id": "C-U02",
+              "title": "两段播客不连续、shownotes分属Part1与Part3",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "ASR",
+                "SHOWNOTES"
+              ],
+              "matched_coverage_unit_ids": [
+                "U31"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+            },
+            {
+              "id": "C-U03",
+              "title": "讲义/口播的Transformer后续叙事边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "SLIDE",
+                "ASR",
+                "TRANSFORMER"
+              ],
+              "matched_coverage_unit_ids": [
+                "U17",
+                "U18",
+                "U20",
+                "U31"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+            },
+            {
+              "id": "C-U04",
+              "title": "讲义/口播的GNMT工程表述边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "SLIDE",
+                "ASR",
+                "GNMT"
+              ],
+              "matched_coverage_unit_ids": [
+                "U2",
+                "U7",
+                "U8",
+                "U12",
+                "U31"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+            },
+            {
+              "id": "C-U05",
+              "title": "GNMT WordPiece到BERT输入表示的可证历史连接",
+              "importance": "supporting",
+              "assessment": "covered",
+              "source_ids": [
+                "GNMT",
+                "BERT"
+              ],
+              "matched_coverage_unit_ids": [
+                "U29"
+              ],
+              "notes": "【冻结基线继承，非本轮重新读取或重新作出的技术判定】正文或来源说明已覆盖该单元的核心事实、口径与适用边界。"
+            }
+          ],
+          "source_content_map_ids_direct": [
+            "LABEL-S1",
+            "LABEL-S2",
+            "LABEL-S3"
+          ],
+          "source_content_map_ids_inherited": [
+            "T-U01",
+            "T-U02",
+            "T-U03",
+            "T-U04",
+            "T-U05",
+            "T-U06",
+            "T-U07",
+            "T-U08",
+            "T-U09",
+            "T-U10",
+            "T-U11",
+            "T-U12",
+            "T-U13",
+            "T-U14",
+            "T-U15",
+            "T-U16",
+            "T-U17",
+            "T-U18",
+            "T-U19",
+            "T-U20",
+            "T-U21",
+            "T-U22",
+            "T-U23",
+            "T-U24",
+            "T-U25",
+            "G-U01",
+            "G-U02",
+            "G-U03",
+            "G-U04",
+            "G-U05",
+            "G-U06",
+            "G-U07",
+            "G-U08",
+            "G-U09",
+            "G-U10",
+            "G-U11",
+            "G-U12",
+            "G-U13",
+            "G-U14",
+            "G-U15",
+            "G-U16",
+            "G-U17",
+            "G-U18",
+            "C-U01",
+            "C-U02",
+            "C-U03",
+            "C-U04",
+            "C-U05"
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "review_revision_round": 2,
+          "snapshot_verified": true,
+          "report_sha256": "445d578e8b753b3be3e6d946933ebf56dc868d00e80da929f2fc57f4c0208847",
+          "evidence_sha256": "a32039f5df2900c5c2a824807520e3c73e0a268b82fa62dea17677cf3ae2cce8",
+          "snapshot": {
+            "report_path": "ai-learning/reports/knowledge_reports/AI演义_07_GNMT与Transformer_从翻译系统到并行架构_科普讲解_20261105.md",
+            "evidence_path": "ai-learning/reports/knowledge_reports/.quality/AI演义_07_GNMT与Transformer_从翻译系统到并行架构_科普讲解_20261105.evidence.json",
+            "report_sha256": "445d578e8b753b3be3e6d946933ebf56dc868d00e80da929f2fc57f4c0208847",
+            "evidence_sha256": "a32039f5df2900c5c2a824807520e3c73e0a268b82fa62dea17677cf3ae2cce8",
+            "revision_round": 2
+          },
+          "incremental_scope": {
+            "kind": "source-label-correction",
+            "direct_scope": "直接读取原页身份元数据；独立验证正文的精确允许替换、evidence允许字段、所有链接目标、当前/基线哈希、基线通过收据与新名称渲染收据。",
+            "inherited_scope": "技术正文、论文/讲义/转录的内容判断、机器转录结构审计、原始来源地图与既有呈现/导航验证均按冻结基线继承；原地图partial不升级。",
+            "checked_array_semantics": "总checked数组包含本轮已验证可继承的基线集合；direct数组仅说明局部直接核查。direct与inherited重叠表示同一ID中的身份/渲染子项直接复核、技术/旧内容子项继承，绝不表示整单元本轮重读。",
+            "direct_requirement_scope": {
+              "R1": "仅原节目所属名称、期号及链接对应关系。",
+              "R5": "仅本次纠正标签在1440/390px下的渲染收据；原导航及其他呈现沿用基线。"
+            },
+            "original_papers_reread_this_revision": false,
+            "transcript_reread_or_reaudited_this_revision": false,
+            "generator_research_notes_read": false,
+            "public_files_modified_by_reviewer": false,
+            "baseline": {
+              "revision_round": 1,
+              "report_file": "07-before.report.md",
+              "evidence_file": "07-before.evidence.json",
+              "review_file": "07-before.review.json",
+              "report_sha256": "a28a65d08e275d3843f0554ce27d606510c8d4dacaba4acd9f95754b9c3df2e2",
+              "evidence_sha256": "822bf5a19106f6cb99f0b00b96e970cb65d5f1980bab392699fa9f76c0834d20",
+              "review_sha256": "07169808dd99c0ce8e2faf39c5cba85120c210feb6ed3a39a00851d4bdf0e36b",
+              "decision": {
+                "status": "pass",
+                "score": 98.8,
+                "evaluated_on": "2026-11-05",
+                "policy_id": "report-quality-2026-10-18-r2",
+                "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+                "report_sha256": "a28a65d08e275d3843f0554ce27d606510c8d4dacaba4acd9f95754b9c3df2e2",
+                "evidence_sha256": "822bf5a19106f6cb99f0b00b96e970cb65d5f1980bab392699fa9f76c0834d20"
+              },
+              "check_receipt_file": "07-baseline-check.json",
+              "check_receipt_sha256": "3ab84207a149535df6425864678717c95a4408ab05eb9286eb897291a27c01a8",
+              "check_receipt_status": "pass",
+              "check_receipt_errors": [],
+              "check_receipt_warnings": []
+            },
+            "scope_audit": {
+              "file": "primary-source-label-scope-audit.json",
+              "sha256": "94efda1efa455a2dceb7d0249c4c16d2824c7747254ce7a83b97dee124453574",
+              "chapter": 7
+            },
+            "source_alias_map_for_inherited_map": {},
+            "source_alias_basis": "冻结地图已使用当前source IDs，无需转换。"
+          },
+          "source_priority_map": {
+            "file": "primary-identity-source-map.json",
+            "sha256": "06c345ab85c857a1312954cb09c70ee43699d6538007de7e9c8f2848eb68eb12",
+            "frozen_before_target_reports_read": true,
+            "scope": "仅本次身份勘误；技术来源地图另按冻结基线明确继承。"
+          },
+          "identity_source_receipt": {
+            "file": "episode-identity-read.json",
+            "sha256": "96781505dddc5ae22487657983c5dff1f74d5294042adbe02f54f38169bf4436",
+            "capability": "web.read",
+            "ok": true,
+            "url": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
+            "read_scope": "直接读取title、URL、description与metadata.description/og:title。"
+          },
+          "render_receipt_review": {
+            "file": "primary-source-label-render-audit.json",
+            "sha256": "14e683860af4093b5d184ef9b7d3fad19cb9189c3fc79937e5f439a5a0f67e1d",
+            "chapter": 7,
+            "receipt_widths_read": [
+              1440,
+              390
+            ],
+            "manual_image_samples": [],
+            "browser_actions_performed_by_this_reviewer": false
+          },
+          "notes": "本记录是report-review-v1的单条reviews item。本轮先核原始公开页身份并冻结LABEL地图，再审五篇标签勘误；关键事实和技术评分来自SHA核验通过的冻结基线，保留而不冒称重新完整复核。正文与账本只发生允许的名称/修订元数据变化，未发现本次勘误引入新的unsupported claim、missing requirement或hard failure。该记录不宣称最终quality gate通过；生成者汇入后仍需完成正式检查。"
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 98.8,
+        "evaluated_on": "2026-11-05",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "3effea09762f4d5cce95365d8f110c356c7b7dbc629081f6ba145afdda6b1a3c",
+        "evidence_sha256": "a32039f5df2900c5c2a824807520e3c73e0a268b82fa62dea17677cf3ae2cce8"
       }
     }
   ],

@@ -3,7 +3,7 @@ title: "AI演义·06 seq2seq 与 Attention：模型怎样翻译一句话？"
 domain: "ai-learning"
 report_type: "knowledge_report"
 status: "completed"
-updated_on: "2026-11-05"
+updated_on: "2026-11-06"
 quality_schema: "report-v2"
 quality_tier: "important"
 report_depth: "deep"
@@ -138,7 +138,15 @@ Bahdanau、Cho 与 Bengio 的方案，保留源句每个位置的表示，让解
 3. **按权重汇总源信息。** 把每份 annotation 乘上对应权重，再相加，得到这一步的 **context vector，上下文向量**。
 4. **继续生成并更新状态。** 当前上下文向量与已经生成的前文一起，参与下一个词的预测和解码状态更新。下一步又重新计算权重。[^attention-model]
 
-在这个例子里，如果训练使模型学会了合适的读取方式，准备生成 noir 时，就可能更多使用 black 附近的信息；之后生成 dort 时，又可以转向 is sleeping 附近。
+“加权相加”可以用一个小算例看清。暂时只考虑两个源位置，假设它们的表示是 `[1, 0]` 与 `[0, 2]`，这一步的权重为 0.75 和 0.25，那么上下文向量就是：
+
+```text
+0.75 × [1, 0] + 0.25 × [0, 2] = [0.75, 0.5]
+```
+
+它不是把两个位置选一个留下，而是按当前比例混合信息。下一步权重变化，混合结果也可以变化。这是**自拟的两位置算术演示**，不是黑猫例子的真实模型输出；向量的两个分量也不代表人为指定的两个词义。[^attention-model]
+
+回到黑猫的翻译例子，如果训练使模型学会了合适的读取方式，准备生成 noir 时，就可能更多使用 black 附近的信息；之后生成 dort 时，又可以转向 is sleeping 附近。
 
 这里有一个关键先后关系：**打分时，模型还不知道下一个词一定是 noir。** 它依据已经存在的解码状态与源句表示，决定怎样读取，再据此预测词。不能解释成先把正确目标词拿出来，与原句逐词比较，这会把尚未产生的答案偷偷放进算法。
 
@@ -180,7 +188,9 @@ Bahdanau、Cho 与 Bengio 的方案，保留源句每个位置的表示，让解
 
 两篇都用英法翻译检验方法，但不能把摘要里的好消息合成“两篇都全面击败当时所有翻译系统”。模型数量、词表、训练时长与评分范围，都影响结果。
 
-**BLEU** 是把机器译文与参考译文比较得到的自动评价分数，这里通常越高越好；34.81 BLEU 不表示“34.81% 的句子翻译正确”。同名分数还可能受分词、大小写与评分脚本影响，跨论文比较必须保留口径。[^seq2seq-results]
+**BLEU** 是把机器译文与参考译文比较得到的自动评价分数。它检查单词及连续词片段有多少能匹配参考，对重复匹配设上限，再对过短的译文施加惩罚；否则，反复输出一个常见词，或者只译出很短的一截，都可能钻评价的空子。它主要用于整批译文的比较，不是逐句判断对错，所以 **34.81 BLEU 不表示“34.81% 的句子翻译正确”**。[^bleu]
+
+这里通常是分数越高越好，但分词、大小写与评分脚本也会影响结果，跨论文比较必须保留口径。[^seq2seq-results]
 
 ### seq2seq：最好结果来自五个模型一起判断
 
@@ -260,7 +270,7 @@ Attention 论文的三位作者是 **Dzmitry Bahdanau、Kyunghyun Cho、Yoshua B
 
 原论文还观察到，seq2seq 学出的句子表示对词序变化敏感，对某些主动、被动语态改写则较为稳定。它展示了一小组句子的二维投影，说明翻译训练有机会形成有意义的整句表示；这仍是定性例子，不是所有同义句都能被正确识别的证明。[^seq2seq-representation]
 
-接下来就轮到另一个问题：既然可以在生成时灵活读取信息，**表示本身是否还必须沿循环状态链一步一步计算？** [继续第 7 节：GNMT 与 Transformer](../AI演义_笔记分析与项目整合报告.md#paper-gnmt)，再看系统规模与网络结构怎样继续变化。
+接下来就轮到另一个问题：既然可以在生成时灵活读取信息，**表示本身是否还必须沿循环状态链一步一步计算？** [继续第 7 篇：GNMT 与 Transformer](./AI演义_07_GNMT与Transformer_从翻译系统到并行架构_科普讲解_20261105.md)，再看系统规模与网络结构怎样继续变化。
 
 <a id="questions"></a>
 
@@ -278,9 +288,11 @@ Attention 论文的三位作者是 **Dzmitry Bahdanau、Kyunghyun Cho、Yoshua B
 
 讲义与播客给出了从视觉突破走向序列建模的叙事。本篇保留这条线，但按原论文区分了两篇方法、成绩与限制：固定维度不等于词数相同；Attention 不用尚未生成的目标词来打分；两篇没有在同一条件下全面超过统计翻译；长句改善也不等于无限记忆。
 
-播客本章及交接部分的 **282 段转录**已逐段阅读，对照了节目说明与讲义。模型名、人名、上下文向量等存在识别不稳，约 43:22 和 43:57 附近还出现重复。这里据论文校正后使用，**没有进行人工听音或词错误率测量**，不能确定每处差异究竟来自识别还是口误。整期转录末尾约 16 秒的覆盖仍未确认。
+播客这部分已对照节目说明、讲义与原论文。转录中的模型名、人名、上下文向量等存在识别不稳，约 43:22 和 43:57 附近还出现重复。这里据论文校正后使用，**没有进行人工听音或词错误率测量**，不能确定每处差异究竟来自识别还是口误。整期转录末尾约 16 秒的覆盖仍未确认。
 
-两篇论文正文均已读取；Bahdanau 的模型、训练与长句附录也纳入核查。本文解释了训练与推理过程，但没有重新训练模型，也没有复现 BLEU 成绩。黑猫句子与候选前缀均为教学示例，不是论文测试结果。
+两篇论文正文均已读取；Bahdanau 的模型、训练与长句附录也纳入核查。BLEU 的机制说明另对照其原论文。本文解释了训练与推理过程，但没有重新训练模型，也没有复现 BLEU 成绩。黑猫句子、候选前缀与加权和算例均为教学示例，不是论文测试结果。
+
+[返回《AI演义》总览](../AI演义_笔记分析与项目整合报告.md#paper-seq2seq) · [继续第 7 篇：GNMT 与 Transformer](./AI演义_07_GNMT与Transformer_从翻译系统到并行架构_科普讲解_20261105.md)
 
 [^podcast]: [《张小珺Jùn｜商业访谈录》第 117 期：AI演义](https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c)，[Apple Podcasts 备用入口](https://podcasts.apple.com/cn/podcast/id1634356920?i=1000733801180)。Shownotes 将 seq2seq 与 Attention 放在 19:35 开始的 Part 1；约 33:50–46:30 的单章范围由转录定位，并非节目另行标注的精确章界。[讲义 PDF 第 12 页](../../notes/终版：AI演义，36篇论文开启你的探索之旅.pdf#page=12)。
 [^background]: Sutskever 等，[Sequence to Sequence Learning with Neural Networks](https://arxiv.org/pdf/1409.3215v3)，§1–2、§4；Bahdanau 等，[Neural Machine Translation by Jointly Learning to Align and Translate](https://arxiv.org/pdf/1409.0473v7)，§1–2、§6.2。这里区分传统系统的多个组成部分与神经模型的联合训练，不把 SMT 描述成纯人工规则。
@@ -294,6 +306,7 @@ Attention 论文的三位作者是 **Dzmitry Bahdanau、Kyunghyun Cho、Yoshua B
 [^alignment-training]: [Bahdanau](https://arxiv.org/pdf/1409.0473v7)，§3.1：软对齐允许翻译损失梯度反向传播，对齐模型与整个翻译模型联合训练；无需另外提供人工逐词对齐标签。这不等于无需平行句对。
 [^alignment-figure]: [Bahdanau](https://arxiv.org/pdf/1409.0473v7)，Figure 3 与 §5.2.1：灰度 0 为黑、1 为白；图 (a) 为一个选定句子，(b–d) 从无未知词、长度 10–20 词的测试句中随机选取。图展示软权重，没有提供全测试集的金标准对齐准确率。
 [^seq2seq-results]: [seq2seq](https://arxiv.org/pdf/1409.3215v3)，§3.1、§3.6、Tables 1–2。BLEU 采用分词后的预测与参考、区分大小写、multi-bleu.pl；作者对最佳 WMT 系统重算为 37.0，与网站原报 35.8 不同。36.5 来自五个倒序 LSTM 参与重排统计基线的 1,000-best 候选。
+[^bleu]: Papineni 等，[BLEU: a Method for Automatic Evaluation of Machine Translation](https://aclanthology.org/P02-1040.pdf)，ACL 2002，§2.1–2.2：modified n-gram precision、对重复计数的截断、语料级汇总与 brevity penalty。这里解释评价机制，不将表面片段匹配当成完整语义判断；原文也明确提醒，单句得分常会偏离人的判断。
 [^seq2seq-engineering]: [seq2seq](https://arxiv.org/pdf/1409.3215v3)，§3.4–3.5：单模型约 384M 参数，四层 LSTM 与词表输出分别分配到八张 GPU，训练约十天；该时间与实现对应，不是五模型集成的总耗时承诺。
 [^attention-results]: [Bahdanau](https://arxiv.org/pdf/1409.0473v7)，§4、§5.1、Table 1。无未知词列同时筛源句与参考译文，并禁止模型输出 UNK；Moses 使用额外 418M 词单语料。RNNsearch 使用双向编码器，不能把与基本模型的对照描述成严格等参数的单组件消融。
 [^attention-training]: [Bahdanau](https://arxiv.org/pdf/1409.0473v7)，Appendix B、Table 2：RNNsearch-50 为 111 小时、2.2 epochs；星号版本为 252 小时、5.0 epochs，均为 Quadro K-6000。表中其余约五天模型与继续训练版本分开。

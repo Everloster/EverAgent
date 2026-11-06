@@ -6,13 +6,13 @@
   "generator": {
     "model": "gpt-6-astra",
     "harness": "codex",
-    "run_id": "ai-yanyi-chapter9-source-label-correction-20261105",
+    "run_id": "ai-yanyi-full-reread-ch09-20261106",
     "explicit_model_override": false,
     "override_reason": "",
-    "identity_basis": "生成者当前会话agent_identity.py核实为gpt-6-astra/codex，session-bound；本次只更正来源名称，技术内容继承冻结基线。"
+    "identity_basis": "当前协调会话eacli session current核实gpt-6-astra/codex，confirmed、session-bound，来源codex-thread-state；本轮负责全文复读与修订。"
   },
   "task": {
-    "summary": "逐节展开AI演义第9节，用黑猫问答讲清GPT2/3的上下文任务接口与实验边界，同步实质优化主稿原节并放节首展开入口。",
+    "summary": "《AI演义》32篇全量精修第09篇：完整复读GPT2/3章节，以讲义主线核原论文和转录，补明文本概率与事实正确性的区别、选择题候选评分接口，改善问题与导航。",
     "requirements": [
       {
         "id": "R1",
@@ -32,11 +32,11 @@
       },
       {
         "id": "R5",
-        "text": "主稿原第9节实质改写且入口在节首；展开能返回原第9节并继续第10节；前八节正文和入口保留。"
+        "text": "保留第09篇文件、编号及总览对应关系，与第08/10篇直接衔接；总览在系列收束阶段全篇统一复核。"
       },
       {
         "id": "R6",
-        "text": "真实工作台桌面/窄屏检查目录、正文、脚注、表格和跨报告定位；正文无私有转录或执行记录。"
+        "text": "检查正文、表格、脚注、任务示例和上下篇链接及隐私，不捆绑无关工作台功能验收；系列收束检查实际富文本呈现，明确真实范围。"
       }
     ]
   },
@@ -357,6 +357,28 @@
       "support": "direct",
       "critical": true,
       "evidence": "本章转录收据、原文history；不将结构通过当识字准确率。"
+    },
+    {
+      "id": "C23",
+      "claim": "GPT2表5把California作为美国面积最大州的答案标错，文本概率59.2%；高概率答案总体更准不保证单个答案真实。",
+      "report_anchor": "gpt2-results",
+      "source_ids": [
+        "GPT2"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "GPT2 §3.8/Table5。该值为论文列出的生成答案概率，不是本文实测，也不从个例否定其总体校准观察。"
+    },
+    {
+      "id": "C24",
+      "claim": "GPT3选择题可比较候选文字似然而不是自由输出；多数按长度归一化，ARC/OpenBookQA/RACE用通用回答前缀下概率作分母校正。",
+      "report_anchor": "fixed-weights",
+      "source_ids": [
+        "GPT3"
+      ],
+      "support": "direct",
+      "critical": true,
+      "evidence": "GPT3 §2.4：P(completion|context)/P(completion|answer context)，answer context为Answer:或A:。黑猫候选自拟；该评分接口不能与任意聊天提示结果混为同条件实验。"
     }
   ],
   "source_coverage": [
@@ -586,6 +608,26 @@
         "GPT3-HISTORY"
       ],
       "report_anchor": "source-scope"
+    },
+    {
+      "id": "U23",
+      "title": "GPT2表5把California作为美国面积最大州的答案标错，文本概率59.2%；高概率答案总体更准不保证单个答案真实。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "gpt2-results",
+      "source_ids": [
+        "GPT2"
+      ]
+    },
+    {
+      "id": "U24",
+      "title": "GPT3选择题可比较候选文字似然而不是自由输出；多数按长度归一化，ARC/OpenBookQA/RACE用通用回答前缀下概率作分母校正。",
+      "importance": "core",
+      "status": "included",
+      "report_anchor": "fixed-weights",
+      "source_ids": [
+        "GPT3"
+      ]
     }
   ],
   "limitations": [
@@ -598,5 +640,5 @@
     "精确GPU数量、未列明框架、组织重组动机、人物当前去向未另核，不进入结论。",
     "现代Context建议标为本文推测；不声称两篇论文验证了当前Agent/记忆框架。"
   ],
-  "revision_note": "2026-11-05来源名称勘误：原节目为《张小珺Jùn｜商业访谈录》第117期，修正此前误写的晚点聊；URL、shownotes正文与技术讲解未变。除来源名称与本修订元数据外，继承已通过的冻结基线；独立复核只直接验证本次勘误及范围。"
+  "revision_note": "2026-11-06全量精修：完整复读本篇正文与419段转录、讲义p37/38文字；重读GPT2的任务表述/数据/分词/关键结果/重叠分析与讨论，GPT3的使用设置/训练/评测接口/相关任务表/污染/局限/正式贡献与数据附录。未变版本历史、原图和转录结构收据明确继承，不冒称本轮重跑或听音；其余未变附录支持沿用既有阅读。补充高概率错误实例与候选评分接口，问题改为面向读者的自然问句，直达第10篇。保留历史节目名称勘误；本篇未进行实际浏览器渲染，系列呈现检查仍待收束。"
 }
