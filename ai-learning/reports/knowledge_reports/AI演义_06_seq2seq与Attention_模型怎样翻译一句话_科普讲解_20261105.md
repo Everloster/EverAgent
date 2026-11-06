@@ -292,7 +292,7 @@ Attention 论文的三位作者是 **Dzmitry Bahdanau、Kyunghyun Cho、Yoshua B
 
 两篇论文正文均已读取；Bahdanau 的模型、训练与长句附录也纳入核查。BLEU 的机制说明另对照其原论文。本文解释了训练与推理过程，但没有重新训练模型，也没有复现 BLEU 成绩。黑猫句子、候选前缀与加权和算例均为教学示例，不是论文测试结果。
 
-[返回《AI演义》总览](../AI演义_笔记分析与项目整合报告.md#paper-seq2seq) · [继续第 7 篇：GNMT 与 Transformer](./AI演义_07_GNMT与Transformer_从翻译系统到并行架构_科普讲解_20261105.md)
+[上一篇：05 Word2Vec](./AI演义_05_Word2Vec_词向量怎样学出来_科普讲解_20261104.md) · [返回《AI演义》总览](../AI演义_笔记分析与项目整合报告.md#paper-seq2seq) · [继续第 7 篇：GNMT 与 Transformer](./AI演义_07_GNMT与Transformer_从翻译系统到并行架构_科普讲解_20261105.md)
 
 [^podcast]: [《张小珺Jùn｜商业访谈录》第 117 期：AI演义](https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c)，[Apple Podcasts 备用入口](https://podcasts.apple.com/cn/podcast/id1634356920?i=1000733801180)。Shownotes 将 seq2seq 与 Attention 放在 19:35 开始的 Part 1；约 33:50–46:30 的单章范围由转录定位，并非节目另行标注的精确章界。[讲义 PDF 第 12 页](../../notes/终版：AI演义，36篇论文开启你的探索之旅.pdf#page=12)。
 [^background]: Sutskever 等，[Sequence to Sequence Learning with Neural Networks](https://arxiv.org/pdf/1409.3215v3)，§1–2、§4；Bahdanau 等，[Neural Machine Translation by Jointly Learning to Align and Translate](https://arxiv.org/pdf/1409.0473v7)，§1–2、§6.2。这里区分传统系统的多个组成部分与神经模型的联合训练，不把 SMT 描述成纯人工规则。
