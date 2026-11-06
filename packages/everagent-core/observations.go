@@ -286,7 +286,7 @@ func (i *Inspector) observe(h string, scope Object) (Object, Object) {
 	case "codex":
 		found, err = i.codex(native, p, now)
 	case "pi":
-		if m := model(i.Getenv("PI_MODEL")); m != "" && i.Getenv("PI_CODING_AGENT") == "true" && i.Getenv("PI_SESSION_ID") == native {
+		if m := model(i.Getenv("PI_MODEL")); m != "" && i.Getenv("PI_CODING_AGENT") == "true" && i.nativeID("pi") == native {
 			found = Object{"model": m, "source": "pi-session-runtime"}
 		}
 	case "trae":

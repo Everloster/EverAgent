@@ -102,6 +102,10 @@ func TestCodexModelEvidence(t *testing.T) {
 			if (v["current_model_confirmed"] == true) != want {
 				t.Fatalf("%s: %v\n%v", tc, v, i.Diagnose())
 			}
+			h, id := i.BoundSession()
+			if want && (h != "codex" || id != "thread-one") || !want && (h != "" || id != "") {
+				t.Fatalf("current session binding disagrees with native reader: %q/%q", h, id)
+			}
 			if want && v["model"] != "observed-model" {
 				t.Fatalf("configured default used instead of native model: %v", v)
 			}
