@@ -6,13 +6,13 @@
   "generator": {
     "model": "gpt-6-astra",
     "harness": "codex",
-    "run_id": "ai-yanyi-chapter02-alexnet-20261104",
+    "run_id": "ai-yanyi-full-reread-20261106-alexnet",
     "explicit_model_override": false,
     "override_reason": "",
-    "identity_basis": "eacli codex-turn-context确认gpt-6-astra，session-bound、confirmed=true；当前run负责本轮生成。"
+    "identity_basis": "eacli codex-thread-state 自动核实 gpt-6-astra，session-bound、confirmed=true。"
   },
   "task": {
-    "summary": "按已完成Brook的方式持续逐节展开AI演义，本轮只完成第2节AlexNet；融合对应ASR、Shownotes、讲义与原论文，优化主稿导读和双向阅读路径。",
+    "summary": "《AI演义》全32篇地毯式修订中的第02篇：全篇重读并核原论文、讲义、播客及机构史料，保留数据/模型/算力主线，补实卷积直觉和Dropout尺度解释，修整人类阅读与导航。",
     "requirements": [
       {
         "id": "R1",
@@ -32,7 +32,7 @@
       },
       {
         "id": "R5",
-        "text": "形成独立展开篇；主稿原AlexNet小节同步优化并直接链接，往返定位/脚注/桌面和窄屏在实际工作台验收。"
+        "text": "保留第02篇路径、编号和总览入口，直接连接第03篇；逐段校订，开展影响范围匹配的独立复核和报告富文本检查，不扩为工作台功能验收。"
       }
     ]
   },
@@ -46,7 +46,8 @@
       "version": "NIPS 2012正式论文集PDF，9页；核标题与三名作者，不另核讲义具体月份。",
       "sha256": "90137160c57217953d5f61857e64ca58e85f06e1b13b4f475c918b1b582b9771",
       "read_scope": "正文§1–7、相关参考文献及图注；Table1/2按PDF第7页图像服务与排版文字交叉核验。Figure2/3/4引用范围为图注和对应正文，未声称逐图视觉分析。",
-      "acquisition": "先eacli web.read取得正式PDF提取正文；其不提供PDF原始字节且词间空格粘连，为按原版面核表，最小降级下载同一官方URL的PDF，保留在非发布缓存。"
+      "acquisition": "先eacli web.read取得正式PDF提取正文；其不提供PDF原始字节且词间空格粘连，为按原版面核表，最小降级下载同一官方URL的PDF，保留在非发布缓存。",
+      "reread_on": "2026-11-06"
     },
     {
       "id": "SLIDE",
@@ -55,7 +56,8 @@
       "locator": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
       "accessed_on": "2026-11-04",
       "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
-      "read_scope": "第11页文字层与渲染图；eacli vision.image-analysis辅助恢复丢字，讲义为叙事来源，数字和历史关系另核原文。"
+      "read_scope": "第11页文字层与渲染图；eacli vision.image-analysis辅助恢复丢字，讲义为叙事来源，数字和历史关系另核原文。",
+      "reread_on": "2026-11-06"
     },
     {
       "id": "ASR",
@@ -64,7 +66,8 @@
       "locator": "https://media.xyzcdn.net/626b46ea9cbbf0451cf5a962/ludOBUWHSc2Y_GA47pSOwlGC8JPS.m4a",
       "accessed_on": "2026-11-04",
       "read_scope": "本节约26:52–33:50，阅读含前节衔接的153段；未听音；整期修复转录与原始失败版本已保留。",
-      "transcript_source_ref": "sha256:919e4ce5147340e2306748394cdb555bfc6a745119f846e7ce8c985056745b05"
+      "transcript_source_ref": "sha256:919e4ce5147340e2306748394cdb555bfc6a745119f846e7ce8c985056745b05",
+      "reread_on": "2026-11-06"
     },
     {
       "id": "SHOWNOTES",
@@ -72,7 +75,8 @@
       "title": "第117期节目说明与章节",
       "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
       "accessed_on": "2026-11-04",
-      "read_scope": "完整节目说明中的Part1路线、AlexNet标题和次序；19:35是Part1入口而非AlexNet边界。"
+      "read_scope": "完整节目说明中的Part1路线、AlexNet标题和次序；19:35是Part1入口而非AlexNet边界。",
+      "reread_on": "2026-11-06"
     },
     {
       "id": "BROOK",
@@ -81,7 +85,8 @@
       "locator": "https://graphics.stanford.edu/papers/brookgpu/brookgpu.pdf",
       "accessed_on": "2026-11-04",
       "sha256": "05f5548350ac39bffb9973e33258eac5cacfd1b5c76422516b1c4f4d980ec21b",
-      "read_scope": "本轮重看§3的stream与kernel定义；上一轮来源已保存。仅用于核函数/卷积核的跨章概念辨析，不作为AlexNet软件依赖证据。"
+      "read_scope": "本轮重看§3的stream与kernel定义；上一轮来源已保存。仅用于核函数/卷积核的跨章概念辨析，不作为AlexNet软件依赖证据。",
+      "reread_on": "2026-11-06"
     },
     {
       "id": "UTORONTO",
@@ -90,7 +95,8 @@
       "locator": "https://www.utoronto.ca/news/google-acquires-u-t-neural-networks-company",
       "accessed_on": "2026-11-04",
       "version": "官方页面标Published: March 12, 2013；读取当前正文，不保证与2013字节完全一致。",
-      "read_scope": "全文；2012公司成立、2013收购、三位研究者去向、金额未公开；不推定拍卖细节。"
+      "read_scope": "全文；2012公司成立、2013收购、三位研究者去向、金额未公开；不推定拍卖细节。",
+      "reread_on": "2026-11-06"
     },
     {
       "id": "GOOGLE_X",
@@ -98,7 +104,8 @@
       "title": "Brain — X project history",
       "locator": "https://x.company/projects/brain/",
       "accessed_on": "2026-11-04",
-      "read_scope": "全文定位项目史段，事实采用范围限定2011开始工作；其他实验叙述和Brain Today段不作为本文技术或当前组织事实。"
+      "read_scope": "全文定位项目史段，事实采用范围限定2011开始工作；其他实验叙述和Brain Today段不作为本文技术或当前组织事实。",
+      "reread_on": "2026-11-06"
     },
     {
       "id": "TRANSCRIPT_REVIEW",
@@ -106,7 +113,8 @@
       "title": "AlexNet逐段转录与事实核对记录",
       "locator": "ai-learning/reports/knowledge_reports/.quality/AI演义_02_AlexNet_图像识别突破_科普讲解_20261104.transcription-review.json",
       "accessed_on": "2026-11-04",
-      "read_scope": "本章153段核查范围、纸面纠词与数字归因、结构收据和未听校边界。"
+      "read_scope": "本章153段核查范围、纸面纠词与数字归因、结构收据和未听校边界。",
+      "reread_on": "2026-11-06"
     }
   ],
   "claims": [
@@ -130,7 +138,7 @@
       ],
       "support": "direct",
       "critical": true,
-      "evidence": "§1、§3.3–3.5，Figure2图注；猫是教学例。"
+      "evidence": "§1、§3.3–3.5，Figure2图注；猫是教学例。 本轮补两亮度值与−1/+1权重的自拟算例，仅解释局部加权，不当作真实卷积核。"
     },
     {
       "id": "C3",
@@ -167,14 +175,14 @@
     },
     {
       "id": "C6",
-      "claim": "增强使用裁剪/水平翻转及RGB扰动；Dropout在前两个全连接层，训练随机置零、测试用全网并调尺度，约翻倍收敛迭代数。",
+      "claim": "增强使用裁剪/水平翻转及RGB扰动；Dropout在前两个全连接层，每个隐藏单元以0.5概率输出置零，测试时用全网并将相应隐藏输出乘0.5；这不是每次必关一半，也不保证预测精确等于子网均值；约翻倍收敛迭代数。",
       "report_anchor": "既然有 120 万张",
       "source_ids": [
         "PAPER"
       ],
       "support": "direct",
       "critical": true,
-      "evidence": "§4.1–4.2；增强相关性与标签保留前提在原文。"
+      "evidence": "§4.1–4.2。测试输出乘0.5是原论文做法，不混同现代inverted-dropout；匹配单元平均贡献是该机制的解释，不声称非线性网络输出的精确相等。"
     },
     {
       "id": "C7",
@@ -425,5 +433,17 @@
     "本轮未人工听音、未测词准确率；完整转录只作章节底稿，约16秒尾部缺口继续保留。",
     "视觉服务用于讲义文字与Table1/2辅助核验，图2/3/4仅采用图注及正文，不声称全部图像均已视觉复审。",
     "新旧章节连接为解释性编排；图像分类成绩和特征近邻示例不能代表完整视觉理解或当代部署性能。"
+  ],
+  "revision_notes": [
+    {
+      "date": "2026-11-06",
+      "scope": "全文和正式论文全部正文重读；保留既有可靠实验口径、机构时间线和历史边界。",
+      "changes": [
+        "加入可手算的卷积局部响应例子，明确自拟范围",
+        "说明Dropout逐单元0.5置零、测试缩放及非线性平均的边界",
+        "精简执行语句、直达第03展开篇"
+      ],
+      "not_repeated": "复用旧来源缓存与转录结构审计；没有重新下载全部来源、复现训练或听校音频。"
+    }
   ]
 }

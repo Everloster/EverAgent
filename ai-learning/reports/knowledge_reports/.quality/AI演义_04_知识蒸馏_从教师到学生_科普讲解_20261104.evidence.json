@@ -6,13 +6,13 @@
   "generator": {
     "model": "gpt-6-astra",
     "harness": "codex",
-    "run_id": "ai-yanyi-chapter04-distillation-20261104",
+    "run_id": "ai-yanyi-full-reread-20261106-distillation",
     "explicit_model_override": false,
     "override_reason": "",
-    "identity_basis": "eacli codex-turn-context确认gpt-6-astra，session-bound、confirmed=true；本run负责生成。"
+    "identity_basis": "eacli codex-thread-state 自动核实 gpt-6-astra，session-bound、confirmed=true。"
   },
   "task": {
-    "summary": "按前三节方式持续逐节展开AI演义，本轮完成第4节知识蒸馏；对照播客、Shownotes、讲义和原论文及必要前驱/后续，讲透机制、例子和条件，同步改好主稿原章节与展开阅读入口。",
+    "summary": "《AI演义》全32篇地毯式修订中的第04篇：全篇重读并核2015原论文、前驱与序列蒸馏相关原文、讲义与转写；保留训练/部署分离主线，补清温度换算、低logit噪声与输入覆盖，保持实验条件和历史边界。",
     "requirements": [
       {
         "id": "R1",
@@ -32,7 +32,7 @@
       },
       {
         "id": "R5",
-        "text": "完成独立展开篇并同步重写主稿原蒸馏节、加醒目入口；验工作台桌面/窄屏双向定位、脚注和两表，保留Brook/AlexNet/ResNet入口。"
+        "text": "保留第04篇路径、编号与总览入口，直接连接第05篇；逐段校订、影响范围匹配的独立复核和报告富文本检查，不扩为工作台验收。"
       }
     ]
   },
@@ -45,7 +45,9 @@
       "accessed_on": "2026-11-04",
       "read_scope": "全文§1–8、致谢与相关参考文献已读。Table1另经第5页图像服务核验；其余表格按正文与文字层。§2.1读到但未逐式重推；未复现实验。视觉无法可靠辨认温度列表粗体，不采用语音最佳温度。",
       "version": "arXiv:1503.02531v1，2015-03-09；仓内23_distilling_2015.pdf同版本。",
-      "sha256": "74e6689115c539db499f9d6153edecb364059926fd45402454f8210442444c5a"
+      "sha256": "74e6689115c539db499f9d6153edecb364059926fd45402454f8210442444c5a",
+      "reread_on": "2026-11-06",
+      "reread_scope": "本轮重新阅读缓存全文§1–8、致谢/参考文献；核表格、Eq1–4和温度权衡，未重做第5页旧视觉审计。"
     },
     {
       "id": "COMPRESSION",
@@ -54,7 +56,9 @@
       "locator": "https://www.cs.cornell.edu/~caruana/compression.kdd06.pdf",
       "accessed_on": "2026-11-04",
       "read_scope": "通过eacli web.read阅读摘要、§1、§2开头及后续局部，采用范围仅压缩动机、教师预测模仿和迁移输入覆盖。未审全部实验，不引用性能倍数；文本空格/重音有缺损，不据损坏文字逐字引用。",
-      "version": "KDD 2006"
+      "version": "KDD 2006",
+      "reread_on": "2026-11-06",
+      "reread_scope": "本轮重读缓存摘要及§1–2，重点核迁移输入覆盖；没有采用后面性能倍数或把采样方法迁入本章主线。"
     },
     {
       "id": "SEQUENCE",
@@ -63,7 +67,9 @@
       "locator": "https://arxiv.org/pdf/1606.07947v1",
       "accessed_on": "2026-11-04",
       "read_scope": "通过eacli web.read阅读§1–3.2定义方法及Figure1图注，看到§3.3开头。只采用word-level与sequence-level监督区别、教师beam search近似mode生成数据；不采用速度/BLEU数字，不审全实验。公式抽取有损，不逐式引用。",
-      "version": "arXiv:1606.07947v1，2016-06-25"
+      "version": "arXiv:1606.07947v1，2016-06-25",
+      "reread_on": "2026-11-06",
+      "reread_scope": "本轮重读缓存§1–3.2与§3.3部分，只采用高概率序列的近似监督方法。"
     },
     {
       "id": "SLIDE",
@@ -73,7 +79,8 @@
       "accessed_on": "2026-11-04",
       "read_scope": "只读第13页文字层及图像服务对渲染页的转录，恢复缺字；开创者措辞、hard-label句法与机制按原论文收紧。",
       "version": "51页讲义，本轮第13页。",
-      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0"
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
+      "reread_on": "2026-11-06"
     },
     {
       "id": "ASR",
@@ -82,7 +89,8 @@
       "locator": "https://media.xyzcdn.net/626b46ea9cbbf0451cf5a962/ludOBUWHSc2Y_GA47pSOwlGC8JPS.m4a",
       "accessed_on": "2026-11-04",
       "read_scope": "本节核心约46:30–52:49，逐段阅读含交接的161段（2789.84–3171.64秒）。未听音，不把转录作逐字准确引语；整期修复转录留公开仓外。",
-      "transcript_source_ref": "sha256:919e4ce5147340e2306748394cdb555bfc6a745119f846e7ce8c985056745b05"
+      "transcript_source_ref": "sha256:919e4ce5147340e2306748394cdb555bfc6a745119f846e7ce8c985056745b05",
+      "reread_on": "2026-11-06"
     },
     {
       "id": "SHOWNOTES",
@@ -90,7 +98,8 @@
       "title": "第117期节目说明与章节",
       "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
       "accessed_on": "2026-11-04",
-      "read_scope": "复用前轮取得的全文，本轮核Part1的19:35总入口、蒸馏标题及前后顺序；没有蒸馏机制、实验或逐论文精确时间。"
+      "read_scope": "复用前轮取得的全文，本轮核Part1的19:35总入口、蒸馏标题及前后顺序；没有蒸馏机制、实验或逐论文精确时间。",
+      "reread_on": "2026-11-06"
     },
     {
       "id": "TRANSCRIPT_REVIEW",
@@ -98,7 +107,8 @@
       "title": "蒸馏逐段转录与事实核对记录",
       "locator": "ai-learning/reports/knowledge_reports/.quality/AI演义_04_知识蒸馏_从教师到学生_科普讲解_20261104.transcription-review.json",
       "accessed_on": "2026-11-04",
-      "read_scope": "本章161段核查范围、专名和技术含义校正、复用结构收据、未听校与尾部缺口边界。"
+      "read_scope": "本章161段核查范围、专名和技术含义校正、复用结构收据、未听校与尾部缺口边界。",
+      "reread_on": "2026-11-06"
     },
     {
       "id": "TRANSCRIPT_AUDIT",
@@ -106,7 +116,8 @@
       "title": "AI演义整期转录结构收据",
       "locator": "podcast-learning/reports/transcripts/2026-11-04_ai-yanyi-117.audit.json",
       "accessed_on": "2026-11-04",
-      "read_scope": "核已有同SHA全文机器收据：7553段、时间戳错误0、最大连续相同3；文本tail_gap=0不能证明原音频尾部完整。"
+      "read_scope": "核已有同SHA全文机器收据：7553段、时间戳错误0、最大连续相同3；文本tail_gap=0不能证明原音频尾部完整。",
+      "reread_on": "2026-11-06"
     }
   ],
   "claims": [
@@ -123,25 +134,26 @@
     },
     {
       "id": "C2",
-      "claim": "错误类别的相对概率可携带泛化线索；软目标来自教师、高温双方匹配；有真值时另用T=1硬标签项，部署T=1。",
+      "claim": "错误类别的相对概率可携带泛化线索；软目标来自教师、高温双方匹配；有真值时另用T=1硬标签项，部署T=1。 迁移输入覆盖约束可传递知识，但不要求每类都有正例。",
       "report_anchor": "实际做哪几件事",
       "source_ids": [
-        "PAPER"
+        "PAPER",
+        "COMPRESSION"
       ],
       "support": "direct",
       "critical": true,
-      "evidence": "§1–2软目标、transfer set、同温训练和双目标定义。教师概率包含信息不保证全是真知识。"
+      "evidence": "§1–2软目标、transfer set、同温训练和双目标定义。教师概率包含信息不保证全是真知识。 Model Compression§2；与MNIST缺类实验一起解释，不声称任何输入都可转移全部能力。"
     },
     {
       "id": "C3",
-      "claim": "高温软目标梯度尺度约随1/T²缩小，组合硬/软目标时用T²补偿；logit平方误差匹配是高温且每例各自零均值下的近似。",
+      "claim": "高温软目标梯度尺度约随1/T²缩小，组合硬/软目标时用T²补偿；logit平方误差匹配是高温且每例各自零均值下的近似。 高温会让非常负的logit更充分参与匹配，但这些分数可能有噪声，中间温度是否更好是经验问题。",
       "report_anchor": "实现细节容易漏掉",
       "source_ids": [
         "PAPER"
       ],
       "support": "direct",
       "critical": true,
-      "evidence": "§2–2.1/Eq1–4；两个条件与组合权重边界明确，不推广成任意温度恒等。"
+      "evidence": "§2–2.1/Eq1–4；两个条件与组合权重边界明确，不推广成任意温度恒等。 §2.1末段；不能仅用概率变平就断言信息消失，尤其需同时看T²补偿。"
     },
     {
       "id": "C4",
@@ -152,7 +164,7 @@
       ],
       "support": "derived",
       "critical": true,
-      "evidence": "Python标准数学函数实际计算exp((z_i-max(z))/T)/sum，按两位小数；仅教学概率计算，不是模型训练或真实图片测量。"
+      "evidence": "Python标准数学函数实际计算exp((z_i-max(z))/T)/sum，按两位小数；仅教学概率计算，不是模型训练或真实图片测量。 2026-11-06重新计算两组概率，与正文两位小数一致；补写除以温度/取指数/归一化的实际计算顺序。"
     },
     {
       "id": "C5",
@@ -434,5 +446,18 @@
     "完整ASR复用前轮修复稿和同SHA结构收据；本节读161段但未听音或测词准确率，音频最后约15.989秒未确认。",
     "人物现职、口播段子、数学史及当前接口能力未另核；只用原版署名和已核论文来讲技术史。",
     "猫照片、猫狗汽车分数是教学例；温度适用范围、测试偏置校正、3%迁移数据和specialists结果只适用原文条件。主稿问题顺序不代表发表顺序。"
+  ],
+  "revision_notes": [
+    {
+      "date": "2026-11-06",
+      "scope": "本章全文与2015原论文全读，2006/2016仅核所引用机制部分；保留MNIST、语音、specialists和测试调参边界。",
+      "changes": [
+        "补清温度换算的三个步骤",
+        "以原文的低logit噪声/容量取舍替代温度过高只会抹平的单因解释",
+        "说明迁移数据的输入覆盖并与缺类实验相容",
+        "直接链接下一展开篇"
+      ],
+      "not_repeated": "复用旧原文缓存和同SHA转录审计；未复现教师学生训练或测部署延迟。"
+    }
   ]
 }

@@ -6,13 +6,13 @@
   "generator": {
     "model": "gpt-6-astra",
     "harness": "codex",
-    "run_id": "ai-yanyi-chapter03-resnet-20261104",
+    "run_id": "ai-yanyi-full-reread-20261106-resnet",
     "explicit_model_override": false,
     "override_reason": "",
-    "identity_basis": "eacli codex-turn-context确认gpt-6-astra，session-bound、confirmed=true；当前run负责本轮生成。"
+    "identity_basis": "eacli codex-thread-state 自动核实 gpt-6-astra，session-bound、confirmed=true。"
   },
   "task": {
-    "summary": "按前两节的方式持续逐节展开AI演义，本轮完成第3节ResNet；以对应转写、Shownotes、讲义、原论文与必要后续论文解释机制和边界，同步优化主稿原节及双向阅读入口。",
+    "summary": "《AI演义》全32篇地毯式修订中的第03篇：全篇重读并核原论文、必要后续原文、讲义与转写；保持优化退化主线，补清双路计算、预激活操作次序和瓶颈空间/通道区别，改善正文与直接阅读导航。",
     "requirements": [
       {
         "id": "R1",
@@ -32,7 +32,7 @@
       },
       {
         "id": "R5",
-        "text": "形成独立展开篇，同步改好主稿原ResNet节并加醒目展开入口；核工作台桌面/窄屏的往返定位、脚注和表格，保留Brook和AlexNet入口。"
+        "text": "保留第03篇路径、编号与总览入口，直接连接第04篇；逐段校订、影响范围匹配的独立复核及报告富文本检查，不扩为工作台验收。"
       }
     ]
   },
@@ -45,7 +45,9 @@
       "accessed_on": "2026-11-04",
       "read_scope": "正文§1–4.3（pp.1–8）、Table1–8、相应图注及相关参考文献。Figure1另经eacli图像服务辅助核CIFAR10/20与56层/训练测试相对关系，不采用其颜色、刻度或尖峰猜测；其余图按正文和图注，不声称全部视觉分析。",
       "version": "arXiv:1512.03385v1，2015-12-10；2015为预印本年份。",
-      "sha256": "1e0651b6810ecba34a3dbc5b5b0209226f889004607c1f203540a48d64e5a93a"
+      "sha256": "1e0651b6810ecba34a3dbc5b5b0209226f889004607c1f203540a48d64e5a93a",
+      "reread_on": "2026-11-06",
+      "reread_scope": "本轮重新阅读缓存正文§1–4.3、Table1–8和图注；未重做旧Figure1视觉分析，未新增检测附录结论。"
     },
     {
       "id": "IDENTITY",
@@ -54,7 +56,9 @@
       "locator": "https://arxiv.org/pdf/1603.05027v3",
       "accessed_on": "2026-11-04",
       "read_scope": "通过eacli web.read阅读§1–4.2相关机制、推导条件、激活摆放比较和解释，未完整审其后性能讨论/附录；提取数学字符有缺损，本文不用损坏公式作精确引语。",
-      "version": "arXiv:1603.05027v3，2016-07-25；本轮采用范围为§1–4.2相关部分。"
+      "version": "arXiv:1603.05027v3，2016-07-25；本轮采用范围为§1–4.2相关部分。",
+      "reread_on": "2026-11-06",
+      "reread_scope": "本轮重读缓存§1–4.2相关部分，明确两种基本块的操作次序；未使用提取损坏的数学符号。"
     },
     {
       "id": "TRANSFORMER",
@@ -64,7 +68,8 @@
       "accessed_on": "2026-11-04",
       "read_scope": "本轮仅重读§3.1及参考文献[11]，用于核残差组件采用、相加后层归一化和作品发表年份，不重审翻译结果。",
       "version": "arXiv:1706.03762v7，2023-08-02；作品发表于2017年。",
-      "sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+      "sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "reread_on": "2026-11-06"
     },
     {
       "id": "SLIDE",
@@ -74,7 +79,8 @@
       "accessed_on": "2026-11-04",
       "read_scope": "第14页文字层和渲染图；eacli图像服务辅助恢复缺字。叙事概括、中文姓名与职务不直接作为原论文学术事实。",
       "version": "51页讲义，本轮第14页。",
-      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0"
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
+      "reread_on": "2026-11-06"
     },
     {
       "id": "ASR",
@@ -83,7 +89,8 @@
       "locator": "https://media.xyzcdn.net/626b46ea9cbbf0451cf5a962/ludOBUWHSc2Y_GA47pSOwlGC8JPS.m4a",
       "accessed_on": "2026-11-04",
       "read_scope": "本节核心约52:49–57:24，逐段阅读包含交接的141段（3168.69–3451.07秒）。未听音，不将文本当逐字准确引语；整期修复转录留公开仓外。",
-      "transcript_source_ref": "sha256:919e4ce5147340e2306748394cdb555bfc6a745119f846e7ce8c985056745b05"
+      "transcript_source_ref": "sha256:919e4ce5147340e2306748394cdb555bfc6a745119f846e7ce8c985056745b05",
+      "reread_on": "2026-11-06"
     },
     {
       "id": "SHOWNOTES",
@@ -91,7 +98,8 @@
       "title": "第117期节目说明与章节",
       "locator": "https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c",
       "accessed_on": "2026-11-04",
-      "read_scope": "复用前轮已取得全文，核Part1的19:35总入口、ResNet标题与顺序；没有本节精确时间戳。"
+      "read_scope": "复用前轮已取得全文，核Part1的19:35总入口、ResNet标题与顺序；没有本节精确时间戳。",
+      "reread_on": "2026-11-06"
     },
     {
       "id": "TRANSCRIPT_REVIEW",
@@ -99,7 +107,8 @@
       "title": "ResNet逐段转录与事实核对记录",
       "locator": "ai-learning/reports/knowledge_reports/.quality/AI演义_03_ResNet_深层网络如何训练_科普讲解_20261104.transcription-review.json",
       "accessed_on": "2026-11-04",
-      "read_scope": "本章141段核查范围、专名和技术含义校正、复用结构收据及未听校边界。"
+      "read_scope": "本章141段核查范围、专名和技术含义校正、复用结构收据及未听校边界。",
+      "reread_on": "2026-11-06"
     },
     {
       "id": "TRANSCRIPT_AUDIT",
@@ -107,7 +116,8 @@
       "title": "AI演义整期转录结构收据",
       "locator": "podcast-learning/reports/transcripts/2026-11-04_ai-yanyi-117.audit.json",
       "accessed_on": "2026-11-04",
-      "read_scope": "核已有修复全文的机器收据：7553段、时间戳错误0、最大连续相同3；文本tail_gap=0不证明对原音频的末尾完整性。"
+      "read_scope": "核已有修复全文的机器收据：7553段、时间戳错误0、最大连续相同3；文本tail_gap=0不证明对原音频的末尾完整性。",
+      "reread_on": "2026-11-06"
     }
   ],
   "claims": [
@@ -135,7 +145,7 @@
     },
     {
       "id": "C3",
-      "claim": "残差块相加处y=x+F(x)，修正由标签分类损失经反向传播学出，不是块级人工目标或最终分类错误；0.6-0.1=0.5为自拟特征示例。",
+      "claim": "残差块相加处y=x+F(x)，修正由标签分类损失经反向传播学出，不是块级人工目标或最终分类错误；0.6-0.1=0.5为自拟特征示例。 原版仍计算F(x)并与x相加，捷径不等同动态跳过带权重层。",
       "report_anchor": "谁告诉分支",
       "source_ids": [
         "PAPER"
@@ -176,7 +186,7 @@
       ],
       "support": "direct",
       "critical": true,
-      "evidence": "ResNet§3.2/Figure2；Identity Mappings§2–4.2、相关图注和脚注。"
+      "evidence": "ResNet§3.2/Figure2；Identity Mappings§2–4.2、相关图注和脚注。 新增两层同形状块的逐操作对照，原版Conv/BN/ReLU/Conv/BN后相加再ReLU，对比完整预激活BN/ReLU/Conv/BN/ReLU/Conv后相加直接输出。"
     },
     {
       "id": "C7",
@@ -198,7 +208,7 @@
       ],
       "support": "direct",
       "critical": true,
-      "evidence": "§4.1/Table1、3–5及Figure5；不同评估不能视作单因素改进。"
+      "evidence": "§4.1/Table1、3–5及Figure5；不同评估不能视作单因素改进。 补明1×1卷积按空间位置混合通道，并非把特征图高宽缩到1；瓶颈降的是中间通道量。"
     },
     {
       "id": "C9",
@@ -423,5 +433,18 @@
     "完整ASR复用前轮修复稿与结构收据；本节纸面交叉核141段，未听音、未测词准确率，原音频尾部约16秒未知。",
     "讲义和播客为主题与叙事来源；中文姓名、当前职务和动态引文数未另核，不补齐为事实。",
     "猫照片与0.6/−0.1/0.5是教学例，实验结论只适用所述数据/模型/评估；章节顺序用于问题承接，不代表发表顺序或直接历史因果。"
+  ],
+  "revision_notes": [
+    {
+      "date": "2026-11-06",
+      "scope": "完整重读本章、原论文主体和相关2016分析，保留已讲清的曲线诊断、表格口径和千层反例。",
+      "changes": [
+        "澄清捷径并不是动态跳层省算",
+        "以操作次序表区分原版和完整预激活",
+        "补清1×1卷积及瓶颈的通道/空间区别",
+        "缩减执行记录与更新直接导航"
+      ],
+      "not_repeated": "未重复整期转写或原版实验；缓存图表沿用旧采集，不将旧视觉审计写成本轮新执行。"
+    }
   ]
 }
