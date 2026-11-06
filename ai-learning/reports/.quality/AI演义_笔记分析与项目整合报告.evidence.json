@@ -6,13 +6,13 @@
   "generator": {
     "model": "gpt-6-astra",
     "harness": "codex",
-    "run_id": "ai-yanyi-dit-main-r36-20261106",
+    "run_id": "ai-yanyi-overview-r37-full-series-reread-20261106",
     "explicit_model_override": false,
     "override_reason": "",
-    "identity_basis": "eacli session current：codex-turn-context，session-bound，confirmed=true；只证明当前生成会话，不证明子会话模型。"
+    "identity_basis": "eacli session current：gpt-6-astra / codex；codex-thread-state、session-bound、confirmed=true。仅证明当前生成会话，不证明子会话模型。"
   },
   "task": {
-    "summary": "用户要求以《AI演义》PDF全量发展路径和必要原论文为基础重写报告。像素级指发展路径细致完整，而非每篇论文穷尽技术细节；少数学，重点是背景、所解问题、机制直觉与发展作用。两段样章获认可后，用户强调历史、范式变迁、人物视角的整体路线串联优先。",
+    "summary": "本轮Goal要求对《AI演义》总览与31篇分章全文、逐段校订，沿原PDF的36个研究对象、四条路线与历史/范式/人物视角，不改写成另一套AI通史。结合shownotes、已有核验转写与原论文，校正机制、数字、版本、引用、推理、术语与人类阅读呈现；允许保留讲清的段落、复用未变的可信来源，不以抽样或格式检查冒充全文校读。",
     "requirements": [
       {
         "id": "R1",
@@ -36,7 +36,7 @@
       },
       {
         "id": "R6",
-        "text": "形成一篇可独立阅读的主报告，含问题地图、连接索引、对象定位和新论文阅读方法，不把核心解释外包给36个链接。"
+        "text": "总览可独立阅读，并提供31篇展开入口；含四路线图、连接索引、原讲义36对象定位与新论文阅读方法，不把核心解释外包给链接。"
       },
       {
         "id": "R7",
@@ -48,7 +48,7 @@
       },
       {
         "id": "R9",
-        "text": "执行范围匹配的正文、链接与覆盖检查及旗舰级独立复核；报告不以工作台页面验收为前置，模型评分不替代用户学习反馈。"
+        "text": "执行范围匹配的正文、图表、公式、脚注、链接与覆盖检查，以及旗舰级独立内容复核；不要求浏览器、截图或工作台页面验收。"
       },
       {
         "id": "R10",
@@ -56,7 +56,7 @@
       },
       {
         "id": "R11",
-        "text": "原第31节实质改写且标题后首块有展开链接；展开保留原节、前后章节导航，统一两位编号、人类独立可读；本轮核心为DiT在固定卷积VAE潜空间中以Transformer替换去噪骨架，patch/条件块和模型计算可扩展；类别条件ImageNet实验需保留CFG、decoder、训练长度/样本数和512分辨率反例，采样计算不等模型能力，开放文生图与视频不能倒填原论文结论。其余科学正文严格继承已发布r35。"
+        "text": "完整校读全部32篇并最终核对总览与分章一致：事实/版本/术语/编号/图表/展开入口/前后链接；讲义36对象与31分章的差别可解释。分章的已完成独立复核与本轮阅读范围由各自既有质量文件记录，本总览复核不伪装成重新独审31篇全部原论文。"
       }
     ],
     "reader_feedback": [
@@ -90,7 +90,8 @@
       "change": "取消报告的工作台桌面/窄屏页面验收前置；来源、正文、引用、章节导航与独立内容复核要求不变。",
       "ui_validation_performed": false,
       "scientific_content_changed": false
-    }
+    },
+    "scope_history_note": "用户再次明确取消浏览器、截图和工作台页面检查；本轮Goal中实际富文本检查的前置要求已撤销。此前未完成页面检查的事实保留，但不再属于报告交付缺口。"
   },
   "sources": [
     {
@@ -1358,14 +1359,14 @@
     },
     {
       "id": "C-sparse-moe",
-      "claim": "2017稀疏MoE在LSTM中分离总专家容量与每输入激活计算；路由/批量/负载/通信决定实际效率。1B-word十轮4→4096专家的PPL45.0→34.1、前向ops8.4M→8.9M并非费用千分之一；100B-word最大专家配置质量和硬件效率退化。",
+      "claim": "2017稀疏MoE在LSTM中分离总专家容量与每输入激活计算；路由/批量/负载/通信决定实际效率。1B-word十轮4→4096专家的PPL45.0→34.1、前向ops8.4M→8.9M并非费用千分之一；100B-word最大专家配置质量和硬件效率退化。 未选专家前向可省，但门控与共享层仍运行，不能把k/E直接解释成整个网络成本比例。",
       "report_anchor": "paper-sparse-moe",
       "support": "direct",
       "source_ids": [
         "S-moe"
       ],
       "critical": true,
-      "evidence": "§§1–5、Figure1、Table6/7/8、AppendicesA–G；Table7每输入4专家、4096为层次路由，ops排除softmax；Table8固定约2.5M词batch、64→128K40，PPL28.9→29.2、TFLOPS/GPU0.72→0.30。"
+      "evidence": "§§1–5、Figure1、Table6/7/8、AppendicesA–G；Table7每输入4专家、4096为层次路由，ops排除softmax；Table8固定约2.5M词batch、64→128K40，PPL28.9→29.2、TFLOPS/GPU0.72→0.30。 本轮全文校订增量：2017 MoE Figure1与门控/网络描述；保留原Table7/8比较口径。"
     },
     {
       "id": "C-lora",
@@ -1382,18 +1383,18 @@
     },
     {
       "id": "C-alphago-zero",
-      "claim": "AlphaGo Zero从随机权重通过p/v网络、MCTS与(pi,z)训练闭环不依赖人类棋谱；区分三天/四十天、36h/72h、Lee/Master、4TPU搜索与梯度优化；职业棋谱预测54.3/49.0不等于棋力；规则/评价/模拟条件限制迁移。",
+      "claim": "AlphaGo Zero从随机权重通过p/v网络、MCTS与(pi,z)训练闭环不依赖人类棋谱；区分三天/四十天、36h/72h、Lee/Master、4TPU搜索与梯度优化；职业棋谱预测54.3/49.0不等于棋力；规则/评价/模拟条件限制迁移。 树中回传访问/价值统计不等于网络梯度反传；网络参数在随后的训练阶段更新。",
       "report_anchor": "paper-alphago-zero",
       "support": "direct",
       "source_ids": [
         "S-alphago"
       ],
       "critical": true,
-      "evidence": "Figures1/2/3/6、Methods AlphaGo versions/Optimization/Evaluator/Search/Domain knowledge/Evaluation，ExtendedDataTable1。A/B仅机制示意；40天权重重新初始化但搜索参数借助小实例优化；监督损失MSE权重0.01，不能称单变量对照。"
+      "evidence": "Figures1/2/3/6、Methods AlphaGo versions/Optimization/Evaluator/Search/Domain knowledge/Evaluation，ExtendedDataTable1。A/B仅机制示意；40天权重重新初始化但搜索参数借助小实例优化；监督损失MSE权重0.01，不能称单变量对照。 本轮全文校订增量：Figures1–2与Methods Search/Optimization分工，和分章17的本轮校订一致。"
     },
     {
       "id": "C-instructgpt",
-      "claim": "InstructGPT在既有GPT3上应用RLHF，以示范、比较、RM和PPO改变回答行为；KL限制偏离、ptx保留原语言学习；13亿更受偏好于1750亿受分布/人群限定，不代表全能力超越。错误前提、能力回退和有害指令仍有风险。",
+      "claim": "InstructGPT在既有GPT3上应用RLHF，以示范、比较、RM和PPO改变回答行为；KL限制偏离、ptx保留原语言学习；13亿更受偏好于1750亿受分布/人群限定，不代表全能力超越。错误前提、能力回退和有害指令仍有风险。 每次PPO优化回答策略时固定奖励模型及参考模型，更新策略和辅助价值模型；外层可迭代采集数据和重新训练RM。",
       "report_anchor": "paper-instructgpt",
       "support": "direct",
       "source_ids": [
@@ -1401,22 +1402,22 @@
         "S-gpt3"
       ],
       "critical": true,
-      "evidence": "§2–3、Figures1/2；§4.1–4.3及Figure9；AppendixC/E区分KL/ptx与实做配置；§5.2–5.4人群和安全边界。通知是教学例；本轮重读指定原文，非复训。"
+      "evidence": "§2–3、Figures1/2；§4.1–4.3及Figure9；AppendixC/E区分KL/ptx与实做配置；§5.2–5.4人群和安全边界。通知是教学例；本轮重读指定原文，非复训。 本轮全文校订增量：原论文§3、AppendixC.4；不能把固定RM扩大为所有外层轮次永不更新。"
     },
     {
       "id": "C-cot",
-      "claim": "CoT在few-shot示范中加入中间步骤，不为本提示实验微调；可见步骤参与后续生成但不保证忠实。PaLM540B GSM8K1319题8示例greedy无计算器17.9→56.9%，SingleOp94.1不变；点号/事后解释无同等收益，苹果派反例终答正确但语义颠倒。",
+      "claim": "CoT在few-shot示范中加入中间步骤，不为本提示实验微调；可见步骤参与后续生成但不保证忠实。PaLM540B GSM8K1319题8示例greedy无计算器17.9→56.9%，SingleOp94.1不变；点号/事后解释无同等收益，苹果派反例终答正确但语义颠倒。 点号对照按算式字符数构造而非严格等token/等算力；事后解释不能帮助已生成答案。",
       "report_anchor": "paper-cot",
       "support": "direct",
       "source_ids": [
         "S-cot"
       ],
       "critical": true,
-      "evidence": "Figure1、§2–3.3与E.2；Tables1/3/6/12核数值、设置、样本；Table9核真实反例。后续方法在展开稿的一手摘要边界下讨论；不是本轮模型复现。"
+      "evidence": "Figure1、§2–3.3与E.2；Tables1/3/6/12核数值、设置、样本；Table9核真实反例。后续方法在展开稿的一手摘要边界下讨论；不是本轮模型复现。 本轮全文校订增量：CoT v6消融和自回归生成顺序，因果外推仍按原实验范围限制。"
     },
     {
       "id": "C-react",
-      "claim": "ReAct在冻结模型提示下交错推理、动作和真实观察；Apple Remote例展示查找失败后的调整，Act-only查询后仍可能答非所问。FEVER改善而HotpotQA低于CoT，检索失败与重复动作仍存在；微调另属训练阶段。",
+      "claim": "ReAct在冻结模型提示下交错推理、动作和真实观察；Apple Remote例展示查找失败后的调整，Act-only查询后仍可能答非所问。FEVER改善而HotpotQA低于CoT，检索失败与重复动作仍存在；微调另属训练阶段。 宣布完成不代表正确；WebShop是模拟环境，不是完成真实支付，真实执行另有权限/隐私边界。",
       "report_anchor": "paper-react",
       "support": "direct",
       "source_ids": [
@@ -1424,7 +1425,7 @@
         "S-cot"
       ],
       "critical": true,
-      "evidence": "本轮直接核Figure1；§2–4、Tables1–4。CoT/ReAct的Hotpot29.4/27.4、FEVER56.3/60.9；原图Obs3省略，不补完整返回；提示/微调/既有前驱分开。"
+      "evidence": "本轮直接核Figure1；§2–4、Tables1–4。CoT/ReAct的Hotpot29.4/27.4、FEVER56.3/60.9；原图Obs3省略，不补完整返回；提示/微调/既有前驱分开。 本轮全文校订增量：ReAct§4的任务环境与成功评价；从模拟任务到现实安全为明确的适用性提醒。"
     },
     {
       "id": "C-tulu3",
@@ -1440,18 +1441,18 @@
     },
     {
       "id": "C-deepvideo",
-      "claim": "DeepVideo比较RGB视频分类中的时间连接；Single也聚合多时刻，VideoHit1为59.3/Slow60.9/Early57.7，63.9属四CNN集成。弱标数据、相机干扰假说、多分辨率成本与Sports1M→UCF迁移共同限定收益，未把ImageNet架构相似当权重初始化。",
+      "claim": "DeepVideo比较RGB视频分类中的时间连接；Single也聚合多时刻，VideoHit1为59.3/Slow60.9/Early57.7，63.9属四CNN集成。弱标数据、相机干扰假说、多分辨率成本与Sports1M→UCF迁移共同限定收益，未把ImageNet架构相似当权重初始化。 AP变化+0.12/-0.07是0–1尺度的绝对差，不是Video Hit@1的变化。",
       "report_anchor": "paper-deepvideo",
       "support": "direct",
       "source_ids": [
         "S-deepvideo"
       ],
       "critical": true,
-      "evidence": "本轮完整8页与p3–7 Figures1–5/Tables1–4原图；20clip×4crop/flip平均，AP+0.12/-0.07为不同指标；训练提速2–4倍受实现限定；UCF顶3 65.4/从头41.3，摘要63.3冲突与数据重叠保留。"
+      "evidence": "本轮完整8页与p3–7 Figures1–5/Tables1–4原图；20clip×4crop/flip平均，AP+0.12/-0.07为不同指标；训练提速2–4倍受实现限定；UCF顶3 65.4/从头41.3，摘要63.3冲突与数据重叠保留。 本轮全文校订增量：Figure5及正文平均精度定义；分类指标不互换。"
     },
     {
       "id": "C-two-stream",
-      "claim": "双流将RGB外观与光流运动分别分类再融合；光流非帧差，L10为20通道，预训练/多任务缓解小数据。UCF split1 RGB56.4/光流81.0；三split双流88.0/59.4不能称全面击败强手工方法。局部相似混淆、光流预处理和相机/时序边界保留。",
+      "claim": "双流将RGB外观与光流运动分别分类再融合；光流非帧差，L10为20通道，预训练/多任务缓解小数据。UCF split1 RGB56.4/光流81.0；三split双流88.0/59.4不能称全面击败强手工方法。局部相似混淆、光流预处理和相机/时序边界保留。 81.0%配置含光流减均值；预计算光流不随分类误差联合更新，全流程不能称端到端。",
       "report_anchor": "paper-two-stream",
       "support": "direct",
       "source_ids": [
@@ -1462,11 +1463,11 @@
         "S-two-stream-shownotes"
       ],
       "critical": true,
-      "evidence": "v2完整正文、Tables1–4与p8原图；SVM UCF88.0对87.9、HMDB59.4对61.1/66.8；§6末尾Hammering混淆与作者解释；§§5/7前处理及局部/轨迹/相机限制。与讲义p43及45段ASR核对，未听校。"
+      "evidence": "v2完整正文、Tables1–4与p8原图；SVM UCF88.0对87.9、HMDB59.4对61.1/66.8；§6末尾Hammering混淆与作者解释；§§5/7前处理及局部/轨迹/相机限制。与讲义p43及45段ASR核对，未听校。 本轮全文校订增量：Table1b、§§3/5/7；同已通过的分章23修订。"
     },
     {
       "id": "C-vit",
-      "claim": "ViT将图块像素投影与位置/分类标记送入Transformer编码器，监督学习并迁移分类；224/P16为196块，序列非词表或自回归。Table5 B/L在ImageNet77.91/76.53、JFT84.15/87.12，数据/训练条件改变结果；计算和任务范围不泛化。讲义输入适配与人物署名分别校核。",
+      "claim": "ViT将图块像素投影与位置/分类标记送入Transformer编码器，监督学习并迁移分类；224/P16为196块，序列非词表或自回归。Table5 B/L在ImageNet77.91/76.53、JFT84.15/87.12，数据/训练条件改变结果；计算和任务范围不泛化。讲义输入适配与人物署名分别校核。 224/16形成196图块，加分类标记后输入197位置，再加入位置表示。",
       "report_anchor": "paper-vit",
       "support": "direct",
       "source_ids": [
@@ -1478,7 +1479,7 @@
         "S-vit-shownotes"
       ],
       "critical": true,
-      "evidence": "ViT v2§§1–4及Figure1、Tables1/2/5；384微调与Table2高分不同设置分开。原论文首页共同指导标记；讲义p47、236段538.06秒目标ASR和shownotes，未听校。展开篇另解释消融、硬件与自监督初探。"
+      "evidence": "ViT v2§§1–4及Figure1、Tables1/2/5；384微调与Table2高分不同设置分开。原论文首页共同指导标记；讲义p47、236段538.06秒目标ASR和shownotes，未听校。展开篇另解释消融、硬件与自监督初探。 本轮全文校订增量：ViT v2 §3/Figure1，图块数与整段序列长度分开。"
     },
     {
       "id": "C-clip",
@@ -1515,7 +1516,7 @@
     },
     {
       "id": "C-diffusion-2015",
-      "claim": "2015扩散把生成分解为小步逆过程，以已知前向扰动训练均值/协方差与变分目标；新噪声生成不是恢复唯一原件，局部/路径/边缘概率分开，保留原实验步数、bits口径与v8去量化更正。",
+      "claim": "2015扩散把生成分解为小步逆过程，以已知前向扰动训练均值/协方差与变分目标；新噪声生成不是恢复唯一原件，局部/路径/边缘概率分开，保留原实验步数、bits口径与v8去量化更正。 学习前向β日程不是框架必要条件；连续密度的正数对数值与缩放有关，不能直接横比DDPM离散NLL。",
       "report_anchor": "paper-diffusion-2015",
       "support": "direct",
       "source_ids": [
@@ -1526,7 +1527,7 @@
         "S-diffusion15-shownotes"
       ],
       "critical": true,
-      "evidence": "v8正文与重点附录、Tables1/2、TableApp.1、网络细节及脚注3；讲义p45、185段转写与shownotes，按本章明确边界核读；无训练复现。 明确高斯前向β₂…T优化且β₁固定；1.489是Table1的似然下界K，Table2复用。"
+      "evidence": "v8正文与重点附录、Tables1/2、TableApp.1、网络细节及脚注3；讲义p45、185段转写与shownotes，按本章明确边界核读；无训练复现。 明确高斯前向β₂…T优化且β₁固定；1.489是Table1的似然下界K，Table2复用。 本轮全文校订增量：v8 p6脚注2及pp7–9；保持1.489为下界K、Table2复用与Parzen口径。"
     },
     {
       "id": "C-ddpm",
@@ -1546,7 +1547,7 @@
     },
     {
       "id": "C-ldm",
-      "claim": "LDM把感知压缩与扩散生成拆成两阶段，在二维潜表示中多步去噪并最终一次解码；感知/对抗目标与KL/VQ表示有取舍，空间缩小不直接等于加速倍率；原v2的BERT tokenizer与联合训练Transformer条件不同于SD1.4固定CLIP，实验优势有任务和精度边界。",
+      "claim": "LDM把感知压缩与扩散生成拆成两阶段，在二维潜表示中多步去噪并最终一次解码；感知/对抗目标与KL/VQ表示有取舍，空间缩小不直接等于加速倍率；原v2的BERT tokenizer与联合训练Transformer条件不同于SD1.4固定CLIP，实验优势有任务和精度边界。 Figure17还比较固定35 V100 GPU日；V100日有A100相对V100快2.2倍的折算假设，不等于在两种卡上逐配置重测。",
       "report_anchor": "paper-ldm",
       "support": "direct",
       "source_ids": [
@@ -1558,11 +1559,11 @@
         "S-ldm-sd14"
       ],
       "critical": true,
-      "evidence": "本轮第29节展开正文及其原始证据，关键机制/数字见对应论文和章节脚注；未改变其余已发布主稿正文。"
+      "evidence": "v2 §D.5/Figure17 p22与§F p28；原图条件为100 DDIM steps、FID5k；分章29有展开，不把单位缩减写成端到端同倍率加速。 原机制/实验的完整原文核验与本轮增量见相应分章的evidence/review，不再沿用“仅改本节、其余严格继承”的旧轮范围说明。"
     },
     {
       "id": "C-dit",
-      "claim": "DiT在固定卷积VAE潜空间中以Transformer替换去噪骨架，patch/条件块和模型计算可扩展；类别条件ImageNet实验需保留CFG、decoder、训练长度/样本数和512分辨率反例，采样计算不等模型能力，开放文生图与视频不能倒填原论文结论",
+      "claim": "DiT在固定卷积VAE潜空间中以Transformer替换去噪骨架，patch/条件块和模型计算可扩展；类别条件ImageNet实验需保留CFG、decoder、训练长度/样本数和512分辨率反例，采样计算不等模型能力，开放文生图与视频不能倒填原论文结论 Figure9比较共同训练计算预算；Figure10的采样对照模型均训练400K步，而非同训练FLOPs。",
       "report_anchor": "paper-dit",
       "support": "direct",
       "source_ids": [
@@ -1573,7 +1574,7 @@
         "S-dit-shownotes"
       ],
       "critical": true,
-      "evidence": "本轮第31节展开正文及其原始证据，关键机制/数字见对应论文和章节脚注；未改变其余已发布主稿正文。"
+      "evidence": "DiT v2 p8 Figure9的forward×batch×steps×3近似、p9 Figure10；保留GFLOPs/TFLOPs、FID10K/50K和最终decoder/CFG/训练步数边界。 原机制/实验的完整原文核验与本轮增量见相应分章的evidence/review，不再沿用“仅改本节、其余严格继承”的旧轮范围说明。"
     },
     {
       "id": "C-bitter-lesson",
@@ -1588,19 +1589,19 @@
     },
     {
       "id": "C-inventory",
-      "claim": "51页讲义按正文核定36个主线对象（33篇论文、2篇研究报告、1篇观点文章）；合讲页与多页同对象不机械计数。",
-      "report_anchor": "原讲义与本文的对应关系",
+      "claim": "原PDF51页核定36个主线对象（33论文、2研究报告、1观点文章）；原四路线分别12/7/8/9个。五组合讲、BitterLesson留总览、SD1.4拆出实现篇，形成31分章加1总览；HardwareLottery为补充来源，不扩原36对象计数。",
+      "report_anchor": "lecture-mapping",
       "support": "derived",
       "source_ids": [
         "S-lecture",
         "L-inventory"
       ],
       "critical": true,
-      "evidence": "source-map.json的pages覆盖1–51，counting为33论文/2研究报告/1观点文章；P12、P28拆分，P21–25合为同一文章，映射已独立复核。"
+      "evidence": "source-map.json pages/counting/objects与本轮原讲义全读、四组对象表逐项对应；36−5−1+1=31分章，不遗漏原对象，不把SD1.4模型卡当新增原论文。"
     },
     {
       "id": "C-sd14",
-      "claim": "v1.4把固定CLIP文本序列、f8四通道潜空间、U-Net与CFG/采样器组合成具体模型；训练路径v1.3/v1.4均续自v1.2，数据筛选CLIP与生成条件分工不同，步数/调用次数/训练成本/运行门槛与安全边界不可混同",
+      "claim": "v1.4把固定CLIP文本序列、f8四通道潜空间、U-Net与CFG/采样器组合成具体模型；训练路径v1.3/v1.4均续自v1.2，数据筛选CLIP与生成条件分工不同，步数/调用次数/训练成本/运行门槛与安全边界不可混同 CFG共享参数不消除有条件/无条件两组计算，合批也不等于只有一组工作。",
       "report_anchor": "paper-sd14",
       "support": "direct",
       "source_ids": [
@@ -1618,7 +1619,7 @@
         "S-sd14-shownotes"
       ],
       "critical": true,
-      "evidence": "本轮第30节展开正文及其原始证据，关键机制/数字见对应论文和章节脚注；未改变其余已发布主稿正文。"
+      "evidence": "固定HF commit 133a221b8aa7292a167afc5127cb63fb5005638b模型卡、官方PLMS缓存与CFG原文；GitHub代码仍是master快照+内容哈希，不冒称固定Git commit。 原机制/实验的完整原文核验与本轮增量见相应分章的evidence/review，不再沿用“仅改本节、其余严格继承”的旧轮范围说明。"
     },
     {
       "id": "C-hardware-lens",
@@ -1868,7 +1869,7 @@
     },
     {
       "id": "C-basics",
-      "claim": "参数更新、推理时输入、网络骨架、训练目标和评价是不同层次；同一种Transformer骨架可服务不同目标。",
+      "claim": "参数更新、推理时输入、网络骨架、训练目标和评价是不同层次；同一种Transformer骨架可服务不同目标。 文本token与ViT/DiT图块token有不同输入含义；参数更新、提示输入、网络骨架、训练目标和评价不混同。",
       "report_anchor": "basics",
       "support": "derived",
       "source_ids": [
@@ -1883,7 +1884,7 @@
         "S-dit"
       ],
       "critical": true,
-      "evidence": "将原论文方法定义压缩为阅读用语；GPT3 §1.2少样本无梯度更新，Transformer §3架构，ViT/DiT/语言模型目标分别核对。术语不承诺穷尽所有训练制度。"
+      "evidence": "将原论文方法定义压缩为阅读用语；GPT3 §1.2少样本无梯度更新，Transformer §3架构，ViT/DiT/语言模型目标分别核对。术语不承诺穷尽所有训练制度。 本轮全文校订增量：ViT/DiT输入与GPT3提示接口的已核原文定义；新增词条澄清不是新实验结论。"
     },
     {
       "id": "C-route-walkthroughs",
@@ -1914,6 +1915,18 @@
       ],
       "critical": true,
       "evidence": "第八部分是前文已核节点的综合解释，不声称单线因果或特定现成产品配置；CLIP筛数据与SD1.4文本条件分开，DiT承接生成框架与骨架复用。"
+    },
+    {
+      "id": "C-route-map",
+      "claim": "四路线图沿用原PDF的研究对象分类；各框内按首次公开/发表年份排列，不共享时间刻度，不用位置或箭头暗示直接继承。",
+      "report_anchor": "route-map",
+      "support": "derived",
+      "source_ids": [
+        "S-lecture",
+        "L-inventory"
+      ],
+      "critical": true,
+      "evidence": "原PDF第7页和四路线页、source-map核定年份/对象；原创SVG/PNG只是综合呈现，不是独立科研证据。初版四行对齐容易被误读为共同时间轴，已改为四个分类框并在图顶写明；最终图逐项核对36对象与12/7/8/9分组。"
     }
   ],
   "source_coverage": [
@@ -2399,6 +2412,17 @@
         "S-sd14-shownotes"
       ],
       "report_anchor": "paper-sd14"
+    },
+    {
+      "id": "U-route-map",
+      "title": "原四路线可视化、36对象与31分章映射",
+      "importance": "core",
+      "status": "included",
+      "source_ids": [
+        "S-lecture",
+        "L-inventory"
+      ],
+      "report_anchor": "route-map"
     }
   ],
   "limitations": [
@@ -2407,10 +2431,11 @@
     "原PDF为二手路线材料；标题、内嵌链接、现职/履历、营销式起点及时间相邻都不自动成为事实或因果。",
     "本文按问题组织，允许回看更早年代；问题顺序与发表顺序不同，直接组件采用、条件支撑、继承修正和主题对照分别标示。",
     "部分原文内部数值或版本存在差异（如Transformer英法分数、Chinchilla MMLU、Tulu IFEval口径），正文不依赖争议精确数；详细记录仍保留。",
-    "Stable Diffusion只核定v1.4模型卡的读取快照，未固定main的commit，不外推其他版本；原LDM论文与产品条件/数据路径不混同。",
+    "Stable Diffusion v1.4的HF模型卡固定commit 133a221b8aa7292a167afc5127cb63fb5005638b，且该文件版本晚于初发；GitHub源码仅绑定master读取快照及内容哈希，未固定commit，不外推其他版本。原LDM论文与v1.4条件编码/数据路径分开。",
     "The Bitter Lesson与Hardware Lottery按作者论证理解，未逐案重建全部AI历史或证明其为普遍定律；不建立未经核的DiT到Sora等产品谱系。",
     "人物与机构只保留能服务路径、由原文或正式资料支持的参与和条件，未全面审计后续职业经历。",
-    "两段样章已获用户认可；最终报告的阅读效果仍需要读者反馈，脚本和独立模型评分不能替代。"
+    "两段样章已获用户认可；最终报告的阅读效果仍需要读者反馈，脚本和独立模型评分不能替代。",
+    "本轮已直接检查新增路线图，并完成32篇Markdown到HTML的结构、脚注及链接检查。未作浏览器页面检查，用户已明确取消该项要求；不把文本或原图检查描述为页面验收。"
   ],
   "research_artifacts": [
     {
@@ -2484,6 +2509,18 @@
       "review_sha256": "a0e7e3948b1dc3104b87c37ce7f6531bbd8daf328a9a3b70145d388b0af32e56",
       "scope": "独立核查研究材料；不自动替代最终主稿的旗舰复核。",
       "post_review_correction": true
+    },
+    {
+      "path": "ai-learning/reports/paper_assets/ai-yanyi-four-routes.svg",
+      "sha256": "17bedc2d2ee899e3ed22c9d84f95a68d46e0400375488d53e89b5b41e07c4491",
+      "kind": "original-diagram",
+      "scope": "原四路线与36对象的原创分类图；年份来自已核原文，不表示等比例时间或直接因果。"
+    },
+    {
+      "path": "ai-learning/reports/paper_assets/ai-yanyi-four-routes.png",
+      "sha256": "065d5e42700c3d89a5e893ab12580581bd1748a2a0d662ef629c00cd45a43b04",
+      "kind": "original-diagram",
+      "scope": "原四路线与36对象的原创分类图；年份来自已核原文，不表示等比例时间或直接因果。"
     }
   ],
   "inventory": {
@@ -2494,9 +2531,17 @@
     "papers": 33,
     "research_reports": 2,
     "essay_articles": 1,
-    "note": "论文研究范围按用户最新限定；不是全文逐公式/全图表审计。"
+    "note": "原PDF已全文读取，32篇报告本轮逐篇完整校读；原论文的读取/复用范围按各章实际记录，不把报告全文校读冒充所有论文附录/图像/公式均重新审计。",
+    "series_report_count": 32,
+    "chapter_report_count": 31,
+    "route_object_counts": [
+      12,
+      7,
+      8,
+      9
+    ]
   },
-  "revision_note": "r36：第31节及其脚注、来源与覆盖增量，其余科学正文严格继承已发布r35。仅原文、正文、引用及章节导航检查，不做工作台页面验收。",
+  "revision_note": "r37：完成总览与31分章全文校读后的总览收束。按原PDF恢复四路线分类、增加原创图、拆分36对象长表并解释31分章；修正术语、计算/概率/评价边界和来源定位，保留有效段落与原编号/显式锚点。各分章已分别完成本轮校订与独立复核；本总览仅对本次变化及影响作旗舰复核，不把旧网页访问日期改为新抓取。",
   "generation_history": [
     {
       "revision_round": 2,
@@ -2713,6 +2758,42 @@
         },
         "note": "用户取消UI前置；科学正文、来源和两次独立复核不变，范围调整留痕后原生质量门通过并已推送。"
       }
+    },
+    {
+      "revision_round": 36,
+      "generator": {
+        "model": "gpt-6-astra",
+        "harness": "codex",
+        "run_id": "ai-yanyi-dit-main-r36-20261106",
+        "explicit_model_override": false,
+        "override_reason": "",
+        "identity_basis": "eacli session current：codex-turn-context，session-bound，confirmed=true；只证明当前生成会话，不证明子会话模型。"
+      },
+      "revision_note": "r36：第31节及其脚注、来源与覆盖增量，其余科学正文严格继承已发布r35。仅原文、正文、引用及章节导航检查，不做工作台页面验收。",
+      "report_sha256": "0b0ca4938e38e0f69f1c2408a1b93b6e37e05efb4fcbb287f3d24ce70aa99cea",
+      "evidence_sha256": "ae15173ff3971a0334d0832ead8788d0bf689af13ab9c85af57d217a647a795e",
+      "scope": "r36为31章展开阶段的已通过总览；随后进入本轮32篇全文校订收束。"
     }
-  ]
+  ],
+  "revision_scope": {
+    "date": "2026-11-06",
+    "scope": "full-series-reading-and-overview-consolidation",
+    "reports_fully_read": 32,
+    "original_pdf": {
+      "path": "ai-learning/notes/终版：AI演义，36篇论文开启你的探索之旅.pdf",
+      "sha256": "197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0",
+      "pages_read": "1–51；本轮重新定位第7页四路线与各对象，完整阅读记录沿同一Goal已有材料。"
+    },
+    "source_reuse": "复用未变化的固定版论文与已核网页快照；当前补核位置在上述claims/evidence与31章的既有质量文件中。没有将格式扫描视作全文阅读，也没有声称重新联网抓取全部86个来源。",
+    "chapter_review_scope": "01–31逐篇全文校订及独立内容复核已按批次落在各章review；第06章只补上回到05章的导航，内容与来源检查可经差分验证后继承。",
+    "visual_check": {
+      "diagram": "最终2400×2460 PNG已直接查看，SVG文字与PNG内容同源；无乱码/裁切/遮挡，四框不共享时间轴。",
+      "typed_capability": "vision.image-analysis",
+      "provider": "zhipu",
+      "receipt_sha256": "4a1264af71895b06cd16931785df5236af33e9f6aad168922eceac4f11cf305f",
+      "result": "工具亦未发现实际文字呈现问题；图内对象数/年份由生成源数据与source-map独立核对，不依赖工具的附加猜测。",
+      "workbench_browser": "不在任务范围：用户明确取消浏览器、截图和工作台页面检查。此前工具未取得页面，未作页面验收。"
+    },
+    "checks": "32篇仓内链接、显式/标题锚点、脚注定义、控制字符、前后/总览入口和Pandoc HTML结构已运行；发现06章缺少回05章入口，已补。最终受影响条目与本轮变更在冻结/交付前复验。"
+  }
 }

@@ -1,5 +1,5 @@
 ---
-title: "《AI演义》深读：从关键论文看懂AI的发展路径"
+title: "AI演义·总览｜从关键论文看懂 AI 的发展路径"
 domain: "ai-learning"
 report_type: "knowledge_report"
 status: "completed"
@@ -11,7 +11,7 @@ reader_contract: "standalone"
 semantic_tags: ["ai_history", "representation_learning", "transformer", "pretraining", "scaling_laws", "multimodal", "generative_models", "alignment", "agentic_loop", "research_methodology"]
 ---
 
-# 《AI演义》深读：从关键论文看懂 AI 的发展路径
+# AI演义·总览｜从关键论文看懂 AI 的发展路径
 
 谢青池的《AI演义》用51页串联了36个研究对象，从GPU编程讲到语言模型、图像生成和Agent。[^lecture] 这份报告沿着其中的关键转折展开：当时卡在什么地方，一项工作改变了什么，这个改变又怎样接到后来的研究。
 
@@ -23,20 +23,26 @@ semantic_tags: ["ai_history", "representation_learning", "transformer", "pretrai
 - **范式变迁**：研究者改变了什么做法，又保留了什么？
 - **人和组织**：谁在怎样的研究与工程环境中，使这个改变变得可实施？
 
-正文保留全部36个对象，重点解释机制和连接，几乎不展开公式。第一次阅读可顺着章节走；以后遇到新论文，可以用文末的[连接索引](#verified-connections)和[定位方法](#new-papers)回查。
+这套系列共 **32 篇：本篇总览，加 31 篇分章深读**。总览保留全部 36 个研究对象，重点解释机制和连接；各节开头都能进入对应的展开篇。第一次阅读可顺着本篇走，在哪一节想多停留，就点进去；以后遇到新论文，可以用文末的[连接索引](#verified-connections)和[定位方法](#new-papers)回查。为什么对象数与分章数不同，见[讲义对应关系](#lecture-mapping)。
 
 <a id="route-map"></a>
 
-## 先看总路线：能力怎样形成，又怎样被兑现
+## 先看原讲义的四条路线
 
-| 路线 | 问题怎样推进 | 在哪里与其他路线接上 |
+原讲义按 **模型范式、Infra 与数据、语言模型、多模态模型** 四条路线展开。它们不是四个互不相干的年代，也不是一种方法依次淘汰另一种方法的升级表。例如 Transformer 既是架构变化，又会进入语言、视觉和生成模型；GAN 与扩散则有长期并行的探索。[^lecture]
+
+![AI演义四条研究路线：模型范式、Infra与数据、语言模型、多模态模型；按原讲义分类列出36个研究对象，完整文字定位见文末四组表格。](paper_assets/ai-yanyi-four-routes.png)
+
+*图：按原讲义第 7 页及各路线页重新整理；年份按对应论文或报告的首次公开／发表口径。这是分类目录，不是共同时间轴；每个框内按年份排列，没有画继承箭头。具体联系见正文。[打开清晰原图](paper_assets/ai-yanyi-four-routes.png) · [可缩放版](paper_assets/ai-yanyi-four-routes.svg)*
+
+| 原讲义路线 | 抓住什么问题 | 本篇从哪里读 |
 |---|---|---|
-| 计算与训练 | Brook降低GPU编程门槛；AlexNet把数据、网络和GPU结合起来；ResNet改善深网络的训练 | 残差连接进入Transformer；训练成本又引出分片、稀疏计算和任务适配 |
-| 语言与任务 | Word2Vec复用词表示；GPT-1/BERT复用预训练网络；GPT-2/3用上下文表达任务 | 模型能接受任务后，InstructGPT研究回答偏好，CoT与ReAct研究使用过程 |
-| 数据与规模 | Scaling Laws、Chinchilla研究预算分配；RefinedWeb处理数据；ZeRO、MegaScale处理训练系统 | 为语言和多模态训练提供条件；CLIP还能反过来帮助筛选图文数据 |
-| 视觉与生成 | 视频研究处理运动；ViT复用Transformer；CLIP连接图文；扩散、LDM、DiT重组生成过程 | Stable Diffusion v1.4将潜空间扩散、文本条件和图文数据组合成具体模型 |
+| 模型的范式变迁 | 怎样表达计算、训练网络，怎样改变学习和使用模型的方式 | [计算与训练](#conditions)、[语言架构](#language)、[效率方法](#paper-sparse-moe)、[反馈与行动](#goals) |
+| Infra 与数据变迁 | 模型装不装得下，数据值不值得学，大规模训练能否持续推进 | [资源线](#resources)、[Bitter Lesson 与硬件条件](#lenses) |
+| 语言模型的发展 | 从复用词表示，到复用预训练网络，再到用上下文表达任务、用反馈改善回答 | [语言路线](#language)、[后训练](#paper-instructgpt) |
+| 多模态模型的发展 | 运动、图块、图文对应与生成，各自需要什么输入和学习信号 | [视觉与语言](#vision)、[生成路线](#generation) |
 
-这些是相互穿插的问题线，日期和具体继承关系在正文中分别说明。例如ZeRO早于Chinchilla，GAN与扩散也有长期并行的探索。先抓住**每次改变的是哪一环**，再看方法之间怎样相接。
+下面按问题衔接这四条路线，而不机械重复四遍相关概念。遇到时间回跳时，正文会说明：例如 ZeRO 早于 Chinchilla，但可以先问预算怎样分，再问工程上怎样装得下。
 
 | 想先弄清的问题 | 阅读入口 |
 |---|---|
@@ -56,7 +62,7 @@ semantic_tags: ["ai_history", "representation_learning", "transformer", "pretrai
 |---|---|
 | 参数、训练、推理 | 参数是模型中通过学习调整的数值。训练根据数据和目标更新它们；推理用已有参数处理输入。提示中多放几个例子，可以改变输出而不更新参数。 |
 | 表示 | 把词、图像或其他输入转成便于模型处理的数值形式。好表示应保留任务需要的区别；Word2Vec的词向量、ViT的图块表示、LDM的潜表示各有用途。 |
-| token | 语言模型处理文本的单位，可能是词、词的一部分或其他片段。训练tokens表示处理过多少这样的单位，不等于有多少篇文章，也不等于独立知识条数。 |
+| token | 序列模型的一项输入或输出单位。文本 token 可能是词、词的一部分或其他片段；ViT、DiT 的 token 则由图块计算得到，不一定对应文字。训练 token 数是处理次数，不等于文章数或独立知识条数。 |
 | 架构、训练目标 | 架构规定信息怎样流动和计算；目标规定训练鼓励什么结果。Transformer是一类架构，下一token预测和图像去噪是不同目标。同一种骨架可以服务不同目标。 |
 | 预训练、后训练 | 预训练先学到可迁移的能力；后训练在已有基座上进一步适配任务或行为。本文的指令微调、偏好优化属于后者，具体阶段和数据要分别看。 |
 | 损失、评价 | 损失是训练时优化的误差指标；评价检验模型在选定任务上表现如何。文本预测损失下降，与答案更受用户偏好，是相关但不同的问题。 |
@@ -361,7 +367,7 @@ MegaScale 同时调整模型结构、优化器与执行方式。例如，让 Att
 
 资源问题还可以从模型内部回答：想容纳更多参数，能否让每个输入只使用其中一部分？这里要回到 2017 年 1 月。Noam Shazeer 等人的稀疏 MoE 论文，把已有的专家混合思想推进到大规模语言任务；实验系统仍然使用 LSTM，早于 Transformer 的公开发表。[^moe]
 
-MoE 把一层网络组织成许多前馈子网，由学习到的门控选择少数几个，再把输出加权合并。对语言模型来说，选择发生在文本的各个位置：前面的 LSTM 先形成带有上下文信息的表示，门控据此选专家，合并后的表示再交给后面的网络。同一句话的不同位置，可以调用不同专家。这些专家是模型内部的参数组，不是分别写回答的聊天机器人。
+MoE 把一层网络组织成许多前馈子网，由学习到的门控选择少数几个，再把输出加权合并。对语言模型来说，选择发生在文本的各个位置：前面的 LSTM 先形成带有上下文信息的表示，门控据此选专家，合并后的表示再交给后面的网络。同一句话的不同位置，可以调用不同专家。这些专家是模型内部的参数组，不是分别写回答的聊天机器人。**省掉的是未选中专家的前向计算；门控和共享网络仍要运行。**
 
 路由和专家一起学习，但分工很容易失衡：被优先选中的专家得到更多训练，又更容易被选中。论文为混合权重和样本负载分别加入均衡约束，因为“分到的总权重差不多”并不保证“要处理的输入数量差不多”。
 
@@ -420,7 +426,7 @@ MoE 把一层网络组织成许多前馈子网，由学习到的门控选择少�
 
 假设网络最初更看好 A 点，搜索却发现 B 点的后续更值得考虑。程序会沿着“我下这里、对方可能怎么应”的树继续比较，在新节点调用网络评价，再把结果沿路径传回。最后根据访问次数形成落子建议。这就是 **MCTS，蒙特卡洛树搜索**。论文中每步 1,600 次模拟，是 1,600 次树中试探，不是随机下完 1,600 盘，也不是向后计算 1,600 手。
 
-一盘棋结束后，每个局面留下两种训练反馈：搜索后的行动分布，以及最终输赢。策略头学习前者，价值头学习后者。搜索比直接输出多做了一层比较，网络再把这些经验学进去，帮助下一轮搜索。系统还会让候选模型与当前最佳模型比赛，达到晋级条件才接替它生成数据；自我更新并不自动保证每轮变强。
+一盘棋结束后，每个局面留下两种训练反馈：搜索后的行动分布，以及最终输赢。策略头学习前者，价值头学习后者。**搜索时沿树回传的是访问次数和价值统计，训练时沿网络回传的才是梯度**；一次树搜索不会随手改掉网络权重。搜索比直接输出多做了一层比较，网络再把这些经验学进去，帮助下一轮搜索。系统还会让候选模型与当前最佳模型比赛，达到晋级条件才接替它生成数据；自我更新并不自动保证每轮变强。
 
 这套方法取得了明确结果，但要分清两次训练。三天版在约 36 小时的学习曲线评估中超过 AlphaGo Lee，72 小时后与 Lee 的 100 局直接对局取得 **100–0**。另一次使用更大网络、从随机权重训练四十天的版本，对更强的 AlphaGo Master 取得 **89–11**。这两组比赛都采用每方 2 小时等条件，对手是两个不同的程序版本。“4 TPU”描述的是下棋搜索配置，不能当成全部训练资源。
 
@@ -442,7 +448,7 @@ GPT-3 已经可以借助上下文完成许多任务，但预训练主要学习�
 
 1. **先看示范。** 标注者为各种请求写出合适回答，模型通过监督微调（SFT）学习这些回答方式。给它通知，它开始写摘要，而不是续写一串相似题目。
 2. **再学比较。** 同一个请求生成几份回答，让标注者排序。另一套奖励模型学习预测这种偏好：哪份更贴合要求？哪份加了材料里没有的事实？
-3. **用反馈练习。** 回答模型生成新答案，奖励模型给分，PPO 算法据此更新回答模型，使它更倾向于生成高分回答。人不必亲手评价每次练习，但这个打分器也只近似了有限样本中的判断。
+3. **用反馈练习。** 回答模型生成新答案，奖励模型给分，PPO 算法据此更新回答模型，使它更倾向于生成高分回答。每次用 PPO 优化回答策略时，固定奖励模型与用于约束偏离的参考模型，更新回答策略及辅助训练的价值模型；不是几个模型一边互相打分、一边全部改参数。人不必亲手评价每次练习，但打分器也只近似了有限样本中的判断。
 
 论文还限制回答模型偏离训练起点太远，并混入原有预训练数据的学习，以减轻部分能力的回退。前者约束行为变化，后者让模型继续做原先的续写学习，作用并不相同。
 
@@ -461,7 +467,7 @@ GPT-3 已经可以借助上下文完成许多任务，但预训练主要学习�
 
 2022年，Jason Wei、Xuezhi Wang等Google研究者提出 **Chain-of-Thought Prompting，思维链提示**：把提示中的示例从“问题＋答案”改成“问题＋中间步骤＋答案”，让模型面对新问题时，也先展开步骤再作答。此前的InstructGPT研究怎样通过训练改善回答行为；CoT这组实验则保持已有模型的参数不变，改变它这次看见的材料和生成顺序。
 
-这里有两个容易混淆的过程：**示范步骤由人放进提示，新问题的步骤由模型自己生成。** 写出的“还剩3个”又成为后续上下文，为下一步提供一个可用的中间状态。这能帮助拆解问题，也会把前一步的错误带下去。论文的消融还发现，只多输出点号，或先报答案再补解释，无法获得相同收益；因此不能把方法缩成“多写一些token”。
+这里有两个容易混淆的过程：**示范步骤由人放进提示，新问题的步骤由模型自己生成。** 写出的“还剩3个”又成为后续上下文，为下一步提供一个可用的中间状态。这能帮助拆解问题，也会把前一步的错误带下去。论文的消融还发现，只多输出点号，或先报答案再补解释，无法获得相同收益。对于从左到右生成的模型，答案后面的解释不能反过来帮助已经写出的答案；点号对照则按算式字符数构造，并不是严格等 token、等算力实验。因此，结果支持中间内容与生成顺序有作用，不宜缩成“多写一些 token 就好”。
 
 在GSM8K的1,319道数学应用题上，PaLM 540B使用8个示例、贪心解码且不接计算器时，准确率从17.9%升至56.9%，提高39.0个百分点。同样的办法却没有改善它在简单SingleOp题集上的94.1%准确率。收益依赖模型、任务和示例，不能从一个成绩推出所有请求都应该长篇推导。[^cot]
 
@@ -485,7 +491,7 @@ GPT-3 已经可以借助上下文完成许多任务，但预训练主要学习�
 
 外部信息也不保证更准。PaLM 540B的原论文实验中，ReAct相较CoT在FEVER判断任务上从56.3%升至60.9%，但在HotpotQA多步问答上从29.4%降至27.4%。搜索无结果、认错对象和重复操作都可能失败，组合ReAct与多次CoT采样还能进一步改善部分结果，代价是更多计算或交互。[^react]
 
-在文字家务和模拟购物环境中，同样的方式还能帮助维护“任务做到哪一步”；较长过程并不要求每个动作前都写一大段推理。ReAct沿用了此前Agent与工具交互的研究，使**推理怎样指导行动、反馈怎样修正过程**更容易被比较和检查。它提供了一种有用的任务组织方式；可见过程仍不等于完全可信的过程。
+在文字家务和模拟购物环境中，同样的方式还能帮助维护“任务做到哪一步”；较长过程并不要求每个动作前都写一大段推理。ReAct沿用了此前Agent与工具交互的研究，使**推理怎样指导行动、反馈怎样修正过程**更容易被比较和检查。它提供了一种有用的任务组织方式；可见过程仍不等于完全可信的过程。模型宣布结束，不代表答案正确；模拟购物也不涉及真实付款。换到真实环境，隐私和动作权限仍需单独保护，不能由这些基准成绩代替。
 
 这样，前几节的分工更清楚了：训练改善回答行为，CoT组织中间步骤，ReAct让外部观察参与后续判断。下一节Tülu 3则回到训练，继续追问：怎样把数据、反馈和评价组成可以检查的配方？
 
@@ -530,7 +536,7 @@ Sports-1M 测试集有 20 万视频。Table 1 中，单帧模型的视频首选�
 
 关键在于，“单帧模型”也不是整段视频只看一张图。评测会在视频不同位置抽取 **20 个短片段**，每处做 4 次裁剪或翻转预测，再平均成视频结果；单帧网络每次只输入其中一帧。它因此能从多个时刻积累外观线索，缺少的是一次预测中对连续帧变化的联合处理。平均片段预测，也没有保留整段事件的先后顺序。
 
-运动线索确实能帮助一些类别：Table 2 中，Slow Fusion 对抛接棒杂耍的每类平均精度提高 **0.12**，对短道赛车却下降 **0.07**。这与前面的命中率是不同指标。作者观察到相机运动可能干扰判断，但尚未用控制实验排除其他解释。**成绩差距小，既可能与任务本身依赖外观有关，也可能暴露了模型处理运动的不足。**
+运动线索确实能帮助一些类别：Table 2 中，Slow Fusion 对抛接棒杂耍的每类平均精度提高 **0.12**，对短道赛车却下降 **0.07**。这是取值 0–1 的 AP 绝对差，与前面视频首选命中率不是同一个指标。作者观察到相机运动可能干扰判断，但尚未用控制实验排除其他解释。**成绩差距小，既可能与任务本身依赖外观有关，也可能暴露了模型处理运动的不足。**
 
 这项工作的另一面是成本与迁移。把低清全景和清晰中心区域分开处理，论文在自己的实现中获得 2–4 倍训练提速；在 Sports-1M 学到的 Slow Fusion 再迁移到 UCF-101，调顶部三层得到 **65.4%** 的三折准确率，高于仅在 UCF-101 从头训练的 **41.3%**。两套数据的重叠风险未被完全排除。讲义提到 ImageNet 预训练，但原文没有明确交代主实验采用该初始化；它明确报告的迁移链是 **Sports-1M → UCF-101**。
 
@@ -548,13 +554,13 @@ Sports-1M 测试集有 20 万视频。Table 1 中，单帧模型的视频首选�
 
 时间流的主要输入是 **10 组连续光流，合成 20 个通道**，让网络联合学习短时间内的运动变化。空间流则能借用 ImageNet 图片预训练；动作数据不够时，作者还让时间网络共用前面的特征层、保留 UCF-101 与 HMDB-51 各自的分类头，以多任务学习利用两个数据集。运动表示与可用训练数据，一起决定了这条路线能走多远。
 
-在 UCF-101 的**第一个训练／测试划分**中，作者从头训练的 11 帧 RGB Slow Fusion 准确率为 **56.4%**，十组光流网络为 **81.0%**。同一批动作标签下，先提供显式运动，确实让识别容易了很多；但光流已经使用了额外算法和计算，这不是等总成本的纯网络比较。
+在 UCF-101 的**第一个训练／测试划分**中，作者从头训练的 11 帧 RGB Slow Fusion 准确率为 **56.4%**，采用减均值补偿的十组光流网络为 **81.0%**。同一批动作标签下，先提供显式运动，确实让识别容易了很多；但光流已经使用了额外算法和计算，这不是等总成本的纯网络比较。
 
 正式跨方法比较采用**三个标准划分的平均准确率**。双流 SVM 融合在 UCF-101 上达到 **88.0%**，略高于表中的强手工方法 **87.9%**；在 HMDB-51 上是 **59.4%**，仍低于更强手工方法的 **61.1%** 和 **66.8%**。因此，原论文所说的“有竞争力”比“全面超过最好的手工方法”更符合实验。
 
 两路互补也不等于不会一起出错。论文发现敲锤容易与头部按摩、刷牙混淆：作者认为，空间流可能抓住了相似的人脸外观，时间流则抓住了手上下反复运动的相似模式。这是观察后的解释，尚不足以证明已隔离出错误的全部原因。
 
-代价和边界同样具体。作者因光流计算会拖慢训练而提前计算并存储；减去平均位移只能做简单的相机运动补偿。十组光流仍是局部窗口，最终对多个位置的分类分数取平均，也没有保留整段事件的先后顺序。**双流展示的是怎样在当时的数据条件下更有效地识别动作，并没有一次解决完整视频理解。**
+代价和边界同样具体。作者因光流计算会拖慢训练而提前计算并存储，这个前置算法不会随着分类误差一起更新，所以整个“原始视频到动作类别”的流程并非全部端到端学习。减去平均位移只能做简单的相机运动补偿。十组光流仍是局部窗口，最终对多个位置的分类分数取平均，也没有保留整段事件的先后顺序。**双流展示的是怎样在当时的数据条件下更有效地识别动作，并没有一次解决完整视频理解。**
 
 从这里继续看模型演化，值得追踪的不只是网络变深了多少，还有输入经过了哪些处理、先提供了哪些结构，以及这些选择省下什么、付出什么。下一节 ViT 会把问题转向另一种输入组织方式：把图像切成图块，交给 Transformer。
 
@@ -566,7 +572,7 @@ Sports-1M 测试集有 20 万视频。Table 1 中，单帧模型的视频首选�
 
 一张猫趴在窗台上的照片，切成许多小方块后，每块可能只剩局部纹理。2020 年公开的 **Vision Transformer（ViT）** 要验证的是：能否尽量保留标准 Transformer 的计算骨架，让模型从这些图块中学会图像识别？它承接了前面 Transformer 的架构路线，也把 CNN 的视觉路线带入了新的比较。[^vit]
 
-以一张 224×224 的 RGB 照片为例，按 16×16 像素切分，得到 **196 个图块**。每块展平为像素数值，再用共享的线性投影转换成向量，加上位置表示，送进 Transformer 编码器。这里的图块不是已经标好“猫耳朵”“猫尾巴”的词，而是由像素计算得到的输入单位。
+以一张 224×224 的 RGB 照片为例，按 16×16 像素切分，得到 **196 个图块**。每块展平为像素数值，再用共享的线性投影转换成向量。加入分类标记后，给整段 197 个位置加上位置表示，再送进 Transformer 编码器。这里的图块不是已经标好“猫耳朵”“猫尾巴”的词，而是由像素计算得到的输入单位。
 
 自注意力让不同图块按内容交换信息，多层处理使一个局部表示能够带入其他位置的信息。模型还加入一个分类标记，与图块一起处理，最后用它的输出预测类别。训练根据图像标签调整参数，并不逐块告诉模型哪里是耳朵。**图像没有先被翻译成语言；它获得了适合序列模型处理的表示。** 序列也不意味着必须像生成文字那样逐个位置输出。
 
@@ -630,13 +636,13 @@ Sports-1M 测试集有 20 万视频。Table 1 中，单帧模型的视频首选�
 
 前向过程适当缩小信号、加入规定强度的噪声，让花瓣和背景的结构逐渐消失，整体分布接近容易采样的高斯分布。反向过程则由模型根据当前状态与时间步，给出下一小步的均值和协方差。**小步采用简单分布，不等于最终整体分布也简单**：每一步的参数随状态变化，组合起来可以产生复杂结构。反向形式的依据有小步条件，不能任意放大一步后仍认为近似同样准确。
 
-真实图片和已知扰动提供了可计算的训练依据，目标是优化数据对数似然的变分下界，不需要另训一个真假裁判。高斯实验也优化第二步至末步的前向加噪强度，第一步则固定为较小常数。这里仍然是 2015 年的均值／协方差参数化；后来 DDPM 常用的噪声预测与简化损失，不能整套倒填进来。训练时知道原图，也不表示生成时可以偷看原图。
+真实图片和已知扰动提供了可计算的训练依据，目标是优化数据对数似然的变分下界，不需要另训一个真假裁判。高斯实验也优化第二步至末步的前向加噪强度，第一步则固定为较小常数；但作者同时指出，固定加噪日程也可能同样有效，学习日程不是框架成立的必要条件。这里仍然是 2015 年的均值／协方差参数化；后来 DDPM 常用的噪声预测与简化损失，不能整套倒填进来。训练时知道原图，也不表示生成时可以偷看原图。
 
 使用时，从新噪声出发，按学到的反向分布一步步抽样。噪声不是藏着某张花照的密码；模型是在所学分布中构造新样本。条件去噪、补图则额外利用已有观测：论文展示了树皮中央 **100×100 像素**的修补，但补得相容不等于找回那块树皮的唯一原件。
 
 “每一步概率好算”也不能理解成“最终图片的精确概率直接可得”。单步、指定路径与对所有可能路径求和的边缘概率不同；论文用轨迹估计和下界处理后者。按已定义模型精确采样，也不代表模型已精确等于真实数据。图像实验通常用 **1000 步**，树皮用 **500 步**，多步计算仍是实际成本。[^diffusion15-probability]
 
-评价要保留具体口径。v8 的 Table 2 中，dead leaves 合成遮挡图像的扩散结果为对数似然下界 **1.489 bits/pixel**，对照 MCGSM 的对数似然为 **1.244 bits/pixel**；MNIST 则用 Parzen 估计，扩散与 GAN 分别为 **317 ± 2.7、325 ± 2.9 bits**，不是精确似然或统一画质分数。修订版还更正了旧版 CIFAR-10 结果受 8 位量化影响的问题。既不能概括成“早期扩散毫无效果”，也不能据此说它已经全面胜过 GAN。[^diffusion15-experiments]
+评价要保留具体口径。v8 的 Table 2 中，dead leaves 合成遮挡图像的扩散结果为对数似然下界 **1.489 bits/pixel**，对照 MCGSM 的对数似然为 **1.244 bits/pixel**；MNIST 则用 Parzen 估计，扩散与 GAN 分别为 **317 ± 2.7、325 ± 2.9 bits**，不是精确似然或统一画质分数。这里是**越大越好的对数似然**；连续密度可以大于 1，对数因此可以为正，也受数据缩放影响。不能看到 bits 就把它当成越小越好的文件大小，或直接与 DDPM 的离散负对数似然互换。修订版还更正了旧版 CIFAR-10 结果受 8 位量化影响的问题。既不能概括成“早期扩散毫无效果”，也不能据此说它已经全面胜过 GAN。[^diffusion15-experiments]
 
 这条路线把生成难题拆成局部逆问题，却没有消除近似误差、评价与成本。它引用并比较 GAN，也复用了 GAN 的 Parzen 评价代码；工具共享不是扩散机制源自 GAN 的证明。接下来要看的是：已有这套框架，DDPM 究竟作了哪些具体选择，才让图像生成效果进一步改善？
 
@@ -676,7 +682,7 @@ Sports-1M 测试集有 20 万视频。Table 1 中，单帧模型的视频首选�
 
 **压缩器与生成器学的不是一回事。** 第一阶段学习怎样表示并重建图片；第二阶段学习这些表示怎样组成合理的新样本。训练时给真实图片的潜表示加入已知噪声，去噪网络学习预测；生成时直接从新的潜空间噪声出发，不需要预先藏一张原图。
 
-压缩器使用感知损失和局部对抗目标，也比较轻 KL 与 VQ 两类约束。于是，GAN 的思想以部件形式进入扩散系统。压得太少，工作量仍大；压得太多，重要细节已经丢失。在作者的压缩率比较里，f＝4、8 的质量与效率取舍较好，并不是“压缩越狠，越聪明”。[^ldm-compression]
+压缩器使用感知损失和局部对抗目标，也比较轻 KL 与 VQ 两类约束。于是，GAN 的思想以部件形式进入扩散系统。压得太少，工作量仍大；压得太多，重要细节已经丢失。在作者的压缩率比较里，f＝4、8 的质量与效率取舍较好，并不是“压缩越狠，越聪明”。这不只有相同训练步数的比较：Figure 17 还将资源统一折算为 **35 个 V100 GPU 日**，检查固定计算预算下的取舍；折算包含 A100 相对 V100 快 2.2 倍的假设，不能把折算后的 V100 日当作在 V100 上逐项实测的耗时。[^ldm-compression]
 
 怎样按“窗边花瓶里的一朵红花”生成？文本被编码成序列，去噪网络用交叉注意力读取它；图像特征提供查询，条件表示提供键和值。**潜空间回答在哪里算，条件接口回答依据什么算。** 布局、类别和空间对齐的图片条件，也有各自的接入方式。
 
@@ -698,7 +704,7 @@ Sports-1M 测试集有 20 万视频。Table 1 中，单帧模型的视频首选�
 
 v1.4 的自编码器把高、宽各缩小 8 倍：512×512×3 的图像对应 64×64×4 的潜表示。纯文本生成从新潜噪声开始，反复去噪后再解码为图片，不需要预先藏一张目标原图。空间位置变少 64 倍，也不等于整套程序快了 64 倍。
 
-**CFG 不是另一个负责打分的分类器。** v1.4 训练时以 10% 概率丢弃文本条件，使同一网络也学习无条件预测；采样时组合“有文字”和“无文字”两种预测，强化条件带来的差别。按官方代码，引导强度 1 是普通有条件预测，数值越高也不保证质量越好。[^sd14-sampling]
+**CFG 不是另一个负责打分的分类器。** v1.4 训练时以 10% 概率丢弃文本条件，使同一网络也学习无条件预测；采样时组合“有文字”和“无文字”两种预测，强化条件带来的差别。两组计算共用网络参数，合成一个批次也不会让额外计算消失。按官方代码，引导强度 1 是普通有条件预测，数值越高也不保证质量越好。[^sd14-sampling]
 
 参考命令使用 PLMS、50 个采样步、7.5 的引导强度与 512×512 分辨率；模型卡的 Diffusers 示例使用 PNDM。采样器不是模型权重，50 步也不严格等于 50 次前向计算。最后一次解码，更不意味着整个生成过程只有一步。
 
@@ -728,7 +734,9 @@ v1.4 的自编码器把高、宽各缩小 8 倍：512×512×3 的图像对应 64
 
 论文同时增加网络深度与宽度，以及细分潜空间块大小。仅把 XL 的块边长从 8 变成 2，参数仍约 6.75 亿，单次前向却从 7.39 增至 118.64 GFLOPs；训练 400,000 步后的无额外 CFG 的 FID 从 106.41 降至 19.47。参数量不能独自代表计算量，GFLOPs 也不是硬件每秒性能。[^dit-scaling]
 
-多走采样步数能否弥补较小模型？作者的一个对照是：L/2 走 1000 步需要约 80.7 TFLOPs，FID-10K 为 25.9；XL/2 只走 128 步，约 15.2 TFLOPs，FID-10K 反而更好，为 23.7。它说明更多次调用较弱的去噪器，不一定抵得过较强的去噪器；不是说采样步数没有用。
+这还不只是“多花计算就更好”。Figure 9 把一次前向运算量、批量和训练步数折算为共同训练预算：在足够大的共同预算下，较大模型较少训练几步，或把同一 XL 模型的潜网格切得更细，都可能更划算。这是所测模型和预算范围内的经验，不是任意任务上的最优配置定理。[^dit-scaling]
+
+多走采样步数能否弥补较小模型？作者把**都训练了 400,000 步**的模型拿来比较：L/2 走 1000 步需要约 80.7 TFLOPs，FID-10K 为 25.9；XL/2 只走 128 步，约 15.2 TFLOPs，FID-10K 反而更好，为 23.7。这里相同的是训练步数，不是训练计算量；随后比较的是生成时的计算。它说明更多次调用较弱的去噪器，不一定抵得过较强的去噪器，不是说采样步数没有用。
 
 最终 256×256 的 XL/2 训练 700 万步，使用 250 步 DDPM、CFG＝1.5 和 ft-EMA 图像解码器，FID-50K 达到 **2.27**。但在 512×512 上，DiT 的 **3.04** 虽然优于此前扩散组合的 3.85，仍不及表中 StyleGAN-XL 的 2.41。引导、解码器、样本数和训练时长都影响这些结论，不能把一项基准的领先扩成所有场景的胜利。[^dit-results]
 
@@ -858,22 +866,26 @@ DiT又把ViT的图块组织和Transformer骨架放进潜空间去噪器。在这
 
 ## 思考与追问
 
-### 我真正理解了什么？
+### 把这条路重新看一遍，发生了哪些变化？
 
 AI的发展不只是模型名单变长，而是学习对象、可用信息、计算组织、任务接口和反馈目标不断被重新安排。数据与工程不是舞台背景，人物与组织也不只是履历；它们参与决定哪些问题能够被提出和验证。
 
-### 我还没搞懂什么？
+### 哪些问题还不能靠这张路线图回答？
 
 一项在固定数据和预算下有效的方法，换到另一种资源、任务分布或部署环境后，还保留多少优势？哪些历史连接有直接证据，哪些只是合理但可被修正的解释？这些问题需要继续沿具体新论文和真实系统检验。
 
-### 下一步读什么或做什么？
+### 读下一篇论文时，可以怎样用它？
 
 选择一篇新的AI论文，先尝试写下“旧瓶颈—改变的环节—证据范围—留下的问题”，再把它接到本文的一条或几条路线。若找不到适合的位置，先检查分类是否错了；也可能它确实提出了这张路线图还没有覆盖的新问题。
 
 
+<a id="lecture-mapping"></a>
+
 ## 原讲义与本文的对应关系
 
-原PDF的36个主线对象在本文都有说明，但不是每篇都展开全部公式、附录和实验。按核定口径，包含33篇论文、2篇研究报告和1篇观点文章。第12页与第28页各合讲两篇；第21—25页连续介绍同一篇The Bitter Lesson。
+原PDF的36个主线对象在本文都有说明，但不是每篇都展开全部公式、附录和实验。按核定口径，包含33篇论文、2篇研究报告和1篇观点文章。第12页与第28页各合讲两篇；第21—25页连续介绍同一篇 The Bitter Lesson。
+
+**36 个对象为什么对应 31 篇分章？** 五组紧密相连的工作合在同一章：seq2seq 与 Attention、GNMT 与 Transformer、GPT-1 与 BERT、GPT-2 与 GPT-3、Scaling Laws 与 Chinchilla；The Bitter Lesson 在本篇第七部分集中讨论，不另拆一篇。另一方面，LDM 的方法论文与 Stable Diffusion v1.4 的具体实现分开讲。因此，原讲义的对象没有少读，分章也不等于逐篇论文照搬目录。The Hardware Lottery 是帮助理解讲义视角的补充资料，不另计入原来的 36 个对象。
 
 | 原PDF范围 | 本文如何承接 |
 |---|---|
@@ -884,48 +896,65 @@ AI的发展不只是模型名单变长，而是学习对象、可用信息、计
 | 41—50：视觉、多模态与生成 | 第五、第六部分；解释并行路线及具体组件的会合 |
 | 51：致谢 | 无新增技术节点；保留原讲义来源 |
 
-### 36个研究对象的正文定位
+### 36 个研究对象的正文定位
 
-年份按核定的首次公开或发表口径；实际阅读的修订版见参考来源。
+名称链接到原文，右列链接到本篇讲解。四组沿用原讲义的分类；年份按首次公开或发表口径，实际读取的修订版见文末注释。
 
-| 研究对象 | 年份 | 正文定位 |
+#### 模型的范式变迁（12 个）
+
+| 研究对象（原文） | 年份 | 本文讲解 |
 |---|---:|---|
-| [Brook for GPUs: Stream Computing on Graphics Hardware](https://dl.acm.org/doi/10.1145/1015706.1015800) | 2004 | [转到正文](#paper-brook) |
-| [ImageNet Classification with Deep Convolutional Neural Networks](https://papers.nips.cc/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html) | 2012 | [转到正文](#paper-alexnet) |
-| [Sequence to Sequence Learning with Neural Networks](https://arxiv.org/abs/1409.3215) | 2014 | [转到正文](#paper-seq2seq) |
-| [Neural Machine Translation by Jointly Learning to Align and Translate](https://arxiv.org/abs/1409.0473) | 2014 | [转到正文](#paper-bahdanau-attention) |
-| [Distilling the Knowledge in a Neural Network](https://arxiv.org/abs/1503.02531) | 2015 | [转到正文](#paper-distillation) |
-| [Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385) | 2015 | [转到正文](#paper-resnet) |
-| [Attention Is All You Need](https://arxiv.org/abs/1706.03762) | 2017 | [转到正文](#paper-transformer) |
-| [Mastering the game of Go without human knowledge](https://www.nature.com/articles/nature24270) | 2017 | [转到正文](#paper-alphago-zero) |
-| [Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer](https://arxiv.org/abs/1701.06538) | 2017 | [转到正文](#paper-sparse-moe) |
-| [Chain-of-Thought Prompting Elicits Reasoning in Large Language Models](https://arxiv.org/abs/2201.11903) | 2022 | [转到正文](#paper-cot) |
-| [LoRA: Low-Rank Adaptation of Large Language Models](https://arxiv.org/abs/2106.09685) | 2021 | [转到正文](#paper-lora) |
-| [ReAct: Synergizing Reasoning and Acting in Language Models](https://arxiv.org/abs/2210.03629) | 2022 | [转到正文](#paper-react) |
-| [The Bitter Lesson](http://www.incompleteideas.net/IncIdeas/BitterLesson.html) | 2019 | [转到正文](#paper-bitter-lesson) |
-| [ZeRO: Memory Optimizations Toward Training Trillion Parameter Models](https://arxiv.org/abs/1910.02054) | 2019 | [转到正文](#paper-zero) |
-| [Scaling Laws for Neural Language Models](https://arxiv.org/abs/2001.08361) | 2020 | [转到正文](#paper-scaling-laws) |
-| [Training Compute-Optimal Large Language Models](https://arxiv.org/abs/2203.15556) | 2022 | [转到正文](#paper-chinchilla) |
-| [LAION-5B: An open large-scale dataset for training next generation image-text models](https://arxiv.org/abs/2210.08402) | 2022 | [转到正文](#paper-laion5b) |
-| [The RefinedWeb Dataset for Falcon LLM: Outperforming Curated Corpora with Web Data, and Web Data Only](https://arxiv.org/abs/2306.01116) | 2023 | [转到正文](#paper-refinedweb) |
-| [MegaScale: Scaling Large Language Model Training to More Than 10,000 GPUs](https://arxiv.org/abs/2402.15627) | 2024 | [转到正文](#paper-megascale) |
-| [Efficient Estimation of Word Representations in Vector Space](https://arxiv.org/abs/1301.3781) | 2013 | [转到正文](#paper-word2vec) |
-| [Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation](https://arxiv.org/abs/1609.08144) | 2016 | [转到正文](#paper-gnmt) |
-| [Improving Language Understanding by Generative Pre-Training](https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf) | 2018 | [转到正文](#paper-gpt1) |
-| [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://arxiv.org/abs/1810.04805) | 2018 | [转到正文](#paper-bert) |
-| [Language Models are Unsupervised Multitask Learners](https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf) | 2019 | [转到正文](#paper-gpt2) |
-| [Language Models are Few-Shot Learners](https://arxiv.org/abs/2005.14165) | 2020 | [转到正文](#paper-gpt3) |
-| [Training language models to follow instructions with human feedback](https://arxiv.org/abs/2203.02155) | 2022 | [转到正文](#paper-instructgpt) |
-| [Tulu 3: Pushing Frontiers in Open Language Model Post-Training](https://arxiv.org/abs/2411.15124) | 2024 | [转到正文](#paper-tulu3) |
-| [Large-scale Video Classification with Convolutional Neural Networks](https://openaccess.thecvf.com/content_cvpr_2014/html/Karpathy_Large-scale_Video_Classification_2014_CVPR_paper.html) | 2014 | [转到正文](#paper-deepvideo) |
-| [Two-Stream Convolutional Networks for Action Recognition in Videos](https://arxiv.org/abs/1406.2199) | 2014 | [转到正文](#paper-two-stream) |
-| [Generative Adversarial Nets](https://arxiv.org/abs/1406.2661) | 2014 | [转到正文](#paper-gan) |
-| [Deep Unsupervised Learning using Nonequilibrium Thermodynamics](https://arxiv.org/abs/1503.03585) | 2015 | [转到正文](#paper-diffusion-2015) |
-| [Denoising Diffusion Probabilistic Models](https://arxiv.org/abs/2006.11239) | 2020 | [转到正文](#paper-ddpm) |
-| [An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale](https://arxiv.org/abs/2010.11929) | 2020 | [转到正文](#paper-vit) |
-| [Learning Transferable Visual Models From Natural Language Supervision](https://arxiv.org/abs/2103.00020) | 2021 | [转到正文](#paper-clip) |
-| [High-Resolution Image Synthesis with Latent Diffusion Models](https://arxiv.org/abs/2112.10752) | 2021 | [转到正文](#paper-ldm) |
-| [Scalable Diffusion Models with Transformers](https://arxiv.org/abs/2212.09748) | 2022 | [转到正文](#paper-dit) |
+| [Brook](https://dl.acm.org/doi/10.1145/1015706.1015800) | 2004 | [GPU 通用计算](#paper-brook) |
+| [AlexNet](https://papers.nips.cc/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html) | 2012 | [数据、模型与 GPU](#paper-alexnet) |
+| [seq2seq](https://arxiv.org/abs/1409.3215) | 2014 | [句子到句子](#paper-seq2seq) |
+| [Bahdanau Attention](https://arxiv.org/abs/1409.0473) | 2014 | [按需读取输入](#paper-bahdanau-attention) |
+| [知识蒸馏](https://arxiv.org/abs/1503.02531) | 2015 | [从教师模型学习](#paper-distillation) |
+| [ResNet](https://arxiv.org/abs/1512.03385) | 2015 | [深层网络的训练](#paper-resnet) |
+| [Transformer](https://arxiv.org/abs/1706.03762) | 2017 | [序列中的信息交换](#paper-transformer) |
+| [AlphaGo Zero](https://www.nature.com/articles/nature24270) | 2017 | [自弈、搜索与反馈](#paper-alphago-zero) |
+| [稀疏 MoE](https://arxiv.org/abs/1701.06538) | 2017 | [容量与激活计算](#paper-sparse-moe) |
+| [LoRA](https://arxiv.org/abs/2106.09685) | 2021 | [低秩参数更新](#paper-lora) |
+| [CoT](https://arxiv.org/abs/2201.11903) | 2022 | [中间步骤与作答](#paper-cot) |
+| [ReAct](https://arxiv.org/abs/2210.03629) | 2022 | [推理、行动与观察](#paper-react) |
+
+#### Infra 与数据变迁（7 个）
+
+| 研究对象（原文） | 年份 | 本文讲解 |
+|---|---:|---|
+| [The Bitter Lesson](http://www.incompleteideas.net/IncIdeas/BitterLesson.html) | 2019 | [计算与通用方法](#paper-bitter-lesson) |
+| [ZeRO](https://arxiv.org/abs/1910.02054) | 2019 | [模型状态的分片](#paper-zero) |
+| [Scaling Laws](https://arxiv.org/abs/2001.08361) | 2020 | [训练预算分配](#paper-scaling-laws) |
+| [Chinchilla](https://arxiv.org/abs/2203.15556) | 2022 | [模型与数据的配比](#paper-chinchilla) |
+| [LAION-5B](https://arxiv.org/abs/2210.08402) | 2022 | [开放图文数据](#paper-laion5b) |
+| [RefinedWeb](https://arxiv.org/abs/2306.01116) | 2023 | [网页怎样变成训练数据](#paper-refinedweb) |
+| [MegaScale](https://arxiv.org/abs/2402.15627) | 2024 | [万卡训练的协同](#paper-megascale) |
+
+#### 语言模型的发展（8 个）
+
+| 研究对象（原文） | 年份 | 本文讲解 |
+|---|---:|---|
+| [Word2Vec](https://arxiv.org/abs/1301.3781) | 2013 | [可复用的词表示](#paper-word2vec) |
+| [GNMT](https://arxiv.org/abs/1609.08144) | 2016 | [翻译研究与部署](#paper-gnmt) |
+| [GPT-1](https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf) | 2018 | [预训练后的任务微调](#paper-gpt1) |
+| [BERT](https://arxiv.org/abs/1810.04805) | 2018 | [双向上下文与迁移](#paper-bert) |
+| [GPT-2](https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf) | 2019 | [用上下文表达任务](#paper-gpt2) |
+| [GPT-3](https://arxiv.org/abs/2005.14165) | 2020 | [少样本任务接口](#paper-gpt3) |
+| [InstructGPT](https://arxiv.org/abs/2203.02155) | 2022 | [示范与人的偏好](#paper-instructgpt) |
+| [Tülu 3](https://arxiv.org/abs/2411.15124) | 2024 | [开放后训练配方](#paper-tulu3) |
+
+#### 多模态模型的发展（9 个）
+
+| 研究对象（原文） | 年份 | 本文讲解 |
+|---|---:|---|
+| [DeepVideo](https://openaccess.thecvf.com/content_cvpr_2014/html/Karpathy_Large-scale_Video_Classification_2014_CVPR_paper.html) | 2014 | [视频中的时间信息](#paper-deepvideo) |
+| [双流网络](https://arxiv.org/abs/1406.2199) | 2014 | [外观与运动分工](#paper-two-stream) |
+| [GAN](https://arxiv.org/abs/1406.2661) | 2014 | [对抗式生成](#paper-gan) |
+| [Diffusion 2015](https://arxiv.org/abs/1503.03585) | 2015 | [逐步破坏与反向生成](#paper-diffusion-2015) |
+| [DDPM](https://arxiv.org/abs/2006.11239) | 2020 | [噪声预测与生成](#paper-ddpm) |
+| [ViT](https://arxiv.org/abs/2010.11929) | 2020 | [把图块交给 Transformer](#paper-vit) |
+| [CLIP](https://arxiv.org/abs/2103.00020) | 2021 | [图像与文字的对应](#paper-clip) |
+| [LDM](https://arxiv.org/abs/2112.10752) | 2021 | [潜空间中的扩散](#paper-ldm) |
+| [DiT](https://arxiv.org/abs/2212.09748) | 2022 | [Transformer 去噪骨架](#paper-dit) |
 
 ## 来源与适用范围
 
@@ -933,7 +962,7 @@ AI的发展不只是模型名单变长，而是学习对象、可用信息、计
 
 原讲义和旧索引中的若干错链、论文／产品混同及本地PDF错配已在[来源地图](../notes/ai_yanyi_research/source-map.md)登记。本稿使用核定原文，不用错配文件为结论背书。未采用的精确分数、版本内部冲突和逐案未核的外围判断，保留在[研究记录](../notes/ai_yanyi_research/README.md)，不强行给出答案。
 
-原始研究核验于2026-11-03，本文于2026-11-04补充术语、跨路线讲解并修订阅读呈现。各来源的阅读版本见下方注释，详细核查范围见[研究记录](../notes/ai_yanyi_research/README.md)。
+原始研究核验始于 2026-11-03；2026-11-06 对总览与 31 篇分章完成全文校订，补齐机制解释、比较条件和前后链接。没有把未变化的网页重新抓取一遍：各来源的阅读版本与补充核验范围见下方注释及各章的来源说明，早期错链与版本校正见[研究记录](../notes/ai_yanyi_research/README.md)。
 
 [^brook]: Buck et al.，[Brook for GPUs](https://dl.acm.org/doi/10.1145/1015706.1015800)，2004；读取[Stanford作者稿](https://graphics.stanford.edu/papers/brookgpu/brookgpu.pdf)相关正文。
 [^gpu-history]: NVIDIA，[Inside the Programming Evolution of GPU Computing](https://developer.nvidia.com/blog/inside-the-programming-evolution-of-gpu-computing/)，2015发布的历史介绍；只用于Brook、Buck与CUDA的关系，不用作AlexNet直接软件依赖证明。
@@ -965,13 +994,13 @@ AI的发展不只是模型名单变长，而是学习对象、可用信息、计
 [^deepvideo]: Karpathy et al.，[Large-scale Video Classification with Convolutional Neural Networks](https://openaccess.thecvf.com/content_cvpr_2014/papers/Karpathy_Large-scale_Video_Classification_2014_CVPR_paper.pdf)，CVPR 2014，§§3–5、Figures 1–5、Tables 1–4。59.3/60.9/63.9 为 Sports-1M Video Hit@1；65.4% 按 UCF-101 Table 3，摘要另写 63.3%，本文保留该差异。讲义 p42 与节目约 03:08:08–03:15:12 的对照、输入聚合与迁移边界，见[本节展开](knowledge_reports/AI演义_22_DeepVideo_模型怎样利用视频时间信息_科普讲解_20261105.md#sources-and-scope)。
 [^two-stream]: Simonyan & Zisserman，[Two-Stream Convolutional Networks for Action Recognition in Videos](https://arxiv.org/pdf/1406.2199v2)，首发 2014-06-09，本篇采用 2014-11-12 的 v2。§§2–5 定义 RGB／光流两路、输入堆叠、训练与预计算；p. 7 的 Table 1b 及正文为 split 1 的 81.0%／56.4%；p. 8 的 Table 4 为三划分比较；pp. 9–10 解释敲锤混淆与后续限制。结合讲义 p. 43 和约 03:15:12–03:17:55 的播客转写核对，未听校或复现实验。
 [^vit]: Dosovitskiy et al.，[An Image is Worth 16x16 Words](https://arxiv.org/pdf/2010.11929v2)，首发 2020-10-22；所读 v2 为 2021-06-03，ICLR 2021。架构见 §3、Figure 1，监督训练、迁移和评价见 §4；本轮补读附录，不把图块输入等同于语言生成。
-[^vit-scale]: 原论文 Table 5、Figure 3 及 §4.3，384 分辨率下比较不同预训练条件；模型规模见 Table 1。Table 2 的高分另用了不同分辨率与参数平均，不能混为同一实验；§4.4 的计算比较也有固定任务和训练范围。
-[^vit-lecture]: [《AI演义》讲义](../notes/终版：AI演义，36篇论文开启你的探索之旅.pdf)第 47 页；[节目](https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c)约 03:32:18–03:41:16，236 段转写已读，未听校或测 WER。作者与共同指导标记以 ViT 首页为准；节目关于后续视频和图文融合的延伸不作为 ViT 已验证能力。
+[^vit-scale]: [ViT v2](https://arxiv.org/pdf/2010.11929v2)，Table 5、Figure 3 及 §4.3，384 分辨率下比较不同预训练条件；模型规模见 Table 1。Table 2 的高分另用了不同分辨率与参数平均，不能混为同一实验；§4.4 的计算比较也有固定任务和训练范围。
+[^vit-lecture]: [《AI演义》讲义](../notes/终版：AI演义，36篇论文开启你的探索之旅.pdf)第 47 页；[节目](https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c)约 03:32:18–03:41:16，相关转写已核对，未逐句听音校订或测量字词错误率。作者与共同指导标记以 ViT 首页为准；节目关于后续视频和图文融合的延伸不作为 ViT 已验证能力。
 [^clip]: Radford et al.，[Learning Transferable Visual Models From Natural Language Supervision, v1](https://arxiv.org/pdf/2103.00020v1)，2021；§§2–3、Tables1/14–17与Figures1/3/5/10–14。零样本、线性探测、计算效率与下游任务设置分开，详细阅读范围见第25节展开篇。
 [^bitter]: Sutton，[The Bitter Lesson](http://www.incompleteideas.net/IncIdeas/BitterLesson.html)，2019-03-13；作为作者的历史归纳与方法论主张，不是本文逐案重做的全史因果审计。
 [^hardware]: Hooker，[The Hardware Lottery](https://arxiv.org/pdf/2009.06489v2)，2020；为解释讲义的硬件彩票视角补充的必要来源，重点为软硬件、研究激励与方法选择的关系。
 [^gan]: Goodfellow et al.，[Generative Adversarial Nets，arXiv 1406.2661v1](https://arxiv.org/pdf/1406.2661v1)，2014-06-10；已读全 9 页。讲义第 44 页、节目 GAN 主段约 03:17:55–03:22:03 及扩散转场中约 03:24:03–03:24:42 的训练比较，见[本节展开与阅读范围](knowledge_reports/AI演义_26_GAN_两个模型怎样在对抗中学会生成_科普讲解_20261106.md#sources-and-scope)。两段转写分别审计，未听校；花卉例子不当作原论文实验。
-[^diffusion15]: Sohl-Dickstein et al.，[Deep Unsupervised Learning using Nonequilibrium Thermodynamics，v8](https://arxiv.org/pdf/1503.03585v8)，首版 2015-03-12，本篇读取的 v8 为 2015-11-18；结合讲义 p45、约 03:22:03–03:27:55 的 185 段转写及 shownotes，见[本节展开](knowledge_reports/AI演义_27_Diffusion2015_逐步加噪怎样学会生成_科普讲解_20261106.md#sources-and-scope)。未听校；时间结构保留 0.04 秒相邻重叠，专名按论文核对。
+[^diffusion15]: Sohl-Dickstein et al.，[Deep Unsupervised Learning using Nonequilibrium Thermodynamics，v8](https://arxiv.org/pdf/1503.03585v8)，首版 2015-03-12，本篇读取的 v8 为 2015-11-18；结合讲义 p45、约 03:22:03–03:27:55 的转写及 shownotes，见[本节展开](knowledge_reports/AI演义_27_Diffusion2015_逐步加噪怎样学会生成_科普讲解_20261106.md#sources-and-scope)。转写的时间重叠与专名校正记录见展开篇；未逐句听音校订。
 [^ddpm]: Ho, Jain & Abbeel，[Denoising Diffusion Probabilistic Models](https://arxiv.org/pdf/2006.11239v2)，首版 2020-06-19、本文使用 v2（2020-12-16）。首页作者机构均为 UC Berkeley，p9 致谢 TFRC 的 TPU 支持；讲义 p46、节目约 03:27:55–03:32:16 提供讲解线索，原文与转写范围见[第 28 节展开](knowledge_reports/AI演义_28_DDPM_预测噪声怎样学会生成图像_科普讲解_20261106.md#sources-and-scope)。
 [^ldm]: Rombach et al.，[High-Resolution Image Synthesis with Latent Diffusion Models](https://arxiv.org/pdf/2112.10752v2)，首版 2021-12-20、本文采用 v2（2022-04-13）。§§1–3 说明像素计算成本、两阶段训练、潜空间与一次解码；讲义 p49 和节目约 03:45:52–03:52:54 的版本混用、转写重复／时间重叠已在[第 29 节展开](knowledge_reports/AI演义_29_LDM_潜空间怎样降低图像生成成本_科普讲解_20261106.md#sources-and-scope)说明。
 [^sd14]: [v1.4 官方模型卡，固定仓库版本](https://huggingface.co/CompVis/stable-diffusion-v1-4/blob/133a221b8aa7292a167afc5127cb63fb5005638b/README.md)，Model Details 与 Training；[本节展开](knowledge_reports/AI演义_30_StableDiffusion_v14_文生图系统怎样协同工作_科普讲解_20261106.md)。该文件版本晚于模型初发，不作为2022首发原稿。
@@ -982,17 +1011,17 @@ AI的发展不只是模型名单变长，而是学习对象、可用信息、计
 [^clip-lecture]: [《AI演义》讲义第48页](../notes/终版：AI演义，36篇论文开启你的探索之旅.pdf#page=48)；[节目CLIP片段](https://www.xiaoyuzhoufm.com/episode/68ff9d1b083a71a4eb86c52c)约03:41:16–03:45:50。夕阳与飞鸟例子来自转写，关键结论按论文核验；本轮未重新听音。
 [^gan-training]: 原论文 [§3、Figure 1 与 Algorithm 1](https://arxiv.org/pdf/1406.2661v1#page=3)说明交替更新、原始与替代目标；[§4](https://arxiv.org/pdf/1406.2661v1#page=4)讨论理想条件，有限参数优化不享有同样保证；[§6](https://arxiv.org/pdf/1406.2661v1#page=7)提醒双方同步与 Helvetica scenario。
 [^gan-evaluation]: 原论文 [Table 1、Figure 2](https://arxiv.org/pdf/1406.2661v1#page=6)及 §5；MNIST 为实值版本，± 为均值标准误，MNIST 与 TFD 分别按测试样本和数据折计算。高维 Parzen 估计、样本质量、记忆审计和显式密度是不同问题，不能相互替代。
-[^diffusion15-probability]: 原论文 [§§2.2–2.4，pp5–6](https://arxiv.org/pdf/1503.03585v8#page=5)区分反向分布、路径积分、估计与训练下界；[附录 D，pp17–18](https://arxiv.org/pdf/1503.03585v8#page=17)给出时间步与网络；[Figure 5，p8](https://arxiv.org/pdf/1503.03585v8#page=8)为树皮条件修补，不是花照实验或文字控制。
-[^diffusion15-experiments]: 原论文 [Table 2，p8](https://arxiv.org/pdf/1503.03585v8#page=8)及 p9 的 MNIST 说明。dead leaves 是合成遮挡数据；MNIST 的 Parzen 估计保留原表 bits 单位和 ±，不可与 GAN 原论文的 225 等数值不换口径直接比较。CIFAR-10 去量化更正见 [p7 脚注 3](https://arxiv.org/pdf/1503.03585v8#page=7)。
+[^diffusion15-probability]: 原论文 [§§2.2–2.4，pp5–6](https://arxiv.org/pdf/1503.03585v8#page=5)区分反向分布、路径积分、估计与训练下界；p6 脚注 2 说明固定前向日程也可获得相近结果；[附录 D，pp17–18](https://arxiv.org/pdf/1503.03585v8#page=17)给出时间步与网络；[Figure 5，p8](https://arxiv.org/pdf/1503.03585v8#page=8)为树皮条件修补，不是花照实验或文字控制。
+[^diffusion15-experiments]: 原论文 [Table 2，p8](https://arxiv.org/pdf/1503.03585v8#page=8)及 p9 的 MNIST 说明。dead leaves 是合成遮挡数据，其正数对数密度依赖连续表示与缩放，不能与 DDPM 离散像素 NLL 上界直接横比；MNIST 的 Parzen 估计保留原表 bits 单位和 ±，不可与 GAN 原论文的 225 等数值不换口径直接比较。CIFAR-10 去量化更正见 [p7 脚注 3](https://arxiv.org/pdf/1503.03585v8#page=7)。
 [^ddpm-training]: [DDPM v2，§§2–3、Algorithms 1–2、式 4 与式 11–14](https://arxiv.org/pdf/2006.11239v2#page=2)：直接构造任意噪声阶段、累计噪声目标、反向均值与方差、最后一步不另加随机项；§4.3、附录 B/C 分别解释渐进编码、具体网络与分数匹配联系。
 [^ddpm-results]: [DDPM v2，Tables 1–2、§§4.1–4.3](https://arxiv.org/pdf/2006.11239v2#page=5)，三种固定方差配置的 FID 为 13.22／13.51／3.17，训练集参考 3.17 与测试集参考 5.24 分开；简化损失的测试 NLL 上界 ≤3.75 bits/dim，原变分目标 ≤3.70。全部实验 T＝1000，附录 B 说明最终各训一次、取训练过程最低 FID，不能当作跨训练重复均值。
-[^ldm-compression]: [LDM v2，§3.1、§4.1](https://arxiv.org/pdf/2112.10752v2#page=3)与[附录 G](https://arxiv.org/pdf/2112.10752v2#page=29)：感知／局部对抗目标、KL 与 VQ 正则；VQ 量化前表示用于扩散。压缩率比较控制 GPU 型号、训练步数和近似参数规模，但批量／学习率等并不全部相同，不能把空间尺寸比直接当作速度比。
-[^ldm-conditioning]: [LDM v2，§3.3、§4.3.1](https://arxiv.org/pdf/2112.10752v2#page=4)和 pp25–26：BERT tokenizer、联合训练的 Transformer 条件编码器、交叉注意力与拼接；[SD v1.4 官方模型卡](https://huggingface.co/CompVis/stable-diffusion-v1-4)的固定 CLIP 是另一个明确版本的实现选择。
+[^ldm-compression]: [LDM v2，§3.1、§4.1](https://arxiv.org/pdf/2112.10752v2#page=3)与[附录 G](https://arxiv.org/pdf/2112.10752v2#page=29)：感知／局部对抗目标、KL 与 VQ 正则；VQ 量化前表示用于扩散。相同步数的压缩率比较控制 GPU 型号与近似参数规模，但批量／学习率等不完全相同；[§D.5、Figure 17，p22](https://arxiv.org/pdf/2112.10752v2#page=22)另以 35 V100 GPU 日比较；A100 相对 V100 快 2.2 倍的折算假设见[§F，p28](https://arxiv.org/pdf/2112.10752v2#page=28)。空间尺寸比不能直接当作速度比。
+[^ldm-conditioning]: [LDM v2，§3.3、§4.3.1](https://arxiv.org/pdf/2112.10752v2#page=4)和 pp25–26：BERT tokenizer、联合训练的 Transformer 条件编码器、交叉注意力与拼接；[SD v1.4 固定版本模型卡](https://huggingface.co/CompVis/stable-diffusion-v1-4/blob/133a221b8aa7292a167afc5127cb63fb5005638b/README.md)的固定 CLIP 是另一个明确版本的实现选择。
 [^ldm-results]: [LDM v2，Tables 1–3 与 Table 6](https://arxiv.org/pdf/2112.10752v2#page=6)。CelebA-HQ 5.11 为 500 步 DDIM，FFHQ 4.98 为 200 步；前者／后者都不是所有 GAN 的统一比较结论。修补的训练吞吐 0.11→0.33 样本/秒、FID@2k epoch6 24.74→14.99 对应 VQ、含注意力的 LDM-4，修补训练为 8×V100，不能与单 A100 的压缩率实验混淆；精度与采样限制见 §5。 无条件生成数字采用256×256输出，以50,000个生成样本和对应完整训练集估计统计量。
 [^sd14-sampling]: [CFG 原论文](https://arxiv.org/abs/2207.12598v1) §3.2；[官方 PLMS 代码](https://github.com/CompVis/stable-diffusion/blob/master/ldm/models/diffusion/plms.py)与[README参考采样](https://github.com/CompVis/stable-diffusion/blob/master/README.md#reference-sampling-script)，核共用网络、权重约定、首步额外估计与eta=0；不把训练1000时间步或推理50步解释成相同调用次数。
 [^sd14-training]: 固定版本模型卡 Training，v1.3续195,000步、v1.4续225,000步，均从v1.2开始；[LAION-5B论文](https://arxiv.org/pdf/2210.08402v1) §3.1–3.2，数据筛选的英语CLIP ViT-B/32与生成的CLIP ViT-L/14文本条件分开。
 [^sd14-limits]: 固定版本模型卡 Evaluation Results、Limitations and Bias、Uses；[官方 README](https://github.com/CompVis/stable-diffusion/blob/master/README.md)的研究权重、安全检查、水印及用途限制。本轮不声称生成实测、曲线逐点复核或完整法律审查；节目片段与第29节共享03:45:52–03:52:54。
-[^dit-design]: 原论文 §3.2、Figure 3、Table 4：潜网格切块、四种条件块、噪声与对角协方差输出及 adaLN-Zero。不同条件设计的参数量与计算量不同，不能把消融差异全归一个初始化数字。
-[^dit-scaling]: 原论文 §5、Table 4、§5.2、Figure 10。400,000 训练步、无额外 CFG 的扩展表采用 ft-MSE 解码器，计算与参数不含 VAE；采样预算对照采用 FID-10K，不能与最终 FID-50K 混比，也不是墙钟测速。
-[^dit-results]: 原论文 §5.1、Tables 2–3、附录 A/D 及 Table 5：256×256 模型训练 700 万步，512×512 模型训练 300 万步；250 步 DDPM、50,000 个生成样本与 CFG 逐项保留；最终解码器为 ft-EMA，原 CFG 施加于前三个潜通道。256×256 的 2.27 与 512×512 的 3.04 不证明所有方法、指标全面获胜。
-[^dit-boundaries]: 原论文 §6 的后续方向与首页署名：William Peebles — UC Berkeley、Saining Xie — NYU，Peebles 的星号说明 Meta AI FAIR 实习；不据此确认后续任职或 Sora 谱系。节目 03:52:54–03:56:32 共 90 段已做文本与时间结构检查，未听音或测字错误率。
+[^dit-design]: [DiT v2，Figure 3](https://arxiv.org/pdf/2212.09748v2#page=3)、§3.2与 Table 4：潜网格切块、四种条件块、噪声与对角协方差输出及 adaLN-Zero。不同条件设计的参数量与计算量不同，不能把消融差异全归一个初始化数字。
+[^dit-scaling]: [DiT v2，§5、Figure 9](https://arxiv.org/pdf/2212.09748v2#page=8)、[§5.2、Figure 10](https://arxiv.org/pdf/2212.09748v2#page=9)与 Table 4。400,000 训练步、无额外 CFG 的扩展表采用 ft-MSE 解码器，计算与参数不含 VAE；Figure 9 以单次前向量×批量×训练步数×3 估算训练 FLOPs，不是精确硬件计量。Figure 10 比较的模型都训练 400,000 步，生成质量用 FID-10K，不能与最终 FID-50K 混比，也不是墙钟测速。
+[^dit-results]: [DiT v2，§5.1、Tables 2–3](https://arxiv.org/pdf/2212.09748v2#page=9)、附录 A/D 及 Table 5：256×256 模型训练 700 万步，512×512 模型训练 300 万步；250 步 DDPM、50,000 个生成样本与 CFG 逐项保留；最终解码器为 ft-EMA，原 CFG 施加于前三个潜通道。256×256 的 2.27 与 512×512 的 3.04 不证明所有方法、指标全面获胜。
+[^dit-boundaries]: [DiT v2，§6](https://arxiv.org/pdf/2212.09748v2#page=9)的后续方向与首页署名：William Peebles — UC Berkeley、Saining Xie — NYU，Peebles 的星号说明 Meta AI FAIR 实习；不据此确认后续任职或 Sora 谱系。节目 03:52:54–03:56:32 的转写已核对；时间结构和转录缺陷见展开篇，未逐句听音或测量字错误率。

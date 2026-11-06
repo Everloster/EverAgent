@@ -7,7 +7,6 @@
 
 | 日期 | 报告 | 领域 |
 |------|------|------|
-| 2026-11-06 | [《AI演义》深读：从关键论文看懂AI的发展路径](../ai-learning/reports/AI演义_笔记分析与项目整合报告.md) | ai-learning |
 | 2026-11-06 | [《AI演义》31｜DiT：去噪这份工作，Transformer 能接手吗？](../ai-learning/reports/knowledge_reports/AI演义_31_DiT_Transformer怎样接替去噪骨架_科普讲解_20261106.md) | ai-learning |
 | 2026-11-06 | [《AI演义》30｜Stable Diffusion v1.4：一句提示词，怎样穿过整套文生图系统？](../ai-learning/reports/knowledge_reports/AI演义_30_StableDiffusion_v14_文生图系统怎样协同工作_科普讲解_20261106.md) | ai-learning |
 | 2026-11-06 | [《AI演义》29｜LDM：为什么先压缩，反而更会画图？](../ai-learning/reports/knowledge_reports/AI演义_29_LDM_潜空间怎样降低图像生成成本_科普讲解_20261106.md) | ai-learning |
@@ -32,12 +31,12 @@
 | 2026-11-06 | [《AI演义》10｜Scaling Laws 与 Chinchilla：同一份算力，模型和数据怎样分？](../ai-learning/reports/knowledge_reports/AI演义_10_ScalingLaws与Chinchilla_算力预算怎样分配_科普讲解_20261105.md) | ai-learning |
 | 2026-11-06 | [《AI演义》09｜GPT-2 与 GPT-3：只给说明和例子，模型就能换任务吗？](../ai-learning/reports/knowledge_reports/AI演义_09_GPT2与GPT3_任务怎样进入上下文_科普讲解_20261105.md) | ai-learning |
 | 2026-11-06 | [《AI演义》08｜GPT-1 与 BERT：只是读了很多文本，怎么就能做不同任务？](../ai-learning/reports/knowledge_reports/AI演义_08_GPT1与BERT_预训练怎样迁移到不同任务_科普讲解_20261105.md) | ai-learning |
+| 2026-11-06 | [《AI演义》07｜GNMT 与 Transformer：翻译怎样变快，为什么还要逐词生成？](../ai-learning/reports/knowledge_reports/AI演义_07_GNMT与Transformer_从翻译系统到并行架构_科普讲解_20261105.md) | ai-learning |
 
 ## 🤖 AI Learning（185 篇）
 
 | 日期 | 报告 | 标签 |
 |------|------|------|
-| 2026-11-06 | [《AI演义》深读：从关键论文看懂AI的发展路径](../ai-learning/reports/AI演义_笔记分析与项目整合报告.md) | `ai_history`, `representation_learning`, `transformer`, `pretraining`, `scaling_laws`, `multimodal` |
 | 2026-11-06 | [《AI演义》31｜DiT：去噪这份工作，Transformer 能接手吗？](../ai-learning/reports/knowledge_reports/AI演义_31_DiT_Transformer怎样接替去噪骨架_科普讲解_20261106.md) | `ai_history`, `diffusion_transformer`, `vision_transformer`, `scaling`, `generative_models` |
 | 2026-11-06 | [《AI演义》30｜Stable Diffusion v1.4：一句提示词，怎样穿过整套文生图系统？](../ai-learning/reports/knowledge_reports/AI演义_30_StableDiffusion_v14_文生图系统怎样协同工作_科普讲解_20261106.md) | `ai_history`, `stable_diffusion`, `text_to_image`, `classifier_free_guidance`, `latent_diffusion` |
 | 2026-11-06 | [《AI演义》29｜LDM：为什么先压缩，反而更会画图？](../ai-learning/reports/knowledge_reports/AI演义_29_LDM_潜空间怎样降低图像生成成本_科普讲解_20261106.md) | `ai_history`, `latent_diffusion`, `autoencoder`, `cross_attention`, `generative_models` |
@@ -69,6 +68,7 @@
 | 2026-11-06 | [《AI演义》03｜ResNet：网络更深了，为什么连训练集都学不好？](../ai-learning/reports/knowledge_reports/AI演义_03_ResNet_深层网络如何训练_科普讲解_20261104.md) | `ai_history`, `resnet`, `residual_learning`, `optimization`, `generalization`, `representation_learning` |
 | 2026-11-06 | [《AI演义》02｜AlexNet：数据、模型和 GPU 为什么必须合在一起看？](../ai-learning/reports/knowledge_reports/AI演义_02_AlexNet_图像识别突破_科普讲解_20261104.md) | `ai_history`, `alexnet`, `convolutional_neural_networks`, `representation_learning`, `imagenet`, `gpu_training` |
 | 2026-11-06 | [《AI演义》01｜Brook：GPU 很快，为什么普通程序还不容易用上它？](../ai-learning/reports/knowledge_reports/AI演义_01_Brook_GPU通用计算_科普讲解_20261104.md) | `brook`, `gpu`, `gpgpu`, `stream_computing`, `cuda`, `ai_history` |
+| 2026-11-06 | [AI演义·总览｜从关键论文看懂 AI 的发展路径](../ai-learning/reports/AI演义_笔记分析与项目整合报告.md) | `ai_history`, `representation_learning`, `transformer`, `pretraining`, `scaling_laws`, `multimodal` |
 | 2026-11-03 | [无状态的鹦鹉，怎么学会了连续对话和自己用工具？—— Agent 请求全链路科普·完整版](../ai-learning/reports/knowledge_reports/Agent请求全链路_完整版_科普讲解_20261103.md) | `agent_harness`, `agentic_loop`, `tool_use`, `context_management`, `message_threads`, `prompt_caching` |
 | 2026-11-02 | [答案在逐字出现，Agent 到底做到哪一步了？—— Agent 请求全链路续篇](../ai-learning/reports/knowledge_reports/Agent请求全链路_流式响应与断线恢复_科普讲解_20261102.md) | `agent_harness`, `agentic_loop`, `streaming`, `tool_calling`, `sse`, `api_gateway` |
 | 2026-10-30 | [模型不变，Agent 如何做得更好：一项 Harness 实验](../ai-learning/reports/paper_analyses/46_evolve_the_harness_2026.md) | `agent_harness`, `self_evolving_agent`, `scaffolding`, `meta_harness`, `context_engineering`, `autoresearch` |

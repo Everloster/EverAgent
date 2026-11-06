@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1230" viewBox="0 0 1200 1230" role="img" aria-labelledby="title desc">
+<title id="title">AI演义：原讲义的四条研究路线</title>
+<desc id="desc">依据原讲义四条路线归类36个研究对象；各框内按首次公开或发表年份排列。这是分类目录，不是共同时间轴，也不表示直接因果。完整文字与原文链接见报告末尾四组对象定位表。</desc>
+<rect width="1200" height="1230" fill="white"/>
+<text x="32" y="25" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="36" font-weight="600" fill="#223248">AI演义：原讲义的四条研究路线</text>
+<text x="32" y="79" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="23" font-weight="400" fill="#526078">按研究问题归类；不是共同时间轴，也不表示直接继承。</text>
+<rect x="32" y="138" width="556" height="524" rx="14" fill="#f0f5fb"/>
+<text x="56" y="162" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="28" font-weight="600" fill="#245da1">模型的范式变迁</text>
+<text x="56" y="204" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#526078">计算怎样表达，网络怎样学习，</text>
+<text x="56" y="229" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#526078">模型怎样使用？</text>
+<text x="56" y="271" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="22" font-weight="600" fill="#223248">Brook</text>
+<text x="503" y="273" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#245da1">2004</text>
+<text x="56" y="300" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="22" font-weight="600" fill="#223248">AlexNet</text>
+<text x="503" y="302" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#245da1">2012</text>
+<text x="56" y="329" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="22" font-weight="600" fill="#223248">seq2seq</text>
+<text x="503" y="331" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#245da1">2014</text>
+<text x="56" y="358" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="22" font-weight="600" fill="#223248">Attention</text>
+<text x="503" y="360" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#245da1">2014</text>
+<text x="56" y="387" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="22" font-weight="600" fill="#223248">知识蒸馏</text>
+<text x="503" y="389" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#245da1">2015</text>
+<text x="56" y="416" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="22" font-weight="600" fill="#223248">ResNet</text>
+<text x="503" y="418" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#245da1">2015</text>
+<text x="56" y="445" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="22" font-weight="600" fill="#223248">稀疏 MoE</text>
+<text x="503" y="447" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#245da1">2017</text>
+<text x="56" y="474" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="22" font-weight="600" fill="#223248">Transformer</text>
+<text x="503" y="476" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#245da1">2017</text>
+<text x="56" y="503" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="22" font-weight="600" fill="#223248">AlphaGo Zero</text>
+<text x="503" y="505" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#245da1">2017</text>
+<text x="56" y="532" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="22" font-weight="600" fill="#223248">LoRA</text>
+<text x="503" y="534" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#245da1">2021</text>
+<text x="56" y="561" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="22" font-weight="600" fill="#223248">CoT</text>
+<text x="503" y="563" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#245da1">2022</text>
+<text x="56" y="590" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="22" font-weight="600" fill="#223248">ReAct</text>
+<text x="503" y="592" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#245da1">2022</text>
+<rect x="612" y="138" width="556" height="524" rx="14" fill="#eef8f6"/>
+<text x="636" y="162" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="28" font-weight="600" fill="#0f766e">Infra 与数据变迁</text>
+<text x="636" y="204" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#526078">规模能否算得起、装得下、</text>
+<text x="636" y="229" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#526078">学得好、跑得完？</text>
+<text x="636" y="271" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="22" font-weight="600" fill="#223248">The Bitter Lesson</text>
+<text x="1083" y="273" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#0f766e">2019</text>
+<text x="636" y="300" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="22" font-weight="600" fill="#223248">ZeRO</text>
+<text x="1083" y="302" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#0f766e">2019</text>
+<text x="636" y="329" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="22" font-weight="600" fill="#223248">Scaling Laws</text>
+<text x="1083" y="331" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#0f766e">2020</text>
+<text x="636" y="358" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="22" font-weight="600" fill="#223248">Chinchilla</text>
+<text x="1083" y="360" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#0f766e">2022</text>
+<text x="636" y="387" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="22" font-weight="600" fill="#223248">LAION-5B</text>
+<text x="1083" y="389" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#0f766e">2022</text>
+<text x="636" y="416" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="22" font-weight="600" fill="#223248">RefinedWeb</text>
+<text x="1083" y="418" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#0f766e">2023</text>
+<text x="636" y="445" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="22" font-weight="600" fill="#223248">MegaScale</text>
+<text x="1083" y="447" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#0f766e">2024</text>
+<rect x="32" y="690" width="556" height="420" rx="14" fill="#fff6ee"/>
+<text x="56" y="714" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="28" font-weight="600" fill="#9a531b">语言模型的发展</text>
+<text x="56" y="756" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#526078">从词表示到通用网络，</text>
+<text x="56" y="781" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#526078">从任务提示到回答反馈。</text>
+<text x="56" y="823" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="22" font-weight="600" fill="#223248">Word2Vec</text>
+<text x="503" y="825" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#9a531b">2013</text>
+<text x="56" y="852" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="22" font-weight="600" fill="#223248">GNMT</text>
+<text x="503" y="854" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#9a531b">2016</text>
+<text x="56" y="881" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="22" font-weight="600" fill="#223248">GPT-1</text>
+<text x="503" y="883" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#9a531b">2018</text>
+<text x="56" y="910" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="22" font-weight="600" fill="#223248">BERT</text>
+<text x="503" y="912" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#9a531b">2018</text>
+<text x="56" y="939" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="22" font-weight="600" fill="#223248">GPT-2</text>
+<text x="503" y="941" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#9a531b">2019</text>
+<text x="56" y="968" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="22" font-weight="600" fill="#223248">GPT-3</text>
+<text x="503" y="970" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#9a531b">2020</text>
+<text x="56" y="997" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="22" font-weight="600" fill="#223248">InstructGPT</text>
+<text x="503" y="999" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#9a531b">2022</text>
+<text x="56" y="1026" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="22" font-weight="600" fill="#223248">Tülu 3</text>
+<text x="503" y="1028" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#9a531b">2024</text>
+<rect x="612" y="690" width="556" height="420" rx="14" fill="#f8f1f9"/>
+<text x="636" y="714" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="28" font-weight="600" fill="#814781">多模态模型的发展</text>
+<text x="636" y="756" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#526078">外观、运动、图文关系与生成，</text>
+<text x="636" y="781" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#526078">分别需要什么？</text>
+<text x="636" y="823" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="22" font-weight="600" fill="#223248">DeepVideo</text>
+<text x="1083" y="825" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#814781">2014</text>
+<text x="636" y="852" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="22" font-weight="600" fill="#223248">双流网络</text>
+<text x="1083" y="854" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#814781">2014</text>
+<text x="636" y="881" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="22" font-weight="600" fill="#223248">GAN</text>
+<text x="1083" y="883" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#814781">2014</text>
+<text x="636" y="910" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="22" font-weight="600" fill="#223248">早期扩散</text>
+<text x="1083" y="912" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#814781">2015</text>
+<text x="636" y="939" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="22" font-weight="600" fill="#223248">DDPM</text>
+<text x="1083" y="941" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#814781">2020</text>
+<text x="636" y="968" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="22" font-weight="600" fill="#223248">ViT</text>
+<text x="1083" y="970" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#814781">2020</text>
+<text x="636" y="997" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="22" font-weight="600" fill="#223248">CLIP</text>
+<text x="1083" y="999" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#814781">2021</text>
+<text x="636" y="1026" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="22" font-weight="600" fill="#223248">LDM</text>
+<text x="1083" y="1028" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#814781">2021</text>
+<text x="636" y="1055" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="22" font-weight="600" fill="#223248">DiT</text>
+<text x="1083" y="1057" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#814781">2022</text>
+<text x="32" y="1146" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="19" font-weight="400" fill="#526078">来源：原讲义第 7 页与各路线页，共 36 个研究对象。</text>
+<text x="32" y="1177" dominant-baseline="text-before-edge" font-family="PingFang SC,Heiti SC,Noto Sans CJK SC,sans-serif" font-size="19" font-weight="400" fill="#526078">年份按论文／报告的首次公开或发表口径；完整原文与正文入口见文末四组表格。</text>
+</svg>

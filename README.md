@@ -18,11 +18,11 @@
 ## 最近更新
 
 <!-- AUTO-RECENT:START -->
-- 2026-11-06 · [《AI演义》深读：从关键论文看懂AI的发展路径](./ai-learning/reports/AI演义_笔记分析与项目整合报告.md)
 - 2026-11-06 · [《AI演义》31｜DiT：去噪这份工作，Transformer 能接手吗？](./ai-learning/reports/knowledge_reports/AI演义_31_DiT_Transformer怎样接替去噪骨架_科普讲解_20261106.md)
 - 2026-11-06 · [《AI演义》30｜Stable Diffusion v1.4：一句提示词，怎样穿过整套文生图系统？](./ai-learning/reports/knowledge_reports/AI演义_30_StableDiffusion_v14_文生图系统怎样协同工作_科普讲解_20261106.md)
 - 2026-11-06 · [《AI演义》29｜LDM：为什么先压缩，反而更会画图？](./ai-learning/reports/knowledge_reports/AI演义_29_LDM_潜空间怎样降低图像生成成本_科普讲解_20261106.md)
 - 2026-11-06 · [《AI演义》28｜DDPM：预测噪声，怎么就学会了画图？](./ai-learning/reports/knowledge_reports/AI演义_28_DDPM_预测噪声怎样学会生成图像_科普讲解_20261106.md)
+- 2026-11-06 · [《AI演义》27｜早期扩散模型：把花弄成噪声，怎么反而学会画花？](./ai-learning/reports/knowledge_reports/AI演义_27_Diffusion2015_逐步加噪怎样学会生成_科普讲解_20261106.md)
 <!-- AUTO-RECENT:END -->
 
 按报告修改日期排列，修订过的旧报告也会出现在这里。[浏览全部报告 →](./docs/REPORT_INDEX.md)

@@ -2,31 +2,30 @@
   "schema_version": 1,
   "report_path": "ai-learning/reports/AI演义_笔记分析与项目整合报告.md",
   "quality_tier": "flagship",
-  "revision_round": 36,
+  "revision_round": 37,
   "reviews": [
     {
       "role": "primary_review",
       "reviewer": {
         "model": "unconfirmed",
         "harness": "codex",
-        "run_id": "dit_primary_review",
+        "run_id": "ai-yanyi-overview-r37-primary-dit-primary-review-20261106",
         "independent_context": true,
-        "explicit_model_override": false,
-        "identity_basis": "独立子任务未获会话绑定模型确认；不借共享宿主或生成者身份。"
+        "explicit_model_override": false
       },
       "scores": {
-        "evidence_fidelity": 96,
-        "request_coverage": 96,
-        "reasoning_quality": 95,
-        "readability": 94,
-        "limitations": 97
+        "evidence_fidelity": 97,
+        "request_coverage": 91,
+        "reasoning_quality": 97,
+        "readability": 93,
+        "limitations": 98
       },
       "score_reasons": {
-        "evidence_fidelity": "直接核新DiT正文、五条脚注和对应evidence，依据本审稿人前阶段实际读取的同一原始材料；核心尺寸、计算/FID、训练时长、CFG/decoder与512反例一致。旧内容仅在严格差分和已发布pass哈希绑定成立后继承，不将继承伪装为本轮重新读源。",
-        "request_coverage": "第31节已从简述扩为背景、部件分层、机制、扩展数字、采样反例与边界；标题后首块为正确展开链接，双向导航和编号成立。原文与evidence允许范围以外完全不变，R11直接核，其余要求按已发布r35继承。",
-        "reasoning_quality": "没有把Transformer与扩散视作互斥，也不把参数规模等同算力；条件设计、潜空间收益、采样预算、有限基准领先和生态机会均保持边界，512的StyleGAN-XL反例制止过度外推。",
-        "readability": "新增第31节本身能连贯回答为何替换、怎样工作、结果与代价，未只留下链接。五条具名脚注、7处展开章本地导航及主稿首块展开链接可用；未发现乱码。采样对照段可以就地补“同样训练40万步”，减少读者误把它当最终长训练模型比较的可能，这是轻微建议而非数字错误。只检查文本，不做工作台验收；旧正文呈现不另声称本轮通读。",
-        "limitations": "正文和脚注明示原实验是类别条件ImageNet、文生图为未来方向，未以原署名推后续人物/Sora，TFLOPs不冒充墙钟。90段转写结构审计沿用本人本任务实跑收据，未听音/WER；本轮继承范围、未重读旧论文和未训练复现均明确。"
+        "evidence_fidelity": "原PDF全文及总览全文逐段对应；14修改claim与1新增claim的机制/数字增量回到原文、代码和36对象清单。其余45claim/86source对象的未变范围以r36/pass双SHA及字节等同明确继承。MoE路由、MCTS统计/梯度、PPO模型分工、CoT点号、AP绝对差、光流配置、197位置、连续密度、GPU日折算、CFG和DiT训练/采样预算等新增边界均成立；未重训或逐曲线估数。",
+        "request_coverage": "原36对象、四路线、三视角、31展开入口与32篇数量解释完整，关键机制不外包到链接；当前31分章completed/pass绑定及受影响术语/前后链可核。R9实际富文本检查因工具故障未完成，故只给91并在missing_requirements保留R9，不以内容已校读推成整体Goal已完成；Bitter案例细节概括范围另标partial。",
+        "reasoning_quality": "明确区分历史次序与组件采用、参数容量与计算量、训练更新与推理、连续密度与离散NLL、固定步数与固定FLOPs。反例、比较配置和原作/补充解释边界连贯，新增限定纠正读者常见过度推断；理论或历史外推没有被包装成已测定律。",
+        "readability": "总览正文可独立阅读，概念/例子/前后联系都有展开；四组定位表代替36行单长表，图源在独立PNG中清晰，标题/脚注/本地目标检查无错。ViT分类标记略重复；尚未实际观察目标富文本渲染，公式/图宽/点击行为等不能凭源文本担保，因此不按已完成页面观看打高分。",
+        "limitations": "明确当前/原始版本、来源读取范围、ASR未逐句听校、实验未复现、非完整历史优先权审计和代码master未固定commit；旧scope调整与当前Goal区分。审稿本身公开保留R9工具故障、未确认模型身份与继承范围，不将检查收据或高分等同整体交付。"
       },
       "critical_claim_ids_checked": [
         "C-brook",
@@ -87,7 +86,594 @@
         "E-behavior",
         "E-interaction",
         "C-basics",
-        "C-route-walkthroughs"
+        "C-route-walkthroughs",
+        "C-route-map"
+      ],
+      "coverage_unit_ids_checked": [
+        "U-brook",
+        "U-alexnet",
+        "U-resnet",
+        "U-distillation",
+        "U-word2vec",
+        "U-seq2seq",
+        "U-bahdanau-attention",
+        "U-gnmt",
+        "U-transformer",
+        "U-gpt1",
+        "U-bert",
+        "U-gpt2",
+        "U-gpt3",
+        "U-scaling-laws",
+        "U-chinchilla",
+        "U-zero",
+        "U-megascale",
+        "U-laion5b",
+        "U-refinedweb",
+        "U-sparse-moe",
+        "U-lora",
+        "U-alphago-zero",
+        "U-instructgpt",
+        "U-cot",
+        "U-react",
+        "U-tulu3",
+        "U-deepvideo",
+        "U-two-stream",
+        "U-vit",
+        "U-clip",
+        "U-gan",
+        "U-diffusion-2015",
+        "U-ddpm",
+        "U-ldm",
+        "U-dit",
+        "U-bitter-lesson",
+        "U-lenses",
+        "U-reader-method",
+        "U-cross-route",
+        "U-sd14",
+        "U-route-map"
+      ],
+      "source_content_map": [
+        {
+          "id": "SM01",
+          "title": "学习目标与三种叙事视角",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-lenses",
+            "U-reader-method"
+          ],
+          "notes": "原PDF物理页 1,2,3,4,5,6；来源优先识别：用论文理解相对稳定的基本问题；历史背景—解决方式—后效，以历史、范式、人物而非孤立名词组织。学习路线与工具建议需分清讲者偏好和普遍事实。 对应判断：开篇保留历史、范式、人与组织三个问题，术语表与文末新论文定位法相接。 本轮原PDF文本直接全读并与当前总览全文对应；本单元未变的论文/既有核验范围经字节与r36/pass绑定验证后继承，不冒称本轮重新通读该论文。"
+        },
+        {
+          "id": "SM02",
+          "title": "四条并行路线及共同要素",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "L-inventory"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-route-map",
+            "U-cross-route"
+          ],
+          "notes": "原PDF物理页 7,8,26,32,41；来源优先识别：芯片、infra、数据、模型结构共同作用；模型范式、infra/数据、语言、多模态四路线相互联系，但论文时间先后不等于直接因果。路线中的2018/2019 Bitter Lesson日期有内部不一致，需回原作校正。 对应判断：对照原PDF p7和各路线页；当前四框图与四组36对象表逐项相符。分类不是共同时间轴，且连接索引区分组件采用、使能条件、问题承接、主题对照。Chinchilla来自p28合讲页，不能只数p7的可见标签。 本轮原PDF文本直接全读；上述增量原文/图像范围另直接核验，未变部分按r36绑定基线继承。"
+        },
+        {
+          "id": "SM03",
+          "title": "GPU可编程性与Brook",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-brook",
+            "S-gpu-history"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-brook"
+          ],
+          "notes": "原PDF物理页 9,10；来源优先识别：从图形芯片到通用数据并行：stream/kernel/reduction及抽象层与移植性的代价；不能写成Brook发明了GPU或CUDA。 对应判断：正文有逐元素示例、stream/kernel/reduction、宿主与设备分工及传输代价，不把Brook等同CUDA或AlexNet直接依赖。 本轮原PDF文本直接全读并与当前总览全文对应；本单元未变的论文/既有核验范围经字节与r36/pass绑定验证后继承，不冒称本轮重新通读该论文。"
+        },
+        {
+          "id": "SM04",
+          "title": "AlexNet与数据/计算/结构共同门槛",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-alexnet"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-alexnet"
+          ],
+          "notes": "原PDF物理页 11；来源优先识别：ImageNet大库与ILSVRC子集须区分，GPU与端到端学习的贡献不能抹去前史，也不能把Google Brain成立倒写为AlexNet催生。 对应判断：数据/计算/结构共同门槛、训练和测试/单模型及集成口径、前史边界均在正文。 本轮原PDF文本直接全读并与当前总览全文对应；本单元未变的论文/既有核验范围经字节与r36/pass绑定验证后继承，不冒称本轮重新通读该论文。"
+        },
+        {
+          "id": "SM05",
+          "title": "seq2seq与Attention两项同期工作",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-seq2seq",
+            "S-bahdanau"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-seq2seq",
+            "U-bahdanau-attention"
+          ],
+          "notes": "原PDF物理页 12；来源优先识别：变长翻译任务、固定表示与按步读取源位置；注意力并非长句必然失效的万能解，作者名单与两篇首发顺序须按原文。 对应判断：一个合讲页映射两篇论文；正文解释固定状态、源倒序、按步对齐及不同测试条件，保留Attention更早首发的边界。第06章当前r4导航与pass双SHA也已另核。 本轮原PDF文本直接全读并与当前总览全文对应；本单元未变的论文/既有核验范围经字节与r36/pass绑定验证后继承，不冒称本轮重新通读该论文。"
+        },
+        {
+          "id": "SM06",
+          "title": "知识蒸馏",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-distill"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-distillation"
+          ],
+          "notes": "原PDF物理页 13；来源优先识别：教师软目标、温度、部署开销与小模型；2015不是所有模型压缩或teacher/student思想的起点。 对应判断：解释温度、软目标与学生部署，保留同规模语音对照及2015之前的压缩前史，不承诺无损复制。 本轮原PDF文本直接全读并与当前总览全文对应；本单元未变的论文/既有核验范围经字节与r36/pass绑定验证后继承，不冒称本轮重新通读该论文。"
+        },
+        {
+          "id": "SM07",
+          "title": "ResNet",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-resnet",
+            "S-transformer"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-resnet"
+          ],
+          "notes": "原PDF物理页 14；来源优先识别：深度增加的优化退化问题，学习残差而不是直接目标；不混同过拟合、梯度消失和通用加深必胜。 对应判断：有残差修正实例、监督训练、退化与过拟合区别，以及Transformer采用组件的明确联系。 本轮原PDF文本直接全读并与当前总览全文对应；本单元未变的论文/既有核验范围经字节与r36/pass绑定验证后继承，不冒称本轮重新通读该论文。"
+        },
+        {
+          "id": "SM08",
+          "title": "Transformer",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-transformer"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-transformer"
+          ],
+          "notes": "原PDF物理页 15；来源优先识别：摆脱循环依赖的训练并行和全局关系建模；位置、mask、注意力开销及自回归生成边界。 对应判断：三路Attention、位置和mask、并行训练/逐词生成与平方成本都进入正文；未把骨架与训练目标混同。 本轮原PDF文本直接全读并与当前总览全文对应；本单元未变的论文/既有核验范围经字节与r36/pass绑定验证后继承，不冒称本轮重新通读该论文。"
+        },
+        {
+          "id": "SM09",
+          "title": "AlphaGo Zero",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-alphago"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-alphago-zero"
+          ],
+          "notes": "原PDF物理页 16；来源优先识别：自我对弈、策略/价值网络与MCTS，降低专家数据依赖；不能把无棋谱写成没有人类设计，也需区分训练与每步搜索算力。 对应判断：本轮直接回读公开镜像原论文Optimization与Search algorithm/Backup：搜索改N/W/Q等统计，网络梯度优化另行发生；100–0/89–11等未变实验继承已绑定基线。 本轮原PDF文本直接全读；上述增量原文/图像范围另直接核验，未变部分按r36绑定基线继承。"
+        },
+        {
+          "id": "SM10",
+          "title": "稀疏MoE",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-moe"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-sparse-moe"
+          ],
+          "notes": "原PDF物理页 17；来源优先识别：参数容量与每token激活计算分开，路由、负载与通信代价；原讲义1000倍容量≠推理价格千分之一。 对应判断：本轮直接回读原论文pp2–3 Figure1/§2，零门控专家的前向可省；门控及共享LSTM仍运行。正文保留负载与通信代价，不把参数倍率写成价格倍率。 本轮原PDF文本直接全读；上述增量原文/图像范围另直接核验，未变部分按r36绑定基线继承。"
+        },
+        {
+          "id": "SM11",
+          "title": "CoT",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-cot"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-cot"
+          ],
+          "notes": "原PDF物理页 18；来源优先识别：以中间推导示范改善特定推理任务；模型规模与任务限制、可见解释不等于忠实因果，不能倒写为直接导致后来全部thinking系统。 对应判断：直接读原论文pp5–6 §3.3：点号长度按算式字符数，后答案推理约为基线；报告没有声称等token/等计算消融，也没有把事后解释写成已生成答案的原因。 本轮原PDF文本直接全读；上述增量原文/图像范围另直接核验，未变部分按r36绑定基线继承。"
+        },
+        {
+          "id": "SM12",
+          "title": "LoRA",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-lora"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-lora"
+          ],
+          "notes": "原PDF物理页 19；来源优先识别：冻结基座并训练低秩增量，合并权重时的推理结构；少可训练参数不等于完整训练成本同比减少。 对应判断：冻结基座/低秩增量/可合并条件及资源分账都保留，节目个人记忆设想不当作论文实证。 本轮原PDF文本直接全读并与当前总览全文对应；本单元未变的论文/既有核验范围经字节与r36/pass绑定验证后继承，不冒称本轮重新通读该论文。"
+        },
+        {
+          "id": "SM13",
+          "title": "ReAct",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-react"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-react"
+          ],
+          "notes": "原PDF物理页 20；来源优先识别：推理—动作—观察交替，外部证据回流；作为Agent构件而非Agent概念起点或天然可信。 对应判断：直接读§4与Ethics statement，WebShop成功由属性匹配评价且无真实购买；报告区分宣布结束、正确答案与真实动作权限。外部反馈不是可靠性保证。 本轮原PDF文本直接全读；上述增量原文/图像范围另直接核验，未变部分按r36绑定基线继承。"
+        },
+        {
+          "id": "SM14",
+          "title": "Bitter Lesson的案例及限定",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-bitter"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-bitter-lesson",
+            "U-lenses"
+          ],
+          "notes": "原PDF物理页 21,22,23,24,25,26；来源优先识别：Sutton历史观察以国际象棋、围棋、语音、视觉论证搜索与学习的可扩展性；不是数据/算法/专业知识无用的定律。原作日期须以2019文本为准。 对应判断：核心问题在第七部分独立解释：计算可扩展的学习/搜索与研究者投入习惯，按作者历史归纳而非统一定律表述；限定不排除具体结构与工程。原文四类案例的逐项复述另列支持性单元，不冒称正文已经逐案展开。 本轮原PDF文本直接全读并与当前总览全文对应；本单元未变的论文/既有核验范围经字节与r36/pass绑定验证后继承，不冒称本轮重新通读该论文。"
+        },
+        {
+          "id": "SM14-cases",
+          "title": "Bitter Lesson四组历史案例的细节保留范围",
+          "importance": "supporting",
+          "assessment": "partial",
+          "source_ids": [
+            "S-lecture",
+            "S-bitter"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-bitter-lesson"
+          ],
+          "notes": "原PDF pp21–25与既有S-bitter范围提到国际象棋、围棋、语音、视觉。当前总览将它们概括为若干历史案例，没有逐个重述全部案例论证。本任务要求发展路径与机制总览，并非逐案复证全部技术史，且该段本轮没有删减既有内容，故不据此加写内容级core_requirement_missing；仍明确保留partial，不能称这些案例已经在正文逐项完整复现。"
+        },
+        {
+          "id": "SM15",
+          "title": "ZeRO",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-zero"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-zero"
+          ],
+          "notes": "原PDF物理页 27；来源优先识别：切分优化器状态/梯度/参数，减副本冗余，显存与通信/激活内存边界，不称无限scale。 对应判断：分片优化器/梯度/参数的演算与实际峰值边界、通信和卸载反例充分；与Chinchilla的顺序是问题组织，不是历史后继。 本轮原PDF文本直接全读并与当前总览全文对应；本单元未变的论文/既有核验范围经字节与r36/pass绑定验证后继承，不冒称本轮重新通读该论文。"
+        },
+        {
+          "id": "SM16",
+          "title": "Scaling Laws与Chinchilla",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-kaplan",
+            "S-chinchilla"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-scaling-laws",
+            "U-chinchilla"
+          ],
+          "notes": "原PDF物理页 28；来源优先识别：经验幂律、模型/数据/计算三项约束，固定训练预算的最优分配；不能把特定训练计算最优换成部署成本最优或万能比例。 对应判断：原p28合讲两作均保留；主要计算演算、数据/模型配比、学习率与比较混杂条件，以及训练/部署预算区别清楚。 本轮原PDF文本直接全读并与当前总览全文对应；本单元未变的论文/既有核验范围经字节与r36/pass绑定验证后继承，不冒称本轮重新通读该论文。"
+        },
+        {
+          "id": "SM17",
+          "title": "LAION-5B",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-laion",
+            "S-clip"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-laion5b"
+          ],
+          "notes": "原PDF物理页 29；来源优先识别：公开图文索引、CLIP过滤与复现条件；数量、图像版权及过滤不等于安全/授权要分清。 对应判断：图文索引与筛选、原始CLIP/开放复现、累计训练样本口径和授权/安全边界均独立说明。 本轮原PDF文本直接全读并与当前总览全文对应；本单元未变的论文/既有核验范围经字节与r36/pass绑定验证后继承，不冒称本轮重新通读该论文。"
+        },
+        {
+          "id": "SM18",
+          "title": "RefinedWeb",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-refinedweb"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-refinedweb"
+          ],
+          "notes": "原PDF物理页 30；来源优先识别：清洗与去重网页数据相对精选混合语料的受控比较；“解决数据墙”是过强推论，需任务/模型/数据覆盖边界。 对应判断：讲清清洗、过滤、两种去重与受控训练反例，未把网页多写成数据质量或规模问题永久解决。 本轮原PDF文本直接全读并与当前总览全文对应；本单元未变的论文/既有核验范围经字节与r36/pass绑定验证后继承，不冒称本轮重新通读该论文。"
+        },
+        {
+          "id": "SM19",
+          "title": "MegaScale",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-megascale"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-megascale"
+          ],
+          "notes": "原PDF物理页 31；来源优先识别：万卡训练系统的算法系统协同、性能及故障定位恢复；MFU/吞吐的配置与规模须有口径，不把公开案例写成唯一首创。 对应判断：万卡作业的通信、观测、恢复与MFU/有效训练时间率分开解释，保留指定配置，不承诺零故障。 本轮原PDF文本直接全读并与当前总览全文对应；本单元未变的论文/既有核验范围经字节与r36/pass绑定验证后继承，不冒称本轮重新通读该论文。"
+        },
+        {
+          "id": "SM20",
+          "title": "Word2Vec",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-word2vec"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-word2vec"
+          ],
+          "notes": "原PDF物理页 32,33；来源优先识别：高效词向量预测训练与分布语义，固定向量/上下文多义的区别；不是第一次提出连续词向量，类比示例不保证普适。 对应判断：从局部预测到可复用向量，有多义与不同任务的反例，不写成连续词表示首创。 本轮原PDF文本直接全读并与当前总览全文对应；本单元未变的论文/既有核验范围经字节与r36/pass绑定验证后继承，不冒称本轮重新通读该论文。"
+        },
+        {
+          "id": "SM21",
+          "title": "GNMT",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-gnmt"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-gnmt"
+          ],
+          "notes": "原PDF物理页 34；来源优先识别：从研究原型到生产NMT的罕见词、延迟、漏译等工程组合；与Transformer是不同阶段、不是同一模型。 对应判断：词片、深循环网络、搜索/整数推理及生产取舍与后续Transformer分阶段说明。 本轮原PDF文本直接全读并与当前总览全文对应；本单元未变的论文/既有核验范围经字节与r36/pass绑定验证后继承，不冒称本轮重新通读该论文。"
+        },
+        {
+          "id": "SM22",
+          "title": "GPT-1",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-gpt1"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-gpt1"
+          ],
+          "notes": "原PDF物理页 35；来源优先识别：无标签语言建模预训练后监督微调、decoder自回归；继承此前表征学习与迁移前史，不称发现了语言全部规律。 对应判断：预训练与监督微调分开，输入适配、上下文表征及任务失败均在总览，不把深读链接当作唯一机制解释。 本轮原PDF文本直接全读并与当前总览全文对应；本单元未变的论文/既有核验范围经字节与r36/pass绑定验证后继承，不冒称本轮重新通读该论文。"
+        },
+        {
+          "id": "SM23",
+          "title": "BERT",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-bert"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-bert"
+          ],
+          "notes": "原PDF物理页 36；来源优先识别：双向上下文、掩码预训练与NSP、下游微调；与GPT分支并行，不写单向GPT被永久取代。 对应判断：双向encoder、MLM/NSP与任务接口、消融口径和GPT分叉明示。 本轮原PDF文本直接全读并与当前总览全文对应；本单元未变的论文/既有核验范围经字节与r36/pass绑定验证后继承，不冒称本轮重新通读该论文。"
+        },
+        {
+          "id": "SM24",
+          "title": "GPT-2",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-gpt2"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-gpt2"
+          ],
+          "notes": "原PDF物理页 37；来源优先识别：WebText与扩大预训练、零样本任务接口；零样本成绩不能证明无需任何下游适配。 对应判断：任务文本、WebText外链正文和零样本迁移有具体例子及摘要失败，不把零样本写成普遍成功。 本轮原PDF文本直接全读并与当前总览全文对应；本单元未变的论文/既有核验范围经字节与r36/pass绑定验证后继承，不冒称本轮重新通读该论文。"
+        },
+        {
+          "id": "SM25",
+          "title": "GPT-3",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-gpt3"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-gpt3"
+          ],
+          "notes": "原PDF物理页 38；来源优先识别：扩大模型数据计算并观察少样本上下文学习；无梯度演示与参数学习须分清，资源及作者归因需按原论文。 对应判断：上下文示例不更新权重；规模、任务反例、资源/污染及作者分工有边界。 本轮原PDF文本直接全读并与当前总览全文对应；本单元未变的论文/既有核验范围经字节与r36/pass绑定验证后继承，不冒称本轮重新通读该论文。"
+        },
+        {
+          "id": "SM26",
+          "title": "InstructGPT",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-instruct"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-instructgpt"
+          ],
+          "notes": "原PDF物理页 39；来源优先识别：SFT—偏好奖励模型—PPO/KL约束，指令偏好与续写目标的差别；1.3B vs175B指特定人类偏好评估，不是所有能力逆转，也不是RLHF首次提出。 对应判断：直接读§3.5/式2与Appendix C.4（物理pp9/42），RM和SFT参考与被训练policy/value分离；外层可再收集偏好迭代。本文没有把偏好胜出推成全部能力胜出。 本轮原PDF文本直接全读；上述增量原文/图像范围另直接核验，未变部分按r36绑定基线继承。"
+        },
+        {
+          "id": "SM27",
+          "title": "Tulu 3",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-tulu"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-tulu3"
+          ],
+          "notes": "原PDF物理页 40；来源优先识别：开放后训练数据/代码/配方、SFT/DPO/RLVR阶段及可验证奖励；数学/约束等可核任务不同于任意代码或通用可靠性。 对应判断：SFT/DPO/RLVR与公开配方、有限可验证奖励、指标回退与检查器漏洞均在正文。 本轮原PDF文本直接全读并与当前总览全文对应；本单元未变的论文/既有核验范围经字节与r36/pass绑定验证后继承，不冒称本轮重新通读该论文。"
+        },
+        {
+          "id": "SM28",
+          "title": "DeepVideo",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-deepvideo"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-deepvideo"
+          ],
+          "notes": "原PDF物理页 41,42；来源优先识别：视频空间外观与时间运动、Sports-1M、单帧/多帧对照和改进幅度；性能不足是理解研究动机的关键反例。 对应判断：本轮web.read只覆盖论文前部，不能据此核Table2；另从SHA匹配的CVPR原PDF重新提取并直接读p6，确认Juggling Club +0.12、Short Track Motor Racing −0.07为per-class AP绝对差。本文保留强单帧基线、采样聚合与相机运动只是作者解释的边界。 本轮原PDF文本直接全读；上述增量原文/图像范围另直接核验，未变部分按r36绑定基线继承。"
+        },
+        {
+          "id": "SM29",
+          "title": "Two-Stream",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-two-stream"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-two-stream"
+          ],
+          "notes": "原PDF物理页 43；来源优先识别：RGB与预计算光流两路，保留手工运动表示，与纯端到端叙事相矛盾的边界必须保留。 对应判断：本轮回读§5预计算及p7 Table1b，81.0%为L=10且mean subtraction on；光流预处理不与分类误差联合更新。三划分与单划分、手工方法仍可胜出的边界保留。 本轮原PDF文本直接全读；上述增量原文/图像范围另直接核验，未变部分按r36绑定基线继承。"
+        },
+        {
+          "id": "SM30",
+          "title": "GAN",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-gan"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-gan"
+          ],
+          "notes": "原PDF物理页 44；来源优先识别：生成器—判别器的训练博弈、隐式采样、训练不稳和模式覆盖，不能只画成图像质量胜出的单线。 对应判断：训练D/G分工、交替冻结仍传梯度、目标形式、理想条件与实际崩塌，以及评价/采样边界都在总览。 本轮原PDF文本直接全读并与当前总览全文对应；本单元未变的论文/既有核验范围经字节与r36/pass绑定验证后继承，不冒称本轮重新通读该论文。"
+        },
+        {
+          "id": "SM31",
+          "title": "2015 Diffusion",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-diffusion15"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-diffusion-2015"
+          ],
+          "notes": "原PDF物理页 45；来源优先识别：前向破坏数据结构与学习反向生成，灵活性和可计算性并举；不以后来GAN失败结论倒写当时动机。 对应判断：直接读v8 p6脚注2、p8 Tables1/2与p9说明：固定日程可能同样有效；1.489为下界，连续密度及缩放、Parzen与负对数似然不是同一口径。新增解释未倒填DDPM配方。 本轮原PDF文本直接全读；上述增量原文/图像范围另直接核验，未变部分按r36绑定基线继承。"
+        },
+        {
+          "id": "SM32",
+          "title": "DDPM",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-ddpm"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-ddpm"
+          ],
+          "notes": "原PDF物理页 46；来源优先识别：噪声预测训练与一步反向条件分布，不是简单减噪即恢复原图；方差、训练/采样区别和多步成本。 对应判断：噪声监督、反向均值和采样分开；参数化/损失的联合对照、FID参考集和1000步成本保留。 本轮原PDF文本直接全读并与当前总览全文对应；本单元未变的论文/既有核验范围经字节与r36/pass绑定验证后继承，不冒称本轮重新通读该论文。"
+        },
+        {
+          "id": "SM33",
+          "title": "ViT",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-vit"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-vit"
+          ],
+          "notes": "原PDF物理页 47；来源优先识别：把图像patch作为序列，规模与归纳偏置的交换；16×16并非所有ViT固定设置，不能从分类自动推出所有视觉任务。 对应判断：直接读§3.1/Figure1/式1，224/16给196图块，加class后为197位置且全序列加位置表示；数据规模、归纳偏置、分类而非自回归边界未弱化。 本轮原PDF文本直接全读；上述增量原文/图像范围另直接核验，未变部分按r36绑定基线继承。"
+        },
+        {
+          "id": "SM34",
+          "title": "CLIP",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-clip"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-clip"
+          ],
+          "notes": "原PDF物理页 48；来源优先识别：图文对比学习与零样本分类，匹配能力不是生成器；OpenAI数据闭源与LAION区别、真实部署局限。 对应判断：图文对比、候选文本的零样本接口、匹配/生成及LAION筛选/SD条件分开；结果不被写成统一最优。 本轮原PDF文本直接全读并与当前总览全文对应；本单元未变的论文/既有核验范围经字节与r36/pass绑定验证后继承，不冒称本轮重新通读该论文。"
+        },
+        {
+          "id": "SM35",
+          "title": "LDM与Stable Diffusion",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-ldm",
+            "S-sd14",
+            "S-sd14-plms"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-ldm",
+            "U-sd14"
+          ],
+          "notes": "原PDF物理页 49；来源优先识别：在压缩潜空间扩散并用条件控制，编码器/去噪器/解码器分工；2021论文与2022产品发布、原论文条件编码器与SD版本须拆分。 对应判断：原p49一对象在系列拆为方法/指定实现两篇。直接回读LDM p22 Figure17和p28 §F，35 V100日及2.2折算条件正确；新读官方PLMS get_model_output确认同一模型合并有/无条件batch，新增“共享参数不消除额外计算”成立。代码仍是master内容快照，不伪装固定Git commit。 本轮原PDF文本直接全读；上述增量原文/图像范围另直接核验，未变部分按r36绑定基线继承。"
+        },
+        {
+          "id": "SM36",
+          "title": "DiT",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-dit"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-dit"
+          ],
+          "notes": "原PDF物理页 50；来源优先识别：潜空间扩散保持框架、替换去噪骨架为Transformer，比较条件注入与计算量；类条件论文不等于原生文生图/视频结论，作者背景和规模结论不以今日反推。 对应判断：直接核v2 p8 Figure9和p9 Figure10：前者为前向×batch×steps×3近似训练预算，后者全模型400K迭代而非同训练FLOPs。正文保留潜空间/类别条件、CFG/decoder、FID-10K/50K及512反例。 本轮原PDF文本直接全读；上述增量原文/图像范围另直接核验，未变部分按r36绑定基线继承。"
+        },
+        {
+          "id": "SM37",
+          "title": "来源边界与结束页",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture"
+          ],
+          "matched_coverage_unit_ids": [],
+          "notes": "原PDF物理页 51；来源优先识别：署名及讲义定位，PDF含概括/错漏，保留其问题骨架但应由原论文校正事实。 对应判断：结束页没有新技术对象；正文来源与适用范围保留讲义定位及事实需由原论文校正的层级，不将致谢页硬凑为额外论文。 本轮原PDF文本直接全读并与当前总览全文对应；本单元未变的论文/既有核验范围经字节与r36/pass绑定验证后继承，不冒称本轮重新通读该论文。"
+        }
       ],
       "source_ids_checked": [
         "S-lecture",
@@ -190,620 +776,42 @@
         "R10",
         "R11"
       ],
-      "coverage_unit_ids_checked": [
-        "U-brook",
-        "U-alexnet",
-        "U-resnet",
-        "U-distillation",
-        "U-word2vec",
-        "U-seq2seq",
-        "U-bahdanau-attention",
-        "U-gnmt",
-        "U-transformer",
-        "U-gpt1",
-        "U-bert",
-        "U-gpt2",
-        "U-gpt3",
-        "U-scaling-laws",
-        "U-chinchilla",
-        "U-zero",
-        "U-megascale",
-        "U-laion5b",
-        "U-refinedweb",
-        "U-sparse-moe",
-        "U-lora",
-        "U-alphago-zero",
-        "U-instructgpt",
-        "U-cot",
-        "U-react",
-        "U-tulu3",
-        "U-deepvideo",
-        "U-two-stream",
-        "U-vit",
-        "U-clip",
-        "U-gan",
-        "U-diffusion-2015",
-        "U-ddpm",
-        "U-ldm",
-        "U-dit",
-        "U-bitter-lesson",
-        "U-lenses",
-        "U-reader-method",
-        "U-cross-route",
-        "U-sd14"
-      ],
-      "directly_reviewed_critical_claim_ids": [
-        "C-dit"
-      ],
-      "inherited_critical_claim_ids": [
-        "C-brook",
-        "C-alexnet",
-        "C-resnet",
-        "C-distillation",
-        "C-word2vec",
-        "C-seq2seq",
-        "C-bahdanau-attention",
-        "C-gnmt",
-        "C-transformer",
-        "C-gpt1",
-        "C-bert",
-        "C-gpt2",
-        "C-gpt3",
-        "C-scaling-laws",
-        "C-chinchilla",
-        "C-zero",
-        "C-megascale",
-        "C-laion5b",
-        "C-refinedweb",
-        "C-sparse-moe",
-        "C-lora",
-        "C-alphago-zero",
-        "C-instructgpt",
-        "C-cot",
-        "C-react",
-        "C-tulu3",
-        "C-deepvideo",
-        "C-two-stream",
-        "C-vit",
-        "C-clip",
-        "C-gan",
-        "C-diffusion-2015",
-        "C-ddpm",
-        "C-ldm",
-        "C-bitter-lesson",
-        "C-inventory",
-        "C-sd14",
-        "C-hardware-lens",
-        "C-people",
-        "C-identity-corrections",
-        "E-gpu",
-        "E-residual",
-        "E-nmt",
-        "E-wordpiece",
-        "E-pretraining",
-        "E-scale-config",
-        "E-data-demand",
-        "E-system",
-        "E-visual-backbone",
-        "E-data-loop",
-        "E-latent",
-        "E-adversarial-component",
-        "E-product",
-        "E-dit-meeting",
-        "E-behavior",
-        "E-interaction",
-        "C-basics",
-        "C-route-walkthroughs"
-      ],
-      "directly_reviewed_source_ids": [
-        "S-dit",
-        "S-dit-metadata",
-        "S-dit-lecture",
-        "S-dit-podcast",
-        "S-dit-shownotes"
-      ],
-      "inherited_source_ids": [
-        "S-lecture",
-        "S-brook",
-        "S-gpu-history",
-        "S-alexnet",
-        "S-resnet",
-        "S-distill",
-        "S-word2vec",
-        "S-seq2seq",
-        "S-bahdanau",
-        "S-gnmt",
-        "S-transformer",
-        "S-gpt1",
-        "S-bert",
-        "S-gpt2",
-        "S-gpt3",
-        "S-kaplan",
-        "S-chinchilla",
-        "S-zero",
-        "S-refinedweb",
-        "S-laion",
-        "S-megascale",
-        "S-moe",
-        "S-lora",
-        "S-bitter",
-        "S-hardware",
-        "S-alphago",
-        "S-instruct",
-        "S-cot",
-        "S-react",
-        "S-tulu",
-        "S-deepvideo",
-        "S-two-stream",
-        "S-vit",
-        "S-clip",
-        "S-gan",
-        "S-diffusion15",
-        "S-ddpm",
-        "S-ldm",
-        "S-sd14",
-        "L-inventory",
-        "S-ai-yanyi-episode",
-        "S-two-stream-lecture",
-        "S-two-stream-podcast",
-        "S-two-stream-shownotes",
-        "S-vit-metadata",
-        "S-vit-lecture",
-        "S-vit-podcast",
-        "S-vit-shownotes",
-        "S-clip-lecture",
-        "S-clip-metadata",
-        "S-clip-podcast",
-        "S-clip-shownotes",
-        "S-gan-metadata",
-        "S-gan-lecture",
-        "S-gan-podcast",
-        "S-gan-shownotes",
-        "S-diffusion15-metadata",
-        "S-diffusion15-lecture",
-        "S-diffusion15-podcast",
-        "S-diffusion15-shownotes",
-        "S-ddpm-metadata",
-        "S-ddpm-lecture",
-        "S-ddpm-podcast",
-        "S-ddpm-shownotes",
-        "S-ddpm-unet",
-        "S-ldm-metadata",
-        "S-ldm-lecture",
-        "S-ldm-podcast",
-        "S-ldm-shownotes",
-        "S-ldm-sd14",
-        "S-sd14-repo",
-        "S-sd14-config",
-        "S-sd14-encoder",
-        "S-sd14-plms",
-        "S-sd14-cfg",
-        "S-sd14-ldm",
-        "S-sd14-clip",
-        "S-sd14-laion",
-        "S-sd14-lecture",
-        "S-sd14-podcast",
-        "S-sd14-shownotes"
-      ],
-      "directly_reviewed_requirement_ids": [
-        "R11"
-      ],
-      "inherited_requirement_ids": [
-        "R1",
-        "R2",
-        "R3",
-        "R4",
-        "R5",
-        "R6",
-        "R7",
-        "R8",
-        "R9",
-        "R10"
-      ],
-      "directly_reviewed_coverage_unit_ids": [
-        "U-dit"
-      ],
-      "inherited_coverage_unit_ids": [
-        "U-brook",
-        "U-alexnet",
-        "U-resnet",
-        "U-distillation",
-        "U-word2vec",
-        "U-seq2seq",
-        "U-bahdanau-attention",
-        "U-gnmt",
-        "U-transformer",
-        "U-gpt1",
-        "U-bert",
-        "U-gpt2",
-        "U-gpt3",
-        "U-scaling-laws",
-        "U-chinchilla",
-        "U-zero",
-        "U-megascale",
-        "U-laion5b",
-        "U-refinedweb",
-        "U-sparse-moe",
-        "U-lora",
-        "U-alphago-zero",
-        "U-instructgpt",
-        "U-cot",
-        "U-react",
-        "U-tulu3",
-        "U-deepvideo",
-        "U-two-stream",
-        "U-vit",
-        "U-clip",
-        "U-gan",
-        "U-diffusion-2015",
-        "U-ddpm",
-        "U-ldm",
-        "U-bitter-lesson",
-        "U-lenses",
-        "U-reader-method",
-        "U-cross-route",
-        "U-sd14"
-      ],
-      "source_content_map": [
-        {
-          "id": "M1",
-          "title": "扩散方法、去噪骨架与卷积VAE的层次关系",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-dit"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-dit"
-          ],
-          "notes": "来源先行单元来自已直接读取的原论文pp1–6；第31节开头明确Transformer承担扩散内部工作，固定卷积VAE，原实验为ImageNet类别条件，非预训练SD文生图权重热替换。"
-        },
-        {
-          "id": "M2",
-          "title": "潜网格patch、条件注入、残差初始化与多步输出",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-dit"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-dit"
-          ],
-          "notes": "原论文Figure3、§3.2及附录A；32×32×4、p2到256 tokens、位置、四种条件、恒等残差起步与噪声/对角协方差输出均正确；正文区分并行token计算和整图一步生成。"
-        },
-        {
-          "id": "M3",
-          "title": "参数不等于计算，规模扩展必须带训练与解码口径",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-dit"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-dit"
-          ],
-          "notes": "原Table4：XL/8到XL/2的7.39→118.64G、约6.75亿参数、400K后106.41→19.47正确；dit-scaling脚注保留无额外CFG、ft-MSE及不含VAE。"
-        },
-        {
-          "id": "M4",
-          "title": "更多采样不能简单替代更强模型的反例",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-dit"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-dit"
-          ],
-          "notes": "原§5.2/Figure10：L/2千步80.7T/25.9与XL/2的128步15.2T/23.7数值无误，FID-10K与50K分开且未扩成多步无用。正文可选再补“同样训练40万步”以使比较阶段就地明确，属于轻微清晰度建议。"
-        },
-        {
-          "id": "M5",
-          "title": "最终ImageNet结果与512、引导、decoder和开放任务边界",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-dit"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-dit"
-          ],
-          "notes": "原Tables2–3、AppendixA/D：256的7M/250步/CFG1.5/ft-EMA/2.27与512的3.04对3.85、StyleGAN-XL2.41正确；dit-results保留512的3M、50K样本与前三通道CFG，没有将领先外推所有任务。"
-        },
-        {
-          "id": "M6",
-          "title": "DiT在shownotes Part4的承接及论文/后续人物故事边界",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-dit",
-            "S-dit-metadata",
-            "S-dit-lecture",
-            "S-dit-podcast",
-            "S-dit-shownotes"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-dit"
-          ],
-          "notes": "本审稿人已实际读固定v2、元数据、讲义p50与90段口述/shownotes；本次主稿的论文日期、原署名/实习、Stable Diffusion未来方向及未核Sora边界符合来源。第31节接前一节，标题后第一块为展开链接，展开亦返回paper-dit并链接lenses。"
-        },
-        {
-          "id": "BASELINE-R35",
-          "title": "其余正文与证据继承已发布r35，不宣称本轮重读旧论文",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-lecture",
-            "S-brook",
-            "S-gpu-history",
-            "S-alexnet",
-            "S-resnet",
-            "S-distill",
-            "S-word2vec",
-            "S-seq2seq",
-            "S-bahdanau",
-            "S-gnmt",
-            "S-transformer",
-            "S-gpt1",
-            "S-bert",
-            "S-gpt2",
-            "S-gpt3",
-            "S-kaplan",
-            "S-chinchilla",
-            "S-zero",
-            "S-refinedweb",
-            "S-laion",
-            "S-megascale",
-            "S-moe",
-            "S-lora",
-            "S-bitter",
-            "S-hardware",
-            "S-alphago",
-            "S-instruct",
-            "S-cot",
-            "S-react",
-            "S-tulu",
-            "S-deepvideo",
-            "S-two-stream",
-            "S-vit",
-            "S-clip",
-            "S-gan",
-            "S-diffusion15",
-            "S-ddpm",
-            "S-ldm",
-            "S-sd14",
-            "L-inventory",
-            "S-ai-yanyi-episode",
-            "S-two-stream-lecture",
-            "S-two-stream-podcast",
-            "S-two-stream-shownotes",
-            "S-vit-metadata",
-            "S-vit-lecture",
-            "S-vit-podcast",
-            "S-vit-shownotes",
-            "S-clip-lecture",
-            "S-clip-metadata",
-            "S-clip-podcast",
-            "S-clip-shownotes",
-            "S-gan-metadata",
-            "S-gan-lecture",
-            "S-gan-podcast",
-            "S-gan-shownotes",
-            "S-diffusion15-metadata",
-            "S-diffusion15-lecture",
-            "S-diffusion15-podcast",
-            "S-diffusion15-shownotes",
-            "S-ddpm-metadata",
-            "S-ddpm-lecture",
-            "S-ddpm-podcast",
-            "S-ddpm-shownotes",
-            "S-ddpm-unet",
-            "S-ldm-metadata",
-            "S-ldm-lecture",
-            "S-ldm-podcast",
-            "S-ldm-shownotes",
-            "S-ldm-sd14",
-            "S-sd14-repo",
-            "S-sd14-config",
-            "S-sd14-encoder",
-            "S-sd14-plms",
-            "S-sd14-cfg",
-            "S-sd14-ldm",
-            "S-sd14-clip",
-            "S-sd14-laion",
-            "S-sd14-lecture",
-            "S-sd14-podcast",
-            "S-sd14-shownotes"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-brook",
-            "U-alexnet",
-            "U-resnet",
-            "U-distillation",
-            "U-word2vec",
-            "U-seq2seq",
-            "U-bahdanau-attention",
-            "U-gnmt",
-            "U-transformer",
-            "U-gpt1",
-            "U-bert",
-            "U-gpt2",
-            "U-gpt3",
-            "U-scaling-laws",
-            "U-chinchilla",
-            "U-zero",
-            "U-megascale",
-            "U-laion5b",
-            "U-refinedweb",
-            "U-sparse-moe",
-            "U-lora",
-            "U-alphago-zero",
-            "U-instructgpt",
-            "U-cot",
-            "U-react",
-            "U-tulu3",
-            "U-deepvideo",
-            "U-two-stream",
-            "U-vit",
-            "U-clip",
-            "U-gan",
-            "U-diffusion-2015",
-            "U-ddpm",
-            "U-ldm",
-            "U-bitter-lesson",
-            "U-lenses",
-            "U-reader-method",
-            "U-cross-route",
-            "U-sd14"
-          ],
-          "notes": "独立git show已发布基线42e436cacc8ca9a654eb6dfbe184e73373627f7d；仅取旧review顶层pass/revision/条数与decision哈希核对。剔除DiT区段、五脚注与status/updated_on后正文逐字相同；剔除允许的DiT证据、R11及run_id/revision_note后evidence结构完全相同。未读旧意见、旧五维分数或其它旧论文。"
-        }
-      ],
       "unsupported_claims": [],
       "missing_requirements": [],
       "hard_failures": [],
-      "issues": [
-        {
-          "severity": "minor",
-          "report_anchor": "paper-dit",
-          "finding": "采样预算对照段没有就地明确两模型同样训练400K步；上一段和合并脚注给出相关训练口径，但读者仍可能把这组比较和后面的最终长训练模型混在一起。",
-          "suggestion": "可在“作者的一个对照是”前后补“对同样训练40万步的模型”，不需扩写或改数字。",
-          "blocking": false
-        }
-      ],
-      "snapshot": {
-        "report_path": "ai-learning/reports/AI演义_笔记分析与项目整合报告.md",
-        "report_sha256": "ef4ef926e53f9833d4ff8e9ad6125814744585d6cb90dc91127741f9a706a19a",
-        "evidence_path": "ai-learning/reports/.quality/AI演义_笔记分析与项目整合报告.evidence.json",
-        "evidence_sha256": "ae15173ff3971a0334d0832ead8788d0bf689af13ab9c85af57d217a647a795e",
-        "revision_round": 36,
-        "matched_before_review": true,
-        "matched_before_delivery": true
-      },
-      "inheritance_verification": {
-        "baseline_commit": "42e436cacc8ca9a654eb6dfbe184e73373627f7d",
-        "baseline_revision_round": 35,
-        "baseline_status": "pass",
-        "baseline_review_count": 2,
-        "baseline_report_sha256": "9ea6e35fe108d04f0931d53ebd2ee73054cfeffc45e8f3549c3b43df5d1deba1",
-        "baseline_evidence_sha256": "d4bc449cfef559c82d6517b12d6eff8e92cc617556eb94a6d38556672c63ed9f",
-        "baseline_decision_hashes_match_git_objects": true,
-        "report_remainder_exactly_equal": true,
-        "report_remainder_sha256": "fe376c54526d381a51e6dfa5d4f69cccc7f7cf626a8be200aa1d7a0b13b2a7e8",
-        "report_exclusions": [
-          "paper-dit至lenses前区段",
-          "脚注dit、dit-design、dit-scaling、dit-results、dit-boundaries",
-          "frontmatter status与updated_on"
-        ],
-        "evidence_changes_within_whitelist": true,
-        "evidence_unchanged_subset_equal": true,
-        "evidence_unchanged_subset_sha256": "a657b66047d1d1af5360df67288e012dee02a6899fb5579c276e013d983cfedf",
-        "evidence_exclusions": [
-          "sources中S-dit及S-dit-metadata/lecture/podcast/shownotes",
-          "C-dit",
-          "U-dit",
-          "R11",
-          "generator.run_id",
-          "revision_note"
-        ],
-        "old_review_read_scope": "仅顶层revision_round、review条数及decision状态/绑定哈希；未读取旧审稿意见或五维分数"
-      },
-      "read_scopes": [
-        {
-          "scope": "来源",
-          "details": "本人上一阶段实际读DiT原论文pp1–9、附录pp12–13，原图Figure3、讲义p50、官方metadata、90段DiT转写和shownotes对应条目；来源优先地图在打开章稿前已形成。本次未重复整套读取，主稿直接范围另在打开前按这些来源列6单元。"
-        },
-        {
-          "scope": "直接新增正文",
-          "details": "paper-dit到lenses前全部第31节，五个dit系列脚注，对应5来源、C-dit/U-dit/R11；未仅顺着claim核对。"
-        },
-        {
-          "scope": "章稿delta与导航",
-          "details": "章稿旧快照到现稿的全部可读性差异，主稿标题后首块展开链接，展开章返回31/前30/后lenses/ResNet/CFG及资料链接。"
-        },
-        {
-          "scope": "继承",
-          "details": "其他正文仅进行字节/结构差分和git已发布pass绑定校验；没有本轮重读其他论文、转写或历史意见。"
-        }
-      ],
-      "transcript_audit": {
-        "source_ref": "d3fee913ddf9df271e093f4554ca887e7ef5afdf56cdc9f52178fc5db9bded80",
-        "segment_json_sha256": "6f94498dd21f64f3cf5148a82dfb9eb6d2a556c68d1abd3db8c059043b381847",
-        "reused_from_same_reviewer_source_phase": true,
-        "segments": 90,
-        "start_seconds": 13974.88,
-        "end_seconds": 14192.51,
-        "elapsed_seconds": 217.63,
-        "timestamp_errors": 0,
-        "malformed_lines": 0,
-        "start_backwards": 0,
-        "end_backwards": 0,
-        "end_before_start": 0,
-        "overlaps": 0,
-        "gaps": 0,
-        "listened": false,
-        "wer_measured": false,
-        "duration_note": "native duration_seconds=14192为片段末绝对时间，不是片段时长。"
-      },
-      "text_checks": {
-        "chapter_local_links": 7,
-        "chapter_local_link_errors": 0,
-        "chapter_fragment_targets": 4,
-        "chapter_resnet_heading_correct": true,
-        "main_title": "### 31. DiT：去噪这份工作，Transformer 能接手吗？",
-        "first_block_expansion_link_verified": true,
-        "main_dit_footnotes": [
-          "dit",
-          "dit-boundaries",
-          "dit-design",
-          "dit-results",
-          "dit-scaling"
-        ],
-        "main_dit_footnote_errors": 0,
-        "chapter_line_count": 332,
-        "new_scope_replacement_characters": 0
-      },
-      "verification_limits": [
-        "未重读基线其余旧论文或旧章节全文；只在严格不变性成立后继承其复核。",
-        "未做训练复现、设备测速、听音/WER或全部附录生成样本图审阅。",
-        "未做工作台/浏览器/UI验收。",
-        "模型身份unconfirmed，交付不等于native质量门已通过。"
-      ],
-      "quality_check": {
-        "executed_this_delta": false,
-        "reason": "按本次父任务明确要求，不重复跑空review的quality check；协调者合入后计算最终状态。"
-      },
-      "schema_validation": {
-        "schema": "schemas/report-review-v1.schema.json#/properties/reviews/items",
-        "validator": "jsonschema.Draft202012Validator",
-        "valid": true
-      },
-      "notes": "真实评分只依据新增DiT直接核验与明确可继承的未变基线，不引用旧Reviewer分数调整当前评分。checked各字段均为directly_reviewed_*与inherited_*的并集，来源地图明确区分；不声称本轮重读所有旧论文。直接范围没有数字、证据或核心遗漏硬失败，只有采样对照训练阶段可就地再明确的非阻断建议。两份review只写临时交付；模型unconfirmed，最终质量判定须由协调者执行。"
+      "notes": "审阅绑定与独立性：本轮只审 r37，开始和写入前均核对 report SHA-256 50735452b1e06702b201f84106868f653eca78ec01c2f94634a476d659c38e99、evidence SHA-256 dbeb76c0f96c5b49593bf1e8abe7c1e0782c34eafe59ae8cc72101b6661da02f。Reviewer 为独立子会话 agent-tree/dit_primary_review，harness=codex；没有可独立确认的模型绑定，记为 unconfirmed，不借父会话或配置默认型号，不将本条充作已确认强模型审稿。未阅读旧Reviewer意见或五维评分，旧review仅做revision/pass、绑定SHA、ID覆盖与history机械等同核验。\n\n来源优先与全文范围：先完整读原51页PDF的pdftotext文字层，SHA 197d106883ce3668677cd5a343532b3b0ce40fa099cd0ad7009757dfea18f2c0；在打开当前report/evidence前形成overview-primary-independent-source-map-pre-report.json的37单元。文字抽取有中文拆行和跨栏顺序问题，不能冒称逐页像素视觉审校。随后完整读当前总览1027行（含脚注，并补读曾被工具截断的范围），全文读完380行固定基线diff及当前60条claim/41个coverage/11个requirements/86条source read_scope。原PDFp7与新图另经eacli视觉读取，新图又直接查看本地PNG；原PDF的其他页不伪装成本轮全部视觉复核。\n\n可信继承：固定Git基线fc5d6c3e70f8fe1d241afd8311ef3b5f0787848b的总览r36/pass，report SHA 0b0ca4938e38e0f69f1c2408a1b93b6e37e05efb4fcbb287f3d24ce70aa99cea与evidence SHA ae15173ff3971a0334d0832ead8788d0bf689af13ab9c85af57d217a647a795e均与git show字节及decision绑定相符；当前history完整保持基线轮次。86个source对象全部未变；45个claim与40个coverage对象完全未变；14个claim修改，新增C-route-map/U-route-map。基线两条review的checked ID集合机械覆盖其全部要求/critical claim/source/coverage。检查数组中的未变来源、claim及相应正文事实，均指上述已验证继承，不是宣称这次重新阅读86份来源或重新抓取所有网页。当前所有源码/论文版本和未听校/未复现等边界仍沿原记录；已实读的增量段落见地图。\n\n本轮直接原文核对：仓内MoE、InstructGPT、CoT、ReAct、ViT、Diffusion2015、LDM、DiT八份PDF重新算SHA并与当前source记录相符；回读范围包括MoE pp2–3、InstructGPT pp6/9/42、CoT pp5–6、ReAct pp7–8/10、ViT pp3–4、Diffusion2015 pp6/8–9、LDM pp22/28、DiT pp8–9。AlphaGo Zero的eacli web.read为DOI/题名匹配的公开镜像，直接核Optimization和Search algorithm/Backup。DeepVideo的eacli web.read只到前部，未假装覆盖Table2；补用已缓存CVPR原PDF，SHA 662dd2baee30667b3e591b18c71010d1688837e03057f861d38ed832b411499e，重新提取并读p6。Two-Stream既读eacli正文，也核本地v2 PDF SHA 61c5b62c1f9d50c7445fbc35e09e72b6db3aeecfff9525694d54fd67531c1a47的§5/pp7–8。官方PLMS本次eacli读取结果完整文本SHA 081984b0c8863df987408ebffe8a3c30b4972bcaf48725ee99c5c719d9fe2664；只以实际可见get_model_output代码核有/无条件同模型合批，不将新收据等同旧response_text SHA，也不伪造固定commit。\n\n阅读与系列一致性：新图PNG SHA 065d5e42700c3d89a5e893ab12580581bd1748a2a0d662ef629c00cd45a43b04、SVG SHA 17bedc2d2ee899e3ed22c9d84f95a68d46e0400375488d53e89b5b41e07c4491。直接看图无明显裁切、重叠或乱码；字号/颜色层次在独立原图可辨，未据此推断窄屏内嵌可读性。图/表36对象、名称、年份、12/7/8/9分类逐项对照原PDF和字节未变的source-map；各框内年份为非递减排序，不是共同刻度，未用因果箭头。36−5−1+1=31分章，加总览32篇。使用仓内check_readme_links.py的解析函数做局部目标/锚点检查（屏蔽脚注标记但保留脚注链接）：总览111个本地目标、64个Markdown片段，60个脚注定义/101次引用无缺失或重复；标题无跳级，未发现控制字符或替代字符。31分章编号/文件/总览入口与前后目标均存在，目标局部链接检查无错；检查时31篇均completed/pass且各自当前report/evidence双SHA绑定匹配。另比对本次增量与对应分章的关键段落。这里只核标题/导航/版本状态和受影响段落，不把这些结构检查冒充本Reviewer再读31篇全文或重新独审31篇全部原论文。\n\n未完成要求R9：本轮当前Goal明确要求有限实际富文本呈现检查，历史用户取消的是无关工作台页面验收前置，不能用旧纠正撤销当前Goal要求。primary-browser-reading-check.json记录DOM路径与截图路径均报Cannot read properties of undefined (reading 'timeoutMs')，未得到实际DOM或截图；没有页面观看证据。报告文本、HTML结构转换、独立PNG可读性和内容评分均不能替代此检查。本条因此将R9列在missing_requirements中：它是工具造成的交付检查缺口，不是论文内容hard_failure，不要求重做全文研究、不重试或绕过故障插件、不扩成工作台功能重构。必要旗舰双审也须由协调者完成，本primary只负责当前独立内容审查。不能据本记录宣布总Goal完成，远端提交一致性也不在本条观察范围。\n\n内容结论与轻微边界：未发现本轮新增关键数字不符、缺乏支持的关键claim或安全/隐私硬失败。SM14-cases如实保留partial：第七部分概括而未逐项重述Bitter Lesson四组历史案例，未以原文可读性冒充正文覆盖。ViT新增197位置说明后，下段再次介绍分类标记，略有重复但不构成机制错误；本条不要求为此重新开展审稿轮次。上述区别已反映在分维理由，不能将较高内容评分解释为R9已完成。\n\n审计收据：overview-primary-inheritance-check.json、overview-primary-structural-check.json、overview-primary-paired-increment-check.json及overview-primary-*-read/vision.json位于本轮临时审阅目录；它们的来源/实际范围在本条地图与notes中保留。本次只写canonical当前primary，保留history及其他顶层字段、decision为空，不改正文/evidence、不new-revision、不finalize、不提交。"
     },
     {
       "role": "flagship_final_review",
+      "requested_role": "strong_review",
       "reviewer": {
         "model": "gpt-5.6-sol",
         "harness": "codex",
-        "run_id": "dit-strong-main-r36-20261106",
+        "run_id": "overview-r37-strong-review-20261106",
         "independent_context": true,
         "explicit_model_override": false,
         "identity_basis": "orchestrator-configured",
         "model_runtime_confirmation": "session-bound-unverified"
       },
+      "snapshot": {
+        "report_sha256": "50735452b1e06702b201f84106868f653eca78ec01c2f94634a476d659c38e99",
+        "evidence_sha256": "dbeb76c0f96c5b49593bf1e8abe7c1e0782c34eafe59ae8cc72101b6661da02f",
+        "verified_before_review": true,
+        "wrong_target_snapshot": false
+      },
       "scores": {
         "evidence_fidelity": 96,
-        "request_coverage": 96,
-        "reasoning_quality": 96,
-        "readability": 94,
-        "limitations": 96
+        "request_coverage": 94,
+        "reasoning_quality": 98,
+        "readability": 96,
+        "limitations": 97
       },
       "score_reasons": {
-        "evidence_fidelity": "第31节机制、尺寸、条件设计、GFLOPs/FID、采样计算和256/512结果均与本任务已独立核过的v2论文与附录一致；五个脚注准确保留decoder、CFG通道、样本数和未听音边界。其余正文与evidence经规范化比对完全等同已发布r35 pass快照，而非假称本轮重读。",
-        "request_coverage": "第31节完成实质改写，标题后首块即展开链接；覆盖骨架替换、latent token、条件块、输出、多步采样、扩展与反例，并连接前节和后续技术史视角。R11及U-dit完整映射，无核心遗漏。",
-        "reasoning_quality": "主稿用“改变哪一层”组织论证，区分Transformer与扩散、参数与计算、模型能力与采样预算、潜空间收益与骨架收益；用512² StyleGAN-XL反例约束SOTA叙事，也明确开放文生图只是后续方向。",
-        "readability": "第31节在主稿篇幅内保持问题—机制—数字—边界顺序，展开链接置顶，关键对照有明确单位，五个脚注承担实现口径而不打断主线。VAE/FID/CFG等概念在主稿前文已有铺垫；链接目标和脚注引用完整。未做页面渲染验收。",
-        "limitations": "正文保留类别条件ImageNet、训练步数、CFG、decoder、评价样本、512反例、GFLOPs非墙钟及未听音/WER等限制；没有把Sora、人物现职、视频或真实设备性能当已证事实。继承范围与本轮未重读内容明确列出。"
+        "evidence_fidelity": "本轮来源优先完整读取原PDF的51页文字抽取与source-map，随后全文阅读总览及evidence，并直接检查新增路线图。31篇分章当前decision均pass，且各自report/evidence哈希与判定绑定，因此未变化的论文级核验按真实继承记录，而非冒称本轮重读86个来源。总览关键数字、版本、关系类型与近期28–31章修订一致，未发现错配或关键数字错误。",
+        "request_coverage": "原PDF四路线、36对象、31分章映射、历史/范式/人物视角、31篇展开入口、原创路线图、术语表、连接索引、人物线、新论文五问与对象定位在内容上均完成；31篇分章当前decision均pass且哈希绑定，总览内容审查未发现核心遗漏。但R9要求的实际富文本工作台页面观看仍因浏览器工具故障未完成，只完成了Markdown结构、链接/锚点/脚注与路线图原图检查，因此不能把本轮Goal或全部要求记为已闭合。",
+        "reasoning_quality": "报告没有照抄四条名单，而是按问题重组，并明确区分直接组件采用、使能条件、问题继承/修正和并行主题对照；两段完整行程把语言的表示—调用—反馈和视觉的识别—匹配—生成串起，同时保留时间回跳、反例、预算和任务边界。综合主张与原文事实有清楚层级。",
+        "readability": "开篇给主线、原四路线图和阅读入口，正文31节均用问题标题、具体例子和展开链接；术语表、连接索引和分组后的36对象表显著改善导航。路线图直接视读无乱码、裁切或遮挡，Markdown链接、锚点、脚注和控制字符检查通过。实际工作台富文本页面因工具故障未成功观看，不能把结构检查称作页面验收。",
+        "limitations": "正文和evidence如实声明未重做训练、全公式、全历史优先权、全部人物履历或86来源重新抓取；明确PDF二手材料、版本差异、产品/论文边界和推断等级。R9的工作台浏览器/DOM/截图故障被单列，未用HTML转换或模型评分冒充实际页面观看，也未扩大成无关app功能测试。"
       },
       "critical_claim_ids_checked": [
         "C-brook",
@@ -864,7 +872,8 @@
         "E-behavior",
         "E-interaction",
         "C-basics",
-        "C-route-walkthroughs"
+        "C-route-walkthroughs",
+        "C-route-map"
       ],
       "coverage_unit_ids_checked": [
         "U-brook",
@@ -906,7 +915,286 @@
         "U-lenses",
         "U-reader-method",
         "U-cross-route",
-        "U-sd14"
+        "U-sd14",
+        "U-route-map"
+      ],
+      "source_content_map": [
+        {
+          "id": "OV1",
+          "title": "讲义的学习动机与阅读法：从问题、原理和长期知识出发",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-lenses",
+            "U-reader-method"
+          ],
+          "notes": "导言保留历史、范式、人和组织三视角，结尾给出五问定位法；没有把原讲义变成论文名单。"
+        },
+        {
+          "id": "OV2",
+          "title": "原讲义四个发展要素与四条研究路线",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "L-inventory"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-route-map",
+            "U-cross-route"
+          ],
+          "notes": "新增图与表准确恢复模型范式、Infra与数据、语言模型、多模态四类，明确分类目录不是共同时间轴或继承箭头。"
+        },
+        {
+          "id": "OV3",
+          "title": "36个研究对象与31个分章的映射",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "L-inventory"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-route-map"
+          ],
+          "notes": "36对象按12/7/8/9完整定位；五组双对象章节、Bitter Lesson留总览、SD v1.4另拆实现篇共同解释31章，计数闭合。"
+        },
+        {
+          "id": "OV4",
+          "title": "计算与训练路线：硬件潜力经软件、数据、结构和系统转化为能力",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "S-brook",
+            "S-alexnet",
+            "S-resnet",
+            "S-zero",
+            "S-megascale",
+            "S-moe",
+            "S-lora"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-brook",
+            "U-alexnet",
+            "U-resnet",
+            "U-zero",
+            "U-megascale",
+            "U-sparse-moe",
+            "U-lora"
+          ],
+          "notes": "正文区分编程抽象、数据/模型结合、深层优化、显存、万卡协同、条件计算与参数适配，不写成硬件单因决定论。具体科学事实继承各章已通过且hash绑定的复核。"
+        },
+        {
+          "id": "OV5",
+          "title": "语言路线：表示、网络迁移、上下文接口、反馈与行动的分叉",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-word2vec",
+            "S-seq2seq",
+            "S-bahdanau",
+            "S-gnmt",
+            "S-transformer",
+            "S-gpt1",
+            "S-bert",
+            "S-gpt2",
+            "S-gpt3",
+            "S-instruct",
+            "S-cot",
+            "S-react",
+            "S-tulu"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-word2vec",
+            "U-seq2seq",
+            "U-bahdanau-attention",
+            "U-gnmt",
+            "U-transformer",
+            "U-gpt1",
+            "U-bert",
+            "U-gpt2",
+            "U-gpt3",
+            "U-instructgpt",
+            "U-cot",
+            "U-react",
+            "U-tulu3"
+          ],
+          "notes": "两段路线综述把预训练、微调、上下文、偏好训练、推理步骤和环境观察分层；没有将并行/不同目标压成单一升级链。内容证据继承31章当前pass快照。"
+        },
+        {
+          "id": "OV6",
+          "title": "资源路线：预算、显存、数据与可靠训练相互制约",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-kaplan",
+            "S-chinchilla",
+            "S-zero",
+            "S-refinedweb",
+            "S-laion",
+            "S-megascale"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-scaling-laws",
+            "U-chinchilla",
+            "U-zero",
+            "U-refinedweb",
+            "U-laion5b",
+            "U-megascale"
+          ],
+          "notes": "预算建议修正、数据质量、开放图文数据与系统可执行性均保留各自任务和时间线，LAION未被误塞成纯语言因果链。"
+        },
+        {
+          "id": "OV7",
+          "title": "视觉与生成路线的并行、分叉和会合",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-deepvideo",
+            "S-two-stream",
+            "S-vit",
+            "S-clip",
+            "S-gan",
+            "S-diffusion15",
+            "S-ddpm",
+            "S-ldm",
+            "S-sd14",
+            "S-dit"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-deepvideo",
+            "U-two-stream",
+            "U-vit",
+            "U-clip",
+            "U-gan",
+            "U-diffusion-2015",
+            "U-ddpm",
+            "U-ldm",
+            "U-sd14",
+            "U-dit"
+          ],
+          "notes": "视频识别、分类/匹配、GAN与扩散、潜空间、具体SD版本和DiT骨架层级分明；GAN/扩散并行、CLIP非生成器、LDM/SD/DiT不混写。"
+        },
+        {
+          "id": "OV8",
+          "title": "Bitter Lesson与Hardware Lottery作为跨路线解释框架",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-bitter",
+            "S-hardware",
+            "S-lecture"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-bitter-lesson",
+            "U-lenses"
+          ],
+          "notes": "明确前者是2019观点归纳、后者是补充来源；两者互补但不替代逐项实验，也不被写成统一历史定律。"
+        },
+        {
+          "id": "OV9",
+          "title": "讲义顺序、年份和因果关系的边界",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "L-inventory"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-route-map",
+            "U-lenses"
+          ],
+          "notes": "正文主动说明ZeRO早于Chinchilla，路线图框内按年份排列且不共享时间轴；MoE、LoRA、Bitter Lesson等版面顺序不被冒充发表/因果顺序。"
+        },
+        {
+          "id": "OV10",
+          "title": "三视角落到可复用的问题框架",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-lenses",
+            "U-reader-method",
+            "U-cross-route"
+          ],
+          "notes": "总览把旧瓶颈、改变层次、依赖条件、证据范围和遗留问题整理为阅读方法，并显式标为基于原文的综合解释。"
+        },
+        {
+          "id": "OV11",
+          "title": "人物与组织线服务于研究条件而非英雄谱",
+          "importance": "supporting",
+          "assessment": "covered",
+          "source_ids": [
+            "S-alexnet",
+            "S-seq2seq",
+            "S-distill",
+            "S-gnmt",
+            "S-gpt1",
+            "S-clip",
+            "S-react",
+            "S-laion",
+            "S-tulu"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-lenses",
+            "U-cross-route"
+          ],
+          "notes": "共同参与仅作研究网络线索，具体技术继承仍要求设计/引用证据；数据、系统、算力和标注劳动进入主线。"
+        },
+        {
+          "id": "OV12",
+          "title": "图表、连接索引、36对象定位与31篇入口",
+          "importance": "core",
+          "assessment": "partial",
+          "source_ids": [
+            "S-lecture",
+            "L-inventory"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-route-map",
+            "U-cross-route",
+            "U-reader-method"
+          ],
+          "notes": "新增PNG已直接视读，SVG无替换字符/控制字符；四框12/7/8/9、年份和对象清晰，无裁切。31个编号标题顺序完整、31个分章入口存在，36对象表计数正确；但工作台实际富文本页面因工具故障未观看，页面呈现部分仍待完成。"
+        },
+        {
+          "id": "OV13",
+          "title": "原材料与审计边界",
+          "importance": "core",
+          "assessment": "covered",
+          "source_ids": [
+            "S-lecture",
+            "L-inventory",
+            "S-ai-yanyi-episode"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-lenses",
+            "U-route-map"
+          ],
+          "notes": "本轮直接读51页PDF文字抽取、source-map和总览全文；其余86个来源不冒称重新联网/重读，按31章全部pass且report/evidence hash绑定的当前复核继承。"
+        },
+        {
+          "id": "OV14",
+          "title": "32篇Goal的完成条件与总览—分章一致性",
+          "importance": "core",
+          "assessment": "partial",
+          "source_ids": [
+            "S-lecture",
+            "L-inventory"
+          ],
+          "matched_coverage_unit_ids": [
+            "U-route-map",
+            "U-cross-route",
+            "U-reader-method"
+          ],
+          "notes": "总览明示32篇与31展开入口；当前31分章review均为pass且正文/evidence哈希与decision绑定。科学内容和总览一致性审查无缺陷，但R9实际页面观看尚未完成，因此本轮Goal不能据此条目宣称全部完成。"
+        }
       ],
       "source_ids_checked": [
         "S-lecture",
@@ -1010,7 +1298,10 @@
         "R11"
       ],
       "directly_reviewed_critical_claim_ids": [
-        "C-dit"
+        "C-inventory",
+        "C-route-map",
+        "C-route-walkthroughs",
+        "C-basics"
       ],
       "inherited_critical_claim_ids": [
         "C-brook",
@@ -1047,8 +1338,8 @@
         "C-diffusion-2015",
         "C-ddpm",
         "C-ldm",
+        "C-dit",
         "C-bitter-lesson",
-        "C-inventory",
         "C-sd14",
         "C-hardware-lens",
         "C-people",
@@ -1068,12 +1359,13 @@
         "E-product",
         "E-dit-meeting",
         "E-behavior",
-        "E-interaction",
-        "C-basics",
-        "C-route-walkthroughs"
+        "E-interaction"
       ],
       "directly_reviewed_coverage_unit_ids": [
-        "U-dit"
+        "U-route-map",
+        "U-lenses",
+        "U-reader-method",
+        "U-cross-route"
       ],
       "inherited_coverage_unit_ids": [
         "U-brook",
@@ -1110,21 +1402,15 @@
         "U-diffusion-2015",
         "U-ddpm",
         "U-ldm",
+        "U-dit",
         "U-bitter-lesson",
-        "U-lenses",
-        "U-reader-method",
-        "U-cross-route",
         "U-sd14"
       ],
       "directly_reviewed_source_ids": [
-        "S-dit",
-        "S-dit-metadata",
-        "S-dit-lecture",
-        "S-dit-podcast",
-        "S-dit-shownotes"
+        "S-lecture",
+        "L-inventory"
       ],
       "inherited_source_ids": [
-        "S-lecture",
         "S-brook",
         "S-gpu-history",
         "S-alexnet",
@@ -1163,7 +1449,7 @@
         "S-ddpm",
         "S-ldm",
         "S-sd14",
-        "L-inventory",
+        "S-dit",
         "S-ai-yanyi-episode",
         "S-two-stream-lecture",
         "S-two-stream-podcast",
@@ -1204,275 +1490,52 @@
         "S-sd14-laion",
         "S-sd14-lecture",
         "S-sd14-podcast",
-        "S-sd14-shownotes"
+        "S-sd14-shownotes",
+        "S-dit-metadata",
+        "S-dit-lecture",
+        "S-dit-podcast",
+        "S-dit-shownotes"
       ],
-      "directly_reviewed_requirement_ids": [
-        "R11"
+      "actual_read_scopes": [
+        "用户Goal全文；overview-r37 review prompt；报告/evidence双SHA。",
+        "原PDF51页的文字抽取lecture.txt全文；source-map.json的reading_map、36 objects、relations/open issues与来源边界。",
+        "总览Markdown全文1027行、evidence的任务/来源/claims/source_coverage/limitations/revision_scope。",
+        "相对HEAD的总览/evidence差分；新增2400×2460 PNG直接视读，SVG文字/字符检查。",
+        "31篇分章的当前review decision、report/evidence哈希绑定状态；未读旧review意见或复用旧评分。",
+        "本地链接、31编号标题/入口、50个显式锚点、脚注定义、36对象分组计数和控制字符。"
       ],
-      "inherited_requirement_ids": [
-        "R1",
-        "R2",
-        "R3",
-        "R4",
-        "R5",
-        "R6",
-        "R7",
-        "R8",
-        "R9",
-        "R10"
-      ],
-      "source_content_map": [
-        {
-          "id": "scm_main_inherited_r35",
-          "title": "已发布r35的其余科学正文、来源与覆盖",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-lecture",
-            "S-brook",
-            "S-gpu-history",
-            "S-alexnet",
-            "S-resnet",
-            "S-distill",
-            "S-word2vec",
-            "S-seq2seq",
-            "S-bahdanau",
-            "S-gnmt",
-            "S-transformer",
-            "S-gpt1",
-            "S-bert",
-            "S-gpt2",
-            "S-gpt3",
-            "S-kaplan",
-            "S-chinchilla",
-            "S-zero",
-            "S-refinedweb",
-            "S-laion",
-            "S-megascale",
-            "S-moe",
-            "S-lora",
-            "S-bitter",
-            "S-hardware",
-            "S-alphago",
-            "S-instruct",
-            "S-cot",
-            "S-react",
-            "S-tulu",
-            "S-deepvideo",
-            "S-two-stream",
-            "S-vit",
-            "S-clip",
-            "S-gan",
-            "S-diffusion15",
-            "S-ddpm",
-            "S-ldm",
-            "S-sd14",
-            "L-inventory",
-            "S-ai-yanyi-episode",
-            "S-two-stream-lecture",
-            "S-two-stream-podcast",
-            "S-two-stream-shownotes",
-            "S-vit-metadata",
-            "S-vit-lecture",
-            "S-vit-podcast",
-            "S-vit-shownotes",
-            "S-clip-lecture",
-            "S-clip-metadata",
-            "S-clip-podcast",
-            "S-clip-shownotes",
-            "S-gan-metadata",
-            "S-gan-lecture",
-            "S-gan-podcast",
-            "S-gan-shownotes",
-            "S-diffusion15-metadata",
-            "S-diffusion15-lecture",
-            "S-diffusion15-podcast",
-            "S-diffusion15-shownotes",
-            "S-ddpm-metadata",
-            "S-ddpm-lecture",
-            "S-ddpm-podcast",
-            "S-ddpm-shownotes",
-            "S-ddpm-unet",
-            "S-ldm-metadata",
-            "S-ldm-lecture",
-            "S-ldm-podcast",
-            "S-ldm-shownotes",
-            "S-ldm-sd14",
-            "S-sd14-repo",
-            "S-sd14-config",
-            "S-sd14-encoder",
-            "S-sd14-plms",
-            "S-sd14-cfg",
-            "S-sd14-ldm",
-            "S-sd14-clip",
-            "S-sd14-laion",
-            "S-sd14-lecture",
-            "S-sd14-podcast",
-            "S-sd14-shownotes"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-brook",
-            "U-alexnet",
-            "U-resnet",
-            "U-distillation",
-            "U-word2vec",
-            "U-seq2seq",
-            "U-bahdanau-attention",
-            "U-gnmt",
-            "U-transformer",
-            "U-gpt1",
-            "U-bert",
-            "U-gpt2",
-            "U-gpt3",
-            "U-scaling-laws",
-            "U-chinchilla",
-            "U-zero",
-            "U-megascale",
-            "U-laion5b",
-            "U-refinedweb",
-            "U-sparse-moe",
-            "U-lora",
-            "U-alphago-zero",
-            "U-instructgpt",
-            "U-cot",
-            "U-react",
-            "U-tulu3",
-            "U-deepvideo",
-            "U-two-stream",
-            "U-vit",
-            "U-clip",
-            "U-gan",
-            "U-diffusion-2015",
-            "U-ddpm",
-            "U-ldm",
-            "U-bitter-lesson",
-            "U-lenses",
-            "U-reader-method",
-            "U-cross-route",
-            "U-sd14"
-          ],
-          "notes": "基线commit 42e436c…的r35已有pass判定；本轮未重读其旧review意见或全部旧来源。剔除第31节、五个DiT脚注及允许的frontmatter字段后，当前正文与r35逐字相同；剔除明确允许的DiT evidence增量后，其余evidence结构相同，故按已发布快照继承。"
-        },
-        {
-          "id": "scm_main_dit_layers",
-          "title": "DiT只替换潜空间扩散中的去噪骨架，并保留VAE、采样器与多步扩散层级",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-dit",
-            "S-dit-metadata",
-            "S-dit-lecture",
-            "S-dit-podcast",
-            "S-dit-shownotes"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-dit"
-          ],
-          "notes": "主稿明确写成Transformer承担扩散内部工作；卷积VAE固定、latent patchify、噪声/对角协方差输出、采样更新与最终解码层次清楚。"
-        },
-        {
-          "id": "scm_main_dit_conditioning",
-          "title": "patch/token与四类条件块、adaLN-Zero边界",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-dit",
-            "S-dit-lecture",
-            "S-dit-podcast"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-dit"
-          ],
-          "notes": "给出32×32×4、2×2→256 token，并区分token并行去噪与自回归生成；列出额外token、cross-attention、adaLN、adaLN-Zero，且未外推长文本任务。"
-        },
-        {
-          "id": "scm_main_dit_scaling",
-          "title": "模型计算、token扩展与采样计算的定量对照",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-dit"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-dit"
-          ],
-          "notes": "XL/8→XL/2的参数、GFLOPs、400K FID与L/2千步对XL/2 128步的TFLOPs/FID-10K均准确，明确GFLOPs非硬件吞吐、更多采样步不等价于更强模型。"
-        },
-        {
-          "id": "scm_main_dit_results",
-          "title": "最终256/512基准、CFG/decoder/训练长度与外推边界",
-          "importance": "core",
-          "assessment": "covered",
-          "source_ids": [
-            "S-dit",
-            "S-dit-metadata",
-            "S-dit-shownotes"
-          ],
-          "matched_coverage_unit_ids": [
-            "U-dit"
-          ],
-          "notes": "保留256² 7M、250步、CFG1.5、ft-EMA、FID2.27；512² 3.04并明确StyleGAN-XL 2.41反例。开放文本、视频、设备性能及人物后续均未倒填为论文实验。"
-        }
-      ],
+      "inheritance_verification": {
+        "chapter_reports_count": 31,
+        "chapter_decisions_all_pass": true,
+        "chapter_report_hashes_all_bound": true,
+        "chapter_evidence_hashes_all_bound": true,
+        "baseline_overview_revision": 36,
+        "baseline_overview_status": "pass",
+        "baseline_report_sha256": "0b0ca4938e38e0f69f1c2408a1b93b6e37e05efb4fcbb287f3d24ce70aa99cea",
+        "baseline_evidence_sha256": "ae15173ff3971a0334d0832ead8788d0bf689af13ab9c85af57d217a647a795e",
+        "note": "r37总览本身有实质结构与术语改动，已全文直接复核；继承只用于未重新读取的分章原始来源和已通过的31章内容链。"
+      },
+      "r9_presentation_gap": {
+        "content_and_structure_checks_passed": true,
+        "diagram_directly_viewed": true,
+        "workbench_browser_page_viewed": false,
+        "reason": "既有记录显示浏览器导航/DOM/截图工具报错；本轮不重复扩大为工作台功能验收。",
+        "impact": "仅留下实际富文本工作台页面呈现未观看的可观察缺口；不影响本轮科学内容、Markdown结构或路线图原图复核。"
+      },
       "unsupported_claims": [],
       "missing_requirements": [],
       "hard_failures": [],
-      "notes": "强审加权分95.7/100。第31节与五个脚注无实质缺陷；继承部分已用git快照做严格相同性验证。没有把继承项冒称本轮逐源重读，也未读取旧review意见。未改仓库、未做UI、未运行针对空sidecar的qualitycheck。",
-      "snapshot": {
-        "report_sha256": "ef4ef926e53f9833d4ff8e9ad6125814744585d6cb90dc91127741f9a706a19a",
-        "evidence_sha256": "ae15173ff3971a0334d0832ead8788d0bf689af13ab9c85af57d217a647a795e",
-        "verified_before_review": true,
-        "wrong_target_snapshot": false
-      },
-      "inheritance_verification": {
-        "baseline_commit": "42e436cacc8ca9a654eb6dfbe184e73373627f7d",
-        "baseline_report_sha256": "9ea6e35fe108d04f0931d53ebd2ee73054cfeffc45e8f3549c3b43df5d1deba1",
-        "baseline_evidence_sha256": "d4bc449cfef559c82d6517b12d6eff8e92cc617556eb94a6d38556672c63ed9f",
-        "report_inherited_equal": true,
-        "evidence_inherited_equal": true,
-        "excluded_report_scopes": [
-          "frontmatter.status",
-          "frontmatter.updated_on",
-          "paper-dit..before lenses",
-          "footnotes dit, dit-design, dit-scaling, dit-results, dit-boundaries"
-        ],
-        "excluded_evidence_scopes": [
-          "generator.run_id",
-          "R11",
-          "sources S-dit/S-dit-metadata/S-dit-lecture/S-dit-podcast/S-dit-shownotes",
-          "C-dit",
-          "U-dit",
-          "revision_note"
-        ]
-      },
-      "verification_limits": "直接审第31节、五个DiT脚注、对应导航与DiT evidence增量；其余内容通过与已发布r35的规范化逐字/结构相同比对继承。未读旧review意见或旧五维分数，仅读取r35顶层revision_round、review条数与pass decision；未做UI验收。",
-      "read_scopes": [
-        {
-          "scope": "直接阅读主稿第31节 paper-dit 至 lenses 前、标题后展开链接、脚注 dit/dit-design/dit-scaling/dit-results/dit-boundaries。"
-        },
-        {
-          "scope": "直接读取主稿evidence中的R11、S-dit及四个新增DiT来源、C-dit、U-dit、revision_note。"
-        },
-        {
-          "scope": "复用本任务已完成的来源优先DiT章稿强审与转写结构复算，不重新读取整套论文。"
-        },
-        {
-          "scope": "独立git show已发布commit 42e436c…；规范化排除允许增量后，正文逐字相同、evidence结构相同。"
-        },
-        {
-          "scope": "核新链接目标和五个脚注各有一次引用/一次定义；仅文本、数字、乱码、引用、导航检查。"
-        }
-      ]
+      "notes": "强审加权分96.1/100。内容层面未发现实质缺陷：原四路线、36对象/31章映射、跨路线关系类型、新图表与全文术语改动均成立；31分章当前pass且哈希绑定。R9所要求的实际富文本工作台页面观看因工具故障仍未完成，已列入missing_requirements；hard_failures为空，因为这是呈现验收缺口而非科学内容错误。不能用Markdown/HTML结构检查或本条评分替代页面观看，也不能据此宣称Goal全部满足。未修改canonical review、正文或evidence。"
     }
   ],
   "decision": {
     "status": "pass",
-    "score": 95.6,
+    "score": 95.3,
     "evaluated_on": "2026-11-06",
     "policy_id": "report-quality-2026-10-18-r2",
     "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
-    "report_sha256": "0b0ca4938e38e0f69f1c2408a1b93b6e37e05efb4fcbb287f3d24ce70aa99cea",
-    "evidence_sha256": "ae15173ff3971a0334d0832ead8788d0bf689af13ab9c85af57d217a647a795e"
+    "report_sha256": "d0bf3ffcc0ef5162b307309c196ccf8ec38bb98c87bf576ed85ae8e8fbb3a2d3",
+    "evidence_sha256": "447f1f64d1f910d2e6108f6c7c291e0dfae1057a1f72519c362bf281bba134c7"
   },
   "history": [
     {
@@ -48926,6 +48989,1480 @@
         "report_sha256": "9ea6e35fe108d04f0931d53ebd2ee73054cfeffc45e8f3549c3b43df5d1deba1",
         "evidence_sha256": "d4bc449cfef559c82d6517b12d6eff8e92cc617556eb94a6d38556672c63ed9f"
       }
+    },
+    {
+      "revision_round": 36,
+      "reviews": [
+        {
+          "role": "primary_review",
+          "reviewer": {
+            "model": "unconfirmed",
+            "harness": "codex",
+            "run_id": "dit_primary_review",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "identity_basis": "独立子任务未获会话绑定模型确认；不借共享宿主或生成者身份。"
+          },
+          "scores": {
+            "evidence_fidelity": 96,
+            "request_coverage": 96,
+            "reasoning_quality": 95,
+            "readability": 94,
+            "limitations": 97
+          },
+          "score_reasons": {
+            "evidence_fidelity": "直接核新DiT正文、五条脚注和对应evidence，依据本审稿人前阶段实际读取的同一原始材料；核心尺寸、计算/FID、训练时长、CFG/decoder与512反例一致。旧内容仅在严格差分和已发布pass哈希绑定成立后继承，不将继承伪装为本轮重新读源。",
+            "request_coverage": "第31节已从简述扩为背景、部件分层、机制、扩展数字、采样反例与边界；标题后首块为正确展开链接，双向导航和编号成立。原文与evidence允许范围以外完全不变，R11直接核，其余要求按已发布r35继承。",
+            "reasoning_quality": "没有把Transformer与扩散视作互斥，也不把参数规模等同算力；条件设计、潜空间收益、采样预算、有限基准领先和生态机会均保持边界，512的StyleGAN-XL反例制止过度外推。",
+            "readability": "新增第31节本身能连贯回答为何替换、怎样工作、结果与代价，未只留下链接。五条具名脚注、7处展开章本地导航及主稿首块展开链接可用；未发现乱码。采样对照段可以就地补“同样训练40万步”，减少读者误把它当最终长训练模型比较的可能，这是轻微建议而非数字错误。只检查文本，不做工作台验收；旧正文呈现不另声称本轮通读。",
+            "limitations": "正文和脚注明示原实验是类别条件ImageNet、文生图为未来方向，未以原署名推后续人物/Sora，TFLOPs不冒充墙钟。90段转写结构审计沿用本人本任务实跑收据，未听音/WER；本轮继承范围、未重读旧论文和未训练复现均明确。"
+          },
+          "critical_claim_ids_checked": [
+            "C-brook",
+            "C-alexnet",
+            "C-resnet",
+            "C-distillation",
+            "C-word2vec",
+            "C-seq2seq",
+            "C-bahdanau-attention",
+            "C-gnmt",
+            "C-transformer",
+            "C-gpt1",
+            "C-bert",
+            "C-gpt2",
+            "C-gpt3",
+            "C-scaling-laws",
+            "C-chinchilla",
+            "C-zero",
+            "C-megascale",
+            "C-laion5b",
+            "C-refinedweb",
+            "C-sparse-moe",
+            "C-lora",
+            "C-alphago-zero",
+            "C-instructgpt",
+            "C-cot",
+            "C-react",
+            "C-tulu3",
+            "C-deepvideo",
+            "C-two-stream",
+            "C-vit",
+            "C-clip",
+            "C-gan",
+            "C-diffusion-2015",
+            "C-ddpm",
+            "C-ldm",
+            "C-dit",
+            "C-bitter-lesson",
+            "C-inventory",
+            "C-sd14",
+            "C-hardware-lens",
+            "C-people",
+            "C-identity-corrections",
+            "E-gpu",
+            "E-residual",
+            "E-nmt",
+            "E-wordpiece",
+            "E-pretraining",
+            "E-scale-config",
+            "E-data-demand",
+            "E-system",
+            "E-visual-backbone",
+            "E-data-loop",
+            "E-latent",
+            "E-adversarial-component",
+            "E-product",
+            "E-dit-meeting",
+            "E-behavior",
+            "E-interaction",
+            "C-basics",
+            "C-route-walkthroughs"
+          ],
+          "source_ids_checked": [
+            "S-lecture",
+            "S-brook",
+            "S-gpu-history",
+            "S-alexnet",
+            "S-resnet",
+            "S-distill",
+            "S-word2vec",
+            "S-seq2seq",
+            "S-bahdanau",
+            "S-gnmt",
+            "S-transformer",
+            "S-gpt1",
+            "S-bert",
+            "S-gpt2",
+            "S-gpt3",
+            "S-kaplan",
+            "S-chinchilla",
+            "S-zero",
+            "S-refinedweb",
+            "S-laion",
+            "S-megascale",
+            "S-moe",
+            "S-lora",
+            "S-bitter",
+            "S-hardware",
+            "S-alphago",
+            "S-instruct",
+            "S-cot",
+            "S-react",
+            "S-tulu",
+            "S-deepvideo",
+            "S-two-stream",
+            "S-vit",
+            "S-clip",
+            "S-gan",
+            "S-diffusion15",
+            "S-ddpm",
+            "S-ldm",
+            "S-sd14",
+            "S-dit",
+            "L-inventory",
+            "S-ai-yanyi-episode",
+            "S-two-stream-lecture",
+            "S-two-stream-podcast",
+            "S-two-stream-shownotes",
+            "S-vit-metadata",
+            "S-vit-lecture",
+            "S-vit-podcast",
+            "S-vit-shownotes",
+            "S-clip-lecture",
+            "S-clip-metadata",
+            "S-clip-podcast",
+            "S-clip-shownotes",
+            "S-gan-metadata",
+            "S-gan-lecture",
+            "S-gan-podcast",
+            "S-gan-shownotes",
+            "S-diffusion15-metadata",
+            "S-diffusion15-lecture",
+            "S-diffusion15-podcast",
+            "S-diffusion15-shownotes",
+            "S-ddpm-metadata",
+            "S-ddpm-lecture",
+            "S-ddpm-podcast",
+            "S-ddpm-shownotes",
+            "S-ddpm-unet",
+            "S-ldm-metadata",
+            "S-ldm-lecture",
+            "S-ldm-podcast",
+            "S-ldm-shownotes",
+            "S-ldm-sd14",
+            "S-sd14-repo",
+            "S-sd14-config",
+            "S-sd14-encoder",
+            "S-sd14-plms",
+            "S-sd14-cfg",
+            "S-sd14-ldm",
+            "S-sd14-clip",
+            "S-sd14-laion",
+            "S-sd14-lecture",
+            "S-sd14-podcast",
+            "S-sd14-shownotes",
+            "S-dit-metadata",
+            "S-dit-lecture",
+            "S-dit-podcast",
+            "S-dit-shownotes"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6",
+            "R7",
+            "R8",
+            "R9",
+            "R10",
+            "R11"
+          ],
+          "coverage_unit_ids_checked": [
+            "U-brook",
+            "U-alexnet",
+            "U-resnet",
+            "U-distillation",
+            "U-word2vec",
+            "U-seq2seq",
+            "U-bahdanau-attention",
+            "U-gnmt",
+            "U-transformer",
+            "U-gpt1",
+            "U-bert",
+            "U-gpt2",
+            "U-gpt3",
+            "U-scaling-laws",
+            "U-chinchilla",
+            "U-zero",
+            "U-megascale",
+            "U-laion5b",
+            "U-refinedweb",
+            "U-sparse-moe",
+            "U-lora",
+            "U-alphago-zero",
+            "U-instructgpt",
+            "U-cot",
+            "U-react",
+            "U-tulu3",
+            "U-deepvideo",
+            "U-two-stream",
+            "U-vit",
+            "U-clip",
+            "U-gan",
+            "U-diffusion-2015",
+            "U-ddpm",
+            "U-ldm",
+            "U-dit",
+            "U-bitter-lesson",
+            "U-lenses",
+            "U-reader-method",
+            "U-cross-route",
+            "U-sd14"
+          ],
+          "directly_reviewed_critical_claim_ids": [
+            "C-dit"
+          ],
+          "inherited_critical_claim_ids": [
+            "C-brook",
+            "C-alexnet",
+            "C-resnet",
+            "C-distillation",
+            "C-word2vec",
+            "C-seq2seq",
+            "C-bahdanau-attention",
+            "C-gnmt",
+            "C-transformer",
+            "C-gpt1",
+            "C-bert",
+            "C-gpt2",
+            "C-gpt3",
+            "C-scaling-laws",
+            "C-chinchilla",
+            "C-zero",
+            "C-megascale",
+            "C-laion5b",
+            "C-refinedweb",
+            "C-sparse-moe",
+            "C-lora",
+            "C-alphago-zero",
+            "C-instructgpt",
+            "C-cot",
+            "C-react",
+            "C-tulu3",
+            "C-deepvideo",
+            "C-two-stream",
+            "C-vit",
+            "C-clip",
+            "C-gan",
+            "C-diffusion-2015",
+            "C-ddpm",
+            "C-ldm",
+            "C-bitter-lesson",
+            "C-inventory",
+            "C-sd14",
+            "C-hardware-lens",
+            "C-people",
+            "C-identity-corrections",
+            "E-gpu",
+            "E-residual",
+            "E-nmt",
+            "E-wordpiece",
+            "E-pretraining",
+            "E-scale-config",
+            "E-data-demand",
+            "E-system",
+            "E-visual-backbone",
+            "E-data-loop",
+            "E-latent",
+            "E-adversarial-component",
+            "E-product",
+            "E-dit-meeting",
+            "E-behavior",
+            "E-interaction",
+            "C-basics",
+            "C-route-walkthroughs"
+          ],
+          "directly_reviewed_source_ids": [
+            "S-dit",
+            "S-dit-metadata",
+            "S-dit-lecture",
+            "S-dit-podcast",
+            "S-dit-shownotes"
+          ],
+          "inherited_source_ids": [
+            "S-lecture",
+            "S-brook",
+            "S-gpu-history",
+            "S-alexnet",
+            "S-resnet",
+            "S-distill",
+            "S-word2vec",
+            "S-seq2seq",
+            "S-bahdanau",
+            "S-gnmt",
+            "S-transformer",
+            "S-gpt1",
+            "S-bert",
+            "S-gpt2",
+            "S-gpt3",
+            "S-kaplan",
+            "S-chinchilla",
+            "S-zero",
+            "S-refinedweb",
+            "S-laion",
+            "S-megascale",
+            "S-moe",
+            "S-lora",
+            "S-bitter",
+            "S-hardware",
+            "S-alphago",
+            "S-instruct",
+            "S-cot",
+            "S-react",
+            "S-tulu",
+            "S-deepvideo",
+            "S-two-stream",
+            "S-vit",
+            "S-clip",
+            "S-gan",
+            "S-diffusion15",
+            "S-ddpm",
+            "S-ldm",
+            "S-sd14",
+            "L-inventory",
+            "S-ai-yanyi-episode",
+            "S-two-stream-lecture",
+            "S-two-stream-podcast",
+            "S-two-stream-shownotes",
+            "S-vit-metadata",
+            "S-vit-lecture",
+            "S-vit-podcast",
+            "S-vit-shownotes",
+            "S-clip-lecture",
+            "S-clip-metadata",
+            "S-clip-podcast",
+            "S-clip-shownotes",
+            "S-gan-metadata",
+            "S-gan-lecture",
+            "S-gan-podcast",
+            "S-gan-shownotes",
+            "S-diffusion15-metadata",
+            "S-diffusion15-lecture",
+            "S-diffusion15-podcast",
+            "S-diffusion15-shownotes",
+            "S-ddpm-metadata",
+            "S-ddpm-lecture",
+            "S-ddpm-podcast",
+            "S-ddpm-shownotes",
+            "S-ddpm-unet",
+            "S-ldm-metadata",
+            "S-ldm-lecture",
+            "S-ldm-podcast",
+            "S-ldm-shownotes",
+            "S-ldm-sd14",
+            "S-sd14-repo",
+            "S-sd14-config",
+            "S-sd14-encoder",
+            "S-sd14-plms",
+            "S-sd14-cfg",
+            "S-sd14-ldm",
+            "S-sd14-clip",
+            "S-sd14-laion",
+            "S-sd14-lecture",
+            "S-sd14-podcast",
+            "S-sd14-shownotes"
+          ],
+          "directly_reviewed_requirement_ids": [
+            "R11"
+          ],
+          "inherited_requirement_ids": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6",
+            "R7",
+            "R8",
+            "R9",
+            "R10"
+          ],
+          "directly_reviewed_coverage_unit_ids": [
+            "U-dit"
+          ],
+          "inherited_coverage_unit_ids": [
+            "U-brook",
+            "U-alexnet",
+            "U-resnet",
+            "U-distillation",
+            "U-word2vec",
+            "U-seq2seq",
+            "U-bahdanau-attention",
+            "U-gnmt",
+            "U-transformer",
+            "U-gpt1",
+            "U-bert",
+            "U-gpt2",
+            "U-gpt3",
+            "U-scaling-laws",
+            "U-chinchilla",
+            "U-zero",
+            "U-megascale",
+            "U-laion5b",
+            "U-refinedweb",
+            "U-sparse-moe",
+            "U-lora",
+            "U-alphago-zero",
+            "U-instructgpt",
+            "U-cot",
+            "U-react",
+            "U-tulu3",
+            "U-deepvideo",
+            "U-two-stream",
+            "U-vit",
+            "U-clip",
+            "U-gan",
+            "U-diffusion-2015",
+            "U-ddpm",
+            "U-ldm",
+            "U-bitter-lesson",
+            "U-lenses",
+            "U-reader-method",
+            "U-cross-route",
+            "U-sd14"
+          ],
+          "source_content_map": [
+            {
+              "id": "M1",
+              "title": "扩散方法、去噪骨架与卷积VAE的层次关系",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-dit"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-dit"
+              ],
+              "notes": "来源先行单元来自已直接读取的原论文pp1–6；第31节开头明确Transformer承担扩散内部工作，固定卷积VAE，原实验为ImageNet类别条件，非预训练SD文生图权重热替换。"
+            },
+            {
+              "id": "M2",
+              "title": "潜网格patch、条件注入、残差初始化与多步输出",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-dit"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-dit"
+              ],
+              "notes": "原论文Figure3、§3.2及附录A；32×32×4、p2到256 tokens、位置、四种条件、恒等残差起步与噪声/对角协方差输出均正确；正文区分并行token计算和整图一步生成。"
+            },
+            {
+              "id": "M3",
+              "title": "参数不等于计算，规模扩展必须带训练与解码口径",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-dit"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-dit"
+              ],
+              "notes": "原Table4：XL/8到XL/2的7.39→118.64G、约6.75亿参数、400K后106.41→19.47正确；dit-scaling脚注保留无额外CFG、ft-MSE及不含VAE。"
+            },
+            {
+              "id": "M4",
+              "title": "更多采样不能简单替代更强模型的反例",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-dit"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-dit"
+              ],
+              "notes": "原§5.2/Figure10：L/2千步80.7T/25.9与XL/2的128步15.2T/23.7数值无误，FID-10K与50K分开且未扩成多步无用。正文可选再补“同样训练40万步”以使比较阶段就地明确，属于轻微清晰度建议。"
+            },
+            {
+              "id": "M5",
+              "title": "最终ImageNet结果与512、引导、decoder和开放任务边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-dit"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-dit"
+              ],
+              "notes": "原Tables2–3、AppendixA/D：256的7M/250步/CFG1.5/ft-EMA/2.27与512的3.04对3.85、StyleGAN-XL2.41正确；dit-results保留512的3M、50K样本与前三通道CFG，没有将领先外推所有任务。"
+            },
+            {
+              "id": "M6",
+              "title": "DiT在shownotes Part4的承接及论文/后续人物故事边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-dit",
+                "S-dit-metadata",
+                "S-dit-lecture",
+                "S-dit-podcast",
+                "S-dit-shownotes"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-dit"
+              ],
+              "notes": "本审稿人已实际读固定v2、元数据、讲义p50与90段口述/shownotes；本次主稿的论文日期、原署名/实习、Stable Diffusion未来方向及未核Sora边界符合来源。第31节接前一节，标题后第一块为展开链接，展开亦返回paper-dit并链接lenses。"
+            },
+            {
+              "id": "BASELINE-R35",
+              "title": "其余正文与证据继承已发布r35，不宣称本轮重读旧论文",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-lecture",
+                "S-brook",
+                "S-gpu-history",
+                "S-alexnet",
+                "S-resnet",
+                "S-distill",
+                "S-word2vec",
+                "S-seq2seq",
+                "S-bahdanau",
+                "S-gnmt",
+                "S-transformer",
+                "S-gpt1",
+                "S-bert",
+                "S-gpt2",
+                "S-gpt3",
+                "S-kaplan",
+                "S-chinchilla",
+                "S-zero",
+                "S-refinedweb",
+                "S-laion",
+                "S-megascale",
+                "S-moe",
+                "S-lora",
+                "S-bitter",
+                "S-hardware",
+                "S-alphago",
+                "S-instruct",
+                "S-cot",
+                "S-react",
+                "S-tulu",
+                "S-deepvideo",
+                "S-two-stream",
+                "S-vit",
+                "S-clip",
+                "S-gan",
+                "S-diffusion15",
+                "S-ddpm",
+                "S-ldm",
+                "S-sd14",
+                "L-inventory",
+                "S-ai-yanyi-episode",
+                "S-two-stream-lecture",
+                "S-two-stream-podcast",
+                "S-two-stream-shownotes",
+                "S-vit-metadata",
+                "S-vit-lecture",
+                "S-vit-podcast",
+                "S-vit-shownotes",
+                "S-clip-lecture",
+                "S-clip-metadata",
+                "S-clip-podcast",
+                "S-clip-shownotes",
+                "S-gan-metadata",
+                "S-gan-lecture",
+                "S-gan-podcast",
+                "S-gan-shownotes",
+                "S-diffusion15-metadata",
+                "S-diffusion15-lecture",
+                "S-diffusion15-podcast",
+                "S-diffusion15-shownotes",
+                "S-ddpm-metadata",
+                "S-ddpm-lecture",
+                "S-ddpm-podcast",
+                "S-ddpm-shownotes",
+                "S-ddpm-unet",
+                "S-ldm-metadata",
+                "S-ldm-lecture",
+                "S-ldm-podcast",
+                "S-ldm-shownotes",
+                "S-ldm-sd14",
+                "S-sd14-repo",
+                "S-sd14-config",
+                "S-sd14-encoder",
+                "S-sd14-plms",
+                "S-sd14-cfg",
+                "S-sd14-ldm",
+                "S-sd14-clip",
+                "S-sd14-laion",
+                "S-sd14-lecture",
+                "S-sd14-podcast",
+                "S-sd14-shownotes"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-brook",
+                "U-alexnet",
+                "U-resnet",
+                "U-distillation",
+                "U-word2vec",
+                "U-seq2seq",
+                "U-bahdanau-attention",
+                "U-gnmt",
+                "U-transformer",
+                "U-gpt1",
+                "U-bert",
+                "U-gpt2",
+                "U-gpt3",
+                "U-scaling-laws",
+                "U-chinchilla",
+                "U-zero",
+                "U-megascale",
+                "U-laion5b",
+                "U-refinedweb",
+                "U-sparse-moe",
+                "U-lora",
+                "U-alphago-zero",
+                "U-instructgpt",
+                "U-cot",
+                "U-react",
+                "U-tulu3",
+                "U-deepvideo",
+                "U-two-stream",
+                "U-vit",
+                "U-clip",
+                "U-gan",
+                "U-diffusion-2015",
+                "U-ddpm",
+                "U-ldm",
+                "U-bitter-lesson",
+                "U-lenses",
+                "U-reader-method",
+                "U-cross-route",
+                "U-sd14"
+              ],
+              "notes": "独立git show已发布基线42e436cacc8ca9a654eb6dfbe184e73373627f7d；仅取旧review顶层pass/revision/条数与decision哈希核对。剔除DiT区段、五脚注与status/updated_on后正文逐字相同；剔除允许的DiT证据、R11及run_id/revision_note后evidence结构完全相同。未读旧意见、旧五维分数或其它旧论文。"
+            }
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "issues": [
+            {
+              "severity": "minor",
+              "report_anchor": "paper-dit",
+              "finding": "采样预算对照段没有就地明确两模型同样训练400K步；上一段和合并脚注给出相关训练口径，但读者仍可能把这组比较和后面的最终长训练模型混在一起。",
+              "suggestion": "可在“作者的一个对照是”前后补“对同样训练40万步的模型”，不需扩写或改数字。",
+              "blocking": false
+            }
+          ],
+          "snapshot": {
+            "report_path": "ai-learning/reports/AI演义_笔记分析与项目整合报告.md",
+            "report_sha256": "ef4ef926e53f9833d4ff8e9ad6125814744585d6cb90dc91127741f9a706a19a",
+            "evidence_path": "ai-learning/reports/.quality/AI演义_笔记分析与项目整合报告.evidence.json",
+            "evidence_sha256": "ae15173ff3971a0334d0832ead8788d0bf689af13ab9c85af57d217a647a795e",
+            "revision_round": 36,
+            "matched_before_review": true,
+            "matched_before_delivery": true
+          },
+          "inheritance_verification": {
+            "baseline_commit": "42e436cacc8ca9a654eb6dfbe184e73373627f7d",
+            "baseline_revision_round": 35,
+            "baseline_status": "pass",
+            "baseline_review_count": 2,
+            "baseline_report_sha256": "9ea6e35fe108d04f0931d53ebd2ee73054cfeffc45e8f3549c3b43df5d1deba1",
+            "baseline_evidence_sha256": "d4bc449cfef559c82d6517b12d6eff8e92cc617556eb94a6d38556672c63ed9f",
+            "baseline_decision_hashes_match_git_objects": true,
+            "report_remainder_exactly_equal": true,
+            "report_remainder_sha256": "fe376c54526d381a51e6dfa5d4f69cccc7f7cf626a8be200aa1d7a0b13b2a7e8",
+            "report_exclusions": [
+              "paper-dit至lenses前区段",
+              "脚注dit、dit-design、dit-scaling、dit-results、dit-boundaries",
+              "frontmatter status与updated_on"
+            ],
+            "evidence_changes_within_whitelist": true,
+            "evidence_unchanged_subset_equal": true,
+            "evidence_unchanged_subset_sha256": "a657b66047d1d1af5360df67288e012dee02a6899fb5579c276e013d983cfedf",
+            "evidence_exclusions": [
+              "sources中S-dit及S-dit-metadata/lecture/podcast/shownotes",
+              "C-dit",
+              "U-dit",
+              "R11",
+              "generator.run_id",
+              "revision_note"
+            ],
+            "old_review_read_scope": "仅顶层revision_round、review条数及decision状态/绑定哈希；未读取旧审稿意见或五维分数"
+          },
+          "read_scopes": [
+            {
+              "scope": "来源",
+              "details": "本人上一阶段实际读DiT原论文pp1–9、附录pp12–13，原图Figure3、讲义p50、官方metadata、90段DiT转写和shownotes对应条目；来源优先地图在打开章稿前已形成。本次未重复整套读取，主稿直接范围另在打开前按这些来源列6单元。"
+            },
+            {
+              "scope": "直接新增正文",
+              "details": "paper-dit到lenses前全部第31节，五个dit系列脚注，对应5来源、C-dit/U-dit/R11；未仅顺着claim核对。"
+            },
+            {
+              "scope": "章稿delta与导航",
+              "details": "章稿旧快照到现稿的全部可读性差异，主稿标题后首块展开链接，展开章返回31/前30/后lenses/ResNet/CFG及资料链接。"
+            },
+            {
+              "scope": "继承",
+              "details": "其他正文仅进行字节/结构差分和git已发布pass绑定校验；没有本轮重读其他论文、转写或历史意见。"
+            }
+          ],
+          "transcript_audit": {
+            "source_ref": "d3fee913ddf9df271e093f4554ca887e7ef5afdf56cdc9f52178fc5db9bded80",
+            "segment_json_sha256": "6f94498dd21f64f3cf5148a82dfb9eb6d2a556c68d1abd3db8c059043b381847",
+            "reused_from_same_reviewer_source_phase": true,
+            "segments": 90,
+            "start_seconds": 13974.88,
+            "end_seconds": 14192.51,
+            "elapsed_seconds": 217.63,
+            "timestamp_errors": 0,
+            "malformed_lines": 0,
+            "start_backwards": 0,
+            "end_backwards": 0,
+            "end_before_start": 0,
+            "overlaps": 0,
+            "gaps": 0,
+            "listened": false,
+            "wer_measured": false,
+            "duration_note": "native duration_seconds=14192为片段末绝对时间，不是片段时长。"
+          },
+          "text_checks": {
+            "chapter_local_links": 7,
+            "chapter_local_link_errors": 0,
+            "chapter_fragment_targets": 4,
+            "chapter_resnet_heading_correct": true,
+            "main_title": "### 31. DiT：去噪这份工作，Transformer 能接手吗？",
+            "first_block_expansion_link_verified": true,
+            "main_dit_footnotes": [
+              "dit",
+              "dit-boundaries",
+              "dit-design",
+              "dit-results",
+              "dit-scaling"
+            ],
+            "main_dit_footnote_errors": 0,
+            "chapter_line_count": 332,
+            "new_scope_replacement_characters": 0
+          },
+          "verification_limits": [
+            "未重读基线其余旧论文或旧章节全文；只在严格不变性成立后继承其复核。",
+            "未做训练复现、设备测速、听音/WER或全部附录生成样本图审阅。",
+            "未做工作台/浏览器/UI验收。",
+            "模型身份unconfirmed，交付不等于native质量门已通过。"
+          ],
+          "quality_check": {
+            "executed_this_delta": false,
+            "reason": "按本次父任务明确要求，不重复跑空review的quality check；协调者合入后计算最终状态。"
+          },
+          "schema_validation": {
+            "schema": "schemas/report-review-v1.schema.json#/properties/reviews/items",
+            "validator": "jsonschema.Draft202012Validator",
+            "valid": true
+          },
+          "notes": "真实评分只依据新增DiT直接核验与明确可继承的未变基线，不引用旧Reviewer分数调整当前评分。checked各字段均为directly_reviewed_*与inherited_*的并集，来源地图明确区分；不声称本轮重读所有旧论文。直接范围没有数字、证据或核心遗漏硬失败，只有采样对照训练阶段可就地再明确的非阻断建议。两份review只写临时交付；模型unconfirmed，最终质量判定须由协调者执行。"
+        },
+        {
+          "role": "flagship_final_review",
+          "reviewer": {
+            "model": "gpt-5.6-sol",
+            "harness": "codex",
+            "run_id": "dit-strong-main-r36-20261106",
+            "independent_context": true,
+            "explicit_model_override": false,
+            "identity_basis": "orchestrator-configured",
+            "model_runtime_confirmation": "session-bound-unverified"
+          },
+          "scores": {
+            "evidence_fidelity": 96,
+            "request_coverage": 96,
+            "reasoning_quality": 96,
+            "readability": 94,
+            "limitations": 96
+          },
+          "score_reasons": {
+            "evidence_fidelity": "第31节机制、尺寸、条件设计、GFLOPs/FID、采样计算和256/512结果均与本任务已独立核过的v2论文与附录一致；五个脚注准确保留decoder、CFG通道、样本数和未听音边界。其余正文与evidence经规范化比对完全等同已发布r35 pass快照，而非假称本轮重读。",
+            "request_coverage": "第31节完成实质改写，标题后首块即展开链接；覆盖骨架替换、latent token、条件块、输出、多步采样、扩展与反例，并连接前节和后续技术史视角。R11及U-dit完整映射，无核心遗漏。",
+            "reasoning_quality": "主稿用“改变哪一层”组织论证，区分Transformer与扩散、参数与计算、模型能力与采样预算、潜空间收益与骨架收益；用512² StyleGAN-XL反例约束SOTA叙事，也明确开放文生图只是后续方向。",
+            "readability": "第31节在主稿篇幅内保持问题—机制—数字—边界顺序，展开链接置顶，关键对照有明确单位，五个脚注承担实现口径而不打断主线。VAE/FID/CFG等概念在主稿前文已有铺垫；链接目标和脚注引用完整。未做页面渲染验收。",
+            "limitations": "正文保留类别条件ImageNet、训练步数、CFG、decoder、评价样本、512反例、GFLOPs非墙钟及未听音/WER等限制；没有把Sora、人物现职、视频或真实设备性能当已证事实。继承范围与本轮未重读内容明确列出。"
+          },
+          "critical_claim_ids_checked": [
+            "C-brook",
+            "C-alexnet",
+            "C-resnet",
+            "C-distillation",
+            "C-word2vec",
+            "C-seq2seq",
+            "C-bahdanau-attention",
+            "C-gnmt",
+            "C-transformer",
+            "C-gpt1",
+            "C-bert",
+            "C-gpt2",
+            "C-gpt3",
+            "C-scaling-laws",
+            "C-chinchilla",
+            "C-zero",
+            "C-megascale",
+            "C-laion5b",
+            "C-refinedweb",
+            "C-sparse-moe",
+            "C-lora",
+            "C-alphago-zero",
+            "C-instructgpt",
+            "C-cot",
+            "C-react",
+            "C-tulu3",
+            "C-deepvideo",
+            "C-two-stream",
+            "C-vit",
+            "C-clip",
+            "C-gan",
+            "C-diffusion-2015",
+            "C-ddpm",
+            "C-ldm",
+            "C-dit",
+            "C-bitter-lesson",
+            "C-inventory",
+            "C-sd14",
+            "C-hardware-lens",
+            "C-people",
+            "C-identity-corrections",
+            "E-gpu",
+            "E-residual",
+            "E-nmt",
+            "E-wordpiece",
+            "E-pretraining",
+            "E-scale-config",
+            "E-data-demand",
+            "E-system",
+            "E-visual-backbone",
+            "E-data-loop",
+            "E-latent",
+            "E-adversarial-component",
+            "E-product",
+            "E-dit-meeting",
+            "E-behavior",
+            "E-interaction",
+            "C-basics",
+            "C-route-walkthroughs"
+          ],
+          "coverage_unit_ids_checked": [
+            "U-brook",
+            "U-alexnet",
+            "U-resnet",
+            "U-distillation",
+            "U-word2vec",
+            "U-seq2seq",
+            "U-bahdanau-attention",
+            "U-gnmt",
+            "U-transformer",
+            "U-gpt1",
+            "U-bert",
+            "U-gpt2",
+            "U-gpt3",
+            "U-scaling-laws",
+            "U-chinchilla",
+            "U-zero",
+            "U-megascale",
+            "U-laion5b",
+            "U-refinedweb",
+            "U-sparse-moe",
+            "U-lora",
+            "U-alphago-zero",
+            "U-instructgpt",
+            "U-cot",
+            "U-react",
+            "U-tulu3",
+            "U-deepvideo",
+            "U-two-stream",
+            "U-vit",
+            "U-clip",
+            "U-gan",
+            "U-diffusion-2015",
+            "U-ddpm",
+            "U-ldm",
+            "U-dit",
+            "U-bitter-lesson",
+            "U-lenses",
+            "U-reader-method",
+            "U-cross-route",
+            "U-sd14"
+          ],
+          "source_ids_checked": [
+            "S-lecture",
+            "S-brook",
+            "S-gpu-history",
+            "S-alexnet",
+            "S-resnet",
+            "S-distill",
+            "S-word2vec",
+            "S-seq2seq",
+            "S-bahdanau",
+            "S-gnmt",
+            "S-transformer",
+            "S-gpt1",
+            "S-bert",
+            "S-gpt2",
+            "S-gpt3",
+            "S-kaplan",
+            "S-chinchilla",
+            "S-zero",
+            "S-refinedweb",
+            "S-laion",
+            "S-megascale",
+            "S-moe",
+            "S-lora",
+            "S-bitter",
+            "S-hardware",
+            "S-alphago",
+            "S-instruct",
+            "S-cot",
+            "S-react",
+            "S-tulu",
+            "S-deepvideo",
+            "S-two-stream",
+            "S-vit",
+            "S-clip",
+            "S-gan",
+            "S-diffusion15",
+            "S-ddpm",
+            "S-ldm",
+            "S-sd14",
+            "S-dit",
+            "L-inventory",
+            "S-ai-yanyi-episode",
+            "S-two-stream-lecture",
+            "S-two-stream-podcast",
+            "S-two-stream-shownotes",
+            "S-vit-metadata",
+            "S-vit-lecture",
+            "S-vit-podcast",
+            "S-vit-shownotes",
+            "S-clip-lecture",
+            "S-clip-metadata",
+            "S-clip-podcast",
+            "S-clip-shownotes",
+            "S-gan-metadata",
+            "S-gan-lecture",
+            "S-gan-podcast",
+            "S-gan-shownotes",
+            "S-diffusion15-metadata",
+            "S-diffusion15-lecture",
+            "S-diffusion15-podcast",
+            "S-diffusion15-shownotes",
+            "S-ddpm-metadata",
+            "S-ddpm-lecture",
+            "S-ddpm-podcast",
+            "S-ddpm-shownotes",
+            "S-ddpm-unet",
+            "S-ldm-metadata",
+            "S-ldm-lecture",
+            "S-ldm-podcast",
+            "S-ldm-shownotes",
+            "S-ldm-sd14",
+            "S-sd14-repo",
+            "S-sd14-config",
+            "S-sd14-encoder",
+            "S-sd14-plms",
+            "S-sd14-cfg",
+            "S-sd14-ldm",
+            "S-sd14-clip",
+            "S-sd14-laion",
+            "S-sd14-lecture",
+            "S-sd14-podcast",
+            "S-sd14-shownotes",
+            "S-dit-metadata",
+            "S-dit-lecture",
+            "S-dit-podcast",
+            "S-dit-shownotes"
+          ],
+          "requirement_ids_checked": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6",
+            "R7",
+            "R8",
+            "R9",
+            "R10",
+            "R11"
+          ],
+          "directly_reviewed_critical_claim_ids": [
+            "C-dit"
+          ],
+          "inherited_critical_claim_ids": [
+            "C-brook",
+            "C-alexnet",
+            "C-resnet",
+            "C-distillation",
+            "C-word2vec",
+            "C-seq2seq",
+            "C-bahdanau-attention",
+            "C-gnmt",
+            "C-transformer",
+            "C-gpt1",
+            "C-bert",
+            "C-gpt2",
+            "C-gpt3",
+            "C-scaling-laws",
+            "C-chinchilla",
+            "C-zero",
+            "C-megascale",
+            "C-laion5b",
+            "C-refinedweb",
+            "C-sparse-moe",
+            "C-lora",
+            "C-alphago-zero",
+            "C-instructgpt",
+            "C-cot",
+            "C-react",
+            "C-tulu3",
+            "C-deepvideo",
+            "C-two-stream",
+            "C-vit",
+            "C-clip",
+            "C-gan",
+            "C-diffusion-2015",
+            "C-ddpm",
+            "C-ldm",
+            "C-bitter-lesson",
+            "C-inventory",
+            "C-sd14",
+            "C-hardware-lens",
+            "C-people",
+            "C-identity-corrections",
+            "E-gpu",
+            "E-residual",
+            "E-nmt",
+            "E-wordpiece",
+            "E-pretraining",
+            "E-scale-config",
+            "E-data-demand",
+            "E-system",
+            "E-visual-backbone",
+            "E-data-loop",
+            "E-latent",
+            "E-adversarial-component",
+            "E-product",
+            "E-dit-meeting",
+            "E-behavior",
+            "E-interaction",
+            "C-basics",
+            "C-route-walkthroughs"
+          ],
+          "directly_reviewed_coverage_unit_ids": [
+            "U-dit"
+          ],
+          "inherited_coverage_unit_ids": [
+            "U-brook",
+            "U-alexnet",
+            "U-resnet",
+            "U-distillation",
+            "U-word2vec",
+            "U-seq2seq",
+            "U-bahdanau-attention",
+            "U-gnmt",
+            "U-transformer",
+            "U-gpt1",
+            "U-bert",
+            "U-gpt2",
+            "U-gpt3",
+            "U-scaling-laws",
+            "U-chinchilla",
+            "U-zero",
+            "U-megascale",
+            "U-laion5b",
+            "U-refinedweb",
+            "U-sparse-moe",
+            "U-lora",
+            "U-alphago-zero",
+            "U-instructgpt",
+            "U-cot",
+            "U-react",
+            "U-tulu3",
+            "U-deepvideo",
+            "U-two-stream",
+            "U-vit",
+            "U-clip",
+            "U-gan",
+            "U-diffusion-2015",
+            "U-ddpm",
+            "U-ldm",
+            "U-bitter-lesson",
+            "U-lenses",
+            "U-reader-method",
+            "U-cross-route",
+            "U-sd14"
+          ],
+          "directly_reviewed_source_ids": [
+            "S-dit",
+            "S-dit-metadata",
+            "S-dit-lecture",
+            "S-dit-podcast",
+            "S-dit-shownotes"
+          ],
+          "inherited_source_ids": [
+            "S-lecture",
+            "S-brook",
+            "S-gpu-history",
+            "S-alexnet",
+            "S-resnet",
+            "S-distill",
+            "S-word2vec",
+            "S-seq2seq",
+            "S-bahdanau",
+            "S-gnmt",
+            "S-transformer",
+            "S-gpt1",
+            "S-bert",
+            "S-gpt2",
+            "S-gpt3",
+            "S-kaplan",
+            "S-chinchilla",
+            "S-zero",
+            "S-refinedweb",
+            "S-laion",
+            "S-megascale",
+            "S-moe",
+            "S-lora",
+            "S-bitter",
+            "S-hardware",
+            "S-alphago",
+            "S-instruct",
+            "S-cot",
+            "S-react",
+            "S-tulu",
+            "S-deepvideo",
+            "S-two-stream",
+            "S-vit",
+            "S-clip",
+            "S-gan",
+            "S-diffusion15",
+            "S-ddpm",
+            "S-ldm",
+            "S-sd14",
+            "L-inventory",
+            "S-ai-yanyi-episode",
+            "S-two-stream-lecture",
+            "S-two-stream-podcast",
+            "S-two-stream-shownotes",
+            "S-vit-metadata",
+            "S-vit-lecture",
+            "S-vit-podcast",
+            "S-vit-shownotes",
+            "S-clip-lecture",
+            "S-clip-metadata",
+            "S-clip-podcast",
+            "S-clip-shownotes",
+            "S-gan-metadata",
+            "S-gan-lecture",
+            "S-gan-podcast",
+            "S-gan-shownotes",
+            "S-diffusion15-metadata",
+            "S-diffusion15-lecture",
+            "S-diffusion15-podcast",
+            "S-diffusion15-shownotes",
+            "S-ddpm-metadata",
+            "S-ddpm-lecture",
+            "S-ddpm-podcast",
+            "S-ddpm-shownotes",
+            "S-ddpm-unet",
+            "S-ldm-metadata",
+            "S-ldm-lecture",
+            "S-ldm-podcast",
+            "S-ldm-shownotes",
+            "S-ldm-sd14",
+            "S-sd14-repo",
+            "S-sd14-config",
+            "S-sd14-encoder",
+            "S-sd14-plms",
+            "S-sd14-cfg",
+            "S-sd14-ldm",
+            "S-sd14-clip",
+            "S-sd14-laion",
+            "S-sd14-lecture",
+            "S-sd14-podcast",
+            "S-sd14-shownotes"
+          ],
+          "directly_reviewed_requirement_ids": [
+            "R11"
+          ],
+          "inherited_requirement_ids": [
+            "R1",
+            "R2",
+            "R3",
+            "R4",
+            "R5",
+            "R6",
+            "R7",
+            "R8",
+            "R9",
+            "R10"
+          ],
+          "source_content_map": [
+            {
+              "id": "scm_main_inherited_r35",
+              "title": "已发布r35的其余科学正文、来源与覆盖",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-lecture",
+                "S-brook",
+                "S-gpu-history",
+                "S-alexnet",
+                "S-resnet",
+                "S-distill",
+                "S-word2vec",
+                "S-seq2seq",
+                "S-bahdanau",
+                "S-gnmt",
+                "S-transformer",
+                "S-gpt1",
+                "S-bert",
+                "S-gpt2",
+                "S-gpt3",
+                "S-kaplan",
+                "S-chinchilla",
+                "S-zero",
+                "S-refinedweb",
+                "S-laion",
+                "S-megascale",
+                "S-moe",
+                "S-lora",
+                "S-bitter",
+                "S-hardware",
+                "S-alphago",
+                "S-instruct",
+                "S-cot",
+                "S-react",
+                "S-tulu",
+                "S-deepvideo",
+                "S-two-stream",
+                "S-vit",
+                "S-clip",
+                "S-gan",
+                "S-diffusion15",
+                "S-ddpm",
+                "S-ldm",
+                "S-sd14",
+                "L-inventory",
+                "S-ai-yanyi-episode",
+                "S-two-stream-lecture",
+                "S-two-stream-podcast",
+                "S-two-stream-shownotes",
+                "S-vit-metadata",
+                "S-vit-lecture",
+                "S-vit-podcast",
+                "S-vit-shownotes",
+                "S-clip-lecture",
+                "S-clip-metadata",
+                "S-clip-podcast",
+                "S-clip-shownotes",
+                "S-gan-metadata",
+                "S-gan-lecture",
+                "S-gan-podcast",
+                "S-gan-shownotes",
+                "S-diffusion15-metadata",
+                "S-diffusion15-lecture",
+                "S-diffusion15-podcast",
+                "S-diffusion15-shownotes",
+                "S-ddpm-metadata",
+                "S-ddpm-lecture",
+                "S-ddpm-podcast",
+                "S-ddpm-shownotes",
+                "S-ddpm-unet",
+                "S-ldm-metadata",
+                "S-ldm-lecture",
+                "S-ldm-podcast",
+                "S-ldm-shownotes",
+                "S-ldm-sd14",
+                "S-sd14-repo",
+                "S-sd14-config",
+                "S-sd14-encoder",
+                "S-sd14-plms",
+                "S-sd14-cfg",
+                "S-sd14-ldm",
+                "S-sd14-clip",
+                "S-sd14-laion",
+                "S-sd14-lecture",
+                "S-sd14-podcast",
+                "S-sd14-shownotes"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-brook",
+                "U-alexnet",
+                "U-resnet",
+                "U-distillation",
+                "U-word2vec",
+                "U-seq2seq",
+                "U-bahdanau-attention",
+                "U-gnmt",
+                "U-transformer",
+                "U-gpt1",
+                "U-bert",
+                "U-gpt2",
+                "U-gpt3",
+                "U-scaling-laws",
+                "U-chinchilla",
+                "U-zero",
+                "U-megascale",
+                "U-laion5b",
+                "U-refinedweb",
+                "U-sparse-moe",
+                "U-lora",
+                "U-alphago-zero",
+                "U-instructgpt",
+                "U-cot",
+                "U-react",
+                "U-tulu3",
+                "U-deepvideo",
+                "U-two-stream",
+                "U-vit",
+                "U-clip",
+                "U-gan",
+                "U-diffusion-2015",
+                "U-ddpm",
+                "U-ldm",
+                "U-bitter-lesson",
+                "U-lenses",
+                "U-reader-method",
+                "U-cross-route",
+                "U-sd14"
+              ],
+              "notes": "基线commit 42e436c…的r35已有pass判定；本轮未重读其旧review意见或全部旧来源。剔除第31节、五个DiT脚注及允许的frontmatter字段后，当前正文与r35逐字相同；剔除明确允许的DiT evidence增量后，其余evidence结构相同，故按已发布快照继承。"
+            },
+            {
+              "id": "scm_main_dit_layers",
+              "title": "DiT只替换潜空间扩散中的去噪骨架，并保留VAE、采样器与多步扩散层级",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-dit",
+                "S-dit-metadata",
+                "S-dit-lecture",
+                "S-dit-podcast",
+                "S-dit-shownotes"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-dit"
+              ],
+              "notes": "主稿明确写成Transformer承担扩散内部工作；卷积VAE固定、latent patchify、噪声/对角协方差输出、采样更新与最终解码层次清楚。"
+            },
+            {
+              "id": "scm_main_dit_conditioning",
+              "title": "patch/token与四类条件块、adaLN-Zero边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-dit",
+                "S-dit-lecture",
+                "S-dit-podcast"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-dit"
+              ],
+              "notes": "给出32×32×4、2×2→256 token，并区分token并行去噪与自回归生成；列出额外token、cross-attention、adaLN、adaLN-Zero，且未外推长文本任务。"
+            },
+            {
+              "id": "scm_main_dit_scaling",
+              "title": "模型计算、token扩展与采样计算的定量对照",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-dit"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-dit"
+              ],
+              "notes": "XL/8→XL/2的参数、GFLOPs、400K FID与L/2千步对XL/2 128步的TFLOPs/FID-10K均准确，明确GFLOPs非硬件吞吐、更多采样步不等价于更强模型。"
+            },
+            {
+              "id": "scm_main_dit_results",
+              "title": "最终256/512基准、CFG/decoder/训练长度与外推边界",
+              "importance": "core",
+              "assessment": "covered",
+              "source_ids": [
+                "S-dit",
+                "S-dit-metadata",
+                "S-dit-shownotes"
+              ],
+              "matched_coverage_unit_ids": [
+                "U-dit"
+              ],
+              "notes": "保留256² 7M、250步、CFG1.5、ft-EMA、FID2.27；512² 3.04并明确StyleGAN-XL 2.41反例。开放文本、视频、设备性能及人物后续均未倒填为论文实验。"
+            }
+          ],
+          "unsupported_claims": [],
+          "missing_requirements": [],
+          "hard_failures": [],
+          "notes": "强审加权分95.7/100。第31节与五个脚注无实质缺陷；继承部分已用git快照做严格相同性验证。没有把继承项冒称本轮逐源重读，也未读取旧review意见。未改仓库、未做UI、未运行针对空sidecar的qualitycheck。",
+          "snapshot": {
+            "report_sha256": "ef4ef926e53f9833d4ff8e9ad6125814744585d6cb90dc91127741f9a706a19a",
+            "evidence_sha256": "ae15173ff3971a0334d0832ead8788d0bf689af13ab9c85af57d217a647a795e",
+            "verified_before_review": true,
+            "wrong_target_snapshot": false
+          },
+          "inheritance_verification": {
+            "baseline_commit": "42e436cacc8ca9a654eb6dfbe184e73373627f7d",
+            "baseline_report_sha256": "9ea6e35fe108d04f0931d53ebd2ee73054cfeffc45e8f3549c3b43df5d1deba1",
+            "baseline_evidence_sha256": "d4bc449cfef559c82d6517b12d6eff8e92cc617556eb94a6d38556672c63ed9f",
+            "report_inherited_equal": true,
+            "evidence_inherited_equal": true,
+            "excluded_report_scopes": [
+              "frontmatter.status",
+              "frontmatter.updated_on",
+              "paper-dit..before lenses",
+              "footnotes dit, dit-design, dit-scaling, dit-results, dit-boundaries"
+            ],
+            "excluded_evidence_scopes": [
+              "generator.run_id",
+              "R11",
+              "sources S-dit/S-dit-metadata/S-dit-lecture/S-dit-podcast/S-dit-shownotes",
+              "C-dit",
+              "U-dit",
+              "revision_note"
+            ]
+          },
+          "verification_limits": "直接审第31节、五个DiT脚注、对应导航与DiT evidence增量；其余内容通过与已发布r35的规范化逐字/结构相同比对继承。未读旧review意见或旧五维分数，仅读取r35顶层revision_round、review条数与pass decision；未做UI验收。",
+          "read_scopes": [
+            {
+              "scope": "直接阅读主稿第31节 paper-dit 至 lenses 前、标题后展开链接、脚注 dit/dit-design/dit-scaling/dit-results/dit-boundaries。"
+            },
+            {
+              "scope": "直接读取主稿evidence中的R11、S-dit及四个新增DiT来源、C-dit、U-dit、revision_note。"
+            },
+            {
+              "scope": "复用本任务已完成的来源优先DiT章稿强审与转写结构复算，不重新读取整套论文。"
+            },
+            {
+              "scope": "独立git show已发布commit 42e436c…；规范化排除允许增量后，正文逐字相同、evidence结构相同。"
+            },
+            {
+              "scope": "核新链接目标和五个脚注各有一次引用/一次定义；仅文本、数字、乱码、引用、导航检查。"
+            }
+          ]
+        }
+      ],
+      "decision": {
+        "status": "pass",
+        "score": 95.6,
+        "evaluated_on": "2026-11-06",
+        "policy_id": "report-quality-2026-10-18-r2",
+        "policy_sha256": "626d4b8436c88d32aec95f5d563b0b0f3101a9d0477ebeacb10839bc174d56f2",
+        "report_sha256": "0b0ca4938e38e0f69f1c2408a1b93b6e37e05efb4fcbb287f3d24ce70aa99cea",
+        "evidence_sha256": "ae15173ff3971a0334d0832ead8788d0bf689af13ab9c85af57d217a647a795e"
+      }
     }
   ],
   "review_receipts": [
@@ -48953,10 +50490,39 @@
       "after_evidence_sha256": "7169dabad7b50da19018b62371a9f97cf4b32edbb3e83415e2141d8d35e8a700",
       "original_review_file_sha256": "c1b49251b1b5ed92d4e96324f3aa71b0e52e0bb143ac141d0500e51f37417776",
       "preserved": "原Reviewer身份、评分、理由、来源地图、快照和未做UI的事实不变；仅将取消的UI部分从交付阻断项移除。未重审、未伪称UI通过。"
+    },
+    {
+      "date": "2026-11-06",
+      "actor": "coordinator",
+      "authority": "用户当前明确撤销浏览器检查要求；仅删除对应交付阻断，不修改独立内容复核结论",
+      "user_quote": "别用浏览器检查了，上次都说了，咋这么多官僚的门禁啊，去掉。。。。就修个报告啊。。。",
+      "requirement_id": "R9",
+      "before_requirement": "执行范围匹配的正文、链接、覆盖、图表与实际富文本呈现检查及旗舰级独立复核；不扩成无关工作台功能验收。检查受工具故障影响时如实记录缺口，不把HTML转换或评分冒充真实页面观看。",
+      "after_requirement": "执行范围匹配的正文、图表、公式、脚注、链接与覆盖检查，以及旗舰级独立内容复核；不要求浏览器、截图或工作台页面验收。",
+      "before_report_sha256": "50735452b1e06702b201f84106868f653eca78ec01c2f94634a476d659c38e99",
+      "after_report_sha256_before_finalization": "50735452b1e06702b201f84106868f653eca78ec01c2f94634a476d659c38e99",
+      "before_evidence_sha256": "dbeb76c0f96c5b49593bf1e8abe7c1e0782c34eafe59ae8cc72101b6661da02f",
+      "after_evidence_sha256": "447f1f64d1f910d2e6108f6c7c291e0dfae1057a1f72519c362bf281bba134c7",
+      "original_review_file_sha256": "027b69594c0239bdc7ab3cf1a737d334130f76dc1d4cec79e3476a63bb038421",
+      "removed_current_blockers": [
+        {
+          "reviewer_run_id": "ai-yanyi-overview-r37-primary-dit-primary-review-20261106",
+          "requirement_id": "R9",
+          "withdrawn_part": "浏览器／截图／工作台实际页面检查",
+          "resolution": "用户取消，非补做检查或重新审稿"
+        },
+        {
+          "reviewer_run_id": "overview-r37-strong-review-20261106",
+          "requirement_id": "R9",
+          "withdrawn_part": "浏览器／截图／工作台实际页面检查",
+          "resolution": "用户取消，非补做检查或重新审稿"
+        }
+      ],
+      "preserved": "两份审稿的身份、分数、理由、来源地图、原始快照、notes和history保持原样，描述的是取消要求前的审阅范围。正文、来源、claims、coverage与研究产物未变；仅移除已撤销的浏览器检查阻断，不宣称检查通过，不新开审稿轮次。"
     }
   ],
   "publication_redactions": {
-    "scope": "历史review的虚拟Agent任务树标签用agent-tree或collab2短名表示，避免与系统主目录混淆；模型身份、评分、来源和审阅快照哈希不变。",
+    "scope": "历史及当前review的虚拟Agent任务树标签用agent-tree或collab2短名表示，避免与系统主目录混淆；模型身份、评分、来源和审阅快照哈希不变。",
     "date": "2026-11-06"
   }
 }
